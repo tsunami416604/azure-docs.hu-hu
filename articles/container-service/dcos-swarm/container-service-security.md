@@ -1,6 +1,6 @@
 ---
-title: ELAVULT Tárolók biztonsága Azure Container Service
-description: A Azure Container Service és a kapcsolódó Azure-szolgáltatásokban üzembe helyezett Docker-tárolók biztonságossá tételének szempontjai.
+title: (ELAVULT) Tárolóbiztonság az Azure Container Service szolgáltatásban
+description: Az Azure Container Service-ben és a kapcsolódó Azure-szolgáltatásokban üzembe helyezett Docker-tárolók védelmével kapcsolatos szempontok.
 author: sauryadas
 ms.service: container-service
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/28/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: d90d872175febf775e7d0892e133883f1a8ff8a2
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552384"
 ---
-# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>ELAVULT Docker-tárolók biztonságossá tétele Azure Container Service
+# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(ELAVULT) Docker-tárolók biztonságossá tétele az Azure Container Service szolgáltatásban
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -53,7 +53,7 @@ Alkalmazások éles környezetben való üzembe helyezésekor fontos beállítan
 ## <a name="host-level-container-isolation"></a>Tárolók gazdagépszintű elkülönítése
 Ha a felhasználók Azure-erőforrásokon helyeznek üzembe tárolóalkalmazásokat, azok az előfizetés szintjén lesznek üzembe helyezve erőforráscsoportokban, és nem lesznek több-bérlősek. Ez azt jelenti, hogy ha a felhasználók másokkal közös előfizetést használnak, nem lehetnek határok egy adott előfizetés két telepítése között. Emiatt a tárolószintű biztonság nem biztosítható. 
 
-Fontos tudni továbbá, hogy a tárolók osztoznak a gazdagép kernelén és erőforrásain (az Azure Container Service-ben a gazdagép egy Azure-beli virtuális gép egy fürtben). Az éles környezetekben futó tárolókat ezért nem kiemelt jogosultságú felhasználói módban kell futtatni. Ha valamely tárolót gyökérszintű jogosultságokkal futtatja, azzal veszélynek teheti ki a teljes környezetet. Ha a támadó gyökérszintű hozzáféréssel rendelkezik egy tárolóhoz, megszerezheti a gazdagép teljes gyökérszintű jogosultságait. Emellett az is fontos, hogy a tárolókat csak olvasható fájlrendszerekkel futtassa. Ez meggátolja, hogy a tárolóhoz hozzáféréssel rendelkező személyek rosszindulatú szkripteket írhassanak a fájlrendszerre, és hozzáférést szerezzenek más fájlokhoz. Hasonlóképpen fontos korlátozni a tárolóhoz rendelt erőforrásokat (például a memóriát, a processzorokat és a hálózati sávszélességet). Ez segít megakadályozni, hogy a hackerek meggátolják az erőforrásokat, és olyan illegális tevékenységeket folytassanak, mint például a hitelkártya-csalás vagy a bit érme-bányászat, ami megakadályozhatja más tárolók futtatását a gazdagépen vagy a fürtön
+Fontos tudni továbbá, hogy a tárolók osztoznak a gazdagép kernelén és erőforrásain (az Azure Container Service-ben a gazdagép egy Azure-beli virtuális gép egy fürtben). Az éles környezetekben futó tárolókat ezért nem kiemelt jogosultságú felhasználói módban kell futtatni. Ha valamely tárolót gyökérszintű jogosultságokkal futtatja, azzal veszélynek teheti ki a teljes környezetet. Ha a támadó gyökérszintű hozzáféréssel rendelkezik egy tárolóhoz, megszerezheti a gazdagép teljes gyökérszintű jogosultságait. Emellett az is fontos, hogy a tárolókat csak olvasható fájlrendszerekkel futtassa. Ez meggátolja, hogy a tárolóhoz hozzáféréssel rendelkező személyek rosszindulatú szkripteket írhassanak a fájlrendszerre, és hozzáférést szerezzenek más fájlokhoz. Hasonlóképpen fontos korlátozni a tárolóhoz rendelt erőforrásokat (például a memóriát, a processzorokat és a hálózati sávszélességet). Ez segít megakadályozni, hogy a hackerek erőforrásokat halmozzanak fel, és illegális tevékenységeket folytassanak, mint például a hitelkártya-csalás vagy a bitérme-bányászat, ami megakadályozhatja, hogy más tárolók fussanak a gazdagépen vagy a fürtön.
 
 ## <a name="orchestrator-considerations"></a>A vezénylőkkel kapcsolatos szempontok
 
@@ -67,7 +67,7 @@ Az egyes vezénylőkre vonatkozó további biztonsági információkat a követk
 
 * **Docker Swarm**: [Docker-biztonság](https://www.docker.com/docker-security)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Docker architektúrával és tárolók biztonságával kapcsolatos további információkért lásd: [a tárolóbiztonságot bemutató](https://www.docker.com/sites/default/files/WP_IntrotoContainerSecurity_08.19.2016.pdf) dokumentumot.
 

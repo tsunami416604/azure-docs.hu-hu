@@ -1,7 +1,7 @@
 ---
-title: OAuth1 műszaki profil definiálása egyéni házirendben
+title: OAuth1 technikai profil definiálása egyéni házirendben
 titleSuffix: Azure AD B2C
-description: OAuth 1,0 technikai profilt definiálhat egy egyéni szabályzatban Azure Active Directory B2Cban.
+description: OAuth 1.0 technikai profildefiniálása egyéni szabályzatban az Azure Active Directory B2C-ben.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,21 +12,21 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 7f734844859d44e66bddbc2ddd999659e52f9668
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78184077"
 ---
-# <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OAuth1 műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
+# <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OAuth1 technikai profil definiálása az Azure Active Directory B2C egyéni szabályzatában
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt a [OAuth 1,0 protokoll](https://tools.ietf.org/html/rfc5849) identitás-szolgáltatója számára. Ez a cikk a szabványos protokollt támogató jogcím-szolgáltatóval való interakcióra szolgáló technikai profil sajátosságait ismerteti. A OAuth1-alapú technikai profillal OAuth1-alapú összevonása (például Twitter) is használható. Az egyesítő lehetővé teszi, hogy a felhasználók bejelentkezzenek a meglévő közösségi vagy vállalati identitásokkal.
+Az Azure Active Directory B2C (Azure AD B2C) támogatja az [OAuth 1.0 protokoll](https://tools.ietf.org/html/rfc5849) identitásszolgáltató. Ez a cikk a műszaki profil sajátosságait ismerteti a szabványosprotokollt támogató jogcímszolgáltatóval való interakcióhoz. Az OAuth1 technikai profillal összeegyo-profillal, például a Twitterrel összeegyeztethető. Az identitásszolgáltatóval való fededés lehetővé teszi a felhasználók számára, hogy meglévő közösségi vagy vállalati identitásukkal jelentkezzenek be.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol (Protokoll)
 
-A **protokoll** elem **Name** attribútumát `OAuth1`értékre kell állítani. A **Twitter-OAUTH1** technikai profilhoz tartozó protokoll például `OAuth1`.
+A **Protokoll** elem **Name** attribútumát a `OAuth1`parancsra kell állítani. Például a **Twitter-OAUTH1** technikai profiljának `OAuth1`protokollja .
 
 ```XML
 <TechnicalProfile Id="Twitter-OAUTH1">
@@ -37,24 +37,24 @@ A **protokoll** elem **Name** attribútumát `OAuth1`értékre kell állítani. 
 
 ## <a name="input-claims"></a>Bemeneti jogcímek
 
-A **szabályzattípushoz** és a **InputClaimsTransformations** elemek üresek vagy hiányoznak.
+Az **InputClaims** és **az InputClaimsTransformations** elemek üresek vagy hiányoznak.
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 
-A **OutputClaims** elem tartalmazza a OAuth1-identitás szolgáltatója által visszaadott jogcímek listáját. Előfordulhat, hogy le kell képeznie a szabályzatban definiált jogcím nevét az identitás-szolgáltatóban definiált névre. Olyan jogcímeket is tartalmazhat, amelyeket nem ad vissza az identitás-szolgáltató, ha beállítja a **DefaultValue** attribútumot.
+A **OutputClaims** elem az OAuth1 identitásszolgáltató által visszaadott jogcímek listáját tartalmazza. Előfordulhat, hogy a házirendben definiált jogcím nevét hozzá kell képeznie az identitásszolgáltatóban megadott névhez. Az identitásszolgáltató által vissza nem adott jogcímeket is megadhat, feltéve, hogy beállítja a **DefaultValue** attribútumot.
 
-A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
+A **OutputClaimsTransformations** elem tartalmazhat **OutputClaimsTransformations** elemek gyűjteményét, amelyek a kimeneti jogcímek módosítására vagy újak létrehozására szolgálnak.
 
-A következő példa a Twitter Identity Provider által visszaadott jogcímeket mutatja be:
+A következő példa a Twitter identitásszolgáltató által visszaadott jogcímeket mutatja be:
 
-- A **issuerUserId** jogcímhez rendelt **user_id** jogcím.
-- A **DisplayName** jogcímhez hozzárendelt **screen_name** jogcím.
-- A név leképezése nélküli **e-mail-** jogcím.
+- A **user_id** a **kibocsátóUserId** jogcímhez leképezett jogcímhez leképezett jogcím.
+- A **screen_name** jogcím, amely a **displayName** jogcímhez van rendelve.
+- Az **e-mail** jogcím névleképezés nélkül.
 
-A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is visszaadja:
+A technikai profil olyan jogcímeket is visszaad, amelyeket az identitásszolgáltató nem ad vissza:
 
-- Az **identityProvider** -jogcím, amely tartalmazza az identitás-szolgáltató nevét.
-- Az **authenticationSource** jogcím `socialIdpAuthentication`alapértelmezett értéke.
+- Az identitásszolgáltató nevét tartalmazó **identityProvider** jogcím.
+- A **authenticationSource** jogcím alapértelmezett `socialIdpAuthentication`értéke .
 
 ```xml
 <OutputClaims>
@@ -68,33 +68,33 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| client_id | Igen | Az identitás-szolgáltató alkalmazás-azonosítója. |
-| ProviderName | Nem | Az identitás-szolgáltató neve. |
-| request_token_endpoint | Igen | A kérelem jogkivonat-végpontjának URL-címe RFC 5849-ként. |
-| authorization_endpoint | Igen | Az engedélyezési végpont URL-címe RFC 5849-ként. |
-| access_token_endpoint | Igen | A jogkivonat-végpont URL-címe RFC 5849-ként. |
-| ClaimsEndpoint | Nem | A felhasználói információs végpont URL-címe |
-| ClaimsResponseFormat | Nem | A jogcímek válaszának formátuma.|
+| client_id | Igen | Az identitásszolgáltató alkalmazásazonosítója. |
+| Szolgáltatóneve | Nem | Az identitásszolgáltató neve. |
+| request_token_endpoint | Igen | A kérelem token végpontjának URL-címe az 5849-es RFC-nek. |
+| authorization_endpoint | Igen | Az engedélyezési végpont URL-címe az 5849-es RFC-nek. |
+| access_token_endpoint | Igen | A tokenvégpont URL-címe az 5849-es RFC-nek. |
+| ClaimsEndpoint | Nem | A felhasználói információs végpont URL-címe. |
+| Jogcímválasz formátuma | Nem | A jogcímek válaszformátuma.|
 
-## <a name="cryptographic-keys"></a>Titkosítási kulcsok
+## <a name="cryptographic-keys"></a>Kriptográfiai kulcsok
 
-A **CryptographicKeys** elem a következő attribútumot tartalmazza:
+A **Kriptográfiai kulcsok** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| client_secret | Igen | Az Identity Provider alkalmazás ügyfél-titka.   |
+| client_secret | Igen | Az identitásszolgáltató alkalmazás ügyféltkati titka.   |
 
 ## <a name="redirect-uri"></a>Átirányítási URI
 
-Az Identitáskezelő átirányítási URL-címének konfigurálásakor adja meg a `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. Győződjön meg arról, hogy lecseréli a **bérlőt** a bérlő nevére (például contosob2c.onmicrosoft.com), és **policyId** a szabályzat azonosítójával (például b2c_1a_policy). Az átirányítási URI-nak minden kisbetűsnek kell lennie. Adjon hozzá egy átirányítási URL-címet az összes olyan házirendhez, amely az identitás-szolgáltatói bejelentkezést használja.
+Az identitásszolgáltató átirányítási URL-címének konfigurálásakor írja be a . `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp` Győződjön meg arról, hogy cserélje **le a bérlő** nevét (például contosob2c.onmicrosoft.com) és **policyId** a szabályzat azonosítóját (például b2c_1a_policy). Az átirányítási URI-nak kisbetűsnek kell lennie. Adjon hozzá egy átirányítási URL-címet az identitásszolgáltató bejelentkezését használó összes házirendhez.
 
-Ha a **b2clogin.com** tartományt használja a **login.microsoftonline.com** helyett, ügyeljen arra, hogy a login.microsoftonline.com helyett a b2clogin.com használja.
+Ha a **b2clogin.com** tartományt használja **login.microsoftonline.com** ügyeljen arra, hogy b2clogin.com használjon login.microsoftonline.com helyett.
 
-Például:
+Példák:
 
-- [Twitter hozzáadása OAuth1-identitás-szolgáltatóként egyéni szabályzatok használatával](identity-provider-twitter-custom.md)
+- [A Twitter hozzáadása OAuth1 identitásszolgáltatóként egyéni házirendek használatával](identity-provider-twitter-custom.md)
 
 
 

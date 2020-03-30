@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: tamram
 ms.openlocfilehash: ede5e2587f1f4d99193e621965b68f75fbad27f4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179017"
 ---
-Most, hogy megismerte az Azure Blob storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok.
+Most, hogy megtanulta az Azure Blob storage alapjait, kövesse ezeket a hivatkozásokat az összetettebb tárolási feladatok megismeréséhez.
 
-* A Blob szolgáltatás dokumentációja a megtekintéséhez a [Azure Storage ügyféloldali kódtára a .NET-hez](https://go.microsoft.com/fwlink/?LinkID=390731) elérhető API-k teljes körű részleteit referenciája.
-* Ismerje meg, hogyan egyszerűsítheti az Azure Storage használatához írt kódot, tekintse át [Mi az az Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)
+* Tekintse meg a Blob szolgáltatás referencia dokumentációját az [Azure Storage ügyfélkönyvtárában .NET](https://go.microsoft.com/fwlink/?LinkID=390731) referencia az elérhető API-k részletes adatait.
+* Ha meg szeretné tudni, hogyan egyszerűsítheti az Azure Storage-mal való együttműködésre írt kódot, olvassa el [a Mi az Azure WebJobs SDK című](https://github.com/Azure/azure-webjobs-sdk/wiki) könyvét.
 * Az Azure-ban való adattárolás további lehetőségeiről tekintse meg a többi szolgáltatás-útmutatót.
-  * Dolgozunk az Azure Storage-táblák, lásd: [.NET használatával az Azure Table storage használatának első lépései](../articles/cosmos-db/table-storage-how-to-use-dotnet.md).
-  * Dolgozunk az Azure Storage-üzenetsorokba, [.NET használatával az Azure Queue storage használatának első lépései](../articles/storage/queues/storage-dotnet-how-to-use-queues.md).
-  * A relációs adatok tárolásához, lásd: [csatlakozhat az SQL Database .NET-keretrendszerrel (C#)](../articles/sql-database/sql-database-develop-dotnet-simple.md).
+  * Az Azure Storage-táblák használatáról az [Azure Table storage használatával – első lépések a .NET használatával](../articles/cosmos-db/table-storage-how-to-use-dotnet.md).
+  * Az Azure Storage-várólistákkal való munkához [kezdje el az Azure Queue storage használatát a .NET használatával.](../articles/storage/queues/storage-dotnet-how-to-use-queues.md)
+  * A relációs adatok tárolásához olvassa el a [Csatlakozás sql adatbázishoz a .NET (C#) használatával](../articles/sql-database/sql-database-develop-dotnet-simple.md)című témakört.
 

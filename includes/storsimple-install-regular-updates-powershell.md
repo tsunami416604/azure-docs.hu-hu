@@ -5,28 +5,28 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: dc50f94ae9b207961a71480c2fc172e88db79cf4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179152"
 ---
-#### <a name="to-install-regular-updates-via-windows-powershell-for-storsimple"></a>Windows PowerShell-lel rendszeres frissítések telepítése a storsimple-höz készült
-1. Nyissa meg az eszköz soros konzoljához és select 1. lehetőség – **jelentkezzen be a teljes hozzáféréssel**. Írja be a jelszót. Az alapértelmezett jelszó az *jelszó1*. 
+#### <a name="to-install-regular-updates-via-windows-powershell-for-storsimple"></a>Rendszeres frissítések telepítése a Windows PowerShell for StorSimple rendszeren keresztül
+1. Nyissa meg az eszköz soros konzolját, és válassza az 1-es lehetőséget, **a Bejelentkezés teljes hozzáféréssel**. Írja be a jelszót. Az alapértelmezett jelszó a *Password1*. 
 2. A parancssorba írja be a következőt:
    
      `Get-HcsUpdateAvailability`
    
-    Akkor kap értesítést, ha elérhető frissítések, és hogy a frissítések zavart okozó vagy zavart nem okozó legyenek-e.
+    Értesítést kap, ha a frissítések elérhetők, és hogy a frissítések zavaróak vagy nem zavaróak.You will be be available if updates are available and whether the updates are disruptive or non-disruptive.
 3. A parancssorba írja be a következőt:
    
      `Start-HcsUpdate`
    
-    A frissítési folyamat indul el.
+    A frissítési folyamat elindul.
 
 > [!IMPORTANT]
-> * Ez a parancs csak a rendszeres frissítések vonatkozik. Ez a parancs csak egy tartományvezérlőn futtatja, de mindkét vezérlő frissülni fog. 
-> * A frissítés során; előfordulhat, hogy figyelje meg a vezérlő feladatátvétele a feladatátvétel azonban rendszer rendelkezésre állását vagy művelet nincs hatással.
+> * Ez a parancs csak a rendszeres frissítésekre vonatkozik. Ezt a parancsot csak egy vezérlőn futtatja, de mindkét vezérlő frissülni fog. 
+> * Előfordulhat, hogy a frissítési folyamat során vezérlőfeladat-átvételt észlel; a feladatátvétel azonban nem befolyásolja a rendszer rendelkezésre állását vagy működését.
 > 
 > 
 

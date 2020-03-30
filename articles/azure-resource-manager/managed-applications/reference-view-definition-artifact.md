@@ -1,24 +1,24 @@
 ---
-title: Definíciós összetevő hivatkozásának megtekintése
-description: Példát mutat a Azure Managed Applications megjelenítésének definíciós összetevője számára. A fájl neve viewDefinition. JSON.
+title: Definíciós műtermék hivatkozásának megtekintése
+description: Egy példa az Azure felügyelt alkalmazások nézetdefiníciós összetevő. A fájl neve viewDefinition.json.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 5173db54abef132a4a4d5d117881352ca37d6b23
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651201"
 ---
-# <a name="reference-view-definition-artifact"></a>Hivatkozás: definíciós összetevő megtekintése
+# <a name="reference-view-definition-artifact"></a>Hivatkozás: Definíciós műtermék megtekintése
 
-Ez a cikk a Azure Managed Applications *viewDefinition. JSON* összetevőjét ismerteti. További információ a létrehozási nézetek konfigurációjával kapcsolatban: a [definíciós összetevő megtekintése](concepts-view-definition.md).
+Ez a cikk egy hivatkozás egy *viewDefinition.json* összetevő az Azure felügyelt alkalmazások. A nézetek konfigurációjának szerkesztéséről a [Definíciós termék megtekintése című témakörben](concepts-view-definition.md)talál további információt.
 
 ## <a name="view-definition"></a>Meghatározás megtekintése
 
-A következő JSON a Azure Managed Applications *viewDefinition. JSON* fájljának példáját mutatja be:
+A következő JSON egy példát mutat be az Azure felügyelt alkalmazások *viewDefinition.json* fájljára:
 
 ```json
 {
@@ -85,8 +85,8 @@ A következő JSON a Azure Managed Applications *viewDefinition. JSON* fájlján
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: felügyelt alkalmazás létrehozása egyéni műveletekkel és erőforrásokkal](tutorial-create-managed-app-with-custom-provider.md)
-- [Hivatkozás: felhasználói felület elemeinek összetevője](reference-createuidefinition-artifact.md)
-- [Hivatkozás: telepítési sablon összetevő](reference-main-template-artifact.md)
+- [Oktatóanyag: Felügyelt alkalmazás létrehozása egyéni műveletekkel és erőforrásokkal](tutorial-create-managed-app-with-custom-provider.md)
+- [Hivatkozás: Felhasználói felület elemeinek összetevője](reference-createuidefinition-artifact.md)
+- [Hivatkozás: Telepítési sablon műterméke](reference-main-template-artifact.md)

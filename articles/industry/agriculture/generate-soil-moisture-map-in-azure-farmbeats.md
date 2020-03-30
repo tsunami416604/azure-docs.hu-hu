@@ -1,96 +1,96 @@
 ---
-title: Talaj nedvesség-hő előállítása
-description: A cikk bemutatja, hogyan hozhatja ki a hő a talaj nedvességtartalmát az Azure FarmBeats
+title: Termeljen talaj nedvesség heatmap
+description: A talajnedvesség-hőtérkép létrehozásának ismertetése az Azure FarmBeats szolgáltatásban
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75482568"
 ---
-# <a name="generate-soil-moisture-heatmap"></a>Talaj nedvesség-hő előállítása
+# <a name="generate-soil-moisture-heatmap"></a>Termeljen talaj nedvesség heatmap
 
-A talaj nedvességtartalma az a víz, amelyet a rendszer a talaj részecskék közötti térközben tárol. A talaj nedvesség-hő segít megérteni a nedvesség adatait bármilyen mélységben és nagy felbontásban a farmokon belül. Pontos és felhasználható nedvesség-hő létrehozásához az érzékelők egységes üzembe helyezése szükséges az azonos szolgáltatótól. A különböző szolgáltatók eltérőek lehetnek a talaj nedvességtartalmának mérésével, valamint a kalibrálási különbségekkel. A hő az adott mélységben üzembe helyezett érzékelők használatával generáljuk.
+A talaj nedvessége az a víz, amelyet a talajrészecskék közötti terekben tartanak.A Soil Moisture Heatmap segít megérteni a nedvességadatokat bármilyen mélységben és nagy felbontásban a farmokon belül. A pontos és használható talajnedvesség-hőtérkép létrehozásához ugyanattól a szolgáltatótól származó érzékelők egységes telepítésére van szükség. A különböző szolgáltatók nak különbségei lesznek a talaj nedvességtartalmának mérésében, valamint a kalibrálási különbségekben. A heatmap jön létre egy adott mélységben az érzékelők telepített ebben a mélységben.
 
-Ez a cikk azt ismerteti, hogyan hozható létre a talaj nedvességtartalmának hő a farmhoz az Azure FarmBeats-gyorsító használatával. Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+Ez a cikk ismerteti a folyamat a talaj nedvességhőtérkép a farm, az Azure FarmBeats gyorsító használatával. Ebben a cikkben megtudhatja, hogyan:
 
 - [Farmok létrehozása](#create-a-farm)
-- [Érzékelők kiosztása farmokhoz](#get-soil-moisture-sensor-data-from-partner)
-- [Talaj nedvesség-hő előállítása](#generate-soil-moisture-heatmap)
+- [Érzékelők hozzárendelése farmokhoz](#get-soil-moisture-sensor-data-from-partner)
+- [Termeljen talaj nedvesség heatmap](#generate-soil-moisture-heatmap)
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ellenőrizze a következőket:  
 
 - Azure-előfizetés.
 - Az Azure FarmBeats futó példánya.
-- A farm számára legalább három nedvesség-érzékelő érhető el.
+- A gazdaságban legalább három talajnedvesség-érzékelő áll rendelkezésre.
 
 ## <a name="create-a-farm"></a>Farm létrehozása
 
-A farm olyan földrajzi terület, amelynek az a célja, hogy hő hozzon létre. Farmokat a Farms [API](https://aka.ms/FarmBeatsDatahubSwagger) -val vagy a FarmsBeats- [gyorsító kezelőfelületén](manage-farms-in-azure-farmbeats.md#create-farms) hozhat létre.
+A gazdaság olyan földrajzi terület, amelyhez talajnedvesség-hőtérképet szeretne létrehozni. Farmot a Farms [API vagy](https://aka.ms/FarmBeatsDatahubSwagger) a [FarmsBeats Accelerator felhasználói felületén](manage-farms-in-azure-farmbeats.md#create-farms) hozhat létre
 
-## <a name="deploy-sensors"></a>Érzékelők üzembe helyezése
+## <a name="deploy-sensors"></a>Érzékelők telepítése
 
-A farmon fizikailag üzembe kell helyezni a talaj nedvességtartalmának érzékelőit. Bármely jóváhagyott partnertől, a [Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/) és a [Teralytic](https://teralytic.com/)megvásárolhatja a talaj nedvességtartalmának érzékelőit. Koordinálja az érzékelő szolgáltatóját, hogy elvégezze a fizikai telepítést a farmon.
+Fizikailag kell telepíteni a talaj nedvességérzékelőit a gazdaságban. Bármelyik jóváhagyott partnerünktől , a Davis [Instruments-től](https://www.davisinstruments.com/product/enviromonitor-gateway/) és a [Teralytic-tól](https://teralytic.com/)vásárolhat talajnedvesség-érzékelőket. A farm fizikai beállításához egyeztetnie kell az érzékelő szolgáltatójával.
 
-## <a name="get-soil-moisture-sensor-data-from-partner"></a>A talaj nedvesség-érzékelői adatainak beolvasása a partnertől
+## <a name="get-soil-moisture-sensor-data-from-partner"></a>A talajnedvesség-érzékelő adatainak beszereznie a partnertől
 
-Ahogy az érzékelők elkezdik a folyamatos átvitelt, a partneri adatirányítópultba helyezik az adattovábbítást, lehetővé teszik az Azure FarmBeats való adatgyűjtést. Ezt megteheti a partner alkalmazásból.
+Ahogy az érzékelők megkezdik a streamelést, az adatok a partneradatok irányítópultjára, engedélyezik az adatokat az Azure FarmBeats-be. Ezt a partneralkalmazásból teheti meg.
 
-Ha például megvásárolta a Davis szenzorokat, bejelentkezik az időjárási kapcsolati fiókjába, és megadja a szükséges hitelesítő adatokat az Azure FarmBeats való adattovábbítás engedélyezéséhez. A szükséges hitelesítő adatok beszerzéséhez kövesse az [érzékelők adatainak beolvasása](get-sensor-data-from-sensor-partner.md#get-sensor-data-from-sensor-partners)című témakör utasításait.
+Ha például Davis-érzékelőket vásárolt, akkor jelentkezzen be az időjárási kapcsolat fiókjába, és adja meg a szükséges hitelesítő adatokat az adatok azure FarmBeats-be való streameléséhez. A szükséges hitelesítő adatok beszerezéséhez kövesse az [Érzékelő adatok betárolása](get-sensor-data-from-sensor-partner.md#get-sensor-data-from-sensor-partners)című útmutatóutasításait.
 
-Miután megadta a hitelesítő adatait, és kiválasztja a **beküldés** lehetőséget a partneri alkalmazásban, az adatok áthelyezhetők az Azure FarmBeats.
+Miután megadta a hitelesítő adatait, és válassza a **Küldés** a partneralkalmazásban lehetőséget, az adatok az Azure FarmBeats-be áramlathatnak.
 
-### <a name="assign-soil-moisture-sensors-to-the-farm"></a>A talaj nedvességtartalmának érzékelők kiosztása a farmhoz
+### <a name="assign-soil-moisture-sensors-to-the-farm"></a>Rendeljen talajnedvesség-érzékelőket a gazdasághoz
 
-Miután összekapcsolta a Sensor-fiókját az Azure FarmBeats, hozzá kell rendelnie a talajhoz tartozó nedvesség-érzékelőket a farmhoz.
+Miután összekapcsolta érzékelőfiókját az Azure FarmBeats-hez, hozzá kell rendelnie a talajnedvesség-érzékelőket az érdeklődésre számot tartó farmhoz.
 
-1.  A kezdőlapon válassza a **farmok** lehetőséget a menüből, a **farmok** listája lap jelenik meg.
-2.  Válassza az **MyFarm** > **eszközök hozzáadása**lehetőséget.
-3.  Megjelenik az **eszközök hozzáadása** ablak. Válassza ki a farm nedvesség-érzékelőkhöz kapcsolódó összes eszközt.
+1.  A kezdőlapon válassza a **Farmok** elemet a menüből, és megjelenik a **Farms** lista.
+2.  Válassza a **MyFarm** > **Eszközök hozzáadása**lehetőséget.
+3.  Megjelenik **az Eszközök hozzáadása** ablak. Válassza ki azokat az eszközöket, amelyek kapcsolódnak a talaj nedvességérzékelőihez a gazdaságban.
 
-    ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![Projekt Farm Beats](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
-4. Válassza az **eszközök hozzáadása**lehetőséget.     
+4. Válassza **az Eszközök hozzáadása**lehetőséget.     
 
-## <a name="generate-soil-moisture-heatmap"></a>Talaj nedvesség-hő előállítása
+## <a name="generate-soil-moisture-heatmap"></a>Termeljen talaj nedvesség heatmap
 
-Ez a lépés egy olyan feladatot vagy hosszan futó műveletet hoz létre, amely a farmhoz tartozó hő fog létrehozni.
+Ez a lépés az, hogy hozzon létre egy feladatot, vagy egy hosszú ideig futó művelet, amely létrehoz talaj nedvesség Heatmap a gazdaságban.
 
-1.  A kezdőlapon kattintson a **farmok** elemre a bal oldali navigációs menüből a farmok oldal megtekintéséhez.
+1.  A kezdőlapon a bal oldali navigációs menü **Farmjai** lapra lépve megtekintheti a farmok oldalát.
 2.  Válassza a **MyFarm**lehetőséget.
-3.  A **Farm részletei** lapon válassza a **pontos leképezés készítése**lehetőséget.
-4.  A legördülő menüben válassza a **talaj nedvesség**elemet.
-5.  A **talaj nedvességtartalma** ablakban válassza ki **ezt a hetet**.
-6.  A **felszín nedvesség** - **érzékelő kiválasztása mértéke**mezőben adja meg a térképhez használni kívánt mértéket.
-    Az érzékelő mértékének megkereséséhez a **szenzorokban**válassza ki a talaj nedvességtartalmának érzékelőjét. Az **érzékelő tulajdonságainál**használja a **mérték neve** értéket.
+3.  A **Farm részletei** lapon válassza **a Pontossági térkép létrehozása lehetőséget.**
+4.  A legördülő menüben válassza a **Talajnedvesség lehetőséget.**
+5.  A **Talajnedvesség** ablakban válassza **az Ezen a héten**lehetőséget.
+6.  A **Talajnedvesség-érzékelő kiválasztása** **mértékterületen**adja meg a térképhez használni kívánt mértéket.
+    Az érzékelő mértékének megkereséséhez az **Érzékelők**területen válassza ki a talaj nedvességérzékelőjét. Az **Érzékelő tulajdonságai párbeszédpanelen**használja a **Mértéknév** értéket.
 
-    ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
+    ![Projekt Farm Beats](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 
-7.  Válassza a **leképezések előállítása**lehetőséget.
-    Megjelenik egy megerősítő üzenet, amely a feladatok részleteit jeleníti meg. További információ: feladat állapota a feladatokban.
+7.  Válassza **a Térképek létrehozása**lehetőséget.
+    Megjelenik egy megerősítő üzenet a feladat részleteivel. További információ: Job Status in Jobs.
 
     >[!NOTE]
-    > A feladatokhoz három-négy óra szükséges.
+    > A munka körülbelül 3-4 órát vesz igénybe.
 
-### <a name="download-the-soil-moisture-heatmap"></a>A talaj nedvességtartalmának hő letöltése
+### <a name="download-the-soil-moisture-heatmap"></a>A talajnedvesség hőtérképének letöltése
 
 Ehhez a következő lépések szükségesek:
 
-1. A **feladatok** lapon tekintse meg az utolsó eljárás során létrehozott feladat **állapotát** .
-2. Ha a feladatok állapota **sikeres**, válassza a menü **térképek** elemét.
-3. Keresse meg a térképen a következő formátumban: < talaj-moisture_MyFarm_YYYY-hh-nn >.
-4. Válasszon ki egy térképet a **Name (név** ) oszlopban, megjelenik egy előugró ablak, amely a kiválasztott Térkép előnézetét jeleníti meg.
-5. Válassza a **Download** (Letöltés) lehetőséget. A Térkép le van töltve, és a számítógép helyi mappájába lesz tárolva.
+1. A **Feladatok** lapon ellenőrizze az utolsó eljárásban létrehozott feladat **feladatállapotát.**
+2. Ha a feladat állapota **sikeres,** válassza a **menü Térképek** parancsát.
+3. Keresse meg a térképet a létrehozása napján, <talaj-moisture_MyFarm_YYYY-MM-DD> formátumban.
+4. Jelöljön ki egy térképet a **Név** oszlopban, és egy előugró ablak jelenik meg a kijelölt térkép előnézetével.
+5. Válassza a **Download** (Letöltés) lehetőséget. A rendszer letölti és tárolja a számítógép helyi mappájában.
 
-    ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
+    ![Projekt Farm Beats](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy sikeresen létrehozta a talaj nedvességtartalmának hő, megtudhatja, hogyan [hozhatja létre az érzékelő elhelyezését](generate-maps-in-azure-farmbeats.md#sensor-placement-map) és hogyan végezheti el a [korábbi telemetria-információkat](ingest-historical-telemetry-data-in-azure-farmbeats.md) 
+Most, hogy sikeresen létrehozta a talajnedvesség-hőtérképet, ismerje meg, hogyan [hozhat létre érzékelőelhelyezést](generate-maps-in-azure-farmbeats.md#sensor-placement-map) és [korábbi telemetriai adatokat.](ingest-historical-telemetry-data-in-azure-farmbeats.md) 

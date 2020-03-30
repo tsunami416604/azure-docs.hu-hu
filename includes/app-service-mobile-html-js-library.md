@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: ff7ba04271c150018f2c55b62e40542a686608cf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179629"
 ---
-## <a name="create-client"></a>Ügyfélkapcsolat létrehozása
+## <a name="create-a-client-connection"></a><a name="create-client"></a>Ügyfélkapcsolat létrehozása
 Hozzon létre egy ügyfélkapcsolatot egy `WindowsAzure.MobileServiceClient` objektum létrehozásával.  Az `appUrl` helyére írja be mobilalkalmazása URL-címét.
 
 ```javascript
 var client = WindowsAzure.MobileServiceClient(appUrl);
 ```
 
-## <a name="table-reference"></a>Táblázatok használata
+## <a name="work-with-tables"></a><a name="table-reference"></a>Táblázatok használata
 Az adatok elérése vagy frissítése érdekében hozzon létre a háttértáblára mutató hivatkozást. A `tableName` helyére írja be a tábla nevét.
 
 ```javascript
@@ -35,7 +35,7 @@ Ha létrehozta a táblahivatkozást, további műveleteket végezhet a tábláva
 * [Adatok módosítása](#modifying)
 * [Adatok törlése](#deleting)
 
-### <a name="querying"></a>kézikönyv: Táblahivatkozás lekérdezése
+### <a name="how-to-query-a-table-reference"></a><a name="querying"></a>Útmutató: Táblahivatkozás lekérdezése
 Ha létrehozta a táblahivatkozást, adatokat kérhet le a segítségével a kiszolgálóról.  A lekérdezések egy, a LINQ-hez hasonló nyelv használatával végezhetőek el.
 A tábla összes adatának visszaadásához használja a következő kódot:
 
@@ -69,7 +69,7 @@ Ekkor a rendszer meghívja a success függvényt az eredményekkel együtt.  Ne 
 
 A lekérdezési szintaxissal kapcsolatos további információ: [Lekérdezésobjektum dokumentációja].
 
-#### <a name="table-filter"></a>A kiszolgálón lévő adatok szűrése
+#### <a name="filtering-data-on-the-server"></a><a name="table-filter"></a>A kiszolgálón lévő adatok szűrése
 A táblahivatkozáson használhatja a `where` záradékot:
 
 ```javascript
@@ -92,7 +92,7 @@ table
     .then(success, failure);
 ```
 
-#### <a name="table-paging"></a>Adatok lapozása
+#### <a name="paging-through-data"></a><a name="table-paging"></a>Adatlapozás
 Használja a `take()` és a `skip()` metódust.  Például ha 100 soros rekordokra szeretné felosztani a táblát:
 
 ```javascript
@@ -120,7 +120,7 @@ A `.includeTotalCount()` metódus hozzáadja a totalCount mezőt az eredményobj
 
 A pages változóval és a felhasználói felület egyes gombjaival oldallistát adhat meg. A `loadPage()` segítségével töltheti be az új rekordokat az egyes oldalakon.  Használjon gyorsítótárazást a már betöltött rekordok eléréséhez.
 
-#### <a name="sorting-data"></a>kézikönyv: Rendezett adatok visszaadása
+#### <a name="how-to-return-sorted-data"></a><a name="sorting-data"></a>Útmutató: Rendezett adatok visszaadása
 Használja az `.orderBy()` vagy az `.orderByDescending()` lekérdezési metódust:
 
 ```javascript
@@ -132,7 +132,7 @@ table
 
 A lekérdezési objektummal kapcsolatos további információ: [Lekérdezésobjektum dokumentációja].
 
-### <a name="inserting"></a>kézikönyv: Adat beszúrása
+### <a name="how-to-insert-data"></a><a name="inserting"></a>Útmutató: Adatok beszúrása
 Hozzon létre egy JavaScript-objektumot a megfelelő dátummal, és hívja meg a `table.insert()` függvényt aszinkrón módon:
 
 ```javascript
@@ -152,7 +152,7 @@ A sikeres beszúrás után a beszúrt elemet a rendszer visszaadja a szinkroniz�
 
 Az Azure Mobile Apps Node.js Server SDK támogatja a fejlesztési célra szolgáló dinamikus sémákat.  A dinamikus sémák lehetővé teszik, hogy oszlopokat adjon a táblához úgy, hogy megadja őket egy beszúrási vagy frissítési műveletben.  Javasoljuk a dinamikus sémák kikapcsolását az alkalmazás éles környezetbe helyezése előtt.
 
-### <a name="modifying"></a>kézikönyv: Adatok módosítása
+### <a name="how-to-modify-data"></a><a name="modifying"></a>Útmutató: Adatok módosítása
 Az `.insert()` metódushoz hasonlóan hozzon létre egy frissítési objektumot majd hívja meg a következőt: `.update()`.  A frissítési objektumnak tartalmaznia kell a frissíteni kívánt rekord azonosítóját – ez a rekord olvasásakor vagy az `.insert()` meghívásakor szerezhető meg.
 
 ```javascript
@@ -168,7 +168,7 @@ table
     }, failure);
 ```
 
-### <a name="deleting"></a>kézikönyv: Adat törlése
+### <a name="how-to-delete-data"></a><a name="deleting"></a>Útmutató: Adatok törlése
 Egy rekord törléséhez hívja meg a `.del()` metódust.  Adja át az azonosítót egy objektumhivatkozásban:
 
 ```javascript

@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 46cfb27b8bde95990d13ec4bca4e96f25cfe9dc5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179634"
 ---
-Miatt fejlesztést az Android Studióban telepített Android SDK-verzió nem egyeznek meg a verziót a kódban. Ebben az oktatóanyagban hivatkozott az Android SDK verziója 26., a legújabb írásának időpontjában. A verziószám növelhető, az SDK-t az új kiadásokkal jelenik meg, és a legújabb elérhető verzió használatát javasoljuk.
+A folyamatos fejlesztés miatt előfordulhat, hogy az Android Studio-ban telepített Android SDK-verzió nem egyezik meg a kódban megadott verzióval. Az Android SDK hivatkozott ez a bemutató a 26-os verzió, a legújabb idején írásban. A verziószám növekedhet az SDK új kiadásainak megjelenésével, és javasoljuk, hogy a legújabb verziót használja.
 
-Verzióeltérés két tünetei a következők:
+A verzióeltérés két tünete:
 
-- Amikor hozhat létre, vagy a projekt újraépítéséhez, például a Gradle-hibaüzenetek kaphat `Gradle sync failed: Failed to find target with hash string 'android-XX'`.
-- A kódot, amely kell feloldhatónak lennie szabványos Android objektumok alapján `import` utasítások előfordulhat, hogy generálása hibaüzenetek.
+- A projekt létrehozásakor vagy újraépítésekor a Gradle hibaüzeneteket kaphat, például `Gradle sync failed: Failed to find target with hash string 'android-XX'`a .
+- A kódban lévő szabványos Android-objektumok, amelyeket utasítások alapján `import` kell megoldani, hibaüzeneteket generálhatnak.
 
-Ha ezek akármelyike jelenik meg, a előfordulhat, hogy az Android SDK az Android Studióban telepített verziója nem egyezik a letöltött projektből SDK célja. A verzió ellenőrzéséhez a következő módosításokat:
+Ha ezek bármelyike megjelenik, előfordulhat, hogy az Android Studio-ban telepített Android SDK-verzió nem egyezik meg a letöltött projekt SDK-céljával. A verzió ellenőrzéséhez hajtsa végre a következő módosításokat:
 
-1. Az Android Studióban kattintson **eszközök** > **Android** > **SDK Manager**. Ha nem telepítette az SDK Platform legújabb verzióját, majd kattintson a telepítésre. Jegyezze fel a verziószám.
+1. Az Android Studio alkalmazásban kattintson **az Eszközök** > **az Android** > **SDK-kezelő elemre.** Ha még nem telepítette az SDK platform legújabb verzióját, kattintson rá a telepítéshez. Jegyezze fel a verziószámot.
 
-2. Az a **Project Explorer** lap **Gradle-szkriptek**, nyissa meg a fájlt **build.gradle (modul: alkalmazás)** . Ügyeljen arra, hogy a **compileSdkVersion** és **targetSdkVersion** vannak beállítva, hogy az SDK legfrissebb verzió van telepítve. A `build.gradle` ehhez hasonló lehet:
+2. A **Project Explorer** lap **Gradle-parancsfájlok**csoportjában nyissa meg a **build.gradle fájlt (Modul: alkalmazás)**. Győződjön meg arról, hogy a **compileSdkVersion** és **a targetSdkVersion** a telepített legújabb SDK-verzióra van beállítva. A `build.gradle` lehet, hogy így néz ki:
 
     ```gradle
     android {

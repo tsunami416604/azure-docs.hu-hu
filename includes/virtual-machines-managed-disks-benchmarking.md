@@ -9,114 +9,114 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67673366"
 ---
-*A gyorsítótár Bemelegedés*  
-A lemezt a csak olvasható állomás-gyorsítótárazás is biztosítanak a lemez korlátnál magasabb iops-t. A maximális olvasási teljesítmény eléréséhez a gazdagép-gyorsítótárból, először meg kell ízelítőt kapott a gyorsítótár a lemezről. Ez biztosítja, hogy az, hogy a teljesítménymérési eszköz CacheReads köteten vonják olvasási IOs ténylegesen eléri a gyorsítótár, és nem a lemezt közvetlenül. Az egyetlen gyorsítótár további IOPS gyorsítótár-találatok eredményez engedélyezve van a lemez.
+*A gyorsítótár bemelegítése*  
+A Csak olvasási állomásgyorsítótárazásával rendelkező lemez magasabb IOPS-t tud adni, mint a lemezkorlát. Ahhoz, hogy ezt a maximális olvasási teljesítményt a gazdagyorsítótárból lehessze, először be kell melegítenie a lemez gyorsítótárát. Ez biztosítja, hogy a read IOs, hogy a benchmarking eszköz fog vezetni cachereads kötet, ténylegesen eléri a gyorsítótárat, és nem a lemez közvetlenül. A gyorsítótár-lekérések további IOPS-t eredményeznek az egyetlen gyorsítótárban engedélyezett lemezről.
 
 > [!IMPORTANT]
-> A gyorsítótár futtatása, a teljesítmény mérésére, minden alkalommal, amikor a virtuális gép újraindítása előtt kell ízelítőt.
+> A teljesítményértékelés futtatása előtt be kell melegítenie a gyorsítótárat, minden alkalommal, amikor a virtuális gép újraindul.
 
 ## <a name="tools"></a>Eszközök
 
 ### <a name="iometer"></a>Iometer
 
-[Töltse le a Iometer eszközt](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) a virtuális gépen.
+[Töltse le az Iometer eszközt](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) a virtuális gépről.
 
-#### <a name="test-file"></a>Fájl tesztelése
+#### <a name="test-file"></a>Tesztfájl
 
-Iometer egy tesztfájlt, amely a köteten, amelyen a teljesítménymérési teszt futtatásakor használ. Ez olvasási meghajtók, és a fájl tesztelése és mérhető, a lemez írási IOPS és átviteli sebesség. Iometer a tesztfájlt hoz létre, ha nincs megadva, az egyik. Hozzon létre egy 200 GB-os tesztfájlt iobw.tst nevű CacheReads és NoCacheWrites kötetekre.
+Az Iometer egy tesztfájlt használ, amely azon a köteten van tárolva, amelyen a teljesítményértékelési tesztet futtatja. Ez a meghajtók olvasások és írások ezen a tesztfájlon a lemez IOPS és átviteli. Az Iometer létrehozza ezt a tesztfájlt, ha nem adott meg ilyenfájlt. Hozzon létre egy 200 GB-os tesztfájlt iobw.tst néven a CacheReads és a NoCacheWrites köteteken.
 
-#### <a name="access-specifications"></a>Access-leírások
+#### <a name="access-specifications"></a>Hozzáférési előírások
 
-A specifikációk kérés i/o-mérete, % olvasási/írási, % véletlenszerű/soros konfigurált Iometer "Access specifikációi" lapján. Hozzon létre egy hozzáférési leírása az alábbiakban leírt forgatókönyveket. Hozzon létre hozzáférés előírásoknak és "Mentés" megfelelő nevezze hasonlóan – RandomWrites\_8K RandomReads\_8 K. Válassza ki a megfelelő specifikáció, ha a vizsgálati eset futtatása.
+A specifikációk, a kérelem i/o-mérete, az olvasás/írás % százaléka, a véletlenszerű/szekvenciális % az Iometer "Hozzáférési specifikációk" lapján vannak konfigurálva. Hozzon létre egy hozzáférési specifikációt az alábbiakban ismertetett forgatókönyvekhez. Hozza létre a hozzáférési specifikációk és a "Mentés"\_a megfelelő\_nevet, mint a - RandomWrites 8K, RandomReads 8K. Válassza ki a megfelelő specifikációt a tesztforgatókönyv futtatásakor.
 
-Hozzáférés specifikációk maximális írási IOPS-forgatókönyvhöz példa az alábbi  
-    ![Hozzáférés specifikációk írási iops-t – példa](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
+A maximális írási IOPS-forgatókönyv hozzáférési specifikációinak egyik példája az alábbiakban látható:  
+    ![Példa a maximális írási IOPS hozzáférési specifikációira](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
 
-#### <a name="maximum-iops-test-specifications"></a>Maximális IOPS specifikációk tesztelése
+#### <a name="maximum-iops-test-specifications"></a>Maximális IOPS-vizsgálati specifikációk
 
-Maximális IOPs mutatja be, használja a kérést kisebb méretet. Használja a 8K kérés méretét, és hozzon létre a véletlenszerű írások és olvasások specifikációk.
+A maximális IPP-k bemutatásához használjon kisebb kérelemméretet. Használja a 8K kérelem méretét, és hozzon létre specifikációkat véletlenszerű írások és olvasások.
 
-| Hozzáférési leírása | Kérés mérete | Véletlenszerű % | Olvassa el a(z) % |
+| Hozzáférési specifikáció | A kérelem mérete | Véletlenszerű % | Olvasás % |
 | --- | --- | --- | --- |
-| RandomWrites\_8K |8K |100 |0 |
-| RandomReads\_8K |8K |100 |100 |
+| RandomWrites\_8K |8 E |100 |0 |
+| RandomReads\_8K |8 E |100 |100 |
 
-#### <a name="maximum-throughput-test-specifications"></a>Maximális átviteli sebesség tesztelése specifikációk
+#### <a name="maximum-throughput-test-specifications"></a>Maximális átviteli teszt specifikációk
 
-Maximális átviteli sebesség bemutatása érdekében használja a kérelem nagyobb méretű. 64 K kérés mérete használja, és a véletlenszerű írások és olvasások leírások létrehozásához.
+A maximális átviteli teljesítmény bemutatásához használjon nagyobb kérelemméretet. Használja a 64 K kérelem méretét, és hozzon létre specifikációkvéletlenszerű írások és olvasások.
 
-| Hozzáférési leírása | Kérés mérete | Véletlenszerű % | Olvassa el a(z) % |
+| Hozzáférési specifikáció | A kérelem mérete | Véletlenszerű % | Olvasás % |
 | --- | --- | --- | --- |
-| RandomWrites\_64 K |64 K |100 |0 |
-| RandomReads\_64K |64 K |100 |100 |
+| RandomWrites\_64K |64 Ezer |100 |0 |
+| RandomReads\_64K |64 Ezer |100 |100 |
 
-#### <a name="run-the-iometer-test"></a>A Iometer teszt futtatása
+#### <a name="run-the-iometer-test"></a>Az Iometer-teszt futtatása
 
-Hajtsa végre a gyorsítótár ízelítőt az alábbi lépéseket
+Hajtsa végre az alábbi lépéseket a gyorsítótár bemelegítéséhez
 
-1. Hozzon létre két hozzáférési specifikációk alább látható értékekkel
+1. Hozzon létre két hozzáférési specifikációt az alábbi értékekkel,
 
-   | Name (Név) | Kérés mérete | Véletlenszerű % | Olvassa el a(z) % |
+   | Név | A kérelem mérete | Véletlenszerű % | Olvasás % |
    | --- | --- | --- | --- |
-   | RandomWrites\_1 MB |1 MB |100 |0 |
-   | RandomReads\_1 MB |1 MB |100 |100 |
-1. Futtassa a következő paraméterekkel gyorsítótárlemez inicializálása Iometer tesztet. Három munkaszálak használata a célkötet és a egy várólistamélység 128. A teszt "Futási idő" időtartamának beállítása: 2 óra "Beállítás tesztelése" lapon.
+   | RandomWrites\_1MB |1 MB |100 |0 |
+   | RandomReads\_1MB |1 MB |100 |100 |
+1. Futtassa az Iometer-tesztet a gyorsítótár lemezinicializálásához a következő paraméterekkel. A célkötethez három munkavégző szálat és 128-as várólista-mélységet használjon. Állítsa a "Futási idő" időtartamát a teszt 2 óra a "Teszt beállítása" lapon.
 
-   | Forgatókönyv | Célkötet | Name (Név) | Duration |
+   | Forgatókönyv | Célmennyiség | Név | Időtartam |
    | --- | --- | --- | --- |
-   | Gyorsítótárlemez inicializálása |CacheReads |RandomWrites\_1 MB |2 óra |
-1. Futtassa a következő paraméterekkel gyorsítótárlemez Bemelegedés Iometer tesztet. Három munkaszálak használata a célkötet és a egy várólistamélység 128. A teszt "Futási idő" időtartamának beállítása: 2 óra "Beállítás tesztelése" lapon.
+   | Gyorsítótárlemez inicializálása |Gyorsítótárolvasások |RandomWrites\_1MB |2 óra |
+1. Futtassa az Iometer tesztet a gyorsítótár-lemez következő paraméterekkel való bemelegítéséhez. A célkötethez három munkavégző szálat és 128-as várólista-mélységet használjon. Állítsa a "Futási idő" időtartamát a teszt 2 óra a "Teszt beállítása" lapon.
 
-   | Forgatókönyv | Célkötet | Name (Név) | Duration |
+   | Forgatókönyv | Célmennyiség | Név | Időtartam |
    | --- | --- | --- | --- |
-   | Meleg Gyorsítótárlemez mentése |CacheReads |RandomReads\_1 MB |2 óra |
+   | Bemelegedési gyorsítótárlemez |Gyorsítótárolvasások |RandomReads\_1MB |2 óra |
 
-Után gyorsítótárlemez bemelegíteni van, folytassa az alább felsorolt tesztcélú forgatókönyveket. A Iometer teszt futtatásához használja legalább három feldolgozó szálak **egyes** mennyiségi cél. Az egyes munkavégző szál válassza ki a célkötet, várólistamélységének beállítása, és válasszon a mentett teszt előírások, ahogyan az az alábbi táblázat a megfelelő vizsgálati eset futtatása. Ezek a tesztek futtatása a táblázatban is látható várt eredmény IOPS és átviteli sebességet. Minden esetben egy kis méretű i/o 8 KB-os és a egy 128 magas várólistamélység szolgál.
+A gyorsítótár-lemez bemelegedése után folytassa az alább felsorolt tesztforgatókönyvekkel. Az Iometer-teszt futtatásához **használjon** legalább három munkavégző szálat minden célkötethez. Minden munkaszálhoz válassza ki a célkötetet, állítsa be a várólista mélységét, és válassza ki az alábbi táblázatban látható mentett tesztspecifikációk egyikét a megfelelő tesztforgatókönyv futtatásához. A táblázat is mutatja a várt eredményeket az IOPS és az átviteli eredmények a tesztek futtatásakor. Minden esetben egy kis I/O-mérete 8 KB és a magas várólista mélysége 128.
 
-| Tesztkörnyezet | Célkötet | Name (Név) | Eredmény |
+| Tesztforgatókönyv | Célmennyiség | Név | Eredmény |
 | --- | --- | --- | --- |
-| Legfeljebb Olvasási iops-érték |CacheReads |RandomWrites\_8K |50 000 IOPS-ÉRTÉK |
-| Legfeljebb Az írási IOPS |NoCacheWrites |RandomReads\_8K |AKÁR 64 000 IOPS-ÉRTÉK |
-| Legfeljebb Kombinált IOPS |CacheReads |RandomWrites\_8K |100 000 IOPS-ÉRTÉK |
+| Legfeljebb IOPS olvasása |Gyorsítótárolvasások |RandomWrites\_8K |50 000 IOPS |
+| Legfeljebb IOPS írása |NoCacheWrites |RandomReads\_8K |64 000 IOPS |
+| Legfeljebb Kombinált IOPS |Gyorsítótárolvasások |RandomWrites\_8K |100 000 IOPS |
 | NoCacheWrites |RandomReads\_8K | &nbsp; | &nbsp; |
-| Legfeljebb Read MB/sec |CacheReads |RandomWrites\_64 K |524 MB/mp |
-| Legfeljebb MB/mp/írás |NoCacheWrites |RandomReads\_64K |524 MB/mp |
-| Kombinált MB/mp |CacheReads |RandomWrites\_64 K |1000 MB/mp |
+| Legfeljebb Mb/mp olvasása |Gyorsítótárolvasások |RandomWrites\_64K |524 MB/mp |
+| Legfeljebb Írás MB/mp |NoCacheWrites |RandomReads\_64K |524 MB/mp |
+| Kombinált MB/mp |Gyorsítótárolvasások |RandomWrites\_64K |1000 MB/mp |
 | NoCacheWrites |RandomReads\_64K | &nbsp; | &nbsp; |
 
-Az alábbiakban a Iometer pillanatképeiért teszteredmények kombinált IOPS és átviteli sebesség forgatókönyvekhez.
+Az alábbiakban az Iometer teszteredményeinek képernyőképei taszanak le a kombinált IOPS- és átviteli forgatókönyvekhez.
 
-#### <a name="combined-reads-and-writes-maximum-iops"></a>Kombinált olvasási és írási maximális iops-érték
+#### <a name="combined-reads-and-writes-maximum-iops"></a>Kombinált olvasási és írási maximális IOPS
 
-![Egyesített írási és olvasási maximális iops-érték](../articles/virtual-machines/linux/media/premium-storage-performance/image9.png)
+![Kombinált olvasásés írás maximális IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image9.png)
 
-#### <a name="combined-reads-and-writes-maximum-throughput"></a>Kombinált olvasási és írási maximális átviteli sebesség
+#### <a name="combined-reads-and-writes-maximum-throughput"></a>Kombinált olvasási és írási maximális átviteli teljesítmény
 
-![Egyesített írási és olvasási maximális átviteli sebesség](../articles/virtual-machines/linux/media/premium-storage-performance/image10.png)
+![Kombinált olvasások és írások maximális átviteli](../articles/virtual-machines/linux/media/premium-storage-performance/image10.png)
 
 ### <a name="fio"></a>FIO
 
-FIO egy olyan népszerű eszköz a teljesítményteszt storage a Linuxos virtuális gépeken. Azt a rugalmasságot, jelölje be a különböző IO méretű, egymást követő vagy véletlenszerű olvasást, és írja. Ez indít a munkaszálak vagy folyamatok a megadott i/o-műveletek végrehajtásához. Megadhatja az egyes munkavégző szál feladat fájlok használatával kell végrehajtania i/o-műveletek típusa. Létrehoztunk egy feladat-fájlt az alábbi példákban szemléltetett forgatókönyv szerint. A feladat fájlokban becslésére a Premium Storage futó különböző számítási feladatok specifikációit módosíthatja. Standard DS 14 virtuális gép futó használjuk a példákban **Ubuntu**. Telepítőjével az ugyanazon a Benchmarking szakasz elején leírt és a meleg fel a gyorsítótárat a teljesítménymérési tesztek futtatása előtt.
+Fio egy népszerű eszköz a linuxos virtuális gépek tárolásának teljesítményértékelésére. Rugalmasan választhatja ki a különböző I/O-méreteket, szekvenciális vagy véletlenszerű olvasásokat és írásokat. Munkaszálakat vagy folyamatokat hoz létre a megadott I/O-műveletek végrehajtásához. Megadhatja, hogy az egyes munkaszálaknak milyen típusú I/O-műveleteket kell végrehajtaniuk a feladatfájlok használatával. Az alábbi példákban bemutatott forgatókönyvenként egy feladatfájlt hoztunk létre. Módosíthatja a specifikációk ezekben a feladatfájlokban a prémium szintű storage-on futó különböző számítási feladatok teljesítményének. A példákban egy **Ubuntut**futtató szabványos DS 14 VM-et használunk. Használja ugyanazt a beállítást, amelyet a Teljesítménypontozás szakasz elején ismertetett, és a teljesítményteszt-tesztek futtatása előtt melegítse be a gyorsítótárat.
 
-Mielőtt elkezdené, [FIO letöltése](https://github.com/axboe/fio) , és telepítse a virtuális gépen.
+Mielőtt elkezdené, [töltse le a FIO-t,](https://github.com/axboe/fio) és telepítse a virtuális gépre.
 
-Futtassa a következő parancsot az Ubuntu rendszeren
+Futtassa a következő parancsot az Ubuntuhoz,
 
 ```
 apt-get install fio
 ```
 
-Írási műveletek a négy munkaszálak és négy munkaszálak használunk a lemezeken környezetbarát olvasási művelet. Az írási feldolgozók biztosítják a forgalmat a "nocache" köteten lévő, az értéke "Nincs" cache 10 lemezzel rendelkezik. Az olvasási feldolgozók biztosítják a forgalmat a "readcache" köteten, amely rendelkezik egy lemezt a gyorsítótár beállítása "Csak olvasható".
+Négy munkaszálat használunk az írási műveletek vezetéséhez, és négy munkaszálat az olvasási műveletek lemezen történő vezetéséhez. Az írási dolgozók forgalmat generálnak a "nocache" köteten, amely 10 lemezt állít be "Nincs" gyorsítótárral. Az olvasási dolgozók forgalmat generálnak a "readcache" köteten, amelynek egyik lemeze "Csak olvasás" lett.
 
-#### <a name="maximum-write-iops"></a>Maximális írási iops-érték
+#### <a name="maximum-write-iops"></a>Írási IOPS maximális
 
-Hozzon létre következő előírásoknak írási IOPS maximális beolvasni a feladat-fájlt. Nevezze el "fiowrite.ini".
+Hozza létre a feladatfájlt a következő specifikációkkal a maximális írási IOPS leértékeléshez. Nevezd el "fiowrite.ini"-nek.
 
 ```ini
 [global]
@@ -140,24 +140,24 @@ rw=randwrite
 directory=/mnt/nocache
 ```
 
-Vegye figyelembe a következő főbb dolog, amely a korábbi szakaszokban ismertetett tervezési útmutató összhangban legyenek. Ezek a specifikációk nélkülözhetetlenek maximális IOPS-meghajtó  
+Vegye figyelembe az alábbi kulcsfontosságú dolgokat, amelyek összhangban vannak az előző szakaszokban tárgyalt tervezési irányelvekkel. Ezek a specifikációk elengedhetetlenek a maximális IOPS  
 
-* Egy 256 magas várólista mélységét.  
-* Kis blokkméret 8 KB-os.  
-* Véletlenszerű írások végrehajtása több szálon.
+* A magas sormélység 256.  
+* Egy kis blokk mérete 8 KB.  
+* Több szál, amelyek véletlenszerű írásokat hajtanak végre.
 
-Futtassa a következő parancsot a FIO teszt 30 másodpercig elindítson  
+Futtassa a következő parancsot a FIO teszt 30 másodpercre való  
 
 ```
 sudo fio --runtime 30 fiowrite.ini
 ```
 
-A vizsgálat fut, amíg Ön száma írási iops-t a virtuális gép és a prémium szintű lemezek kézbesítéséhez. Az alábbi példában látható módon a DS14 VM elkötelezett az írási iops-érték 50 000 IOPS-korlátját.  
-    ![Az írási IOPS-VM és a prémium szintű lemezek gyártanak száma](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
+Ateszt futása közben láthatja a virtuális gép és a prémium szintű lemezek által kézbesített írási IOPS számát. Amint az alábbi mintában látható, a DS14 virtuális gép a maximális 50 000 IOPS-írási IOPS-korlátot biztosítja.  
+    ![Az írási IOPS virtuális gépek és a prémium szintű lemezek száma](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
 
-#### <a name="maximum-read-iops"></a>Maximális iops-érték olvasása
+#### <a name="maximum-read-iops"></a>Maximális olvasási IOPS
 
-Hozzon létre a feladat-fájlt az alábbi előírások beolvasni a maximális olvasási iops-t. Nevezze el "fioread.ini".
+Hozza létre a feladatfájlt a következő specifikációkkal a maximális olvasási IOPS leolvasásához. Nevezd el "fioread.ini"-nek.
 
 ```ini
 [global]
@@ -181,24 +181,24 @@ rw=randread
 directory=/mnt/readcache
 ```
 
-Vegye figyelembe a következő főbb dolog, amely a korábbi szakaszokban ismertetett tervezési útmutató összhangban legyenek. Ezek a specifikációk nélkülözhetetlenek maximális IOPS-meghajtó
+Vegye figyelembe az alábbi kulcsfontosságú dolgokat, amelyek összhangban vannak az előző szakaszokban tárgyalt tervezési irányelvekkel. Ezek a specifikációk elengedhetetlenek a maximális IOPS
 
-* Egy 256 magas várólista mélységét.  
-* Kis blokkméret 8 KB-os.  
-* Véletlenszerű írások végrehajtása több szálon.
+* A magas sormélység 256.  
+* Egy kis blokk mérete 8 KB.  
+* Több szál, amelyek véletlenszerű írásokat hajtanak végre.
 
-Futtassa a következő parancsot a FIO teszt 30 másodpercig elindítson
+Futtassa a következő parancsot a FIO teszt 30 másodpercre való
 
 ```
 sudo fio --runtime 30 fioread.ini
 ```
 
-A vizsgálat fut, amíg Ön száma olvasási iops-t a virtuális gép és a prémium szintű lemezek kézbesítéséhez. Ahogy az alábbi példában is látható, a DS14 VM elkötelezett olvasási több mint 64 000 IOPS. Ez az a lemez és a gyorsítótár teljesítménye.  
+Ateszt futása közben láthatja a virtuális gép és a prémium szintű lemezek által kézbesített olvasási IOPS számát. Amint az alábbi mintában látható, a DS14 virtuális gép több mint 64 000 olvasási IOPS-t szállít. Ez a lemez és a gyorsítótár teljesítményének kombinációja.  
     ![](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
 
-#### <a name="maximum-read-and-write-iops"></a>Maximális olvasási és írási iops-érték
+#### <a name="maximum-read-and-write-iops"></a>Maximális olvasási és írási IOPS
 
-A feladat-fájlt létrehozni a következő beolvasni a maximális előírások együttesen olvasási és írási iops-t. Nevezze el "fioreadwrite.ini".
+Hozza létre a feladatfájlt a következő specifikációkkal, hogy maximális kombinált olvasási és írási IOPS.Create the job file with following specifications to get maximum combined Read and Write IOPS. Nevezd el "fioreadwrite.ini"-nek.
 
 ```ini
 [global]
@@ -239,21 +239,21 @@ directory=/mnt/nocache
 rate_iops=12500
 ```
 
-Vegye figyelembe a következő főbb dolog, amely a korábbi szakaszokban ismertetett tervezési útmutató összhangban legyenek. Ezek a specifikációk nélkülözhetetlenek maximális IOPS-meghajtó
+Vegye figyelembe az alábbi kulcsfontosságú dolgokat, amelyek összhangban vannak az előző szakaszokban tárgyalt tervezési irányelvekkel. Ezek a specifikációk elengedhetetlenek a maximális IOPS
 
-* Magas várólista mélysége 128.  
-* Kis blokkméret 4 KB-os.  
-* Több szál végrehajtása véletlenszerű olvassa be és ír.
+* A magas sormélység 128.  
+* Egy kis blokk mérete 4 KB.  
+* Több szál, amelyek véletlenszerű olvasást és írást végeznek.
 
-Futtassa a következő parancsot a FIO teszt 30 másodpercig elindítson
+Futtassa a következő parancsot a FIO teszt 30 másodpercre való
 
 ```
 sudo fio --runtime 30 fioreadwrite.ini
 ```
 
-Bár a vizsgálat fut, tekintsük meg összesített olvasási és írási iops-t a virtuális gép és prémium szintű lemezek kézbesítéséhez. Ahogy az alábbi példában is látható, a DS14 VM elkötelezett kombinált több mint 100 000 olvasási és írási iops-érték. Ez az a lemez és a gyorsítótár teljesítménye.  
-    ![Kombinált olvasási és írási iops-érték](../articles/virtual-machines/linux/media/premium-storage-performance/image13.png)
+Ateszt futása közben láthatja a virtuális gép és a prémium szintű lemezek által szállított kombinált olvasási és írási IOPS-t. Amint az alábbi mintában látható, a DS14 virtuális gép több mint 100 000 kombinált olvasási és írási IOPS-t szállít. Ez a lemez és a gyorsítótár teljesítményének kombinációja.  
+    ![Kombinált olvasási és írási IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image13.png)
 
-#### <a name="maximum-combined-throughput"></a>Maximális összesített átviteli sebesség
+#### <a name="maximum-combined-throughput"></a>Maximális kombinált átviteli teljesítmény
 
-Beolvasni a maximális kombinált olvasási és írási teljesítményt, a nagyobb blokkméret és nagy várólistamélységének használata az olvasások és írások végrehajtása több szálon. A 64 KB-os blokkméret és 128 várólistamélység is használhatja.
+A maximális kombinált olvasási és írási átviteli teljesítmény eléréséhez használjon nagyobb blokkméretet és nagy várólistamélységet több írási és írási műveletet végző szállal. 64 KB-os blokkméretet és 128-as várólista-mélységet használhat.

@@ -1,6 +1,6 @@
 ---
-title: A hálózati házirend-kiszolgáló integrálása VPN Gateway RADIUS-hitelesítéssel MFA-hoz
-description: Leírja, hogyan integrálható az Azure Gateway RADIUS-hitelesítés az NPS-kiszolgálóval a Multi-Factor Authenticationhoz.
+title: Hálózati kiszolgáló integrálása VPN-átjáró RADIUS-hitelesítésével az MFA-hoz
+description: Ez a témakör az Azure gateway RADIUS-hitelesítés integrálását ismerteti a hálózati kiszolgálóval a többtényezős hitelesítéshez.
 services: vpn-gateway
 documentationcenter: na
 author: ahmadnyasin
@@ -16,70 +16,70 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
 ms.openlocfilehash: 941b6ac86941824351f83592998e8735e3eb8ee5
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75780368"
 ---
-# <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Az Azure VPN Gateway RADIUS-hitelesítésének integrálása az NPS-kiszolgálóval Multi-Factor Authentication 
+# <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Az Azure VPN-átjáró RADIUS-hitelesítésének integrálása hálózati kiszolgálóval a többtényezős hitelesítéshez 
 
-A cikk azt ismerteti, hogyan integrálható a hálózati házirend-kiszolgáló (NPS) az Azure VPN Gateway RADIUS-hitelesítéssel a Multi-Factor Authentication (MFA) pont – hely típusú VPN-kapcsolatokhoz való továbbításához. 
+A cikk ismerteti, hogyan integrálható a hálózati házirend-kiszolgáló (NPS) az Azure VPN-átjáró RADIUS-hitelesítéssel a többtényezős hitelesítés (MFA) biztosításához a pont-hely VPN-kapcsolatokhoz. 
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-Az MFA engedélyezéséhez a felhasználóknak Azure Active Directory (Azure AD) szolgáltatásban kell lenniük, amelyet a helyszíni vagy a felhőalapú környezetből kell szinkronizálni. Emellett a felhasználónak már el kell végeznie az automatikus regisztrálási folyamatot az MFA-hoz.  További információ: [saját fiók beállítása kétlépéses ellenőrzéshez](../active-directory/user-help/multi-factor-authentication-end-user-first-time.md)
+Az MFA engedélyezéséhez a felhasználóknak az Azure Active Directoryban (Azure AD) kell lenniük, amelyet a helyszíni vagy a felhőbeli környezetből kell szinkronizálni. Emellett a felhasználónak már be kell fejeznie az MFA automatikus igénylési folyamatát.  További információ: [A fiókom beállítása kétlépéses ellenőrzéshez című témakörben](../active-directory/user-help/multi-factor-authentication-end-user-first-time.md) talál.
 
 ## <a name="detailed-steps"></a>Részletes lépések
 
-### <a name="step-1-create-a-virtual-network-gateway"></a>1\. lépés: virtuális hálózati átjáró létrehozása
+### <a name="step-1-create-a-virtual-network-gateway"></a>1. lépés: Virtuális hálózati átjáró létrehozása
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-2. A virtuális hálózati átjárót futtató virtuális hálózaton válassza az **alhálózatok**lehetőséget, majd válassza az **átjáró alhálózatot** az alhálózat létrehozásához. 
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+2. A virtuális hálózati átjárót üzemeltető virtuális hálózatban válassza az **Alhálózatok**lehetőséget, majd az **Átjáró alhálózat** ot az alhálózat létrehozásához. 
 
-    ![Az átjáró-alhálózat hozzáadásának képe](./media/vpn-gateway-radiuis-mfa-nsp/gateway-subnet.png)
+    ![Az átjáró alhálózatának hozzáadásáról szóló kép](./media/vpn-gateway-radiuis-mfa-nsp/gateway-subnet.png)
 3. Hozzon létre egy virtuális hálózati átjárót a következő beállítások megadásával:
 
     - **Átjáró típusa**: válassza ki a **VPN** elemet.
-    - **VPN típusa**: válassza az **útvonal-alapú**lehetőséget.
-    - **SKU**: válasszon SKU-típust a követelmények alapján.
-    - **Virtuális hálózat**: válassza ki azt a virtuális hálózatot, amelyben létrehozta az átjáró-alhálózatot.
+    - **VPN-típus**: Válassza **az Útvonal alapú**lehetőséget.
+    - **Termékváltozat:** Válasszon termékváltozat-típust a követelmények alapján.
+    - **Virtuális hálózat**: Válassza ki azt a virtuális hálózatot, amelyben létrehozta az átjáró alhálózatot.
 
-        ![A virtuális hálózati átjáró beállításaival kapcsolatos rendszerkép](./media/vpn-gateway-radiuis-mfa-nsp/create-vpn-gateway.png)
+        ![A virtuális hálózati átjáró beállításairól szóló kép](./media/vpn-gateway-radiuis-mfa-nsp/create-vpn-gateway.png)
 
-
- 
-### <a name="step-2-configure-the-nps-for-azure-mfa"></a>2\. lépés: a hálózati házirend-kiszolgáló konfigurálása az Azure MFA-hoz
-
-1. Az NPS-kiszolgálón [telepítse az Azure MFA NPS-bővítményét](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
-2. Nyissa meg az NPS-konzolt, kattintson a jobb gombbal a **RADIUS-ügyfelek**elemre, majd válassza az **új**lehetőséget. Hozza létre a RADIUS-ügyfelet a következő beállítások megadásával:
-
-    - **Felhasználóbarát név**: írjon be bármilyen nevet.
-    - **Cím (IP vagy DNS)** : írja be az 1. lépésben létrehozott átjáró-alhálózatot.
-    - **Közös titok**: írjon be bármilyen titkos kulcsot, és jegyezze fel későbbi használatra.
-
-      ![A RADIUS-ügyfél beállításaival kapcsolatos rendszerkép](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
-3.  A **speciális** lapon állítsa be a szállító nevét a **RADIUS standard** értékre, és győződjön meg arról, hogy a **További beállítások** jelölőnégyzet be van jelölve.
+### <a name="step-2-configure-the-nps-for-azure-mfa"></a>2. lépés A hálózati kiszolgáló konfigurálása az Azure MFA-hoz
 
-    ![A RADIUS-ügyfél speciális beállításaival kapcsolatos rendszerkép](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
+1. A n-ps-kiszolgálón [telepítse a nps bővítményt az Azure MFA.](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension)
+2. Nyissa meg a nps konzolt, kattintson a jobb gombbal **a RADIUS-ügyfelek**elemre, és válassza az **Új parancsot.** Hozza létre a RADIUS-ügyfelet a következő beállítások megadásával:
 
-4. Lépjen a **házirendek** > **hálózati házirendek**elemre, és kattintson duplán **a kapcsolatok a Microsoft Útválasztás és távelérési kiszolgáló** házirendjéhez lehetőségre, válassza a **hozzáférés engedélyezése**lehetőséget, majd kattintson **az OK**gombra.
+    - **Rövid név**: Írjon be bármilyen nevet.
+    - **Cím (IP vagy DNS)**: Írja be az 1.
+    - **Megosztott titok:** írjon be bármilyen titkos kulcsot, és jegyezze meg későbbi használatra.
 
-### <a name="step-3-configure-the-virtual-network-gateway"></a>3\. lépés a virtuális hálózati átjáró konfigurálása
+      ![A RADIUS-ügyfél beállításairól szóló kép](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
-1. Jelentkezzen be [Azure Portalra](https://portal.azure.com).
-2. Nyissa meg a létrehozott virtuális hálózati átjárót. Győződjön meg arról, hogy az átjáró típusa **VPN** , és hogy a VPN-típus **Route-alapú**.
-3. Kattintson a **pont – hely konfiguráció** > **Konfigurálás most**lehetőségre, majd adja meg a következő beállításokat:
+ 
+3.  A **Speciális** lapon állítsa a szállító nevét **RADIUS-szabványra,** és győződjön meg arról, hogy a **További beállítások** jelölőnégyzet nincs bejelölve.
 
-    - **Címkészlet**: írja be az 1. lépésben létrehozott átjáró-alhálózatot.
-    - **Hitelesítés típusa**: válassza a **RADIUS-hitelesítés**lehetőséget.
-    - **Kiszolgáló IP-címe**: írja be az NPS-kiszolgáló IP-címét.
+    ![A RADIUS-ügyfél speciális beállításairól szóló kép](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
-      ![A helyről a hely beállításaira mutató rendszerkép](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
+4. Nyissa meg **a Házirendek** > **hálózati házirendek című**lehetőséget, kattintson duplán a Kapcsolatok a Microsoft **Útválasztás és távelérés kiszolgálóhoz** házirendre, válassza a Hozzáférés **megadása**lehetőséget, majd kattintson **az OK**gombra.
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="step-3-configure-the-virtual-network-gateway"></a>3. lépés A virtuális hálózati átjáró konfigurálása
 
-- [Azure-Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+2. Nyissa meg a létrehozott virtuális hálózati átjárót. Győződjön meg arról, hogy az átjáró típusa **VPN-re** van állítva, és hogy a **VPN-típus útvonalalapú.**
+3. Kattintson **a Pont a hely hez beállítás** > **most gombra,** majd adja meg a következő beállításokat:
+
+    - **Címkészlet**: Írja be az 1.
+    - **Hitelesítés típusa**: Válassza a **RADIUS-hitelesítés lehetőséget.**
+    - **Kiszolgáló IP-címe**: Írja be a nps-kiszolgáló IP-címét.
+
+      ![A webhely beállításairól szóló kép](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
+
+## <a name="next-steps"></a>További lépések
+
+- [Azure többtényezős hitelesítés](../active-directory/authentication/multi-factor-authentication.md)
 - [Meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure Multi-Factor Authenticationnel](../active-directory/authentication/howto-mfa-nps-extension.md)

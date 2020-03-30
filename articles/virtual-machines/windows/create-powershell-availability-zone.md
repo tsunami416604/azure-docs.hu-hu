@@ -1,5 +1,5 @@
 ---
-title: Zónában lévő Windows rendszerű virtuális gép létrehozása – Azure PowerShell
+title: Zónás Windows virtuális gép létrehozása – Azure PowerShell
 description: Windows rendszerű virtuális gép létrehozása egy rendelkezésre állási zónában az Azure PowerShell használatával
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: 5cecc6e43dfeda3838ae52fdd0c028a7739ff227
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75497943"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Windows rendszerű virtuális gép létrehozása egy rendelkezésre állási zónában a PowerShell használatával
@@ -41,7 +41,7 @@ Connect-AzAccount
 ## <a name="check-vm-sku-availability"></a>A VM-termékváltozatok rendelkezésre állásának ellenőrzése
 A virtuális gépek méretének vagy termékváltozatainak rendelkezésre állása régiónként és zónánként eltérhet. Ha fel szeretne készülni a rendelkezésre állási zónák használatára, megtekintheti a virtuális gépek termékváltozatainak listáját Azure-régió és zóna szerint. Ezáltal megfelelő virtuálisgép-méretet választhat, valamint biztosíthatja a zónák közötti rugalmasság kívánt szintjét. További információ a virtuális gépek különböző típusairól és méreteiről: [Virtuálisgép-méretek – áttekintés](sizes.md).
 
-Az elérhető virtuálisgép-SKU-ket a [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) paranccsal tekintheti meg. Az alábbi példa az *eastus2* régióban található virtuális gépek elérhető termékváltozatait listázza:
+A [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) paranccsal megtekintheti a rendelkezésre álló virtuálisgép-termékváltozatokat. Az alábbi példa az *eastus2* régióban található virtuális gépek elérhető termékváltozatait listázza:
 
 ```powershell
 Get-AzComputeResourceSku | where {$_.Locations.Contains("eastus2")};
@@ -68,7 +68,7 @@ virtualMachines   Standard_E4_v3   eastus2  {1, 2, 3}
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot hozunk létre az *eastus2* régióban. 
+Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup segítségével.](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot hozunk létre az *eastus2* régióban. 
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location EastUS2
@@ -112,7 +112,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName myResourceGroup -Location e
 ```
 
 ### <a name="create-a-network-card-for-the-virtual-machine"></a>Hálózati kártya létrehozása a virtuális géphez 
-Hozzon létre egy hálózati kártyát a [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) a virtuális géphez. A hálózati kártya csatlakoztatja a virtuális gépet egy alhálózathoz, egy hálózati biztonsági csoporthoz és egy nyilvános IP-címhez.
+Hozzon létre egy hálózati kártyát a [New-AzNetworkInterface-rel](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) a virtuális géphez. A hálózati kártya csatlakoztatja a virtuális gépet egy alhálózathoz, egy hálózati biztonsági csoporthoz és egy nyilvános IP-címhez.
 
 ```powershell
 # Create a virtual network card and associate with public IP address and NSG
@@ -135,7 +135,7 @@ $vmConfig = New-AzVMConfig -VMName myVM -VMSize Standard_DS1_v2 -Zone 2 | `
     -Skus 2016-Datacenter -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
 ```
 
-Hozza létre a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm).
+Hozza létre a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)segítségével.
 
 ```powershell
 New-AzVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
@@ -143,7 +143,7 @@ New-AzVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
 
 ## <a name="confirm-zone-for-managed-disk"></a>Felügyelt lemez zónájának megerősítése
 
-A virtuális gép IP-címerőforrását ugyanabban a rendelkezésre állási zónában hozta létre, mint a virtuális gépet. A virtuális gép felügyeltlemez-erőforrása ugyanebben a rendelkezésre állási zónában jött létre. Ezt a [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)segítségével ellenőrizheti:
+A virtuális gép IP-címerőforrását ugyanabban a rendelkezésre állási zónában hozta létre, mint a virtuális gépet. A virtuális gép felügyeltlemez-erőforrása ugyanebben a rendelkezésre állási zónában jött létre. Ezt a [Get-AzDisk segítségével](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)ellenőrizheti:
 
 ```powershell
 Get-AzDisk -ResourceGroupName myResourceGroup
@@ -175,6 +175,6 @@ Tags               : {}
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebből a cikkből megtudhatta, hogyan hozható létre virtuális gép egy rendelkezésre állási zónában. További információ az Azure-beli virtuális gépek [rendelkezésre állásáról](availability.md) .
+Ebből a cikkből megtudhatta, hogyan hozható létre virtuális gép egy rendelkezésre állási zónában. További információ az Azure-beli virtuális gépek [elérhetőségéről.](availability.md)

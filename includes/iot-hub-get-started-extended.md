@@ -9,27 +9,27 @@ ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: bd08812f83413a997ce655d68d866b145b20dcef
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75912507"
 ---
 ## <a name="extended-iot-scenarios"></a>Bővített IoT-forgatókönyvek
 
 Más Azure-szolgáltatásokat és -eszközöket is használhat. Miután csatlakoztatta eszközét az IoT Hubhoz, további forgatókönyveket tekinthet át, amelyek más Azure-eszközöket és -szolgáltatásokat használnak:
 
-| Alkalmazási helyzet                                                   | Azure-szolgáltatás vagy -eszköz              |
+| Forgatókönyv                                                   | Azure-szolgáltatás vagy -eszköz              |
 |----------------------------------------------------------- |------------------------------------|
-| [IoT Hub üzenetek kezelése](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | VS Code Azure IoT Hub bővítmény|
-| [IoT-eszköz kezelése](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Az Azure CLI és a IoT bővítmény    |
-| [IoT-eszköz kezelése](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | VS Code Azure IoT Hub bővítmény|
-| [IoT Hub üzenetek mentése az Azure Storage-ba](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)  | Azure Table Storage                |
-| [Érzékelők adatmegjelenítése](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)                      | Microsoft Power BI                 |
-| [Érzékelők adatmegjelenítése](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure Web Apps                     |
-| [Előrejelzési idő érzékelőkkel](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)      | Azure Machine Learning             |
-| [Automatikus anomáliák észlelése és reakciója](../articles/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md) | Azure Logic Apps                   |
+| [IoT Hub-üzenetek kezelése](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | VS Code Azure IoT Hub bővítmény|
+| [IoT-eszközök felügyelete](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Az Azure CLI és az IoT-bővítmény    |
+| [IoT-eszközök felügyelete](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | VS Code Azure IoT Hub bővítmény|
+| [IoT Hub-üzenetek mentése Azure-tárolóba](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)  | Azure Table Storage                |
+| [Érzékelőadatok megjelenítése](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)                      | Microsoft Power BI                 |
+| [Érzékelőadatok megjelenítése](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure Web Apps                     |
+| [Időjárás-előrejelzés érzékelőadatokkal](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)      | Azure Machine Learning             |
+| [Rendellenességek automatikus észlelése és reagálás](../articles/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md) | Azure Logic Apps                   |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha elvégezte az oktatóanyagokat, a [Fejlesztői útmutatóban](../articles/iot-hub/iot-hub-devguide.md)IoT hub lehetőségeit is megismerheti. 
+Miután végrehajtotta ezeket az oktatóanyagokat, az IoT Hub képességeiről továbbiakat a [fejlesztői útmutatóból](../articles/iot-hub/iot-hub-devguide.md) tudhat meg. 

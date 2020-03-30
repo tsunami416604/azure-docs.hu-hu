@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66814836"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
 [Az Azure Container Service-fürt üzembe helyezését követően](../articles/container-service/dcos-swarm/container-service-deployment.md) előfordulhat, hogy módosítania kell az ügynökcsomópontok számát. Például ha több ügynökre van szüksége további tárolóalkalmazások vagy -példányok futtatásához. 
 
-Módosíthatja a DC/OS, Docker Swarm vagy Kubernetes-fürtben ügynökcsomópontok számát az Azure Portalon vagy az Azure CLI használatával. 
+A dc/os, a Docker Swarm vagy a Kubernetes-fürt ügynöki csomópontjainak számát módosíthatja az Azure Portalon vagy az Azure CLI-n keresztül. 
 
 ## <a name="scale-with-the-azure-portal"></a>Méretezés az Azure Portal használatával
 
@@ -29,7 +29,7 @@ Módosíthatja a DC/OS, Docker Swarm vagy Kubernetes-fürtben ügynökcsomópont
 
 ## <a name="scale-with-the-azure-cli"></a>Méretezés az Azure CLI-vel
 
-[Az Azure CLI telepítése](/cli/azure/install-azure-cli) , és jelentkezzen be az Azure-fiók `az login`.
+[Telepítse az Azure CLI-t,](/cli/azure/install-azure-cli) és `az login`jelentkezzen be egy Azure-fiókba a segítségével.
 
 ### <a name="see-the-current-agent-count"></a>Az ügynökök aktuális számának megtekintése
 A jelenleg a fürtben lévő ügynökök számának megtekintéséhez futtassa az `az acs show` parancsot. Ez megjeleníti a fürtkonfigurációt. Az alábbi parancs például a `myResourceGroup` erőforráscsoportban lévő `containerservice-myACSName` nevű tárolószolgáltatás konfigurációját jeleníti meg:
@@ -49,7 +49,7 @@ Például ha az előző fürtben az ügynökök számát 10-re szeretné módos�
 az acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
 ```
 
-Az Azure CLI, beleértve az ügynökök új számát, a tárolószolgáltatás új konfigurációját jelöli JSON-karakterláncot ad vissza.
+Az Azure CLI egy JSON-karakterláncot ad vissza, amely a tárolószolgáltatás új konfigurációját képviseli, beleértve az új ügynökszámot is.
 
 További parancsbeállításokért futtassa az `az acs scale --help` parancsot.
 
@@ -65,6 +65,6 @@ További parancsbeállításokért futtassa az `az acs scale --help` parancsot.
 
 
 ## <a name="next-steps"></a>További lépések
-* Lásd: [további példákat](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) az Azure CLI-parancsok használata az Azure Container Service.
+* További [példák](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) az Azure CLI-parancsok azure Container Service használatával.
 * Ismerkedjen meg a [DC/OS-ügynökkészletekkel](../articles/container-service/dcos-swarm/container-service-dcos-agents.md) az Azure Container Service szolgáltatásban.
 

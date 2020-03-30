@@ -1,6 +1,6 @@
 ---
-title: NCv2 sorozat – Azure Virtual Machines
-description: A NCv2 sorozatú virtuális gépek specifikációi.
+title: NCv2 sorozat - Azure virtuális gépek
+description: Az NCv2 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
 author: vikancha
 ms.service: virtual-machines
@@ -8,30 +8,30 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 3643fbabef08d890ce121d41a9bc1eb40c88459d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273917"
 ---
 # <a name="ncv2-series"></a>NCv2 sorozat
 
-Az NCv2 sorozatú virtuális gépeket [NVIDIA Tesla P100](https://www.nvidia.com/data-center/tesla-p100/) GPU-k működtetik. Ezek a GPU-k az NC sorozat számítási teljesítményének több mint kétszeresét biztosítják. Az ügyfelek igénybe vehetik a frissített GPU-ket a hagyományos HPC-számítási feladatokhoz, mint például a tározó modellezése, a DNS-szekvencia, a protein-elemzés, a Monte Carlo-szimulációk és egyebek. A GPU-k mellett az Intel Xeon E5-2690 v4 (Broadwell) processzorok is a NCv2 sorozatú virtuális gépeket használják.
+Az NCv2 sorozatú virtuális gépeket [NVIDIA Tesla P100](https://www.nvidia.com/data-center/tesla-p100/) GPU-k működtetik. Ezek a GPU-k az NC-sorozat számítási teljesítményének több mint 2-szeresét biztosítják. Az ügyfelek kihasználhatják ezeket a frissített GPU-kat a hagyományos HPC-számítási feladatokhoz, például a tározómodellezéshez, a DNS-szekvenáláshoz, a fehérjeelemzéshez, a Monte Carlo-szimulációkhoz és másokhoz. A GPU-k mellett az NCv2 sorozatú virtuális gépeket Intel Xeon E5-2690 v4 (Broadwell) CPU-k is működtetik.
 
-A NC24rs v2-konfiguráció alacsony késleltetésű, nagy átviteli sebességű hálózati adaptert biztosít a szorosan összekapcsolt párhuzamos számítási feladatokhoz.
+Az NC24rs v2 konfiguráció alacsony késleltetésű, nagy átviteli sebességű hálózati illesztőt biztosít a szorosan összekapcsolt párhuzamos számítási feladatokhoz.
 
-Premium Storage: támogatott
+Prémium szintű tárhely: Támogatott
 
-Premium Storage gyorsítótárazás: támogatott
+Prémium szintű tárolási gyorsítótárazás: Támogatott
 
-Élő áttelepítés: nem támogatott
+Élő áttelepítés: Nem támogatott
 
-Memória-megőrzési frissítések: nem támogatott
+Memóriamegőrzési frissítések: Nem támogatott
 
 > [!IMPORTANT]
-> Ennél a virtuálisgép-sorozatnál az előfizetéshez tartozó vCPU (Core) kvóta kezdetben 0 értékre van állítva minden régióban. [VCPU-kvóta növelésének kérése](../azure-supportability/resource-manager-core-quotas-request.md) a sorozathoz egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
+> Ehhez a virtuális gépsorozathoz az előfizetésvCPU-kvótája kezdetben 0-ra van állítva az egyes régiókban. [VCPU-kvótanövelésének kérése](../azure-supportability/resource-manager-core-quotas-request.md) ehhez a sorozathoz egy [elérhető régióban.](https://azure.microsoft.com/regions/services/)
 >
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Maximális nem gyorsítótárazott lemezátviteli sebesség: IOPS/MBps | Hálózati adapterek maximális száma |
 |---|---|---|---|---|---|---|---|---|
 | Standard_NC6s_v2    | 6  | 112 | 736  | 1 | 16 | 12 | 20000/200 | 4 |
 | Standard_NC12s_v2   | 12 | 224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
@@ -48,9 +48,9 @@ Memória-megőrzési frissítések: nem támogatott
 
 Az Azure N sorozatú virtuális gépek GPU-képességeinek kihasználásához telepíteni kell az NVIDIA GPU-illesztőprogramokat.
 
-Az [NVIDIA GPU illesztőprogram-bővítmény](./extensions/hpccompute-gpu-windows.md) a megfelelő NVIDIA CUDA-vagy Grid-illesztőprogramokat telepíti egy N sorozatú virtuális gépen. A bővítmény telepítése vagy kezelése a Azure Portal vagy eszközök, például Azure PowerShell vagy Azure Resource Manager sablonok használatával. Tekintse meg az [NVIDIA GPU illesztőprogram-bővítmény dokumentációját](./extensions/hpccompute-gpu-windows.md) a támogatott operációs rendszerekhez és üzembe helyezési lépésekhez. A virtuálisgép-bővítményekkel kapcsolatos általános információkért lásd: [Azure-beli virtuális gépek bővítményei és szolgáltatásai](./extensions/overview.md).
+Az [NVIDIA GPU illesztőprogram-bővítmény](./extensions/hpccompute-gpu-windows.md) megfelelő NVIDIA CUDA vagy GRID illesztőprogramokat telepít egy N sorozatú Virtuális gépre. Telepítse vagy kezelje a bővítményt az Azure Portalon vagy az olyan eszközökkel, például az Azure PowerShell vagy az Azure Resource Manager-sablonok használatával, mint például az Azure PowerShell vagy az Azure Resource Manager-sablonok. A támogatott operációs rendszereket és a telepítési lépéseket az [NVIDIA GPU-illesztőprogram-bővítmény dokumentációjában](./extensions/hpccompute-gpu-windows.md) találja. A virtuálisgép-bővítményekről az [Azure virtuálisgép-bővítmények és -szolgáltatások](./extensions/overview.md)című témakörben talál általános tudnivalókat.
 
-Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a következőt: [n-sorozat GPU-illesztőprogram beállítása Windows](./windows/n-series-driver-setup.md) vagy [N sorozatú GPU-illesztőhöz Linux](./linux/n-series-driver-setup.md) rendszeren támogatott operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések.
+Ha úgy dönt, hogy manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, olvassa el az [N sorozatú GPU-illesztőprogram beállítása Windows](./windows/n-series-driver-setup.md) vagy N [sorozatú GPU-illesztőprogram linuxos beállítását](./linux/n-series-driver-setup.md) a támogatott operációs rendszerek, illesztőprogramok, telepítés és ellenőrzési lépések hez.
 
 ## <a name="other-sizes"></a>Egyéb méretek
 
@@ -61,6 +61,6 @@ Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a köv
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
+További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.

@@ -1,24 +1,24 @@
 ---
-title: Egyéni szolgáltató C# Rest-végponti referenciája
-description: Alapszintű referenciát biztosít az Azure C# -beli egyéni szolgáltatók Rest-végpontja számára. A végpontot egy Azure Function-alkalmazáson keresztül biztosítjuk.
+title: Egyéni szolgáltató C# RESTful végpont referencia
+description: Alapvető hivatkozást biztosít egy Azure egyéni szolgáltatók C# RESTful végpont. A végpont egy Azure-függvényalkalmazáson keresztül érhető el.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6ecb22cb968e0d963242c8c2d5dd1a6cb24229c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651175"
 ---
-# <a name="custom-provider-c-restful-endpoint-reference"></a>Egyéni szolgáltató C# Rest-végponti referenciája
+# <a name="custom-provider-c-restful-endpoint-reference"></a>Egyéni szolgáltató C# RESTful végpont referencia
 
-Ez a cikk az egyéni szolgáltató C# Rest-végpontjának alapszintű referenciája. Ha nem ismeri az egyéni Azure-szolgáltatókat, tekintse [meg az egyéni erőforrás-szolgáltatók áttekintését](overview.md)ismertető cikket.
+Ez a cikk egy alapvető hivatkozásegy egyéni szolgáltató C# RESTful végpont. Ha nem ismeri az Azure egyéni szolgáltatókat, tekintse [meg az egyéni erőforrás-szolgáltatók áttekintését.](overview.md)
 
-## <a name="azure-function-app-restful-endpoint"></a>Azure Function alkalmazás – REST-végpont
+## <a name="azure-function-app-restful-endpoint"></a>Azure függvény alkalmazás RESTful végpont
 
-Az alábbi kód egy Azure Function-alkalmazással működik. Az Azure functions-alkalmazások Azure-beli egyéni szolgáltatókkal való működésének megismeréséhez tekintse [meg az Azure-beli egyéni szolgáltatók Azure functions beállítását ismertető oktatóanyagot](./tutorial-custom-providers-function-setup.md).
+A következő kód működik egy Azure-függvény alkalmazás. Ha meg szeretné tudni, hogyan állíthat be egy Azure-függvényalkalmazást az Azure egyéni szolgáltatókkal való együttműködésre, olvassa el [az Azure Functions azure-beli egyéni szolgáltatókhoz való beállításáról szóló oktatóanyagcímű témakört.](./tutorial-custom-providers-function-setup.md)
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -253,9 +253,9 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure egyéni erőforrás-szolgáltatóinak áttekintése](overview.md)
-- [Oktatóanyag: egyéni Azure-erőforrás-szolgáltató létrehozása és egyéni erőforrások üzembe helyezése](./create-custom-provider.md)
-- [Útmutató: egyéni műveletek hozzáadása az Azure REST APIhoz](./custom-providers-action-endpoint-how-to.md)
-- [Hivatkozás: az erőforrás-gyorsítótár egyéni leírása](proxy-cache-resource-endpoint-reference.md)
+- [Oktatóanyag: Hozzon létre egy egyéni Azure-erőforrás-szolgáltatót, és telepítsen egyéni erőforrásokat](./create-custom-provider.md)
+- [Útmutató: Egyéni műveletek hozzáadása az Azure REST API-hoz](./custom-providers-action-endpoint-how-to.md)
+- [Hivatkozás: Egyéni erőforrás-gyorsítótár hivatkozása](proxy-cache-resource-endpoint-reference.md)

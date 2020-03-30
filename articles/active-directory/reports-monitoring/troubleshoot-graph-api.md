@@ -1,6 +1,6 @@
 ---
-title: Hibák elhárítása Azure Active Directory jelentési API-ban | Microsoft Docs
-description: A Azure Active Directory jelentési API-k meghívása során felmerülő hibák megoldását teszi lehetővé.
+title: Hibák elhárítása az Azure Active Directory jelentéskészítési API-jában | Microsoft dokumentumok
+description: Megoldást nyújt az Azure Active Directory-jelentési API-k hívása közbeni hibákra.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,37 +18,37 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d1fb4f49e4f9ad41f971d869873200e6180b5cd
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399293"
 ---
-# <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>Hibák elhárítása Azure Active Directory jelentési API-ban
+# <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>Hibák elhárítása az Azure Active Directory jelentéskészítési API-jában
 
-Ez a cikk azokat a gyakori hibaüzeneteket sorolja fel, amelyekkel a Microsoft Graph API-val és a megoldásuk lépéseivel férhet hozzá a tevékenységek jelentéseihez.
+Ez a cikk felsorolja azokat a gyakori hibaüzeneteket, amelyek a Microsoft Graph API használatával történő tevékenységjelentések elérésekor, valamint a megoldásuk lépéseit sorolják fel.
 
-### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>500 HTTP belső kiszolgálóhiba a Microsoft Graph v2-végpont elérésekor
+### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>500 HTTP belső kiszolgálóhiba a Microsoft Graph V2 végpontelérése közben
 
-Jelenleg nem támogatjuk a Microsoft Graph v2-végpontot – ügyeljen arra, hogy a Microsoft Graph v1-végpont használatával hozzáférhessen a tevékenység naplóihoz.
+Jelenleg nem támogatjuk a Microsoft Graph v2-végpontját – győződjön meg arról, hogy a Microsoft Graph v1-végpont használatával hozzáférhet a tevékenységnaplókhoz.
 
-### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>Hiba: egyik bérlő sem a B2C, sem a bérlő nem rendelkezik prémium szintű licenccel
+### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>Hiba: Egyik bérlő sem B2C, vagy a bérlő nem rendelkezik prémium licenccel
 
-A bejelentkezési jelentések eléréséhez Azure Active Directory Premium 1 (P1) licenc szükséges. Ha ez a hibaüzenet jelenik meg a bejelentkezések elérésekor, győződjön meg arról, hogy a bérlője Azure AD P1 licenccel rendelkezik.
+A bejelentkezési jelentések eléréséhez Azure Active Directory prémium 1 (P1) licenc szükséges. Ha ez a hibaüzenet jelenik meg a bejelentkezések elérése közben, győződjön meg arról, hogy a bérlő rendelkezik egy Azure AD P1 licenccel.
 
-### <a name="error-user-is-not-in-the-allowed-roles"></a>Hiba: a felhasználó nem szerepel az engedélyezett szerepkörökben 
+### <a name="error-user-is-not-in-the-allowed-roles"></a>Hiba: A felhasználó nem az engedélyezett szerepkörökben van 
 
-Ha ez a hibaüzenet akkor jelenik meg, amikor az API-val megpróbál hozzáférni a naplókhoz vagy a bejelentkezésekhez, győződjön meg arról, hogy a fiókja a Azure Active Directory-bérlő **biztonsági olvasójának** vagy a **jelentéskészítő olvasó** szerepkörének része. 
+Ha ez a hibaüzenet jelenik meg, miközben az API-t használó naplózási naplók vagy bejelentkezések elérésére próbál hozzáférni, győződjön meg arról, hogy a fiók az Azure Active Directory-bérlő **biztonsági olvasó** vagy **jelentésolvasó** szerepkörének része. 
 
-### <a name="error-application-missing-aad-read-directory-data-permission"></a>Hiba: az alkalmazásból hiányzik a "HRE olvasása" engedély. 
+### <a name="error-application-missing-aad-read-directory-data-permission"></a>Hiba: Az alkalmazásból hiányzik az AAD "Címtáradatok olvasása" engedélye 
 
-Kövesse az előfeltételekben ismertetett lépéseket a [Azure Active Directory jelentési API eléréséhez](howto-configure-prerequisites-for-reporting-api.md) , hogy az alkalmazás a megfelelő engedélyekkel legyen fut. 
+Kövesse az Előfeltételek az [Azure Active Directory jelentéskészítési API eléréséhez](howto-configure-prerequisites-for-reporting-api.md) kövesse az alkalmazás megfelelő engedélykészlettel való futtatásának biztosításához. 
 
-### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>Hiba: az alkalmazás hiányzik Microsoft Graph API "a naplózási napló összes adatszolgáltatásának olvasása" engedély
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>Hiba: Az alkalmazásból hiányzik a Microsoft Graph API "Az összes naplóadat olvasása" engedély
 
-Kövesse az előfeltételekben ismertetett lépéseket a [Azure Active Directory jelentési API eléréséhez](howto-configure-prerequisites-for-reporting-api.md) , hogy az alkalmazás a megfelelő engedélyekkel legyen fut. 
+Kövesse az Előfeltételek az [Azure Active Directory jelentéskészítési API eléréséhez](howto-configure-prerequisites-for-reporting-api.md) kövesse az alkalmazás megfelelő engedélykészlettel való futtatásának biztosításához. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Használja a naplózási API-referenciát](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)
-[használja a bejelentkezési tevékenység jelentésének API-referenciáját](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+[A naplózási API-hivatkozás](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)
+[használata A bejelentkezési tevékenység jelentés API-hivatkozásának használata](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

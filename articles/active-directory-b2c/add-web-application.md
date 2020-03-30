@@ -1,6 +1,6 @@
 ---
-title: Webes API-alkalmazás hozzáadása – Azure Active Directory B2C | Microsoft Docs
-description: Ismerje meg, hogyan adhat hozzá webes API-alkalmazásokat a Active Directory B2C bérlőhöz.
+title: Web API-alkalmazás hozzáadása – Azure Active Directory B2C | Microsoft dokumentumok
+description: Megtudhatja, hogyan adhat hozzá web API-alkalmazást az Active Directory B2C-bérlőhöz.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,61 +11,61 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: e6dbf3d6fd5a43ab2d075c193c5bc589dc3566a0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78190177"
 ---
-# <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Webes API-alkalmazás hozzáadása a Azure Active Directory B2C-bérlőhöz
+# <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Web API-alkalmazás hozzáadása az Azure Active Directory B2C-bérlőhöz
 
- Regisztrálja webes API-erőforrásait a bérlőben, hogy elfogadják és válaszoljanak a hozzáférési jogkivonatot futtató ügyfélalkalmazások által benyújtott kérelmekre. Ez a cikk bemutatja, hogyan regisztrálhat egy webes API-t Azure Active Directory B2C (Azure AD B2C).
+ Regisztráljon webes API-erőforrásokat a bérlőben, hogy azok el tudják fogadni és megválaszolják a hozzáférési jogkivonatot tartalmazó ügyfélalkalmazások kéréseit. Ez a cikk bemutatja, hogyan regisztrálhat egy webes API-t az Azure Active Directory B2C (Azure AD B2C) szolgáltatásban.
 
-Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja a jelenlegi **alkalmazásokat** , vagy az új, egyesített **Alkalmazásregisztrációk (előzetes verzió)** élményt. [További információ az új felületről](https://aka.ms/b2cappregintro).
+Ha regisztrálegy alkalmazást az Azure AD B2C-bérlőben, használhatja az aktuális **alkalmazások** vagy az új egyesített **alkalmazásregisztrációk (előzetes verzió)** használatát. [További információ az új felületről](https://aka.ms/b2cappregintro).
 
 #### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
-3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-4. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-5. Adja meg az alkalmazás nevét. Például: *webapi1*.
-6. A **Web App/web API belefoglalása** és az **implicit folyamat engedélyezése**lehetőségnél válassza az **Igen**lehetőséget.
-7. A **Válasz URL-cím**mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Az éles alkalmazásban beállíthatja a válasz URL-címét egy értékre (például `https://localhost:44332`). Tesztelési célból állítsa a válasz URL-címét `https://jwt.ms`ra.
-8. Az **alkalmazás-azonosító URI-ja**mezőben adja meg a webes API-hoz használt azonosítót. A teljes azonosító URI-t, a tartománnyal együtt, a rendszer hozza létre. Például: `https://contosotenant.onmicrosoft.com/api`.
-9. Kattintson a **Létrehozás** gombra.
-10. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját, amelyet a webalkalmazás konfigurálásakor használni fog.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+2. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja. Válassza ki a **Könyvtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
+3. Válassza az **Összes szolgáltatás** lehetőséget az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Azure AD B2C parancsot.**
+4. Válassza **az Alkalmazások**lehetőséget, majd a **Hozzáadás**lehetőséget.
+5. Adjon nevet az alkalmazásnak. Például *webapi1*.
+6. A **Webapp/web API belefoglalása** és **az Implicit folyamat engedélyezése csoportban**válassza az **Igen**lehetőséget.
+7. A **válasz URL-cím,** adjon meg egy végpontot, ahol az Azure AD B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Az éles alkalmazásban a válasz URL-címét például `https://localhost:44332`a értékre állíthatja. Tesztelési célokra állítsa a `https://jwt.ms`válasz URL-címét a-ra.
+8. **Az App ID URI mezőben**adja meg a webes API-hoz használt azonosítót. A teljes azonosító URI-t, a tartománnyal együtt, a rendszer hozza létre. Például: `https://contosotenant.onmicrosoft.com/api`.
+9. Kattintson **a Létrehozás gombra.**
+10. A tulajdonságok lapon rögzítse a webalkalmazás konfigurálásakor használni kívánt alkalmazásazonosítót.
 
 #### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.
-1. Adja meg az alkalmazás **nevét** . Például: *webapi1*.
-1. Az **átirányítási URI**területen válassza a **web**lehetőséget, majd adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Éles környezetben beállíthatja az átirányítási URI-t olyan végpontként, mint a `https://localhost:5000`. A fejlesztés vagy a tesztelés során beállíthatja, hogy `https://jwt.ms`, egy Microsoft tulajdonú webalkalmazás, amely egy jogkivonat dekódolású tartalmát jeleníti meg (a jogkivonat tartalma soha nem hagyja el a böngészőt). A regisztrált alkalmazásokban bármikor hozzáadhat és módosíthat átirányítási URI-ket.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, majd válassza ki az Azure AD B2C bérlőt tartalmazó könyvtárat.
+1. A bal oldali menüben válassza az **Azure AD B2C**lehetőséget. Vagy válassza a **Minden szolgáltatás** lehetőséget, és keresse meg az **Azure AD B2C elemet.**
+1. Válassza **az Alkalmazásregisztrációk (Előzetes verzió)** lehetőséget, majd az **Új regisztráció**lehetőséget.
+1. Adja meg az alkalmazás **nevét.** Például *webapi1*.
+1. Az **ÁTirányítás URI,válassza**ki **a Web**lehetőséget, majd adjon meg egy végpontot, ahol az Azure AD B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Egy éles alkalmazásban az átirányítási URI-t a `https://localhost:5000`végponthoz állíthatja be. A fejlesztés vagy tesztelés során `https://jwt.ms`beállíthatja, hogy a Microsoft tulajdonában lévő webalkalmazás, amely megjeleníti a dekódolt tartalmát egy jogkivonat (a token tartalmát soha nem hagyja el a böngészőt). A regisztrált alkalmazásokban bármikor hozzáadhat és módosíthat átirányítási URI-kat.
 1. Kattintson a **Register** (Regisztrálás) elemre.
-1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** a webes API kódjában való használathoz.
+1. Rögzítse az **alkalmazás (ügyfél) azonosítóját** a webes API kódjában való használatra.
 
-Ha olyan alkalmazással rendelkezik, amely megvalósítja az implicit engedélyezési folyamatot, például egy JavaScript-alapú egyoldalas alkalmazást (SPA), akkor a következő lépéseket követve engedélyezheti a folyamatot:
+Ha olyan alkalmazással rendelkezik, amely megvalósítja az implicit támogatási folyamatot, például egy JavaScript-alapú egyoldalas alkalmazást (SPA), az alábbi lépésekkel engedélyezheti a folyamatot:
 
-1. A **kezelés**területen válassza a **hitelesítés**lehetőséget.
-1. Válassza **az új élmény kipróbálása** (ha látható) lehetőséget.
-1. Az **implicit engedélyezés**területen jelölje be a **hozzáférési jogkivonatok** és az **azonosító tokenek** jelölőnégyzetet.
+1. A **Kezelés csoportban**válassza a **Hitelesítés**lehetőséget.
+1. Válassza **az Új felület kipróbálása** lehetőséget (ha látható).
+1. Az **Implicit támogatás**csoportban jelölje be mind az **Access-jogkivonatokat,** mind az **Azonosító-jogkivonatokat** jelölőnégyzetekbe.
 1. Kattintson a **Mentés** gombra.
 
 * * *
 
 ## <a name="configure-scopes"></a>Hatókörök konfigurálása
 
-A hatókörök lehetővé teszik a védett erőforrásokhoz való hozzáférés szabályozását. A hatóköröket a webes API a hatóköralapú hozzáférés-vezérlés megvalósításához használja. A webes API-k bizonyos felhasználói például rendelkezhetnek olvasási és írási hozzáféréssel is, míg mások csak olvasási hozzáféréssel. Ebben az oktatóanyagban hatókörök segítségével határozzuk meg az olvasási és írási engedélyeket a webes API számára.
+A hatókörök lehetőséget nyújtanak a védett erőforrásokhoz való hozzáférés szabályozására. A hatóköröket a webes API a hatóköralapú hozzáférés-vezérlés megvalósításához használja. A webes API-k bizonyos felhasználói például rendelkezhetnek olvasási és írási hozzáféréssel is, míg mások csak olvasási hozzáféréssel. Ebben az oktatóanyagban hatókörök segítségével határozzuk meg az olvasási és írási engedélyeket a webes API számára.
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
 ## <a name="grant-permissions"></a>Engedélyek megadása
 
-Ha egy védett webes API-t szeretne meghívni egy alkalmazásból, meg kell adnia az alkalmazás engedélyeit az API-nak. Például az [oktatóanyagban: alkalmazás regisztrálása Azure Active Directory B2Cban](tutorial-register-applications.md), a *webapp1* nevű webalkalmazás regisztrálva van a Azure ad B2Cban. Ezt az alkalmazást használhatja a webes API meghívásához.
+A védett webes API-t egy alkalmazásból, meg kell adnia az alkalmazás engedélyeket az API-t. Például [az oktatóanyag: Regisztráljon egy alkalmazást az Azure Active Directory B2C,](tutorial-register-applications.md)egy *webapp1* nevű webalkalmazás regisztrálva van az Azure AD B2C. Ezzel az alkalmazással hívhatja meg a webes API-t.
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-Az alkalmazás regisztrálva van a védett webes API meghívásához. A felhasználók a Azure AD B2C használatával hitelesítik az alkalmazást. Az alkalmazás a védett webes API-hoz való hozzáféréshez Azure AD B2C engedélyezési engedélyt kap.
+Az alkalmazás regisztrálva van a védett webes API hívásához. A felhasználó hitelesíti magát az Azure AD B2C az alkalmazás használatához. Az alkalmazás beszerzi az Azure AD B2C engedélyezési engedélyt a védett webes API eléréséhez.

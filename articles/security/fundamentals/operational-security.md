@@ -1,6 +1,6 @@
 ---
-title: Azure működési biztonság | Microsoft Docs
-description: Ismerkedjen meg Microsoft Azure figyelő naplókkal, szolgáltatásaival és működésével.
+title: Azure működési biztonsága | Microsoft dokumentumok
+description: Ismerje meg a Microsoft Azure Monitor naplóit, szolgáltatásait és működését.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -16,105 +16,105 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75749956"
 ---
-# <a name="azure-operational-security"></a>Azure-beli működési biztonság
+# <a name="azure-operational-security"></a>Az Azure működési biztonsága
 ## <a name="introduction"></a>Bevezetés
 
 ### <a name="overview"></a>Áttekintés
-Tudjuk, hogy a biztonság az egyik a felhőben, és mennyire fontos, hogy pontos és kellő időben tájékozódjon az Azure biztonságáról. Az Azure alkalmazásokhoz és szolgáltatásokhoz való használatának egyik legjobb oka az, hogy kihasználja az elérhető biztonsági eszközök és képességek széles körét. Ezek az eszközök és képességek segítik a biztonságos megoldások létrehozását a biztonságos Azure platformon. A Windows Azure-nak biztosítania kell az ügyféladatok titkosságát, integritását és rendelkezésre állását, ugyanakkor az átlátható elszámoltathatóságot is lehetővé teszi.
+Tudjuk, hogy a biztonság az első feladat a felhőben, és mennyire fontos, hogy pontos és időszerű információkat találjon az Azure biztonságáról. Az Azure alkalmazásaihoz és szolgáltatásaihoz való használatának egyik legjobb oka a rendelkezésre álló biztonsági eszközök és képességek széles skálájának kihasználása. Ezek az eszközök és képességek lehetővé teszik biztonságos megoldások létrehozását a biztonságos Azure platformon. A Windows Azure-nak biztosítania kell az ügyféladatok titkosságát, integritását és elérhetőségét, ugyanakkor lehetővé kell tennie az átlátható elszámoltathatóságot.
 
-Annak érdekében, hogy az ügyfelek jobban megértsék a Microsoft Azureon belül megvalósított biztonsági vezérlők tömbjét mind az ügyfél, mind a Microsoft működési perspektívái alapján, ez a tanulmány az "Azure Operational Security" kifejezést írja elő, amely átfogó Tekintse meg a Windows Azure-ban elérhető működési biztonságot.
+Annak érdekében, hogy az ügyfelek jobban megértsék a Microsoft Azure-ban az ügyfél és a Microsoft működési perspektíváiból megvalósított biztonsági vezérlők tömbjét, ez az "Azure Operational Security" című tanulmány íródott, amely átfogó tekintse meg a Windows Azure-ban elérhető működési biztonságot.
 
-### <a name="azure-platform"></a>Azure-platform
-Az Azure egy nyilvános felhőalapú szolgáltatási platform, amely az operációs rendszerek, a programozási nyelvek, a keretrendszerek, az eszközök, az adatbázisok és az eszközök széles választékát támogatja. Linux-tárolókat is futtathat a Docker-integrációval; alkalmazások készítése JavaScript, Python, .NET, PHP, Java és Node. js használatával az iOS-, Android-és Windows-eszközökön is létrehozhatók háttérrendszer. Az Azure Cloud Service több millió fejlesztőt és informatikai szakembereket is támogat.
+### <a name="azure-platform"></a>Azure Platform
+Az Azure egy nyilvános felhőszolgáltatási platform, amely az operációs rendszerek, programozási nyelvek, keretrendszerek, eszközök, adatbázisok és eszközök széles választékát támogatja. Linux-tárolókat futtathat a Docker-integrációval; alkalmazások készítése JavaScript, Python, .NET, PHP, Java és Node.js nyelven; háttérrendszereket készíthet iOS, Android és Windows rendszerű eszközökre. Az Azure Cloud szolgáltatás ugyanazokat a technológiákat támogatja, amelyekben már több millió fejlesztő és informatikai szakember támaszkodik és bízik.
 
-Ha a-ra épít, vagy áttelepíti az IT-eszközöket, egy nyilvános felhőalapú szolgáltatóra támaszkodik, amely a szervezet képességei alapján gondoskodik az alkalmazások és adatok védelméről a szolgáltatásokkal és az általuk biztosított vezérlőkkel a felhőalapú eszközök biztonságának kezeléséhez.
+Amikor egy nyilvános felhőszolgáltatóra épít, vagy informatikai eszközöket telepít át, akkor az adott szervezet azon képességére támaszkodik, amely az alkalmazások és az adatok védelmére szolgál a felhőalapú eszközök biztonságának kezeléséhez biztosított szolgáltatásokkal és vezérlőkkel.
 
-Az Azure infrastruktúráját úgy alakították ki, hogy a létesítményből egyszerre több millió ügyfelet üzemeltető alkalmazások számára biztosítson egy megbízható alapot, amely alapján a vállalatok megfelelnek a biztonsági követelményeknek. Emellett az Azure a konfigurálható biztonsági beállítások széles körét biztosítja, és lehetővé teszi, hogy a biztonság testre szabható legyen, hogy megfeleljen a szervezete üzembe helyezésének egyedi követelményeinek. Ez a dokumentum segít megérteni, hogy az Azure biztonsági képességei hogyan segíthetnek a követelmények teljesítésében.
+Az Azure infrastruktúráját a létesítménytől az ügyfelek millióinak egyidejű befogadására szolgáló alkalmazásokig tervezték, és megbízható alapot biztosít, amelyre a vállalkozások megfelelhetnek biztonsági követelményeiknek. Emellett az Azure a konfigurálható biztonsági beállítások széles skáláját biztosítja, és lehetővé teszi azok vezérlését, hogy testre szabhassa a biztonságot, hogy megfeleljen a szervezet központi telepítései egyedi követelményeinek. Ez a dokumentum segít megérteni, hogy az Azure biztonsági képességei hogyan segíthetnek ezeknek a követelményeknek a teljesítésében.
 
 ### <a name="abstract"></a>Abstract
-Az Azure Operational Security a felhasználók számára elérhető szolgáltatásokat, vezérlőket és szolgáltatásokat jelenti a Microsoft Azureban tárolt adatok, alkalmazások és egyéb eszközök védelmére. Az Azure Operational Security egy olyan keretrendszerre épül, amely magában foglalja a Microsoft számára egyedi, a Microsoft biztonsági fejlesztési életciklusát (SDL), a Microsoft Security Response Center programját, valamint az általa szerzett ismereteket. és a kiberbiztonsági fenyegetések tájképének részletes ismerete.
+Az Azure Operational Security a felhasználók számára elérhető szolgáltatásokra, vezérlőkre és funkciókra vonatkozik adataik, alkalmazásaik és egyéb eszközeik védelmére a Microsoft Azure-ban. Az Azure Operational Security egy olyan keretrendszerre épül, amely a Microsoft számára egyedi különböző képességek révén szerzett ismereteket tartalmazza, beleértve a Microsoft Security Development Lifecycle (SDL), a Microsoft Security Response Center programot, és a kiberbiztonsági fenyegetési környezet mély tudatosítása.
 
-Ez a tanulmány a Microsoft Azure-beli működési biztonságának megközelítését ismerteti a Microsoft Azure Cloud platformon belül, és a következő szolgáltatásokat nyújtja:
+Ez a tanulmány ismerteti a Microsoft megközelítését az Azure működési biztonságával kapcsolatosan a Microsoft Azure felhőplatformján belül, és a következő szolgáltatásokat ismerteti:
 1.  [Azure Monitor](../../azure-monitor/index.yml)
 
 2.  [Azure Security Center](../../security-center/security-center-intro.md)
 
 3.  [Azure Monitor](../../azure-monitor/overview.md)
 
-4.  [Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md)
+4.  [Az Azure Network figyelője](../../network-watcher/network-watcher-monitoring-overview.md)
 
 5.  [Azure Storage-elemzés](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
 
-6.  [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
+6.  [Azure Active címtár](../../active-directory/fundamentals/active-directory-whatis.md)
 
 
-## <a name="microsoft-azure-monitor-logs"></a>Microsoft Azure figyelési naplók
+## <a name="microsoft-azure-monitor-logs"></a>A Microsoft Azure Figyelő naplói
 
-A hibrid felhő számára az IT-felügyeleti megoldás a Microsoft Azure figyelési naplói. Önmagában vagy a meglévő System Center-telepítés kiterjesztéséhez Azure Monitor naplók lehetővé teszi az infrastruktúra felhőalapú felügyeletének maximális rugalmasságát és szabályozását.
+A Microsoft Azure Monitor naplói a hibrid felhő informatikai felügyeleti megoldása. Az Azure Monitor-naplók a meglévő System Center-telepítés kiterjesztéséhez vagy a meglévő System Center-telepítés kiterjesztéséhez maximális rugalmasságot és felügyeletet biztosítanak az infrastruktúra felhőalapú felügyeletéhez.
 
 ![Azure Monitor-naplók](./media/operational-security/azure-operational-security-fig1.png)
 
-A Azure Monitor-naplók segítségével bármilyen Felhőbeli példányt kezelhet, beleértve a helyszíni, az Azure, az AWS, a Windows Server, a Linux, a VMware és a OpenStack szolgáltatást, a versenyképes megoldásoknál alacsonyabb áron. A Felhőbeli első világra épülő Azure Monitor naplók új megközelítést biztosítanak a vállalat számára, amely a leggyorsabb és leghatékonyabb módja az új üzleti kihívásoknak, valamint az új munkaterhelések, alkalmazások és felhőalapú környezetek bevezetésének.
+Az Azure Monitor naplóival bármilyen felhőben kezelheti bármely példányát, beleértve a helyszíni, az Azure, az AWS, a Windows Server, a Linux, a VMware és az OpenStack példányokat, alacsonyabb költséggel, mint a versenyképes megoldások. A felhőalapú világszámára épített Azure Monitor-naplók új megközelítést kínálnak a vállalat kezeléséhez, amely a leggyorsabb és leginkább költséghatékony módja az új üzleti kihívásoknak való megfeleltetésnek, valamint az új számítási feladatok, alkalmazások és felhőkörnyezetek kezelésére.
 
-### <a name="azure-monitor-services"></a>Azure Monitor szolgáltatások
+### <a name="azure-monitor-services"></a>Az Azure Monitor szolgáltatásai
 
-Azure Monitor naplók alapvető funkcióit az Azure-ban futó szolgáltatások biztosítják. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít, és a szolgáltatások kombinálásával különféle felügyeleti forgatókönyvek valósíthatók meg.
+Az Azure Monitor-naplók alapvető funkcióit az Azure-ban futó szolgáltatások készlete biztosítja. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít, és a szolgáltatások kombinálásával különféle felügyeleti forgatókönyvek valósíthatók meg.
 
 | Szolgáltatás  | Leírás|
 | :------------- | :-------------|
 | Azure Monitor-naplók | Figyeli és elemzi a különféle erőforrások, köztük a fizikai és virtuális gépek rendelkezésre állását és teljesítményét. |
 |Automation | Automatizálja a manuális folyamatokat, és érvényesíti a fizikai és virtuális gépekre vonatkozóan megadott konfigurációkat. |
-| Biztonsági mentés | Biztonsági mentés és visszaállítás kritikus fontosságú adatként. |
+| Backup | Biztonsági másolatot és visszaállítást a kritikus adatokról. |
 | Site Recovery | Biztosítja a kritikus fontosságú alkalmazások magas rendelkezésre állását. |
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
-A [Azure monitor-naplók](https://azure.microsoft.com/documentation/services/log-analytics) figyelik a felügyeleti szolgáltatásokat azáltal, hogy a felügyelt erőforrások adatait egy központi tárházba gyűjtik. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz.
+[Az Azure Monitor naplók figyelési](https://azure.microsoft.com/documentation/services/log-analytics) szolgáltatásokat biztosít a felügyelt erőforrásokból származó adatok központi tárházba gyűjtésével. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz.
 
 
-Ez a módszer lehetővé teszi különböző forrásokból származó adatok összesítését, így az Azure-szolgáltatásokból származó adatok egyesíthetők a meglévő helyszíni környezettel. Továbbá egyértelműen elkülöníti az adatok gyűjtését az adatokon végzett műveletektől, így az összes művelet végrehajtható a különféle adatokon.
+Ez a módszer lehetővé teszi a különböző forrásokból származó adatok konszolidálását, így kombinálhatja az Azure-szolgáltatásokból származó adatokat a meglévő helyszíni környezettel. Továbbá egyértelműen elkülöníti az adatok gyűjtését az adatokon végzett műveletektől, így az összes művelet végrehajtható a különféle adatokon.
 
 
 ![Azure Monitor-naplók](./media/operational-security/azure-operational-security-fig2.png)
 
-A Azure Monitor szolgáltatás biztonságosan kezeli a felhőalapú adatait az alábbi módszerek használatával:
--   az adatelkülönítés
+Az Azure Monitor szolgáltatás biztonságosan kezeli a felhőalapú adatokat a következő módszerekkel:
+-   adatszegregáció
 -   adatmegőrzés
 -   fizikai biztonság
--   incidensek kezelése
--   betartásának
--   Biztonsági szabványok tanúsítványai
+-   incidenskezelés
+-   Megfelelés
+-   biztonsági szabványok tanúsításai
 
 ### <a name="azure-backup"></a>Azure Backup
 
-[Azure Backup](https://azure.microsoft.com/documentation/services/backup) biztosítja az adatok biztonsági mentési és visszaállítási szolgáltatásait, és a Azure monitor csomag részét képezi a termékek és szolgáltatások számára.
-Védelmet biztosít az alkalmazásadatok számára, valamint évekig megőrzi őket minden tőkebefektetés nélkül és minimális működési költségek mellett. Képes biztonsági másolatot készíteni a fizikai és a virtuális Windows-kiszolgálókról az alkalmazások számítási feladataihoz, például a SQL Server és a SharePoint rendszerhez. A [System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) is használhatja a védett és az Azure-ba való replikáláshoz a redundancia és a hosszú távú tárolás céljából.
+[Az Azure Backup](https://azure.microsoft.com/documentation/services/backup) adatbiztonsági mentési és visszaállítási szolgáltatásokat nyújt, és az Azure Monitor termék- és szolgáltatáscsomag része.
+Védelmet biztosít az alkalmazásadatok számára, valamint évekig megőrzi őket minden tőkebefektetés nélkül és minimális működési költségek mellett. Az alkalmazás-munkaterhelések, például az SQL Server és a SharePoint mellett a fizikai és a virtuális Windows-kiszolgálókadatairól is biztonsági másolatot tud kapni. A System Center [Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) is használhatja a védett adatok Replikálására az Azure-ba redundancia és hosszú távú tárolás érdekében.
 
 
-Az Azure Backup védett adatainak tárolása egy meghatározott földrajzi régióban elhelyezkedő biztonságimásolat-tárolóban történik. A rendszer replikálja az adatmennyiséget ugyanazon a régión belül, és a tár típusától függően más régióba is replikálhatja a rugalmasságot.
+Az Azure Backup védett adatainak tárolása egy meghatározott földrajzi régióban elhelyezkedő biztonságimásolat-tárolóban történik. Az adatok replikálása ugyanabban a régióban, és a ttól függően, hogy a tároló típusa, is replikálható egy másik régióba a további rugalmasság érdekében.
 
 ### <a name="management-solutions"></a>Felügyeleti megoldások
-A [Azure monitor](../../security-center/security-center-intro.md) a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a helyszíni és a Felhőbeli infrastruktúra kezelésében és biztonságában.
+[Az Azure Monitor](../../security-center/security-center-intro.md) a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a helyszíni és a felhőalapú infrastruktúra kezelésében és védelmében.
 
 
-A [felügyeleti megoldások](../../monitoring/monitoring-solutions.md) előre csomagolt logikai egységek, amelyek egy vagy több Azure monitor-szolgáltatás használatával egy adott felügyeleti forgatókönyvet implementálnak. A Microsofttól és partnereitől különböző megoldások érhetők el, amelyeket egyszerűen hozzáadhat az Azure-előfizetéshez, hogy növelje Azure Monitorbeli beruházásának értékét. Partnerként saját megoldásokat hozhat létre az alkalmazások és szolgáltatások támogatásához, és biztosíthatja azokat a felhasználóknak az Azure Marketplace-en vagy a gyors üzembe helyezési sablonokon keresztül.
+[A felügyeleti megoldások](../../monitoring/monitoring-solutions.md) olyan előre csomagolt logikai készletek, amelyek egy adott felügyeleti forgatókönyvet valósítanak meg egy vagy több Azure Monitor-szolgáltatás használatával. Különböző megoldások érhetők el a Microsofttól és a partnerektől, amelyeket könnyedén hozzáadhat Azure-előfizetéséhez, hogy növelje befektetése értékét az Azure Monitorban. Partnerként létrehozhat saját megoldásokat az alkalmazások és szolgáltatások támogatásához, és az Azure Piactéren vagy a rövid útmutató sablonokon keresztül biztosíthatja azokat a felhasználóknak.
 
 
 ![Felügyeleti megoldások](./media/operational-security/azure-operational-security-fig4.png)
 
-Egy olyan megoldás jó példája, amely több szolgáltatást használ, hogy további funkciókkal lássa el a [Update Management megoldást](../../automation/automation-update-management.md). Ez a megoldás a Windows és Linux rendszerhez készült [Azure monitor naplók](../../log-analytics/log-analytics-queries.md) ügynökével gyűjti össze az egyes ügynökök szükséges frissítéseivel kapcsolatos információkat. Ezt az adatot a Azure Monitor naplók tárházba írja, ahol elemezheti azt egy befoglalt irányítópulttal.
+Egy jó példa egy olyan megoldásra, amely több szolgáltatást használ további funkciók biztosításához, az [Update Management megoldás.](../../automation/automation-update-management.md) Ez a megoldás az Azure Monitor windowsos és Linuxos [naplóügynökét](../../log-analytics/log-analytics-queries.md) használja az egyes ügynökök szükséges frissítéseivel kapcsolatos információk gyűjtéséhez. Ezeket az adatokat az Azure Monitor naplók tárházba, ahol elemezheti azt egy mellékelt irányítópulton.
 
-Központi telepítés létrehozásakor a rendszer a szükséges frissítések telepítéséhez a [Azure Automation](../../automation/automation-intro.md) runbookok használja. A teljes folyamatot a portálon felügyelheti, és nem kell foglalkoznia a mögöttes részletekkel.
+Központi telepítés létrehozásakor az [Azure Automation](../../automation/automation-intro.md) runbookok a szükséges frissítések telepítéséhez használatosak. A teljes folyamatot a portálon felügyelheti, és nem kell foglalkoznia a mögöttes részletekkel.
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center segíti az Azure-erőforrások megóvását. Integrált biztonsági monitorozást és házirend-kezelést biztosít az Azure-előfizetések között. A szolgáltatáson belül lehetősége van arra, hogy a szabályzatokat ne csak az Azure-előfizetésekhez, hanem az [erőforráscsoportokhoz](../../azure-resource-manager/management/overview.md#resource-groups)is definiálja, így részletesebben is megadható.
+Az Azure Security Center segít megvédeni az Azure-erőforrásokat. Integrált biztonsági figyelést és házirend-kezelést biztosít az Azure-előfizetésekben. A szolgáltatáson belül nem csak az Azure-előfizetések, hanem [az erőforráscsoportok](../../azure-resource-manager/management/overview.md#resource-groups)ellen is definiálhat házirendeket, így részletesebb lehet.
 
 ### <a name="security-policies-and-recommendations"></a>Biztonsági szabályzatok és javaslatok
 
@@ -125,12 +125,12 @@ A Security Centerben a vállalat biztonsági elvárásainak és az alkalmazások
 ![Biztonsági szabályzatok és javaslatok](./media/operational-security/azure-operational-security-fig5.png)
 
 
-Az előfizetési szinten engedélyezett házirendek automatikusan propagálják az előfizetésben lévő összes erőforrás-csoportot, ahogy az a jobb oldali diagramban látható:
+Az előfizetési szinten engedélyezett házirendek automatikusan továbbítanak az előfizetésen belüli összes erőforráscsoportra, ahogy az a jobb oldali ábrán látható:
 
 
 ### <a name="data-collection"></a>Adatgyűjtés
 
-A Security Center adatokat gyűjt a virtuális gépekről a biztonsági állapotuk értékeléséhez, a biztonsági javaslatok létrehozásához és a fenyegetésekkel kapcsolatos riasztásokhoz. Amikor az első hozzáférési Security Center, az adatgyűjtés az előfizetésben lévő összes virtuális gépen engedélyezve van. Az adatgyűjtés ugyan ajánlott, de le is állíthatja azt a Security Center szabályzatában található adatgyűjtési lehetőség kikapcsolásával.
+A Security Center adatokat gyűjt a virtuális gépekről a biztonsági állapotuk értékeléséhez, a biztonsági javaslatok létrehozásához és a fenyegetésekkel kapcsolatos riasztásokhoz. Amikor az első hozzáférés Security Center, adatgyűjtés engedélyezve van az összes virtuális gép az előfizetésben. Az adatgyűjtés ugyan ajánlott, de le is állíthatja azt a Security Center szabályzatában található adatgyűjtési lehetőség kikapcsolásával.
 
 ### <a name="data-sources"></a>Adatforrások
 
@@ -150,7 +150,7 @@ Az Azure Security Center biztonsággal kapcsolatos adatokat gyűjt és dolgoz fe
 
 -   **Az adatok elkülönítése**: az adatok logikailag elkülönítve vannak tárolva a szolgáltatás egyes összetevőiben. Az összes adat szervezet szerint van megcímkézve. Ez a címkézés megmarad az adatok teljes életciklusa alatt, és a szolgáltatás minden rétegében érvényes.
 
--   **Adathozzáférés**: a biztonsági javaslatok és a lehetséges biztonsági fenyegetések kivizsgálása érdekében a Microsoft munkatársai hozzáférhetnek az Azure-szolgáltatások által összegyűjtött vagy elemzett információkhoz, beleértve az összeomlási memóriaképek fájljait, feldolgozzák a létrehozási eseményeket, a VM-lemezek pillanatképeit és összetevőit, amelyek véletlenül a virtuális gépekről származó ügyféladatokat vagy személyes adatokat is tartalmazhatnak. Betartjuk a [Microsoft Online Services használati feltételeit és adatvédelmi nyilatkozatát](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), amely szerint a Microsoft nem használja fel az ügyféladatokat, vagy semmilyen hirdetési vagy hasonló kereskedelmi célra információt származtat.
+-   **Adathozzáférés:** A biztonsági javaslatok biztosítása és a potenciális biztonsági fenyegetések vizsgálata érdekében a Microsoft munkatársai hozzáférhetnek az Azure-szolgáltatások által gyűjtött vagy elemzett információkhoz, beleértve az összeomlási memóriaképfájlokat, a folyamatlétrehozási eseményeket, a virtuális gép lemezpillanatképeit és az összetevőket, amelyek véletlenül ügyféladatokat vagy a virtuális gépekről származó személyes adatokat tartalmazhatnak. Betartjuk a [Microsoft Online Services általános szerződési feltételeit és adatvédelmi nyilatkozatát,](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)amely kijelenti, hogy a Microsoft nem használja fel az Ügyféladatokat, és nem származtat belőle adatokat hirdetési vagy hasonló kereskedelmi célokra.
 
 -   **Az adatok felhasználása**: a Microsoft a különböző bérlőknél észlelt mintákat és fenyegetésre vonatkozó intelligenciát használ a megelőzési és észlelési funkcióihoz, és ezt az [adatvédelmi nyilatkozatában](https://www.microsoft.com/en-us/privacystatement/OnlineServices/) ismertetett adatvédelmi kötelezettségeinek megfelelően teszi.
 
@@ -158,132 +158,132 @@ Az Azure Security Center biztonsággal kapcsolatos adatokat gyűjt és dolgoz fe
 
 Az Azure Security Center ideiglenes másolatokat gyűjt az összeomlási memóriaképek fájljairól, és elemzi ezeket a biztonsági réseket kihasználó támadások és a sikeres feltörések nyomai után kutatva. Az Azure Security Center az elemzéseket ugyanazon a földrajzi helyen végzi el, ahol a munkaterület található, és az elemzés után törli az ideiglenes másolatokat. A gépösszetevők tárolása központilag történik, ugyanabban a régióban, ahol a virtuális gép is található.
 
--   **A Storage-fiókok**: minden olyan régióhoz meg van adva egy Storage-fiók, amelyben a virtuális gépek futnak. Ez lehetővé teszi, hogy abban a régióban tárolja az adatait, amelyben az a virtuális gép található, amelyről az adatok gyűjtése történik.
+-   **A tárfiókok:** A tárfiók van megadva minden régióban, ahol a virtuális gépek futnak. Ez lehetővé teszi, hogy abban a régióban tárolja az adatait, amelyben az a virtuális gép található, amelyről az adatok gyűjtése történik.
 
 -   **Az Azure Security Center tárhelye**: A biztonsági riasztásokkal (beleértve a partnerriasztásokat), javaslatokkal és biztonsági állapottal kapcsolatos információk tárolása jelenleg az Egyesült Államokban, központilag történik. Ez az információ magában foglalhat az Ön virtuális gépeiről összegyűjtött kapcsolódó konfigurációs adatokat és biztonsági eseményeket szükség szerint annak érdekében, hogy megjeleníthessük Önnek a biztonsági riasztásokat, a javaslatokat vagy a biztonsági állapot adatait.
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-A [Azure monitor naplózza a biztonsági](../../security-center/security-center-monitoring.md) és auditálási megoldást, amely lehetővé teszi, hogy aktívan figyelje az összes erőforrást, ami csökkentheti a biztonsági incidensek hatását. Azure Monitor naplókat Security and Audit az erőforrások figyelésére használható biztonsági tartományokkal. A biztonsági tartomány gyors hozzáférést biztosít a beállításokhoz a biztonsági monitorozáshoz a következő tartományokban található további részletek:
+Az [Azure Monitor naplózza a biztonság](../../security-center/security-center-monitoring.md) és a naplózás i megoldás lehetővé teszi, hogy az informatikai aktívan figyelje az összes erőforrást, amely segít minimalizálni a biztonsági incidensek hatását. Az Azure Monitor naplói biztonság és naplózás a biztonsági tartományok, amelyek az erőforrások figyelésére használható. A biztonsági tartomány gyors hozzáférést biztosít a beállításokhoz, a biztonsági figyeléshez a következő tartományokat részletesebben ismerteti:
 
 -   Kártevőfelmérés
 -   Frissítések felmérése
 -   Identitás és hozzáférés.
 
-A Azure Monitor az adott típusú erőforrásokra mutató tájékoztatókat biztosít. Vizualizációkat, lekérdezéseket, útválasztást, riasztásokat, automatikus méretezést és automatizálást biztosít az Azure-infrastruktúra (műveletnapló) és az egyes Azure-erőforrások (diagnosztikai naplók) esetében egyaránt.
+Az Azure Monitor az erőforrások adott típusaira vonatkozó információkra mutató mutatókat biztosít. Vizualizációt, lekérdezést, útválasztást, riasztást, automatikus méretezést és automatizálást kínál az Azure-infrastruktúrából (activity log) és az egyes Azure-erőforrásokból (diagnosztikai naplók) származó adatokon.
 
 ![Azure Monitor](./media/operational-security/azure-operational-security-fig6.png)
 
 
-A Felhőbeli alkalmazások számos mozgó részből összetettek. A figyelési szolgáltatással biztosítható, hogy az alkalmazás kifogástalan állapotban maradjon. Emellett segít elhárítani a lehetséges problémákat vagy a múltbeli hibák elhárítását.
+A felhőalapú alkalmazások összetettek, sok mozgó alkatrészrel. Figyelés adatokat biztosít annak érdekében, hogy az alkalmazás kifogástalan állapotban marad. Ez is segít, hogy elhárít a lehetséges problémákat, vagy hibaelhárítási múlt is.
 
-Emellett a figyelési adatok segítségével mélyebb elemzéseket nyerhet az alkalmazásról. Ezzel az ismerettel javíthatja az alkalmazások teljesítményét vagy karbantartását, vagy automatizálhatja azokat a műveleteket, amelyek egyébként manuális beavatkozást igényelnek.
+Emellett a figyelési adatok segítségével mély betekintést nyerhet az alkalmazásról. Ez a tudás segíthet az alkalmazások teljesítményének vagy karbantarthatóságának javításában, illetve az egyébként manuális beavatkozást igénylő műveletek automatizálásában.
 
 ### <a name="azure-activity-log"></a>Azure-tevékenységnapló
 
 
-Ez egy olyan napló, amely betekintést nyújt az előfizetése erőforrásaiban végrehajtott műveletekre. A műveletnapló korábban "naplók" vagy "operatív naplók" néven ismert, mivel az előfizetések vezérlési sík eseményeiről számolt be.
+Ez egy napló, amely betekintést nyújt az előfizetésben lévő erőforrásokon végrehajtott műveletekbe. A tevékenységnaplót korábban "Naplónaplók" vagy "Működési naplók" néven ismerték, mivel az előfizetések vezérlősíkeseményeit jelenti.
 
 ![Azure-tevékenységnapló](./media/operational-security/azure-operational-security-fig7.png)
 
-A műveletnapló segítségével meghatározhatja a "mit, ki és mikor" típusú írási műveleteket (PUT, POST, DELETE) az előfizetésében lévő erőforrásokon. Emellett megismerheti a művelet állapotát és az egyéb kapcsolódó tulajdonságokat is. A műveletnapló nem tartalmaz olvasási (GET) műveleteket vagy műveleteket a klasszikus modellt használó erőforrásokhoz.
+A tevékenységnapló segítségével meghatározhatja az előfizetés erőforrásaira felvett írási műveletek (PUT, POST, DELETE) "mit, ki és mikor" című szöveget. Azt is megismerheti a művelet állapotát és más releváns tulajdonságokat. A tevékenységnapló nem tartalmazza a klasszikus modellt használó erőforrások olvasási (GET) műveleteit vagy műveleteit.
 
-### <a name="azure-diagnostic-logs"></a>Azure-beli diagnosztikai naplók
+### <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
-Ezeket a naplókat egy erőforrás bocsátja ki, és az adott erőforrás működésével kapcsolatos gazdag és gyakori információkat biztosít. A naplók tartalma az erőforrástípus alapján változik.
+Ezeket a naplókat egy erőforrás bocsátja ki, és gazdag, gyakori adatokat szolgáltat az adott erőforrás működéséről. Ezeknek a naplóknak a tartalma erőforrástípustól függően változik.
 
-A Windows-események rendszernaplói például a virtuális gépek és a Blobok, a táblák és a várólista naplóinak egyik kategóriája a tárolási fiókok diagnosztikai naplóinak kategóriája.
+A Windows eseményrendszer-naplói például a virtuális gépek diagnosztikai naplójának egyik kategóriája, a tábla- és várólistanaplók a storage-fiókok diagnosztikai naplóinak kategóriái.
 
-A diagnosztikai naplók eltérnek a [tevékenység naplójától (korábbi nevén naplózási napló vagy operatív napló)](../../azure-monitor/platform/platform-logs-overview.md). A tevékenység naplója betekintést nyújt az előfizetése erőforrásaiban végrehajtott műveletekre. A diagnosztikai naplókban az erőforrás által végrehajtott műveletekkel kapcsolatos információk találhatók meg.
+A diagnosztikai naplók eltérnek a [tevékenységnaplótól (korábbi nevén napló vagy működési napló).](../../azure-monitor/platform/platform-logs-overview.md) A tevékenységnapló betekintést nyújt az előfizetésben lévő erőforrásokon végrehajtott műveletekbe. A diagnosztikai naplókban az erőforrás által végrehajtott műveletekkel kapcsolatos információk találhatók meg.
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
-A Azure Monitor lehetővé teszi a telemetria használatát az Azure-beli számítási feladatok teljesítményének és állapotának megismeréséhez. Az Azure telemetria-adatok legfontosabb típusa a legtöbb Azure-erőforrás által kibocsátott mérőszámok (más néven teljesítményszámlálók). A Azure Monitor számos módszert biztosít ezen [mérőszámok](../../monitoring/monitoring-data-collection.md) konfigurálásához és felhasználásához a figyeléshez és a hibaelhárításhoz. A metrikák értékes telemetria, és lehetővé teszik a következő feladatok elvégzését:
+Az Azure Monitor lehetővé teszi, hogy telemetriát használjon, hogy betekintést nyerjen az Azure-beli számítási feladatok teljesítményébe és állapotába. A legfontosabb típusú Azure telemetriai adatok a metrikák (más néven teljesítményszámlálók) által kibocsátott legtöbb Azure-erőforrások. Az Azure Monitor számos módszert kínál ezeknek a [metrikáknak](../../monitoring/monitoring-data-collection.md) a figyeléséhez és a hibaelhárításhoz történő konfigurálására és felhasználására. A metrikák a telemetria értékes forrásai, és lehetővé teszik a következő feladatok elvégzését:
 
--   **Nyomon követheti az erőforrás teljesítményét** (például egy virtuális gépet, webhelyet vagy logikai alkalmazást), ha kirajzolja a mérőszámait egy portál diagramon, és a diagramot egy irányítópultra rögzíti.
+-   Az erőforrás (például egy virtuális gép, webhely vagy logikai alkalmazás) **teljesítményét úgy követheti nyomon,** hogy a mérőszámokat egy portáldiagramon ábrázolja, és a diagramot egy irányítópultra tűzi.
 
--   **Értesítést kap arról,** hogy az erőforrás teljesítménye hatással van, ha egy metrika egy bizonyos küszöbértéket keresztez.
+-   **Értesítést kaphat egy olyan problémáról,** amely hatással van az erőforrás teljesítményére, amikor egy metrika átlép egy bizonyos küszöbértéket.
 
--   **Konfiguráljon automatizált műveleteket**, például egy erőforrás automatikus méretezését vagy egy runbook égetését, ha egy metrika egy bizonyos küszöbértéket keresztez.
+-   **Konfigurálja az automatikus műveleteket,** például egy erőforrás automatikus méretezése vagy egy runbook kilövése, ha egy metrika átlép egy bizonyos küszöbértéket.
 
--   **Speciális elemzési** vagy jelentéskészítési műveletek végrehajtása az erőforrás teljesítmény-vagy használati trendjeivel.
+-   **Speciális elemzéseket** vagy jelentéseket végezhet az erőforrás teljesítményéről vagy használati tendenciáiról.
 
--   Az erőforrás teljesítmény-vagy állapotadatok **archiválása** megfelelőségi vagy naplózási célokra.
+-   **Archiválja** az erőforrás teljesítményét vagy állapotát megfelelőségi vagy naplózási célokra.
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-Ez a képesség az Azure-ban, amely lehetővé teszi a diagnosztikai adatgyűjtést egy üzembe helyezett alkalmazáson belül. A diagnosztikai bővítményt különböző forrásokból is használhatja. Jelenleg támogatott az [Azure Cloud Service webes és feldolgozói szerepkörei](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), az [Azure Virtual Machines](../../virtual-machines/windows/overview.md) a Microsoft Windows rendszert futtatja, és [Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md). Más Azure-szolgáltatások saját külön diagnosztikát is rendelkeznek.
+Az Azure-on belüli képesség teszi lehetővé a diagnosztikai adatok gyűjtését egy telepített alkalmazáson. Használhatja a diagnosztikai bővítmény különböző forrásokból. Jelenleg támogatott az [Azure Cloud Service Web és a Worker Roles](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), a Microsoft Windows rendszert futtató Azure virtuális [gépek](../../virtual-machines/windows/overview.md) és a [Service Fabric.](../../azure-monitor/platform/diagnostics-extension-overview.md) Más Azure-szolgáltatások saját külön diagnosztikával rendelkeznek.
 
 ## <a name="azure-network-watcher"></a>Azure Network Watcher
 
-A hálózati biztonság naplózása létfontosságú a hálózati sebezhetőségek észleléséhez, valamint az informatikai biztonsági és szabályozási irányítási modell megfelelőségének biztosításához. A biztonsági csoport nézettel beolvashatók a konfigurált hálózati biztonsági csoport és biztonsági szabályok, valamint az érvényes biztonsági szabályok. Az alkalmazott szabályok listájának segítségével meghatározhatja a megnyíló portokat, és kiderítheti a hálózati sebezhetőséget.
+A hálózati biztonság naplózása létfontosságú a hálózati biztonsági rések észleléséhez, valamint az informatikai biztonsági és szabályozási irányítási modellnek való megfelelés biztosításához. A Biztonsági csoport nézetben lekérheti a konfigurált hálózati biztonsági csoportot és biztonsági szabályokat, valamint a hatályos biztonsági szabályokat. Az alkalmazott szabályok listájával meghatározhatja a megnyitott portokat, és felmérheti a hálózati biztonsági rést.
 
-[Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) egy regionális szolgáltatás, amely lehetővé teszi, hogy az Azure-ban hálózati szinten figyelje és diagnosztizálja a feltételeket. A Network Watcher elérhető hálózati diagnosztikai és vizualizációs eszközök segítségével megismerheti, diagnosztizálhatja és elemezheti a hálózatát az Azure-ban. Ez a szolgáltatás magában foglalja a csomagok rögzítését, a következő ugrást, az IP-forgalom ellenőrzését, a biztonsági csoport nézetét, a NSG folyamat naplóit. A forgatókönyvek szintjének figyelése lehetővé teszi a hálózati erőforrások teljes körű megtekintését az egyes hálózati erőforrások figyelésével szemben.
+[A Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) egy regionális szolgáltatás, amely lehetővé teszi a feltételek figyelése és diagnosztizálása hálózati szinten az Azure-ban, az Azure-ban és az Azure-ból. A Network Watcher segítségével a Network Watcher segítségével megismerheti, diagnosztizálhatja és betekintést nyerhet a hálózatába az Azure-ban. Ez a szolgáltatás tartalmazza a csomagrögzítést, a következő ugrást, az IP-folyamat ellenőrzését, a biztonsági csoport nézetét, az NSG folyamatnaplóit. A forgatókönyvszint-figyelés a hálózati erőforrások teljes nézetét biztosítja, ellentétben az egyes hálózati erőforrások figyelésével.
 
 ![Azure Network Watcher](./media/operational-security/azure-operational-security-fig8.png)
 
 A Network Watcher jelenleg a következő képességekkel rendelkezik:
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Naplók</a>** – a hálózatok konfigurációjának részeként végrehajtott műveletek naplózása történik. Ezek a naplók a Azure Portalban tekinthetők meg, vagy a Microsoft-eszközök, például Power BI vagy külső gyártótól származó eszközök használatával kérhetők le. A naplók a portálon, a PowerShellen, a CLI-n és a REST API-n keresztül érhetők el. A naplókkal kapcsolatos további információkért lásd: műveletek naplózása a Resource Managerrel. A naplók az összes hálózati erőforráson végzett műveletekhez érhetők el.
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Naplónaplók</a>**– a hálózatok konfigurációjának részeként végrehajtott műveletek et naplózza a rendszer. Ezek a naplók megtekinthetők az Azure Portalon, vagy leolvashatók a Microsoft eszközeivel, például a Power BI vagy a külső eszközök használatával. A naplózási naplók a portálon, a PowerShellen, a CLI-n és a Rest API-n keresztül érhetők el. A naplókról további információt az Erőforrás-kezelővel végzett naplózási műveletek című témakörben talál. A naplónaplók az összes hálózati erőforráson végzett műveletekhez érhetők el.
 
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP-forgalom ellenőrzése</a>** – ellenőrzi, hogy egy csomag engedélyezett vagy megtagadva a flow-információk 5 rekordos csomagjainak paraméterei (cél IP-címe, forrás IP-címe, célport, forrásport és protokoll) alapján. Ha a csomagot egy hálózati biztonsági csoport megtagadja, a rendszer visszaadja a csomagot és a hálózati biztonsági csoportot, amely megtagadta a csomagot.
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">Az IP-folyamat ellenőrzése</a>** – Ellenőrzi, hogy egy csomag engedélyezett vagy elutasított-e az 5-ttűs csomagparaméterek (cél IP, Forrás IP, célport, forrásport és protokoll) alapján. Ha egy hálózati biztonsági csoport megtagadja a csomagot, a rendszer visszaadja a csomagot megtagadó szabályt és hálózati biztonsági csoportot.
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview">Következő ugrás</a>** – meghatározza a következő ugrást az Azure hálózati hálóban átirányított csomagok számára, lehetővé téve a helytelenül konfigurált, felhasználó által megadott útvonalak diagnosztizálását.
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview">Következő ugrás</a>** – Meghatározza a következő ugrás az Azure Network Fabric-ben irányított csomagok, amely lehetővé teszi a helytelenül konfigurált felhasználó által definiált útvonalak diagnosztizálását.
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview">Biztonsági csoport nézet</a>** – a virtuális gépen alkalmazott hatályos és alkalmazott biztonsági szabályok beolvasása.
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview">Biztonsági csoport nézet</a>** – Leszögezi a virtuális gépen alkalmazott hatékony és alkalmazott biztonsági szabályokat.
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview">NSG flow naplózás</a>** – a hálózati biztonsági csoportok folyamatábrái lehetővé teszik a csoport biztonsági szabályai által engedélyezett vagy megtagadott forgalomhoz kapcsolódó naplók rögzítését. A folyamatot 5 rekordos információ határozza meg – forrás IP-cím, célként megadott IP-cím, forrásport, célport és protokoll.
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview">NSG-folyamatnaplózás</a>** – A hálózati biztonsági csoportok folyamatnaplói lehetővé teszik a csoport biztonsági szabályai által engedélyezett vagy elutasított forgalommal kapcsolatos naplók rögzítését. A folyamatot egy 5-tétes információ határozza meg – forrás IP, cél IP, forrásport, célport és protokoll.
 
-## <a name="azure-storage-analytics"></a>Azure Storage Analytics
+## <a name="azure-storage-analytics"></a>Azure Storage-statisztika
 
-A [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) olyan metrikákat tárolhat, amelyek összesített tranzakciós statisztikát és kapacitási adatokat tartalmaznak a tárolási szolgáltatásokra irányuló kérések esetén. A tranzakciókat az API működési szintjén és a tárolási szolgáltatás szintjén is jelenteni kell, a kapacitást pedig a Storage szolgáltatás szintjén kell jelenteni. A metrikák adatai a tárolási szolgáltatások használatának elemzésére, a tárolási szolgáltatással kapcsolatos kérések diagnosztizálására, valamint a szolgáltatást használó alkalmazások teljesítményének javítására használhatók.
+[A Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) olyan metrikákat tárolhat, amelyek összesített tranzakcióstatisztikákat és kapacitásadatokat tartalmaznak a storage-szolgáltatásoknak küldött kérelmekről. A tranzakciók at az API-művelet szintjén és a tárolási szolgáltatás szintjén is jelentik, a kapacitást pedig a tárolási szolgáltatás szintjén. Metrikák adatok segítségével elemezheti a tárolási szolgáltatás használatát, diagnosztizálhatja a rendszerkérésekkel kapcsolatos problémákat a tárolási szolgáltatás, és a szolgáltatás thasználó alkalmazások teljesítményének javítása.
 
-[Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) naplózást végez, és metrikai adatokat biztosít egy Storage-fiókhoz. Ezekkel az adatokkal kérések követhetők nyomon, elemezhetők a használati trendek és diagnosztizálni lehet a tárfiókokkal kapcsolatos problémákat. Storage Analytics naplózás elérhető a [blob, a üzenetsor és a Table Services](../../storage/common/storage-introduction.md)számára. A Storage Analytics naplózza a tárolási szolgáltatásoknak elküldött sikeres és sikertelen kérelmek részletes információit.
+[Az Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) naplózást hajt végre, és metrikaadatokat biztosít egy tárfiókhoz. Ezeket az adatokat a kérelmek nyomon követésére, a használati trendek elemzésére és a tárfiókkal kapcsolatos problémák diagnosztizálására használhatja. A Storage Analytics naplózása a [Blob, a Várólista és](../../storage/common/storage-introduction.md)a Table szolgáltatásokhoz érhető el. A Storage Analytics naplózza a tárolási szolgáltatásoknak elküldött sikeres és sikertelen kérelmek részletes információit.
 
-Ezekkel az információkkal monitorozhatók az egyes kérelmek és diagnosztizálhatók a tárolási szolgáltatások problémái. A kéréseket a rendszer a lehető legjobb módon naplózza. A naplóbejegyzések csak akkor jönnek létre, ha a szolgáltatás-végpontra irányuló kérések történnek. Ha például egy Storage-fiók egy tevékenységgel rendelkezik a blob-végponton, de nem a tábla vagy a várólista végpontjában, akkor csak a Blob servicehoz tartozó naplók jönnek létre.
+Ezekkel az információkkal monitorozhatók az egyes kérelmek és diagnosztizálhatók a tárolási szolgáltatások problémái. A kérelmek naplózása a legjobb erőfeszítés alapján történik. A naplóbejegyzések csak akkor jönnek létre, ha a szolgáltatás végpontjának kérései vannak. Például ha egy tárfiók tevékenységet a Blob végpontjában, de nem a tábla vagy a várólista végpontok, csak a Blob szolgáltatáshoz tartozó naplók jönnek létre.
 
-Storage Analytics használatához külön kell engedélyeznie a figyelni kívánt szolgáltatásokhoz. Engedélyezheti a [Azure Portal](https://portal.azure.com/); További információ: [Storage-fiók figyelése a Azure Portalban](../../storage/common/storage-monitor-storage-account.md). Storage Analytics programozott módon is engedélyezheti a REST API vagy az ügyféloldali kódtár használatával. A szolgáltatás tulajdonságainak beállítása művelettel engedélyezheti a Storage Analytics egyenként az egyes szolgáltatásokhoz.
+A Storage Analytics használatához külön-külön kell engedélyeznie minden egyes figyelni kívánt szolgáltatáshoz. Az [Azure Portalon](https://portal.azure.com/)engedélyezheti; További információt a [Tárfiók figyelése az Azure Portalon című témakörben talál.](../../storage/common/storage-monitor-storage-account.md) A Storage Analytics programozott módon is engedélyezhető a REST API-n vagy az ügyfélkódtáron keresztül. A Szolgáltatás tulajdonságainak beállítása művelettel engedélyezheti a Storage Analytics-et egyenként az egyes szolgáltatásokhoz.
 
-Az összesített adatokat egy jól ismert blobban (naplózáshoz) és jól ismert táblákban (a metrikák esetében) tárolják, amelyek a Blob service és az Table service API-k használatával érhetők el.
+Az összesített adatok egy jól ismert blobban (naplózás) és jól ismert táblákban (metrikák) tárolódnak, amelyek a Blob szolgáltatás és a Table service API-k használatával érhetők el.
 
-A Storage Analytics 20 TB-os korláttal rendelkezik a Storage-fiók teljes korlátján kívüli tárolt adat mennyiségétől függően. Az összes napló egy $logs nevű tárolóban található [blokk blobokban](../../storage/common/storage-analytics.md) van tárolva, amelyek automatikusan létrejönnek, ha a Storage Analytics engedélyezve van egy Storage-fiókhoz.
+A Storage Analytics 20 TB-os korláttal rendelkezik a tárfiók teljes korlátáttól független tárolt adatok mennyiségére vonatkozóan. Az összes napló [tanéven](../../storage/common/storage-analytics.md) ként $logs tárolóban tárolóban tárolóba kerül, amely automatikusan létrejön, ha a Storage Analytics engedélyezve van egy tárfiókhoz.
 
-A Storage Analytics által végrehajtott következő műveletek számlázandóek:
+A Storage Analytics által végrehajtott alábbi műveletek számlázhatók:
 
--   Kérelmek a Blobok létrehozásához a naplózáshoz
--   A táblázat entitások metrikák létrehozásához szükséges kérelmek.
-
-> [!Note]
-> A számlázási és adatmegőrzési szabályzatokkal kapcsolatos további információkért lásd: [Storage Analytics és számlázás](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-and-billing).
-> Az optimális teljesítmény érdekében korlátozni szeretné a virtuális géphez csatlakoztatott, magas kihasználtságú lemezek számát a lehetséges szabályozás elkerülése érdekében. Ha az összes lemez nem magas kihasználtságú, a Storage-fiók több lemezt is támogat.
+-   Blobok naplózáshoz való létrehozására irányuló kérelmek
+-   A metrikák táblaentitások létrehozására vonatkozó kérések.
 
 > [!Note]
-> A Storage-fiók korlátaival kapcsolatos további információkért lásd a [standard szintű Storage-fiókok méretezhetőségi céljait](../../storage/common/scalability-targets-standard-account.md)ismertető témakört.
+> A számlázási és adatmegőrzési szabályzatokkal kapcsolatos további információkért lásd: [Storage Analytics and Billing](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-and-billing).
+> Az optimális teljesítmény érdekében korlátozni szeretné a virtuális géphez csatlakoztatott nagy mértékben kihasznált lemezek számát, hogy elkerülje a szabályozást. Ha az összes lemez nem nagy mértékben kihasznált egy időben, a tárfiók támogatja a nagyobb számú lemezt.
+
+> [!Note]
+> A tárfiókok korlátairól a [szabványos tárfiókok méretezhetőségi céljai](../../storage/common/scalability-targets-standard-account.md)című témakörben talál további információt.
 
 
-A rendszer naplózza a következő típusú hitelesített és névtelen kérelmeket.
+A rendszer a következő típusú hitelesített és névtelen kérelmeket naplózza.
 
 | Hitelesített  | Névtelen|
 | :------------- | :-------------|
-| Sikeres kérések | Sikeres kérések |
-|Sikertelen kérések, köztük az időtúllépések, torlódások, valamint a hálózati, hitelesítési és egyéb hibák | Közös hozzáférésű aláírást (SAS) használó kérelmek, beleértve a sikertelen és sikeres kérelmeket |
-| Közös hozzáférésű aláírást (SAS) használó kérelmek, beleértve a sikertelen és sikeres kérelmeket |Ügyfél- és kiszolgálóoldali időtúllépési hibák |
-|   Elemzési adatokhoz kapcsolódó kérelmek |    Sikertelen GET kérelmek a 304 hibakódmal (nincs módosítva) |
-| A Storage Analytics saját maga által kezdeményezett kérelmeket (például a naplózás létrehozását vagy törlését) nem naplózza a rendszer. A naplózott adatok teljes listáját az [Storage Analytics naplózott műveletek és állapotüzenetek](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) , valamint a [Storage Analytics naplózási formátum](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format) témakörök ismertetik. | Az összes többi sikertelen névtelen kérelmet nem naplózza a rendszer. A naplózott adatok teljes listáját az [Storage Analytics naplózott műveletek és állapotüzenetek](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) , valamint a [Storage Analytics naplózási formátuma](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)ismerteti. |
+| Sikeres kérelmek | Sikeres kérelmek |
+|Sikertelen kérések, köztük az időtúllépések, torlódások, valamint a hálózati, hitelesítési és egyéb hibák | Kérelmek megosztott hozzáférésű aláírást (SAS) használó, beleértve a sikertelen és sikeres kérelmeket |
+| Kérelmek megosztott hozzáférésű aláírást (SAS) használó, beleértve a sikertelen és sikeres kérelmeket |Ügyfél- és kiszolgálóoldali időtúllépési hibák |
+|   Elemzési adatokhoz kapcsolódó kérelmek |    304-es (Nincs módosítva) hibakóddal ellátott sikertelen GET-kérések |
+| A Storage Analytics által tett kérelmek, például a napló létrehozása vagy törlése, nem kerülnek naplózásra. A naplózott adatok teljes listáját a [Storage Analytics naplózott műveletek és állapotüzenetek és](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) a Storage Analytics log [format](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format) témakörök dokumentálják. | Az összes többi sikertelen névtelen kérelem nem kerül naplózásra. A naplózott adatok teljes listáját a [Storage Analytics naplózott műveletek és állapotüzenetek és](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) a Storage Analytics log format [dokumentálja.](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format) |
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
-Az Azure AD számos Identitáskezelés-felügyeleti képességet tartalmaz, többek között a többtényezős hitelesítést, az eszközök regisztrálását, az önkiszolgáló jelszavas kezelést, az önkiszolgáló csoportok felügyeletét, a privilegizált fiókok felügyeletét, a szerepköralapú hozzáférést vezérlés, alkalmazások használatának figyelése, részletes naplózás és biztonsági monitorozás és riasztások.
+Az Azure AD az identitáskezelési képességek teljes csomagját is tartalmazza, beleértve a többtényezős hitelesítést, az eszközregisztrációt, az önkiszolgáló jelszókezelést, az önkiszolgáló csoportkezelést, a kiemelt fiókkezelést, a szerepköralapú hozzáférést ellenőrzés, alkalmazáshasználat-figyelés, bővített naplózás, valamint biztonsági figyelés és riasztás.
 
--   Az alkalmazások biztonságának javítása az Azure AD többtényezős hitelesítéssel és a feltételes hozzáféréssel.
+-   Az Azure AD többtényezős hitelesítéssel és feltételes hozzáféréssel javíthatja az alkalmazások biztonságát.
 
--   Az alkalmazások használatának figyelése és az üzleti adatok védelme a fejlett fenyegetésekkel és a biztonsági jelentéskészítéssel és figyeléssel.
+-   A biztonsági jelentésekkel és figyeléssel figyelheti az alkalmazások használatát, és megvédheti vállalkozását a speciális fenyegetésekkel szemben.
 
-Az Azure Active Directory (Azure AD) biztonsági, naplózási és tevékenységjelentéseket biztosít a címtárához. [A Azure Active Directory audit jelentés](../../active-directory/active-directory-reporting-azure-portal.md) segíti az ügyfeleket abban, hogy azonosítsák a Azure Active Directoryban bekövetkezett privilegizált műveleteket. A Kiemelt jogosultságú műveletek közé tartoznak a jogosultságszint-emelési változások (például a szerepkörök létrehozása vagy a jelszó alaphelyzetbe állítása), a házirendek konfigurációjának módosítása (például a jelszóházirend) vagy a címtár konfigurációjának módosítása (például a tartományi összevonási beállítások változásai).
+Az Azure Active Directory (Azure AD) biztonsági, naplózási és tevékenységjelentéseket biztosít a címtárához. [Az Azure Active Directory naplózási jelentés](../../active-directory/active-directory-reporting-azure-portal.md) segít az ügyfeleknek az Azure Active Directoryban előforduló kiemelt műveletek azonosításában. A kiemelt műveletek közé tartoznak a jogosultságszint-emelésmódosításai (például a szerepkör létrehozása vagy a jelszó visszaállítása), a házirend-konfigurációk módosítása (például jelszóházirendek) vagy a címtárkonfiguráció módosításai (például a tartományösszevonási beállítások módosításai).
 
-A jelentések az esemény neve, a műveletet végrehajtó színész, a módosítás által érintett cél erőforrás, valamint a dátum és idő (UTC) alapján adják meg a naplózási rekordot. Az ügyfelek lekérhetik Azure Active Directory naplózási események listáját a [Azure Portal](https://portal.azure.com/)segítségével, a [naplók megtekintése](../../active-directory/reports-monitoring/overview-reports.md)című témakörben leírtak szerint. A benne foglalt jelentések listája:
+A jelentések az esemény nevének, a műveletet végző szereplőnek, a módosítás által érintett célerőforrásnak, valamint a dátumnak és az időnek a naplózási rekordját adják (UTC-ben). Az ügyfelek az Azure Active Directory naplózási eseményeinek listáját az [Azure Portalon](https://portal.azure.com/)keresztül kérhetik le, a [naplónaplók megtekintése](../../active-directory/reports-monitoring/overview-reports.md)című dokumentumban leírtak szerint. A benne foglalt jelentések listája:
 
 | Biztonsági jelentések  | Tevékenységjelentések| Naplózási jelentések |
 | :------------- | :-------------| :-------------|
@@ -299,47 +299,47 @@ A jelentések az esemény neve, a műveletet végrehajtó színész, a módosít
 
 
 
-Ezeknek a jelentéseknek az adatai hasznosak lehetnek az alkalmazások, például a SIEM-rendszerek, a naplózási és az üzleti intelligencia-eszközök számára. Az Azure AD Reporting [API](../../active-directory/active-directory-reporting-api-getting-started-azure-portal.md) -k egy REST-alapú API-kon keresztül programozott hozzáférést biztosítanak az adatokhoz. Ezeket az API-kat különböző programozási nyelveken és eszközökön hívhatja.
+Ezeknek a jelentéseknek az adatai hasznosak lehetnek az alkalmazások számára, például a SIEM-rendszerek, a naplózás és az üzletiintelligencia-eszközök számára. Az Azure AD [jelentéskészítési API-k](../../active-directory/active-directory-reporting-api-getting-started-azure-portal.md) biztosít programozott hozzáférést az adatokhoz egy sor REST-alapú API-k. Ezeket az API-kat különböző programozási nyelvekből és eszközökből hívhatja.
 
-Az Azure AD-naplózási jelentésben szereplő események 180 napig őrződnek meg.
+Az Azure AD-naplózási jelentésben lévő események 180 napig megmaradnak.
 
 > [!Note]
-> További információ a jelentések megőrzéséről: [Azure Active Directory jelentési adatmegőrzési szabályzatok](../../active-directory/reports-monitoring/reference-reports-data-retention.md).
+> A jelentések megőrzéséről az [Azure Active Directory jelentésmegőrzési házirendjei](../../active-directory/reports-monitoring/reference-reports-data-retention.md)című témakörben talál további információt.
 
-Azon ügyfelek számára, akik a [naplózási események](../../active-directory/active-directory-reporting-activity-audit-logs.md) hosszabb megőrzési időtartamokra való tárolását érdeklik, a JELENTÉSKÉSZÍTÉSi API-val rendszeresen lehívhatja a naplózási eseményeket egy különálló adattárba.
+A [naplózási események](../../active-directory/active-directory-reporting-activity-audit-logs.md) hosszabb megőrzési időszakokra történő tárolása iránt érdeklődő ügyfelek számára a Reporting API segítségével rendszeresen lehívhat naplózási eseményeket egy külön adattárba.
 
 ## <a name="summary"></a>Összefoglalás
 
-Ez a cikk az adatvédelmet és az adatok védelmét, valamint a szervezet informatikai infrastruktúrájának kezelését segítő szoftvereket és szolgáltatásokat nyújt. A Microsoft felismeri, hogy amikor másoknak bízzák meg az adatvédelmet, a megbízhatóság szigorú biztonságot igényel. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig. Az adatok biztonságossá tétele és védelme a Microsoft legfontosabb prioritása.
+Ez a cikk összefoglalja az adatvédelem és az adatok védelme, miközben olyan szoftverek és szolgáltatások, amelyek segítenek kezelni az informatikai infrastruktúra a szervezet. A Microsoft elismeri, hogy amikor az adataikat másokra bízzák, ez a bizalom szigorú biztonságot igényel. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig. Az adatok védelme és védelme a Microsoft egyik legfontosabb prioritása.
 
-Ez a cikk ismerteti
+Ez a cikk
 
--   Az adatok gyűjtése, feldolgozása és biztonságossá tétele a Azure Monitor Suite-ban.
+-   Hogyan gyűjti, dolgozza fel és biztosítja az adatokat az Azure Monitor csomagban.
 
--   Az események gyors elemzése akár több adatforrásban. A biztonsági incidensek okozta károk minimalizálása érdekében azonosítani kell a biztonsági kockázatokat és fel kell mérni a fenyegetések és támadások terjedelmét és hatásait.
+-   Gyorsan elemezheti az eseményeket több adatforrásban. Azonosítsa a biztonsági kockázatokat, és ismerje meg a fenyegetések és támadások hatókörét és hatását a biztonsági rés okozta károk csökkentése érdekében.
 
--   Támadási minták azonosítása a kimenő rosszindulatú IP-forgalom és a rosszindulatú fenyegetéstípusok vizualizációjával. Ismerje meg a teljes környezet biztonsági állapotát a platformtól függetlenül.
+-   Azonosítsa a támadási mintákat a kimenő rosszindulatú IP-forgalom és a rosszindulatú fenyegetéstípusok megjelenítésével. Ismerje meg a teljes környezet biztonsági állapotát platformtól függetlenül.
 
--   Rögzítse a biztonsági vagy megfelelőségi ellenőrzéshez szükséges összes naplózási és esemény-adatmennyiséget. A biztonsági audit teljes, kereshető és exportálható napló-és esemény-adatkészlettel való ellátásához szükséges idő és erőforrások levágása.
+-   Rögzítse a biztonsági vagy megfelelőségi naplózáshoz szükséges összes napló- és eseményadatot. Csökkentse a biztonsági naplózás teljes, kereshető és exportálható napló- és eseményadatkészlettel való ellátásához szükséges időt és erőforrásokat.
 
 <ul>
-<li>A biztonsággal kapcsolatos események, naplózási és szabálysértési elemzések összegyűjtése az eszközök alapos nyomon követéséhez:</li>
+<li>Gyűjtse össze a biztonsággal kapcsolatos eseményeket, naplózza és elemezheti a szabálysértéseket, hogy közelről szemmel tarthassa eszközeit:</li>
 <ul>
-<li>Biztonsági testhelyzet</li>
-<li>Jelentős probléma</li>
-<li>Összefoglalási fenyegetések</li>
+<li>Biztonsági testtartás</li>
+<li>Figyelemre méltó kérdés</li>
+<li>Összefoglalása fenyegetések</li>
 </ul>
 </ul>
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Tervezési és működési biztonság](https://www.microsoft.com/trustcenter/security/designopsecurity)
+- [Tervezés és üzembiztonság](https://www.microsoft.com/trustcenter/security/designopsecurity)
 
-A Microsoft megtervezi a szolgáltatásait és szoftvereit a biztonsággal kapcsolatban, így biztosítva, hogy a felhőalapú infrastruktúrája rugalmasan és védelmet nyújtson a támadásokkal szemben.
+A Microsoft a szolgáltatásokat és a szoftvereket a biztonság szem előtt tartásával tervezi meg, hogy a felhőalapú infrastruktúra rugalmas legyen, és védve legyen a támadásokkal szemben.
 
-- [Naplók Azure Monitor | Security & Compliance](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Azure Monitor naplók | Biztonsági & megfelelőség](https://www.microsoft.com/cloud-platform/security-and-compliance)
 
-A Microsoft biztonsági adatai és elemzése segítségével intelligensebb és hatékony veszélyforrások észlelését végezheti el.
+A Microsoft biztonsági adatainak és elemzésének segítségével intelligensebb és hatékonyabb fenyegetésészlelést végezhet.
 
-- [Azure Security Center tervezés és műveletek](../../security-center/security-center-planning-and-operations-guide.md) Lépések és feladatok összessége, amelyek segítségével optimalizálhatja Security Center használatát a szervezet biztonsági követelményei és a felhőalapú felügyeleti modell alapján.
+- [Az Azure Security Center tervezése és műveletei](../../security-center/security-center-planning-and-operations-guide.md) A Biztonsági központ használatának optimalizálásához a szervezet biztonsági követelményei és a felhőkezelési modell alapján követheti a lépéseket és feladatokat.
 

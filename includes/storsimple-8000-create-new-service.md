@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 980cbe17e982edb3aa72c3b58908f13a3d63a639
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76020948"
 ---
 #### <a name="to-create-a-new-service"></a>Új szolgáltatás létrehozása
@@ -19,7 +19,7 @@ ms.locfileid: "76020948"
 
     ![StorSimple-eszközkezelő létrehozása](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    _StorSimple fizikai eszközök_ keresése. Válassza ki, majd kattintson a **StorSimple fizikaieszköz-sorozat** lehetőségre, majd kattintson a **Létrehozás** gombra. Vagy az Azure Portalon kattintson a **+** , majd a **Storage** részen a **StorSimple Physical Device Series** elemre.
+    _StorSimple fizikai eszközök_ keresése. Válassza ki, majd kattintson a **StorSimple fizikaieszköz-sorozat** lehetőségre, majd kattintson a **Létrehozás** gombra. Másik lehetőségként az Azure **+** Portalon kattintson a **Tárhely**csoportba, majd a **StorSimple fizikai eszközsorozat**elemre.
 
     ![StorSimple-eszközkezelő létrehozása](./media/storsimple-8000-create-new-service/createssdevman11.png)
 

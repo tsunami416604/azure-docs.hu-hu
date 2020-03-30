@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: rogarana
 ms.openlocfilehash: 8fcd85a42deab2ea5f7d8587b276eca106f6dd97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179107"
 ---
-**Szabványos nem felügyelt virtuálisgép-lemezek: lemezterület-korlátok**
+**Nem felügyelt, nem felügyelt virtuálisgép-lemezek: Lemezenkénti korlátok**
 
-| Virtuális gép szintje | Alapszintű virtuális gép | Standard szintű VM |
+| Virtuálisgép-szint | Alapszintű virtuális gép | Standard szintű virtuális gép |
 | --- | --- | --- |
-| Lemezméret |4 095 GB |4 095 GB |
-| Egy állandó lemezen legfeljebb 8 KB IOPS |300 |500 |
-| A maximális IOPS végrehajtó lemezek maximális száma |66 |40 |
+| Lemezméret |4095 GB |4095 GB |
+| Legfeljebb 8 KB-os IOPS állandó lemezenként |300 |500 |
+| A maximális IOPS-t végző lemezek maximális száma |66 |40 |
 

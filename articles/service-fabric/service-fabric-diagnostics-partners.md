@@ -1,46 +1,46 @@
 ---
-title: Azure Service Fabric-figyelési partnerek
-description: Ismerje meg, hogyan figyelhetők meg az Azure Service Fabric-alkalmazások,-fürtök és-infrastruktúra a partner-figyelési megoldásokkal.
+title: Azure Service Fabric figyelési partnerek
+description: Ismerje meg, hogyan figyelheti az Azure Service Fabric-alkalmazásokat, fürtöket és infrastruktúrát partnerfigyelési megoldásokkal.
 author: srrengar
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: srrengar
 ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645718"
 ---
-# <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric-figyelési partnerek
+# <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric figyelési partnerek
 
-Ez a cikk azt szemlélteti, hogyan figyelhetők meg az Service Fabric alkalmazások, fürtök és infrastruktúra egy maroknyi partneri megoldással. Az alábbi partnerekkel együttműködve integrált ajánlatokat hozhat létre Service Fabric számára.
+Ez a cikk bemutatja, hogyan lehet figyelni a Service Fabric-alkalmazások, fürtök és infrastruktúra egy maroknyi partnermegoldások. Az alábbi partnerekkel együttműködve integrált ajánlatokat hoztunk létre a Service Fabric számára.
 
 ## <a name="dynatrace"></a>Dynatrace
 
-A Dynatrace szolgáltatással való integráció számos lehetőséget kínál a Service Fabric-fürtök figyelésére. A VMSS-példányok Dynatrace-OneAgent telepítése a teljesítményszámlálók és a Service Fabric üzembe helyezésének topológiáját biztosítja az alkalmazás szintjén. A Dynatrace szintén kiváló választás a helyszíni figyeléshez. Tekintse meg a [közleményben](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) felsorolt funkciókat és a Dynatrace engedélyezéséhez szükséges [utasításokat](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) a fürtön. 
+A Dynatrace-del való integrációszámos, a szolgáltatásháló-fürtök figyeléséhez biztosít funkciókat. A Dynatrace OneAgent telepítése a VMSS-példányok on a VMSS-példányok teljesítményszámlálók és a Service Fabric központi telepítésének topológiáját az alkalmazás szintjére. A Dynatrace kiváló választás helyszíni felügyelethez is. Tekintse meg a [közleményben](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) felsorolt funkciókat és [utasításokat,](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) amelyek lehetővé teszik a Dynatrace szolgáltatást a fürtön. 
 
-## <a name="datadog"></a>Datadoggal
+## <a name="datadog"></a>Datadog (Adatkutya)
 
-A datadoggal a Windows-és Linux-példányok esetében a VMSS bővítményt is tartalmaz. A Datadoggal használatával gyűjthet Windows-eseménynaplókat, és így Service Fabric platform-eseményeket gyűjthet a Windowsban. Tekintse meg a diagnosztikai [adatai datadoggal való](https://www.datadoghq.com/blog/azure-monitoring-enhancements/#integrate-with-azure-service-fabric)elküldésére vonatkozó utasításokat.
+Datadog van egy kiterjesztése VMSS windowsos és Linux-példányok. A Datadog használatával windowsos eseménynaplókat gyűjthet, és ezáltal gyűjthet Service Fabric platformeseményeket a Windows rendszeren. Nézze meg az utasításokat, hogyan kell elküldeni a diagnosztikai adatokat Datadog [itt](https://www.datadoghq.com/blog/azure-monitoring-enhancements/#integrate-with-azure-service-fabric).
 
 ## <a name="appdynamics"></a>AppDynamics
 
-A AppDynamics Service Fabric integrációja az alkalmazás szintjén történik. A környezeti változók frissítésével és az alkalmazás-Dynamics Nuget használatával a telemetria a AppDynamics-be küldheti. A .NET Service Fabric-alkalmazások AppDynamics való integrálásával kapcsolatban itt talál [útmutatást](https://docs.appdynamics.com/display/AZURE/Install+AppDynamics+for+Azure+Service+Fabric) .
+A Service Fabric-integráció az AppDynamics alkalmazásszintjén van. A környezeti változók frissítésével és az App Dynamics NuGets használatával alkalmazástelemetriai adatokat küldhet az AppDynamics-nek. A .NET Service Fabric-alkalmazások AppDynamics alkalmazásokkal való integrálásáról ezek az [utasítások](https://docs.appdynamics.com/display/AZURE/Install+AppDynamics+for+Azure+Service+Fabric) találhatók.
 
-## <a name="new-relic"></a>A New Relic-bővítmény
+## <a name="new-relic"></a>New Relic
 
-Az új ereklye egy másik alkalmazás-Teljesítményfigyelő eszköz, amely Service Fabric alkalmazásokkal jól integrálható. Telepítheti az új ereklye NuGet-csomagokat, és meghatározott környezeti változókat adhat hozzá a jegyzékfájlokhoz, hogy az alkalmazás telemetria az új ereklye számára küldje el. Tekintse meg ezeket az [utasításokat](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/install-net-agent-azure-service-fabric) , hogy engedélyezze az új ereklye telemetria a .net Service Fabric alkalmazásaihoz.
+Az Új relic egy másik alkalmazásteljesítmény-kezelő eszköz, amely jól integrálható a Service Fabric-alkalmazásokkal. Telepítheti az új relic NuGet csomagokat, és hozzáadhat konkrét környezeti változókat a jegyzékfájlokban, hogy az alkalmazás telemetriáját az új relic nek küldhesse. Tekintse meg ezeket [az utasításokat,](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/install-net-agent-azure-service-fabric) hogy engedélyezze az új relic telemetriai adatokat a .NET Service Fabric-alkalmazások.
 
-## <a name="elk"></a>ELK 
+## <a name="elk"></a>Elk 
 
-A ELK stack nyílt forráskódú technológiák gyűjteménye: Elasticsearch, Logstash és Kibana. Ezen technológiák együttes használatával összegyűjtheti, tárolhatja és elemezheti Service Fabric monitorozási és diagnosztikai adatait. Ebben az oktatóanyagban megtudhatja, hogyan teheti ezt Service Fabric natív Java [-alkalmazásokkal](service-fabric-tutorial-java-elk.md). 
+Az ELK verem nyílt forráskódú technológiák gyűjteménye: Elasticsearch, Logstash és Kibana. Ezekkel a technológiákkal kombinálva gyűjtheti, tárolhatja és elemezheti a Service Fabric figyelési és diagnosztikai adatait. Van egy tutorial, hogyan kell ezt csinálni a Service Fabric natív Java alkalmazások [itt](service-fabric-tutorial-java-elk.md). 
 
-## <a name="humio"></a>Humio
+## <a name="humio"></a>Humio között
 
-A Humio egy olyan naplózási szolgáltatás, amely a felhőben vagy a helyszínen valós időben Service Fabric a naplókat az alkalmazásokból és az eseményekről. Az élő megfigyelésen kívül a Humio legkorszerűbb elemzési és vizualizációs funkciókat kínál a diagnosztika adatainak megtekintésére és gyűjtésére. A Humio költséghatékony díjszabási terveket tartalmaz, és a méretezési folyamat megtartása mellett a gyors gyorsaságot is megőrzi. Közvetlenül integrálható Service Fabric platform eseményeivel és az alkalmazás telemetria. A Humio és a Service Fabric integrációról [itt](https://github.com/humio/service-fabric-humio)olvashat bővebben.
+A Humio egy naplógyűjtési szolgáltatás, amely valós időben naplózhatja az alkalmazásokat és eseményeket a Service Fabric-ből a felhőben vagy a helyszínen. Az élő megfigyelhetőség mellett a Humio a legkorszerűbb elemzési és vizualizációs lehetőségeket is kínál a diagnosztikából származó információk megtekintéséhez és gyűjtéséhez. A Humio költséghatékony árképzési tervekkel rendelkezik, és úgy készült, hogy méretezze, miközben megőrzi a gyors sebességet. Közvetlenül integrálja a Service Fabric platformesemények és az alkalmazás telemetriai. A Humio és a Service Fabric integrációjáról [itt](https://github.com/humio/service-fabric-humio)olvashat bővebben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A [monitorozás és a diagnosztika áttekintése](service-fabric-diagnostics-overview.md) Service Fabric
-* Ismerje meg, hogyan [diagnosztizálhatja a gyakori forgatókönyveket](service-fabric-diagnostics-common-scenarios.md) az első féltől származó eszközökkel
+* A [figyelés és a diagnosztika áttekintése](service-fabric-diagnostics-overview.md) a Service Fabricben
+* Ismerje meg, hogyan diagnosztizálhatja a [gyakori forgatókönyveket](service-fabric-diagnostics-common-scenarios.md) a saját féleszközeivel

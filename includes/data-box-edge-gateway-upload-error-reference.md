@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 05673885336dbfb9a70843bd0ccc4e700091ad7e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179788"
 ---
 |     Hibakód     |      Hibaleírás     |
@@ -34,8 +34,8 @@ ms.locfileid: "67179788"
 |    2006            | Nem sikerült feltölteni az adatokat a fiókba, mert a fiók vagy a megosztás le van tiltva.|
 |    2007            | Nem sikerült csatlakozni a tárolóhoz, mert a fiók engedélyei helytelenek vagy elavultak. Ellenőrizze a hozzáférési engedélyeit.|
 |    2008            | Nem sikerült hozzáadni az új adatokat, mert a tároló megtelt. Az Azure-specifikációkban tekintse meg, hogy típusonként mely tárolóméretek támogatottak. Az Azure File például csak az 5 TB-os maximális fájlméret támogatja.|
-|    2009            | Nem sikerült feltölteni az adatokat, mert a tároló társítva a megosztás nem létezik.|    
-|    2997            | Váratlan hiba történt. Ez az egy átmeneti hiba, magától megoldódik.|
+|    2009            | Nem sikerült adatokat feltölteni, mert a megosztáshoz társított tároló nem létezik.|    
+|    2997            | Váratlan hiba történt. Ez egy átmeneti hiba, amely magától megoldódik.|
 |    2998            | Váratlan hiba történt. Lehet, hogy a hiba magától megoldódik, de ha több mint 24 órán keresztül nem szűnik meg, forduljon a Microsoft ügyfélszolgálatához.|
 |    16000           | A fájlt nem sikerült leállítani.|
 |    16001           | Nem sikerült leállítani a fájlt, mert már létezik a helyi számítógépen.|

@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális gép létrehozása és kezelése az Azure-ban a Python használatával
-description: Útmutató a Windows rendszerű virtuális gépek Azure-ban való létrehozásához és kezeléséhez a Python használatával.
+title: Windows virtuális gép létrehozása és kezelése az Azure-ban a Python használatával
+description: Ismerje meg, hogyan hozhat létre és kezelhet Windows-virtuális gépeket az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.openlocfilehash: a85a9c28acd2d50d95159883a01b27c8ed1d2f1a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461091"
 ---
-# <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban a Python használatával
+# <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows-virtuális gépek létrehozása és kezelése az Azure-ban a Python használatával
 
-Egy [Azure-beli virtuális gépnek](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) több támogató Azure-erőforrásra van szüksége. Ez a cikk a VM-erőforrások létrehozását, kezelését és törlését ismerteti a Python használatával. Az alábbiak végrehajtásának módját ismerheti meg:
+Egy [Azure virtuális gép](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) szüksége van több támogató Azure-erőforrások. Ez a cikk a virtuális gép erőforrásainak létrehozása, kezelése és törlése a Python használatával. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Visual Studio-projekt létrehozása
@@ -34,33 +34,33 @@ Egy [Azure-beli virtuális gépnek](overview.md?toc=%2fazure%2fvirtual-machines%
 > * Erőforrások törlése
 > * Az alkalmazás futtatása
 
-Ezek a lépések körülbelül 20 percet vesznek igénybe.
+Ezeket a lépéseket körülbelül 20 perc alatt kell megtennie.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-1. Ha még nem tette meg, telepítse a [Visual studiót](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Válassza a **Python-fejlesztés** elemet a munkaterhelések lapon, majd kattintson a **telepítés**gombra. Az összegzésben láthatja, hogy a **Python 3 64-bit (3.6.0)** automatikusan ki van választva. Ha már telepítette a Visual studiót, a Python munkaterhelést a Visual Studio Launcher használatával adhatja hozzá.
-2. A Visual Studio telepítése és elindítása után kattintson a **fájl** > **új** > **projekt**elemre.
-3. Kattintson a **sablonok** > **Python** > **Python alkalmazás**elemre, írja be a *myPythonProject* nevet a projekt neveként, válassza ki a projekt helyét, majd kattintson **az OK**gombra.
+1. Ha még nem tette meg, telepítse a [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)alkalmazást. Válassza a **Python-fejlesztés** lehetőséget a Számítási feladatok lapon, majd kattintson a **Telepítés gombra.** Az összegzésben láthatja, hogy a **Python 3 64 bites (3.6.0)** automatikusan kiválasztódik az Ön számára. Ha már telepítette a Visual Studio alkalmazást, hozzáadhatja a Python-számítási feladatot a Visual Studio-megnyitó indítójával.
+2. A Visual Studio telepítése és elindítása után kattintson az**Új** > **projekt** **fájlja** > gombra.
+3. Kattintson **a Sablonok** > **Python** > **Python Alkalmazás**elemre, írja be a *myPythonProject* értéket a projekt nevéhez, válassza ki a projekt helyét, majd kattintson az **OK**gombra.
 
 ## <a name="install-packages"></a>Csomagok telepítése
 
-1. Megoldáskezelő a *myPythonProject*alatt kattintson a jobb gombbal a **Python-környezetek**elemre, majd válassza a **virtuális környezet hozzáadása**elemet.
-2. A virtuális környezet hozzáadása képernyőn fogadja el az *env*alapértelmezett nevét, győződjön meg arról, hogy a *Python 3,6 (64-bit)* van kiválasztva az alapértelmező számára, majd kattintson a **Létrehozás**gombra.
-3. Kattintson a jobb gombbal a létrehozott *env* -környezetre, kattintson a **Python-csomag telepítése**parancsra, írja be az *Azure* kifejezést a keresőmezőbe, majd nyomja le az ENTER billentyűt.
+1. A Solution Explorer ben a *myPythonProject*csoportban kattintson a jobb gombbal **a Python-környezetek**elemre, majd válassza **a Virtuális környezet hozzáadása**parancsot.
+2. A Virtuális környezet hozzáadása képernyőn fogadja el az *env*alapértelmezett nevét, győződjön meg arról, hogy a *Python 3.6 (64 bites)* van kiválasztva az alapértelmezőhöz, majd kattintson a **Create gombra.**
+3. Kattintson a jobb gombbal a létrehozott *env* környezetre, kattintson a **Python-csomag telepítése parancsra,** írja be az *azure-t* a keresőmezőbe, majd nyomja le az Enter billentyűt.
 
-A kimeneti ablakokban látnia kell, hogy az Azure-csomagok telepítése sikeres volt. 
+Látnia kell a kimeneti ablakokban, hogy az azure-csomagok telepítése sikeresen megtörtént. 
 
 ## <a name="create-credentials"></a>Hitelesítő adatok létrehozása
 
-A lépés elkezdése előtt győződjön meg arról, hogy rendelkezik [Active Directory egyszerű szolgáltatással](../../active-directory/develop/howto-create-service-principal-portal.md). Az alkalmazás AZONOSÍTÓját, a hitelesítési kulcsot és a bérlő AZONOSÍTÓját is rögzíteni kell egy későbbi lépésben.
+A lépés megkezdése előtt győződjön meg arról, hogy rendelkezik [egy Active Directory egyszerű szolgáltatással.](../../active-directory/develop/howto-create-service-principal-portal.md) Az alkalmazásazonosítót, a hitelesítési kulcsot és a bérlői azonosítót is rögzítenie kell egy későbbi lépésben.
 
-1. Nyissa meg a létrehozott *myPythonProject.py* fájlt, majd adja hozzá ezt a kódot az alkalmazás futtatásának engedélyezéséhez:
+1. Nyissa *meg myPythonProject.py* létrehozott fájlt, majd adja hozzá ezt a kódot az alkalmazás futtatásához:
 
     ```python
     if __name__ == "__main__":
     ```
 
-2. A szükséges kód importálásához adja hozzá a következő utasításokat a. a. a. a fájl elejéhez:
+2. A szükséges kód importálásához adja hozzá ezeket a nyilatkozatokat a .py fájl tetejéhez:
 
     ```python
     from azure.common.credentials import ServicePrincipalCredentials
@@ -70,7 +70,7 @@ A lépés elkezdése előtt győződjön meg arról, hogy rendelkezik [Active Di
     from azure.mgmt.compute.models import DiskCreateOption
     ```
 
-3. A. a. a fájl mellett adja hozzá a változókat az importálási utasítások után a kódban használt általános értékek megadásához:
+3. Ezután a .py fájlban adja hozzá a változókat az importálási utasítások után a kódban használt közös értékek megadásához:
    
     ```
     SUBSCRIPTION_ID = 'subscription-id'
@@ -79,9 +79,9 @@ A lépés elkezdése előtt győződjön meg arról, hogy rendelkezik [Active Di
     VM_NAME = 'myVM'
     ```
 
-    Cserélje le az **előfizetés-azonosítót** az előfizetés azonosítójára.
+    Cserélje le **az előfizetés-azonosítót** az előfizetésazonosítóra.
 
-4. A kérések elvégzéséhez szükséges Active Directory hitelesítő adatok létrehozásához adja hozzá ezt a függvényt a. a. file-ban található változók után:
+4. A kérelmekhez szükséges Active Directory-hitelesítő adatok létrehozásához adja hozzá ezt a függvényt a .py fájl változói után:
 
     ```python
     def get_credentials():
@@ -94,9 +94,9 @@ A lépés elkezdése előtt győződjön meg arról, hogy rendelkezik [Active Di
         return credentials
     ```
 
-    Cserélje le az **Application-ID**, a **Authentication-Key**és a **bérlői azonosító** értékét azokra az értékekre, amelyeket korábban a Azure Active Directory egyszerű szolgáltatás létrehozásakor gyűjtött.
+    Cserélje le **az alkalmazásazonosítót**, **a hitelesítési kulcsot**és a **bérlői azonosítót** azokkal az értékekkel, amelyeket korábban az Azure Active Directory egyszerű szolgáltatásának létrehozásakor gyűjtött.
 
-5. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
+5. A korábban hozzáadott függvény hívásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás hoz:
 
     ```python
     credentials = get_credentials()
@@ -106,7 +106,7 @@ A lépés elkezdése előtt győződjön meg arról, hogy rendelkezik [Active Di
  
 ### <a name="initialize-management-clients"></a>Felügyeleti ügyfelek inicializálása
 
-Az Azure-beli Python SDK használatával az erőforrások létrehozásához és kezeléséhez felügyeleti ügyfelek szükségesek. A felügyeleti ügyfelek létrehozásához adja hozzá ezt a kódot az **IF** utasításban a. file.
+Felügyeleti ügyfelek szükségesek az erőforrások létrehozásához és kezeléséhez az Azure-beli Python SDK használatával. A felügyeleti ügyfelek létrehozásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás alá:
 
 ```python
 resource_group_client = ResourceManagementClient(
@@ -125,9 +125,9 @@ compute_client = ComputeManagementClient(
 
 ### <a name="create-the-vm-and-supporting-resources"></a>A virtuális gép és a támogató erőforrások létrehozása
 
-Az összes erőforrást egy [erőforráscsoporthoz](../../azure-resource-manager/management/overview.md)kell foglalni.
+Minden erőforrásnak [erőforráscsoportban](../../azure-resource-manager/management/overview.md)kell lennie.
 
-1. Erőforráscsoport létrehozásához adja hozzá ezt a függvényt a. a. file-fájl változói után:
+1. Erőforráscsoport létrehozásához adja hozzá ezt a függvényt a .py fájl változói után:
 
     ```python
     def create_resource_group(resource_group_client):
@@ -138,16 +138,16 @@ Az összes erőforrást egy [erőforráscsoporthoz](../../azure-resource-manager
         )
     ```
 
-2. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
+2. A korábban hozzáadott függvény hívásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás hoz:
 
     ```python
     create_resource_group(resource_group_client)
     input('Resource group created. Press enter to continue...')
     ```
 
-A [rendelkezésre állási](tutorial-availability-sets.md) csoportok megkönnyítik az alkalmazás által használt virtuális gépek karbantartását.
+[A rendelkezésre állási készletek](tutorial-availability-sets.md) megkönnyítik az alkalmazás által használt virtuális gépek karbantartását.
 
-1. A rendelkezésre állási csoport létrehozásához adja hozzá ezt a függvényt a. a. fájl változói után:
+1. Rendelkezésre állási készlet létrehozásához adja hozzá ezt a függvényt a .py fájlban lévő változók után:
    
     ```python
     def create_availability_set(compute_client):
@@ -163,7 +163,7 @@ A [rendelkezésre állási](tutorial-availability-sets.md) csoportok megkönnyí
         )
     ```
 
-2. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
+2. A korábban hozzáadott függvény hívásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás hoz:
 
     ```python
     create_availability_set(compute_client)
@@ -173,7 +173,7 @@ A [rendelkezésre állási](tutorial-availability-sets.md) csoportok megkönnyí
 
 A virtuális géppel való kommunikációhoz [nyilvános IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) szükséges.
 
-1. Ha nyilvános IP-címet szeretne létrehozni a virtuális géphez, adja hozzá ezt a függvényt a. a. reszelő változóhoz tartozó változók után:
+1. Nyilvános IP-cím létrehozásához a virtuális géphez adja hozzá ezt a függvényt a .py fájlváltozói után:
 
     ```python
     def create_public_ip_address(network_client):
@@ -190,7 +190,7 @@ A virtuális géppel való kommunikációhoz [nyilvános IP-cím](../../virtual-
         return creation_result.result()
     ```
 
-2. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
+2. A korábban hozzáadott függvény hívásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás hoz:
 
     ```python
     creation_result = create_public_ip_address(network_client)
@@ -199,9 +199,9 @@ A virtuális géppel való kommunikációhoz [nyilvános IP-cím](../../virtual-
     input('Press enter to continue...')
     ```
 
-A virtuális gépnek egy [virtuális hálózat](../../virtual-network/virtual-networks-overview.md)alhálózatán kell lennie.
+A virtuális gépnek a virtuális [hálózat](../../virtual-network/virtual-networks-overview.md)alhálózatában kell lennie.
 
-1. Virtuális hálózat létrehozásához adja hozzá ezt a függvényt a. a. file-fájl változói után:
+1. Virtuális hálózat létrehozásához adja hozzá ezt a függvényt a .py fájlváltozói után:
 
     ```python
     def create_vnet(network_client):
@@ -219,7 +219,7 @@ A virtuális gépnek egy [virtuális hálózat](../../virtual-network/virtual-ne
         return creation_result.result()
     ```
 
-2. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
+2. A korábban hozzáadott függvény hívásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás hoz:
    
     ```python
     creation_result = create_vnet(network_client)
@@ -228,7 +228,7 @@ A virtuális gépnek egy [virtuális hálózat](../../virtual-network/virtual-ne
     input('Press enter to continue...')
     ```
 
-3. Ha az alhálózatot hozzá szeretné adni a virtuális hálózathoz, adja hozzá ezt a függvényt a. a. reszelő változóhoz tartozó változók után:
+3. Ha alhálózatot szeretne hozzáadni a virtuális hálózathoz, adja hozzá ezt a függvényt a .py fájl változói után:
     
     ```python
     def create_subnet(network_client):
@@ -245,7 +245,7 @@ A virtuális gépnek egy [virtuális hálózat](../../virtual-network/virtual-ne
         return creation_result.result()
     ```
         
-4. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
+4. A korábban hozzáadott függvény hívásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás hoz:
    
     ```python
     creation_result = create_subnet(network_client)
@@ -256,7 +256,7 @@ A virtuális gépnek egy [virtuális hálózat](../../virtual-network/virtual-ne
 
 A virtuális gépnek hálózati adapterre van szüksége a virtuális hálózaton való kommunikációhoz.
 
-1. Hálózati adapter létrehozásához adja hozzá ezt a függvényt a. a. fájl változói után:
+1. Hálózati adapter létrehozásához adja hozzá ezt a függvényt a .py fájlváltozói után:
 
     ```python
     def create_nic(network_client):
@@ -288,7 +288,7 @@ A virtuális gépnek hálózati adapterre van szüksége a virtuális hálózato
         return creation_result.result()
     ```
 
-2. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
+2. A korábban hozzáadott függvény hívásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás hoz:
 
     ```python
     creation_result = create_nic(network_client)
@@ -297,9 +297,9 @@ A virtuális gépnek hálózati adapterre van szüksége a virtuális hálózato
     input('Press enter to continue...')
     ```
 
-Most, hogy létrehozta az összes támogatási erőforrást, létrehozhat egy virtuális gépet.
+Most, hogy létrehozta az összes támogató erőforrást, létrehozhat egy virtuális gépet.
 
-1. A virtuális gép létrehozásához adja hozzá ezt a függvényt a. a. file-fájl változói után:
+1. A virtuális gép létrehozásához adja hozzá ezt a függvényt a .py fájlváltozói után:
    
     ```python
     def create_vm(network_client, compute_client):  
@@ -348,11 +348,11 @@ Most, hogy létrehozta az összes támogatási erőforrást, létrehozhat egy vi
     ```
 
     > [!NOTE]
-    > Ez az oktatóanyag egy olyan virtuális gépet hoz létre, amely a Windows Server operációs rendszer egy verzióját futtatja. További információ a többi rendszerkép kiválasztásáról: [Azure-beli virtuálisgép-rendszerképek navigálása és kiválasztása a Windows PowerShell és az Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használatával.
+    > Ez az oktatóanyag a Windows Server operációs rendszer egy verzióját futtató virtuális gépet hoz létre. Ha többet szeretne tudni a többi lemezkép kiválasztásáról, olvassa el a [Navigálás és az Azure virtuálisgép-lemezképek kiválasztása a Windows PowerShell és az Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használatával című témakört.
     > 
     > 
 
-2. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
+2. A korábban hozzáadott függvény hívásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás hoz:
 
     ```python
     creation_result = create_vm(network_client, compute_client)
@@ -363,11 +363,11 @@ Most, hogy létrehozta az összes támogatási erőforrást, létrehozhat egy vi
 
 ## <a name="perform-management-tasks"></a>Felügyeleti feladatok végrehajtása
 
-A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok futtatására, például a virtuális gép indítására, leállítására vagy törlésére. Emellett érdemes lehet kódot létrehozni az ismétlődő vagy összetett feladatok automatizálásához.
+A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok futtatására, például a virtuális gép indítására, leállítására vagy törlésére. Ezenkívül az ismétlődő vagy összetett feladatok automatizálására kód is létrehozható.
 
-### <a name="get-information-about-the-vm"></a>A virtuális géppel kapcsolatos információk lekérése
+### <a name="get-information-about-the-vm"></a>Információ a virtuális gépről
 
-1. A virtuális géppel kapcsolatos információk lekéréséhez adja hozzá ezt a függvényt a. a. file-fájlhoz tartozó változók után:
+1. A virtuális géppel kapcsolatos információk kikérése érdekében adja hozzá ezt a függvényt a .py fájl változói után:
 
     ```python
     def get_vm(compute_client):
@@ -420,7 +420,7 @@ A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok f
             print("  code: ", stat.code)
             print("  displayStatus: ", stat.display_status)
     ```
-2. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
+2. A korábban hozzáadott függvény hívásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás hoz:
 
     ```python
     get_vm(compute_client)
@@ -430,22 +430,22 @@ A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok f
 
 ### <a name="stop-the-vm"></a>A virtuális gép leállítása
 
-Leállíthatja a virtuális gépet, és megtarthatja az összes beállítását, de továbbra is fizetnie kell, vagy leállíthatja a virtuális gépet, és felszabadíthatja azt. Ha a virtuális gép fel van foglalva, a hozzá társított összes erőforrás fel van foglalva, és a számlázás véget ér.
+Leállíthatja a virtuális gépet, és megtarthatja az összes beállítását, de továbbra is fel kell számítania, vagy leállíthatja a virtuális gépet, és felszabadíthatja azt. Amikor egy virtuális gép felvan szabadítva, a hozzá társított összes erőforrás is felszabadítva lesz, és a számlázás véget ér.
 
-1. Ha le szeretné állítani a virtuális gépet a felszabadítása nélkül, adja hozzá ezt a függvényt a. a. reszelő változóhoz tartozó változók után:
+1. Ha a virtuális gépet a felosztás lekötése nélkül szeretné leállítani, adja hozzá ezt a függvényt a .py fájlváltozói után:
 
     ```python
     def stop_vm(compute_client):
         compute_client.virtual_machines.power_off(GROUP_NAME, VM_NAME)
     ```
 
-    Ha felszabadítani szeretné a virtuális gépet, módosítsa a power_off hívást a következő kódra:
+    Ha fel szeretné osztani a virtuális gépet, módosítsa a power_off hívását erre a kódra:
 
     ```python
     compute_client.virtual_machines.deallocate(GROUP_NAME, VM_NAME)
     ```
 
-2. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
+2. A korábban hozzáadott függvény hívásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás hoz:
 
     ```python
     stop_vm(compute_client)
@@ -454,14 +454,14 @@ Leállíthatja a virtuális gépet, és megtarthatja az összes beállítását,
 
 ### <a name="start-the-vm"></a>A virtuális gép elindítása
 
-1. A virtuális gép elindításához adja hozzá ezt a függvényt a. a. reszelő változóhoz tartozó változók után:
+1. A virtuális gép elindításához adja hozzá ezt a függvényt a .py fájlváltozói után:
 
     ```python
     def start_vm(compute_client):
         compute_client.virtual_machines.start(GROUP_NAME, VM_NAME)
     ```
 
-2. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
+2. A korábban hozzáadott függvény hívásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás hoz:
 
     ```python
     start_vm(compute_client)
@@ -470,9 +470,9 @@ Leállíthatja a virtuális gépet, és megtarthatja az összes beállítását,
 
 ### <a name="resize-the-vm"></a>A virtuális gép átméretezése
 
-A központi telepítés számos aspektusát figyelembe kell venni a virtuális gép méretének meghatározásakor. További információ: virtuális gépek [méretei](sizes.md).
+A virtuális gép méretének meghatározásakor a központi telepítés számos aspektusát figyelembe kell venni. További információ: [VM méretek](sizes.md).
 
-1. A virtuális gép méretének módosításához adja hozzá ezt a függvényt a. a. reszelő változóhoz tartozó változók után:
+1. A virtuális gép méretének módosításához adja hozzá ezt a függvényt a .py fájl változói után:
 
     ```python
     def update_vm(compute_client):
@@ -487,7 +487,7 @@ A központi telepítés számos aspektusát figyelembe kell venni a virtuális g
     return update_result.result()
     ```
 
-2. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
+2. A korábban hozzáadott függvény hívásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás hoz:
 
     ```python
     update_result = update_vm(compute_client)
@@ -498,9 +498,9 @@ A központi telepítés számos aspektusát figyelembe kell venni a virtuális g
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Adatlemez hozzáadása a virtuális géphez
 
-A virtuális gépekhez egy vagy több VHD-ként tárolt [adatlemez](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) tartozhat.
+A virtuális gépek rendelkezhetnek egy vagy több virtuális merevlemezként tárolt [adatlemezekkel.](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-1. Ha adatlemezt szeretne hozzáadni a virtuális géphez, adja hozzá ezt a függvényt a. a. file-fájl változói után: 
+1. Ha adatlemezt szeretne hozzáadni a virtuális géphez, adja hozzá ezt a függvényt a .py fájlváltozói után: 
 
     ```python
     def add_datadisk(compute_client):
@@ -533,7 +533,7 @@ A virtuális gépekhez egy vagy több VHD-ként tárolt [adatlemez](managed-disk
         return add_result.result()
     ```
 
-2. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
+2. A korábban hozzáadott függvény hívásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás hoz:
 
     ```python
     add_result = add_datadisk(compute_client)
@@ -544,33 +544,33 @@ A virtuális gépekhez egy vagy több VHD-ként tárolt [adatlemez](managed-disk
 
 ## <a name="delete-resources"></a>Erőforrások törlése
 
-Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes törölni a már nem szükséges erőforrásokat. Ha törölni szeretné a virtuális gépeket és az összes támogató erőforrást, mindössze annyit kell tennie, hogy törli az erőforráscsoportot.
+Mivel az Azure-ban használt erőforrásokért díjat számítunk fel, mindig ajánlott törölni azokat az erőforrásokat, amelyekre már nincs szükség. Ha törölni szeretné a virtuális gépeket és az összes támogató erőforrást, mindössze annyit kell tennie, hogy törli az erőforráscsoportot.
 
-1. Ha törölni szeretné az erőforráscsoportot és az összes erőforrást, adja hozzá ezt a függvényt a. a. reszelő változóhoz tartozó változók után:
+1. Az erőforráscsoport és az összes erőforrás törléséhez adja hozzá ezt a függvényt a .py fájl változói után:
    
     ```python
     def delete_resources(resource_group_client):
         resource_group_client.resource_groups.delete(GROUP_NAME)
     ```
 
-2. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
+2. A korábban hozzáadott függvény hívásához adja hozzá ezt a kódot a .py fájl végén található **if** utasítás hoz:
    
     ```python
     delete_resources(resource_group_client)
     ```
 
-3. Mentse a *myPythonProject.py*.
+3. A *myPythonProject.py*mentése .
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-1. A konzol alkalmazás futtatásához kattintson a **Start** gombra a Visual Studióban.
+1. A konzolalkalmazás futtatásához kattintson a **Start** gombra a Visual Studio alkalmazásban.
 
-2. Az egyes erőforrások állapotának visszaadása után nyomja le az **ENTER** billentyűt. Az állapotadatok között **sikeres** kiépítési állapotot kell látnia. A virtuális gép létrehozása után lehetősége van törölni az összes létrehozott erőforrást. Mielőtt megnyomja az **ENTER** billentyűt az erőforrások törlésének megkezdéséhez, eltarthat néhány percig a létrehozásuk ellenőrzéséhez a Azure Portal. Ha a Azure Portal nyitva van, előfordulhat, hogy frissítenie kell a panelt az új erőforrások megtekintéséhez.  
+2. Az egyes erőforrások állapotának visszaadása után nyomja le az **Enter** billentyűt. Az állapotinformációkban egy **sikeres** kiépítési állapotnak kell lennie. A virtuális gép létrehozása után lehetősége van az összes létrehozott erőforrás törlésére. Mielőtt megnyomna **az Enter** billentyűt az erőforrások törlésének megkezdéséhez, eltarthat néhány percig, hogy ellenőrizze azok létrehozását az Azure Portalon. Ha az Azure Portal meg van nyitva, előfordulhat, hogy frissítenie kell a panelt az új erőforrások megtekintéséhez.  
 
-    Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes körűen fusson az elejétől a végéig. Az alkalmazás befejezését követően több percet is igénybe vehet, mielőtt az összes erőforrást és az erőforráscsoportot törölné.
+    Körülbelül öt percet vesz igénybe, amíg ez a konzolalkalmazás teljesen elindul az elejétől a végéig. Az alkalmazás befejezése után több percig is eltarthat, amíg az összes erőforrás és az erőforráscsoport törlődik.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha problémák merültek fel az üzembe helyezés során, a következő lépésről lásd: [Troubleshooting resource group deployments with Azure Portal](../../resource-manager-troubleshoot-deployments-portal.md) (Erőforráscsoportok üzemelő példányainak hibaelhárítása az Azure Portalon)
 - További információ az [Azure Python-könyvtárról](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)

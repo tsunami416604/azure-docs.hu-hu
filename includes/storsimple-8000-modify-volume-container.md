@@ -5,39 +5,39 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4cffbb1aaa438bac08ec77f576b32a901abacabd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179165"
 ---
 > [!NOTE] 
-> A titkosítási beállítások és a tárfiók hitelesítő adatainak társított kötettároló létrehozása után nem módosítható.
+> A kötettárolóhoz társított titkosítási beállítások és tárfiók hitelesítő adatai nem módosíthatók annak létrehozása után.
 
 #### <a name="to-modify-a-volume-container"></a>Kötettároló módosítása
 
-1. Nyissa meg a StorSimple-Eszközkezelő szolgáltatás, és navigáljon arra **felügyeleti > kötettárolók**.
+1. Nyissa meg a StorSimple Eszközkezelő szolgáltatást, majd keresse meg **a Felügyeleti > kötettárolókat.**
 
-2. Kötettárolók táblázatos listájából válassza ki a módosítani kívánt kötettárolót. Az a **eszközök** lapon válassza ki az eszközt, kattintson rá duplán, és kattintson a **kötettárolók** fülre.
+2. A kötettárolók táblázatos listájából válassza ki a módosítani kívánt kötettárolót. Az **Eszközök** lapon jelölje ki az eszközt, kattintson rá duplán, majd kattintson a **Kötettárolók** fülre.
 
-2. A kötettárolók táblázatos listájából válassza ki a kötettárolót, amelyet módosítani szeretne. A megnyíló panelen kattintson a **módosítás** a parancssávon.
+2. A kötettárolók táblázatos listájában válassza ki a módosítani kívánt kötettárolót. A megnyíló panelen kattintson a parancssáv **Módosítás gombjára.**
 
     ![Kötettároló módosítása](./media/storsimple-8000-modify-volume-container/modify-vol-container1.png)
 
-3. Az a **kötettároló módosítása** panelen tegye a következőket:
+3. A **Kötet tároló módosítása** panelen tegye a következő lépéseket:
    
-   1. A nevét, a titkosítási kulcsot és a társított a kötettároló tárfiók nem módosítható, miután azokat. Módosítsa a hozzárendelt sávszélesség-beállítást.
+   1. A kötettárolóhoz társított név, titkosítási kulcs és tárfiók nem módosítható azok megadása után. Módosítsa a társított sávszélesség-beállítást.
       
-       ![A sávszélesség-beállítás módosítása](./media/storsimple-8000-modify-volume-container/modify-vol-container2.png)
+       ![Sávszélesség-beállítás módosítása](./media/storsimple-8000-modify-volume-container/modify-vol-container2.png)
 
    2.  Kattintson az **OK** gombra.
-4. A következő oldalon, a **Kötettároló módosítása** párbeszédpanel:
+4. A **Kötettároló módosítása** párbeszédpanel következő lapján:
    
-   1. A legördülő listából válassza ki egy meglévő sávszélességsablon.
-   2. Tekintse át a megadott sávszélességsablon az ütemezési beállításokat.
-   3. Kattintson a **mentése** és hagyja jóvá a módosításokat.
+   1. A legördülő listából válasszon egy meglévő sávszélesség-sablont.
+   2. Tekintse át a megadott sávszélesség-sablon ütemezési beállításait.
+   3. Kattintson **a Mentés gombra,** és erősítse meg a módosításokat.
       
        ![Módosítások megerősítése](./media/storsimple-8000-modify-volume-container/modify-vol-container3.png)
 
-   3. A **kötettárolók** panel frissül, hogy tükrözze a módosításokat.
+   3. A **Kötet tárolók** panel frissül, hogy tükrözze a változásokat.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB lekérdezési nyelv IS_STRING
-description: Ismerkedjen meg a Azure Cosmos DB SQL System Function IS_STRINGával.
+title: IS_STRING az Azure Cosmos DB lekérdezési nyelvében
+description: Az Azure Cosmos DB IS_STRING SQL-rendszerfunkcióiról.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a717f343b0f46522a3ce2bb56c32e3f15998d777
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303766"
 ---
 # <a name="is_string-azure-cosmos-db"></a>IS_STRING (Azure Cosmos DB)
- Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy karakterláncot ad vissza.  
+ Logikai értéket ad eredményül, amely azt jelzi, hogy a megadott kifejezés típusa karakterlánc-e.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -25,16 +25,16 @@ IS_STRING(<expr>)
   
 ## <a name="arguments"></a>Argumentumok
   
-*kifejezés*  
-   Bármely kifejezés.  
+*Kifejezés*  
+   Bármilyen kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy logikai kifejezés adja vissza.  
+  Logikai kifejezést ad eredményül.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa a JSON logikai, szám, karakterlánc, null, objektum, tömb és nem definiált típusok objektumait ellenőrzi a `IS_STRING` függvénnyel.  
+  A következő példa a JSON logikai, szám, karakterlánc, null, objektum, tömb `IS_STRING` és nem definiált típusok objektumait ellenőrzi a függvény használatával.  
   
 ```sql
 SELECT   
@@ -47,7 +47,7 @@ SELECT
        IS_STRING({prop: "value"}.prop2) AS isStr7  
 ```  
   
- Íme az eredményhalmaz.  
+ Itt van az eredményhalmaz.  
   
 ```json
 [{"isStr1":false,"isStr2":false,"isStr3":true,"isStr4":false,"isStr5":false,"isStr6":false,"isStr7":false}] 
@@ -55,10 +55,10 @@ SELECT
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
+Ez a rendszerfunkció egy [tartományindex](index-policy.md#includeexclude-strategy)előnyeit élvezi .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Type Check functions Azure Cosmos DB](sql-query-type-checking-functions.md)
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB típusellenőrzési függvényei](sql-query-type-checking-functions.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)

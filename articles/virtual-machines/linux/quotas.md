@@ -1,6 +1,6 @@
 ---
 title: vCPU-kvóták az Azure-hoz
-description: Ismerje meg az Azure-hoz készült vCPU-kvótákat.
+description: További információ az Azure-beli vCPU-kvótákról.
 keywords: ''
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
 ms.openlocfilehash: c194dbeb0183e64535342f8aaf9a770a93b3e332
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75896187"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Virtuális gépek vCPU-kvótái
 
-A virtuális gépekhez és a virtuálisgép-méretezési csoportokhoz tartozó vCPU-kvóták minden egyes előfizetéshez két rétegben vannak rendezve. Az első réteg a teljes regionális vCPU, a második pedig a virtuális gépek különböző méretű, például a D sorozatú vCPU. Amikor új virtuális gépet telepít, a virtuális gép vCPU nem lépheti túl a virtuális gép vCPU-kvótáját vagy a teljes regionális vCPU-kvótát. Ha túllépi a kvótákat, a virtuális gép üzembe helyezése nem lesz engedélyezett. A régión belül a virtuális gépek teljes száma is rendelkezik kvótával. Az egyes kvóták részletei a [Azure Portal](https://portal.azure.com) **előfizetés** lapjának **használat + kvóták** szakaszában láthatók, vagy az Azure CLI használatával is lekérdezheti az értékeket.
+A virtuális gépek és a virtuálisgép-méretezési csoportok vCPU-kvóták két rétegben vannak elrendezve minden egyes előfizetéshez, minden régióban. Az első szint a teljes regionális vCPU-k, a második szint pedig a különböző virtuálisgép-méret-család magok, például a D-sorozatú vCPU-k. Minden alkalommal, amikor egy új virtuális gép telepítve van a virtuális gép vCPU-i nem haladhatja meg a vCPU-kvótát a virtuálisgép méretcsalád vagy a teljes regionális vCPU-kvóta. Ha ezek közül bármelyik a kvóták túllépése, a virtuális gép telepítése nem lesz engedélyezve. A régióban található virtuális gépek teljes számára vonatkozó kvóta is szerepel. Az egyes kvóták részletei az [Azure Portal](https://portal.azure.com) **Előfizetés** lapjának Használat **+ kvóták** szakaszában láthatók, vagy lekérdezheti az értékeket az Azure CLI használatával.
 
 
 ## <a name="check-usage"></a>Használat ellenőrzése
 
-A kvóta használatát az [az VM List-használat](/cli/azure/vm)használatával tekintheti meg.
+A kvótahasználatot az [az vm-listahasználatával](/cli/azure/vm)ellenőrizheti.
 
 ```azurecli-interactive
 az vm list-usage --location "East US" -o table
@@ -62,10 +62,10 @@ Premium Storage Managed Disks                  5    10000
 ```
 
 ## <a name="reserved-vm-instances"></a>Reserved VM Instances
-A fenntartott VM-példányok, amelyek a virtuális gépek méretének rugalmassága nélkül egyetlen előfizetésre vannak korlátozva, új aspektust adhatnak hozzá a vCPU-kvótához. Ezek az értékek leírják, hogy a megadott méret hány példánya legyen üzembe helyezhető az előfizetésben. A kvótarendszer helyőrzőként működnek, így biztosítható, hogy a kvóta le legyen foglalva ahhoz, hogy az Azure-foglalások elérhetők legyenek az előfizetésben. Ha például egy adott előfizetés 10 Standard_D1 foglal le, Standard_D1 foglalások használati korlátja 10 lesz. Ez azt eredményezi, hogy az Azure gondoskodik arról, hogy a Standard_D1 példányok esetében legalább 10 vCPU legyen elérhető a teljes regionális vCPU-kvótában, és legalább 10 vCPU legyen elérhető a standard D család vCPU-kvótájában, amelyet Standard_D1 példányokhoz kell használni.
+Fenntartott virtuálisgép-példányok, amelyek hatóköre egyetlen előfizetés virtuális gép méretének rugalmassága nélkül, új szempontot avCPU-kvóták. Ezek az értékek a megadott méretű példányok számát írják le, amelyeknek az előfizetésben telepíthetőnek kell lenniük. Helyőrzőként dolgoznak a kvótarendszerben annak érdekében, hogy a kvóta le legyen foglalva annak biztosítására, hogy az Azure-foglalások telepíthetők legyenek az előfizetésben. Ha például egy adott előfizetés 10 Standard_D1 foglalással rendelkezik, a Standard_D1 foglalások ra vonatkozó használati korlát 10 lesz. Ez azt eredményezi, hogy az Azure biztosítja, hogy mindig legalább 10 vCPU érhető el a teljes regionális vCPU-k kvótát kell használni Standard_D1 példányok, és legalább 10 vCPU érhető el a standard D család vCPU kvótát kell használni Standard_D1 példányok.
 
-Ha egy előfizetési RI megvásárlásához kvóta-növelésre van szükség, akkor az előfizetésre vonatkozó [kvóta növelését kérheti](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) .
+Ha kvótanövelésre van szükség az egyetlen előfizetéses fenntartott rendszer megvásárlásához, kérheti az előfizetés [kvótanövelését.](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A számlázással és a kvótákkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/billing/TOC.json).
+A számlázásról és a kvótákról az [Azure-előfizetési és szolgáltatáskorlátok, kvóták és korlátozások](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/billing/TOC.json)című témakörben talál további információt.

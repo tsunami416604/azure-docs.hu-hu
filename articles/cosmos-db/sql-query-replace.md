@@ -1,6 +1,6 @@
 ---
-title: Lecserélés Azure Cosmos DB lekérdezési nyelvre
-description: További információ az SQL System függvény LECSERÉLÉSéről Azure Cosmos DB.
+title: REPLACE az Azure Cosmos DB lekérdezési nyelvében
+description: Ismerje meg az SQL rendszer funkció csere az Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 758ac13530752df481d27e7e253f025f5c8d6430
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302202"
 ---
-# <a name="replace-azure-cosmos-db"></a>Replace (Azure Cosmos DB)
- A megadott karakterlánc értéket az összes előfordulását lecseréli egy másik karakterláncérték.  
+# <a name="replace-azure-cosmos-db"></a>CSERE (Azure Cosmos DB)
+ Egy megadott karakterlánc-érték összes előfordulását lecseréli egy másik karakterlánc-értékre.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,27 +26,27 @@ REPLACE(<str_expr1>, <str_expr2>, <str_expr3>)
 ## <a name="arguments"></a>Argumentumok
   
 *str_expr1*  
-   A keresendő karakterlánc-kifejezés.  
+   A megkeresni a karakterlánc-kifejezés.  
   
 *str_expr2*  
-   A megtalált karakterlánc-kifejezés.  
+   A karakterlánc-kifejezés található.  
   
 *str_expr3*  
-   A *str_expr1* *str_expr2* előfordulásait lecserélő karakterlánc-kifejezés.  
+   A *str_expr1* str_expr2 előfordulásait helyettesítő *str_expr1*karakterlánc-kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy karakterlánc-kifejezés adja vissza.  
+  Karakterlánc-kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa azt szemlélteti, hogyan használható a `REPLACE` egy lekérdezésben.  
+  A következő példa bemutatja, hogyan használható `REPLACE` egy lekérdezésben.  
   
 ```sql
 SELECT REPLACE("This is a Test", "Test", "desk") AS replace
 ```  
   
- Íme az eredményhalmaz.  
+ Itt van az eredményhalmaz.  
   
 ```json
 [{"replace": "This is a desk"}]  
@@ -54,10 +54,10 @@ SELECT REPLACE("This is a Test", "Test", "desk") AS replace
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfüggvény nem fogja használni az indexet.
+Ez a rendszerfunkció nem használja az indexet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB karakterlánc-függvényei](sql-query-string-functions.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)

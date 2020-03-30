@@ -1,6 +1,6 @@
 ---
-title: Kockázati házirendek – Azure Active Directory Identity Protection
-description: Kockázatkezelési szabályzatok engedélyezése és konfigurálása Azure Active Directory Identity Protection
+title: Kockázati házirendek – Azure Active Directory identitásvédelem
+description: Kockázati házirendek engedélyezése és konfigurálása az Azure Active Directory identitásvédelemben
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,74 +12,74 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ffa08f7ebf013d42d6da0589ce0f1ccc97289de
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75707005"
 ---
-# <a name="how-to-configure-and-enable-risk-policies"></a>Útmutató: kockázatkezelési szabályzatok konfigurálása és engedélyezése
+# <a name="how-to-configure-and-enable-risk-policies"></a>Útmutató: Kockázati házirendek konfigurálása és engedélyezése
 
-Az előző cikkben megtanultuk, hogy az [Identity Protection-szabályzatok](concept-identity-protection-policies.md) két kockázati szabályzattal rendelkezünk, amelyeket a címtárban engedélyezünk. 
+Amint azt az előző cikkben, [identitásvédelem szabályzatok](concept-identity-protection-policies.md) két kockázati szabályzatok, amelyek et engedélyezhet a címtárban. 
 
-- Bejelentkezési kockázati házirend
+- Bejelentkezési kockázati szabályzat
 - Felhasználói kockázati házirend
 
-![Biztonsági Áttekintés lap a felhasználói és bejelentkezési kockázati házirendek engedélyezéséhez](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
+![A biztonság áttekintése lap a felhasználói és bejelentkezési kockázati házirendek engedélyezéséhez](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
 
-Mindkét szabályzat úgy működik, hogy automatizálja a kockázati észlelésekre adott válaszokat a környezetben, és lehetővé teszi a felhasználók számára, hogy a kockázatok észlelése után önmagukban is szervizelni lehessen őket. 
+Mindkét szabályzat a környezetben a kockázatészlelésre adott válasz automatizálására, valamint a kockázat észleléseesetén a felhasználók önjavító működésének lehetővé teszi. 
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Ha a szervezet szeretné lehetővé tenni a felhasználók számára, hogy a kockázatok észlelése után is önmagukban tudják javítani a felhasználókat, regisztrálni kell mind az önkiszolgáló jelszó-visszaállítást, mind az Azure-Multi-Factor Authentication. Javasoljuk, hogy a lehető legjobb felhasználói élmény érdekében [engedélyezze a kombinált biztonsági információk regisztrálását](../authentication/howto-registration-mfa-sspr-combined.md) . Lehetővé teheti a felhasználók számára, hogy a rendszergazda beavatkozása nélkül gyorsabban visszakapjanak produktív állapotba. A rendszergazdák továbbra is láthatják ezeket az eseményeket, és a tény után kivizsgálják azokat. 
+Ha a szervezet azt szeretné, hogy a felhasználók önjavító kockázatok észlelésekor, a felhasználók regisztrálva kell lennie mind az önkiszolgáló jelszó-visszaállítás és az Azure többtényezős hitelesítés. Javasoljuk, hogy a lehető legjobb élmény érdekében [engedélyezze](../authentication/howto-registration-mfa-sspr-combined.md) a kombinált biztonsági adatok regisztrációs élményét. Lehetővé teszi a felhasználók önjavító teszi őket vissza a produktív állapot gyorsabban rendszergazdai beavatkozás nélkül. A rendszergazdák továbbra is láthatják ezeket az eseményeket, és a tény után kivizsgálhatják azokat. 
 
 ## <a name="choosing-acceptable-risk-levels"></a>Elfogadható kockázati szintek kiválasztása
 
-A szervezeteknek el kell dönteniük, hogy milyen kockázati szintet kívánnak elfogadni a felhasználói élmény és a biztonsági helyzet elfogadásához. 
+A szervezeteknek el kell dönteniük, hogy milyen kockázati szintet hajlandók elfogadni a felhasználói élmény és a biztonsági állapot kiegyensúlyozása érdekében. 
 
-A Microsoft javaslata, hogy a felhasználói kockázati házirend küszöbértékét **magas** értékre állítsa, a bejelentkezési kockázati házirendet pedig **közepesre vagy annál magasabbra**.
+A Microsoft javaslata az, hogy a felhasználói kockázati házirend küszöbértékét **magasra állítsa,** a bejelentkezési kockázati házirendet **pedig közepesre és felette.**
 
-A **magas** küszöbérték kiválasztása csökkenti a szabályzatok indításának számát, és minimálisra csökkenti a felhasználókra gyakorolt hatást. Azonban nem zárja ki az **alacsony** és **közepes** kockázati észleléseket a szabályzatból, ami esetleg nem gátolja meg, hogy a támadók illetéktelenül feltört identitást használjanak. Az **alacsony** küszöbérték kiválasztásával további felhasználói megszakítások jelennek meg, a biztonsági helyzet azonban nagyobb.
+A **magas** küszöbérték kiválasztása csökkenti a házirend aktiválásának számát, és minimálisra csökkenti a felhasználókra gyakorolt hatást. Azonban kizárja az **alacsony** és **közepes** kockázatú észlelések a házirendből, amely nem akadályozhatja meg a támadót a feltört identitás kihasználásában. Az **alacsony** küszöbérték kiválasztása további felhasználói megszakításokat eredményez, de növeli a biztonsági pozíciót.
 
-## <a name="exclusions"></a>Korlátozások
+## <a name="exclusions"></a>Kizárások
 
-Az összes házirend lehetővé teszi a felhasználók kizárását, például a [vészhelyzeti vagy a break-Glass rendszergazdai fiókjait](../users-groups-roles/directory-emergency-access.md). A szervezetek meghatározhatják, hogy a fiókok használatának módja alapján ki kell zárniuk a más fiókokat a meghatározott házirendekből. Az összes kizárást rendszeresen felül kell vizsgálni, hogy ellenőrizze, hogy továbbra is alkalmazhatók-e.
+Minden házirend lehetővé teszi a felhasználók kizárását, például a [segélyhívó vagy a törésüveg-rendszergazdai fiókokat.](../users-groups-roles/directory-emergency-access.md) A szervezetek a fiókok használata alapján meghatározhatják, hogy más fiókokat is ki kell zárniuk az egyes házirendekből. Minden kizárást rendszeresen felül kell vizsgálni annak megállapítására, hogy továbbra is alkalmazhatók-e.
 
-A konfigurált megbízható [hálózati telephelyeket](../conditional-access/location-condition.md) az Identity Protection bizonyos kockázati észlelések esetén a téves pozitív érték csökkentése érdekében használja fel.
+A konfigurált megbízható [hálózati helyeket](../conditional-access/location-condition.md) az Identity Protection bizonyos kockázatészlelésekben használja a hamis pozitív értékek csökkentése érdekében.
 
 ## <a name="enable-policies"></a>Házirendek engedélyezése
 
-A felhasználói kockázat és a bejelentkezési kockázati házirendek engedélyezéséhez hajtsa végre az alábbi lépéseket.
+A felhasználói kockázat és a bejelentkezési kockázati házirendek engedélyezéséhez hajtsa végre a következő lépéseket.
 
-1. Lépjen az [Azure Portalra](https://portal.azure.com).
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **Identity Protection** > **áttekintését**.
-1. Válassza a **felhasználói kockázati házirend konfigurálása**lehetőséget.
-   1. A **hozzárendelések** alatt
-      1. **Felhasználók** – válassza a **minden felhasználó** lehetőséget **, vagy válassza az egyének és csoportok lehetőséget,** ha korlátozza a bevezetést.
-         1. Opcionálisan dönthet úgy is, hogy kizárja a felhasználókat a szabályzatból.
-      1. **Feltételek** - **felhasználói kockázat** a Microsoft javaslata, hogy ezt a beállítást **magas**értékre állítsa be.
-   1. A **vezérlők** területen
-      1. **Hozzáférés** – a Microsoft javaslata a **hozzáférés engedélyezése** és a **jelszó megkövetelése**.
-   1. Házirend **- - ** **érvénybe léptetése**
-   1. **Mentés** – ez a művelet visszaküldi az **Áttekintés** oldalra.
-1. Válassza a **bejelentkezési kockázati házirend konfigurálása**lehetőséget.
-   1. A **hozzárendelések** alatt
-      1. **Felhasználók** – válassza a **minden felhasználó** lehetőséget **, vagy válassza az egyének és csoportok lehetőséget,** ha korlátozza a bevezetést.
-         1. Opcionálisan dönthet úgy is, hogy kizárja a felhasználókat a szabályzatból.
-      1. A **Feltételeit** - **bejelentkezési kockázat** a Microsoft javaslata, hogy ezt a beállítást **közepes vagy magasabb**értékre állítsa.
-   1. A **vezérlők** területen
-      1. **Hozzáférés** – a Microsoft javaslata, hogy **engedélyezze a hozzáférést** és a **többtényezős hitelesítés megkövetelését**.
-   1. Házirend **- - ** **érvénybe léptetése**
+1. Nyissa meg az [Azure Portalt.](https://portal.azure.com)
+1. Tallózás az **Azure Active Directory** > **biztonsági** > **identitásvédelem** > **– áttekintés e-címben.**
+1. Válassza **a Felhasználói kockázati házirend konfigurálása lehetőséget.**
+   1. Hozzárendelések **csoportban**
+      1. **Felhasználók** – Válassza a **Minden felhasználó** vagy A személyek és csoportok **kiválasztása lehetőséget,** ha korlátozza a bevezetést.
+         1. Tetszés szerint kizárhatja a felhasználókat a házirendből.
+      1. **Feltételek** - **A Felhasználó kockázata** A Microsoft ajánlása az, hogy ezt a beállítást **magasra**állítsa.
+   1. A **Vezérlők csoportban**
+      1. **Access** - A Microsoft javaslata a **hozzáférés engedélyezése** és **a jelszómódosítás megkövetelése**.
+   1. **Házirend kényszerítése** - **On**
+   1. **Mentés** – Ez a művelet visszaadja az **Áttekintés** lapot.
+1. Válassza **a Bejelentkezési kockázati házirend konfigurálása**lehetőséget.
+   1. Hozzárendelések **csoportban**
+      1. **Felhasználók** – Válassza a **Minden felhasználó** vagy A személyek és csoportok **kiválasztása lehetőséget,** ha korlátozza a bevezetést.
+         1. Tetszés szerint kizárhatja a felhasználókat a házirendből.
+      1. **Feltételek** - **Bejelentkezési kockázat** A Microsoft ajánlása szerint ezt a beállítást közepes és újabb **beállításra kell állítania.**
+   1. A **Vezérlők csoportban**
+      1. **Access** - A Microsoft javaslata a **hozzáférés engedélyezése** és **a többtényezős hitelesítés megkövetelése**.
+   1. **Házirend kényszerítése** - **On**
    1. **Mentés**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Az Azure Multi-Factor Authentication regisztrációs szabályzatának engedélyezése](howto-identity-protection-configure-mfa-policy.md)
+- [Az Azure többtényezős hitelesítésregisztrációs házirendjének engedélyezése](howto-identity-protection-configure-mfa-policy.md)
 
-- [Mi a kockázat](concept-identity-protection-risks.md)
+- [Mi a kockázat?](concept-identity-protection-risks.md)
 
-- [Kockázati észlelések vizsgálata](howto-identity-protection-investigate-risk.md)
+- [Kockázatészlelések vizsgálata](howto-identity-protection-investigate-risk.md)
 
-- [Kockázati észlelések szimulálása](howto-identity-protection-simulate-risk.md)
+- [Kockázatészlelés szimulálása](howto-identity-protection-simulate-risk.md)

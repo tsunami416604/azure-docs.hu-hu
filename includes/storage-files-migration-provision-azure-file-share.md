@@ -1,6 +1,6 @@
 ---
-title: Az Azure-fájlmegosztás kiépítési szempontjai.
-description: Azure-fájlmegosztás kiépítése a Azure File Sync használatával való használatra. Egy közös szöveges blokk, amely az áttelepítési dokumentumok között meg van osztva.
+title: Az Azure-fájlmegosztások kiépítésének megfontolásai.
+description: Azure-fájlmegosztások kiépítése az Azure File Sync használatával való használatra. Közös szövegterület, amely et megosztanak az áttelepítési dokumentumok között.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
@@ -8,33 +8,33 @@ ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 8cb398d1b1ec14f52d9c5fa5c122dc2e4ba4376d
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78209427"
 ---
-Az Azure-fájlmegosztás tárolása a felhőben történik egy Azure Storage-fiókban.
-További teljesítménnyel kapcsolatos szempontokat itt talál.
+Az Azure-fájlmegosztás a felhőben egy Azure-tárfiókban tárolódik.
+Van egy másik szintű teljesítmény megfontolások itt.
 
-Ha magas szintű aktív megosztásokkal rendelkezik, számos felhasználó és/vagy alkalmazás használja a megosztást, akkor két Azure-fájlmegosztás elérheti a Storage-fiók teljesítményének korlátját.
+Ha nagyon aktív megosztásokkal rendelkezik – a megosztásokat sok felhasználó és/vagy alkalmazás használja, akkor két Azure-fájlmegosztás elérheti a tárfiók teljesítménykorlátját.
 
-Ajánlott eljárás a Storage-fiókok üzembe helyezése egy fájlmegosztás használatával.
-Több Azure-fájlmegosztás is egyesíthető ugyanabba a Storage-fiókba, ha archiválási megosztást használ, vagy ha a napi tevékenység várható.
+Ajánlott eljárás: a tárfiókok üzembe helyezése egy fájlmegosztással minden.
+Több Azure-fájlmegosztást is felvehet ugyanabba a tárfiókba, ha archiválási megosztásokkal rendelkezik, vagy alacsony napi tevékenységre számít.
 
-Ezek a szempontok többek között a Felhőbeli hozzáférésre (Azure-beli virtuális gépekre) vonatkoznak, mint a Azure File Syncra. Ha azt tervezi, hogy csak Azure File Sync használja ezeket a megosztásokat, akkor a többit egyetlen Azure Storage-fiókba csoportosíthatja.
+Ezek a szempontok inkább a közvetlen felhőbeli hozzáférésre vonatkoznak (egy Azure virtuális gépen keresztül), mint az Azure File Sync-re. Ha azt tervezi, hogy csak az Azure File Sync ezeket a megosztásokat használja, majd több csoportosítása egyetlen Azure storage-fiókba rendben van.
 
-Ha elkészítette a megosztások listáját, akkor az egyes megosztásokat le kell képeznie arra a Storage-fiókra, amelyben a rendszer tárolja őket.
+Ha készített egy listát a megosztások, akkor le kell képeznie az egyes megosztások a tárfiók fognak lakni.
 
-Az előző fázisban a megfelelő számú megosztást állapította meg. Ebben a lépésben létrehozta a Storage-fiókok fájlmegosztás számára való hozzárendelését. Telepítse a most már megfelelő számú Azure Storage-fiókot a megfelelő számú Azure-fájlmegosztás esetében.
+Az előző fázisban meghatározta a megfelelő számú részvényt. Ebben a lépésben létrehozott egy leképezést a tárfiókok fájlmegosztások. Telepítse a megfelelő számú Azure storage-fiókok a megfelelő számú Azure-fájlmegosztások bennük.
 
-Győződjön meg arról, hogy az egyes Storage-fiókok régiója azonos, és megfelel a már üzembe helyezett Storage Sync Service-erőforrás régiójának.
+Győződjön meg arról, hogy a régió az egyes tárfiókok azonos, és megegyezik a régió a Storage Sync Service erőforrás már telepített.
 
 > [!CAUTION]
-> Ha 100 TiB-korlátot hoz létre az Azure-fájlmegosztás számára, akkor ez a megosztás csak a helyileg redundáns tárolás vagy a zóna redundáns tárolási redundancia-lehetőségeket használhatja. A 100 TiB-fájlmegosztás használata előtt gondolja át, hogy a tárolási redundancia szükséges-e.
+> Ha 100 TiB-szintű Azure-fájlmegosztást hoz létre, akkor a megosztás csak helyileg redundáns tárolást vagy zónaredundáns tárolási redundancia-beállításokat használhat. A 100 TiB-fájlmegosztás használata előtt vegye figyelembe a tárolási redundancia igényeit.
 
-Alapértelmezés szerint az Azure-fájlmegosztás még mindig 5 TiB-korláttal lett létrehozva. Mivel új Storage-fiókokat hoz létre, kövesse az útmutatást, hogy olyan [Storage-fiókokat hozzon létre, amelyek engedélyezik az Azure-fájlmegosztás 100 TiB-korlátait](../articles/storage/files/storage-files-how-to-create-large-file-share.md).
+Az Azure-fájlmegosztások alapértelmezés szerint továbbra is 5 TiB-korláttal jönnek létre. Mivel új tárfiókokat hoz létre, kövesse az útmutatást olyan [tárfiókok létrehozásához, amelyek 100 TiB-korláttal engedélyezik az Azure-fájlmegosztásokat.](../articles/storage/files/storage-files-how-to-create-large-file-share.md)
 
-A Storage-fiókok telepítésekor egy másik szempont az Azure Storage redundancia. Lásd: az [Azure Storage-redundancia beállításai](../articles/storage/common/storage-redundancy.md).
+Egy másik szempont a tárfiók üzembe helyezésekor, az Azure storage redundanciája. Lásd: [Az Azure Storage redundancia beállításai.](../articles/storage/common/storage-redundancy.md)
 
-Az erőforrások nevei szintén fontosak. Ha például egy Azure Storage-fiókba csoportosítja a HR-részleg több megosztását, akkor a megfelelő nevet adja a Storage-fióknak. Hasonlóképpen, az Azure-fájlmegosztás elnevezése esetén a helyszíni partnereknek használt nevekhez hasonló neveket kell használnia.
+Az erőforrások neve is fontos. Ha például a HR-részleg több megosztását csoportosítja egy Azure-tárfiókba, megfelelően kell elneveznie a tárfiókot. Hasonlóképpen az Azure-fájlmegosztások elnevezésekénél a helyszíni megfelelőikhöz hasonló neveket kell használnia.

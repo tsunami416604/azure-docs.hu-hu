@@ -1,35 +1,35 @@
 ---
 title: Azure FarmBeats architektúra
-description: Az Azure FarmBeats architektúráját ismerteti
+description: Az Azure FarmBeats architektúrájának ismertetése
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: d64c2175072d9979cfda2ea5f75beb34d3ad0d6b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75482373"
 ---
 # <a name="integration-patterns"></a>Integrációs minták
 
-Az Azure FarmBeats az Azure piactéren elérhető, üzleti és üzleti célú ajánlat. A FarmBeats lehetővé teszi a mezőgazdasági adatkészletek összevonását a szolgáltatók között, és a gyakorlatban hasznosítható elemzések létrehozását mesterséges intelligencia (AI) vagy Machine Learning (ML) modellek létrehozásával az adatkészletek elutasításával.
+Az Azure FarmBeats egy vállalkozáson belüli ajánlat, amely elérhető az Azure Piactéren. A FarmBeats lehetővé teszi a mezőgazdasági adatkészletek összesítését a szolgáltatók között, és a mesterséges intelligencia (AI) vagy a machine learning (ML) modellek létrehozásával az adatkészletek egyesítésével használható műveletek et.
 
-![A Project Farm veri](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
+![Projekt Farm Beats](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
-Az alábbi szakaszok az Azure FarmBeats integrációs mintáját írják le.
+A következő szakaszok ismertetik az Azure FarmBeats integrációs mintáját.
 
-## <a name="why-integrate-with-azure-farmbeats"></a>Miért érdemes integrálni az Azure FarmBeats?
+## <a name="why-integrate-with-azure-farmbeats"></a>Miért érdemes integrálni az Azure FarmBeats-szel?
 
-Ez a szakasz olyan partnerekre összpontosít, akik integrálni szeretnék az adatrendszereiket (például érzékelők, herék, meteorológiai állomások) az Azure FarmBeats.
+Ez a szakasz azokra a partnerekre összpontosít, akik adatrendszereiket (például érzékelők, drónok, meteorológiai állomások) integrálni szeretnék az Azure FarmBeats-be.
 
-Az Azure FarmBeats egy bővíthető ajánlat, amely lehetővé teszi, hogy a mezőgazdasági vállalkozások a különböző történelmi és valós idejű mezőgazdasági adatkészleteket egyetlen platformon adják hozzá. Az Azure FarmBeats segítségével a mezőgazdasági vállalkozások egy farm környezetében normalizálják, contextualize és összesítik az adatokat.
+Az Azure FarmBeats egy bővíthető ajánlat, amely lehetővé teszi a mezőgazdasági vállalkozások számára, hogy a különböző korábbi és valós idejű mezőgazdasági adatkészleteiket egyetlen platformba adják hozzá. Az Azure FarmBeats segít egy mezőgazdasági vállalkozás normalizálásában, környezettanizálásában és az adatok egy farm környezetben való összesítésében.
 
-Az Azure FarmBeats rendelkező adatpartnerek révén szélesebb körű bevezetéssel nyithatja meg a rendszereket, és több ügyfelet is elérhet az adatajánlatokkal. Az Azure FarmBeats egy Datahub nevű bővíthető API-réteget biztosít, amely lehetővé teszi, hogy a rendszer szisztematikusan és szabványosított sémába importálja az eszközöket az eszközökről.
+Az Azure FarmBeats adatpartnerévé válásával megnyithatja rendszereit a szélesebb körű bevezetés érdekében, és az adatajánlatokkal több ügyfelet érhet el. Az Azure FarmBeats egy bővíthető API-réteget, a Datahubot biztosít, amely segít az eszközökről rendszeresen és szabványosított sémába történő adatok betöltésével.
 
-Ha az adatai elérhetők az ügyfelek Azure FarmBeats-példányán belül, az ügyfelek gazdagabb elemzéseket és eszközöket hozhatnak létre az adataik felett.
+Miután az adatok elérhetővé tisza az ügyfelek Azure FarmBeats-példányát, az ügyfelek gazdagabb elemzéseket és eszközöket hozhatnak létre az adatok on-t.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az érzékelői adatok integrálásával kapcsolatos további információkért [lásd: az](imagery-partner-integration-in-azure-farmbeats.md) [érzékelő adatintegrációja](sensor-partner-integration-in-azure-farmbeats.md) és a képekkel kapcsolatos partneri integráció.
+Az érzékelők adatainak integrálásáról további információt az [érzékelőadatok integrálásáról](sensor-partner-integration-in-azure-farmbeats.md) és a képláncokkal kapcsolatos partnerintegrációról a [Képpartnerek integrációja](imagery-partner-integration-in-azure-farmbeats.md)című témakörben talál.

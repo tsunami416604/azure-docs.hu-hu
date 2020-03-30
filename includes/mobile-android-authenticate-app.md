@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179806"
 ---
-1. Nyissa meg a projekt az Android Studióban.
+1. Nyissa meg a projektet az Android Studio programban.
 
-2. A **Project Explorer** az Android Studióban nyissa meg a `ToDoActivity.java` fájlt, és adja hozzá a következő importálási utasításokat:
+2. Az Android Studio **Project** Explorer `ToDoActivity.java` ben nyissa meg a fájlt, és adja hozzá a következő importálási nyilatkozatokat:
 
     ```java
     import java.util.concurrent.ExecutionException;
@@ -27,7 +27,7 @@ ms.locfileid: "67179806"
     import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
     ```
 
-3. Adja hozzá a következő metódust a **ToDoActivity** osztály:
+3. Adja hozzá a következő módszert a **ToDoActivity** osztályhoz:
 
     ```java
     // You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
@@ -59,20 +59,20 @@ ms.locfileid: "67179806"
     }
     ```
 
-    Ez a kód létrehoz egy metódust a Google-hitelesítési folyamat. Egy párbeszédpanel jelenik meg a hitelesített felhasználó azonosítója. Csak a sikeres hitelesítés folytathatja.
+    Ez a kód létrehoz egy módszert a Google hitelesítési folyamatának kezelésére. Egy párbeszédpanelen megjelenik a hitelesített felhasználó azonosítója. Csak sikeres hitelesítéssel folytathatja.
 
     > [!NOTE]
-    > Ha eltérő Google identitásszolgáltatót használja, módosítsa a átadott érték a **bejelentkezési** metódust a következő értékek egyikét: _MicrosoftAccount_, _Facebook_, _Twitter_, vagy _windowsazureactivedirectory_.
+    > Ha nem a Google-t használ, módosítsa a **bejelentkezési** metódusnak átadott értéket a következő értékek egyikére: _MicrosoftAccount_, _Facebook_, _Twitter_vagy _windowsazureactivedirectory_.
 
-4. Az a **onCreate** metódus, a következő kódsort hozzáadása után a kódot, amely példányosítja az `MobileServiceClient` objektum.
+4. Az **onCreate** metódusban adja hozzá a következő kódsort az `MobileServiceClient` objektumot példányosan létrehozó kód után.
 
     ```java
     authenticate();
     ```
 
-    Ez a hívás a hitelesítési folyamat elindul.
+    Ez a hívás elindítja a hitelesítési folyamatot.
 
-5. Helyezze át a többi kód után `authenticate();` a a **onCreate** egy új módszer **createTable** módszer:
+5. A fennmaradó kód `authenticate();` áthelyezése után az **onCreate** metódusban egy új **createTable** metódusba:
 
     ```java
     private void createTable() {
@@ -92,7 +92,7 @@ ms.locfileid: "67179806"
     }
     ```
 
-6. Várt módon átirányító működése érdekében adja hozzá az alábbi kódrészletet `RedirectUrlActivity` való `AndroidManifest.xml`:
+6. Az átirányítás várt működésének biztosításához adja `RedirectUrlActivity` hozzá `AndroidManifest.xml`a következő részletet:
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
@@ -106,7 +106,7 @@ ms.locfileid: "67179806"
     </activity>
     ```
 
-7. Adjon hozzá `redirectUriScheme` való `build.gradle` az Android-alkalmazás.
+7. Add `redirectUriScheme` `build.gradle` hozzá az Android alkalmazás.
 
     ```gradle
     android {
@@ -123,7 +123,7 @@ ms.locfileid: "67179806"
     }
     ```
 
-8. Adjon hozzá `com.android.support:customtabs:23.0.1` , a függőségeket a `build.gradle`:
+8. Add `com.android.support:customtabs:23.0.1` hozzá a függőségek `build.gradle`a:
 
     ```gradle
     dependencies {
@@ -132,9 +132,9 @@ ms.locfileid: "67179806"
     }
     ```
 
-9. Az a **futtatása** menüben kattintson a **alkalmazás futtatása** elindítani az alkalmazást, és jelentkezzen be a választott identitásszolgáltató.
+9. A **Futtatás** menüben kattintson az **Alkalmazás futtatása** parancsra az alkalmazás elindításához és a kiválasztott identitásszolgáltatóval való bejelentkezéshez.
 
 > [!WARNING]
-> Az említett URL-sémát a kis-és nagybetűket. Ügyeljen arra, hogy minden előfordulását `{url_scheme_of_you_app}` nagybetűket.
+> Az említett URL-séma a kis- és nagybetűket is figyelembe vevő. Győződjön meg arról, hogy az összes előfordulása `{url_scheme_of_you_app}` használja ugyanazt az esetet.
 
-Sikeresen jelentkezett be, amikor az alkalmazás hiba nélkül kell futnia, és meg kell tudni lekérdezése a háttérszolgáltatás és az adatok frissítéséhez.
+Ha sikeresen bejelentkezett, az alkalmazásnak hiba nélkül kell futnia, és képesnek kell lennie a háttérszolgáltatás lekérdezésére és az adatok frissítésére.

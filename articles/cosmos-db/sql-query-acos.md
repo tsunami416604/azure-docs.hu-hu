@@ -1,6 +1,6 @@
 ---
-title: ACO-Azure Cosmos DB lekérdezési nyelv
-description: Ismerje meg, hogy az ACO-arccosice (Azure Cosmos DB) SQL System függvénye hogyan adja vissza azt a szöget (radiánban), amelynek koszinusza a megadott numerikus kifejezés
+title: ACOS az Azure Cosmos DB lekérdezési nyelvében
+description: Ismerje meg, hogyan adja vissza az ACOS (arckozice) SQL-rendszer függvényét az Azure Cosmos DB-ben a búzsában lévő szöget, amelynek koszinusza a megadott numerikus kifejezés
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 733d6b009f03d61c37170cc506a3b2ec842d7c47
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300961"
 ---
-# <a name="acos-azure-cosmos-db"></a>ACO-i (Azure Cosmos DB)
- Adja vissza a szög radiánban, amelynek a koszinusza a megadott numerikus kifejezés; egy szám arkusz koszinusza néven is ismert.  
+# <a name="acos-azure-cosmos-db"></a>ACOS (Azure Cosmos DB)
+ Radiánban lévő szöget számít ja, amelynek koszinusza a megadott numerikus kifejezés; más néven arckoszin.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,21 +26,21 @@ ACOS(<numeric_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expr*  
-   A numerikus kifejezés.  
+   Ez egy numerikus kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  A numerikus kifejezést ad vissza.  
+  Numerikus kifejezést ad eredményül.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa a-1 `ACOS` adja vissza.  
+  A következő példa `ACOS` a -1 értékét adja vissza.  
   
 ```sql
 SELECT ACOS(-1) AS acos 
 ```  
   
- Íme az eredményhalmaz.  
+ Itt van az eredményhalmaz.  
   
 ```json
 [{"acos": 3.1415926535897931}]  
@@ -48,10 +48,10 @@ SELECT ACOS(-1) AS acos
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfüggvény nem fogja használni az indexet.
+Ez a rendszerfunkció nem használja az indexet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Matematikai függvények Az Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)

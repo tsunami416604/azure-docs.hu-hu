@@ -1,109 +1,109 @@
 ---
-title: Monitorozás és diagnosztika az Azure Service Fabric Mesh-alkalmazásokban
-description: Ismerkedjen meg az Azure-beli Service Fabric Meshban található alkalmazások monitorozásával és diagnosztizálásával.
+title: Figyelés és diagnosztika az Azure Service Fabric Mesh alkalmazásokban
+description: Ismerje meg az alkalmazás figyelését és diagnosztizálását az Azure-beli Service Fabric Mesh alkalmazásban.
 author: srrengar
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75498146"
 ---
-# <a name="monitoring-and-diagnostics"></a>Figyelés és diagnosztika
-Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. A Service Fabric Mesh figyelése és diagnosztikája a diagnosztikai adattípusok három fő típusa szerint vannak kategorizálva:
+# <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
+Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. A Service Fabric Mesh figyelése és diagnosztikája a diagnosztikai adatok három fő típusa szerint van kategorizálva:
 
-- Alkalmazás-naplók – ezek a tároló alkalmazások naplóiként vannak meghatározva, attól függően, hogy az alkalmazás hogyan lett kialakítva (például Docker-naplók).
-- Platform eseményei – a háló platform által a tároló művelethez kapcsolódó események, amelyek jelenleg a tároló aktiválását, inaktiválását és megszüntetését foglalják magukban.
-- Tároló metrikái – erőforrás-kihasználtság és a tárolók teljesítmény-mérőszámai (Docker-statisztika)
+- Alkalmazásnaplók – ezek a tárolóba helyezett alkalmazások naplói, az alkalmazás instrumentált (pl. docker-naplók) alapján.
+- Platformesemények – a hálóplatformról származó, a tároló műveletéhez kapcsolódó események, amelyek jelenleg a tároló aktiválását, az inaktiválást és a lezárást is.
+- Tároló metrikák - erőforrás-kihasználtsági és teljesítménymetrikák a tárolók (docker statisztika)
 
-Ez a cikk a legújabb előzetes verzióhoz elérhető monitorozási és diagnosztikai lehetőségeket ismerteti.
+Ez a cikk ismerteti a figyelési és diagnosztikai lehetőségek a legújabb előzetes verzió elérhető.
 
-## <a name="application-logs"></a>Alkalmazás-naplók
+## <a name="application-logs"></a>Alkalmazásnaplók
 
-A Docker-naplókat tároló alapján megtekintheti az üzembe helyezett tárolókban. A Service Fabric Mesh-alkalmazás modelljében minden tároló egy kód-csomag az alkalmazásban. A következő parancs futtatásával tekintheti meg a kapcsolódó naplókat a kód csomag használatával:
+Megtekintheti a docker-naplók az üzembe helyezett tárolók, tárolónként. A Service Fabric Mesh alkalmazásmodellben minden tároló egy kódcsomag az alkalmazásban. A kódcsomaggal társított naplók megtekintéséhez használja a következő parancsot:
 
 ```cli
 az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> --service-name <nameOfService> --replica-name <nameOfReplica> --code-package-name <nameOfCodePackage>
 ```
 
 > [!NOTE]
-> Az "az Mesh Service-replika" paranccsal kérheti le a replika nevét. A replikák nevei a 0 értékről növelik az egész számokat.
+> Az "Az mesh service-replica" paranccsal lekaphatja a replika nevét. A replikanevek 0-tól növekményezik az egész számokat.
 
-Így néz ki a naplók a VotingWeb. code tárolóból a szavazási alkalmazásból:
+Itt van, amit ez úgy néz ki, mint a látta a naplókat a VotingWeb.Code konténer a szavazási alkalmazás:
 
 ```cli
 az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzVoting --service-name VotingWeb --replica-name 0 --code-package-name VotingWeb.Code
 ```
 
-## <a name="container-metrics"></a>Tároló metrikái 
+## <a name="container-metrics"></a>Tároló metrikák 
 
-A rácsvonal-környezet a tárolók működésének módját jelző néhány mérőszámot tesz elérhetővé. A következő mérőszámok érhetők el a Azure Portal és az Azure monitor CLI használatával:
+A háló környezet egy maroknyi metrikát tár fel, amelyek jelzik a tárolók teljesítményét. A következő metrikák érhetők el az Azure Portalon és az Azure monitor CLI-n keresztül:
 
-| Metrika | Leírás | egység|
+| Metrika | Leírás | Egység|
 |----|----|----|
-| CpuUtilization | ActualCpu/AllocatedCpu százalékként | % |
-| MemoryUtilization | ActualMem/AllocatedMem százalékként | % |
-| AllocatedCpu | Azure Resource Manager sablonként lefoglalt CPU | Millicores |
-| AllocatedMemory | Lefoglalt memória Azure Resource Manager sablonként | MB |
+| Cpukihasználtság | ActualCpu/AllocatedCpu százalékban | % |
+| Memóriakihasználtság | ActualMem/AllocatedMem százalékban | % |
+| Felosztott cpu | Az Azure Resource Manager-sablon szerint lefoglalt processzor | Millicores |
+| Lefoglalt memória | Az Azure Resource Manager-sablon szerint lefoglalt memória | MB |
 | ActualCpu | Processzorhasználat | Millicores |
-| ActualMemory | Memóriahasználat | MB |
-| Tároló állapota: | 0 – érvénytelen: a tároló állapota ismeretlen <br> 1 – függőben: a tároló az indítást ütemezte <br> 2 – kezdő: a tároló a kezdési folyamatban van <br> 3 – elindítva: a tároló sikeresen elindult <br> 4 – Leállítás: a tároló leállítása folyamatban van <br> 5 – leállítva: a tároló sikeresen leállt | – |
-| ApplicationStatus | 0 – ismeretlen: az állapot nem olvasható be. <br> 1 – kész: az alkalmazás sikeresen fut <br> 2 – verziófrissítés: folyamatban van egy frissítés <br> 3 – létrehozás: folyamatban van az alkalmazás létrehozása <br> 4 – törlés: az alkalmazás törlése folyamatban van <br> 5 – sikertelen: az alkalmazás telepítése nem sikerült | – |
-| ServiceStatus | 0 – érvénytelen: a szolgáltatás jelenleg nem rendelkezik állapottal <br> 1 – ok: a szolgáltatás kifogástalan állapotban van  <br> 2 – figyelmeztetés: probléma lehet a vizsgálat megkövetelésével <br> 3 – hiba: van valami rossz, ami vizsgálatot igényel <br> 4 – ismeretlen: az állapot nem olvasható be. | – |
-| ServiceReplicaStatus | 0 – érvénytelen: a replika jelenleg nem rendelkezik állapottal <br> 1 – ok: a szolgáltatás kifogástalan állapotban van  <br> 2 – figyelmeztetés: probléma lehet a vizsgálat megkövetelésével <br> 3 – hiba: van valami rossz, ami vizsgálatot igényel <br> 4 – ismeretlen: az állapot nem olvasható be. | – | 
-| RestartCount | Tároló-újraindítások száma | – |
+| ActualMemory (Tényleges memória) | Memóriahasználat | MB |
+| ContainerStatus (Konténerállapota) | 0 - Érvénytelen: A tároló állapota ismeretlen <br> 1 - Függőben: A tároló indítása tervezett <br> 2 - Indítás: A tartály indítása folyamatban van <br> 3 - Elindult: A tároló sikeresen elindult <br> 4 - Megállás: A tartály leállítása <br> 5 - Leállítva: A tartály sikeresen leállt | N/A |
+| ApplicationStatus alkalmazásállapota | 0 - Ismeretlen: Az állapot nem olvasható be <br> 1 - Kész: Az alkalmazás sikeresen fut <br> 2 - Frissítés: Van egy frissítés folyamatban <br> 3 - Létrehozása: Az alkalmazás létrehozása folyamatban van <br> 4 - Törlés: Az alkalmazás törlése folyamatban van <br> 5 - Nem sikerült: Az alkalmazás telepítése nem sikerült | N/A |
+| ServiceStatus (Szolgáltatásállapota) | 0 - Érvénytelen: A szolgáltatás jelenleg nem rendelkezik állapottal <br> 1 - Ok: A szolgáltatás kifogástalan  <br> 2 - Figyelmeztetés: Lehet, hogy valami baj van igénylő vizsgálat <br> 3 - Hiba: Van valami baj, hogy vizsgálatot kell <br> 4 - Ismeretlen: Az állapot nem olvasható be | N/A |
+| SzolgáltatásReplicaStatus | 0 - Érvénytelen: A replika jelenleg nem rendelkezik állapottal <br> 1 - Ok: A szolgáltatás kifogástalan  <br> 2 - Figyelmeztetés: Lehet, hogy valami baj van igénylő vizsgálat <br> 3 - Hiba: Van valami baj, hogy vizsgálatot kell <br> 4 - Ismeretlen: Az állapot nem olvasható be | N/A | 
+| RestartCount (Újraindítási számláló) | A tároló újraindításainak száma | N/A |
 
 > [!NOTE]
-> A ServiceStatus és a ServiceReplicaStatus értékek megegyeznek a Service Fabric [HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) . 
+> A ServiceStatus és serviceReplicaStatus értékek megegyeznek a Service Fabric [HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) értékével. 
 
-Minden metrika különböző dimenziókban érhető el, így különböző szinteken láthatja az összesítéseket. A méretek aktuális listája a következő:
+Minden metrika különböző dimenziókban érhető el, így különböző szinteken láthatja az összesítéseket. A dimenziók aktuális listája a következő:
 
 * ApplicationName
 * ServiceName
 * ServiceReplicaName
-* CodePackageName
+* CodePackageName (CodePackageName)
 
 > [!NOTE]
-> A CodePackageName-dimenzió nem érhető el Linux-alkalmazásokhoz. 
+> A CodePackageName dimenzió nem érhető el Linux-alkalmazásokhoz. 
 
-Az egyes dimenziók a [Service Fabric alkalmazás modelljének](service-fabric-mesh-service-fabric-resources.md#applications-and-services) különböző összetevőinek felelnek meg
+Minden dimenzió a Service Fabric [alkalmazásmodell](service-fabric-mesh-service-fabric-resources.md#applications-and-services) különböző összetevőinek felel meg
 
-### <a name="azure-monitor-cli"></a>Azure Monitor parancssori felület
+### <a name="azure-monitor-cli"></a>Azure Monitor CLI
 
-A parancsok teljes listája elérhető a [Azure monitor CLI docs](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) -ban, de néhány hasznos példát is tartalmaz. 
+A parancsok teljes listája elérhető az [Azure Monitor CLI-dokumentumaiban,](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) de az alábbiakban néhány hasznos példát is bemutattunk 
 
-Az erőforrás-azonosító például a következő mintát követi
+Minden példában az erőforrás-azonosító ezt a mintát követi.
 
 `"/subscriptions/<your sub ID>/resourcegroups/<your RG>/providers/Microsoft.ServiceFabricMesh/applications/<your App name>"`
 
 
-* Egy alkalmazásban lévő tárolók CPU-kihasználtsága
+* A tárolók cpu-kihasználtsága egy alkalmazásban
 
 ```cli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization"
 ```
-* Memória kihasználtsága minden egyes szolgáltatás replikája esetében
+* Az egyes szolgáltatáskópiák memóriakihasználtsága
 ```cli
     az monitor metrics list --resource <resourceId> --metric "MemoryUtilization" --dimension "ServiceReplicaName"
 ``` 
 
-* Az egyes tárolók újraindítása 1 órás időszakban 
+* Minden egyes tároló újraindítása 1 óra alatt 
 ```cli
     az monitor metrics list --resource <resourceId> --metric "RestartCount" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z
 ``` 
 
-* A "VotingWeb" nevű szolgáltatások átlagos CPU-kihasználtsága 1 órás időszakban
+* Átlagos CPU-kihasználtság a "VotingWeb" nevű szolgáltatások között 1 óra alatt
 ```cli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z --aggregation "Average" --filter "ServiceName eq 'VotingWeb'"
 ``` 
 
-### <a name="metrics-explorer"></a>Metrikák Explorer
+### <a name="metrics-explorer"></a>Metrika-kezelő
 
-A metrikák Explorer egy panel a portálon, amelyben megjelenítheti a háló alkalmazás összes mérőszámát. Ez a panel a portál alkalmazás lapján és az Azure monitor paneljén érhető el, amelynek segítségével megtekintheti az összes Azure-erőforrás metrikáit, amelyek támogatják a Azure Monitor. 
+Metrika-kezelő egy panel a portálon, ahol a háló alkalmazás összes metrikáját vizualizálhatja. Ez a panel érhető el az alkalmazás oldalán a portálon, és az Azure-figyelő panel, amely az utóbbi segítségével az Azure-erőforrások, amelyek támogatják az Azure Monitor metrikák. 
 
 ![Metrikaböngésző](./media/service-fabric-mesh-monitoring-diagnostics/metricsexplorer.png)
 
@@ -116,6 +116,6 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 ![Container Insights](./media/service-fabric-mesh-monitoring-diagnostics/containerinsights.png)
 -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Service Fabric Meshsel kapcsolatos további információkért olvassa el a [Service Fabric Mesh áttekintésével](service-fabric-mesh-overview.md) foglalkozó cikket.
-* Ha többet szeretne megtudni a Azure Monitor metrikák parancsairól, tekintse meg a [Azure monitor CLI-docs](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)című témakört.
+* Ha többet szeretne megtudni az Azure Monitor metrikák parancsairól, tekintse meg az [Azure Monitor CLI-dokumentumait.](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)

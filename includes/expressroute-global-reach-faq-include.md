@@ -9,52 +9,52 @@ ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 317a480c13c5c6e00653fd61878a379df3f65ac4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67178855"
 ---
-### <a name="what-is-expressroute-global-reach"></a>Mi az az ExpressRoute globális elérhetőségű?
+### <a name="what-is-expressroute-global-reach"></a>Mi az ExpressRoute globális elérés?
 
-Az ExpressRoute globális elérhetőségű egy Azure-szolgáltatás, amely a helyszíni hálózat az ExpressRoute szolgáltatáson keresztül kapcsolódik a Microsoft globális hálózata révén. Például ha egy privát adatközpontban Windowsról, szilícium-völgy az ExpressRoute és a egy másik privát adatközpontban részt csatlakozik az ExpressRoute globális elérhetőségű, Dallas, az ExpressRoute csatlakozik csatlakoztathatja a privát adatközpontok együtt a két ExpressRoute-kapcsolatok és a határokon keresztül data center forgalmat fog bejárni a Microsoft gerinchálózatába.
+Az ExpressRoute Global Reach egy Olyan Azure-szolgáltatás, amely a Microsoft globális hálózatán keresztül köti össze a helyszíni hálózatokat az ExpressRoute szolgáltatáson keresztül. Ha például kaliforniában van egy privát adatközpontja, amely a Szilícium-völgyben található ExpressRoute-hoz, texasi pedig egy másik magánadatközpontja a dallasi ExpressRoute-hoz csatlakozik az ExpressRoute Global Reach-hez, akkor a privát adatközpontokat a két ExpressRoute-kapcsolaton keresztül, és a több adatközpont-forgalom áthalad a Microsoft hálózati gerincén.
 
-### <a name="how-do-i-enable-or-disable-expressroute-global-reach"></a>Hogyan engedélyezése vagy letiltása az ExpressRoute globális elérhetőségű?
+### <a name="how-do-i-enable-or-disable-expressroute-global-reach"></a>Hogyan engedélyezhetem vagy tilthatom le az ExpressRoute globális elérést?
 
-Az ExpressRoute-Kapcsolatcsoportok összekapcsolása engedélyezése ExpressRoute globális elérhetőségű. A Kapcsolatcsoportok leválasztásával letiltja a szolgáltatást. Tekintse meg a [konfigurációs](../articles/expressroute/expressroute-howto-set-global-reach.md).
+Az ExpressRoute globális elérését az ExpressRoute-áramkörök összekapcsolásával engedélyezheti. Az áramkörök leválasztásával letilthatja a funkciót. Lásd a [konfigurációt](../articles/expressroute/expressroute-howto-set-global-reach.md).
 
-### <a name="do-i-need-expressroute-premium-for-expressroute-global-reach"></a>Szükséges az ExpressRoute Premium az ExpressRoute globális elérhetőségű?
+### <a name="do-i-need-expressroute-premium-for-expressroute-global-reach"></a>Szükségem van ExpressRoute Premium-ra az ExpressRoute globális eléréséhez?
 
-Ha az ExpressRoute-Kapcsolatcsoportok ugyanazon geopolitikai régióban találhatók, nem kell az ExpressRoute Premium használatával kapcsolhatja össze azokat. Ha két ExpressRoute-Kapcsolatcsoportok különböző geopolitikai régióban, szükség van az ExpressRoute Premium mindkét Kapcsolatcsoportok közöttük kapcsolat. 
+Ha az ExpressRoute-áramkörök ugyanabban a geopolitikai régióban vannak, nincs szükség expressroute Premium-ra ahhoz, hogy összekapcsolja őket. Ha két ExpressRoute-kapcsolat különböző geopolitikai régióban található, mindkét kapcsolathoz ExpressRoute Premium-kapcsolatszükséges a közöttük való kapcsolat engedélyezéséhez. 
 
-### <a name="how-will-i-be-charged-for-expressroute-global-reach"></a>Hogyan kell fizetnem az ExpressRoute globális elérhetőségű?
+### <a name="how-will-i-be-charged-for-expressroute-global-reach"></a>Hogyan kell fizetnem az ExpressRoute Globális Elérésért?
 
-Az ExpressRoute lehetővé teszi, hogy a kapcsolat a helyszíni hálózat és a Microsoft-felhőszolgáltatásokhoz. Globális elérhetőségű ExpressRoute lehetővé teszi, hogy a meglévő ExpressRoute-Kapcsolatcsoportok, kihasználva a Microsoft globális hálózatának keresztül a saját helyszíni hálózat közötti kapcsolat. Az ExpressRoute globális elérhetőségű külön kell fizetni a meglévő ExpressRoute-szolgáltatásból. Nincs egy engedélyezi ezt a szolgáltatást, mindegyik ExpressRoute-kapcsolatcsoport a bővítmény díját. Az ExpressRoute globális elérhetőségű szerint engedélyezve van a helyszíni hálózatok közötti forgalom számítjuk fel a kilépő üzenetek gyakorisága a forráson és a egy bejövő forgalom a célhelyen. A díjak a zónában, amelyen a Kapcsolatcsoportok találhatók alapulnak.
+Az ExpressRoute lehetővé teszi a helyszíni hálózatés a Microsoft felhőszolgáltatások közötti kapcsolatot. Az ExpressRoute Global Reach lehetővé teszi a kapcsolatot a saját helyszíni hálózatai között a meglévő ExpressRoute-áramkörökön keresztül, kihasználva a Microsoft globális hálózatát. Az ExpressRoute globális elérésszámlázása a meglévő ExpressRoute-szolgáltatástól elkülönítve történik. Minden ExpressRoute-kapcsolaton engedélyezi ezt a szolgáltatást. Az ExpressRoute Globális elérés által engedélyezett helyszíni hálózatok közötti forgalmat a forrásnál kimenő forgalom, a célon pedig a kimenő forgalom díja határozza meg. Az árak azáramkörök zónáján alapulnak.
 
-### <a name="where-is-expressroute-global-reach-supported"></a>Ha az ExpressRoute globális elérhetőségű támogatott?
+### <a name="where-is-expressroute-global-reach-supported"></a>Hol támogatott az ExpressRoute globális elérése?
 
-Az ExpressRoute globális elérhetőségű támogatott [országok/régiók vagy helyek kiválasztása](../articles/expressroute/expressroute-global-reach.md). Az ExpressRoute-Kapcsolatcsoportok, a társviszony-létesítési helyszínek ezen országok vagy régiók vagy helyen kell létrehozni.
+Az ExpressRoute globális elérése [bizonyos országokban/régiókban vagy helyeken](../articles/expressroute/expressroute-global-reach.md)támogatott. Az ExpressRoute-áramköröket az adott országokban/régiókban vagy helyeken lévő társviszony-létesítési helyeken kell létrehozni.
 
-### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>Több mint két helyszíni hálózat van, mindegyik ExpressRoute-kapcsolatcsoport csatlakozik. Lehet engedélyezni az ExpressRoute globális elérhetőségű összekapcsolását saját helyi hálózatok mindegyike?
+### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>Kettőnél több helyszíni hálózattal rendelkezem, amelyek mindegyike ExpressRoute-kapcsolathoz csatlakozik. Engedélyezhetem az ExpressRoute Globális elérésnek, hogy az összes helyszíni hálózatomat összekapcsolják?
 
-Igen, akkor is, mindaddig, amíg a Kapcsolatcsoportok szerepelnek a támogatott országok/régiók. Két ExpressRoute-Kapcsolatcsoportok egyszerre csatlakozni kell. Egy teljes körűen szövevényes hálózat létrehozásához szüksége kapcsolatcsoport-párok enumerálása, és ismételje meg a konfigurálást. 
+Igen, mindaddig, amíg az áramkörök a támogatott országokban/régiókban vannak. Egyszerre két ExpressRoute-áramkört kell csatlakoztatnia. Teljesen hálózott hálózat létrehozásához fel kell sorolnia az összes áramkörpárt, és meg kell ismételnie a konfigurációt. 
 
-### <a name="can-i-enable-expressroute-global-reach-between-two-expressroute-circuits-at-the-same-peering-location"></a>Lehet engedélyezni az ExpressRoute globális elérhetőségű között két ExpressRoute-Kapcsolatcsoportok társviszony-létesítési ugyanarról a helyről?
+### <a name="can-i-enable-expressroute-global-reach-between-two-expressroute-circuits-at-the-same-peering-location"></a>Engedélyezhetem az ExpressRoute globális elérését két ExpressRoute-kapcsolati kapcsolati kapcsolati kapcsolati kapcsolati kapcsolati kapcsolati kapcsolati hely között?
 
-Nem. A két Kapcsolatcsoportok másik társviszony-létesítési helyszínek között kell lennie. Ha egy támogatott országot/régiót a metro egynél több ExpressRoute-társviszony-létesítési helyszínen, csatlakoztathatja egymáshoz az ExpressRoute-Kapcsolatcsoportok adott metro eltérő társviszony-létesítési helyen létrehozott. 
+Nem. A két áramkörnek különböző társviszony-létesítési helyekről kell származnia. Ha egy támogatott országban/régióban egy metró egynél több ExpressRoute-társviszony-létesítési hely, összekapcsolhatja az ExpressRoute-áramkörök létre különböző társviszony-létesítési helyeken az adott metróban. 
 
-### <a name="if-expressroute-global-reach-is-enabled-between-circuit-x-and-circuit-y-and-between-circuit-y-and-circuit-z-will-my-on-premises-networks-connected-to-circuit-x-and-circuit-z-talk-to-each-other-via-microsofts-network"></a>Ha ExpressRoute globális elérhetőségű engedélyezve van a kapcsolatcsoport X és Y kapcsolatcsoport között, valamint a kapcsolatcsoport Y és kapcsolatcsoport Z, a rendszer X-kapcsolatcsoporthoz csatlakoztatott saját helyszíni hálózatok és kapcsolatcsoport Z kommunikál egymással keresztül a Microsoft hálózatához?
+### <a name="if-expressroute-global-reach-is-enabled-between-circuit-x-and-circuit-y-and-between-circuit-y-and-circuit-z-will-my-on-premises-networks-connected-to-circuit-x-and-circuit-z-talk-to-each-other-via-microsofts-network"></a>Ha az ExpressRoute Global Reach engedélyezve van az X és az Y áramkör között, valamint az Y és a Z áramkör között, az X és z áramkörhöz csatlakoztatott helyszíni hálózataim a Microsoft hálózatán keresztül beszélnek egymással?
 
-Nem. Ahhoz, hogy minden második része a helyszíni hálózatok közötti kapcsolatot, csatlakoznia kell a megfelelő ExpressRoute-Kapcsolatcsoportok explicit módon. A fenti példában kapcsolatcsoport X és kapcsolatcsoport Z kell csatlakoztatni. 
+Nem. A helyszíni hálózatok bármelyike közötti kapcsolat engedélyezéséhez explicit módon kell csatlakoztatnia a megfelelő ExpressRoute-áramköröket. A fenti példában az X és a Z áramkört kell csatlakoztatnia. 
 
-### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>Mi az a hálózat átviteli sebessége várt lehet után engedélyezhető az ExpressRoute globális elérhetőségű saját helyszíni hálózat között?
+### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>Mi az a hálózati átviteli érték, amelyre számíthatok a helyszíni hálózatok között, miután engedélyeztem az ExpressRoute globális elérési útját?
 
-A hálózat átviteli sebessége, a helyszíni hálózatok között, az ExpressRoute globális elérhetőségű, engedélyezte a két ExpressRoute-Kapcsolatcsoportok kisebb maximumon. Helyszíni – Azure és helyszíni – helyszíni forgalom megoszthatja az ugyanazon kapcsolatcsoport, és ugyanazt a sávszélesség napi korlát vonatkozik. 
+A helyszíni hálózatok közötti hálózati átviteli, az ExpressRoute Global Reach által engedélyezett, a két ExpressRoute-kapcsolatcsoport közül a kisebb korlátozza. A telephelyek és az Azure-ba irányuló forgalom és a helyiségek között lévő forgalom ugyanazon a kapcsolaton osztozik, és ugyanazok a sávszélesség-korlát vonatkoznak rájuk. 
 
-### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>Az ExpressRoute globális elérhetőségű melyek korlátait I meghirdethet útvonalak számát, valamint a fog kapott útvonalak száma?
+### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>Az ExpressRoute Global Reach segítségével milyen korlátok vonatkoznak a hirdethető útvonalak számára és a megkapom a megkapható útvonalak számára vonatkozóan?
 
-A Microsoft a az Azure privát társviszony-létesítés meghirdethet útvonalak száma továbbra is egy szabványos kapcsolatcsoport a 4000-es vagy a prémium szintű expressroute-kapcsolatcsoporthoz 10000. Kapni fog a Microsoft az Azure privát társviszony-létesítés útvonalak száma egyezik meg az útvonalakat az Azure virtuális hálózatok és globális elérhetőségű ExpressRoute-n keresztül csatlakozik az útvonalakat más helyszíni hálózatokról. Ellenőrizze, hogy a helyszíni útválasztón egy megfelelő maximális előtag-korlátot állít be. 
+Az Azure-beli privát társviszony-létesítési útvonalak száma a Microsoft számára 4000-en marad egy standard áramkörön, vagy 10000 egy prémium szintű kapcsolatcsoporton. Az Azure-beli privát társviszony-létesítéssorán a Microsofttól kapott útvonalak száma az Azure virtuális hálózatainak útvonalainak és az ExpressRoute Global Reach-en keresztül csatlakoztatott egyéb helyszíni hálózatokútvonalainak összege lesz. Győződjön meg arról, hogy a helyszíni útválasztón beállította a megfelelő maximális előtagkorlátot. 
 
-### <a name="what-is-the-sla-for-expressroute-global-reach"></a>Mi az a szolgáltatói szerződés tartalmazza az ExpressRoute globális elérhetőségű?
+### <a name="what-is-the-sla-for-expressroute-global-reach"></a>Mi az ExpressRoute globális eléréssla?
 
-Az ExpressRoute globális elérhetőségű biztosít azonos [rendelkezésre állási SLA](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/) a rendszeres az ExpressRoute szolgáltatással.
+Az ExpressRoute globális elérése ugyanazt a [rendelkezésre állási SLA-t](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/) biztosítja, mint a rendszeres ExpressRoute-szolgáltatás.

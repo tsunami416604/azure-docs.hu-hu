@@ -1,6 +1,6 @@
 ---
-title: A Azure Active Directory B2C támogatása | Microsoft Docs
-description: A Azure Active Directory B2C támogatási kéréseinek beszerzése.
+title: Az Azure Active Directory B2C támogatása | Microsoft dokumentumok
+description: Az Azure Active Directory B2C támogatási kérelmeinek fájlszolgáltatása.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,58 +11,58 @@ ms.date: 12/06/2016
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5195241003b1ce4ea505002e2cc3c10410e6cde1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183720"
 ---
-# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: fájl-támogatási kérelmek
-A Azure Portal Azure Active Directory B2C (Azure AD B2C) támogatási kérelmeit a következő lépések segítségével teheti meg:
+# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Fájltámogatási kérelmek
+Az Azure Active Directory B2C (Azure AD B2C) támogatási kérelmeit az Azure Portalon a következő lépések segítségével nyújthatja be:
 
-1. Váltson a B2C-bérlőről egy másik bérlőre, amelyhez hozzá van rendelve egy Azure-előfizetés. Az utóbbi általában az Ön alkalmazott bérlője vagy az alapértelmezett bérlő, amely az Azure-előfizetésre való regisztráláskor lett létrehozva. További információ: [how an Azure-előfizetés az Azure ad-hez kapcsolódóan](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+1. Váltson át a B2C-bérlőről egy másik bérlőre, amelyhez Egy Azure-előfizetés van társítva. Ez utóbbi általában az alkalmazotti bérlő vagy az Azure-előfizetésre való feliratkozáskor létrehozott alapértelmezett bérlő. További információ: [Az Azure-előfizetés ek kontitúdja az Azure AD-hez.](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-    ![Azure Portal a bérlő kiválasztása kiemelve](./media/support-options/support-switch-dir.png)
+    ![Azure portal kiemelt bérlői kijelöléssel](./media/support-options/support-switch-dir.png)
 
-1. A bérlők váltását követően kattintson a **Súgó és támogatás**elemre.
+1. A bérlők közötti váltás után kattintson a **Súgó + támogatás**gombra.
 
-    ![A Súgó + támogatás csempe kiemelve Azure Portal](./media/support-options/support-support.png)
+    ![Súgó + Az Azure Portalon kiemelt támogatás csempe](./media/support-options/support-support.png)
 
-1. Kattintson az **új támogatási kérelem**elemre.
+1. Kattintson **az Új támogatási kérelem gombra.**
 
-    ![Új támogatási kérés csempe kiemelve a Azure Portal](./media/support-options/support-new.png)
+    ![Az Azure Portalon kiemelt új támogatási kérelem csempe](./media/support-options/support-new.png)
 
-1. Az **alapvető beállítások** panelen használja ezeket az adatokat, és kattintson a **tovább**gombra.
+1. Az **Alapok** panelen használja ezeket az adatokat, és kattintson a **Tovább**gombra.
 
-    * A **probléma típusa** **technikai**jellegű.
-    * Válassza ki a megfelelő **előfizetést**.
-    * A szolgáltatás **Active Directory**.
-    * Válassza ki a megfelelő **támogatási csomagot**. Ha még nem rendelkezik ilyennel, [itt](https://azure.microsoft.com/support/plans/)regisztrálhat egyet.
+    * **A probléma típusa** **Technikai**.
+    * Válassza ki a megfelelő **előfizetést.**
+    * **A szolgáltatás** az **Active Directory**.
+    * Válassza ki a megfelelő **támogatási csomagot.** Ha még nem rendelkezik ilyennel, [itt](https://azure.microsoft.com/support/plans/)regisztrálhat egyet.
 
-     ![Alapismeretek lap a következő gomb kiemelve Azure Portal](./media/support-options/support-basics.png)
+     ![Alapok lap kiemelt Következő gombbal az Azure Portalon](./media/support-options/support-basics.png)
 
-1. A **probléma** panelen használja ezeket az adatokat, és kattintson a **tovább**gombra.
+1. A **Probléma** panelen használja ezeket az adatokat, és kattintson a **Tovább**gombra.
 
     * Válassza ki a megfelelő **súlyossági** szintet.
-    * A **probléma típusa** **B2C**.
+    * **A probléma típusa** **B2C**.
     * Válassza ki a megfelelő **kategóriát**.
-    * Írja le a problémát a **részletek** mezőben. Adja meg az adatokat, például a B2C-bérlő nevét, a probléma leírását, a hibaüzeneteket, a korrelációs azonosítókat (ha vannak ilyenek) stb.
-    * Az **időkeret** mezőben adja meg a probléma előfordulásának dátumát és időpontját (az időzónát is beleértve).
-    * A **fájl feltöltése**területen töltse fel az összes olyan képernyőképet és fájlt, amelyet úgy gondol, hogy a probléma megoldásához segítséget nyújt.
+    * Írja le a problémát a **Részletek** mezőben. Adja meg a részleteket, például a B2C bérlő nevét, a probléma leírását, hibaüzenetek, korrelációs azonosítók (ha rendelkezésre áll), és így tovább.
+    * Az **Időkeret** mezőben adja meg a probléma előfordulásának dátumát és időpontját (az időzónát is beleértve).
+    * A **Fájlfeltöltés**csoportban töltse fel az összes olyan képernyőképet és fájlt, amely ről úgy gondolja, hogy segíthet a probléma megoldásában.
 
-     ![Probléma oldal a következő gomb kiemelésével Azure Portal](./media/support-options/support-problem.png)
+     ![Problémalap az Azure Portalon kiemelt Következő gombbal](./media/support-options/support-problem.png)
 
-1. A **kapcsolattartási adatok** panelen adja meg a kapcsolattartási adatait. Kattintson a **Létrehozás** gombra.
+1. Az **Elérhetőségi adatok** panelen adja meg kapcsolattartási adatait. Kattintson **a Létrehozás gombra.**
 
-    ![Kapcsolattartási adatok lap a portálon Kiemelt létrehozás gombbal](./media/support-options/support-contact.png)
+    ![A Kapcsolatadatai lap kiemelt Létrehozás gombbal a portálon](./media/support-options/support-contact.png)
 
-1. A támogatási kérelem elküldése után a Kezdőpulton, majd a **támogatási kérések kezelése**lehetőségre **kattintva** figyelheti azt.
+1. A támogatási kérelem elküldése után a Starttáblán a **Súgó + támogatás** elemre kattintva figyelheti azt, majd kezelheti a támogatási **kérelmeket.**
 
-## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Ismert probléma: támogatási kérelem bejelentése B2C-bérlő kontextusában
+## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Ismert probléma: Támogatási kérelem benyújtása egy B2C-bérlő környezetében
 
-Ha kihagyta a fenti 2. lépést, és megpróbál létrehozni egy támogatási kérést a B2C-bérlő kontextusában, a következő hibaüzenet jelenik meg.
+Ha nem vette észre a fent vázolt 2.
 
 > [!IMPORTANT]
-> Ne próbáljon regisztrálni egy új Azure-előfizetésre a B2C-bérlőben.
+> Ne próbáljon meg új Azure-előfizetést regisztrálni a B2C-bérlőben.
 
-![Nem rendelkezik előfizetési hibával Azure Portal](./media/support-options/support-no-sub.png)
+![Nem jelenik meg előfizetési hiba az Azure Portalon](./media/support-options/support-no-sub.png)

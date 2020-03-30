@@ -1,15 +1,15 @@
 ---
-title: Migrálás a Java SDK-ból a Mavenbe
+title: Áttelepítés Java SDK-ról Maven-re
 description: Frissítse a még a Service Fabric Java SDK-t használó régebbi Java-alkalmazásokat, hogy a Service Fabric Java-függőségeiket a Mavenből kérjék le. A beállítás elvégzését követően a régebbi Java-alkalmazások fel tudnak majd épülni.
 author: rapatchi
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: rapatchi
 ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609808"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Korábbi Java Service Fabric-alkalmazások frissítése a Java-kódtárak a Mavenből történő lekérésére
@@ -79,8 +79,8 @@ A Service Fabric állapotmentes szolgáltatás támogatása az alkalmazáshoz.
   }
   ```
 
-### <a name="others"></a>Egyebek
-#### <a name="transport"></a>Közlekedés
+### <a name="others"></a>Egyéb
+#### <a name="transport"></a>Átvitel
 
 Az átviteli réteg támogatása a Service Fabric Java-alkalmazáshoz. Ezt a függőséget nem kell kifejezetten hozzáadnia a Reliable Actor- vagy Service-alkalmazásaihoz, hacsak a programozást nem az átviteli réteg szintjén végzi.
 
@@ -158,7 +158,7 @@ task copyDeps <<{
     }
 }
 ```
-Most, hogy a Mavenből beolvassa a függőségeket, a **frissített** ``build.gradle`` a következők szerint fog rendelkezni a megfelelő részekkel:
+Most azonban a függőségek a Mavenből való lekéréséhez a **frissített** ``build.gradle`` fájlban a vonatkozó részek a következőképp néznek ki –
 ```
 repositories {
         mavenCentral()
@@ -232,7 +232,7 @@ dependencies {
 .
 .
 ```
-Most, hogy a Mavenből beolvassa a függőségeket, a **frissített** ``build.gradle`` a következők szerint fog rendelkezni a megfelelő részekkel:
+Most azonban a függőségek a Mavenből való lekéréséhez a **frissített** ``build.gradle`` fájlban a vonatkozó részek a következőképp néznek ki –
 ```
 repositories {
     mavenCentral()
@@ -304,7 +304,7 @@ task copyDeps<< {
     }
 }
 ```
-Most, hogy a Mavenből beolvassa a függőségeket, a **frissített** ``build.gradle`` a következők szerint fog rendelkezni a megfelelő részekkel:
+Most azonban a függőségek a Mavenből való lekéréséhez a **frissített** ``build.gradle`` fájlban a vonatkozó részek a következőképp néznek ki –
 ```
 repositories {
     mavenCentral()
@@ -404,7 +404,7 @@ task copyDeps<< {
         }
 }
 ```
-Most, hogy a Mavenből beolvassa a függőségeket, a **frissített** ``build.gradle`` a következők szerint fog rendelkezni a megfelelő részekkel:
+Most azonban a függőségek a Mavenből való lekéréséhez a **frissített** ``build.gradle`` fájlban a vonatkozó részek a következőképp néznek ki –
 ```
 repositories {
     mavenCentral()
@@ -464,7 +464,7 @@ task copyDeps<< {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren Yeoman használatával](service-fabric-create-your-first-linux-application-with-java.md)
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren az Eclipse Service Fabric beépülő modul használatával](service-fabric-get-started-eclipse.md)

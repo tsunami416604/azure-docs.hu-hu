@@ -1,24 +1,24 @@
 ---
-title: OptionsGroup FELHASZNÁLÓIFELÜLET-elem
-description: A Azure Portal Microsoft. Common. OptionsGroup felhasználói felületi elemének ismertetése. Lehetővé teszi, hogy a felhasználók a felügyelt alkalmazások telepítésekor a rendelkezésre álló lehetőségek közül választhatnak.
+title: OptionsGroup felhasználói felület i
+description: A cikk a Microsoft.Common.OptionsGroup felhasználói felületelemét ismerteti az Azure Portalon. Lehetővé teszi a felhasználók számára, hogy a felügyelt alkalmazások telepítésekor válasszanak a rendelkezésre álló lehetőségek közül.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: c1da0b0082bfe046adf9596a10397e9063c888be
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652345"
 ---
-# <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft. Common. OptionsGroup felhasználói felületi elem
+# <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup felhasználói felületi elem
 
-Az elérhető lehetőségek sorát tartalmazó kiválasztási vezérlő.
+Kijelölésvezérlő a rendelkezésre álló lehetőségek sorával.
 
-## <a name="ui-sample"></a>Felhasználói felület mintája
+## <a name="ui-sample"></a>Felhasználói felület minta
 
-![Microsoft. Common. OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
+![Microsoft.Common.OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
 
 ## <a name="schema"></a>Séma
 
@@ -54,11 +54,11 @@ Az elérhető lehetőségek sorát tartalmazó kiválasztási vezérlő.
 
 ## <a name="remarks"></a>Megjegyzések
 
-- A `constraints.allowedValues` felirata egy elem megjelenített szövege, amelynek értéke az elem kimeneti értéke, ha ki van választva.
-- Ha meg van adva, az alapértelmezett értéknek a `constraints.allowedValues`ban található címkének kell lennie. Ha nincs megadva, a `constraints.allowedValues` első eleme alapértelmezés szerint ki van választva. Az alapértelmezett érték **Null**.
-- a `constraints.allowedValues`nak legalább egy elemmel kell rendelkeznie.
+- A címke `constraints.allowedValues` egy elem megjelenítendő szövege, és értéke az elem kimeneti értéke, ha ki van jelölve.
+- Ha meg van adva, az alapértelmezett `constraints.allowedValues`értéknek a címkéjének kell lennie a alkalmazásban. Ha nincs megadva, az `constraints.allowedValues` első elem alapértelmezés szerint be van jelölve. Az alapértelmezett érték **null**.
+- `constraints.allowedValues`legalább egy tételnek rendelkeznie kell.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
-* A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).
+* A felhasználói felületdefiníciók létrehozásának bemutatása a [CreateUiDefinition](create-uidefinition-overview.md)első lépései című témakörben látható.
+* A felhasználói felület elemeinek gyakori tulajdonságainak leírását a [CreateUiDefinition elements](create-uidefinition-elements.md)című témakörben található.

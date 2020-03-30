@@ -1,6 +1,6 @@
 ---
-title: StringToObject Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function StringToObject Azure Cosmos DB.
+title: StringToObject az Azure Cosmos DB lekérdezési nyelvében
+description: Ismerje meg az SQL rendszer funkció StringToObject az Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c3e61d1efe20910d84ef4ff583d74982b3ea9f3d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78296381"
 ---
 # <a name="stringtoobject-azure-cosmos-db"></a>StringToObject (Azure Cosmos DB)
- Egy objektumra fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, a nem definiált értéket adja vissza.  
+ Objektummá fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, akkor nem definiált értéket ad vissza.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,17 +26,17 @@ StringToObject(<str_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *str_expr*  
-   Egy karakterlánc-kifejezés, amelyet JSON-objektum kifejezésként kell elemezni. Vegye figyelembe, hogy a beágyazott karakterlánc-értékeket idézőjelek közé kell írni, hogy érvényesek legyenek. A JSON formátumával kapcsolatos részletekért lásd: [JSON.org](https://json.org/)  
+   JSON-objektumkifejezésként elemezendő karakterlánc-kifejezés. Ne feledje, hogy a beágyazott karakterlánc-értékeket dupla idézőjelekkel kell írni, hogy érvényesek legyenek. A JSON formátumról a [json.org](https://json.org/)  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy objektum kifejezését adja vissza, vagy nincs meghatározva.  
+  Objektumkifejezést ad vissza, vagy nem definiált.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa bemutatja, hogyan viselkedik a `StringToObject` különböző típusokban. 
+  A következő példa `StringToObject` bemutatja, hogyan viselkedik a különböző típusok között. 
   
- Az alábbi példák érvényes bemenettel rendelkeznek.
+ Az alábbiakban érvényes bemenettel rendelkező példákat mutatunk be.
 
 ```sql
 SELECT 
@@ -46,7 +46,7 @@ SELECT
     StringToObject("{\"C\":[{\"c1\":[5,6,7]},{\"c2\":8},{\"c3\":9}]}") AS obj4
 ``` 
 
-Íme az eredményhalmaz.
+Itt van az eredményhalmaz.
 
 ```json
 [{"obj1": {}, 
@@ -55,38 +55,38 @@ SELECT
   "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
 ```
 
- A következő példák érvénytelen bemenettel rendelkeznek.
-Annak ellenére, hogy egy lekérdezésen belül érvényesek, nem lesznek értelmezve érvényes objektumokra. Az objektumon belüli karakterláncokat "{\\" a\\":\\" Str\\"}" vagy a környező idézőjelnek egyetlen "{" a ":" Str "}" karakterrel kell rendelkeznie.
+ Az alábbi példák érvénytelen bemenettel rendelkeznek.
+Annak ellenére, hogy egy lekérdezésen belül érvényesek, nem elemzik érvényes objektumokat. Az objektumsorozaton belüli karakterláncokat vagy meg\\kell\\kerülni\\a\\"{ "a ": "str "}" vagy a környező idézőjelek között lévő karakterláncok legyenek "{"a": "str"}" típusúak.
 
-A környező tulajdonságok neveinek egyetlen idézőjele nem érvényes JSON.
+A tulajdonságneveket körülvevő egyszeres idézőjelek nem érvényesek json.
 
 ```sql
 SELECT 
     StringToObject("{'a':[1,2,3]}")
 ```
 
-Íme az eredményhalmaz.
+Itt van az eredményhalmaz.
 
 ```json
 [{}]
 ```  
 
-A környező idézőjelek nélküli tulajdonságnév nem érvényes JSON.
+A környező idézőjelek nélküli tulajdonságnevek érvénytelenek JSON.
 
 ```sql
 SELECT 
     StringToObject("{a:[1,2,3]}")
 ```
 
-Íme az eredményhalmaz.
+Itt van az eredményhalmaz.
 
 ```json
 [{}]
 ``` 
 
-A következő példák érvénytelen bemenettel rendelkeznek.
+Az alábbi példák érvénytelen bemenettel rendelkeznek.
 
- Az átadott kifejezés JSON-objektumként lesz értelmezve; Ezek a bemenetek nem értékelik ki az objektum típusát, így a nem definiált értéket adja vissza.
+ Az átadott kifejezés JSON-objektumként lesz elemezve; ezek a bemenetek nem értékelik ki a típusobjektumot, és így nem definiált értéket adnak vissza.
 
 ```sql
 SELECT 
@@ -98,7 +98,7 @@ SELECT
     StringToObject(undefined)
 ``` 
  
- Íme az eredményhalmaz.
+ Itt van az eredményhalmaz.
 
 ```json
 [{}]
@@ -106,10 +106,10 @@ SELECT
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfüggvény nem fogja használni az indexet.
+Ez a rendszerfunkció nem használja az indexet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB karakterlánc-függvényei](sql-query-string-functions.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)

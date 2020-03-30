@@ -1,6 +1,6 @@
 ---
-title: A támogatott Azure Pásti-erőforrások Azure Security Center funkciói.
-description: Ezen a lapon láthatók a támogatott Azure Pásti-erőforrások Azure Security Center szolgáltatásainak rendelkezésre állása.
+title: Az Azure Security Center támogatott Azure PaaS-erőforrásokhoz való funkciói.
+description: Ez a lap az Azure Security Center-funkciók rendelkezésre állását mutatja be a támogatott Azure PaaS-erőforrásokhoz.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,21 +14,21 @@ ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
 ms.openlocfilehash: 85460724071347a768a924f34290a75d2383b4c0
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78209362"
 ---
-# A szolgáltatás lefedettsége az Azure Pásti-szolgáltatásokhoz<a name="paas-services"></a>
+# <a name="feature-coverage-for-azure-paas-services"></a>Az Azure PaaS-szolgáltatások funkciólefedettsége<a name="paas-services"></a>
 
-Az alábbi táblázat a támogatott Azure Pásti-erőforrások Azure Security Center szolgáltatásainak rendelkezésre állását mutatja be.
+Az alábbi táblázat az Azure Security Center-funkciók elérhetőségét mutatja a támogatott Azure PaaS-erőforrásokhoz.
 
-|Szolgáltatás|Javaslatok (ingyenes)|Biztonsági riasztások (standard)|Sebezhetőségi felmérés (standard)|
+|Szolgáltatás|Ajánlások (ingyenes)|Biztonsági riasztások (Standard)|Biztonsági rés felmérése (Standard)|
 |:----|:----:|:----:|:----:|
 |Azure App Service|✔|✔|-|
-|Azure Automation fiók|✔|-|-|
-|Azure Batch fiók|✔|-|-|
+|Azure Automation-fiók|✔|-|-|
+|Azure Batch-fiók|✔|-|-|
 |Azure Blob Storage|✔|✔|-|
 |Azure Cache for Redis|✔|-|-|
 |Azure Cloud Services|✔|-|-|
@@ -37,22 +37,22 @@ Az alábbi táblázat a támogatott Azure Pásti-erőforrások Azure Security Ce
 |Azure Cosmos DB*|-|✔|-|
 |Azure Data Lake Analytics|✔|-|-|
 |Azure Data Lake Storage|✔|-|-|
-|Azure Database for MySQL *|✔|✔|-|
-|Azure Database for PostgreSQL *|✔|✔|-|
-|Azure Event Hubs névtér|✔|-|-|
+|Azure-adatbázis a MySQL-hez*|✔|✔|-|
+|Azure-adatbázis a PostgreSQL-hez*|✔|✔|-|
+|Az Azure Event Hubs névtere|✔|-|-|
 |Azure Functions-alkalmazás|✔|-|-|
 |Azure Key Vault|✔|✔ *|-|
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
 |Azure SQL-adatbázisok|✔|✔|✔|
-|Azure Service Bus névtér|✔|-|-|
+|Az Azure Service Bus névtere|✔|-|-|
 |Azure Service Fabric-fiók|✔|-|-|
 |Azure Storage-fiókok|✔|-|-|
 |Azure Stream Analytics|✔|-|-|
 |Azure-előfizetés|✔ **|✔|-|
-|Azure Virtual Network</br> (alhálózat, hálózati adapterek és hálózati biztonsági csoportok együtt)|✔|-|-|
+|Azure Virtual Network</br> (beleértve az alhálózatokat, hálózati adaptereket és hálózati biztonsági csoportokat)|✔|-|-|
 
-\* ezek a funkciók jelenleg előzetes verzióban támogatottak.
+\*Ezeket a funkciókat jelenleg előzetes verzióban is támogatja.
 
-\*\* Azure Active Directory (Azure AD) javaslatok csak a standard előfizetések esetén érhetők el.
+\*\*Az Azure Active Directory (Azure AD) javaslatok csak standard előfizetések érhetők el.

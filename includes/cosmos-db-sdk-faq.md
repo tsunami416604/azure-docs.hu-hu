@@ -5,33 +5,33 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: sngun
 ms.openlocfilehash: 99dddd86c9348c9791d3012b382298bb020e63c9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67178870"
 ---
-**1. Hogyan ügyfelek értesíti a leköszönő SDK?**
+**1. Hogyan kapnak értesítést az ügyfelek a nyugdíjba vonuló SDK-ról?**
 
-A Microsoft 12 hónapos előzetes értesítést küldenek a teljes körű támogatást leköszönő SDK támogatott SDK-ra zökkenőmentes átállás elősegítése érdekében. További különböző kommunikációs csatornák – az Azure felügyeleti portálján, fejlesztői központban, blogbejegyzést, értesítést kapnak az ügyfelek és a közvetlen kommunikációt hozzárendelt szolgáltatás-rendszergazdák.
+A Microsoft 12 hónapos előzetes értesítést küld a nyugdíjba vonuló SDK támogatásának végéhez, hogy megkönnyítse a támogatott SDK-ra való zökkenőmentes áttérést. Továbbá az ügyfelek különböző kommunikációs csatornákon – az Azure Management Portalon, a Fejlesztői központban, a blogbejegyzésen és a hozzárendelt szolgáltatás-rendszergazdákkal való közvetlen kommunikáción – keresztül kapnak értesítést.
 
-**2. Ügyfelek hozhat létre a 12 hónapos időszak során egy "visszaállítandó" kivont Azure Cosmos DB SDK-t használó alkalmazások?** 
+**2. Az ügyfelek a 12 hónapos időszakban egy "leendő" kinyugdíjas Azure Cosmos DB SDK használatával hozhatnak alkalmazásokat?** 
 
-Igen, a felhasználók létrehozásához, üzembe helyezése, és módosítsa a 12 hónapos türelmi időszak alatt az "visszaállítandó" kivont Azure Cosmos DB SDK-t használó alkalmazások teljes hozzáférést kap. A 12 hónapos türelmi időszak alatt ügyfelek javasolja, hogy egy újabb támogatott verziója az Azure Cosmos DB SDK megfelelő át.
+Igen, az ügyfelek teljes hozzáféréssel rendelkeznek a szerzői, üzembe helyezése és módosítása alkalmazások a "leendő" kinyugdíjas Azure Cosmos DB SDK a 12 hónapos türelmi időszak alatt. A 12 hónapos türelmi időszak alatt az ügyfelek azt tanácsolják, hogy térjen ek át az Azure Cosmos DB SDK egy újabb támogatott verziójára.
 
-**3. Ügyfelek hozhat létre és módosítsa az értesítési 12 hónapos időszak után a kivont Azure Cosmos DB SDK-t használó alkalmazások?**
+**3. Az ügyfelek a 12 hónapos értesítési időszak után egy kivisszavonult Azure Cosmos DB SDK használatával hozhatnak alkalmazásokat?**
 
-A 12 hónapos értesítési lejárta után az SDK-t kivezetjük. Egy kivont SDK-t használó alkalmazások által az Azure Cosmos DB-hozzáféréssel nem fog tudni az Azure Cosmos DB platform. További a Microsoft nem biztosítja az ügyfélszolgálatot a kivont SDK-val.
+A 12 hónapos értesítési időszak után az SDK megszűnik. Az Azure Cosmos DB-hez való hozzáférés egy kivett SDK-t használó alkalmazással nem engedélyezett az Azure Cosmos DB platformon. Továbbá a Microsoft nem nyújt ügyfélszolgálatot a kimondott SDK-hoz.
 
-**4. Mi történik, az ügyfél-t futtat verziója nem támogatott az Azure Cosmos DB SDK-t használó alkalmazásokat?**
+**4. Mi történik az Ügyfél olyan futó alkalmazásokkal, amelyek nem támogatott Azure Cosmos DB SDK-verziót használnak?**
 
-Csatlakozzon az Azure Cosmos DB szolgáltatáshoz kivont SDK-verzió tett bármilyen kísérletet a rendszer elutasítja. 
+Minden olyan kísérlet, amely az Azure Cosmos DB szolgáltatáshoz egy kivisszavonult SDK-verzióval való csatlakozásra tett kísérleteket a rendszer elutasítja. 
 
-**5. Új szolgáltatások és funkciók alkalmazandó nem kivont SDK-k minden?**
+**5. Az új funkciók és funkciók minden nem nyugdíjas SDK-ra vonatkoznak?**
 
-Új szolgáltatások és funkciók csak hozzáadódik új verzióit. Ha egy régi, nem lejárt verziója az SDK-t használ az Azure Cosmos DB a kérelmek továbbra is működnek az előző, de nem kell minden olyan új lehetőségekhez.  
+Az új funkciók és funkciók csak az új verziókhoz lesznek hozzáadva. Ha egy régi, nem kirendelt, az SDK-t használja, az Azure Cosmos DB-nek érkező kérések továbbra is az előzőnek megfelelően fognak működni, de nem lesz hozzáférése az új képességekhez.  
 
-**6. Mit tegyek, ha nem lehet frissíteni az alkalmazást a határidő előtt?**
+**6. Mit tegyek, ha nem tudom frissíteni a jelentkezésemet a határidő lejárta előtt?**
 
-Azt javasoljuk, hogy frissítsen az SDK legújabb verziójára, a lehető leghamarabb. Az SDK a használatból való kivonást egyaránt címkével ellátott után már 12 hónapig az alkalmazás frissítéséhez. Ha valamilyen okból meg nem végezze el az alkalmazás frissítése ezen az időtartamon belül, majd vegye fel a kapcsolatot a [Cosmos DB csapat](mailto:askcosmosdb@microsoft.com) és azok Segítségkérés a Megszakítás dátuma előtt.
+Javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-ra. Miután egy SDK-t megjelöltek a nyugdíjazási rendszerhez, 12 hónapáll rendelkezésére az alkalmazás frissítésére. Ha bármilyen okból nem tudja befejezni az alkalmazás frissítését ezen az időkereten belül, akkor kérjük, forduljon a [Cosmos DB csapatához,](mailto:askcosmosdb@microsoft.com) és kérje a segítségüket a határidő előtt.
 

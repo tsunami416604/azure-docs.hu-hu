@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center IoT útmutató az Azure Sentinel (előzetes verzió) konfigurálásához | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan konfigurálható az Azure Sentinel a IoT-megoldás adatainak fogadására a Azure Security Center.
+title: Azure Security Center for IoT útmutató az Azure Sentinel (előzetes verzió) konfigurációjához| Microsoft dokumentumok
+description: Bemutatja, hogyan konfigurálhatja az Azure Sentinelt úgy, hogy adatokat fogadjon az Azure Security Center for IoT-megoldásból.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -14,54 +14,54 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
 ms.openlocfilehash: 082b33332051fee9da2aebe63b0c41edb300afaf
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303545"
 ---
 > [!IMPORTANT]
-> Az Azure Sentinel IoT-adatösszekötő Azure Security Center jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az Azure Security Center for IoT adatösszekötő az Azure Sentinel jelenleg nyilvános előzetes verzióban.
+> Ez a szolgáltatás szolgáltatásszint-szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-# <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel-preview"></a>Az adatok összekapcsolásának Azure Security Center a IoT-ből az Azure Sentinelbe (előzetes verzió) 
+# <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel-preview"></a>Az Azure Security Center for IoT adatainak összekapcsolása az Azure Sentinelhez (előzetes verzió) 
 
-Ebből az útmutatóból megtudhatja, hogyan csatlakoztatható a Azure Security Center IoT-adataihoz az Azure Sentinel szolgáltatáshoz.  
+Ebből az útmutatóból megtudhatja, hogyan csatlakoztathatja az Azure Security Center for IoT-adatokat az Azure Sentinelhez.  
 
 > [!div class="checklist"]
 > * Előfeltételek 
 > * Kapcsolati beállítások
-> * Log Analytics riasztás nézet 
+> * Log Analytics riasztási nézete 
 
-Azure Security Center riasztások összekapcsolását a IoT, és közvetlenül az Azure Sentinelben továbbíthatja őket.
+Az Azure Security Center for IoT riasztásait közvetlenül az Azure Sentinelbe továbbíthatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A munkaterület **olvasási** és **írási** engedélyekkel kell rendelkeznie.
-- A **IoT Azure Security Center** engedélyezni kell a megfelelő IoT hub (ka) **t** .
-- **Olvasási** és **írási** engedéllyel kell rendelkeznie az **Azure-IoT hubhoz** , amelyhez csatlakozni szeretne.
-- Az **Azure IoT hub erőforráscsoporthoz** **olvasási** és **írási** engedélyekkel is rendelkeznie kell.
+- **Az Azure Security Center for IoT-t** **engedélyezni** kell a megfelelő IoT Hub(ok)on.
+- Olvasási és **read** **írási** engedéllyel is rendelkeznie kell a csatlakoztatni kívánt **Azure IoT Hubon.**
+- **Olvasási** és **írási** engedéllyel is rendelkeznie kell az **Azure IoT Hub erőforráscsoportban.**
 
 > [!NOTE]
-> Az általános Azure-erőforrásokra vonatkozó riasztások elküldéséhez az előfizetéshez tartozó Azure Security Center standard szintű licencelésnek kell futnia. A IoT Azure Security Centerhoz szükséges ingyenes szintű licenceléssel csak a IoT kapcsolatos riasztások Azure Security Center a rendszer továbbítja az Azure Sentinelnek. 
+> Általános Azure-erőforrás-riasztások küldéséhez az Azure Security Center standardszintű licencelése az előfizetésen fut. Az Azure Security Center for IoT-hoz szükséges ingyenes szintű licenceléssel csak az Azure Security Center for IoT-val kapcsolatos riasztások lesznek továbbítva az Azure Sentinelnek. 
 
-## <a name="connect-to-azure-security-center-for-iot"></a>Kapcsolódás Azure Security Center IoT
+## <a name="connect-to-azure-security-center-for-iot"></a>Csatlakozás az Azure Security Center for IoT-hez
 
-1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget, majd kattintson a **Azure Security Center IoT** csempére.
-1. A jobb oldali ablaktábla alján kattintson az **összekötő lap megnyitása**lehetőségre. 
-1. Kattintson a **Kapcsolódás**lehetőségre minden olyan IoT hub-előfizetés mellett, amelynek a riasztásait és az eszközök riasztásait az Azure Sentinel szolgáltatásba kívánja továbbítani. 
-    - Ha a IoT Azure Security Center nincs engedélyezve ezen a központban, egy figyelmeztető üzenet jelenik meg. Kattintson az **Engedélyezés** hivatkozásra a szolgáltatás elindításához és engedélyezéséhez. 
-1. Eldöntheti, hogy szeretné-e, hogy a riasztások Azure Security Center IoT az incidensek automatikus előállítását az Azure Sentinelben. Az **incidensek létrehozása**területen válassza az **Engedélyezés** lehetőséget, ha engedélyezni szeretné, hogy a szabály automatikusan hozzon létre incidenseket a generált riasztásokból.  Ez a szabály az **Analytics** > **aktív** szabályok területén módosítható vagy szerkeszthető.
+1. Az Azure Sentinelben válassza **az Adatösszekötők** lehetőséget, majd kattintson az **Azure Security Center for IoT csempére.**
+1. A jobb oldali ablaktábla alján kattintson az **Összekötő lap megnyitása gombra.** 
+1. Kattintson **a Csatlakozás**elemre minden olyan IoT Hub-előfizetés mellett, amelynek riasztásait és eszközfigyelmeztetéseit az Azure Sentinelbe szeretné streamelni. 
+    - Ha az Azure Security Center for IoT nincs engedélyezve az adott központban, megjelenik egy figyelmeztetési üzenet engedélyezése. Kattintson az **Enable** linkre a szolgáltatás elindításához és engedélyezéséhez. 
+1. Eldöntheti, hogy szeretné-e, hogy az Azure Security Center for IoT riasztásai automatikusan generálják az incidenseket az Azure Sentinelben. Az **Incidensek létrehozása csoportban**válassza az **Engedélyezés** lehetőséget, ha engedélyezni szeretné, hogy a szabály automatikusan hozzon létre incidenseket a létrehozott riasztásokból.  Ez a szabály az **Analytics** > **Aktív** szabályai alatt módosítható vagy szerkeszthető.
 
 > [!NOTE]
->A kapcsolatok módosítása után akár 10 másodpercig is eltarthat a központ listájának frissítése. 
+>A kapcsolat módosítása után 10 másodpercig vagy tovább is eltarthat, amíg frissíti a hublistát. 
 
-## <a name="log-analytics-alert-display"></a>Log Analytics riasztás megjelenítése
+## <a name="log-analytics-alert-display"></a>A Log Analytics riasztási megjelenítése
 
-A Log Analytics megfelelő sémájának használata a IoT-riasztások Azure Security Center megjelenítéséhez:
+A megfelelő séma használata a Log Analytics az Azure Security Center for IoT riasztások megjelenítéséhez:
 
-1. Nyissa meg a **naplókat** > **SecurityInsights** > **SecurityAlert**, vagy keressen rá a **SecurityAlert**kifejezésre. 
-2. A szűréssel csak a következő kql szűrővel rendelkező IoT által generált riasztások Azure Security Center látható:
+1. Nyissa meg a Logs SecurityInsights SecurityAlert **(Logs** > **SecurityInsights** > **SecurityAlert**) mezőt, vagy keressen rá a **SecurityAlert**kifejezésre. 
+2. Szűrje le, hogy csak az Azure Security Center az IoT által generált riasztások a következő kql szűrő használatával:
 
 ```kusto
 SecurityAlert | where ProductName == "Azure Security Center for IoT"
@@ -69,13 +69,13 @@ SecurityAlert | where ProductName == "Azure Security Center for IoT"
 
 ### <a name="service-notes"></a>Szolgáltatási megjegyzések
 
-IoT Hub csatlakoztatása után a hub-adatközpont körülbelül 15 perccel később elérhető az Azure Sentinelben.
+Az IoT Hub csatlakoztatása után a központi adatok körülbelül 15 perccel később érhetők el az Azure Sentinelben.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható Azure Security Center a IoT-hez az Azure Sentinel szolgáltatáshoz. A veszélyforrások észlelésével és a biztonsági adathozzáféréssel kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja az Azure Security Center for IoT-t az Azure Sentinelhez. A fenyegetésészlelésről és a biztonsági adatokhoz való hozzáférésről az alábbi cikkekben olvashat bővebben:
 
-- Ismerje meg, hogyan használhatja az Azure Sentinelt az [adatai és a potenciális fenyegetések](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)megismerésére.
+- Ismerje meg, hogyan használhatja az Azure Sentinel t, hogy [betekintést az adatok, és a potenciális fenyegetések.](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
 
-- Ismerje meg, hogyan [férhet hozzá a IoT biztonsági adataihoz](how-to-security-data-access.md)
+- Ismerje meg, hogyan [érheti el az IoT biztonsági adatait](how-to-security-data-access.md)

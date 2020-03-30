@@ -1,63 +1,63 @@
 ---
-title: Azure Functions a Kubernetes és a KEDA
-description: Megtudhatja, hogyan futtathat Azure Functions a felhőben vagy a helyszínen a Kubernetes-ben a KEDA, Kubernetes-alapú Event vezérelt automatikus skálázás használatával.
+title: Azure-függvények a Kubernetes en a KEDA-val
+description: Ismerje meg, hogyan futtathatja az Azure Functions-t a Kubernetes-ben a felhőben vagy a helyszíni KEDA, Kubernetes-alapú automatikus skálázás használatával.
 author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
 ms.openlocfilehash: 2c06fdba8f60243acf4e0fabd23df8b832c210db
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78301675"
 ---
-# <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions a Kubernetes és a KEDA
+# <a name="azure-functions-on-kubernetes-with-keda"></a>Azure-függvények a Kubernetes en a KEDA-val
 
-A Azure Functions futtatókörnyezet rugalmasságot biztosít a üzemeltetésben, ahol és így tovább.  A [KEDA](https://keda.sh) (Kubernetes-alapú eseményvezérelt automatikus skálázás) párok zökkenőmentesen használhatók a Azure functions futtatókörnyezettel és az Kubernetes-alapú eseményvezérelt méretezés biztosításához.
+Az Azure Functions futásidejű rugalmasságot biztosít a tárhely, ahol és hogyan szeretné.  [KEDA](https://keda.sh) (Kubernetes-alapú eseményvezérelt automatikus skálázás) zökkenőmentesen párosítja az Azure Functions futásidejű és eszköz, hogy eseményvezérelt skálát Kubernetes.
 
-## <a name="how-kubernetes-based-functions-work"></a>A Kubernetes-alapú függvények működése
+## <a name="how-kubernetes-based-functions-work"></a>A Kubernetes-alapú függvények működésének megmunkálata
 
-A Azure Functions szolgáltatás két kulcsfontosságú összetevőből áll: egy futtatókörnyezetből és egy méretezési vezérlőből.  A functions futtatókörnyezet futtatja és végrehajtja a kódot.  A futtatókörnyezet logikát tartalmaz a függvények végrehajtásának elindításához, naplózásához és kezeléséhez.  A Azure Functions futtatókörnyezet *bárhol*futhat.  A másik összetevő egy méretezési vezérlő.  A skálázási vezérlő figyeli a függvényt célzó események arányát, és proaktív módon méretezi az alkalmazást futtató példányok számát.  További információ: [Azure functions skálázás és üzemeltetés](functions-scale.md).
+Az Azure Functions szolgáltatás két fő összetevőből áll: egy futásidejű és egy méretezési vezérlőből.  A Függvények futásidejű fut, és végrehajtja a kódot.  A futásidejű logika, hogyan kiváltó, naplóés és a függvény-végrehajtások kezelése.  Az Azure Functions futásideje *bárhol*futtatható.  A másik összetevő egy méretezési vezérlő.  A méretezési vezérlő figyeli a függvényt célzó események sebességét, és proaktív módon méretezi az alkalmazást futtató példányok számát.  További információ: [Azure Functions scale and hosting](functions-scale.md).
 
-A Kubernetes-alapú függvények egy [Docker-tárolóban](functions-create-function-linux-custom-image.md) lévő functions futtatókörnyezetet biztosítanak eseményvezérelt skálázással az KEDA-on keresztül.  A KEDA 0 példányra (ha nincs esemény) és *n* példányra is méretezhető. Ezt a Kubernetes autoscaleer (horizontális Pod autoskálázás) egyéni metrikáinak kiosztásával teszi meg.  A functions-tárolók és a KEDA lehetővé teszi a kiszolgáló nélküli függvények replikálását bármely Kubernetes-fürtön.  Ezek a függvények az [Azure Kubernetes Services (ak) virtuális csomópontok](../aks/virtual-nodes-cli.md) szolgáltatásával is üzembe helyezhetők a kiszolgáló nélküli infrastruktúra számára.
+Kubernetes-alapú függvények biztosítanak a Functions futásidejű egy [Docker-tároló](functions-create-function-linux-custom-image.md) eseményvezérelt skálázás a KEDA-n keresztül.  A KEDA 0 példányra skálázható (ha nem történik esemény), és *n* példányokra. Ezt úgy éri el, hogy a Kubernetes automatikus skálázó (Vízszintes pod automatikus skálázó) egyéni metrikákat tesz ki.  A Függvénytárolók KEDA-val való használata lehetővé teszi a kiszolgáló nélküli függvényképességek replikálását bármely Kubernetes-fürtben.  Ezek a függvények is [telepíthetők az Azure Kubernetes Services (AKS) virtuális csomópontok](../aks/virtual-nodes-cli.md) szolgáltatás kiszolgáló nélküli infrastruktúra használatával.
 
-## <a name="managing-keda-and-functions-in-kubernetes"></a>KEDA és függvények kezelése a Kubernetes-ben
+## <a name="managing-keda-and-functions-in-kubernetes"></a>A KEDA és a Kubernetes funkcióinak kezelése
 
-A függvények a Kubernetes-fürtön való futtatásához telepítenie kell a KEDA összetevőt. Ezt az összetevőt [Azure functions Core Tools](functions-run-local.md)használatával telepítheti.
+A Kubernetes-fürt függvényeinek futtatásához telepítenie kell a KEDA összetevőt. Ezt az összetevőt az [Azure Functions Core Tools](functions-run-local.md)eszközzel telepítheti.
 
-### <a name="installing-with-helm"></a>Telepítés a Helmtal
+### <a name="installing-with-helm"></a>Telepítés a Helm-el
 
-A KEDA különböző módokon telepíthető bármely Kubernetes-fürtben, beleértve a Helm-t is.  Az üzembe helyezési lehetőségek dokumentálva vannak a [KEDA webhelyen](https://keda.sh/deploy/).
+A KEDA telepítése számos kubernetes-fürtben, beleértve a Helm-et is, számos módon telepíthető.  A telepítési lehetőségek a [KEDA-webhelyen](https://keda.sh/deploy/)vannak dokumentálva.
 
-## <a name="deploying-a-function-app-to-kubernetes"></a>Function-alkalmazás üzembe helyezése a Kubernetes
+## <a name="deploying-a-function-app-to-kubernetes"></a>Függvényalkalmazás telepítése a Kubernetes-re
 
-A KEDA-t futtató Kubernetes-fürtökön bármely Function alkalmazást üzembe helyezhet.  Mivel a függvények Docker-tárolóban futnak, a projektnek `Dockerfile`ra van szüksége.  Ha még nem rendelkezik ilyennel, hozzáadhat egy Docker az alábbi parancs futtatásával a functions projekt gyökerében:
+Bármilyen függvényalkalmazást telepíthet egy KEDA-t futtató Kubernetes-fürtre.  Mivel a függvények egy Docker-tárolóban `Dockerfile`futnak, a projektnek szüksége van egy .  Ha még nem rendelkezik ilyentel, a Functions projekt gyökerében futtatva hozzáadhat egy Docker-fájlt:
 
 ```cli
 func init --docker-only
 ```
 
-A következő parancs futtatásával hozzon létre egy rendszerképet, és telepítse a függvényeket a Kubernetes:
+Lemezkép létrehozásához és a függvények Kubernetes rendszerbe való telepítéséhez futtassa a következő parancsot:
 
 > [!NOTE]
-> A központi eszközök kihasználják a Docker CLI-t a lemezkép összeállításához és közzétételéhez. Győződjön meg arról, hogy a Docker már telepítve van, és `docker login`a fiókjához csatlakozik.
+> A Core Tools a docker CLI-t használja a lemezkép létrehozásához és közzétételéhez. Győződjön meg arról, hogy a docker már telepítve van, és csatlakozik a fiókjához a segítségével. `docker login`
 
 ```cli
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
 ```
 
-> Cserélje le a `<name-of-function-deployment>`t a Function alkalmazás nevére.
+> Cserélje `<name-of-function-deployment>` le a függvényalkalmazás nevére.
 
-Ez létrehoz egy Kubernetes `Deployment` erőforrást, egy `ScaledObject` erőforrást és `Secrets`, amely tartalmazza az `local.settings.json` fájlból importált környezeti változókat.
+Ez létrehoz egy `Deployment` Kubernetes-erőforrást, egy erőforrást `ScaledObject` és `Secrets` `local.settings.json` a , amely a fájlból importált környezeti változókat tartalmazza.
 
-### <a name="deploying-a-function-app-from-a-private-registry"></a>Function-alkalmazás üzembe helyezése privát beállításjegyzékből
+### <a name="deploying-a-function-app-from-a-private-registry"></a>Függvényalkalmazás telepítése privát beállításjegyzékből
 
-A fenti folyamat privát kibocsátásiegység-forgalmi jegyzékekhez is használható.  Ha a tároló képét privát beállításjegyzékből húzza át, akkor adja meg a `--pull-secret` jelzőt, amely a titkos beállításjegyzék hitelesítő adatait tartalmazó Kubernetes hivatkozik `func kubernetes deploy`futtatásakor.
+A fenti folyamat működik a magán nyilvántartások is.  Ha a tárolólemezképet egy privát beállításjegyzékből húzza ki, adja meg a `--pull-secret` Kubernetes `func kubernetes deploy`titkos tárolójára hivatkozó jelzőt, amely a privát rendszerleíró hitelesítő adatokat tárolja futás közben.
 
-## <a name="removing-a-function-app-from-kubernetes"></a>Function-alkalmazás eltávolítása a Kubernetes-ből
+## <a name="removing-a-function-app-from-kubernetes"></a>Függvényalkalmazás eltávolítása a Kubernetes-ből
 
-A telepítés után eltávolíthatja a függvényt, ha eltávolítja a társított `Deployment`, `ScaledObject`, `Secrets` létrehozva.
+A telepítés után eltávolíthatja a függvényt `Deployment` `ScaledObject`a `Secrets` társított , a létrehozott lehetőség eltávolításával.
 
 ```cli
 kubectl delete deploy <name-of-function-deployment>
@@ -67,25 +67,25 @@ kubectl delete secret <name-of-function-deployment>
 
 ## <a name="uninstalling-keda-from-kubernetes"></a>A KEDA eltávolítása a Kubernetes-ből
 
-A KEDA eltávolításának lépései dokumentálva vannak [a KEDA webhelyen](https://keda.sh/deploy/).
+A KEDA eltávolításának lépéseit [a KEDA webhelydokumentálja.](https://keda.sh/deploy/)
 
-## <a name="supported-triggers-in-keda"></a>Támogatott eseményindítók a KEDA-ben
+## <a name="supported-triggers-in-keda"></a>Támogatott eseményindítók a KEDA-ban
 
-A KEDA a következő Azure Function triggereket támogatja:
+A KEDA támogatja a következő Azure-függvényesemény-indítókat:
 
-* [Azure Storage-várólisták](functions-bindings-storage-queue.md)
-* [Azure Service Bus várólisták](functions-bindings-service-bus.md)
-* [Azure Event/IoT hubok](functions-bindings-event-hubs.md)
+* [Azure Storage-üzenetsorok](functions-bindings-storage-queue.md)
+* [Az Azure Service Bus várólistái](functions-bindings-service-bus.md)
+* [Azure-esemény / IoT Hubs](functions-bindings-event-hubs.md)
 * [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)
 * [RabbitMQ-várólista](https://github.com/azure/azure-functions-rabbitmq-extension)
 
-### <a name="http-trigger-support"></a>HTTP-trigger támogatása
+### <a name="http-trigger-support"></a>HTTP Trigger támogatása
 
-Használhatja a HTTP-eseményindítókat közzétevő Azure Functionsokat, de a KEDA nem kezeli közvetlenül.  A KEDA Prometheus trigger kihasználható a [http-Azure functions 1 és *n* példány közötti méretezésére](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42).
+Használhatja az Azure Functions, amely elérhetővé teszi a HTTP-eseményindítók, de a KEDA nem közvetlenül kezeli őket.  A KEDA prometheus eseményindítóval [1-től *n-es* példányig skálázhatja a HTTP Azure-függvényeket.](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információkért lásd a következőket:
 
-* [Függvény létrehozása egyéni rendszerkép használatával](functions-create-function-linux-custom-image.md)
+* [Függvény létrehozása egyéni képpel](functions-create-function-linux-custom-image.md)
 * [Az Azure Functions helyi kódolása és tesztelése](functions-develop-local.md)
-* [Az Azure Function fogyasztási terv működése](functions-scale.md)
+* [Az Azure-függvényfelhasználási csomag működése](functions-scale.md)

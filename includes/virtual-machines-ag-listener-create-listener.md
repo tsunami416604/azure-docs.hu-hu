@@ -5,47 +5,47 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 394b242ab46da7821f77e8d008836753f4e358e2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179068"
 ---
-Ebben a lépésben, manuálisan hozzon létre a rendelkezésre állási csoport figyelőjének a Feladatátvevőfürt-kezelő és az SQL Server Management Studióval.
+Ebben a lépésben manuálisan hozza létre a rendelkezésre állási csoport figyelőjét a Feladatátvevő fürtkezelőben és az SQL Server Management Studio-ban.
 
-1. Nyissa meg a Feladatátvevőfürt-kezelőben a csomópont, amelyen az elsődleges replika.
+1. Nyissa meg a feladatátvevőfürt-kezelőt az elsődleges kópiát tartalmazó csomópontról.
 
-2. Válassza ki a **hálózatok** csomópont, és figyelje meg a fürt hálózati neve. Ez a név használatban van a PowerShell-parancsfájlt a $ClusterNetworkName változót.
+2. Jelölje ki a **Hálózatok** csomópontot, majd jegyezze fel a fürthálózat nevét. Ez a név a PowerShell-parancsfájl $ClusterNetworkName változójában használatos.
 
-3. Bontsa ki a fürt nevét, és kattintson **szerepkörök**.
+3. Bontsa ki a fürt nevét, majd kattintson a **Szerepkörök gombra.**
 
-4. Az a **szerepkörök** panelen kattintson a jobb gombbal a rendelkezésre állási csoport nevét, majd válassza ki **erőforrás hozzáadása** > **ügyfél-hozzáférési pont**.
+4. A **Szerepkörök** ablaktáblán kattintson a jobb gombbal az elérhetőségi csoport nevére, majd válassza **az Erőforrás-ügyfél** > hozzáférési pontjának hozzáadása**parancsot.**
    
-    ![Adja hozzá az ügyfél-hozzáférési pont rendelkezésre állási csoport](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
+    ![Ügyfél-hozzáférési pont hozzáadása az elérhetőségi csoporthoz](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
 
-5. Az a **neve** mezőben hozzon létre egy nevet az új figyelőt, kattintson a **tovább** kétszer, és kattintson a **Befejezés**.  
-    Nem hozza a figyelőt vagy erőforrás online ezen a ponton.
+5. A **Név** mezőben hozzon létre egy nevet az új figyelőnek, kattintson kétszer a **Tovább** gombra, majd kattintson a **Befejezés gombra.**  
+    Ne hozza a figyelő vagy erőforrás online ezen a ponton.
 
-6. Kattintson a **erőforrások** lapra, és ezután bontsa ki az imént létrehozott ügyfél-hozzáférési pont. 
-    Az IP-cím erőforrás a fürtben lévő minden egyes fürt hálózati jelenik meg. Ha ez egy csak az Azure-megoldás, csak egy IP-cím erőforrás jelenik meg.
+6. Kattintson az **Erőforrások** fülre, majd bontsa ki az imént létrehozott ügyfél-hozzáférési pontot. 
+    Megjelenik a fürt minden egyes fürthálózatának IP-címerőforrása. Ha ez egy csak Azure-alapú megoldás, csak egy IP-címerőforrás jelenik meg.
 
 7. A következő lehetőségek közül választhat:
    
    * Hibrid megoldás konfigurálása:
      
-        a. Kattintson a jobb gombbal a helyszíni alhálózatnak megfelelő IP-cím erőforrás, és válassza **tulajdonságok**. Megjegyzés: az IP-cím neve és a hálózat nevét.
+        a. Kattintson a jobb gombbal a helyszíni alhálózatnak megfelelő IP-címerőforrásra, majd válassza a **Tulajdonságok parancsot.** Jegyezze fel az IP-cím nevét és a hálózat nevét.
    
-        b. Válassza ki **statikus IP-cím**, fel nem használt IP-címet hozzárendelni, és kattintson **OK**.
+        b. Válassza **a Statikus IP-cím**lehetőséget, rendeljen hozzá egy nem használt IP-címet, majd kattintson **az OK**gombra.
  
-   * Egy csak az Azure-megoldás konfigurálása:
+   * Csak Azure-alapú megoldás konfigurálása:
 
-        a. Kattintson a jobb gombbal az IP-cím erőforrás, amely megfelel az Azure-alhálózaton, és válassza **tulajdonságok**.
+        a. Kattintson a jobb gombbal az Azure-alhálózatnak megfelelő IP-címerőforrásra, majd válassza a **Tulajdonságok parancsot.**
        
        > [!NOTE]
-       > Ha a figyelő később sikertelen egy ütköző IP-címet DHCP által kiválasztott miatt online állapotba, konfigurálhatja egy érvényes statikus IP-címet a Tulajdonságok ablakban.
+       > Ha a figyelő később nem sikerül online állapotba lépnie a DHCP által kiválasztott ütköző IP-cím miatt, ebben a tulajdonságablakban érvényes statikus IP-címet állíthat be.
        > 
        > 
 
-       b. Az egyazon **IP-cím** tulajdonságok ablakban módosítsa a **IP-cím neve**.  
-        Ezt a nevet használja a PowerShell-parancsfájl $IPResourceName változóban. Ha a megoldás több Azure virtuális hálózat is kiterjed, ismételje meg ezt a lépést minden IP-erőforráshoz.
+       b. Ugyanabban az **IP-cím** tulajdonságok ablakban módosítsa az **IP-cím nevét**.  
+        Ez a név a PowerShell-parancsfájl $IPResourceName változójában használatos. Ha a megoldás több Azure virtuális hálózatra is kiterjed, ismételje meg ezt a lépést minden egyes IP-erőforrás esetében.
 

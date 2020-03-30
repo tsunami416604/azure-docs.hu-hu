@@ -1,6 +1,6 @@
 ---
-title: Áttelepítés helyszíni HDFS áruházból az Azure Storage-ba Azure Data Box
-description: Adatok migrálása helyszíni HDFS-tárolóból az Azure Storage-ba
+title: Áttérhet a prem HDFS áruházból az Azure Storage-ba az Azure Data Box segítségével
+description: Adatok áttelepítése a helyszíni HDFS-áruházból az Azure Storage-ba
 author: normesta
 ms.service: storage
 ms.date: 02/14/2019
@@ -9,77 +9,77 @@ ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: c0c6a8637223727a9b0c88245d939605f6a8530e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302000"
 ---
-# <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Áttelepítés helyszíni HDFS áruházból az Azure Storage-ba Azure Data Box
+# <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Áttérhet a prem HDFS áruházból az Azure Storage-ba az Azure Data Box segítségével
 
-Az adatok áttelepíthetők a Hadoop-fürt helyszíni HDFS az Azure Storage-ba (blob Storage vagy Data Lake Storage Gen2) egy Data Box eszköz használatával. 80 TB-os Data Box vagy 770-TB Data Box Heavy közül választhat.
+Adatok áttelepítése a helyszíni HDFS-tárolóaak a Hadoop-fürt az Azure Storage (blob storage vagy Data Lake Storage Gen2) egy Data Box-eszköz használatával. Választhat egy 80 TB-os Data Box vagy egy 770-TB Data Box Heavy.
 
-Ez a cikk a következő feladatok elvégzését segíti elő:
+Ez a cikk az alábbi feladatok elvégzését segíti:
 
 > [!div class="checklist"]
-> * Készítse elő az adatáttelepítés előkészítését.
-> * Másolja az adatait egy Data Box vagy egy Data Box Heavy eszközre.
-> * Az eszköz újbóli szállítása a Microsoftnak.
+> * Felkészülés az adatok áttelepítésére.
+> * Másolja adatait egy Data Box vagy egy Data Box Heavy eszközre.
+> * Az eszköz visszaszállítása a Microsoftnak.
 > * Hozzáférési engedélyek alkalmazása fájlokra és könyvtárakra (csak Data Lake Storage Gen2)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az áttelepítés befejezéséhez ezeket a dolgokat kell végrehajtania.
+Ezekre a dolgokra szükség van az áttelepítés befejezéséhez.
 
 * Egy Azure Storage-fiók.
 
-* A forrásadatokat tartalmazó helyszíni Hadoop-fürt.
+* A helyszíni Hadoop-fürt, amely a forrásadatokat tartalmazza.
 
-* Egy [Azure Data Box eszköz](https://azure.microsoft.com/services/storage/databox/).
+* Egy [Azure Data Box-eszköz.](https://azure.microsoft.com/services/storage/databox/)
 
-  * [Rendeljen Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) vagy [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). 
+  * [Rendelje meg a Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) vagy data box [Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). 
 
-  * Csatlakoztassa a [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) vagy [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) a helyszíni hálózathoz.
+  * Kábelezés a [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) vagy a Data [Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) kábellel egy helyszíni hálózathoz.
 
-Ha készen áll, kezdjük.
+Ha készen állsz, kezdjük.
 
-## <a name="copy-your-data-to-a-data-box-device"></a>Az adatai másolása egy Data Box eszközre
+## <a name="copy-your-data-to-a-data-box-device"></a>Adatok másolása Adatdoboz-eszközre
 
-Ha az adatai egyetlen Data Box eszközhöz illeszkednek, akkor az adatait a Data Box eszközre kell másolni. 
+Ha az adatok egyetlen Data Box-eszközbe illeszkednek, akkor az adatokat a Data Box eszközre másolja. 
 
-Ha az adatok mérete meghaladja a Data Box eszköz kapacitását, akkor a [választható eljárással több Data Box eszközön is feloszthatja az adatmennyiséget](#appendix-split-data-across-multiple-data-box-devices) , majd végrehajthatja ezt a lépést. 
+Ha az adatméret meghaladja a Data Box eszköz kapacitását, használja a [választható eljárást az adatok több Adatdoboz-eszközön történő felosztásához,](#appendix-split-data-across-multiple-data-box-devices) majd hajtsa végre ezt a lépést. 
 
-Ha a helyszíni HDFS-tárolóból egy Data Box eszközre kívánja másolni az adatait, állítson be néhány dolgot, majd használja a [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) eszközt.
+Ha a helyszíni HDFS-tárolóból szeretné másolni az adatokat egy Data Box-eszközre, be kell állítania néhány dolgot, majd a [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) eszközt kell használnia.
 
-Kövesse az alábbi lépéseket az adatok másolásához a blob/objektum tároló REST API-kon keresztül a Data Box eszközre. Az REST API felületen az eszköz HDFS-tárolóként jelenik meg a fürtben.
+Az alábbi lépésekkel másolhatja az adatokat a Blob/Object storage REST API-kon keresztül a Data Box-eszközre. A REST API-felület az eszközt HDFS-tárolóként fogja megjeleníteni a fürt számára.
 
-1. Az adatok REST használatával történő másolása előtt azonosítsa azokat a biztonsági és kapcsolati primitíveket, amelyek a Data Box vagy Data Box Heavy REST-felületéhez csatlakoznak. Jelentkezzen be Data Box helyi webes felhasználói felületére, és lépjen a **Kapcsolódás és másolás** lapra. Az eszközhöz tartozó Azure Storage-fiókhoz a **hozzáférési beállítások**területen keresse meg és válassza a **Rest**lehetőséget.
+1. Mielőtt átmásolja az adatokat a REST-en keresztül, azonosítsa a biztonsági és kapcsolatprimitíveket, hogy csatlakozzon a DATA Box vagy a Data Box Heavy REST-kapcsolatához. Jelentkezzen be a Data Box helyi webes felhasználói felületére, és lépjen a **Csatlakozás és másolás** lapra. Az eszköz Azure-tárfiókjában az **Access beállításai**csoportban keresse meg a REST elemet, és válassza a **REST**lehetőséget.
 
-    !["Kapcsolat és másolás" oldal](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
+    !["Csatlakozás és másolás" oldal](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
-2. A hozzáférés a Storage-fiókhoz és az adatok feltöltése párbeszédpanelen másolja a **blob Service-végpontot** és a **Storage-fiók kulcsát**. A blob Service-végpontból hagyja ki a `https://` és a záró perjelet.
+2. Az Access tárfiók és a feltöltési adatok párbeszédpanelen másolja a **Blob szolgáltatás végpontját** és a **Storage-fiók kulcsot.** A blob szolgáltatás végpont, hagyja `https://` ki a és a záró perjel.
 
-    Ebben az esetben a végpont a következő: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. A használni kívánt URI Host része a következők egyike: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. Példa: [Kapcsolódás a REST-hez http-](/azure/databox/data-box-deploy-copy-data-via-rest)kapcsolaton keresztül. 
+    Ebben az esetben a végpont `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`a következő: . Az URI gazdagéprésze a következő: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. Például tekintse meg, hogyan [csatlakozhat a REST-hez http-n keresztül.](/azure/databox/data-box-deploy-copy-data-via-rest) 
 
-     !["Hozzáférés a Storage-fiókhoz és adatok feltöltése" párbeszédpanel](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
+     !["Tárfiók elérése és adatok feltöltése" párbeszédpanel](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
-3. Adja hozzá a végpontot és a Data Box vagy Data Box Heavy csomópont IP-címét az egyes csomópontokon `/etc/hosts`hoz.
+3. Adja hozzá a végpontot és a Data Box `/etc/hosts` vagy a Data Box Heavy csomópont IP-címét az egyes csomópontokhoz.
 
     ```    
     10.128.5.42  mystorageaccount.blob.mydataboxno.microsoftdatabox.com
     ```
 
-    Ha más DNS-mechanizmust használ, győződjön meg arról, hogy a Data Box végpont feloldható.
+    Ha valamilyen más mechanizmust használ a DNS-hez, győződjön meg arról, hogy a Data Box végpont feloldható.
 
-4. Állítsa `azjars` rendszerhéj változót a `hadoop-azure` és a `azure-storage` JAR-fájlok helyére. Ezek a fájlok a Hadoop telepítési könyvtárában találhatók.
+4. Állítsa be `azjars` a rendszerhéj-változót a `hadoop-azure` jar `azure-storage` fájlok helyére. Ezeket a fájlokat a Hadoop telepítési könyvtárában találja.
 
-    Annak megállapításához, hogy ezek a fájlok léteznek-e, használja a következő parancsot: `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`. Cserélje le a `<hadoop_install_dir>` helyőrzőt annak a könyvtárnak az elérési útjára, amelybe a Hadoop telepítette. Ügyeljen arra, hogy teljesen minősített elérési utakat használjon.
+    Annak megállapításához, hogy ezek a `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`fájlok léteznek-e, használja a következő parancsot: . Cserélje `<hadoop_install_dir>` le a helyőrzőt a Hadoop telepítéséhez vezető könyvtár elérési parancsára. Ügyeljen arra, hogy teljesen minősített elérési utakat használjon.
 
     Példák:
 
     `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
 
-5. Hozza létre az adatmásoláshoz használni kívánt Storage-tárolót. A parancs részeként meg kell adnia egy célhely könyvtárat is. Ez lehet egy dummy cél könyvtára ezen a ponton.
+5. Hozza létre az adatmásoláshoz használni kívánt tárolótárolót. A parancs részeként meg kell adnia egy célkönyvtárat is. Ez lehet egy dummy cél könyvtár ezen a ponton.
 
     ```
     hadoop fs -libjars $azjars \
@@ -88,15 +88,15 @@ Kövesse az alábbi lépéseket az adatok másolásához a blob/objektum tárol�
     -mkdir -p  wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * Cserélje le a `<blob_service_endpoint>` helyőrzőt a blob Service-végpont nevére.
+    * Cserélje `<blob_service_endpoint>` le a helyőrzőt a blob szolgáltatás végpontjának nevére.
 
-    * Cserélje le a `<account_key>` helyőrzőt a fiókja hozzáférési kulcsára.
+    * Cserélje `<account_key>` le a helyőrzőt a fiók hozzáférési kulcsára.
 
-    * Cserélje le a `<container-name>` helyőrzőt a tároló nevére.
+    * Cserélje `<container-name>` le a helyőrzőt a tároló nevére.
 
-    * Cserélje le a `<destination_directory>` helyőrzőt annak a könyvtárnak a nevére, amelyre az adatait másolni kívánja.
+    * Cserélje `<destination_directory>` le a helyőrzőt annak a könyvtárnak a nevére, amelybe az adatokat másolni szeretné.
 
-6. A LIST parancs futtatásával győződjön meg arról, hogy a tároló és a könyvtár létrejött.
+6. Futtasson listaparancsot a tároló és a könyvtár létrehozásához.
 
     ```
     hadoop fs -libjars $azjars \
@@ -105,13 +105,13 @@ Kövesse az alábbi lépéseket az adatok másolásához a blob/objektum tárol�
     -ls -R  wasb://<container_name>@<blob_service_endpoint>/
     ```
 
-   * Cserélje le a `<blob_service_endpoint>` helyőrzőt a blob Service-végpont nevére.
+   * Cserélje `<blob_service_endpoint>` le a helyőrzőt a blob szolgáltatás végpontjának nevére.
 
-   * Cserélje le a `<account_key>` helyőrzőt a fiókja hozzáférési kulcsára.
+   * Cserélje `<account_key>` le a helyőrzőt a fiók hozzáférési kulcsára.
 
-   * Cserélje le a `<container-name>` helyőrzőt a tároló nevére.
+   * Cserélje `<container-name>` le a helyőrzőt a tároló nevére.
 
-7. Adatok másolása a Hadoop-HDFS Data Box blob Storage-ba a korábban létrehozott tárolóba. Ha a másolandó címtár nem található, a parancs automatikusan létrehozza azt.
+7. Adatok másolása a Hadoop HDFS-ből a Data Box Blob storage-ba, a korábban létrehozott tárolóba. Ha a program nem találja azt a könyvtárat, amelybe a másol, a parancs automatikusan létrehozza azt.
 
     ```
     hadoop distcp \
@@ -123,21 +123,21 @@ Kövesse az alábbi lépéseket az adatok másolásához a blob/objektum tárol�
            wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * Cserélje le a `<blob_service_endpoint>` helyőrzőt a blob Service-végpont nevére.
+    * Cserélje `<blob_service_endpoint>` le a helyőrzőt a blob szolgáltatás végpontjának nevére.
 
-    * Cserélje le a `<account_key>` helyőrzőt a fiókja hozzáférési kulcsára.
+    * Cserélje `<account_key>` le a helyőrzőt a fiók hozzáférési kulcsára.
 
-    * Cserélje le a `<container-name>` helyőrzőt a tároló nevére.
+    * Cserélje `<container-name>` le a helyőrzőt a tároló nevére.
 
-    * Cserélje le a `<exlusion_filelist_file>` helyőrzőt annak a fájlnak a nevére, amely a fájl-kizárások listáját tartalmazza.
+    * Cserélje `<exlusion_filelist_file>` le a helyőrzőt a fájlkizárások listáját tartalmazó fájl nevére.
 
-    * Cserélje le a `<source_directory>` helyőrzőt annak a könyvtárnak a nevére, amely a másolni kívánt adatmennyiséget tartalmazza.
+    * Cserélje `<source_directory>` le a helyőrzőt a másolni kívánt adatokat tartalmazó könyvtár nevére.
 
-    * Cserélje le a `<destination_directory>` helyőrzőt annak a könyvtárnak a nevére, amelyre az adatait másolni kívánja.
+    * Cserélje `<destination_directory>` le a helyőrzőt annak a könyvtárnak a nevére, amelybe az adatokat másolni szeretné.
 
-    A `-libjars` a `hadoop-azure*.jar` és a függő `azure-storage*.jar` fájlok `distcp`számára elérhetővé tételére szolgál. Előfordulhat, hogy néhány fürt esetében ez már előfordulhat.
+    A `-libjars` beállítás sal elérhetővé teheti a `hadoop-azure*.jar` és a függő `azure-storage*.jar` fájlokat a számára. `distcp` Ez egyes fürtökesetében már előfordulhat.
 
-    Az alábbi példa azt szemlélteti, hogy az `distcp` parancs hogyan használható az adatmásoláshoz.
+    A következő példa `distcp` bemutatja, hogyan használja a parancsot az adatok másolása.
 
     ```
      hadoop distcp \
@@ -149,64 +149,64 @@ Kövesse az alábbi lépéseket az adatok másolásához a blob/objektum tárol�
     wasb://hdfscontainer@mystorageaccount.blob.mydataboxno.microsoftdatabox.com/data
     ```
   
-    A másolás sebességének javítása:
+    A másolási sebesség növelése:
 
-    * Próbálja meg módosítani a leképezések számát. (A fenti példa `m` = 4 mappers-t használ.)
+    * Próbálja meg módosítani a leképezők számát. (A fenti `m` példa a = 4 mappers.)
 
-    * Próbálkozzon több `distcp` párhuzamos futtatásával.
+    * Próbáljon `distcp` meg több párhuzamosan futtatni.
 
-    * Ne feledje, hogy a nagyméretű fájlok jobb teljesítményt biztosítanak a kisebb fájloknál.
+    * Ne feledje, hogy a nagy fájlok jobban teljesítenek, mint a kis fájlok.
 
-## <a name="ship-the-data-box-to-microsoft"></a>A Data Box elszállítása a Microsoftnak
+## <a name="ship-the-data-box-to-microsoft"></a>Az adatdoboz szállítása a Microsoftnak
 
-Az alábbi lépéseket követve előkészítheti és szállíthatja a Data Box eszközt a Microsoftnak.
+A Data Box-eszköz előkészítéséhez és a Microsofthoz való elszállításához kövesse az alábbi lépéseket.
 
-1. Először [szállításra való előkészítés a Data Box vagy a Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest).
+1. Először [is, Felkészülés a szállításra a Data Box vagy Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest).
 
-2. Az eszköz előkészítésének befejezése után töltse le az ANYAGJEGYZÉK-fájlokat. Ezeket az ANYAGJEGYZÉK-vagy MANIFEST-fájlokat később fogja használni az Azure-ba feltöltött adatkezelés ellenőrzéséhez.
+2. Az eszköz előkészítése befejezése után töltse le az anyagjegyzékfájlokat. Ezeket az anyagjegyzék- vagy jegyzékfájlokat később az Azure-ba feltöltött adatok ellenőrzéséhez fogja használni.
 
-3. Állítsa le az eszközt, és távolítsa el a kábeleket.
+3. Állítsa le a készüléket, és távolítsa el a kábeleket.
 
 4. Egyeztessen egy csomagfelvételi időpontot a UPS-szel.
 
-    * Data Box eszközökhöz tekintse [meg a Data Box szállítása](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)című témakört.
+    * Adatdoboz-eszközök esetén olvassa el [Az adatdoboz szállítása](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up).
 
-    * Data Box Heavy eszközökhöz tekintse [meg a Data Box Heavy szállítása](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)című témakört.
+    * A Data Box Heavy eszközökről a [Data Box Heavy szállítása](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up).
 
-5. Miután a Microsoft megkapja az eszközét, az az adatközpont-hálózathoz csatlakozik, és a rendszer feltölti az adatait az eszközök sorrendbe helyezése során megadott Storage-fiókba. Ellenőrizze azokat az ANYAGJEGYZÉK-fájlokat, amelyeket az összes adattal feltölt az Azure-ba. 
+5. Miután a Microsoft megkapta az eszközt, csatlakozik az adatközpont-hálózathoz, és az adatok feltöltésre kerülnek az eszközrendelés lerendelésekénél megadott tárfiókba. Ellenőrizze az anyagjegyzékfájlok kal szemben, hogy az összes adat feltöltése az Azure-ba. 
 
 ## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>Hozzáférési engedélyek alkalmazása fájlokra és könyvtárakra (csak Data Lake Storage Gen2)
 
-Már rendelkezik az Azure Storage-fiókjában tárolt adataival. Mostantól hozzáférési engedélyeket fog alkalmazni a fájlokra és könyvtárakra.
+Már rendelkezik az adatokkal az Azure Storage-fiókjában. Most antól hozzáférési engedélyeket fog alkalmazni a fájlokra és a könyvtárakra.
 
 > [!NOTE]
-> Erre a lépésre csak akkor van szükség, ha az adattárat Azure Data Lake Storage Gen2 használja. Ha csak egy blob Storage-fiókot használ hierarchikus névtér nélküli adattárként, akkor kihagyhatja ezt a szakaszt.
+> Erre a lépésre csak akkor van szükség, ha az Azure Data Lake Storage Gen2-t használja adattárként. Ha csak egy hierarchikus névtér nélküli blobtár-fiókot használ adattárként, kihagyhatja ezt a szakaszt.
 
-### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Egyszerű szolgáltatásnév létrehozása a Azure Data Lake Storage Gen2-fiókhoz
+### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Egyszerű szolgáltatás létrehozása az Azure Data Lake Storage Gen2-fiókjához
 
-Egyszerű szolgáltatásnév létrehozásához tekintse meg az [Azure ad-alkalmazás és az erőforrások elérését elérő szolgáltatás használata a portál használatával](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)című témakört.
+Egyszerű szolgáltatás létrehozása, [Hogyan: A portál használata az Erőforrások eléréséhez elérhető Azure AD-alkalmazás és egyszerű szolgáltatás létrehozása című témakörben.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
 
-* Ha végrehajtja az [alkalmazás szerepkörhöz rendelése](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) szakaszának lépéseit, akkor ügyeljen arra, hogy hozzárendelje a **tárolási blob adatközreműködői** szerepkört az egyszerű szolgáltatáshoz.
+* Amikor végrehajtja az [alkalmazás hozzárendelése](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) a cikk szerepkörszakaszában leírt lépéseket, győződjön meg arról, hogy a **Storage Blob Data Contributor** szerepkört hozzárendeli az egyszerű szolgáltatáshoz.
 
-* A cikk beléptetési [értékének beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszának lépéseinek végrehajtásakor mentse az alkalmazás azonosítóját és az ügyfél titkos kulcsának értékét egy szövegfájlba. Ezekre hamarosan szüksége lesz.
+* A cikk [bejelentkezési értékeinek betöltése](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) című szakaszlépéseinek végrehajtásakor mentse az alkalmazásazonosítót és az ügyféltitkos értékeket egy szöveges fájlba. Hamarosan szükséged lesz rá.
 
-### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>A másolt fájlok listájának létrehozása engedélyekkel
+### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>A másolt fájlok listájának létrehozása az engedélyekkel
 
-Futtassa a következő parancsot a helyszíni Hadoop-fürtből:
+A helyszíni Hadoop-fürtből futtassa a következő parancsot:
 
 ```bash
 
 sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 ```
 
-Ez a parancs a másolt fájlok listáját hozza létre az engedélyeik alapján.
+Ez a parancs létrehozza a másolt fájlok listáját az engedélyekkel.
 
 > [!NOTE]
-> A HDFS lévő fájlok számától függően ez a parancs hosszú időt is igénybe vehet.
+> A HDFS fájljainak számától függően ez a parancs futtatása hosszú időt vehet igénybe.
 
-### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>Identitások listájának létrehozása és a Azure Active Directory (Hozzáadás) identitások leképezése
+### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>Identitások listájának létrehozása és hozzárendelése az Azure Active Directory (ADD) identitásokhoz
 
-1. Töltse le a `copy-acls.py` szkriptet. Tekintse [meg a Súgó letöltése segítő parancsfájlokat, és állítsa be az Edge-csomópontot a cikk futtatásához](#download-helper-scripts) című szakaszát.
+1. Töltse `copy-acls.py` le a forgatókönyvet. Tekintse meg a [Segítő parancsfájlok letöltése parancsfájlokat, és állítsa be a peremhálózati csomópontot](#download-helper-scripts) a cikk szakaszának futtatásához.
 
 2. Futtassa ezt a parancsot az egyedi identitások listájának létrehozásához.
 
@@ -215,35 +215,35 @@ Ez a parancs a másolt fájlok listáját hozza létre az engedélyeik alapján.
    ./copy-acls.py -s ./filelist.json -i ./id_map.json -g
    ```
 
-   Ez a szkript létrehoz egy `id_map.json` nevű fájlt, amely tartalmazza azokat az identitásokat, amelyeket hozzá kell rendelni a Hozzáadás-alapú identitásokhoz.
+   Ez a parancsfájl létrehoz `id_map.json` egy nevű fájlt, amely tartalmazza az ADD-alapú identitások hozzárendeléséhez szükséges identitásokat.
 
-3. Nyissa meg a `id_map.json` fájlt egy szövegszerkesztőben.
+3. Nyissa `id_map.json` meg a fájlt egy szövegszerkesztőben.
 
-4. Minden olyan JSON-objektum esetében, amely megjelenik a fájlban, frissítse a megfelelő leképezett identitású HRE (UPN) vagy ObjectId (OID) `target` attribútumát. Ha elkészült, mentse a fájlt. Ezt a fájlt a következő lépésben kell megadnia.
+4. A fájlban megjelenő minden Egyes JSON-objektumhoz frissítse az `target` AAD egyszerű felhasználónév (UPN) vagy az ObjectId (OID) attribútumát a megfelelő leképezett identitással. Miután elkészült, mentse a fájlt. A következő lépésben szüksége lesz erre a fájlra.
 
-### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>Engedélyek alkalmazása a másolt fájlokra és az identitás-hozzárendelések alkalmazása
+### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>Engedélyek alkalmazása másolt fájlokra és identitásleképezések alkalmazása
 
-Futtassa ezt a parancsot a Data Lake Storage Gen2-fiókba másolt adathozzáférésre vonatkozó engedélyek alkalmazásához:
+Ezzel a paranccsal engedélyeket alkalmazhat a Data Lake Storage Gen2 fiókba másolt adatokra:
 
 ```bash
 ./copy-acls.py -s ./filelist.json -i ./id_map.json  -A <storage-account-name> -C <container-name> --dest-spn-id <application-id>  --dest-spn-secret <client-secret>
 ```
 
-* Cserélje le a `<storage-account-name>` helyőrzőt a Storage-fiók nevére.
+* Cserélje `<storage-account-name>` le a helyőrzőt a tárfiók nevére.
 
-* Cserélje le a `<container-name>` helyőrzőt a tároló nevére.
+* Cserélje `<container-name>` le a helyőrzőt a tároló nevére.
 
-* Cserélje le a `<application-id>` és `<client-secret>` helyőrzőket az egyszerű szolgáltatás létrehozásakor gyűjtött alkalmazás-azonosítóval és az ügyfél titkos kódjával.
+* Cserélje `<application-id>` le `<client-secret>` a helyőrzőket az alkalmazásazonosítóra és az ügyféltitokra, amelyet a szolgáltatásnév létrehozásakor gyűjtött.
 
-## <a name="appendix-split-data-across-multiple-data-box-devices"></a>Függelék: az adatmegosztás több Data Box eszköz között
+## <a name="appendix-split-data-across-multiple-data-box-devices"></a>Függelék: Adatok felosztása több Data Box eszközön
 
-Mielőtt áthelyezi az adatait egy Data Box eszközre, le kell töltenie néhány segítő parancsfájlt, meg kell győződnie arról, hogy az adatai úgy vannak rendszerezve, hogy illeszkedjenek egy Data Box eszközre, és kizárják a szükségtelen fájlokat.
+Mielőtt áthelyezné az adatokat egy Data Box-eszközre, le kell töltenie néhány segítő szkriptet, biztosítania kell, hogy az adatok úgy legyenek rendszerezve, hogy elférjenek egy Data Box-eszközre, és ki kell zárnia a felesleges fájlokat.
 
 <a id="download-helper-scripts" />
 
-### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>Segítő parancsfájlok letöltése és az Edge-csomópont beállítása a futtatásához
+### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>Töltse le a segítő parancsfájlokat, és állítsa be a peremcsomópontot a futtatásukhoz
 
-1. Futtassa a következő parancsot a helyszíni Hadoop-fürt Edge vagy Head csomópontján:
+1. A helyszíni Hadoop-fürt pereméről vagy főcsomópontjáról futtassa ezt a parancsot:
 
    ```bash
    
@@ -251,23 +251,23 @@ Mielőtt áthelyezi az adatait egy Data Box eszközre, le kell töltenie néhán
    cd databox-adls-loader
    ```
 
-   Ez a parancs a GitHub-tárházat klónozott, amely a segítő parancsfájlokat tartalmazza.
+   Ez a parancs klónozza a GitHub-tárházat, amely a segítő parancsfájlokat tartalmazza.
 
-2. Győződjön meg arról, hogy a [jQ](https://stedolan.github.io/jq/) -csomag telepítve van a helyi számítógépen.
+2. Győződjön meg arról, hogy a [jq](https://stedolan.github.io/jq/) csomag telepítve van a helyi számítógépen.
 
    ```bash
    
    sudo apt-get install jq
    ```
 
-3. Telepítse a Python-csomag [kéréseit](https://2.python-requests.org/en/master/) .
+3. Telepítse a [Kérelmek](https://2.python-requests.org/en/master/) python csomagot.
 
    ```bash
    
    pip install requests
    ```
 
-4. Állítsa be a végrehajtási engedélyeket a szükséges parancsfájlokra.
+4. Állítsa be a szükséges parancsfájlok végrehajtási engedélyeit.
 
    ```bash
    
@@ -275,15 +275,15 @@ Mielőtt áthelyezi az adatait egy Data Box eszközre, le kell töltenie néhán
 
    ```
 
-### <a name="ensure-that-your-data-is-organized-to-fit-onto-a-data-box-device"></a>Győződjön meg arról, hogy az adatai úgy vannak rendszerezve, hogy illeszkedjenek Data Box eszközre
+### <a name="ensure-that-your-data-is-organized-to-fit-onto-a-data-box-device"></a>Annak ellenőrzése, hogy az adatok úgy vannak-e rendszerezve, hogy elférjenek egy Adatdoboz-eszközre
 
-Ha az adatméret meghaladja az egyetlen Data Box eszköz méretét, akkor a fájlokat a több Data Box eszközön tárolható csoportokba is feloszthatja.
+Ha az adatok mérete meghaladja az egyetlen Data Box-eszköz méretét, a fájlokat csoportokra oszthatja, amelyeket több Data Box eszközön is tárolhat.
 
-Ha az adatai nem haladják meg a Singing Data Box eszköz méretét, folytassa a következő szakasszal.
+Ha az adatok nem haladják meg az singe Data Box-eszköz méretét, továbbléphet a következő szakaszra.
 
-1. Emelt szintű engedélyekkel futtassa az előző szakasz útmutatását követve a letöltött `generate-file-list`-parancsfájlt.
+1. Emelt szintű engedélyekkel `generate-file-list` futtassa a letöltött parancsfájlt az előző szakaszban található útmutatás szerint.
 
-   A parancs paramétereinek leírása:
+   A parancs paraméterek leírása:
 
    ```
    sudo -u hdfs ./generate-file-list.py [-h] [-s DATABOX_SIZE] [-b FILELIST_BASENAME]
@@ -311,7 +311,7 @@ Ha az adatai nem haladják meg a Singing Data Box eszköz méretét, folytassa a
                         Level of log information to output. Default is 'INFO'.
    ```
 
-2. Másolja a generált fájlok listáját a HDFS, hogy elérhetők legyenek a [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) -feladatokhoz.
+2. Másolja a létrehozott fájllistákat a HDFS fájlba, hogy azok elérhetők legyenek a [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) feladat számára.
 
    ```
    hadoop fs -copyFromLocal {filelist_pattern} /[hdfs directory]
@@ -319,9 +319,9 @@ Ha az adatai nem haladják meg a Singing Data Box eszköz méretét, folytassa a
 
 ### <a name="exclude-unnecessary-files"></a>Szükségtelen fájlok kizárása
 
-Néhány könyvtárat ki kell zárnia a DisCp feladatokból. Kizárhatja például azokat a címtárakat, amelyek olyan állapotinformációkat tartalmaznak, amelyek a fürtöt futtatják.
+Ki kell zárnia néhány könyvtárat a DisCp-feladatból. Például zárja ki azokat a könyvtárakat, amelyek állapotinformációkat tartalmaznak, amelyek a fürt ötlöttek.
 
-Hozzon létre egy fájlt azon a helyszíni Hadoop-fürtön, ahol el szeretné indítani a DistCp-feladatot. a kizárni kívánt könyvtárak listáját meghatározó fájl létrehozása.
+A helyszíni Hadoop-fürtön, ahol a DistCp-feladat elindítását tervezi, hozzon létre egy fájlt, amely megadja a kizárni kívánt könyvtárak listáját.
 
 Például:
 
@@ -330,6 +330,6 @@ Például:
 .*/hbase/data/WALs.*
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan működik a Data Lake Storage Gen2 HDInsight-fürtökkel. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Ismerje meg, hogyan működik a Data Lake Storage Gen2 a HDInsight-fürtökkel. Lásd: [Azure Data Lake Storage Gen2 használata Az Azure HDInsight-fürtökkel.](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)

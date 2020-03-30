@@ -1,6 +1,6 @@
 ---
-title: Azure-beli VM-méretek – HPC | Microsoft Docs
-description: Felsorolja a nagy teljesítményű számítástechnikai virtuális gépek számára elérhető különböző méreteket az Azure-ban. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
+title: Az Azure virtuális gépek méretei - HPC | Microsoft dokumentumok
+description: Az Azure-ban a nagy teljesítményű számítástechnikai virtuális gépekhez elérhető különböző méretek listája. A vCPU-k, adatlemezek és hálózati adapterek számával, valamint a tárolóátviteli és hálózati sávszélességgel kapcsolatos információkat sorolja fel a sorozat méreteihez.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -16,63 +16,63 @@ ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
 ms.openlocfilehash: b900a95df00ccdd0ad9b5bee3887364195c7d1c2
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78226721"
 ---
-# <a name="high-performance-compute-vm-sizes"></a>Nagy teljesítményű számítási VM-méretek
+# <a name="high-performance-compute-vm-sizes"></a>Nagy teljesítményű számításra alkalmas virtuálisgép-méretek
 
-Az Azure H-sorozatú virtuális gépek (VM-EK) úgy vannak kialakítva, hogy vezetői szintű teljesítményt, MPI-skálázhatóságot és költséghatékonyságot nyújtsanak számos valós HPC-számítási feladathoz.
+Az Azure H sorozatú virtuális gépek (VM-ek) úgy vannak kialakítva, hogy a vezetéshez szükséges teljesítményt, mpi-méretezhetőséget és költséghatékonyságot biztosítsanak a különböző valós HPC-számítási feladatokhoz.
 
-[HBv2 sorozat](hbv2-series.md) A virtuális gépek 200 GB/s Mellanox HDR-InfiniBand, míg a HB és a HC sorozatú virtuális gépek 100 GB/s Mellanox EDR InfiniBand rendelkeznek. Ezen virtuálisgép-típusok mindegyike egy nem blokkoló FAT-fában csatlakozik az optimalizált és konzisztens RDMA teljesítmény érdekében. A HBv2 virtuális gépek támogatják az adaptív útválasztást és a dinamikus csatlakoztatott átvitelt (a DCT a standard RC és UD átvitelek esetében). Ezek a funkciók növelik az alkalmazások teljesítményét, méretezhetőségét és konzisztenciáját, és használata erősen ajánlott.
+[HBv2 sorozat](hbv2-series.md) A virtuális gépek 200 Gb/sec Mellanox HDR InfiniBand- tel rendelkeznek, míg a HB és hc sorozatú virtuális gépek 100 Gb/sec Mellanox EDR InfiniBand-el rendelkeznek. Ezek a virtuálisgép-típusok mindegyike egy nem blokkoló zsírfában csatlakozik az optimalizált és konzisztens RDMA-teljesítmény érdekében. A HBv2 virtuális gépek támogatják az adaptív útválasztást és a dinamikus csatlakoztatott átvitelt (DCT, a szabványos RC és UD átvitelek mellett). Ezek a funkciók növelik az alkalmazások teljesítményét, méretezhetőségét és konzisztenciáját, és használatuk erősen ajánlott.
 
-[HB sorozat](hb-series.md) A virtuális gépek a memória sávszélessége által vezérelt alkalmazások számára vannak optimalizálva, például a Fluid Dynamics, a explicit véges elemek elemzése és az időjárási modellezés. A HB-beli virtuális gépeken 60 AMD EPYC 7551 processzor-mag, 4 GB RAM/CPU mag, és nincs feleznie. Az AMD EPYC platform több mint 260 GB/s memóriát biztosít.
+[HB-sorozat](hb-series.md) A virtuális gépek a memória sávszélessége által vezérelt alkalmazásokhoz vannak optimalizálva, például a folyadékdinamika, az explicit véges elemek elemzése és az időjárás modellezése. A HB virtuális gépek 60 AMD EPYC 7551 processzormagot, 4 GB RAM-ot cpu magonként tartalmaznak, és nincs hyperthreading. Az AMD EPYC platform több mint 260 GB/s memória sávszélességet biztosít.
 
-[HC sorozat](hc-series.md) A virtuális gépek a sűrű számítások által vezérelt alkalmazások számára vannak optimalizálva, például implicit, véges elemek elemzése, molekuláris dinamika és számítási kémia. A HC-alapú virtuális gépek a 44 Intel Xeon Platinum 8168 processzor-magot, a CPU-mag 8 GB RAM-ot, a feleznie pedig nem rendelkeznek. Az Intel Xeon Platinum platform támogatja az Intel olyan szoftverek gazdag ökoszisztémáját, mint az Intel Math kernel Library.
+[HC-sorozat](hc-series.md) A virtuális gépek a sűrű számítás által vezérelt alkalmazásokhoz vannak optimalizálva, például implicit véges elemelemzés, molekuláris dinamika és számítási kémia. A HC virtuális gépek 44 Intel Xeon Platinum 8168 processzormagot, cpumagonként 8 GB RAM-ot és hyperthreading nélküli processzormagot tartalmaznak. Az Intel Xeon Platinum platform támogatja az Intel gazdag ökoszisztéma szoftver eszközök, mint például az Intel Math Kernel Library.
 
-[H sorozat](h-series.md) A virtuális gépeket magas CPU-gyakorisággal vagy nagy memóriával rendelkező alkalmazások számára optimalizálták. A H-sorozatú virtuális gépek 8 vagy 16 Intel Xeon E5 2667 v3 processzorral, 7 vagy 14 GB RAM memóriával rendelkeznek, és nem feleznie. A H-sorozat 56 GB/s Mellanox FDR InfiniBand a konzisztens RDMA teljesítményének nem blokkoló FAT-konfigurációjában. A H-sorozatú virtuális gépek támogatják az Intel MPI 5. x és az MS-MPI használatát.
+[H-sorozat](h-series.md) A virtuális gépek a magas CPU-frekvenciák vagy az alapvető követelmények szerint nagy memória által vezérelt alkalmazásokhoz vannak optimalizálva. A H sorozatú virtuális gépek 8 vagy 16 Intel Xeon E5 2667 v3 processzormagot, cpumagonként 7 vagy 14 GB RAM-ot tartalmaznak, és nem tartalmaznak hyperthreading-et. A H sorozat 56 Gb/sec Mellanox FDR InfiniBand-et tartalmaz, amely nem blokkolja a zsírfa konfigurációt az egyenletes RDMA teljesítmény érdekében. A H sorozatú virtuális gépek támogatják az Intel MPI 5.x és MS-MPI-t.
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 
-- **Azure-előfizetés** – több számítási igényű példány üzembe helyezéséhez vegye fontolóra az utólagos elszámolású előfizetést vagy az egyéb vásárlási lehetőségeket. Amennyiben [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) használ, csak korlátozott számú számítási magot használhat az Azure-ban.
+- **Azure-előfizetés** – Ha néhánynál több nagy számítási igényű példányt szeretne üzembe helyezni, fontolja meg a használatalapú előfizetést vagy más vásárlási lehetőségeket. Amennyiben [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) használ, csak korlátozott számú számítási magot használhat az Azure-ban.
 
-- **Díjszabás és rendelkezésre állás** – ezeket a virtuálisgép-méreteket a rendszer csak a standard szintű díjszabás keretében kínálja. Tekintse meg az Azure-régiókban rendelkezésre [álló régiókban elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/) .
-- **Magok kvótája** – előfordulhat, hogy a magok kvótáját az alapértelmezett érték alapján kell megnövelni az Azure-előfizetésben. Előfordulhat, hogy az előfizetés bizonyos virtuálisgép-méretekben üzembe helyezhető magok számát is korlátozhatja, beleértve a H-sorozatot is. A kvóta növeléséhez [Nyisson meg egy online ügyfélszolgálati kérést](../azure-supportability/how-to-create-azure-support-request.md) díjmentesen. (Az alapértelmezett korlátok az előfizetési kategóriától függően változhatnak.)
+- **Díjszabás és rendelkezésre állás** – Ezek a virtuális gép méretek csak a standard tarifacsomagban. Tekintse meg [a régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/) et az Azure-régiókban való elérhetőségszempontjából.
+- **Cores kvóta** – Előfordulhat, hogy növelnie kell a magok kvótáját az Azure-előfizetésben az alapértelmezett értékről. Az előfizetés is korlátozhatja a magok száma, amelyet üzembe helyezhet bizonyos virtuálisgép-méretcsaládokban, beleértve a H-sorozat. A kvótanövelésének igényléséhez [nyisson meg egy online ügyfélszolgálati kérelmet](../azure-supportability/how-to-create-azure-support-request.md) díjmentesen. (Az alapértelmezett korlátok az előfizetési kategóriától függően változhatnak.)
 
   > [!NOTE]
-  > Ha nagy léptékű kapacitásra van szüksége, forduljon az Azure ügyfélszolgálatához. Az Azure-kvóták hitelkeretek, nem kapacitási garanciák. A kvótától függetlenül csak a használt magokért kell fizetnie.
+  > Lépjen kapcsolatba az Azure-támogatással, ha nagy kapacitással rendelkezik. Az Azure-kvóták hitelkeret, nem kapacitásgarancia. A kvótától függetlenül csak a használt magokért kell fizetnie.
   
-- **Virtual Network (virtuális hálózat** ) – az Azure [virtuális hálózat](https://azure.microsoft.com/documentation/services/virtual-network/) nem szükséges a nagy számítási igényű példányok használatához. Számos központi telepítés esetében azonban szükség van legalább egy felhőalapú Azure-beli virtuális hálózatra, vagy egy helyek közötti kapcsolatra, ha a helyszíni erőforrásokhoz kell hozzáférnie. Ha szükséges, hozzon létre egy új virtuális hálózatot a példányok telepítéséhez. Ha nagy számítási igényű virtuális gépeket ad hozzá egy affinitási csoportban lévő virtuális hálózathoz, az nem támogatott.
-- **Átméretezés** – a speciális hardverek miatt csak a számítási igényű példányokat lehet átméretezni ugyanazon a méretű családon belül (H-sorozat vagy nagy számítási igényű a-sorozat). Például csak egy h sorozatú virtuális gépet lehet átméretezni egy H-sorozatos méretről egy másikra. Emellett a nem számítási igényű méretről a nagy számítási igényű méretre való átméretezés nem támogatott.  
+- **Virtuális hálózat** – Az Azure-beli [virtuális hálózat](https://azure.microsoft.com/documentation/services/virtual-network/) nem szükséges a nagy számítási igényű példányok használatához. Azonban sok központi telepítések szüksége van legalább egy felhőalapú Azure virtuális hálózat, vagy egy hely-hely kapcsolat, ha a helyszíni erőforrások eléréséhez szükséges. Szükség esetén hozzon létre egy új virtuális hálózatot a példányok üzembe helyezéséhez. A számítási igényű virtuális gépek hozzáadása egy affinitási csoport ban lévő virtuális hálózathoz nem támogatott.
+- **Átméretezés** – Speciális hardverük miatt csak azonos méretű (H-sorozatú vagy számításigényes A-sorozat) számított nagy példányokat méretezhet át. Például csak átméretezheti a H-sorozat virtuális gép egyik H-sorozat mérete a másikra. Emellett a nem számítási igényű méretről a számításigényes méretre való átméretezés nem támogatott.  
 
 > [!NOTE]
-> Az A8 – A11-es virtuális gépek a 3/2021-es kivonulásra vannak tervezve. További információ: [HPC áttelepítési útmutató](https://azure.microsoft.com/resources/hpc-migration-guide/).
+> Az A8 – A11-es virtuális gépek a tervek szerint 3/2021-re tervezik a nyugdíjba vonulást. További információ: [HPC Migration Guide](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 ## <a name="rdma-capable-instances"></a>RDMA-kompatibilis példányok
 
-A nagy számítási igényű példányok egy részhalmaza (A8, A9, H16r, H16mr, HB és HC) egy hálózati adaptert biztosít a távoli közvetlen memória-hozzáférési (RDMA) kapcsolathoz. Az r-vel jelölt kiválasztott N sorozatú méretek (például a NC24rs konfigurációk (NC24rs_v2 és NC24rs_v3) is RDMA-kompatibilisek. Ez az interfész a szabványos Azure hálózati adapteren kívül más virtuálisgép-méretek számára is elérhető.
+A számításigényes példányok egy részhalmaza (A8, A9, H16r, H16mr, HB és HC) hálózati adapterrel rendelkezik a távoli közvetlen memória-hozzáférés (RDMA) kapcsolathoz. Az "r" betűvel jelölt egyes N-sorozatú méretek, mint például az NC24rs konfigurációk (NC24rs_v2 és NC24rs_v3) szintén RDMA-kompatibilisek. Ez a felület a más virtuális gépméretek számára elérhető szabványos Azure hálózati felületen kívül található.
 
-Ez az interfész lehetővé teszi, hogy a RDMA-kompatibilis példányok InfiniBand (IB) hálózaton keresztül kommunikáljanak, amely a HB, a HC, a H16r, a H16mr és a RDMA-kompatibilis N sorozatú virtuális gépekhez használható, valamint az A8-as és A9-es virtuális gépek QDR-díjain alapul. Ezek a RDMA-képességek növelhetik bizonyos Message Passing Interface-(MPI-) alkalmazások méretezhetőségét és teljesítményét. A sebességgel kapcsolatos további információkért tekintse meg az ezen a lapon található táblázatok részleteit.
+Ez az interfész lehetővé teszi, hogy az RDMA-kompatibilis példányok InfiniBand (IB) hálózaton keresztül kommunikáljanak, amely A HB, HC, FDR sebességeket a H16r, H16mr és RDMA-képes N-sorozatú virtuális gépek esetében, valamint QDR-díjakat használ az A8 és A9 virtuális gépek esetében. Ezek az RDMA-képességek növelhetik bizonyos MPI-alkalmazások méretezhetőségét és teljesítményét. A sebességről további információt az ezen az oldalon található táblázatokban talál.
 
 > [!NOTE]
-> Az Azure-ban az IB-alapú IP-cím csak az SR-IOV-kompatibilis virtuális gépeken támogatott (SR-IOV for InfiniBand, jelenleg HB és HC). Az IB protokollon keresztüli RDMA minden RDMA-kompatibilis példány esetében támogatott.
-- **Operációs rendszer** – Windows Server 2016 a HPC sorozat összes virtuális gépe. A Windows Server 2012 R2, a Windows Server 2012 szintén támogatott a nem SR-IOV-kompatibilis virtuális gépeken (így a HB és a HC kivételével).
+> Az Azure-ban az IB-n keresztüli IP-cím csak az SR-IOV-kompatibilis virtuális gépeken támogatott (SR-IOV az InfiniBand-hez, jelenleg HB és HC). Az RDMA iB-en keresztül ib-es beállítás minden RDMA-kompatibilis példány esetében támogatott.
+- **Operációs rendszer** – Windows Server 2016 a fenti HPC sorozatú virtuális gépeken. A Nem SR-IOV-kompatibilis virtuális gépek (kivéve a HB és HC kivételével) a Windows Server 2012 2012 rendszerű 2012 rendszerű, Nem engedélyezett virtuális gépeken is támogatottak.
 
-- **MPI** – az SR-IOV által engedélyezett virtuálisgép-méretek az Azure-ban (HB, HC) lehetővé teszik, hogy szinte bármilyen típusú MPI-t MELLANOX-OFED lehessen használni.
-A nem SR-IOV-kompatibilis virtuális gépeken támogatott MPI-implementációk a Microsoft Network Direct (ND) felületet használják a példányok közötti kommunikációhoz. Ezért csak a Microsoft MPI (MS-MPI) 2012 R2 vagy újabb, illetve az Intel MPI 5. x verziói támogatottak. Az Intel MPI runtime library újabb verziói (2017, 2018) vagy esetleg nem kompatibilisek az Azure RDMA-illesztőprogramokkal.
+- **MPI** - Az SR-IOV engedélyezett virtuális gép méretek az Azure-ban (HB, HC) lehetővé teszi szinte bármilyen ízét MPI használható Mellanox OFED.
+A nem SR-IOV-kompatibilis virtuális gépeken a támogatott MPI-implementációk a Microsoft Network Direct (ND) felületen keresztül kommunikálnak a példányok között. Ezért csak a Microsoft MPI (MS-MPI) 2012 R2 vagy újabb és az Intel MPI 5.x verziók támogatottak. Az Intel MPI-futásidejű függvénytár későbbi verziói (2017, 2018) lehetnek, hogy nem kompatibilisek az Azure RDMA-illesztőprogramokkal.
 
-- **InfiniBandDriverWindows** virtuálisgép-BŐVÍTMÉNY – RDMA-kompatibilis virtuális gépeken a InfiniBandDriverWindows-bővítmény hozzáadásával engedélyezheti a InfiniBand. Ez a Windowsos virtuálisgép-bővítmény telepíti a Windows Network Direct-illesztőprogramokat (nem SR-IOV virtuális gépeken) vagy a Mellanox OFED-illesztőprogramokat (SR-IOV virtuális gépeken) a RDMA-kapcsolathoz.
-Az A8-as és A9-es példányok bizonyos telepítései esetében a HpcVmDrivers-bővítmény automatikusan hozzáadódik. Vegye figyelembe, hogy a HpcVmDrivers VM-bővítmény elavult; nem lesz frissítve. A virtuálisgép-bővítmény virtuális géphez való hozzáadásához [Azure PowerShell](/powershell/azure/overview) parancsmagokat használhat. 
+- **InfiniBandDriverWindows VM-bővítmény** – RDMA-kompatibilis virtuális gépeken adja hozzá az InfiniBandWindows bővítményt az InfiniBand engedélyezéséhez. Ez a Windows virtuálisgép-bővítmény telepíti a Windows Network Direct illesztőprogramokat (nem SR-IOV virtuális gépeken) vagy Mellanox OFED illesztőprogramokat (SR-IOV virtuális gépeken) rdma-kapcsolathoz.
+Az A8-as és A9-es példányok bizonyos telepítéseiesetén a HpcVmDrivers bővítmény automatikusan hozzáadódik. Vegye figyelembe, hogy a HpcVmDrivers vm bővítmény elavult; nem lesz frissítve. A virtuális gép bővítmény hozzáadása a virtuális géphez, használhatja az Azure PowerShell-parancsmagokat. [Azure PowerShell](/powershell/azure/overview) 
 
-  A következő parancs a 1,0-es InfiniBandDriverWindows-bővítményt telepíti egy meglévő RDMA-kompatibilis virtuális gépre, amelyet az *USA nyugati* régiójában, az *myResourceGroup* *nevű erőforráscsoport helyez üzembe* .
+  A következő parancs a legújabb 1.0-s verziójú InfiniBandDriverWindows bővítményt telepíti egy meglévő RDMA-kompatibilis virtuális gépre, *amelyet myVM-nek* neveznek el az *USA nyugati régiójában* a *myResourceGroup* nevű erőforráscsoportban:
 
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverWindows" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverWindows" -TypeHandlerVersion "1.0"
   ```
 
-  Alternatív megoldásként a virtuálisgép-bővítmények Azure Resource Manager sablonokban is elérhetők az egyszerű üzembe helyezéshez, a következő JSON-elemmel:
+  Másik lehetőségként a virtuálisgép-bővítmények az Azure Resource Manager-sablonokban is szerepelhetnek az egyszerű üzembe helyezés érdekében, a következő JSON-elemmel:
 
   ```json
   "properties":{
@@ -82,7 +82,7 @@ Az A8-as és A9-es példányok bizonyos telepítései esetében a HpcVmDrivers-b
   } 
   ```
 
-  A következő parancs telepíti a legújabb 1,0 InfiniBandDriverWindows-bővítményt az összes RDMA-kompatibilis virtuális gépen egy *myVMSS* nevű meglévő virtuálisgép-méretezési csoportba, amelyet a *myResourceGroup*nevű erőforráscsoport telepít:
+  A következő parancs a legújabb 1.0-s verziójú InfiniBandDriverWindows bővítményt telepíti az összes RDMA-kompatibilis virtuális gépre egy *myVMSS* nevű, a *myResourceGroup*nevű erőforráscsoportban telepített meglévő virtuálisgép-méretezési csoportban:
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
@@ -91,25 +91,25 @@ Az A8-as és A9-es példányok bizonyos telepítései esetében a HpcVmDrivers-b
   Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
   ```
 
-  További információ: [virtuálisgép-bővítmények és-szolgáltatások](./extensions/overview.md). A [klasszikus üzemi modellben](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)üzembe helyezett virtuális gépek bővítményei is használhatók.
+  További információt a [Virtuálisgép-bővítmények és -szolgáltatások című témakörben talál.](./extensions/overview.md) A [klasszikus üzembe helyezési modellben](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)üzembe helyezett virtuális gépek bővítményeivel is dolgozhat.
 
-- **RDMA hálózati címtartomány** – az Azure RDMA-hálózata fenntartja a 172.16.0.0/16 címtartomány méretét. Ha az MPI-alkalmazásokat egy Azure-beli virtuális hálózaton üzembe helyezett példányokon szeretné futtatni, győződjön meg arról, hogy a virtuális hálózati címtartomány nem fedi át a RDMA-hálózatot.
+- **RDMA hálózati címterület** – Az Azure RDMA-hálózata a 172.16.0.0/16 címteret fenntartja. Mpi-alkalmazások futtatásához az Azure virtuális hálózatban telepített példányokon győződjön meg arról, hogy a virtuális hálózati címterület nem fedi át az RDMA-hálózatot.
 
 ## <a name="cluster-configuration-options"></a>Fürt konfigurációs beállításai
 
-Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló Windows HPC virtuális gépek fürtjének létrehozására, beleértve a következőket: 
+Az Azure számos lehetőséget kínál az RDMA-hálózaton keresztül kommunikáló Windows HPC-virtuális gépek fürtjeinek létrehozására, többek között a következőket: 
 
-- **Virtual Machines** – helyezze üzembe a RDMA-kompatibilis HPC virtuális gépeket ugyanabban a rendelkezésre állási készletben (az Azure Resource Manager üzemi modell használatakor). Ha a klasszikus üzemi modellt használja, telepítse a virtuális gépeket ugyanabban a felhőalapú szolgáltatásban. 
+- **Virtuális gépek** – Telepítse az RDMA-kompatibilis HPC-virtuális gépeket ugyanabban a rendelkezésre állási csoportban (az Azure Resource Manager központi telepítési modelljének használatakor). Ha a klasszikus üzembe helyezési modellt használja, telepítse a virtuális gépeket ugyanabban a felhőszolgáltatásban. 
 
-- **Virtuálisgép-méretezési** csoportok – egy virtuálisgép-méretezési csoportban győződjön meg arról, hogy egyetlen elhelyezési csoportra korlátozza a központi telepítést. Például egy Resource Manager-sablonban állítsa a `singlePlacementGroup` tulajdonságot `true`re. 
+- **Virtuálisgép-méretezési készletek** – Egy virtuálisgép-méretezési csoportban győződjön meg arról, hogy korlátozza a központi telepítés egyetlen elhelyezési csoportra. Egy Erőforrás-kezelő sablonban például `singlePlacementGroup` állítsa `true`a tulajdonságot . 
 
-- **MPI a virtuális gépek között** – ha a virtuális gépek (VM-EK) között MPI-kommunikációra van szükség, győződjön meg arról, hogy a virtuális gépek ugyanahhoz a rendelkezésre állási csoporthoz vagy a virtuális géphez hasonló méretezési csoporthoz tartoznak.
+- **MPI virtuális gépek között** – Ha MPI kommunikációra van szükség a virtuális gépek (VM-ek) között, győződjön meg arról, hogy a virtuális gépek ugyanabban a rendelkezésre állási csoportban vannak, vagy a virtuális gép azonos méretezési csoportban.
 
-- **Azure CycleCloud** – HPC-fürt létrehozása az [Azure CYCLECLOUD](/azure/cyclecloud/) -ben MPI-feladatok futtatásához Windows-csomópontokon.
+- **Azure CycleCloud** – Hozzon létre egy HPC-fürtöt az [Azure CycleCloudban](/azure/cyclecloud/) az MPI-feladatok futtatásához a Windows-csomópontokon.
 
-- **Azure batch** – hozzon létre egy [Azure batch](/azure/batch/) -készletet MPI-számítási feladatok futtatásához Windows Server számítási csomópontokon. További információ: [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata batch-készletekben](../batch/batch-pool-compute-intensive-sizes.md). Tekintse meg a [Batch-hajógyár](https://github.com/Azure/batch-shipyard) projektjét, amely a tároló-alapú számítási feladatok futtatására használható a Batch szolgáltatásban.
+- **Azure Batch** – Hozzon létre egy [Azure Batch-készletet](/azure/batch/) az MPI-számítási feladatok futtatásához a Windows Server számítási csomópontjain. További információt az [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata kötegkészletekben](../batch/batch-pool-compute-intensive-sizes.md)című témakörben talál. Tekintse meg a Batch Shipyard projektet is, amely a Batch-alapú számítási feladatok futtatásához a Batch.Also see the [Batch Shipyard](https://github.com/Azure/batch-shipyard) project, for running container-based workloads on Batch.
 
-- A **Microsoft HPC pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) olyan FUTÁSIDEJŰ környezetet tartalmaz az MS-MPI számára, amely az Azure RDMA-hálózatot használja, ha RDMA-kompatibilis Linux rendszerű virtuális gépekre van telepítve. Központi telepítések például: [Linux RDMA-fürt beállítása HPC-csomaggal MPI-alkalmazások futtatásához](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+- **A Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) egy MS-MPI-hez készült futásidejű környezetet tartalmaz, amely az Azure RDMA-hálózatot használja rdma-kompatibilis Linux-alapú virtuális gépeken történő üzembe helyezésekor. Például a központi telepítések, [lásd: Linux RDMA-fürt beállítása HPC Pack MPI-alkalmazások futtatásához](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
 ## <a name="other-sizes"></a>Egyéb méretek
 
@@ -120,10 +120,10 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló Windows
 - [GPU-optimalizált](sizes-gpu.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A Windows Serveren futó HPC Packtel rendelkező, nagy számítási igényű példányok használatát ellenőrző Feladatlisták: [Linux RDMA-fürt beállítása HPC-csomaggal MPI-alkalmazások futtatásához](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+- A Windows Server rendszerenként idáig használható nagy számítási igényű példányok használatát a [Linux RDMA-fürt beállítása HPC Pack csomaggal mpi-alkalmazások futtatásához](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam)című témakörben t.
 
-- Ha Azure Batch használatával MPI-alkalmazások futtatásához nagy számítási igényű példányokat szeretne használni, tekintse meg a [többpéldányos feladatok használata a Message Passing Interface (MPI) alkalmazások Azure batch-ben való futtatásához](../batch/batch-mpi.md)című témakört.
+- Ha nagy számítási igényű példányokat szeretne használni az MPI-alkalmazások Azure Batch-el történő futtatásakor, olvassa el [a Többpéldányos feladatok használata az MPI-alkalmazások futtatásához](../batch/batch-mpi.md)az Azure Batchben című témakört.
 
-- További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
+- További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.

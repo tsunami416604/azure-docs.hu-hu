@@ -9,63 +9,63 @@ ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
 ms.openlocfilehash: 9397c5f075c1d6653920d19766d5d6a740294ec7
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67330763"
 ---
-A következő CAs engedélyezettek a saját tanúsítvány létrehozásakor:
+Saját tanúsítvány létrehozásakor a következő hitelesítésszolgáltatói engedélyezettek:
 
-- AddTrust külső hitelesítésszolgáltató legfelső szintű
-- AlphaSSL Root CA
+- AddTrust külső hitelesítéshitelesítési gyökér
+- AlfaSSL gyökér hitelesítésállomás
 - AME Infra CA 01
 - AME Infra CA 02
-- Ameroot
+- Ameroot között
 - APCA-DM3P
-- Az autopilot legfelső szintű hitelesítésszolgáltató
-- Baltimore CyberTrust legfelsőbb szintű
-- Nyilvános elsődleges hitelesítésszolgáltató osztály 3
-- Hitelesítésszolgáltató COMODO RSA
-- COMODO RSA tartomány érvényesítési biztonságos kiszolgáló hitelesítésszolgáltató
-- D – megbízható legfelső szintű osztály 3 hitelesítésszolgáltató 2 2009
-- A Felhőszolgáltatások DigiCert hitelesítésszolgáltató-1
-- A DigiCert globális legfelső szintű hitelesítésszolgáltató
-- A DigiCert nagy frissítési garanciát biztosító hitelesítésszolgáltató – 3
-- A DigiCert nagy garancia, Bővített legfelső szintű hitelesítésszolgáltató
-- A DigiCert SHA2 bővített ellenőrzés kiszolgáló hitelesítésszolgáltató
-- A DigiCert SHA2 magas szintű megbízhatóság kiszolgáló hitelesítésszolgáltató
-- A DigiCert SHA2 biztonságos kiszolgáló hitelesítésszolgáltató
-- Nyári Időszámítás legfelső szintű hitelesítésszolgáltató X3
-- D – megbízható legfelső szintű osztály 3 hitelesítésszolgáltató 2 2009
-- Sokfelé kell tárolnia a titkosítási DV TLS hitelesítésszolgáltató
-- Entrust-legfelső szintű hitelesítésszolgáltató
-- Entrust-legfelső szintű hitelesítésszolgáltató - G2 csomag
-- Entrust.net Certification Authority (2048)
-- GeoTrust globális hitelesítésszolgáltató
+- Robotpilóta legfelső szintű hitelesítés- és hitelesítés-
+- Baltimore CyberTrust gyökér
+- 3. osztály Nyilvános elsődleges hitelesítésszolgáltató
+- COMODO RSA hitelesítésszolgáltató
+- COMODO RSA tartományérvényesítés – Biztonságos kiszolgáló hitelesítéshely
+- D-TRUST gyökérosztály 3 CA 2 2009
+- DigiCert felhőszolgáltatások CA-1
+- DigiCert globális gyökérhitelesítés
+- DigiCert nagy megbízhatóságú CA-3
+- DigiCert Nagy megbízhatóságú EV gyökér hitelesítés-
+- DigiCert SHA2 bővített érvényesítési kiszolgáló hitelesítés- és hitelesítésszolgáltatás
+- DigiCert SHA2 magas megbízhatóságú kiszolgáló hitelesítés- és hitelesítésszolgáltatás
+- DigiCert SHA2 biztonságos kiszolgáló hitelesítésszolgáltatás
+- CA X3 hitelesítéslap-gyökér
+- D-trust Root Class 3 CA 2 2009
+- Titkosítás mindenhol DV TLS ca
+- Legfelső szintű hitelesítésszolgáltató megbízása
+- Legfelső szintű hitelesítésszolgáltató megbízása - G2
+- Entrust.net hitelesítésszolgáltató (2048)
+- Geotrust Globális Hitelesítés- és Befektetési Terület
 - GeoTrust elsődleges hitelesítésszolgáltató
-- GeoTrust elsődleges hitelesítésszolgáltató - G2 csomag
+- GeoTrust elsődleges hitelesítésszolgáltató - G2
 - Geotrust RSA CA 2018
-- GlobalSign
-- Bővített ellenőrzés CA - SHA256 - G2 GlobalSign
-- GlobalSign szervezet érvényesítési CA - G2 csomag
-- GlobalSign Root CA
-- Go Daddy legfelső szintű hitelesítésszolgáltató - G2 csomag
-- Go Daddy biztonságos hitelesítésszolgáltató - G2 csomag
-- QuoVadis legfelső szintű CA2 G3 csomag
-- RapidSSL RSA CA 2018
-- A Symantec osztály 3 Bővített SSL CA - G3 csomag
-- A Symantec osztály 3 biztonságos kiszolgáló CA - G4
-- A Microsoft a Symantec Enterprise Mobile Root
-- Thawte elsődleges legfelső szintű hitelesítésszolgáltató
-- Thawte elsődleges legfelső szintű hitelesítésszolgáltató - G2 csomag
-- Thawte elsődleges legfelső szintű hitelesítésszolgáltató - G3 csomag
+- Globalsign
+- GlobalSign kiterjesztett érvényesítési ca - SHA256 - G2
+- GlobalSign Szervezet érvényesítése CA - G2
+- GlobalSign legfelső szintű hitelesítés- és hitelesítés-
+- Ugrás Daddy Root hitelesítésszolgáltató - G2
+- Go Daddy Secure hitelesítésszolgáltató - G2
+- QuoVadis Gyökér CA2 G3
+- Rapidssl RSA CA 2018
+- Symantec 3.osztály EV SSL CA - G3
+- Symantec Class 3 Biztonságos kiszolgáló CA - G4
+- Symantec Enterprise Mobile Root microsoftos
+- Thawte elsődleges gyökérhitelesítés
+- Thawte elsődleges gyökér CA - G2
+- Thawte elsődleges gyökér CA - G3
 - Thawte RSA CA 2018
-- Thawte Timestamping CA
+- Thawte időbélyegzés hitelesítés-
 - TrustAsia TLS RSA CA
-- SSL-Hitelesítésszolgáltatói VeriSign osztály 3 bővített ellenőrzés
-- A VeriSign osztály 3 bővített ellenőrzés SSL kiszolgáló által Kezdeményezett hitelesítésszolgáltató
-- 3\. a VeriSign osztály nyilvános elsődleges hitelesítésszolgáltató - G5
-- A VeriSign nemzetközi kiszolgáló CA - 3 osztályban
-- VeriSign Time Stamping Service Root
-- A VeriSign univerzális legfelső szintű hitelesítésszolgáltató
+- VeriSign Class 3 kiterjesztett érvényesítési SSL CA
+- Verisign Class 3 kiterjesztett érvényesítésSSL SGC CA
+- 3. főfokú hitelesítésszolgáltató – G5
+- VeriSign Nemzetközi Szerver CA - 3.
+- VeriSign időbélyegzési szolgáltatás gyökér
+- VeriSign univerzális legfelső szintű hitelesítésszolgáltató

@@ -1,5 +1,5 @@
 ---
-title: Kockázatos bejelentkezések jelentés a portálon | Microsoft Docs
+title: Kockázatos bejelentkezési jelentés a portálon | Microsoft dokumentumok
 description: Tudnivalók a kockázatos bejelentkezésekre vonatkozó jelentésekről az Azure Active Directory portálon
 services: active-directory
 author: MarkusVi
@@ -16,19 +16,19 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b77486064139895799ac5a48327377154f75da6d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273843"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Kockázatos bejelentkezésekre vonatkozó jelentések az Azure Active Directory portálon
 
-Azure Active Directory (Azure AD) észleli a felhasználói fiókokhoz kapcsolódó gyanús műveleteket. Minden észlelt művelethez létrejön egy **kockázati észlelés** nevű rekord. További részletek: [Azure ad kockázati észlelések](concept-risk-events.md). 
+Az Azure Active Directory (Azure AD) észleli a felhasználói fiókokhoz kapcsolódó gyanús műveleteket. Minden észlelt művelethez létrejön egy **kockázatészlelés** nevű rekord. További részletek: [Azure AD-kockázatészlelések.](concept-risk-events.md) 
 
-A [Azure Portal](https://portal.azure.com) biztonsági jelentéseinek eléréséhez válassza a **Azure Active Directory** panelt, majd navigáljon a **Biztonság** szakaszra. 
+A biztonsági jelentéseket az [Azure Portalon](https://portal.azure.com) az **Azure Active Directory** panel kiválasztásával érheti el, majd navigálhat a **Biztonság** szakaszra. 
 
-A kockázati észlelések alapján két különböző biztonsági jelentés van kiszámítva:
+A rendszer két különböző biztonsági jelentést számít ki a kockázatészlelések alapján:
 
 - **Kockázatos bejelentkezések** – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa.
 
@@ -36,41 +36,41 @@ A kockázati észlelések alapján két különböző biztonsági jelentés van 
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/10.png)
 
-A kockázatok észlelését kiváltó szabályzatok konfigurálásával kapcsolatos további információkért lásd: [a felhasználói kockázati házirend konfigurálása](../identity-protection/howto-user-risk-policy.md).  
+A kockázatészlelést kiváltó házirendek konfigurálásáról a [Felhasználói kockázati házirend konfigurálása](../identity-protection/howto-user-risk-policy.md)című témakörből megtudhatja.  
 
-## <a name="who-can-access-the-risky-sign-ins-report"></a>Ki férhet hozzá a kockázatos bejelentkezések jelentéséhez?
+## <a name="who-can-access-the-risky-sign-ins-report"></a>Ki férhet hozzá a kockázatos bejelentkezések jelentéshez?
 
-A kockázatos bejelentkezési jelentések a következő szerepkörökben érhetők el a felhasználók számára:
+A kockázatos bejelentkezési jelentések a következő szerepkörökben lévő felhasználók számára érhetők el:
 
 - Biztonsági rendszergazda
 - Globális rendszergazda
 - Biztonsági olvasó
 
-Ha meg szeretné tudni, hogyan rendelhet hozzá rendszergazdai szerepköröket egy felhasználóhoz Azure Active Directoryban, tekintse meg [a rendszergazdai szerepkörök megtekintése és társítása a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-manage-roles-portal).
+Ha tudni szeretné, hogyan rendelhet felügyeleti szerepköröket egy felhasználóhoz az Azure Active Directoryban, olvassa el [a Rendszergazdai szerepkörök megtekintése és hozzárendelése az Azure Active Directoryban című témakört.](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-manage-roles-portal)
 
 ## <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Milyen Azure AD-licencre van szükség a biztonsági jelentések eléréséhez?  
 
-Az Azure AD összes kiadása kockázatos bejelentkezési jelentéseket nyújt. A jelentések részletességi szintje azonban különbözik a kiadások között: 
+Az Azure AD minden kiadása kockázatos bejelentkezési jelentéseket biztosít. A jelentések részletességi szintje azonban különbözik a kiadások között: 
 
-- A **ingyenes Azure Active Directory kiadásban**megjelenik a kockázatos bejelentkezések listája. 
+- Az **Azure Active Directory ingyenes kiadásában**a kockázatos bejelentkezések listáját kapja meg. 
 
-- Emellett a **prémium szintű Azure Active Directory 1** kiadás lehetővé teszi, hogy megvizsgáljon néhány, az egyes jelentésekhez észlelt mögöttes kockázati észlelést. 
+- Emellett az **Azure Active Directory Premium 1-es** kiadás lehetővé teszi, hogy vizsgálja meg az egyes jelentésekben észlelt alapvető kockázatészlelések némelyikét. 
 
-- A **prémium szintű Azure Active Directory 2** kiadás az összes mögöttes kockázati észleléssel kapcsolatos legrészletesebb információkat tartalmazza, és lehetővé teszi olyan biztonsági szabályzatok konfigurálását, amelyek automatikusan reagálnak a konfigurált kockázati szintekre.
+- Az **Azure Active Directory Premium 2-kiadás** a legrészletesebb információkat nyújt az összes mögöttes kockázatészlelésről, és lehetővé teszi a biztonsági házirendek konfigurálását is, amelyek automatikusan reagálnak a konfigurált kockázati szintekre.
 
-## <a name="risky-sign-ins-report-for-azure-ad-free-edition"></a>Kockázatos bejelentkezések jelentés az Azure AD ingyenes kiadásához
+## <a name="risky-sign-ins-report-for-azure-ad-free-edition"></a>Kockázatos bejelentkezési jelentés az Azure AD ingyenes kiadására
 
-Az Azure AD ingyenes kiadása lehetővé teszi a felhasználók számára észlelt kockázatos bejelentkezések listáját. Minden rekord a következő attribútumokat tartalmazza:
+Az Azure AD ingyenes kiadás a felhasználók számára észlelt kockázatos bejelentkezések listáját tartalmazza. Minden rekord a következő attribútumokat tartalmazza:
 
-- **User (felhasználó** ) – a bejelentkezési művelet során használt felhasználó neve.
-- **IP** – a Azure Active Directoryhoz való kapcsolódáshoz használt eszköz IP-címe.
-- **Location (hely** ) – a Azure Active Directoryhoz való kapcsolódáshoz használt hely. Ez a legjobb közelítés a Nyomkövetések, a beállításjegyzék-adatok, a fordított megtekintő és egyéb információk alapján.
+- **Felhasználó** – a bejelentkezési művelet során használt felhasználó neve.
+- **IP–** Az Azure Active Directoryhoz való csatlakozáshoz használt eszköz IP-címe.
+- **Hely** – Az Azure Active Directoryhoz való csatlakozáshoz használt hely. Ez egy legjobb erőfeszítés közelítés alapján nyomon követések, rendszerleíró adatok, fordított felkeresési és egyéb információkat.
 - **Bejelentkezés ideje** – A bejelentkezés végrehajtásának időpontja
 - **Állapot** – A bejelentkezés állapota
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/01.png)
 
-A kockázatos bejelentkezés vizsgálata alapján az alábbi műveletek elvégzésével visszajelzést küldhet az Azure AD-nek:
+A kockázatos bejelentkezés vizsgálata alapján visszajelzést adhat az Azure AD-nek a következő műveletek et követve:
 
 - Feloldás
 - Megjelölés téves riasztásként
@@ -79,37 +79,37 @@ A kockázatos bejelentkezés vizsgálata alapján az alábbi műveletek elvégz�
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/21.png)
 
-A jelentés a következő lehetőségeket is biztosítja:
+Ez a jelentés a következőket is lehetővé teszi:
 
 - Erőforrások keresése
 - A jelentésadatok letöltése
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/93.png)
 
-## <a name="risky-sign-ins-report-for-azure-ad-premium-editions"></a>Kockázatos bejelentkezések jelentés az Azure AD prémium kiadásaihoz
+## <a name="risky-sign-ins-report-for-azure-ad-premium-editions"></a>Kockázatos bejelentkezési jelentés az Azure AD prémium verzióihoz
 
-Az Azure AD prémium kiadásaiban a kockázatos bejelentkezésekről szóló jelentés a következőket tartalmazza:
+A kockázatos bejelentkezések jelentés az Azure AD prémium verziók biztosít Önnek:
 
-- Összesített információk a észlelt [kockázat-észlelési típusokról](concept-risk-events.md) . A **prémium szintű Azure ad P1 kiadással**a licenc által nem érintett észlelések nem jelennek meg, mivel a kockázatkezelési **szolgáltatás a további kockázatok**észlelésével jelentkezik. A **prémium szintű Azure ad P2 kiadással**a legrészletesebb információkat kapja meg az összes mögöttes észlelésről.
+- Összesített információk az észlelt [kockázatészlelési típusokról.](concept-risk-events.md) Az **Azure AD Premium P1 kiadással**a licenc által nem szabályozott észlelések a kockázatészlelési bejelentkezésként jelennek **meg, további kockázattal.** Az **Azure AD Premium P2 kiadással**a legrészletesebb információkat kaphatja meg az összes alapul szolgáló észlelésről.
 
 - Lehetőség a jelentés letöltésére
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/456.png)
 
-Amikor kijelöl egy kockázati észlelést, részletes jelentés-nézetet kap ehhez a kockázat észleléséhez, amely a következőket teszi lehetővé:
+Amikor kiválaszt egy kockázatészlelést, részletes jelentésnézetet kap ehhez a kockázatészleléshez, amely lehetővé teszi a következőket:
 
 - Egy [felhasználóikockázat-csökkentési szabályzat](../identity-protection/howto-user-risk-policy.md) konfigurálását  
 
-- A kockázatkezelés észlelési idővonalának áttekintése  
+- A kockázatészlelés észlelési ütemtervének áttekintése  
 
-- Tekintse át azoknak a felhasználóknak a listáját, akiknél ez a kockázat észlelése észlelhető
+- Tekintse át azoknak a felhasználóknak a listáját, akik esetében ez a kockázatészlelés észlelhető
 
-- A kockázati észlelések manuális lezárása. 
+- Manuálisan zárja le a kockázatészleléseket. 
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/457.png)
 
 > [!IMPORTANT]
-> Időnként előfordulhat, hogy a rendszer a [bejelentkezési jelentés](concept-sign-ins.md)megfelelő bejelentkezési bejegyzése nélkül észleli a kockázatfelmérést. Ennek az az oka, hogy az Identity Protection az **interaktív** és a **nem interaktív** bejelentkezések kockázatát is kiértékeli, míg a bejelentkezési jelentés csak az interaktív bejelentkezéseket jeleníti meg.
+> Előfordulhat, hogy a [bejelentkezési jelentésben](concept-sign-ins.md)megfelelő bejelentkezési bejegyzés nélkül talál kockázatészlelést. Ennek az az oka, hogy az Identity Protection kiértékeli a kockázatot mind **az interaktív,** mind **a nem interaktív** bejelentkezések esetében, míg a bejelentkezések jelentés csak az interaktív bejelentkezéseket jeleníti meg.
 
 Egy felhasználó kiválasztásakor megkapja a felhasználó részletes jelentési nézetét, amely a következőket teszi lehetővé:
 
@@ -119,17 +119,17 @@ Egy felhasználó kiválasztásakor megkapja a felhasználó részletes jelenté
 
 - Az összes esemény elvetését
 
-- A jelentett kockázati észlelések vizsgálata a felhasználó számára. 
+- Vizsgálja meg a felhasználó jelentett kockázatészleléseit. 
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/324.png)
 
-A kockázatok észlelésének kivizsgálásához válasszon egyet a listából.  
-Ekkor megnyílik a kockázat észlelésének **részleteit tartalmazó panel** . A **részletek** panelen lehetősége van manuálisan lezárni a kockázatkezelést, vagy újraaktiválni a manuálisan lezárt kockázatok észlelését. 
+A kockázatészlelés vizsgálatához válasszon egyet a listából.  
+Ez megnyitja a **Részletek** panelt a kockázatészleléshez. A **Részletek** panelen manuálisan bezárhatja a kockázatészlelést, vagy újraaktiválhat egy manuálisan lezárt kockázatészlelést. 
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/325.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A felhasználói kockázati házirend konfigurálása](../identity-protection/howto-user-risk-policy.md)
-- [A kockázatkezelési házirend konfigurálása](../identity-protection/howto-user-risk-policy.md)
-- [Kockázati észlelési típusok](concept-risk-events.md)
+- [A kockázatjavítási házirend konfigurálása](../identity-protection/howto-user-risk-policy.md)
+- [Kockázatészlelési típusok](concept-risk-events.md)

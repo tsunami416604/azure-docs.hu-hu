@@ -1,43 +1,43 @@
 ---
-title: Alkalmazások migrálása a legújabb sémára
-description: A Logic app-munkafolyamatok JSON-definícióinak migrálása a legutóbbi munkafolyamat-definíció nyelvi sémájának verziójára
+title: Alkalmazások áttelepítése a legújabb sémába
+description: A logikai alkalmazás munkafolyamatának JSON-definícióinak áttelepítése a munkafolyamat-definíciónyelv legújabb verziójára
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 ms.openlocfilehash: cef0fcb990cd2c5c6583822d4dc4c6993c52eac2
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666788"
 ---
-# <a name="migrate-logic-apps-to-latest-schema-version"></a>Logikai alkalmazások migrálása a séma legújabb verziójára
+# <a name="migrate-logic-apps-to-latest-schema-version"></a>Logikai alkalmazások áttelepítése a legújabb sémaverzióra
 
-A meglévő logikai alkalmazások a legújabb sémába való áthelyezéséhez kövesse az alábbi lépéseket: 
+Ha a meglévő logikai alkalmazásokat a legújabb sémába szeretné áthelyezni, kövesse az alábbi lépéseket: 
 
-1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
+1. Az [Azure Portalon](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic App Designerben.
 
-2. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget. Az eszköztáron válassza a **séma frissítése**lehetőséget.
+2. A logikai alkalmazás menüjében válassza **az Áttekintés**lehetőséget. Az eszköztáron válassza a **Séma frissítése**lehetőséget.
 
    > [!NOTE]
-   > Ha a **séma frissítése**lehetőséget választja, Azure Logic apps automatikusan futtatja az áttelepítési lépéseket, és megadja a kód kimenetét. Ezt a kimenetet használhatja a logikai alkalmazás definíciójának frissítéséhez. Ügyeljen azonban arra, hogy kövesse az ajánlott eljárásokat a következő **gyakorlati tanácsok** című szakaszban leírtak szerint.
+   > Ha a **Séma frissítése lehetőséget választja,** az Azure Logic Apps automatikusan futtatja az áttelepítési lépéseket, és biztosítja a kódkimenetet. Ezt a kimenetet használhatja a logikai alkalmazás definíciójának frissítéséhez. Ügyeljen azonban arra, hogy kövesse az ajánlott eljárásokat az alábbi gyakorlati tanácsok szakaszban **leírtak** szerint.
 
    ![Séma frissítése](./media/connectors-schema-migration/update-schema.png)
 
-   Megjelenik a séma frissítése lap, amely egy olyan dokumentumra mutató hivatkozást mutat be, amely leírja az új séma fejlesztéseit.
+   Megjelenik a Séma frissítése lap, amely egy olyan dokumentumra mutató hivatkozást jelenít meg, amely leírja az új séma fejlesztéseit.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Íme néhány ajánlott eljárás a Logic apps legújabb séma-verzióra való áttelepítéséhez:
+Az alábbiakban néhány gyakorlati tanácst tartalmaz a logikai alkalmazások legújabb sémaverzióra való áttelepítéséhez:
 
-* Másolja az áttelepített szkriptet egy új logikai alkalmazásba. Ne írja felül a régi verziót, amíg el nem végzi a tesztelést, és ellenőrizze, hogy az áttelepített alkalmazás a várt módon működik-e.
+* Másolja az áttelepített parancsfájlt egy új logikai alkalmazásba. Ne írja felül a régi verziót, amíg be nem fejezi a tesztelést, és nem győződjön meg arról, hogy az áttelepített alkalmazás a várt módon működik.
 
-* Az éles üzembe helyezés **előtt** tesztelje a logikai alkalmazást.
+* Tesztelje a logikai alkalmazást az éles környezetbe helyezése **előtt.**
 
-* Az áttelepítés befejezése után kezdje el frissíteni a logikai alkalmazásokat a [felügyelt API](../connectors/apis-list.md) -k használatára, ahol lehetséges. Kezdje például a Dropbox v2 használatát mindenhol, hogy a DropBox v1-et használja.
+* Miután befejezte az áttelepítést, indítsa el a logikai alkalmazások frissítését a [felügyelt API-k,](../connectors/apis-list.md) ahol lehetséges. Például, elkezd használ Dropbox v2 mindenhol amit használ DropBox v1.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Útmutató [a logikai alkalmazások manuális áttelepítéséhez](../logic-apps/logic-apps-schema-2015-08-01.md)
+* További információ a [logikai alkalmazások manuális áttelepítése](../logic-apps/logic-apps-schema-2015-08-01.md)

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 0d47137e3149563903d4adcaaf34e72ddad043f7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179568"
 ---
-Az alábbi lépéseket egy eszköz esemény megtekintése az Azure Portalon.
+Az alábbi lépéseket az Azure Portalon egy eszközesemény megtekintéséhez.
 
-1. Az Azure Portalon nyissa meg a Data Box-Edge / Data Box-Gateway-erőforráshoz, és lépjen **figyelés > eszköz események**.
-2. Jelöljön ki egy eseményt, és a riasztás részleteinek megtekintéséhez. Hajtsa végre a megfelelő műveletet a riasztási feltétel megoldásához.
+1. Az Azure Portalon nyissa meg a Data Box Edge/Data Box Gateway erőforrást, majd nyissa meg **> eszközesemények figyelése.**
+2. Jelöljön ki egy eseményt, és tekintse meg a riasztás részleteit. Tegye meg a megfelelő lépéseket a riasztási feltétel feloldásához.
 
-    ![Válassza ki az esemény- és nézet részletei](media/data-box-edge-gateway-view-device-events/view-device-events.png)
+    ![Esemény kiválasztása és részletek megtekintése](media/data-box-edge-gateway-view-device-events/view-device-events.png)

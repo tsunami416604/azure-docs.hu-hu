@@ -1,6 +1,6 @@
 ---
-title: STARTSWITH Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function STARTSWITH Azure Cosmos DB.
+title: STARTSWITH az Azure Cosmos DB lekérdezési nyelvében
+description: Ismerje meg az SQL rendszer függvény STARTSWITH az Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9ed49c067946186f8b79f67bad0a460113eacb73
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78295708"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
- Adja vissza egy logikai jelzi-e az első karakterlánc-kifejezés második kezdődik.  
+ Logikai értéket ad vissza, amely azt jelzi, hogy az első karakterlánc-kifejezés a másodikkal kezdődik-e.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -29,21 +29,21 @@ STARTSWITH(<str_expr1>, <str_expr2>)
    Egy karakterlánc-kifejezés.
   
 *str_expr2*  
-   Egy olyan karakterlánc-kifejezés, amelyet a rendszer a *str_expr1*elejéhez hasonlít.
+   A karakterlánc-kifejezés a *str_expr1*kezdetéhez hasonlítható.
 
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy logikai kifejezés adja vissza.  
+  Logikai kifejezést ad eredményül.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa ellenőrzi, hogy ha a karakterlánc "abc" kezdődik "b" és "a".  
+  A következő példa ellenőrzi, hogy az "abc" karakterlánc "b" és "a" karakterrel kezdődik-e.  
   
 ```sql
 SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2  
 ```  
   
- Íme az eredményhalmaz.  
+ Itt van az eredményhalmaz.  
   
 ```json
 [{"s1": false, "s2": true}]  
@@ -51,10 +51,10 @@ SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
+Ez a rendszerfunkció egy [tartományindex](index-policy.md#includeexclude-strategy)előnyeit élvezi .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB karakterlánc-függvényei](sql-query-string-functions.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)

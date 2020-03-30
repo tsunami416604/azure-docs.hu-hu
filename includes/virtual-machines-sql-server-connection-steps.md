@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 297317ff33d88d6390220980ef35f2538579e310
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179060"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>A Windows-tűzfal TCP-portjainak megnyitása az Adatbázismotor alapértelmezett példányában
 1. Csatlakozzon a virtuális géphez a távoli asztalról. Részletes útmutatás a virtuális géphez való csatlakozásról: [SQL virtuális gép megnyitása a távoli asztalról](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop).
-2. Miután bejelentkezett, a kezdőképernyőn írja be a **WF.msc**, majd nyomja le az ENTER BILLENTYŰT.
+2. Miután bejelentkezett, a kezdőképernyőn írja be a **WF.msc**fájl beírását, majd nyomja meg az ENTER billentyűt.
    
     ![A tűzfalprogram elindítása](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
 3. A **fokozott biztonságú Windows tűzfal** bal oldali ablaktábláján kattintson jobb gombbal a **Bejövő szabályok** elemre, majd a műveletpanelen az **Új szabály** lehetőségre.
@@ -23,15 +23,15 @@ ms.locfileid: "67179060"
 5. A **Protokoll és portok** párbeszédpanelen használja az alapértelmezett **TCP** beállítást. Az **Adott helyi portok** mezőben írja be az Adatbázismotor példányának portszámát (**1433** az alapértelmezett példányhoz, vagy végpont lépésének választott magánhálózati portja).
    
     ![1433-as TCP-port](./media/virtual-machines-sql-server-connection-steps/14Port-1433.png)
-6. Kattintson a **tovább**.
+6. Kattintson a **Tovább** gombra.
 7. A **Művelet** párbeszédpanelen válassza a **Kapcsolat engedélyezése** lehetőséget, majd kattintson a **Tovább** gombra.
    
-    **Biztonsági Megjegyzés:** Kiválasztásával **engedélyezze a kapcsolatot, ha biztonságos** biztonságát. Ha a környezethez további biztonsági beállításokat szeretne megadni, válassza ezt a lehetőséget.
+    **Biztonsági megjegyzés:** A **Csak akkor engedélyezze a kapcsolatot, ha biztonságos** beállítással fokozhatja a biztonságot. Ha a környezethez további biztonsági beállításokat szeretne megadni, válassza ezt a lehetőséget.
    
     ![Kapcsolatok engedélyezése](./media/virtual-machines-sql-server-connection-steps/15Allow-Connection.png)
-8. A **Profil** párbeszédpanelen válassza a **Nyilvános**, **Privát** és a **Tartomány** lehetőséget. Ezután kattintson a **Next** (Tovább) gombra.
+8. A **Profil** párbeszédpanelen válassza a **Nyilvános**, **Privát** és a **Tartomány** lehetőséget. Kattintson a **Tovább** gombra.
    
-    **Biztonsági Megjegyzés:**  Kiválasztásával **nyilvános** lehetővé teszi a hozzáférést az interneten keresztül. Amikor csak lehetséges, válasszon egy szigorúbb profilt.
+    **Biztonsági megjegyzés:** A **Nyilvános** beállítással engedélyezi az internetelérést. Amikor csak lehetséges, válasszon egy szigorúbb profilt.
    
     ![Nyilvános profil](./media/virtual-machines-sql-server-connection-steps/16Public-Private-Domain-Profile.png)
 9. A **Név** párbeszédpanelen írjon be egy nevet és leírást a szabályhoz, majd kattintson a **Befejezés** lehetőségre.
@@ -55,7 +55,7 @@ Az SQL Server Adatbázismotor nem használhatja a Windows-hitelesítést egy tar
 1. A virtuális géphez csatlakozva a kezdőlapon írja be az **SQL Server Management Studio** kifejezést, és kattintson a kijelölt ikonra.
    
     A Management Studio első megnyitásakor annak létre kell hoznia a felhasználó Management Studio-környezetét. Ez eltarthat néhány pillanatig.
-2. A Management Studio ezután megjeleníti a **Kapcsolódás a kiszolgálóhoz** párbeszédpanelt. A **Kiszolgálónév** mezőbe írja be a virtuális gép nevét, így az Object Explorerrel kapcsolódhat az Adatbázismotorhoz (A virtuális gép neve helyett a **(helyi)** kifejezést vagy egy pontot is megadhat mint **kiszolgálónév**). Válassza ki **Windows-hitelesítés**, és hagyja ***your_VM_name\your_local_administrator*** a a **felhasználónév** mezőbe. Kattintson a **Connect** (Csatlakozás) gombra.
+2. A Management Studio ezután megjeleníti a **Kapcsolódás a kiszolgálóhoz** párbeszédpanelt. A **Kiszolgálónév** mezőbe írja be a virtuális gép nevét, így az Object Explorerrel kapcsolódhat az Adatbázismotorhoz (A virtuális gép neve helyett a **(helyi)** kifejezést vagy egy pontot is megadhat mint **kiszolgálónév**). Válassza a **Windows-hitelesítés**lehetőséget, és hagyja ***a your_VM_name\your_local_administrator*** mappát a **Felhasználónév** mezőben. Kattintson a **Csatlakozás** gombra.
    
     ![Csatlakozás kiszolgálóhoz](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
 3. Az SQL Server Management Studio Object Explorer felületén kattintson jobb gombbal az SQL Server példányának nevére (a virtuális gép nevére), majd a **Tulajdonságok** lehetőségre.
@@ -74,7 +74,7 @@ Az SQL Server Adatbázismotor nem használhatja a Windows-hitelesítést egy tar
 Ha az Adatbázismotorhoz egy másik számítógépről szeretne csatlakozni, létre kell hoznia legalább egy SQL Server hitelesítési bejelentkezést.
 
 1. Az SQL Server Management Studio Object Explorer felületén bontsa ki azon kiszolgáló példányának mappáját, amelyben létre szeretné hozni az új bejelentkezést.
-2. Kattintson a jobb gombbal a **Biztonság** mappára, mutasson az **Új** lehetőségre, és válassza a **Bejelentkezés...**  lehetőséget.
+2. Kattintson a jobb gombbal a **Biztonság** mappára, mutasson az **Új** lehetőségre, és válassza a **Bejelentkezés... ** lehetőséget.
    
     ![Új bejelentkezés](./media/virtual-machines-sql-server-connection-steps/23New-Login.png)
 3. A **Bejelentkezés – Új** párbeszédpanel **Általános** lapján adja meg az új felhasználó nevét a **Bejelentkezési név** mezőben.

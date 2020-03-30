@@ -5,47 +5,47 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9b9922602218280d58331a755ed0dfed7df96f40
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179155"
 ---
-#### <a name="to-cable-your-device-for-power"></a>A teljesítményre az eszköz bekábelezése
+#### <a name="to-cable-your-device-for-power"></a>A készülék kábelezése a tápellátáshoz
 > [!NOTE]
-> A StorSimple eszköz mindkét ház közé tartozik a redundáns PCMs. Az összes rendszerházon a PCMs telepítve legyen, és csatlakozik a különböző áramforrásokhoz magas rendelkezésre állás biztosítása érdekében.
+> A StorSimple-eszköz mindkét háza redundáns PCM-eket tartalmaz. A magas rendelkezésre állás biztosítása érdekében minden egyes házhoz telepíteni és különböző áramforrásokhoz kell csatlakoztatni a PCM-eket.
 > 
 > 
 
-1. Győződjön meg arról, hogy az összes PCMs power kapcsolói OFF állásban van.
-2. A elsődleges tárolóeszközön csatlakozzon a tápkábelek mindkét PCMs. A tápkábelek azonosítja a kiemelt kábelezési ábrán pirossal alatt.
-3. Győződjön meg arról, hogy a két PCMs a elsődleges tárolóeszközön különböző áramforrásokhoz.
-4. A tápkábelek csatlakoztatása az állvány Áramelosztó egységekből bekapcsolási, ahogyan a kábelezést diagram a power.
-5. Az EBOD ház ismételje meg a 2 – 4.
-6. Kapcsolja be a EBOD ház által a főkapcsoló tükrözés, az egyes PCM ON helyére.
-7. Győződjön meg arról, hogy a a EBOD ház ellenőrzésével, a zöld LED-ek az EBOD-vezérlő hátuljára be vannak kapcsolva be van kapcsolva.
-8. Kapcsolja be az elsődleges ház által tükrözés, minden egyes PCM kapcsoló ON helyére.
-9. Ellenőrizze, hogy a rendszer a úgy, hogy az eszközvezérlővel LED-ek be van kapcsolva.
-10. Győződjön meg arról, hogy az EBOD-vezérlő és az eszközvezérlő közötti kapcsolat aktív szerint annak ellenőrzése, hogy a négy LED-ek a SAS-port az EBOD-vezérlő melletti zöld.
+1. Győződjön meg arról, hogy az összes PCM tápkapcsolója KI állásban van.
+2. Az elsődleges burkolaton csatlakoztassa a tápkábeleket mindkét PCM-hez. A tápkábeleket pirosan azonosítják az alábbi kábelezési ábrán.
+3. Győződjön meg arról, hogy az elsődleges ház két PCM-je külön áramforrást használ.
+4. Csatlakoztassa a tápkábeleket az állványelosztó egységek áramellátásához, ahogy az a hálózati kábelezési ábrán látható.
+5. Ismételje meg a 2-4.
+6. Kapcsolja be az EBOD burkolatot úgy, hogy minden PCM-en a tápkapcsolót BE állásba fordítja.
+7. Ellenőrizze, hogy az EBOD-ház be van-e kapcsolva, ha ellenőrzi, hogy az EBOD vezérlő hátoldalán lévő zöld LED-ek be vannak-e kapcsolva.
+8. Kapcsolja be az elsődleges burkolatot úgy, hogy minden PCM-kapcsolót BE állásba fordít.
+9. Ellenőrizze, hogy a rendszer be van-e kapcsolva, biztosítva, hogy az eszközvezérlő LED-jei be vannak kapcsolva.
+10. Győződjön meg arról, hogy az EBOD-vezérlő és az eszközvezérlő közötti kapcsolat aktív-e annak ellenőrzésével, hogy az EBOD-vezérlő SAS-portja melletti négy LED zöld-e.
     
     > [!IMPORTANT]
-    > A rendszer a magas rendelkezésre állás biztosítása érdekében azt javasoljuk, Ön szigorúan betartsák a kábelezést séma a következő ábrán látható power.
+    > A rendszer magas rendelkezésre állásának biztosítása érdekében azt javasoljuk, hogy szigorúan tartsa be az alábbi ábrán látható hálózati kábelezési sémát.
     > 
     > 
     
-    ![Az energiagazdálkodási 4U eszköz kábelezése](./media/storsimple-cable-8600-for-power/HCSCableYour4UDeviceforPower.png)
+    ![Kábelezze a 4U-s készüléket a tápellátáshoz](./media/storsimple-cable-8600-for-power/HCSCableYour4UDeviceforPower.png)
     
-    **Energiagazdálkodási kábelezése**
+    **Tápkábelezés**
     
     | Címke | Leírás |
     |:--- |:--- |
-    | 1 |Elsődleges ház |
+    | 1 |Elsődleges burkolat |
     | 2 |PCM 0 |
     | 3 |PCM 1 |
     | 4 |Vezérlő 0 |
     | 5 |Vezérlő 1 |
-    | 6 |Az EBOD-vezérlő 0 |
-    | 7 |Az EBOD-vezérlő 1 |
+    | 6 |EBOD vezérlő 0 |
+    | 7 |EBOD-vezérlő 1 |
     | 8 |EBOD ház |
-    | 9 |PDU-k |
+    | 9 |PDUSz |
 

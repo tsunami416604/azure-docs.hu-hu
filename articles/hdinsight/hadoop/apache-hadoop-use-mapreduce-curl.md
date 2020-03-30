@@ -1,6 +1,6 @@
 ---
-title: A MapReduce és a curl használata Apache Hadoop HDInsight-Azure-ban
-description: Ismerje meg, hogyan futtathat MapReduce-feladatokat Apache Hadoop a HDInsight a curl használatával.
+title: A MapReduce és a Curl használata az Apache Hadoop segítségével a HDInsightban – Azure
+description: Ismerje meg, hogyan futtathat távolról MapReduce feladatokat az Apache Hadoop segítségével HDInsight curl használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,37 +9,37 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302712"
 ---
-# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>MapReduce-feladatok futtatása a HDInsight Apache Hadoop a REST használatával
+# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>MapReduce feladatok futtatása az Apache Hadoop segítségével a HDInsight on HDInsight használatával rest használatával
 
-Megtudhatja, hogyan futtathat MapReduce-feladatokat a HDInsight-fürtön lévő Apache Hadoopon a Apache Hive Webhcaten REST API használatával. A curl használatával megtudhatja, hogyan kezelheti a HDInsight a MapReduce-feladatok futtatására szolgáló nyers HTTP-kérelmek használatával.
+Ismerje meg, hogyan használhatja az Apache Hive WebHCat REST API-t a MapReduce feladatok futtatásához egy Apache Hadoop hdinsight-fürtön. A Curl segítségével bemutatja, hogyan kommunikálhat a HDInsight-mal a MapReduce feladatok futtatásához használt nyers HTTP-kérelmek használatával.
 
 > [!NOTE]  
-> Ha már ismeri a Linux-alapú Hadoop-kiszolgálókat, de most ismerkedik a HDInsight-mel, tekintse [meg a HDInsight-dokumentum Linux-alapú Apache Hadoop megismeréséhez szükséges tudnivalókat](../hdinsight-hadoop-linux-information.md) .
+> Ha már ismeri a Linux-alapú Hadoop-kiszolgálók használatát, de még nem ismeri a HDInsight-kiszolgálókat, olvassa el a Mit kell tudni a [Linux-alapú Apache Hadoop-ról a HDInsight dokumentumon.](../hdinsight-hadoop-linux-information.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Apache Hadoop-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md).
+* Apache Hadoop-fürt a HDInsighton. Lásd: [Apache Hadoop-fürtök létrehozása az Azure Portalon.](../hdinsight-hadoop-create-linux-clusters-portal.md)
 
-Vagy
+Vagy:
   * Windows PowerShell vagy,
-  * [Curl](https://curl.haxx.se/) a [jQ](https://stedolan.github.io/jq/)
+  * [Göndör](https://curl.haxx.se/) [a jq](https://stedolan.github.io/jq/)
 
-## <a name="run-a-mapreduce-job"></a>MapReduce-feladatok futtatása
+## <a name="run-a-mapreduce-job"></a>MapReduce feladat futtatása
 
 > [!NOTE]  
-> Ha curl vagy bármilyen más REST-kommunikációt használ a Webhcaten-mel, a kérelmeket hitelesítenie kell a HDInsight-fürt rendszergazdai felhasználónevének és jelszavának megadásával. A fürt nevét a kérések kiszolgálónak való küldéséhez használt URI részeként kell használni.
+> Curl vagy bármely más REST-kommunikáció használatakor a WebHCat szolgáltatással, a HDInsight-fürt rendszergazdájának felhasználónevének és jelszavának megadásával hitelesítenie kell a kérelmeket. A fürtnevet a kérelmek kiszolgálónak történő küldéséhez használt URI részeként kell használnia.
 >
-> A REST API [alapvető hozzáférési hitelesítéssel](https://en.wikipedia.org/wiki/Basic_access_authentication)van védve. A kéréseket mindig HTTPS használatával kell elvégeznie, hogy a hitelesítő adatai biztonságosan legyenek elküldve a kiszolgálónak.
+> A REST API [alapszintű hozzáférés-hitelesítéssel](https://en.wikipedia.org/wiki/Basic_access_authentication)védett. A https használatával mindig kérjen kéréseket annak érdekében, hogy a hitelesítő adatok biztonságosan legyenek elküldve a kiszolgálónak.
 
 ### <a name="curl"></a>Curl
 
-1. Az egyszerű használat érdekében állítsa be az alábbi változókat. Ez a példa egy Windows-környezeten alapul, és szükség szerint módosítja a környezetét.
+1. A könnyű használat érdekében állítsa be az alábbi változókat. Ez a példa egy Windows-környezeten alapul, amelyet a környezetnek megfelelően módosítanak.
 
     ```cmd
     set CLUSTERNAME=
@@ -54,18 +54,18 @@ Vagy
 
     Ezen parancs paraméterei a következők:
 
-   * **-u**: megadja a kérelem hitelesítéséhez használt felhasználónevet és jelszót
-   * **-G**: azt jelzi, hogy ez a művelet egy Get kérelem
+   * **-u**: A kérelem hitelesítéséhez használt felhasználónevet és jelszót jelzi.
+   * **-G**: Azt jelzi, hogy ez a művelet get kérés
 
-   Az URI-azonosító (`https://CLUSTERNAME.azurehdinsight.net/templeton/v1`) kezdete minden kérelem esetében azonos.
+   Az URI `https://CLUSTERNAME.azurehdinsight.net/templeton/v1`kezdete, minden kérésesetében megegyezik.
 
-    A következő JSON-hoz hasonló válasz érkezik:
+    A következő JSON-hoz hasonló választ kap:
 
     ```output
     {"version":"v1","status":"ok"}
     ```
 
-1. MapReduce-feladatok elküldéséhez használja a következő parancsot. Szükség szerint módosítsa a **jQ** elérési útját.
+1. MapReduce feladat elküldéséhez használja a következő parancsot. Szükség szerint módosítsa a **jq** elérési utat.
 
     ```cmd
     curl -u admin:%PASSWORD% -d user.name=admin ^
@@ -75,19 +75,19 @@ Vagy
     C:\HDI\jq-win64.exe .id
     ```
 
-    Az URI (/MapReduce/jar) vége azt jelzi, hogy a kérelem Webhcaten elindít egy MapReduce-feladatot egy jar-fájlból. Ezen parancs paraméterei a következők:
+    Az URI (/mapreduce/jar) vége közli a WebHCat-tel, hogy a kérés mapreduce feladatot indít egy jar fájl egyik osztályából. Ezen parancs paraméterei a következők:
 
-   * **-d**: `-G` nincs használatban, ezért a kérelem alapértelmezett értéke a post metódus. `-d` megadja a kéréssel elküldhető adatértékeket.
-     * **User.name**: a parancsot futtató felhasználó
-     * **jar**: a futtatni kívánt osztályt tartalmazó jar-fájl helye
-     * **osztály**: a MapReduce logikát tartalmazó osztály
-     * **ARG**: a MapReduce-feladatoknak átadandó argumentumok. Ebben az esetben a bemeneti szövegfájl és a kimenethez használt könyvtár
+   * **-d** `-G` : nincs használatban, így a kérelem alapértelmezés szerint a POST metódus. `-d`a kéréssel együtt küldött adatértékeket adja meg.
+     * **user.name**: A parancsot futtató felhasználó
+     * **jar**: A hely a jar fájlt tartalmazó osztály kell solni
+     * **class**: A MapReduce logikát tartalmazó osztály
+     * **arg**: A MapReduce feladatnak átadandó argumentumok. Ebben az esetben a bemeneti szövegfájl és a kimeneti címhez használt könyvtár
 
-    A parancsnak olyan AZONOSÍTÓJÚ feladatot kell visszaadnia, amely a feladatok állapotának vizsgálatára használható:
+    Ennek a parancsnak vissza kell adnia egy feladatazonosítót, amely a feladat állapotának ellenőrzésére használható:
 
        job_1415651640909_0026
 
-1. A feladatok állapotának megtekintéséhez használja a következő parancsot. A `JOBID` értékét cserélje le az előző lépésben visszaadott **tényleges** értékre. Szükség szerint módosítsa a **jQ** helyét.
+1. A feladat állapotának ellenőrzéséhez használja a következő parancsot. Cserélje le `JOBID` az értéket az előző lépésben visszaadott **tényleges** értékre. Szükség szerint vizsgálja felül a **jq** helyét.
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -98,14 +98,14 @@ Vagy
 
 ### <a name="powershell"></a>PowerShell
 
-1. Az egyszerű használat érdekében állítsa be az alábbi változókat. Cserélje le a `CLUSTERNAME`t a tényleges fürt nevére. Hajtsa végre a parancsot, és ha a rendszer kéri, adja meg a fürt bejelentkezési jelszavát.
+1. A könnyű használat érdekében állítsa be az alábbi változókat. Cserélje `CLUSTERNAME` le a tényleges fürtnevét. A parancs végrehajtása és a fürt bejelentkezési jelszavának megadása, amikor a rendszer kéri.
 
     ```powershell
     $clusterName="CLUSTERNAME"
     $creds = Get-Credential -UserName admin -Message "Enter the cluster login password"
     ```
 
-1. a következő parancs használatával ellenőrizheti, hogy tud-e csatlakozni a HDInsight-fürthöz:
+1. a következő paranccsal ellenőrizze, hogy tud-e csatlakozni a HDInsight-fürthöz:
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clustername.azurehdinsight.net/templeton/v1/status" `
@@ -114,13 +114,13 @@ Vagy
     $resp.Content
     ```
 
-    A következő JSON-hoz hasonló válasz érkezik:
+    A következő JSON-hoz hasonló választ kap:
 
     ```output
     {"version":"v1","status":"ok"}
     ```
 
-1. MapReduce-feladatok elküldéséhez használja a következő parancsot:
+1. MapReduce feladat elküldéséhez használja a következő parancsot:
 
     ```powershell
     $reqParams = @{}
@@ -139,18 +139,18 @@ Vagy
     $jobID
     ```
 
-    Az URI (/MapReduce/jar) vége azt jelzi, hogy a kérelem Webhcaten elindít egy MapReduce-feladatot egy jar-fájlból. Ezen parancs paraméterei a következők:
+    Az URI (/mapreduce/jar) vége közli a WebHCat-tel, hogy a kérés mapreduce feladatot indít egy jar fájl egyik osztályából. Ezen parancs paraméterei a következők:
 
-    * **User.name**: a parancsot futtató felhasználó
-    * **jar**: a futtatni kívánt osztályt tartalmazó jar-fájl helye
-    * **osztály**: a MapReduce logikát tartalmazó osztály
-    * **ARG**: a MapReduce-feladatoknak átadandó argumentumok. Ebben az esetben a bemeneti szövegfájl és a kimenethez használt könyvtár
+    * **user.name**: A parancsot futtató felhasználó
+    * **jar**: A hely a jar fájlt tartalmazó osztály kell solni
+    * **class**: A MapReduce logikát tartalmazó osztály
+    * **arg**: A MapReduce feladatnak átadandó argumentumok. Ebben az esetben a bemeneti szövegfájl és a kimeneti címhez használt könyvtár
 
-   A parancsnak olyan AZONOSÍTÓJÚ feladatot kell visszaadnia, amely a feladatok állapotának vizsgálatára használható:
+   Ennek a parancsnak vissza kell adnia egy feladatazonosítót, amely a feladat állapotának ellenőrzésére használható:
 
        job_1415651640909_0026
 
-1. A feladatok állapotának megtekintéséhez használja a következő parancsot:
+1. A feladat állapotának ellenőrzéséhez használja a következő parancsot:
 
     ```powershell
     $reqParams=@{"user.name"="admin"}
@@ -167,17 +167,17 @@ Vagy
 
 ### <a name="both-methods"></a>Mindkét módszer
 
-1. Ha a feladatok befejeződik, a visszaadott állapot `SUCCEEDED`.
+1. Ha a feladat befejeződött, `SUCCEEDED`a visszaadott állapot .
 
-1. Ha a feladatainak állapota `SUCCEEDED`re módosult, lekérheti a feladatoknak az Azure Blob Storage-ból való lekérdezését. A lekérdezésben átadott `statusdir` paraméter tartalmazza a kimeneti fájl helyét. Ebben a példában a hely `/example/curl`. Ez a címe tárolja a feladatok kimenetét a fürtök alapértelmezett tárolójában a következő helyen: `/example/curl`.
+1. Ha a feladat állapota a `SUCCEEDED`, a feladat eredményeit az Azure Blob storage-ból lekérheti. A `statusdir` lekérdezéssel átadott paraméter a kimeneti fájl helyét tartalmazza. Ebben a példában `/example/curl`a hely . Ez a cím tárolja a feladat kimenetét `/example/curl`a fürtök alapértelmezett tárolójában a helyen.
 
-Ezeket a fájlokat az [Azure CLI](/cli/azure/install-azure-cli)használatával listázhatja és letöltheti. Az Azure CLI Azure Blob Storage-hoz való használatáról további információt a rövid útmutató [: Blobok létrehozása, letöltése és listázása az Azure CLI](../../storage/blobs/storage-quickstart-blobs-cli.md)használatával című témakörben talál.
+Ezeket a fájlokat az [Azure CLI](/cli/azure/install-azure-cli)segítségével listázhatja és töltheti le. Az Azure CLI azure Blob storage-használatával kapcsolatos további tudnivalókért olvassa el a [Gyorsútmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel című témakört.](../../storage/blobs/storage-quickstart-blobs-cli.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a Hadoop a HDInsight-ben való használatával kapcsolatos egyéb módszerekről:
+A Hadoop hdinsight-on való egyéb működéséről a következőket szeretné tudni:
 
-* [A MapReduce használata a HDInsight Apache Hadoop használatával](hdinsight-use-mapreduce.md)
-* [Apache Hive használata a HDInsight Apache Hadoop használatával](hdinsight-use-hive.md)
+* [A MapReduce használata az Apache Hadoop segítségével a HDInsighton](hdinsight-use-mapreduce.md)
+* [Az Apache Hive használata az Apache Hadoop segítségével a HDInsighton](hdinsight-use-hive.md)
 
-A cikkben használt REST-felülettel kapcsolatos további információkért tekintse meg a Webhcaten- [referenciát](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).
+A cikkben használt REST-felületről a [WebHCat referencia című témakörben olvashat bővebben.](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference)

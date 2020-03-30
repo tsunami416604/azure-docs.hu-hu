@@ -5,64 +5,64 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: e02c0b86cd542b3ea12914e35a6577cf4e9b43d8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179570"
 ---
-A metrikák az eszköz és a hibaelhárítási problémák bizonyos esetekben a teljesítmény figyelésére is megtekintheti.
+A metrikák at is megtekintheti az eszköz teljesítményének figyeléséhez, és bizonyos esetekben az eszközproblémák elhárításához.
 
-Az alábbi lépéseket a kiválasztott eszköz metrikák diagram létrehozásához az Azure Portalon.
+Az alábbi lépéseket az Azure Portalon a kiválasztott eszközmetrikák diagram létrehozásához.
 
-1. Lépjen az Azure Portalon az erőforrás, **figyelés > metrikák** válassza **metrika hozzáadása**.
+1. Az Azure Portalon az erőforráshoz nyissa meg **> metrikák figyelése,** és válassza **a Metrika hozzáadása**lehetőséget.
 
     ![Metrika hozzáadása](media/data-box-edge-gateway-view-metrics/view-metrics-1.png)
 
-2. Az erőforrást a rendszer automatikusan kitölti.  
+2. Az erőforrás automatikusan kitöltődik.  
 
-    ![Aktuális erőforrás](media/data-box-edge-gateway-view-metrics/view-metrics-2.png)
+    ![Jelenlegi erőforrás](media/data-box-edge-gateway-view-metrics/view-metrics-2.png)
 
-    Egy másik erőforrás megadásához válassza ki az erőforrást. A **válasszon ki egy erőforrást** panelen válassza ki az előfizetést, erőforráscsoportot, erőforrás típusa és az adott erőforrás, amelynek a metrikák, és válassza ki a kívánt **alkalmaz**.
+    Másik erőforrás megadásához jelölje ki az erőforrást. Az Erőforrás panel **kiválasztása** csoportban válassza ki az előfizetést, az erőforráscsoportot, az erőforrástípust és azt az erőforrást, amelynek a metrikákat meg szeretné jelenmutatni, és válassza az **Alkalmaz lehetőséget.**
 
-    ![Válasszon egy másik erőforrás](media/data-box-edge-gateway-view-metrics/view-metrics-3.png)
+    ![Másik erőforrás kiválasztása](media/data-box-edge-gateway-view-metrics/view-metrics-3.png)
 
-3. A legördülő listából válassza ki egy metrikát, az eszköz figyeléséhez. A metrikák lehet **kapacitási** vagy **tranzakció-mérőszámot**. Az eszköz a kapacitás kapcsolódó a kapacitási mérőszámot. A tranzakció-mérőszámot kapcsolódnak, az olvasási és írási műveletek az Azure Storage.
+3. A legördülő listából válasszon ki egy mérőszámot az eszköz figyeléséhez. A mérőszámok lehetnek **kapacitásmérők** vagy **tranzakciós mérőszámok.** A kapacitásmetrikák az eszköz kapacitásához kapcsolódnak. A tranzakciós metrikák az Azure Storage olvasási és írási műveleteihez kapcsolódnak.
 
-    |A kapacitás-metrikák                     |Leírás  |
+    |Kapacitásmetrikák                     |Leírás  |
     |-------------------------------------|-------------|
-    |**Használható kapacitás**               | Az eszköz csak írható adat méretét jelenti. Más szóval ez az a kapacitást, amelyhez tehetők elérhetővé az eszközön. <br></br>Az eszköz kapacitás felszabadítása a fájlra, amely egy másolatot az eszköz és is a felhőben lévő helyi példányának törlése.        |
-    |**Teljes kapacitás**                   | Az eszközön, az adatok írása az összes bájt hivatkozik. Ez is nevezzük a helyi gyorsítótár teljes mérete. <br></br> Adatlemez hozzáadása egy meglévő virtuális eszközt kapacitása mostantól növelheti. Adjon hozzá egy adatlemezt a virtuális gép a hipervizor-management szolgáltatáson keresztül, és indítsa újra a virtuális gép. A helyi tárolókészlet az átjáróeszköz bontsa ki az újonnan hozzáadott adatlemez befogadásához. <br></br>További információért ugorjon [hozzáadása egy Hyper-v rendszerű virtuális gép merevlemez](https://www.youtube.com/watch?v=EWdqUw9tTe4). |
+    |**Rendelkezésre álló kapacitás**               | Az eszközre írható adatok méretére utal. Más szóval ez az eszköz által elérhetővé tehető kapacitás. <br></br>Az eszköz kapacitását felszabadíthatja, ha a számítógépen és a felhőben is másolatot tartalmazó fájlok helyi példányát törlöd.        |
+    |**Teljes kapacitás**                   | Az eszközön az adatok írásához az eszköz teljes bájtjaira hivatkozik. Ezt a helyi gyorsítótár teljes méretének is nevezik. <br></br> Most már növelheti egy meglévő virtuális eszköz kapacitását egy adatlemez hozzáadásával. Adjon hozzá egy adatlemezt a virtuális gép hipervizor-kezelésén keresztül, majd indítsa újra a virtuális gép. Az átjáróeszköz helyi tárolókészlete kibővül az újonnan hozzáadott adatlemez befogadására. <br></br>További információ: [Merevlemez hozzáadása a Hyper-V virtuális géphez](https://www.youtube.com/watch?v=EWdqUw9tTe4). |
     
-    |Tranzakció-mérőszámot              | Leírás         |
+    |Tranzakciómetrikák              | Leírás         |
     |-------------------------------------|---------|
-    |**Feltöltött bájtok (eszköz) a felhő**    | Az eszközön a megosztások feltöltött egyezik meg az összes bájt        |
-    |**A felhő feltöltött bájtok (megosztás)**     | Bájt jutó töltött fel. Ez lehet: <br></br> Átlagos, amely a (megosztás címenként feltöltött egyezik meg az összes bájt / Number megosztások),  <br></br>Megosztásból feltöltött bájtok maximális száma maximális száma <br></br>Minimum, amely egy meghajtóról feltöltött bájtok minimális száma      |
-    |**Felhőalapú letöltési átviteli sebesség (megosztás)**| Bájt letöltve az egy. Ez lehet: <br></br> Átlagos, amely a (összege az összes bájtot olvassa el, vagy egy megosztásra letöltött / Number megosztások) <br></br> Maximális száma, amely legfeljebb hány bájtot letöltött megosztásból<br></br> és a minimális és a minimális száma megosztásból letöltött bájtok száma  |
-    |**A felhőalapú olvasási teljesítménye**            | Olvassa el a felhőből az eszközön a megosztások közötti összes bájt összege     |
-    |**Felhőbeli feltöltési sebessége**          | Az eszközön minden megosztás között a felhőre írt összes bájt összege     |
-    |**Felhőbeli feltöltési sebessége (megosztás)**  | Sum megosztásból a felhőre írt összes bájt / megosztások száma az átlag, maximális és minimális értéke a megosztás      |
-    |**Olvasás átviteli sebesség (hálózat)**           | A rendszer hálózati átviteli sebesség olvassa el a felhőből az összes bájtot tartalmaz. Ez a nézet nem korlátozott megosztások adatok tartalmazhatnak. <br></br>Felosztás jelennek meg a forgalmat az összes hálózati adapter az eszközön keresztül. Ez magában foglalja az adaptert, amely nem kapcsolódik vagy nem engedélyezett.      |
-    |**Írás az átviteli sebesség (hálózat)**       | Magában foglalja a rendszer hálózati átviteli sebesség a felhő írt bájtok száma. Ez a nézet nem korlátozott megosztások adatok tartalmazhatnak. <br></br>Felosztás jelennek meg a forgalmat az összes hálózati adapter az eszközön keresztül. Ez magában foglalja az adaptert, amely nem kapcsolódik vagy nem engedélyezett.          |
-    |**Edge-compute - memória használata**      | Ez a mérőszám nincs a Data Box Gateway vonatkozik, és ezért nem feltöltött.          |
-    |**Edge-compute - százalékos Processzorhasználat**    | Ez a mérőszám nincs a Data Box Gateway vonatkozik, és ezért nem feltöltött.         |
+    |**Feltöltött felhőalapú bájtok (eszköz)**    | Az eszköz összes megosztására feltöltött összes bájt összege        |
+    |**Feltöltött felhőalapú bájtok (megosztás)**     | Egy részvényre feltöltött bájtok. Ez lehet: <br></br> Átlagos, amely a (Részvényenként feltöltött bájtok összege / részvények száma),  <br></br>Max. <br></br>Min, amely a megosztásból feltöltött bájtok minimális száma      |
+    |**Felhőbeli letöltési átviteli -fó (megosztás)**| Egy részvényre letöltött bájt. Ez lehet: <br></br> Átlagos, amely a (Összege az összes bájt olvasni vagy letölteni egy részvény / Részvények száma) <br></br> Max.<br></br> és Min, amely a minimális számú bájtot letöltött egy részvény  |
+    |**Felhőbeli olvasási átviteli adatátarány**            | A felhőből a készülék összes megosztásán felolvasott bájtok összege     |
+    |**Felhőbeli feltöltési átviteli adatátarány**          | A felhőbe írt összes bájt összege az eszköz összes megosztásán     |
+    |**Felhőbeli feltöltési átviteli -átmenő (megosztás)**  | A felhőbe egy részvényből /# részvényekből írt bájtok összege átlagos, max és min részvényenként      |
+    |**Olvasási átviteli -átmenő (hálózat)**           | Tartalmazza a rendszer hálózati átviteli a felhőből beolvasott összes bájt. Ez a nézet olyan adatokat is tartalmazhat, amelyek nem korlátozódnak a megosztásra. <br></br>A felosztás megmutatja az eszköz összes hálózati adapterének forgalmát. Ide tartoznak azok az adapterek is, amelyek nincsenek csatlakoztatva vagy engedélyezve.      |
+    |**Írási átviteli -átmenő (hálózat)**       | Tartalmazza a rendszer hálózati átviteli a felhőbe írt összes bájtok. Ez a nézet olyan adatokat is tartalmazhat, amelyek nem korlátozódnak a megosztásra. <br></br>A felosztás megmutatja az eszköz összes hálózati adapterének forgalmát. Ide tartoznak azok az adapterek is, amelyek nincsenek csatlakoztatva vagy engedélyezve.          |
+    |**Peremhálózati számítás - memóriahasználat**      | Ez a metrika nem alkalmazható a Data Box Gateway, és így nem lakott.          |
+    |**Peremhálózati számítás - százalékos CPU**    | Ez a metrika nem alkalmazható a Data Box Gateway, és így nem lakott.         |
 
-4. Ha egy metrika van kijelölve, a legördülő listából, az összesítés is lehet definiálni. A tényleges érték összesített értéket jelenít meg a megadott időn belül összesítést hivatkozik. Az összesített értékekre átlagos, minimális vagy maximális értéke lehet. Válassza ki az összesítést az Avg, Max vagy perc.
+4. Ha egy metrika van kiválasztva a legördülő listából, összesítés is definiálható. Az összesítés egy adott időtartamon összesítve lévő tényleges értékre vonatkozik. Az összesített értékek lehetnek átlagok, minimumok vagy maximális értékek. Válassza ki az Összesítést az Átlag, a Max vagy a Min értékből.
 
-    ![Diagram nézet](media/data-box-edge-gateway-view-metrics/view-metrics-4.png)
+    ![Diagram megtekintése](media/data-box-edge-gateway-view-metrics/view-metrics-4.png)
 
-5. Ha a kiválasztott metrika több példánnyal rendelkezik, majd a felosztási beállítás érhető el. Válassza ki **alkalmazni a felosztás** , és válassza ki az értéket, amelynek meg szeretné tekinteni a bontás.
+5. Ha a kiválasztott mérőszám több példányt, majd a felosztási lehetőség érhető el. Válassza **a Felosztás alkalmazása lehetőséget,** majd válassza ki azt az értéket, amellyel meg szeretné tekinteni a bontást.
 
     ![Felosztás alkalmazása](media/data-box-edge-gateway-view-metrics/view-metrics-5.png)
 
-6. Ha most szeretné tekinteni néhány példányok csak a táblázat összefoglalja, szűrheti az adatokat. Például ebben az esetben, ha szeretné a hálózati átviteli sebesség csak a két csatlakoztatott hálózati adaptereket lát az eszközén, is szűrhetőek felületeken. Válassza ki **szűrő hozzáadása** , és adja meg a szűréshez hálózati adapter neve.
+6. Ha most csak néhány példányban szeretné látni a bontást, szűrheti az adatokat. Ebben az esetben például, ha csak az eszköz két csatlakoztatott hálózati kapcsolatának hálózati átviteli csatornáját szeretné látni, szűrheti ezeket az összeköttetéseket. Válassza **a Szűrő hozzáadása lehetőséget,** és adja meg a hálózati adapter nevét a szűréshez.
 
-    ![szűrő hozzáadása](media/data-box-edge-gateway-view-metrics/view-metrics-6.png)
+    ![Szűrő hozzáadása](media/data-box-edge-gateway-view-metrics/view-metrics-6.png)
 
-7. Sikerült is rögzíti az irányítópulton egyszerűen hozzáférhetnek a diagramot.
+7. A könnyebb hozzáférés érdekében a diagramot az irányítópultra is rögzítheti.
 
     ![Rögzítés az irányítópulton](media/data-box-edge-gateway-view-metrics/view-metrics-7.png)
 
-8. Diagram-adatok exportálása egy Excel-táblázatban, vagy szerezzen be egy hivatkozást a diagramba megoszthat, válassza a megosztás a parancssávon.
+8. Ha diagramadatokat szeretne excel-számolótáblába exportálni, vagy a megosztott diagramra mutató hivatkozást szeretne kapni, válassza a megosztási lehetőséget a parancssávon.
 
     ![Adatok exportálása](media/data-box-edge-gateway-view-metrics/view-metrics-8.png)

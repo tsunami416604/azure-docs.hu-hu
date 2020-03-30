@@ -1,7 +1,7 @@
 ---
-title: Konfigurációk létrehozása meglévő kiszolgálókból – Azure Automation
-description: Megtudhatja, hogyan hozhat létre konfigurációkat meglévő kiszolgálókról Azure Automation számára.
-keywords: DSC, PowerShell, konfigurálás, beállítás
+title: Konfigurációk létrehozása meglévő kiszolgálókról - Azure Automation
+description: Ismerje meg, hogyan hozhat létre konfigurációkat a meglévő kiszolgálók az Azure Automation.
+keywords: dsc,powershell,konfiguráció,beállítás
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -11,40 +11,40 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: d888c8fd3bf7cd44c37e7225618bd197f419d275
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76030122"
 ---
-# <a name="create-configurations-from-existing-servers"></a>Konfigurációk létrehozása meglévő kiszolgálókból
+# <a name="create-configurations-from-existing-servers"></a>Konfigurációk létrehozása meglévő kiszolgálókról
 
-> A következőkre vonatkozik: Windows PowerShell 5,1
+> A következőre vonatkozik: Windows PowerShell 5.1
 
-A meglévő kiszolgálók konfigurációinak létrehozása kihívást jelentő feladat lehet.
-Előfordulhat, hogy nem szeretné, hogy *minden* beállítás, csak azokat, amelyeket érdekel.
-Még akkor is tudnia kell, hogy milyen sorrendben kell alkalmazni a beállításokat ahhoz, hogy a konfiguráció sikeres legyen.
+A konfigurációk meglévő kiszolgálókról történő létrehozása kihívást jelenthet.
+Lehet, hogy nem akarja *az összes* beállítást, csak azokat, amelyek érdekel.
+Még akkor is tudnia kell, hogy milyen sorrendben kell alkalmazni a beállításokat ahhoz, hogy a konfiguráció sikeresen alkalmazható legyen.
 
 > [!NOTE]
-> Ez a cikk egy olyan megoldásra utal, amelyet a nyílt forráskódú közösség tart fenn.
-> A támogatás csak GitHub-együttműködés formájában érhető el, nem a Microsofttól.
+> Ez a cikk a nyílt forráskódú közösség által fenntartott megoldásra hivatkozik.
+> A támogatás csak GitHub-együttműködés formájában érhető el, a Microsofttól nem.
 
 ## <a name="community-project-reversedsc"></a>Közösségi projekt: ReverseDSC
 
-A [ReverseDSC](https://github.com/microsoft/reversedsc) nevű közösségi karbantartó megoldás azért jött létre, hogy ezen a helyen működjön a SharePoint megkezdése előtt.
+A SharePoint indításához létrehozták a [ReverseDSC](https://github.com/microsoft/reversedsc) nevű, közösségi karbantartott megoldást.
 
-A megoldás a [SharePointDSC erőforrásra](https://github.com/powershell/sharepointdsc) épül, és kibővíti a meglévő SharePoint-kiszolgálók [összegyűjtési adatainak](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use) összekapcsolására.
-A legújabb verzió több [kibontási móddal](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes) rendelkezik, amelyekkel meghatározható, hogy milyen szintű információt tartalmazzon.
+A megoldás a [SharePointDSC erőforrásra](https://github.com/powershell/sharepointdsc) épül, és kiterjeszti azt a meglévő SharePoint-kiszolgálókról származó [információk összegyűjtésére.](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use)
+A legújabb verzió több [kinyerési móddal rendelkezik annak meghatározására,](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes) hogy milyen szintű információkat tartalmazzon.
 
-A megoldás használatával a SharePointDSC konfigurációs parancsfájljaival használandó [konfigurációs adatai](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data) hozhatók létre.
+A megoldás használatának eredménye a SharePointDSC konfigurációs parancsfájlokkal használandó [konfigurációs adatok](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data) létrehozása.
 
-Az adatfájlok létrejötte után a [DSC-konfigurációs parancsfájlok](/powershell/scripting/dsc/overview/overview) használatával MOF-fájlokat hozhat létre, és [feltöltheti a MOF-fájlokat a Azure Automationba](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Ezután regisztrálja a kiszolgálókat akár [a helyszínen](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) , akár [Az Azure-ban](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a konfigurációk lekéréséhez.
+Az adatfájlok létrehozása után a [DSC konfigurációs parancsfájlokkal](/powershell/scripting/dsc/overview/overview) mof-fájlokat hozhat létre, és [feltöltheti a MOF-fájlokat az Azure Automation be.](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)
+Ezután regisztrálja a [kiszolgálókat a helyszíni](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) vagy az [Azure-ban](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a konfigurációk lekérése.
 
-A ReverseDSC kipróbálásához látogasson el a [PowerShell-galériara](https://www.powershellgallery.com/packages/ReverseDSC/) , és töltse le a megoldást, vagy kattintson a "Project site" (projekt helye) elemre a [dokumentáció](https://github.com/Microsoft/sharepointDSC.reverse)megtekintéséhez.
+A ReverseDSC kipróbálásához látogasson el a [PowerShell-galériába,](https://www.powershellgallery.com/packages/ReverseDSC/) és töltse le a megoldást, vagy kattintson a "Projektwebhely" gombra a [dokumentáció](https://github.com/Microsoft/sharepointDSC.reverse)megtekintéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/scripting/dsc/overview/overview)
+- [A Windows PowerShell kívánt állapotkonfigurációja – áttekintés](/powershell/scripting/dsc/overview/overview)
 - [DSC-erőforrások](/powershell/scripting/dsc/resources/resources)
-- [A helyi Configuration Manager konfigurálása](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [A helyi konfigurációkezelő konfigurálása](/powershell/scripting/dsc/managing-nodes/metaconfig)

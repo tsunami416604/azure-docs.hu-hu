@@ -9,13 +9,13 @@ ms.date: 10/17/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 49f48c2d0bf865cf8c8fde831e7a597f8701d213
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67178947"
 ---
-Ellenőrizheti, hogy a kapcsolat sikeresen létrejött, a "Get-AzVirtualNetworkGatewayConnection" parancsmag használatával, vagy anélkül:-Debug ". 
+A "Get-AzVirtualNetworkNetworkConnection" parancsmag segítségével ellenőrizheti, hogy a kapcsolat sikeres volt-e a "-Debug" használatával. 
 
 1. A következő parancsmag-példával az értékeket a sajátjaival megegyezően konfigurálhatja. Ha a rendszer arra kéri, válassza az „A” lehetőséget az összes futtatásához. A példában a „-Name” a tesztelni kívánt kapcsolat nevére utal.
 

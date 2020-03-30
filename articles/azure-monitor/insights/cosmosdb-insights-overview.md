@@ -1,127 +1,127 @@
 ---
-title: A Azure Cosmos DB figyelése Azure Monitorekkel Cosmos DB (előzetes verzió) | Microsoft Docs
-description: Ez a cikk a Cosmos DB funkció Azure Monitor ismerteti, amely Cosmos DB tulajdonosokat biztosít a CosmosDB-fiókokkal kapcsolatos teljesítmény-és kihasználtsági problémák gyors megismeréséhez.
+title: Az Azure Cosmos DB figyelése az Azure Monitor for Cosmos DB szolgáltatással (előzetes verzió)| Microsoft dokumentumok
+description: Ez a cikk ismerteti az Azure Monitor for Cosmos DB szolgáltatás, amely a Cosmos DB-tulajdonosok a teljesítmény és a kihasználtsági problémák gyors megértését a CosmosDB-fiókok.
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
 ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250682"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Cosmos DB Azure Monitor megismerése (előzetes verzió)
+# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Az Azure Cosmos DB Azure Monitor jának felfedezése (előzetes verzió)
 
-A Azure Cosmos DB (előzetes verzió) Azure Monitor az egységes interaktív felhasználói felület összes Azure Cosmos DB erőforrásának teljes teljesítményéről, hibáinak, kapacitásának és működési állapotának áttekintését nyújtja. Ez a cikk segítséget nyújt az új figyelési élmény előnyeinek megismeréséhez, valamint arról, hogy miként módosíthatja és igazíthatja a felhasználói élményt a szervezet egyedi igényeinek megfelelően.   
+Az Azure Cosmos DB Azure Monitor szolgáltatása (előzetes verzió) az Azure Cosmos DB összes erőforrásának általános teljesítményét, hibáit, kapacitását és működési állapotát egy egységes interaktív környezetben jeleníti meg. Ez a cikk segít megérteni az új figyelési élmény előnyeit, és azt, hogy hogyan módosíthatja és igazíthatja az élményt a szervezet egyedi igényeihez.   
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
-A tapasztalatok megismerése előtt meg kell ismernie, hogyan jeleníti meg és jeleníti meg az információkat. 
+Mielőtt belemerülne az élménybe, meg kell értenie, hogyan mutatja be és vizualizálja az információkat. 
 
-A következőket biztosítja:
+Ez biztosítja:
 
-* A Azure Cosmos DB erőforrások **méretezési perspektívája** egyetlen helyen az összes előfizetéshez, és a szelektív hatókör csak azokra az előfizetésekre és erőforrásokra vonatkozik, amelyeket érdekel.
+* Az Azure Cosmos DB-erőforrásainak **skálázási perspektívájában** az összes előfizetésében egyetlen helyen, azzal a képességgel, hogy csak azokat az előfizetéseket és erőforrásokat tudja szelektíven kiértékelni.
 
-* Egy adott Azure CosmosDB-erőforrás **elemzésének részletezése** a problémák diagnosztizálásához, illetve a kategória-kihasználtság, a hibák, a kapacitás és a műveletek részletes elemzésének elvégzéséhez. Bármelyik lehetőség kiválasztásával részletesen áttekintheti a vonatkozó Azure Cosmos DB metrikákat.  
+* Egy adott Azure CosmosDB-erőforrás **elemzését** a problémák diagnosztizálása vagy részletes elemzés kategória – kihasználtság, hibák, kapacitás és műveletek – alapján végezheti el. A beállítások bármelyikének kiválasztása részletes áttekintést nyújt a megfelelő Azure Cosmos DB-metrikákról.  
 
-* **Testreszabható** – ez a felület Azure monitor munkafüzet-sablonokra épül, így módosíthatja, hogy milyen mérőszámok jelenjenek meg, módosíthatók vagy állíthatók be a határértékekhez igazodó küszöbértékek, majd egy egyéni munkafüzetbe menthetők. A munkafüzetek diagramjai ezután rögzíthetők az Azure-irányítópultokon.  
+* **Testreszabható** – Ez a felület az Azure Monitor munkafüzetsablonjaira épül, amelyek lehetővé teszik a jelenlévő metrikák módosítását, a korlátokhoz igazodó küszöbértékek módosítását, módosítását vagy beállítását, majd az egyéni munkafüzetbe való mentést. A munkafüzetekben lévő diagramok ezután rögzíthetők az Azure-irányítópultokon.  
 
-Ez a funkció nem igényli, hogy bármit engedélyezzen vagy konfiguráljan, ezek a Azure Cosmos DB-metrikák gyűjtése alapértelmezés szerint történik.
+Ez a szolgáltatás nem igényel semmit engedélyezni vagy konfigurálni, ezek az Azure Cosmos DB-metrikák alapértelmezés szerint gyűjtik.
 
 >[!NOTE]
->A szolgáltatáshoz való hozzáférés díjmentes, és a [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/) lapon leírtak szerint csak az Ön által konfigurált vagy engedélyezett Azure monitor alapvető funkciókért kell fizetnie.
+>A szolgáltatás eléréséért nem számítunk fel díjat, és csak az Azure Monitor által konfigurált vagy engedélyezett alapvető funkciókért kell fizetnie, az [Azure Monitor díjszabási részletei](https://azure.microsoft.com/pricing/details/monitor/) lapján leírtak szerint.
 
-## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>A Azure Cosmos DB kihasználtságának és teljesítményének metrikáinak megtekintése
+## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>Az Azure Cosmos DB kihasználtsági és teljesítménymutatóinak megtekintése
 
-Ha szeretné megtekinteni a Storage-fiókok kihasználtságát és teljesítményét az összes előfizetésében, hajtsa végre a következő lépéseket.
+A tárfiókok kihasználtságának és teljesítményének megtekintéséhez az összes előfizetésben hajtsa végre a következő lépéseket.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-2. Keressen rá a **figyelőre** , és válassza a **figyelő**lehetőséget.
+2. Keressen a **Figyelő** mezőbe, és válassza a **Figyelő**lehetőséget.
 
-    ![A "monitor" szót tartalmazó keresőmező és egy olyan legördülő lista, amely egy sebességmérő stílusú képpel rendelkező szolgáltatásokat mutat](./media/cosmosdb-insights-overview/search-monitor.png)
+    ![Keresőmező a "Monitor" szóval és egy legördülő menüvel, amely en a Szolgáltatások "Figyelő" szövege látható sebességmérő stílusú képpel](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. Válassza a **Cosmos db (előzetes verzió)** lehetőséget.
+3. Válassza a **Cosmos DB (előzetes verzió)** lehetőséget.
 
-    ![Képernyőkép a Cosmos DB áttekintése munkafüzetről](./media/cosmosdb-insights-overview/cosmos-db.png)
+    ![Képernyőkép a Cosmos DB áttekintéséről](./media/cosmosdb-insights-overview/cosmos-db.png)
 
 ### <a name="overview"></a>Áttekintés
 
-Az **Áttekintés**oldalon a táblázat interaktív Azure Cosmos db metrikákat jelenít meg. Az eredményeket az alábbi legördülő listából kiválasztott beállítások alapján szűrheti:
+**Az áttekintést**a táblázat interaktív Azure Cosmos DB metrikákat jelenít meg. Az eredményeket az alábbi legördülő listákból kiválasztott beállítások alapján szűrheti:
 
-* **Előfizetések** – csak a Azure Cosmos db erőforrással rendelkező előfizetések jelennek meg.  
+* **Előfizetések** – csak az Azure Cosmos DB-erőforrással rendelkező előfizetések vannak felsorolva.  
 
-* **Cosmos db** – kiválaszthatja az összes, egy részhalmaz vagy egy Azure Cosmos db erőforrást.
+* **Cosmos DB** – Kiválaszthatja az összes, egy részhalmazt, vagy egyetlen Azure Cosmos DB erőforrás.
 
-* **Időtartomány** – alapértelmezés szerint az utolsó 4 órányi információt jeleníti meg a megfelelő beállítások alapján.
+* **Időtartomány** – alapértelmezés szerint az utolsó 4 óra információt jeleníti meg a megfelelő beállítások alapján.
 
-A legördülő lista alatti számláló csempe a kijelölt előfizetésekben lévő Azure Cosmos DB erőforrások teljes számát összesíti. A munkafüzet oszlopaihoz feltételes színkódolás vagy intenzitástérképei van a tranzakciós metrikák jelentéséhez. A legmélyebb szín a legmagasabb és a világosabb szín a legalacsonyabb értékeken alapul. 
+A legördülő listák alatti számlálócsempe összegző az Azure Cosmos DB-erőforrások teljes száma a kiválasztott előfizetésekben. Feltételes színkódolás vagy hőtérkép van a munkafüzet azon oszlopaihoz, amelyek tranzakciós mutatókat jelentenek. A legmélyebb szín értéke a legmagasabb, a világosabb szín pedig a legalacsonyabb értékeken alapul. 
 
-Ha az egyik Azure Cosmos DB melletti legördülő nyílra kattint, a teljesítmény-metrikák részletezése az egyes adatbázis-tárolók szintjén történik:
+Ha az Azure Cosmos DB egyik erőforrása melletti legördülő nyilat választ, az egyes adatbázis-tárolók szintjén a teljesítménymutatók bontása jelenik meg:
 
-![Kibontott legördülő lista az egyes adatbázis-tárolók és a hozzájuk kapcsolódó teljesítmény-bontás megjelenítéséhez](./media/cosmosdb-insights-overview/container-view.png)
+![Bővített legördülő menü, amely az egyes adatbázis-tárolókat és a kapcsolódó teljesítménylebontást mutatja be](./media/cosmosdb-insights-overview/container-view.png)
 
-Ha a kék színnel jelölt Azure Cosmos DB erőforrást választja, akkor a társított Azure Cosmos DB-fiók alapértelmezett **áttekintését** fogja végrehajtani. 
+Ha az Azure Cosmos DB erőforrás nevét kék színnel kiemelve választja ki, akkor a társított Azure Cosmos DB-fiók alapértelmezett **áttekintése** lesz. 
 
 ### <a name="failures"></a>Hibák
 
-Válassza ki a **hibák** elemet az oldal tetején, és megnyílik a munkafüzet sablonjának **hibák** szakasza. Az összes kérést megjeleníti a kérelmeket alkotó válaszok eloszlásával:
+Válassza a lap tetején a **Hibák** lehetőséget, és megnyílik a munkafüzetsablon **Hibák** része. A kérelmeket a válaszok elosztásával jeleníti meg:
 
-![Képernyőfelvétel a HTTP-kérelem típusa szerinti bontásban fellépő hibákról](./media/cosmosdb-insights-overview/failures.png)
+![Képernyőkép a HTTP-kérelemtípus szerinti bontásban észlelt hibákról](./media/cosmosdb-insights-overview/failures.png)
 
 | Kód      |  Leírás       | 
 |-----------|:--------------------|
-| `200 OK`  | A következő REST-műveletek egyike sikeres volt: </br>– Erőforrás lekérése. </br> -Erőforrásra kerül. </br> – KÖZZÉTÉTEL egy erőforráson. </br> – KÖZZÉTÉTEL a tárolt eljárási erőforráson a tárolt eljárás végrehajtásához.|
-| `201 Created` | Az erőforrás-létrehozás utáni művelet sikeres. |
-| `404 Not Found` | A művelet olyan erőforráson próbálkozik, amely már nem létezik. Előfordulhat például, hogy az erőforrás már törölve lett. |
+| `200 OK`  | Az alábbi REST-műveletek egyike sikeres volt: </br>- Egy erőforrásra. </br> - Egy erőforrásra. </br> - POST egy erőforrás. </br> - POST egy tárolt eljárás erőforrás végrehajtásához a tárolt eljárást.|
+| `201 Created` | Az erőforrás létrehozásához szükséges POST-művelet sikeres. |
+| `404 Not Found` | A művelet olyan erőforráson próbál meg hatni, amely már nem létezik. Előfordulhat például, hogy az erőforrást már törölték. |
 
-Az állapotkódok teljes listájáért olvassa el a [Azure Cosmos db http-állapotkód című cikket](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
+Az állapotkódok teljes listáját az [Azure Cosmos DB HTTP állapotkód cikkében](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)tekintheti meg.
 
 ### <a name="capacity"></a>Kapacitás
 
-Válassza ki a **kapacitás** elemet az oldal tetején, és megnyílik a munkafüzet-sablon **kapacitás** része. Itt láthatja, hogy hány dokumentum van, a dokumentum az idő múlásával, az adatok kihasználtságával és a rendelkezésre álló tárterület teljes mennyiségétől számítva.  Ez segítséget nyújt a lehetséges tárolási és adatkihasználtsági problémák azonosításához.
+Válassza a **Kapacitás** lehetőséget a lap tetején, és megnyílik a munkafüzetsablon **Kapacitás** része. Megmutatja, hogy hány dokumentummal rendelkezik, a dokumentumok idővel növekednek, az adathasználat és a rendelkezésre álló tárterület teljes mennyisége.  Ez segítségével azonosíthatja a potenciális tárolási és adatkihasználtsági problémákat.
 
-![Kapacitás munkafüzet](./media/cosmosdb-insights-overview/capacity.png) 
+![Kapacitásmunkafüzet](./media/cosmosdb-insights-overview/capacity.png) 
 
-Az áttekintő munkafüzethez hasonlóan az **előfizetés** oszlopban egy Azure Cosmos db erőforrás melletti legördülő lista is megjelenik, amely az adatbázist alkotó egyes tárolók részletezését mutatja.
+Az áttekintő munkafüzethez, az **Előfizetés** oszlopban az Azure Cosmos DB-erőforrás melletti legördülő menü kiválasztásával az adatbázist képező egyes tárolók lebontása jelenik meg.
 
 ### <a name="operations"></a>Műveletek 
 
-Válassza a lap tetején a **műveletek** lehetőséget, majd megnyílik a munkafüzet sablonjának **műveletek** rész. Lehetővé teszi, hogy a kérések típusa szerinti bontásban megtekintse a kérelmeket. 
+Válassza a lap tetején a **Műveletek lehetőséget,** és megnyílik a munkafüzetsablon **Műveletek** része. Ez lehetővé teszi, hogy a kérelmek et a kérelmek típusa szerinti bontásban láthassa. 
 
-Az alábbi példában látható, hogy `eastus-billingint` elsődlegesen olvasási kérelmeket fogad, de kevés upsert és létrehozási kéréseket kap. Míg `westeurope-billingint` csak olvasható a kérelmek szempontjából, legalább az elmúlt négy órában, hogy a munkafüzet jelenleg hatóköre a Time Range paraméterén keresztül.
+Tehát az alábbi példában `eastus-billingint` látható, hogy elsősorban olvasási kérelmek fogadása, de egy kis számú upsert és kérelmek létrehozása. `westeurope-billingint` Míg kérésszempontjából csak olvasható, legalább az elmúlt négy órában, amelyre a munkafüzet hatóköre jelenleg az időtartomány-paraméterén keresztül történik.
 
 ![Műveleti munkafüzet](./media/cosmosdb-insights-overview/operation.png) 
 
-## <a name="pin-export-and-expand"></a>PIN-kód, exportálás és Kibontás
+## <a name="pin-export-and-expand"></a>Rögzítés, exportálás és kibontás
 
-A metrikus szakaszok bármelyikét rögzítheti egy [Azure-irányítópultra](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) , ha a szakasz jobb felső sarkában található gombostű ikonra kattint.
+A metrikaszakaszok bármelyikét rögzítheti egy [Azure-irányítópulton](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) a szakasz jobb felső részén lévő pushpin ikon kiválasztásával.
 
-![Metrikus szakasz rögzítése az irányítópulton – példa](./media/cosmosdb-insights-overview/pin.png)
+![Példa az irányítópult metrikus szakaszpinje](./media/cosmosdb-insights-overview/pin.png)
 
-Az Excel formátumba való exportáláshoz kattintson a gombostű ikon bal oldalán található lefelé mutató nyíl ikonra.
+Ha excel formátumba szeretné exportálni az adatokat, jelölje ki a mutatógomb ikonjának bal oldalán található lefelé mutató nyílikont.
 
 ![Munkafüzet exportálása ikon](./media/cosmosdb-insights-overview/export.png)
 
-A munkafüzet összes legördülő nézetének kibontásához vagy összecsukásához válassza az Exportálás ikon bal oldalán található Kibontás ikont:
+A munkafüzet összes legördülő nézetének kibontásához vagy összecsukásához jelölje ki az exportálásikontól balra lévő kibontás ikont:
 
 ![Munkafüzet kibontása ikon](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Cosmos DB Azure Monitor testreszabása (előzetes verzió)
+## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Az Azure Cosmos DB Azure Monitor szolgáltatásának testreszabása (előzetes verzió)
 
-Mivel ez a felület Azure Monitor munkafüzet-sablonokra épül, **testreszabhatja** > **szerkesztheti** és **mentheti** a módosított verzió egy példányát egy egyéni munkafüzetbe. 
+Mivel ez a felhasználói felület az Azure Monitor munkafüzetsablonjaira épül, testreszabhatja a módosított verzió egy példányának **testreszabását** > **Edit** és **mentése** egyéni munkafüzetbe. 
 
 ![Sáv testreszabása](./media/cosmosdb-insights-overview/customize.png)
 
-A munkafüzetek egy erőforráscsoporthoz lesznek mentve, vagy az Ön számára magánjellegű **saját jelentések** szakaszban, vagy a **megosztott jelentések** szakaszban, amely mindenki számára elérhető az erőforráscsoporthoz való hozzáféréssel. Az Egyéni munkafüzet mentése után nyissa meg a munkafüzet-katalógust, és indítsa el.
+A munkafüzetek egy erőforráscsoporton belül kerülnek mentésre, vagy a **Saját jelentések** szakaszban, amely magánjellegű, vagy a **Megosztott jelentések** szakaszban, amely mindenki számára elérhető, aki hozzáfér az erőforráscsoporthoz. Az egyéni munkafüzet mentése után a bemutató elindításához a munkafüzettárba kell lépnie.
 
-![A munkafüzet-katalógus indítása a parancssáv alapján](./media/cosmosdb-insights-overview/gallery.png)
+![Munkafüzettár indítása a parancssávról](./media/cosmosdb-insights-overview/gallery.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications.md) konfigurálása automatizált riasztások beállításához a problémák észlelése érdekében.
+* [Metrikariasztások](../platform/alerts-metric.md) és [szolgáltatásállapot-értesítések](../../service-health/alerts-activity-log-service-notifications.md) konfigurálásával automatikus riasztást állíthat be a problémák észleléséhez.
 
-* Ismerkedjen meg a forgatókönyvekkel, amelyek támogatják az új és a meglévő jelentések testreszabását, valamint az [interaktív jelentések Azure monitor-munkafüzetekkel való létrehozását](../app/usage-workbooks.md)ismertető áttekintést.
+* Ismerje meg a munkafüzetek támogatását, új és testre szabható forgatókönyveket, valamint az Interaktív jelentések létrehozása az Azure Monitor munkafüzetekkel című [áttekintést.](../app/usage-workbooks.md)

@@ -9,20 +9,20 @@ ms.date: 02/27/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0a81d8c97b916fd15e7be5fde05e9ea25ba1151d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179021"
 ---
-Az átjáró hubnak. A központ létrehozását követően a szolgáltatás akkor is díjköteles, ha nem csatol hozzá egyetlen webhelyet sem. A hub és az átjáró létrehozása 30 percet vesz igénybe.
+A hub tartalmazza az átjárót. A központ létrehozását követően a szolgáltatás akkor is díjköteles, ha nem csatol hozzá egyetlen webhelyet sem. A hub és az átjáró létrehozása 30 percet vesz igénybe.
 
-1. Keresse meg a virtuális WAN létrehozott. Az a virtuális WAN lap alatt a **virtuális WAN architektúra** területén kattintson **Hubs**.
-2. Hubs lapon kattintson **+ új Eseményközpont** megnyitásához a **létrehozása virtuális központ** lapot.
-3. Az a **létrehozása virtuális központ** lapon, hajtsa végre a következő mezőket:
+1. Keresse meg a létrehozott virtuális WAN-t. A Virtual WAN (Virtuális WAN) lap **Virtual WAN architektúra** szakaszában kattintson a **Hubs (Hubs)** elemre.
+2. A Hubs lapon kattintson az **+Új központ** gombra a **Virtuális központ létrehozása** lap megnyitásához.
+3. A **Virtuális központi központ létrehozása** lapon hajtsa végre a következő mezőket:
 
-   * Location egység
-   * Name (Név)
+   * Hely
+   * Név
    * Központ titkos címtartománya
 
-Kattintson a **Megerősítés** gombra a központ létrehozásához. Kattintson a **frissítése** a hub megtekintése a **Hubs** lap.
+Kattintson a **Megerősítés** gombra a központ létrehozásához. Kattintson a **Frissítés** gombra a hub megtekintéséhez a **Hubs** lapon.

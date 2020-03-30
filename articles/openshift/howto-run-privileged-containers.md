@@ -1,37 +1,37 @@
 ---
-title: Emelt szintű tárolók futtatása Azure Red Hat OpenShift-fürtben | Microsoft Docs
-description: A biztonság és a megfelelőség figyeléséhez futtassa a privilegizált tárolókat.
+title: Kiemelt tárolók futtatása Azure Red Hat OpenShift-fürtben | Microsoft dokumentumok
+description: A biztonság és a megfelelőség figyeléséhez futtasson kiemelt tárolókat.
 author: makdaam
 ms.author: b-lejaku
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
-keywords: ARO, openshift, aquasec, twistlock, Red Hat
+keywords: aro, openshift, aquasec, twistlock, piros kalap
 ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78271377"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Kiemelt tárolók futtatása Azure Red Hat OpenShift-fürtön
 
-Nem futtathat tetszőleges jogosultságú tárolót az Azure Red Hat OpenShift-fürtökön.
-Az ARO-fürtökön két biztonsági figyelési és megfelelőségi megoldás futhat.
-Ez a dokumentum ismerteti a biztonsági termékek gyártóinak általános OpenShift üzembe helyezési dokumentációjának különbségeit.
+Az Azure Red Hat OpenShift-fürtökön nem futtathat tetszőleges kiemelt tárolókat.
+Két biztonsági figyelési és megfelelőségi megoldás futtathat ARO-fürtökön.
+Ez a dokumentum a biztonsági termékek szállítóinak általános OpenShift központi telepítési dokumentációjához való különbségeket ismerteti.
 
 
-A gyártó utasításainak követése előtt olvassa el ezeket az utasításokat.
-Az alábbi, termékspecifikus lépések című szakasza a szállítók dokumentációjának szakaszait mutatja be közvetlenül.
+Olvassa el ezeket az utasításokat, mielőtt követené a szállító utasításait.
+Az alábbi termékspecifikus lépésekben szereplő szakaszcímek közvetlenül a szállítók dokumentációjában szereplő szakaszcímekre vonatkoznak.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A legtöbb biztonsági termék dokumentációja feltételezi, hogy rendelkezik a fürt rendszergazdai jogosultságokkal.
-Az ügyfelek rendszergazdái nem rendelkeznek minden jogosultsággal az Azure Red Hat OpenShift. A fürtre kiterjedő erőforrások módosításához szükséges engedélyek korlátozottak.
+A legtöbb biztonsági termék dokumentációja fürt-rendszergazdai jogosultságokat feltételez.
+Az ügyfélgazdák nem rendelkeznek minden jogosultsággal az Azure Red Hat OpenShift szolgáltatásban. A fürtszintű erőforrások módosításához szükséges engedélyek korlátozottak.
 
-Először a `oc get scc`futtatásával győződjön meg arról, hogy a felhasználó ügyfél-rendszergazdaként van bejelentkezve a fürtbe. Az ügyfél-felügyeleti csoport tagjainak minden felhasználója rendelkezik engedéllyel a fürtön található biztonsági környezeti korlátozások (SCCs) megtekintéséhez.
+Először győződjön meg arról, hogy a felhasználó `oc get scc`ügyfél-rendszergazdaként van bejelentkezve a fürtbe a rendszer futtatásával. Minden felhasználó, aki tagja az ügyfél-rendszergazdai csoportnak, jogosult a fürt biztonsági környezetbeli megkötéseinek (SCC) megtekintésére.
 
-Ezután győződjön meg arról, hogy a `oc` bináris verziója `3.11.154`.
+Ezután győződjön `oc` meg `3.11.154`arról, hogy a bináris verzió .
 ```
 oc version
 oc v3.11.154
@@ -43,18 +43,18 @@ openshift v3.11.154
 kubernetes v1.11.0+d4cacc0
 ```
 
-## <a name="product-specific-steps-for-aqua-security"></a>Az Aqua Security termékspecifikus lépései
-A módosítandó alapszintű utasítások az [Aqua Security Deployment dokumentációjában](https://docs.aquasec.com/docs/openshift-red-hat)találhatók. Az itt ismertetett lépések az Aqua telepítési dokumentációjában is futnak.
+## <a name="product-specific-steps-for-aqua-security"></a>Termékspecifikus lépések az Aqua Security számára
+A módosítandó alaputasítások az Aqua Security [telepítési dokumentációjában](https://docs.aquasec.com/docs/openshift-red-hat)találhatók. Az itt futó lépések az Aqua telepítési dokumentációjával együtt fognak futni.
 
-Az első lépés a frissítendő szükséges SCCs megjegyzése. Ezek a jegyzetek megakadályozzák, hogy a fürt szinkronizálási Pod ne térjen át a SSCs változásaira.
+Az első lépés a frissítendő szükséges SCC-k jegyzetekkel való elkészülése. Ezek a jegyzetek megakadályozzák, hogy a fürt Szinkronizáló Pod jain visszaállítja az SSC-k módosításait.
 
 ```
 oc annotate scc hostaccess openshift.io/reconcile-protect=true
 oc annotate scc privileged openshift.io/reconcile-protect=true
 ```
 
-### <a name="step-1-prepare-prerequisites"></a>1\. lépés: előfeltételek előkészítése
-Ne felejtse el, hogy a fürt – rendszergazda szerepkör helyett ARO ügyfél-rendszergazdaként jelentkezzen be a fürtbe.
+### <a name="step-1-prepare-prerequisites"></a>1. lépés: Előfeltételek előkészítése
+Ne felejtsen el a fürtbe ARO-ügyfél-rendszergazdaként bejelentkezni a fürt-rendszergazdai szerepkör helyett.
 
 Hozza létre a projektet és a szolgáltatásfiókot.
 ```
@@ -62,21 +62,21 @@ oc new-project aqua-security
 oc create serviceaccount aqua-account -n aqua-security
 ```
 
-A fürt-olvasó szerepkör kiosztása helyett rendelje hozzá az ügyfél-rendszergazda-fürt szerepkört az Aqua-fiókhoz a következő paranccsal.
+Ahelyett, hogy a fürt-olvasó szerepkört rendelne hozzá, rendelje hozzá az ügyfél-admin-fürt szerepkört az aqua-fiókhoz a következő paranccsal.
 ```
 oc adm policy add-cluster-role-to-user customer-admin-cluster system:serviceaccount:aqua-security:aqua-account
 oc adm policy add-scc-to-user privileged system:serviceaccount:aqua-security:aqua-account
 oc adm policy add-scc-to-user hostaccess system:serviceaccount:aqua-security:aqua-account
 ```
 
-Folytassa az 1. lépésben megjelenő további utasítások követésével.  Ezek az utasítások ismertetik a titkos kód beállítását az Aqua beállításjegyzékben.
+Folytassa az 1.  Ezek az utasítások leírják az Aqua regiszter titkának beállítását.
 
-### <a name="step-2-deploy-the-aqua-server-database-and-gateway"></a>2\. lépés: az Aqua-kiszolgáló, az adatbázis és az átjáró üzembe helyezése
-Az Aqua-Console. YAML telepítéséhez kövesse az Aqua dokumentációjában ismertetett lépéseket.
+### <a name="step-2-deploy-the-aqua-server-database-and-gateway"></a>2. lépés: Az Aqua Server, adatbázis és átjáró telepítése
+Kövesse az Aqua dokumentációjában az aqua-console.yaml telepítéséhez mellékelt lépéseket.
 
-Módosítsa a megadott `aqua-console.yaml`.  Távolítsa el az első két címkézett objektumot, `kind: ClusterRole` és `kind: ClusterRoleBinding`.  Ezek az erőforrások nem jönnek létre, mert az ügyfél rendszergazdája jelenleg nem rendelkezik engedéllyel a `ClusterRole` és `ClusterRoleBinding` objektumok módosításához.
+Módosítsa a `aqua-console.yaml`megadott at.  Távolítsa el a két `kind: ClusterRole` tetejére feliratozott objektumot, és `kind: ClusterRoleBinding`a .  Ezek az erőforrások nem jönnek létre, mivel az ügyfél-rendszergazda `ClusterRole` `ClusterRoleBinding` jelenleg nem rendelkezik módosítási engedéllyel és objektumokkal.
 
-A második módosítás a `aqua-console.yaml``kind: Route` részébe kerül. Cserélje le a `kind: Route` objektum következő YAML a `aqua-console.yaml` fájlban.
+A második módosítás a `kind: Route` `aqua-console.yaml`. Cserélje le a következő `kind: Route` yaml `aqua-console.yaml` az objektumot a fájlban.
 ```
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -98,52 +98,52 @@ spec:
   wildcardPolicy: None
 ```
 
-Kövesse a további utasításokat.
+Kövesse a többi utasítást.
 
-### <a name="step-3-login-to-the-aqua-server"></a>3\. lépés: bejelentkezés az Aqua-kiszolgálóra
-Ez a szakasz semmilyen módon nincs módosítva.  Kövesse az Aqua dokumentációját.
+### <a name="step-3-login-to-the-aqua-server"></a>3. lépés: Bejelentkezés az Aqua Szerverre
+Ez a szakasz semmilyen módon nem módosul.  Kövesse az Aqua dokumentációját.
 
-Használja az alábbi parancsot az Aqua Console-címek lekéréséhez.
+Az Aqua Console címének leéséhez használja a következő parancsot.
 ```
 oc get route aqua-web -n aqua-security
 ```
 
-### <a name="step-4-deploy-aqua-enforcers"></a>4\. lépés: Aqua-végrehajtók üzembe helyezése
-Állítsa be a következő mezőket a végrehajtók telepítésekor:
+### <a name="step-4-deploy-aqua-enforcers"></a>4. lépés: Aqua enforcers telepítése
+A kényszerítők telepítésekor állítsa be a következő mezőket:
 
 | Mező          | Érték         |
 | -------------- | ------------- |
 | Orchestrator   | OpenShift     |
-| ServiceAccount | Aqua – fiók  |
-| Project        | Aqua – biztonság |
+| Szolgáltatásfiók | aqua-számla  |
+| Project        | aqua-biztonság |
 
-## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Termékspecifikus lépések a Prisma-felhőhöz/Twistlock
+## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Termékspecifikus lépések a Prisma Cloud / Twistlock-hoz
 
-A módosítandó alapszintű utasítások a [Prisma Cloud Deployment dokumentációjában](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html) találhatók.
+Az alaputasítások, amelyeket módosítani fogunk, megtalálhatók a [Prisma Cloud telepítési dokumentációjában](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html)
 
-Először telepítse a `twistcli` eszközt a "Prisma-felhő telepítése" és a "Prisma Cloud Software letöltése" című részben leírtak szerint.
+Először telepítse `twistcli` az eszközt a "Prisma Cloud telepítése" és a "Prisma Cloud szoftver letöltése" című részben leírtak szerint.
 
 Új OpenShift-projekt létrehozása
 ```
 oc new-project twistlock
 ```
 
-Hagyja ki a "Prisma Cloud images to an Private Registry" (nem kötelező) szakaszát. Az Azure Red Hat Openshift nem fog működni. Használja helyette az online beállításjegyzéket.
+Ugorja át a "Nyomja meg a Prisma Cloud-lemezképeket egy privát beállításjegyzékbe" című opcionális szakaszt. Az Azure Red Hat Openshift nem fog működni. Használja inkább az online rendszerleíró adatbázist.
 
-Az alábbiakban ismertetett javítások alkalmazásával követheti a hivatalos dokumentációt.
-Kezdje a "konzol telepítése" szakasszal.
+A hivatalos dokumentációt az alábbiakban ismertetett javítások alkalmazása közben követheti.
+Kezdje a "Konzol telepítése" című részével.
 
 ### <a name="install-console"></a>Konzol telepítése
 
-A 2. lépésben a `oc create -f twistlock_console.yaml` során hibaüzenet jelenik meg a névtér létrehozásakor.
-Nyugodtan figyelmen kívül hagyhatja, hogy a névtér korábban a `oc new-project` parancs használatával lett létrehozva.
+Lépés `oc create -f twistlock_console.yaml` során a 2.
+Nyugodtan figyelmen kívül hagyhatja, a névtér már korábban létre a `oc new-project` parancsot.
 
-`azure-disk` használata a tárolási típushoz.
+Tárolótípushoz használható. `azure-disk`
 
-### <a name="create-an-external-route-to-console"></a>Külső útvonal létrehozása a konzolon
+### <a name="create-an-external-route-to-console"></a>Külső útvonal létrehozása a konzolhoz
 
-Követheti a dokumentációt, vagy az alábbi utasításokat, ha az oC-parancsot szeretné előnyben részesíteni.
-Másolja a következő útvonal-definíciót egy twistlock_route. YAML nevű fájlba a számítógépen
+Akkor sem követi a dokumentációt, vagy az alábbi utasításokat, ha inkább az oc parancsot.
+Másolja a következő útvonaldefiníciót egy twistlock_route.yaml nevű fájlba a számítógépen
 ```
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -164,20 +164,20 @@ spec:
     weight: 100
   wildcardPolicy: None
 ```
-Ezután futtassa a parancsot:
+majd fuss:
 ```
 oc create -f twistlock_route.yaml
 ```
 
-A Twistlock-konzolhoz rendelt URL-cím a következő paranccsal kérhető le: `oc get route twistlock-console -n twistlock`
+Ezzel a paranccsal kaphatja meg a Twistlock konzolhoz rendelt URL-címet:`oc get route twistlock-console -n twistlock`
 
 ### <a name="configure-console"></a>Konzol konfigurálása
 
 Kövesse a Twistlock dokumentációját.
 
-### <a name="install-defender"></a>A Defender telepítése
+### <a name="install-defender"></a>Defender telepítése
 
-A 2. lépésben `oc create -f defender.yaml` során hibaüzeneteket kap a fürt szerepkörének és a fürt szerepkörének kötésének létrehozásakor.
+A `oc create -f defender.yaml` 2.
 Figyelmen kívül hagyhatja őket.
 
-A védők csak számítási csomópontokon lesznek telepítve. A csomópont-választóval nem kell korlátoznia őket.
+A jogvédők csak számítási csomópontokon lesznek telepítve. Nem kell korlátozni őket egy csomópont választó.

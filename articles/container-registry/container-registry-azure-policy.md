@@ -1,59 +1,59 @@
 ---
-title: Megfelelőség a Azure Policy használatával
-description: Beépített szabályzatok kiosztása Azure Policyban az Azure Container-nyilvántartások megfelelőségének naplózásához
+title: Megfelelőség az Azure-szabályzat használatával
+description: Az Azure-tároló-beállításjegyzékek megfelelőségének naplózásához rendeljen beépített szabályzatokat az Azure-szabályzatokban
 ms.topic: article
 ms.date: 02/26/2020
 ms.openlocfilehash: 012cd013de1c60fddcfb28e4bca96d761ada41ab
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78330736"
 ---
-# <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Az Azure Container-nyilvántartások megfelelőségének naplózása Azure Policy használatával
+# <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Az Azure-tároló-beállításjegyzékek megfelelőségének naplózása az Azure-szabályzat használatával
 
-[Azure Policy](../governance/policy/overview.md) a szabályzatok létrehozásához, hozzárendeléséhez és kezeléséhez használt Azure-szolgáltatás. A szabályzatok különböző szabályokat és hatásokat kényszerítenek ki az erőforrásokon, hogy azok megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek.
+[Az Azure Policy](../governance/policy/overview.md) egy azure-beli szolgáltatás, amelyet szabályzatok létrehozására, hozzárendeléséhez és kezeléséhez használ. A szabályzatok különböző szabályokat és hatásokat kényszerítenek ki az erőforrásokon, hogy azok megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek.
 
-Ez a cikk a Azure Container Registry beépített szabályzatait (előzetes verzió) ismerteti. Ezekkel a házirendekkel naplózhatja az új és a meglévő beállításjegyzékeket a megfelelőség érdekében.
+Ez a cikk bemutatja az Azure Container Registry beépített szabályzatait (előzetes verzió). Ezekkel a házirendekkel naplózhato az új és meglévő megfelelőségi jegyzékeket.
 
-A Azure Policy használatához nem számítunk fel díjat.
+Az Azure-szabályzat használatáért nem számítunk fel díjat.
 
 > [!IMPORTANT]
 > Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
-## <a name="built-in-policy-definitions"></a>Beépített szabályzat-definíciók
+## <a name="built-in-policy-definitions"></a>Beépített házirend-definíciók
 
-A következő beépített szabályzat-definíciók a Azure Container Registryra vonatkoznak:
+A következő beépített szabályzat-definíciók az Azure Container Registry-re vonatkoznak:
 
 [!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/azure-policy-samples-policies-container-registry.md)]
 
-Lásd még a beépített hálózati házirend-definíció: [[előzetes verzió] Container Registry a virtuális hálózati szolgáltatás végpontját kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
+Lásd még a beépített hálózati házirend-definíció: [[Preview] Container Registry kell használnia a virtuális hálózati szolgáltatás végpontját.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78)
 
 ## <a name="assign-policies"></a>Szabályzatok hozzárendelése
 
-* Rendeljen szabályzatokat a [Azure Portal](../governance/policy/assign-policy-portal.md), az [Azure CLI](../governance/policy/assign-policy-azurecli.md), egy [Resource Manager-sablon](../governance/policy/assign-policy-template.md)vagy a Azure Policy SDK-k használatával.
-* Hatókör: szabályzat-hozzárendelés egy erőforráscsoport, egy előfizetés vagy egy [Azure felügyeleti csoport](../governance/management-groups/overview.md)számára. A tároló beállításjegyzék-házirendjének hozzárendelései a hatókörön belüli meglévő és új tároló-nyilvántartásokra vonatkoznak.
-* Bármikor engedélyezheti vagy letilthatja a [szabályzatok kényszerítését](../governance/policy/concepts/assignment-structure.md#enforcement-mode) .
+* Házirendek hozzárendelése az [Azure Portalon,](../governance/policy/assign-policy-portal.md)az [Azure CLI,](../governance/policy/assign-policy-azurecli.md)a [Resource Manager-sablon](../governance/policy/assign-policy-template.md)vagy az Azure Policy SDK-k használatával.
+* Szabályzat-hozzárendelés hatóköre egy erőforráscsoporthoz, egy előfizetéshez vagy egy [Azure felügyeleti csoporthoz.](../governance/management-groups/overview.md) A tárolóbeállítási házirend-hozzárendelések a hatókörön belüli meglévő és új tárolójegyzékekre vonatkoznak.
+* Bármikor engedélyezheti vagy letilthatja a [házirend-kényszerítést.](../governance/policy/concepts/assignment-structure.md#enforcement-mode)
 
 > [!NOTE]
-> A szabályzatok hozzárendelése vagy frissítése után időbe telik, amíg a hozzárendelés a meghatározott hatókörben lévő erőforrásokra lesz alkalmazva. Tekintse meg a [szabályzat-próbaverziós eseményindítókkal](../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)kapcsolatos információkat.
+> A házirend hozzárendelése vagy frissítése után némi időt vesz igénybe, amíg a hozzárendelés a megadott hatókör erőforrásaira lesz alkalmazva. Tekintse meg a [házirend-értékelési eseményindítókról](../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)szóló információkat.
 
-## <a name="review-policy-compliance"></a>Szabályzat megfelelőségének áttekintése
+## <a name="review-policy-compliance"></a>A szabályzatok megfelelőségének áttekintése
 
-A szabályzat-hozzárendelések által generált megfelelőségi információk a Azure Portal, az Azure parancssori eszközei vagy a Azure Policy SDK-k használatával érhetők el. Részletekért lásd: [Azure-erőforrások megfelelőségi adatainak beolvasása](../governance/policy/how-to/get-compliance-data.md).
+Az Azure Portalon, az Azure parancssori eszközein vagy az Azure Policy SDK-kon keresztül elérheti a szabályzat-hozzárendelések által létrehozott megfelelőségi információkat. További információt az [Azure-erőforrások megfelelőségi adatainak beszereznie.](../governance/policy/how-to/get-compliance-data.md)
 
-Ha egy erőforrás nem megfelelő, számos lehetséges oka lehet. Az ok megállapításához vagy a felelős változás megkereséséhez tekintse meg a [nem megfelelőség megállapítása](../governance/policy/how-to/determine-non-compliance.md)című témakört.
+Ha egy erőforrás nem megfelelő, számos oka lehet. Az ok meghatározásához vagy a változás felelősének megkereséséhez [olvassa el a Meg nem felelés megállapítása](../governance/policy/how-to/determine-non-compliance.md)című témakört.
 
-### <a name="policy-compliance-in-the-portal"></a>Szabályzat megfelelősége a portálon:
+### <a name="policy-compliance-in-the-portal"></a>A házirendek megfelelősége a portálon:
 
-1. Válassza a **minden szolgáltatás**lehetőséget, és keresse meg a **házirendet**.
-1. Válassza a **megfelelőség**lehetőséget.
-1. A szűrők használatával korlátozhatja a megfelelőségi állapotokat, vagy megkeresheti a szabályzatokat ![a portálon](./media/container-registry-azure-policy/azure-policy-compliance.png).
-1. Válasszon ki egy házirendet az összesített megfelelőségi adatok és események áttekintéséhez. Ha szükséges, válasszon ki egy adott beállításjegyzéket az erőforrás-megfelelőséghez.
+1. Válassza a **Minden szolgáltatás**lehetőséget, és keresse meg a **Házirend**kifejezést.
+1. Válassza a **Megfelelőség**lehetőséget.
+1. A szűrők segítségével korlátozhatja a megfelelőségi állapotokat, vagy megkeresheti a szabályzatok ![megfelelőségét a portálon.](./media/container-registry-azure-policy/azure-policy-compliance.png)
+1. Válasszon ki egy szabályzatot az összesített megfelelőségi részletek és események áttekintéséhez. Ha szükséges, válasszon ki egy adott rendszerleíró adatbázist az erőforrás-megfelelőséghez.
 
-### <a name="policy-compliance-in-the-azure-cli"></a>Szabályzatok megfelelősége az Azure CLI-ben
+### <a name="policy-compliance-in-the-azure-cli"></a>Házirend-megfelelőség az Azure CLI-ben
 
-Az Azure CLI-vel is lekérheti a megfelelőségi adatgyűjtést. Például használja az az [Policy-hozzárendelési lista](/cli/azure/policy/assignment#az-policy-assignment-list) parancsot a CLI-ben az alkalmazott Azure Container Registry szabályzatok házirend-azonosítóinak beszerzéséhez:
+Az Azure CLI használatával megfelelőségi adatokat is beszerezhet. Például az [az policy assignment list](/cli/azure/policy/assignment#az-policy-assignment-list) parancs a CLI-ben az Azure Container Registry szabályzatok alkalmazott házirend-azonosítóinak lekérni:
 
 ```azurecli
 az policy assignment list --query "[?contains(displayName,'Container Registries')].{name:displayName, ID:id}" --output table
@@ -68,14 +68,14 @@ Name                                                                            
 [Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
-Ezután futtassa az az [Policy State List](/cli/azure/policy/state#az-policy-state-list) parancsot az adott házirend-azonosítóhoz tartozó összes erőforrás JSON-formátumú megfelelőségi állapotának visszaküldéséhez:
+Ezután futtassa az [az házirendállapot-listát](/cli/azure/policy/state#az-policy-state-list) a JSON-formátumú megfelelőségi állapot visszaadásához egy adott házirend-azonosítóban szereplő összes erőforráshoz:
 
 ```azurecli
 az policy state list \
   --resource <policyID>
 ```
 
-Vagy futtassa az [az Policy State List](/cli/azure/policy/state#az-policy-state-list) parancsot egy adott beállításjegyzék-erőforrás JSON-formátumú megfelelőségi állapotának visszaküldéséhez, például *myregistry*:
+Vagy [futtassa az az házirendállapot-listát](/cli/azure/policy/state#az-policy-state-list) egy adott rendszerleíró adatbázis JSON-formátumú megfelelőségi állapotának, például a myregistry nak a visszaadására: *myregistry*
 
 ```azurecli
 az policy state list \
@@ -85,13 +85,13 @@ az policy state list \
  --resource-group myresourcegroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ a Azure Policy [definíciói](../governance/policy/concepts/definition-structure.md) és [hatásairól](../governance/policy/concepts/effects.md)
+* További információ az Azure-szabályzat [definícióiról](../governance/policy/concepts/definition-structure.md) és [hatásairól](../governance/policy/concepts/effects.md)
 
-* [Egyéni szabályzat-definíció](../governance/policy/tutorials/create-custom-policy-definition.md) létrehozása
+* Egyéni [házirend-definíció](../governance/policy/tutorials/create-custom-policy-definition.md) létrehozása
 
-* További információ az Azure [irányítási képességeiről](../governance/index.yml)
+* További információ az Azure [cégirányítási képességeiről](../governance/index.yml)
 
 
 <!-- LINKS - External -->

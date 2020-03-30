@@ -5,10 +5,10 @@ ms.service: azure-monitor
 ms.topic: include
 ms.date: 01/19/2019
 ms.openlocfilehash: a108cb5b7e9ec32c83c6ed6d3c4f0be03142393f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179683"
 ---
-Lekérdezések létrehozása, és elemezheti a naplófájlok adatait az Azure monitorban kattintva a log analytics használatával **naplók** a a **Azure Monitor** menü az Azure Portalon. 
+A naplóelemzés segítségével lekérdezéseket hozhat létre, és elemezheti a naplóadatokat az Azure Monitorban az **Azure Portalon** található Naplók **menüben.** 

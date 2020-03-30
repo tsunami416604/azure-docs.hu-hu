@@ -1,6 +1,6 @@
 ---
-title: FELSŐ határ Azure Cosmos DB lekérdezési nyelven
-description: Megtudhatja, hogyan adja vissza a Azure Cosmos DB a PLAFONt tartalmazó SQL System függvényt a megadott numerikus kifejezésnél nagyobb vagy azzal egyenlő legkisebb egész szám értékkel.
+title: PLAFON az Azure Cosmos DB lekérdezési nyelvében
+description: Ismerje meg, hogyan az AZURE Cosmos DB CEILING SQL rendszerfüggvénye a megadott numerikus kifejezésnél nagyobb vagy azzal egyenlő legkisebb egész értéket adja vissza.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 81f113aa51a7f739b506ec7e3eb5bf2cb9f49a03
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302644"
 ---
-# <a name="ceiling-azure-cosmos-db"></a>FELSŐ határ (Azure Cosmos DB)
- A legkisebb egész értéket ad vissza, nagyobb vagy egyenlő a megadott numerikus kifejezés.  
+# <a name="ceiling-azure-cosmos-db"></a>MENNYEZET (Azure Cosmos DB)
+ A megadott numerikus kifejezésnél nagyobb vagy azzal egyenlő legkisebb egész értéket adja eredményül.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,21 +26,21 @@ CEILING (<numeric_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expr*  
-   A numerikus kifejezés.  
+   Ez egy numerikus kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  A numerikus kifejezést ad vissza.  
+  Numerikus kifejezést ad eredményül.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa a pozitív numerikus, negatív és nulla értékeket jeleníti meg az `CEILING` függvénnyel.  
+  A következő példa pozitív numerikus, negatív `CEILING` és nulla értékeket mutat be a függvénnyel.  
   
 ```sql
 SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3  
 ```  
   
- Íme az eredményhalmaz.  
+ Itt van az eredményhalmaz.  
   
 ```json
 [{c1: 124, c2: -123, c3: 0}]  
@@ -48,10 +48,10 @@ SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
+Ez a rendszerfunkció egy [tartományindex](index-policy.md#includeexclude-strategy)előnyeit élvezi .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Matematikai függvények Az Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)

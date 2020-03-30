@@ -1,6 +1,6 @@
 ---
-title: Az Azure Adatkezelő-összekötő használatával Apache Spark az Azure-Adatkezelő és a Spark-fürtök közötti adatáthelyezést.
-description: Ebből a témakörből megtudhatja, hogyan helyezhet át adatáthelyezést az Azure Adatkezelő és Apache Spark-fürtök között.
+title: Az Azure Data Explorer-összekötő az Apache Spark hoz adatok áthelyezése az Azure Data Explorer és a Spark-fürtök között.
+description: Ez a témakör bemutatja, hogyan helyezheti át az adatokat az Azure Data Explorer és az Apache Spark-fürtök között.
 author: orspod
 ms.author: orspodek
 ms.reviewer: michazag
@@ -8,51 +8,51 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 1/14/2020
 ms.openlocfilehash: b358287664ac6d6a3b641e1ab63073810ceb4c40
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208597"
 ---
-# <a name="azure-data-explorer-connector-for-apache-spark"></a>Azure Adatkezelő-összekötő a Apache Sparkhoz
+# <a name="azure-data-explorer-connector-for-apache-spark"></a>Azure Data Explorer-összekötő az Apache Sparkhoz
 
-A [Apache Spark](https://spark.apache.org/) egy egységes analitikai motor a nagyméretű adatfeldolgozáshoz. Az Azure Adatkezelő egy gyors, teljes körűen felügyelt adatelemzési szolgáltatás, amely nagy mennyiségű adattal kapcsolatos valós idejű elemzést biztosít. 
+[Az Apache Spark](https://spark.apache.org/) egy egységes elemzési motor a nagyméretű adatfeldolgozáshoz. Az Azure Data Explorer egy gyors, teljes körűen felügyelt adatelemzési szolgáltatás, amely nagy mennyiségű adat valós idejű elemzéséhez szolgál. 
 
-A Sparkhoz készült Azure Adatkezelő Connector egy [nyílt forráskódú projekt](https://github.com/Azure/azure-kusto-spark) , amely bármely Spark-fürtön futtatható. Az adatforrást és az adatfogadót valósítja meg az Azure-Adatkezelő és a Spark-fürtökön tárolt adatáthelyezéshez. Az Azure Adatkezelő és Apache Spark használatával gyors és méretezhető alkalmazásokat hozhat létre, amelyek az adatvezérelt forgatókönyveket célozzák meg. Például a Machine learning (ML), a Extract-Transform-Load (ETL) és a Log Analytics. Az összekötővel az Azure Adatkezelő a standard Spark forrás és a fogadó művelet (például írás, olvasás és writeStream) esetében érvényes adattár lesz.
+Az Azure Data Explorer-összekötő a Spark egy [nyílt forráskódú projekt,](https://github.com/Azure/azure-kusto-spark) amely bármely Spark-fürtön futtatható. Adatforrás- és adatgyűjtőt valósít meg az Azure Data Explorer és a Spark-fürtök közötti adatok áthelyezéséhez. Az Azure Data Explorer és az Apache Spark használatával gyors és méretezhető alkalmazásokat hozhat létre, amelyek adatvezérelt forgatókönyveket céloznak meg. Például a gépi tanulás (ML), Extract-Transform-Load (ETL) és a Log Analytics. Az összekötővel az Azure Data Explorer a szabványos Spark-forrás- és fogadóműveletek, például az írási, olvasási és writestream-műveletek érvényes adattárává válik.
 
-Az Azure Adatkezelő akár batch-, akár streaming módban is írhat. Az Azure Adatkezelő beolvasása támogatja az oszlopok metszését és a predikátum pushdown, amely az Azure-Adatkezelőban lévő adatok szűrésére, az átvitt adatok mennyiségének csökkentésére használható.
+Írhat az Azure Data Explorer vagy kötegelt vagy streamelési módban. Az Azure Data Explorer ből történő olvasás támogatja az oszlopmetszést és az alapleküldéses leküldéses műveleteket, amelyek szűrik az adatokat az Azure Data Explorerben, csökkentve az átvitt adatok mennyiségét.
 
-Ez a témakör ismerteti, hogyan telepítheti és konfigurálhatja az Azure Adatkezelő Spark-összekötőt, és hogyan helyezhet át az Azure Adatkezelő és a Apache Spark-fürtök között.
+Ez a témakör ismerteti, hogyan telepítheti és konfigurálhatja az Azure Data Explorer Spark-összekötőt, és hogyan helyezheti át az adatokat az Azure Data Explorer és az Apache Spark-fürtök között.
 
 > [!NOTE]
-> Bár az alábbi példák némelyike egy [Azure Databricks](https://docs.azuredatabricks.net/) Spark-fürtre vonatkozik, az Azure adatkezelő Spark-összekötő nem veszi figyelembe a közvetlen függőségeket a Databricks vagy más Spark-disztribúción.
+> Bár az alábbi példák egy [Azure Databricks](https://docs.azuredatabricks.net/) Spark-fürtre hivatkoznak, az Azure Data Explorer Spark-összekötő nem vesz közvetlen függőséget databricks vagy bármely más Spark-disztribúció.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Azure Adatkezelő-fürt és-adatbázis létrehozása](/azure/data-explorer/create-cluster-database-portal) 
+* [Azure Data Explorer-fürt és-adatbázis létrehozása](/azure/data-explorer/create-cluster-database-portal) 
 * Spark-fürt létrehozása
-* Az Azure Adatkezelő Connector könyvtárának telepítése:
-    * Előre elkészített kódtárak a [Spark 2,4, a Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases) 
-    * [Maven-tárház](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
-* [Maven 3. x](https://maven.apache.org/download.cgi) telepítve
+* Az Azure Data Explorer összekötőkönyvtárának telepítése:
+    * Előre elkészített könyvtárak a [Spark 2.4, Scala 2.11](https://github.com/Azure/azure-kusto-spark/releases) számára 
+    * [Maven-repo](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
+* [Maven 3.x](https://maven.apache.org/download.cgi) telepítve
 
 > [!TIP]
-> a 2.3. x verziók szintén támogatottak, de előfordulhat, hogy a Pom. XML függőségeiben módosításokat igényelnek.
+> A 2.3.x verziók is támogatottak, de szükség lehet a pom.xml függőségek módosítására.
 
 ## <a name="how-to-build-the-spark-connector"></a>A Spark-összekötő létrehozása
 
 > [!NOTE]
-> Ez a lépés nem kötelező. Ha előre elkészített kódtárakat használ, ugorjon a [Spark-fürt beállítása](#spark-cluster-setup)lehetőségre.
+> Ez a lépés nem kötelező. Ha előre elkészített könyvtárakat használ, nyissa meg a [Spark-fürt telepítőjét.](#spark-cluster-setup)
 
-### <a name="build-prerequisites"></a>Előfeltételek létrehozása
+### <a name="build-prerequisites"></a>Előfeltételek összeállítása
 
-1. Telepítse a [függőségekben](https://github.com/Azure/azure-kusto-spark#dependencies) felsorolt kódtárakat, például a következő [Kusto Java SDK](/azure/kusto/api/java/kusto-java-client-library) -kódtárakat:
-    * [Kusto-alapú adatügyfél](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
-    * [Kusto-ügyfél betöltése](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
+1. Telepítse a függőségekben felsorolt [könyvtárakat,](https://github.com/Azure/azure-kusto-spark#dependencies) beleértve a következő [Kusto Java SDK-tárakat:](/azure/kusto/api/java/kusto-java-client-library)
+    * [Kusto adatügyfél](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
+    * [Kusto Betöltés ügyfél](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 
-1. A Spark-összekötő létrehozásához tekintse meg [ezt a forrást](https://github.com/Azure/azure-kusto-spark) .
+1. Tekintse meg ezt a [forrást](https://github.com/Azure/azure-kusto-spark) a Spark-összekötő létrehozásához.
 
-1. A Maven-projekt definícióit használó Scala/Java-alkalmazásokhoz az alábbi összetevővel kell összekapcsolni az alkalmazást (a legújabb verzió eltérő lehet):
+1. A Maven projektdefiníciókat használó Scala/Java alkalmazások esetében kapcsolja össze az alkalmazást a következő műtermékkel (a legújabb verzió eltérő lehet):
     
     ```Maven
        <dependency>
@@ -62,73 +62,73 @@ Ez a témakör ismerteti, hogyan telepítheti és konfigurálhatja az Azure Adat
        </dependency>
     ```
 
-### <a name="build-commands"></a>Összeállítási parancsok
+### <a name="build-commands"></a>Build parancsok
 
-A jar létrehozása és az összes teszt futtatása:
+Építeni jar és fuss minden vizsgálatot:
 
 ```
 mvn clean package
 ```
 
-A jar létrehozásához futtassa az összes tesztet, és telepítse a jar-t a helyi Maven-tárházba:
+Jar készítéséhez futtassa az összes tesztet, és telepítse a jar-t a helyi Maven tárházba:
 
 ```
 mvn clean install
 ```
 
-További információ: [összekötő használata](https://github.com/Azure/azure-kusto-spark#usage).
+További információt az összekötő használata című témakörben [talál.](https://github.com/Azure/azure-kusto-spark#usage)
 
 ## <a name="spark-cluster-setup"></a>Spark-fürt beállítása
 
 > [!NOTE]
-> A következő lépések végrehajtásakor ajánlott az Azure Adatkezelő Spark-összekötő legújabb kiadásának használata.
+> Javasoljuk, hogy a következő lépések végrehajtásakor használja a legújabb Azure Data Explorer Spark-összekötő kiadás.
 
-1. A következő Spark-fürt beállításainak konfigurálása a Spark 2.4.4 és a Scala 2,11 használatával Azure Databricks fürt alapján:
+1. Konfigurálja a következő Spark-fürtbeállításokat az Azure Databricks-fürt alapján a Spark 2.4.4-es és scala 2.11-es használatával:
 
-    ![Databricks-fürt beállításai](media/spark-connector/databricks-cluster.png)
+    ![Databricks fürt beállításai](media/spark-connector/databricks-cluster.png)
     
-1. Telepítse a legújabb Spark-kusto-Connector függvénytárat a Mavenből:
+1. Telepítse a legújabb Spark-kusto-csatlakozó könyvtárat a Maven-től:
     
-    ![importálási könyvtárakat](media/spark-connector/db-libraries-view.png) ![válassza a Spark-Kusto-Connector](media/spark-connector/db-dependencies.png)
+    ![Könyvtárak](media/spark-connector/db-libraries-view.png) ![importálása A Spark-Kusto-Connector kiválasztása](media/spark-connector/db-dependencies.png)
 
-1. Ellenőrizze, hogy telepítve van-e az összes szükséges könyvtár:
+1. Ellenőrizze, hogy az összes szükséges kódtár telepítve van-e:
 
-    ![A telepített könyvtárak ellenőrzése](media/spark-connector/db-libraries-view.png)
+    ![Telepített tárak ellenőrzése](media/spark-connector/db-libraries-view.png)
 
-1. JAR-fájl használatával történő telepítéshez ellenőrizze, hogy a további függőségek telepítve vannak-e:
+1. JAR-fájl használatával történő telepítés esetén ellenőrizze, hogy további függőségek vannak-e telepítve:
 
     ![Függőségek hozzáadása](media/spark-connector/db-not-maven.png)
 
 ## <a name="authentication"></a>Hitelesítés
 
-Az Azure Adatkezelő Spark-összekötő lehetővé teszi a Azure Active Directory (Azure AD) hitelesítését az alábbi módszerek egyikének használatával:
-* [Azure ad-alkalmazás](#azure-ad-application-authentication)
-* [Azure ad hozzáférési jogkivonat](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token)
-* [Eszköz hitelesítése](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (nem éles környezetekben)
-* [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault) az Key Vault erőforrás eléréséhez, telepítse az Azure-kulcstartó csomagot, és adja meg az alkalmazás hitelesítő adatait.
+Az Azure Data Explorer Spark-összekötő lehetővé teszi az Azure Active Directoryval (Azure AD) való hitelesítést az alábbi módszerek egyikével:
+* [Egy Azure AD-alkalmazás](#azure-ad-application-authentication)
+* [Egy Azure AD-hozzáférési jogkivonat](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token)
+* [Eszközhitelesítés](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (nem éles környezetben)
+* Egy [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault) a Key Vault erőforrás eléréséhez telepítse az azure-keyvault csomagot, és adja meg az alkalmazás hitelesítő adatait.
 
 ### <a name="azure-ad-application-authentication"></a>Azure AD-alkalmazás hitelesítése
 
-Az Azure AD-alkalmazás hitelesítése a legegyszerűbb és leggyakoribb hitelesítési módszer, és az Azure Adatkezelő Spark-összekötő esetében ajánlott.
+Az Azure AD-alkalmazás hitelesítése a legegyszerűbb és leggyakoribb hitelesítési módszer, és ajánlott az Azure Data Explorer Spark-összekötő.
 
 |Tulajdonságok  |Leírás  |
 |---------|---------|
-|**KUSTO_AAD_CLIENT_ID**     |   Azure AD-alkalmazás (ügyfél) azonosítója.      |
-|**KUSTO_AAD_AUTHORITY_ID**     |  Azure AD-hitelesítési szolgáltató. Azure AD-címtár (bérlő) azonosítója.        |
-|**KUSTO_AAD_CLIENT_PASSWORD**    |    Az ügyfél Azure AD-alkalmazásának kulcsa.     |
+|**KUSTO_AAD_CLIENT_ID**     |   Azure AD alkalmazás (ügyfél) azonosító.      |
+|**KUSTO_AAD_AUTHORITY_ID**     |  Azure AD hitelesítési hatóság. Azure AD Könyvtár (bérlő) azonosító.        |
+|**KUSTO_AAD_CLIENT_PASSWORD**    |    Az Ügyfél Azure AD alkalmazáskulcsa.     |
 
-### <a name="azure-data-explorer-privileges"></a>Azure Adatkezelő-jogosultságok
+### <a name="azure-data-explorer-privileges"></a>Az Azure Data Explorer jogosultságai
 
-Adja meg a következő jogosultságokat egy Azure Adatkezelő-fürtön:
+Adja meg a következő jogosultságokat egy Azure Data Explorer-fürtön:
 
-* Az olvasáshoz (adatforráshoz) az Azure AD-identitásnak meg kell adnia a *megjelenítői* jogosultságokat a céladatbázis számára, vagy *rendszergazdai* jogosultságokkal kell rendelkeznie a célként megadott táblán.
-* Írás (adatfogadó) esetén az Azure AD-identitásnak betöltési *jogosultsággal kell rendelkeznie* a céladatbázis számára. Emellett a céladatbázis *felhasználói* jogosultságokkal is rendelkeznie kell, hogy új táblákat hozzon létre. Ha a céltábla már létezik, *rendszergazdai* jogosultságokat kell konfigurálnia a cél táblán.
+* Olvasás (adatforrás) olvasásához az Azure AD-identitás nak rendelkeznie kell *a* céladatbázis vagy *rendszergazdai* jogosultságok a céltáblán.
+* Írás (adatfogadó) az Azure AD-identitás kell *betöltési* jogosultságokat a céladatbázisban. Új táblák létrehozásához *felhasználói* jogosultságokkal is rendelkeznie kell a céladatbázisban. Ha a céltábla már létezik, *rendszergazdai* jogosultságokat kell konfigurálnia a céltáblán.
  
-Az Azure Adatkezelő rendszerbiztonsági szerepkörrel kapcsolatos további információkért lásd: [szerepköralapú hitelesítés](/azure/kusto/management/access-control/role-based-authorization). A biztonsági szerepkörök kezelésével kapcsolatban lásd: [biztonsági szerepkörök kezelése](/azure/kusto/management/security-roles).
+Az Azure Data Explorer főszerepköreiről a [szerepköralapú engedélyezés](/azure/kusto/management/access-control/role-based-authorization)című témakörben talál további információt. A biztonsági szerepkörök kezeléséről a [biztonsági szerepkörek kezelése](/azure/kusto/management/security-roles)című témakörben van.
 
-## <a name="spark-sink-writing-to-azure-data-explorer"></a>Spark-fogadó: az Azure Adatkezelőba való írás
+## <a name="spark-sink-writing-to-azure-data-explorer"></a>Spark-fogadó: írás az Azure Data Explorer be
 
-1. Fogadó paramétereinek beállítása:
+1. A fogadó paramétereinek beállítása:
 
      ```scala
     val KustoSparkTestAppId = dbutils.secrets.get(scope = "KustoDemos", key = "KustoSparkTestAppId")
@@ -142,7 +142,7 @@ Az Azure Adatkezelő rendszerbiztonsági szerepkörrel kapcsolatos további info
     val table = "StringAndIntTable"
     ```
 
-1. Spark-DataFrame írása az Azure Adatkezelő-fürtbe kötegként:
+1. A Spark DataFrame írása az Azure Data Explorer-fürtbe kötegként:
 
     ```scala
     import com.microsoft.kusto.spark.datasink.KustoSinkOptions
@@ -171,7 +171,7 @@ Az Azure Adatkezelő rendszerbiztonsági szerepkörrel kapcsolatos további info
          df.write.kusto(cluster, database, table, conf, sparkIngestionProperties)
     ```
    
-1. Adatfolyamok írása:
+1. Streamelési adatok írása:
 
     ```scala    
     import org.apache.spark.sql.streaming.Trigger
@@ -192,9 +192,9 @@ Az Azure Adatkezelő rendszerbiztonsági szerepkörrel kapcsolatos további info
           .start()
     ```
 
-## <a name="spark-source-reading-from-azure-data-explorer"></a>Spark-forrás: olvasás az Azure Adatkezelő
+## <a name="spark-source-reading-from-azure-data-explorer"></a>Spark-forrás: olvasás az Azure Data Explorerből
 
-1. [Kis mennyiségű adat](/azure/kusto/concepts/querylimits)olvasásakor adja meg az adat-lekérdezést:
+1. Kis [mennyiségű adat olvasásakor](/azure/kusto/concepts/querylimits)adja meg az adatlekérdezést:
 
     ```scala
     import com.microsoft.kusto.spark.datasource.KustoSourceOptions
@@ -223,8 +223,8 @@ Az Azure Adatkezelő rendszerbiztonsági szerepkörrel kapcsolatos további info
     display(df2)
     ```
 
-1. Nem kötelező: **Ha megadja** az átmeneti BLOB-tárolót (és nem az Azure-adatkezelő), a Blobok létrehozása a hívó feladata. Ez magában foglalja a tároló üzembe helyezését, a hozzáférési kulcsok elforgatását és az átmeneti összetevők törlését. 
-    A KustoBlobStorageUtils modul segítő függvényeket tartalmaz a Blobok törlésére a fiók és a tároló koordinátái és a fiók hitelesítő adatai alapján, vagy egy teljes SAS URL-címet, amely írási, olvasási és listázási engedélyekkel rendelkezik. Ha a megfelelő RDD már nincs rá szükség, az egyes tranzakciók átmeneti blob-összetevőket tárolnak egy külön címtárban. Ez a könyvtár a Spark-illesztőprogram csomópontján jelentett olvasási tranzakciós információs naplók részeként van rögzítve.
+1. Nem kötelező: **Ha** az átmeneti blob storage (és nem az Azure Data Explorer) a blobok jönnek létre a hívó felelőssége. Ez magában foglalja a tároló üzembe, a hozzáférési kulcsok elforgatását és az átmeneti összetevők törlését. 
+    A KustoBlobStorageUtils modul súgófüggvényeket tartalmaz a blobok fiók- és tárolókoordináták és fiókhitelesítő adatok alapján történő törléséhez, vagy egy teljes SAS URL-címet írási, olvasási és listaengedélyekkel. Ha a megfelelő RDD-re már nincs szükség, minden tranzakció egy külön könyvtárban tárolja az átmeneti blob-összetevőket. Ez a könyvtár a Spark-illesztőprogram-csomóponton jelentett olvasási tranzakciós információs naplók részeként kerül rögzítésre.
 
     ```scala
     // Use either container/account-key/account name, or container SaS
@@ -234,11 +234,11 @@ Az Azure Adatkezelő rendszerbiztonsági szerepkörrel kapcsolatos további info
     // val storageSas = dbutils.secrets.get(scope = "KustoDemos", key = "blobStorageSasUrl")
     ```
 
-    A fenti példában a Key Vault nem érhető el az összekötő felületén keresztül. a Databricks Secrets használata egyszerűbb módszert használ.
+    A fenti példában a Key Vault nem érhető el az összekötő felülethasználatával; a Databricks-titkok használatának egyszerűbb módszerét használják.
 
-1. Olvasás az Azure Adatkezelőról.
+1. Olvasson az Azure Data Explorerből.
 
-    * Ha **Megadja** az átmeneti blob Storage-tárolót, olvassa el az Azure adatkezelő az alábbiak szerint:
+    * **Ha biztosítja** az átmeneti blobstorage- t, olvassa el az Azure Data Explorer ből az alábbiak szerint:
 
         ```scala
          val conf3 = Map(
@@ -256,7 +256,7 @@ Az Azure Adatkezelő rendszerbiztonsági szerepkörrel kapcsolatos további info
         display(dfFiltered)
         ```
 
-    * Ha az **azure adatkezelő** biztosítja az átmeneti BLOB-tárolót, olvassa el az Azure adatkezelő az alábbi módon:
+    * Ha az **Azure Data Explorer** biztosítja az átmeneti blob-tárhelyet, olvassa el az Azure Data Explorer ből az alábbiak szerint:
     
         ```scala
         val dfFiltered = df2
@@ -270,5 +270,5 @@ Az Azure Adatkezelő rendszerbiztonsági szerepkörrel kapcsolatos további info
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az [Azure adatkezelő Spark-összekötőről](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
-* [Mintakód a Javához és a Pythonhoz](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)
+* További információ az [Azure Data Explorer Spark Connector-ról](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
+* [Példakód Java és Python hoz](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)

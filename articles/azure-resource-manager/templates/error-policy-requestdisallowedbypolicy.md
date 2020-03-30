@@ -1,24 +1,24 @@
 ---
 title: RequestDisallowedByPolicy hiba
-description: A RequestDisallowedByPolicy hibájának okát ismerteti az erőforrások Azure Resource Manager-vel való telepítésekor.
+description: A RequestDisallowedByPolicy hiba okának ismertetése az Azure Resource Manager használatával történő erőforrások üzembe helyezésekor.
 author: genlin
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 41581ba48da2f2e717c5abf2a749f8fd2b86ac06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75477667"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>RequestDisallowedByPolicy hiba az Azure erőforrás-házirendjével
 
-Ez a cikk a RequestDisallowedByPolicy hibájának okát mutatja be, továbbá megoldást nyújt erre a hibára.
+Ez a cikk ismerteti az oka a RequestDisallowedByPolicy hiba, ez is megoldást nyújt erre a hibára.
 
 ## <a name="symptom"></a>Hibajelenség
 
-Az üzembe helyezés során **RequestDisallowedByPolicy** hibaüzenet jelenhet meg, amely megakadályozza az erőforrások létrehozását. A következő példa a hibát mutatja be:
+A telepítés során előfordulhat, hogy egy **RequestDisallowedByPolicy** hiba, amely megakadályozza az erőforrások létrehozását. A következő példa a hibát mutatja be:
 
 ```json
 {
@@ -31,21 +31,21 @@ Az üzembe helyezés során **RequestDisallowedByPolicy** hibaüzenet jelenhet m
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Az üzembe helyezést blokkoló házirend részleteinek lekéréséhez használja a következő módszerek egyikét:
+A központi telepítést letiltó házirend részleteinek beolvasásához használja az alábbi módszerek egyikét:
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-A PowerShellben adja meg a házirend-azonosítót `Id` paraméterként, hogy lekérje a központi telepítést blokkoló házirend részleteit.
+A PowerShellben adja meg, `Id` hogy a szabályzat azonosítója, mint a paraméter a házirend, amely letiltotta a központi telepítést.
 
 ```powershell
 (Get-AzPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
 ```
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI-ben adja meg a házirend-definíció nevét:
+Az Azure CLI-ben adja meg a szabályzatdefiníció nevét:
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
@@ -53,8 +53,8 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>Megoldás
 
-Biztonság vagy megfelelőség esetén az előfizetési rendszergazdák olyan házirendeket rendelhetnek, amelyek korlátozzák az erőforrások központi telepítését. Előfordulhat például, hogy az előfizetése olyan házirenddel rendelkezik, amely megakadályozza a nyilvános IP-címek, a hálózati biztonsági csoportok, a felhasználó által megadott útvonalak vagy az útválasztási táblák létrehozását. A **jelenségek** szakaszban található hibaüzenet a szabályzat nevét mutatja.
-A probléma megoldásához tekintse át az erőforrás-házirendeket, és határozza meg, hogyan telepítse a szabályzatoknak megfelelő erőforrásokat.
+A biztonság vagy a megfelelőség érdekében az előfizetés-rendszergazdák olyan házirendeket rendelhetnek hozzá, amelyek korlátozzák az erőforrások üzembe helyezését. Előfordulhat például, hogy az előfizetés rendelkezik egy szabályzattal, amely megakadályozza a nyilvános IP-címek, a hálózati biztonsági csoportok, a felhasználó által definiált útvonalak vagy az útvonaltáblák létrehozását. A **Jelenség ek** szakaszban található hibaüzenet a házirend nevét jeleníti meg.
+A probléma megoldásához tekintse át az erőforrás-házirendeket, és határozza meg, hogyan helyezheti üzembe az okat megfelelő erőforrásokat.
 
 További információkért tekintse át a következő cikkeket:
 

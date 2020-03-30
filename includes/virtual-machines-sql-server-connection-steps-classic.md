@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 57f238a8f91df1271e91894b88a7f02118b1f123
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179063"
 ---
 ### <a name="determine-the-dns-name-of-the-virtual-machine"></a>A virtuális gép DNS-nevének meghatározása
@@ -32,5 +32,5 @@ Ha egy másik számítógépről szeretne az SQL Server Adatbázismotorhoz csatl
 3. A **Hitelesítés** mezőben válassza az **SQL Server-hitelesítés** lehetőséget.
 4. A **Bejelentkezés** mezőbe írja be egy korábbi feladatban létrehozott bejelentkezés nevét.
 5. A **Jelszó** mezőbe írja be a korábbi feladatban létrehozott bejelentkezés jelszavát.
-6. Kattintson a **Connect** (Csatlakozás) gombra.
+6. Kattintson a **Csatlakozás** gombra.
 

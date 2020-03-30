@@ -5,49 +5,49 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: fe4ecc237b56575f99844d3ec074225fadb69d3c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67673368"
 ---
-## <a name="configure-your-application-to-access-azure-storage"></a>Hozzáférés az Azure Storage-alkalmazás konfigurálása
-Két módon hitelesítheti az alkalmazását a tárolási szolgáltatásokhoz való hozzáférést:
+## <a name="configure-your-application-to-access-azure-storage"></a>Az alkalmazás konfigurálása az Azure Storage eléréséhez
+Kétféleképpen hitelesítheti az alkalmazást a Storage-szolgáltatások eléréséhez:
 
-* Megosztott kulcs: Megosztott kulcs használata csak tesztelési célokra
-* Közös hozzáférésű Jogosultságkód (SAS): SAS használata az éles környezetben
+* Megosztott kulcs: A megosztott kulcs használata csak tesztelési célokra
+* Megosztott hozzáférésű aláírás (SAS): SAS használata éles alkalmazásokhoz
 
 ### <a name="shared-key"></a>Megosztott kulcsos
-Megosztott kulcsos hitelesítés azt jelenti, hogy az alkalmazás fogja használni a fiók nevét és kulcsát tárolási szolgáltatásokhoz való hozzáférést. Ebben a tárban történő gyors bemutató céljából fogjuk használni az első lépések a megosztott kulcsos hitelesítés.
+A megosztott kulcsú hitelesítés azt jelenti, hogy az alkalmazás a fiók nevét és a fiókkulcsot fogja használni a Storage-szolgáltatások eléréséhez. A tár használatának gyors bemutatása céljából a megosztott kulcsú hitelesítést fogjuk használni az első lépésekben.
 
 > [!WARNING] 
-> **Csak tesztelési célra használja a megosztott kulcsos hitelesítés!** A fiók nevét és kulcsát, teljes írási/olvasási hozzáférést biztosíthat a társított Storage-fiók, amely minden olyan személy, amely letölti az alkalmazás jut el. Ez a **nem** egy jó gyakorlat, mivel így fennáll a veszélye a kulcs biztonsága sérült, nem megbízható ügyfelek kellene.
+> **Csak tesztelési célokra használjon megosztott kulcsos hitelesítést!** A fiók nevét és a fiókkulcsot, amely teljes olvasási/írási hozzáférést biztosít a társított storage-fiókhoz, minden olyan személy megkapja, aki letölti az alkalmazást. Ez **nem** jó gyakorlat, mivel azt kockáztatja, hogy a kulcs sérült a nem megbízható ügyfelek.
 > 
 > 
 
-Megosztott kulcsos hitelesítés használatakor létrehozhat egy [kapcsolati karakterlánc](../articles/storage/common/storage-configure-connection-string.md). A kapcsolati karakterlánc áll:  
+A megosztott kulcsú hitelesítés használataesetén létrehoz egy [kapcsolati karakterláncot.](../articles/storage/common/storage-configure-connection-string.md) A kapcsolati karakterlánc a következőkből áll:  
 
-* A **DefaultEndpointsProtocol** – kiválaszthatja a HTTP vagy HTTPS PROTOKOLLT. HTTPS-en keresztül azonban erősen ajánlott.
-* A **fióknév** – a tárfiók nevét
-* A **Fiókkulcs** – az a [az Azure Portal](https://portal.azure.com), lépjen a tárfiókhoz, és kattintson a **kulcsok** ikonra kattintva keresse meg ezt az információt.
-* (Nem kötelező) **EndpointSuffix** -tárolási szolgáltatások különböző végpont utótagok, például az Azure China vagy az Azure Cégirányítási régiókban szolgál.
+* A **DefaultEndpointsProtocol** - választhat HTTP vagy HTTPS. A HTTPS használata azonban erősen ajánlott.
+* A **fiók neve** - a tárfiók neve
+* A **fiókkulcs** – Az [Azure Portalon](https://portal.azure.com)keresse meg a tárfiókot, és kattintson a **Kulcsok** ikonra az adatok megkereséséhez.
+* (Nem kötelező) **EndpointSuffix** – Ez a tárolási szolgáltatások különböző végpont-utótagok, például az Azure China vagy az Azure Governance tárolószolgáltatások.
 
-Íme egy példa megosztott kulcsos hitelesítéssel kapcsolati karakterlánc:
+Íme egy példa a megosztott kulcsú hitelesítést használó kapcsolati karakterláncra:
 
 `"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here"`
 
 ### <a name="shared-access-signatures-sas"></a>Közös hozzáférésű jogosultságkódok (SAS)
-Egy mobilalkalmazás az ajánlott módszer az ügyfelek számára az Azure Storage szolgáltatás kérelem hitelesítéséhez van egy közös hozzáférésű Jogosultságkód (SAS) használatával. SAS lehetővé teszi, hozzáférést kell adni egy ügyfél egy erőforrást egy megadott időtartam elteltéig, az engedélyek bizonyos készletét.
-A tárolási fiók tulajdonosának kell felhasználni a mobilügyfelek részére SAS létrehozása. SAS létrehozása, valószínűleg érdemes egy külön szolgáltatás, amely létrehozza az SAS elosztani az ügyfelek írni. Tesztelési célokra használhatja a [Microsoft Azure Storage Explorer](https://storageexplorer.com) vagy a [az Azure Portal](https://portal.azure.com) SAS létrehozásához. A SAS létrehozásakor megadhatja a keresztül, amely a SAS érvényes az időtartam alatt, és az engedélyeket, az ügyfél számára biztosít hozzáférést az SAS.
+Egy mobilalkalmazás esetében az ajánlott módszer az ügyfél által az Azure Storage szolgáltatás sal szembeni kérelem hitelesítéséhez egy megosztott hozzáférésű aláírás (SAS) használatával. A SAS lehetővé teszi, hogy egy adott ideig hozzáférést biztosítson egy erőforráshoz egy adott ideig, adott engedélyekkel.
+A tárfiók tulajdonosaként létre kell hoznia egy SAS-t a mobilügyfelek számára. A SAS létrehozásához érdemes írni egy külön szolgáltatást, amely létrehozza a SAS kell terjeszteni az ügyfelek számára. Tesztelési célokra használhatja a [Microsoft Azure Storage Explorer](https://storageexplorer.com) vagy az Azure [Portal](https://portal.azure.com) sAS létrehozásához. A SAS létrehozásakor megadhatja azt az időintervallumot, amely alatt a SAS érvényes, és a SAS által az ügyfélnek adott engedélyeket.
 
-Az alábbi példa bemutatja, hogyan hozható létre SAS a Microsoft Azure Storage Explorer használatával.
+A következő példa bemutatja, hogyan használhatja a Microsoft Azure Storage Explorer segítségével egy SAS létrehozásához.
 
-1. Ha még nem tette, [a Microsoft Azure Storage Explorer telepítése](https://storageexplorer.com)
+1. Ha még nem tette meg, [telepítse a Microsoft Azure Storage Explorert](https://storageexplorer.com)
 2. Csatlakozzon az előfizetéséhez.
-3. Kattintson a Storage-fiókjába, és kattintson a bal alsó "Műveletek" fülre. Kattintson a "Get közös hozzáférésű Jogosultságkód" egy "kapcsolati karakterlánc" létrehozni az SAS.
-4. Íme egy példa egy SAS-kapcsolati karakterlánc, hogy olvasási és írási engedélyeket a szolgáltatás, a tároló és a tárfiók a blob szolgáltatás objektum szintjén.
+3. Kattintson a Tárfiókra, és kattintson a bal alsó sarokban található "Műveletek" fülre. Kattintson a "Közös hozzáférésű jogosultságjegyaláírás beszereznie" gombra a SAS "kapcsolati karakterlánc" létrehozásához.
+4. Íme egy példa egy SAS-kapcsolati karakterláncra, amely olvasási és írási engedélyeket ad a szolgáltatás, a tároló és az objektum szintjén a Storage-fiók blob szolgáltatásához.
    
    `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
-Amint láthatja, amikor a SAS használatával, akkor nem teszi ki a fiókkulcs az alkalmazásban. További biztonsági Társítások és ajánlott eljárások a biztonsági Társítások ablakról [közös hozzáférési aláírások: A SAS-modell ismertetése](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Mint látható, sas használatakor nem teszi ki a fiókkulcsot az alkalmazásban. A SAS-ről és a SAS használatának ajánlott eljárásairól a [Megosztott hozzáférésű aláírások: A SAS-modell ismertetése](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)című témakörben olvashat bővebben.
 

@@ -1,58 +1,58 @@
 ---
-title: Azure-Service Fabric automatikus skálázási szolgáltatások és tárolók
-description: Az Azure Service Fabric lehetővé teszi az automatikus skálázási szabályzatok beállítását a szolgáltatások és a tárolók számára.
+title: Az Azure Service Fabric automatikus méretezési szolgáltatásai és tárolói
+description: Az Azure Service Fabric lehetővé teszi, hogy automatikus skálázási szabályzatok szolgáltatások és tárolók.
 author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
 ms.openlocfilehash: 3660ece7add8f279292340aae9ab445b682fe045
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75452083"
 ---
-# <a name="introduction-to-auto-scaling"></a>Az automatikus skálázás bemutatása
-Az automatikus skálázás az Service Fabric egy további funkciója, amellyel dinamikusan méretezheti a szolgáltatásokat a szolgáltatások által jelentett terhelés vagy az erőforrások használata alapján. Az automatikus skálázás nagy rugalmasságot biztosít, és igény szerint lehetővé teszi a szolgáltatás további példányainak vagy partícióinak üzembe helyezését. A teljes automatikus skálázási folyamat automatizált és átlátható, és a szabályzatok szolgáltatáshoz való beállítása után a szolgáltatás szintjén nem szükséges manuális skálázási művelet. Az automatikus skálázás a szolgáltatás létrehozási idején vagy a szolgáltatás frissítésével bármikor bekapcsolható.
+# <a name="introduction-to-auto-scaling"></a>Bevezetés az automatikus méretezésbe
+Automatikus skálázás egy további képesség a Service Fabric dinamikusan skálázhatja a szolgáltatások a terhelés, amely a szolgáltatások jelentési, vagy az erőforrások használata alapján. Az automatikus skálázás nagy rugalmasságot biztosít, és lehetővé teszi a szolgáltatás további példányainak vagy partícióinak igény szerinti kiépítését. A teljes automatikus skálázási folyamat automatikus és átlátható, és miután beállította a szabályzatokat egy szolgáltatáson nincs szükség manuális skálázási műveletekre a szolgáltatás szintjén. Az automatikus skálázás a szolgáltatás létrehozásakor vagy bármikor bekapcsolható a szolgáltatás frissítésével.
 
-Gyakori forgatókönyv, ahol az automatikus skálázás hasznos lehet, ha egy adott szolgáltatás terhelése az idő múlásával változik. Például az átjárók a bejövő kérelmek kezeléséhez szükséges erőforrások mennyisége alapján méretezhetők. Vessünk egy példát arra, hogy a skálázási szabályok hogyan néznek ki:
-* Ha az átjáró összes példánya kettőnél több magot használ átlagon, akkor egy újabb példány hozzáadásával méretezheti az átjáró szolgáltatást. Ezt óránként elvégezheti, de összesen több mint hét példánya van.
-* Ha az átjáró összes példánya átlagosan 0,5-nél kevesebb magot használ, akkor egy példány eltávolításával méretezheti a szolgáltatást. Ezt óránként elvégezheti, de nem kevesebb mint három példánya van összesen.
+Egy gyakori forgatókönyv, ahol az automatikus skálázás hasznos, ha a terhelés egy adott szolgáltatás idővel változik. Például egy szolgáltatás, például egy átjáró skálázható a bejövő kérelmek kezeléséhez szükséges erőforrások mennyisége alapján. Vessünk egy pillantást egy példa, hogy ezek a méretezési szabályok is néz ki:
+* Ha az átjáró összes példánya átlagosan kettőnél több magot használ, akkor az átjárószolgáltatást egy példány hozzáadásával méretezheti. Ezt minden órában, de soha nem több, mint hét példány összesen.
+* Ha az átjáró összes példánya átlagosan kevesebb mint 0,5 magot használ, akkor egy példány eltávolításával méretezheti a szolgáltatást. Ezt minden órában, de soha nem kevesebb, mint három példány összesen.
 
-A tárolók és a rendszeres Service Fabric szolgáltatások esetében az automatikus skálázás is támogatott. Az automatikus skálázás használatához a Service Fabric futtatókörnyezet 6,2-es vagy újabb verziójával kell futnia. 
+Automatikus skálázás támogatja a tárolók és a rendszeres Service Fabric-szolgáltatások. Az automatikus skálázás használatához a Service Fabric futtatótime-futásidejű 6.2-es vagy újabb verzióján kell futnia. 
 
-A cikk további részében a skálázási szabályzatokat, az automatikus skálázás engedélyezésének és letiltásának módjait ismertetjük, valamint példákat is talál a szolgáltatás használatára.
+A cikk további ismerteti a méretezési szabályzatok, az automatikus skálázás engedélyezésének vagy letiltásának módjait, és példákat ad a szolgáltatás használatára.
 
-## <a name="describing-auto-scaling"></a>Az automatikus skálázás leírása
-Az automatikus skálázási házirendek a Service Fabric-fürt minden egyes szolgáltatásához meghatározhatók. Az egyes skálázási házirendek két részből állnak:
-* A **skálázási trigger** a szolgáltatás skálázásának elvégzése után következik be. Az triggerben definiált feltételeket a rendszer rendszeres időközönként ellenőrzi, hogy a szolgáltatás méretezhető-e.
+## <a name="describing-auto-scaling"></a>Automatikus méretezés leírása
+Automatikus skálázási házirendek definiálhatók a Service Fabric-fürt minden egyes szolgáltatásához. Minden skálázási szabályzat két részből áll:
+* **Méretezési eseményindító** ismerteti, ha a szolgáltatás méretezése kerül sor. Az eseményindítóban meghatározott feltételeket a rendszer rendszeresen ellenőrzi annak megállapítására, hogy egy szolgáltatást méretezni kell-e vagy sem.
 
-* A **skálázási mechanizmus** azt ismerteti, hogyan történik a skálázás végrehajtása az indításkor. A mechanizmust csak akkor alkalmazza a rendszer, ha az trigger feltételei teljesülnek.
+* **Méretezési mechanizmus** leírja, hogyan lesz a méretezés, amikor aktiválódik. A mechanizmus csak akkor alkalmazható, ha az eseményindító feltételei teljesülnek.
 
-Minden jelenleg támogatott eseményindító [logikai betöltési metrikákkal](service-fabric-cluster-resource-manager-metrics.md)vagy fizikai mérőszámokkal, például CPU vagy memóriahasználat használatával működik. Mindkét esetben a Service Fabric figyeli a metrika jelentett terhelését, és rendszeres időközönként kiértékeli az triggert annak meghatározásához, hogy szükség van-e skálázásra.
+A jelenleg támogatott eseményindítók [logikai terhelési metrikákkal](service-fabric-cluster-resource-manager-metrics.md)vagy fizikai metrikákkal, például a PROCESSZOR- vagy memóriahasználattal működnek. Akárhogy is, a Service Fabric figyeli a jelentett terhelésa a metrika, és rendszeresen kiértékeli az eseményindítót, hogy meghatározza, szükség van-e méretezésre.
 
-Két olyan mechanizmus létezik, amely jelenleg támogatja az automatikus skálázást. Az első az állapot nélküli szolgáltatások, illetve olyan tárolók esetében jelent meg, amelyeknél az automatikus skálázást [példányok](service-fabric-concepts-replica-lifecycle.md)hozzáadásával vagy eltávolításával hajtják végre. Mind az állapot-nyilvántartó, mind az állapot nélküli szolgáltatások esetében az automatikus skálázást a szolgáltatás nevesített [partícióinak](service-fabric-concepts-partitioning.md) hozzáadásával vagy eltávolításával is el lehet elvégezni.
+Két mechanizmus, amely jelenleg támogatott automatikus skálázás. Az első állapotmentes szolgáltatásokhoz vagy olyan tárolókhoz van szánva, ahol az automatikus méretezés [példányok](service-fabric-concepts-replica-lifecycle.md)hozzáadásával vagy eltávolításával történik. Mind az állapotalapú, mind az állapotmentes szolgáltatások esetében az automatikus skálázás a szolgáltatás névvel ellátott [partícióinak](service-fabric-concepts-partitioning.md) hozzáadásával vagy eltávolításával is elvégezhető.
 
 > [!NOTE]
-> Jelenleg csak egy méretezési házirend támogatott a szolgáltatásokhoz, és a skálázási házirendben csak egy skálázási trigger használható.
+> Jelenleg szolgáltatásonként csak egy skálázási szabályzat támogatott, és csak egy skálázási eseményindító skálázási szabályzatonként.
 
-## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Átlagos partíciós betöltési trigger példányon alapuló skálázással
-Az első típusú trigger az állapot nélküli szolgáltatás partíciójában lévő példányok terhelésén alapul. A metrikus terhelések először a partíció minden példánya terhelésének beszerzéséhez szükségesek, majd ezek az értékek a partíció összes példányán átlagban jelennek meg. A szolgáltatás skálázásakor három tényezőt kell meghatározni:
+## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Átlagos partícióterhelés-eseményindító példányalapú méretezéssel
+Az első típusú eseményindító egy állapotmentes szolgáltatáspartíció példányainak terhelésén alapul. Metrika terhelések először simított a terhelést a partíció minden példányát, és majd ezeket az értékeket átlagolt a partíció összes példánya között. Három tényező határozza meg, hogy mikor lesz a szolgáltatás méretezve:
 
-* Az _alacsonyabb terhelési küszöbérték_ olyan érték, amely meghatározza, hogy a szolgáltatás hogyan **méretezhető**. Ha a partíciók összes példányának átlagos terhelése ennél az értéknél kisebb, akkor a szolgáltatás skálázása megtörténik.
-* A _felső terhelés küszöbértéke_ egy olyan érték, amely meghatározza, hogy a szolgáltatás Mikor lesz **felskálázásra**. Ha a partíció összes példányának átlagos terhelése meghaladja ezt az értéket, a rendszer kibővíti a szolgáltatást.
-* A _skálázási időköz_ határozza meg, hogy az trigger milyen gyakran lesz bejelölve. Ha a trigger be van jelölve, a skálázásra van szükség, a rendszer alkalmazza azt. Ha nincs szükség skálázásra, a rendszer nem végez műveletet. Mindkét esetben a rendszer nem ellenőrzi újra az aktiválást a skálázási intervallum újbóli lejárata előtt.
+* _Az alacsonyabb terhelési küszöbérték_ határozza meg, hogy a szolgáltatás mikor lesz **méretezve**a ban. Ha a partíciók összes példányának átlagos terhelése alacsonyabb, mint ez az érték, akkor a szolgáltatás lesz méretezve.
+* _A felső terhelési küszöbérték_ egy olyan érték, amely meghatározza, hogy a szolgáltatás mikor lesz **kiskálázva.** Ha a partíció összes példányának átlagos terhelése magasabb, mint ez az érték, akkor a szolgáltatás horizontálisan ki lesz osztva.
+* _A méretezési időköz_ határozza meg, hogy milyen gyakran lesz ellenőrizve az eseményindító. Miután az eseményindító be van jelölve, ha méretezésre van szükség, a rendszer alkalmazza a mechanizmust. Ha nincs szükség méretezésre, akkor a program nem történik művelet. Mindkét esetben az eseményindító nem lesz újra ellenőrizve, mielőtt a méretezési időköz újra lejár.
 
-Ez az trigger csak állapot nélküli szolgáltatásokkal használható (vagy állapot nélküli tárolók vagy Service Fabric szolgáltatások). Ha egy szolgáltatás több partícióval rendelkezik, a rendszer külön kiértékeli az triggert az egyes partíciók esetében, és mindegyik partíción a megadott mechanizmustól függetlenül lesz alkalmazva. Ezért ebben az esetben előfordulhat, hogy a szolgáltatás néhány partíciója ki lesz bővítve, néhányat pedig a-ben, és néhányat a terhelésük alapján nem lehet egyszerre méretezni.
+Ez az eseményindító csak állapotmentes szolgáltatásokkal (állapotnélküli tárolók vagy Service Fabric-szolgáltatások) használható. Abban az esetben, ha egy szolgáltatás több partíciót, az eseményindító minden partíció külön-külön értékeli ki, és minden partíció lesz a megadott mechanizmus tanaként alkalmazza. Ezért ebben az esetben lehetséges, hogy a szolgáltatás partícióinak egy része horizontálisan ki lesz méretezve, néhány at, és néhány at egyáltalán nem lesz méretezve egy időben, a terhelés alapján.
 
-A triggerrel használható egyetlen mechanizmus a PartitionInstanceCountScaleMechanism. A mechanizmus alkalmazási módját három tényező határozza meg:
-* A _skálázási növekmény_ meghatározza, hogy a rendszer hány példányt fog hozzáadni vagy eltávolítani a mechanizmus indításakor.
-* A _példányok maximális száma_ határozza meg a skálázás felső korlátját. Ha a partíció példányainak száma eléri ezt a korlátot, a rendszer a terheléstől függetlenül nem bővíti a szolgáltatást. Ezt a korlátot a-1 érték megadásával lehet kihagyni, és ebben az esetben a szolgáltatás a lehető legnagyobb mértékben lesz kibővítve (ez a korlát a fürtben elérhető csomópontok száma).
-* A _példányok minimális száma_ határozza meg a skálázás legalacsonyabb korlátját. Ha a partíció példányainak száma eléri ezt a korlátot, a rendszer a terheléstől függetlenül nem fogja méretezni a szolgáltatást.
+Az egyetlen mechanizmus, amely használható ezzel az eseményindítóval PartitionInstanceCountScaleMechanism. Három tényező határozza meg, hogyan alkalmazzák ezt a mechanizmust:
+* _A Méretezési növekmény_ határozza meg, hogy hány példány kerül hozzáadásra vagy eltávolításra a mechanizmus aktiválásakor.
+* _A maximális példányszám_ a méretezés felső határát határozza meg. Ha a partíció példányainak száma eléri ezt a korlátot, akkor a szolgáltatás nem lesz horizontálisfelskálázva, függetlenül a terheléstől. Ezt a korlátot a -1 érték megadásával is ki lehet hagyni, és ebben az esetben a szolgáltatás a lehető legnagyobb mértékben ki lesz skálázva (a korlát a fürtben elérhető csomópontok száma).
+* _A minimális példányszám_ határozza meg a méretezés alsó határát. Ha a partíció példányainak száma eléri ezt a korlátot, majd a szolgáltatás nem lesz méretezve, függetlenül a terhelés.
 
-## <a name="setting-auto-scaling-policy"></a>Automatikus skálázási szabályzat beállítása
+## <a name="setting-auto-scaling-policy"></a>Automatikus skálázási házirend beállítása
 
-### <a name="using-application-manifest"></a>Az alkalmazás jegyzékfájljának használata
+### <a name="using-application-manifest"></a>Alkalmazásjegyzék használata
 ``` xml
 <LoadMetrics>
 <LoadMetric Name="MetricB" Weight="High"/>
@@ -64,7 +64,7 @@ A triggerrel használható egyetlen mechanizmus a PartitionInstanceCountScaleMec
 </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
-### <a name="using-c-apis"></a>API C# -k használata
+### <a name="using-c-apis"></a>C# API-k használata
 ```csharp
 FabricClient fabricClient = new FabricClient();
 StatelessServiceDescription serviceDescription = new StatelessServiceDescription();
@@ -106,35 +106,35 @@ $scalingpolicies.Add($scalingpolicy)
 Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName" -ScalingPolicies $scalingpolicies
 ```
 
-## <a name="average-service-load-trigger-with-partition-based-scaling"></a>A szolgáltatás átlagos betöltési triggere partíció-alapú skálázással
-A második trigger az egyik szolgáltatás összes partíciójának betöltésén alapul. A metrikák terhelése először a partíciók minden replikájának vagy példányának terhelésének beszerzésére szolgál. Az állapot-nyilvántartó szolgáltatások esetében a partíció terhelése az elsődleges replika terhelésének tekintendő, míg az állapot nélküli szolgáltatások esetében a partíció terhelése a partíció összes példányának átlagos terhelése. Ezek az értékek a szolgáltatás összes partícióján átlagosan megtalálhatók, és ez az érték az automatikus skálázás aktiválására szolgál. Ugyanaz, mint a korábbi mechanizmusokban, három tényezőt határozhat meg a szolgáltatás skálázásakor:
+## <a name="average-service-load-trigger-with-partition-based-scaling"></a>Átlagos szolgáltatásterhelés-eseményindító partícióalapú méretezéssel
+A második eseményindító egy szolgáltatás összes partíciójának terhelésén alapul. Metrika terhelések először simított a terhelést a partíció minden replika vagy példánya. Állapotalapú szolgáltatások esetén a partíció terhelése az elsődleges replika terhelésének minősül, míg az állapotmentes szolgáltatások esetében a partíció terhelése a partíció összes példányának átlagos terhelése. Ezek az értékek átlaga a szolgáltatás összes partícióján, és ez az érték az automatikus skálázás aktiválásához. Ugyanaz, mint az előző mechanizmusban, három tényező határozza meg, hogy mikor lesz a szolgáltatás méretezve:
 
-* Az _alacsonyabb terhelési küszöbérték_ olyan érték, amely meghatározza, hogy a szolgáltatás hogyan **méretezhető**. Ha a szolgáltatás összes partíciójának átlagos terhelése ennél az értéknél kisebb, akkor a szolgáltatás skálázása megtörténik.
-* A _felső terhelés küszöbértéke_ egy olyan érték, amely meghatározza, hogy a szolgáltatás Mikor lesz **felskálázásra**. Ha a szolgáltatás összes partíciójának átlagos terhelése meghaladja ezt az értéket, a rendszer kibővíti a szolgáltatást.
-* A _skálázási időköz_ határozza meg, hogy az trigger milyen gyakran lesz bejelölve. Ha a trigger be van jelölve, a skálázásra van szükség, a rendszer alkalmazza azt. Ha nincs szükség skálázásra, a rendszer nem végez műveletet. Mindkét esetben a rendszer nem ellenőrzi újra az aktiválást a skálázási intervallum újbóli lejárata előtt.
+* _Az alacsonyabb terhelési küszöbérték_ határozza meg, hogy a szolgáltatás mikor lesz **méretezve**a ban. Ha a szolgáltatás összes partíciójának átlagos terhelése alacsonyabb, mint ez az érték, akkor a szolgáltatás lesz méretezve.
+* _A felső terhelési küszöbérték_ egy olyan érték, amely meghatározza, hogy a szolgáltatás mikor lesz **kiskálázva.** Ha a szolgáltatás összes partíciójának átlagos terhelése magasabb, mint ez az érték, majd a szolgáltatás horizontálisan kilesz osztva.
+* _A méretezési időköz_ határozza meg, hogy milyen gyakran lesz ellenőrizve az eseményindító. Miután az eseményindító be van jelölve, ha méretezésre van szükség, a rendszer alkalmazza a mechanizmust. Ha nincs szükség méretezésre, akkor a program nem történik művelet. Mindkét esetben az eseményindító nem lesz újra ellenőrizve, mielőtt a méretezési időköz újra lejár.
 
-Ez az trigger használható állapot-nyilvántartó és állapot nélküli szolgáltatásokkal is. A triggerrel használható egyetlen mechanizmus a AddRemoveIncrementalNamedPartitionScalingMechanism. Ha a szolgáltatás ki van bővítve, egy új partíció lesz hozzáadva, és a szolgáltatás skálázása a meglévő partíciók egyikében megszűnik. A szolgáltatás létrehozásakor vagy frissítésekor a rendszer ellenőrzi a korlátozásokat, és a szolgáltatás létrehozása/frissítése sikertelen lesz, ha ezek a feltételek nem teljesülnek:
-* A szolgáltatáshoz nevesített partíciós sémát kell használni.
-* A partíciók nevének egymást követő egész számnak kell lennie, például "0", "1",...
-* Az első partíció nevének "0"-nek kell lennie.
+Ez az eseményindító állapotalapú és állapotmentes szolgáltatásokkal is használható. Az egyetlen mechanizmus, amely használható ezzel az eseményindítóaddRemoveIncrementalNamedPartitionScalingMechanism. A szolgáltatás horizontális felskálázása, majd egy új partíció t, és amikor a szolgáltatás skálázva van az egyik meglévő partíciók törlődik. Vannak korlátozások, amelyek a szolgáltatás létrehozásakor vagy frissítésekor ellenőrizhetők, és a szolgáltatás létrehozása/frissítése sikertelen lesz, ha ezek a feltételek nem teljesülnek:
+* A szolgáltatáshoz elnevezett partíciósémát kell használni.
+* A partícióneveknek egymást követő egész számoknak kell lenniük, mint például "0", "1", ...
+* Az első partíció nevének "0" -nak kell lennie.
 
-Ha például egy szolgáltatás kezdetben három partícióval jön létre, a partíciók neveinek egyetlen érvényes lehetősége a "0", "1" és "2".
+Ha például egy szolgáltatás kezdetben három partícióval jön létre, a partíciónevek egyetlen érvényes lehetősége a "0", "1" és "2".
 
-A ténylegesen végrehajtott automatikus skálázási művelet a következő elnevezési sémát is figyelembe veszi:
-* Ha a szolgáltatás aktuális partíciói "0", "1" és "2", akkor a felskálázáshoz hozzáadott partíció neve "3" lesz.
-* Ha a szolgáltatás jelenlegi partíciói a következők: "0", "1" és "2", akkor a méretezéshez eltávolítandó partíció a "2" nevű partíció.
+A tényleges automatikus skálázási művelet, amely et hajt végre, tiszteletben tartja ezt az elnevezési sémát is:
+* Ha a szolgáltatás aktuális partícióinak neve "0", "1" és "2", akkor a horizontális felskálázáshoz hozzáadott partíció neve "3".
+* Ha a szolgáltatás aktuális partícióinak neve "0", "1" és "2", akkor a skálázáshoz eltávolítandó partíció "2" nevű partíció.
 
-Ugyanaz, mint a méretezést használó mechanizmusokhoz példányok hozzáadásával vagy eltávolításával, három paraméterrel határozható meg a mechanizmus alkalmazása:
-* A _skálázási növekmény_ meghatározza, hogy a rendszer hány partíciót ad hozzá vagy távolít el a mechanizmus indításakor.
-* A _partíciók maximális száma_ határozza meg a skálázás felső korlátját. Ha a szolgáltatás partícióinak száma eléri ezt a korlátot, a rendszer a terheléstől függetlenül nem bővíti a szolgáltatást. Ezt a korlátot a-1 érték megadásával lehet kihagyni, és ebben az esetben a szolgáltatás a lehető legnagyobb mértékben lesz kibővítve (ez a korlát a fürt tényleges kapacitása).
-* A _példányok minimális száma_ határozza meg a skálázás legalacsonyabb korlátját. Ha a szolgáltatás partícióinak száma eléri ezt a korlátot, a rendszer a terheléstől függetlenül nem fogja méretezni a szolgáltatást.
+A példányok hozzáadásával vagy eltávolításával méretezést használó mechanizmushoz hasonló három paraméter határozza meg a mechanizmus alkalmazásának módját:
+* _A Méretezési növekmény_ határozza meg, hogy hány partíciót ad hozzá vagy távolít el a mechanizmus aktiválásakor.
+* _A maximális partíciószám_ a skálázás felső határát határozza meg. Ha a szolgáltatás partícióinak száma eléri ezt a korlátot, majd a szolgáltatás nem lesz horizontálisfelskálázva, függetlenül a terheléstől. Ezt a korlátot a -1 érték megadásával is ki lehet hagyni, és ebben az esetben a szolgáltatás a lehető legnagyobb mértékben ki lesz skálázva (a korlát a fürt tényleges kapacitása).
+* _A minimális példányszám_ határozza meg a méretezés alsó határát. Ha a szolgáltatás partícióinak száma eléri ezt a korlátot, majd a szolgáltatás nem lesz méretezve, függetlenül a terhelés.
 
 > [!WARNING] 
-> A AddRemoveIncrementalNamedPartitionScalingMechanism állapot-nyilvántartó szolgáltatásokkal való használata esetén Service Fabric **értesítés vagy figyelmeztetés nélkül**fogja hozzáadni vagy eltávolítani a partíciókat. A skálázási mechanizmus elindításakor a rendszer nem hajtja végre az adatparticionálást. Vertikális Felskálázási művelet esetén az új partíciók üresek lesznek, és a leskálázási művelet esetén a **partíció a benne található összes adattal együtt törölve**lesz.
+> Ha az AddRemoveIncrementalNamedPartitionScalingMechanism állapotalapú szolgáltatásokkal van használva, a Service Fabric **értesítés vagy figyelmeztetés nélkül**adja hozzá vagy távolítja el a partíciókat. Az adatok újraparticionálása nem történik meg a méretezési mechanizmus aktiválásakor. Felskálázási művelet esetén az új partíciók üresek lesznek, és horizontális felskálázási művelet esetén **a partíció törlődik a benne lévő összes adattal együtt.**
 
-## <a name="setting-auto-scaling-policy"></a>Automatikus skálázási szabályzat beállítása
+## <a name="setting-auto-scaling-policy"></a>Automatikus skálázási házirend beállítása
 
-### <a name="using-application-manifest"></a>Az alkalmazás jegyzékfájljának használata
+### <a name="using-application-manifest"></a>Alkalmazásjegyzék használata
 ``` xml
 <ServiceScalingPolicies>
     <ScalingPolicy>
@@ -143,7 +143,7 @@ Ugyanaz, mint a méretezést használó mechanizmusokhoz példányok hozzáadás
     </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
-### <a name="using-c-apis"></a>API C# -k használata
+### <a name="using-c-apis"></a>C# API-k használata
 ```csharp
 FabricClient fabricClient = new FabricClient();
 StatefulServiceUpdateDescription serviceUpdate = new StatefulServiceUpdateDescription();
@@ -183,9 +183,9 @@ $scalingpolicies.Add($scalingpolicy)
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -TargetReplicaSetSize 3 -MinReplicaSetSize 2 -HasPersistedState true -PartitionNames @("0","1") -ServicePackageActivationMode ExclusiveProcess -ScalingPolicies $scalingpolicies
 ```
 
-## <a name="auto-scaling-based-on-resources"></a>Automatikus skálázás erőforrások alapján
+## <a name="auto-scaling-based-on-resources"></a>Erőforrásokon alapuló automatikus méretezés
 
-Annak lehetővé tétele, hogy az erőforrás-figyelő szolgáltatás a tényleges erőforrások alapján méretezhető legyen
+Annak érdekében, hogy az erőforrás-figyelő szolgáltatás a tényleges erőforrások alapján méretezhető
 
 ``` json
 "fabricSettings": [
@@ -195,8 +195,8 @@ Annak lehetővé tétele, hogy az erőforrás-figyelő szolgáltatás a tényleg
     "ResourceMonitorService"
 ],
 ```
-Két metrika van, amelyek tényleges fizikai erőforrásokat képviselnek. Ezek egyike servicefabric:/_CpuCores, amely a tényleges CPU-használatot jelöli (tehát a 0,5 fél mag), a másik pedig a servicefabric:/_MemoryInMB, amely az MBs-ban használt memóriát jelöli.
-A ResourceMonitorService feladata a felhasználói szolgáltatások CPU-és memória-használatának nyomon követése. Ez a szolgáltatás súlyozott mozgóátlagot alkalmaz a lehetséges rövid élettartamú tüskék kiszámításához. Az erőforrás-figyelés mind a tároló, mind a nem tároló alkalmazások esetében támogatott a Windows rendszeren, és a tárolók Linux rendszeren is. Az erőforrásokra vonatkozó automatikus skálázás csak az [exkluzív folyamatmodell](service-fabric-hosting-model.md#exclusive-process-model)által aktivált szolgáltatások esetében engedélyezett.
+Két mérőszám, amely a tényleges fizikai erőforrásokat jelöli. Ezek közül az egyik a servicefabric:/_CpuCores, amely a tényleges cpu-használatot jelöli (így a 0.5 egy fél mag) és a másik a servicefabric:/_MemoryInMB, amely az MB-k memóriahasználatát jelöli.
+A ResourceMonitorService felelős a felhasználói szolgáltatások processzor- és memóriahasználatának nyomon követéséért. Ez a szolgáltatás súlyozott mozgóátlagot alkalmaz a lehetséges rövid élettartamú csúcsok figyelembevétele érdekében. Az erőforrás-figyelés a Windows és a Linuxon lévő tárolók számára egyaránt támogatott a tárolóba helyezett és a nem konténeres alkalmazások esetében. Az erőforrások automatikus méretezése csak az [exkluzív folyamatmodellben](service-fabric-hosting-model.md#exclusive-process-model)aktivált szolgáltatásokesetében engedélyezett.
 
-## <a name="next-steps"></a>Következő lépések
-További információ az [alkalmazások méretezhetőségéről](service-fabric-concepts-scalability.md).
+## <a name="next-steps"></a>További lépések
+További információ az [alkalmazások méretezhetőségéről.](service-fabric-concepts-scalability.md)

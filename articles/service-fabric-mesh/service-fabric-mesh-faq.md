@@ -1,50 +1,50 @@
 ---
-title: Azure Service Fabric Mesh – gyakori kérdések
-description: Ismerkedjen meg az Azure Service Fabric Mesh szolgáltatással kapcsolatos gyakori kérdésekkel és válaszokkal.
+title: Gyakori kérdések az Azure Service Fabric Mesh-hez
+description: Ismerje meg az Azure Service Fabric Mesh gyakran feltett kérdéseit és válaszait.
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252492"
 ---
-# <a name="commonly-asked-service-fabric-mesh-questions"></a>Gyakori kérdések Service Fabric Mesh kérdésekről
+# <a name="commonly-asked-service-fabric-mesh-questions"></a>Gyakori kérdés a Service Fabric Mesh-hez
 
-Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. Ez a cikk a gyakran ismételt kérdésekre adott válaszokat tartalmazza.
+Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. Ez a cikk választ ad a gyakran feltett kérdésekre.
 
-## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Hogyan egy problémát, vagy felteheti a kérdést?
+## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Hogyan jelenthetek be egy problémát, vagy hogyan tehetek fel kérdést?
 
-Tegye fel kérdéseit, kapjon választ a Microsoft mérnököktől, és jelentse a problémát a [Service-Fabric-Mesh – Preview GitHub-](https://aka.ms/sfmeshissues)tárházban.
+Kérdéseket tehet fel, válaszokat kaphat a Microsoft mérnökeitől, és problémákat jelenthet a [service-fabric-mesh-preview GitHub-tárházban.](https://aka.ms/sfmeshissues)
 
-## <a name="quota-and-cost"></a>Kvóta és Cost
+## <a name="quota-and-cost"></a>Kvóta és költség
 
 ### <a name="what-is-the-cost-of-participating-in-the-preview"></a>Mennyibe kerül az előzetes verzióban való részvétel?
 
-Jelenleg nem számítunk fel díjat az alkalmazások és a tárolók üzembe helyezéséhez a háló előzetes verziójában. Előfordulhat, hogy a frissítések számlázásának engedélyezése a következő címen lehetséges:. Javasoljuk azonban, hogy törölje a telepített erőforrásokat, és ne hagyja őket futni, ha aktívan teszteli őket.
+Jelenleg nincs díj az alkalmazások vagy tárolók üzembe helyezéséért a Mesh előzetes verzióban. Kérjük, figyelje meg a frissítéseket május engedélyezéséhez számlázás. Javasoljuk azonban, hogy törölje az üzembe helyezett erőforrásokat, és ne hagyja őket futni, hacsak nem teszteli őket aktívan.
 
-### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>Korlátozva van a magok és a RAM mennyisége?
+### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>Van-e kvótakorlát a magok és a RAM-ok számára?
 
 Igen. Az egyes előfizetések kvótái a következők:
 
-- Alkalmazások száma: 5
-- Magok száma alkalmazásban: 12
-- RAM-memória teljes száma: 48 GB
-- A hálózat és a bejövő forgalom végpontja: 5
-- Az Azure által csatolható kötetek: 10
-- A szolgáltatás replikáinak száma: 3
-- Az üzembe helyezhető legnagyobb tároló a 4 maggal és a 16GB RAM-mal van korlátozva.
-- A tárolók számára kioszthat részleges magokat 0,5 mag-onként, legfeljebb 6 magot vehet fel.
+- Kérelmek száma: 5
+- Magok alkalmazásonként: 12
+- Alkalmazásonként összes RAM: 48 GB
+- Hálózati és be- és be- és be- és be- és be- és be- és be- és be- és be- és be- és
+- A csatolható Azure-kötetek: 10
+- Szolgáltatási replikák száma: 3
+- A legnagyobb tároló, amelyet telepíthet, 4 magra és 16 GB RAM-ra korlátozódik.
+- Részleges magokat rendelhet a tárolókhoz 0,5 magnyi lépésekben, de legfeljebb 6 magig.
 
-### <a name="how-long-can-i-leave-my-application-deployed"></a>Mennyi ideig hagyható az alkalmazás üzembe helyezése?
+### <a name="how-long-can-i-leave-my-application-deployed"></a>Mennyi ideig hagyhatom az alkalmazás üzembe helyezve?
 
-Az alkalmazások élettartama jelenleg két napra korlátozódik. Ez az előzetes verzióhoz lefoglalt ingyenes magok használatának maximalizálása érdekében. Ennek eredményeképpen csak a 48 órán át folyamatosan futtathat egy adott üzembe helyezést, amely után a rendszer leállítja a leállítási időt.
+Jelenleg két napra korlátoztuk egy alkalmazás élettartamát. Ez annak érdekében, hogy maximalizálja a szabad magok kiosztott az előzetes verzió. Ennek eredményeképpen csak 48 órán keresztül futtathat egy adott központi telepítést, amely idő után le áll.
 
-Ha ezt látja, ellenőrizheti, hogy a rendszer leállította-e a `az mesh app show` parancs futtatásával az Azure CLI-ben. Ellenőrizze, hogy visszaadja-e `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+Ha ezt látja, ellenőrizheti, hogy a rendszer leállította-e a parancsot az `az mesh app show` Azure CLI-ben. Ellenőrizze, hogy visszatér-e`"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
-Például: 
+Példa: 
 
 ```azurecli
 az mesh app show --resource-group myResourceGroup --name helloWorldApp
@@ -73,87 +73,87 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 }
 ```
 
-Az erőforráscsoport törléséhez használja a `az group delete <nameOfResourceGroup>` parancsot.
+Az erőforráscsoport törléséhez `az group delete <nameOfResourceGroup>` használja a parancsot.
 
 ## <a name="deployments"></a>Központi telepítés
 
-### <a name="what-container-images-are-supported"></a>Milyen tároló-lemezképek támogatottak?
+### <a name="what-container-images-are-supported"></a>Milyen tárolórendszerképek támogatottak?
 
-Ha a Windows Fall Creators Update (1709-es verzió) gépen fejleszt, csak a Windows Version 1709 Docker-rendszerképeket használhatja.
+Ha Windows Fall Creators Update (1709-es verzió) gépen fejleszt, csak a Windows 1709-es verziójú docker-lemezképeit használhatja.
 
-Ha a Windows 10 április 2018 Update (1803-es verzió) gépen dolgozik, a Windows-verzió 1709-es vagy a Windows-verzió 1803 Docker-rendszerképeket is használhatja.
+Ha windows 10 április 2018-as frissítéssel (1803-as verzióval) fejleszt, használhatja a Windows 1709-es vagy a Windows 1803-as verziójú docker-lemezképeit.
 
-A következő Container operációsrendszer-lemezképeket használhatja a szolgáltatások telepítéséhez:
-- Windows – windowsservercore és nanoserver
+A következő tároló operációsrendszer-rendszerképek szolgáltatások üzembe helyezéséhez használhatók:
+- Windows - windowsservercore és nanoserver
     - Windows Server 1709
-    - A Windows Server 1803-as verzióban
+    - Windows Server 1803
     - Windows Server 1809
     - Windows Server 2019 LTSC
 - Linux
     - Nincsenek ismert korlátozások
 
 > [!NOTE]
-> A Visual Studio-eszközök a rácsvonalak számára még nem támogatják a Windows Server 2019-és 1809-tárolók üzembe helyezését.
+> A Visual Studio mesh-i eszközhasználata még nem támogatja a Windows Server 2019 és 1809 tárolókba való telepítést.
 
 ### <a name="what-types-of-applications-can-i-deploy"></a>Milyen típusú alkalmazásokat telepíthetek? 
 
-Minden olyan tárolón futtatható, amely az alkalmazás-erőforrásra vonatkozó korlátozásoknak megfelelően működik (lásd a fenti további információkat a kvótákkal kapcsolatban). Ha azt tapasztalja, hogy hálót használ a szabálytalan munkaterhelések futtatásához vagy a rendszer (azaz a bányászat) megsértéséhez, akkor fenntartjuk a jogot, hogy leállítsák az üzemelő példányokat, és Blocklist az előfizetést a szolgáltatáson. Ha bármilyen kérdése van egy adott számítási feladat futtatásához, lépjen kapcsolatba velünk. 
+Bármit üzembe helyezhet, amely olyan tárolókban fut, amelyek beleférnek az alkalmazás-erőforrásra vonatkozó korlátozásokba (a kvótákról további információt lásd). Ha azt észleljük, hogy a Mesh-t illegális számítási feladatok futtatásához vagy a rendszerrel (azaz a bányászattal) való visszaéléshez használja, fenntartjuk a jogot, hogy megszüntessük az üzemelő példányait, és letiltsuk az előfizetését a szolgáltatás futtatásából. Kérjük, lépjen kapcsolatba velünk, ha bármilyen kérdése van egy adott munkaterhelés futtatásával kapcsolatban. 
 
-## <a name="developer-experience-issues"></a>Fejlesztői élmény – problémák
+## <a name="developer-experience-issues"></a>Fejlesztői élményekkel kapcsolatos problémák
 
-### <a name="dns-resolution-from-a-container-doesnt-work"></a>Egy tároló DNS-feloldása nem működik
+### <a name="dns-resolution-from-a-container-doesnt-work"></a>A tárolóból származó DNS-feloldás nem működik
 
-A tárolóból a Service Fabric DNS szolgáltatásba küldött kimenő DNS-lekérdezések bizonyos körülmények között sikertelenek lehetnek. A vizsgálat folyamatban van. Az alábbiak enyhítése:
+Bizonyos körülmények között sikertelen lehet a kimenő DNS-lekérdezések egy tárolóból a Service Fabric DNS-szolgáltatásába. Ezt még vizsgálják. A következők enyhítése:
 
-- Használja a Windows Fall Creators Update (1709-es verzió) vagy újabb verzióját az alaptároló rendszerképének használatával.
-- Ha a szolgáltatás neve nem működik, próbálja meg a teljes nevet: szolgáltatásnév. ApplicationName.
-- A szolgáltatás Docker-fájljában adja hozzá `EXPOSE <port>`, ahol a port az a port, amelyen a szolgáltatást kiteszi. Például:
+- A Windows Fall Creators frissítése (1709-es verzió) vagy újabb verzió az alaptárolórendszerképként.
+- Ha a szolgáltatás neve önmagában nem működik, próbálkozzon a teljesen minősített névvel: ServiceName.ApplicationName.
+- A szolgáltatás Docker-fájljában `EXPOSE <port>` adja hozzá, hogy hol található a port az a port, amelyen a szolgáltatást felfedi. Példa:
 
 ```Dockerfile
 EXPOSE 80
 ```
 
-### <a name="dns-does-not-work-the-same-as-it-does-for-service-fabric-development-clusters-and-in-mesh"></a>A DNS nem működik ugyanúgy, mint Service Fabric fejlesztési fürtöknél és a hálóban
+### <a name="dns-does-not-work-the-same-as-it-does-for-service-fabric-development-clusters-and-in-mesh"></a>A DNS nem ugyanúgy működik, mint a Service Fabric fejlesztői fürtjein és a Mesh-ben
 
-Előfordulhat, hogy a helyi fejlesztési fürtön eltérő szolgáltatásokat kell használnia, mint az Azure Meshban.
+Előfordulhat, hogy a helyi fejlesztési fürtben a szolgáltatásokra másképp kell hivatkoznia, mint az Azure Mesh-ben.
 
-A helyi fejlesztési fürtben használja a `{serviceName}.{applicationName}`. Az Azure Service Fabric Mesh területen használja a `{servicename}`. 
+A helyi fejlesztési `{serviceName}.{applicationName}`fürt használatában. Az Azure Service Fabric `{servicename}`Mesh alkalmazásban használja a használatát. 
 
-Az Azure Mesh jelenleg nem támogatja a DNS-feloldást az alkalmazások között.
+Az Azure Mesh jelenleg nem támogatja a DNS-feloldás t alkalmazások között.
 
-A Service Fabric fejlesztői fürt Windows 10 rendszeren való futtatásával kapcsolatos egyéb ismert DNS-problémákkal kapcsolatban lásd: [Windows-tárolók](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) és [ismert DNS-problémák](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)hibakeresése.
+A Service Fabric fejlesztői fürt windows 10-en való futtatásával kapcsolatos egyéb ismert DNS-problémákról a Következő témakörben lehet tudni: [Windows-tárolók hibakeresése](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) és [ismert DNS-problémák](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
 
 ### <a name="networking"></a>Hálózat
 
-Előfordulhat, hogy a ServiceFabric hálózati NAT eltűnnek az alkalmazás helyi gépen való futtatásakor. Annak diagnosztizálásához, hogy ez történt-e, futtassa a következő parancsot egy parancssorból:
+A ServiceFabric hálózati hálózati hálózati kapcsolaton belül eltűnhet az alkalmazás helyi számítógépen való futtatása közben. Annak diagnosztizálásához, hogy ez megtörtént-e, futtassa a következőket a parancssorból:
 
-`docker network ls`, és figyelje meg, hogy szerepel-e a `servicefabric_nat`.  Ha nem, futtassa a következő parancsot: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+`docker network ls`és jegyezze fel, hogy szerepel-e `servicefabric_nat` a listán.  Ha nem, akkor futtassa a következő parancsot:`docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
-Ez akkor is problémát jelent, ha az alkalmazás már helyileg és nem kifogástalan állapotban van telepítve.
+Ez akkor is megoldanak a problémát, ha az alkalmazás már telepítve van helyileg és nem megfelelő állapotban.
 
-### <a name="issues-running-multiple-apps"></a>Több alkalmazást futtató problémák
+### <a name="issues-running-multiple-apps"></a>Több alkalmazás futtatásával kapcsolatos problémák
 
-Előfordulhat, hogy a CPU rendelkezésre állása és a korlátozások az összes alkalmazásban rögzítettek. Az alábbiak enyhítése:
-- Hozzon létre egy öt csomópontos fürtöt.
-- A szolgáltatások CPU-használatának csökkentése a telepített alkalmazások között. Például a szolgáltatás Service. YAML fájljában módosítsa `cpu: 1.0` a `cpu: 0.5`
+Előfordulhat, hogy a processzor rendelkezésre állása és korlátok rögzített az összes alkalmazás között. A következők enyhítése:
+- Hozzon létre egy öt csomós fürtöt.
+- Csökkentse a cpu-használatot a telepített alkalmazás szolgáltatásaiban. Például a szolgáltatás service.yaml fájljában `cpu: 1.0` módosítsa a`cpu: 0.5`
 
-Több alkalmazás nem telepíthető egyetlen csomópontos fürtre. Az alábbiak enyhítése:
-- Használjon öt csomópontos fürtöt, ha több alkalmazást helyez üzembe egy helyi fürtön.
+Több alkalmazás nem telepíthető egycsomópontos fürtre. A következők enyhítése:
+- Öt csomópontos fürt használata több alkalmazás helyi fürtre történő telepítésekor.
 - Távolítsa el azokat az alkalmazásokat, amelyeket jelenleg nem tesztel.
 
-### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>A VS-eszközök korlátozott támogatást biztosítanak a Windows-tárolók számára
+### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>A VS Tooling korlátozott mértékben támogatja a Windows-tárolókat
 
-A Visual Studio-eszközök csak a Windows Server 1709 és a 1803 operációs rendszert futtató Windows-tárolók telepítését támogatják. 
+A Visual Studio eszközeszköze csak a Windows Server 1709 és 1803 operációs rendszer alapverziójával rendelkező Windows-tárolók telepítését támogatja. 
 
-## <a name="feature-gaps-and-other-known-issues"></a>Szolgáltatások hiányosságainak és más ismert problémák
+## <a name="feature-gaps-and-other-known-issues"></a>Jellemzőhézagok és egyéb ismert problémák
 
 ### <a name="after-deploying-my-application-the-network-resource-associated-with-it-does-not-have-an-ip-address"></a>Az alkalmazás telepítése után a hozzá társított hálózati erőforrás nem rendelkezik IP-címmel
 
-Létezik egy ismert probléma, amelyben az IP-cím nem válik azonnal elérhetővé. Ellenőrizze a hálózati erőforrás állapotát néhány perc alatt, hogy megtekintse a társított IP-címet.
+Van egy ismert probléma, amelyben az IP-cím nem válik azonnal elérhetővé. Ellenőrizze a hálózati erőforrás állapotát néhány perc alatt a társított IP-cím megtekintéséhez.
 
-### <a name="my-application-fails-to-access-the-right-networkvolume-resource"></a>Az alkalmazásom nem fér hozzá a megfelelő hálózati/mennyiségi erőforráshoz
+### <a name="my-application-fails-to-access-the-right-networkvolume-resource"></a>Az alkalmazás nem fér hozzá a megfelelő hálózati/köteterőforráshoz
 
-Az alkalmazás modelljében használja a hálózatok és kötetek teljes erőforrás-AZONOSÍTÓját a társított erőforrás eléréséhez. Íme egy példa a rövid útmutató mintából:
+Az alkalmazásmodellben használja a teljes erőforrás-azonosítót a hálózatokhoz és a kötetekhez, hogy hozzáférhessen a társított erőforráshoz. Íme egy példa a rövid útmutatóból:
 
 ```json
 "networkRefs": [
@@ -163,10 +163,10 @@ Az alkalmazás modelljében használja a hálózatok és kötetek teljes erőfor
 ]
 ```
 
-### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>Ha felskálázást végezek, az összes tároló érintett, beleértve a futókat is
+### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>Amikor kinagyulok, az összes tárolóm érintett, beleértve a futótárolókat is
 
-Ez egy hiba, és a javítás megvalósítása folyamatban van.
+Ez egy rovar és egy erősít van lét eszköz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a Service Fabric Meshról, olvassa el az [áttekintést](service-fabric-mesh-overview.md).
+Ha többet szeretne megtudni a Service Fabric Mesh-ről, olvassa el az [áttekintést.](service-fabric-mesh-overview.md)

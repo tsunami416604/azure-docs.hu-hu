@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: eef2c762c87a13c62eeb9b017ed43f54835ab16e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179458"
 ---
-Az Azure Cloud Shell egy böngészőalapú rendszerhéj-felület és Azure-erőforrások fejlesztését.
+Az Azure Cloud Shell egy böngészőalapú felület Azure-erőforrások kezeléséhez és fejlesztéséhez.
 
-A cloud Shell kínál a böngésző által elérhető, előre konfigurált rendszerhéj-felület anélkül telepítése, verziószámozás, és karbantartása a gép saját maga az Azure-erőforrások kezeléséhez.
+A Cloud Shell böngészővel elérhető, előre konfigurált rendszerhéj-élményt kínál az Azure-erőforrások kezeléséhez anélkül, hogy a gép telepítése, verziószámozása és karbantartása többletterhelést jelentene.
 
-A cloud Shell kiépíti a gépeket egy kérelem alapon, és ennek eredményeképpen gép állapota nem hozzárendelése minden munkamenetben megmarad. Mivel a Cloud Shell interaktív munkamenet során létrejött, a parancskörnyezet automatikusan leáll, 20 perc rendszerhéj inaktivitás után.
+A Cloud Shell kérésenként és ennek eredményeképpen a gépállapot nem marad meg a munkamenetek között. Mivel a Cloud Shell interaktív munkamenetekhez készült, a rendszerhéjak 20 perc rendszerhéj inaktivitás után automatikusan megszűnnek.

@@ -5,27 +5,27 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: e128f3c67a41322d9c25a8d6941e937729760bf4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179065"
 ---
-Ebben a lépésben hoz létre egy tűzfalszabályt, nyissa meg a mintavételi portot az elosztott terhelésű végpont (korábban megadott 59999), és a egy másik szabály megnyitása a rendelkezésre állási csoport figyelőjének portszámára. Az elosztott terhelésű végpontot a virtuális gépeken, amelyek tartalmazzák a rendelkezésre állási csoport replikái hozta létre, mert meg kell nyitnia a mintavételi portot és a megfelelő virtuális gépeken a figyelőjének portszámára.
+Ebben a lépésben hozzon létre egy tűzfalszabályt a kiegyenlítő végpont mintavételi portjának megnyitásához (59999, a hogy korábban megadott) és egy másik szabályt a rendelkezésre állási csoport figyelőportjának megnyitásához. Mivel létrehozta a terhelés-kiegyensúlyozott végpontot a virtuális gépek, amelyek rendelkezésre állási csoport replikák, meg kell nyitnia a mintavételi port és a figyelő port a megfelelő virtuális gépeken.
 
-1. Indítsa el a virtuális gépeken, amely a replikákat, **fokozott biztonságú Windows tűzfal**.
+1. A replikákat tartalmazó virtuális gépeken indítsa el **a fokozott biztonságú Windows tűzfalat.**
 
-2. Kattintson a jobb gombbal **bejövő szabályok**, és kattintson a **új szabály**.
+2. Kattintson a jobb gombbal **a Bejövő szabályok**elemre, majd kattintson az Új szabály **parancsra.**
 
-3. Az a **szabálytípus** lapon jelölje be **Port**, és kattintson a **tovább**.
+3. A **Szabály típusa** lapon válassza a **Port**lehetőséget, majd kattintson a **Tovább**gombra.
 
-4. Az a **protokoll és portok** lapon jelölje be **TCP**, típus **59999** a a **adott helyi portok** mezőbe, majd kattintson a  **Tovább**.
+4. A **Protokoll és portok** lapon válassza a **TCP**lehetőséget, írja be az **59999-es** négyzetet a **Helyi portok** mezőbe, majd kattintson a **Tovább**gombra.
 
-5. Az a **művelet** lapon, hogy **engedélyezze a kapcsolatot** kiválasztva, és kattintson **tovább**.
+5. A **Művelet** lapon tartsa a **Kapcsolat engedélyezése** lehetőséget, majd kattintson a **Tovább**gombra.
 
-6. Az a **profil** lapon fogadja el az alapértelmezett beállításokat, és kattintson a **tovább**.
+6. A **Profil** lapon fogadja el az alapértelmezett beállításokat, majd kattintson a **Tovább**gombra.
 
-7. Az a **neve** lap a **neve** szöveget adja meg a szabály nevét, például **mindig a figyelő mintavételi Port**, és kattintson a **Befejezés**.
+7. A **Név** lap **Név** mezőjében adja meg a szabály nevét, például **Mindig a figyelő mintavételi portján,** majd kattintson a **Befejezés gombra.**
 
-8. Ismételje meg az előző lépést a rendelkezésre állási csoport figyelőjének portszámára (a korábban a parancsfájl $EndpointPort paraméterében megadott), majd adjon meg egy megfelelő szabály nevét, például **mindig a figyelőport**.
+8. Ismételje meg az előző lépéseket a rendelkezésre állási csoport figyelőportjához (a parancsfájl $EndpointPort paraméterének korábbi meghatározása szerint), majd adja meg a megfelelő szabálynevet, például **mindig a figyelőporton.**
 

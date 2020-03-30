@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 04/02/2019
 ms.author: wesmc
 ms.openlocfilehash: 498a7ee28b9404d0733e4615f4df635a8c904b51
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67178928"
 ---
 ### <a name="cacheskuname"></a>cacheSKUName
 
-Az új Azure Cache redis tarifacsomagját.
+The pricing tier of the new Azure Cache for Redis.
 
 ```json
     "cacheSKUName": {
@@ -30,11 +30,11 @@ Az új Azure Cache redis tarifacsomagját.
     },
 ```
 
-A sablon meghatározza az értékeket, amelyeknél engedélyezve van a ezt a paramétert (alapszintű, Standard vagy prémium), és hozzárendeli egy alapértelmezett értéket (alapszintű), ha nem ad meg értéket. Alapszintű egyetlen csomópont, akár több mérettel 53 GB-os biztosít. Standard két csomópontos elsődleges/replika, többféle méret akár 53 GB-os és a 99,9 %-os SLA-t biztosít.
+A sablon meghatározza az ehhez a paraméterhez engedélyezett értékeket (Alapszintű, Standard vagy Prémium), és alapértelmezett értéket (Alapérték) rendel hozzá, ha nincs megadva érték. Az Alapszintű egy csomópontot biztosít, amely akár 53 GB-os méretben is elérhető. A Standard kétcsomópontos elsődleges/replika-verziót biztosít több féle méretben, akár 53 GB-os és 99,9%-os SLA-val.
 
 ### <a name="cacheskufamily"></a>cacheSKUFamily
 
-A termékváltozat a család.
+A család a sku-ért.
 
 ```json
     "cacheSKUFamily": {
@@ -52,9 +52,9 @@ A termékváltozat a család.
 
 ### <a name="cacheskucapacity"></a>cacheSKUCapacity
 
-Az új Azure Cache Redis-példány mérete.
+Az új Azure-gyorsítótár a Redis-példány mérete.
 
-Az alapszintű és standard szintű családhoz:
+Az alap- és standard családok esetében:
 
 ```json
     "cacheSKUCapacity": {
@@ -75,13 +75,13 @@ Az alapszintű és standard szintű családhoz:
     }
 ```
 
-Az érték cache prémium szintű kapacitáshoz van definiálva azonos, kivéve az engedélyezett értékek Futtatás 1-től 5 helyett 0, 6.
+A prémium érték gyorsítótár kapacitása ugyanaz, kivéve az engedélyezett értékek futtatása 1-től 5 helyett 0-6.
 
-A sablon az egész számok, amelyeknél engedélyezve van ez a paraméter (0 – 6. az alapszintű és standard szintű családok; 1-5 a prémium szintű termékcsalád) határozza meg. Ha nem ad meg értéket, a sablon az alapszintű és Standard, Premium 1 rendeli hozzá egy alapértelmezett érték a 0.
+A sablon meghatározza azokat az egész értékeket, amelyek ehhez a paraméterhez engedélyezettek (0-tól 6-ig az Alap- és Standard családokesetében, 1-től 5-ig a Prémium család esetében). Ha nincs megadva érték, a sablon 0 alapértelmezett értéket rendel hozzá az Alapszintű és a Standard, 1 a Prémium értékhez.
 
-Az értékek következő gyorsítótár méretének felelnek meg:
+Az értékek a következő gyorsítótár-méreteknek felelnek meg:
 
-| Érték | Alapszintű és Standard<br>Gyorsítótár mérete | Prémium<br>Gyorsítótár mérete |
+| Érték | Alap és standard<br>gyorsítótár mérete | Prémium<br>gyorsítótár mérete |
 | :---: | :------------------------------: | :-------------------: |
 | 0     | 250 MB (alapértelmezett)                 | n/a                   |
 | 1     | 1 GB                             | 6 GB (alapértelmezett)        |

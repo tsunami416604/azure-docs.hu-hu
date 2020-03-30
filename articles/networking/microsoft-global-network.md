@@ -1,6 +1,6 @@
 ---
-title: Microsoft Global Network – Azure
-description: Leírja, hogyan építi fel a Microsoft a gyors és megbízható globális hálózatot
+title: Microsoft globális hálózat - Azure
+description: Bemutatja, hogy a Microsoft hogyan építi ki gyors és megbízható globális hálózatát
 services: networking
 documentationcenter: ''
 author: KumudD
@@ -14,61 +14,61 @@ ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
 ms.openlocfilehash: 10a061163447a60f1c25b386ef28028436284650
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75453075"
 ---
 # <a name="microsoft-global-network"></a>Microsoft globális hálózat
 
-A Microsoft a világ egyik legnagyobb gerinces hálózatát birtokolja és üzemelteti. Ez a globális és kifinomult architektúra, amely több mint 100 000 mérföldet ölel fel, összekapcsolja az adatközpontokat és az ügyfeleket. 
+A Microsoft a világ egyik legnagyobb gerinchálózatának tulajdonosa és üzemeltetője. Ez a több mint 100 000 mérföldet felölelő globális és kifinomult architektúra összekapcsolja adatközpontjainkat és ügyfeleinket. 
  
-Minden nap a világ minden napján csatlakozik, és a Microsoft Azure, a Bing, a Dynamics 365, az Office 365, az XBox és sok más számára több ezer kérést továbbít. A típustól függetlenül az ügyfelek azonnali megbízhatóságot és rugalmasságot várnak a szolgáltatásainktól. 
+Az ügyfelek világszerte naponta több milliárd kérést kötnek össze és továbbítanak a Microsoft Azure, a Bing, a Dynamics 365, az Office 365, az XBox és még sok más rendszerszámára. Típustól függetlenül az ügyfelek azonnali megbízhatóságot és válaszkészséget várnak szolgáltatásainktól. 
  
-A [Microsoft Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) a nagyszerű felhőalapú élmény megvalósításának központi része. A Microsoft- [adatközpontok](https://azure.microsoft.com/global-infrastructure/) 54 Azure-régiókban és a világ minden pontján stratégiai módon elhelyezett nagy szembőségű, globális hálózatban egyaránt elérhetővé teszi a rendelkezésre állást, a kapacitást és a rugalmasságot, hogy megfeleljenek az igényeknek.
+A [Microsoft globális hálózata](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) a nagyszerű felhőélmény biztosításának központi része. [Microsoft-adatközpontjaink](https://azure.microsoft.com/global-infrastructure/) 54 Azure-régióval és a világ minden táján stratégiailag elhelyezett, élhálózati csomópontok nagy hálójával globális hálózatunk biztosítja a rendelkezésre állást, a kapacitást és a rugalmasságot, hogy megfeleljen az igényeknek.
 
 ![Microsoft globális hálózat](./media/microsoft-global-network/microsoft-global-wan.png)
  
-## <a name="get-the-premium-cloud-network"></a>A prémium szintű felhőalapú hálózat beszerzése
+## <a name="get-the-premium-cloud-network"></a>A prémium szintű felhőhálózat beszereznie
  
-A Microsoft Cloud használata esetén a [lehető legjobb élményt](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) lehet választani. Abban a pillanatban, amikor az ügyfél-forgalom stratégiai módon elhelyezett Edge-csomópontokon keresztül belép a globális hálózatba, az adatok az optimalizált útvonalakon haladnak át a fénysebesség közelében. Ez optimális késést biztosít a legjobb teljesítmény érdekében. Ezek a peremhálózat-csomópontok, amelyek több mint 3500 egyedi internetes partnerhez (társhoz) csatlakoznak, több ezer kapcsolaton keresztül több mint 145 helyen, megadják az összekapcsolási stratégiánk alapjait. 
+A lehető [legjobb felhasználói élmény](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) választása a Microsoft felhőhasználata során egyszerű. Attól a pillanattól kezdve, hogy az ügyfélforgalom stratégiailag elhelyezett peremcsomópontjainkon keresztül belép globális hálózatunkba, az Ön adatai optimalizált útvonalakon haladnak át a fénysebesség közelében. Ez biztosítja az optimális késleltetést a legjobb teljesítmény érdekében. Ezek az élhálózati csomópontok, amelyek több mint 3500 egyedi internetes partnerhez (társhoz) kapcsolódnak több ezer kapcsolaton keresztül, több mint 145 helyszínen, biztosítják az összekapcsolási stratégiánk alapját. 
  
-Akár Londonból Tokióba, akár Washington D.C.-ből Los Angelesbe, a hálózati teljesítmény számszerűsítve van, és hatással van az olyan dolgokra, mint a késés, a jitter, a csomagok elvesztése és az átviteli sebesség.  A Microsoft a közvetlen csatlakozásokat előnyben részesítette a továbbítási hivatkozások helyett, így a forgalom szimmetrikusan tartja a forgalmat, és segít a komló, a felek és az elérési utak lehető legrövidebb és egyszerű megtartásában. 
+Akár Londonból Tokióba, akár Washington DC-ből Los Angelesbe csatlakozik, a hálózati teljesítményt számszerűsítik, és olyan dolgok befolyásolják, mint a késés, a jitter, a csomagvesztés és az átviteli teljesítmény.  A Microsoftnál inkább a közvetlen összeköttetéseket részesítjük előnyben, mint a tranzitkapcsolatokat, ez szimmetrikusan tartja a válaszforgalmat, és segít megőrizni az ugrásokat, a társviszony-létesítési pártokat és az elérési utakat a lehető legrövidebb és legegyszerűbb. 
 
-Ha például egy londoni felhasználó megpróbál hozzáférni egy szolgáltatáshoz Tokióban, akkor az internetes forgalom bekerül Londonban, a Microsoft WAN-on keresztül Franciaországon keresztül, a transz-arábiai útvonalakat Európa és India között, majd pedig Japánba, ahol a szolgáltatást üzemeltetik. A válasz forgalma szimmetrikus. Ezt úgy is hívják, mint a " [hideg burgonya](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) " típusú útválasztás, ami azt jelenti, hogy a forgalom a lehető leghosszabb ideig marad a Microsoft hálózaton.  
+Ha például egy londoni felhasználó tokiói szolgáltatást próbál elérni, akkor az internetes forgalom belép az egyik londoni élünkbe, áthalad a Microsoft WAN-on Franciaországon keresztül, az Európa és India közötti transz-arábiai útvonalakon, majd Japánba, ahol a szolgáltatást üzemeltetik. A válaszforgalom szimmetrikus. Ezt néha [hidegburgonya-útválasztásnak](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) is nevezik, ami azt jelenti, hogy a forgalom a Microsoft-hálózaton marad, amíg csak lehetséges, mielőtt átadjuk.  
   
-Igen, ez minden forgalmat jelent a Microsoft szolgáltatásainak használatakor? Igen, az adatközpontok közötti, Microsoft Azureon belüli vagy a Microsoft-szolgáltatások, például a Virtual Machines, az Office 365, az XBox, az SQL-adatbázisok, a tárolók és a virtuális hálózatok közötti adatforgalom a globális hálózaton belül, és soha nem a nyilvános interneten keresztül történik, így biztosítva az optimális teljesítmény és integritás.  
+Szóval, ez azt jelenti, minden és minden forgalmat, ha a Microsoft-szolgáltatások? Igen, az adatközpontok közötti, a Microsoft Azure-on belül vagy a Microsoft-szolgáltatások, például a Virtuális gépek, az Office 365, az XBox, az SQL DB-k, a Storage és a virtuális hálózatok közötti forgalom a globális hálózaton belül, és soha nem a nyilvános interneten keresztül kerül irányítva az optimális teljesítményét és integritását.  
  
-A nagy teljesítményű és a Felhőbeli, a földi és a tengeralattjárós útvonalak terén bekövetkező jelentős beruházások elengedhetetlenek számunkra, hogy konzisztens és magas színvonalú szolgáltatást biztosítsanak, miközben a felhő és a online szolgáltatások rendkívüli növekedését táplálják. Globális hálózatunk legújabb kiegészítései: [Marea](https://www.submarinecablemap.com/#/submarine-cable/marea) tengeralattjáró-kábel, az iparág első nyitott vonalrendszer (Subsea) a Bilbao, Spanyolország és Virginia Beach, Virginia, USA, valamint a New York-i, USA és Dublin, Írország és az [új, csendes-óceáni (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) [környezet között,](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) a Tokió, Japán és Portland, Oregon, USA. 
- 
-
-## <a name="our-network-is-your-network"></a>Hálózatunk a hálózat
-
-Két évtizedes tapasztalattal rendelkezünk a hálózatra irányuló nagy beruházások mellett, így biztosítva az optimális teljesítményt. A vállalatok teljes mértékben kihasználhatják hálózati eszközeiket, és a fent látható fejlett átfedési architektúrákat is kiépíthetik. 
- 
-Microsoft Azure a szolgáltatások és képességek legszélesebb tárházát kínálja, így az ügyfelek gyorsan és könnyedén hozhatnak létre, bővíthetik és tudnak megfelelni a hálózati igényeknek. A kapcsolati szolgáltatásaink a régiók, a hibrid és a Felhőbeli pont – hely és a helyek közötti architektúrák, valamint a globális IP-továbbítási forgatókönyvek közötti virtuális hálózatokat ölelik fel.  Azoknak a vállalatoknak, akik a saját adatközpontját vagy hálózatát az Azure-ba szeretnék csatlakozni, vagy nagy mennyiségű adatfeldolgozási vagy továbbítási igényekkel rendelkező ügyfeleink számára, a [ExpressRoute](../expressroute/expressroute-introduction.md)és a [ExpressRoute közvetlen](../expressroute/expressroute-erdirect-about.md) lehetőséget biztosítanak akár 100 GB/s sávszélességre is, közvetlenül a Microsoft globális hálózatában a világ különböző pontjain.  
- 
-A [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) úgy lett kialakítva, hogy kiegészítse a szolgáltató WAN-implementációját, és összekapcsolja a helyszíni helyeket a világ különböző pontjain. Ha globális műveletet futtat, a ExpressRoute Global Reach használhatja az előnyben részesített és helyi szolgáltatók számára, hogy az összes globális helyet a Microsoft globális hálózatával összekapcsolja. Az új hálózat felhőben (WAN) való kibővítésével nagy számú fiókirodát is el lehet végezni az Azure Virtual WAN használatával, amely lehetővé teszi az ágak zökkenőmentes összekapcsolását a Microsoft globális hálózatával a SDWAN & VPN-eszközökkel (azaz Helyszíni berendezések vagy CPE) beépített könnyű használattal és automatizált kapcsolattal és konfiguráció-felügyelettel. 
- 
-A [globális VNet](../virtual-network/virtual-network-peering-overview.md) -társítás lehetővé teszi, hogy az ügyfelek zökkenőmentesen két vagy több Azure-beli virtuális hálózatot csatlakoztassanak a régiók között. Miután megtörtént a társítás, a virtuális hálózatok egyetlenként jelennek meg. A virtuális gépek közötti forgalmat a rendszer a Microsoft gerinc-infrastruktúrán keresztül irányítja át, hasonlóan a forgalomhoz, mint az azonos virtuális hálózatban lévő virtuális gépek között, a magánhálózati IP-címeken keresztül. 
+A metró-, földi és tengeralattjáró-útvonalakon az üvegszálas kapacitásba és a sokszínűségbe történő hatalmas beruházások kulcsfontosságúak ahhoz, hogy következetes és magas szolgáltatási szintet tartsunk fenn, miközben tápláljuk felhőink és online szolgáltatásaink rendkívüli növekedését. A legújabb kiegészítéseket a globális hálózat a mi [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) tengeralattjáró kábel, az iparág első Open Line System (OLS) több mint tenger alatti között Bilbao, Spanyolország és Virginia Beach, Virginia, USA, valamint az [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) között New York, USA és Dublin, Írország és [a New Cross Pacific (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) között Tokió, Japán, és Portland, Oregon, USA. 
  
 
-## <a name="well-managed-using-software-defined-innovation"></a>Jól felügyelt szoftveresen meghatározott innováció használatával
+## <a name="our-network-is-your-network"></a>Hálózatunk az Ön hálózata
 
-A világ egyik vezető felhőjét futtatva a Microsoft számos képet és tapasztalatot szerzett a nagy teljesítményű globális infrastruktúra kiépítésében és kezelésében.  
+Két évtizedes tapasztalattal rendelkezünk, valamint jelentős beruházásokat fektettünk be a hálózatba, hogy mindenkor biztosítsuk az optimális teljesítményt. A vállalkozások teljes mértékben kihasználhatják hálózati eszközeinket, és fejlett overlay architektúrákat építhetnek a tetejére. 
  
-Betartjuk a működési alapelvek robusztus készletét: 
+A Microsoft Azure a szolgáltatások és képességek leggazdagabb portfólióját kínálja, így az ügyfelek bárhol gyorsan és egyszerűen hozhatnak létre, bővíthetnek és teljesmértékben megfelelhetnek a hálózati követelményeknek. Kapcsolódási szolgáltatásaink a régiók közötti virtuális hálózati társviszony-létesítést, a hibrid és a felhőbe vezető pont-hely és helyek közötti architektúrákat, valamint a globális IP-tranzitforgatókönyveket is átfogják.  Azoknak a vállalatoknak, amelyek saját adatközpontjukat vagy hálózatukat az Azure-hoz szeretnék csatlakoztatni, vagy a hatalmas adatbetöltési vagy továbbítási igényekkel rendelkező ügyfelek számára az [ExpressRoute](../expressroute/expressroute-introduction.md)és az [ExpressRoute Direct](../expressroute/expressroute-erdirect-about.md) akár 100 Gb/s sávszélességet is biztosítanak a Microsoft globális hálózatába a világ különböző pontjain lévő társviszony-létesítési helyeken.  
  
-- Használja a legjobb fajta váltási hardvert a hálózat különböző szintjein.  
-- A végfelhasználók számára zéró hatással rendelkező új funkciók üzembe helyezése.  
-- A lehető leggyorsabban elvégezheti a frissítések biztonságos és megbízható áttelepítését a flottán belül. Hetek helyett óra.  
-- Kihasználhatja a Felhőbeli mély telemetria és a hibák teljes körű automatikus mérséklését.  
-- Az egységesített és a szoftveresen definiált hálózatkezelési technológia segítségével szabályozhatja a hálózatban lévő összes hardveres elemet.  Az ismétlődés megszüntetése és a hibák csökkentése. 
+[Az ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) célja, hogy kiegészítse a szolgáltató WAN implementációját, és világszerte csatlakoztassa a helyszíni helyeket. Ha globális műveletet futtat, az ExpressRoute Global Reach szolgáltatást az előnyben részesített és a helyi szolgáltatókkal együtt használhatja az összes globális webhely csatlakoztatásához a Microsoft globális hálózatán keresztül. Az új hálózat felhőben (WAN) való kibővítése nagyszámú fiókwebhelyre az Azure Virtual WAN-on keresztül valósítható meg, amely lehetővé teszi az ágak zökkenőmentes csatlakoztatását a Microsoft globális hálózatához az SDWAN & VPN-eszközökkel (azaz ügyfél-premises berendezésekkel vagy CPE-vel) a beépített egyszerű használat, valamint az automatizált kapcsolat- és konfigurációkezelés révén. 
  
-Ezek az alapelvek a hálózat összes rétegére érvényesek: a gazdagép hálózati adapteréről, a platform, a hálózati függvények az adatközpontban, például a Load Balancerekhez, egészen a WAN felé a Traffic Engineering platform és az optikai hálózatok használatával.  
+[A globális virtuális hálózatok létesítése](../virtual-network/virtual-network-peering-overview.md) lehetővé teszi az ügyfelek számára, hogy két vagy több Azure virtuális hálózatot csatlakoztassanak a régiók között zökkenőmentesen. A társviszony-létesítést követően a virtuális hálózatok egyként jelennek meg. A társviszony-létesített virtuális hálózatok virtuális gépei közötti forgalom a Microsoft gerinchálózati infrastruktúráján keresztül történik, hasonlóan a forgalomhoz ugyanebben a virtuális hálózatban lévő virtuális gépek között – csak magánhálózati IP-címeken keresztül. 
  
-Az Azure és a hálózat exponenciális növekedése elérte azt a pontot, ahol végül rájött, hogy az emberi intuíciót már nem lehet a globális hálózati műveletek kezeléséhez. A hálózatban a hosszú, közepes és rövid távú változások ellenőrzésének szükségessége érdekében kifejlesztettünk egy platformot, amely a termelési hálózatot szintetikusan tükrözte és emulálja. Tükrözött környezetek hozhatók létre, és több millió szimuláció is futtatható, lehetővé téve a szoftverek és a hardveres változások tesztelését, valamint azok hatását, mielőtt az éles platformra és hálózatra véglegesíti őket. 
 
-## <a name="next-steps"></a>Következő lépések
-- [További információ az Azure-ban elérhető hálózati szolgáltatásokról](https://azure.microsoft.com/product-categories/networking/)
+## <a name="well-managed-using-software-defined-innovation"></a>Jól kezelt szoftveresen meghatározott innovációval
+
+A világ egyik vezető felhőjeként működő Microsoft sok betekintést és tapasztalatot szerzett a nagy teljesítményű globális infrastruktúra kiépítésében és kezelésében.  
+ 
+Szilárd működési elveket tartunk be: 
+ 
+- Használja a legjobb kapcsolási hardvert a hálózat különböző szintjein.  
+- Új funkciók üzembe helyezése, amelyek nek nincs hatása a végfelhasználókra.  
+- A frissítéseket biztonságosan és megbízhatóan, a lehető leggyorsabban kell bevonni a flottán keresztül. Hetek helyett órák.  
+- Használja a felhőszintű mély telemetriai adatokat és a teljesen automatizált hibaelhárítást.  
+- A hálózat összes hardverelemének vezérléséhez használjon egységes és szoftveresen definiált hálózati technológiát.  A párhuzamosságok kiküszöbölése és a hibák csökkentése. 
+ 
+Ezek az elvek a hálózat minden rétegére vonatkoznak: a gazdahálózati interfésztől, a kapcsolóplatformtól, az adatközpont hálózati funkcióitól, például a terheléselosztóktól, egészen a WAN-ig a forgalomtervezési platformunkkal és optikai hálózatainkkal.  
+ 
+Az Azure és hálózatának exponenciális növekedése elérte azt a pontot, amikor végül rájöttünk, hogy az emberi intuíciómár nem támaszkodhat a globális hálózati műveletek kezeléséhez. Annak érdekében, hogy kielégítsük a hosszú, közép- és rövid távú változások érvényesítésének szükségességét a hálózaton, kifejlesztettünk egy platformot, amely szintetikusan tükrözi és emulálja termelési hálózatunkat. Az a képesség, hogy tükrözött környezeteket hozzunk létre, és több millió szimulációt futtassunk, lehetővé teszi számunkra, hogy teszteljük a szoftver- és hardverváltozásokat és azok hatását, mielőtt elkötelezzük magunkat az éles platformunkés hálózatunk mellett. 
+
+## <a name="next-steps"></a>További lépések
+- [További információ az Azure-ban nyújtott hálózati szolgáltatásokról](https://azure.microsoft.com/product-categories/networking/)

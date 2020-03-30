@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: ceb2626a43ed44338bb0faad475ae2333af2de9e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179351"
 ---
 Ellenőrizze, hogy már [létrehozott-e Relay-névteret][namespace-how-to].
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 2. A bal oldali menüben válassza ki a **Minden erőforrás** elemet.
 3. Válassza ki azt a névteret, ahol a hibrid kapcsolatot létre szeretné hozni. Ebben az esetben ez a **mynewns**.  
 4. A **Relay-névtér** alatt válassza ki a **Hibrid kapcsolatok** lehetőséget.

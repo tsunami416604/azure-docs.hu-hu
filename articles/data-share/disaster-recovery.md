@@ -1,40 +1,40 @@
 ---
-title: Vész-helyreállítási Azure-adatmegosztás esetén
-description: Vész-helyreállítási Azure-adatmegosztás esetén
+title: Vészhelyreállítás az Azure Data Share-hez
+description: Vészhelyreállítás az Azure Data Share-hez
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: a736e3ddfcf785f9ce27140eed58374a0732c1f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75483179"
 ---
-# <a name="disaster-recovery-for-azure-data-share"></a>Vész-helyreállítási Azure-adatmegosztás esetén
+# <a name="disaster-recovery-for-azure-data-share"></a>Vészhelyreállítás az Azure Data Share-hez
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja a vész-helyreállítási környezetet az Azure-beli adatmegosztáshoz. Az Azure adatközpont-kimaradások ritkán fordulnak elő, de akár néhány perctől akár órákig is tarthatnak. Az adatközpont-kimaradások olyan környezetek megszakadását okozhatják, amelyek az adatszolgáltató által megosztott adatkezelési lehetőségekre támaszkodnak. A jelen cikkben ismertetett lépéseket követve az adatszolgáltatók továbbra is megoszthatják az adataikat az adatfogyasztókkal az adatmegosztást üzemeltető elsődleges régió adatközpont-kimaradása esetén. 
+Ebben a cikkben bemutatjuk, hogyan konfigurálhat egy vész-helyreállítási környezetet az Azure Data Share-hez. Az Azure adatközpont-kimaradások ritkák, de néhány perctől órákig tarthatnak. Az adatközpont-kimaradások zavart okozhatnak az adatszolgáltató által megosztott adatoktól függő környezetekben. A cikkben ismertetett lépéseket követve az adatszolgáltatók továbbra is megoszthatják az adatokat az adatfogyasztóikkal abban az esetben, ha az adatközpontok kimaradása az elsődleges régió, amely az adatmegosztást üzemelteti. 
 
-## <a name="achieving-business-continuity-for-azure-data-share"></a>Az üzletmenet folytonosságának elérése az Azure-adatmegosztáshoz
+## <a name="achieving-business-continuity-for-azure-data-share"></a>Az Azure Data Share üzletmenet-folytonosságának elérése
 
-Az adatközpont-kimaradás előkészítéséhez az adatszolgáltatónak lehet egy másodlagos régióban kiépített adatmegosztási környezete. Vannak olyan mértékek, amelyek gondoskodnak arról, hogy zökkenőmentes feladatátvétel történjen az adatközpontok meghibásodása esetén. 
+Az adatközpont-kimaradásra való felkészüléshez az adatszolgáltató egy másodlagos régióban kiépített adatmegosztási környezettel rendelkezhet. Vannak olyan intézkedések, amelyeket meg lehet tenni, amelyek biztosítják a zökkenőmentes feladatátvételt abban az esetben, ha egy adatközpont-kimaradás történik. 
 
-Az adatszolgáltatók másodlagos Azure-beli adatmegosztási erőforrásokat helyezhetnek üzembe egy további régióban. Ezek az adatmegosztási erőforrások konfigurálhatók úgy, hogy az elsődleges adatmegosztási környezetben található adatkészleteket is tartalmazzák. Az adatfelhasználók hozzáadhatók az adatmegosztáshoz a DR környezet konfigurálásakor, vagy egy későbbi időpontban (azaz a manuális feladatátvétel lépéseinek részeként).
+Az adatszolgáltatók másodlagos Azure-adatmegosztási erőforrásokat építhetnek ki egy további régióban. Ezek az adatmegosztási erőforrások beállíthatók úgy, hogy tartalmazzák az elsődleges adatmegosztási környezetben létező adatkészleteket. Az adatfogyasztók at hozzáadható az adatmegosztáshoz a VÉSZ-környezet konfigurálásakor, vagy egy későbbi időpontban (azaz a manuális feladatátvételi lépések részeként).
 
-Ha az adatfogyasztók aktív megosztási előfizetéssel rendelkeznek a DR célra kiépített másodlagos környezetben, akkor a feladatátvétel részeként engedélyezheti a pillanatkép-ütemtervet. Ha az adatfogyasztók nem kívánnak előfizetni egy másodlagos régióba DR célra, akkor később meghívhatják őket a másodlagos adatmegosztásra. 
+Ha az adatfogyasztók egy aktív megosztási előfizetéssel rendelkeznek egy dr célokra kiépített másodlagos környezetben, engedélyezhetik a pillanatkép-ütemezést egy feladatátvétel részeként. Ha az adatfogyasztók nem akarnak előfizetni egy másodlagos régiódr célra, akkor meghívást kaphatnak a másodlagos adatmegosztásegy későbbi időpontban. 
 
-Az adatfogyasztók rendelkezhetnek olyan aktív megosztási előfizetéssel, amely DR célra tétlen, vagy az adatszolgáltatók a manuális feladatátvételi eljárások részeként egy későbbi időpontban is hozzáadhatják őket. 
+Az adatfogyasztók rendelkezhetnek egy aktív megosztási előfizetéssel, amely vész-végrehajtási célokra tétlen, vagy az adatszolgáltatók a manuális feladatátvételi eljárások részeként egy későbbi időpontban is hozzáadhatják őket. 
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-- [Üzletmenet-folytonosság és vész-helyreállítás](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
-- [Magas rendelkezésre állás létrehozása a BCDR-stratégiában](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/build-high-availability-into-your-bcdr-strategy)
+- [Üzletmenet folytonossága és vészhelyreállítás](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
+- [A magas rendelkezésre állás beépítése a BCDR-stratégiába](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/build-high-availability-into-your-bcdr-strategy)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.
+Az adatok megosztásának megkezdéséhez folytassa az [adatkezelési oktatóanyag megosztásával.](share-your-data.md)
 
 
 

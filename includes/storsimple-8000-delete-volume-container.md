@@ -9,32 +9,32 @@ ms.date: 06/08/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: e683d17422321b780a1c01b3011292f2e2c631cb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179166"
 ---
-A kötettároló törléséhez kell
- - Törölje a kötettárolót a kötetek. Ha a kötettárolóhoz társított kötetekkel rendelkezik, a köteteket offline állapotba először. Kövesse a [egy kötetet offline állapotba](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline). Miután a kötetek offline állapotban van, törölheti őket. 
- - társított biztonsági mentési szabályzatok törlése, és a felhőbeli pillanatképeket. Ellenőrizze, hogy ha a kötettárolóhoz társított biztonsági mentési szabályzatok és a felhőbeli pillanatképekkel rendelkezik. Ha igen, majd [a biztonsági mentési szabályzatok törlése](../articles/storsimple/storsimple-8000-manage-backup-policies-u2.md#delete-a-backup-policy). Ez a felhőbeli pillanatképeket is törli. 
+Kötettároló törléséhez
+ - kötetek törlése a kötettárolóban. Ha a kötettárolóhoz társított kötetek vannak, először ezeket a köteteket állítsa offline állapotba. Kövesse a [Kötet offline állapotba helyezése](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)című rész lépéseit. Miután a kötetek offline állapotba kerültek, törölheti őket. 
+ - a társított biztonsági mentési szabályzatok és a felhőbeli pillanatképek törlése. Ellenőrizze, hogy a kötettároló rendelkezik-e társított biztonsági mentési szabályzatokkal és felhőbeli pillanatképekkel. Ha igen, [törölje a biztonsági mentési házirendeket.](../articles/storsimple/storsimple-8000-manage-backup-policies-u2.md#delete-a-backup-policy) Ez is törli a felhőbeli pillanatképek. 
  
-Ha a kötettároló nem rendelkezik társított kötetek, biztonsági mentési házirendeket, és felhőbeli pillanatképeket, törölheti azt. A következő eljárással törölni a kötettárolót.
+Ha a kötettároló nem rendelkezik társított kötetekkel, biztonsági mentési szabályzatokkal és felhőbeli pillanatképekkel, törölheti azt. Kötettároló törléséhez hajtsa végre az alábbi eljárást.
 
-#### <a name="to-delete-a-volume-container"></a>A kötettároló törlése
-1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Válassza ki, és válassza ki az eszközt, és folytassa a **beállítások > kezelés > kötettárolók**.
+#### <a name="to-delete-a-volume-container"></a>Kötettároló törlése
+1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Jelölje ki az eszközt, kattintson az eszközre, majd lépjen a **Beállítások > > kötettárolók kezelése**elemre.
 
-    ![Kötet tárolók panel](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)
+    ![Térfogattárolók penge](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)
 
-2. Kötettárolók táblázatos listájából válassza ki a kötettárolót, törléséhez kattintson a jobb gombbal a kívánt **...**  majd **törlése**.
+2. A kötettárolók táblázatos listájából válassza ki a törölni kívánt kötettárolót, kattintson a jobb gombbal **...** és válassza a **Törlés parancsot.**
 
     ![Kötettároló törlése](./media/storsimple-8000-delete-volume-container/deletevolumecontainer1.png)
 
-3. Ha a kötettároló nem társított kötetek, a biztonsági mentési házirendeket, és a felhőbeli pillanatképekkel, akkor lehet törölni. Amikor a rendszer megerősítést kér, tekintse át, és jelölje be a jelölőnégyzetet, amely megállapítja a kötettároló törlésének következményeit. Kattintson a **törlése** , majd törölni a kötettárolót.
+3. Ha egy kötettároló nem rendelkezik társított kötetekkel, biztonsági mentési szabályzatokkal és felhőbeli pillanatképekkel, akkor törölhető. Amikor megerősítést kér, tekintse át és jelölje be a kötettároló törlésének hatását tartalmazó jelölőnégyzetet. Kattintson a **Törlés** gombra a kötettároló törléséhez.
 
     ![Törlés megerősítése](./media/storsimple-8000-delete-volume-container/deletevolumecontainer2.png)
 
-A kötettárolók listája a törölt kötettároló megfelelően frissül.
+A kötettárolók listája frissül, hogy tükrözze a törölt kötettárolót.
 
 ![](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
 

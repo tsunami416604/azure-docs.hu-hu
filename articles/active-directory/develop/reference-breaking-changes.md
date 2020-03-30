@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory feltörési változások referenciája | Microsoft Docs
-description: Ismerje meg az Azure AD protokollok változásait, amelyek hatással lehetnek az alkalmazásra.
+title: Az Azure Active Directory törési módosítási hivatkozása | Microsoft dokumentumok
+description: Ismerje meg az Azure AD protokollok, amelyek hatással lehetnek az alkalmazás módosításai.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -13,123 +13,145 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 1/24/2020
+ms.date: 3/13/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c6ed72e5c94191411572c6ab67533141e2fe47d6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1248063c1b4c1b1e124ff671797450dd5c1b8727
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185804"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050168"
 ---
 # <a name="whats-new-for-authentication"></a>A hitelesítés újdonságai 
 
->Értesítést kaphat az oldal frissítéseiről. Csak adja hozzá [ezt az URL-címet](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us) az RSS-hírcsatorna-olvasóhoz.
+>Értesítést kaphat a lap frissítéseiről. Csak add ezt [az URL-t](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us) az RSS feed olvasó.
 
-A hitelesítési rendszer folyamatosan módosítja és hozzáadja a szolgáltatásokat a biztonság és a szabványok megfelelőségének javítása érdekében. A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő részletekkel kapcsolatos információkat tartalmazza:
+A hitelesítési rendszer folyamatosan módosítja és hozzáadja a funkciókat a biztonság és a szabványok megfelelőségének javítása érdekében. Ahhoz, hogy naprakész legyen a legújabb fejleményekkel, ez a cikk a következő részletekkel kapcsolatos információkat tartalmazza:
 
 - A legújabb funkciók
 - Ismert problémák
-- Protokoll módosításai
+- Protokollváltozások
 - Elavult funkciók
 
 > [!TIP] 
-> Ez az oldal rendszeresen frissül, ezért gyakran látogatnak. Hacsak másként nincs jelezve, ezek a módosítások csak az újonnan regisztrált alkalmazások esetében kerülnek érvénybe.  
+> Ez az oldal rendszeresen frissül, ezért látogasson el gyakran. Eltérő rendelkezés hiányában ezeket a változtatásokat csak az újonnan nyilvántartásba vett kérelmek esetében vezették be.  
 
 ## <a name="upcoming-changes"></a>Közelgő változások
 
-Jelenleg nincs ütemezve.  Tekintse meg az alábbi, a vagy az éles környezetben futó módosításokat. 
+Jelenleg nincs beütemezve.  Kérjük, olvassa el alább a termelésben lévő vagy megjelenő módosításokat. 
 
-## <a name="february-2020"></a>Február 2020 
+## <a name="march-2020"></a>2020. március 
 
-### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>A rendszer az összes HTTP-átirányításhoz hozzáfűzi az üres töredékeket a bejelentkezési végpontról. 
+### <a name="user-passwords-will-be-restricted-to-256-characters"></a>A felhasználói jelszavak 256 karakterre korlátozódnak.
 
-Hatálybalépés **dátuma**: február 8., 2020
+**Hatályba lépés dátuma**: 2020.
 
-Érintett **végpontok**: v 1.0 és v 2.0
+**Érintett végpontok**: Mind az 1.0-s, mind a 2.0-s
 
-Érintett **protokoll**: response_type = lekérdezést használó OAuth-és OIDC-folyamatok, amelyek bizonyos esetekben az [engedélyezési kód folyamatát](v2-oauth2-auth-code-flow.md) , valamint az [implicit folyamatot](v2-oauth2-implicit-grant-flow.md)fedik le. 
+**Protokoll érintett:** Minden felhasználói folyamat. 
 
-Ha a login.microsoftonline.com egy alkalmazáshoz HTTP-átirányítás útján küldenek hitelesítési választ, a szolgáltatás hozzáfűz egy üres töredéket a válasz URL-címéhez.  Ezzel megakadályozhatja, hogy a böngésző kitörölje a hitelesítési kérelemben szereplő meglévő töredékeket.  Ehhez a viselkedéshez egyetlen alkalmazásnak sincs függősége. 
+A 256 karakternél hosszabb jelszóval rendelkező felhasználók, akik közvetlenül bejelentkeznek az Azure AD-be (szemben az összevont IDP-vel, például az ADFS-szel), nem tudnak bejelentkezni 2020.  A rendszergazdák kéréseket kaphatnak a felhasználók jelszavának visszaállításához. 
+
+A regisztrációs naplókban a hiba a AADSTS 50052 lesz: InvalidPasswordExceedsMaxLength
+
+Üzenetet:`The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
+
+Kármentesítés:
+
+A felhasználó nem tud bejelentkezni, mert a jelszava meghaladja a megengedett maximális hosszt. A jelszó visszaállításához forduljon a rendszergazdához. Ha az SSPR engedélyezve van a bérlőszámára, az "Elfelejtette a jelszó" hivatkozást követve alaphelyzetbe állíthatja a jelszavát.
+
+
+
+## <a name="february-2020"></a>2020. február 
+
+### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>Üres töredékek lesz hozzáfűzve minden HTTP-átirányítás a bejelentkezési végpontról. 
+
+**Hatályba lépés dátuma**: 2020.
+
+**Érintett végpontok**: Mind az 1.0-s, mind a 2.0-s
+
+**A protokoll érintett:** OAuth és OIDC folyamatok, amelyek response_type=query - ez magában foglalja az [engedélyezési kód áramlását](v2-oauth2-auth-code-flow.md) bizonyos esetekben, és az implicit [folyamat](v2-oauth2-implicit-grant-flow.md). 
+
+Amikor egy hitelesítési választ küld login.microsoftonline.com egy alkalmazáshttp-átirányításon keresztül, a szolgáltatás hozzáfűzi egy üres töredék a válasz URL-cím.  Ez megakadályozza az átirányítási támadások egy osztályát, mivel biztosítja, hogy a böngésző törölje a hitelesítési kérelemben lévő töredékeket.  Egyetlen alkalmazásnak sem kell függenie ettől a viselkedéstől. 
 
 
 ## <a name="august-2019"></a>2019. augusztus
 
-### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>A POST Form szemantikai érvényesítése szigorúbb lesz, és a rendszer figyelmen kívül hagyja az idézőjeleket
+### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>POST formában szemantika lesz érvényesítve szigorúbban - terek és idézetek figyelmen kívül hagyják
 
-Hatálybalépés **dátuma**: szeptember 2., 2019
+**Hatályba lépés dátuma**: 2019.
 
-Érintett **végpontok**: v 1.0 és v 2.0
+**Érintett végpontok**: Mind az 1.0-s, mind a 2.0-s
 
-Érintett **protokoll**: bárhol a post használatban van ([ügyfél-hitelesítő adatok](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow), [engedélyezési kód beváltása](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow), [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)és [frissítési jogkivonat beváltása](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token))
+**Érintett protokoll**: Bárhol POST van használva[(ügyfél hitelesítő adatok,](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow) [engedélyezési kód visszaváltása,](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow) [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow), és [a frissítés token beváltás)](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)
 
-A 9/2-as hét elindításával a POST metódust használó hitelesítési kérelmek szigorúbb HTTP-szabványokkal lesznek érvényesítve.  A szóközök és a kettős idézőjelek (") nem lesznek eltávolítva a kérelmek űrlapjának értékeiből. Ezeknek a változásoknak nem kell megszüntetniük a meglévő ügyfeleket, és biztosítaniuk kell, hogy az Azure AD-nek küldött kérelmeket minden alkalommal megbízhatóan kezelje a rendszer. A jövőben (lásd fent) Azt tervezzük, hogy az ismétlődő paramétereket is elutasítjuk, és figyelmen kívül hagyják az ANYAGJEGYZÉKet a kérések között. 
+A 9/2 héttől kezdve a POST metódust használó hitelesítési kérelmek et szigorúbb HTTP-szabványokkal érvényesíti a rendszer.  Pontosabban a szóközök és a dupla idézőjelek (") a továbbiakban nem lesznek eltávolítva a kéreleműrlap-értékekből. Ezek a módosítások várhatóan nem szakítják meg a meglévő ügyfeleket, és biztosítják, hogy az Azure AD-be küldött kérelmeket minden alkalommal megbízhatóan kezelje. A jövőben (lásd fent) azt tervezzük, hogy emellett elutasítja az ismétlődő paramétereket, és figyelmen kívül hagyja az anyagjegyzéket a kérelmeken belül. 
 
 Példa:
 
-Napjainkban a `?e=    "f"&g=h` azonos módon van elemezve `?e=f&g=h`-so `e` == `f`.  Ezzel a változással elemezni fogjuk, hogy `e` == `    "f"` – ez nem valószínű, hogy érvényes argumentum, és a kérés meghiúsul. 
+Ma, `?e=    "f"&g=h` elemzik azonos `?e=f&g=h` - `e`  ==  `f`így .  Ezzel a módosítással most elemzésre kerül, hogy `e`  ==  `    "f"` - ez nem valószínű, hogy érvényes érv lenne, és a kérés most sikertelen lenne. 
 
 
 ## <a name="july-2019"></a>2019. július
 
-### <a name="app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant"></a>Csak az egybérlős alkalmazásokhoz tartozó jogkivonatok jelennek meg, ha az ügyfélalkalmazás létezik az erőforrás-bérlőben
+### <a name="app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant"></a>Csak egybérlős alkalmazások csak alkalmazásjogkivonatokat bocsát ki a rendszer, ha az ügyfélalkalmazás létezik az erőforrás-bérlőben
 
-**Hatálybalépés dátuma**: július 26., 2019
+**Hatályba lépés dátuma**: 2019.
 
-Érintett **végpontok**: [v 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) és [v 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+**Érintett végpontok**: Mind [az 1.0-s,](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) mind [a 2.0-s](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
 
-Érintett **protokoll**: [ügyfél-hitelesítő adatok (csak alkalmazásbeli tokenek)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+**Érintett protokoll**: [Ügyfélhitelesítő adatok (csak alkalmazásjogkivonatokkal)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 
-A biztonsági változások élőben július 26-án mentek át, és az alkalmazáshoz tartozó jogkivonatok (az ügyfél hitelesítő adatainak megadása révén) megváltoznak. Korábban az alkalmazások jogkivonatokat kérhetnek a más alkalmazások meghívására, függetlenül attól, hogy az adott alkalmazáshoz hozzájárultak-e a bérlő vagy a szerepkörök.  Ez a viselkedés úgy frissült, hogy az erőforrások (más néven webes API-k) egybérlős (alapértelmezett) legyenek, az ügyfélalkalmazás léteznie kell az erőforrás-bérlőn belül.  Vegye figyelembe, hogy az ügyfél és az API közötti meglévő beleegyezés még nem szükséges, és az alkalmazásoknak továbbra is saját engedélyezési ellenőrzéseket kell végezniük annak biztosításához, hogy egy `roles` jogcím megtalálható legyen, és tartalmazza az API várt értékét.
+Egy biztonsági módosítás július 26-án lépett le, amely módosítja a csak alkalmazásjogkivonatok kiadásának módját (az ügyfél hitelesítő adatok megadásával). Korábban az alkalmazások számára lehetővé tették, hogy jogkivonatokat kapjon bármely más alkalmazás hívásához, függetlenül a bérlőben való jelenléttől vagy az adott alkalmazáshoz jóváhagyott szerepköröktől.  Ez a viselkedés frissült, így az erőforrások (más néven webes API-k) beállítása egybérlős (az alapértelmezett), az ügyfélalkalmazás léteznie kell az erőforrás-bérlőn belül.  Vegye figyelembe, hogy az ügyfél és az API közötti meglévő hozzájárulás továbbra sem szükséges, `roles` és az alkalmazásoktovábbra is saját engedélyezési ellenőrzéseket kell végezniük annak érdekében, hogy a jogcím jelen van, és tartalmazza az API várható értékét.
 
-A forgatókönyvhöz tartozó hibaüzenet jelenleg a következő állapotokat jelzi: 
+A hibaüzenet ebben a forgatókönyvben jelenleg a következőket mondja: 
 
 `The service principal named <appName> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.`
 
-A probléma megoldásához a rendszergazdai engedélyekkel hozza létre az ügyfélalkalmazás szolgáltatásnevet a bérlőben, vagy hozza létre manuálisan.  Ez a követelmény biztosítja, hogy a bérlő a bérlőn belüli működésre engedélyt kapjon az alkalmazás számára.  
+A probléma megoldásához használja a rendszergazdai hozzájárulás i felületet az ügyfélalkalmazás egyszerű szolgáltatás a bérlőben, vagy manuálisan hozza létre.  Ez a követelmény biztosítja, hogy a bérlő engedélyt adott az alkalmazásnak a bérlőn belüli működésre.  
 
 #### <a name="example-request"></a>Példakérelem
 
-`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...` ebben a példában az erőforrás-bérlő (szolgáltató) contoso.com, az erőforrás-alkalmazás egy, a contoso-bérlő számára `gateway.contoso.com/api` nevű egybérlős alkalmazás, az ügyfélalkalmazás pedig `14c88eee-b3e2-4bb0-9233-f5e3053b3a28`.  Ha az ügyfélalkalmazás a Contoso.com-n belül rendelkezik egyszerű szolgáltatással, akkor a kérelem folytatódhat.  Ha azonban ez nem így van, a kérelem sikertelen lesz a fenti hibával.  
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`Ebben a példában az erőforrás-bérlő (hatóság) contoso.com, az erőforrás-alkalmazás egy egybérlős alkalmazás a Contoso-bérlő számára, `gateway.contoso.com/api` és az ügyfélalkalmazás. `14c88eee-b3e2-4bb0-9233-f5e3053b3a28`  Ha az ügyfélalkalmazás Contoso.com belül rendelkezik egy egyszerű szolgáltatással, ez a kérés folytatódhat.  Ha azonban nem, akkor a kérelem sikertelen lesz a fenti hibával.  
 
-Ha a contoso-átjáró alkalmazás több-bérlős alkalmazás volt, akkor a kérést a rendszer a Contoso.com-on belüli egyszerű szolgáltatástól függetlenül folytatja.  
+Ha a Contoso átjáró alkalmazás egy több-bérlős alkalmazás, azonban a kérelem továbbra is függetlenül attól, hogy az ügyfélalkalmazás, amelynek egyszerű szolgáltatás a Contoso.com belül.  
 
 ### <a name="redirect-uris-can-now-contain-query-string-parameters"></a>Az átirányítási URI-k mostantól tartalmazhatnak lekérdezési karakterlánc-paramétereket
 
-**Hatálybalépés dátuma**: július 22., 2019
+**Hatályba lépés dátuma**: 2019.
 
-Érintett **végpontok**: v 1.0 és v 2.0
+**Érintett végpontok**: Mind az 1.0-s, mind a 2.0-s
 
-Érintett **protokoll**: minden folyamat
+**Érintett protokoll**: Minden folyamat
 
-Az [RFC 6749-es](https://tools.ietf.org/html/rfc6749#section-3.1.2)verzióban az Azure ad-alkalmazások mostantól regisztrálhatnak és használhatnak átirányítási (válasz) URI-ket statikus lekérdezési paraméterekkel (például https://contoso.com/oauth2?idp=microsoft) OAuth 2,0-kérelmek esetén).  A dinamikus átirányítási URI-k továbbra is tiltottak, mivel biztonsági kockázatot jelentenek, és ez nem használható az állapotadatok megtartására a hitelesítési kérések között – Ehhez használja a `state` paramétert.
+[RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)szerint az Azure AD-alkalmazások most már regisztrálhatnak és használhatnak `https://contoso.com/oauth2?idp=microsoft`átirányítási (válasz) URI-kat statikus lekérdezési paraméterekkel (például ) az OAuth 2.0-s kérelmekhez.  A dinamikus átirányítási URI-k továbbra is tiltottak, mivel biztonsági kockázatot jelentenek, és ez `state` nem használható az állapotadatok megőrzésére egy hitelesítési kérelemben - ehhez használja a paramétert.
 
-A statikus lekérdezési paraméter az átirányítási URI-k (például az átirányítási URI bármely más része) karakterlánc-megfeleltetésének felel meg – ha nincs regisztrálva karakterlánc, amely megfelel az URI-dekódolású redirect_urinak, a rendszer elutasítja a kérelmet.  Ha az URI megtalálható az alkalmazás regisztrációjában, a rendszer a teljes karakterláncot használja a felhasználó átirányításához, beleértve a statikus lekérdezési paramétert is. 
+A statikus lekérdezési paraméter az átirányítási URI-k karakterlánc-egyeztetésének hatálya alá tartozik, mint az átirányítási URI bármely más része – ha nincs olyan karakterlánc regisztrálva, amely megfelel az URI-dekódolt redirect_uri, akkor a kérelem elutasításra kerül.  Ha az URI található az alkalmazás regisztrációjában, majd a teljes karakterlánc lesz a felhasználó átirányítására, beleértve a statikus lekérdezési paraméter. 
 
-Vegye figyelembe, hogy jelenleg (2019. július végén) az alkalmazás regisztrációja UX Azure Portal továbbra is letiltják a lekérdezési paramétereket.  Az alkalmazás-jegyzékfájlt azonban manuálisan is szerkesztheti a lekérdezési paraméterek hozzáadásához és a teszteléshez az alkalmazásban.  
+Vegye figyelembe, hogy jelenleg (2019. július vége) az alkalmazás regisztrációs ux az Azure Portalon továbbra is blokkolja a lekérdezési paramétereket.  Az alkalmazásjegyzéket azonban manuálisan is szerkesztheti a lekérdezési paraméterek hozzáadásához és az alkalmazásban való teszteléséhez.  
 
 
 ## <a name="march-2019"></a>2019. március
 
-### <a name="looping-clients-will-be-interrupted"></a>A hurok-ügyfelek megszakadnak
+### <a name="looping-clients-will-be-interrupted"></a>Az ügyfelek hurkolása megszakad
 
-**Hatálybalépés dátuma**: március 25., 2019
+**Hatályba lépés dátuma**: 2019. március 25.
 
-Érintett **végpontok**: v 1.0 és v 2.0
+**Érintett végpontok**: Mind az 1.0-s, mind a 2.0-s
 
-Érintett **protokoll**: minden folyamat
+**Érintett protokoll**: Minden folyamat
 
-Előfordulhat, hogy az ügyfélalkalmazások időnként nem működnek, és több száz ugyanazzal a bejelentkezési kérelemmel rendelkeznek.  Előfordulhat, hogy ezek a kérések nem sikeresek, de mind hozzájárulnak a gyenge felhasználói élményhez és a megnövekedett munkaterhelésekhez a IDENTITÁSSZOLGÁLTATÓ, az összes felhasználó késésének növeléséhez és a IDENTITÁSSZOLGÁLTATÓ rendelkezésre állásának csökkentéséhez.  Ezek az alkalmazások a normál használat határain kívül működnek, és a megfelelő működés érdekében frissíteni kell őket.  
+Az ügyfélalkalmazások néha rosszul viselkednek, és rövid idő alatt több száz azonos bejelentkezési kérelmet bocsátanak ki.  Ezek a kérések lehetnek sikeresek, de mind hozzájárulnak a gyenge felhasználói élményhez és az IDP fokozott munkaterheléséhez, növelve a késést az összes felhasználó számára, és csökkentve az IDP rendelkezésre állását.  Ezek az alkalmazások a normál használat határain kívül működnek, és frissíteni kell őket, hogy megfelelően viselkedjenek.  
 
-A duplikált kérelmeket többször kiállító ügyfelek `invalid_grant` hibaüzenetet küldenek: `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`. 
+Az ismétlődő kéréseket többször kibocsátó `invalid_grant` ügyfelek `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`a következő hibaüzenetet kapják: . 
 
-A hiba elkerüléséhez a legtöbb ügyfélnek nem kell módosítania a viselkedést.  Ez a hiba csak a helytelenül konfigurált ügyfelek (a jogkivonat-gyorsítótárazás nélküli, illetve a hozzájuk tartozó prompt-hurkok nélkül) hatással lesz rá.  Az ügyfeleket az alábbi tényezők alapján, helyileg (cookie-n keresztül) követik nyomon.
+A legtöbb ügyfélnek nem kell módosítania a viselkedést a hiba elkerülése érdekében.  Ez a hiba csak a helytelenül konfigurált ügyfeleket érinti (azokat, amelyek nem rendelkeznek jogkivonat-gyorsítótárazásnélkül, vagy amelyek már rendelkeznek gyorshurkokat).  Az ügyfeleket eseti alapon (cookie-n keresztül) követik nyomon a következő tényezők alapján:
 
-* Felhasználói célzás, ha van ilyen
+* Felhasználói tipp, ha van ilyen
 
-* Igényelt hatókörök vagy erőforrások
+* A kért hatókörök vagy erőforrások
 
 * Ügyfél-azonosító
 
@@ -137,42 +159,42 @@ A hiba elkerüléséhez a legtöbb ügyfélnek nem kell módosítania a viselked
 
 * Válasz típusa és módja
 
-A több kérést (15 +) használó alkalmazások rövid idő alatt (5 perc) egy `invalid_grant` hibaüzenetet kapnak, amely elmagyarázza, hogy hurkokat használ.  A kért jogkivonatok kellően hosszú élettartammal rendelkeznek (alapértelmezés szerint 10 perc, 60 perc), ezért az adott időszakra vonatkozó ismétlődő kérelmek szükségtelenek.  
+A rövid idő alatt (5 perc) több kérést küldő `invalid_grant` alkalmazások (15+) hibaüzenetet kapnak, amely elmagyarázza, hogy hurkolnak.  A kért jogkivonatok megfelelően hosszú élettartamú (10 perc minimum, 60 perc alapértelmezés szerint), így az ismételt kérelmek ebben az időszakban szükségtelen.  
 
-Az összes alkalmazásnak `invalid_grant` kell kezelnie egy interaktív üzenet megjelenítésével, nem pedig a tokenek csendes kérelmezése helyett.  A hiba elkerüléséhez az ügyfeleknek biztosítaniuk kell, hogy megfelelően gyorsítótárazzák a kapott jogkivonatokat.
+Minden alkalmazásnak `invalid_grant` egy interaktív üzenet megjelenítésével kell kezelnie, ahelyett, hogy csendben kérne egy jogkivonatot.  A hiba elkerülése érdekében az ügyfeleknek biztosítaniuk kell, hogy megfelelően gyorsítótárazzák a kapott jogkivonatokat.
 
 
 ## <a name="october-2018"></a>2018. október
 
-### <a name="authorization-codes-can-no-longer-be-reused"></a>Az engedélyezési kódokat már nem lehet újra felhasználni
+### <a name="authorization-codes-can-no-longer-be-reused"></a>Az engedélyezési kódok már nem használhatók fel újra
 
-Hatálybalépés **dátuma**: november 15., 2018
+**Hatályba lépés dátuma**: 2018.
 
-Érintett **végpontok**: v 1.0 és v 2.0
+**Érintett végpontok**: Mind az 1.0-s, mind a 2.0-s
 
-Érintett **protokoll**: [kód flow](v2-oauth2-auth-code-flow.md)
+**Érintett protokoll**: [Kódáramlás](v2-oauth2-auth-code-flow.md)
 
-2018. November 15., kezdve az Azure AD leáll, az alkalmazások korábban használt hitelesítési kódok elfogadásával. Ez a változás segítséget nyújt ahhoz, hogy az Azure AD az OAuth-specifikációnak megfelelően, és alkalmazza a v1 és v2 végpontokon.
+2018. november 15-től kezdődően az Azure AD leállítja az alkalmazások korábban használt hitelesítési kódjainak fogadását. Ez a biztonsági változás segít abban, hogy az Azure AD összhangba hozza az OAuth specifikációt, és a v1 és a v2 végpontokon is érvénybe lép.
 
-Ha az alkalmazás újból felhasználja a jogkivonatok lekérésére, több erőforrás-engedélyezési kódokat, javasoljuk, hogy a kód használatával egy frissítési jogkivonat lekérése, és a frissítési jogkivonat használatával más erőforrások kiegészítő jogkivonatok beszerzéséhez. Engedélyezési kód csak egyszer használhatók fel, de frissítési biztonsági jogkivonat használható többször több erőforrást. Minden olyan új alkalmazás, amely a OAuth-kód folyamata során a hitelesítési kódot próbálja újra felhasználni, invalid_grant hibát fog kapni.
+Ha az alkalmazás újrahasználja az engedélyezési kódokat több erőforrás jogkivonatának lekéréséhez, azt javasoljuk, hogy a kód használatával kapjon egy frissítési jogkivonatot, majd használja ezt a frissítési jogkivonatot további jogkivonatok beszerzéséhez más erőforrásokhoz. Az engedélyezési kódok csak egyszer használhatók, de a frissítési jogkivonatok többször is használhatók több erőforrásközött. Minden olyan új alkalmazás, amely az OAuth-kódfolyamat során megpróbálja újra felhasználni a hitelesítési kódot, invalid_grant hibaüzenetet kap.
 
-További információ a frissítési tokenekről: [a hozzáférési tokenek frissítése](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  A ADAL vagy a MSAL használata esetén ezt a függvénytár kezeli – a "AcquireTokenByAuthorizationCodeAsync" második példányát cserélje le a "AcquireTokenSilentAsync" értékre. 
+A frissítési jogkivonatokról [a Hozzáférési jogkivonatok frissítése](v2-oauth2-auth-code-flow.md#refresh-the-access-token)című témakörben talál további információt.  Ha ADAL vagy MSAL, ez kezeli az Ön számára a könyvtár - cserélje ki a második példányát "AcquireTokenByAuthorizationCodeAsync" a "AcquireTokenSilentAsync". 
 
 ## <a name="may-2018"></a>2018. május
 
-### <a name="id-tokens-cannot-be-used-for-the-obo-flow"></a>Az OBO-folyamathoz nem használhatók azonosító jogkivonatok
+### <a name="id-tokens-cannot-be-used-for-the-obo-flow"></a>Az id tokenek nem használhatók az OBO-folyamathoz
 
-**Dátum**: 2018. május 1.
+**Dátum**: Május 1, 2018
 
-Érintett **végpontok**: v 1.0 és v 2.0
+**Érintett végpontok**: Mind az 1.0-s, mind a 2.0-s
 
-Érintett **protokollok**: implicit folyamat és meghatalmazott [folyamat](v2-oauth2-on-behalf-of-flow.md)
+**Érintett protokollok**: Implicit áramlás és [az áramlás nevében](v2-oauth2-on-behalf-of-flow.md)
 
-2018. május 1-től a id_tokens nem használható az új alkalmazások esetében az OBO-flow-ban. A hozzáférési jogkivonatokat inkább az API-k védelmére kell használni, még az ügyfél és a középső rétegek között is. Az 2018. május 1. előtt regisztrált alkalmazások továbbra is működőképesek lesznek, és a hozzáférési tokenek id_tokens Exchange-re lesznek képesek. Ez a minta azonban nem tekinthető az ajánlott eljárásnak.
+2018. május 1-je után id_tokens nem használható az új alkalmazások obo-folyamatában az állításként. Hozzáférési jogkivonatokat kell használni, hanem az API-k védelméhez, még egy ügyfél és egy alkalmazás középső rétege között is. a 201 id_tokens8. ez a minta azonban nem tekinthető legjobb gyakorlatnak.
 
-A módosítás megkerüléséhez a következőket teheti:
+A módosítás kerülő megoldásához tegye a következőket:
 
-1. Hozzon létre egy webes API-t az alkalmazáshoz egy vagy több hatókörrel. Ez a explicit belépési pont lehetővé teszi a finomabb, részletes szabályozást és biztonságot.
-1. Az alkalmazás jegyzékfájljában a [Azure Portal](https://portal.azure.com) vagy az [alkalmazás regisztrációs portálján](https://apps.dev.microsoft.com)ellenőrizze, hogy az alkalmazás jogosult-e hozzáférési tokeneket kiadni az implicit folyamaton keresztül. Ezt a `oauth2AllowImplicitFlow` kulcs vezérli.
-1. Ha az ügyfélalkalmazás `response_type=id_token`-on keresztül kér id_token, a fent létrehozott webes API-hoz is igényel hozzáférési jogkivonatot (`response_type=token`). Így ha a v 2.0-s végpontot használja, a `scope` paraméternek a `api://GUID/SCOPE`hoz hasonlóan kell kinéznie. A v 1.0 végponton a `resource` paraméternek a webes API alkalmazás-URI azonosítójának kell lennie.
-1. Adja át ezt a hozzáférési jogkivonatot a középső szintjére a id_token helyett.  
+1. Hozzon létre egy webes API-t az alkalmazáshoz egy vagy több hatókörrel. Ez az explicit belépési pont lehetővé teszi a finomabb szemcsés ellenőrzést és biztonságot.
+1. Az alkalmazás jegyzékfájljában, az [Azure Portalon](https://portal.azure.com) vagy az [alkalmazás regisztrációs portálján](https://apps.dev.microsoft.com)győződjön meg arról, hogy az alkalmazás számára engedélyezett a hozzáférési jogkivonatok kiadása az implicit folyamaton keresztül. Ez a `oauth2AllowImplicitFlow` kulcson keresztül van irányítva.
+1. Amikor az ügyfélalkalmazás id_token `response_type=id_token`kér keresztül, a`response_type=token`fent létrehozott webes API-hoz egy hozzáférési jogkivonatot ( ) is kérhet. Így a v2.0 végpont használatakor a `scope` paraméternek a . `api://GUID/SCOPE` A v1.0-végponton `resource` a paraméternek a webes API alkalmazás URI-jának kell lennie.
+1. Adja át ezt a hozzáférési jogkivonatot a középső rétegnek a id_token helyett.  

@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB lekérdezési nyelv ST_INTERSECTS
-description: Ismerkedjen meg a Azure Cosmos DB SQL System Function ST_INTERSECTSával.
+title: ST_INTERSECTS az Azure Cosmos DB lekérdezési nyelvében
+description: Az Azure Cosmos DB ST_INTERSECTS SQL-rendszerfüggvényekről.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: f3c3878956b90ffb45556ed819046af9eb7618f1
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303137"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB)
- Egy logikai kifejezés jelzi-e a GeoJSON-objektum (pont, Polygon vagy LineString) az első argumentumban megadott metszi a GeoJSON (pont, Polygon vagy LineString) a második argumentumban adja vissza.  
+ Logikai kifejezést ad vissza, amely azt jelzi, hogy az első argumentumban megadott GeoJSON objektum (Point, Polygon vagy LineString) metszi-e a GeoJSON (Point, Polygon vagy LineString) paramétert a második argumentumban.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,15 +26,15 @@ ST_INTERSECTS (<spatial_expr>, <spatial_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *spatial_expr*  
-   Egy GeoJSON pont, sokszög vagy LineString objektum kifejezés.  
+   GeoJSON-pont, sokszög vagy LineString objektumkifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy logikai értéket ad vissza.  
+  Logikai értéket ad eredményül.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa bemutatja, hogyan keresse meg a megadott sokszög metsző minden terület.  
+  A következő példa bemutatja, hogyan keresheti meg az adott sokszöget metsző összes területet.  
   
 ```sql
 SELECT a.id
@@ -45,7 +45,7 @@ WHERE ST_INTERSECTS(a.location, {
 })  
 ```  
   
- Íme az eredményhalmaz.  
+ Itt van az eredményhalmaz.  
   
 ```json
 [{ "id": "IntersectingPolygon" }]  
@@ -53,10 +53,10 @@ WHERE ST_INTERSECTS(a.location, {
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfunkció kihasználja a [térinformatikai index](index-policy.md#spatial-indexes)előnyeit.
+Ez a rendszerfunkció egy [térinformatikai index](index-policy.md#spatial-indexes)előnyeit élvezi.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Térbeli függvények Azure Cosmos DB](sql-query-spatial-functions.md)
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Térbeli függvények Az Azure Cosmos DB](sql-query-spatial-functions.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)

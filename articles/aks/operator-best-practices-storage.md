@@ -1,101 +1,101 @@
 ---
-title: Ajánlott eljárások operátor - tároló az Azure Kubernetes-szolgáltatások (AKS)
-description: A fürt operátor ajánlott eljárások tárolás, az adattitkosítás és a biztonsági másolatokat az Azure Kubernetes Service (AKS)
+title: Operátori gyakorlati tanácsok – Tárolás az Azure Kubernetes-szolgáltatásokban (AKS)
+description: Ismerje meg a fürtfelelősök nek a tárolással, adattitkosítással és biztonsági mentésekkel kapcsolatos gyakorlati tanácsait az Azure Kubernetes-szolgáltatásban (AKS)
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: b1336d10b091be4f3eb2a711401cafd3f58221fe
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399476"
 ---
-# <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Gyakorlati tanácsok a tárolási és biztonsági másolatokat az Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes-szolgáltatás (AKS) tárolásával és biztonsági másolatával kapcsolatos gyakorlati tanácsok
 
-Hozzon létre és kezelheti a fürtöket az Azure Kubernetes Service (AKS), az alkalmazások gyakran kell storage. Fontos megérteni a teljesítményigények és módszerek a podok eléréséhez, így megadhatja, hogy az alkalmazások megfelelő tárolási. Az AKS csomópontméret befolyásolhatják ezeket tárolási lehetőségeket. Tervezze meg a biztonsági mentése és tesztelése a visszaállítási folyamat csatolt Storage módszereket is.
+A fürtök létrehozása és kezelése az Azure Kubernetes Szolgáltatás (AKS), az alkalmazások gyakran kell tárolni. Fontos, hogy tisztában legyen a podok teljesítményigényeivel és hozzáférési módszereivel, hogy megfelelő tárhelyet biztosíthasson az alkalmazások számára. Az AKS-csomópont mérete hatással lehet ezekre a tárolási lehetőségekre. Azt is meg kell terveznie, hogyan lehet biztonsági másolatot tartani, és tesztelje a csatlakoztatott tárolás visszaállítási folyamatát.
 
-Ajánlott eljárások a cikkben a tárterülettel kapcsolatos szempontok a fürt operátorok összpontosít. Ez a cikk bemutatja:
+Ez az ajánlott eljárások cikk a fürtoperátorok tárolási szempontjaira összpontosít. Ebben a cikkben a következőket ismerheti meg:
 
 > [!div class="checklist"]
-> * Milyen tárolási típust kínál érhetők el
-> * Hogyan kell megfelelően méret az AKS-csomópontok tároló-teljesítményre
-> * Dinamikus és statikus kiépítés kötetek közötti különbségek
-> * Biztonsági mentése és védelme az adatkötetek módjai
+> * Milyen típusú tárhely áll rendelkezésre?
+> * Az AKS-csomópontok megfelelő méretezése a tárolási teljesítmény érdekében
+> * A kötetek dinamikus és statikus kiépítési tartományai közötti különbségek
+> * Ways to back up and secure your data volumes
 
-## <a name="choose-the-appropriate-storage-type"></a>A megfelelő tárolótípus kiválasztása
+## <a name="choose-the-appropriate-storage-type"></a>Válassza ki a megfelelő tárolási típust
 
-**Ajánlott eljárási útmutató** – az alkalmazás igényeinek megfelelően kiválaszthatja a megfelelő tárterületet. Nagy teljesítményű, SSD-alapú tárolást éles számítási feladatokra használja. Tervezze meg a neurálishálózat-alapú tárolási, ha több egyidejű kapcsolat szüksége van.
+**Ajánlott eljárásokra vonatkozó útmutatás** – Ismerje meg az alkalmazás igényeit a megfelelő tárhely kiválasztásához. Nagy teljesítményű, SSD-alapú tárolót használhat az éles számítási feladatokhoz. Tervezze meg a hálózati alapú tárolást, ha több egyidejű kapcsolatra van szükség.
 
-Alkalmazások gyakran a különböző típusú és sebességű tárhelyet igényelnek. Szükség van az alkalmazások egyes podok csatlakozik, vagy több podok között megosztott tárolás? Az a tároló csak olvasható hozzáférést adatokhoz, vagy nagy mennyiségű strukturált adatok számára? Ezek a storage kell meghatározni a legmegfelelőbb storage használatára.
+Az alkalmazások gyakran különböző típusú és sebességű tárolást igényelnek. Az alkalmazások nak szüksége van olyan tárhelyre, amely egyes podokhoz csatlakozik, vagy több pod között van megosztva? A tároló csak olvasható hozzáférést biztosít az adatokhoz, vagy nagy mennyiségű strukturált adatok at ír? Ezek a tárolási igények határozzák meg a legmegfelelőbb tárolási típust.
 
-Az alábbi táblázat ismerteti a rendelkezésre álló tárhely és azok képességeinek:
+Az alábbi táblázat ismerteti a rendelkezésre álló tárolási típusokat és azok képességeit:
 
-| Használati eset | Kötet beépülő modul | Olvasási/írási egyszer | Csak olvasható több | Olvasási/írási számos | A Windows Server-tároló támogatása |
+| Használati eset | Hangerő beépülő modul | Olvasás/írás egyszer | Csak olvasható sok | Sok olvasása/írása | A Windows Server tárolók támogatása |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
-| A megosztott konfiguráció       | Azure Files   | Igen | Igen | Igen | Igen |
-| Strukturált adatokat        | Azure Disks   | Igen | Nem  | Nem  | Igen |
-| Teljes strukturálatlan adatmennyiséget tárolni rendszerműveletekről fájl | [BlobFuse][blobfuse] | Igen | Igen | Igen | Nem |
+| Megosztott konfiguráció       | Azure Files   | Igen | Igen | Igen | Igen |
+| Strukturált alkalmazásadatok        | Azure Disks   | Igen | Nem  | Nem  | Igen |
+| Strukturálatlan adatok, fájlrendszer-műveletek | [BlobFuse][blobfuse] | Igen | Igen | Igen | Nem |
 
-A két elsődleges típusú kötetek az aks-ben biztosított Azure-lemezek vagy az Azure Files biztonsági. A biztonság növelése érdekében mindkét tárolási típust kínál, amely titkosítja az inaktív adatok alapértelmezés szerint az Azure Storage Service Encryption (SSE) használja. Lemezek jelenleg nem lehet a az AKS csomópont szintjén az Azure Disk Encryption használatával titkosított.
+Az AKS-ben a kötetek számára biztosított két elsődleges tárolótípust az Azure Disks vagy az Azure Files támogatja. A biztonság növelése érdekében mindkét típusú tárhely az Azure Storage Service Encryption (SSE) alapértelmezés szerint, amely titkosítja az adatokat inaktív. A lemezek jelenleg nem titkosíthatók az AKS-csomópont szintjén az Azure Disk Encryption használatával.
 
-Az Azure Files jelenleg elérhetők a Standard teljesítményszint. Azure-lemezek a Standard és prémium teljesítményszintek érhetők el:
+Az Azure Files jelenleg elérhető a standard teljesítményszint. Az Azure Disks standard és prémium szintű teljesítményszinteken érhető el:
 
-- A *prémium* szintű lemezeket nagy teljesítményű SSD-lemezekkel támogatja. Az összes éles számítási feladatokhoz a prémium szintű lemezek használata akkor javasolt.
-- A *standard szintű* lemezeket a normál fonású lemezek (HDD-k) végzik, és jó az archiváláshoz vagy a ritkán használt adateléréshez.
+- *A prémium szintű* lemezeket nagy teljesítményű SSD-lemezek (SSD) támogatja. Prémium szintű lemezek ajánlott minden éles számítási feladatokhoz.
+- *A szabványos* lemezeket rendszeres forgó lemezek (HDD-k) szolgálják, és jó archiválási vagy ritkán használt adatokhoz.
 
-Ismerje meg az alkalmazás teljesítményigényeken, és minták a megfelelő tárolási szintek kiválasztásának eléréséhez. További információ a Managed Disks méretekről és a teljesítmény szintjeiről: az [Azure Managed Disks áttekintése][managed-disks]
+Ismerje meg az alkalmazás teljesítményigényeit és a hozzáférési mintákat a megfelelő tárolási szint kiválasztásához. A felügyelt lemezek méretéről és teljesítményrétegeiről az [Azure felügyelt lemezek áttekintése című témakörben olvashat bővebben.][managed-disks]
 
-### <a name="create-and-use-storage-classes-to-define-application-needs"></a>Létrehozhat és használhat a storage osztályai meghatározásához az alkalmazás igényeinek megfelelően
+### <a name="create-and-use-storage-classes-to-define-application-needs"></a>Tárolóosztályok létrehozása és használata az alkalmazásigények meghatározásához
 
-A használt tároló típusa a Kubernetes *Storage classs*használatával van definiálva. A tárolási osztály majd hivatkozik a pod vagy a központi telepítési specifikációnak. Ezeket a definíciókat hozhat létre a megfelelő tárolót, és csatlakoztathatja azt podok egymással együttműködve. További információ: [tárolási osztályok az AK-ban][aks-concepts-storage-classes].
+A használt tároló típusa a Kubernetes *tárolóosztályai*segítségével van definiálva. A tárolási osztály ezután hivatkozik a pod vagy a központi telepítési specifikáció. Ezek a definíciók együttműködnek a megfelelő tároló létrehozásához és a podokhoz való csatlakoztatásához. További információ: [Storage classes in AKS][aks-concepts-storage-classes].
 
-## <a name="size-the-nodes-for-storage-needs"></a>Tárolási igényeinek megfelelően a csomópontok mérete
+## <a name="size-the-nodes-for-storage-needs"></a>A tárolási igényekhez szükséges csomópontok méretezése
 
-**Ajánlott eljárási útmutató** – az egyes csomópont-méretek maximális számú lemezt támogatnak. Másik csomópontot is biztosít különböző mennyiségű helyi tárolási és hálózati sávszélességet. Tervezze meg a csomópontok megfelelő méretét telepítendő alkalmazások számára.
+**Ajánlott eljárások –** Minden csomópont mérete támogatja a lemezek maximális számát. A különböző csomópontméretek különböző mennyiségű helyi tárhelyet és hálózati sávszélességet is biztosítanak. Tervezze meg az alkalmazás igények üzembe helyezéséhez a megfelelő méretű csomópontok.
 
-AKS-csomópontok futtató Azure virtuális gépeken. Különböző típusú és méretű virtuális gép érhetők el. Minden egyes Virtuálisgép-méretet biztosít egy másik alapvető erőforrásai, például a CPU és memória mennyisége. Ezek a Virtuálisgép-méretek rendelkezik csatolható lemezek maximális száma. Tároló-teljesítményre maximális helyi és csatolt lemezenkénti iops-t (bemeneti/kimeneti műveletek száma másodpercenként) a Virtuálisgép-méretek között is változik.
+Az AKS-csomópontok Azure-beli virtuális gépekként futnak. A virtuális gép különböző típusai és méretei érhetők el. Minden virtuális gép mérete különböző mennyiségű alapvető erőforrásokat biztosít, például a PROCESSZOR és a memória. Ezek a virtuális gép méretek rendelkeznek a lemez, amely csatlakoztatható a lemezek maximális száma. Tárolási teljesítmény is változik a virtuális gép mérete a maximális helyi és csatlakoztatott lemez IOPS (bemeneti/kimeneti műveletek másodpercenként).
 
-Ha az alkalmazások Azure-lemezek t, tervezze meg, és válassza ki a csomópontok megfelelő Virtuálisgép-méretet. A Processzor és memória mennyisége nem az egyetlen tényező, ha úgy dönt, hogy a virtuális gép méretét. A tárolási lehetőségeket is fontosak. Például a *Standard_B2ms* és *Standard_DS2_v2* virtuálisgép-méretek is hasonló mennyiségű processzor-és memória-erőforrást tartalmaznak. A lehetséges tároló-teljesítményre eltérő, az alábbi táblázatban látható módon:
+Ha az alkalmazások tárolási megoldásként Azure Disks-et igényelnek, tervezze meg és válassza ki a megfelelő csomópontvirtuális gép méretét. A processzor és a memória mennyisége nem az egyetlen tényező, ha a virtuális gép méretét választja. A tárolási képességek is fontosak. Például mind a *Standard_B2ms,* mind *a Standard_DS2_v2* virtuális gép mérete hasonló mennyiségű PROCESSZOR- és memória-erőforrást tartalmaz. Potenciális tárolási teljesítményük eltérő, ahogy az a következő táblázatban látható:
 
-| Csomópont típusa és méret | vCPU | Memória (GiB) | Adatlemezek max. száma | Nem gyorsítótárazott lemez maximális iops-érték | Maximális nem gyorsítótárazott átviteli sebesség (MB/s) |
+| Csomópont típusa és mérete | vCPU | Memória (GiB) | Adatlemezek max. száma | Maximális nem gyorsítótárazott lemez IOPS | Gyorsítótárazatlan átviteli sebesség maximális |
 |--------------------|------|--------------|----------------|------------------------|--------------------------------|
 | Standard_B2ms      | 2    | 8            | 4              | 1,920                  | 22.5                           |
 | Standard_DS2_v2    | 2    | 7            | 8              | 6,400                  | 96                             |
 
-Itt a *Standard_DS2_v2* lehetővé teszi a csatlakoztatott lemezek számának kétszeres megadását, és a IOPS és a lemez átviteli sebességének három-négyszeresét biztosítja. Ha csak az alapvető számítási erőforrásokat és a költségek összevetését választotta, kiválaszthatja a *Standard_B2ms* virtuális gép méretét, és gyenge tárolási teljesítménnyel és korlátozásokkal rendelkezhet. Az alkalmazás fejlesztői csapat tudni, hogy a tárolási kapacitás és teljesítmény igényeinek megfelelően dolgozhat. Válassza ki a megfelelő Virtuálisgép-méret az AKS-csomópontok elérik vagy túllépik a teljesítmény igényeiknek. Rendszeresen alapkonfiguráció alkalmazások szükség szerint módosítsa a Virtuálisgép-méretet.
+Itt a *Standard_DS2_v2* lehetővé teszi a csatlakoztatott lemezek számának kétszeresét, és az IOPS és a lemezátviteli szint három-négyszeresét biztosítja. Ha csak az alapvető számítási erőforrásokat és az összehasonlított költségeket nézte meg, kiválaszthatja a *Standard_B2ms* virtuális gép méretét, és gyenge tárolási teljesítménnyel és korlátozásokkal rendelkezik. Az alkalmazásfejlesztő imáta segítségével megismerheti a tárolókapacitást és a teljesítményigényeket. Válassza ki a megfelelő virtuális gép méretét az AKS-csomópontok, hogy megfeleljen, vagy meghaladja a teljesítményigényeket. Rendszeresen alapkonfigurációs alkalmazások a virtuális gép méretének szükség szerint való beállításához.
 
-További információ az elérhető virtuálisgép-méretekről: [a Linux rendszerű virtuális gépek méretei az Azure-ban][vm-sizes].
+Az elérhető virtuálisgép-méretekről az [Azure-beli Linuxos virtuális gépek méretei című témakörben][vm-sizes]talál további információt.
 
-## <a name="dynamically-provision-volumes"></a>Dinamikusan kötetek kiépítéséhez
+## <a name="dynamically-provision-volumes"></a>Dinamikusan üzembe helyezhető kötetek
 
-**Ajánlott eljárási útmutató** – a felügyelet terhelésének csökkentése és a méretezés lehetővé tételéhez, ne statikusan hozzon létre és rendeljen állandó köteteket. Használja a dinamikus kiépítést. A storage osztályai határoz meg a megfelelő visszaigénylési házirend felesleges tárolási költségek minimalizálása a podok törlése után.
+**Ajánlott eljárások –** A felügyeleti terhelés csökkentése és a méretezés lehetővé teszi, ne hozzon létre statikusan állandó köteteket. Dinamikus kiépítés használata. A tárolási osztályok, határozza meg a megfelelő reclaim házirendet a szükségtelen tárolási költségek minimalizálása podok törlése után.
 
-Tároló csatlakoztatása a podok van szüksége, állandó köteteket használja. Ezek a kötetek állandó manuálisan vagy dinamikusan hozható létre. Állandó kötetek manuális létrehozásához hozzáadja a munkaterhelést, és korlátozza a méretezési képességét. Használja az adattárolás-felügyelet egyszerűsítését és teszi lehetővé az alkalmazásokban növekszik, és szükség szerint méretezheti való üzembe helyezést, a dinamikus tartós kötet.
+Ha tárolót kell csatolnia a podokhoz, állandó köteteket kell használnia. Ezek az állandó kötetek manuálisan vagy dinamikusan hozhatók létre. Az állandó kötetek manuális létrehozása felügyeleti többletterhelést jelent, és korlátozza a méretezési képességet. A dinamikus állandó kötetek kiépítésével egyszerűsítheti a tárhelykezelést, és lehetővé teheti az alkalmazások szükség szerint történő növekedését és méretezését.
 
-![Tartós kötet jogcímek, az Azure Kubernetes szolgáltatás (AKS)-fürt](media/concepts-storage/persistent-volume-claims.png)
+![Állandó mennyiségi jogcímek egy Azure Kubernetes-szolgáltatás (AKS) fürtben](media/concepts-storage/persistent-volume-claims.png)
 
-Tartós kötet jogcím (PVC) dinamikusan hozhat létre tárolási igény szerint teszi lehetővé. Az alapul szolgáló Azure-lemezek jönnek létre, a podok tanúsítványkérelmeket. A pod definíciójában egy kötetet kell létrehoznia, és csatolnia kell egy kijelölt csatlakoztatási útvonalhoz.
+Az állandó kötetjogcím (PVC) lehetővé teszi, hogy szükség szerint dinamikusan hozzon létre tárhelyet. Az alapul szolgáló Azure-lemezek jönnek létre podok kérésére őket. A pod-definícióban egy kötet et kell létrehozni, és egy kijelölt csatlakoztatási útvonalhoz kell csatolni.
 
-A kötetek dinamikus létrehozásával és használatával kapcsolatos fogalmakat lásd: az [állandó kötetek jogcímei][aks-concepts-storage-pvcs].
+A kötetek dinamikus létrehozásának és használatának fogalmait az [Állandó kötetjogcímek][aks-concepts-storage-pvcs]című témakörben tésszet.
 
-A kötetek működés közbeni megtekintéséhez tekintse meg az állandó kötetek [Azure-lemezekkel][dynamic-disks] vagy [Azure Files][dynamic-files]való dinamikus létrehozását és használatát ismertető témakört.
+Ezek nek a kötetek működés közben, olvassa el, hogyan hozhat létre és használhat dinamikusan egy állandó kötet et [az Azure Disks][dynamic-disks] vagy az [Azure Files.][dynamic-files]
 
-A tárolási osztályok definíciójának részeként állítsa be a megfelelő *reclaimPolicy*. Ez reclaimPolicy az alapul szolgáló Azure storage-erőforrások viselkedését vezérlő, amikor a pod törlődik, és a tartós kötet már nem szükséges. Az alapul szolgáló tárolási erőforrás törölték, vagy a jövőbeli podot segítségével őrzi meg. A reclaimPolicy megadható *vagy* *törölhető*. Ismerje meg az alkalmazások igényeihez, és rendszeres ellenőrzéseket a nem használt tárolási megoldás, amely használja, és a számlázás a lehető legkevesebb megőrzött tárolás megvalósítása.
+A tárolási osztálydefiníciók részeként állítsa be a megfelelő *reclaimPolicy*. Ez a reclaimPolicy szabályozza az alapul szolgáló Azure storage-erőforrás viselkedését, amikor a pod törlődik, és az állandó kötet már nem szükséges. Az alapul szolgáló tárolási erőforrás törölhető, vagy megtartható egy jövőbeli pod. A reclaimPolicy *beállíthatja,* hogy megtartja vagy *törölje*. Ismerje meg az alkalmazás igényeit, és valósítsa meg a rendszeres ellenőrzéseket a tárolt tároló, hogy minimálisra csökkentsék a felhasznált és számlázott nem használt tárterület mennyiségét.
 
-További információ a tárolási osztályok beállításairól: [tárolási visszaigénylési házirendek][reclaim-policy].
+A tárolási osztály beállításairól a [Tárolási igénylési házirendek című][reclaim-policy]témakörben talál további információt.
 
-## <a name="secure-and-back-up-your-data"></a>Biztonságos és az adatok biztonsági mentése
+## <a name="secure-and-back-up-your-data"></a>Az adatok biztonsága és biztonsági leépítése
 
-**Ajánlott eljárások – útmutató** – az adatairól biztonsági másolatot készíthet a tárolási típusának megfelelő eszköz használatával, például Velero vagy Azure site Recovery. Győződjön meg arról, és biztonsági, az ezeket a biztonsági mentéseket.
+**Ajánlott eljárásokra vonatkozó útmutatás** – Biztonsági másolatot kell adniaz adatokról a tárhelytípusnak megfelelő eszközzel, például a Velero vagy az Azure Site Recovery használatával. Ellenőrizze a biztonsági mentések integritását és biztonságát.
 
-Amikor az alkalmazások tárolására és felhasználását adatait megőrzi a lemezen, vagy a fájlokat, kell tennie a rendszeres biztonsági mentést, vagy az adatok pillanatképeit. Az Azure Disks beépített pillanatkép technológiákat használhatnak fel. Előfordulhat, hogy a pillanatkép-művelet végrehajtása előtt meg kell keresnie az alkalmazásokat a lemezre írások kiürítéséhez. A [Velero][velero] képes biztonsági másolatot készíteni az állandó kötetekről, valamint további fürterőforrás-és konfigurációkkal. Ha nem tudja [eltávolítani az állapotot az alkalmazásokból][remove-state], biztonsági másolatot készíthet az állandó kötetek adatairól, és rendszeresen teszteli a visszaállítási műveleteket az adatok integritásának és a szükséges folyamatoknak az ellenőrzéséhez.
+Ha az alkalmazások lemezeken vagy fájlokban tárolt adatokat tárolnak és használnak fel, rendszeres biztonsági mentéseket vagy pillanatképeket kell készítenie az adatokról. Az Azure Disks beépített pillanatkép-technológiákat használhat. Előfordulhat, hogy a pillanatkép-művelet végrehajtása előtt meg kell keresnie az alkalmazásokat az írások lemezre való kiürítéséhez. [A Velero][velero] további fürterőforrásokkal és konfigurációkkal együtt biztonsági másolatot tud fésülni az állandó kötetekről. Ha nem tudja [eltávolítani az állapotot az alkalmazásokból,][remove-state]biztonsági másolatot kell létrehoznia az adatokról az állandó kötetekről, és rendszeresen tesztelheti a visszaállítási műveleteket az adatok integritásának és a szükséges folyamatoknak a ellenőrzéséhez.
 
-Ismerje meg, az adatok biztonsági mentése, és ha kell fokozatosan leválasztani az adatokat a pillanatkép más megközelítést vonatkozó korlátozások. Adatok biztonsági mentése nem feltétlenül lehetővé teszik a fürt üzembe helyezése az alkalmazás-környezet helyreállításához. További információ ezekről a forgatókönyvekről: [ajánlott eljárások az üzleti folytonosság és a vész-helyreállítás az AK-ban][best-practices-multi-region].
+Ismerje meg az adatbiztonsági mentések különböző megközelítéseinek korlátait, és ha a pillanatkép előtt meg kell határoznia az adatokat. Az adatbiztonsági mentések nem feltétlenül teszik lehetővé a fürt központi telepítésének alkalmazáskörnyezetének visszaállítását. Ezekről a forgatókönyvekről az [AKS-ben az üzletmenet folytonosságával és a vészhelyreállítással][best-practices-multi-region]kapcsolatos gyakorlati tanácsok című témakörben talál további információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Storage ajánlott eljárások az aks-ben összpontosított ebben a cikkben. További információ a Kubernetes tárolásával kapcsolatos alapismeretekről: [az AK-beli alkalmazások tárolási fogalmai][aks-concepts-storage].
+Ez a cikk az AKS tárolási gyakorlati tanácsaira összpontosított. A Kubernetes tárolási alapjairól az [AKS-ben lévő alkalmazások tárolási fogalmai][aks-concepts-storage]című témakörben talál további információt.
 
 <!-- LINKS - External -->
 [velero]: https://github.com/heptio/velero

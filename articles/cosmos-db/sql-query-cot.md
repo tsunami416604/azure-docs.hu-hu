@@ -1,6 +1,6 @@
 ---
-title: GYERMEKÁGY Azure Cosmos DB lekérdezési nyelven
-description: Ismerje meg, hogy a Azure Cosmos DB a (GYERMEKÁGY) SQL System függvénye hogyan adja vissza a megadott szögben (radiánban) lévő, a megadott numerikus kifejezésben szereplő, a megadott szöghez tartozó trigonometriai tangenset.
+title: COT az Azure Cosmos DB lekérdezési nyelvében
+description: Ismerje meg, hogyan adja vissza a Cotangent(COT) SQL-rendszer függvényét az Azure Cosmos DB-ben a megadott szög trigonometriai kotangensét radiánban a megadott numerikus kifejezésben.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 25c907644f58ee40ea08e5636d68dc0e84564a28
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78299487"
 ---
-# <a name="cot-azure-cosmos-db"></a>GYERMEKÁGY (Azure Cosmos DB)
- A megadott szög trigonometriai kotangensét adja vissza radiánban, a megadott numerikus kifejezés.  
+# <a name="cot-azure-cosmos-db"></a>COT (Azure Cosmos DB)
+ A megadott szög trigonometriai kotangensét számítja ki radiánban, a megadott numerikus kifejezésben.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,21 +26,21 @@ COT(<numeric_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expr*  
-   A numerikus kifejezés.  
+   Ez egy numerikus kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  A numerikus kifejezést ad vissza.  
+  Numerikus kifejezést ad eredményül.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa a megadott szög `COT`ét számítja ki.  
+  A következő példa `COT` kiszámítja a megadott szöget.  
   
 ```sql
 SELECT COT(124.1332) AS cot  
 ```  
   
- Íme az eredményhalmaz.  
+ Itt van az eredményhalmaz.  
   
 ```json
 [{"cot": -0.040311998371148884}]  
@@ -48,10 +48,10 @@ SELECT COT(124.1332) AS cot
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfüggvény nem fogja használni az indexet.
+Ez a rendszerfunkció nem használja az indexet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Matematikai függvények Az Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)

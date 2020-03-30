@@ -1,24 +1,24 @@
 ---
-title: TagsByResource FELHASZNÁLÓIFELÜLET-elem
-description: A Azure Portal Microsoft. Common. TagsByResource felhasználói felületi elemének ismertetése. A használatával címkéket alkalmazhat az erőforrásokra az üzembe helyezés során.
+title: TagsByResource felhasználói felületi elem
+description: A cikk a Microsoft.Common.TagsByResource UI elemet ismerteti az Azure Portalon. Címkék alkalmazása egy erőforrásra a telepítés során.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: tomfitz
 ms.openlocfilehash: 23a7c54a84ec083b8fa470f26582913fcc3d2ee6
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652202"
 ---
-# <a name="microsoftcommontagsbyresource-ui-element"></a>Microsoft. Common. TagsByResource felhasználói felületi elem
+# <a name="microsoftcommontagsbyresource-ui-element"></a>Microsoft.Common.TagsByResource felhasználói felületi elem
 
-A [címkék](../management/tag-resources.md) egy központi telepítésben lévő erőforrásokkal való társítására szolgáló vezérlő.
+A [címkék](../management/tag-resources.md) és a központi telepítés erőforrásainak társításának vezérlője.
 
-## <a name="ui-sample"></a>Felhasználói felület mintája
+## <a name="ui-sample"></a>Felhasználói felület minta
 
-![Microsoft. Common. DropDown](./media/managed-application-elements/microsoft.common.tagsbyresource.png)
+![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.tagsbyresource.png)
 
 ## <a name="schema"></a>Séma
 
@@ -49,9 +49,9 @@ A [címkék](../management/tag-resources.md) egy központi telepítésben lévő
 
 ## <a name="remarks"></a>Megjegyzések
 
-- A `resources` tömb legalább egy elemét meg kell adni.
-- `resources` minden elemének teljes erőforrás-típusnak kell lennie. Ezek az elemek az **erőforrás** legördülő menüben jelennek meg, és a felhasználó taggable.
-- A vezérlő kimenete úgy van formázva, hogy könnyen lehessen hozzárendelni a címke értékeit egy Azure Resource Manager sablonban. Ha a vezérlő kimenetét szeretné fogadni egy sablonban, adjon meg egy paramétert a sablonban az alábbi példában látható módon:
+- A tömblegalább egy `resources` elemét meg kell adni.
+- Minden elemnek `resources` teljesen minősített erőforrástípusnak kell lennie. Ezek az elemek megjelennek az **Erőforrás** legördülő menüben, és a felhasználó címkézhető.
+- A vezérlő kimenete formázott egy Azure Resource Manager-sabloncímke-értékek egyszerű hozzárendelése érdekében. A vezérlő kimenetének sablonban való fogadásához adjon meg egy paramétert a sablonban az alábbi példában látható módon:
 
   ```json
   "parameters": {
@@ -59,7 +59,7 @@ A [címkék](../management/tag-resources.md) egy központi telepítésben lévő
   }
   ```
 
-  Minden megcímkézhető erőforráshoz rendelje hozzá a címkék tulajdonságot az erőforrástípus paraméterének értékéhez:
+  Minden címkézhető erőforráshoz rendelje hozzá a címkék tulajdonságot az adott erőforrástípus paraméterértékéhez:
 
   ```json
   {
@@ -69,9 +69,9 @@ A [címkék](../management/tag-resources.md) egy központi telepítésben lévő
     ...
   ```
 
-- Használja az [IF](../templates/template-functions-logical.md#if) függvényt a tagsByResource paraméter elérésekor. Lehetővé teszi, hogy üres objektumot rendeljen hozzá, ha nem rendel hozzá címkéket a megadott erőforrás-típushoz.
+- A tagsByResource paraméter elérésekor használja az [if](../templates/template-functions-logical.md#if) függvényt. Lehetővé teszi egy üres objektum hozzárendelését, ha nincs címke az adott erőforrástípushoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
-- A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).
+- A felhasználói felületdefiníciók létrehozásának bemutatása a [CreateUiDefinition](create-uidefinition-overview.md)első lépései című témakörben látható.
+- A felhasználói felület elemeinek gyakori tulajdonságainak leírását a [CreateUiDefinition elements](create-uidefinition-elements.md)című témakörben található.

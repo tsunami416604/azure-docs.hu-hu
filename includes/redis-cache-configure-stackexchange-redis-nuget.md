@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: yegu
 ms.openlocfilehash: 61e93e3700b9a396d2ac4fdcbb51fc5c874cf9cb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68286271"
 ---
 A .NET-alkalmazások képesek használni a **StackExchange.Redis** gyorsítótárügyfelet, amely a Visual Studióban konfigurálható a gyorsítótár-ügyfélalkalmazások konfigurálását leegyszerűsítő NuGet-csomagokkal. 
 
 > [!NOTE]
-> További információkért tekintse meg a [StackExchange. Redis](https://github.com/StackExchange/StackExchange.Redis) GitHub-oldalt és a [StackExchange. Azure cache](https://github.com/StackExchange/StackExchange.Redis#documentation)-t a Redis-ügyfél dokumentációjában.
+> További információt a [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) GitHub lap és a [StackExchange.Azure cache for Redis ügyfél dokumentációjában](https://github.com/StackExchange/StackExchange.Redis#documentation)talál.
 >
 >
 
@@ -31,10 +31,10 @@ Egy ügyfélalkalmazás a Visual Studióban a StackExchange.Redis NuGet-csomag h
 
 ![StackExchange.Redis NuGet-csomag](media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-stackexchange-redis.png)
 
-A NuGet-csomag letölti és hozzáadja az ügyfélalkalmazás el az Azure Cache a Redis-ügyfél StackExchange.Azure gyorsítótár redis számára szükséges szerelvényhivatkozásokat.
+A NuGet csomag letölti és hozzáadja a szükséges összeállítási hivatkozásokat az ügyfélalkalmazáshoz az Azure Cache for Redis eléréséhez a StackExchange.Azure cache for Redis ügyfél.
 
 > [!NOTE]
-> Ha a projektet korábban a StackExchange.Redis használatára konfigurálta, a **NuGet-csomagkezelőben** ellenőrizheti, hogy elérhető-e új frissítés a csomaghoz. Keressen, és telepítheti a StackExchange.Redis NuGet-csomag frissített verzióját, kattintson a **frissítések** a a **NuGet-Csomagkezelő** ablak. Ha a StackExchange.Redis NuGet-csomaghoz elérhetővé válik egy frissítés, frissítheti a projektjét is, hogy az a csomag frissített verzióját használja.
+> Ha a projektet korábban a StackExchange.Redis használatára konfigurálta, a **NuGet-csomagkezelőben** ellenőrizheti, hogy elérhető-e új frissítés a csomaghoz. A StackExchange.Redis NuGet csomag frissített verzióinak kereséséhez és telepítéséhez kattintson a **Frissítések** elemre a **NuGet Csomagkezelő** ablakban. Ha a StackExchange.Redis NuGet-csomaghoz elérhetővé válik egy frissítés, frissítheti a projektjét is, hogy az a csomag frissített verzióját használja.
 >
 >
 

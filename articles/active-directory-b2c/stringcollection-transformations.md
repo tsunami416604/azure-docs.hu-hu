@@ -1,7 +1,7 @@
 ---
-title: StringCollection stb jogcím-átalakítási példák egyéni házirendekhez
+title: StringCollection jogcím-átalakítási példák egyéni házirendekhez
 titleSuffix: Azure AD B2C
-description: A StringCollection stb jogcím-átalakítási példákat tartalmaz a Azure Active Directory B2C Identity Experience Framework (IEF) sémájához.
+description: StringCollection jogcímek átalakítási példák az Azure Active Directory B2C Identity Experience Framework (IEF) sémája.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,31 +12,31 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6aea537ebff4ae61e00861e6cafe742a7feb165e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186777"
 ---
-# <a name="stringcollection-claims-transformations"></a>StringCollection stb jogcímek átalakításai
+# <a name="stringcollection-claims-transformations"></a>StringCollection jogcímátalakítások
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk példákat tartalmaz a karakterlánc-gyűjtési jogcímek átalakítására a Azure Active Directory B2C (Azure AD B2C) identitási élmény keretrendszere-sémájának használatával. További információ: [ClaimsTransformations](claimstransformations.md).
+Ez a cikk példákat tartalmaz az Azure Active Directory B2C (Azure AD B2C) identitáskezelési keretrendszer sémájának karakterlánc-gyűjteményjog-átalakításai használatára. További információ: [ClaimsTransformations](claimstransformations.md).
 
-## <a name="additemtostringcollection"></a>AddItemToStringCollection
+## <a name="additemtostringcollection"></a>AdditemToStringgyűjtemény
 
-Karakterlánc-jogcímet hoz létre egy új, egyedi értékekre StringCollection stb jogcímként.
+Karakterláncjogcímet ad hozzá egy új egyedi értékekhez, karakterlánc-gyűjteményjogcím.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | item | Karakterlánc | A kimeneti jogcímhez hozzáadni kívánt ClaimType. |
-| inputClaim | gyűjtemény | StringCollection stb | Választható Ha meg van adva, a jogcím-átalakítás átmásolja az elemeket ebből a gyűjteményből, és hozzáadja az elemet a kimeneti gyűjteményi jogcím végéhez. |
-| outputClaim | gyűjtemény | StringCollection stb | A jogcímek átalakítását követően létrehozott ClaimType a bemeneti jogcímben megadott értékkel lett meghívva. |
+| InputClaim (Bemeneti jogcím) | item | sztring | A kimeneti jogcímhez hozzáadandó Jogcímtípus. |
+| InputClaim (Bemeneti jogcím) | Gyűjtemény | karakterláncgyűjtemény | [Nem kötelező] Ha meg van adva, a jogcímek átalakítása átmásolja az elemeket ebből a gyűjteményből, és hozzáadja az elemet a kimeneti gyűjtemény jogcímének végéhez. |
+| OutputClaim (Kimeneti jogcím) | Gyűjtemény | karakterláncgyűjtemény | A jogcímátalakítás meghívása után létrehozott Jogcímtípus a bemeneti jogcímben megadott értékkel. |
 
-A jogcím-átalakítás használatával hozzáadhat egy karakterláncot egy új vagy egy meglévő StringCollection stb. Ez általában egy **HRE-UserWriteUsingAlternativeSecurityId** technikai profilban használatos. Új közösségi fiók létrehozása előtt a **CreateOtherMailsFromEmail** jogcím-átalakítás beolvassa a claimType, és hozzáadja az értéket a **otherMails** -claimType.
+Ezzel a jogcím-átalakítással karakterláncot adhat hozzá egy új vagy meglévő karakterláncgyűjteményhez. Ez gyakran használják a **AAD-UserWriteUsingAlternativeSecurityId** technikai profil. Új közösségi fiók létrehozása előtt a **CreateOtherMailsFromEmail** jogcímek átalakítása beolvassa a ClaimType típust, és hozzáadja az értéket a **többiMails** ClaimType-hoz.
 
-A következő jogcím-átalakítás hozzáadja az **e-mail-** claimType az **otherMails** claimType.
+A következő jogcímek átalakítása hozzáadja a ClaimType **e-mailt** **a többiMails** ClaimType-hoz.
 
 ```XML
 <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
@@ -52,23 +52,23 @@ A következő jogcím-átalakítás hozzáadja az **e-mail-** claimType az **oth
 
 ### <a name="example"></a>Példa
 
-- Bemeneti jogcímek:
-  - **gyűjtemény**: ["someone@outlook.com"]
-  - **elem**: "admin@contoso.com"
+- Bemeneti igények:
+  - **gyűjtemény**:someone@outlook.com[" "]
+  - **tétel**:admin@contoso.com" "
 - Kimeneti jogcímek:
-  - **gyűjtemény**: ["someone@outlook.com", "admin@contoso.com"]
+  - **gyűjtemény**:someone@outlook.com["admin@contoso.com", " "]
 
-## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
+## <a name="addparametertostringcollection"></a>AddParameterToStringGyűjtemény
 
-Egy karakterlánc-paramétert hoz létre egy új, egyedi értékek StringCollection stb jogcímként.
+Karakterlánc-paraméter hozzáadása egy új egyedi értékekhez CollectionCollection jogcím.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | gyűjtemény | StringCollection stb | Választható Ha meg van adva, a jogcím-átalakítás átmásolja az elemeket ebből a gyűjteményből, és hozzáadja az elemet a kimeneti gyűjteményi jogcím végéhez. |
-| InputParameter | item | Karakterlánc | A kimeneti jogcímhez hozzáadandó érték. |
-| outputClaim | gyűjtemény | StringCollection stb | A jogcím-átalakítást követően létrehozott ClaimType a bemeneti paraméterben megadott értékkel lett meghívva. |
+| InputClaim (Bemeneti jogcím) | Gyűjtemény | karakterláncgyűjtemény | [Nem kötelező] Ha meg van adva, a jogcímek átalakítása átmásolja az elemeket ebből a gyűjteményből, és hozzáadja az elemet a kimeneti gyűjtemény jogcímének végéhez. |
+| InputParameter (Beviteli paraméter) | item | sztring | A kimeneti jogcímhez hozzáadandó érték. |
+| OutputClaim (Kimeneti jogcím) | Gyűjtemény | karakterláncgyűjtemény | A jogcímátalakítás meghívása után létrehozott Jogcímtípus a bemeneti paraméterben megadott értékkel. |
 
-Ezzel a jogcím-átalakítással adhat hozzá új vagy meglévő StringCollection stb karakterlánc-értéket. A következő példa egy állandó e-mail-címet (admin@contoso.com) hoz létre a **otherMails** jogcímhez.
+Ezzel a jogcím-átalakítással karakterlánc-értéket adhat hozzá egy új vagy meglévő karakterláncgyűjteményhez. A következő példa egy állandóadmin@contoso.come-mail címet ( ) ad hozzá a **többiMails** jogcímhez.
 
 ```XML
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
@@ -86,23 +86,23 @@ Ezzel a jogcím-átalakítással adhat hozzá új vagy meglévő StringCollectio
 
 ### <a name="example"></a>Példa
 
-- Bemeneti jogcímek:
-  - **gyűjtemény**: ["someone@outlook.com"]
+- Bemeneti igények:
+  - **gyűjtemény**:someone@outlook.com[" "]
 - Bemeneti paraméterek
-  - **elem**: "admin@contoso.com"
+  - **tétel**:admin@contoso.com" "
 - Kimeneti jogcímek:
-  - **gyűjtemény**: ["someone@outlook.com", "admin@contoso.com"]
+  - **gyűjtemény**:someone@outlook.com["admin@contoso.com", " "]
 
 ## <a name="getsingleitemfromstringcollection"></a>GetSingleItemFromStringCollection
 
-A megadott karakterlánc-gyűjtemény első elemének beolvasása.
+Leveszi az első elemet a megadott karakterlánc-gyűjteményből.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | gyűjtemény | StringCollection stb | A jogcím-átalakítás által az elemek beolvasásához használt ClaimTypes. |
-| outputClaim | extractedItem | Karakterlánc | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. A gyűjtemény első eleme. |
+| InputClaim (Bemeneti jogcím) | Gyűjtemény | karakterláncgyűjtemény | A jogcímátalakítás által az elem leéséhez használt jogcímtípusok. |
+| OutputClaim (Kimeneti jogcím) | kibontásElem | sztring | A Jogcímátalakítás meghívása után létrehozott jogcímtípusok. A gyűjtemény első eleme. |
 
-A következő példa beolvassa a **otherMails** jogcímet, és az első tételt visszaküldi az **e-mail-** jogcímbe.
+A következő példa beolvassa a **többiMails követelést,** és visszaküldi az első elemet az **e-mail** jogcímbe.
 
 ```XML
 <ClaimsTransformation Id="CreateEmailFromOtherMails" TransformationMethod="GetSingleItemFromStringCollection">
@@ -117,24 +117,24 @@ A következő példa beolvassa a **otherMails** jogcímet, és az első tételt 
 
 ### <a name="example"></a>Példa
 
-- Bemeneti jogcímek:
-  - **gyűjtemény**: ["someone@outlook.com", "someone@contoso.com"]
+- Bemeneti igények:
+  - **gyűjtemény**:someone@outlook.com["someone@contoso.com", " "]
 - Kimeneti jogcímek:
-  - **extractedItem**: "someone@outlook.com"
+  - **kivonattétel:**"someone@outlook.com"
 
 
 ## <a name="stringcollectioncontains"></a>StringCollectionContains
 
-Annak ellenőrzése, hogy egy StringCollection stb jogcím típusa tartalmaz-e elemet
+Ellenőrzi, hogy a StringCollection jogcímtípus tartalmaz-e elemet
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim | StringCollection stb | A keresendő jogcím típusa. |
-|InputParameter|item|Karakterlánc|A keresendő érték.|
-|InputParameter|ignoreCase|Karakterlánc|Meghatározza, hogy az összehasonlítás figyelmen kívül hagyja-e az összehasonlított karakterláncok esetét.|
-| outputClaim | outputClaim | Logikai érték | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. Logikai kijelző, ha a gyűjtemény tartalmaz egy ilyen karakterláncot. |
+| InputClaim (Bemeneti jogcím) | inputClaim | karakterláncgyűjtemény | A keresett jogcímtípus. |
+|InputParameter (Beviteli paraméter)|item|sztring|A keresni való érték.|
+|InputParameter (Beviteli paraméter)|ignoreCase|sztring|Itt adható meg, hogy ez az összehasonlítás figyelmen kívül hagyja-e az összehasonlított karakterláncok kis- és nagybetűs étkeztetését.|
+| OutputClaim (Kimeneti jogcím) | outputClaim | logikai | A Jogcímátalakítás meghívása után létrehozott Jogcímtípus. Logikai jelző, ha a gyűjtemény ilyen karakterláncot tartalmaz |
 
-A következő példa ellenőrzi, hogy a `roles` StringCollection stb jogcím típusa tartalmazza-e a **rendszergazda**értéket.
+A következő példa `roles` ellenőrzi, hogy a stringCollection jogcímtípus tartalmazza-e a **rendszergazda**értékét.
 
 ```XML
 <ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
@@ -151,12 +151,12 @@ A következő példa ellenőrzi, hogy a `roles` StringCollection stb jogcím tí
 </ClaimsTransformation>
 ```
 
-- Bemeneti jogcímek:
-    - **inputClaim**: ["olvasó", "author", "admin"]
+- Bemeneti igények:
+    - **inputClaim**: ["olvasó", "szerző", "admin"]
 - Bemeneti paraméterek:
-    - **elem**: "rendszergazda"
-    - **ignoreCase**: "true"
+    - **elem**: "Admin"
+    - **ignoreCase**: "igaz"
 - Kimeneti jogcímek:
-    - **outputClaim**: "true"
+    - **outputClaim**: "igaz"
 
 

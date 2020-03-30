@@ -9,34 +9,34 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: d2a85f3947e9993e5d1853e45c6d03586a074cf6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179082"
 ---
 ## <a name="update-resources"></a>Erőforrások frissítése
 
-Vannak bizonyos korlátai, mit lehet frissíteni a. A következő elemek frissíthetők: 
+Vannak bizonyos korlátozások, hogy mit lehet frissíteni. A következő elemek frissíthetők: 
 
-Megosztott képgyűjtemény:
+Megosztott képgaléria:
 - Leírás
 
-kép definíciója:
-- Ajánlott vcpu-k
-- Ajánlott memóriaméret
+Képdefiníció:
+- Ajánlott vCPU-k
+- Ajánlott memória
 - Leírás
-- Élettartam dátum vége
+- Az életciklus vége dátuma
 
-Lemezkép verziója:
-- Regionális replikáinak száma
+Kép verziószáma:
+- Regionális replikaszám
 - Célrégiók
-- Legújabb kizárása
-- Élettartam dátum vége
+- Kizárás a legújabb
+- Az életciklus vége dátuma
 
-Ha azt tervezi, a replika régiók felvétele, ne törölje a forrás felügyelt rendszerképet. A felügyelt forráslemezkép a rendszerkép verziószámát további régióban való replikálásához szükséges. 
+Ha replikaterületek hozzáadását tervezi, ne törölje a forrás felügyelt lemezképet. A forrás felügyelt lemezkép szükséges a lemezkép verziójának további régiókba történő replikálásához. 
 
-A gyűjtemény leírását frissítéséhez használja [Update-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/update-azgallery).
+A gyűjtemény leírásának frissítéséhez használja az [Update-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/update-azgallery)szolgáltatást.
 
 ```azurepowershell-interactive
 Update-AzGallery `
@@ -44,7 +44,7 @@ Update-AzGallery `
    -ResourceGroupName $resourceGroup.Name
 ```
 
-Ez a példa bemutatja, hogyan használható [Update-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition) frissíteni a teljes életciklusa dátumot a rendszerkép definíciójában.
+Ez a példa bemutatja, hogyan használhatja [az Update-AzGalleryImageDefinition segítségével](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition) a lemezképdefiníció élettartama megszűnésének dátumának frissítéséhez.
 
 ```azurepowershell-interactive
 Update-AzGalleryImageDefinition `
@@ -54,7 +54,7 @@ Update-AzGalleryImageDefinition `
    -EndOfLifeDate 01/01/2030
 ```
 
-Ez a példa bemutatja, hogyan használható [Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) használva, a lemezkép verziója kizárása a *legújabb* kép.
+Ez a példa bemutatja, hogyan használhatja [az Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) segítségével a lemezképverzió *kizárásához* a legújabb lemezképként való használatból.
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -68,7 +68,7 @@ Update-AzGalleryImageVersion `
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Erőforrások törlésekor kell kezdődnie utolsó eleme a beágyazott erőforrások – a rendszerkép verziószámát. A törölt verziók is törölheti a rendszerkép definíciójában. A katalógus nem törölhető, amíg alatta összes erőforrás törölve lett.
+Erőforrások törlésekor meg kell kezdeni az utolsó elem a beágyazott erőforrások - a kép verzió. A verziók törlése után törölheti a képdefiníciót. A katalógus nem törölhető, amíg az alatta lévő összes erőforrást nem törölték.
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"

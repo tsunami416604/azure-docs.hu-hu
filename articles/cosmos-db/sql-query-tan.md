@@ -1,6 +1,6 @@
 ---
-title: TAN Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function TAN szolgáltatással Azure Cosmos DBban.
+title: TAN az Azure Cosmos DB lekérdezési nyelvében
+description: Ismerje meg az SQL rendszer funkció TAN az Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9d7187ba116067445e835769fc33aa70677ef80b
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78301981"
 ---
 # <a name="tan-azure-cosmos-db"></a>TAN (Azure Cosmos DB)
- A megadott szög tangensét adja vissza radiánban, a megadott kifejezésben.  
+ A megadott szög nek a megadott szögének érintőit adja eredményül a megadott kifejezésben radiánban.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,21 +26,21 @@ TAN (<numeric_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expr*  
-   A numerikus kifejezés.  
+   Ez egy numerikus kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  A numerikus kifejezést ad vissza.  
+  Numerikus kifejezést ad eredményül.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa PI () tangensét számítja ki / 2.  
+  A következő példa kiszámítja a PI()/2 érintőit.  
   
 ```sql
 SELECT TAN(PI()/2) AS tan 
 ```  
   
- Íme az eredményhalmaz.  
+ Itt van az eredményhalmaz.  
   
 ```json
 [{"tan": 16331239353195370 }]  
@@ -48,10 +48,10 @@ SELECT TAN(PI()/2) AS tan
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfüggvény nem fogja használni az indexet.
+Ez a rendszerfunkció nem használja az indexet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Matematikai függvények Az Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)

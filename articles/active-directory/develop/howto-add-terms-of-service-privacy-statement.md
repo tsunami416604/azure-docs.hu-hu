@@ -1,6 +1,6 @@
 ---
-title: A szolgáltatási feltételek és az alkalmazások adatvédelmi nyilatkozata | Azure
-description: Megtudhatja, hogyan konfigurálhatja az Azure AD használatára regisztrált alkalmazások használati feltételeit és adatvédelmi nyilatkozatát.
+title: Szolgáltatási feltételek és adatvédelmi nyilatkozat az alkalmazásokra | Azure
+description: Ismerje meg, hogyan konfigurálhatja az Azure AD használatára regisztrált alkalmazások szolgáltatási feltételeit és adatvédelmi nyilatkozatát.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,62 +13,62 @@ ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300009"
 ---
-# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Útmutató: alkalmazások használati feltételeinek és adatvédelmi nyilatkozatának konfigurálása
+# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Útmutató: A szolgáltatási feltételek és az adatvédelmi nyilatkozat konfigurálása egy alkalmazáshoz
 
-Az Azure Active Directory (Azure AD) és a Microsoft-fiókokkal integrált alkalmazásokat létrehozó és kezelő fejlesztőknek az alkalmazás használati feltételeire és az adatvédelmi nyilatkozatra mutató hivatkozásokat kell tartalmazniuk. A használati feltételek és az adatvédelmi nyilatkozat a felhasználói beleegyező felületen keresztül történik. Segítenek a felhasználóknak tudni, hogy megbíznak az alkalmazásban. A használati feltételek és az adatvédelmi nyilatkozat különösen kritikus fontosságú a felhasználók számára elérhető több-bérlős alkalmazások esetében – a több könyvtár által használt alkalmazások vagy bármely Microsoft-fiók számára.
+Az Azure Active Directoryval (Azure AD) és AD-fiókkal integrálható alkalmazásokat fejlesztő fejlesztőknek tartalmazniuk kell az alkalmazás szolgáltatási feltételeire és adatvédelmi nyilatkozatára mutató hivatkozásokat. A szolgáltatási feltételek és az adatvédelmi nyilatkozat a felhasználói hozzájárulási élményen keresztül jelennek meg a felhasználók számára. Segítenek a felhasználóknak megtudni, hogy megbízhatnak az alkalmazásban. A szolgáltatási feltételek és az adatvédelmi nyilatkozat különösen kritikus a felhasználó felé néző több-bérlős alkalmazások - alkalmazások, amelyek több könyvtár által használt, vagy bármely Microsoft-fiók számára elérhető.
 
-Ön felelős azért, hogy létrehozza az alkalmazás használati feltételeit és adatvédelmi nyilatkozatát, valamint hogy az URL-címeket megadja a dokumentumoknak. Azon több-bérlős alkalmazások esetében, amelyek nem tudják megadni ezeket a hivatkozásokat, az alkalmazás felhasználói beleegyezési élménye riasztást jelenít meg, amely miatt a felhasználók nem tudnak hozzájárulni az alkalmazáshoz.
+Ön felelős az alkalmazás szolgáltatási feltételeinek és adatvédelmi nyilatkozatának dokumentumainak létrehozásáért, valamint a dokumentumok URL-címeinek biztosításáért. A több-bérlős alkalmazások, amelyek nem biztosítják ezeket a hivatkozásokat, az alkalmazás felhasználói hozzájárulási élménye riasztást jelenít meg, amely elriaszthatja a felhasználókat attól, hogy hozzájáruljanak az alkalmazáshoz.
 
 > [!NOTE]
-> * Az egybérlős alkalmazások nem fognak riasztást megjeleníteni.
-> * Ha a két hivatkozás egyike vagy mindkettő hiányzik, az alkalmazás riasztást jelenít meg.
+> * Az egybérlős alkalmazások nem jelenítenek meg riasztást.
+> * Ha a két hivatkozás egyike vagy mindkettő hiányzik, az alkalmazás figyelmeztetést jelenít meg.
 
-## <a name="user-consent-experience"></a>Felhasználói beleegyezett élmény
+## <a name="user-consent-experience"></a>Felhasználói hozzájárulási élmény
 
-Az alábbi példák azt mutatják be, hogy a felhasználói beleegyezett a szolgáltatási feltételek és az adatvédelmi nyilatkozat konfigurálásakor, és ha nincsenek konfigurálva.
+A következő példák a felhasználói hozzájárulási élményt mutatják be, amikor a szolgáltatási feltételek és az adatvédelmi nyilatkozat konfigurálva van, és ha ezek a hivatkozások nincsenek konfigurálva.
 
-![Képernyőképek az adatvédelmi nyilatkozat és a megadott szolgáltatási feltételek nélkül](./media/howto-add-terms-of-service-privacy-statement/user-consent-exp-privacy-statement-terms-service.png)
+![Képernyőképek adatvédelmi nyilatkozattal és anélkül, valamint a nyújtott szolgáltatási feltételek](./media/howto-add-terms-of-service-privacy-statement/user-consent-exp-privacy-statement-terms-service.png)
 
-## <a name="formatting-links-to-the-terms-of-service-and-privacy-statement-documents"></a>A használati feltételekre és az adatvédelmi nyilatkozatra mutató hivatkozások formázása
+## <a name="formatting-links-to-the-terms-of-service-and-privacy-statement-documents"></a>A szolgáltatási feltételekre és az adatvédelmi nyilatkozatdokumentumaira mutató hivatkozások formázása
 
-Mielőtt felveszi a hivatkozásokat az alkalmazás használati feltételeihez és az adatvédelmi nyilatkozat dokumentumaihoz, győződjön meg arról, hogy az URL-címek követik ezeket az irányelveket.
+Mielőtt hivatkozásokat ad hozzá az alkalmazás szolgáltatási feltételeihez és az adatvédelmi nyilatkozat dokumentumaihoz, győződjön meg arról, hogy az URL-ek betartják ezeket az irányelveket.
 
 | Irányelv     | Leírás                           |
 |---------------|---------------------------------------|
 | Formátum        | Érvényes URL-cím                             |
-| Érvényes sémák | HTTP és HTTPS<br/>Javasoljuk, hogy HTTPS |
+| Érvényes sémák | HTTP és HTTPS<br/>Https-t ajánlunk |
 | Maximális hossz    | 2048 karakter                       |
 
-Példák: `https://myapp.com/terms-of-service` és `https://myapp.com/privacy-statement`
+Példák: `https://myapp.com/terms-of-service` és`https://myapp.com/privacy-statement`
 
-## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>A szolgáltatási feltételekre és az adatvédelmi nyilatkozatra mutató hivatkozások hozzáadása
+## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>Hivatkozások hozzáadása a szolgáltatási feltételekhez és az adatvédelmi nyilatkozathoz
 
-Ha a szolgáltatási feltételek és az adatvédelmi nyilatkozat elkészült, a következő módszerek egyikével adhatja hozzá a dokumentumokra mutató hivatkozásokat az alkalmazásban:
+Ha a szolgáltatási feltételek és az adatvédelmi nyilatkozat készen áll, az alábbi módszerek egyikével adhat hozzá hivatkozásokat ezekhez a dokumentumokhoz az alkalmazásban:
 
-* [A Azure Portal](#azure-portal)
-* [Az alkalmazás-objektum JSON használata](#app-object-json)
+* [Az Azure portalon keresztül](#azure-portal)
+* [A JSON alkalmazásobjektum használata](#app-object-json)
 * [A Microsoft Graph API használata](#msgraph-rest-api)
 
-### <a name="azure-portal"></a>A Azure Portal használata
-Kövesse az alábbi lépéseket a Azure Portal.
+### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Az Azure Portal használata
+Kövesse az alábbi lépéseket az Azure Portalon.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
-2. Navigáljon az **alkalmazás regisztrációi** részéhez, és válassza ki az alkalmazást.
-3. Nyissa meg a **márkaépítés** ablaktáblát.
-4. Adja meg a szolgáltatási URL-cím és az **adatvédelmi nyilatkozat URL-** mezőinek **feltételeit** .
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+2. Nyissa meg az **Alkalmazásregisztrációk szakaszt,** és válassza ki az alkalmazást.
+3. Nyissa meg a **Márkajelzés** ablaktáblát.
+4. Töltse ki a **Szolgáltatási feltételek URL-címét** és **az adatvédelmi nyilatkozat URL-mezőit.**
 5. Mentse a módosításokat.
 
-    ![Az alkalmazás tulajdonságai tartalmazzák a szolgáltatási és adatvédelmi nyilatkozat URL-címeit](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
+    ![Az alkalmazás tulajdonságai szolgáltatási feltételeket és adatvédelmi nyilatkozat URL-címeket tartalmaznak](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
-### <a name="app-object-json"></a>Az alkalmazás-objektum JSON használata
+### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>A JSON alkalmazásobjektum használata
 
-Ha közvetlenül az alkalmazás-objektum JSON-fájlját szeretné módosítani, használja a Azure Portal vagy az alkalmazás regisztrációs portáljának jegyzékfájl-szerkesztőjét, hogy tartalmazza az alkalmazás használati feltételeire és az adatvédelmi nyilatkozatra mutató hivatkozásokat is.
+Ha közvetlenül szeretné módosítani a JSON alkalmazásobjektumot, használhatja az Azure Portalon vagy az Alkalmazásregisztrációs portálon a jegyzékszerkesztőt az alkalmazás szolgáltatási feltételeire és adatvédelmi nyilatkozatára mutató hivatkozások felvételéhez.
 
 ```json
     "informationalUrls": { 
@@ -77,9 +77,9 @@ Ha közvetlenül az alkalmazás-objektum JSON-fájlját szeretné módosítani, 
     }
 ```
 
-### <a name="msgraph-rest-api"></a>A Microsoft Graph API használata
+### <a name="using-the-microsoft-graph-api"></a><a name="msgraph-rest-api"></a>A Microsoft Graph API használata
 
-Az összes alkalmazás programozott frissítéséhez a Microsoft Graph API-val frissítheti az összes alkalmazást, hogy tartalmazza a szolgáltatási feltételekre és az adatvédelmi nyilatkozatra mutató hivatkozásokat.
+Az összes alkalmazás programozott frissítéséhez a Microsoft Graph API segítségével frissítheti az összes alkalmazást, hogy az tartalmazza a szolgáltatási feltételekre és az adatvédelmi nyilatkozatra mutató dokumentumokra mutató hivatkozásokat.
 
 ```
 PATCH https://graph.microsoft.com/v1.0/applications/{application id}
@@ -96,5 +96,5 @@ PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 ```
 
 > [!NOTE]
-> * Ügyeljen arra, hogy ne írja felül a következő mezőkhöz hozzárendelt előre megadott értékeket: `supportUrl`, `marketingUrl`és `logoUrl`
-> * A Microsoft Graph API csak akkor működik, ha Azure AD-fiókkal jelentkezik be. A személyes Microsoft-fiókok nem támogatottak.
+> * Ügyeljen arra, hogy ne írja felül a következő mezők höz `supportUrl`rendelt `marketingUrl`már meglévő értékeket: , és`logoUrl`
+> * A Microsoft Graph API csak akkor működik, ha egy Azure AD-fiókkal jelentkezik be. A személyes Microsoft-fiókok nem támogatottak.

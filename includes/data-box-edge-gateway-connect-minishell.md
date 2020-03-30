@@ -5,40 +5,40 @@ ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 348f7bdd333da4f4a6cb41a438b7aee08d6a6bbb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179581"
 ---
-Függően az ügyfél operációs rendszere távoli csatlakozás az eszköz az eljárások különböznek.
+Az ügyfél operációs rendszerétől függően az eszközhöz való távoli csatlakozás eljárásai eltérőek.
 
-### <a name="remotely-connect-from-a-windows-client"></a>Távoli csatlakozás egy Windows ügyfél
+### <a name="remotely-connect-from-a-windows-client"></a>Csatlakozás távoli csatlakozás Windows-ügyfélről
 
-Mielőtt elkezdené, győződjön meg arról, hogy a Windows-ügyfél Windows PowerShell 5.0-s vagy újabb.
+Mielőtt elkezdené, győződjön meg arról, hogy a Windows-ügyfél windows PowerShell 5.0-s vagy újabb operációs rendszert futtat.
 
-Kövesse az alábbi lépéseket egy Windows ügyfél távolról csatlakozni.
+Az alábbi lépésekkel távolról csatlakozhat Windows-ügyfélről.
 
-1. Futtassa egy Windows PowerShell-munkamenetet rendszergazdaként.
-2. Győződjön meg arról, hogy a Windows távoli felügyeleti szolgáltatás fut-e az ügyfélen. A parancssorba írja be a következőt:
+1. Futtasson egy Windows PowerShell-munkamenetet rendszergazdaként.
+2. Győződjön meg arról, hogy a Windows távfelügyeleti szolgáltatás a számítógépen fut. A parancssorba írja be a következőt:
 
     `winrm quickconfig`
 
-3. Rendelje hozzá egy változót az eszköz IP-címe.
+3. Rendeljen változót az eszköz IP-címéhez.
 
-    $ip = "< device_ip >"
+    $ip = "> <device_ip"
 
-    Cserélje le `<device_ip>` az eszköz IP-címmel.
+    Cserélje `<device_ip>` le a készülék IP-címét.
 
-4. Az ügyfél megbízható gazdagépek listájához ad hozzá az eszköz IP-címét, írja be a következő parancsot:
+4. Ha hozzá szeretné adni az eszköz IP-címét az ügyfél megbízható állomások listájához, írja be a következő parancsot:
 
     `Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force`
 
-5. Indítsa el a Windows PowerShell-munkamenetben az eszközön:
+5. Windows PowerShell-munkamenet indítása az eszközön:
 
     `Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell`
 
-6. Adja meg a jelszót, amikor a rendszer kéri. Használja ugyanazt a jelszót, amellyel jelentkezzen be a helyi webes felületén. Az alapértelmezett helyi webes felhasználói felület jelszó az *jelszó1*. Amikor sikeresen csatlakozik az eszköz távoli PowerShell-lel, tekintse meg az alábbi kimeneti példa:  
+6. Adja meg a jelszót, amikor a rendszer kéri. Használja ugyanazt a jelszót, amely et a helyi webes felhasználói felületre való bejelentkezéshez használja. Az alapértelmezett helyi webes felhasználói felület jelszava a *Jelszó1*. Ha sikeresen csatlakozik az eszközhöz a távoli PowerShell használatával, a következő mintakimenet jelenik meg:  
 
     ```
     Windows PowerShell
@@ -54,27 +54,27 @@ Kövesse az alábbi lépéseket egy Windows ügyfél távolról csatlakozni.
     [10.100.10.10]: PS>
     ```
 
-### <a name="remotely-connect-from-a-linux-client"></a>Távoli csatlakozás egy Linux-ügyfél
+### <a name="remotely-connect-from-a-linux-client"></a>Csatlakozás linuxos ügyfélről
 
-Linux rendszerű futtató ügyfélen való csatlakozáshoz használni:
+A csatlakozni kívánt Linux-ügyfélen:
 
-- [Telepítse a legújabb PowerShell Core for Linux](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) a Githubról, a távoli eljáráshívás SSH szolgáltatás beolvasása. 
-- [Telepítés csak a `gss-ntlmssp` csomag az NTLM-modulból](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Ubuntu-ügyfelek esetén használja a következő parancsot:
+- [Telepítse a legújabb PowerShell Core for Linux-ot a](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) GitHubról az SSH átmotolási funkciójának leküzdése érdekében. 
+- [Csak a `gss-ntlmssp` csomagot telepítse az NTLM modulból](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Ubuntu kliensek esetén használja a következő parancsot:
     - `sudo apt-get install gss-ntlmssp`
 
-További információért ugorjon [PowerShell távoli eljáráshívás ssh-n keresztül](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6).
+További információért látogasson el a [PowerShell sSH-n keresztüli átirányítást című e-kérdéséhez.](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)
 
-Távoli csatlakozás az NFS-ügyfelet az alábbi lépéseket követve.
+Az alábbi lépésekkel távolról csatlakozhat NFS-ügyfélről.
 
-1. Nyissa meg a PowerShell-munkamenetet, írja be:
+1. A PowerShell-munkamenet megnyitásához írja be a következőt:
 
     `sudo pwsh`
  
-2. Kapcsolódik a távoli ügyfél használatával, gépelje be:
+2. A távoli ügyféllel való csatlakozáshoz írja be a következőt:
 
     `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
 
-    Amikor a rendszer kéri, adja meg az eszköz-ba való bejelentkezéshez használt jelszó.
+    Amikor a rendszer kéri, adja meg az eszközre való bejelentkezéshez használt jelszót.
  
 > [!NOTE]
-> Ez az eljárás nem működik a Mac OS.
+> Ez az eljárás mac os rendszeren nem működik.

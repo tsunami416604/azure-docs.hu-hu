@@ -9,20 +9,20 @@ ms.date: 06/11/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 020e59f029b09f3c7656f67039731e4141e68d31
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179723"
 ---
-Python az alkalmazás elindítása során hibát észlel, ha csak egy egyszerű hibalap fogja visszaadni (például) "Az oldal nem lehet megjeleníteni, mert egy belső kiszolgálóhiba történt.").
+Ha a Python hibát észlel az alkalmazás indításakor, csak egy egyszerű hibalapot ad vissza (például "Az oldal nem jeleníthető meg, mert belső kiszolgálóhiba történt.").
 
-Python-alkalmazáshibák rögzítésére:
+Python-alkalmazáshibák rögzítése:
 
-1. Válassza ki az Azure Portalon, a web app alkalmazásban **beállítások**.
-2. Az a **beállítások** lapon jelölje be **Alkalmazásbeállítások**.
-3. A **Alkalmazásbeállítások**, adja meg a következő kulcs-érték párt:
-    * Kulcs: WSGI_LOG
-    * Érték: D:\home\site\wwwroot\logs.txt (adja meg a kívánt fájl nevét)
+1. Az Azure Portalon a webalkalmazásban válassza a **Beállítások lehetőséget.**
+2. A **Beállítások** lapon válassza az **Alkalmazásbeállításai lehetőséget**.
+3. Az **Alkalmazásbeállítások**csoportban adja meg a következő kulcs/érték párt:
+    * Kulcs : WSGI_LOG
+    * Érték : D:\home\site\wwwroot\logs.txt (adja meg a választott fájlnevet)
 
-Meg kell jelennie a wwwroot mappában logs.txt fájlban.
+Most a hibák jelennek meg a logs.txt fájlban a wwwroot mappában.

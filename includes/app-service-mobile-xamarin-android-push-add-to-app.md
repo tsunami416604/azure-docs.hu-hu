@@ -5,14 +5,14 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179626"
 ---
-1. Hozzon létre egy új osztályt a nevű projekt `ToDoBroadcastReceiver`.
-2. Adja hozzá a következő using utasításokat a **ToDoBroadcastReceiver** osztály:
+1. Hozzon létre egy új `ToDoBroadcastReceiver`osztályt a projektben.
+2. Adja hozzá a következőket utasításokkal a **ToDoBroadcastReceiver** osztályhoz:
 
     ```csharp
     using Gcm.Client;
@@ -20,7 +20,7 @@ ms.locfileid: "67179626"
     using Newtonsoft.Json.Linq;
     ```
 
-3. Adja hozzá a következő engedélykéréseket között a **használatával** utasítások és a **névtér** nyilatkozat:
+3. Adja hozzá a következő engedélykérelmeket a **felhasználási** utasítások és a **névtér** deklaráció között:
 
     ```csharp
     [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -32,7 +32,7 @@ ms.locfileid: "67179626"
     [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
     ```
 
-4. Cserélje le a meglévő **ToDoBroadcastReceiver** osztálydefiníciót a következőre:
+4. Cserélje le a meglévő **ToDoBroadcastReceiver** osztálydefiníciót a következőkre:
 
     ```csharp
     [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
@@ -49,9 +49,9 @@ ms.locfileid: "67179626"
     }
     ```
 
-    A fenti kódban, le kell cserélnie *`<PROJECT_NUMBER>`* kiépítette az alkalmazást a Google fejlesztői portálján a Google által hozzárendelt projekt számát. 
+    A fenti kódban le *`<PROJECT_NUMBER>`* kell cserélnie a Google által hozzárendelt projektszámot, amikor kiépítette az alkalmazást a Google fejlesztői portálján. 
 
-5. A ToDoBroadcastReceiver.cs projekt fájlban adja hozzá a következő kódot, amely meghatározza a **PushHandlerService** osztály:
+5. A ToDoBroadcastReceiver.cs projektfájlban adja hozzá a **PushHandlerService** osztályt meghatározó következő kódot:
 
     ```csharp
     // The ServiceAttribute must be applied to the class.
@@ -63,12 +63,12 @@ ms.locfileid: "67179626"
     }
     ```
 
-    Vegye figyelembe, hogy ez az osztály származtatható a **GcmServiceBase** , és hogy a **szolgáltatás** Ez az osztály attribútumot kell alkalmazni.
+    Vegye figyelembe, hogy ez az osztály a **GcmServiceBase-ből** származik, és hogy a **Service** attribútumot erre az osztályra kell alkalmazni.
 
     > [!NOTE]
-    > A **GcmServiceBase** osztály megvalósítja a **OnRegistered()** , **OnUnRegistered()** , **OnMessage()** és  **OnError()** módszereket. Ezek a módszerek felül kell írnia a **PushHandlerService** osztály.
+    > A **GcmServiceBase** osztály implementálja az **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** és **OnError()** metódusokat. Felül kell írnia ezeket a módszereket a **PushHandlerService** osztályban.
 
-6. Adja hozzá a következő kódot a **PushHandlerService** osztály, amely felülbírálja a **OnRegistered** eseménykezelő.
+6. Adja hozzá a következő kódot a **PushHandlerService** osztályhoz, amely felülbírálja az **OnRegistered** eseménykezelőt.
 
     ```csharp
     protected override void OnRegistered(Context context, string registrationId)
@@ -109,9 +109,9 @@ ms.locfileid: "67179626"
     }
     ```
 
-    Ez a módszer a visszaadott GCM regisztrációs Azonosítót használja az Azure-ral leküldéses értesítések regisztrálása. A címkék csak lehet hozzáadni a regisztrációt a létrehozást követően. További információkért lásd: [hogyan: Címkék hozzáadása egy eszköz telepítése leküldéses-a-tags engedélyezéséhez](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
+    Ez a módszer a visszaadott GCM regisztrációs azonosítót használja az Azure-ban a leküldéses értesítések regisztrálásához. Címkéket csak akkor lehet hozzáadni a regisztráció létrehozása után. További információ: [Hogyan: Címkék hozzáadása az eszköz telepítéséhez a leküldéses címkék engedélyezéséhez.](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)
 
-7. Bírálja felül a **OnMessage** metódus az **PushHandlerService** a következő kóddal:
+7. A **PushHandlerService** **OnMessage** metódusának felülbírálása a következő kóddal:
 
     ```csharp
     protected override void OnMessage(Context context, Intent intent)
@@ -149,7 +149,7 @@ ms.locfileid: "67179626"
     }
     ```
 
-8. Bírálja felül a **OnUnRegistered()** és **OnError()** módszerek az alábbi kódra.
+8. Felülbírálja az **OnUnRegistered()** és **onError()** metódust a következő kóddal.
 
     ```csharp
     protected override void OnUnRegistered(Context context, string registrationId)
