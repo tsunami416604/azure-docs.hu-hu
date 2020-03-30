@@ -1,6 +1,6 @@
 ---
-title: OPC-közzétevő futtatása – Azure | Microsoft Docs
-description: Ez a cikk az OPC-közzétevő futtatását és hibakeresését ismerteti. Emellett a teljesítménnyel és a memóriával kapcsolatos szempontokat is tárgyalja.
+title: Az OPC Publisher futtatása - Azure | Microsoft dokumentumok
+description: Ez a cikk az OPC Publisher futtatását és hibakeresését ismerteti. A teljesítmény- és memóriaszempontokat is figyelembe veszi.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
@@ -9,19 +9,19 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 4f5d57bab51d537b64ce4b800737219663c3d7a7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198786"
 ---
 # <a name="run-opc-publisher"></a>Az OPC Publisher futtatása
 
-Ez a cikk az ad debug OPC-közzétevő futtatását ismerteti. Emellett a teljesítménnyel és a memóriával kapcsolatos szempontokat is tárgyalja.
+Ez a cikk az OPC Publisher hirdetéshiba-keresési hibakeresési futtatását ismerteti. A teljesítmény- és memóriaszempontokat is figyelembe veszi.
 
 ## <a name="command-line-options"></a>Parancssori kapcsolók
 
-Az alkalmazás használata a `--help` parancssori kapcsoló használatával jelenik meg a következők szerint:
+Az alkalmazás használata `--help` a parancssori kapcsolóval a következőképpen jelenik meg:
 
 ```sh/cmd
 Current directory is: /appdata
@@ -334,47 +334,47 @@ Options:
                                 reside in a directory.
 ```
 
-Általában csak az alkalmazás első futtatásakor adja meg az IoT Hub tulajdonosi kapcsolatok sztringjét. A rendszer titkosítja a kapcsolatok karakterláncát, és a platform tanúsítványtárolójában tárolja. A későbbi futtatások során az alkalmazás a tanúsítványtárolóból olvassa be a kapcsolatok karakterláncát. Ha minden futtatáskor megadja a kapcsolatok karakterláncát, akkor a rendszer eltávolítja és újból létrehozza a IoT Hub eszköz beállításjegyzékében az alkalmazáshoz létrehozott eszközt.
+Általában csak az alkalmazás első futtatásakor adja meg az IoT Hub tulajdonosának kapcsolati karakterláncát. A kapcsolati karakterlánc titkosítva van, és a platformtanúsítvány-tárolóban tárolódik. A későbbi futtatások során az alkalmazás beolvassa a kapcsolati karakterláncot a tanúsítványtárolóból. Ha minden futtatáskor megadja a kapcsolati karakterláncot, az IoT Hub-eszköz beállításjegyzékében az alkalmazáshoz létrehozott eszközt eltávolítja, majd újra létrehozza.
 
-## <a name="run-natively-on-windows"></a>Natív Futtatás Windows rendszeren
+## <a name="run-natively-on-windows"></a>Natív futtatás Windows rendszeren
 
-Nyissa meg a **opcpublisher. SLN** projektet a Visual Studióval, hozza létre a megoldást, és tegye közzé. Az alkalmazást a következőképpen indíthatja el az Ön által közzétett **célként megadott könyvtárban** :
+Nyissa meg az **opcpublisher.sln** projektet a Visual Studio alkalmazással, hozza létre a megoldást, és tegye közzé. Az alkalmazást a következő **célkönyvtárban** indíthatja el:
 
 ```cmd
 dotnet opcpublisher.dll <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-## <a name="use-a-self-built-container"></a>Saját építésű tároló használata
+## <a name="use-a-self-built-container"></a>Saját készítésű tároló használata
 
-Készítse el saját tárolóját, és kezdje a következőképpen:
+Készítsd el a saját tároló, és indítsa el az alábbiak szerint:
 
 ```sh/cmd
 docker run <your-container-name> <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-## <a name="use-a-container-from-microsoft-container-registry"></a>Tároló használata a Microsoft Container Registry
+## <a name="use-a-container-from-microsoft-container-registry"></a>Tároló használata a Microsoft Container Registry rendszerből
 
-Létezik egy előre elkészített tároló a Microsoft Container Registryban. A következőképpen indíthatja el:
+Van egy előre összeállított tároló a Microsoft Container Registry. Indítsa el a következőképpen:
 
 ```sh/cmd
 docker run mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-Ellenőrizze a [Docker hub](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) -t a támogatott operációs rendszerek és processzor-architektúrák megtekintéséhez. Ha az operációs rendszer és a CPU architektúrája támogatott, a Docker automatikusan kiválasztja a megfelelő tárolót.
+A [docker hubon](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) megtekintheti a támogatott operációs rendszereket és processzorarchitektúrákat. Ha az operációs rendszer és a CPU architektúra támogatott, a Docker automatikusan kiválasztja a megfelelő tárolót.
 
-## <a name="run-as-an-azure-iot-edge-module"></a>Futtatás Azure IoT Edge modulként
+## <a name="run-as-an-azure-iot-edge-module"></a>Futtatás Azure IoT Edge-modulként
 
-Az OPC-közzétevő készen áll [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge) modulként való használatra. Ha az OPC-közzétevőt IoT Edge modulként használja, az egyetlen támogatott átviteli protokoll **Amqp_Tcp_Only** és **Mqtt_Tcp_Only**.
+Az OPC Publisher készen áll az [Azure IoT](https://docs.microsoft.com/azure/iot-edge) Edge-modulként való használatra. Ha az OPC Publishert IoT Edge modulként használja, az egyetlen támogatott átviteli protokoll a **Amqp_Tcp_Only** és **a Mqtt_Tcp_Only.**
 
-Ha az OPC-közzétevőt modulként szeretné hozzáadni a IoT Edge üzembe helyezéséhez, lépjen a Azure Portal IoT Hub beállításaihoz, és végezze el a következő lépéseket:
+Ha az OPC-közzétevőt modulként szeretné hozzáadni az IoT Edge-telepítéshez, nyissa meg az IoT Hub beállításait az Azure Portalon, és hajtsa végre az alábbi lépéseket:
 
-1. Nyissa meg **IoT Edge** és hozza létre vagy válassza ki IoT Edge eszközét.
-1. Válassza a **Modulok beállítása** lehetőséget.
-1. Válassza a **Hozzáadás** lehetőséget a **telepítési modulok** területen, majd **IoT Edge modult**.
-1. A **név** mezőbe írja be a **közzétevőt**.
-1. A **RENDSZERKÉP URI** mezőjébe írja be a `mcr.microsoft.com/iotedge/opc-publisher:<tag>`
-1. A rendelkezésre álló címkék a [Docker hub](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) -ban találhatók
-1. Illessze be a következő JSON-t a **tároló létrehozási beállítások** mezőjébe:
+1. Nyissa meg az **IoT Edge-et,** és hozza létre vagy válassza ki az IoT Edge-eszközt.
+1. Válassza **a Modulok beállítása**lehetőséget.
+1. Válassza **a Hozzáadás** **lehetőséget a Telepítési modulok,** majd az **IoT Edge-modul csoportban.**
+1. A **Név** mezőbe írja be a **publisher**t.
+1. A **Kép URI** mezőjébe írja be a`mcr.microsoft.com/iotedge/opc-publisher:<tag>`
+1. Az elérhető címkéket a [Docker Hubon](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) találja
+1. Illessze be a következő JSON-t a **Tároló létrehozási beállításai** mezőbe:
 
     ```json
     {
@@ -385,10 +385,10 @@ Ha az OPC-közzétevőt modulként szeretné hozzáadni a IoT Edge üzembe helye
     }
     ```
 
-    Ez a konfiguráció úgy konfigurálja a IoT Edget, hogy elindítson egy **Publisher** nevű tárolót az OPC közzétevő rendszerképének használatával. A tároló rendszerének állomásneve a **kiadó**értékre van állítva. Az OPC-közzétevőt a következő parancssori argumentummal kell meghívni: `--aa`. Ha ezt a lehetőséget választja, az OPC-közzétevő megbízik az OPC UA-kiszolgálók tanúsítványán, amelyhez csatlakozik. Bármely OPC-közzétevő parancssori kapcsolót használhat. Az egyetlen korlátozás az IoT Edge által támogatott **tároló-létrehozási beállítások** mérete.
+    Ez a konfiguráció úgy konfigurálja az IoT Edge-et, hogy elindítson egy **közzétevő** nevű tárolót az OPC Publisher-lemezkép használatával. A tároló rendszerének állomásneve **közzétevőre**van állítva. Az OPC Publisher neve a következő `--aa`parancssori argumentummal történik: . Ezzel a beállítással az OPC Publisher megbízik az OPC UA-kiszolgálók tanúsítványaiban, amelyekhez csatlakozik. Az OPC Publisher parancssori kapcsolóit tetszőlegesen használhatja. Az egyetlen korlátozás az IoT Edge által támogatott **tárolólétrehozási beállítások** mérete.
 
 1. Hagyja változatlanul a többi beállítást, és válassza a **Mentés** lehetőséget.
-1. Ha az OPC-közzétevő kimenetét helyileg szeretné feldolgozni egy másik IoT Edge modullal, térjen vissza a **modulok beállítása** lapra. Ezután nyissa **meg az útvonalak megadása** lapot, és adjon hozzá egy új útvonalat, amely a következő JSON-hoz hasonlít:
+1. Ha az OPC-közzétevő kimenetét helyileg szeretné feldolgozni egy másik IoT Edge-modullal, lépjen vissza a **Modulok beállítása** lapra. Ezután lépjen az **Útvonalak megadása** lapra, és vegyen fel egy új útvonalat, amely a következő JSON-hoz hasonlóan néz ki:
 
     ```json
     {
@@ -399,13 +399,13 @@ Ha az OPC-közzétevőt modulként szeretné hozzáadni a IoT Edge üzembe helye
     }
     ```
 
-1. A **modulok beállítása** lapon kattintson a **tovább**gombra, amíg el nem éri a konfiguráció utolsó lapját.
-1. Válassza a **Submit (Küldés** ) lehetőséget a konfiguráció IoT Edge való elküldéséhez.
-1. Ha elindította IoT Edget a peremhálózati eszközén, és a Docker-tároló **közzétevője** fut, akkor az OPC-közzétevő naplózási kimenetét `docker logs -f publisher` vagy a naplófájl ellenőrzésével tekintheti meg. Az előző példában a naplófájl `d:\iiotegde\publisher-publisher.log`. Használhatja a [IOT-Edge-OPC-Publisher-Diagnostics eszközt](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics)is.
+1. A **Modulok beállítása** lapon válassza a **Tovább**lehetőséget, amíg el nem éri a konfiguráció utolsó oldalát.
+1. Válassza **a Küldés** lehetőséget, ha a konfigurációt az IoT Edge-nek szeretné elküldeni.
+1. Amikor elindította az IoT Edge-et a peremhálózati eszközön, és a docker-tároló **közzétevője** `docker logs -f publisher` fut, az OPC Publisher naplókimenetét a naplófájl használatával vagy ellenőrzésével is megnézheti. Az előző példában a naplófájl felett `d:\iiotegde\publisher-publisher.log`van. Használhatja az [iot-edge-opc-publisher-diagnostics eszközt](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics)is.
 
-### <a name="make-the-configuration-files-accessible-on-the-host"></a>A konfigurációs fájlok elérhetővé tétele a gazdagépen
+### <a name="make-the-configuration-files-accessible-on-the-host"></a>A konfigurációs fájlok elérhetővé tétele az állomáson
 
-Ahhoz, hogy a IoT Edge modul konfigurációs fájljai elérhetők legyenek a gazdagép fájlrendszerében, használja a következő **tároló-létrehozási beállításokat**. A következő példa egy Linux-tárolókat használ a Windows rendszerhez:
+Ha az IoT Edge modul konfigurációs fájljait elérhetővé szeretné tenni a gazdafájlrendszerben, használja a következő **Tárolólétrehozási beállításokat.** A következő példa a Linux-tárolók windowsos használatával történő központi telepítésre mutat:
 
 ```json
 {
@@ -422,13 +422,13 @@ Ahhoz, hogy a IoT Edge modul konfigurációs fájljai elérhetők legyenek a gaz
 }
 ```
 
-Ezekkel a beállításokkal az OPC-közzétevő beolvassa azokat a csomópontokat, amelyeket közzé kell tenni a fájlból `./pn.json` és a tároló munkakönyvtára `/appdata` indításkor be van állítva. Ezekkel a beállításokkal az OPC-közzétevő beolvassa a fájlt `/appdata/pn.json` a tárolóból a konfiguráció eléréséhez. Az `--pf` lehetőség nélkül az OPC-közzétevő megpróbálja beolvasni az alapértelmezett konfigurációs fájlt `./publishednodes.json`.
+Ezekkel a beállításokkal az OPC Publisher beolvassa `./pn.json` azokat a csomópontokat, amelyeket közzé kell tennie a fájlból, és a tároló munkakönyvtára `/appdata` indításkor be van állítva. Ezekkel a beállításokkal az `/appdata/pn.json` OPC Publisher beolvassa a fájlt a tárolóból a konfiguráció leolvasásához. A `--pf` beállítás nélkül az OPC Publisher megpróbálja `./publishednodes.json`elolvasni az alapértelmezett konfigurációs fájlt.
 
-Az alapértelmezett nevű naplófájl `publisher-publisher.log``/appdata`, és a `CertificateStores` könyvtár is létrejön ebben a könyvtárban.
+Az alapértelmezett nevet `publisher-publisher.log`használó naplófájl a `/appdata` programba kerül, és a könyvtár is ebben a `CertificateStores` könyvtárban jön létre.
 
-Ahhoz, hogy az összes fájl elérhető legyen a gazdagép fájlrendszerében, a tároló konfigurációjának kötési csatlakoztatási kötetre van szüksége. A `d://iiotedge:/appdata` kötés leképezi a könyvtár `/appdata`, amely az aktuális munkakönyvtár a tároló indításakor, a gazdagép könyvtárára `d://iiotedge`. Ezen beállítás nélkül a tároló következő indításakor nem maradnak meg a fájlok adatfájlja.
+Ahhoz, hogy ezeket a fájlokat elérhetővé tegye a gazdafájlrendszerben, a tároló konfigurációja kötéscsatlakoztatási kötetet igényel. A `d://iiotedge:/appdata` kötés a `/appdata`könyvtárat , amely a tároló indításakor `d://iiotedge`az aktuális munkakönyvtár, a gazdakönyvtárhoz rendeli. E beállítás nélkül a következő tároló indításakor a rendszer nem őriz meg fájladatokat.
 
-Ha Windows-tárolókat futtat, akkor a `Binds` paraméter szintaxisa eltér. A tároló indításakor a munkakönyvtár `c:\appdata`. Ha a konfigurációs fájlt a gazdagépen lévő `d:\iiotedge`könyvtárba szeretné helyezni, a `HostConfig` szakaszban adja meg a következő leképezést:
+Ha Windows-tárolókat futtat, akkor a `Binds` paraméter szintaxisa eltérő. A tároló indításakor `c:\appdata`a munkakönyvtár . Ha a konfigurációs fájlt `d:\iiotedge`az állomás könyvtárába szeretné `HostConfig` helyezni, adja meg a következő leképezést a szakaszban:
 
 ```json
 "HostConfig": {
@@ -438,7 +438,7 @@ Ha Windows-tárolókat futtat, akkor a `Binds` paraméter szintaxisa eltér. A t
 }
 ```
 
-Linux-tárolók Linux rendszeren való futtatásakor a `Binds` paraméter szintaxisa újra eltér. A tároló indításakor a munkakönyvtár `/appdata`. Ha a konfigurációs fájlt a gazdagépen lévő `/iiotedge` könyvtárba szeretné helyezni, a `HostConfig` szakaszban adja meg a következő leképezést:
+Ha Linux-tárolókat futtat Linux-on, `Binds` a paraméter szintaxisa ismét más. A tároló indításakor `/appdata`a munkakönyvtár . Ha a konfigurációs fájlt `/iiotedge` az állomás könyvtárába szeretné `HostConfig` helyezni, adja meg a következő leképezést a szakaszban:
 
 ```json
 "HostConfig": {
@@ -448,106 +448,106 @@ Linux-tárolók Linux rendszeren való futtatásakor a `Binds` paraméter szinta
 }
 ```
 
-## <a name="considerations-when-using-a-container"></a>A tárolók használatakor megfontolandó szempontok
+## <a name="considerations-when-using-a-container"></a>Figyelembe vett szempontok a tároló használatakor
 
-A következő részekben a tárolók használatakor figyelembe kell venni néhány dolgot:
+A következő szakaszok néhány olyan dolgot sorolnak fel, amelyeket a tároló használatakor szem előtt kell tartani:
 
-### <a name="access-to-the-opc-publisher-opc-ua-server"></a>Hozzáférés az OPC Publisher OPC UA-kiszolgálóhoz
+### <a name="access-to-the-opc-publisher-opc-ua-server"></a>Hozzáférés az OPC Publisher OPC UA kiszolgálójához
 
-Alapértelmezés szerint az OPC Publisher OPC UA-kiszolgáló a 62222-es portot figyeli. Ha ezt a bejövő portot egy tárolóban szeretné elérhetővé tenni, használja a következő parancsot:
+Alapértelmezés szerint az OPC Publisher OPC UA kiszolgálója a 62222-es porton figyel. A bejövő port tárolóban való közzétételéhez használja a következő parancsot:
 
 ```sh/cmd
 docker run -p 62222:62222 mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-### <a name="enable-intercontainer-name-resolution"></a>A tároló névfeloldásának engedélyezése
+### <a name="enable-intercontainer-name-resolution"></a>Tárolók közötti névfeloldás engedélyezése
 
-Ha engedélyezni szeretné a névfeloldást a tárolón belül más tárolók számára, hozzon létre egy felhasználót a Docker Bridge Network definiálásával, és a tárolót csatlakoztatja ehhez a hálózathoz a `--network` kapcsoló használatával. Rendeljen hozzá egy nevet a tárolóhoz a `--name` kapcsolóval a következőképpen:
+Ha engedélyezni szeretné a névfeloldást a tárolón belül más tárolókhoz, hozzon létre `--network` egy felhasználói definiáló docker-hidat, és csatlakoztassa a tárolót ehhez a hálózathoz ezzel a beállítással. Rendeljen a tárolóhoz `--name` egy nevet is az alábbi beállítással:
 
 ```sh/cmd
 docker network create -d bridge iot_edge
 docker run --network iot_edge --name publisher mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-A tároló most már elérhető az ugyanazon a hálózaton lévő más tárolók által `publisher` néven.
+A tároló most már elérhető `publisher` a név használatával más tárolók ugyanazon a hálózaton.
 
-### <a name="access-other-systems-from-within-the-container"></a>Más rendszerek elérése a tárolón belülről
+### <a name="access-other-systems-from-within-the-container"></a>Hozzáférés más rendszerekhez a tárolón belülről
 
-Az előző szakaszban ismertetett paraméterek használatával más tárolók is elérhetők. Ha az operációs rendszer, amelyen a Docker üzemel, a DNS engedélyezve van, majd minden olyan rendszerhez hozzáfér, amely ismeri a DNS működését.
+Más tárolók az előző szakaszban leírt paraméterekkel érhető el. Ha az operációs rendszer, amelyen a Docker található, a DNS engedélyezve van, akkor a DNS által ismert összes rendszer elérése működik.
 
-A NetBIOS-névfeloldást használó hálózatokban engedélyezze a hozzáférést más rendszerekhez úgy, hogy a tárolót a `--add-host` kapcsolóval indítja el. Ezzel a beállítással hatékonyan adhat hozzá egy bejegyzést a tároló gazdagép fájljához:
+A NetBIOS-névfeloldást használó hálózatokban engedélyezze a hozzáférést `--add-host` más rendszerekhez a tároló elindításával. Ez a beállítás hatékonyan hozzáad egy bejegyzést a tároló gazdafájljába:
 
 ```cmd/sh
 docker run --add-host mydevbox:192.168.178.23  mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-### <a name="assign-a-hostname"></a>Állomásnév kiosztása
+### <a name="assign-a-hostname"></a>Állomásnév hozzárendelése
 
-Az OPC-közzétevő a tanúsítvány-és végpont-generáláshoz használt gép állomásnevét használja. A Docker véletlenszerűen választja ki a gazdagépet, ha a `-h` beállítás nem állítja be. Az alábbi példa bemutatja, hogyan állíthatja be a tároló belső állomásnevét `publisher`:
+Az OPC Publisher annak a számítógépnek a gazdagépnevét használja, amelyen fut a tanúsítvány és a végpont létrehozásához. A Docker véletlenszerű állomásnevet választ, ha nincs `-h` beállítva a beállítás. A következő példa bemutatja, hogyan állíthatja `publisher`be a tároló belső állomásnevét a következőre:
 
 ```sh/cmd
 docker run -h publisher mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-### <a name="use-bind-mounts-shared-filesystem"></a>Kötési csatlakoztatások használata (megosztott fájlrendszer)
+### <a name="use-bind-mounts-shared-filesystem"></a>Kötéscsatolók használata (megosztott fájlrendszer)
 
-A tároló fájlrendszer használata helyett kiválaszthatja a gazdagép fájlrendszerét a konfigurációs adatok és a naplófájlok tárolásához. A beállítás konfigurálásához használja a `docker run` `-v` kapcsolót a kötés csatlakoztatása módban.
+A tárolófájlrendszer használata helyett választhatja a gazdafájlrendszert a konfigurációs adatok és a naplófájlok tárolására. A beállítás konfigurálásához `-v` használja `docker run` a kötéscsatlakoztatási módban való beállítást.
 
-## <a name="opc-ua-x509-certificates"></a>OPC UA X. 509 tanúsítványok
+## <a name="opc-ua-x509-certificates"></a>OPC UA X.509 tanúsítványok
 
-Az OPC UA X. 509 tanúsítványokat használ az OPC UA-ügyfél és-kiszolgáló hitelesítésére a kapcsolat létesítése és a közöttük lévő kommunikáció titkosítása érdekében. Az OPC-közzétevő az OPC UA-verem által karbantartott tanúsítványtárolókat használja az összes tanúsítvány kezeléséhez. Indításkor az OPC-közzétevő ellenőrzi, hogy van-e tanúsítvány önmagához. Ha nincs tanúsítvány a tanúsítványtárolóban, és az egyik nem lett átadva a parancssorban, az OPC-közzétevő létrehoz egy önaláírt tanúsítványt. További információ: `OpcApplicationConfigurationSecurity.cs`**InitApplicationSecurityAsync** metódusa.
+Az OPC UA X.509-es tanúsítványokat használ az OPC UA-ügyfél és kiszolgáló hitelesítésére, amikor kapcsolatot létesítenek, és titkosítják a köztük lévő kommunikációt. Az OPC Publisher az OPC UA verem által fenntartott tanúsítványtárolókat használja az összes tanúsítvány kezeléséhez. Indításkor az OPC Publisher ellenőrzi, hogy van-e saját tanúsítványa. Ha nincs tanúsítvány a tanúsítványtárolóban, és a parancssorban nincs egy átadott tanúsítvány, az OPC Publisher önaláírt tanúsítványt hoz létre. További információt az **InitApplicationSecurityAsync** metódusban talál a alkalmazásban. `OpcApplicationConfigurationSecurity.cs`
 
-Az önaláírt tanúsítványok nem biztosítanak biztonságot, mivel azokat nem megbízható HITELESÍTÉSSZOLGÁLTATÓ írta alá.
+Az önaláírt tanúsítványok nem nyújtanak biztonságot, mivel nincsenek megbízható hitelesítésszolgáltató által aláírva.
 
-Az OPC-közzétevő parancssori kapcsolókat biztosít a következőhöz:
+Az OPC Publisher parancssori beállításokat biztosít a következőkhöz:
 
-- Az OPC-közzétevő által használt aktuális alkalmazás-tanúsítványhoz tartozó CSR-információ beolvasása.
-- Az OPC-közzétevő kiépítése HITELESÍTÉSSZOLGÁLTATÓI aláírású tanúsítvánnyal.
-- Hozzon létre OPC-közzétevőt egy új kulcspárt és a hozzá tartozó HITELESÍTÉSSZOLGÁLTATÓI aláírt tanúsítvánnyal.
-- Tanúsítványok hozzáadása megbízható társ vagy megbízható kiállító tanúsítvány-tárolóhoz.
+- Az OPC Publisher által használt aktuális alkalmazástanúsítvány CSR-adatainak beolvasása.
+- Opc kiadó kiépítése hitelesítésszolgáltatóaláírással.
+- Opc Publisher kiépítése új kulcspárral és megfelelő hitelesítésszolgáltatóaláírási tanúsítvánnyal.
+- Tanúsítványok hozzáadása megbízható társ- vagy megbízható kiállítói tanúsítványtárolóhoz.
 - Visszavont tanúsítványok listájának hozzáadása.
-- Távolítson el egy tanúsítványt a megbízható társ vagy a megbízható kiállítók tanúsítványtárolóból.
+- Tanúsítvány eltávolítása a megbízható társ- vagy megbízható kibocsátói tanúsítványtárolóból.
 
-Ezekkel a beállításokkal fájlok vagy Base64 kódolású karakterláncok használatával adhat át paramétereket.
+Mindezek a beállítások lehetővé teszik, hogy fájlok vagy base64 kódolású karakterláncok használatával adja át a paramétereket.
 
-Az összes tanúsítványtároló alapértelmezett tárolási típusa a fájlrendszer, amelyet a parancssori kapcsolók használatával módosíthat. Mivel a tároló nem biztosít állandó tárterületet a fájlrendszerében, másik áruházbeli típust kell választania. A Docker `-v` lehetőséggel megtarthatja a tanúsítványtárolókat a gazdagép fájlrendszerében vagy egy Docker-köteten. Ha Docker-kötetet használ, Base64 kódolású karakterláncokkal adhat át tanúsítványokat.
+Az összes tanúsítványtároló alapértelmezett tárolótípusa a fájlrendszer, amelyet parancssori beállításokkal módosíthat. Mivel a tároló nem biztosít állandó tárolót a fájlrendszerben, másik tárolótípust kell választania. A Docker-beállítással `-v` megőrizte a tanúsítványtárolókat a gazdafájlrendszerben vagy egy Docker-köteten. Ha docker-kötetet használ, a tanúsítványok base64 kódolású karakterláncok használatával.
 
-A futásidejű környezet befolyásolja a tanúsítványok megőrzésének módját. Ne hozzon létre új tanúsítványtárolókat minden alkalommal, amikor futtatja az alkalmazást:
+A futásidejű környezet befolyásolja a tanúsítványok megőrzésének módját. Ne hozzon létre új tanúsítványtárolókat az alkalmazás minden egyes futtatásakor:
 
-- A Windowson natív módon futtatott alkalmazás-tanúsítványtároló nem használható `Directory`, mert a titkos kulcshoz való hozzáférés sikertelen. Ebben az esetben használja a `--at X509Store`lehetőséget.
-- Linux Docker-tárolóként futtatva a tanúsítványtárolókat leképezheti a gazdagép fájlrendszerére a Docker Run kapcsolóval `-v <hostdirectory>:/appdata`. Ezzel a beállítással a tanúsítvány állandó lesz az alkalmazás futása során.
-- Linux Docker-tárolóként fut, és X509-tárolót szeretne használni az alkalmazás tanúsítványához, használja a Docker Run kapcsolót `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` és az alkalmazás lehetőséget `--at X509Store`
+- A Windows natív módon futó alkalmazástanúsítvány-tároló nem `Directory` használható, mert a személyes kulcshoz való hozzáférés sikertelen. Ebben az esetben használja `--at X509Store`a lehetőséget.
+- Linux docker-tárolóként futtatva leképezheti a tanúsítványtárolókat a `-v <hostdirectory>:/appdata`gazdafájlrendszerhez a docker futtatási lehetőséggel. Ez a beállítás a tanúsítványt az alkalmazások között állandóvá teszi.
+- Linux os docker-tárolóként fut, és egy X509-tárolót szeretne használni `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` az alkalmazástanúsítványhoz, használja a docker futtatási lehetőséget és az alkalmazás beállítást`--at X509Store`
 
-## <a name="performance-and-memory-considerations"></a>Teljesítménnyel és memóriával kapcsolatos megfontolások
+## <a name="performance-and-memory-considerations"></a>A teljesítményre és a memóriára vonatkozó szempontok
 
-Ez a szakasz a memória és a teljesítmény kezelésének lehetőségeit ismerteti:
+Ez a szakasz a memória és a teljesítmény kezelésére szolgáló lehetőségeket ismerteti:
 
-### <a name="command-line-parameters-to-control-performance-and-memory"></a>A teljesítmény és a memória vezérlésére szolgáló parancssori paraméterek
+### <a name="command-line-parameters-to-control-performance-and-memory"></a>Parancssori paraméterek a teljesítmény és a memória szabályozásához
 
-Az OPC-közzétevő futtatásakor ismernie kell a teljesítményre vonatkozó követelményeket, valamint a gazdagépen elérhető memória-erőforrásokat.
+Az OPC Publisher futtatásakor tisztában kell lennie a teljesítménykövetelményekkel és a gazdagépen rendelkezésre álló memória-erőforrásokkal.
 
-A memória és a teljesítmény egymástól függ, és a konfigurációtól függ, hogy hány csomópontot szeretne közzétenni. Győződjön meg arról, hogy a következő paraméterek megfelelnek a követelményeknek:
+A memória és a teljesítmény egymástól függ, és mindkettő a közzétételre konfigurált csomópontok konfigurációjától függ. Győződjön meg arról, hogy a következő paraméterek megfelelnek az Ön igényeinek:
 
-- IoT Hub küldési időköz: `--si`
-- IoT Hub üzenet mérete (alapértelmezett `1`): `--ms`
-- Figyelt elemek várólistájának kapacitása: `--mq`
+- Az IoT Hub időközt küld:`--si`
+- IoT Hub-üzenet `1`mérete (alapértelmezett):`--ms`
+- Figyelt elemek várólista kapacitása:`--mq`
 
-A `--mq` paraméter a belső várólista kapacitásának felső határát szabályozza, amely az összes OPC-csomópont értékének változási értesítéseit pufferbe helyezi. Ha az OPC-közzétevő nem tud üzeneteket küldeni IoT Hub elég gyors, akkor ez a várólista pufferbe helyezi az értesítéseket. A paraméterrel állítható be a pufferelt értesítések száma. Ha úgy látja, hogy a várólistában lévő elemek száma egyre növekszik a tesztek futtatásakor, az üzenetek elvesztésének elkerüléséhez tegye a következőket:
+A `--mq` paraméter a belső várólista kapacitásának felső határát szabályozza, amely puffereli az összes OPC-csomópont értékváltozási értesítését. Ha az OPC Publisher nem tud elég gyorsan üzeneteket küldeni az IoT Hubnak, ez a várólista puffereli az értesítéseket. A paraméter beállítja a pufferelhető értesítések számát. Ha azt látja, hogy a várólistában lévő elemek száma növekszik a tesztfuttatások során, akkor az üzenetek elvesztésének elkerülése érdekében:
 
-- Csökkentse a IoT Hub küldési időközt
-- IoT Hub üzenet méretének növeléséhez
+- Az IoT Hub küldési időközének csökkentése
+- Az IoT Hub-üzenetek méretének növelése
 
-A `--si` paraméter úgy kényszeríti az OPC-közzétevőt, hogy a megadott időközönként üzeneteket küldjön az IoT Hubnak. Az OPC-közzétevő azonnal üzenetet küld, amint eléri a `--ms` paraméter által megadott méretű üzenetet, vagy ha eléri a `--si` paraméter által megadott időközt. Az üzenet méretének letiltásához használja a `--ms 0`elemet. Ebben az esetben az OPC-közzétevő a lehető legnagyobb méretű IoT Hub 256 kB-os üzenetet használja a Batch-adatmennyiséghez.
+A `--si` paraméter kényszeríti az OPC Publisher-t, hogy a megadott időközönként üzeneteket küldjön az IoT Hubnak. Az OPC Publisher akkor küld üzenetet, amikor `--ms` eléri a paraméter által megadott üzenetméretet, `--si` vagy amint a paraméter által megadott időköz elérésekor eléri. Az üzenetméret beállítás letiltásához használja a használatát. `--ms 0` Ebben az esetben az OPC Publisher a lehető legnagyobb 256 kB-os IoT Hub-üzenetméretet használja az adatok kötegeléséhez.
 
-A `--ms` paraméter lehetővé teszi a Batch-üzenetek küldését a IoT Hubba. Az Ön által használt protokoll határozza meg, hogy a rendszer a hasznos adatok elküldésének tényleges időpontjához képest magas-e az üzenet küldésének IoT Hub. Ha a forgatókönyv lehetővé teszi az IoT Hub által betöltött adatmennyiség késleltetését, az OPC-közzétevőt úgy konfigurálja, hogy az 256 kB-os legnagyobb méretű üzenetet használja.
+A `--ms` paraméter lehetővé teszi az IoT Hubnak küldött üzenetek kötegelését. A használt protokoll határozza meg, hogy az IoT Hubnak küldött üzenet többletterhelése magas-e a hasznos adat küldésének tényleges idejéhez képest. Ha a forgatókönyv lehetővé teszi a késést, amikor az Adatok at IoT Hub, konfigurálja az OPC Publisher a legnagyobb 256 kB-os üzenetméretet használja.
 
-Az OPC-közzétevő éles környezetben való használata előtt tesztelje a teljesítményt és a memóriát a termelési körülmények között. A `--di` paraméterrel megadhatja azt az időközt (másodpercben), ameddig az OPC-közzétevő diagnosztikai adatokat ír.
+Mielőtt éles környezetben használná az OPC Publishert, tesztelje a teljesítményt és a memóriahasználatot éles környezetben. A `--di` paraméter segítségével megadhatja azt az időközt másodpercben, amíg az OPC Publisher diagnosztikai adatokat ír.
 
-### <a name="test-measurements"></a>Tesztelési mérések
+### <a name="test-measurements"></a>Vizsgálati mérések
 
-A következő példában a diagnosztika különböző értékekkel jeleníti meg a `--si` és `--ms` paramétereket, amelyek 500 csomópontot tesznek közzé 1 másodperces OPC közzétételi intervallummal.  A teszt az OPC-közzétevő hibakeresési felépítését használta a Windows 10 rendszerre natívan 120 másodpercig. A IoT Hub protokoll az alapértelmezett MQTT protokoll volt.
+A következő példadiagnosztika `--si` különböző `--ms` értékekkel rendelkező méréseket és 500 csomópontot közzéíró paramétereket jelenít meg 1 másodperces OPC közzétételi időközzel.  A teszt 120 másodpercig natív módon használta az OPC Publisher hibakeresési buildjét a Windows 10 rendszeren. Az IoT Hub protokoll volt az alapértelmezett MQTT protokoll.
 
-#### <a name="default-configuration---si-10---ms-262144"></a>Alapértelmezett konfiguráció (--si 10--MS 262144)
+#### <a name="default-configuration---si-10---ms-262144"></a>Alapértelmezett konfiguráció (--si 10 --ms 262144)
 
 ```log
 ==========================================================================
@@ -579,9 +579,9 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Az alapértelmezett konfiguráció 10 másodpercenként küldi az adatokat IoT Hub, vagy ha a IoT Hub számára elérhető 256 kB. Ez a konfiguráció körülbelül 10 másodperces késleltetést tesz fel, de a nagy méretű üzenetek mérete miatt a rendszer az adatvesztés legalacsonyabb valószínűséggel rendelkezik. A diagnosztika kimenete azt mutatja, hogy nincsenek elveszett OPC csomópont-frissítések: `monitored item notifications enqueue failure: 0`.
+Az alapértelmezett konfiguráció 10 másodpercenként küldi az adatokat az IoT Hubnak, vagy ha 256 kB adat áll rendelkezésre az IoT Hub számára a betöltéshez. Ez a konfiguráció körülbelül 10 másodperces mérsékelt késést ad hozzá, de a nagy üzenetméret miatt a legkisebb az adatvesztés valószínűsége. A diagnosztikai kimenet azt mutatja, hogy nincsenek `monitored item notifications enqueue failure: 0`elveszett OPC-csomópontfrissítések: .
 
-#### <a name="constant-send-interval---si-1---ms-0"></a>Állandó küldési időköz (--si 1--MS 0)
+#### <a name="constant-send-interval---si-1---ms-0"></a>Állandó küldési időköz (--si 1 --ms 0)
 
 ```log
 ==========================================================================
@@ -613,9 +613,9 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Ha az üzenet mérete 0-ra van állítva, akkor az OPC-közzétevő belsőleg batchs-adatkötegeket használ a legnagyobb támogatott IoT Hub üzenet méretével, amely 256 kB. A diagnosztikai kimenet az üzenetek átlagos méretének 115 019 bájtot jeleníti meg. Ebben a konfigurációban az OPC-közzétevő nem veszíti el az OPC-csomópontok összes frissítését, és az alapértelmezett értékhez képest alacsonyabb késéssel rendelkezik.
+Ha az üzenet mérete 0, akkor az OPC Publisher belsőleg kötegeli az adatokat a legnagyobb támogatott IoT Hub-üzenetméret, azaz 256 kB használatával. A diagnosztikai kimenet azt mutatja, hogy az üzenet átlagos mérete 115 019 bájt. Ebben a konfigurációban az OPC Publisher nem veszíti el az OPC-csomópont értékfrissítéseit, és az alapértelmezetthez képest alacsonyabb késést tartalmaz.
 
-### <a name="send-each-opc-node-value-update---si-0---ms-0"></a>Minden OPC csomópont-érték frissítésének elküldése (--si 0--MS 0)
+### <a name="send-each-opc-node-value-update---si-0---ms-0"></a>Minden OPC-csomópontérték frissítésének elküldése (--si 0 --ms 0)
 
 ```log
 ==========================================================================
@@ -647,9 +647,9 @@ current working set in MB: 96
 ==========================================================================
 ```
 
-Ez a konfiguráció minden egyes OPC csomópont-értékre megváltoztat egy üzenetet, hogy IoT Hub. A diagnosztika azt mutatja, hogy az üzenet átlagos mérete 234 bájt, ami kicsi. Ennek a konfigurációnak az az előnye, hogy az OPC-közzétevő nem hoz létre késést. Az elveszett OPC Node Value Updates (`monitored item notifications enqueue failure: 44624`) száma magas, ami lehetővé teszi, hogy ez a konfiguráció a nagy mennyiségű telemetria közzéteendő forgatókönyvek esetében ne legyen megfelelő.
+Ez a konfiguráció minden OPC-csomópont érték módosítása egy üzenetet az IoT Hub. A diagnosztika azt mutatja, hogy az üzenet átlagos mérete 234 bájt, ami kicsi. Ennek a konfigurációnak az az előnye, hogy az OPC Publisher nem ad hozzá késést. Az elveszett OPC-csomópont értékfrissítések`monitored item notifications enqueue failure: 44624`( ) száma magas, amelyek ezt a konfigurációt alkalmatlanná teszik a nagy mennyiségű telemetriai adatokközzétételét eredményező forgatókönyvek esetében.
 
-### <a name="maximum-batching---si-0---ms-262144"></a>Maximális feldolgozás (--si 0--MS 262144)
+### <a name="maximum-batching---si-0---ms-262144"></a>Maximális kötegelés (-si 0 --ms 262144)
 
 ```log
 ==========================================================================
@@ -681,35 +681,35 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Ebben a konfigurációban a lehető legtöbb OPC-csomópont-érték frissül. A maximális IoT Hub üzenet mérete 256 kB, amely itt van konfigurálva. Nincs kért küldési időköz, ami azt jelenti, hogy a betöltéshez IoT Hub adatmennyiség határozza meg a késést. Ez a konfiguráció a legkisebb valószínűséggel elveszíti az OPC-csomópontok értékeit, és alkalmas a nagy számú csomópont közzétételére. Ha ezt a konfigurációt használja, győződjön meg arról, hogy a forgatókönyv nem rendelkezik olyan feltételekkel, amelyek nagy késleltetést mutatnak, ha az 256 kB méretű üzenet nem érhető el.
+Ez a konfiguráció a lehető legtöbb OPC-csomópont-értéket frissíti. Az IoT Hub-üzenetek maximális mérete 256 kB, amely itt van konfigurálva. Nincs kért küldési időköz, ami azt jelenti, hogy az IoT Hub betöltési adatai nak mennyisége határozza meg a késést. Ez a konfiguráció rendelkezik a legkisebb valószínűséggel az OPC-csomópontok értékeinek elvesztésére, és alkalmas nagyszámú csomópont közzétételére. Ha ezt a konfigurációt használja, győződjön meg arról, hogy a forgatókönyv nem rendelkezik olyan feltételekkel, ahol nagy késés, ha az üzenet mérete 256 kB nem éri el.
 
 ## <a name="debug-the-application"></a>Az alkalmazás hibakeresése
 
-Az alkalmazás hibakereséséhez nyissa meg a **opcpublisher. SLN** Solution fájlt a Visual Studióval, és használja a Visual Studio hibakereső eszközeit.
+Az alkalmazás hibakereséséhez nyissa meg az **opcpublisher.sln** megoldásfájlt a Visual Studióval, és használja a Visual Studio hibakereső eszközeit.
 
-Ha el kell érnie az OPC UA-kiszolgálót az OPC-közzétevőben, ellenőrizze, hogy a tűzfal engedélyezi-e a hozzáférést a kiszolgáló által figyelt porthoz. Az alapértelmezett port a: 62222.
+Ha az OPC-közzétevő ben az OPC UA-kiszolgálót kell elérnie, győződjön meg arról, hogy a tűzfal engedélyezi a hozzáférést ahhoz a porthoz, amelyet a kiszolgáló figyel. Az alapértelmezett port: 62222.
 
 ## <a name="control-the-application-remotely"></a>Az alkalmazás távoli vezérlése
 
-A csomópontok közzétételre való konfigurálása IoT Hub közvetlen módszerek használatával végezhető el.
+A csomópontok közzétételre konfigurálása az IoT Hub közvetlen metódusokkal végezhető el.
 
-Az OPC-közzétevő néhány további IoT Hub közvetlen metódus-hívást hajt végre a következő olvasáshoz:
+Az OPC Publisher néhány további IoT Hub-közvetlen metódushívásolvasást valósít meg:
 
 - Általános információk.
-- Az OPC-munkamenetekre,-előfizetésekre és a figyelt elemekre vonatkozó diagnosztikai információk.
-- IoT Hub üzenetekre és eseményekre vonatkozó diagnosztikai információk.
+- Diagnosztikai információk az OPC-munkamenetek, előfizetések és figyelt elemek.
+- Az IoT Hub-üzenetek és -események diagnosztikai információi.
 - Az indítási napló.
 - A napló utolsó 100 sora.
 - Állítsa le az alkalmazást.
 
-A következő GitHub-Tárházak olyan eszközöket tartalmaznak, amelyekkel [konfigurálhatja a csomópontokat](https://github.com/Azure-Samples/iot-edge-opc-publisher-nodeconfiguration) , és [elolvashatja a diagnosztikai adatokat](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics). Mindkét eszköz tárolóként is elérhető a Docker hub-ban.
+A következő GitHub-adattárak olyan eszközöket tartalmaznak, [amelyekkel konfigurálhatja a csomópontokat](https://github.com/Azure-Samples/iot-edge-opc-publisher-nodeconfiguration) a diagnosztikai információk közzétételére és [olvasására.](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics) Mindkét eszköz tárolóként is elérhető a Docker Hubban.
 
-## <a name="use-a-sample-opc-ua-server"></a>Minta OPC UA-kiszolgáló használata
+## <a name="use-a-sample-opc-ua-server"></a>OpC UA-kiszolgáló minta használata
 
-Ha nem rendelkezik valós OPC UA-kiszolgálóval, a kezdéshez használhatja a [minta OPC ua PLC](https://github.com/Azure-Samples/iot-edge-opc-plc) -t. Ez a minta PLC a Docker hub-on is elérhető.
+Ha nem rendelkezik valódi OPC UA-kiszolgálóval, a [kezdéshez használhatja a minta OPC UA PLC-t.](https://github.com/Azure-Samples/iot-edge-opc-plc) Ez a minta PLC a Docker Hubon is elérhető.
 
-Számos címkét valósít meg, amelyek véletlenszerű adatmennyiségeket és címkéket eredményeznek. Kiterjesztheti a mintát, ha további címkéző értékeket kell szimulálnia.
+Számos címkét valósít meg, amelyek véletlenszerű adatokat és anomáliákat. Kiterjesztheti a mintát, ha további címkeértékeket kell szimulálnia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte az OPC-közzétevő futtatását, a javasolt következő lépések az [OPC Twin](overview-opc-twin.md) és az [OPC](overview-opc-vault.md)-tároló megismerése.
+Most, hogy megtanulta az OPC Publisher futtatását, az ajánlott következő lépések az [OPC Twin](overview-opc-twin.md) és [az OPC Vault](overview-opc-vault.md)megismerése.

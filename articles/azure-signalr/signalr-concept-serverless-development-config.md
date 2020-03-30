@@ -1,31 +1,31 @@
 ---
-title: Azure Functions-alkalmazás fejlesztése & konfigurálása – Azure-jelző
-description: A kiszolgáló nélküli valós idejű alkalmazások fejlesztésének és konfigurálásának részletei a Azure Functions és az Azure Signaler szolgáltatás használatával
+title: Az Azure Functions alkalmazás fejlesztése & konfigurálása – Azure SignalR
+description: Részletek a kiszolgáló nélküli valós idejű alkalmazások fejlesztéséről és konfigurálásáról az Azure Functions és az Azure SignalR Szolgáltatás használatával
 author: anthonychu
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77523170"
 ---
-# <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions fejlesztés és konfigurálás az Azure Signaler szolgáltatással
+# <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással
 
-Azure Functions alkalmazások a valós idejű funkciók hozzáadására használhatják az [Azure signaler szolgáltatás kötéseit](../azure-functions/functions-bindings-signalr-service.md) . Az ügyfélalkalmazások számos nyelven elérhető ügyféloldali SDK-kat használnak az Azure Signaler szolgáltatáshoz való csatlakozáshoz és valós idejű üzenetek fogadásához.
+Az Azure Functions-alkalmazások kihasználhatják az [Azure SignalR-szolgáltatás kötéseit,](../azure-functions/functions-bindings-signalr-service.md) hogy valós idejű képességeket adjanak hozzá. Az ügyfélalkalmazások több nyelven elérhető ügyfélSDK-k használatával csatlakoznak az Azure SignalR Szolgáltatáshoz, és valós idejű üzeneteket kapnak.
 
-Ez a cikk a Signaler szolgáltatással integrált Azure Function-alkalmazások fejlesztésére és konfigurálására vonatkozó fogalmakat ismerteti.
+Ez a cikk ismerteti a SignalR-szolgáltatással integrált Azure Függvényalkalmazás fejlesztésének és konfigurálásának koncepcióit.
 
-## <a name="signalr-service-configuration"></a>A signaler szolgáltatás konfigurációja
+## <a name="signalr-service-configuration"></a>A SignalR szolgáltatás konfigurációja
 
-Az Azure Signaler szolgáltatás különböző módokon konfigurálható. Azure Functions használata esetén a szolgáltatást *kiszolgáló* nélküli módban kell konfigurálni.
+Az Azure SignalR szolgáltatás különböző módokban konfigurálható. Ha az Azure Functions használatával használja, a szolgáltatást kiszolgáló nélküli módban kell *konfigurálni.*
 
-A Azure Portal keresse meg a szignáló szolgáltatás erőforrásának *Beállítások* lapját. Állítsa a *szolgáltatási módot* *kiszolgáló*nélküli értékre.
+Az Azure Portalon keresse meg a *SignalR* Service-erőforrás Beállítások lapját. Állítsa a *Szolgáltatás módot* *Kiszolgáló nélküli*re.
 
-![Jelző szolgáltatás üzemmódja](media/signalr-concept-azure-functions/signalr-service-mode.png)
+![Signalr szolgáltatás mód](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
 ## <a name="azure-functions-development"></a>Az Azure Functions fejlesztése
 
@@ -34,40 +34,40 @@ Az Azure Functions és az Azure SignalR szolgáltatással létrehozott kiszolgá
 * A „negotiate” függvényre, amelyet az ügyfél egy érvényes SignalR-szolgáltatási hozzáférési jogkivonat és a szolgáltatásvégpont URL-címének lekéréséhez hív meg
 * Egy vagy több olyan függvényre, amelyek üzeneteket küldenek, vagy csoporttagságokat kezelnek
 
-### <a name="negotiate-function"></a>egyeztetési függvény
+### <a name="negotiate-function"></a>egyeztetési funkció
 
-Az ügyfélalkalmazás érvényes hozzáférési jogkivonatot igényel az Azure Signaler szolgáltatáshoz való kapcsolódáshoz. A hozzáférési tokenek névtelenek vagy egy adott felhasználói AZONOSÍTÓra hitelesíthetők. A kiszolgáló nélküli szignáló szolgáltatás alkalmazásai egy "egyeztetés" nevű HTTP-végpontot igényelnek a jogkivonat és egyéb kapcsolódási információk beszerzéséhez, például a Signaler szolgáltatás végpontjának URL-címét.
+Egy ügyfélalkalmazás hoz egy érvényes hozzáférési jogkivonatot az Azure SignalR szolgáltatáshoz való csatlakozáshoz. A hozzáférési jogkivonat lehet névtelen vagy hitelesíthető egy adott felhasználói azonosítóhoz. A kiszolgáló nélküli SignalR-szolgáltatás alkalmazások nak szüksége van egy "negotiate" nevű HTTP-végpontra egy token és egyéb kapcsolati információk, például a SignalR szolgáltatás végponturl-címének beszerzéséhez.
 
-A kapcsolati információ objektum létrehozásához használjon HTTP-triggert használó Azure-függvényt és a *SignalRConnectionInfo* bemeneti kötését. A függvénynek olyan HTTP-útvonalon kell lennie, amely `/negotiate`ban ér véget.
+Http-n aktivált Azure-függvény és a *SignalRConnectionInfo* bemeneti kötés a kapcsolatinformációs objektum létrehozásához. A függvénynek http-útvonallal `/negotiate`kell rendelkeznie, amely a végződése a.
 
-Az egyeztetési függvény létrehozásával kapcsolatos további információkért tekintse meg a [ *SignalRConnectionInfo* bemeneti kötési referenciáját](../azure-functions/functions-bindings-signalr-service-input.md).
+Az egyeztetési függvény létrehozásáról a [ *SignalRConnectionInfo* bemeneti kötési hivatkozása című témakörben talál](../azure-functions/functions-bindings-signalr-service-input.md)további információt.
 
-A hitelesített tokenek létrehozásáról a [app Service hitelesítés használata](#using-app-service-authentication)című témakörben olvashat bővebben.
+A hitelesített jogkivonat létrehozásáról az [App Service-hitelesítés használata](#using-app-service-authentication)című dokumentumban olvashat.
 
 ### <a name="sending-messages-and-managing-group-membership"></a>Üzenetek küldése és csoporttagság kezelése
 
-A *signaler* kimeneti kötés használatával üzeneteket küldhet az Azure Signaler szolgáltatáshoz csatlakozó ügyfeleknek. Az üzeneteket az összes ügyfél számára továbbíthatja, vagy egy adott felhasználói AZONOSÍTÓval hitelesített vagy egy adott csoportba felvett ügyfelek egy részhalmazára is elküldheti.
+A *SignalR* kimeneti kötés használatával üzeneteket küldhet az Azure SignalR Szolgáltatáshoz kapcsolódó ügyfeleknek. Az üzeneteket az összes ügyfélnek közvetítheti, vagy elküldheti az ügyfelek egy olyan részhalmazának, amely egy adott felhasználói azonosítóval van hitelesítve, vagy egy adott csoporthoz lett hozzáadva.
 
-A felhasználók hozzáadhatók egy vagy több csoporthoz. A *jelző* kimeneti kötés használatával felhasználókat adhat hozzá vagy távolíthat el a csoportokból.
+A felhasználók egy vagy több csoporthoz is hozzáadhatók. A *SignalR* kimenetkötéssel felhasználókat adhat hozzá vagy távolíthat el csoportokba.
 
-További információ: a [ *signaler* output kötési referenciája](../azure-functions/functions-bindings-signalr-service-output.md).
+További információt a [ *SignalR* kimeneti kötési hivatkozásban](../azure-functions/functions-bindings-signalr-service-output.md)talál.
 
-### <a name="signalr-hubs"></a>Szignáló hubok
+### <a name="signalr-hubs"></a>SignalR hubok
 
-A jelző a "hubok" fogalmát mutatja. Az egyes ügyfélkapcsolatok és a Azure Functionsból küldött összes üzenet hatóköre egy adott hubhoz tartozik. A hubokat a kapcsolatok és az üzenetek logikai névterekre való elkülönítésére használhatja.
+A SignalR a "hubok" fogalma. Minden ügyfélkapcsolat és az Azure Functions által küldött üzenetek hatóköre egy adott hubra kerül. A hubok segítségével a kapcsolatokat és az üzeneteket logikai névterekbe is elválaszthatja.
 
-## <a name="client-development"></a>Ügyfél-fejlesztés
+## <a name="client-development"></a>Ügyfélfejlesztés
 
-A signaler ügyfélalkalmazások a Signaler Client SDK-t több nyelven is kihasználhatják, így egyszerűen csatlakozhatnak és fogadhatnak üzeneteket az Azure Signaler szolgáltatástól.
+A SignalR ügyfélalkalmazások a SignalR ügyfél SDK-t számos nyelv egyikén használhatják az Azure SignalR Szolgáltatáshoz való egyszerű csatlakozáshoz és üzenetek fogadásához.
 
 ### <a name="configuring-a-client-connection"></a>Ügyfélkapcsolat konfigurálása
 
-A Signaler szolgáltatáshoz való kapcsolódáshoz az ügyfélnek sikeres kapcsolódási egyeztetést kell végrehajtania, amely a következő lépésekből áll:
+A SignalR szolgáltatáshoz való csatlakozáshoz az ügyfélnek végre kell végeznie a sikeres kapcsolategyeztetést, amely a következő lépésekből áll:
 
-1. A fentiekben ismertetett *egyeztetési* http-végpontra vonatkozó kérelem elvégzése érvényes kapcsolódási adatok beszerzéséhez
-1. Kapcsolódás a Signaler szolgáltatáshoz a szolgáltatási végpont URL-címével és az *egyeztetési* végponttól kapott hozzáférési jogkivonat használatával
+1. Az érvényes kapcsolati adatok beszerzése *érdekében* kérjen kérelmet a fent tárgyalt http-végpontra
+1. Csatlakozás a SignalR szolgáltatáshoz a szolgáltatás végpontjának URL-címével és az *egyeztetési* végpontról kapott hozzáférési jogkivonattal
 
-A signaler ügyféloldali SDK-k már tartalmazzák az egyeztetési kézfogás végrehajtásához szükséges logikát. Adja át az egyeztetési végpont URL-címét, mínusz a `negotiate` szegmenst az SDK `HubConnectionBuilder`. Íme egy példa a JavaScriptben:
+A SignalR ügyfél SDK-k már tartalmazzák az egyeztetési kézfogás végrehajtásához szükséges logikát. Adja át az egyeztetési végpont `negotiate` URL-címét, a szegmens `HubConnectionBuilder`nélkül, az SDK-nak. Íme egy példa a JavaScript:
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -75,37 +75,37 @@ const connection = new signalR.HubConnectionBuilder()
   .build()
 ```
 
-Az SDK az egyezmény szerint automatikusan hozzáfűzi `/negotiate` az URL-címhez, és az egyeztetés megkezdéséhez használja azt.
+Az SDK konvenció szerint `/negotiate` automatikusan hozzáfűzi az URL-címet, és az egyeztetés megkezdéséhez használja.
 
 > [!NOTE]
-> Ha a JavaScript/írógéppel SDK-t használja egy böngészőben, engedélyeznie kell az [CORS-alapú erőforrás-megosztást](#enabling-cors) a függvényalkalmazás.
+> Ha a JavaScript/TypeScript SDK-t használja egy böngészőben, engedélyeznie kell a [forrásközi erőforrások megosztását (CORS)](#enabling-cors) a Függvényalkalmazásban.
 
-A Signaler Client SDK használatával kapcsolatos további információkért tekintse meg a nyelv dokumentációját:
+A SignalR client SDK használatával kapcsolatos további információkért tekintse meg az Ön nyelvének dokumentációját:
 
 * [.NET Standard](https://docs.microsoft.com/aspnet/core/signalr/dotnet-client)
-* [JavaScript](https://docs.microsoft.com/aspnet/core/signalr/javascript-client)
+* [Javascript](https://docs.microsoft.com/aspnet/core/signalr/javascript-client)
 * [Java](https://docs.microsoft.com/aspnet/core/signalr/java-client)
 
 ### <a name="sending-messages-from-a-client-to-the-service"></a>Üzenetek küldése az ügyféltől a szolgáltatásnak
 
-Bár a Signaler SDK lehetővé teszi az ügyfélalkalmazások számára a háttérbeli logika meghívását a Signaler hub-ban, ez a funkció még nem támogatott, ha a Signaler szolgáltatást a Azure Functions használatával használja. Használjon HTTP-kérelmeket a Azure Functions meghívásához.
+Bár a SignalR SDK lehetővé teszi az ügyfélalkalmazások számára, hogy háttérlogikát hívjanak meg egy SignalR hubban, ez a funkció még nem támogatott, ha az Azure Functions szolgáltatás használatával használja. Http-kérelmek használatával hívja meg az Azure Functions.
 
-## <a name="azure-functions-configuration"></a>Azure Functions konfiguráció
+## <a name="azure-functions-configuration"></a>Az Azure Functions konfigurációja
 
-Az Azure Signaler szolgáltatással integrálható Azure functions alkalmazások ugyanúgy telepíthetők, mint bármely jellemző Azure Function-alkalmazás, például a [folyamatos üzembe helyezés](../azure-functions/functions-continuous-deployment.md), a [zip-telepítés](../azure-functions/deployment-zip-push.md)és [a csomagból való futtatás](../azure-functions/run-functions-from-deployment-package.md).
+Az Azure SignalR Szolgáltatással integrálható Azure Function-alkalmazások ugyanúgy telepíthetők, mint bármely tipikus Azure Function alkalmazás, olyan technikák alkalmazásával, mint a [folyamatos üzembe helyezés,](../azure-functions/functions-continuous-deployment.md) [a zip-telepítés](../azure-functions/deployment-zip-push.md)és [a csomagból való futtatás.](../azure-functions/run-functions-from-deployment-package.md)
 
-A Signaler szolgáltatás kötéseit használó alkalmazások esetében azonban néhány speciális szempontot figyelembe kell venni. Ha az ügyfél böngészőben fut, engedélyezni kell a CORS. Ha az alkalmazás hitelesítést igényel, akkor App Service hitelesítéssel integrálhatja az egyeztetési végpontot.
+A SignalR szolgáltatás kötéseit használó alkalmazásokhoz azonban néhány speciális szempont is felmerül. Ha az ügyfél böngészőben fut, engedélyezni kell a CORS-t. És ha az alkalmazás hitelesítést igényel, integrálhatja a egyeztetési végpont app szolgáltatás hitelesítése.
 
-### <a name="enabling-cors"></a>CORS engedélyezése
+### <a name="enabling-cors"></a>Cors engedélyezése
 
-A JavaScript/írógéppel ügyfél HTTP-kérelmeket tesz elérhetővé az egyeztetési függvénynek a kapcsolódási egyeztetés elindításához. Ha az ügyfélalkalmazás az Azure Function alkalmazástól eltérő tartományban található, az eltérő eredetű erőforrás-megosztást (CORS) engedélyezni kell a Function alkalmazásban, vagy a böngésző letiltja a kérelmeket.
+A JavaScript/TypeScript ügyfél HTTP-kéréseket küld az egyeztetési függvénynek a kapcsolategyeztetés kezdeményezéséhez. Ha az ügyfélalkalmazás az Azure Function alkalmazástól eltérő tartományban található, a függvényközi erőforrás-megosztást (CORS) engedélyezni kell a Függvényalkalmazásban, különben a böngésző blokkolja a kérelmeket.
 
-#### <a name="localhost"></a>localhost
+#### <a name="localhost"></a>Localhost
 
-Ha a Function alkalmazást a helyi számítógépen futtatja, a CORS engedélyezéséhez hozzáadhat egy `Host` szakaszt a *Local. Settings. JSON* fájlhoz. A `Host` szakaszban vegyen fel két tulajdonságot:
+Ha a Helyi számítógépen futtatja a Function `Host` alkalmazást, hozzáadhat egy szakaszt a *local.settings.json* hoz a CORS engedélyezéséhez. A `Host` szakaszban adjon hozzá két tulajdonságot:
 
-* `CORS` – Itt adhatja meg az ügyfélalkalmazás forrásaként szolgáló alap URL-címet
-* `CORSCredentials` – beállíthatja, hogy `true` engedélyezze a "withCredentials" kérelmeket
+* `CORS`- adja meg az ügyfélalkalmazás forrását tartalmazó alap URL-t
+* `CORSCredentials`- állítsa `true` be, hogy engedélyezze a "withCredentials" kérelmeket
 
 Példa:
 
@@ -122,24 +122,24 @@ Példa:
 }
 ```
 
-#### <a name="cloud---azure-functions-cors"></a>Felhőbeli Azure Functions CORS
+#### <a name="cloud---azure-functions-cors"></a>Felhő - Azure Functions CORS
 
-Ha engedélyezni szeretné a CORS az Azure Function alkalmazásban, lépjen a CORS konfigurációs képernyőjére a Function alkalmazás *platform szolgáltatások* lapján a Azure Portal.
+Cors engedélyezéséhez egy Azure Function-alkalmazásban, lépjen a CORS konfigurációs képernyő alatt a *Platform funkciók* fülön a Függvény alkalmazás az Azure Portalon.
 
 > [!NOTE]
-> A CORS-konfiguráció még nem érhető el Azure Functions Linux-használati tervben. Az [Azure API Management](#cloud---azure-api-management) használatával engedélyezze a CORS.
+> A CORS-konfiguráció még nem érhető el az Azure Functions Linux-felhasználási csomagban. Használja az [Azure API Management](#cloud---azure-api-management) használatával a CORS engedélyezéséhez.
 
-A CORS hozzáférés-vezérlést engedélyező hitelesítő adatokat engedélyezni kell a Signaler-ügyfélnek az egyeztetési függvény meghívásához. Jelölje be a jelölőnégyzetet az engedélyezéshez.
+Az Access-Control-Allow-Credentials funkcióval rendelkező CORS-t engedélyezni kell ahhoz, hogy a SignalR ügyfél meghívja az egyeztetési funkciót. Az engedélyezéshez jelölje be a jelölőnégyzetet.
 
-Az *engedélyezett eredetek* szakaszban adjon hozzá egy bejegyzést a webalkalmazás forrás alap URL-címével.
+Az *Engedélyezett eredetek* szakaszban adjon hozzá egy bejegyzést a webalkalmazás eredeti alap URL-címével.
 
 ![CORS konfigurálása](media/signalr-concept-serverless-development-config/cors-settings.png)
 
-#### <a name="cloud---azure-api-management"></a>Felhő – Azure API Management
+#### <a name="cloud---azure-api-management"></a>Felhő – Azure API-kezelés
 
-Az Azure API Management olyan API-átjárót biztosít, amely funkciókkal bővíti a meglévő háttér-szolgáltatásokat. Használhatja CORS hozzáadásához a Function alkalmazáshoz. A szolgáltatás díjköteles díjszabással és havi ingyenes támogatással rendelkezik.
+Az Azure API Management olyan API-átjárót biztosít, amely képességeket ad a meglévő háttérszolgáltatásokhoz. Cors-t adhat hozzá a függvényalkalmazáshoz. Ez felajánl egy fogyasztás szint -val pay-per-tett árkialakítás és egy havonkénti szabad támogatás.
 
-Az [Azure functions-alkalmazások importálásával](../api-management/import-function-app-as-api.md)kapcsolatos információkért tekintse meg az API Management dokumentációját. Az importálás után hozzáadhat egy bejövő szabályzatot, amely lehetővé teszi a CORS hozzáférés-vezérlés – engedélyezés – hitelesítő adatok támogatását.
+Az [Azure Function-alkalmazások importálásával](../api-management/import-function-app-as-api.md)kapcsolatos tudnivalókat az API Management dokumentációjában találja. Importálás után hozzáadhat egy bejövő házirendet, amely engedélyezi a CORS-t az Access-Control-Allow-Credentials támogatással.
 
 ```xml
 <cors allow-credentials="true">
@@ -159,17 +159,17 @@ Az [Azure functions-alkalmazások importálásával](../api-management/import-fu
 </cors>
 ```
 
-Konfigurálja a Signaler-ügyfeleket a API Management URL-cím használatára.
+Állítsa be a SignalR-ügyfeleket az API Management URL használatára.
 
-### <a name="using-app-service-authentication"></a>App Service hitelesítés használata
+### <a name="using-app-service-authentication"></a>Az App Service-hitelesítés használata
 
-A Azure Functions beépített hitelesítéssel támogatja a népszerű szolgáltatók, például a Facebook, a Twitter, a Microsoft-fiók, a Google és a Azure Active Directory támogatását. Ez a funkció integrálható a *SignalRConnectionInfo* -kötéssel, hogy kapcsolatot hozzon létre az Azure-beli jelző szolgáltatással, amelyek hitelesítése felhasználói azonosítóra történt. Az alkalmazás képes üzeneteket küldeni az adott felhasználói AZONOSÍTÓra irányuló *szignáló* kimeneti kötés használatával.
+Az Azure Functions beépített hitelesítéssel rendelkezik, amely olyan népszerű szolgáltatókat támogat, mint a Facebook, a Twitter, a Microsoft-fiók, a Google és az Azure Active Directory. Ez a funkció integrálható a *SignalRConnectionInfo* kötéssel, hogy olyan kapcsolatokat hozzon létre az Azure SignalR szolgáltatáshoz, amelyek egy felhasználói azonosítóhoz lettek hitelesítve. Az alkalmazás üzeneteket küldhet a *SignalR* kimeneti kötés, amely az adott felhasználói azonosítót célozza.
 
-A Azure Portal a Function app *platform-funkciók* lapján nyissa meg a *hitelesítési/engedélyezési* beállítások ablakot. A hitelesítés konfigurálásához kövesse az [app Service-hitelesítés](../app-service/overview-authentication-authorization.md) dokumentációját.
+Az Azure Portalon a Függvényalkalmazás *platformfunkciók* lapján nyissa meg a *Hitelesítési/engedélyezési* beállítások ablakot. Kövesse az [App Service-hitelesítés dokumentációját](../app-service/overview-authentication-authorization.md) a hitelesítés konfigurálásához egy ön által választott identitásszolgáltató használatával.
 
-A konfigurálást követően a hitelesített HTTP-kérelmek közé tartoznak a hitelesített identitás felhasználónevét és felhasználói AZONOSÍTÓját tartalmazó `x-ms-client-principal-name` és `x-ms-client-principal-id` fejlécek is.
+A konfigurálás után a `x-ms-client-principal-name` hitelesített `x-ms-client-principal-id` HTTP-kérelmek tartalmazzák a hitelesített identitás felhasználónevét és felhasználói azonosítóját tartalmazó fejléceket.
 
-A *SignalRConnectionInfo* kötési konfigurációjában ezeket a fejléceket használhatja a hitelesített kapcsolatok létrehozásához. Íme egy példa C# az egyeztetési függvényre, amely a `x-ms-client-principal-id` fejlécet használja.
+Ezeket a fejléceket a *SignalRConnectionInfo* kötési konfigurációban használhatja hitelesített kapcsolatok létrehozásához. Íme egy példa C# egyeztetési `x-ms-client-principal-id` függvény, amely a fejlécet használja.
 
 ```csharp
 [FunctionName("negotiate")]
@@ -184,7 +184,7 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-Ezután üzeneteket küldhet az adott felhasználónak a jelző üzenet `UserId` tulajdonságának beállításával.
+Ezután üzenetet küldhet az adott `UserId` felhasználónak egy SignalR üzenet tulajdonságának beállításával.
 
 ```csharp
 [FunctionName("SendMessage")]
@@ -203,8 +203,8 @@ public static Task SendMessage(
 }
 ```
 
-Más nyelvekkel kapcsolatos információkért tekintse meg az [Azure signaler szolgáltatás kötéseit](../azure-functions/functions-bindings-signalr-service.md) Azure functions-referenciához.
+A más nyelvekről az Azure Functions referencia [az Azure SignalR Service kötései](../azure-functions/functions-bindings-signalr-service.md) című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan fejlesztheti és konfigurálhatja a kiszolgáló nélküli Signal Service-alkalmazásokat Azure Functions használatával. Hozzon létre egy alkalmazást saját maga a [signaler szolgáltatás áttekintés lapján](index.yml)található gyors indítás vagy oktatóanyag használatával.
+Ebben a cikkben megtanulta, hogyan fejleszthet és konfigurálhat kiszolgáló nélküli SignalR-szolgáltatásalkalmazásokat az Azure Functions használatával. Próbáljon meg saját maga létrehozni egy alkalmazást a [SignalR-szolgáltatás áttekintése oldalon](index.yml)található gyorsindítások vagy oktatóanyagok egyikével.

@@ -3,7 +3,7 @@ title: 'Rövid útmutató: Naplózási jelentés letöltése az Azure portál ha
 description: Ismerje meg, hogyan tölthet le naplózási jelentést az Azure portál használatával
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4de121ea-f4aa-4c8a-aae4-700c2c5e97a2
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f3e5dd1c42537ce6ff419d7d81d69d824242ec4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: a6cbea49fe39c92c8a2fc50e501cb4ef5cff74b1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68989680"
 ---
-# <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Gyors útmutató: Naplózási jelentés letöltése a Azure Portal használatával
+# <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Rövid útmutató: Naplózási jelentés letöltése Azure portál használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan tölthető le az elmúlt 24 órában a bérlőhöz tartozó naplófájlok CSV-fájlja. Legfeljebb 250 000 rekordot tölthet le a Azure Portalból. A rekordok a legutóbbiek szerint rendezve jelennek meg, így alapértelmezés szerint a legfrissebb 250 000 rekordokat kapja meg. 
+Ebben a rövid útmutatóban megtudhatja, hogyan töltheti le a naplózási naplók CSV-fájlját a bérlő számára az elmúlt 24 órában. Legfeljebb 250 000 rekordot tölthet le az Azure Portalról. A rekordok a legutóbbiak szerint vannak rendezve, így alapértelmezés szerint a legutóbbi 250 000 rekord lesz. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következők szükségesek:
 
 * Egy Azure Active Directory-bérlő. 
-* Az a felhasználó, aki a **biztonsági rendszergazda**, a **biztonsági olvasó**vagy a **globális rendszergazdai** szerepkör tagja a Bérlőnek. Ezen felül a bérlőnél minden felhasználó elérheti a magára vonatkozó auditnaplókat.
+* A bérlő **biztonsági rendszergazdája**, **biztonsági olvasója**vagy **globális rendszergazdai** szerepkörében lévő felhasználó. Ezen felül a bérlőnél minden felhasználó elérheti a magára vonatkozó auditnaplókat.
 
-## <a name="quickstart-download-an-audit-report"></a>Gyors útmutató: Naplózási jelentés letöltése
+## <a name="quickstart-download-an-audit-report"></a>Első lépések: Naplózási jelentés letöltése
 
-1. Lépjen az [Azure Portalra](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt.](https://portal.azure.com)
 2. Válassza ki **Azure Active Directoryt** a bal oldali navigációs ablaktáblában, és a **címtár váltása** gombra kattintva válassza ki az aktív címtárat.
 3. Az irányítópulton az **Azure Active Directory** kiválasztása után válassza az **Auditnaplót**. 
 4. Válassza az **elmúlt 24 órát** a **Dátumtartomány** szűrő legördülő listájából, majd az **Alkalmaz** választása után megtekintheti az utolsó 24 óra auditnaplóját. 
-5. Válassza a **Letöltés** gombot, válassza a **CSV** formátumot Fájlformátumként, és adjon meg egy fájlnevet a szűrt rekordokat tartalmazó CSV-fájl letöltéséhez. 
+5. Válassza a **Letöltés** gombot, válassza a **CSV** fájlformátumot, és adjon meg egy fájlnevet a szűrt rekordokat tartalmazó CSV-fájl letöltéséhez. 
 
 ![Jelentéskészítés](./media/quickstart-download-audit-report/download-audit-logs.png)
 

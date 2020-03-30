@@ -5,63 +5,63 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: rogarana
 ms.openlocfilehash: aeb15fbb8da44a203789e06a359cb664998602ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77123156"
 ---
-Az Azure File Sync-ügynök rendszeres időközönként frissül új funkciók hozzáadásával és a problémák megoldásával. Javasoljuk, hogy konfigurálja Microsoft Update a Azure File Sync-ügynök frissítéseinek elérhetővé tételéhez.
+Az Azure File Sync ügynök rendszeresen frissül, hogy új funkciókat, és a problémák megoldásához. Azt javasoljuk, hogy konfigurálja a Microsoft Update-et az Azure File Sync ügynök frissítéseinek beszerzésére, amint azok elérhetők.
 
-#### <a name="major-vs-minor-agent-versions"></a>Fő vagy másodlagos ügynök verziói
-* A fő ügynök verziói gyakran tartalmaznak új funkciókat, és a verziószám első részeként növekvő számmal rendelkeznek. Például: \*2.\*.\*\*
-* A másodlagos ügynök verzióit "javítások" is nevezik, és a főverziónál gyakrabban jelennek meg. Gyakran tartalmaznak hibajavításokat és kisebb javításokat, de nincsenek új funkciók. Például: \*\*. 3.\*\*
+#### <a name="major-vs-minor-agent-versions"></a>Fő- és alügynök-verziók
+* A főügynök-verziók gyakran tartalmaznak új funkciókat, és a verziószám első részeként egyre több funkcióval rendelkeznek. Például: \*2.\*.\*\*
+* Az alügynökök verzióit "javításoknak" is nevezik, és gyakrabban adják ki őket, mint a főverziók. Gyakran tartalmaznak hibajavításokat és kisebb fejlesztéseket, de nincsenek új funkciók. Például: \* \*.3.\*\*
 
 #### <a name="upgrade-paths"></a>Frissítési útvonalak
-A Azure File Sync ügynök frissítéseinek telepítése négy jóváhagyott és tesztelt módon történik. 
-1. **Előnyben részesített Microsoft Update konfigurálása az ügynök frissítéseinek automatikus letöltésére és telepítésére.**  
-    Mindig javasoljuk, hogy minden Azure File Sync frissítéssel ellenőrizze, hogy van-e hozzáférése a Server Agent legújabb frissítéseihez. Microsoft Update a folyamat zökkenőmentesen, automatikusan letölti és telepíti a frissítéseket.
-2. **Az ügynök frissítéseinek letöltéséhez és telepítéséhez használja a AfsUpdater. exe fájlt.**  
-    A AfsUpdater. exe az ügynök telepítési könyvtárában található. Az ügynök frissítéseinek letöltéséhez és telepítéséhez kattintson duplán a végrehajtható fájlra. 
-3. **Meglévő Azure File Sync ügynök javítása egy Microsoft Update-javítócsomag vagy egy. msp végrehajtható fájl használatával. A legújabb Azure File Sync frissítési csomag letölthető a [Microsoft Update katalógusból](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync).**  
-    Az. msp végrehajtható fájl futtatása a Azure File Sync telepítését az előző frissítési útvonalon Microsoft Update által automatikusan használt módszerrel fogja frissíteni. A Microsoft Update-javítások alkalmazása a Azure File Sync telepítés helyben történő frissítését végzi.
-4. **Töltse le a legújabb Azure File Sync Agent telepítőjét a [Microsoft letöltőközpontból](https://go.microsoft.com/fwlink/?linkid=858257).**  
-    Meglévő Azure File Sync ügynök telepítésének frissítéséhez távolítsa el a régebbi verziót, majd telepítse a legújabb verziót a letöltött telepítőből. A kiszolgáló regisztrációját, szinkronizálási csoportjait és egyéb beállításait a Azure File Sync-telepítő tartja karban.
+Az Azure File Sync ügynök frissítéseinek telepítésének négy jóváhagyott és tesztelt módja van. 
+1. **(Preferált) Konfigurálja a Microsoft Update szolgáltatást az ügynökfrissítések automatikus letöltésére és telepítésére.**  
+    Mindig javasoljuk, hogy minden Azure File Sync frissítés annak érdekében, hogy hozzáférjenek a kiszolgálóügynök legújabb javításaihoz. A Microsoft Update a frissítések automatikus letöltésével és telepítésével zökkenőmentessé teszi ezt a folyamatot.
+2. **Az AfsUpdater.exe fájl segítségével töltse le és telepítse az ügyintézők frissítéseit.**  
+    Az AfsUpdater.exe fájl az ügynök telepítési könyvtárában található. Kattintson duplán a végrehajtható fájlra az ügynökfrissítések letöltéséhez és telepítéséhez. 
+3. **Javítson egy meglévő Azure File Sync-ügynököt egy Microsoft Update javítófájl vagy egy .msp végrehajtható fájl használatával. A legújabb Azure File Sync frissítési csomag letölthető a [Microsoft Update katalógusból.](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync)**  
+    A .msp végrehajtható fájl futtatása az Azure File Sync telepítését ugyanazzal a módszerrel frissíti, amelyet a Microsoft Update az előző frissítési útvonalon automatikusan használ. A Microsoft Update javítás telepítése az Azure File Sync telepítésének helybeni frissítését hajtja végre.
+4. **Töltse le a legújabb Azure File Sync ügynök telepítőt a [Microsoft letöltőközpontból.](https://go.microsoft.com/fwlink/?linkid=858257)**  
+    Meglévő Azure File Sync ügynök telepítésének frissítéséhez távolítsa el a régebbi verziót, majd telepítse a legújabb verziót a letöltött telepítőből. A kiszolgáló regisztrációját, szinkronizálási csoportjait és minden egyéb beállítást az Azure File Sync telepítője karbantart.
 
-#### <a name="automatic-agent-lifecycle-management"></a>Automatikus ügynök-életciklus kezelése
-Az ügynök 6-os verziójában a file Sync csapata bevezette az ügynök automatikus frissítési funkcióját. Két mód közül választhat, és megadhat egy karbantartási időszakot, amelyben a frissítés a kiszolgálón próbálkozik. Ez a szolgáltatás úgy lett kialakítva, hogy segítse az ügynök életciklus-felügyeletét azáltal, hogy a Guardrail megakadályozza az ügynök lejáratát, vagy egy nem problémamentes, maradjon a jelenlegi beállítás.
-1. Az **alapértelmezett beállítás** azt kísérli meg, hogy megakadályozza az ügynök lejáratát. Az ügynök az elküldött lejárati dátumtól számított 21 napon belül az ügynök megkísérli a saját frissítését. A szolgáltatás a lejárat előtt, illetve a kiválasztott karbantartási időszakon belül egy héttel a frissítés előtt elindít egy, a lejáratot követő 21 napon belüli frissítést. **Ez a beállítás nem teszi feleslegessé a rendszeres Microsoft Update javítások meghozatalának szükségességét.**
-1. Megadhatja azt is, hogy az ügynök automatikusan frissítse magát, amint egy új ügynök verziója elérhetővé válik (jelenleg nem alkalmazható fürtözött kiszolgálókra). Ez a frissítés a kiválasztott karbantartási időszak alatt jelenik meg, és lehetővé teszi a kiszolgáló számára, hogy az általánosan elérhetővé válás után kihasználhassa az új szolgáltatásokat és fejlesztési funkciókat. Ez az ajánlott, gond nélküli beállítás, amely a fő ügynök-verziókat, valamint a kiszolgáló rendszeres frissítési javításait biztosítja. Minden ügynök megjelent a GA minőségben. Ha ezt a lehetőséget választja, a Microsoft az ügynök legújabb verzióját fogja elrepülni Önnek. A fürtözött kiszolgálók ki vannak zárva. A Berepülés befejezése után az ügynök elérhetővé válik a [Microsoft letöltőközpontban](https://go.microsoft.com/fwlink/?linkid=858257) aka.MS/AFS/Agent is.
+#### <a name="automatic-agent-lifecycle-management"></a>Automatikus ügynökéletciklus-kezelés
+Az ügynök 6-os verziójával a fájlszinkronizálási csapat bevezetett egy ügynök automatikus frissítési funkcióját. Két mód közül választhat, és megadhat egy karbantartási időszakot, amelyben a frissítés megkísérelhető a kiszolgálón. Ez a funkció úgy van kialakítva, hogy segítsen az ügynök életciklusának kezelésében azáltal, hogy egy védőkorlátot biztosít, amely megakadályozza az ügynök lejáratát, vagy lehetővé teszi a nem-gondot, maradjon aktuális beállítást.
+1. Az **alapértelmezett beállítás** megpróbálja megakadályozni az ügynök lejáratát. Az ügynök közzétett lejárati dátumát követő 21 napon belül az ügynök megkísérli az önfrissítést. A lejárat előtt 21 nappal és a kiválasztott karbantartási időszakban hetente egyszer megkezdi a frissítési kísérletet. **Ez a beállítás nem szünteti meg a Microsoft Update rendszeres javításainak szükségességét.**
+1. Tetszés szerint kiválaszthatja, hogy az ügynök automatikusan frissíti magát, amint egy új ügynökverzió elérhetővé válik (jelenleg nem alkalmazható a fürtözött kiszolgálókra). Ez a frissítés a kiválasztott karbantartási időszakban történik, és lehetővé teszi, hogy a kiszolgáló kihasználhassa az új funkciókat és fejlesztéseket, amint azok általánosan elérhetővé válnak. Ez az ajánlott, gondtalan beállítás, amely biztosítja a főügynök-verziókat, valamint a rendszeres frissítési javításokat a kiszolgálóra. Minden megjelent ügynök GA minőségű. Ha ezt a lehetőséget választja, a Microsoft a legújabb ügynökverziót fogja eljáratni. A fürtözött kiszolgálók nem tartoznak ide. A repülés befejezése után az ügynök a [Microsoft letöltőközpontban](https://go.microsoft.com/fwlink/?linkid=858257) is elérhetővé válik aka.ms/AFS/agent.
 
  ##### <a name="changing-the-auto-upgrade-setting"></a>Az automatikus frissítési beállítás módosítása
 
-Az alábbi utasítások azt írják le, hogyan módosíthatja a beállításokat a telepítő befejezése után, ha módosítania kell.
+Az alábbi utasítások bemutatják, hogyan módosíthatja a beállításokat a telepítő befejezése után, ha módosításokat kell végrehajtania.
 
-Nyisson meg egy PowerShell-konzolt, és keresse meg azt a könyvtárat, ahová a Szinkronizáló ügynököt telepítette, majd importálja a kiszolgálói parancsmagokat. Alapértelmezés szerint ez a következőképpen néz ki:
+Nyisson meg egy PowerShell-konzolt, és keresse meg azt a könyvtárat, ahol a szinkronizálási ügynököt telepítette, majd importálja a kiszolgálóparancsmagokat. Alapértelmezés szerint ez valahogy így néz ki:
 ```powershell
 cd 'C:\Program Files\Azure\StorageSyncAgent'
 Import-Module -Name .\StorageSync.Management.ServerCmdlets.dll
 ```
 
-`Get-StorageSyncAgentAutoUpdatePolicy` futtatásával ellenőrizze az aktuális házirend-beállítást, és határozza meg, hogy szeretné-e módosítani.
+Futtathatja `Get-StorageSyncAgentAutoUpdatePolicy` az aktuális házirend-beállítás ellenőrzését, és meghatározhatja, hogy módosítani kívánja-e.
 
-Ha módosítani szeretné a jelenlegi házirend-beállítást a késleltetett frissítés nyomon követésére, a következőt használhatja:
+Ha az aktuális házirend-beállítást a késleltetett frissítési sávra szeretné módosítani, a következőket használhatja:
 ```powershell
 Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode UpdateBeforeExpiration
 ```
 
-Ha módosítani szeretné az aktuális házirend-beállítást az azonnali frissítés nyomon követésére, a következőt használhatja:
+Ha az aktuális házirend-beállítást közvetlen frissítési sávra szeretné módosítani, a következőket használhatja:
 ```powershell
 Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode InstallLatest
 ```
 
-#### <a name="agent-lifecycle-and-change-management-guarantees"></a>Az ügynök életciklusa és a változás-kezelési garanciái
-A Azure File Sync egy felhőalapú szolgáltatás, amely folyamatosan bemutatja az új szolgáltatásokat és a továbbfejlesztett funkciókat. Ez azt jelenti, hogy egy adott Azure File Sync ügynök verziója csak korlátozott ideig használható. Az üzembe helyezés megkönnyítéséhez a következő szabályok garantálják, hogy elegendő idő és értesítés szükséges ahhoz, hogy az ügynökök frissítései/frissítései a változás-kezelési folyamat során is megfeleljenek:
+#### <a name="agent-lifecycle-and-change-management-guarantees"></a>Ügynök életciklusa és változáskezelési garanciái
+Az Azure File Sync egy felhőalapú szolgáltatás, amely folyamatosan bevezeti az új funkciókat és fejlesztéseket. Ez azt jelenti, hogy egy adott Azure File Sync ügynök verziója csak korlátozott ideig támogatott. A telepítés megkönnyítése érdekében az alábbi szabályok garantálják, hogy elegendő ideje és értesítése van az ügynökfrissítések/-frissítések befogadásához a változáskezelési folyamatban:
 
-- A fő ügynök verziói a kezdeti kiadás dátumától számítva legalább hat hónapig támogatottak.
-- Garantáljuk, hogy a főbb ügynökök verzióinak támogatása között legalább három hónapig átfedésben van. 
-- A figyelmeztetéseket a rendszer a hamarosan lejárt ügynökkel rendelkező regisztrált kiszolgálók számára adja ki, legalább három hónappal a lejárat előtt. Megtekintheti, hogy egy regisztrált kiszolgáló az ügynök egy régebbi verzióját használja-e a Storage Sync szolgáltatás regisztrált kiszolgálók szakasza alatt.
-- A másodlagos ügynök verziójának élettartama a társított főverzióhoz van kötve. Ha például az ügynök 3,0-es verziója megjelent, az ügynök 2. verzió.\* a rendszer minden beállítás után lejár.
+- A főügynök-verziók a kezdeti kiadás dátumától számított legalább hat hónapig támogatottak.
+- Garantáljuk, hogy legalább három hónapos átfedés van a főügynöki verziók támogatása között. 
+- A rendszer legalább három hónappal a lejárat előtt figyelmeztetést ad ki a hamarosan lejárt ügyintézőt használó regisztrált kiszolgálókra. Ellenőrizheti, hogy a regisztrált kiszolgáló az ügynök régebbi verzióját használja-e a Storage Sync Service regisztrált kiszolgálók szakasza alatt.
+- Az alügynök-verzió élettartama a társított főverzióhoz van kötve. Például, ha ügynök 3.0-s verziója szabadul fel, ügynök 2-es verziójú. \* minden lesz beállítva, hogy együtt jár le.
 
 > [!Note]
-> A lejárati figyelmeztetést tartalmazó ügynök verziójának telepítése figyelmeztetést jelenít meg, de sikeres lesz. A lejárt ügynök verziójának telepítésére vagy kapcsolódására tett kísérlet nem támogatott, és le lesz tiltva.
+> Az ügynök verziójának lejárati figyelmeztetéssel történő telepítése figyelmeztetést jelenít meg, de sikeres lesz. A lejárt ügynökverzió telepítésére vagy csatlakoztatására tett kísérlet nem támogatott, és le lesz tiltva.

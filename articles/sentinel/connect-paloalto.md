@@ -1,6 +1,6 @@
 ---
-title: A Palo Alto Networks-adatkapcsolatok és az Azure Sentinel összekötése | Microsoft Docs
-description: Megtudhatja, hogyan csatlakoztathatók a Palo Alto-hálózatok az Azure Sentinel szolgáltatáshoz.
+title: A Palo Alto Networks adatainak csatlakoztatása az Azure Sentinelhez| Microsoft dokumentumok
+description: Ismerje meg, hogyan csatlakoztathatja a Palo Alto Networks adatait az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,44 +16,44 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: a79b7a1448e1decb377aa0072261df068c366567
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588127"
 ---
-# <a name="connect-palo-alto-networks-to-azure-sentinel"></a>A Palo Alto-hálózatok összekapcsolhatók az Azure Sentinel-vel
+# <a name="connect-palo-alto-networks-to-azure-sentinel"></a>A Palo Alto networks csatlakoztatása az Azure Sentinelhez
 
 
 
-Ez a cikk azt ismerteti, hogyan csatlakoztatható a Palo Alto Networks-berendezés az Azure Sentinelhez. A Palo Alto Networks adatösszekötő segítségével könnyedén csatlakoztathatja a Palo Alto hálózati naplókat az Azure Sentinel használatával, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. A Palo Alto Networks használata az Azure Sentinelben további információkat nyújt a szervezet internetes használatáról, és fokozza a biztonsági üzemeltetési képességeit. 
+Ez a cikk bemutatja, hogyan csatlakoztathatja a Palo Alto Networks készüléket az Azure Sentinelhez. A Palo Alto Networks adatösszekötő lehetővé teszi, hogy könnyedén csatlakoztassa a Palo Alto Networks naplók az Azure Sentinel, irányítópultok megtekintéséhez, egyéni riasztások létrehozása, és a vizsgálat javítása. A Palo Alto Networks azure Sentinel használatával további betekintést nyújt a szervezet internethasználatába, és javítja a biztonsági üzemeltetési képességeit. 
 
 
-## <a name="forward-palo-alto-networks-logs-to-the-syslog-agent"></a>A Palo Alto hálózati naplók továbbítása a syslog-ügynökbe
+## <a name="forward-palo-alto-networks-logs-to-the-syslog-agent"></a>Forward Palo Alto Networks bejelentkezik a Syslog ügynök
 
-A Palo Alto-hálózatok konfigurálása a syslog-üzenetek CEF formátumban való továbbításához az Azure-munkaterületen a syslog-ügynök használatával:
-1.  Nyissa meg a [Common Event Format (CEF) konfigurációs útmutatóit](https://docs.paloaltonetworks.com/resources/cef) , és töltse le a készülék típusának PDF-fájlját. A CEF események gyűjtéséhez kövesse az útmutató utasításait a Palo Alto Networks-berendezés beállításához. 
+Konfigurálja a Palo Alto Networks szolgáltatást úgy, hogy a Syslog-üzeneteket CEF formátumban továbbítsa az Azure-munkaterületre a Syslog ügynökön keresztül:
+1.  Látogasson el a [Közös eseményformátum (CEF) konfigurációs útmutatóira,](https://docs.paloaltonetworks.com/resources/cef) és töltse le a készülék típusához tartozó pdf-et. Kövesse az útmutatóban található utasításokat a Palo Alto Networks készülék beállításához a CEF események összegyűjtéséhez. 
 
-1.  Lépjen a [syslog-figyelés konfigurálása](https://aka.ms/asi-syslog-paloalto-forwarding) elemre, és kövesse a 2. és a 3. lépést a Palo Alto Networks-készülékről az Azure sentinelre történő CEF-továbbítás konfigurálásához.
+1.  A [Syslog figyeléskonfigurálása](https://aka.ms/asi-syslog-paloalto-forwarding) és a 2.
 
-    1. Győződjön meg arról, hogy a **syslog-kiszolgáló formátumát** a **BSD**értékre állítja be.
+    1. Győződjön meg arról, hogy a **Syslog kiszolgáló formátumát** **BSD**formátumra állította.
 
        > [!NOTE]
-       > Előfordulhat, hogy a PDF-fájl másolási/beillesztési műveletei megváltoztatják a szöveget, és véletlenszerű karaktereket szúrnak be. Ennek elkerüléséhez másolja a szöveget egy Szerkesztőbe, és távolítson el minden olyan karaktert, amely megtöri a napló formátumát a beillesztés előtt, ahogy az ebben a példában látható.
+       > A PDF-dokumentum másolási/beillesztési műveletei megváltoztathatják a szöveget, és véletlenszerű karaktereket szúrhatnak be. Ennek elkerülése érdekében másolja a szöveget egy szerkesztőbe, és távolítsa el azokat a karaktereket, amelyek a beillesztés előtt megszakíthatják a naplóformátumot, amint azt a példában is látható.
  
-        ![CEF szöveges másolási probléma](./media/connect-cef/paloalto-text-prob1.png)
+        ![CEF szövegmásolási probléma](./media/connect-cef/paloalto-text-prob1.png)
 
-1. Ha a Log Analytics vonatkozó sémát szeretné használni a Palo Alto Networks-eseményekhez, keresse meg a **CommonSecurityLog**.
+1. Ha a Megfelelő sémát szeretné használni a Log Analytics szolgáltatásban a Palo Alto Networks eseményekhez, keresse meg a **CommonSecurityLog (CommonSecurityLog)** kifejezést.
 
-1. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
-
-
+1. Folytassa a [3.](connect-cef-verify.md)
 
 
-## <a name="next-steps"></a>Következő lépések
-Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Palo Alto hálózati berendezések az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
-- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
-- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
+
+
+## <a name="next-steps"></a>További lépések
+Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja a Palo Alto Networks készülékeit az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
+- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
+- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats-built-in.md)
+- Az adatok figyeléséhez [használjon munkafüzeteket.](tutorial-monitor-your-data.md)
 
 

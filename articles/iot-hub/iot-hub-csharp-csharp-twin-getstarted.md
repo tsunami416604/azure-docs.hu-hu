@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure IoT Hub Device ikrek szolgáltatással (.NET/.NET) | Microsoft Docs
-description: Az Azure IoT Hub-eszközök ikrek használata címkék hozzáadásához és IoT Hub-lekérdezés használatához. A .NET-hez készült Azure IoT eszközoldali SDK segítségével megvalósíthatja a szimulált eszköz alkalmazást és a .NET-hez készült Azure IoT Service SDK-t egy olyan szolgáltatásalkalmazás megvalósításához, amely hozzáadja a címkéket és futtatja a IoT Hub lekérdezést.
+title: Ismerkedés az Azure IoT Hub-eszközök twins (.NET/.NET) | Microsoft dokumentumok
+description: Az Azure IoT Hub-eszközök twins használata címkék hozzáadásához, majd egy IoT Hub-lekérdezés használatához. Az Azure IoT-eszköz SDK for .NET a szimulált eszközalkalmazás és az Azure IoT szolgáltatás SDK.NET valósítja meg a címkéket, és futtatja az IoT Hub-lekérdezést.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -10,45 +10,45 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
 ms.openlocfilehash: 426430c075cfcb084cfe3238ebd83a19e909369b
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110770"
 ---
-# <a name="get-started-with-device-twins-net"></a>Ismerkedés az eszközökhöz készült ikrek (.NET) használatával
+# <a name="get-started-with-device-twins-net"></a>Az ikereszközök első lépései (.NET)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-Ebben az oktatóanyagban a következő .NET-konzolos alkalmazásokat hozza létre:
+Ebben az oktatóanyagban hozza létre a .NET konzolalkalmazásokat:
 
-* **CreateDeviceIdentity**. Ez az alkalmazás létrehoz egy eszköz identitást és egy hozzá tartozó biztonsági kulcsot a szimulált eszközhöz való kapcsolódáshoz.
+* **CreateDeviceIdentity**. Ez az alkalmazás létrehoz egy eszköz identitásés a kapcsolódó biztonsági kulcsot, hogy csatlakoztassa a szimulált eszköz app.
 
-* **AddTagsAndQuery**. Ez a háttérbeli alkalmazás címkéket hoz létre, és lekérdezi az eszközökhöz tartozó ikreket.
+* **AddTagsAndQuery**. Ez a háttéralkalmazás címkéket és lekérdezéseket ad hozzá az ikereszközökhez.
 
-* **ReportConnectivity**. Ez az eszköz egy olyan eszközt szimulál, amely a korábban létrehozott IoT-hubhoz csatlakozik, és a kapcsolati feltételét jelzi.
+* **ReportConnectivity**. Ez az eszközalkalmazás szimulálja az eszközt, amely csatlakozik az IoT hub az eszköz identitása korábban létrehozott, és jelenti a kapcsolati állapotát.
 
 > [!NOTE]
-> Az [Azure IoT SDK](iot-hub-devguide-sdks.md) -k cikke olyan Azure IoT SDK-kat tartalmaz, amelyek segítségével mind az eszközök, mind a háttérbeli alkalmazások készíthetők.
+> Az [Azure IoT SDK-k](iot-hub-devguide-sdks.md) az Azure IoT SDK-k, amelyek segítségével eszköz- és háttéralkalmazásokat hozhat létre.
 >
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Visual Studio.
 
-* Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
+* Aktív Azure-fiók. Ha nem rendelkezik fiókkal, néhány perc alatt létrehozhat egy [ingyenes fiókot.](https://azure.microsoft.com/pricing/free-trial/)
 
-* Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Győződjön meg arról, hogy a 8883-as port nyitva van a tűzfalon. A cikkben szereplő eszközminta az MQTT protokollt használja, amely a 8883-as porton keresztül kommunikál. Előfordulhat, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben le van tiltva. A probléma megoldásáról további információt és a probléma megoldásáról a [Csatlakozás az IoT Hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)című témakörben talál.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hub-ban
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hubban
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub kapcsolati karakterláncának beszereznie
 
 [!INCLUDE [iot-hub-howto-twin-shared-access-policy-text](../../includes/iot-hub-howto-twin-shared-access-policy-text.md)]
 
@@ -56,29 +56,29 @@ Ebben az oktatóanyagban a következő .NET-konzolos alkalmazásokat hozza létr
 
 ## <a name="create-the-service-app"></a>A szolgáltatásalkalmazás létrehozása
 
-Ebben a szakaszban egy, a használatával C#létrehozott .net-konzol alkalmazást hoz létre, amely a hely metaadatait hozzáadja a **myDeviceId**-hez társított eszközökhöz. Ezután lekérdezi az IoT hub-ban tárolt, az USA-ban található eszközöket, majd a mobil kapcsolatról jelentést tartalmazó eszközt.
+Ebben a szakaszban egy C#-szal létrehozott .NET konzolalkalmazást hoz létre, amely helymetaadatokat ad hozzá a **myDeviceId-hoz**társított ikereszközhöz. Ezután lekérdezi az IT hubban tárolt ikereszközök az Egyesült Államokban található eszközök kiválasztását, majd azokat, amelyek mobilhálózati kapcsolatot jelentettek.
 
-1. A Visual Studióban válassza az **új projekt létrehozása**lehetőséget. Az **új projekt létrehozása**területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
+1. A Visual Studióban válassza **az Új projekt létrehozása**lehetőséget. Az **Új projekt létrehozása**csoportban válassza a **Konzolalkalmazás (.NET Framework)** lehetőséget, majd a **Tovább**gombot.
 
-1. Az **új projekt konfigurálása**területen nevezze el a projekt **AddTagsAndQuery**.
+1. Az **Új projekt konfigurálása**területen nevezze el a projektet **AddTagsAndQuery**néven.
 
-    ![A AddTagsAndQuery-projekt konfigurálása](./media/iot-hub-csharp-csharp-twin-getstarted/config-addtagsandquery-app.png)
+    ![Az AddTagsAndQuery projekt konfigurálása](./media/iot-hub-csharp-csharp-twin-getstarted/config-addtagsandquery-app.png)
 
-1. Megoldáskezelő kattintson a jobb gombbal a **AddTagsAndQuery** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
+1. A Megoldáskezelőben kattintson a jobb gombbal az **AddTagsAndQuery** projektre, majd válassza **a NuGet csomagok kezelése parancsot.**
 
-1. Válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices**elemet. Válassza az **Install** (Telepítés) lehetőséget.
+1. Válassza **a Tallózás** és keresés lehetőséget, és válassza a **Microsoft.Azure.Devices**lehetőséget. Válassza az **Install** (Telepítés) lehetőséget.
 
     ![NuGet Package Manager (NuGet-csomagkezelő) ablak](./media/iot-hub-csharp-csharp-twin-getstarted/nuget-package-addtagsandquery-app.png)
 
-   Ez a lépés letölti, telepíti és hozzáadja az [Azure IoT Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet csomagra és annak függőségeire mutató hivatkozást.
+   Ez a lépés letölti, telepíti, és hozzáadja az [Azure IoT szolgáltatás SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet csomagés annak függőségeit.
 
-1. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
+1. Adja hozzá a következő `using`utasításokat a **Program.cs** fájl elejéhez:
 
     ```csharp  
     using Microsoft.Azure.Devices;
     ```
 
-1. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a `{iot hub connection string}`t az [IoT hub-beli kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string)során másolt IoT hub-kapcsolatok karakterláncára.
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje `{iot hub connection string}` le az IoT Hub kapcsolati karakterlánc, amely másolt [az IoT hub kapcsolati karakterlánc beszerezni.](#get-the-iot-hub-connection-string)
 
     ```csharp  
     static RegistryManager registryManager;
@@ -115,11 +115,11 @@ Ebben a szakaszban egy, a használatával C#létrehozott .net-konzol alkalmazás
     }
     ```
 
-    A **RegistryManager** osztály minden olyan metódust elérhetővé tesz, amely az eszközök ikrek szolgáltatásból való interakcióhoz szükséges. Az előző kód először inicializálja a **registryManager** objektumot, majd lekéri az **myDeviceId**-t, és végül frissíti a címkéket a kívánt hely adataival.
+    A **RegistryManager** osztály elérhetővé teszi az összes olyan módszert, amely a szolgáltatásból származó ikereszközök kelemi-kapcsolatához szükséges. Az előző kód először inicializálja a **registryManager** objektumot, majd lekéri az ikereszközt a **myDeviceId**számára, és végül frissíti a címkéket a kívánt helyadatokkal.
 
-    A frissítés után két lekérdezést hajt végre: az első kiválasztja csak a **Redmond43** -üzemben található eszközökből álló ikreket, a második pedig csak azokat az eszközöket jelöli ki, amelyek a mobil hálózaton keresztül is csatlakoztatva vannak.
+    A frissítés után két lekérdezést hajt végre: az első csak a **Redmond43-üzemben** található eszközök ikereszközeit választja ki, a második pedig finomítja a lekérdezést, hogy csak azokat az eszközöket válassza ki, amelyek szintén mobilhálózaton keresztül csatlakoznak.
 
-    A korábbi kód a **lekérdezési** objektum létrehozásakor megadja a visszaadott dokumentumok maximális számát. A **lekérdezési** objektum egy **HasMoreResults** logikai tulajdonságot tartalmaz, amelyet a **GetNextAsTwinAsync** metódusok többszöri meghívására használhat az összes eredmény lekéréséhez. A **GetNextAsJson** nevű metódus olyan eredményekhez érhető el, amelyek nem az eszközök ikrek, például az összesítési lekérdezések eredményei.
+    Az előző kód a **lekérdezési** objektum létrehozásakor megadja a visszaküldött dokumentumok maximális számát. A **lekérdezésobjektum** tartalmaz egy **HasMoreResults** logikai tulajdonságot, amellyel többször is meghívhatja a **GetNextAsTwinAsync** metódusokat az összes eredmény beolvasásához. A **GetNextAsJson** nevű metódus érhető el olyan eredményekhez, amelyek nem eszköztwins, például aggregációs lekérdezések eredményei.
 
 1. Végül adja a következő sorokat a **Main** metódushoz:
 
@@ -130,27 +130,27 @@ Ebben a szakaszban egy, a használatával C#létrehozott .net-konzol alkalmazás
     Console.ReadLine();
     ```
 
-1. Az alkalmazás futtatásához kattintson a jobb gombbal a **AddTagsAndQuery** projektre, és válassza a **hibakeresés**lehetőséget, majd az **új példány elindítása**parancsot. A lekérdezés eredményei között egy eszközt kell látnia, amely a **Redmond43** -ban található összes eszközt kéri, a nem pedig a lekérdezést, amely a mobil hálózatot használó eszközökre korlátozza az eredményeket.
+1. Futtassa ezt az alkalmazást úgy, hogy a jobb gombbal az **AddTagsAndQuery** projektre kattint, és a **Debug parancsot választja,** majd **az Új példány indítása parancsot.** Meg kell jelennie egy eszköz az eredmények a lekérdezés tanusítandó összes eszköz **redmond43** és nincs a lekérdezés, amely korlátozza az eredményeket a mobilhálózatot használó eszközök.
 
-    ![Lekérdezés eredményei az ablakban](./media/iot-hub-csharp-csharp-twin-getstarted/addtagapp.png)
+    ![Lekérdezési eredmények az ablakban](./media/iot-hub-csharp-csharp-twin-getstarted/addtagapp.png)
 
-A következő szakaszban létrehoz egy olyan eszközt, amely jelentést készít a kapcsolati adatokról, és megváltoztatja a lekérdezés eredményét az előző szakaszban.
+A következő szakaszban létrehoz egy eszközalkalmazást, amely jelenti a kapcsolódási adatokat, és módosítja a lekérdezés eredményét az előző szakaszban.
 
-## <a name="create-the-device-app"></a>Az eszköz-alkalmazás létrehozása
+## <a name="create-the-device-app"></a>Az eszközalkalmazás létrehozása
 
-Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a **myDeviceId**-hez csatlakozik a központhoz, majd frissíti a jelentett tulajdonságokat, hogy tartalmazza a mobil hálózaton keresztül csatlakoztatott adatokat.
+Ebben a szakaszban hozzon létre egy .NET konzolalkalmazást, amely **myDeviceId**néven csatlakozik a hubhoz, majd frissíti a jelentett tulajdonságait, hogy tartalmazza a mobilhálózaton keresztül csatlakoztatott információkat.
 
-1. A Visual Studióban válassza a **fájl** > **új** > **projekt**lehetőséget. Az **új projekt létrehozása**területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
+1. A Visual Studióban válassza az**Új** > **projekt** **fájlja** > lehetőséget. Az **Új projekt létrehozása**csoportban válassza a Console App **(.NET Framework)** lehetőséget, majd a **Tovább**gombot.
 
-1. Az **új projekt konfigurálása**területen nevezze el a projekt **ReportConnectivity**. A **megoldáshoz**válassza a **Hozzáadás a megoldáshoz**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
+1. Az **Új projekt konfigurálása**területen nevezze el a **ReportConnectivity projektet.** A **Megoldás**csoportban válassza **a Hozzáadás a megoldáshoz**lehetőséget, majd a **Create (Létrehozás)** lehetőséget.
 
-1. Megoldáskezelő kattintson a jobb gombbal a **ReportConnectivity** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
+1. A Megoldáskezelőben kattintson a jobb gombbal a **ReportConnectivity** projektre, majd válassza **a NuGet-csomagok kezelése parancsot.**
 
-1. Válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza az **Install** (Telepítés) lehetőséget.
+1. Válassza **a Tallózás** gombot, és keresse meg a **Microsoft.Azure.Devices.Client**elemet. Válassza az **Install** (Telepítés) lehetőséget.
 
-   Ez a lépés letölti, telepíti és hozzáadja az [Azure IoT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet csomagra és annak függőségeire mutató hivatkozást.
+   Ez a lépés letölti, telepíti, és hozzáadja a hivatkozást az [Azure IoT-eszköz SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet csomag és a függőségek.
 
-1. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
+1. Adja hozzá a következő `using`utasításokat a **Program.cs** fájl elejéhez:
 
     ```csharp  
     using Microsoft.Azure.Devices.Client;
@@ -158,7 +158,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a **myDe
     using Newtonsoft.Json;
     ```
 
-1. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a `{device connection string}`t a [IoT hub új eszközének regisztrálása](#register-a-new-device-in-the-iot-hub)során feljegyzett eszköz-kapcsolatok karakterláncára.
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje `{device connection string}` le az [IOt hubban egy új eszköz regisztrálása](#register-a-new-device-in-the-iot-hub)című részben megjegyzett eszközkapcsolati karakterláncra.
 
     ```csharp  
     static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
@@ -186,7 +186,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a **myDe
     }
     ```
 
-    Az **ügyfél** -objektum minden olyan módszert feltesz, amely az eszközön található ikrekkel való interakcióhoz szükséges. A fenti kód inicializálja az **ügyfél** -objektumot, majd lekéri a **myDeviceId**-hez tartozó különálló eszközt.
+    Az **ügyfélobjektum** minden olyan módszert elérhetővé tesz, amely az eszköz twins-i eszköztwins-ekkel való interakcióhoz szükséges. A fenti kód inicializálja az **Ügyfél** objektumot, majd lekéri a **myDeviceId ikereszközét.**
 
 1. Adja hozzá a **Program** osztályhoz a következő módszert:
 
@@ -212,7 +212,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a **myDe
     }
     ```
 
-   A fenti kód frissíti a **myDeviceId** jelentett tulajdonságát a kapcsolódási információkkal.
+   A fenti kód frissíti a **myDeviceId** jelentett tulajdonságát a kapcsolódási adatokkal.
 
 1. Végül adja a következő sorokat a **Main** metódushoz:
 
@@ -231,28 +231,28 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a **myDe
     Console.ReadLine();
     ```
 
-1. Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget.
+1. A Megoldáskezelőben kattintson a jobb gombbal a megoldásra, és válassza **az Indítási projektek beállítása parancsot.**
 
-1. Az **Általános tulajdonságok** > **indítási projekt**területen válassza a **több indítási projekt**lehetőséget. A **ReportConnectivity**területen válassza a **kezdés** **műveletet**. A módosítások mentéséhez kattintson **az OK gombra** .  
+1. A **Közös tulajdonságok** > **indítási projekt ben**válassza a Több **indítási projekt**lehetőséget. A **ReportConnectivity (ReportConnectivity)** csoportban válassza **a** **Start** műveletként lehetőséget. A módosítások mentéséhez kattintson az **OK** gombra.  
 
-1. Az alkalmazás futtatásához kattintson a jobb gombbal a **ReportConnectivity** projektre, és válassza a **hibakeresés**lehetőséget, majd **indítsa el az új példányt**. Ekkor meg kell jelennie az alkalmazásnak, és a kapcsolat küldése ***jelentett tulajdonságnak***kell lennie.
+1. Futtassa ezt az alkalmazást úgy, hogy a jobb gombbal a **ReportConnectivity** projektre kattint, és a **Debug parancsot választja,** majd **indítsa el az új példányt.** Látnia kell, hogy az alkalmazás megkapja az ikeradatokat, majd a kapcsolódást ***jelentett tulajdonságként***küldi el.
 
-    ![Az eszköz alkalmazásának futtatása a kapcsolat jelentéséhez](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
+    ![Eszközalkalmazás futtatása a kapcsolódás jelentéséhez](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
 
-   Miután az eszköz bejelentette a kapcsolati adatait, mindkét lekérdezésben szerepelnie kell.
+   Miután az eszköz jelentette a kapcsolódási adatait, mindkét lekérdezésben meg kell jelennie.
 
-1. Kattintson a jobb gombbal a **AddTagsAndQuery** projektre, és válassza a **hibakeresés** > az **új példány elindítása** lehetőséget a lekérdezések ismételt futtatásához. Ezúttal a **myDeviceId** mindkét lekérdezési eredményben szerepelnie kell.
+1. Kattintson a jobb gombbal az **AddTagsAndQuery** projektre, és válassza a **Debug** > **Start új példányt** a lekérdezések ismételt futtatásához. Ezúttal **a myDeviceId** mindkét lekérdezési eredményben meg kell jelennie.
 
-    ![Az eszköz kapcsolata sikeresen jelezve](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
+    ![Az eszközkapcsolat sikeresen történt](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Az eszköz metaadatait címkékként adta hozzá egy háttérbeli alkalmazáshoz, és írt egy szimulált eszközt, amely az eszköz kapcsolati adatait jelenti a Twin-ben. Azt is megtanulta, hogyan lehet lekérdezni ezeket az adatokat az SQL-Like IoT Hub lekérdezési nyelv használatával.
+Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Az eszköz metaadatait címkékként adta hozzá egy háttéralkalmazásból, és írt egy szimulált eszközalkalmazást az eszközkapcsolati adatok jelentéséhez az ikereszközben. Azt is megtanulta, hogyan lehet lekérdezni ezeket az információkat az SQL-szerű IoT Hub lekérdezési nyelv használatával.
 
-További információt a következő forrásokból kaphat:
+A következő forrásokból tudhat meg többet:
 
-* Ha szeretné megtudni, hogyan küldhet telemetria az eszközökről, tekintse meg a [telemetria küldése az eszközről egy IoT hub](quickstart-send-telemetry-dotnet.md) -oktatóanyagba című témakört.
+* A telemetriai adatok eszközökről történő küldéséről tekintse meg a [Telemetriai adatok küldése az eszközről egy IoT-központ oktatóanyagba](quickstart-send-telemetry-dotnet.md) című témakört.
 
-* Ha meg szeretné tudni, hogyan konfigurálhatja az eszközöket a Device Twin kívánt tulajdonságaival, tekintse meg a [kívánt tulajdonságok használata az eszközök konfigurálásához](tutorial-device-twins.md) oktatóanyagot.
+* Ha tudni szeretné, hogyan konfigurálhatja az eszközöket az ikereszköz kívánt tulajdonságaival, olvassa el a Kívánt tulajdonságok használata eszközök [konfigurálásához](tutorial-device-twins.md) oktatóanyag című témakört.
 
-* Ha szeretné megtudni, hogyan vezérelheti az eszközöket interaktív módon, például egy felhasználó által vezérelt alkalmazás ventilátorának bekapcsolásával kapcsolatban, tekintse meg a [közvetlen módszerek használata](quickstart-control-device-dotnet.md) oktatóanyagot.
+* Az eszközök interaktív vezérléséről, például egy ventilátor felhasználó által vezérelt alkalmazásból történő bekapcsolásáról a [Közvetlen módszerek használata](quickstart-control-device-dotnet.md) oktatóanyag című témakörben olvashat.

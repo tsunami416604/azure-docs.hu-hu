@@ -18,20 +18,20 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 843f12d14120a7becdc1e8b15bfcc65948602c44
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74007754"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD naplózott tevékenységekre vonatkozó referencia
 
-A Azure Active Directory-(Azure AD-) jelentésekkel megtekintheti a környezete működésének meghatározásához szükséges információkat.
+Az Azure Active Directory (Azure AD) jelentéseivel megkaphatja a környezet működésének meghatározásához szükséges információkat.
 
 Az Azure AD jelentéskészítési architektúrája a következő elemekből áll:
 
-- **Tevékenységgel kapcsolatos jelentések** 
-    - [Bejelentkezések](concept-sign-ins.md) – információkat biztosít a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról
+- **Tevékenységjelentések** 
+    - [Bejelentkezések](concept-sign-ins.md) – A felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatával kapcsolatos információk
     - [Auditnaplók](concept-audit-logs.md) – az Azure AD-n belül különböző szolgáltatások által végrehajtott összes módosításra vonatkozó nyomkövetési naplókat biztosít. 
     
 - **Biztonsági jelentések** 
@@ -64,12 +64,12 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Hozzáférési felülvizsgálatok|Kérelem-jóváhagyási kérelem felülvizsgálata|
 |Hozzáférési felülvizsgálatok|Programvezérlő leválasztása|
 |Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat frissítése|
-|Hozzáférési felülvizsgálatok|Az Azure AD hozzáférési felülvizsgálatok bevezetési állapotának frissítése|
+|Hozzáférési felülvizsgálatok|Az Azure AD Access-vélemények beszállási állapotának frissítése|
 |Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati e-mail-értesítési beállításainak frissítése|
-|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati ismétlődési szám beállításának frissítése|
-|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat ismétlődési időtartamának frissítése napokban beállítás|
-|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati ismétlődési típus beállításának frissítése|
-|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati ismétlődési típus beállításának frissítése|
+|Hozzáférési felülvizsgálatok|Hozzáférés-ellenőrzés ismétlődési számának frissítése|
+|Hozzáférési felülvizsgálatok|Hozzáférés-ellenőrzés ismétlődési időtartamának frissítése napokban beállításban|
+|Hozzáférési felülvizsgálatok|Hozzáférés-ellenőrzés ismétlődési zárótípusának frissítése|
+|Hozzáférési felülvizsgálatok|Hozzáférés-ellenőrzés ismétlődési típusának frissítése|
 |Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati emlékeztető beállításainak frissítése|
 |Hozzáférési felülvizsgálatok|Program frissítése|
 |Hozzáférési felülvizsgálatok|Kérelem-jóváhagyás frissítése|
@@ -135,11 +135,11 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Alkalmazáskezelés|AdminPolicyDatas-SetResources|
 |Alkalmazáskezelés|AdminUserJourneys-GetResources|
 |Alkalmazáskezelés|AdminUserJourneys-RemoveResources|
-|Authentication|AdminUserJourneys-SetResources|
-|Authentication|IdentityProvider létrehozása|
-|Authentication|V1 alkalmazás létrehozása|
-|Authentication|V2 alkalmazás létrehozása|
-|Authentication|Egyéni tartomány létrehozása a bérlőben|
+|Hitelesítés|AdminUserJourneys-SetResources|
+|Hitelesítés|IdentityProvider létrehozása|
+|Hitelesítés|V1 alkalmazás létrehozása|
+|Hitelesítés|V2 alkalmazás létrehozása|
+|Hitelesítés|Egyéni tartomány létrehozása a bérlőben|
 |Engedélyezés|Új AdminUserJourney létrehozása|
 |Engedélyezés|Honosított json-erőforrás létrehozása|
 |Engedélyezés|Új egyéni identitásszolgáltató létrehozása|
@@ -169,7 +169,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Engedélyezés|V1 alkalmazások lekérése|
 |Engedélyezés|V2 alkalmazás lekérése|
 |Engedélyezés|V2 alkalmazások lekérése|
-|Engedélyezés|B2C-címtár erőforrásának beolvasása|
+|Engedélyezés|B2C könyvtárerőforrás beszereznie|
 |Engedélyezés|A bérlőben lévő egyéni tartományok listájának lekérése|
 |Engedélyezés|Felhasználói út lekérése|
 |Engedélyezés|A felhasználói út engedélyezett alkalmazásjogcímeinek lekérése|
@@ -256,17 +256,17 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Címtárkezelés|Bérlői adatok lekérése|
 |Címtárkezelés|Bérlő számára engedélyezett funkciók lekérése|
 |Címtárkezelés|tenantDomains lekérése|
-|Paraméter|Lekérdezi a bérlő típusát|
-|Paraméter|B2C funkció engedélyezésének ellenőrzése|
-|Paraméter|Annak ellenőrzése, hogy a szolgáltatás engedélyezve van-e|
-|Paraméter|Partner hozzáadása vállalathoz|
-|Paraméter|Nem ellenőrzött tartomány hozzáadása|
-|Paraméter|Ellenőrzött tartomány hozzáadása|
-|Paraméter|Vállalat létrehozása|
-|Paraméter|Vállalati beállítások létrehozása|
-|Paraméter|Vállalati beállítások törlése|
-|Paraméter|Partner lefokozása|
-|Paraméter|Címtár törölve|
+|Kulcs|Lekérdezi a bérlő típusát|
+|Kulcs|B2C funkció engedélyezésének ellenőrzése|
+|Kulcs|Annak ellenőrzése, hogy a szolgáltatás engedélyezve van-e|
+|Kulcs|Partner hozzáadása vállalathoz|
+|Kulcs|Nem ellenőrzött tartomány hozzáadása|
+|Kulcs|Ellenőrzött tartomány hozzáadása|
+|Kulcs|Vállalat létrehozása|
+|Kulcs|Vállalati beállítások létrehozása|
+|Kulcs|Vállalati beállítások törlése|
+|Kulcs|Partner lefokozása|
+|Kulcs|Címtár törölve|
 |Egyéb|Címtár véglegesen törölve|
 |Egyéb|Ez a címtár törlésre van ütemezve|
 |Erőforrás|Vállalat előléptetése partnerré|
@@ -348,10 +348,10 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 
 |Naplózási kategória|Tevékenység|
 |---|---|
-|Adminisztratív egységek kezelése|Egyetlen kockázati észlelési típus letöltése|
+|Adminisztratív egységek kezelése|Egyetlen kockázatészlelési típus letöltése|
 |Adminisztratív egységek kezelése|Rendszergazdák és a heti összefoglalók letöltésének jóváhagyása|
-|Adminisztratív egységek kezelése|Az összes kockázati észlelési típus letöltése|
-|Adminisztratív egységek kezelése|Ingyenes felhasználói kockázati észlelések letöltése|
+|Adminisztratív egységek kezelése|Az összes kockázatészlelési típus letöltése|
+|Adminisztratív egységek kezelése|Ingyenes felhasználói kockázatészlelések letöltése|
 |Adminisztratív egységek kezelése|Kockázatosként megjelölt felhasználók letöltése|
 |Alkalmazáskezelés|Feldolgozott kötegelt meghívók|
 |Alkalmazáskezelés|Kötegelt meghívók feltöltve|
@@ -398,7 +398,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Címtárkezelés|Előfizetéshez tartozó B2C címtárerőforrások lekérése|
 |Címtárkezelés|Egyéni identitásszolgáltató lekérése|
 |Címtárkezelés|Identitásszolgáltató lekérése|
-|Címtárkezelés|B2C-címtár erőforrásának beolvasása|
+|Címtárkezelés|B2C könyvtárerőforrás beszereznie|
 |Címtárkezelés|Felhasználói út lekérése|
 |Címtárkezelés|A felhasználói út engedélyezett alkalmazásjogcímeinek lekérése|
 |Címtárkezelés|A felhasználói út engedélyezett önellenőrzött jogcímeinek lekérése|
@@ -408,14 +408,14 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Címtárkezelés|Adott rendszergazdai folyamathoz tartozó identitásszolgáltatók lekérése|
 |Címtárkezelés|Az összes rendszergazdai folyamat|
 |Címtárkezelés|Az összes felhasználó összes rendszergazdai folyamatához tartozó címkék listájának lekérése|
-|Csoportkezelés|Csoporttagok tömeges letöltése – elindítva|
-|Csoportkezelés|Csoporttagok tömeges letöltése – kész|
-|Csoportkezelés|Csoporttagok csoportos importálása – elindítva|
-|Csoportkezelés|Csoporttagok tömeges importálása – kész|
-|Csoportkezelés|Csoporttagok tömeges eltávolítása – elindítva|
-|Csoportkezelés|Csoporttagok tömeges eltávolítása – kész|
-|Csoportkezelés|Csoportos letöltési csoportok – elindítva|
-|Csoportkezelés|Csoportos letöltési csoportok – kész|
+|Csoportkezelés|Tömeges letöltés csoport tagjai - started|
+|Csoportkezelés|Tömeges letöltés csoport tagjai - kész|
+|Csoportkezelés|Tömeges importálási csoport tagjai - indítás|
+|Csoportkezelés|Tömeges importálási csoport tagjai - kész|
+|Csoportkezelés|Csoporttagok tömeges eltávolítása – indítás|
+|Csoportkezelés|Csoporttagok tömeges eltávolítása - kész|
+|Csoportkezelés|Tömeges letöltési csoportok - indulás|
+|Csoportkezelés|Tömeges letöltési csoportok - kész|
 |Csoportkezelés|Felhasználó bérlői listájának lekérése|
 |Csoportkezelés|Helyi fiókok önellenőrző jogcímeinek lekérése|
 |Csoportkezelés|Honosított json-erőforrás lekérése|
@@ -475,16 +475,16 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Felhasználókezelés|Hatókörön belüli tag hozzáadása a szerepkörhöz|
 |Felhasználókezelés|Hozzáadva|
 |Felhasználókezelés|Hozzárendelés|
-|Felhasználókezelés|Felhasználók tömeges létrehozása – elindítva|
-|Felhasználókezelés|Felhasználók tömeges létrehozása – kész|
-|Felhasználókezelés|Felhasználók tömeges törlése – elindítva|
-|Felhasználókezelés|Felhasználók tömeges törlése – kész|
-|Felhasználókezelés|Felhasználók tömeges letöltése – elindítva|
-|Felhasználókezelés|Felhasználók tömeges letöltése – kész|
-|Felhasználókezelés|Törölt felhasználók tömeges visszaállítása – elindítva|
-|Felhasználókezelés|Törölt felhasználók tömeges visszaállítása – kész|
-|Felhasználókezelés|Felhasználók tömeges meghívása – elindítva|
-|Felhasználókezelés|Felhasználók tömeges meghívása – kész|
+|Felhasználókezelés|Felhasználók tömeges létrehozása - indítás|
+|Felhasználókezelés|Felhasználók tömeges létrehozása - kész|
+|Felhasználókezelés|Tömeges törlés felhasználók - elindult|
+|Felhasználókezelés|Felhasználók tömeges törlése - kész|
+|Felhasználókezelés|Tömeges letöltés felhasználók - started|
+|Felhasználókezelés|Tömeges letöltés felhasználók - kész|
+|Felhasználókezelés|Tömeges visszaállítás törölt felhasználók - elindult|
+|Felhasználókezelés|Tömeges visszaállítás törölt felhasználók - kész|
+|Felhasználókezelés|Tömeges meghívás felhasználók - elkezdődött|
+|Felhasználókezelés|Felhasználók tömeges meghívása - kész|
 |Felhasználókezelés|Regisztrált felhasználó eltávolítása az eszközről|
 |Felhasználókezelés|Regisztrált felhasználók eltávolítása az eszközről|
 |Felhasználókezelés|Jogosult tag eltávolítása a szerepkörből|
@@ -540,10 +540,10 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Csoportkezelés|Kérelem-jóváhagyási kérelem felülvizsgálata|
 |Csoportkezelés|Hozzáférési felülvizsgálat frissítése|
 |Csoportkezelés|Hozzáférési felülvizsgálati e-mail-értesítési beállításainak frissítése|
-|Csoportkezelés|Hozzáférési felülvizsgálati ismétlődési szám beállításának frissítése|
-|Csoportkezelés|Hozzáférési felülvizsgálat ismétlődési időtartamának frissítése napokban beállítás|
-|Felhasználókezelés|Hozzáférési felülvizsgálati ismétlődési típus beállításának frissítése|
-|Felhasználókezelés|Hozzáférési felülvizsgálati ismétlődési típus beállításának frissítése|
+|Csoportkezelés|Hozzáférés-ellenőrzés ismétlődési számának frissítése|
+|Csoportkezelés|Hozzáférés-ellenőrzés ismétlődési időtartamának frissítése napokban beállításban|
+|Felhasználókezelés|Hozzáférés-ellenőrzés ismétlődési zárótípusának frissítése|
+|Felhasználókezelés|Hozzáférés-ellenőrzés ismétlődési típusának frissítése|
 
 
 
@@ -554,21 +554,21 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |PIM|ActivationAborted|
 |PIM|ActivationApproved|
 |PIM|ActivationCanceled|
-|PIM|ActivationDenied|
+|PIM|Aktiválás megtagadva|
 |PIM|ActivationRequested|
 |PIM|Hozzáadva|
-|PIM|AddedOutsidePIM|
+|PIM|HozzáadottKülső PIM|
 |PIM|Hozzárendelés|
-|PIM|DismissAlert|
+|PIM|DismissAlert (Figyelmeztetés)|
 |PIM|Jogosultságszint emelése|
 |PIM|ReactivateAlert|
 |PIM|Eltávolítva|
-|PIM|RemovedOutsidePIM|
+|PIM|EltávolítvaKülső PIM|
 |PIM|Felülvizsgálat leállításának kérése|
 |PIM|Szerepkör-beállítások módosításai|
 |PIM|ScanAlertsNow|
 |PIM|Regisztráció|
-|PIM|Szüntesse|
+|PIM|Hozzárendelés visszavonása|
 |PIM|Jogosultságszint csökkentése|
 |PIM|UpdateAlertSettings|
 |PIM|UpdateCurrentState|
@@ -612,17 +612,17 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Használati feltételek|Használati feltételek elfogadása|
 |Használati feltételek|Használati feltételek létrehozása|
 |Használati feltételek|Használati feltételek elutasítása|
-|Használati feltételek|Törlési engedély|
+|Használati feltételek|Hozzájárulás törlése|
 |Használati feltételek|Használati feltételek törlése|
 |Használati feltételek|Használati feltételek szerkesztése|
-|Használati feltételek|Használati feltételek lejárta|
-|Használati feltételek|A használati feltételek nehezen törölhető|
+|Használati feltételek|Lejárati felhasználási feltételek|
+|Használati feltételek|Szigorú törlési felhasználási feltételek|
 |Használati feltételek|Használati feltételek közzététele|
 |Használati feltételek|Használati feltételek közzétételének visszavonása|
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Azure ad-jelentések – áttekintés](overview-reports.md).
-- [Naplózott jelentés](concept-audit-logs.md). 
+- [Az Azure AD-jelentések áttekintése](overview-reports.md).
+- [Naplójelentés](concept-audit-logs.md). 
 - [Programozott hozzáférés az Azure AD-jelentésekhez](concept-reporting-api.md)

@@ -1,6 +1,6 @@
 ---
-title: Oracle-adatbázis tervezése és megvalósítása az Azure-ban | Microsoft Docs
-description: Egy Oracle-adatbázis megtervezése és megvalósítása az Azure-környezetben.
+title: Oracle-adatbázis tervezése és megvalósítása az Azure-ban | Microsoft dokumentumok
+description: Oracle-adatbázis tervezése és megvalósítása azure-környezetben.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
@@ -15,68 +15,68 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: c2c2d1a9affe13d485bfeef52c781ed259b53bc8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70100114"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Oracle-adatbázis tervezése és megvalósítása az Azure-ban
 
 ## <a name="assumptions"></a>Feltételezések
 
-- Egy Oracle-adatbázist szeretne áttelepíteni a helyszínről az Azure-ba.
-- Az áttelepíteni kívánt Oracle Databasehoz tartozó [diagnosztikai csomaggal](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm) rendelkezik
-- Megértette az Oracle AWR jelentéseinek különböző mérőszámait.
-- Az alkalmazások teljesítményének és a platform kihasználtságának alapvető ismerete.
+- Azt tervezi, hogy áttelepíti az Oracle-adatbázist a helyszíni Azure-ból.
+- Az áttelepíteni kívánt Oracle-adatbázis [diagnosztikai csomagjával rendelkezik](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm)
+- Az Oracle AWR-jelentésekben ismeri a különböző mutatókat.
+- Az alkalmazás teljesítményének és a platformkihasználtságnak az alapszintű ismerete.
 
 ## <a name="goals"></a>Célok
 
-- Ismerje meg, hogyan optimalizálhatja Oracle-alapú üzembe helyezését az Azure-ban.
-- Ismerje meg az Oracle-adatbázisok teljesítmény-hangolási beállításait egy Azure-környezetben.
+- Ismerje meg, hogyan optimalizálhatja az Oracle üzembe helyezését az Azure-ban.
+- Fedezze fel az Oracle-adatbázisok teljesítményhangolási lehetőségeit egy Azure-környezetben.
 
-## <a name="the-differences-between-an-on-premises-and-azure-implementation"></a>A helyszíni és az Azure-implementáció közötti különbségek 
+## <a name="the-differences-between-an-on-premises-and-azure-implementation"></a>A helyszíni és az Azure-megvalósítás közötti különbségek 
 
-Az alábbiakban néhány fontos dolgot figyelembe kell venni, amikor helyszíni alkalmazásokat telepít át az Azure-ba. 
+Az alábbiakban néhány fontos dolgot kell szem előtt tartania, amikor helyszíni alkalmazásokat telepít át az Azure-ba. 
 
-Az egyik fontos különbség az, hogy egy Azure-implementációban az erőforrások, például a virtuális gépek, a lemezek és a virtuális hálózatok megoszthatók a többi ügyfél között. Emellett az erőforrások a követelmények alapján is szabályozható. Ahelyett, hogy a sikertelenség elkerülésére (MTBF) koncentráljon, az Azure sokkal inkább a sikertelenség (MTTR) túlélésére koncentrál.
+Az egyik fontos különbség az, hogy egy Azure-implementációban az erőforrások, például a virtuális gépek, a lemezek és a virtuális hálózatok meg vannak osztva más ügyfelek között. Emellett az erőforrások a követelmények alapján szabályozhatók. Ahelyett, hogy a sikertelenség elkerülésére összpontosítana, az Azure inkább a hiba (MTTR) túlélésére összpontosít.
 
-Az alábbi táblázat a helyszíni megvalósítás és az Oracle-adatbázisok Azure-beli megvalósítása közötti különbségeket ismerteti.
+Az alábbi táblázat néhány különbséget sorol fel a helyszíni megvalósítás és az Oracle-adatbázis Azure-megvalósítása között.
 
 > 
 > |  | **Helyszíni megvalósítás** | **Azure-implementáció** |
 > | --- | --- | --- |
 > | **Hálózat** |LAN/WAN  |SDN (szoftveresen definiált hálózat)|
-> | **Biztonsági csoport** |IP-/portokra vonatkozó korlátozási eszközök |[Hálózati biztonsági csoport (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
-> | **Rugalmasság** |MTBF (a hibák közötti átlagos idő) |MTTR (a helyreállítás átlagos ideje)|
+> | **Biztonsági csoport** |IP/port korlátozó eszközök |[Hálózati biztonsági csoport (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
+> | **Rugalmasság** |MTBF (a hibák közötti átlagos idő) |MTTR (átlagos felépülési idő)|
 > | **Tervezett karbantartás** |Javítások/frissítések|[Rendelkezésre állási készletek](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (az Azure által kezelt javítások/frissítések) |
-> | **Erőforrás** |Dedikált  |Megosztva más ügyfelekkel|
-> | **Régiók** |Adatközpontok |[Régió párok](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Storage** |SAN/fizikai lemezek |[Azure által felügyelt tároló](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **Méretezés** |Függőleges skála |Horizontális skálázhatóság|
+> | **Erőforrás** |Dedikált  |Más ügyfelekkel megosztva|
+> | **Régiók** |Adatközpontok |[Régiópárok](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
+> | **Tárterület** |SAN/fizikai lemezek |[Azure által felügyelt tárhely](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **Skála** |Függőleges skála |Horizontális skálázhatóság|
 
 
 ### <a name="requirements"></a>Követelmények
 
-- Határozza meg az adatbázis méretét és a növekedési arányt.
-- Határozza meg a IOPS vonatkozó követelményeket, amelyeket az Oracle AWR jelentései vagy más hálózati figyelési eszközök alapján lehet megbecsülni.
+- Határozza meg az adatbázis méretét és növekedési ütemét.
+- Határozza meg az IOPS-követelményeket, amelyeket az Oracle AWR-jelentések vagy más hálózatfigyelő eszközök alapján megbecsülhet.
 
 ## <a name="configuration-options"></a>Beállítási lehetőségek
 
-Négy lehetséges terület közül választhat, amelyek segítségével javíthatja a teljesítményt egy Azure-környezetben:
+Négy lehetséges terület van, amelyeket az Azure-környezetben a teljesítmény javítása érdekében finomíthat:
 
 - Virtuális gép mérete
-- Hálózati átviteli sebesség
-- Lemezek típusai és konfigurációi
+- Hálózati átviteli-átmenő
+- Lemeztípusok és -konfigurációk
 - Lemezgyorsítótár beállításai
 
-### <a name="generate-an-awr-report"></a>AWR-jelentés létrehozása
+### <a name="generate-an-awr-report"></a>AWR-jelentés készítése
 
-Ha már rendelkezik egy Oracle-adatbázissal, és azt tervezi, hogy áttelepíti az Azure-ba, több lehetősége is van. Ha rendelkezik az Oracle-példányok [diagnosztikai csomagjával](https://www.oracle.com/technetwork/oem/pdf/511880.pdf) , futtathatja az Oracle AWR-jelentést a metrikák (IOPS, Mbps, GiBs stb.) lekéréséhez. Ezután válassza ki a virtuális gépet a gyűjtött mérőszámok alapján. Vagy kapcsolatba léphet az infrastruktúra-csapatával, hogy hasonló információkat kapjon.
+Ha rendelkezik egy Oracle-adatbázissal, és az Azure-ba való átutazást tervezi, számos lehetősége van. Ha rendelkezik az Oracle-példányok [diagnosztikai csomagjával,](https://www.oracle.com/technetwork/oem/pdf/511880.pdf) futtathatja az Oracle AWR-jelentést a metrikák (IOPS, Mbps, GiBs és így tovább) lekérni. Ezután válassza ki a virtuális gép a mérőszámok alapján, hogy a begyűjtött. Vagy felveheti a kapcsolatot az infrastruktúra-csapat, hogy hasonló információkat.
 
-Érdemes lehet a AWR-jelentést a normál és a maximális számítási feladatokhoz is futtatni, hogy össze lehessen hasonlítani. Ezen jelentések alapján a virtuális gépeket az átlagos munkaterhelés vagy a maximális munkaterhelés alapján lehet méretezni.
+Érdemes lehet az AWR-jelentést rendszeres és csúcsterhelések során is futtatni, hogy összehasonlíthassa. Ezek a jelentések alapján az átlagos munkaterhelés vagy a maximális munkaterhelés alapján méretezheti a virtuális gépeket.
 
-Az alábbi példa egy AWR-jelentés létrehozását mutatja be (AWR-jelentések létrehozása az Oracle Enterprise Manager használatával, ha a jelenlegi telepítése rendelkezik ilyennel):
+Az alábbi példa bemutatja, hogyan hozhat létre AWR-jelentést (Az AWR-jelentések készítése az Oracle Enterprise Manager segítségével, ha az aktuális telepítésrendelkezik ilyenel):
 
 ```bash
 $ sqlplus / as sysdba
@@ -84,155 +84,155 @@ SQL> EXEC DBMS_WORKLOAD_REPOSITORY.CREATE_SNAPSHOT;
 SQL> @?/rdbms/admin/awrrpt.sql
 ```
 
-### <a name="key-metrics"></a>Fő mérőszámok
+### <a name="key-metrics"></a>Fő bb mérőszámok
 
-A következő mérőszámok olvashatók be a AWR jelentésből:
+Az AWR-jelentésből az alábbi mutatókat láthatja el:
 
-- Magok száma összesen
-- PROCESSZOR órajele
+- Magok teljes száma
+- CPU órajel
 - Teljes memória GB-ban
-- Processzorkihasználtság
+- Processzorhasználat
 - Maximális adatátviteli sebesség
-- I/O-változások aránya (olvasás/írás)
-- A naplózási sebesség (MB/s) visszaállítása
-- Hálózati átviteli sebesség
-- Hálózati késési arány (alacsony/magas)
+- Az I/O-változások mértéke (olvasás/írás)
+- Naplósebesség ismétlése (MPP)
+- Hálózati átviteli-átmenő
+- Hálózati késési sebesség (alacsony/magas)
 - Adatbázis mérete GB-ban
-- Az SQL * net-kiszolgálóról/ügyfélről fogadott bájtok száma
+- SQL*Net-en keresztül fogadott bájtok az ügyféltől/ügyfélnek
 
 ### <a name="virtual-machine-size"></a>Virtuális gép mérete
 
-#### <a name="1-estimate-vm-size-based-on-cpu-memory-and-io-usage-from-the-awr-report"></a>1. A virtuális gép méretének becslése a AWR-jelentés CPU-, memória-és I/O-használata alapján
+#### <a name="1-estimate-vm-size-based-on-cpu-memory-and-io-usage-from-the-awr-report"></a>1. A virtuális gép méretének becslése a CPU, a memória és az I/O-használat alapján az AWR-jelentésből
 
-Az egyik dolog, amit megnézhet, az első öt időzített esemény, amely a rendszer szűk keresztmetszetének helyét jelzi.
+Egy dolog, amit lehet nézni az első öt időzített előtér események, amelyek jelzik, ahol a rendszer szűk keresztmetszetek vannak.
 
-Az alábbi ábrán például a naplófájl szinkronizálása felül van. Azt jelzi, hogy hány várakozásra van szükség, mielőtt a LGWR beírja a log puffert az újra naplófájlba. Ezek az eredmények azt jelzik, hogy a tárolók vagy lemezek jobb teljesítményére van szükség. Emellett a diagram a CPU (magok) számát és a memória mennyiségét is megjeleníti.
+Az alábbi ábrán például a naplófájl szinkronizálása van felül. Azt jelzi, hogy hány várakozásra van szükség ahhoz, hogy az LGWR a naplópuffert a naplófájlba írja. Ezek az eredmények azt jelzik, hogy jobban teljesítő tárolóra vagy lemezekre van szükség. Ezenkívül a diagram a PROCESSZOR (magok) számát és a memória mennyiségét is mutatja.
 
-![A AWR-jelentés oldalának képernyőképe](./media/oracle-design/cpu_memory_info.png)
+![Képernyőkép az AWR jelentésoldaláról](./media/oracle-design/cpu_memory_info.png)
 
-Az alábbi ábrán az olvasási és írási műveletek teljes I/O-értéke látható. A jelentés ideje alatt 59 GB olvasható és 247,3 GB volt.
+Az alábbi ábra az olvasás és írás teljes I/O-ját mutatja be. A jelentés ideje alatt 59 GB olvasásés 247,3 GB volt.
 
-![A AWR-jelentés oldalának képernyőképe](./media/oracle-design/io_info.png)
+![Képernyőkép az AWR jelentésoldaláról](./media/oracle-design/io_info.png)
 
-#### <a name="2-choose-a-vm"></a>2. Virtuális gép kiválasztása
+#### <a name="2-choose-a-vm"></a>2. Válasszon virtuális gép
 
-A AWR jelentésből összegyűjtött információk alapján a következő lépés egy hasonló méretű virtuális gép kiválasztása, amely megfelel az igényeinek. A rendelkezésre álló virtuális gépek listáját a cikk a [memória optimalizált](../../linux/sizes-memory.md)verziójában találja.
+Az AWR-jelentésből gyűjtött információk alapján a következő lépés egy hasonló méretű virtuális gép kiválasztása, amely megfelel az Ön igényeinek. Az elérhető virtuális gépek listáját a [Memória optimalizált](../../linux/sizes-memory.md)című cikkben találja.
 
-#### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. A virtuális gép méretezése a ACU alapuló hasonló virtuálisgép-sorozattal
+#### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. Finomítsa a virtuális gép méretezését egy hasonló vm sorozatalapján ACU
 
-A virtuális gép kiválasztása után figyeljen a virtuális gép ACU. Választhat egy másik virtuális gépet is a ACU érték alapján, amely jobban megfelel a követelményeinek. További információ: [Azure számítási egység](https://docs.microsoft.com/azure/virtual-machines/windows/acu).
+Miután kiválasztotta a virtuális gép, figyeljen a virtuális gép ACU.After you've chosen the VM, figyelni, hogy az ACU a virtuális gép. Előfordulhat, hogy egy másik virtuális gép alapján az ACU érték, amely jobban megfelel az igényeinek. További információ: [Azure compute unit](https://docs.microsoft.com/azure/virtual-machines/windows/acu).
 
-![Képernyőfelvétel a ACU-egységek oldalról](./media/oracle-design/acu_units.png)
+![Képernyőkép az ACU egységek lapról](./media/oracle-design/acu_units.png)
 
-### <a name="network-throughput"></a>Hálózati átviteli sebesség
+### <a name="network-throughput"></a>Hálózati átviteli-átmenő
 
-Az alábbi ábrán az átviteli sebesség és a IOPS közötti kapcsolat látható:
+Az alábbi ábra az átviteli és az IOPS közötti kapcsolatot mutatja be:
 
-![Az átviteli sebesség képernyőképe](./media/oracle-design/throughput.png)
+![Képernyőkép az átviteli hangról](./media/oracle-design/throughput.png)
 
-A teljes hálózati átviteli sebesség a következő információk alapján becsülhető meg:
-- SQL * net-forgalom
-- MBps x kiszolgálók száma (kimenő adatfolyam, például Oracle-adatőr)
-- Egyéb tényezők, például az alkalmazás replikálása
+A teljes hálózati átviteli átmenő t a következő információk alapján becsülik meg:
+- SQL*Net forgalom
+- Mb/s x kiszolgálók száma (kimenő adatfolyam, például Oracle Data Guard)
+- Egyéb tényezők, például az alkalmazások replikációja
 
-![Az SQL * net átviteli sebességének képernyőképe](./media/oracle-design/sqlnet_info.png)
+![Képernyőkép az SQL*Net átviteli fókarendszeréről](./media/oracle-design/sqlnet_info.png)
 
-A hálózati sávszélességre vonatkozó követelmények alapján különböző típusú átjárók közül választhat. Ezek közé tartoznak az alapszintű, a VpnGw és az Azure ExpressRoute. További információt a [VPN Gateway díjszabási oldalán](https://azure.microsoft.com/pricing/details/vpn-gateway/?v=17.23h)talál.
-
-**Javaslatok**
-
-- A hálózati késés magasabb a helyszíni üzembe helyezéshez képest. A hálózati utak csökkentése jelentősen növelheti a teljesítményt.
-- Az egyidejű váltás csökkentése érdekében a nagy tranzakciós vagy "Csevegő" alkalmazásokkal rendelkező alkalmazások összevonása ugyanazon a virtuális gépen.
-- A [gyorsabb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) hálózati teljesítmény érdekében a Virtual Machinest gyorsított hálózatkezeléssel használhatja.
-- Bizonyos linuxos distrubutions esetében érdemes lehet a [Trim/leképezésének megszüntetése támogatásának](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)engedélyezése.
-- Telepítse az [Oracle Enterprise Managert](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) egy különálló virtuális gépre.
-- Alapértelmezés szerint a hatalmas lapok nincsenek engedélyezve a Linuxon. Érdemes lehet hatalmas lapokat engedélyezni `use_large_pages = ONLY` és beállítani a Oracle db. Ez segíthet a teljesítmény növelésében. További információt [itt](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)találhat.
-
-### <a name="disk-types-and-configurations"></a>Lemezek típusai és konfigurációi
-
-- *Alapértelmezett operációsrendszer-lemezek*: Ezek a típusú lemezek állandó adatmennyiséget és gyorsítótárazást biztosítanak. A rendszer indításkor optimalizált operációsrendszer-hozzáférésre, és nem a tranzakciós vagy adatraktár (analitikus) számítási feladatokhoz lett tervezve.
-
-- Nem *felügyelt lemezek*: Ezekkel a lemezekkel kezelheti a virtuálisgép-lemezeknek megfelelő VHD-fájlokat tároló Storage-fiókokat. A VHD-fájlok blobként tárolódnak az Azure Storage-fiókokban.
-
-- *Felügyelt lemezek*: Az Azure kezeli a virtuálisgép-lemezekhez használt Storage-fiókokat. Adja meg a lemez típusát (prémium vagy standard) és a szükséges lemez méretét. Az Azure létrehozza és kezeli a lemezt.
-
-- *Prémium szintű Storage-lemezek*: Ezek a lemezek a legmegfelelőbbek az éles számítási feladatokhoz. A Premium Storage olyan virtuálisgép-lemezeket támogat, amelyek adott méretű virtuális gépekhez, például a DS, a DSv2, a GS és az F sorozatú virtuális gépekhez csatlakoztathatók. A prémium szintű lemez különböző méretekkel rendelkezik, és az 32 GB és 4 096 GB közötti hosszúságú lemezek közül választhat. Mindegyik lemez mérete saját teljesítményre vonatkozó előírásokkal rendelkezik. Az alkalmazás követelményeitől függően egy vagy több lemezt is csatolhat a virtuális géphez.
-
-Amikor új felügyelt lemezt hoz létre a portálról, kiválaszthatja a használni kívánt lemez típusát. Ne feledje, hogy az összes rendelkezésre álló lemez nem jelenik meg a legördülő menüben. Egy adott virtuálisgép-méret kiválasztása után a menü csak a virtuális gép méretétől függően elérhető Premium Storage SKU-t jeleníti meg.
-
-![A felügyelt lemez oldalának képernyőképe](./media/oracle-design/premium_disk01.png)
-
-Miután konfigurálta a tárolót egy virtuális gépen, érdemes lehet betölteni a lemezek tesztelését az adatbázis létrehozása előtt. Az I/O-sebesség a késés és az átviteli sebesség tekintetében való ismerete segíthet megállapítani, hogy a virtuális gépek támogatják-e a várt átviteli sebességet a késési célokkal.
-
-Számos eszköz használható az alkalmazások terhelésének tesztelésére, például az Oracle Orion, a Sysbench és a Fio.
-
-Futtassa újra a terhelési tesztet, miután telepített egy Oracle-adatbázist. Indítsa el a normál és a legmagasabb munkaterhelést, és az eredmények megmutatják a környezet alapkonfigurációját.
-
-Előfordulhat, hogy a tárolási méret helyett a IOPS arány alapján kell méreteznie a tárterületet. Ha például a szükséges IOPS értéke 5 000, de csak 200 GB szükséges, akkor is előfordulhat, hogy a P30 osztály prémium lemeze még akkor is elérhető, ha több mint 200 GB tárterületet tartalmaz.
-
-A IOPS arány a AWR jelentésből szerezhető be. Ezt a rendszer a visszaállítási napló, a fizikai olvasások és az írási arány alapján határozza meg.
-
-![A AWR-jelentés oldalának képernyőképe](./media/oracle-design/awr_report.png)
-
-Például az ismétlés mérete 12 200 000 bájt/másodperc, ami egyenlő a 11,63 MBPs-val.
-A IOPS a 12 200 000/2 358 = 5 174.
-
-Az I/O-követelmények egyértelmű képe után kiválaszthatja a követelmények teljesítéséhez legmegfelelőbb meghajtók kombinációját.
+A hálózati sávszélesség-követelmények alapján különböző átjárótípusok közül választhat. Ezek közé tartozik az alapszintű, a VpnGw és az Azure ExpressRoute. További információt a [VPN-átjáró díjszabási lapján](https://azure.microsoft.com/pricing/details/vpn-gateway/?v=17.23h)talál.
 
 **Javaslatok**
 
-- Az adatkezelők esetében a felügyelt tároló vagy az Oracle ASM használatával vigye át az I/O-munkaterhelést több lemezre.
-- Ahogy az I/O-blokk mérete növekszik az olvasási és az írási igényű műveleteknél, további adatlemezeket adhat hozzá.
-- Növelje a nagyméretű szekvenciális folyamatok blokkjának méretét.
-- Az adattömörítés használatával csökkentheti az I/O-t (az adatmennyiség és az indexek esetében egyaránt).
-- Válassza el a naplók, a rendszer és a temps elválasztását, és vonja vissza a TS-t külön adatlemezeken.
-- Ne helyezzen minden alkalmazásfájl alapértelmezett operációsrendszer-lemezre (/dev/sda). Ezek a lemezek nem optimalizálták a virtuális gép rendszerindítási idejét, és előfordulhat, hogy nem biztosítanak jó teljesítményt az alkalmazás számára.
-- Ha az M sorozatú virtuális gépeket Premium Storage- [](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) on használja, engedélyezze a írásgyorsítót a naplók megismétlése lemezre.
+- A hálózati késés magasabb, mint a helyszíni központi telepítés. A hálózati oda-vissza utak csökkentése nagyban javíthatja a teljesítményt.
+- Az oda-vissza utak csökkentése érdekében konszolidálja azokat az alkalmazásokat, amelyek nagy tranzakciókkal vagy "beszédes" alkalmazásokkal rendelkeznek ugyanazon a virtuális gépen.
+- A jobb hálózati teljesítmény érdekében [használjon gyorsított hálózattal](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) rendelkező virtuális gépeket.
+- Bizonyos Linux-disztibutiók esetében fontolja meg a [TRIM/UNMAP támogatás engedélyezését.](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)
+- Telepítse az [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) alkalmazást egy külön virtuális gépre.
+- Hatalmas oldalak alapértelmezés szerint nincsenek engedélyezve linuxon. Fontolja meg a hatalmas `use_large_pages = ONLY` oldalak engedélyezését, és állítsa be az Oracle DB-t. Ez segíthet a teljesítmény növelésében. További információ [itt](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)található .
+
+### <a name="disk-types-and-configurations"></a>Lemeztípusok és -konfigurációk
+
+- *Alapértelmezett operációsrendszer-lemezek:* Ezek a lemeztípusok állandó adatokat és gyorsítótárazást kínálnak. Az operációs rendszer indításkori elérésére vannak optimalizálva, és nem tranzakciós vagy adattárház (analitikus) számítási feladatokhoz készültek.
+
+- *Nem felügyelt lemezek:* Ezekkel a lemeztípusokkal kezelheti a virtuális merevlemez-fájlokat (VHD) tartalmazó tárfiókokat, amelyek megfelelnek a virtuális gép lemezeinek. VHD-fájlok at tárolják, mint a lap blobok az Azure storage-fiókokban.
+
+- *Felügyelt lemezek:* Az Azure kezeli a virtuális gép lemezeihez használt tárfiókokat. Megadhatja a lemez típusát (prémium vagy normál) és a szükséges lemez méretét. Az Azure létrehozza és kezeli a lemezt.
+
+- *Prémium szintű tárolólemezek:* Ezek a lemeztípusok a legalkalmasabbak az éles számítási feladatokhoz. A prémium szintű storage támogatja az adott méretsorozatú virtuális gépekhez , például a DS, a DSv2, a GS és az F sorozatú virtuális gépekhez csatlakoztatható virtuális gépeket. A prémium szintű lemez különböző méretű, és 32 GB és 4096 GB közötti lemezek közül választhat. Minden lemezméretnek saját teljesítményspecifikációja van. Az alkalmazás követelményeitől függően egy vagy több lemezt csatolhat a virtuális géphez.
+
+Amikor új felügyelt lemezt hoz létre a portálról, kiválaszthatja a használni kívánt lemeztípus **fióktípusát.** Ne feledje, hogy nem minden elérhető lemez jelenik meg a legördülő menüben. Egy adott virtuális gép méretének kiválasztása után a menü csak a virtuális gép méretén alapuló rendelkezésre álló prémium szintű storage SK-kat jeleníti meg.
+
+![Képernyőkép a felügyelt lemez lapról](./media/oracle-design/premium_disk01.png)
+
+Miután konfigurálta a tárolót egy virtuális gépen, érdemes lehet betölteni a lemezeket az adatbázis létrehozása előtt. Az I/O-díj a késés és az átviteli sebesség szempontjából segíthet meghatározni, hogy a virtuális gépek támogatják-e a várt átviteli sebességet késési célokkal.
+
+Számos eszköz az alkalmazás terhelésének teszteléséhez, például az Oracle Orion, a Sysbench és a Fio.
+
+Futtassa újra a betöltési tesztet, miután telepítette az Oracle-adatbázist. Indítsa el a rendszeres és a csúcs számítási feladatok, és az eredmények azt mutatják, a környezet alapkonfigurációját.
+
+Lehet, hogy fontosabb, hogy a tároló mérete alapján az IOPS-díj, nem pedig a tárolási méret. Például ha a szükséges IOPS 5000, de csak 200 GB-ra van szüksége, előfordulhat, hogy továbbra is megkapja a P30-osztályú prémium szintű lemezt, még akkor is, ha több mint 200 GB tárhellyel rendelkezik.
+
+Az IOPS-ráta az AWR-jelentésből szerezhető be. Ezt az ismétlési napló, a fizikai olvasások és az írási arány határozza meg.
+
+![Képernyőkép az AWR jelentésoldaláról](./media/oracle-design/awr_report.png)
+
+Az ismétlés mérete például 12 200 000 bájt másodpercenként, ami 11,63 Mbps-nek felel meg.
+Az IOPS 12 200 000 / 2358 = 5174.
+
+Miután világos képet kap az I/O-követelményekről, kiválaszthatja az ezen követelményeknek leginkább megfelelő meghajtók kombinációját.
+
+**Javaslatok**
+
+- Az adattáblatér esetében az I/O-munkaterhelést több lemezre is elosztva felügyelt tároló vagy Oracle ASM használatával.
+- Az I/O-blokk méretének növekedésével az olvasásigényes és írásigényes műveletek hez további adatlemezek et adhat hozzá.
+- Növelje a blokkméretét a nagy szekvenciális folyamatokhoz.
+- Az i/o-érték csökkentéséhez használjon adattömörítést (adat- és indexek esetén egyaránt).
+- Külön ismétlési naplók, rendszer és hőmérséklet, és visszavonása TS külön adatlemezeken.
+- Ne helyezzen alkalmazásfájlokat az alapértelmezett operációsrendszer-lemezekre (/dev/sda). Ezek a lemezek nincsenek optimalizálva a virtuális gép gyors rendszerindítási idejére, és előfordulhat, hogy nem nyújtanak jó teljesítményt az alkalmazás számára.
+- Ha M-series virtuális gépeket használ prémium szintű tárhelyen, engedélyezze az [Írásgyorsítót](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) a naplózó lemez en.
 
 ### <a name="disk-cache-settings"></a>Lemezgyorsítótár beállításai
 
-A gazdagépek gyorsítótárazásának három lehetősége van:
+A gazdagép gyorsítótárazásának három lehetősége van:
 
-- *ReadOnly*: A rendszer az összes kérést gyorsítótárazza a jövőbeli olvasásokhoz. Az összes írás közvetlenül az Azure Blob Storage-ban marad.
+- *Csak olvasás:* Minden kérelem gyorsítótárazva a jövőbeli olvasások. Az összes írási művelet közvetlenül az Azure Blob storage-ba van megőrződve.
 
-- *READWRITE*: Ez egy "olvasási előre" algoritmus. Az olvasási és írási műveleteket a rendszer gyorsítótárazza a későbbi olvasási műveletekhez. A nem írható írási írások megmaradnak a helyi gyorsítótárban. Emellett a legkisebb lemezterületet is biztosítja a könnyű munkaterhelések esetében. Ha a ReadWrite cache-t olyan alkalmazással használja, amely nem kezeli a szükséges adatmegőrzést, adatvesztést okozhat, ha a virtuális gép összeomlik.
+- *ReadWrite*: Ez egy "read-ahead" algoritmus. Az olvasások és írások gyorsítótárba kerülnek a jövőbeli olvasásokhoz. A nem átíró írások először a helyi gyorsítótárban maradnak meg. Emellett a legalacsonyabb lemezkésést is biztosítja a könnyű munkaterhelések számára. ReadWrite cache használata egy olyan alkalmazással, amely nem kezeli a szükséges adatok at, adatvesztést okozhat, ha a virtuális gép összeomlik.
 
-- *Nincs* (letiltva): Ezzel a beállítással megkerülheti a gyorsítótárat. A rendszer az összes adatlemezt áthelyezi az Azure Storage szolgáltatásba. Ez a módszer a legmagasabb I/o-sebességet biztosítja az I/O-igényes számítási feladatokhoz. A tranzakciós költségeket is figyelembe kell vennie.
+- *Nincs* (letiltva): Ezzel a beállítással megkerülheti a gyorsítótárat. Az összes adat lemezre kerül, és megmarad az Azure Storage-ba. Ez a módszer a legmagasabb I/O-díjat biztosítja az I/O-intenzív munkaterhelések esetén. A "tranzakciós költséget" is figyelembe kell vennie.
 
 **Javaslatok**
 
-Az átviteli sebesség maximalizálása érdekében javasoljuk, hogy a **Nincs beállítást** használja a gazdagépek gyorsítótárazásához. Premium Storage esetében ne feledje, hogy az "akadályokat" le kell tiltania, ha a fájlrendszert a **readonly** vagy a **none** lehetőséggel csatlakoztatja. Frissítse az/etc/fstab fájlt az UUID használatával a lemezekre.
+Az átviteli szint maximalizálása érdekében azt javasoljuk, hogy kezdje a **Nincs** a gazdagép gyorsítótárazása. A prémium szintű tárolás esetén ne feledje, hogy le kell tiltania a "korlátokat", amikor a fájlrendszert a **ReadOnly** vagy a None beállítással **csatlakoztatja.** Frissítse az /etc/fstab fájlt az UUID azonosítóval a lemezekre.
 
-![A felügyelt lemez oldalának képernyőképe](./media/oracle-design/premium_disk02.png)
+![Képernyőkép a felügyelt lemez lapról](./media/oracle-design/premium_disk02.png)
 
-- OPERÁCIÓSRENDSZER-lemezek esetén használja az alapértelmezett **írási/olvasási** gyorsítótárazást.
-- A rendszer, a TEMP és a visszavonás a **Nincs beállítást** használja a gyorsítótárazáshoz.
-- Az adattároláshoz a **Nincs beállítást** használja a gyorsítótárazáshoz. Ha azonban az adatbázis írásvédett vagy olvasási igényű, használja a **csak olvasható** gyorsítótárazást.
+- Operációs rendszer lemezei esetén használja az alapértelmezett **olvasási/írási** gyorsítótárazást.
+- A SYSTEM, TEMP és UNDO esetében a **Nincs** a gyorsítótárazáshoz.
+- Data esetén használja a **Nincs** parancsot a gyorsítótárazáshoz. Ha azonban az adatbázis írásvédett vagy írásigényes, csak **olvasható** gyorsítótárazást használjon.
 
-Az adatlemez-beállítás mentése után a gazdagép-gyorsítótár beállítása nem módosítható, ha leválasztja a meghajtót az operációs rendszer szintjén, majd újracsatlakoztatja azt a módosítás után.
+Az adatlemez-beállítás mentése után csak akkor módosíthatja a gazdagyorsítótár-beállítást, ha leválassza a meghajtót az operációs rendszer szintjén, majd a módosítás után újra csatlakoztatja.
 
 ## <a name="security"></a>Biztonság
 
-Az Azure-környezet beállítása és konfigurálása után a következő lépés a hálózat védelme. Íme néhány javaslat:
+Miután beállította és konfigurálta az Azure-környezetet, a következő lépés a hálózat védelme. Íme néhány javaslat:
 
-- *NSG házirend*: A NSG alhálózatok vagy hálózati ADAPTERek is meghatározhatók. Egyszerűbben szabályozható a hozzáférés az alhálózat szintjén, mind a biztonság, mind a kényszerített útválasztás, például az alkalmazási tűzfalak esetében.
+- *NSG-házirend*: Az NSG alhálózat vagy hálózati adapter definiálható. Egyszerűbb az alhálózati szinten szabályozni a hozzáférést, mind a biztonság, mind az alkalmazástűzfalak kényszerítése érdekében.
 
-- *Jumpbox*: A biztonságosabb hozzáférés érdekében a rendszergazdáknak nem kell közvetlenül kapcsolódniuk az alkalmazás-szolgáltatáshoz vagy-adatbázishoz. A Jumpbox a felügyeleti gép és az Azure-erőforrások közötti adathordozóként használják.
-![A Jumpbox-topológia oldalának képernyőképe](./media/oracle-design/jumpbox.png)
+- *Jumpbox*: A biztonságosabb hozzáférés érdekében a rendszergazdák nem csatlakozhatnak közvetlenül az alkalmazásszolgáltatáshoz vagy adatbázishoz. A jumpbox a rendszergazdai gép és az Azure-erőforrások közötti adathordozóként használható.
+![Képernyőkép a Jumpbox topológia lapról](./media/oracle-design/jumpbox.png)
 
-    A rendszergazda számítógép csak a Jumpbox számára biztosít IP-hozzáférésre korlátozott hozzáférést. A Jumpbox hozzáféréssel kell rendelkeznie az alkalmazáshoz és az adatbázishoz.
+    A rendszergazdai számítógép csak a jumpboxhoz biztosíthat korlátozott IP-hozzáférést. A jumpbox nak hozzáféréssel kell rendelkeznie az alkalmazáshoz és az adatbázishoz.
 
-- *Magánhálózat* (alhálózatok): Azt javasoljuk, hogy az alkalmazás-szolgáltatás és az adatbázis külön alhálózatokon legyen, ezért a NSG házirend által beállítható jobb szabályozás.
+- *Magánhálózat* (alhálózatok): Azt javasoljuk, hogy az alkalmazásszolgáltatás és az adatbázis külön alhálózatokon, így az NSG-házirend jobb vezérlést állíthat be.
 
 
-## <a name="additional-reading"></a>További olvasnivaló
+## <a name="additional-reading"></a>További olvasás
 
 - [Oracle ASM konfigurálása](configure-oracle-asm.md)
-- [Az Oracle-adatvédelem konfigurálása](configure-oracle-dataguard.md)
+- [Oracle Data Guard konfigurálása](configure-oracle-dataguard.md)
 - [Az Oracle Golden Gate konfigurálása](configure-oracle-golden-gate.md)
 - [Oracle biztonsági mentés és helyreállítás](oracle-backup-recovery.md)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Magasan elérhető virtuális gépek létrehozása](../../linux/create-cli-complete.md)
-- [A virtuális gépek üzembe helyezésének megismerése Azure CLI-mintákkal](../../linux/cli-samples.md)
+- [Oktatóanyag: Magas rendelkezésre állású virtuális gépek létrehozása](../../linux/create-cli-complete.md)
+- [Fedezze fel a virtuális gép üzembe helyezését az Azure CLI-mintákban](../../linux/cli-samples.md)

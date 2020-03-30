@@ -1,6 +1,6 @@
 ---
-title: Az Azure megosztott képtára
-description: Megtudhatja, hogyan használhatja a megosztott képtárakat a virtuális gépek rendszerképeinek megosztására a szervezeten belül.
+title: Azure megosztott képtár
+description: Ismerje meg, hogyan használhatja a megosztott képgalériákat a virtuális gép képeinek szervezeten belüli megosztásához.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: axayjo
@@ -17,13 +17,13 @@ ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: 839ef8d32e9a84005dc47ad90b957bb780090589
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74065615"
 ---
-# <a name="shared-image-gallery-overview"></a>Megosztott képgyűjtemény – áttekintés
+# <a name="shared-image-gallery-overview"></a>Megosztott képtár – áttekintés
 
 
 [!INCLUDE [virtual-machines-common-shared-image-galleries](../../../includes/virtual-machines-common-shared-image-galleries.md)]
@@ -31,4 +31,4 @@ ms.locfileid: "74065615"
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan [helyezhet üzembe megosztott rendszerképeket Azure PowerShell használatával](shared-images.md).
+Ismerje meg, hogyan telepítheti a [megosztott lemezképeket az Azure PowerShell használatával.](shared-images.md)

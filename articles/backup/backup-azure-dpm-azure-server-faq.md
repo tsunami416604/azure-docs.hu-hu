@@ -1,71 +1,71 @@
 ---
 title: Azure Backup Server és DPM – gyakori kérdések
-description: Ebben a cikkben a Microsoft Azure Backup-kiszolgálóval (MABS) és a DPM (Data Protection Manager) kapcsolatos gyakori kérdésekre adott válaszokat talál.
+description: Ebben a cikkben válaszokat kaphat a Microsoft Azure Backup Server (MABS) és a DPM (Adatvédelmi kezelő) szolgáltatással kapcsolatos gyakori kérdésekre.
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74173159"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server és DPM – gyakori kérdések
 
 ## <a name="general-questions"></a>Általános kérdések
 
-Ez a cikk a Azure Backup Server és a DPM kapcsolatos gyakori kérdésekre ad választ.
+Ez a cikk választ ad az Azure Backup Server és a DPM szolgáltatással kapcsolatos gyakori kérdésekre.
 
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server"></a>Használhatom az Azure Backup kiszolgálót egy operációs rendszer nélküli helyreállítás (BMR) biztonsági másolatának létrehozásához egy fizikai kiszolgálón?
 
 Igen.
 
-### <a name="can-i-register-the-server-to-multiple-vaults"></a>Regisztrálhatom a kiszolgálót több tárba?
+### <a name="can-i-register-the-server-to-multiple-vaults"></a>Regisztrálhatom a kiszolgálót több tárolóba?
 
-Nem. Egy DPM vagy Azure Backup-kiszolgáló csak egy tárolóban regisztrálható.
+Nem. A DPM vagy az Azure Backup kiszolgáló csak egy tárolóregisztrálható.
 
-### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Használhatom a DPM az alkalmazások biztonsági mentését Azure Stack-ben?
+### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Használhatom a DPM-et az Azure Stackben lévő alkalmazások biztonsági csinálására?
 
-Nem. A Azure Backup használatával biztosíthatja a Azure Stackt, Azure Backup nem támogatja a DPM használatát az alkalmazások Azure Stack-beli biztonsági mentéséhez.
+Nem. Az Azure Backup segítségével megvédheti az Azure Stacket, az Azure Backup nem támogatja a DPM használatát az Azure Stackben lévő alkalmazások biztonsági mentéséhez.
 
-### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Ha telepítettem Azure Backup ügynököt a fájlok és mappák védeleméhez, telepíthetem a System Center DPM-t a helyszíni számítási feladatok Azure-ba való biztonsági mentésére?
+### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Ha telepítettem az Azure Backup-ügynököt a fájlok és mappák védelmére, telepíthetem a System Center DPM-et a helyszíni számítási feladatok Azure-ba való biztonsági mentéséhez?
 
-Igen. Először is be kell állítania a DPM, majd telepítenie kell a Azure Backup ügynököt.  Az összetevők ebben a sorrendben történő telepítése biztosítja, hogy a Azure Backup ügynök együttműködik a DPM. Az ügynök telepítése a DPM telepítése előtt nem javasolt vagy nem támogatott.
+Igen. De először állítsa be a DPM-et, majd telepítse az Azure Backup-ügynököt.  Az összetevők telepítése ebben a sorrendben biztosítja, hogy az Azure Backup ügynök együttműködik a DPM. A DPM telepítése előtt az ügynök telepítése nem ajánlott és nem támogatott.
 
-### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Miért nem lehet külső DPM-kiszolgálót felvenni a HASZNÁLNA 7 és a legújabb Azure Backup ügynök telepítése után?
+### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Miért nem tudok külső DPM-kiszolgálót hozzáadni az UR7 és a legújabb Azure Backup-ügynök telepítése után?
 
-A felhőben védett adatforrásokkal rendelkező DPM-kiszolgálók esetében (a 7. kumulatív frissítésnél korábbi kumulatív frissítés használatával) a HASZNÁLNA 7 és a legújabb Azure Backup ügynök telepítése után meg kell várnia a **külső DPM-kiszolgáló hozzáadásának**megkezdését. Az egynapos időszak szükséges ahhoz, hogy feltöltse a DPM védelmi csoportok metaadatait az Azure-ba. A védelmi csoport metaadatait a rendszer első alkalommal feltölti egy éjszakai feladattal.
+A felhővel védett adatforrásokkal rendelkező DPM-kiszolgálók esetében (a 7. összegző frissítőcsomagnál korábbi összegző frissítőcsomag használatával) legalább egy napot várnia kell az UR7 és a legújabb Azure Backup-ügynök telepítése után a **Külső DPM-kiszolgáló hozzáadása**elindításához. Az egynapos időszak a DPM-védelmi csoportok metaadatainak az Azure-ba való feltöltéséhez szükséges. A védelmi csoport metaadatai az első alkalommal egy éjszakai feladaton keresztül töltődnek fel.
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware és Hyper-V biztonsági mentés
 
 ### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>Tudok biztonsági mentést készíteni VMware vCenter-kiszolgálókról az Azure-ban?
 
-Igen. A Azure Backup Server használatával biztonsági mentést készíthet VMware vCenter Server és ESXi-gazdagépekről az Azure-ba.
+Igen. Az Azure Backup Server segítségével biztonsági másolatot készíthet a VMware vCenter Server és ESXi-állomásokról az Azure-ba.
 
-- [További](backup-mabs-protection-matrix.md) információ a támogatott verziókról.
-- A VMware-kiszolgáló biztonsági mentését a következő [lépésekkel](backup-azure-backup-server-vmware.md) végezheti el.
+- [További információ](backup-mabs-protection-matrix.md) a támogatott verziókról.
+- A VMware-kiszolgáló biztonsági és biztonsági biztonsági rendszerének biztonsági leéséhez [kövesse az alábbi lépéseket.](backup-azure-backup-server-vmware.md)
 
-### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster"></a>Külön licencre van szükségem egy teljes helyszíni VMware/Hyper-V fürt helyreállításához?
+### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster"></a>Külön licencre van szükségem a teljes helyszíni VMware/Hyper-V fürt helyreállításához?
 
-Nincs szükség külön licencelésre a VMware/Hyper-V-védelemhez.
+A VMware/Hyper-V védelemhez nincs szükség külön licencelésre.
 
-- Ha Ön a System Center-ügyfél, használja a System Center Data Protection Manager (DPM) szolgáltatást a VMware virtuális gépek elleni védelemhez.
-- Ha nem a System Center-ügyfél, használhatja a Azure Backup Server (utólagos elszámolású) lehetőséget a VMware virtuális gépek elleni védelemhez.
+- Ha Ön System Center-ügyfél, használja a System Center Data Protection Manager (DPM) szolgáltatást a VMware virtuális gépek védelméhez.
+- Ha ön nem system center-ügyfél, használhatja az Azure Backup Server (használatalapú fizetés) segítségével a VMware virtuális gépek védelmére.
 
 ## <a name="sharepoint"></a>SharePoint
 
-### <a name="can-i-recover-a-sharepoint-item-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson-with-protection-on-disk"></a>Helyreállítható egy SharePoint-elem az eredeti helyre, ha a SharePoint az SQL AlwaysOn használatával van konfigurálva (a lemezes védelemmel)?
+### <a name="can-i-recover-a-sharepoint-item-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson-with-protection-on-disk"></a>Helyreállítható kontinamányos SharePoint-elem az eredeti helyre, ha a SharePoint az SQL AlwaysOn (lemezen védelemmel) használatával van konfigurálva?
 
-Igen, az elem visszaállítható az eredeti SharePoint-webhelyre.
+Igen, az elem visszavezethető az eredeti SharePoint-webhelyre.
 
-### <a name="can-i-recover-a-sharepoint-database-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson"></a>Helyre lehet állítani egy SharePoint-adatbázist az eredeti helyre, ha a SharePoint az SQL AlwaysOn használatával van konfigurálva?
+### <a name="can-i-recover-a-sharepoint-database-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson"></a>Helyreállítható kontinamányos SharePoint-adatbázis az eredeti helyre, ha a SharePoint az SQL AlwaysOn használatával van konfigurálva?
 
-Mivel a SharePoint-adatbázisok az SQL-AlwaysOn vannak konfigurálva, csak akkor módosíthatók, ha a rendelkezésre állási csoport el lett távolítva. Ennek eredményeképpen a DPM nem tudja visszaállítani az adatbázist az eredeti helyére. SQL Server-adatbázist egy másik SQL Server-példányra is helyreállíthatja.
+Mivel a SharePoint-adatbázisok SQL AlwaysOn nyelven vannak konfigurálva, csak akkor módosíthatók, ha a rendelkezésre állási csoportot eltávolították. Ennek eredményeképpen a DPM nem tudja visszaállítani az adatbázist az eredeti helyre. Az SQL Server-adatbázis egy másik SQL Server-példányba állítható helyre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További gyakori kérdések:
+További gyakori kérdéseket is áttekinthet:
 
-- [További](backup-support-matrix-mabs-dpm.md) információ a Azure Backup Server és a DPM támogatási mátrixáról.
-- [További](backup-azure-mabs-troubleshoot.md) információ a Azure Backup Server és a DPM hibaelhárítási irányelveiről.
+- [További információ](backup-support-matrix-mabs-dpm.md) az Azure Backup Server és a DPM támogatási mátrixáról.
+- [További információ](backup-azure-mabs-troubleshoot.md) az Azure Backup Server és a DPM hibaelhárítási irányelveiről.

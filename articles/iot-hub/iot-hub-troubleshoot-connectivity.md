@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub-kapcsolat figyelése és hibakeresése
-description: Megtudhatja, hogyan figyelheti és elháríthatja az Azure-IoT Hub eszköz-kapcsolattal kapcsolatos gyakori hibákat
+title: A kapcsolatbontások figyelése és hibaelhárítása az Azure IoT Hubbal
+description: Ismerje meg az Azure IoT Hub eszközkapcsolatával kapcsolatos gyakori hibák figyelését és elhárítását
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -9,84 +9,84 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: bed6736fda0c1815964f9017adb1e6fffa9335d9
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110688"
 ---
-# <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Az Azure IoT Hub-vel való kapcsolat figyelése, diagnosztizálása és hibakeresése
+# <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Az Azure IoT Hubbal való kapcsolatbontások figyelése, diagnosztizálása és hibaelhárítása
 
-A IoT-eszközök kapcsolódási problémái nehézkesek lehetnek a hibaelhárításhoz, mert számos lehetséges meghibásodási pont áll rendelkezésre. Az alkalmazás logikája, a fizikai hálózatok, a protokollok, a hardverek, a IoT Hub és más felhőalapú szolgáltatások okozhatnak problémákat. Kritikus fontosságú a probléma forrásának észlelése és felderítése. Egy IoT megoldás azonban több ezer eszközzel is rendelkezhet, ezért nem célszerű manuálisan megnézni az egyes eszközöket. Ezen problémák nagy léptékű észlelése, diagnosztizálása és hibaelhárítása érdekében használja a figyelési képességek IoT Hub a Azure Monitoron keresztül. Ezek a képességek arra korlátozódnak, hogy milyen IoT Hub figyelhetők meg, ezért javasoljuk, hogy kövesse az eszközökhöz és más Azure-szolgáltatásokhoz kapcsolódó ajánlott eljárások monitorozását.
+Az IoT-eszközök kapcsolódási problémáit nehéz lehet elhárítani, mivel sok lehetséges hibapont van. Az alkalmazáslogika, a fizikai hálózatok, a protokollok, a hardverek, az IoT Hub és más felhőszolgáltatások mind problémákat okozhatnak. A probléma forrásának észlelése és pontosítása kritikus fontosságú. Egy nagy méretű IoT-megoldás azonban több ezer eszközzel rendelkezhet, ezért nem célszerű manuálisan ellenőrizni az egyes eszközöket. A problémák nagy méretekben történő észleléséhez, diagnosztizálásához és elhárításához használja az IoT Hub által az Azure Monitoron keresztül biztosított figyelési képességeket. Ezek a képességek csak arra korlátozódnak, amit az IoT Hub megfigyelhet, ezért azt is javasoljuk, hogy kövesse az eszközök és más Azure-szolgáltatások ajánlott eljárások figyelését.
 
-## <a name="get-alerts-and-error-logs"></a>Riasztások és hibanapló beolvasása
+## <a name="get-alerts-and-error-logs"></a>Értesítések és hibanaplók beszerezni
 
-A Azure Monitor használatával riasztásokat kaphat, és naplókat írhat az eszközök leválasztásakor.
+Az Azure Monitor használatával értesítéseket kaphat, és naplókat írhat, amikor az eszközök bontják a kapcsolatot.
 
-### <a name="turn-on-diagnostic-logs"></a>Kapcsolja be a diagnosztikai naplók
+### <a name="turn-on-diagnostic-logs"></a>Diagnosztikai naplók bekapcsolása
 
-Az eszköz kapcsolódási eseményeinek és hibáinak naplózásához kapcsolja be a diagnosztikát a IoT Hubhoz. Javasoljuk, hogy a lehető leghamarabb bekapcsolja ezeket a naplókat, mert ha a diagnosztikai naplók nincsenek engedélyezve, akkor az eszköz leválasztásakor nem lesz információ a problémáinak elhárításához.
+Eszközkapcsolati események és -hibák naplózásához kapcsolja be az IoT Hub diagnosztikájának bekapcsolását. Javasoljuk, hogy a lehető leghamarabb kapcsolja be ezeket a naplókat, mert ha a diagnosztikai naplók nincsenek engedélyezve, amikor az eszköz bontja a kapcsolatot, akkor nem lesz semmilyen információ a probléma elhárításához.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-2. Keresse meg az IoT hubot.
+2. Tallózással az IoT-központ.
 
-3. Válassza a **diagnosztikai beállítások**lehetőséget.
+3. Válassza **a Diagnosztikai beállítások lehetőséget**.
 
-4. Kattintson **a diagnosztika bekapcsolása**elemre.
+4. Válassza **a Diagnosztika bekapcsolása**lehetőséget.
 
-5. A **kapcsolatok** naplóinak begyűjtésének engedélyezése.
+5. A **kapcsolatok** naplóinak gyűjtését engedélyezze.
 
-6. A könnyebb elemzés érdekében kapcsolja be a **küldés log Analytics** ([lásd a díjszabást](https://azure.microsoft.com/pricing/details/log-analytics/)). A [kapcsolódási hibák elhárítása](#resolve-connectivity-errors)című témakörben talál példát.
+6. A könnyebb elemzés érdekében kapcsolja be a **Küldés a Log Analytics szolgáltatásba** [(lásd: díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/)). Lásd a példát a [Kapcsolódási hibák megoldása csoportban.](#resolve-connectivity-errors)
 
    ![Ajánlott beállítások](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
 
-További információ: [Az Azure IoT hub állapotának monitorozása és a problémák gyors diagnosztizálása](iot-hub-monitor-resource-health.md).
+További információ: [Az Azure IoT Hub állapotának figyelése és a problémák gyors diagnosztizálása](iot-hub-monitor-resource-health.md)című témakörben olvashat.
 
-### <a name="set-up-alerts-for-device-disconnect-at-scale"></a>Riasztások beállítása az eszköz leválasztásához a skálán
+### <a name="set-up-alerts-for-device-disconnect-at-scale"></a>Riasztások beállítása az eszköz bontásához nagy méretekben
 
-Ha riasztásokat szeretne kapni az eszközök leválasztásakor, konfigurálja a riasztásokat a **csatlakoztatott eszközök (előzetes verzió)** metrikában.
+Ha riasztásokat szeretne kapni, amikor az eszközök bontják a kapcsolatot, konfigurálja a riasztásokat a **Csatlakoztatott eszközök (előzetes verzió)** mérőszámon.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-2. Keresse meg az IoT hubot.
+2. Tallózással az IoT-központ.
 
-3. Válassza a **riasztások**lehetőséget.
+3. Válassza **a Riasztások lehetőséget.**
 
-4. Válassza az **új riasztási szabály**lehetőséget.
+4. Válassza az **Új riasztási szabály** lehetőséget.
 
-5. Válassza a **feltétel hozzáadása**, majd a csatlakoztatott eszközök (előzetes verzió) lehetőséget.
+5. Válassza **a Feltétel hozzáadása**lehetőséget, majd válassza a "Csatlakoztatott eszközök (előnézet)" lehetőséget.
 
-6. A küszöbértékek és a riasztások beállítása a következő utasításokat követve.
+6. Állítsa be a küszöbértéket és a riasztást a következő utasításokat követve.
 
-További információ: [Mik a riasztások a Microsoft Azure?](../azure-monitor/platform/alerts-overview.md).
+További információ: [Mik a riasztások a Microsoft Azure-ban?](../azure-monitor/platform/alerts-overview.md)
 
 #### <a name="detecting-individual-device-disconnects"></a>Az egyes eszközök leválasztásának észlelése
 
-Az eszközön keresztüli leválasztások *észleléséhez* , például ha tudnia kell, hogy egy gyár offline állapotba került, [konfigurálja az eszköz leválasztási eseményeit Event Grid](iot-hub-event-grid.md).
+Az *eszközönkénti* kapcsolatbontások észleléséhez, például ha tudnia kell, hogy egy gyár offline állapotba került, [konfigurálja az eszközleválasztó eseményeket az Event Grid segítségével.](iot-hub-event-grid.md)
 
-## <a name="resolve-connectivity-errors"></a>Csatlakozási hibák elhárítása
+## <a name="resolve-connectivity-errors"></a>Kapcsolódási hibák megoldása
 
-Ha bekapcsolja a diagnosztikai naplókat és riasztásokat a csatlakoztatott eszközökhöz, riasztást kap, ha hiba történik. Ez a szakasz azt ismerteti, hogyan lehet gyakori problémákat keresni a riasztások érkezésekor. Az alábbi lépések feltételezik, hogy beállította Azure Monitor naplókat a diagnosztikai naplókhoz.
+Amikor bekapcsolja a csatlakoztatott eszközök diagnosztikai naplóit és riasztásait, hibák esetén riasztásokjelennek meg. Ez a szakasz azt ismerteti, hogyan keresheti meg a gyakori problémákat, amikor riasztást kap. Az alábbi lépések feltételezik, hogy beállította az Azure Monitor naplók at a diagnosztikai naplók.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-1. Keresse meg az IoT hubot.
+1. Tallózással az IoT-központ.
 
-1. Válassza a **Naplókat**.
+1. Válassza **a Naplók lehetőséget.**
 
-1. Ha el szeretné különíteni a IoT Hub csatlakozási naplófájljait, adja meg a következő lekérdezést, majd válassza a **Futtatás**lehetőséget:
+1. Az IoT Hub kapcsolódási hibanaplóinak elkülönítéséhez írja be a következő lekérdezést, majd válassza a **Futtatás lehetőséget:**
 
     ```kusto
     AzureDiagnostics
     | where ( ResourceType == "IOTHUBS" and Category == "Connections" and Level == "Error")
     ```
 
-1. Ha vannak eredmények, keresse meg a `OperationName`, `ResultType` (hibakód) és `ResultDescription` (hibaüzenet), hogy részletesebben tájékozódjon a hibáról.
+1. Ha vannak eredmények, `OperationName`keresse `ResultType` meg a `ResultDescription` , (hibakód) és (hibaüzenet), hogy részletesebben a hibát.
 
-   ![Hibanapló – példa](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
+   ![Példa hibanaplóra](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
 
-1. Kövesse a leggyakoribb hibák elhárítási útmutatóit:
+1. A leggyakoribb hibákat a problémamegoldási útmutatókban kövesse:
 
     - **[404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md)**
     - **[401003 IoTHubUnauthorized](iot-hub-troubleshoot-error-401003-iothubunauthorized.md)**
@@ -94,22 +94,22 @@ Ha bekapcsolja a diagnosztikai naplókat és riasztásokat a csatlakoztatott esz
     - **[500001 ServerError](iot-hub-troubleshoot-error-500xxx-internal-errors.md)**
     - **[500008 GenericTimeout](iot-hub-troubleshoot-error-500xxx-internal-errors.md)**
 
-## <a name="i-tried-the-steps-but-they-didnt-work"></a>Megpróbáltam a lépéseket, de nem működnek
+## <a name="i-tried-the-steps-but-they-didnt-work"></a>Próbáltam a lép, de ők didnt' dolgozik
 
-Ha az előző lépések nem segítettek, próbálkozzon a következő lépésekkel:
+Ha az előző lépések nem segítettek, próbálkozzon a következőkkal:
 
-* Ha rendelkezik hozzáféréssel a problémás eszközökhöz fizikailag vagy távolról (például SSH), kövesse az [eszközre vonatkozó hibaelhárítási útmutatót](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices) a hibaelhárítás folytatásához.
+* Ha fizikailag vagy távolról is hozzáfér a problémás eszközökhöz (például az SSH-hoz), kövesse az [eszközoldali hibaelhárítási útmutatót](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices) a hibaelhárítás folytatásához.
 
-* Ellenőrizze, hogy az eszközök **engedélyezve** vannak-e a Azure Portal > az IoT hub > IoT eszközöket.
+* Ellenőrizze, hogy az eszközök **engedélyezve** vannak-e az Azure Portalon, > az IoT-központ > IoT-eszközök.
 
-* Ha az eszköz MQTT protokollt használ, ellenőrizze, hogy a 8883-es port nyitva van-e. További információ: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Ha a készülék MQTT protokollt használ, ellenőrizze, hogy a 8883-as port nyitva van-e. További információ: [Csatlakozás az IoT Hubhoz (MQTT).](iot-hub-mqtt-support.md#connecting-to-iot-hub)
 
-* Segítség kérése az [azure IoT hub fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub), [stack overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)vagy [Azure támogatásáról](https://azure.microsoft.com/support/options/).
+* Segítséget kaphat az [Azure IoT Hub fórumáról,](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub) [a Veremtúlcsordulásról](https://stackoverflow.com/questions/tagged/azure-iot-hub)vagy az [Azure-támogatásról.](https://azure.microsoft.com/support/options/)
 
-Ha segítségre van szüksége mindenki számára, az alábbi visszajelzések szakaszban hagyja meg a megjegyzéseit, ha az útmutató nem segít Önnek.
+A dokumentáció mindenki számára elérhető javításához hagyjon megjegyzést az alábbi visszajelzési szakaszban, ha ez az útmutató nem segít.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Az átmeneti problémák megoldásával kapcsolatos további tudnivalókért lásd: az [átmeneti hibák kezelésének](/azure/architecture/best-practices/transient-faults)ismertetése.
+* Az átmeneti problémák megoldásáról az [Átmeneti hibakezelés](/azure/architecture/best-practices/transient-faults)című témakörben olvashat bővebben.
 
-* Ha többet szeretne megtudni az Azure IoT SDK-ról és az újrapróbálkozások kezeléséről, olvassa el a [kapcsolat és a megbízható üzenetkezelés kezelése az azure IoT hub Device SDK](iot-hub-reliability-features-in-sdks.md#connection-and-retry)-k használatával című témakört
+* Ha többet szeretne megtudni az Azure IoT SDK-ról és az újrapróbálkozások kezeléséről, olvassa el [a kapcsolat és a megbízható üzenetküldés kezelése az Azure IoT Hub sdk-k használatával.](iot-hub-reliability-features-in-sdks.md#connection-and-retry)

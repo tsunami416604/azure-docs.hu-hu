@@ -1,13 +1,13 @@
 ---
 title: Az Azure Blueprints áttekintése
-description: Ismerje meg, hogyan hozhat létre, határozhat meg és helyezhet üzembe összetevőket az Azure-környezetben az Azure BluePrints szolgáltatásban.
+description: Ismerje meg, hogy az Azure Blueprints szolgáltatás hogyan teszi lehetővé összetevők létrehozását, definiálását és üzembe helyezését az Azure-környezetben.
 ms.date: 11/21/2019
 ms.topic: overview
 ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74321762"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
@@ -42,22 +42,22 @@ A [szabályzatok](../policy/overview.md) olyan alapértelmezett engedélyezési 
 
 Ha a tervekbe belefoglal egy szabályzatot, lehetővé teszi a megfelelő minta vagy kialakítás létrehozását a terv hozzárendelésekor. A szabályzat belefoglalásával azt is biztosíthatja, hogy a környezeten csak jóváhagyott vagy várt módosításokat lehessen végrehajtani, így folyamatosan megfeleljen a terv által kijelölt rendeltetési célnak.
 
-A szabályzatok a tervrajzok definíciójában szereplő _számos összetevő_ egyike lehet. A tervek a szabályzatokhoz és kezdeményezésekhez paraméterek használatát is támogatják.
+A szabályzat szerepelhet a tervdefiníciószámos _összetevőjének_ egyikeként. A tervek a szabályzatokhoz és kezdeményezésekhez paraméterek használatát is támogatják.
 
 ## <a name="blueprint-definition"></a>Tervdefiníció
 
 A tervek _tervelemekből_ állnak. A tervek jelenleg a következő erőforrások használatát támogatják tervelemekként:
 
-|Resource  | Hierarchialehetőségek| Leírás  |
+|Erőforrás  | Hierarchialehetőségek| Leírás  |
 |---------|---------|---------|
 |Erőforráscsoportok | Előfizetés | Hozzon létre egy új erőforráscsoportot, amelyet a tervben szereplő többi tervelem fog használni.  Ezekkel a helyőrző erőforráscsoportokkal az erőforrások a kívánt módon rendezhetők el, és kijelölhetők a tervbe foglalt szabályzat- és szerepkör-hozzárendelési tervelemek, valamint az Azure Resource Manager-sablonok hatókörkorlátai. |
-|Azure Resource Manager-sablon | Előfizetés, erőforráscsoport | A sablonok, beleértve a beágyazott és a csatolt sablonokat, összetett környezetek létrehozásához használatosak. Ilyen környezetek lehetnek például a SharePoint-farmok, az Azure Automation-állapotkonfigurációk vagy a Log Analytics-munkaterületek. |
-|Szabályzat-hozzárendelés | Előfizetés, erőforráscsoport | Lehetővé teszi egy szabályzat vagy kezdeményezés hozzárendelését ahhoz az előfizetéshez, amelyhez a terv hozzá van rendelve. A szabályzatnak vagy kezdeményezésnek a terv meghatározási helyének hatókörén belül kell lennie. Ha a szabályzat vagy kezdeményezés paraméterekkel rendelkezik, ezeket a paramétereket a terv létrehozásakor vagy hozzárendelésekor lehet hozzárendelni. |
+|Azure Resource Manager-sablon | Előfizetés, erőforráscsoport | A sablonok, beleértve a beágyazott és csatolt sablonokat is, összetett környezetek írására szolgálnak. Ilyen környezetek lehetnek például a SharePoint-farmok, az Azure Automation-állapotkonfigurációk vagy a Log Analytics-munkaterületek. |
+|Szabályzat-hozzárendelés | Előfizetés, erőforráscsoport | Lehetővé teszi egy szabályzat vagy kezdeményezés hozzárendelését ahhoz az előfizetéshez, amelyhez a terv hozzá van rendelve. A házirendnek vagy kezdeményezésnek a tervezet definíciós helyének hatálya alá kell tartaszta. Ha a szabályzat vagy kezdeményezés paraméterekkel rendelkezik, ezeket a paramétereket a terv létrehozásakor vagy hozzárendelésekor lehet hozzárendelni. |
 |Szerepkör-hozzárendelés | Előfizetés, erőforráscsoport | Egy meglévő felhasználót vagy csoportot hozzáadhat egy beépített szerepkörhöz, és ezzel biztosíthatja, hogy a megfelelő személyek mindig a megfelelő hozzáféréssel rendelkezzenek az erőforrásokhoz. A szerepkör-hozzárendelések meghatározhatók az egész előfizetésre, vagy leszűkíthetők egy bizonyos erőforráscsoportra, amely a tervben található. |
 
-### <a name="blueprint-definition-locations"></a>Terv definíciós helyei
+### <a name="blueprint-definition-locations"></a>Tervezetdefiníciós helyek
 
-Tervdefiníció létrehozásakor meg kell határozni a terv mentési helyét. A tervrajzok olyan [felügyeleti csoportba](../management-groups/overview.md) vagy előfizetésbe menthetők, amelyhez **közreműködői** hozzáféréssel rendelkezik. Ha a hely egy felügyeleti csoport, a terv a felügyeleti csoport bármely alárendelt előfizetéséhez rendelhető.
+Tervdefiníció létrehozásakor meg kell határozni a terv mentési helyét. A tervrajzok menthetők egy [felügyeleti csoportba](../management-groups/overview.md) vagy előfizetésbe, amelyhez **közreműködői** hozzáféréssel rendelkezik. Ha a hely egy felügyeleti csoport, a tervezet az adott felügyeleti csoport bármely gyermek-előfizetéséhez hozzárendelhető.
 
 ### <a name="blueprint-parameters"></a>Tervparaméterek
 
@@ -72,12 +72,12 @@ További információkért tekintse meg a [tervparamétereket](./concepts/parame
 
 ### <a name="blueprint-publishing"></a>Tervek közzététele
 
-Amikor létrehozunk egy tervet, az **Vázlat** módban van. Ha a terv készen áll a hozzárendelésre, **közzé kell tenni**. A közzétételhez meg kell adni egy **verzió** sztringet (ez betűket, számokat és kötőjeleket tartalmazhat, és legfeljebb 20 karakter hosszú lehet), valamint **változási megjegyzések** is megadhatók, de ez nem kötelező. A **verzió** megkülönbözteti a tervet annak jövőbeli módosított változataitól, és lehetővé teszi az egyes verziók hozzárendelését. A verziókezelés azt is jelenti, hogy egy adott terv különböző **verziói** is hozzárendelhetők ugyanahhoz az előfizetéshez. Ha a tervben további változások történnek, a **közzétett**
-**verziója** továbbra is létezik, ahogy a nem **közzétett módosítások**is. Miután elvégeztük a kívánt módosításokat, a frissített tervet **közzétesszük** egy új és egyedi **verzióval**, amely innentől kezdve szintén hozzárendelhető lesz.
+Amikor létrehozunk egy tervet, az **Vázlat** módban van. Ha a terv készen áll a hozzárendelésre, **közzé kell tenni**. A közzétételhez meg kell adni egy **verzió** sztringet (ez betűket, számokat és kötőjeleket tartalmazhat, és legfeljebb 20 karakter hosszú lehet), valamint **változási megjegyzések** is megadhatók, de ez nem kötelező. A **verzió** megkülönbözteti a tervet annak jövőbeli módosított változataitól, és lehetővé teszi az egyes verziók hozzárendelését. A verziókezelés azt is jelenti, hogy egy adott terv különböző **verziói** is hozzárendelhetők ugyanahhoz az előfizetéshez. Ha további módosításokat hajt végre a tervezeten, a **közzétett**
+**verzió** továbbra is létezik, csakúgy, mint a közzé nem **tett módosítások**. Miután elvégeztük a kívánt módosításokat, a frissített tervet **közzétesszük** egy új és egyedi **verzióval**, amely innentől kezdve szintén hozzárendelhető lesz.
 
 ## <a name="blueprint-assignment"></a>Tervek hozzárendelése
 
-A tervrajzok minden **közzétett** **verziója** hozzárendelhető (legfeljebb 90 karakter hosszú lehet) egy meglévő előfizetéshez. A portálon alapértelmezés szerint a terv legutóbb **közzétett** **verziója** érhető el. Ha a terv tartalmaz összetevő-paramétereket (vagy tervparamétereket), akkor ezeket a hozzárendelés során lehet meghatározni.
+A tervezet **minden közzétett** **verziója** hozzárendelhető (legfeljebb 90 karakter hosszúságú névvel) egy meglévő előfizetéshez. A portálon alapértelmezés szerint a terv legutóbb **közzétett****verziója** érhető el. Ha a terv tartalmaz összetevő-paramétereket (vagy tervparamétereket), akkor ezeket a hozzárendelés során lehet meghatározni.
 
 ## <a name="permissions-in-azure-blueprints"></a>Engedélyek az Azure Blueprintsben
 
@@ -94,7 +94,7 @@ Tervek törléséhez a fióknak a következő engedélyekkel kell rendelkeznie:
 - `Microsoft.Blueprint/blueprints/versions/delete`
 
 > [!NOTE]
-> A terv definíciójának engedélyeit a felügyeleti csoport vagy az előfizetés hatókörén kell megadni vagy örökölni.
+> A tervezet definíciós engedélyeket kell adni, vagy örökölt a felügyeleti csoport vagy előfizetés hatóköre, ahol menti.
 
 Tervek hozzárendeléséhez vagy a hozzárendelés megszüntetéséhez a fióknak a következő engedélyekkel kell rendelkeznie:
 
@@ -108,35 +108,35 @@ A következő beépített szerepkörök érhetők el:
 
 |RBAC szerepkör | Leírás |
 |-|-|
-|[Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) | A többi engedélyen kívül minden Azure Blueprint kapcsolódó engedélyt tartalmaz. |
-|[Közreműködő](../../role-based-access-control/built-in-roles.md#contributor) | Más engedélyek mellett létrehozhat és törölhet tervrajz-definíciókat, de nem rendelkezik terv-hozzárendelési engedélyekkel. |
-|[Tervezet közreműködője](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Kezelheti a terv definícióit, de nem rendelheti hozzá őket. |
-|[Blueprint operátor](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Meglévő közzétett tervrajzokat is hozzárendelhet, de nem hozhat létre új terv-definíciókat. A terv-hozzárendelés csak akkor működik, ha a hozzárendelés felhasználó által hozzárendelt felügyelt identitással lett végrehajtva. |
+|[Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) | Az egyéb engedélyek mellett tartalmazza az összes Azure Blueprint kapcsolódó engedélyeket. |
+|[Közreműködő](../../role-based-access-control/built-in-roles.md#contributor) | Más engedélyek mellett létrehozhat és törölhet tervezetdefiníciókat, de nem rendelkezik tervezet-hozzárendelési engedélyekkel. |
+|[Blueprint közreműködő](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Kezelheti a tervezetdefiníciókat, de nem rendelheti hozzá őket. |
+|[Terv operátor](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Meglévő közzétett tervrajzok hozzárendelése, de nem hozhat létre új tervrajzokat. A blueprint-hozzárendelés csak akkor működik, ha a hozzárendelés felhasználó által hozzárendelt felügyelt identitással történik. |
 
 Ha ezek a beépített szerepkörök nem felelnek meg a biztonsági követelményeinek, létrehozhat [egyéni szerepköröket](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Ha rendszer által hozzárendelt felügyelt identitást használ, az Azure-tervezetekhez tartozó egyszerű szolgáltatás **tulajdonosi** szerepkört igényel a hozzárendelt előfizetésben az üzembe helyezés engedélyezése érdekében. A portál használata esetén ezt a szerepkört a rendszer automatikusan biztosítja és visszavonja az üzembe helyezéshez. A REST API használata esetén a szerepkört manuálisan kell biztosítani, de az üzembe helyezés befejeződése a rendszer szintén automatikusan visszavonja. Ha felhasználó által hozzárendelt felügyelt identitást használ, csak a terv-hozzárendelést létrehozó felhasználónak kell megadnia a `Microsoft.Blueprint/blueprintAssignments/write` engedélyt, amelyet a **tulajdonos** és a **Blueprint operátor** beépített szerepkörei is tartalmaznak.
+> Ha egy rendszer által hozzárendelt felügyelt identitás használata, az Azure Blueprints szolgáltatásnévi szerepkörhöz a hozzárendelt előfizetés **tulajdonosi** szerepköre van szükség az üzembe helyezés engedélyezéséhez. A portál használata esetén ezt a szerepkört a rendszer automatikusan biztosítja és visszavonja az üzembe helyezéshez. A REST API használata esetén a szerepkört manuálisan kell biztosítani, de az üzembe helyezés befejeződése a rendszer szintén automatikusan visszavonja. Ha egy felhasználó által hozzárendelt felügyelt identitás, csak a `Microsoft.Blueprint/blueprintAssignments/write` rendszerrajz-hozzárendelést létrehozó felhasználónak van szüksége az engedélyre, amely a **Tulajdonos** és a **Blueprint Operator** beépített szerepkörökben is szerepel.
 
 ## <a name="naming-limits"></a>Elnevezési korlátok
 
-Bizonyos mezőkhöz a következő korlátozások vonatkoznak:
+Bizonyos mezőkre a következő korlátozások vonatkoznak:
 
 |Objektum|Mező|Engedélyezett karakterek|Legfeljebb Hossz|
 |-|-|-|-|
-|Terv|Név|betűk, számok, kötőjelek és időszakok|48|
-|Terv|Verzió|betűk, számok, kötőjelek és időszakok|20|
-|Tervek hozzárendelése|Név|betűk, számok, kötőjelek és időszakok|90|
-|Tervrajz-összetevő|Név|betűk, számok, kötőjelek és időszakok|48|
+|Blueprint|Név|betűk, számok, kötőjelek és pont|48|
+|Blueprint|Verzió|betűk, számok, kötőjelek és pont|20|
+|Tervek hozzárendelése|Név|betűk, számok, kötőjelek és pont|90|
+|Tervrajz-műtárgy|Név|betűk, számok, kötőjelek és pont|48|
 
 ## <a name="video-overview"></a>Videó – áttekintés
 
-Az Azure-tervezetek az alábbi áttekintést nyújtanak az Azure Fridays-ről. A videók letöltéséhez látogasson el az Azure Fridays szolgáltatásra, amely [áttekintést nyújt a Channel 9 Azure-tervezetekről](https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints) .
+Az Azure Blueprints alábbi áttekintése az Azure Fridays.The following overview of Azure Blueprints is from Azure Fridays. Videóletöltésért látogasson el az [Azure Fridays – Az Azure Blueprints áttekintése](https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints) a 9-es csatornán.
 
 > [!VIDEO https://www.youtube.com/embed/cQ9D-d6KkMY]
 
 ## <a name="next-steps"></a>További lépések
 
-- [Terv létrehozása – portál](./create-blueprint-portal.md).
-- [Terv létrehozása – PowerShell](./create-blueprint-powershell.md).
-- [Hozzon létre egy tervet – REST API](./create-blueprint-rest-api.md).
+- [Hozzon létre egy tervrajzot - Portál](./create-blueprint-portal.md).
+- [Hozzon létre egy tervrajzot - PowerShell](./create-blueprint-powershell.md).
+- [Hozzon létre egy tervrajzot - REST API](./create-blueprint-rest-api.md).

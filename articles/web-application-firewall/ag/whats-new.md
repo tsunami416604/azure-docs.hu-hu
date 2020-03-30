@@ -1,6 +1,6 @@
 ---
-title: Az Azure webalkalmazási tűzfal újdonságai
-description: Ismerje meg az Azure webalkalmazási tűzfal újdonságait, például a legújabb kibocsátási megjegyzéseket, ismert problémákat, hibajavításokat, elavult funkciókat és a közelgő változásokat.
+title: Az Azure webalkalmazás-tűzfal újdonságai
+description: Ismerje meg az Azure Web Application Firewall újdonságait, például a legújabb kiadási megjegyzéseket, az ismert problémákat, a hibajavításokat, az elavult funkciókat és a közelgő módosításokat.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,31 +8,31 @@ ms.topic: overview
 ms.date: 10/24/2019
 ms.author: victorh
 ms.openlocfilehash: 0e0e67bfb893e1bf141182e45ce4a49f5f6880ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73502246"
 ---
-# <a name="whats-new-in-azure-web-application-firewall"></a>Az Azure webalkalmazási tűzfal újdonságai
+# <a name="whats-new-in-azure-web-application-firewall"></a>Az Azure webalkalmazás-tűzfal újdonságai
 
-Az Azure webalkalmazási tűzfal folyamatosan frissül. A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő információkat tartalmazza:
+Az Azure webalkalmazás-tűzfal folyamatosan frissül. Ahhoz, hogy naprakész legyen a legújabb fejleményekkel, ez a cikk az ön számára tájékoztatást nyújt:
 
 - A legújabb kiadások
 - Ismert problémák
 - Hibajavítások
 - Elavult funkciók
 
-## <a name="new-features"></a>ÚJ funkciók
+## <a name="new-features"></a>Új funkciók
 
-|Szolgáltatás  |Leírás  |Közzététel dátuma  |
+|Szolgáltatás  |Leírás  |Hozzáadás dátuma  |
 |---------|---------|---------|
-|Robot-elhárítási szabályrendszert (előzetes verzió)|Az Ön által választott CRS-szabály mellett engedélyezheti a bot-elhárítási szabályokat. | November 2019 |
-|GeoDB-integráció (előzetes verzió)|Most létrehozhat olyan egyéni szabályokat, amelyek korlátozzák a forgalmat a származási ország alapján. | November 2019 |
-|WAF//URI-házirend (előzetes verzió)|A WAF-v2 mostantól támogatja a szabályzatok a figyelőkre való alkalmazását, valamint az elérésiút-alapú szabályokat is. Lásd: [WAF szabályzat létrehozása](create-waf-policy-ag.md). | November 2019 |
-|WAF egyéni szabályok |Application Gateway WAF_v2 mostantól támogatja az egyéni szabályok létrehozását. Lásd: [Application Gateway egyéni szabályok](custom-waf-rules-overview.md). |2019. június |
-|WAF-konfiguráció és kizárási lista     |További lehetőségeket adtunk hozzá a WAF konfigurálásához és a téves pozitív riasztások csökkentéséhez. További információért lásd a [webalkalmazási tűzfalra vonatkozó kérelmek méretének korlátozásait és kizárási listáját](application-gateway-waf-configuration.md) .|2018. december|
+|Bot mérséklési szabályok (előzetes verzió)|Engedélyezheti a bot mérséklési szabálykészlet, mellett a CRS szabálykészlet választja. | 2019. november |
+|GeoDB-integráció (előzetes verzió)|Most antól létrehozhat egyéni szabályokat, amelyek származási ország szerint korlátozzák a forgalmat. | 2019. november |
+|WAF webhelyenként/URI-nkénti házirend (előzetes verzió)|A WAF-v2 mostantól támogatja a házirend ek, valamint az útvonalalapú szabályok alkalmazását. Lásd: [WAF-házirend létrehozása](create-waf-policy-ag.md). | 2019. november |
+|WAF egyéni szabályok |Az Application Gateway WAF_v2 mostantól támogatja az egyéni szabályok létrehozását. Lásd: [Application Gateway egyéni szabályok](custom-waf-rules-overview.md). |2019. június |
+|WAF konfigurációs és kizárási lista     |További lehetőségeket adtunk hozzá a WAF konfigurálásához és a hamis pozitív értékek csökkentéséhez. További információt [a webalkalmazás-tűzfal kérelemméret- és kizárási listáiban](application-gateway-waf-configuration.md) talál.|2018. december|
 
 ## <a name="next-steps"></a>További lépések
 
-A Application Gateway webalkalmazási tűzfallal kapcsolatos további információkért lásd: [Azure webalkalmazási tűzfal az azure Application Gateway](ag-overview.md).
+Az Application Gateway webalkalmazás-tűzfaláról az Azure Web Application Firewall on Azure Application Gateway című [témakörben talál](ag-overview.md)további információt.

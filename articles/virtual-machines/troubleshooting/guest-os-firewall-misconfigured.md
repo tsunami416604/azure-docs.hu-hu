@@ -1,5 +1,5 @@
 ---
-title: Az Azure virtuális gép vendég operációs rendszer tűzfala helytelenül van konfigurálva |} A Microsoft Docs
+title: Az Azure VM vendég operációs rendszertűzfala helytelenül van konfigurálva | Microsoft dokumentumok
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,92 +15,92 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 8f04d943e1db49beed13c183fbd06e401546fc03
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71153898"
 ---
-# <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Az Azure virtuális gép vendég operációs rendszer tűzfala helytelenül van konfigurálva.
+# <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Az Azure virtuális gép vendég operációsrendszer-tűzfala helytelenül van konfigurálva
 
-Ez a cikk vezeti be, hogyan háríthatja el a helytelenül konfigurált a vendég operációs rendszer tűzfala Azure virtuális gépen.
+Ez a cikk bemutatja, hogyan javíthatja a helytelenül konfigurált vendégoperációs rendszer tűzfala az Azure virtuális gép.
 
 ## <a name="symptoms"></a>Probléma
 
-1.  A virtuális gép (VM) üdvözlő képernyő látható, hogy a virtuális gép teljes betöltéséig.
+1.  A virtuális gép (VM) Üdvözlőképernyő azt mutatja, hogy a virtuális gép teljesen be van töltve.
 
-2.  A vendég operációs rendszer konfigurációjától függően lehetnek bizonyos vagy nem éri el a virtuális gép hálózati forgalmat.
+2.  Attól függően, hogy a vendég operációs rendszer van konfigurálva, előfordulhat, hogy néhány hálózati forgalom eléri a virtuális gép.
 
 ## <a name="cause"></a>Ok
 
-A Virtual Network szolgáltatás hibás, a Vendég rendszer tűzfal blokkolhatja néhány vagy az összes típusú hálózati forgalmat a virtuális géphez.
+A vendégrendszer tűzfalának helytelen konfigurálása blokkolhatja a virtuális gép hálózati forgalmának egy részét vagy minden formáját.
 
 ## <a name="solution"></a>Megoldás
 
-Mielőtt végrehajtaná ezeket a lépéseket, pillanatkép készítése a rendszerlemezt az érintett virtuális gép biztonsági mentéséhez. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
+Az alábbi lépések végrehajtása előtt készítsen pillanatképet az érintett virtuális gép rendszerlemezéről biztonsági másolatként. További információt a [Lemez pillanatképe](../windows/snapshot-copy-managed-disk.md)című témakörben talál.
 
-A probléma elhárításához, használja a soros konzol vagy [javítsa ki a virtuális Gépet offline](troubleshoot-rdp-internal-error.md#repair-the-vm-offline) egy helyreállítási virtuális Géphez a rendszer a virtuális gép lemezének csatolásával.
+A probléma elhárításához használja a soros konzolt, vagy [javítsa ki a virtuális gép offline](troubleshoot-rdp-internal-error.md#repair-the-vm-offline) állapotba helyezését a virtuális gép rendszerlemezének helyreállítási virtuális géphez csatlakoztatásával.
 
 ## <a name="online-mitigations"></a>Online megoldások
 
-Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Ha a soros konzol nincs engedélyezve a virtuális gépen, nyissa meg a "Javítás a virtuális gép offline állapotba helyezi" szakaszában az Azure-cikket:
+Csatlakozzon a [soros konzolhoz, majd nyisson meg egy PowerShell-példányt.](serial-console-windows.md#use-cmd-or-powershell-in-serial-console) Ha a soros konzol nincs engedélyezve a virtuális gép, folytassa a "VM javítása offline" című szakasza a következő Azure-cikk:
 
- [Belső hiba akkor fordul elő, amikor próbál csatlakozni egy Azure virtuális géphez a távoli asztalon keresztül](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)
+ [Belső hiba jelentkezik, ha távoli asztalon keresztül próbál csatlakozni az Azure-beli virtuális géphez](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)
 
-A következő szabályokat szerkesztheti vagy a hozzáférés a virtuális géphez (RDP) keresztül történő engedélyezéséhez vagy a könnyebb hibaelhárítás biztosít:
+A következő szabályok szerkeszthetők a virtuális gép (RDP-n keresztül) elérésének engedélyezéséhez vagy a könnyebb hibaelhárítási élmény biztosításához:
 
-*   Távoli asztal (TCP, bejövő): Ez a szabványos szabály, amely elsődleges hozzáférést biztosít a virtuális géphez az RDP az Azure-ban való engedélyezésével.
+*   Távoli asztal (TCP-In): Ez a szokásos szabály, amely elsődleges hozzáférést biztosít a virtuális gép hez az RDP engedélyezésével az Azure-ban.
 
-*   Rendszerfelügyeleti webszolgáltatások (HTTP, bejövő): Ez a szabály lehetővé teszi, hogy a PowerShell használatával kapcsolódjon a virtuális géphez. az Azure-ban ez a fajta hozzáférés lehetővé teszi a távoli parancsfájlok parancsfájlkezelési aspektusának használatát, valamint a hibaelhárítást.
+*   Windows remote Management (HTTP-In): Ez a szabály lehetővé teszi, hogy a virtuális géphez a PowerShell használatával.
 
-*   Fájl-és nyomtatómegosztás (SMB, bejövő): Ez a szabály lehetővé teszi a hálózati megosztás elérését hibaelhárítási lehetőségként.
+*   Fájl- és nyomtatómegosztás (SMB-in): Ez a szabály hibaelhárítási lehetőségként engedélyezi a hálózati megosztáselérését.
 
-*   Fájl-és nyomtatómegosztás (ECHO-kérelem – ICMPv4): Ez a szabály lehetővé teszi a virtuális gép pingelését.
+*   Fájl- és nyomtatómegosztás (Visszhangkérés – ICMPv4- in): Ez a szabály lehetővé teszi a virtuális gép pingelését.
 
-A soros konzolhoz példányban lekérdezheti a tűzfalszabályt az aktuális állapotát.
+A Soros konzol access példányában lekérdezheti a tűzfalszabály aktuális állapotát.
 
-*   Lekérdezési paraméterként a megjelenítési név használatával:
+*   Lekérdezés a Megjelenítendő név paraméterként történő használatával:
 
     ```cmd
     netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(DisplayName.*<FIREWALL RULE NAME>)" -context 9,4 | more
     ```
 
-*   Lekérdezés az alkalmazás által használt helyi Port használatával:
+*   Lekérdezés az alkalmazás által használt helyi port használatával:
 
     ```cmd
     netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<APPLICATION PORT>)" -context 9,4 | more
     ```
 
-*   Lekérdezés a az alkalmazás által használt helyi IP-cím használatával:
+*   Lekérdezés az alkalmazás által használt helyi IP-cím használatával:
 
     ```cmd
     netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalIP.*<CUSTOM IP>)" -context 9,4 | more
     ```
 
-*   Ha látja, hogy a szabály le van tiltva, a következő parancs futtatásával engedélyezheti:
+*   Ha azt látja, hogy a szabály le van tiltva, a következő paranccsal engedélyezheti:
 
     ```cmd
     netsh advfirewall firewall set rule name="<RULE NAME>" new enable=yes
     ```
 
-*   Hibaelhárítási, kikapcsolhatja a tűzfalprofilokról:
+*   Hibaelhárításhoz kikapcsolhatja a tűzfalprofilokat:
 
     ```cmd
     netsh advfirewall set allprofiles state off
     ```
 
-    Ha így tesz, hogy a tűzfal helyesen, engedélyezze újra a tűzfalat a hibaelhárítási befejezése után.
+    Ha ezt a tűzfal megfelelő beállításához állítja be, a hibaelhárítás befejezése után engedélyezze újra a tűzfalat.
 
     > [!Note]
-    > Nem kell újraindítani a virtuális Gépet a alkalmazni ezt a módosítást.
+    > A módosítás alkalmazásához nem kell újraindítania a virtuális számítógépet.
 
-*   A virtuális gép RDP-Kapcsolaton keresztül csatlakozni, próbálkozzon újra.
+*   Próbálkozzon újra a virtuális géphez az RDP-n keresztül.
 
-### <a name="offline-mitigations"></a>A kapcsolat nélküli megoldások
+### <a name="offline-mitigations"></a>Kapcsolat nélküli megoldások
 
-1.  A tűzfalszabályok engedélyezéséhez vagy letiltásához tekintse [meg a tűzfalszabály engedélyezése vagy letiltása Azure-beli virtuális gép vendég operációs rendszeren](enable-disable-firewall-rule-guest-os.md)című témakört.
+1.  A tűzfalszabályok engedélyezéséhez vagy letiltásához olvassa el [a tűzfalszabály engedélyezése vagy letiltása egy Azure virtuális gép vendégoperációs rendszerén.](enable-disable-firewall-rule-guest-os.md)
 
-2.  Ellenőrizze, hogy vannak-e a a [vendég operációs rendszer tűzfala blokkolja a bejövő forgalom forgatókönyv](guest-os-firewall-blocking-inbound-traffic.md).
+2.  Ellenőrizze, hogy a [vendég operációsrendszer tűzfala blokkolja-e](guest-os-firewall-blocking-inbound-traffic.md)a bejövő forgalmat .
 
-3.  Ha továbbra is a bizonytalan, hogy a tűzfal blokkolja a hozzáférést, tekintse meg [tiltsa le a vendég operációs rendszer tűzfala az Azure virtuális Gépen](disable-guest-os-firewall-windows.md), majd újból engedélyezze a a Vendég rendszer tűzfalon a megfelelő szabályok segítségével.
+3.  Ha továbbra is kétségei vannak azzal kapcsolatban, hogy a tűzfal blokkolja-e a hozzáférést, olvassa el [a vendég operációsrendszer-tűzfal letiltása az Azure virtuális gépben](disable-guest-os-firewall-windows.md)című részt, majd engedélyezze újra a vendégrendszer tűzfalát a megfelelő szabályok használatával.
 

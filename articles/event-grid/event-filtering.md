@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid eseményeinek szűrése
-description: Ismerteti, hogyan szűrhetők az események Azure Event Grid előfizetés létrehozásakor.
+title: Eseményszűrés az Azure Event Gridhöz
+description: Bemutatja, hogyan szűrheti az eseményeket az Azure Event Grid-előfizetés létrehozásakor.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
 ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70390182"
 ---
-# <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid-előfizetések esemény-szűrésének ismertetése
+# <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Az Event Grid-előfizetések eseményszűrésének ismertetése
 
-Ez a cikk azokat a különböző módszereket ismerteti, amelyekkel szűrheti, hogy mely eseményeket küldi a rendszer a végpontnak. Egy esemény-előfizetés létrehozásakor három lehetőség van a szűrésre:
+Ez a cikk a végpontra küldött események szűrésének különböző módjait ismerteti. Esemény-előfizetés létrehozásakor három lehetőség közül választhat:
 
-* Események típusai
-* A tárgy kezdete vagy vége
+* Eseménytípusok
+* A téma a
 * Speciális mezők és operátorok
 
-## <a name="event-type-filtering"></a>Eseménytípus szűrése
+## <a name="event-type-filtering"></a>Eseménytípus-szűrés
 
-Alapértelmezés szerint az eseményforrás összes [eseménytípus](event-schema.md) küldése a végpontnak történik. Dönthet úgy is, hogy csak bizonyos eseménytípus küldését küldi el a végpontnak. Például értesítést kaphat az erőforrásairól, de nem kap értesítést más műveletekhez, például törlésekhez. Ebben az esetben az `Microsoft.Resources.ResourceWriteSuccess` eseménytípus alapján szűrhet. Adjon meg egy tömböt az eseménytípus közül, vagy `All` adja meg az eseményforrás összes eseménytípus beolvasását.
+Alapértelmezés szerint az eseményforrás összes [eseménytípusa](event-schema.md) a végpontra kerül. Dönthet úgy, hogy csak bizonyos eseménytípusokat küld a végpontra. Például értesítést kaphat az erőforrások frissítéseiről, de más műveletekről, például a törlésről nem. Ebben az esetben szűrje az `Microsoft.Resources.ResourceWriteSuccess` esemény típusa szerint. Adjon meg egy tömböt az `All` eseménytípusokkal, vagy adja meg, hogy az eseményforrás összes eseménytípusát leszeretné-e kérni.
 
-Az Eseménytípus szerinti szűrés JSON-szintaxisa a következő:
+Az eseménytípus szerinti szűrés JSON-szintaxisa a következő:
 
 ```json
 "filter": {
@@ -37,13 +37,13 @@ Az Eseménytípus szerinti szűrés JSON-szintaxisa a következő:
 }
 ```
 
-## <a name="subject-filtering"></a>Tulajdonos szűrése
+## <a name="subject-filtering"></a>Tárgy szűrése
 
-Egyszerű szűréshez a tárgy mezőben meg kell adni a tulajdonos kezdő vagy záró értékét. Megadhatja például, `.txt` hogy a tárgy vége legyen, hogy csak a szövegfájlok Storage-fiókba való feltöltésével kapcsolatos események legyenek lekérdezve. Másik lehetőségként szűrheti a tulajdonost `/blobServices/default/containers/testcontainer` , hogy lekérje a tároló összes eseményét, de a Storage-fiókban nem található más tároló.
+A tárgy szerinti egyszerű szűréshez adja meg a tárgy kezdő vagy záró értékét. Megadhatja például, `.txt` hogy a tárgy csak a szöveges fájl tárfiókba való feltöltésével kapcsolatos eseményeket kapjon. Vagy szűrheti a témát, `/blobServices/default/containers/testcontainer` amely a tároló összes eseményének lekérnie, de a tárfiók ban lévő többi tárolót nem.
 
-Az események egyéni témakörökbe való közzétételekor olyan témákat hozhat létre az eseményekhez, amelyek megkönnyítik az előfizetők számára, hogy megismerjék, hogy érdeklik-e az esemény. Az előfizetők a tárgy tulajdonságot használják az események szűrésére és irányítására. Vegye fontolóra azt az elérési utat, ahol az esemény megtörtént, így az előfizetők az elérési út szegmensei alapján szűrhetik. Az elérési út lehetővé teszi az előfizetők számára az események szűk vagy széles körű szűrését. Ha három szegmens elérési utat ad meg `/A/B/C` , mint a tárgy, az előfizetők az első szegmens `/A` alapján szűrhetik az események széles körét. Ezek az előfizetők olyan eseményeket kapnak, `/A/B/C` mint `/A/D/E`a vagy a. Más előfizetők is szűrhetik `/A/B` a t, hogy Szűkítse az események szűk körét.
+Amikor eseményeket tesz közzé egyéni témakörökben, hozzon létre témákat az eseményekhez, amelyek megkönnyítik az előfizetők számára, hogy megtudják, érdekli-e őket az esemény. Az előfizetők a tárgy tulajdonsággal szűrhetik és irányíthatják az eseményeket. Fontolja meg az esemény eseményhelyének hozzáadását, hogy az előfizetők az adott útvonal szegmensei szerint szűrhessenek. Az elérési út lehetővé teszi az előfizetők számára az események szűk vagy széles körű szűrését. Ha a tárgyhoz hasonló `/A/B/C` háromszegmenses útvonalat ad meg, az előfizetők az első szegmens `/A` szerint szűrhetnek, hogy az események széles körét kapják. Ezek az előfizetők kap `/A/B/C` események `/A/D/E`témák, mint a vagy . Más előfizetők szűrhetnek, `/A/B` hogy szűkebb eseményeket kapjanak.
 
-A következő JSON-szintaxis a tárgy szerinti szűréshez:
+A tárgy szerinti szűrés JSON-szintaxisa:
 
 ```json
 "filter": {
@@ -55,13 +55,13 @@ A következő JSON-szintaxis a tárgy szerinti szűréshez:
 
 ## <a name="advanced-filtering"></a>Speciális szűrés
 
-Az adatmezőkben lévő értékek alapján történő szűréshez és az összehasonlító operátor megadásához használja a speciális szűrési lehetőséget. A speciális szűrés területen a következőket kell megadnia:
+Ha az adatmezőkben értékek szerint szeretne szűrni, és meg szeretné adni az összehasonlító operátort, használja a speciális szűrési beállítást. A speciális szűrésben a következőket adhatja meg:
 
-* operátor típusa – az összehasonlítás típusa.
-* kulcs – a szűréshez használt esemény adatai mezője. Ez lehet szám, logikai vagy karakterlánc.
-* érték vagy értékek – a kulcshoz összehasonlítandó érték vagy értékek.
+* operátor típusa - Az összehasonlítás típusa.
+* kulcs – A szűréshez használt eseményadatok mezője. Ez lehet szám, logikai vagy karakterlánc.
+* érték vagy értékek - A kulcshoz összehasonlítandó érték vagy értékek.
 
-Ha több értékkel rendelkező egyetlen szűrőt ad meg, a rendszer egy **vagy** műveletet hajt végre, így a Key mező értékének az alábbi értékek egyikének kell lennie. Például:
+Ha egyetlen szűrőt ad meg több értékkel, a program **vagy** műveletet hajt végre, így a kulcsmező értékének ezen értékek egyikének kell lennie. Például:
 
 ```json
 "advancedFilters": [
@@ -76,7 +76,7 @@ Ha több értékkel rendelkező egyetlen szűrőt ad meg, a rendszer egy **vagy*
 ]
 ```
 
-Ha több különböző szűrőt is megad, a **és** a műveletet hajtja végre, így minden szűrési feltételnek teljesülnie kell. Például: 
+Ha több különböző szűrőt ad meg, a rendszer **és** műveletet hajt végre, ezért minden szűrőfeltételnek teljesülnie kell. Például: 
 
 ```json
 "advancedFilters": [
@@ -97,70 +97,70 @@ Ha több különböző szűrőt is megad, a **és** a műveletet hajtja végre, 
 ]
 ```
 
-### <a name="operator"></a>Operator
+### <a name="operator"></a>Művelet
 
-A számok számára elérhető operátorok a következők:
+A számokhoz rendelkezésre álló operátorok a következők:
 
-* NumberGreaterThan
+* SzámGreaterThan
 * NumberGreaterThanOrEquals
-* NumberLessThan
-* NumberLessThanOrEquals
-* NumberIn
-* NumberNotIn
+* NumberlessThan (Számtalan)
+* NumberLessThanOrEquals (Szám nélküli thanOrEquals)
+* Számszám
+* Számnotin
 
-A logikai értékek számára elérhető operátor a következő: BoolEquals
+A booleans elérhető operátora: BoolEquals
 
 A karakterláncok elérhető operátorai a következők:
 
-* StringContains
-* StringBeginsWith
-* StringEndsWith
-* StringIn
-* StringNotIn
+* Karakterlánctartalmazza
+* StringBeginswith
+* Karakterláncvégek
+* Stringin között
+* StringNotIn között
 
-Az összes karakterlánc-összehasonlítás a Case-insensitve.
+Minden karakterlánc-összehasonlítás eset-érzéketlen.
 
 ### <a name="key"></a>Kulcs
 
-A Event Grid sémában lévő eseményekhez használja a következő értékeket a kulcshoz:
+Az Event Grid séma eseményeihez használja a következő értékeket a kulcshoz:
 
-* id
+* ID (Azonosító)
 * Témakör
-* Subject
-* EventType
+* Tárgy
+* EventType (Eseménytípus)
 * DataVersion
-* Esemény-és adatértékek (például az key1)
+* Eseményadatok (például Data.key1)
 
-A Cloud Events sémában lévő események esetében használja a következő értékeket a kulcshoz:
+A Cloud Events sémában lévő eseményekesetén használja a következő értékeket a kulcshoz:
 
-* EventId
-* Source
-* EventType
+* Napszállta
+* Forrás
+* EventType (Eseménytípus)
 * EventTypeVersion
-* Esemény-és adatértékek (például az key1)
+* Eseményadatok (például Data.key1)
 
-Egyéni bemeneti séma esetén használja az esemény adatmezőit (például az adatok. key1).
+Egyéni bemeneti séma esetén használja az eseményadatmezőket (például Data.key1).
 
 ### <a name="values"></a>Értékek
 
-Az értékek a következőket tehetik:
+Az értékek a következők lehetnek:
 
-* number
-* Karakterlánc
-* boolean
-* array
+* szám
+* sztring
+* logikai
+* tömb
 
 ### <a name="limitations"></a>Korlátozások
 
 A speciális szűrés a következő korlátozásokkal rendelkezik:
 
-* Öt speciális szűrő/Event Grid-előfizetés
-* 512 karakter/karakterlánc érték
-* Öt érték a **-ben** és **nem az** operátorokban
+* Eseményrács-előfizetésenként öt speciális szűrő
+* 512 karakter karakterlánconként
+* Öt érték **a be-** és nem a kezelőkre **not in**
 
 Ugyanaz a kulcs több szűrőben is használható.
 
 ## <a name="next-steps"></a>További lépések
 
-* Az események PowerShell-lel és az Azure CLI-vel való szűrésével kapcsolatos további tudnivalókért lásd: [Események szűrése Event Grid](how-to-filter-events.md).
-* Tekintse meg a gyors kezdéshez Event Grid használatával [az Azure Event Griddel egyéni események létrehozása és útvonal](custom-event-quickstart.md).
+* Az események PowerShell és Azure CLI használatával történő szűréséről az [Eseményrács eseményeinek szűrése(szűrő).](how-to-filter-events.md)
+* Az Event Grid használatának gyors megkezdéséhez olvassa el az [Egyéni események létrehozása és irányítása az Azure Event Griddel című témakört.](custom-event-quickstart.md)

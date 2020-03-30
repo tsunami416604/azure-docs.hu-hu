@@ -1,6 +1,6 @@
 ---
-title: Az alapértelmezett ideiglenes mappa mérete túl kicsi a szerepkörhöz | Microsoft Docs
-description: A felhőalapú szolgáltatások szerepköre korlátozott mennyiségű hellyel rendelkezik a TEMP mappához. Ez a cikk néhány javaslatot tartalmaz arra vonatkozóan, hogyan kerülheti el a lemezterületet.
+title: Az alapértelmezett TEMP mappaméret túl kicsi egy szerepkörhöz | Microsoft dokumentumok
+description: A felhőalapú szolgáltatási szerepkör korlátozott mennyiségű helyet foglal a TEMP mappában. Ez a cikk néhány javaslatot tartalmaz arra vonatkozóan, hogyan kerülhető el a helyfogyatka.
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -15,27 +15,27 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 0b869b73a79872d9263058bedfead018e18721c1
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71154996"
 ---
-# <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Az alapértelmezett ideiglenes mappa mérete túl kicsi a Cloud Service webes és feldolgozói szerepkörén
-A Cloud Service Worker vagy webes szerepkör alapértelmezett ideiglenes könyvtára legfeljebb 100 MB méretű lehet, ami egy bizonyos ponton megtelt. Ez a cikk azt ismerteti, hogyan kerülhető el a szabad hely az ideiglenes címtárban.
+# <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Az alapértelmezett TEMP mappaméret túl kicsi a felhőalapú szolgáltatás webes/feldolgozói szerepkörén
+A felhőszolgáltatás-feldolgozó vagy a webes szerepkör alapértelmezett ideiglenes könyvtárának maximális mérete 100 MB, amely egy bizonyos ponton megtelhet. Ez a cikk azt ismerteti, hogyan kerülheti el, hogy elfogyjon a hely az ideiglenes könyvtár számára.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="why-do-i-run-out-of-space"></a>Miért fogy el a szabad terület?
-A szabványos Windows környezeti változók TEMP és TMP az alkalmazásban futó kód számára elérhetők. Mind a TEMP, mind a TMP egy olyan könyvtárba mutat, amelynek maximális mérete 100 MB. Az ebben a könyvtárban tárolt összes adatmennyiséget a Cloud Service életciklusa során nem őrzi meg a rendszer. Ha a felhőalapú szolgáltatásban lévő szerepkör-példányok újra lesznek hasznosítva, a rendszer megtisztítja a könyvtárat.
+## <a name="why-do-i-run-out-of-space"></a>Miért fogy ki a hely?
+A szabványos Windows környezeti változók TEMP és TMP érhetők el a kódot, amely fut az alkalmazásban. Mind a TEMP, mind a TMP egyetlen könyvtárra mutat, amelynek maximális mérete 100 MB. Az ebben a címtárban tárolt adatok nem maradnak meg a felhőszolgáltatás teljes életciklusa során; ha a felhőszolgáltatás szerepkörpéldányait újrahasznosítja, a könyvtár törlődik.
 
-## <a name="suggestion-to-fix-the-problem"></a>A probléma megoldására vonatkozó javaslat
-A következő alternatívák egyikének implementálása:
+## <a name="suggestion-to-fix-the-problem"></a>Javaslat a probléma megoldására
+Hajtsa végre az alábbi alternatívák egyikét:
 
-* Konfiguráljon egy helyi tárolási erőforrást, és közvetlenül a TEMP vagy a TMP használata helyett. Ha egy helyi tárolási erőforrást szeretne elérni az alkalmazáson belül futó kódból, hívja meg a [RoleEnvironment. GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) metódust.
-* Konfiguráljon egy helyi tárolási erőforrást, és mutasson a TEMP és TMP könyvtárakra, hogy a helyi tárolási erőforrás elérési útjára mutasson. Ezt a módosítást a [RoleEntryPoint. OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) metóduson belül kell végrehajtani.
+* Konfiguráljon egy helyi tárolási erőforrást, és közvetlenül érje el a TEMP vagy a TMP használata helyett. Ha az alkalmazáson belül futó kódból szeretne hozzáférni egy helyi tárolási erőforráshoz, hívja meg a [RoleEnvironment.GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) metódust.
+* Konfiguráljon egy helyi tárolási erőforrást, és mutasson a TEMP és TMP könyvtárakra úgy, hogy a helyi tárolási erőforrás elérési útja felé mutasson. Ezt a módosítást a [RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) metóduson belül kell végrehajtani.
 
-A következő mintakód bemutatja, hogyan módosítható a TEMP és a TMP cél könyvtára a OnStart metóduson belül:
+A következő kódpélda bemutatja, hogyan módosíthatja a TEMP és a TMP célkönyvtárait az OnStart metóduson belül:
 
 ```csharp
 using System;
@@ -70,8 +70,8 @@ namespace WorkerRole1
 ```
 
 ## <a name="next-steps"></a>További lépések
-Olvassa el az [Azure web Role ASP.net ideiglenes mappa méretének növelését](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx)ismertető blogot.
+Olvassa el az [Azure webszerepkör ASP.NET ideiglenes mappa méretét.](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx)
 
-További [hibaelhárítási cikkek](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) a Cloud Services szolgáltatáshoz.
+További [hibaelhárítási cikkek](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) a felhőszolgáltatásokhoz.
 
-Ha meg szeretné tudni, hogyan lehet elhárítani a Cloud Service szerepkörrel kapcsolatos problémákat az Azure Pásti számítógép-diagnosztikai adataival, tekintse [meg a Kevin Williamson blog-sorozatát](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Ha meg szeretné tudni, hogyan háríthatja el a felhőszolgáltatási szerepkörrel kapcsolatos problémákat az Azure PaaS-számítógép diagnosztikai adatainak használatával, tekintse meg [Kevin Williamson blogsorozatát.](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)

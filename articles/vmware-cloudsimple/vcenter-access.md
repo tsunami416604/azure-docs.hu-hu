@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (AVS) – hozzáférés vSphere-ügyfélhez
-description: Leírja, hogyan érheti el a vCenter az AVS Private Cloud-ból.
+title: Azure VMware-megoldás a CloudSimple által – Access vSphere-ügyfél
+description: Ez a témakör azt ismerteti, hogyan érheti el a privát felhő vCenterét.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/30/2019
@@ -8,63 +8,63 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ad018ea89b194d42ab1867a0569725c4c3680f7d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 18d9463bc512257034860e1188372879524924f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022664"
 ---
-# <a name="access-your-avs-private-cloud-vcenter-portal"></a>Hozzáférés az AVS Private Cloud vCenter-portálhoz
+# <a name="access-your-private-cloud-vcenter-portal"></a>A Privát felhőbeli vCenter-portál elérése
 
-Az AVS Private Cloud vCenter-portált Azure Portal vagy AVS portálról indíthatja el. a vCenter-portál lehetővé teszi a VMware-infrastruktúra kezelését az AVS Private-felhőben.
+Elindíthatja a Private Cloud vCenter portál az Azure Portalon vagy a CloudSimple portálon.  A vCenter portál lehetővé teszi a VMware-infrastruktúra kezelését a privát felhőben.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-Meg kell teremteni a hálózati kapcsolatokat, és engedélyezni kell a DNS-névfeloldást a vCenter-portálhoz való hozzáféréshez. Az alábbi lehetőségek bármelyikével létrehozhat hálózati kapcsolatot az AVS Private-felhőhöz.
+A hálózati kapcsolatot létre kell hozni, és a DNS-névfeloldást engedélyezni kell a vCenter-portál eléréséhez.  Az alábbi lehetőségek bármelyikével hálózati kapcsolatot létesíthet a magánfelhővel.
 
-* [Kapcsolódás a helyszínről az AVS-hez a ExpressRoute használatával](on-premises-connection.md)
-* [VPN-kapcsolat konfigurálása az AVS Private Cloud-hoz](set-up-vpn.md)
+* [Csatlakozás a helyszíni és a CloudSimple szolgáltatáshoz az ExpressRoute használatával](on-premises-connection.md)
+* [VPN-kapcsolat konfigurálása a CloudSimple private cloudszolgáltatással](set-up-vpn.md)
 
-Az AVS Private Cloud VMware Infrastructure Components DNS-névfeloldás beállításával kapcsolatban lásd: [DNS beállítása névfeloldáshoz az AVS Private Cloud vCenter hozzáférés a helyszíni munkaállomásokról](on-premises-dns-setup.md)
+A Private Cloud VMware infrastruktúra-összetevőinek DNS-névfeloldásának beállításához olvassa el a [DNS-hozzáférés konfigurálása a magánfelhő-vCenter-hozzáférés névfeloldása a helyszíni munkaállomásokról című témakört.](on-premises-dns-setup.md)
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
 
-## <a name="access-vcenter-from-azure-portal"></a>VCenter elérése a Azure Portalból
+## <a name="access-vcenter-from-azure-portal"></a>A vCenter elérése az Azure Portalról
 
-Az AVS Private Cloud vCenter-portált elindíthatja Azure Portalról.
+Elindíthatja a private cloud vCenter-portálját az Azure Portalról.
 
 1. Válassza az **Összes szolgáltatás** elemet.
 
-2. Keressen rá az **AVS-szolgáltatások**kifejezésre.
+2. Keresse meg a **CloudSimple szolgáltatásokat.**
 
-3. Válassza ki annak az AVS-felhőnek az AVS-szolgáltatását, amelyhez csatlakozni szeretne.
+3. Válassza ki a private cloud felhőszolgáltatását, amelyhez csatlakozni szeretne.
 
-4. Az **Áttekintés** lapon kattintson a **VMware AVS privát felhők megtekintése** elemre.
+4. Az **Áttekintés** lapon kattintson a **VMware privát felhők megtekintése elemre.**
 
-    ![Az AVS szolgáltatás áttekintése](media/cloudsimple-service-overview.png)
+    ![CloudSimple szolgáltatás – áttekintés](media/cloudsimple-service-overview.png)
 
-5. Válassza ki az AVS Private Cloud-t az AVS privát felhők listájából, és kattintson az **vSphere-ügyfél indítása**lehetőségre.
+5. Válassza ki a magánfelhőt a privát felhők listájából, és kattintson a **VSphere-ügyfél indítása gombra**.
 
-    ![VSphere-ügyfél elindítása](media/cloudsimple-service-launch-vsphere-client.png)
+    ![VSphere kliens indítása](media/cloudsimple-service-launch-vsphere-client.png)
 
-## <a name="access-vcenter-from-avs-portal"></a>VCenter elérése az AVS-portálról
+## <a name="access-vcenter-from-cloudsimple-portal"></a>A vCenter elérése a CloudSimple portálról
 
-Az AVS Private Cloud vCenter-portált az AVS Portalról indíthatja el.
+Elindíthatja a private cloud vCenter portálját a CloudSimple portálról.
 
-1. Hozzáférés az [AVS-portálhoz](access-cloudsimple-portal.md).
+1. A [CloudSimple portál](access-cloudsimple-portal.md)elérése.
 
-2. Az **erőforrások** közül válassza ki azt az AVS Private-felhőt, amelyet szeretne elérni, és kattintson a **vSphere-ügyfél indítása**lehetőségre.
+2. Az **Erőforrások** közül válassza ki a magánfelhőt, amelyet el szeretne érni, és kattintson a **VSphere-ügyfél indítása gombra.**
 
-    ![VSphere-ügyfél elindítása – erőforrások](media/cloudsimple-portal-resources-launch-vcenter.png)
+    ![VSphere client indítása - Erőforrások](media/cloudsimple-portal-resources-launch-vcenter.png)
 
-3. A vCenter-portált az AVS Private Cloud összefoglaló képernyőjéről is elindíthatja.
+3. A vCenter-portált a privát felhő összefoglaló képernyőjéről is elindíthatja.
 
-    ![VSphere-ügyfél indítása – összefoglalás](media/cloudsimple-resources-summary-launch-vcenter.png)
+    ![VSphere client indítása - Összefoglaló](media/cloudsimple-resources-summary-launch-vcenter.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [VLAN-ok/alhálózatok létrehozása és kezelése az AVS privát Felhőkhöz](create-vlan-subnet.md)
-* [Az AVS Private Cloud engedélyezési modellje VMware vCenter](learn-private-cloud-permissions.md)
+* [VLAN-ok/alhálózatok létrehozása és kezelése a privát felhők számára](create-vlan-subnet.md)
+* [A VMware vCenter CloudSimple magánfelhő-engedélyezési modellje](learn-private-cloud-permissions.md)

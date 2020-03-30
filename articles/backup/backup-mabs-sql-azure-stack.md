@@ -1,157 +1,157 @@
 ---
-title: SQL Server munkaterhelések biztonsági mentése Azure Stack
-description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja Microsoft Azure Backup Servert (MABS) SQL Server-adatbázisok védelmére Azure Stackon.
+title: SQL Server-számítási feladatok biztonsági és biztonsági másolatot kell fokozta az Azure Stacken
+description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Microsoft Azure Backup Server (MABS) az SQL Server-adatbázisok védelmére az Azure Stacken.
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 03211e1147f96429a8406c4c95654161ed2bf308
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74172313"
 ---
-# <a name="back-up-sql-server-on-azure-stack"></a>SQL Server biztonsági mentése Azure Stack
+# <a name="back-up-sql-server-on-azure-stack"></a>Az SQL Server biztonsági és biztonsági és biztonsági másolatot készítő biztonsági szolgáltatása az Azure Stackben
 
-Ebből a cikkből megtudhatja, Microsoft Azure Backup-kiszolgáló (MABS) SQL Server-adatbázisok védelméhez Azure Stack.
+Ezzel a cikkből konfigurálhatja a Microsoft Azure Backup Server (MABS) az Azure Stack SQL Server-adatbázisok védelmére.
 
-Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba történő helyreállításnak a kezelése három lépést tesz szükségessé:
+Az SQL Server adatbázis-biztonsági mentésének kezelése az Azure-ba és az Azure-ból való helyreállítás három lépésből áll:
 
-1. Biztonsági mentési szabályzat létrehozása SQL Server adatbázisok védelméhez
-2. Igény szerinti biztonsági másolatok létrehozása
-3. Az adatbázis helyreállítása lemezekről és az Azure-ból
+1. Biztonsági mentési házirend létrehozása az SQL Server-adatbázisok védelmére
+2. Igény szerinti biztonsági másolatkészítése
+3. Az adatbázis helyreállítása a lemezekről és az Azure-ból
 
 ## <a name="before-you-start"></a>Előkészületek
 
-[Azure Backup Server telepítése és előkészítése](backup-mabs-install-azure-stack.md).
+[Az Azure Backup Server telepítése és előkészítése.](backup-mabs-install-azure-stack.md)
 
-## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>Biztonsági mentési szabályzat létrehozása SQL Server adatbázisok védelméhez az Azure-ban
+## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>Biztonsági mentési szabályzat létrehozása az SQL Server-adatbázisok Azure-ba való védelmére
 
-1. A Azure Backup Server felhasználói felületen kattintson a **védelem** munkaterületre.
+1. Az Azure Backup Server felhasználói felületén kattintson a **védelem** munkaterületre.
 
-2. Az eszközsávon kattintson az **új** elemre egy új védelmi csoport létrehozásához.
+2. Új védelmi csoport létrehozásához kattintson az Eszköz menüszalagján **az Új** gombra.
 
     ![Védelmi csoport létrehozása](./media/backup-azure-backup-sql/protection-group.png)
 
-    Azure Backup Server elindítja a védelmi csoport varázslót, amely végigvezeti a **védelmi csoport**létrehozásának lépésein. Kattintson a **Tovább**gombra.
+    Az Azure Backup Server elindítja a Védelmi csoport varázslót, amely egy **védelmi csoport**létrehozásához vezet. Kattintson a **Tovább** gombra.
 
-3. A **védelmi csoport típusának kiválasztása** képernyőn válassza a **kiszolgálók**elemet.
+3. A **Védelem csoporttípus kiválasztása** képernyőn válassza a **Kiszolgálók**lehetőséget.
 
-    ![Védelmi csoport típusának kiválasztása – "kiszolgálók"](./media/backup-azure-backup-sql/pg-servers.png)
+    ![Védelmi csoport típusának kiválasztása - "Kiszolgálók"](./media/backup-azure-backup-sql/pg-servers.png)
 
-4. A csoporttagok **kiválasztása** képernyőn az elérhető tagok lista a különböző adatforrásokat jeleníti meg. Kattintson a **+** elemre a mappa kibontásához és az almappák megjelenítéséhez. Kattintson a jelölőnégyzetre egy elem kiválasztásához.
+4. A **Csoporttagok kiválasztása** képernyőn a Rendelkezésre álló tagok listája megjeleníti a különböző adatforrásokat. Ide **+** kattintva kibonthat egy mappát, és felfedheti az almappákat. Elem kijelöléséhez kattintson a jelölőnégyzetre.
 
-    ![SQL-adatbázis kiválasztása](./media/backup-azure-backup-sql/pg-databases.png)
+    ![SQL DB kijelölése](./media/backup-azure-backup-sql/pg-databases.png)
 
-    Az összes kijelölt elem megjelenik a kijelölt tagok listájában. A védelemmel ellátni kívánt kiszolgálók vagy adatbázisok kiválasztása után kattintson a **tovább**gombra.
+    Az összes kijelölt elem megjelenik a Kijelölt tagok listában. Miután kiválasztotta a védeni kívánt kiszolgálókat vagy adatbázisokat, kattintson a **Tovább**gombra.
 
-5. Az **adatvédelmi módszer kiválasztása** képernyőn adja meg a védelmi csoport nevét, és jelölje be a szeretnék **online védelem** jelölőnégyzetet.
+5. Az **Adatvédelmi módszer kiválasztása** képernyőn adja meg a védelmi csoport nevét, és jelölje be az **Online védelem** jelölőnégyzetet.
 
-    ![Adatvédelmi módszer – rövid távú lemez & online Azure](./media/backup-azure-backup-sql/pg-name.png)
+    ![Adatvédelmi módszer - rövid távú lemez & Online Azure](./media/backup-azure-backup-sql/pg-name.png)
 
-6. A **rövid távú célok megadása képernyőn adja meg** a szükséges bemeneteket a lemezre történő biztonsági mentési pontok létrehozásához, majd kattintson a **tovább**gombra.
+6. A **Rövid távú célok megadása** képernyőn adja meg a lemezre biztonsági mentési pontok létrehozásához szükséges bemeneteket, majd kattintson a **Tovább**gombra.
 
-    A példában a **megőrzési** időtartam **5 nap**, a **szinkronizálás gyakorisága** **15 percenként**történik, ami a biztonsági mentés gyakorisága. Az **expressz teljes biztonsági mentés** **8:00 P. M**értékre van állítva.
+    A példában **megőrzési tartomány** **5 nap,** **szinkronizálási gyakorisága** **15 percenként**egyszer, amely a biztonsági mentés gyakorisága. **Az expressz teljes biztonsági mentés** **20:00-ra**van állítva.
 
     ![Rövid távú célok](./media/backup-azure-backup-sql/pg-shortterm.png)
 
    > [!NOTE]
-   > A következő példában a rendszer minden nap 8:00 ÓRAKOR létrehoz egy biztonsági mentési pontot a módosított adatoknak az előző nap 8:00 PM biztonsági mentési pontjából való átadásával. Ezt a folyamatot **expressz teljes biztonsági mentésnek**nevezzük. A tranzakciós naplók 15 percenként szinkronizálhatók. Ha az adatbázist 9:00 ÓRAKOR kell helyreállítani, a pont az utolsó expressz teljes biztonsági mentési pont naplóiból jön létre (ebben az esetben 08:00).
+   > A példában látható, a 20:00 minden nap egy biztonsági mentési pont jön létre a módosított adatok átvitelével az előző napi 8:00 PM biztonsági mentési pont. Ezt a folyamatot **expressz teljes biztonsági mentésnek nevezzük.** A tranzakciónaplók szinkronizálása 15 percenként történik. Ha 21:00-kor kell helyreállítania az adatbázist, a pont az utolsó expressz teljes biztonsági mentési pont naplóiból jön létre (ebben az esetben 20:00).
    >
    >
 
-7. A **lemez kiosztásának áttekintése** képernyőn ellenőrizze a rendelkezésre álló teljes tárolóhelyet, valamint a lehetséges lemezterületet. Kattintson a **Tovább**gombra.
+7. A **Lemezfoglalás áttekintése** képernyőn ellenőrizze a teljes rendelkezésre álló tárhelyet és a lehetséges lemezterületet. Kattintson a **Tovább** gombra.
 
-8. A **replika-létrehozási módszer választása**területen válassza ki, hogyan hozza létre az első helyreállítási pontot. A kezdeti biztonsági mentést manuálisan (hálózaton kívül) is átviheti a sávszélesség-torlódás vagy a hálózat felett. Ha úgy dönt, hogy megvárja az első biztonsági mentést, megadhatja a kezdeti átvitel időpontját. Kattintson a **Tovább**gombra.
+8. A **Replikalétrehozási módszer kiválasztása csoportban**válassza ki, hogyan hozza létre az első helyreállítási pontot. A kezdeti biztonsági mentést manuálisan (hálózaton kívül) is átviheti a sávszélesség-torlódás okainak elkerülése érdekében vagy a hálózaton keresztül. Ha úgy dönt, hogy megvárja az első biztonsági mentés átvitelét, megadhatja a kezdeti átvitel időpontját. Kattintson a **Tovább** gombra.
 
     ![Kezdeti replikációs módszer](./media/backup-azure-backup-sql/pg-manual.png)
 
-    A kezdeti biztonsági másolathoz a teljes adatforrást (SQL Server adatbázist) át kell vinni az üzemi kiszolgálóról (SQL Server gépről) a Azure Backup Serverre. Ezek az adatmennyiségek nagy méretűek lehetnek, és a hálózaton keresztüli adatátvitel meghaladhatja a sávszélességet. Ebből kifolyólag dönthet úgy, hogy áthelyezi a kezdeti biztonsági másolatot: **manuálisan** (cserélhető adathordozó használatával) a sávszélesség-torlódás elkerüléséhez, vagy **automatikusan a hálózaton keresztül** (adott időpontban).
+    A kezdeti biztonsági másolat a teljes adatforrást (SQL Server adatbázis) az éles kiszolgálóról (SQL Server-gép) az Azure Backup Serverre kell átvinni. Ezek az adatok nagyok lehetnek, és az adatok hálózaton keresztültörténő átvitele meghaladhatja a sávszélességet. Ezért választhatja a kezdeti biztonsági mentés átvitelét: **Manuálisan** (cserélhető adathordozó használatával) a sávszélesség-torlódások elkerülése érdekében, vagy **automatikusan a hálózaton** keresztül (egy adott időpontban).
 
-    A kezdeti biztonsági mentés befejezését követően a biztonsági mentések a kezdeti biztonsági másolaton lévő növekményes biztonsági másolatok. A növekményes biztonsági mentések általában kicsik, és könnyen átvihetők a hálózaton keresztül.
+    Miután a kezdeti biztonsági mentés befejeződött, a többi biztonsági mentés növekményes biztonsági mentés a kezdeti biztonsági másolat. A növekményes biztonsági mentések általában kicsik, és könnyen átvihetők a hálózaton keresztül.
 
-9. Válassza ki, hogy mikor szeretné futtatni a konzisztencia-ellenőrzést, és kattintson a **tovább**gombra.
+9. Válassza ki, hogy mikor szeretné futtatni a konzisztencia-ellenőrzést, majd kattintson a **Tovább**gombra.
 
     ![Konzisztencia-ellenőrzés](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    A Azure Backup Server konzisztencia-ellenőrzést végez a biztonsági mentési pont integritásán. Azure Backup Server kiszámítja a biztonságimásolat-fájl ellenőrzőösszegét az üzemi kiszolgálón (ebben a forgatókönyvben SQL Server gépen), valamint az adott fájl biztonsági másolatait. Ütközés esetén feltételezi, hogy a biztonsági másolatban szereplő fájl sérült Azure Backup Server. Azure Backup Server helyesbíti a biztonsági másolatban szereplő adatokat úgy, hogy elküldi az ellenőrzőösszeg-eltérésnek megfelelő blokkokat. Mivel a konzisztencia-ellenőrzések teljesítmény-igényesek, a konzisztencia-ellenőrzést ütemezhet vagy automatikusan futtathatja.
+    Az Azure Backup Server konzisztencia-ellenőrzést végez a biztonsági mentési pont sértetlenségén. Az Azure Backup Server kiszámítja a biztonsági másolat fájl ellenőrző összegét az éles kiszolgálón (ebben a forgatókönyvben az SQL Server-gép) és a fájl biztonsági mentési adatait. Ütközés esetén a rendszer feltételezi, hogy az Azure Backup Server biztonsági másolata sérült. Az Azure Backup Server helyesbíti a biztonsági mentési adatokat az ellenőrzőösszeg eltérésének megfelelő blokkok elküldésével. Mivel a konzisztencia-ellenőrzések teljesítményigényesek, ütemezheti a konzisztencia-ellenőrzést, vagy automatikusan futtathatja azt.
 
-10. Az adatforrások online védelmének megadásához válassza ki az Azure-ba védeni kívánt adatbázisokat, és kattintson a **tovább**gombra.
+10. Az adatforrások online védelmének megadásához jelölje ki az Azure-ban védeni kívánt adatbázisokat, és kattintson a **Tovább**gombra.
 
-    ![Adatforrások kiválasztása](./media/backup-azure-backup-sql/pg-sqldatabases.png)
+    ![Adatforrások kijelölése](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 
-11. Válassza ki a szervezeti szabályzatoknak megfelelő biztonsági mentési ütemterveket és adatmegőrzési házirendeket.
+11. Válassza ki a szervezeti szabályzatoknak megfelelő biztonsági mentési ütemezéseket és adatmegőrzési házirendeket.
 
-    ![Ütemterv és megőrzés](./media/backup-azure-backup-sql/pg-schedule.png)
+    ![Ütemezés és megőrzés](./media/backup-azure-backup-sql/pg-schedule.png)
 
-    Ebben a példában a biztonsági mentések naponta egyszer, 12:00 ÓRAKOR és 20:00 órakor (a képernyő alsó részén) jelennek meg.
+    Ebben a példában a biztonsági mentések naponta egyszer 12:00-kor és 20:00-kor készülnek (a képernyő alsó része)
 
     > [!NOTE]
-    > Jó megoldás, ha a gyors helyreállítás érdekében néhány rövid távú helyreállítási pontot kell használnia a lemezen. Ezek a helyreállítási pontok az operatív helyreállításhoz használatosak. Az Azure jó helyen található, magasabb SLA-kat és garantált rendelkezésre állást kínál.
+    > Ez egy jó gyakorlat, hogy néhány rövid távú helyreállítási pontok a lemezen, a gyors helyreállítás. Ezek a helyreállítási pontok a működési helyreállításhoz használatosak. Az Azure jó külső helyként szolgál, magasabb SLOS-okkal és garantált rendelkezésre állással.
     >
     >
 
-    **Ajánlott eljárás**: Ha az Azure-ba történő biztonsági mentést úgy ütemezi, hogy a helyi lemezes biztonsági mentések befejezését követően induljon el, a rendszer mindig az Azure-ba másolja a legújabb lemez
+    **Ajánlott eljárás:** Ha a helyi lemez biztonsági mentései befejezése után az Azure-ba való biztonsági mentéseket ütemezi, a rendszer mindig átmásolja a legújabb lemezbiztonsági mentéseket az Azure-ba.
 
-12. Válassza ki az adatmegőrzési szabály ütemtervét. Az adatmegőrzési szabályzat működésének részletes leírását a [használati Azure Backup a szalagos infrastruktúra lecserélése című cikkben](backup-azure-backup-cloud-as-tape.md)találja.
+12. Válassza ki az adatmegőrzési házirend ütemezését. Az adatmegőrzési szabályzat működésének részleteit az [Azure Backup használata a szalagos infrastruktúra-cikk cseréjéhez](backup-azure-backup-cloud-as-tape.md)tartalmazza.
 
-    ![Adatmegőrzési szabályzat](./media/backup-azure-backup-sql/pg-retentionschedule.png)
+    ![Adatmegőrzési házirend](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
     Ebben a példában:
 
-    * A biztonsági mentések naponta egyszer, 12:00 és 8 ÓRAKOR (a képernyő alsó részén) jelennek meg, és 180 napig őrződnek meg.
-    * A biztonsági mentés szombaton, 12:00 órakor 104 hétig megőrzött
-    * A biztonsági mentés az elmúlt szombaton 12:00 órakor 60 hónapig megőrzött
-    * A biztonsági mentés március 12:00 órakor, az utolsó szombaton 10 évig őrzi meg
-13. Kattintson a **tovább** gombra, és válassza ki a megfelelő lehetőséget a kezdeti biztonsági másolat Azure-ba történő átviteléhez. Automatikusan kiválaszthatja **a hálózaton keresztül**
+    * A biztonsági mentések naponta egyszer 12:00-kor és 20:00-kor (a képernyő alsó részén) készülnek, és 180 napig megőrződnek.
+    * Az erősítés szombaton 12:00-kor. 104 hétig megmarad
+    * A múlt szombaton 12:00-kor. 60 hónapig őrzik
+    * A mentés március utolsó szombatján 12:00-kor. 10 évig őrzik
+13. Kattintson a **Tovább** gombra, és válassza ki a megfelelő beállítást a kezdeti biztonsági másolat Azure-ba való átviteléhez. Választhat **automatikusan a hálózaton**
 
-14. Ha áttekinti a szabályzat részleteit az **Összefoglalás** képernyőn, kattintson a **csoport létrehozása** elemre a munkafolyamat befejezéséhez. Kattintson a **Bezárás** gombra, és figyelje a feladatok előrehaladását a figyelés munkaterületen.
+14. Miután áttekintette a szabályzat részleteit az **Összegzés** képernyőn, kattintson a **Csoport létrehozása** gombra a munkafolyamat befejezéséhez. A **Bezárás** gombra kattinthat, és figyelheti a feladat előrehaladását a munkaterület figyelése területen.
 
-    ![A védelmi csoport létrehozása folyamatban van](./media/backup-azure-backup-sql/pg-summary.png)
+    ![Folyamatban lévő védelmi csoport létrehozása](./media/backup-azure-backup-sql/pg-summary.png)
 
-## <a name="on-demand-backup-of-a-sql-server-database"></a>SQL Server-adatbázis igény szerinti biztonsági mentése
+## <a name="on-demand-backup-of-a-sql-server-database"></a>SQL Server adatbázis igény szerinti biztonsági másolata
 
-Míg az előző lépések létrehozott egy biztonsági mentési szabályzatot, a rendszer csak az első biztonsági mentés alkalmával hozza létre a helyreállítási pontot. Ahelyett, hogy az ütemező beindítására vár, az alábbi lépések a helyreállítási pontok manuális létrehozását indítja el.
+Míg az előző lépések biztonsági mentési házirendet hoztak létre, a "helyreállítási pont" csak az első biztonsági mentés kor jön létre. Ahelyett, hogy megvárnák, hogy az ütemező beinduljon, az alábbi lépések manuálisan aktiválják a helyreállítási pont létrehozását.
 
-1. Várjon, amíg a védelmi csoport állapota a helyreállítási pont létrehozása előtt a-adatbázishoz tartozó **OK** értékre mutat.
+1. A helyreállítási pont létrehozása előtt várja meg, amíg a védelmi csoport állapota **rendben jelenik** meg az adatbázis számára.
 
     ![Védelmi csoport tagjai](./media/backup-azure-backup-sql/sqlbackup-recoverypoint.png)
-2. Kattintson a jobb gombbal az adatbázisra, és válassza a **helyreállítási pont létrehozása**lehetőséget.
+2. Kattintson a jobb gombbal az adatbázisra, és válassza **a Helyreállítási pont létrehozása parancsot.**
 
     ![Online helyreállítási pont létrehozása](./media/backup-azure-backup-sql/sqlbackup-createrp.png)
-3. A legördülő menüben válassza az **online védelem** lehetőséget, majd kattintson **az OK** gombra egy helyreállítási pont Azure-beli létrehozásának megkezdéséhez.
+3. Válassza az **Online védelem** lehetőséget a legördülő menüben, és kattintson az **OK** gombra egy helyreállítási pont létrehozásának megkezdéséhez az Azure-ban.
 
     ![Helyreállítási pont létrehozása](./media/backup-azure-backup-sql/sqlbackup-azure.png)
-4. Tekintse meg a feladatok előrehaladását a **figyelés** munkaterületen.
+4. Tekintse meg a feladat előrehaladását a **Figyelés** munkaterületen.
 
-    ![Figyelési konzol](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
+    ![Monitorkonzol](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>SQL Server-adatbázis helyreállítása az Azure-ból
 
-A következő lépések szükségesek egy védett entitás (SQL Server adatbázis) Azure-ból történő helyreállításához.
+A következő lépések szükségesek egy védett entitás (SQL Server-adatbázis) helyreállításához az Azure-ból.
 
-1. Nyissa meg a Azure Backup Server felügyeleti konzolt. Navigáljon a **helyreállítási** munkaterületre, ahol megtekintheti a védett kiszolgálókat. Tallózással keresse meg a szükséges adatbázist (ebben az esetben a reportserver $ MSDPM2012). Válasszon ki egy **online** pontként megadott **helyreállítási** időpontot.
+1. Nyissa meg az Azure Backup Server Management Console-t. Nyissa meg a **Helyreállítási** munkaterületet, ahol a védett kiszolgálók láthatók. Keresse meg a szükséges adatbázist (ebben az esetben ReportServer$MSDPM2012). Válassza ki a helyreállítást az **online** pontként megadott **időponttól.**
 
     ![Helyreállítási pont kiválasztása](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
-2. Kattintson a jobb gombbal az adatbázis nevére, és kattintson a **helyreállítás**elemre.
+2. Kattintson a jobb gombbal az adatbázis nevére, és válassza a **Helyreállítás (Helyreállítás) parancsra.**
 
     ![Helyreállítás az Azure-ból](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. A MABS a helyreállítási pont részleteit jeleníti meg. Kattintson a **Tovább**gombra. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Kattintson a **Tovább**gombra.
+3. A MABS a helyreállítási pont részleteit mutatja. Kattintson a **Tovább** gombra. Az adatbázis felülírásához válassza a Helyreállítás az **SQL Server eredeti példányára**helyreállítási típust. Kattintson a **Tovább** gombra.
 
-    ![Visszaállítás az eredeti helyre](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
+    ![Helyreállítás az eredeti helyre](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
-    Ebben a példában a MABS egy másik SQL Server példányra vagy egy különálló hálózati mappába helyreállítja az adatbázist.
+    Ebben a példában a MABS helyreállítja az adatbázist egy másik SQL Server-példányba vagy egy önálló hálózati mappába.
 
-4. A **helyreállítási beállítások megadása** képernyőn kiválaszthatja a helyreállítási beállításokat, például a hálózati sávszélesség használatának szabályozását a helyreállítás által használt sávszélesség szabályozásához. Kattintson a **Tovább**gombra.
+4. A **Helyreállítási beállítások megadása** képernyőn kiválaszthatja a helyreállítási lehetőségeket, például a hálózati sávszélesség-használat szabályozását a helyreállítás által használt sávszélesség szabályozásához. Kattintson a **Tovább** gombra.
 
-5. Az **Összefoglalás** képernyőn az eddig megadott összes helyreállítási konfiguráció látható. Kattintson a **helyreállítás**gombra.
+5. Az **Összefoglaló** képernyőn az eddig megadott összes helyreállítási konfiguráció látható. Kattintson **a Helyreállítás gombra.**
 
-    A helyreállítás állapota a helyreállított adatbázist mutatja. A **Bezárás** gombra kattintva zárhatja be a varázslót, és megtekintheti a folyamatot a **figyelés** munkaterületen.
+    A Helyreállítás állapot azt mutatja, hogy az adatbázis helyreállt. A **Bezárás** gombra kattintva bezárhatja a varázslót, és megtekintheti a **Figyelés** munkaterületen elért előrehaladást.
 
-    ![Helyreállítási folyamat elindítása](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
+    ![Helyreállítási folyamat kezdeményezése](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
 
-    A helyreállítás befejeződése után a visszaállított adatbázis az alkalmazás konzisztens.
+    A helyreállítás befejezése után a visszaállított adatbázis konzisztens.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [biztonsági másolat fájljait és az alkalmazásról](backup-mabs-files-applications-azure-stack.md) szóló cikket.
-Tekintse [meg a biztonsági mentés SharePoint Azure stack](backup-mabs-sharepoint-azure-stack.md) cikkben.
+Tekintse meg a [Biztonsági másolat fájlok és alkalmazások](backup-mabs-files-applications-azure-stack.md) cikket.
+Tekintse meg a [Biztonsági mentés SharePoint az Azure Stack](backup-mabs-sharepoint-azure-stack.md) cikket.

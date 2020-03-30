@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a meta Networks-összekötő konfigurálása a felhasználók automatikus kiépítéséhez a Azure Active Directory segítségével | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt a felhasználói fiókok automatikus kiépítéséhez és üzembe helyezéséhez a meta Networks-összekötőhöz.
+title: 'Oktatóanyag: A Meta Networks Connector konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
+description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryt a Felhasználói fiókok metahálózatok összekötőbe való automatikus kiépítésére és kiépítésének kiteljesítésével.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,179 +16,179 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
 ms.openlocfilehash: 03c2dc6253fba5c2c7d59f3aefc5c1c663ed8248
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77061358"
 ---
-# <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>Oktatóanyag: a meta Networks-összekötő konfigurálása automatikus felhasználók kiépítéséhez
+# <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>Oktatóanyag: A Meta Networks összekötő konfigurálása automatikus felhasználói kiépítéshez
 
-Ennek az oktatóanyagnak a célja, hogy bemutassa a meta Networks Connector és a Azure Active Directory (Azure AD) szolgáltatásban elvégzendő lépéseket, hogy az Azure AD konfigurálja a felhasználókat és/vagy csoportokat a meta Networks Connectorhoz való automatikus kiépítéséhez és kiépítéséhez.
+Ez az oktatóanyag célja, hogy bemutassa a Meta Networks Connector és az Azure Active Directory (Azure AD) által végrehajtandó lépéseket az Azure AD konfigurálásához a felhasználók és/vagy csoportok metahálózatok-összekötőbe történő automatikus kiépítéséhez és kiépítésének kiteljesítéséhez.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD felhasználói létesítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../app-provisioning/user-provisioning.md)
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg nyilvános előzetes verzióban van. Az előzetes verziójú funkciók általános Microsoft Azure-használati feltételeiről a [Kiegészítő használati feltételek a Microsoft Azure előzetes verzióihoz](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)című témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Azure AD-bérlő
-* [Egy meta Networks Connector-bérlő](https://www.metanetworks.com/)
-* Egy felhasználói fiók a meta Networks-összekötőben rendszergazdai engedélyekkel.
+* Egy Azure AD-bérlő
+* [Meta Networks összekötő bérlője](https://www.metanetworks.com/)
+* A Meta Networks Connector rendszergazdai engedélyekkel rendelkező felhasználói fiókja.
 
-## <a name="assigning-users-to-meta-networks-connector"></a>Felhasználók kiosztása a meta Networks Connectorhoz
+## <a name="assigning-users-to-meta-networks-connector"></a>Felhasználók hozzárendelése a Meta Networks összekötőhöz
 
-Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
+Az Azure Active Directory egy *hozzárendelések* nevű koncepciót használ annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak az Azure AD-ben egy alkalmazáshoz rendelt felhasználók és/vagy csoportok vannak szinkronizálva.
 
-A felhasználók automatikus kiépítésének konfigurálása és engedélyezése előtt el kell döntenie, hogy mely felhasználókra és/vagy csoportokra van szükség az Azure AD-ben a meta Networks Connector eléréséhez. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a meta Networks-összekötőhöz az alábbi utasításokat követve:
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+Az automatikus felhasználói kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoportjainak kell hozzáférniük a Meta Networks Connector-hoz. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Meta Networks Connector-hoz az alábbi utasításokat követve:
+* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-meta-networks-connector"></a>Fontos Tippek a felhasználók meta Networks-összekötőhöz való hozzárendeléséhez
+## <a name="important-tips-for-assigning-users-to-meta-networks-connector"></a>Fontos tippek a felhasználók Meta Networks Connector hoz való hozzárendeléséhez
 
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a meta Networks-összekötőhöz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
+* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve a Meta Networks Connector az automatikus felhasználói kiépítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
 
-* Amikor egy felhasználót a meta Networks Connectorhoz rendel, ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelési párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
+* Amikor egy felhasználót hozzárendel a Meta Networks Connector-hoz, a hozzárendelési párbeszédpanelen ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
 
-## <a name="setup-meta-networks-connector-for-provisioning"></a>A meta Networks-összekötő beállítása a kiépítéshez
+## <a name="setup-meta-networks-connector-for-provisioning"></a>Metanetworks összekötő beállítása a kiépítéshez
 
-1. Jelentkezzen be a [meta Networks Connector felügyeleti konzolra](https://login.metanetworks.com/login/) a szervezet neve alapján. Navigáljon az **adminisztráció > API-kulcsok**elemre.
+1. Jelentkezzen be a [Meta Networks Connector Felügyeleti konzoljára](https://login.metanetworks.com/login/) a szervezet nevével. Nyissa meg **a Felügyeleti > API-kulcsokat.**
 
     ![Meta Networks Connector felügyeleti konzol](media/meta-networks-connector-provisioning-tutorial/apikey.png)
 
-2.  Kattintson a képernyő jobb felső részén található pluszjelre, és hozzon létre egy új **API-kulcsot**.
+2.  Kattintson a plusz jel a jobb felső sarokban a képernyő, hogy hozzon létre egy új **API-kulcs**.
 
-    ![Meta Networks-összekötő plusz ikon](media/meta-networks-connector-provisioning-tutorial/plusicon.png)
+    ![A Meta Networks Connector plus ikonja](media/meta-networks-connector-provisioning-tutorial/plusicon.png)
 
-3.  Adja meg az **API-kulcs nevét** és az **API-kulcs leírását**.
+3.  Állítsa be az **API-kulcs nevét** és **az API-kulcs leírását.**
 
-    ![Meta Networks-összekötő jogkivonat létrehozása](media/meta-networks-connector-provisioning-tutorial/keyname.png)
+    ![Meta Networks összekötő token létrehozása](media/meta-networks-connector-provisioning-tutorial/keyname.png)
 
-4.  A **csoportok** és **felhasználók** **írási** jogosultságának bekapcsolása.
+4.  Kapcsolja be az **írási** jogosultságokat **csoportok** és **felhasználók számára.**
 
-    ![Meta Networks-összekötő jogosultságai](media/meta-networks-connector-provisioning-tutorial/privileges.png)
+    ![Meta Networks összekötői jogosultságok](media/meta-networks-connector-provisioning-tutorial/privileges.png)
 
-5.  Kattintson a **Hozzáadás** gombra. Másolja a **titkos kulcsot** , és mentse el, mivel ez az egyetlen időpontig megtekinthető. Ez az érték a Azure Portalban található meta Networks Connector alkalmazás létesítés lapjának titkos jogkivonat mezőjében lesz megadva.
+5.  Kattintson a **Hozzáadás gombra.** Másolja a **TITKOS és** mentse el, mivel ez lesz az egyetlen alkalom, akkor megtekintheti azt. Ez az érték a Meta Networks connector alkalmazás azure-portálon a Kiépítés lapján a Titkos jogkivonat mezőben lesz megadva.
 
-    ![Meta Networks-összekötő jogkivonat létrehozása](media/meta-networks-connector-provisioning-tutorial/token.png)
+    ![Meta Networks összekötő token létrehozása](media/meta-networks-connector-provisioning-tutorial/token.png)
 
-6.  Vegyen fel egy identitásszolgáltató úgy, hogy az **adminisztráció > beállítások > identitásszolgáltató > új létrehozása**elemre navigál.
+6.  IdP hozzáadása a **Felügyeleti > beállítások > IdP-> új létrehozása**elemre való navigálással.
 
-    ![Meta Networks Connector identitásszolgáltató hozzáadása](media/meta-networks-connector-provisioning-tutorial/newidp.png)
+    ![Meta Networks összekötő IdP hozzáadása](media/meta-networks-connector-provisioning-tutorial/newidp.png)
 
-7.  A **identitásszolgáltató-konfiguráció** lapon megadhatja **a identitásszolgáltató** konfigurációját, és kiválaszthat egy **ikont**.
+7.  Az **IdP konfigurációs** lapon **elnevezheti** az IdP-konfigurációt, és választhat egy **ikont.**
 
-    ![Meta Networks-összekötő identitásszolgáltató neve](media/meta-networks-connector-provisioning-tutorial/idpname.png)
+    ![Meta Networks összekötő IdP-neve](media/meta-networks-connector-provisioning-tutorial/idpname.png)
 
-    ![Meta Networks-összekötő identitásszolgáltató ikonja](media/meta-networks-connector-provisioning-tutorial/icon.png)
+    ![Meta Networks Összekötő IdP ikonja](media/meta-networks-connector-provisioning-tutorial/icon.png)
 
-8.  A **scim konfigurálása** területen válassza ki az előző lépésekben létrehozott API-kulcsot. Kattintson a **Mentés** gombra.
+8.  Az **SCIM konfigurálása** csoportban válassza ki az előző lépésekben létrehozott API-kulcsnevet. Kattintson a **Mentés gombra.**
 
-    ![Meta Networks Connector – SCIM konfigurálása](media/meta-networks-connector-provisioning-tutorial/configure.png)
+    ![Meta Networks Connector konfigurálása SCIM](media/meta-networks-connector-provisioning-tutorial/configure.png)
 
-9.  Navigáljon az **adminisztráció > beállítások > identitásszolgáltató fülre**. Kattintson az előző lépésekben létrehozott identitásszolgáltató-konfiguráció nevére a **identitásszolgáltató-azonosító**megtekintéséhez. Ezt az **azonosítót** a rendszer hozzáadja a **bérlői URL-cím** végéhez, miközben a Azure Portalban található meta Networks Connector alkalmazás létesítés lapján a **bérlői URL-cím** mezőben szereplő érték beírásával szerepel.
+9.  Nyissa meg **a Felügyeleti > beállítások > IdP lapot.** Az **IdP-azonosító**megtekintéséhez kattintson az előző lépésekben létrehozott IdP-konfiguráció nevére. Ez az **azonosító** hozzáadódik a **bérlői URL-cím** végéhez, miközben beírja az értéket a **Bérlő URL-cím** mezőjébe a Meta Networks connector alkalmazás kiépítés lapján az Azure Portalon.
 
-    ![Meta Networks-összekötő identitásszolgáltató azonosítója](media/meta-networks-connector-provisioning-tutorial/idpid.png)
+    ![Metanetworks összekötő azonosítója](media/meta-networks-connector-provisioning-tutorial/idpid.png)
 
-## <a name="add-meta-networks-connector-from-the-gallery"></a>Meta Networks-összekötő hozzáadása a katalógusból
+## <a name="add-meta-networks-connector-from-the-gallery"></a>Meta Networks összekötő hozzáadása a gyűjteményből
 
-Mielőtt a meta Networks Connectort konfigurálja az Azure AD-vel való automatikus felhasználói üzembe helyezéshez, hozzá kell adnia a meta Networks-összekötőt az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
+A Meta Networks Connector konfigurálása az Azure AD automatikus felhasználói kiépítés, hozzá kell adnia a Meta Networks Connector az Azure AD alkalmazáskatalógusa a felügyelt SaaS-alkalmazások listájához.
 
-**A meta Networks-összekötő Azure AD-alkalmazás-katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
+**A Meta Networks Connector hozzáadása az Azure AD alkalmazásgyűjteményből, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen válassza az **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a **Minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **ablaktábla** tetején található Új alkalmazás gombra.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **meta Networks Connector**kifejezést, válassza a **meta Networks Connector** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Meta Networks Connector**( Meta Networks Connector ) kifejezést, válassza a **Meta Networks Connector** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Meta Networks-összekötő az eredmények listájában](common/search-new-app.png)
+    ![Meta Networks Connector az eredménylistában](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-meta-networks-connector"></a>Automatikus felhasználó-kiépítés konfigurálása a meta Networks-összekötőhöz 
+## <a name="configuring-automatic-user-provisioning-to-meta-networks-connector"></a>Automatikus felhasználói kiépítés konfigurálása a Meta Networks összekötőhöz 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy csoportos hozzárendelések alapján hozzon létre, frissítsen és tiltsa le a meta Networks összekötőben lévő felhasználókat és/vagy csoportokat.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le a Meta Networks Connectorban az Azure AD felhasználói és/vagy csoport-hozzárendelései alapján.
 
 > [!TIP]
-> Emellett engedélyezheti az SAML-alapú egyszeri bejelentkezést is a meta Networks-összekötőhöz, a [meta Networks Connector egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/metanetworksconnector-tutorial)megadott utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
+> Dönthet úgy is, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Meta Networks Connector számára, a [Meta Networks Connector Single sign-on oktatóanyag](https://docs.microsoft.com/azure/active-directory/saas-apps/metanetworksconnector-tutorial)utasításait követve. Az egyszeri bejelentkezés az automatikus felhasználói kiépítéstől függetlenül konfigurálható, bár ez a két funkció kiegészíti egymást
 
-### <a name="to-configure-automatic-user-provisioning-for-meta-networks-connector-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a meta Networks-összekötőhöz az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-meta-networks-connector-in-azure-ad"></a>A Meta Networks Connector automatikus felhasználói kiépítésének konfigurálása az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza **a Vállalati alkalmazások**lehetőséget, majd a Minden **alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **meta Networks Connector**elemet.
+2. Az alkalmazások listájában válassza a **Meta Networks Connector (Meta Networks Connector) lehetőséget.**
 
-    ![A meta Networks Connector hivatkozása az alkalmazások listájában](common/all-applications.png)
+    ![A Meta Networks összekötő hivatkozása az Alkalmazások listában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **létesítési módot** **Automatikus**ra.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a `https://api.metanetworks.com/v1/scim/<IdP ID>` a **bérlői URL-címben**. Adja meg a **scim-hitelesítési jogkivonat** értékét a **titkos tokenben**. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a meta Networks-összekötőhöz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a meta Networks Connector-fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **Rendszergazdai hitelesítő** adatok `https://api.metanetworks.com/v1/scim/<IdP ID>` csoportban adja meg a **bérlői URL-címet.** Adja meg a **titkos jogkivonat**korábbi, beolvasott **SCIM hitelesítési token** értékét. Kattintson **a Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD csatlakozni tud a Meta Networks Connector-hoz. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a Meta Networks Connector-fiók rendelkezik rendszergazdai engedélyekkel, majd próbálkozzon újra.
 
-    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be a jelölőnégyzetet – **E-mail értesítés küldése hiba esetén.**
 
-    ![Értesítő E-mail](common/provisioning-notification-email.png)
+    ![Értesítési e-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a meta Networks-összekötőhöz**lehetőséget.
+8. A **Leképezések** csoportban válassza **az Azure Active Directory felhasználóinak szinkronizálása metahálózatok összekötővel lehetőséget.**
 
-    ![Meta Networks-összekötő felhasználói leképezései](media/meta-networks-connector-provisioning-tutorial/usermappings.png)
+    ![Metahálózatok összekötő felhasználói leképezései](media/meta-networks-connector-provisioning-tutorial/usermappings.png)
 
-9. Tekintse át az Azure AD-ról a meta Networks-összekötőre szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a meta Networks összekötő felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+9. Tekintse át az Azure AD és a Meta Networks Connector között szinkronizált felhasználói attribútumokat az **Attribútumleképezés** szakaszban. Az **Egyező** tulajdonságokként kijelölt attribútumok a Meta Networks Connector felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
 
-    ![A meta Networks Connector felhasználói attribútumai](media/meta-networks-connector-provisioning-tutorial/userattributes.png)
+    ![Meta Networks összekötő felhasználói attribútumai](media/meta-networks-connector-provisioning-tutorial/userattributes.png)
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a meta Networks-összekötőhöz**lehetőséget.
+10. A **Leképezések** szakaszban válassza **az Azure Active Directory-csoportok szinkronizálása metahálózatok összekötőjével**lehetőséget.
 
-    ![Meta Networks-összekötő csoportok leképezései](media/meta-networks-connector-provisioning-tutorial/groupmappings.png)
+    ![Metahálózatok összekötőcsoport-leképezései](media/meta-networks-connector-provisioning-tutorial/groupmappings.png)
 
-11. Tekintse át az Azure AD-ről a meta Networks-összekötőre szinkronizált csoportosítási attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a meta Networks connectorban lévő csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+11. Tekintse át az Azure AD és a Meta Networks Connector között szinkronizált csoportattribútumokat az **Attribútumleképezés** szakaszban. Az **Egyező** tulajdonságokként kijelölt attribútumok a Meta Networks Connector csoportjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
 
-    ![Meta Networks-összekötő csoport attribútumai](media/meta-networks-connector-provisioning-tutorial/groupattributes.png)
+    ![Metahálózatok összekötőcsoport-attribútumai](media/meta-networks-connector-provisioning-tutorial/groupattributes.png)
 
-12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+12. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
 
-13. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a meta Networks-összekötőhöz, módosítsa a **kiépítési állapotot** **a következőre** a **Settings (beállítások** ) szakaszban.
+13. Az Azure AD-létesítési szolgáltatás engedélyezése a Meta Networks Connector, módosítsa a **kiépítési állapot** **be van kapcsolva** a **Beállítások** szakaszban.
 
-    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítési állapot bevan kapcsolva](common/provisioning-toggle-on.png)
 
-14. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket a meta Networks-összekötőhöz szeretne kiépíteni, ehhez válassza a **Beállítások** szakaszban lévő kívánt értékeket a **hatókörben** .
+14. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket ki szeretne építeni a Meta Networks Connector alkalmazásba a **Beállítások** szakasz **Hatókör** csoportjában a kívánt értékek kiválasztásával.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+15. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a meta Networks-összekötőn végrehajtott összes műveletet ismertetik.
+Ez a művelet elindítja a Beállítások szakasz **hatókörében** definiált összes felhasználó és/vagy csoport kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. A Szinkronizálás **részletei** szakasz segítségével figyelheti az előrehaladást, és kövesse a kiépítési tevékenység jelentésre mutató hivatkozásokat, amely ismerteti az Azure AD-létesítési szolgáltatás által a Meta Networks Connector-on végrehajtott összes műveletet.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
+Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat bővebben.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)
 

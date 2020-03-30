@@ -1,7 +1,7 @@
 ---
-title: MSAL iOS-& macOS-különbségek | Azure
+title: MSAL iOS & macOS különbségekhez | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerteti a Microsoft Authentication Library (MSAL) használatának eltéréseit az iOS és a macOS között.
+description: A cikk a Microsoft Authentication Library (MSAL) iOS és macOS közötti használati különbségeit ismerteti.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,47 +14,47 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 62b79ee7398286b8e6c8ed8612bd001595e1f6ea
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77084978"
 ---
 # <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>Microsoft Authentication Library iOS és macOS rendszerekre
 
-Ez a cikk az iOS és a macOS rendszerhez készült Microsoft Authentication Library (MSAL) közötti különbségeket ismerteti.
+Ez a cikk az iOS és a macOS rendszerhez szükséges Microsoft authentication library (MSAL) közötti működési különbségeket ismerteti.
 
 > [!NOTE]
-> A Mac gépen a MSAL csak a macOS-alkalmazásokat támogatja.
+> Macen az MSAL csak a macOS alkalmazásokat támogatja.
 
 ## <a name="general-differences"></a>Általános különbségek
 
-A macOS-hez készült MSAL az iOS-hez elérhető funkciók egy részhalmaza.
+A macOS msal az iOS-hez elérhető funkciók egy része.
 
-A macOS rendszerhez készült MSAL nem támogatja a következőket:
+A macOS msal nem támogatja:
 
-- különböző böngésző-típusok, például `ASWebAuthenticationSession`, `SFAuthenticationSession`, `SFSafariViewController`.
-- a Microsoft Authenticator alkalmazáson keresztül felügyelt hitelesítés macOS rendszeren nem támogatott.
+- különböző böngészőtípusok, `ASWebAuthenticationSession` `SFAuthenticationSession`mint `SFSafariViewController`például a , , .
+- a Microsoft Authenticator alkalmazáson keresztül közvetített hitelesítés nem támogatott a macOS rendszerben.
 
-Az azonos közzétevőtől származó alkalmazások közötti kulcstartó-megosztás a macOS 10,14-es és korábbi verzióiban korlátozott. A [hozzáférés-vezérlési listában](https://developer.apple.com/documentation/security/keychain_services/access_control_lists?language=objc) megadhatja az alkalmazások elérési útját, amelyeknek meg kell osztaniuk a kulcstartót. Előfordulhat, hogy a felhasználó további kulcstartó-kéréseket lát.
+Az azonos közzétevőtől származó alkalmazások közötti kulcskarika-megosztás korlátozottabb a macOS 10.14-es és korábbi verziója intőbb. A [hozzáférés-vezérlési listák segítségével](https://developer.apple.com/documentation/security/keychain_services/access_control_lists?language=objc) megadhatja a kulcskarikát megosztó alkalmazások elérési útjait. A felhasználó további kulcskarika-utasításokat is láthat.
 
-MacOS 10.15 + esetén a MSAL viselkedése ugyanaz, mint az iOS és a macOS között. A MSAL kulcstartó- [hozzáférési csoportokat](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc) használ a kulcstartó megosztásához. 
+A macOS 10.15+ rendszerben az MSAL viselkedése megegyezik az iOS és a macOS között. Az MSAL [kulcskarika-hozzáférési csoportokat](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc) használ a kulcskarika-megosztáshoz. 
 
-### <a name="conditional-access-authentication-differences"></a>Feltételes hozzáférési hitelesítés eltérései
+### <a name="conditional-access-authentication-differences"></a>Feltételes hozzáférés hitelesítési különbségei
 
-A feltételes hozzáférési forgatókönyvek esetében kevesebb felhasználó fog megjelenni, amikor MSAL használ az iOS-hez. Ennek az az oka, hogy az iOS a közvetítő alkalmazást (Microsoft Authenticator) használja, amely megtagadja, hogy bizonyos esetekben fel kell kérni a felhasználót.
+Feltételes hozzáférési forgatókönyvek esetén kevesebb felhasználói kérdés jelenik meg az MSAL iOS-hez való használatakor. Ennek az az oka, hogy az iOS a bróker alkalmazást (Microsoft Authenticator) használja, amely bizonyos esetekben tagadja a felhasználó rákérdezésének szükségességét.
 
-### <a name="project-setup-differences"></a>A projekt beállításának eltérései
+### <a name="project-setup-differences"></a>A projektek beállítási különbségei
 
-**macOS**
+**Macos**
 
-- Ha macOS rendszeren állítja be a projektet, győződjön meg arról, hogy az alkalmazás érvényes fejlesztési vagy éles tanúsítvánnyal van aláírva. A MSAL továbbra is az aláíratlan módban működik, de a gyorsítótár-megőrzés tekintetében eltérően fog működni. Az alkalmazás csak akkor futtatható, ha a hibakeresési célból csak aláíratlan. Ha nincs aláírva az alkalmazás, az alábbiakat fogja elosztani:
-1. A 10,14-es és korábbi verzióiban a MSAL minden alkalommal kérni fogja a felhasználótól a kulcstartó jelszavát, amikor újraindítják az alkalmazást.
-2. A 10.15 + MSAL minden jogkivonat beszerzése esetén felszólítja a felhasználót a hitelesítő adatokra. 
+- Amikor macOS rendszeren állítja be a projektet, győződjön meg arról, hogy az alkalmazás érvényes fejlesztési vagy gyártási tanúsítvánnyal van aláírva. Az MSAL továbbra is az aláíratlan módban működik, de a gyorsítótár-megőrzés tekintetében másképp fog működni. Az alkalmazást csak aláíratlanul kell futtatni hibakeresési célokra. Ha az alkalmazást aláíratlanul terjeszti, a következőket teszi:
+1. 10.14-kor és korábban az MSAL minden alkalommal kéri a felhasználótól a kulcskarika jelszavát, amikor újraindítja az alkalmazást.
+2. A 10.15+, MSAL kérni fogja a felhasználó hitelesítő adatokat minden jogkivonat-beszerzés. 
 
-- a macOS-alkalmazásoknak nincs szükségük a AppDelegate-hívás megvalósítására.
+- A macOS-alkalmazásoknak nem kell megvalósítaniuk az AppDelegate-hívást.
 
 **iOS**
 
-- A projekt beállításához további lépések szükségesek a hitelesítési közvetítő folyamatának támogatásához. A lépéseket az oktatóanyag ismerteti.
-- az iOS-projekteknek egyéni sémákat kell regisztrálniuk az info. plist fájlban. Ez a macOS rendszeren nem szükséges.
+- További lépések a projekt beállítása a hitelesítési közvetítői folyamat támogatásához. A lépések hívják ki a tutorial.
+- Az iOS-projekteknek egyéni sémákat kell regisztrálniuk az info.plist oldalon. Ez nem kötelező a macOS rendszeren.

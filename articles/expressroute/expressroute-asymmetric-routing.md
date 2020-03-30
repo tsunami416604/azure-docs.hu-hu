@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: aszimmetrikus Útválasztás'
-description: Ez a cikk végigvezeti a problémák, lehet, hogy az aszimmetrikus útválasztást használó hálózatban, amely több kapcsolat cél között.
+title: 'Azure ExpressRoute: Aszimmetrikus útválasztás'
+description: Ez a cikk bemutatja azaszimmetrikus útválasztással kapcsolatos problémákat egy olyan hálózaton, amely több hivatkozást tartalmaz egy célhoz.
 services: expressroute
 author: osamazia
 ms.service: expressroute
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: osamam
 ms.openlocfilehash: 8adfcc6559e3e2d48aabd3cfeec4fe20541917c3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74072137"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Aszimmetrikus útválasztás több hálózati elérési úttal
@@ -48,7 +48,7 @@ E két változás hálózatra gyakorolt hatásának megértéséhez gondoljunk �
 
 Ezután bekapcsolja az ExpressRoute-ot, és a Microsoft-szolgáltatásokat az ExpressRoute-on keresztül veszi igénybe. A többi Microsoft-szolgáltatást az interneten keresztül használjuk fel. A peremen egy különálló tűzfalat helyez üzembe, amely csatlakozik az ExpressRoute-hoz. A Microsoft bizonyos szolgáltatásokhoz az ExpressRoute-on keresztül konkrétabb előtagokat hirdet meg a hálózaton. Az útválasztási infrastruktúra ezért ezeknél az előtagoknál az ExpressRoute elérés utat fogja előnyben részesíteni. Ha Ön nem az ExpressRoute-on keresztül hirdeti meg nyilvános IP-címeit a Microsoft számára, akkor a Microsoft az interneten keresztül fog kommunikálni ezekkel a nyilvános IP-címekkel. A hálózatából a Microsoft felé irányuló kimenő forgalom az ExpressRoute-ot fogja használni, míg a Microsofttól visszaérkező forgalom az internetet. Ha a peremen működő tűzfal az állapottáblázatban nem szereplő adatfolyamhoz tartozó válaszcsomagot észlel, eldobja a visszatérő forgalmat.
 
-Ha úgy dönt, hogy ugyanazt a hálózati címfordítási (NAT-) készletet hirdeti meg a ExpressRoute-hoz és az internethez, akkor hasonló problémák jelennek meg a hálózatban lévő ügyfelek magánhálózati IP-címein. A Windows Update-re és más hasonló szolgáltatásokra irányuló kérelmeket az interneten keresztül küldi el a hálózat, mivel ezeknek a szolgáltatásoknak az IP-címét nem az ExpressRoute-on keresztül hirdeti meg a rendszer. A visszatérő forgalom azonban az ExpressRoute-on keresztül fog érkezni. Ha a Microsoft az internettől és az ExpressRoute-tól megegyező alhálózati maszkkal rendelkező IP-címet kap, az ExpressRoute-ot részesíti előnyben. Ha a peremhálózatban működő, az ExpressRoute felé néző tűzfalnak vagy más állapot-nyilvántartó eszköznek nincs előzetes információja egy adatfolyamról, eldobja az adott adatfolyamhoz tartozó csomagokat.
+Ha úgy dönt, hogy ugyanazt a hálózati címfordítási (NAT) készletet hirdeti az ExpressRoute és az internet számára, akkor hasonló problémákat fog látni a hálózat ban lévő ügyfelekkel a magán IP-címeken. A Windows Update-re és más hasonló szolgáltatásokra irányuló kérelmeket az interneten keresztül küldi el a hálózat, mivel ezeknek a szolgáltatásoknak az IP-címét nem az ExpressRoute-on keresztül hirdeti meg a rendszer. A visszatérő forgalom azonban az ExpressRoute-on keresztül fog érkezni. Ha a Microsoft az internettől és az ExpressRoute-tól megegyező alhálózati maszkkal rendelkező IP-címet kap, az ExpressRoute-ot részesíti előnyben. Ha a peremhálózatban működő, az ExpressRoute felé néző tűzfalnak vagy más állapot-nyilvántartó eszköznek nincs előzetes információja egy adatfolyamról, eldobja az adott adatfolyamhoz tartozó csomagokat.
 
 ## <a name="asymmetric-routing-solutions"></a>Megoldások az aszimmetrikus útválasztásra
 Az aszimmetrikus útválasztás problémájának megoldásához alapvetően két lehetőség áll rendelkezésére. Az egyik az útválasztás, a másik pedig a forrásalapú hálózati címfordítás (SNAT) használata.

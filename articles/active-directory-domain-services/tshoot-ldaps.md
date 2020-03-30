@@ -1,6 +1,6 @@
 ---
-title: A Secure LDAP hibáinak megoldása a Azure AD Domain Servicesban | Microsoft Docs
-description: Megtudhatja, hogyan lehet elhárítani egy Azure Active Directory Domain Services felügyelt tartomány biztonságos LDAP (LDAPs) megoldását
+title: Biztonságos LDAP – problémamegoldás az Azure AD tartományi szolgáltatásokban | Microsoft dokumentumok
+description: A biztonságos LDAP (LDAPS) hibaelhárítása egy Azure Active Directory tartományi szolgáltatások által kezelt tartományban
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,36 +12,36 @@ ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: iainfou
 ms.openlocfilehash: 22d1b6e2344256b52cfdbc48720a680a770a4216
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132168"
 ---
-# <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>A Azure Active Directory Domain Services felügyelt tartományhoz való biztonságos LDAP-kapcsolati problémák elhárítása
+# <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>Biztonságos LDAP-kapcsolati problémák elhárítása az Azure Active Directory tartományi szolgáltatások által kezelt tartományban
 
-A Lightweight Directory Access Protocol (LDAP) protokollt használó alkalmazások és szolgáltatások, amelyekkel a Azure Active Directory Domain Services (Azure AD DS) kommunikálnak, [a biztonságos LDAP használatára konfigurálhatók](tutorial-configure-ldaps.md). A biztonságos LDAP működéséhez meg kell nyitni egy megfelelő tanúsítványt és szükséges hálózati portot.
+Az Azure Active Directory tartományi szolgáltatásokkal (Azure AD DS) való kommunikációhoz könnyű címtár-hozzáférési protokollt (LDAP) használó alkalmazások és szolgáltatások [biztonságos LDAP használatára konfigurálhatók.](tutorial-configure-ldaps.md) A biztonságos LDAP megfelelő működéséhez megfelelő tanúsítványnak és szükséges hálózati portnak nyitva kell lennie.
 
-Ez a cikk segítséget nyújt a biztonságos LDAP-hozzáférésekkel kapcsolatos hibák elhárításához az Azure AD DSban.
+Ez a cikk segít az Azure AD DS biztonságos LDAP-hozzáférésével kapcsolatos problémák elhárításában.
 
-## <a name="common-connection-issues"></a>Gyakori kapcsolatok problémái
+## <a name="common-connection-issues"></a>Gyakori csatlakozási problémák
 
-Ha nem sikerül az Azure AD DS felügyelt tartományhoz való kapcsolódás biztonságos LDAP használatával, tekintse át a következő hibaelhárítási lépéseket. Az egyes hibaelhárítási lépések után próbálkozzon újra az Azure AD DS felügyelt tartományhoz való kapcsolódással:
+Ha nem sikerül biztonságos LDAP-t használó Azure AD DS felügyelt tartományhoz csatlakoznia, tekintse át az alábbi hibaelhárítási lépéseket. Minden hibaelhárítási lépés után próbáljon meg újra csatlakozni az Azure AD DS felügyelt tartományához:
 
-* A biztonságos LDAP-tanúsítvány kiállítói láncának megbízhatónak kell lennie az ügyfélen. A megbízhatóság létrehozásához hozzáadhatja a legfelső szintű hitelesítésszolgáltatót (CA) a megbízható főtanúsítvány-tárolóhoz az ügyfélen.
-    * Győződjön meg róla, hogy [exportálja és alkalmazza a tanúsítványt az ügyfélszámítógépekre][client-cert].
-* Ellenőrizze, hogy a felügyelt tartományhoz tartozó biztonságos LDAP-tanúsítvány rendelkezik-e a DNS-névvel a *tulajdonos* vagy a *tulajdonos alternatív nevek* attribútumában.
-    * Tekintse át a [biztonságos LDAP-tanúsítványokra vonatkozó követelményeket][certs-prereqs] , és szükség esetén hozzon létre egy helyettesítő tanúsítványt.
-* Győződjön meg arról, hogy az LDAP-ügyfél, például az *Ldp. exe* csatlakozik a biztonságos LDAP-végponthoz egy DNS-név használatával, nem az IP-címmel.
-    * Az Azure AD DS felügyelt tartományra alkalmazott tanúsítvány nem tartalmazza a szolgáltatás IP-címeit, csak a DNS-neveket.
-* Keresse meg azt a DNS-nevet, amelyhez az LDAP-ügyfél csatlakozik. Az Azure AD DS felügyelt tartomány biztonságos LDAP-szolgáltatásának nyilvános IP-címére kell feloldania.
-    * Ha a DNS-név a belső IP-címhez lett feloldva, frissítse a DNS-rekordot a külső IP-cím feloldásához.
-* A külső kapcsolatok esetében a hálózati biztonsági csoportnak tartalmaznia kell egy olyan szabályt, amely engedélyezi az internetről a 636-as TCP-portra irányuló forgalmat.
-    * Ha az Azure AD DS felügyelt tartományhoz közvetlenül a virtuális hálózathoz csatlakoztatott erőforrások biztonságos LDAP szolgáltatásával tud csatlakozni, de külső kapcsolatok nélkül, akkor győződjön meg arról, hogy [létrehoz egy hálózati biztonsági csoportra vonatkozó szabályt a biztonságos LDAP-forgalom engedélyezéséhez][ldaps-nsg].
+* A biztonságos LDAP-tanúsítvány kiállítói láncát meg kell bízni az ügyfélben. A megbízhatóság létrehozásához hozzáadhatja a legfelső szintű hitelesítésszolgáltatót (CA) az ügyfél megbízható főtanúsítvány-tárolójához.
+    * Győződjön meg arról, hogy [exportálja és alkalmazza a tanúsítványt az ügyfélszámítógépekre.][client-cert]
+* Ellenőrizze, hogy a felügyelt tartomány biztonságos LDAP-tanúsítványa rendelkezik-e a *Tulajdonos* vagy a *Tulajdonos alternatív nevek* attribútumban található DNS-névvel.
+    * Tekintse át a [biztonságos LDAP-tanúsítvány követelményeit,][certs-prereqs] és szükség esetén hozzon létre egy helyettesítő tanúsítványt.
+* Ellenőrizze, hogy az LDAP-ügyfél, például *az ldp.exe* dns-név, nem pedig IP-cím használatával csatlakozik-e a biztonságos LDAP-végponthoz.
+    * Az Azure AD DS felügyelt tartományra alkalmazott tanúsítvány nem tartalmazza a szolgáltatás IP-címét, csak a DNS-neveket.
+* Ellenőrizze azt a DNS-nevet, amelyhez az LDAP-ügyfél csatlakozik. Fel kell oldania a nyilvános IP-címet a biztonságos LDAP az Azure AD DS felügyelt tartományban.
+    * Ha a DNS-név a belső IP-címre oldódik fel, frissítse a DNS-rekordot a külső IP-címre való feloldáshoz.
+* Külső kapcsolat esetén a hálózati biztonsági csoportnak tartalmaznia kell egy szabályt, amely lehetővé teszi a 636-os TCP-portra irányuló forgalmat az internetről.
+    * Ha biztonságos LDAP-kapcsolaton keresztül tud csatlakozni az Azure AD DS felügyelt tartományához a virtuális hálózathoz közvetlenül kapcsolódó erőforrásokból, de a külső kapcsolatokból nem, győződjön meg arról, [hogy létrehoz egy hálózati biztonsági csoportszabályt a biztonságos LDAP-forgalom engedélyezéséhez.][ldaps-nsg]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha továbbra is problémákba ütközik, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
+Ha továbbra is problémák merülnek fel, [nyisson meg egy Azure-támogatási kérelmet][azure-support] további hibaelhárítási segítségért.
 
 <!-- INTERNAL LINKS -->
 [azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

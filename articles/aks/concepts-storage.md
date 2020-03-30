@@ -1,23 +1,23 @@
 ---
-title: Fogalmak – tárolás az Azure Kubernetes Servicesben (ak)
-description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) tárolóját, beleértve a köteteket, az állandó köteteket, a tárolási osztályokat és a jogcímeket.
+title: Fogalmak – Tárolás az Azure Kubernetes-szolgáltatásokban (AKS)
+description: Ismerje meg az Azure Kubernetes-szolgáltatás (AKS) tárolását, beleértve a köteteket, az állandó köteteket, a tárolási osztályokat és a jogcímeket
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.openlocfilehash: 4bb19d7da971a82aef9c0e1fc092cc648ac49c4c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595994"
 ---
-# <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes szolgáltatásban (ak) lévő alkalmazások tárolási lehetőségei
+# <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes-szolgáltatás (AKS) alkalmazásaitárolási lehetőségek
 
-Előfordulhat, hogy az Azure Kubernetes szolgáltatásban (ak) futó alkalmazásoknak tárolniuk és le kell kérniük az adatgyűjtést. Egyes alkalmazás-munkaterhelések esetén ez az adattároló helyi, gyors tárterületet használhat a csomóponton, amely már nem szükséges a hüvelyek törlésekor. Az alkalmazások más számítási feladataihoz olyan tárterület szükséges, amely az Azure-platformon belül még több normál adatköteten is fennmarad. Előfordulhat, hogy több hüvelynek ugyanazokat az adatköteteket kell megosztania, vagy újra kell csatlakoztatnia az adatköteteket, ha a pod egy másik csomóponton van átütemezhetve. Végezetül előfordulhat, hogy bizalmas adatokat vagy alkalmazás-konfigurációs adatokat kell beszúrnia a hüvelybe.
+Az Azure Kubernetes-szolgáltatásban (AKS) futó alkalmazásoknak adatokat kell tárolniuk és letölteniük. Egyes alkalmazás-munkaterhelések, ez az adattároló használhatja a helyi, gyors tároló a csomóponton, amely már nincs szükség, ha a podok törlődnek. Más alkalmazás-munkaterhelések szükség lehet a tárolás, amely továbbra is megmarad az Azure platformon több rendszeres adatkötetek. Előfordulhat, hogy több podnak is meg kell osztania ugyanazokat az adatköteteket, vagy újra kell csatolnia az adatköteteket, ha a pod át van ütemezve egy másik csomóponton. Végül előfordulhat, hogy bizalmas adatokat vagy alkalmazáskonfigurációs adatokat kell beadnia a podokba.
 
-![Azure Kubernetes Services-(ak-) fürtön lévő alkalmazások tárolási lehetőségei](media/concepts-storage/aks-storage-options.png)
+![Az Azure Kubernetes-szolgáltatások (AKS) fürtjében lévő alkalmazások tárolási lehetőségei](media/concepts-storage/aks-storage-options.png)
 
-Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek a tárolást biztosítják alkalmazásai számára az AK-ban:
+Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek tárolót biztosítanak az Alkalmazások Számára az AKS-ben:
 
 - [Kötetek](#volumes)
 - [Tartós kötetek](#persistent-volumes)
@@ -26,41 +26,41 @@ Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek a tárolást biztos�
 
 ## <a name="volumes"></a>Kötetek
 
-Az alkalmazásoknak gyakran kell tudniuk tárolni és beolvasni az adatgyűjtést. Mivel a Kubernetes általában az egyes hüvelyeket ideiglenes, eldobható erőforrásként kezeli, a különböző megközelítések az alkalmazások igény szerinti felhasználására és megőrzésére szolgálnak. A *kötetek* a hüvelyek és az alkalmazások életciklusa közötti adattárolási,-lekérési és-megőrzési módot jelölik.
+Az alkalmazásoknak gyakran képesnek kell lenniük az adatok tárolására és lekérésére. Mivel a Kubernetes általában az egyes podokat rövid élettartamú, eldobható erőforrásokként kezeli, különböző megközelítések érhetők el az alkalmazások számára az adatok szükség szerinti használatához és megőrzéséhez. A *kötet* az adatok podok és az alkalmazás életciklusa közötti tárolásának, lekérésének és megőrzésének módját jelenti.
 
-A hagyományos kötetek tárolására és lekérésére az Azure Storage által támogatott Kubernetes-erőforrások jönnek létre. Manuálisan is létrehozhatja ezeket az adatköteteket, amelyeket közvetlenül a hüvelyekhez rendelhet, vagy Kubernetes automatikusan létrehozhatja őket. Ezek az adatkötetek az Azure-lemezeket és a Azure Files is használhatják:
+Az adatok tárolására és beolvasására szolgáló hagyományos kötetek az Azure Storage által támogatott Kubernetes-erőforrásokként jönnek létre. Manuálisan létrehozhatja ezeket az adatköteteket, amelyekközvetlenül podokhoz vannak rendelve, vagy a Kubernetes automatikusan létrehozhatja őket. Ezek az adatkötetek azure-lemezeket vagy Azure-fájlokat használhatnak:
 
-- Az *Azure-lemezek* használhatók Kubernetes *adatlemez* -erőforrások létrehozásához. A lemezek az Azure Premium Storage-t, a nagy teljesítményű SSD-ket, illetve az Azure standard Storage-t is használhatják, a normál HDD-k által támogatottak. A legtöbb éles és fejlesztési számítási feladathoz használja a Premium Storage-t. Az Azure-lemezek *ReadWriteOnce*-ként vannak csatlakoztatva, így csak egyetlen Pod számára érhető el. A több hüvelyrel egyidejűleg elérhető tárolási kötetek esetében használja a Azure Files.
-- *Azure Files* használható egy Azure Storage-fiók által támogatott SMB 3,0-megosztás csatlakoztatására a hüvelyek számára. A fájlok lehetővé teszik az adatmegosztást több csomóponton és hüvelyen keresztül. A fájlok a normál HDD-k, illetve az Azure Premium Storage által támogatott Azure standard Storage-t is használhatják, nagy teljesítményű SSD-k által támogatottak.
+- *Az Azure Disks* kubernetes *datadisk* erőforrás létrehozásához használható. A lemezek használhatják az Azure Premium storage-t, amelyet nagy teljesítményű SSD-k vagy normál HDD-k által támogatott Azure Standard storage támogatnak. A legtöbb éles és fejlesztési számítási feladatok hoz, prémium szintű storage. Az Azure Disks *readWriteOnce-ként*van csatlakoztatva, így csak egyetlen podon érhető el. Több pod által egyidejűleg elérhető tárolókötetek esetén használja az Azure Files-t.
+- *Az Azure Files* segítségével csatlakoztatható egy SMB 3.0-s megosztás, amelyet egy Azure Storage-fiók támogat a podokhoz. A fájlok lehetővé teszik az adatok megosztását több csomópont és pod között. A fájlok használhatják az Azure Standard storage-t, amelyet normál HDD-k vagy nagy teljesítményű SSD-k által támogatott Azure Premium-tárhely támogatnak.
 > [!NOTE] 
-> Azure Files támogatja a Premium Storage-t a Kubernetes 1,13-es vagy újabb verzióját futtató AK-fürtökben.
+> Az Azure Files támogatja a prémium szintű tárhelyet a Kubernetes 1.13-as vagy újabb verziót futtató AKS-fürtökben.
 
-A Kubernetes-ben a kötetek több, mint egy hagyományos lemezt képviselnek, ahol az információ tárolható és lekérhető. A Kubernetes kötetek a tárolók általi használatra is használhatók a pod-ba történő adatbevitelhez. A Kubernetes-ben a gyakori további mennyiségi típusok a következők:
+A Kubernetes kötetek több, mint egy hagyományos lemez, ahol az adatok tárolhatók és beolvasni. Kubernetes kötetek is használható, mint egy módja annak, hogy adatokat fecskendeznek egy pod a tárolók általi használatra. A Kubernetes gyakori további kötettípusai a következők:
 
-- *emptyDir* – ezt a kötetet általában a pod ideiglenes tárolóhelyként használják. A hüvelyen belüli összes tároló hozzáfér a köteten lévő adatforgalomhoz. Az ebbe a kötetbe írt adattípusok csak a pod élettartama esetén maradnak meg, a kötetet törli a rendszer. Ez a kötet jellemzően a mögöttes helyi csomópont lemezes tárterületét használja, bár csak a csomópont memóriájában létezhet.
-- *Secret (titkos* ) – Ez a kötet a bizalmas adatok hüvelybe, például jelszavakba való beadására szolgál. Először hozzon létre egy titkos kulcsot a Kubernetes API használatával. A pod vagy az üzembe helyezés megadásakor a rendszer egy adott titkot kérhet. A titkos kulcsokat csak olyan csomópontok számára biztosítjuk, amelyekhez szükség van egy ütemezett Pod-re, és a titkot a *tmpfs*tárolja, nem lemezre írva. Ha a titkos kulcsot tartalmazó csomópont utolsó podét törli, a titkos kulcsot a rendszer törli a csomópont tmpfs. A titkos kulcsok tárolása egy adott névtéren belül történik, és csak ugyanazon a névtéren belüli hüvelyek érhetik el.
-- *configMap* – ezt a kötetet a kulcs-érték párok tulajdonságainak hüvelybe való beírására, például az alkalmazás konfigurációs adataiba kell beszúrni. Ahelyett, hogy az alkalmazás konfigurációs információit definiálja egy tároló képén belül, megadhatja azt Kubernetes-erőforrásként, amely könnyen frissíthető és alkalmazható a hüvelyek új példányaira, amelyeket üzembe helyeztek. A titkos kulcshoz hasonlóan először is létre kell hoznia egy ConfigMap a Kubernetes API használatával. Ezt a ConfigMap akkor lehet kérni, ha egy Pod vagy üzemelő példányt határoz meg. A ConfigMaps egy adott névtéren belül tárolódnak, és csak ugyanazon a névtéren belüli hüvelyek érhetik el.
+- *emptyDir* – Ez a kötet általában egy pod ideiglenes helyeként használatos. A podon belüli összes tároló hozzáférhet a köteten lévő adatokhoz. A kötettípusra írt adatok csak a pod élettartamára maradnak meg – a pod törlésekor a kötet törlődik. Ez a kötet általában az alapul szolgáló helyi csomópontlemez-tárolót használja, bár csak a csomópont memóriájában is létezhet.
+- *titkos* – Ez a kötet bizalmas adatok podokba, például jelszavakba való befecskendezésére szolgál. Először hozzon létre egy titkos kulcsot a Kubernetes API használatával. A pod vagy a központi telepítés definiálásakor egy adott titkos kulcsot lehet kérni. A titkos kulcsok csak olyan csomópontok számára vannak megadva, amelyekhez szükség van egy ütemezett podra, és a titkos kulcsot *tmpfs*tárolja, nem lemezre írva. Amikor az utolsó pod egy csomóponton, amely megköveteli a titkos kulcsot törlődik, a titkos kulcs törlődik a csomópont tmpfs törlődik. A titkos kulcsok egy adott névtérben tárolódnak, és csak az ugyanazon a névtéren belül lévő podok férhetnek hozzá.
+- *configMap* – Ez a kötettípus kulcs-érték pár tulajdonságok podokba történő befecskendezésére szolgál, például az alkalmazás konfigurációs adatai. Ahelyett, hogy egy tárolórendszerképen belül definiálna alkalmazáskonfigurációs információkat, definiálhatja azt egy Kubernetes-erőforrásként, amely könnyen frissíthető és alkalmazható a podok új példányaira, ahogy üzembe helyezik őket. A titkos kulcs használatával először hozzon létre egy ConfigMap a Kubernetes API használatával. Ez a ConfigMap ezután kérhető, amikor definiál egy podot vagy üzembe helyezést. A ConfigMaps egy adott névtérben tárolódik, és csak az ugyanazon a névtéren belüli podok férhetnek hozzá.
 
-## <a name="persistent-volumes"></a>Állandó kötetek
+## <a name="persistent-volumes"></a>Tartós kötetek
 
-A pod életciklusának részeként definiált és létrehozott kötetek csak a pod törlése után állnak fenn. A hüvelyek gyakran arra várnak, hogy a tárolójuk továbbra is megmaradjon, ha a karbantartási esemény során egy másik gazdagépen átütemezett Pod, különösen a StatefulSets. Az *állandó kötet* (PV) olyan tárolási erőforrás, amelyet a Kubernetes API hozott létre és felügyel, amely az egyes Pod-k élettartamán túl is létezhet.
+Kötetek, amelyek a pod életciklusa részeként definiált és létrehozott kötetek csak addig léteznek, amíg a pod törlődik. A podok gyakran elvárják, hogy a tároló megmaradjon, ha egy pod átvan ütemezve egy másik gazdagépen egy karbantartási esemény során, különösen a StatefulSets. Az *állandó kötet* (PV) a Kubernetes API által létrehozott és felügyelt tárolási erőforrás, amely létezhet egy adott pod élettartama után.
 
-Az Azure-lemezek vagy-fájlok a PersistentVolume biztosítására szolgálnak. Ahogy azt a kötetek előző szakasza is jelzi, a lemezek és a fájlok választását gyakran az adatmennyiség vagy a teljesítmény szintjéhez való egyidejű hozzáférés szükségessége határozza meg.
+Az Azure Disks vagy files a persistentvolume biztosításához használható. Amint azt a Kötetek című korábbi szakaszban megjegyeztük, a lemezek vagy fájlok kiválasztását gyakran az adatokhoz vagy a teljesítményszinthez való egyidejű hozzáférés szükségessége határozza meg.
 
-![Állandó kötetek egy Azure Kubernetes Services (ak) fürtben](media/concepts-storage/persistent-volumes.png)
+![Állandó kötetek egy Azure Kubernetes-szolgáltatások (AKS) fürtjében](media/concepts-storage/persistent-volumes.png)
 
-A PersistentVolume lehet *statikusan* létrehozni, vagy a Kubernetes API-kiszolgáló által *dinamikusan* létrehozott. Ha egy Pod ütemezve van, és olyan tárolót kér, amely jelenleg nem érhető el, a Kubernetes létrehozhatja az alapul szolgáló Azure Disk vagy Files tárolót, és csatolhatja azt a pod-hoz. A dinamikus kiépítés egy *StorageClass* segítségével azonosítja, hogy milyen típusú Azure-tárolót kell létrehozni.
+A PersistentVolume *statikusan* létrehozható egy fürtrendszergazda által, vagy *dinamikusan* a Kubernetes API-kiszolgáló által. Ha egy pod van ütemezve, és a jelenleg nem elérhető tárhelyet kér, a Kubernetes létrehozhatja az alapul szolgáló Azure Disk vagy Files storage-t, és csatolhatja azt a podhoz. A dinamikus kiépítés egy *StorageClass-t* használ az Azure-tárhely létrehozásának azonosítására.
 
 ## <a name="storage-classes"></a>Tárolási osztályok
 
-A különböző tárolási rétegek (például a prémium és a standard) definiálásához létrehozhat egy *StorageClass*. A StorageClass a *reclaimPolicy*is meghatározza. Ez reclaimPolicy az alapul szolgáló Azure storage-erőforrások viselkedését vezérlő, amikor a pod törlődik, és a tartós kötet már nem szükséges. Az alapul szolgáló tárolási erőforrás törölték, vagy a jövőbeli podot segítségével őrzi meg.
+Különböző tárolási szintek, például prémium és standard szintek definiálásához létrehozhat egy *StorageClass osztályt.* A StorageClass a *reclaimPolicy programot is definiálja.* Ez a reclaimPolicy szabályozza az alapul szolgáló Azure storage-erőforrás viselkedését, amikor a pod törlődik, és az állandó kötet már nem szükséges. Az alapul szolgáló tárolási erőforrás törölhető, vagy megtartható egy jövőbeli pod.
 
-Az AK-ban két kezdeti StorageClasses jön létre:
+Az AKS-ben két kezdeti StorageClasses jön létre:
 
-- *alapértelmezett* – felügyelt lemez létrehozásához az Azure standard Storage szolgáltatást használja. A visszaigénylési házirend azt jelzi, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó állandó kötet törlődik.
-- *Managed-Premium* – az Azure Premium Storage használatával felügyelt lemez hozható létre. A visszaigénylési házirend újból azt jelzi, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó állandó kötet törlődik.
+- *alapértelmezett* – Az Azure Standard storage használatával hozzon létre egy felügyelt lemezt. A reclaim szabályzat azt jelzi, hogy az alapul szolgáló Azure Disk törlődik, ha az állandó kötetet használó törlődik.
+- *managed-premium* - Azure Premium storage használatával hozzon létre felügyelt lemezt. A reclaim-szabályzat ismét azt jelzi, hogy az alapul szolgáló Azure Disk törlődik, ha az állandó kötetet használó törlődik.
 
-Ha nem ad meg StorageClass egy állandó kötethez, a rendszer az alapértelmezett StorageClass használja. Ügyeljen arra, hogy az állandó kötetek kérésekor a szükséges tárterületet használják. `kubectl`használatával további igényekhez is létrehozhat StorageClass. Az alábbi példa prémium Managed Disks használ, és megadja, hogy a mögöttes Azure-lemezt meg kell *őrizni* a pod törlésekor:
+Ha nincs megadva StorageClass egy állandó kötethez, a rendszer az alapértelmezett StorageClass-t használja. Az állandó kötetek kérésekor ügyelje arra, hogy azok a megfelelő tárhelyet használják, amire szüksége van. StorageClass-t a használatával `kubectl`további igényekhez hozhat létre. A következő példa prémium szintű felügyelt lemezeket használ, és meghatározza, hogy az alapul szolgáló Azure Disk *meg maradjon* a pod törlésekor:
 
 ```yaml
 kind: StorageClass
@@ -74,15 +74,15 @@ parameters:
   kind: Managed
 ```
 
-## <a name="persistent-volume-claims"></a>Állandó kötet jogcímei
+## <a name="persistent-volume-claims"></a>Tartóskötet-jogcímek
 
-A PersistentVolumeClaim egy adott StorageClass, elérési módra és méretre vonatkozó lemez-vagy file Storage-t kér. A Kubernetes API-kiszolgáló dinamikusan kiépítheti a mögöttes tárolási erőforrást az Azure-ban, ha nincs meglévő erőforrás a jogcím teljesítéséhez a definiált StorageClass alapján. A pod definíciója tartalmazza a kötet csatlakoztatását, ha a kötet csatlakoztatva van a pod-hoz.
+PersistentVolumeClaim egy adott StorageClass lemez- vagy fájltárolását, hozzáférési módot és méretet kér. A Kubernetes API-kiszolgáló dinamikusan kiépítheti az alapul szolgáló tárolási erőforrást az Azure-ban, ha nincs meglévő erőforrás a megadott StorageClass alapján a jogcím teljesítéséhez. A pod definíció tartalmazza a kötet csatlakoztatása után a kötet.
 
-![Tartós kötet jogcímek, az Azure Kubernetes szolgáltatás (AKS)-fürt](media/concepts-storage/persistent-volume-claims.png)
+![Állandó mennyiségi jogcímek egy Azure Kubernetes-szolgáltatás (AKS) fürtben](media/concepts-storage/persistent-volume-claims.png)
 
-Egy PersistentVolume egy PersistentVolumeClaim van *kötve* , amint egy rendelkezésre álló tárolási erőforrás hozzá lett rendelve az azt kérő Pod-hez. Az állandó kötetek 1:1-es leképezése a jogcímekre történik.
+A persistentvolume *egy persistentvolumeclaim-hez van kötve,* miután egy elérhető tárolási erőforrás hozzá van rendelve a pod ot kérő podhoz. Az állandó kötetek 1:1 arányban megfeleltetik a jogcímeket.
 
-Az alábbi példa YAML-jegyzék egy állandó mennyiségi jogcímet mutat be, amely a *felügyelt prémium* StorageClass használja, és a lemez *5Gi* kéri a következő méretben:
+A következő példa YAML-jegyzékfájl egy állandó kötetjogcímet mutat be, amely a *felügyelt prémium szintű StorageClass-t* használja, és *5Gi* lemezméretet kér:
 
 ```yaml
 apiVersion: v1
@@ -98,7 +98,7 @@ spec:
       storage: 5Gi
 ```
 
-Ha létrehoz egy Pod-definíciót, a rendszer az állandó kötet jogcímet adja meg a kívánt tár igényléséhez. Ezután megadhatja az alkalmazások *volumeMount* az olvasási és írási adatbevitelhez. Az alábbi YAML-jegyzék azt mutatja be, hogy a korábbi állandó kötet jogcíme hogyan csatlakoztatható a kötethez a */mnt/Azure*-ben:
+Pod-definíció létrehozásakor az állandó kötet jogcím van megadva a kívánt tároló kérésére. Ezután adja meg a *volumeMount* az alkalmazások adatok olvasása és írása. A következő példa YAML-jegyzékfájl bemutatja, hogyan használható az előző állandó kötetjogcím a */mnt/azure*kötet csatlakoztatására:
 
 ```yaml
 kind: Pod
@@ -118,24 +118,24 @@ spec:
         claimName: azure-managed-disk
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
+A kapcsolódó gyakorlati tanácsok értése: [Gyakorlati tanácsok a tároláshoz és a biztonsági mentések az AKS-ben.][operator-best-practices-storage]
 
-Az Azure-lemezeket vagy Azure Filesokat használó dinamikus és statikus kötetek létrehozásával kapcsolatban tekintse meg a következő útmutató cikkeket:
+Az Azure Disks vagy az Azure Files szolgáltatást használó dinamikus és statikus kötetek létrehozásáról az alábbi útmutatócikkekben található:
 
-- [Statikus kötet létrehozása az Azure-lemezek használatával][aks-static-disks]
-- [Statikus kötet létrehozása Azure Files használatával][aks-static-files]
-- [Dinamikus kötet létrehozása az Azure-lemezek használatával][aks-dynamic-disks]
-- [Dinamikus kötet létrehozása Azure Files használatával][aks-dynamic-files]
+- [Statikus kötet létrehozása az Azure Disks használatával][aks-static-disks]
+- [Statikus kötet létrehozása az Azure Files használatával][aks-static-files]
+- [Dinamikus kötet létrehozása az Azure Disks használatával][aks-dynamic-disks]
+- [Dinamikus kötet létrehozása az Azure Files használatával][aks-dynamic-files]
 
-Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
+A Kubernetes és az AKS alapfogalmairól az alábbi cikkekben talál további információt:
 
-- [Kubernetes/AK-fürtök és-munkaterhelések][aks-concepts-clusters-workloads]
-- [Kubernetes/AK-identitás][aks-concepts-identity]
-- [Kubernetes/AK biztonság][aks-concepts-security]
-- [Kubernetes/AK virtuális hálózatok][aks-concepts-network]
-- [Kubernetes/AK-skála][aks-concepts-scale]
+- [Kubernetes / AKS-fürtök és munkaterhelések][aks-concepts-clusters-workloads]
+- [Kubernetes / AKS identitás][aks-concepts-identity]
+- [Kubernetes / AKS biztonság][aks-concepts-security]
+- [Kubernetes / AKS virtuális hálózatok][aks-concepts-network]
+- [Kubernetes / AKS skála][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
 

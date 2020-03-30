@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre & Közzététel egyszeri bejelentkezési dokumentációt az alkalmazáshoz
-description: Útmutató független szoftvergyártók számára a Azure Active Directory integrálásához
+title: Az alkalmazás hoz& közzétesz egyszeri bejelentkezési dokumentációt
+description: Útmutató független szoftverszállítóknak az Azure Active Directoryval való integrációhoz
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -13,52 +13,52 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb223ec8ab7b5c053136c78d3b4ca30ad4da4e18
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232282"
 ---
 # <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Egyszeri bejelentkezési dokumentáció létrehozása és közzététele az alkalmazáshoz   
 
-## <a name="documentation-on-your-site"></a>A webhelyen található dokumentáció
+## <a name="documentation-on-your-site"></a>Dokumentáció a webhelyen
 
-A könnyű bevezetést a nagyvállalati szoftverek döntéseinek jelentős része képezi. Az egyszerű, könnyen követhető dokumentumok egyértelművé teszi az ügyfelek bevezetésének útját, és csökkentik a támogatási költségeket. Több ezer szoftvergyártó dolgozik a Microsoftnál, hogy mi működik.
+A könnyű elfogadás jelentős tényező a vállalati szoftverekre vonatkozó döntésekben. A könnyen követhető, egyértelmű dokumentáció támogatja ügyfeleit az örökbefogadási út során, és csökkenti a támogatási költségeket. A Microsoft több ezer szoftvergyártóval együttműködve látta, hogy mi működik.
 
-Javasoljuk, hogy a webhelyen legalább a következő elemeket tartalmazza a dokumentációban.
+Javasoljuk, hogy a webhelyén található dokumentáció legalább a következő elemeket tartalmazza.
 
-* Az egyszeri bejelentkezés funkciójának bemutatása
+* Bevezetés az SSO funkcióba
 
   * Támogatott protokollok
 
-  * Verzió és SKU
+  * Verzió és Termékváltozat
 
-  * Támogatott identitás-szolgáltatók listája dokumentációs hivatkozásokkal
+  * A támogatott identitásszolgáltatók listája dokumentációs hivatkozásokkal
 
-* Licencelési információk az alkalmazáshoz
+* A kérelem licencelési adatai
 
-* Szerepköralapú hozzáférés-vezérlés az egyszeri bejelentkezés konfigurálásához
+* Szerepköralapú hozzáférés-vezérlés az egyszeri szolgáltatás konfigurálásához
 
-* SSO-konfigurációs lépések
+* Az SSO konfigurációs lépései
 
-  * Az SAML felhasználói felületi konfigurációs elemei a szolgáltatótól várt értékekkel
+  * SamL felhasználói felületkonfigurációs elemei a szolgáltatótól várt értékekkel
 
-  * Az azonosító szolgáltatók számára átadandó szolgáltatói információk
+  * Az identitásszolgáltatóknak továbbítandó szolgáltatói adatok
 
-* If OIDC/OAuth
+* Ha OIDC/OAuth
 
-  * Az üzleti indoklások megadásához szükséges engedélyek listája
+  * Az üzleti indoklással való hozzájáruláshoz szükséges engedélyek listája
 
-* Tesztelési lépések a próbaüzem felhasználói számára
+* Tesztelési lépések a kísérleti felhasználók számára
 
 * Hibaelhárítási információk, például hibakódok és üzenetek
 
-* Támogatási mechanizmusok ügyfelek számára
+* Támogatási mechanizmusok az ügyfelek számára
 
 ## <a name="documentation-on-the-microsoft-site"></a>Dokumentáció a Microsoft webhelyén
 
-Ha az alkalmazást az Azure Active Directory alkalmazás-katalógussal sorolja fel, amely az Azure piactéren is közzéteszi az alkalmazást, a Microsoft dokumentációt készít a kölcsönös ügyfeleinknek a lépésenkénti folyamatról. [Itt](https://aka.ms/appstutorial)láthat egy példát. Ezt a dokumentációt a katalógusba való beküldésük alapján hozza létre, és egyszerűen frissítheti, ha az alkalmazást a GitHub-fiók használatával módosítja.
+Amikor felsorolja az alkalmazást az Azure Active Directory alkalmazástárban, amely az alkalmazást is közzéteszi az Azure Marketplace-en, a Microsoft dokumentációt hoz létre a kölcsönös ügyfeleink számára, amely ismerteti a lépésről lépésre történő folyamatot. Itt láthat [szamutat](https://aka.ms/appstutorial)egy példát. Ez a dokumentáció a katalógusba küldött beküldésealapján jön létre, és könnyen frissítheti, ha módosítja az alkalmazást a GitHub-fiókjával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Az alkalmazás listázása az Azure AD Application Galleryben](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)
+[Az alkalmazás listázása az Azure AD alkalmazásgalériában](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)

@@ -9,201 +9,201 @@ ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
 ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77192772"
 ---
 ## <a name="for-users-in-your-directory"></a>A címtárban lévő felhasználók számára
 
-Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő felhasználók számára a hozzáférési csomag igénylését. A kérelem szabályzatának meghatározásakor megadhat egyéni felhasználókat vagy gyakrabban felhasználói csoportokat. Előfordulhat például, hogy a szervezet már rendelkezik egy csoporttal, például az **összes alkalmazottal**.  Ha ez a csoport hozzá van adva a szabályzatban azon felhasználók számára, akik hozzáférést igényelhetnek, akkor a csoport bármelyik tagja hozzáférhet a hozzáféréshez.
+Kövesse az alábbi lépéseket, ha engedélyezni szeretné, hogy a címtár felhasználói igényelhessék ezt a hozzáférési csomagot. A kérelemházirend meghatározásakor megadhatja az egyes felhasználókat, vagy gyakrabban a felhasználói csoportokat. Előfordulhat például, hogy a szervezetnek már van egy csoportja, például **a Minden alkalmazott.**  Ha ez a csoport szerepel a házirendben azon felhasználók számára, akik hozzáférést kérhetnek, akkor a csoport bármely tagja hozzáférést kérhet.
 
-1. A **hozzáférést kérő felhasználók** területen kattintson a **címtárban lévő felhasználók**elemre.
+1. A **Felhasználók, akik hozzáférést kérhetnek,** kattintson **a Címtárban lévő felhasználók számára**elemre.
 
-    Ha ezt a beállítást választja, az új beállítások úgy jelennek meg, hogy tovább pontosítsa, hogy kik a címtárban is igényelhetik ezt a hozzáférési csomagot.
+    Ha ezt a beállítást választja, új beállítások jelennek meg, amelyek tovább finomítják, hogy a címtárban ki kérheti ezt a hozzáférési csomagot.
 
-    ![Hozzáférési csomag – kérelmek – a címtárban lévő felhasználók számára](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
+    ![Access csomag – Kérések – A címtárban lévő felhasználók számára](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
 
-1. Válasszon egyet a következő lehetőségek közül:
+1. Válasszon egyet az alábbi lehetőségek közül:
 
     |  |  |
     | --- | --- |
-    | **Adott felhasználók és csoportok** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy csak a címtárban lévő felhasználók és csoportok férhessenek hozzá a hozzáférési csomaghoz. |
-    | **Minden tag (a vendégek kivételével)** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a címtárban lévő összes tag felhasználó kérje ezt a hozzáférési csomagot. Ez a lehetőség nem tartalmazza a címtárban esetleg meghívott vendég felhasználókat. |
-    | **Minden felhasználó (beleértve a vendégeket is)** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a címtár összes tagja és vendég felhasználója hozzáférhessen a hozzáférési csomaghoz. |
+    | **Adott felhasználók és csoportok** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy csak a könyvtárban megadott felhasználók és csoportok igényelhetnék ezt a hozzáférési csomagot. |
+    | **Minden tag (a vendégek kivételével)** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a címtár összes tagfelhasználója igényelhesse ezt a hozzáférési csomagot. Ez a beállítás nem tartalmazza azönt ön által a címtárba meghívott vendégfelhasználókat. |
+    | **Minden felhasználó (beleértve a vendégeket is)** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a címtárban szereplő összes tag- és vendégfelhasználó kérje ezt a hozzáférési csomagot. |
 
-    A vendég felhasználók a címtárban az [Azure ad B2B](../articles/active-directory/b2b/what-is-b2b.md)használatával meghívott külső felhasználókra vonatkoznak. A felhasználók és a vendég felhasználók közötti különbségekről a [Mi az alapértelmezett felhasználói engedélyek a Azure Active Directoryban?](../articles/active-directory/fundamentals/users-default-permissions.md)című témakörben talál további információt.
+    A vendégfelhasználók olyan külső felhasználókra hivatkoznak, akiket az [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md)segítségével hívtak meg a címtárba. A tag- és vendégfelhasználók közötti különbségekről a Következő témakörben olvashat: [Mik az alapértelmezett felhasználói engedélyek az Azure Active Directoryban?](../articles/active-directory/fundamentals/users-default-permissions.md)
 
-1. Ha **meghatározott felhasználókat és csoportokat adott**meg, kattintson a **felhasználók és csoportok hozzáadása**lehetőségre.
+1. Ha **a Konkrét felhasználók és csoportok**lehetőséget választotta, kattintson a Felhasználók és csoportok hozzáadása **gombra.**
 
-1. A felhasználók és csoportok kiválasztása panelen válassza ki a hozzáadni kívánt felhasználókat és csoportokat.
+1. A Felhasználók és csoportok kiválasztása ablaktáblában jelölje ki a hozzáadni kívánt felhasználókat és csoportokat.
 
-    ![Hozzáférési csomag – kérelmek – felhasználók és csoportok kiválasztása](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
+    ![Access csomag – Kérések – Felhasználók és csoportok kiválasztása](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
 
-1. A felhasználók és csoportok hozzáadásához kattintson a **kiválasztás** gombra.
+1. A felhasználók és csoportok hozzáadásához kattintson a **Kijelölés** gombra.
 
-1. Ugorjon a [jóváhagyás](#approval) szakaszra.
+1. Ugorjon le a [Jóváhagyás](#approval) szakaszra.
 
-## <a name="for-users-not-in-your-directory"></a>A címtárban nem szereplő felhasználók számára
+## <a name="for-users-not-in-your-directory"></a>A címtárban nem lévő felhasználók számára
 
- A **címtárban lévő felhasználók** egy másik Azure ad-címtárban vagy-tartományban lévő felhasználókra hivatkoznak. Előfordulhat, hogy ezek a felhasználók még nem voltak meghívva a címtárba. Az Azure AD-címtárakat úgy kell konfigurálni, hogy az **együttműködési korlátozásokban**engedélyezze a meghívásokat. További információkért tekintse meg a [külső B2B-együttműködés engedélyezése és a vendégek meghívására alkalmas személyek kezelése](../articles/active-directory/b2b/delegate-invitations.md)című témakört.
+ **A címtárban nem található felhasználók** olyan felhasználókra hivatkoznak, akik egy másik Azure AD-címtárban vagy tartományban vannak. Előfordulhat, hogy ezek a felhasználók még nem lettek meghívva a könyvtárba. Az Azure AD-könyvtárakat úgy kell konfigurálni, hogy engedélyezze a meghívásokat **az együttműködési korlátozásokban.** További információ: [B2B külső együttműködés engedélyezése és annak kezelése, hogy ki hívhat meg vendégeket.](../articles/active-directory/b2b/delegate-invitations.md)
 
 > [!NOTE]
-> Egy vendég felhasználói fiók jön létre egy olyan felhasználó számára, aki még nem szerepel a címtárban, amelynek a kérelmét jóváhagyták vagy automatikusan jóváhagyták. A vendég meghívásra kerül, de nem kap meghívót e-mailben. Ehelyett e-mailt kapnak a hozzáférési csomag hozzárendelésének megérkezése után. Alapértelmezés szerint később, amikor a vendég felhasználó már nem rendelkezik hozzáférési csomagbeli hozzárendelésekkel, mert az utolsó hozzárendelésük lejárt vagy meg lett szakítva, a vendég felhasználói fiók le lesz tiltva a bejelentkezésből, és azt követően törlődik. Ha azt szeretné, hogy a vendég felhasználók határozatlan ideig maradjanak a címtárban, akkor is, ha nem rendelkeznek hozzáférési csomag hozzárendeléseivel, módosíthatja a jogosultsági felügyeleti konfiguráció beállításait. További információ a vendég felhasználói objektumról: [Azure Active Directory B2B együttműködési felhasználó tulajdonságai](../articles/active-directory/b2b/user-properties.md).
+> Egy vendég felhasználói fiók jön létre egy olyan felhasználó számára, aki még nem szerepel a címtárban, akinek a kérelmét jóváhagyták vagy automatikusan jóváhagyták. A vendég meghívást kap, de nem kap meghívó e-mailt. Ehelyett e-mailt kapnak, amikor a hozzáférési csomag hozzárendelését kézbesítik. Alapértelmezés szerint később, amikor a vendégfelhasználó már nem rendelkezik hozzáférési csomag-hozzárendelésekkel, mivel az utolsó hozzárendelése lejárt vagy megszakadt, a vendégfelhasználói fiók nem jelentkezhet be, majd törlődik. Ha azt szeretné, hogy a vendégfelhasználók határozatlan ideig a címtárban maradjanak, még akkor is, ha nincs enek hozzáférési csomag-hozzárendelésük, módosíthatja a jogosultságkezelési konfiguráció beállításait. A vendégfelhasználói objektumról további információt az [Azure Active Directory B2B együttműködési felhasználó tulajdonságai című](../articles/active-directory/b2b/user-properties.md)témakörben talál.
 
-Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárában lévő felhasználók számára a következő hozzáférési csomag kérését:
+Ha engedélyezni szeretné, hogy a címtárban nem szereplő felhasználók kérjék ezt a hozzáférési csomagot:
 
-1. A **hozzáférést kérő felhasználók** területen kattintson a **címtárban nem szereplő felhasználók**elemre.
+1. A **Felhasználók, akik hozzáférést kérhetnek,** kattintson **a Címtárban nem lévő felhasználók számára**elemre.
 
-    Ha ezt a beállítást választja, az új beállítások jelennek meg.
+    Ha ezt a beállítást választja, új beállítások jelennek meg.
 
-    ![Hozzáférési csomag – kérelmek – a címtárban nem szereplő felhasználók számára](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
+    ![Access csomag - Kérések - A címtárban nem lévő felhasználók számára](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
 
-1. Válasszon egyet a következő lehetőségek közül:
+1. Válasszon egyet az alábbi lehetőségek közül:
 
     |  |  |
     | --- | --- |
-    | **Adott csatlakoztatott szervezetek** | Akkor válassza ezt a lehetőséget, ha ki szeretné választani a rendszergazda által korábban hozzáadott szervezetek listáját. A kiválasztott szervezetek összes felhasználója kérheti ezt a hozzáférési csomagot. |
-    | **Minden csatlakoztatott szervezet** | Akkor válassza ezt a lehetőséget, ha az összes csatlakoztatott szervezet összes felhasználója ezt a hozzáférési csomagot kéri. |
-    | **Minden felhasználó (minden csatlakoztatott szervezet + minden új külső felhasználó)** | Akkor válassza ezt a lehetőséget, ha az összes csatlakoztatott szervezet összes felhasználója kérheti ezt a hozzáférési csomagot, és a VÁLLALATKÖZI engedélyezési vagy megtagadási lista beállításai elsőbbséget élveznek az új külső felhasználók számára. |
+    | **Adott összekapcsolt szervezetek** | Akkor válassza ezt a lehetőséget, ha a rendszergazda által korábban hozzáadott szervezetek listájából szeretne választani. A kijelölt szervezetek minden felhasználója kérheti ezt a hozzáférési csomagot. |
+    | **Minden kapcsolódó szervezet** | Akkor válassza ezt a lehetőséget, ha az összes csatlakoztatott szervezet összes felhasználója kérheti ezt a hozzáférési csomagot. |
+    | **Minden felhasználó (Minden csatlakoztatott szervezet + új külső felhasználók)** | Akkor válassza ezt a lehetőséget, ha az összes csatlakoztatott szervezet összes felhasználója kérheti ezt a hozzáférési csomagot, és hogy a B2B engedélyezési vagy megtagadási listabeállításoknak elsőbbséget kell élvezniük minden új külső felhasználó számára. |
 
-    A csatlakoztatott szervezet egy külső Azure AD-címtár vagy-tartomány, amelyhez kapcsolata van.
+    A csatlakoztatott szervezet egy külső Azure AD-címtár vagy tartomány, amely kapcsolatban áll.
 
-1. Ha az **adott csatlakoztatott szervezetek**lehetőséget választotta, kattintson a **címtárak hozzáadása** lehetőségre a rendszergazda által korábban hozzáadott csatlakoztatott szervezetek listájából való kiválasztáshoz.
+1. Ha **a Konkrét csatlakoztatott szervezetek**lehetőséget választotta, kattintson a Könyvtárak hozzáadása **gombra** a korábban hozzáadott csatlakoztatott szervezetek listájából.
 
-1. A korábban csatlakoztatott szervezet kereséséhez írja be a név vagy a tartomány nevét.
+1. Írja be a nevet vagy a tartománynevet egy korábban csatlakoztatott szervezet kereséséhez.
 
-    ![Hozzáférési csomag – kérelmek – könyvtárak kiválasztása](./media/active-directory-entitlement-management-request-policy/select-directories.png)
+    ![Access csomag - Kérések – Könyvtárak kiválasztása](./media/active-directory-entitlement-management-request-policy/select-directories.png)
 
-    Ha a szervezetet, amelyekkel együtt szeretne működni, nem szerepel a listán, megkérheti a rendszergazdát, hogy a hozzá csatlakoztatott szervezetként adja hozzá. További információt a [csatlakoztatott szervezet hozzáadása](../articles/active-directory/governance/entitlement-management-organization.md)című témakörben talál.
+    Ha az a szervezet, akivel együtt kíván működni, nem szerepel a listában, megkérheti a rendszergazdát, hogy vegye fel kapcsolt szervezetként. További információt a [Csatlakoztatott szervezet hozzáadása](../articles/active-directory/governance/entitlement-management-organization.md)című témakörben talál.
 
-1. Miután kiválasztotta az összes csatlakoztatott szervezetet, kattintson a **kiválasztás**elemre.
+1. Miután kiválasztotta az összes csatlakoztatott szervezetet, kattintson a **Kijelölés gombra.**
 
     > [!NOTE]
-    > A kiválasztott csatlakoztatott szervezetek összes felhasználója ezt a hozzáférési csomagot fogja kérni. Ez magában foglalja az Azure AD-beli felhasználókat a szervezethez társított összes altartományból, kivéve, ha ezeket a tartományokat az Azure B2B engedélyezési vagy megtagadási listája blokkolja. További információ: a [vállalatközi felhasználók meghívásának engedélyezése vagy letiltása adott szervezetekben](../articles/active-directory/b2b/allow-deny-list.md).
+    > A kijelölt csatlakoztatott szervezetek minden felhasználója kérheti ezt a hozzáférési csomagot. Ez magában foglalja az Azure AD-ben a szervezethez társított összes altartomány felhasználóit, kivéve, ha ezeket a tartományokat az Azure B2B engedélyezési vagy megtagadási lista blokkolja. További információt az [Adott szervezetek B2B-felhasználóinak szóló meghívók engedélyezése vagy letiltása című témakörben talál.](../articles/active-directory/b2b/allow-deny-list.md)
 
-1. Ugorjon a [jóváhagyás](#approval) szakaszra.
+1. Ugorjon le a [Jóváhagyás](#approval) szakaszra.
 
-## <a name="none-administrator-direct-assignments-only"></a>Nincs (csak a rendszergazdai közvetlen hozzárendelések)
+## <a name="none-administrator-direct-assignments-only"></a>Nincs (csak rendszergazdai közvetlen hozzárendelések esetén)
 
-Kövesse az alábbi lépéseket, ha szeretné megkerülni a hozzáférési kérelmeket, és lehetővé teszi, hogy a rendszergazdák közvetlenül rendeljenek hozzá konkrét felhasználókat a hozzáférési csomaghoz. A felhasználóknak nem kell a hozzáférési csomagot igényelnie. Továbbra is beállíthatja az életciklus-beállításokat, de nincsenek a kérelmek beállításai.
+Kövesse az alábbi lépéseket, ha meg szeretné kerülni a hozzáférési kérelmeket, és lehetővé szeretné tenni a rendszergazdák számára, hogy közvetlenül hozzárendeljenek bizonyos felhasználókat ehhez a hozzáférési csomaghoz. A felhasználóknak nem kell kérniük a hozzáférési csomagot. Az életciklus-beállítások továbbra is megállíthatók, de nincsenek kérésbeállítások.
 
-1. A **hozzáférést kérő felhasználók** részen kattintson a **nincs (csak rendszergazdai közvetlen hozzárendelések**elemre.
+1. A **Felhasználók, akik hozzáférést kérhetnek,** kattintson a **Nincs (csak rendszergazdai közvetlen hozzárendelések**) elemre.
 
-    ![Hozzáférési csomag – kérelmek – nincsenek rendszergazdai közvetlen hozzárendelések](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
+    ![Access package – Kérelmek – Nincs rendszergazdai közvetlen hozzárendelés csak](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
 
-    A hozzáférési csomag létrehozása után közvetlenül rendelhet hozzá konkrét belső és külső felhasználókat a hozzáférési csomaghoz. Ha külső felhasználót ad meg, a rendszer létrehoz egy vendég felhasználói fiókot a címtárban. A felhasználók közvetlen hozzárendelésével kapcsolatos információkért tekintse meg a [hozzáférési csomag hozzárendelésének megtekintése, hozzáadása és eltávolítása](../articles/active-directory/governance/entitlement-management-access-package-assignments.md)című témakört.
+    A hozzáférési csomag létrehozása után közvetlenül hozzárendelhet időbelső és külső felhasználókat a hozzáférési csomaghoz. Ha külső felhasználót ad meg, vendégfelhasználói fiók jön létre a címtárban. A felhasználó közvetlen hozzárendeléséről a [Hozzáférési csomag hozzárendelésének megtekintése, hozzáadása és eltávolítása](../articles/active-directory/governance/entitlement-management-access-package-assignments.md)című témakörben talál további információt.
 
-1. Ugorjon le a [kérelmek engedélyezése](#enable-requests) szakaszra.
+1. Ugorjon le a [Kérelmek engedélyezése](#enable-requests) szakaszra.
 
 ## <a name="approval"></a>Jóváhagyás
 
-A jóváhagyás szakaszban megadhatja, hogy szükség van-e jóváhagyásra, ha a felhasználók ezt a hozzáférési csomagot kérik. A jóváhagyási beállítások a következő módon működnek:
+A Jóváhagyás szakaszban megadhatja, hogy szükség van-e jóváhagyásra, amikor a felhasználók ezt a hozzáférési csomagot kérik. A jóváhagyási beállítások a következőképpen működnek:
 
-- Csak az egyik kiválasztott jóváhagyó vagy tartalék jóváhagyónak kell jóváhagynia egy kérést az egyfázisú jóváhagyáshoz. 
-- Az egyes fázisok közül csak az egyik kiválasztott jóváhagyónak kell jóváhagynia a 2. szintű jóváhagyásra vonatkozó kérelmet.
-- A jóváhagyó lehet felettes, belső szponzor vagy külső szponzor, attól függően, hogy a házirend milyen módon szabályozza a hozzáférést.
-- Az egyetlen vagy 2 fázisú jóváhagyáshoz nem szükséges minden kiválasztott jóváhagyó jóváhagyása.
-- A jóváhagyási döntés azon alapul, hogy bármelyik jóváhagyó megtekinti-e először a kérést.
+- Csak az egyik kiválasztott jóváhagyók vagy tartalék jóváhagyók jóvá kell hagynia az egylépcsős jóváhagyási kérelmet. 
+- Az egyes fázisokból kiválasztott jóváhagyók közül csak egynek kell jóváhagynia a kétlépcsős jóváhagyásra vonatkozó kérelmet.
+- A jóváhagyó lehet menedzser, belső szponzor vagy külső szponzor attól függően, hogy ki a hozzáférésre vonatkozó irányelv.
+- Minden kiválasztott jóváhagyó jóváhagyása nem szükséges az egy- vagy kétlépcsős jóváhagyáshoz.
+- A jóváhagyási döntés alapja az, amelyik jóváhagyó felülvizsgálhatja a kérelmet először.
 
-Az alábbi videóból megtudhatja, hogyan adhat hozzá jóváhagyókat a kérelmek házirendjéhez:
+Ha meg szeretné tudni, hogyan vehet fel jóváhagyókat egy kérelemre vonatkozó irányelvbe, tekintse meg az alábbi videót:
 
 >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4cZfg]
 
-Az alábbi videóban megtudhatja, hogyan adhat hozzá többfázisú jóváhagyást a kérelmek házirendjéhez:
+Ha meg szeretné tudni, hogyan adhat hozzá többlépcsős jóváhagyást egy kérelemre vonatkozó irányelvhez, tekintse meg az alábbi videót:
 
 >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4d1Jw]
 
-A következő lépésekkel adhatja meg a hozzáférési csomagra vonatkozó kérelmek jóváhagyási beállításait:
+A hozzáférési csomag ra vonatkozó kérelmek jóváhagyási beállításainak megadásához kövesse az alábbi lépéseket:
 
-1. A kiválasztott felhasználóktól érkező kérések jóváhagyásának megköveteléséhez állítsa az **Igen**értékre a **jóváhagyás megkövetelése** kapcsolót. Vagy a kérések automatikus jóváhagyásához állítsa a kapcsolót a **nem**értékre.
+1. Ha a kijelölt felhasználók kérelmeinek jóváhagyására van szükség, állítsa a **Jóváhagyás megkövetelése** kapcsolót **Igen (Igen)** beállításra. Ha automatikusan szeretné jóváhagyni a kérelmeket, állítsa a kapcsolót **Nem**beállításra.
 
-1. Ha szeretné megkövetelni, hogy a felhasználók indoklást szolgáltassanak a hozzáférési csomag igényléséhez, állítsa a **kérelmező indoklásának megkövetelése** **beállítást igen**értékre.
+1. Ha azt szeretné, hogy a felhasználók nak meg kell adniuk a hozzáférési csomag kérésének indoklását, állítsa a **Kérő vagy indoklás megkövetelése** kapcsolót **Igen**beállításra.
     
-1. Most állapítsa meg, hogy a kérések csak egyszeres vagy 2 fázisú jóváhagyást igényelnek. Állítsa be, hogy az egyfázisú jóváhagyás hány **szakasza** legyen **1** , vagy a 2. fázis jóváhagyása esetén állítsa a váltást **2** -re.
+1. Most határozza meg, hogy a kérelmek egy vagy két lépcsős jóváhagyást igényelnek.Now determine if requests will require single or 2-stage approval. Állítsa a **Hány szakasz** kapcsolót **1-re** egyfokozatú jóváhagyáshoz, vagy állítsa a kapcsolót **2-re** kétlépcsős jóváhagyáshoz.
 
-    ![Hozzáférési csomag – kérelmek – jóváhagyási beállítások](./media/active-directory-entitlement-management-request-policy/approval.png)
+    ![Access csomag - Kérések - Jóváhagyási beállítások](./media/active-directory-entitlement-management-request-policy/approval.png)
 
-A következő lépésekkel adhatja hozzá a jóváhagyókat, miután kiválasztotta, hogy hány lépést kell megadnia: 
+A következő lépésekkel vehet fel jóváhagyókat, miután kiválasztotta, hogy hány szakaszra van szüksége: 
 
-### <a name="single-stage-approval"></a>Egyfázisú jóváhagyás
+### <a name="single-stage-approval"></a>Egylépcsős jóváhagyás
 
-1. Adja hozzá az **első jóváhagyót**:
+1. Az **első jóváhagyó**hozzáadása:
     
-    Ha a házirend úgy van beállítva, hogy a címtárban lévő felhasználók hozzáférését szabályozza, válassza a **felettes jóváhagyóként**lehetőséget. Vagy egy adott felhasználó hozzáadásához kattintson a **Jóváhagyók hozzáadása** lehetőségre, miután kiválasztotta a legördülő menüből a megadott jóváhagyók kiválasztása lehetőséget.
+    Ha a házirend úgy van beállítva, hogy szabályozza a hozzáférést a címtárban lévő felhasználók számára, a **Kezelő t jóváhagyóként lehetőséget választhatja.** Vagy adjon hozzá egy adott felhasználót a **Jóváhagyók hozzáadása** gombra kattintva, miután a legördülő menüBen a Jóváhagyók kiválasztása lehetőséget választotta.
     
-    ![Hozzáférési csomag – kérelmek – a címtárbeli felhasználók számára – első jóváhagyó](./media/active-directory-entitlement-management-request-policy/approval-single-stage-first-approver-manager.png)
+    ![Access csomag - Kérések - A címtárban lévő felhasználók számára - Első jóváhagyó](./media/active-directory-entitlement-management-request-policy/approval-single-stage-first-approver-manager.png)
 
-    Ha a házirend úgy van beállítva, hogy a címtárban nem szereplő felhasználók hozzáférését szabályozza, válassza a **külső szponzor** vagy a **belső szponzor**lehetőséget. Vagy vegyen fel egy adott felhasználót úgy, hogy a **jóváhagyók** vagy csoportok hozzáadása lehetőségre kattint az adott jóváhagyók kiválasztása alatt.
+    Ha ez a házirend úgy van beállítva, hogy szabályozza a hozzáférést a nem a címtárban nem szereplő felhasználók számára, válassza a **Külső szponzor** vagy a **Belső szponzor**lehetőséget. Vagy adjon hozzá egy adott felhasználót a Jóváhagyók vagy csoportok hozzáadása csoportban a **Jóváhagyók hozzáadása** elemre kattintva.
     
-    ![Hozzáférési csomag – kérelmek – a címtárban lévő felhasználók számára – első jóváhagyó](./media/active-directory-entitlement-management-request-policy/out-directory-first-approver.png)
+    ![Access package - Requests - Címtáron kívüli felhasználók számára - Első jóváhagyó](./media/active-directory-entitlement-management-request-policy/out-directory-first-approver.png)
     
-1. Ha az első jóváhagyóként a **kezelőt** választotta, kattintson a **tartalék hozzáadása** lehetőségre egy vagy több felhasználó vagy csoport tartalék jóváhagyóként való kiválasztásához a címtárban. A tartalék jóváhagyók megkapják a kérést, ha a jogosultságok kezelése nem találja a hozzáférést kérő felhasználó felettesét.
+1. Ha a **Menedzsert** választotta első jóváhagyóként, kattintson a **Tartalék hozzáadása** gombra, és a címtárban egy vagy több felhasználót vagy csoportot jelöljön ki tartalék jóváhagyónak. A tartalék jóváhagyók akkor kapják meg a kérelmet, ha a jogosultságkezelés nem találja a hozzáférést kérő felhasználó kezelőjét.
 
-    A kezelőt a jogosultságok kezelése a **Manager** attribútum használatával találja. Az attribútum a felhasználó profiljában szerepel az Azure AD-ben. További információ: [felhasználói profil adatainak hozzáadása vagy frissítése Azure Active Directory használatával](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
+    A kezelőt a Jogosultságkezelés a **Kezelő** attribútum használatával találja meg. Az attribútum a felhasználó profiljában található az Azure AD-ben. További információt a [Felhasználói profiladatok hozzáadása vagy frissítése az Azure Active Directory használatával című témakörben talál.](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
 
-1. Ha az **egyes jóváhagyók kiválasztása**lehetőséget választotta, kattintson a **Jóváhagyók hozzáadása** lehetőségre a címtárban lévő felhasználók vagy csoportok jóváhagyásának kiválasztásához.
+1. Ha **a Konkrét jóváhagyók kiválasztása**lehetőséget választotta, kattintson a **Jóváhagyók hozzáadása** gombra, ha a címtárban egy vagy több felhasználót vagy csoportot szeretne jóváhagyóként kijelölni.
 
-1. Hány nap múlva **kell**megadnia a jelölőnégyzetet, hogy hány napig kell a jóváhagyónak áttekintenie a hozzáférési csomagra vonatkozó kérelmet.
+1. A határozat **rovatban hány napon belül kell meghozni?** adja meg, hogy a jóváhagyónak hány napig kell felülvizsgálnia a hozzáférési csomagra vonatkozó kérelmet.
 
-    Ha egy kérelem nem lett jóváhagyva az adott időszakon belül, a rendszer automatikusan letiltja. A felhasználónak egy másik kérelmet kell benyújtania a hozzáférési csomaghoz.
+    Ha egy kérelmet ezen időszakon belül nem hagyjóvá, a rendszer automatikusan elutasítja. A felhasználónak újabb kérelmet kell benyújtania a hozzáférési csomagra vonatkozóan.
 
-1. Ahhoz, hogy a jóváhagyók indoklást szolgáltassanak a döntésük meghozatalához, az **Igen**értékre kell állítani a jóváhagyó indoklását.
+1. Ha azt szeretné, hogy a jóváhagyók nak meg kell indokolniuk döntésüket, állítsa be a Jóváhagyó indoklásának **megkövetelése lehetőséget Igen**beállításra.
 
-    Az indoklás a többi jóváhagyó és a kérelmező számára látható.
+    Az indoklás látható a többi jóváhagyó és a kérelmező számára.
 
-### <a name="2-stage-approval-preview"></a>2 – fázis jóváhagyása (előzetes verzió)
+### <a name="2-stage-approval-preview"></a>Kétlépcsős jóváhagyás (előzetes verzió)
 
 Ha kétlépcsős jóváhagyást választott, hozzá kell adnia egy második jóváhagyót.
 
-1. Adja hozzá a **második jóváhagyót**: 
+1. A **második jóváhagyó**hozzáadása: 
     
-    Ha a felhasználók a címtárban vannak, vegyen fel egy adott felhasználót a második jóváhagyóként. ehhez kattintson a **Jóváhagyók hozzáadása** lehetőségre a megadott jóváhagyók területen.
+    Ha a felhasználók a címtárban vannak, adjon hozzá egy adott felhasználót második jóváhagyóként, ha a **Jóváhagyók hozzáadása** csoportban a Jóváhagyók kiválasztása csoportban kattint.
 
-    ![Hozzáférési csomag – kérelmek – a címtárban található felhasználókhoz – második jóváhagyó](./media/active-directory-entitlement-management-request-policy/in-directory-second-approver.png)
+    ![Access csomag - Kérések - A címtárban lévő felhasználók számára - Második jóváhagyó](./media/active-directory-entitlement-management-request-policy/in-directory-second-approver.png)
 
-    Ha a felhasználók nem a címtárban vannak, válassza a **belső szponzor** vagy **külső szponzor** lehetőséget a második jóváhagyóként. A jóváhagyó kiválasztása után adja hozzá a tartalék jóváhagyókat.
+    Ha a felhasználók nem a címtárban, válassza **a Belső szponzor** vagy külső **szponzor** a második jóváhagyó. A jóváhagyó kiválasztása után adja hozzá a tartalék jóváhagyókat.
 
-    ![Hozzáférési csomag – kérelmek – a címtáron kívüli felhasználók számára – második jóváhagyó](./media/active-directory-entitlement-management-request-policy/out-directory-second-approver.png) 
+    ![Access package - Requests - Címtáron kívüli felhasználók számára - Második jóváhagyó](./media/active-directory-entitlement-management-request-policy/out-directory-second-approver.png) 
 
-1. Itt adhatja meg, hogy hány nap elteltével kell jóváhagyni a második jóváhagyónak a kérést a mezőben a döntés alapján, **hány nap múlva kell meghoznia?** . 
+1. Adja meg, hogy a második jóváhagyónak hány napig kell jóváhagynia a kérelmet a **Határozat mezőben, hány napon belül kell meghoznia?**. 
 
-1. Állítsa be a jóváhagyó indoklásának megkövetelése **beállítást igen** vagy **nem**értékre.
+1. Állítsa a Jóváhagyó indoklásának megnevezését Igen vagy Nem **(Igen)** vagy **nem**re.
 
 ### <a name="alternate-approvers"></a>Alternatív jóváhagyók
 
-Megadhat alternatív jóváhagyókat is, amelyek a kérelmeket jóváhagyó első és második jóváhagyóhoz hasonlóak. Az alternatív jóváhagyók segítségével biztosítható, hogy a kérések jóváhagyása vagy elutasítása előtt lejárjon (időtúllépés). A kétlépcsős jóváhagyáshoz az első jóváhagyót és a második jóváhagyót is listázhatja. 
+Alternatív jóváhagyókat is megadhat, hasonlóan a kérelmeket jóváhagyó első és második jóváhagyók megadásához. Az alternatív jóváhagyók segítenek annak biztosításában, hogy a kérelmeket a lejártuk előtt jóváhagyják vagy megtagadják (időkérés). Az első jóváhagyót és a második jóváhagyót listázhatja a kétlépcsős jóváhagyáshoz. 
 
-Alternatív jóváhagyók megadásával abban az esetben, ha az első vagy a második jóváhagyó nem tudta jóváhagyni vagy megtagadni a kérést, a függőben lévő kérést a rendszer a házirend beállítása során megadott továbbítási ütemterv szerint továbbítja a másodlagos jóváhagyóknak. E-mailt kapnak a függőben lévő kérelem jóváhagyásához vagy elutasításához.
+Alternatív jóváhagyók megadásával abban az esetben, ha az első vagy a második jóváhagyó nem tudta jóváhagyni vagy megtagadni a kérelmet, a függőben lévő kérelem továbbításra kerül a másik jóváhagyóknak, a házirend beállítása során megadott továbbítási ütemezés szerint. Kapnak egy e-mailt, hogy jóváhagyja vagy megtagadja a függőben lévő kérelmet.
 
-A kérésnek a másodlagos jóváhagyóknak való továbbítása után az első vagy a második jóváhagyó továbbra is jóváhagyhatja vagy megtagadhatja a kérelmet. A másodlagos jóváhagyók ugyanazt a saját hozzáférési helyet használják a függőben lévő kérelem jóváhagyásához vagy elutasításához.
+A kérelem továbbítása után a másik jóváhagyók, az első vagy a második jóváhagyók továbbra is jóváhagyja vagy elutasítja a kérelmet. Az alternatív jóváhagyók ugyanazt a Saját hozzáférési webhelyet használják a függőben lévő kérelem jóváhagyásához vagy elutasításához.
 
-Megadhatjuk, hogy mely személyek és csoportok legyenek jóváhagyók, és hogy az alternatív jóváhagyók. Győződjön meg arról, hogy az első, a második és a másodlagos jóváhagyók különböző készleteit sorolja fel.
-Ha például az Alice és a Bob, mint az első jóváhagyó (k) szerepel, a Carol és a Dave listázása alternatív jóváhagyóként. A következő lépésekkel adhat hozzá alternatív jóváhagyókat egy hozzáférési csomaghoz:
+Felsorolhatjuk azokat az embereket vagy csoportokat, akik jóváhagyók és alternatív jóváhagyók. Győződjön meg arról, hogy az első, második és alternatív jóváhagyók ként különböző személyeket sorol fel.
+Ha például Alice és Bob ot nevezte meg első jóváhagyóként, akkor Carolt és Dave-et soroljuk fel alternatív jóváhagyóként. Az alábbi lépésekkel alternatív jóváhagyókat adhat hozzá egy hozzáférési csomaghoz:
 
-1. Az első jóváhagyó, második jóváhagyó vagy mindkettő alatt kattintson a **speciális kérelmek beállításainak megjelenítése**lehetőségre.
+1. Az Első jóváhagyó, a Második jóváhagyó vagy mindkettő csoportban kattintson a **Speciális kérelembeállítások megjelenítése gombra.**
 
-    ![Hozzáférési csomag – szabályzat – speciális kérelmek beállításainak megjelenítése](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
+    ![Access csomag – Házirend – Speciális kérelembeállítások megjelenítése](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
 
-1. Állítsa be **, hogy nem történt-e művelet, továbbítsa a másodlagos jóváhagyóknak?** váltás az **Igen**értékre.
+1. Állítsa **be: Ha nincs művelet, továbbítsa az alternatív jóváhagyóknak?** **Yes**
 
-1. Kattintson az **alternatív Jóváhagyók hozzáadása** lehetőségre, és válassza ki a listából a másodlagos jóváhagyó (ka) t.
+1. Kattintson **az Alternatív jóváhagyók hozzáadása** gombra, és válassza ki az alternatív jóváhagyót a listából.
 
-    ![Hozzáférési csomag – házirend – alternatív Jóváhagyók hozzáadása](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+    ![Access csomag - Házirend – Alternatív jóváhagyók hozzáadása](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
 
-1. A **továbbítás a másodlagos jóváhagyó (ok)** hoz a napok száma után, hogy a jóváhagyóknak hány napig kell jóváhagyni vagy megtagadni a kérést. Ha a kérelem időtartama előtt egyetlen jóváhagyó sem hagyta jóvá vagy nem utasította el a kérelmet, a kérelem lejár (időtúllépés), és a felhasználónak egy másik kérelmet kell benyújtania a hozzáférési csomaghoz. 
+1. A **Továbbítás alternatív jóváhagyónak(k) mezőben hány nap elteltével** tegye be, hogy a jóváhagyókhány napig hagyják jóvá vagy tagadják meg a kérelmet. Ha egyetlen jóváhagyó sem hagyta jóvá vagy tagadta meg a kérelmet a kérelem időtartama előtt, a kérelem lejár (időhosszabbítás), és a felhasználónak egy másik kérelmet kell benyújtania a hozzáférési csomaghoz. 
 
-    A kérések továbbítása csak egy nap elteltével lehetséges, ha a kérelem időtartama eléri a felezési időt. Ebben a példában a kérelem időtartama 14 nap. Így a kérelem időtartama a 7. napon eléri a felezési időt. Így a kérés nem továbbítható a 8. napnál korábbi időpontig. A kérések időtartamának utolsó napján nem továbbítható kérelmek. Így a példában a legutóbbi kérelem továbbítása a 13. nap.
+    A kérelmek csak egy nappal azt követően továbbíthatók alternatív jóváhagyóknak, hogy a kérelem időtartama eléri a felezési idő. Ebben a példában a kérelem időtartama 14 nap. Tehát a kérelem időtartama eléri a felezési idő a 7. Tehát a kérés nem továbbítható a 8. Emellett a kérelmek nem továbbíthatók a kérelem időtartamának utolsó napján. Így a példában a kérelem legutolsó lehet továbbítani a 13.
 
 ## <a name="enable-requests"></a>Kérelmek engedélyezése
 
-1. Ha azt szeretné, hogy a hozzáférési csomag azonnal elérhető legyen a kérési házirendben szereplő felhasználók számára a kérelemhez, helyezze át az engedélyezés kapcsolót **Igen**értékre.
+1. Ha azt szeretné, hogy a hozzáférési csomag azonnal elérhetővé váljon a kérelemházirendben lévő felhasználók számára, helyezze át az Engedélyezés kapcsolót **Igen**szintre.
 
-    A jövőben bármikor engedélyezheti azt a hozzáférési csomag létrehozása után.
+    A hozzáférési csomag létrehozása után a jövőben bármikor engedélyezheti.
 
-    Ha a nincs lehetőséget választotta **(csak a rendszergazda közvetlen hozzárendelései)** , és az engedélyezés a **nem**értékre van állítva, akkor a rendszergazdák nem tudják közvetlenül hozzárendelni ezt a hozzáférési csomagot.
+    Ha a **Nincs (csak rendszergazdai közvetlen hozzárendelések)** lehetőséget választotta, és az engedélyezést **Nem**értékre állította, akkor a rendszergazdák nem rendelhetik hozzá közvetlenül ezt a hozzáférési csomagot.
 
-    ![Hozzáférési csomag – házirend – házirend-beállítás engedélyezése](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
+    ![Access csomag – Házirend – Házirendbeállítás engedélyezése](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. Kattintson a **Tovább** gombra.

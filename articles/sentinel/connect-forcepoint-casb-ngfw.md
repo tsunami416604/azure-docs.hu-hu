@@ -1,6 +1,6 @@
 ---
-title: Forcepoint-termékek összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztathatók a Forcepoint-termékek az Azure Sentinelhez.
+title: Forcepoint-termékek csatlakoztatása az Azure Sentinelhez| Microsoft dokumentumok
+description: Ismerje meg, hogyan kapcsolhatja össze a Forcepoint-termékeket az Azure Sentinelhez.
 services: sentinel
 author: yelevin
 editor: ''
@@ -13,47 +13,47 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: eb099a786a84f9b7d0a6f0dc6e6df9c3459af295
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588229"
 ---
-# <a name="connect-your-forcepoint-products-to-azure-sentinel"></a>A Forcepoint-termékek összekapcsolhatók az Azure Sentinel-vel
+# <a name="connect-your-forcepoint-products-to-azure-sentinel"></a>A Forcepoint-termékek csatlakoztatása az Azure Sentinelhez
 
 > [!IMPORTANT]
-> A Forcepoint Products adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el. Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A Forcepoint termékek adatösszekötő az Azure Sentinel jelenleg nyilvános előzetes verzióban. Ez a szolgáltatás szolgáltatásszint-szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 
-Ez a cikk azt ismerteti, hogyan csatlakoztathatók a Forcepoint-termékek az Azure Sentinelhez. 
+Ez a cikk bemutatja, hogyan csatlakoztathatja a ForcePoint-termékeket az Azure Sentinelhez. 
 
-A Forcepoint-alapú adatösszekötők lehetővé teszik a Forcepoint Cloud Access Security Broker és a Forcepoint következő generációs tűzfalak Azure Sentinel használatával való összekapcsolását. Így valós időben automatikusan exportálhatja a felhasználó által definiált naplókat az Azure Sentinelbe. Az összekötő biztosítja a Forcepoint-termékek által rögzített felhasználói tevékenységek átláthatóságát. Emellett lehetővé teszi az Azure-beli munkaterhelések és egyéb hírcsatornák adataival való további korrelációt, valamint az Azure Sentinelben lévő munkafüzetek figyelési képességének javítását.
+A Forcepoint-adatösszekötők lehetővé teszik a Forcepoint Cloud Access Security Broker és a Forcepoint next Generation firewall naplók és az Azure Sentinel összekapcsolását. Ily módon automatikusan exportálhatja a felhasználó által definiált naplókat az Azure Sentinelbe valós időben. Az összekötő gazdagabbá teszi a Forcepoint-termékek által rögzített felhasználói tevékenységeket. Emellett további korrelációt tesz lehetővé az Azure-munkaterhelésekből és más hírcsatornákból származó adatokkal, és javítja a figyelési képességet az Azure Sentinelen belüli munkafüzetekkel.
 
 > [!NOTE]
-> Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
+> Az adatok at annak a munkaterületnek a földrajzi helyén tároljuk, amelyen az Azure Sentinelt futtatja.
 
 
 
-## <a name="forward-forcepoint-product-logs-to-the-syslog-agent"></a>Forcepoint-naplók továbbítása a syslog-ügynöknek 
+## <a name="forward-forcepoint-product-logs-to-the-syslog-agent"></a>Forcepoint-terméknaplók továbbítása a Syslog ügynöknek 
 
-Konfigurálja úgy a Forcepoint terméket, hogy CEF formátumban továbbítsa a syslog-üzeneteket az Azure-munkaterületre a syslog-ügynök használatával.
+Állítsa be a Forcepoint-terméket úgy, hogy a Syslog-üzeneteket CEF formátumban továbbítsa az Azure-munkaterületre a Syslog ügynökön keresztül.
 
-1. Állítsa be a Forcepoint terméket az Azure Sentinel-integrációba a következő telepítési útmutatókban leírtak szerint:
- - [Forcepoint CASB-integrációs útmutató](https://frcpnt.com/casb-sentinel)
- - [Forcepoint NGFW-integrációs útmutató](https://frcpnt.com/ngfw-sentinel)
+1. Állítsa be a Forcepoint-terméket az Azure Sentinel-integrációra az alábbi telepítési útmutatókban leírtak szerint:
+ - [Forcepoint CASB integrációs útmutató](https://frcpnt.com/casb-sentinel)
+ - [Forcepoint NGFW integrációs útmutató](https://frcpnt.com/ngfw-sentinel)
 
-2. Keresse meg a CommonSecurityLog, hogy a megfelelő sémát használja Log Analytics a DeviceVendor neve tartalmazza a "Forcepoint" kifejezést. 
+2. Keresse meg a CommonSecurityLog a megfelelő séma a Log Analytics DeviceVendor név tartalmazza a "Forcepoint". 
 
-3. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
+3. Folytassa a [3.](connect-cef-verify.md)
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a Forcepoint-termékek az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja a Forcepoint-termékeket az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
 
-- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
 
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
+- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats-built-in.md)
 
-- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
+- Az adatok figyeléséhez [használjon munkafüzeteket.](tutorial-monitor-your-data.md)

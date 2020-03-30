@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: az infor-CloudSuite konfigurálása automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az infor CloudSuite.
+title: 'Oktatóanyag: Az Infor CloudSuite konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
+description: Megtudhatja, hogyan állíthatja be az Azure Active Directoryt úgy, hogy automatikusan kiépítse és kiállítsa a felhasználói fiókokat az Infor CloudSuite szolgáltatásba.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,169 +16,169 @@ ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
 ms.openlocfilehash: 7b91b8418580717afaf8ddf176f934b3ff1d0c60
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057541"
 ---
-# <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Oktatóanyag: az infor-CloudSuite konfigurálása a felhasználók automatikus kiépítési felállításához
+# <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Oktatóanyag: Az Infor CloudSuite konfigurálása automatikus felhasználói kiépítéshez
 
-Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani az infor CloudSuite és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy automatikusan kiépítse és kiépítse a felhasználókat és/vagy csoportokat az infor CloudSuite.
+Ez az oktatóanyag célja, hogy bemutassa az Infor CloudSuite és az Azure Active Directory (Azure AD) által végrehajtandó lépéseket, hogy az Azure AD automatikusan kiépítse és dekonfektusát tegye az Infor CloudSuite szolgáltatásba.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD felhasználói létesítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../app-provisioning/user-provisioning.md)
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg nyilvános előzetes verzióban van. Az előzetes verziójú funkciók általános Microsoft Azure-használati feltételeiről a [Kiegészítő használati feltételek a Microsoft Azure előzetes verzióihoz](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)című témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Azure AD-bérlő
-* [Egy infor CloudSuite-bérlő](https://www.infor.com/products/infor-os)
-* Az infor CloudSuite rendszergazdai engedélyekkel rendelkező felhasználói fiók.
+* Egy Azure AD-bérlő
+* [Egy Infor CloudSuite-bérlő](https://www.infor.com/products/infor-os)
+* Az Infor CloudSuite rendszergazdai engedélyekkel rendelkező felhasználói fiókja.
 
-## <a name="assigning-users-to-infor-cloudsuite"></a>Felhasználók kiosztása az infor CloudSuite
+## <a name="assigning-users-to-infor-cloudsuite"></a>Felhasználók hozzárendelése az Infor CloudSuite szolgáltatáshoz
 
-Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
+Az Azure Active Directory egy *hozzárendelések* nevű koncepciót használ annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak az Azure AD-ben egy alkalmazáshoz rendelt felhasználók és/vagy csoportok vannak szinkronizálva.
 
-Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy mely felhasználókra és/vagy csoportokra van szükség az Azure AD-ban az infor-CloudSuite. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti az infor CloudSuite az alábbi utasításokat követve:
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+Az automatikus felhasználói kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoportjainak kell hozzáférniük az Infor CloudSuite szolgáltatáshoz. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti az Infor CloudSuite-hez az alábbi utasításokat követve:
+* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-infor-cloudsuite"></a>Fontos Tippek a felhasználók infor-CloudSuite való hozzárendeléséhez
+## <a name="important-tips-for-assigning-users-to-infor-cloudsuite"></a>Fontos tippek a felhasználók Infor CloudSuite-hez való hozzárendeléséhez
 
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve az infor CloudSuite az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
+* Javasoljuk, hogy egyetlen Azure AD-felhasználó van hozzárendelve az Infor CloudSuite az automatikus felhasználói kiépítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
 
-* Ha a felhasználót az infor CloudSuite rendeli hozzá, ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelési párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
+* Amikor egy felhasználót az Infor CloudSuite szolgáltatáshoz rendel, a hozzárendelési párbeszédpanelen ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
 
-## <a name="set-up-infor-cloudsuite-for-provisioning"></a>Az infor-CloudSuite beállítása a kiépítés számára
+## <a name="set-up-infor-cloudsuite-for-provisioning"></a>Az Infor CloudSuite beállítása kiépítéshez
 
-1. Jelentkezzen be az [infor CloudSuite felügyeleti konzolra](https://www.infor.com/customer-center). Kattintson a felhasználó ikonra, majd navigáljon a **felhasználók felügyeletéhez**.
+1. Jelentkezzen be az [Infor CloudSuite felügyeleti konzolra.](https://www.infor.com/customer-center) Kattintson a felhasználó ikonra, majd keresse meg a **felhasználókezelést.**
 
     ![Infor CloudSuite felügyeleti konzol](media/infor-cloudsuite-provisioning-tutorial/admin.png)
 
-2.  Kattintson a képernyő bal felső sarkában található menü ikonra. Kattintson a **kezelés**gombra.
+2.  Kattintson a képernyő bal felső sarkában található menüikonra. Kattintson a **Manage gombra.**
 
-    ![Infor CloudSuite-SCIM hozzáadása](media/infor-cloudsuite-provisioning-tutorial/manage.png)
+    ![Infor CloudSuite Add SCIM](media/infor-cloudsuite-provisioning-tutorial/manage.png)
 
-3.  Navigáljon a **scim-fiókokhoz**.
+3.  Nyissa meg az **SCIM-fiókokat.**
 
     ![Infor CloudSuite SCIM-fiók](media/infor-cloudsuite-provisioning-tutorial/scim.png)
 
-4.  Vegyen fel egy rendszergazda felhasználót a plusz ikonra kattintva. Adjon meg egy **scim-jelszót** , és írja be ugyanazt a jelszót a **Jelszó megerősítése**alatt. A jelszó mentéséhez kattintson a mappa ikonra. Ekkor megjelenik a rendszergazda felhasználó számára létrehozott **felhasználói azonosító** .
+4.  Admin felhasználó hozzáadása a plusz ikonra kattintva. Adjon meg **egy SCIM-jelszót,** és írja be ugyanazt a jelszót a **Jelszó megerősítése mezőbe.** A jelszó mentéséhez kattintson a mappa ikonra. Ekkor megjelenik egy **felhasználói azonosító, amelyet** a rendszergazdai felhasználó hoz létre.
 
     ![Infor CloudSuite rendszergazdai felhasználó](media/infor-cloudsuite-provisioning-tutorial/newuser.png)
     
-    ![Infor CloudSuite jelszava](media/infor-cloudsuite-provisioning-tutorial/password.png)
+    ![Infor CloudSuite jelszó](media/infor-cloudsuite-provisioning-tutorial/password.png)
 
-    ![Infor CloudSuite azonosítója](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
+    ![Infor CloudSuite azonosító](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
 
-5. A tulajdonosi jogkivonat létrehozásához másolja a **felhasználói azonosítót** és a **scim jelszavát**. Illessze be őket a Jegyzettömbbe + + kettősponttal elválasztva. A karakterlánc értékének kódolásához navigáljon a **Plugins > MIME-eszközök > Basic64 kódolása**. 
+5. A tulajdonosi jogkivonat létrehozásához másolja a **felhasználói azonosítót** és az **SCIM-jelszót.** Illessze be őket a jegyzettömb++ kettősponttal elválasztva. A karakterlánc értékét úgy kódolja, hogy a **Beépülő modulok ra > a MIME-eszközökre > Basic64 Kódolás parancsra**navigál. 
 
-    ![Infor CloudSuite azonosítója](media/infor-cloudsuite-provisioning-tutorial/token.png)
+    ![Infor CloudSuite azonosító](media/infor-cloudsuite-provisioning-tutorial/token.png)
 
-3.  Másolja a tulajdonosi jogkivonatot. Ez az érték a Azure Portalban az infor CloudSuite alkalmazás létesítés lapjának titkos jogkivonat mezőjében lesz megadva.
+3.  Másolja a tulajdonosi jogkivonatot. Ez az érték az Azure Portalin az Infor CloudSuite-alkalmazás Kiépítés lapján a Titkos jogkivonat mezőben lesz megadva.
 
-## <a name="add-infor-cloudsuite-from-the-gallery"></a>Infor-CloudSuite hozzáadása a katalógusból
+## <a name="add-infor-cloudsuite-from-the-gallery"></a>Infor CloudSuite hozzáadása a galériából
 
-Az Azure AD-vel való automatikus felhasználó-kiépítés előtt az Azure ad-beli infor-CloudSuite hozzáadásához hozzá kell adnia a felügyelt SaaS-alkalmazások listájához tartozó infor-CloudSuite.
+Mielőtt konfigurálna az Infor CloudSuite-et az Azure AD-vel való automatikus felhasználói kiépítéshez, hozzá kell adnia az Infor CloudSuite-et az Azure AD alkalmazásgyűjteményből a felügyelt SaaS-alkalmazások listájához.
 
-**Az Azure AD-CloudSuite az alábbi lépéseket követve adhat hozzá infor-alkalmazásokat:**
+**Ha az Infor CloudSuite alkalmazást az Azure AD alkalmazásgyűjteményből szeretné hozzáadni, hajtsa végre az alábbi lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen válassza az **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a **Minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **ablaktábla** tetején található Új alkalmazás gombra.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be az **infor CloudSuite**, válassza az **infor CloudSuite** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be az **Infor CloudSuite**kifejezést, válassza az **Infor CloudSuite** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Infor-CloudSuite az eredmények listájában](common/search-new-app.png)
+    ![Infor CloudSuite az eredménylistában](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-infor-cloudsuite"></a>Az automatikus felhasználó-kiépítés beállítása az infor CloudSuite 
+## <a name="configuring-automatic-user-provisioning-to-infor-cloudsuite"></a>Automatikus felhasználói kiépítés konfigurálása az Infor CloudSuite szolgáltatásba 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy CloudSuite alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le az Infor CloudSuite-ben az Azure AD felhasználói és/vagy csoport-hozzárendelései alapján.
 
 > [!TIP]
-> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést az infor-CloudSuite, az [infor CloudSuite egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial)szereplő utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+> Az Infor CloudSuite szolgáltatássaml-alapú egyszeri bejelentkezésengedélyezését is engedélyezheti az Infor CloudSuite szolgáltatásban, az [Infor CloudSuite egyszeri bejelentkezési oktatóanyagutasításait](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial)követve. Egyszeri bejelentkezés konfigurálható az automatikus felhasználói kiépítéstől függetlenül, bár ez a két funkció kiegészíti egymást.
 
 > [!NOTE]
-> Ha többet szeretne megtudni az infor CloudSuite SCIM-végpontról, olvassa el [ezt a témakört](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#).
+> Ha többet szeretne megtudni az Infor CloudSuite SCIM-végpontjáról, olvassa el [ezt](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#)a .
 
-### <a name="to-configure-automatic-user-provisioning-for-infor-cloudsuite-in-azure-ad"></a>A felhasználó automatikus kiépítés beállítása az Azure AD-beli infor-CloudSuite:
+### <a name="to-configure-automatic-user-provisioning-for-infor-cloudsuite-in-azure-ad"></a>Az Infor CloudSuite automatikus felhasználói kiépítésének konfigurálása az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza **a Vállalati alkalmazások**lehetőséget, majd a Minden **alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza az **infor CloudSuite**elemet.
+2. Az alkalmazások listájában válassza az **Infor CloudSuite**elemet.
 
-    ![Az CloudSuite hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![Az Infor CloudSuite hivatkozás az Alkalmazások listában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **létesítési módot** **Automatikus**ra.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` a **bérlői URL-címben**. Adja meg a **titkos jogkivonatban**korábban lekért tulajdonosi jogkivonat értékét. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni az infor CloudSuite. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy az infor CloudSuite-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **Rendszergazdai hitelesítő** adatok `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` csoportban adja meg a **bérlői URL-címet.** Adja meg a titkos **jogkivonat**korábbi beolvasása kor beolvasott tulajdonosi token értékét. Kattintson **a Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD csatlakozni tud az Infor CloudSuite szolgáltatáshoz. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy az Infor CloudSuite-fiók rendszergazdai engedélyekkel rendelkezik, majd próbálkozzon újra.
 
-    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be a jelölőnégyzetet – **E-mail értesítés küldése hiba esetén.**
 
-    ![Értesítő E-mail](common/provisioning-notification-email.png)
+    ![Értesítési e-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása az infor CloudSuite**lehetőséget.
+8. A **Leképezések** csoportban válassza **az Azure Active Directory felhasználóinak szinkronizálása az Infor CloudSuite szolgáltatással**lehetőséget.
 
-    ![Az infor CloudSuite felhasználói leképezései](media/infor-cloudsuite-provisioning-tutorial/usermappings.png)
+    ![Infor CloudSuite felhasználói leképezések](media/infor-cloudsuite-provisioning-tutorial/usermappings.png)
 
-9. Tekintse át az Azure AD és az infor CloudSuite között szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez használhatók az infor CloudSuite felhasználói fiókjainak megfelelően. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+9. Tekintse át az Azure AD és az Infor CloudSuite között szinkronizált felhasználói attribútumokat az **Attribútumleképezés** szakaszban. Az **egyező** tulajdonságokként kiválasztott attribútumok az Infor CloudSuite felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
 
-    ![Az infor CloudSuite felhasználói attribútumai](media/infor-cloudsuite-provisioning-tutorial/userattributes.png)
+    ![Infor CloudSuite felhasználói attribútumok](media/infor-cloudsuite-provisioning-tutorial/userattributes.png)
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása az infor CloudSuite**lehetőséget.
+10. A **Leképezések** csoportban válassza **az Azure Active Directory-csoportok szinkronizálása az Infor CloudSuite szolgáltatással**lehetőséget.
 
-    ![Az infor CloudSuite csoport leképezései](media/infor-cloudsuite-provisioning-tutorial/groupmappings.png)
+    ![Infor CloudSuite csoportleképezések](media/infor-cloudsuite-provisioning-tutorial/groupmappings.png)
 
-11. Tekintse át az Azure AD-ből szinkronizált CloudSuite az attribútumok **leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez tartozó CloudSuite-csoportokkal egyeznek meg. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+11. Tekintse át az Azure AD és az Infor CloudSuite között szinkronizált csoportattribútumokat az **Attribútumleképezés** szakaszban. Az **egyező** tulajdonságokként kiválasztott attribútumok az Infor CloudSuite csoportjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
 
-    ![Az infor CloudSuite csoport attribútumai](media/infor-cloudsuite-provisioning-tutorial/groupattributes.png)
+    ![Infor CloudSuite csoport attribútumai](media/infor-cloudsuite-provisioning-tutorial/groupattributes.png)
 
-12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+12. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
 
-13. Az Azure AD-kiépítési szolgáltatás az infor CloudSuite való engedélyezéséhez módosítsa a **kiépítési állapotot** a **Beállítások** szakaszban.
+13. Az Infor CloudSuite Azure AD-kiépítési szolgáltatásának engedélyezéséhez módosítsa a **Kiépítés állapotát** **be beállításra** a **Beállítások** szakaszban.
 
-    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítési állapot bevan kapcsolva](common/provisioning-toggle-on.png)
 
-14. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket az infor-CloudSuite szeretne kiépíteni, ehhez válassza a **Beállítások** szakaszban lévő kívánt értékeket a **hatókörben** .
+14. Határozza meg azokat a felhasználókat és/vagy csoportokat, amelyeket ki szeretne építeni az Infor CloudSuite szolgáltatásba a **Beállítások** szakasz **Hatókör** területén a kívánt értékek kiválasztásával.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+15. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységek jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által az infor CloudSuite végzett összes műveletet ismertetik.
+Ez a művelet elindítja a Beállítások szakasz **hatókörében** definiált összes felhasználó és/vagy csoport kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. A Szinkronizálás **részletei** szakasz segítségével figyelheti az előrehaladást, és kövesse a kiépítési tevékenység jelentésre mutató hivatkozásokat, amely ismerteti az Azure AD-kiépítési szolgáltatás által az Infor CloudSuite-en végrehajtott összes műveletet.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
+Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat bővebben.
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)

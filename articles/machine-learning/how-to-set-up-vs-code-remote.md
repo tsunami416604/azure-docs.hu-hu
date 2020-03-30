@@ -1,7 +1,7 @@
 ---
 title: 'Interaktív hibakeresés: VS Code & ML számítási példányok'
 titleSuffix: Azure Machine Learning
-description: Állítsa be a VS Code távirányítót a kód interaktív hibakereséséhez Azure Machine Learning használatával.
+description: Állítsa be a VS Code Remote-ot, hogy interaktívan debugolja a kódot az Azure Machine Learning segítségével.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,37 +10,37 @@ ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
 ms.openlocfilehash: 1999d29db21f820fbcdbca08f2258b657673be3e
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77169754"
 ---
-# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktív hibakeresés egy Azure Machine Learning számítási példányon és a VS Code Remote
+# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktív hibakeresés egy Azure Machine Learning számítási példányon vs code remote-tal
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a Visual Studio Code Remote-t egy Azure Machine Learning számítási példányon, hogy interaktív módon tudjon **hibakeresést végezni a** vs Code-ból. 
+Ebben a cikkben megtudhatja, hogyan állíthatja be a Visual Studio Code Remote egy Azure Machine Learning számítási példányt, így **interaktívan hibakeresés a kódot** vs kód. 
 
-+ Az [Azure Machine learning számítási példány](concept-compute-instance.md) egy teljes körűen felügyelt felhőalapú munkaállomás az adatszakértők számára, és felügyeleti és vállalati készültségi képességeket biztosít a rendszergazdák számára. 
++ Az [Azure Machine Learning Compute Instance](concept-compute-instance.md) egy teljes körűen felügyelt felhőalapú munkaállomás adatszakértők számára, és felügyeleti és vállalati készenléti képességeket biztosít a rendszergazdák számára. 
 
 
-+ [Visual Studio Code Remote](https://code.visualstudio.com/docs/remote/remote-overview) A fejlesztés lehetővé teszi, hogy egy tárolót, távoli gépet vagy a Linux (WSL) Windows alrendszerét teljes funkcionalitású fejlesztői környezetként használja. 
++ [Visual Studio kód távirányító](https://code.visualstudio.com/docs/remote/remote-overview) A fejlesztés lehetővé teszi, hogy teljes értékű fejlesztői környezetként használjon tárolót, távoli gépet vagy a Windows Linux-alrendszert (WSL). 
 
-## <a name="prerequisite"></a>Előfeltételek  
+## <a name="prerequisite"></a>Előfeltétel  
 
-Windows-platformokon [telepítenie kell egy OpenSSH-kompatibilis SSH-ügyfelet](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) , ha még nem létezik ilyen. 
+Windows platformokon telepítenie kell [egy OpenSSH-kompatibilis SSH-ügyfelet,](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) ha még nincs jelen. 
 
 > [!Note]
-> A PuTTY nem támogatott a Windowsban, mivel az SSH-parancsnak az elérési úton kell lennie. 
+> A PuTTY nem támogatott Windows rendszeren, mivel az ssh parancsnak az elérési úton kell lennie. 
 
-## <a name="get-ip-and-ssh-port"></a>IP-cím és SSH-port beszerzése 
+## <a name="get-ip-and-ssh-port"></a>IP- és SSH-port beszerezése 
 
-1. Nyissa meg a Azure Machine Learning studiót a https://ml.azure.com/címen.
+1. Nyissa meg az Azure https://ml.azure.com/Machine Learning stúdióját a.
 
 2. Válassza ki a [munkaterületet](concept-workspace.md).
-1. Kattintson a **számítási példányok** fülre.
-1. Az **alkalmazás URI** -oszlopában kattintson a távoli számításként használni kívánt számítási példány **SSH** -hivatkozására. 
-1. A párbeszédpanelen jegyezze fel az IP-címet és az SSH-portot. 
-1. Mentse a titkos kulcsot a ~/.ssh/könyvtárba a helyi számítógépen; például nyisson meg egy szerkesztőt egy új fájlhoz, és illessze be a kulcsot a következőbe: 
+1. Kattintson a **Számítási példányok** fülre.
+1. Az **alkalmazás** URI-oszlopában kattintson a távoli számítási ként használni kívánt számítási példány **SSH-hivatkozására.** 
+1. A párbeszédpanelen vegye figyelembe az IP-cím és az SSH-portot. 
+1. Mentse a személyes kulcsot a ~/.ssh/ könyvtárba a helyi számítógépen; például nyisson meg egy szerkesztőt egy új fájlhoz, és illessze be a kulcsot a következő be: 
 
    **Linux**: 
    ```sh
@@ -52,7 +52,7 @@ Windows-platformokon [telepítenie kell egy OpenSSH-kompatibilis SSH-ügyfelet](
    notepad C:\Users\<username>\.ssh\id_azmlcitest_rsa 
    ```
 
-   A titkos kulcs valahogy így fog kinézni:
+   A személyes kulcs valahogy így fog kinézni:
    ```
    -----BEGIN RSA PRIVATE KEY----- 
 
@@ -63,14 +63,14 @@ Windows-platformokon [telepítenie kell egy OpenSSH-kompatibilis SSH-ügyfelet](
    -----END RSA PRIVATE KEY----- 
    ```
 
-1. Módosítsa a fájl engedélyeit, és győződjön meg arról, hogy csak a fájlt tudja olvasni.  
+1. Módosítsa a fájlra vonatkozó engedélyeket, és győződjön meg arról, hogy csak ön tudja elolvasni a fájlt.  
    ```sh
    chmod 600 ~/.ssh/id_azmlcitest_rsa   
    ```
 
-## <a name="add-instance-as-a-host"></a>Példány hozzáadása gazdagépként 
+## <a name="add-instance-as-a-host"></a>Példány hozzáadása állomásként 
 
-Nyissa meg `~/.ssh/config` (Linux) vagy `C:\Users<username>.ssh\config` (Windows) fájlt egy szerkesztőben, és adjon hozzá egy ehhez hasonló új bejegyzést:
+Nyissa meg `~/.ssh/config` a fájlt `C:\Users<username>.ssh\config` (Linux) vagy (Windows) egy szerkesztőben, és adjon hozzá egy ehhez hasonló új bejegyzést:
 
 ```
 Host azmlci1 
@@ -84,34 +84,34 @@ Host azmlci1
     IdentityFile ~/.ssh/id_azmlcitest_rsa   
 ```
 
-További részletek a mezőkről: 
+Itt néhány részletet a mezők: 
 
 |Mező|Leírás|
 |----|---------|
-|Gazdagép|Bármilyen gyorsírást használhat a számítási példányhoz |
-|Állomásnév|Ez a számítási példány IP-címe. |
-|Port|Ez a port a fenti SSH-párbeszédablakban látható. |
-|Felhasználó|Ezt `azureuser` kell |
-|IdentityFile|Arra a fájlra mutasson, ahová a titkos kulcsot mentette |
+|Gazdagép|Használja bármilyen gyorsírást a számítási példányhoz |
+|HostName|Ez a számítási példány IP-címe |
+|Port|Ez a port látható a fenti SSH párbeszédpanelen |
+|Felhasználó|Ezt meg kell `azureuser` |
+|IdentityFile|Arra a fájlra kell mutatnia, ahová a személyes kulcsot mentette |
 
-Mostantól a fentiekben használt gyorsírással SSH-t kell tudnia használni a számítási példányhoz, `ssh azmlci1`. 
+Most már képesnek kell lennie arra, hogy ssh a számítási `ssh azmlci1`példány segítségével a gyorsírás a fent használt, . 
 
-## <a name="connect-vs-code-to-the-instance"></a>A VS Code összekötése a példánnyal 
+## <a name="connect-vs-code-to-the-instance"></a>A VS-kód csatlakoztatása a példányhoz 
 
-1. [Telepítse a Visual Studio Code](https://code.visualstudio.com/)-ot.
+1. [Telepítse a Visual Studio-kódot](https://code.visualstudio.com/).
 
-1. [Telepítse a távoli SSH-bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh). 
+1. [Telepítse a távoli SSH bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh). 
 
-1. Az SSH-konfigurációk megjelenítéséhez kattintson a bal oldali távoli SSH ikonra.
+1. Az SSH-konfigurációk megjelenítéséhez kattintson a bal oldali Remote-SSH ikonra.
 
-1. Kattintson a jobb gombbal az imént létrehozott SSH-gazda konfigurációra.
+1. Kattintson a jobb gombbal az imént létrehozott SSH állomáskonfigurációra.
 
-1. Válassza a **Kapcsolódás a gazdagéphez lehetőséget az aktuális ablakban**. 
+1. Az Aktuális ablakban válassza **az Állomáshoz való csatlakozás lehetőséget.** 
 
-Innentől kezdve teljes mértékben dolgozik a számítási példányon, és mostantól szerkesztheti, hibakeresést végezhet, használhatja a git-t, a bővítmények használatát stb. – akárcsak a helyi Visual Studio Code-ban. 
+Innen kezdve teljes mértékben a számítási példányon dolgozik, és most már szerkesztheti, debugolhatja, használhatja a git-et, használhatja a bővítményeket stb. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy beállította a Visual Studio Code Remote-t, a Visual Studio Code-ból távoli számításként használhat számítási példányt a kód interaktív hibakereséséhez. 
+Most, hogy beállította a Visual Studio Code Remote-ot, a Visual Studio-kód távoli számítási példányaként interaktív hibakeresést biztosíthat a kód ban. 
 
-[Oktatóanyag: az első ml-modell betanítása](tutorial-1st-experiment-sdk-train.md) azt mutatja be, hogyan használható a számítási példány egy integrált jegyzetfüzettel.
+[Oktatóanyag: Az első gépi tanulási modell betanítása](tutorial-1st-experiment-sdk-train.md) bemutatja, hogyan használhat számítási példányt egy integrált notebookkal.

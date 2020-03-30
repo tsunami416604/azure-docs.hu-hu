@@ -1,6 +1,6 @@
 ---
 title: Azure Application Gateway URL-alapú tartalom-útválasztás áttekintése
-description: Ez a cikk áttekintést nyújt az Azure Application Gateway URL-alapú tartalom-útválasztási, UrlPathMap-konfigurációs és PathBasedRouting-szabályról.
+description: Ez a cikk áttekintést nyújt az Azure Application Gateway URL-alapú tartalom-útválasztásról, az UrlPathMap-konfigurációról és a PathBasedRouting szabályról.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,10 +8,10 @@ ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: e20acb131b1a091fef858dab34705f4a8d3b4c4a
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77251838"
 ---
 # <a name="url-path-based-routing-overview"></a>Az URL-alapú útválasztás áttekintése
@@ -24,10 +24,10 @@ Az alábbi példában az alkalmazásátjáró a contoso.com webhelyet szolgálja
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-A http-\://contoso.com/video/* kérelmeket a rendszer átirányítja a VideoServerPool, és a http-\://contoso.com/images/* a ImageServerPool. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
+A http\://contoso.com/video/* kérelmek a VideoServerPool-hoz, a http\://contoso.com/images/* pedig az ImageServerPool hoz lesznek irányítva. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
 
 > [!IMPORTANT]
-> A v1 SKU esetében a szabályok a portálon felsorolt sorrendben lesznek feldolgozva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt. A v2 SKU esetében a pontos egyezések magasabb prioritással rendelkeznek. Azonban javasoljuk, hogy először konfigurálja a többhelyes figyelőket az alapszintű figyelő konfigurálása előtt. Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva.
+> A v1 Termékváltozat esetében a szabályok feldolgozása a portálon felsorolt sorrendben kerül feldolgozásra. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt. A v2 Termékváltozat esetében a pontos egyezések elsőbbsége magasabbak. Azonban erősen ajánlott konfigurálni többhelyes figyelők először egy egyszerű figyelő konfigurálása előtt. Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva.
 
 ## <a name="urlpathmap-configuration-element"></a>Az UrlPathMap konfigurációs elem
 
@@ -62,17 +62,17 @@ Az UrlPathMap elem elérésiút-minták meghatározására szolgál a háttér-k
 }]
 ```
 
-### <a name="pathpattern"></a>PathPattern
+### <a name="pathpattern"></a>PathPattern (PathPattern)
 
-A PathPattern az elérési utak mintáinak listája. Minden mintának a / jellel kell kezdődnie, a „*” jel pedig kizárólag a mintavégi „/” jel után állhat. Az elérési úthoz Matcher betáplált karakterlánc nem tartalmaz szöveget az első után? vagy #, és ezek a karakterek nem engedélyezettek itt. Ellenkező esetben az URL-címekben engedélyezett karakterek engedélyezettek a PathPattern.
+PathPattern egy lista az elérési út minták at egyeztetni. Minden mintának a / jellel kell kezdődnie, a „*” jel pedig kizárólag a mintavégi „/” jel után állhat. Az elérési út matcherhez adagzt karakterlánc nem tartalmaz szöveget az első után? vagy #, és ezek a karakter nem megengedett itt. Ellenkező esetben az URL-címben engedélyezett karakterek engedélyezettek a PathPattern-ben.
 
-A támogatott minták attól függnek, hogy Application Gateway v1-es vagy v2-es verzióját telepíti:
+A támogatott minták attól függ, hogy telepíti-e az Application Gateway 1-es vagy 2-es) alkalmazást:
 
 #### <a name="v1"></a>v1
 
-Az elérésiút-szabályok a kis-és nagybetűk megkülönböztetése.
+Az elérési út szabályai nem idlák.
 
-|v1 elérésiút-minta  |Támogatott?  |
+|v1 elérési út minta  |Támogatott?  |
 |---------|---------|
 |`/images/*`     |igen|
 |`/images*`     |nem|
@@ -83,9 +83,9 @@ Az elérésiút-szabályok a kis-és nagybetűk megkülönböztetése.
 
 #### <a name="v2"></a>v2
 
-Az elérésiút-szabályok a kis-és nagybetűk megkülönböztetése.
+Az elérési út szabályai nem idlák.
 
-|v2 elérésiút-minta  |Támogatott?  |
+|v2 elérési út minta  |Támogatott?  |
 |---------|---------|
 |`/images/*`     |igen|
 |`/images*`     |igen|
@@ -121,6 +121,6 @@ A PathBasedRouting szabály kódrészlete:
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután elsajátította az URL-alapú tartalom-átirányításról szóló ismereteket, látogasson el [az URL-alapú átirányítást használó alkalmazásátjáró létrehozását bemutató témakörhöz](create-url-route-portal.md).

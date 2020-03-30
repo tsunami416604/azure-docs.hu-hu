@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Analytics kezelése az Azure Java SDK-val
-description: Ez a cikk azt ismerteti, hogyan lehet az Azure Java SDK használatával olyan alkalmazásokat írni, amelyek Data Lake Analytics feladatokat, adatforrásokat és & felhasználókat kezelhetnek.
+title: Az Azure Data Lake Analytics kezelése az Azure Java SDK használatával
+description: Ez a cikk bemutatja, hogyan használhatja az Azure Java SDK-t a Data Lake Analytics-feladatokat, adatforrásokat, & felhasználókat kezelő alkalmazások írásához.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,28 +10,28 @@ ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: b8c7d2ba1c782c3b6ae3034d6a9aab5eb19be954
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70813635"
 ---
-# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Azure Data Lake Analytics kezelése Java-alkalmazás használatával
+# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Az Azure Data Lake Analytics kezelése Java alkalmazással
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Ez a cikk bemutatja, hogyan kezelheti Azure Data Lake Analytics fiókokat, adatforrásokat, felhasználókat és feladatokat az Azure Java SDK-val írt alkalmazás használatával. 
+Ez a cikk ismerteti, hogyan kezelheti az Azure Data Lake Analytics-fiókok, adatforrások, felhasználók és feladatok az Azure Java SDK használatával írt alkalmazás használatával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Java Development Kit (JDK) 8** (a Java 1,8-es verziójának használatával).
-* **IntelliJ** vagy más megfelelő Java-fejlesztési környezet. A jelen dokumentumban szereplő utasítások a IntelliJ-t használják.
-* Hozzon létre egy Azure Active Directory- (AAD-) alkalmazást, és kérje le az **ügyfél-azonosítóját**, a **bérlőazonosítóját** és a **kulcsát**. További információ az AAD-alkalmazásokról és útmutató az ügyfél-azonosító lekéréséhez: [Create Active Directory application and service principal using portal](../active-directory/develop/howto-create-service-principal-portal.md) (Active Directory-alkalmazás és egyszerű szolgáltatás létrehozása a portál használatával). A válasz URI-ja és kulcsa a portálon érhető el, miután létrehozta az alkalmazást, és létrehozta a kulcsot.
+* **Java Development Kit (JDK) 8** (Java 1.8-as verzióval).
+* **IntelliJ** vagy más alkalmas Java fejlesztői környezet. Az ebben a dokumentumban található utasítások az IntelliJ-t használják.
+* Hozzon létre egy Azure Active Directory- (AAD-) alkalmazást, és kérje le az **ügyfél-azonosítóját**, a **bérlőazonosítóját** és a **kulcsát**. További információ az AAD-alkalmazásokról és útmutató az ügyfél-azonosító lekéréséhez: [Create Active Directory application and service principal using portal](../active-directory/develop/howto-create-service-principal-portal.md) (Active Directory-alkalmazás és egyszerű szolgáltatás létrehozása a portál használatával). A Válasz URI és kulcs érhető el a portálon, miután az alkalmazás létrehozása és a kulcs létrehozása.
 
-## <a name="authenticating-using-azure-active-directory"></a>Hitelesítés Azure Active Directory használatával
+## <a name="authenticating-using-azure-active-directory"></a>Hitelesítés az Azure Active Directory használatával
 
-A következő kódrészlet kódot biztosít a **nem interaktív** hitelesítéshez, ahol az alkalmazás a saját hitelesítő adatait biztosítja.
+A kódrészletet követő kódkód nem **interaktív** hitelesítési kódot biztosít, ahol az alkalmazás saját hitelesítő adatokat biztosít.
 
 ## <a name="create-a-java-application"></a>Java-alkalmazás létrehozása
-1. Nyissa meg a IntelliJ, és hozzon létre egy Java-projektet a **parancssori alkalmazás** sablonnal.
+1. Nyissa meg az IntelliJ alkalmazást, és hozzon létre egy Java-projektet a **Parancssori alkalmazás** sablonhasználatával.
 2. Kattintson a jobb gombbal a képernyő bal oldalán található projektre, majd kattintson az **Add Framework Support** (Keretrendszer-támogatás felvétele) elemre. Válassza a **Maven** lehetőséget, majd kattintson az **OK** gombra.
 3. Nyissa meg az újonnan létrehozott **„pom.xml”** fájlt, majd illessze be a következő szövegrészletet a **\</version>** és a **\</project>** címkék közé:
 
@@ -76,9 +76,9 @@ A következő kódrészlet kódot biztosít a **nem interaktív** hitelesítésh
 </dependencies>
 ```
 
-Lépjen a **fájl > beállítások > Build > végrehajtás > központi telepítés**. Válassza a **Build Tools > Maven > importálás**lehetőséget. Ezután jelölje be a **Maven-projektek automatikus importálását**.
+Nyissa meg **a Fájl > beállítások > > a végrehajtás > a telepítés létrehozása >.** Válassza **az Eszközök > a Maven > importálása**lehetőséget. Ezután jelölje be **a Maven-projektek automatikus importálása jelölőnégyzetet.**
 
-Nyissa meg `Main.java` és cserélje le a meglévő kódrészletet a következő kódra:
+Nyissa `Main.java` meg és cserélje le a meglévő kódblokkot a következő kódra:
 
 ```java
 import com.microsoft.azure.CloudException;
@@ -307,7 +307,7 @@ public class Main {
 }
 ```
 
-Adja meg a kódrészletben felismert paraméterek értékeit:
+Adja meg a kódrészletben megnevezett paraméterek értékeit:
 * `localFolderPath`
 * `_adlaAccountName`
 * `_adlsAccountName`
@@ -320,5 +320,5 @@ Adja meg a kódrészletben felismert paraméterek értékeit:
 ## <a name="next-steps"></a>További lépések
 
 * A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével). és [U-SQL language reference](https://docs.microsoft.com/u-sql/) (U-SQL nyelvi referencia).
-* Felügyeleti feladatok: [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md) (Az Azure Data Lake Analytics kezelése az Azure Portallal).
+* Felügyeleti feladatok: [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md).
 * A Data Lake Analytics áttekintése: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).

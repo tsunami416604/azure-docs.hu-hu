@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB adatok biztonsági másolatból való visszaállítása
-description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani az adatok biztonsági másolatból történő Azure Cosmos DB visszaállítását, az Azure-támogatással való kapcsolatfelvételhez pedig az adatok visszaállításához szükséges lépéseket.
+title: Az Azure Cosmos DB-adatok visszaállítása biztonsági másolatból
+description: Ez a cikk ismerteti, hogyan állíthatja vissza az Azure Cosmos DB-adatokat egy biztonsági mentésből, hogyan léphet kapcsolatba az Azure-támogatással az adatok visszaállításához, az adatok visszaállítása utáni lépésekhez.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,56 +8,56 @@ ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 19ca835ca8211202cd358ac2ec3695675183a372
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70240766"
 ---
-# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Adatok visszaállítása biztonsági másolatból Azure Cosmos DB 
+# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Adatok visszaállítása biztonsági másolatból az Azure Cosmos DB-ben 
 
-Ha véletlenül törli az adatbázist vagy egy tárolót, [egy támogatási jegyet]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) is megadhat, vagy az [Azure-támogatás meghívásával]( https://azure.microsoft.com/support/options/) visszaállíthatja az adatokat az automatikus online biztonsági mentésből. Az Azure-támogatás csak olyan kiválasztott csomagokhoz érhető el, mint a **standard**, a **fejlesztői**és a magasabb szintű csomagok. Az Azure-támogatás nem érhető el **alapszintű** csomaggal. A különböző támogatási csomagokról az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/) oldalon tájékozódhat. 
+Ha véletlenül törli az adatbázist vagy egy tárolót, [nyújthat be támogatási jegyet,]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) vagy [hívja az Azure-támogatást]( https://azure.microsoft.com/support/options/) az automatikus online biztonsági mentések adatainak visszaállításához. Az Azure-támogatás csak a kiválasztott csomagokhoz érhető el, például **standard,** **fejlesztő**és magasabb csomagok hoz. Az Azure-támogatás nem érhető el **az alapszintű** csomaggal. A különböző támogatási csomagokról az [Azure támogatási csomagok](https://azure.microsoft.com/support/plans/) lapján olvashat. 
 
-A biztonsági mentés egy adott pillanatképének visszaállításához a Azure Cosmos DB megköveteli, hogy az adatok elérhetők legyenek a pillanatkép biztonsági mentési ciklusának időtartamára.
+A biztonsági mentés egy adott pillanatképének visszaállításához az Azure Cosmos DB megköveteli, hogy az adatok elérhetők a pillanatkép biztonsági mentési ciklusának időtartama alatt.
 
 ## <a name="request-a-restore"></a>Visszaállítás kérése
 
-A visszaállítás kérelmezése előtt a következő adatokat kell megkapnia:
+A visszaállítás kérése előtt a következő adatokat kell megadnia:
 
-* Készítse elő az előfizetés-AZONOSÍTÓját.
+* Készítse elő az előfizetés-azonosítóját.
 
-* Az adatok véletlen törlése vagy módosítása alapján készüljön fel további információkra. Javasoljuk, hogy a rendelkezésre álló információk alapján csökkentse a háttér-és a korlátot, amely bizonyos időérzékeny esetekben hátrányos lehet.
+* Az adatok véletlen törlésének vagy módosításának módjától függően érdemes további információkra felkészülnie. Azt tanácsoljuk, hogy az információk előre, hogy minimálisra csökkentsék a oda-vissza, hogy káros lehet bizonyos időérzékeny esetekben.
 
-* Ha a teljes Azure Cosmos DB fiókot törli, meg kell adnia a Törölt fiók nevét. Ha egy olyan fiókot hoz létre, amelynek a neve megegyezik a Törölt fiók nevével, ossza meg a támogatási csapattal, mert ez segít meghatározni a megfelelő fiókot. Javasoljuk, hogy minden egyes törölt fiókhoz különböző támogatási jegyeket kelljen benyújtani, mivel ez a művelet lekicsinyíti a visszaállítás állapotának összekeveredését.
+* Ha a teljes Azure Cosmos DB-fiók törlődik, meg kell adnia a törölt fiók nevét. Ha egy másik fiókot hoz létre a törölt fióknevével megegyező névvel, ossza meg azt a támogatási csapattal, mert segít meghatározni a megfelelő kiválasztott fiókot. Javasoljuk, hogy minden törölt fiókhoz különböző támogatási jegyeket nyújtson be, mert minimálisra csökkenti a visszaállítás állapotának zavart.
 
-* Ha egy vagy több adatbázis törölve van, meg kell adnia az Azure Cosmos-fiókot, valamint az Azure Cosmos-adatbázis nevét, és meg kell adnia, hogy létezik-e új adatbázis ugyanazzal a névvel.
+* Ha egy vagy több adatbázis törlődik, meg kell adnia az Azure Cosmos-fiókot, valamint az Azure Cosmos-adatbázis nevét, és meg kell adnia, hogy létezik-e új adatbázis ugyanazzal a névvel.
 
-* Ha egy vagy több tároló törölve van, adja meg az Azure Cosmos-fiók nevét, az adatbázis nevét és a tároló nevét. És adja meg, hogy létezik-e azonos nevű tároló.
+* Ha egy vagy több tárolótörlődik, meg kell adnia az Azure Cosmos-fiók nevét, az adatbázisneveket és a tárolóneveket. És adja meg, ha egy tároló azonos nevű létezik.
 
-* Ha véletlenül törölte vagy megsérült az adatai, akkor 8 órán belül kapcsolatba kell lépnie az [Azure támogatási szolgálatával](https://azure.microsoft.com/support/options/) , hogy a Azure Cosmos db csapat segítséget nyújtson a biztonsági másolatokból származó adatok visszaállításához.
+* Ha véletlenül törölte vagy megrongálta az adatokat, 8 órán belül forduljon az [Azure-támogatáshoz,](https://azure.microsoft.com/support/options/) hogy az Azure Cosmos DB csapata segíthessen az adatok visszaállításában a biztonsági mentésekből.
   
-  * Ha véletlenül törölte az adatbázist vagy a tárolót, nyisson meg egy "B" vagy "C" számú Azure-támogatási esetet. 
-  * Ha véletlenül törölt vagy megsérült néhány dokumentumot a tárolón belül, nyisson meg egy-egy-egy támogatási esetet. 
+  * Ha véletlenül törölte az adatbázist vagy a tárolót, nyisson meg egy Sev B vagy Sev C Azure támogatási esetet. 
+  * Ha véletlenül törölt vagy megrongált néhány dokumentumot a tárolóban, nyisson meg egy Sev A támogatási esetet. 
 
-Ha az adatsérülés történik, és ha egy tárolóban lévő dokumentumokat módosítanak vagy törölnek, **a lehető leghamarabb törölje a tárolót**. A tároló törlésével elkerülhető Azure Cosmos DB a biztonsági mentések felülírásával. Ha valamilyen okból kifolyólag a törlés nem lehetséges, a lehető leghamarabb be kell mutatnia a jegyet. Az Azure Cosmos-fiók neve, az adatbázis neve és a tároló neve mellett adja meg azt az időpontot is, ameddig az adatok visszaállíthatók. Fontos, hogy a lehető legpontosabban lehessen megállapítani az elérhető legjobb biztonsági mentéseket. Azt is fontos, hogy az időpontot UTC szerint határozza meg. 
+Adatsérülés esetén, és a tárolóban lévő dokumentumokat módosítják vagy törlik, **a lehető leghamarabb törölje a tárolót.** A tároló törlésével elkerülheti, hogy az Azure Cosmos DB felülírja a biztonsági mentéseket. Ha valamilyen oknál fogva a törlés nem lehetséges, a lehető leghamarabb be kell nyújtania egy jegyet. Az Azure Cosmos-fiók neve, adatbázisnevek, tárolónevek mellett meg kell adnia azt az időpontot, amelyre az adatok visszaállíthatók. Fontos, hogy a lehető legpontosabb, hogy segítsen meghatározni a legjobb rendelkezésre álló biztonsági mentések abban az időben. Fontos az idő meghatározása UTC-ben is. 
 
-Az alábbi képernyőfelvétel azt szemlélteti, hogyan lehet támogatási kérést létrehozni egy tárolóhoz (gyűjtemény/gráf/tábla) az adatAzure Portal használatával történő visszaállításához. Adjon meg további részleteket, például az adatok típusát, a visszaállítás célját, az adatok törlésének időpontját, hogy segítsen a kérés rangsorolásában.
+Az alábbi képernyőkép bemutatja, hogyan hozhat létre egy támogatási kérelmet egy tároló (gyűjtemény/graph/table) adatok visszaállításához az Azure Portal használatával. Adjon meg további részleteket, például az adatok típusát, a visszaállítás célját, az adatok törlésének idejét, hogy segítsen a kérelem rangsorolásában.
 
-![Biztonsági mentési támogatási kérelem létrehozása Azure Portal használatával](./media/how-to-backup-and-restore/backup-support-request-portal.png)
+![Biztonsági mentési támogatási kérelem létrehozása az Azure Portal használatával](./media/how-to-backup-and-restore/backup-support-request-portal.png)
 
-## <a name="post-restore-actions"></a>Visszaállítás utáni műveletek
+## <a name="post-restore-actions"></a>A visszaállítás utáni műveletek
 
-Az adatvisszaállítás után értesítést kap az új fiók nevéről (általában a formátuma `<original-name>-restored1`), valamint azt az időpontot, amikor a fiókot visszaállították. A visszaállított fióknak ugyanaz a kiosztott átviteli sebessége, az indexelési szabályzatok és az eredeti fiókkal azonos régióban kell lennie. Az előfizetés-rendszergazda vagy a rendszergazda láthatja a visszaállított fiókot.
+Az adatok visszaállítása után értesítést kap az új fiók nevéről (általában formátumban), `<original-name>-restored1`valamint a fiók visszaállításának időpontjáról. A visszaállított fiók ugyanazt a kiépített átviteli, indexelési szabályzatok, és ugyanabban a régióban, mint az eredeti fiók. Az előfizetés rendszergazdája vagy a társadminisztrátor oka a visszaállított fiók.
 
-Az adatok visszaállítása után ellenőrizze és ellenőrizze a visszaállított fiókban lévő adatok vizsgálatát, és győződjön meg róla, hogy a várt verziót tartalmazza. Ha minden jól látható, az adatátvitelt az eredeti fiókba [Azure Cosmos db módosítási hírcsatorna](change-feed.md) vagy [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)használatával kell visszatelepítenie.
+Az adatok visszaállítása után ellenőrizze és érvényesítse a visszaállított fiókban lévő adatokat, és győződjön meg arról, hogy azok a várt verziót tartalmazzák. Ha minden jól néz ki, az adatokat vissza kell telepítenie az eredeti fiókba az [Azure Cosmos DB módosítási hírcsatornájával](change-feed.md) vagy az [Azure Data Factory használatával.](../data-factory/connector-azure-cosmos-db.md)
 
-Javasoljuk, hogy azonnal törölje a tárolót vagy az adatbázist az áttelepítés után. Ha nem törli a visszaállított adatbázisokat vagy tárolókat, a kérések egysége, a tárterület és a kimenő forgalom költségeit is felszámítjuk.
+Javasoljuk, hogy az adatok áttelepítése után azonnal törölje a tárolót vagy adatbázist. Ha nem törli a visszaállított adatbázisokat vagy tárolókat, azok a kérelemegységek, a tárolás és a kimenő forgalom költségeit fogják felhálni.
 
 ## <a name="next-steps"></a>További lépések
 
-A következő cikkekből megtudhatja, hogyan telepítheti vissza az adatait az eredeti fiókjába:
+Ezután megtudhatja, hogyan telepítheti vissza az adatokat az eredeti fiókjába az alábbi cikkek használatával:
 
-* A visszaállítási kérelem elvégzéséhez forduljon az Azure ügyfélszolgálatához, és kérjen [jegyet a Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
-* Az adatAzure Cosmos DBba való áthelyezéshez [használja a Cosmos db módosítási csatornát](change-feed.md) .
+* Visszaállítási kérelem benyújtásához lépjen kapcsolatba az Azure-támogatással, [kérjen jegyet az Azure Portalról](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+* [A Cosmos DB módosítási hírcsatornájával](change-feed.md) áthelyezheti az adatokat az Azure Cosmos DB-be.
 
-* A [Azure Data Factory használatával](../data-factory/connector-azure-cosmos-db.md) viheti át az adatAzure Cosmos DBba.
+* [Az Azure Data Factory segítségével](../data-factory/connector-azure-cosmos-db.md) áthelyezheti az adatokat az Azure Cosmos DB-be.

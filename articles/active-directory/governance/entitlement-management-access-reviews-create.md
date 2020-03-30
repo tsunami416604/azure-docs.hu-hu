@@ -1,6 +1,6 @@
 ---
-title: Hozzáférési csomag hozzáférési felülvizsgálatának létrehozása az Azure AD-jogosultságok kezelésében
-description: Megtudhatja, hogyan hozhat létre hozzáférési felülvizsgálati szabályzatot a jogosultságok felügyeleti hozzáférési csomagjaihoz Azure Active Directory hozzáférési felülvizsgálatokban (előzetes verzió).
+title: Hozzáférési csomag hozzáférési felülvizsgálatának létrehozása az Azure AD-jogosultságkezelésben
+description: Megtudhatja, hogyan hozhat létre hozzáférési felülvizsgálati szabályzatot a jogosultságkezelési hozzáférési csomagokhoz az Azure Active Directory-hozzáférés-felülvizsgálatokban (előzetes verzió).
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,82 +17,82 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a862bbb1f574e4adab2f7d8e59a1abe8e5a5fa2a
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73608838"
 ---
-# <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag hozzáférési felülvizsgálatának létrehozása az Azure AD-jogosultságok kezelésében
+# <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag hozzáférési felülvizsgálatának létrehozása az Azure AD-jogosultságkezelésben
 
-Az elavult hozzáférés kockázatának csökkentése érdekében érdemes engedélyezni azokat a felhasználókat, akik aktív hozzárendelésekkel rendelkeznek egy hozzáférési csomaghoz az Azure AD-jogosultságok kezelésében. Az értékeléseket engedélyezheti új hozzáférési csomag létrehozásakor vagy meglévő hozzáférési csomag szerkesztésekor. Ez a cikk a hozzáférési csomagok hozzáférési felülvizsgálatának engedélyezését ismerteti.
+Az elavult hozzáférés kockázatának csökkentése érdekében engedélyeznie kell az Azure AD-jogosultságkezelésben egy hozzáférési csomaghoz aktív hozzárendelésekkel rendelkező felhasználók időszakos felülvizsgálatát. Új hozzáférési csomag létrehozásakor vagy meglévő hozzáférési csomag szerkesztésekor engedélyezheti az ellenőrzéseket. Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférési csomagok hozzáférési felülvizsgálatát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A hozzáférési csomagok felülvizsgálatának engedélyezéséhez meg kell felelnie a hozzáférési csomag létrehozásának előfeltételeinek:
+A hozzáférési csomagok felülvizsgálatának engedélyezéséhez meg kell felelnie a hozzáférési csomagok létrehozásának előfeltételeinek:
 - Prémium szintű Azure AD P2
-- Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
+- Globális rendszergazda, Felhasználói rendszergazda, Katalógustulajdonosa vagy Access-csomagkezelő
 
-További információkért lásd a [licencekre vonatkozó követelményeket](entitlement-management-overview.md#license-requirements).
+További információt a [Licenckövetelmények című témakörben talál.](entitlement-management-overview.md#license-requirements)
 
 
 ## <a name="create-an-access-review-of-an-access-package"></a>Hozzáférési csomag hozzáférési felülvizsgálatának létrehozása
 
-A hozzáférési felülvizsgálatok [új hozzáférési csomag létrehozásakor](entitlement-management-access-package-create.md) vagy [meglévő hozzáférési csomagra](entitlement-management-access-package-lifecycle-policy.md) vonatkozó házirend szerkesztésekor engedélyezhetők. A hozzáférési csomagok hozzáférési felülvizsgálatának engedélyezéséhez kövesse az alábbi lépéseket:
+Új hozzáférési csomag [létrehozásakor](entitlement-management-access-package-create.md) vagy [meglévő hozzáférési csomagszabályzat szerkesztésekor](entitlement-management-access-package-lifecycle-policy.md) engedélyezheti a hozzáférés-felülvizsgálatokat. A hozzáférési csomagok hozzáférési felülvizsgálatának engedélyezéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a hozzáférési csomag **életciklus** lapját, és görgessen le a **hozzáférési felülvizsgálatokhoz**.
+1. Nyissa meg az **Életciklus** lapot egy hozzáférési csomaghoz, és görgessen le az **Access-vélemények**elemre.
 
-1. Helyezze át az **Igen**értékre a **hozzáférési felülvizsgálatok megkövetelése** kapcsolót.
+1. Helyezze a **Hozzáférés-felülvizsgálatok megkövetelése** váltást **Az Igen**gombra.
 
-    ![Hozzáférési felülvizsgálat hozzáadása](./media/entitlement-management-access-reviews/access-reviews-pane.png)
+    ![A hozzáférési felülvizsgálat hozzáadása](./media/entitlement-management-access-reviews/access-reviews-pane.png)
 
-1. Itt adhatja meg azt a dátumot, ameddig a felülvizsgálatok **beindulnak**.
+1. Adja meg azt a dátumot, amelynek kezdete mellett az ellenőrzések **kezdete következik.**
 
-1. Ezután állítsa a **felülvizsgálati gyakoriságot** **évente**, **kétévente**, **negyedévente** vagy **havonta**.
-Ez a beállítás határozza meg, hogy a rendszer milyen gyakran történjen a hozzáférési felülvizsgálatok.
+1. Ezután állítsa a **felülvizsgálati gyakoriságot** **évente**, **kétévente,** **negyedéves** vagy **havi**.
+Ez a beállítás határozza meg, hogy milyen gyakran kerülsore access-felülvizsgálatra.
 
-1. Adja meg az **időtartamot** annak meghatározásához, hogy az ismétlődő adatsorozatok egyes áttekintése hány nap múlva legyen megnyitva a véleményezők számára. Előfordulhat például, hogy egy éves felülvizsgálatot ütemezhet, amely január 1-től kezdődik, és 30 napig nyitva van, hogy a felülvizsgálók a hónap végéig legyenek válaszolva.
+1. Az Időtartam beállításával **megadhatja,** hogy az ismétlődő adatsorok egyes felülvizsgálatai hány napig legyenek nyitva az ellenőrzők tőlük érkező adatok számára. Például ütemezhet egy éves felülvizsgálatot, amely január 1-jén kezdődik, és 30 napig tart, így az ellenőrzőknek a hónap végéig kell válaszolniuk.
 
-1. A felülvizsgálók mellett válassza az **önellenőrzés** **lehetőséget, ha**azt szeretné, hogy a felhasználók elvégezzék a saját hozzáférési felülvizsgálatot, vagy ha egy véleményezőt szeretne kijelölni, válassza ki az **adott véleményező (ka)** t.
+1. A **Véleményezők**csoportban válassza az **Önellenőrzés** lehetőséget, ha azt szeretné, hogy a felhasználók saját hozzáférés-felülvizsgálatot végezzenek, vagy válassza a **Specifikus véleményező(ke)t,** ha ki szeretne jelölni egy véleményezőt.
 
-    ![Válassza a véleményezők hozzáadása lehetőséget](./media/entitlement-management-access-reviews/access-reviews-add-reviewer.png)
+    ![Véleményezők hozzáadása kiválasztása](./media/entitlement-management-access-reviews/access-reviews-add-reviewer.png)
 
-1. Ha megadott **véleményező (ka) t**választott, akkor határozza meg, hogy mely felhasználók hajtják végre a hozzáférési felülvizsgálatot:
-    1. Válassza a **véleményezők hozzáadása**lehetőséget.
-    1. A **véleményezők kiválasztása** ablaktáblán keresse meg és válassza ki azokat a felhasználókat, akiket felülvizsgáló szeretne használni.
-    1. Ha kiválasztotta a véleményező (ka) t, kattintson a **kiválasztás** gombra.
+1. Ha **a Konkrét véleményező(k)** lehetőséget választotta, adja meg, hogy mely felhasználók végezzék el a hozzáférési felülvizsgálatot:
+    1. Válassza **az Ellenőrzők hozzáadása**lehetőséget.
+    1. Az **Ellenőrzők kiválasztása** ablaktáblában keresse meg és jelölje ki azokat a felhasználókat, akiket véleményezőként szeretne keresni.
+    1. Miután kiválasztotta az véleményezőt, kattintson a **Kijelölés** gombra.
 
-    ![Felülvizsgálók meghatározása](./media/entitlement-management-access-reviews/access-reviews-select-reviewer.png)
+    ![Az ellenőrzők megadása](./media/entitlement-management-access-reviews/access-reviews-select-reviewer.png)
 
-1. Kattintson a **felülvizsgálat + létrehozás** lehetőségre, ha új hozzáférési csomagot vagy **frissítést** hoz létre, ha egy hozzáférési csomagot szerkeszt, a lap alján.
+1. Kattintson **a Véleményezés + Létrehozás** gombra, ha új hozzáférési csomagot hoz létre, vagy a **Frissítés gombra,** ha hozzáférési csomagot szerkeszt, a lap alján.
 
-## <a name="view-the-status-of-the-access-review"></a>A hozzáférési felülvizsgálat állapotának megtekintése
+## <a name="view-the-status-of-the-access-review"></a>A hozzáférés-felülvizsgálat állapotának megtekintése
 
-A kezdési dátum után a hozzáférési felülvizsgálatok a **hozzáférési** felülvizsgálatok szakaszban szerepelnek. A hozzáférési felülvizsgálat állapotának megtekintéséhez kövesse az alábbi lépéseket:
+A kezdési dátum után a hozzáférés-felülvizsgálat megjelenik az **Access-ellenőrzések** szakaszban. A hozzáférési felülvizsgálat állapotának megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Az **identitás irányítása**területen kattintson a **hozzáférési csomagok** lehetőségre, majd válassza ki azt a hozzáférési csomagot, amelynek a hozzáférési felülvizsgálati állapotát ellenőrizni szeretné.   
+1. Az **Identitáscégcégcsoport**ban kattintson az **Access-csomagok** elemre, majd válassza ki az ellenőrizni kívánt hozzáférési ellenőrzési állapotú hozzáférési csomagot.   
 
-1. Ha a hozzáférési csomag áttekintése elemre kattint, kattintson a bal oldali menüben a **hozzáférési felülvizsgálatok** lehetőségre.
+1. Miután eljutott a hozzáférési csomag áttekintéséhez, kattintson a bal oldali menü **Hozzáférés-ellenőrzések** parancsára.
     
-    ![Hozzáférési felülvizsgálatok kiválasztása](./media/entitlement-management-access-reviews/access-review-status-access-package-overview.png)
+    ![Hozzáférési vélemények kiválasztása](./media/entitlement-management-access-reviews/access-review-status-access-package-overview.png)
 
-1. Ekkor megjelenik egy lista, amely tartalmazza az összes olyan házirendet, amelyekhez hozzá van rendelve hozzáférési felülvizsgálat. Kattintson a felülvizsgálatra a jelentés megjelenítéséhez.
+1. Megjelenik egy lista, amely tartalmazza az összes olyan szabályzatot, amelyhez hozzáférési felülvizsgálat tartozik. Kattintson az értékelésre a jelentés megtekintéséhez.
 
-    ![Hozzáférési felülvizsgálatok listája](./media/entitlement-management-access-reviews/access-review-status-select-access-reviews.png)
+    ![A hozzáférési felülvizsgálatok listája](./media/entitlement-management-access-reviews/access-review-status-select-access-reviews.png)
    
-1. Amikor megtekinti a jelentést, az azt jelzi, hogy hány felhasználó tekint át, és milyen műveleteket végez rajtuk a véleményező.
+1. A jelentés megtekintésekor megjelenik az áttekintett felhasználók száma és a véleményező által rajtuk végrehajtott műveletek száma.
 
-    ![Felülvizsgálati állapot megtekintése](./media/entitlement-management-access-reviews/access-review-status.png)
+    ![Ellenőrzés állapotának megtekintése](./media/entitlement-management-access-reviews/access-review-status.png)
  
 
-## <a name="access-reviews-email-notifications"></a>Hozzáférési felülvizsgálatok e-mail értesítései
-Megadhatók a felülvizsgálók, vagy a felhasználók saját maguk is ellenőrizhetik a hozzáférést. Alapértelmezés szerint az Azure AD egy e-mailt küld a felülvizsgálók vagy az önellenőrzők számára röviddel a felülvizsgálat elindítása után.
+## <a name="access-reviews-email-notifications"></a>Az Access ellenőrzi az e-mailértesítéseket
+Kijelölhet ellenőrzőket, vagy a felhasználók saját maguk is áttekinthetik a hozzáférésüket. Alapértelmezés szerint az Azure AD küld egy e-mailt a véleményezők vagy önellenőrzők röviddel az ellenőrzés megkezdése után.
 
-Az e-mail tartalmazza a hozzáférési csomagokhoz való hozzáférés áttekintésére vonatkozó utasításokat is. Ha a felülvizsgálat célja, hogy a felhasználók áttekintsék a hozzáférésüket, megtekinthetik a hozzáférési csomagjaik önellenőrzésének elvégzéséhez szükséges utasításokat.
+Az e-mail utasításokat tartalmaz a hozzáférési csomagokhoz való hozzáférés áttekintéséhez. Ha az ellenőrzés a felhasználók számára, hogy vizsgálja felül a hozzáférést, mutasd meg nekik az utasításokat, hogyan kell elvégezni egy önellenőrzés a hozzáférési csomagok.
   
-Ha a vendég felhasználóit felülvizsgáló rendelte hozzá, és nem fogadták el az Azure ad vendég meghívóját, nem kapnak e-mailt az Azure ad hozzáférési felülvizsgálatokból. Először el kell fogadniuk a meghívást, és létre kell hoznia egy fiókot az Azure AD-vel, mielőtt megkapják az e-maileket. 
+Ha vendégfelhasználókat rendelt látogatóként, és nem fogadták el az Azure AD-s vendégmeghívásukat, akkor nem kapnak e-maileket az Azure AD hozzáférési felülvizsgálataiból. Először el kell fogadniuk a meghívást, és létre kell hozniuk egy fiókot az Azure AD-vel, mielőtt megkapnák az e-maileket. 
 
 ## <a name="next-steps"></a>További lépések
 
 - [Hozzáférési csomagok hozzáférésének áttekintése](entitlement-management-access-reviews-review-access.md)
-- [Hozzáférési csomagok önálló felülvizsgálata](entitlement-management-access-reviews-self-review.md)
+- [A hozzáférési csomagok önellenőrzése](entitlement-management-access-reviews-self-review.md)

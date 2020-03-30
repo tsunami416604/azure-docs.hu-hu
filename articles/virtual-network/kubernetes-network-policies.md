@@ -1,6 +1,6 @@
 ---
-title: Azure Kubernetes hálózati szabályzatok | Microsoft Docs
-description: További tudnivalók a Kubernetes hálózati házirendjeiről a Kubernetes-fürt biztonságossá tételéhez.
+title: Azure Kubernetes hálózati házirendek | Microsoft dokumentumok
+description: További információ a Kubernetes hálózati házirendjeiről a Kubernetes-fürt védelméhez.
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -17,34 +17,34 @@ ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73159695"
 ---
-# <a name="azure-kubernetes-network-policies-overview"></a>Az Azure Kubernetes hálózati házirendjeinek áttekintése
+# <a name="azure-kubernetes-network-policies-overview"></a>Az Azure Kubernetes hálózati szabályzatainak áttekintése
 
-A hálózati házirendek a hüvelyek számára biztosítanak olyan mikro-szegmentálást, mint a hálózati biztonsági csoportok (NSG-EK) a virtuális gépek számára. Az Azure hálózati házirend implementációja támogatja a szabványos Kubernetes hálózati házirend-specifikációt. A címkék használatával kiválaszthatja a hüvelyek egy csoportját, és meghatározhatja a bejövő és kimenő forgalomra vonatkozó szabályok listáját, amely meghatározza, hogy milyen típusú forgalmat engedélyeznek a hüvelyek. További információ a Kubernetes hálózati házirendjeiről a [Kubernetes dokumentációjában](https://kubernetes.io/docs/concepts/services-networking/network-policies/).
+A hálózati házirendek mikroszegmentálást biztosítanak a podok számára, csakúgy, mint a hálózati biztonsági csoportok (NSG-k) mikroszegmentálást biztosítanak a virtuális gépekszámára. Az Azure network policy implementációja támogatja a szabványos Kubernetes hálózati házirend specifikációját. Címkék használatával válassza ki a podok egy csoportját, és határozza meg a be- és kimenő forgalom szabályait, amelyek meghatározzák, hogy milyen típusú forgalmat engedélyezett, és ezekből a podok. A Kubernetes hálózati házirendjeiről a [Kubernetes dokumentációjában](https://kubernetes.io/docs/concepts/services-networking/network-policies/)olvashat bővebben.
 
-![A Kubernetes hálózati házirendjeinek áttekintése](./media/kubernetes-network-policies/kubernetes-network-policies-overview.png)
+![Kubernetes hálózati házirendek – áttekintés](./media/kubernetes-network-policies/kubernetes-network-policies-overview.png)
 
-Az Azure hálózati házirendjei együtt működnek az Azure CNI, amely VNet-integrációt biztosít a tárolók számára. Jelenleg csak Linux-csomópontokon támogatott. A implementálja a Linux IP-táblázat szabályait a megadott házirendek alapján, hogy kikényszerítse a forgalom szűrését.
+Az Azure hálózati szabályzatok együtt működik az Azure CNI, amely virtuális hálózat integrációt biztosít a tárolók. Ez csak a Linux csomópontok ma támogatott. A megvalósítások konfigurálják a Linux IP-táblázat szabályait a megadott szabályzatok alapján a forgalomszűrés kényszerítéséhez.
 
 ## <a name="planning-security-for-your-kubernetes-cluster"></a>A Kubernetes-fürt biztonságának megtervezése
-A fürt biztonságának megvalósításakor használjon hálózati biztonsági csoportokat (NSG-ket) az észak-déli forgalom szűrésére, azaz a fürt alhálózatára beérkező és onnan kilépő forgalomra, valamint Kubernetes hálózati házirendeket használ a kelet-nyugati forgalomhoz, azaz a hüvelyek közötti adatforgalomhoz a fürt.
+A fürt biztonságának megvalósításakor a hálózati biztonsági csoportok (NSG-k) segítségével szűrje az észak-déli forgalmat, azaz a fürt alhálózatába belépő és onnan kilépő forgalmat, és használja a Kubernetes hálózati házirendeket a kelet-nyugati forgalomhoz, azaz a podok közötti forgalomhoz a fürthöz.
 
 ## <a name="using-azure-kubernetes-network-policies"></a>Az Azure Kubernetes hálózati házirendjeinek használata
-Az Azure hálózati házirendjei a következő módokon használhatók a hüvelyek mikro-szegmentálásának biztosítására.
+Az Azure Network szabályzatok a podok mikroszegmentálásának biztosításához használható alábbi módokon.
 
 ### <a name="acs-engine"></a>ACS-motor
-Az ACS-Engine egy olyan eszköz, amely Azure Resource Manager sablont hoz létre egy Kubernetes-fürt Azure-beli üzembe helyezéséhez. A fürtkonfiguráció egy JSON-fájlban van meghatározva, amelyet a sablon létrehozásakor a rendszer továbbít az eszköznek. Ha többet szeretne megtudni a fürt támogatott beállításainak teljes listájáról és azok leírásáról, tekintse meg a Microsoft Azure Container Service Engine-cluster definition című témakört.
+Az ACS-Engine egy olyan eszköz, amely egy Azure Resource Manager-sablont hoz létre egy Kubernetes-fürt Azure-beli üzembe helyezéséhez. A fürtkonfiguráció egy JSON-fájlban van meghatározva, amelyet a sablon létrehozásakor a rendszer továbbít az eszköznek. A támogatott fürtbeállítások teljes listájával és a beállítások leírásával kapcsolatos további részletekért tekintse meg a Microsoft Azure Container Service Engine – Fürtdefiníció című részt.
 
-Ha az ACS-Engine használatával telepített fürtökön szeretné engedélyezni a házirendeket, akkor a fürt definíciós fájljában válassza a networkPolicy beállítás értékét az "Azure" értékre.
+Ha engedélyezni szeretné az acs-engine használatával telepített fürtök házirendjeit, adja meg a networkPolicy beállítás értékét a fürtdefiníciós fájlban, hogy "azure" legyen.
 
 #### <a name="example-configuration"></a>Konfigurációs példa
 
-Az alábbi JSON-példa egy új virtuális hálózatot és alhálózatot hoz létre, és üzembe helyez egy Kubernetes-fürtöt az Azure CNI. Javasoljuk, hogy a JSON-fájl szerkesztéséhez használja a "Jegyzettömb" kifejezést. 
+Az alábbi JSON-példakonfiguráció új virtuális hálózatot és alhálózatot hoz létre, és egy Kubernetes-fürtöt telepít benne az Azure CNI-vel. Javasoljuk, hogy a JSON-fájl szerkesztéséhez használja a "Jegyzettömb" kifejezést. 
 ```json
 {
   "apiVersion": "vlabs",
@@ -87,19 +87,19 @@ Az alábbi JSON-példa egy új virtuális hálózatot és alhálózatot hoz lét
 
 ```
 ### <a name="creating-your-own-kubernetes-cluster-in-azure"></a>Saját Kubernetes-fürt létrehozása az Azure-ban
-A megvalósítás használatával hálózati házirendeket biztosíthat a hüvelyek számára a saját maga által üzembe helyezett Kubernetes-fürtökön anélkül, hogy olyan eszközöket kellene használnia, mint például az ACS-motor. Ebben az esetben először telepítenie kell a CNI beépülő modult, és engedélyeznie kell azt a fürt összes virtuális gépén. Részletes információ: [A beépülő modul üzembe helyezése saját kezűleg üzembe helyezett Kubernetes-fürthöz](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
+A megvalósítás segítségével a Kubernetes-fürtök podok hálózati szabályzatok, amelyek saját maga üzembe helyezése, anélkül, hogy az eszközök, például az ACS-engine. Ebben az esetben először telepítse a CNI beépülő modult, és engedélyezze azt a fürt minden virtuális gépén. Részletes információ: [A beépülő modul üzembe helyezése saját kezűleg üzembe helyezett Kubernetes-fürthöz](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
 
-Miután telepítette a fürtöt, futtassa a következő `kubectl` parancsot az Azure hálózati házirend *daemonset elemet* a fürtre való letöltéséhez és alkalmazásához.
+A fürt üzembe helyezése után `kubectl` futtassa a következő parancsot az Azure hálózati *házirend-démonkészlet* letöltéséhez és a fürtre való alkalmazásához.
 
   ```
   kubectl apply -f https://raw.githubusercontent.com/Azure/acs-engine/master/parts/k8s/addons/kubernetesmasteraddons-azure-npm-daemonset.yaml
 
   ```
-A megoldás szintén nyílt forráskódú, és a kód elérhető az [Azure Container Networking adattárában](https://github.com/Azure/azure-container-networking/tree/master/npm).
+A megoldás nyílt forráskódú is, és a kód elérhető az [Azure Container Networking tárházban.](https://github.com/Azure/azure-container-networking/tree/master/npm)
 
 
 
-## <a name="next-steps"></a>Következő lépések
-- További tudnivalók az [Azure Kubernetes szolgáltatásról](../aks/intro-kubernetes.md).
--  A [tároló hálózatkezelésének](container-networking-overview.md)megismerése.
-- [Telepítse a beépülő](deploy-container-networking.md) modult a Kubernetes-fürtök vagy a Docker-tárolók számára.
+## <a name="next-steps"></a>További lépések
+- További információ az [Azure Kubernetes szolgáltatásról.](../aks/intro-kubernetes.md)
+-  További információ a [tárolóhálózatokról.](container-networking-overview.md)
+- [Telepítse a beépülő modult](deploy-container-networking.md) a Kubernetes-fürtökhöz vagy a Docker-tárolókhoz.

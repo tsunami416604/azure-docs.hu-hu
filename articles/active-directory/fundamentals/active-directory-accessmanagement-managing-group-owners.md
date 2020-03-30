@@ -1,6 +1,6 @@
 ---
-title: Adja hozzá, vagy távolítsa el a csoportok tulajdonosainak – Azure Active Directory |} A Microsoft Docs
-description: Az Azure Active Directoryval csoporttulajdonosok hozzáadása vagy eltávolítása kapcsolatos utasításokat.
+title: Csoporttulajdonosok hozzáadása vagy eltávolítása – Azure Active Directory | Microsoft dokumentumok
+description: Útmutató a csoporttulajdonosok azure Active Directory használatával hozzáadásához vagy eltávolításához.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -13,59 +13,59 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f83a48ad13fe4ae217319b2aa85adf976aa6a7ae
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77149847"
 ---
-# <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Hozzáadása vagy eltávolítása a csoportok tulajdonosainak az Azure Active Directoryban
-Az Azure Active Directory (Azure AD-) csoportok tulajdonosai és kezeli a csoport tulajdonosai. A csoport tulajdonosai lehetnek felhasználók vagy egyszerű szolgáltatások, és képesek a csoport kezelésére, beleértve a tagságot is. A csoport tulajdonosai csak a meglévő tulajdonosok vagy csoport-felügyeleti rendszergazdák számára rendelhetők hozzá. Csoporttulajdonosok lehetnek a csoport tagjai, nem szükséges.
+# <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Csoporttulajdonosok hozzáadása vagy eltávolítása az Azure Active Directoryban
+Az Azure Active Directory (Azure AD) csoportok tulajdonosa és kezelése a csoport tulajdonosok. A csoporttulajdonosok lehetnek felhasználók vagy egyszerű szolgáltatástagok, és kezelhetik a csoportot a tagsággal együtt. Csak a meglévő csoporttulajdonosok vagy csoportkezelő rendszergazdák rendelhetnek hozzá csoporttulajdonosokat. A csoporttulajdonosoknak nem kell a csoport tagjainak lenniük.
 
-Ha egy csoport nem rendelkezik tulajdonossal, a csoport kezelésére szolgáló rendszergazdák továbbra is kezelhetik a csoportot. Azt javasoljuk, hogy minden csoportban legyen legalább egy tulajdonos. Ha a tulajdonosok hozzárendelni egy csoportba, a csoport utolsó tulajdonosa nem távolítható el. Győződjön meg arról, hogy a csoport utolsó tulajdonosának eltávolítása előtt kiválaszt egy másik tulajdonost.
+Ha egy csoportnak nincs tulajdonosa, a csoportkezelő rendszergazdák továbbra is kezelhetik a csoportot. Javasoljuk, hogy minden csoportnak legalább egy tulajdonosa legyen. Miután a tulajdonosok egy csoporthoz kerültek, a csoport utolsó tulajdonosa nem távolítható el. Kérjük, győződjön meg róla, hogy válasszon egy másik tulajdonost, mielőtt eltávolítaná az utolsó tulajdonost a csoportból.
 
 ## <a name="add-an-owner-to-a-group"></a>Tulajdonos hozzáadása csoporthoz
-Az alábbi útmutatást követve adhat hozzá felhasználót tulajdonosként egy csoporthoz az Azure AD-portál használatával. Ha egy egyszerű szolgáltatást szeretne hozzáadni egy csoport tulajdonosaként, kövesse az utasításokat a [PowerShell](https://docs.microsoft.com/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0)használatával.
+Az alábbiakban útmutatást tartalmaz egy felhasználó tulajdonosként egy csoporthoz az Azure AD portál használatával. Ha egy csoport tulajdonosaként szeretne hozzáadni egy egyszerű szolgáltatást, kövesse az utasításokat a [PowerShell](https://docs.microsoft.com/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0)használatával.
 
 ### <a name="to-add-a-group-owner"></a>Csoporttulajdonos hozzáadása
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Válassza a **Azure Active Directory**lehetőséget, válassza a **csoportok**lehetőséget, majd válassza ki azt a csoportot, amelyhez hozzá kíván adni egy tulajdonost (ebben a példában a *Mdm Policy-West*).
+2. Válassza az **Azure Active Directory**lehetőséget, válassza a **Csoportok**lehetőséget, majd válassza ki azt a csoportot, amelyhez tulajdonost szeretne hozzáadni (ebben a példában *az MDM-házirend - Nyugat).*
 
-3. A **Mdm házirend – Nyugat áttekintése** lapon válassza a **tulajdonosok**lehetőséget.
+3. Az **MDM-házirend – Nyugat áttekintés e lapon** válassza a **Tulajdonosok**lehetőséget.
 
-    ![Mobileszköz-kezelési szabályzat – Nyugat-India – áttekintés oldalra a tulajdonosok opció kiemelésével](media/active-directory-accessmanagement-managing-group-owners/add-owners-option-overview-blade.png)
+    ![MDM-házirend – Nyugat-áttekintés lap kiemelt Tulajdonosok lehetőséggel](media/active-directory-accessmanagement-managing-group-owners/add-owners-option-overview-blade.png)
 
-4. A **Mdm házirend-Nyugat-tulajdonosok** lapon válassza a **tulajdonosok hozzáadása**lehetőséget, majd keresse meg és válassza ki azt a felhasználót, aki az új csoport tulajdonosa lesz, majd válassza a **kiválasztás**lehetőséget.
+4. Az **MDM-házirend – Nyugat - Tulajdonosok** lapon válassza a Tulajdonosok **hozzáadása**lehetőséget, majd keresse meg és jelölje ki azt a felhasználót, aki az új csoport tulajdonosa lesz, majd válassza a **Kijelölés lehetőséget.**
 
-    ![Mobileszköz-kezelési szabályzat – Nyugat - tulajdonosok lap Hozzáadás tulajdonosok lehetőséggel kiemelve](media/active-directory-accessmanagement-managing-group-owners/add-owners-owners-blade.png)
+    ![MDM-házirend - Nyugat - Tulajdonosok lap Kiemelt Tulajdonosok hozzáadása lehetőséggel](media/active-directory-accessmanagement-managing-group-owners/add-owners-owners-blade.png)
 
-    Miután kiválasztotta az új tulajdonost, frissítheti a **tulajdonosok** lapot, és megtekintheti a tulajdonosok listájához hozzáadott nevet.
+    Miután kiválasztotta az új tulajdonost, frissítheti a **Tulajdonosok** lapot, és megtekintheti a tulajdonosok listájához hozzáadott nevet.
 
 ## <a name="remove-an-owner-from-a-group"></a>Tulajdonos eltávolítása egy csoportból
-Tulajdonos eltávolítása az Azure AD-csoport.
+Tulajdonos eltávolítása egy csoportból az Azure AD használatával.
 
 ### <a name="to-remove-an-owner"></a>Tulajdonos eltávolítása
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Válassza a **Azure Active Directory**lehetőséget, válassza a **csoportok**lehetőséget, majd válassza ki azt a csoportot, amelynek el szeretné távolítani a tulajdonosát (ebben a példában a *Mdm Policy-West*).
+2. Válassza az **Azure Active Directory**lehetőséget, válassza a **Csoportok**lehetőséget, majd válassza ki azt a csoportot, amelynek tulajdonosát el szeretné távolítani (ebben a példában *az MDM-házirend - Nyugat).*
 
-3. A **Mdm házirend – Nyugat áttekintése** lapon válassza a **tulajdonosok**lehetőséget.
+3. Az **MDM-házirend – Nyugat áttekintés e lapon** válassza a **Tulajdonosok**lehetőséget.
 
-    ![Mobileszköz-kezelési szabályzat – Nyugat-India – áttekintés oldalra a tulajdonosok opció kiemelésével](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
+    ![MDM-házirend – Nyugat-áttekintés lap kiemelt Tulajdonosok lehetőséggel](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
 
-4. A **Mdm házirend-Nyugat-tulajdonosok** lapon válassza ki az eltávolítani kívánt felhasználót a csoport tulajdonosaként, válassza az **Eltávolítás** lehetőséget a felhasználó adatai lapról, és válassza az **Igen** lehetőséget a döntés megerősítéséhez.
+4. Az **MDM-házirend – Nyugat – Tulajdonosok** lapon válassza ki azt a felhasználót, amelyet csoporttulajdonosként szeretne eltávolítani, válassza az **Eltávolítás** lehetőséget a felhasználó információs lapjáról, és válassza az **Igen** lehetőséget a döntés megerősítéséhez.
 
-    ![Az Eltávolítás opció kiemelésével felhasználó információi lap](media/active-directory-accessmanagement-managing-group-owners/remove-owner-info-blade.png)
+    ![A felhasználó információs lapja kiemelt Eltávolítás beállítással](media/active-directory-accessmanagement-managing-group-owners/remove-owner-info-blade.png)
 
-    A tulajdonos eltávolítása után visszatérhet a **tulajdonosok** lapra, és megtekintheti a név eltávolítását a tulajdonosok listájából.
+    Miután eltávolította a tulajdonost, visszatérhet a **Tulajdonosok** lapra, és láthatja, hogy a név el lett távolítva a tulajdonosok listájáról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](active-directory-manage-groups.md)
 
 - [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md)
 
-- [Csoportok használata egy integrált SaaS-alkalmazáshoz való hozzáféréshez](../users-groups-roles/groups-saasapps.md)
+- [Csoportok használata hozzáférés hozzárendelése integrált SaaS-alkalmazáshoz](../users-groups-roles/groups-saasapps.md)
 
 - [Helyszíni identitások integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md)
 

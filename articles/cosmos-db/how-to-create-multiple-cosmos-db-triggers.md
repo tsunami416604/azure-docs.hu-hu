@@ -1,50 +1,50 @@
 ---
-title: Több független Azure Functions eseményindító létrehozása a Cosmos DB
-description: Megtudhatja, hogyan konfigurálhat több független Azure Functions eseményindítót a Cosmos DBhoz eseményvezérelt architektúrák létrehozásához.
+title: Több független Azure-függvény aktiválásának létrehozása a Cosmos DB számára
+description: Ismerje meg, hogyan konfigurálhat több független Azure Functions elindítja a Cosmos DB eseményvezérelt architektúrák létrehozásához.
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604940"
 ---
-# <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Több Azure Functions eseményindító létrehozása a Cosmos DBhoz
+# <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Több Azure-függvény eseményindítólétrehozása a Cosmos DB számára
 
 Ez a cikk azt ismerteti, hogyan konfigurálhat több Azure Functions-eseményindítót a Cosmos DB-hez úgy, hogy párhuzamosan működjenek és egymástól függetlenül reagáljanak a módosításokra.
 
-![Kiszolgáló nélküli eseményvezérelt függvények a Azure Functions eseményindítóval a Cosmos DB és a bérletek tárolójának megosztásakor](./media/change-feed-functions/multi-trigger.png)
+![Kiszolgáló nélküli eseményalapú függvények, amelyek a Cosmos DB Azure Functions eseményindítójával dolgoznak, és megosztanak egy bérlettárolót](./media/change-feed-functions/multi-trigger.png)
 
-## <a name="event-based-architecture-requirements"></a>Eseményvezérelt architektúra-követelmények
+## <a name="event-based-architecture-requirements"></a>Eseményalapú architektúra-követelmények
 
-A kiszolgáló nélküli architektúrák a [Azure functions](../azure-functions/functions-overview.md)használatával történő létrehozásakor [ajánlott](../azure-functions/functions-best-practices.md#avoid-long-running-functions) olyan kis functions-csoportokat létrehozni, amelyek együttesen működnek a nagyméretű, hosszú ideig futó függvények helyett.
+Kiszolgáló nélküli architektúrák [létrehozásakor](../azure-functions/functions-overview.md)az Azure Functions használata esetén [ajánlott](../azure-functions/functions-best-practices.md#avoid-long-running-functions) olyan kis függvénykészleteket létrehozni, amelyek a nagy, hosszú ideig futó függvények helyett együttműködnek.
 
-Az eseményvezérelt kiszolgáló nélküli folyamatok a [Cosmos DB Azure functions eseményindítójának](./change-feed-functions.md)használatával történő létrehozásakor a forgatókönyvben fog futni, ahol több dolgot szeretne tenni, amikor egy adott [Azure Cosmos-tárolóban](./databases-containers-items.md#azure-cosmos-containers)új esemény van. Ha az aktiválni kívánt műveletek egymástól függetlenek, az ideális megoldás az, hogy **egy Azure functions eseményindítót hozzon létre a kívánt művelethez Cosmos db** egy adott Azure Cosmos-tárolón végzett módosításokat.
+Amikor eseményalapú kiszolgáló nélküli folyamatokat hoz létre a [Cosmos DB Azure Functions eseményindítójával,](./change-feed-functions.md)akkor a forgatókönyvbe fut, ahol több dolgot szeretne megtenni, amikor egy adott [Azure Cosmos-tárolóban](./databases-containers-items.md#azure-cosmos-containers)új esemény történik. Ha a kívánt műveleteket szeretne indítani, egymástól függetlenek, az ideális megoldás az lenne, hogy **hozzon létre egy Azure Functions-eseményindítók a Cosmos DB műveletenként** kívánt műveletet, minden figyelése módosítások ugyanazon az Azure Cosmos-tárolón.
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>Tárolók optimalizálása több eseményindítóhoz
 
-Cosmos DB esetén a Azure Functions trigger *követelményeit* figyelembe véve egy második tárolóra van szükség az állapot tárolásához, más néven a *bérletek tárolója*. Ez azt jelenti, hogy minden egyes Azure-függvényhez külön címbérleti tárolóra van szükség?
+Tekintettel az Azure Functions eseményindító a Cosmos *DB,* szükségünk van egy második tároló állapot tárolására, más néven a *bérleti tároló.* Ez azt jelenti, hogy minden Azure-függvényhez külön bérlettárolóra van szükség?
 
 Itt két lehetőség közül választhat:
 
-* Hozzon létre **egy-egy bérletet egy függvényben**: Ez a módszer további költségekre is fordítható, kivéve, ha [megosztott átviteli sebességű adatbázist](./set-throughput.md#set-throughput-on-a-database)használ. Ne feledje, hogy a tároló szintjének minimális átviteli [sebessége 400,](./request-units.md)a bérletek tároló esetében pedig csak a folyamat előrehaladásának és karbantartásának ellenőrzéséhez használatos.
-* **Egyetlen címbérleti tárolóval kell megosztania** az összes funkcióját: Ez a második lehetőség a tárolóban lévő kiépített kérések egységének jobb használatát teszi lehetővé, mivel több Azure functions megoszthatja és használhatja ugyanazt a kiosztott átviteli sebességet.
+* **Függvényenként egy címbérlet-tároló létrehozása:** Ez a megközelítés további költségeket okozhat, kivéve, ha [megosztott átviteli-adatbázist](./set-throughput.md#set-throughput-on-a-database)használ. Ne feledje, hogy a tároló szintjén a minimális átviteli mennyiség 400 [kérelemegység,](./request-units.md)és a bérlettároló esetében csak a folyamat ellenőrzőpontjának és az állapot fenntartásának szolgál.
+* Egy **bérlettárolóval rendelkezik, és ossza meg** az összes függvényéhez: Ez a második lehetőség jobban kihasználja a tárolón lévő kiosztott kérelemegységeket, mivel lehetővé teszi, hogy több Azure-függvény ossza meg és használja ugyanazt a kiosztott átviteli értéket.
 
-Ennek a cikknek a célja a második lehetőség megvalósítása.
+A cél ennek a cikknek az, hogy végigvezeti Önt, hogy elérjék a második lehetőség.
 
-## <a name="configuring-a-shared-leases-container"></a>Megosztott bérletek tárolójának konfigurálása
+## <a name="configuring-a-shared-leases-container"></a>Megosztott bérlettároló konfigurálása
 
-A megosztott bérletek tárolójának konfigurálásához az eseményindítók számára szükséges további konfiguráció a `LeaseCollectionPrefix` [attribútum](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) hozzáadása, ha JavaScriptet használ, C# vagy `leaseCollectionPrefix` [attribútumot](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) . Az attribútum értékének logikai leírónak kell lennie az adott triggernél.
+A megosztott bérletek tárolójának konfigurálásához az egyetlen további konfiguráció, amelyet az eseményindítókon kell megadnia, az `LeaseCollectionPrefix` [attribútum](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) hozzáadása, ha C# vagy `leaseCollectionPrefix` [attribútumot](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) használ JavaScript használata esetén. Az attribútum értékének logikai leírónak kell lennie, hogy az adott eseményindító tetszése milyen.
 
-Ha például három eseményindítóval rendelkezik: egy olyan e-maileket küld, amelyek összesítést végeznek egy anyagbeli nézet létrehozásához, és az egyiket, amely egy másik tárhelyre küldi a módosításokat, a későbbi elemzésekhez az "e-mailek" `LeaseCollectionPrefix` az első "anyag", a második pedig a "analitika" értékre.
+Ha például három eseményindítója van: az egyik e-maileket küld, az egyik egy aggregációt hajt végre egy materializált nézet `LeaseCollectionPrefix` létrehozásához, és az egyik, amely elküldi a módosításokat egy másik tárolóba, későbbi elemzés céljából az "e-mailek" hozzárendelése az elsőhöz, "materializálódik" a másodikhoz, és "elemzés" a harmadikhoz.
 
-A fontos rész az, hogy mindhárom eseményindító **használhatja ugyanazt a bérletek tároló konfigurációját** (fiók, adatbázis és tároló neve).
+A fontos rész az, hogy mindhárom eseményindítók **használhatja ugyanazt a bérletek tároló konfiguráció** (fiók, adatbázis és a tároló neve).
 
-A `LeaseCollectionPrefix` attribútumát használó C#, nagyon egyszerű kódrészletek a következőképpen néznek ki:
+Egy nagyon egyszerű kódminták a `LeaseCollectionPrefix` C# attribútumhasználatával a következőkre hasonlítanak:
 
 ```cs
 using Microsoft.Azure.Documents;
@@ -78,7 +78,7 @@ public static void MaterializedViews([CosmosDBTrigger(
 }
 ```
 
-A JavaScript esetében pedig a `function.json` fájl konfigurációját is alkalmazhatja a `leaseCollectionPrefix` attribútummal:
+JavaScript esetén alkalmazhatja a konfigurációt `function.json` a fájlon, az `leaseCollectionPrefix` attribútummal:
 
 ```json
 {
@@ -104,10 +104,10 @@ A JavaScript esetében pedig a `function.json` fájl konfigurációját is alkal
 ```
 
 > [!NOTE]
-> Mindig figyelje a megosztott bérletek tárolóján kiépített kérelmek egységeit. Minden olyan trigger, amely megosztja azt, növeli az átviteli sebesség átlagos felhasználását, ezért előfordulhat, hogy az azt használó Azure Functions számának növelésével növelheti a kiosztott átviteli sebességet.
+> Mindig figyelje a megosztott bérletek tárolóján kiosztott kérelemegységeket. Minden egyes eseményindító, amely megosztja, növeli az átviteli átlagos felhasználást, így szükség lehet a kiosztott átviteli érték növelésére, ahogy növeli az azt használó Azure-függvények számát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Tekintse meg a [Cosmos DB Azure functions trigger](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) teljes konfigurációját
-* Keresse meg az összes nyelvhez tartozó [minták kiterjesztett listáját](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) .
-* További példákért látogasson el a kiszolgáló nélküli receptek Azure Cosmos DB és Azure Functions [GitHub-tárházba](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios) .
+* Tekintse meg a [Cosmos DB Azure Functions eseményindítójának](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) teljes konfigurációját
+* Ellenőrizze a minták bővített [listáját](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) az összes nyelven.
+* További mintákért látogasson el a Kiszolgáló nélküli receptek az Azure Cosmos DB és az Azure Functions [GitHub-tárház](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios) segítségével.

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a SuccessFactors bejövő kiépítés konfigurálása a Azure Active Directoryban | Microsoft Docs'
-description: Ismerje meg, hogyan konfigurálhatja a bejövő kiépítési lehetőséget a SuccessFactors-ből az Azure AD-be
+title: 'Oktatóanyag: A SuccessFactors bejövő kiépítéskonfigurálása az Azure Active Directoryban | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja a bejövő kiépítést a SuccessFactors és az Azure AD között
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -15,270 +15,270 @@ ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
 ms.openlocfilehash: 09501a80d6ddcbbc9fa6cc08e36f47beb13d1663
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063222"
 ---
-# <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning-preview"></a>Oktatóanyag: SAP-SuccessFactors konfigurálása az Azure AD-beli felhasználók üzembe helyezéséhez (előzetes verzió)
-Ennek az oktatóanyagnak a célja, hogy megmutassa azokat a lépéseket, amelyeket el kell végeznie a munkavégző adatok SuccessFactors való kiépítéséhez a Azure Active Directoryba, az e-mail-cím opcionális visszaírásával a SuccessFactors. Ez az integráció nyilvános előzetes verzióban érhető el, és támogatja a több mint [70 felhasználói attribútum](../app-provisioning/sap-successfactors-attribute-reference.md) lekérését a SuccessFactors Employee Central-ból. 
+# <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning-preview"></a>Oktatóanyag: Sap SuccessFactors konfigurálása az Azure AD-felhasználók kiépítéséhez (előzetes verzió)
+Ez az oktatóanyag célja, hogy megjelenítse azokat a lépéseket, amelyeket el kell végeznie a dolgozói adatok nak a SuccessFactors Employee Central-ból az Azure Active Directoryba történő kiépítéséhez, az e-mail cím nem kötelező visszaírásával a SuccessFactors számára. Ez az integráció nyilvános előzetes verzióban érhető el, és több mint [70 felhasználói attribútum](../app-provisioning/sap-successfactors-attribute-reference.md) beolvasását támogatja a SuccessFactors Employee Central alkalmazástól. 
 
 >[!NOTE]
->Akkor használja ezt az oktatóanyagot, ha a SuccessFactors kiépíteni kívánt felhasználók csak olyan felhőalapú felhasználók, akiknek nincs szükségük helyszíni AD-fiókra. Ha a felhasználók csak helyszíni AD-fiókot vagy AD-és Azure AD-fiókot igényelnek, tekintse meg az SAP- [SuccessFactors konfigurálása Active Directory](sap-successfactors-inbound-provisioning-tutorial.md#overview) a felhasználók üzembe helyezése című oktatóanyagot. 
+>Akkor használja ezt az oktatóanyagot, ha a SuccessFactors alkalmazásból kiépíteni kívánt felhasználók csak felhőalapú felhasználók, akiknek nincs szükségük helyszíni AD-fiókra. Ha a felhasználók csak a helyszíni AD-fiók vagy az AD és az Azure AD-fiók, majd olvassa el az [oktatóanyag-ra konfigurálni SAP SuccessFactors az Active Directory](sap-successfactors-inbound-provisioning-tutorial.md#overview) felhasználói kiépítés. 
 
 ## <a name="overview"></a>Áttekintés
 
-A [Azure Active Directory felhasználó-kiépítési szolgáltatás](../app-provisioning/user-provisioning.md) integrálva van a [SuccessFactors Employee Central](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) szolgáltatással a felhasználók identitási életciklusának kezelése érdekében. 
+Az [Azure Active Directory felhasználói kiépítési szolgáltatás](../app-provisioning/user-provisioning.md) integrálja a [SuccessFactors Employee Central](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) a felhasználók identitáséletciklusának kezelése érdekében. 
 
-Az Azure AD-alapú felhasználó-kiépítési szolgáltatás által támogatott SuccessFactors-kiépítési munkafolyamatok lehetővé teszik a következő emberi erőforrások és az identitás-életciklus felügyeleti forgatókönyvek automatizálását:
+Az Azure AD felhasználói létesítési szolgáltatás által támogatott SuccessFactors felhasználói kiépítési munkafolyamatok lehetővé teszik a következő emberi erőforrások és identitáséletciklus-kezelési forgatókönyvek automatizálását:
 
-* **Új alkalmazottak felvétele** – új alkalmazottak SuccessFactors való hozzáadásakor a rendszer automatikusan létrehoz egy felhasználói fiókot Azure Active Directory és opcionálisan az Office 365-ben és az [Azure ad által támogatott egyéb SaaS-alkalmazásokban](../app-provisioning/user-provisioning.md), az e-mail-cím SuccessFactors való visszaírásával.
+* **Új alkalmazottak felvétele** – Ha új alkalmazottat ad hozzá a SuccessFactors szolgáltatáshoz, a rendszer automatikusan létrehoz egy felhasználói fiókot az Azure Active Directoryban, és adott esetben az Office 365-ben és [az Azure AD által támogatott más SaaS-alkalmazásokban,](../app-provisioning/user-provisioning.md)az e-mail cím nek a SuccessFactors számára történő visszaírásával.
 
-* **Alkalmazotti attribútumok és a profil frissítései** – ha egy alkalmazotti rekord frissül a SuccessFactors (például a nevük, a cím vagy a felettes), a felhasználói fiókja automatikusan frissül Azure Active Directory és opcionálisan az Office 365 és [Az Azure ad által támogatott egyéb SaaS-alkalmazások](../app-provisioning/user-provisioning.md)esetében is.
+* **Alkalmazotti attribútum- és profilfrissítések** – Amikor egy alkalmazotti rekordot frissíta SuccessFactors (például a nevük, címük vagy kezelőjük) frissítését, felhasználói fiókjuk automatikusan frissíti az Azure Active Directoryt, és adott esetben az Office 365-öt és [az Azure AD által támogatott egyéb SaaS-alkalmazásokat.](../app-provisioning/user-provisioning.md)
 
-* **Alkalmazotti megszakítások** – ha egy alkalmazott leáll a SuccessFactors-ben, a felhasználói fiókja automatikusan le lesz tiltva Azure Active Directory és opcionálisan az Office 365-ben és [Az Azure ad által támogatott egyéb SaaS-alkalmazásokban](../app-provisioning/user-provisioning.md)is.
+* **Alkalmazottak megszűnése** – Ha egy alkalmazott a SuccessFactors szolgáltatásban megszűnik, a felhasználói fiók automatikusan le lesz tiltva az Azure Active Directoryban, és adott esetben az Office 365-ben és [az Azure AD által támogatott egyéb SaaS-alkalmazásokban.](../app-provisioning/user-provisioning.md)
 
-* **Alkalmazottak** újratelepítése – ha egy alkalmazottat a SuccessFactors-ben bérelnek újra, a régi fiók automatikusan újraaktiválható vagy újra kiépíthető (a beállítástól függően), hogy Azure Active Directory és opcionálisan az Office 365-et és [Az Azure ad által támogatott egyéb SaaS-alkalmazásokat](../app-provisioning/user-provisioning.md).
+* **Alkalmazotti újrahires** – Ha egy alkalmazottat újra felvesznek a SuccessFactors szolgáltatásban, a régi fiókja automatikusan újraaktiválható vagy újra kiépíthető (a preferenciától függően) az Azure Active Directoryra, és adott esetben az Office 365-re és [az Azure AD által támogatott egyéb SaaS-alkalmazásokra.](../app-provisioning/user-provisioning.md)
 
-### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Ki ez a felhasználó-kiépítési megoldás a legmegfelelőbb?
+### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Ki ez a felhasználói kiépítési megoldás a legalkalmasabb?
 
-Ez a SuccessFactors Azure Active Directory a felhasználói üzembe helyezési megoldáshoz ideális megoldást kínál a következőkhöz:
+Ez a SuccessFactors az Azure Active Directory felhasználói kiépítési megoldás ideális a következőkhöz:
 
-* Olyan szervezetek, amelyek előre elkészített, felhőalapú megoldást kívánnak a SuccessFactors-felhasználók üzembe helyezéséhez
+* Azok a szervezetek, amelyek előre elkészített, felhőalapú megoldást szeretnének a SuccessFactors felhasználói kiépítéshez
 
-* Azok a szervezetek, amelyekhez közvetlen felhasználó-kiépítés szükséges a SuccessFactors-ből Azure Active Directory
+* Közvetlen felhasználói kiépítést igénylő szervezetek a SuccessFactors és az Azure Active Directory között
 
-* Azok a szervezetek, amelyek megkövetelik, hogy a felhasználók kiépítsék a [SuccessFactors Employee Central (ek)](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) által beszerzett adatok alapján
+* Olyan szervezetek, amelyek megkövetelik a felhasználók kiépítését a [SuccessFactors Employee Central (EK)](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) által beszerzett adatok felhasználásával
 
-* Office 365-t használó szervezetek e-mailben
+* Szervezetek, amelyek az Office 365-ös levelezést használják
 
-## <a name="solution-architecture"></a>Megoldási architektúra
+## <a name="solution-architecture"></a>Megoldás architektúrája
 
-Ez a szakasz a teljes körű felhasználói üzembe helyezési megoldás architektúráját ismerteti a csak felhőalapú felhasználók számára. Két kapcsolódó folyamat létezik:
+Ez a szakasz a kizárólag felhőalapú felhasználók végpontok között lévő felhasználói kiépítési megoldásarchitektúrát ismerteti. Két kapcsolódó folyamat létezik:
 
-* **Mérvadó HR-adatfolyam – a SuccessFactors és a Azure Active Directory között:** Ebben a folyamatban lévő feldolgozói eseményekben (például az új bérletek, az átvitelek, a megszakítások) először a Cloud SuccessFactors Employee Central-ben fordulnak elő, és az esemény-adatforgalom Azure Active Directoryba kerül. Az eseménytől függően előfordulhat, hogy az Azure AD-ban létrehoz/frissít/engedélyez/letilt műveleteket.
-* **E-mail-visszaírási folyamat – helyszíni Active Directoryról SuccessFactors:** Ha a fiók létrehozása befejeződött a Azure Active Directoryban, az Azure AD-ben létrehozott e-mail-attribútum értéke vagy UPN-je visszaírható a SuccessFactors.
+* **Mérvadó HR-adatfolyam – a SuccessFactorstól az Azure Active Directoryig:** Ebben a folyamatban a feldolgozóesemények (például az új bérletek, transzferek, felmondások) először a cloud SuccessFactors Employee Central, majd az esemény adatok az Azure Active Directoryba. Az eseménytől függően előfordulhat, hogy az Azure AD-ben hozzon létre/update/enable/disable műveleteket.
+* **E-mail visszaírási folyamat – a helyszíni Active Directorytól a SuccessFactors-ig:** Miután a fiók létrehozása befejeződött az Azure Active Directoryban, az Azure AD-ben létrehozott e-mail attribútum-érték vagy UPN visszaírható a SuccessFactors szolgáltatásba.
 
   ![Áttekintés](./media/sap-successfactors-inbound-provisioning/sf2aad-overview.png)
 
-### <a name="end-to-end-user-data-flow"></a>Végpontok közötti felhasználói adatfolyam
+### <a name="end-to-end-user-data-flow"></a>Végpontok között lévő felhasználói adatfolyam
 
-1. A HR-csapat munkavégző tranzakciókat (összekötőket/Mozgatókat/kimaradt vagy új bérleteket/átviteleket/megszakításokat) végez a SuccessFactors Employee Centralban
-2. Az Azure AD-kiépítési szolgáltatás futtatja az identitások ütemezett szinkronizálását az SuccessFactors-től, és azonosítja azokat a módosításokat, amelyeket fel kell dolgozni a helyszíni Active Directoryval való szinkronizáláshoz.
-3. Az Azure AD kiépítési szolgáltatás határozza meg a módosítást, és meghívja a felhasználó számára az Azure AD-ben a létrehozás/frissítés/engedélyezés/letiltás műveletet.
-4. Ha a [SuccessFactors visszaírási-alkalmazás](sap-successfactors-writeback-tutorial.md) be van állítva, akkor a felhasználó e-mail-címe beolvasása az Azure ad-ből történik. 
-5. Az Azure AD-kiépítési szolgáltatás a használt attribútum alapján visszaírja az e-mail-attribútumot a SuccessFactors.
+1. A HR-csapat munkavégző tranzakciókat hajt végre (Joiners/Mozgatók/Kilépők vagy Új bérlők/Transzferek/Felmondások) a SuccessFactors Employee Central-ban
+2. Az Azure AD-létesítési szolgáltatás futtatja az identitások ütemezett szinkronizálását a SuccessFactors EC-től, és azonosítja azokat a módosításokat, amelyeket fel kell dolgozni a helyszíni Active Directoryval való szinkronizáláshoz.
+3. Az Azure AD-kiépítési szolgáltatás határozza meg a változást, és meghívja a create/update/enable/disable műveletet a felhasználó számára az Azure AD-ben.
+4. Ha a [SuccessFactors Writeback alkalmazás](sap-successfactors-writeback-tutorial.md) konfigurálva van, majd a felhasználó e-mail-címét az Azure AD-ből olvassa be. 
+5. Az Azure AD létesítési szolgáltatás a használt megfelelő attribútum alapján visszaküldi az e-mail attribútumot a SuccessFactors-nak.
 
-## <a name="planning-your-deployment"></a>Az üzembe helyezés megtervezése
+## <a name="planning-your-deployment"></a>A telepítés megtervezése
 
-A Felhőbeli HR-alapú felhasználóknak a SuccessFactors-ből az Azure AD-be való konfigurálásához jelentős tervezésre van szükség a különböző szempontokat illetően, például:
+A Cloud HR-vezérelt felhasználók kiépítésének konfigurálása a SuccessFactors és az Azure AD között jelentős tervezést igényel, amely különböző szempontokat fed le, például:
 
-* A megfelelő azonosító meghatározása 
-* Attribútum-hozzárendelés
-* Attribútumok átalakítása 
+* Az egyező azonosító meghatározása 
+* Attribútumleképezés
+* Attribútumátalakítás 
 * Hatókörszűrők
 
-A témakör részletes útmutatását a [Cloud HR üzembe helyezési tervében](../app-provisioning/plan-cloud-hr-provision.md) találja. 
+Kérjük, olvassa el a [felhő HR-telepítési terv](../app-provisioning/plan-cloud-hr-provision.md) átfogó iránymutatásokat ezekről a témakörökről. 
 
-## <a name="configuring-successfactors-for-the-integration"></a>Az integráció SuccessFactors konfigurálása
+## <a name="configuring-successfactors-for-the-integration"></a>A SuccessFactors konfigurálása az integrációhoz
 
-A SuccessFactors-létesítési összekötők általános követelménye, hogy a SuccessFactors OData API-k meghívásához a megfelelő engedélyekkel rendelkező SuccessFactors-fiók hitelesítő adatait igénylik. Ez a szakasz a szolgáltatásfiók SuccessFactors-ben való létrehozásának és a megfelelő engedélyek megadásának lépéseit ismerteti. 
+A SuccessFactors kiépítési összekötők közös követelménye, hogy a SuccessFactors-fiók hitelesítő adataira van szükség a SuccessFactors OData API-k meghívásához megfelelő engedélyekkel. Ez a szakasz a Service-fiók sikerestényezőkben történő létrehozásának lépéseit ismerteti, és megadja a megfelelő engedélyeket. 
 
-* [API-felhasználói fiók létrehozása/azonosítása a SuccessFactors-ben](#createidentify-api-user-account-in-successfactors)
-* [API-engedélyek szerepkör létrehozása](#create-an-api-permissions-role)
-* [Engedélyezési csoport létrehozása az API-felhasználó számára](#create-a-permission-group-for-the-api-user)
-* [Engedélyezési szerepkör megadása az engedélyezési csoportnak](#grant-permission-role-to-the-permission-group)
+* [API felhasználói fiók létrehozása/azonosítása a SuccessFactors ban](#createidentify-api-user-account-in-successfactors)
+* [API-engedélyszerepkör létrehozása](#create-an-api-permissions-role)
+* [Engedélycsoport létrehozása az API-felhasználó számára](#create-a-permission-group-for-the-api-user)
+* [Engedélyszerepkör megadása az engedélycsoportnak](#grant-permission-role-to-the-permission-group)
 
-### <a name="createidentify-api-user-account-in-successfactors"></a>API-felhasználói fiók létrehozása/azonosítása a SuccessFactors-ben
-A SuccessFactors felügyeleti csapatával vagy a megvalósítási partnerrel együttműködve hozzon létre vagy azonosítson egy olyan felhasználói fiókot a SuccessFactors, amelyet a OData API-k meghívásához fog használni. A fiók felhasználónevének és jelszavának hitelesítő adatai a kiépítési alkalmazások Azure AD-ben való konfigurálásakor szükségesek. 
+### <a name="createidentify-api-user-account-in-successfactors"></a>API felhasználói fiók létrehozása/azonosítása a SuccessFactors ban
+Együttműködve a SuccessFactors felügyeleti csapatával vagy a megvalósítási partnerrel, hogy hozzon létre vagy azonosítson egy felhasználói fiókot a SuccessFactors ban, amely et az OData API-k meghívására fog használni. A fiók felhasználónevének és jelszavának hitelesítő adatai szükségesek a kiépítési alkalmazások azure AD-ben történő konfigurálásakor. 
 
-### <a name="create-an-api-permissions-role"></a>API-engedélyek szerepkör létrehozása
+### <a name="create-an-api-permissions-role"></a>API-engedélyszerepkör létrehozása
 
-* Jelentkezzen be az SAP SuccessFactors egy olyan felhasználói fiókkal, amely hozzáféréssel rendelkezik a felügyeleti központhoz.
-* Keressen rá az *engedélyek kezelése*lehetőségre, majd válassza a **jogosultsági szerepkörök kezelése** elemet a keresési eredmények közül.
-  ![az engedélyezési szerepkörök kezelése](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* Az engedélyezési szerepkör listából válassza az **új létrehozása**lehetőséget.
+* Jelentkezzen be az SAP SuccessFactors egy felhasználói fiókkal, amely hozzáfér a Felügyeleti központhoz.
+* Keressen *engedélyszerepkörök kezelése ,* majd válassza **az Engedélyszerepkörök kezelése** a keresési eredmények között.
+  ![Engedélyszerepkörök kezelése](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
+* Az Engedélyszerepkör-listában kattintson az **Új létrehozása gombra.**
   > [!div class="mx-imgBorder"]
-  > ![új engedélyezési szerepkör létrehozása](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
-* Adja hozzá az új engedély szerepkörhöz tartozó **szerepkör nevét** és **leírását** . A név és a Leírás azt jelzi, hogy a szerepkör API-használati engedélyekkel rendelkezik.
+  > ![Új engedélyszerepkör létrehozása](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
+* Adja hozzá az új engedélyszerepkör **szerepkörnevét** és **leírását.** A névnek és a leírásnak azt kell jeleznie, hogy a szerepkör API-használati engedélyekhez kapcsolódik.
   > [!div class="mx-imgBorder"]
-  > ![engedélyezési szerepkör részletei](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* Az engedély beállításai területen kattintson az **engedély...** elemre, majd görgessen le az engedélyezési listáról, és kattintson az **integrációs eszközök kezelése**lehetőségre. Jelölje be a **rendszergazda számára a ODATA API alapszintű hitelesítéssel való elérésének engedélyezése**jelölőnégyzetet.
+  > ![Engedélyszerepkör részletei](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
+* Az Engedélybeállítások csoportban kattintson az **Engedély... gombra,** majd görgessen lefelé az engedélylistában, és kattintson az **Integrációs eszközök kezelése**parancsra. Jelölje be az **OData API-hoz való hozzáférés engedélyezése egyszerű hitelesítéssel**jelölőnégyzet.
   > [!div class="mx-imgBorder"]
-  > ![integrációs eszközök kezelése](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* Görgessen le ugyanabban a mezőben, és válassza az **Employee Central API**elemet. Az alább látható engedélyek hozzáadásával olvassa el a ODATA API-t és a szerkesztést a ODATA API használatával. Válassza a szerkesztés lehetőséget, ha azt tervezi, hogy ugyanazt a fiókot használja a visszaírási SuccessFactors-forgatókönyvhöz. 
+  > ![Integrációs eszközök kezelése](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
+* Görgessen le ugyanabban a mezőben, és válassza **az Employee Central API**lehetőséget. Adja hozzá az engedélyeket az alábbiak szerint az ODATA API használatával történő olvasáshoz és az ODATA API használatával történő szerkesztéshez. Válassza a szerkesztési lehetőséget, ha ugyanazt a fiókot kívánja használni a Visszaértékelés a SuccessFactors forgatókönyvhöz. 
   > [!div class="mx-imgBorder"]
-  > Olvasási írási engedély ![](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* Kattintson a **kész**gombra. Kattintson a **módosítások mentése**gombra.
+  > ![Írási engedélyek olvasása](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+* Kattintson a **Kész gombra.** Kattintson a **Save Changes** (Módosítások mentése) gombra.
 
-### <a name="create-a-permission-group-for-the-api-user"></a>Engedélyezési csoport létrehozása az API-felhasználó számára
+### <a name="create-a-permission-group-for-the-api-user"></a>Engedélycsoport létrehozása az API-felhasználó számára
 
-* A SuccessFactors felügyeleti központban keressen rá az *engedélyek kezelése csoportra*, majd válassza az **engedélyek kezelése** lehetőséget a keresési eredmények közül.
+* A SuccessFactors Felügyeleti központban keresse meg az *Engedélycsoportok kezelése*kifejezést, majd válassza az **Engedélycsoportok kezelése lehetőséget** a keresési eredmények között.
   > [!div class="mx-imgBorder"]
-  > ![az engedélyek kezelése](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* A jogosultsági csoportok kezelése ablakban kattintson az **új létrehozása**elemre.
+  > ![Engedélycsoportok kezelése](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
+* Az Engedélycsoportok kezelése ablakban kattintson az **Új létrehozása gombra.**
   > [!div class="mx-imgBorder"]
-  > ![új csoport hozzáadása](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
-* Adja hozzá a csoport nevét az új csoporthoz. A csoport nevének azt kell jeleznie, hogy a csoport API-felhasználók számára készült.
+  > ![Új csoport hozzáadása](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
+* Adja hozzá az új csoport nevét. A csoport nevének azt kell jeleznie, hogy a csoport API-felhasználókszámára van.
   > [!div class="mx-imgBorder"]
-  > ![engedély csoportjának neve](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
-* Tagok hozzáadása a csoporthoz. Például kiválaszthatja a **Felhasználónév** elemet a személyek készlet legördülő menüből, majd megadhatja az integrációhoz használni kívánt API-fiók felhasználónevét. 
+  > ![Engedélycsoport neve](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
+* Tagok felvétele a csoportba. Válassza például a **Felhasználónevet** a Személyek készlete legördülő menüből, majd adja meg az integrációhoz használt API-fiók felhasználónevét. 
   > [!div class="mx-imgBorder"]
   > ![Csoporttagok hozzáadása](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
-* Kattintson a **kész** gombra az engedély csoport létrehozásának befejezéséhez.
+* Az engedélycsoport létrehozásának befejezéséhez kattintson a **Kész** gombra.
 
-### <a name="grant-permission-role-to-the-permission-group"></a>Engedélyezési szerepkör megadása az engedélyezési csoportnak
+### <a name="grant-permission-role-to-the-permission-group"></a>Engedélyszerepkör megadása az engedélycsoportnak
 
-* A SuccessFactors felügyeleti központban keressen rá az *engedélyezési szerepkörök kezelése*lehetőségre, majd válassza az **engedélyezési szerepkörök kezelése** lehetőséget a keresési eredmények közül.
-* Az **engedélyezési szerepkör listából**válassza ki az API-használati engedélyekhez létrehozott szerepkört.
-* Az adja **meg ezt a szerepkört a következőhöz:...** kattintson a **Hozzáadás...** gombra.
-* Válassza az **engedély csoport.** .. lehetőséget a legördülő menüből, majd kattintson a **kiválasztás...** elemre a csoportok ablak megnyitásához, és válassza ki a fenti létrehozott csoportot. 
+* A SuccessFactors Felügyeleti központban keresse meg az *Engedélyszerepek kezelése kifejezést,* majd válassza az **Engedélyszerepek kezelése lehetőséget** a keresési eredmények között.
+* Az **Engedélyszerepkör-listában**válassza ki az API-használati engedélyekhez létrehozott szerepkört.
+* A **Szerep megadása csoportban**kattintson a **Hozzáadás...** gombra.
+* Válassza az **Engedélycsoport...** lehetőséget a legördülő menüben, majd a **Kijelölés parancsra** a Csoportok ablak megnyitásához és a fent létrehozott csoport kiválasztásához. 
   > [!div class="mx-imgBorder"]
-  > ![engedélyezési csoport hozzáadása](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
-* Tekintse át az engedélyezési szerepkör engedélyezését az engedély csoport számára. 
+  > ![Engedélycsoport hozzáadása](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
+* Tekintse át az engedélyszerepkör-támogatást az engedélycsoportnak. 
   > [!div class="mx-imgBorder"]
-  > ![engedély szerepkör és a csoport részletei](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Kattintson a **módosítások mentése**gombra.
+  > ![Engedélyszerepkör és csoport részletei](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
+* Kattintson a **Save Changes** (Módosítások mentése) gombra.
 
-## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>A felhasználók üzembe helyezésének konfigurálása a SuccessFactors-ből az Azure AD-be
+## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>Felhasználói kiépítés konfigurálása a SuccessFactors és az Azure AD között
 
-Ez a szakasz a SuccessFactors és az Azure AD közötti felhasználói fiókok üzembe helyezésének lépéseit ismerteti.
+Ez a szakasz a felhasználói fiókok nak a SuccessFactors és az Azure AD között történő kiépítésének lépéseit ismerteti.
 
-* [A kiépítési összekötő alkalmazás hozzáadása és a SuccessFactors-kapcsolat konfigurálása](#part-1-add-the-provisioning-connector-app-and-configure-connectivity-to-successfactors)
-* [Attribútumok leképezésének konfigurálása](#part-2-configure-attribute-mappings)
-* [A felhasználók üzembe helyezésének engedélyezése és elindítása](#enable-and-launch-user-provisioning)
+* [Adja hozzá a kiépítési összekötő alkalmazást, és konfigurálja a kapcsolatot a SuccessFactors alkalmazáshoz](#part-1-add-the-provisioning-connector-app-and-configure-connectivity-to-successfactors)
+* [Attribútumleképezések konfigurálása](#part-2-configure-attribute-mappings)
+* [Felhasználói kiépítés engedélyezése és elindítása](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-add-the-provisioning-connector-app-and-configure-connectivity-to-successfactors"></a>1\. rész: a kiépítési összekötő alkalmazás hozzáadása és a SuccessFactors-kapcsolat konfigurálása
+### <a name="part-1-add-the-provisioning-connector-app-and-configure-connectivity-to-successfactors"></a>1. rész: Adja hozzá a kiépítési összekötő alkalmazást, és konfigurálja a kapcsolatot a SuccessFactors alkalmazáshoz
 
-**A SuccessFactors konfigurálása az Azure AD üzembe helyezéséhez:**
+**A SuccessFactors konfigurálása az Azure AD-kiépítéshez:**
 
 1. Nyissa meg a következőt: <https://portal.azure.com>
 
-2. A bal oldali navigációs sávon válassza a **Azure Active Directory**
+2. A bal oldali navigációs sávon válassza az **Azure Active Directory lehetőséget.**
 
-3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás**lehetőséget.
+3. Válassza **a Vállalati alkalmazások**lehetőséget, majd az Összes **alkalmazás**lehetőséget.
 
-4. Válassza az **alkalmazás hozzáadása**lehetőséget, és válassza az **összes** kategóriát.
+4. Válassza **az Alkalmazás hozzáadása**lehetőséget, majd az **Összes** kategóriát.
 
-5. Keresse meg a **SuccessFactors Azure Active Directory a felhasználók üzembe**helyezését, és adja hozzá az alkalmazást a katalógusból.
+5. Keressen **meg successfaktorokat az Azure Active Directory felhasználói kiépítéséhez,** és adja hozzá az alkalmazást a katalógusból.
 
-6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
+6. Az alkalmazás hozzáadása és az alkalmazás részletei képernyő megjelenítése után válassza **a Kiépítés** lehetőséget.
 
-7. A **kiépítési** **mód** módosítása **automatikusra**
+7. A **létesítési** **mód** módosítása **automatikusra**
 
-8. Fejezze be a **rendszergazdai hitelesítő adatok** szakaszt a következőképpen:
+8. Töltse ki a **Rendszergazdai hitelesítő adatok szakaszt** az alábbiak szerint:
 
-   * **Rendszergazdai Felhasználónév** – adja meg a SuccessFactors API felhasználói fiókjának felhasználónevét a HOZZÁFŰZÖTT vállalati azonosítóval. Formátuma: **username\@companyID**
+   * **Rendszergazdai felhasználónév** – Adja meg a SuccessFactors API felhasználói fiókjának felhasználónevét a hozzáfűzendő vállalatazonosítóval. Ez a formátum: **felhasználónév\@companyID**
 
    * **Rendszergazdai jelszó –** Adja meg a SuccessFactors API felhasználói fiók jelszavát. 
 
-   * **Bérlői URL-cím –** Adja meg a SuccessFactors OData API Services-végpont nevét. Csak a kiszolgáló állomásnevét adja meg http vagy https nélkül. Ennek az értéknek a következőhöz hasonlóan kell kinéznie: **API-Server-Name.SuccessFactors.com**.
+   * **Bérlő url-címe –** Adja meg a SuccessFactors OData API-szolgáltatások végpontjának nevét. Csak http vagy https nélküli kiszolgáló állomásnevét adja meg. Ennek az értéknek a következőkre kell kinéznie: **api-server-name.successfactors.com**.
 
-   * **Értesítő e-mail –** Adja meg az e-mail-címét, és jelölje be az "e-mail küldése, ha hiba történik" jelölőnégyzetet.
+   * **Értesítési e-mail –** Adja meg e-mail címét, és jelölje be az "E-mail küldése hiba esetén" jelölőnégyzetet.
     > [!NOTE]
-    > Az Azure AD kiépítési szolgáltatás e-mailes értesítést küld, ha a kiépítési feladatok [karantén](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) állapotba kerülnek.
+    > Az Azure AD-kiépítési szolgáltatás e-mail értesítést küld, ha a létesítési feladat [karanténállapotba](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) kerül.
 
-   * Kattintson a **kapcsolatok tesztelése** gombra. Ha a kapcsolatok tesztelése sikeres, kattintson a felül található **Save (Mentés** ) gombra. Ha nem sikerül, ellenőrizze, hogy a SuccessFactors hitelesítő adatok és az URL-cím érvényes-e.
+   * Kattintson a **Kapcsolat tesztelése** gombra. Ha a kapcsolatteszt sikeres, kattintson **a** mentés gombra a tetején. Ha nem sikerül, ellenőrizze, hogy a SuccessFactors hitelesítő adatok és URL-cím érvényesek-e.
     >[!div class="mx-imgBorder"]
-    >![Azure Portalra](./media/sap-successfactors-inbound-provisioning/sf2aad-provisioning-creds.png)
+    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sf2aad-provisioning-creds.png)
 
-   * Miután a hitelesítő adatok mentése sikeresen megtörtént, a **leképezések** szakasz megjeleníti az alapértelmezett leképezést, **hogy szinkronizálja a SuccessFactors felhasználókat a Azure Active Directory**
+   * A hitelesítő adatok sikeres mentése után a **Leképezések** szakasz megjeleníti az alapértelmezett **A Sync SuccessFactors-felhasználók és** az Azure Active Directory adatait
 
-### <a name="part-2-configure-attribute-mappings"></a>2\. rész: attribútumok leképezésének konfigurálása
+### <a name="part-2-configure-attribute-mappings"></a>2. rész: Attribútumleképezések konfigurálása
 
-Ebben a szakaszban azt fogja konfigurálni, hogy a felhasználói adatok hogyan áramlanak a SuccessFactors a Active Directoryba.
+Ebben a szakaszban konfigurálhatja, hogy a felhasználói adatok hogyan áramlanak a SuccessFactors szolgáltatásból az Active Directoryba.
 
-1. A kiépítés lapon a **leképezések**területen kattintson a **SuccessFactors-felhasználók szinkronizálása Azure Active Directory**lehetőségre.
+1. A **Hozzárendelések**csoport Kiépítés lapján kattintson a **SuccessFactors-felhasználók szinkronizálása az Azure Active Directoryval**elemre.
 
-1. A **forrás objektum hatóköre** mezőben kiválaszthatja, hogy a SuccessFactors mely felhasználói csoportjai legyenek az Azure ad-be való kiépítés hatóköre az attribútum-alapú szűrők definiálásával. Az alapértelmezett hatókör a "minden felhasználó a SuccessFactors". Példa szűrők:
+1. A **Forrásobjektum-hatókör** mezőben kiválaszthatja, hogy a SuccessFactors mely felhasználói csoportoknak kell az Azure AD-be való kiépítés hatókörében lennie, attribútumalapú szűrők készletének meghatározásával. Az alapértelmezett hatókör a "SuccessFactors összes felhasználója". Példa szűrők:
 
-   * Példa: hatókör a 1000000 és 2000000 közötti personIdExternal rendelkező felhasználók számára (kivéve 2000000)
+   * Példa: Hatókör a personIdExternal felhasználók számára 1000000 és 2000000 között (2000000 kivételével)
 
       * Attribútum: personIdExternal
 
-      * Operátor: REGEX egyezés
+      * Operátor: REGEX Match
 
-      * Érték: (1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])
+      * Érték: (1[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])
 
-   * Példa: csak alkalmazottak és nem függő feldolgozók
+   * Példa: Csak alkalmazottak és nem függő dolgozók
 
-      * Attribútum: Alkalmazottkód
+      * Attribútum: Alkalmazottazonosító
 
-      * Operátor: nem NULL
+      * Operátor: NEM NULL
 
    > [!TIP]
-   > Amikor első alkalommal konfigurálja a kiépítési alkalmazást, meg kell vizsgálnia és ellenőriznie kell az attribútumok hozzárendeléseit és kifejezéseit, hogy biztosan megadja a kívánt eredményt. A Microsoft azt javasolja, hogy a **forrás objektum hatókörében** lévő hatókör-szűrők használatával tesztelje a leképezéseket a SuccessFactors néhány tesztelési felhasználója között. Miután meggyőződött arról, hogy a leképezések működnek, távolítsa el a szűrőt, vagy fokozatosan bontsa ki, hogy több felhasználót is tartalmazzon.
+   > Amikor első alkalommal konfigurálja a kiépítési alkalmazást, tesztelnie és ellenőriznie kell az attribútumleképezéseket és -kifejezéseket, hogy megbizonyosodjon arról, hogy az a kívánt eredményt adja. A Microsoft azt javasolja, hogy a **Forrásobjektum-hatókör** hatóköre hatóköre segítségével tesztelje a leképezéseket néhány tesztfelhasználóval a SuccessFactors alkalmazásból. Miután meggyőződött arról, hogy a leképezések működnek, eltávolíthatja a szűrőt, vagy fokozatosan kibonthatja, hogy több felhasználóval is felvegye.
 
    > [!CAUTION] 
-   > A kiépítési motor alapértelmezett viselkedése, hogy letiltsa/törölje a hatókörön kívüli felhasználókat. Előfordulhat, hogy a SuccessFactors nem lenne szükség az Azure AD-integrációra. Az alapértelmezett viselkedés felülbírálásához tekintse meg a [Hatókörön kívüli felhasználói fiókok törlésének kihagyása](../app-provisioning/skip-out-of-scope-deletions.md) című cikket.
+   > A kiépítési motor alapértelmezett viselkedése a hatókörön kívül eső felhasználók letiltása/törlése. Ez nem feltétlenül kívánatos a SuccessFactors az Azure AD-integráció. Az alapértelmezett viselkedés felülbírálásához olvassa el a [hatókörön kívül eső felhasználói fiókok törlésének kihagyása című cikket.](../app-provisioning/skip-out-of-scope-deletions.md)
   
-1. A **cél objektum műveletek** mezőben globálisan szűrheti, hogy a Active Directory milyen műveleteket hajtson végre. A **Létrehozás** és a **frissítés** a leggyakoribb.
+1. A **Célobjektum-műveletek mezőben** globálisan szűrheti, hogy milyen műveleteket hajt végre az Active Directoryban. **A létrehozás** és **a frissítés** a leggyakoribb.
 
-1. Az **attribútum-hozzárendelések** szakaszban megadhatja, hogy az egyes SuccessFactors attribútumok hogyan képezhetők le Active Directory attribútumokra.
+1. Az **Attribútumleképezések** szakaszban meghatározhatja, hogy az egyes SuccessFactors attribútumok hogyan feleljenek meg az Active Directory-attribútumokhoz.
 
   >[!NOTE]
-  >Az alkalmazás által támogatott SuccessFactors-attribútum teljes listájáért tekintse meg a [SuccessFactors attribútum referenciáját](../app-provisioning/sap-successfactors-attribute-reference.md) .
+  >Az alkalmazás által támogatott SuccessFactors attribútum teljes listáját a [SuccessFactors attribútum hivatkozási száma tartalmazza.](../app-provisioning/sap-successfactors-attribute-reference.md)
 
 
-1. Kattintson egy meglévő attribútum-hozzárendelésre a frissítéséhez, vagy kattintson az **Új leképezés hozzáadása** lehetőségre a képernyő alján új hozzárendelések hozzáadásához. Az egyes attribútumok megfeleltetése a következő tulajdonságokat támogatja:
+1. A frissítéshez kattintson egy meglévő attribútumleképezésre, vagy kattintson az **Új leképezés hozzáadása** gombra a képernyő alján az új leképezések hozzáadásához. Egy egyéni attribútumleképezés támogatja a következő tulajdonságokat:
 
       * **Leképezés típusa**
 
-         * **Direct** – a SuccessFactors attribútum értékét írja a ad attribútumba, módosítás nélkül
+         * **Közvetlen** – Az AD attribútum SuccessFactors attribútumának értékét írja be, módosítások nélkül
 
-         * **Konstans** – statikus, állandó karakterlánc-érték írása az ad-attribútumba
+         * **Állandó** – írjon statikus, állandó karakterláncértéket az AD attribútumba
 
-         * **Kifejezés** – lehetővé teszi egyéni érték írását az ad-attribútumnak egy vagy több SuccessFactors-attribútum alapján. [További információkért tekintse meg ezt a cikket a kifejezésekkel kapcsolatban](../app-provisioning/functions-for-customizing-application-data.md).
+         * **Kifejezés** – Lehetővé teszi, hogy egyéni értéket írjon az AD attribútumba egy vagy több SuccessFactors attribútum alapján. [További információt a kifejezésekről szóló cikkben talál.](../app-provisioning/functions-for-customizing-application-data.md)
 
-      * **Forrásoldali attribútum** – a felhasználó attribútuma a SuccessFactors
+      * **Forrásattribútum** – A SuccessFactors felhasználói attribútuma
 
-      * **Alapértelmezett érték** – nem kötelező. Ha a forrás attribútum üres értékkel rendelkezik, a leképezés Ehelyett ezt az értéket fogja írni.
-            A leggyakoribb konfiguráció az, hogy ezt üresen hagyja.
+      * **Alapértelmezett érték** – nem kötelező. Ha a forrásattribútum üres értékkel rendelkezik, a leképezés ezt az értéket írja be helyette.
+            A leggyakoribb konfiguráció ezt üresen hagyja.
 
-      * **Target attribútum** – a felhasználó attribútuma Active Directoryban.
+      * **Célattribútum** – A felhasználói attribútum az Active Directoryban.
 
-      * **Objektumok egyeztetése ezzel az attribútummal** – függetlenül attól, hogy ezt a leképezést kell-e használni a felhasználók egyedi azonosításához a SuccessFactors és a Active Directory között. Ez az érték általában a SuccessFactors Worker ID mezőjére van beállítva, amely általában a Active Directory egyik alkalmazotti azonosító attribútumára van leképezve.
+      * **Az ezzel az attribútummal egyeztethető kontakaró objektumok** – Azt jelzi, hogy ezt a leképezést kell-e használni a felhasználók és az Active Directory közötti egyedi azonosításhoz. Ez az érték általában a SuccessFactors munkavégzőazonosító mezőjében van beállítva, amely általában az Active Directory egyik alkalmazotti azonosító attribútumához van leképezve.
 
-      * **Megfeleltetési prioritás** – a rendszer több egyező attribútumot is beállíthat. Ha több is van, a rendszer a mező által meghatározott sorrendben értékeli ki őket. Amint talál egyezést, nem lesz kiértékelve további egyező attribútumok.
+      * **Egyező sorrend** – Több egyező attribútum is beállítható. Ha több van, akkor a program az ebben a mezőben meghatározott sorrendben értékeli ki őket. Amint egyezést talál, a rendszer nem értékeli ki a további egyező attribútumokat.
 
       * **A leképezés alkalmazása**
 
-         * **Mindig** – alkalmazza ezt a leképezést a felhasználói létrehozási és frissítési műveletekre is
+         * **Mindig** – A leképezés alkalmazása a felhasználó létrehozási és frissítési műveletekre is
 
-         * **Csak a létrehozás során** – alkalmazza ezt a leképezést kizárólag felhasználói létrehozási műveletekre
+         * **Csak a létrehozás során** – A leképezés alkalmazása csak a felhasználó létrehozási műveleteire
 
-1. A leképezések mentéséhez kattintson a **Save (Mentés** ) gombra az attribútum-leképezési szakasz tetején.
+1. A leképezések mentéséhez kattintson a **Mentés** gombra az Attribútumleképezés szakasz tetején.
 
-Miután az attribútum-hozzárendelési konfiguráció elkészült, mostantól [engedélyezheti és elindíthatja a felhasználó kiépítési szolgáltatását](#enable-and-launch-user-provisioning).
+Miután az attribútumleképezés konfigurációja befejeződött, most [már engedélyezheti és elindíthatja a felhasználói kiépítési szolgáltatást.](#enable-and-launch-user-provisioning)
 
-## <a name="enable-and-launch-user-provisioning"></a>A felhasználók üzembe helyezésének engedélyezése és elindítása
+## <a name="enable-and-launch-user-provisioning"></a>Felhasználói kiépítés engedélyezése és elindítása
 
-Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját, bekapcsolhatja a kiépítési szolgáltatást a Azure Portal.
+Miután a SuccessFactors kiépítése alkalmazás konfigurációk befejeződött, bekapcsolhatja a kiépítési szolgáltatás az Azure Portalon.
 
 > [!TIP]
-> Alapértelmezés szerint a kiépítési szolgáltatás bekapcsolásakor a rendszer kiépítési műveleteket kezdeményez a hatókörben lévő összes felhasználó számára. Ha hibák léptek fel a leképezési vagy a munkanapokon tárolt adatokkal kapcsolatban, a kiépítési feladat meghiúsulhat, és a karanténba helyezési állapotba kerülhet. Ennek elkerüléséhez ajánlott eljárásként Azt javasoljuk, hogy a **forrás objektum hatókör** -szűrőjét konfigurálja, és tesztelje az attribútumok hozzárendeléseit néhány tesztelési felhasználóval, mielőtt elindítja a teljes szinkronizálást az összes felhasználó számára. Miután meggyőződött arról, hogy a leképezések működnek, és megadja a kívánt eredményeket, távolítsa el a szűrőt, vagy fokozatosan bontsa ki, hogy több felhasználót is tartalmazzon.
+> Alapértelmezés szerint, ha bekapcsolja a létesítési szolgáltatás, akkor kezdeményezi a létesítési műveletek et a hatókörben lévő összes felhasználó számára. Ha hibák vannak a leképezési vagy workday-i adatproblémákban, akkor a létesítési feladat sikertelen lehet, és a karantén állapotba kerülhet. Ennek elkerülése érdekében ajánlott eljárásként azt javasoljuk, hogy konfigurálja **a Forrásobjektum-hatókör** szűrőt, és tesztelje az attribútum-leképezéseket néhány tesztfelhasználóval, mielőtt elindítaná a teljes szinkronizálást az összes felhasználó számára. Miután meggyőződött arról, hogy a leképezések működnek, és a kívánt eredményt adják, eltávolíthatja a szűrőt, vagy fokozatosan kibonthatja, hogy több felhasználót vegyen fel.
 
-1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
+1. A **Kiépítés** lapon állítsa a **Kiépítési állapot** ot **Bekapcsolva**.
 
-2. Kattintson a **Save** (Mentés) gombra.
+2. Kattintson a **Mentés** gombra.
 
-3. Ez a művelet elindítja a kezdeti szinkronizálást, amely a SuccessFactors-bérlőben lévő felhasználók számától függően több órát is igénybe vehet. A folyamatjelző sáv a szinkronizálási ciklus előrehaladásának nyomon követésére használható. 
+3. Ez a művelet elindítja a kezdeti szinkronizálást, amely változó számú órát vehet igénybe attól függően, hogy hány felhasználó van a SuccessFactors bérlőben. Ellenőrizheti a folyamatjelzősávot a szinkronizálási ciklus előrehaladásának nyomon követéséhez. 
 
-4. A Azure Portal **naplók** lapján bármikor megtekintheti a kiépítési szolgáltatás által végrehajtott műveleteket. A naplók a kiépítési szolgáltatás által végrehajtott összes egyéni szinkronizálási eseményt felsorolják, például hogy mely felhasználók olvasnak el munkanapokon, majd ezt követően hozzáadják vagy frissítették Active Directory. 
+4. Bármikor tekintse meg a **naplózási naplók** lapon az Azure Portalon, hogy milyen műveleteket hajtott végre a létesítési szolgáltatás. A naplózási naplók felsorolja a kiépítési szolgáltatás által végrehajtott összes egyes szinkronizálási eseményt, például azt, hogy mely felhasználókat olvassa fel a Workday szolgáltatásból, majd ezt követően hozzáadják vagy frissítik az Active Directoryban. 
 
-5. A kezdeti szinkronizálás befejezésekor a rendszer egy naplózási összesítő jelentést ír a **létesítés** lapon az alább látható módon.
+5. Miután a kezdeti szinkronizálás befejeződött, egy naplózási összefoglaló jelentést fog írni a **Kiépítés** lapon, az alábbiak szerint.
 
    > [!div class="mx-imgBorder"]
-   > ![kiépítési folyamatjelző sáv](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+   > ![Kiépítés folyamatjelző](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [További információ a bejövő kiépítés támogatott SuccessFactors attribútumairól](../app-provisioning/sap-successfactors-attribute-reference.md)
-* [Ismerje meg, hogyan konfigurálhatja az e-mailek visszaírási a SuccessFactors](sap-successfactors-writeback-tutorial.md)
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
-* [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a SuccessFactors és a Azure Active Directory között](successfactors-tutorial.md)
-* [Ismerje meg, hogyan integrálhat más SaaS-alkalmazásokat a Azure Active Directory](tutorial-list.md)
-* [Útmutató a kiépítési konfigurációk exportálásához és importálásához](../app-provisioning/export-import-provisioning-configuration.md)
+* [További információ a támogatott SuccessFactors attribútumokról a bejövő kiépítéshez](../app-provisioning/sap-successfactors-attribute-reference.md)
+* [További információ az e-mailek visszaírásának konfigurálásáról a SuccessFactors számára](sap-successfactors-writeback-tutorial.md)
+* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogy miként konfigurálható az egyszeri bejelentkezés a SuccessFactors és az Azure Active Directory között](successfactors-tutorial.md)
+* [További információ arról, hogyan integrálhat más SaaS-alkalmazásokat az Azure Active Directoryval](tutorial-list.md)
+* [További információ a kiépítési konfigurációk exportálásáról és importálásáról](../app-provisioning/export-import-provisioning-configuration.md)
 
 

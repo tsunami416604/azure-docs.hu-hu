@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery Deployment Planner korábbi verziók
-description: Ismert különböző Site Recovery Deployment Planner verziók javításai és ismert korlátai a kiadási dátumokkal együtt.
+title: Az Azure site-helyreállítási telepítéstervező verzióelőzményei
+description: Ismert különböző Site Recovery Deployment Planner verziók javítások és ismert korlátozások mellett a kiadási dátumokat.
 services: site-recovery
 author: Daya-Patil
 manager: carmonm
@@ -9,154 +9,154 @@ ms.service: site-recovery
 ms.date: 10/16/2019
 ms.author: dapatil
 ms.openlocfilehash: bf32809f426f3bfcabd08ec3bd95e76202aa8f84
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72433410"
 ---
-# <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery Deployment Planner korábbi verziók
+# <a name="azure-site-recovery-deployment-planner-version-history"></a>Az Azure site-helyreállítási telepítéstervező verzióelőzményei
 
-Ez a cikk a Azure Site Recovery Deployment Planner összes verziójának előzményeit, valamint a javításokat, az ismert korlátozásokat és azok kiadási dátumát tartalmazza.
+Ez a cikk az Azure Site Recovery Deployment Planner összes verziójának előzményeit, valamint a javításokat, az egyes és a kiadási dátumok ismert korlátait ismerteti.
 
-## <a name="version-251"></a>2,51-es verzió
+## <a name="version-251"></a>2.51-es verzió
 
-**Kiadás dátuma: augusztus 22., 2019**
+**Megjelenési dátum: August 22, 2019**
 
-**Hibajavítások**
+**Javítások:**
 
-- A Deployment Planner 2,5-es verzióval kapcsolatos Cost-javaslati probléma kijavítva
+- A Deployment Planner 2.5-ös verziójával kapcsolatos költségajánlási probléma kijavítva
 
-## <a name="version-25"></a>2,5-es verzió
+## <a name="version-25"></a>2.5-ös verzió
 
-**Kiadás dátuma: július 29., 2019**
+**Megjelenési dátum: July 29, 2019**
 
-**Hibajavítások**
+**Javítások:**
 
-- A VMware virtuális gépek és a fizikai gépek esetében az ajánlás frissítése a Managed Disks replikálásán alapul.
-- Windows 10 (x64), Windows 8,1 (x64), Windows 8 (x64), Windows 7 (x64) SP1 vagy újabb verzió támogatása
+- VMware virtuális gépek és fizikai gépek esetén a javaslat a felügyelt lemezekre való replikáción alapul.
+- A Windows 10 (x64), a Windows 8.1 (x64), a Windows 8 (x64), a Windows 7 (x64) SP1 vagy újabb verzióinak támogatása
 
-## <a name="version-24"></a>2,4-es verzió
+## <a name="version-24"></a>2.4-es verzió
 
-**Kiadás dátuma: április 17., 2019**
+**Megjelenési dátum: April 17, 2019**
 
-**Hibajavítások**
+**Javítások:**
 
-- Továbbfejlesztett operációs rendszerek kompatibilitása, pontosabban a honosított hibák kezelésekor.
-- A kompatibilitási ellenőrzőlistán akár 20 Mbps adatváltozási sebességgel (forgalommal) is bővült a virtuális gépek.
-- Javított hibaüzenetek
-- A vCenter 6,7 támogatása.
-- A Windows Server 2019 és a Red Hat Enterprise Linux (RHEL) munkaállomás támogatása.
+- Továbbfejlesztett operációsrendszer-kompatibilitás, különösen a lokalizáción alapuló hibák kezelésekor.
+- Virtuális gépek hozzáadása legfeljebb 20 Mbps adatváltozási sebességgel (lemorzsolódás) a kompatibilitási ellenőrzőlistához.
+- Továbbfejlesztett hibaüzenetek
+- Hozzáadott támogatás vCenter 6.7.
+- A Windows Server 2019 és a Red Hat Enterprise Linux (RHEL) munkaállomás támogatása hozzáadva.
 
 
 
-## <a name="version-23"></a>2,3-es verzió
+## <a name="version-23"></a>2.3-as verzió
 
-**Kiadás dátuma: december 3., 2018**
+**Megjelenési dátum: December 3, 2018**
 
-**Hibajavítások**
+**Javítások:**
 
-- Kijavított egy problémát, amely megakadályozta, hogy a Deployment Planner a jelentést a megadott célhely és előfizetés alapján hozza létre.
+- Kijavítottunk egy problémát, amely megakadályozta, hogy a Központi telepítési tervező jelentést készítsen a megadott célhelyről és előfizetésről.
 
-## <a name="version-22"></a>2,2-es verzió 
+## <a name="version-22"></a>2.2-es verzió 
 
-**Kiadás dátuma: április 25., 2018**
+**Megjelenési dátum: April 25, 2018**
 
-**Hibajavítások**
+**Javítások:**
 
 - GetVMList műveletek:
-  - Kijavított egy problémát, amely miatt a GetVMList sikertelen volt, ha a megadott mappa nem létezik. Most létrehoz egy alapértelmezett könyvtárat, vagy létrehozza a OUTPUTFILE paraméterben megadott könyvtárat.
-  - A GetVMList részletesebb meghibásodási okait adtak hozzá.
-- A virtuálisgép-típus információi a Deployment Planner jelentés kompatibilis virtuális gépek lapjának oszlopként szerepelnek.
-- Hyper-V – Azure vész-helyreállítás:
-  - A kizárt virtuális gépek megosztott virtuális merevlemezekkel és továbbító lemezekkel rendelkeznek. A Startprofiling művelet a kizárt virtuális gépek listáját jeleníti meg a konzolon.
-  - A rendszer több mint 64 lemezzel rendelkező virtuális gépeket adott hozzá a nem kompatibilis virtuális gépek listájához.
-  - Frissítettük a kezdeti replikálási (IR) és a különbözeti replikáció (DR) tömörítési tényezőt.
-  - Korlátozott támogatás lett hozzáadva az SMB-tároláshoz.
+  - Kijavítottuk azt a problémát, amely miatt a GetVMList meghibásodott, ha a megadott mappa nem létezik. Most vagy létrehozza az alapértelmezett könyvtárat, vagy létrehozza a kimeneti fájl paraméterben megadott könyvtárat.
+  - A GetVMList részletesebb hibaok hozzáadása.
+- Virtuálisgép-típusadatok hozzáadása oszlopként a Központi telepítéstervező jelentés kompatibilis virtuális gépeinek lapjában.
+- Hyper-V az Azure vész-helyreállítási:
+  - Kizárt virtuális gépek megosztott Virtuális merevlemezekkel és PassThrough lemezekkel a profilkészítésből. A Startprofiling művelet a konzolon lévő kizárt virtuális gépek listáját jeleníti meg.
+  - 64 lemezzel rendelkező virtuális gépek hozzáadása az inkompatibilis virtuális gépek listájához.
+  - Frissítve a kezdeti replikációs (IR) és a különbözeti replikációs (DR) tömörítési tényező.
+  - Az SMB-tárhely korlátozott támogatása hozzáadva.
 
-## <a name="version-21"></a>2,1-es verzió
+## <a name="version-21"></a>2.1-es verzió
 
-**Kiadás dátuma: 2018. január 3.**
+**Megjelenési dátum: January 3, 2018**
 
-**Hibajavítások**
+**Javítások:**
 
-- Frissült az Excel-jelentés.
-- Kijavított hibák a GetThroughput műveletben.
-- Hozzáadott beállítás a virtuális gépek számának vagy a jelentés előállításának korlátozására. Az alapértelmezett korlát 1 000 virtuális gép.
-- VMware – Azure vész-helyreállítás:
-  - A Windows Server 2016 virtuális gép hibája javítva lett a nem kompatibilis táblába. 
-  - Frissített kompatibilitási üzenetek Extensible Firmware Interface (EFI) Windows rendszerű virtuális gépekhez.
-- A VMware-ről az Azure-ra és a Hyper-V-ről az Azure-ra frissítette a virtuális gép adatváltozási korlátját. 
-- A virtuális gépek listájának fájl-elemzésének jobb megbízhatósága.
+- Az Excel-jelentés frissítve.
+- Javítottuk a GetThroughput művelet hibáit.
+- Hozzáadott lehetőség, hogy korlátozza a virtuális gépek száma a profil vagy a jelentés létrehozása. Az alapértelmezett korlát 1000 virtuális gép.
+- VMware az Azure vész-helyreállítási:
+  - Kijavítottuk a Windows Server 2016 virtuális gép nem kompatibilis táblába kerülésének egyik adását. 
+  - Frissített kompatibilitási üzenetek az EFI Windows virtuális gépekhez.
+- Frissítette a VMware az Azure-ra és a Hyper-V-az Azure-ba, virtuális gép adatváltozás korlátját virtuális gépenként. 
+- A virtuális gépek listájának fájlelemzésének megbízhatósága.
 
-## <a name="version-201"></a>2\.0.1-es verzió
+## <a name="version-201"></a>2.0.1-es verzió
 
-**Kiadás dátuma: december 7., 2017**
+**Megjelenési dátum: December 7, 2017**
 
-**Hibajavítások**
+**Javítások:**
 
-- A hálózati sávszélesség optimalizálására vonatkozó javaslat hozzáadva.
+- Hozzáadva a hálózati sávszélesség optimalizálására vonatkozó javaslat.
 
-## <a name="version-20"></a>2,0-es verzió
+## <a name="version-20"></a>2.0-s verzió
 
-**Kiadás dátuma: november 28., 2017**
+**Megjelenési dátum: November 28, 2017**
 
-**Hibajavítások**
+**Javítások:**
 
-- A Hyper-V és az Azure közötti vész-helyreállítás támogatása.
-- Cost kalkulátor hozzáadva.
-- Az operációs rendszer verziószáma a VMware-ből az Azure-ba kerül, hogy a virtuális gép kompatibilis vagy nem kompatibilis-e a védelemmel. Az eszköz a vCenter-kiszolgáló által az adott virtuális géphez visszaadott operációsrendszer-verzió karakterláncot használja. Ez a vendég operációs rendszer azon verziója, amelyet a felhasználó a virtuális gép VMware-ben történő létrehozásakor választott ki.
+- A Hyper-V támogatása az Azure vész-helyreállítási.
+- Hozzáadott költség kalkulátor.
+- Hozzáadott operációs rendszer verzióellenőrzése a VMware az Azure vész-helyreállítási annak megállapítására, hogy a virtuális gép kompatibilis vagy nem kompatibilis a védelem. Az eszköz az operációs rendszer verziókarakterláncát használja, amelyet a vCenter-kiszolgáló avirtuális géphez visszaad. Ez a vendég operációs rendszer verziója, amelyet a felhasználó kiválasztott a virtuális gép létrehozásakor a VMware-ben.
 
 **Ismert korlátozások:**
 
-- A Hyper-V – Azure vész-helyreállítás esetén a következő karaktereket tartalmazó virtuális gép neve: `,`, `"`, `[`, `]`, és ``` ` ``` nem támogatott. A beolvasás során a jelentés létrehozása sikertelen lesz, vagy helytelen az eredmény.
-- A VMware – Azure vész-helyreállítás esetén a vesszőt tartalmazó virtuális gép nem támogatott. A beolvasás során a jelentés létrehozása meghiúsul, vagy helytelen eredményt ad.
+- A Hyper-V és az Azure vész-helyreállítási, virtuális `,`gép `"` `[`nevét `]`tartalmazó ``` ` ``` karakterek, mint: , , , , és nem támogatott. Profilkezelés esetén a jelentés létrehozása sikertelen lesz, vagy hibás eredményt ad.
+- A VMware az Azure vész-helyreállítási, vesszőt tartalmazó nevű virtuális gép nem támogatott. Profilkezelés esetén a jelentés létrehozása sikertelen, vagy hibás eredményt ad.
 
-## <a name="version-131"></a>1\.3.1-es verzió
+## <a name="version-131"></a>1.3.1-es verzió
 
-**Kiadás dátuma: július 19., 2017** 
+**Megjelenési dátum: July 19, 2017** 
 
-**Hibajavítások**
+**Javítások:**
 
-- Nagyméretű lemezek támogatása (> 1 TB) a jelentéskészítés során. Mostantól a Deployment Planner használatával megtervezheti az 1 TB-nál nagyobb méretű lemezekkel rendelkező virtuális gépek replikálását (akár 4095 GB-ig).
+- A jelentés létrehozásában a nagy lemezek (> 1 TB) támogatása hozzáadva. Mostmár a Deployment Planner segítségével megtervezheti az 1 TB-nál (legfeljebb 4095 GB) lemezmérettel (1 TB-nál nagyobb lemezmérettel) működő virtuális gépek replikációját.
 További információ a [Nagyméretű lemezek támogatásáról az Azure Site Recoveryben](https://azure.microsoft.com/blog/azure-site-recovery-large-disks/)
 
-## <a name="version-13"></a>1,3-es verzió
+## <a name="version-13"></a>1.3-as verzió
 
-**Kiadás dátuma: május 9., 2017**
+**Megjelenési dátum: May 9, 2017**
 
-**Hibajavítások**
+**Javítások:**
 
-- A felügyelt lemez támogatása a jelentéskészítés során. Az egyetlen Storage-fiókba helyezhető virtuális gépek számát a rendszer attól függően számítja ki, hogy a felügyelt lemez ki van-e választva feladatátvételi/tesztelési feladatátvételre.
+- A felügyelt lemez támogatása hozzáadva a jelentés létrehozásához. Az egy tárfiókba helyezhető virtuális gépek számát a rendszer abból akarom függőbe venni, hogy a felügyelt lemez ki van-e jelölve a feladatátvételi/tesztfeladat-átvételi konfigurációhoz.
 
-## <a name="version-12"></a>1,2-es verzió
+## <a name="version-12"></a>1.2-es verzió
 
-**Kiadás dátuma: április 7., 2017**
+**Megjelenési dátum: April 7, 2017**
 
-**Hibajavítások**
+**Javítások:**
 
-- Az egyes virtuális gépekhez hozzáadott rendszerindítási típus (BIOS vagy EFI) ellenőrzi, hogy a virtuális gép kompatibilis-e vagy nem kompatibilis-e a védelemmel.
-- A kompatibilis virtuális gépekhez és a nem kompatibilis virtuális gépekhez tartozó munkalapokhoz hozzáadott operációsrendszer-típusokra vonatkozó információk.
+- Hozzáadott rendszerindítási típus (BIOS vagy EFI) ellenőrzi az egyes virtuális gépek annak megállapítására, hogy a virtuális gép kompatibilis vagy nem kompatibilis a védelem.
+- A kompatibilis virtuális gépek és a nem kompatibilis virtuális gépek munkalapjaiban lévő egyes virtuális gépek operációsrendszer-típusadataihozzáadása.
 - A GetThroughput művelet támogatása az Egyesült Államok kormánya és Kína Microsoft Azure régióiban.
 - A rendszer most már néhány új előfeltételt is ellenőriz a vCenter- és az ESXi-kiszolgálók esetében.
-- Kijavítva a helytelen jelentés hibáját, amikor a területi beállítások nem angolra vannak állítva.
+- Kijavítottuk azt a problémát, amely miatt helytelen jelentés jött létre, amikor a területi beállítások nem angol nyelvűek.
 
-## <a name="version-11"></a>1,1-es verzió
+## <a name="version-11"></a>1.1-es verzió
 
-**Kiadás dátuma: március 9., 2017**
+**Megjelenési dátum: March 9, 2017**
 
-**Hibajavítások**
+**Javítások:**
 
-- Kijavított egy problémát, amely megakadályozta a virtuális gépek profilkészítését, ha két vagy több virtuális gép ugyanazzal a névvel vagy IP-címmel rendelkezik a különböző vCenter ESXi-gazdagépek között.
-- A kompatibilis virtuális gépek és a nem kompatibilis virtuális gépek munkalapjain a másolás és a keresés letiltását okozó probléma kijavítva.
+- Kijavítottuk azt a problémát, amely megakadályozta a virtuális gépek profilkészítését, ha két vagy több azonos nevű vagy IP-címmel rendelkező virtuális gép van a különböző vCenter ESXi-állomásokon.
+- Kijavítottuk azt a problémát, amely miatt a kompatibilis virtuális gépek és az inkompatibilis virtuális gépek munkalapjainak másolása és keresése le lett tiltva.
 
-## <a name="version-10"></a>1,0-es verzió
+## <a name="version-10"></a>1.0-s verzió
 
-**Kiadás dátuma: február 23., 2017**
+**Megjelenési dátum: Február 23, 2017**
 
 **Ismert korlátozások:**
 
-- Csak a VMware – Azure vész-helyreállítási forgatókönyvek esetében támogatott. A Hyper-V – Azure vész-helyreállítási forgatókönyvek esetén használja a [Hyper-v Capacity Planner eszközt](./site-recovery-capacity-planning-for-hyper-v-replication.md).
-- Nem támogatja a GetThroughput műveletet az Egyesült Államok kormánya és Kína Microsoft Azure régióiban.
-- Az eszköz Cann 't-profil virtuális gépeket tartalmaz, ha a vCenter-kiszolgálón két vagy több virtuális gép található ugyanazzal a névvel vagy IP-címmel különböző ESXi-gazdagépek között.
-Ebben a verzióban az eszköz kihagyja a profilkészítést abban az esetben, ha a VMListFile fájlban ismétlődik egy virtuális gép neve vagy IP-címe. Ez áthidalható úgy, hogy a vCenter-kiszolgáló helyett az ESXi-gazdagéppel készíti el a virtuális gépek profilját. Győződjön meg arról, hogy az egyes ESXi-gazdagépek egyetlen példányát futtatják.
+- Csak a VMware az Azure vész-helyreállítási forgatókönyvek támogatja. A Hyper-V és az Azure vész-helyreállítási forgatókönyvek, használja a [Hyper-V kapacitástervező eszköz.](./site-recovery-capacity-planning-for-hyper-v-replication.md)
+- Nem támogatja a GetThroughput műveletet az Amerikai Egyesült Államok kormánya és Kína Microsoft Azure-régióiban.
+- Az eszköz nem profil virtuális gépek, ha a vCenter-kiszolgáló két vagy több virtuális gép azonos nevű vagy IP-címet különböző ESXi-állomások.
+Ebben a verzióban az eszköz kihagyja a profilkészítést abban az esetben, ha a VMListFile fájlban ismétlődik egy virtuális gép neve vagy IP-címe. Ez áthidalható úgy, hogy a vCenter-kiszolgáló helyett az ESXi-gazdagéppel készíti el a virtuális gépek profilját. Győződjön meg arról, hogy minden ESXi-állomáshoz egy példányt futtat.

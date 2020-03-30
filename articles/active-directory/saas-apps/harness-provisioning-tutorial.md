@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a felhasználói kiépítés automatikus kihasználásának beállítása a Azure Active Directoryhoz | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat.
+title: 'Oktatóanyag: A biztonsági rendszer konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
+description: Megtudhatja, hogyan állíthatja be az Azure Active Directoryt úgy, hogy automatikusan kiépítse és megszüntetje a felhasználói fiókokat a Harness szolgáltatásba.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,169 +16,169 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
 ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057838"
 ---
-# <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználói kiépítés automatikus kihasználásának beállítása
+# <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Oktatóanyag: A biztonsági rendszer automatikus felhasználói kiépítésének konfigurálása
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Active Directory (Azure AD) a felhasználók vagy csoportok automatikus kiépítésére és megszüntetésére.
+Ebben a cikkben megtudhatja, hogyan konfigurálhatja az Azure Active Directoryt (Azure AD) a felhasználók vagy csoportok automatikus kiépítésére és a további üzembe helyezhetők a Harness szolgáltatásba.
 
 > [!NOTE]
-> Ez a cikk az Azure AD-felhasználó kiépítési szolgáltatására épülő összekötőt ismerteti. A szolgáltatással kapcsolatos fontos információkért és a gyakori kérdésekre adott válaszokért lásd: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
+> Ez a cikk egy összekötőt, amely az Azure AD felhasználói kiépítési szolgáltatás ra épül. A szolgáltatással kapcsolatos fontos tudnivalókért és a gyakori kérdésekre adott válaszokért olvassa el [a Felhasználói kiépítés és a SaaS-alkalmazások létesítésének automatizálása az Azure Active Directoryval című témakört.](../app-provisioning/user-provisioning.md)
 >
-> Ez az összekötő jelenleg előzetes verzióban érhető el. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg előzetes verzióban érhető el. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikkben ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Azure AD-bérlő
-* [Egy hám bérlő](https://harness.io/pricing/)
-* *Rendszergazdai* engedélyekkel rendelkező felhasználói fiók
+* Egy Azure AD-bérlő
+* [A kábelköteg bérlője](https://harness.io/pricing/)
+* *Rendszergazdai* engedélyekkel rendelkező felhasználói fiók a Biztonsági licencben
 
-## <a name="assign-users-to-harness"></a>Felhasználók társításának kiosztása
+## <a name="assign-users-to-harness"></a>Felhasználók hozzárendelése a Biztonsági őchez
 
-Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók vagy csoportok lesznek szinkronizálva.
+Az Azure Active Directory egy *hozzárendelések* nevű koncepciót használ annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak az Azure AD-ben egy alkalmazáshoz rendelt felhasználók vagy csoportok vannak szinkronizálva.
 
-Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD-beli felhasználók vagy csoportok számára szükséges-e a kiaknázás. Ezeket a felhasználókat vagy csoportokat a felhasználók vagy csoportok [vállalati alkalmazásokhoz rendeléséhez](../manage-apps/assign-user-or-group-access-portal.md)tartozó utasítások követésével rendelheti hozzá.
+Az automatikus felhasználói üzembe építés konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak vagy csoportjainak kell hozzáférniük a Harnesshez. Ezután ezeket a felhasználókat vagy csoportokat a Hasznosítás hoz rendelheti hozzá a Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz című útmutató [utasításainak követésével.](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-harness"></a>Fontos Tippek a felhasználók kiosztásához
+## <a name="important-tips-for-assigning-users-to-harness"></a>Fontos tippek a felhasználók harnesshoz való hozzárendeléséhez
 
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználót rendeljen hozzá az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. További felhasználók vagy csoportok később is hozzárendelhetők.
+* Azt javasoljuk, hogy rendeljen hozzá egy Azure AD-felhasználó a További hasznosítás az automatikus felhasználói kiépítési konfiguráció teszteléséhez. Később további felhasználók vagy csoportok is hozzárendelhetők.
 
-* Ha a felhasználó hozzárendelését rendeli hozzá, a **hozzárendelés** párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az *alapértelmezett hozzáférési* szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
+* Amikor egy felhasználót hozzárendel a Biztonsági asszejhez, a **Hozzárendelés** párbeszédpanelen ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az *alapértelmezett hozzáférési* szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
 
-## <a name="set-up-harness-for-provisioning"></a>Kihasználás beállítása a kiépítés számára
+## <a name="set-up-harness-for-provisioning"></a>A Kábelköteg beállítása a kiépítéshez
 
-1. Jelentkezzen be a [hám felügyeleti konzolba](https://app.harness.io/#/login), majd lépjen a **folyamatos biztonság** > **hozzáférés-kezelés**elemre.
+1. Jelentkezzen be a [Biztonsági biztonsági szolgáltatás biztonsági szolgáltatásához,](https://app.harness.io/#/login)és lépjen a Folyamatos **biztonsági** > **hozzáférés-kezelés gombra.**
 
-    ![Hám felügyeleti konzol](media/harness-provisioning-tutorial/admin.png)
+    ![Felügyeleti konzol kábelkötege](media/harness-provisioning-tutorial/admin.png)
 
-1. Válassza az **API-kulcsok**elemet.
+1. Válassza az **API-kulcsok lehetőséget.**
 
-    ![Hám API-kulcsok hivatkozása](media/harness-provisioning-tutorial/apikeys.png)
+    ![Az API-kulcsok kábelkötege](media/harness-provisioning-tutorial/apikeys.png)
 
-1. Válassza az **API-kulcs hozzáadása**lehetőséget. 
+1. Válassza **az API-kulcs hozzáadása lehetőséget.** 
 
-    ![Hám API-kulcs hozzáadása hivatkozás](media/harness-provisioning-tutorial/addkey.png)
+    ![Az API-kulcs hozzáadása hivatkozás](media/harness-provisioning-tutorial/addkey.png)
 
-1. Az **API-kulcs hozzáadása** panelen tegye a következőket:
+1. Az **Api-kulcs hozzáadása** ablaktáblán tegye a következőket:
 
-    ![Az API-kulcs hozzáadása panel](media/harness-provisioning-tutorial/title.png)
+    ![Az Api-kulcs hozzáadása ablaktábla](media/harness-provisioning-tutorial/title.png)
    
-   a. A **név** mezőben adja meg a kulcs nevét.  
-   b. A legördülő listából válassza ki **a kívánt beállítást** . 
+   a. A **Név** mezőben adja meg a kulcs nevét.  
+   b. Az **Örökölt engedélyek** legördülő listában válasszon egy beállítást. 
    
-1. Válassza a **Küldés**lehetőséget.
+1. Válassza a **Küldés** lehetőséget.
 
-1. Másolja a **kulcsot** az oktatóanyag későbbi használatához.
+1. Másolja a **kulcsot** későbbi használatra ebben az oktatóanyagban.
 
-    ![Hám létrehozása jogkivonat](media/harness-provisioning-tutorial/token.png)
+    ![Kábelköteg token létrehozása](media/harness-provisioning-tutorial/token.png)
 
-## <a name="add-harness-from-the-gallery"></a>Hám hozzáadása a gyűjteményből
+## <a name="add-harness-from-the-gallery"></a>Harness hozzáadása a galériából
 
-Az Azure AD-vel való automatikus felhasználó-kiépítés előtt az Azure AD-alkalmazás-katalógusban fel kell vennie a hevedert a felügyelt SaaS-alkalmazások listájára.
+Mielőtt konfigurálja a Harness automatikus felhasználói kiépítés az Azure AD-vel, hozzá kell adnia a Harness az Azure AD-alkalmazáskatalógusa a felügyelt SaaS-alkalmazások listájához.
 
-1. A [Azure Portal](https://portal.azure.com)a bal oldali ablaktáblán válassza a **Azure Active Directory**lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com)a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget.
 
-    ![A "Azure Active Directory" gomb](common/select-azuread.png)
+    ![Az "Azure Active Directory" gomb](common/select-azuread.png)
 
-1. Válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. Válassza **a Vállalati alkalmazások** > **minden alkalmazás lehetőséget.**
 
-    ![A "minden alkalmazás" hivatkozás](common/enterprise-applications.png)
+    ![A "Minden alkalmazás" link](common/enterprise-applications.png)
 
-1. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
+1. Új alkalmazás hozzáadásához kattintson az **ablaktábla** tetején található Új alkalmazás gombra.
 
-    ![Az "új alkalmazás" gomb](common/add-new-app.png)
+    ![Az "Új alkalmazás" gomb](common/add-new-app.png)
 
-1. A keresőmezőbe írja be a **hám**kifejezést, válassza ki a **hám** elemet az eredmények listájában, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+1. A keresőmezőbe írja be a **Harness**, az eredménylistában a **Hám** elemet, majd az alkalmazás hozzáadásához kattintson a **Hozzáadás** gombra.
 
-    ![Hám az eredmények listájában](common/search-new-app.png)
+    ![Az eredménylista kihasználása](common/search-new-app.png)
 
-## <a name="configure-automatic-user-provisioning-to-harness"></a>A felhasználók automatikus kiépítési állapotának beállítása 
+## <a name="configure-automatic-user-provisioning-to-harness"></a>Automatikus felhasználói kiépítés konfigurálása a Harness szolgáltatásba 
 
-Ez a szakasz végigvezeti az Azure AD üzembe helyezési szolgáltatás konfigurálásának lépésein az Azure AD-ben felhasználói vagy csoportos hozzárendeléseken alapuló felhasználók vagy csoportok létrehozásához, frissítéséhez és letiltásához.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat vagy csoportokat hozzon létre, frissítsen és tiltson le a Biztonsági assziban az Azure AD-ben lévő felhasználói vagy csoport-hozzárendelések alapján.
 
 > [!TIP]
-> Azt is megteheti, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a hám számára a [hám egyszeri bejelentkezés oktatóanyagának](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)utasításait követve. Az egyszeri bejelentkezést az automatikus felhasználó-létesítéstől függetlenül is konfigurálhatja, bár ez a két szolgáltatás kiegészíti egymást.
+> A [Harness egyszeri bejelentkezési útmutató](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)utasításait követve engedélyezheti az SAML-alapú egyszeri bejelentkezést a Harness számára. Az automatikus felhasználói kiépítéstől függetlenül konfigurálhatja az egyszeri bejelentkezést, bár ez a két szolgáltatás kiegészíti egymást.
 
 > [!NOTE]
-> Ha többet szeretne megtudni a hám SCIM-végpontról, tekintse meg a hám [API-kulcsok](https://docs.harness.io/article/smloyragsm-api-keys) című cikket.
+> Ha többet szeretne megtudni a Harness SCIM-végpontról, tekintse meg a Harness [API Keys](https://docs.harness.io/article/smloyragsm-api-keys) cikket.
 
-Az Azure AD-ben az automatikus felhasználó-kiépítés konfigurálásához tegye a következőket:
+A Biztonsági beállítások azure-beli AD-hez való automatikus üzembeépítés konfigurálásához tegye a következőket:
 
-1. A [Azure Portal](https://portal.azure.com)válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. Az [Azure portalon](https://portal.azure.com)válassza a **Vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-1. Az alkalmazások listában válassza a **hám**elemet.
+1. Az alkalmazások listájában válassza a **Harness**lehetőséget.
 
-    ![A hám hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![Az alkalmazások listájában található Hám hivatkozás](common/all-applications.png)
 
-1. Válassza a **kiépítés**lehetőséget.
+1. Válassza **a Kiépítés lehetőséget.**
 
-    ![A kiépítés gomb](common/provisioning.png)
+    ![A Kiépítés gomb](common/provisioning.png)
 
-1. A **létesítési mód** legördülő listában válassza az **automatikus**lehetőséget.
+1. A **Kiépítési mód** legördülő listában válassza az **Automatikus**lehetőséget.
 
-    ![A "kiépítési mód" legördülő lista](common/provisioning-automatic.png)
+    ![A "Kiépítés mód" legördülő lista](common/provisioning-automatic.png)
 
-1. A **rendszergazdai hitelesítő adatok**területen tegye a következőket:
+1. A **Rendszergazdai hitelesítő adatok csoportban**tegye a következőket:
 
-    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
  
-   a. A **bérlői URL-cím** mezőbe írja be a **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** .  
-   b. A **titkos jogkivonat** mezőbe írja be az scim-hitelesítési jogkivonat értékét, amelyet a (z) "a kiépítés a kiépítés beállítása" szakasz 6. lépésében mentett.  
-   c. Válassza a **kapcsolat tesztelése** lehetőséget annak biztosításához, hogy az Azure ad képes legyen csatlakozni a hám-hez. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a fiókja *rendszergazdai* jogosultságokkal rendelkezik, majd próbálkozzon újra.
+   a. A **Bérlő URL-címe** mezőbe írja be a mezőt. **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`**  
+   b. A **Titkos jogkivonat** mezőbe írja be az SCIM hitelesítési jogkivonat értékét, amelyet a "Kábelköteg beállítása kiépítéshez" szakasz 6.  
+   c. Válassza **a Kapcsolat tesztelése** lehetőséget annak biztosításához, hogy az Azure AD csatlakozni tud-e a Harness-hez. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a biztonsági ügyfélfiók *rendszergazdai* engedélyekkel rendelkezik, majd próbálkozzon újra.
 
-1. Az **értesítési e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, majd jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
+1. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, majd jelölje be az **E-mail értesítés küldése hiba esetén jelölőnégyzetet.**
 
-    ![Az "értesítő E-mail" mező](common/provisioning-notification-email.png)
+    ![Az "Értesítési e-mail" mező](common/provisioning-notification-email.png)
 
 1. Kattintson a **Mentés** gombra.
 
-1. A **leképezések**területen válassza **a szinkronizálás Azure Active Directory felhasználók**számára lehetőséget.
+1. A **Leképezések**csoportban válassza **az Azure Active Directory-felhasználók szinkronizálása a hasznosítani**lehetőséget.
 
-    ![A "Azure Active Directory felhasználók szinkronizálása a következővel" hivatkozás használata](media/harness-provisioning-tutorial/usermappings.png)
+    ![Az "Azure Active Directory-felhasználók szinkronizálása a kábelezéshez" hivatkozás](media/harness-provisioning-tutorial/usermappings.png)
 
-1. Az **attribútum-hozzárendelések**területen tekintse át az Azure ad-ből a hám-re szinkronizált felhasználói attribútumokat. Az *egyezőként* kiválasztott attribútumok a frissítési műveletek során a biztonsági öv felhasználói fiókjainak egyeztetésére szolgálnak. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
+1. Az **Attribútum-leképezések csoportban**tekintse át az Azure AD-ről a Harness szolgáltatásba szinkronizált felhasználói attribútumokat. Az *egyeztetésként* kiválasztott attribútumok a Frissítési műveletek hez a Biztonsági licencben lévő felhasználói fiókok egyeztetésére szolgálnak. A módosítások véglegesítéséhez válassza a **Mentés** gombot.
 
-    ![Felhasználói "attribútum-hozzárendelések" panel](media/harness-provisioning-tutorial/userattributes.png)
+    ![Az "Attribútumleképezések" felhasználó biztonsági őreinek biztonsági őrei](media/harness-provisioning-tutorial/userattributes.png)
 
-1. A **leképezések**területen válassza **a Azure Active Directory csoportok szinkronizálása**lehetőséget.
+1. A **Leképezések csoportban**válassza **az Azure Active Directory-csoportok szinkronizálása a kiaknázandó lehetőséget.**
 
-    ![A "Azure Active Directory csoportok szinkronizálása a kihasználható" hivatkozásra](media/harness-provisioning-tutorial/groupmappings.png)
+    ![Az "Azure Active Directory-csoportok szinkronizálása a kiaknázatlanul" hivatkozás](media/harness-provisioning-tutorial/groupmappings.png)
 
-1. Az **attribútumok hozzárendelése**területen tekintse át az Azure ad-ből a hám-re szinkronizált csoportok attribútumait. Az *egyeztetési* tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez használt hám csoportjaival egyeznek meg. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
+1. Az **Attribútum-leképezések**csoportban tekintse át az Azure AD-ről a Harness szolgáltatásba szinkronizált csoportattribútumokat. Az *Egyező* tulajdonságokként kiválasztott attribútumok a Frissítési műveletek hez tartozó Biztonsági kábelköteg csoportjainak egyeztetésére szolgálnak. A módosítások véglegesítéséhez válassza a **Mentés** gombot.
 
-    !["Attribútum-hozzárendelések" ablaktábla](media/harness-provisioning-tutorial/groupattributes.png)
+    ![Az "Attribútumleképezések" biztonsági csoport biztonsági őrei ablaktábla](media/harness-provisioning-tutorial/groupattributes.png)
 
-1. A hatóköri szűrők konfigurálásához tekintse meg [az attribútum-alapú alkalmazások kiépítés hatókör-szűrőkkel](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)című témakört.
+1. A hatókörszűrők konfigurálásáról az [Attribútumalapú alkalmazáskiépítés hatókörszűrőkkel című témakörben található.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
 
-1. A **Beállítások**alatt engedélyezze az Azure ad kiépítési szolgáltatást a hám számára, és állítsa be a **kiépítési állapotot** **a be**értékre.
+1. A **Beállítások csoportban**az Azure AD-kiépítési szolgáltatás a További beállítás engedélyezéséhez kapcsolja be a **Kiépítés állapota** kapcsolót be **kapcsolóra.**
 
-    ![A kiépítési állapot kapcsolója "bekapcsolva" értékre vált](common/provisioning-toggle-on.png)
+    ![Az állapot kiépítése kapcsoló "Be" állásba van kapcsolva](common/provisioning-toggle-on.png)
 
-1. A **Beállítások**területen a **hatókör** legördülő listában válassza ki, hogyan szeretné szinkronizálni a kiépíteni kívánt felhasználókat vagy csoportokat.
+1. A **Beállítások csoport**Hatókör **legördülő** listájában válassza ki, hogyan szeretné szinkronizálni a kiépíteni kívánt felhasználókat vagy csoportokat a Harness szolgáltatásba.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-1. Ha készen áll a létesítésre, válassza a **Mentés**lehetőséget.
+1. Ha készen áll a kiépítésre, válassza a **Mentés gombot.**
 
-    ![A kiépítési mentés gomb](common/provisioning-configuration-save.png)
+    ![A kiépítés mentésgombja](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a kiépített felhasználók vagy csoportok kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbiek. A szinkronizálás körülbelül 40 percenként történik, feltéve, hogy az Azure AD kiépítési szolgáltatás fut. A folyamat figyeléséhez lépjen a **szinkronizálás részletei** szakaszra. A kiépítési tevékenységre vonatkozó jelentésre mutató hivatkozásokat is követheti, amelyek az Azure AD-kiépítési szolgáltatás által végrehajtott összes műveletet ismertetik a hám használatával.
+Ez a művelet elindítja a kezdeti szinkronizálást a felhasználók vagy csoportok kiépítés. A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbiek. Szinkronizálások fordulnak elő körülbelül 40 percenként, mindaddig, amíg az Azure AD kiépítési szolgáltatás fut. A folyamat figyeléséhez nyissa meg a **Szinkronizálás részletei szakaszt.** A kiépítési tevékenységjelentésre mutató hivatkozásokat is követhet, amely ismerteti az Azure AD-kiépítési szolgáltatás által a További biztonsági övben végrehajtott összes műveletet.
 
-További információ az Azure AD-kiépítési naplók olvasásához: [jelentés a felhasználói fiókok automatikus üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséről.
+Az Azure AD-kiépítési naplók olvasásáról a [Jelentés az automatikus felhasználói fiók kiépítésről című témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat bővebben.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiókok kiépítésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)

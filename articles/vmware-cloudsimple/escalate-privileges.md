@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldások (AVS) – az AVS-jogosultságok megemelése
-description: Leírja, hogyan lehet az AVS-engedélyeket az AVS Private Cloud vCenter rendszergazdai funkcióinak végrehajtására felvenni
+title: Azure VMware-megoldás a CloudSimple által – A CloudSimple jogosultságainak eszkalálódása
+description: Ez a témakör azt ismerteti, hogy miként lehet elévülni a CloudSimple engedélyeit a felügyeleti funkciók végrehajtásához a Private Cloud vCenter ben
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,32 +8,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 90dd61fc9856978bab0b68de19d48493a8e0c5fd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 36c6969ed89d0bb9222f52aa81de0d4128b9e533
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025333"
 ---
-# <a name="escalate-avs-privileges-to-perform-administrative-functions-in-avs-private-cloud-vcenter"></a>AVS-jogosultságok kiemelése rendszergazdai funkciók végrehajtásához az AVS Private Cloud vCenter
+# <a name="escalate-cloudsimple-privileges-to-perform-administrative-functions-in-private-cloud-vcenter"></a>A CloudSimple jogosultságainak eszkalálása a felügyeleti funkciók végrehajtásához a Private Cloud vCenter ben
 
-Az AVS-jogosultságok megközelítése úgy van kialakítva, hogy a vCenter-felhasználók számára a normál működéshez szükséges jogosultságokat adja. Bizonyos esetekben előfordulhat, hogy a felhasználók további jogosultságokat igényelnek egy adott feladat elvégzéséhez. Egy vCenter SSO-felhasználó jogosultságait korlátozott időtartamra is kiterjesztheti.
+A CloudSimple jogosultságok megközelítés célja, hogy a vCenter-felhasználók számára a szokásos műveletek végrehajtásához szükséges jogosultságokat. Bizonyos esetekben a felhasználónak további jogosultságokra lehet szüksége egy adott feladat végrehajtásához.  A vCenter-sSO-felhasználók jogosultságait korlátozott ideig bővítheti.
 
-A jogosultságok kiterjesztésének okai az alábbiak lehetnek:
+A jogosultságok eszkalálódásának okai a következők lehetnek:
 
-* Az Identity sources konfigurálása
-* Felhasználói felügyelet
-* Elosztott port csoport törlése
+* Az identitásforrások konfigurációja
+* Felhasználókezelés
+* Elosztott portcsoport törlése
 * VCenter-megoldások (például biztonsági mentési alkalmazások) telepítése
 * Szolgáltatásfiókok létrehozása
 
 > [!WARNING]
-> Az emelt szintű jogosultságokkal rendelkező államban végrehajtott műveletek hátrányosan befolyásolhatják a rendszereket, és a rendszerek elérhetetlenné válását okozhatják. Csak a szükséges műveleteket hajtsa végre a eszkalációs időszak alatt.
+> Az eszkalált privilegizált állapotban végrehajtott műveletek hátrányosan befolyásolhatják a rendszert, és a rendszer elérhetetlenné válását eredményezhetik. Csak a szükséges műveleteket hajtsa végre az eszkalációs időszakban.
 
-Az AVS-portálon a vCenter SSO CloudOwner helyi felhasználójának [jogosultságait](escalate-private-cloud-privileges.md) is megadhatja. A távoli felhasználó jogosultságát csak akkor lehet megemelni, ha további Identitáskezelés van konfigurálva a vCenter-on. A jogosultságok eszkalációja magában foglalja a kiválasztott felhasználó hozzáadását a vSphere beépített rendszergazdák csoportjához. Csak egy felhasználó rendelkezhet megadható jogosultságokkal. Ha egy másik felhasználó jogosultságait kell megadnia, először az aktuális felhasználók jogosultságait kell kibővíteni.
+A CloudSimple portálon a cloudowner a cloudowner helyi felhasználó jogosultságait a vCenter SSO.From the CloudSimple portal, [escalate privileges](escalate-private-cloud-privileges.md) for the CloudOwner local user on the vCenter SSO.  A távoli felhasználók jogosultságát csak akkor fokozhatja, ha a vCenteren további identitásszolgáltató van konfigurálva.  A jogosultságok eszkalációja magában foglalja a kiválasztott felhasználó hozzáadását a vSphere beépített Rendszergazdák csoporthoz.  Csak egy felhasználó rendelkezhet eszkalált jogosultságokkal.  Ha egy másik felhasználó jogosultságait kell elerőlenie, először gyengítse az aktuális felhasználók jogosultságait.
 
-A további személyazonossági forrásokból származó felhasználókat hozzá kell adni a CloudOwner csoport tagjaként.
+A további identitásforrásokból származó felhasználókat hozzá kell adni a CloudOwner csoport tagjaiként.
 
 > [!CAUTION]
-> Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group*szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  A vSphere webes felhasználói felületén csak a szolgáltatási fiókokat kell felvenni a *rendszergazdák* csoportjába, és a szolgáltatásfiókok nem használhatók.
-A eszkalációs időszak alatt az AVS a kapcsolódó riasztási értesítések automatikus figyelésével azonosítja a környezet véletlen módosításait.
+> Új felhasználókat csak a *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* vagy *cloud-global-vm-admin-group csoporthoz*kell hozzáadni.  A *Rendszergazdák* csoportba hozzáadott felhasználók automatikusan törlődnek.  Csak a szolgáltatásfiókokat kell hozzáadni *a Rendszergazdák* csoporthoz, és a szolgáltatásfiókok nem használhatók a vSphere webes felhasználói felületére való bejelentkezéshez.
+
+Az eszkalációs időszak során a CloudSimple automatikus figyelést használ a kapcsolódó riasztási értesítésekkel a környezet véletlen változásainak azonosítására.

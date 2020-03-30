@@ -1,6 +1,6 @@
 ---
-title: Azure AD-szerepkörök hozzáférési felülvizsgálatának befejezése a PIM-ben – Azure AD | Microsoft Docs
-description: Ismerje meg, hogyan végezheti el a Azure AD Privileged Identity Management (PIM) Azure AD szerepköreinek hozzáférési felülvizsgálatát, és megtekintheti az eredményeket
+title: Az Azure AD-szerepkörök hozzáférésének befejezése a PIM-ben – Azure AD | Microsoft dokumentumok
+description: Megtudhatja, hogyan végezheti el az Azure AD-szerepkörök hozzáférés-felülvizsgálatát az Azure AD-alapú kiemelt identitáskezelésben (PIM) és az eredmények megtekintése
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,52 +15,52 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe2d85d605b9ee418a5709ddcdb448c56be1d918
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74022283"
 ---
-# <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD-szerepkörök hozzáférési felülvizsgálatának befejezése
+# <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Access-ellenőrzés befejezése az Azure AD-szerepkörökről a kiemelt identitáskezelésben
 
-A Kiemelt szerepkörű rendszergazdák a [hozzáférési felülvizsgálat elindítása](pim-how-to-start-security-review.md)után ellenőrizhetik a Kiemelt jogosultságú hozzáférést.  Privileged Identity Management (PIM) automatikusan elküld egy e-mailt az Azure Active Directory (Azure AD-) szervezet felhasználói számára a hozzáférésük áttekintéséhez. Ha a felhasználó nem kapott e-mailt, elküldheti a [hozzáférési felülvizsgálat végrehajtásának](pim-how-to-perform-security-review.md)utasításait.
+A kiemelt szerepszintű rendszergazdák a [hozzáférés-felülvizsgálat megkezdése](pim-how-to-start-security-review.md)után áttekinthetik a kiemelt hozzáféréseket.  Privilegizált identitáskezelés (PIM) automatikusan küld egy e-mailt a felhasználók az Azure Active Directory (Azure AD) szervezet kéri őket, hogy tekintse át a hozzáférést. Ha a felhasználó nem kap e-mailt, elküldheti nekik a [hozzáférési felülvizsgálat elvégzéséhez.](pim-how-to-perform-security-review.md)
 
-Miután a hozzáférési felülvizsgálati időszak véget ért, vagy az összes felhasználó befejezte az önellenőrzést, kövesse a jelen cikkben ismertetett lépéseket a felülvizsgálat kezeléséhez és az eredmények megtekintéséhez.
+Miután a hozzáférési felülvizsgálati időszak lejárt, vagy az összes felhasználó befejezte az önellenőrzés, kövesse a cikkben leírt lépéseket az ellenőrzés kezeléséhez és az eredmények megtekintéséhez.
 
-## <a name="manage-access-reviews"></a>Hozzáférési felülvizsgálatok kezelése
+## <a name="manage-access-reviews"></a>Hozzáférés-felülvizsgálatok kezelése
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com/) , és válassza ki a **Azure ad Privileged Identity Management** szolgáltatást az irányítópulton.
-1. Válassza ki az irányítópult **hozzáférési felülvizsgálatok** szakaszát.
-1. Válassza ki a felügyelni kívánt hozzáférési felülvizsgálatot.
+1. Nyissa meg az [Azure Portalon,](https://portal.azure.com/) és válassza ki az **Azure AD kiemelt identitáskezelési** szolgáltatás az irányítópulton.
+1. Válassza ki az **irányítópult Access-ellenőrzések** szakaszát.
+1. Jelölje ki a kezelni kívánt hozzáférési felülvizsgálatot.
 
-A hozzáférési felülvizsgálat részletei panelen számos lehetőség áll rendelkezésre a felülvizsgálat kezelésére.
+A hozzáférési felülvizsgálat részletes panelen számos lehetőség van az ellenőrzés kezelésére.
 
-![Privileged Identity Management hozzáférés-felülvizsgálati gombok – képernyőfelvétel](./media/pim-how-to-complete-review/review-buttons.png)
+![Kiemelt identitáskezelési hozzáférési ellenőrző gombok – képernyőkép](./media/pim-how-to-complete-review/review-buttons.png)
 
-### <a name="remind"></a>Emlékeztesse
+### <a name="remind"></a>Emlékeztetni
 
-Ha a hozzáférési felülvizsgálat úgy van beállítva, hogy a felhasználók saját maguk is felülvizsgálják magukat, az **emlékeztető** gomb értesítést küld.
+Ha a hozzáférés-felülvizsgálat úgy van beállítva, hogy a felhasználók átnézzék magukat, az **Emlékeztető** gomb értesítést küld.
 
 ### <a name="stop"></a>Leállítás
 
-Az összes hozzáférési felülvizsgálat befejező dátummal rendelkezik, de a **Leállítás** gomb használatával is befejezheti korán. Ha a felhasználó nem tekinti át ezt az időt, nem fogja tudni leállítani a felülvizsgálatot. Az ellenőrzés leállítása után nem indítható újra.
+Minden hozzáférési felülvizsgálatnak van záró dátuma, de a **Leállítás** gombbal korán befejezheti. Ha eddig egyetlen felhasználót sem vizsgáltak meg, akkor az ellenőrzés leállítása után nem fogják tudni. Az ellenőrzés leállítása után nem indítható újra.
 
 ### <a name="apply"></a>Alkalmaz
 
-A hozzáférési felülvizsgálat befejezése után vagy azért, mert elérte a befejezési dátumot, vagy manuálisan leállította, az **Apply (alkalmaz** ) gomb végrehajtja a felülvizsgálat eredményét. Ha egy felhasználó hozzáférése meg lett tagadva a felülvizsgálat során, akkor ez az a lépés, amely eltávolítja a szerepkör-hozzárendelését.  
+A hozzáférés-felülvizsgálat befejezése után, vagy azért, mert elérte a befejezési dátumot, vagy manuálisan leállította, az **Alkalmaz** gomb megvalósítja az ellenőrzés eredményét. Ha egy felhasználó hozzáférését megtagadták az ellenőrzés, ez a lépés, amely eltávolítja a szerepkör-hozzárendelés.  
 
 ### <a name="export"></a>Exportálás
 
-Ha a hozzáférési felülvizsgálat eredményeit manuálisan szeretné alkalmazni, exportálhatja a felülvizsgálatot. Az **Exportálás** gomb megkezdi a CSV-fájl letöltését. Az eredményeket az Excelben vagy más, CSV-fájlokat megnyitó programok segítségével kezelheti.
+Ha manuálisan szeretné alkalmazni a hozzáférési felülvizsgálat eredményeit, exportálhatja az értékelést. Az **Exportálás** gomb elindítja egy CSV-fájl letöltését. Az eredményeket kezelheti az Excelben vagy más, CSV-fájlokat megnyitva tartalmazó programokban.
 
 ### <a name="delete"></a>Törlés
 
-Ha még nem érdekli a felülvizsgálat, törölje azt. A **Törlés** gomb eltávolítja a felülvizsgálatot a Privileged Identity Management szolgáltatásból.
+Ha nem érdekli a felülvizsgálat tovább, törölje azt. A **Törlés** gomb eltávolítja az értékelést a Kiemelt identitáskezelés szolgáltatásból.
 
 > [!IMPORTANT]
-> Ezt a pusztító változást nem szükséges megerősíteni, ezért győződjön meg arról, hogy törölni kívánja ezt a felülvizsgálatot.
+> Nem kell megerősítenie ezt a roncsolásos módosítást, ezért ellenőrizze, hogy törölni szeretné-e az értékelést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Azure AD-szerepkörök hozzáférési felülvizsgálatának elindítása Privileged Identity Management](pim-how-to-start-security-review.md)
-- [Azure AD-szerepkörök hozzáférési felülvizsgálatának elvégzése Privileged Identity Management](pim-how-to-perform-security-review.md)
+- [Hozzáférés-felülvizsgálat indítása az Azure AD-szerepkörökhöz a kiemelt identitáskezelésben](pim-how-to-start-security-review.md)
+- [Access-ellenőrzés végrehajtása az Azure AD-szerepkörökről a kiemelt identitáskezelésben](pim-how-to-perform-security-review.md)

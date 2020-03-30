@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure IoT Hub Device Twins (Java) szolgáltatással | Microsoft Docs
-description: Az Azure IoT Hub-eszközök ikrek használata címkék hozzáadásához és IoT Hub-lekérdezés használatához. A Javához készült Azure IoT eszközoldali SDK segítségével megvalósíthatja az eszköz alkalmazást és a Javához készült Azure IoT Service SDK-t egy olyan szolgáltatásalkalmazás megvalósításához, amely hozzáadja a címkéket és futtatja a IoT Hub lekérdezést.
+title: Ismerkedés az Azure IoT Hub-eszközök ikreivel (Java) | Microsoft dokumentumok
+description: Az Azure IoT Hub-eszközök twins használata címkék hozzáadásához, majd egy IoT Hub-lekérdezés használatához. Az Azure IoT-eszköz SDK Java-hoz az eszközalkalmazás és az Azure IoT szolgáltatás SDK Java-hoz egy szolgáltatás alkalmazás, amely hozzáadja a címkéket, és futtatja az IoT Hub-lekérdezést.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -10,43 +10,43 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: e0114c37b2204a7ad1d7b0cf9c7f336dcd85883a
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110490"
 ---
-# <a name="get-started-with-device-twins-java"></a>Ismerkedés az eszközök ikrekkel (Java)
+# <a name="get-started-with-device-twins-java"></a>Az ikereszközök első lépései (Java)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-Ebben az oktatóanyagban két Java-konzolos alkalmazást hoz létre:
+Ebben az oktatóanyagban két Java konzolalkalmazást hoz létre:
 
-* **Add-Tags-Query**, egy Java háttérbeli alkalmazás, amely hozzáadja a címkéket és a lekérdezési eszközökhöz tartozó ikreket.
-* **szimulált-eszköz**, egy Java-eszköz alkalmazás, amely csatlakozik az IoT hubhoz, és jelentést készít a kapcsolati feltételéről egy jelentett tulajdonság használatával.
+* **add-tags-query**, a Java háttéralkalmazás, amely címkéket és lekérdezéseket ad az eszközök twins.add-tags-query , a Java back-end app that adds tags and queries device twins.
+* **szimulált eszköz, egy Java-eszköz**alkalmazás, amely csatlakozik az IoT hubhoz, és jelenti a kapcsolódási állapotát egy jelentett tulajdonság használatával.
 
 > [!NOTE]
-> Az [Azure IoT SDK](iot-hub-devguide-sdks.md) -k cikke olyan Azure IoT SDK-kat tartalmaz, amelyek segítségével mind az eszközök, mind a háttérbeli alkalmazások készíthetők.
+> Az [Azure IoT SDK-k](iot-hub-devguide-sdks.md) az Azure IoT SDK-k, amelyek segítségével eszköz- és háttéralkalmazásokat hozhat létre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
+* [Java SE Fejlesztői Készlet 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Győződjön meg róla, hogy a **Java** **8-at** a Hosszú távú támogatás alatt választja, hogy eljusson a JDK 8 letöltéséhez.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
-* Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
+* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) néhány perc alatt.)
 
-* Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Győződjön meg arról, hogy a 8883-as port nyitva van a tűzfalon. A cikkben szereplő eszközminta az MQTT protokollt használja, amely a 8883-as porton keresztül kommunikál. Előfordulhat, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben le van tiltva. A probléma megoldásáról további információt és a probléma megoldásáról a [Csatlakozás az IoT Hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)című témakörben talál.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hub-ban
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hubban
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub kapcsolati karakterláncának beszereznie
 
 [!INCLUDE [iot-hub-howto-twin-shared-access-policy-text](../../includes/iot-hub-howto-twin-shared-access-policy-text.md)]
 
@@ -54,19 +54,19 @@ Ebben az oktatóanyagban két Java-konzolos alkalmazást hoz létre:
 
 ## <a name="create-the-service-app"></a>A szolgáltatásalkalmazás létrehozása
 
-Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak hozzáadását adja hozzá a **myDeviceId**-hez társított IoT hubhoz. Az alkalmazás először a IoT hub-t kérdezi le az USA-ban található eszközökhöz, majd a mobil hálózati kapcsolatot bejelentő eszközökhöz.
+Ebben a szakaszban létrehoz egy Java-alkalmazást, amely címkeként helymetaadatokat ad hozzá az ikereszközhöz a **myDeviceId-hoz**társított IoT Hubban. Az alkalmazás először lekérdezi az IoT hubot az Egyesült Államokban található eszközökre, majd azolyan eszközökre, amelyek mobilhálózati kapcsolatot jelentenek.
 
-1. A fejlesztői gépen hozzon létre egy **IOT-Java-Twin-getstarted**nevű üres mappát.
+1. A fejlesztői gépen hozzon létre egy **iot-java-twin-getstarted**nevű üres mappát.
 
-2. A **IOT-Java-Twin-getstarted** mappában hozzon létre egy **Add-Tags-Query** nevű Maven-projektet a következő paranccsal a parancssorban:
+2. Az **iot-java-twin-getstarted** mappában hozzon létre egy **Add-tags nevű** Maven projektet a következő paranccsal a parancssorban:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=add-tags-query -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-3. A parancssorban navigáljon a **Add-Tags-Query** mappára.
+3. A parancssorban keresse meg a **hozzáadáscímkék-lekérdezés** mappát.
 
-4. Egy szövegszerkesztővel nyissa meg a **Pom. XML** fájlt az **Add-Tags-Query** mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ezzel a függőséggel használhatja az **IOT-Service-Client** csomagot az alkalmazásban az IOT hub használatával folytatott kommunikációhoz:
+4. Szövegszerkesztő használatával nyissa meg a **pom.xml** fájlt az **add-tags-query** mappában, és adja hozzá a következő függőséget a **függőségi** csomóponthoz. Ez a függőség lehetővé teszi, hogy az **iot-service-client** csomagot használja az alkalmazásban az IoT-központtal való kommunikációhoz:
 
     ```xml
     <dependency>
@@ -78,9 +78,9 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
     ```
 
     > [!NOTE]
-    > A **IOT-Service-Client** legújabb verzióját a [Maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)használatával tekintheti meg.
+    > Az **iot-service-client** legújabb verzióját a [Maven keresési funkciójával](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22) tekintheti meg.
 
-5. Adja hozzá a következő **Build** csomópontot a **függőségek** csomópont után. Ez a konfiguráció arra utasítja a Mavent, hogy a Java 1,8-et használja az alkalmazás létrehozásához.
+5. Adja hozzá a következő **buildcsomópontot** a **függőségi** csomópont után. Ez a konfiguráció arra utasítja a Mavent, hogy java 1.8-as használatával készítse el az alkalmazást.
 
     ```xml
     <build>
@@ -98,9 +98,9 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
     </build>
     ```
 
-6. Mentse és zárjuk be a **Pom. XML** fájlt.
+6. Mentse és zárja be a **pom.xml** fájlt.
 
-7. Egy szövegszerkesztővel nyissa meg a **Add-Tags-query\src\main\java\com\mycompany\app\App.Java** fájlt.
+7. Szövegszerkesztő használatával nyissa meg az **add-tags-query\src\main\java\com\mycompany\app\App.java** fájlt.
 
 8. Adja hozzá a következő **importálási** utasításokat a fájlhoz:
 
@@ -113,7 +113,7 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
     import java.util.Set;
     ```
 
-9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le a `{youriothubconnectionstring}`t a IoT hub-beli, az [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)során másolt karakterláncra.
+9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje `{youriothubconnectionstring}` le az IoT hub kapcsolati karakterlánc másolt [az IoT hub kapcsolati karakterlánc bekapása.](#get-the-iot-hub-connection-string)
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -129,7 +129,7 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
     public static void main( String[] args ) throws IOException
     ```
 
-11. A **DeviceTwin** és a **DeviceTwinDevice** objektumok létrehozásához cserélje le a **Main** metódus kódját a következő kódra. A **DeviceTwin** objektum kezeli az IoT hub kommunikációját. A **DeviceTwinDevice** objektum az eszközt a Twin (Tulajdonságok) és a címkével együtt ábrázolja:
+11. Cserélje le a kódot a **fő** módszer a következő kódot, hogy megteremtse a **DeviceTwin** és **DeviceTwinDevice** objektumokat. A **DeviceTwin** objektum kezeli az IoT hubbal való kommunikációt. A **DeviceTwinDevice** objektum az ikereszközt jelöli a tulajdonságaival és címkéivel:
 
     ```java
     // Get the DeviceTwin and DeviceTwinDevice objects
@@ -137,7 +137,7 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
     DeviceTwinDevice device = new DeviceTwinDevice(deviceId);
     ```
 
-12. Adja hozzá a következő `try/catch` blokkot a **Main** metódushoz:
+12. Adja hozzá `try/catch` a következő blokkot a **fő** módszerhez:
 
     ```java
     try {
@@ -149,7 +149,7 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
     }
     ```
 
-13. Ha szeretné frissíteni a **régiót** **és a berendezési** eszközök Twin címkéit az eszköz Twin-kódjában, adja hozzá a következő kódot a `try` blokkban:
+13. A **régió** és a **plant** device twin címkék frissítéséhez az `try` ikereszközben adja hozzá a következő kódot a blokkban:
 
     ```java
     // Get the device twin from IoT Hub
@@ -178,7 +178,7 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
     System.out.println(device);
     ```
 
-14. Az eszközök az IoT hub-ban való lekérdezéséhez adja hozzá a következő kódot az `try` blokkhoz az előző lépésben hozzáadott kód után. A kód két lekérdezést futtat. Minden lekérdezés legfeljebb 100 eszközt ad vissza.
+14. Az imperátusok az IoT hubban `try` az eszköz twins lekérdezéséhez adja hozzá a következő kódot a blokkhoz az előző lépésben hozzáadott kód után. A kód két lekérdezést futtat. Minden lekérdezés legfeljebb 100 eszközt ad vissza.
 
     ```java
     // Query the device twins in IoT Hub
@@ -207,9 +207,9 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
     }
     ```
 
-15. A **Add-Tags-query\src\main\java\com\mycompany\app\App.Java** fájl mentése és lezárása
+15. Az **add-tags-query\src\main\java\com\mycompany\app\App.java** fájl mentése és bezárása
 
-16. Hozza létre a **Add-Tags-Query** alkalmazást, és javítsa ki az esetleges hibákat. A parancssorban navigáljon a **Add-Tags-Query** mappára, és futtassa a következő parancsot:
+16. Hozza létre a **bővítménycímkék-lekérdezésalkalmazást,** és javítsa ki az esetleges hibákat. A parancssorban keresse meg a **hozzáadáscímkék-lekérdezés** mappát, és futtassa a következő parancsot:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -217,17 +217,17 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
 
 ## <a name="create-a-device-app"></a>Eszközalkalmazás létrehozása
 
-Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub számára elküldött jelentett tulajdonság értékét állítja be.
+Ebben a szakaszban hozzon létre egy Java konzolalkalmazást, amely beállítja az IoT Hubnak küldött jelentett tulajdonságértéket.
 
-1. A **IOT-Java-Twin-getstarted** mappában hozzon létre egy **szimulált-eszköz** nevű Maven-projektet a következő parancs futtatásával a parancssorban:
+1. Az **iot-java-twin-getstarted** mappában hozzon létre egy **szimulált eszköz** nevű Maven-projektet a következő paranccsal a parancssorban:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. A parancssorban navigáljon a **szimulált eszköz** mappájához.
+2. A parancssorban keresse meg a **szimulált eszköz** mappát.
 
-3. Egy szövegszerkesztővel nyissa meg a **Pom. XML** fájlt a **szimulált-Device** mappában, és adja hozzá a következő függőségeket a **függőségek** csomóponthoz. Ez a függőség lehetővé teszi, hogy a **IOT-Device-Client** csomagot használja az alkalmazásban az IOT hub-vel való kommunikációhoz.
+3. Szövegszerkesztő használatával nyissa meg a **pom.xml** fájlt a **szimulált eszközmappában,** és adja hozzá a következő függőségeket a **függőségi** csomóponthoz. Ez a függőség lehetővé teszi, hogy az **iot-device-client** csomag használatával kommunikáljon az IoT hub.
 
     ```xml
     <dependency>
@@ -238,9 +238,9 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub szá
     ```
 
     > [!NOTE]
-    > A **IOT-Device-Client** legújabb verzióját a [Maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)használatával tekintheti meg.
+    > Az **iot-device-client** legújabb verzióját a [Maven keresési funkciójával](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22) tekintheti meg.
 
-4. Adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ez a függőség konfigurálja az Apache [SLF4J](https://www.slf4j.org/) naplózási homlokzatának NOP, amelyet az eszköz ügyféloldali SDK használ a naplózás megvalósításához. Ez a konfiguráció nem kötelező, de ha kihagyja, az alkalmazás futtatásakor figyelmeztetés jelenik meg a konzolon. Az eszköz ügyféloldali SDK-beli naplózásával kapcsolatos további információkért lásd: az *Azure IoT ESZKÖZOLDALI SDK for Java* információs fájlhoz tartozó minták [naplózása](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) .
+4. Adja hozzá a következő függőséget a **függőségi** csomóponthoz. Ez a függőség nop-t konfigurál az Apache [SLF4J](https://www.slf4j.org/) naplózási homlokzatához, amelyet az eszközügyfél SDK a naplózás megvalósításához használ. Ez a konfiguráció nem kötelező, de ha kihagyja, az alkalmazás futtatásakor figyelmeztetés jelenhet meg a konzolon. Az eszközügyfél SDK-ba való naplózásról további információt az *Azure IoT-eszköz Java-alapú SDK-fájlmintáinak* [naplózása](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) című témakörben talál.
 
     ```xml
     <dependency>
@@ -250,7 +250,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub szá
     </dependency>
     ```
 
-5. Adja hozzá a következő **Build** csomópontot a **függőségek** csomópont után. Ez a konfiguráció arra utasítja a Mavent, hogy a Java 1,8-et használja az alkalmazás létrehozásához:
+5. Adja hozzá a következő **buildcsomópontot** a **függőségi** csomópont után. Ez a konfiguráció arra utasítja a Mavent, hogy java 1.8-as verziót használjon az alkalmazás létrehozásához:
 
     ```xml
     <build>
@@ -268,9 +268,9 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub szá
     </build>
     ```
 
-6. Mentse és zárjuk be a **Pom. XML** fájlt.
+6. Mentse és zárja be a **pom.xml** fájlt.
 
-7. Egy szövegszerkesztővel nyissa meg a **simulated-device\src\main\java\com\mycompany\app\App.Java** fájlt.
+7. Szövegszerkesztő használatával nyissa meg a **szimulált eszköz\src\main\java\com\mycompany\app\App.java** fájlt.
 
 8. Adja hozzá a következő **importálási** utasításokat a fájlhoz:
 
@@ -283,7 +283,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub szá
     import java.util.Scanner;
     ```
 
-9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le a `{yourdeviceconnectionstring}`t az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban másolt eszköz-összekapcsolási karakterlánccal.
+9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje `{yourdeviceconnectionstring}` le az [IoT hubban új eszköz regisztrálása](#register-a-new-device-in-the-iot-hub)című részben másolt eszközkapcsolati karakterláncot.
 
     ```java
     private static String connString = "{yourdeviceconnectionstring}";
@@ -293,7 +293,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub szá
 
     Ez a mintaalkalmazás a **protocol** változót használja egy **DeviceClient** objektum példányának létrehozásakor.
 
-10. Adja hozzá a következő metódust az **app** osztályhoz a kettős frissítésekkel kapcsolatos információk kinyomtatásához:
+10. Adja hozzá a következő módszert az **alkalmazásosztályhoz** az ikerfrissítésekre vonatkozó információk nyomtatásához:
 
     ```java
     protected static class DeviceTwinStatusCallBack implements IotHubEventCallback {
@@ -304,11 +304,11 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub szá
       }
     ```
 
-11. Cserélje le a **Main** metódus kódját a következő kódra:
+11. Cserélje le a **fő** metódusban lévő kódot a következő kódra:
 
-    * Hozzon létre egy eszköz-ügyfelet a IoT Hubsal való kommunikációhoz.
+    * Hozzon létre egy eszköz-ügyfél kommunikálni Az IoT Hub.
 
-    * Hozzon létre egy **eszköz** -objektumot az eszköz Twin tulajdonságainak tárolásához.
+    * **Hozzon** létre egy eszközobjektumot az ikereszköz tulajdonságainak tárolásához.
 
     ```java
     DeviceClient client = new DeviceClient(connString, protocol);
@@ -323,7 +323,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub szá
     };
     ```
 
-12. Adja hozzá a következő kódot a **Main** metódushoz egy **connectivityType** jelentett tulajdonság létrehozásához, és küldje el IoT hub:
+12. Adja hozzá a következő kódot a **fő** metódushoz egy **connectivityType** reported tulajdonság létrehozásához, és küldje el az IoT Hubnak:
 
     ```java
     try {
@@ -343,7 +343,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub szá
     }
     ```
 
-13. Adja hozzá a következő kódot a **Main** metódus végéhez. Ha az **ENTER** billentyűre vár, a IoT hub az eszköz kettős műveleteinek állapotát jelenti.
+13. Adja hozzá a következő kódot a **fő** módszer végéhez. Az **Enter** kulcsra való várakozás lehetővé teszi, hogy az IoT Hub jelentse az ikereszköz-műveletek állapotát.
 
     ```java
     System.out.println("Press any key to exit...");
@@ -361,9 +361,9 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub szá
      public static void main(String[] args) throws URISyntaxException, IOException
      ```
 
-15. Mentse és zárjuk be a **simulated-device\src\main\java\com\mycompany\app\App.Java** fájlt.
+15. Mentse és zárja be a **szimulált eszköz\src\main\java\com\mycompany\app\App.java** fájlt.
 
-16. Hozza létre a **szimulált eszköz** alkalmazást, és javítsa ki az esetleges hibákat. A parancssorban navigáljon a **szimulált-Device** mappára, és futtassa a következő parancsot:
+16. Hozza létre a **szimulált eszközalkalmazást,** és javítsa ki az esetleges hibákat. A parancssorban keresse meg a **szimulált eszköz** mappát, és futtassa a következő parancsot:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -371,42 +371,42 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub szá
 
 ## <a name="run-the-apps"></a>Az alkalmazások futtatása
 
-Most már készen áll a konzolon futó alkalmazások futtatására.
+Most már készen áll a konzolos alkalmazások futtatására.
 
-1. Az **Add-Tags-Query** mappában egy parancssorban futtassa a következő parancsot az **Add-Tags-Query** szolgáltatás alkalmazás futtatásához:
-
-    ```cmd/sh
-    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
-    ```
-
-    ![Java IoT Hub szolgáltatásalkalmazás a címkézési értékek frissítéséhez és az eszközök lekérdezésének futtatásához](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
-
-    Megtekintheti az eszközhöz tartozó Twin-eszközökhöz hozzáadott **növény** és **régió** címkéket. Az első lekérdezés visszaadja az eszközt, de a második nem.
-
-2. A **szimulált-Device** mappában egy parancssorban futtassa a következő parancsot, hogy hozzáadja a **connectivityType** jelentett tulajdonságot az eszköz Twin:
+1. Az **add-tags-query** mappa parancssorában futtassa a következő parancsot a **bővítménycímkék-lekérdezési** szolgáltatás alkalmazás futtatásához:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Az eszköz ügyfele hozzáadja a * * connectivityType * * jelentett tulajdonságot](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
+    ![Java IoT Hub szolgáltatásalkalmazás a címkeértékek frissítéséhez és az eszközlekérdezések futtatásához](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
 
-3. Az **Add-Tags-Query** mappában egy parancssorban futtassa a következő parancsot az **Add-Tags-Query** szolgáltatás alkalmazás második alkalommal való futtatásához:
+    Láthatja az ikereszközhöz hozzáadott **növény-** és **régiócímkéket.** Az első lekérdezés visszaadja az eszközt, de a második nem.
+
+2. A **szimulált eszköz** mappájában lévő parancssorban futtassa a következő parancsot a **connectivityType** reported tulajdonság nak az ikereszközhöz való hozzáadásához:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Java IoT Hub szolgáltatásalkalmazás a címkézési értékek frissítéséhez és az eszközök lekérdezésének futtatásához](./media/iot-hub-java-java-twin-getstarted/service-app-2.png)
+    ![Az eszközügyfél hozzáadja a **connectivityType** jelentett tulajdonságot](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
 
-    Most, hogy az eszköz elküldte a **connectivityType** tulajdonságot a IoT hubnak, a második lekérdezés visszaadja az eszközt.
+3. A **bővítménycímkék-lekérdezés** mappában lévő parancssorban futtassa a következő parancsot a **bővítménycímkék-lekérdezési** szolgáltatás alkalmazás második futtatásához:
 
-## <a name="next-steps"></a>Következő lépések
+    ```cmd/sh
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
+    ```
 
-Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Az eszköz metaadatait címkékként adta hozzá egy háttérbeli alkalmazáshoz, és írt egy eszközt az eszköz csatlakozási adatainak jelentéséhez az eszközök Twin-ben. Azt is megtanulta, hogyan kérdezheti le az eszköz Twin-információit az SQL-Like IoT Hub lekérdezési nyelv használatával.
+    ![Java IoT Hub szolgáltatásalkalmazás a címkeértékek frissítéséhez és az eszközlekérdezések futtatásához](./media/iot-hub-java-java-twin-getstarted/service-app-2.png)
 
-Az alábbi források segítségével megismerheti a következőket:
+    Most, hogy az eszköz elküldte a **connectivityType** tulajdonságot az IoT Hubnak, a második lekérdezés visszaadja az eszközt.
 
-* Telemetria küldése az eszközökről az első [lépések IoT hub](quickstart-send-telemetry-java.md) oktatóanyaggal.
+## <a name="next-steps"></a>További lépések
 
-* Vezérelheti az eszközöket interaktív módon (például egy felhasználó által vezérelt alkalmazásból származó ventilátor bekapcsolásával) a [Direct Methods oktatóanyag használatával](quickstart-control-device-java.md) .
+Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Az eszköz metaadatait címkékként adta hozzá egy háttéralkalmazásból, és írt egy eszközalkalmazást az eszközkapcsolati adatok jelentéséhez az ikereszközben. Azt is megtanulta, hogyan lehet lekérdezni az eszköz ikeradatait az SQL-szerű IoT Hub lekérdezési nyelv használatával.
+
+Az alábbi források segítségével megtudhatja, hogyan:
+
+* Telemetriai adatok küldése az eszközökről az [IoT Hub első lépései](quickstart-send-telemetry-java.md) oktatóanyaggal.
+
+* Az eszközök interaktív vezérlése (például egy ventilátor bekapcsolása egy felhasználó által vezérelt alkalmazásból) a [Közvetlen módszerek használata](quickstart-control-device-java.md) oktatóanyaggal.

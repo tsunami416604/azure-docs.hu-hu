@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 7a22256c88f9cee3ce62c68a2de4a5974d76f026
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593720"
 ---
-## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Töltse le és telepítse a Linkerd Linkerd-ügyfél bináris fájlját
+## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>A Linkerd linkerd ügyfél bináris fájljának letöltése és telepítése
 
-A Linux vagy a [Linux rendszerhez készült Windows alrendszer][install-wsl]bash-alapú rendszerhéjában a következő módon töltheti le az Linkerd-kiadást a `curl` használatával:
+A bash-alapú shell Linux vagy [Windows Alrendszer Linux][install-wsl], használja, `curl` hogy töltse le a Linkerd kiadás az alábbiak szerint:
 
 ```bash
 # Specify the Linkerd version that will be leveraged throughout these instructions
@@ -21,14 +21,14 @@ LINKERD_VERSION=stable-2.6.0
 curl -sLO "https://github.com/linkerd/linkerd2/releases/download/$LINKERD_VERSION/linkerd2-cli-$LINKERD_VERSION-linux"
 ```
 
-A `linkerd`-ügyfél bináris fájlja fut az ügyfélszámítógépen, és lehetővé teszi a Linkerd szolgáltatás hálójának kezelését. A következő parancsokkal telepítheti a Linkerd `linkerd`-ügyfél bináris fájlját egy bash-alapú rendszerhéjban Linuxon vagy [Linuxon futó Windows alrendszeren][install-wsl]. Ezek a parancsok a `linkerd` ügyfél bináris fájljait a `PATH`normál felhasználói program mappájába másolják.
+Az `linkerd` ügyfél bináris fut az ügyfélgépen, és lehetővé teszi, hogy a Linkerd szolgáltatás háló. A következő parancsokkal telepítheti `linkerd` a Linkerd kliens bináris rendszerét egy bash-alapú rendszerhéjban Linux vagy [Windows Alrendszer Linux ra.][install-wsl] Ezek a `linkerd` parancsok az ügyfél bináris fájlját `PATH`a normál felhasználói program helyére másolják a rendszerben.
 
 ```bash
 sudo cp ./linkerd2-cli-$LINKERD_VERSION-linux /usr/local/bin/linkerd
 sudo chmod +x /usr/local/bin/linkerd
 ```
 
-Ha a Linkerd parancssori kiegészítést szeretne végrehajtani `linkerd` ügyfél bináris fájlját, a következőképpen állítsa be:
+Ha a Linkerd ügyfél bináris parancssori befejezését `linkerd` szeretné, állítsa be a következőképpen:
 
 ```bash
 # Generate the bash completion file and source it in your current shell

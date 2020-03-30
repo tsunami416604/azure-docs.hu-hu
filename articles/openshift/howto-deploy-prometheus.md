@@ -1,42 +1,42 @@
 ---
-title: Önálló Prometheus-példány üzembe helyezése Azure Red Hat OpenShift-fürtben | Microsoft Docs
-description: Hozzon létre egy Prometheus-példányt egy Azure Red Hat OpenShift-fürtben az alkalmazás metrikáinak monitorozásához.
+title: Önálló Prometheus-példány üzembe helyezése Azure Red Hat OpenShift-fürtben | Microsoft dokumentumok
+description: Hozzon létre egy Prometheus-példányt egy Azure Red Hat OpenShift-fürtben az alkalmazás metrikáinak figyeléséhez.
 author: makdaam
 ms.author: b-lejaku
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/17/2019
-keywords: Prometheus, ARO, openshift, metrikák, Red Hat
+keywords: prometheus, aro, openshift, mérőszámok, piros kalap
 ms.openlocfilehash: f81a993caa31578e689fb3a90108f3cf0ca81fc2
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69875139"
 ---
-# <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Önálló Prometheus-példány üzembe helyezése Azure Red Hat OpenShift-fürtben
+# <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Önálló Prometheus-példány üzembe helyezése Egy Azure Red Hat OpenShift-fürtben
 
-Ez a cikk azt ismerteti, hogyan konfigurálható egy, a Service Discovery szolgáltatást használó önálló Prometheus-példány egy Azure Red Hat OpenShift-fürtben.
+Ez a cikk ismerteti, hogyan konfigurálhat egy önálló Prometheus-példány, amely egy Azure Red Hat OpenShift fürt szolgáltatásfelderítését használja.
 
 > [!NOTE]
-> Nem szükséges ügyfél-rendszergazdai hozzáférés az Azure Red Hat OpenShift-fürthöz.
+> Az Azure Red Hat OpenShift-fürthöz való ügyfélrendszergazdai hozzáférés nem szükséges.
 
 Cél beállítása:
 
-- Egy projekt (Prometheus-projekt), amely Prometheus-t és Alertmanager tartalmaz.
-- Két projekt (App-Projekt1 és app-Projekt2), amelyek tartalmazzák a figyelni kívánt alkalmazásokat.
+- Egy projekt (prometheus-projekt), amely tartalmazza a Prometheus és alertmanager.
+- Két projekt (alkalmazás-projekt1 és alkalmazás-projekt2), amelyek tartalmazzák a figyelni t.
 
-A Prometheus konfigurációs fájljait helyileg kell előkészítenie. Hozzon létre egy új mappát a tárolásához. A konfigurációs fájlokat a rendszer titkokként tárolja a fürtben abban az esetben, ha a titkos jogkivonatokat később hozzáadja a fürthöz.
+A Prometheus config fájlokat helyben készíti elő. Hozzon létre egy új mappát a tárolásukhoz. A konfigurációs fájlok titkos kulcsokként tárolódnak a fürtben, abban az esetben, ha titkos jogkivonatokat adnak hozzá később a fürthöz.
 
-## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>Jelentkezzen be a fürtbe az OC eszköz használatával
+## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>Bejelentkezés a fürtbe az OC eszközzel
 
-1. Nyisson meg egy webböngészőt, majd nyissa meg a fürt webkonzolját https://openshift (. *véletlenszerű azonosító*. *region*. azmosa.IO).
+1. Nyisson meg egy webböngészőt, majd lépjenhttps://openshifta fürt webkonzoljára ( .* random-id*. *régió*.azmosa.io).
 2. Jelentkezzen be az Azure-beli hitelesítő adataival.
-3. Válassza ki a felhasználónevet a jobb felső sarokban, majd válassza a **bejelentkezési parancs másolása**lehetőséget.
-4. Illessze be a felhasználónevet a használni kívánt terminálba.
+3. A jobb felső sarokban jelölje ki a felhasználónevét, majd válassza **a Bejelentkezési parancs másolása parancsot**.
+4. Illessze be a felhasználónevét a használni kívánt terminálba.
 
 > [!NOTE]
-> Ha szeretné megtekinteni, hogy be van-e jelentkezve a megfelelő `oc whoami -c` fürtbe, futtassa a parancsot.
+> Ha meg szeretné tudni, hogy be van-e jelentkezve a megfelelő fürtbe, futtassa a `oc whoami -c` parancsot.
 
 ## <a name="prepare-the-projects"></a>A projektek előkészítése
 
@@ -49,10 +49,10 @@ oc new-project app-project2
 
 
 > [!NOTE]
-> Használhatja a vagy `-n` `--namespace` a paramétert, vagy kijelölhet egy aktív projektet a `oc project` parancs futtatásával.
+> Használhatja a `-n` vagy `--namespace` paramétert, vagy kijelölhet `oc project` egy aktív projektet a parancs futtatásával.
 
-## <a name="prepare-the-prometheus-configuration-file"></a>A Prometheus konfigurációs fájljának előkészítése
-Hozzon létre egy Prometheus. YML fájlt a következő tartalom megadásával:
+## <a name="prepare-the-prometheus-configuration-file"></a>A Prometheus konfigurációs fájl előkészítése
+Hozzon létre egy prometheus.yml fájlt a következő tartalom megadásával:
 ```
 global:
   scrape_interval: 30s
@@ -73,18 +73,18 @@ scrape_configs:
           - app-project1
           - app-project2
 ```
-Hozzon létre egy Prom nevű titkot a következő konfiguráció beírásával:
+Hozzon létre egy Prom nevű titkos kulcsot a következő konfiguráció megadásával:
 ```
 oc create secret generic prom --from-file=prometheus.yml -n prometheus-project
 ```
 
-A Prometheus. YML fájl egy alapszintű Prometheus konfigurációs fájl. Beállítja az intervallumokat és konfigurálja az automatikus észlelést három projektben (Prometheus-Project, app-Projekt1, app-Projekt2). Az előző konfigurációs fájlban az automatikusan felderített végpontokat a rendszer a hitelesítés nélkül, HTTP-n keresztül kaparja.
+A prometheus.yml fájl egy alapvető Prometheus konfigurációs fájl. Három projektben (prometheus-project, app-project1, app-project2) állítja be az automatikus felderítést. Az előző konfigurációs fájlban az automatikusan felderített végpontok kaparják HTTP-n keresztül hitelesítés nélkül.
 
-A kaparós végpontokkal kapcsolatos további információkért lásd: [Prometheus tájkép config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
+A végpontok kaparásáról a [Prometheus scape config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config)című témakörben talál további információt.
 
 
-## <a name="prepare-the-alertmanager-config-file"></a>A Alertmanager konfigurációs fájl előkészítése
-Hozzon létre egy alertmanager. YML fájlt a következő tartalom megadásával:
+## <a name="prepare-the-alertmanager-config-file"></a>Az Alertmanager konfigurációs fájl előkészítése
+Hozzon létre egy alertmanager.yml fájlt a következő tartalom megadásával:
 ```
 global:
   resolve_timeout: 5m
@@ -102,30 +102,30 @@ receivers:
 - name: default
 - name: deadmansswitch
 ```
-Hozzon létre egy Prom-riasztás nevű titkos kulcsot a következő konfiguráció beírásával:
+Hozzon létre egy Szalagértesítések nevű titkos kulcsot a következő konfiguráció megadásával:
 ```
 oc create secret generic prom-alerts --from-file=alertmanager.yml -n prometheus-project
 ```
 
-A Alertmanager. YML a riasztási kezelő konfigurációs fájlja.
+Az Alertmanager.yml a Riasztáskezelő konfigurációs fájlja.
 
 > [!NOTE]
 > Az előző két lépés ellenőrzéséhez futtassa a `oc get secret -n prometheus-project` parancsot.
 
-## <a name="start-prometheus-and-alertmanager"></a>A Prometheus és a Alertmanager elindítása
-Lépjen a [openshift/Origin adattárra](https://github.com/openshift/origin/tree/release-3.11/examples/prometheus) , és [töltse le a Prometheus-](
-https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml) standalone. YAML sablont. Alkalmazza a sablont a Prometheus-projectre a következő konfiguráció beírásával:
+## <a name="start-prometheus-and-alertmanager"></a>A Prometheus és az Alertmanager indítása
+Nyissa meg az [openshift/origin adattárat,](https://github.com/openshift/origin/tree/release-3.11/examples/prometheus) és töltse le a [prometheus-standalone.yaml](
+https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml) sablont. Alkalmazza a sablont a prometheus-projektre a következő konfiguráció megadásával:
 ```
 oc process -f https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml | oc apply -f - -n prometheus-project
 ```
-A Prometheus-standalone. YAML fájl egy OpenShift-sablon. Létrehoz egy Prometheus-példányt a OAuth-proxyval, és egy Alertmanager-példányt, amely a OAuth-proxyval is védett. Ebben a sablonban a OAuth-proxy úgy van konfigurálva, hogy engedélyezze bármely olyan felhasználó számára, aki "beolvashatja" a `-openshift-sar` Prometheus-Project névteret (lásd a jelzőt).
+A prometheus-standalone.yaml fájl egy OpenShift-sablon. Létrehoz egy Prometheus példányt, előtte oauth-proxyval, és egy Alertmanager példányt, amely et is biztonságosnak kell lennie az oauth-proxyval. Ebben a sablonban az oauth-proxy úgy van beállítva, hogy minden olyan felhasználó, `-openshift-sar` aki "beszerezheti" a prometheus-projekt névteret (lásd a jelzőt).
 
 > [!NOTE]
-> A `oc get statefulset -n prometheus-project` parancs futtatásával ellenőrizheti, hogy a Prom StatefulSet egyenlő-e a kívánt és a jelenlegi számú replikával. A projekt összes erőforrásának vizsgálatához futtassa a `oc get all -n prometheus-project` parancsot.
+> Annak ellenőrzéséhez, hogy a prom StatefulSet rendelkezik-e a DESIRED és a CURRENT szám replikákkal, futtassa a `oc get statefulset -n prometheus-project` parancsot. A projekt összes erőforrásának ellenőrzéséhez futtassa a `oc get all -n prometheus-project` parancsot.
 
-## <a name="add-permissions-to-allow-service-discovery"></a>Engedélyek hozzáadása a szolgáltatás felderítésének engedélyezéséhez
+## <a name="add-permissions-to-allow-service-discovery"></a>Engedélyek hozzáadása a szolgáltatásfelderítés engedélyezéséhez
 
-Hozzon létre egy Prometheus-sdrole. YML fájlt a következő tartalom megadásával:
+Hozzon létre egy prometheus-sdrole.yml fájlt a következő tartalom megadásával:
 ```
 apiVersion: template.openshift.io/v1
 kind: Template
@@ -170,7 +170,7 @@ objects:
     name: prom
     namespace: ${PROMETHEUS_PROJECT}
 ```
-Ha a sablont minden olyan projektre alkalmazni kívánja, amelyről engedélyezni szeretné a szolgáltatás-felderítést, futtassa a következő parancsokat:
+Ha a sablont minden olyan projektre alkalmazni szeretné, amelyről engedélyezni szeretné a szolgáltatásfelderítést, futtassa a következő parancsokat:
 ```
 oc process -f prometheus-sdrole.yml | oc apply -f - -n app-project1
 oc process -f prometheus-sdrole.yml | oc apply -f - -n app-project2
@@ -178,40 +178,40 @@ oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 ```
 
 > [!NOTE]
-> A szerepkör-és a RoleBinding helyes létrehozásának ellenőrzéséhez futtassa a `oc get role` és `oc get rolebinding` a parancsot.
+> Annak ellenőrzéséhez, hogy a Szerepkör és `oc get role` a `oc get rolebinding` RoleBinding megfelelően lett-e létrehozva, futtassa a és a parancsokat.
 
-## <a name="optional-deploy-example-application"></a>Nem kötelező: Példa alkalmazás üzembe helyezése
+## <a name="optional-deploy-example-application"></a>Nem kötelező: Példaalkalmazás telepítése
 
-Minden működik, de nincsenek metrikai források. Nyissa meg a Prometheus URL-cím (https://prom-prometheus-project.apps.*véletlenszerű azonosítót*.*régió*.azmosa.io/). A következő paranccsal keresheti meg:
+Minden működik, de nincsenek metrikaforrások. Ugrás a Prometheushttps://prom-prometheus-project.appsURL-jére ( .* random-id*. *régió*.azmosa.io/). A következő paranccsal találhatja meg:
 
 ```
 oc get route prom -n prometheus-project
 ```
 > [!IMPORTANT]
-> Ne felejtse el hozzáadni a https://előtagot az állomásnév elejéhez.
+> Ne felejtse el hozzáadni a https:// előtagot az állomásnév elejéhez.
 
-Az **állapot > szolgáltatás felderítése** lapon az 0/0 aktív célpontok jelennek meg.
+Az **Állapot > szolgáltatásfelderítése** lapon 0/0 aktív cél jelenik meg.
 
-Egy példaként szolgáló alkalmazás üzembe helyezéséhez, amely a/Metrics-végpont alatti alapszintű Python-metrikákat teszi elérhetővé, futtassa a következő parancsokat:
+Egy példaalkalmazás üzembe helyezéséhez, amely elérhetővé teszi az alapvető Python-metrikákat a /metrics végpont alatt, futtassa a következő parancsokat:
 ```
 oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=example1 -n app-project1
 
 oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=example2 -n app-project2
 ```
-Az új alkalmazásoknak érvényes célként kell szerepelniük a szolgáltatás felderítési lapján a telepítés után 30 másodpercen belül.
+Az új alkalmazásoknak a telepítést követő 30 másodpercen belül érvényes példányként kell megjelenniük a Szolgáltatásfelderítés lapon.
 
-További részletekért válassza az **állapot** > **céljait**.
+További részletekért válassza **az Állapotcélok** > **lehetőséget.**
 
 > [!NOTE]
-> A Prometheus minden sikeresen lekapart cél esetében felvesz egy adatpontot a felfelé mutató metrikába. Válassza a **Prometheus** lehetőséget a bal felső sarokban, írja be a kifejezést kifejezésként, majd válassza a **végrehajtás**lehetőséget.
+> Minden sikeresen lekapart cél, Prometheus hozzáad egy adatpontot a felmérő metrika. Válassza a **Prometheus** elemet a bal felső sarokban, írja **be a kifejezést,** majd válassza a **Végrehajtás lehetőséget.**
 
 ## <a name="next-steps"></a>További lépések
 
-Egyéni Prometheus-rendszerállapot-kialakítást adhat az alkalmazásaihoz. A Prometheus-ügyfél könyvtára, amely leegyszerűsíti a Prometheus-metrikák előkészítését, készen áll a különböző programozási nyelvekre.
+Egyéni Prometheus-műszereket adhat hozzá alkalmazásaihoz. A Prometheus Ügyfél könyvtár, amely leegyszerűsíti a Prometheus metrikák előkészítését, készen áll a különböző programozási nyelvekre.
 
 További információt a következő GitHub-tárakban talál:
 
  - [Java](https://github.com/prometheus/client_java)
  - [Python](https://github.com/prometheus/client_python)
- - [Go](https://github.com/prometheus/client_golang)
+ - [Ugrás](https://github.com/prometheus/client_golang)
  - [Ruby](https://github.com/prometheus/client_ruby)

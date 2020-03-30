@@ -1,6 +1,6 @@
 ---
-title: Szervezeti egység (OU) létrehozása a Azure AD Domain Servicesban | Microsoft Docs "
-description: Megtudhatja, hogyan hozhat létre és kezelhet egyéni szervezeti egységeket Azure AD Domain Services felügyelt tartományokban.
+title: Szervezeti egység létrehozása az Azure AD tartományi szolgáltatásokban | Microsoft Dokumentumok"
+description: Ismerje meg, hogyan hozhat létre és kezelhet egyéni szervezeti egységet egy Azure AD tartományi szolgáltatások által felügyelt tartományban.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,79 +12,79 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
 ms.openlocfilehash: 7abbdf03e85f425f65a45e6640b82529c2b9c84f
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77614067"
 ---
-# <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Szervezeti egység (OU) létrehozása Azure AD Domain Services felügyelt tartományban
+# <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Szervezeti egység létrehozása egy Azure AD tartományi szolgáltatások által felügyelt tartományban
 
-Active Directory tartományi szolgáltatások (AD DS) szervezeti egységek (OU-ket) lehetővé teszik az objektumok (például felhasználói fiókok, szolgáltatásfiókok vagy számítógépfiókok) logikai csoportosítását. Ezután hozzárendelheti a rendszergazdákat adott szervezeti egységekhez, és Csoportházirendet alkalmazhat a megcélzott konfigurációs beállítások betartatására.
+Az Active Directory tartományi szolgáltatások (AD DS) szervezeti egységei lehetővé teszik az objektumok, például a felhasználói fiókok, a szolgáltatásfiókok vagy a számítógépfiókok logikai csoportosítását. Ezután hozzárendelheti a rendszergazdákat az adott számítógépgyártókhoz, és csoportházirendet alkalmazhat a célzott konfigurációs beállítások kényszerítéséhez.
 
-Az Azure AD DS felügyelt tartományok két beépített szervezeti egységgel rendelkeznek – *AADDC számítógépek* és *AADDC-felhasználók*. A *AADDC számítógépek* szervezeti egysége a felügyelt tartományhoz csatlakozó összes számítógép számítógép-objektumait tartalmazza. A *AADDC-felhasználók* szervezeti egysége az Azure ad-bérlőből szinkronizált felhasználókat és csoportokat tartalmaz. Az Azure AD DSt használó munkaterhelések létrehozásakor és futtatásakor előfordulhat, hogy létre kell hoznia egy szolgáltatásfiókot az alkalmazásokhoz, hogy azok hitelesítése megtörténjen. A szolgáltatásfiókok rendszerezéséhez gyakran létre kell hoznia egy egyéni szervezeti egységet az Azure AD DS felügyelt tartományban, majd a szervezeti egységen belül létre kell hoznia a szolgáltatási fiókokat.
+Az Azure AD DS által felügyelt tartományok közé tartozik két beépített ous - *AADDC számítógépek* és *AADDC felhasználók.* Az *AADDC számítógépek szervezeti* egysége a felügyelt tartományhoz csatlakozó összes számítógép számítógépobjektumait tartalmazza. Az *AADDC-felhasználók* szervezeti egység e felhasználók és csoportok szinkronizált az Azure AD-bérlő. Az Azure AD DS-t használó számítási feladatok létrehozása és futtatása során előfordulhat, hogy szolgáltatási fiókokat kell létrehoznia az alkalmazások számára a hitelesítéshez. Ezek a szolgáltatásfiókok rendszerezéséhez gyakran hozzon létre egy egyéni szervezeti egységet az Azure AD DS felügyelt tartományban, majd hozzon létre szolgáltatásfiókokat az adott szervezeti egységen belül.
 
-Hibrid környezetben a helyszíni AD DS környezetben létrehozott szervezeti egységek nem szinkronizálhatók az Azure AD DS. Az Azure AD DS felügyelt tartományok lapos szervezeti struktúrát használnak. Az összes felhasználói fiókot és csoportot a rendszer a *AADDC-felhasználók* tárolóban tárolja, annak ellenére, hogy a különböző helyszíni tartományokból vagy erdőkből szinkronizálva van, még akkor is, ha van konfigurálva egy hierarchikus szervezeti egység struktúrája.
+Hibrid környezetben a helyszíni Activeád-ds-környezetben létrehozott független szoftverei nincsenek szinkronizálva az Azure AD DS-sel. Az Azure AD DS által felügyelt tartományok egy sima szervezeti egység struktúrát használnak. Minden felhasználói fiók és csoport az *AADDC-felhasználók* tárolóban tárolódik, annak ellenére, hogy különböző helyszíni tartományokból vagy erdőkből vannak szinkronizálva, még akkor is, ha ott hierarchikus szervezeti egységstruktúrát konfigurált.
 
-Ez a cikk bemutatja, hogyan hozhat létre szervezeti egységet az Azure AD DS felügyelt tartományában.
+Ez a cikk bemutatja, hogyan hozhat létre egy szervezeti egységet az Azure AD DS felügyelt tartományban.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
+A cikk végrehajtásához a következő erőforrásokra és jogosultságokra van szükség:
 
 * Aktív Azure-előfizetés.
-    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
-    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
-* Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
-    * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
-* Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server Management VM.
-    * Ha szükséges, fejezze be az oktatóanyagot [egy felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm].
-* Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
+    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Az előfizetéshez társított Azure Active Directory-bérlő, amely et egy helyszíni könyvtárral vagy egy csak felhőbeli könyvtárral szinkronizált.
+    * Szükség esetén [hozzon létre egy Azure Active Directory-bérlőt,][create-azure-ad-tenant] vagy [társítson egy Azure-előfizetést a fiókjához.][associate-azure-ad-tenant]
+* Az Azure Active Directory tartományi szolgáltatások felügyelt tartomány a konfigurált és konfigurált az Azure AD-bérlő.
+    * Szükség esetén töltse ki az oktatóanyagot [az Azure Active Directory tartományi szolgáltatások példányának létrehozásához és konfigurálásához.][create-azure-ad-ds-instance]
+* Az Azure AD DS felügyelt tartományához csatlakozott Windows Server felügyeleti virtuális gép.
+    * Szükség esetén fejezze be az [oktatóanyagot egy felügyeleti virtuális gép létrehozásához.][tutorial-create-management-vm]
+* Egy felhasználói fiók, amely az *Azure AD DC rendszergazdák* csoportjának tagja az Azure AD-bérlőben.
 
-## <a name="custom-ou-considerations-and-limitations"></a>Egyéni OU-megfontolások és korlátozások
+## <a name="custom-ou-considerations-and-limitations"></a>Egyéni szervezeti egységekkel kapcsolatos szempontok és korlátozások
 
-Amikor egyéni szervezeti egységeket hoz létre egy Azure AD DS felügyelt tartományban, a felhasználók felügyeletéhez és a csoportházirend alkalmazásához további kezelési rugalmasságot szerezhet. A helyszíni AD DS környezethez képest bizonyos korlátozások és megfontolások az Azure-beli egyéni OU-struktúra létrehozásakor és kezelésekor AD DS:
+Amikor egyéni független védelmi államokat hoz létre egy Azure AD DS felügyelt tartományban, további felügyeleti rugalmasságot kap a felhasználókezeléshez és a csoportházirend alkalmazásához. A helyszíni AD DS-környezethez képest az Azure AD DS-ben egy egyéni szervezeti egységstruktúra létrehozása és kezelése során bizonyos korlátozások és szempontok vannak:
 
-* Egyéni szervezeti egységek létrehozásához a felhasználóknak a *HRE DC-rendszergazdák* csoport tagjának kell lenniük.
-* Az egyéni szervezeti egységeket létrehozó felhasználók a szervezeti egység felett rendszergazdai jogosultságokkal (teljes hozzáférés) rendelkeznek, és az erőforrás tulajdonosa.
-    * Alapértelmezés szerint az *HRE DC-rendszergazdák* csoport az egyéni szervezeti egység teljes hozzáférését is ellenőrzi.
-* A rendszer létrehoz egy alapértelmezett szervezeti egységet a *AADDC felhasználók számára* , amely az Azure ad-bérlő összes szinkronizált felhasználói fiókját tartalmazza.
-    * A felhasználók vagy csoportok nem helyezhetők át a *AADDC felhasználói* szervezeti egységből a létrehozott egyéni szervezeti egységekre. Csak az Azure AD DS felügyelt tartományában létrehozott felhasználói fiókok és erőforrások helyezhetők át egyéni szervezeti egységbe.
-* Az egyéni szervezeti egységek alatt létrehozott felhasználói fiókok, csoportok, szolgáltatásfiókok és számítógép-objektumok nem érhetők el az Azure AD-bérlőben.
-    * Ezek az objektumok nem jelennek meg a Microsoft Graph API vagy az Azure AD felhasználói felületén. Ezek csak az Azure AD DS felügyelt tartományában érhetők el.
+* Egyéni számítógépgyártók létrehozásához a felhasználóknak az *AAD tartományvezérlő-rendszergazdák* csoport tagjának kell lenniük.
+* Az egyéni szervezeti egységet létrehozó felhasználó rendszergazdai jogosultságokat (teljes körű vezérlést) kap a szervezeti egység felett, és ő az erőforrás tulajdonosa.
+    * Alapértelmezés szerint az *AAD tartományvezérlő-rendszergazdák* csoport is teljes hozzáféréssel rendelkezik az egyéni szervezeti egységhez.
+* Létrejön az *AADDC-felhasználók* alapértelmezett szervezeti egysége, amely az Azure AD-bérlő összes szinkronizált felhasználói fiókját tartalmazza.
+    * Az *AADDC-felhasználók szervezeti* egységből nem helyezhet át felhasználókat vagy csoportokat a létrehozott egyéni szervezeti egységekbe. Csak az Azure AD DS felügyelt tartományban létrehozott felhasználói fiókok vagy erőforrások helyezhetők át az egyéni ous-okba.
+* Az egyéni számítógép-környezetben létrehozott felhasználói fiókok, csoportok, szolgáltatásfiókok és számítógép-objektumok nem érhetők el az Azure AD-bérlőben.
+    * Ezek az objektumok nem jelennek meg a Microsoft Graph API-val vagy az Azure AD felhasználói felületén; csak az Azure AD DS felügyelt tartományában érhetők el.
 
 ## <a name="create-a-custom-ou"></a>Egyéni szervezeti egység létrehozása
 
-Egyéni szervezeti egység létrehozásához a Active Directory felügyeleti eszközöket kell használnia egy tartományhoz csatlakoztatott virtuális gépről. A Active Directory felügyeleti központ segítségével megtekintheti, szerkesztheti és létrehozhatja az erőforrásokat egy Azure AD DS felügyelt tartományban, beleértve a szervezeti egységeket is.
+Egyéni szervezeti egység létrehozásához használja az Active Directory felügyeleti eszközöket egy tartományhoz csatlakozó virtuális gépről. Az Active Directory felügyeleti központ lehetővé teszi, hogy egy Azure AD DS által felügyelt tartományban tekintsen, szerkesszen és hozzon létre erőforrásokat, beleértve a saját erőforrásokat is.
 
 > [!NOTE]
-> Ha egyéni szervezeti egységet szeretne létrehozni egy Azure AD DS felügyelt tartományban, be kell jelentkeznie egy olyan felhasználói fiókba, amely tagja az *HRE DC-rendszergazdák* csoportnak.
+> Ha egyéni szervezeti egységet szeretne létrehozni egy Azure AD DS felügyelt tartományban, be kell jelentkeznie egy olyan felhasználói fiókba, amely az *AAD DC rendszergazdák* csoport tagja.
 
-1. Jelentkezzen be a felügyeleti virtuális gépre. A Azure Portal használatával történő kapcsolódás lépéseiért lásd: [Kapcsolódás Windows Server rendszerű virtuális géphez][connect-windows-server-vm].
-1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik a rendelkezésre álló felügyeleti eszközök listája, amely az oktatóanyagban a [felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm]lett telepítve.
-1. A szervezeti egységek létrehozásához és kezeléséhez válassza ki a **Active Directory felügyeleti központ** elemet a felügyeleti eszközök listájából.
-1. A bal oldali ablaktáblán válassza ki az Azure AD DS felügyelt tartományát, például *aaddscontoso.com*. Megjelenik a meglévő szervezeti egységek és erőforrások listája:
+1. Jelentkezzen be a felügyeleti virtuális gép. Az Azure Portal használatával való csatlakozáslépéseiről a [Csatlakozás Windows Server virtuális géphez][connect-windows-server-vm]című témakörben található.
+1. A kezdőképernyőn válassza a **Felügyeleti eszközök lehetőséget.** Megjelenik az oktatóanyagban telepített elérhető felügyeleti eszközök listája a [felügyeleti virtuális gép létrehozásához.][tutorial-create-management-vm]
+1. A felelős személyek létrehozásához és kezeléséhez válassza az **Active Directory felügyeleti központ** elemet a felügyeleti eszközök listájából.
+1. A bal oldali ablaktáblában válassza ki az Azure AD DS felügyelt tartományát, például *a aaddscontoso.com.* A meglévő ous-ok és erőforrások listája a következő:
 
-    ![Válassza ki az Azure AD DS felügyelt tartományát a Active Directory felügyeleti központ](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
+    ![Az Azure AD DS által felügyelt tartomány kiválasztása az Active Directory felügyeleti központban](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
 
-1. A **feladatok** ablaktábla a Active Directory felügyeleti központ jobb oldalán jelenik meg. A tartomány alatt, például a *aaddscontoso.com*területen válassza az **új > szervezeti egység**lehetőséget.
+1. A **Feladatok** ablaktábla az Active Directory felügyeleti központ jobb oldalán látható. A tartomány ban, például *aaddscontoso.com,* válassza **az Új > szervezeti egység**lehetőséget.
 
-    ![Válassza ki az új szervezeti egység létrehozásához szükséges lehetőséget a Active Directory felügyeleti központ](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
+    ![Válassza ki az új szervezeti egység létrehozásának lehetőségét az Active Directory felügyeleti központban](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
 
-1. A **szervezeti egység létrehozása** párbeszédpanelen adja meg az új szervezeti egység (például *MyCustomOu*) **nevét** . Adja meg a szervezeti egység rövid leírását, például az *Egyéni szervezeti egységet a szolgáltatásfiókok számára*. Ha kívánja, megadhatja a szervezeti egység **felügyelt** mezőjét is. Az egyéni szervezeti egység létrehozásához kattintson **az OK gombra**.
+1. A **Szervezeti egység létrehozása** párbeszédpanelen adja meg az új szervezeti egység **nevét,** például *A MyCustomOu*. Adjon meg egy rövid leírást a szervezeti egységhez, például *egyéni szervezeti egységet a szolgáltatásfiókokhoz.* Ha szükséges, beállíthatja a szervezeti egység **felügyelt mezőjét** is. Az egyéni szervezeti egység létrehozásához válassza az **OK gombot.**
 
-    ![Egyéni szervezeti egység létrehozása a Active Directory felügyeleti központ](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
+    ![Egyéni szervezeti egység létrehozása az Active Directory felügyeleti központból](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
 
-1. A Active Directory felügyeleti központban az egyéni szervezeti egység már fel van sorolva, és használható:
+1. Az Active Directory felügyeleti központban az egyéni szervezeti egység már szerepel a listában, és használható:
 
-    ![A Active Directory felügyeleti központ használható egyéni szervezeti egység](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
+    ![Az Active Directory felügyeleti központban használható egyéni szervezeti egység](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A felügyeleti eszközök használatával, illetve a szolgáltatásfiókok létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
+A felügyeleti eszközök használatáról, illetve a szolgáltatásfiókok létrehozásáról és használatáról az alábbi cikkekben talál további információt:
 
 * [Active Directory felügyeleti központ: Első lépések](https://technet.microsoft.com/library/dd560651.aspx)
 * [Szolgáltatásfiókok részletes útmutatója](https://technet.microsoft.com/library/dd548356.aspx)

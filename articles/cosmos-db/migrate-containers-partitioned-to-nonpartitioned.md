@@ -1,30 +1,30 @@
 ---
-title: Nem particionált Azure Cosmos-tárolók áttelepíthetők particionált tárolók számára
-description: Megtudhatja, hogyan telepítheti át az összes meglévő nem particionált tárolót particionált tárolóba.
+title: Nem particionált Azure Cosmos-tárolók áttelepítése particionált tárolókba
+description: Ismerje meg, hogyan telepítheti át az összes meglévő nem particionált tárolók particionált tárolókba.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
 ms.openlocfilehash: 742ef62895f3ef64e8fa22ab21d2947bee57776b
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623350"
 ---
-# <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Nem particionált tárolók áttelepíthetők particionált tárolók számára
+# <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Nem particionált tárolók áttelepítése particionált tárolókba
 
-Azure Cosmos DB támogatja a tárolók partíciós kulcs nélküli létrehozását. Jelenleg nem particionált tárolókat hozhat létre az Azure CLI és a Azure Cosmos DB SDK-k (.net, Java, NodeJs) használatával, amelyek verziója kisebb vagy egyenlő, mint 2. x. Nem particionált tárolók nem hozhatók létre a Azure Portal használatával. Azonban az ilyen nem particionált tárolók nem rugalmasak, és a rögzített tárolókapacitás 20 GB és a maximális átviteli sebesség (10K RU/s).
+Az Azure Cosmos DB támogatja a partíciókulcs nélküli tárolók létrehozását. Jelenleg nem particionált tárolókat hozhat létre az Azure CLI és az Azure Cosmos DB SDK-k (.Net, Java, NodeJs) használatával, amelyek verziója 2.x-nél kisebb vagy azzal egyenlő. Nem particionált tárolókat nem hozhat létre az Azure Portal használatával. Az ilyen nem particionált tárolók azonban nem rugalmasak, és 20 GB rögzített tárolókapacitással és 10 K RU/s átviteli korláttal rendelkeznek.
 
-A nem particionált tárolók örököltek, és a tárolók és az átviteli sebesség méretezéséhez át kell telepítenie a meglévő nem particionált tárolókat a particionált tárolók között. A Azure Cosmos DB rendszer által meghatározott mechanizmust biztosít a nem particionált tárolók particionált tárolóba való átadásához. Ez a dokumentum azt ismerteti, hogy a meglévő, nem particionált tárolók hogyan lesznek automatikusan áttelepítve a particionált tárolókban. Az automatikus áttelepítési funkciót csak akkor használhatja ki, ha az SDK-k v3-as verzióját használja az összes nyelven.
+A nem particionált tárolók örökölt, és a meglévő, nem particionált tárolók particionált tárolók a tároló és az átviteli kapacitás méretezése érdekében. Az Azure Cosmos DB egy rendszer által definiált mechanizmust biztosít a nem particionált tárolók particionált tárolókba való áttelepítéséhez. Ez a dokumentum bemutatja, hogy az összes meglévő nem particionált tárolók automatikusáttelepítése particionált tárolókba. Az automatikus áttelepítési szolgáltatás csak akkor használható, ha az SDK-k V3-as verzióját használja az összes nyelven.
 
 > [!NOTE]
-> Jelenleg nem telepíthet át Azure Cosmos DB MongoDB és Gremlin API-fiókokat a jelen dokumentumban ismertetett lépések segítségével.
+> Jelenleg nem telepítheti át az Azure Cosmos DB MongoDB és a Gremlin API-fiókokat a jelen dokumentumban leírt lépések használatával.
 
-## <a name="migrate-container-using-the-system-defined-partition-key"></a>Tároló átmigrálása a rendszer által definiált partíciós kulccsal
+## <a name="migrate-container-using-the-system-defined-partition-key"></a>Tároló áttelepítése a rendszer által definiált partíciós kulccsal
 
-Az áttelepítés támogatásához a Azure Cosmos DB egy `/_partitionkey` nevű rendszerpartíciós kulcsot biztosít az összes olyan tárolón, amely nem rendelkezik partíciós kulccsal. A partíciós kulcs definíciója a tárolók migrálása után nem módosítható. Egy particionált tárolóba áttelepített tároló definíciója például a következő lesz:
+Az áttelepítés támogatása érdekében az Azure Cosmos DB `/_partitionkey` egy rendszer által definiált partíciókulcsot biztosít, amely minden olyan tárolón megjelenik, amely nem rendelkezik partíciókat. A tárolók áttelepítése után nem módosíthatja a partíciókulcs-definíciót. Például egy particionált tárolóba áttelepített tároló definíciója a következő lesz:
 
 ```json
 {
@@ -38,14 +38,14 @@ Az áttelepítés támogatásához a Azure Cosmos DB egy `/_partitionkey` nevű 
 }
 ```
 
-A tároló migrálása után létrehozhat dokumentumokat úgy, hogy kitölti a `_partitionKey` tulajdonságot a dokumentum többi tulajdonságával együtt. A `_partitionKey` tulajdonság a dokumentumok partíciós kulcsát jelöli.
+A tároló áttelepítése után dokumentumokat hozhat létre a `_partitionKey` tulajdonság és a dokumentum egyéb tulajdonságainak feltöltésével. A `_partitionKey` tulajdonság a dokumentumok partíciókulcsát jelöli.
 
-A megfelelő partíciós kulcs kiválasztása fontos a kiépített átviteli sebesség optimális kihasználásához. További információ: [How to Choo an Partition Key](partitioning-overview.md) article.
+A megfelelő partíciókulcs kiválasztása fontos a kiosztott átviteli teljesítmény optimális kihasználásához. További információ: [hogyan választhat ja a partíciókulcs-cikket.](partitioning-overview.md)
 
 > [!NOTE]
-> Csak akkor használhatja a rendszerszintű partíciós kulcs előnyeit, ha az SDK-k legújabb vagy v3-as verzióját használja az összes nyelven.
+> A rendszer által definiált partíciókulcs csak akkor használható, ha az SDK-k legújabb/V3-as verzióját használja az összes nyelven.
 
-Az alábbi példában egy mintakód látható egy olyan dokumentum létrehozásához, amely a rendszer által definiált partíciós kulccsal rendelkezik, és elolvasta a következő dokumentumot:
+A következő példa egy mintakódot mutat be, amely a rendszer által definiált partíciókulcssal rendelkező dokumentumot hoz létre, és olvassa el a dokumentumot:
 
 **A dokumentum JSON-ábrázolása**
 
@@ -91,15 +91,15 @@ ItemResponse<DeviceInformationItem> readResponse =
 
 ```
 
-A teljes minta esetében tekintse meg a [.net-minták][1] GitHub-tárházát.
+A teljes minta: [a .Net minták][1] GitHub-tárház.
                       
-## <a name="migrate-the-documents"></a>A dokumentumok migrálása
+## <a name="migrate-the-documents"></a>Dokumentumok áttelepítése
 
-Amíg a tároló definíciója ki van bővítve egy Partition Key tulajdonsággal, a tárolóban található dokumentumok nem lesznek automatikusan áttelepítve. Ez azt jelenti, hogy a rendszerpartíció Key tulajdonságának `/_partitionKey` elérési útja nem adódik hozzá automatikusan a meglévő dokumentumokhoz. A meglévő dokumentumokat úgy kell újraparticionálni, hogy beolvassa azokat a dokumentumokat, amelyeket nem partíciós kulcs nélkül hoztak létre, és visszaírják őket a dokumentumok `_partitionKey` tulajdonságával.
+Míg a tároló definíciója egy partíciókulcs tulajdonsággal van javítva, a tárolón belüli dokumentumok nem lesznek automatikusan áttelepítve. Ami azt jelenti, `/_partitionKey` hogy a rendszerpartíció kulcstulajdonságának elérési útja nem kerül automatikusan a meglévő dokumentumokhoz. Újra kell particionálnia a meglévő dokumentumokat a partíciókulcs nélkül létrehozott `_partitionKey` dokumentumok olvasásával, és újra kell írnia őket a dokumentumokban lévő tulajdonsággal.
 
-## <a name="access-documents-that-dont-have-a-partition-key"></a>A partíciós kulccsal nem rendelkező dokumentumok elérése
+## <a name="access-documents-that-dont-have-a-partition-key"></a>Partíciókulccsal nem rendelkező dokumentumok elérése
 
-Az alkalmazások a "PartitionKey. None" nevű speciális rendszertulajdonságot használva érhetik el a meglévő dokumentumokat, amelyek nem rendelkeznek partíciós kulccsal, ez a nem áttelepített dokumentumok értéke. Ezt a tulajdonságot használhatja az összes szifilisz-és lekérdezési műveletben. Az alábbi példa egy olyan mintát mutat be, amely egyetlen dokumentumot olvas be a NonePartitionKey. 
+Az alkalmazások hozzáférhetnek a meglévő dokumentumokhoz, amelyek nem rendelkeznek partíciókulccsal a "PartitionKey.None" nevű speciális rendszertulajdonság használatával, ez a nem áttelepített dokumentumok értéke. Ezt a tulajdonságot az összes CRUD és lekérdezési műveletben használhatja. A következő példa egy minta beolvasásához egyetlen dokumentumot a NonePartitionKey. 
 
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 
@@ -110,23 +110,23 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 
 ```
 
-A dokumentumok újraparticionálásával kapcsolatos teljes minta a [.net-minták][1] GitHub-tárházában található. 
+A dokumentumok újraparticionálására vonatkozó teljes minta a [.Net minták][1] GitHub-tárházban található. 
 
-## <a name="compatibility-with-sdks"></a>Az SDK-k kompatibilitása
+## <a name="compatibility-with-sdks"></a>Kompatibilitás az SDK-kkal
 
-Azure Cosmos DB SDK-k (például v2. x. x és v1. x. x) régebbi verziója nem támogatja a rendszer által definiált partíciós kulcs tulajdonságot. Tehát ha egy régebbi SDK-ból olvassa be a tároló definícióját, nem tartalmaz partíciós kulcs definícióját, és ezek a tárolók ugyanúgy működnek, mint korábban. Az SDK-k régebbi verziójával létrehozott alkalmazások továbbra is a nem particionált módon működnek, mivel nem módosulnak. 
+Az Azure Cosmos DB SDK-k, például a V2.x.x és a V1.x.x régebbi verziója nem támogatja a rendszer által definiált partíciókulcs-tulajdonságot. Így amikor egy régebbi SDK-ból olvassa be a tárolódefiníciót, nem tartalmaz partíciókulcs-definíciót, és ezek a tárolók pontosan a korábban fognak úgy viselkedni, mint korábban. Az SDK-k régebbi verziójával készült alkalmazások továbbra is nem particionált, mint a módosítások nélkül. 
 
-Ha egy áttelepített tárolót az SDK legújabb/v3 verziója használ, és megkezdi a rendszer által definiált partíciós kulcs feltöltését az új dokumentumokon belül, akkor a régebbi SDK-k által már nem férhet hozzá (olvasási, frissítési, törlési, lekérdezési) ilyen dokumentumokat.
+Ha az sdk legújabb/V3-as verziója felhasználja az áttelepített tárolót, és az új dokumentumokon belül elkezdi felnépesíteni a rendszer által definiált partíciókulcsot, többé nem férhet hozzá (olvasni, frissíteni, törölni, lekérdezni) ezeket a dokumentumokat a régebbi SDK-kból.
 
 ## <a name="known-issues"></a>Ismert problémák
 
-**A v3 SDK használatával a partíciós kulcs nélkül beszúrt elemek száma nagyobb átviteli sebességgel járhat**
+**A partíciókulcs nélkül v3 SDK használatával beszúrt elemek számának lekérdezése nagyobb átviteli felhasználást vonhat maga után**
 
-Ha a v2 SDK-val beszúrt elemek esetében a v3 SDK-ból kérdez le, vagy a v3 SDK-val `PartitionKey.None` paraméterrel beszúrt elemeket, akkor a Count lekérdezés több RU/s-t is felhasználhat, ha a FeedOptions a `PartitionKey.None` paramétert megadja. Azt javasoljuk, hogy ne adja meg a `PartitionKey.None` paramétert, ha nem szúr be más elemet partíciós kulccsal.
+Ha a V3 SDK-ból lekérdezi a V2 SDK használatával beszúrt elemeket, vagy a V3 SDK paraméterrel `PartitionKey.None` beszúrt elemeket, a count lekérdezés több RU/s-t vehet igénybe, ha a `PartitionKey.None` paraméter a FeedOptions-ben van megadva. Azt javasoljuk, hogy ne `PartitionKey.None` adja meg a paramétert, ha nincs más elem partíciókulccsal beszúrva.
 
-Ha az új elemek a partíciós kulcs különböző értékeivel vannak beszúrva, akkor az ilyen elemek számának lekérdezése a `FeedOptions` megfelelő kulcsának átadásával nem fog problémát okozni. Miután új dokumentumokat szúrt be a partíciós kulccsal, ha csak a dokumentumok darabszámát kell lekérdezni a partíciós kulcs értéke nélkül, a lekérdezés ismét magasabb RU/s-t eredményezhet a normál particionált gyűjteményekhez hasonló módon.
+Ha új elemeket szúr be a partíciókulcs különböző értékeivel, az ilyen `FeedOptions` elemek számának lekérdezése a megfelelő kulcs átadásával nem lesz probléma. Miután új dokumentumokat szúrt be partíciós kulccsal, ha csak a dokumentumszámot kell lekérdeznie a partíciókulcs értéke nélkül, a lekérdezés ismét magasabb RU/s-ot okozhat, mint a normál particionált gyűjtemények.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 * [Az Azure Cosmos DB kérelemegységei](request-units.md)

@@ -1,6 +1,6 @@
 ---
-title: Service Fabric Azure Resource Manager üzembe helyezési guardrails
-description: Ez a cikk áttekintést nyújt a Service Fabric-fürtök Azure Resource Manager használatával történő telepítésekor előforduló gyakori hibákról és azok elkerüléséről.
+title: Service Fabric Azure Resource Manager telepítési korlátok
+description: Ez a cikk áttekintést nyújt a Service Fabric-fürt azure Resource Manageren keresztül történő üzembe helyezésekor elkövetett gyakori hibákról, és ezek elkerüléséről.
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
 ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77368575"
 ---
-# <a name="service-fabric-guardrails"></a>Service Fabric guardrails 
-Service Fabric-fürt telepítésekor a rendszer behelyezi a guardrails-t, így az érvénytelen fürtkonfiguráció esetén sikertelen lesz a Azure Resource Manager központi telepítés. A következő szakaszokban áttekintheti a fürtökkel kapcsolatos gyakori problémákat és a problémák enyhítéséhez szükséges lépéseket. 
+# <a name="service-fabric-guardrails"></a>Szolgáltatás háló védőkorlátjai 
+Service Fabric-fürt telepítésekor korlátok kerülnek bevezetésre, amelyek érvénytelen fürtkonfiguráció esetén sikertelenek lesznek az Azure Resource Manager üzembe helyezésekor. A következő szakaszok áttekintést nyújtanak a fürtkonfigurációval kapcsolatos gyakori problémákról és a problémák enyhítéséhez szükséges lépésekről. 
 
-## <a name="durability-mismatch"></a>Nem megfelelő tartósság
+## <a name="durability-mismatch"></a>A tartóssági eltérés
 ### <a name="overview"></a>Áttekintés
-Egy Service Fabric típusú csomópont tartóssági értéke egy Azure Resource Manager sablon két különböző szakaszában van definiálva. A virtuálisgép-méretezési csoport erőforrásának virtuálisgép-méretezési csoport bővítmény szakasza, valamint a Service Fabric fürterőforrás csomópont típusa szakasza. Követelmény, hogy az ezekben a fejezetekben szereplő tartóssági érték egyezzen, ellenkező esetben az erőforrás-telepítés sikertelen lesz.
+A Service Fabric-csomóponttípus tartóssági értékét egy Azure Resource Manager-sablon két különböző szakaszában definiálja. A Virtuálisgép méretezési csoport erőforrás virtualmachine scale set bővítmény szakasza, valamint a Service Fabric fürterőforrás Csomóponttípusa szakasza. Ez a követelmény, hogy a tartóssági érték ezekben a szakaszokban egyezik, különben az erőforrás-telepítés sikertelen lesz.
 
-A következő szakasz a virtuálisgép-méretezési csoport bővítmény tartóssági beállításának és a Service Fabric csomópont típusú tartóssági beállításnak a tartóssági eltérését mutatja be:  
+A következő szakasz egy példa a virtuális gép méretezési csoport bővítmény tartóssági és a Service Fabric-csomópont típusa tartóssági beállítás közötti tartóssági eltérést tartalmazza:  
 
-**Virtuálisgép-méretezési csoport tartóssági beállítása**
+**Virtuálisgép-méretezési készlet tartóssági beállítása**
 ```json 
 {
   "extensions": [
@@ -41,7 +41,7 @@ A következő szakasz a virtuálisgép-méretezési csoport bővítmény tartós
 }
 ```
 
-**Service Fabric a csomópont típusának tartóssági beállítása** 
+**A Service Fabric csomóponttípus tartóssági beállítása** 
 ```json
 {
   "nodeTypes": [
@@ -56,32 +56,32 @@ A következő szakasz a virtuálisgép-méretezési csoport bővítmény tartós
 ```
 
 ### <a name="error-messages"></a>Hibaüzenetek
-* A virtuálisgép-méretezési csoport tartóssági eltérése nem egyezik a jelenlegi Service Fabric csomópont típusú tartóssági szinttel
-* A virtuálisgép-méretezési csoport tartóssága nem felel meg a cél Service Fabric csomópont típusú tartóssági szintnek.
-* A virtuálisgép-méretezési csoport tartóssága megfelel a jelenlegi Service Fabric tartóssági szintnek vagy a cél Service Fabric csomópont típusú tartóssági szintnek. 
+* A virtuálisgép-méretezési készlet tartóssági eltérése nem felel meg az aktuális Szolgáltatásfabric-csomóponttípus tartóssági szintjének
+* A virtuálisgép-méretezési csoport tartóssága nem felel meg a cél szolgáltatásháló-csomópont típusának tartóssági szintjének
+* A virtuálisgép-méretezési készlet tartóssága megfelel a Service Fabric aktuális tartóssági szintjének vagy a cél szolgáltatásfabric-csomóponttípus tartóssági szintjének 
 
 ### <a name="mitigation"></a>Kezelés
-A fenti hibaüzenetek bármelyike által jelzett tartóssági eltérés kijavítása:
-1. Módosítsa a tartóssági szintet a Azure Resource Manager sablon virtuálisgép-méretezési csoport bővítmény vagy Service Fabric csomópont típusa szakaszában, hogy az értékek megegyezzenek.
-2. Telepítse újra a Azure Resource Manager sablont a frissített értékekkel.
+A tartóssági eltérés kijavítása, amelyet a fenti hibaüzenetek bármelyike jelez:
+1. Frissítse a tartóssági szintet az Azure Resource Manager-sablon Virtuálisgép-méretezési csoport vagy a Service Fabric node type szakaszában, hogy az értékek megegyeznek.
+2. Telepítse újra az Azure Resource Manager sablont a frissített értékekkel.
 
 
-## <a name="seed-node-deletion"></a>Mag csomópontjának törlése 
+## <a name="seed-node-deletion"></a>A kezdő csomópontok törlése 
 ### <a name="overview"></a>Áttekintés
-A Service Fabric-fürtök [megbízhatósági szint](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) tulajdonsággal rendelkeznek, amely meghatározza a fürt elsődleges csomópont-típusán futó rendszerszolgáltatások replikáinak számát. A szükséges replikák száma határozza meg, hogy hány csomópontot kell fenntartani a fürt elsődleges csomópont-típusában. Ha az elsődleges csomópont típusú csomópontok száma a megbízhatósági szinthez szükséges minimális érték alá esik, akkor a fürt instabillá válik.  
+A Service Fabric-fürt rendelkezik egy [megbízhatósági szint](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) tulajdonsággal, amely a fürt elsődleges csomóponttípusán futó rendszerszolgáltatások replikáinak számát határozza meg. A szükséges replikák száma határozza meg a fürt elsődleges csomóponttípusában karbantartandó csomópontok minimális számát. Ha az elsődleges csomóponttípuscsomópont-típusok csomópontjainak száma a megbízhatósági szinthez szükséges minimum alá csökken, a fürt instabillá válik.  
 
 ### <a name="error-messages"></a>Hibaüzenetek 
-A rendszer a magok csomópontjának eltávolítási műveletét észlelte, és el lesz utasítva. 
-* A művelet eredményeképpen csak {0} lehetséges magok csomópontjai maradnak a fürtben, míg {1} minimálisan szükségesek.
-* {0} magok {1}ból való eltávolítása azt eredményezi, hogy a fürt a mag csomópont Kvórumának elvesztése miatt leáll. Az egyszerre eltávolítható mag-csomópontok maximális száma {2}.
+A rendszer észlelte a magcsomópontok eltávolítását, és a rendszer elutasítja. 
+* Ez a művelet {0} azt eredményezné, hogy csak a {1} potenciális magcsomópontok maradnak a fürtben, amíg legalább szükség van.
+* A {0} magcsomópontok eltávolítása a {1} magcsomópont kvórumának elvesztése miatt lefelé haladna. Az egyszerre eltávolítható magcsomópontok maximális száma . {2}
  
 ### <a name="mitigation"></a>Kezelés 
-Győződjön meg arról, hogy az elsődleges csomópont típusa elegendő Virtual Machines a fürtben megadott megbízhatósághoz. Nem távolíthat el virtuális gépet, ha a virtuálisgép-méretezési csoport a megadott megbízhatósági szinthez tartozó csomópontok minimális száma alá kerül.
-* Ha a megbízhatósági szintet helyesen adta meg, győződjön meg arról, hogy az elsődleges csomópont-típusban elegendő csomópont van a megbízhatósági szinten. 
-* Ha a megbízhatósági szint helytelen, indítson el egy változást a Service Fabric erőforráson, hogy először csökkentse a megbízhatósági szintet, mielőtt elindítja a virtuálisgép-méretezési csoport műveleteit, és várjon, amíg befejeződik.
-* Ha a megbízhatósági szintet bronz, kövesse az alábbi [lépéseket](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) a fürt zökkenőmentes leskálázásához.
+Győződjön meg arról, hogy az elsődleges csomópont típusa elegendő virtuális géppel rendelkezik a fürtön megadott megbízhatósághoz. Nem fogja tudni eltávolítani a virtuális gépet, ha a virtuálisgép-méretezési készlet et az adott megbízhatósági szint minimális csomópontjainak száma alá viszi.
+* Ha a megbízhatósági szint helyesen van megadva, győződjön meg arról, hogy elegendő csomópont van az elsődleges csomópont típusában, ha szükséges a megbízhatósági szinthez. 
+* Ha a megbízhatósági szint helytelen, kezdeményezzen egy módosítást a Service Fabric erőforrás csökkenti a megbízhatósági szintet először a virtuális gép méretezési készlet műveletek kezdeményezése előtt, és várja meg, amíg befejeződik.
+* Ha a megbízhatósági szint Bronz, kövesse ezeket a [lépéseket](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) a fürt kecsesen történő leskálázására.
 
-## <a name="next-steps"></a>Következő lépések
-* Fürt létrehozása a Windows Servert futtató virtuális gépeken vagy számítógépeken: [Service Fabric Windows Server-fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)
-* Fürt létrehozása virtuális gépeken vagy Linuxon futó számítógépeken: [Linux-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)
-* Hibaelhárítási Service Fabric: [útmutatók](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)
+## <a name="next-steps"></a>További lépések
+* Fürt létrehozása virtuális gépeken vagy Windows Server rendszert futtató számítógépeken: [Service Fabric-fürt létrehozása Windows Server rendszerhez](service-fabric-cluster-creation-for-windows-server.md)
+* Fürt létrehozása virtuális gépeken vagy Linuxot futtató számítógépeken: [Linux-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)
+* Szolgáltatásháló – [hibaelhárítási útmutatók](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

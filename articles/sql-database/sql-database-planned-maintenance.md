@@ -1,6 +1,6 @@
 ---
-title: Az Azure karbantartási eseményeinek tervezése
-description: Megtudhatja, hogyan készítheti elő a tervezett karbantartási eseményeket a Azure SQL Database.
+title: Azure-karbantartási események tervezése
+description: Ismerje meg, hogyan készülhet fel az Azure SQL-adatbázisában tervezett karbantartási eseményekre.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,38 +12,38 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
 ms.openlocfilehash: ba882176fbe17f7b74c786f421dde8fadd58d9b7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821320"
 ---
-# <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Azure-karbantartási események tervezése Azure SQL Database
+# <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Azure karbantartási események tervezése az Azure SQL Database-ben
 
-Ismerje meg, hogyan készítheti elő a tervezett karbantartási eseményeket az Azure SQL Database-ben.
+Ismerje meg, hogyan készülhet fel a tervezett karbantartási eseményekre az Azure SQL-adatbázisában.
 
-## <a name="what-is-a-planned-maintenance-event"></a>Mi a tervezett karbantartási esemény?
+## <a name="what-is-a-planned-maintenance-event"></a>Mi az a tervezett karbantartási esemény?
 
-Az Azure SQL DB minden adatbázis esetében az adatbázis-replikák kvórumát tárolja, ahol az egyik replika az elsődleges. Az elsődleges replika minden esetben online karbantartásnak kell lennie, és legalább egy másodlagos replikának kifogástalannak kell lennie. A tervezett karbantartás során az adatbázis Kvórumának tagjai egy időben offline állapotba kerülnek, azzal a szándékkal, hogy az ügyfél leállásának hiányában egyetlen válasz elsődleges replika és legalább egy másodlagos replika online állapotban van. Ha az elsődleges replikát offline állapotba kell helyezni, egy újrakonfigurálási/feladatátvételi folyamat fog történni, amelyben egy másodlagos replika lesz az új elsődleges.  
+Az Azure SQL DB minden egyes adatbázis hoz egy kvóruma adatbázis-replikák, ahol egy replika az elsődleges. Az elsődleges replika mindenkor online karbantartási, és legalább egy másodlagos replika kifogástalan nak kell lennie. A tervezett karbantartás során az adatbázis kvórumának tagjai egyenként offline állapotba kerülnek, azzal a céllal, hogy egy válaszoló elsődleges replika és legalább egy másodlagos replika online állapotba kerüljön, hogy biztosítsa az ügyfél állásidejének hiányát. Amikor az elsődleges replika offline állapotba kell hozni, egy újrakonfigurálási/feladatátvételi folyamat történik, amelyben egy másodlagos replika lesz az új elsődleges.  
 
-## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Mire számíthat egy tervezett karbantartási esemény során
+## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Mire számíthat egy tervezett karbantartási esemény során?
 
-Az újrakonfigurálások/feladatátvételek általában 30 másodpercen belül befejeződik – az átlag 8 másodperc. Ha már csatlakoztatva van, az alkalmazásnak újra kapcsolódnia kell az adatbázisa új elsődleges másodpéldányához. Ha egy új kapcsolatra akkor kerül sor, amikor az adatbázis újrakonfigurálást végez az új elsődleges replika online állapotba lépését megelőzően, akkor a 40613-as hibaüzenet jelenik meg (az adatbázis nem érhető el): a (z) {servername} kiszolgáló {databasename} adatbázisa jelenleg nem érhető el. Próbálja megismételni a kapcsolatokat később. " Ha az adatbázis hosszú ideig futó lekérdezéssel rendelkezik, akkor a lekérdezés az újrakonfigurálás során megszakad, és újra kell indítani.
+Az újrakonfigurálások/feladatátvételek általában 30 másodpercen belül befejeződnek – az átlag 8 másodperc. Ha már csatlakoztatva van, az alkalmazásnak újra kell csatlakoznia az adatbázis kifogástalan ultrásúj elsődleges replikájához. Ha új kapcsolatot kísérel meg, miközben az adatbázis újrakonfigurálásalatt áll, mielőtt az új elsődleges replika online állapotba kerül, a 40613-as (adatbázis nem érhető el) hibaüzenet jelenik meg: "A(z) "{databasename}" adatbázis a(z) "{servername}" kiszolgálón jelenleg nem érhető el. Próbálkozzon később újra a kapcsolattal.". Ha az adatbázis hosszú ideig futó lekérdezéssel rendelkezik, a lekérdezés megszakad az újrakonfigurálás során, és újra kell indítani.
 
 ## <a name="retry-logic"></a>Újrapróbálkozási logika
 
-A felhőalapú adatbázis-szolgáltatáshoz csatlakozó összes ügyfél-éles alkalmazásnak robusztus kapcsolati [újrapróbálkozási logikát](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)kell létrehoznia. Ez segít enyhíteni ezeket a helyzeteket, és általában a végfelhasználók számára transzparens módon végezze el a hibákat.
+Minden olyan ügyfél-éles alkalmazásnak, amely egy felhőalapú adatbázis-szolgáltatáshoz csatlakozik, megbízható [kapcsolat-újrapróbálkozási logikát kell megvalósítania.](sql-database-connectivity-issues.md#retry-logic-for-transient-errors) Ez segít enyhíteni ezeket a helyzeteket, és általában átláthatóvá kell tennie a hibákat a végfelhasználó számára.
 
 ## <a name="frequency"></a>Frequency
 
-Átlagosan 1,7 tervezett karbantartási esemény történik havonta.
+Átlagosan 1,7 tervezett karbantartási esemény fordul elő havonta.
 
 ## <a name="resource-health"></a>Resource Health
 
-Ha az SQL-adatbázis bejelentkezési hibákat észlel, tekintse meg az aktuális állapot [Azure Portal](https://portal.azure.com) [Resource Health](../service-health/resource-health-overview.md#get-started) ablakát. Az állapot előzményei szakasz az egyes események állásidői okát tartalmazza (ha elérhető).
+Ha az SQL-adatbázis bejelentkezési hibákat tapasztal, ellenőrizze az [Erőforrás-állapot](../service-health/resource-health-overview.md#get-started) ablakban az [Azure Portalon](https://portal.azure.com) az aktuális állapot. Az Állapotelőzmények szakasz tartalmazza az egyes események állásidő-okát (ha elérhető).
 
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a SQL Database [Resource Healthről](sql-database-resource-health.md)
-- Az újrapróbálkozási logikával kapcsolatos további információkért lásd az [átmeneti hibákra vonatkozó újrapróbálkozási logikát](sql-database-connectivity-issues.md#retry-logic-for-transient-errors) .
+- További információ az SQL Database [erőforrás-állapotáról](sql-database-resource-health.md)
+- Az újrapróbálkozási logikáról az [Átmeneti hibák újrapróbálkozási logikája](sql-database-connectivity-issues.md#retry-logic-for-transient-errors) című témakörben talál további információt.

@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platform – videók | Azure
-description: A Microsoft Identity platformmal kapcsolatos videók listája
+title: Microsoft identity platform videók | Azure
+description: A Microsoft identitásplatformról készült videók listája
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,23 +13,23 @@ ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
 ms.openlocfilehash: 22149ccfa258852b36da61ffbabde5e1856df9de
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085195"
 ---
 # <a name="microsoft-identity-platform-videos"></a>A Microsoft Identitásplatformot bemutató videók
 
-Ismerje meg a Microsoft Identity platformot és a Microsoft hitelesítési kódtárait (MSAL). Általában 1-2 percet vesznek igénybe.
+További információ a Microsoft identity platformról és a Microsoft hitelesítési kódtárakról (MSAL). Általában 1-2 percesek.
 
-## <a name="microsoft-identity-platform-basics"></a>A Microsoft Identity platform alapjai
+## <a name="microsoft-identity-platform-basics"></a>A Microsoft identitásplatformjának alapjai
 
-**A Microsoft Identity platform alapelveinek megismerése**
+**Ismerje meg a Microsoft identitásplatformjának alapvető fogalmait**
 
 :::row:::
     :::column:::
-        A Microsoft Identity platform áttekintése
+        A Microsoft identitásplatform – áttekintés
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
@@ -41,13 +41,13 @@ Ismerje meg a Microsoft Identity platformot és a Microsoft hitelesítési kódt
 :::row-end:::
 :::row:::
     :::column:::
-        A MSAL-kódtárak bemutatása
+        Bevezetés az MSAL könyvtárakba
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/apbbx2n4tnU]
     :::column-end:::
     :::column:::
-        Hogyan könnyíti meg a MSAL a hitelesítést
+        Hogyan könnyíti meg az MSAL a hitelesítést?
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/yLVEBU9Z96Q]
@@ -55,13 +55,13 @@ Ismerje meg a Microsoft Identity platformot és a Microsoft hitelesítési kódt
 :::row-end:::
 :::row:::
     :::column:::
-        Hatókörök magyarázata
+        A hatókörök magyarázata
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/eiPHOoLmGJs]
     :::column-end:::
     :::column:::
-        A brókerek ismertetése
+        Mik azok a brókerek
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/Zd_Uubnu0U0]
@@ -69,7 +69,7 @@ Ismerje meg a Microsoft Identity platformot és a Microsoft hitelesítési kódt
 :::row-end:::
 :::row:::
     :::column:::
-        Milyen átirányítási URI-k
+        Mit csinálnak az átirányítási URI-k?
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/znSN_3JAuoU]
@@ -89,7 +89,7 @@ Ismerje meg a Microsoft Identity platformot és a Microsoft hitelesítési kódt
         > [!VIDEO https://www.youtube.com/embed/zDEC7A5ZS2Q]
     :::column-end:::
     :::column:::
-        Az Azure AD-alkalmazás objektumainak szerepe
+        Az Azure AD alkalmazásobjektumok szerepköre
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/HEpq_YSmuWw]
@@ -97,32 +97,32 @@ Ismerje meg a Microsoft Identity platformot és a Microsoft hitelesítési kódt
 :::row-end:::
 :::row:::
     :::column:::
-        Szervezeti és személyes Microsoft-fiók különbségek
+        Szervezeti és személyes Microsoft-fiókbeli különbségek
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/E2OUluQQKSk]
     :::column-end:::
     :::column:::
-        SPA-és webalkalmazás-különbségek
+        SPA és web app különbségek
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/ZJirt7eTVw8?t=5]
     :::column-end:::
 :::row-end:::
 
-## <a name="migrate-from-v10-to-v20"></a>Áttelepítés v 1.0-ről v 2.0-ra
+## <a name="migrate-from-v10-to-v20"></a>Áttelepítés az 1.0-s és a 2.0-s
 
-**Tudnivalók a Microsoft Identity platform legújabb verziójára való áttérésről**
+**További információ a Microsoft-identitásplatform legújabb verziójára való áttérésről**
 
 :::row:::
     :::column:::
-        Végpontok és a v 2.0-ra való áttérés előnyei
+        Végpontok és a 2.0-s v.-re való áttérés előnyei
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
      :::column:::
-        A ADAL-kód áttelepítése a MSAL-be
+        Az ADAL kódbázis áttelepítése msal-ra
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/xgL_z9yCnrE]
@@ -130,13 +130,13 @@ Ismerje meg a Microsoft Identity platformot és a Microsoft hitelesítési kódt
 :::row-end:::
 :::row:::
     :::column:::
-        Miért érdemes a ADAL-ről MSAL-re migrálni?
+        Miért vándorolnak ADAL MSAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
     :::column:::
-        A MSAL előnyei a ADAL-en keresztül
+        Az MSAL előnyei az ADAL-lal szemben
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]

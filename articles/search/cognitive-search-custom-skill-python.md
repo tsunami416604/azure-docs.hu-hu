@@ -1,7 +1,7 @@
 ---
-title: Egyéni szakértelem – példa (Python)
+title: Példa egyéni szakértelemre (Python)
 titleSuffix: Azure Cognitive Search
-description: Python-fejlesztők számára a Azure Functions és a Visual Studio használatával megismerheti az egyéni képességek létrehozásához szükséges eszközöket és technikákat. Az egyéni szaktudás olyan felhasználó által definiált modelleket vagy logikát tartalmaz, amelyeket hozzáadhat egy mesterséges intelligenciával bővített indexelési folyamathoz az Azure Cognitive Searchban.
+description: A Python-fejlesztők számára ismerje meg az Azure Functions és a Visual Studio egyéni szakértelem készítéséhez szükséges eszközöket és technikákat. Az egyéni képességek olyan felhasználó által definiált modelleket vagy logikát tartalmaznak, amelyeket hozzáadhat egy AI-dúsított indexelési folyamathoz az Azure Cognitive Search szolgáltatásban.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,55 +9,55 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77210465"
 ---
-# <a name="example-create-a-custom-skill-using-python"></a>Példa: egyéni szakértelem létrehozása a Python használatával
+# <a name="example-create-a-custom-skill-using-python"></a>Példa: Egyéni szakértelem létrehozása python használatával
 
-Ebben az Azure Cognitive Search készségkészlet példaként megtudhatja, hogyan hozhat létre egyéni webes API-képességet a Python és a Visual Studio Code használatával. A példa egy [Azure-függvényt](https://azure.microsoft.com/services/functions/) használ, amely megvalósítja az [Egyéni ügyességi felületet](cognitive-search-custom-skill-interface.md).
+Ebben az Azure Cognitive Search skillset példában megtudhatja, hogyan hozhat létre egy webes API egyéni szakértelem python és visual studio kód használatával. A példa egy [Azure-függvényt](https://azure.microsoft.com/services/functions/) használ, amely megvalósítja az [egyéni szakértelem-felületet.](cognitive-search-custom-skill-interface.md)
 
-Az egyéni képességet a kialakítás egyszerűvé teszi (két karakterlánc összefűzése), így a Pythonban az egyéni szaktudás fejlesztéséhez használt eszközökre és technológiákra koncentrálhat. Ha egy egyszerű képességgel sikerül, összetettebb forgatókönyvekkel is foglalkozhat.
+Az egyéni szakértelem egyszerű a tervezés (ez összefűzkét karakterláncok), így összpontosítani az egyéni szakértelem fejlesztése a Pythonban. Miután sikerült egy egyszerű készség, akkor ág ki bonyolultabb forgatókönyvek.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Tekintse át az [Egyéni ügyességi felületet](cognitive-search-custom-skill-interface.md) az egyéni képességek megvalósításához szükséges bemeneti/kimeneti interfész bevezetéséhez.
++ Tekintse át az [egyéni szakértelem felület](cognitive-search-custom-skill-interface.md) egy bevezetés a bemeneti/kimeneti felület, amely egy egyéni szakértelem kell végrehajtania.
 
-+ Állítsa be a környezetet. Ezt az [oktatóanyagot](https://docs.microsoft.com/azure/python/tutorial-vs-code-serverless-python-01) követjük teljes körűen a kiszolgáló nélküli Azure-függvények beállításához a Visual Studio Code és a Python Extensions használatával. Az oktatóanyag végigvezeti Önt a következő eszközök és összetevők telepítésén: 
++ Állítsa be a környezetet. Ezt [az oktatóanyagot követtük,](https://docs.microsoft.com/azure/python/tutorial-vs-code-serverless-python-01) hogy a Visual Studio Code és a Python-bővítmények használatával kiszolgáló nélküli Azure-függvényt állítsunk be. Az oktatóanyag a következő eszközök és összetevők telepítésén keresztül vezet: 
 
   + [Python 3,75](https://www.python.org/downloads/release/python-375/)
-  + [Visual Studio Code](https://code.visualstudio.com/)
-  + [Python-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  + [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
+  + [Visual Studio kód](https://code.visualstudio.com/)
+  + [Python-bővítmény a Visual Studio-kódhoz](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+  + [Az Azure Functions alapvető eszközei](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
   + [Azure Functions-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 
 ## <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
-Ez a példa egy Azure-függvényt használ a webes API-k üzemeltetésére, de más megközelítések is lehetségesek. Ha megfelel a [kognitív képességek felületi követelményeinek](cognitive-search-custom-skill-interface.md), az Ön által felhasználható megközelítés nem lényeges. Azure Functions azonban egyszerűvé teheti az egyéni képességek létrehozását.
+Ez a példa egy Azure-függvényt használ a webes API üzemeltetésének fogalmának bemutatásához, de más megközelítések is lehetségesek. Mindaddig, amíg megfelel a [felület követelményeinek a kognitív készség,](cognitive-search-custom-skill-interface.md)a megközelítés szedése lényegtelen. Az Azure Functions azonban megkönnyíti az egyéni szakértelem létrehozását.
 
 ### <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
 A Visual Studio Code Azure Functions projektsablonja egy olyan projektet hoz létre, amely közzétehető egy Azure-függvényalkalmazásban. A függvényalkalmazás lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások felügyelete, üzembe helyezése és megosztása érdekében.
 
-1. A Visual Studio Code-ban nyomja le az F1 billentyűt a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki `Azure Functions: Create new project...`.
+1. A Visual Studio Code alkalmazásban nyomja le az F1 billentyűt a parancspaletta megnyitásához. A parancspalettán keresse `Azure Functions: Create new project...`meg és válassza a lehetőséget.
 
-1. Válasszon egy címtárbeli helyet a projekt munkaterülethez, és válassza a **kiválasztás**lehetőséget.
+1. Válassza ki a projektmunkaterület könyvtárhelyét, és válassza a **Kijelölés gombot.**
 
     > [!NOTE]
-    > Ezeket a lépéseket úgy tervezték, hogy a munkaterületen kívül is el lehessen végezni. Ezért ne válasszon olyan projekt-mappát, amely a munkaterület részét képezi.
+    > Ezeket a lépéseket úgy tervezték, hogy a munkaterületen kívül hajtsák végre őket. Ezért ne jelöljön ki munkaterület részét szolgáló projektmappát.
 
-1. Válassza ki a Function app-projekt nyelvét. Ebben az oktatóanyagban válassza a **Python**lehetőséget.
-1. Válassza ki a Python-verziót (a 3.7.5 verzióját a Azure Functions támogatja)
-1. Válassza ki a projekt első függvényének sablonját. Válassza a **http-trigger** lehetőséget egy http által aktivált függvény létrehozásához az új Function alkalmazásban.
-1. Adja meg a függvény nevét. Ebben az esetben használja az **összefűzést** 
-1. Engedélyezési szintként válassza a **függvény** lehetőséget. Ez azt jelenti, hogy egy [funkcióbillentyű](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) megadásával hívja meg a függvény http-végpontját. 
-1. Válassza ki, hogyan szeretné megnyitni a projektet. Ehhez a lépéshez válassza a **Hozzáadás a munkaterülethez** lehetőséget a Function alkalmazás létrehozásához az aktuális munkaterületen.
+1. Válassza ki a függvényalkalmazás-projekt nyelvét. Ehhez az oktatóanyaghoz válassza a **Python**lehetőséget.
+1. Válassza ki a Python-verziót (a 3.7.5-ös verziót az Azure Functions támogatja)
+1. Válasszon sablont a projekt első függvényéhez. Válassza a **HTTP-eseményindító lehetőséget** egy HTTP-aktivált függvény létrehozásához az új függvényalkalmazásban.
+1. Adja meg a függvény nevét. Ebben az esetben használjuk a **Concatenator** 
+1. Válassza a **Függvény** engedélyezési szintként lehetőséget. Ez azt jelenti, hogy egy [függvénykulcsot](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) biztosítunk a függvény HTTP-végpontjának hívásához. 
+1. Adja meg, hogyan szeretné megnyitni a projektet. Ebben a lépésben válassza a **Hozzáadás munkaterülethez** lehetőséget a függvényalkalmazás létrehozásához az aktuális munkaterületen.
 
 A Visual Studio Code létrehozza a függvényalkalmazást egy új munkaterületen. Ez a projekt a [host.json](../azure-functions/functions-host-json.md) és a [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) konfigurációs fájlokat tartalmazza, valamint az esetleges nyelvspecifikus projektfájlokat is. 
 
-A Function app projekt **összefűzési** mappájába egy új, http-triggerrel aktivált függvény is létrejön. Ebben a tartalomban a "\_\_init__.," nevű fájl jelenik meg:
+Egy új HTTP-aktivált függvény is létrejön a függvényalkalmazás-projekt **Concatenator** mappájában. Benne lesz egy "init__.py"\_\_nevű fájl, amelynek tartalma:
 
 ```py
 import logging
@@ -87,7 +87,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ```
 
-Most módosítsa ezt a kódot az [egyéni képességek felületének](cognitive-search-custom-skill-interface.md)követéséhez. Módosítsa a kódot a következő tartalommal:
+Most nézzük módosítani, hogy a kódot, hogy kövesse az [egyéni készség felület](cognitive-search-custom-skill-interface.md)). Módosítsa a kódot a következő tartalommal:
 
 ```py
 import logging
@@ -167,41 +167,41 @@ def transform_value(value):
             })
 ```
 
-A **transform_value** metódus egyetlen rekordon hajt végre műveletet. Az adott igényeknek megfelelően módosíthatja a módszert. Ne felejtse el megtenni a szükséges bemeneti ellenőrzéseket, és adja vissza az előállított hibákat és figyelmeztetéseket, ha a művelet nem fejeződött be a rekordhoz.
+A **transform_value** metódus egyetlen rekordon hajt végre műveletet. Módosíthatja a módszert, hogy megfeleljen az Ön egyedi igényeinek. Ne felejtse el elvégezni a szükséges bemeneti érvényesítést, és adja vissza az esetlegesen létrehozott hibákat és figyelmeztetéseket, ha a művelet nem hajtható végre a rekordhoz.
 
-### <a name="debug-your-code-locally"></a>A kód hibakeresése helyileg
+### <a name="debug-your-code-locally"></a>Hibakeresés a kód helyileg
 
-A Visual Studio Code megkönnyíti a kód hibakeresését. Nyomja le az F5 billentyűt, vagy lépjen a **hibakeresés** menüre, és válassza a **hibakeresés indítása**lehetőséget.
+A Visual Studio Code megkönnyíti a kód hibakeresését. Nyomja le az "F5" billentyűt, vagy lépjen a **Hibakeresés** menüre, és válassza a **Hibakeresés indítása parancsot.**
 
-A kód bármely töréspontját beállíthatja úgy, hogy az "F9" elemre kattint az adott sorban.
+Beállíthatja a töréspontokat a kódon, ha az "F9" gombra nyomódik az érdeklődési vonalon.
 
-A hibakeresés megkezdése után a függvény helyileg fog futni. Olyan eszközt használhat, mint a Poster vagy a Hegedűs, hogy kiadja a kérést a localhost-nak. Jegyezze fel a helyi végpont helyét a terminál ablakban. 
+A hibakeresés megkezdése után a függvény helyileg fog futni. Használhatja az eszköz, mint a Postman vagy Hegedűs, hogy kiadja a kérelmet localhost. Jegyezze fel a helyi végpont helyét a Terminál ablakban. 
 
 ## <a name="publish-your-function"></a>A függvény közzététele
 
-Ha elégedett a funkció működésével, közzéteheti.
+Ha elégedett a funkció viselkedésével, közzéteheti azt.
 
-1. A Visual Studio Code-ban nyomja le az F1 billentyűt a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza a **telepítés függvényalkalmazás.** .. lehetőséget. 
+1. A Visual Studio Code alkalmazásban nyomja le az F1 billentyűt a parancspaletta megnyitásához. A parancspalettán keresse meg és válassza **a Telepítés a függvényalkalmazásba lehetőséget...**. 
 
-1. Válassza ki azt az Azure-előfizetést, amelyre telepíteni szeretné az alkalmazást.
+1. Válassza ki azt az Azure-előfizetést, amelyben telepíteni szeretné az alkalmazást.
 
-1. Válassza **az + új Függvényalkalmazás létrehozása az Azure-ban** lehetőséget.
+1. Válassza **a + Új függvényalkalmazás létrehozása lehetőséget az Azure-ban**
 
-1. Adja meg a Function alkalmazás globálisan egyedi nevét.
+1. Adjon meg egy globálisan egyedi nevet a függvényalkalmazásnak.
 
-1. Válassza a Python-verzió (Python 3.7. x működik ehhez a függvényhez) lehetőséget.
+1. Válassza ki a Python-verziót (a Python 3.7.x működik ehhez a funkcióhoz).
 
-1. Válassza ki az új erőforrás helyét (például: USA 2. nyugati régiója).
+1. Válassza ki az új erőforrás helyét (például US2 nyugati telephelyét).
 
-Ezen a ponton a szükséges erőforrások az Azure-előfizetésben lesznek létrehozva az új Azure-függvény üzemeltetéséhez az Azure-ban. Várjon, amíg az üzembe helyezés befejeződik. A kimeneti ablakban megjelenik a telepítési folyamat állapota.
+Ezen a ponton a szükséges erőforrásokjönnek létre az Azure-előfizetésben az új Azure-függvény azure-beli üzemeltetéséhez. Várjon, amíg az üzembe helyezés befejeződik. A kimeneti ablak ban megjelenik a telepítési folyamat állapota.
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon az **összes erőforráshoz** , és keresse meg a neve alapján közzétett függvényt. Ha elnevezte az **összefűzést**, válassza ki az erőforrást.
+1. Az [Azure Portalon](https://portal.azure.com)keresse meg a **Minden erőforrás,** és keresse meg a nevet közzétett függvény. Ha **concatenator névre keresztelte,** válassza ki az erőforrást.
 
-1. Kattintson a **</> függvény URL-címének beolvasása** gombra. Ez lehetővé teszi az URL-cím másolását a függvény meghívásához.
+1. Kattintson a **</> Funkció URL-címének bekerülése** gombra. Ez lehetővé teszi, hogy másolja az URL-t, hogy hívja a funkciót.
 
-## <a name="test-the-function-in-azure"></a>A függvény tesztelése az Azure-ban
+## <a name="test-the-function-in-azure"></a>A funkció tesztelése az Azure-ban
 
-Most, hogy rendelkezik az alapértelmezett gazdagép kulccsal, tesztelje a függvényt a következőképpen:
+Most, hogy rendelkezik az alapértelmezett állomáskulccsal, tesztelje a függvényt az alábbiak szerint:
 
 ```http
 POST [Function URL you copied above]
@@ -227,11 +227,11 @@ POST [Function URL you copied above]
 }
 ```
 
-Ebben a példában ugyanazt az eredményt kell megadnia, amelyet korábban a függvény a helyi környezetben való futtatásakor látott.
+Ebben a példában kell létrehoznia ugyanazt az eredményt, amit korábban látott, amikor a függvény futtatása a helyi környezetben.
 
-## <a name="connect-to-your-pipeline"></a>Kapcsolódás a folyamathoz
+## <a name="connect-to-your-pipeline"></a>Csatlakozás a folyamathoz
 
-Most, hogy már rendelkezik egy új egyéni képességgel, hozzáadhatja a készségkészlet. Az alábbi példa azt mutatja be, hogyan hívhatja meg a képességet, hogy összefűzse a dokumentum címét és szerzőjét egyetlen olyan mezőbe, amelyet merged_title_author hívunk meg. Cserélje le a `[your-function-url-here]`t az új Azure-függvény URL-címére.
+Most, hogy új egyéni szakértelemmel rendelkezik, hozzáadhatja azt a skillsethez. Az alábbi példa bemutatja, hogyan hívhatja meg a készséget a dokumentum címének és szerzőjének összefűzéséhez egyetlen mezőbe, amelyet merged_title_author nevezünk. Cserélje `[your-function-url-here]` le az új Azure-függvény URL-címét.
 
 ```json
 {
@@ -263,11 +263,11 @@ Most, hogy már rendelkezik egy új egyéni képességgel, hozzáadhatja a kész
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
-Gratulálunk! Létrehozta az első egyéni szaktudását. Mostantól ugyanezt a mintát követheti saját egyéni funkcióinak hozzáadásával is. További információért kattintson az alábbi hivatkozásokra.
+## <a name="next-steps"></a>További lépések
+Gratulálunk! Létrehozta az első egyéni képzettségét. Most ugyanazt a mintát követheti a saját egyéni funkciók hozzáadásához. További információért kattintson az alábbi hivatkozásokra.
 
-+ [Energiaellátási készségek: az egyéni képességek tárháza](https://github.com/Azure-Samples/azure-search-power-skills)
-+ [Egyéni képesség hozzáadása egy mesterséges intelligencia-bővítési folyamathoz](cognitive-search-custom-skill-interface.md)
-+ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
-+ [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [A dúsított mezők leképezése](cognitive-search-output-field-mapping.md)
++ [Power Skills: egyéni készségek tárháza](https://github.com/Azure-Samples/azure-search-power-skills)
++ [Egyéni szakértelem hozzáadása a ai-dúsítási folyamathoz](cognitive-search-custom-skill-interface.md)
++ [Hogyan definiálni a skillset](cognitive-search-defining-skillset.md)
++ [Szakértelemkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Bővített mezők leképezése](cognitive-search-output-field-mapping.md)

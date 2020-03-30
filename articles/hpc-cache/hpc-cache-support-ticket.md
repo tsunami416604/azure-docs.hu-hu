@@ -1,32 +1,32 @@
 ---
-title: Támogatási jegy megnyitása az Azure HPC cache-hez
-description: Súgó kérésének megnyitása az Azure HPC cache-hez
+title: Támogatási jegy megnyitása az Azure HPC-gyorsítótárhoz
+description: Az Azure HPC-gyorsítótárhoz való súgókérés megnyitása
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: rohogue
 ms.openlocfilehash: 76261f4e2e42b4272abcd976fcf2644fd43aa818
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74169344"
 ---
-# <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Támogatási jegy megnyitása az Azure HPC cache-hez
+# <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Támogatási jegy megnyitása az Azure HPC-gyorsítótárhoz
 
-Támogatási jegy megnyitásához használja a Azure Portal. Navigáljon a gyorsítótár-példányhoz, majd kattintson az **új támogatási kérelem** hivatkozásra, amely megjelenik az oldalsáv alján.
+Az Azure Portal on-hoz nyisson meg egy támogatási jegyet. Nyissa meg a gyorsítótár-példányt, majd kattintson az **oldalsáv** alján megjelenő Új támogatási kérelem hivatkozásra.
 
-Ha nem rendelkezik aktív gyorsítótárral, akkor a jegy megnyitásához használja a Azure Portal fő Súgó + támogatás lapját. Nyissa meg a portál menüt a képernyő bal felső részén található vezérlőből, majd görgessen a lap aljára, és kattintson a **Súgó és támogatás**elemre.
+Ha meg szeretne nyitni egy jegyet, ha nem rendelkezik aktív gyorsítótárral, használja az Azure Portal fő Súgó + támogatási lapját. Nyissa meg a portál menüt a képernyő bal felső sarkában lévő vezérlőből, majd görgessen le az aljára, és kattintson a **Súgó + támogatás**parancsra.
 
-Válassza az **új támogatási kérelem** lehetőséget, és válassza a **technikai** lehetőséget az Azure HPC cache-hez kapcsolódó segítségért.
+Válassza **az Új támogatási kérelem** **lehetőséget,** és válassza a Technikai lehetőséget az Azure HPC-gyorsítótárra vonatkozó súgóhoz.
 
-Válassza ki az előfizetését a listából.
+Válassza ki az előfizetést a listából.
 
-Az Azure HPC cache szolgáltatás megkereséséhez kattintson a **minden szolgáltatás** gombra, és keressen rá a HPC kifejezésre.
+Az Azure HPC cache szolgáltatás megkereséséhez kattintson a Minden szolgáltatás gombra, és keresse meg a HPC.To find the Azure HPC Cache service, click the **All services** button and search for HPC.
 
-![Képernyőkép a támogatási kérelemről – alapismeretek lap, részben kitöltve a leírtak szerint](media/hpc-cache-support-request.png)
+![Képernyőkép a támogatási kérelemről - Az alapok lap, részben kitöltve a leírtak nak](media/hpc-cache-support-request.png)
 
-Töltse ki a többi mezőt az adataival és beállításaival, majd küldje el a jegyet, ha elkészült.
+Töltse ki a többi mezőt az adataival és preferenciáival, majd küldje el a jegyet, ha készen áll.
 
-A kérelem elküldése után egy megerősítő e-mailt fog kapni a jegy számával. A támogatási személyzet tagja felveszi Önnel a kapcsolatot a kéréssel.
+A kérelem elküldése után kap egy visszaigazoló e-mailt a jegyszámmal. A támogatási személyzet egyik tagja felveszi Önnel a kapcsolatot a kéréssel kapcsolatban.

@@ -1,6 +1,6 @@
 ---
-title: Azure API Management-házirend minta – továbbított fejléc hozzáadása | Microsoft Docs
-description: Azure API Management-szabályzat – példa – bemutatja, hogyan adhat hozzá továbbított fejlécet a bejövő kérelemben, hogy a háttér-API megfelelő URL-címeket lehessen létrehozni.
+title: Azure API-kezelési házirend-minta – Továbbított fejléc hozzáadása | Microsoft dokumentumok
+description: Azure API-kezelési szabályzat minta – bemutatja, hogyan adhat hozzá egy továbbított fejlécet a bejövő kérelemben, hogy a háttérbeli API-t megfelelő URL-címek hez lehessen létrehozni.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: e525029ae8eab086d11126a4e18958423e207aa1
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70067507"
 ---
-# <a name="add-a-forwarded-header"></a>Továbbított fejléc hozzáadása
+# <a name="add-a-forwarded-header"></a>Átvitt fejléc hozzáadása
 
-Ez a cikk egy Azure API Management házirend-mintát mutat be, amely bemutatja, hogyan adhat hozzá továbbított fejlécet a bejövő kérelemben, hogy a háttérrendszer API-ját megfelelő URL-címeket lehessen létrehozni. A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-samples.md).
+Ez a cikk egy Azure API-felügyeleti szabályzat minta, amely bemutatja, hogyan adhat hozzá egy továbbított fejléc et a bejövő kérelem, hogy a háttér-API-t a megfelelő URL-címek létrehozásához. Házirendkód beállításához vagy szerkesztéséhez kövesse a [Házirend beállítása vagy szerkesztése](../set-edit-policies.md)című részben ismertetett lépéseket. További példák megtekintéséhez tekintse meg [a házirendmintákat.](../policy-samples.md)
 
 ## <a name="code"></a>Kód
 
@@ -31,7 +31,7 @@ Illessze be a kódot a **bejövő** blokkba.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a APIM-házirendekről:
+További információ az APIM-házirendekről:
 
-+ [Átalakítási házirendek](../api-management-transformation-policies.md)
-+ [Házirend-minták](../policy-samples.md)
++ [Átalakítási szabályzatok](../api-management-transformation-policies.md)
++ [Házirendminták](../policy-samples.md)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Virtual Machines leállítása megakadt a szolgáltatások újraindítása, leállítása vagy leállítása esetén | Microsoft Docs
-description: Ez a cikk segítséget nyújt az Azure Windows Virtual Machines szolgáltatásbeli hibák elhárításában.
+title: Az Azure virtuális gépek leállítása beragadt az újraindítás, a leállítás vagy a leállítási szolgáltatások leállítása korra | Microsoft dokumentumok
+description: Ez a cikk segít az Azure Windows virtuális gépek szolgáltatáshibáinak elhárításában.
 services: virtual-machines-windows
 documentationCenter: ''
 author: v-miegge
@@ -13,99 +13,99 @@ ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
 ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77371354"
 ---
-# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Az Azure Windows rendszerű virtuális gépek leállítása a "újraindítás", "Leállítás" vagy "szolgáltatások leállítása" esetén beragadt
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Az Azure Windows virtuális gép leállítása beragadt az "Újraindítás", "Leállítás" vagy "Szolgáltatások leállítása"
 
-Ez a cikk a Windows rendszerű virtuális gépek (VM-EK) Microsoft Azure történő újraindításakor előforduló "újraindítás", "Leállítás" vagy "szolgáltatások leállítása" problémáinak elhárításához nyújt útmutatást.
+Ez a cikk a "Újraindítás", a "Leállítás" vagy a "Szolgáltatások leállítása" üzenetek kelkapcsolatos problémák megoldásához, amelyek a Windows virtuális gépek (VM) Windows Azure-beli újraindításakor találkozhatnak.
 
 ## <a name="symptoms"></a>Probléma
 
-Ha [rendszerindítási diagnosztika](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használatával tekinti meg a virtuális gép képernyőképét, láthatja, hogy a képernyőképen az "újraindítás", a "Leállítás" vagy a "szolgáltatások leállítása" üzenet jelenik meg.
+Amikor [a rendszerindítási diagnosztika](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) segítségével tekinti meg a virtuális gép képernyőképét, láthatja, hogy a képernyőkép a "Újraindítás", "Leállítás" vagy "Szolgáltatások leállítása" üzenetet jeleníti meg.
 
-![A szolgáltatások képernyőjének újraindítása, leállítása és leállítása](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
+![Újraindítás, A szolgáltatások képernyőinek leállítása és leállítása](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
  
 ## <a name="cause"></a>Ok
 
-A Windows a leállítási folyamattal hajtja végre a rendszerkarbantartási műveleteket, és dolgozza fel a módosításokat, például a frissítéseket, a szerepköröket és a szolgáltatásokat. Ezt a kritikus folyamatot nem ajánlott a befejezésig megszakítani. A frissítések és a változtatások számától és a virtuális gép méretétől függően a folyamat hosszú időt is igénybe vehet. Ha a folyamat leáll, lehetséges, hogy az operációs rendszer megsérül. Csak akkor szakítsa meg a folyamatot, ha túl sokáig tart.
+A Windows a leállítási folyamat ot használja a rendszerkarbantartási műveletek végrehajtására, valamint olyan folyamatmódosítások ra, mint a frissítések, a szerepkörök és a szolgáltatások. Nem ajánlott megszakítani ezt a kritikus folyamatot, amíg be nem fejeződik. A frissítések/módosítások számától és a virtuális gép méretétől függően a folyamat hosszú időt vehet igénybe. Ha a folyamat leáll, lehetséges, hogy az operációs rendszer megsérül. Csak akkor szakítsa meg a folyamatot, ha az túl sokáig tart.
 
 ## <a name="solution"></a>Megoldás
 
-### <a name="collect-a-process-memory-dump"></a>Folyamat-memóriakép gyűjtése
+### <a name="collect-a-process-memory-dump"></a>Folyamat memóriakép gyűjtése
 
-1. Töltse le a [Procdump eszközt](http://download.sysinternals.com/files/Procdump.zip) egy új vagy meglévő adatlemezre, amely ugyanahhoz a régióhoz tartozó működő virtuális géphez van csatolva.
+1. [Procdump eszköz](http://download.sysinternals.com/files/Procdump.zip) letöltése egy új vagy meglévő adatlemezre, amely ugyanabból a régióból származó működő virtuális géphez van csatlakoztatva.
 
-2. Válassza le a működő virtuális gépről szükséges fájlokat tartalmazó lemezt, és csatlakoztassa a lemezt a hibás virtuális géphez. Ezt a lemezt hívjuk a **segédprogram lemezének**.
+2. Válassza le a szükséges fájlokat tartalmazó lemezt a működő virtuális gépről, és csatlakoztassa a lemezt a hibás virtuális géphez. Hívjuk ezt a lemezt a **Segédprogram lemez**.
 
-A következő lépések végrehajtásához használja a [soros konzolt](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) :
+A [serial console használatával](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) hajtsa végre az alábbi lépéseket:
 
-1. Nyisson meg egy felügyeleti PowerShellt, és győződjön meg arról, hogy a szolgáltatás leáll a leállítás után.
+1. Nyisson meg egy felügyeleti Powershellt, és ellenőrizze a leállításkor lefagyott szolgáltatást.
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
    ``
 
-2. A felügyeleti CMD eszközben szerezze be a lefagyott szolgáltatás PID azonosítóját.
+2. Egy felügyeleti CMD, a lefagyott szolgáltatás PID-je.
 
    ``
    tasklist /svc | findstr /i <STOPING SERVICE>
    ``
 
-3. Szerezzen be egy memóriaképfájl-mintát a lefagyott folyamat <STOPPING SERVICE>.
+3. Memóriakép minta beszerezni <STOPPING SERVICE>a felfüggesztett folyamatból .
 
    ``
    procdump.exe -s 5 -n 3 -ma <PID>
    ``
 
-4. A leállítási folyamat zárolásának feloldásához most öld meg a lefagyott folyamatot.
+4. Most öld meg a felfüggesztett folyamatot, hogy feltárja a leállítási folyamatot.
 
    ``
    taskkill /PID <PID> /t /f
    ``
 
-Ha az operációs rendszer újraindul, ha a szokásos módon elindul, akkor csak ellenőrizze, hogy az operációs rendszer konzisztenciaa rendben van-e. Ha a rendszer sérülést jelez, futtassa a következő parancsot, amíg a lemez nem sérül:
+Miután az operációs rendszer újra indul, ha elindul rendesen, akkor csak győződjön meg arról, hogy az operációs rendszer konzisztenciája rendben van. Ha a rendszer korrupciót jelent, futtassa a következő parancsot, amíg a lemez sérülésmentes nem lesz:
 
 ``
 dism /online /cleanup-image /restorehealth
 ``
 
-Ha nem tudja összegyűjteni a folyamat memóriaképét, vagy a probléma rekurzív, és a kiváltó okok elemzését igényli, folytassa az operációs rendszer memóriaképének begyűjtésével, folytassa a támogatási kérelem megnyitásával.
+Ha nem tud összegyűjteni egy folyamat memóriakép, vagy ez a probléma rekurzív, és szüksége van egy kiváltó ok elemzése, folytassa az alábbi operációs rendszer memóriakép gyűjtése, a folytatást, hogy nyissa meg a támogatási kérelmet.
 
-### <a name="collect-an-os-memory-dump"></a>Operációs rendszer memóriaképének begyűjtése
+### <a name="collect-an-os-memory-dump"></a>Operációs rendszer memóriaképgyűjtése
 
-Ha a probléma nem oldódik meg a módosítások feldolgozásának megkezdése után, be kell gyűjtenie egy memóriakép-fájlt, és kapcsolatba kell lépnie a támogatási szolgálattal. A memóriakép-fájl összegyűjtéséhez kövesse az alábbi lépéseket:
+Ha a probléma nem oldódik meg, miután megvárta a módosítások feldolgozását, össze kell gyűjtenie egy memóriaképfájlt, és kapcsolatba kell lépnie az ügyfélszolgálattal. A kiírási fájl összegyűjtéséhez hajtsa végre az alábbi lépéseket:
 
-**Az operációsrendszer-lemez csatlakoztatása egy helyreállítási virtuális géphez**
+**Az operációs rendszer lemezének csatolása helyreállítási virtuális géphez**
 
-1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információt a [Lemez pillanatképe](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)című témakörben talál.
 
-2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+2. [Csatlakoztassa az operációs rendszer lemezét egy helyreállítási virtuális géphez.](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)
 
-3. Távoli asztalról a helyreállítási virtuális gépre.
+3. Távoli asztal a helyreállítási virtuális géphez.
 
-4. Ha az operációsrendszer-lemez titkosítva van, ki kell kapcsolnia a titkosítást, mielőtt továbblép a következő lépésre. További információ: [a titkosított operációsrendszer-lemez visszafejtése a virtuális gépen, amely nem indítható el](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution).
+4. Ha az operációs rendszer lemeze titkosítva van, ki kell kapcsolnia a titkosítást, mielőtt a következő lépésre lépne. További információt a nem indítható virtuális gép [titkosított operációsrendszer-lemezének visszafejtése című témakörben talál.](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution)
 
-**Memóriaképfájl megkeresése és támogatási jegy beküldése**
+**Dump fájl megkeresése és támogatási jegy beküldése**
 
-1. A helyreállítási virtuális gépen nyissa meg a Windows mappát a csatolt operációsrendszer-lemezen. Ha a csatlakoztatott operációsrendszer-lemezhez hozzárendelt illesztőprogram betűjele F, akkor a F:\Windows. kell lépnie.
+1. A helyreállítási virtuális gép, ugrás a Windows mappába a csatlakoztatott operációs rendszer lemezén. Ha a csatlakoztatott operációsrendszer-lemezhez rendelt illesztőprogram-betű "F" betű, akkor az F:\Windows rendszerre kell lépnie.
 
-2. Keresse meg a Memory. dmp fájlt, majd [küldjön el egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a memóriakép fájljában.
+2. Keresse meg a memory.dmp fájlt, majd [küldjön el egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a memóriaképfájllal.
 
-Ha nem találja a memóriaképet, helyezze át a következő lépést a memóriakép és a soros konzol engedélyezéséhez.
+Ha nem találja a memóriaképfájlt, a következő lépéssel engedélyezze a memóriaképnaplót és a Soros konzolt.
 
-**A memóriakép és a soros konzol engedélyezése**
+**Memóriaképnapló és soros konzol engedélyezése**
 
-Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következő szkriptet.
+A memóriaképnapló és a Soros konzol engedélyezéséhez futtassa a következő parancsfájlt.
 
-1. Nyisson meg egy rendszergazda jogú parancssor-munkamenetet (Futtatás rendszergazdaként).
+1. Nyissa meg a rendszergazdai jogú parancssori munkamenetet (futtatás rendszergazdaként).
 
 2. Futtassa a következő parancsfájlt:
 
-   Ebben a parancsfájlban feltételezzük, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel F. cserélje le a virtuális gép megfelelő értékére.
+   Ebben a parancsfájlban feltételezzük, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel f. Cserélje le a megfelelő értéket a virtuális gép.
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -129,9 +129,9 @@ Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következ�
    reg unload HKLM\BROKENSYSTEM
    ```
 
-3. Ellenőrizze, hogy van-e elegendő hely a lemezen a RAM memóriájának lefoglalásához, amely a virtuális gép számára kiválasztott mérettől függ.
+3. Ellenőrizze, hogy van-e elegendő hely a lemezen annyi memória lefoglalásához, mint a RAM, amely a virtuális géphez kiválasztott mérettől függ.
 
-4. Ha nincs elég hely, vagy a virtuális gép nagyméretű (G, GS vagy E sorozat), módosíthatja a fájl létrehozásának helyét, és a virtuális géphez csatolt bármely más adatlemezre hivatkozni fog. A hely módosításához módosítania kell a következő kulcsot:
+4. Ha nincs elég hely, vagy a virtuális gép nagy (G, GS vagy E sorozat), módosíthatja a helyet, ahol ez a fájl jön létre, és olvassa el, hogy bármely más adatlemez, amely a virtuális géphez csatlakozik. A hely módosításához a következő kulcsot kell módosítania:
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -142,16 +142,16 @@ Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következ�
    reg unload HKLM\BROKENSYSTEM
    ```
 
-5. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+5. [Válassza le az operációs rendszer lemezét, majd csatlakoztassa újra az operációs rendszer lemezét az érintett virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
 
-6. Indítsa el a virtuális gépet, és nyissa meg a soros konzolt.
+6. Indítsa el a virtuális gép, és a soros konzol eléréséhez.
 
-7. A memóriakép kiváltásához válassza a nem maszkolt megszakítás (NMI) küldése lehetőséget.
+7. A memóriakép aktiválásához válassza a Nem maszkolható megszakítás (NMI) küldése lehetőséget.
 
-   ![Nem maszkolt megszakítás küldése](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
+   ![Nem maszkolásos megszakítás küldése](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
 
-8. Csatlakoztassa újra az operációsrendszer-lemezt egy helyreállítási virtuális géphez, és Gyűjtse össze a memóriaképet tartalmazó fájlt.
+8. Csatlakoztassa az operációs rendszer lemezét egy helyreállítási virtuális gép hez újra, gyűjtse dump fájlt.
 
 ## <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 
-A memóriakép-fájl összegyűjtése után forduljon a Microsoft támogatási szolgálatához, és állapítsa meg a kiváltó okot.
+A memóriaképfájl összegyűjtése után lépjen kapcsolatba a Microsoft támogatási szolgálatával a kiváltó ok megállapítása érdekében.

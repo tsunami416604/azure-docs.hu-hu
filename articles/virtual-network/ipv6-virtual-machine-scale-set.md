@@ -1,7 +1,7 @@
 ---
-title: Virtuálisgép-méretezési csoportok üzembe helyezése IPv6-ban az Azure-ban
+title: Virtuálisgép-méretezési készletek üzembe helyezése az IPv6-tal az Azure-ban
 titlesuffix: Azure Virtual Network
-description: Ez a cikk bemutatja, hogyan helyezhet üzembe virtuálisgép-méretezési csoportokat IPv6-ban egy Azure-beli virtuális hálózaton.
+description: Ez a cikk bemutatja, hogyan telepítheti a virtuális gép méretezési készleteit az IPv6-tal egy Azure virtuális hálózatban.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,20 +14,20 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: kumud
 ms.openlocfilehash: b90910614bcd86a54198b1a0961a3378427ea87e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73164990"
 ---
-# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure-preview"></a>Virtuálisgép-méretezési csoportok üzembe helyezése IPv6-ban az Azure-ban (előzetes verzió)
+# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure-preview"></a>Virtuálisgép-méretezési készletek üzembe helyezése az IPv6-tal az Azure-ban (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy kettős verem (IPv4 + IPv6) virtuálisgép-méretezési csoportját egy Azure-beli virtuális hálózatban lévő, kettős veremből álló külső terheléselosztó használatával. Az IPv6-kompatibilis virtuálisgép-méretezési csoport létrehozásának folyamata majdnem azonos az [itt](ipv6-configure-standard-load-balancer-template-json.md)ismertetett egyéni virtuális gépek létrehozási folyamatával. Az egyes virtuális gépekhez hasonló lépésekkel kezdheti meg a lépéseket:
-1.  IPv4-és IPv6-alapú nyilvános IP-címek létrehozása.
-2.  Hozzon létre egy Dual stack Load balancert.  
-3.  Hozzon létre hálózati biztonsági csoport (NSG) szabályait.  
+Ez a cikk bemutatja, hogyan telepíthet egy kétverű (IPv4 + IPv6) virtuális gép méretezési készlet két halom külső terheléselosztó egy Azure virtuális hálózatban. Az IPv6-kompatibilis virtuálisgép-méretezési csoport létrehozásának folyamata közel azonos az [itt](ipv6-configure-standard-load-balancer-template-json.md)leírt egyedi virtuális gépek létrehozásának folyamatához. Az egyes virtuális gépekhez leírtakhoz hasonló lépésekkel kell kezdenie:
+1.  IPv4 és IPv6 nyilvános IP-címek létrehozása.
+2.  Hozzon létre egy kettős stack terheléselosztó.  
+3.  Hozzon létre hálózati biztonsági csoport (NSG) szabályokat.  
 
-Az egyetlen virtuális gépről eltérő lépés a hálózati adapter (NIC) olyan konfigurációját hozza létre, amely a virtuálisgép-méretezési csoport erőforrását használja: networkProfile/Networkinterfaceconfigurations szakaszához. A JSON-struktúra hasonló az egyes virtuális gépekhez használt Microsoft. Network/networkInterfaces objektumhoz, a hálózati adapter és az IPv4-IpConfiguration elsődleges illesztőfelületként való beállításával az **"elsődleges": true** attribútum használatával következő példa:
+Az egyetlen lépés, amely eltér az egyes virtuális gépek létrehozása a hálózati adapter konfiguráció, amely a virtuális gép méretezési csoport erőforrás: networkProfile/networkInterfaceConfigurations. A JSON-struktúra hasonló az egyes virtuális gépekekhez használt Microsoft.Network/networkInterfaces objektuméhoz, azzal a kiegészítéssel, hogy a hálózati adaptert és az IPv4 IpConfiguration-t elsődleges illesztőként állítja be az **"elsődleges" használatával: true** attribútum, ahogy az a következő példában látható:
 
 ```json
           "networkProfile": {
@@ -89,9 +89,9 @@ Az egyetlen virtuális gépről eltérő lépés a hálózati adapter (NIC) olya
 ```
 
 
-## <a name="sample-virtual-machine-scale-set-template-json"></a>Minta virtuálisgép-méretezési csoport sablonja JSON
+## <a name="sample-virtual-machine-scale-set-template-json"></a>Minta virtuálisgép-méretezési csoport sablonjának JSON-ja
 
-A kettős verem (IPv4 + IPv6) virtuálisgép-méretezési csoportjának üzembe helyezéséhez hozzon létre egy kettős verem külső Load Balancer és a Virtual Network View minta sablont [itt](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-vmss/).
-## <a name="next-steps"></a>Következő lépések
+Két verem (IPv4 + IPv6) virtuálisgép-méretezési készlet üzembe helyezése két veremkülső terheléselosztóval és virtuális hálózati nézet mintasablonnal [itt.](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-vmss/)
+## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az Azure Virtual Networks IPv6-támogatásáról, tekintse meg a [Mi az az Azure-beli ipv6 Virtual Network?](ipv6-overview.md)című témakört.
+Ha többet szeretne tudni az IPv6-támogatásról az Azure virtuális hálózatokban, olvassa el [a Mi az IPv6 az Azure virtuális hálózathoz című témakörben.](ipv6-overview.md)

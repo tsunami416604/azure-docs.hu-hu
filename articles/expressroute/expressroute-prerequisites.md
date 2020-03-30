@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: előfeltételek'
-description: Ez az oldal azon követelmények listáját tartalmazza, amelyeknek teljesülniük kell, mielőtt megrendel egy Azure ExpressRoute-kapcsolatcsoportot. Ellenőrzőlista tartalmazza.
+title: 'Azure ExpressRoute: Előfeltételek'
+description: Ez az oldal azon követelmények listáját tartalmazza, amelyeknek teljesülniük kell, mielőtt megrendel egy Azure ExpressRoute-kapcsolatcsoportot. Tartalmaz egy ellenőrzőlistát.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: a72eba9bde0745e66bdf8e7efd8eaec7d6a0b186
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083354"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute-előfeltételek és ellenőrzőlista
@@ -20,8 +20,8 @@ Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltat
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
 ## <a name="azure-account"></a>Azure-fiók
-* Egy érvényes és aktív Microsoft Azure-fiók. Erre a fiókra az ExpressRoute-kapcsolatcsoport beállításához van szükség. Az ExpressRoute-kapcsolatcsoportok az Azure-előfizetéseken belüli erőforrások. Az Azure-előfizetés akkor is követelmény, ha a kapcsolat nem Azure-beli Microsoft Cloud Services-szolgáltatásokra (például Office 365) korlátozódik.
-* Egy aktív Office 365-előfizetés (ha az Office 365 szolgáltatásokat használja). További információkért tekintse meg a jelen cikk Office 365-specifikus követelmények című szakaszát.
+* Egy érvényes és aktív Microsoft Azure-fiók. Erre a fiókra az ExpressRoute-kapcsolatcsoport beállításához van szükség. Az ExpressRoute-kapcsolatcsoportok az Azure-előfizetéseken belüli erőforrások. Az Azure-előfizetés akkor is követelmény, ha a kapcsolat nem Azure-beli Microsoft felhőszolgáltatásokra, például az Office 365-re korlátozódik.
+* Egy aktív Office 365-előfizetés (ha az Office 365 szolgáltatásokat használja). További információkért lásd a cikk Office 365-specifikus követelmények című szakaszát.
 
 ## <a name="connectivity-provider"></a>Kapcsolatszolgáltató
 
@@ -29,10 +29,10 @@ Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltat
 * Ha a szolgáltató nem ExpressRoute-kapcsolatszolgáltató, akkor is csatlakozhat a Microsoft Cloudhoz egy [felhőalapú adatcsere-szolgáltatóval](expressroute-locations.md#connectivity-through-exchange-providers).
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
-* **Redundancia minden egyes egyenrangú helyen**: a Microsoft számára szükséges a redundáns BGP-munkamenetek beállítása a Microsoft útválasztói és a társítási útválasztók között minden ExpressRoute áramkörön (akkor is, ha csak [egy fizikai kapcsolat van a felhőalapú Exchange](expressroute-faqs.md#onep2plink)-hez).
-* **Redundancia a vész-helyreállításhoz**: a Microsoft nyomatékosan javasolja, hogy legalább két ExpressRoute-áramkört hozzon létre különböző, egymástól eltérő helyeken, hogy elkerülje az adott meghibásodási pontot.
-* **Útválasztás**: attól függően, hogy a Microsoft Cloud csatlakozik, akkor vagy a szolgáltató kell beállítása és kezelése a BGP-munkamenetet [útválasztási tartományok](expressroute-circuit-peerings.md). Egyes Ethernet-kapcsolatszolgáltatók vagy felhőalapú adatcsere-szolgáltatókon kínálhatják BGP-felügyeletet egy értéknövelt szolgáltatásként.
-* **NAT**: A Microsoft csak nyilvános IP-címeket fogad el a Microsoft társviszony-létesítésen keresztül. Ha a helyszíni hálózat privát IP-címeket használ, Önnek vagy a szolgáltatónak kell a nyilvános IP-címek a privát IP-címek fordítása [a NAT használatával](expressroute-nat.md).
+* **Redundancia minden társviszony-létesítési helyen**: A Microsoft megköveteli, hogy redundáns BGP-munkameneteket állítsanak be a Microsoft útválasztói és az egyes ExpressRoute-áramkörök társviszony-létesítő útválasztói között (még akkor is, ha csak egy fizikai kapcsolata van [a felhőalapú cserével).](expressroute-faqs.md#onep2plink)
+* **Redundancia vész-helyreállítási:** A Microsoft nyomatékosan javasolja, hogy legalább két ExpressRoute-kapcsolati kapcsolati kapcsolati kapcsolati helyeken, hogy elkerüljék a hibapont.
+* **Útválasztás**: Attól függően, hogy hogyan csatlakozik a Microsoft-felhőhöz, önnek vagy szolgáltatójának be kell állítania és kezelnie kell az útválasztási tartományok BGP-munkameneteit. [routing domains](expressroute-circuit-peerings.md) Egyes Ethernet-kapcsolatszolgáltatók vagy felhőalapú adatszolgáltatók a BGP-kezelést értéknövelő szolgáltatásként kínálhatják.
+* **NAT**: A Microsoft csak nyilvános IP-címeket fogad el a Microsoft társviszony-létesítésen keresztül. Ha magánhálózati IP-címeket használ a helyszíni hálózatban, önnek vagy szolgáltatójának le kell fordítania a privát IP-címeket a nyilvános IP-címekre [a NAT használatával.](expressroute-nat.md)
 * **QoS**: A Skype Vállalati verzió különböző szolgáltatásokat tartalmaz (például hang, videó, szöveg), amelyek különböző QoS-kezelést igényelnek. Önnek és a szolgáltatónak teljesítenie kell a [QoS-követelményeket](expressroute-qos.md).
 * **Hálózati biztonság**: fontolja meg a [hálózati biztonság](../best-practices-network-security.md) használatát, amikor ExpressRoute-on keresztül csatlakozik a Microsoft Cloudhoz.
 
@@ -48,11 +48,11 @@ Ha azt tervezi, hogy engedélyezi az Office 365-öt az ExpressRoute-on, tekintse
 * [Az Office 365 integrációja helyszíni környezetekkel](https://support.office.com/article/Office-365-integration-with-on-premises-environments-263faf8d-aa21-428b-aed3-2021837a4b65)
 * [ExpressRoute az Office 365-ön haladó szintű oktatóvideók](https://channel9.msdn.com/series/aer/)
 
-## <a name="next-steps"></a>Következő lépések
-* További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).
+## <a name="next-steps"></a>További lépések
+* Az ExpressRoute-ról további információt az [ExpressRoute gyakori kérdések című](expressroute-faqs.md)témakörben talál.
 * Egy ExpressRoute-kapcsolatszolgáltató keresése. Lásd: [ExpressRoute-partnerek és társviszony-létesítési helyszínek](expressroute-locations.md).
 * Tekintse meg az [Útválasztás](expressroute-routing.md), a [NAT](expressroute-nat.md) és a [QoS](expressroute-qos.md) követelményeit.
 * Az ExpressRoute-kapcsolat konfigurálása.
-  * [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-arm.md)
+  * [ExpressRoute-kapcsolat létrehozása](expressroute-howto-circuit-arm.md)
   * [Útválasztás konfigurálása](expressroute-howto-routing-arm.md)
   * [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](expressroute-howto-linkvnet-arm.md)

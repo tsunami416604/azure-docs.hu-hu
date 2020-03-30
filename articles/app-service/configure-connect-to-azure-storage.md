@@ -1,64 +1,64 @@
 ---
 title: Egyéni tároló hozzáadása (Windows-tároló)
-description: Megtudhatja, hogyan csatolhat egyéni hálózati megosztást egy egyéni Windows-tárolóban a Azure App Serviceban. Fájlok megosztása az alkalmazások között, a statikus tartalmak távoli és helyileg elérhetővé való kezelése stb.
+description: Megtudhatja, hogyan csatolhat egyéni hálózati megosztást egy egyéni Windows-tárolóban az Azure App Service-ben. Fájlokat oszthat meg az alkalmazások között, kezelheti a statikus tartalmakat távolról, és helyileg érheti el, stb.
 author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77120670"
 ---
-# <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Azure Files konfigurálása Windows-tárolóban App Service
+# <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Azure-fájlok konfigurálása Windows-tárolóban az App Service szolgáltatásban
 
 > [!NOTE]
-> Ez a cikk az egyéni Windows-tárolókat érinti. A _linuxon_app Service való üzembe helyezéssel kapcsolatban lásd: [tartalom kiszolgálása az Azure Storage-ból](./containers/how-to-serve-content-from-azure-storage.md).
+> Ez a cikk az egyéni Windows-tárolókra vonatkozik. A _Linuxon_lévő App Service szolgáltatásban való üzembe helyezéshez olvassa el a [Tartalom kiszolgálása az Azure Storage-ból](./containers/how-to-serve-content-from-azure-storage.md).
 >
 
-Ez az útmutató bemutatja, hogyan érheti el az Azure Storage-t Windows-tárolókban. Csak [Azure Files megosztások](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli) és [prémium fájlok megosztása](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-premium-fileshare) támogatott. Ebben az útmutatóban Azure Files megosztásokat használ. Az előnyök közé tartoznak a biztonságos tartalom, a tartalom hordozhatósága, a több alkalmazáshoz való hozzáférés és a több átadási módszer is.
+Ez az útmutató bemutatja, hogyan érheti el az Azure Storage-t a Windows-tárolókban. Csak [az Azure-fájlmegosztások](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli) és [a prémium fájlmegosztások](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-premium-fileshare) támogatottak. Ebben az útmutatóban az Azure-fájlmegosztásokat használja. Az előnyök közé tartozik a biztonságos tartalom, a tartalom hordozhatósága, a több alkalmazáshoz való hozzáférés és a többátviteli módszer.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 vagy újabb).
-- [Egy meglévő Windows-tároló alkalmazás a Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container)
+- [Meglévő Windows Container-alkalmazás az Azure App Service-ben](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container)
 - [Azure-fájlmegosztás létrehozása](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli)
 - [Fájlok feltöltése az Azure-fájlmegosztásba](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide)
 
 > [!NOTE]
-> A Azure Files nem alapértelmezett tároló, és a webalkalmazásban nem szereplő külön számlázható. Az infrastruktúra-korlátozások miatt nem támogatja a tűzfal konfigurációját.
+> Az Azure Files nem alapértelmezett tárterület, és külön számlázták, nem tartalmazza a webalkalmazás. Infrastruktúra-korlátozások miatt nem támogatja a tűzfal konfigurációjának használatát.
 >
 
 ## <a name="limitations"></a>Korlátozások
 
-- Az Azure Storage a Windows-tárolókban **előzetes** verzióban érhető el, és **éles környezetekben** **nem támogatott** .
-- Az Azure Storage a Windows-tárolókban csak a **Azure Files tárolók** (írható/olvasható) csatlakoztatását támogatja.
-- Az Azure Storage a Windows-tárolókban jelenleg **nem támogatott** a Windows app Service-csomagok saját programkódjának használata esetén.
-- Az Azure Storage a Windows-tárolókban **nem támogatja** a **tárolási tűzfal** konfigurációjának használatát az infrastruktúra korlátai miatt.
-- Az Azure Storage a Windows-tárolókban alkalmazásban **legfeljebb öt** csatlakoztatási pontot határozhat meg.
-- Az alkalmazáshoz csatlakoztatott Azure Storage App Service FTP-/FTPs-végpontokon keresztül nem érhető el. Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)használata.
-- Az Azure Storage szolgáltatás számlázása egymástól függetlenül történik, és **nem szerepel** a webalkalmazásban. További információ az [Azure Storage díjszabásáról](https://azure.microsoft.com/pricing/details/storage).
+- Az Azure Storage windowsos **tárolókban előzetes verzióban** érhető el, és **éles környezetben** **nem támogatott.**
+- Az Azure Storage windowsos tárolókban csak az **Azure Files-tárolók** csatlakoztatását támogatja (olvasás/írás).
+- Az Azure Storage windowsos tárolókban jelenleg **nem támogatott** a saját kódforgatókönyvek a Windows App Service-csomagok.
+- Az Azure Storage windowsos tárolókban **nem támogatja** a **tárolási tűzfal** konfigurációját az infrastruktúra korlátai miatt.
+- Az Azure Storage Windows-tárolókban lehetővé teszi, hogy alkalmazásonként **legfeljebb öt** csatlakoztatási pontot adjon meg.
+- Az alkalmazáshoz csatlakoztatott Azure Storage nem érhető el az App Service FTP/FTPs végpontokon keresztül. Használja [az Azure Storage explorert.](https://azure.microsoft.com/features/storage-explorer/)
+- Az Azure Storage számlázása függetlenül történik, és **nem tartalmazza** a webalkalmazás. További információ az [Azure Storage díjszabásáról.](https://azure.microsoft.com/pricing/details/storage)
 
-## <a name="link-storage-to-your-web-app-preview"></a>Tárterület csatolása a webalkalmazáshoz (előzetes verzió)
+## <a name="link-storage-to-your-web-app-preview"></a>Tárhely csatolása a webalkalmazáshoz (előzetes verzió)
 
- Ha Azure Files-megosztást szeretne csatlakoztatni egy címtárhoz a App Service alkalmazásban, használja a [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) parancsot. A tárolási típusnak AzureFiles kell lennie.
+ Az Azure Files Share csatlakoztatása az App Service-alkalmazás egy könyvtárba, használja a [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) parancsot. A tárolási típusnak AzureFiles típusúnak kell lennie.
 
 ```azurecli
 az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureFiles --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory of form c:<directory name> >
 ```
 
-Ezt minden olyan könyvtárhoz el kell végeznie, amelyet Azure Files-megosztáshoz szeretne csatolni.
+Ezt minden más, Azure-fájlokhoz csatolni kívánt könyvtár esetén kell megtennie.
 
 ## <a name="verify"></a>Ellenőrzés
 
-Ha egy Azure Files-megosztás egy webalkalmazáshoz van társítva, akkor a következő parancs futtatásával ellenőrizheti:
+Miután egy Azure Files-megosztás tegy webalkalmazáshoz kapcsolódik, ezt a következő parancs futtatásával ellenőrizheti:
 
 ```azurecli
 az webapp config storage-account list --resource-group <resource_group> --name <app_name>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [ASP.NET-alkalmazás migrálása Azure app Servicere Windows-tároló (előzetes verzió) használatával](app-service-web-tutorial-windows-containers-custom-fonts.md).
+- [Áttelepíteni egy ASP.NET alkalmazást az Azure App Service-be egy Windows-tároló (előzetes verzió) használatával.](app-service-web-tutorial-windows-containers-custom-fonts.md)

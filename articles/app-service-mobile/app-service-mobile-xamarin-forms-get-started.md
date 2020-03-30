@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés a Xamarin. Forms használatába
+title: Első lépések a Xamarin.Forms-szal
 description: Ezt az oktatóanyagot követve elkezdheti a Mobile Apps szolgáltatást Xamarin.Forms-alapú fejlesztésre használni.
 ms.assetid: 5e692220-cc89-4548-96c8-35259722acf5
 ms.tgt_pltfrm: mobile-xamarin
@@ -7,10 +7,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: 9ae97ccbcc358a150e914a6e950579a972fef0bc
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461334"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Xamarin.Forms-alkalmazás létrehozása az Azure-ral
@@ -28,31 +28,31 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Aktív Azure-fiók. Ha nincs fiókja, regisztráljon az Azure próba-előfizetésére, és akár 10 ingyenes mobilalkalmazáshoz is hozzájuthat, amelyeket a próba-előfizetés lejárta után is tovább használhat. További információk: [Ingyenes Azure-próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
 
-* Visual Studio-eszközök a Xamarin, a Visual Studio 2017-es vagy újabb verzióiban, vagy Visual Studio for Mac. Útmutatásért tekintse meg a [Xamarin telepítési lapját][Install Xamarin] .
+* Visual Studio Tools for Xamarin, Visual Studio 2017-es vagy újabb verziós vagy Visual Studio for Mac. Útmutatást a [Xamarin telepítési oldalán][Install Xamarin] talál.
 
-* (választható) iOS-alkalmazás készítéséhez Xcode 9.0 vagy újabb verzióval rendelkező Mac szükséges. Az Visual Studio for Mac az iOS-alkalmazások, illetve a Visual Studio 2017-es vagy újabb verzióinak fejlesztésére is használható (ha a Mac elérhető a hálózaton).
+* (választható) iOS-alkalmazás készítéséhez Xcode 9.0 vagy újabb verzióval rendelkező Mac szükséges. A Visual Studio for Mac használható iOS-alkalmazások fejlesztésére, a Visual Studio 2017-es vagy újabb verziói is használhatók (feltéve, hogy a Mac elérhető a hálózaton).
 
 ## <a name="create-a-new-mobile-apps-back-end"></a>Új Mobile Apps-háttéralkalmazás létrehozása
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Adatbázis-kapcsolatok létrehozása és az ügyfél és a kiszolgáló projekt konfigurálása
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Adatbázis-kapcsolat létrehozása és az ügyfél- és kiszolgálóprojekt konfigurálása
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="run-the-xamarinforms-solution"></a>A Xamarin. Forms megoldás futtatása
+## <a name="run-the-xamarinforms-solution"></a>A Xamarin.Forms megoldás futtatása
 
-A megoldás megnyitásához a Visual Studio Tools for Xamarin szükséges, lásd a [Xamarin telepítési útmutatóját][Install Xamarin]. Ha az eszközök már telepítve vannak, akkor a megoldást a következő lépesekben töltheti le és nyithatja meg:
+A megoldás megnyitásához a Xamarinhoz készült Visual Studio Tools szükséges. Lásd a [Xamarin telepítési útmutatót][Install Xamarin]. Ha az eszközök már telepítve vannak, akkor a megoldást a következő lépesekben töltheti le és nyithatja meg:
 
 ### <a name="visual-studio-windows-and-mac"></a>Visual Studio (Windows és Mac)
 
-1. Lépjen a [Azure Portalra](https://portal.azure.com/) , és navigáljon a létrehozott mobil alkalmazáshoz. A `Overview` panelen keresse meg azt az URL-címet, amely a Mobile App nyilvános végpontja. Példa – az sitename "test123" neve https://test123.azurewebsites.netlesz.
+1. Nyissa meg az [Azure Portalon,](https://portal.azure.com/) és keresse meg a létrehozott mobilalkalmazást. A `Overview` panelen keresse meg a mobilalkalmazás nyilvános végpontját képező URL-címet. Példa - a sitename az én app neve https://test123.azurewebsites.net"test123" lesz .
 
-2. Nyissa meg a fájl `Constants.cs` ebben a mappában – xamarin. Forms/ZUMOAPPNAME. Az alkalmazás neve `ZUMOAPPNAME`.
+2. Nyissa meg `Constants.cs` a fájlt ebben a mappában - xamarin.forms/ZUMOAPPNAME. Az alkalmazás `ZUMOAPPNAME`neve .
 
-3. `Constants.cs` osztályban cserélje le az `ZUMOAPPURL` változót a fenti nyilvános végpontra.
+3. Az `Constants.cs` osztályban `ZUMOAPPURL` cserélje le a változót a fenti nyilvános végpontra.
 
     `public static string ApplicationURL = @"ZUMOAPPURL";`
 
-    válik
+    Lesz
 
     `public static string ApplicationURL = @"https://test123.azurewebsites.net";`
     
@@ -78,11 +78,11 @@ Ebben a szakaszban a Xamarin.Android-projektet fogja futtatni. Kihagyhatja ezt a
 
 2. A projekt fordításához és az alkalmazás Android-emulátoron való futtatásához válassza a **Run** (Futtatás) menüt, majd a **Start Debugging** (Hibakeresés indítása) lehetőséget.
 
-Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd válassza a pluszjelet ( **+** ).
+Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd válassza a pluszjelet (**+**).
 
 ![Androidos Teendők alkalmazás][11]
 
-Ez a művelet egy közzétételi kérést küld az Azure szolgáltatásban üzemeltetett új Mobile Apps-háttéralkalmazás számára. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A Mobile Apps-háttéralkalmazás visszaadja a táblában tárolt elemeket, amelyek egy listában jelennek meg.
+Ez a művelet egy közzétételi kérést küld az Azure szolgáltatásban üzemeltetett új Mobile Apps-háttéralkalmazás számára. A rendszer beilleszti kérés adatait a TodoItem táblába. A Mobile Apps-háttéralkalmazás visszaadja a táblában tárolt elemeket, amelyek egy listában jelennek meg.
 
 > [!NOTE]
 > A Mobile Apps-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás közös kódú projektjének **TodoItemManager.cs** C#-fájljában találja.
@@ -104,15 +104,15 @@ Ebben a szakaszban az iOS-eszközökhöz készült Xamarin.iOS-projektet fogja f
 
 ### <a name="visual-studio-for-mac"></a>Visual Studio for Mac
 
-1. Kattintson a jobb gombbal az iOS-projektre, és válassza a **Set As Startup Project** (Beállítás kezdőprojektként) lehetőséget.
+1. Kattintson a jobb gombbal az iOS-projektre, és válassza **a Beállítás indítási projektként parancsot.**
 
 2. A **Run** (Futtatás) menüben válassza a **Start Debugging** (Hibakeresés indítása) lehetőséget a projekt buildjének elkészítéséhez, és indítsa el az alkalmazást az iPhone-emulátoron.
 
-Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd válassza a pluszjelet ( **+** ).
+Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd válassza a pluszjelet (**+**).
 
 ![iOS-es Teendők alkalmazás][10]
 
-Ez a művelet egy közzétételi kérést küld az Azure szolgáltatásban üzemeltetett új Mobile Apps-háttéralkalmazás számára. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A Mobile Apps-háttéralkalmazás visszaadja a táblában tárolt elemeket, amelyek egy listában jelennek meg.
+Ez a művelet egy közzétételi kérést küld az Azure szolgáltatásban üzemeltetett új Mobile Apps-háttéralkalmazás számára. A rendszer beilleszti kérés adatait a TodoItem táblába. A Mobile Apps-háttéralkalmazás visszaadja a táblában tárolt elemeket, amelyek egy listában jelennek meg.
 
 > [!NOTE]
 > A Mobile Apps-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás közös kódú projektjének **TodoItemManager.cs** C#-fájljában találja.
@@ -135,9 +135,9 @@ Ebben a szakaszban a Xamarin.Forms Universal Windows Platform (UWP) projektet fo
 > [!NOTE]
 > A Windows-projekt macOS-en nem futtatható.
 
-Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd válassza a pluszjelet ( **+** ).
+Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd válassza a pluszjelet (**+**).
 
-Ez a művelet egy közzétételi kérést küld az Azure szolgáltatásban üzemeltetett új Mobile Apps-háttéralkalmazás számára. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A Mobile Apps-háttéralkalmazás visszaadja a táblában tárolt elemeket, amelyek egy listában jelennek meg.
+Ez a művelet egy közzétételi kérést küld az Azure szolgáltatásban üzemeltetett új Mobile Apps-háttéralkalmazás számára. A rendszer beilleszti kérés adatait a TodoItem táblába. A Mobile Apps-háttéralkalmazás visszaadja a táblában tárolt elemeket, amelyek egy listában jelennek meg.
 
 ![UWP Teendők alkalmazás][12]
 
@@ -145,11 +145,11 @@ Ez a művelet egy közzétételi kérést küld az Azure szolgáltatásban üzem
 > A Mobile Apps-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás hordozhatóosztálytár-projektjének **TodoItemManager.cs** C#-fájljában találja.
 >
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha a megoldás fordítása során problémákat tapasztal, futtassa a NuGet csomagkezelőt, és frissítsen a `Xamarin.Forms` legújabb verziójára, az Android-projektben pedig frissítse a `Xamarin.Android` támogatási csomagjait. Előfordulhat, hogy a gyorsindítási projektek nem tartalmazzák a legújabb verziót.
 
-Vegye figyelembe, hogy az Android-projektjében hivatkozott összes támogatási csomagnak azonos verziójúnak kell lennie. Az [Azure Mobile Apps NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
+Vegye figyelembe, hogy az Android-projektjében hivatkozott összes támogatási csomagnak azonos verziójúnak kell lennie. Az [Azure Mobile Apps NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
 
 <!-- Images. -->
 [10]: ./media/app-service-mobile-xamarin-forms-get-started/mobile-quickstart-startup-ios.png

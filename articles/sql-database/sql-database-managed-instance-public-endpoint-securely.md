@@ -1,6 +1,6 @@
 ---
-title: Felügyelt példányok biztonságos nyilvános végpontjai
-description: Nyilvános végpontok biztonságos használata az Azure-ban felügyelt példánnyal
+title: Biztonságos felügyelt példány nyilvános végpontjai
+description: Nyilvános végpontok biztonságos használata az Azure-ban felügyelt példányokkal
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,46 +11,46 @@ ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
 ms.openlocfilehash: 6dfeab3530445f8f9a102f47039d15b04fdf134a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821734"
 ---
-# <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Azure SQL Database felügyelt példány biztonságos használata nyilvános végpontokkal
+# <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Azure SQL Database felügyelt példányának biztonságos használata nyilvános végpontokkal
 
-Azure SQL Database felügyelt példányok felhasználói kapcsolatot biztosíthatnak a [nyilvános végpontokon](../virtual-network/virtual-network-service-endpoints-overview.md)keresztül. Ez a cikk azt ismerteti, hogyan lehet ezt a konfigurációt biztonságosabbá tenni.
+Az Azure SQL Database által felügyelt példányok felhasználói kapcsolatot biztosíthatnak [a nyilvános végpontokon](../virtual-network/virtual-network-service-endpoints-overview.md)keresztül. Ez a cikk bemutatja, hogyan teheti ezt a konfigurációt biztonságosabbá.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-A SQL Database felügyelt példányok egy privát végpontot biztosítanak, amely lehetővé teszi a kapcsolat használatát a virtuális hálózaton belül. Az alapértelmezett beállítás a maximális elkülönítés biztosítása. Vannak azonban olyan helyzetek, amikor nyilvános végponti kapcsolatokat kell megadnia:
+Az SQL Database felügyelt példánya egy privát végpontot biztosít a virtuális hálózaton belüli kapcsolat engedélyezéséhez. Az alapértelmezett beállítás a maximális elkülönítés biztosítása. Vannak azonban olyan esetek, ahol nyilvános végponti kapcsolatot kell biztosítania:
 
-- A felügyelt példánynak integrálva kell lennie a több-bérlős platform-szolgáltatásként elérhető (Pásti) ajánlatokkal.
-- Az adatcsere nagyobb átviteli sebességre van szüksége, mint amennyire VPN használata esetén van szükség.
-- A céges szabályzatok nem tiltják a vállalati hálózatokon belüli Pásti használatát.
+- A felügyelt példánynak integrálnia kell a több-bérlős platform-szolgáltatásként (PaaS) ajánlatok.
+- Az adatcsere nagyobb átviteli igényére van szüksége, mint amennyi VPN használata esetén lehetséges.
+- A vállalati irányelvek tiltják a PaaS-t a vállalati hálózatokon belül.
 
-## <a name="deploy-a-managed-instance-for-public-endpoint-access"></a>Felügyelt példány üzembe helyezése nyilvános végponti hozzáféréshez
+## <a name="deploy-a-managed-instance-for-public-endpoint-access"></a>Felügyelt példány telepítése nyilvános végpont-hozzáféréshez
 
-Bár nem kötelező, a nyilvános végponti hozzáféréssel rendelkező felügyelt példányok közös üzembe helyezési modellje a példányt egy dedikált elkülönített virtuális hálózatban hozza létre. Ebben a konfigurációban a virtuális hálózat csak a virtuális fürtök elkülönítésére szolgál. Nem számít, hogy a felügyelt példány IP-címének mérete átfedésben van-e a vállalati hálózat IP-címével.
+Bár nem kötelező, a nyilvános végpont-hozzáféréssel rendelkező felügyelt példány közös központi telepítési modellje a példány dedikált elkülönített virtuális hálózatban történő létrehozása. Ebben a konfigurációban a virtuális hálózat csak a virtuális fürt elkülönítésére szolgál. Nem számít, hogy a felügyelt példány IP-címterülete átfedésben van-e a vállalati hálózat IP-címterével.
 
-## <a name="secure-data-in-motion"></a>Mozgásban lévő adatvédelmek
+## <a name="secure-data-in-motion"></a>Biztonságos mozgásban lévő adatok
 
-A felügyelt példány adatforgalma mindig titkosítva van, ha az ügyfél-illesztőprogram támogatja a titkosítást. A felügyelt példány és más Azure-beli virtuális gépek vagy Azure-szolgáltatások között elküldett adatszolgáltatások soha nem hagyják el az Azure gerincét. Ha van kapcsolat a felügyelt példány és egy helyszíni hálózat között, javasoljuk, hogy használja az Azure ExpressRoute-t a Microsoft-partnerekkel. A ExpressRoute segítségével elkerülheti az adatáthelyezést a nyilvános interneten keresztül. A felügyelt példányok magánhálózati kapcsolata esetében csak a privát társak használhatók.
+A felügyelt példány adatforgalma mindig titkosítva van, ha az ügyfél-illesztőprogram támogatja a titkosítást. A felügyelt példány és más Azure-virtuális gépek vagy Azure-szolgáltatások között küldött adatok soha nem hagyja el az Azure gerincét. Ha kapcsolat van a felügyelt példány és a helyszíni hálózat között, javasoljuk, hogy az Azure ExpressRoute-ot használja a Microsoft társviszony-létesítésével. Az ExpressRoute segítségével elkerülheti az adatok nyilvános interneten keresztüli áthelyezését. Felügyelt példány privát kapcsolat, csak privát társviszony-létesítés használható.
 
-## <a name="lock-down-inbound-and-outbound-connectivity"></a>Bejövő és kimenő kapcsolat zárolása
+## <a name="lock-down-inbound-and-outbound-connectivity"></a>Bejövő és kimenő kapcsolatok zárolása
 
-A következő ábrán az ajánlott biztonsági konfigurációk láthatók:
+Az alábbi ábra az ajánlott biztonsági konfigurációkat mutatja be:
 
-![A bejövő és a kimenő kapcsolat zárolására szolgáló biztonsági konfigurációk](media/sql-database-managed-instance-public-endpoint-securely/managed-instance-vnet.png)
+![A bejövő és kimenő kapcsolatok zárolására szolgáló biztonsági konfigurációk](media/sql-database-managed-instance-public-endpoint-securely/managed-instance-vnet.png)
 
-A felügyelt példány [dedikált nyilvános végponti címe](sql-database-managed-instance-find-management-endpoint-ip-address.md). Az ügyféloldali kimenő tűzfalon és a hálózati biztonsági csoport szabályaiban állítsa be ezt a nyilvános végponti IP-címet a kimenő kapcsolat korlátozására.
+A felügyelt példány [dedikált nyilvános végpontcímmel rendelkezik.](sql-database-managed-instance-find-management-endpoint-ip-address.md) Az ügyféloldali kimenő tűzfalban és a hálózati biztonsági csoport szabályaiban állítsa be ezt a nyilvános végpont IP-címét a kimenő kapcsolat korlátozására.
 
-Ha biztosítani szeretné, hogy a felügyelt példány forgalma megbízható forrásból származik, javasoljuk, hogy a jól ismert IP-címmel rendelkező forrásokhoz kapcsolódjon. Használjon hálózati biztonsági csoportot a felügyelt példány nyilvános végpontjának a 3342-es porton való hozzáférésének korlátozásához.
+Annak érdekében, hogy a felügyelt példány hoz való forgalom megbízható forrásokból származzon, javasoljuk, hogy jól ismert IP-címekkel rendelkező forrásokból csatlakozzon. Használjon hálózati biztonsági csoportot a 3342-es porton lévő felügyelt példány nyilvános végpontjához való hozzáférés korlátozására.
 
-Ha az ügyfeleknek csatlakozniuk kell egy helyszíni hálózatról, győződjön meg arról, hogy a rendszer az eredeti címet egy jól ismert IP-címekre fordítja le. Ha ezt nem teszi meg (például a mobil munkaerő tipikus forgatókönyv), javasoljuk, hogy [pont – hely típusú VPN-kapcsolatokat és privát végpontot](sql-database-managed-instance-configure-p2s.md)használjon.
+Ha az ügyfeleknek kapcsolatot kell kezdeményezniük egy helyszíni hálózatról, győződjön meg arról, hogy az eredeti cím egy jól ismert IP-címkészletre van lefordítva. Ha ezt nem tudja megtenni (például egy mobil munkaerő egy tipikus forgatókönyv), javasoljuk, [hogy használjon pont-hely VPN-kapcsolatokat és egy privát végpontot.](sql-database-managed-instance-configure-p2s.md)
 
-Ha a kapcsolatok az Azure-ból indulnak, javasoljuk, hogy a forgalom egy jól ismert, hozzárendelt [virtuális IP-címről](../virtual-network/virtual-networks-reserved-public-ip.md) (például egy virtuális gépről) származik. A virtuális IP-címek (VIP) egyszerűbb kezelése érdekében érdemes lehet [nyilvános IP-cím előtagokat](../virtual-network/public-ip-address-prefix.md)használni.
+Ha a kapcsolatok az Azure-ból indulnak, azt javasoljuk, hogy a forgalom egy jól ismert [virtuális IP-címről](../virtual-network/virtual-networks-reserved-public-ip.md) (például egy virtuális gépről) származik. A virtuális IP-címek (VIP) kezelésének megkönnyítése érdekében érdemes [lehet nyilvános IP-címelőtagokat](../virtual-network/public-ip-address-prefix.md)használni.
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan konfigurálhat nyilvános végpontot a következő példányok kezeléséhez: [nyilvános végpont konfigurálása](sql-database-managed-instance-public-endpoint-configure.md)
+- A nyilvános végpont konfigurálása a példányok kezeléséhez: [Nyilvános végpont konfigurálása](sql-database-managed-instance-public-endpoint-configure.md)

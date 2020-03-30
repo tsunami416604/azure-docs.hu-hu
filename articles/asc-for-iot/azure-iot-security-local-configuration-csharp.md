@@ -1,6 +1,6 @@
 ---
-title: A C# IoT biztonsági ügynök helyi konfigurációs fájljának Azure Security Center ismertetése | Microsoft Docs
-description: További információ a IoT biztonsági szolgáltatás, a biztonsági ügynök helyi konfigurációs fájljának Azure Security Center C#.
+title: Az Azure Security Center for IoT security agent helyi konfigurációs fájljának ismertetése C# | Microsoft dokumentumok
+description: További információ az Azure Security Center for IoT biztonsági szolgáltatás, a biztonsági ügynök helyi konfigurációs fájl C#.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,51 +16,51 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74664193"
 ---
-# <a name="understanding-the-local-configuration-file-c-agent"></a>A helyi konfigurációs fájl (C# Agent) ismertetése
+# <a name="understanding-the-local-configuration-file-c-agent"></a>A helyi konfigurációs fájl (C# ügynök) ismertetése
 
 
-A IoT biztonsági ügynök Azure Security Center konfigurációkat használ egy helyi konfigurációs fájlból.
+Az Azure Security Center for IoT biztonsági ügynök konfigurációkat használ egy helyi konfigurációs fájlból.
 
-A biztonsági ügynök az ügynök indításakor egyszer beolvassa a konfigurációs fájlt. A helyi konfigurációs fájlban található konfigurációk a hitelesítési konfigurációt és az egyéb ügynökkel kapcsolatos konfigurációkat is tartalmazzák.
+A biztonsági ügynök egyszer olvassa be a konfigurációs fájlt, amikor az ügynök elindul. A helyi konfigurációs fájlban található konfigurációk a hitelesítési konfigurációt és az ügynökkel kapcsolatos egyéb konfigurációkat is tartalmazzák.
 
 A C# biztonsági ügynök több konfigurációs fájlt használ:
 
-- **Általános. config** – az ügynökhöz kapcsolódó konfigurációk.
-- **Authentication. config** – hitelesítéssel kapcsolatos konfiguráció (beleértve a hitelesítés részleteit is).
-- **SecurityIotInterface. config** – IoT kapcsolódó konfigurációk.
+- **General.config** - Ügynökkel kapcsolatos konfigurációk.
+- **Authentication.config** - Hitelesítéssel kapcsolatos konfiguráció (beleértve a hitelesítés részleteit).
+- **SecurityIotInterface.config** - IoT-vel kapcsolatos konfigurációk.
 
-A konfigurációs fájlok tartalmazzák az alapértelmezett konfigurációt. A hitelesítési konfiguráció az ügynök telepítése során töltődik fel, és a konfigurációs fájl módosításai az ügynök újraindításakor jönnek létre. 
+A konfigurációs fájlok tartalmazzák az alapértelmezett konfigurációt. A hitelesítési konfiguráció az ügynök telepítése során történik, és az ügynök újraindításakor a konfigurációs fájl módosítása történik. 
 
 ## <a name="configuration-file-location"></a>Konfigurációs fájl helye
 Linux esetén:
-- Az operációs rendszer konfigurációs fájljai `/var/ASCIoTAgent`találhatók.
+- Az operációs rendszer konfigurációs fájljai a rendszerben `/var/ASCIoTAgent`találhatók.
 
 Windows esetén:
-- Az operációs rendszer konfigurációs fájljai a biztonsági ügynök könyvtárán belül találhatók. 
+- Az operációs rendszer konfigurációs fájljai a biztonsági ügynök könyvtárában találhatók. 
 
-### <a name="generalconfig-configurations"></a>Általános. config konfigurációk
+### <a name="generalconfig-configurations"></a>General.config konfigurációk
 
 | Konfiguráció neve | Lehetséges értékek | Részletek | 
 |:-----------|:---------------|:--------|
 | ügynökazonosító | GUID | Ügynök egyedi azonosítója |
-| readRemoteConfigurationTimeout | TimeSpan | A távoli konfiguráció IoT Hubból való beolvasásának időszaka. Ha az ügynök a megadott időn belül nem tudja lekérni a konfigurációt, a művelet időtúllépést eredményez.|
-| schedulerInterval | TimeSpan | Belső ütemező időköze |
-| producerInterval | TimeSpan | Esemény-előállító munkavégző időköze. |
-| consumerInterval | TimeSpan | Esemény fogyasztói munkavégző időköze. |
-| highPriorityQueueSizePercentage | 0 < szám < 1 | A magas prioritású üzenetekhez dedikált teljes gyorsítótár része. |
-| Naplózási szint | "Off", "végzetes", "Error", "Warning", "Information", "debug"  | A naplózási üzenetek a súlyossági szinttel megegyező, a hibakeresési konzolon (syslog in Linux) vannak naplózva. |
-| fileLogLevel |  "Off", "végzetes", "Error", "Warning", "Information", "debug"| A súlyosságot meghaladó naplófájlok naplózása a következő fájlba történik: (syslog in Linux). |
-| diagnosticVerbosityLevel | "None", "some", "all", | A diagnosztikai események részletességi szintje. Nincs – a rendszer a diagnosztikai eseményeket nem továbbítja, csak a nagy fontossággal bíró diagnosztikai eseményeket, a rendszer az összes naplót diagnosztikai eseményként is elküldje. |
-| logFilePath | Fájl elérési útja | Ha a fileLogLevel > ki, a rendszer a naplókat erre a fájlba írja. |
-| defaultEventPriority | "Magas", "alacsony", "off" | Alapértelmezett esemény prioritása. |
+| readRemoteConfigurationTimeout | időtartam | A távoli konfiguráció nak az IoT Hubról való lehívásának időszaka. Ha az ügynök nem tudja beolvasni a konfigurációt a megadott időn belül, a művelet időtúlmarad.|
+| schedulerInterval | időtartam | Belső ütemező intervallum. |
+| gyártóIntervallum | időtartam | Eseményproduceri dolgozó időköze. |
+| consumerInterval | időtartam | Esemény fogyasztói dolgozói intervallum. |
+| highPriorityQueueSizePercentage | 0 < szám < 1 | A teljes gyorsítótár nak a magas prioritású üzenetekhez való része. |
+| Loglevel | "Ki", "Végzetes", "Hiba", "Figyelmeztetés", "Információ", "Debug"  | Naplóüzenetek azonos és annál magasabb súlyosságú a debug konzol (Syslog Linux). |
+| fileLogLevel |  "Ki", "Végzetes", "Hiba", "Figyelmeztetés", "Információ", "Debug"| Naplóüzenetek azonos és annál magasabb súlyosságú naplózva a fájlba (Syslog Linux). |
+| diagnosticVerbosityLevel | "Nincs", "néhány", "Minden", | A diagnosztikai események részletességi szintje. Nincs – a diagnosztikai események nem kerülnek elküldésre, Néhány - Csak nagy fontosságú diagnosztikai események et küld, Minden - az összes napló diagnosztikai eseményként is elküldésre kerül. |
+| logFilePath | Fájl elérési útja | Ha a fileLogLevel > Ki, a program ebbe a fájlba írja a naplókat. |
+| defaultEventPriority | "Magas", "Alacsony", "Ki" | Alapértelmezett eseményprioritás. |
 
-### <a name="generalconfig-example"></a>Általános. config példa
+### <a name="generalconfig-example"></a>Példa a General.config
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <General>
@@ -78,22 +78,22 @@ Windows esetén:
 </General>
 ```
 
-### <a name="authenticationconfig"></a>Authentication. config
+### <a name="authenticationconfig"></a>Hitelesítés.config
 
 | Konfiguráció neve | Lehetséges értékek | Részletek | 
 |:-----------|:---------------|:--------|
-| moduleName | sztring | A biztonsági modul identitásának neve. Ennek a névnek meg kell egyeznie a modul identitásának nevével az eszközön. |
-| deviceId | sztring | Az eszköz azonosítója (az Azure IoT Hubban regisztrálva). || schedulerInterval | TimeSpan karakterlánc | Belső ütemező időköze |
-| gatewayHostname | sztring | Az Azure IOT hub állomásneve. Általában < My-hub >. Azure-devices.net |
-| filePath | karakterlánc – fájl elérési útja | A hitelesítési titkot tartalmazó fájl elérési útja.|
-| type | "SymmetricKey", "SelfSignedCertificate" | A hitelesítő felhasználói titok. Válassza a *SymmetricKey* lehetőséget, ha a felhasználói titok szimmetrikus kulcs, válassza az *önaláírt tanúsítvány* lehetőséget, ha a titok egy önaláírt tanúsítvány. |
-| identitáskezelés | "DPS", "modul", "eszköz" | Hitelesítési identitás – DPS if hitelesítés a DPS-n keresztül történik, modul, ha a hitelesítés modul hitelesítő adataival történik, vagy ha hitelesítés történik az eszköz hitelesítő adataival.
-| certificateLocationKind |  "LocalFile", "Store" | LocalFile, ha a tanúsítvány egy fájlban van tárolva, tárolja, hogy a tanúsítvány tanúsítványtárolóban található-e. |
+| modulNeve | sztring | A biztonsági modul identitásának neve. Ennek a névnek meg kell felelnie az eszközben lévő modul identitásnevének. |
+| deviceId | sztring | Az eszköz azonosítója (az Azure IoT Hubban regisztrált). || schedulerInterval | TimeSpan karakterlánc | Belső ütemező intervallum. |
+| átjáróÁllomásnév | sztring | Az Azure Iot Hub gazdagépneve. Általában <a my-hub>.azure-devices.net |
+| filePath | karakterlánc - fájl elérési útja | A hitelesítési titkot tartalmazó fájl elérési útja.|
+| type | "SymmetricKey", "SelfSignedCertificate" | A hitelesítés felhasználói titkos kulcsa. Válassza *a SymmetricKey* lehetőséget, ha a felhasználói titkos kulcs szimmetrikus kulcs, válassza az *önaláírt tanúsítványt,* ha a titkos kulcs önaláírt tanúsítvány. |
+| identity | "DPS", "Modul", "Eszköz" | Hitelesítési identitás – DPS, ha a hitelesítés DPS-en keresztül történik, a modul, ha a hitelesítés modulhitelesítő adatokkal történik, vagy eszköz, ha a hitelesítés eszközhitelesítő adatokkal történik.
+| certificateLocationKind |  "LocalFile", "Store" | LocalFile ha a tanúsítvány fájlban van tárolva, tárolja, ha a tanúsítvány egy tanúsítványtárolóban található. |
 | idScope | sztring | A DPS azonosító hatóköre |
-| regisztrációban | sztring  | DPS-eszköz regisztrációs azonosítója. |
+| registrationId | sztring  | DPS-eszköz regisztrációs azonosítója. |
 |
 
-### <a name="authenticationconfig-example"></a>Authentication. config példa
+### <a name="authenticationconfig-example"></a>Például Authentication.config példa
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
@@ -108,14 +108,14 @@ Windows esetén:
   <add key="registrationId" value="d1"/>
 </Authentication>
 ```
-### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface. config
+### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface.config
 
 | Konfiguráció neve | Lehetséges értékek | Részletek | 
 |:-----------|:---------------|:--------|
-| transportType | "Ampq" "Mqtt" | IoT Hub átviteli típus. |
+| transportType (transportType) | "Ampq" "Mqtt" | IoT Hub átviteli típusa. |
 |
 
-### <a name="securityiotinterfaceconfig-example"></a>SecurityIotInterface. config példa
+### <a name="securityiotinterfaceconfig-example"></a>Példa a SecurityIotInterface.config
 ```XML
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
@@ -123,11 +123,11 @@ Windows esetén:
 </ExternalInterface>
 ```
 
-## <a name="next-steps"></a>Következő lépések
-- A IoT-szolgáltatás [áttekintésének](overview.md) Azure Security Center olvasása
-- További információ a IoT- [architektúra](architecture.md) Azure Security Center
-- A IoT [szolgáltatás](quickstart-onboard-iot-hub.md) Azure Security Centerának engedélyezése
-- A IoT szolgáltatással kapcsolatos [Gyakori kérdések](resources-frequently-asked-questions.md) Azure Security Center beolvasása
-- Ismerje meg, hogyan érheti el a [nyers biztonsági információkat](how-to-security-data-access.md)
-- [Javaslatok](concept-recommendations.md) ismertetése
-- Biztonsági [riasztások](concept-security-alerts.md) ismertetése
+## <a name="next-steps"></a>További lépések
+- Olvassa el az Azure Security Center for IoT szolgáltatás [áttekintését](overview.md)
+- További információ az Azure Security Center for IoT [Architecture szolgáltatásról](architecture.md)
+- Az Azure Security Center [ioT-szolgáltatás](quickstart-onboard-iot-hub.md) engedélyezése
+- Olvassa el az Azure Security Center for IoT szolgáltatás [gyakori kérdések](resources-frequently-asked-questions.md)
+- További információ a [nyers biztonsági adatok](how-to-security-data-access.md) eléréséről
+- Az [ajánlások megismerése](concept-recommendations.md)
+- A biztonsági [riasztások ismertetése](concept-security-alerts.md)

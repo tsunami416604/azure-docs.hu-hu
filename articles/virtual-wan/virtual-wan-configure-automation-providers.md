@@ -1,6 +1,6 @@
 ---
-title: Azure Virtual WAN-partnerek automatizálási útmutatója | Microsoft Docs
-description: Ez a cikk segítséget nyújt a partnereknek az Azure Virtual WAN Automation üzembe állításában.
+title: Az Azure Virtual WAN-partnerek automatizálási irányelvei | Microsoft dokumentumok
+description: Ez a cikk segít a partnereknek az Azure Virtual WAN-automatizálás beállításában.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,85 +8,85 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: cherylmc
 ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190420"
 ---
-# <a name="automation-guidelines-for-virtual-wan-partners"></a>Automatizálási irányelvek virtuális WAN-partnerekhez
+# <a name="automation-guidelines-for-virtual-wan-partners"></a>Automatizálási irányelvek a Virtual WAN-partnerek számára
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be az automatizálási környezetet egy fiókirodai eszköz (helyszíni VPN-eszköz vagy SDWAN CPE) Azure Virtual WAN-hoz való csatlakoztatásához és konfigurálásához. Ha Ön olyan szolgáltató, amely az IPsec/IKEv2 vagy az IPsec/IKEv1 VPN-kapcsolaton keresztül képes fiókirodai eszközöket biztosít, akkor ez a cikk Önnek szól.
+Ez a cikk segít megérteni, hogyan állíthatja be az automatizálási környezetet egy elágazási eszköz (egy helyszíni VPN-eszköz vagy SDWAN CPE) csatlakoztatásához és konfigurálásához az Azure Virtual WAN számára. Ha Ön olyan szolgáltató, amely olyan ágeszközöket biztosít, amelyek képesek a VPN-kapcsolat befogadására Az IPsec/IKEv2 vagy az IPsec/IKEv1 felett, ez a cikk az Ön számára szól.
 
-Az ág-eszköz (a helyszíni VPN-eszköz vagy a SDWAN CPE) általában egy vezérlő/eszköz irányítópultot használ. Az SD-WAN megoldás-rendszergazdák gyakran egy felügyeleti konzol használatával előre kiépíthetik az eszközöket a hálózatba való csatlakoztatás előtt. Ez a VPN-kompatibilis eszköz lekéri a vezérlő sík logikáját egy vezérlőből. A VPN-eszköz vagy az SD-WAN-vezérlő az Azure API-k segítségével automatizálhatja az Azure Virtual WAN-hoz való kapcsolódást. Az ilyen típusú kapcsolathoz a helyszíni eszköznek hozzá kell rendelnie egy kívülről álló nyilvános IP-címet.
+A fiókeszköz (egy helyszíni VPN-ügyfél vagy SDWAN CPE) általában egy vezérlő/eszköz irányítópultot használ a kiépítéshez. Az SD-WAN megoldásrendszergazdák gyakran használhatnak felügyeleti konzolt az eszköz előzetes kiépítésére, mielőtt az csatlakoztatva lenne a hálózathoz. Ez a VPN-képes eszköz a vezérlősík logikáját egy vezérlőtől kapja. A VPN-eszköz vagy az SD-WAN-vezérlő azure API-k használatával automatizálhatja az Azure Virtual WAN-hoz való kapcsolódást. Az ilyen típusú kapcsolat megköveteli, hogy a helyszíni eszköz külsőleg néző nyilvános IP-címet rendelve.
 
-## <a name ="before"></a>Az automatizálás megkezdése előtt
+## <a name="before-you-begin-automating"></a><a name ="before"></a>Az automatizálás megkezdése előtt
 
-* Ellenőrizze, hogy az eszköz támogatja-e az IPsec IKEv1/IKEv2. Lásd: [alapértelmezett házirendek](#default).
-* Megtekintheti az Azure Virtual WAN-hoz való kapcsolódás automatizálásához használt [REST API-kat](#additional) .
-* Próbálja ki az Azure Virtual WAN portáljának tapasztalatait.
-* Ezután döntse el, hogy a kapcsolódási lépések melyik részét szeretné automatizálni. Legalább az automatizálást javasoljuk:
+* Ellenőrizze, hogy az eszköz támogatja-e az IPsec IKEv1/IKEv2-t. Lásd: [alapértelmezett házirendek](#default).
+* Tekintse meg az Azure Virtual WAN-nal való kapcsolat automatizálásához használt [REST API-kat.](#additional)
+* Tesztelje az Azure Virtual WAN portálélményét.
+* Ezután döntse el, hogy a kapcsolódási lépések melyik részét szeretné automatizálni. Legalább azt javasoljuk, hogy automatizálja:
 
   * Hozzáférés-vezérlés
-  * Ág-eszköz adatainak feltöltése az Azure Virtual WAN-ba
-  * Az Azure-konfiguráció letöltése és az ág-eszköz kapcsolatának beállítása az Azure Virtual WAN-ba
+  * Ágeszköz-információk feltöltése az Azure Virtual WAN-ba
+  * Az Azure-konfiguráció letöltése és a kapcsolat beállítása a fiókeszközről az Azure Virtual WAN-ra
 
-### <a name ="additional"></a>További információ
+### <a name="additional-information"></a><a name ="additional"></a>További információk
 
 * [REST API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs) a virtuális központ létrehozásának automatizálásához
-* [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways) az Azure VPN Gateway virtuális WAN-hoz való automatizálásához
-* [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections) egy VPNSite Azure VPN-hubhoz való összekapcsolásához
+* [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways) az Azure VPN-átjáró automatizálásához a Virtual WAN-hoz
+* [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections) a VPN-webhely csatlakoztatásához egy Azure VPN-központhoz
 * [Alapértelmezett IPsec-házirendek](#default)
 
-## <a name ="ae"></a>Felhasználói élmény
+## <a name="customer-experience"></a><a name ="ae"></a>Felhasználói élmény
 
-Ismerje meg a várt felhasználói élményt az Azure Virtual WAN szolgáltatással együtt.
+Ismerje meg a várt felhasználói élményt az Azure Virtual WAN-nal együtt.
 
-  1. Egy virtuális WAN-felhasználó általában egy virtuális WAN-erőforrás létrehozásával indítja el a folyamatot.
-  2. A felhasználó létrehoz egy egyszerű szolgáltatáshoz tartozó erőforráscsoport-hozzáférést a helyszíni rendszerhez (az Ön fiókirodai vagy VPN-eszközének kiépítési szoftveréhez), amely a fiókirodák adatait az Azure Virtual WAN-ba írja.
-  3. A felhasználó ebben az időben dönthet úgy, hogy bejelentkezik a felhasználói felületen, és beállítja a szolgáltatás egyszerű hitelesítő adatait. Ha ez befejeződik, a vezérlőnek képesnek kell lennie az ág adatainak feltöltésére az Ön által biztosított automatizálással. Az Azure-oldalon ennek manuális megfelelője a "hely létrehozása".
-  4. Ha a hely (ág eszköz) adatai elérhetők az Azure-ban, a felhasználó csatlakoztatni fogja a helyet egy központhoz. A virtuális központ egy Microsoft által felügyelt virtuális hálózat. Az elosztó különféle szolgáltatásvégpontokat tartalmaz a helyszíni hálózatból (vpnsite) induló kapcsolatok biztosításához. Az elosztó a hálózat központja egy adott régióban. Az Azure-régiókban és a benne található VPN-végponton (átjáróban) belül csak egy központ hozható létre a folyamat során. A VPN Gateway egy méretezhető átjáró, amely a sávszélesség és a kapcsolati igények alapján megfelelő méreteket biztosít. Dönthet úgy, hogy automatizálja a virtuális központot és a átjáróban-létrehozást az ág-eszköz vezérlő irányítópultján.
-  5. Ha a virtuális központ hozzá van rendelve a helyhez, a rendszer létrehoz egy konfigurációs fájlt a felhasználó számára a manuális letöltéshez. Ebben az esetben az automatizálás bekerül a szolgáltatásba, és zökkenőmentesen teszi a felhasználói élményt. Ahelyett, hogy a felhasználó manuálisan le kell töltenie és konfigurálnia kell a fiókirodai eszközt, beállíthatja az automatizálást, és minimális kattintási élményt biztosíthat a felhasználói felületen, így csökkentve a tipikus kapcsolódási problémákat, például a megosztott kulcsokat, az IPSec paramétert eltérés, konfigurációs fájl olvashatósága stb.
-  6. Ennek a lépésnek a végén a felhasználó zökkenőmentes helyek közötti kapcsolattal fog rendelkezni a fiókiroda és a virtuális központ között. További kapcsolatokat is beállíthat más hubokon. Az egyes kapcsolatok aktív-aktív alagutak. Az ügyfél dönthet úgy, hogy egy másik INTERNETSZOLGÁLTATÓt használ az alagúthoz tartozó összes hivatkozáshoz.
-  7. Érdemes lehet hibaelhárítási és figyelési funkciókat biztosítani a CPE felügyeleti felületén. A tipikus forgatókönyvek közé tartozik például az "ügyfél nem tud hozzáférni az Azure-erőforrásokhoz egy CPE-probléma miatt", "az IPsec-paraméterek megjelenítése a CPE oldalán" stb.
+  1. A virtuális WAN-felhasználók általában egy virtuális WAN-erőforrás létrehozásával indítják el a folyamatot.
+  2. A felhasználó beállítja a szolgáltatás egyszerű erőforráscsoport-hozzáférést a helyszíni rendszerhez (a fiókvezérlőhöz vagy a VPN-eszköz kiépítési szoftverhez) az Azure Virtual WAN-ba való ágadatok írásához.
+  3. A felhasználó dönthet úgy, hogy jelenleg bejelentkezik a felhasználói felületre, és beállítja a szolgáltatásnév hitelesítő adatait. Ha ez befejeződött, a vezérlő képesnek kell lennie arra, hogy feltölti ág információkat az automatizálás lesz biztosítva. Ennek manuális megfelelője az Azure oldalán a "Webhely létrehozása".
+  4. Miután a webhely (ágeszköz) információ elérhetővé válik az Azure-ban, a felhasználó csatlakoztatja a helyet egy hubhoz. A virtuális központ a Microsoft által felügyelt virtuális hálózat. Az elosztó különféle szolgáltatásvégpontokat tartalmaz a helyszíni hálózatból (vpnsite) induló kapcsolatok biztosításához. Az elosztó a hálózat központja egy adott régióban. Azure-régiónként csak egy hub lehet, és a benne lévő vpn-végpont (vpngateway) a folyamat során jön létre. A VPN-átjáró egy méretezhető átjáró, amely a sávszélesség és a kapcsolat igényei alapján megfelelőméretű. Dönthet úgy, hogy automatizálja a virtuális hub és a VPNgateway létrehozása a fiókeszköz vezérlő irányítópultján.
+  5. Miután a virtuális hub van társítva a helyhez, egy konfigurációs fájl jön létre a felhasználó számára, hogy manuálisan töltse le. Itt jön a nap a célja az automatizálás, és teszi zökkenőmentessé a felhasználói élményt. Ahelyett, hogy a felhasználónak manuálisan kellene letöltenie és konfigurálnia az ágeszközt, beállíthatja az automatizálást, és minimális átkattintási élményt biztosíthat a felhasználói felületen, ezáltal enyhítve a tipikus kapcsolódási problémákat, például a megosztott kulcs eltérését, az IPSec paraméter paraméterét eltérés, konfigurációs fájl olvashatósága stb.
+  6. A megoldás ezen lépésének végén a felhasználó zökkenőmentes, helyek közötti kapcsolattal fog rendelkezni az elágazási eszköz és a virtuális központ között. Más csomópontok között további kapcsolatokat is beállíthat. Minden kapcsolat aktív-aktív alagút. Az ügyfél dönthet úgy, hogy az alagút minden egyes kapcsolatához más-más rendszerszolgáltatót használ.
+  7. Fontolja meg a hibaelhárítási és figyelési képességek biztosítását a CPE felügyeleti felületen. A tipikus forgatókönyvek közé tartozik az "Ügyfél nem tud hozzáférni az Azure-erőforrásokhoz cpe-probléma miatt", "IPsec-paraméterek megjelenítése a CPE-oldalon" stb.
 
-## <a name ="understand"></a>Automatizálás részletei
+## <a name="automation-details"></a><a name ="understand"></a>Automatizálási részletek
 
-###  <a name="access"></a>Hozzáférés-vezérlés
+###  <a name="access-control"></a><a name="access"></a>Hozzáférés-vezérlés
 
-Az ügyfeleknek képesnek kell lenniük a virtuális WAN megfelelő hozzáférés-vezérlésének beállítására az eszköz felhasználói felületén. Ezt az Azure egyszerű szolgáltatásnév használatával ajánlott használni. Az egyszerű szolgáltatás-alapú hozzáférés biztosítja az eszköz megfelelő hitelesítését a fiókirodai adatok feltöltéséhez. További információ: [egyszerű szolgáltatásnév létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Habár ez a funkció az Azure-beli virtuális WAN-ajánlaton kívül esik, a hozzáférés az Azure-ban való beállításának szokásos lépésein látható, amely után a vonatkozó részletek bekerülnek az Eszközkezelő irányítópultba
+Az ügyfeleknek képesnek kell lenniük a virtual WAN megfelelő hozzáférés-vezérlésének beállítására az eszköz felhasználói felületén. Ez egy Azure egyszerű Azure-szolgáltatás használata használata ajánlott. Egyszerű szolgáltatásalapú hozzáférés biztosítja az eszközvezérlő megfelelő hitelesítést fiókadatok feltöltéséhez. További információ: [Egyszerű szolgáltatás létrehozása.](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) Bár ez a funkció kívül esik az Azure Virtual WAN-ajánlaton, az alábbiakban felsoroljuk azokat a tipikus lépéseket, amelyek az Azure-hozzáférés beállításához szükséges lépéseket, amelyek után a vonatkozó adatokat beviszi a rendszer az eszközfelügyeleti irányítópultra.
 
-* Hozzon létre egy Azure Active Directory alkalmazást a helyszíni eszköz-vezérlőhöz.
-* Alkalmazás-azonosító és hitelesítési kulcs beszerzése
+* Hozzon létre egy Azure Active Directory-alkalmazást a helyszíni eszközvezérlőhöz.
+* Alkalmazásazonosító és hitelesítési kulcs beszerezni
 * A bérlőazonosító beszerzése
-* Alkalmazás társítása a (z) közreműködő szerepkörhöz
+* Alkalmazás hozzárendelése a "Közreműködő" szerepkörhöz
 
-###  <a name="branch"></a>Ág-eszköz adatainak feltöltése
+###  <a name="upload-branch-device-information"></a><a name="branch"></a>Ágeszköz-adatok feltöltése
 
-Meg kell terveznie a felhasználói élményt az ág (helyszíni hely) adatainak az Azure-ba való feltöltéséhez. A VPNSite [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) -k használatával hozhatja létre a hely adatait a virtuális WAN-ban. Megadhatja az összes ág SDWAN/VPN-eszközt, vagy kiválaszthatja a megfelelő eszközök testreszabását.
+A felhasználói élményt úgy kell megterveznie, hogy az azure-ba fiókinformációkat töltsön fel. A REST [VPNSite API-k](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) segítségével létrehozhatja a helyadatokat a Virtual WAN-ban. Megadhatja az összes ág SDWAN/VPN-eszközt, vagy szükség szerint kiválaszthatja az eszköz testreszabását.
 
-### <a name="device"></a>Eszközök konfigurációjának letöltése és kapcsolata
+### <a name="device-configuration-download-and-connectivity"></a><a name="device"></a>Eszközkonfiguráció letöltése és csatlakoztatása
 
-Ez a lépés az Azure-konfiguráció letöltését és a fiókirodai eszköz és az Azure Virtual WAN közötti kapcsolat beállítását foglalja magában. Ebben a lépésben a szolgáltatót nem használó ügyfél manuálisan letölti az Azure-konfigurációt, és alkalmazza azt a helyszíni SDWAN/VPN-eszközre. Szolgáltatóként automatizálja ezt a lépést. További információkért tekintse meg a letöltési [REST API-kat](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download) . Az eszköz vezérlője a "GetVpnConfiguration" REST API hívhatja le az Azure-konfiguráció letöltéséhez.
+Ez a lépés magában foglalja az Azure-konfiguráció letöltését és a kapcsolat beállítását a fiókeszközről az Azure Virtual WAN-ra. Ebben a lépésben egy ügyfél, amely nem használ szolgáltatót manuálisan töltse le az Azure-konfigurációt, és alkalmazza azt a helyszíni SDWAN/VPN-eszközre. Szolgáltatóként automatizálnia kell ezt a lépést. További információkért tekintse meg a [letöltési REST API-kat.](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download) Az eszközvezérlő meghívhat "GetVpnConfiguration" REST API-t az Azure-konfiguráció letöltéséhez.
 
 **Konfigurációs megjegyzések**
 
-  * Ha az Azure-virtuális hálózatok a virtuális hubhoz vannak csatlakoztatva, a ConnectedSubnets-ként fognak megjelenni.
-  * A VPN-kapcsolat Route-alapú konfigurációt használ, és támogatja a IKEv1 és a IKEv2 protokollt is.
+  * Ha az Azure virtuális hálózatok a virtuális hubhoz vannak csatolva, connectedsubnets néven jelennek meg.
+  * A VPN-kapcsolat útvonalalapú konfigurációt használ, és támogatja mind az IKEv1, mind az IKEv2 protokollt.
 
-## <a name="devicefile"></a>Eszköz konfigurációs fájlja
+## <a name="device-configuration-file"></a><a name="devicefile"></a>Eszköz konfigurációs fájlja
 
 Az eszközkonfigurációs fájl a helyszíni VPN-eszköz konfigurálása során használandó beállításokat tartalmazza. A fájl áttekintésekor a következő információkat láthatja:
 
 * **vpnSiteConfiguration** – Ez a szakasz az eszköz a virtuális WAN-ra csatlakozó helyként való telepítésére vonatkozó adatait tartalmazza. Az ágeszköz nevét és nyilvános IP-címét tartalmazza.
 * **vpnSiteConnections** – Ez a szakasz a következőkről nyújt információkat:
 
-    * A virtuális központ (ok) VNet **címe** .<br>Példa:
+    * A virtuális elosztó virtuális **hálózatcímterülete.**<br>Példa:
  
         ```
         "AddressSpace":"10.1.0.0/24"
         ```
-    * **A hubhoz** csatlakozó virtuális hálózatok.<br>Példa:
+    * A hubhoz csatlakoztatott virtuális hálózatok **címtere.**<br>Példa:
 
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
@@ -97,9 +97,9 @@ Az eszközkonfigurációs fájl a helyszíni VPN-eszköz konfigurálása során 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * **Átjáróban-kapcsolat konfigurációs részletei** , például BGP, előmegosztott kulcs stb. A PSK a automatikusan létrehozott előmegosztott kulcs. A kapcsolatot az egyéni PSK Áttekintés lapján bármikor szerkesztheti.
+    * **Vpngateway kapcsolat konfigurációs részleteket,** mint a BGP, előre megosztott kulcs, stb A PSK az előre megosztott kulcs, amely automatikusan létrejön az Ön számára. A kapcsolatot az egyéni PSK Áttekintés lapján bármikor szerkesztheti.
   
-**Példa az eszköz konfigurációs fájljára**
+**Eszközkonfigurációs példafájl**
 
   ```
   { 
@@ -204,9 +204,9 @@ Az eszközkonfigurációs fájl a helyszíni VPN-eszköz konfigurálása során 
    }
   ```
 
-## <a name="default"></a>Kapcsolat részletei
+## <a name="connectivity-details"></a><a name="default"></a>Kapcsolódási részletek
 
-A helyszíni SDWAN/VPN-eszköznek vagy az SD-WAN konfigurációnak meg kell egyeznie a következő algoritmusokkal és paraméterekkel, amelyeket az Azure IPsec/IKE-házirendben adhat meg.
+A helyszíni SDWAN/VPN-eszköz vagy SD-WAN-konfigurációnak meg kell egyeznie, vagy tartalmaznia kell a következő algoritmusokat és paramétereket, amelyeket az Azure IPsec/IKE-szabályzatban megadott.
 
 * IKE titkosítási algoritmus
 * IKE integritási algoritmus
@@ -215,16 +215,16 @@ A helyszíni SDWAN/VPN-eszköznek vagy az SD-WAN konfigurációnak meg kell egye
 * IPsec integritási algoritmus
 * PFS-csoport
 
-### <a name="default"></a>IPsec-kapcsolat alapértelmezett házirendjei
+### <a name="default-policies-for-ipsec-connectivity"></a><a name="default"></a>Alapértelmezett szabályzatok IPsec-kapcsolatokhoz
 
 [!INCLUDE [IPsec Default](../../includes/virtual-wan-ipsec-include.md)]
 
-### <a name="custom"></a>Egyéni szabályzatok az IPsec-kapcsolathoz
+### <a name="custom-policies-for-ipsec-connectivity"></a><a name="custom"></a>Egyéni házirendek az IPsec-kapcsolathoz
 
 [!INCLUDE [IPsec Custom](../../includes/virtual-wan-ipsec-custom-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a virtuális WAN-ról: az [Azure Virtual WAN](virtual-wan-about.md) és az [Azure Virtual WAN gyakori kérdései](virtual-wan-faq.md).
+A Virtual WAN szolgáltatásról további információt az [Azure Virtual WAN és](virtual-wan-about.md) az Azure Virtual WAN – gyakori kérdések című [témakörben talál.](virtual-wan-faq.md)
 
-További információkért kérjük, küldjön e-mailt a <azurevirtualwan@microsoft.com>. Adja meg a vállalat nevét szögletes zárójelek ([]) között az e-mail tárgymezőjében.
+További információkért kérjük, küldjön <azurevirtualwan@microsoft.com>egy e-mailt a . Adja meg a vállalat nevét szögletes zárójelek ([]) között az e-mail tárgymezőjében.

@@ -1,6 +1,6 @@
 ---
-title: Az Azure biztonsági teljesítményteszt áttekintése
-description: Biztonsági teljesítményteszt áttekintése
+title: Az Azure Security Benchmark áttekintése
+description: Biztonsági teljesítményteszt – áttekintés
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -9,47 +9,47 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
 ms.openlocfilehash: 2f4b034948605b0a53a0320863608d284719a96d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77587532"
 ---
-# <a name="overview-of-the-azure-security-benchmark"></a>Az Azure biztonsági teljesítményteszt áttekintése
+# <a name="overview-of-the-azure-security-benchmark"></a>Az Azure biztonsági referenciaértékének áttekintése
 
-Az Azure biztonsági teljesítményteszt olyan javaslatokat tartalmaz, amelyek segítségével javíthatja alkalmazásai és adatai biztonságát az Azure-ban.
+Az Azure Security Benchmark olyan javaslatokat tartalmaz, amelyek segítenek az alkalmazások és az azure-beli adatok biztonságának javításában.
 
-Ez a teljesítményteszt a felhő-központú ellenőrzési területekre koncentrál. Ezek a vezérlők összhangban vannak a jól ismert biztonsági összehasonlításokkal, például a Center for Internet Security (CIS) által a 7,1-es verzióban leírt szabályokkal.
+Ez a teljesítményteszt a felhőközpontú vezérlőterületekre összpontosít. Ezek a vezérlők összhangban vannak a jól ismert biztonsági referenciaértékekkel, például az Internet biztonsági központ (CIS) 7.1-es verziójával ismertetett vezérlőkkel.
 
-Az Azure biztonsági Teljesítménytesztben a következő vezérlők használhatók: 
+Az Azure Security Benchmark a következő vezérlőket használja: 
 
 - [Hálózati biztonság](security-control-network-security.md)
-- [Naplózás és figyelés](security-control-logging-monitoring.md)
-- [Identitás és Access Control](security-control-identity-access-control.md)
+- [Naplózás és monitorozás](security-control-logging-monitoring.md)
+- [Identitás- és hozzáférés-vezérlés](security-control-identity-access-control.md)
 - [Adatvédelem](security-control-data-protection.md)
-- [Sebezhetőségek kezelése](security-control-vulnerability-management.md)
-- [Leltár-és eszközkezelés](security-control-inventory-asset-management.md)
+- [Biztonságirés-kezelés](security-control-vulnerability-management.md)
+- [Leltár-és eszközfelügyelet](security-control-inventory-asset-management.md)
 - [Biztonságos konfiguráció](security-control-secure-configuration.md)
 - [Kártevők elleni védelem](security-control-malware-defense.md)
-- [Adathelyreállítás](security-control-data-recovery.md)
-- [Incidens válasza](security-control-incident-response.md)
+- [Adat-helyreállítás](security-control-data-recovery.md)
+- [Incidensre adott válasz](security-control-incident-response.md)
 - [Behatolási tesztek és Red Team-gyakorlatok](security-control-penetration-tests-red-team-exercises.md)
 
-Letöltheti az [Azure Security teljesítményteszt v1 Excel-táblázatát](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets)is.
+Letöltheti az [Azure Security Benchmark v1 excel táblázatkezelőt](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets)is.
 
-## <a name="azure-security-benchmark-recommendations"></a>Az Azure biztonsági teljesítménytesztekkel kapcsolatos javaslatok 
+## <a name="azure-security-benchmark-recommendations"></a>Az Azure biztonsági teljesítménytesztre vonatkozó javaslatok 
 
-Minden javaslat a következő információkat tartalmazza: 
+Minden ajánlás a következő információkat tartalmazza: 
 
-- **Azure ID**: a javaslatnak megfelelő Azure biztonsági TELJESÍTMÉNYTESZT-azonosító. 
-- **CIS-azonosító (k)** : a VIR-viszonyítási javaslat (ok), amelyek megfelelnek a javaslatnak.  
-- **Felelősség**: azt, hogy az ügyfél vagy a szolgáltató (vagy mindkettő) felelős-e a javaslat végrehajtásáért. A biztonsági kötelezettségek a nyilvános felhőben vannak megosztva. Bizonyos biztonsági vezérlők csak a felhőalapú szolgáltató számára érhetők el, ezért a szolgáltató felelős az ilyen problémák kezeléséhez. Ezek általános megfigyelések – egyes szolgáltatások esetében a felelősség nem fog megjelenni, mint az Azure biztonsági Teljesítménytesztben. Ezeket a különbségeket az egyes szolgáltatásokra vonatkozó alapkövetelmények írják le. 
-- **Részletek**: a javaslat indoklása és a megvalósításával kapcsolatos útmutatásra mutató hivatkozások. Ha Azure Security Center támogatja az ajánlást, a rendszer ezeket az információkat is felsorolja.
+- **Azure-azonosító:** Az Azure Security Benchmark-azonosító, amely megfelel a javaslatnak. 
+- **CIS-azonosító(k):** Az ezen ajánlásnak megfelelő CIS-referenciaajánlás(ok).  
+- **Felelősség**: Függetlenül attól, hogy az ügyfél vagy a szolgáltató (vagy mindkettő) felelős-e ezen ajánlás végrehajtásáért. A biztonsági felelősségek a nyilvános felhőben vannak megosztva. Egyes biztonsági vezérlők csak a felhőszolgáltató számára érhetők el, ezért a szolgáltató felelős ezek kezeléséért. Ezek általános megfigyelések – egyes egyes szolgáltatások esetében a felelősség más lesz, mint az Azure Biztonsági teljesítménytesztben felsoroltak. Ezeket a különbségeket az egyes szolgáltatásokra vonatkozó alapjavaslatok ismertetik. 
+- **Részletek**: Az ajánlás indoklása és a végrehajtásra vonatkozó útmutatásra mutató hivatkozások. Ha a javaslatot az Azure Security Center támogatja, ezek az információk is megjelennek.
 
-Örömmel vesszük a részletes visszajelzéseket és az aktív részvételt az Azure biztonsági teljesítményteszttel kapcsolatos erőfeszítésekben. Ha a teljesítményteszt-csapat közvetlen bemenetét szeretné megadni, töltse ki az űrlapot [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark)címen.
+Örömmel fogadjuk részletes visszajelzéseit és aktív részvételét az Azure Security Benchmark erőfeszítéseiben. Ha szeretné, hogy a Benchmark csapat közvetlen bemenet, [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark)kérjük, töltse ki az űrlapot a .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tekintse meg az első biztonsági ellenőrzést: [hálózati biztonság](security-control-network-security.md)
-- Olvassa el az [Azure Security teljesítményteszt bevezetését](introduction.md)
-- Az [Azure Security teljesítményteszt v1 Excel-táblázatának](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets) letöltése
+- Lásd az első biztonsági vezérlőt: [Hálózati biztonság](security-control-network-security.md)
+- Olvassa el az [Azure Security Benchmark bevezetést](introduction.md)
+- Az [Azure Security Benchmark v1 excel-táblázatának letöltése](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets)

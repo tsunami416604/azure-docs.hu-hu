@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű számítógépek előkészítése Azure Security Center
+title: Windows rendszerű számítógépek felvétele az Azure Security Centerbe
 description: Ez a rövid útmutató bemutatja, hogyan telepítheti a Microsoft Monitoring Agent szolgáltatást egy Windows rendszerű számítógépre.
 services: security-center
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
 ms.openlocfilehash: 417d8379d019a9ef0da41638cba4a1f9cb7b8bc2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73686503"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rövid útmutató: Windows rendszerű számítógépek felvétele az Azure Security Centerbe
@@ -29,7 +29,7 @@ Ez a rövid útmutató bemutatja, hogyan telepítheti a Microsoft Monitoring Age
 ## <a name="prerequisites"></a>Előfeltételek
 A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
 
-A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Standard tarifacsomagjával. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Standard tarifacsomagjával. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. Kipróbálhatja a Security Center Standard díjmentesen. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-windows-computer"></a>Új, Windows rendszerű számítógép hozzáadása
 
@@ -63,7 +63,7 @@ Most telepíteni kell a letöltött fájlt a célszámítógépre.
 3. A **Licencfeltételek** oldalon olvassa el és fogadja el a licencet, majd kattintson az **Elfogadom** gombra.
 4. A **Célmappa** lapon fogadja el az alapértelmezett telepítési mappát, vagy adjon meg egy másikat, majd kattintson a **Tovább** gombra.
 5. **Az ügynök telepítésének beállításai** lapon csatlakoztassa az ügynököt az Azure Log Analyticshez, majd kattintson a **Tovább** gombra.
-6. Az **Azure Log Analytics** lapon illessze be az előző folyamat során a Jegyzettömbbe másolt **Munkaterület-azonosítót** és a **Munkaterületkulcsot (Elsődleges kulcs)** .
+6. Az **Azure Log Analytics** lapon illessze be az előző folyamat során a Jegyzettömbbe másolt **Munkaterület-azonosítót** és a **Munkaterületkulcsot (Elsődleges kulcs)**.
 7. Ha a gépnek egy Azure Government-felhőbeli Log Analytics-munkaterületnek kell jelentenie, válassza az **Azure US Government** lehetőséget az **Azure Cloud** legördülő listából. Ha a számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics szolgáltatással, kattintson a **Speciális** gombra, majd adja meg a proxykiszolgáló URL-címét és portszámát.
 8. A szükséges konfigurációs beállítások megadása után kattintson a **Tovább** gombra.
 
@@ -91,7 +91,7 @@ Ha már nincs rá szükség, eltávolíthatja az ügynököt a Windows rendszer�
 
 Az ügynök eltávolítása:
 
-1. Nyissa meg **Vezérlőpultot**.
+1. Nyissa **meg a Vezérlőpultot**.
 2. Nyissa meg a **Programok és szolgáltatások** részt.
 3. A **Programok és szolgáltatások** alatt válassza ki a **Microsoft Monitoring Agent** elemet, és kattintson az **Eltávolítás** parancsra.
 

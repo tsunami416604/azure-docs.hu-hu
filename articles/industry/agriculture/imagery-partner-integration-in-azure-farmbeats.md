@@ -1,35 +1,35 @@
 ---
 title: Képalkotási partner integrációja
-description: Ez a cikk a képekkel való partner-integrációt ismerteti.
+description: Ez a cikk a képi partnerek integrációját ismerteti.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 62e5b363f8008380a61e24c0549573a30ecaeb73
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77131856"
 ---
 # <a name="imagery-partner-integration"></a>Képalkotási partner integrációja
 
-Ez a cikk azt ismerteti, hogyan lehet az Azure FarmBeats Translator összetevő használatával képeket küldeni a FarmBeats. A mezőgazdasági rendszerképekből származó adatok különféle forrásokból, például többspektrumos kamerákból, műholdakból és herékből hozhatók létre. A mezőgazdasági képképekkel rendelkező partnerek a FarmBeats integrálva biztosíthatják ügyfeleiknek a saját farmokhoz tartozó egyéni leképezéseket.
+Ez a cikk ismerteti, hogyan használhatja az Azure FarmBeats Translator összetevő képadatokat farmbeats.This article describes how to use the Azure FarmBeats Translator component to send imagery data to FarmBeats. Mezőgazdasági képadatok különböző forrásokból, például multispektrális kamerákból, műholdakból és drónokból generálhatók. A mezőgazdasági képekkel rendelkező partnerek integrálhatják a FarmBeats-t, hogy az ügyfelek számára egyedileg generált térképeket biztosítsanak a farmjaikhoz.
 
-A rendelkezésre álló adatok a FarmBeats-gyorsító használatával megjeleníthetők, és potenciálisan felhasználhatók az adatfúzióra és a gépi tanulásra/mesterséges intelligencia-modellre (ML/AI) a mezőgazdasági vállalkozások vagy az ügyfélrendszer-integrátorok számára.
+Az adatok, amint rendelkezésre állnak, a FarmBeats Accelerator-on keresztül jeleníthetők meg, és potenciálisan felhasználhatók az adatok fúziójára és a gépi tanulásra/mesterséges intelligenciára (ML/AI) a mezőgazdasági vállalkozások vagy az ügyfélrendszer integrátorok által.
 
-A FarmBeats a következőket teszi lehetővé:
+A FarmBeats lehetővé teszi:
 
-- Egyéni képtípusok, forrás-és fájlformátumok definiálása/ExtendedType API-k használatával.
-- A különböző forrásokból származó képadatok betöltése a/Scene és a/SceneFile API-kon keresztül.
+- Egyéni képtípusokat, forrás- és fájlformátumot definiáljon az /ExtendedType API-k használatával.
+- Különböző forrásokból származó képadatok betöltése a /Scene és a /SceneFile API-kon keresztül.
 
-A következő információk a FarmBeats-rendszerbe való bármilyen képi megjelenítésre összpontosítanak.
+A következő információk arra összpontosítanak, hogy bármilyen képet bekerüljön a FarmBeats rendszerbe.
 
-Amikor kiválasztja a **drone-képek** szakaszt, megnyílik egy előugró ablak, amely a drone-orthomosaic nagy felbontású képét jeleníti meg. Elérheti a partner szoftverét, amely segít megtervezni a drone-repülőjáratokat és nyers adatgyűjtést. Továbbra is használhatja a partner szoftverét az útvonal-tervezéshez és a orthomosaicához.
+Amikor kiválasztja a **Drone Imagery** szakaszt, megnyílik egy előugró ablak, amely a drón ortomozaik nagy felbontású képét jeleníti meg. Elérheti a partnerszoftvert, amely segít a drónrepülések megtervezésében és a nyers adatok beérkezésén. Továbbra is használni fogja a partner szoftverét az útvonaltervezéshez és az ortomozaik képvarráshoz.
 
-A drone-partnereknek lehetővé kell tenniük az ügyfelek számára, hogy az Azure-beli FarmBeats-példánnyal összekapcsolják az ügyfeleik fiókját.
+A drónpartnereknek lehetővé kell tenniük az ügyfelek számára, hogy összekapcsolják az ügyfélfiókjukat az Azure-beli FarmBeats-példányukkal.
 
-A FarmBeats csatolásához a következő hitelesítő adatokat kell használnia a drone-partner szoftverében:
+A FarmBeats összekapcsolására a drone partnerszoftverben a következő hitelesítő adatokat kell használnia:
 
 - API-végpont
 - Bérlőazonosító
@@ -38,27 +38,27 @@ A FarmBeats csatolásához a következő hitelesítő adatokat kell használnia 
 
 ## <a name="api-development"></a>API-fejlesztés
 
-Az API-k a hencegés műszaki dokumentációját tartalmazzák. További információ az API-król és a megfelelő kérésekről vagy válaszokról: [hencegés](https://aka.ms/FarmBeatsDatahubSwagger).
+Az API-k swagger műszaki dokumentációt tartalmaznak. Az API-król és a megfelelő kérésekről és válaszokról a [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)című témakörben talál további információt.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
-A FarmBeats Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure ad) szolgáltatást használ. A Azure App Service beépített hitelesítési és engedélyezési támogatást biztosít. 
+A FarmBeats a Microsoft Azure [Active Directoryt](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD) használja. Az Azure App Service beépített hitelesítési és engedélyezési támogatást biztosít. 
 
-További információ az Azure AD-ről: [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).   
+Az Azure AD-ről az [Azure Active Directory című témakörben](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)talál további információt.   
 
-A FarmBeats Datahub tulajdonosi hitelesítést használ, amelynek a következő hitelesítő adatokra van szüksége:
+A FarmBeats Datahub bemutatóra szóló hitelesítést használ, amelyhez a következő hitelesítő adatokra van szükség:
 
 - Ügyfél-azonosító
 - Titkos ügyfélkulcs
 - Bérlőazonosító
 
-Az előző hitelesítő adatok használatával a hívó hozzáférési jogkivonatot kérhet, amelyet a következő API-kérelmekben kell elküldeni, a fejléc szakaszban a következő módon:
+Az előző hitelesítő adatok használatával a hívó hozzáférési jogkivonatot kérhet, amelyet a következő API-kérelmekben kell elküldeni a fejlécszakaszban, az alábbiak szerint:
 
 ```
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
-A következő Python-kód minta lekéri a hozzáférési jogkivonatot. Ezután használhatja a tokent a későbbi API-hívásokhoz a FarmBeats.
+A következő Python-kódminta lekéri a hozzáférési jogkivonatot. Ezután használhatja a jogkivonatot a FarmBeats későbbi API-hívásaihoz.
 
 ```python
 from azure.common.credentials import ServicePrincipalCredentials 
@@ -77,29 +77,29 @@ token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLI
 access_token = token_response.get('accessToken') 
 ```
 
-## <a name="http-request-headers"></a>HTTP-kérelmek fejlécei
+## <a name="http-request-headers"></a>HTTP-kérelem fejlécei
 
-Itt láthatja a leggyakoribb kérelmek fejléceit, amelyeket meg kell adni, amikor API-hívást végez a FarmBeats Datahub.
+Az alábbiakban a leggyakoribb kérésfejléceket kell megadni, amikor API-hívást kezdeményez a FarmBeats Datahub-ra.
 
 **Fejléc** | **Leírás és példa**
 --- | ---
-Content-Type  | A kérelem formátuma (Content-Type: Application/<format>). A FarmBeats Datahub API-k formátuma a JSON. Content-Type: Application/JSON
-Engedélyezés | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. Engedélyezés: tulajdonos < hozzáférés-token >
-Elfogadás  | A válasz formátuma. A FarmBeats Datahub API-k formátuma a JSON. Elfogadás: alkalmazás/JSON
+Content-Type  | A kérelem formátuma (Content-Type: application/<format>). A FarmBeats Datahub API-k esetében a formátum JSON. Tartalom-típus: alkalmazás/json
+Engedélyezés | Megadja az API-híváshoz szükséges hozzáférési jogkivonatot. Engedélyezés: a tulajdonos <hozzáférési>
+Elfogadás  | A válasz formátuma. A FarmBeats Datahub API-k esetében a formátum JSON. Elfogadás: alkalmazás/json
 
 
 ## <a name="api-requests"></a>API-kérelmek
 
-REST API kérelem elvégzéséhez a következőket kell egyesíteni:
+REST API-kérelem benyújtásához a következőket kell kombinálnia:
 
-- HTTP-metódus (GET, POST és PUT).
+- A HTTP metódus (GET, POST és PUT).
 - Az API-szolgáltatás URL-címe.
-- Az erőforrás URI-ja (lekérdezés, az adatküldés, a frissítés vagy a törlés).
-- Egy vagy több HTTP-kérelem fejléce.
+- Az erőforrás URI-ja (adatok lekérdezéséhez, elküldéséhez, frissítéséhez vagy törléséhez).
+- Egy vagy több HTTP-kérelemfejléc.
 
-Igény szerint a lekérdezési paramétereket is megadhatja a szűréshez, korlátozhatja az adatok méretét, és rendezheti a válaszokat.
+Szükség esetén lekérdezési paramétereket is megadhat a GET-hívásokhoz, korlátozhatja a válaszok ban lévő adatok méretét, és rendezheti az adatokat.
 
-Az alábbi példa az eszközök listájának beszerzésére szolgál:
+A következő mintakérelem az eszközök listájának bekérése:
 
 ```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
@@ -107,9 +107,9 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Authorization: Bearer <Access-Token>”
 ```
 
-A legtöbb GET, POST és PUT híváshoz JSON-kérést tartalmazó törzs szükséges.
+A legtöbb GET, POST és PUT hívások igényel JSON kérelem törzs.
 
-Az alábbi példa egy eszköz létrehozását kéri. Ez a minta egy bemeneti JSON-t tartalmaz a kérelem törzsében.
+A következő mintakérelem egy eszköz létrehozása. Ez a minta rendelkezik egy bemeneti JSON a kérelem törzse.
 
 
 ```bash
@@ -122,34 +122,34 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 
 ## <a name="data-format"></a>Adatformátum
 
-A JSON egy közös nyelvtől független adatformátum, amely tetszőleges adatstruktúrák egyszerű szöveges ábrázolását teszi lehetővé. További információ: [JSON org](https://JSON.org).
+A JSON egy közös, nyelvfüggetlen adatformátum, amely egyszerű szövegábrázolást biztosít tetszőleges adatstruktúrákról. További információ: [JSON org](https://JSON.org).
 
 ## <a name="ingest-imagery-into-farmbeats"></a>Képek betöltése a FarmBeats-be
 
-Miután a partner rendelkezik hitelesítő adatokkal a FarmBeats-Datahub való kapcsolódáshoz, a partner a következő lépéseket hajtja végre a Translator összetevőben.
+Miután a partner hitelesítő adatokkal rendelkezik a FarmBeats Datahubhoz való csatlakozáshoz, a partner a következő lépéseket teszi a Translator összetevőben.
 
-1.  Hozzon létre egy új kiterjesztett típust a következő mezőkhöz a feltölteni kívánt képtípusnak megfelelően:
+1.  Hozzon létre egy új kiterjesztett típust a következő mezőkhöz a feltöltendő képek típusának megfelelően:
 
-    - **Jelenet forrása**: például drone_partner_name
-    - **Jelenet típusa**: például a drone
-    - **Jelenet fájltípusa**: például a klorofill indexe
-    - **Jelenet tartalmának típusa**: például rendszerkép/TIFF
+    - **Jelenet forrása**: Például drone_partner_name
+    - **Jelenet típusa**: Például, drone
+    - **Jelenetfájl típusa**: Például klorofill index
+    - **Jelenetfájl-tartalom típusa**: Például kép/tiff
 
-2.  Hívja meg a/Farms API-t, hogy lekérje a farmok listáját az Azure FarmBeats rendszerből.
-3.  Adja meg az ügyfél számára, hogy egyetlen farmot válasszon a farmok listájáról.
+2.  Hívja meg a /Farms API-t, hogy lekérjék a farmok listáját az Azure FarmBeats rendszerből.
+3.  Adja meg az ügyfél nek, hogy egyetlen farmot válasszon a gazdaságok listájából.
 
-    A partneri rendszeren a partneri szoftveren belül meg kell jeleníteni a farmon az útvonal megtervezését és a drone repülési és képgyűjteményt.
+    A partnerrendszernek meg kell mutatnia a farmot a partnerszoftveren belül az útvonaltervezéshez, valamint a drónrepüléshez és a képgyűjtéshez.
 
-4.  Hívja meg a/Scene API-t, és adja meg a szükséges adatokat, és hozzon létre egy új jelenetet egyedi jelenet-AZONOSÍTÓval.
-5.  Egy blob SAS URL-cím megadásával feltöltheti a szükséges képeket a FarmBeats Datahub a kiválasztott Farm kontextusában a FarmBeats rendszerbe.
+4.  Hívja meg a /Scene API-t, és adja meg a szükséges részleteket egy új jelenet egyedi jelenetazonosítóval.
+5.  Kap egy blob SAS URL-címet a szükséges rendszerképek feltöltéséhez farmbeats datahub, a kiválasztott farm környezetben, a FarmBeats rendszer.
 
-Az API-hívások részletes folyamata.
+Íme egy részletes folyamat az API-hívásokról.
 
-### <a name="step-1-extendedtype"></a>1\. lépés: ExtendedType
+### <a name="step-1-extendedtype"></a>1. lépés: ExtendedType
 
-A/ExtendedType API-ban ellenőrizze, hogy a típus és a fájl forrása elérhető-e a FarmBeats. Ehhez hívja meg a GET szolgáltatást a/ExtendedType API-ban.
+Ellenőrizze a /ExtendedType API-t, hogy a típus és a fájlforrás elérhető-e a FarmBeats-en. Ehhez hívja meg a GET a /ExtendedType API.To do do do to do to do to do to do it, call a GET on the /ExtendedType API.
 
-A rendszer által definiált értékek a következők:
+A rendszer által meghatározott értékek a következők:
 
 ```json
 {
@@ -331,9 +331,9 @@ A rendszer által definiált értékek a következők:
 }
 ```
 
-Ez a lépés egy egyszeri beállítás. Az új jelenet hatóköre arra az előfizetésre korlátozódik, amelyben az Azure-FarmBeats telepítve van.
+Ez a lépés egyszeri beállítás. Az új jelenettípus hatóköre arra az előfizetésre korlátozódik, amelyben az Azure FarmBeats telepítve van.
 
-Például a "SlantRange" SceneSource hozzáadásához tegyük fel a/ExtendedType API AZONOSÍTÓját a "SceneSource" bemeneti adattartalommal.
+Például a SceneSource: "SlantRange" hozzáadásához a /ExtendedType API azonosítójának put-ját a "SceneSource" bemeneti tartalommal kell megadni.
 
 ```json
 {
@@ -351,13 +351,13 @@ Például a "SlantRange" SceneSource hozzáadásához tegyük fel a/ExtendedType
 
 ```
 
-A zöld mező a rendszer által definiált jelenetekhez tartozó értékek új hozzáadása.
+A zöld mező a rendszer által definiált jelenetforrás-értékek új kiegészítése.
 
-### <a name="step-2-get-farm-details"></a>2\. lépés: a farm adatainak beolvasása
+### <a name="step-2-get-farm-details"></a>2. lépés: A farm részleteinek beszerezni
 
-A jelenetek (. TIFF vagy. CSV fájlok) egy farm kontextusában vannak. A farm részleteit a/farm API beszerzésével kell lekérnie. Az API a FarmBeats-ben elérhető farmok listáját adja vissza. Kiválaszthatja, hogy melyik farmon kívánja bevenni az adatmennyiséget.
+A jelenetek (.tiff vagy .csv fájlok) egy farm kontextusában találhatók. Be kell, hogy a farm részleteit csinál egy GET a /Farm API.You need to get the farm details by doing a GET on the /Farm API. Az API a FarmBeats-ben elérhető farmok listáját adja vissza. Kiválaszthatja azt a farmot, amelyhez be szeretné adni az adatokat.
 
-/Farm-válasz beolvasása:
+GET /Farm válasz:
 
 ```json
 {
@@ -403,13 +403,13 @@ A jelenetek (. TIFF vagy. CSV fájlok) egy farm kontextusában vannak. A farm r�
 }
  ```
 
-### <a name="step-3-create-a-scene-id-post-call"></a>3\. lépés: jelenet AZONOSÍTÓjának létrehozása (hívás utáni művelet)
+### <a name="step-3-create-a-scene-id-post-call"></a>3. lépés: Jelenetazonosító létrehozása (POST hívás)
 
-Hozzon létre egy új jelenetet (. TIFF vagy. csv fájlt) a megadott adatokkal, amely megadja a dátumot, a sorozatot és a farm AZONOSÍTÓját, amelyhez a jelenet hozzá van rendelve. A jelenethez társított metaadatok a tulajdonságok területen határozhatók meg, beleértve a mérték időtartamát és típusát is.
+Hozzon létre egy új jelenetet (.tiff vagy .csv fájlt) a megadott adatokkal, amely megadja azt a dátumot, sorrendet és farmazonosítót, amelyhez a jelenet társítva van. A jelenethez társított metaadatok a tulajdonságok alatt definiálhatók, beleértve a mérték időtartamát és típusát.
 
-Egy új jelenet létrehozása létrehoz egy új jelenet azonosítót, amely a farmhoz van társítva. A jelenet AZONOSÍTÓjának létrehozása után a felhasználó ugyanezt használhatja egy új fájl (. TIFF vagy. csv) létrehozásához és a fájl tartalmának tárolásához.
+Új jelenet létrehozása új jelenetazonosítót hoz létre, amely a farmhoz kapcsolódik. A jelenetazonosító létrehozása után a felhasználó ugyanezt használhatja egy új fájl (.tiff vagy .csv) létrehozásához és a fájl tartalmának tárolásához.
 
-Példa bemeneti adattartalmat a POST híváshoz a/Scene API-ban:
+Példa a POST-hívás bemeneti hasznos adatára a /Scene API-n:
 
 ```json
 {
@@ -426,7 +426,7 @@ Példa bemeneti adattartalmat a POST híváshoz a/Scene API-ban:
 }
 ```
 
-API-Válasz:
+API-válasz:
 
 ```json
 {
@@ -445,13 +445,13 @@ API-Válasz:
 
 ```
 
-**Jelenet fájl létrehozása**
+**Jelenetfájl létrehozása**
 
-A 3. lépésben visszaadott jelenet-azonosító a jelenet fájljának bemenete. A jelenet fájl egy SAS URL-tokent ad vissza, amely 24 órán keresztül érvényes.
+A 3. A jelenetfájl egy SAS URL-token, amely 24 órán keresztül érvényes.
 
-Ha a felhasználónak programozott módon kell feltöltenie a képek egy részét, a blob Storage SDK segítségével definiálhat egy metódust a jelenet fájljának AZONOSÍTÓjának, helyének és URL-címének használatával.
+Ha a felhasználónak programozott módon kell feltöltenie a képek adatfolyamát, a blob storage SDK segítségével definiálhat egy módszert a jelenetfájl azonosítójának, helyének és URL-címének használatával.
 
-Példa bemeneti adattartalmat a POST híváshoz a/SceneFile API-ban:
+Példa a POST-hívás bemeneti hasznos adatára a /SceneFile API-n:
 
 ```json
 {
@@ -467,7 +467,7 @@ Példa bemeneti adattartalmat a POST híváshoz a/SceneFile API-ban:
   }
 }
 ```
-API-Válasz:
+API-válasz:
 
 ```json
 {
@@ -487,9 +487,9 @@ API-Válasz:
 
 ```
 
-A/SceneFile API-hoz intézett POST hívása egy SAS-feltöltési URL-címet ad vissza, amely a. csv vagy. TIFF fájl feltöltésére használható az Azure Blob Storage-ügyfél vagy-könyvtár használatával.
+A /SceneFile API POST-hívása egy SAS-feltöltési URL-címet ad vissza, amely a .csv vagy .tiff fájl feltöltésére használható az Azure Blob storage-ügyfél vagy -tár használatával.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A REST API-alapú integráció részleteivel kapcsolatos további információkért lásd: [REST API](rest-api-in-azure-farmbeats.md).
+A REST API-alapú integráció részleteiről a [REST API című témakörben](rest-api-in-azure-farmbeats.md)talál további információt.

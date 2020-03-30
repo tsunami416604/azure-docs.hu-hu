@@ -1,5 +1,5 @@
 ---
-title: Az adatintegrációs szolgáltatás Data Factory bemutatása
+title: Bevezetés a Data Factory adatintegrációs szolgáltatásába
 description: 'A témakör ismerteti, hogy mi is az Azure Data Factory: egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása.'
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
 ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73666803"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-introduction.md)
 > * [2-es verzió (aktuális verzió)](../introduction.md)
 
@@ -114,7 +114,7 @@ A társított szolgáltatásokat két okból használjuk a Data Factoryban:
 
 * Egy *adattár*, például egy helyszíni SQL Server-adatbázis, Oracle-adatbázis, fájlmegosztás vagy egy Azure Blob Storage-fiók jelölésére. A támogatott adattárak listája az [Adattovábbítási tevékenységek](#data-movement-activities) című részben található.
 
-* Olyan *számítási erőforrás* jelölésére, amelyen végrehajtható a tevékenység. A HDInsightHive-tevékenység végrehajtása például egy HDInsight Hadoop-fürtön történik. A támogatott számítási környezetek listája az [Adatátalakítási tevékenységek](#data-transformation-activities) szakaszban található.
+* Egy *olyan számítási erőforrás* t, amely egy tevékenység végrehajtását képes üzemeltetni. A HDInsightHive-tevékenység végrehajtása például egy HDInsight Hadoop-fürtön történik. A támogatott számítási környezetek listája az [Adatátalakítási tevékenységek](#data-transformation-activities) szakaszban található.
 
 ### <a name="relationship-between-data-factory-entities"></a>Data Factory-entitások közötti kapcsolatok
 
@@ -123,9 +123,9 @@ A társított szolgáltatásokat két okból használjuk a Data Factoryban:
 ## <a name="supported-regions"></a>Támogatott régiók
 Jelenleg az USA nyugati régiójában, az USA keleti régiójában és az észak-európai régióban hozhat létre data factoryt. Egy adat-előállító azonban más Azure-régiókban lévő adattárakhoz és számítási szolgáltatásokhoz is hozzáférhet az adatok adattárak közötti mozgatása vagy az adatok számítási szolgáltatásokkal történő feldolgozása érdekében.
 
-Maga az Azure Data Factory nem tárol adatokat. Lehetővé teszi viszont olyan adatvezérelt munkafolyamatok létrehozását, amelyekkel előkészíthető a [támogatott adattárak](#data-movement-activities) közötti adatmozgás. Lehetővé teszi az adatok [számítási szolgáltatásokkal](#data-transformation-activities) történő feldolgozását is más régiókban, illetve helyszíni környezetben. Lehetővé teszi továbbá a [munkafolyamatok monitorozását és kezelését](data-factory-monitor-manage-pipelines.md) mind szoftveres, mind pedig felhasználói felületi mechanizmusokkal.
+Maga az Azure Data Factory nem tárol adatokat. Lehetővé teszi viszont olyan adatvezérelt munkafolyamatok létrehozását, amelyekkel előkészíthető a [támogatott adattárak](#data-movement-activities) közötti adatmozgás. Lehetővé teszi az adatok [számítási szolgáltatásokkal](#data-transformation-activities) történő feldolgozását is más régiókban, illetve helyszíni környezetben. Azt is lehetővé teszi, hogy [a munkafolyamatok figyelése és kezelése](data-factory-monitor-manage-pipelines.md) programozott és felhasználói felületi mechanizmusok használatával.
 
-A Data Factory csak az USA nyugati régiójában, az USA keleti régiójában és az észak-európai régióban érhető el. Az adatok Data Factoryval történő áthelyezését biztosító szolgáltatás azonban [globálisan](data-factory-data-movement-activities.md#global) számos régióban elérhető. Ha az adattár tűzfal mögött található, akkor a helyszíni környezetben telepített [adatkezelési átjáró](data-factory-move-data-between-onprem-and-cloud.md) végzi az adatok áthelyezését.
+A Data Factory csak az USA nyugati régiójában, az USA keleti régiójában és az észak-európai régióban érhető el. Az adatok Data Factoryval történő áthelyezését biztosító szolgáltatás azonban [globálisan](data-factory-data-movement-activities.md#global) számos régióban elérhető. Ha egy adattár tűzfal mögött van, akkor a helyszíni környezetben telepített [adatkezelési átjáró](data-factory-move-data-between-onprem-and-cloud.md) inkább áthelyezi az adatokat.
 
 Tegyük fel például, hogy számítási környezetei, például az Azure HDInsight-fürt és az Azure Machine Learning, a nyugat-európai régión kívül találhatóak. Létrehozhat egy Azure Data Factory-példányt Észak-Európában, amelyet aztán felhasználhat a Nyugat-Európában található számítási környezetein futtatott feladatok ütemezéséhez. A Data Factory néhány ezredmásodperc alatt aktiválja a feladatot a számítási környezetben, a feladatnak a számítási környezetben való futtatásához szükséges idő viszont nem változik.
 

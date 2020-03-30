@@ -1,6 +1,6 @@
 ---
-title: Hierarchikus névtér Azure Data Lake Storage Gen2
-description: A Azure Data Lake Storage Gen2 hierarchikus névterének fogalmát ismerteti.
+title: Azure Data Lake Storage Gen2 hierarchikus névtér
+description: Az Azure Data Lake Storage Gen2 hierarchikus névterének fogalma
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,42 +9,42 @@ ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 6ce94590a1d0de6941c27d972bdd1c4194080e95
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77153077"
 ---
-# <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Hierarchikus névtér Azure Data Lake Storage Gen2
+# <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 hierarchikus névtér
 
-Egy kulcsfontosságú mechanizmus, amely lehetővé teszi, hogy a Azure Data Lake Storage Gen2 a fájlrendszer teljesítményének biztosítása az objektum tárolási skálázása és az árak között egy **hierarchikus névtér**hozzáadásával. Ez lehetővé teszi, hogy a fiókban lévő objektumok/fájlok gyűjteményét a rendszer a címtárak és a beágyazott alkönyvtárak hierarchiába rendezi, ugyanúgy, ahogy a számítógép fájlrendszere. Ha engedélyezve van egy hierarchikus névtér, a Storage-fiók képes lesz biztosítani az objektumok tárterületének méretezhetőségét és költséghatékonyságát, valamint az elemzési motorok és keretrendszerek által ismert fájlrendszer-szemantikai funkciókkal.
+Egy kulcsfontosságú mechanizmus, amely lehetővé teszi az Azure Data Lake Storage Gen2 számára, hogy objektumtárolási méretekben és árakon biztosítsa a fájlrendszer teljesítményét, **hierarchikus névtér**hozzáadása. Ez lehetővé teszi, hogy a fiókon belüli objektumok/fájlok gyűjteménye a könyvtárak és beágyazott alkönyvtárak hierarchiájába ugyanúgy legyen rendszerezve, mint a számítógépen lévő fájlrendszer. Ha a hierarchikus névtér engedélyezve van, a tárfiók képeslesz az objektumtárolás méretezhetőségét és költséghatékonyságát biztosítani, az elemzési motorok és keretrendszerek számára jól ismert fájlrendszer-szemantika ként.
 
 ## <a name="the-benefits-of-a-hierarchical-namespace"></a>A hierarchikus névtér előnyei
 
-A következő előnyök olyan fájlrendszerekhez vannak társítva, amelyek a blob adatain alapuló hierarchikus névteret implementálnak:
+A következő előnyök kapcsolódnak a fájlrendszerekhez, amelyek hierarchikus névteret valósítanak meg a blobadatokon keresztül:
 
-- **Atomi címtár-manipuláció:** Az objektum megközelíti a címtár-hierarchiát úgy, hogy az elérési út szegmensének megjelenítéséhez egy beágyazási perjelet (/) tartalmazó egyezményt fogad el az objektum nevében. Habár ez az egyezmény az objektumok rendszerezésére is használható, az egyezmény nem nyújt segítséget olyan műveletekhez, mint például a könyvtárak áthelyezése, átnevezése vagy törlése. Valódi könyvtárak nélkül az alkalmazásoknak több millió egyedi blobot kell feldolgozniuk a címtár szintű feladatok eléréséhez. Ezzel szemben a hierarchikus névtér ezeket a feladatokat egy adott bejegyzés (a szülő könyvtár) frissítésével dolgozza fel.
+- **Atomi könyvtár manipulálása:** Az objektum a címtárhierarchiát közelítő tárolja a perjelek (/) objektumnévbe ágyazásának konvencióját, amely a görbeszegmenseket jelöli. Bár ez az egyezmény objektumok szervezésére szolgál, az egyezmény nem nyújt segítséget olyan műveletekhez, mint a könyvtárak áthelyezése, átnevezése vagy törlése. Valódi könyvtárak nélkül az alkalmazásoknak potenciálisan több millió egyedi blobot kell feldolgozniuk a címtárszintű feladatok eléréséhez. Ezzel szemben egy hierarchikus névtér egyetlen bejegyzés (a szülőkönyvtár) frissítésével dolgozza fel ezeket a feladatokat.
 
-    Ez a drámai optimalizálás különösen sok big data elemzési keretrendszer esetében jelentős jelentőséggel bír. Az olyan eszközök, mint például a kaptár, a Spark stb. gyakran küldenek kimenetet ideiglenes helyekre, majd átnevezik a helyet a feladatok befejezésekor. Hierarchikus névtér nélkül ez az Átnevezés gyakran hosszabb időt vehet igénybe, mint maga az elemzési folyamat. Az alacsonyabb feladatok késése az elemzési számítási feladatokhoz tartozó teljes tulajdonlási költséget (TCO) csökkenti.
+    Ez a drámai optimalizálás különösen fontos számos big data-elemzési keretrendszer esetében. Az olyan eszközök, mint a Hive, a Spark stb. Hierarchikus névtér nélkül ez az átnevezés gyakran hosszabb időt vesz igénybe, mint maga az elemzési folyamat. Az alacsonyabb feladatkésés egyenlő az elemzési számítási feladatok teljes tulajdonlási költségével (TCO).
 
-- **Ismerős kezelőfelület stílusa:** A fájlrendszerek jól értik a fejlesztők és a felhasználók számára. A felhőre való áttéréskor nem kell új tárolási paradigmát megtanulnia, mivel a Data Lake Storage Gen2 által közzétett fájlrendszer-felület ugyanaz a paradigma, amely a számítógépek, a kis-és a nagyvállalatok által használt.
+- **Ismerős felületstílus:** A fájlrendszereket a fejlesztők és a felhasználók egyaránt jól értik. Nincs szükség arra, hogy új tárolási paradigmát tanuljon, amikor a felhőbe költözik, mivel a Data Lake Storage Gen2 által elérhetővé tett fájlrendszer-felület ugyanaz a paradigma, amelyet a számítógépek használnak, nagy és kicsi.
 
-Az egyik oka, hogy az objektumok tárolói nem támogatják a hierarchikus névtereket, a hierarchikus névtér korlátozza a méretezést. A Data Lake Storage Gen2 hierarchikus névtér azonban lineárisan méretezhető, és nem csökkenti az adatkapacitást vagy a teljesítményt.
+Az egyik oka annak, hogy az objektumtárolók korábban nem támogatták a hierarchikus névteret, az, hogy a hierarchikus névtér korlátozza a skálázást. A Data Lake Storage Gen2 hierarchikus névtér azonban lineárisan skálázódik, és nem rontja sem az adatkapacitást, sem a teljesítményt.
 
 ## <a name="deciding-whether-to-enable-a-hierarchical-namespace"></a>Annak eldöntése, hogy engedélyezi-e a hierarchikus névteret
 
-Miután engedélyezte a hierarchikus névteret a fiókjában, nem visszaállíthatja vissza egy egyszerű névtérre. Ezért érdemes megfontolni, hogy érdemes-e egy hierarchikus névteret engedélyezni az objektum-tároló számítási feladatainak természetétől függően.
+Miután engedélyezte a hierarchikus névteret a fiókjában, nem állíthatja vissza egy sima névtérbe. Ezért fontolja meg, hogy van-e értelme egy hierarchikus névtér engedélyezése az objektumtárolási számítási feladatok jellege alapján.
 
-Előfordulhat, hogy egyes munkaterhelések nem kapnak előnyt a hierarchikus névtér engedélyezésével. Ilyenek például a biztonsági másolatok, a képtárolók és az egyéb alkalmazások, amelyekben az Object Organization külön tárolódik az objektumokból (például egy különálló adatbázisban). 
+Előfordulhat, hogy egyes számítási feladatok nem nyernek semmilyen előnyt egy hierarchikus névtér engedélyezésével. Ilyenek például a biztonsági mentések, a lemezképek tárolása és más alkalmazások, ahol az objektumszervezést maguktól az objektumoktól elkülönítve tárolják (például egy külön adatbázisban). 
 
-Emellett a blob Storage-funkciók és az Azure-szolgáltatások ökoszisztémájának támogatása továbbra is nő, még mindig vannak olyan funkciók és Azure-szolgáltatások, amelyek még nem támogatottak a hierarchikus névtérrel rendelkező fiókokban. Tekintse meg az [ismert problémákat](data-lake-storage-known-issues.md). 
+Emellett a Blob storage-funkciók és az Azure-szolgáltatási ökoszisztéma támogatása továbbra is növekszik, még mindig vannak olyan funkciók és Azure-szolgáltatások, amelyek még nem támogatottak a hierarchikus névtérrel rendelkező fiókokban. Lásd: [Ismert problémák](data-lake-storage-known-issues.md). 
 
-Általánosságban elmondható, hogy a könyvtárakat kezelő fájlrendszerekhez készült hierarchikus névteret be kell kapcsolni a tárolási munkaterhelésekhez. Ebbe beletartozik az összes olyan számítási feladat, amely elsősorban az elemzések feldolgozására szolgál. A nagyfokú szervezetet igénylő adatkészletek a hierarchikus névtér engedélyezésével is hasznosak lesznek.
+Általában azt javasoljuk, hogy kapcsolja be a hierarchikus névtér a tárolási számítási feladatok, amelyek célja a könyvtárakat kezelő fájlrendszerekhez. Ez magában foglalja az összes számítási feladatok, amelyek elsősorban az elemzési feldolgozás. A magas szintű szervezést igénylő adatkészletek számára a hierarchikus névtér engedélyezése is előnyös.
 
-A hierarchikus névtér engedélyezésének okait a TCO-elemzés határozza meg. Általánosságban elmondható, hogy a tárolási gyorsítás miatti munkaterhelések késésének fejlesztése a számítási erőforrásokat kevesebb ideig igényli. Számos számítási feladat késése a hierarchikus névtér által engedélyezett atomi címtár-manipuláció miatt javítható. Számos munkaterhelésben a számítási erőforrás a teljes költség > 85%-át, így a munkaterhelés késésének szerény csökkenése is jelentős mennyiségű TCO-megtakarítást jelent. Még azokban az esetekben is, amikor a hierarchikus névtér engedélyezése növeli a tárolási költségeket, a TCO-t továbbra is csökkentik a számítási költségek miatt.
+A hierarchikus névtér engedélyezésének okait egy TCO-elemzés határozza meg. Általánosságban elmondható, hogy a tárolási gyorsítás miatti számítási késés javulása kevesebb ideig igényel számítási erőforrásokat. Számos számítási feladat késése továbbfejleszthető a hierarchikus névtér által engedélyezett atomi címtár-kezelés miatt. Sok számítási feladatok, a számítási erőforrás > 85%-át teszi ki a teljes költség, és így még egy szerény csökkentése munkaterhelés késés megegyezik a jelentős mennyiségű TCO megtakarítás. Még azokban az esetekben is, amikor a hierarchikus névtér engedélyezése növeli a tárolási költségeket, a tco még mindig csökken a csökkentett számítási költségek miatt.
 
-Az adattárolási árak, a tranzakciós árak és a tárolási kapacitás foglalási díjszabása közötti különbségeket elemezheti az olyan fiókok között, amelyek hierarchikus névtérrel rendelkeznek, és hierarchikus névtereket is tartalmaz: [Azure Data Lake Storage Gen2 díjszabása](https://azure.microsoft.com/pricing/details/storage/data-lake/).
+Az adattárolási árak, a tranzakciós árak és a tárolási kapacitásfoglalásdíj-szabások különbségeinek elemzéséhez az egysíkú hierarchikus névtérrel és hierarchikus névtérrel rendelkező fiókok között az [Azure Data Lake Storage Gen2 díjszabása](https://azure.microsoft.com/pricing/details/storage/data-lake/)című témakörben található.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Storage-fiók létrehozása](./data-lake-storage-quickstart-create-account.md)
+- [Tárfiók létrehozása](./data-lake-storage-quickstart-create-account.md)

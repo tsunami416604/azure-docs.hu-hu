@@ -1,6 +1,6 @@
 ---
-title: A U-SQL programozható útmutatója Azure Data Lake
-description: Ismerkedjen meg Azure Data Lake Analytics szolgáltatásokkal, amelyek lehetővé teszik a felhőalapú big data-platform létrehozását.
+title: U-SQL programozhatósági útmutató az Azure Data Lake-hez
+description: Ismerje meg az Azure Data Lake Analytics szolgáltatásainak készletét, amelyek lehetővé teszik egy felhőalapú big data platform létrehozását.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,23 +10,23 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: dc55615d7a5c6ae9a393ed4fd5f49cd92aedc0f9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73162583"
 ---
-# <a name="u-sql-programmability-guide"></a>A U-SQL programozható útmutatója
+# <a name="u-sql-programmability-guide"></a>U-SQL programozhatósági útmutató
 
-Az U-SQL egy olyan lekérdezési nyelv, amelyet a számítási feladatok big dataához terveztek. Az U-SQL egyik egyedi funkciója az SQL-szerű deklaratív nyelv kombinációja a által biztosított bővíthetőséggel és programozhatóság használatával C#. Ebben az útmutatóban a által C#engedélyezett U-SQL nyelv bővíthetőségére és programozhatóra koncentrálunk.
+Az U-SQL egy olyan lekérdezési nyelv, amelyet big data-típusú számítási feladatokhoz terveztek. Az U-SQL egyik egyedi jellemzője az SQL-szerű deklaratív nyelv és a C# által biztosított bővíthetőség és programozhatóság kombinációja. Ebben az útmutatóban a C# által engedélyezett U-SQL nyelv bővíthetőségére és programozhatóságára összpontosítunk.
 
 ## <a name="requirements"></a>Követelmények
 
-Töltse le és telepítse [a Visual studióhoz készült Azure Data Lake-eszközöket](https://www.microsoft.com/download/details.aspx?id=49504).
+Töltse le és telepítse [az Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)alkalmazást.
 
 ## <a name="get-started-with-u-sql"></a>U-SQL – első lépések  
 
-Tekintse meg a következő U-SQL-parancsfájlt:
+Tekintse meg a következő U-SQL parancsfájlt:
 
 ```
 @a  = 
@@ -44,11 +44,11 @@ Tekintse meg a következő U-SQL-parancsfájlt:
   FROM @a;    
 ```
 
-Ez a parancsfájl két sorhalmazt határoz meg: `@a` és `@results`. A sorhalmaz `@results` `@a`alapján van definiálva.
+Ez a parancsfájl két `@a` sorkészletet határoz meg: és `@results`. A `@results` RowSet a `@a`programból van definiálva.
 
-## <a name="c-types-and-expressions-in-u-sql-script"></a>C#típusok és kifejezések az U-SQL-parancsfájlban
+## <a name="c-types-and-expressions-in-u-sql-script"></a>C# típusok és kifejezések az U-SQL parancsfájlban
 
-A U-SQL kifejezés olyan U C# -SQL logikai műveletekkel kombinált kifejezés, mint például a `AND`, a `OR`és a `NOT`. A U-SQL kifejezések a SELECT, a EXTRACT, a WHERE, a GROUP BY és a DECLARE kifejezéssel használhatók. Például a következő parancsfájl egy sztringet DateTime értékként elemez.
+Az U-SQL kifejezés egy C# kifejezés, amely az `AND` `OR`U-SQL logikai műveletekkel kombinálva , és `NOT`. Az U-SQL kifejezések a SELECT, EXTRACT, WHERE, HAVING, GROUP BY és DECLARE kifejezésekkel használhatók. A következő parancsfájl például datetime értékként elemez egy karakterláncot.
 
 ```
 @results =
@@ -59,15 +59,15 @@ A U-SQL kifejezés olyan U C# -SQL logikai műveletekkel kombinált kifejezés, 
   FROM @a;    
 ```
 
-A következő kódrészlet egy karakterláncot DateTime értékként elemez a DECLARE utasításban.
+A következő kódrészlet datetime értékként egy DECLARE utasításban datetime értékként elemez.
 
 ```
 DECLARE @d = DateTime.Parse("2016/01/01");
 ```
 
-### <a name="use-c-expressions-for-data-type-conversions"></a>Kifejezések C# használata adattípus-konverzióhoz
+### <a name="use-c-expressions-for-data-type-conversions"></a>C# kifejezések használata adattípus-konverziókhoz
 
-Az alábbi példa bemutatja, hogyan végezheti el a DateTime típusú adatkonverziót C# kifejezések használatával. Ebben az adott esetben a string datetime-adatok konvertálása standard datetime értékre történik, éjfél 00:00:00 idő jelöléssel.
+A következő példa bemutatja, hogyan lehet csinálni egy datetime adatkonverzió t c# kifejezések használatával. Ebben a konkrét esetben a karakterlánc-datetime adatok at konvertálja a normál datetime éjfélkor 00:00:00 időjelöléssel.
 
 ```
 DECLARE @dt = "2016-07-06 10:23:15";
@@ -83,11 +83,11 @@ OUTPUT @rs1
   USING Outputters.Text();
 ```
 
-### <a name="use-c-expressions-for-todays-date"></a>Kifejezések C# használata a mai dátumhoz
+### <a name="use-c-expressions-for-todays-date"></a>C# kifejezések használata a mai dátumhoz
 
-A mai dátum lekéréséhez a következő C# kifejezést használhatja: `DateTime.Now.ToString("M/d/yyyy")`
+A mai dátum lehúzásához a következő C# kifejezést használhatjuk:`DateTime.Now.ToString("M/d/yyyy")`
 
-Íme egy példa arra, hogyan használhatja ezt a kifejezést egy parancsfájlban:
+Íme egy példa arra, hogyan használhatja ezt a kifejezést parancsfájlban:
 
 ```
 @rs1 =
@@ -104,41 +104,41 @@ A mai dátum lekéréséhez a következő C# kifejezést használhatja: `DateTim
 ```
 ## <a name="using-net-assemblies"></a>.NET-szerelvények használata
 
-Az U-SQL bővíthetőségi modellje nagy mértékben támaszkodik arra, hogy egyéni kódot adjon hozzá a .NET-szerelvényekhez. 
+Az U-SQL bővíthetőségi modellje nagymértékben függ a .NET szerelvényekegyéni kódjának hozzáadásától. 
 
-### <a name="register-a-net-assembly"></a>.NET-szerelvény regisztrálása
+### <a name="register-a-net-assembly"></a>.NET kódösszeállítás regisztrálása
 
-A .NET-szerelvényt egy U-SQL Database helyezheti el a `CREATE ASSEMBLY` utasítás használatával. Ezt követően az U-SQL-parancsfájlok ezeket a szerelvényeket használhatják a `REFERENCE ASSEMBLY` utasítás használatával. 
+Az `CREATE ASSEMBLY` utasítás segítségével .NET kódösszeállítást helyezhet el U-SQL adatbázisban. Ezt követően az U-SQL-parancsfájlok használhatják ezeket az összeállításokat az `REFERENCE ASSEMBLY` utasítás használatával. 
 
-A következő kód bemutatja, hogyan regisztrálhat egy szerelvényt:
+A következő kód bemutatja, hogyan kell regisztrálni egy szerelvényt:
 
 ```
 CREATE ASSEMBLY MyDB.[MyAssembly]
    FROM "/myassembly.dll";
 ```
 
-A következő kód bemutatja, hogyan hivatkozhat egy szerelvényre:
+A következő kód bemutatja, hogyan lehet hivatkozni egy szerelvényre:
 
 ```
 REFERENCE ASSEMBLY MyDB.[MyAssembly];
 ```
 
-További részletekért tekintse meg a [szerelvény regisztrációs utasításait](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/) , amelyek részletesebben ismertetik ezt a témakört.
+Tekintse meg a [szerelvény regisztrációs utasításokat,](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/) amely részletesebben ismerteti ezt a témakört.
 
 
-### <a name="use-assembly-versioning"></a>Szerelvény verziószámozásának használata
-Jelenleg az U-SQL a .NET-keretrendszer 4,5-es verzióját használja. Ügyeljen arra, hogy a saját szerelvényei kompatibilisek legyenek a futtatókörnyezet adott verziójával.
+### <a name="use-assembly-versioning"></a>Összeállításverzió-verzióhasználata
+Az U-SQL jelenleg a . Ezért győződjön meg arról, hogy a saját szerelvények kompatibilisek a futásidejű verzióval.
 
-Ahogy korábban említettük, az U-SQL 64 bites (x64) formátumban futtatja a kódot. Ügyeljen arra, hogy a kód fordítása x64-re fusson. Ellenkező esetben helytelen formátumú hibaüzenetet kap.
+Ahogy korábban említettük, az U-SQL 64 bites (x64) formátumban futtatja a kódot. Ezért győződjön meg arról, hogy a kód le van fordítva az x64-es futtatáshoz. Ellenkező esetben a korábban megjelenített helytelen formátumhibát kapja.
 
-Minden feltöltött összeállítási DLL-fájl és erőforrásfájl, például egy másik futtatókörnyezet, egy natív szerelvény vagy egy konfigurációs fájl legfeljebb 400 MB lehet. A központilag telepített erőforrások teljes mérete (akár üzembe helyezési erőforrás, akár szerelvények és a további fájlok esetében) nem haladhatja meg a 3 GB-ot.
+Minden feltöltött összeállítási DLL- és erőforrásfájl, például egy másik futásidő, egy natív összeállítás vagy egy konfigurációs fájl legbőlegelhető. Az üzembe helyezett erőforrások teljes mérete, akár a DEPLOY RESOURCE,akár az összeállításokra és azok további fájljaira mutató hivatkozásokon keresztül, nem haladhatja meg a 3 GB-ot.
 
-Végezetül vegye figyelembe, hogy minden U-SQL-adatbázis csak egy adott szerelvény egyetlen verzióját tudja tartalmazni. Ha például a NewtonSoft Json.NET Library 7-es verziójára és 8-as verziójára van szüksége, akkor két különböző adatbázisban kell regisztrálnia. Emellett az egyes parancsfájlok csak egy adott szerelvény-DLL egy verziójára vonatkozhatnak. Ebben a tekintetben az U-SQL a C# szerelvények felügyeletét és verziószámozását követi.
+Végül vegye figyelembe, hogy minden U-SQL-adatbázis csak egy adott kódösszeállítás egy verzióját tartalmazhatja. Ha például a NewtonSoft Json.NET könyvtár 7-es és 8-as verziójára is szüksége van, két különböző adatbázisban kell regisztrálnia őket. Továbbá minden parancsfájl csak egy adott kódösszeállítás-DLL egy verziójára hivatkozhat. Ebben a tekintetben az U-SQL követi a C# összeállítása kezelése és verziószámozás szemantikája.
 
 ## <a name="use-user-defined-functions-udf"></a>Felhasználó által definiált függvények használata: UDF
-A felhasználó által definiált U-SQL-függvények vagy UDF-EK olyan programozási rutinok, amelyek elfogadják a paramétereket, végrehajtanak egy műveletet (például egy összetett számítást), és értékként adják vissza a művelet eredményét. Az UDF visszatérési értéke csak egyetlen skaláris lehet. Az u-SQL UDF a U-SQL alap-parancsfájlban hívható meg C# , mint bármely más skaláris függvény.
+Az U-SQL felhasználó által definiált függvények (UDF) olyan programozási rutinok, amelyek elfogadják a paramétereket, végrehajtanak egy műveletet (például egy összetett számítást), és a művelet eredményét értékként adják vissza. Az UDF visszatérési értéke csak egyetlen skaláris lehet. U-SQL UDF lehet hívni az U-SQL alapscript, mint bármely más C # skalárfüggvény.
 
-Javasoljuk, hogy a felhasználó által definiált U-SQL-függvényeket **nyilvánosként** és **statikusan**inicializálja.
+Azt javasoljuk, hogy az U-SQL felhasználó által definiált függvényeket **nyilvános** és **statikusként**inicializálja.
 
 ```
 public static string MyFunction(string param1)
@@ -147,11 +147,11 @@ public static string MyFunction(string param1)
 }
 ```
 
-Először tekintsük át az UDF létrehozásának egyszerű példáját.
+Először nézzük meg az UDF létrehozásának egyszerű példáját.
 
-Ebben a használati helyzetben meg kell határozni a pénzügyi időszakot, beleértve az adott felhasználóhoz tartozó első bejelentkezés pénzügyi negyedévét és pénzügyi hónapját. Az év első pénzügyi hónapja a forgatókönyvben június.
+Ebben a használati esetben meg kell határozni a pénzügyi időszak, beleértve a pénzügyi negyedévben és a pénzügyi hónap az első bejelentkezés az adott felhasználó számára. Az év első pénzügyi hónapja a mi forgatókönyvünkben június.
 
-A pénzügyi időszak kiszámításához a következő C# függvényt mutatjuk be:
+A pénzügyi időszak kiszámításához a következő C# függvényt vezetjük be:
 
 ```
 public static string GetFiscalPeriod(DateTime dt)
@@ -188,11 +188,11 @@ public static string GetFiscalPeriod(DateTime dt)
 }
 ```
 
-Egyszerűen kiszámítja a pénzügyi hónapot és a negyedévet, és egy sztring értéket ad vissza. Júniusban az első pénzügyi negyedév első hónapjára a "Q1: P1" kifejezést használjuk. Júliusban a "Q1: P2" kifejezést használjuk, és így tovább.
+Egyszerűen kiszámítja a pénzügyi hónapot és negyedévet, és karakterlánc-értéket ad vissza. Júniusban, az első pénzügyi negyedév első hónapjában a "Q1:P1" szót használjuk. Júliusban a "Q1:P2"-t használjuk, és így tovább.
 
-Ez egy normál C# függvény, amelyet a U-SQL-projektben fogunk használni.
+Ez egy rendszeres C# függvény, amelyet u-SQL projektünkben fogunk használni.
 
-Itt látható, hogyan néz ki a kód mögötti szakasz ebben a forgatókönyvben:
+Ebben az esetben a következőképpen jelenik meg a háttérkódszakasz:
 
 ```
 using Microsoft.Analytics.Interfaces;
@@ -242,13 +242,13 @@ namespace USQL_Programmability
 }
 ```
 
-Most hívjuk ezt a függvényt az alap U-SQL-szkriptből. Ehhez meg kell adnia a függvény teljes nevét, beleértve a névteret is, amely ebben az esetben a NameSpace. class. Function (paraméter).
+Most fogjuk hívni ezt a függvényt az alap U-SQL script. Ehhez meg kell adnunk egy teljesen minősített nevet a függvénynek, beleértve a névteret is, amely ebben az esetben a NameSpace.Class.Function(parameter).
 
 ```
 USQL_Programmability.CustomFunctions.GetFiscalPeriod(dt)
 ```
 
-A következő a tényleges U-SQL-alapú parancsfájl:
+A következőkben a tényleges U-SQL alapscript:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -280,7 +280,7 @@ OUTPUT @rs1
     USING Outputters.Text();
 ```
 
-A szkript végrehajtásának kimeneti fájlja a következő:
+A parancsfájl-végrehajtás kimeneti fájlja a következők:
 
 ```
 0d8b9630-d5ca-11e5-8329-251efa3a2941,2016-02-11T07:04:17.2630000-08:00,2016-06-01T00:00:00.0000000,"Q3:8","User1",""
@@ -290,22 +290,22 @@ A szkript végrehajtásának kimeneti fájlja a következő:
 301f23d2-d690-11e5-9a98-4b4f60a1836f,2016-02-11T09:01:33.9720000-08:00,2016-06-01T00:00:00.0000000,"Q3:8","User3",""
 ```
 
-Ez a példa a beágyazott UDF egyszerű használatát mutatja be U-SQL-ben.
+Ez a példa bemutatja a beépített UDF egyszerű használatát az U-SQL-ben.
 
-### <a name="keep-state-between-udf-invocations"></a>Állapot megőrzése az UDF-hívások között
-Az U- C# SQL programozható objektumok összetettebbek, és a globális változók mögötti interaktivitást is igénybe vehetnek. Nézzük meg a következő üzleti használati esetet.
+### <a name="keep-state-between-udf-invocations"></a>Állapot megtartása az UDF-hívások között
+Az U-SQL C# programozhatóságú objektumok kifinomultabbak lehetnek, kihasználva az interaktivitást a kód mögötti globális változókon keresztül. Nézzük meg a következő üzleti használati eset forgatókönyv.
 
-A nagyméretű szervezeteknél a felhasználók válthatnak a belső alkalmazások különböző fajtái között. Ezek lehetnek a Microsoft Dynamics CRM, a PowerBI stb. Előfordulhat, hogy az ügyfelek telemetria-elemzést kívánnak alkalmazni arról, hogy a felhasználók hogyan válthatnak a különböző alkalmazások között, milyen trendek vannak, és így tovább. Az üzleti cél az alkalmazások használatának optimalizálása. Emellett érdemes lehet különböző alkalmazásokat vagy konkrét bejelentkezési rutinokat kombinálni.
+A nagy szervezetekben a felhasználók válthatnak a belső alkalmazások fajtái között. Ezek közé tartozhat a Microsoft Dynamics CRM, a PowerBI és így tovább. Előfordulhat, hogy az ügyfelek telemetriai elemzést szeretnének alkalmazni arról, hogy a felhasználók hogyan váltanak a különböző alkalmazások között, mik a használati trendek és így tovább. A cél az üzleti optimalizálása alkalmazás használat. Azt is érdemes kombinálni a különböző alkalmazások vagy konkrét bejelentkezési rutinok.
 
-Ennek a célnak a megvalósításához meg kell határozni a munkamenet-azonosítókat és a késési időt az utolsó munkamenet során.
+E cél elérése érdekében meg kell határoznunk a munkamenet-azonosítókat és az utolsó munkamenet közötti időeltolódást.
 
-Meg kell találni egy korábbi bejelentkezést, majd hozzá kell rendelnie ezt a bejelentkezést az ugyanahhoz az alkalmazáshoz létrehozott összes munkamenethez. Az első kihívás az, hogy az U-SQL alap parancsfájl nem teszi lehetővé a számítások alkalmazását a már számított oszlopokon a LAG függvénnyel. A második kihívás az, hogy meg kell őrizni az adott munkamenetet az adott időszakon belüli összes munkamenethez.
+Meg kell találnunk egy korábbi bejelentkezést, és ezt a bejelentkezést hozzá kell rendelnünk az ugyanahhoz az alkalmazáshoz létrehozott összes munkamenethez. Az első kihívás az, hogy az U-SQL alapszkript nem teszi lehetővé számunkra, hogy számításokat alkalmazzunk a MÁR kiszámított oszlopokra a LAG funkcióval. A második kihívás az, hogy az adott munkamenetet az összes munkamenetre vonatkozóan ugyanabban az időszakban kell tartanunk.
 
-A probléma megoldásához egy globális változót használunk a kód mögötti szakaszban: `static public string globalSession;`.
+A probléma megoldásához egy globális változót használunk `static public string globalSession;`egy háttérkód-szakaszon belül: .
 
-Ezt a globális változót a szkript végrehajtása során a teljes sorhalmazra alkalmazza a rendszer.
+Ez a globális változó a parancsfájl végrehajtása során a teljes sorhalmazra vonatkozik.
 
-Itt látható a U-SQL program kódjának mögötti szakasza:
+Itt van a kód mögött szakasza u-SQL program:
 
 ```
 using Microsoft.Analytics.Interfaces;
@@ -343,9 +343,9 @@ namespace USQLApplication21
 }
 ```
 
-Ez a példa a `getStampUserSession` függvényben használt `static public string globalSession;` globális változót mutatja be, és minden alkalommal újrainicializálja a munkamenet-paramétert.
+Ez a példa `static public string globalSession;` a függvényen belül használt globális változót mutatja be, és a `getStampUserSession` Munkamenet paraméter minden módosításakor újrainicializálódik.
 
-A U-SQL alap parancsfájl a következő:
+Az U-SQL alapparancsfájl a következő:
 
 ```
 DECLARE @in string = @"\UserSession\test1.tsv";
@@ -395,7 +395,7 @@ OUTPUT @rs2
     USING Outputters.Csv();
 ```
 
-A függvény `USQLApplication21.UserSession.getStampUserSession(UserSessionTimestamp)` a második memória sorhalmazának kiszámítása során hívja meg. Átadja a `UserSessionTimestamp` oszlopot, és visszaadja az értéket, amíg a `UserSessionTimestamp` megváltozott.
+A `USQLApplication21.UserSession.getStampUserSession(UserSessionTimestamp)` függvényt itt hívják a második memóriasorhalmaz számítása során. Átmegy az `UserSessionTimestamp` oszlopon, és `UserSessionTimestamp` az értéket ad vissza, amíg meg nem változik.
 
 A kimeneti fájl a következő:
 
@@ -424,17 +424,17 @@ A kimeneti fájl a következő:
 "2016-02-19T01:20:31.4800000-08:00","User4","2016-02-18T14:37:27.6560000-08:00",False,"2136f4cf-7c7d-43c1-8ae2-08f4ad6a6e08"
 ```
 
-Ez a példa egy bonyolultabb használati esetet mutat be, amelyben egy globális változót használunk egy kód mögötti szakaszban, amely a teljes memória sorhalmazra van alkalmazva.
+Ez a példa egy bonyolultabb használati eset forgatókönyv, amelyben egy globális változó belül egy kód mögötti szakasz, amely a teljes memória sorhalmaz.
 
 ## <a name="use-user-defined-types-udt"></a>Felhasználó által definiált típusok használata: UDT
-A felhasználó által definiált típusok vagy UDT a U-SQL egy másik programozható szolgáltatása. Az U-SQL-UDT egy normál C# felhasználó által definiált típushoz hasonlóan működik. C#a egy szigorúan beírt nyelv, amely lehetővé teszi a beépített és az egyéni felhasználók által definiált típusok használatát.
+A felhasználó által definiált típusok (UDT) az U-SQL egy másik programozhatósági szolgáltatása. U-SQL UDT működik, mint egy normál C# felhasználó által definiált típus. A C# egy erősen beírt nyelv, amely lehetővé teszi a beépített és egyéni felhasználó által definiált típusok használatát.
 
-Az U-SQL nem tud implicit módon szerializálni vagy deszerializálni tetszőleges UDT, amikor a UDT a csúcspontok között átadja a sorhalmazban. Ez azt jelenti, hogy a felhasználónak explicit formázó eszközt kell megadnia a IFormatter felület használatával. Ez biztosítja a U-SQL-t a UDT szerializálási és deszerializáló módszereivel.
+Az U-SQL nem tudja implicit módon szerializálni vagy deserialize tetszőleges UDT-k, ha az UDT át kerül a csúcspontok között a sorhalmazokban. Ez azt jelenti, hogy a felhasználónak az IFormatter felület használatával explicit formatter-t kell megadnia. Ez biztosítja az U-SQL az UDT szerializálására és szerializálására szolgáló módszereket.
 
 > [!NOTE]
-> A U-SQL beépített kivonói és-előállítók jelenleg nem tudják szerializálni vagy deszerializálni a UDT-adatait, még a IFormatter is. Tehát amikor UDT ír egy fájlba a kimeneti utasítással, vagy beolvassa azt egy kivonóval, akkor karakterlánc-vagy byte-tömbként kell átadnia. Ezután meghívja a szerializálási és a deszerializálási kódot (azaz a UDT ToString () metódusát) explicit módon. A felhasználó által definiált kiállítók és a lekérések a UDT olvashatók és írhatók.
+> Az U-SQL beépített elszívói és outputterek jelenleg nem tudják szerializálni vagy deszeriszkíteni az UDT-adatokat a fájlokba vagy fájlokból még az IFormatter készlettel sem. Tehát, ha udt adatokat ír egy fájlt a OUTPUT utasítást, vagy olvassa el egy kivonó, meg kell adni, mint egy karakterlánc vagy bájt tömb. Ezután explicit módon hívja meg a szerializálási és deszerializálási kódot (azaz az UDT ToString() metódusát). A felhasználó által definiált elszívók és kimenetek viszont képesek UDT-k olvasására és írására.
 
-Ha a UDT-t a kivonón vagy a kimeneten (az előző SELECT-ből) próbáljuk használni, az itt látható módon:
+Ha megpróbáljuk használni UDT extractor vagy OUTPUTTER (ki az előző SELECT), mint itt látható:
 
 ```
 @rs1 =
@@ -447,7 +447,7 @@ OUTPUT @rs1
     USING Outputters.Text();
 ```
 
-A következő hibaüzenetet kapja:
+A következő hibaüzenetet kapjuk:
 
 ```
 Error   1   E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
@@ -464,9 +464,9 @@ the preceding SELECT.   C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\
 USQL-Programmability\Types.usql 52  1   USQL-Programmability
 ```
 
-A UDT-ben való együttműködéshez a ToString () metódussal kell szerializálni a karakterláncot, vagy létre kell hoznia egy egyéni leválasztó eszközt.
+Az UDT-vel való munkához a outputterben szerializálnunk kell a ToString() metódussal való karakterláncba, vagy létre kell hoznunk egy egyéni outputtert.
 
-A UDT jelenleg nem használható a GROUP BY utasításban. Ha a UDT a GROUP BY utasításban használja, a következő hiba történik:
+Az UDT-k jelenleg nem használhatók a GROUP BY-ben. Ha udt-t használ a GROUP BY-ben, a következő hiba jelenik meg:
 
 ```
 Error   1   E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
@@ -483,7 +483,7 @@ C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\USQ
 62  5   USQL-Programmability
 ```
 
-A UDT definiálásához a következőket kell tennie:
+Az UDT meghatározásához a következőket kell tennünk:
 
 * Adja hozzá a következő névtereket:
 
@@ -492,19 +492,19 @@ using Microsoft.Analytics.Interfaces
 using System.IO;
 ```
 
-* Adja hozzá `Microsoft.Analytics.Interfaces`, amely a UDT-interfészekhez szükséges. Emellett előfordulhat, hogy a IFormatter felület definiálásához `System.IO` szükséges.
+* Add `Microsoft.Analytics.Interfaces`, amely szükséges az UDT-összeköttetések. Ezenkívül `System.IO` szükség lehet az IFormatter felület definiálására is.
 
-* Definiáljon egy használt típust a SqlUserDefinedType attribútummal.
+* Definiáljon egy használt-definiált típust az SqlUserDefinedType attribútummal.
 
-A **SqlUserDefinedType** az U-SQL-ben felhasználó által definiált típusként (UDT) jelöli meg a szerelvény típus definícióját. Az attribútum tulajdonságai a UDT fizikai jellemzőit tükrözik. Ez az osztály nem örökölhető.
+**Az SqlUserDefinedType** segítségével egy kódösszeállításban egy típusdefiníciót felhasználó által definiált típusként (UDT) jelöl meg az U-SQL-ben. Az attribútum tulajdonságai az UDT fizikai jellemzőit tükrözik. Ez az osztály nem örökölhető.
 
-A SqlUserDefinedType a UDT-definíció kötelező attribútuma.
+Az SqlUserDefinedType az UDT-definíció kötelező attribútuma.
 
 Az osztály konstruktora:  
 
-* SqlUserDefinedTypeAttribute (típus formázó)
+* SqlUserDefinedTypeAttribute (típus formatter)
 
-* Type formázó: kötelező paraméter egy UDT-formázó definiálásához – konkrétan a `IFormatter` interfész típusát itt kell átadni.
+* Típus darab: UdT formatter definiálásához szükséges paraméter – pontosabban az `IFormatter` összeköttetés típusát itt kell átadni.
 
 ```
 [SqlUserDefinedType(typeof(MyTypeFormatter))]
@@ -512,7 +512,7 @@ public class MyType
 { … }
 ```
 
-* A tipikus UDT az IFormatter felület definícióját is igényli, ahogy az az alábbi példában is látható:
+* A tipikus UDT-hez az IFormatter interfész is szükséges, amint az a következő példában látható:
 
 ```
 public class MyTypeFormatter : IFormatter<MyType>
@@ -525,27 +525,27 @@ public class MyTypeFormatter : IFormatter<MyType>
 }
 ```
 
-A `IFormatter` felülete szerializálja és deszerializálja a (z) \<typeparamref Name = "T" > gyökerének típusát.
+A `IFormatter` felület szerializálja és deszerializálja az \<objektumdiagramot a typeparamref name="T"> gyökértípusával.
 
-\<typeparam neve = "T" > az Object gráf gyökérszintű típusát a szerializáláshoz és a deszerializáláshoz.
+\<typeparam name="T">Az objektumdiagram szerializálásának és desorosizálásának gyökértípusa.
 
-* **Deszerializálás**: megszünteti a megadott adatfolyamban lévő adatmennyiséget, és visszaképezi az objektumok gráfját.
+* **Deszerializálás :** De-szerializálja a megadott adatfolyamon lévő adatokat, és újraalkotja az objektumok grafikonját.
 
-* **Szerializálás**: egy objektum vagy objektum gráfjának szerializálására szolgál a megadott adatfolyammal.
+* **Szerializálás:** Szerializálja az objektumokat vagy az objektumok grafikonját úgy, hogy a megadott gyökér a megadott adatfolyamhoz.
 
-`MyType` példány: a típus példánya.  
-`IColumnWriter` Writer/`IColumnReader` Reader: az alapul szolgáló oszlop adatfolyama.  
-`ISerializationContext` Context: Enum, amely olyan jelzőket határoz meg, amelyek az adatfolyam forrását vagy célhelyét határozzák meg a szerializálás során.
+`MyType`példa: A típus példánya.  
+`IColumnWriter`író `IColumnReader` / olvasó: A mögöttes oszlop patak.  
+`ISerializationContext`context: Enum, amely olyan jelzőket határoz meg, amely a szerializálás során megadja az adatfolyam forrás- vagy célkörnyezetét.
 
-* **Köztes**: azt határozza meg, hogy a forrás vagy a cél környezet nem egy megőrzött tároló.
+* **Köztes**: Azt adja meg, hogy a forrás- vagy célkörnyezet nem megőrzött tároló.
 
-* **Megőrzés**: Megadja, hogy a forrás vagy a cél környezet megőrzött tároló-e.
+* **Adatmegőrzés :** Megadja, hogy a forrás- vagy célkörnyezet egy megőrzött tároló.Persistence : Specifies that the source or destination context is a persisted store.
 
-Normál C# típusként a U-SQL-UDT definíciója olyan operátorok felülbírálását is magában foglalhatja, mint a +/= =/! =. Statikus metódusokat is tartalmazhat. Ha például ezt a UDT paraméterként egy U-SQL MIN összesítő függvényhez fogjuk használni, meg kell határozni < operátor felülbírálását.
+Rendszeres C# típusként az U-SQL UDT-definíció felülbírálásokat tartalmazhat az operátorok számára, például a +/==/!=. Statikus metódusok is lehetnek. Ha például ezt az UDT-t egy U-SQL MIN összesítő függvény paramétereként fogjuk használni, meg kell határoznunk < operátor felülbírálása.
 
-Az útmutató korábbi részében egy példát mutatunk be a pénzügyi időszak azonosítására az `Qn:Pn (Q1:P10)`formátumban megadott dátum alapján. Az alábbi példa bemutatja, hogyan határozhat meg egyéni típust a pénzügyi időszakok értékeihez.
+Az útmutató korábbi részében bemutattunk egy példát a pénzügyi `Qn:Pn (Q1:P10)`időszak azonosítására az adott dátumtól kezdve a formátumban. A következő példa bemutatja, hogyan definiálható egyéni típus a pénzügyi időszak értékeihez.
 
-Az alábbi példa egy, az egyéni UDT és a IFormatter felülettel ellátott kódrészletet tartalmaz:
+Az alábbiakban egy példa egy kód mögött szakasz egyéni UDT és IFormatter felület:
 
 ```
 [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
@@ -646,11 +646,11 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-A megadott típus két számot tartalmaz: a negyedévet és a hónapot. Itt vannak definiálva a `==/!=/>/<` és a statikus metódus `ToString()`.
+A megadott típus két számot tartalmaz: negyedév et és hónapot. A `==/!=/>/<` kezelők `ToString()` és a statikus metódus itt vannak meghatározva.
 
-Ahogy azt korábban említettük, a UDT használhatók a SELECT kifejezésekben, de nem használhatók a kiállítók/kivonók egyéni szerializálás nélkül. Ezt a karakterláncot `ToString()` vagy egyéni, illetve kivonóval használható sztringként kell szerializálni.
+Ahogy korábban említettük, az UDT használható SELECT kifejezésekben, de nem használható outputter/extractor egyéni szerializálás nélkül. Vagy szerializálandó, mint `ToString()` egy karakterlánc, vagy használt egyéni OUTPUTTER / extractor.
 
-Most beszéljünk a UDT használatáról. A kód mögötti szakaszban a GetFiscalPeriod függvényt a következőre módosították:
+Most beszéljünk az UDT használatáról. A háttérkódszakaszban a GetFiscalPeriod függvényt a következőkre változtattuk:
 
 ```
 public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
@@ -687,9 +687,9 @@ public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
 }
 ```
 
-Amint láthatja, a FiscalPeriod típusának értékét adja vissza.
+Amint láthatja, a FiscalPeriod típus értékét adja vissza.
 
-Íme egy példa arra, hogyan használhatja tovább a U-SQL alap parancsfájlban. Ez a példa az U-SQL-szkriptből származó UDT hívás különböző formáit mutatja be.
+Itt egy példát, hogyan kell használni tovább U-SQL alap script. Ez a példa az UdT-meghívás különböző formáit mutatja be az U-SQL parancsfájlból.
 
 ```
 DECLARE @input_file string = @"c:\work\cosmos\usql-programmability\input_file.tsv";
@@ -735,7 +735,7 @@ OUTPUT @rs2
     USING Outputters.Text();
 ```
 
-Íme egy példa a teljes kód mögötti szakaszra:
+Íme egy példa a teljes háttérkódszakaszra:
 
 ```
 using Microsoft.Analytics.Interfaces;
@@ -895,10 +895,10 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-## <a name="use-user-defined-aggregates-udagg"></a>Felhasználó által definiált összesítések használata: UDAGG
-A felhasználó által definiált összesítések bármely olyan összesítéssel kapcsolatos függvény, amely nem a U-SQL-mel van kiszállítva. A példa az egyéni matematikai számítások, a karakterlánc-összefűzések, a karakterláncokkal végzett manipulációk és így tovább.
+## <a name="use-user-defined-aggregates-udagg"></a>Felhasználó által definiált aggregátumok használata: UDAGG
+A felhasználó által definiált összesítések olyan összesítéssel kapcsolatos függvények, amelyek et nem szállítanak az U-SQL-rel. A példa lehet egy összesítés egyéni matematikai számítások, karakterlánc-összefűzések, karakterláncokkal végzett műveletek és így tovább.
 
-A felhasználó által definiált aggregált alaposztály definíciója a következő:
+A felhasználó által definiált összesített alaposztály-definíció a következő:
 
 ```csharp
     [SqlUserDefinedAggregate]
@@ -912,12 +912,12 @@ A felhasználó által definiált aggregált alaposztály definíciója a követ
     }
 ```
 
-A **SqlUserDefinedAggregate** azt jelzi, hogy a típust felhasználó által definiált összesítésként kell regisztrálni. Ez az osztály nem örökölhető.
+**Az SqlUserDefinedAggregate** azt jelzi, hogy a típust felhasználó által definiált összesítésként kell regisztrálni. Ez az osztály nem örökölhető.
 
-A SqlUserDefinedType attribútum nem **kötelező** a UDAGG-definícióhoz.
+Az SqlUserDefinedType attribútum **nem kötelező** az UDAGG-definícióhoz.
 
 
-Az alaposztály lehetővé teszi három absztrakt paraméter átadását: két bemeneti paraméterként, az egyiket pedig eredményként. Az adattípusok változó, és az osztályok öröklése során kell meghatározni.
+Az alaposztály lehetővé teszi, hogy három absztrakt paramétert adjon át: kettőt bemeneti paraméterként és egyet eredményként. Az adattípusok változóak, és az osztályöröklés során kell definiálni őket.
 
 ```
 public class GuidAggregate : IAggregate<string, string, string>
@@ -935,19 +935,19 @@ public class GuidAggregate : IAggregate<string, string, string>
 }
 ```
 
-* Az **init** a számítás során egyszer meghívja az egyes csoportokat. Inicializálási rutint biztosít az egyes összesítési csoportokhoz.  
-* A **felhalmozódás** minden értéknél egyszer lesz végrehajtva. Ez biztosítja az összesítési algoritmus fő funkcióit. A segítségével az osztályok öröklése során definiált különböző adattípusokkal összesítheti az értékeket. Elfogadhatja a változó adattípusok két paraméterét is.
-* A **megszakítás** a feldolgozás végén egy összesítési csoporton keresztül történik, hogy kiadja az eredményeket az egyes csoportokhoz.
+* **Az Init** a számítás során minden csoporthoz egyszer hív meg. Minden aggregációs csoporthoz inicializálási rutint biztosít.  
+* **Az abnak a** függvény minden egyes értékhez egyszer kerül végrehajtásra. Ez biztosítja az aggregációs algoritmus fő funkcióit. Az értékek összesítésére használható különböző adattípusokkal, amelyek az osztályöröklés során vannak definiálva. A változó adattípusok két paraméterét is elfogadja.
+* **A lebontás** a feldolgozás végén a feldolgozás végén a feldolgozás végén egyszer kerül végrehajtásra, hogy az egyes csoportok eredményének kimenete.
 
-A helyes bemeneti és kimeneti adattípusok bejelentéséhez használja az osztály definícióját az alábbiak szerint:
+A helyes bemeneti és kimeneti adattípusok deklarálásához használja az osztálydefiníciót az alábbiak szerint:
 
 ```
 public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
-* T1: az első felhalmozó paraméter
-* T2: a halmozódás második paramétere
-* TResult: a megszakítás visszatérési típusa
+* T1: Az első felhalmozandó paraméter
+* T2: A második felhalmozandó paraméter
+* TResult: A leáll visszatérési típusa
 
 Példa:
 
@@ -961,8 +961,8 @@ vagy
 public class GuidAggregate : IAggregate<string, string, string>
 ```
 
-### <a name="use-udagg-in-u-sql"></a>A UDAGG használata a U-SQL-ben
-A UDAGG használatához először kódot kell megadnia, vagy hivatkoznia kell rá a létező programozható DLL-ből a korábban tárgyalt módon.
+### <a name="use-udagg-in-u-sql"></a>UdAGG használata az U-SQL-ben
+Az UDAGG használatához először definiálja azt a háttérkódban, vagy hivatkozzon rá a meglévő programozhatósági DLL-ből, amint azt korábban tárgyaltuk.
 
 Ezután használja a következő szintaxist:
 
@@ -970,7 +970,7 @@ Ezután használja a következő szintaxist:
 AGG<UDAGG_functionname>(param1,param2)
 ```
 
-Íme egy példa a UDAGG:
+Íme egy példa az UDAGG-ra:
 
 ```
 public class GuidAggregate : IAggregate<string, string, string>
@@ -998,7 +998,7 @@ public class GuidAggregate : IAggregate<string, string, string>
 }
 ```
 
-És alap U-SQL-parancsfájl:
+És alap U-SQL script:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -1023,63 +1023,63 @@ DECLARE @output_file string = @" \usql-programmability\output_file.tsv";
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
 
-Ebben a használati helyzetben az adott felhasználók osztály GUID azonosítóit fűzi össze.
+Ebben a használati esetben az adott felhasználók osztály GUID azonosítóit fűzzük össze.
 
 ## <a name="use-user-defined-objects-udo"></a>Felhasználó által definiált objektumok használata: UDO
-Az U-SQL lehetővé teszi, hogy egyéni programozható objektumokat határozzon meg, amelyeket felhasználó által definiált objektumoknak vagy UDO-nek nevezünk.
+Az U-SQL lehetővé teszi egyéni programozhatósági objektumok definiálását, amelyeket felhasználó által definiált objektumoknak vagy UDO-nak neveznek.
 
-A következő lista az U-SQL-ben UDO-t tartalmazza:
+Az alábbi lista az UDO-t tartalmazza az U-SQL-ben:
 
-* Felhasználó által definiált kivonók
-    * Sor kibontása sorba
-    * Egyéni strukturált fájlokból származó adatok kinyerésének megvalósítására használatos
+* Felhasználó által definiált elszívók
+    * Kibontás soronként
+    * Egyéni strukturált fájlokból történő adatkinyerés megvalósításához használható
 
-* Felhasználó által definiált előszerkesztők
-    * Kimeneti sor soronként
-    * Egyéni adattípusok vagy egyéni fájlformátumok kimenetére használatos
+* Felhasználó által definiált outputterek
+    * Kimeneti soronként
+    * Egyéni adattípusok vagy egyéni fájlformátumok kimenetére szolgál
 
 * Felhasználó által definiált processzorok
-    * Egy sor készítése és egy sor létrehozása
-    * Az oszlopok számának csökkentésére vagy új oszlopok előállítására szolgál, amelyek egy meglévő oszlopból származtatott értékekkel rendelkeznek.
+    * Vegyünk egy sort, és készítsen egy sort
+    * Az oszlopok számának csökkentésére vagy új oszlopok létrehozására szolgál, meglévő oszlopkészletből származó értékekkel
 
-* Felhasználó által definiált beadási típusok
-    * Egy sor elkészítése és 0 – n sor létrehozása
-    * KÜLSŐ/KERESZTtel használatos
+* Felhasználó által definiált appliers
+    * Vegyünk egy sort, és készítsen 0-n sorok
+    * Külső/KERESZT APPLY-kel használható
 
-* Felhasználó által definiált kombinálók
-    * A sorhalmazok egyesítése – felhasználó által definiált illesztések
+* Felhasználó által definiált kombájnok
+    * Sorokkészleteket egyesít – felhasználó által definiált JOIN-okat
 
 * Felhasználó által definiált szűkítők
-    * N sor készítése és egy sor létrehozása
-    * A sorok számának csökkentésére használatos
+    * Vegyünk n sorokat, és készítsen egy sort
+    * A sorok számának csökkentésére szolgál
 
-UDO általában a U-SQL-parancsfájlban explicit módon van meghívva a következő U-SQL-utasítások részeként:
+Az UDO-t általában explicit módon nevezik meg az U-SQL parancsfájlban a következő U-SQL utasítások részeként:
 
-* KIVONAT
-* KIMENETI
-* FOLYAMAT
-* EGYESÍTÉSE
-* CSÖKKENTHETI
+* KINYERÉS
+* Kimeneti
+* Folyamat
+* Össze
+* Csökkenti
 
 > [!NOTE]  
-> A UDO-k 0,5 GB memóriát használnak fel.  Ez a memória-korlátozás nem vonatkozik a helyi végrehajtásokra.
+> UDO's korlátozódik fogyasztani 0.5Gb memória.  Ez a memóriakorlátozás nem vonatkozik a helyi végrehajtásokra.
 
 ## <a name="use-user-defined-extractors"></a>Felhasználó által definiált kivonók használata
-A U-SQL lehetővé teszi külső adatok importálását egy EXTRACT utasítás használatával. A kinyerési utasítások beépített UDO-kiállítók használatát használhatják:  
+Az U-SQL lehetővé teszi külső adatok importálását kivonatutasítás használatával. Az EXTRACT utasítás beépített UDO-elszívók at használhat:  
 
-* *Extrahálók. Text ()* : a különböző kódolások tagolt szövegfájlokból való kivonást biztosít.
+* *Extractors.Text()*: Különböző kódolású tagolt szövegfájlokból biztosít kibontást.
 
-* *Kicsomagolók. csv ()* : a különböző kódolású, vesszővel tagolt (CSV) fájlokból való kivonást biztosít.
+* *Extractors.Csv()*: Különböző kódolású vesszővel tagolt értékfájlokból (CSV) való kinyerést biztosít.
 
-* *Extrahálók. TSV ()* : a különböző kódolású, tabulátorokkal tagolt (TSV) fájlokból kinyert kibontást biztosít.
+* *Extractors.Tsv()*: Különböző kódolású tabulátor-elválasztott értékfájlokból (TSV) való kinyerést biztosít.
 
-Hasznos lehet egyéni kivonót létrehozni. Ez az adatok importálása során hasznos lehet, ha a következő feladatokat szeretné elvégezni:
+Hasznos lehet, hogy dolgozzon ki egy egyéni elszívó. Ez az adatimportálás során hasznos lehet, ha az alábbi feladatok valamelyikét szeretnénk elvégezni:
 
-* A bemeneti adatok módosítása oszlopok felosztásával és az egyes értékek módosításával. A processzor funkciója jobb az oszlopok kombinálásával.
-* Strukturálatlan adatelemzések, például weblapok és e-mailek, vagy félig strukturálatlan, például XML/JSON típusú adat elemzése.
-* Az adatelemzés nem támogatott kódolású.
+* A bemeneti adatok módosítása oszlopok felosztásával és az egyes értékek módosításával. A PROCESSOR funkció jobb az oszlopok kombinálása.
+* Elemezz a strukturálatlan adatokat, például weblapokat és e-maileket, vagy félig strukturálatlan adatokat, például XML/JSON.Parse strstrukturálatlan data such as web us web and web and email, or semi-strukturálatlan data such as XML/JSON.
+* Adatok elemzése nem támogatott kódolással.
 
-Felhasználó által definiált Kivonó vagy UDE definiálásához létre kell hoznia egy `IExtractor` felületet. A kivonó összes bemeneti paraméterét, például az oszlop/sorok elhatárolóit és a kódolást az osztály konstruktorában kell meghatározni. Az `IExtractor` felületnek tartalmaznia kell a `IEnumerable<IRow>` felülbírálás definícióját is a következőképpen:
+A felhasználó által definiált elszívó vagy UDE definiálásához létre kell hoznunk egy felületet. `IExtractor` Az elszívó összes bemeneti paraméterét, például az oszlop/sor határolókat és a kódolást az osztály konstruktorában kell meghatározni. Az `IExtractor` interfésznek tartalmaznia kell `IEnumerable<IRow>` a felülbírálás definícióját is az alábbiak szerint:
 
 ```
 [SqlUserDefinedExtractor]
@@ -1093,20 +1093,20 @@ public class SampleExtractor : IExtractor
 }
 ```
 
-A **SqlUserDefinedExtractor** attribútum azt jelzi, hogy a típust felhasználó által definiált kivonóként kell regisztrálni. Ez az osztály nem örökölhető.
+Az **SqlUserDefinedExtractor** attribútum azt jelzi, hogy a típust felhasználó által definiált vonógépként kell regisztrálni. Ez az osztály nem örökölhető.
 
-A SqlUserDefinedExtractor a UDE-definíció opcionális attribútuma. A UDE objektum AtomicFileProcessing tulajdonságának definiálására szolgál.
+Az SqlUserDefinedExtractor az UDE definíció nem kötelező attribútuma. Az UDE objektum AtomicFileProcessing tulajdonságának definiálására szolgál.
 
 * bool AtomicFileProcessing   
 
-* **true** = azt jelzi, hogy a kivonóhoz atomi bemeneti fájlok szükségesek (JSON, XML,...)
-* **false** = azt jelzi, hogy ez a kivonó képes kezelni a felosztott/elosztott fájlokat (CSV, SEQ,...)
+* **true** = Azt jelzi, hogy ez a kivonó atomi bemeneti fájlokat igényel (JSON, XML, ...)
+* **false** = Azt jelzi, hogy ez a kivonó képes kezelni osztott / elosztott fájlokat (CSV, SEQ, ...)
 
-A fő UDE programozható objektumok **bemenetek** és **kimenetek**. A bemeneti objektum a bemeneti adatok `IUnstructuredReader`ként való enumerálására szolgál. A kimeneti objektum a kivonó tevékenység eredményeként a kimeneti adatokat adja meg.
+A fő UDE programozhatósági objektumok a **bemenetés** **a kimenet.** A bemeneti objektum a bemeneti `IUnstructuredReader`adatok számbavételére szolgál. A kimeneti objektum a kimeneti adatok beállítására szolgál a kinyerhető tevékenység eredményeként.
 
-A bemeneti adatok `System.IO.Stream` és `System.IO.StreamReader`keresztül érhetők el.
+A bemeneti adatok `System.IO.Stream` a `System.IO.StreamReader`és a programon keresztül érhetők el.
 
-A bemeneti oszlopok enumerálásakor a bemeneti adatfolyamot először egy sor elválasztójának használatával daraboljuk.
+A bemeneti oszlopok számbavétele esetén először egy sorhatároló használatával osztjuk fel a bemeneti adatfolyamot.
 
 ```
 foreach (Stream current in input.Split(my_row_delimiter))
@@ -1115,7 +1115,7 @@ foreach (Stream current in input.Split(my_row_delimiter))
 }
 ```
 
-Ezután bontsa ki a bemeneti sort oszlop részeibe.
+Ezután tovább osztja a bemeneti sort oszloprészekre.
 
 ```
 foreach (Stream current in input.Split(my_row_delimiter))
@@ -1127,17 +1127,17 @@ foreach (Stream current in input.Split(my_row_delimiter))
 }
 ```
 
-A kimeneti adatokat a `output.Set` metódus használatával állíthatja be.
+A kimeneti adatok beállításához a `output.Set` módszert használjuk.
 
-Fontos tisztában lenni azzal, hogy az egyéni kivonó csak a kimenetben definiált oszlopokat és értékeket jeleníti meg. Állítsa be a metódus hívását.
+Fontos megérteni, hogy az egyéni kiszívó csak a kimenettel definiált oszlopokat és értékeket adja ki. Metódushívás beállítása.
 
 ```
 output.Set<string>(count, part);
 ```
 
-A tényleges kivonó kimenet a `yield return output.AsReadOnly();`meghívásával aktiválódik.
+A tényleges elszívó kimenetét `yield return output.AsReadOnly();`a hívás váltja ki.
 
-A következő a kivonó példa:
+A következőkben az elszívó példa:
 
 ```
 [SqlUserDefinedExtractor(AtomicFileProcessing = true)]
@@ -1196,9 +1196,9 @@ public class FullDescriptionExtractor : IExtractor
 }
 ```
 
-Ebben a használati helyzetben a Extractor újragenerálta a GUID azonosítóját a "GUID" oszlophoz, és a "felhasználó" oszlop értékeit nagybetűvé alakítja. Az egyéni kivonók bonyolultabb eredményeket hozhatnak létre a bemeneti adatok elemzésével és a kezelésével.
+Ebben a használati esetben a kivonó újragenerálja a GUID azonosítót a "guid" oszlophoz, és a "felhasználó" oszlop értékeit nagybetűssé alakítja. Az egyéni kivonók bonyolultabb eredményeket hozhatnak a bemeneti adatok elemzésével és manipulálásával.
 
-A következő olyan alap U-SQL-szkript, amely egyéni kivonót használ:
+A következőkben az alap U-SQL parancsfájl, amely egy egyéni elszívó:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -1216,22 +1216,22 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ```
 
-## <a name="use-user-defined-outputters"></a>Felhasználó által definiált leszerkesztők használata
-A felhasználó által definiált egy másik U-SQL UDO, amely lehetővé teszi a beépített U-SQL-funkciók kiterjesztését. A kivonóhoz hasonlóan több beépített kimenet is található.
+## <a name="use-user-defined-outputters"></a>Felhasználó által definiált outputters használata
+A felhasználó által definiált outputter egy másik U-SQL UDO, amely lehetővé teszi a beépített U-SQL funkciók kiterjesztését. Hasonló a páraelszívó, több beépített outputters.
 
-* Kimenetek *. Text ()* : a különböző kódolású szövegfájlba írja az adatot.
-* *. Csv ()* : a különböző kódolású, vesszővel tagolt (CSV) fájlokra ír adatot.
-* Kimenetek *. TSV ()* : a különböző kódolású, tabulátorokkal tagolt (TSV) fájlokba írja az adatok.
+* *Outputters.Text()*: Adatokat ír különböző kódolású tagolt szövegfájlokba.
+* *Outputters.Csv()*: Adatokat ír különböző kódolású vesszővel tagolt értékfájlokba.
+* *Outputters.Tsv()*: Adatokat ír különböző kódolású tabulátoralapú (TSV) fájlokba.
 
-Az egyéni leválasztó lehetővé teszi, hogy egyéni formátumban írja az adatbevitelt. Ez a következő feladatokhoz lehet hasznos:
+Az egyéni kimenetelő lehetővé teszi az adatok egyéni definiált formátumban írását. Ez a következő feladatok esetén lehet hasznos:
 
-* Adat írása részben strukturált vagy strukturálatlan fájlokra.
-* Az adatírás nem támogatott kódolást eredményez.
-* Kimeneti adatokat módosíthat vagy egyéni attribútumokat adhat hozzá.
+* Adatok írása félig strukturált vagy strukturálatlan fájlokba.
+* Az adatok írása nem támogatott kódolások.
+* Kimeneti adatok módosítása vagy egyéni attribútumok hozzáadása.
 
-A felhasználó által definiált megadáshoz létre kell hoznia a `IOutputter` felületet.
+A felhasználó által definiált kimenetelő meghatározásához `IOutputter` létre kell hoznunk a felületet.
 
-A következő az alapszintű `IOutputter` osztály implementációja:
+A következőkben `IOutputter` az alaposztály megvalósítása látható:
 
 ```
 public abstract class IOutputter : IUserDefinedOperator
@@ -1243,7 +1243,7 @@ public abstract class IOutputter : IUserDefinedOperator
 }
 ```
 
-A kijelölő összes bemeneti paraméterét, például az oszlop/sorok határolóit, a kódolást és így tovább, az osztály konstruktorában kell meghatározni. Az `IOutputter` felületnek tartalmaznia kell a `void Output` felülbírálás definícióját is. Az attribútum `[SqlUserDefinedOutputter(AtomicFileProcessing = true)` opcionálisan beállítható a atomi fájlok feldolgozásához. További információ: az alábbi részletek.
+A outputter összes bemeneti paraméterét, például az oszlop/sor határolókat, a kódolást stb. Az `IOutputter` interfésznek tartalmaznia `void Output` kell egy felülbírálási definíciót is. Az attribútum `[SqlUserDefinedOutputter(AtomicFileProcessing = true)` opcionálisan beállítható atomi fájlfeldolgozáshoz. További információt az alábbi részletekben talál.
 
 ```
 [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
@@ -1267,30 +1267,30 @@ public class MyOutputter : IOutputter
 }
 ```
 
-* a `Output` minden bemeneti sorhoz meghívja. A `IUnstructuredWriter output` sorhalmazt adja vissza.
-* A konstruktor osztály paraméterek átadására szolgál a felhasználó által definiált leszerkesztőhöz.
-* a `Close` a költséges állapot felszabadítására, illetve az utolsó sor írásának megállapítására szolgál.
+* `Output`minden bemeneti sorhoz meg kell hívni. A sorhalmazt `IUnstructuredWriter output` adja vissza.
+* A Konstruktor osztály paraméterek et adhat át a felhasználó által definiált kimenetelőnek.
+* `Close`Segítségével felülírhatja a drága állapot felszabadítását, illetve annak meghatározását, hogy mikor volt az utolsó sor írásakor.
 
-A **SqlUserDefinedOutputter** attribútum azt jelzi, hogy a típust felhasználó által definiált előtagjaként kell regisztrálni. Ez az osztály nem örökölhető.
+**Az SqlUserDefinedOutputter** attribútum azt jelzi, hogy a típust felhasználó által definiált outputterként kell regisztrálni. Ez az osztály nem örökölhető.
 
-A SqlUserDefinedOutputter egy nem kötelező attribútum a felhasználó által definiált leválasztási definícióhoz. A AtomicFileProcessing tulajdonság definiálására szolgál.
+Az SqlUserDefinedOutputter egy nem kötelező attribútum egy felhasználó által definiált outputter definícióhoz. Az AtomicFileProcessing tulajdonság definiálására szolgál.
 
 * bool AtomicFileProcessing   
 
-* **igaz** = azt jelzi, hogy ez a kijelölő atomi kimeneti fájlokat igényel (JSON, XML,...)
-* **false** = azt jelzi, hogy ez a leválasztó képes kezelni a felosztott/elosztott fájlokat (CSV, SEQ,...)
+* **true** = Azt jelzi, hogy ehhez a kimenethez atomi kimeneti fájlokra van szükség (JSON, XML, ...)
+* **false** = Azt jelzi, hogy ez a kimenet képes kezelni osztott / elosztott fájlokat (CSV, SEQ, ...)
 
-A fő programozható objektumok a **sor** és a **kimenet**. A **sor** objektum a kimeneti adatokat `IRow` illesztőfelületként való enumerálására használja. A **kimenet** a célfájl kimeneti értékének megadására szolgál.
+A fő programozhatósági objektumok a **sor** és **a kimenet**. A **sorobjektum** a kimeneti adatok `IRow` interfészként való számbavételére szolgál. **A kimenet** a kimeneti adatok célfájlba való beállítására szolgál.
 
-A kimeneti adatokat a `IRow` felületen keresztül érheti el a rendszer. A kimeneti adatokat egyszerre egy sor adja át.
+A kimeneti adatok a `IRow` felületen keresztül érhetők el. A kimeneti adatok egyszerre egy sornak adnak át.
 
-Az egyes értékeket a rendszer a IRow felület Get metódusának meghívásával sorolja fel:
+Az egyes értékeket az IRow-felület Get metódusának hívásával számba veszi a függvény:
 
 ```
 row.Get<string>("column_name")
 ```
 
-Az egyes oszlopnevek a `row.Schema`meghívásával meghatározhatók:
+Az egyes oszlopnevek a `row.Schema`következő hívással határozhatók meg:
 
 ```
 ISchema schema = row.Schema;
@@ -1298,11 +1298,11 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-Ez a megközelítés lehetővé teszi, hogy rugalmasan hozzon létre egy metaadat-sémát.
+Ez a megközelítés lehetővé teszi, hogy egy rugalmas outputter bármilyen metaadat-séma.
 
-A kimeneti adatokat a rendszer a `System.IO.StreamWriter`használatával írja a fájlba. A stream paraméter a `IUnstructuredWriter output`részeként `output.BaseStream`ra van beállítva.
+A kimeneti adatok fájlba `System.IO.StreamWriter`írásra kerül a használatával. Az adatfolyam-paraméter `output.BaseStream` a. `IUnstructuredWriter output`részeként van beállítva.
 
-Fontos megjegyezni, hogy az adatpuffert az egyes sorok iterációja után ki kell üríteni a fájlba. Továbbá a `StreamWriter` objektumot az engedélyezett (alapértelmezett) attribútummal és a **using** kulcsszóval kell használni:
+Vegye figyelembe, hogy fontos, hogy az adatpuffert minden sorismétlés után ürítse ki a fájlba. Ezenkívül az `StreamWriter` objektumot úgy kell használni, hogy az Eldobható attribútum engedélyezve van (alapértelmezett), és a **következő kulcsszót használja:**
 
 ```
 using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._encoding))
@@ -1311,10 +1311,10 @@ using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._enc
 }
 ```
 
-Ellenkező esetben a flush () metódus explicit módon meghívja az egyes iterációkat. Ezt a következő példában mutatjuk be.
+Ellenkező esetben hívja meg a Flush() metódust explicit módon minden egyes iteráció után. Ezt a következő példában mutatjuk be.
 
-### <a name="set-headers-and-footers-for-user-defined-outputter"></a>Fejlécek és láblécek beállítása a felhasználó által definiált kiállítók számára
-A fejlécek beállításához használjon egy iterációs végrehajtási folyamatot.
+### <a name="set-headers-and-footers-for-user-defined-outputter"></a>Élőfejek és élőlábak beállítása a felhasználó által definiált kimenetelőhez
+Fejléc beállításához használjon egyetlen iterációs végrehajtási folyamatot.
 
 ```
 public override void Output(IRow row, IUnstructuredWriter output)
@@ -1335,11 +1335,11 @@ if (isHeaderRow)
 }
 ```
 
-Az első `if (isHeaderRow)` blokkban lévő kódot csak egyszer hajtja végre a rendszer.
+Az első `if (isHeaderRow)` blokkban lévő kód végrehajtása csak egyszer történik meg.
 
-A lábléchez használja a `System.IO.Stream` Object (`output.BaseStream`) példányának hivatkozását. Írja be a láblécet a `IOutputter` felület Bezárás () metódusában.  (További információ a következő példában található.)
+Az élőlábhoz használja az objektum `System.IO.Stream` példányára`output.BaseStream`( ). Írja be az élőlábat a `IOutputter` felület Close() metódusa.  (További információt a következő példában talál.)
 
-A következő példa egy felhasználó által definiált leszerkesztőt mutat be:
+A következő egy példa a felhasználó által definiált outputter:
 
 ```
 [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
@@ -1446,7 +1446,7 @@ public static class Factory
 }
 ```
 
-És U-SQL alap parancsfájl:
+És U-SQL alap script:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -1466,16 +1466,16 @@ OUTPUT @rs0
     USING new USQL_Programmability.HTMLOutputter(isHeader: true);
 ```
 
-Ez egy HTML-fájl, amely egy táblázatos adattal rendelkező HTML-fájlt hoz létre.
+Ez egy HTML outputter, amely létrehoz egy HTML-fájlt táblázatadatokkal.
 
-### <a name="call-outputter-from-u-sql-base-script"></a>A U-SQL alap parancsfájlból származó
-Ha az alapszintű U-SQL-parancsfájlból szeretne egy egyéni leírókat meghívni, létre kell hozni a kibővített objektum új példányát.
+### <a name="call-outputter-from-u-sql-base-script"></a>Híváskimenetelő az U-SQL alapparancsfájlból
+Az alap U-SQL-parancsfájlból származó egyéni outputter hívásához létre kell hozni a outputter objektum új példányát.
 
 ```sql
 OUTPUT @rs0 TO @output_file USING new USQL_Programmability.HTMLOutputter(isHeader: true);
 ```
 
-Ha el szeretné kerülni az objektum példányának létrehozását az alapparancsfájlban, létrehozhat egy függvény burkolót, ahogy az a korábbi példában is látható:
+Annak elkerülése érdekében, hogy az objektum egy példányát az alap parancsfájlban hozzuk létre, létrehozhatunk egy függvényburkoló, amint az a korábbi példában látható:
 
 ```csharp
         // Define the factory classes
@@ -1488,7 +1488,7 @@ Ha el szeretné kerülni az objektum példányának létrehozását az alapparan
         }
 ```
 
-Ebben az esetben az eredeti hívás a következőhöz hasonlóan néz ki:
+Ebben az esetben az eredeti hívás a következőképpen néz ki:
 
 ```
 OUTPUT @rs0 
@@ -1497,11 +1497,11 @@ USING USQL_Programmability.Factory.HTMLOutputter(isHeader: true);
 ```
 
 ## <a name="use-user-defined-processors"></a>Felhasználó által definiált processzorok használata
-A felhasználó által definiált processzor vagy UDP a U-SQL UDO egyik típusa, amely lehetővé teszi a bejövő sorok feldolgozását a programozható funkciók alkalmazásával. Az UDP lehetővé teszi az oszlopok egyesítését, az értékek módosítását, és szükség esetén új oszlopok hozzáadását. Alapvetően segít a sorhalmaz feldolgozása a szükséges adatelemek létrehozásához.
+A felhasználó által definiált processzor (UDP) az U-SQL UDO egy típusa, amely lehetővé teszi a bejövő sorok feldolgozását programozhatósági szolgáltatások alkalmazásával. Az UDP lehetővé teszi az oszlopok kombinálását, az értékek módosítását és szükség esetén új oszlopok hozzáadását. Alapvetően segít feldolgozni egy sorhalmazt a szükséges adatelemek előállításához.
 
-Az UDP definiálásához létre kell hoznia egy `IProcessor` felületet a `SqlUserDefinedProcessor` attribútummal, amely nem kötelező az UDP számára.
+UdP definiálásához létre kell `IProcessor` hoznunk `SqlUserDefinedProcessor` egy felületet az attribútummal, amely nem kötelező az UDP számára.
 
-Az illesztőfelületnek tartalmaznia kell az `IRow`-illesztőfelület sorhalmaz-felülbírálásának definícióját, ahogy az az alábbi példában is látható:
+Ennek az interfésznek tartalmaznia kell az `IRow` interfész sorkészlet-felülbírálásának definícióját, amint az a következő példában látható:
 
 ```
 [SqlUserDefinedProcessor]
@@ -1514,31 +1514,31 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-A **SqlUserDefinedProcessor** azt jelzi, hogy a típust felhasználó által definiált processzorként kell regisztrálni. Ez az osztály nem örökölhető.
+**Az SqlUserDefinedProcessor** azt jelzi, hogy a típust felhasználó által definiált processzorként kell regisztrálni. Ez az osztály nem örökölhető.
 
-Az SqlUserDefinedProcessor attribútum nem **kötelező** az UDP-definícióhoz.
+Az SqlUserDefinedProcessor attribútum **nem kötelező** az UDP-definícióhoz.
 
-A fő programozható objektumok **bemenetek** és **kimenetek**. A bemeneti objektum a bemeneti oszlopok és kimenetek enumerálására és a kimeneti adatok beállítására szolgál a processzor tevékenységének eredményeképpen.
+A fő programozhatósági objektumok a **bemenetés** **a kimenet .** A bemeneti objektum a bemeneti oszlopok és a kimenet számbavételére, valamint a processzortevékenység eredményeként a kimeneti adatok beállítására szolgál.
 
-A bemeneti oszlopok enumerálásához a `input.Get` metódust használjuk.
+A bemeneti oszlopok enumerálása esetén a `input.Get` módszert használjuk.
 
 ```
 string column_name = input.Get<string>("column_name");
 ```
 
-A `input.Get` metódus paramétere a U-SQL alapparancsfájl `PROCESS` utasításának `PRODUCE` záradékának részeként átadott oszlop. Itt a megfelelő adattípust kell használnia.
+A `input.Get` metódus paramétere egy olyan oszlop, amely `PRODUCE` az `PROCESS` U-SQL alapparancsfájl utasításának záradéka részeként kerül átadásra. Itt a megfelelő adattípust kell használnunk.
 
-A kimenethez használja a `output.Set` metódust.
+Kimenetesetén használja `output.Set` a módszert.
 
-Fontos megjegyezni, hogy az egyéni gyártó csak az `output.Set` metódus hívásával definiált oszlopokat és értékeket jeleníti meg.
+Fontos megjegyezni, hogy az egyéni gyártó csak a `output.Set` metódushívással definiált oszlopokat és értékeket adja ki.
 
 ```
 output.Set<string>("mycolumn", mycolumn);
 ```
 
-A processzor tényleges kimenete a `return output.AsReadOnly();`meghívásával aktiválódik.
+A tényleges processzorkimenetet a `return output.AsReadOnly();`hívás váltja ki.
 
-A következő példa egy processzort mutat be:
+A következő egy processzor példa:
 
 ```
 [SqlUserDefinedProcessor]
@@ -1558,11 +1558,11 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-Ebben a használati helyzetben a processzor egy "full_description" nevű új oszlopot hoz létre a meglévő oszlopok kombinálásával – ebben az esetben a "felhasználó" a nagybetűs és a "des". Emellett újra létrehozza a GUID azonosítót, és visszaadja az eredeti és az új GUID-értéket.
+Ebben a használati esetben a processzor egy "full_description" nevű új oszlopot hoz létre a meglévő oszlopok kombinálásával - ebben az esetben a "felhasználó" nagybetűvel és a "des".In this case case scenario, the processor is generating a new column called "full_description" by combining the existing columns- in this case, "user" in nagybetűs, and "des". Emellett újragenerálja a GUID azonosítót, és visszaadja az eredeti és az új GUID értékeket.
 
-Ahogy az előző példában is látható, metódusokat hívhat C# meg `output.Set` metódus hívásakor.
+Amint az előző példában látható, a Módszerhívás során `output.Set` c# metódusok hívható meg.
 
-Az alábbi példa olyan alap U-SQL-parancsfájlt mutat be, amely egyéni processzort használ:
+Az alábbiakban egy példa az alap U-SQL parancsfájl, amely egy egyéni processzor:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -1587,12 +1587,12 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
 
-## <a name="use-user-defined-appliers"></a>Felhasználó által definiált beszolgáltatók használata
-Egy U-SQL felhasználó által definiált szolgáltató lehetővé teszi egy egyéni C# függvény meghívását minden olyan sorhoz, amelyet a lekérdezés külső tábla kifejezése adott vissza. A rendszer kiértékeli a megfelelő bemenetet a bal oldali bemenet minden egyes sorára, és a létrehozott sorok a végső kimenethez kombinálhatók. Az APPLY operátor által létrehozott oszlopok listája a bal oldali és a jobb oldali bemenet oszlopainak kombinációja.
+## <a name="use-user-defined-appliers"></a>Felhasználó által definiált appliers használata
+Az U-SQL-felhasználó által definiált applier lehetővé teszi, hogy meghívja az egyéni C# függvény minden sor, amely a lekérdezés külső tábla kifejezése által visszaadott. A jobb oldali bemenet kiértékelése a bal oldali bemenet minden egyes sorához, és a létrehozott sorok a végső kimenethez lesznek kombinálva. Az APPLY operátor által létrehozott oszlopok listája a bal és a jobb oldali bemenetoszlopkészletének kombinációja.
 
-A felhasználó által definiált bejelentkezőt a USQL SELECT kifejezés részeként kell meghívni.
+A felhasználó által definiált applier az USQL SELECT kifejezés részeként van meghívva.
 
-A felhasználó által definiált betekintő a következőhöz hasonlóan néz ki:
+A felhasználó által definiált főalkalmazási szerepkör tipikus hívása a következőképpen néz ki:
 
 ```
 SELECT …
@@ -1601,9 +1601,9 @@ CROSS APPLYis used to pass parameters
 new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
 ```
 
-Ha további információt szeretne arról, hogyan használhatók a megjelölések a SELECT kifejezésben, tekintse meg a [U-SQL kiválasztási lehetőséget a Cross Apply és a Outer alkalmazásban](/u-sql/statements-and-expressions/select/from/select-selecting-from-cross-apply-and-outer-apply).
+Az appliers SELECT kifejezésben való használatáról az [U-SQL SELECT Kijelölés keresztalkalmazása és külső alkalmazás](/u-sql/statements-and-expressions/select/from/select-selecting-from-cross-apply-and-outer-apply)lehetőséget című témakörben talál.
 
-A felhasználó által megadott, a következő alaposztály definíciója a következő:
+A felhasználó által definiált applier alaposztály-definíció a következő:
 
 ```
 public abstract class IApplier : IUserDefinedOperator
@@ -1614,7 +1614,7 @@ public abstract IEnumerable<IRow> Apply(IRow input, IUpdatableRow output);
 }
 ```
 
-Felhasználó által definiált hozzárendelő beállítás definiálásához létre kell hoznia a `IApplier` felületet a [`SqlUserDefinedApplier`] attribútummal, amely nem kötelező a felhasználó által definiált hozzárendelő definícióhoz.
+A felhasználó által definiált applier definiálásához `IApplier` létre kell`SqlUserDefinedApplier`hoznunk a felületet a [ ] attribútummal, amely nem kötelező a felhasználó által definiált applier definícióhoz.
 
 ```
 [SqlUserDefinedApplier]
@@ -1632,23 +1632,23 @@ public class ParserApplier : IApplier
 }
 ```
 
-* A rendszer a külső tábla minden egyes sorára alkalmazza a kérelmet. A `IUpdatableRow` kimeneti sorhalmazt adja vissza.
-* A konstruktor osztály paraméterek átadására szolgál a felhasználó által megadott előfizetéshez.
+* Az Apply a külső táblázat minden sorához meg van hívva. A `IUpdatableRow` kimeneti sorhalmazt adja vissza.
+* A Konstruktor osztály paraméterek et adhat át a felhasználó által definiált applier.
 
-A **SqlUserDefinedApplier** azt jelzi, hogy a típust felhasználó által definiált fogadóként kell regisztrálni. Ez az osztály nem örökölhető.
+**Az SqlUserDefinedApplier** azt jelzi, hogy a típust felhasználó által definiált applier-ként kell regisztrálni. Ez az osztály nem örökölhető.
 
-A felhasználó által definiált **SqlUserDefinedApplier** megadása nem **kötelező** .
+**Az SqlUserDefinedApplier** **nem kötelező** a felhasználó által definiált applier definícióhoz.
 
 
-A fő programozható objektumok a következők:
+A fő programozhatósági objektumok a következők:
 
 ```
 public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 ```
 
-A bemeneti sorhalmazok `IRow` bemenetként lesznek átadva. A kimeneti sorok `IUpdatableRow` kimeneti illesztőfelületként jönnek létre.
+A bemeneti sorkészletek bemenetként kerülnek átadásra. `IRow` A kimeneti sorok `IUpdatableRow` kimeneti felületként jönnek létre.
 
-Az egyes oszlopnevek meghatározása a `IRow` séma metódusának meghívásával lehetséges.
+Az egyes oszlopnevek a `IRow` Sémametódus hívásával határozhatók meg.
 
 ```
 ISchema schema = row.Schema;
@@ -1656,35 +1656,35 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-A bejövő `IRow`tényleges adatértékeinek lekéréséhez használja a Get () metódust `IRow` felületen.
+A tényleges adatértékek bekésezéséhez `IRow`használjuk a `IRow` Get() módszer felület.
 
 ```
 mycolumn = row.Get<int>("mycolumn")
 ```
 
-Vagy a séma oszlop nevét használjuk:
+Vagy a sémaoszlop nevét használjuk:
 
 ```
 row.Get<int>(row.Schema[0].Name)
 ```
 
-A kimeneti értékeket `IUpdatableRow` kimenettel kell beállítani:
+A kimeneti értékeket `IUpdatableRow` a következő kimenettel kell beállítani:
 
 ```
 output.Set<int>("mycolumn", mycolumn)
 ```
 
-Fontos tisztában lenni azzal, hogy az egyéni bejelentkezők csak a `output.Set` metódus hívásával meghatározott oszlopokat és értékeket tartalmaznak.
+Fontos megérteni, hogy az egyéni appliers csak kimeneti `output.Set` oszlopok és értékek, amelyek a metódus hívása.
 
-A tényleges kimenet a `yield return output.AsReadOnly();`meghívásával aktiválódik.
+A tényleges kimenetet a `yield return output.AsReadOnly();`hívás váltja ki.
 
-A felhasználó által megadott, a kivitelezőnek átadandó paraméterek a konstruktornak adhatók át. A berendelő olyan változó oszlopok számát adja vissza, amelyeket a rendszer az alap U-SQL-parancsfájlban definiált, a beléptetési hívás során meg kell határozni.
+A felhasználó által definiált applier paraméterek et át lehet adni a konstruktornak. Applier adhat vissza változó számú oszlopok, amelyeket meg kell határozni az applier hívás során az alap U-SQL Script.
 
 ```
 new USQL_Programmability.ParserApplier ("all") AS properties(make string, model string, year string, type string, millage int);
 ```
 
-A felhasználó által definiált példa a következő:
+Íme a felhasználó által definiált applier példa:
 
 ```
 [SqlUserDefinedApplier]
@@ -1742,7 +1742,7 @@ public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 }
 ```
 
-A következő a felhasználó által definiált előtagja számára az alap U-SQL-szkript:
+A következőkben a felhasználó által definiált főalkalmazási szerepkör alap U-SQL-parancsfájlja látható:
 
 ```
 DECLARE @input_file string = @"c:\usql-programmability\car_fleet.tsv";
@@ -1771,7 +1771,7 @@ DECLARE @output_file string = @"c:\usql-programmability\output_file.tsv";
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
 
-Ebben a használati esetben a felhasználó által definiált szolgáltató vesszővel tagolt érték-elemzőként működik az autó-flotta tulajdonságainál. A bemeneti fájl sorai a következőhöz hasonlóan néznek ki:
+Ebben a használati esetben a felhasználó által definiált nagyértékű a járműflotta tulajdonságainak vesszővel tagolt értékelemzőjeként működik. A bemeneti fájl sorai a következőkre néznek ki:
 
 ```
 103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
@@ -1779,30 +1779,30 @@ Ebben a használati esetben a felhasználó által definiált szolgáltató vess
 210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
 ```
 
-Ez egy tipikus, tabulátorral tagolt TSV-fájl, amely egy olyan tulajdonságlapot tartalmaz, amely az autó tulajdonságait, például a make és a Model tulajdonságot tartalmazza. Ezeket a tulajdonságokat a táblázat oszlopaiba kell elemezni. A megadott szolgáltató azt is lehetővé teszi, hogy dinamikus számú tulajdonságot hozzon az eredmény-sorhalmazban az átadott paraméter alapján. Létrehozhatja az összes tulajdonságot, illetve a tulajdonságok egy adott halmazát is.
+Ez egy tipikus tabulátorral tagolt TSV-fájl, amely olyan tulajdonságoszlopot tartalmaz, amely olyan autótulajdonságokat tartalmaz, mint a gyártmány és a modell. Ezeket a tulajdonságokat a táblázat oszlopaiban kell elemezni. A megadott applier lehetővé teszi, hogy dinamikus számú tulajdonságot hozzon létre az eredmény sorhalmazában, az átadott paraméter alapján. Létrehozhatja az összes tulajdonságot vagy csak egy adott tulajdonságkészletet.
 
     …USQL_Programmability.ParserApplier ("all")
     …USQL_Programmability.ParserApplier ("make")
     …USQL_Programmability.ParserApplier ("make&model")
 
-A felhasználó által definiált berendelő a (z) rendszerű alkalmazás új példányának hívható:
+A felhasználó által definiált applier az applier objektum új példányaként hívható:
 
 ```
 CROSS APPLY new MyNameSpace.MyApplier (parameter: "value") AS alias([columns types]…);
 ```
 
-Vagy egy burkoló gyári módszer meghívásával:
+Vagy a wrapper gyári módszer meghívásával:
 
 ```csharp
     CROSS APPLY MyNameSpace.MyApplier (parameter: "value") AS alias([columns types]…);
 ```
 
-## <a name="use-user-defined-combiners"></a>Felhasználó által definiált kombinálók használata
-A felhasználó által definiált Combiner vagy UDC lehetővé teszi, hogy egyéni logika alapján egyesítse a bal és a jobb oldali sorhalmaz sorait. A felhasználó által definiált kombinált szolgáltatás kombináló kifejezéssel van használatban.
+## <a name="use-user-defined-combiners"></a>Felhasználó által definiált combineerek használata
+A felhasználó által definiált combiner (UDC) lehetővé teszi a sorok kombinálását a bal és a jobb sorhalmazokból, egyéni logika alapján. A felhasználó által definiált combiner combine kifejezéssel használható.
 
-A rendszer összevonást hív meg a COMBINing kifejezéssel, amely biztosítja a szükséges információkat a bemeneti sorhalmazokkal, a csoportosítási oszlopokkal, a várt eredmény sémával és további információkkal.
+A combiner meghívása a COMBINE kifejezéssel történik, amely biztosítja a szükséges információkat mind a bemeneti sorkészletekről, mind a csoportosítási oszlopokról, a várt eredménysémáról és a további információkról.
 
-A következő szintaxissal hívhat egy Combiner-et egy Base U-SQL-parancsfájlban:
+Ha egy u-SQL-parancsfájlban szeretne összeegycombineót hívni, a következő szintaxist használjuk:
 
 ```
 Combine_Expression :=
@@ -1815,11 +1815,11 @@ Combine_Expression :=
     USING_Clause.
 ```
 
-További információ: [Combine Expression (U-SQL)](/u-sql/statements-and-expressions/combine-expression).
+További információ: [COMBINE Expression (U-SQL)](/u-sql/statements-and-expressions/combine-expression).
 
-Felhasználó által definiált kombinálás definiálásához létre kell hozni a `ICombiner` felületet a [`SqlUserDefinedCombiner`] attribútummal, amely nem kötelező a felhasználó által definiált Combiner-definícióhoz.
+A felhasználó által definiált combiner definiálásához `ICombiner` létre kell`SqlUserDefinedCombiner`hoznunk a felületet a [ ] attribútummal, amely nem kötelező a felhasználó által definiált Combiner definícióhoz.
 
-Alapszintű `ICombiner` osztály definíciója:
+Alaposztály-definíció: `ICombiner`
 
 ```
 public abstract class ICombiner : IUserDefinedOperator
@@ -1832,7 +1832,7 @@ public abstract IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-Egy `ICombiner` felület egyéni implementációjában szerepelnie kell egy `IEnumerable<IRow>` egyesítési felülbírálás definíciójának.
+Az `ICombiner` összeköttetés egyéni implementációjának tartalmaznia kell a `IEnumerable<IRow>` Combine felülbírálás definícióját.
 
 ```
 [SqlUserDefinedCombiner]
@@ -1847,45 +1847,45 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-A **SqlUserDefinedCombiner** attribútum azt jelzi, hogy a típust felhasználó által definiált kombináló kell regisztrálni. Ez az osztály nem örökölhető.
+Az **SqlUserDefinedCombiner** attribútum azt jelzi, hogy a típust felhasználó által definiált combinerként kell regisztrálni. Ez az osztály nem örökölhető.
 
-A **SqlUserDefinedCombiner** a Combiner Mode tulajdonság definiálására szolgál. A felhasználó által definiált Combiner-definíció opcionális attribútuma.
+**Az SqlUserDefinedCombiner** a Combiner mód tulajdonság definiálására szolgál. Ez egy nem kötelező attribútum a felhasználó által definiált combiner definícióhoz.
 
 CombinerMode mód
 
-A CombinerMode Enum a következő értékeket veheti fel:
+A CombinerMode enum a következő értékeket veheti fel:
 
-* A teljes (0) minden kimeneti sor a bal és a jobb oldali bemeneti soroktól függ.
+* Teljes (0) Minden kimeneti sor potenciálisan függ az összes bemeneti sorok bal és jobb azonos kulcsértékkel.
 
-* A bal oldali (1) minden kimeneti sor a bal oldali bemeneti sorból (és a jobb oldali, azonos kulccsal rendelkező sorokból) függ.
+* Balra (1) Minden kimeneti sor balról egyetlen bemeneti sortól függ (és potenciálisan a jobb oldali összes sortól, azonos kulcsértékkel).
 
-* A jobb oldali (2) minden kimeneti sor a jobb oldaliból egy bemeneti sorból, a bal oldalitól pedig az azonos Key értékkel rendelkező soroktól függ.
+* Jobbra (2) Minden kimeneti sor függ egy bemeneti sor a jobb (és potenciálisan az összes sort a bal oldalon az azonos kulcs érték).
 
-* A belső (3) minden kimeneti sor a bal és a jobb oldali, azonos értékű bemeneti sorból függ.
+* Belső (3) Minden kimeneti sor egyetlen bemeneti sortól függ balról és jobbról, ugyanazzal az értékkel.
 
-Példa: [`SqlUserDefinedCombiner(Mode=CombinerMode.Left)`]
+Példa:`SqlUserDefinedCombiner(Mode=CombinerMode.Left)`[ ]
 
 
-A fő programozható objektumok a következők:
+A fő programozhatósági objektumok a következők:
 
 ```csharp
     public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
         IUpdatableRow output
 ```
 
-A bemeneti sorhalmazok a **bal** és a **jobb** `IRowset` a csatoló típusa szerint lesznek átadva. Mindkét sorhalmazt fel kell sorolni a feldolgozáshoz. Az egyes felületeket csak egyszer lehet enumerálni, ezért szükség esetén fel kell sorolni és gyorsítótárazni kell.
+A bemeneti sorkészletek **a kapcsolat bal** és **jobb** `IRowset` oldali típusaként kerülnek átadásra. A feldolgozáshoz mindkét sorkészletet fel kell sorolni. Az egyes felületeket csak egyszer lehet felsorolni, ezért szükség esetén fel kell sorolni és gyorsítótárazni kell.
 
-Gyorsítótárazási célokra létrehozhatunk egy listát\<T\> a memória struktúrájának típusát a LINQ-lekérdezések végrehajtásának eredményeképpen, különösen a <`IRow`>. A névtelen adattípus az enumerálás során is használható.
+Gyorsítótárazási célokra létrehozhatunk egy\<\> T-lista típusú memóriaszerkezetet a LINQ-lekérdezés végrehajtása, különösen a list<`IRow`>. A névtelen adattípus a felsorolás során is használható.
 
-Lásd: a [LINQ-lekérdezésekC#bemutatása ()](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) további információ a LINQ-lekérdezésekről, valamint a [IEnumerable\<t\> felületen](/dotnet/api/system.collections.generic.ienumerable-1) a IEnumerable\<t\> interfészről.
+Az IEnumerable T felülettel kapcsolatos további információkért olvassa el [a LINQ-lekérdezések (C#) című](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) témakört, valamint az IEnumerable T felületről az [IEnumerable\<\> ](/dotnet/api/system.collections.generic.ienumerable-1) \<T\> felületről.
 
-A bejövő `IRowset`tényleges adatértékeinek lekéréséhez használja a Get () metódust `IRow` felületen.
+A tényleges adatértékek bekésezéséhez `IRowset`használjuk a `IRow` Get() módszer felület.
 
 ```
 mycolumn = row.Get<int>("mycolumn")
 ```
 
-Az egyes oszlopnevek meghatározása a `IRow` séma metódusának meghívásával lehetséges.
+Az egyes oszlopnevek a `IRow` Sémametódus hívásával határozhatók meg.
 
 ```
 ISchema schema = row.Schema;
@@ -1893,13 +1893,13 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-Vagy a séma oszlopának neve alapján:
+Vagy a sémaoszlop nevének használatával:
 
 ```
 c# row.Get<int>(row.Schema[0].Name)
 ```
 
-A LINQ-sel való általános számbavétel a következőhöz hasonlóan néz ki:
+A LINQ általános felsorolása a következőképpen néz ki:
 
 ```
 var myRowset =
@@ -1910,7 +1910,7 @@ var myRowset =
                           }).ToList();
 ```
 
-Mindkét sorhalmaz enumerálása után az összes sort át fogjuk venni. A bal oldali sorhalmaz minden egyes sorában megtalálja az összes olyan sort, amely megfelel a kombinációnk feltételének.
+Miután mindkét sorhalmazt felsoroltuk, az összes sorban végigfogjuk hurkot. A bal oldali sorhalmaz minden egyes sorához megtaláljuk az összes olyan sort, amely megfelel a kombájnunk állapotának.
 
 A kimeneti értékeket `IUpdatableRow` kimenettel kell beállítani.
 
@@ -1918,9 +1918,9 @@ A kimeneti értékeket `IUpdatableRow` kimenettel kell beállítani.
 output.Set<int>("mycolumn", mycolumn)
 ```
 
-A tényleges kimenet a `yield return output.AsReadOnly();`meghívásával aktiválódik.
+A tényleges kimenetet a `yield return output.AsReadOnly();`hívás a segítségével indítja el.
 
-A következő egy kombináló példa:
+A következő egy combiner példa:
 
 ```
 [SqlUserDefinedCombiner]
@@ -1974,9 +1974,9 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-Ebben a használati helyzetben a kiskereskedelmi elemzési jelentést készítünk. A cél az, hogy megkeresse az összes olyan terméket, amely több mint $20 000, és hogy a webhelyhez képest gyorsabb, mint a normál kiskereskedő egy adott időszakon belül.
+Ebben a használati esetben elemzési jelentést készítünk a kiskereskedő számára. A cél az, hogy megtalálja az összes terméket, hogy a költségek több mint $ 20,000, és hogy eladja a honlapon keresztül gyorsabb, mint a rendszeres kiskereskedő egy bizonyos időkereten belül.
 
-Itt látható az alap U-SQL-szkript. Összehasonlíthatja a logikát egy normál illesztés és egy kombináló között:
+Itt van az alap U-SQL script. Összehasonlíthatja a hagyományos JOIN és a combiner logikáját:
 
 ```sql
 DECLARE @LocalURI string = @"\usql-programmability\";
@@ -2071,14 +2071,14 @@ OUTPUT @rs1 TO @output_file1 USING Outputters.Tsv();
 OUTPUT @rs2 TO @output_file2 USING Outputters.Tsv();
 ```
 
-A felhasználó által definiált kombináció hívható a (z) objektum új példánya:
+A felhasználó által definiált combiner az applier objektum új példányaként hívható meg:
 
 ```
 USING new MyNameSpace.MyCombiner();
 ```
 
 
-Vagy egy burkoló gyári módszer meghívásával:
+Vagy a wrapper gyári módszer meghívásával:
 
 ```
 USING MyNameSpace.MyCombiner();
@@ -2086,13 +2086,13 @@ USING MyNameSpace.MyCombiner();
 
 ## <a name="use-user-defined-reducers"></a>Felhasználó által definiált szűkítők használata
 
-Az U-SQL lehetővé teszi egyéni sorhalmaz- C# szűkítők írását a alkalmazásban a felhasználó által definiált kezelői keretrendszer használatával és egy IReducer felület megvalósításával.
+Az U-SQL lehetővé teszi egyéni sorhalmaz-szűkítők írását C# nyelven a felhasználó által definiált operátori bővíthetőségi keretrendszer használatával és az IReducer felület megvalósításával.
 
-A felhasználó által definiált szűkítő vagy UDR felhasználható a szükségtelen sorok eltávolítására az kinyeréskor (importáláskor). Emellett a sorok és oszlopok kezelésére és értékelésére is használható. A programozható logika alapján azt is meghatározhatja, hogy mely sorokat kell kinyerni.
+A felhasználó által definiált szűkítő (UDR) segítségével kiküszöbölhetők a felesleges sorok az adatok kinyerése (importálása) során. Sorok és oszlopok kezelésére és kiértékelésére is használható. A programozhatósági logika alapján azt is meghatározhatja, hogy mely sorokat kell kivonni.
 
-UDR osztály definiálásához létre kell hoznia egy `IReducer` felületet egy opcionális `SqlUserDefinedReducer` attribútummal.
+UDR-osztály definiálásához létre kell `IReducer` hoznunk `SqlUserDefinedReducer` egy opcionális attribútummal rendelkező felületet.
 
-Ez az osztály-illesztőfelületnek tartalmaznia kell egy definíciót az `IEnumerable` Interface sorhalmaz felülbírálásához.
+Ennek az osztályfelületnek tartalmaznia kell az `IEnumerable` illesztő sorhalmaz-felülbírálásának definícióját.
 
 ```
 [SqlUserDefinedReducer]
@@ -2107,15 +2107,15 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-A **SqlUserDefinedReducer** attribútum azt jelzi, hogy a típust felhasználó által definiált szűkítőként kell regisztrálni. Ez az osztály nem örökölhető.
-A **SqlUserDefinedReducer** egy felhasználó által definiált csökkentő definíció opcionális attribútuma. A IsRecursive tulajdonság definiálására szolgál.
+Az **SqlUserDefinedReducer** attribútum azt jelzi, hogy a típust felhasználó által definiált szűkítőként kell regisztrálni. Ez az osztály nem örökölhető.
+**Az SqlUserDefinedReducer** egy nem kötelező attribútum egy felhasználó által definiált szűkítő definícióhoz. Az IsRecursive tulajdonság meghatározására szolgál.
 
 * bool IsRecursive    
-* **true** = azt jelzi, hogy ez a szűkítő asszociatív és kommutatív
+* **true** = Azt jelzi, hogy ez a szűkítő asszociatív és kommutatív
 
-A fő programozható objektumok **bemenetek** és **kimenetek**. A bemeneti objektum a bemeneti sorok enumerálására szolgál. A kimenet a tevékenységek csökkentésének eredményeképpen kimeneti sorok beállítására szolgál.
+A fő programozhatósági objektumok a **bemenetés** **a kimenet .** A bemeneti objektum a bemeneti sorok számbavételére szolgál. A kimenet a kimeneti sorok beállítására szolgál a tevékenység csökkentésének eredményeként.
 
-A bemeneti sorok enumerálásához a `Row.Get` metódust használjuk.
+A bemeneti sorok enumerálásához a `Row.Get` módszert használjuk.
 
 ```
 foreach (IRow row in input.Rows)
@@ -2124,19 +2124,19 @@ foreach (IRow row in input.Rows)
 }
 ```
 
-A `Row.Get` metódus paramétere a U-SQL alapparancsfájl `REDUCE` utasításának `PRODUCE` osztályának részeként átadott oszlop. Itt is a megfelelő adattípust kell használnia.
+A `Row.Get` metódus paramétere egy olyan oszlop, amely `PRODUCE` az U-SQL alapparancsfájl `REDUCE` utasításosztályának részeként kerül átadásra. Itt is a megfelelő adattípust kell használnunk.
 
-A kimenethez használja a `output.Set` metódust.
+Kimenetesetén használja `output.Set` a módszert.
 
-Fontos megérteni, hogy az egyéni csökkentő csak a `output.Set` metódus hívásával megadott értékeket adja meg.
+Fontos megérteni, hogy az egyéni szűkítő csak a `output.Set` metódushívással definiált értékeket adja ki.
 
 ```
 output.Set<string>("mycolumn", guid);
 ```
 
-A tényleges csökkentő kimenet a `yield return output.AsReadOnly();`meghívásával aktiválódik.
+A tényleges szűkítő kimenetét `yield return output.AsReadOnly();`a hívás váltja ki.
 
-A következő egy rövidített példa:
+A következőkben egy szűkítő példa:
 
 ```
 [SqlUserDefinedReducer]
@@ -2172,9 +2172,9 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-Ebben a használati helyzetben a csökkentő kihagyja a sorokat üres felhasználónévvel. A sorhalmaz minden egyes sorában beolvassa az egyes szükséges oszlopokat, majd kiértékeli a Felhasználónév hosszát. A tényleges sort csak akkor adja eredményül, ha a Felhasználónév értéke 0-nál nagyobb.
+Ebben a használati esetben a szűkítő üres felhasználónévvel rendelkező sorokat hagy ki. A sorhalmaz minden egyes sorához beolvassa az egyes szükséges oszlopokat, majd kiértékeli a felhasználónév hosszát. Csak akkor adja ki a tényleges sort, ha a felhasználónév értéke hosszabb, mint 0.
 
-A következő olyan alap U-SQL-szkript, amely egyéni szűkítőt használ:
+A következőkben az alap U-SQL-parancsfájl, amely egyéni szűkítőt használ:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file_reducer.tsv";

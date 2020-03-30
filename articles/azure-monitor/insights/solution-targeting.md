@@ -1,72 +1,72 @@
 ---
-title: Figyelési megoldások célzása Azure Monitorban | Microsoft Docs
-description: A megfigyelési megoldások célzása lehetővé teszi, hogy a figyelési megoldásokat egy adott készletre korlátozza.  Ez a cikk bemutatja, hogyan hozhat létre hatókör-konfigurációt, és hogyan alkalmazhatja azt egy megoldásra.
+title: Figyelési megoldások célzása az Azure Monitorban | Microsoft dokumentumok
+description: A figyelési megoldások lehetővé teszik, hogy a figyelési megoldásokat az ügynökök egy adott készletére korlátozza.  Ez a cikk ismerteti, hogyan hozhat létre hatókör-konfigurációt, és alkalmazza azt a megoldásra.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
 ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663232"
 ---
-# <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Figyelési megoldások célzása Azure Monitorban (előzetes verzió)
-Amikor felvesz egy figyelési megoldást az előfizetéséhez, a rendszer alapértelmezés szerint automatikusan telepíti a Log Analytics munkaterülethez csatlakoztatott összes Windows-és Linux-ügynököt.  Érdemes lehet felügyelni a költségeket, és korlátozni a megoldáshoz összegyűjtött adatok mennyiségét, ha korlátozza azt egy adott ügynökre.  Ez a cikk azt ismerteti, hogyan használható a megoldások **célzása** , amely egy olyan funkció, amely lehetővé teszi egy hatókör alkalmazását a megoldásokra.
+# <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Figyelési megoldások célzása az Azure Monitorban (előzetes verzió)
+Amikor figyelőmegoldást ad hozzá az előfizetéséhez, az alapértelmezés szerint automatikusan telepítve lesz a Log Analytics-munkaterülethez csatlakoztatott összes Windows- és Linux-ügynökre.  Előfordulhat, hogy szeretné kezelni a költségeket, és korlátozza a megoldáshoz gyűjtött adatok mennyiségét, ha az ügynökök egy adott készletére korlátozza azadatokat.  Ez a cikk ismerteti, hogyan **használhatja a megoldás célzása,** amely egy olyan funkció, amely lehetővé teszi, hogy a hatókör alkalmazása a megoldásokra.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="how-to-target-a-solution"></a>Megoldás célzása
-Három lépésben kell megcéloznia a megoldást a következő szakaszokban leírtak szerint. 
+## <a name="how-to-target-a-solution"></a>Hogyan célozzunk meg egy megoldást?
+A következő szakaszokban ismertetett megoldás célzásának három lépése van. 
 
 
-### <a name="1-create-a-computer-group"></a>1. számítógépcsoport létrehozása
-A hatókörbe felvenni kívánt számítógépeket a Azure Monitorban lévő [számítógépcsoport](../platform/computer-groups.md) létrehozásával adhatja meg.  A számítógépcsoport a naplózási lekérdezésen alapulhat, vagy más forrásokból, például Active Directory vagy WSUS-csoportokból is importálható. Az [alább leírtaknak](#solutions-and-agents-that-cant-be-targeted)megfelelően a hatókörben csak azok a számítógépek lesznek felszámítva, amelyek közvetlenül kapcsolódnak Azure monitorhoz.
+### <a name="1-create-a-computer-group"></a>1. Számítógép-csoport létrehozása
+Adja meg a számítógépeket, amelyeket szeretne felvenni a hatókörben egy [számítógépcsoport](../platform/computer-groups.md) az Azure Monitorban.  A számítógépcsoport alapulhat naplólekérdezésen, vagy importálható más forrásokból, például az Active Directory ból vagy a WSUS-csoportokból. Az [alábbiakban leírtak](#solutions-and-agents-that-cant-be-targeted)szerint csak az Azure Monitorhoz közvetlenül kapcsolódó számítógépek fognak szerepelni a hatókörben.
 
-Miután létrehozta a számítógépcsoportot a munkaterületen, akkor azt egy hatókör-konfigurációban fogja felvenni, amely egy vagy több megoldásra alkalmazható.
+Miután létrehozta a számítógépcsoportot a munkaterületen, akkor azt egy vagy több megoldásra alkalmazható hatókörkonfigurációba fogja foglalni.
  
  
-### <a name="2-create-a-scope-configuration"></a>2. hatókör-konfiguráció létrehozása
- A **hatókör-konfiguráció** egy vagy több számítógépcsoportot tartalmaz, és egy vagy több megoldásra alkalmazható. 
+### <a name="2-create-a-scope-configuration"></a>2. Hatókör-konfiguráció létrehozása
+ A **Hatókör-konfiguráció** egy vagy több számítógépcsoportot tartalmaz, és egy vagy több megoldásra alkalmazható. 
  
- Hozzon létre egy hatókör-konfigurációt a következő folyamat használatával.  
+ Hozzon létre egy hatókörkonfigurációt a következő folyamat tal.  
 
- 1. A Azure Portal navigáljon **log Analytics munkaterületek** elemre, és válassza ki a munkaterületet.
- 2. A munkaterület- **adatforrások** területének tulajdonságok területén válassza a **hatókör-konfigurációk**elemet.
- 3. Új hatókör-konfiguráció létrehozásához kattintson a **Hozzáadás** gombra.
- 4. Adja meg a hatókör-konfiguráció **nevét** .
- 5. Kattintson a **számítógépcsoportok kiválasztása**elemre.
- 6. Válassza ki a létrehozott számítógépcsoportot, és opcionálisan bármely más csoportot, amelyet hozzá szeretne adni a konfigurációhoz.  Kattintson a **Kiválasztás** gombra.  
- 6. A hatókör-konfiguráció létrehozásához kattintson **az OK** gombra. 
+ 1. Az Azure Portalon keresse meg a **Log Analytics-munkaterületeket,** és válassza ki a munkaterületet.
+ 2. A munkaterület tulajdonságai csoportban: **Munkaterületadatforrások,** válassza a **Hatókörkonfigurációk**lehetőséget.
+ 3. Új hatókörkonfiguráció létrehozásához kattintson a **Hozzáadás** gombra.
+ 4. Írja be a hatókör **konfigurációjának nevét.**
+ 5. Kattintson **a Számítógépcsoportok kijelölése gombra.**
+ 6. Jelölje ki a létrehozott számítógépcsoportot, és tetszés szerint a konfigurációhoz hozzáadni kívánt csoportokat.  Kattintson a **Kiválasztás** gombra.  
+ 6. A hatókör konfigurációjának létrehozásához kattintson az **OK** gombra. 
 
 
-### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. alkalmazza a hatókör-konfigurációt egy megoldásra.
-Ha már rendelkezik hatókör-konfigurációval, azt egy vagy több megoldásra is alkalmazhatja.  Vegye figyelembe, hogy habár egyetlen hatókör-konfigurációt is használhat több megoldással, minden megoldás csak egyetlen hatókör-konfigurációt használhat.
+### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. Alkalmazza a hatókör konfigurációját egy megoldásra.
+Miután rendelkezik egy hatókör konfigurációval, akkor alkalmazhatja azt egy vagy több megoldásra.  Vegye figyelembe, hogy bár egyetlen hatókörkonfiguráció több megoldással is használható, minden megoldás csak egy hatókörkonfigurációt használhat.
 
-Hatókör-konfiguráció alkalmazása a következő folyamat használatával.  
+Hatókör-konfiguráció alkalmazása a következő folyamat tal.  
 
- 1. A Azure Portal navigáljon **log Analytics munkaterületek** elemre, és válassza ki a munkaterületet.
- 2. A munkaterület tulajdonságainál válassza a **megoldások**elemet.
- 3. Kattintson a hatókörre használni kívánt megoldásra.
- 4. A megoldás tulajdonságai a **munkaterület-adatforrások** területen válassza a **megoldás célzása**lehetőséget.  Ha a beállítás nem érhető el, [Ez a megoldás nem célozható](#solutions-and-agents-that-cant-be-targeted)meg.
- 5. Kattintson a **hatókör-konfiguráció hozzáadása**lehetőségre.  Ha a megoldáshoz már van konfiguráció alkalmazva, akkor ez a beállítás nem lesz elérhető.  Egy másik hozzáadása előtt el kell távolítania a meglévő konfigurációt.
- 6. Kattintson a létrehozott hatókör-konfigurációra.
- 7. Tekintse meg a konfiguráció **állapotát** , és győződjön meg arról, hogy az a **sikeres**megjelenítést mutatja.  Ha az állapot hibát jelez, kattintson a konfigurációtól jobbra lévő ellipszisre, és válassza a **hatókör-konfiguráció szerkesztése** lehetőséget a módosítások elvégzéséhez.
+ 1. Az Azure Portalon keresse meg a **Log Analytics-munkaterületeket,** és válassza ki a munkaterületet.
+ 2. A munkaterület tulajdonságai között válassza a **Megoldások**lehetőséget.
+ 3. Kattintson a hatókörbe kívánt megoldásra.
+ 4. A megoldás tulajdonságai **csoportban: Munkaterületadatforrások,** válassza a **Megoldáscélzás lehetőséget.**  Ha a lehetőség nem érhető el, akkor [ez a megoldás nem célozható meg.](#solutions-and-agents-that-cant-be-targeted)
+ 5. Kattintson **a Hatókör-konfiguráció hozzáadása gombra.**  Ha már rendelkezik konfigurációval erre a megoldásra, akkor ez a beállítás nem lesz elérhető.  Egy másik hozzáadása előtt el kell távolítania a meglévő konfigurációt.
+ 6. Kattintson a létrehozott hatókörkonfigurációra.
+ 7. Tekintse meg a konfiguráció **állapotát,** és győződjön meg arról, hogy **a sikeres**.  Ha az állapot hibát jelez, kattintson a konfigurációtól jobbra található ellipszisre, és a módosítások módosításához válassza a **Hatókör-konfiguráció szerkesztése** lehetőséget.
 
-## <a name="solutions-and-agents-that-cant-be-targeted"></a>Nem megcélozható megoldások és ügynökök
-Az alábbi feltételek a megoldás célcsoportját nem használó ügynökökre és megoldásokra vonatkoznak.
+## <a name="solutions-and-agents-that-cant-be-targeted"></a>Nem célzott megoldások és ügynökök
+Az alábbiakban az ügynökök és megoldások, amelyek nem használhatók a megoldás célzása feltételeket.
 
-- A megoldások célzása csak az ügynökökre telepítendő megoldásokra vonatkozik.
-- A megoldások célzása csak a Microsoft által biztosított megoldásokra vonatkozik.  Nem vonatkozik a [saját maga vagy partnerei által létrehozott](solutions-creating.md)megoldásokra.
-- Csak olyan ügynökök szűrhetők, amelyek közvetlenül a Azure Monitorhoz kapcsolódnak.  A rendszer automatikusan telepíti a megoldásokat a csatlakoztatott Operations Manager felügyeleti csoport részét képező ügynökökre, függetlenül attól, hogy azok szerepelnek-e a hatókör-konfigurációban.
+- A megoldáscélzás csak az ügynökökre üzembe helyezett megoldásokra vonatkozik.
+- A megoldáscélzás csak a Microsoft által biztosított megoldásokra vonatkozik.  Nem vonatkozik az [ön által vagy partnerei által létrehozott](solutions-creating.md)megoldásokra.
+- Csak az Azure Monitorhoz közvetlenül kapcsolódó ügynököket szűrheti ki.  A megoldások automatikusan települnek a csatlakoztatott Operations Manager felügyeleti csoport részét képező ügynökökre, függetlenül attól, hogy szerepelnek-e a hatókör-konfigurációban.
 
 ### <a name="exceptions"></a>Kivételek
-A megoldások célzása nem használható a következő megoldásokkal annak ellenére, hogy azok megfelelnek a megadott feltételeknek.
+A megoldáscélzás nem használható a következő megoldásokkal, még akkor sem, ha megfelelnek a megadott feltételeknek.
 
-- Agent Health Értékelés
+- Ügynök állapotfelmérése
 
-## <a name="next-steps"></a>Következő lépések
-- További információ a figyelési megoldásokról, beleértve a környezetében telepítendő megoldásokat az [Azure log Analytics-figyelési megoldások hozzáadása a munkaterülethez](solutions.md)lehetőségre.
-- További információ a számítógépcsoportok számítógép [-csoportokon való létrehozásáról Azure monitor log lekérdezésekben](../platform/computer-groups.md).
+## <a name="next-steps"></a>További lépések
+- További információ a figyelési megoldásokról, beleértve a környezetében telepíthető megoldásokat [az Azure Log Analytics figyelési megoldások hozzáadása a munkaterülethez című témakörben.](solutions.md)
+- További információ a számítógépcsoportok létrehozásáról az [Azure Monitor naplólekérdezéseiben.](../platform/computer-groups.md)

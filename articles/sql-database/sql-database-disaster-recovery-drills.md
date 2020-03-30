@@ -1,6 +1,6 @@
 ---
 title: Vész-helyreállítási gyakorlatok
-description: Útmutatás és ajánlott eljárások a Azure SQL Database használatának elvégzéséhez a vész-helyreállítási gyakorlatok végrehajtásához.
+description: Útmutatást és gyakorlati tanácsokat az Azure SQL Database használatával a vész-helyreállítási gyakorlatok végrehajtásához.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,62 +12,62 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
 ms.openlocfilehash: 3ca00a03976ae38b7956616b8287220a7bc5998c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73825853"
 ---
-# <a name="performing-disaster-recovery-drill"></a>Vész-helyreállítási részletezés végrehajtása
+# <a name="performing-disaster-recovery-drill"></a>Vész-helyreállítási gyakorlat végrehajtása
 
-A helyreállítási munkafolyamatok alkalmazás-készültségének ellenőrzése rendszeresen történik. Az alkalmazás viselkedésének, valamint az adatvesztés következményeinek és/vagy a feladatátvétel által okozott fennakadásnak az ellenőrzése jó mérnöki gyakorlat. Emellett a legtöbb iparági szabvány követelménye az üzletmenet folytonossági minősítésének része.
+Javasoljuk, hogy az alkalmazás helyreállítási munkafolyamatra való felkészültségének hitelesítése rendszeres időközönként történik. Az alkalmazás viselkedésének és az adatvesztés következményeinek és/vagy a feladatátvételt igénylő megszakításnak a ellenőrzése jó mérnöki gyakorlat. Ez is egy követelmény a legtöbb ipari szabványok részeként üzletmenet-folytonosság tanúsítás.
 
-A vész-helyreállítási részletezés végrehajtása a következőkből áll:
+A vész-helyreállítási gyakorlat végrehajtása a következőkből áll:
 
-* Adatcsatorna-kimaradás szimulálása
-* Helyreállítása
-* Az alkalmazás integritásának érvényesítése a helyreállítás után
+* Az adatréteg kimaradásának szimulálása
+* Visszaszerzés
+* Az alkalmazás integritásának ellenőrzése a helyreállítás után
 
-Attól függően, hogy az [alkalmazás hogyan lett megtervezve az üzletmenet folytonossága](sql-database-business-continuity.md)érdekében, a részletezés végrehajtásának munkafolyamata eltérő lehet. Ez a cikk a vész-helyreállítási gyakorlat végrehajtásának ajánlott eljárásait ismerteti Azure SQL Database környezetében.
+Attól függően, hogy hogyan [tervezte meg az alkalmazást az üzletmenet folytonosságára,](sql-database-business-continuity.md)a fúró végrehajtására szolgáló munkafolyamat eltérő lehet. Ez a cikk ismerteti a vész-helyreállítási gyakorlat az Azure SQL Database környezetében végzett gyakorlati tanácsok.
 
 ## <a name="geo-restore"></a>Georedundáns helyreállítás
 
-Ha meg szeretné akadályozni, hogy a vész-helyreállítási gyakorlat elvégzése során milyen adatvesztés lehetséges, végezze el a részletezést a tesztkörnyezet használatával az éles környezet másolatának létrehozásával és a használatával, hogy ellenőrizze az alkalmazás feladatátvételi munkafolyamatát.
+A vész-helyreállítási gyakorlat végrehajtásakor a potenciális adatvesztés megelőzése érdekében hajtsa végre a fúrót egy tesztkörnyezet használatával az éles környezet másolatának létrehozásával és az alkalmazás feladatátvételi munkafolyamatának ellenőrzésére.
 
-### <a name="outage-simulation"></a>Kimaradás szimulálása
+### <a name="outage-simulation"></a>Leállás szimuláció
 
-A leállás szimulálása érdekében átnevezheti a forrás-adatbázist. Ez a név megváltoztatja az alkalmazás kapcsolódási hibáit.
+A kimaradás szimulálása érdekében átnevezheti a forrásadatbázist. Ez a névváltozás alkalmazáskapcsolati hibákat okoz.
 
 ### <a name="recovery"></a>Helyreállítás
 
-* Az [itt](sql-database-disaster-recovery.md)leírtak szerint végezze el az adatbázis geo-visszaállítását egy másik kiszolgálóra.
-* Módosítsa az alkalmazás konfigurációját a helyreállított adatbázishoz való kapcsolódáshoz, és kövesse az [adatbázis konfigurálása a helyreállítási útmutató után](sql-database-disaster-recovery.md) a helyreállítás befejezéséhez című témakört.
+* Az adatbázis geo-visszaállításának végrehajtása az [itt](sql-database-disaster-recovery.md)leírtak szerint egy másik kiszolgálóra .
+* Módosítsa az alkalmazás konfigurációját úgy, hogy csatlakozzon a helyreállított adatbázishoz, és kövesse az [Adatbázis konfigurálása a helyreállítási](sql-database-disaster-recovery.md) útmutató után című útmutatót a helyreállítás befejezéséhez.
 
 ### <a name="validation"></a>Ellenőrzés
 
-Végezze el a részletezést az alkalmazás integritás utáni helyreállításának ellenőrzésével (beleértve a kapcsolati karakterláncokat, a bejelentkezéseket, az alapszintű funkciók tesztelését vagy a szabványos alkalmazások signoffs eljárásainak egyéb érvényességi részeit).
+Fejezze be a fúrót az alkalmazás integritásának a helyreállítás utáni ellenőrzésével (beleértve a kapcsolati karakterláncokat, bejelentkezéseket, alapvető funkciók tesztelését vagy a szabványos alkalmazás-kijelentkezési eljárások egyéb érvényesítési részét).
 
 ## <a name="failover-groups"></a>Feladatátvételi csoportok
 
-A feladatátvételi csoportok használatával védett adatbázisok esetében a részletezési gyakorlat a másodlagos kiszolgálóra irányuló tervezett feladatátvételt is magában foglalja. A tervezett feladatátvétel biztosítja, hogy a feladatátvételi csoportban lévő elsődleges és másodlagos adatbázisok szinkronban maradjanak a szerepkörök kiváltásakor. A nem tervezett feladatátvételtől eltérően ez a művelet nem eredményez adatvesztést, így a részletezést az éles környezetben is elvégezheti.
+A feladatátvételi csoportokkal védett adatbázis esetében a fúrógyakorlat a másodlagos kiszolgálótervezett feladatátvételt foglal magában. A tervezett feladatátvétel biztosítja, hogy a feladatátvételi csoport elsődleges és másodlagos adatbázisai szinkronban maradjanak a szerepkörök váltásakor. A nem tervezett feladatátvételsel ellentétben ez a művelet nem eredményez adatvesztést, így a fúró az éles környezetben is elvégezhető.
 
-### <a name="outage-simulation"></a>Kimaradás szimulálása
+### <a name="outage-simulation"></a>Leállás szimuláció
 
-A leállás szimulálása érdekében letilthatja az adatbázishoz csatlakozó webalkalmazást vagy virtuális gépet. Ez a leállás-szimuláció a webes ügyfelek kapcsolódási hibáit eredményezi.
+A kimaradás szimulálása érdekében letilthatja az adatbázishoz csatlakoztatott webalkalmazást vagy virtuális gépet. Ez a kimaradás szimuláció eredménye a webes ügyfelek kapcsolódási hibák.
 
 ### <a name="recovery"></a>Helyreállítás
 
-* Győződjön meg arról, hogy az alkalmazás konfigurációja a DR régióban a korábbi másodlagosra mutat, amely a teljesen elérhető új elsődleges lesz.
-* A feladatátvételi csoport [tervezett feladatátvételének](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) kezdeményezése a másodlagos kiszolgálóról.
-* A helyreállítás befejezéséhez kövesse az [adatbázis konfigurálása a helyreállítási útmutató után](sql-database-disaster-recovery.md) című témakört.
+* Győződjön meg arról, hogy a VÉSZ-régióban az alkalmazás konfigurációja a korábbi másodlagos, amely a teljesen elérhető új elsődleges lesz.
+* Indítsa el a feladatátvételi csoport [tervezett feladatátvételét](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) a másodlagos kiszolgálóról.
+* A helyreállítás befejezéséhez kövesse az [Adatbázis konfigurálása a helyreállítási](sql-database-disaster-recovery.md) útmutató után című útmutatót.
 
 ### <a name="validation"></a>Ellenőrzés
 
-Végezze el a részletezést az alkalmazás integritás utáni helyreállításának ellenőrzésével (beleértve a kapcsolatot, az alapszintű funkciók tesztelését vagy a részletezési signoffs szükséges egyéb érvényesítéseket).
+Fejezze be a fúrót az alkalmazás sértetlenségének a helyreállítás utáni ellenőrzésével (beleértve a kapcsolatot, az alapvető funkciók tesztelését vagy a fúrókijelentkezásokhoz szükséges egyéb ellenőrzéseket).
 
 ## <a name="next-steps"></a>További lépések
 
-* Az üzletmenet-folytonossági forgatókönyvek megismeréséhez lásd: [folytonossági forgatókönyvek](sql-database-business-continuity.md).
-* Az automatikus biztonsági mentések Azure SQL Databaseával kapcsolatos további tudnivalókért lásd: [SQL Database automatikus biztonsági mentések](sql-database-automated-backups.md)
-* Ha többet szeretne megtudni a helyreállítás automatizált biztonsági mentéséről, olvassa el [az adatbázis visszaállítása a szolgáltatás által kezdeményezett biztonsági másolatokból](sql-database-recovery-using-backups.md)című témakört.
-* A gyorsabb helyreállítási lehetőségek megismeréséhez lásd: [aktív földrajzi replikálás](sql-database-active-geo-replication.md) és [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md).
+* Az üzletmenet-folytonossági forgatókönyvekről a [Folytonossági forgatókönyvek (Folytonossági forgatókönyvek) (Folytonossági forgatókönyvek) (Folytonossági forgatókönyvek) (Folytonossági forgatókönyvek) (Folytonossági forgatókönyvek) (Folytonossági forgatókönyv](sql-database-business-continuity.md)
+* Az Azure SQL Database automatikus biztonsági mentéseiről az SQL Database automatikus biztonsági mentései című [témakörben olvashat.](sql-database-automated-backups.md)
+* Az automatikus biztonsági mentések helyreállítási használatáról az [adatbázis visszaállítása a szolgáltatás által kezdeményezett biztonsági mentések ből](sql-database-recovery-using-backups.md)című témakörben olvashat.
+* A gyorsabb helyreállítási lehetőségekről az [Aktív georeplikáció](sql-database-active-geo-replication.md) és [az automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md)című témakörben olvashat.

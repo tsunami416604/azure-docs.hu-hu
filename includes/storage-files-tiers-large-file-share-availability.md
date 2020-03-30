@@ -9,14 +9,14 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 625b7fc8d49c91a9f2b1c09e1add72993e828d43
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77597816"
 ---
-Az 100 TiB kapacitási korláttal rendelkező standard fájlmegosztás globálisan elérhető az összes Azure-régióban, kivéve a következőket:
+A 100 TiB-kapacitáskorláttal rendelkező szabványos fájlmegosztások globálisan elérhetők az Összes Azure-régióban, kivéve:
 
-- Helyileg redundáns tárolás: minden régió, kivéve Észak-Dél-Afrika, Nyugat-Afrika, Középnyugat-Németország és Észak-Németország.
-- Zóna redundáns tárterülete: minden olyan régió esetében támogatott, ahol a zóna redundáns tárolója támogatott, kivéve a Kelet-Japán, Észak-Európa, Dél-Afrika északi régiójában.
-- Geo-redundáns/GeoZone redundáns tárolás: nem támogatott.
+- Helyileg redundáns tárolás: Minden régió, kivéve Észak-Dél-Afrikát, Nyugat-Dél-Afrikát, Németország nyugat-közép és Németország északi régióját.
+- Zónaredundáns tárolás: Minden olyan régióban támogatott, ahol a zónaredundáns tárolás támogatott, kivéve Japán keleti, Észak-Európa, Észak-Afrika Északi.
+- Georedundáns/GeoZone redundáns tárolás: Nem támogatott.

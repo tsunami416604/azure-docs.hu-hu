@@ -1,6 +1,6 @@
 ---
-title: Azure Analysis Services kezelése a PowerShell használatával | Microsoft Docs
-description: Ismerteti Azure Analysis Services PowerShell-parancsmagokat a gyakori felügyeleti feladatokhoz, például a kiszolgálók létrehozásához, a műveletek felfüggesztéséhez vagy a szolgáltatási szint módosításához.
+title: Az Azure Analysis Services kezelése a PowerShell segítségével | Microsoft dokumentumok
+description: Az Azure Analysis Services PowerShell-parancsmagjai olyan gyakori felügyeleti feladatokhoz, mint a kiszolgálók létrehozása, a műveletek felfüggesztése vagy a szolgáltatási szint módosítása.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: reference
@@ -8,59 +8,59 @@ ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 2c8f4c0541d97a189087af692658cfe794eaaf7e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572695"
 ---
-# <a name="manage-azure-analysis-services-with-powershell"></a>Azure Analysis Services kezelése a PowerShell-lel
+# <a name="manage-azure-analysis-services-with-powershell"></a>Az Azure Analysis Services kezelése a PowerShell-lel
 
-Ez a cikk a Azure Analysis Services kiszolgáló-és adatbázis-felügyeleti feladatainak végrehajtásához használt PowerShell-parancsmagokat ismerteti. 
+Ez a cikk az Azure Analysis Services-kiszolgáló és az adatbázis-kezelési feladatok végrehajtásához használt PowerShell-parancsmagokat ismerteti. 
 
-A kiszolgáló erőforrás-kezelési feladatai, például a kiszolgálók létrehozása vagy törlése, a kiszolgálói műveletek felfüggesztése vagy folytatása, vagy a szolgáltatási szint (szint) módosítása Azure Analysis Services parancsmagokat használ. Egyéb feladatok olyan adatbázisok kezeléséhez, mint például a szerepkörök tagjainak hozzáadása vagy eltávolítása, a feldolgozás vagy a particionálási parancsmagok, amelyek ugyanabban a SqlServer-modulban szerepelnek, mint a SQL Server Analysis Services.
+Kiszolgálói erőforrás-kezelési feladatok, például kiszolgáló létrehozása vagy törlése, a kiszolgálói műveletek felfüggesztése vagy folytatása, illetve a szolgáltatási szint (szint) módosítása az Azure Analysis Services parancsmagjainak használatával. Az adatbázisok kezeléséhez, például szerepkörtagok hozzáadásához vagy eltávolításához, a feldolgozáshoz vagy a particionáláshoz használt parancsmagok használata ugyanabban az SqlServer modulban, mint az SQL Server Analysis Services.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="permissions"></a>Engedélyek
 
-A legtöbb PowerShell-feladat megköveteli, hogy rendszergazdai jogosultságokkal rendelkezzen a kezelt Analysis Services-kiszolgálón. Az ütemezett PowerShell-feladatok felügyelet nélküli műveletek. Az ütemező szolgáltatást futtató fióknak vagy szolgáltatásnak rendszergazdai jogosultságokkal kell rendelkeznie a Analysis Services kiszolgálón. 
+A legtöbb PowerShell-feladat hoz rendszergazdai jogosultságokat a jelenleg kezelendő Analysis Services-kiszolgálón. Az ütemezett PowerShell-feladatok felügyelet nélküli műveletek. Az ütemezőt futtató fióknak vagy szolgáltatásnak rendszergazdai jogosultságokkal kell rendelkeznie az Analysis Services kiszolgálón. 
 
-Azure PowerShell parancsmagokat használó kiszolgálói műveletek esetén a fióknak vagy a Feladatütemezőt futtató fióknak az erőforrás tulajdonosi szerepköréhez is tartoznia kell az [Azure szerepköralapú Access Control (RBAC)](../role-based-access-control/overview.md)szolgáltatásban. 
+Az Azure PowerShell-parancsmagokkal végzett kiszolgálói műveletekhez a fióknak vagy a futó ütemezőnek is az erőforrás tulajdonosi szerepköréhez kell tartoznia az [Azure szerepköralapú hozzáférés-vezérlési (RBAC)](../role-based-access-control/overview.md)rendszerben. 
 
-## <a name="resource-and-server-operations"></a>Erőforrás-és kiszolgálói műveletek 
+## <a name="resource-and-server-operations"></a>Erőforrás- és kiszolgálóműveletek 
 
-Modul telepítése – [az. AnalysisServices](https://www.powershellgallery.com/packages/Az.AnalysisServices)   
-Dokumentáció – [az. AnalysisServices-hivatkozás](/powershell/module/az.analysisservices)
+Telepítő modul - [Az.AnalysisServices](https://www.powershellgallery.com/packages/Az.AnalysisServices)   
+Dokumentáció - [Az.AnalysisServices hivatkozás](/powershell/module/az.analysisservices)
 
 ## <a name="database-operations"></a>Adatbázis-műveletek
 
-Azure Analysis Services adatbázis-műveletek ugyanazt a SqlServer modult használják, mint SQL Server Analysis Services. Azonban nem minden parancsmag támogatott a Azure Analysis Services. 
+Az Azure Analysis Services adatbázis-műveletei ugyanazt az SqlServer-modult használják, mint az SQL Server Analysis Services. Azonban nem minden parancsmag támogatott az Azure Analysis Services számára. 
 
-A SqlServer modul a feladat-specifikus adatbázis-kezelési parancsmagokat, valamint az általános célú meghívó-ASCmd parancsmagot is tartalmazza, amely a táblázatos modell parancsnyelv (TMSL) lekérdezését vagy parancsfájlját fogadja el. Azure Analysis Services a következő parancsmagok támogatottak a SqlServer modulban.
+Az SqlServer modul feladatspecifikus adatbázis-kezelési parancsmagokat, valamint általános célú Meghívás-ASCmd parancsmagamcélt biztosít, amely elfogadja a táblázatos modellparancsfájl-parancsfájl (TMSL) lekérdezést vagy parancsfájlt. Az SqlServer modulban a következő parancsmagok támogatottak az Azure Analysis Services számára.
 
-Modul telepítése – [SqlServer](https://www.powershellgallery.com/packages/SqlServer)   
-Dokumentáció – [SQLServer-hivatkozás](/powershell/module/sqlserver)
+Telepítő modul - [SqlServer](https://www.powershellgallery.com/packages/SqlServer)   
+Dokumentáció - [SqlServer referencia](/powershell/module/sqlserver)
 
 ### <a name="supported-cmdlets"></a>Támogatott parancsmagok
 
 |Parancsmag|Leírás|
 |------------|-----------------| 
-|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Vegyen fel egy tagot egy adatbázis-szerepkörbe.| 
-|[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Analysis Services adatbázis biztonsági mentése.|  
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Egy tag eltávolítása egy adatbázis-szerepkörből.|   
-|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|TMSL-szkript végrehajtása.|
-|[Invoke-ProcessASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processasdatabase)|Adatbázis feldolgozása|  
-|[Invoke-ProcessPartition](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processpartition)|Partíció feldolgozása.| 
-|[Invoke-ProcessTable](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processtable)|Tábla feldolgozása|  
-|[Merge-Partition](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|Partíció egyesítése.|  
-|[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|Analysis Services adatbázis visszaállítása.| 
+|[Bővítmény-szerepkörtag](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Tag hozzáadása adatbázis-szerepkörhöz.| 
+|[Biztonsági másolat asdatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Az Analysis Services adatbázisának biztonsági mentése.|  
+|[Eltávolítás-szerepkörtag](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Tag eltávolítása adatbázis-szerepkörből.|   
+|[Meghívás-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|TMSL-parancsfájl végrehajtása.|
+|[ProcessASDatabase meghívása](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processasdatabase)|Adatbázis feldolgozása.|  
+|[Meghívás-processpartition](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processpartition)|Partíció feldolgozása.| 
+|[Meghívás-folyamattábla](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processtable)|Dolgozzon fel egy táblázatot.|  
+|[Egyesítés-partíció](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|Partíció egyesítése.|  
+|[AsDatabase visszaállítása](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|Az Analysis Services adatbázisának visszaállítása.| 
   
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
 * [SQL Server PowerShell](https://docs.microsoft.com/sql/powershell/sql-server-powershell)      
-* [SQL Server PowerShell-modul letöltése](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
+* [SQL Server PowerShell modul letöltése](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [SSMS letöltése](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
-* [SqlServer modul a PowerShell-galéria](https://www.powershellgallery.com/packages/SqlServer)    
-* [Táblázatos modellek programozása a 1200-es és magasabb kompatibilitási szinthez](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)
+* [SqlServer-modul a PowerShell-galériában](https://www.powershellgallery.com/packages/SqlServer)    
+* [Táblázatos modellprogramozás az 1200-as és magasabb kompatibilitási szinthez](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)

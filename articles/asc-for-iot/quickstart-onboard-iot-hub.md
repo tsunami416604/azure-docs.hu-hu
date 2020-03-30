@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Azure Security Center engedélyezése a IoT szolgáltatáshoz a IoT Hub'
-description: Ismerje meg, hogyan hozhatja be és engedélyezheti az Azure-IoT Hub IoT biztonsági szolgáltatásának Azure Security Centerét.
+title: 'Rövid útmutató: Az Azure Security Center engedélyezése az IoT-szolgáltatáshoz az IoT Hubban'
+description: Ismerje meg, hogyan lehet az Azure Security Center for IoT biztonsági szolgáltatás az Azure IoT Hub on-t.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,68 +16,68 @@ ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
 ms.openlocfilehash: 0b1f09cfaf107802e1ce6586b3f96b14269aaced
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74664861"
 ---
-# <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Gyors útmutató: Azure Security Center a IoT Service-ben IoT Hub
+# <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Rövid útmutató: Az IoT Hub onboard Azure Security Center szolgáltatása az IoT Hubban
 
-Ez a cikk azt ismerteti, hogyan engedélyezhető a IoT szolgáltatás Azure Security Center a meglévő IoT Hub. Ha jelenleg nem rendelkezik IoT Hubval, a kezdéshez tekintse meg [a IoT hub létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) című témakört. 
+Ez a cikk ismerteti, hogyan engedélyezheti az Azure Security Center for IoT szolgáltatás a meglévő IoT Hub. Ha jelenleg nem rendelkezik Egy IoT Hub, [lásd: Hozzon létre egy IoT Hub az Azure Portalon az](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) első lépésekhez. 
 
 > [!NOTE]
-> A IoT Azure Security Center jelenleg csak a standard szintű IoT hubokat támogatja.
+> Az Azure Security Center for IoT jelenleg csak a standard szintű IoT Hubs támogatja.
 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>A szolgáltatás engedélyezésének előfeltételei
 
-- Log Analytics munkaterület
-  - A Log Analytics munkaterület alapértelmezés szerint két típusú információt tárol a IoT számára Azure Security Center alapján. **biztonsági riasztások** és **javaslatok**. 
-  - Dönthet úgy is, hogy hozzáad egy további adattípust, **nyers eseményeket**. Vegye figyelembe, hogy a Log Analytics **nyers események** tárolása további tárolási költségekkel jár. 
+- Log Analytics-munkaterület
+  - Az Azure Security Center for IoT alapértelmezés szerint kétféle információt tárol a Log Analytics-munkaterületen; **biztonsági riasztásokat** és **ajánlásokat.** 
+  - Választhat, hogy hozzá tárolási egy további információtípus, **nyers események**. Vegye figyelembe, hogy **a nyers események** log analytics-ben tárolása további tárolási költségeket hordoz. 
 - IoT Hub (standard szint)
-- Az összes [szolgáltatás előfeltételeinek](service-prerequisites.md) teljesítése 
+- Az összes [szolgáltatásfeltétel](service-prerequisites.md) teljesítése 
 
-## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>Azure Security Center engedélyezése a IoT a IoT Hub 
+## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>Az Azure Security Center engedélyezése az IoT-hez az IoT Hubon 
 
-A IoT Hub biztonságának engedélyezése: 
+Az IoT Hub biztonságának engedélyezése: 
 
-1. Nyissa meg a **IoT Hubt** Azure Portal. 
-1. A **Biztonság** menüben kattintson a **IoT-megoldás biztonságossá tétele**lehetőségre.    
-
-
-Gratulálunk! Befejezte a IoT Azure Security Centerének engedélyezését a IoT Hub. 
-
-### <a name="geolocation-and-ip-address-handling"></a>Térinformatikai és IP-címek kezelése
-
-A IoT-megoldás biztonságossá tételéhez a IoT-eszközökről, IoT Edge és IoT Hub a bejövő és kimenő kapcsolatainak IP-címeit a rendszer alapértelmezés szerint összegyűjti és tárolja. Ez az információ elengedhetetlen a gyanús IP-forrásokkal való rendellenes kapcsolódás észleléséhez. Ha például kísérlet történik a kapcsolat létrehozására egy ismert botnet IP-forrásával vagy egy, a földrajzi helyen kívüli IP-forrással. A IoT szolgáltatás Azure Security Center a rugalmasságot biztosít az IP-címek adatgyűjtésének bármikori engedélyezéséhez és letiltásához. 
-
-Az IP-címek adatgyűjtésének engedélyezése vagy letiltása: 
-
-1. Nyissa meg a IoT Hub, majd válassza az **Áttekintés** lehetőséget a **Biztonság** menüben. 
-2. Válassza a **Beállítások** képernyőt, és módosítsa a térinformatikai és/vagy IP-kezelési beállításokat, ahogy szeretné.
-
-### <a name="log-analytics-creation"></a>Log Analytics létrehozása
-
-Ha a IoT Azure Security Center be van kapcsolva, a rendszer létrehoz egy alapértelmezett Azure Log Analytics-munkaterületet, amely a nyers biztonsági események, riasztások és javaslatok tárolására szolgál a IoT-eszközök, a IoT Edge és a IoT Hub számára. Minden hónapban az Azure Log Analytics-szolgáltatásba betöltött első öt (5) GB adat ingyenes. Az első 31 nap alatt az Azure Log Analytics-munkaterületbe betöltött minden GB adatot díjmentesen megtartunk. További információ a [log Analytics](https://azure.microsoft.com/pricing/details/monitor/) díjszabásáról.
-
-Log Analytics munkaterület-konfigurációjának módosítása:
-
-1. Nyissa meg a IoT Hub, majd válassza az **Áttekintés** lehetőséget a **Biztonság** menüben. 
-2. Válassza a **Beállítások** képernyőt, és módosítsa a log Analytics beállítások munkaterület-konfigurációját, ahogy szeretné.
-
-### <a name="customize-your-iot-security-solution"></a>A IoT biztonsági megoldás testreszabása
-Alapértelmezés szerint a IoT-megoldás Azure Security Center bekapcsolása automatikusan biztonságossá teszi az Azure-előfizetéshez tartozó összes IoT-elosztót. 
-
-A IoT szolgáltatás Azure Security Centerának bekapcsolása adott IoT Hub be-vagy kikapcsolva: 
-
-1. Nyissa meg a IoT Hub, majd válassza az **Áttekintés** lehetőséget a **Biztonság** menüben. 
-2. Válassza a **Beállítások** képernyőt, és módosítsa az Azure-előfizetésében található bármely IoT hub biztonsági beállításait.
+1. Nyissa meg az **IoT Hubot** az Azure Portalon. 
+1. A **Biztonság** menüben kattintson **az IoT-megoldás biztonságossá tétele parancsra.**    
 
 
-## <a name="next-steps"></a>Következő lépések
+Gratulálunk! Befejezte az Azure Security Center ioT-hoz való engedélyezését az IoT Hubon. 
 
-Folytassa a következő cikkel a megoldás konfigurálásához...
+### <a name="geolocation-and-ip-address-handling"></a>Földrajzi helymeghatározás és IP-címkezelés
+
+Az IoT-megoldás biztonságossá tétele érdekében a bejövő és kimenő kapcsolatok IP-címeit az IoT-eszközök, az IoT Edge és az IoT Hub(ok) gyűjtik és tárolják alapértelmezés szerint. Ez az információ elengedhetetlen a gyanús IP-forrásokból származó rendellenes kapcsolat észleléséhez. Ha például megkísérelnek kapcsolatokat létesíteni egy ismert botnet IP-forrásából vagy a földrajzi helyen kívüli IP-forrásból. Az Azure Security Center for IoT szolgáltatás rugalmasságot biztosít az IP-címadatok gyűjtésének engedélyezéséhez és letiltásához. 
+
+Az IP-címadatok gyűjtésének engedélyezése vagy letiltása: 
+
+1. Nyissa meg az IoT Hubot, és válassza a **Biztonság** menü **Áttekintés parancsát.** 
+2. Válassza ki a **Beállítások** képernyőt, és tetszés szerint módosítsa a földrajzi helymeghatározási és/vagy IP-kezelési beállításokat.
+
+### <a name="log-analytics-creation"></a>A Log Analytics létrehozása
+
+Ha az Azure Security Center for IoT be van kapcsolva, egy alapértelmezett Azure Log Analytics-munkaterület jön létre a nyers biztonsági események, riasztások és javaslatok tárolására az IoT-eszközök, az IoT Edge és az IoT Hub tárolására. Minden hónapban az első öt (5) GB-os adatok ügyfélenként az Azure Log Analytics szolgáltatás ingyenes. Az Azure Log Analytics-munkaterületbe bevitt összes GB-adat az első 31 napban díjmentesen megmarad. További információ a [Log Analytics](https://azure.microsoft.com/pricing/details/monitor/) díjszabásáról.
+
+A Log Analytics munkaterület-konfigurációjának módosítása:
+
+1. Nyissa meg az IoT Hubot, és válassza a **Biztonság** menü **Áttekintés parancsát.** 
+2. Válassza ki a **Beállítások** képernyőt, és módosítsa a Naplóelemzési beállítások munkaterületi konfigurációját, ahogy szeretné.
+
+### <a name="customize-your-iot-security-solution"></a>Az IoT biztonsági megoldásának testreszabása
+Alapértelmezés szerint az Azure Security Center for IoT-megoldás bekapcsolása automatikusan biztosítja az Azure-előfizetésben lévő összes IoT Hub-ot. 
+
+Az Azure Security Center for IoT-szolgáltatás be- és kikapcsolása egy adott IoT Hubon: 
+
+1. Nyissa meg az IoT Hubot, és válassza a **Biztonság** menü **Áttekintés parancsát.** 
+2. Válassza ki a **Beállítások** képernyőt, és módosítsa az Azure-előfizetés bármely IoT-hub biztonsági beállításait, ahogy szeretné.
+
+
+## <a name="next-steps"></a>További lépések
+
+A megoldás konfigurálásához a következő cikkre lépve...
 
 > [!div class="nextstepaction"]
 > [A megoldás konfigurálása](quickstart-configure-your-solution.md)

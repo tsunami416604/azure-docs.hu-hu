@@ -1,6 +1,6 @@
 ---
-title: Típus-ellenőrzési függvények Azure Cosmos DB lekérdezési nyelven
-description: Tudnivalók az SQL rendszerfunkcióinak ellenőrzéséről Azure Cosmos DBban.
+title: Típusellenőrző függvények az Azure Cosmos DB lekérdezési nyelvén
+description: Ismerje meg az SQL-rendszerfüggvények az Azure Cosmos DB típusellenőrzéséről.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,21 +8,21 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: cac8be4c39737ca209653532d00375c8c9bee48e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71349082"
 ---
-# <a name="type-checking-functions-azure-cosmos-db"></a>Type Check functions (Azure Cosmos DB)
+# <a name="type-checking-functions-azure-cosmos-db"></a>Típusellenőrzési függvények (Azure Cosmos DB)
 
-A típus-ellenőrzési függvények lehetővé teszik egy kifejezés típusának ellenőrzését egy SQL-lekérdezésen belül. A Type-Check függvények segítségével meghatározhatja, hogy milyen típusú tulajdonságok vannak a menet közben, ha változó vagy ismeretlen. 
+A típusellenőrzési függvények segítségével ellenőrizheti az SQL-lekérdezésen belüli kifejezés típusát. A típusellenőrzési függvények segítségével meghatározhatja, hogy milyen típusú tulajdonságok vannak menet közben az elemeken belül, ha változóak vagy ismeretlenek. 
 
-## <a name="functions"></a>Funkciók
+## <a name="functions"></a>Functions
 
-Az alábbi táblázat a támogatott beépített típus-ellenőrzési funkciókat tartalmazza:
+Az alábbiakban a támogatott beépített típusellenőrzési funkciókat táblázatban olvashatja:
 
-Az alábbi funkciókat támogatja a típus ellenőrzése a bemeneti értékek szemben, és minden egyes logikai értéket eredményül.  
+A következő függvények támogatják a típusellenőrzést a bemeneti értékekkel szemben, és mindegyik logikai értéket ad vissza.  
   
 ||||  
 |-|-|-|  
@@ -33,7 +33,7 @@ Az alábbi funkciókat támogatja a típus ellenőrzése a bemeneti értékek sz
 
 ## <a name="next-steps"></a>További lépések
 
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
 - [Felhasználó által definiált függvények](sql-query-udfs.md)
-- [Aggregátumok](sql-query-aggregates.md)
+- [Összesítések](sql-query-aggregates.md)

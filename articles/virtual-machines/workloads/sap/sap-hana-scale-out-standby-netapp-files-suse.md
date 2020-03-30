@@ -1,6 +1,6 @@
 ---
-title: SAP HANA a SLES-vel való Azure NetApp Files a készenléti állapottal | Microsoft Docs
-description: Magas rendelkezésre állási útmutató az SAP NetWeaver-hez a SUSE Linux Enterprise Server Azure NetApp Files SAP-alkalmazásokhoz
+title: SAP HANA horizontális felskálázás készenléti állapottal az SLES-en lévő Azure NetApp-fájlokkal | Microsoft dokumentumok
+description: Magas rendelkezésre állási útmutató az SAP NetWeaver számára a SUSE Linux Enterprise Server rendszeren az Sap-alkalmazásokhoz készült Azure NetApp-fájlokkal
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2020
 ms.author: radeltch
 ms.openlocfilehash: c594ef3a62d45fb68002ec2b21fb89115f7a30af
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77565808"
 ---
-# <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával SUSE Linux Enterprise Server 
+# <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SAP HANA horizontális felskálázási rendszer üzembe helyezése készenléti csomókkal az Azure virtuális gépein az Azure NetApp-fájlok használatával a SUSE Linux Enterprise Server en 
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -33,17 +33,17 @@ ms.locfileid: "77565808"
 [anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
-[2205917]: https://launchpad.support.sap.com/#/notes/2205917
-[1944799]: https://launchpad.support.sap.com/#/notes/1944799
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2205917]:https://launchpad.support.sap.com/#/notes/2205917
+[1944799]:https://launchpad.support.sap.com/#/notes/1944799
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
-[1900823]: https://launchpad.support.sap.com/#/notes/1900823
+[1900823]:https://launchpad.support.sap.com/#/notes/1900823
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
 
@@ -55,211 +55,211 @@ ms.locfileid: "77565808"
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
 
-Ez a cikk azt ismerteti, hogyan helyezhető üzembe egy, az Azure Virtual Machines szolgáltatásban készenléti állapotban lévő, nagymértékben elérhető SAP HANA rendszer egy kibővíthető konfigurációban, a megosztott tároló köteteinek [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) használatával.  
+Ez a cikk ismerteti, hogyan telepíthet egy magas rendelkezésre állású SAP HANA-rendszert egy kibővített konfigurációban az Azure virtuális gépeken (VM-ek) az [Azure NetApp-fájlok](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) használatával a megosztott tárolókötetek használatával.  
 
-A példában a konfigurációk, a telepítési parancsok és így tovább, a HANA-példány **03** , a HANA rendszer azonosítója pedig **HN1**. A példák a HANA 2,0 SP4-es és az SAP 12 SP4-es SUSE Linux Enterprise Serveron alapulnak. 
+A példakonfigurációkban, telepítési parancsokban és így tovább a HANA példány **03,** a HANA rendszerazonosító pedig **HN1.** A példák a HANA 2.0 SP4 és a SUSE Linux Enterprise Server for SAP 12 SP4 alapján alapulnak. 
 
-Mielőtt elkezdené, tekintse meg a következő SAP-megjegyzéseket és dokumentumokat:
+Mielőtt elkezdené, olvassa el a következő SAP-jegyzeteket és dokumentumokat:
 
-* [Azure NetApp Files dokumentáció][anf-azure-doc] 
-* A [1928533] -es SAP-Megjegyzés tartalma:  
-  * Az SAP-szoftverek üzembe helyezéséhez támogatott Azure-beli virtuálisgép-méretek listája
-  * Fontos kapacitási információk Azure-beli virtuális gépek méreteihez
-  * Támogatott SAP-szoftverek és operációs rendszerek (OS) és adatbázis-kombinációk
-  * A Windows és a Linux szükséges SAP kernel-verziója a Microsoft Azure
-* [2015553]-es SAP-Megjegyzés: az Azure-ban az SAP által támogatott SAP-szoftverek üzembe helyezésének előfeltételeit sorolja fel
-* [2205917]-es SAP-Megjegyzés: az SAP-alkalmazások SUSE Linux Enterprise Server ajánlott operációsrendszer-beállításait tartalmazza
-* SAP-Megjegyzés [1944799]: az SAP-alkalmazások SUSE Linux Enterprise Server SAP-irányelveit tartalmazza
-* [2178632]-es SAP-Megjegyzés: részletes információkat tartalmaz az Azure-beli SAP-ban jelentett összes figyelési metrikáról
-* [2191498]-es SAP-Megjegyzés: a szükséges SAP Host Agent-verziót tartalmazza az Azure-beli Linux rendszerhez
-* [2243692]-es SAP-Megjegyzés: az Azure-beli Linuxon futó SAP-licenceléssel kapcsolatos információkat tartalmaz
-* SAP-Megjegyzés [1984787]: a (z) SUSE Linux Enterprise Server 12 általános információit tartalmazza
-* [1999351]-es SAP-Megjegyzés: az SAP-hez készült Azure Enhanced monitoring bővítmény további hibaelhárítási információit tartalmazza.
-* [1900823]-es SAP-Megjegyzés: a tárolási követelményekre vonatkozó információkat tartalmaz SAP HANA
-* [SAP Community wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): tartalmazza az összes szükséges SAP-megjegyzést Linux rendszerhez
-* [Azure Virtual Machines tervezése és implementálása Linux rendszeren az SAP-ban][planning-guide]
-* [Azure Virtual Machines üzembe helyezés az SAP-hez Linux rendszeren][deployment-guide]
-* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hez Linux rendszeren][dbms-guide]
-* [SUSE SAP ha ajánlott eljárási útmutató][suse-ha-guide]: az összes szükséges információt tartalmazza a NetWeaver magas rendelkezésre állásának beállításához és SAP HANA a helyszíni rendszer-replikáláshoz (általános alapkonfigurációként való használatra), sokkal részletesebb információkat biztosítanak.
-* [SUSE magas rendelkezésre állású bővítmény – 12 SP3 kibocsátási megjegyzések][suse-ha-12sp3-relnotes]
-* [NetApp SAP-alkalmazások Microsoft Azure a Azure NetApp Files használatával][anf-sap-applications-azure]
-* [SAP HANA a NetApp-rendszereken hálózati fájlrendszer (NFS)](https://www.netapp.com/us/media/tr-4435.pdf)használatával: konfigurációs útmutató, amely a SAP HANA beállításával kapcsolatos információkat tartalmaz Azure NFS by NetApp
+* [Az Azure NetApp Files dokumentációja][anf-azure-doc] 
+* Az SAP Note [1928533 a] következőket tartalmazza:  
+  * Az SAP-szoftverek telepítéséhez támogatott Azure virtuálisgép-méretek listája
+  * Fontos kapacitásadatok az Azure virtuális gépek méretéhez
+  * Támogatott SAP szoftverek, operációs rendszer (OS) és adatbázis-kombinációk
+  * A szükséges SAP kernel verzió Windows és Linux rendszeren a Microsoft Azure-ban
+* SAP Megjegyzés [2015553]: Az SAP által támogatott SAP-szoftvertelepítések előfeltételei az Azure-ban
+* SAP Megjegyzés [2205917]: A SUSE Linux Enterprise Server for SAP Alkalmazások ajánlott operációsrendszer-beállításait tartalmazza
+* SAP Megjegyzés [1944799:]Sap-irányelvek et tartalmaz a SUSE Linux Enterprise Server for SAP alkalmazásokhoz
+* SAP [2178632:]Részletes információkat tartalmaz az SAP-hoz az Azure-ban jelentett összes figyelési metrikáról
+* SAP Megjegyzés [2191498]: Tartalmazza a szükséges SAP Host Agent verzió linuxos Azure-ban
+* SAP Megjegyzés [2243692:]Információkat tartalmaz az SAP-licencelésről linuxos Azure-ban
+* SAP Megjegyzés [1984787]: Általános információkat tartalmaz a SUSE Linux Enterprise Server 12-ről
+* SAP Megjegyzés [1999351:]További hibaelhárítási információkat tartalmaz az SAP-hoz való azure továbbfejlesztett figyelési bővítményhez
+* SAP Megjegyzés [1900823:]Az SAP HANA tárolási követelményeivel kapcsolatos információkat tartalmaz
+* [SAP Community Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Tartalmazza az összes szükséges SAP-jegyzetet Linuxhoz
+* [Az Azure virtuális gépek tervezése és megvalósítása az SAP-hoz Linuxon][planning-guide]
+* [Az Azure virtuális gépek üzembe helyezése az SAP-hoz Linuxon][deployment-guide]
+* [Az Azure virtual machines DBMS üzembe helyezése az SAP-hoz Linuxon][dbms-guide]
+* [SUSE SAP HA gyakorlati útmutatók][suse-ha-guide]: Tartalmazza az összes szükséges információt a NetWeaver magas rendelkezésre állású és SAP HANA rendszerreplikáció helyszíni beállításához (általános alapkonfigurációként való használatra; sokkal részletesebb információkat nyújtanak)
+* [SUSE high availability Extension 12 SP3 kiadási megjegyzések][suse-ha-12sp3-relnotes]
+* [NetApp SAP-alkalmazások a Microsoft Azure-ban az Azure NetApp-fájlok használatával][anf-sap-applications-azure]
+* [SAP HANA a Hálózati fájlrendszerrel (NFS) rendelkező NetApp-rendszereken:](https://www.netapp.com/us/media/tr-4435.pdf)Konfigurációs útmutató, amely az SAP HANA beállításával kapcsolatos információkat tartalmazza a NetApp-alapú Azure NFS használatával
 
 
 ## <a name="overview"></a>Áttekintés
 
-A HANA magas rendelkezésre állásának eléréséhez az egyik módszer a gazdagép automatikus feladatátvételének konfigurálása. A gazdagép automatikus feladatátvételének konfigurálásához vegyen fel egy vagy több virtuális gépet a HANA rendszerbe, és konfigurálja készenléti csomópontként. Ha az aktív csomópont meghibásodik, a rendszer automatikusan átveszi a készenléti csomópontot. Az Azure Virtual Machines szolgáltatásban bemutatott konfigurációban az Azure NetApp Files-on található [NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)-sel automatikusan feladatátvételt érhet el.  
+Hana magas rendelkezésre állás elérésének egyik módja a gazdagép automatikus feladatátvétel konfigurálása. A gazdagép automatikus feladatátvételkonfigurálásához adjon hozzá egy vagy több virtuális gépet a HANA-rendszerhez, és állítsa be őket készenléti csomópontokként. Ha az aktív csomópont meghibásodik, a készenléti csomópont automatikusan átveszi az irányítást. Az Azure virtuális gépekkel bemutatott konfigurációban az [NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)használatával érhető el az Azure NetApp Files használatával.  
 
 > [!NOTE]
-> A készenléti csomópontnak hozzá kell férnie az összes adatbázis-kötethez. A HANA-köteteket Nfsv4 névleképezője-kötetként kell csatlakoztatni. A Nfsv4 névleképezője protokoll továbbfejlesztett file Lease-alapú zárolási mechanizmusa `I/O` kerítéshez használatos. 
+> A készenléti csomópontnak hozzá kell férnie az összes adatbáziskötethez. A HANA-köteteket NFSv4-kötetként kell csatlakoztatni. A továbbfejlesztett fájl bérlet-alapú zár mechanizmus az NFSv4 protokoll használják `I/O` kerítés. 
 
 > [!IMPORTANT]
-> A támogatott konfiguráció létrehozásához a HANA-és a NFSv 4.1-es kötetként kell üzembe helyeznie, és csatlakoztatni kell őket a NFSv 4.1 protokoll használatával. A HANA-gazdagép automatikus feladatátvételi konfigurációja készenléti csomóponttal nem támogatott a NFSv3.
+> A támogatott konfiguráció létrehozásához telepítenie kell a HANA-adatokat és a naplóköteteket NFSv4.1 kötetként, és csatlakoztatnia kell őket az NFSv4.1 protokoll használatával. A HANA állomás automatikus feladatátvételi konfiguráció készenléti csomóponttal nem támogatja az NFSv3.
 
-![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-suse-anf/sap-hana-scale-out-standby-netapp-files-suse.png)
+![SAP NetWeaver magas rendelkezésre állás – áttekintés](./media/high-availability-guide-suse-anf/sap-hana-scale-out-standby-netapp-files-suse.png)
 
-Az előző ábrán, amely SAP HANA hálózati javaslatokat követ, három alhálózatot képvisel egy Azure virtuális hálózaton belül: 
-* Ügyfél-kommunikációhoz
-* A tárolási rendszerrel folytatott kommunikációhoz
-* A HANA csomópontok közötti kommunikációhoz
+Az előző ábrán, amely az SAP HANA hálózati javaslatokat követi, három alhálózat jelenik meg egy Azure virtuális hálózaton belül: 
+* Ügyfélkommunikációhoz
+* A tárolórendszerrel való kommunikációhoz
+* Belső HANA inter-node kommunikációhoz
 
-Az Azure NetApp-kötetek külön alhálózatban találhatók, [Azure NetApp Files delegálva](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
+Az Azure NetApp-kötetek külön alhálózatban vannak, [delegálva az Azure NetApp-fájloknak.](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)  
 
-Ebben a példában az alhálózatok a következők:  
+Ebben a példában a konfiguráció, az alhálózatok a következők:  
 
-  - `client` 10.23.0.0/24  
-  - `storage` 10.23.2.0/24  
-  - `hana` 10.23.3.0/24  
-  - `anf` 10.23.1.0/26  
+  - `client`10.23.0.0/24  
+  - `storage`10.23.2.0/24  
+  - `hana`10.23.3.0/24  
+  - `anf`10.23.1.0/26  
 
-## <a name="set-up-the-azure-netapp-files-infrastructure"></a>A Azure NetApp Files-infrastruktúra beállítása 
+## <a name="set-up-the-azure-netapp-files-infrastructure"></a>Az Azure NetApp Files infrastruktúra beállítása 
 
-Mielőtt folytatná a Azure NetApp Files-infrastruktúra beállítását, ismerkedjen meg a [Azure NetApp Files dokumentációval][anf-azure-doc]. 
+Mielőtt folytatná az Azure NetApp Files infrastruktúra telepítését, ismerkedjen meg az [Azure NetApp Files][anf-azure-doc]dokumentációjával. 
 
-Azure NetApp Files több [Azure-régióban](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)is elérhető. Ellenőrizze, hogy a kiválasztott Azure-régió kínál-e Azure NetApp Files.  
+Az Azure NetApp Files számos [Azure-régióban](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)érhető el. Ellenőrizze, hogy a kiválasztott Azure-régió kínál-e Azure NetApp-fájlokat.  
 
-Az Azure-régiók Azure NetApp Files rendelkezésre állásáról az [Azure-régió Azure NetApp Files rendelkezésre állása][anf-avail-matrix]című témakörben olvashat bővebben.  
+Az Azure NetApp-fájlok Azure-régiónkénti elérhetőségéről az [Azure NetApp-fájlok rendelkezésre állása az Azure régió szerint][anf-avail-matrix]című témakörben talál további információt.  
 
-A Azure NetApp Files üzembe helyezése előtt kérje a bevezetést a Azure NetApp Filesra, ha [Azure NetApp Files útmutatást szeretne regisztrálni][anf-register]. 
+Az Azure NetApp-fájlok üzembe helyezése előtt kérjen bevezetést az Azure NetApp-fájlokba az [Azure NetApp-fájlok regisztrálása utasításokhoz.][anf-register] 
 
-### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files erőforrások üzembe helyezése  
+### <a name="deploy-azure-netapp-files-resources"></a>Az Azure NetApp Files erőforrásainak telepítése  
 
-Az alábbi utasítások azt feltételezik, hogy már üzembe helyezte az Azure-beli [virtuális hálózatot](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). A Azure NetApp Files erőforrásokat és virtuális gépeket, amelyeken a Azure NetApp Files erőforrásokat csatlakoztatni kell, ugyanabban az Azure-beli virtuális hálózatban vagy az Azure-beli virtuális hálózatokban kell telepíteni.  
+A következő utasítások feltételezik, hogy már telepítette az [Azure virtuális hálózatát.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) Az Azure NetApp Files erőforrásait és a virtuális gépeket, ahol az Azure NetApp Files erőforrások lesznek csatlakoztatva, ugyanabban az Azure virtuális hálózatban vagy társviszonyban lévő Azure virtuális hálózatokban kell üzembe helyezni.  
 
-1. Ha még nem telepítette az erőforrásokat, kérje a [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)bevezetését.  
+1. Ha még nem telepítette az erőforrásokat, kérje [az Azure NetApp-fájlokba történő bevezetést.](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)  
 
 2. Hozzon létre egy NetApp-fiókot a kiválasztott Azure-régióban a [NetApp-fiók létrehozása](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)című részben található utasításokat követve.  
 
-3. Hozzon létre egy Azure NetApp Files kapacitási készletet a [Azure NetApp Files kapacitásának beállítása](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)című részben leírtak szerint.  
+3. Hozzon létre egy Azure NetApp-fájlok kapacitáskészletét az [Azure NetApp-fájlok kapacitáskészletének beállítása](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)című részben található utasításokat követve.  
 
-   A cikkben bemutatott HANA-architektúra az *Ultra Service* szintjén egyetlen Azure NetApp Files kapacitású készletet használ. Az Azure-beli HANA-alapú számítási feladatokhoz ajánlott Azure NetApp Files *Ultra* vagy *prémium* [szintű szolgáltatási szintet](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)használni.  
+   A jelen cikkben bemutatott HANA-architektúra egyetlen Azure NetApp-fájlkapacitáskészletet használ az *Ultra szolgáltatás* szintjén. Az Azure-beli HANA-számítási feladatok hoz javasoljuk az Azure NetApp Files *Ultra* vagy *a Prémium szintű* szolgáltatási [szint](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)használatát.  
 
-4. Alhálózat delegálása Azure NetApp Filesre, az [alhálózat delegálása Azure NetApp Filesra](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)című részben leírtak szerint.  
+4. Alhálózat delegálása az Azure NetApp-fájlokba az [Alhálózat delegálása az Azure NetApp-fájlokhoz](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)című útmutatóban leírtak szerint.  
 
-5. Azure NetApp Files kötetek üzembe helyezéséhez kövesse az [NFS-kötet létrehozása a Azure NetApp Files számára](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)című témakör utasításait.  
+5. Az Azure NetApp-fájlok köteteinek üzembe helyezéséhez kövesse az [NFS-kötet létrehozása az Azure NetApp-fájlokhoz](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)című útmutatóutasításait követve.  
 
-   A kötetek központi telepítésekor ügyeljen arra, hogy a **nfsv 4.1** verziót válassza. Jelenleg a NFSv 4.1-hez való hozzáférés további engedélyezési lehetőséget igényel. Telepítse a köteteket a kijelölt Azure NetApp Files [alhálózatban](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). 
+   A kötetek telepítése kor válassza ki az **NFSv4.1** verzióját. Jelenleg az NFSv4.1-hez való hozzáféréshez további engedélyezési lista szükséges. Telepítse a köteteket a kijelölt Azure NetApp Files [alhálózatban.](https://docs.microsoft.com/rest/api/virtualnetwork/subnets) 
    
-   Ne feledje, hogy a Azure NetApp Files erőforrásoknak és az Azure-beli virtuális gépeknek ugyanabban az Azure-beli virtuális hálózaton vagy az Azure-beli virtuális hálózatokban kell lenniük. Például a **HN1**-mnt00001, a **HN1**-log-mnt00001, és így tovább, a kötetek nevei és NFS://10.23.1.5/**HN1**-mnt00001, NFS://10.23.1.4/**HN1**-log-mnt00001 és így tovább, a fájlok elérési útja a Azure NetApp Files kötetek számára.  
+   Ne feledje, hogy az Azure NetApp Files-erőforrásoknak és az Azure virtuális gépeknek ugyanabban az Azure-beli virtuális hálózatban vagy társviszonyt létesített Azure virtuális hálózatokban kell lenniük. Például **hn1**-data-mnt00001, **HN1**-log-mnt00001, és így tovább, a kötet nevét és nfs://10.23.1.5/**HN1**-data-mnt00001, nfs://10.23.1.4/**HN1**-log-mnt00001, és így tovább, a fájl elérési utak az Azure NetApp Files kötetek.  
 
-   * Volume **HN1**-mnt00001 (NFS://10.23.1.5/**HN1**-adatforgalom-mnt00001)
-   * Volume **HN1**-mnt00002 (NFS://10.23.1.6/**HN1**-adatforgalom-mnt00002)
-   * kötet **HN1**-log-mnt00001 (NFS://10.23.1.4/**HN1**-log-mnt00001)
-   * kötet **HN1**-log-mnt00002 (NFS://10.23.1.6/**HN1**-log-mnt00002)
-   * mennyiségi **HN1**– megosztott (NFS://10.23.1.4/**HN1**-Shared)
+   * **HN1**-data-mnt00001 kötet (nfs://10.23.1.5/**HN1**-data-mnt00001)
+   * **HN1**-data-mnt00002 kötet (nfs://10.23.1.6/**HN1**-data-mnt00002)
+   * **hn1**-log-mnt00001 kötet (nfs://10.23.1.4/**HN1**-log-mnt00001)
+   * **HN1**-log-mnt00002 kötet (nfs://10.23.1.6/**HN1**-log-mnt00002)
+   * kötet **HN1**-megosztott (nfs://10.23.1.4/**HN1**-megosztott)
    
-   Ebben a példában egy külön Azure NetApp Files kötetet használtunk minden HANA-adathalmazhoz és a naplózási kötethez. A kisebb vagy nem produktív rendszerek költséghatékony konfigurációjának érdekében minden adatcsatlakoztatást és naplót egyetlen kötetre helyezhet el.  
+   Ebben a példában egy külön Azure NetApp-fájlok kötetet használtunk minden HANA-adathoz és naplókötethez. A kisebb vagy nem produktív rendszerek költségoptimalizált konfigurációja érdekében az összes adatcsatolást és naplót egyetlen kötetre helyezheti.  
 
 ### <a name="important-considerations"></a>Fontos szempontok
 
-Az SAP NetWeaver SUSE magas rendelkezésre állású architektúrán való Azure NetApp Files létrehozásakor vegye figyelembe a következő fontos szempontokat:
+Amikor az Sap NetWeaver számára létrehozott Azure NetApp-fájlokat a SUSE magas rendelkezésre állású architektúrán hozza létre, vegye figyelembe az alábbi fontos szempontokat:
 
-- A minimális kapacitási készlet 4 tebibájt (TiB).  
-- A minimális kötet mérete 100 gibibájtban értendők (GiB).
-- Azure NetApp Files és az összes virtuális gépet, amelybe a Azure NetApp Files köteteket csatlakoztatni kell, ugyanabban az Azure-beli virtuális hálózatban vagy azonos régióban lévő, egymással azonos [virtuális hálózatokban](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) kell lennie.  
-- A kiválasztott virtuális hálózatnak rendelkeznie kell egy Azure NetApp Files delegált alhálózattal.
-- Egy Azure NetApp Files kötet átviteli sebessége a mennyiségi kvóta és a szolgáltatási szint függvénye a [Azure NetApp Files szolgáltatási szintjén](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)dokumentálva. A HANA Azure NetApp-kötetek méretezése során győződjön meg arról, hogy az eredményül kapott átviteli sebesség megfelel a HANA rendszerkövetelményeinek.  
-- Az Azure NetApp Files [exportálási házirend](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)segítségével szabályozhatja az engedélyezett ügyfeleket, a hozzáférési típust (írható és olvasható, csak olvasható stb.). 
-- A Azure NetApp Files funkció még nem tud zónával foglalkozni. Jelenleg a funkció nincs telepítve az Azure-régió összes rendelkezésre állási zónájában. Vegye figyelembe, hogy egyes Azure-régiókban lehetséges a késés következményei.  
+- A minimális kapacitású medence 4 tebibyte (TiB).  
+- A minimális térfogatméret 100 gibibájt (GiB).
+- Az Azure NetApp-fájloknak és minden olyan virtuális gépnek, amelyhez az Azure NetApp-fájlok kötetei csatlakoztatva lesznek, ugyanabban az Azure-beli virtuális hálózatban vagy [társviszonyban lévő virtuális hálózatokban](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) kell lennie ugyanabban a régióban.  
+- A kijelölt virtuális hálózatnak rendelkeznie kell egy alhálózattal, amely delegált az Azure NetApp-fájlok.
+- Az Azure NetApp Files kötet átviteli forgalma a mennyiségi kvóta és a szolgáltatásszint függvénye, az [Azure NetApp-fájlok szolgáltatási szintjén](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)dokumentált módon. A HANA Azure NetApp-kötetek méretezésekénél győződjön meg arról, hogy az eredményül kapott átviteli igény megfelel a HANA rendszerkövetelményeinek.  
+- Az Azure NetApp Files [exportálási szabályzattal](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)szabályozhatja az engedélyezett ügyfeleket, a hozzáférési típust (olvasás-írás, csak olvasható és így tovább). 
+- Az Azure NetApp Files szolgáltatás még nem rendelkezik zónabarát. Jelenleg a szolgáltatás nincs telepítve az Azure-régió összes rendelkezésre állási zónájában. Vegye figyelembe a lehetséges késési következményekkel jár egyes Azure-régiókban.  
 -  
 
 > [!IMPORTANT]
-> SAP HANA munkaterhelések esetében a kis késleltetés kritikus fontosságú. A Microsoft képviselőjével együttműködve biztosíthatja, hogy a virtuális gépek és a Azure NetApp Files kötetek központi telepítése közel legyen.  
+> AZ SAP HANA számítási feladatok esetén az alacsony késés kritikus fontosságú. Együttműködve a Microsoft képviselőjével annak érdekében, hogy a virtuális gépek és az Azure NetApp Files kötetek közvetlen közelben legyenek telepítve.  
 
-### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>HANA-adatbázis méretezése Azure NetApp Files
+### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>HanA-adatbázis méretezése az Azure NetApp-fájlokon
 
-Egy Azure NetApp Files kötet átviteli sebessége a kötet méretének és a szolgáltatási szintnek a függvénye, amely a [Azure NetApp Files szolgáltatási szintjén](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)van dokumentálva. 
+Az Azure NetApp Files kötet átviteli forgalma a kötet méretének és a szolgáltatás szintjének függvénye, az [Azure NetApp-fájlok szolgáltatási szintjén](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)dokumentált módon. 
 
-Az Azure-beli SAP-infrastruktúra tervezésekor vegye figyelembe az SAP által igényelt minimális tárolási követelményeket, amelyek az átviteli sebesség minimális jellemzőire fordíthatók:
+Az SAP azure-beli infrastruktúrájának tervezésekor vegye figyelembe az SAP néhány minimális tárolási követelményét, amelyek minimális átviteli jellemzőket eredményeznek:
 
-- Engedélyezze az írható-olvasható 250 megabájt/másodperc (MB/s)/Hana/log, 1 MB méretű I/O-mérettel.  
-- Engedélyezheti legalább 400 MB/s olvasási tevékenységet a/Hana/Data 16 MB-os és 64-MB I/O-méretekhez.  
-- Engedélyezze az írási tevékenységet legalább 250 MB/s értéknél a 16 MB-os és a 64-MB I/O-méretekkel rendelkező/Hana/Data. 
+- Engedélyezze az írási/olvasási /hana/log 250 megabájt/másodperc (MB/s) írási/olvasási/írási műveleteket 1 MB I/O-mérettel.  
+- Legalább 400 MB/s olvasási tevékenység engedélyezése a /hana/data esetében 16 MB és 64 MB-os I/O-méretek esetén.  
+- Legalább 250 MB/s írási tevékenység engedélyezése a /hana/data 16 MB és 64 MB I/O méretben. 
 
-A [Azure NetApp Files átviteli sebességre vonatkozó határértékek](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) 1 TiB-ra vetítve:
-- Premium Storage szintű 64 MiB/s  
-- Ultra Storage-réteg – 128 MiB/s  
+Az [Azure NetApp Files átviteli korlát1](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) TiB kötetkvóta a következők:
+- Prémium szintű tárolási szint - 64 MiB/s  
+- Ultra tárolási szint - 128 MiB/s  
 
-Az adatokhoz és a naplóhoz szükséges minimális teljesítménybeli követelmények teljesítéséhez, valamint a/Hana/Shared vonatkozó irányelvekhez az ajánlott méretek a következők:
+Az SAP minimális átviteli követelményeinek teljesítéséhez az adatokés a napló, valamint a /hana/shared irányelveinek teljesítéséhez az ajánlott méretek a következők:
 
-| Kötet | Méret<br>Premium Storagei szintű | Méret<br>Ultra Storage-rétegek | Támogatott NFS-protokoll |
+| Kötet | A mérete<br>Prémium szintű tárolási szint | A mérete<br>Ultra tárolási szint | Támogatott NFS protokoll |
 | --- | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
-| /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
-| /hana/shared | Max (512 GB, 1xRAM)/4 feldolgozó csomópont | Max (512 GB, 1xRAM)/4 feldolgozó csomópont | v3 vagy v 4.1 |
+| /hana/log/ | 4 TiB | 2 TiB | 4.1.-es |
+| /hana/adatok | 6.3 TiB | 3.2 TiB | 4.1.-es |
+| /hana/megosztott | Max (512 GB, 1xRAM) 4 munkavégző csomópontonként | Max (512 GB, 1xRAM) 4 munkavégző csomópontonként | 3-as vagy 4.1-es |
 
-A cikkben bemutatott elrendezés SAP HANA konfigurációja a Azure NetApp Files Ultra Storage-rétegek használatával a következő lenne:
+Az SAP HANA konfigurációaz ebben a cikkben bemutatott elrendezés, az Azure NetApp Files Ultra Storage réteg használatával, a következő lenne:
 
-| Kötet | Méret<br>Ultra Storage-rétegek | Támogatott NFS-protokoll |
+| Kötet | A mérete<br>Ultra tárolási szint | Támogatott NFS protokoll |
 | --- | --- | --- |
-| /hana/log/mnt00001 | 2 TiB | v 4.1 |
-| /hana/log/mnt00002 | 2 TiB | v 4.1 |
-| /hana/data/mnt00001 | 3,2 TiB | v 4.1 |
-| /hana/data/mnt00002 | 3,2 TiB | v 4.1 |
-| /hana/shared | 2 TiB | v3 vagy v 4.1 |
+| /hana/log/mnt00001 | 2 TiB | 4.1.-es |
+| /hana/log/mnt00002 | 2 TiB | 4.1.-es |
+| /hana/data/mnt00001 | 3.2 TiB | 4.1.-es |
+| /hana/data/mnt00002 | 3.2 TiB | 4.1.-es |
+| /hana/megosztott | 2 TiB | 3-as vagy 4.1-es |
 
 > [!NOTE]
-> Az itt ismertetett Azure NetApp Files méretezési javaslatok célja, hogy megfeleljenek az SAP által az infrastruktúra-szolgáltatók számára javasolt minimális követelményeknek. A valós ügyfelek központi telepítései és számítási feladatainak esetében ezek a méretek nem elégségesek. Ezeket a javaslatokat kiindulási pontként és alkalmazkodva használhatja az adott számítási feladatra vonatkozó követelmények alapján.  
+> Az Itt megadott Azure NetApp-fájlok méretezési javaslatok az SAP által az infrastruktúra-szolgáltatók számára ajánlott minimális követelményeknek való megfelelnek. Valós ügyfél-telepítések és számítási feladatok forgatókönyvek, ezek a méretek nem elegendőek. Ezeket a javaslatokat kiindulási pontként használja, és alkalmazkodjon az adott munkaterhelés követelményei alapján.  
 
 > [!TIP]
-> Azure NetApp Files köteteket dinamikusan átméretezheti, anélkül, hogy le kellene *választania* a köteteket, le kell állítania a virtuális gépeket, vagy le kell állítania a SAP HANA. Ez a megközelítés lehetővé teszi a rugalmasságot, hogy megfeleljen az alkalmazás várható és előre nem látható átviteli követelményeinek.
+> Az Azure NetApp-fájlok köteteit dinamikusan átméretezheti anélkül, hogy le kellene választania a köteteket, le kellene *állítania* a virtuális gépeket, vagy le kellene állítania az SAP HANA-t. Ez a megközelítés lehetővé teszi a rugalmasságot, hogy megfeleljen az alkalmazás várható és előre nem látható átviteli igényeinek.
 
-## <a name="deploy-linux-virtual-machines-via-the-azure-portal"></a>Linux rendszerű virtuális gépek üzembe helyezése a Azure Portal használatával
+## <a name="deploy-linux-virtual-machines-via-the-azure-portal"></a>Linuxos virtuális gépek telepítése az Azure Portalon keresztül
 
-Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa végre a következő lépéseket:
-1. Hozza létre az Azure-beli [virtuális hálózati](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) alhálózatokat az [Azure Virtual Networkben](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). 
+Először létre kell hoznia az Azure NetApp Files köteteket. Ezután tegye a következő lépéseket:
+1. Hozza létre az [Azure virtuális hálózati alhálózatait](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) az [Azure virtuális hálózatában.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) 
 1. Telepítse a virtuális gépeket. 
 1. Hozza létre a további hálózati adaptereket, és csatolja a hálózati adaptereket a megfelelő virtuális gépekhez.  
 
-   Mindegyik virtuális gépnek három hálózati adaptere van, amelyek megfelelnek a három Azure-beli virtuális hálózati alhálózatnak (`client`, `storage` és `hana`). 
+   Minden virtuális gép három hálózati adapter, amely megfelel a három`client`Azure `storage` `hana`virtuális hálózati alhálózatok ( , és . 
 
-   További információkért lásd: [Linux rendszerű virtuális gép létrehozása az Azure-ban több hálózati kártyával](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics).  
+   További információ: [Linuxos virtuális gép létrehozása az Azure-ban több hálózati csatolókártyával.](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics)  
 
 > [!IMPORTANT]
-> SAP HANA munkaterhelések esetében a kis késleltetés kritikus fontosságú. Az alacsony késés érdekében működjön együtt a Microsoft-képviselőjével, hogy a virtuális gépek és a Azure NetApp Files kötetek központi telepítése közel legyen. Ha [új SAP HANA](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) , SAP HANA Azure NetApp filest használó rendszer bevezetését végzi, küldje el a szükséges információkat. 
+> AZ SAP HANA számítási feladatok esetén az alacsony késés kritikus fontosságú. Alacsony késés elérése érdekében a Microsoft képviselőjével együttműködve győződjön meg arról, hogy a virtuális gépek és az Azure NetApp-fájlok kötetei közvetlen közelben vannak telepítve. Amikor az SAP HANA Azure NetApp-fájlokat használó [új SAP HANA-rendszer bevezetésével](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) adja meg a szükséges információkat. 
  
-A következő utasítások feltételezik, hogy már létrehozta az erőforráscsoportot, az Azure-beli virtuális hálózatot és a három Azure-beli virtuális hálózati alhálózatot: `client`, `storage` és `hana`. Ha telepíti a virtuális gépeket, válassza ki az ügyfél alhálózatát, hogy az ügyfél hálózati adaptere legyen az elsődleges felület a virtuális gépeken. Egy explicit útvonalat is konfigurálnia kell a Azure NetApp Files delegált alhálózatra a Storage alhálózati átjárón keresztül. 
+A következő utasítások feltételezik, hogy már létrehozta az erőforráscsoportot, az Azure virtuális hálózatot `storage` `hana`és a három Azure virtuális hálózati alhálózatot: `client`és . A virtuális gépek telepítésekor jelölje ki az ügyfél alhálózatát, hogy az ügyfél hálózati adaptere a virtuális gépek elsődleges kapcsolata. Emellett konfigurálnia kell egy explicit útvonalat az Azure NetApp Files delegált alhálózatához a tároló alhálózati átjárón keresztül. 
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy a kiválasztott operációs rendszer SAP-tanúsítvánnyal rendelkezik az adott virtuálisgép-típusok SAP HANAához. A SAP HANA Certified VM-típusok és operációsrendszer-kiadások listáját az adott típusokhoz a [SAP HANA Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) webhelyen teheti meg. Kattintson a felsorolt virtuálisgép-típus részleteire az adott típushoz tartozó SAP HANA által támogatott operációsrendszer-kiadások teljes listájának lekéréséhez.  
+> Győződjön meg arról, hogy a kiválasztott operációs rendszer SAP-tanúsítvánnyal rendelkezik az SAP HANA az adott virtuálisgép-típusok használata. Az SAP HANA-tanúsítvánnyal rendelkező virtuálisgép-típusok és az operációs rendszer ilyen típusú kiadásainak listáját az [SAP HANA-tanúsítvánnyal rendelkező IaaS-platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) webhelyén keresse fel. Kattintson a felsorolt virtuális gép típusának részleteire az adott típusSAP HANA által támogatott operációsrendszer-kiadások teljes listájának lekérni.  
 
-1. Hozzon létre egy rendelkezésre állási készletet a SAP HANAhoz. Ügyeljen arra, hogy a maximális frissítési tartományt állítsa be.  
+1. Hozzon létre egy rendelkezésre állási készlet et az SAP HANA számára. Győződjön meg arról, hogy beállította a maximális frissítési tartományt.  
 
-2. Hozzon létre három virtuális gépet (**hanadb1**, **hanadb2**, **hanadb3**) az alábbi lépések végrehajtásával:  
+2. Hozzon létre három virtuális gépet (**hanadb1**, **hanadb2**, **hanadb3**) a következő lépésekkel:  
 
-   a. A SAP HANA által támogatott Azure-katalógusban SLES4SAP-rendszerképet használhat. Ebben a példában egy SLES4SAP 12 SP4-es rendszerképet használunk.  
+   a. Használjon Egy SLES4SAP-lemezképet az Sap HANA által támogatott Azure-galériában. Ebben a példában egy SLES4SAP 12 SP4 lemezképet használtunk.  
 
-   b. Válassza ki azt a rendelkezésre állási készletet, amelyet korábban a SAP HANAhoz hozott létre.  
+   b. Válassza ki az SAP HANA korábban létrehozott rendelkezésre állási készletét.  
 
-   c. Válassza ki az ügyfél Azure virtuális hálózati alhálózatát. Válassza a [gyorsított hálózat](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)lehetőséget.  
+   c. Válassza ki az ügyfél Azure virtuális hálózati alhálózat. Válassza [a Gyorsított hálózat lehetőséget.](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)  
 
-   A virtuális gépek központi telepítésekor a rendszer automatikusan létrehozza a hálózati adapter nevét. Az egyszerűség kedvéért ebben az útmutatóban az automatikusan generált hálózati adapterekre fogunk hivatkozni, amelyek az ügyfél Azure virtuális hálózati alhálózatához vannak csatolva, mint a **hanadb1**, a **hanadb2-Client**és a **hanadb3-Client**. 
+   A virtuális gépek telepítésekor a rendszer automatikusan létrehozza a hálózati csatoló nevét. Az egyszerűség kedvéért az egyszerűség kedvéért az ügyfél Azure virtuális hálózati alhálózatához csatolt automatikusan létrehozott hálózati adapterekre, mint **hanadb1-client**, **hanadb2-client**és **hanadb3-client**néven hivatkozunk. 
 
-3. Hozzon létre három hálózati adaptert, egyet az egyes virtuális gépek számára a `storage` virtuális hálózat alhálózatához (ebben a példában a **hanadb1**, a **hanadb2**és a **hanadb3-** tárolót).  
+3. Hozzon létre három hálózati adaptert, egyet `storage` minden virtuális géphez a virtuális hálózati alhálózathoz (ebben a példában **hanadb1-storage**, **hanadb2-storage**és **hanadb3-storage**).  
 
-4. Hozzon létre három hálózati adaptert, egyet az egyes virtuális gépekhez a `hana` virtuális hálózat alhálózatához (ebben a példában a **hanadb1-Hana**, a **hanadb2-Hana**és a **hanadb3-Hana**).  
+4. Hozzon létre három hálózati adaptert, egyet `hana` minden virtuális géphez a virtuális hálózati alhálózathoz (ebben a példában **hanadb1-hana**, **hanadb2-hana**és **hanadb3-hana**).  
 
-5. Csatlakoztassa az újonnan létrehozott virtuális hálózati adaptereket a megfelelő virtuális gépekhez az alábbi lépések végrehajtásával:  
+5. Csatlakoztassa az újonnan létrehozott virtuális hálózati adaptereket a megfelelő virtuális gépekhez az alábbi lépésekkel:  
 
-    a. Nyissa meg a [Azure Portal](https://portal.azure.com/#home)a virtuális gépet.  
+    a. Nyissa meg a virtuális gépet az [Azure Portalon.](https://portal.azure.com/#home)  
 
-    b. A bal oldali ablaktáblán válassza a **Virtual Machines**lehetőséget. Szűrje a virtuális gép nevét (például **hanadb1**), majd válassza ki a virtuális gépet.  
+    b. A bal oldali ablaktáblában válassza a **Virtuális gépek**lehetőséget. Szűrje a virtuális gép nevét (például **hanadb1**), majd válassza ki a virtuális gépet.  
 
-    c. Az **Áttekintés** ablaktáblán válassza a **Leállítás** elemet a virtuális gép felszabadításához.  
+    c. Az **Áttekintő** ablaktáblán válassza a **Leállítás** lehetőséget a virtuális gép felszabadításához.  
 
-    d. Válassza a **hálózatkezelés**lehetőséget, majd csatlakoztassa a hálózati adaptert. A **hálózati adapter csatolása** legördülő listában válassza ki a már létrehozott hálózati adaptereket a `storage` és `hana` alhálózatokhoz.  
+    d. Válassza **a Hálózat lehetőséget,** majd csatolja a hálózati adaptert. A **Hálózati adapter csatolása** legördülő listában jelölje ki a `storage` `hana` már létrehozott hálózati csatolókat a és az alhálózatokhoz.  
     
     e. Kattintson a **Mentés** gombra. 
  
-    f. Ismételje meg a b – e lépéseket a fennmaradó virtuális gépek esetében (példánkban a **hanadb2** és a **hanadb3**).
+    f. Ismételje meg a b lépéslépéseit a fennmaradó virtuális gépek (példánkban **hanadb2** és **hanadb3**).
  
-    g. A virtuális gépeket most leállított állapotban hagyja. Ezután engedélyezzük a [gyorsított hálózatkezelést](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) az újonnan csatlakoztatott hálózati adapterek esetében.  
+    g. Hagyja a virtuális gépeket leállított állapotban. Ezután lehetővé tesszük a [gyorsított hálózatkezelést](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) az összes újonnan csatlakoztatott hálózati csatolószámára.  
 
-6. A következő lépésekkel engedélyezheti a gyorsított hálózatkezelést a `storage` és `hana` alhálózatok további hálózati adapterei számára:  
+6. A következő lépésekkel engedélyezze a `storage` gyorsított `hana` hálózatkezelést a további hálózati adapterek és alhálózatok számára:  
 
-    a. Nyissa meg [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) a [Azure Portalban](https://portal.azure.com/#home).  
+    a. Nyissa meg az [Azure Cloud Shellt](https://azure.microsoft.com/features/cloud-shell/) az [Azure Portalon.](https://portal.azure.com/#home)  
 
-    b. Hajtsa végre a következő parancsokat a gyorsított hálózatkezelés engedélyezéséhez a további hálózati adapterekhez, amelyek a `storage` és `hana` alhálózatokhoz vannak csatolva.  
+    b. Hajtsa végre a következő parancsokat, hogy lehetővé tegye `storage` a `hana` gyorsított hálózatkezelést a további hálózati adapterek számára, amelyek a és az alhálózatokhoz vannak csatolva.  
 
     <pre><code>
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-storage</b> --accelerated-networking true
@@ -272,23 +272,23 @@ A következő utasítások feltételezik, hogy már létrehozta az erőforráscs
 
     </code></pre>
 
-7. Indítsa el a virtuális gépeket a következő lépések végrehajtásával:  
+7. Indítsa el a virtuális gépeket az alábbi lépésekkel:  
 
-    a. A bal oldali ablaktáblán válassza a **Virtual Machines**lehetőséget. Szűrje a virtuális gép nevét (például **hanadb1**), majd jelölje ki.  
+    a. A bal oldali ablaktáblában válassza a **Virtuális gépek**lehetőséget. Szűrje a virtuális gép nevét (például **hanadb1**), majd jelölje ki.  
 
-    b. Az **Áttekintés** ablaktáblán válassza az **Indítás**lehetőséget.  
+    b. Az **Áttekintő** ablaktáblán válassza a **Start**gombot.  
 
-## <a name="operating-system-configuration-and-preparation"></a>Operációs rendszer konfigurációja és előkészítése
+## <a name="operating-system-configuration-and-preparation"></a>Az operációs rendszer konfigurációja és előkészítése
 
-A következő részekben található utasítások a következők egyikével vannak ellátva:
-* **[A]** : az összes csomópontra érvényes
-* **[1]** : csak az 1. csomópontra érvényes
-* **[2]** : csak a 2. csomópontra vonatkozik
-* **[3]** : csak a 3. csomópontra vonatkozik
+A következő szakaszokban található utasítások a következők egyikével vannak ellátva:
+* **[A]**: Minden csomópontra alkalmazható
+* **[1]**: Csak az 1.
+* **[2]**: Csak a 2- es csomópontra alkalmazható
+* **[3]**: Csak a 3- as csomópontra alkalmazható
 
-Konfigurálja és készítse elő az operációs rendszert a következő lépések végrehajtásával:
+Konfigurálja és készítse elő az operációs rendszert az alábbi lépésekkel:
 
-1. **[A]** a gazdagép fájljainak karbantartása a virtuális gépeken. Bejegyzések belefoglalása az összes alhálózathoz. Ebben a példában a következő bejegyzések lettek hozzáadva a `/etc/hosts`hoz.  
+1. **[A]** A gazdagépfájlok karbantartása a virtuális gépeken. Az összes alhálózat tételeinek belefoglalása. Ebben a példában `/etc/hosts` a következő bejegyzések kerültek be.  
 
     <pre><code>
     # Storage
@@ -305,9 +305,9 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     10.23.3.6   hanadb3-hana
     </code></pre>
 
-2. **[A]** módosítsa a DHCP és a felhő konfigurációs beállításait a tárolási hálózati adapterhez, hogy elkerülje a nem kívánt állomásnév-módosításokat.  
+2. **[A]** Módosítsa a HÁLÓZATI ADAPTER DHCP- és felhőalapú konfigurációs beállításait a nem kívánt állomásnév-módosítások elkerülése érdekében.  
 
-    Az alábbi utasítások azt feltételezik, hogy a tárolási hálózati adapter `eth1`. 
+    A következő utasítások feltételezik, `eth1`hogy a tárolóhálózati kapcsolat a . 
 
     <pre><code>
     vi /etc/sysconfig/network/dhcp
@@ -319,9 +319,9 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     CLOUD_NETCONFIG_MANAGE='no'
     </code></pre>
 
-2. **[A]** adjon hozzá egy hálózati útvonalat, hogy a Azure NetApp Files felé irányuló kommunikáció a Storage hálózati adapteren keresztül történjen.  
+2. **[A]** Adjon hozzá egy hálózati útvonalat, hogy az Azure NetApp Files-hoz való kommunikáció a tárolóhálózati felületen keresztül kerülhessen.  
 
-    Az alábbi utasítások azt feltételezik, hogy a tárolási hálózati adapter `eth1`.  
+    A következő utasítások feltételezik, `eth1`hogy a tárolóhálózati kapcsolat a .  
 
     <pre><code>
     vi /etc/sysconfig/network/ifroute-<b>eth1</b>
@@ -334,7 +334,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
 
     A módosítások aktiválásához indítsa újra a virtuális gépet.  
 
-3. **[A]** készítse elő az operációs rendszert a NetApp rendszereken futó SAP HANA futtatásához az NFS-sel, a [NetApp AFF Systems-SAP HANA ben az NFS konfigurációs útmutatójában](https://www.netapp.com/us/media/tr-4435.pdf)leírtak szerint. Hozza létre a */etc/sysctl.d/NetApp-Hana.conf* konfigurációs fájlját a NetApp konfigurációs beállításaihoz.  
+3. **[A]** Készítse elő az operációs rendszert az SAP HANA nFS-es netapp rendszereken való futtatására, ahogy azt a [NetApp AFF Systems NFS konfigurációs útmutatóval rendelkező SAP HANA szolgáltatása ismerteti.](https://www.netapp.com/us/media/tr-4435.pdf) Hozzon létre konfigurációs fájlt */etc/sysctl.d/netapp-hana.conf* a NetApp konfigurációs beállításaihoz.  
 
     <pre><code>
     vi /etc/sysctl.d/netapp-hana.conf
@@ -355,7 +355,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     net.ipv4.tcp_sack = 1
     </code></pre>
 
-4. **[A]** konfigurációs fájl */etc/sysctl.d/MS-az.conf* létrehozása a Microsoft Azure-beli konfigurációs beállításaival.  
+4. **[A]** Hozzon létre konfigurációs fájlt */etc/sysctl.d/ms-az.conf* a Microsoft for Azure konfigurációs beállításokat.  
 
     <pre><code>
     vi /etc/sysctl.d/ms-az.conf
@@ -368,7 +368,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     vm.swappiness=10
     </code></pre>
 
-4. **[A]** módosítsa a sunrpc beállításait a [NetApp AFF-rendszerek SAP HANA az NFS konfigurációs útmutatójában](https://www.netapp.com/us/media/tr-4435.pdf)javasolt módon.  
+4. **[A]** Állítsa be a sunrpc beállításokat, ahogy azt az [SAP HANA a NetApp AFF Systems NFS konfigurációs útmutató .](https://www.netapp.com/us/media/tr-4435.pdf)  
 
     <pre><code>
     vi /etc/modprobe.d/sunrpc.conf
@@ -376,9 +376,9 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     options sunrpc tcp_max_slot_table_entries=128
     </code></pre>
 
-## <a name="mount-the-azure-netapp-files-volumes"></a>A Azure NetApp Files kötetek csatlakoztatása
+## <a name="mount-the-azure-netapp-files-volumes"></a>Az Azure NetApp-fájlok köteteinek csatlakoztatása
 
-1. **[A]** csatlakoztatási pontok létrehozása a HANA-adatbázis köteteihez.  
+1. **[A]** Hozzon létre csatlakoztatási pontokat a HANA adatbáziskötetekhez.  
 
     <pre><code>
     mkdir -p /hana/data/<b>HN1</b>/mnt00001
@@ -389,7 +389,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     mkdir -p /usr/sap/<b>HN1</b>
     </code></pre>
 
-2. **[1]** a **HN1**megosztott/usr/SAP tartozó csomópont-specifikus könyvtárak létrehozása.  
+2. **[1]** Hozzon létre csomópont-specifikus könyvtárakat a /usr/sap könyvtárhoz a HN1 -shared.[1] Create node-specific directories for /usr/sap on **HN1**-shared.  
 
     <pre><code>
     # Create a temporary directory to mount <b>HN1</b>-shared
@@ -402,10 +402,10 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     umount /mnt/tmp
     </code></pre>
 
-3. **[A]** ellenőrizze az NFS-tartomány beállítását. Győződjön meg arról, hogy a tartomány alapértelmezett Azure NetApp Files-tartományként van konfigurálva, azaz **`defaultv4iddomain.com`** , és a leképezés értéke **senki**.  
+3. **[A]** Ellenőrizze az NFS tartomány beállítását. Győződjön meg arról, hogy a tartomány alapértelmezett Azure NetApp Files tartományként van konfigurálva, azaz **`defaultv4iddomain.com`** a leképezés **senkire**van állítva.  
 
     > [!IMPORTANT]
-    > Győződjön meg arról, hogy az NFS-tartományt `/etc/idmapd.conf` a virtuális gépen, hogy megfeleljen az alapértelmezett tartományi konfigurációnak Azure NetApp Files: **`defaultv4iddomain.com`** . Ha az NFS-ügyfél (azaz a virtuális gép) és az NFS-kiszolgáló (például az Azure NetApp-konfiguráció) közötti eltérés nem egyezik, akkor a virtuális gépekre csatlakoztatott Azure NetApp-köteteken található fájlok engedélyei `nobody`ként jelennek meg.  
+    > Győződjön meg arról, hogy `/etc/idmapd.conf` a virtuális gép NFS-tartományát úgy **`defaultv4iddomain.com`** állítja be, hogy megfeleljen az Azure NetApp-fájlok alapértelmezett tartománykonfigurációjának: . Ha eltérés van az NFS-ügyfél (azaz a virtuális gép) és az NFS-kiszolgáló tartománykonfigurációja, azaz az Azure NetApp-konfiguráció között, akkor a virtuális gépekre csatlakoztatott `nobody`Azure NetApp-kötetek fájljaira vonatkozó engedélyek a következőképpen jelennek meg: .  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -419,7 +419,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** ellenőrizze `nfs4_disable_idmapping`. Értékeként az **Y**értéknek kell lennie. A `nfs4_disable_idmapping` található címtár-struktúra létrehozásához hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.  
+4. **[A]** `nfs4_disable_idmapping`Ellenőrizze. Meg kell állítani, hogy **Y**. A címtárstruktúra `nfs4_disable_idmapping` létrehozásához hajtsa végre a csatlakoztatási parancsot. A könyvtárat nem lehet manuálisan létrehozni a /sys/modules kapcsoló alatt, mert a hozzáférés a kernel / illesztőprogramok számára van fenntartva.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -433,7 +433,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-5. **[A]** manuálisan hozza létre a SAP HANA csoportot és a felhasználót. A Group sapsys és a User **hn1**adm azonosítóit ugyanahhoz az azonosítóhoz kell beállítani, amelyek a bevezetéskor vannak megadva. (Ebben a példában az azonosítók értéke **1001**.) Ha az azonosítók nincsenek megfelelően beállítva, akkor nem fog tudni hozzáférni a kötetekhez. A Group sapsys és a **hn1**adm és sapadm felhasználói fiókjainak azonosítóinak azonosnak kell lenniük az összes virtuális gépen.  
+5. **[A]** Hozza létre az SAP HANA-csoportot és a felhasználót manuálisan. A csoport sapsys és a felhasználó **hn1**adm azonosítók at kell állítani, hogy ugyanazokat az azonosítókat, amelyek során a bevezetés során biztosított. (Ebben a példában az azonosítók **1001-re**vannak állítva.) Ha az azonosítók nincsenek megfelelően beállítva, nem fogja tudni elérni a köteteket. A csoport sapsys és felhasználói fiókok **hn1**adm és sapadm azonosítók azonosnak kell lennie az összes virtuális gépen.  
 
     <pre><code>
     # Create user group 
@@ -446,7 +446,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     sudo passwd sapadm
     </code></pre>
 
-6. **[A]** csatlakoztassa a megosztott Azure NetApp Files köteteket.  
+6. **[A]** Csatlakoztassa a megosztott Azure NetApp-fájlok köteteit.  
 
     <pre><code>
     sudo vi /etc/fstab
@@ -460,7 +460,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     sudo mount -a 
     </code></pre>
 
-7. **[1]** a csomópont-specifikus kötetek csatlakoztatása a **hanadb1**.  
+7. **[1]** Csatlakoztassa a csomópontspecifikus köteteket a **hanadb1-re.**  
 
     <pre><code>
     sudo vi /etc/fstab
@@ -470,7 +470,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     sudo mount -a 
     </code></pre>
 
-8. **[2]** a csomópont-specifikus kötetek csatlakoztatása a **hanadb2**.  
+8. **[2]** Csatlakoztassa a csomópontspecifikus köteteket a **hanadb2-re.**  
 
     <pre><code>
     sudo vi /etc/fstab
@@ -480,7 +480,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     sudo mount -a 
     </code></pre>
 
-9. **[3]** a csomópont-specifikus kötetek csatlakoztatása a **hanadb3**.  
+9. **[3]** Szerelje fel a csomópontspecifikus köteteket a **hanadb3-ra.**  
 
     <pre><code>
     sudo vi /etc/fstab
@@ -490,7 +490,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     sudo mount -a 
     </code></pre>
 
-10. **[A]** ellenőrizze, hogy az összes HANA-kötet csatlakoztatva van-e az NFS protokoll **nfsv4 névleképezője**-verziójához.  
+10. **[A]** Ellenőrizze, hogy az összes HANA kötet NFS protokollnal van-e csatlakoztatva **az NFSv4 protokollverzióval.**  
 
     <pre><code>
     sudo nfsstat -m
@@ -512,26 +512,26 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
 
 ## <a name="installation"></a>Telepítés  
 
-Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti csomóponttal rendelkező kibővített konfigurációban a HANA 2,0 SP4-et használtuk.  
+Ebben a példában az SAP HANA üzembe helyezéséhez horizontális felskálázási konfiguráció készenléti csomópont az Azure-ral, a HANA 2.0 SP4 használtuk.  
 
-### <a name="prepare-for-hana-installation"></a>A HANA telepítésének előkészítése
+### <a name="prepare-for-hana-installation"></a>Felkészülés a HANA telepítésére
 
-1. **[A]** a HANA telepítésének megkezdése előtt állítsa be a legfelső szintű jelszót. A legfelső szintű jelszót a telepítés befejezése után tilthatja le. Végrehajtás `root` parancsként `passwd`.  
+1. **[A]** A HANA telepítése előtt állítsa be a gyökérjelszót. A telepítés befejezése után letilthatja a gyökérjelszót. Végrehajtás `root` parancsként `passwd`.  
 
-2. **[1]** győződjön meg róla, hogy SSH-n keresztül tud bejelentkezni a **hanadb2** és a **hanadb3**-be anélkül, hogy jelszót kellene megadnia.  
+2. **[1]** Ellenőrizze, hogy az SSH-on keresztül be tud-e jelentkezni **a hanadb2** és **a hanadb3 fájlba**anélkül, hogy jelszót kérne.  
 
     <pre><code>
     ssh root@<b>hanadb2</b>
     ssh root@<b>hanadb3</b>
     </code></pre>
 
-3. **[A]** telepítsen további csomagokat, amelyek szükségesek a HANA 2,0 SP4-hez. További információ: SAP Note [2593824](https://launchpad.support.sap.com/#/notes/2593824). 
+3. **[A]** Telepítsen további csomagokat, amelyek szükségesek a HANA 2.0 SP4.[A] További csomagok telepítése, amelyek szükségesek a HANA 2.0 SP4-hez. További információ: SAP Note [2593824](https://launchpad.support.sap.com/#/notes/2593824). 
 
     <pre><code>
     sudo zypper install libgcc_s1 libstdc++6 libatomic1 
     </code></pre>
 
-4. **[2], [3]** SAP HANA `data` és `log` könyvtárak tulajdonosának módosítása az **hn1**adm-re.   
+4. **[2], [3]** Módosítsa az SAP `data` HANA és `log` a könyvtárak tulajdonjogát **hn1**adm-re.   
 
     <pre><code>
     # Execute as root
@@ -539,11 +539,11 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     sudo chown hn1adm:sapsys /hana/log/<b>HN1</b>
     </code></pre>
 
-### <a name="hana-installation"></a>HANA-telepítés
+### <a name="hana-installation"></a>HANA telepítés
 
-1. **[1]** telepítse a SAP HANA az [SAP HANA 2,0 telepítési és frissítési útmutató](https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.04/en-US/7eb0167eb35e4e2885415205b8383584.html)utasításait követve. Ebben a példában a főkiszolgálóval, egy feldolgozóval és egy készenléti csomóponttal rendelkező SAP HANA bővítjük.  
+1. **[1]** Telepítse az SAP HANA telepítéséhez [és frissítéséhez vezető útmutatóutasításait](https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.04/en-US/7eb0167eb35e4e2885415205b8383584.html)követve. Ebben a példában telepítjük az SAP HANA horizontális felskálázás a fő, egy feldolgozó és egy készenléti csomópont.  
 
-   a. Indítsa el a **hdblcm** programot a HANA telepítési szoftver könyvtárából. Használja a `internal_network` paramétert, és adja át a címtartomány az alhálózat számára, amely a belső HANA-csomópontok közötti kommunikációhoz használatos.  
+   a. Indítsa el a **hdblcm** programot a HANA telepítőszoftver könyvtárából. Használja `internal_network` a paramétert, és adja át az alhálózat címterét, amely a belső HANA csomópontközi kommunikációhoz használatos.  
 
     <pre><code>
     ./hdblcm --internal_network=10.23.3.0/24
@@ -551,41 +551,41 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
 
    b. A parancssorba írja be a következő értékeket:
 
-     * **Válasszon műveletet**: **1** . lépés (telepítéshez)
-     * **További összetevők a telepítéshez**: írja be a **2, 3** értéket
-     * Telepítési útvonal: nyomja le az ENTER billentyűt (az alapértelmezett érték a/Hana/Shared)
-     * **Helyi állomásnév**esetén: nyomja le az ENTER billentyűt az alapértelmezett érték elfogadásához.
-     * A alá kívánja **adni az állomásokat a rendszeren?** : ENTER **y**
-     * **Vesszővel tagolt állomásnevek**esetén adja meg a következőt: **hanadb2, hanadb3**
-     * A **gyökér felhasználónévnél** [root]: nyomja le az ENTER billentyűt az alapértelmezett érték elfogadásához
-     * A **gyökér felhasználói jelszava**: írja be a root felhasználó jelszavát
-     * A gazdagépek hanadb2 tartozó szerepkörök esetében: **1** megadása (feldolgozói)
-     * A gazdagép hanadb2 tartozó **feladatátvételi csoport** esetében [alapértelmezett]: az ENTER billentyű lenyomásával fogadja el az alapértelmezett értéket.
-     * A (z) hanadb2 gazdagépek **tárolási partíciójának száma** [<<assign automatically>>]: nyomja le az ENTER billentyűt az alapértelmezett érték elfogadásához
-     * A gazdagép hanadb2 tartozó **munkavégző csoport** esetében [alapértelmezett]: az ENTER billentyű lenyomásával fogadja el az alapértelmezett értéket.
-     * A gazdagép hanadb3 tartozó **szerepkörök kiválasztása** : írja be a **2** értéket (készenléti állapotba)
-     * A gazdagép hanadb3 tartozó **feladatátvételi csoport** esetében [alapértelmezett]: az ENTER billentyű lenyomásával fogadja el az alapértelmezett értéket.
-     * A gazdagép hanadb3 tartozó **munkavégző csoport** esetében [alapértelmezett]: az ENTER billentyű lenyomásával fogadja el az alapértelmezett értéket.
-     * **SAP HANA rendszer-azonosító**: írja be a **HN1**
-     * **Példány száma** [00]: **03**
-     * **Helyi gazdagép munkavégző csoportjának** [alapértelmezett]: az ENTER billentyű lenyomásával fogadja el az alapértelmezett értéket.
-     * **Válassza a rendszerhasználat/ENTER index [4] lehetőséget**: írja be a **4** értéket (egyéni)
-     * Az **adatkötetek helyének** eléréséhez [/Hana/Data/HN1]: nyomja le az ENTER billentyűt az alapértelmezett érték elfogadásához.
-     * A **log kötetek helye** [/Hana/log/HN1]: az ENTER billentyű lenyomásával fogadja el az alapértelmezett értéket.
-     * A **maximális memória kiosztásának korlátozása?** [n]: ENTER **n**
-     * A (z) [hanadb1] **gazdagép hanadb1** : az ENTER billentyű lenyomásával fogadja el az alapértelmezett értéket.
-     * A (z) [hanadb2] **gazdagép hanadb2** : az ENTER billentyű lenyomásával fogadja el az alapértelmezett értéket.
-     * A (z) [hanadb3] **gazdagép hanadb3** : az ENTER billentyű lenyomásával fogadja el az alapértelmezett értéket.
-     * A rendszergazda **(hn1adm) jelszava**: írja be a jelszót.
-     * **Rendszeradatbázis-felhasználó (rendszer) jelszava**: adja meg a rendszer jelszavát.
-     * **Rendszeradatbázis-felhasználó (rendszer) jelszavának megerősítése**: írja be a rendszer jelszavát.
-     * **Újraindítási rendszer a gép újraindítása után?** [n]: ENTER **n** 
-     * A **folytatja a folytatást (i/n)** : érvényesítse az összegzést, és ha minden jól látható, írja be az **y** értéket.
+     * A **Művelet kiválasztása**mezőbe írja be az **1** értéket (telepítéshez)
+     * **További alkatrészek telepítéséhez:** írja be a **2, 3**
+     * Telepítési útvonal esetén: nyomja meg az Enter billentyűt (alapértelmezés szerint /hana/shared)
+     * Helyi **állomásnév**esetén : az Alapértelmezett érték elfogadásához nyomja le az Enter billentyűt.
+     * A **Szeretne állomásokat hozzáadni a rendszerhez?**: írja be **az y**
+     * A **vesszővel tagolt állomásnevek hozzáadásához**adja meg a **hanadb2, hanadb3 értéket.**
+     * **Gyökérfelhasználóneve** [root]: nyomja le az Enter billentyűt az alapértelmezett érték elfogadásához
+     * Root **felhasználói jelszó:** adja meg a root felhasználó jelszavát
+     * A gazdagép hanadb2 szerepköreihez adja meg az **1** értéket (dolgozóesetén)
+     * A host hanadb2 [default]állomás **állomásfeladat-átvételi csoportjának** esetén: nyomja le az Enter billentyűt az alapértelmezett érték elfogadásához.
+     * Tárolópartíció **száma** a fogadó hanadb2 [<<assign automatically>>]: nyomja le az Enter billentyűt az alapértelmezett
+     * A **worker csoport** a fogadó hanadb2 [alapértelmezett]: nyomja meg az Enter, hogy elfogadja az alapértelmezett
+     * A **Select szerepek** a fogadó hanadb3: írja be **2** (a készenléti)
+     * A host hanadb3 [default]állomás **állomásfeladat-átvételi csoportjának** esetén: nyomja le az Enter billentyűt az alapértelmezett érték elfogadásához.
+     * A **worker csoport** a fogadó hanadb3 [alapértelmezett]: nyomja meg az Enter, hogy elfogadja az alapértelmezett
+     * **SAP HANA rendszerazonosító**esetén: írja be a **HN1 értéket**
+     * **A(z)** [00] példányszám esetén: írja be a **03** értéket
+     * Helyi **állomásfeldolgozó-csoport** [alapértelmezett]: nyomja le az Enter billentyűt az alapértelmezett érték elfogadásához.
+     * A **Rendszerhasználat kiválasztása / Enter index [4]**: írja be a **4** értéket (egyéni)
+     * Az **adatkötetek helyadatainak beállítása esetén** [/hana/data/HN1]: nyomja le az Enter billentyűt az alapértelmezett érték elfogadásához.
+     * A **naplókötetek helyének** [/hana/log/HN1] esetén: nyomja le az Enter billentyűt az alapértelmezett érték elfogadásához.
+     * A **Maximális memóriafoglalás korlátozása?** [n]: írja be **az n**
+     * A **certificate host name for Host hanadb1** [hanadb1]: nyomja le az Enter billentyűt az alapértelmezett érték elfogadásához
+     * A **certificate host name for Host hanadb2** [hanadb2]: nyomja le az Enter billentyűt az alapértelmezett érték elfogadásához
+     * A **certificate host name for Host hanadb3** [hanadb3]: nyomja le az Enter billentyűt az alapértelmezett érték elfogadásához
+     * **Rendszergazda (hn1adm) Jelszó :** adja meg a jelszót
+     * **Rendszeradatbázis-felhasználó (rendszer) jelszó**esetén: adja meg a rendszer jelszavát
+     * A **Rendszeradatbázis felhasználójának (rendszer) jelszó**hoz: adja meg a rendszer jelszavát
+     * Újraindítás **a rendszer újraindítása után a gép újraindítása?** [n]: írja be **az n** 
+     * Mert **szeretné folytatni (y/n)**: érvényesítse az összefoglalót, és ha minden jól néz ki, **y**
 
 
-2. **[1]** a Global. ini ellenőrzése  
+2. **[1]** A global.ini ellenőrzése  
 
-   Jelenítse meg a Global. ini fájlt, és győződjön meg arról, hogy a belső SAP HANA csomópontok közötti kommunikáció konfigurációja van érvényben. Ellenőrizze a **kommunikáció** szakaszát. Meg kell adni a `hana` alhálózathoz tartozó címtartományt, és a `listeninterface`t `.internal`értékre kell állítani. Ellenőrizze a **internal_hostname_resolution** szakaszt. Ennek a `hana` alhálózathoz tartozó HANA virtuális gépek IP-címeinek kell lennie.  
+   Display global.ini, és győződjön meg arról, hogy a konfiguráció a belső SAP HANA csomópontközi kommunikáció a helyén van. Ellenőrizze a **kommunikációs** szakaszt. Rendelkeznie kell az `hana` alhálózat címterével, és `.internal` `listeninterface` a . Ellenőrizze a **internal_hostname_resolution** szakaszt. Rendelkeznie kell az alhálózathoz `hana` tartozó HANA virtuális gépek IP-címével.  
 
    <pre><code>
     sudo cat /usr/sap/<b>HN1</b>/SYS/global/hdb/custom/config/global.ini
@@ -600,7 +600,7 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     <b>10.23.3.6</b> = <b>hanadb3</b>
    </code></pre>
 
-3. **[1]** adja hozzá az állomás-hozzárendelést annak biztosításához, hogy az ügyfél IP-címei az ügyfél-kommunikációhoz legyenek használva. Vegyen fel `public_host_resolution`szakaszt, és adja hozzá a megfelelő IP-címeket az ügyfél alhálózatáról.  
+3. **[1]** Állomásleképezés hozzáadása annak biztosításához, hogy az ügyfél IP-címeit az ügyfélkommunikációhoz használják. Adja `public_host_resolution`hozzá a szakaszt, és adja hozzá a megfelelő IP-címeket az ügyfél alhálózatából.  
 
    <pre><code>
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
@@ -611,14 +611,14 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     map_<b>hanadb3</b> = <b>10.23.0.7</b>
    </code></pre>
 
-4. **[1]** indítsa újra SAP HANA a módosítások aktiválásához.  
+4. **[1]** Indítsa újra az SAP HANA-t a módosítások aktiválásához.  
 
    <pre><code>
     sudo -u <b>hn1</b>adm /usr/sap/hostctrl/exe/sapcontrol -nr <b>03</b> -function StopSystem HDB
     sudo -u <b>hn1</b>adm /usr/sap/hostctrl/exe/sapcontrol -nr <b>03</b> -function StartSystem HDB
    </code></pre>
 
-5. **[1]** ellenőrizze, hogy az ügyfél felülete az `client` alhálózat IP-címeit fogja-e használni a kommunikációhoz.  
+5. **[1]** Ellenőrizze, hogy az ügyfélkapcsolat az `client` alhálózat IP-címeit fogja-e használni a kommunikációhoz.  
 
    <pre><code>
     sudo -u hn1adm /usr/sap/HN1/HDB03/exe/hdbsql -u SYSTEM -p "<b>password</b>" -i 03 -d SYSTEMDB 'select * from SYS.M_HOST_INFORMATION'|grep net_publicname
@@ -628,34 +628,34 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     "<b>hanadb1</b>","net_publicname","<b>10.23.0.5</b>"
    </code></pre>
 
-   További információ a konfiguráció ellenőrzéséről: SAP Note [2183363 – SAP HANA belső hálózat konfigurálása](https://launchpad.support.sap.com/#/notes/2183363).  
+   A konfiguráció ellenőrzéséről az SAP [2183363 - Az SAP HANA belső hálózatának konfigurációja](https://launchpad.support.sap.com/#/notes/2183363)című témakörben talál további információt.  
 
-6. Az alapul szolgáló Azure NetApp Files-tároló SAP HANA optimalizálásához állítsa be a következő SAP HANA paramétereket:
+6. Az SAP HANA optimalizálásához az alapul szolgáló Azure NetApp-fájlok tárolóhoz állítsa be a következő SAP HANA paramétereket:
 
-   - `max_parallel_io_requests` **128**
-   - `async_read_submit` **bekapcsolva**
-   - `async_write_submit_active` **bekapcsolva**
-   - **összes** `async_write_submit_blocks`
+   - `max_parallel_io_requests`**128**
+   - `async_read_submit`**bekapcsolva**
+   - `async_write_submit_active`**bekapcsolva**
+   - `async_write_submit_blocks`**minden**
 
-   További információ: [SAP HANA on NETAPP aff Systems az NFS konfigurációs útmutatója](https://www.netapp.com/us/media/tr-4435.pdf). 
+   További információ: [SAP HANA on NetApp AFF Systems with NFS Configuration Guide](https://www.netapp.com/us/media/tr-4435.pdf). 
 
-   A SAP HANA 2,0 rendszertől kezdve a paramétereket a `global.ini`ban állíthatja be. További információ: SAP Note [1999930](https://launchpad.support.sap.com/#/notes/1999930).  
+   Az SAP HANA 2.0 rendszerekkel kezdve `global.ini`a paramétereket a rendszerben állíthatja be. További információ: SAP Note [1999930](https://launchpad.support.sap.com/#/notes/1999930).  
    
-   A SAP HANA 1,0 rendszerű SPS12 és korábbi verziók esetében ezek a paraméterek a telepítés során állíthatók be a [2267798](https://launchpad.support.sap.com/#/notes/2267798)-es SAP-megjegyzésben leírtak szerint.  
+   Az SAP HANA 1.0 sPS12-es és korábbi verzióihoz ezek a paraméterek a telepítés során állíthatók be, az SAP [2267798](https://launchpad.support.sap.com/#/notes/2267798)megjegyzésében leírtak szerint.  
 
-7. Az Azure NetApp Files által használt tárterületnek 16 terabájt (TB) fájlméretre vonatkozó korlátozása van. A SAP HANA nem ismeri implicit módon a tárolási korlátozást, és nem hoz létre automatikusan új adatfájlt, ha eléri a 16 TB-os fájlméretet. Mivel a SAP HANA 16 TB-nál nagyobb mennyiségű fájlt próbálnak növelni, ez a kísérlet hibákat eredményez, és végül egy index-kiszolgáló összeomlik. 
+7. Az Azure NetApp Files által használt tároló fájlméret-korlátozása 16 terabájt (TB). Az SAP HANA nem ismeri implicit módon a tárolási korlátozást, és nem hoz létre automatikusan egy új adatfájlt, amikor eléri a 16 TB-os fájlméretkorlátot. Mivel az SAP HANA megpróbálja növelni a fájlt 16 TB-on túl, ez a kísérlet hibákat eredményez, és végül egy indexkiszolgáló összeomlását. 
 
    > [!IMPORTANT]
-   > Ha meg szeretné akadályozni, hogy SAP HANA ne növelje az adatfájlokat a tárolási alrendszer [16 TB-os korlátján](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits) túl, állítsa be a következő paramétereket a `global.ini`.  
+   > Ha meg szeretné akadályozni, hogy az SAP HANA megpróbálja az adatfájlokat a tárolóalrendszer `global.ini` [16 TB-os határán](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits) túlra növelni, állítsa be a következő paramétereket a alkalmazásban.  
    > - datavolume_striping = igaz
-   > - datavolume_striping_size_gb = 15000 további információ: SAP Note [2400005](https://launchpad.support.sap.com/#/notes/2400005).
-   > Vegye figyelembe a [2631285](https://launchpad.support.sap.com/#/notes/2631285)-es SAP-megjegyzést. 
+   > - datavolume_striping_size_gb = 15000 További információ: SAP Note [2400005](https://launchpad.support.sap.com/#/notes/2400005).
+   > Ne feledje, az SAP Megjegyzés [2631285](https://launchpad.support.sap.com/#/notes/2631285). 
 
-## <a name="test-sap-hana-failover"></a>Feladatátvételi SAP HANA tesztelése 
+## <a name="test-sap-hana-failover"></a>Sap HANA feladatátvétel tesztelése 
 
 1. Csomópont-összeomlás szimulálása egy SAP HANA munkavégző csomóponton. Tegye a következőket: 
 
-   a. A csomópont összeomlásának szimulálása előtt futtassa a következő parancsokat a **hn1**adm használatával a környezet állapotának rögzítéséhez:  
+   a. A csomópont-összeomlás szimulálása előtt futtassa a következő parancsokat **hn1**adm néven a környezet állapotának rögzítéséhez:  
 
    <pre><code>
     # Check the landscape status
@@ -677,13 +677,13 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GREEN
    </code></pre>
 
-   b. A csomópontok összeomlásának szimulálásához futtassa a következő parancsot gyökérként a munkavégző csomóponton, amely ebben az esetben **hanadb2** :  
+   b. Csomópont-összeomlás szimulálásához futtassa a következő parancsot gyökérként a munkavégző csomóponton, amely ebben az esetben **hanadb2:**  
    
    <pre><code>
     echo b > /proc/sysrq-trigger
    </code></pre>
 
-   c. A rendszer figyelése a feladatátvétel befejezéséhez. A feladatátvétel befejezése után rögzítse az állapotot, amelynek az alábbihoz hasonlóan kell kinéznie:  
+   c. A feladatátvétel befejezésének figyelése. A feladatátvétel befejezése után rögzítse az állapotot, amely a következőnek fog adható meg:  
 
     <pre><code>
     # Check the instance status
@@ -706,11 +706,11 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
    </code></pre>
 
    > [!IMPORTANT]
-   > Ha egy csomópont kernel pánikot észlel, a SAP HANA feladatátvételsel való késés elkerülése érdekében állítsa `kernel.panic` 20 másodpercre az *összes* HANA virtuális gépen. A konfigurálás `/etc/sysctl`történik. A módosítás aktiválásához indítsa újra a virtuális gépeket. Ha ezt a változást nem hajtja végre, a feladatátvétel 10 vagy több percet is igénybe vehet, amikor egy csomópont megtapasztalja a kernel pánikot.  
+   > Kernel pánik esetén kerülje el a késéseket az SAP `kernel.panic` HANA feladatátvételsel, ha 20 másodpercre állítja az *összes* HANA virtuális gépen. A konfiguráció a. `/etc/sysctl` A módosítás aktiválásához indítsa újra a virtuális gépeket. Ha ez a módosítás nem történik meg, a feladatátvétel 10 vagy több percet is igénybe vehet, ha egy csomópont kernel pánikot tapasztal.  
 
-2. A következő lépésekkel megöli a kiszolgálónevet:
+2. A névkiszolgáló takarása a következőkkel:
 
-   a. A teszt előtt ellenőrizze a környezet állapotát a következő parancsok **hn1**adm-ként való futtatásával:  
+   a. A vizsgálat előtt ellenőrizze a környezet állapotát a következő parancsok **hn1**adm-ként való futtatásával:  
 
    <pre><code>
     #Landscape status 
@@ -732,13 +732,13 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GRAY
    </code></pre>
 
-   b. Futtassa az alábbi parancsokat **hn1**adm-ként az aktív főcsomóponton, amely ebben az esetben **hanadb1** :  
+   b. Futtassa a következő parancsokat **hn1**adm néven az aktív főcsomóponton, amely ebben az esetben **hanadb1:**  
 
     <pre><code>
         hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB kill
     </code></pre>
     
-    A készenléti csomópont **hanadb3** átveszi a fő csomópontot. A feladatátvételi teszt befejezése után itt látható az erőforrás állapota:  
+    A **hanadb3** készenléti csomópont veszi át a fő csomópontot. Itt van az erőforrás állapota a feladatátvételi teszt befejezése után:  
 
     <pre><code>
         # Check the instance status
@@ -760,13 +760,13 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
         | hanadb3 | yes    | info   |          |        |         0 |         1 | default  | default  | master 3   | master     | standby     | master      | standby | worker  | default | default |
     </code></pre>
 
-   c. Indítsa újra a HANA-példányt a **hanadb1** (azaz ugyanazon a virtuális gépen, ahol a névkiszolgáló le lett megölve). A **hanadb1** csomópont újra csatlakozik a környezethez, és megtartja a készenléti szerepkörét.  
+   c. Indítsa újra a HANA-példányt a **hanadb1-en** (azaz ugyanazon a virtuális gépen, ahol a névkiszolgáló meghalt). A **hanadb1** csomópont újra csatlakozik a környezethez, és megtartja készenléti szerepkörét.  
 
    <pre><code>
     hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   A **hanadb1**SAP HANA elindítása után a következő állapotot kell elvárnia:  
+   Miután az SAP HANA elindult a **hanadb1-en,** a következő állapotra számíthat:  
 
    <pre><code>
     # Check the instance status
@@ -788,13 +788,13 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     | hanadb3 | yes    | info   |          |        |         0 |         1 | default  | default  | master 3   | master     | standby     | master      | standby | worker  | default | default |
    </code></pre>
 
-   d. Ismételje meg a kiszolgálónevet a jelenleg aktív főcsomóponton (azaz a csomópont **hanadb3**).  
+   d. Ismét, öld meg a név szerver az aktuálisan aktív fő csomópont (azaz a **csomópont hanadb3**).  
    
    <pre><code>
     hn1adm@hanadb3:/usr/sap/HN1/HDB03> HDB kill
    </code></pre>
 
-   A csomópont **hanadb1** folytatja a fő csomópont szerepkörét. A feladatátvételi teszt befejezése után az állapot a következőképpen fog kinézni:
+   A **csomópont hanadb1** folytatja a fő csomópont szerepét. A feladatátvételi teszt befejezése után az állapot a következőkre fog kinézni:
 
    <pre><code>
     # Check the instance status
@@ -819,13 +819,13 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     | hanadb3 | no     | ignore |          |        |         0 |         0 | default  | default  | master 3   | slave      | standby     | standby     | standby | standby | default | -       |
    </code></pre>
 
-   e. Indítsa el SAP HANA a **hanadb3**, amely készen áll arra, hogy készenléti csomópontként szolgáljon.  
+   e. Indítsa el az SAP HANA-t a **hanadb3-on,** amely készen áll a készenléti csomópontként való használatra.  
 
    <pre><code>
     hn1adm@hanadb3:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   Miután SAP HANA megkezdődött a **hanadb3**, az állapot a következőhöz hasonlít:  
+   Miután az SAP HANA elindult a **hanadb3-on,** az állapot a következőképpen néz ki:  
 
    <pre><code>
     # Check the instance status
@@ -852,8 +852,8 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
-* [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]
-* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz][dbms-guide]
-* Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és hogyan tervezheti meg az Azure-beli SAP HANA vész-helyreállítását (nagyméretű példányok), tekintse meg [a SAP HANA (nagyméretű példányok) magas rendelkezésre állását és a](hana-overview-high-availability-disaster-recovery.md)
-* A magas rendelkezésre állás és a SAP HANA Azure-beli virtuális gépeken történő vész-helyreállítási tervének megismeréséhez tekintse meg a [SAP HANA magas rendelkezésre állását az azure Virtual Machinesban (VM)][sap-hana-ha].
+* [Az Azure virtuális gépek tervezése és megvalósítása az SAP-hoz][planning-guide]
+* [Az Azure virtuális gépek üzembe helyezése az SAP-hoz][deployment-guide]
+* [Az Azure virtual machines DBMS üzembe helyezése az SAP-hoz][dbms-guide]
+* Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és tervezze meg az SAP HANA vészutáni helyreállítását az Azure-ban (nagy példányok), tekintse meg az [SAP HANA (nagy példányok) magas rendelkezésre állású és vész-helyreállítási az Azure-ban.](hana-overview-high-availability-disaster-recovery.md)
+* Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és tervezze meg az SAP HANA vészutáni helyreállítását az Azure virtuális gépeken, olvassa el [az SAP HANA magas rendelkezésre állását az Azure virtuális gépeken (VM) című témakört.][sap-hana-ha]

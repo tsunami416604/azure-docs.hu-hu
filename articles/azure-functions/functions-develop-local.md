@@ -1,42 +1,42 @@
 ---
-title: Az Azure functions fejlesztése és futtatása helyileg
-description: Megtudhatja, hogyan teheti meg az Azure functions szolgáltatást a helyi számítógépen, mielőtt futtatja őket a Azure Functionson.
+title: Azure-funkciók helyi fejlesztése és futtatása
+description: Ismerje meg, hogyan kódolhatja és tesztelheti az Azure-függvényeket a helyi számítógépen, mielőtt futtatja őket az Azure Functions ben.
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 835edcb94b294d93cab41ea51b88ac38db71d95e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74230635"
 ---
-# <a name="code-and-test-azure-functions-locally"></a>Kód-és tesztelési Azure Functions helyileg
+# <a name="code-and-test-azure-functions-locally"></a>Az Azure Functions helyi kódolása és tesztelése
 
-A [Azure Portal]Azure functions fejlesztése és tesztelése során számos fejlesztő inkább a helyi fejlesztési élményt részesíti előnyben. A functions lehetővé teszi a kedvenc Kódszerkesztő és fejlesztői eszközeinek használatát a függvények létrehozásához és teszteléséhez a helyi számítógépen. A helyi függvények csatlakozhatnak az élő Azure-szolgáltatásokhoz, és a teljes functions futtatókörnyezettel a helyi számítógépen is hibakeresést végezhetnek.
+Bár az Azure-funkciókat az Azure [Portalon]fejlesztheti és tesztelheti, sok fejlesztő a helyi fejlesztési élményt részesíti előnyben. Funkciók megkönnyítik a kedvenc kódszerkesztő és fejlesztőeszközök létrehozására és tesztelésére funkciók a helyi számítógépen. A helyi függvények csatlakozhatnak az élő Azure-szolgáltatásokhoz, és a teljes Functions futásidő használatával hibakeresést okozhatnak a helyi számítógépen.
 
 ## <a name="local-development-environments"></a>Helyi fejlesztési környezetek
 
-A funkciók helyi számítógépen való fejlesztésének módja a [nyelvi](supported-languages.md) és az eszközkészletbeli beállításoktól függ. A következő táblázat környezetei támogatják a helyi fejlesztést:
+A helyi számítógépen a funkciók fejlesztésének módja a [nyelvtől](supported-languages.md) és az eszközbeállításoktól függ. Az alábbi táblázatban található környezetek támogatják a helyi fejlesztést:
 
-|Környezet                              |Languages         |Leírás|
+|Környezet                              |Nyelvek         |Leírás|
 |-----------------------------------------|------------|---|
-|[Visual Studio Code](functions-develop-vs-code.md)| [](functions-create-first-function-powershell.md) [](functions-reference-python.md) [ C# ](functions-reference-csharp.md) [(osztály könyvtára), parancsfájl (. CSX), JavaScript C# ](functions-dotnet-class-library.md), PowerShell, Python [](functions-reference-node.md) | A [vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) -hoz készült Azure functions-bővítmény támogatja a vs Code funkciót. Az alapvető eszközöket igényli. Támogatja a Linux, a MacOS és a Windows fejlesztését, ha a Core Tools 2. x verzióját használja. További információért lásd: [az első függvény létrehozása a Visual Studio Code használatával](functions-create-first-function-vs-code.md). |
-| [Parancssor vagy terminál](functions-run-local.md) | [](functions-reference-powershell.md) [](functions-reference-python.md) [ C# ](functions-reference-csharp.md) [(osztály könyvtára), parancsfájl (. CSX), JavaScript C# ](functions-dotnet-class-library.md), PowerShell, Python [](functions-reference-node.md) | A [Azure functions Core Tools] az alapszintű futtatókörnyezetet és sablonokat biztosít a függvények létrehozásához, amelyek lehetővé teszik a helyi fejlesztést. A 2. x verzió támogatja a Linux, a MacOS és a Windows fejlesztését. Minden környezet a helyi függvények futtatókörnyezetének alapvető eszközein alapul. |
-| [Visual Studio 2019](functions-develop-vs.md) | [C#(osztály könyvtára)](functions-dotnet-class-library.md) | A Azure Functions eszközöket a [Visual Studio 2019](https://www.visualstudio.com/vs/) -es és újabb verzióiban elérhető **Azure-fejlesztési** számítási feladatok tartalmazzák. Lehetővé teszi a függvények fordítását egy osztály-függvénytárban, és a. dll közzétételét az Azure-ban. A a helyi teszteléshez szükséges alapvető eszközöket tartalmazza. További információ: [Azure functions fejlesztése a Visual Studióval](functions-develop-vs.md). |
-| [Maven](functions-create-first-java-maven.md) (különböző) | [Java](functions-reference-java.md) | A Java-függvények fejlesztését lehetővé tevő alapvető eszközökkel integrálható. A 2. x verzió támogatja a Linux, a MacOS és a Windows fejlesztését. További információ: [az első függvény létrehozása a Java és a Maven](functions-create-first-java-maven.md)használatával. Az [Eclipse](functions-create-maven-eclipse.md) és a [IntelliJ IDEA](functions-create-maven-intellij.md) használatával is támogatja a fejlesztést |
+|[Visual Studio kód](functions-develop-vs-code.md)| [C# (osztálykönyvtár),](functions-dotnet-class-library.md) [C# script (.csx)](functions-reference-csharp.md), [JavaScript,](functions-reference-node.md) [PowerShell](functions-create-first-function-powershell.md), [Python](functions-reference-python.md) | Az [Azure Functions bővítmény vs kód](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) funkciók támogatása vs kód. A központi eszközöket igényli. Támogatja a fejlesztést Linux, MacOS és Windows rendszeren, a Core Tools 2.x verziójának használatakor. További információ: [Az első funkció létrehozása a Visual Studio-kód használatával című témakörben olvashat.](functions-create-first-function-vs-code.md) |
+| [Parancssor vagy terminál](functions-run-local.md) | [C# (osztálykönyvtár),](functions-dotnet-class-library.md) [C# script (.csx)](functions-reference-csharp.md), [JavaScript,](functions-reference-node.md) [PowerShell](functions-reference-powershell.md), [Python](functions-reference-python.md) | [Az Azure Functions Core Tools] biztosítja a fő futásidejű és sablonok at funkciók létrehozásához, amelyek lehetővé teszik a helyi fejlesztést. A 2.x verzió támogatja a fejlesztést Linux, MacOS és Windows rendszeren. Minden környezet a Core Tools-ra támaszkodik a helyi függvények futásidejében. |
+| [Visual Studio 2019](functions-develop-vs.md) | [C# (osztálytár)](functions-dotnet-class-library.md) | Az Azure Functions-eszközök a Visual [Studio 2019-es](https://www.visualstudio.com/vs/) és újabb verzióinak **Azure-fejlesztési** munkaterhelései részét képezik. Lehetővé teszi a függvények összeállítását egy osztálytárban, és közzéteheti a .dll fájlt az Azure-ban. Tartalmazza a core eszközök helyi tesztelés. További információ: [Azure-funkciók fejlesztése a Visual Studio használatával.](functions-develop-vs.md) |
+| [Maven](functions-create-first-java-maven.md) (különböző) | [Java](functions-reference-java.md) | Integrálható a Core Tools, hogy a java funkciók fejlesztése. A 2.x verzió támogatja a fejlesztést Linux, MacOS és Windows rendszeren. További információ: [Az első függvény létrehozása java és mavenne című témakörben](functions-create-first-java-maven.md)olvashat. Szintén támogatja a fejlesztést az [Eclipse](functions-create-maven-eclipse.md) és [az IntelliJ IDEA használatával](functions-create-maven-intellij.md) |
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-A helyi fejlesztési környezetek mindegyike lehetővé teszi a Function app-projektek létrehozását és az előre definiált függvények sablonjait új függvények létrehozásához. Mindegyik a legfontosabb eszközöket használja, így a saját gépén lévő valós functions-futtatókörnyezettel ugyanúgy tesztelheti és hibakeresést végezhet, mint bármely más alkalmazás esetében. A Function app-projektet bármelyik környezetből az Azure-ba is közzéteheti.  
+A helyi fejlesztési környezetek mindegyike lehetővé teszi függvényalkalmazás-projektek létrehozását, és előre definiált Függvénysablonok használatával új függvényeket hozhat létre. Mindegyik a Core Tools-t használja, így tesztelheti és debug a funkciókat a valódi Functions runtime-on a saját gépén, ugyanúgy, mint bármely más alkalmazás. A függvényalkalmazás-projektet ezen környezetek bármelyikéről is közzéteheti az Azure-ban.  
 
 ## <a name="next-steps"></a>További lépések
 
-+ Ha többet szeretne megtudni a lefordított C# függvények helyi fejlesztéséről a visual Studio 2019 használatával, tekintse meg a [Azure functions fejlesztése a Visual Studióval](functions-develop-vs.md)című témakört.
-+ Ha többet szeretne megtudni a függvények helyi fejlesztéséről Mac, Linux vagy Windows rendszerű számítógépeken a VS Code használatával, olvassa el a [Azure functions telepítése a vs Code-ból](/azure/javascript/tutorial-vscode-serverless-node-01)című témakört.
-+ A függvények parancssorból vagy terminálból történő fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [Azure functions Core Tools használata](functions-run-local.md)című témakört.
++ Ha többet szeretne tudni a lefordított C# függvények helyi fejlesztéséről a Visual Studio 2019 használatával, olvassa el [az Azure-függvények fejlesztése a Visual Studio használatával .Gobandus a Visual Studio használatával.](functions-develop-vs.md)
++ Ha többet szeretne tudni a VS Code használatával Mac, Linux vagy Windows rendszerű számítógépeken futó függvények helyi fejlesztéséről, olvassa [el az Azure-függvények telepítése a VS-kódból](/azure/javascript/tutorial-vscode-serverless-node-01).
++ Ha többet szeretne tudni a függvények fejlesztéséről a parancssorból vagy a terminálból, olvassa el az Azure Functions Core Tools használata című [témakört.](functions-run-local.md)
 
 <!-- LINKS -->
 
-[Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Az Azure Functions alapvető eszközei]: https://www.npmjs.com/package/azure-functions-core-tools
+[Azure-portál]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

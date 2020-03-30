@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldások (AVS) – AVS Node kvóta
-description: Ismerteti az AVS-csomópontok kvótájának korlátait, valamint a kvóta növelésének kérését
+title: Azure VMware-megoldás a CloudSimple által – CloudSimple csomópontkvóta
+description: A CloudSimple-csomópontok kvótakorlátainak és a kvótanövelés kérésének módja
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/19/2019
@@ -8,34 +8,34 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fa1b056c8c96fb09def63ca1cd696fc2da5e9bed
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 83dc9e26e03eb955d88340d1ed21084d4e685ed8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77019638"
 ---
-# <a name="avs-node-quota-limits"></a>Az AVS-csomópont kvótájának korlátai
+# <a name="cloudsimple-node-quota-limits"></a>CloudSimple csomópontkvóta-korlátok
 
-Négy csomópont a vásárláshoz elérhető alapértelmezett mennyiség, ha az előfizetés engedélyezve van az AVS szolgáltatáshoz. A Azure Portal bármely [csomópont-típusát](cloudsimple-node.md) megvásárolhatja. Egy AVS Private Cloud létrehozásához legalább három csomópontnak kell futnia ugyanazon SKU-ban. Ha megvásárolta a csomópontokat, a további csomópontok megvásárlásakor hibaüzenet jelenhet meg.
+Négy csomópont az alapértelmezett megvásárolható mennyiség, ha az előfizetés engedélyezve van a CloudSimple szolgáltatáshoz.  Bármilyen [csomóponttípust](cloudsimple-node.md) megvásárolhat az Azure Portalon.  Egy privát felhő létrehozásához legalább három, ugyanannak a termékváltozatnak a csomópontja szükséges.  Ha megvásárolta a csomópontokat, hibaüzenet jelenhet meg, amikor további csomópontokat próbál megvásárolni.
 
 ## <a name="quota-increase"></a>Kvótanövelés
 
-Egy támogatási kérelem elküldésével növelheti a csomópont kvótáját. A szolgáltatási operatív csapat értékeli a kérést, és együttműködik Önnel a csomópont-kvóta növeléséhez. Új jegy megnyitásakor válassza ki a következő beállításokat:
+A csomópontkvótát támogatási kérelem elküldésével növelheti. A szolgáltatásüzemeltetési csapat kiértékeli a kérelmet, és együttműködik Önnel a csomópontkvóta növelésében.  Új jegy megnyitásakor válassza a következő beállításokat:
 
-* Probléma típusa: **technikai**
-* Előfizetés: **az előfizetés azonosítója**
-* Szolgáltatás típusa: **VMware-megoldás AVS** -vel
-* Probléma típusa: **dedikált csomópontok kvótája**
-* Probléma altípusa: **a dedikált csomópontok kvótájának növelésére**
-* Subject: **kvóta növekedése**
+* Probléma típusa: **Műszaki**
+* Előfizetés: **Az előfizetés azonosítója**
+* Szolgáltatás típusa: **VMware-megoldás a CloudSimple által**
+* Probléma típusa: **Dedikált csomópontok kvótája**
+* Probléma altípusa: **A kijelölt csomópontok kvótájának növelése**
+* Tárgy: **Kvótaemelés**
 
-A támogatási jegy részleteiben adja meg a szükséges számú csomópontot és a csomópont-SKU-t.
+A támogatási jegy részleteiben adja meg a szükséges számú csomópontot és csomópont termékváltozatát.
 
-* Csomópont SKU
-* Azon további csomópontok száma, amelyekhez a kvóta növelését kéri
+* Csomópont termékváltozata
+* Azon további csomópontok száma, amelyekkvóta-növelést kér
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megvásárlási csomópontok](create-nodes.md)
-* [Az AVS-csomópontok áttekintése](cloudsimple-node.md)
+* [Csomópontok vásárlása](create-nodes.md)
+* [CloudSimple-csomópontok – áttekintés](cloudsimple-node.md)

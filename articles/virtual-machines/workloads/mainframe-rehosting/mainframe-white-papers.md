@@ -1,6 +1,6 @@
 ---
-title: Azure-tanulmányok az Azure Virtual Machines és az Azure Storage szolgáltatással kapcsolatos nagyszámítógépi témákról
-description: Erőforrások beszerzése az IBM Z-alapú rendszerek Microsoft Azure való áttelepítéséhez, üzemeltetéséhez és áthelyezéséhez.
+title: Azure-beli tanulmányok az Azure virtuális gépek és az Azure Storage használatával kapcsolatos nagyszámítógépes témakörökről
+description: Az IBM Z-alapú rendszerek Microsoft Azure-ba való áthelyezésével kapcsolatos források.
 services: multiple
 documentationcenter: ''
 author: njray
@@ -9,44 +9,44 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: dd91b4331a6093d1cf208893d5d88746707b473b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74224747"
 ---
-# <a name="azure-white-papers-about-mainframe-topics"></a>Azure-tanulmányok a nagyszámítógépekkel kapcsolatos témakörökről
+# <a name="azure-white-papers-about-mainframe-topics"></a>Azure-beli tanulmányok a nagyszámítógépes témákról
 
-Erőforrások beszerzése az IBM Z-alapú rendszerek Microsoft Azure való áttelepítéséhez, üzemeltetéséhez és áthelyezéséhez.
+Az IBM Z-alapú rendszerek Microsoft Azure-ba való áthelyezésével kapcsolatos források.
 
-### <a name="demystifying-mainframe-to-azure-migrationhttpsazuremicrosoftcomresourcesdemystifying-mainframe-to-azure-migration"></a>[Demystifying mainframe – Azure Migrálás](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
+### <a name="demystifying-mainframe-to-azure-migration"></a>[Nagyszámítógép demystifying az Azure-migráláshoz](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
-Az Azure olyan nagyszámítógépi alternatívát kínál, amely egyenértékű funkciókat és funkciókat biztosít. Ez a tanulmány a AzureCAT csapatának Larry Meadével foglalkozik a főbb IBM z/OS mainframe-összetevőkkel és az Azure-val egyenértékűekkel. Egy olyan útitervet is biztosít, amellyel megkezdheti a beszélgetést az olyan döntéshozókkal, akik elavult nagyszámítógépi filozófiára fizetnek.
+Az Azure egy nagyszámítógépes alternatívát biztosít, amely egyenértékű funkciókat és funkciókat képes biztosítani. Ez a dokumentum, Larry Mead az AzureCAT csapat, a főbb IBM z/OS nagyszámítógép-összetevőket és az Azure-megfelelőket ismerteti. Emellett ütemtervet is biztosít a beszélgetés elindításához az informatikai döntéshozókkal, akik előfizetnek az elavult nagyszámítógépes filozófiákra.
 
-### <a name="move-mainframe-compute-and-storage-to-azurehttpsazuremicrosoftcomresourcesmove-mainframe-compute-and-storage-to-azure"></a>[Nagyszámítógépes számítási és tárolási adatok áthelyezése az Azure-ba](https://azure.microsoft.com/resources/move-mainframe-compute-and-storage-to-azure/)
+### <a name="move-mainframe-compute-and-storage-to-azure"></a>[Nagyszámítógépes számítás és tárolás áthelyezése az Azure-ba](https://azure.microsoft.com/resources/move-mainframe-compute-and-storage-to-azure/)
 
-A nagyvállalati munkaterhelések Microsoft Azure-on való futtatásához tudnia kell, hogyan hasonlítják össze a mainframe képességeit az Azure-ban. Az IBM z14 mainframe alapján a Larry Mead of AzureCAT bemutatja, hogyan szerezhet össze hasonló eredményeket az Azure-ban. Az Azure-ban a nagymértékben méretezhető számítási és tárolási erőforrások azonnali előnyöket biztosítanak a nagyvállalati munkaterheléseket futtató szervezeteknek.
+A nagyszámítógépes számítási feladatok futtatásához a Microsoft Azure-ban tudnia kell, hogy a nagyszámítógép képességei hogyan viszonyulnak az Azure-hoz. Az IBM z14 nagyszámítógépe alapján Larry Mead, az AzureCAT útmutatója bemutatja, hogyan szerezhet összehasonlítható eredményeket az Azure-on. Az Azure nagymértékben méretezhető számítási és tárolási erőforrásai azonnali előnyöket biztosítanak a nagyszámítógépes számítási feladatokat futtató szervezetek számára.
 
-### <a name="microsoft-azure-government-cloud-for-mainframe-applicationshttpsazuremicrosoftcomresourcesmicrosoft-azure-government-cloud-for-mainframe-applications"></a>[Microsoft Azure Government felhő nagyszámítógépi alkalmazások számára](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
+### <a name="microsoft-azure-government-cloud-for-mainframe-applications"></a>[Microsoft Azure Government felhő nagyszámítógépes alkalmazásokhoz](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
 
-Az alkalmazások áttelepítésének megtervezése ideális alkalom az érték és a rugalmasság hozzáadására a még jól bevált nagyszámítógépi munkaterhelések esetében. Ebben a rövid útmutatóban a Larry Mead of AzureCAT azt mutatja be, hogy a Egyesült Államok kormányzati szervei és partnereik hogyan használhatják a Azure Governmentt a nagyszámítógépek alkalmazásai számára – és előfordulhat, hogy a Migrálás nem annyira nehéz, ahogy gondolja. A Azure Government költséghatékony és agilis környezetben biztosítja a nagyszámítógépek előnyeit. Emellett Azure Government egy ideiglenes hatóságot (P-ATO) is megszerzett a FedRAMP nagy hatású működéséhez.
+Az alkalmazások áttelepítésének megtervezése ideális idő arra, hogy hozzáadott értéket és agilitást adjon még a jól megalapozott nagyszámítógépes számítási feladatokhoz is. Ebben a rövid útmutatóban Larry Mead, az AzureCAT munkatársa bemutatja, hogy az Egyesült Államok kormányzati szervei és partnerei hogyan használhatják az Azure Governmentet nagyszámítógépes alkalmazásokhoz – és az áttelepítés nem feltétlenül olyan nehéz, mint gondolja. Az Azure Government a nagyszámítógép előnyeit költséghatékonyabb és agilisabb környezetben biztosítja. Emellett az Azure Government ideiglenes működési felhatalmazást (P-ATO) szerzett a FedRAMP Nagy hatású számára.
 
-### <a name="deploy-ibm-db2-purescale-on-azurehttpsazuremicrosoftcomresourcesdeploy-ibm-db2-purescale-on-azure"></a>[Az IBM DB2-pureScale üzembe helyezése az Azure-ban](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure/)
+### <a name="deploy-ibm-db2-purescale-on-azure"></a>[Az IBM DB2 pureScale telepítése az Azure-ban](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure/)
 
-Ismerje meg tapasztalatait egy olyan vállalattal, amely nemrég áttelepítette az IBM DB2-környezetét az Azure-ban. Ezt az útmutatót a AzureCAT és a DMJ csapat tagjai írták, akik ott voltak: Larry Mead, Benjamin GUINEBERTIÈRE, Alessandro Vozza és Jonatán Frost. Ezek az áttelepítés során végrehajtott lépéseket írják le. Az eredményeket az IBM DB2 pureScale csapatának tagjai vizsgálják. A GitHubon elérhető telepítési parancsfájlok azon architektúrán alapulnak, amelyet a csapat a tipikus közepes méretű OLTP számítási feladatokhoz használt.
+Ismerje meg egy olyan vállalattal kapcsolatos tapasztalatainkat, amely nemrég újraüzemeltette AZ IBM DB2 környezetét az Azure-ban. Ezt az útmutatót az AzureCAT és a DMJ csapattagjai írták, akik ott voltak: Larry Mead, Benjamin Guinebertière, Alessandro Vozza és Jonathon Frost. Leírják, milyen lépéseket tettek a migráció során. Eredményeiket az IBM Db2 pureScale csapat tagjai áttekintették. A GitHubon elérhető telepítési parancsfájlok a csapat által egy tipikus közepes méretű OLTP-számítási feladatokhoz használt architektúrán alapulnak.
 
-### <a name="install-tmaxsoft-openframe-on-azurehttpsazuremicrosoftcomresourcesinstall-tmaxsoft-openframe-on-azure"></a>[TmaxSoft-OpenFrame Kiindulópontul telepítése az Azure-ban](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
+### <a name="install-tmaxsoft-openframe-on-azure"></a>[A TmaxSoft OpenFrame telepítése az Azure-ra](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 
-Az infrastruktúra modernizálása Felhőbeli méretezéssel. A TmaxSoft OpenFrame Kiindulópontul segítségével könnyedén felemelheti a meglévő nagyvállalati eszközöket, és áthelyezheti őket az Azure-ba. Ebben a tanulmányban Steve Read (AzureCAT) és mano Aerroju (TmaxSoft) ismerteti, hogyan állíthat be olyan OpenFrame Kiindulópontul-környezetet, amely fejlesztési, bemutatói, tesztelési és éles számítási feladatokhoz alkalmas.
+Az infrastruktúra modernizálása felhőméretekben. A TmaxSoft OpenFrame segítségével egyszerűen felemelheti meglévő nagyszámítógép-eszközeit, és áthelyezheti őket az Azure-ba. Ebben a dokumentumban Steve Read (AzureCAT) és Manoj Aerroju (TmaxSoft) elmagyarázza, hogyan állíthat be egy OpenFrame környezetet, amely alkalmas fejlesztési, bemutatókra, tesztelésre és éles számítási feladatokra.
 
-### <a name="ibm-mainframe-to-microsoft-azure-reference-architecturehttpswwwastadiacomwhitepaperibm-mainframe-to-microsoft-azure"></a>[IBM mainframe – Microsoft Azure hivatkozási architektúra](https://www.astadia.com/whitepaper/ibm-mainframe-to-microsoft-azure)
+### <a name="ibm-mainframe-to-microsoft-azure-reference-architecture"></a>[IBM nagyszámítógép a Microsoft Azure referenciaarchitektúrához](https://www.astadia.com/whitepaper/ibm-mainframe-to-microsoft-azure)
 
-Ez a tanulmány a Astadia több mint 25 éve mutatja be a nagyvállalati platform modernizációs szakértelmét. Ismertetik a modernizációs erőfeszítések előnyeit és kihívásait. Ez az útmutató áttekintést nyújt az IBM-es nagyszámítógépekről és egy IBM-es nagyszámítógépről az Azure-ra mutató hivatkozási architektúráról. Emellett megtekintheti a Astadia sikerességének módszertanát is.
+Ez a tanulmány tükrözi Astadia több mint 25 éves mainframe platform modernizációs szakértelmét. Elmagyarázzák a modernizációs erőfeszítések előnyeit és kihívásait. Ez az útmutató áttekintést nyújt az IBM nagyszámítógépéről és az IBM nagyszámítógép-Azure referenciaarchitektúráról. Azt is előírja, egy pillantást az Astadia siker módszertan.
 
-### <a name="deploying-mainframe-applications-to-microsoft-azurehttpswwwmicrofocuscommediawhite-paperdeploying_mainframe_applications_to_microsoft_azure_wppdf"></a>[Nagyszámítógépes alkalmazások üzembe helyezése Microsoft Azure](https://www.microfocus.com/media/white-paper/deploying_mainframe_applications_to_microsoft_azure_wp.pdf)
+### <a name="deploying-mainframe-applications-to-microsoft-azure"></a>[Nagyszámítógépes alkalmazások telepítése a Microsoft Azure-ba](https://www.microfocus.com/media/white-paper/deploying_mainframe_applications_to_microsoft_azure_wp.pdf)
 
-A Micro Focus megoldásai ingyenesen eltérhetnek a szabadalmaztatott mainframe-hardverek és szoftverek korlátaitól. Ebben az útmutatóban a Micro Focus azt ismerteti, hogyan helyezhető üzembe a COBOL és az IBM-es nagyszámítógépeken futó alkalmazások a felhőben.
+A Micro Focus megoldásai megszabadítják Önt a saját nagyszámítógépes hardver ek és szoftverek korlátaitól. Ebben az útmutatóban a Micro Focus bemutatja, hogyan telepítheti az IBM nagygépein futó COBOL és PL/I alkalmazásokat a felhőbe.
 
-### <a name="breathe-new-life-into-mainframeshttpswwwinfosyscomservicesmodernizationbreathe-new-life-mainframeshtml"></a>[Új élettartam belélegezni a nagyszámítógépekre](https://www.infosys.com/services/modernization/breathe-new-life-mainframes.html)
+### <a name="breathe-new-life-into-mainframes"></a>[Új életet lehela nagyszámítógépekbe](https://www.infosys.com/services/modernization/breathe-new-life-mainframes.html)
 
- A nagyszámítógépek egyre nagyobb kihívást jelentenek a vállalatok számára. Ezt a tanulmányt a Infosys és a Microsoft kiemeli a sikeres nagyszámítógépek áttelepítésének nyertes stratégiáját. A használati esetek és példák szemléltetik a beállításokat.
+ A nagyszámítógépek egyre nagyobb kihívást jelentenek az üzleti vállalkozások számára. Az Infosys és a Microsoft tanulmánya kiemeli a sikeres nagyszámítógépes áttelepítés győztes stratégiáját. A használati esetek és példák szemléltetik a beállításokat.

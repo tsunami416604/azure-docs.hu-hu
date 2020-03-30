@@ -1,6 +1,6 @@
 ---
-title: Internet Analyzer – gyakori kérdések | Microsoft Docs
-description: Az Azure Internet Analyzer szolgáltatással kapcsolatos gyakori kérdések.
+title: Internetes elemző – gyakori kérdések | Microsoft dokumentumok
+description: Az Azure Internet Analyzer gyakran feltett kérdések.
 services: internet-analyzer
 author: diego-perez-botero
 ms.service: internet-analyzer
@@ -8,62 +8,62 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74184259"
 ---
-# <a name="azure-internet-analyzer-faq-preview"></a>Azure Internet Analyzer – gyakori kérdések (előzetes verzió)
+# <a name="azure-internet-analyzer-faq-preview"></a>Gyakori kérdések az Azure Internet Analyzer (előzetes verzió)
 
-Ez az Azure Internet Analyzer gyakori kérdései – Ha további kérdése van, látogasson el a [visszajelzési fórumra](https://aka.ms/internetAnalyzerFeedbackForum) , és tegye fel a kérdését. Ha egy kérdést gyakran megkérdeznek, azt felvesszük a cikkbe, így gyorsan és egyszerűen megtalálhatók.
+Ez az Azure Internet Analyzer gyIK- ha további kérdései vannak, keresse fel a [visszajelzési fórumot,](https://aka.ms/internetAnalyzerFeedbackForum) és tegye közzé kérdését. Amikor egy kérdést gyakran felteszünk, hozzáadjuk ehhez a cikkhez, hogy gyorsan és egyszerűen megtalálható legyen.
 
-## <a name="how-do-i-participate-in-the-preview"></a>Hogyan próbálhatom ki az előzetes verziót?
+## <a name="how-do-i-participate-in-the-preview"></a>Hogyan vehetek részt az előnézetben?
 
-Az előzetes verzió a kiválasztott ügyfelek számára elérhető. Ha szeretne csatlakozni az előzetes verzióhoz, tegye a következőket:
+Az előzetes verzió kiválasztott ügyfelek számára érhető el. Ha szeretne csatlakozni az előnézethez, kérjük, tegye a következőket:
 
-1. Jelentkezzen be az [Azure Portal](https://ms.portal.azure.com).
-2. Navigáljon az **előfizetések** lapra.
-3. Kattintson arra az Azure-előfizetésre, amelyre az Internet Analyzert szeretné használni.
-4. Nyissa meg az előfizetés **erőforrás-szolgáltatói** beállításait.
-5. Keressen rá a **Microsoft. Network** kifejezésre, és kattintson a **regisztráció** (vagy a regisztráció **újbóli regisztrálása**) gombra.
+1. Jelentkezzen be az [Azure Portalra.](https://ms.portal.azure.com)
+2. Nyissa meg az **Előfizetések** lapot.
+3. Kattintson arra az Azure-előfizetésre, amelyhez az Internet Analyzer szolgáltatást használni kívánja.
+4. Nyissa meg az **előfizetés erőforrás-szolgáltatói** beállításait.
+5. Keresse meg a **Microsoft.Network** kifejezést, és kattintson a **Regisztráció** (vagy **Újraregisztrálás)** gombra.
 ![hozzáférési kérelem](./media/ia-faq/request-preview-access.png)
 
-6. A [kérelem jóváhagyásához](https://aka.ms/internetAnalyzerContact) adja meg nekünk az e-mail-címét és a hozzáférési kérelem elvégzéséhez használt Azure-előfizetés azonosítóját.
-7. Ha jóváhagyta kérelmét, e-mailben megerősítő értesítést kap, és az újonnan engedélyezett Azure-előfizetésből létrehozhat/frissíthet/módosíthat Internet Analyzer-erőforrásokat.
+6. [Jóváhagyás kérése](https://aka.ms/internetAnalyzerContact) az e-mail cím és az Azure-előfizetés-azonosító megadásával, amelyet a hozzáférési kérelem benyújtásához használtak.
+7. A kérelem jóváhagyását követően e-mailben megerősítést kap, és létrehozhat/frissíthet/módosíthat az Internet Analyzer erőforrásait az újonnan engedélyezett Azure-előfizetésből.
 
-## <a name="do-i-need-to-embed-the-client-to-run-a-test"></a>Be kell ágyazni az ügyfelet egy teszt futtatásához?
+## <a name="do-i-need-to-embed-the-client-to-run-a-test"></a>Be kell ágyazni az ügyfelet a teszt futtatásához?
 
-Igen, az Internet Analyzer-ügyfelet telepíteni kell az alkalmazásba, hogy a felhasználókra vonatkozó mérőszámokat gyűjtsön. [Ismerje meg, hogyan telepítheti az ügyfelet.](internet-analyzer-embed-client.md) 
+Igen, az Internet Analyzer klienstelepítve kell lennie az alkalmazásban a felhasználókra jellemző mutatók gyűjtéséhez. [További információ az ügyfél telepítéséről.](internet-analyzer-embed-client.md) 
 
-## <a name="do-i-get-billed-for-participating-in-the-preview"></a>Felszámolnak díjakat az előzetes verzió használatáért?
-Nem, az Azure Internet Analyzer ingyenesen használható előzetes verzióban. Az előzetes verzióban nem érhető el szolgáltatói szerződés.
+## <a name="do-i-get-billed-for-participating-in-the-preview"></a>Kiszámláznak az előzetes verzióban való részvételért?
+Nem, az Azure Internet Analyzer ingyenesen használható előzetes verzióban. Nincs szolgáltatásiszint-szerződés az előzetes verzió során.
 
-## <a name="what-scenarios-is-internet-analyzer-designed-to-address"></a>Milyen forgatókönyvek vannak kialakítva az Internet Analyzer számára?
+## <a name="what-scenarios-is-internet-analyzer-designed-to-address"></a>Milyen forgatókönyveket tervez az Internet Analyzer?
 
-Az Internet Analyzer úgy lett kialakítva, hogy a felhasználói populáción alapuló hálózati teljesítményt nyújtson. A felhasználók számára legmegfelelőbb teljesítménybeli döntések elősegítése érdekében az Internet Analyzer összehasonlítja a két internetes végpont teljesítményét a különböző felhasználói populációk használatával. Míg az Internet Analyzer számos kérdést tud válaszolni, a leggyakoribbak a következők:
+Az Internet Analyzer célja, hogy a felhasználói populációalapján hálózati teljesítményelemzéseket biztosítson. Annak érdekében, hogy a felhasználók számára a legjobb teljesítménydöntéseket hozhassa, az Internet Analyzer összehasonlítja két internetes végpont teljesítményét a különböző felhasználói sokaság használatával. Míg az Internet Analyzer számos kérdésre képes válaszolni, a leggyakoribbak a következők:
 
-* Milyen hatással van a felhőbe való Migrálás teljesítményére? 
-    * *Javasolt teszt: egyéni (a jelenlegi helyszíni infrastruktúra) és az Azure (bármely előre konfigurált végpont)*
-* Mi az az érték, hogy az adatközpontban hogyan helyezik üzembe az adataimat? 
-    *  *Javasolt teszt: Azure-beli és Azure-beli bejárati ajtó, Azure vagy Azure CDN a Microsofttól*
-* Mi az Azure bejárati ajtó teljesítménybeli előnye?
-    *  *Javasolt teszt: Custom/Azure/CDN vagy Azure bejárati ajtó*
-* Milyen teljesítménybeli előnyökkel jár a Microsoft Azure CDN? 
-    *  *Javasolt teszt: Custom/Azure/AFD vs. Azure CDN a Microsofttól*
-* Hogyan működik Azure CDN a Microsoft stackből? 
-    *  *Javasolt teszt: Custom (egyéb CDN-végpont) és a Microsoft Azure CDN*
-* Mi a legjobb felhő a végfelhasználói populációban az egyes régiókban? 
-    *  *Javasolt teszt: Custom (egyéb Cloud Service) vs. Azure (bármely előre konfigurált végpont)*
+* Milyen hatással van a felhőbe való migrálás teljesítményre? 
+    * *Javasolt teszt: Egyéni (a jelenlegi helyszíni infrastruktúra) vs. Azure (bármely előre konfigurált végpont)*
+* Mi az értéke annak, ha az adataimat a peremre helyezem, szemben az adatközponttal? 
+    *  *Javasolt teszt: Azure vs. Azure bejárati ajtó, Azure vs. A Microsoft Azure CDN-je*
+* Mi az Azure Front Door teljesítményelőnye?
+    *  *Javasolt teszt: Egyéni/ Azure/ CDN vs. Azure bejárati ajtó*
+* Milyen előnyökkel jár az Azure CDN a Microsofttól? 
+    *  *Javasolt teszt: Egyéni/ Azure/ AFD vs. Azure CDN a Microsofttól*
+* Hogyan halmozódik fel az Azure CDN a Microsofttól? 
+    *  *Javasolt teszt: Egyéni (egyéb CDN-végpont) és a Microsoft Azure CDN-je*
+* Mi a legjobb felhő a végfelhasználói lakosság számára az egyes régiókban? 
+    *  *Javasolt teszt: Egyéni (egyéb felhőszolgáltatás) és az Azure (bármely előre konfigurált végpont)*
 
-## <a name="which-tests-can-i-run-in-preview"></a>Milyen tesztek futtathatók az előzetes verzióban?
+## <a name="which-tests-can-i-run-in-preview"></a>Milyen teszteket futtathatok előzetes verzióban?
 
-Az Internet Analyzerben létrehozott egyes tesztek két végpontból állnak – A végpont és A B végpont. A következő kombinációk bármelyike használható tesztként:  
+Az Internet Analyzer programban létrehozott minden teszt két végpontból áll: az A végpontból és a B végpontból. Az alábbi kombinációk bármelyike futtatható tesztként:  
 * Két előre konfigurált végpont,
 * Egy egyéni és egy előre konfigurált végpont, vagy
-* Két [Egyéni végpont](internet-analyzer-custom-endpoint.md) (egy egyéni végpontnak az Azure-ban kell lennie).
+* Két [egyéni végpont (egy](internet-analyzer-custom-endpoint.md) egyéni végpontnak az Azure-ban kell lennie.
 
-Az előzetes verzióban az alábbi előre konfigurált végpontok érhetők el:
+Az előzetes verzióban a következő előre konfigurált végpontok érhetők el:
 * **Azure-régiók**
     * Dél-Brazília
     * Közép-India
@@ -72,37 +72,37 @@ Az előzetes verzióban az alábbi előre konfigurált végpontok érhetők el:
     * USA keleti régiója
     * Nyugat-Japán
     * Észak-Európa
-    * Dél-Afrika északi régiója
+    * Dél-Afrika Észak-Afrika
     * Délkelet-Ázsia
-    * Egyesült Arab Emírségek északi régiója
+    * Egyesült Arab Emírségek északi
     * Az Egyesült Királyság nyugati régiója  
     * Nyugat-Európa
     * USA nyugati régiója
     * USA nyugati régiója, 2.
-* **Több Azure-régió kombinációja**
-    * USA keleti régiója, Dél-Brazília
-    * USA keleti régiója, Kelet-Ázsia
+* **Több Azure-régiókombináció**
+    * USA keleti része, Dél-Brazília
+    * USA keleti része, Kelet-Ázsia
     * Nyugat-Európa, Dél-Brazília
     * Nyugat-Európa, Délkelet-Ázsia
-    * Nyugat-Európa, Észak-Egyesült Arab
-    * USA nyugati régiója, USA keleti régiója
-    * USA nyugati régiója, Nyugat-Európa
-    * USA nyugati régiója, Észak-Egyesült Arab
-    * Nyugat-Európa, Észak-Ausztrália, Délkelet-Ázsia
-    * USA nyugati régiója, Nyugat-Európa, Kelet-Ázsia
-    * USA nyugati régiója, Észak-Európa, Délkelet-Ázsia, Észak-Ausztrália, Dél-Afrika északi régiója 
-* **Azure + Azure bejárati ajtó** – üzembe helyezése a fent felsorolt egyetlen vagy több Azure-régió kombinációjában
-* **Az Azure + Azure CDN a Microsoft** által üzembe helyezett bármely, a fent felsorolt egyetlen Azure-régió kombinációján
-* **Azure + azure Traffic Manager** – üzembe helyezés a fent felsorolt több Azure-régió kombinációján
+    * Nyugat-Európa, Észak-Egyesült Arab Emírségek
+    * USA nyugati része, USA keleti része
+    * Nyugat-USA, Nyugat-Európa
+    * USA nyugati, egyesült arab emírségekbeli észak-amerikai egyesült arab emírségekbeli
+    * Nyugat-Európa, Egyesült Arab Emírségek Észak-, Délkelet-Ázsia
+    * NYUGAT-USA, Nyugat-Európa, Kelet-Ázsia
+    * USA nyugati része, Észak-Európa, Délkelet-Ázsia, Egyesült Arab Emírségek Észak-, Dél-Afrika Észak-Afrika 
+* **Azure + Azure bejárati ajtó** – a fent felsorolt egyetlen vagy több Azure-régiókombinációban telepítve
+* **Azure + Azure CDN a Microsofttól** – a fent felsorolt egyetlen Azure-régiókombináción telepítve
+* **Azure + Azure Traffic Manager** – a fent felsorolt bármely azure-régiókombináción telepítve
 
-## <a name="how-is-internet-analyzer-different-from-other-monitoring-services-provided-by-azure"></a>Miben különbözik az Internet Analyzer az Azure által biztosított egyéb monitorozási szolgáltatásoktól?
+## <a name="how-is-internet-analyzer-different-from-other-monitoring-services-provided-by-azure"></a>Miben különbözik az Internet Analyzer az Azure által nyújtott egyéb figyelési szolgáltatásoktól?
 
-Az Internet Analyzer segítségével megismerheti a végfelhasználók teljesítményét, és segítheti a döntések meghozatalát a teljesítményük javítása érdekében. Míg más Azure monitoring-eszközök betekintést nyújtanak az Azure-szolgáltatásba, az Internet Analyzer a felhasználók teljes körű internetes teljesítményének mérésére koncentrál.
+Az Internet Analyzer segít megérteni a végfelhasználók teljesítményét, és segít a teljesítményük javítását célzó döntések meghozatalában. Míg más Azure-figyelési eszközök betekintést nyújtanak az Azure-szolgáltatásokba, az Internet Analyzer a felhasználók teljes körű internetes teljesítményének mérésére összpontosít.
 
-## <a name="how-is-measurement-data-handled-by-internet-analyzer"></a>Hogyan történik az Internet Analyzer által kezelt mérési adatfeldolgozás?
+## <a name="how-is-measurement-data-handled-by-internet-analyzer"></a>Hogyan kezeli a mérési adatokat az Internet Analyzer?
 
-Az Azure [erős biztonsági folyamatokkal rendelkezik, és megfelel a megfelelőségi szabványok széles skálájának](https://azure.microsoft.com/support/trust-center/). Csak Ön és a kijelölt csapat férhet hozzá az adataihoz. A Microsoft munkatársai csak bizonyos korlátozott körülmények között érhetik el a hozzáférést az Ön számára. Az átvitel és a nyugalmi állapotban is titkosítva van.
+Az Azure [erős biztonsági folyamatokkal rendelkezik, és a megfelelőségi szabványok széles körének felel meg.](https://azure.microsoft.com/support/trust-center/) Csak Ön és a kijelölt csapata férhet hozzá az adataihoz. A Microsoft munkatársai csak korlátozott hozzáféréssel rendelkezhetnek az Ön tudomása szerint korlátozott anameddig. Az átvitel és a nyugalom alatt van titkosítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információkért tekintse meg az [Internet Analyzer áttekintése](internet-analyzer-overview.md)című témakört.
+További információért tekintse meg [az Internet Analyzer áttekintését.](internet-analyzer-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Java-felhasználó által definiált függvény (UDF) Apache Hive Azure HDInsight
-description: Megtudhatja, hogyan hozhat létre olyan Java-alapú, felhasználó által definiált függvényt (UDF), amely együttműködik a Apache Hiveokkal. Ez a példa az UDF a szöveges karakterláncok táblázatát kisbetűsre alakítja át.
+title: Java-felhasználó által definiált függvény (UDF) az Apache Hive Azure HDInsight-mal
+description: Ismerje meg, hogyan hozhat létre egy Java-alapú, felhasználó által definiált függvényt (UDF), amely együttműködik az Apache Hive-vel. Ez a példa az UDF-fájl a szöveges karakterláncok táblázatát kisbetűssé alakítja.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,63 +9,63 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/20/2019
 ms.openlocfilehash: 73a2a612a4eeb4a59f12abf0660fffb092f0547f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327211"
 ---
-# <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Java UDF használata Apache Hive HDInsight
+# <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Java UDF használata Apache Hive-val a HDInsightban
 
-Megtudhatja, hogyan hozhat létre olyan Java-alapú, felhasználó által definiált függvényt (UDF), amely együttműködik a Apache Hiveokkal. Az ebben a példában szereplő Java UDF a szöveges karakterláncok egy táblázatát teljes kisbetűs karakterekké alakítja.
+Ismerje meg, hogyan hozhat létre egy Java-alapú, felhasználó által definiált függvényt (UDF), amely együttműködik az Apache Hive-vel. Ebben a példában a Java UDF a szöveges karakterláncokat tartalmazó táblázatot kisbetűs karakterekké alakítja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
+* Egy Hadoop-fürt a HDInsighton. Lásd: [Első lépések a HDInsight linuxos alkalmazásával.](./apache-hadoop-linux-tutorial-get-started.md)
 * [Java Developer Kit (JDK) 8-as verzió](https://aka.ms/azure-jdks)
-* Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
-* A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az Azure Storage-hoz készült wasb://, a Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen2 vagy adl://esetében abfs://. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI `wasbs://`lesz.  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
+* [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [telepítve](https://maven.apache.org/install.html) szerint Apache.  Maven egy projekt épít rendszer Java projektek.
+* A fürtök [elsődleges tárolóURI-séma.](../hdinsight-hadoop-linux-information.md#URI-and-scheme) Ez wasb:// lenne az Azure Storage, abfs:// az Azure Data Lake Storage Gen2 vagy adl:// az Azure Data Lake Storage Gen1 számára. Ha a biztonságos átvitel engedélyezve van `wasbs://`az Azure Storage számára, az URI lesz.  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
 
-* Egy szövegszerkesztő vagy Java IDE
+* Szövegszerkesztő vagy Java IDE
 
     > [!IMPORTANT]  
-    > Ha Windows-ügyfélen hozza létre a Python-fájlokat, olyan szerkesztőt kell használnia, amely a LF sort használja. Ha nem biztos abban, hogy a szerkesztője az LF vagy a CRLF-t használja-e, tekintse meg a következő témakört: [Hibaelhárítás](#troubleshooting) című rész a CR karakter eltávolításához.
+    > Ha a Python-fájlokat Windows-ügyfélen hozza létre, olyan szerkesztőt kell használnia, amely az LF-et használja sorvégződésként. Ha nem biztos abban, hogy a szerkesztő lf-et vagy CRLF-et használ- e, olvassa el a Hibaelhárítás című [szakaszt](#troubleshooting) a CR-karakter eltávolításának lépéseit.
 
-## <a name="test-environment"></a>Tesztkörnyezet
+## <a name="test-environment"></a>Vizsgálati környezet
 
-A cikkben használt környezet a Windows 10 rendszert futtató számítógép volt.  A parancsok végrehajtása egy parancssorban történt, a különböző fájlok pedig a Jegyzettömb alkalmazásban lettek szerkesztve. Ennek megfelelően módosítsa a környezetét.
+A cikkhez használt környezet egy Windows 10-et futtató számítógép volt.  A parancsok végrehajtása a parancssorban történt, és a különböző fájlokat a Jegyzettömbbel szerkesztették. Módosítsa ennek megfelelően a környezethez.
 
-A parancssorba írja be az alábbi parancsokat egy működő környezet létrehozásához:
+A parancssorból adja meg az alábbi parancsokat a munkakörnyezet létrehozásához:
 
 ```cmd
 IF NOT EXIST C:\HDI MKDIR C:\HDI
 cd C:\HDI
 ```
 
-## <a name="create-an-example-java-udf"></a>Példa Java UDF-hoz
+## <a name="create-an-example-java-udf"></a>Példa létrehozása Java UDF-re
 
-1. Hozzon létre egy új Maven-projektet a következő parancs beírásával:
+1. Hozzon létre egy új Maven projektet a következő parancs megadásával:
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    Ez a parancs létrehoz egy `exampleudf`nevű könyvtárat, amely tartalmazza a Maven-projektet.
+    Ez a parancs `exampleudf`létrehoz egy könyvtár nevű , amely tartalmazza a Maven projekt.
 
-2. A projekt létrehozása után törölje a projekt részeként létrehozott `exampleudf/src/test` könyvtárat a következő parancs beírásával:
+2. A projekt létrehozása után törölje `exampleudf/src/test` a projekt részeként létrehozott könyvtárat a következő parancs megadásával:
 
     ```cmd
     cd ExampleUDF
     rmdir /S /Q "src/test"
     ```
 
-3. A `pom.xml` megnyitásához írja be az alábbi parancsot:
+3. Nyissa `pom.xml` meg az alábbi parancs megadásával:
 
     ```cmd
     notepad pom.xml
     ```
 
-    Ezután cserélje le a meglévő `<dependencies>` bejegyzést a következő XML-fájlra:
+    Ezután cserélje `<dependencies>` le a meglévő bejegyzést a következő XML-re:
 
     ```xml
     <dependencies>
@@ -84,9 +84,9 @@ cd C:\HDI
     </dependencies>
     ```
 
-    Ezek a bejegyzések határozzák meg a Hadoop és a struktúra HDInsight 3,6-es verzióját. A [HDInsight-összetevő verziószámozási](../hdinsight-component-versioning.md) dokumentumának HDInsight által biztosított Hadoop és kaptár verzióit a következő témakörben találja:.
+    Ezek a bejegyzések határozzák meg a HDInsight 3.6-ban található Hadoop és Hive verzióját. A [HDInsight-összetevő verziószámozási](../hdinsight-component-versioning.md) dokumentumában a HAdoop és a Hive HDInsight-hoz mellékelt verzióival kapcsolatos információkat talál.
 
-    Vegyen fel egy `<build>` szakaszt a fájl végén található `</project>` sor elé. Ez a szakasz a következő XML-kódot tartalmazza:
+    Adjon `<build>` hozzá egy `</project>` szakaszt a fájl végén lévő sor hoz. Ennek a szakasznak a következő XML-t kell tartalmaznia:
 
     ```xml
     <build>
@@ -140,17 +140,17 @@ cd C:\HDI
     </build>
     ```
 
-    Ezek a bejegyzések a projekt felépítésének módját határozzák meg. Pontosabban a projekt által használt Java-verzió, valamint a fürthöz való üzembe helyezéshez szükséges uberjar létrehozása.
+    Ezek a bejegyzések határozzák meg a projekt felépítésének módját. Pontosabban a Java, amely a projekt által használt, és hogyan hozhat létre egy uberjar a fürtközponti telepítéshez.
 
-    A módosítások elvégzése után mentse a fájlt.
+    Mentse a fájlt a módosítások végrehajtása után.
 
-4. Az alábbi parancs megadásával hozzon létre és nyisson meg egy új fájlt `ExampleUDF.java`:
+4. Adja meg az alábbi parancsot `ExampleUDF.java`egy új fájl létrehozásához és megnyitásához:
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
     ```
 
-    Ezután másolja és illessze be az alábbi Java-kódot az új fájlba. Ezután zárjuk be a fájlt.
+    Ezután másolja be az alábbi java kódot az új fájlba. Ezután zárja be a fájlt.
 
     ```java
     package com.microsoft.examples;
@@ -177,62 +177,62 @@ cd C:\HDI
     }
     ```
 
-    Ez a kód egy olyan UDF-t valósít meg, amely egy karakterlánc-értéket fogad el, és a karakterlánc kisbetűs verzióját adja vissza.
+    Ez a kód egy karakterlánc-értéket elfogadó UDF-et valósít meg, és a karakterlánc kisbetűs verzióját adja vissza.
 
 ## <a name="build-and-install-the-udf"></a>Az UDF létrehozása és telepítése
 
-Az alábbi parancsokban cserélje le a `sshuser`t a tényleges felhasználónévvel, ha más. Cserélje le a `mycluster`t a tényleges fürt nevére.
+Az alábbi parancsokban `sshuser` cserélje le a tényleges felhasználónevet, ha más. Cserélje `mycluster` le a tényleges fürtnévre.
 
-1. Fordítsa le és csomagolja ki az UDF-t a következő parancs beírásával:
+1. Az UDF fordítása és csomagolása a következő parancs megadásával:
 
     ```cmd
     mvn compile package
     ```
 
-    Ez a parancs az UDF-t az `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` fájlba építi és csomagolja.
+    Ez a parancs az UDF-et `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` a fájlba építi és csomagolja.
 
-2. A `scp` parancs használatával másolja a fájlt a HDInsight-fürtre a következő parancs beírásával:
+2. A `scp` paranccsal másolja a fájlt a HDInsight-fürtbe a következő parancs megadásával:
 
     ```cmd
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-3. Kapcsolódjon a fürthöz az SSH használatával a következő parancs beírásával:
+3. Csatlakozzon a fürthöz SSH használatával a következő parancs megadásával:
 
     ```cmd
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-4. Az Open SSH-munkamenetből másolja a jar-fájlt a HDInsight Storage-ba.
+4. A megnyitott SSH-munkamenetből másolja a jar fájlt a HDInsight-tárolóba.
 
     ```bash
     hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
     ```
 
-## <a name="use-the-udf-from-hive"></a>Az UDF használata a kaptárból
+## <a name="use-the-udf-from-hive"></a>Az UDF használata a Hive-ból
 
-1. A következő parancs beírásával indítsa el a Beeline-ügyfelet az SSH-munkamenetből:
+1. Indítsa el a Beeline ügyfelet az SSH munkamenetből a következő parancs megadásával:
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
-    Ez a parancs feltételezi, hogy a fürthöz tartozó bejelentkezési fiók alapértelmezett **rendszergazdai** jogosultságát használta.
+    Ez a parancs feltételezi, hogy a fürt bejelentkezési fiókjához a **rendszergazda** alapértelmezett beállítását használta.
 
-2. Miután megérkezett a `jdbc:hive2://localhost:10001/>` parancssorba, adja meg a következő parancsot az UDF struktúrához való hozzáadásához és funkcióként való megjelenítéséhez.
+2. Miután megérkezett `jdbc:hive2://localhost:10001/>` a kérdés, adja meg a következő tadd hozzá az UDF-t a Hive, és tegye elérhetővé függvényként.
 
     ```hiveql
     ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
     CREATE TEMPORARY FUNCTION tolower as 'com.microsoft.examples.ExampleUDF';
     ```
 
-3. Az UDF segítségével konvertálhatja a táblázatból lekért értékeket a kisbetűs karakterláncokra.
+3. Az UDF segítségével a táblából beolvasott értékeket kisbetűs karakterláncokká alakíthatja át.
 
     ```hiveql
     SELECT tolower(state) AS ExampleUDF, state FROM hivesampletable LIMIT 10;
     ```
 
-    Ez a lekérdezés kiválasztja az állapotot a táblából, átalakítja a karakterláncot az kisbetű értékre, majd megjeleníti azokat a nem módosított névvel együtt. A kimenet az alábbi szöveghez hasonlóan jelenik meg:
+    Ez a lekérdezés kiválasztja az állapotot a táblából, a karakterláncot kisbetűssé alakítja, majd megjeleníti őket a módosítatlan névvel együtt. A kimenet a következő szöveghez hasonló:
 
         +---------------+---------------+--+
         |  exampleudf   |     state     |
@@ -251,13 +251,13 @@ Az alábbi parancsokban cserélje le a `sshuser`t a tényleges felhasználónév
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-A kaptár-feladatok futtatásakor előfordulhat, hogy az alábbi szöveghez hasonló hibaüzenet jelenik meg:
+A struktúrafeladat futtatásakor a következő höz hasonló hibára kerülhet szó:
 
     Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
 
-Ezt a problémát a Python-fájlban végződő sorok okozzák. Számos Windows-szerkesztő alapértelmezés szerint a CRLF-t használja, de a Linux-alkalmazások általában a TT-t várnak.
+Ezt a problémát a Python-fájl sorvégződései okozhatják. Sok Windows-szerkesztő alapértelmezés szerint a CRLF-et használja sorvégeként, de a Linux alkalmazások általában LF-et várnak.
 
-A következő PowerShell-utasítások segítségével távolítsa el a CR-karaktereket, mielőtt feltölti a fájlt a HDInsight:
+A következő PowerShell-utasításokkal távolíthatja el a CR-karaktereket, mielőtt feltöltené a fájlt a HDInsightba:
 
 ```PowerShell
 # Set $original_file to the python file path
@@ -265,8 +265,8 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
 [IO.File]::WriteAllText($original_file, $text)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A struktúra használatának egyéb módjaival kapcsolatban lásd: [Apache Hive használata a HDInsight](hdinsight-use-hive.md).
+A Hive használatának egyéb módjai az [Apache Hive használata a HDInsight segítségével](hdinsight-use-hive.md).
 
-A felhasználó által definiált függvényekkel kapcsolatos további információkért tekintse meg a kaptár wiki [Apache Hive operátorok és felhasználó által definiált függvények](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) szakaszát a Apache.org címen.
+A Hive-felhasználó által definiált függvényekkel kapcsolatos további információkért lásd: A Hive wiki [Apache Hive operátorok és Felhasználó által definiált függvények](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) című szakaszában apache.org.

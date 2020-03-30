@@ -1,1667 +1,1667 @@
 ---
-title: Azure Monitor a platform metrikái exportálható diagnosztikai beállítások használatával
-description: Az egyes erőforrástípusok számára elérhető metrikák listája Azure Monitor.
+title: Az Azure Monitor platformmetrikák exportálhatók a diagnosztikai beállításokkal
+description: Az Azure Monitor segítségével az egyes erőforrástípusokhoz elérhető metrikák listája.
 services: azure-monitor
 ms.topic: reference
 ms.date: 02/10/2020
 ms.subservice: metrics
 ms.openlocfilehash: 7a75655d1707dd2491065974ed8addc4c2da1a6a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77661362"
 ---
-# <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Monitor a platform metrikái exportálható diagnosztikai beállítások használatával
+# <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Az Azure Monitor platformmetrikák exportálhatók a diagnosztikai beállításokkal
 
-A Azure Monitor alapértelmezés szerint a [platform metrikáit](data-platform-metrics.md) biztosítja konfiguráció nélkül. Számos lehetőséget kínál a platform metrikáinak interakcióra, például a portálon való ábrázolásra, a REST API való hozzáférésre, vagy a PowerShell vagy a parancssori felület használatával történő lekérdezésre. Lásd: [mérőszámok – támogatott](metrics-supported.md) a Azure monitor konszolidált metrikus folyamatával jelenleg elérhető platform-metrikák teljes listájához. A metrikák lekérdezéséhez és eléréséhez használja az [2018-01-01 API-Version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions). Más mérőszámok a portálon vagy a régi API-k használatával is elérhetők.
+Az Azure Monitor [platformmetrikák](data-platform-metrics.md) at alapértelmezés szerint konfiguráció nélkül biztosít. Számos lehetőséget kínál a platformmetrikák kal való interakcióra, beleértve a portálon való ábrázolásukat, a REST API-n keresztüli hozzáférésüket, vagy a PowerShell vagy a CLI használatával történő lekérdezésüket. Tekintse meg [a metrikák által támogatott](metrics-supported.md) a platform metrikák jelenleg elérhető az Azure Monitor konszolidált metrika-folyamat teljes listáját. A metrikák lekérdezéséhez és eléréséhez használja a [2018-01-01 api-verziót.](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) Más metrikák is elérhetők lehetnek a portálon, vagy örökölt API-k használatával.
 
-Az Azure monitor folyamatának platform metrikáit kétféleképpen exportálhatja más helyekre.
-1. [Diagnosztikai beállítások](diagnostic-settings.md) használata Log Analytics, Event Hubs vagy Azure Storage-ba történő küldéshez.
-2. A [metrikák REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list) használata
+A platform metrikák az Azure monitor folyamat más helyekre exportálhatja a két módon.
+1. [Diagnosztikai beállítások használatával](diagnostic-settings.md) küldanek a Log Analytics, az Event Hubs vagy az Azure Storage.
+2. A [REST API metrikák](https://docs.microsoft.com/rest/api/monitor/metrics/list) használata
 
-A Azure Monitor-háttér bonyolult jellemzői miatt nem minden metrika exportálható a diagnosztikai beállítások használatával. Az alábbi táblázat felsorolja, hogy mely és nem exportálható a diagnosztikai beállítások használatával.
+Az Azure Monitor-háttérrendszer bonyolultsága miatt nem minden metrika exportálható diagnosztikai beállításokkal. Az alábbi táblázat felsorolja, hogy a diagnosztikai beállításokkal exportálható és nem is exportálható.
 
-## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Váltás a NULLák és a nulla értékek viselkedésére 
+## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Változás a null-ok és a nulla értékek viselkedésére 
  
-A diagnosztikai beállítások használatával exportálható platform-metrikák esetében van néhány mérőszám, amelynek Azure Monitor a "0" értéket "NULL" értékre értelmezi. Ez némi zavart okozott a Real "0s" (erőforrás által kibocsátott) és az "0s" (nulls) értelmezése között. A diagnosztikai beállításokon keresztül exportált **, 2020-** es platform-mérőszámok már nem exportálják a "0s"-et, kivéve, ha az alapul szolgáló erőforrás valóban kibocsátotta azokat. Ne feledje:
+A diagnosztikai beállításokkal exportálható platformmetrikák hoz néhány metrika, amelynek az Azure Monitor értelmezi a "0s" a "Null". Ez némi zavart okozott a valós '0s' (az erőforrás által kibocsátott) és a "0s" (Nulls) között. **2020. április** 1-jétől kezdődően a diagnosztikai beállításokkal exportált platformmutatók csak akkor exportálják a "0s"-t, ha az alapul szolgáló erőforrás valóban kibocsátotta őket. Ne feledje:
 
-1.  Ha töröl egy erőforráscsoportot vagy egy adott erőforrást, a rendszer nem küldi el az érintett erőforrásokból származó metrikai adatokat a diagnosztikai beállítások exportálási célhelyére. Ez azt eredményezi, hogy többé nem fog megjelenni a Event Hubs, a Storage-fiókokban és a Log Analytics-munkaterületeken.
-2.  Ez a fejlesztés minden nyilvános és privát felhőben elérhető lesz.
-3.  Ez a változás nem befolyásolja a következő tapasztalatok valamelyikének viselkedését: 
-   - A platform erőforrás-naplói a diagnosztikai beállítások használatával lettek exportálva
-   - Metrikák ábrázolási Metrikaböngésző
-   - A platform metrikáinak riasztása
+1.  Ha töröl egy erőforráscsoportot vagy egy adott erőforrást, az érintett erőforrások metrikaadatait a rendszer a továbbiakban nem küldi el a diagnosztikai beállítási exportálási céloknak. Ez azt, hogy a továbbiakban nem jelenik meg az Event Hubs, storage-fiókok és a Log Analytics-munkaterületek.
+2.  Ez a javulás minden nyilvános és privát felhőben elérhető lesz.
+3.  Ez a módosítás nem befolyásolja az alábbi élmények egyikének viselkedését sem: 
+   - Diagnosztikai beállításokkal exportált platformerőforrás-naplók
+   - Mérőszámok diagramja a Metrikakezelőben
+   - Riasztás a platform mérőszámairól
  
-## <a name="metrics-exportable-table"></a>Metrika exportálható táblázat 
+## <a name="metrics-exportable-table"></a>Metrikák exportálható táblázat 
 
-A tábla a következő oszlopokat tartalmazza. 
-- Exportálható diagnosztikai beállításokkal? 
-- NULL/0 eredményezte 
+A táblázat a következő oszlopokat tartalmazza. 
+- Exportálható a diagnosztikai beállításokon keresztül? 
+- Null / 0 által végrehajtott 
 - ResourceType 
 - Metrika 
-- MetricDisplayName
+- MetricDisplayName (Metrikusmegjelenítésneve)
 - Unit (Egység) 
-- AggregationType
+- AggregationType (AggregationType)
 
 
 > [!NOTE]
-> Az alábbi táblázat a lenti vízszintes görgetősávot tartalmazhatja. Ha úgy véli, hogy hiányzik az információ, ellenőrizze, hogy a görgetősáv a bal oldalon van-e.  
+> Az alábbi táblázat alján lehet egy vízszintes görgetősáv. Ha úgy gondolja, hogy hiányoznak az adatok, ellenőrizze, hogy a görgetősáv teljesen balra van-e.  
 
 
-| Exportálható diagnosztikai beállításokkal?  | NULLák kibocsátása |  ResourceType  |  Metrika  |  MetricDisplayName  |  Unit (Egység)  |  AggregationType | 
+| Exportálható a diagnosztikai beállításokon keresztül?  | NULL-okat bocsát ki |  ResourceType  |  Metrika  |  MetricDisplayName (Metrikusmegjelenítésneve)  |  Unit (Egység)  |  AggregationType (AggregationType) | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
-| Igen * * * *  | Nem |  Microsoft.AnalysisServices/servers  |  CleanerCurrentPrice  |  Memória: tisztító – aktuális ár  |  Darabszám  |  Átlag | 
-| Igen * * * *  | Nem |  Microsoft.AnalysisServices/servers  |  CleanerMemoryNonshrinkable  |  Memória: nem csökkenthető a tisztább memória  |  Bájt  |  Átlag | 
-| Igen * * * *  | Nem |  Microsoft.AnalysisServices/servers  |  CleanerMemoryShrinkable  |  Memória: tisztító memória csökkenthető  |  Bájt  |  Átlag | 
-| Igen * * * *  | Nem |  Microsoft.AnalysisServices/servers  |  CommandPoolBusyThreads  |  Szálak: a parancssori készlet foglalt szálak  |  Darabszám  |  Átlag | 
-| Igen * * * *  | Nem |  Microsoft.AnalysisServices/servers  |  CommandPoolIdleThreads  |  Szálak: parancssori készlet üresjárati szálai  |  Darabszám  |  Átlag | 
-| Igen * * * *  | Nem |  Microsoft.AnalysisServices/servers  |  CommandPoolJobQueueLength  |  Parancssori feladatok várólistájának hossza  |  Darabszám  |  Átlag | 
-| Igen * * * *  | Nem |  Microsoft.AnalysisServices/servers  |  Összege  |  Kapcsolat: aktuális kapcsolatok  |  Darabszám  |  Átlag | 
-| Igen * * * *  | Nem |  Microsoft.AnalysisServices/servers  |  CurrentUserSessions  |  Aktuális felhasználói munkamenetek  |  Darabszám  |  Átlag | 
-| Igen * * * *  | Nem |  Microsoft.AnalysisServices/servers  |  LongParsingBusyThreads  |  Szálak: hosszú elemzés – foglalt szálak  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  LongParsingIdleThreads  |  Szálak: tartós folyamatok elemzése – üresjárati szálak  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  LongParsingJobQueueLength  |  Szálak: hosszú elemzési feladatok várólistájának hossza  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  mashup_engine_memory_metric  |  M motor memóriája  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  mashup_engine_private_bytes_metric  |  M motor saját bájtjai  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  mashup_engine_qpu_metric  |  M motor QPU  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  mashup_engine_virtual_bytes_metric  |  M motor virtuális bájtjai  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  memory_metric  |  Memory (Memória)  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  memory_thrashing_metric  |  Memória-Kiverés  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  MemoryLimitHard  |  Memória: rögzített memória  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  MemoryLimitHigh  |  Memória: magas a memória korlátozása  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  MemoryLimitLow  |  Memória: kevés a memória korlátja  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  MemoryLimitVertiPaq  |  Memória: VertiPaq korlátja  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  MemoryUsage  |  Memória: memóriahasználat  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  private_bytes_metric  |  Saját [nem megosztható] memória (bájt)  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  ProcessingPoolBusyIOJobThreads  |  Szálak: feldolgozási készlet – foglalt I/O-feladatok szálai  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  ProcessingPoolBusyNonIOThreads  |  Szálak: feldolgozási készlet – nem I/O-szálak elfoglalva  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  ProcessingPoolIdleIOJobThreads  |  Szálak: feldolgozási készlet – üresjárati I/O-feladatok szálai  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  ProcessingPoolIdleNonIOThreads  |  Szálak: feldolgozási készlet üresjáratban nem I/O-szálai  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  ProcessingPoolIOJobQueueLength  |  Szálak: feldolgozási készlet – I/O-feladatok várólistájának hossza  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  ProcessingPoolJobQueueLength  |  Feldolgozási készlet nyomtatási várólistájának hossza  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  qpu_metric  |  QPU  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  QueryPoolBusyThreads  |  Lekérdezési készlet foglalt szálai  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  QueryPoolIdleThreads  |  Szálak: lekérdezési készlet – üresjárati szálak  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  QueryPoolJobQueueLength  |  Szálak: lekérdezési készlet feladatok várólistájának hossza  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  Kvóta  |  Memória: kvóta  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  QuotaBlocked  |  Memória: blokkolt kvóta  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  RowsConvertedPerSec  |  Feldolgozás: másodpercenként konvertált sorok száma  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  RowsReadPerSec  |  Feldolgozás: másodpercenként beolvasott sorok száma  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  RowsWrittenPerSec  |  Feldolgozás: másodpercenként írt sorok száma  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  ShortParsingBusyThreads  |  Szálak: rövid elemzés – foglalt szálak  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  ShortParsingIdleThreads  |  Szálak: rövid elemzési üresjárati szálak  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  ShortParsingJobQueueLength  |  Szálak: rövid elemzési feladatok várólistájának hossza  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  SuccessfullConnectionsPerSec  |  Sikeres kapcsolatok másodpercenként  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  TotalConnectionFailures  |  Összes sikertelen Kapcsolatfelvétel  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  TotalConnectionRequests  |  Kapcsolatkérelmek teljes száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  VertiPaqNonpaged  |  Memória: VertiPaq, nem lapozható  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  VertiPaqPaged  |  Memória: VertiPaq lapozható  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.AnalysisServices/servers  |  virtual_bytes_metric  |  Virtuális bájtok  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  BackendDuration  |  A háttérbeli kérelmek időtartama  |  Ezredmásodperc  |  Átlag | 
+| Igen****  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  CleanerCurrentPrice  |  Memória: Tisztább aktuális ár  |  Darabszám  |  Átlag | 
+| Igen****  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  CleanerMemoryNem zsugorítható  |  Memória: A tisztább memória nem zsugorodik  |  Bájt  |  Átlag | 
+| Igen****  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  CleanerMemoryZsugorodikható  |  Memória: Tisztább memória zsugorodik  |  Bájt  |  Átlag | 
+| Igen****  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  CommandPoolBusyThreads  |  Szálak: Parancskészlet foglalt szálai  |  Darabszám  |  Átlag | 
+| Igen****  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  CommandPoolIdleThreads  |  Szálak: Parancskészlet tétlen szálai  |  Darabszám  |  Átlag | 
+| Igen****  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  CommandPoolJobQueueLength  |  Parancskészlet feladatvárólistájának hossza  |  Darabszám  |  Átlag | 
+| Igen****  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  Jelenlegi kapcsolatok  |  Kapcsolat: Jelenlegi kapcsolatok  |  Darabszám  |  Átlag | 
+| Igen****  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  CurrentUserSessions  |  Aktuális felhasználói munkamenetek  |  Darabszám  |  Átlag | 
+| Igen****  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  LongParsingBusyThreads  |  Szálak: Hosszú elemzés foglalt szálak  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  LongParsingIdleThreads  |  Szálak: Hosszú elemzés tétlen szálak  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  LongParsingJobQueueLength  |  Szálak: Hosszú elemzési feladat várólista hossza  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  mashup_engine_memory_metric  |  M motor memória  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  mashup_engine_private_bytes_metric  |  M motor privát bájt  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  mashup_engine_qpu_metric  |  M Motor QPU  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  mashup_engine_virtual_bytes_metric  |  M motor virtuális bájtjai  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  memory_metric  |  Memory (Memória)  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  memory_thrashing_metric  |  Memóriaakadozás  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  MemoryLimitHard memória  |  Memória: Memória korlát kemény  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  MemoryLimitHigh  |  Memória: Memória limit magas  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  MemoryLimitLow memória  |  Memória: Kevés memóriakorlát  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  MemoryLimitVertiPaq  |  Memória: Memóriakorlát VertiPaq  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  Memóriahasználat  |  Memória: Memóriahasználat  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  private_bytes_metric  |  Privát bájtok  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  ProcessingPoolBusyIOJobThreads  |  Szálak: A készlet foglalt I/O-feladatszálainak feldolgozása  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  ProcessingPoolBusyNonIOThreads  |  Szálak: A készlet foglalt, nem I/O-szálai  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  ProcessingPoolIdleIOJobThreads  |  Szálak: A készlet tétlen I/O-feladatszálainak feldolgozása  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  ProcessingPoolIdleNonIOThreads  |  Szálak: A készlet alapjárati nem I/O-szálai  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  ProcessingPoolIOJobQueueLength  |  Szálak: A készlet I/O-feladatvárólistájának hosszának feldolgozása  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  ProcessingPoolJobQueueLength  |  Készletfeladat-várólista hosszának feldolgozása  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  qpu_metric  |  QPU  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  QueryPoolBusyThreads  |  Lekérdezéskészlet foglalt szálai  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  QueryPoolIdleThreads  |  Szálak: Lekérdezéskészlet tétlen szálai  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  QueryPoolJobQueueLength  |  Szálak: Lekérdezéskészlet-feladat várólista hossza  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  Kvóta  |  Memória: Kvóta  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  Kvóta blokkolva  |  Memória: Kvóta letiltva  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  RowsconvertedperSec  |  Feldolgozás: Másodpercenként konvertált sorok  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  RowsreadperSec  |  Feldolgozás: Másodpercenként olvasott sorok  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  RowsWrittenPerSec  |  Feldolgozás: Másodpercenként írt sorok  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  ShortParsingBusyThreads  |  Szálak: Rövid elemzés foglalt szálak  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  ShortParsingIdleThreads  |  Szálak: Rövid elemzési tétlen szálak  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  ShortParsingJobQueueLength  |  Szálak: Rövid elemzési feladat várólista hossza  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  SuccessfullConnectionsPerSec  |  Sikeres kapcsolatok másodpercenként  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  Összes kapcsolati hiba  |  Csatlakozási hibák összesen  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  Összes kapcsolatkérése  |  Csatlakozási kérelmek összesen  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  VertiPaqNonpaged között  |  Memória: VertiPaq Nonpaged  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  VertiPaqPaged  |  Memória: VertiPaq lapozgatott  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  virtual_bytes_metric  |  Felhasznált virtuális memória jelenlegi mérete (bájt)  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  Háttérvégpontidőtartama  |  A háttérrendszer-kérelmek időtartama  |  Ezredmásodperc  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.ApiManagement/service  |  Kapacitás  |  Kapacitás  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  Időtartam  |  Az átjárók kéréseinek teljes időtartama  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubDroppedEvents  |  Eldobott EventHub események  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubRejectedEvents  |  EventHub-események visszautasítva  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubSuccessfulEvents  |  Sikeres EventHub események  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubThrottledEvents  |  Szabályozott EventHub események  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubTimedoutEvents  |  Időtúllépés a EventHub eseményeinél  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  Időtartam  |  Az átjárókérelmek teljes időtartama  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubDroppedEvents  |  Eldobott EventHub-események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubElutasítottEsemények  |  Elutasított EventHub-események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubSuccessfulEvents  |  Sikeres EventHub-események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubThrottledEsemények  |  Szabályozott EventHub-események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubTimedoutEvents  |  EventHub-események idővel elvégzett eseményei  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubTotalBytesSent  |  EventHub-események mérete  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubTotalEvents  |  Összes EventHub esemény  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubTotalFailedEvents  |  Sikertelen EventHub események  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  FailedRequests  |  Sikertelen átjáró-kérelmek (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  OtherRequests  |  Egyéb átjáró-kérelmek (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubTotalEvents  |  EventHub-események összesen  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  EventHubTotalFailedEvents  |  Sikertelen EventHub-események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  Sikertelen kérések  |  Sikertelen átjárókérelmek (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  Egyébkérések  |  Egyéb átjárókérelmek (elavult)  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  Kérelmek  |  Kérelmek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  SuccessfulRequests  |  Sikeres átjáró-kérelmek (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  TotalRequests  |  Összes átjáró kérelme (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  UnauthorizedRequests  |  Nem engedélyezett átjáró-kérelmek (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  AppCpuUsagePercentage  |  Alkalmazás CPU-kihasználtságának százalékos aránya  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  AppMemoryCommitted  |  Az alkalmazáshoz hozzárendelt memória  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  AppMemoryMax  |  Az alkalmazás memóriájának maximális száma  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  AppMemoryUsed  |  Használt alkalmazás memóriája  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  GCPauseTotalCount  |  GC-szüneteltetések száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  GCPauseTotalTime  |  GC felfüggesztésének teljes ideje  |  Ezredmásodperc  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  MaxOldGenMemoryPoolBytes  |  A rendelkezésre álló régi generációs adatméret maximális száma  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  OldGenMemoryPoolBytes  |  A régi generációs adatméret  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  OldGenPromotedBytes  |  Előléptetés a régi generációs adatméretre  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  SystemCpuUsagePercentage  |  CPU-használat százalékos aránya  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  TomcatErrorCount  |  Tomcat globális hiba  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  TomcatReceivedBytes  |  Tomcat összesen fogadott bájtok  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  TomcatRequestMaxTime  |  Tomcat-kérelem maximális ideje  |  Ezredmásodperc  |  Maximum | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  TomcatRequestTotalCount  |  Tomcat-kérelem összesített száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  TomcatRequestTotalTime  |  Tomcat-kérelem teljes ideje  |  Ezredmásodperc  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  TomcatResponseAvgTime  |  Tomcat-kérelem átlagos ideje  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  TomcatSentBytes  |  Tomcat összesen eljuttatott bájtok száma  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  TomcatSessionActiveCurrentCount  |  Tomcat-munkamenet élő száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  TomcatSessionActiveMaxCount  |  Tomcat-munkamenet maximális aktív száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  TomcatSessionAliveMaxTime  |  Tomcat-munkamenet maximális élettartama  |  Ezredmásodperc  |  Maximum | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  TomcatSessionCreatedCount  |  Tomcat-munkamenet létrehozva szám  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  TomcatSessionExpiredCount  |  A Tomcat-munkamenet lejárt  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  TomcatSessionRejectedCount  |  A Tomcat-munkamenet elutasította a darabszámot  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. AppPlatform/Spring  |  YoungGenPromotedBytes  |  Népszerűsítse a fiatal generáció adatméretét  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Automation/automationAccounts  |  TotalJob  |  Feladatok összesen  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Automation/automationAccounts  |  TotalUpdateDeploymentMachineRuns  |  Összes frissítés központi telepítési gép futtatása  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Automation/automationAccounts  |  TotalUpdateDeploymentRuns  |  Összes frissítés központi telepítési futtatása  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  CoreCount  |  Dedikált mag száma  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  CreatingNodeCount  |  Csomópontok számának létrehozása  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  IdleNodeCount  |  Tétlen csomópontok száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  JobDeleteCompleteEvent  |  Feladatok törlése – befejezett események  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  JobDeleteStartEvent  |  Feladatok törlésének indítási eseményei  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  JobDisableCompleteEvent  |  A feladatok letiltják a teljes eseményeket  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  JobDisableStartEvent  |  Feladatok letiltásának indítási eseményei  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  JobStartEvent  |  Feladatok indítási eseményei  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  JobTerminateCompleteEvent  |  A feladatokhoz tartozó befejezett események befejezése  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  JobTerminateStartEvent  |  Feladatokból indított események leállítása  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  LeavingPoolNodeCount  |  A készlet-csomópontok számának elhagyása  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  LowPriorityCoreCount  |  LowPriority mag száma  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  OfflineNodeCount  |  Offline csomópontok száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  PoolCreateEvent  |  Készlet-létrehozási események  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  PoolDeleteCompleteEvent  |  Készlet törlése – befejezett események  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  PoolDeleteStartEvent  |  Készlet törlése – indítási események  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  PoolResizeCompleteEvent  |  Készlet átméretezése – befejezett események  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  PoolResizeStartEvent  |  Készlet átméretezésének indítási eseményei  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  PreemptedNodeCount  |  Előzik-csomópontok száma  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  RebootingNodeCount  |  Csomópontok számának újraindítása  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  ReimagingNodeCount  |  Csomópontok rendszerképének alaphelyzetbe állítása  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  RunningNodeCount  |  Csomópontok száma  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  StartingNodeCount  |  Csomópontok számának indítása  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  StartTaskFailedNodeCount  |  Indítási feladat sikertelen csomópontok száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  TaskCompleteEvent  |  Feladat teljes eseményei  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  TaskFailEvent  |  Feladat sikertelen eseményei  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  TaskStartEvent  |  Tevékenységek indítási eseményei  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  TotalLowPriorityNodeCount  |  Alacsony prioritású csomópontok száma  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  TotalNodeCount  |  Dedikált csomópontok száma  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  UnusableNodeCount  |  Nem használható csomópontok száma  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  WaitingForStartTaskNodeCount  |  Várakozás a feladat-csomópontok számának megkezdésére  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  Aktív magok  |  Aktív magok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  Aktív csomópontok  |  Aktív csomópontok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  Üresjárati magok  |  Üresjárati magok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  Tétlen csomópontok  |  Tétlen csomópontok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  A feladatok befejeződtek  |  A feladatok befejeződtek  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  Feladatok elküldve  |  Feladatok elküldve  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  Magok kihagyása  |  Magok kihagyása  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  Csomópontok elhagyása  |  Csomópontok elhagyása  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  Előzik magok  |  Előzik magok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  Előzik-csomópontok  |  Előzik-csomópontok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  Kvóta kihasználtsága (%)  |  Kvóta kihasználtsága (%)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  Magok összesen  |  Magok összesen  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  Csomópontok összesen  |  Csomópontok összesen  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  Használhatatlan magok  |  Használhatatlan magok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. BatchAI/munkaterületek  |  Használhatatlan csomópontok  |  Használhatatlan csomópontok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  ConnectionAccepted  |  Elfogadott kapcsolatok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  ConnectionActive  |  Aktív kapcsolatok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  ConnectionHandled  |  Kezelt kapcsolatok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  CpuUsagePercentageInDouble  |  CPU-használat százaléka  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  IOReadBytes  |  IO olvasási bájtok  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  IOWriteBytes  |  IO írási bájtjai  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  Memóriakorlát  |  Memória korlátja  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  MemoryUsage  |  Memóriahasználat  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  MemoryUsagePercentageInDouble  |  Memóriahasználat százaléka  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  PendingTransactions  |  Függőben lévő tranzakciók  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  ProcessedBlocks  |  Feldolgozott blokkok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  ProcessedTransactions  |  Feldolgozott tranzakciók  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  QueuedTransactions  |  Várólistán lévő tranzakciók  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  RequestHandled  |  Kezelt kérelmek  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Blockchain/blockchainMembers  |  StorageUsage  |  Tárterület-használat  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachehits  |  Gyorsítótár-találatok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachehits0  |  Gyorsítótárbeli találatok (szegmens 0)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachehits1  |  Gyorsítótárbeli találatok (1. Szilánk)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachehits2  |  Gyorsítótárbeli találatok (2. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachehits3  |  Gyorsítótárbeli találatok (3. Szilánk)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachehits4  |  Gyorsítótár-találatok (4. Szilánk)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachehits5  |  Gyorsítótárbeli találatok (szegmens 5)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachehits6  |  Gyorsítótárbeli találatok (szilánk 6)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachehits7  |  Gyorsítótárbeli találatok (szegmens 7)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachehits8  |  Gyorsítótárbeli találatok (szilánk 8)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachehits9  |  Gyorsítótárbeli találatok (szilánk 9)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheLatency  |  Gyorsítótár késési másodpercek (előzetes verzió)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachemisses  |  Gyorsítótár-lemaradás  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachemisses0  |  Gyorsítótár-kihagyás (0. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachemisses1  |  Gyorsítótár-lemaradás (1. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachemisses2  |  Gyorsítótár-lemaradás (2. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachemisses3  |  Gyorsítótár-lemaradás (3. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachemisses4  |  Gyorsítótár-lemaradás (4. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachemisses5  |  Gyorsítótár-lemaradás (5. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachemisses6  |  Gyorsítótár-lemaradás (szegmens 6)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachemisses7  |  Gyorsítótár-lemaradás (7. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachemisses8  |  Gyorsítótár-lemaradás (szegmens 8)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cachemisses9  |  Gyorsítótár-lemaradás (szegmens 9)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead  |  Gyorsítótár-olvasás  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead0  |  Gyorsítótár-olvasás (0. szegmens)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  Sikeres kérések  |  Sikeres átjárókérelmek (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  TotalRequests  |  Átjárókérelmek összesen (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.ApiManagement/service  |  Jogosulatlan kérések  |  Nem engedélyezett átjárókérelmek (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  AppCpuUsageSzázalék  |  Alkalmazás PROCESSZOR-használati százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  AppMemoryCommitted  |  Hozzárendelt alkalmazásmemória  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  AppMemoryMax alkalmazás  |  Alkalmazásmemória max.  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  AppMemoryUsed  |  Használt alkalmazásmemória  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  GCPauseTotalCount (GCPauseTotalCount)  |  Gc szünetszáma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  GCPauseTotalTime  |  Globális katalógus szüneteltetési teljes ideje  |  Ezredmásodperc  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  MaxOldGenMemoryPoolPoolBytes  |  Maximálisan elérhető régi generációs adatméret  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  OldGenMemoryPoolBytes  |  Régi generációs adatok mérete  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  OldGenPromotedBytes  |  Előléptetés régi generációs adatméretre  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  SystemCpuUsageSzázalék  |  Rendszerprocesszor-használat százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  TomcatHibaszám  |  Tomcat globális hiba  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  TomcatReceivedBytes (TomcatReceivedBytes)  |  Tomcat teljes fogadott bájt  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  TomcatRequestMaxTime  |  Tomcat-kérelem maximális ideje  |  Ezredmásodperc  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  TomcatRequestTotalCount (TomcatRequestTotalCount)  |  Tomcat kérelem teljes száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  TomcatRequestTotalTime  |  Tomcat kérelem összes alkalommal  |  Ezredmásodperc  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  TomcatResponseAvgTime  |  Tomcat kérelem átlagos ideje  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  TomcatSentBytes (TomcatSentBytes)  |  Tomcat összes elküldött bájt  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  TomcatSessionActiveCurrentCount  |  Tomcat munkamenet élő száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  TomcatSessionActiveMaxCount  |  Tomcat-munkamenet maximális aktív száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  TomcatSessionAliveMaxTime  |  Tomcat session max élő idő  |  Ezredmásodperc  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  TomcatSessionCreatedCount  |  Tomcat munkamenet létrehozva száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  TomcatSessionExpiredCount  |  Tomcat-munkamenet lejárt száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  TomcatSessionRejectedCount  |  Tomcat munkamenet elutasított száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.AppPlatform/Tavasz  |  YoungGenPromotedBytes  |  Népszerűsítés fiatal generációs adatméretre  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Automation/automationAccounts  |  Teljes feladat  |  Összes feladat  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Automation/automationAccounts  |  TotalUpdateDeploymentMachineRuns  |  A frissítési központi telepítési gép teljes futtatása  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Automation/automationAccounts  |  TotalUpdateDeploymentRuns  |  A frissítés telepítési futásai összesen  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  CoreCount (Magszáma)  |  Dedikált magok száma  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  LétrehozásNodeCount  |  Csomópontszám létrehozása  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  IdleNode-számláló  |  Tétlen csomópontok száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  JobDeleteCompleteEvent  |  Feladat teljes eseményeinek törlése  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  FeladatDeleteStartEvent  |  Feladat indítási eseményeinek törlése  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  JobDisableCompleteEvent  |  Feladat teljes események letiltása  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  FeladatDisableStartEvent  |  Feladat indítási eseményeinek letiltása  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  FeladatStartEvent  |  Feladatindítási események  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  JobTerminateCompleteEvent  |  Feladat befejezése – teljes események  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  FeladatTerminateStartEvent  |  Feladat indítási eseményeinek leállítása  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  KilépéspoolNodeCount  |  Kilépés készletcsomópont-számlálóból  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  LowPriorityCoreCount (LowPriorityCoreCount)  |  LowPriority magszámláló  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  OfflineNodeCount (OfflineNodeCount)  |  Kapcsolat nélküli csomópontok száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  PoolCreateEvent  |  Készlet létrehozási események  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  Készlettörléscompleteesemény  |  Készlet törlése teljes események  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  KészletdeleteStartevent  |  Készlet törlése kezdőesemények  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  PoolResizeCompleteEvent  |  Készlet átméretezése teljes események  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  PoolResizeStartEvent  |  Készlet átméretezése kezdési események  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  PreemptedNodeCount (PreemptedNodeCount)  |  Preempted csomópontszám  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  ÚjraindításNodeCount  |  A csomópontszám újraindítása  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  ReimagingNodeCount (ReimagingNodeCount)  |  Csomópontszám újraszámítása  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  RunningNodeCount között  |  Futó csomópontszám  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  StartingNodeCount között  |  Kezdő csomópontszám  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  StartTaskFailedNodeCount  |  Sikertelen kezdő feladat csomópontszáma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  TaskCompleteEvent  |  Feladat-befejezési események  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  TaskFailEvent  |  Feladat sikertelen események  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Batch/batchAccounts  |  TaskStartEvent  |  Feladat indítási eseményei  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  TotalLowPriorityNodeCount (ÖsszeslowPriorityNodeCount)  |  Alacsony prioritású csomópontszám  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  TotalNodeCount (ÖsszesnodeCount)  |  Dedikált csomópontszám  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  Használhatatlan NodeCount  |  Használhatatlan csomópontszám  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Batch/batchAccounts  |  WaitingForStartTaskNodeCount (Várakozás: StartForStartTaskNodeCount)  |  Várakozás a feladatcsomópont-számláló indítására  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Aktív magok  |  Aktív magok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Aktív csomópontok  |  Aktív csomópontok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Alapjárati magok  |  Alapjárati magok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Tétlen csomópontok  |  Tétlen csomópontok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Feladat elvégezve  |  Feladat elvégezve  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Elküldött feladat  |  Elküldött feladat  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Elhagyva magok  |  Elhagyva magok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Csomópontok elhagyása  |  Csomópontok elhagyása  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Preempted magok  |  Preempted magok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Elődpontos csomópontok  |  Elődpontos csomópontok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Kvótakihasználtság százaléka  |  Kvótakihasználtság százaléka  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Magok összesen  |  Magok összesen  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Összes csomópont  |  Összes csomópont  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Használhatatlan magok  |  Használhatatlan magok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.BatchAI/munkaterületek  |  Használhatatlan csomópontok  |  Használhatatlan csomópontok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  ConnectionAccepted (Kapcsolat elfogadva)  |  Elfogadott kapcsolatok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  ConnectionActive  |  Aktív kapcsolatok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  Kapcsolat által kezelt  |  Kezelt kapcsolatok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  CpuUsagepercentageinDouble  |  PROCESSZOR-használat százaléka  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  IOReadBytes  |  Io olvasási bájtjai  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  IOWriteBájtok  |  IO írási bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  MemoryLimit memóriahatár  |  Memóriakorlát  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  Memóriahasználat  |  Memóriahasználat  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  Memóriahasználatszázalékösszeg  |  Memóriahasználat százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  Függőtranzakciók  |  Függőben lévő tranzakciók  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  Feldolgozott blokkok  |  Feldolgozott blokkok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  Feldolgozott tranzakciók  |  Feldolgozott tranzakciók  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  Várólistán lévő tranzakciók  |  Várólistán lévő tranzakciók  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  Kéréssel elnyújtva  |  Kezelt kérelmek  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Blockchain/blockchainMembers  |  StorageUsage (Tároláshasználata)  |  Tárhely használat  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótár-találatok  |  Gyorsítótár-találatok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótárhits0  |  Gyorsítótár-találatok (0. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótár-találatok1  |  Gyorsítótár-találatok (1. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótár-találatok2  |  Gyorsítótár-találatok (2. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótár-találatok3  |  Gyorsítótár-találatok (3. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótár-találatok4  |  Gyorsítótár-találatok (4. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótár-találatok5  |  Gyorsítótár-találatok (Shard 5)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótártalálat6  |  Gyorsítótár-találatok (6. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótár-találatok7  |  Gyorsítótár-találatok (Shard 7)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótár-találatok8  |  Gyorsítótár-találatok (8. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótártalálat9  |  Gyorsítótár-találatok (9. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótárLátság  |  Gyorsítótár-késleltetés mikroszekundumok (előzetes verzió)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótár-tévesztések  |  Gyorsítótár-tévesztések  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótármisses0  |  Gyorsítótár-tévesztések (0. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótármisses1  |  Gyorsítótár-tévesztések (1. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótármisses2  |  Gyorsítótár-tévesztések (2. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótármisses3  |  Gyorsítótár-tévesztések (3. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótármisses4  |  Gyorsítótár-tévesztések (4. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótármisses5  |  Gyorsítótár-tévesztések (5. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótármisses6  |  Gyorsítótár-tévesztések (6. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótár-misses7  |  Gyorsítótár-tévesztések (7. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótármisses8  |  Gyorsítótár-tévesztések (8. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótármisses9  |  Gyorsítótár-tévesztések (9.sángold)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead  |  Gyorsítótár olvasása  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead0  |  Gyorsítótár olvasása (0. s.  |  BytesPerSecond  |  Maximum | 
 | **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead1  |  Gyorsítótár olvasása (1. szegmens)  |  BytesPerSecond  |  Maximum | 
 | **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead2  |  Gyorsítótár olvasása (2. szegmens)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead3  |  Gyorsítótár olvasása (3. szegmens)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead4  |  Gyorsítótár olvasása (4. Szilánk)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead3  |  Gyorsítótár olvasása (3. shard)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead4  |  Gyorsítótár olvasása (4. szegmens)  |  BytesPerSecond  |  Maximum | 
 | **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead5  |  Gyorsítótár olvasása (5. szegmens)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead6  |  Gyorsítótár olvasása (szegmens 6)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead7  |  Gyorsítótár olvasása (szegmens 7)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead8  |  Gyorsítótár olvasása (szilánk 8)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead9  |  Gyorsítótár olvasása (szegmens 9)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheWrite  |  Gyorsítótár írása  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheWrite0  |  Gyorsítótár-írás (0. szegmens)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheWrite1  |  Gyorsítótár-írás (1. szegmens)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheWrite2  |  Gyorsítótár-írás (2. szegmens)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheWrite3  |  Gyorsítótár-írás (3. Szilánk)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheWrite4  |  Gyorsítótár-írás (4. Szilánk)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheWrite5  |  Gyorsítótár-írás (5. Szilánk)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheWrite6  |  Gyorsítótár írása (szegmens 6)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheWrite7  |  Gyorsítótár-írás (szegmens 7)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheWrite8  |  Gyorsítótár-írás (szegmens 8)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheWrite9  |  Gyorsítótár-írás (szegmens 9)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients  |  Csatlakozott ügyfelek  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead6  |  Gyorsítótár olvasása (6. szegmens)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead7  |  Gyorsítótár olvasása (7. szegmens)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead8  |  Gyorsítótár olvasása (8. szegmens)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheRead9  |  Gyorsítótár olvasása (9. szegmens)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótárírás  |  Gyorsítótár írása  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheWrite0  |  Gyorsítótár írása (0. shard)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheWrite1  |  Gyorsítótár írása (1. szegmens)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  cacheWrite2  |  Gyorsítótár írása (2. szegmens)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótárÍrás3  |  Gyorsítótár írása (3. szegmens)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótárWrite4  |  Gyorsítótár írása (4. szegmens)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótárÍrás5  |  Gyorsítótár írása (5. szegmens)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótárÍrás6  |  Gyorsítótár írása (6. szegmens)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótárÍrás7  |  Gyorsítótár írása (Shard 7)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótárÍrás8  |  Gyorsítótár írása (8. szegmens)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  gyorsítótárÍrás9  |  Gyorsítótár írása (Shard 9)  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients (connectedclients)  |  Csatlakozott ügyfelek  |  Darabszám  |  Maximum | 
 | **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients0  |  Csatlakoztatott ügyfelek (0. szegmens)  |  Darabszám  |  Maximum | 
 | **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients1  |  Csatlakoztatott ügyfelek (1. szegmens)  |  Darabszám  |  Maximum | 
 | **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients2  |  Csatlakoztatott ügyfelek (2. szegmens)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients3  |  Csatlakoztatott ügyfelek (3. Szilánk)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients4  |  Csatlakoztatott ügyfelek (4. Szilánk)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients5  |  Csatlakoztatott ügyfelek (5. Szilánk)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients3  |  Csatlakoztatott ügyfelek (3. szegmens)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients4  |  Csatlakoztatott ügyfelek (4. szegmens)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients5  |  Csatlakoztatott ügyfelek (5. szegmens)  |  Darabszám  |  Maximum | 
 | **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients6  |  Csatlakoztatott ügyfelek (6. szegmens)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients7  |  Csatlakoztatott ügyfelek (7. szegmens)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients8  |  Csatlakoztatott ügyfelek (10. szegmens)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients9  |  Csatlakoztatott ügyfelek (10. szegmens)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients7  |  Csatlakoztatott ügyfelek (Shard 7)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients8  |  Csatlakoztatott ügyfelek (8. szegmens)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  connectedclients9  |  Csatlakoztatott ügyfelek (9. szegmens)  |  Darabszám  |  Maximum | 
 | **Igen**  | Nem |  Microsoft.Cache/redis  |  Hibák  |  Hibák  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  evictedkeys  |  Kizárt kulcsok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  evictedkeys0  |  Kizárt kulcsok (0. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  evictedkeys1  |  Kizárt kulcsok (1. Szilánk)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  evictedkeys2  |  Kizárt kulcsok (2. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  evictedkeys3  |  Kizárt kulcsok (3. Szilánk)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  evictedkeys4  |  Kizárt kulcsok (4. Szilánk)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  evictedkeys5  |  Kizárt kulcsok (5. Szilánk)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  evictedkeys6  |  Kizárt kulcsok (szegmens 6)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  evictedkeys7  |  Kizárt kulcsok (7. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  evictedkeys8  |  Kizárt kulcsok (szilánk 8)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  evictedkeys9  |  Kizárt kulcsok (szilánk 9)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  expiredkeys  |  Lejárt kulcsok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  expiredkeys0  |  Lejárt kulcsok (szilánk 0)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  expiredkeys1  |  Lejárt kulcsok (1. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  expiredkeys2  |  Lejárt kulcsok (2. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  expiredkeys3  |  Lejárt kulcsok (3. Szilánk)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  expiredkeys4  |  Lejárt kulcsok (4. Szilánk)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  expiredkeys5  |  Lejárt kulcsok (szilánk 5)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  expiredkeys6  |  Lejárt kulcsok (szilánk 6)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  expiredkeys7  |  Lejárt kulcsok (7. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  expiredkeys8  |  Lejárt kulcsok (szilánk 8)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  expiredkeys9  |  Lejárt kulcsok (szilánk 9)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands  |  Kap  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands0  |  Beolvasás (0. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands1  |  Beolvasás (1. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands2  |  Beolvasás (2. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands3  |  Beolvasás (3. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands4  |  Beolvasás (4. Szilánk)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands5  |  Beolvasás (szegmens 5)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands6  |  Beolvasás (szilánk 6)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands7  |  Beolvasás (szegmens 7)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands8  |  Beolvasás (szilánk 8)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands9  |  Beolvasás (szegmens 9)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  operationsPerSecond  |  Műveletek száma másodpercenként  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  operationsPerSecond0  |  Művelet/másodperc (0. Szilánk)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  operationsPerSecond1  |  Művelet/másodperc (1. szegmens)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  operationsPerSecond2  |  Művelet/másodperc (2. szegmens)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  operationsPerSecond3  |  Művelet/másodperc (3. szegmens)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  operationsPerSecond4  |  Művelet/másodperc (4. szegmens)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  operationsPerSecond5  |  Művelet/másodperc (5. szegmens)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  operationsPerSecond6  |  Művelet/másodperc (szegmens 6)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  operationsPerSecond7  |  Művelet/másodperc (7. szegmens)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  operationsPerSecond8  |  Művelet/másodperc (szegmens 8)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  operationsPerSecond9  |  Művelet/másodperc (szegmens 9)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  percentProcessorTime  |  CPU  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  percentProcessorTime0  |  CPU (0. szegmens)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  percentProcessorTime1  |  CPU (1. Szilánk)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  percentProcessorTime2  |  CPU (2. szegmens)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  percentProcessorTime3  |  CPU (3. Szilánk)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  percentProcessorTime4  |  CPU (4. Szilánk)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  percentProcessorTime5  |  CPU (5. Szilánk)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  percentProcessorTime6  |  CPU (szegmens 6)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  percentProcessorTime7  |  PROCESSZOR (7. szegmens)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  percentProcessorTime8  |  CPU (szegmens 8)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  percentProcessorTime9  |  CPU (szilánk 9)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad  |  Kiszolgáló terhelése  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad0  |  Kiszolgáló terhelése (0. szegmens)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad1  |  Kiszolgáló terhelése (1. szegmens)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  kilakoltatott kulcsok  |  Kilakoltatott kulcsok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  kilaktatotik0  |  Kilakoltatott kulcsok (0. shard)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  kilaktatotik1  |  Kilakoltatott kulcsok (1. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  kilakoltatott kulcsok2  |  Kilakoltatott kulcsok (2. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  kilakoltatott kulcsok3  |  Kilakoltatott kulcsok (3. shard)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  kilaktatotik4  |  Kilakoltatott kulcsok (4. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  kilaktatotik5  |  Kilakoltatott kulcsok (5. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  kilaktatotik6  |  Kilakoltatott kulcsok (6. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  kilakoltattákkeys7  |  Kilakoltatott kulcsok (Shard 7)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  kilakoltatott kulcsok8  |  Kilakoltatott kulcsok (8. szilánk)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  kilakoltatott kulcsok9  |  Kilakoltatott kulcsok (9. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  lejárt kulcsok  |  Lejárt kulcsok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  lejárt kulcsok0  |  Lejárt kulcsok (0. shard)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  lejárt kulcsok1  |  Lejárt kulcsok (1. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  lejárt kulcsok2  |  Lejárt kulcsok (2. shard)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  lejárt kulcsok3  |  Lejárt kulcsok (3. shard)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  lejárt kulcsok4  |  Lejárt kulcsok (4. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  lejárt kulcsok5  |  Lejárt kulcsok (5. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  lejárt kulcsok6  |  Lejárt kulcsok (Shard 6)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  lejárt kulcsok7  |  Lejárt kulcsok (Shard 7)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  lejárt kulcsok8  |  Lejárt kulcsok (8. shard)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  lejárt kulcsok9  |  Lejárt kulcsok (Shard 9)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  getparancsok  |  Kap  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands0  |  Gets (Shard 0)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands1  |  Gets (Shard 1)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands2  |  Gets (Shard 2)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands3  |  Gets (Shard 3)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands4  |  Gets (Shard 4)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands5  |  Gets (Shard 5)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands6  |  Gets (Shard 6)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands7  |  Gets (Shard 7)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands8  |  Gets (Shard 8)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  getcommands9  |  Gets (Shard 9)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  műveletekPerSecond  |  Műveletek másodpercenként  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  műveletekPerSecond0  |  Műveletek másodpercenként (0. sánda)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  műveletekPerSecond1  |  Műveletek másodpercenként (1. sánda)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  műveletekPerSecond2  |  Műveletek másodpercenként (2. sánda)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  műveletekPerSecond3  |  Műveletek másodpercenként (3. shard)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  műveletekPerSecond4  |  Műveletek másodpercenként (4. sánda)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  műveletekPerSecond5  |  Műveletek másodpercenként (5. szegmens)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  műveletekPerSecond6  |  Műveletek másodpercenként (Shard 6)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  műveletekPerSecond7  |  Műveletek másodpercenként (Shard 7)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  műveletekPerSecond8  |  Műveletek másodpercenként (Shard 8)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  műveletekPerSecond9  |  Műveletek másodpercenként (Shard 9)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  százalékProcessorTime  |  CPU  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  percentProcessorTime0  |  CPU (Shard 0)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  százalékProcessorTime1  |  CPU (1. szegmens)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  százalékProcessorTime2  |  CPU (Shard 2)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  százalékProcessorTime3  |  CPU (Szilánk 3)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  százalékProcessorTime4  |  CPU (Shard 4)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  százalékProcessorTime5  |  CPU (Shard 5)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  százalékProcessorTime6  |  CPU (Shard 6)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  százalékProcessorTime7  |  CPU (Shard 7)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  százalékProcessorTime8  |  CPU (Shard 8)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  százalékProcessorTime9  |  CPU (Shard 9)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  kiszolgálóbetöltése  |  Kiszolgáló betöltése  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad0  |  Kiszolgáló betöltése (0. szegmens)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad1  |  Kiszolgáló betöltése (1. szegmens)  |  Százalék  |  Maximum | 
 | **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad2  |  Kiszolgáló betöltése (2. szegmens)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad3  |  Kiszolgáló terhelése (3. Szilánk)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad4  |  Kiszolgáló terhelése (4. Szilánk)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad5  |  Kiszolgáló terhelése (5. Szilánk)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad6  |  Kiszolgáló betöltése (szegmens 6)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad7  |  Kiszolgáló terhelése (7. szegmens)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad8  |  Kiszolgáló betöltése (szegmens 8)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad9  |  Kiszolgáló terhelése (szegmens 9)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  setcommands  |  Beállítja  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  setcommands0  |  Készletek (0. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  setcommands1  |  Készletek (1. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  setcommands2  |  Készletek (2. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  setcommands3  |  Készletek (3. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  setcommands4  |  Készletek (4. Szilánk)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  setcommands5  |  Készletek (szilánk 5)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  setcommands6  |  Készletek (szilánk 6)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  setcommands7  |  Készletek (szegmens 7)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  setcommands8  |  Készletek (szilánk 8)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  setcommands9  |  Készletek (szilánk 9)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalcommandsprocessed  |  Összes művelet  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalcommandsprocessed0  |  Összes művelet (0. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalcommandsprocessed1  |  Összes művelet (1. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalcommandsprocessed2  |  Összes művelet (2. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalcommandsprocessed3  |  Összes művelet (3. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalcommandsprocessed4  |  Összes művelet (4. Szilánk)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalcommandsprocessed5  |  Összes művelet (5. Szilánk)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalcommandsprocessed6  |  Összes művelet (szegmens 6)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalcommandsprocessed7  |  Összes művelet (7. szegmens)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalcommandsprocessed8  |  Összes művelet (szegmens 8)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalcommandsprocessed9  |  Összes művelet (szegmens 9)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalkeys  |  Kulcsok összesen  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalkeys0  |  Összes kulcs (szilánk 0)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalkeys1  |  Összes kulcs (1. szegmens)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalkeys2  |  Összes kulcs (2. szegmens)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalkeys3  |  Összes kulcs (3. Szilánk)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalkeys4  |  Összes kulcs (4. Szilánk)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalkeys5  |  Összes kulcs (5. szegmens)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalkeys6  |  Összes kulcs (szilánk 6)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalkeys7  |  Összes kulcs (szegmens 7)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalkeys8  |  Összes kulcs (szilánk 8)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  totalkeys9  |  Összes kulcs (szilánk 9)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemory  |  Felhasznált memória  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemory0  |  Felhasznált memória (0. Szilánk)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemory1  |  Felhasznált memória (1. Szilánk)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemory2  |  Felhasznált memória (2. Szilánk)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemory3  |  Felhasznált memória (3. Szilánk)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemory4  |  Felhasznált memória (4. Szilánk)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemory5  |  Felhasznált memória (5. Szilánk)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemory6  |  Felhasznált memória (6. szegmens)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemory7  |  Felhasznált memória (7. szegmens)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemory8  |  Felhasznált memória (8. Szilánk)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemory9  |  Felhasznált memória (10. szegmens)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemorypercentage  |  Felhasznált memória százalékos aránya  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemoryRss  |  Felhasznált memória RSS-címe  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemoryRss0  |  Használt memória RSS-je (0. szegmens)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemoryRss1  |  Használt memória RSS-je (1. szegmens)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemoryRss2  |  Használt memória RSS-je (2. szegmens)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemoryRss3  |  Használt memória RSS-je (3. szegmens)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemoryRss4  |  Használt memória RSS-je (4. Szilánk)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemoryRss5  |  Használt memória RSS-je (5. szegmens)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemoryRss6  |  Használt memória RSS-je (3. szegmens)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemoryRss7  |  Használt memória RSS-je (7. szegmens)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemoryRss8  |  Használt memória RSS-je (szegmens 8)  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Cache/redis  |  usedmemoryRss9  |  Használt memória RSS-je (szegmens 9)  |  Bájt  |  Maximum | 
-| Nem  | Nem |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Lemez olvasási sebessége (bájt/s)  |  Lemez olvasása  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Lemez olvasási művelete/mp  |  Lemez olvasási művelete/mp  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Lemez írási sebessége (bájt/s)  |  Lemez írása  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Lemez írási műveletei/mp  |  Lemez írási műveletei/mp  |  CountPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad3  |  Kiszolgáló betöltése (3. szegmens)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad4  |  Kiszolgáló betöltése (4. szegmens)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad5  |  Kiszolgáló betöltése (5. szegmens)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad6  |  Kiszolgáló betöltése (6. shard)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad7  |  Kiszolgáló betöltése (Shard 7)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  serverLoad8  |  Kiszolgáló betöltése (8. szegmens)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  kiszolgálóLoad9  |  Kiszolgáló betöltése (Shard 9)  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  setparancsok  |  Halmazok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  setcommands0  |  Készletek (Shard 0)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  setparancsok1  |  Készletek (Shard 1)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  setparancsok2  |  Készletek (Shard 2)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  setparancsok3  |  Készletek (Shard 3)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  setparancsok4  |  Készletek (Shard 4)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  setparancsok5  |  Készletek (Shard 5)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  setparancsok6  |  Készletek (Shard 6)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  setparancsok7  |  Készletek (Shard 7)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  setparancsok8  |  Készletek (Shard 8)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  setparancsok9  |  Készletek (Shard 9)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összes parancs feldolgozva  |  Összes művelet  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összes parancsfeldolgozása00  |  Összes művelet (0. sángold)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összes parancsfeldolgozás1  |  Összes művelet (1. szegmens)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összes parancsfeldolgozás2  |  Összes művelet (2. shard)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összes parancsfeldolgozás3  |  Összes művelet (3. shard)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összes parancsfeldolgozás4  |  Összes művelet (4. szilánk)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összes parancsfeldolgozás5  |  Összes művelet (5. szilánk)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összes parancsfeldolgozás6  |  Összes művelet (Shard 6)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összes parancsfeldolgozás7  |  Összes művelet (Shard 7)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összes parancsfeldolgozás8  |  Összes művelet (8. szilánk)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összes parancsfeldolgozás9  |  Összes művelet (Shard 9)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összes kulcs  |  Összes kulcs  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összeskulcs0  |  Összes kulcs (0. sángold)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összes kulcs1  |  Összes kulcs (1. szegmens)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összesenkeys2  |  Összes kulcs (2. szilánk)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összesenkeys3  |  Összes kulcs (3. sánda)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összesen4  |  Összes kulcs (4. szilánk)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összesen5  |  Összes kulcs (5. szilánk)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összesen6  |  Összes kulcs (Shard 6)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összesen7  |  Összes kulcs (Shard 7)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összesen8  |  Összes kulcs (Shard 8)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  összesenkeys9  |  Összes kulcs (Shard 9)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használt memória  |  Használt memória  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemória0  |  Használt memória (0. shard)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemória1  |  Használt memória (1. szegmens)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemória2  |  Használt memória (2. szegmens)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemória3  |  Használt memória (3. shard)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemória4  |  Használt memória (4. szegmens)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemória5  |  Használt memória (5. szegmens)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemória6  |  Használt memória (Shard 6)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemória7  |  Használt memória (Shard 7)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemória8  |  Használt memória (Shard 8)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemória9  |  Használt memória (Shard 9)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemóriaszázalék  |  Használt memória százaléka  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használt memoryRss  |  Használt memória RSS  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemoryRss0  |  Használt memória RSS (Shard 0)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemoryRss1  |  Használt memória RSS (Shard 1)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemoryRss2  |  Használt memória RSS (Shard 2)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemoryRss3  |  Használt memória RSS (Shard 3)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemoryRss4  |  Használt memória RSS (Shard 4)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemoryRss5  |  Használt memória RSS (Shard 5)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemoryRss6  |  Használt memória RSS (Shard 6)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemoryRss7  |  Használt memória RSS (Shard 7)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemoryRss8  |  Használt memória RSS (Shard 8)  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Cache/redis  |  használtmemoryRss9  |  Használt memória RSS (Shard 9)  |  Bájt  |  Maximum | 
+| Nem  | Nem |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Lemez olvasási bájtjai/mp  |  Lemez olvasása  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Lemezolvasási műveletek/mp  |  Lemezolvasási műveletek/mp  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Lemezírási bájtok/mp  |  Lemez írása  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Lemezírási műveletek/mp  |  Lemezírási műveletek/mp  |  CountPerSzekszekundum  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Bejövő hálózat  |  Bejövő hálózat  |  Bájt  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Kimenő hálózat  |  Kimenő hálózat  |  Bájt  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Százalékos processzorhasználat  |  Százalékos processzorhasználat  |  Százalék  |  Átlag | 
-| Nem  | Nem |  Microsoft.ClassicCompute/virtualMachines  |  Lemez olvasási sebessége (bájt/s)  |  Lemez olvasása  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.ClassicCompute/virtualMachines  |  Lemez olvasási művelete/mp  |  Lemez olvasási művelete/mp  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft.ClassicCompute/virtualMachines  |  Lemez írási sebessége (bájt/s)  |  Lemez írása  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.ClassicCompute/virtualMachines  |  Lemez írási műveletei/mp  |  Lemez írási műveletei/mp  |  CountPerSecond  |  Átlag | 
+| Nem  | Nem |  Microsoft.ClassicCompute/virtualMachines  |  Lemez olvasási bájtjai/mp  |  Lemez olvasása  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicCompute/virtualMachines  |  Lemezolvasási műveletek/mp  |  Lemezolvasási műveletek/mp  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.ClassicCompute/virtualMachines  |  Lemezírási bájtok/mp  |  Lemez írása  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicCompute/virtualMachines  |  Lemezírási műveletek/mp  |  Lemezírási műveletek/mp  |  CountPerSzekszekundum  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.ClassicCompute/virtualMachines  |  Bejövő hálózat  |  Bejövő hálózat  |  Bájt  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.ClassicCompute/virtualMachines  |  Kimenő hálózat  |  Kimenő hálózat  |  Bájt  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.ClassicCompute/virtualMachines  |  Százalékos processzorhasználat  |  Százalékos processzorhasználat  |  Százalék  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts  |  SuccessE2ELatency  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts  |  SuccessServerLatency  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts  |  SuccessE2ELatency (SuccessE2ELatency)  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts  |  SuccessServerLatency (Sikereskiszolgálók átkának)  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts  |  Tranzakciók  |  Tranzakciók  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.ClassicStorage/storageAccounts  |  UsedCapacity  |  Használt kapacitás  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
-| Nem  | Nem |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  BlobCapacity  |  Blob-kapacitása  |  Bájt  |  Átlag | 
-| Nem  | Nem |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  BlobCount  |  Blobok száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  ContainerCount  |  Blobtárolók száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
-| Nem  | Nem |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  IndexCapacity  |  Index kapacitása  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  SuccessE2ELatency  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  SuccessServerLatency  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  Tranzakciók  |  Tranzakciók  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/fileServices  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/fileServices  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
-| Nem  | Nem |  Microsoft. ClassicStorage/storageAccounts/fileServices  |  FileCapacity  |  Fájl kapacitása  |  Bájt  |  Átlag | 
-| Nem  | Nem |  Microsoft. ClassicStorage/storageAccounts/fileServices  |  FileCount  |  Fájlok száma  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft. ClassicStorage/storageAccounts/fileServices  |  FileShareCount  |  Fájlmegosztás száma  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft. ClassicStorage/storageAccounts/fileServices  |  FileShareQuota  |  Fájlmegosztás kvótájának mérete  |  Bájt  |  Átlag | 
-| Nem  | Nem |  Microsoft. ClassicStorage/storageAccounts/fileServices  |  FileShareSnapshotCount  |  Fájlmegosztás pillanatképének száma  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft. ClassicStorage/storageAccounts/fileServices  |  FileShareSnapshotSize  |  Fájlmegosztás pillanatképének mérete  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/fileServices  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/fileServices  |  SuccessE2ELatency  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/fileServices  |  SuccessServerLatency  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/fileServices  |  Tranzakciók  |  Tranzakciók  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  QueueCapacity  |  Queue Storage kapacitása  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  QueueCount  |  Üzenetsorok száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  QueueMessageCount  |  Üzenetsorbeli üzenetek száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  SuccessE2ELatency  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  SuccessServerLatency  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  Tranzakciók  |  Tranzakciók  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  SuccessE2ELatency  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  SuccessServerLatency  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  TableCapacity  |  Table Storage kapacitása  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  TableCount  |  Táblák száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  TableEntityCount  |  Táblaentitások száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  Tranzakciók  |  Tranzakciók  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.CognitiveServices/accounts  |  BlockedCalls  |  Blokkolt hívások  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.CognitiveServices/accounts  |  CharactersTrained  |  Betanított karakterek  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.CognitiveServices/accounts  |  CharactersTranslated  |  Lefordított karakterek  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.CognitiveServices/accounts  |  ClientErrors  |  Ügyfél-hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.CognitiveServices/accounts  |  DataIn  |  A-ben tárolt adatértékek  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.CognitiveServices/accounts  |  DataOut  |  Kimenő adatvesztés  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.CognitiveServices/accounts  |  Késés  |  Késés  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.CognitiveServices/accounts  |  Kiszolgálóhibái  |  Kiszolgálói hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.CognitiveServices/accounts  |  SpeechSessionDuration  |  Beszédfelismerési munkamenet időtartama  |  Másodperc  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.CognitiveServices/accounts  |  SuccessfulCalls  |  Sikeres hívások  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.CognitiveServices/accounts  |  TotalCalls  |  Hívások összesen  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.CognitiveServices/accounts  |  TotalErrors  |  Összes hiba  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.CognitiveServices/accounts  |  TotalTokenCalls  |  Jogkivonat-hívások összesen  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.CognitiveServices/accounts  |  TotalTransactions  |  Tranzakciók összesen  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Felhasznált CPU-kreditek  |  Felhasznált CPU-kreditek  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ClassicStorage/storageAccounts  |  Használtkapacitás  |  Használt kapacitás  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
+| Nem  | Nem |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  BlobCapacity kapacitás  |  Blob kapacitása  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  BlobCount (BlobCount)  |  Blobok száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  Konténerszám  |  Blob-tárolók száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
+| Nem  | Nem |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  Indexkapacitás  |  Index kapacitása  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  SuccessE2ELatency (SuccessE2ELatency)  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  SuccessServerLatency (Sikereskiszolgálók átkának)  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  Tranzakciók  |  Tranzakciók  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
+| Nem  | Nem |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  Fájlkapacitás  |  Fájl kapacitása  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  Fájlszám  |  Fájlok száma  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  FileShareCount  |  Fájlmegosztások száma  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  FileSharequota fájlmegosztás  |  Fájlmegosztási kvóta mérete  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  FileShareSnapshotCount  |  Fájlmegosztáspillanatkép száma  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  Fájlmegosztássnapshotmérete  |  Fájlmegosztás pillanatképének mérete  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  SuccessE2ELatency (SuccessE2ELatency)  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  SuccessServerLatency (Sikereskiszolgálók átkának)  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  Tranzakciók  |  Tranzakciók  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  Várólistakapacitás  |  Várólista kapacitása  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  Várólistaszáma  |  Várólista száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  QueueMessageCount (Üzenetsor)  |  Várólista-üzenetek száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  SuccessE2ELatency (SuccessE2ELatency)  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  SuccessServerLatency (Sikereskiszolgálók átkának)  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  Tranzakciók  |  Tranzakciók  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  SuccessE2ELatency (SuccessE2ELatency)  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  SuccessServerLatency (Sikereskiszolgálók átkának)  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  Táblakapacitás  |  Tábla kapacitása  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  Tábladarabszám  |  Táblaszáma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  Táblaentitásszáma  |  Táblaentitások száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  Tranzakciók  |  Tranzakciók  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.CognitiveServices/fiókok  |  Blokkolt hívások  |  Blokkolt hívások  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.CognitiveServices/fiókok  |  Karakterekbe képezve  |  Betanított karakterek  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.CognitiveServices/fiókok  |  Lefordított karakterek  |  Lefordított karakterek  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.CognitiveServices/fiókok  |  Ügyfélhibák  |  Ügyfélhibák  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.CognitiveServices/fiókok  |  Datain között  |  Adatok a  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.CognitiveServices/fiókok  |  DataOut (Adatki- és a  |  Adatok ki  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.CognitiveServices/fiókok  |  Késés  |  Késés  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.CognitiveServices/fiókok  |  Kiszolgálóhibák  |  Kiszolgálói hibák  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.CognitiveServices/fiókok  |  SpeechSessionDuration  |  Beszédmunkamenet időtartama  |  Másodperc  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.CognitiveServices/fiókok  |  Sikeres hívások  |  Sikeres hívások  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.CognitiveServices/fiókok  |  Összes hívás  |  Összes hívás  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.CognitiveServices/fiókok  |  Összes hiba  |  Összes hiba  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.CognitiveServices/fiókok  |  TotalTokenCalls  |  Tokenhívások összesen  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.CognitiveServices/fiókok  |  Összes tranzakció  |  Összes tranzakció  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Cpu-kreditek felhasznált  |  Cpu-kreditek felhasznált  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Fennmaradó CPU-kreditek  |  Fennmaradó CPU-kreditek  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Adatlemez várólistájának mélysége  |  Adatlemez-várólista mélysége (előzetes verzió)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Adatlemez-olvasási sebesség (bájt/s)  |  Adatlemez-olvasási sebesség (bájt/mp) (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Adatlemez olvasási műveletei (művelet/s)  |  Adatlemez olvasási művelete/mp (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Adatlemez-írási sebesség (bájt/s)  |  Adatlemez-írási sebesség (bájt/s) (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Adatlemez írási műveletei (művelet/s)  |  Adatlemez írási műveletei/mp (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Lemez olvasási bájtjai  |  Lemez olvasási bájtjai  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Lemez olvasási művelete/mp  |  Lemez olvasási művelete/mp  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Lemez írási bájtjai  |  Lemez írási bájtjai  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Lemez írási műveletei/mp  |  Lemez írási műveletei/mp  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Bejövő folyamatok  |  Bejövő folyamatok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Bejövő folyamatok maximális létrehozási aránya  |  Bejövő folyamatok maximális létrehozási aránya (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Bejövő hálózat  |  Számlázandó hálózat (elavult)  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Teljes hálózat  |  Teljes hálózat  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Kimenő hálózat  |  Hálózati kimenő számlázandó (elavult)  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Kimenő hálózat összesen  |  Kimenő hálózat összesen  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  OPERÁCIÓSRENDSZER-lemez várólistájának mélysége  |  OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s)  |  OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  OPERÁCIÓSRENDSZER-lemez olvasási művelete/s  |  OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s)  |  OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  OPERÁCIÓSRENDSZER-lemez írási műveletei/s  |  OPERÁCIÓSRENDSZER-lemez írási műveletei/mp (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Operációs rendszer/lemez QD  |  OPERÁCIÓSRENDSZER-lemez QD (elavult)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Operációs rendszer/lemez olvasási sebessége (bájt/s)  |  OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Operációs rendszer/lemez olvasási művelet/mp  |  OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Operációs rendszer/lemez írási sebessége (bájt/s)  |  OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Operációs rendszer/lemez írási műveletei másodpercenként  |  OPERÁCIÓSRENDSZER-lemez írási művelete/mp (elavult)  |  CountPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Adatlemez várakozási sorának mélysége  |  Adatlemez-várólista mélysége (előzetes verzió)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Adatlemez olvasási bájtjai/mp  |  Adatlemez olvasási bájtjai/mp (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Adatlemez olvasási műveletei/mp  |  Adatlemez olvasási műveletei/mp (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Adatlemez írási bájt/mp  |  Adatlemez írási bájtjai/mp (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Adatlemez írási műveletei/mp  |  Adatlemez írási műveletei/mp (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Lemezolvasási bájtok  |  Lemezolvasási bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Lemezolvasási műveletek/mp  |  Lemezolvasási műveletek/mp  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Lemezírási bájtok  |  Lemezírási bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Lemezírási műveletek/mp  |  Lemezírási műveletek/mp  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Bejövő forgalomfolyamok  |  Bejövő forgalomfolyamok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Bejövő folyamatok maximális létrehozási aránya  |  Bejövő folyamatok maximális létrehozási aránya (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Bejövő hálózat  |  Hálózat számlázható (elavult)  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Hálózat összesen  |  Hálózat összesen  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Kimenő hálózat  |  Hálózat számlázható (elavult)  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Hálózat kiteljesedése összesen  |  Hálózat kiteljesedése összesen  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  OS-lemez várakozási sorának mélysége  |  Az operációs rendszer lemezvárólistájának mélysége (előzetes verzió)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Operációs rendszer lemezolvasási bájtjai/mp  |  Operációs rendszer lemezolvasási bájtjainak másodpercenkénti száma (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Operációs rendszer lemezolvasási műveletei/mp  |  Operációs rendszer lemezolvasási műveleteinek másodpercenkénti száma (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Operációs rendszer lemezének írása bájt/mp  |  Operációs rendszer lemezének írása másodpercenkénti bájtjai (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Operációs rendszer lemezírási műveletei/mp  |  Operációs rendszer lemezírási műveleteinek/mp-je (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Operációs rendszer lemezenként – QD  |  Operációs rendszer lemezének qd-ja (elavult)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Az operációs rendszer lemezenkénti olvasási bájt/mp  |  Operációs rendszer lemezolvasási bájtjai/mp(elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Az operációs rendszer lemezenkénti olvasási műveletei/mp  |  Operációs rendszer lemezolvasási műveletei/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Operációs rendszer lemezenként i.e.  |  Operációs rendszer lemezírási bájtjai/mp(elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Operációs rendszer lemezenkéntírási műveletek másodpercenkénti száma  |  Operációs rendszer lemezírási műveletei/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Kimenő folyamatok  |  Kimenő folyamatok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Kimenő folyamatok maximális létrehozási aránya  |  Kimenő folyamatok maximális létrehozási aránya (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  /Lemez QD  |  Adatlemez QD (elavult)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  /Lemez olvasási sebesség (bájt/s)  |  Adatlemez-olvasási sebesség (bájt/mp) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  /Lemez olvasási művelet/mp  |  Adatlemez olvasási műveletei (művelet/mp) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  /Lemez írási sebessége (bájt/s)  |  Adatlemez-írási sebesség (bájt/s) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  /Lemez írási műveletek másodpercenként  |  Adatlemez írási műveletei (művelet/mp) (elavult)  |  CountPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Kimenő folyamatok maximális létrehozási aránya  |  Kimenő folyamatok maximális létrehozási aránya (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Lemezenkénti qd  |  Adatlemez –qd (elavult)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Lemezolvasási bájt/mp  |  Adatlemez olvasási bájt/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Lemezolvasási műveletek/mp  |  Adatlemez olvasási műveletei/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Lemezenkénti írási bájt/mp  |  Adatlemez írási bájt/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Lemezírási műveletek/mp  |  Adatlemez írási műveletei/mp(elavult)  |  CountPerSzekszekundum  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Százalékos processzorhasználat  |  Százalékos processzorhasználat  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Prémium szintű adatlemez-gyorsítótár – olvasási találat  |  Prémium szintű adatlemez-gyorsítótár olvasási találata (előzetes verzió)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Prémium szintű adatlemez-gyorsítótár – olvasási kihagyás  |  Prémium szintű adatlemez-gyorsítótár olvasási lemaradása (előzetes verzió)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Prémium operációsrendszer-lemez gyorsítótárának olvasási találata  |  Prémium operációsrendszer-lemez gyorsítótárának olvasási találata (előzetes verzió)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása  |  Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása (előzetes verzió)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Felhasznált CPU-kreditek  |  Felhasznált CPU-kreditek  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Prémium szintű adatlemez gyorsítótárának olvasási találata  |  Prémium szintű adatlemez gyorsítótárának olvasási találata (előzetes verzió)  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Prémium szintű adatlemez gyorsítótárolvasási tévesztése  |  Prémium szintű adatlemez gyorsítótárolvasási tévesztés (előzetes verzió)  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Prémium szintű operációsrendszer-gyorsítótár olvasási találata  |  Prémium szintű operációsrendszer-gyorsítótár olvasási találata (előzetes verzió)  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachines  |  Prémium szintű operációsrendszer-lemezgyorsítótár olvasási tévesztése  |  Prémium szintű operációsrendszer-lemezgyorsítótár olvasási tévesztése (előzetes verzió)  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Cpu-kreditek felhasznált  |  Cpu-kreditek felhasznált  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Fennmaradó CPU-kreditek  |  Fennmaradó CPU-kreditek  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Adatlemez várólistájának mélysége  |  Adatlemez-várólista mélysége (előzetes verzió)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Adatlemez-olvasási sebesség (bájt/s)  |  Adatlemez-olvasási sebesség (bájt/mp) (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Adatlemez olvasási műveletei (művelet/s)  |  Adatlemez olvasási művelete/mp (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Adatlemez-írási sebesség (bájt/s)  |  Adatlemez-írási sebesség (bájt/s) (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Adatlemez írási műveletei (művelet/s)  |  Adatlemez írási műveletei/mp (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Lemez olvasási bájtjai  |  Lemez olvasási bájtjai  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Lemez olvasási művelete/mp  |  Lemez olvasási művelete/mp  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Lemez írási bájtjai  |  Lemez írási bájtjai  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Lemez írási műveletei/mp  |  Lemez írási műveletei/mp  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Bejövő folyamatok  |  Bejövő folyamatok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Bejövő folyamatok maximális létrehozási aránya  |  Bejövő folyamatok maximális létrehozási aránya (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Bejövő hálózat  |  Számlázandó hálózat (elavult)  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Teljes hálózat  |  Teljes hálózat  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Kimenő hálózat  |  Hálózati kimenő számlázandó (elavult)  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Kimenő hálózat összesen  |  Kimenő hálózat összesen  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  OPERÁCIÓSRENDSZER-lemez várólistájának mélysége  |  OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s)  |  OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  OPERÁCIÓSRENDSZER-lemez olvasási művelete/s  |  OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s)  |  OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  OPERÁCIÓSRENDSZER-lemez írási műveletei/s  |  OPERÁCIÓSRENDSZER-lemez írási műveletei/mp (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Operációs rendszer/lemez QD  |  OPERÁCIÓSRENDSZER-lemez QD (elavult)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Operációs rendszer/lemez olvasási sebessége (bájt/s)  |  OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Operációs rendszer/lemez olvasási művelet/mp  |  OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Operációs rendszer/lemez írási sebessége (bájt/s)  |  OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Operációs rendszer/lemez írási műveletei másodpercenként  |  OPERÁCIÓSRENDSZER-lemez írási művelete/mp (elavult)  |  CountPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Adatlemez várakozási sorának mélysége  |  Adatlemez-várólista mélysége (előzetes verzió)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Adatlemez olvasási bájtjai/mp  |  Adatlemez olvasási bájtjai/mp (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Adatlemez olvasási műveletei/mp  |  Adatlemez olvasási műveletei/mp (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Adatlemez írási bájt/mp  |  Adatlemez írási bájtjai/mp (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Adatlemez írási műveletei/mp  |  Adatlemez írási műveletei/mp (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Lemezolvasási bájtok  |  Lemezolvasási bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Lemezolvasási műveletek/mp  |  Lemezolvasási műveletek/mp  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Lemezírási bájtok  |  Lemezírási bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Lemezírási műveletek/mp  |  Lemezírási műveletek/mp  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Bejövő forgalomfolyamok  |  Bejövő forgalomfolyamok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Bejövő folyamatok maximális létrehozási aránya  |  Bejövő folyamatok maximális létrehozási aránya (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Bejövő hálózat  |  Hálózat számlázható (elavult)  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Hálózat összesen  |  Hálózat összesen  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Kimenő hálózat  |  Hálózat számlázható (elavult)  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Hálózat kiteljesedése összesen  |  Hálózat kiteljesedése összesen  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  OS-lemez várakozási sorának mélysége  |  Az operációs rendszer lemezvárólistájának mélysége (előzetes verzió)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Operációs rendszer lemezolvasási bájtjai/mp  |  Operációs rendszer lemezolvasási bájtjainak másodpercenkénti száma (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Operációs rendszer lemezolvasási műveletei/mp  |  Operációs rendszer lemezolvasási műveleteinek másodpercenkénti száma (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Operációs rendszer lemezének írása bájt/mp  |  Operációs rendszer lemezének írása másodpercenkénti bájtjai (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Operációs rendszer lemezírási műveletei/mp  |  Operációs rendszer lemezírási műveleteinek/mp-je (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Operációs rendszer lemezenként – QD  |  Operációs rendszer lemezének qd-ja (elavult)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Az operációs rendszer lemezenkénti olvasási bájt/mp  |  Operációs rendszer lemezolvasási bájtjai/mp(elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Az operációs rendszer lemezenkénti olvasási műveletei/mp  |  Operációs rendszer lemezolvasási műveletei/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Operációs rendszer lemezenként i.e.  |  Operációs rendszer lemezírási bájtjai/mp(elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Operációs rendszer lemezenkéntírási műveletek másodpercenkénti száma  |  Operációs rendszer lemezírási műveletei/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Kimenő folyamatok  |  Kimenő folyamatok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Kimenő folyamatok maximális létrehozási aránya  |  Kimenő folyamatok maximális létrehozási aránya (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  /Lemez QD  |  Adatlemez QD (elavult)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  /Lemez olvasási sebesség (bájt/s)  |  Adatlemez-olvasási sebesség (bájt/mp) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  /Lemez olvasási művelet/mp  |  Adatlemez olvasási műveletei (művelet/mp) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  /Lemez írási sebessége (bájt/s)  |  Adatlemez-írási sebesség (bájt/s) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  /Lemez írási műveletek másodpercenként  |  Adatlemez írási műveletei (művelet/mp) (elavult)  |  CountPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Kimenő folyamatok maximális létrehozási aránya  |  Kimenő folyamatok maximális létrehozási aránya (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Lemezenkénti qd  |  Adatlemez –qd (elavult)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Lemezolvasási bájt/mp  |  Adatlemez olvasási bájt/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Lemezolvasási műveletek/mp  |  Adatlemez olvasási műveletei/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Lemezenkénti írási bájt/mp  |  Adatlemez írási bájt/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Lemezírási műveletek/mp  |  Adatlemez írási műveletei/mp(elavult)  |  CountPerSzekszekundum  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Százalékos processzorhasználat  |  Százalékos processzorhasználat  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Prémium szintű adatlemez-gyorsítótár – olvasási találat  |  Prémium szintű adatlemez-gyorsítótár olvasási találata (előzetes verzió)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Prémium szintű adatlemez-gyorsítótár – olvasási kihagyás  |  Prémium szintű adatlemez-gyorsítótár olvasási lemaradása (előzetes verzió)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Prémium operációsrendszer-lemez gyorsítótárának olvasási találata  |  Prémium operációsrendszer-lemez gyorsítótárának olvasási találata (előzetes verzió)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása  |  Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása (előzetes verzió)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Felhasznált CPU-kreditek  |  Felhasznált CPU-kreditek  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Prémium szintű adatlemez gyorsítótárának olvasási találata  |  Prémium szintű adatlemez gyorsítótárának olvasási találata (előzetes verzió)  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Prémium szintű adatlemez gyorsítótárolvasási tévesztése  |  Prémium szintű adatlemez gyorsítótárolvasási tévesztés (előzetes verzió)  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Prémium szintű operációsrendszer-gyorsítótár olvasási találata  |  Prémium szintű operációsrendszer-gyorsítótár olvasási találata (előzetes verzió)  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets  |  Prémium szintű operációsrendszer-lemezgyorsítótár olvasási tévesztése  |  Prémium szintű operációsrendszer-lemezgyorsítótár olvasási tévesztése (előzetes verzió)  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Cpu-kreditek felhasznált  |  Cpu-kreditek felhasznált  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Fennmaradó CPU-kreditek  |  Fennmaradó CPU-kreditek  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Adatlemez várólistájának mélysége  |  Adatlemez-várólista mélysége (előzetes verzió)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Adatlemez-olvasási sebesség (bájt/s)  |  Adatlemez-olvasási sebesség (bájt/mp) (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Adatlemez olvasási műveletei (művelet/s)  |  Adatlemez olvasási művelete/mp (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Adatlemez-írási sebesség (bájt/s)  |  Adatlemez-írási sebesség (bájt/s) (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Adatlemez írási műveletei (művelet/s)  |  Adatlemez írási műveletei/mp (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Lemez olvasási bájtjai  |  Lemez olvasási bájtjai  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Lemez olvasási művelete/mp  |  Lemez olvasási művelete/mp  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Lemez írási bájtjai  |  Lemez írási bájtjai  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Lemez írási műveletei/mp  |  Lemez írási műveletei/mp  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Bejövő folyamatok  |  Bejövő folyamatok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Bejövő folyamatok maximális létrehozási aránya  |  Bejövő folyamatok maximális létrehozási aránya (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Bejövő hálózat  |  Számlázandó hálózat (elavult)  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Teljes hálózat  |  Teljes hálózat  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Kimenő hálózat  |  Hálózati kimenő számlázandó (elavult)  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Kimenő hálózat összesen  |  Kimenő hálózat összesen  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OPERÁCIÓSRENDSZER-lemez várólistájának mélysége  |  OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s)  |  OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OPERÁCIÓSRENDSZER-lemez olvasási művelete/s  |  OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s)  |  OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OPERÁCIÓSRENDSZER-lemez írási műveletei/s  |  OPERÁCIÓSRENDSZER-lemez írási műveletei/mp (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Operációs rendszer/lemez QD  |  OPERÁCIÓSRENDSZER-lemez QD (elavult)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Operációs rendszer/lemez olvasási sebessége (bájt/s)  |  OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Operációs rendszer/lemez olvasási művelet/mp  |  OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Operációs rendszer/lemez írási sebessége (bájt/s)  |  OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Operációs rendszer/lemez írási műveletei másodpercenként  |  OPERÁCIÓSRENDSZER-lemez írási művelete/mp (elavult)  |  CountPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Adatlemez várakozási sorának mélysége  |  Adatlemez-várólista mélysége (előzetes verzió)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Adatlemez olvasási bájtjai/mp  |  Adatlemez olvasási bájtjai/mp (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Adatlemez olvasási műveletei/mp  |  Adatlemez olvasási műveletei/mp (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Adatlemez írási bájt/mp  |  Adatlemez írási bájtjai/mp (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Adatlemez írási műveletei/mp  |  Adatlemez írási műveletei/mp (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Lemezolvasási bájtok  |  Lemezolvasási bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Lemezolvasási műveletek/mp  |  Lemezolvasási műveletek/mp  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Lemezírási bájtok  |  Lemezírási bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Lemezírási műveletek/mp  |  Lemezírási műveletek/mp  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Bejövő forgalomfolyamok  |  Bejövő forgalomfolyamok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Bejövő folyamatok maximális létrehozási aránya  |  Bejövő folyamatok maximális létrehozási aránya (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Bejövő hálózat  |  Hálózat számlázható (elavult)  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Hálózat összesen  |  Hálózat összesen  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Kimenő hálózat  |  Hálózat számlázható (elavult)  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Hálózat kiteljesedése összesen  |  Hálózat kiteljesedése összesen  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OS-lemez várakozási sorának mélysége  |  Az operációs rendszer lemezvárólistájának mélysége (előzetes verzió)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Operációs rendszer lemezolvasási bájtjai/mp  |  Operációs rendszer lemezolvasási bájtjainak másodpercenkénti száma (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Operációs rendszer lemezolvasási műveletei/mp  |  Operációs rendszer lemezolvasási műveleteinek másodpercenkénti száma (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Operációs rendszer lemezének írása bájt/mp  |  Operációs rendszer lemezének írása másodpercenkénti bájtjai (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Operációs rendszer lemezírási műveletei/mp  |  Operációs rendszer lemezírási műveleteinek/mp-je (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Operációs rendszer lemezenként – QD  |  Operációs rendszer lemezének qd-ja (elavult)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Az operációs rendszer lemezenkénti olvasási bájt/mp  |  Operációs rendszer lemezolvasási bájtjai/mp(elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Az operációs rendszer lemezenkénti olvasási műveletei/mp  |  Operációs rendszer lemezolvasási műveletei/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Operációs rendszer lemezenként i.e.  |  Operációs rendszer lemezírási bájtjai/mp(elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Operációs rendszer lemezenkéntírási műveletek másodpercenkénti száma  |  Operációs rendszer lemezírási műveletei/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Kimenő folyamatok  |  Kimenő folyamatok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Kimenő folyamatok maximális létrehozási aránya  |  Kimenő folyamatok maximális létrehozási aránya (előzetes verzió)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  /Lemez QD  |  Adatlemez QD (elavult)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  /Lemez olvasási sebesség (bájt/s)  |  Adatlemez-olvasási sebesség (bájt/mp) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  /Lemez olvasási művelet/mp  |  Adatlemez olvasási műveletei (művelet/mp) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  /Lemez írási sebessége (bájt/s)  |  Adatlemez-írási sebesség (bájt/s) (elavult)  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  /Lemez írási műveletek másodpercenként  |  Adatlemez írási műveletei (művelet/mp) (elavult)  |  CountPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Kimenő folyamatok maximális létrehozási aránya  |  Kimenő folyamatok maximális létrehozási aránya (előzetes verzió)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Lemezenkénti qd  |  Adatlemez –qd (elavult)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Lemezolvasási bájt/mp  |  Adatlemez olvasási bájt/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Lemezolvasási műveletek/mp  |  Adatlemez olvasási műveletei/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Lemezenkénti írási bájt/mp  |  Adatlemez írási bájt/mp (elavult)  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Lemezírási műveletek/mp  |  Adatlemez írási műveletei/mp(elavult)  |  CountPerSzekszekundum  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Százalékos processzorhasználat  |  Százalékos processzorhasználat  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Prémium szintű adatlemez-gyorsítótár – olvasási találat  |  Prémium szintű adatlemez-gyorsítótár olvasási találata (előzetes verzió)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Prémium szintű adatlemez-gyorsítótár – olvasási kihagyás  |  Prémium szintű adatlemez-gyorsítótár olvasási lemaradása (előzetes verzió)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Prémium operációsrendszer-lemez gyorsítótárának olvasási találata  |  Prémium operációsrendszer-lemez gyorsítótárának olvasási találata (előzetes verzió)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása  |  Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása (előzetes verzió)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.ContainerInstance/containerGroups  |  CpuUsage  |  CPU-használat  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.ContainerInstance/containerGroups  |  MemoryUsage  |  Memóriahasználat  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.ContainerInstance/containerGroups  |  NetworkBytesReceivedPerSecond  |  Másodpercenként fogadott hálózati bájtok száma  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.ContainerInstance/containerGroups  |  NetworkBytesTransmittedPerSecond  |  Másodpercenként továbbított hálózati bájtok száma  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.ContainerRegistry/registries  |  RunDuration  |  Futtatás időtartama  |  Ezredmásodperc  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.ContainerRegistry/registries  |  SuccessfulPullCount  |  Sikeres lekérések száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.ContainerRegistry/registries  |  SuccessfulPushCount  |  Sikeres leküldések száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.ContainerRegistry/registries  |  TotalPullCount  |  Lekérések száma összesen  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.ContainerRegistry/registries  |  TotalPushCount  |  Leküldések száma összesen  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ContainerService/managedClusters  |  kube_node_status_allocatable_cpu_cores  |  A felügyelt fürtben rendelkezésre álló CPU-magok teljes száma  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ContainerService/managedClusters  |  kube_node_status_allocatable_memory_bytes  |  A felügyelt fürtben rendelkezésre álló memória teljes mennyisége  |  Bájt  |  Átlag | 
-| Nem  | Nem |  Microsoft.ContainerService/managedClusters  |  kube_node_status_condition  |  Különböző csomóponti feltételek állapota  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ContainerService/managedClusters  |  kube_pod_status_phase  |  Hüvelyek száma fázis szerint  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ContainerService/managedClusters  |  kube_pod_status_ready  |  A hüvelyek száma üzemkész állapotban  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  Availablecapacity;)  |  Rendelkezésre álló kapacitás  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  BytesUploadedToCloud  |  Feltöltött Felhőbeli bájtok (eszköz)  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  BytesUploadedToCloudPerShare  |  Felhőbeli feltöltött bájtok (megosztás)  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  CloudReadThroughput  |  Felhőbeli letöltési sebesség  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  CloudReadThroughputPerShare  |  Felhőbeli letöltési teljesítmény (megosztás)  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  CloudUploadThroughput  |  Felhőbeli feltöltési sebesség  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  CloudUploadThroughputPerShare  |  Felhőbeli feltöltési sebesség (megosztás)  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  HyperVMemoryUtilization  |  Edge-számítás – memóriahasználat  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  HyperVVirtualProcessorUtilization  |  Edge-számítás – százalékos CPU  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  NICReadThroughput  |  Olvasási sebesség (hálózat)  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  NICWriteThroughput  |  Írási átviteli sebesség (hálózat)  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  TotalCapacity  |  Teljes kapacitás  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataFactory/datafactories  |  FailedRuns  |  Sikertelen futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataFactory/datafactories  |  SuccessfulRuns  |  Sikeres futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  ActivityCancelledRuns  |  A megszakított tevékenység metrikákat futtat  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  ActivityFailedRuns  |  Sikertelen tevékenység-futtatási metrikák  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  ActivitySucceededRuns  |  A sikeres tevékenység metrikákat futtat  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  FactorySizeInGbUnits  |  Gyári méret összesen (GB egység)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  IntegrationRuntimeAvailableMemory  |  Az Integration Runtime rendelkezésre álló memóriája  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  IntegrationRuntimeAverageTaskPickupDelay  |  Integration Runtime-várólista időtartama  |  Másodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  IntegrationRuntimeCpuPercentage  |  Integration Runtime CPU-kihasználtsága  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  IntegrationRuntimeQueueLength  |  Integration Runtime-várólista hossza  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  MaxAllowedFactorySizeInGbUnits  |  Maximálisan engedélyezett gyári méret (GB egység)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  MaxAllowedResourceCount  |  Engedélyezett entitások maximális száma  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  PipelineCancelledRuns  |  Megszakított folyamat-futtatási metrikák  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  PipelineFailedRuns  |  Sikertelen folyamat-futtatási metrikák  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  PipelineSucceededRuns  |  A folyamat sikeresen futtatja a metrikákat  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  ResourceCount  |  Entitások száma összesen  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  TriggerCancelledRuns  |  Megszakított trigger-futtatási metrikák  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  TriggerFailedRuns  |  Sikertelen trigger-futtatási metrikák  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataFactory/factories  |  TriggerSucceededRuns  |  A sikeres trigger metrikákat futtat  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataLakeAnalytics/accounts  |  JobAUEndedCancelled  |  Megszakított AU-idő  |  Másodperc  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataLakeAnalytics/accounts  |  JobAUEndedFailure  |  Sikertelen AU-idő  |  Másodperc  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataLakeAnalytics/accounts  |  JobAUEndedSuccess  |  Sikeres AU-idő  |  Másodperc  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataLakeAnalytics/accounts  |  JobEndedCancelled  |  Megszakított feladatok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataLakeAnalytics/accounts  |  JobEndedFailure  |  Sikertelen feladatok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataLakeAnalytics/accounts  |  JobEndedSuccess  |  Sikeres feladatok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataLakeStore/accounts  |  DataRead  |  Olvasott információk  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataLakeStore/accounts  |  DataWritten  |  Írt adatértékek  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataLakeStore/accounts  |  ReadRequests  |  Olvasási kérelmek  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DataLakeStore/accounts  |  TotalStorage  |  Teljes tárterület  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.DataLakeStore/accounts  |  WriteRequests  |  Írási kérelmek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  active_connections  |  Aktív kapcsolatok  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  backup_storage_used  |  Felhasznált biztonsági mentési tár  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  connections_failed  |  Sikertelen kapcsolatok  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  cpu_percent  |  CPU-százalék  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  io_consumption_percent  |  IO-százalék  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  memory_percent  |  Memória százaléka  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  network_bytes_egress  |  Kimenő hálózat  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  network_bytes_ingress  |  Bejövő hálózat  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  seconds_behind_master  |  Replikálás késése másodpercben  |  Darabszám  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  serverlog_storage_limit  |  Kiszolgáló naplójának tárolási korlátja  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  serverlog_storage_percent  |  Kiszolgáló naplójának tárolási százaléka  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  serverlog_storage_usage  |  Kiszolgáló naplójának tárolója  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  storage_limit  |  Tárolási korlát  |  Bájt  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  storage_percent  |  Tárolási százalék  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/servers  |  storage_used  |  Felhasznált tárterület  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  active_connections  |  Aktív kapcsolatok  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  backup_storage_used  |  Felhasznált biztonsági mentési tár  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  connections_failed  |  Sikertelen kapcsolatok  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  cpu_percent  |  CPU-százalék  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  io_consumption_percent  |  IO-százalék  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  memory_percent  |  Memória százaléka  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  network_bytes_egress  |  Kimenő hálózat  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  network_bytes_ingress  |  Bejövő hálózat  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  seconds_behind_master  |  Replikálás késése másodpercben  |  Darabszám  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  serverlog_storage_limit  |  Kiszolgáló naplójának tárolási korlátja  |  Bájt  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  serverlog_storage_percent  |  Kiszolgáló naplójának tárolási százaléka  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  serverlog_storage_usage  |  Kiszolgáló naplójának tárolója  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  storage_limit  |  Tárolási korlát  |  Bájt  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  storage_percent  |  Tárolási százalék  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.DBforMySQL/servers  |  storage_used  |  Felhasznált tárterület  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  active_connections  |  Aktív kapcsolatok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  backup_storage_used  |  Felhasznált biztonsági mentési tár  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  connections_failed  |  Sikertelen kapcsolatok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  cpu_percent  |  CPU-százalék  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  io_consumption_percent  |  IO-százalék  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  memory_percent  |  Memória százaléka  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  network_bytes_egress  |  Kimenő hálózat  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  network_bytes_ingress  |  Bejövő hálózat  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  pg_replica_log_delay_in_bytes  |  Replikák maximális késése  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  pg_replica_log_delay_in_seconds  |  Replika késése  |  Másodperc  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  serverlog_storage_limit  |  Kiszolgáló naplójának tárolási korlátja  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  serverlog_storage_percent  |  Kiszolgáló naplójának tárolási százaléka  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  serverlog_storage_usage  |  Kiszolgáló naplójának tárolója  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  storage_limit  |  Tárolási korlát  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  storage_percent  |  Tárolási százalék  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/servers  |  storage_used  |  Felhasznált tárterület  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Prémium szintű adatlemez gyorsítótárának olvasási találata  |  Prémium szintű adatlemez gyorsítótárának olvasási találata (előzetes verzió)  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Prémium szintű adatlemez gyorsítótárolvasási tévesztése  |  Prémium szintű adatlemez gyorsítótárolvasási tévesztés (előzetes verzió)  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Prémium szintű operációsrendszer-gyorsítótár olvasási találata  |  Prémium szintű operációsrendszer-gyorsítótár olvasási találata (előzetes verzió)  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Prémium szintű operációsrendszer-lemezgyorsítótár olvasási tévesztése  |  Prémium szintű operációsrendszer-lemezgyorsítótár olvasási tévesztése (előzetes verzió)  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ContainerInstance/containerGroups  |  CpuUsage (CpuUsage)  |  Processzorhasználat  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ContainerInstance/containerGroups  |  Memóriahasználat  |  Memóriahasználat  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ContainerInstance/containerGroups  |  NetworkBytesReceivedPerSecond  |  Másodpercenként fogadott hálózati bájtok  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ContainerInstance/containerGroups  |  NetworkBytesTransmittedPerSecond  |  Másodpercenként küldött hálózati bájtok  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ContainerRegistry/regisztika  |  RunDuration  |  Futtatás időtartama  |  Ezredmásodperc  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.ContainerRegistry/regisztika  |  SuccessfulPullCount  |  Sikeres lekéréses szám  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ContainerRegistry/regisztika  |  SuccessfulPushCount  |  Sikeres leküldéses szám  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ContainerRegistry/regisztika  |  TotalPullCount (Összes pullcount)  |  Teljes lekérések száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.ContainerRegistry/regisztika  |  ÖsszesenPushCount  |  Összes leküldéses szám  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ContainerService/managedClusters  |  kube_node_status_allocatable_cpu_cores  |  Felügyelt fürtben rendelkezésre álló processzormagok teljes száma  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ContainerService/managedClusters  |  kube_node_status_allocatable_memory_bytes  |  Felügyelt fürtben rendelkezésre álló memória teljes mennyisége  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.ContainerService/managedClusters  |  kube_node_status_condition  |  Különböző csomóponti feltételek állapotai  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ContainerService/managedClusters  |  kube_pod_status_phase  |  A hüvelyek száma fázisonként  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ContainerService/managedClusters  |  kube_pod_status_ready  |  Podok száma kész állapotban  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  Elérhető kapacitás  |  Rendelkezésre álló kapacitás  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  BytesUploadedToCloud  |  Feltöltött felhőalapú bájtok (eszköz)  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  BytesUploadedToCloudPerShare  |  Feltöltött felhőalapú bájtok (megosztás)  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  CloudReadThroughput (Felhőolvasás - Átput  |  Felhőbeli letöltési átviteli  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  CloudReadThroughputPerShare  |  Felhőbeli letöltési átviteli (megosztás)  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  CloudUploadThroughput (Felhőfeltöltési átput)  |  Felhőbeli feltöltési átviteli  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  CloudUploadThroughputPerShare  |  Felhőbeli feltöltési átviteli -átmenő (megosztás)  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  HyperVMemoryKitilizáció  |  Peremhálózati számítás – Memóriahasználat  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  HyperVVirtualProcessorKitilizálás  |  Peremhálózati számítás – százalékos CPU  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  NICReadThroughput  |  Olvasási átviteli -átmenő (hálózat)  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  NICWriteThroughput  |  Írási átviteli -áteresztő (hálózat)  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  Teljes kapacitás  |  Teljes kapacitás  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataFactory/datafactories  |  Sikertelen futtatások  |  Sikertelen futtatások  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataFactory/datafactories  |  SuccessfulRuns (Sikeres futtatások)  |  Sikeres futtatások  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  TevékenységÉrvénytelenítvefuttatások  |  A megszakított tevékenység futtatási mutatói  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  ActivityFailedRuns  |  A sikertelen tevékenység mérőszámokat futtat  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  ActivitySucceededRuns között  |  A sikeres tevékenység mérőszámait futtatja  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  FactorySizeIngbunits  |  Teljes gyárméret (GB egység)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  IntegrationRuntimeAvailableMemory  |  Integrációs futásidejű elérhető memória  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  IntegrationRuntimeAverageTaskPickupDelay  |  Integrációs futásidejű várólista időtartama  |  Másodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  IntegrationRuntimeCpuSzázalék  |  Integrációs futásidejű CPU-kihasználtság  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  IntegrationRuntimeQueueLength  |  Integrációs futásidejű várólista hossza  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  MaxallowedfactorySizeIngbunits  |  A gyár maximálisan megengedett mérete (GB egység)  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  MaxAllowedResourceCount (MaxAllowedResourceCount)  |  A megengedett entitások maximális száma  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  PipelineCancelledRuns  |  Megszakított folyamatfuttatási mérőszámok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  PipelineFailedRuns  |  Sikertelen folyamat futtatási metrikák  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  PipelineSucceededRuns között  |  Sikeres folyamatfuttatási metrikák  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  Erőforrásszáma  |  Entitások száma összesen  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  TriggerCancelledRuns  |  Megszakított eseményindító-futtatási mérőszámok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  TriggerFailedRuns  |  Sikertelen eseményindító futtatási mérőszámai  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataFactory/gyárak  |  Aktiválássucceededruns  |  Sikeres eseményindító-futtatási mérőszámok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataLakeAnalytics/fiókok  |  JobAUEndedTörölve  |  Megszakított AU idő  |  Másodperc  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataLakeAnalytics/fiókok  |  JobAUEndedFailure  |  Sikertelen AU idő  |  Másodperc  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataLakeAnalytics/fiókok  |  JobAUEndedsiker  |  Sikeres AU idő  |  Másodperc  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataLakeAnalytics/fiókok  |  JobEndedTörölve  |  Törölt feladatok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataLakeAnalytics/fiókok  |  JobEndedFailure (Feladat– Hiba)  |  Sikertelen feladatok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataLakeAnalytics/fiókok  |  JobEndedSiker  |  Sikeres feladatok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataLakeStore/fiókok  |  DataRead (Olvasd el)  |  Adatok olvasása  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataLakeStore/fiókok  |  Adatokírás  |  Írt adatok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataLakeStore/fiókok  |  Olvasáskérések  |  Olvasási kérelmek  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DataLakeStore/fiókok  |  TotalStorage (Összes tárhely) tárolása  |  Összes tárhely  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.DataLakeStore/fiókok  |  WriteRequests (Íráskérések)  |  Írási kérelmek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  active_connections  |  Aktív kapcsolatok  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  backup_storage_used  |  Használt biztonsági másolat tárolása  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  connections_failed  |  Sikertelen kapcsolatok  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  cpu_percent  |  PROCESSZOR százalék  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  io_consumption_percent  |  IO százalék  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  memory_percent  |  Memória százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  network_bytes_egress  |  Kimenő hálózat  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  network_bytes_ingress  |  Bejövő hálózat  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  seconds_behind_master  |  Replikációs késleltetés másodpercben  |  Darabszám  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  serverlog_storage_limit  |  Kiszolgálónapló tárolási korlátja  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  serverlog_storage_percent  |  Kiszolgálói napló tárolási százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  serverlog_storage_usage  |  Használt kiszolgálónapló-tároló  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  storage_limit  |  Tárolási korlát  |  Bájt  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  storage_percent  |  Tárolási százalék  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMariaDB/kiszolgálók  |  storage_used  |  Használt tároló  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  active_connections  |  Aktív kapcsolatok  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  backup_storage_used  |  Használt biztonsági másolat tárolása  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  connections_failed  |  Sikertelen kapcsolatok  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  cpu_percent  |  PROCESSZOR százalék  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  io_consumption_percent  |  IO százalék  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  memory_percent  |  Memória százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  network_bytes_egress  |  Kimenő hálózat  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  network_bytes_ingress  |  Bejövő hálózat  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  seconds_behind_master  |  Replikációs késleltetés másodpercben  |  Darabszám  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  serverlog_storage_limit  |  Kiszolgálónapló tárolási korlátja  |  Bájt  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  serverlog_storage_percent  |  Kiszolgálói napló tárolási százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  serverlog_storage_usage  |  Használt kiszolgálónapló-tároló  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  storage_limit  |  Tárolási korlát  |  Bájt  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  storage_percent  |  Tárolási százalék  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.DBforMySQL/kiszolgálók  |  storage_used  |  Használt tároló  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  active_connections  |  Aktív kapcsolatok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  backup_storage_used  |  Használt biztonsági másolat tárolása  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  connections_failed  |  Sikertelen kapcsolatok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  cpu_percent  |  PROCESSZOR százalék  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  io_consumption_percent  |  IO százalék  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  memory_percent  |  Memória százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  network_bytes_egress  |  Kimenő hálózat  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  network_bytes_ingress  |  Bejövő hálózat  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  pg_replica_log_delay_in_bytes  |  Maximális késés a replikák között  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  pg_replica_log_delay_in_seconds  |  Replika késés  |  Másodperc  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  serverlog_storage_limit  |  Kiszolgálónapló tárolási korlátja  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  serverlog_storage_percent  |  Kiszolgálói napló tárolási százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  serverlog_storage_usage  |  Használt kiszolgálónapló-tároló  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  storage_limit  |  Tárolási korlát  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  storage_percent  |  Tárolási százalék  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/szerverek  |  storage_used  |  Használt tároló  |  Bájt  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.DBforPostgreSQL/serversv2  |  active_connections  |  Aktív kapcsolatok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/serversv2  |  cpu_percent  |  CPU-százalék  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/serversv2  |  IOPS  |  IOPS  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/serversv2  |  cpu_percent  |  PROCESSZOR százalék  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/serversv2  |  iops  |  IOPS  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.DBforPostgreSQL/serversv2  |  memory_percent  |  Memória százaléka  |  Százalék  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.DBforPostgreSQL/serversv2  |  network_bytes_egress  |  Kimenő hálózat  |  Bájt  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.DBforPostgreSQL/serversv2  |  network_bytes_ingress  |  Bejövő hálózat  |  Bájt  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.DBforPostgreSQL/serversv2  |  storage_percent  |  Tárolási százalék  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/serversv2  |  storage_used  |  Felhasznált tárterület  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft. Devices/Account  |  digitaltwins. telemetria. csomópontok  |  Digitális Twins-csomópont telemetria helyőrzője  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.DBforPostgreSQL/serversv2  |  storage_used  |  Használt tároló  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/Fiók  |  digitaltwins.telemetry.csomópontok  |  Digitális Twins csomópont telemetriai helyőrző  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.commands.egress.abandon.success  |  C2D üzenetek elhagyva  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.commands.egress.complete.success  |  C2D-üzenetek kézbesítésének befejezése  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.commands.egress.reject.success  |  C2D-üzenetek elutasítva  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  C2D. Methods. failure  |  Sikertelen közvetlen metódusok meghívása  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.methods.requestSize  |  A közvetlen metódus meghívásának mérete  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.methods.responseSize  |  A közvetlen metódus-meghívások válaszának mérete  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.methods.success  |  Közvetlen metódusok sikeres meghívása  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.twin.read.failure  |  Sikertelen dupla olvasások a háttérből  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.twin.read.size  |  Dupla olvasások válaszának mérete a háttérből  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.twin.read.success  |  Sikeres dupla olvasások a háttérből  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.twin.update.failure  |  Sikertelen dupla frissítések a háttérből  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.twin.update.size  |  Dupla frissítések mérete a háttérből  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.twin.update.success  |  Sikeres dupla frissítések a háttérből  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  C2DMessagesExpired  |  C2D-üzenetek lejárt (előzetes verzió)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  konfigurációk  |  Konfigurációs mérőszámok  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Devices/IotHubs  |  connectedDeviceCount  |  Csatlakoztatott eszközök (előzetes verzió)  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.builtIn.events  |  Útválasztás: üzenetek/események küldésére küldött üzenetek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.eventHubs  |  Útválasztás: az Event hub számára továbbított üzenetek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.serviceBusQueues  |  Útválasztás: Service Bus üzenetsor számára továbbított üzenetek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.serviceBusTopics  |  Útválasztás: Service Bus témakörbe küldött üzenetek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.storage  |  Útválasztás: a tárolóba küldött üzenetek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.storage.blobs  |  Útválasztás: tárolóba szállított Blobok  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.storage.bytes  |  Útválasztás: a tárolóba szállított adatmennyiség  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.builtIn.events  |  Útválasztás: üzenetek/események üzenetének késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.eventHubs  |  Útválasztás: az Event hub üzenetének késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.serviceBusQueues  |  Útválasztás: Service Bus üzenetsor üzenet-késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.serviceBusTopics  |  Útválasztás: Service Bus témakör üzenetének késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.storage  |  Útválasztás: üzenetek késése a tároláshoz  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.egress.dropped  |  Útválasztás: telemetria üzenetek elvetve   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.egress.fallback  |  Útválasztás: tartalékként továbbított üzenetek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.egress.invalid  |  Útválasztás: Inkompatibilis telemetria-üzenetek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.egress.orphaned  |  Útválasztás: árva telemetria üzenetek   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.egress.success  |  Útválasztás: telemetria üzenetek kézbesítése  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.ingress.allProtocol  |  Telemetria üzenetek küldése  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.ingress.sendThrottle  |  Szabályozási hibák száma  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.ingress.success  |  Telemetria üzenetek elküldése  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.twin.read.failure  |  Sikertelen dupla olvasások az eszközökről  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.twin.read.size  |  Az eszközökről érkező kettős olvasások válaszának mérete  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.twin.read.success  |  Sikeres dupla olvasások az eszközökről  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.twin.update.failure  |  Sikertelen dupla frissítések az eszközökről  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.twin.update.size  |  Az eszközökből származó kettős frissítések mérete  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.twin.update.success  |  Sikeres dupla frissítések az eszközökről  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  dailyMessageQuotaUsed  |  A felhasznált üzenetek teljes száma  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  deviceDataUsage  |  Az eszköz összes adatfelhasználása  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  deviceDataUsageV2  |  Az eszköz összes adatfelhasználása (előzetes verzió)  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.commands.egress.complete.success  |  A C2D-üzenetek kézbesítése befejeződött  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.commands.egress.reject.success  |  Elutasított C2D-üzenetek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.methods.failure  |  Sikertelen közvetlen metódus-meghívások  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.methods.requestMéret  |  A közvetlen metódusmetódusok kérésének mérete  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.methods.responseMéret  |  A közvetlen metódusmetódusok válaszmérete  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.methods.success  |  Sikeres közvetlen metódus-meghívások  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.twin.read.failure  |  Sikertelen ikerolvasás háttérből  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.twin.read.size  |  A háttérből beolvasások válaszmérete  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.twin.read.success  |  Sikeres ikerolvasás háttérből  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.twin.update.failure  |  Sikertelen ikerfrissítések a háttérrendszerből  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.twin.update.size  |  Két frissítés mérete háttérrendszerről  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  c2d.twin.update.success  |  Sikeres ikerfrissítések a háttérrendszerből  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  C2DMessagesExpired  |  C2D üzenetek lejárt (előzetes verzió)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  Konfigurációk  |  Konfigurációs mutatók  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Devices/IotHubs  |  connectedDeviceCount (connectedDeviceCount)  |  Csatlakoztatott eszközök (előzetes verzió)  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.builtIn.events  |  Útválasztás: üzenetekbe/eseményekre kézbesített üzenetek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.eventHubs  |  Útválasztás: az Event Hubba kézbesített üzenetek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.serviceBusQueues  |  Útválasztás: a Service Bus várólistájába kézbesített üzenetek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.serviceBusTopics  |  Útválasztás: a Service Bus topic szolgáltatásba küldött üzenetek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.storage  |  Útválasztás: a tárolóba kézbesített üzenetek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.storage.blobok  |  Útválasztás: a tárolóba szállított blobok  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.storage.bytes  |  Útválasztás: a tárolóba szállított adatok  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.builtIn.events  |  Útválasztás: üzenetek/események üzenetkéste  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.eventHubs  |  Útválasztás: üzenetkésés az Eseményközpontszámára  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.serviceBusQueues  |  Útválasztás: üzenetkésa Service Bus-várólistához  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.serviceBusTopics  |  Útválasztás: üzenetkésés a Service Bus-témakörhöz  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.storage  |  Útválasztás: üzenet késése a tároláshoz  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemettry.egress.dropped  |  Útválasztás: eldobott telemetriai üzenetek   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemettry.egress.fallback  |  Útválasztás: tartalékba küldött üzenetek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemettry.egress.invalid  |  Útválasztás: a telemetriai üzenetek nem kompatibilisek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemettry.egress.orphaned  |  Útválasztás: telemetriai üzenetek árva   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemettry.egress.success  |  Útválasztás: telemetriai üzenetek kézbesítve  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemettry.ingress.allProtocol  |  Telemetriai üzenet küldési kísérletei  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemettry.ingress.sendThrottle  |  Szabályozási hibák száma  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.ingress.success  |  Elküldött telemetriai üzenetek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.twin.read.failure  |  Nem sikerült ikerbeolvasás az eszközökről  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.twin.read.méret  |  Az eszközökről beolvasások válaszmérete  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.twin.read.success  |  Sikeres ikerolvasás eszközökről  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.twin.update.failure  |  Nem sikerült ikerfrissítés az eszközökről  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.twin.update.size  |  Az eszközökről származó ikerfrissítések mérete  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  d2c.twin.update.success  |  Sikeres ikerfrissítések az eszközökről  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  dailyMessageQuotaHasznált  |  A felhasznált üzenetek száma összesen  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  deviceDataUsage  |  Az eszköz összes adathasználata  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  deviceDataUsageV2  |  Az eszköz teljes adathasználata (előzetes verzió)  |  Bájt  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  devices.connectedDevices.allProtocol  |  Csatlakoztatott eszközök (elavult)   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  Devices. totalDevices  |  Összes eszköz (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  EventGridDeliveries  |  Event Grid kézbesítések (előzetes verzió)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  EventGridLatency  |  Event Grid késés (előzetes verzió)  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.cancelJob.failure  |  Sikertelen feladatok megszakítása  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.cancelJob.success  |  Sikeres feladatok törlése  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  feladatok. kész  |  Befejezett feladatok  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.createDirectMethodJob.failure  |  Nem sikerült létrehozni a metódus Meghívási feladatait  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.createDirectMethodJob.success  |  Metódus-Meghívási feladatok sikeres létrehozása  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.createTwinUpdateJob.failure  |  A kettős frissítési feladatok sikertelen létrehozása  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.createTwinUpdateJob.success  |  A kettős frissítési feladatok sikeres létrehozása  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  feladatok. sikertelen  |  Sikertelen feladatok  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  devices.totalDevices  |  Összes eszköz (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  EventGridDeliveres  |  Eseményrács-szállítások(előzetes verzió)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  EventGridLatency  |  Eseményrács késése (előzetes verzió)  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.cancelJob.failure  |  Sikertelen feladatmegszakítások  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.cancelJob.success  |  Sikeres feladattörlések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.befejezett  |  Befejezett feladatok  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.createDirectMethodJob.failure  |  Metódusmeghívási feladatok sikertelen létrehozása  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.createDirectMethodJob.success  |  A metódus-meghívási feladatok sikeres létrehozása  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.createTwinUpdateJob.failure  |  Két frissítési feladat sikertelen létrehozása  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.createTwinUpdateJob.success  |  Két frissítési feladat sikeres létrehozása  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.failed  |  Sikertelen feladatok  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.listJobs.failure  |  Sikertelen hívások a feladatok listázásához  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.listJobs.success  |  Sikeres hívások a feladatok listázásához  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.queryJobs.failure  |  Sikertelen feladatok lekérdezése  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.queryJobs.success  |  Sikeres feladatok lekérdezése  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Devices/IotHubs  |  totalDeviceCount  |  Összes eszköz (előzetes verzió)  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  twinQueries.failure  |  Sikertelen dupla lekérdezések  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  twinQueries.resultSize  |  Dupla lekérdezések eredményének mérete  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  twinQueries.success  |  Sikeres Twin-lekérdezések  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/provisioningServices  |  AttestationAttempts  |  Igazolási kísérletek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/provisioningServices  |  DeviceAssignments  |  Hozzárendelt eszközök  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Devices/provisioningServices  |  RegistrationAttempts  |  Regisztrációs kísérletek  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  AvailableStorage  |  Rendelkezésre álló tár  |  Bájt  |  Összesen | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  CassandraConnectionClosures  |  Cassandra-kapcsolatok bezárása  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  CassandraRequestCharges  |  Cassandra-kérelmek díjai  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  CassandraRequests  |  Cassandra-kérelmek  |  Darabszám  |  Darabszám | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  DataUsage  |  Adathasználat  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.query.failure  |  Sikertelen feladatlekérdezések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  jobs.query.success  |  Sikeres feladatlekérdezések  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Devices/IotHubs  |  totalDeviceCount (összeseszközszám)  |  Eszközök összesen (előzetes verzió)  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  twinQueries.failure  |  Sikertelen ikerlekérdezések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  twinQueries.resultSize  |  Ikerlekérdezések eredménymérete  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Devices/IotHubs  |  twinQueries.success  |  Sikeres ikerlekérdezések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/provisioningServices  |  Tanúsítványkísérletek  |  Igazolási kísérletek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/provisioningServices  |  DeviceAssignments -ek  |  Hozzárendelt eszközök  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Devices/provisioningServices  |  Regisztrációkísérletek  |  Regisztrációs kísérletek  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  AvailableStorage (Elérhető tárhely)  |  Rendelkezésre álló tár  |  Bájt  |  Összesen | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  CassandraConnectionClosures  |  Cassandra kapcsolat lezárások  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  CassandraRequestTöltések  |  Cassandra kérelmek díjak  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  CassandraKéri  |  Cassandra kérések  |  Darabszám  |  Darabszám | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  Adathasználat  |  Adathasználat  |  Bájt  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  DeleteVirtualNetwork  |  DeleteVirtualNetwork  |  Darabszám  |  Darabszám | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  DocumentCount  |  Dokumentumok száma  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  DocumentQuota  |  Dokumentum kvótája  |  Bájt  |  Összesen | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  IndexUsage  |  Indexelés használata  |  Bájt  |  Összesen | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  MetadataRequests  |  Metaadat-kérelmek  |  Darabszám  |  Darabszám | 
-| **Igen**  | **Igen** |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestCharge  |  Mongo-kérelem díja  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequests  |  Mongo kérelmek  |  Darabszám  |  Darabszám | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsCount  |  Mongo kérelmek gyakorisága  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsDelete  |  Mongo-törlési kérelmek gyakorisága  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsInsert  |  Mongo-beszúrási kérelmek gyakorisága  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsQuery  |  Mongo-lekérdezési kérelmek gyakorisága  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsUpdate  |  Mongo-frissítési kérelmek gyakorisága  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  ProvisionedThroughput  |  Kiosztott átviteli sebesség  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  ReplicationLatency  |  P99 replikáció késése  |  Ezredmásodpercben  |  Átlag | 
-| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  ServiceAvailability  |  Szolgáltatás rendelkezésre állása  |  Százalék  |  Átlag | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  DocumentCount (Dokumentumdarab)  |  Dokumentumok száma  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  DocumentQuota (Dokumentumquota)  |  Dokumentumkvóta  |  Bájt  |  Összesen | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  Indexhasználat  |  Index használata  |  Bájt  |  Összesen | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  Metaadatkérések  |  Metaadat-kérelmek  |  Darabszám  |  Darabszám | 
+| **Igen**  | **Igen** |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestCharge  |  Mongo kérelem díj  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.DocumentDB/databaseAccounts  |  MongoKérések  |  Mongo kérések  |  Darabszám  |  Darabszám | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsCount  |  Mongo kérelem aránya  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsDelete  |  Mongo törlési kérelem aránya  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsBeszúrás  |  Mongo kérelembehelyezési arány  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsQuery  |  Mongo lekérdezési kérelmek aránya  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsFrissítés  |  Mongo frissítési kérelmek aránya  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  Kiépítettátviteli  |  Kiosztott átviteli sebesség  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  ReplikációLatency  |  P99 replikációs késés  |  Ezredmásodperc  |  Átlag | 
+| Nem  | Nem |  Microsoft.DocumentDB/databaseAccounts  |  Szolgáltatáselérhetősége  |  A szolgáltatás elérhetősége  |  Százalék  |  Átlag | 
 | **Igen**  | **Igen** |  Microsoft.DocumentDB/databaseAccounts  |  TotalRequests  |  Összes kérelem  |  Darabszám  |  Darabszám | 
-| **Igen**  | **Igen** |  Microsoft.DocumentDB/databaseAccounts  |  TotalRequestUnits  |  Kérelmek összes egysége  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft. EnterpriseKnowledgeGraph/szolgáltatások  |  FailureCount  |  Hibák száma  |  Darabszám  |  Darabszám | 
-| Nem  | Nem |  Microsoft. EnterpriseKnowledgeGraph/szolgáltatások  |  SuccessCount  |  Sikeres műveletek száma  |  Darabszám  |  Darabszám | 
-| Nem  | Nem |  Microsoft. EnterpriseKnowledgeGraph/szolgáltatások  |  SuccessLatency  |  Sikeres késés  |  Ezredmásodpercben  |  Átlag | 
-| Nem  | Nem |  Microsoft. EnterpriseKnowledgeGraph/szolgáltatások  |  TransactionCount  |  Tranzakciók száma  |  Darabszám  |  Darabszám | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/domains  |  DeadLetteredCount  |  Kézbesítetlen levelek eseményei  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventGrid/domains  |  DeliveryAttemptFailCount  |  Sikertelen kézbesítések eseményei  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/domains  |  DeliverySuccessCount  |  Kézbesítési események  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventGrid/domains  |  DestinationProcessingDurationInMs  |  Cél feldolgozási időtartama  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/domains  |  DroppedEventCount  |  Eldobott események  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/domains  |  MatchedEventCount  |  Egyeztetett események  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/domains  |  PublishFailCount  |  Sikertelen események közzététele  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/domains  |  PublishSuccessCount  |  Közzétett események  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/domains  |  PublishSuccessLatencyInMs  |  Sikeres közzétételi késés  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/eventSubscriptions  |  DeadLetteredCount  |  Kézbesítetlen levelek eseményei  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventGrid/eventSubscriptions  |  DeliveryAttemptFailCount  |  Sikertelen kézbesítések eseményei  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/eventSubscriptions  |  DeliverySuccessCount  |  Kézbesítési események  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventGrid/eventSubscriptions  |  DestinationProcessingDurationInMs  |  Cél feldolgozási időtartama  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/eventSubscriptions  |  DroppedEventCount  |  Eldobott események  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/eventSubscriptions  |  MatchedEventCount  |  Egyeztetett események  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/extensionTopics  |  PublishFailCount  |  Sikertelen események közzététele  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/extensionTopics  |  PublishSuccessCount  |  Közzétett események  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/extensionTopics  |  PublishSuccessLatencyInMs  |  Sikeres közzétételi késés  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/extensionTopics  |  UnmatchedEventCount  |  Páratlan események  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/topics  |  PublishFailCount  |  Sikertelen események közzététele  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/topics  |  PublishSuccessCount  |  Közzétett események  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/topics  |  PublishSuccessLatencyInMs  |  Sikeres közzétételi késés  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventGrid/topics  |  UnmatchedEventCount  |  Páratlan események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.DocumentDB/databaseAccounts  |  TotalRequestUnits  |  Összes kérelemegység  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EnterpriseKnowledgeGraph/szolgáltatások  |  Hibaszáma  |  Hibásak száma  |  Darabszám  |  Darabszám | 
+| Nem  | Nem |  Microsoft.EnterpriseKnowledgeGraph/szolgáltatások  |  Sikerszáma  |  Sikeres műveletek száma  |  Darabszám  |  Darabszám | 
+| Nem  | Nem |  Microsoft.EnterpriseKnowledgeGraph/szolgáltatások  |  SuccessLatency (Káttaláta)  |  Sikeres késés  |  Ezredmásodperc  |  Átlag | 
+| Nem  | Nem |  Microsoft.EnterpriseKnowledgeGraph/szolgáltatások  |  Tranzakciószáma  |  Tranzakciók száma  |  Darabszám  |  Darabszám | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/tartományok  |  DeadLetteredCount (HalottletteredCount)  |  Kézbesített levéllel írt események  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventGrid/tartományok  |  DeliveryAttemptFailCount  |  Sikertelen kézbesítési események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/tartományok  |  DeliverySuccessCount (DeliverySuccessCount)  |  Kézbesített események  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventGrid/tartományok  |  DestinationProcessingDurationinms  |  Cél feldolgozási időtartama  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/tartományok  |  DroppedEventCount (Ejtési eseményszám)  |  Eldobott események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/tartományok  |  MatchedEventCount (Egyezésű eseményszám)  |  Egyező események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/tartományok  |  PublishFailCount  |  Sikertelen események közzététele  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/tartományok  |  PublishSuccessCount (Közzétételsikerszáma)  |  Közzétett események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/tartományok  |  KözzétételSikerLatencyInM-ek  |  Sikeres késés közzététele  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/eventSubscriptions  |  DeadLetteredCount (HalottletteredCount)  |  Kézbesített levéllel írt események  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventGrid/eventSubscriptions  |  DeliveryAttemptFailCount  |  Sikertelen kézbesítési események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/eventSubscriptions  |  DeliverySuccessCount (DeliverySuccessCount)  |  Kézbesített események  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventGrid/eventSubscriptions  |  DestinationProcessingDurationinms  |  Cél feldolgozási időtartama  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/eventSubscriptions  |  DroppedEventCount (Ejtési eseményszám)  |  Eldobott események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/eventSubscriptions  |  MatchedEventCount (Egyezésű eseményszám)  |  Egyező események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/extensionTémakörök  |  PublishFailCount  |  Sikertelen események közzététele  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/extensionTémakörök  |  PublishSuccessCount (Közzétételsikerszáma)  |  Közzétett események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/extensionTémakörök  |  KözzétételSikerLatencyInM-ek  |  Sikeres késés közzététele  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/extensionTémakörök  |  Nem egyező eseményszám  |  Páratlan események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/témakörök  |  PublishFailCount  |  Sikertelen események közzététele  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/témakörök  |  PublishSuccessCount (Közzétételsikerszáma)  |  Közzétett események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/témakörök  |  KözzétételSikerLatencyInM-ek  |  Sikeres késés közzététele  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventGrid/témakörök  |  Nem egyező eseményszám  |  Páratlan események  |  Darabszám  |  Összesen | 
 | Nem  | Nem |  Microsoft.EventHub/clusters  |  ActiveConnections  |  ActiveConnections  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.EventHub/clusters  |  AvailableMemory  |  Szabad memória  |  Százalék  |  Maximum | 
-| Nem  | Nem |  Microsoft.EventHub/clusters  |  CaptureBacklog  |  Várakozó fájlok rögzítése.  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/clusters  |  CapturedBytes  |  Rögzített bájtok száma.  |  Bájt  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/clusters  |  CapturedMessages  |  Rögzített üzenetek.  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/clusters  |  ConnectionsClosed  |  A kapcsolatok lezárva.  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.EventHub/clusters  |  ConnectionsOpened  |  Megnyitott kapcsolatok.  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.EventHub/clusters  |  Elérhető memória  |  Szabad memória  |  Százalék  |  Maximum | 
+| Nem  | Nem |  Microsoft.EventHub/clusters  |  CaptureBacklog (Rögzítési backlog)  |  Elfog hátralék.  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/clusters  |  Rögzítettbájt  |  Rögzített bájtok.  |  Bájt  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/clusters  |  CapturedMessages (Rögzített üzenetek)  |  Rögzített üzenetek.  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/clusters  |  Kapcsolatok zárva  |  Kapcsolatok zárva.  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.EventHub/clusters  |  Kapcsolatok megnyitva  |  Kapcsolatok megnyitva.  |  Darabszám  |  Átlag | 
 | Nem  | Nem |  Microsoft.EventHub/clusters  |  CPU  |  CPU  |  Százalék  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/clusters  |  IncomingBytes  |  Bejövő bájtok.  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/clusters  |  IncomingMessages  |  Bejövő üzenetek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/clusters  |  IncomingRequests  |  Bejövő kérelmek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/clusters  |  OutgoingBytes  |  Kimenő bájtok.  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/clusters  |  OutgoingMessages  |  Kimenő üzenetek  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/clusters  |  QuotaExceededErrors  |  A kvóta túllépte a hibákat.  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/clusters  |  Kiszolgálóhibái  |  Kiszolgálói hibák.  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/clusters  |  SuccessfulRequests  |  Sikeres kérések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/clusters  |  Bejövő bájt  |  Bejövő bájtok.  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/clusters  |  Bejövő üzenetek  |  Bejövő üzenetek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/clusters  |  Bejövő kérések  |  Bejövő kérések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/clusters  |  Kimenő bájtok  |  Kimenő bájtok.  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/clusters  |  Kimenő üzenetek  |  Kimenő üzenetek  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/clusters  |  Kvótatúllépéshibák  |  A kvóta túllépte a hibákat.  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/clusters  |  Kiszolgálóhibák  |  Kiszolgálói hibák.  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/clusters  |  Sikeres kérések  |  Sikeres kérelmek  |  Darabszám  |  Összesen | 
 | Nem  | Nem |  Microsoft.EventHub/clusters  |  ThrottledRequests  |  Szabályozott kérelmek.  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/clusters  |  UserErrors  |  Felhasználói hibák.  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/namespaces  |  ActiveConnections  |  ActiveConnections  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.EventHub/namespaces  |  CaptureBacklog  |  Várakozó fájlok rögzítése.  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/namespaces  |  CapturedBytes  |  Rögzített bájtok száma.  |  Bájt  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/namespaces  |  CapturedMessages  |  Rögzített üzenetek.  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/namespaces  |  ConnectionsClosed  |  A kapcsolatok lezárva.  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.EventHub/namespaces  |  ConnectionsOpened  |  Megnyitott kapcsolatok.  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  EHABL  |  Archivált várakozó üzenetek (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  EHAMBS  |  Archivált üzenetek átviteli sebessége (elavult)  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  EHAMSGS  |  Archivált üzenetek (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  EHINBYTES  |  Bejövő bájtok (elavult)  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  EHINMBS  |  Bejövő bájtok (elavult) (elavult)  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  EHINMSGS  |  Bejövő üzenetek (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  EHOUTBYTES  |  Kimenő bájtok (elavult)  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  EHOUTMBS  |  Kimenő bájtok (elavult) (elavult)  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  EHOUTMSGS  |  Kimenő üzenetek (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  FAILREQ  |  Sikertelen kérelmek (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  IncomingBytes  |  Bejövő bájtok.  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  IncomingMessages  |  Bejövő üzenetek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  IncomingRequests  |  Bejövő kérelmek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  INMSGS  |  Bejövő üzenetek (elavult) (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  INREQS  |  Bejövő kérelmek (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  INTERer  |  Belső kiszolgálói hibák (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  MISCERR  |  Egyéb hibák (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  OutgoingBytes  |  Kimenő bájtok.  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  OutgoingMessages  |  Kimenő üzenetek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  OUTMSGS  |  Kimenő üzenetek (elavult) (elavult)  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/namespaces  |  QuotaExceededErrors  |  A kvóta túllépte a hibákat.  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/namespaces  |  Kiszolgálóhibái  |  Kiszolgálói hibák.  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/namespaces  |  Méret  |  Méret  |  Bájt  |  Átlag | 
-| Nem  | Nem |  Microsoft.EventHub/namespaces  |  SuccessfulRequests  |  Sikeres kérések  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  SUCCREQ  |  Sikeres kérések (elavult)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.EventHub/namespaces  |  SVRBSY  |  Kiszolgáló által foglalt hibák (elavult)  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/namespaces  |  ThrottledRequests  |  Szabályozott kérelmek.  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.EventHub/namespaces  |  UserErrors  |  Felhasználói hibák.  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.HDInsight/clusters  |  CategorizedGatewayRequests  |  Kategorizált átjáró-kérelmek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.HDInsight/clusters  |  GatewayRequests  |  Átjáróra vonatkozó kérelmek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.HDInsight/clusters  |  NumActiveWorkers  |  Aktív feldolgozók száma  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.HDInsight/clusters  |  ScalingRequests  |  Kérelmek méretezése  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Insights/AutoscaleSettings  |  MetricThreshold  |  Metrika küszöbértéke  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Insights/AutoscaleSettings  |  ObservedCapacity  |  Megfigyelt kapacitás  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Insights/AutoscaleSettings  |  ObservedMetricValue  |  Megfigyelt metrika értéke  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Insights/AutoscaleSettings  |  ScaleActionsInitiated  |  Elindított skálázási műveletek  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  availabilityResults/availabilityPercentage  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
-| Nem  | Nem |  Microsoft.Insights/Components  |  availabilityResults/darabszám  |  Rendelkezésre állási tesztek  |  Darabszám  |  Darabszám | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  availabilityResults/időtartam  |  Rendelkezésre állási teszt időtartama  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  browserTimings/networkDuration  |  Oldal betöltési hálózati kapcsolati ideje  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  browserTimings/processingDuration  |  Ügyfél feldolgozási ideje  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  browserTimings/receiveDuration  |  Válaszidő fogadása  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  browserTimings/sendDuration  |  Kérelem küldési ideje  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  browserTimings/totalDuration  |  Böngésző oldalának betöltési ideje  |  Ezredmásodpercben  |  Átlag | 
-| Nem  | Nem |  Microsoft.Insights/Components  |  függőségek/darabszám  |  Függőségi hívások  |  Darabszám  |  Darabszám | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  függőségek/időtartam  |  Függőség időtartama  |  Ezredmásodpercben  |  Átlag | 
-| Nem  | Nem |  Microsoft.Insights/Components  |  függőségek/sikertelen  |  Függőségi hívások hibái  |  Darabszám  |  Darabszám | 
+| Nem  | Nem |  Microsoft.EventHub/clusters  |  Felhasználói hibák  |  Felhasználói hibák.  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/névterek  |  ActiveConnections  |  ActiveConnections  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.EventHub/névterek  |  CaptureBacklog (Rögzítési backlog)  |  Elfog hátralék.  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/névterek  |  Rögzítettbájt  |  Rögzített bájtok.  |  Bájt  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/névterek  |  CapturedMessages (Rögzített üzenetek)  |  Rögzített üzenetek.  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/névterek  |  Kapcsolatok zárva  |  Kapcsolatok zárva.  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.EventHub/névterek  |  Kapcsolatok megnyitva  |  Kapcsolatok megnyitva.  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  EHABL  |  Hátraléküzenetek archiválása (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  EHAMBS  |  Archiválási üzenet átviteli -átmenő (elavult)  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  EHAMSGS között  |  Archiválási üzenetek (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  EHINBÁJT  |  Bejövő bájtok (elavult)  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  EHINMBS  |  Bejövő bájtok (elavult) (elavult)  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  EHINMSGS  |  Bejövő üzenetek (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  EHOUTBYTES (EHOUTBÁJT)  |  Kimenő bájtok (elavult)  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  EHOUTMBS  |  Kimenő bájtok (elavult) (elavult)  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  EHOUTMSGS  |  Kimenő üzenetek (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  FailreQ között  |  Sikertelen kérelmek (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  Bejövő bájt  |  Bejövő bájtok.  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  Bejövő üzenetek  |  Bejövő üzenetek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  Bejövő kérések  |  Bejövő kérések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  INMSGS  |  Bejövő üzenetek (elavult) (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  InreQs  |  Bejövő kérelmek (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  INTERR  |  Belső kiszolgálói hibák (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  MISCERR  |  Egyéb hibák (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  Kimenő bájtok  |  Kimenő bájtok.  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  Kimenő üzenetek  |  Kimenő üzenetek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  OUTMSGS  |  Kimenő üzenetek (elavult) (elavult)  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/névterek  |  Kvótatúllépéshibák  |  A kvóta túllépte a hibákat.  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/névterek  |  Kiszolgálóhibák  |  Kiszolgálói hibák.  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/névterek  |  Méret  |  Méret  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.EventHub/névterek  |  Sikeres kérések  |  Sikeres kérelmek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  SUCCREQ között  |  Sikeres kérelmek (elavult)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.EventHub/névterek  |  SVRBSY között  |  Kiszolgáló foglaltsági hibái (elavult)  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/névterek  |  ThrottledRequests  |  Szabályozott kérelmek.  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.EventHub/névterek  |  Felhasználói hibák  |  Felhasználói hibák.  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.HDInsight/fürtök  |  KategorizáltGatewayRequests  |  Kategorizált átjárókérelmek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.HDInsight/fürtök  |  GatewayRequests  |  Átjárókérelmek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.HDInsight/fürtök  |  NumActiveWorkers  |  Aktív munkavállalók száma  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.HDInsight/fürtök  |  Méretezési kérések  |  Kérelmek méretezése  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Insights/AutoscaleSettings  |  Metrikus küszöbérték  |  Metrikaküszöbérték  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Insights/AutoscaleSettings  |  Megfigyeltkapacitás  |  Megfigyelt kapacitás  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Insights/AutoscaleSettings  |  ObservedMetricValue érték  |  Megfigyelt metrikus érték  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Insights/AutoscaleSettings  |  ScaleActionsinitiated  |  Kezdeményezett műveletek méretezése  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  availabilityResults/availabilitySzázalék  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
+| Nem  | Nem |  Microsoft.Insights/Components  |  availabilityResults/count  |  Rendelkezésre állási tesztek  |  Darabszám  |  Darabszám | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  availabilityEredmények/időtartam  |  Rendelkezésre állási teszt időtartama  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  browserTimings/networkDuration  |  Oldalbetöltési hálózat csatlakozási ideje  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  browserTimings/processingDuration  |  Ügyfél feldolgozási ideje  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  browserTimings/receiveDuration  |  Válaszidő fogadása  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  browserTimings/sendDuration  |  Kérés ideje elküldése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  browserTimings/totalDuration  |  A böngészőoldal betöltési ideje  |  Ezredmásodperc  |  Átlag | 
+| Nem  | Nem |  Microsoft.Insights/Components  |  függőségek/számlálás  |  Függőségi hívások  |  Darabszám  |  Darabszám | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  függőségek/időtartam  |  Függőség időtartama  |  Ezredmásodperc  |  Átlag | 
+| Nem  | Nem |  Microsoft.Insights/Components  |  függőségek/sikertelen  |  Függőségi hívás hibái  |  Darabszám  |  Darabszám | 
 | Nem  | Nem |  Microsoft.Insights/Components  |  kivételek/böngésző  |  Böngészőkivételek  |  Darabszám  |  Darabszám | 
-| **Igen**  | **Igen** |  Microsoft.Insights/Components  |  kivételek/darabszám  |  Kivételek  |  Darabszám  |  Darabszám | 
+| **Igen**  | **Igen** |  Microsoft.Insights/Components  |  kivételek/számlálás  |  Kivételek  |  Darabszám  |  Darabszám | 
 | Nem  | Nem |  Microsoft.Insights/Components  |  kivételek/kiszolgáló  |  Kiszolgálói kivételek  |  Darabszám  |  Darabszám | 
-| **Igen**  | **Igen** |  Microsoft.Insights/Components  |  Oldalmegtekintések/darabszám  |  Lapok nézetei  |  Darabszám  |  Darabszám | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  pageViews/duration  |  Oldal nézet betöltési ideje  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Insights/Components  |  performanceCounters/exceptionsPerSecond  |  Kivételek aránya  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  performanceCounters/memoryAvailableBytes  |  Rendelkezésre álló memória  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  performanceCounters/processCpuPercentage  |  Processzor feldolgozása  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  performanceCounters/processIOBytesPerSecond  |  Folyamat i/o-sebessége  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  performanceCounters/processorCpuPercentage  |  Processzoridő  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  performanceCounters/processPrivateBytes  |  Saját bájtok feldolgozása  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  performanceCounters/requestExecutionTime  |  HTTP-kérelem végrehajtási ideje  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Insights/Components  |  performanceCounters/requestsInQueue  |  HTTP-kérelmek az alkalmazás-várólistában  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Insights/Components  |  performanceCounters/requestsPerSecond  |  HTTP-kérelmek gyakorisága  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft.Insights/Components  |  kérelmek/darabszám  |  Kiszolgálói kérelmek  |  Darabszám  |  Darabszám | 
-| **Igen**  | Nem |  Microsoft.Insights/Components  |  kérelmek/időtartam  |  Kiszolgáló válaszideje  |  Ezredmásodpercben  |  Átlag | 
-| Nem  | Nem |  Microsoft.Insights/Components  |  kérelmek/sikertelen  |  Sikertelen kérelmek  |  Darabszám  |  Darabszám | 
-| Nem  | Nem |  Microsoft.Insights/Components  |  kérelmek/díjszabás  |  Kiszolgálói kérelmek gyakorisága  |  CountPerSecond  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Insights/Components  |  nyomkövetés/darabszám  |  Nyomok  |  Darabszám  |  Darabszám | 
-| **Igen**  | Nem |  Microsoft.KeyVault/vaults  |  ServiceApiHit  |  Összes szolgáltatási API-találat  |  Darabszám  |  Darabszám | 
-| **Igen**  | Nem |  Microsoft.KeyVault/vaults  |  ServiceApiLatency  |  Általános szolgáltatás API-késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.KeyVault/vaults  |  ServiceApiResult  |  Összes szolgáltatás API-eredményei  |  Darabszám  |  Darabszám | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  CacheUtilization  |  Gyorsítótár kihasználtsága  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  ContinuousExportMaxLatenessMinutes  |  Folyamatos exportálás maximális késői percben  |  Darabszám  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  ContinuousExportNumOfRecordsExported  |  Folyamatos exportálás – számú exportált rekord  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  ContinuousExportPendingCount  |  Folyamatos exportálás függőben lévő darabszáma  |  Darabszám  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  ContinuousExportResult  |  Folyamatos exportálás eredménye  |  Darabszám  |  Darabszám | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  CPU  |  CPU  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  EventsProcessedForEventHubs  |  Feldolgozott események (Event/IoT hubok esetében)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  ExportUtilization  |  Exportálás kihasználtsága  |  Százalék  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  IngestionLatencyInSeconds  |  Betöltési késleltetés (másodperc)  |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  IngestionResult  |  Betöltés eredménye  |  Darabszám  |  Darabszám | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  IngestionUtilization  |  Betöltés kihasználtsága  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  IngestionVolumeInMB  |  Betöltési mennyiség (MB)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  KeepAlive  |  Életben tartása  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  QueryDuration  |  Lekérdezés időtartama  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  SteamingIngestRequestRate  |  Folyamatos átviteli kérelmek gyakorisága  |  Darabszám  |  RateRequestsPerSecond | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  StreamingIngestDataRate  |  Adatforgalom adatátviteli sebessége  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  StreamingIngestDuration  |  Folyamatos átvitel időtartama  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Kusto/Clusters  |  StreamingIngestResults  |  Folyamatos átvitel eredménye  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  ActionLatency  |  Művelet késése   |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  ActionsCompleted  |  Befejezett műveletek   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  ActionsFailed  |  Sikertelen műveletek   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  ActionsSkipped  |  Kihagyott műveletek   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  ActionsStarted  |  Elindított műveletek   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  ActionsSucceeded  |  Sikeres műveletek   |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  ActionSuccessLatency  |  Művelet sikerességi késése   |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  ActionThrottledEvents  |  Művelet által szabályozott események  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentConnectorMemoryUsage  |  Összekötő memóriahasználat integrációs szolgáltatási környezet  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentConnectorProcessorUsage  |  integrációs szolgáltatási környezet összekötő-processzorának használata  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentWorkflowMemoryUsage  |  integrációs szolgáltatási környezet munkafolyamat-memóriahasználat  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentWorkflowProcessorUsage  |  A integrációs szolgáltatási környezet munkafolyamat-processzorának használata  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  RunFailurePercentage  |  Sikertelen futtatások százalékos aránya  |  Százalék  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  RunLatency  |  Késés futtatása  |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  RunsCancelled  |  Megszakított futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  RunsCompleted  |  Befejezett futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  RunsFailed  |  Sikertelen futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  RunsStarted  |  Elindított futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  RunsSucceeded  |  Sikeres futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  RunStartThrottledEvents  |  Indítási leszabályozású események futtatása  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  RunSuccessLatency  |  Sikeres Futtatás késése  |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  RunThrottledEvents  |  Szabályozott események futtatása  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  TriggerFireLatency  |  Kiváltó tűz késése   |  Másodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  TriggerLatency  |  Trigger késése   |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggersCompleted  |  Befejezett eseményindítók   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggersFailed  |  Sikertelen eseményindítók   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggersFired  |  Kilőtt eseményindítók   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggersSkipped  |  Kihagyott eseményindítók  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggersStarted  |  Elindított eseményindítók   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggersSucceeded  |  Sikeres eseményindítók   |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  TriggerSuccessLatency  |  Sikeres triggerek késése   |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggerThrottledEvents  |  Kiváltott események indítása  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Logic/workflows  |  ActionLatency  |  Művelet késése   |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  ActionsCompleted  |  Befejezett műveletek   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  ActionsFailed  |  Sikertelen műveletek   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  ActionsSkipped  |  Kihagyott műveletek   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  ActionsStarted  |  Elindított műveletek   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  ActionsSucceeded  |  Sikeres műveletek   |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Logic/workflows  |  ActionSuccessLatency  |  Művelet sikerességi késése   |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  ActionThrottledEvents  |  Művelet által szabályozott események  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  BillableActionExecutions  |  Számlázható műveletek végrehajtása  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  BillableTriggerExecutions  |  Számlázható trigger-végrehajtások  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  BillingUsageNativeOperation  |  A natív művelet végrehajtásához használt számlázási használat  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  BillingUsageNativeOperation  |  A natív művelet végrehajtásához használt számlázási használat  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  BillingUsageStandardConnector  |  A standard szintű összekötők végrehajtásának számlázási használata  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  BillingUsageStandardConnector  |  A standard szintű összekötők végrehajtásának számlázási használata  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  BillingUsageStorageConsumption  |  Számlázási használat a tárolási felhasználás végrehajtásához  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  BillingUsageStorageConsumption  |  Számlázási használat a tárolási felhasználás végrehajtásához  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  RunFailurePercentage  |  Sikertelen futtatások százalékos aránya  |  Százalék  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Logic/workflows  |  RunLatency  |  Késés futtatása  |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  RunsCancelled  |  Megszakított futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  RunsCompleted  |  Befejezett futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  RunsFailed  |  Sikertelen futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  RunsStarted  |  Elindított futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  RunsSucceeded  |  Sikeres futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  RunStartThrottledEvents  |  Indítási leszabályozású események futtatása  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Logic/workflows  |  RunSuccessLatency  |  Sikeres Futtatás késése  |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  RunThrottledEvents  |  Szabályozott események futtatása  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  TotalBillableExecutions  |  Számlázandó végrehajtások összesen  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Logic/workflows  |  TriggerFireLatency  |  Kiváltó tűz késése   |  Másodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Logic/workflows  |  TriggerLatency  |  Trigger késése   |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  TriggersCompleted  |  Befejezett eseményindítók   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  TriggersFailed  |  Sikertelen eseményindítók   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  TriggersFired  |  Kilőtt eseményindítók   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  TriggersSkipped  |  Kihagyott eseményindítók  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  TriggersStarted  |  Elindított eseményindítók   |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  TriggersSucceeded  |  Sikeres eseményindítók   |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Logic/workflows  |  TriggerSuccessLatency  |  Sikeres triggerek késése   |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Logic/workflows  |  TriggerThrottledEvents  |  Kiváltott események indítása  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Aktív magok  |  Aktív magok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Aktív csomópontok  |  Aktív csomópontok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Befejezett futtatások  |  Befejezett futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Sikertelen futtatások  |  Sikertelen futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Üresjárati magok  |  Üresjárati magok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Tétlen csomópontok  |  Tétlen csomópontok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Magok kihagyása  |  Magok kihagyása  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Csomópontok elhagyása  |  Csomópontok elhagyása  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Modell-üzembehelyezés sikertelen  |  Modell-üzembehelyezés sikertelen  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Modell-üzembehelyezés elindítva  |  Modell-üzembehelyezés elindítva  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Modell-üzembehelyezés sikerült  |  Modell-üzembehelyezés sikerült  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  A modell regisztrálása nem sikerült  |  A modell regisztrálása nem sikerült  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  A modell regisztrálása sikerült  |  A modell regisztrálása sikerült  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Előzik magok  |  Előzik magok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Előzik-csomópontok  |  Előzik-csomópontok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Kvóta kihasználtsága (%)  |  Kvóta kihasználtsága (%)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Elindított futtatások  |  Elindított futtatások  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Magok összesen  |  Magok összesen  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Csomópontok összesen  |  Csomópontok összesen  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Használhatatlan magok  |  Használhatatlan magok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. MachineLearningServices/munkaterületek  |  Használhatatlan csomópontok  |  Használhatatlan csomópontok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Maps/fiókok  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
-| Nem  | Nem |  Microsoft. Maps/fiókok  |  Használat  |  Használat  |  Darabszám  |  Darabszám | 
-| **Igen**  | Nem |  Microsoft. Media/Mediaservices  |  AssetCount  |  Eszközök száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Media/Mediaservices  |  AssetQuota  |  Eszköz kvótája  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Media/Mediaservices  |  AssetQuotaUsedPercentage  |  Eszköz kvótájának kihasználtsága (%)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Media/Mediaservices  |  ContentKeyPolicyCount  |  Tartalmi kulcsokra vonatkozó szabályzatok száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Media/Mediaservices  |  ContentKeyPolicyQuota  |  Tartalmi kulcs házirend-kvótája  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Media/Mediaservices  |  ContentKeyPolicyQuotaUsedPercentage  |  Tartalom kulcsára vonatkozó házirend kvótájának százalékos aránya  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Media/Mediaservices  |  StreamingPolicyCount  |  Folyamatos átviteli szabályzatok száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Media/Mediaservices  |  StreamingPolicyQuota  |  Streaming Policy-kvóta  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Media/Mediaservices  |  StreamingPolicyQuotaUsedPercentage  |  Adatfolyam-házirend kvótájának kihasználtsága (%)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Media/Mediaservices/streamingEndpoints  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Media/Mediaservices/streamingEndpoints  |  Kérelmek  |  Kérelmek  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Media/Mediaservices/streamingEndpoints  |  SuccessE2ELatency  |  A Befejezés végének késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  GCPauseTotalCount  |  GC-szüneteltetések száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  GCPauseTotalTime  |  GC felfüggesztésének teljes ideje  |  Ezredmásodperc  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  MaxOldGenMemoryPoolBytes  |  A rendelkezésre álló régi generációs adatméret maximális száma  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  OldGenMemoryPoolBytes  |  A régi generációs adatméret  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  OldGenPromotedBytes  |  Előléptetés a régi generációs adatméretre  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  ServiceCpuUsagePercentage  |  Szolgáltatás CPU-kihasználtságának százalékos aránya  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  ServiceMemoryCommitted  |  Szolgáltatáshoz hozzárendelt memória  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  ServiceMemoryMax  |  Szolgáltatás memóriájának maximális száma  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  ServiceMemoryUsed  |  Szolgáltatás felhasznált memóriája  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  SystemCpuUsagePercentage  |  CPU-használat százalékos aránya  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  TomcatErrorCount  |  Tomcat globális hiba  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  TomcatReceivedBytes  |  Tomcat összesen fogadott bájtok  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  TomcatRequestMaxTime  |  Tomcat-kérelem maximális ideje  |  Ezredmásodperc  |  Maximum | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  TomcatRequestTotalCount  |  Tomcat-kérelem összesített száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  TomcatRequestTotalTime  |  Tomcat-kérelem teljes ideje  |  Ezredmásodperc  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  TomcatResponseAvgTime  |  Tomcat-kérelem átlagos ideje  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  TomcatSentBytes  |  Tomcat összesen eljuttatott bájtok száma  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionActiveCurrentCount  |  Tomcat-munkamenet élő száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionActiveMaxCount  |  Tomcat-munkamenet maximális aktív száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionAliveMaxTime  |  Tomcat-munkamenet maximális élettartama  |  Ezredmásodperc  |  Maximum | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionCreatedCount  |  Tomcat-munkamenet létrehozva szám  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionExpiredCount  |  A Tomcat-munkamenet lejárt  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionRejectedCount  |  A Tomcat-munkamenet elutasította a darabszámot  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Microservices4Spring/appClusters  |  YoungGenPromotedBytes  |  Népszerűsítse a fiatal generáció adatméretét  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.NetApp/netAppAccounts/capacityPools  |  VolumePoolAllocatedUsed  |  Lefoglalt kötet-készlet  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.NetApp/netAppAccounts/capacityPools  |  VolumePoolTotalLogicalSize  |  Kötet készletének teljes logikai mérete  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. NetApp/netAppAccounts/capacityPools/kötetek  |  AverageReadLatency  |  Olvasási késleltetés átlagos késése  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. NetApp/netAppAccounts/capacityPools/kötetek  |  AverageWriteLatency  |  Írási késleltetés átlagos késése  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. NetApp/netAppAccounts/capacityPools/kötetek  |  ReadIops  |  IOPS olvasása  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. NetApp/netAppAccounts/capacityPools/kötetek  |  VolumeLogicalSize  |  Kötet logikai mérete  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. NetApp/netAppAccounts/capacityPools/kötetek  |  VolumeSnapshotSize  |  Kötet pillanatképének mérete  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. NetApp/netAppAccounts/capacityPools/kötetek  |  WriteIops  |  IOPS írása  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft.Network/applicationGateways  |  ApplicationGatewayTotalTime  |  Application Gateway teljes idő  |  Ezredmásodpercben  |  Átlag | 
-| Nem  | Nem |  Microsoft.Network/applicationGateways  |  AvgRequestCountPerHealthyHost  |  Percenkénti kérelmek száma kifogástalan állapotú gazdagépen  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.Network/applicationGateways  |  BackendConnectTime  |  Háttérbeli kapcsolat ideje  |  Ezredmásodpercben  |  Átlag | 
-| Nem  | Nem |  Microsoft.Network/applicationGateways  |  BackendFirstByteResponseTime  |  Háttérbeli első bájt válaszideje  |  Ezredmásodpercben  |  Átlag | 
-| Nem  | Nem |  Microsoft.Network/applicationGateways  |  BackendLastByteResponseTime  |  Háttérbeli utolsó bájt válaszideje  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  BackendResponseStatus  |  Háttérbeli válasz állapota  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  BlockedCount  |  Webalkalmazási tűzfal letiltott kérelmek szabályának eloszlása  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  BlockedReqCount  |  Webalkalmazási tűzfal letiltott kérelmek száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  BytesReceived  |  Fogadott bájtok száma  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  BytesSent  |  Eljuttatott bájtok  |  Bájt  |  Összesen | 
-| Nem  | Nem |  Microsoft.Network/applicationGateways  |  CapacityUnits  |  Aktuális kapacitási egységek  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.Network/applicationGateways  |  ClientRtt  |  Ügyfél-RTT  |  Ezredmásodpercben  |  Átlag | 
-| Nem  | Nem |  Microsoft.Network/applicationGateways  |  ComputeUnits  |  Aktuális számítási egységek  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  Összege  |  Aktuális kapcsolatok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  FailedRequests  |  Sikertelen kérelmek  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  HealthyHostCount  |  Kifogástalan állapotú gazdagépek száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  MatchedCount  |  Webalkalmazási tűzfal teljes szabályának eloszlása  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  ResponseStatus  |  Válasz állapota  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Network/applicationGateways  |  Átviteli sebesség  |  Átviteli sebesség  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  TlsProtocol  |  Ügyfél TLS protokoll  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Insights/Components  |  oldalmegtekintések/számlálók  |  Oldalnézetek  |  Darabszám  |  Darabszám | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  oldalMegtekintések/időtartam  |  Oldalnézet betöltési ideje  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Insights/Components  |  performanceCounters/exceptionsPerSecond  |  Kivétel aránya  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  performanceCounters/memoryAvailableBytes  |  Igénybe vehető memória  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  performanceCounters/processCpuPercentage  |  Folyamat PROCESSZOR  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  performanceCounters/processIOBytesPerSecond  |  Io-sebesség feldolgozása  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  performanceCounters/processorCpuPercentage  |  Processzor idő  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  performanceCounters/processPrivateBytes  |  Magánbájtok feldolgozása  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  performanceCounters/requestExecutionTime  |  HTTP-kérelem végrehajtási ideje  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Insights/Components  |  performanceCounters/requestsInQueue  |  HTTP-kérelmek az alkalmazásvárólistában  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Insights/Components  |  performanceCounters/requestsPerSecond  |  HTTP-kérelmek aránya  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.Insights/Components  |  kérések/számlálás  |  Kiszolgálói kérelmek  |  Darabszám  |  Darabszám | 
+| **Igen**  | Nem |  Microsoft.Insights/Components  |  kérések/időtartam  |  Szerverválaszidő  |  Ezredmásodperc  |  Átlag | 
+| Nem  | Nem |  Microsoft.Insights/Components  |  kérések/sikertelen  |  Sikertelen kérelmek  |  Darabszám  |  Darabszám | 
+| Nem  | Nem |  Microsoft.Insights/Components  |  kérések/díj  |  Kiszolgálókérési arány  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Insights/Components  |  nyomok/szám  |  Hívásláncok  |  Darabszám  |  Darabszám | 
+| **Igen**  | Nem |  Microsoft.KeyVault/vaults  |  ServiceApiHit  |  Szolgáltatás Api-találatai összesen  |  Darabszám  |  Darabszám | 
+| **Igen**  | Nem |  Microsoft.KeyVault/vaults  |  ServiceApiLatency (SzervizapiLatency)  |  Általános szolgáltatásapi-késés  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.KeyVault/vaults  |  ServiceApiResult  |  Szolgáltatás api-eredményeinek összesen  |  Darabszám  |  Darabszám | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  Gyorsítótárhasználata  |  Gyorsítótár kihasználtsága  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  ContinuousExportMaxLatenessMinutes  |  Folyamatos exportálási maximális késési perc  |  Darabszám  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  ContinuousExportNumOfRecordsExportált  |  Folyamatos exportálás - exportált rekordok száma  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  Folyamatos exportálásfüggő száma  |  Folyamatos exportálás függőben lévő száma  |  Darabszám  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  ContinuousExportResult  |  Folyamatos exportálás eredménye  |  Darabszám  |  Darabszám | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  CPU  |  CPU  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  EseményekProcessedForEventHubs  |  Feldolgozott események (esemény-/IoT-központok esetén)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  Exportálás Kihasználása  |  Kihasználtság exportálása  |  Százalék  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  BetöltésLatencyInSeconds  |  Betöltési késés (másodpercben)  |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  Betöltéseredménye  |  Lenyelési eredmény  |  Darabszám  |  Darabszám | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  LenyelésKitilizáció  |  Lenyelés kihasználtsága  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  BetöltésvolumeinMB  |  Betöltési kötet (MB-ban)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  KeepAlive (Életben tartás)  |  Életben maradni  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  QueryDuration (Lekérdezésidőtartama)  |  Lekérdezés időtartama  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  SteamingingestRequestRate  |  Betöltési kérelem sebességének streamelése  |  Darabszám  |  RaterequestsPerSecond (RaterequestsPerSzekszekszek | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  StreamingIngestDataRate  |  A betöltési adatok átviteli sebessége  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  StreamingIngestIdőtartam  |  Streamelési idő  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Kusto/Fürtök  |  StreamingIngestResults (StreamingestResults)  |  A betöltés i.  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  ActionLatency (MűveletÁtlika)  |  Művelet késése   |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  Végrehajtott műveletek  |  Végrehajtott műveletek   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  Sikertelen műveletek  |  Sikertelen műveletek   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  Kihagyott műveletek  |  Kihagyott műveletek   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  Indított műveletek  |  Megkezdett műveletek   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  Sikeres műveletek  |  Sikeres műveletek   |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  ActionSuccessLatency (AkciósikerÁtkés)  |  Művelet sikeres késése   |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  ActionThrottledEsemények  |  Művelet szabályozása események  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentConnectorMemoryUsage  |  Összekötőmemória használata az integrációs szolgáltatáskörnyezethez  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentConnectorProcessorUsage  |  Összekötő processzor használata integrációs szolgáltatáskörnyezethez  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentWorkflowMemoryUsage  |  Munkafolyamat-memória használata az integrációs szolgáltatáskörnyezethez  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentWorkflowProcessorUsage  |  Munkafolyamat-processzor használata integrációs szolgáltatáskörnyezethez  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  RunFailureSzázalék  |  Futtatási hiba százaléka  |  Százalék  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  Futtatás késése  |  Késés futtatása  |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  RunsCancelled  |  Futtatások megszakítva  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  Futtatások befejezve  |  Futtatások befejezve  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  FuttatásFailed  |  Sikertelen futtatások  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  Futtatások Started  |  Futtatások indítása  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  FuttatásSikeres  |  Sikeres futtatások  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  RunStartThrottledEsemények  |  Futás –Szabályozású események futtatása  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  RunSuccessLatency (RunSuccessLatency)  |  Sikeres késés futtatása  |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  RunThrottledEsemények  |  Szabályozott események futtatása  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  TriggerFireLatency  |  Tűz késleltetése   |  Másodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  TriggerLatency (TriggerLatencia)  |  Eseményindító késése   |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  Eseményindítók befejezve  |  Befejezett eseményindítók   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  EseményindítókSikertelen  |  Sikertelen eseményindítók   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggersFired (TriggersFired)  |  Kiváltott eseményindítók   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  Előugró eseményindítók  |  Kihagyott eseményindítók  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  Aktivált eseményindítók  |  Elindítva az eseményindítók   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  Eseményindítók Sikeres  |  Az eseményindítók sikeresek   |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Logic/integrationServiceEnvironments  |  TriggerSuccessLatency (TriggerSuccessLatency)  |  Sikeres késés aktiválása   |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggerThrottledEsemények  |  Irányított események aktiválása  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Logic/munkafolyamatok  |  ActionLatency (MűveletÁtlika)  |  Művelet késése   |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  Végrehajtott műveletek  |  Végrehajtott műveletek   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  Sikertelen műveletek  |  Sikertelen műveletek   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  Kihagyott műveletek  |  Kihagyott műveletek   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  Indított műveletek  |  Megkezdett műveletek   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  Sikeres műveletek  |  Sikeres műveletek   |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Logic/munkafolyamatok  |  ActionSuccessLatency (AkciósikerÁtkés)  |  Művelet sikeres késése   |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  ActionThrottledEsemények  |  Művelet szabályozása események  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  BillableActionExecutions (Számlázhatóműveletvégrehajtásai)  |  Számlázható műveletek végrehajtása  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  SzámlázhatóTriggerExecutions  |  Számlázható eseményindító-végrehajtások  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  BillingUsageNativeOperation művelet  |  Natív műveletvégrehajtás számlázási használata  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  BillingUsageNativeOperation művelet  |  Natív műveletvégrehajtás számlázási használata  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  BillingUsageStandardConnector  |  Számlázási használat szabványos összekötő-végrehajtások esetén  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  BillingUsageStandardConnector  |  Számlázási használat szabványos összekötő-végrehajtások esetén  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  BillingUsageConsumptionConsumption  |  Számlázási használat a tárolási felhasználás végrehajtásaihez  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  BillingUsageConsumptionConsumption  |  Számlázási használat a tárolási felhasználás végrehajtásaihez  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  RunFailureSzázalék  |  Futtatási hiba százaléka  |  Százalék  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Logic/munkafolyamatok  |  Futtatás késése  |  Késés futtatása  |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  RunsCancelled  |  Futtatások megszakítva  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  Futtatások befejezve  |  Futtatások befejezve  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  FuttatásFailed  |  Sikertelen futtatások  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  Futtatások Started  |  Futtatások indítása  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  FuttatásSikeres  |  Sikeres futtatások  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  RunStartThrottledEsemények  |  Futás –Szabályozású események futtatása  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Logic/munkafolyamatok  |  RunSuccessLatency (RunSuccessLatency)  |  Sikeres késés futtatása  |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  RunThrottledEsemények  |  Szabályozott események futtatása  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  Összes számlázható végrehajtás  |  Számlázható kivégzések összesen  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Logic/munkafolyamatok  |  TriggerFireLatency  |  Tűz késleltetése   |  Másodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Logic/munkafolyamatok  |  TriggerLatency (TriggerLatencia)  |  Eseményindító késése   |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  Eseményindítók befejezve  |  Befejezett eseményindítók   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  EseményindítókSikertelen  |  Sikertelen eseményindítók   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  TriggersFired (TriggersFired)  |  Kiváltott eseményindítók   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  Előugró eseményindítók  |  Kihagyott eseményindítók  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  Aktivált eseményindítók  |  Elindítva az eseményindítók   |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  Eseményindítók Sikeres  |  Az eseményindítók sikeresek   |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Logic/munkafolyamatok  |  TriggerSuccessLatency (TriggerSuccessLatency)  |  Sikeres késés aktiválása   |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Logic/munkafolyamatok  |  TriggerThrottledEsemények  |  Irányított események aktiválása  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Aktív magok  |  Aktív magok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Aktív csomópontok  |  Aktív csomópontok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Befejezett futtatások  |  Befejezett futtatások  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Sikertelen futtatások  |  Sikertelen futtatások  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Alapjárati magok  |  Alapjárati magok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Tétlen csomópontok  |  Tétlen csomópontok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Elhagyva magok  |  Elhagyva magok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Csomópontok elhagyása  |  Csomópontok elhagyása  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  A modell telepítése sikertelen  |  A modell telepítése sikertelen  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Modell üzembe helyezése elindítva  |  Modell üzembe helyezése elindítva  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  A modell telepítése sikerült  |  A modell telepítése sikerült  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  A modellregiszter nem sikerült  |  A modellregiszter nem sikerült  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Sikeres modellregisztika  |  Sikeres modellregisztika  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Preempted magok  |  Preempted magok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Elődpontos csomópontok  |  Elődpontos csomópontok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Kvótakihasználtság százaléka  |  Kvótakihasználtság százaléka  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Elkezdett futtatások  |  Elkezdett futtatások  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Magok összesen  |  Magok összesen  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Összes csomópont  |  Összes csomópont  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Használhatatlan magok  |  Használhatatlan magok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.MachineLearningServices/munkaterületek  |  Használhatatlan csomópontok  |  Használhatatlan csomópontok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Maps/fiókok  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
+| Nem  | Nem |  Microsoft.Maps/fiókok  |  Használat  |  Használat  |  Darabszám  |  Darabszám | 
+| **Igen**  | Nem |  Microsoft.Media/mediaservices  |  Eszközszáma  |  Eszközdarabszáma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Media/mediaservices  |  Eszközkvóta  |  Eszközkvóta  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Media/mediaservices  |  AssetQuotaUsedSzázalék  |  Használt eszközkvóta százalék  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Media/mediaservices  |  ContentKeyPolicyCount (Tartalomkulcs-házirendszáma)  |  Tartalomkulcs-házirendek száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Media/mediaservices  |  ContentKeyPolicyQuota (ContentKeyPolicyQuota)  |  Tartalomkulcs-házirendkvóta  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Media/mediaservices  |  ContentKeyPolicyQuotaUsedSzázalék  |  A tartalomkulcs-házirend használt kvótája százalékban  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Media/mediaservices  |  StreamingPolicyCount (StreamPolicyCount)  |  Streamelési irányelvek száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Media/mediaservices  |  StreamingPolicyQuota (StreamingPolicyQuota)  |  Streamelési házirend kvóta  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Media/mediaservices  |  StreamingPolicyQuotaUsedSzázalék  |  A streamelési szabályzat használt kvótája százalékban  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Media/mediaservices/streamingVégpontok  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Media/mediaservices/streamingVégpontok  |  Kérelmek  |  Kérelmek  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Media/mediaservices/streamingVégpontok  |  SuccessE2ELatency (SuccessE2ELatency)  |  Sikeres befejezés a késés végéig  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  GCPauseTotalCount (GCPauseTotalCount)  |  Gc szünetszáma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  GCPauseTotalTime  |  Globális katalógus szüneteltetési teljes ideje  |  Ezredmásodperc  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  MaxOldGenMemoryPoolPoolBytes  |  Maximálisan elérhető régi generációs adatméret  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  OldGenMemoryPoolBytes  |  Régi generációs adatok mérete  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  OldGenPromotedBytes  |  Előléptetés régi generációs adatméretre  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  ServiceCpuUsageszázalék  |  Szolgáltatás PROCESSZORának használati százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  ServiceMemoryCommitted  |  Hozzárendelt szolgáltatásmemória  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  ServiceMemoryMax  |  Szolgáltatás memória max  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  Használt serviceMemory  |  Használt szolgáltatásmemória  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  SystemCpuUsageSzázalék  |  Rendszerprocesszor-használat százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  TomcatHibaszám  |  Tomcat globális hiba  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  TomcatReceivedBytes (TomcatReceivedBytes)  |  Tomcat teljes fogadott bájt  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  TomcatRequestMaxTime  |  Tomcat-kérelem maximális ideje  |  Ezredmásodperc  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  TomcatRequestTotalCount (TomcatRequestTotalCount)  |  Tomcat kérelem teljes száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  TomcatRequestTotalTime  |  Tomcat kérelem összes alkalommal  |  Ezredmásodperc  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  TomcatResponseAvgTime  |  Tomcat kérelem átlagos ideje  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  TomcatSentBytes (TomcatSentBytes)  |  Tomcat összes elküldött bájt  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  TomcatSessionActiveCurrentCount  |  Tomcat munkamenet élő száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  TomcatSessionActiveMaxCount  |  Tomcat-munkamenet maximális aktív száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  TomcatSessionAliveMaxTime  |  Tomcat session max élő idő  |  Ezredmásodperc  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  TomcatSessionCreatedCount  |  Tomcat munkamenet létrehozva száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  TomcatSessionExpiredCount  |  Tomcat-munkamenet lejárt száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  TomcatSessionRejectedCount  |  Tomcat munkamenet elutasított száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Microservices4Spring/appClusters  |  YoungGenPromotedBytes  |  Népszerűsítés fiatal generációs adatméretre  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.NetApp/netAppAccounts/capacityPools  |  Kötetkészletfelosztott  |  Használt kötetkészlet  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.NetApp/netAppAccounts/capacityPools  |  VolumePoolTotalLogicalSize  |  Kötetkészlet teljes logikai mérete  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.NetApp/netAppAccounts/capacityPools/volumes  |  Átlagos olvasási átkés  |  Átlagos olvasási késleltetés  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.NetApp/netAppAccounts/capacityPools/volumes  |  Átlagos íráskésleltetés  |  Átlagos írási késés  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.NetApp/netAppAccounts/capacityPools/volumes  |  ReadIops között  |  Olvasás iops  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.NetApp/netAppAccounts/capacityPools/volumes  |  VolumeLogicalSize (VolumeLogicalSize)  |  Kötet logikai mérete  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.NetApp/netAppAccounts/capacityPools/volumes  |  VolumeSnapshotSize (VolumeSnapshotSize)  |  Kötet pillanatképének mérete  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.NetApp/netAppAccounts/capacityPools/volumes  |  WriteIops (WriteIops)  |  Iops írása  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/applicationGateways  |  ApplicationGatewayTotalTime alkalmazás  |  Alkalmazásátjáró teljes ideje  |  Ezredmásodperc  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/applicationGateways  |  AvgRequestCountPerHealthyHost  |  Kérelmek percenként és egészséges gazdagépenként  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/applicationGateways  |  HáttérendConnectTime  |  Háttérkapcsolati idő  |  Ezredmásodperc  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/applicationGateways  |  BackendFirstByteResponseTime  |  Háttér– első bájtválasz ideje  |  Ezredmásodperc  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/applicationGateways  |  BackendLastByteResponseTime  |  Háttértartalék utolsó bájtválasz ideje  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  HáttérvégpontVálaszállapota  |  Háttérválaszok állapota  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  BlockedCount (BlockedCount)  |  Webalkalmazás-tűzfal blokkolt kérelmek szabályának elosztása  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  BlockedReqCount között  |  A webalkalmazás tűzfalának blokkolt kérései száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  Fogadott bájt  |  Fogadott bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  Küldött bájt  |  Elküldött bájtok  |  Bájt  |  Összesen | 
+| Nem  | Nem |  Microsoft.Network/applicationGateways  |  Kapacitásegységek  |  Aktuális kapacitásegységek  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/applicationGateways  |  Ügyfélrtt  |  Ügyfél RTT  |  Ezredmásodperc  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/applicationGateways  |  Számítási egységek  |  Aktuális számítási egységek  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  Jelenlegi kapcsolatok  |  Jelenlegi kapcsolatok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  Sikertelen kérések  |  Sikertelen kérelmek  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  EgészségeshostCount  |  Egészséges gazdagép száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  Egyezésű ekszáma  |  Webalkalmazás-tűzfal összes szabályának elosztása  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  ResponseStatus (Válasz állapota)  |  Válasz állapota  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Network/applicationGateways  |  Teljesítmény  |  Teljesítmény  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  TlsProtocol  |  Ügyfél TLS protokollja  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  TotalRequests  |  Összes kérelem  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  UnhealthyHostCount  |  Nem kifogástalan állapotú gazdagépek száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Network/azurefirewalls  |  ApplicationRuleHit  |  Alkalmazás-szabályok találatok száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Network/azurefirewalls  |  DataProcessed  |  Feldolgozott adatfeldolgozás  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Network/azurefirewalls  |  FirewallHealth  |  Tűzfal állapota  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Network/azurefirewalls  |  NetworkRuleHit  |  Hálózati szabályok találatok száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Network/azurefirewalls  |  SNATPortUtilization  |  SNAT-portok kihasználtsága  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Network/Connections  |  BitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Network/Connections  |  BitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/dnszones  |  QueryVolume  |  Lekérdezési kötet  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Network/dnszones  |  RecordSetCapacityUtilization  |  Rekordazonosító kapacitásának kihasználtsága  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/dnszones  |  RecordSetCount  |  Rekordok készletének száma  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/expressRouteCircuits  |  ArpAvailability  |  ARP rendelkezésre állása  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/expressRouteCircuits  |  BgpAvailability  |  BGP rendelkezésre állása  |  Százalék  |  Átlag | 
-| Nem  | Nem |  Microsoft.Network/expressRouteCircuits  |  BitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft.Network/expressRouteCircuits  |  BitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft.Network/expressRouteCircuits  |  GlobalReachBitsInPerSecond  |  GlobalReachBitsInPerSecond  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft.Network/expressRouteCircuits  |  GlobalReachBitsOutPerSecond  |  GlobalReachBitsOutPerSecond  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft.Network/expressRouteCircuits  |  QosDropBitsInPerSecond  |  DroppedInBitsPerSecond  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft.Network/expressRouteCircuits  |  QosDropBitsOutPerSecond  |  DroppedOutBitsPerSecond  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/expressRouteCircuits/peerings  |  BitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/expressRouteCircuits/peerings  |  BitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft. Network/expressRouteGateways  |  ErGatewayConnectionBitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Átlag | 
-| Nem  | Nem |  Microsoft. Network/expressRouteGateways  |  ErGatewayConnectionBitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Network/expressRoutePorts  |  AdminState  |  AdminState  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Network/expressRoutePorts  |  LineProtocol  |  LineProtocol  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Network/expressRoutePorts  |  PortBitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Network/expressRoutePorts  |  PortBitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Network/expressRoutePorts  |  RxLightLevel  |  RxLightLevel  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Network/expressRoutePorts  |  TxLightLevel  |  TxLightLevel  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft. Network/frontdoors  |  BackendHealthPercentage  |  Háttér állapotának százalékos aránya  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft. Network/frontdoors  |  BackendRequestCount  |  Háttérbeli kérelmek száma  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. Network/frontdoors  |  BackendRequestLatency  |  Háttérbeli kérelmek késése  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft. Network/frontdoors  |  BillableResponseSize  |  Számlázható válasz mérete  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. Network/frontdoors  |  RequestCount  |  Kérelmek száma  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. Network/frontdoors  |  RequestSize  |  Kérelem mérete  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. Network/frontdoors  |  ResponseSize  |  Válasz mérete  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. Network/frontdoors  |  TotalLatency  |  Teljes késés  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft. Network/frontdoors  |  WebApplicationFirewallRequestCount  |  Webalkalmazási tűzfalra vonatkozó kérelmek száma  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Network/loadBalancers  |  AllocatedSnatPorts  |  Lefoglalt SNAT portok (előzetes verzió)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/loadBalancers  |  ByteCount  |  Bájtok száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/loadBalancers  |  DipAvailability  |  Állapot mintavételi állapota  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/loadBalancers  |  PacketCount  |  Csomagok száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/loadBalancers  |  SnatConnectionCount  |  SNAT-kapcsolatok száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/loadBalancers  |  SYNCount  |  SYN-szám  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/applicationGateways  |  Nem megfelelőhostcount  |  Nem megfelelő gazdagépszám  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/azurefirewalls  |  ApplicationRuleHit alkalmazás  |  Alkalmazásszabályok találati száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/azurefirewalls  |  Feldolgozott adatok  |  Feldolgozott adatok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/azurefirewalls  |  Tűzfal-egészségügyi  |  Tűzfal állapota  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/azurefirewalls  |  HálózatiRuleHit  |  Hálózati szabályok találati száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/azurefirewalls  |  SNATPortKihasználtság  |  SNAT-port kihasználtsága  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/kapcsolatok  |  BitsInPerSz  |  BitsInPerSz  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/kapcsolatok  |  BitsOutPerSz  |  BitsOutPerSz  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/dnszones  |  QueryVolume (Lekérdezési kötet)  |  Lekérdezés imtora  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Network/dnszones  |  RecordSetCapacityKihasználtság  |  Rekordkészlet kapacitáskihasználtsága  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/dnszones  |  Rekordsor száma  |  Rekordkészlet száma  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/expressRouteCircuits  |  ArpElérhető  |  Arp elérhetősége  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/expressRouteCircuits  |  BgpElérhető  |  BGP elérhetősége  |  Százalék  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/expressRouteCircuits  |  BitsInPerSz  |  BitsInPerSz  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/expressRouteCircuits  |  BitsOutPerSz  |  BitsOutPerSz  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/expressRouteCircuits  |  GlobalReachBitsInPerSecond  |  GlobalReachBitsInPerSecond  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/expressRouteCircuits  |  GlobalReachBitsOutPerSecond  |  GlobalReachBitsOutPerSecond  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/expressRouteCircuits  |  QosDropBitsInPerSz  |  DroppedInBitsPerSecond  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/expressRouteCircuits  |  QosDropBitsOutPerMásodik  |  DroppedOutBitsPerSecond  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/expressRouteCircuits/peerings  |  BitsInPerSz  |  BitsInPerSz  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/expressRouteCircuits/peerings  |  BitsOutPerSz  |  BitsOutPerSz  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/expressRouteGateways  |  ErGatewayConnectionBitsInPerSecond  |  BitsInPerSz  |  CountPerSzekszekundum  |  Átlag | 
+| Nem  | Nem |  Microsoft.Network/expressRouteGateways  |  ErGatewayConnectionBitsOutPerSecond  |  BitsOutPerSz  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/expressRoutePorts  |  AdminÁllam  |  AdminÁllam  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/expressRoutePorts  |  LineProtocol (LineProtocol)  |  LineProtocol (LineProtocol)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/expressRoutePorts  |  PortBitsInPerSecond  |  BitsInPerSz  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/expressRoutePorts  |  PortBitsOutPerSecond  |  BitsOutPerSz  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/expressRoutePorts  |  RxLightLevel  |  RxLightLevel  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/expressRoutePorts  |  TxLightLevel  |  TxLightLevel  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Network/frontdoors  |  BackendHealthPercentage  |  Háttér-állapot százalékos aránya  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Network/frontdoors  |  Háttérvégpontkérése  |  Háttér-kérelem száma  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Network/frontdoors  |  HáttérendKérelem Latency  |  Háttér-kérelem késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Network/frontdoors  |  Számlázható válaszméret  |  Számlázható válasz mérete  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Network/frontdoors  |  Kérésszáma  |  Kérelmek száma  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Network/frontdoors  |  Kérésméretet  |  A kérelem mérete  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Network/frontdoors  |  Válaszméret  |  Válasz mérete  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Network/frontdoors  |  Összesen Késedelmiség  |  Teljes késés  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Network/frontdoors  |  WebApplicationFirewallRequestCount  |  Webalkalmazás tűzfalának kérelmek száma  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Network/loadBalancers  |  FelosztottSnatPorts  |  Lefoglalt SNAT-portok (előzetes verzió)  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/loadBalancers  |  ByteCount (Bájtszáma)  |  Bájtszáma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/loadBalancers  |  DipElérhető  |  Állapotvizsgálat állapota  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/loadBalancers  |  Csomagszáma  |  Csomagok száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/loadBalancers  |  SnatConnectionCount (SnatConnectionCount)  |  SNAT-kapcsolatok száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/loadBalancers  |  SYNCount (SZINK)  |  SYN-szám  |  Darabszám  |  Összesen | 
 | Nem  | Nem |  Microsoft.Network/loadBalancers  |  UsedSnatPorts  |  Használt SNAT-portok (előzetes verzió)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/loadBalancers  |  VipAvailability  |  Adatelérési út rendelkezésre állása  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/networkInterfaces  |  BytesReceivedRate  |  Fogadott bájtok száma  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/networkInterfaces  |  BytesSentRate  |  Eljuttatott bájtok  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/networkInterfaces  |  PacketsReceivedRate  |  Fogadott csomagok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/networkInterfaces  |  PacketsSentRate  |  Küldött csomagok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/networkWatchers/connectionMonitors  |  AverageRoundtripMs  |  Átlagos menetidő (MS)  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/networkWatchers/connectionMonitors  |  ChecksFailedPercent  |  Sikertelen ellenőrzések százalékos aránya (előzetes verzió)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/networkWatchers/connectionMonitors  |  ProbesFailedPercent  |  %-Os mintavétel sikertelen  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/networkWatchers/connectionMonitors  |  RoundTripTimeMs  |  Oda-és visszaút időpontja (MS) (előzetes verzió)  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  ByteCount  |  Bájtok száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  BytesDroppedDDoS  |  Bejövő bájtok elvetve DDoS  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  BytesForwardedDDoS  |  Bejövő bájtok továbbított DDoS  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  BytesInDDoS  |  Bejövő bájtok DDoS  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  DDoSTriggerSYNPackets  |  Bejövő SYN-csomagok a DDoS-elhárítás elindításához  |  CountPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  DDoSTriggerTCPPackets  |  Bejövő TCP-csomagok a DDoS-mérséklés indításához  |  CountPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  DDoSTriggerUDPPackets  |  Bejövő UDP-csomagok a DDoS-elhárítás elindításához  |  CountPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  IfUnderDDoSAttack  |  DDoS-támadás alatt vagy nem  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  PacketCount  |  Csomagok száma  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  PacketsDroppedDDoS  |  Bejövő csomagok eldobott DDoS  |  CountPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  PacketsForwardedDDoS  |  Bejövő csomagok továbbított DDoS  |  CountPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  PacketsInDDoS  |  Bejövő csomagok DDoS  |  CountPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  SynCount  |  SYN-szám  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  TCPBytesDroppedDDoS  |  Bejövő TCP-bájtok elvetve DDoS  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/loadBalancers  |  VipElérhetőség  |  Az adatelérési út elérhetősége  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/networkInterfaces  |  BájtBeRate  |  Fogadott bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/networkInterfaces  |  BytesSentRate  |  Elküldött bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/networkInterfaces  |  CsomagokFogadott  |  Fogadott csomagok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/networkInterfaces  |  CsomagokSentRate  |  Elküldött csomagok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/networkWatchers/connectionMonitorok  |  Átlagosfordulók  |  Átlagos oda-vissza idő (ms)  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/networkWatchers/connectionMonitorok  |  ChecksFailedPercent  |  Sikertelen ellenőrzések (előnézet)  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/networkWatchers/connectionMonitorok  |  MintavételekFailedPercent  |  Sikertelen % mintavételek  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/networkWatchers/connectionMonitorok  |  Körúttalmunkaidő-gyártók  |  Oda-vissza út (ms) (előzetes verzió)  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  ByteCount (Bájtszáma)  |  Bájtszáma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  Eldobott bájtokDDoS  |  Eldobott bejövő bájtok DDoS  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  BytesForwardedDDoS  |  Bejövő továbbított DDoS-bájtok  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  BytesInDDoS  |  Bejövő ddos bájtok  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  DDoSTriggerSYNPackets  |  Bejövő SYN-csomagok a DDoS-kockázatcsökkentés elindításához  |  CountPerSzekszekundum  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  DDoSTriggerTCPPackets  |  Bejövő TCP-csomagok a DDoS-kockázatcsökkentés elindításához  |  CountPerSzekszekundum  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  DDoSTriggerUDPPackets  |  Bejövő UDP-csomagok a DDoS-kockázatcsökkentés elindításához  |  CountPerSzekszekundum  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  Ifunderddostámadás  |  A DDoS támadás vagy nem  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  Csomagszáma  |  Csomagok száma  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  PacketsDroppedDDoS  |  DDoS-t eldobott bejövő csomagok  |  CountPerSzekszekundum  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  PacketsForwardedDDoS  |  Továbbított bejövő csomagok DDoS  |  CountPerSzekszekundum  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  PacketsInDDoS  |  Bejövő csomagok DDoS  |  CountPerSzekszekundum  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  SynCount (Szinka)  |  SYN-szám  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  TCPBytesDroppedDDoS  |  Eldobott bejövő TCP-bájtok DDoS  |  BytesPerSecond  |  Maximum | 
 | **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  TCPBytesForwardedDDoS  |  Bejövő TCP-bájtok továbbított DDoS  |  BytesPerSecond  |  Maximum | 
 | **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  TCPBytesInDDoS  |  Bejövő TCP-bájtok DDoS  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  TCPPacketsDroppedDDoS  |  Bejövő TCP-csomagok eldobott DDoS  |  CountPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  TCPPacketsForwardedDDoS  |  Bejövő TCP-csomagok továbbított DDoS  |  CountPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  TCPPacketsInDDoS  |  Bejövő TCP-csomagok DDoS  |  CountPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  UDPBytesDroppedDDoS  |  Bejövő UDP-bájtok elvetve DDoS  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  TCPPacketsDroppedDDoS  |  DDoS-t eldobott bejövő TCP-csomagok  |  CountPerSzekszekundum  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  TCPPacketsForwardedDDoS  |  Bejövő TCP-csomagok továbbított DDoS  |  CountPerSzekszekundum  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  TCPPacketsInDDoS  |  Bejövő TCP-csomagok DDoS  |  CountPerSzekszekundum  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  UDPBytesDroppedDDoS  |  Kimenő UDP-bájtok eldobott DDoS  |  BytesPerSecond  |  Maximum | 
 | **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  UDPBytesForwardedDDoS  |  Bejövő UDP-bájtok továbbított DDoS  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  UDPBytesInDDoS  |  Bejövő UDP bájtok DDoS  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  UDPPacketsDroppedDDoS  |  Bejövő UDP-csomagok eldobott DDoS  |  CountPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  UDPPacketsForwardedDDoS  |  Bejövő UDP-csomagok továbbított DDoS  |  CountPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  UDPPacketsInDDoS  |  Bejövő UDP-csomagok DDoS  |  CountPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  VipAvailability  |  Adatelérési út rendelkezésre állása  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/trafficManagerProfiles  |  ProbeAgentCurrentEndpointStateByProfileResourceId  |  Végponti állapot végpont szerint  |  Darabszám  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.Network/trafficManagerProfiles  |  QpsByEndpoint  |  Visszaadott végponti lekérdezések  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  AverageBandwidth  |  Átjáró S2S sávszélessége  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  P2SBandwidth  |  Átjáró P2S sávszélessége  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  P2SConnectionCount  |  P2S-kapcsolatok száma  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  TunnelAverageBandwidth  |  Bújtatási sávszélesség  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressBytes  |  Alagút kimenő bájtjai  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressPacketDropTSMismatch  |  Alagút kimenő terminálszolgáltatási eltérési csomagjainak eldobása  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressPackets  |  Alagút kimenő csomagjai  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  TunnelIngressBytes  |  Alagutak bejövő bájtjai  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  TunnelIngressPacketDropTSMismatch  |  Az alagút bejövő HOZZÁFÉRÉSe nem egyezik a csomagok eldobásával  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  TunnelIngressPackets  |  Bújtatási bejövő csomagok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. Network/virtualNetworks  |  PingMeshAverageRoundtripMs  |  A pingelések időpontjának kerekítése egy virtuális géphez  |  Ezredmásodpercben  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. Network/virtualNetworks  |  PingMeshProbesFailedPercent  |  Sikertelen pingelések egy virtuális géphez  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  bejövő  |  Bejövő üzenetek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  bejövő. ALL. failedrequests  |  Minden bejövő sikertelen kérelem  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  incoming.all.requests  |  Minden bejövő kérelem  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  bejövő. ütemezett  |  Ütemezett leküldéses értesítések elküldve  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  bejövő. ütemezett. Mégse  |  Ütemezett leküldéses értesítések megszakítva  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  a telepítés. All  |  Telepítési felügyeleti műveletek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  installation.delete  |  Telepítési műveletek törlése  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  telepítés. Get  |  Telepítési műveletek beolvasása  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  Installation. patch  |  Javítások telepítési műveletei  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  telepítési. upsert  |  Telepítési műveletek létrehozása vagy frissítése  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  notificationhub. leküldések  |  Minden kimenő értesítés  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.allpns.badorexpiredchannel  |  Rossz vagy lejárt csatorna-hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.allpns.channelerror  |  Csatorna hibái  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  kimenő. allpns. invalidpayload  |  Hasznos adatok  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.allpns.pnserror  |  Külső értesítési rendszerhibák  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.allpns.success  |  Sikeres értesítések  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.apns.badchannel  |  APNS hibás csatorna hiba  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.apns.expiredchannel  |  APNS Expired Channel Error  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.apns.invalidcredentials  |  APNS-hitelesítési hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.apns.invalidnotificationsize  |  A APNS érvénytelen értesítési méretet észlelt  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.apns.pnserror  |  APNS hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.apns.success  |  APNS sikeres értesítések  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.gcm.authenticationerror  |  GCM-hitelesítési hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  kimenő. GCM. badchannel  |  GCM hibás csatorna hiba  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.gcm.expiredchannel  |  GCM lejárt csatorna hibája  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.gcm.invalidcredentials  |  GCM-hitelesítési hibák (érvénytelen hitelesítő adatok)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  kimenő. GCM. invalidnotificationformat  |  GCM – érvénytelen értesítési formátum  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  kimenő. GCM. invalidnotificationsize  |  A GCM érvénytelen értesítési méretet észlelt  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.gcm.pnserror  |  GCM hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.gcm.success  |  GCM sikeres értesítések  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  kimenő. GCM. szabályozva  |  GCM-szabályozású értesítések  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  kimenő. GCM. wrongchannel  |  GCM rossz csatorna hibája  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.mpns.authenticationerror  |  MPNS-hitelesítési hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.mpns.badchannel  |  MPNS hibás csatorna hiba  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.mpns.channeldisconnected  |  MPNS csatorna leválasztva  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  kimenő. mpns. Dropped  |  MPNS eldobott értesítések  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.mpns.invalidcredentials  |  MPNS – érvénytelen hitelesítő adatok  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.mpns.invalidnotificationformat  |  MPNS – érvénytelen értesítési formátum  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.mpns.pnserror  |  MPNS hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.mpns.success  |  MPNS sikeres értesítések  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.mpns.throttled  |  MPNS-szabályozású értesítések  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.wns.authenticationerror  |  WNS-hitelesítési hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.wns.badchannel  |  WNS hibás csatorna hiba  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.wns.channeldisconnected  |  WNS csatorna leválasztva  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.wns.channelthrottled  |  WNS csatorna szabályozása  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  kimenő. wns. Dropped  |  WNS eldobott értesítések  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.wns.expiredchannel  |  WNS lejárt csatorna hibája  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.wns.invalidcredentials  |  WNS-hitelesítési hibák (érvénytelen hitelesítő adatok)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  kimenő. wns. invalidnotificationformat  |  WNS – érvénytelen értesítési formátum  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  kimenő. wns. invalidnotificationsize  |  A WNS érvénytelen értesítési méretet észlelt  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  kimenő. wns. invalidtoken  |  WNS-hitelesítési hibák (érvénytelen token)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.wns.pnserror  |  WNS hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.wns.success  |  WNS sikeres értesítések  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  kimenő. wns. szabályozva  |  WNS-szabályozású értesítések  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.wns.tokenproviderunreachable  |  WNS-hitelesítési hibák (nem érhető el)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  outgoing.wns.wrongtoken  |  WNS-hitelesítési hibák (hibás token)  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  regisztráció. All  |  Regisztrációs műveletek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  registration.create  |  Regisztráció-létrehozási műveletek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  registration.delete  |  Regisztrációs törlési műveletek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  registration.get  |  Regisztrálási olvasási műveletek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  registration.update  |  Regisztrációs frissítési műveletek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft. NotificationHubs/névterek/NotificationHubs  |  ütemezett. függőben  |  Függőben lévő ütemezett értesítések  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Rendelkezésre álló memória Average_%-ban  |  Rendelkezésre álló memória%-ban  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ rendelkezésre álló szabad hely a lapozófájlban  |  Rendelkezésre álló swap-terület (%)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_%-os előjegyzett bájtok használatban  |  Előjegyzett memória%-ban használatban  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_% DPC idő  |  % DPC idő  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ szabad inode (%)  |  Szabad inode%-ban  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ szabad terület (%)  |  Szabad terület százalékos aránya  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ szabad terület (%)  |  Szabad terület százalékos aránya  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ üresjárati idő%-ban  |  Üresjárati idő%-ban  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_%-os megszakítási idő  |  Megszakítási idő%-ban  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_% IO várakozási idő  |  I/o várakozási idő%-ban  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_%-os szép idő  |  % Nice idő  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_%-os privilegizált idő  |  %-Os privilegizált idő  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ processzoridő  |  A processzor kihasználtsága (%)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ processzoridő  |  A processzor kihasználtsága (%)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ használt inode  |  Felhasznált inode%-ban  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Felhasznált memória Average_%-ban  |  Felhasznált memória (%)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ felhasznált terület%-ban  |  Foglalt hely %  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_ felhasznált lapozófájl-terület  |  Felhasznált swap-terület%-ban  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_%-os felhasználói idő  |  Felhasználói idő%-ban  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Available MB-ban  |  Rendelkezésre álló memória  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Available MB memória  |  Rendelkezésre álló memória  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Available MB-ban való swap  |  Rendelkezésre álló memória (MB)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.  |  Átlagos írási idő (mp/olvasás)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.  |  Átlagos írási idő (mp/olvasás)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. teljesítmény mp/átvitelben  |  Átlagos műveleti idő (mp/átvitel)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.  |  Átlagos írási idő (mp/írás)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.  |  Átlagos írási idő (mp/írás)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Fogadott Average_Bytes/mp  |  Fogadott bájtok/mp  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Küldési Average_Bytes másodpercenként  |  Küldött bájtok/s  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Bytes összesen/mp  |  Összes bájt/mp  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Current a lemez várólistájának hossza  |  Lemez aktuális várólistájának hossza  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Olvasási sebesség (bájt/s) Average_Disk  |  Lemezolvasás sebessége bájt/mp-ben  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Olvasási Average_Disk másodpercenként  |  Lemezolvasások/mp  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Olvasási Average_Disk másodpercenként  |  Lemezolvasások/mp  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Disk adatátvitel másodpercenként  |  Átvitel/mp  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Disk adatátvitel másodpercenként  |  Átvitel/mp  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Írási sebesség (bájt/s) Average_Disk  |  Lemezírás sebessége bájt/mp-ben  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Írás/mp Average_Disk  |  Lemezírások/mp  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Írás/mp Average_Disk  |  Lemezírások/mp  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Free megabájt  |  Szabad hely MB-ban  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Free megabájt  |  Szabad hely MB-ban  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Fizikai memória Average_Free  |  Szabad fizikai memória  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Free lemezterület a Lapozófájlokban  |  Szabad terület a Lapozófájlokban  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Free virtuális memória  |  Szabad virtuális memória  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Logical lemez sebessége (bájt/s)  |  Logikai lemez bájt/mp  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Olvasási Average_Page másodpercenként  |  Olvasott lap/mperc  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Írás/mp Average_Page  |  Írt lap/mperc  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Pages/sec  |  Mozgatott lapok (lap/sec)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Pct emelt szintű idő  |  PCT rendszerjogosultságú idő  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Pct felhasználói idő  |  PCT felhasználói idő  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Physical lemez sebessége (bájt/s)  |  Fizikai lemez sebessége (bájt/s)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Processes  |  Folyamatok  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Processor várólista hossza  |  Processzor-várólista hossza  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Lapozófájlokban tárolt Average_Size  |  Lapozófájlokban tárolt méret  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Total bájtok  |  Bájtok összesen  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Fogadott Average_Total bájtok száma  |  Fogadott bájtok teljes száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Total továbbított bájtok  |  Küldött bájtok száma összesen  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Ütközések Average_Total  |  Ütközések összesen  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Total fogadott csomagok  |  Fogadott csomagok összesen  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Total továbbított csomagok  |  Továbbított csomagok összesen  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Rx-hibák Average_Total  |  Rx-hibák összesen  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Total TX-hibák  |  TX-hibák összesen  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Uptime  |  Hasznos üzemidő  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Used MB-ban felcserélt terület  |  Felhasznált memória (MB) – lapozófájl  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Used memória kilobájtban  |  Felhasznált memória (kilobájt)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Used memória MB-ban  |  Felhasznált memória (MB)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Users  |  Felhasználók  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Average_Virtual megosztott memória  |  Virtuális megosztott memória  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Esemény  |  Esemény  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.OperationalInsights/workspaces  |  Szívverés  |  Szívverés  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.OperationalInsights/workspaces  |  Frissítés  |  Frissítés  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.PowerBIDedicated/capacities  |  memory_metric  |  Memory (Memória)  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.PowerBIDedicated/capacities  |  memory_thrashing_metric  |  Memória-Kiverés (adathalmazok)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.PowerBIDedicated/capacities  |  qpu_high_utilization_metric  |  QPU magas kihasználtsága  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.PowerBIDedicated/capacities  |  QueryDuration  |  Lekérdezés időtartama (adatkészletek)  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.PowerBIDedicated/capacities  |  QueryPoolJobQueueLength  |  Lekérdezési készlet nyomtatási várólistájának hossza (adatkészletek)  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.Relay/namespaces  |  ActiveConnections  |  ActiveConnections  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Relay/namespaces  |  ActiveListeners  |  ActiveListeners  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Relay/namespaces  |  BytesTransferred  |  BytesTransferred  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Relay/namespaces  |  ListenerConnections-ClientError  |  ListenerConnections-ClientError  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Relay/namespaces  |  ListenerConnections-ServerError  |  ListenerConnections-ServerError  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Relay/namespaces  |  ListenerConnections-Success  |  ListenerConnections-Success  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Relay/namespaces  |  ListenerConnections-TotalRequests  |  ListenerConnections-TotalRequests  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Relay/namespaces  |  Bontásai  |  Bontásai  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Relay/namespaces  |  SenderConnections-ClientError  |  SenderConnections-ClientError  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Relay/namespaces  |  SenderConnections-ServerError  |  SenderConnections-ServerError  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Relay/namespaces  |  SenderConnections-Success  |  SenderConnections-Success  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Relay/namespaces  |  SenderConnections-TotalRequests  |  SenderConnections-TotalRequests  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Relay/namespaces  |  SenderDisconnects  |  SenderDisconnects  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Search/searchServices  |  SearchLatency  |  Keresési késés  |  Másodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Search/searchServices  |  SearchQueriesPerSecond  |  Keresési lekérdezések másodpercenként  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Search/searchServices  |  ThrottledSearchQueriesPercentage  |  Szabályozott keresési lekérdezések százalékos aránya  |  Százalék  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  ActiveConnections  |  ActiveConnections  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  ActiveMessages  |  Üzenetsor vagy témakör aktív üzeneteinek száma.  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  ConnectionsClosed  |  A kapcsolatok lezárva.  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  ConnectionsOpened  |  Megnyitott kapcsolatok.  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  CPUXNS  |  CPU (elavult)  |  Százalék  |  Maximum | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  DeadletteredMessages  |  Egy várólistában vagy témakörben lévő kézbesítetlen üzenetek száma.  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.ServiceBus/namespaces  |  IncomingMessages  |  Bejövő üzenetek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.ServiceBus/namespaces  |  IncomingRequests  |  Bejövő kérelmek  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  Üzenetek  |  Üzenetsor vagy témakör üzeneteinek száma.  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  NamespaceCpuUsage  |  CPU  |  Százalék  |  Maximum | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  NamespaceMemoryUsage  |  Memóriahasználat  |  Százalék  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.ServiceBus/namespaces  |  OutgoingMessages  |  Kimenő üzenetek  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  ScheduledMessages  |  Az üzenetsor/témakör ütemezett üzeneteinek száma.  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  Kiszolgálóhibái  |  Kiszolgálói hibák.  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  Méret  |  Méret  |  Bájt  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  SuccessfulRequests  |  Sikeres kérések  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  ThrottledRequests  |  Szabályozott kérelmek.  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  UserErrors  |  Felhasználói hibák.  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.ServiceBus/namespaces  |  WSXNS  |  Memóriahasználat (elavult)  |  Százalék  |  Maximum | 
-| Nem  | Nem |  Microsoft.ServiceFabricMesh/applications  |  ActualCpu  |  ActualCpu  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceFabricMesh/applications  |  ActualMemory  |  ActualMemory  |  Bájt  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceFabricMesh/applications  |  AllocatedCpu  |  AllocatedCpu  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceFabricMesh/applications  |  AllocatedMemory  |  AllocatedMemory  |  Bájt  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceFabricMesh/applications  |  ApplicationStatus  |  ApplicationStatus  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceFabricMesh/applications  |  ContainerStatus  |  ContainerStatus  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceFabricMesh/applications  |  CpuUtilization  |  CpuUtilization  |  Százalék  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceFabricMesh/applications  |  MemoryUtilization  |  MemoryUtilization  |  Százalék  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceFabricMesh/applications  |  RestartCount  |  RestartCount  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceFabricMesh/applications  |  ServiceReplicaStatus  |  ServiceReplicaStatus  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.ServiceFabricMesh/applications  |  ServiceStatus  |  ServiceStatus  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.SignalRService/SignalR  |  ConnectionCount  |  Kapcsolatok száma  |  Darabszám  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.SignalRService/SignalR  |  InboundTraffic  |  Bejövő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.SignalRService/SignalR  |  MessageCount  |  Üzenetek száma  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.SignalRService/SignalR  |  OutboundTraffic  |  Kimenő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.SignalRService/SignalR  |  SystemErrors  |  Rendszerhibák  |  Százalék  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.SignalRService/SignalR  |  UserErrors  |  Felhasználói hibák  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  UDPBytesInDDoS  |  Bejövő UDP-bájtok DDoS  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  UDPPacketsDroppedDDoS  |  DDoS-t eldobott bejövő UDP-csomagok  |  CountPerSzekszekundum  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  UDPPacketsForwardedDDoS  |  Bejövő UDP-csomagok továbbított DDoS  |  CountPerSzekszekundum  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  UDPPacketsInDDoS  |  Bejövő UDP-csomagok DDoS  |  CountPerSzekszekundum  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/publicIPAddresses  |  VipElérhetőség  |  Az adatelérési út elérhetősége  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/trafficManagerProfiles  |  ProbeAgentCurrentEndpointStateByProfileResourceId  |  Végpont állapota végpont szerint  |  Darabszám  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.Network/trafficManagerProfiles  |  QpsByEndpoint  |  Végpont által visszaadott lekérdezések  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  Átlagos sávszélesség  |  Átjáró S2S-sávszélessége  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  P2SBandwidth (P2SBandwidth)  |  Átjáró P2S-sávszélessége  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  P2SConnectioncount között  |  P2S-kapcsolatok száma  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  TunnelAverageBandwidth (CsatornaÁtlagos sávszélessége)  |  Alagút sávszélessége  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressBytes  |  Alagút kimenő hídbájtjai  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressPacketDropTSMismatch  |  Bújtatási kimenő forgalom – TS eltérés a csomag ledobása  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressPackets  |  Bújtatási kimenő csomagok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  TunnelIngressBytes  |  Alagút be- és áttetsző bájtjai  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  TunnelIngressPacketDropTSMismatch  |  Bújtatás iTS eltéréscsomag-ledobása  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/virtualNetworkGateways  |  TunnelIngressPacketsCsomagok  |  Bújtatási csomagok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Network/virtualNetworks  |  PingMeshAverageKörmenet-objektumok  |  A pingelések oda-vissza olásának ideje a virtuális géphez  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Network/virtualNetworks  |  PingMeshProbesFailedPercent  |  Sikertelen pingelések a virtuális géphez  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  Bejövő  |  Bejövő üzenetek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  bejövő.all.failedrequests  |  Minden sikertelen bejövő kérés  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  bejövő.all.requests  |  Minden bejövő kérés  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  bejövő.ütemezett  |  Elküldött ütemezett leküldéses értesítések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  bejövő.ütemezett.mégse  |  Ütemezett leküldéses értesítések törölve  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  telepítés.all  |  Telepítéskezelési műveletek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  installation.delete  |  Telepítési műveletek törlése  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  installation.get  |  Telepítési műveletek beszereznie  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  telepítés.patch  |  Javítás telepítési műveletek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  telepítés.upsert  |  Telepítési műveletek létrehozása vagy frissítése  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  notificationhub.pushes  |  Minden kimenő értesítés  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.allpns.badorexpiredchannel  |  Hibás vagy lejárt csatornahibák  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.allpns.channelerror  |  Csatornahibák  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.allpns.invalidpayload  |  Hasznos adatra van hiba  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.allpns.pnserror  |  Külső értesítési rendszer hibái  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.allpns.success  |  Sikeres értesítések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.apns.badchannel  |  APNS hibás csatorna hiba  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.apns.expiredchannel  |  APNS lejárt csatornahiba  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.apns.invalidcredentials  |  APNS engedélyezési hibák  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.apns.invalidnotificationsize  |  Az APN-ek érvénytelen értesítésméret-hibája  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.apns.pnserror  |  APNS-hibák  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.apns.success  |  Az APN-ek sikeres értesítései  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.gcm.authenticationerror  |  GCM hitelesítési hibák  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.gcm.badchannel  |  GCM hibás csatorna hiba  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.gcm.expiredchannel  |  GCM lejárt csatornahiba  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.gcm.invalidcredentials  |  GCM-engedélyezési hibák (érvénytelen hitelesítő adatok)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.gcm.invalidnotificationformat  |  A GCM érvénytelen értesítési formátuma  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.gcm.invalidnotificationsize  |  A GCM érvénytelen értesítésméret-hibája  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.gcm.pnserror  |  GCM hibák  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.gcm.success  |  Sikeres GCM-értesítések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.gcm.throttled  |  GCM szabályozott értesítések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.gcm.wrongchannel  |  GCM rossz csatorna hiba  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.authenticationerror  |  MPNS-hitelesítési hibák  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.mpns.badchannel  |  MPNS hibás csatorna hiba  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.channeldisconnect  |  MPNS-csatorna leválasztva  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.dropped  |  MPNS eldobott értesítések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.invalidcredentials  |  MPNS érvénytelen hitelesítő adatok  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.invalidnotificationformat  |  MpN-ek érvénytelen értesítési formátuma  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.pnserror  |  MPNS-hibák  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.success  |  MPNS sikeres értesítések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.mpns.throttled  |  MPNS szabályozott értesítések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.authenticationerror  |  WNS hitelesítési hibák  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.badchannel  |  WNS hibás csatorna hiba  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.channeldisconnect  |  WNS-csatorna leválasztva  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.channelthrottled  |  WNS-csatorna fojtva  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.dropped  |  WNS eldobott értesítések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.expiredchannel  |  WNS lejárt csatornahiba  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.invalidcredentials  |  WNS-engedélyezési hibák (érvénytelen hitelesítő adatok)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.invalidnotificationformat  |  Wns érvénytelen értesítési formátum  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.invalidnotificationsize  |  Wns érvénytelen értesítésméret-hiba  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.invalidtoken  |  WNS engedélyezési hibák (érvénytelen jogkivonat)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.pnserror  |  WNS hibák  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.success  |  A WNS sikeres értesítései  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.throttled  |  WNS szabályozott értesítések  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.tokenproviderunreachable  |  WNS engedélyezési hibák (nem érhető el)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  kimenő.wns.wrongtoken  |  WNS engedélyezési hibák (hibás token)  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  regisztráció.all  |  Regisztrációs műveletek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  regisztráció.create  |  Regisztrációs műveletek létrehozása  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  regisztráció.törlés  |  Regisztráció törlési műveletei  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  regisztráció.get  |  Regisztráció olvasási műveletei  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  regisztráció.update  |  Regisztrációs frissítési műveletek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  ütemezett.függőben  |  Függőben lévő ütemezett értesítések  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_%-os rendelkezésre álló memória  |  Rendelkezésre álló memória %-a  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_%- os rendelkezésre álló swap-terület  |  A rendelkezésre álló csereterület %-a  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_%, használatban lévő lekötött bájtok  |  Használatban lévő lekötött bájtok %-a  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_%-os DPC idő  |  DPC-idő %-os ideje  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_% Ingyenes Inodes  |  % szabad inodák  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_% szabad hely  |  Szabad terület %-os  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_% szabad hely  |  Szabad terület %-os  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_%- os tétlen idő  |  Üresjáratban eltöltött időhányad (%)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_%-os megszakítási idő  |  Megszakítási idő %-os ideje  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_%-os IO várakozási idő  |  %-os IO várakozási idő  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_% Szép idő  |  % Szép idő  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_%-os jogosultsági idő  |  Jogosultsági idő %-os százaléka  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_%-os processzoridő  |  A processzor kihasználtsága (%)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_%-os processzoridő  |  A processzor kihasználtsága (%)  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_% Használt Inodes  |  Használt inodák %-a  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_%-os használt memória  |  Felhasznált memória %-a  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_%- os használt terület  |  % használt terület  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_% Használt swap terület  |  % Használt csereterület  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_%-os felhasználói idő  |  %felhasználói idő  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Available MByte  |  Elérhető MBytes  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Available MByte memória  |  Elérhető MByte memória  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Available MByte swap  |  Elérhető MByteswap  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.  |  Átlagos lemezmásodperc/olvasás  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.  |  Átlagos lemezmásodperc/olvasás  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Avg. Lemez másodperc/átvitel  |  Átlagos lemezmásodperc/átvitel  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.  |  Átlagos lemez másodperc/írás  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.  |  Átlagos lemez másodperc/írás  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Bytes fogadott/mp  |  Másodpercenként fogadott bájtok száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Bytes elküldve/mp  |  Küldött bájtok/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Bytes összesen/mp  |  Összes bájt/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Current lemezvárólista hossza  |  Az aktuális lemezvárólista hossza  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Disk olvasási bájt/mp  |  Lemez olvasási bájtjai/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Disk olvasás/mp  |  Lemezolvasás/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Disk olvasás/mp  |  Lemezolvasás/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Disk átvitelek/mp  |  Lemezátvitel/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Disk átvitelek/mp  |  Lemezátvitel/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Disk írási bájt/mp  |  Lemezírási bájtok/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Disk írások/mp  |  Lemezírás/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Disk írások/mp  |  Lemezírás/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Free megabájt  |  Ingyenes Megabájt  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Free megabájt  |  Ingyenes Megabájt  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Free fizikai memória  |  Szabad fizikai memória  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Free tér közterülete a lapozófájlokban  |  Szabad terület a lapozófájlokban  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Free virtuális memória  |  Ingyenes virtuális memória  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Logical lemezbájt/mp  |  Logikai lemezbájt/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Page olvasása/mp  |  Oldalolvasások/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Page írások/mp  |  Lapírások/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Pages/mp  |  Oldalak/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Pct kiváltságos idő  |  Pct privilegizált idő  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Pct felhasználói idő  |  Pct felhasználói idő  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Physical lemezbájt/mp  |  Fizikai lemezbájt/mp  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Processes  |  Folyamatok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Processor várólista hossza  |  Processzorvárólista hossza  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Size lapozófájlokban tárolva  |  Lapozófájlokban tárolt méret  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Total bájt  |  Összes bájt  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Total fogadott bájtok  |  Fogadott bájtok összesen  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Total továbbított bájtok  |  Átküldött bájtok összesen  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Total ütközések  |  Ütközések összesen  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Total fogadott csomagok  |  Fogadott csomagok összesen  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Total továbbított csomagok  |  Átküldött csomagok összesen  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Total Rx hibák  |  Rx hibák összesen  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Total Tx hibák  |  Összes Tx hiba  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Uptime  |  Uptime  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Used MBytes swap tér  |  Használt MBytes swap tér  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Used memória kbyte  |  Használt memóriakbyte-ok  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Used memória MBytes  |  Használt memória MBytes  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Users  |  Felhasználók  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Average_Virtual megosztott memória  |  Virtuális megosztott memória  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Esemény  |  Esemény  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.OperationalInsights/munkaterületek  |  Szívverés  |  Szívverés  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.OperationalInsights/munkaterületek  |  Frissítés  |  Frissítés  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.PowerBIDedikált/kapacitások  |  memory_metric  |  Memory (Memória)  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.PowerBIDedikált/kapacitások  |  memory_thrashing_metric  |  Memóriaverés (adatkészletek)  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.PowerBIDedikált/kapacitások  |  qpu_high_utilization_metric  |  QPU magas kihasználtság  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.PowerBIDedikált/kapacitások  |  QueryDuration (Lekérdezésidőtartama)  |  Lekérdezés időtartama (adatkészletek)  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.PowerBIDedikált/kapacitások  |  QueryPoolJobQueueLength  |  Lekérdezéskészlet feladatvárólista hossza (adatkészletek)  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.Relay/névterek  |  ActiveConnections  |  ActiveConnections  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Relay/névterek  |  ActiveListeners  |  ActiveListeners  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Relay/névterek  |  Átvitt bájtok  |  Átvitt bájtok  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Relay/névterek  |  Figyelőkapcsolatok-Ügyfélhiba  |  Figyelőkapcsolatok-Ügyfélhiba  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Relay/névterek  |  Figyelőkapcsolatok-ServerHiba  |  Figyelőkapcsolatok-ServerHiba  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Relay/névterek  |  ListenerConnections-sikeres  |  ListenerConnections-sikeres  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Relay/névterek  |  ListenerConnections-TotalRequests  |  ListenerConnections-TotalRequests  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Relay/névterek  |  Figyelőleválasztás  |  Figyelőleválasztás  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Relay/névterek  |  SenderConnections-ClientError (Küldőkapcsolatok-ügyfélhiba)  |  SenderConnections-ClientError (Küldőkapcsolatok-ügyfélhiba)  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Relay/névterek  |  SenderConnections-ServerError  |  SenderConnections-ServerError  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Relay/névterek  |  SenderConnections-Sikeres  |  SenderConnections-Sikeres  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Relay/névterek  |  SenderConnections-TotalRequests  |  SenderConnections-TotalRequests  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.Relay/névterek  |  Feladóleválasztás  |  Feladóleválasztás  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Search/searchServices  |  KeresésLatency  |  Késés keresése  |  Másodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Search/searchServices  |  SearchQueriesPerSecond  |  Keresési lekérdezések másodpercenként  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Search/searchServices  |  Szabályozott searchqueriesszázalékos  |  Szabályozott keresési lekérdezések százalékos aránya  |  Százalék  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  ActiveConnections  |  ActiveConnections  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  ActiveMessages  |  A várólistában/témakörben lévő aktív üzenetek száma.  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  Kapcsolatok zárva  |  Kapcsolatok zárva.  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  Kapcsolatok megnyitva  |  Kapcsolatok megnyitva.  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  CPUXN-ek  |  CPU (elavult)  |  Százalék  |  Maximum | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  DeadletteredÜzenetek  |  Kézbesítetlen levelek száma egy várólistában/témakörben.  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.ServiceBus/névterek  |  Bejövő üzenetek  |  Bejövő üzenetek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.ServiceBus/névterek  |  Bejövő kérések  |  Bejövő kérések  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  Üzenetek  |  A várólistában/témakörben lévő üzenetek száma.  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  NamespaceCpuUsage  |  CPU  |  Százalék  |  Maximum | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  NamespaceMemoryUsage  |  Memóriahasználat  |  Százalék  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.ServiceBus/névterek  |  Kimenő üzenetek  |  Kimenő üzenetek  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  Ütemezett üzenetek  |  A várólistában/témakörben lévő ütemezett üzenetek száma.  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  Kiszolgálóhibák  |  Kiszolgálói hibák.  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  Méret  |  Méret  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  Sikeres kérések  |  Sikeres kérelmek  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  ThrottledRequests  |  Szabályozott kérelmek.  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  Felhasználói hibák  |  Felhasználói hibák.  |  Darabszám  |  Összesen | 
+| Nem  | Nem |  Microsoft.ServiceBus/névterek  |  WSXN-ek  |  Memóriahasználat (elavult)  |  Százalék  |  Maximum | 
+| Nem  | Nem |  Microsoft.ServiceFabricMesh/alkalmazások  |  ActualCpu  |  ActualCpu  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceFabricMesh/alkalmazások  |  ActualMemory (Tényleges memória)  |  ActualMemory (Tényleges memória)  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceFabricMesh/alkalmazások  |  Felosztott cpu  |  Felosztott cpu  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceFabricMesh/alkalmazások  |  Lefoglalt memória  |  Lefoglalt memória  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceFabricMesh/alkalmazások  |  ApplicationStatus alkalmazásállapota  |  ApplicationStatus alkalmazásállapota  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceFabricMesh/alkalmazások  |  ContainerStatus (Konténerállapota)  |  ContainerStatus (Konténerállapota)  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceFabricMesh/alkalmazások  |  Cpukihasználtság  |  Cpukihasználtság  |  Százalék  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceFabricMesh/alkalmazások  |  Memóriakihasználtság  |  Memóriakihasználtság  |  Százalék  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceFabricMesh/alkalmazások  |  RestartCount (Újraindítási számláló)  |  RestartCount (Újraindítási számláló)  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceFabricMesh/alkalmazások  |  SzolgáltatásReplicaStatus  |  SzolgáltatásReplicaStatus  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.ServiceFabricMesh/alkalmazások  |  ServiceStatus (Szolgáltatásállapota)  |  ServiceStatus (Szolgáltatásállapota)  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.SignalRService/SignalR  |  Kapcsolatszáma  |  Kapcsolatok száma  |  Darabszám  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.SignalRService/SignalR  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.SignalRService/SignalR  |  MessageCount (Üzenetszám)  |  Üzenetek száma  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.SignalRService/SignalR  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.SignalRService/SignalR  |  Rendszerhibák  |  Rendszerhibák  |  Százalék  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.SignalRService/SignalR  |  Felhasználói hibák  |  Felhasználói hibák  |  Százalék  |  Maximum | 
 | **Igen**  | **Igen** |  Microsoft.Sql/managedInstances  |  avg_cpu_percent  |  Átlagos CPU-százalék  |  Százalék  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Sql/managedInstances  |  io_bytes_read  |  I/o-bájtok olvasása  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/managedInstances  |  io_bytes_written  |  I/o-bájtok írása  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/managedInstances  |  io_requests  |  IO-kérelmek száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/managedInstances  |  reserved_storage_mb  |  Tárterület fenntartva  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/managedInstances  |  storage_space_used_mb  |  Felhasznált tárterület  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/managedInstances  |  virtual_core_count  |  Virtuális mag száma  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.Sql/servers  |  database_dtu_consumption_percent  |  DTU-kihasználtság (%)  |  Százalék  |  Átlag | 
-| Nem  | Nem |  Microsoft.Sql/servers  |  database_storage_used  |  Felhasznált adatterület  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Sql/servers  |  dtu_consumption_percent  |  DTU-kihasználtság (%)  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Sql/servers  |  dtu_used  |  Használt DTU  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/servers  |  storage_used  |  Felhasznált adatterület  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/managedInstances  |  io_bytes_written  |  Írásban írt IO-bájtok  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/managedInstances  |  io_requests  |  Az IO-kérelmek száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/managedInstances  |  reserved_storage_mb  |  Fenntartott tárhely  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/managedInstances  |  storage_space_used_mb  |  Használt tárhely  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/managedInstances  |  virtual_core_count  |  Virtuális magok száma  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.Sql/kiszolgálók  |  database_dtu_consumption_percent  |  DTU-kihasználtság (%)  |  Százalék  |  Átlag | 
+| Nem  | Nem |  Microsoft.Sql/kiszolgálók  |  database_storage_used  |  Használt adatterület  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Sql/kiszolgálók  |  dtu_consumption_percent  |  DTU-kihasználtság (%)  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Sql/kiszolgálók  |  dtu_used  |  Használt DTU  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/kiszolgálók  |  storage_used  |  Használt adatterület  |  Bájt  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  allocated_data_storage  |  Lefoglalt adatterület  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  app_cpu_billed  |  Az alkalmazás CPU-számlázása  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  app_cpu_percent  |  Alkalmazás CPU-aránya  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  app_memory_percent  |  Az alkalmazás memóriájának százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  app_cpu_billed  |  Alkalmazás PROCESSZORa számlázva  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  app_cpu_percent  |  Alkalmazás processzorának százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  app_memory_percent  |  Alkalmazásmemória százaléka  |  Százalék  |  Átlag | 
 | **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  blocked_by_firewall  |  Tűzfal blokkolja  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  cache_hit_percent  |  Gyorsítótár találati százaléka  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  cache_used_percent  |  Gyorsítótár használt százaléka  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  cache_used_percent  |  Gyorsítótár által használt százalék  |  Százalék  |  Maximum | 
 | **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  connection_failed  |  Sikertelen kapcsolatok  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  connection_successful  |  Sikeres kapcsolatok  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  cpu_limit  |  CPU-korlát  |  Darabszám  |  Átlag | 
 | **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  cpu_percent  |  Processzorhasználat (%)  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  cpu_used  |  Felhasznált CPU  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  holtpont  |  Holtpontok  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  cpu_used  |  HASZNÁLT PROCESSZOR  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  Holtpont  |  Holtpontok  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  dtu_consumption_percent  |  DTU-kihasználtság (%)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  dtu_limit  |  DTU korlátja  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  dtu_limit  |  DTU-korlát  |  Darabszám  |  Átlag | 
 | **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  dtu_used  |  Használt DTU  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  dwu_consumption_percent  |  DWU százalékos aránya  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  dwu_limit  |  DWU korlátja  |  Darabszám  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  dwu_consumption_percent  |  DWU százalék  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  dwu_limit  |  DWU-korlát  |  Darabszám  |  Maximum | 
 | **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  dwu_used  |  Használt DWU  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  local_tempdb_usage_percent  |  Helyi tempdb százalékos aránya  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  log_write_percent  |  Naplózási IO-százalék  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  local_tempdb_usage_percent  |  Helyi tempdb százalék  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  log_write_percent  |  Log IO százalék  |  Százalék  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  memory_usage_percent  |  Memória százaléka  |  Százalék  |  Maximum | 
 | **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  physical_data_read_percent  |  Adat IO kihasználtsága (%)  |  Százalék  |  Átlag | 
 | **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  sessions_percent  |  Munkamenetek százalékos aránya  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  Storage  |  Felhasznált adatterület  |  Bájt  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  storage_percent  |  Felhasznált adatterület százalékos aránya  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  tempdb_data_size  |  Tempdb adatfájl mérete (kilobájt)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  tempdb_log_size  |  Tempdb-naplófájl mérete (kilobájt)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  tempdb_log_used_percent  |  Tempdb százalékos naplója használatban  |  Százalék  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  workers_percent  |  Munkavégzők százalékos aránya  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  xtp_storage_percent  |  Memóriában tárolt OLTP tárolási százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  storage  |  Használt adatterület  |  Bájt  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  storage_percent  |  Felhasznált adatterület százaléka  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  tempdb_data_size  |  Tempdb-adatfájl mérete kilobájt  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  tempdb_log_size  |  Tempdb naplófájl mérete Kilobájt  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/databases  |  tempdb_log_used_percent  |  Használt Tempdb százaléknapló  |  Százalék  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  workers_percent  |  Munkavállalók százalékos aránya  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Sql/servers/databases  |  xtp_storage_percent  |  Memórián belüli OLTP-tároló százaléka  |  Százalék  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  allocated_data_storage  |  Lefoglalt adatterület  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  allocated_data_storage_percent  |  Lefoglalt adatterület százalékos aránya  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  allocated_data_storage_percent  |  Kiosztott adatterület százalék  |  Százalék  |  Maximum | 
 | **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  cpu_limit  |  CPU-korlát  |  Darabszám  |  Átlag | 
 | **Igen**  | **Igen** |  Microsoft.Sql/servers/elasticPools  |  cpu_percent  |  Processzorhasználat (%)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  cpu_used  |  Felhasznált CPU  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  cpu_used  |  HASZNÁLT PROCESSZOR  |  Darabszám  |  Átlag | 
 | Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_allocated_data_storage  |  Lefoglalt adatterület  |  Bájt  |  Átlag | 
 | Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_cpu_limit  |  CPU-korlát  |  Darabszám  |  Átlag | 
 | Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_cpu_percent  |  Processzorhasználat (%)  |  Százalék  |  Átlag | 
-| Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_cpu_used  |  Felhasznált CPU  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_cpu_used  |  HASZNÁLT PROCESSZOR  |  Darabszám  |  Átlag | 
 | Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_dtu_consumption_percent  |  DTU-kihasználtság (%)  |  Százalék  |  Átlag | 
-| Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_eDTU_used  |  használt eDTU  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_log_write_percent  |  Naplózási IO-százalék  |  Százalék  |  Átlag | 
+| Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_eDTU_used  |  eDTU használt  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_log_write_percent  |  Log IO százalék  |  Százalék  |  Átlag | 
 | Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_physical_data_read_percent  |  Adat IO kihasználtsága (%)  |  Százalék  |  Átlag | 
 | Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_sessions_percent  |  Munkamenetek százalékos aránya  |  Százalék  |  Átlag | 
-| Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_storage_used  |  Felhasznált adatterület  |  Bájt  |  Átlag | 
-| Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_workers_percent  |  Munkavégzők százalékos aránya  |  Százalék  |  Átlag | 
+| Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_storage_used  |  Használt adatterület  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.Sql/servers/elasticPools  |  database_workers_percent  |  Munkavállalók százalékos aránya  |  Százalék  |  Átlag | 
 | **Igen**  | **Igen** |  Microsoft.Sql/servers/elasticPools  |  dtu_consumption_percent  |  DTU-kihasználtság (%)  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  eDTU_limit  |  eDTU korlátja  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Sql/servers/elasticPools  |  eDTU_used  |  használt eDTU  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Sql/servers/elasticPools  |  log_write_percent  |  Naplózási IO-százalék  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  eDTU_limit  |  eDTU korlát  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Sql/servers/elasticPools  |  eDTU_used  |  eDTU használt  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Sql/servers/elasticPools  |  log_write_percent  |  Log IO százalék  |  Százalék  |  Átlag | 
 | **Igen**  | **Igen** |  Microsoft.Sql/servers/elasticPools  |  physical_data_read_percent  |  Adat IO kihasználtsága (%)  |  Százalék  |  Átlag | 
 | **Igen**  | **Igen** |  Microsoft.Sql/servers/elasticPools  |  sessions_percent  |  Munkamenetek százalékos aránya  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  storage_limit  |  Az adatmaximális méret  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  storage_percent  |  Felhasznált adatterület százalékos aránya  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  storage_used  |  Felhasznált adatterület  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  tempdb_data_size  |  Tempdb adatfájl mérete (kilobájt)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  tempdb_log_size  |  Tempdb-naplófájl mérete (kilobájt)  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  tempdb_log_used_percent  |  Tempdb százalékos naplója használatban  |  Százalék  |  Maximum | 
-| **Igen**  | **Igen** |  Microsoft.Sql/servers/elasticPools  |  workers_percent  |  Munkavégzők százalékos aránya  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Sql/servers/elasticPools  |  xtp_storage_percent  |  Memóriában tárolt OLTP tárolási százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  storage_limit  |  Adatok maximális mérete  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  storage_percent  |  Felhasznált adatterület százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  storage_used  |  Használt adatterület  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  tempdb_data_size  |  Tempdb-adatfájl mérete kilobájt  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  tempdb_log_size  |  Tempdb naplófájl mérete Kilobájt  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.Sql/servers/elasticPools  |  tempdb_log_used_percent  |  Használt Tempdb százaléknapló  |  Százalék  |  Maximum | 
+| **Igen**  | **Igen** |  Microsoft.Sql/servers/elasticPools  |  workers_percent  |  Munkavállalók százalékos aránya  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Sql/servers/elasticPools  |  xtp_storage_percent  |  Memórián belüli OLTP-tároló százaléka  |  Százalék  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts  |  SuccessE2ELatency  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts  |  SuccessServerLatency  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts  |  SuccessE2ELatency (SuccessE2ELatency)  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts  |  SuccessServerLatency (Sikereskiszolgálók átkának)  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts  |  Tranzakciók  |  Tranzakciók  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft.Storage/storageAccounts  |  UsedCapacity  |  Használt kapacitás  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.Storage/storageAccounts  |  Használtkapacitás  |  Használt kapacitás  |  Bájt  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
-| Nem  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  BlobCapacity  |  Blob-kapacitása  |  Bájt  |  Átlag | 
-| Nem  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  BlobCount  |  Blobok száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  ContainerCount  |  Blobtárolók száma  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  BlobCapacity kapacitás  |  Blob kapacitása  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  BlobCount (BlobCount)  |  Blobok száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  Konténerszám  |  Blob-tárolók száma  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
-| Nem  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  IndexCapacity  |  Index kapacitása  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  Indexkapacitás  |  Index kapacitása  |  Bájt  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  SuccessE2ELatency  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  SuccessServerLatency  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  SuccessE2ELatency (SuccessE2ELatency)  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  SuccessServerLatency (Sikereskiszolgálók átkának)  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/blobServices  |  Tranzakciók  |  Tranzakciók  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
-| Nem  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  FileCapacity  |  Fájl kapacitása  |  Bájt  |  Átlag | 
-| Nem  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  FileCount  |  Fájlok száma  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  FileShareCount  |  Fájlmegosztás száma  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  FileShareQuota  |  Fájlmegosztás kvótájának mérete  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  Fájlkapacitás  |  Fájl kapacitása  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  Fájlszám  |  Fájlok száma  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  FileShareCount  |  Fájlmegosztások száma  |  Darabszám  |  Átlag | 
+| Nem  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  FileSharequota fájlmegosztás  |  Fájlmegosztási kvóta mérete  |  Bájt  |  Átlag | 
 | Nem  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  FileShareSnapshotCount  |  Fájlmegosztás pillanatképének száma  |  Darabszám  |  Átlag | 
-| Nem  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  FileShareSnapshotSize  |  Fájlmegosztás pillanatképének mérete  |  Bájt  |  Átlag | 
+| Nem  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  Fájlmegosztássnapshotmérete  |  Fájlmegosztás pillanatképének mérete  |  Bájt  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  SuccessE2ELatency  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  SuccessServerLatency  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  SuccessE2ELatency (SuccessE2ELatency)  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  SuccessServerLatency (Sikereskiszolgálók átkának)  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/fileServices  |  Tranzakciók  |  Tranzakciók  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/queueServices  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/queueServices  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/queueServices  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/queueServices  |  QueueCapacity  |  Queue Storage kapacitása  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/queueServices  |  QueueCount  |  Üzenetsorok száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/queueServices  |  QueueMessageCount  |  Üzenetsorbeli üzenetek száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/queueServices  |  SuccessE2ELatency  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/queueServices  |  SuccessServerLatency  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/queueServices  |  Várólistakapacitás  |  Várólista kapacitása  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/queueServices  |  Várólistaszáma  |  Várólista száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/queueServices  |  QueueMessageCount (Üzenetsor)  |  Várólista-üzenetek száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/queueServices  |  SuccessE2ELatency (SuccessE2ELatency)  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/queueServices  |  SuccessServerLatency (Sikereskiszolgálók átkának)  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/queueServices  |  Tranzakciók  |  Tranzakciók  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/tableServices  |  Rendelkezésre állás  |  Rendelkezésre állás  |  Százalék  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/tableServices  |  Kimenő forgalom  |  Kimenő forgalom  |  Bájt  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/tableServices  |  Bejövő forgalom  |  Bejövő forgalom  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/tableServices  |  SuccessE2ELatency  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/tableServices  |  SuccessServerLatency  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/tableServices  |  TableCapacity  |  Table Storage kapacitása  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/tableServices  |  TableCount  |  Táblák száma  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/tableServices  |  TableEntityCount  |  Táblaentitások száma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/tableServices  |  SuccessE2ELatency (SuccessE2ELatency)  |  Sikeres kérések végpontok közötti késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/tableServices  |  SuccessServerLatency (Sikereskiszolgálók átkának)  |  Sikeres kiszolgálói kérések késése  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/tableServices  |  Táblakapacitás  |  Tábla kapacitása  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/tableServices  |  Tábladarabszám  |  Táblaszáma  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.Storage/storageAccounts/tableServices  |  Táblaentitásszáma  |  Táblaentitások száma  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.Storage/storageAccounts/tableServices  |  Tranzakciók  |  Tranzakciók  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  ClientIOPS  |  Ügyfél teljes IOPS  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  ClientLatency  |  Ügyfél átlagos késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  ClientLockIOPS  |  Ügyfél-zárolási IOPS  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  ClientMetadataReadIOPS  |  Ügyfél metaadatainak olvasása IOPS  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  ClientMetadataWriteIOPS  |  Ügyfél metaadatainak írási IOPS  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  ClientReadIOPS  |  Ügyfél olvasási IOPS  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  ClientReadThroughput  |  Gyorsítótár átlagos olvasási átviteli sebessége  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  ClientWriteIOPS  |  Ügyfél írási IOPS  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  ClientWriteThroughput  |  Gyorsítótár átlagos írási sebessége  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  StorageTargetAsyncWriteThroughput  |  StorageTarget aszinkron írási átviteli sebesség  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  StorageTargetFillThroughput  |  StorageTarget-kitöltési sebesség  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  StorageTargetHealth  |  Tárolási cél állapota  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  StorageTargetIOPS  |  Összes StorageTarget-IOPS  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  StorageTargetLatency  |  StorageTarget késés  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  StorageTargetMetadataReadIOPS  |  StorageTarget-metaadatok IOPS olvasása  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  StorageTargetMetadataWriteIOPS  |  StorageTarget-metaadatok írási IOPS  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  StorageTargetReadAheadThroughput  |  StorageTarget – olvasási sebesség  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  StorageTargetReadIOPS  |  StorageTarget olvasási IOPS  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  StorageTargetSyncWriteThroughput  |  StorageTarget szinkron írási sebessége  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  StorageTargetTotalReadThroughput  |  StorageTarget összesen olvasási átviteli sebesség  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  StorageTargetTotalWriteThroughput  |  StorageTarget összes írási sebessége  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  StorageTargetWriteIOPS  |  StorageTarget írási IOPS  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. StorageCache/gyorsítótárak  |  Hasznos üzemidő  |  Hasznos üzemidő  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  ServerSyncSessionResult  |  Szinkronizálási munkamenet eredménye  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  StorageSyncBatchTransferredFileBytes  |  Szinkronizált bájtok száma  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  StorageSyncRecalledNetworkBytesByApplication  |  Felhőbeli rétegek felidézésének mérete alkalmazás szerint  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  StorageSyncRecalledTotalNetworkBytes  |  Felhőbeli rétegek felidézésének mérete  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  StorageSyncRecallIOTotalSizeBytes  |  Felhőbeli rétegek felidézése  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  StorageSyncRecallThroughputBytesPerSecond  |  Felhőbeli rétegek felidézésének átviteli sebessége  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  ClientIOPS  |  Összes ügyfél IOPS  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  Ügyfélkés-késés  |  Átlagos ügyfélkésés  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  ClientLockIOPS  |  Ügyfélzárolási IOPS  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  ÜgyfélMetadataReadIOPS  |  Ügyfél metaadatok olvasási IOPS-ának olvasása  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  ÜgyfélMetadataWriteIOPS  |  Ügyfél metaadatok írási IOPS-a  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  ÜgyfélreadiOPS  |  Ügyfél olvasási IOPS  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  Ügyfélolvasásátviteli  |  Átlagos gyorsítótár olvasási átviteli  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  ÜgyfélwriteIOPS  |  Ügyfél írási IOPS  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  ClientWriteThroughput  |  Gyorsítótár írási átviteli értékátlaga  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  StorageTargetAsyncWriteThroughput  |  StorageTarget aszinkron írási átviteli  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  StorageTargetFillThroughput  |  StorageTarget kitöltési átviteli adatáta  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  StorageTargetHealth  |  Tárolási cél állapota  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  StorageTargetIOPS  |  Teljes storageTarget IOPS  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  StorageTargetLatency (TárolástargetLatency)  |  StorageTarget késés  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  StorageTargetMetadataReadIOPS  |  StorageTarget metaadat-olvasási IOPS  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  StorageTargetMetadataWriteIOPS  |  StorageTarget metaadat-írási IOPS  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  StorageTargetReadAheadThroughput  |  StorageTarget előre olvasási átviteli  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  StorageTargetReadIOPS  |  StorageTarget olvasási IOPS  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  StorageTargetSyncWriteThroughput  |  StorageTarget szinkron írási átviteli  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  StorageTargetTotalReadThroughput  |  StorageTarget teljes olvasási átviteli-átmenő  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  StorageTargetTotalWriteThroughput  |  StorageTarget teljes írási átviteli-áteresztő  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  StorageTargetWriteIOPS  |  StorageTarget írási IOPS  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StorageCache/gyorsítótárak  |  Uptime  |  Uptime  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  ServerSyncSessionResult  |  Munkamenet-eredmény szinkronizálása  |  Darabszám  |  Átlag | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  StorageSyncBatchTransferredFileBytes  |  Szinkronizált bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  StorageSyncRecalledNetworkBytesByApplication  |  Felhőrétegezés visszahívási méret alkalmazásonként  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  StorageSyncRecalledTotalNetworkBytes  |  Felhőrétegezés visszahívási mérete  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  StorageSyncRecallIOTotalSizeBytes  |  Felhőrétegezés visszahívása  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  StorageSyncRecallThroughputBytesPerSecond  |  Felhőrétegezés visszahívási átviteli  |  BytesPerSecond  |  Átlag | 
 | **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  StorageSyncServerHeartbeat  |  Kiszolgáló online állapota  |  Darabszám  |  Maximum | 
 | **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  StorageSyncSyncSessionAppliedFilesCount  |  Szinkronizált fájlok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  StorageSyncSyncSessionPerItemErrorsCount  |  Nem szinkronizált fájlok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. storagesync/storageSyncServices/registeredServers  |  ServerHeartbeat  |  Kiszolgáló online állapota  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft. storagesync/storageSyncServices/registeredServers  |  ServerRecallIOTotalSizeBytes  |  Felhőbeli rétegek felidézése  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. storagesync/storageSyncServices/syncGroups  |  SyncGroupBatchTransferredFileBytes  |  Szinkronizált bájtok száma  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. storagesync/storageSyncServices/syncGroups  |  SyncGroupSyncSessionAppliedFilesCount  |  Szinkronizált fájlok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. storagesync/storageSyncServices/syncGroups  |  SyncGroupSyncSessionPerItemErrorsCount  |  Nem szinkronizált fájlok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointBatchTransferredFileBytes  |  Szinkronizált bájtok száma  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointSyncSessionAppliedFilesCount  |  Szinkronizált fájlok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointSyncSessionPerItemErrorsCount  |  Nem szinkronizált fájlok  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  AMLCalloutFailedRequests  |  Sikertelen függvénykérések  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices  |  StorageSyncSessionperItem-hibák száma  |  A fájlok szinkronizálása nem  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices/registeredServers  |  Kiszolgálószívverés  |  Kiszolgáló online állapota  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices/registeredServers  |  ServerRecallIOTotalSizeBytes  |  Felhőrétegezés visszahívása  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices/syncGroups  |  SyncGroupBatchTransferredFileBytes  |  Szinkronizált bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices/syncGroups  |  SyncGroupSyncSessionAppliedFilesCount  |  Szinkronizált fájlok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices/syncGroups  |  SyncGroupSyncSessionperItem-hibák száma  |  A fájlok szinkronizálása nem  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointBatchTransferredFileBytes  |  Szinkronizált bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointSyncSessionAppliedFilesCount  |  Szinkronizált fájlok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointSyncSessionPerItemErrorsCount  |  A fájlok szinkronizálása nem  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  AMLCalloutFailedRequests  |  Sikertelen függvénykérelmek  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  AMLCalloutInputEvents  |  Függvényesemények  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  AMLCalloutRequests  |  Függvénykérések  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  ConversionErrors  |  Adatkonverziós hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  DeserializationError  |  A deszerializálás bemeneti hibái  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  DroppedOrAdjustedEvents  |  Megrendelési események  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  EarlyInputEvents  |  Korai bemeneti események  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  AMLCalloutKérések  |  Függvénykérések  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  Konverziós hibák  |  Adatkonvertálási hibák  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  Deszerializációhiba  |  Bemeneti deszerializálási hibák  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  DroppedOrAdjustedEvents  |  Nem sorrendben események  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  EarlyInputEsemények  |  Korai bemeneti események  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  Hibák  |  Futásidejű hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  InputEventBytes  |  Bemeneti esemény bájtokban  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  InputEvents  |  Bemeneti események  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  InputEventsSourcesBacklogged  |  Várakozó bemeneti események  |  Darabszám  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  InputEventsSourcesPerSecond  |  Fogadott bemeneti források  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  LateInputEvents  |  Késedelmes bemeneti események  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  OutputEvents  |  Kimeneti események  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  OutputWatermarkDelaySeconds  |  Vízjel-késleltetés  |  Másodperc  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  ResourceUtilization  |  SU százalékos kihasználtsága  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  Lemez olvasási bájtjai  |  Lemez olvasási bájtjai  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  Lemez olvasási művelete/mp  |  Lemez olvasási művelete/mp  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  Lemez írási bájtjai  |  Lemez írási bájtjai  |  Bájt  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  Lemez írási műveletei/mp  |  Lemez írási műveletei/mp  |  CountPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskReadBytesPerSecond  |  Lemez olvasási sebessége (bájt/s)  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskReadLatency  |  Lemez olvasási késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskReadOperations  |  Lemezes olvasási műveletek  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskWriteBytesPerSecond  |  Lemez írási sebessége (bájt/s)  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskWriteLatency  |  Lemez írási késése  |  Ezredmásodperc  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskWriteOperations  |  Lemez írási műveletei  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  MemoryActive  |  Memória aktív  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  MemoryGranted  |  Megadott memória  |  Bájt  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  MemoryUsed  |  Felhasznált memória  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  InputEventBytes  |  Bemeneti eseménybájtjai  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  InputEvents (InputEvents)  |  Bemeneti események  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  InputEventsSourcesBacklogged  |  Eldugott bemeneti események  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  InputEventsSourcesperSecond  |  Fogadott bemeneti források  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  LateInputEsemények  |  Késői bemeneti események  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  OutputEsemények  |  Kimeneti események  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  OutputWatermarkDelaySeconds  |  Vízjel késleltetése  |  Másodperc  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.StreamAnalytics/streamingjobs  |  Erőforrás-kihasználtság  |  SU % kihasználtság  |  Százalék  |  Maximum | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  Lemezolvasási bájtok  |  Lemezolvasási bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  Lemezolvasási műveletek/mp  |  Lemezolvasási műveletek/mp  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  Lemezírási bájtok  |  Lemezírási bájtok  |  Bájt  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  Lemezírási műveletek/mp  |  Lemezírási műveletek/mp  |  CountPerSzekszekundum  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskReadBytesPerSecond  |  Lemez olvasási bájtjai/mp  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskReadLatency  |  Lemezolvasási késés  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskReadOperations  |  Lemezolvasási műveletek  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskWriteBytesPerSecond  |  Lemezírási bájtok/mp  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskWriteLatency  |  Lemezírási késés  |  Ezredmásodperc  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskWriteOperations  |  Lemezírási műveletek  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  MemoryActive  |  Aktív memória  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  Memória biztosított  |  Memória megadva  |  Bájt  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  Használt memória  |  Használt memória  |  Bájt  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  Bejövő hálózat  |  Bejövő hálózat  |  Bájt  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  Kimenő hálózat  |  Kimenő hálózat  |  Bájt  |  Összesen | 
 | **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  NetworkInBytesPerSecond  |  Hálózat bájt/mp-ben  |  BytesPerSecond  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  NetworkOutBytesPerSecond  |  Hálózati kimenő bájtok/s  |  BytesPerSecond  |  Átlag | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  NetworkOutBytesPerSecond  |  Hálózati kimenő bájtok/mp  |  BytesPerSecond  |  Átlag | 
 | **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  Százalékos processzorhasználat  |  Százalékos processzorhasználat  |  Százalék  |  Átlag | 
-| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  PercentageCpuReady  |  CPU-készültség százalékos aránya  |  Ezredmásodperc  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  ActiveRequests  |  Aktív kérések  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft.VMwareCloudSimple/virtualMachines  |  Százalékprocesszorready  |  Százalékos CPU ready  |  Ezredmásodperc  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  ActiveRequests  |  Aktív kérelmek  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  AverageResponseTime  |  Átlagos válaszidő  |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  BytesReceived  |  A-ben tárolt adatértékek  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  BytesSent  |  Kimenő adatvesztés  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  CpuPercentage  |  Processzorhasználat (%)  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  DiskQueueLength  |  Lemezvezérlő-várólista hossza  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Fogadott bájt  |  Adatok a  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Küldött bájt  |  Adatok ki  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Cpuszázalék  |  Processzorhasználat (%)  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  DiskQueueLength  |  Lemezvárólista hossza  |  Darabszám  |  Átlag | 
 | **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http101  |  Http 101  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http2xx  |  Http 2xx  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http3xx  |  Http-3xx  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http401  |  HTTP 401  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http2xx között  |  Http 2xx  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http3xx között  |  Http 3xx  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http401  |  Http 401  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http403  |  Http 403  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http404  |  Http 404  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http406  |  Http 406  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http4xx  |  Http 4xx  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http5xx  |  Http-kiszolgálói hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  HttpQueueLength  |  Http-várólista hossza  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  LargeAppServicePlanInstances  |  Nagy App Service-csomag feldolgozói  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  MediumAppServicePlanInstances  |  Közepes App Service-csomag feldolgozói  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  MemoryPercentage  |  Memória százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http4xx között  |  Http 4xx  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http5xx között  |  Http Server hibák  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  HttpQueueLength között  |  Http Várólista hossza  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  LargeAppServicePlanInstances  |  Nagy app szolgáltatáscsomag-dolgozók  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  MediumAppServicePlanInstances  |  Közepes alkalmazású szolgáltatáscsomag-dolgozók  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Memóriaszázalék  |  Memória százaléka  |  Százalék  |  Átlag | 
 | **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Kérelmek  |  Kérelmek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  SmallAppServicePlanInstances  |  Kisméretű App Service-csomag feldolgozói  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  TotalFrontEnds  |  Összes előtér  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft. Web/hostingEnvironments/workerPools  |  CpuPercentage  |  Processzorhasználat (%)  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft. Web/hostingEnvironments/workerPools  |  MemoryPercentage  |  Memória százaléka  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft. Web/hostingEnvironments/workerPools  |  WorkersAvailable  |  Rendelkezésre álló munkavégzők  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft. Web/hostingEnvironments/workerPools  |  WorkersTotal  |  Alkalmazottak összesen  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft. Web/hostingEnvironments/workerPools  |  WorkersUsed  |  Használt feldolgozók  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  BytesReceived  |  A-ben tárolt adatértékek  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  BytesSent  |  Kimenő adatvesztés  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  CpuPercentage  |  Processzorhasználat (%)  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  DiskQueueLength  |  Lemezvezérlő-várólista hossza  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  HttpQueueLength  |  Http-várólista hossza  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  MemoryPercentage  |  Memória százaléka  |  Százalék  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpCloseWait  |  TCP-bezárási várakozás  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpClosing  |  TCP-zárás  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpEstablished  |  A TCP létrejött  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpFinWait1  |  TCP fin WAIT 1  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpFinWait2  |  TCP fin WAIT 2  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpLastAck  |  TCP Last ACK  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpSynReceived  |  TCP SYN kapott  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpSynSent  |  Eljuttatott TCP SYN  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpTimeWait  |  TCP-idő várakozása  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  AppConnections  |  Kapcsolatok  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  AverageMemoryWorkingSet  |  Memória átlagos munkakészlete  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  AverageResponseTime  |  Átlagos válaszidő  |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  BytesReceived  |  A-ben tárolt adatértékek  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  BytesSent  |  Kimenő adatvesztés  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  CpuTime  |  CPU-idő  |  Másodperc  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  CurrentAssemblies  |  Aktuális szerelvények  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  FunctionExecutionCount  |  Függvény végrehajtásának száma  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  FunctionExecutionUnits  |  Függvények végrehajtási egységei  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Gen0Collections  |  0\. generációs Garbage-gyűjtemények  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Gen1Collections  |  1\. generációs Garbage gyűjtemények  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Gen2Collections  |  2\. generációs Garbage gyűjtemények  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Kezeli  |  Leírók száma  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  HealthCheckStatus  |  Állapot-ellenőrzési állapot  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Http101  |  Http 101  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Http2xx  |  Http 2xx  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Http3xx  |  Http-3xx  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Http401  |  HTTP 401  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Http403  |  Http 403  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Http404  |  Http 404  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Http406  |  Http 406  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Http4xx  |  Http 4xx  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Http5xx  |  Http-kiszolgálói hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  HttpResponseTime  |  Válaszidő  |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  IoOtherBytesPerSecond  |  IO – egyéb bájtok másodpercenként  |  BytesPerSecond  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  IoOtherOperationsPerSecond  |  IO egyéb műveletek másodpercenként  |  BytesPerSecond  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  IoReadBytesPerSecond  |  IO olvasási bájtok másodpercenként  |  BytesPerSecond  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  IoReadOperationsPerSecond  |  I/o-olvasási műveletek másodpercenként  |  BytesPerSecond  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  IoWriteBytesPerSecond  |  IO írási bájtok másodpercenként  |  BytesPerSecond  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  IoWriteOperationsPerSecond  |  IO írási műveletek másodpercenként  |  BytesPerSecond  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  MemoryWorkingSet  |  Memória munkakészlete  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  PrivateBytes  |  Saját [nem megosztható] memória (bájt)  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Kérelmek  |  Kérelmek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  RequestsInApplicationQueue  |  Kérelmek az alkalmazás-várólistán  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  Szálak  |  Szálak száma  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  TotalAppDomains  |  Alkalmazás összes tartománya  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites  |  TotalAppDomainsUnloaded  |  Összes kitöltött alkalmazás-tartomány  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  AppConnections  |  Kapcsolatok  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  AverageMemoryWorkingSet  |  Memória átlagos munkakészlete  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  AverageResponseTime  |  Átlagos válaszidő  |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  BytesReceived  |  A-ben tárolt adatértékek  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  BytesSent  |  Kimenő adatvesztés  |  Bájt  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  CpuTime  |  CPU-idő  |  Másodperc  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  CurrentAssemblies  |  Aktuális szerelvények  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  FunctionExecutionCount  |  Függvény végrehajtásának száma  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  FunctionExecutionUnits  |  Függvények végrehajtási egységei  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Gen0Collections  |  0\. generációs Garbage-gyűjtemények  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Gen1Collections  |  1\. generációs Garbage gyűjtemények  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Gen2Collections  |  2\. generációs Garbage gyűjtemények  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Kezeli  |  Leírók száma  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  HealthCheckStatus  |  Állapot-ellenőrzési állapot  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Http101  |  Http 101  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Http2xx  |  Http 2xx  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Http3xx  |  Http-3xx  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Http401  |  HTTP 401  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Http403  |  Http 403  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Http404  |  Http 404  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Http406  |  Http 406  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Http4xx  |  Http 4xx  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Http5xx  |  Http-kiszolgálói hibák  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  HttpResponseTime  |  Válaszidő  |  Másodperc  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  IoOtherBytesPerSecond  |  IO – egyéb bájtok másodpercenként  |  BytesPerSecond  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  IoOtherOperationsPerSecond  |  IO egyéb műveletek másodpercenként  |  BytesPerSecond  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  IoReadBytesPerSecond  |  IO olvasási bájtok másodpercenként  |  BytesPerSecond  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  IoReadOperationsPerSecond  |  I/o-olvasási műveletek másodpercenként  |  BytesPerSecond  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  IoWriteBytesPerSecond  |  IO írási bájtok másodpercenként  |  BytesPerSecond  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  IoWriteOperationsPerSecond  |  IO írási műveletek másodpercenként  |  BytesPerSecond  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  MemoryWorkingSet  |  Memória munkakészlete  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  PrivateBytes  |  Saját [nem megosztható] memória (bájt)  |  Bájt  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Kérelmek  |  Kérelmek  |  Darabszám  |  Összesen | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  RequestsInApplicationQueue  |  Kérelmek az alkalmazás-várólistán  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  Szálak  |  Szálak száma  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  TotalAppDomains  |  Alkalmazás összes tartománya  |  Darabszám  |  Átlag | 
-| **Igen**  | **Igen** |  Microsoft.Web/sites/slots  |  TotalAppDomainsUnloaded  |  Összes kitöltött alkalmazás-tartomány  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  SmallAppServicePlanInstances  |  Kis app osszes alkalmazáscsomag-dolgozók  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  TotalFrontends  |  Elülső végek összesen  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/workerPools  |  Cpuszázalék  |  Processzorhasználat (%)  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/workerPools  |  Memóriaszázalék  |  Memória százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/workerPools  |  Elérhető dolgozók  |  Elérhető dolgozók  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/workerPools  |  Dolgozók összesen  |  Összes dolgozó  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/hostingEnvironments/workerPools  |  Használt dolgozók  |  Használt munkavállalók  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  Fogadott bájt  |  Adatok a  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  Küldött bájt  |  Adatok ki  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  Cpuszázalék  |  Processzorhasználat (%)  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  DiskQueueLength  |  Lemezvárólista hossza  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  HttpQueueLength között  |  Http Várólista hossza  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  Memóriaszázalék  |  Memória százaléka  |  Százalék  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpCloseVárakozás  |  TCP bezárása várakozás  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpLezárás  |  TCP zárása  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpLétrehozt  |  TCP létrehozva  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpFinWait1  |  TCP Fin várjon 1  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpFinWait2  |  TCP Fin Várjon 2  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpLastAck  |  TCP utolsó Ack  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpSynÉrkezett  |  TCP Syn fogadott  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpSynSent  |  TCP Syn elküldve  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/serverfarms  |  TcpTimeVárakozás  |  TCP-idő várakozása  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Alkalmazáskapcsolatok  |  Kapcsolatok  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  AverageMemoryWorkingSet  |  Átlagos memóriamunkakészlet  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  AverageResponseTime  |  Átlagos válaszidő  |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Fogadott bájt  |  Adatok a  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Küldött bájt  |  Adatok ki  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  CpuTime  |  PROCESSZOR-idő  |  Másodperc  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  CurrentAssemblies között  |  Aktuális szerelvények  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  FunctionExecutionCount (FunctionExecutionCount)  |  Függvényvégrehajtási száma  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  FunctionExecutionUnits  |  Funkcióvégrehajtási egységek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Gen0Gyűjtemények  |  Gen 0 Szemétgyűjtemények  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Gen1Gyűjtemények  |  Gen 1 Szemétgyűjtemények  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Gen2Gyűjtemények  |  Gen 2 Szemétgyűjtemények  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Kezeli  |  Leírók száma  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Állapotellenőrző állapota  |  Állapot-ellenőrzés állapota  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Http101  |  Http 101  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Http2xx között  |  Http 2xx  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Http3xx között  |  Http 3xx  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Http401  |  Http 401  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Http403  |  Http 403  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Http404  |  Http 404  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Http406  |  Http 406  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Http4xx között  |  Http 4xx  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Http5xx között  |  Http Server hibák  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  httpResponseTime  |  Válasz ideje  |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  IoOtherBytesPerSz  |  Egyéb bájtok másodpercenként  |  BytesPerSecond  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  IoOtherOperationsPerSecond  |  Io egyéb műveletek másodpercenként  |  BytesPerSecond  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  IoReadBytesPerSz  |  Io olvasási bájt másodpercenként  |  BytesPerSecond  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  IoReadOperationsPerSecond  |  Io olvasási műveletek másodpercenként  |  BytesPerSecond  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  IoWriteBytesPerSecond  |  Io írási bájt másodpercenként  |  BytesPerSecond  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  IoWriteOperationsPerSecond  |  I/O-írási műveletek másodpercenként  |  BytesPerSecond  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  MemoryWorkingSet  |  Memóriamunkakészlet  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Privát bájt  |  Privát bájtok  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Kérelmek  |  Kérelmek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Kérelmekaz alkalmazásvárólistában  |  Kérelmek az alkalmazásvárólistában  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  Szálak  |  Szálak száma  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  TotalAppDomains (Összes alkalmazásdomain)  |  Összes alkalmazástartomány  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/webhelyek  |  TotalAppDomainsUnloaded  |  A kiürített összes alkalmazástartomány  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Alkalmazáskapcsolatok  |  Kapcsolatok  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  AverageMemoryWorkingSet  |  Átlagos memóriamunkakészlet  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  AverageResponseTime  |  Átlagos válaszidő  |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Fogadott bájt  |  Adatok a  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Küldött bájt  |  Adatok ki  |  Bájt  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  CpuTime  |  PROCESSZOR-idő  |  Másodperc  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  CurrentAssemblies között  |  Aktuális szerelvények  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  FunctionExecutionCount (FunctionExecutionCount)  |  Függvényvégrehajtási száma  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  FunctionExecutionUnits  |  Funkcióvégrehajtási egységek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Gen0Gyűjtemények  |  Gen 0 Szemétgyűjtemények  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Gen1Gyűjtemények  |  Gen 1 Szemétgyűjtemények  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Gen2Gyűjtemények  |  Gen 2 Szemétgyűjtemények  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Kezeli  |  Leírók száma  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Állapotellenőrző állapota  |  Állapot-ellenőrzés állapota  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Http101  |  Http 101  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Http2xx között  |  Http 2xx  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Http3xx között  |  Http 3xx  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Http401  |  Http 401  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Http403  |  Http 403  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Http404  |  Http 404  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Http406  |  Http 406  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Http4xx között  |  Http 4xx  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Http5xx között  |  Http Server hibák  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  httpResponseTime  |  Válasz ideje  |  Másodperc  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  IoOtherBytesPerSz  |  Egyéb bájtok másodpercenként  |  BytesPerSecond  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  IoOtherOperationsPerSecond  |  Io egyéb műveletek másodpercenként  |  BytesPerSecond  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  IoReadBytesPerSz  |  Io olvasási bájt másodpercenként  |  BytesPerSecond  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  IoReadOperationsPerSecond  |  Io olvasási műveletek másodpercenként  |  BytesPerSecond  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  IoWriteBytesPerSecond  |  Io írási bájt másodpercenként  |  BytesPerSecond  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  IoWriteOperationsPerSecond  |  I/O-írási műveletek másodpercenként  |  BytesPerSecond  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  MemoryWorkingSet  |  Memóriamunkakészlet  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Privát bájt  |  Privát bájtok  |  Bájt  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Kérelmek  |  Kérelmek  |  Darabszám  |  Összesen | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Kérelmekaz alkalmazásvárólistában  |  Kérelmek az alkalmazásvárólistában  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  Szálak  |  Szálak száma  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  TotalAppDomains (Összes alkalmazásdomain)  |  Összes alkalmazástartomány  |  Darabszám  |  Átlag | 
+| **Igen**  | **Igen** |  Microsoft.Web/sites/slot  |  TotalAppDomainsUnloaded  |  A kiürített összes alkalmazástartomány  |  Darabszám  |  Átlag | 

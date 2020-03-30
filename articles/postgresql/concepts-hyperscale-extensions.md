@@ -1,6 +1,6 @@
 ---
-title: Extensions – nagy kapacitású (Citus) – Azure Database for PostgreSQL
-description: Ismerteti az adatbázis funkcióinak kiterjesztését Azure Database for PostgreSQL-nagy kapacitású (Citus) bővítmények használatával
+title: Bővítmények – Nagykapacitású (Citus) – Azure-adatbázis a PostgreSQL-hez
+description: Az adatbázis funkcióinak kiterjesztésének lehetősége az Azure Database for PostgreSQL – Hyperscale (Citus) bővítményeinek használatával
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,142 +8,142 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 84b28096904db49f98c16601c5927928ad38743b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77485403"
 ---
-# <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-bővítmények Azure Database for PostgreSQLban – nagy kapacitású (Citus)
+# <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-bővítmények az Azure Database for PostgreSQL -accessy – Hyperscale (Citus)
 
-A PostgreSQL lehetővé teszi az adatbázis funkcióinak bővítését bővítmények használatával. A bővítmények lehetővé teszik több kapcsolódó SQL-objektum összefoglalását egyetlen csomagban, amelyet egyetlen paranccsal lehet betölteni vagy eltávolítani az adatbázisból. Az adatbázisba való betöltés után a bővítmények a beépített funkciókhoz hasonlóan működhetnek. A PostgreSQL-bővítményekkel kapcsolatos további információkért lásd: [kapcsolódó objektumok kicsomagolása bővítménybe](https://www.postgresql.org/docs/current/static/extend-extensions.html).
+A PostgreSQL lehetővé teszi az adatbázis funkcionalitásának kiterjesztését bővítmények használatával. A bővítmények lehetővé teszik több kapcsolódó SQL-objektum egyetlen csomagban történő összekapcsolását, amelyek egyetlen paranccsal tölthetők be vagy távolíthatók el az adatbázisból. Az adatbázisba való betöltés után a bővítmények beépített szolgáltatásokhoz hasonlóan működhetnek. A PostgreSQL-bővítményekről a [Kapcsolódó objektumok csomagja bővítménybe című témakörben](https://www.postgresql.org/docs/current/static/extend-extensions.html)talál további információt.
 
 ## <a name="use-postgresql-extensions"></a>PostgreSQL-bővítmények használata
 
-A PostgreSQL-bővítményeket a használatuk előtt telepíteni kell az adatbázisba. Egy adott bővítmény telepítéséhez futtassa a [bővítmény létrehozása](https://www.postgresql.org/docs/current/static/sql-createextension.html) parancsot a psql eszközből a csomagolt objektumok adatbázisba való betöltéséhez.
+A PostgreSQL-bővítményeket használat előtt telepíteni kell az adatbázisba. Egy adott bővítmény telepítéséhez futtassa a [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) parancsot a psql eszközből a csomagolt objektumok adatbázisba való betöltéséhez.
 
-A Azure Database for PostgreSQL-nagy kapacitású (Citus) jelenleg az itt felsorolt kulcs-kiterjesztések egy részhalmazát támogatja. A felsorolt bővítmények nem támogatottak. A Azure Database for PostgreSQL nem hozhat létre saját bővítményt.
+A PostgreSQL-hez készült Azure Database for PostgreSQL – Hyperscale (Citus) jelenleg támogatja a kulcsbővítmények egy részhalmazát az itt felsoroltak szerint. A felsoroltaktól eltérő bővítmények nem támogatottak. Nem hozhat létre saját bővítményt az Azure Database for PostgreSQL használatával.
 
-## <a name="extensions-supported-by-azure-database-for-postgresql"></a>A Azure Database for PostgreSQL által támogatott bővítmények
+## <a name="extensions-supported-by-azure-database-for-postgresql"></a>Az Azure Database for PostgreSQL által támogatott bővítmények
 
-A következő táblázat a Azure Database for PostgreSQL által jelenleg támogatott szabványos PostgreSQL-bővítményeket sorolja fel. Ezek az információk a `SELECT * FROM pg_available_extensions;`futtatásával is elérhetők.
+Az alábbi táblázatok azokat a szabványos PostgreSQL-bővítményeket sorolják fel, amelyeket az Azure Database for PostgreSQL jelenleg támogat. Ez az információ a `SELECT * FROM pg_available_extensions;`futtatásával is elérhető.
 
-### <a name="data-types-extensions"></a>Adattípusok bővítményei
+### <a name="data-types-extensions"></a>Adattípus-bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
-> | [citext](https://www.postgresql.org/docs/current/static/citext.html) | Kis-és nagybetűket nem megkülönböztető karakterlánc-típust biztosít. |
-> | [adatkocka](https://www.postgresql.org/docs/current/static/cube.html) | Adattípust biztosít a többdimenziós kockákhoz. |
-> | [hstore](https://www.postgresql.org/docs/current/static/hstore.html) | Adattípust biztosít a kulcs-érték párok készletének tárolására. |
-> | [HLL](https://github.com/citusdata/postgresql-hll) | HyperLogLog adatstruktúrát biztosít. |
-> | [helytelen átvitt](https://www.postgresql.org/docs/current/static/isn.html) | Adattípusokat biztosít a nemzetközi termékek számozási szabványainak. |
-> | [Lo](https://www.postgresql.org/docs/current/lo.html) | Nagyméretű objektumok karbantartása. |
-> | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | Adattípust biztosít a hierarchikus fastruktúrához hasonló struktúrákhoz. |
-> | [seg](https://www.postgresql.org/docs/current/seg.html) | A vonalszakasz vagy a lebegőpontos intervallumok ábrázolására szolgáló adattípus. |
-> | [legjobb n](https://github.com/citusdata/postgresql-topn/) | Adja meg a Top-n JSONB. |
+> | [citext](https://www.postgresql.org/docs/current/static/citext.html) | Kis- és nagybetűk et nem megkülönböztető karakterlánctípust biztosít. |
+> | [Kocka](https://www.postgresql.org/docs/current/static/cube.html) | Többdimenziós kockák adattípusát adja meg. |
+> | [háruház](https://www.postgresql.org/docs/current/static/hstore.html) | Adattípust biztosít a kulcsérték-párok halmazainak tárolására. |
+> | [hll](https://github.com/citusdata/postgresql-hll) | HyperLogLog adatstruktúrát biztosít. |
+> | [Isn](https://www.postgresql.org/docs/current/static/isn.html) | A nemzetközi termékszámozási szabványok adattípusait tartalmazza. |
+> | [Lo](https://www.postgresql.org/docs/current/lo.html) | Nagy objektum karbantartás. |
+> | [itree (ifa)](https://www.postgresql.org/docs/current/static/ltree.html) | Adattípust biztosít a hierarchikus faszerű struktúrákhoz. |
+> | [Seg](https://www.postgresql.org/docs/current/seg.html) | A vonalszakaszok vagy lebegőpontos intervallumok ábrázolásához szolgáló adattípus. |
+> | [felül](https://github.com/citusdata/postgresql-topn/) | Írja be a top-n JSONB típust. |
 
 ### <a name="full-text-search-extensions"></a>Teljes szöveges keresési bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
-> | [dict\_int](https://www.postgresql.org/docs/current/static/dict-int.html) | Szöveges keresési szótári sablont biztosít az egész számokhoz. |
-> | [dict\_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Szöveges keresési szótár sablon a kiterjesztett szinonimák feldolgozásához. |
-> | [nem ékezetes](https://www.postgresql.org/docs/current/static/unaccent.html) | Szöveges keresési szótár, amely eltávolítja az ékezeteket (mellékjelek jeleit) a lexemes. |
+> | [diktált\_int](https://www.postgresql.org/docs/current/static/dict-int.html) | Szövegkereső szótársablont biztosít egész számokhoz. |
+> | [diktált\_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Szövegkereső szótársablon a kiterjesztett szinonimafeldolgozáshoz. |
+> | [kiemelés nélkül](https://www.postgresql.org/docs/current/static/unaccent.html) | Szövegkereső szótár, amely eltávolítja az ékezeteket (mellékjeleket) a lexemes-ből. |
 
-### <a name="functions-extensions"></a>Functions-bővítmények
+### <a name="functions-extensions"></a>Függvénybővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
-> | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Függvények az automatikusan növekvő mezőkhöz. |
-> | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | Lehetővé teszi a nagy kör alakú távolságok kiszámítását a Föld felszínén. |
-> | [fuzzystrmatch](https://www.postgresql.org/docs/current/static/fuzzystrmatch.html) | Számos függvényt biztosít a karakterláncok közötti hasonlóságok és távolságok meghatározásához. |
-> | [\_Felhasználónév beszúrása](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.8) | A táblákat módosító függvények. |
-> | [intagg](https://www.postgresql.org/docs/current/intagg.html) | Egész számú gyűjtő és enumerálás (elavult). |
-> | [intarray](https://www.postgresql.org/docs/current/static/intarray.html) | Függvényeket és operátorokat biztosít az egész számok null nélküli tömbbe való manipulálására. |
-> | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | Függvények a legutóbbi módosítási idő nyomon követéséhez. |
-> | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | Titkosítási funkciókat biztosít. |
-> | [PG\_parti](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | A particionált táblákat idő vagy azonosító alapján kezeli. |
-> | [PG\_trgm](https://www.postgresql.org/docs/current/static/pgtrgm.html) | A függvényeket és operátorokat biztosít az alfanumerikus szöveg hasonlóságának meghatározásához a trigram megfeleltetése alapján. |
-> | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | A hivatkozási integritás megvalósítására szolgáló függvények (elavult). |
-> | munkamenet-\_elemzés | Függvények a hstore-tömbök lekérdezéséhez. |
-> | [tablefunc](https://www.postgresql.org/docs/current/static/tablefunc.html) | Olyan függvényeket biztosít, amelyek a teljes táblákat, például a kereszttáblás funkciókat kezelik. |
-> | [TCN](https://www.postgresql.org/docs/current/tcn.html) | Aktivált változási értesítések. |
-> | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | Az időutazás megvalósításához szükséges függvények. |
-> | [UUID – ossp](https://www.postgresql.org/docs/current/static/uuid-ossp.html) | Univerzálisan egyedi azonosítókat (UUID-ket) generál. |
+> | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Mezők automatikus növekményezéséhez szükséges függvények. |
+> | [földtávolság](https://www.postgresql.org/docs/current/static/earthdistance.html) | Lehetővé teszi a föld felszínén lévő nagy körtávolságok kiszámítására. |
+> | [fuzzystrmatch között](https://www.postgresql.org/docs/current/static/fuzzystrmatch.html) | Számos függvényt biztosít a karakterláncok hasonlóságának és távolságának meghatározásához. |
+> | [felhasználónév beszúrása\_](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.8) | A tábla módosítási végzőinek nyomon követésére szolgáló függvények. |
+> | [intagg](https://www.postgresql.org/docs/current/intagg.html) | Egész összesítő és enumerátor (elavult). |
+> | [intarray](https://www.postgresql.org/docs/current/static/intarray.html) | Funkciókat és operátorokat biztosít az egész számok nullmentes tömbjeinek kezeléséhez. |
+> | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | Funkciók az utolsó módosítás időpontjának nyomon követéséhez. |
+> | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | Kriptográfiai függvényeket biztosít. |
+> | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | A particionált táblákat idő vagy azonosító szerint kezeli. |
+> | [pg\_trgm között](https://www.postgresql.org/docs/current/static/pgtrgm.html) | Az alfanumerikus szöveg hasonlóságának meghatározásához funkciókat és operátorokat biztosít a trigrammegfeleltetés alapján. |
+> | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | A hivatkozási integritás megvalósításának funkciói (elavultak). |
+> | munkamenet-elemzés\_ | Hstore tömbök lekérdezésére szolgáló függvények. |
+> | [asztali](https://www.postgresql.org/docs/current/static/tablefunc.html) | Olyan függvényeket tartalmaz, amelyek teljes táblázatokat kezelnek, beleértve a kereszttáblát is. |
+> | [tcn](https://www.postgresql.org/docs/current/tcn.html) | Módosított változásokról szóló értesítések. |
+> | [időutazás](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | Az időutazás megvalósításának funkciói. |
+> | [uuid-ossp](https://www.postgresql.org/docs/current/static/uuid-ossp.html) | Univerzálisan egyedi azonosítókat (UUID)-t hoz létre. |
 
-### <a name="hyperscale-extensions"></a>Nagy kapacitású-bővítmények
+### <a name="hyperscale-extensions"></a>Nagy kapacitású kiterjesztések
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
-> | [citus](https://github.com/citusdata/citus) | Citus elosztott adatbázis. |
-> | Szilánk\_-kiegyensúlyozó | A kiszolgálókon tárolt adatok biztonságos átszámolása csomópontok hozzáadása vagy eltávolítása esetén. |
+> | [citus között](https://github.com/citusdata/citus) | Citus elosztott adatbázis. |
+> | shard\_rebalancer | Csomópont hozzáadása vagy eltávolítása esetén biztonságosan egyensúlyba hozza az adatokat egy kiszolgálócsoportban. |
 
-### <a name="index-types-extensions"></a>Index típusú bővítmények
+### <a name="index-types-extensions"></a>Indextípusok bővítményei
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
-> | [Bloom](https://www.postgresql.org/docs/current/bloom.html) | A Bloom hozzáférési módszere – aláírási fájl alapú index. |
-> | [fa\_gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | Olyan minta GIN operátori osztályokat biztosít, amelyek bizonyos adattípusok esetén B-fa viselkedést implementálnak. |
-> | [fa\_lényege](https://www.postgresql.org/docs/current/static/btree-gist.html) | A "B" fát implementáló lényegi index operátori osztályokat biztosít. |
+> | [Virágzás](https://www.postgresql.org/docs/current/bloom.html) | Bloom hozzáférési módszer - aláírás fájlalapú index. |
+> | [bfa\_gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | Minta GIN operátori osztályokat biztosít, amelyek bizonyos adattípusokhoz B-fa-szerű viselkedést valósítanak meg. |
+> | [bfa\_lényege](https://www.postgresql.org/docs/current/static/btree-gist.html) | GiST indexoperátor-osztályokat biztosít, amelyek a B-fát valósítják meg. |
 
 ### <a name="language-extensions"></a>Nyelvi bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | PL/pgSQL betölthető eljárási nyelv. |
 
-### <a name="miscellaneous-extensions"></a>Egyéb bővítmények
+### <a name="miscellaneous-extensions"></a>Egyéb kiterjesztések
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
-> | [AdminPack](https://www.postgresql.org/docs/current/adminpack.html) | A PostgreSQL-hez készült felügyeleti függvények. |
-> | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Függvények a kapcsolatok integritásának ellenőrzéséhez. |
-> | [fájl\_FDW](https://www.postgresql.org/docs/current/file-fdw.html) | Idegen adatburkoló a lapos fájlokhoz való hozzáféréshez. |
-> | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | Vizsgálja meg az adatbázis-lapok tartalmát alacsony szinten. |
-> | [PG\_buffercache](https://www.postgresql.org/docs/current/static/pgbuffercache.html) | A lehetővé teszi a megosztott puffer gyorsítótárában zajló események valós idejű vizsgálatát. |
-> | [PG\_cron](https://github.com/citusdata/pg_cron) | Feladatütemező a PostgreSQL-hez. |
-> | [PG\_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | Vizsgálja meg a szabad terület leképezését (MSZÁ). |
-> | [PG\_előmelegített](https://www.postgresql.org/docs/current/static/pgprewarm.html) | Lehetővé teszi a kapcsolatok betöltését a puffer gyorsítótárába. |
-> | [PG\_stat\_utasítások](https://www.postgresql.org/docs/current/static/pgstatstatements.html) | A kiszolgáló által végrehajtott összes SQL-utasítás végrehajtási statisztikáinak nyomon követését teszi lehetővé. A bővítménysel kapcsolatos információkért tekintse meg a "pg_stat_statements" szakaszt. |
-> | [PG\_láthatóság](https://www.postgresql.org/docs/current/pgvisibility.html) | Vizsgálja meg a láthatósági térképet (VM) és az oldal szintű láthatósági információkat. |
-> | [pgrowlocks](https://www.postgresql.org/docs/current/static/pgrowlocks.html) | Lehetővé teszi a sor szintű zárolási információk megjelenítését. |
-> | [pgstattuple](https://www.postgresql.org/docs/current/static/pgstattuple.html) | A rekord szintű statisztikák megjelenítését teszi lehetővé. |
-> | [postgres\_FDW](https://www.postgresql.org/docs/current/static/postgres-fdw.html) | A külső PostgreSQL-kiszolgálókon tárolt adatforrásokhoz való hozzáféréshez használt idegen adatburkoló. A bővítménysel kapcsolatos információkért tekintse meg a "dblink és postgres_fdw" szakaszt.|
-> | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | Az SSL-tanúsítványokkal kapcsolatos információk. |
-> | [TSM\_System\_sorok](https://www.postgresql.org/docs/current/tsm-system-rows.html) | TABLESAMPLE metódus, amely a sorok számát korlátként fogadja el. |
-> | [TSM\_a System\_idő](https://www.postgresql.org/docs/current/tsm-system-time.html) | TABLESAMPLE metódus, amely a korlátnak megfelelő időt fogad el ezredmásodpercben. |
-> | [hypopg](https://hypopg.readthedocs.io/en/latest/) | A olyan feltételezett indexek létrehozására szolgál, amelyek nem a CPU-t vagy a lemezt terhelik. |
-> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | Egy modul, amely támogatja a más PostgreSQL-adatbázisokhoz való kapcsolódást egy adatbázis-munkameneten belülről. A bővítménysel kapcsolatos információkért tekintse meg a "dblink és postgres_fdw" szakaszt. |
-> | [xml2](https://www.postgresql.org/docs/current/xml2.html) | XPath-lekérdezés és XSLT. |
+> | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | A PostgreSQL adminisztratív funkciói. |
+> | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | A kapcsolat integritásának ellenőrzésére szolgáló funkciók. |
+> | [fájl\_fdw](https://www.postgresql.org/docs/current/file-fdw.html) | Külföldi adatburkoló a fájlokhoz való közvetlen hozzáféréshez. |
+> | [oldalvizsgálat](https://www.postgresql.org/docs/current/pageinspect.html) | Az adatbázislapok tartalmának alacsony szintű vizsgálata. |
+> | [pg\_puffergyorsítótár](https://www.postgresql.org/docs/current/static/pgbuffercache.html) | Valós időben vizsgálja meg, hogy mi történik a megosztott puffergyorsítótárban. |
+> | [pg\_cron](https://github.com/citusdata/pg_cron) | A PostgreSQL munkaütemezője. |
+> | [pg\_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | Vizsgálja meg a szabad terület térkép (FSM). |
+> | [pg\_előmelegen](https://www.postgresql.org/docs/current/static/pgprewarm.html) | A kapcsolati adatok betöltésének módját a puffergyorsítótárba. |
+> | [pg\_\_stat utasítások](https://www.postgresql.org/docs/current/static/pgstatstatements.html) | A kiszolgáló által végrehajtott összes SQL-utasítás végrehajtási statisztikájának nyomon követésére szolgál. A kiterjesztéssel kapcsolatos tudnivalókat a "pg_stat_statements" című részben talál. |
+> | [pg\_láthatóság](https://www.postgresql.org/docs/current/pgvisibility.html) | Vizsgálja meg a láthatósági térkép (VM) és az oldalszintű láthatósági információkat. |
+> | [pgrowlocks (pgrowlocks)](https://www.postgresql.org/docs/current/static/pgrowlocks.html) | A sorszintű zárolási információk megjelenítésének eszköze. |
+> | [pgstattuple között](https://www.postgresql.org/docs/current/static/pgstattuple.html) | A négyszeres statisztika megjelenítésének eszköze. |
+> | [postgres\_fdw](https://www.postgresql.org/docs/current/static/postgres-fdw.html) | A külső PostgreSQL-kiszolgálókon tárolt adatok eléréséhez használt külföldi adatburkoló. A kiterjesztéssel kapcsolatos információkért lásd a "dblink and postgres_fdw" című részt.|
+> | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | Információ az SSL-tanúsítványokról. |
+> | [tsm\_\_rendszersorok](https://www.postgresql.org/docs/current/tsm-system-rows.html) | TABLESAMPLE metódus, amely a sorok számát korlátként fogadja el. |
+> | [tsm\_\_rendszeridő](https://www.postgresql.org/docs/current/tsm-system-time.html) | TABLESAMPLE metódus, amely az időt ezredmásodpercben fogadja el korlátként. |
+> | [hipopg](https://hypopg.readthedocs.io/en/latest/) | Olyan hipotetikus indexek létrehozására is lehetőséget biztosít, amelyek nem kerülnek processzorba vagy lemezbe. |
+> | [dblink között](https://www.postgresql.org/docs/current/dblink.html) | Olyan modul, amely támogatja a más PostgreSQL-adatbázisokkal való kapcsolatokat egy adatbázis-munkameneten belül. A kiterjesztéssel kapcsolatos információkért lásd a "dblink and postgres_fdw" című részt. |
+> | [xml2](https://www.postgresql.org/docs/current/xml2.html) | XPath lekérdezése és XSLT. |
 
 
 ### <a name="postgis-extensions"></a>PostGIS-bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
-> | [PostGIS](https://www.postgis.net/), PostGIS\_topológia, PostGIS\_Tiger\_geocoder, PostGIS\_sfcgal | A PostgreSQL térbeli és földrajzi objektumai. |
-> | a\_a szabványosító, a\_a szabványosító\_az\_US | A címek összetevőire való elemzéséhez használatos. A helymeghatározáshoz-címek normalizálása lépésének támogatásához használatos. |
-> | PostGIS\_sfcgal | PostGIS SFCGAL függvények. |
-> | PostGIS\_Tiger\_geocoder | PostGIS Tiger geocoder és fordított geocoder. |
-> | PostGIS\_topológia | PostGIS-topológia térbeli típusai és funkciói |
+> | [PostGIS](https://www.postgis.net/),\_postgis topológia,\_\_postgis tigris geokódoló, postgis\_sfcgal | Térbeli és földrajzi objektumok a PostgreSQL számára. |
+> | cím\_standardizer,\_cím\_\_standardizer adatok at | Cím alkotóelemekké történő elemzésére szolgál. A geokódolási cím normalizálási lépésének támogatására szolgál. |
+> | postgis\_sfcgal | PostGIS SFCGAL funkciók. |
+> | postgis\_\_tigris geokódoló | PostGIS tigris geokódoló és fordított geokódoló. |
+> | postgis\_topológia | PostGIS topológia térbeli típusok és funkciók. |
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
-A [pg\_stat\_utasítások bővítmény](https://www.postgresql.org/docs/current/pgstatstatements.html) előre be van töltve minden Azure Database for PostgreSQL-kiszolgálón, így biztosítva az SQL-utasítások végrehajtási statisztikáinak nyomon követését.
+A [\_pg\_stat utasítások bővítmény](https://www.postgresql.org/docs/current/pgstatstatements.html) előre be van töltve minden Azure Database for PostgreSQL kiszolgálón, hogy az SQL-utasítások végrehajtási statisztikáinak nyomon követését biztosítsa.
 
-A beállítás `pg_stat_statements.track` szabályozza, hogy a bővítmény hogyan számítja ki az utasításokat. Alapértelmezés szerint `top`, ami azt jelenti, hogy az ügyfelek által közvetlenül kiadott összes utasítás nyomon van követve. A két másik követési szint `none` és `all`. Ez a beállítás kiszolgálói paraméterként konfigurálható a [Azure Portalon](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) vagy az [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)-n keresztül.
+A `pg_stat_statements.track` beállítás határozza meg, hogy a bővítmény milyen állításokat számol. Alapértelmezés szerint `top`a , ami azt jelenti, hogy az ügyfelek által közvetlenül kiadott összes utasítás nyomon követhető. A másik két `none` követési `all`szint a és a. Ez a beállítás kiszolgálóparaméterként konfigurálható az [Azure Portalon](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) vagy az [Azure CLI-n](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)keresztül.
 
-A lekérdezés végrehajtási információi pg_stat_statements biztosít, valamint a kiszolgáló teljesítményére gyakorolt hatás, ahogy az egyes SQL-utasítások bejelentkezik. Ha nem használja aktívan a pg_stat_statements bővítményt, javasoljuk, hogy állítsa be a `pg_stat_statements.track`t `none`re. Előfordulhat, hogy egyes harmadik féltől származó figyelési szolgáltatások a lekérdezési teljesítmény megállapítására támaszkodnak pg_stat_statements, ezért ellenőrizze, hogy ez a helyzet-e az Ön számára.
+Van egy kompromisszum a lekérdezés végrehajtási információkat, pg_stat_statements biztosít, és a hatása a kiszolgáló teljesítményét, mert naplózza az egyes SQL utasítás. Ha nem használja aktívan a pg_stat_statements bővítményt, `pg_stat_statements.track` `none`azt javasoljuk, hogy állítsa a . Egyes külső monitorozási szolgáltatások támaszkodhat nak pg_stat_statements lekérdezési teljesítmény elemzések, ezért erősítse meg, hogy ez a helyzet az Ön számára, vagy sem.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink és postgres_fdw
-A dblink és a postgres_fdw használatával csatlakozhat egy PostgreSQL-kiszolgálóról egy másikhoz, vagy egy kiszolgálón található másik adatbázishoz. A fogadó kiszolgálónak engedélyeznie kell a kapcsolódást a küldő kiszolgálóról a tűzfalon keresztül. Ha ezeket a bővítményeket Azure Database for PostgreSQL-kiszolgálók közötti kapcsolathoz szeretné használni, állítsa be az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** a következőre:. Ezt a beállítást akkor is be kell kapcsolni, ha a bővítményekkel vissza kíván térni ugyanarra a kiszolgálóra. Az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás a postgres-kiszolgáló Azure Portal lapján található, a **kapcsolat biztonsága**lehetőség alatt. Az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** az összes Azure-beli IP-címen.
+A dblink és postgres_fdw segítségével csatlakozhat az egyik PostgreSQL szerverről a másikra, vagy egy másik adatbázishoz ugyanazon a szerveren. A fogadó kiszolgálónak engedélyeznie kell a küldő kiszolgáló tól a tűzfalon keresztülérkező kapcsolatokat. Ha ezeket a bővítményeket szeretné használni az Azure Database for PostgreSQL-kiszolgálók közötti csatlakozáshoz, állítsa be **az Azure-szolgáltatások elérésének engedélyezése** BE beállítást. Akkor is be kell kapcsolnia ezt a beállítást, ha a bővítményeket arra szeretné használni, hogy visszakerüljön ugyanarra a kiszolgálóra. Az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás a Postgres-kiszolgáló Azure portalja oldalon, a **Kapcsolatbiztonság**csoportban található. Hozzáférés **engedélyezése az Azure-szolgáltatásokhoz az Azure-szolgáltatásokhoz** az összes Azure IP-szolgáltató tanusaként.
 
-Jelenleg a Azure Database for PostgreSQL kimenő kapcsolatai nem támogatottak, kivéve a más Azure Database for PostgreSQL kiszolgálókhoz való kapcsolódást.
+Jelenleg az Azure Database for PostgreSQL kimenő kapcsolatai nem támogatottak, kivéve a PostgreSQL-kiszolgálókhoz tartozó más Azure-adatbázissal való kapcsolatokat.

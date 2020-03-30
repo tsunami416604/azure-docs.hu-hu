@@ -1,20 +1,20 @@
 ---
-title: Azure Blockchain Workbench-adatbázis lekérdezése SQL Server Management Studio használatával
+title: Az Azure Blockchain Workbench-adatok lekérdezése az SQL Server Management Studio használatával
 description: Megtudhatja, hogy hogyan csatlakozhat az Azure Blockchain Workbench SQL Database-adatbázisához az SQL Server Management Studióból.
 ms.date: 11/20/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 ms.openlocfilehash: f87d1880c90202fa26b0477e3b4dfbed5965bb82
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74326040"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Azure Blockchain Workbench-adatok használata az SQL Server Management Studióval
 
-A Microsoft SQL Server Management Studio képes gyorsan írni és tesztelni az Azure Blockchain Workbench SQL DB-vel kapcsolatos lekérdezéseket. Ez a szakasz egy lépésenkénti útmutatót tartalmaz, amely bemutatja, hogyan csatlakozhat az Azure Blockchain Workbench SQL Database a SQL Server Management Studioon belülről.
+A Microsoft SQL Server Management Studio lehetővé teszi a lekérdezések gyors írását és tesztelését az Azure Blockchain Workbench SQL DB-jével szemben. Ez a szakasz részletes útmutatót tartalmaz az Azure Blockchain Workbench SQL-adatbázisához való csatlakozásról az SQL Server Management Studio-ból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,13 +38,13 @@ A Microsoft SQL Server Management Studio képes gyorsan írni és tesztelni az A
       ![Adatbázisok listája](./media/data-sql-management-studio/db-list.png)
 
 5. Az adatbázisnézetekhez tartozó adatok megtekintéséhez automatikusan létrehozhat egy SELECT utasítást az alábbi lépések végrehajtásával.
-6. Kattintson a jobb gombbal bármelyik adatbázis-nézetre a Object Explorer.
+6. Kattintson a jobb gombbal bármelyik adatbázisnézetre az Objektumkezelőben.
 7. Válassza a **Script View as** (Megtekintési szkript) lehetőséget.
 8. Válassza a **SELECT to** (SELECT cél) lehetőséget.
 9. Válassza a **New Query Editor Window** (Új Lekérdezésszerkesztő ablak) lehetőséget.
 10. Új lekérdezést a **New Query** (Új lekérdezés) lehetőség választásával hozhat létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Adatbázisnézetek az Azure Blockchain Workbenchben](database-views.md)
