@@ -1,39 +1,39 @@
 ---
 title: Hitelesítés bérlőkön keresztül
-description: Leírja, hogyan kezeli a Azure Resource Manager a különböző bérlők hitelesítési kérelmeit.
+description: Ez a témakör azt ismerteti, hogy az Azure Resource Manager hogyan kezeli a bérlők közötti hitelesítési kérelmeket.
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: 7a13ba6f6cbfc10c52484c45e4011da7a0d8ee4c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75478824"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Kérelmek hitelesítése a bérlők között
 
-Több-bérlős alkalmazások létrehozásakor előfordulhat, hogy a különböző bérlők erőforrásaihoz tartozó hitelesítési kérelmeket kell kezelnie. Gyakori eset az, amikor az egyik bérlőn lévő virtuális gépnek egy másik bérlőben lévő virtuális hálózathoz kell csatlakoznia. A Azure Resource Manager a kisegítő tokenek tárolására szolgáló fejléc-értéket biztosít a különböző bérlőknek küldött kérések hitelesítéséhez.
+Több-bérlős alkalmazás létrehozásakor előfordulhat, hogy a különböző bérlőkben lévő erőforrások hitelesítési kérelmeit kell kezelnie. Gyakori forgatókönyv, amikor egy virtuális gép az egyik bérlőben kell csatlakoznia egy virtuális hálózat egy másik bérlőben. Az Azure Resource Manager egy fejlécértéket biztosít a kiegészítő jogkivonatok tárolására a kérelmek hitelesítéséhez a különböző bérlők számára.
 
-## <a name="header-values-for-authentication"></a>A hitelesítés fejlécének értékei
+## <a name="header-values-for-authentication"></a>A hitelesítés fejlécértékei
 
-A kérelem a következő hitelesítési fejléc-értékekkel rendelkezik:
+A kérelem a következő hitelesítési fejlécértékeket tartalmazza:
 
 | Fejléc neve | Leírás | Példaérték |
 | ----------- | ----------- | ------------ |
-| Engedélyezés | Elsődleges jogkivonat | Tulajdonos &lt;elsődleges – token&gt; |
-| x-MS-Authorization-kiegészítő | Kiegészítő tokenek | Tulajdonosi &lt;kiegészítő – token1&gt;, EncryptedBearer &lt;kiegészítő – token2&gt;, tulajdonos &lt;kiegészítő – token3&gt; |
+| Engedélyezés | Elsődleges jogkivonat | Tulajdonos &lt;elsődleges token&gt; |
+| x-ms-engedélyezési segéd | Kiegészítő tokenek | Bemutatóra &lt;szóló&gt;kiegészítő-token1 , &lt;EncryptedBearer&gt;auxiliary-token2 , Bearer &lt;auxiliary-token3&gt; |
 
-A kiegészítő fejléc legfeljebb három kiegészítő tokent tud tárolni. 
+A kiegészítő fejléc legfeljebb három kiegészítő jogkivonatot képes tárolni. 
 
-A több-bérlős alkalmazás kódjában szerezze be a többi bérlő hitelesítési jogkivonatát, és tárolja azokat a kiegészítő fejlécekben. Az összes tokennek ugyanahhoz a felhasználóhoz vagy alkalmazáshoz kell tartoznia. A felhasználót vagy alkalmazást vendégként kell meghívni a többi bérlőnek.
+A több-bérlős alkalmazás kódjában a hitelesítési jogkivonatot más bérlők számára, és tárolja őket a kiegészítő fejlécek. Az összes jogkivonatnak ugyanattól a felhasználótól vagy alkalmazástól kell származnia. A felhasználót vagy alkalmazást vendégként meg kell hívni a többi bérlőhöz.
 
 ## <a name="processing-the-request"></a>A kérelem feldolgozása
 
-Amikor az alkalmazás egy kérelmet küld a Resource managernek, a rendszer az elsődleges jogkivonat identitása alatt futtatja a kérést. Az elsődleges tokennek érvényesnek és lejártnak kell lennie. Ennek a tokennek egy olyan bérlőtől kell származnia, amely képes kezelni az előfizetést.
+Amikor az alkalmazás kérelmet küld az Erőforrás-kezelőnek, a kérelem az elsődleges jogkivonat identitása alatt fut. Az elsődleges jogkivonatnak érvényesnek és le nem jártnak kell lennie. Ez a jogkivonat egy olyan bérlőtől kell származnia, amely kezelheti az előfizetést.
 
-Ha a kérelem egy másik bérlőtől származó erőforrásra hivatkozik, a Resource Manager ellenőrzi a kisegítő jogkivonatokat annak megállapításához, hogy a kérés feldolgozható-e. A fejlécben szereplő összes kiegészítő tokennek érvényesnek és lejártnak kell lennie. Ha bármelyik jogkivonat lejárt, a Resource Manager egy 401-es választ ad vissza. A válasz tartalmazza az ügyfél-azonosítót és a bérlő AZONOSÍTÓját, amely érvénytelen a jogkivonat esetében. Ha a kiegészítő fejléc érvényes jogkivonatot tartalmaz a bérlőhöz, a rendszer feldolgozza a több-bérlős kérelmet.
+Amikor a kérelem egy különböző bérlőből származó erőforrásra hivatkozik, az Erőforrás-kezelő ellenőrzi a kiegészítő jogkivonatokat annak meghatározásához, hogy a kérelem feldolgozható-e. A fejlécben lévő összes kiegészítő jogkivonatnak érvényesnek és le nem jártnak kell lennie. Ha bármelyik jogkivonat lejárt, az Erőforrás-kezelő egy 401-es válaszkódot ad vissza. A válasz tartalmazza az ügyfél-azonosítót és a bérlői azonosítót a jogkivonatból, amely nem érvényes. Ha a kiegészítő fejléc érvényes jogkivonatot tartalmaz a bérlő számára, a kereszt-bérlői kérelem feldolgozása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A hitelesítési kérelmekkel kapcsolatos további tudnivalókért lásd: [hitelesítési folyamatok és alkalmazási forgatókönyvek](../../active-directory/develop/authentication-flows-app-scenarios.md).
-* További információ a tokenekről: [Azure Active Directory hozzáférési tokenek](../../active-directory/develop/access-tokens.md).
+* A hitelesítési kérelmekről a [Hitelesítési folyamatok és alkalmazásforgatókönyvek](../../active-directory/develop/authentication-flows-app-scenarios.md)című témakörben olvashat.
+* A jogkivonatokról az [Azure Active Directory-hozzáférési jogkivonatok](../../active-directory/develop/access-tokens.md)című témakörben talál további információt.

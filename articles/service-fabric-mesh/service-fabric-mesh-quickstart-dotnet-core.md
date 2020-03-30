@@ -1,16 +1,16 @@
 ---
-title: Gyors útmutató – webalkalmazás üzembe helyezése az Azure Service Fabric Mesh szolgáltatásban
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre ASP.NET Core webhelyeket, és hogyan teheti közzé az Azure Service Fabric Meshban a Visual Studióval.
+title: Rövid útmutató – Webalkalmazás üzembe helyezése az Azure Service Fabric Mesh szolgáltatásban
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy ASP.NET Core webhelyet, és hogyan teheti közzé az Azure Service Fabric Mesh szolgáltatásban a Visual Studio használatával.
 author: dkkapur
 ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75459067"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Rövid útmutató: Webalkalmazás létrehozása és üzembe helyezése az Azure Service Fabric Mesh-ben
@@ -25,7 +25,7 @@ Szüksége lesz Azure-előfizetésre Ha még nem rendelkezik Azure-előfizetéss
 
 ## <a name="create-a-service-fabric-mesh-project"></a>Service Fabric mesh-projekt létrehozása
 
-Nyissa meg a Visual Studio alkalmazást, majd válassza a **File** (Fájl)  > **New** (Új)  > **Project...** (Projekt) elemet
+Nyissa meg a Visual Studio alkalmazást, és válassza az**Új** >  **projekt fájlja** > **lehetőséget...**
 
 A **New Project** (Új projekt) párbeszédpanel fenti **Search** (Keresés) mezőjébe írja be a következőt: `mesh`. Válassza a **Service Fabric Mesh Application** (Service Fabric mesh-alkalmazás) sablont. Ha nem látja a sablont, győződjön meg róla, hogy telepítette a Mesh SDK-t és a VS-eszközök előzetes verzióját a [fejlesztési környezet beállításáról szóló szakaszban](service-fabric-mesh-howto-setup-developer-environment-sdk.md) ismertetett módon. 
 
@@ -107,7 +107,7 @@ Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 
 Az erőforráscsoportot az [Azure Portalról](https://portal.azure.com) is törölheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Service Fabric Mesh-alkalmazások létrehozásáról és üzembe helyezésével kapcsolatos további információért lépjen tovább az oktatóanyagra.
 > [!div class="nextstepaction"]

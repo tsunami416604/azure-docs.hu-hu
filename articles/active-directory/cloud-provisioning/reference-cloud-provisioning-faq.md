@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect felhőalapú jogosultságkiosztás – gyakori kérdések
-description: Ez a dokumentum a Felhőbeli üzembe helyezéssel kapcsolatos gyakori kérdéseket ismerteti.
+description: Ez a dokumentum ismerteti a felhőkiépítéshez gyakran feltett kérdéseket.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,75 +12,75 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77916574"
 ---
-# <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect GYIK
+# <a name="azure-active-directory-connect-faq"></a>Az Azure Active Directory csatlakozásról – gyakori kérdések
 
-További információ az Azure Active Directory (Azure AD) felhőalapú kiépítés összekapcsolásával kapcsolatos gyakori kérdésekről.
+Az Azure Active Directory (Azure AD) Connect felhőalapú kiépítéssel kapcsolatos gyakori kérdésekről olvashat.
 
 ## <a name="general-installation"></a>Általános telepítés
 
-**K: milyen gyakran fut a Felhőbeli kiépítés?**
+**K: Milyen gyakran fut a felhőkiépítés?**
 
-A Felhőbeli kiépítés ütemezve van, hogy 2 percenként fusson. 2 percenként minden felhasználó, csoport és jelszó kivonata az Azure AD-be lesz kiépítve.
+A felhőkiépítés a tervek szerint 2 percenként fut. Minden 2 perc, minden felhasználó, csoport és jelszó kivonat változások lesznek kiépítve az Azure AD.Every 2 mins, any user, group and password hash changes will be provisioned to Azure AD.
 
-**K: a jelszó-kivonatolási szinkronizálás hibáinak észlelése az első futtatáskor. miért?**
+**K: A jelszókivonat-szinkronizálási hibák látása az első futtatáskor. miért?**
 
-Ez a várható eredmény. A hibák oka, hogy a felhasználói objektum nem szerepel az Azure AD-ben. Ha a felhasználó az Azure AD-be lett kiépítve, a jelszó-kivonatokat a következő futtatáskor kell kiépíteni. Várjon néhány futtatást, és győződjön meg arról, hogy a jelszó-kivonat szinkronizálása már nem rendelkezik a hibákkal.
+Ez a várható eredmény. A hibák oka, hogy a felhasználói objektum nem jelenik meg az Azure AD-ben. Miután a felhasználó ki van építve az Azure AD-be, jelszókimondottak kell kiépítése a következő futtatásban. Várjon néhány futtatásra, és győződjön meg arról, hogy a jelszókivonat-szinkronizálás már nem tartalmazza a hibákat.
 
-**K: mi történik, ha a Active Directory-példány olyan attribútumokkal rendelkezik, amelyeket nem támogat a felhőalapú provisoning (például a címtárszolgáltatás-bővítmények)?**
+**K: Mi történik, ha az Active Directory-példány olyan attribútumokkal rendelkezik, amelyeket a felhőbeli kikötés nem támogat (például címtárbővítmények)?**
 
-A Felhőbeli kiépítés futtatja és kiépíti a támogatott attribútumokat. A nem támogatott attribútumok nem lesznek kiépítve az Azure AD-be. Tekintse át a Active Directory Directory-bővítményeit, és győződjön meg arról, hogy nincs szüksége ezekre az attribútumra az Azure AD-ba való adatforgalomhoz Ha egy vagy több attribútumra van szükség, érdemes lehet Azure AD Connect szinkronizálást használni, vagy áthelyezni a szükséges információkat a támogatott attribútumok egyikére (például a 1-15-es bővítmény-attribútumokra).
+A felhőkiépítés futni fog, és a támogatott attribútumok kiépítése. A nem támogatott attribútumok nem lesznek kiépítve az Azure AD-be. Tekintse át a címtárbővítményeket az Active Directoryban, és győződjön meg arról, hogy nincs szüksége ezekre az attribútumokra az Azure AD-be való áramláshoz. Ha egy vagy több attribútumra van szükség, fontolja meg az Azure AD Connect szinkronizálásának használatát, vagy a szükséges adatok áthelyezése a támogatott attribútumok egyikére (például az 1-15-ös bővítményattribútumok).
 
-**K: mi a különbség a Azure AD Connect szinkronizálás és a felhő kiépítés között?**
+**K: Mi a különbség az Azure AD Connect szinkronizálása és a felhőkiépítés között?**
 
-A Azure AD Connect Sync szolgáltatással a kiépítés a helyszíni szinkronizáló kiszolgálón fut. A konfigurációt a helyszíni szinkronizáló kiszolgáló tárolja. Azure AD Connect felhőalapú kiépítés esetén a létesítési konfiguráció a felhőben tárolódik, és a felhőben fut az Azure AD kiépítési szolgáltatás részeként. 
+Az Azure AD Connect szinkronizálása, kiépítése fut a helyszíni szinkronizálási kiszolgálón. A konfiguráció a helyszíni szinkronizálási kiszolgálón tárolódik. Az Azure AD Connect felhőkiépítés, a kiépítési konfiguráció a felhőben tárolódik, és fut a felhőben az Azure AD-kiépítési szolgáltatás részeként. 
 
-**K: használhatok Felhőbeli kiépítés több Active Directory erdőből való szinkronizálásra?**
+**K: Használhatom a felhőkiépítést több Active Directory-erdőből való szinkronizáláshoz?**
 
-Igen. A Felhőbeli kiépítés több Active Directory erdőből való szinkronizálásra is használható. A többerdős környezetben az összes referenciának (például a vezetőnek) a tartományon belül kell lennie.  
+Igen. A felhőkiépítés több Active Directory-erdőből történő szinkronizálásra használható. A többerdős környezetben az összes hivatkozásnak (például a kezelőnek) a tartományon belül kell lennie.  
 
-**K: Hogyan frissült az ügynök?**
+**K: Hogyan történik az ügynök frissítése?**
 
-Az ügynököket a Microsoft automatikusan frissíti. Az informatikai csapat számára ez csökkenti az új ügynökök verzióinak tesztelésére és érvényesítésére vonatkozó terheket. 
+Az ügyintézőket a Microsoft automatikusan frissíti. Az informatikai csapat számára ez csökkenti az új ügynökverziók tesztelésének és érvényesítésének terhét. 
 
-**K: le tudom tiltani az automatikus frissítést?**
+**K: Letudom tiltani az automatikus frissítést?**
 
-Nincs támogatott mód az automatikus frissítés letiltására.
+Az automatikus frissítés letiltására nincs támogatott mód.
 
-**K: módosíthatom a felhőalapú kiépítés forrás-horgonyát?**
+**K: Módosíthatom a felhőkiépítés forráshorgonyát?**
 
-Alapértelmezés szerint a Felhőbeli kiépítés az MS-DS-konzisztencia-GUID azonosítót használja tartalékként a ObjectGUID. Nincs támogatott mód a forrás-horgony módosítására.
+Alapértelmezés szerint a felhőkiépítés ms-ds-consistency-GUID-ot használ, és az ObjectGUID-re való tartalék forráshorgonyként tartalékot használ. A forráshorgony módosítása nem támogatott.
 
-**K: a Felhőbeli kiépítés használatakor az Active Directory-tartománynév (ek) ben új egyszerű szolgáltatásokat látok. Várható?**
+**K: A felhőkiépítés használatakor az AD tartománynévvel rendelkező új szolgáltatásnevek jelennek meg. Ez várható?**
 
-Igen, a Felhőbeli kiépítés létrehoz egy egyszerű szolgáltatásnevet a kiépítési konfigurációhoz, amely a tartománynevet adja meg az egyszerű szolgáltatásnév neveként. Ne módosítsa az egyszerű szolgáltatásnév konfigurációját.
+Igen, a felhőkiépítés létrehoz egy egyszerű szolgáltatás a létesítési konfiguráció a tartománynév, mint a szolgáltatás egyszerű név. Ne módosítsa a szolgáltatásegyszerű konfigurációt.
 
-**K: mi történik, ha szinkronizált felhasználóra van szükség a jelszó módosítására a következő bejelentkezéskor?**
+**K: Mi történik, ha egy szinkronizált felhasználónak módosítania kell a jelszót a következő bejelentkezéskor?**
 
-Ha a jelszó-kivonat szinkronizálása engedélyezve van a Felhőbeli kiépítésben, és a szinkronizált felhasználónak a helyszíni AD-ben a következő bejelentkezéskor módosítania kell a jelszót, a felhőalapú kiépítés nem teszi lehetővé a jelszó-kivonatok módosítását az Azure AD-be. Ha a felhasználó megváltoztatja a jelszót, a rendszer az AD-ből az Azure AD-be kiépíti a felhasználói jelszó kivonatát.
+Ha a jelszókivonat-szinkronizálás engedélyezve van a felhőkiépítésben, és a szinkronizált felhasználónak módosítania kell a jelszót a következő bejelentkezéskor a helyszíni AD-ben, a felhőalapú kiépítés nem építi ki a módosítandó jelszókivonatot az Azure AD-be. Miután a felhasználó módosítja a jelszót, a felhasználói jelszó kivonat a D-ből az Azure AD-be.
 
-**K: a felhő-kiépítés támogatja az MS-DS-consistencyGUID visszaírási bármely objektum esetében?**
+**K: A felhőkiépítés támogatja az ms-ds-consistencyGUID visszaírását bármely objektumhoz?**
 
-Nem, a Felhőbeli kiépítés nem támogatja az MS-DS-consistencyGUID visszaírási bármely objektumhoz (beleértve a felhasználói objektumokat is). 
+Nem, a felhőkiépítés nem támogatja az ms-ds-consistencyGUID visszaírását bármely objektumhoz (beleértve a felhasználói objektumokat is). 
 
-**K: kiépítem a felhasználókat a felhőalapú kiépítés használatával. Törölte a konfigurációt. Miért látom tovább a régi szinkronizált objektumokat az Azure AD-ben?** 
+**K: A felhasználók kiépítése a felhőkiépítés használatával. Töröltem a konfigurációt. Miért jelennek meg továbbra is a régi szinkronizált objektumok az Azure AD-ben?** 
 
-A konfiguráció törlésekor a Felhőbeli kiépítés nem törli a szinkronizált objektumokat az Azure AD-ben. Annak biztosítása érdekében, hogy a régi objektumok ne legyenek, módosítsa a konfiguráció hatókörét egy üres csoportra vagy szervezeti egységre. Miután a kiépítés megtisztítja az objektumokat, tiltsa le és törölje a konfigurációt. 
+A konfiguráció törlésekor a felhőkiépítés nem törli a szinkronizált objektumokat az Azure AD-ben. Annak érdekében, hogy ne legyenek a régi objektumok, módosítsa a konfiguráció hatókörét üres csoportra vagy szervezeti egységekre. Miután a kiépítés fut, és törli az objektumokat, tiltsa le és törölje a konfigurációt. 
 
-**K: mit jelent az, hogy az Exchange Hybrid nem támogatott?**
+**K: Mit jelent, hogy az Exchange hibrid nem támogatott?**
 
-Az Exchange hibrid telepítés lehetővé teszi, hogy az Exchange postafiókok a helyszínen és az Office 365-ben egy időben létezzenek. Azure AD Connect az attribútumok egy adott készletét szinkronizálja az Azure AD-ből a helyszíni címtárba.  A felhőalapú kiépítési ügynök jelenleg nem szinkronizálja ezeket az attribútumokat a helyszíni címtárba, így a Azure AD Connect helyett nem használható.
+Az Exchange hibrid telepítés lehetővé teszi, hogy az Exchange postafiókok a helyszínen és az Office 365-ben egy időben létezzenek. Az Azure AD Connect visszaszinkronizálja az attribútumok egy adott halmazát az Azure AD szolgáltatásból a helyszíni címtárba.  A felhőkiépítési ügynök jelenleg nem szinkronizálja ezeket az attribútumokat a helyszíni címtárba, és így nem támogatott az Azure AD Connect helyettesítésére.
 
-**K: telepíthetem a Cloud kiépítési ügynököt a Windows Server Core-ra?**
+**K: Telepíthetem a felhőkiépítési ügynököt a Windows Server Core rendszerre?**
 
-Nem, a Server Core-ügynök telepítése nem támogatott.
+Nem, az ügynök telepítése a kiszolgálómagra nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
-- [Mi a kiépítés?](what-is-provisioning.md)
-- [Mi az Azure AD Connect Cloud kiépítés?](what-is-cloud-provisioning.md)
+- [Mi az az üzembe helyezés?](what-is-provisioning.md)
+- [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

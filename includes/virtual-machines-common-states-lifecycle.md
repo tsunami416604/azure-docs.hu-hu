@@ -9,22 +9,22 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179058"
 ---
-Azure-beli virtuális gépek (VM) halad át, amely osztályozhatók állapotot *kiépítés* és *power* állapotok. Ez a cikk célja be ezeket az állapotokat, és kifejezetten kiemelés, ha az ügyfelek a számlázás például használat. 
+Az Azure virtuális gépek (VM-ek) különböző állapotokon megy keresztül, amelyek *kiépítésbe* és *energiagazdálkodási* állapotokba sorolhatók. A cikk célja, hogy leírja ezeket az állapotokat, és különösen kiemeli, ha a vevők nek például a használat ért. 
 
 ## <a name="power-states"></a>Energiaállapotok
 
-Az áramellátási állapot a virtuális gép az utolsó ismert állapotot jelöl.
+Az energiaállapot a virtuális gép utolsó ismert állapotát jelöli.
 
-![Virtuális gép power állapot diagramja](./media/virtual-machines-common-states-lifecycle/vm-power-states.png)
+![Virtuális gép energiaállapot-diagramja](./media/virtual-machines-common-states-lifecycle/vm-power-states.png)
 
 <br>
-Az alábbi táblázat ismerteti, minden példány állapota, és azt jelzi, hogy azt alapján példány használata, vagy nem.
+Az alábbi táblázat az egyes példányállapotok leírását tartalmazza, és azt jelzi, hogy a rendszer kiszámlázta-e a példány használatát.
 
 <table>
 <tr>
@@ -35,15 +35,15 @@ Az alábbi táblázat ismerteti, minden példány állapota, és azt jelzi, hogy
 Leírás
 </th>
 <th>
-Példány használati számlázás
+Példányhasználati számlázás
 </th>
 </tr>
 <tr>
 <td>
-<p><b>Indítása</b></p>
+<p><b>Kezdő</b></p>
 </td>
 <td>
-<p>Virtuális gép indítása folyamatban van.</p>
+<p>A virtuális gép elindul.</p>
 <code>"statuses": [<br>
    {<br>
       "code": "PowerState/starting",<br>
@@ -53,7 +53,7 @@ Példány használati számlázás
     ]</code><br>
 </td>
 <td>
-<p><b>Nem számítunk fel díjat</b></p>
+<p><b>Nincs számlázva</b></p>
 </td>
 </tr>
 <tr>
@@ -61,7 +61,7 @@ Példány használati számlázás
 <p><b>Fut</b></p>
 </td>
 <td>
-<p>Virtuális gép normál működő állapotban</p>
+<p>Normál munkaállapot egy virtuális géphez</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/running",<br>
@@ -71,15 +71,15 @@ Példány használati számlázás
  ]</code><br>
 </td>
 <td>
-<p><b>A számlázás</b></p>
+<p><b>Számlázott</b></p>
 </td>
 </tr>
 <tr>
 <td>
-<p><b>Leállítása</b></p>
+<p><b>Leállítás</b></p>
 </td>
 <td>
-<p>Ez csak átmeneti állapot. Amikor elkészült, állapotúként jelenik meg **leállítva**.</p>
+<p>Ez egy átmeneti állapot. Ha elkészült, akkor megjelenik a **Leállítva**.</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/stopping",<br>
@@ -89,16 +89,16 @@ Példány használati számlázás
  ]</code><br>
 </td>
 <td>
-<p><b>A számlázás</b></p>
+<p><b>Számlázott</b></p>
 </td>
 </tr>
 <tr>
 <td>
-<p><b>Stopped</b></p>
+<p><b>Leállítva</b></p>
 </td>
 <td>
-<p>A virtuális gép lett állítva a vendég operációs rendszeren belül lefelé a, vagy a kikapcsolt API-k használatával.</p>
-<p>Hardver még hozzá van rendelve a virtuális gép, és a gazdagép marad. </p>
+<p>A virtuális gép leállt a vendég operációs rendszeren belülről vagy a PowerOff API-k használatával.</p>
+<p>A hardver továbbra is le van foglalva a virtuális gép, és továbbra is a gazdagépen marad. </p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/stopped",<br>
@@ -108,15 +108,15 @@ Példány használati számlázás
  ]</code><br>
 </td>
 <td>
-<p><b>A számlázás&#42;</b></p>
+<p><b>Számlázott&#42;</b></p>
 </td>
 </tr>
 <tr>
 <td>
-<p><b>Felszabadítása</b></p>
+<p><b>Felszabadítás</b></p>
 </td>
 <td>
-<p>Átmeneti állapot. Amikor elkészült, a virtuális gép jelenik meg: **Deallocated**.</p>
+<p>Átmeneti állapot. Ha elkészült, a virtuális gép **felszabadítottként**jelenik meg.</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/deallocating",<br>
@@ -126,15 +126,15 @@ Példány használati számlázás
  ]</code><br>
 </td>
 <td>
-<p><b>Nem számítunk fel díjat&#42;</b></p>
+<p><b>Nem számlázott&#42;</b></p>
 </td>
 </tr>
 <tr>
 <td>
-<p><b>Felszabadítása</b></p>
+<p><b>Felszabadítva</b></p>
 </td>
 <td>
-<p>A virtuális gép sikeresen leállítva, és a eltávolítása a gazdagépről. </p>
+<p>A virtuális gép sikeresen leállt, és eltávolították a gazdagép. </p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/deallocated",<br>
@@ -144,30 +144,30 @@ Példány használati számlázás
  ]</code><br>
 </td>
 <td>
-<p><b>Nem számítunk fel díjat</b></p>
+<p><b>Nincs számlázva</b></p>
 </td>
 </tr>
 </tbody>
 </table>
 
 
-&#42;Egyes Azure-erőforrások, például a lemezek és a hálózatkezelés, a költségek. Szoftverek licenceit a példányon nem díjkötelesek.
+&#42;egyes Azure-erőforrások, például a lemezek és a hálózatkezelés, díjakat vonnak maga után. A példányon található szoftverlicencek nem terhelnek díjat.
 
 ## <a name="provisioning-states"></a>Kiépítési állapotok
 
-Egy kiépítési állapota a felhasználó által kezdeményezett, a vezérlősík művelet a virtuális gép állapotát. Ezeket az állapotokat a virtuális gép energiaállapota elkülönülnek.
+A kiépítési állapot a felhasználó által kezdeményezett, vezérlő-sík művelet állapota a virtuális gépen. Ezek az állapotok elkülönülnek a virtuális gép energiaállapotától.
 
-- **Hozzon létre** – a virtuális gép létrehozása.
+- **Hozzon létre** – virtuális gép létrehozása.
 
-- **Frissítés** – frissíti egy meglévő virtuális Gépet a modell. Néhány nem modell vált virtuális gép például Start/Restart frissítés is tartozik.
+- **Frissítés** – frissíti a modell egy meglévő virtuális gép. A virtuális gép néhány nem modelles módosítása, például a Start/Restart szintén frissítés alá esik.
 
-- **Törlés** – virtuális gép törlése.
+- **Törlés** – Virtuális gép törlése.
 
-- **Szabadítsa fel** – itt egy virtuális gép leállítása és eltávolítása a gazdagépről. Virtuális gép felszabadítása egy adott frissítés számít, így frissítésével kapcsolatos kiépítési állapotok fognak megjelenni.
+- **Felszabadítás –** ahol a virtuális gép leáll, és eltávolítja a gazdagép. A virtuális gép üzembe helyezése frissítésnek minősül, így a frissítéshez kapcsolódó kiépítési állapotokat jelenít meg.
 
 
 
-A platform elfogadta a felhasználó által kezdeményezett művelet után az alábbiakban az átmeneti művelet állapotok:
+Az átmeneti művelet állapotai a platform által kezdeményezett művelet elfogadása után találhatók:
 
 <br>
 
@@ -210,7 +210,7 @@ A platform elfogadta a felhasználó által kezdeményezett művelet után az al
 </tr>
 <tr>
 <td width="162">
-<p><b>Törlése</b></p>
+<p><b>Törlés</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>
@@ -224,11 +224,11 @@ A platform elfogadta a felhasználó által kezdeményezett művelet után az al
 </tr>
 <tr>
 <td width="162">
-<p><b>Az operációs rendszer kiépítési állapotok</b></p>
+<p><b>Operációs rendszer kiépítési állapotai</b></p>
 </td>
 <td width="366">
-<p>Ha egy virtuális gép létrehozása egy operációs rendszer lemezképe és nem a speciális rendszerképek, majd következő alállapottal figyelhető meg:</p>
-<p>1. <b>OSProvisioningInprogress</b> &ndash; a virtuális gép fut, és a vendég operációs rendszer telepítése folyamatban van. <p /> 
+<p>Ha egy virtuális gép operációs rendszerképpel jön létre, és nem egy speciális lemezképpel, akkor a következő alállapotok figyelhetők meg:</p>
+<p>1. <b>OSProvisioningInprogress</b> &ndash; A virtuális gép fut, és a vendég operációs rendszer telepítése folyamatban van. <p /> 
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
@@ -236,7 +236,7 @@ A platform elfogadta a felhasználó által kezdeményezett művelet után az al
  "displayStatus": "OS Provisioning In progress"<br>
  }<br>
 ]</code><br>
-<p>2. <b>OSProvisioningComplete</b> &ndash; rövid ideig tartó állapota. A virtuális gép átkerül gyorsan **sikeres** , kivéve, ha bármely bővítményeket külön kell telepíteni. Bővítmények telepítése időt is igénybe vehet. <br />
+<p>2. <b>OSProvisioningComplete</b> &ndash; rövid életű állapot. A virtuális gép gyorsan áttér a **Sikeres,** kivéve, ha bármilyen bővítményt kell telepíteni. A bővítmények telepítése időbe telhet. <br />
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningComplete",<br>
@@ -244,15 +244,15 @@ A platform elfogadta a felhasználó által kezdeményezett művelet után az al
  "displayStatus": "OS Provisioning Complete"<br>
  }<br>
 ]</code><br>
-<p><b>Megjegyzés</b>: Operációs rendszer telepítése váltáshoz **sikertelen** Ha egy operációs rendszer hibája, vagy az operációs rendszer telepítése nem időben. Ügyfeleink az infrastruktúra a központilag telepített virtuális gép díját felszámítjuk.</p>
+<p><b>Megjegyzés:</b>Az operációs rendszer kiépítése **átválthat sikertelenre,** ha operációs rendszer hibás, vagy az operációs rendszer nem települ időben. Az ügyfelek nek fizetnie kell az infrastruktúra üzembe helyezett virtuális gépért.</p>
 </td>
 </tr>
 </table>
 
 
-A művelet végrehajtása után a virtuális gép fognak váltani a következő állapotok valamelyikével:
+A művelet befejezése után a virtuális gép a következő állapotok egyikébe vált:
 
-- **Sikeres** – a felhasználó által kezdeményezett műveletek végrehajtása.
+- **Sikeres –** a felhasználó által kezdeményezett műveletek befejeződtek.
 
     ```
   "statuses": [ 
@@ -267,7 +267,7 @@ A művelet végrehajtása után a virtuális gép fognak váltani a következő 
 
  
 
-- **Nem sikerült** – a sikertelen műveletet jelöl. Tekintse meg a hibakódok további információkért és a lehetséges megoldásokról.
+- **Sikertelen** – sikertelen műveletet jelöl. További információkért és lehetséges megoldásokért tekintse meg a hibakódokat.
 
     ```
   "statuses": [
@@ -283,11 +283,11 @@ A művelet végrehajtása után a virtuális gép fognak váltani a következő 
 
 
 
-## <a name="vm-instance-view"></a>Virtuális gép példányait tartalmazó nézet
+## <a name="vm-instance-view"></a>Virtuálisgép-példány nézete
 
-API példányait tartalmazó nézetet biztosít a virtuális gép fut-állapot információt. További információkért lásd: a [virtuálisgép - példányokat tartalmazó nézet](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview) API dokumentációja.
+A példánynézet API virtuális gép futásállapot-információkat biztosít. További információt a [Virtuális gépek – Példánynézet](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview) API dokumentációjában talál.
 
-Az Azure erőforrás-kezelő egy egyszerű felhasználói Felületet biztosít a virtuális gép futó állapotban megtekintése: [Az erőforrás-kezelő](https://resources.azure.com/).
+Az Azure Resources Explorer egy egyszerű felhasználói felületet biztosít a virtuális gép futó állapotának megtekintéséhez: [Erőforrás-kezelő](https://resources.azure.com/).
 
-Kiépítési állapotok a virtuális gép tulajdonságait, és példányait tartalmazó nézet látható. Virtuális gép példányait tartalmazó nézet energiaállapotok érhetők el. 
+A kiépítési állapotok láthatók a virtuális gép tulajdonságai és a példánynézetben. A teljesítményállapotok a virtuális gép példánynézetében érhetők el. 
 

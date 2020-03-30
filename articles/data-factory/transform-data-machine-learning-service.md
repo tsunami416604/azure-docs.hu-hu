@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning folyamatok végrehajtása
-description: Megtudhatja, hogyan futtathatja Azure Machine Learning folyamatait a Azure Data Factory folyamatokban.
+title: Azure Machine Learning-folyamatok végrehajtása
+description: Ismerje meg, hogyan futtathatja az Azure Machine Learning-folyamatokat az Azure Data Factory-folyamatokban.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,17 +11,17 @@ author: djpmsft
 manager: anandsub
 ms.date: 10/10/2019
 ms.openlocfilehash: b54504cf8ca7b32bf14bd4b7e0c561ffd56d4098
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76155163"
 ---
-# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Machine Learning folyamatok végrehajtása Azure Data Factory
+# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Machine Learning-folyamatok végrehajtása az Azure Data Factoryban
 
-Futtassa a Azure Machine Learning folyamatokat a Azure Data Factory folyamatok lépéseként. A Machine Learning folyamat végrehajtása tevékenység lehetővé teszi a kötegelt előrejelzési forgatókönyvek használatát, például a lehetséges kölcsönzési beállítások azonosítását, a hangulat meghatározását és az ügyfelek viselkedési mintáinak elemzését.
+Futtassa az Azure Machine Learning-folyamatokat az Azure Data Factory-folyamatok lépéseként. A Machine Learning végrehajtási folyamat tevékenység lehetővé teszi a kötegelt előrejelzési forgatókönyvek, például a lehetséges hitel alapértelmezett értékek azonosítását, a hangulat meghatározását és az ügyfelek viselkedési mintáinak elemzését.
 
-Az alábbi videó a szolgáltatás hat perces bevezetését és bemutatóját tartalmazza.
+Az alábbi videó tartalmaz egy hat perces bevezetése és bemutatása ezt a funkciót.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/How-to-execute-Azure-Machine-Learning-service-pipelines-in-Azure-Data-Factory/player]
 
@@ -48,26 +48,26 @@ Az alábbi videó a szolgáltatás hat perces bevezetését és bemutatóját ta
 
 ## <a name="type-properties"></a>Típus tulajdonságai
 
-Tulajdonság | Leírás | Megengedett értékek | Szükséges
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | A folyamatban szereplő tevékenység neve | Sztring | Igen
-type | A tevékenység típusa "AzureMLExecutePipeline". | Sztring | Igen
-linkedServiceName | Társított szolgáltatás Azure Machine Learning | Társított szolgáltatás leírása | Igen
-mlPipelineId | A közzétett Azure Machine Learning folyamat azonosítója | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Igen
-ExperimentName | A Machine Learning folyamat futtatási kísérletének neve | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
-mlPipelineParameters | A közzétett Azure Machine Learning folyamat-végpontnak átadandó kulcs-érték párok. A kulcsoknak meg kell egyezniük a közzétett Machine Learningi folyamatban megadott folyamat-paraméterek neveivel. | Kulcs értékű párokkal (vagy resultType objektummal rendelkező kifejezéssel) rendelkező objektum | Nem
-mlParentRunId | A szülő Azure Machine Learning folyamat futtatási azonosítója | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
-continueOnStepFailure | Annak megadása, hogy folytatja-e a Machine Learning folyamat más lépéseinek végrehajtását, ha egy lépés meghiúsul | logikai | Nem
+név | A folyamatban lévő tevékenység neve | Sztring | Igen
+type | A tevékenység típusa "AzureMLExecutePipeline" | Sztring | Igen
+linkedServiceName | Csatolt szolgáltatás az Azure Machine Learninghez | Csatolt szolgáltatás hivatkozása | Igen
+ml PipelineId | A közzétett Azure Machine Learning-folyamat azonosítója | Karakterlánc (vagy kifejezés resultKarakterlánctal) | Igen
+experimentName (kísérletezésneve) | A Machine Learning-folyamat futtatásának előzménykísérletének futtatása | Karakterlánc (vagy kifejezés resultKarakterlánctal) | Nem
+mlPipelineParameters | Kulcs, érték párok át kell adni a közzétett Azure Machine Learning-folyamat végpont. A kulcsoknak meg kell egyezniük a közzétett Machine Learning-folyamatban definiált folyamatparaméterek nevével. | Kulcsérték-párokkal rendelkező objektum (vagy kifejezés resultType objektummal) | Nem
+mlParentRunId | A szülő Azure Machine Learning-folyamat futtatási azonosítója | Karakterlánc (vagy kifejezés resultKarakterlánctal) | Nem
+continueOnStepFailure | A Machine Learning-folyamat egyéb lépéseinek végrehajtásának folytatása, ha egy lépés sikertelen | logikai | Nem
 
-## <a name="next-steps"></a>Következő lépések
-A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást:
+## <a name="next-steps"></a>További lépések
+Az alábbi cikkekben elmagyarázhatja, hogyan alakíthatja át más módon az adatokat:
 
 * [Adatfolyam-tevékenység végrehajtása](control-flow-execute-data-flow-activity.md)
-* [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)
-* [Struktúra tevékenysége](transform-data-using-hadoop-hive.md)
-* [Pig-tevékenység](transform-data-using-hadoop-pig.md)
+* [U-SQL tevékenység](transform-data-using-data-lake-analytics.md)
+* [Hive-tevékenység](transform-data-using-hadoop-hive.md)
+* [Sertésaktivitás](transform-data-using-hadoop-pig.md)
 * [MapReduce tevékenység](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop streaming-tevékenység](transform-data-using-hadoop-streaming.md)
-* [Spark-tevékenység](transform-data-using-spark.md)
+* [Hadoop streaming tevékenység](transform-data-using-hadoop-streaming.md)
+* [Szikraaktivitás](transform-data-using-spark.md)
 * [.NET egyéni tevékenység](transform-data-using-dotnet-custom-activity.md)
 * [Tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)

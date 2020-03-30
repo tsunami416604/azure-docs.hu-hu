@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics lekérdezések hibakeresése helyileg a Visual Studióban a feladatok diagramjának használatával
-description: Ez a cikk azt ismerteti, hogyan lehet a lekérdezéseket helyileg hibakeresést végezni a Azure Stream Analytics Tools for Visual Studio alkalmazásban.
+title: Hibakeresés az Azure Stream Analytics helyi lekérdezéseia Visual Studio feladatábrájával
+description: Ez a cikk ismerteti, hogyan hibakeresés lekérdezések helyileg az Azure Stream Analytics-eszközök a Visual Studio feladatdiagram használatával.
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -8,121 +8,121 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 106b1f0b765700803d2cd55b5e049fae5be3dfad
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76847198"
 ---
-# <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Azure Stream Analytics lekérdezések hibakeresése helyileg a Visual Studióban a feladatok diagramjának használatával
+# <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Hibakeresés az Azure Stream Analytics helyi lekérdezéseia Visual Studio feladatábrájával
 
-Az eredmény nélküli vagy váratlan eredményekkel rendelkező feladatok gyakori hibaelhárítási forgatókönyvek a streaming lekérdezésekhez. A feladatütemezés a Visual Studióban helyileg, a köztes eredményhalmaz és az egyes lépések metrikáinak vizsgálatára is használható. A feladatok diagramjai segíthetnek a probléma okának gyors elkülönítésében a hibák elhárítása során.
+Olyan feladatok, amelyek nem eredményeznek eredményt vagy váratlan eredményeket, gyakori hibaelhárítási forgatókönyvek a streamelési lekérdezésekhez. A feladatdiagram ot a lekérdezés helyi tesztelése közben használhatja a Visual Studióban, hogy megvizsgálja az egyes lépésekkel kapcsolatban a köztes eredményhalmazt és a metrikákat. A feladatábrák segítségével gyorsan elkülönítheti a probléma forrását a problémák elhárításakor.
 
-## <a name="debug-a-query-using-job-diagram"></a>Lekérdezés hibakeresése a feladatütemezés használatával
+## <a name="debug-a-query-using-job-diagram"></a>Lekérdezés hibakeresése feladatdiagram használatával
 
-A bemeneti adatoknak a kimeneti adatokba való átalakítására szolgáló Azure Stream Analytics szkript. A feladatütemezés azt mutatja be, hogy az adatok hogyan áramlanak be a bemeneti forrásokból (Event hub, IoT Hub stb.) több lekérdezési lépéssel, végül pedig a kimeneti mosogatók számára. Minden lekérdezési lépés egy `WITH` utasítás használatával a parancsfájlban definiált ideiglenes eredményhalmaz számára van leképezve. Megtekintheti az adatokat, valamint az egyes lekérdezési lépések mérőszámait az egyes köztes eredményhalmaz-készletekben, hogy megtalálja a probléma forrását.
-
-> [!NOTE]
-> Ez a feladatütemezés csak egy csomópontban jeleníti meg a helyi tesztelés adatait és mérőszámait. Nem használható a teljesítmény finomhangolásához és a hibaelhárításhoz.
-
-### <a name="start-local-testing"></a>Helyi tesztelés indítása
-
-Ebből a rövid útmutatóból megtudhatja [, hogyan](stream-analytics-quick-create-vs.md) hozhat létre egy stream Analytics feladatot a Visual Studióval, vagy hogyan [exportálhat egy meglévő feladatot egy helyi projektbe](stream-analytics-vs-tools.md#export-jobs-to-a-project). Ha a lekérdezést helyi bemeneti adatokkal szeretné tesztelni, kövesse az alábbi [utasításokat](stream-analytics-live-data-local-testing.md). Ha élő bemenettel szeretne tesztelni, lépjen a következő lépésre.
+Az Azure Stream Analytics-parancsfájl a bemeneti adatok kimeneti adatokká alakítására szolgál. A feladatdiagram bemutatja, hogyan áramlik a bemeneti forrásokból (Event Hub, IoT Hub, stb.) több lekérdezési lépés, és végül a kimeneti fogadók. Minden lekérdezési lépés egy `WITH` utasítás használatával a parancsfájlban definiált ideiglenes eredményhalmazhoz van rendelve. Megtekintheti az adatokat, valamint a metrikák minden lekérdezési lépés minden köztes eredményhalmaz, hogy megtalálják a forrása a probléma.
 
 > [!NOTE]
-> Ha a feladatot helyi projektbe exportálja, és egy élő bemeneti adatfolyamon szeretne tesztelni, akkor újra meg kell adnia az összes bemenet hitelesítő adatait.  
+> Ez a feladatdiagram csak a helyi tesztelés adatait és metrikákat jeleníti meg egyetlen csomópontban. Nem használható teljesítményhangolásra és hibaelhárításra.
 
-Válassza ki a bemeneti és kimeneti forrást a parancsfájl-szerkesztőből, és válassza a **helyi Futtatás**lehetőséget. A feladatütemezés a jobb oldalon jelenik meg.
+### <a name="start-local-testing"></a>Helyi tesztelés megkezdése
+
+Ebből a [rövid útmutatóból](stream-analytics-quick-create-vs.md) megtudhatja, hogyan hozhat létre Stream Analytics-feladatot a Visual Studio használatával, illetve hogyan [exportálhat egy meglévő feladatot egy helyi projektbe.](stream-analytics-vs-tools.md#export-jobs-to-a-project) Ha a lekérdezést helyi bemeneti adatokkal szeretné tesztelni, kövesse az [alábbi utasításokat.](stream-analytics-live-data-local-testing.md) Ha élő bevitellel szeretné tesztelni, lépjen a következő lépésre.
+
+> [!NOTE]
+> Ha exportál egy feladatot a helyi projektbe, és egy élő bemeneti adatfolyamon szeretne tesztelni, újra meg kell adnia az összes bemenet hitelesítő adatait.  
+
+Válassza ki a bemeneti és kimeneti forrást a parancsfájlszerkesztőből, és válassza a **Futtatás helyileg**lehetőséget. A feladatdiagram a jobb oldalon jelenik meg.
 
 ### <a name="view-the-intermediate-result-set"></a>A köztes eredményhalmaz megtekintése  
 
-1. A lekérdezési lépés kiválasztásával navigáljon a parancsfájlhoz. A rendszer automatikusan átirányítja a megfelelő szkriptre a bal oldali szerkesztőben.
+1. A parancsfájlra való navigáláshoz válassza ki a lekérdezési lépést. A rendszer automatikusan a megfelelő parancsfájlhoz irányítja a bal oldali szerkesztőben.
 
-   ![Feladatok diagramjának navigálása parancsfájl](./media/debug-locally-using-job-diagram/navigate-script.png)
+   ![Navigálás a feladatdiagramparancsfájlban](./media/debug-locally-using-job-diagram/navigate-script.png)
 
-2. Válassza ki a lekérdezési lépést, és válassza az **előnézet** lehetőséget a felugró ablakban. Az eredményhalmaz az alsó eredmény ablakának egyik lapján jelenik meg.
+2. Jelölje ki a lekérdezési lépést, és válassza az **Előnézet** lehetőséget a felpezsdüljön párbeszédpanelen. Az eredményhalmaz az alsó eredményablak egyik lapján jelenik meg.
 
-   ![A feladatütemezés előzetes verziójának eredménye](./media/debug-locally-using-job-diagram/preview-result.png)
+   ![Feladatdiagram előnézetének eredménye](./media/debug-locally-using-job-diagram/preview-result.png)
 
-### <a name="view-step-metrics"></a>Lépés metrikáinak megtekintése
+### <a name="view-step-metrics"></a>Lépésmérők megtekintése
 
-Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikákat.
+Ebben a szakaszban a diagram egyes részeihez elérhető mutatókat ismerteti.
 
-#### <a name="input-sources-live-stream"></a>Bemeneti források (élő stream)
+#### <a name="input-sources-live-stream"></a>Bemeneti források (élő közvetítés)
 
-![Feladatütemezés élő bemeneti forrásai](./media/debug-locally-using-job-diagram/live-input.png)
+![Feladatdiagram élő bemeneti forrásai](./media/debug-locally-using-job-diagram/live-input.png)
 
 |Metrika|Leírás|
 |-|-|
 |**TaxiRide**| A bemenet neve.|
-|**Event Hub** | Bemeneti forrás típusa|
-|**Események**|Az olvasott események száma.|
-|**Várakozó-események forrásai**|Hány üzenetet kell olvasni Event Hubs és IoT Hub bemenetekhez.|
-|**Bájtban lévő események**|A beolvasott bájtok száma.|
-| **Csökkentett teljesítményű események**|Azon események száma, amelyek nem a deszerializálás miatt voltak probléma.|
-|**Korai események**| Az alkalmazás időbélyegét tartalmazó események száma a felső vízjel előtt.|
-|**Késői események**| Az alkalmazás időbélyegzővel rendelkező eseményeinek száma a felső vízjel után.|
-|**Eseményforrás**| Az olvasott adategységek száma. Például a Blobok száma.|
+|**Eseményközpont** | Bemeneti forrás típusa.|
+|**Események**|A felolvasott események száma.|
+|**Eldugott eseményforrások**|Hány további üzeneteket kell olvasni az Event Hubs és az IoT Hub bemenetek.|
+|**Események bájtban**|Az olvasott bájtok száma.|
+| **Leromlott események**|Azoknak az eseményeknek a száma, amelyek nem deszerializálási problémával kapcsolatosak.|
+|**Korai események**| Azoknak az eseményeknek a száma, amelyek alkalmazásidőbélyeggel rendelkeznek a magas vízjel előtt.|
+|**Késői események**| Az alkalmazások időbélyeggel a magas vízjel után lévő események száma.|
+|**Eseményforrások**| A beolvasott adategységek száma. Például a blobok száma.|
 
 #### <a name="input-sources-local-input"></a>Bemeneti források (helyi bemenet)
 
-![Munkaköri diagram helyi bemeneti forrásai](./media/debug-locally-using-job-diagram/local-input.png)
+![Feladatdiagram helyi bemeneti forrásai](./media/debug-locally-using-job-diagram/local-input.png)
 
 |Metrika|Leírás|
 |-|-|
 |**TaxiRide**| A bemenet neve.|
-|**Sorok száma**| A lépésből generált sorok száma.|
-|**Adatméret**| Az ebből a lépésből generált adatok mérete.|
-|**Helyi bemenet**| Helyi adatok használata bemenetként.|
+|**Sorszám**| A lépésből létrehozott sorok száma.|
+|**Adatméret**| Az ebből a lépésből létrehozott adatok mérete.|
+|**Helyi bevitel**| Helyi adatok használata bevitelként.|
 
-#### <a name="query-steps"></a>Lekérdezés lépései
+#### <a name="query-steps"></a>A lekérdezés lépései
 
-![Feladatütemezés lekérdezési lépése](./media/debug-locally-using-job-diagram/query-step.png)
+![Feladatdiagram lekérdezési lépése](./media/debug-locally-using-job-diagram/query-step.png)
 
 |Metrika|Leírás|
 |-|-|
 |**TripData**|Az ideiglenes eredményhalmaz neve.|
-|**Sorok száma**| A lépésből generált sorok száma.|
-|**Adatméret**| Az ebből a lépésből generált adatok mérete.|
+|**Sorszám**| A lépésből létrehozott sorok száma.|
+|**Adatméret**| Az ebből a lépésből létrehozott adatok mérete.|
   
-#### <a name="output-sinks-live-output"></a>Kimeneti mosogatók (élő kimenet)
+#### <a name="output-sinks-live-output"></a>Kimeneti fogadók (élő kimenet)
 
-![Feladatütemezés helyi kimeneti elsüllyedés](./media/debug-locally-using-job-diagram/live-output.png)
-
-|Metrika|Leírás|
-|-|-|
-|**regionaggEH**|A kimenet neve.|
-|**Események**|A nyelők számára Kimenõ események száma.|
-
-#### <a name="output-sinks-local-output"></a>Kimeneti mosogatók (helyi kimenet)
-
-![Feladatütemezés helyi kimeneti elsüllyedés](./media/debug-locally-using-job-diagram/local-output.png)
+![Feladatdiagram helyi kimeneti fogadói](./media/debug-locally-using-job-diagram/live-output.png)
 
 |Metrika|Leírás|
 |-|-|
 |**regionaggEH**|A kimenet neve.|
-|**Helyi kimenet**| Eredmény kimenete egy helyi fájlba.|
-|**Sorok száma**| A sorok kimenetének száma a helyi fájlba.|
-|**Adatméret**| Az adatkimenet mérete a helyi fájlba.|
+|**Események**|A fogadók hoz létreaz események kimenetének száma.|
 
-### <a name="close-job-diagram"></a>Feladatok diagramjának lezárása
+#### <a name="output-sinks-local-output"></a>Kimeneti fogadók (helyi kimenet)
 
-Ha már nincs szüksége a feladatütemezés megadására, a jobb felső sarokban kattintson a **Bezárás** gombra. A diagram ablakának bezárása után újra kell indítani a helyi tesztelést, hogy megtekintse.
+![Feladatdiagram helyi kimeneti fogadói](./media/debug-locally-using-job-diagram/local-output.png)
 
-### <a name="view-job-level-metrics-and-stop-running"></a>A feladatok szintjének metrikáinak megtekintése és a Futtatás leállítása
+|Metrika|Leírás|
+|-|-|
+|**regionaggEH**|A kimenet neve.|
+|**Helyi kimenet**| Eredménykimenet helyi fájlba.|
+|**Sorszám**| A helyi fájlba kimeneti sorok száma.|
+|**Adatméret**| A helyi fájlba irányuló adatkimenet mérete.|
 
-A felugró konzolon megjelennek a feladatok szintjének egyéb mérőszámai. Ha le szeretné állítani a feladatot, nyomja le a **CTRL + C** billentyűkombinációt a konzolon.
+### <a name="close-job-diagram"></a>Munkadiagram bezárása
 
-![Feladatok diagramjának leállítása](./media/debug-locally-using-job-diagram/stop-job.png)
+Ha már nincs szüksége a feladatdiagramra, válassza a Jobb felső sarokban a **Bezárás** lehetőséget. A diagramablak bezárása után újra el kell kezdenie a helyi tesztelést, hogy láthassa.
+
+### <a name="view-job-level-metrics-and-stop-running"></a>Feladatszint-mérőszámok megtekintése és futás ának leállítása
+
+Más feladatszintű metrikák jelennek meg az előugró konzolon. Ha le szeretné állítani a feladatot, nyomja le a **Ctrl+C billentyűkombinációt** a konzolon.
+
+![Feladatdiagram leállítási feladata](./media/debug-locally-using-job-diagram/stop-job.png)
 
 ## <a name="limitations"></a>Korlátozások
 
-* A hitelesítési modellre vonatkozó korlátozások miatt nem támogatottak a Power BI és Azure Data Lake Storage Gen1 kimeneti mosogatók.
+* A Power BI és az Azure Data Lake Storage Gen1 kimeneti fogadók nem támogatottak a hitelesítési modell korlátai miatt.
 
-* Csak a Felhőbeli beviteli lehetőségek támogatják az [időszabályzatokat](stream-analytics-out-of-order-and-late-events.md) , míg a helyi beviteli beállítások nem.
+* Csak a felhőalapú beviteli beállítások rendelkeznek [időházirend-támogatással,](stream-analytics-out-of-order-and-late-events.md) míg a helyi beviteli beállítások nem.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
-* [A Visual Studio használata Azure Stream Analytics feladatok megtekintéséhez](stream-analytics-vs-tools.md)
-* [Élő adatellenőrzés helyi tesztelése a Visual Studio Azure Stream Analytics eszközeivel (előzetes verzió)](stream-analytics-live-data-local-testing.md)
+* [Rövid útmutató: Stream Analytics-feladat létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
+* [Az Azure Stream Analytics-feladatok megtekintése a Visual Studióval](stream-analytics-vs-tools.md)
+* [Élő adatok helyi tesztelése az Azure Stream Analytics-eszközök kel a Visual Studio számára (előzetes verzió)](stream-analytics-live-data-local-testing.md)

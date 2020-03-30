@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Az Azure Data Explorer webes felhasználói felületén adatok lekérdezése'
-description: Ez a rövid útmutatóban megismerheti, hogyan lekérdezése, és megoszthatja az adatokat az Azure Data Explorer webes felhasználói felületén.
+title: 'Rövid útmutató: Lekérdezési adatok az Azure Data Explorer webes felhasználói felületén'
+description: Ebben a rövid útmutatóban megtudhatja, hogyan kérdezheti le és oszthatja meg az adatokat az Azure Data Explorer webes felhasználói felületén.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/04/2019
 ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67797193"
 ---
-# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Gyors útmutató: Az Azure Data Explorer webes felhasználói felületén adatok lekérdezése
+# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Rövid útmutató: Lekérdezési adatok az Azure Data Explorer webes felhasználói felületén
 
 Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer biztosít egy webalkalmazást, amely lehetővé teszi lekérdezések futtatását és megosztását. Az alkalmazás elérhető az Azure Portalon és különálló webalkalmazásként is. Ebben az oktatóanyagban a különálló verziót használjuk, ami lehetővé teszi a csatlakozást egyszerre több fürthöz, illetve a lekérdezésekre mutató mélyhivatkozások megosztását.
 
@@ -26,7 +26,7 @@ A rövid útmutató elvégzéséhez az Azure-előfizetés mellett szüksége les
 
 ## <a name="sign-in-to-the-application"></a>Bejelentkezés az alkalmazásba
 
-Jelentkezzen be az [alkalmazásba](https://dataexplorer.azure.com/).
+Jelentkezzen be [az alkalmazásba.](https://dataexplorer.azure.com/)
 
 ## <a name="add-clusters"></a>Fürtök hozzáadása
 
@@ -38,11 +38,11 @@ Hozzá kell adnia egy kapcsolatot legalább egy fürthöz, mielőtt elkezdhetne 
 
 1. A bal felső sarokban válassza a **Fürt hozzáadása** lehetőséget.
 
-1. Az a **hozzáadása fürthöz** párbeszédpanelen adja meg az URI-t, majd válassza ki **Hozzáadás**.
+1. A **Fürt hozzáadása** párbeszédpanelen adja meg az URI-t, majd válassza a **Hozzáadás lehetőséget.**
 
-   A súgófürtben URI-t, előfordulhat, hogy használja `https://help.kusto.windows.net`. Ha saját fürtöt, adja meg a fürt URI azonosítója. Ha például `https://mydataexplorercluster.westus.kusto.windows.net` az alábbi képen látható módon:
+   Használhatja a súgó fürt `https://help.kusto.windows.net`URI, . Ha saját fürttel rendelkezik, adja meg a fürt URI-ját. Például, `https://mydataexplorercluster.westus.kusto.windows.net` mint a következő képen:
 
-    ![Kiszolgáló URI-ra a portálon](media/web-query-data/server-uri.png)
+    ![KiszolgálóURI a portálon](media/web-query-data/server-uri.png)
 
 1. A bal oldali panelen meg kell jelennie a **help** fürtnek. Bontsa ki a **Samples** adatbázist, hogy lássa azokat a mintatáblákat, amelyekhez hozzáférése van.
 
@@ -151,7 +151,7 @@ Most, hogy áttekintettük az alapszintű lekérdezések működését, nézzük
 
     A panel hasonlóan működik, mint az Excelben a kimutatástábla mezőlistája: lehetővé teszi további elemzések elvégzését magán a rácson.
 
-1. Válassza ki **Pivot mód**, majd húzza az oszlopokat a következő: **Állapot** való **csoportok sor**; **DamageProperty** való **értékek**; és **EventType** való **oszlopfeliratok**.  
+1. Válassza ki a **Pivot Mode** (Kimutatás mód) elemet, majd húzással rendezze az oszlopokat a következők szerint: a **State** oszlopot a **Sorcsoportok**; a **DamageProperty** oszlopot az **Értékek**; az **EventType** oszlopot pedig az **Oszlopcímkék** alá.  
 
     ![Kimutatás mód](media/web-query-data/pivot-mode.png)
 

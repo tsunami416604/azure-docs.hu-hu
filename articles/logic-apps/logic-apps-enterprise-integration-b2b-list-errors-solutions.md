@@ -1,6 +1,6 @@
 ---
-title: Gyakori hibák és problémák megoldása a B2B-forgatókönyvekben
-description: Gyakori hibákkal és problémákkal kapcsolatos megoldások keresése a B2B-forgatókönyvek hibaelhárításakor Azure Logic Apps
+title: Megoldások a B2B-forgatókönyvek gyakori hibáira és problémáira
+description: Megoldások az Azure Logic Apps b2B-forgatókönyvek hibaelhárításakor előforduló gyakori hibákra és problémákra
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,58 +9,58 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: 38e281ce3d8117bff719b1bb572f09acbbb89669
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666686"
 ---
-# <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>B2B-hibák és-megoldások a Azure Logic Apps
+# <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>B2B hibák és megoldások az Azure Logic Apps
 
-Ez a cikk segítséget nyújt a Logic Apps B2B forgatókönyvekben előforduló hibák elhárításában, és a hibák kijavításához szükséges lépéseket javasolja.
+Ez a cikk segít a Logic Apps B2B-forgatókönyvekben előforduló hibák elhárításában, és a hibák kijavításához megfelelő műveleteket javasol.
 
-## <a name="agreement-resolution"></a>Szerződés feloldása
+## <a name="agreement-resolution"></a>A megállapodás felbontása
 
-### <a name="no-agreement-found"></a>Nem található szerződés 
+### <a name="no-agreement-found"></a>Nem található megállapodás 
 
 |   |   |  
 |---|---|
-| Hibaleírás | Nem található szerződés-feloldási paraméterekkel rendelkező megállapodás. | 
-| Felhasználói művelet | A megállapodást fel kell venni az integrációs fiókba az elfogadott üzleti identitásokkal. </br>Az üzleti identitásoknak egyezniük kell a bemeneti üzenet azonosítókkal. |  
+| Hibaleírás | Nem található megállapodás a megállapodás feloldási paramétereivel. | 
+| Felhasználói művelet | A megállapodást hozzá kell adni az integrációs fiókhoz, amelynek egyeztetett üzleti identitása van. </br>Az üzleti identitások egyeznek meg a bemeneti üzenet azonosítóival. |  
 |   |   |
 
-### <a name="no-agreement-found-with-identities"></a>Nem található identitással rendelkező szerződés
+### <a name="no-agreement-found-with-identities"></a>Nem található megállapodás a személyazonossággal
 
 |   |   | 
 |---|---|
-| Hibaleírás | Nem található a következő identitásokkal rendelkező szerződés: "AS2Identity":: "Partner1" and'AS2Identity "::" Partner3 " | 
-| Felhasználói művelet | Érvénytelen AS2-from vagy AS2 – a szerződéshez való konfiguráláshoz. </br>Javítsa ki az AS2-üzenet "AS2-from" vagy "AS2-to" fejléceit, vagy a szerződést, hogy az AS2-azonosítók megfeleljenek az AS2-üzeneteknek a szerződés konfigurációjának megfelelően. |
+| Hibaleírás | Nem található megállapodás az azonosítókkal: 'AS2Identity'::'Partner1' és'AS2Identity'::'Partner3' | 
+| Felhasználói művelet | Érvénytelen AS2-tól vagy AS2-to konfigurálva a megállapodáshoz. </br>Javítsa ki az AS2-üzenet "AS2-from" vagy "AS2-To" fejléceit, vagy a megállapodás, hogy az AS2 üzenetfejlécekben lévő AS2-azonosítók egyeztetése a megállapodás konfigurációkkal. |
 |   |   |     
 
 ## <a name="as2"></a>AS2
 
-### <a name="missing-as2-message-headers"></a>Hiányzó AS2-üzenetek fejlécei  
+### <a name="missing-as2-message-headers"></a>Hiányzó AS2-üzenetfejlécek  
 
 |   |   |  
 |---|---|
-| Hibaleírás | Érvénytelen AS2-fejlécek. A "AS2-to" vagy az "AS2-from" fejlécek egyike üres. | 
-| Felhasználói művelet | Olyan AS2-üzenet érkezett, amely nem tartalmaz AS2-from vagy AS2-to vagy both fejléceket. </br> Győződjön meg arról, hogy az AS2-üzenet AS2-from és AS2-to fejlécek, és javítsa azokat a szerződés konfigurálása alapján. |
+| Hibaleírás | Érvénytelen AS2 fejlécek. Az egyik "AS2-To" vagy "AS2-From" fejléc üres. | 
+| Felhasználói művelet | Olyan AS2-üzenet érkezett, amely nem tartalmazta az AS2-From vagy AS2-To vagy mindkét fejlécet. </br> Ellenőrizze az AS2-üzenet AS2-from és AS2-To fejlécek és javítsa ki őket a megállapodás konfigurációja alapján. |
 |  |  | 
 
-### <a name="missing-as2-message-body-and-headers"></a>Hiányzó AS2-üzenet törzse és fejlécei    
+### <a name="missing-as2-message-body-and-headers"></a>Hiányzó AS2-üzenettörzs és fejlécek    
 
 |   |   |  
 |---|---|
 | Hibaleírás | A kérelem tartalma null értékű vagy üres. | 
-| Felhasználói művelet | Olyan AS2-üzenet érkezett, amely nem tartalmazza az üzenet törzsét. |
+| Felhasználói művelet | Olyan AS2-üzenet érkezett, amely nem tartalmazta az üzenet törzsét. |
 |  |  | 
 
-### <a name="as2-message-decryption-failure"></a>AS2-üzenetek visszafejtésének hibája
+### <a name="as2-message-decryption-failure"></a>AS2 üzenetvisszafejtési hiba
 
 |   |   | 
 |---|---|
-| Hibaleírás |  [feldolgozott/hiba: visszafejtés – sikertelen] | 
-| Felhasználói művelet | A partnernek való küldés előtt vegyen fel @base64ToBinaryt a AS2Message. |
+| Hibaleírás |  [processed/Error: decryption-failed] | 
+| Felhasználói művelet | Adja @base64ToBinary hozzá az AS2Message-hez, mielőtt elküldene a partnernek. |
 |||
 
 Példa:
@@ -79,8 +79,8 @@ Példa:
 
 |   |   | 
 |---|---|
-| Hibaleírás |  [feldolgozott/hiba: visszafejtés – sikertelen] | 
-| Felhasználói művelet | A partnernek való küldés előtt vegyen fel @base64ToBinaryt a MDN. | 
+| Hibaleírás |  [processed/Error: decryption-failed] | 
+| Felhasználói művelet | Adja @base64ToBinary hozzá az MDN-hez, mielőtt elküldene a partnernek. | 
 |||
 
 Példa:
@@ -94,57 +94,57 @@ Példa:
 },               
 ``` 
 
-### <a name="missing-signing-certificate"></a>Hiányzó aláíró tanúsítvány
+### <a name="missing-signing-certificate"></a>Hiányzik az aláíró tanúsítvány
 
 |   |   |  
 |---|---|
-| Hibaleírás| Az aláíró tanúsítvány nincs konfigurálva az AS2-fél számára. </br>AS2-from: Partner1 AS2-to: Partner2 | 
-| Felhasználói művelet | Az AS2-szerződés beállításainak konfigurálása megfelelő tanúsítvánnyal az aláíráshoz. |
+| Hibaleírás| Az aláíró tanúsítvány nincs beállítva az AS2-félhez. </br>AS2-From: partner1 AS2-To: partner2 | 
+| Felhasználói művelet | Konfigurálja az AS2-megállapodás beállításait a megfelelő aláírási tanúsítvánnyal. |
 |  |  | 
 
 ## <a name="x12-and-edifact"></a>X12 és EDIFACT
 
-### <a name="leading-or-trailing-space-found"></a>A kezdő vagy záró terület található    
+### <a name="leading-or-trailing-space-found"></a>Vezető vagy záró terület található    
     
 |   |   | 
 |---|---|
-| Hibaleírás | Hiba történt az elemzés során. A (z) "123456" azonosítójú EDIFACT-tranzakció a (z) "987654" AZONOSÍTÓJÚ, a (z) "Partner1" azonosítójú, "Partner2" fogadó-azonosítóval rendelkező csomópontban a következő hibákkal lesz felfüggesztve: <p>"A vezető záró elválasztó található" |
-| Felhasználói művelet | A bevezető és záró terület engedélyezéséhez konfigurálni kívánt szerződési beállítások. </br>A szerződés beállításainak szerkesztése a kezdő és a záró terület engedélyezéséhez. |
+| Hibaleírás | Az elemzés során hiba történt. A "987654" azonosítóval ellátott "123456" azonosítóval ellátott EDIFACT tranzakciókészleta a "987654" azonosítóval ellátott csomópontban (csoport nélkül) található, a feladó azonosítójával "Partner1", "Partner2" címzettazonosítóval a következő hibákkal függünk fel: <p>"Vezető záró elválasztó található" |
+| Felhasználói művelet | A kezdő és záró terület engedélyezéséhez konfigurálandó szerződésbeállítások. </br>A szerződés beállításainak szerkesztése a kezdő és záró tér lehetővé teszi. |
 |   |   |
 
-![szóköz engedélyezése](./media/logic-apps-enterprise-integration-b2b-list-errors-solutions/leadingandtrailing.png)
+![hely lehetővé tévő](./media/logic-apps-enterprise-integration-b2b-list-errors-solutions/leadingandtrailing.png)
 
-### <a name="duplicate-check-has-enabled-in-the-agreement"></a>Az ismétlődő ellenőrzési funkció engedélyezve van a szerződésben
+### <a name="duplicate-check-has-enabled-in-the-agreement"></a>A duplikált ellenőrzés engedélyezve van a megállapodásban
 
 |   |   | 
 |---|---| 
-| Hibaleírás | Ismétlődő vezérlőelem száma |
-| Felhasználói művelet | Ez a hiba azt jelzi, hogy a fogadott üzenet duplikált számú vezérlőelemet tartalmaz. </br>Javítsa ki a vezérlő számát, és küldje el újra az üzenetet. |
+| Hibaleírás | Duplikált vezérlőszám |
+| Felhasználói művelet | Ez a hiba azt jelzi, hogy a fogadott üzenet ismétlődő vezérlőszámokkal rendelkezik. </br>Javítsa ki a vezérlőszámát, és küldje el újra az üzenetet. |
 |   |   |
 
-### <a name="missing-schema-in-the-agreement"></a>Hiányzó séma a szerződésben
+### <a name="missing-schema-in-the-agreement"></a>Hiányzó séma a megállapodásból
 
 |   |   | 
 |---|---| 
-| Hibaleírás | Hiba történt az elemzés során. A (z) "56422" AZONOSÍTÓJÚ funkcionális csoportban található "564220001" azonosítójú X12-tranzakció a (z) "000056422" azonosítójú, a (z) "12345678" azonosítójú azonosítóval, a (z) "87654321" fogadó azonosítója a következő hibákkal lesz felfüggesztve: <p>"Az üzenet ismeretlen dokumentumtípust tartalmaz, és nem oldotta meg a szerződésben konfigurált meglévő sémák egyikét sem" |
-| Felhasználói művelet | Konfigurálja a sémát a szerződés beállításai között.  |
+| Hibaleírás | Az elemzés során hiba történt. Az "564220001" azonosítóval ellátott X12-es tranzakciókészletet az "56422" azonosítóval ellátott funkcionális csoportban, a "000056422" azonosítóval rendelkező csomópontban, a feladó "12345678" azonosítójával, a "87654321" címzettazonosítóval a következő hibákkal függesztik fel: <p>"Az üzenet ismeretlen dokumentumtípussal rendelkezik, és nem oldotta fel a megállapodásban konfigurált meglévő sémákat" |
+| Felhasználói művelet | A séma konfigurálása a szerződés beállításaiban.  |
 |   |   |
 
-### <a name="incorrect-schema-in-the-agreement"></a>Helytelen séma a szerződésben
+### <a name="incorrect-schema-in-the-agreement"></a>Helytelen séma a megállapodásban
 
 |   |   | 
 |---|---| 
-| Hibaleírás | Az üzenet ismeretlen dokumentumtípust tartalmaz, és nem oldotta meg a szerződésben konfigurált meglévő sémákat. |
-| Felhasználói művelet | Konfigurálja a helyes sémát a szerződés beállításaiban. |
+| Hibaleírás | Az üzenet ismeretlen dokumentumtípussal rendelkezik, és nem oldotta fel a szerződésben konfigurált sémákegyikét sem. |
+| Felhasználói művelet | Állítsa be a megfelelő sémát a szerződés beállításaiban. |
 |   |   |
 
 ## <a name="flat-file"></a>Egybesimított fájl
 
-### <a name="input-message-with-no-body"></a>Szövegtörzs nélküli bemeneti üzenet
+### <a name="input-message-with-no-body"></a>Szövegtörzs nélküli beviteli üzenet
 
 |   |   | 
 |---|---|
-| Hibaleírás | InvalidTemplate. Nem lehet feldolgozni a sablon nyelvi kifejezéseit a (z) "Flat_File_Decoding" bemenetekben az "1" sor "1902" oszlopában: "a kötelező tulajdonság tartalma" értéknek null értékűnek kell lennie. Elérési út: "". |
+| Hibaleírás | ÉrvénytelenSablon. Nem lehet feldolgozni a sablon nyelvi kifejezéseit működés közben a "Flat_File_Decoding" bemenetek ordiójában az "1" sorban és az "1902" oszlopban: a "Kötelező tulajdonság" "tartalom" értéket vár, de null értéket kapott. Elérési út". |
 | Felhasználói művelet | Ez a hiba azt jelzi, hogy a bemeneti üzenet nem tartalmaz törzset. |
 |   |   | 
 

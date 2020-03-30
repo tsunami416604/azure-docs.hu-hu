@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 0ed2137d1fd7a3c207db3ec49590a61f00b5fd99
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774275"
 ---
-Ebben az időszakban a megszüntetés nem támogatott a portál [vagy a PowerShell](mailto:peeringexperience@microsoft.com) használatával.
+Jelenleg a deprovision nem támogatott a portál vagy a PowerShell használatával, forduljon a [Microsoft-társviszony-létesítés](mailto:peeringexperience@microsoft.com) a Deprovision.

@@ -1,7 +1,7 @@
 ---
-title: A Microsoft Identity platform tanúsítványának hitelesítő adatai
+title: Microsoft-identitásplatform-tanúsítvány hitelesítő adatai
 titleSuffix: Microsoft identity platform
-description: Ez a cikk a tanúsítvány hitelesítő adatainak regisztrálását és használatát ismerteti az alkalmazás hitelesítéséhez.
+description: Ez a cikk az alkalmazáshitelesítéshez szükséges tanúsítványhitelesítő adatok regisztrációját és használatát ismerteti.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -15,45 +15,45 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 26030c12d98d796ceb1f66f198aede6e40eebd94
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399018"
 ---
-# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity platform-alkalmazás hitelesítési tanúsítványának hitelesítő adatai
+# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft identity platformalkalmazás hitelesítési tanúsítványának hitelesítő adatai
 
-A Microsoft Identity platform lehetővé teszi, hogy az alkalmazások a saját hitelesítő adataikat használják a hitelesítéshez, például a [OAuth 2,0 ügyfél hitelesítő adataiban flowv 2.0](v2-oauth2-client-creds-grant-flow.md) -t és a [folyamaton](v2-oauth2-on-behalf-of-flow.md)kívüli folyamatot kell megadniuk.
+A Microsoft identity platform lehetővé teszi, hogy egy alkalmazás saját hitelesítő adatait használja a hitelesítéshez, például az [OAuth 2.0 ügyfélhitelesítő adatok megadása flowv2.0](v2-oauth2-client-creds-grant-flow.md) és a [Kapcsolati folyamat ) .](v2-oauth2-on-behalf-of-flow.md)
 
-Az egyik hitelesítő adat, amelyet az alkalmazás használhat a hitelesítéshez, egy JSON Web Token (JWT)-állítás, amely az alkalmazás tulajdonában lévő tanúsítvánnyal van aláírva.
+Az alkalmazás által hitelesítéshez használható hitelesítő adatok egyik formája egy JSON webtoken(JWT) tanúsítványlal aláírt, az alkalmazás tulajdonában lévő tanúsítványsal aláírt feltétel.
 
-## <a name="assertion-format"></a>Érvényesítési formátum
-A Microsoft Identity platform az állítás kiszámításához használhatja a számos [JSON web token](https://jwt.ms/) -függvénytár egyikét a választott nyelven. A jogkivonat által végrehajtott információk a következők:
+## <a name="assertion-format"></a>Helyességi formátum
+Microsoft-identitásplatform A helyesség kiszámításához használhatja a sok [JSON](https://jwt.ms/) webtoken-kódtárat az Ön által választott nyelven. A token által szállított információk a következők:
 
 ### <a name="header"></a>Fejléc
 
 | Paraméter |  Megjegyzés |
 | --- | --- |
-| `alg` | **RS256** kell lennie |
-| `typ` | **JWT** kell lennie |
-| `x5t` | Az X. 509 tanúsítvány SHA-1 ujjlenyomatának kell lennie |
+| `alg` | Kell **RS256** |
+| `typ` | Kell **JWT** |
+| `x5t` | Az X.509 Tanúsítvány SHA-1 ujjlenyomatának kell lennie |
 
-### <a name="claims-payload"></a>Jogcímek (hasznos adatok)
+### <a name="claims-payload"></a>Követelések (hasznos teher)
 
 | Paraméter |  Megjegyzések |
 | --- | --- |
-| `aud` | Célközönség: **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** kell lennie |
-| `exp` | Lejárati dátum: a jogkivonat lejárati dátuma. Az idő a (z) január 1-től 1970 (1970-01-01T0:0: 0Z) UTC szerint, a jogkivonat érvényességének lejárta előtt.|
-| `iss` | Kiállító: a client_id (az ügyfélszolgáltatás alkalmazásspecifikus azonosítója) |
-| `jti` | GUID: a JWT azonosítója |
-| `nbf` | Nem előtte: az a dátum, amely előtt a jogkivonat nem használható. Az idő a (z) január 1-től 1970 (1970-01-01T0:0: 0Z) UTC szerint, a jogkivonat kiállításának időpontjáig. |
-| `sub` | Tárgy: a `iss`esetében a client_id kell lennie (az ügyfélszolgáltatás alkalmazás-azonosítója) |
+| `aud` | Közönség: Meg kell ** https://login.microsoftonline.com/ *tenant_Id*/oauth2/token** |
+| `exp` | Lejárati dátum: a dátum, amikor a token lejár. Az idő az 1970.|
+| `iss` | Kiállító: az client_id (az ügyfélszolgáltatás alkalmazásazonosítója) |
+| `jti` | GUID: a JWT-azonosító |
+| `nbf` | Nincs előtte: az a dátum, amely előtt a token nem használható. Az idő az 1970. |
+| `sub` | Tárgy: A `iss`, kell a client_id (alkalmazásazonosítóaz ügyfélszolgáltatás) |
 
 ### <a name="signature"></a>Aláírás
 
-Az aláírás a tanúsítvány alkalmazásával lett kiszámítva a [JSON web token RFC7519-specifikációban](https://tools.ietf.org/html/rfc7519) leírtak szerint.
+Az aláírás kiszámítása a [JSON Web Token RFC7519 specifikációban](https://tools.ietf.org/html/rfc7519) leírtak szerint történik
 
-## <a name="example-of-a-decoded-jwt-assertion"></a>Dekódolású JWT-érvényesítési példa
+## <a name="example-of-a-decoded-jwt-assertion"></a>Példa dekódolt JWT-állításra
 
 ```JSON
 {
@@ -74,11 +74,11 @@ Az aláírás a tanúsítvány alkalmazásával lett kiszámítva a [JSON web to
 "Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-## <a name="example-of-an-encoded-jwt-assertion"></a>Példa kódolt JWT-kijelentésre
+## <a name="example-of-an-encoded-jwt-assertion"></a>Példa kódolt JWT-állításra
 
-A következő karakterlánc egy példa a kódolt állításra. Ha alaposan meggondolja, három szakaszt pont (.) választ el egymástól:
+A következő karakterlánc egy példa a kódolt helyességi feltételre. Ha figyelmesen megnézed, három, pontokkal elválasztott szakaszt észlelsz(.)
 * Az első szakasz kódolja a fejlécet
-* A második szakasz kódolja a hasznos adatokat
+* A második szakasz kódolja a hasznos
 * Az utolsó szakasz az első két szakasz tartalmából származó tanúsítványokkal kiszámított aláírás.
 
 ```
@@ -86,30 +86,30 @@ A következő karakterlánc egy példa a kódolt állításra. Ha alaposan meggo
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-## <a name="register-your-certificate-with-microsoft-identity-platform"></a>A tanúsítvány regisztrálása a Microsoft Identity platformmal
+## <a name="register-your-certificate-with-microsoft-identity-platform"></a>Tanúsítvány regisztrálása a Microsoft identity platformmal
 
-A tanúsítvány hitelesítő adatait a Microsoft Identity platformon található ügyfélalkalmazás alapján a következő módszerek bármelyikével társíthatja a Azure Portal használatával:
+A tanúsítványhitelesítő adatokat az ügyfélalkalmazáshoz társíthatja a Microsoft identity platformon az Azure Portalon keresztül az alábbi módszerek bármelyikével:
 
 ### <a name="uploading-the-certificate-file"></a>A tanúsítványfájl feltöltése
 
-Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
-1. Válassza ki a **tanúsítványok & Secrets**elemet.
-2. Kattintson a **tanúsítvány feltöltése** elemre, és válassza ki a feltölteni kívánt tanúsítványt.
-3. Kattintson az **Hozzáadás** parancsra.
-  A tanúsítvány feltöltése után a rendszer megjeleníti az ujjlenyomatot, a kezdési dátumot és a lejárati értékeket.
+Az Ügyfélalkalmazás Azure-alkalmazásregisztrációjában:
+1. Válassza **a Tanúsítványok & titkos kulcsok lehetőséget.**
+2. Kattintson a **Tanúsítvány feltöltése** elemre, és válassza ki a feltöltendő tanúsítványfájlt.
+3. Kattintson a **Hozzáadás** gombra.
+  A tanúsítvány feltöltése után megjelennek az ujjlenyomat, a kezdési dátum és a lejárati értékek.
 
-### <a name="updating-the-application-manifest"></a>Az alkalmazás jegyzékfájljának frissítése
+### <a name="updating-the-application-manifest"></a>Az alkalmazásjegyzék frissítése
 
-A tanúsítvány birtokában a következőket kell kiszámítani:
+Miután rendelkezik egy tanúsítvánnyal, ki kell számítania a következőket:
 
-- `$base64Thumbprint`, amely a tanúsítvány kivonatának Base64 kódolása
-- `$base64Value`, amely a tanúsítvány nyers adatmennyiségének Base64 kódolása
+- `$base64Thumbprint`, amely a tanúsítvány kivonatának base64 kódolása
+- `$base64Value`, amely a tanúsítvány nyers adatainak base64 kódolása
 
-Meg kell adnia egy GUID azonosítót is a kulcs azonosításához az alkalmazás jegyzékfájljában (`$keyId`).
+Az alkalmazásjegyzékben (`$keyId`) lévő kulcs azonosításához guid azonosítót is meg kell adnia.
 
-Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
-1. Válassza ki a **jegyzékfájlt** az alkalmazás jegyzékfájljának megnyitásához.
-2. Cserélje le a " *hitelesítő adatok* " tulajdonságot az új tanúsítvány adataira a következő séma használatával.
+Az Ügyfélalkalmazás Azure-alkalmazásregisztrációjában:
+1. Az alkalmazásjegyzék megnyitásához válassza a **Jegyzékfájl** lehetőséget.
+2. Cserélje le a *keyCredentials tulajdonságot* az új tanúsítványadatokra a következő séma használatával.
 
    ```JSON
    "keyCredentials": [
@@ -122,13 +122,13 @@ Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
        }
    ]
    ```
-3. Mentse a módosításokat az alkalmazás-jegyzékfájlba, majd töltse fel a jegyzékfájlt a Microsoft Identity platformba.
+3. Mentse a módosításokat az alkalmazásjegyzékbe, majd töltse fel a jegyzékfájlt a Microsoft identity platformra.
 
-   A `keyCredentials` tulajdonság többértékű, így több tanúsítványt is feltölthet a gazdagabb kulcsok kezeléséhez.
+   A `keyCredentials` tulajdonság többértékű, így több tanúsítványt is feltölthet a gazdagabb kulcskezeléshez.
 
 ## <a name="code-sample"></a>Kódminta
 
 > [!NOTE]
-> A X5T fejlécét úgy kell kiszámítani, hogy a tanúsítvány kivonatával konvertálja egy Base 64 sztringre. A alkalmazásban C# végrehajtandó kód `System.Convert.ToBase64String(cert.GetCertHash());`.
+> Az X5T-fejlécet úgy kell kiszámítania, hogy a tanúsítvány kivonatával 64-es alapkarakterláncra konvertálja. A C# mezőben ezt `System.Convert.ToBase64String(cert.GetCertHash());`a kódot a .
 
-A [.net Core Daemon Console alkalmazás a Microsoft Identity platformmal való használata](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) azt mutatja be, hogyan használja az alkalmazás a saját hitelesítő adatait a hitelesítéshez. Azt is bemutatja, hogyan [hozhat létre önaláírt tanúsítványt](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) a `New-SelfSignedCertificate` PowerShell-paranccsal. Emellett kihasználhatja a tanúsítványok létrehozását és az [alkalmazás-létrehozási parancsfájlok](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) használatát is, így kiszámíthatja az ujjlenyomatot, és így tovább.
+A [Microsoft identity platformot használó .NET Core démonkonzolalkalmazás](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) kódmintája bemutatja, hogyan használja az alkalmazás a saját hitelesítő adatait a hitelesítéshez. Azt is bemutatja, hogyan hozhat létre `New-SelfSignedCertificate` [önaláírt tanúsítványt](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) a Powershell paranccsal. Azt is kihasználhatja, és használja az [alkalmazás létrehozása parancsfájlok](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) a tanúsítványok létrehozásához, kiszámítja az ujjlenyomatot, és így tovább.

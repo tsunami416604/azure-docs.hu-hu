@@ -5,48 +5,48 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
 ms.openlocfilehash: 505e2d8eec20853fba3743b40cbe289585d14d61
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
-ms.translationtype: HT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78305003"
 ---
-| Erőforrás | Ingyenes | Megosztott | Alapszintű | Standard | Prémium (v2) | Elszigetelt </th> |
+| Erőforrás | Ingyenes | Megosztott | Basic | Standard | Prémium (v2) | Elkülönített </th> |
 | --- | --- | --- | --- | --- | --- | --- |
-| [Web-, mobil-vagy API-alkalmazások](https://azure.microsoft.com/services/app-service/) [Azure app Service](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> . csomag |10 |100 |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup>|
-| [App Service-csomag](../articles/app-service/overview-hosting-plans.md) |10 régiónként |10/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport|
-| Számítási példány típusa |Megosztott |Megosztott |<sup>3</sup> . dedikált |<sup>3</sup> . dedikált |<sup>3</sup> . dedikált</p> |<sup>3</sup> . dedikált|
-| Vertikális [felskálázás](../articles/app-service/manage-scale-up.md) (példányok maximális száma) |1 megosztott |1 megosztott |3 dedikált<sup>3</sup> |10 dedikált<sup>3</sup> |30 dedikált<sup>3</sup>|100 dedikált<sup>4</sup>|
-| <sup>5</sup> . tárterület |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
-| CPU-idő (5 perc)<sup>6</sup> |3 perc |3 perc |Korlátlan, standard [díjszabású](https://azure.microsoft.com/pricing/details/app-service/) díj</a> |Korlátlan, standard [díjszabású](https://azure.microsoft.com/pricing/details/app-service/) díj</a> |Korlátlan, standard [díjszabású](https://azure.microsoft.com/pricing/details/app-service/) díj</a> |Korlátlan, standard [díjszabású](https://azure.microsoft.com/pricing/details/app-service/) díj</a>|
-| CPU-idő (nap)<sup>6</sup> |60 perc |240 perc |Korlátlan, standard [díjszabású](https://azure.microsoft.com/pricing/details/app-service/) díj</a> |Korlátlan, standard [díjszabású](https://azure.microsoft.com/pricing/details/app-service/) díj</a> |Korlátlan, standard [díjszabású](https://azure.microsoft.com/pricing/details/app-service/) díj</a> |Korlátlan, standard [díjszabású](https://azure.microsoft.com/pricing/details/app-service/) díj</a> |
-| Memória (1 óra) |1 024 MB/App Service csomag |1 024 MB/alkalmazás |N/A |N/A |N/A |N/A |
-| Sávszélesség |165 MB |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |
+| [Webes, mobil- vagy API-alkalmazások](https://azure.microsoft.com/services/app-service/) [az Azure App Service 1 csomagonként](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup>|
+| [App Szolgáltatási csomag](../articles/app-service/overview-hosting-plans.md) |10 régiónként |10 erőforráscsoportonként |100 erőforráscsoportonként |100 erőforráscsoportonként |100 erőforráscsoportonként |100 erőforráscsoportonként|
+| Számítási példány típusa |Megosztott |Megosztott |Dedikált<sup>3</sup> |Dedikált<sup>3</sup> |Dedikált<sup>3</sup></p> |Dedikált<sup>3</sup>|
+| [Horizontális felskálázás](../articles/app-service/manage-scale-up.md) (maximális példányok) |1 megosztva |1 megosztva |3 dedikált<sup>3</sup> |10 dedikált<sup>3</sup> |30 dedikált<sup>3</sup>|100 dedikált<sup>4</sup>|
+| Tárolás<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
+| CPU idő (5 perc)<sup>6</sup> |3 perc |3 perc |Korlátlan, fizessen normál [áron](https://azure.microsoft.com/pricing/details/app-service/)</a> |Korlátlan, fizessen normál [áron](https://azure.microsoft.com/pricing/details/app-service/)</a> |Korlátlan, fizessen normál [áron](https://azure.microsoft.com/pricing/details/app-service/)</a> |Korlátlan, fizessen normál [áron](https://azure.microsoft.com/pricing/details/app-service/)</a>|
+| PROCESSZOR idő (nap)<sup>6</sup> |60 perc |240 perc |Korlátlan, fizessen normál [áron](https://azure.microsoft.com/pricing/details/app-service/)</a> |Korlátlan, fizessen normál [áron](https://azure.microsoft.com/pricing/details/app-service/)</a> |Korlátlan, fizessen normál [áron](https://azure.microsoft.com/pricing/details/app-service/)</a> |Korlátlan, fizessen normál [áron](https://azure.microsoft.com/pricing/details/app-service/)</a> |
+| Memória (1 óra) |1024 MB/App Service-csomag |1024 MB alkalmazásonként |N/A |N/A |N/A |N/A |
+| Sávszélesség |165 MB |Korlátlan, [adatátviteli díjak](https://azure.microsoft.com/pricing/details/data-transfers/) érvényesek |Korlátlan, [adatátviteli díjak](https://azure.microsoft.com/pricing/details/data-transfers/) érvényesek |Korlátlan, [adatátviteli díjak](https://azure.microsoft.com/pricing/details/data-transfers/) érvényesek |Korlátlan, [adatátviteli díjak](https://azure.microsoft.com/pricing/details/data-transfers/) érvényesek |Korlátlan, [adatátviteli díjak](https://azure.microsoft.com/pricing/details/data-transfers/) érvényesek |
 | Alkalmazásarchitektúra |32 bites |32 bites |32 bites/64 bites |32 bites/64 bites |32 bites/64 bites |32 bites/64 bites |
-| Web Sockets/instance<sup>7</sup> |5 |35 |350 |Korlátlan |Korlátlan |Korlátlan |
-| IP-kapcsolatok | 600 | 600 | A példány<sup>8</sup> . mérettől függ | A példány<sup>8</sup> . mérettől függ | A példány<sup>8</sup> . mérettől függ | 16,000 |
-| Egyidejű [hibakereső kapcsolatok](../articles/app-service/troubleshoot-dotnet-visual-studio.md) alkalmazása |1 |1 |1 |5 |5 |5 |
-| Tanúsítványok App Service<sup>9</sup> /előfizetés| Nem támogatott | Nem támogatott |10 |10 |10 |10 |
-| Egyéni tartományok/alkalmazás</a> |0 (azurewebsites.net subdomain only)|500 |500 |500 |500 |500 |
-| Egyéni tartomány [SSL-támogatása](../articles/app-service/configure-ssl-certificate.md) |Nem támogatott, a (*. azurewebsites.net) helyettesítő tanúsítványa alapértelmezés szerint elérhető|Nem támogatott, a (*. azurewebsites.net) helyettesítő tanúsítványa alapértelmezés szerint elérhető|Korlátlan SNI SSL kapcsolatok |Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található |Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található | Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található|
-| Hibrid kapcsolatok/csomag | | | 5 | 25 | 200 | 200 |
-| Integrált Load Balancer | |X |X |X |X |X<sup>10</sup> |
-| [Always on](../articles/app-service/configure-common.md) | | |X |X |X |X |
-| [Ütemezett biztonsági mentések](../articles/app-service/manage-backup.md) | | | | Ütemezett biztonsági mentések 2 óránként, legfeljebb 12 biztonsági mentés naponta (manuális + ütemezett) | Ütemezett biztonsági mentések óránként, legfeljebb 50 biztonsági mentéssel (manuális + ütemezett) | Ütemezett biztonsági mentések óránként, legfeljebb 50 biztonsági mentéssel (manuális + ütemezett) |
+| Webszoftver-szoftvercsatornák példányonként<sup>7</sup> |5 |35 |350 |Korlátlan |Korlátlan |Korlátlan |
+| IP-kapcsolatok | 600 | 600 | A példány méretétől függ<sup>8</sup> | A példány méretétől függ<sup>8</sup> | A példány méretétől függ<sup>8</sup> | 16000 |
+| Egyidejű [hibakereső-kapcsolatok](../articles/app-service/troubleshoot-dotnet-visual-studio.md) alkalmazásonként |1 |1 |1 |5 |5 |5 |
+| App Service-tanúsítványok előfizetésenként<sup>9</sup>| Nem támogatott | Nem támogatott |10 |10 |10 |10 |
+| Egyéni tartományok alkalmazásonként</a> |0 (csak azurewebsites.net altartomány)|500 |500 |500 |500 |500 |
+| Egyéni tartomány [SSL-támogatása](../articles/app-service/configure-ssl-certificate.md) |Nem támogatott, a *.azurewebsites.net helyettesítő tanúsítványa alapértelmezés szerint elérhető|Nem támogatott, a *.azurewebsites.net helyettesítő tanúsítványa alapértelmezés szerint elérhető|Korlátlan SNI SSL-kapcsolatok |Korlátlan SNI SSL és 1 IP SSL kapcsolat |Korlátlan SNI SSL és 1 IP SSL kapcsolat | Korlátlan SNI SSL és 1 IP SSL kapcsolat|
+| Hibrid kapcsolatok tervenként | | | 5 | 25 | 200 | 200 |
+| Integrált terheléselosztó | |X |X |X |X |X<sup>10</sup> |
+| [Mindig bekapcsolva](../articles/app-service/configure-common.md) | | |X |X |X |X |
+| [Ütemezett biztonsági mentések](../articles/app-service/manage-backup.md) | | | | Ütemezett biztonsági mentések 2 óránként, legfeljebb 12 biztonsági mentés naponta (manuális + ütemezett) | Ütemezett biztonsági mentések óránként, legfeljebb 50 biztonsági mentés naponta (kézi + ütemezett) | Ütemezett biztonsági mentések óránként, legfeljebb 50 biztonsági mentés naponta (kézi + ütemezett) |
 | [Automatikus méretezés](../articles/app-service/manage-scale-up.md) | | | |X |X |X |
-| [Webjobs](../articles/app-service/webjobs-create.md)<sup>11</sup> |X |X |X |X |X |X |
-| [Végpontmonitoring](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
-| [Átmeneti tárolóhelyek](../articles/app-service/deploy-staging-slots.md) /alkalmazás| | | |5 |20 |20 |
+| [WebJobs](../articles/app-service/webjobs-create.md)<sup>11</sup> |X |X |X |X |X |X |
+| [Végpontfigyelés](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
+| [Átmeneti bővítőhelyek](../articles/app-service/deploy-staging-slots.md) alkalmazásonként| | | |5 |20 |20 |
 | SLA | |  |99.95%|99.95%|99.95%|99.95%|  
 
-<sup>1</sup> Az alkalmazások és a tárolási kvóták App Service csomaggal rendelkeznek, hacsak másként nincs jelezve.  
-<sup>2</sup> Az ezeken a gépeken üzemeltethető alkalmazások tényleges száma az alkalmazások tevékenységéből, a gépi példányok méretétől és a megfelelő erőforrás-felhasználástól függ.  
-<sup>3</sup> A dedikált példányok különböző méretűek lehetnek. További információ: [app Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/).  
-<sup>4</sup> További kérések esetén engedélyezett.  
-<sup>5</sup> A tárolási korlát a teljes tartalom mérete az adott app Service-csomagban lévő összes alkalmazásban. Az egyetlen erőforráscsoport és régió összes app Service-csomagjában lévő alkalmazások teljes tartalmának mérete nem haladhatja meg az 500 GB-ot.  
-<sup>6</sup> Ezeket az erőforrásokat a dedikált példányokon található fizikai erőforrások korlátozzák (a példány mérete és a példányok száma).  
-<sup>7</sup> Ha az alkalmazást az alapszintű csomagból két példányra méretezi, akkor a két példány esetében 350 egyidejű kapcsolat. A standard szinthez és a fentiekhez nem tartoznak elméleti korlátok a webes szoftvercsatornák számára, más tényezők pedig korlátozhatják a webes szoftvercsatornák számát. Például a maximálisan megengedett kérelmek (a `maxConcurrentRequestsPerCpu`által meghatározottak szerint) a következők: 7 500/kisméretű virtuális gép, 15 000/közepes virtuális gép (7 500 x 2 mag) és 75 000/nagyméretű virtuális gép (18 750 x 4 mag).  
-<sup>8</sup> A maximális IP-kapcsolatok a példányok száma, és a példány méretétől függ: 1 920/B1/S1/P1V2 példány, 3 968/B2/S2/P2V2-példány, 8 064/B3/S3/P3V2 példány.  
-<sup>9</sup> Az előfizetések App Service-tanúsítvány kvóta-korlátja egy támogatási kérelem alapján növelhető, amely legfeljebb 200 lehet.  
-<sup>10</sup> A izolált App Service SKU-k belsőleg terheléselosztást (ILB) is használhatnak a Azure Load Balancer, így nincs nyilvános kapcsolat az internetről. Ennek eredményeképpen a ILB elkülönített App Service egyes funkcióit olyan gépekről kell használni, amelyek közvetlen hozzáféréssel rendelkeznek a ILB hálózati végponthoz.  
-<sup>11</sup> Az egyéni végrehajtható fájlokat és/vagy parancsfájlokat igény szerint, ütemezés szerint, vagy a App Service-példányon belüli háttérbeli feladatként futtathatja. A folyamatos webjobs-végrehajtáshoz mindig be kell jelentkezni. Nincs előre meghatározott korlát a App Service-példányban futtatható webjobs-feladatok számánál. Az alkalmazás kódjának működéséhez szükséges gyakorlati korlátozások is megváltoznak.  
+<sup>1 1</sup> Az alkalmazások és a tárolási kvóták alkalmazáscsomagonként vannak, hanincs másképp feltüntetve.  
+<sup>2.</sup> Az ezeken a gépeken üzemeltethető alkalmazások tényleges száma az alkalmazások tevékenységétektől, a géppéldányok méretétől és a megfelelő erőforrás-kihasználtságtól függ.  
+<sup>3. 20 0</sup> A dedikált példányok különböző méretűek lehetnek. További információ: [App Service-díjszabás](https://azure.microsoft.com/pricing/details/app-service/).  
+<sup>4.</sup> Kérésre további akta is megengedett.  
+<sup>5.</sup> A tárolási korlát az azonos alkalmazásszolgáltatási csomagban lévő összes alkalmazás teljes tartalommérete. Az összes alkalmazás teljes tartalommérete egyetlen erőforráscsoportban és régióban az összes alkalmazáscsomagban nem haladhatja meg az 500 GB-ot.  
+<sup>6.</sup> Ezeket az erőforrásokat a dedikált példányok fizikai erőforrásai korlátozzák (a példány mérete és a példányok száma).  
+<sup>7.</sup> Ha az alapszintű rétegben egy alkalmazást két példányra skáláz, akkor a két példány mindegyikéhez 350 egyidejű kapcsolattal rendelkezik. Standard szintű és újabb szintű, nincsenek elméleti korlátok web sockets, de más tényezők korlátozhatják a webes szoftvercsatornák száma. Például a maximális egyidejű kérelmek engedélyezett `maxConcurrentRequestsPerCpu`(által meghatározott): 7500 kis virtuális gép, 15 000 közepes virtuális gép (7500 x 2 mag), és 75 000 nagy virtuális gép (18750 x 4 mag).  
+<sup>8.</sup> A maximális IP-kapcsolatok példányonként, és függ a példány mérete: 1920/B1/S1/P1V2 példány, 3968 per B2/S2/P2V2 példány, 8064 per B3/S3/P3V2 példány.  
+<sup>9.</sup> Az App Service-tanúsítvány kvótakorlát előfizetésenként támogatási kérelemmel legfeljebb 200-ra növelhető.  
+<sup>10.</sup> Az App Service-alapú skus-ok belső terheléselosztással (ILB) az Azure Load Balancer segítségével is használhatók, így nincs nyilvános kapcsolat az internetről. Ennek eredményeképpen az ILB-elkülönítésű appszolgáltatás egyes funkcióit olyan gépekről kell használni, amelyek közvetlen hozzáféréssel rendelkeznek az ILB-hálózati végponthoz.  
+<sup>11.</sup> Egyéni végrehajtható fájlok és/vagy parancsfájlok futtatása igény szerint, ütemezés szerint vagy folyamatosan háttérfeladatként az App Service-példányon belül. A folyamatos WebJobs-végrehajtáshoz mindig be van kapcsolva. Nincs előre meghatározott korlát az App Service-példányban futtatható WebJobs-ok számában. Vannak gyakorlati korlátok, amelyek attól függenek, hogy az alkalmazáskód mit próbál tenni.  

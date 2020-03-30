@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory hitelesítés áttekintése
-description: Ismerje meg a felhasználói bejelentkezések különböző hitelesítési módszereit és biztonsági funkcióit a Azure Active Directory.
+title: Az Azure Active Directory hitelesítésének áttekintése
+description: Ismerje meg a különböző hitelesítési módszerek és biztonsági funkciók a felhasználói bejelentkezések az Azure Active Directoryval.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,85 +12,85 @@ manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f4c2fa8488490561e8f11746e8e737718ee9f37
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76261262"
 ---
-# <a name="what-is-azure-active-directory-authentication"></a>Mi az Azure Active Directory hitelesítés?
+# <a name="what-is-azure-active-directory-authentication"></a>Mi az Azure Active Directory-hitelesítés?
 
-Az Identity platform egyik fő funkciója a hitelesítő adatok ellenőrzése vagy *hitelesítése*, amikor a felhasználó bejelentkezik egy eszközre, alkalmazásba vagy szolgáltatásba. Azure Active Directory (Azure AD) esetében a hitelesítés több, mint a Felhasználónév és a jelszó ellenőrzése. Az Azure AD-hitelesítés a következő összetevőket tartalmazza, így javíthatja a biztonságot, és csökkentheti az ügyfélszolgálati segítség szükségességét:
+Az identitásplatform egyik fő jellemzője a hitelesítő adatok ellenőrzése vagy *hitelesítése,* amikor a felhasználó bejelentkezik egy eszközre, alkalmazásra vagy szolgáltatásra. Az Azure Active Directoryban (Azure AD) a hitelesítés nem csak a felhasználónév és a jelszó ellenőrzését foglalja magában. A biztonság növelése és az ügyfélszolgálati segítség szükségességének csökkentése érdekében az Azure AD-hitelesítés a következő összetevőket tartalmazza:
 
 * Új jelszó önkiszolgáló kérése
 * Azure Multi-Factor Authentication
-* Hibrid integráció a jelszó-változtatások helyi környezetbe való visszaírásához
-* Hibrid integráció egy helyi környezet jelszavas védelmi házirendjeinek betartatásához
+* Hibrid integráció a jelszómódosítások helyszíni környezetbe való visszaírásához
+* Hibrid integráció a jelszóvédelmi házirendek helyszíni környezetben való érvényesítéséhez
 * Jelszó nélküli hitelesítés
 
 ## <a name="improve-the-end-user-experience"></a>A végfelhasználói élmény javítása
 
-Az Azure AD segítségével megvédheti a felhasználók identitását, és egyszerűsítheti a bejelentkezési élményt. Az önkiszolgáló jelszó-visszaállításhoz hasonló funkciók lehetővé teszik a felhasználók számára, hogy bármely eszközről webböngészővel frissítsenek vagy módosítsák a jelszavukat. Ez a funkció különösen akkor hasznos, ha a felhasználó elfelejtette a jelszavát, vagy a fiókja zárolva van. Anélkül, hogy az ügyfélszolgálatnak vagy a rendszergazdának támogatást kellene nyújtania, a felhasználók letilthatják magukat, és folytatják a munkát.
+Az Azure AD segít megvédeni a felhasználó identitását, és egyszerűsíti a bejelentkezési élményt. Az olyan funkciók, mint az önkiszolgáló jelszó-visszaállítás lehetővé teszik a felhasználók számára, hogy bármilyen eszközről származó webböngészővel frissítsék vagy módosítsák jelszavukat. Ez a funkció különösen akkor hasznos, ha a felhasználó elfelejtette a jelszavát, vagy ha a fiókja zárolva van. Anélkül, hogy megvárná az ügyfélszolgálatot vagy a rendszergazdát, hogy támogatást nyújtson, a felhasználó feloldhatja a blokkolást, és folytathatja a munkát.
 
-Az Azure Multi-Factor Authentication lehetővé teszi a felhasználók számára, hogy a bejelentkezés során további hitelesítési formát válasszák, például telefonhívást vagy Mobile apps-értesítést. Ez a képesség csökkenti a másodlagos hitelesítés (például a hardver jogkivonata) egyetlen, rögzített formáját. Ha a felhasználó jelenleg nem rendelkezik egy további hitelesítéssel, választhat másik módszert, és folytathatja a munkát.
+Az Azure többtényezős hitelesítés lehetővé teszi a felhasználók számára, hogy válasszanak egy további hitelesítési űrlapot a bejelentkezés során, például egy telefonhívás vagy mobilalkalmazás-értesítés. Ez a képesség csökkenti a másodlagos hitelesítés egyetlen, rögzített formájának, például a hardvertokennek a követelményét. Ha a felhasználó jelenleg nem rendelkezik egy további hitelesítési formával, választhat egy másik módszert, és folytathatja a munkát.
 
 ![A bejelentkezési képernyőn használt hitelesítési módszerek](media/concept-authentication-methods/overview-login.png)
 
-A jelszóval nem rendelkező hitelesítéssel nem szükséges, hogy a felhasználó a biztonságos jelszavakat egyáltalán ne hozzon létre és jegyezze fel. A Windows Hello for Business vagy a FIDO2 biztonsági kulcsokkal rendelkező funkciók lehetővé teszik a felhasználók számára, hogy jelszó nélkül jelentkezzenek be egy eszközre vagy alkalmazásba. Ez a képesség csökkentheti a jelszavak különböző környezetekben való kezelésének bonyolultságát.
+A jelszó nélküli hitelesítés szükségtelenné teszi, hogy a felhasználó egyáltalán hozzon létre és emlékezzen egy biztonságos jelszót. Az olyan képességek, mint a Windows Hello for Business vagy a FIDO2 biztonsági kulcsok lehetővé teszik a felhasználók számára, hogy jelszó nélkül jelentkezzenek be egy eszközre vagy alkalmazásba. Ez a képesség csökkentheti a jelszavak kezelésének összetettségét a különböző környezetekben.
 
 ## <a name="self-service-password-reset"></a>Új jelszó önkiszolgáló kérése
 
-Az önkiszolgáló jelszó-visszaállítás lehetővé teszi a felhasználóknak a jelszavuk módosítását vagy alaphelyzetbe állítását, rendszergazdai vagy ügyfélszolgálati beavatkozás nélkül. Ha a felhasználó fiókja zárolva van, vagy elfelejti a jelszavát, akkor az utasításokat követve letilthatja önmagát, és visszatérhet a munkához. Ez a funkció csökkenti az ügyfélszolgálati hívásokat és a termelékenység elvesztését, ha a felhasználó nem tud bejelentkezni az eszközére vagy alkalmazására.
+Az önkiszolgáló jelszó-visszaállítás lehetővé teszi a felhasználók számára a jelszó módosítását vagy alaphelyzetbe állítását, rendszergazda vagy az ügyfélszolgálat bevonása nélkül. Ha egy felhasználó fiókja zárolva van, vagy elfelejti a jelszavát, követheti a figyelmeztetést, hogy feloldja a blokkolást, és visszatérjen a munkához. Ez a képesség csökkenti az ügyfélszolgálati hívásokat és a termelékenység csökkenését, ha a felhasználó nem tud bejelentkezni az eszközére vagy egy alkalmazásba.
 
 Az önkiszolgáló jelszó-visszaállítás a következő esetekben működik:
 
-* **Jelszó módosítása –** ha egy felhasználó ismeri a jelszavát, de módosítani szeretné valami újat.
-* **Jelszó alaphelyzetbe állítása –** ha a felhasználó nem tud bejelentkezni, például ha elfelejtette a jelszót, és szeretné alaphelyzetbe állítani a jelszavát.
-* **Fiók zárolásának feloldása –** ha a felhasználó nem tud bejelentkezni, mert a fiókja zárolva van, és fel szeretné oldani a fiók zárolását.
+* **Jelszócsere -** ha a felhasználó tudja a jelszavát, de valami újra akarja változtatni.
+* **Jelszó-visszaállítás –** ha a felhasználó nem tud bejelentkezni, például amikor elfelejtette a jelszót, és vissza szeretné állítani a jelszavát.
+* **Fiók zárolásának feloldása –** ha a felhasználó nem tud bejelentkezni, mert a fiókja zárolva van, és fel szeretné oldani a fiókját.
 
-Amikor egy felhasználó az önkiszolgáló jelszó-visszaállítási szolgáltatással frissíti vagy visszaállítja a jelszavát, a jelszó a helyszíni Active Directory környezetbe is visszaírható. A jelszó visszaírási gondoskodik arról, hogy a felhasználók azonnal használhassák a frissített hitelesítő adataikat a helyszíni eszközök és alkalmazások segítségével.
+Amikor egy felhasználó frissíti vagy alaphelyzetbe állítja a jelszavát az önkiszolgáló jelszó alaphelyzetbe állításával, a jelszó visszaírható egy helyszíni Active Directory-környezetbe is. A jelszó-visszaírás biztosítja, hogy a felhasználó azonnal használhassa a frissített hitelesítő adatait a helyszíni eszközökkel és alkalmazásokkal.
 
 ## <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
-A többtényezős hitelesítés olyan folyamat, amelyben a rendszer a bejelentkezési folyamat során megkéri a felhasználót egy további azonosítási módszer megadására, például egy kód megadására a mobiloddal vagy egy ujjlenyomat-vizsgálat megadásához.
+A többtényezős hitelesítés olyan folyamat, amelynek során a felhasználó a bejelentkezési folyamat során egy további azonosítási formát kér, például kódot kell megadnia a mobiltelefonján, vagy ujjlenyomat-vizsgálatot kell biztosítania.
 
-Ha csak jelszó használatával hitelesíti a felhasználót, a támadás nem biztonságos vektort hagy. Ha a jelszó gyenge vagy máshol van kitéve, valóban a felhasználó bejelentkezik a felhasználónévvel és a jelszóval, vagy egy támadó? Ha a hitelesítés második formáját igényli, a biztonság megnövekszik, mivel ez a további tényező nem a támadók számára könnyen beszerezhető vagy duplikálható.
+Ha csak egy felhasználó hitelesítésére használ jelszót, az nem biztonságos támadási vektot hagy. Ha a jelszó gyenge, vagy máshol volt kitéve, akkor valóban a felhasználó jelentkezik be a felhasználónévvel és jelszóval, vagy támadó? Ha a hitelesítés második formájára van szüksége, a biztonság megnő, mivel ez a további tényező nem olyan dolog, amelyet a támadó könnyen beszerezhet vagy lemásolhat.
 
-![A multi-Factor Authentication különböző formáinak fogalmi képe](./media/concept-mfa-howitworks/methods.png)
+![A többtényezős hitelesítés különböző formáinak koncepcionális képe](./media/concept-mfa-howitworks/methods.png)
 
-Az Azure Multi-Factor Authentication úgy működik, hogy a következő hitelesítési módszerek közül kettő vagy több használatát igényli:
+Az Azure többtényezős hitelesítés ekét vagy több hitelesítési módszer megkövetelésével működik:
 
-* Amit ismer, általában egy jelszó.
-* Valami, például egy nem könnyen duplikált megbízható eszköz, például telefon vagy hardver kulcsa.
-* A biometrikus adatok például ujjlenyomatok vagy Arcfelismerés.
+* Valami, amit tudsz, általában egy jelszót.
+* Valami, például egy megbízható eszköz, amely et nem könnyű lemásolni, például telefon vagy hardverkulcs.
+* Valami, ami vagy - biometria, mint egy ujjlenyomat vagy arcvizsgálat.
 
-A felhasználók az önkiszolgáló jelszó-visszaállításhoz és az Azure Multi-Factor Authenticationhoz is regisztrálhatnak, így egyszerűbbé válik a beléptetési élmény. A rendszergazdák meghatározhatják, hogy milyen típusú másodlagos hitelesítést lehet használni. Az Azure Multi-Factor Authentication akkor is megkövetelhető, ha a felhasználók önkiszolgáló jelszó-visszaállítást végeznek a folyamat további biztonságosabbá tételéhez.
+A felhasználók egy lépésben regisztrálhatják magukat az önkiszolgáló jelszó-visszaállításhoz és az Azure többtényezős hitelesítéshez, hogy egyszerűsítsék a beszállásélményét. A rendszergazdák meghatározhatják, hogy milyen másodlagos hitelesítési formák használhatók. Az Azure többtényezős hitelesítése akkor is szükség lehet, ha a felhasználók önkiszolgáló jelszó-visszaállítást hajtanak végre a folyamat további biztonságossá tétele érdekében.
 
 ## <a name="password-protection"></a>Jelszavas védelem
 
-Alapértelmezés szerint az Azure AD blokkolja a gyenge jelszavakat, például a *jelszó1*. A rendszer automatikusan frissíti és kikényszeríti a globálisan tiltott jelszavak listáját, amely az ismert gyenge jelszavakat is tartalmazza. Ha egy Azure AD-felhasználó megpróbálja beállítani a jelszavukat a gyenge jelszavak egyikére, a rendszer értesítést küld a biztonságosabb jelszó kiválasztásáról.
+Alapértelmezés szerint az Azure AD blokkolja a gyenge jelszavakat, például a Password1.Default, Azure AD blocks weak passwords such as *Password1*. A globális tiltott jelszavak listája automatikusan frissül, és kikényszeríti, amely tartalmazza az ismert gyenge jelszavakat. Ha egy Azure AD-felhasználó megpróbálja beállítani a jelszavát, hogy az egyik ilyen gyenge jelszavakat, értesítést kapnak, hogy válasszon egy biztonságosabb jelszót.
 
-A biztonság fokozása érdekében egyéni jelszavas védelmi házirendeket adhat meg. Ezek a házirendek szűrők használatával letilthatják az olyan jelszavak bármely változatát, mint például a *contoso* vagy egy olyan hely, mint például a *London*.
+A biztonság növelése érdekében egyéni jelszavas védelmi házirendeket határozhat meg. Ezek a házirendek szűrők használatával blokkolhatják a jelszó bármely változatát, amely például *a Contoso* nevet vagy egy olyan helyet tartalmaz, mint *például London.*
 
-A hibrid biztonság érdekében a helyi Active Directory környezettel integrálhatja az Azure AD jelszavas védelmét. A helyszíni környezetben telepített összetevők megkapják a globálisan tiltott jelszavak listáját és az egyéni jelszavas védelmet az Azure AD-ből, a tartományvezérlők pedig a jelszó-módosítási események feldolgozására használják őket. Ez a hibrid megközelítés gondoskodik arról, hogy a felhasználók hogyan vagy hol változtatják meg a hitelesítő adataikat, így kényszeríti az erős jelszavak használatát.
+A hibrid biztonság érdekében integrálhatja az Azure AD jelszavas védelmét egy helyszíni Active Directory-környezettel. A helyszíni környezetben telepített összetevő megkapja a globális tiltott jelszólistát és az egyéni jelszavas védelmi szabályzatokat az Azure AD-től, és a tartományvezérlők ezeket használják a jelszómódosítási események feldolgozásához. Ez a hibrid megközelítés gondoskodik arról, hogy függetlenül attól, hogy a felhasználó hogyan és hol módosítja a hitelesítő adatait, erős jelszavak használatát kényszeríti ki.
 
 ## <a name="passwordless-authentication"></a>Jelszó nélküli hitelesítés
 
-Számos környezet esetében a cél a jelszavak használatának megszüntetése a bejelentkezési események részeként. A szolgáltatások, például az Azure Password Protection vagy az Azure Multi-Factor Authentication segítenek a biztonság javításában, de a Felhasználónév és a jelszó a hitelesítés gyenge formája marad, amely megtámadható vagy találgatásos támadásokat okozhat.
+A végső cél számos környezetben, hogy távolítsa el a jelszavak használatát a bejelentkezési események részeként. Az olyan funkciók, mint az Azure jelszavas védelme vagy az Azure többtényezős hitelesítése, növelik a biztonságot, de a felhasználónév és a jelszó továbbra is gyenge hitelesítési forma marad, amely elérhetővé tehető vagy találgatásos annektálni.
 
-![Biztonság és kényelem a jelszóval nem rendelkező hitelesítési folyamattal](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
+![Biztonság és kényelem a jelszó nélküli hitelesítési folyamattal](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-Ha jelszó nélküli metódussal jelentkezik be, a hitelesítő adatok a biometria és a Windows Hello for Business használatával, vagy egy FIDO2 biztonsági kulccsal érhetők el. Ezeket a hitelesítési módszereket nem lehet könnyen duplikálni egy támadó.
+Ha jelszó nélküli módszerrel jelentkezik be, a hitelesítő adatokat olyan módszerek használatával biztosítjuk, mint a biometria a Windows Hello for Business szolgáltatással vagy egy FIDO2 biztonsági kulccsal. Ezeket a hitelesítési módszereket a támadó nem tudja könnyen lemásolni.
 
-Az Azure AD lehetővé teszi, hogy natív módon hitelesítse a jelszavak nélküli módszerekkel, így egyszerűbbé téve a felhasználók bejelentkezési élményét, és csökkentheti a támadások kockázatát.
+Az Azure AD segítségével natív módon hitelesíthető jelszó nélküli módszerekkel, hogy egyszerűsítse a bejelentkezési élményt a felhasználók számára, és csökkenti a támadások kockázatát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Első lépésként tekintse meg az [önkiszolgáló jelszó-visszaállítást][quickstart-sspr] és az [Azure multi-Factor Authentication oktatóanyagát ismertető útmutatót][tutorial-mfa-applications].
+Első lépésekhez tekintse meg az [önkiszolgáló jelszó-visszaállítás][quickstart-sspr] és az [Azure többtényezős hitelesítésoktatóanyag][tutorial-mfa-applications]rövid útmutatója című témakört.
 
-Az önkiszolgáló jelszó-visszaállítási fogalmakkal kapcsolatos további tudnivalókért tekintse meg az [Azure ad önkiszolgáló jelszó-visszaállítás működéséről][concept-sspr]szóló témakört.
+Ha többet szeretne megtudni az önkiszolgáló jelszó-visszaállítási fogalmakról, olvassa el [az Azure AD önkiszolgáló jelszó-visszaállítási működésének módját.][concept-sspr]
 
-A többtényezős hitelesítési fogalmakkal kapcsolatos további tudnivalókért tekintse meg az [Azure multi-Factor Authentication működését][concept-mfa]ismertető témakört.
+A többtényezős hitelesítéssel kapcsolatos fogalmakról az [Azure többtényezős hitelesítésének működése című][concept-mfa]témakörben olvashat bővebben.
 
 <!-- INTERNAL LINKS -->
 [quickstart-sspr]: quickstart-sspr.md

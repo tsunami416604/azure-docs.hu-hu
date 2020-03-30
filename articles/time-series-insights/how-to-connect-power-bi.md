@@ -1,6 +1,6 @@
 ---
-title: A környezet összekötése a Power BI-Azure Time Series Insightsrel | Microsoft Docs
-description: Megtudhatja, hogyan csatlakozhat a Azure Time Series Insights a Power BIhoz a szervezeten belüli adatmegosztáshoz, diagramhoz és megjelenítéshez.
+title: A környezet csatlakoztatása a Power BI-hoz – Azure Time Series Insights | Microsoft dokumentumok
+description: Megtudhatja, hogy miként kapcsolhatja össze az Azure Time Series Insightsot a Power BI-val az adatok megosztása, diagramja és megjelenítése érdekében a szervezeten belül.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -9,141 +9,141 @@ ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75863842"
 ---
-# <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Adatok megjelenítése Time Series Insightsról Power BI
+# <a name="visualize-data-from-time-series-insights-in-power-bi"></a>A Time Series Insights adatainak megjelenítése a Power BI-ban
 
-A Azure Time Series Insights egy platform az idősoros adatsorozatok felhőben történő tárolásához, kezeléséhez, lekérdezéséhez és megjelenítéséhez. A [Power bi](https://powerbi.microsoft.com) egy üzleti elemzési eszköz, amely sokoldalú vizualizációs képességekkel rendelkezik, amelyekkel megoszthatja az elemzéseket és az eredményeket a szervezeten belül. Mindkét szolgáltatás integrálható a Time Series Insights rejlő vizualizációs képességek és a Power BI.
+Az Azure Time Series Insights egy olyan platform, amely az idősorozat-adatok tárolását, kezelését, lekérdezését és megjelenítését szolgála a felhőben. [A Power BI](https://powerbi.microsoft.com) egy gazdag vizualizációs képességekkel rendelkező üzleti elemző eszköz, amely lehetővé teszi az elemzések és az eredmények megosztását a szervezeten belül. Mostantól mindkét szolgáltatás integrálható, hogy a lehető legjobbat hozhassa ki a Time Series Insights belső vizualizációs képességeiből, valamint a Power BI-ból is.
 
 A következőket fogja megtanulni:
 
-* Time Series Insights összekötése a Power BI a Cloud Connector használatával
-* Vizualizációk létrehozása az adataival Power BI
-* A jelentés közzététele Power BI és megosztás a szervezet többi részével
+* A Time Series Insights csatlakoztatása a Power BI-hoz a felhőösszekötő használatával
+* Vizualizációk létrehozása az adatokkal a Power BI-ban
+* A jelentés közzététele a Power BI-ban és megosztás a szervezet többi tagjával
 
-Ebből a lépésből megtudhatja, hogyan jelenítheti meg az idősoros adatsorozatokat a Azure Time Series Insightson keresztül, és hogyan növelhető az adatvizualizációk és a Power BI egyszerű megosztási képességeivel.
+A végén megtudhatja, hogyan jelenítheti meg az idősorozatadatait az Azure Time Series Insights segítségével, és hogyan javíthatja azokat a Power BI erős adatvizualizációjával és egyszerű megosztási lehetőségeivel.
 
-Ha még nem rendelkezik ilyennel, hozzon létre egy [ingyenes Azure-előfizetést](https://azure.microsoft.com/free/) .
+Ha még nem rendelkezik [ingyenes Azure-előfizetéssel,](https://azure.microsoft.com/free/) regisztráljon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Töltse le és telepítse a [Power bi Desktop](https://powerbi.microsoft.com/downloads/) legújabb verzióját
-* [Azure Time Series Insights előzetes verziójú példányt](time-series-insights-update-how-to-manage.md) kell létrehoznia, vagy létre kell hoznia
+* A [Power BI Desktop](https://powerbi.microsoft.com/downloads/) legújabb verziójának letöltése és telepítése
+* Azure Time [Series Insights előzetes példány](time-series-insights-update-how-to-manage.md) ának létrehozása vagy létrehozása
 
 > [!IMPORTANT]
-> A Power BI-összekötő jelenleg a **meleg tároláshoz**konfigurált Time Series Insights előzetes *utólagos* elszámolású környezetekben támogatott.
+> A Power *BI-összekötőjelenleg* a Warm **Store-hoz**konfigurált Time Series Insights előzetes verziós használatra szóló környezetekben támogatott.
 
-## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Adatok összekötése Time Series Insightsról Power BI
+## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Adatok csatlakoztatása a Time Series Insights és a Power BI adataihoz
 
-A Time Series Insights-környezet Power BIhoz való összekapcsolásához kövesse az alábbi lépéseket:
+Ha a Time Series Insights-környezetet a Power BI-hoz szeretné csatlakoztatni, kövesse az alábbi lépéseket:
 
-1. Time Series Insights Explorer megnyitása
-1. Az adatexportálás lekérdezésként vagy nyers adatként
-1. Power BI Desktop megnyitása
+1. A Time Series Insights Explorer megnyitása
+1. Adatok exportálása lekérdezésként vagy nyers adatként
+1. A Power BI Desktop megnyitása
 1. Betöltés egyéni lekérdezésből
 
-### <a name="export-data-into-power-bi-desktop"></a>Az adatexportálás Power BI asztalra
+### <a name="export-data-into-power-bi-desktop"></a>Adatok exportálása a Power BI asztali verzióba
 
 Első lépések:
 
-1. Nyissa meg a Time Series Insights Preview Explorer alkalmazást, és adja meg az adatait.
-1. Miután létrehozta a megfelelő nézetet, navigáljon a **További műveletek** legördülő menüre, és válassza a **Kapcsolódás Power bi**lehetőséget.
+1. Nyissa meg a Time Series Insights előzetes kezelőt, és vesszen az adatokat.
+1. Miután létrehozott egy elégedett nézetet, keresse meg a **További műveletek** legördülő menüt, és válassza a Csatlakozás a **Power BI-hoz**lehetőséget.
 
-    [![Time Series Insights Preview Explorer exportálás](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Time Series Insights Előzetes intéző exportálása](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
-1. Állítsa be a paramétereket a lapon belül:
+1. Állítsa be a paramétereket ezen a lapon:
 
-   1. A megtekinteni kívánt relatív időkeretet határozza meg. Ha elégedett a meglévő nézettel, hagyja meg ezt a **meglévő időkeretként**.
+   1. Adja meg a megtekinteni kívánt relatív időkeretet. Ha elégedett a meglévő nézet, hagyja ezt **a meglévő időkeret**.
    
-   1. Válasszon az **összesített** és a **nyers események**közül. 
+   1. Válasszon **az összesített** és a nyers események **közül.** 
    
        > [!NOTE]
-       > Az adatokat később is összesítheti Power BIban, de az Összesítés után nem lehet visszaállítani a nyers adatokat. 
+       > Az adatokat később bármikor összesítheti a Power BI-ban, de az összesítés után nem állíthatja vissza a nyers adatokat. 
        
        > [!NOTE]
-       > A nyers események szintjének maximális száma 100 – K.
+       > A nyers eseményszint-adatokhoz 100 K eseményszámlálási korlát van.
 
-       [![-kapcsolat](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
+       [![Csatlakoztassa](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. Ha nem konfigurálta a Time Series Insights-példányát a **meleg tároláshoz**, a rendszer figyelmeztetést küld.
+   1. Ha még nem konfigurálta a Time Series Insights-példányt a **Meleg tárhoz,** figyelmeztetést fog kapni.
 
-       [![meleg tárolás figyelmeztetése](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
+       [![Meleg bolt figyelmeztetés](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > A meglévő példányt a Azure Portal **meleg tárolására** is konfigurálhatja.
+       > Konfigurálhatja a meglévő példányát a **Warm Store-ra** az Azure Portalon.
 
-1. Válassza **a lekérdezés másolása a vágólapra**lehetőséget.
-1. Most indítsa el Power BI Desktop.
-1. A **kezdőlapon** Power bi Desktop kattintson a bal felső sarokban található **adatlekérdezés** elemre, majd a **tovább**gombra.
+1. Válassza **a Lekérdezés másolása a vágólapra**lehetőséget.
+1. Most indítsa el a Power BI Desktopot.
+1. A **Kezdőlap** lap Power BI Desktop lapján válassza az **Adatok bekéselése** lehetőséget a bal felső sarokban, majd az **Egyebek**lehetőséget.
 
-    [![Kezdőlap legördülő lista](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
+    [![Kezdőlap legördülő menü](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
 
-1. Keressen **Time Series Insights**, válassza a **Azure Time Series Insights (bétaverzió)** , majd a **kapcsolat**lehetőséget.
+1. Keressen a **Time Series Insights (Time Series Insights)** elemre, válassza az **Azure Time Series Insights (Béta)** lehetőséget, majd **a Csatlakozás**lehetőséget.
 
-    [Power BI ![kapcsolódás a Time Series Insights](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
+    [![A Power BI csatlakoztatása a Time Series Insightshoz](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
-    Másik lehetőségként navigáljon az **Azure** lapra, válassza a **Azure Time Series Insights (bétaverzió)** , majd a **Kapcsolódás**lehetőséget.
+    Másik lehetőségként keresse meg az **Azure** lapot, válassza az **Azure Time Series Insights (Béta)** lehetőséget, majd **a Csatlakozás lehetőséget.**
     
-1. Az üzenet párbeszéde ablak megjeleníti a harmadik féltől származó erőforrásokhoz való kapcsolódásra vonatkozó engedélyt. Válassza a **Folytatás**lehetőséget.
+1. Egy üzenet párbeszédablak jelenik meg, amely engedélyt kér a külső erőforrásokhoz való csatlakozáshoz. Válassza a **Folytatás**lehetőséget.
 
-    [![válassza az egyéni lekérdezés létrehozása lehetőséget.](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
+    [![Egyéni lekérdezés létrehozása lehetőséget választva](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
 
-1. Az **adatforrás**legördülő menüjében válassza az **egyéni lekérdezés létrehozása**lehetőséget. Illessze be a vágólapról az alábbi opcionális **egyéni lekérdezés (opcionális)** mezőbe, majd kattintson **az OK gombra**.
+1. Az **Adatforrás**legördülő menüjében válassza az **Egyéni lekérdezés létrehozása lehetőséget.** Illessze be a vágólapról az alábbi választható **Egyéni lekérdezés (nem kötelező)** mezőbe, majd nyomja **le az OK gombot.**
 
-    [![adja meg az egyéni lekérdezést, és kattintson az OK gombra.](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
+    [![Adja át az egyéni lekérdezést, és válassza az OK gombot](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
 
-1. Az adattábla ekkor betöltődik. A betöltéshez nyomja meg a **Load** (betöltés) Power bi
+1. Az adattábla betöltődik. Nyomja le a **Load** billentyűt a Power BI betöltéséhez.
 
-    [![tekintse át a táblában betöltött adatfájlokat, és válassza a betöltés lehetőséget.](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
+    [![Tekintse át a táblázatban betöltött adatokat, és válassza a Betöltés lehetőséget](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
 
-Ha végrehajtotta ezeket a lépéseket, ugorjon a következő szakaszra.
+Ha elvégezte ezeket a lépéseket, ugorjon előre a következő szakaszra.
 
 ## <a name="create-a-report-with-visuals"></a>Vizualizációkat tartalmazó jelentés létrehozása
 
-Most, hogy importálta az adatPower BIba, ideje, hogy készítsen egy jelentést a vizualizációkkal.
+Most, hogy importálta az adatokat a Power BI-ba, itt az ideje, hogy vizualizációkkal készítsön jelentést.
 
-1. Győződjön meg arról, hogy az ablak bal oldalán a **jelentés** nézet van kiválasztva.
+1. Győződjön meg arról, hogy az ablak bal oldalán kijelölte a **Jelentés** nézetet.
 
-    [![válassza ki a jelentés nézetet](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
+    [![A Jelentésnézet kiválasztása](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
-1.  A vizualizációk oszlopban válassza ki a kívánt **vizualizációt** . Válassza például a **vonal diagram**elemet. Ez egy üres vonalas diagramot ad hozzá a vászonhoz.
+1.  A **Vizualizációk** oszlopban válassza ki a kívánt vizualizációt. Válassza például **a Vonal diagram lehetőséget.** Ezzel üres vonaldiagramot ad a vászonhoz.
  
-1.  A **mezők** listában válassza az **időbélyegző** lehetőséget, majd húzza a **tengely** mezőre az X tengely mentén lévő elemek megjelenítéséhez.
+1.  A **Mezők** listában jelölje ki az **Időbélyeg lehetőséget,** és húzza a **Tengely** mezőre az X tengely mentén lévő elemek megjelenítéséhez.
 
-1.  A **mezők** listában kattintson a **TimeSeriesId** elemre, majd húzza a **Values (értékek** ) mezőbe az Y tengely melletti elemek megjelenítéséhez.
+1.  A **Mezők** listában jelölje ki a **TimeSeriesId** elemet, és húzza az **Értékek** mezőre az Y tengely mentén lévő elemek megjelenítéséhez.
 
-    [![diagram létrehozása](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
+    [![Vonaldiagram létrehozása](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  Ha egy másik diagramot szeretne hozzáadni a vászonhoz, válassza a vászonon bárhol a vásznon, és ismételje meg a folyamatot.
+1.  Ha egy másik diagramot szeretne hozzáadni a vászonhoz, jelölje ki a vászon bármely pontját a vonaldiagramon kívül, és ismételje meg ezt a folyamatot.
 
-    [![további diagramokat hozhat létre a megosztáshoz](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
+    [![További megosztott diagramok létrehozása](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 
-Miután létrehozta a jelentést, közzéteheti a Power BI Reporting Services szolgáltatásban.
+Miután létrehozta a jelentést, közzéteheti azt a Power BI Reporting Services szolgáltatásban.
 
 ## <a name="advanced-editing"></a>Speciális szerkesztés
 
-Ha már betöltött egy adatkészletet a Power BIban, de módosítani szeretné a lekérdezést (például a dátum/idő vagy a környezeti azonosító paramétereit), ezt a Power BI Speciális szerkesztő funkcióján keresztül teheti meg. További információért tekintse meg a [Power bi dokumentációját](https://docs.microsoft.com/power-bi/desktop-query-overview) .
+Ha már betöltött egy adatkészletet a Power BI-ban, de módosítani szeretné a lekérdezést (például a dátum/idő vagy a környezeti azonosító paramétereit), ezt a Power BI Advanced Editor funkcióin keresztül teheti meg. További információt a [Power BI dokumentációjában](https://docs.microsoft.com/power-bi/desktop-query-overview) talál.
 
-Áttekintés:
+Áttekintésként:
 
-1. A Power BI Desktop területen válassza a **lekérdezések szerkesztése**lehetőséget.
-1. Nyomja meg az **speciális szerkesztő**gombot.
+1. A Power BI Desktopban válassza **a Lekérdezések szerkesztése**lehetőséget.
+1. Nyomja **meg a Speciális szerkesztőt**.
 
-    [![lekérdezések szerkesztése a Speciális szerkesztő](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png)](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png#lightbox)
+    [![Lekérdezések szerkesztése a Speciális szerkesztőben](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png)](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png#lightbox)
 
-1. Módosítsa a JSON-adattartalmat a kívánt módon.
-1. Válassza a **kész** lehetőséget, majd a **Power Query szerkesztő ablakában**kattintson a **& Bezárás** gombra.
+1. Módosítsa a JSON-hasznos terhet a kívánt módon.
+1. Válassza a **Kész,** majd **& Apply bezárása lehetőséget** a Power Query Editor **ablakban.**
 
-A kezelőfelület ekkor az alkalmazott kívánt módosításokat tükrözi.  
+A felület most tükrözi a kívánt módosításokat alkalmazott.  
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a Azure Time Series Insights [Power bi-összekötővel kapcsolatos fogalmakról](https://docs.microsoft.com/power-bi/desktop-query-overview) .
+* Olvassa el az Azure Time Series Insights [Power BI-összekötővel kapcsolatos fogalmait.](https://docs.microsoft.com/power-bi/desktop-query-overview)
 
-* További információ a [Power bi asztalról](https://docs.microsoft.com/power-bi/desktop-query-overview).
+* További információ a [Power BI desktopról.](https://docs.microsoft.com/power-bi/desktop-query-overview)
 
-* Olvassa el [Time Series Insights a ga Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) és a [Time Series Insights Preview Explorer programot](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
+* Olvassa el [a Time Series Insights GA Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) és a Time Series Insights előzetes [kezelőt.](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart)

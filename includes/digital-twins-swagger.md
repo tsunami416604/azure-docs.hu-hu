@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 01/07/2020
 ms.custom: include file
 ms.openlocfilehash: 096e28c875634e248ee95e1010fa915dd35bddab
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75752385"
 ---
 > [!TIP]
-> Az API-szolgáltatások készletének bemutatásához meg kell adni egy hencegő előzetes verziót.
-> A szolgáltatás a [docs.westcentralus.azuresmartspaces.net/Management/Swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger)webhelyen található.
+> A Swagger setbesurrittió előzetes verziója az API-szolgáltatáskészlet bemutatására szolgál.
+> A [docs.westcentralus.azuresmartspaces.net/management/swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger)házigazdája.
 
-A saját generált felügyeleti API-ját a következő címen érheti el:
+A saját által létrehozott Felügyeleti API Swagger dokumentációt a következő helyen érheti el:
 
 ```URL
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
@@ -29,4 +29,4 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 | Név | Csere erre |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Az Azure Digital Twins-példány neve |
-| YOUR_LOCATION | A példány által üzemeltetett kiszolgálói régió |
+| YOUR_LOCATION | A példány mely kiszolgálórégiójában található |

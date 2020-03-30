@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 02/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 563849d3875ed0156d81770f58340633d90d515b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179572"
 ---
-Az alábbiakban az Azure objektumok lehet írni a méretét. Győződjön meg arról, hogy a feltöltött fájlok megfelelnek-e ezeket a korlátokat.
+Az alábbiakban az Azure-objektumok megírható méretei láthatók. Győződjön meg arról, hogy a feltöltött fájlok megfelelnek ezeknek a korlátoknak.
 
-| Az Azure-objektum típusa | Feltöltési korlát                                             |
+| Azure-objektumtípusa | Feltöltési korlát                                             |
 |-------------------|-----------------------------------------------------------|
-| Blokkblob        | ~ 4,75 TB                                                 |
-| Page Blob         | 1 TB <br> Minden feltöltött Lapblob formátumú fájl 512 bájt igazítva (szerves több) kell lennie, ellenkező esetben a feltöltés sikertelen lesz. <br> A VHD és VHDX igazítva 512 bájt. |
-| Azure Files         | 1 TB <br> Minden feltöltött Lapblob formátumú fájl 512 bájt igazítva (szerves több) kell lennie, ellenkező esetben a feltöltés sikertelen lesz. <br> A VHD és VHDX igazítva 512 bájt. |
+| Blob blokkolása        | ~ 4,75 TB                                                 |
+| Lapblob         | 1 TB <br> A Lapblob formátumban feltöltött összes fájlnak 512 bájtnak kell lennie (szerves többszörös), különben a feltöltés sikertelen lesz. <br> A VHD és a VHDX 512 bájt tal vannak elrendezve. |
+| Azure Files         | 1 TB <br> A Lapblob formátumban feltöltött összes fájlnak 512 bájtnak kell lennie (szerves többszörös), különben a feltöltés sikertelen lesz. <br> A VHD és a VHDX 512 bájt tal vannak elrendezve. |
 
 > [!IMPORTANT]
-> Akár 5 TB-os engedélyezve van a fájlok (attól függetlenül, a tárolás típusa) létrehozása. Azonban ha létrehoz egy fájlt, amelynek a mérete meghaladja a feltöltési korlátot, az előző táblázatban definiált, a fájl nem első feltöltve. A fájl a lemezterületet felszabadítása érdekében manuálisan törölnie kell.
+> A fájlok létrehozása (a tárolási típustól függetlenül) legfeljebb 5 TB megengedett. Ha azonban olyan fájlt hoz létre, amelynek mérete nagyobb, mint az előző táblázatban megadott feltöltési korlát, a fájl feltöltése nem történik meg. A hely visszaszerzéséhez manuálisan kell törölnie a fájlt.

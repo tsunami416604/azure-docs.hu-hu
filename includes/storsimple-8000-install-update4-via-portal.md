@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a3ccf76b2722c04a9353fcc7020ff1387bc454c6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179322"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Frissítés telepítése az Azure Portalról
@@ -17,17 +17,17 @@ ms.locfileid: "67179322"
 
     ![Eszköz kiválasztása](./media/storsimple-8000-install-update4-via-portal/update1.png)
 
-2. Navigáljon a **eszközbeállítások** > **Eszközfrissítések**.
+2. Nyissa meg az **Eszközbeállítások** > **Eszközfrissítések lapot.**
 
-    ![Kattintson az eszköz frissítése](./media/storsimple-8000-install-update4-via-portal/update2.png)
+    ![Kattintson az Eszközfrissítések elemre](./media/storsimple-8000-install-update4-via-portal/update2.png)
 
-2. Egy értesítés jelenik meg, ha új frissítések érhetők el. Másik lehetőségként a a **Eszközfrissítések** panelen kattintson a **frissítések keresése**. Létrejön egy feladat, amely megkeresi az elérhető frissítéseket. A feladat sikeres befejezéséről értesítést kap.
+2. Értesítés jelenik meg, ha új frissítések érhetők el. Másik lehetőségként az **Eszközfrissítések** panelen kattintson a **Frissítések bekeresése gombra.** Létrejön egy feladat, amely megkeresi az elérhető frissítéseket. A feladat sikeres befejezéséről értesítést kap.
 
-    ![Kattintson az eszköz frissítése](./media/storsimple-8000-install-update4-via-portal/update3.png)
+    ![Kattintson az Eszközfrissítések elemre](./media/storsimple-8000-install-update4-via-portal/update3.png)
 
-3. Azt javasoljuk, hogy mielőtt alkalmazná a frissítést az eszközön, tekintse át a kibocsátási megjegyzéseket. Frissítések alkalmazásához kattintson **frissítések telepítése**. Az a **általános frissítések megerősítése** panelen tekintse át az előfeltételeket a befejezéshez, mielőtt a frissítések telepítését. Válassza ki a jelölőnégyzet bejelölésével jelezze, hogy készen áll az eszközét, és kattintson a **telepítése**.
+3. Azt javasoljuk, hogy mielőtt alkalmazná a frissítést az eszközön, tekintse át a kibocsátási megjegyzéseket. A frissítések alkalmazásához kattintson **a Frissítések telepítése gombra.** A **Rendszeres frissítések megerősítése** panelen tekintse át a frissítések alkalmazása előtt végrehajtandó előfeltételeket. Jelölje be a jelölőnégyzetet, jelezve, hogy készen áll az eszköz frissítésére, majd kattintson a **Telepítés gombra.**
 
-    ![Kattintson az eszköz frissítése](./media/storsimple-8000-install-update4-via-portal/update4.png)
+    ![Kattintson az Eszközfrissítések elemre](./media/storsimple-8000-install-update4-via-portal/update4.png)
 
 6. Megkezdődik az előfeltételek ellenőrzése. Ezekbe az ellenőrzésekbe a következők tartoznak:
    
@@ -35,9 +35,9 @@ ms.locfileid: "67179322"
    * **A hardverösszetevők állapotának ellenőrzései** annak ellenőrzéséhez, hogy a StorSimple eszközön lévő összes hardverösszetevő kifogástalan állapotú legyen.
    * **DATA 0 ellenőrzések** annak ellenőrzéséhez, hogy a DATA 0 engedélyezett legyen az eszközön. Ha ez az illesztőfelület nem engedélyezett, engedélyeznie kell, majd újra kell próbálkoznia.
 
-     A frissítés letöltését és telepítését, csak akkor, ha az összes ellenőrzés sikeresen befejeződik. Értesítést kap, amikor az ellenőrzések folyamatban vannak. Ha az Eszközfrissítések nem sikerül, majd kap az a hiba okait. Probléma megoldására, és próbálkozzon újra a művelettel. Elképzelhető, hogy kapcsolatba kell lépnie a Microsoft támogatási szolgálatával, ha nem tudja egyedül kezelni ezeket a problémákat.
+     A frissítés csak akkor töltődik le és települ, ha az összes ellenőrzés sikeresen befejeződött. Értesítést kap, amikor az ellenőrzések folyamatban vannak. Ha az előzetes ellenőrzések sikertelenek, akkor megkapja a hiba okait. Oldja meg ezeket a problémákat, majd próbálkozzon újra a művelettel. Elképzelhető, hogy kapcsolatba kell lépnie a Microsoft támogatási szolgálatával, ha nem tudja egyedül kezelni ezeket a problémákat.
 
-7. Az Eszközfrissítések sikeres elvégzése után létrejön egy frissítési feladat. A frissítési feladat sikeres létrehozásáról értesítést kap.
+7. Az előzetes ellenőrzések sikeres befejezése után létrejön egy frissítési feladat. A frissítési feladat sikeres létrehozásáról értesítést kap.
    
     ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update4-via-portal/update6.png)
    
@@ -47,11 +47,11 @@ ms.locfileid: "67179322"
 
     ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update4-via-portal/update8.png)
 
-     Az a frissítési feladat állapotát is figyelheti **eszközbeállítások > feladatok**. Az a **feladatok** panelen láthatja a frissítési folyamatot.
+     A frissítési feladat előrehaladását az **Eszközbeállítások > feladatok**területen is figyelheti. A **Feladatok** panelen láthatja a frissítés folyamatát.
 
      ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update4-via-portal/update7.png)
 
-10. A feladat befejezése után lépjen a **eszközbeállítások > Eszközfrissítések**. A szoftververzió most frissíteni kell.
+10. A feladat befejezése után keresse meg az **Eszközbeállítások > Eszközfrissítések .** A szoftver verzióját most frissíteni kell.
 
    ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update4-via-portal/update9.png)
 

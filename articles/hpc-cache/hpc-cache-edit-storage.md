@@ -1,71 +1,71 @@
 ---
-title: Azure HPC cache tárolási célok frissítése
-description: Az Azure HPC cache tárolási céljainak szerkesztése
+title: Az Azure HPC-gyorsítótár tárolási céljainak frissítése
+description: Az Azure HPC-gyorsítótár tárolási céljainak szerkesztése
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 1/08/2020
 ms.author: rohogue
 ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75867009"
 ---
 # <a name="edit-storage-targets"></a>Céltárolók szerkesztése
 
-A tárolási célokat a gyorsítótár **tárolási célok** lapjáról távolíthatja el vagy módosíthatja.
+A tárolócélt eltávolíthatja vagy módosíthatja a gyorsítótár **tárolócélok** lapjáról.
 
 ## <a name="remove-a-storage-target"></a>Tárolási cél eltávolítása
 
-A tárolási cél eltávolításához jelölje ki azt a listában, majd kattintson a **Törlés** gombra.
+Tárolócél eltávolításához jelölje ki azt a listában, és kattintson a **Törlés** gombra.
 
-Ez a művelet eltávolítja a tárolási cél társítását ezzel az Azure HPC cache-rendszerrel, de nem módosítja a háttér-tárolási rendszereket. Ha például egy Azure Blob Storage-tárolót használ, a tároló és annak tartalma továbbra is fennáll, miután törölte a gyorsítótárból. A tárolót hozzáadhatja egy másik Azure HPC-gyorsítótárhoz, hozzáadhatja újra a gyorsítótárhoz, vagy törölheti a Azure Portal.
+Ez a művelet eltávolítja a tárolási cél társítása ezzel az Azure HPC cache rendszer, de nem módosítja a háttér-tároló rendszer. Ha például egy Azure Blob-tárolót használt, a tároló és annak tartalma továbbra is fennáll, miután törölte a gyorsítótárból. Hozzáadhatja a tárolót egy másik Azure HPC-gyorsítótárhoz, újra hozzáadhatja a gyorsítótárhoz, vagy törölheti az Azure Portalon.
 
-A gyorsítótárban tárolt összes változás a tárolási cél eltávolítása előtt a háttérrendszer tárolási rendszerébe íródik. Ez a folyamat akár egy órát is igénybe vehet, ha a módosult adatmennyiségek nagy része a gyorsítótárban van.
+A gyorsítótárban tárolt fájlmódosításokat a rendszer a tárolócél eltávolítása előtt a háttértároló rendszerbe írja. Ez a folyamat egy órát vagy többet is igénybe vehet, ha sok megváltozott adat van a gyorsítótárban.
 
-## <a name="update-storage-targets"></a>Tárolási célok frissítése
+## <a name="update-storage-targets"></a>Tárcélok frissítése
 
-Szerkesztheti a tárolási célokat, hogy módosítsa a tulajdonságait. A különböző tulajdonságok a különböző típusú tárolók számára szerkeszthetők:
+A tárolási célok szerkesztésével módosíthatja azok egy részét. A különböző tulajdonságok különböző típusú tárolókesetében szerkeszthetők:
 
-* A blob Storage-célok esetében módosíthatja a névtér elérési útját.
+* A Blob storage-tárolók esetében módosíthatja a névtér elérési útját.
 
-* Az NFS-tárolási célok esetében a következő tulajdonságokat módosíthatja:
+* NFS-tárolócélok esetén módosíthatja a következő tulajdonságokat:
 
   * Névtér elérési útja
   * Használati modell
   * Exportálás
   * Alkönyvtár exportálása
 
-Nem szerkesztheti a tárolási cél nevét, típusát vagy háttérbeli tárolási rendszerét (blob-tároló vagy NFS-állomásnév/IP-cím). Ha módosítania kell ezeket a tulajdonságokat, törölje a tárolási célt, és hozzon létre egy cserét az új értékkel.
+A tárolási cél neve, típusa vagy háttértároló rendszere (Blob-tároló vagy NFS-állomásnév/IP-cím) nem szerkeszthető. Ha módosítania kell ezeket a tulajdonságokat, törölje a tárolási célt, és hozzon létre egy cserét az új értékkel.
 
-A tárolási cél módosításához kattintson a tárolási cél nevére a Részletek lap megnyitásához. A lap egyes mezői szerkeszthető.
+A tárolási cél módosításához kattintson a tárolócél nevére a részleteket tartalmazó lap megnyitásához. A lap egyes mezői szerkeszthetők.
 
-![az NFS-tárolási cél szerkesztési oldalának képernyőképe](media/hpc-cache-edit-storage-nfs.png)
+![képernyőkép egy NFS-tárolócél szerkesztési lapjáról](media/hpc-cache-edit-storage-nfs.png)
 
-## <a name="update-an-nfs-storage-target"></a>NFS-tárolási cél frissítése
+## <a name="update-an-nfs-storage-target"></a>NFS-tárolócéljának frissítése
 
-NFS-tárolási cél esetén több tulajdonságot is frissíthet. (Tekintse meg a fenti képernyőképet egy példa szerkesztésre szolgáló oldalon.)
+NFS-tárolócél esetén több tulajdonságot is frissíthet. (Lásd a fenti képernyőkép egy példa szerkesztési oldalon.)
 
-* **Használati modell** – a használati modell befolyásolja, hogy a gyorsítótár hogyan őrizze meg az adatokat. További információért olvassa el [a használati modell kiválasztása](hpc-cache-add-storage.md#choose-a-usage-model) című témakört.
-* **Virtuális névtér elérési útja** – az az elérési út, amelyet az ügyfelek a tárolási cél csatlakoztatására használnak. A részletekért olvassa el [az összesített névtér megtervezése](hpc-cache-namespace.md) című leírást.
-* **NFS-exportálási útvonal** – a tárolási rendszer a névtér elérési útján való exportálására használható.
-* **Alkönyvtár elérési útja** – az Exportálás alatt lévő alkönyvtár, amely a névtér elérési útjával társítva van. Ha nem kell megadnia egy alkönyvtárat, hagyja üresen ezt a mezőt.
+* **Használati modell** – A használati modell befolyásolja, hogy a gyorsítótár hogyan őrzi meg az adatokat. Olvassa [el A használati modell kiválasztása](hpc-cache-add-storage.md#choose-a-usage-model) további információkért.
+* **Virtuális névtér elérési útja** – Az az elérési út, amelyet az ügyfelek a tárolási cél csatlakoztatására használnak. Olvassa [el az összesített névtér megtervezése](hpc-cache-namespace.md) a részletekért.
+* **NFS-exportálási útvonal** – A névtér elérési útvonalához használandó tárolórendszer-exportálás.
+* **Alkönyvtár elérési útja** – A névtér elérési úthoz társítani való alkönyvtár (az exportálás alatt). Ha nem kell alkönyvtárat megadnia, hagyja üresen ezt a mezőt.
 
-Minden névtér elérési útjának az Exportálás és az alkönyvtár egyedi kombinációja szükséges. Ez azt okozhatja, hogy nem tud két különböző, az ügyfél felé irányuló elérési utat pontosan ugyanarra a könyvtárra tenni a háttér-tárolási rendszeren.
+Minden névtérelérési útvonalhoz az exportálás és az alkönyvtár egyedi kombinációjára van szükség. Ez azt, hogy nem lehet két különböző ügyfél felé néző elérési utat a háttér-tároló rendszer ugyanazon könyvtárhoz.
 
-A módosítások végrehajtása után kattintson **az OK** gombra a tárolási cél frissítéséhez, vagy kattintson a **Mégse** gombra a módosítások elvetéséhez.
+A módosítások elvégzése után kattintson az **OK** gombra a tárolási cél frissítéséhez, vagy kattintson a **Mégse gombra** a módosítások elvetéséhez.
 
-## <a name="update-an-azure-blob-storage-target"></a>Azure Blob Storage-tároló frissítése
+## <a name="update-an-azure-blob-storage-target"></a>Azure Blob-tárolócél frissítése
 
-A blob Storage-tároló részletek lapja lehetővé teszi a virtuális névtér elérési útjának módosítását.
+A Blob-tároló cél részletes lapja lehetővé teszi a virtuális névtér elérési útjának módosítását.
 
-![a blob Storage-tároló szerkesztési oldalának képernyőképe](media/hpc-cache-edit-storage-blob.png)
+![képernyőkép egy blobstorage-tároló hoz a szerkesztési lapról](media/hpc-cache-edit-storage-blob.png)
 
-Ha elkészült, kattintson **az OK** gombra a tárolási cél frissítéséhez, vagy kattintson a **Mégse** gombra a módosítások elvetéséhez.
+Ha végzett, kattintson az **OK** gombra a tárolási cél frissítéséhez, vagy kattintson a **Mégse gombra** a módosítások elvetéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A beállításokkal kapcsolatos további információkért olvassa el a [tárolási célok hozzáadása](hpc-cache-add-storage.md) című témakört.
-* A virtuális elérési utak használatával kapcsolatos további tippekért olvassa el [az összesített névtér megtervezése](hpc-cache-namespace.md) című cikkét.
+* A [beállításokról](hpc-cache-add-storage.md) a Tárolási célok hozzáadása című részt című, további tudnivalókat.
+* Olvassa [el az összesített névtér megtervezése](hpc-cache-namespace.md) további tippeket a virtuális elérési utak használatával kapcsolatban.

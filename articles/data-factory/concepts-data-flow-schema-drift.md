@@ -1,6 +1,6 @@
 ---
-title: Séma-eltolódás a leképezési adatfolyamban
-description: Rugalmas adatfolyamatok létrehozása a Azure Data Factory a séma drift
+title: Sémaeltolódás a leképezési adatfolyamban
+description: Rugalmas adatfolyamok létrehozása az Azure Data Factoryban a sémaeltolódással
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,65 +9,65 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2019
 ms.openlocfilehash: 9daf7973a2e48f866a8d0b93a682851d31dc3af7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928543"
 ---
-# <a name="schema-drift-in-mapping-data-flow"></a>Séma-eltolódás a leképezési adatfolyamban
+# <a name="schema-drift-in-mapping-data-flow"></a>Sémaeltolódás a leképezési adatfolyamban
 
-A séma drift az a helyzet, amikor a források gyakran változtatják meg a metaadatokat. A mezőket, oszlopokat és típusokat a rendszer menet közben is hozzáadhatja, eltávolíthatja vagy módosíthatja. A séma eltolódása nélkül az adatfolyam a felsőbb rétegbeli adatforrások változásaihoz lesz kitéve. A tipikus ETL-minták meghiúsulnak, amikor a bejövő oszlopok és mezők megváltoznak, mivel ezek a forrás nevükhöz vannak kötve.
+Sémaeltolódás esetén a források gyakran módosítják a metaadatokat. Mezők, oszlopok és típusok menet közben adhatók hozzá, távolíthatók el vagy módosíthatók. A sémaeltolódás kezelése nélkül az adatfolyam sebezhetővé válik a felsőbb sugárúti adatforrás-változásokkal szemben. A tipikus ETL-minták sikertelenek, ha a bejövő oszlopok és mezők megváltoznak, mert általában ezekhez a forrásnevekhez vannak kötve.
 
-A séma-eltolódás elleni védelemhez fontos, hogy a létesítmények egy adatáramlási eszközben legyenek, amely lehetővé teszi, hogy adatmérnökként:
+A sémaeltolódás elleni védelem érdekében fontos, hogy az adatfolyam-kezelő eszköz létesítményei lehetővé tegyék, hogy adatmérnökként:
 
-* Megváltoztathatatlan mezőneveket, adattípusokat, értékeket és méreteket tartalmazó források megadása
-* Olyan átalakítási paramétereket határozhat meg, amelyek rögzített mezők és értékek helyett adatmintákkal működhetnek.
-* Megadhatja azokat a kifejezéseket, amelyek megértik a bejövő mezőkkel egyező mintákat, és nem a nevesített mezőket használja
+* Módosítható mezőnévvel, adattípussal, értékkel és mérettel rendelkező források meghatározása
+* Olyan átalakítási paraméterek definiálása, amelyek a kódolt mezők és értékek helyett adatmintákkal dolgozhatnak
+* Olyan kifejezések definiálása, amelyek névvel ellátott mezők helyett a bejövő mezőknek megfelelő mintákat értelmeznek
 
-A Azure Data Factory natív módon támogatja a végrehajtásról a végrehajtásra váltást igénylő rugalmas sémákat, így általános Adatátalakítási logikát építhet ki az adatfolyamatok újrafordításának szükségessége nélkül.
+Az Azure Data Factory natív módon támogatja a rugalmas sémák, amelyek a végrehajtásról a végrehajtásra, így hozhat létre általános adatátalakítási logika anélkül, hogy újra kell fordítania az adatfolyamok.
 
-Az adatfolyamatban építészeti döntés szükséges ahhoz, hogy elfogadja a séma-eltolódást a folyamat során. Ha ezt teszi, a forrásokból is védelmet biztosíthat a séma változásai ellen. Az oszlopok és típusok korai kötését azonban elveszítheti az adatfolyamban. Azure Data Factory a séma-drift folyamatokat a késői kötésű folyamatokként kezeli, így az átalakítások létrehozásakor az átadott oszlopnevek nem lesznek elérhetők a séma nézeteiben a folyamat során.
+Meg kell hoznia egy architekturális döntést az adatfolyamban, hogy elfogadja a séma sodródását a folyamat során. Ha ezt teszi, védelmet nyújt a forrásokból származó sémamódosítások ellen. Az oszlopok és típusok korai kötése azonban elveszhet az adatfolyamban. Az Azure Data Factory a séma-átlóási folyamatokat kései kötési folyamatként kezeli, így az átalakítások létrehozásakor az átsodródott oszlopnevek nem lesznek elérhetők a sémanézetekben a folyamat során.
 
-## <a name="schema-drift-in-source"></a>Séma-eltolódás a forrásban
+## <a name="schema-drift-in-source"></a>Sémaeltolódás a forrásban
 
-A forrás definíciójában lévő adatfolyamatba érkező oszlopok "sodródott" értékűek, ha nem jelennek meg a forrás kivetítésében. A forrás-kivetítést a forrás-átalakítás leképezés lapján tekintheti meg. Ha kijelöl egy adatkészletet a forráshoz, az ADF automatikusan átveszi a sémát az adatkészletből, és létrehoz egy projektet az adott adatkészlet-séma definíciójában.
+A forrásdefinícióból az adatfolyamba érkező oszlopok "sodródottként" vannak definiálva, ha nincsenek jelen a forrásvetésben. A forrásvetületet a forrástranszformáció vetítéslapjáról tekintheti meg. Amikor kiválaszt egy adatkészletet a forráshoz, az ADF automatikusan kiveszi a sémát az adatkészletből, és létrehoz egy projektet az adott adatkészletséma-definícióból.
 
-A forrás-átalakításban a séma-eltolódás olyan oszlopok olvasására van meghatározva, amelyek nem határozzák meg az adatkészlet sémáját. A séma eltolódásának engedélyezéséhez jelölje be a **séma eltolódásának engedélyezése** a forrás-átalakításban lehetőséget.
+A forrásátalakításban a sémaeltolódás olyan oszlopok olvasásaként van definiálva, amelyek nincsenek definiálva az adatkészletséma meghatározásával. Sémaeltolódás engedélyezéséhez jelölje be **a Sémaeltolódás engedélyezése** a forrásátalakításban jelölőnégyzetet.
 
 ![Séma-drift forrás](media/data-flow/schemadrift001.png "Séma-drift forrás")
 
-Ha engedélyezve van a séma-eltolódás, a rendszer az összes bejövő mezőt beolvassa a forrásból a végrehajtás során, és a teljes folyamatot átadja a fogadónak. Alapértelmezés szerint az összes újonnan észlelt oszlop (más néven *lebegő oszlop*) sztring adattípusként érkezik. Ha azt szeretné, hogy az adatfolyam automatikusan kikövetkeztetse az oszlopok adattípusait, ellenőrizze, hogy a **kikövetkeztetett oszlop típusa** szerepel-e a forrás beállításai között.
+Ha a sémaeltolódás engedélyezve van, a végrehajtás során a program az összes bejövő mezőt beolvassa a forrásból, és a teljes folyamaton keresztül a fogadóba továbbítja. Alapértelmezés szerint az összes újonnan észlelt oszlop, más néven *az elsodródott oszlopok*karakterlánc-adattípusként érkeznek. Ha azt szeretné, hogy az adatfolyam automatikusan kikövetkeztetje az elsodródott oszlopok adattípusait, jelölje be **az Elsodródott oszloptípusok jelölőnégyzetet** a forrásbeállításokban.
 
-## <a name="schema-drift-in-sink"></a>Séma-eltolódás a fogadóban
+## <a name="schema-drift-in-sink"></a>Sémasodródás a mosogatóban
 
-A fogadó átalakításban a séma-eltolódás akkor van, ha további oszlopokat ír a fogadó adatsémában meghatározottak szerint. A séma eltolódásának engedélyezéséhez jelölje be a **séma eltolódásának engedélyezése** a fogadó transzformációjában lehetőséget.
+A fogadó átalakítása, séma eltolódása, amikor további oszlopokat ír a fogadó adatsémában meghatározott felülre. Sémaeltolódás engedélyezéséhez jelölje be **a Sémaeltolódás engedélyezése** a fogadóban az átalakításban jelölőnégyzetet.
 
-![Séma drift fogadó](media/data-flow/schemadrift002.png "Séma drift fogadó")
+![Sémasodródás-elesési mosogató](media/data-flow/schemadrift002.png "Sémasodródás-elesési mosogató")
 
-Ha engedélyezve van a séma-eltolódás, győződjön meg arról, hogy a leképezés lapon be van kapcsolva az **automatikus leképezés** csúszkája. Ezzel a csúszkával az összes bejövő oszlop a célhelyre íródik. Ellenkező esetben szabály-alapú hozzárendelést kell használnia a lebegő oszlopok írásához.
+Ha a sémaeltolódás engedélyezve van, győződjön meg arról, hogy a Leképezés lap **automatikus leképezése** csúszka be van kapcsolva. Ha ez a csúszka be van kapcsolva, az összes bejövő oszlop az úti célhoz kerül. Ellenkező esetben szabályalapú leképezést kell használnia az elsodródott oszlopok írásához.
 
-![Fogadó automatikus leképezése](media/data-flow/automap.png "Fogadó automatikus leképezése")
+![Automatikus leképezés elsüllyesztése](media/data-flow/automap.png "Automatikus leképezés elsüllyesztése")
 
-## <a name="transforming-drifted-columns"></a>Sodródó oszlopok átalakítása
+## <a name="transforming-drifted-columns"></a>Sodródott oszlopok átalakítása
 
-Ha az adatfolyamnak vannak sodródott oszlopai, az átalakításokban a következő módszerekkel érheti el őket:
+Ha az adatfolyam elsodródott oszlopokat tartalmaz, az átalakítások során a következő módszerekkel érheti el őket:
 
-* A `byPosition` és `byName` kifejezések használatával explicit módon hivatkozhat egy oszlopra név vagy pozíció száma alapján.
-* Oszlop mintázatának hozzáadása egy származtatott oszlophoz vagy összesítő átalakításhoz a név, a stream, a pozíció vagy a típus bármely kombinációjának megfelelően
-* Szabályon alapuló leképezés hozzáadása egy Select vagy mosogató átalakításban, hogy az oszlopok aliasai megegyezzenek a mintázattal
+* A `byPosition` és `byName` a kifejezések segítségével kifejezetten hivatkozva hivatkozik egy oszlopra név vagy helyszám szerint.
+* Oszlopminta hozzáadása származtatott oszlophoz vagy összesítő átalakításhoz, hogy megfeleljen a név, adatfolyam, pozíció vagy típus bármely kombinációjának
+* Szabályalapú leképezés hozzáadása a Select vagy a Sink átalakításhoz, hogy az elsodródott oszlopokat egy mintán keresztül oszlopok aliasokhoz igazítsa
 
-Az oszlopok mintáinak megvalósításával kapcsolatos további információkért lásd: [az adatforgalom leképezése az oszlopok mintái között](concepts-data-flow-column-pattern.md).
+Az oszlopminták megvalósításáról az Oszlopminták az [adatfolyam leképezésében című témakörben](concepts-data-flow-column-pattern.md)talál további információt.
 
-### <a name="map-drifted-columns-quick-action"></a>Elsodródott oszlopok gyors műveletének leképezése
+### <a name="map-drifted-columns-quick-action"></a>Drifted oszlopok leképezése gyorsművelet
 
-A lebegő oszlopok explicit módon történő hivatkozásához gyorsan létrehozhat leképezéseket ezekhez az oszlopokhoz az adatelőnézet gyors művelete révén. Ha a [hibakeresési mód](concepts-data-flow-debug-mode.md) be van kapcsolva, nyissa meg az adatelőnézet lapot, és kattintson a **frissítés** gombra az adatelőnézet beolvasásához. Ha az adatelőállító észleli, hogy az elsodródott oszlopok léteznek, kattintson az **Elsodródott térképre** , és készítsen egy származtatott oszlopot, amely lehetővé teszi, hogy az összes áthelyezett oszlopra hivatkozzon a séma nézeteiben.
+Az elsodródott oszlopokra való kifejezett hivatkozáshoz gyorsan létrehozhat hozzárendeléseket ezekhez az oszlopokhoz egy adatelőnézeti gyorsművelettel. Ha a [hibakeresési mód](concepts-data-flow-debug-mode.md) be van kapcsolva, lépjen az Adatelőnézet fülre, és kattintson a **Frissítés** gombra az adatok előnézetének beolvasásához. Ha az adatgyár azt észleli, hogy sodródott oszlopok léteznek, kattintson **a Drifted leképezése** gombra, és hozzon létre egy származtatott oszlopot, amely lehetővé teszi, hogy a sémanézetekben az összes elsodródott oszlopra hivatkozzon.
 
-![Térkép felúszik](media/data-flow/mapdrifted1.png "Térkép felúszik")
+![Térkép sodródott](media/data-flow/mapdrifted1.png "Térkép sodródott")
 
-A generált származtatott oszlop transzformációjában minden egyes lebegő oszlop az észlelt névvel és adattípussal van leképezve. A fenti adatelőnézetben a "movieId" oszlop egész számként van észlelve. Ha a **leképezési** felszínre kattintott, a MovieId a származtatott oszlopban `toInteger(byName('movieId'))`ként van definiálva, és a séma nézeteiben szerepel az alsóbb rétegbeli átalakításokban.
+A létrehozott származtatott oszlop transzformációban minden sodródott oszlop le van képezve az észlelt névre és adattípusra. A fenti adatelőnézetben a "movieId" oszlop egész számként jelenik meg. Miután **a Map Drifted gombra** kattintott, a `toInteger(byName('movieId'))` movieId a Származtatott oszlopban definiálva van, és az alsóbb rétegbeli átalakítások sémájnézeteiben is szerepel.
 
-![Térkép felúszik](media/data-flow/mapdrifted2.png "Térkép felúszik")
+![Térkép sodródott](media/data-flow/mapdrifted2.png "Térkép sodródott")
 
-## <a name="next-steps"></a>Következő lépések
-Az [adatáramlás kifejezésének nyelvén](data-flow-expression-functions.md)további létesítményeket talál az oszlopok és a séma drift esetében, beleértve az "byName" és a "ByPosition" típust is.
+## <a name="next-steps"></a>További lépések
+Az [adatfolyam-kifejezés nyelvén](data-flow-expression-functions.md)további lehetőségeket talál az oszlopmintákhoz és a sémaeltolódáshoz, beleértve a "byName" és a "byPosition" szavakat.

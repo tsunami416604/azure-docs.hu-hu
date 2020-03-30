@@ -1,6 +1,6 @@
 ---
-title: Bejelentést küld egy laborba Azure DevTest Labsban | Microsoft Docs
-description: Ismerje meg, hogyan adhat hozzá hirdetményt laborhoz Azure DevTest Labs
+title: Announcment post a lab az Azure DevTest Labs | Microsoft dokumentumok
+description: Megtudhatja, hogy miként adhat hozzá közleményt egy laborhoz az Azure DevTest Labsben
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,75 +15,75 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 84120b07de3a03a049493eb973b6dc46f8668387
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75976451"
 ---
-# <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Hirdetmény küldése a laborba Azure DevTest Labs
+# <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Közlemény feladása az Azure DevTest Labs egyik laborjában
 
-Labor-rendszergazdaként egy meglévő laborban közzétehet egy egyéni bejelentést, amely értesíti a felhasználókat a tesztkörnyezet legutóbbi változásairól vagy kiegészítéseiről. Előfordulhat például, hogy tájékoztatni szeretné a felhasználókat a következőkről:
+Laborrendszergazdaként egyéni értesítést tehet közzé egy meglévő tesztkörnyezetben, hogy értesítse a felhasználókat a labor legutóbbi változásairól vagy kiegészítéseiről. Előfordulhat például, hogy a következőkről szeretné tájékoztatni a felhasználókat:
 
-- Új virtuálisgép-méretek érhetők el
-- Jelenleg használhatatlan lemezképek
-- A labor-házirendek frissítései
+- Új virtuálisgép-méretek, amelyek elérhetők
+- Jelenleg használhatatlan képek
+- A tesztkörnyezet-házirendek frissítései
 
-A közzététel után a közlemény megjelenik a labor áttekintés lapján, és a felhasználó további részleteket is kiválaszthat.
+A közzétételt követően a közlemény megjelenik a labor áttekintő oldalán, és a felhasználó további részletekért kiválaszthatja azt.
 
-A bejelentési funkció ideiglenes értesítésekhez használható.  Ha már nincs rá szükség, egyszerűen letilthatja a bejelentést.
+A bejelentési funkció ideiglenes értesítésekhez használható.  Könnyedén letilthatja a bejelentést, miután már nincs rá szükség.
 
-## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>A hirdetmény egy meglévő laborban való közzétételének lépései
+## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Értesítés közzétételének lépései meglévő laborban
 
-1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Ha szükséges, válassza a **minden szolgáltatás**lehetőséget, majd válassza a **DevTest Labs** elemet a listából. (Előfordulhat, hogy a labor már megjelenik az irányítópulton az **összes erőforrás**alatt).
-1. A Labs listából válassza ki azt a labort, amelyben közzé kívánja venni a bejelentést.
-1. A labor **Áttekintés** területén válassza a **konfiguráció és szabályzatok**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra.](https://go.microsoft.com/fwlink/p/?LinkID=525040)
+1. Ha szükséges, válassza a **Minden szolgáltatás**lehetőséget, majd válassza a **DevTest Labs** elemet a listából. (Előfordulhat, hogy a tesztkörnyezet már látható az irányítópulton a **Minden erőforrás csoportban).**
+1. A laborok listájából válassza ki azt a tesztkörnyezetet, amelyben hirdetményt szeretne közzétenni.
+1. A tesztkörnyezet **áttekintése** területen válassza a **Konfiguráció és házirendek**lehetőséget.
 
-    ![Konfigurálás és házirendek gomb](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
+    ![Konfiguráció és házirendek gomb](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
 
-1. A **Beállítások**területen kattintson a **labor bejelentése**lehetőségre.
+1. A **beállítások**csoportbal válassza a **Laborközlemény**lehetőséget.
 
-    ![Labor bejelentése gomb](./media/devtest-lab-announcements/devtestlab-announcements.png)
+    ![A Labor bejelentése gomb](./media/devtest-lab-announcements/devtestlab-announcements.png)
 
-1. Ha a laborban lévő felhasználók számára szeretne üzenetet létrehozni, állítsa az **Igen**értékre **a beállítást.**
+1. Ha üzenetet szeretne létrehozni a tesztkörnyezetfelhasználói számára, állítsa **az Engedélyezve értéket** **Igen**értékre.
 
-1. Megadhat egy **lejárati dátumot** , amely azt a dátumot és időpontot adja meg, amely után a bejelentés már nem jelenik meg a felhasználók számára. Ha nem ad meg lejárati dátumot, a bejelentés addig marad, amíg le nem tiltja.
+1. **A lejárati dátum** megadásával megadhatja azt a dátumot és időpontot, amely után a bejelentés már nem jelenik meg a felhasználók számára. Ha nem ad meg lejárati dátumot, a közlemény addig marad, amíg le nem tiltja.
 
    > [!NOTE]
-   > A bejelentés lejárta után már nem jelenik meg a felhasználók számára, de továbbra is létezik a **labor bejelentési** ablaktábláján. Szerkesztheti, majd újból engedélyezheti, hogy ismét aktívvá váljon.
+   > A bejelentés lejárta után már nem jelenik meg a felhasználók számára, de továbbra is megtalálható a **Lab értesítési** ablaktáblájában. Módosíthatja, majd újra engedélyezheti, hogy újra aktív legyen.
    >
    >
 
-1. Adja meg a **hirdetmény címét** és a **hirdetmény szövegét**.
+1. Adja meg **a Hirdetmény címét** és a **Hirdetmény szövegét**.
 
-   A cím legfeljebb 100 karakterből állhat, és megjelenik a felhasználó számára a labor Áttekintés oldalán. Ha a felhasználó kiválasztja a címet, megjelenik a hirdetmény szövege.
+   A cím legfeljebb 100 karakter, és megjelenik a felhasználó a labor áttekintése oldalon jelenik meg. Ha a felhasználó kiválasztja a címet, megjelenik a hirdetmény szövege.
 
-   A bejelentési szöveg elfogadja a Markdown. A bejelentési szöveg megadásakor a képernyő alján található előnézet területen tekintheti meg az üzenetet.
+   A közlemény szövege elfogadja a jelölést. A bejelentés szövegének beírásakor az üzenetet a képernyő alján található Előnézet területen tekintheti meg.
 
-    ![Az üzenet létrehozásához a labor bejelentési képernyője.](./media/devtest-lab-announcements/devtestlab-post-announcement.png)
+    ![Labor közlemény képernyőn létrehozni az üzenetet.](./media/devtest-lab-announcements/devtestlab-post-announcement.png)
 
 
-1. Válassza a **Mentés** lehetőséget, ha a bejelentés készen áll a közzétételre.
+1. Ha a bejelentés készen áll a közzétételre, válaszd a **Mentés** gombot.
 
-Ha már nem szeretné megjeleníteni ezt a hirdetményt a labor felhasználói számára, térjen vissza a **labor bejelentése** oldalra, és állítsa a **nem**értékre **a beállítást.** Ha lejárati dátumot adott meg, a hirdetmény automatikusan le lesz tiltva ezen a napon és időpontban.
+Ha már nem szeretné megjeleníteni ezt a közleményt a tesztkörnyezet felhasználóinak, térjen vissza a **Lab közlemény** oldalára, és állítsa **az Engedélyezve értéket** **Nem**értékre. Ha lejárati dátumot adott meg, a hirdetmény automatikusan le lesz tiltva az adott napon és időpontban.
 
-## <a name="steps-for-users-to-view-an-announcement"></a>A bejelentések megtekintésének lépései a felhasználók számára
+## <a name="steps-for-users-to-view-an-announcement"></a>A közlemény megtekintésének lépései a felhasználók számára
 
-1. A [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)válassza ki a labort.
+1. Az [Azure Portalon](https://go.microsoft.com/fwlink/p/?LinkID=525040)válasszon ki egy tesztkörnyezetet.
 
-1. Ha a laborban van közzétett hirdetmény, a tesztkörnyezet Áttekintés oldalának tetején megjelenik egy tájékoztató hirdetmény. Ez az értesítés a hirdetmény létrehozásakor megadott bejelentési cím.
+1. Ha a laborban közzétett egy közleményt, a tesztkörnyezet áttekintése oldal tetején egy tájékoztató jelenik meg. Ez az értesítés a hirdetmény nek a hirdetmény létrehozásakor megadott címe.
 
-    ![Laboratóriumi közlemény az Áttekintés oldalon](./media/devtest-lab-announcements/devtestlab-user-announcement.png)
+    ![Labor közlemény az áttekintés oldalon](./media/devtest-lab-announcements/devtestlab-user-announcement.png)
 
-1. A felhasználó kiválaszthatja az üzenetet a teljes bejelentés megtekintéséhez.
+1. A felhasználó kiválaszthatja az üzenetet a teljes hirdetmény megtekintéséhez.
 
-    ![További információ a labor bejelentéséről](./media/devtest-lab-announcements/devtestlab-user-announcement-text.png)
+    ![További információ a labor bejelentéséhez](./media/devtest-lab-announcements/devtestlab-user-announcement-text.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
-Az alábbi példában látható módon megadhat egy bejelentést Azure Resource Manager sablon részeként:
+Az Azure Resource Manager-sablon részeként megadhat egy hirdetményt az alábbi példában látható módon:
 
 ```json
 {
@@ -158,13 +158,13 @@ Az alábbi példában látható módon megadhat egy bejelentést Azure Resource 
 }
 ```
 
-A következő módszerek egyikével telepítheti Azure Resource Manager-sablont:
+Az Azure Resource Manager-sablont az alábbi módszerek egyikével telepítheti:
 
-- [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
+- [Azure-portál](../azure-resource-manager/templates/deploy-portal.md)
 - [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 - [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
 - [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
-## <a name="next-steps"></a>Következő lépések
-* Ha módosítja vagy beállítja a tesztkörnyezet szabályzatát, érdemes lehet közzétenni egy közleményt, amely tájékoztatja a felhasználókat. A [szabályzatok és az ütemtervek beállítása](devtest-lab-set-lab-policy.md) információt nyújt az előfizetésre vonatkozó korlátozások és konvenciók egyéni szabályzatok használatával történő alkalmazásáról.
-* Ismerkedjen meg a [DevTest Labs Azure Resource Manager a rövid útmutató sablonjának galériájában](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).
+## <a name="next-steps"></a>További lépések
+* Ha módosítja vagy beállítja a tesztkörnyezet házirendjét, érdemes lehet közleményt közzétennie a felhasználók tájékoztatására. [A Házirendek és ütemezések beállítása](devtest-lab-set-lab-policy.md) a korlátozások és konvenciók alkalmazásával kapcsolatos információkat tartalmaz az előfizetésben a testreszabott házirendek használatával.
+* Fedezze fel a [DevTest Labs Azure Resource Manager QuickStart sablongyűjteményét.](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)

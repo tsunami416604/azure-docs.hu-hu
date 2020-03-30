@@ -1,5 +1,5 @@
 ---
-title: Próbálja ki a felhőalapú IoT távoli figyelési megoldás – Azure |} A Microsoft Docs
+title: Próbálja ki a felhőalapú IoT távoli figyelési megoldást - Azure | Microsoft dokumentumok
 description: Ezzel a rövid útmutatóval üzembe helyezheti a távoli monitorozási Azure IoT megoldásgyorsítót, és bejelentkezhet a megoldás irányítópultjának használatához.
 author: dominicbetts
 manager: timlt
@@ -10,23 +10,23 @@ ms.custom: mvc
 ms.date: 03/25/2019
 ms.author: dobett
 ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "60890040"
 ---
-# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Gyors útmutató: Próbálja ki a felhő alapú távoli figyelési megoldáshoz
+# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rövid útmutató: Távoli felhőalapú monitorozási megoldás kipróbálása
 
 Ez a rövid útmutató bemutatja az Azure IoT távoli monitorozási megoldásgyorsító üzembe helyezését. Ebben a felhőalapú megoldásban a **Dashboard** (Irányítópult) lap segítségével jelenítheti meg a szimulált eszközöket egy térképen, és a **Maintenance** (Karbantartás) lapon válaszolhat a szimulált hűtőeszköz nyomással kapcsolatos riasztásaira. A megoldásgyorsítót saját megvalósítása kiindulópontjaként vagy képzési eszközként is használhatja.
 
 A kezdeti üzembe helyezés a Contoso nevű vállalat számára konfigurálja a megoldásgyorsítót. A Contoso operátoraként különféle fizikai környezetekben található, különböző típusú eszközöket (például hűtőeszközöket) felügyel. A hűtőeszköz a hőmérsékletre, a páratartalomra és a nyomásra vonatkozó telemetriai adatokat küld a távoli monitorozási megoldásgyorsítónak.
 
-Ebben a rövid útmutatóban üzembe helyez egy **alapszintű** verzióját a megoldásgyorsító a tesztelésre és demonstrációs céllal, hogy minimalizálja a költségeket. A különböző verzióit telepítheti kapcsolatos további információkért lásd: [alap és normál központi telepítések](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments).
+Ez a rövid útmutató a megoldásgyorsító **alapverzióját** telepíti tesztelési és demonstrációs célokra, amely minimálisra csökkenti a költségeket. A telepíthető különböző verziókról az [Alapszintű és szabványos telepítések című témakörben](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments)talál további információt.
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
@@ -34,18 +34,18 @@ Amikor üzembe helyezi a megoldásgyorsítót az Azure-előfizetéshez, néhány
 
 Jelentkezzen be az [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) webhelyen az Azure-fiók hitelesítő adataival.
 
-Kattintson a **távoli megfigyelés** csempére. Az a **távoli megfigyelés** kattintson **próbálja ki most**:
+Kattintson a **Távoli figyelés** csempére. A **Távoli figyelés** lapon kattintson a **Kipróbálás most**gombra:
 
 ![Távoli monitorozás kiválasztása](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
-Válasszon  **C# Mikroszolgáltatások** , a **központi telepítési beállítások**. A Java és C# megvalósításokhoz rendelkezik ugyanazokat a szolgáltatásokat.
+Válassza a **C# mikroszolgáltatásokat** **a telepítési beállításokként.** A Java és a C# implementációk ugyanazokat a funkciókat.
 
-Adjon meg egy egyedi **megoldásnevet** a távoli monitorozási megoldásgyorsítóhoz. Ebben a rövid útmutatóban a miénk hívjuk **contoso-rm**.
+Adjon meg egy egyedi **megoldásnevet** a távoli monitorozási megoldásgyorsítóhoz. Ehhez a rövid útmutatóhoz a miénket **hívjuk contoso-rm**.
 
-Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **Előfizetést** és **Régiót**. Általában az Önhöz legközelebbi régiót érdemes választani. Ebben a rövid útmutatóban használjuk **USA keleti Régiójában**.
-Választhat **Visual Studio Enterprise**, kell lennie, de egy [globális rendszergazda vagy felhasználó](iot-accelerators-permissions.md) ennek a végrehajtására.
+Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **Előfizetést** és **Régiót**. Általában az Önhöz legközelebbi régiót érdemes választani. Ehhez a rövid útmutatóhoz **az USA keleti részét**használjuk.
+Választhatja a **Visual Studio Enterprise**lehetőséget, de ehhez globális [rendszergazdának vagy felhasználónak](iot-accelerators-permissions.md) kell lennie.
 
-A telepítés megkezdéséhez kattintson a **létrehozás**. A folyamat legalább öt percig tart:
+A telepítés megkezdéséhez kattintson a **Létrehozás gombra.** A folyamat legalább öt percig tart:
 
 ![A távoli monitorozási megoldás részletei](./media/quickstart-remote-monitoring-deploy/createform.png)
 
@@ -57,7 +57,7 @@ A **Kiépített megoldások** lapon kattintson az új távoli monitorozási mego
 
 ![Új megoldás kiválasztása](./media/quickstart-remote-monitoring-deploy/choosenew.png)
 
-A megjelenő panelen megtekintheti a távoli monitorozási megoldásgyorsítóra vonatkozó információkat. Válasszon **nyissa meg a megoldásgyorsító** a távoli figyelési megoldásgyorsító megtekintése:
+A megjelenő panelen megtekintheti a távoli monitorozási megoldásgyorsítóra vonatkozó információkat. Válassza **a Go to your solution accelerator (Ugrás a megoldásgyorsítóhoz) lehetőséget** a távfigyelési megoldás gyorsítójának megtekintéséhez:
 
 ![Megoldás panel](./media/quickstart-remote-monitoring-deploy/solutionpanel.png)
 
@@ -85,15 +85,15 @@ A Contoso operátoraként a megoldás irányítópultjáról monitorozhatja az e
 
 ### <a name="identify-the-issue"></a>A probléma azonosítása
 
-Az **irányítópult** **Alerts** (Riasztások) paneljén a **Chiller pressure too high** (Hűtőeszköz nyomása túl magas) riasztás látható. A hűtő piros színű gombostűvel van jelölve a térképen (lehetséges, hogy pásztáznia és nagyítania kell a megjelenítéséhez):
+Az **irányítópult****Alerts** (Riasztások) paneljén a **Chiller pressure too high** (Hűtőeszköz nyomása túl magas) riasztás látható. A hűtő piros színű gombostűvel van jelölve a térképen (lehetséges, hogy pásztáznia és nagyítania kell a megjelenítéséhez):
 
-[![Irányítópult nyomásriasztással és a térképen megjelenített eszközzel](./media/quickstart-remote-monitoring-deploy/dashboardalarm-inline.png)](./media/quickstart-remote-monitoring-deploy/dashboardalarm-expanded.png#lightbox)
+[![A műszerfal nyomásriasztást és eszközt jelenít meg a térképen](./media/quickstart-remote-monitoring-deploy/dashboardalarm-inline.png)](./media/quickstart-remote-monitoring-deploy/dashboardalarm-expanded.png#lightbox)
 
 A **riasztások** paneljén kattintson a **Chiller pressure too high** (Hűtőeszköz nyomása túl magas) szabály mellett található **vizsgálati** oszlop **...** gombjára. Ezzel továbblép a **karbantartási** lapra, ahol megtekintheti a riasztást kiváltó szabály részleteit.
 
 A **Chiller pressure too high** (Hűtőeszköz nyomása túl magas) karbantartási lap megjeleníti a riasztást kiváltó szabály részleteit. A lap azt is megjeleníti, hogy mikor aktiválódtak a riasztások, és melyik eszköz váltotta ki őket:
 
-[![A karbantartási lap az aktivált riasztások listájával](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-expanded.png#lightbox)
+[![A Karbantartás lap az aktivált riasztások listáját jeleníti meg](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-expanded.png#lightbox)
 
 Ezzel sikeresen azonosította a riasztást kiváltó problémát és az érintett eszközt. Operátorként a következő lépés a riasztás nyugtázása és a hiba kijavítása.
 
@@ -101,29 +101,29 @@ Ezzel sikeresen azonosította a riasztást kiváltó problémát és az érintet
 
 Ha jelezni szeretné más operátorok felé, hogy már foglalkozik a riasztással, válassza ki, és módosítsa az **Alert status** (Riasztási állapot) értékét **Acknowledged** (Nyugtázva) állapotra:
 
-[![Riasztás kiválasztása és nyugtázása](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-expanded.png#lightbox)
+[![A riasztás kiválasztása és nyugtázása](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-expanded.png#lightbox)
 
 Az állapotoszlop **Acknowledged** (Nyugtázva) értékre módosul.
 
 Ha műveletet szeretne végrehajtani a hűtőeszközön, görgessen le a **Related information** (Kapcsolódó információk) menüponthoz, válassza ki a hűtőeszközt a **riasztott eszközök** listájából, majd válassza a **Jobs** (Feladatok) lehetőséget:
 
-[![Eszköz kiválasztása és művelet ütemezése](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-expanded.png#lightbox)
+[![Válassza ki az eszközt, és ütemezzen egy műveletet](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-expanded.png#lightbox)
 
 A **feladatok** paneljén válassza a **Run method** (Metódus futtatása) elemet, majd az **EmergencyValveRelease** metódust. Adja hozzá a **ChillerPressureRelease** feladatnevet, és kattintson az **Apply** (Alkalmaz) elemre. Ezek a beállítások egy olyan feladatot hoznak létre, amelyet a rendszer azonnal végrehajt.
 
-A feladat állapotának megtekintéséhez lépjen vissza a **karbantartási** lapra, és a **feladatok** nézetében tekintse meg a feladatok listáját. Szükség lehet Várjon néhány másodpercet, ahhoz, hogy a feladat futott:
+A feladat állapotának megtekintéséhez lépjen vissza a **karbantartási** lapra, és a **feladatok** nézetében tekintse meg a feladatok listáját. Előfordulhat, hogy várnia kell néhány másodpercet, mielőtt láthatja, hogy a feladat fut:
 
-[![A feladatok állapota a feladatok nézetében](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-expanded.png#lightbox)
+[![A feladatok állapota a Feladatok nézetben](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-expanded.png#lightbox)
 
 ### <a name="check-the-pressure-is-back-to-normal"></a>A határértéken belüli nyomásérték ellenőrzése
 
 A hűtő nyomástelemetriájának megtekintéséhez lépjen az **irányítópultra**, válassza ki a **Pressure** (Nyomás) telemetriapanelt, és ellenőrizze, hogy a **chiller-02.0** nyomása visszatért-e az engedélyezett tartományba:
 
-[![A nyomás határértéken belüli](./media/quickstart-remote-monitoring-deploy/pressurenormal-inline.png)](./media/quickstart-remote-monitoring-deploy/pressurenormal-expanded.png#lightbox)
+[![Nyomás vissza a normális](./media/quickstart-remote-monitoring-deploy/pressurenormal-inline.png)](./media/quickstart-remote-monitoring-deploy/pressurenormal-expanded.png#lightbox)
 
 Az incidens lezárásához lépjen a **karbantartási** lapra, válassza ki a riasztást, és állítsa **Closed** (Lezárva) értékre:
 
-[![Riasztás kiválasztása és lezárása](./media/quickstart-remote-monitoring-deploy/maintenanceclose-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceclose-expanded.png#lightbox)
+[![A riasztás kijelölése és bezárása](./media/quickstart-remote-monitoring-deploy/maintenanceclose-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceclose-expanded.png#lightbox)
 
 Az állapotoszlop **Closed** (Lezárva) értékre módosul.
 
@@ -145,4 +145,4 @@ Ebben a rövid útmutatóban üzembe helyezte a távoli monitorozási megoldásg
 Ha többet szeretne megtudni a szimulált eszközöket használó megoldásgyorsítóról, lépjen tovább a következő oktatóanyagra.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az IoT-eszközök figyelése](iot-accelerators-remote-monitoring-monitor.md)
+> [Oktatóanyag: IoT-eszközök monitorozása](iot-accelerators-remote-monitoring-monitor.md)

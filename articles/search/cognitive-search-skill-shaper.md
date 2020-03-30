@@ -1,7 +1,7 @@
 ---
-title: Formáló kognitív képesség
+title: Formázó kognitív képesség
 titleSuffix: Azure Cognitive Search
-description: Metaadatok és strukturált adatok kinyerése strukturálatlan adatokból, és az Azure Cognitive Search mesterséges intelligencia-dúsítási folyamata összetett típusként.
+description: Metaadatok és strukturált adatok kinyerése strukturálatlan adatokból, és összetett típusként alakíthatja ki őket az Azure Cognitive Search AI-dúsítási folyamatában.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,33 +9,33 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 384b79037bb30656934c5e4b596dac2b776593b0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75754114"
 ---
-# <a name="shaper-cognitive-skill"></a>Formáló kognitív képesség
+# <a name="shaper-cognitive-skill"></a>Formázó kognitív képesség
 
-A **formáló** képesség több bemenetet egyesít egy [összetett típusba](search-howto-complex-data-types.md) , amelyet később a dúsítási folyamat során lehet hivatkozni. A **formáló** képességgel lényegében létrehozhat egy struktúrát, megadhatja a struktúra tagjainak nevét, és értékeket rendelhet hozzájuk az egyes tagokhoz. Példák a keresési forgatókönyvekben hasznos konszolidált mezőkre: az első és az utolsó név egyetlen struktúrába, városba és állapotba való egyesítése egyetlen struktúrába, vagy név és születésnap egyetlen struktúrában egyedi identitás létrehozásához.
+A **Shaper** szakértelem több bemenetet egyesít egy [összetett típusba,](search-howto-complex-data-types.md) amely a dúsítási folyamat későbbi részében hivatkozhat. A **Shaper** szakértelem lehetővé teszi, hogy lényegében hozzon létre egy struktúrát, meghatározza a struktúra tagjainak nevét, és értékeket rendeljen az egyes tagokhoz. A keresési forgatókönyvekben hasznos konszolidált mezők közé tartozik például a vezeték- és keresztnév egyetlen struktúrába, városba és államba történő egyesítése egyetlen struktúrában, vagy név és születési dátum egyetlen struktúrába az egyedi identitás létrehozásához.
 
-Emellett a [3. forgatókönyvben](#nested-complex-types) bemutatott **formáló** képesség egy opcionális *sourceContext* tulajdonságot is feltesz a bemenetbe. A *forrás* -és *sourceContext* tulajdonságok kölcsönösen kizárják egymást. Ha a bemenet a szakértelem kontextusában van, egyszerűen használja a *forrást*. Ha a bemenet a szakértelem kontextusa szerint *eltérő* kontextusban van, használja a *sourceContext*. A *sourceContext* meg kell adnia egy beágyazott bemenetet a forrásként kezelendő adott elemmel. 
+Emellett a **Shaper** szakértelem illusztrált [forgatókönyv 3](#nested-complex-types) hozzáad egy opcionális *sourceContext* tulajdonság a bemenethez. A *forrás* és *a sourceContext* tulajdonságai kölcsönösen kizárják egymást. Ha a bemenet a szakértelem kontextusában van, egyszerűen használja a *forrást.* Ha a bemenet *más* környezetben van, mint a szakértelem környezetében, használja a *sourceContext*. A *sourceContext* megköveteli, hogy definiáljon egy beágyazott bemeneti az adott elem címezve, mint a forrás. 
 
-A kimeneti név mindig "output". Belsőleg a folyamat egy másik nevet (például a "analyzedText") is leképezheti az alábbi példákban látható módon, de a **shapeer** -képesség maga "output" értéket ad vissza a válaszban. Ez akkor lehet fontos, ha a dúsított dokumentumokat észleli, és az elnevezési eltérést észleli, vagy ha egyéni képességet hoz létre, és saját maga strukturálja a választ.
+A kimenet neve mindig "kimenet". Belsőleg a folyamat más nevet is leképezhet, például "analyzedText", ahogy az alábbi példákban látható, de maga a **Shaper** szakértelem "kimenetet" ad vissza a válaszban. Ez akkor lehet fontos, ha bővített dokumentumokat vesz fel, és észleli az elnevezési eltérést, vagy ha egyéni szakként hoz létre, és saját maga strukturálja a választ.
 
 > [!NOTE]
-> A **formáló** képesség nem kötődik Cognitive Services API-hoz, és nem kell fizetnie a használatért. Továbbra is [csatlakoztatnia kell egy Cognitive Services-erőforrást](cognitive-search-attach-cognitive-services.md), hogy felülírja az **ingyenes** erőforrás-beállítást, amely naponta csak kis mennyiségű napi dúsítást korlátozza.
+> A **Shaper** szakértelem nem kötődik a Cognitive Services API-t, és nem kell fizetnie a használata. Továbbra is [csatolja a Cognitive Services-erőforrás,](cognitive-search-attach-cognitive-services.md)azonban az **ingyenes** erőforrás beállítás, amely korlátozza, hogy egy kis számú napi dúsítások naponta.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. Skills. util. ShaperSkill
+Microsoft.Skills.Util.ShaperSkill
 
-## <a name="scenario-1-complex-types"></a>1\. forgatókönyv: összetett típusok
+## <a name="scenario-1-complex-types"></a>1. forgatókönyv: összetett típusok
 
-Vegyünk egy olyan forgatókönyvet, amelyben létre szeretne hozni egy *analyzedText* nevű struktúrát, amelynek két tagja van: *szöveg* és *hangulat*. Egy indexben egy többrészes kereshető mező *összetett típusú* , és gyakran jön létre, ha a forrásadatok olyan összetett szerkezettel rendelkeznek, amely leképezi azt.
+Vegyünk egy olyan forgatókönyvet, amelyben egy *analyzedText* nevű struktúrát szeretne létrehozni, amelynek két tagja van: *szöveg* és *hangulat*. Az indexben a többrészes kereshető mezőt *összetett típusnak* nevezzük, és gyakran akkor jön létre, ha a forrásadatok megfelelő összetett struktúrával rendelkeznek, amely hozzá van rendelve.
 
-Az összetett típusok létrehozásának másik megközelítése azonban a **shapeer** -képességen keresztül történik. Ennek a képességnek a készségkészlet való belefoglalásával a készségkészlet-feldolgozás során a memóriában lévő műveletek az adatalakzatokat beágyazott struktúrákkal is kihasználhatják, amelyek ezután az index összetett típusára képezhetők le. 
+Az összetett típusok létrehozásának egy másik megközelítése azonban a **Shaper** szakértelem. Ha ezt a képzettséget egy skillset, a memórián belüli műveletek során skillset feldolgozás a beágyazott struktúrákkal rendelkező adatalakzatok kimenetelét, amelyek ezután leképezhetők egy összetett típus az indexben. 
 
-A következő példa a szaktudás megadása bemenetként adja meg a tagok nevét. 
+A következő példa szakértelem-definíció a tagneveket adja meg bemenetként. 
 
 
 ```json
@@ -61,9 +61,9 @@ A következő példa a szaktudás megadása bemenetként adja meg a tagok nevét
 }
 ```
 
-### <a name="sample-index"></a>Minta index
+### <a name="sample-index"></a>Mintaindex
 
-A készségkészlet egy indexelő hívja meg, és az indexelő megköveteli az indexet. Az index összetett mezője az alábbi példához hasonlóan jelenhet meg. 
+A skillset egy indexelő által meghívott, és egy indexelő indexelő igényel indexet. Az indexben lévő összetett mezőábrázolás a következő példához hasonló lehet. 
 
 ```json
 
@@ -88,9 +88,9 @@ A készségkészlet egy indexelő hívja meg, és az indexelő megköveteli az i
                 },
 ```
 
-### <a name="skill-input"></a>Szaktudás bemenete
+### <a name="skill-input"></a>Szakértelem bevitele
 
-Egy bejövő JSON-dokumentum, amely felhasználható bemenetet biztosít ehhez az **alakzathoz** , a következő lehet:
+A **Shaper-szakértelemhez** használható bemenetet biztosító bejövő JSON-dokumentum a következő lehet:
 
 ```json
 {
@@ -107,9 +107,9 @@ Egy bejövő JSON-dokumentum, amely felhasználható bemenetet biztosít ehhez a
 ```
 
 
-### <a name="skill-output"></a>Szaktudás kimenete
+### <a name="skill-output"></a>Szakértelem kimenete
 
-A **formáló** képesség egy új, *analyzedText* nevű elemet hoz létre, amely a *szöveg* és a *hangulat*együttes elemeit tartalmazza. Ez a kimenet megfelel az index sémájának. A rendszer egy Azure Cognitive Search indexbe importálja és indexeli.
+A **Shaper** szakértelem létrehoz egy új elemet, az úgynevezett *analyzedText* a *szöveg* és a *hangulat*együttes elemeit. Ez a kimenet megfelel az indexsémának. A program importálja és indexeli az Azure Cognitive Search indexben.
 
 ```json
 {
@@ -129,11 +129,11 @@ A **formáló** képesség egy új, *analyzedText* nevű elemet hoz létre, amel
 }
 ```
 
-## <a name="scenario-2-input-consolidation"></a>2\. forgatókönyv: bemeneti konszolidáció
+## <a name="scenario-2-input-consolidation"></a>2. forgatókönyv: input konszolidáció
 
-Egy másik példában Képzelje el, hogy a folyamat feldolgozásának különböző szakaszaiban kibontotta a könyv címét, és a könyv különböző oldalain található fejezetek címeit. Most már létrehozhat egyetlen, a különböző bemenetből álló struktúrát.
+Egy másik példában képzelje el, hogy a folyamatfeldolgozás különböző szakaszaiban kibszerezte egy könyv címét és a könyv különböző oldalain lévő fejezetcímeket. Most már létrehozhat egy egyetlen struktúrát, amely ezekből a különböző bemenetekből áll.
 
-Az ehhez a forgatókönyvhöz tartozó **formáló** képesség definíciója a következő példához hasonló lehet:
+A **Shaper** szakértelem-definíció ebben a forgatókönyvben a következő példához hasonlóan nézhet ki:
 
 ```json
 {
@@ -158,8 +158,8 @@ Az ehhez a forgatókönyvhöz tartozó **formáló** képesség definíciója a 
 }
 ```
 
-### <a name="skill-output"></a>Szaktudás kimenete
-Ebben az esetben a **Shape** az összes fejezeti címet lelapul egyetlen tömb létrehozásához. 
+### <a name="skill-output"></a>Szakértelem kimenete
+Ebben az esetben a **Shaper** összeolvasztja az összes fejezetcímet, hogy egyetlen tömböt hozzon létre. 
 
 ```json
 {
@@ -183,11 +183,11 @@ Ebben az esetben a **Shape** az összes fejezeti címet lelapul egyetlen tömb l
 
 <a name="nested-complex-types"></a>
 
-## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>3\. forgatókönyv: beágyazott környezetek bemenetének összevonása
+## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>3. forgatókönyv: bemeneti konszolidáció beágyazott környezetekből
 
-Képzelje el, hogy rendelkezik egy könyv címével, fejezeteivel és tartalmával, és futtatja az entitások felismerését és a kulcsfontosságú kifejezéseket a tartalomban, és most a különböző ismeretekből származó eredményeket kell összevonni egyetlen alakzatba a fejezet neve, az entitások és a legfontosabb kifejezések használatával.
+Képzelje el, hogy rendelkezik egy könyv címével, fejezeteivel és tartalmával, és entitásfelismerést és kulcskifejezéseket futtat a tartalomon, és most a különböző készségek eredményeit egyetlen alakzatba kell összesítenie a fejezet nevével, entitásaival és kulcskifejezéseivel.
 
-Az ehhez a forgatókönyvhöz tartozó **formáló** képesség definíciója a következő példához hasonló lehet:
+A **Shaper** szakértelem-definíció ebben a forgatókönyvben a következő példához hasonlóan nézhet ki:
 
 ```json
 {
@@ -223,8 +223,8 @@ Az ehhez a forgatókönyvhöz tartozó **formáló** képesség definíciója a 
 }
 ```
 
-### <a name="skill-output"></a>Szaktudás kimenete
-Ebben az esetben az **alakzat** összetett típust hoz létre. Ez a struktúra a memóriában van. Ha egy [tudásbázisba](knowledge-store-concept-intro.md)szeretné menteni, hozzon létre egy leképezést a készségkészlet, amely meghatározza a tárolási tulajdonságokat.
+### <a name="skill-output"></a>Szakértelem kimenete
+Ebben az esetben az **alakzatalakzat** összetett típust hoz létre. Ez a struktúra a memóriában létezik. Ha [tudástárolóba](knowledge-store-concept-intro.md)szeretné menteni, hozzon létre egy vetítést a skillsetben, amely meghatározza a tárolási jellemzőket.
 
 ```json
 {
@@ -246,10 +246,10 @@ Ebben az esetben az **alakzat** összetett típust hoz létre. Ez a struktúra a
 }
 ```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-+ [Beépített szaktudás](cognitive-search-predefined-skills.md)
-+ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
++ [Beépített képességek](cognitive-search-predefined-skills.md)
++ [Hogyan definiálni a skillset](cognitive-search-defining-skillset.md)
 + [Összetett típusok használata](search-howto-complex-data-types.md)
-+ [Knowledge Store (előzetes verzió)](knowledge-store-concept-intro.md)
-+ [Hozzon létre egy Knowledge Store-t a REST-ben](knowledge-store-create-rest.md)
++ [Tudástároló (előzetes verzió)](knowledge-store-concept-intro.md)
++ [Tudástároló létrehozása a REST-ben](knowledge-store-create-rest.md)

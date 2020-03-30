@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az IBM Informix-forrásokból Azure Data Factory használatával
-description: Bemutatjuk, hogyan másolhatók az IBM Informix-forrásokból származó adatok egy Azure Data Factory folyamat másolási tevékenységének használatával támogatott fogadó adattárakba.
+title: Adatok másolása IBM Informix-forrásokból az Azure Data Factory használatával
+description: Megtudhatja, hogyan másolhatja az IBM Informix-forrásokból származó adatokat a támogatott fogadó adattárolókba egy Azure Data Factory-folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,53 +12,53 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
 ms.openlocfilehash: cb4b81f7c5e219c520078ecf34eba3f5e98da684
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892572"
 ---
-# <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>Adatok másolása és átmásolása az IBM Informix-adattárakba Azure Data Factory használatával
+# <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>Adatok másolása ibm Informix adattárakból és -ba az Azure Data Factory használatával
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok egy IBM Informix-adattárból történő másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
+Ez a cikk bemutatja, hogyan használhatja a másolási tevékenységet az Azure Data Factory-ban az IBM Informix-adattárból történő másoláshoz. A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
 Ez az Informix-összekötő a következő tevékenységek esetén támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Az Informix-forrásból származó adatok bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+Az Informix-forrásból adatokat másolhat bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként/fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Informix-összekötő használatához a következőket kell tennie:
+Az Informix-csatlakozó használatához a következőket kell használnia:
 
-- Saját üzemeltetésű Integration Runtime beállítása. További részletekért tekintse meg a saját üzemeltetésű [Integration Runtime](create-self-hosted-integration-runtime.md) szóló cikket.
-- Telepítse az Informix ODBC-illesztőt az adattárhoz a Integration Runtime gépen. Használhatja például az "IBM INFORMIX Informix-illesztőprogram (64-bit)" illesztőprogramot.
+- Állítsa be a saját üzemeltetésű integrációs futásidejű. A [részleteket a saját üzemeltetésű integrációs futásidejű](create-self-hosted-integration-runtime.md) cikkben találja.
+- Telepítse az Informix ODBC illesztőprogramot az adattárhoz az integrációs futásidejű gépen. Használhatja például az "IBM INFORMIX Informix DRIVER (64 bites)" illesztőprogramot.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszokban részletesen ismertetjük a Data Factory az Informix-összekötőhöz tartozó entitások definiálásához használt tulajdonságokat.
+A következő szakaszok az Informix-összekötőre jellemző Data Factory-entitások definiálásához használt tulajdonságok részleteit ismertetik.
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
 
-Az Informix társított szolgáltatás a következő tulajdonságokat támogatja:
+Az Informix csatolt szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **Informix** | Igen |
-| connectionString | Az ODBC-kapcsolatok karakterlánca a hitelesítő adatok kivételével. Megadhatja a kapcsolati karakterláncot, vagy használhatja a Integration Runtime gépen beállított rendszeradatforrás-nevet (az adatforrás nevét) (ennek megfelelően a társított szolgáltatás hitelesítő adatait is meg kell adnia). <br> A Azure Key Vaultban jelszót is beállíthat, és lekérheti a `password` konfigurációját a kapcsolatok karakterláncán kívülre. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vault](store-credentials-in-key-vault.md) ban című témakört.| Igen |
-| authenticationType | Az Informix-adattárhoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alapszintű** és **Névtelen**. | Igen |
-| userName (Felhasználónév) | Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. | Nem |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
-| hitelesítő adat | Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. A mező megjelölése SecureString. | Nem |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
+| type | A típustulajdonságot a következőre kell állítani: **Informix** | Igen |
+| connectionString (kapcsolati karakterlánc) | Az ODBC kapcsolati karakterlánc a hitelesítő adatok kivételével. Megadhatja a kapcsolati karakterláncot, vagy használhatja az integrációs futásidejű gépen beállított rendszer adatforrásnevet (adatforrásnév) (ennek megfelelően meg kell adnia a csatolt szolgáltatás hitelesítő adatrészét). <br> Az Azure Key Vaultban is elhelyezhet `password` egy jelszót, és kihúzhatja a konfigurációt a kapcsolati karakterláncból. További részleteket az Azure Key  [Vault áruházi hitelesítő adataiban](store-credentials-in-key-vault.md)talál.| Igen |
+| authenticationType | Az Informix-adattárhoz való csatlakozáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alap és** **Névtelen**. | Igen |
+| userName (Felhasználónév) | Adja meg a felhasználónevet, ha alapfokú hitelesítést használ. | Nem |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) | Nem |
+| hitelesítő adat | Az illesztőprogram-specifikus tulajdonságérték-formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő adatrésze. Jelölje meg ezt a mezőt SecureString ként. | Nem |
+| connectVia | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) Az előfeltételek ben említettek szerint saját üzemeltetésű [integrációs](#prerequisites)futásidejű re van szükség. |Igen |
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -84,14 +84,14 @@ Az Informix társított szolgáltatás a következő tulajdonságokat támogatja
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz az Informix-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [adatkészletekről](concepts-datasets-linked-services.md) szóló cikkben olvashatja. Ez a szakasz az Informix adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az Informix-ből származó adatok másolásához a következő tulajdonságok támogatottak:
+Az Informix adatainak másolásához a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **InformixTable** | Igen |
-| tableName | A tábla neve az Informix-ben. | Nem forrásként (ha a "Query" a tevékenység forrásában van megadva);<br/>Igen a fogadó számára |
+| type | Az adatkészlet típustulajdonságát a következőre kell állítani: **InformixTable** | Igen |
+| tableName | Az Informix táblájának neve. | Nem a forráshoz (ha a tevékenységforrásban meg van adva a "lekérdezés" );<br/>Igen a mosogató |
 
 **Példa**
 
@@ -113,18 +113,18 @@ Az Informix-ből származó adatok másolásához a következő tulajdonságok t
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz az Informix-forrás által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok](concepts-pipelines-activities.md) című cikkben olvashat. Ez a szakasz az Informix-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="informix-as-source"></a>Informix forrásként
+### <a name="informix-as-source"></a>Informix mint forrás
 
-Az Informix-ből származó adatok másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
+Az Informix adatainak másolásához a másolási tevékenység **forrásszakaszában** a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **InformixSource** | Igen |
-| lekérdezés | Az egyéni lekérdezés használatával olvashatja el az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| type | A másolási tevékenység forrásának típustulajdonságát a következőre kell állítani: **InformixSource** | Igen |
+| lekérdezés | Az adatok olvasásához használja az egyéni lekérdezést. Például: `"SELECT * FROM MyTable"`. | Nem (ha az adatkészletben a "tableName" van megadva) |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -156,10 +156,10 @@ Az Informix-ből származó adatok másolásához a másolási tevékenység **f
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>A keresgaszíntevékenység tulajdonságai
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+A tulajdonságokrészleteinek megismeréséhez ellenőrizze a [Kereskövetési tevékenységet.](control-flow-lookup-activity.md)
 
 
-## <a name="next-steps"></a>Következő lépések
-A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>További lépések
+A forrásként támogatott és fogadóként az Azure Data Factory másolási tevékenysége által támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben tetszhet.

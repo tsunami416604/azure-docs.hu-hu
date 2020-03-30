@@ -1,5 +1,5 @@
 ---
-title: Próbálja ki a felhőalapú IoT a prediktív karbantartási megoldás – Azure |} A Microsoft Docs
+title: Próbálja ki a felhőalapú IoT prediktív karbantartási megoldást - Azure | Microsoft dokumentumok
 description: Ezzel a rövid útmutatóval üzembe helyezheti a prediktív karbantartási Azure IoT-megoldásgyorsítót, és bejelentkezhet a megoldás irányítópultjának használatához.
 author: dominicbetts
 manager: timlt
@@ -10,13 +10,13 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: cecf23d61d6a12c20aa3e64e4ee0ddacddbe7823
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "62106813"
 ---
-# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Gyors útmutató: Próbálja ki egy felhőalapú megoldás a csatlakoztatott eszközök a prediktív karbantartási elemzés futtatása
+# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rövid útmutató: Felhőalapú megoldás kipróbálása prediktív karbantartási elemzés saját csatlakoztatott eszközökön való futtatásához
 
 Ez a rövid útmutató bemutatja az Azure IoT-prediktív karbantartási megoldásgyorsító üzembe helyezését egy felhőalapú prediktív karbantartási szimuláció futtatásához. A megoldásgyorsító telepítése után a megoldás **Dashboard** (Irányítópult) lapján futtathat egy prediktív karbantartási elemzést egy szimulált repülőgépmotor adatai alapján. A megoldásgyorsítót saját megvalósítása kiindulópontjaként vagy képzési eszközként is használhatja.
 
@@ -26,7 +26,7 @@ A Fabrikam repülőmotorjai olyan érzékelőkkel vannak felszerelve, amelyek mo
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
@@ -42,7 +42,7 @@ A **Prediktív karbantartási megoldás létrehozása** oldalon adjon meg egy **
 
 Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **Előfizetést** és **Régiót**. Általában az Önhöz legközelebbi régiót érdemes választani. Ebben a rövid útmutatóban a **Visual Studio Enterprise** és az **USA keleti régiója** értékeket választjuk. Mindehhez [globális rendszergazdának vagy felhasználónak](iot-accelerators-permissions.md) kell lennie az előfizetésben.
 
-Kattintson a **létrehozás** a telepítés megkezdéséhez. A folyamat legalább öt percig tart:
+A telepítés megkezdéséhez kattintson a **Létrehozás** gombra. A folyamat legalább öt percig tart:
 
 ![A prediktív karbantartási megoldás részletei](./media/quickstart-predictive-maintenance-deploy/createform.png)
 
@@ -54,7 +54,7 @@ A **Kiépített megoldások** lapon kattintson az új prediktív karbantartási 
 
 ![Megoldás panel](./media/quickstart-predictive-maintenance-deploy/solution.png)
 
- Megtekintheti a megoldásgyorsító kapcsolatos információkat az oldal jelenik meg. Válasszon **nyissa meg a megoldásgyorsító** a prediktív karbantartási megoldásgyorsító megtekintése:
+ A megoldásgyorsítóval kapcsolatos információkat a megjelenő lapon tekintheti meg. Válassza **a Go to your solution accelerator (Ugrás a megoldásgyorsítóhoz) lehetőséget** a prediktív karbantartási megoldásgyorsító megtekintéséhez:
 
 ![Megoldás panel](./media/quickstart-predictive-maintenance-deploy/solutionpaneldetails.png)
 

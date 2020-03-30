@@ -1,33 +1,33 @@
 ---
 title: Alkalmazás központi telepítése felhasználó által hozzárendelt felügyelt identitással
-description: Ez a cikk bemutatja, hogyan telepítheti Service Fabric alkalmazást egy felhasználó által hozzárendelt felügyelt identitással
+description: Ez a cikk bemutatja, hogyan telepítheti a Service Fabric-alkalmazást egy felhasználó által hozzárendelt felügyelt identitással
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610335"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Service Fabric alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással (előzetes verzió)
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Service Fabric-alkalmazás központi telepítése felhasználó által hozzárendelt felügyelt identitással (előzetes verzió)
 
-Service Fabric alkalmazás felügyelt identitással való üzembe helyezéséhez az alkalmazást Azure Resource Manager használatával kell telepíteni, általában egy Azure Resource Manager sablonnal. Az Service Fabric alkalmazásnak a Azure Resource Manager használatával történő központi telepítésével kapcsolatos további információkért lásd: [alkalmazások és szolgáltatások kezelése Azure Resource Manager erőforrásként](service-fabric-application-arm-resource.md).
+A Service Fabric-alkalmazás felügyelt identitással való üzembe helyezéséhez az alkalmazást az Azure Resource Manageren keresztül kell üzembe helyezni, általában egy Azure Resource Manager-sablonnal. A Service Fabric-alkalmazás Azure Resource Manageren keresztüli üzembe helyezéséről az [Alkalmazások és szolgáltatások kezelése Azure Resource Manager-erőforrásokként című](service-fabric-application-arm-resource.md)témakörben talál további információt.
 
 > [!NOTE] 
 > 
 > Az Azure-erőforrásként nem telepített alkalmazások **nem** rendelkezhetnek felügyelt identitásokkal. 
 >
-> A felügyelt identitással Service Fabric alkalmazások telepítése az API-verzióval `"2019-06-01-preview"`támogatott. Ugyanezt az API-verziót használhatja az alkalmazás típusa, az alkalmazás típusa és a szolgáltatás erőforrásai esetében is.
+> A Service Fabric alkalmazás felügyelt identitással `"2019-06-01-preview"`történő telepítését az API-verzió támogatja. Ugyanazt az API-verziót is használhatja az alkalmazástípushoz, az alkalmazástípus-verzióhoz és a szolgáltatás-erőforrásokhoz.
 >
 
-## <a name="user-assigned-identity"></a>Felhasználó által hozzárendelt identitás
+## <a name="user-assigned-identity"></a>Felhasználóhoz rendelt identitás
 
-Ha a felhasználó által hozzárendelt identitással szeretné engedélyezni az alkalmazást, először adja hozzá az **Identity** tulajdonságot az alkalmazás-erőforráshoz a következő típusú **userAssigned** és a hivatkozott felhasználó által hozzárendelt identitásokkal. Ezután adjon hozzá egy **managedIdentities** szakaszt a **Properties (Tulajdonságok** ) szakaszban az **alkalmazás** -erőforráshoz, amely a felhasználó által hozzárendelt identitások principalId leképezését tartalmazó rövid név listáját tartalmazza. A felhasználó által hozzárendelt identitásokkal kapcsolatos további információkért lásd: [felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása vagy törlése](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell).
+Ha engedélyezni szeretné az alkalmazást a Felhasználóhoz rendelt identitással, először adja hozzá az **identitástulajdonságot** az alkalmazáserőforráshoz **userAssigned** típussal és a hivatkozott felhasználó által hozzárendelt identitásokkal. Ezután adjon hozzá egy **managedIdentities** szakaszt az **alkalmazás-erőforrás** **tulajdonságszakaszában,** amely tartalmazza a felhasználó által hozzárendelt identitások számára a rendszeri azonosítók hoztartozók rövid nevének listáját. A Felhasználó által rendelt identitásokról további információt a [Felhasználó által hozzárendelt felügyelt identitás létrehozása vagy törlése](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell)című témakörben talál.
 
 ### <a name="application-template"></a>Alkalmazássablon
 
-Ha engedélyezni szeretné az alkalmazáshoz a felhasználó által hozzárendelt identitást, először adja hozzá a **userAssigned** és a hivatkozott felhasználóhoz rendelt identitásokhoz tartozó **Identity** tulajdonságot az alkalmazás-erőforráshoz, majd vegyen fel egy **managedIdentities** -objektumot a **Tulajdonságok** szakaszba, amely tartalmazza az egyes felhasználókhoz rendelt identitások principalId leképezéséhez szükséges rövid nevet.
+A User Assigned identitással rendelkező alkalmazás engedélyezéséhez először adjon **hozzá identitástulajdonságot** az alkalmazáserőforráshoz **a UserAssigned** és a hivatkozott felhasználó által hozzárendelt identitások típusával, majd adjon hozzá egy **managedIdentities** objektumot a **tulajdonságok** szakaszon belül, amely tartalmazza az egyes hozzárendelt identitások rövid nevének listáját.
 
     {
       "apiVersion": "2019-06-01-preview",
@@ -58,13 +58,13 @@ Ha engedélyezni szeretné az alkalmazáshoz a felhasználó által hozzárendel
       }
     }
 
-A fenti példában a felhasználóhoz rendelt identitás erőforrásának neve megegyezik az alkalmazás felügyelt identitásának rövid nevével. A következő példák azt feltételezik, hogy a tényleges név a "AdminUser".
+A fenti példában a felhasználó által hozzárendelt identitás erőforrásneve az alkalmazás felügyelt identitásának rövid neveként használatos. A következő példák feltételezik, hogy a tényleges rövid név "AdminUser".
 
 ### <a name="application-package"></a>Alkalmazáscsomag
 
-1. A Azure Resource Manager sablon `managedIdentities` szakaszában definiált minden identitáshoz vegyen fel egy `<ManagedIdentity>` címkét az alkalmazás jegyzékfájljában a **rendszerbiztonsági** tag szakaszban. A `Name` attribútumnak meg kell egyeznie a `managedIdentities` szakaszban meghatározott `name` tulajdonsággal.
+1. Az Azure Resource Manager-sablon `managedIdentities` szakaszában meghatározott minden egyes `<ManagedIdentity>` identitáshoz adjon hozzá egy címkét az alkalmazásjegyzékben a **Rendszerbiztonsági tagok** szakaszban. Az `Name` attribútumnak meg `name` kell egyeznie `managedIdentities` a szakaszban meghatározott tulajdonsággal.
 
-    **ApplicationManifest. XML**
+    **ApplicationManifest.xml**
 
     ```xml
       <Principals>
@@ -74,9 +74,9 @@ A fenti példában a felhasználóhoz rendelt identitás erőforrásának neve m
       </Principals>
     ```
 
-2. A **ServiceManifestImport** szakaszban adjon hozzá egy **IdentityBindingPolicy** a felügyelt identitást használó szolgáltatáshoz. Ez a szabályzat a `AdminUser` identitást egy olyan szolgáltatás-specifikus identitási névre képezi, amelyet később hozzá kell adni a szolgáltatás jegyzékfájljában.
+2. A **ServiceManifestImport** szakaszban adjon hozzá egy **IdentityBindingPolicy** a felügyelt identitást használó szolgáltatáshoz. Ez a `AdminUser` házirend leképezi az identitást egy szolgáltatás-specifikus identitásnév, amely később hozzá kell adni a szolgáltatásjegyzékbe.
 
-    **ApplicationManifest. XML**
+    **ApplicationManifest.xml**
 
     ```xml
       <ServiceManifestImport>
@@ -86,9 +86,9 @@ A fenti példában a felhasználóhoz rendelt identitás erőforrásának neve m
       </ServiceManifestImport>
     ```
 
-3. Frissítse a szolgáltatás jegyzékfájlját, hogy egy **ManagedIdentity** adjon hozzá az **erőforrások** szakaszban az alkalmazás jegyzékfájljának `IdentityBindingPolicy` `ServiceIdentityRef`nek megfelelő névvel:
+3. Frissítse a szolgáltatásjegyzéket egy **ManagedIdentity** hozzáadásához az `ServiceIdentityRef` **Erőforrások** szakaszban az alkalmazásjegyzékben `IdentityBindingPolicy` lévő névvel:
 
-    **ServiceManifest. XML**
+    **ServiceManifest.xml**
 
     ```xml
       <Resources>
@@ -99,7 +99,7 @@ A fenti példában a felhasználóhoz rendelt identitás erőforrásának neve m
       </Resources>
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Felügyelt identitás használata Service Fabric alkalmazás kódjában](how-to-managed-identity-service-fabric-app-code.md)
-* [Service Fabric alkalmazás hozzáférésének biztosítása más Azure-erőforrásokhoz](how-to-grant-access-other-resources.md)
+* [Felügyelt identitás használata a Service Fabric alkalmazáskódjában](how-to-managed-identity-service-fabric-app-code.md)
+* [A Service Fabric-alkalmazások más Azure-erőforrásokhoz való hozzáférése](how-to-grant-access-other-resources.md)

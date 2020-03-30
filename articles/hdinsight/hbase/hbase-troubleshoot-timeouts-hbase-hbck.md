@@ -1,6 +1,6 @@
 ---
-title: Időtúllépések az Azure HDInsight "hbase hbck" parancsával
-description: Időtúllépési hiba az "hbase hbck" paranccsal a régió hozzárendeléseinek kijavításakor
+title: A hbase hbck parancs időtúllépése az Azure HDInsightban
+description: Időtúlolása a "hbase hbck" paranccsal a régió-hozzárendelések javításakor
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,46 +8,46 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 5604b42e1611830f3aaea9ae180cdb8142ab0942
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887189"
 ---
-# <a name="scenario-timeouts-with-hbase-hbck-command-in-azure-hdinsight"></a>Forgatókönyv: időtúllépés a "hbase hbck" paranccsal az Azure HDInsight
+# <a name="scenario-timeouts-with-hbase-hbck-command-in-azure-hdinsight"></a>Eset: Időtúltöltések a "hbase hbck" paranccsal az Azure HDInsightban
 
-Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
+Ez a cikk az Azure HDInsight-fürtökkel való kommunikáció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
 ## <a name="issue"></a>Probléma
 
-A régió-hozzárendelések kijavításakor a `hbase hbck` paranccsal időtúllépések merülhetnek fel.
+Időmegtolások `hbase hbck` találkozása a paranccsal a régió-hozzárendelések rögzítésekénekén.
 
 ## <a name="cause"></a>Ok
 
-Előfordulhat, hogy a `hbck` parancs használatakor időtúllépési problémák merülhetnek fel, ha több régió "átmenetes" állapotban van hosszú ideje. Ezeket a régiókat kapcsolat nélküli üzemmódban láthatja a HBase Master felhasználói felületen. Mivel nagy számú régiót próbálnak áttérni, HBase Master lehet, hogy időtúllépés történt, és nem lehet ismét online állapotba hozni ezeket a régiókat.
+A parancs használatakor az `hbck` időtúlváltási problémák egyik fő oka lehet, hogy több régió hosszú ideig "átmeneti" állapotban van. Ezeket a régiókat offline állapotban láthatja a HBase főkiszolgáló felhasználói felületén. Mivel nagy számú régió próbál áttérni, a HBase Master időtúljárhatja, és előfordulhat, hogy nem tudja újra online állapotba hozni ezeket a régiókat.
 
-## <a name="resolution"></a>Felbontás
+## <a name="resolution"></a>Megoldás:
 
-1. Jelentkezzen be a HDInsight HBase-fürtbe SSH használatával.
+1. Jelentkezzen be a HDInsight HBase fürtbe az SSH használatával.
 
-1. Futtassa `hbase zkcli` parancsot Apache ZooKeeper rendszerhéjhoz való kapcsolódáshoz.
+1. Futtassa `hbase zkcli` a parancsot az Apache ZooKeeper rendszerhéjhoz való csatlakozáshoz.
 
-1. Futtassa `rmr /hbase/regions-in-transition` vagy `rmr /hbase-unsecure/regions-in-transition` parancsot.
+1. Futtatás `rmr /hbase/regions-in-transition` `rmr /hbase-unsecure/regions-in-transition` vagy parancs.
 
-1. Kilépés `hbase zkcli` rendszerhéjból `exit` parancs használatával.
+1. Kilépés `hbase zkcli` a rendszerhéjból a parancs segítségével. `exit`
 
-1. Az Apache Ambari felhasználói felületén indítsa újra az aktív HBase Master szolgáltatást.
+1. Az Apache Ambari felhasználói felületéről indítsa újra az Active HBase Master szolgáltatást.
 
 1. Futtassa a következő parancsot: `hbase hbck -fixAssignments`.
 
-1. Figyelje meg, hogy a "régió az átmenetben" HBase Master felhasználói felülete nem ragadja meg a régiót.
+1. Figyelje a HBase főkiszolgáló felhasználói felületének "átalakulóban lévő régióját", hogy megbizonyosodjon arról, hogy egyetlen régió sem ragad meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
+Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
 
-- Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
+- Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
 
-- Kapcsolódjon a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiókot a felhasználói élmény javításához. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+- Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében. Az Azure-közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+- Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse [át az Azure-támogatási kérelem létrehozása című áttekintést.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 4e79fef08af8ff73ce63ab4732c9efd77e3a5d3f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179074"
 ---
 ### <a name="configure-a-dns-label-for-the-public-ip-address"></a>DNS-címke konfigurálása a nyilvános IP-címhez
@@ -44,6 +44,6 @@ DNS-címke létrehozásához először válassza a **Virtuális gépek** elemet 
 
 1. A **Jelszó** szövegmezőbe írja be a bejelentkezési jelszót.
 
-1. Kattintson a **Connect** (Csatlakozás) gombra.
+1. Kattintson a **Csatlakozás** gombra.
 
     ![ssms connect](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)

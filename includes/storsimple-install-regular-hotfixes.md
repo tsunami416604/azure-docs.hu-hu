@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 8cc5dbb907c342b766cebe6da36cf580ddac5e2c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179151"
 ---
-#### <a name="to-install-regular-hotfixes-via-windows-powershell-for-storsimple"></a>Storsimple-höz készült Windows Powershellen keresztül rendszeres gyorsjavítások telepítése
-1. Az eszköz soros konzoljához való csatlakozáshoz. További információkért lásd: [1. lépés: Csatlakozás soros konzolon](../articles/storsimple/storsimple-update-device.md#step1).
-2. A soros konzol menüben válassza az 1. lehetőség – **jelentkezzen be a teljes hozzáféréssel**. Írja be a jelszót. Az alapértelmezett jelszó az **jelszó1**.
+#### <a name="to-install-regular-hotfixes-via-windows-powershell-for-storsimple"></a>Rendszeres gyorsjavítások telepítése a StorSimple-hez szervizelt Windows PowerShell rendszeren keresztül
+1. Csatlakozzon az eszköz soros konzoljához. További információt az [1.](../articles/storsimple/storsimple-update-device.md#step1)
+2. A soros konzol menüjében **Log in with full access**válassza az 1. Írja be a jelszót. Az alapértelmezett jelszó a **Password1**.
 3. A parancssorba írja be a következőt:
    
     ```
@@ -22,9 +22,9 @@ ms.locfileid: "67179151"
    
     > [!IMPORTANT]
     >
-    > Ez a parancs csak a normál gyorsjavítások vonatkozik. Ez a parancs csak egy tartományvezérlőn futtatja, de mindkét vezérlő frissülni fog.
-    > A frissítés során; előfordulhat, hogy figyelje meg a vezérlő feladatátvétele a feladatátvétel azonban rendszer rendelkezésre állását vagy művelet nincs hatással.
+    > Ez a parancs csak a normál gyorsjavításokra vonatkozik. Ezt a parancsot csak egy vezérlőn futtatja, de mindkét vezérlő frissülni fog.
+    > Előfordulhat, hogy a frissítési folyamat során vezérlőfeladat-átvételt észlel; a feladatátvétel azonban nem befolyásolja a rendszer rendelkezésre állását vagy működését.
 
-4. Amikor a rendszer kéri, adja meg a hálózati megosztott mappa, amely tartalmazza a gyorsjavítások fájljainak elérési útját.
-5. Meg kell adnia megerősítést. Típus **Y** folytatásához a gyorsjavítás telepítését.
+4. Amikor a rendszer kéri, adja meg a gyorsjavításfájlokat tartalmazó megosztott hálózati mappa elérési útját.
+5. A rendszer a művelet megerősítését kéri. Írja be az **Y** típust a gyorsjavítás telepítésének folytatásához.
 

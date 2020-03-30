@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása a Microsoft hozzáférési forrásaiból
-description: Megtudhatja, hogyan másolhat adatokat a Microsoft hozzáférési forrásaiból egy Azure Data Factory-folyamat másolási tevékenységének használatával támogatott fogadó adattárakba.
+title: Adatok másolása Microsoft Access forrásokból
+description: Megtudhatja, hogy miként másolhat adatokat a Microsoft Access forrásaiból a támogatott fogadó adattárakba egy Azure Data Factory-folyamat másolási tevékenységének használatával.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,56 +12,56 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
 ms.openlocfilehash: d6110065e28b8f179cd1d113107fb3508e1c3e44
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892550"
 ---
-# <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Adatok másolása a és a rendszerből a Microsoft Access-adattárakba Azure Data Factory használatával
+# <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Adatok másolása a Microsoft Access adattárakból és a Microsoft Access adattárakba az Azure Data Factory használatával
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factory az adatok Microsoft Access-adattárból történő másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
+Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység et az Azure Data Factory-ban adatok másolására egy Microsoft Access adattárból. A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Ez a Microsoft Access Connector a következő tevékenységek esetén támogatott:
+Ez a Microsoft Access összekötő a következő tevékenységek esetén támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-A Microsoft Access forrásból származó adatok másolása bármely támogatott fogadó adattárba lehetséges. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+A Microsoft Access forrásból adatokat bármely támogatott fogadó adattárba másolhatunk. A másolási tevékenység által forrásként/fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Microsoft Access Connector használatához a következőket kell tennie:
+A Microsoft Access összekötő használatához a következőket kell a következőkre használnia:
 
-- Saját üzemeltetésű Integration Runtime beállítása. További részletekért tekintse meg a saját üzemeltetésű [Integration Runtime](create-self-hosted-integration-runtime.md) szóló cikket.
-- Telepítse a Microsoft Access ODBC-illesztőt az adattárhoz a Integration Runtime gépen.
+- Állítsa be a saját üzemeltetésű integrációs futásidejű. A [részleteket a saját üzemeltetésű integrációs futásidejű](create-self-hosted-integration-runtime.md) cikkben találja.
+- Telepítse az adattár Microsoft Access ODBC illesztőprogramját az integrációs futásidejű gépen.
 
 >[!NOTE]
->Az ODBC-illesztőprogram Microsoft Access 2016-es verziója nem működik ezzel az összekötővel. Használja helyette az 2013-es vagy 2010-os illesztőprogramot.
+>Az ODBC illesztőprogram Microsoft Access 2016-os verziója nem működik ezzel az összekötővel. Használja az illesztőprogram 2013-as vagy 2010-es verzióját.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, amelyek a Microsoft Access connectorhoz tartozó Data Factory-entitások definiálására szolgálnak.
+Az alábbi szakaszok a Microsoft Access-összekötőre jellemző Data Factory-entitások definiálásához használt tulajdonságokrészleteit ismertetik.
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
 
-A Microsoft Access társított szolgáltatás a következő tulajdonságokat támogatja:
+A Microsoft Access csatolt szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **MicrosoftAccess** | Igen |
-| connectionString | Az ODBC-kapcsolatok karakterlánca a hitelesítő adatok kivételével. Megadhatja a kapcsolati karakterláncot, vagy használhatja a Integration Runtime gépen beállított rendszeradatforrás-nevet (az adatforrás nevét) (ennek megfelelően a társított szolgáltatás hitelesítő adatait is meg kell adnia).<br> A Azure Key Vaultban jelszót is beállíthat, és lekérheti a `password` konfigurációját a kapcsolatok karakterláncán kívülre. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vault](store-credentials-in-key-vault.md) ban című témakört.| Igen |
-| authenticationType | A Microsoft Access adattárhoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alapszintű** és **Névtelen**. | Igen |
-| userName (Felhasználónév) | Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. | Nem |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
-| hitelesítő adat | Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. A mező megjelölése SecureString. | Nem |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
+| type | A típustulajdonságot a következőre kell állítani: **MicrosoftAccess** | Igen |
+| connectionString (kapcsolati karakterlánc) | Az ODBC kapcsolati karakterlánc a hitelesítő adatok kivételével. Megadhatja a kapcsolati karakterláncot, vagy használhatja az integrációs futásidejű gépen beállított rendszer adatforrásnevet (adatforrásnév) (ennek megfelelően meg kell adnia a csatolt szolgáltatás hitelesítő adatrészét).<br> Az Azure Key Vaultban is elhelyezhet `password` egy jelszót, és kihúzhatja a konfigurációt a kapcsolati karakterláncból.További részleteket az Azure Key  [Vault áruházi hitelesítő adataiban](store-credentials-in-key-vault.md)talál.| Igen |
+| authenticationType | A Microsoft Access adattárhoz való csatlakozáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alap és** **Névtelen**. | Igen |
+| userName (Felhasználónév) | Adja meg a felhasználónevet, ha alapfokú hitelesítést használ. | Nem |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) | Nem |
+| hitelesítő adat | Az illesztőprogram-specifikus tulajdonságérték-formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő adatrésze. Jelölje meg ezt a mezőt SecureString ként. | Nem |
+| connectVia | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) Az előfeltételek ben említettek szerint saját üzemeltetésű [integrációs](#prerequisites)futásidejű re van szükség. |Igen |
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -87,14 +87,14 @@ A Microsoft Access társított szolgáltatás a következő tulajdonságokat tá
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Microsoft Access adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [adatkészletekről](concepts-datasets-linked-services.md) szóló cikkben olvashatja. Ez a szakasz a Microsoft Access adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatok Microsoft Accessből való másolásához a következő tulajdonságok támogatottak:
+Adatok Microsoft Access programból történő másolásához a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **MicrosoftAccessTable** | Igen |
-| tableName | A tábla neve a Microsoft Accessben. | Nem forrásként (ha a "Query" a tevékenység forrásában van megadva);<br/>Igen a fogadó számára |
+| type | Az adatkészlet típustulajdonságát a következőre kell állítani: **MicrosoftAccessTable** | Igen |
+| tableName | A Microsoft Access táblájának neve. | Nem a forráshoz (ha a tevékenységforrásban meg van adva a "lekérdezés" );<br/>Igen a mosogató |
 
 **Példa**
 
@@ -116,18 +116,18 @@ Az adatok Microsoft Accessből való másolásához a következő tulajdonságok
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a Microsoft Access Source által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok](concepts-pipelines-activities.md) című cikkben olvashat. Ez a szakasz a Microsoft Access forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="microsoft-access-as-source"></a>Microsoft-hozzáférés forrásként
+### <a name="microsoft-access-as-source"></a>Microsoft Access forrásként
 
-Az adatok Microsoft Access-kompatibilis adattárból való másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
+Ha adatokat szeretne másolni a Microsoft Access-kompatibilis adattárból, a másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MicrosoftAccessSource** | Igen |
-| lekérdezés | Az egyéni lekérdezés használatával olvashatja el az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| type | A másolási tevékenységforrás típustulajdonságának a következőre kell állítani: **MicrosoftAccessSource** | Igen |
+| lekérdezés | Az adatok olvasásához használja az egyéni lekérdezést. Például: `"SELECT * FROM MyTable"`. | Nem (ha az adatkészletben a "tableName" van megadva) |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -159,9 +159,9 @@ Az adatok Microsoft Access-kompatibilis adattárból való másolásához a más
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>A keresgaszíntevékenység tulajdonságai
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+A tulajdonságokrészleteinek megismeréséhez ellenőrizze a [Kereskövetési tevékenységet.](control-flow-lookup-activity.md)
 
-## <a name="next-steps"></a>Következő lépések
-A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>További lépések
+A forrásként támogatott és fogadóként az Azure Data Factory másolási tevékenysége által támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben tetszhet.

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 592131bf6cca4c4c3c827de23742e8d52bcb4d1c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179174"
 ---
 #### <a name="to-mount-initialize-and-format-a-volume"></a>Kötet csatlakoztatása, inicializálása és formázása
@@ -30,7 +30,7 @@ ms.locfileid: "67179174"
     3. Adjon meg 64 KB-os lemezfoglalásiegység-méretet. Ez a lemezfoglalásiegység-méret jól működik a StorSimple megoldásban használt deduplikációs algoritmusokkal.
     4. Hajtson végre egy gyorsformázást.
 
-![Videó elérhető](./media/storsimple-mount-initialize-format-volume/Video_icon.png)**Videó elérhető**
+![Videó elérhető](./media/storsimple-mount-initialize-format-volume/Video_icon.png) **Videó elérhető**
 
 A StorSimple-kötet csatlakoztatását, inicializálását és formázását bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/mount-initialize-and-format-a-storsimple-volume/).
 

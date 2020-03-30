@@ -1,123 +1,123 @@
 ---
-title: Vész-helyreállítási útmutató az Azure-hoz készült avere-vFXT
-description: Adatok védelme a avere-vFXT az Azure-ban véletlen törlés vagy kimaradás esetén
+title: Vész-helyreállítási útmutató az Avere vFXT for Azure-hoz
+description: Az Azure-hoz készült Avere vFXT adatainak védelme a véletlen törléssel vagy kimaradásokkal szemben
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966647"
 ---
-# <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Vész-helyreállítási útmutató az Azure-hoz készült avere-vFXT
+# <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Vész-helyreállítási útmutató az Avere vFXT for Azure-hoz
 
-Ez a cikk azokat a stratégiákat ismerteti, amelyek védik az Azure-munkafolyamatok avere-vFXT, és útmutatást nyújt az adatok biztonsági mentéséhez, hogy a rendszer baleseteket vagy kimaradásokat lehessen helyreállítani.
+Ez a cikk az Avere vFXT azure-beli munkafolyamatvédelmére vonatkozó stratégiákat vázol fel, és útmutatást ad az adatok biztonsági mentéséhez, hogy a balesetek vagy kimaradások helyreállíthassa őket.
 
-A avere vFXT for Azure átmenetileg a gyorsítótárában tárolja az adattárolást. Az adattárolási rendszerek hosszú távú tárolása – helyszíni hardverrendszer, Azure Blob Storage-tárolók vagy mindkettő.
+Az Avere vFXT for Azure ideiglenesen tárolja az adatokat a gyorsítótárában. Az adatok hosszú távú tárolórendszerekben tárolódnak – helyszíni hardverrendszerekben, Azure Blob tárolótárolókban vagy mindkettőben.
 
-Az kimaradások és az esetleges adatvesztés elleni védelem érdekében vegye figyelembe a következő négy területet:
+A kimaradások és az esetleges adatvesztés elleni védelem érdekében vegye figyelembe az alábbi négy területet:
 
-* A leállás elleni védelem, ha az Azure-rendszer avere vFXT elérhetetlenné válik
+* Az állásidő elleni védelem, ha az Avere vFXT for Azure rendszer elérhetetlenné válik
 * Adatok védelme a fürt gyorsítótárában
-* Adatok védelme a háttérbeli NAS-hardveres tárolóban
-* Adatok védelme a háttérbeli Azure Blob Cloud Storage-ban
+* Adatok védelme a háttér-NAS hardvertárolóban
+* Adatok védelme háttérszintű Azure Blob felhőalapú tárhelyen
 
-Az Azure Customer minden avere-vFXT létre kell hoznia a saját átfogó vész-helyreállítási tervét, amely tartalmazza az ezen elemek csomagjait. A vFXT-fürttel használt alkalmazásokba rugalmasságot is építhet. További segítségért olvassa el a [következő lépések](#next-steps) hivatkozásait.
+Minden Avere vFXT Azure-ügyfélnek létre kell hoznia a saját átfogó vész-helyreállítási terv, amely tartalmazza az ilyen elemek hez szükséges terveket. A vFXT-fürttel használt alkalmazások rugalmasságát is létrehozhatja. A [súgóért](#next-steps) olvassa el a Következő lépések című témakörben található hivatkozásokat.
 
-## <a name="protect-against-downtime"></a>Az állásidő elleni védelem
+## <a name="protect-against-downtime"></a>Védelem az állásidő ellen
 
-A redundancia a avere vFXT for Azure termékhez készült:
+A redundancia be van építve az Avere vFXT for Azure termékbe:
 
-* A fürt nagyon elérhető, és az egyes fürtcsomópontok feladatátvétele minimális megszakítással végezhető el.
-* A gyorsítótárban megváltoztatott adatváltozások a hosszú távú tárolás érdekében rendszeresen a háttérrendszer-tárolók (hardveres NAS vagy Azure Blob) számára íródnak.
+* A fürt magas rendelkezésre állású, és az egyes fürtcsomópontok minimális megszakítással átvehetik a feladatát.
+* A gyorsítótárban megváltozott adatok at rendszeresen írják a háttér-core filers (hardver Es vagy Azure Blob) a hosszú távú tároláshoz.
 
-Az Azure-fürt minden avere-vFXT egyetlen rendelkezésre állási zónában kell lennie, de a különböző zónákban vagy különböző régiókban található redundáns fürtöket a regionális leállás esetén is gyorsan elérhetővé teheti.
+Minden Avere vFXT azure-fürthöz kell elhelyezni egy rendelkezésre állási zónában, de használhatja redundáns fürtök található különböző zónákban vagy különböző régiókban, hogy gyorsan hozzáférést regionális kimaradás esetén.
 
-A tárolókat több régióban is elhelyezheti, ha aggódik az adathozzáférés elvesztésével kapcsolatban. Ne feledje azonban, hogy a régiók közötti tranzakciók nagyobb késéssel járnak, mint a régión belüli tranzakcióknál magasabbak.
+A tárolótárolókat több régióban is elhelyezheti, ha aggódik az adatokhoz való hozzáférés elvesztése miatt. Ne feledje azonban, hogy a régiók közötti tranzakciók nagyobb késéssel és magasabb költséggel rendelkeznek, mint a régión belül maradó tranzakciók.
 
-## <a name="protect-data-in-the-cluster-cache"></a>A fürt gyorsítótárában tárolt adatvédelem
+## <a name="protect-data-in-the-cluster-cache"></a>Adatok védelme a fürt gyorsítótárában
 
-A gyorsítótárazott adatfájlok mindig az alapszintű tárolóba kerülnek, a normál leállítás előtt, de nem ellenőrzött leállítás esetén a gyorsítótárban lévő módosult adatvesztés is elvész.
+A gyorsítótárazott adatok at a rendszer a normál leállítás előtt mindig a központi fájlkezelőkbe írja, de ellenőrizetlen leállítás esetén a gyorsítótárban lévő megváltozott adatok elveszhetnek.
 
-Ha a fürtöt használja a fájlok olvasásának optimalizálására, az elveszített módosítások nem változnak. Ha a fürt használatával is gyorsítótárazza a fájl módosításait (írásokat), vegye figyelembe, hogy az alapszintű filers [gyorsítótár-házirendjeit](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html) szeretné-e módosítani.<!-- link to legacy doc --> annak testre szabásához, hogy a rendszer milyen gyakran írja be az adattárolást a hosszú távú tárolóba.
+Ha a fürt ötöt csak a fájlolvasás optimalizálására használ, nincsenek elveszni való módosítások. Ha a fürtöt fájlmódosítások (írások) gyorsítótárazására is használja, fontolja meg, hogy módosítja-e az alapvető fájlkezelők [gyorsítótár-házirendjeit.](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html)<!-- link to legacy doc --> az adatok hosszú távú tárolásba írásának módját.
 
-Általánosságban elmondható, hogy a helyreállítási tervnek a háttérrendszer biztonsági mentésére kell összpontosítania, amelyek több adattal rendelkeznek, és általában még fontosabbak a munkafolyamatok a meghibásodás utáni újbóli létrehozásához.
+A helyreállítási tervnek általában a háttértároló rendszerek biztonsági mentésére kell összpontosítania, amelyek több adatot tárolnak, és általában fontosabbak a munkafolyamat hiba utáni visszaállításához.
 
-## <a name="protect-data-in-nas-core-filers"></a>Az adatvédelmet a NAS Core filers szolgáltatásban
+## <a name="protect-data-in-nas-core-filers"></a>Adatok védelme a NAS core filers-ben
 
-Fogadja el az elfogadott metódusokat a helyszíni NAS-beli hardveres hálózati tárolóban tárolt adatvédelemhez, beleértve a pillanatképeket és a teljes biztonsági mentést a NAS-szolgáltató által javasolt módon. Ezeknek az alapszintű Filer-fájloknak a vész-helyreállítási lehetősége meghaladja a jelen cikk hatókörét.
+A helyszíni NAS hardvermag-fájlkezelőben tárolt adatok védelméhez használjon elfogadott módszereket, beleértve a pillanatképeket és a nas-szolgáltató által ajánlott teljes biztonsági mentéseket is. Ezek a központi filers vész-helyreállítási hatókörön kívül esik a jelen cikk.
 
-## <a name="protect-data-in-azure-blob-storage"></a>Az Azure Blob Storage adatainak védelme
+## <a name="protect-data-in-azure-blob-storage"></a>Adatok védelme az Azure Blob storage-ban
 
-Az Azure-hoz készült avere-vFXT helyileg redundáns tárolást (LRS) használ az Azure Blob Core filers szolgáltatásokhoz. Ez azt jelenti, hogy a blob-tárolók adatait a rendszer automatikusan átmásolja az átmeneti hardveres hibákra az adatközponton belül.
+Az Azure-hoz az Avere vFXT helyileg redundáns tárolást (LRS) használ az Azure Blob alapvető fájlkezelőihez. Ez azt jelenti, hogy a Blob-tárolókban lévő adatok automatikusan másolásra kerülnek az adatközponton belüli átmeneti hardverhibák elleni védelem érdekében.
 
-Ez a szakasz tippekkel szolgál arról, hogy miként lehet a blob Storage-ban lévő adatok további védelme az egész régióra kiterjedő kimaradások vagy véletlen törlések révén.
+Ez a szakasz tippeket ad a blobstorage-ban tárolt adatok ritka régiószintű kimaradások vagy véletlen törlések elleni további védelméhez.
 
-Az Azure Blob Storage-ban tárolt adatok védelmére vonatkozó ajánlott eljárások a következők:
+Az Azure Blob storage-beli adatok védelmével kapcsolatos gyakorlati tanácsok a következők:
 
-* Másolja a kritikus adatait egy másik régióban lévő másik Storage-fiókba gyakran (amilyen gyakran a vész-helyreállítási terv határozza meg).
-* Az összes megcélzott rendszeren lévő adathozzáférés szabályozása a véletlen törlés vagy a sérülés elkerülése érdekében. Érdemes lehet [erőforrás-zárolásokat](../azure-resource-manager/management/lock-resources.md) használni az adattárolón.
-* Engedélyezze a avere vFXT for Azure [Cloud Snapshot](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html>) funkciót a blob Core-alapú filers szolgáltatáshoz.
+* Másolja a kritikus adatokat egy másik régióban lévő másik tárfiókba gyakran (olyan gyakran, ahogy azt a vész-helyreállítási terv határozza meg).
+* A véletlen törlés vagy sérülés elkerülése érdekében szabályozhatja az összes célrendszeren lévő adatokhoz való hozzáférést. Fontolja meg [az erőforrás-zárolások](../azure-resource-manager/management/lock-resources.md) használatát az adattárolásban.
+* Engedélyezze az Avere vFXT [azure-beli felhőbeli pillanatkép-funkciót](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html>) a Blob core filers számára.
 
-### <a name="copy-avere-vfxt-core-filer-data-to-a-backup-account"></a>Avere-vFXT alapszintű Filer-adatbázis másolása biztonsági mentési fiókba
+### <a name="copy-avere-vfxt-core-filer-data-to-a-backup-account"></a>Avere vFXT core filer adatainak másolása biztonsági másolatba
 
-Az alábbi lépéseket követve hozzon létre egy adatbiztonsági mentést egy másik fiókban.
+Az alábbi lépésekkel készíthet adatbiztonsági másolatot egy másik fiókban.
 
-1. Ha szükséges, állítson elő egy új titkosítási kulcsot, és biztonságosan tárolja az érintett rendszereken kívül.
+1. Szükség esetén hozzon létre egy új titkosítási kulcsot, és tárolja biztonságosan az érintett rendszereken kívül.
 
-   Ha az adatok titkosítása az Azure-fürthöz készült avere-vFXT történik, akkor az adatok másik Storage-fiókba való másolása előtt új titkosítási kulcsot kell kiállítania. Biztonságosan tárolhatja a kulcsot és a jelszót olyan létesítményben, amely biztonságban van, és nem lesz hatással a regionális meghibásodásokra.
+   Ha az adatokat az Avere vFXT azure-fürt, létre kell hoznia egy új titkosítási kulcsot, mielőtt az adatok másolása egy másik tárfiókba. Tárolja a kulcsot és a jelszót biztonságosan egy biztonságos létesítményben, amely nem lesz hatással a regionális hiba.
 
-   Ezt a kulcsot akkor kell megadnia, amikor hozzáadja a tárolót egy fürthöz – még akkor is, ha az eredeti fürthöz újra hozzáadja.
+   Ezt a kulcsot meg kell adnia, amikor hozzáadja a tárolót egy fürthöz – még akkor is, ha újra hozzáadja az eredeti fürthöz.
 
-   [Felhőbeli titkosítási beállítások](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_encryption_settings.html>) olvasása<!-- link to legacy doc site --> részletes információk.
+   [Felhőtitkosítási beállítások olvasása](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_encryption_settings.html>)<!-- link to legacy doc site --> részletes információkért.
 
-   Ha a tároló csak az Azure beépített titkosítását használja, akkor kihagyhatja ezt a lépést.
+   Ha a tároló csak az Azure beépített titkosítását használja, kihagyhatja ezt a lépést.
 
-1. Távolítsa el a Core filert a rendszerből. Ez arra kényszeríti a fürtöt, hogy az összes módosított adatlemezt a háttérbeli tárolóba írja.
+1. Távolítsa el a központi fájlkezelőt a rendszerből. Ez arra kényszeríti a fürtöt, hogy az összes módosított adatot a háttértárolóba írja.
 
-   Bár a biztonsági mentés után újra hozzá kell adnia a Core Filer-t, a rendszer eltávolítja a legjobb módszert annak biztosítására, hogy az összes adatfájl teljes mértékben a háttérbe legyen írva. (A "felfüggesztés" beállítás esetenként a gyorsítótárban is hagyhatja a módosult adatértékeket.) <!-- xxx true? or just metadata? -->
+   Bár a biztonsági mentés után újra hozzá kell adnia a központi fájlkezelőt, az eltávolítás a legjobb módja annak, hogy garantálja, hogy az összes adat teljesen a háttérrendszerbe kerül. (A "felfüggesztés" lehetőség néha a gyorsítótárban hagyhatja a módosított adatokat.) <!-- xxx true? or just metadata? -->
 
-   Jegyezze fel az alapszintű Filer nevét és a csatlakozási információkat (a Vezérlőpult **névtér** lapján), hogy replikálja a tárolót a biztonsági mentést követően.
+   Jegyezze fel az alapvető fájlkezelő nevét és csatlakozási adatait (a vezérlőpult **Névtér** lapján felsorolva), hogy replikálhassa azt, amikor újra hozzáadja a tárolót a biztonsági mentés után.
 
-   Távolítsa el a Core filert a fürt Vezérlőpultjának használatával. [Nyissa meg a fürt Vezérlőpultját](avere-vfxt-cluster-gui.md) , és válassza a **Core Filer** > a **Core filers kezelése**elemet. Keresse meg azt a tárolási rendszert, amelyről biztonsági másolatot szeretne készíteni, majd az **Eltávolítás** gombbal törölje azt a fürtből.
+   A fürt vezérlőpultjával távolítsa el a központi fájlkezelőt. [Nyissa meg a fürt vezérlőpultját,](avere-vfxt-cluster-gui.md) és válassza a **Core filer** > Manage**core filers (Core filer Manage core filers**) lehetőséget. Keresse meg a biztonsági másolatot, és az **Eltávolítás** gombbal törölje azt a fürtből.
 
-1. Hozzon létre egy új, üres blob Storage-tárolót egy másik tárolási fiókban egy másik régióban.
+1. Hozzon létre egy új, üres Blob storage-tárolót egy másik régióban lévő másik tárolófiókban.
 
-1. Bármilyen kényelmes másolási eszközzel másolhatja az alapvető Filer-t az új tárolóra. A másolatnak módosítás nélkül replikálnia kell az adatfájlokat, és nem szabad megszakítania az Azure-hoz készült avere vFXT által használt szabadalmaztatott Cloud fájlrendszer-formátumot. Az Azure-alapú eszközök közé tartozik a [AzCopy](../storage/common/storage-use-azcopy-v10.md), a [Azure PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)és az [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md).
+1. Bármilyen kényelmes másolási eszközzel másolja az adatokat a core filer az új tárolóba. A másolatnak módosítások nélkül kell replikálnia az adatokat, és meg kell szakítania az Avere vFXT for Azure-hoz használt saját felhőalapú fájlrendszer-formátumot. Az Azure-alapú eszközök közé tartozik [az AzCopy,](../storage/common/storage-use-azcopy-v10.md) [az Azure PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)és az [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md).
 
-1. Az adatok biztonsági mentési tárolóba való másolása után adja hozzá az eredeti tárolót a fürthöz a [tároló konfigurálása](avere-vfxt-add-storage.md)című témakörben leírtak szerint.
+1. Miután átmásolta az adatokat a biztonsági másolat tárolóba, adja hozzá az eredeti tárolót a fürthöz a [Tároló konfigurálása](avere-vfxt-add-storage.md)című részben leírtak szerint.
 
-   * Használja ugyanazt az alapszintű Filer-nevet és-elágazási információt, hogy az ügyfél-munkafolyamatok ne kelljen módosítani.
-   * Állítsa a **gyűjtő tartalmának** értékét a meglévő adatbeállításra.
-   * Ha a tárolót a fürt titkosította, akkor az aktuális titkosítási kulcsot kell megadnia a tartalomhoz. (Ez az első lépésben frissített kulcs.)
+   * Használja ugyanazt az alapvető fájlkezelő nevet és csomóponti információt, hogy az ügyfél-munkafolyamatokat ne kelljen módosítani.
+   * Állítsa a **Gyűjtő tartalom** értékét a meglévő adatbeállításra.
+   * Ha a tárolót a fürt titkosította, meg kell adnia az aktuális titkosítási kulcsot a tartalmához. (Ez az a kulcs, amelyet az első lépésben frissített.)
 
-Az első után készített biztonsági mentésekhez nem szükséges új tárolót létrehoznia. Azonban érdemes lehet új titkosítási kulcsot generálni, amikor biztonsági mentést végez, hogy meggyőződjön arról, hogy az aktuális kulcs egy olyan helyen van tárolva, amelyet megjegyez.
+Biztonsági mentések után az első, nem kell létrehozni egy új tárolótárolót. Azonban fontolja meg egy új titkosítási kulcs létrehozása minden alkalommal, amikor csinál egy biztonsági másolatot, hogy megbizonyosodjon arról, hogy az aktuális kulcs tárolják egy helyen, amire emlékszik.
 
-### <a name="access-a-backup-data-source-during-an-outage"></a>Biztonsági mentési adatforrás elérése leállás közben
+### <a name="access-a-backup-data-source-during-an-outage"></a>Biztonsági másolat adatforrásának elérése kimaradás közben
 
-Ha a biztonsági mentési tárolót az Azure-fürthöz tartozó avere-vFXT szeretné elérni, kövesse az alábbi eljárást:
+A biztonsági mentési tároló eléréséhez egy Avere vFXT azure-fürthöz, kövesse ezt a folyamatot:
 
-1. Ha szükséges, hozzon létre egy új avere-vFXT az Azure-fürthöz egy nem érintett régióban.
+1. Ha szükséges, hozzon létre egy új Avere vFXT Azure-fürt höz egy nem érintett régióban.
 
    > [!TIP]
-   > Amikor létrehoz egy avere-vFXT az Azure-fürthöz, mentheti a létrehozási sablonját és paramétereit. Ha ezt az információt az elsődleges fürt létrehozásakor menti, akkor a segítségével egy olyan helyettesítő fürtöt hozhat létre, amely azonos tulajdonságokkal rendelkezik. Az [Összefoglalás](avere-vfxt-deploy.md#validation-and-purchase) lapon kattintson a **sablon és paraméterek letöltése** hivatkozásra. Mentse az adatokat egy fájlba, mielőtt létrehozza a fürtöt.
+   > Amikor létrehoz egy Avere vFXT azure-fürthöz, mentheti a létrehozási sablon és a paraméterek másolatát. Ha az elsődleges fürt létrehozásakor menti ezeket az adatokat, akkor ugyanazzal a tulajdonságokkal rendelkező cserefürt létrehozásához használhatja. Az [összesítő](avere-vfxt-deploy.md#validation-and-purchase) lapon kattintson a **Letöltés sablon és paraméterek** hivatkozásra. A fürt létrehozása előtt mentse az adatokat egy fájlba.
 
-1. Vegyen fel egy új, az ismétlődő blob-tárolóra mutató Cloud Core filert.
+1. Adjon hozzá egy új felhőalapú core filer, amely rámutat a duplikált Blob tároló.
 
-   Győződjön meg arról, hogy a célként megadott tároló már tartalmaz adatmennyiséget az alapszintű Filer-létrehozási varázsló **gyűjtői tartalom** beállítása területén. (A rendszernek riasztást kell kapnia, ha véletlenül **üresen**hagyja ezt a tulajdonságot.)  <!-- you can't add a populated volume at cluster creation time via template, only create a fresh one -->
+   Győződjön meg arról, hogy a céltároló már tartalmaz adatokat a Fő fájlkészítő készítő varázsló **Bucket contents** beállításában. (A rendszernek figyelmeztetnie kell, ha véletlenül **üresre**hagyja ezt a készletet.)  <!-- you can't add a populated volume at cluster creation time via template, only create a fresh one -->
 
-1. Ha szükséges, frissítse az ügyfeleket úgy, hogy az új fürtöt vagy az új Core Filer-t az eredeti helyett csatlakoztassa. (Ha a Replacement Core filert az eredeti tárolóval megegyező névvel és csatlakozási útvonallal adja hozzá, akkor nem kell frissítenie az ügyfelek folyamatait, kivéve, ha új IP-címen kell csatlakoztatnia az új fürtöt.)
+1. Ha szükséges, frissítse az ügyfeleket úgy, hogy az eredeti helyett az új fürtöt vagy az új core filer-t csatlakoztassa. (Ha a helyettesítő magfájlkezelőt az eredeti tárolóval azonos nevű és csomóponti elérési úttal adja hozzá, nem kell frissítenie az ügyfélfolyamatokat, hacsak nem kell az új fürtöt új IP-címre csatlakoztatnia.)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Az Azure-hoz készült avere-vFXT beállításainak testreszabásával kapcsolatos további információkért olvassa el a [fürt finomhangolása](avere-vfxt-tuning.md)című témakört.
-* További információ a vész-helyreállításról és az Azure-beli rugalmas alkalmazások létrehozásáról:
+* Az Avere vFXT azure-hoz beállításainak testreszabásáról a [Fürthangolás](avere-vfxt-tuning.md)című olvasni tudó további információt talál.
+* További információ a vészhelyreállításról és a rugalmas alkalmazások azure-beli létrehozásáról:
 
   * [Műszaki útmutató az Azure rugalmasságáról](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-  * [Egy egész régióra kiterjedő szolgáltatás megszakadásának helyreállítása](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
+  * [Helyreállítás egész régióra kiterjedő szolgáltatáskimaradás esetén](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
   * [Vészhelyreállítás és magas szintű rendelkezésre állás az Azure-alkalmazásokhoz](<https://docs.microsoft.com/azure/resiliency/resiliency-disaster-recovery-high-availability-azure-applications>)
   <!-- can't find these in the source tree to use relative links -->

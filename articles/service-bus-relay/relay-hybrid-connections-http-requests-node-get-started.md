@@ -1,5 +1,5 @@
 ---
-title: Azure Relay Hibrid kapcsolatok – HTTP-kérelmek a csomópontban
+title: Azure Relay hibrid kapcsolatok – HTTP-kérelmek a csomópontban
 description: Node.js-konzolalkalmazást hozhat létre a hibrid Azure Relay-kapcsolatok HTTP-kéréseihez a Node-ban.
 services: service-bus-relay
 documentationcenter: node
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: clemensv
 ms.openlocfilehash: d71386b86bf7133bb73ddce2e65c3b88743009ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75462025"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>Ismerkedés a hibrid Relay-kapcsolatok HTTP-kéréseivel a Node-ban
 
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Ebben a rövid útmutatóban a Node. js-küldő és a fogadó alkalmazásokat hozza létre, amelyek üzeneteket küldenek és fogadnak a HTTP protokoll használatával. Az alkalmazások a Azure Relay Hibrid kapcsolatok funkcióját használják. Az általános Azure Relayről a [Azure Relay](relay-what-is-it.md)című témakörben olvashat bővebben. 
+Ebben a rövid útmutatóban node.js küldő és fogadó alkalmazásokat hozhat létre, amelyek üzeneteket küldenek és fogadnak a HTTP protokoll használatával. Az alkalmazások az Azure Relay hibrid kapcsolatok szolgáltatását használják. Az Azure Relay általános megismeréséről az [Azure Relay](relay-what-is-it.md). 
 
-Ebben a rövid útmutatóban a következő lépéseket hajtja végre:
+Ebben a rövid útmutatóban az alábbi lépéseket kell tennie:
 
 1. Relay-névtér létrehozása az Azure Portal használatával.
 2. Hibrid kapcsolat létrehozása ezen a névtéren az Azure Portal használatával.
@@ -64,7 +64,7 @@ Ha üzenetet kíván küldeni a Relay számára, használhat bármilyen HTTP-kli
 
 Gratulálunk, végpontok közötti hibrid kapcsolatok alkalmazást hozott létre a Node.js használatával.
 
-## <a name="next-steps"></a>Következő lépések
-Ebben a rövid útmutatóban létrehozta a Node. js-ügyfelet és a HTTP protokollt használó kiszolgálói alkalmazásokat az üzenetek küldéséhez és fogadásához. A Azure Relay Hibrid kapcsolatok szolgáltatása szintén támogatja a websocketek használatát az üzenetek küldéséhez és fogadásához. Ha szeretné megismerni, hogyan használhatók a websocketek Azure Relay Hibrid kapcsolatoksal, tekintse meg a [WebSockets](relay-hybrid-connections-node-get-started.md)rövid útmutatót.
+## <a name="next-steps"></a>További lépések
+Ebben a rövid útmutatóban node.js ügyfél- és kiszolgálóalkalmazásokat hozott létre, amelyek HTTP-t használtak az üzenetek küldéséhez és fogadásához. Az Azure Relay hibrid kapcsolatok szolgáltatása is támogatja a WebSockets üzenetek küldését és fogadását. A WebSockets azure-továbbító hibrid kapcsolatokkal való használatáról a [WebSockets rövid útmutatójában olvashat.](relay-hybrid-connections-node-get-started.md)
 
-Ebben a rövid útmutatóban a Node. js-t használta az ügyfél-és kiszolgálói alkalmazások létrehozásához. Ha szeretné megtudni, hogyan írhat ügyfél-és kiszolgálói alkalmazásokat a .NET-keretrendszerrel, tekintse meg a [.net WebSockets](relay-hybrid-connections-dotnet-get-started.md) rövid útmutatóját vagy a [.net http](relay-hybrid-connections-http-requests-dotnet-get-started.md)-gyors útmutatót.
+Ebben a rövid útmutatóban a Node.js programot használta ügyfél- és kiszolgálóalkalmazások létrehozásához. Az ügyfél- és kiszolgálóalkalmazások .NET Framework rendszerrel történő írásáról a [.NET WebSockets rövid útmutatóban](relay-hybrid-connections-dotnet-get-started.md) vagy a [.NET HTTP gyorsútmutatóban](relay-hybrid-connections-http-requests-dotnet-get-started.md)olvashat.

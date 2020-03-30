@@ -9,19 +9,19 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e375c42ee91061c9f558daa9affba875664f777f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774119"
 ---
-A partnerek listájának lekéréséhez futtassa a `Get-AzPeering` parancsot:
+A társviszony-létesítések listájának `Get-AzPeering` leszavazásához futtassa a következő parancsot:
 
 ```powershell
 $directPeering = Get-AzPeering -ResourceGroupName "PeeringResourceGroup" -Name "SeattleDirectPeering"
 ```
 
-Az alábbiakban egy példa választ talál a végpontok közötti kiépítés sikeres befejezésére:
+Az alábbiakban egy példa választ, ha a végpontok között kiépítése sikeresen befejeződött:
 
 ```powershell
     Name                 : SeattleDirectPeering

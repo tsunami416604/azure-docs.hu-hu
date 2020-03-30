@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179789"
 ---
-## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Struktúrameghatározások négyszögletes adatkészletek esetén
-A struktúra szakasza az adatkészletek JSON- **választható** téglalap alakú táblák (a sorok és oszlopok) szakaszt, és a tábla oszlopait gyűjteményét tartalmazza. A struktúra szakasz vagy biztosító informace o typu típuskonverziók vagy az oszlop-hozzárendelések során fogja használni. A következő szakaszok ismertetik részletesebben ezeket a funkciókat. 
+## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Struktúradefiníció megadása téglalap alakú adatkészletekhez
+A JSON adatkészletek struktúraszakasza négyszögletes táblák (sorok & oszlopokkal) **választható** szakasza, és a táblázat oszlopainak gyűjteményét tartalmazza. A struktúraszakaszt a típuskonverziók hoz vagy az oszlopleképezések hez szükséges típusadatok megadására használhatja. A következő szakaszok részletesen ismertetik ezeket a szolgáltatásokat. 
 
 Minden oszlop a következő tulajdonságokat tartalmazza:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| name |Az oszlop neve. |Igen |
-| type |Az oszlop adattípusát. Tekintse meg a típus átalakítások kapcsolatos alábbi szakasz további részletek kapcsolatban, hogy mikor kell hogy típussal kapcsolatos információk megadása |Nem |
-| culture |.NET-alapú kulturális környezet esetén a típus van megadva, és jelenleg .NET Datetime vagy Datetimeoffset használandó. Alapértelmezett érték "en-us". |Nem |
-| format |Formázó karakterlánc típus van megadva, és .NET használandó Datetime vagy Datetimeoffset írja be. |Nem |
+| név |Az oszlop neve. |Igen |
+| type |Az oszlop adattípusa. Lásd az alábbi Típuskonverziók szakaszt, ha további részleteket szeretne megadni a típusadatok megadásához. |Nem |
+| Kultúra |A típus megadása esetén használandó .NET alapú kulturális környezet, amely .NET típusú Datetime vagy Datetimeoffset. Az alapértelmezett az "en-us". |Nem |
+| Formátum |A típus megadása esetén használandó formátumkarakterlánc, amely .NET típusú Datetime vagy Datetimeoffset. |Nem |
 
-A következő minta bemutatja a struktúra részben JSON három oszlopot felhasználói azonosítóját, nevét és lastlogindate tartalmazó tábla.
+A következő minta egy három oszlophasználata, neve és lastlogindate oszlopával rendelkező táblázat JSON-szakaszát mutatja be.
 
 ```json
 "structure": 
@@ -34,31 +34,31 @@ A következő minta bemutatja a struktúra részben JSON három oszlopot felhasz
 ],
 ```
 
-Használja a következő irányelveket mikor "struktúra" információval és tartalmának a **struktúra** szakaszban.
+Kérjük, használja az alábbi irányelveket, hogy mikor kell megadni a "struktúra" információkat, és mit kell tartalmaznia a **szerkezet** részben.
 
-* **A strukturált adatok források** , hogy áruházbeli adatok sémát, és írja be az adatokat mozgatná (forrásokhoz, amilyen az SQL Server, Oracle, az Azure table stb.), a "struktúra" szakaszban kell megadnia, csak akkor, ha azt szeretné, valamint adatokat hajtsa végre az adott forrás oszlop-hozzárendelés a fogadó és a nevük adott oszlopok az oszlopok nem azonosak (lásd az alábbi oszlop leképezése részben részleteit). 
+* Az adatsémát tároló és az adatokat tartalmazó **strukturált adatforrások (például** SQL Server, Oracle, Azure tábla stb.) esetében csak akkor adja meg a "struktúra" szakaszt, ha az adott forrásoszlopok oszlop-hozzárendelését a fogadó adott oszlopaihoz szeretné leképezni, és a nevük nem azonos (lásd az alábbi oszlopleképezési szakasz részleteit). 
   
-    Ahogy említettük, a típussal kapcsolatos információk nem kötelező "struktúra" szakaszban. Strukturált források típussal kapcsolatos információk már rendelkezésre áll az adatkészlet-definícióban az adattárban részeként, ezért műveket nem szabad típussal kapcsolatos információk elvégzését indokló, hogy a "struktúra" szakaszban.
-* **Az olvasási adatforráson (pontosabban az Azure blob) séma** dönthet úgy, hogy adatokat tárolni az adatokat bármely séma vagy típusú adatok tárolására nélkül. Az ilyen típusú adatforrások "struktúra" kell tartalmaznia a következő 2 esetekben:
-  * Szeretne tenni, oszlopleképezés.
-  * Ha az adatkészlet egy forrást a másolási tevékenység, "struktúra" írja be az adatokat megadhatja, és a data factory való átalakításra a fogadóhoz natív típusai használják típusú adatokat. Lásd: [adatok importálására és az Azure-Blobból](../articles/data-factory/v1/data-factory-azure-blob-connector.md) cikkben további információt.
+    Mint már említettük, a típusinformáció nem kötelező a "struktúra" részben. Strukturált források esetén a típusadatok már elérhetők az adatkészlet-definíció részeként az adattárban, ezért ne adjon meg típusadatokat, amikor a "struktúra" szakaszt is tartalmazza.
+* **Az olvasási adatforrások (különösen az Azure blob) sémája** esetén dönthet úgy, hogy az adatoktárolása nélkül tárolja a sémát, vagy írja be az adatokat. Az ilyen típusú adatforrások esetében a következő két esetben kell a "struktúra" szót felvennie:
+  * Oszlopleképezést szeretne végezni.
+  * Ha az adatkészlet egy másolási tevékenység forrása, a "struktúra" mezőben megadhat típusadatokat, és az adatgyár ezt a típusinformációt használja a fogadó natív típusokra való konvertálásához. További információ: [Adatok áthelyezése az Azure Blobba és az Azure Blobból](../articles/data-factory/v1/data-factory-azure-blob-connector.md) cikkből.
 
 ### <a name="supported-net-based-types"></a>Támogatott. NET-alapú típusok
-A Data factory a következő CLS megfelelő .NET-alapú típusú értékeket támogatja "struktúra" írja be az adatokat, amelyek biztosítják az olvasási adatforrásokhoz, például az Azure blob-séma.
+A Data Factory a következő CLS-kompatibilis .NET alapú típusértékeket támogatja a "struktúra" típusadatainak megadásához az olvasási adatforrások, például az Azure blob esetében.
 
 * Int16
 * Int32 
 * Int64
-* Single
+* Egyirányú
 * Double
 * Decimal
-* Byte[]
-* Bool
-* String 
+* Bájt[]
+* Logikai
+* Sztring 
 * Guid
 * Datetime
-* Datetimeoffset
+* Dátumidő-eltolás
 * Időtartomány 
 
-A dátum és idő & Datetimeoffset is megadhat az egyéni dátum/idő karakterlánc-elemzés elősegítése érdekében a "kulturális környezet" és "formátum" karakterlánc. Tekintse meg a minta az alábbi típusa átalakításához.
+A Datetime & Datetimeoffset esetén megadhatja a "kulturális" & a "formátum" karakterláncot is, hogy megkönnyítse az egyéni Datetime karakterlánc elemzését. Lásd alább a típuskonverziót.
 

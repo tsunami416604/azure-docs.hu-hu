@@ -1,24 +1,24 @@
 ---
-title: Legördülő KEZELŐFELÜLETi elem
-description: A cikk a Azure Portal Microsoft. Common. DropDown felhasználói felületi elemét ismerteti. A használatával választható lehetőségek közül választhat a felügyelt alkalmazások telepítésekor.
+title: Legördülő felhasználói felület eleme
+description: A cikk a Microsoft.Common.DropDown UI elem az Azure Portalon. Felügyelt alkalmazás telepítésekor választhat a rendelkezésre álló lehetőségek közül.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: a09f9695c18f368a585dbcd0d1e654dee4adfa03
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652384"
 ---
-# <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown felhasználói felületi elem
+# <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown felhasználói felület eleme
 
-Egy legördülő listával rendelkező kiválasztási vezérlő.
+Kijelölésvezérlő legördülő listával.
 
-## <a name="ui-sample"></a>Felhasználói felület mintája
+## <a name="ui-sample"></a>Felhasználói felület minta
 
-![Microsoft. Common. DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
+![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
 
 ## <a name="schema"></a>Séma
 
@@ -54,12 +54,12 @@ Egy legördülő listával rendelkező kiválasztási vezérlő.
 
 ## <a name="remarks"></a>Megjegyzések
 
-- A `constraints.allowedValues` felirata egy elem megjelenített szövege, amelynek értéke az elem kimeneti értéke, ha ki van választva.
-- Ha meg van adva, az alapértelmezett értéknek a `constraints.allowedValues`ban található címkének kell lennie. Ha nincs megadva, a `constraints.allowedValues` első eleme van kiválasztva. Az alapértelmezett érték **Null**.
-- a `constraints.allowedValues`nak legalább egy elemmel kell rendelkeznie.
-- Ha nem szükséges értéket emulálni, adjon hozzá egy címkével ellátott, `""` (üres karakterlánc) értéket a `constraints.allowedValues`hoz.
+- A címke `constraints.allowedValues` egy elem megjelenítendő szövege, és értéke az elem kimeneti értéke, ha ki van jelölve.
+- Ha meg van adva, az alapértelmezett `constraints.allowedValues`értéknek a címkéjének kell lennie a alkalmazásban. Ha nincs megadva, az `constraints.allowedValues` első elem lesz kiválasztva. Az alapértelmezett érték **null**.
+- `constraints.allowedValues`legalább egy tételnek rendelkeznie kell.
+- Ha nem kötelező értéket szeretne emulálni, adjon `""` hozzá egy elemet `constraints.allowedValues`címkével és értékkel (üres karakterlánc) a alkalmazáshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
-* A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).
+* A felhasználói felületdefiníciók létrehozásának bemutatása a [CreateUiDefinition](create-uidefinition-overview.md)első lépései című témakörben látható.
+* A felhasználói felület elemeinek gyakori tulajdonságainak leírását a [CreateUiDefinition elements](create-uidefinition-elements.md)című témakörben található.

@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.custom: mvc
 ms.openlocfilehash: 73f8d23dcd53b4cbbb3fbd902c789e868c2b021b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769183"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
@@ -26,7 +26,7 @@ Az oktatóanyag elvégzéséhez:
 
 * Telepítse a [Microsoft Azure Storage Explorert](https://storageexplorer.com/). Ezt az eszközt fogja használni a kimeneti kötés által létrehozott üzenetsori üzenetek vizsgálatához.
 
-## <a name="add-binding"></a>Kimeneti kötés hozzáadása
+## <a name="add-an-output-binding"></a><a name="add-binding"></a>Kimeneti kötés hozzáadása
 
 Ebben a szakaszban a portál felhasználói felületén fogja hozzáadni egy üzenetsor-tároló kimeneti kötését a korábban létrehozott függvényhez. Ez a kötés lehetővé teszi, hogy minimális méretű kód írásával hozhasson létre üzenetsori üzeneteket. Nem kell kódot írnia olyan feladatok elvégzéséhez, mint például egy tárolási kapcsolat megnyitása, egy üzenetsor létrehozása vagy egy üzenetsor-hivatkozás beszerzése. Ezeket a feladatokat az Azure Functions futtatókörnyezete és üzenetsorának kimeneti kötése végzi el Ön helyett.
 
@@ -34,7 +34,7 @@ Ebben a szakaszban a portál felhasználói felületén fogja hozzáadni egy üz
 
 1. Válassza ki a korábbi rövid útmutatóban létrehozott függvényt.
 
-1. Válassza az **integráció > új kimenet > Azure Queue Storage**lehetőséget.
+1. Válassza **> Új kimenet integrálása > Azure Queue Storage lehetőséget.**
 
 1. Kattintson a **Kiválasztás** gombra.
 
@@ -66,7 +66,7 @@ Ebben a szakaszban egy olyan kódot fog hozzáadni, amely a kimeneti üzenetsorb
 
 1. Frissítse a függvénykódot a függvény nyelvétől függően:
 
-    # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+    # <a name="c"></a>[C\#](#tab/csharp)
 
     Adjon hozzá egy **outputQueueItem** paramétert a metódus aláírásához, ahogy az alábbi példában is látható.
 
@@ -84,7 +84,7 @@ Ebben a szakaszban egy olyan kódot fog hozzáadni, amely a kimeneti üzenetsorb
     outputQueueItem.Add("Name passed to the function: " + name);
     ```
 
-    # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+    # <a name="javascript"></a>[Javascript](#tab/nodejs)
 
     Olyan kódot adjon hozzá, amely a `context.bindings` objektumon alkalmazza a kimeneti kötést az üzenetsori üzenetek létrehozásához. Ezt a kódot a `context.done` utasítás elé írja be.
 
@@ -153,7 +153,7 @@ Hagyja ki ezt a szakaszt, ha már telepítette és csatlakoztatta a Storage Expl
 
 [!INCLUDE [Clean up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban hozzáadott egy kimeneti kötést egy meglévő függvényhez. További információ a tárolási üzenetsor kötéséről: [Azure Functions – a tárolási üzenetsor kötései](functions-bindings-storage-queue.md).
 

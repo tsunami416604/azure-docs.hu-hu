@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
 ms.openlocfilehash: 5a6dbda59495fccb6b9d53440f408fd4750925b5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75421675"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Automation-runbook létrehozása
@@ -31,9 +31,9 @@ Először hozzunk létre egy runbookot. Az ebben a rövid útmutatóban létreho
 
 1. Kattintson a **FOLYAMATOK AUTOMATIZÁLÁSA** területen lévő **Runbookok** lehetőségre. Megjelenik a runbookok listája.
 
-1. Kattintson a lista tetején található **Runbook létrehozása** gombra.
+1. Kattintson a lista tetején található **Runbook létrehozása** gombra
 
-1. Adja a runbooknak a „Hello-World” **nevet**, és válassza a **PowerShell** lehetőséget a **runbook típusaként**. Kattintson a **Create** (Létrehozás) gombra.
+1. Adja a runbooknak a „Hello-World” **nevet**, és válassza a **PowerShell** lehetőséget a **runbook típusaként**. Kattintson **a Létrehozás gombra.**
 
    ![Adja meg az Automation-runbook információit az oldalon](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
@@ -85,7 +85,7 @@ A runbook közzététele után megjelenik az áttekintő oldal.
 
    ![Runbook tesztfeladat](./media/automation-quickstart-create-runbook/automation-job-page.png)
 
-1. Amikor a **Feladat állapota** **Fut** vagy **Befejezve**, kattintson a **Kimenet** lehetőségre a **Kimenet** panel megnyitásához és a runbook kimenetének megtekintéséhez.
+1. Amikor a **Feladat állapota****Fut** vagy **Befejezve**, kattintson a **Kimenet** lehetőségre a **Kimenet** panel megnyitásához és a runbook kimenetének megtekintéséhez.
 
    ![Runbook tesztfeladat](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
 
@@ -93,7 +93,7 @@ A runbook közzététele után megjelenik az áttekintő oldal.
 
 Ha már nincs rá szükség, törölje a runbookot. Ehhez válassza ki a runbook listából a runbookot, és kattintson a **Törlés** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott, szerkesztett, tesztelt és közzétett egy runbookot, és elindított egy runbookfeladatot. Az Automation-runbookokkal kapcsolatos további információkért folytassa az Automationben létrehozható és használható különböző runbooktípusokkal foglalkozó cikkel.
 

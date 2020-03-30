@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – linuxos virtuálisgép-méretezési csoport létrehozása Azure-sablonnal
+title: Rövid útmutató – Linuxos virtuálisgép-méretezési készlet létrehozása Azure-sablonnal
 description: Ismerje meg, hogyan hozhat létre gyorsan Linux virtuálisgép-méretezési csoportot egy mintaalkalmazást üzembe helyező és automatikus méretezési szabályokat konfiguráló Azure Resource Manager-sablonnal
 author: cynthn
 tags: azure-resource-manager
@@ -9,16 +9,16 @@ ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.openlocfilehash: a2712bc4a758a0cac6fe8357a0d4c14c594978c3
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76279181"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>Rövid útmutató: Linux virtuálisgép-méretezési csoport létrehozása Azure-sablonnal
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hozunk létre, és üzembe helyezünk egy mintaalkalmazást egy Azure Resource Manager-sablon használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -28,7 +28,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 ## <a name="define-a-scale-set-in-a-template"></a>Méretezési csoport meghatározása sablonban
 Az Azure Resource Manager-sablonok segítségével egymáshoz kapcsolódó erőforráscsoportokat helyezhet üzembe. A sablonok a JavaScript Object Notation (JSON) formátumban vannak megírva, továbbá az alkalmazás teljes Azure-infrastruktúra környezetét meghatározzák. Egyetlen sablonban hozhatja létre a virtuálisgép-méretezési csoportot, telepítheti az alkalmazásokat és konfigurálhatja az automatikus méretezési szabályokat. Különféle változók és paraméterek segítségével a sablon többször is felhasználható meglévő méretezési csoportok frissítésére vagy újabbak létrehozására. A sablonokat az Azure Portal, az Azure CLI vagy az Azure PowerShell használatával, illetve folyamatos integrációs (CI) / folyamatos továbbítási (CD) folyamatokkal helyezheti üzembe.
 
-További információ a sablonokról: [Azure Resource Manager Overview (áttekintés](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process)). A JSON szintaxis és tulajdonságok esetében lásd: [Microsoft. számítási/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) sablon referenciája.
+A sablonokról az [Azure Resource Manager áttekintése című témakörben olvashat bővebben.](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) A JSON szintaxisát és tulajdonságait lásd: [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) sablon hivatkozás.
 
 Méretezési csoport sablon alapján való létrehozásához definiálnia kell a megfelelő erőforrásokat. A virtuálisgép-méretezési csoport erőforrástípus alapvető elemei a következők:
 
@@ -98,7 +98,7 @@ A méretezési csoport teszteléséhez telepítsen egy alapszintű webalkalmazá
 
 A [Linux rendszeren futó Python HTTP-kiszolgáló](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) sablon az egyéni szkriptbővítmény segítségével telepíti a [Bottle](https://bottlepy.org/docs/dev/) Python webes keretrendszert és egy egyszerű HTTP-kiszolgálót. 
 
-A **fileUris**alatt két szkript van meghatározva - az *installserver.sh* és a *workserver.py*. A rendszer letölti a fájlokat a GitHubról, majd a *commandToExecute* a `bash installserver.sh` fájlt futtatja az alkalmazás letöltéséhez és telepítéséhez:
+A **fileUris** - *installserver.sh*és *a workserver.py*két parancsfájlt határoz meg. A rendszer letölti a fájlokat a GitHubról, majd a *commandToExecute* a `bash installserver.sh` fájlt futtatja az alkalmazás letöltéséhez és telepítéséhez:
 
 ```json
 "extensionProfile": {
@@ -153,7 +153,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-Adja meg a terheléselosztó nyilvános IP-címét egy webböngészőben a következő formátumban *: http:\//publicIpAddress: 9000/do_work*. A terheléselosztó az egyik virtuálisgép-példányra terjeszti a forgalmat, ahogy az a következő példában látható:
+Adja meg a terheléselosztó nyilvános IP-címét a webböngészőben *a következő formátumban: http:\//publicIpAddress:9000/do_work*. A terheléselosztó az egyik virtuálisgép-példányra terjeszti a forgalmat, ahogy az a következő példában látható:
 
 ![Alapértelmezett weboldal az NGINX-ben](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 
@@ -166,7 +166,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útbemutatóban egy Linux rendszerű méretezési csoportot hoztunk létre egy Azure-sablonnal, valamint az egyéni szkriptbővítménnyel egy alapszintű Python-webkiszolgálót telepítettünk a VM-példányokon. Ha bővebb információra van szüksége, lépjen tovább az Azure-beli virtuálisgép-méretezési csoportok létrehozásáról és kezeléséről szóló oktatóanyagra.
 
 > [!div class="nextstepaction"]

@@ -1,24 +1,24 @@
 ---
-title: UserNameTextBox FELHASZNÁLÓIFELÜLET-elem
-description: Ismerteti a Microsoft. számítás. UserNameTextBox felhasználói felületi elemét Azure Portal. Lehetővé teszi a felhasználók számára a Windows-vagy Linux-felhasználónevek megadását.
+title: UserNameTextBox ui elem
+description: A cikk a Microsoft.Compute.UserNameTextBox UI elemét ismerteti az Azure Portalon. Lehetővé teszi a felhasználók számára, hogy Windows vagy Linux felhasználói neveket adjanak meg.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: c7544ae7d872a64547cb6c57ce8af9a09fc6c3d8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651903"
 ---
-# <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft. számítás. UserNameTextBox FELHASZNÁLÓIFELÜLET-elem
+# <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft.Compute.UserNameTextBox felhasználói felület
 
-Egy szövegmező vezérlőelem a Windows-és Linux-felhasználónevek beépített ellenőrzésével.
+Szövegdoboz-vezérlő beépített érvényesítéssel Windows és Linux felhasználói nevekhez.
 
-## <a name="ui-sample"></a>Felhasználói felület mintája
+## <a name="ui-sample"></a>Felhasználói felület minta
 
-![Microsoft. számítás. UserNameTextBox](./media/managed-application-elements/microsoft.compute.usernametextbox.png)
+![Microsoft.Compute.UserNameTextBox](./media/managed-application-elements/microsoft.compute.usernametextbox.png)
 
 ## <a name="schema"></a>Séma
 
@@ -47,13 +47,13 @@ Egy szövegmező vezérlőelem a Windows-és Linux-felhasználónevek beépítet
 
 ## <a name="remarks"></a>Megjegyzések
 
-- Ha a `constraints.required` értéke **true (igaz**), akkor a szövegmezőnek rendelkeznie kell egy, a sikeres ellenőrzéshez szükséges értékkel. Az alapértelmezett érték **true (igaz**).
-- `osPlatform` meg kell adni, és lehet **Windows** vagy **Linux**.
-- `constraints.regex` egy JavaScript reguláris kifejezés mintája. Ha meg van adva, akkor a szövegmező értékének meg kell egyeznie a sikeres ellenőrzéshez szükséges mintázattal. Az alapértelmezett érték **Null**.
-- `constraints.validationMessage` egy karakterlánc, amely akkor jeleníthető meg, ha a szövegmező értéke meghiúsul a `constraints.regex`által megadott ellenőrzés során. Ha nincs megadva, a rendszer a szövegmező beépített érvényesítési üzeneteit használja. Az alapértelmezett érték **Null**.
-- Ez az elem beépített érvényesítéssel rendelkezik, amely a `osPlatform`számára megadott értéken alapul. A beépített érvényesítést egy egyéni reguláris kifejezéssel együtt is használhatja. Ha a `constraints.regex` értéke meg van adva, akkor a beépített és az egyéni érvényesítés is aktiválódik.
+- Ha `constraints.required` értéke **igaz,** akkor a szövegdoboznak kell egy értékkel a sikeres érvényesítéshez. Az alapértelmezett érték **igaz**.
+- `osPlatform`meg kell adni, és lehet **Windows** vagy **Linux**.
+- `constraints.regex`egy JavaScript reguláris kifejezésminta. Ha meg van adva, akkor a szövegdoboz értékének meg kell egyeznie a mintával a sikeres érvényesítéshez. Az alapértelmezett érték **null**.
+- `constraints.validationMessage`egy karakterlánc, amely akkor jelenik meg, ha a `constraints.regex`szövegdoboz értéke nem felel meg a . Ha nincs megadva, akkor a program a szövegdoboz beépített érvényesítési üzeneteit használja. Az alapértelmezett érték **null**.
+- Ez az elem beépített érvényesítéssel rendelkezik, amely `osPlatform`a számára megadott értéken alapul. A beépített ellenőrzés egyéni reguláris kifejezéssel együtt használható. Ha meg `constraints.regex` van adva egy érték, akkor a beépített és az egyéni érvényesítés ek is aktiválódnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
-* A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).
+* A felhasználói felületdefiníciók létrehozásának bemutatása a [CreateUiDefinition](create-uidefinition-overview.md)első lépései című témakörben látható.
+* A felhasználói felület elemeinek gyakori tulajdonságainak leírását a [CreateUiDefinition elements](create-uidefinition-elements.md)című témakörben található.

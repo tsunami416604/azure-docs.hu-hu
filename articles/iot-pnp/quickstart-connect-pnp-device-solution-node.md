@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play előzetes verziójú eszköz használata | Microsoft Docs
-description: A Node. js használatával csatlakozhat egy IoT Plug and Play előnézeti eszközhöz, amely az Azure IoT-megoldáshoz van csatlakoztatva.
+title: Az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play előzetes verziójú eszközzel való együttműködés | Microsoft dokumentumok
+description: A Node.js használatával csatlakozhat az Azure IoT-megoldásához csatlakoztatott IoT Plug and Play előzetes verziójához, és használhatja azt.
 author: miagdp
 ms.author: miag
 ms.date: 12/27/2019
@@ -9,21 +9,21 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 9962763e647faddc5a2179f304aeb3fa8ca256e8
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75550740"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Rövid útmutató: a megoldáshoz csatlakoztatott IoT Plug and Play előnézeti eszköz használata (node. js)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Rövid útmutató: A megoldáshoz csatlakoztatott IoT Plug and Play előzetes verziójú eszközzel (Node.js)
 
 [!INCLUDE [iot-pnp-quickstarts-3-selector.md](../../includes/iot-pnp-quickstarts-3-selector.md)]
 
-A IoT Plug and Play Preview leegyszerűsíti a IoT azáltal, hogy lehetővé teszi, hogy a mögöttes eszköz megvalósításának ismerete nélkül kommunikáljon az eszköz képességeivel. Ez a rövid útmutató bemutatja, hogyan használhatja a Node. js-t a megoldáshoz kapcsolódó IoT Plug and Play eszköz csatlakoztatásához és vezérléséhez.
+Az IoT Plug and Play Preview leegyszerűsíti az IoT-t azáltal, hogy lehetővé teszi az eszköz képességeinek kommunikálását az eszköz megvalósításának ismerete nélkül. Ez a rövid útmutató bemutatja, hogyan csatlakozhat a Node.js-hez a megoldáshoz csatlakoztatott IoT Plug and Play eszközhöz, és hogyan vezérelheti azt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez a fejlesztői gépen a Node. js fájlra van szükség. A [NodeJS.org](https://nodejs.org)több platformon is letöltheti a legújabb ajánlott verziót.
+A rövid útmutató végrehajtásához szüksége van a node.js a fejlesztői gépen. Letöltheti a legújabb ajánlott verziót több platformra [a nodejs.org.](https://nodejs.org)
 
 A Node.js aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői gépen:
 
@@ -35,29 +35,29 @@ node --version
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-Futtassa a következő parancsot a hub _IoT hub-beli kapcsolódási karakterláncának_ lekéréséhez (jegyezze fel később a használatra):
+Futtassa a következő parancsot az _IoT hub kapcsolati karakterláncának_ lekérnia a hubhoz (megjegyzés későbbi használatra):
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 ```
 
-## <a name="run-the-sample-device"></a>A minta eszköz futtatása
+## <a name="run-the-sample-device"></a>A mintaeszköz futtatása
 
-Ebben a rövid útmutatóban egy, a Node. js-ben írt minta környezeti érzékelőt használ a IoT Plug and Play eszközként. Az alábbi utasítások bemutatják, hogyan telepítheti és futtathatja az eszközt:
+Ebben a rövid útmutatóban a Node.js-ben írt minta környezeti érzékelőt használhatja IoT Plug and Play eszközként. Az alábbi utasítások bemutatják, hogyan telepítheti és futtathatja az eszközt:
 
-1. Nyisson meg egy terminált az Ön által választott könyvtárban. Futtassa a következő parancsot a Node. js GitHub-adattárhoz [tartozó Azure IoT-minták](https://github.com/azure-samples/azure-iot-samples-node) ezen a helyen történő klónozásához:
+1. Nyisson meg egy terminálablakot az Ön által választott könyvtárban. A következő parancs végrehajtása az [Azure IoT-minták klónozásához a Node.js](https://github.com/azure-samples/azure-iot-samples-node) GitHub-tárházhoz erre a helyre:
 
     ```cmd/sh
     git clone https://github.com/azure-samples/azure-iot-samples-node
     ```
 
-1. A rendszer most ezt a terminált fogja használni az _eszköz_ -terminálként. Lépjen a klónozott adattár mappájába, és lépjen a **/Azure-IOT-Samples-Node/Digital-Twins/QuickStarts/Device** mappára. Telepítse az összes függőséget a következő parancs futtatásával:
+1. Ez a terminálablak lesz az _eszköz_ terminálja. Nyissa meg a klónozott tárház mappáját, és keresse meg az **/azure-iot-samples-node/digital-twins/Quickstarts/Device** mappát. Telepítse az összes függőséget a következő parancs futtatásával:
 
     ```cmd/sh
     npm install
     ```
 
-1. Az _eszköz-kapcsolatok karakterláncának_konfigurálása:
+1. Az _eszköz kapcsolati karakterláncának konfigurálása_:
 
     ```cmd/sh
     set DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
@@ -69,41 +69,41 @@ Ebben a rövid útmutatóban egy, a Node. js-ben írt minta környezeti érzéke
     node sample_device.js
     ```
 
-1. Üzenet jelenik meg, amely közli, hogy az eszköz elküldött néhány információt, és online jelentett. Ez azt jelzi, hogy az eszköz megkezdte a telemetria adatok küldését a központba, és most már készen áll a parancsok és a tulajdonságok frissítéseinek fogadására. Ne zárjuk be ezt a terminált, ezért később meg kell győződnie arról, hogy a szolgáltatási minták is működőképesek.
+1. Olyan üzenetek jelennek meg, amelyek szerint az eszköz bizonyos információkat küldött, és az interneten jelentette magát. Ez azt jelzi, hogy az eszköz megkezdte a telemetriai adatok küldését a hubra, és most már készen áll a parancsok és a tulajdonságfrissítések fogadására. Ne zárja be ezt a terminált, később szüksége lesz rá, hogy ellenőrizze, hogy a szolgáltatásminták is működtek.Don't close this terminal, you'll need it later to confirm the service samples also worked.
 
-## <a name="run-the-sample-solution"></a>A minta megoldás futtatása
+## <a name="run-the-sample-solution"></a>A mintamegoldás futtatása
 
-Ebben a rövid útmutatóban egy minta IoT megoldást használ a Node. js-ben, hogy együttműködjön a minta eszközzel.
+Ebben a rövid útmutatóban egy minta IoT-megoldás node.js a mintaeszköz rel.
 
-1. Nyisson meg egy másik Terminálablak (ez lesz a _szolgáltatás_ terminálja). Lépjen a klónozott adattár mappájába, és lépjen a **/Azure-IOT-Samples-Node/Digital-Twins/QuickStarts/Service** mappára. Telepítse az összes függőséget a következő parancs futtatásával:
+1. Nyisson meg egy másik _service_ terminálablakot (ez lesz a szervizterminálja). Nyissa meg a klónozott tárház mappáját, és keresse meg az **/azure-iot-samples-node/digital-twins/Quickstarts/Service** mappát. Telepítse az összes függőséget a következő parancs futtatásával:
 
     ```cmd/sh
     npm install
     ```
 
-1. Konfigurálja az _IoT hub kapcsolati karakterláncát_ , hogy a szolgáltatás csatlakozhasson hozzá:
+1. Konfigurálja az _IoT hub kapcsolati karakterláncát_ úgy, hogy a szolgáltatás csatlakozhasson hozzá:
 
     ```cmd/sh
     set IOTHUB_CONNECTION_STRING=<YourIoTHubConnectionString>
     ```
 
-### <a name="read-a-property"></a>Tulajdonság beolvasása
+### <a name="read-a-property"></a>Ingatlan olvasása
 
-1. Amikor csatlakoztatta az _eszközt_ a termináljában, a következő üzenet jelenik meg, amely az online állapotot jelzi:
+1. Amikor csatlakoztatta az _eszközt_ a termináljához, a következő üzenet jelenik meg, amely jelzi az online állapotát:
 
     ```cmd/sh
     reported state property as online
     ```
 
-1. A **/Azure-IOT-Samples-Node/Digital-Twins/QuickStarts/Service** mappában Nyissa meg a **get_digital_twin. js**fájlt. Cserélje le az `<DEVICE_ID_GOES_HERE>` helyőrzőt az eszköz azonosítójával, és mentse a fájlt.
+1. Az **/azure-iot-samples-node/digital-twins/Quickstarts/Service** mappában nyissa meg a **get_digital_twin.js**fájlt. Cserélje `<DEVICE_ID_GOES_HERE>` le a helyőrzőt az eszközazonosítóra, és mentse a fájlt.
 
-1. Nyissa meg a _szolgáltatás_ terminálját, és a következő paranccsal futtassa az eszköz adatainak olvasásához használt mintát:
+1. Menjen a _service_ szervizterminálra, és a következő paranccsal futtassa a mintát az eszközadatok olvasásához:
 
     ```cmd/sh
     node get_digital_twin.js
     ```
 
-1. A _szolgáltatás_ -terminál kimenetében görgessen a `environmentalSensor` összetevőhöz. Láthatja, hogy a `state` tulajdonságot _online_jelentették:
+1. A _szervizterminál_ kimenetében görgessen az `environmentalSensor` összetevőhöz. Láthatja, `state` hogy az ingatlan _online_szolgáltatásként lett jelentve:
 
     ```JSON
     "environmentalSensor": {
@@ -120,9 +120,9 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használ a Node. js-ben, h
 
 ### <a name="update-a-writable-property"></a>Írható tulajdonság frissítése
 
-1. Nyissa meg a **update_digital_twin_property. js**fájlt.
+1. Nyissa meg a fájlt **update_digital_twin_property.js**.
 
-1. A fájl elején található a nagybetűs helyőrzővel definiált állandók halmaza. Cserélje le a `<DEVICE_ID_GOES_HERE>` helyőrzőt a tényleges eszköz azonosítójával, frissítse a hátralévő konstansokat a következő értékekkel, és mentse a fájlt:
+1. A fájl elején a nagybetűs helyőrzőkkel definiált állandók halmaza van. Cserélje `<DEVICE_ID_GOES_HERE>` le a helyőrzőt a tényleges eszközazonosítóra, frissítse a fennmaradó állandókat a következő értékekkel, és mentse a fájlt:
 
     ```javascript
     const interfaceInstanceName = 'environmentalSensor';
@@ -130,13 +130,13 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használ a Node. js-ben, h
     const propertyValue = 42;
     ```
 
-1. Nyissa meg a _szolgáltatás_ terminálját, és a következő paranccsal futtassa a (z) tulajdonság frissítéséhez használandó mintát:
+1. Lépjen a _service_ szervizterminálra, és a következő paranccsal futtassa a mintát a tulajdonság frissítéséhez:
 
     ```cmd/sh
     node update_digital_twin_property.js
     ```
 
-1. A _szolgáltatás_ -terminál kimenete a frissített eszköz információit jeleníti meg. Görgessen a `environmentalSensor` összetevőhöz, és tekintse meg az új fényerő 42-es értékét.
+1. A _szolgáltatásterminál_ kimenete a frissített eszközadatokat jeleníti meg. Görgessen `environmentalSensor` az összetevőhöz az új 42-es fényerőérték megtekintéséhez.
 
     ```json
     "environmentalSensor": {
@@ -162,13 +162,13 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használ a Node. js-ben, h
     Received an update for brightness: 42
     updated the property
     ```
-2. Lépjen vissza a _szolgáltatás_ -terminálhoz, és futtassa az alábbi parancsot az eszköz adatainak újbóli beszerzéséhez, hogy megbizonyosodjon róla, hogy a tulajdonság frissítve lett.
+2. Lépjen vissza _service_ a szervizterminálhoz, és futtassa az alábbi parancsot az eszközadatok újbóli levezetéséhez, hogy ellenőrizze a tulajdonság frissítésének megerősítését.
     
     ```cmd/sh
     node get_digital_twin.js
     ```
 
-3. A _szolgáltatás_ -terminál kimenetében, a `environmentalSensor` összetevő alatt megjelenik a frissített fényerő értékének jelentése. Megjegyzés: eltarthat egy ideig, amíg az eszköz befejezi a frissítést. Ezt a lépést csak akkor ismételheti meg, ha az eszköz ténylegesen feldolgozta a tulajdonság frissítését.
+3. A _szolgáltatásterminál_ kimenetében `environmentalSensor` az összetevő alatt láthatja a frissített fényerő-értéket. Megjegyzés: eltarthat egy ideig, amíg az eszköz befejezi a frissítést. Ezt a lépést addig ismételheti, amíg az eszköz ténylegesen fel nem dolgozta a tulajdonságfrissítést.
     
     ```json
     "environmentalSensor": {
@@ -198,9 +198,9 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használ a Node. js-ben, h
 
 ### <a name="invoke-a-command"></a>Parancs meghívása
 
-1. Nyissa meg a **invoke_command. js**fájlt.
+1. Nyissa meg a **fájlt invoke_command.js**.
 
-1. A fájl elején cserélje le a `<DEVICE_ID_GOES_HERE>` helyőrzőt a tényleges eszköz azonosítójával. Frissítse a fennmaradó állandókat a következő értékekkel, majd mentse a fájlt:
+1. A fájl elején cserélje le `<DEVICE_ID_GOES_HERE>` a helyőrzőt a tényleges eszközazonosítóra. Frissítse a fennmaradó állandókat a következő értékekkel, majd mentse a fájlt:
 
     ```javascript
     const interfaceInstanceName = 'environmentalSensor';
@@ -208,13 +208,13 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használ a Node. js-ben, h
     const commandArgument = '<For the environmental sensor, this value does not matter. Any string will do.>'; 
     ```
 
-1. Nyissa meg a _szolgáltatás_ terminálját. A következő parancs használatával futtassa a mintát a parancs meghívásához:
+1. Menjen a _service_ szervizterminálhoz. A parancs meghívásához a következő paranccsal futtatja a mintát:
 
     ```cmd/sh
     node invoke_command.js
     ```
 
-1. A _szolgáltatás_ -terminál kimenetében a következő megerősítésnek kell megjelennie:
+1. A _szolgáltatásterminál_ kimenetének a következő visszaigazolást kell mutatnia:
 
     ```cmd/sh
     invoking command blink on interface instanceenvironmentalSensor for device <device ID>...
@@ -226,7 +226,7 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használ a Node. js-ben, h
     }
     ```
 
-1. Nyissa meg az _eszköz_ terminálját, és láthatja, hogy a parancs meg lett ismerve:
+1. Menj az _eszköz_ terminál, látod a parancsot elismerte:
 
     ```cmd/sh
     received command: blink for interfaceInstance: environmentalSensor
@@ -235,9 +235,9 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használ a Node. js-ben, h
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztatható egy IoT Plug and Play-eszköz egy IoT-megoldáshoz. Ha többet szeretne megtudni arról, hogyan hozhat létre olyan megoldást, amely együttműködik a IoT Plug and Play eszközökkel, tekintse meg a következőt:
+Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play eszközt egy IoT-megoldáshoz. Ha többet szeretne tudni arról, hogyan hozhat létre olyan megoldást, amely kölcsönhatásba lép az IoT Plug and Play eszközeivel, olvassa el a következő témaköröket:
 
 > [!div class="nextstepaction"]
-> [Útmutató: Kapcsolódás az eszközhöz](howto-develop-solution.md)
+> [Útmutató: Eszközhöz való csatlakozás és az eszközzel való interakció](howto-develop-solution.md)

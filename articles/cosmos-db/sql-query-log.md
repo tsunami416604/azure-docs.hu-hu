@@ -1,6 +1,6 @@
 ---
-title: Bejelentkezés Azure Cosmos DB lekérdezés nyelve
-description: További információ a Azure Cosmos DB LOG SQL System függvényéről a megadott numerikus kifejezés természetes alapú logaritmusának visszaadásához
+title: LOG az Azure Cosmos DB lekérdezési nyelvében
+description: Ismerje meg a LOG SQL rendszer függvényaz Azure Cosmos DB a megadott numerikus kifejezés természetes logaritmusának visszaadásához
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9213ef03f383dec7109652246411fac154b4a7f9
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302508"
 ---
-# <a name="log-azure-cosmos-db"></a>NAPLÓ (Azure Cosmos DB)
- A megadott numerikus kifejezés természetes alapú logaritmusát adja vissza.  
+# <a name="log-azure-cosmos-db"></a>LOG (Azure Cosmos DB)
+ A megadott numerikus kifejezés természetes logaritmusát számítja ki.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,44 +26,44 @@ LOG (<numeric_expr> [, <base>])
 ## <a name="arguments"></a>Argumentumok
   
 *numeric_expr*  
-   A numerikus kifejezés.  
+   Ez egy numerikus kifejezés.  
   
-*alap*  
-   Olyan nem kötelező numerikus argumentum, amely beállítja a logaritmus alapjának a.  
+*base*  
+   Nem kötelező numerikus argumentum, amely a logaritmus alapját állítja be.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  A numerikus kifejezést ad vissza.  
+  Numerikus kifejezést ad eredményül.  
   
 ## <a name="remarks"></a>Megjegyzések
   
-  Alapértelmezés szerint LOG() a természetes alapú logaritmusát adja vissza. A logaritmus alapja a választható alap paraméter használatával módosíthatja egy másik értéket.  
+  Alapértelmezés szerint a LOG() függvény a természetes logaritmust adja vissza. A logaritmus alapját módosíthatja egy másik értékre a választható alapparaméter használatával.  
   
-  A természetes logaritmus az **e**-Base logaritmusa, ahol az **e** egy, körülbelül 2,718281828-as irracionális konstans.  
+  A természetes logaritmus az **e**alap logaritmusa, ahol **e** egy irracionális állandó, amely körülbelül 2,718281828.  
   
-  Az exponenciális egy szám természetes algoritmusát az a szám maga: LOG (EXP (n)) = n. Az exponenciális egy szám természetes alapú logaritmus alapja az a szám, és maga: EXP (napló (n)) = n.  
+  Egy szám exponenciális természetes logaritmusa maga a szám: LOG( EXP( n ) = n. És egy szám természetes logaritmusának exponenciális száma maga a szám: EXP( LOG( n ) ) = n.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa egy változó deklarálja, és a megadott változó (10) alapú logaritmus értékét adja vissza.  
+  A következő példa deklarál egy változót, és a megadott változó (10) logaritmusértékét adja vissza.  
   
 ```sql
 SELECT LOG(10) AS log  
 ```  
   
- Íme az eredményhalmaz.  
+ Itt van az eredményhalmaz.  
   
 ```json
 [{log: 2.3025850929940459}]  
 ```  
   
- Az alábbi példa kiszámítja egy szám kitevőjét `LOG`.  
+ A következő példa `LOG` egy szám kitevőjének kitevője.  
   
 ```sql
 SELECT EXP(LOG(10)) AS expLog  
 ```  
   
- Íme az eredményhalmaz.  
+ Itt van az eredményhalmaz.  
   
 ```json
 [{expLog: 10.000000000000002}]  
@@ -71,10 +71,10 @@ SELECT EXP(LOG(10)) AS expLog
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfüggvény nem fogja használni az indexet.
+Ez a rendszerfunkció nem használja az indexet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Matematikai függvények Az Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: az Azure cache használata a Node. js-sel rendelkező Redis'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure cache-t a Node. js és a node_redis Redis.
+title: 'Rövid útmutató: Azure-gyorsítótár használata a Redis-hez a Node.js fájllal'
+description: Ebben a rövid útmutatóban megtudhatja, hogyan használhatja az Azure Cache for Redis node.js és node_redis.
 author: yegu-ms
 ms.service: cache
 ms.devlang: nodejs
@@ -9,20 +9,20 @@ ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.openlocfilehash: 07e2d6f174e5af4af9bdcac73dc74f5cf061ed41
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78300485"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Gyors útmutató: az Azure cache használata a Node. js-sel rendelkező Redis
+# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Rövid útmutató: Azure-gyorsítótár használata a Redis-hez a Node.js fájllal
 
-Ebben a rövid útmutatóban egy Node. js-alkalmazásba beépítheti az Azure cache-t, hogy hozzáférhessen egy olyan biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető Redis.
+Ebben a rövid útmutatóban a Redis-gyorsítótárat egy Node.js alkalmazásba építheti be, hogy hozzáférjen egy biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-- [node_redis](https://github.com/mranney/node_redis), amelyet a paranccsal telepíthet a `npm install redis`használatával. 
+- [node_redis](https://github.com/mranney/node_redis), amelyet a `npm install redis`paranccsal telepíthet. 
 
 Az egyéb Node.js-ügyfeleket használó példákért tekintse meg az egyes Node.js-ügyfelek dokumentációját a [Node.js Redis-ügyfeleket](https://redis.io/clients#nodejs) felsoroló weblapon.
 
@@ -41,7 +41,7 @@ set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ## <a name="connect-to-the-cache"></a>Csatlakozás a gyorsítótárhoz
 
-[Node_redis](https://github.com/mranney/node_redis) legújabb buildek TÁMOGATJÁK az SSL-t használó Redis Azure cache-hez való csatlakozásának támogatását. Az alábbi példa bemutatja, hogyan kapcsolódhat az Azure cache-hez a Redis-hez a 6380-es SSL-végpont használatával. 
+A [node_redis](https://github.com/mranney/node_redis) legújabb buildjei támogatást nyújtanak az Azure Cache for Redis SSL használatával történő csatlakoztatásához. A következő példa bemutatja, hogyan csatlakozhat az Azure Cache for Redis az SSL-végpont 6380 használatával. 
 
 ```js
 var redis = require("redis");
@@ -55,9 +55,9 @@ Ne hozzon létre új kapcsolatokat a kód minden műveletéhez. Ehelyett a lehet
 
 ## <a name="create-a-new-nodejs-app"></a>Új Node.js-alkalmazás létrehozása
 
-Hozzon létre egy *redistest.js* nevű új szkriptfájlt. A szükséges csomagok telepítéséhez használja a `npm install redis bluebird` parancsot.
+Hozzon létre egy *redistest.js* nevű új szkriptfájlt. A parancs `npm install redis bluebird` segítségével telepítse a szükséges csomagokat.
 
-Adja hozzá a következő példa JavaScriptet a fájlhoz. Ez a kód azt mutatja be, hogyan csatlakozhat egy Azure cache-hez a Redis-példányhoz a gyorsítótár állomásneve és a legfontosabb környezeti változók használatával. A kód emellett tárolja és lekéri gyorsítótár egyik sztringértékét. A rendszer a `PING` és a `CLIENT LIST` parancsot is végrehajtja. További példák a Redis használatára a [node_redis](https://github.com/mranney/node_redis) ügyféllel: [https://redis.js.org/](https://redis.js.org/).
+Adja hozzá a következő példa JavaScriptet a fájlhoz. Ez a kód bemutatja, hogyan csatlakozhat egy Azure-gyorsítótárredis-példányhoz a gyorsítótár-állomásnév és a kulcsfontosságú környezeti változók használatával. A kód emellett tárolja és lekéri gyorsítótár egyik sztringértékét. A rendszer a `PING` és a `CLIENT LIST` parancsot is végrehajtja. További példák a Redis használatára a [node_redis](https://github.com/mranney/node_redis) ügyféllel: [https://redis.js.org/](https://redis.js.org/).
 
 ```js
 var redis = require("redis");
@@ -107,7 +107,7 @@ node redistest.js
 
 Az alábbi példában a `Message` kulcsot láthatja. A kulcsnak korábban gyorsítótárazott értéke volt, amely az Azure Portalon, a Redis Console használatával lett beállítva. Az alkalmazás frissítette ezt a gyorsítótárazott értéket. Az alkalmazás továbbá végrehajtotta a `PING` és a `CLIENT LIST` parancsot.
 
-![Redis Cache alkalmazás befejeződött](./media/cache-nodejs-get-started/redis-cache-app-complete.png)
+![A Redis Cache alkalmazás befejeződött](./media/cache-nodejs-get-started/redis-cache-app-complete.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -116,22 +116,22 @@ Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és �
 Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díjak elkerülése érdekében törölheti az ebben a rövid útmutatóban létrehozott Azure-erőforrásokat. 
 
 > [!IMPORTANT]
-> Az erőforráscsoport törlése nem vonható vissza; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
+> Az erőforráscsoport törlése nem visszaállítható; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
 >
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 
-A **szűrés név alapján** szövegmezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az erőforráscsoport az eredmény listán válassza a **...** , majd az **erőforráscsoport törlése**elemet.
+A **Név szerint szűrés** mezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az erőforráscsoportban az eredménylistában válassza **a ...** majd **az Erőforráscsoport törlése**lehetőséget.
 
 ![Azure-erőforráscsoport törlése](./media/cache-nodejs-get-started/redis-cache-delete-resource-group.png)
 
-A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. Adja meg a megerősíteni kívánt erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
+A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. Írja be a megerősítendő erőforráscsoport nevét, és válassza a **Törlés gombot.**
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t a Redis egy Node. js-alkalmazásból. Folytassa a következő rövid útmutatóval, hogy az Azure cache-t használja a Redis egy ASP.NET-webalkalmazással.
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure Cache for Redis-t egy Node.js alkalmazásból. Folytassa a következő rövid útmutatót az Azure Cache for Redis használatával egy ASP.NET webalkalmazással.
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egy ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.](./cache-web-app-howto.md)
+> [Hozzon létre egy ASP.NET webalkalmazást, amely egy Azure-gyorsítótárat használ a Redis számára.](./cache-web-app-howto.md)

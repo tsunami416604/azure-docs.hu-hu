@@ -1,15 +1,15 @@
 ---
-title: Gyors útmutató – "Helló világ!" alkalmazás üzembe helyezése az Azure Service Fabric Meshban
+title: Rövid útmutató – A Hello World telepítése az Azure Service Fabric Mesh szolgáltatásba
 description: Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe Service Fabric Mesh-alkalmazást az Azure Service Fabric Meshben.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
 ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75458972"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Rövid útmutató: A Hello World üzembe helyezése a Service Fabric Meshben
@@ -47,9 +47,9 @@ Hozza létre az alkalmazást az erőforráscsoportban az `az mesh deployment cre
 az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json --parameters "{'location': {'value': 'eastus'}}" 
 ```
 
-Az előző parancs egy Linux-alkalmazást telepít [Linux. JSON sablonnal](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json). Ha Windows-alkalmazást szeretne telepíteni, használja a [Windows. JSON sablont](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json). A Windows-tárolórendszerképek nagyobbak, mint a Linux-tárolórendszerképek, ezért több ideig tarthat az üzembe helyezésük.
+Az előző parancs [linux.json sablonnal](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json)telepít egy Linux-alkalmazást. Ha Windows-alkalmazást szeretne telepíteni, használja a [windows.json sablont.](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json) A Windows-tárolórendszerképek nagyobbak, mint a Linux-tárolórendszerképek, ezért több ideig tarthat az üzembe helyezésük.
 
-Ez a parancs létrehoz egy JSON-kódrészletet, amely az alábbiakban látható. A JSON-kimenet ```outputs``` szakaszában másolja a ```publicIPAddress``` tulajdonságot.
+Ez a parancs az alábbiakban látható JSON-kódrészletet hoz létre. A ```outputs``` JSON kimenet szakasza alatt ```publicIPAddress``` másolja a tulajdonságot.
 
 ```json
 "outputs": {
@@ -60,7 +60,7 @@ Ez a parancs létrehoz egy JSON-kódrészletet, amely az alábbiakban látható.
 }
 ```
 
-Ezek az információk az ARM-sablon ```outputs``` szakasza alapján származnak. Ahogy az az alábbi ábrán is látható, ez a szakasz az átjáró erőforrására hivatkozik a nyilvános IP-cím beolvasásához. 
+Ez az információ ```outputs``` az ARM sablon szakaszából származik. Az alábbiakban látható, ez a szakasz hivatkozik a Gateway erőforrás lekérése a nyilvános IP-címet. 
 
 ```json
   "outputs": {
@@ -93,13 +93,13 @@ az mesh code-package-log get --resource-group myResourceGroup --application-name
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha készen áll az alkalmazás törlésére, az az [Group delete][az-group-delete] paranccsal távolítsa el az erőforráscsoportot és a benne lévő alkalmazás-és hálózati erőforrásokat.
+Amikor készen áll az alkalmazás törlésére, futtassa az [az group delete][az-group-delete] parancsot az erőforráscsoport és az abban lévő alkalmazás és hálózati erőforrások eltávolításához.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Service Fabric Mesh-alkalmazások létrehozásáról és üzembe helyezésével kapcsolatos további információért lépjen tovább az oktatóanyagra.
 > [!div class="nextstepaction"]

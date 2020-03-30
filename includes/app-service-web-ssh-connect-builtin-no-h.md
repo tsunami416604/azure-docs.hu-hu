@@ -9,16 +9,16 @@ ms.date: 03/29/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: ef19abf1da1bb2fb94109f614e7ebb0e208c1e16
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179596"
 ---
 [!INCLUDE [Open SSH session in browser](app-service-web-ssh-connect-no-h.md)]
 
 > [!NOTE]
-> Kívül végrehajtott módosítások a */home* directory maga a tároló tárolja, és újra kell indítani az alkalmazást nem meghaladóan.
+> A */home* könyvtáron kívül végzett módosításokat a rendszer magában a tárolóban tárolja, és nem marad meg az alkalmazás újraindítása után.
 >
 
-Nyisson meg egy távoli SSH-munkamenetet a helyi gépen, lásd: [nyissa meg a SSH munkamenetet a távoli rendszerhéj](../articles/app-service/containers/app-service-linux-ssh-support.md#open-ssh-session-from-remote-shell).
+Ha távoli SSH-munkamenetet szeretne megnyitni a helyi számítógépről, olvassa el [az SSH-munkamenet megnyitása távoli rendszerhéjból című témakört.](../articles/app-service/containers/app-service-linux-ssh-support.md#open-ssh-session-from-remote-shell)
