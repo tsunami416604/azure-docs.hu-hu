@@ -1,30 +1,30 @@
 ---
-title: Python fejlesztői referenciája Azure Functions
-description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használatával
+title: Python-fejlesztői referencia az Azure Functionshez
+description: Ismerje meg, hogyan fejleszthet funkciókat a Pythonnal
 ms.topic: article
 ms.date: 12/13/2019
 ms.openlocfilehash: 30f40db33b6aa8b40202c023f301265565257180
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276685"
 ---
-# <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
+# <a name="azure-functions-python-developer-guide"></a>Az Azure Functions Python fejlesztői útmutatója
 
-Ez a cikk bemutatja, hogyan fejlesztheti Azure Functions a Python használatával. Az alábbi tartalom azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői útmutatót](functions-reference.md). 
+Ez a cikk az Azure Functions Python használatával történő fejlesztésének bemutatkozása. Az alábbi tartalom feltételezi, hogy már elolvasta az [Azure Functions fejlesztői útmutatóját.](functions-reference.md) 
 
-A Pythonban futó önálló függvények esetében tekintse meg a [Python függvények mintáit](/samples/browse/?products=azure-functions&languages=python). 
+Az önálló függvény mintaprojektek pythonban tekintse meg a [Python függvényminták.](/samples/browse/?products=azure-functions&languages=python) 
 
 ## <a name="programming-model"></a>A programozási modell
 
-A Azure Functions egy olyan állapot nélküli metódust vár a Python-parancsfájlban, amely feldolgozza a bemenetet, és kimenetet hoz létre. Alapértelmezés szerint a futtatókörnyezet a metódust a `__init__.py` fájlban `main()` nevű globális metódusként kívánja megvalósítani. [Alternatív belépési pontot is megadhat](#alternate-entry-point).
+Az Azure Functions elvárja, hogy egy függvény egy állapotmentes metódus a Python-parancsfájlban, amely feldolgozza a bemeneti és kimeneti eredményeket. Alapértelmezés szerint a futásidejű elvárja, hogy a metódus `main()` a `__init__.py` fájlban megnevezett globális metódusként kerül-e bevezetésre. Alternatív belépési pontot is [megadhat.](#alternate-entry-point)
 
-Az eseményindítók és kötések adatai a Function *. JSON* fájlban megadott `name` tulajdonsággal vannak kötve a függvényhez. Az alábbi _function. JSON_ például egy `req`nevű HTTP-kérelem által aktivált egyszerű függvényt ír le:
+Az eseményindítókból és kötésekből származó adatok `name` a függvény metódusattribútumain keresztül kötődnek a függvényhez a *function.json* fájlban definiált tulajdonság használatával. Az alábbi _function.json_ például egy egyszerű függvényt ír `req`le, amelyet egy HTTP-kérelem nevezett el:
 
 :::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
-Ennek a definíciónak a alapján a függvény kódját tartalmazó `__init__.py` fájl a következő példához hasonló lehet:
+E definíció alapján `__init__.py` a függvénykódot tartalmazó fájl a következő példához hasonló lehet:
 
 ```python
 def main(req):
@@ -32,7 +32,7 @@ def main(req):
     return f'Hello, {user}!'
 ```
 
-A függvényben explicit módon deklarálhatja az attribútum típusát és a visszatérési típust is a Python típusú jegyzetek használatával. Ez segít a számos Python-kód-szerkesztő által biztosított IntelliSense-és automatikus kiegészítési funkciók használatában.
+Explicit módon deklarálhatja az attribútumtípusokat és a visszatérési típust a függvényben python típusú jegyzetek használatával. Ez segít az intellisense és az automatikus kiegészítés számos Python kódszerkesztő által biztosított funkciók használatában.
 
 ```python
 import azure.functions
@@ -43,11 +43,11 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-Használja az [Azure. functions. *](/python/api/azure-functions/azure.functions?view=azure-python) csomagban található Python-megjegyzéseket a bemenetek és kimenetek a metódusokhoz való kötéséhez.
+Használja az [azure.functions-ben](/python/api/azure-functions/azure.functions?view=azure-python) található Python-jegyzeteket.* a bemeneti és kimeneti műveleteket a metódusokhoz.
 
-## <a name="alternate-entry-point"></a>Másodlagos belépési pont
+## <a name="alternate-entry-point"></a>Alternatív belépési pont
 
-A függvények alapértelmezett viselkedését a *function. JSON* fájl `scriptFile` és `entryPoint` tulajdonságainak megadásával módosíthatja. Az alábbi _function. JSON_ például arra utasítja a futtatókörnyezetet, hogy a _Main.py_ -fájlban lévő `customentry()` metódust használja az Azure-függvény belépési pontjaként.
+Egy függvény alapértelmezett viselkedését a *function.json* `entryPoint` fájlban lévő `scriptFile` tulajdonságok és tulajdonságok tetszés szerint módosíthatja. Például a _function.json_ alatt azt mondja `customentry()` a futásidejű, hogy a metódust a _main.py_ fájlban, mint az Azure-függvény belépési pont.
 
 ```json
 {
@@ -59,9 +59,9 @@ A függvények alapértelmezett viselkedését a *function. JSON* fájl `scriptF
 }
 ```
 
-## <a name="folder-structure"></a>Mappa szerkezete
+## <a name="folder-structure"></a>Mappastruktúra
 
-A Python functions projekt javasolt mappastruktúrát a következő példához hasonlóan néz ki:
+A Python Functions projekt ajánlott mappastruktúrája a következő példához hasonlóan néz ki:
 
 ```
  __app__
@@ -79,21 +79,21 @@ A Python functions projekt javasolt mappastruktúrát a következő példához h
  | - requirements.txt
  tests
 ```
-A fő projekt mappája (\_\_alkalmazás\_\_) a következő fájlokat tartalmazhatja:
+A projekt fő\_\_\_\_mappája ( alkalmazás ) a következő fájlokat tartalmazhatja:
 
-* *Local. Settings. JSON*: az Alkalmazásbeállítások és a kapcsolódási karakterláncok helyi futtatásakor való tárolásához használatos. Ez a fájl nem jelenik meg az Azure-ban. További információ: [Local. Settings. file](functions-run-local.md#local-settings-file).
-* *követelmények. txt*: az Azure-ba való közzétételkor a rendszer által telepített csomagok listáját tartalmazza.
-* a *Host. JSON*: olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function alkalmazás összes funkcióját érintik. Ez a fájl közzé van téve az Azure-ban. Nem minden beállítás támogatott a helyi futtatásakor. További információ: [Host. JSON](functions-host-json.md).
-* *. funcignore*: (nem kötelező) deklarálja azokat a fájlokat, amelyek nem tudnak közzétenni az Azure-ban.
-* *. gitignore*: (nem kötelező) a git-tárházból kizárt fájlokat deklarálja, például a local. Settings. JSON fájlt.
+* *local.settings.json*: Az alkalmazásbeállítások és a kapcsolati karakterláncok tárolására szolgál helyi futtatáskor. Ez a fájl nem jelenik meg az Azure-ban. További információ: [local.settings.file](functions-run-local.md#local-settings-file).
+* *requirements.txt*: A rendszer által az Azure-ban való közzétételkor telepített csomagok listáját tartalmazza.
+* *host.json*: Globális konfigurációs beállításokat tartalmaz, amelyek egy függvényalkalmazás összes függvényét érintik. Ez a fájl nem kap közzé az Azure-ban. Nem minden beállítás támogatott helyi futtatásesetén. További információ: [host.json](functions-host-json.md).
+* *.funcignore*: (Nem kötelező) deklarálja azokat a fájlokat, amelyeket nem kellene közzétenni az Azure-ban.
+* *.gitignore*: (Nem kötelező) deklarálja a git-tárterületből kizárt fájlokat, például a local.settings.json fájlt.
 
-Minden függvényhez tartozik a saját kód fájlja és a kötési konfigurációs fájl (function. JSON). 
+Minden függvény saját kódfájllal és kötési konfigurációs fájllal (function.json) rendelkezik. 
 
-Amikor az Azure-beli Function alkalmazásba helyezi üzembe a projektet, a főprojekt teljes tartalmát ( *\_\_app\_\_* ) a csomagban kell szerepelnie, de nem maga a mappa. Javasoljuk, hogy a teszteket a Project mappától eltérő mappában tartsa karban, ebben a példában `tests`. Így a tesztelési kód üzembe helyezése az alkalmazással megtartható. További információ: [Unit Testing (egység tesztelése](#unit-testing)).
+Amikor a projektet egy függvényalkalmazásba telepíti az Azure-ban, a fő projekt (*\_\_alkalmazás)\_* mappa teljes tartalmát a csomagban kell szerepeltetni, de magát a mappát nem. Azt javasoljuk, hogy a teszteket a projektmappától elkülönített `tests`mappában tartsa fenn ebben a példában. Ez megakadályozza, hogy tesztkódot telepítsen az alkalmazással. További információ: [Unit Testing](#unit-testing).
 
 ## <a name="import-behavior"></a>Importálási viselkedés
 
-A függvény kódjában lévő modulokat explicit relatív és abszolút referenciák használatával is importálhatja. A fent látható mappa szerkezete alapján a következő importálások működnek a (z *)\_\_app\_\_my\_első\_function\\_\_init\_\_.*
+A függvénykódba modulokat importálhat explicit relatív és abszolút hivatkozások használatával. A fenti mappastruktúra alapján a következő importmunka a * \_ \_\_\_\my\_\_first\\\_function\_\__ init .py függvényalkalmazásból*származik:
 
 ```python
 from . import example #(explicit relative)
@@ -111,7 +111,7 @@ from __app__ import shared_code #(absolute)
 import __app__.shared_code #(absolute)
 ```
 
-A következő importálások *nem működnek* ugyanazon a fájlon belül:
+A következő *importálások nem működnek* ugyanabból a fájlból:
 
 ```python
 import example
@@ -125,7 +125,7 @@ from example import some_helper_code
 import shared_code
 ```
 
-A megosztott kódokat *\_\_alkalmazás\_\_* egy külön mappában kell tárolni. A *shared\_Code (megosztott kód* ) mappában található modulok a következő szintaxissal használhatók:
+A megosztott kódot az * \_ \_alkalmazás\_* külön mappájában kell tárolni. A *\_megosztott kódmappában* lévő modulokra való hivatkozáshoz a következő szintaxist használhatja:
 
 ```python
 from __app__.shared_code import my_first_helper_function
@@ -133,9 +133,9 @@ from __app__.shared_code import my_first_helper_function
 
 ## <a name="triggers-and-inputs"></a>Eseményindítók és bemenetek
 
-A bemenetek két kategóriára vannak osztva Azure Functions: aktiválja a bemenetet és a további bemenetet. Bár a `function.json` fájlban különböznek, a használat megegyezik a Python-kódban.  Az trigger és a bemeneti források kapcsolódási sztringje vagy titka a `local.settings.json` fájlban a helyileg futtatott értékekhez és az Azure-ban való futtatáskor az alkalmazás beállításaihoz rendelhető. 
+A bemenetek két kategóriába sorolhatók az Azure Functionsben: az eseményindító bemenet és a további bemenetek. Bár a fájlban `function.json` eltérőek, a használat megegyezik a Python-kódban.  Az eseményindítók és a bemeneti források `local.settings.json` kapcsolati karakterláncai vagy titkos fájljai a helyi futtatáskor a fájlban lévő értékekhez, valamint az Azure-ban való futtatáskor az alkalmazásbeállításokhoz vannak leképezve. 
 
-A következő kód például a kettő közötti különbséget mutatja be:
+Például a következő kód bemutatja a kettő közötti különbséget:
 
 ```json
 // function.json
@@ -183,16 +183,16 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-A függvény meghívásakor a rendszer a HTTP-kérelmet `req`ként továbbítja a függvénynek. A rendszer beolvas egy bejegyzést az Azure _blob Storage az útvonal_ URL-címe alapján, és a függvény törzsében `obj`ként elérhetővé teszi.  Itt a megadott Storage-fiók a AzureWebJobsStorage alkalmazás-beállításban található, a Function alkalmazás által használt Storage-fiók.
+A függvény meghívásakor a HTTP-kérelem átkerül `req`a függvénybe . Egy bejegyzés lesz beolvasni az Azure Blob Storage az _azonosító_ alapján az `obj` útvonal URL-cím, és elérhetővé tette, mint a függvény törzsében.  Itt a megadott tárfiók az AzureWebJobsStorage alkalmazás beállításában található kapcsolati karakterlánc, amely a függvényalkalmazás által használt tárfiók.
 
 
 ## <a name="outputs"></a>Kimenetek
 
-A kimenet a visszatérési értékben és a kimeneti paraméterekben is kifejezhető. Ha csak egy kimenet van, javasoljuk, hogy használja a visszatérési értéket. Több kimenet esetén a kimeneti paramétereket kell használnia.
+A kimenet mind a visszatérési értékben, mind a kimeneti paraméterekben kifejezhető. Ha csak egy kimenet van, javasoljuk, hogy használja a visszatérési értéket. Több kimenetesetén kimeneti paramétereket kell használnia.
 
-Ha egy függvény visszatérési értékét egy kimeneti kötés értékeként szeretné használni, akkor a kötés `name` tulajdonságát a `function.json``$return` értékre kell állítani.
+Ha egy függvény visszatérési értékét kimeneti kötés értékeként szeretné használni, `name` a `$return` `function.json`kötés tulajdonságát a értékre kell állítani.
 
-Több kimenet létrehozásához használja a [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) felület által biztosított `set()` metódust, hogy a kötéshez értéket rendeljen. A következő függvény például leküldheti az üzeneteket egy várólistába, és HTTP-választ is küldhet.
+Több kimenet létrehozásához használja `set()` az [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) interfész által biztosított módszert, hogy értéket rendeljen a kötéshez. A következő függvény például leküldhet egy üzenetet egy várólistába, és http-választ is visszaadhat.
 
 ```json
 {
@@ -234,9 +234,9 @@ def main(req: func.HttpRequest,
 
 ## <a name="logging"></a>Naplózás
 
-A Azure Functions futtatókörnyezet-naplózó hozzáférése a Function alkalmazás egyik gyökérszintű [`logging`](https://docs.python.org/3/library/logging.html#module-logging) kezelőjén keresztül érhető el. Ez a naplózó Application Insightshez van kötve, és lehetővé teszi a függvények végrehajtása során észlelt figyelmeztetések és hibák megjelölését.
+Az Azure Functions futásidejű naplózóhoz való [`logging`](https://docs.python.org/3/library/logging.html#module-logging) hozzáférés a függvényalkalmazás gyökérkezelőjében keresztül érhető el. Ez a naplózó az Application Insights hoz van kötve, és lehetővé teszi a függvény végrehajtása során észlelt figyelmeztetések és hibák megjelölése.
 
-Az alábbi példa egy tájékoztató üzenetet naplóz, ha a függvényt HTTP-eseményindítón keresztül hívja meg.
+A következő példa naplózza az információs üzenetet, ha a függvényhttp-eseményindítón keresztül hívható meg.
 
 ```python
 import logging
@@ -246,25 +246,25 @@ def main(req):
     logging.info('Python HTTP trigger function processed a request.')
 ```
 
-További naplózási módszerek érhetők el, amelyek lehetővé teszik a konzolra való írást különböző nyomkövetési szinteken:
+További naplózási módszerek állnak rendelkezésre, amelyek lehetővé teszik, hogy különböző nyomkövetési szinteken írjon a konzolra:
 
 | Módszer                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
-| **`critical(_message_)`**   | KRITIKUS szintű üzenetet ír a gyökérszintű naplózó számára.  |
-| **`error(_message_)`**   | A legfelső szintű naplózó üzenetbe írja a Level hibát.    |
-| **`warning(_message_)`**    | Üzenet írása a root naplózó szintű FIGYELMEZTETÉSsel.  |
-| **`info(_message_)`**    | A root naplózó szintű adatokat tartalmazó üzenetet ír.  |
-| **`debug(_message_)`** | Egy szintű HIBAKERESÉSt tartalmazó üzenetet ír a root Logger-ben.  |
+| **`critical(_message_)`**   | Ír egy üzenetet szint kritikus a gyökér logger.  |
+| **`error(_message_)`**   | Hiba szinttel rendelkező üzenetet ír a gyökérnaplózóra.    |
+| **`warning(_message_)`**    | A gyökérnaplózóra figyelmeztetési szintű üzenetet ír.  |
+| **`info(_message_)`**    | A gyökérnaplózóra info szintű üzenetet ír.  |
+| **`debug(_message_)`** | Debug szintű üzenetet ír a gyökérnaplózóra.  |
 
-További információ a naplózásról: [Azure functions figyelése](functions-monitoring.md).
+A naplózásról az [Azure-függvények figyelése című témakörben olvashat bővebben.](functions-monitoring.md)
 
-## <a name="http-trigger-and-bindings"></a>HTTP-trigger és-kötések
+## <a name="http-trigger-and-bindings"></a>HTTP-eseményindító és kötések
 
-A HTTP-trigger a function. Jon fájlban van definiálva. A kötés `name` meg kell egyeznie a függvény elnevezett paraméterével. Az előző példákban egy kötési nevet `req` használ a rendszer. Ez a paraméter egy [HttpRequest] objektum, és a rendszer egy [HttpResponse] objektumot ad vissza.
+A HTTP-eseményindító a function.jon fájlban van definiálva. A `name` kötésnek meg kell egyeznie a függvényben szereplő elnevezett paraméterrel. Az előző példákban `req` egy kötési nevet használ a használat. Ez a paraméter egy [HttpRequest] objektum, és egy [HttpResponse] objektumot ad vissza.
 
-A [HttpRequest] objektumból lekérheti a kérések fejléceit, a lekérdezési paramétereket, az útvonal paramétereit és az üzenet törzsét. 
+A [HttpRequest] objektumból kérésfejléceket, lekérdezési paramétereket, útvonalparamétereket és az üzenet törzsét kaphatja meg. 
 
-A következő példa a [Pythonhoz készült http trigger sablonból](https://github.com/Azure/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-Python)származik. 
+A következő példa a [Python HTTP-eseményindító sablonjából származik.](https://github.com/Azure/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-Python) 
 
 ```python
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -288,34 +288,34 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         )
 ```
 
-Ebben a függvényben a `name` lekérdezési paraméter értékét a [HttpRequest] objektum `params` paraméterében szerezheti be. A JSON-kódolású üzenet törzse a `get_json` metódus használatával olvasható. 
+Ebben a függvényben a `name` lekérdezési paraméter értéke `params` a [HttpRequest] objektum paraméteréből származik. A JSON-kódolású üzenet törzse `get_json` a módszerrel olvasható. 
 
-Hasonlóképpen beállíthatja a válaszüzenet `status_code`ét és `headers` a visszaadott [HttpResponse] objektumban.
+Hasonlóképpen beállíthatja a `status_code` `headers` válaszüzenetet a visszaadott [HttpResponse] objektumban.
 
-## <a name="scaling-and-concurrency"></a>Skálázás és Egyidejűség
+## <a name="scaling-and-concurrency"></a>Méretezés és egyidejűség
 
-Alapértelmezés szerint a Azure Functions automatikusan figyeli az alkalmazás terhelését, és szükség esetén további gazdagép-példányokat hoz létre a Pythonhoz. A functions beépített (nem a felhasználó által konfigurálható) küszöbértékeket használ a különböző típusú triggerekhez, hogy eldöntse, mikor kell hozzáadnia a példányokat, például az üzenetek korát és a várólista méretét a QueueTrigger. További információ: [How the fogyasztás and Premium Plans Work](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Alapértelmezés szerint az Azure Functions automatikusan figyeli az alkalmazás terhelését, és szükség szerint további állomáspéldányokat hoz létre a Pythonszámára. A függvények beépített (nem felhasználó által konfigurálható) küszöbértékeket használ a különböző eseményindító-típusokhoz, hogy eldöntsék, mikor vegyenek fel példányokat, például az üzenetek korát és a QueueTrigger várólistaméretét. További információ: [How the Consumption and Premium plans is work.](functions-scale.md#how-the-consumption-and-premium-plans-work)
 
-Ez a skálázási viselkedés számos alkalmazás esetében elegendő. A következő jellemzők bármelyikével rendelkező alkalmazások esetében azonban nem lehet hatékonyan méretezni:
+Ez a skálázási viselkedés számos alkalmazás számára elegendő. Az alábbi jellemzők bármelyikével rendelkező alkalmazások azonban nem méretezhetők olyan hatékonyan:
 
-- Az alkalmazásnak számos egyidejű hívást kell kezelnie.
-- Az alkalmazás nagy mennyiségű I/O-eseményt dolgoz fel.
-- Az alkalmazás I/O-kötésű.
+- Az alkalmazásnak számos egyidejű meghívást kell kezelnie.
+- Az alkalmazás nagyszámú I/O-eseményt dolgoz fel.
+- Az alkalmazás I/O-kötött.
 
-Ilyen esetekben az aszinkron minták és a több nyelvű munkavégző folyamat használatával tovább javíthatja a teljesítményt.
+Ilyen esetekben tovább javíthatja a teljesítményt az aszinkron minták használatával és több nyelvi munkavégző folyamat használatával.
 
 ### <a name="async"></a>Aszinkron
 
-Mivel a Python egy egyszálas futtatókörnyezet, a Pythonhoz tartozó gazdagép-példány egyszerre csak egy függvényt tud feldolgozni. A nagy mennyiségű I/O-eseményt feldolgozó alkalmazások és/vagy I/O-kötések esetén a függvények aszinkron futtatásával javítható a teljesítmény.
+Mivel a Python egyegyszálas futásidejű, a Python gazdagéppéldánya egyszerre csak egy függvénymeghívást tud feldolgozni. A nagyszámú I/O-eseményt feldolgozó és/vagy I/O-kötött alkalmazások esetében a függvények aszinkron futtatásával javíthatja a teljesítményt.
 
-A függvények aszinkron futtatásához használja a `async def` utasítást, amely a függvényt közvetlenül a [asyncio](https://docs.python.org/3/library/asyncio.html) futtatja:
+A függvény aszinkron futtatásához használja a `async def` utasítást, amely közvetlenül az asyncio függvényt [futtatja:](https://docs.python.org/3/library/asyncio.html)
 
 ```python
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-A `async` kulcsszó nélküli függvény automatikusan fut egy asyncio szál-készletben:
+A `async` kulcsszó nélküli függvény automatikusan fut egy asyncio szálkészletben:
 
 ```python
 # Runs in an asyncio thread-pool
@@ -324,17 +324,17 @@ def main():
     some_blocking_socket_io()
 ```
 
-### <a name="use-multiple-language-worker-processes"></a>Több nyelvet használó munkavégző folyamat használata
+### <a name="use-multiple-language-worker-processes"></a>Több nyelvi munkavégző folyamat használata
 
-Alapértelmezés szerint minden functions Host-példány egyetlen nyelvi munkavégző folyamattal rendelkezik. A [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) alkalmazás beállításával növelheti a munkavégző folyamatok számát a gazdagépen (legfeljebb 10). Azure Functions ezt követően megpróbál egyenletesen terjeszteni egyidejű függvényeket a feldolgozók között. 
+Alapértelmezés szerint minden Functions állomáspéldány egyetlen nyelvi munkavégző folyamattal rendelkezik. A alkalmazásbeállítás [FUNCTIONS_WORKER_PROCESS_COUNTsal](functions-app-settings.md#functions_worker_process_count) növelheti a gazdagépenkénti munkavégző folyamatok számát (legfeljebb 10). Az Azure Functions ezután megpróbálja egyenletesen elosztani az egyidejű függvénymeghívásokat ezek között a dolgozók között. 
 
-A FUNCTIONS_WORKER_PROCESS_COUNT minden olyan gazdagépre vonatkozik, amelyet a functions hoz létre, amikor az alkalmazás az igények kielégítése érdekében felskálázást végez. 
+A FUNCTIONS_WORKER_PROCESS_COUNT minden állomásra vonatkozik, amelyet a Functions létrehoz, amikor az alkalmazást az igényeknek megfelelően skálázhatja. 
 
 ## <a name="context"></a>Környezet
 
-Ha egy függvény hívási környezetét szeretné lekérni a végrehajtás során, adja meg az [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) argumentumot az aláírásában. 
+Ha egy függvény meghívási környezetét szeretné [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) beszerezni a végrehajtás során, írja be az argumentumot az aláírásába. 
 
-Például:
+Példa:
 
 ```python
 import azure.functions
@@ -345,10 +345,10 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-A [**környezeti**](/python/api/azure-functions/azure.functions.context?view=azure-python) osztály a következő karakterlánc-attribútumokkal rendelkezik:
+A [**Környezet**](/python/api/azure-functions/azure.functions.context?view=azure-python) osztály a következő karakterlánc-attribútumokkal rendelkezik:
 
 `function_directory`  
-Az a címtár, amelyben a függvény fut.
+Az a könyvtár, amelyben a függvény fut.
 
 `function_name`  
 A függvény neve.
@@ -358,7 +358,7 @@ Az aktuális függvény meghívásának azonosítója.
 
 ## <a name="global-variables"></a>Globális változók
 
-Nem garantált, hogy az alkalmazás állapota továbbra is megmarad a jövőbeli végrehajtásokhoz. Azonban a Azure Functions futtatókörnyezet gyakran ugyanazt a folyamatot használja ugyanazon alkalmazás több végrehajtásához. Egy költséges számítás eredményeinek gyorsítótárazásához globális változóként deklarálja. 
+Nem garantált, hogy az alkalmazás állapota megmarad a jövőbeli végrehajtások esetén. Azonban az Azure Functions futásidejű gyakran újra felhasználja ugyanazt a folyamatot több végrehajtások ugyanazon alkalmazás. Annak érdekében, hogy gyorsítótárazhassa egy költséges számítás eredményeit, deklarálja globális változóként. 
 
 ```python
 CACHED_DATA = None
@@ -374,9 +374,9 @@ def main(req):
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-A függvények területen az [Alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatási kapcsolatok karakterláncai környezeti változókként vannak kitéve a végrehajtás során. Ezeket a beállításokat a `import os` deklarálása, majd a `setting = os.environ["setting-name"]`használatával érheti el.
+A Függvények alkalmazásban [az alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatáskapcsolati karakterláncok környezeti változókként jelennek meg a végrehajtás során. Ezeket a beállításokat `import os` a deklarálással, majd a használatával érheti el. `setting = os.environ["setting-name"]`
 
-A következő példa beolvassa az [Alkalmazásbeállítások értékét](functions-how-to-use-azure-function-app-settings.md#settings)a `myAppSetting`nevű kulccsal:
+A következő példa az [alkalmazás beállítást](functions-how-to-use-azure-function-app-settings.md#settings) `myAppSetting`kapja meg, amelynek neve a kulcs:
 
 ```python
 import logging
@@ -390,28 +390,28 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info(f'My app setting value:{my_app_setting_value}')
 ```
 
-Helyi fejlesztés esetén az Alkalmazásbeállítások a [Local. Settings. JSON fájlban maradnak](functions-run-local.md#local-settings-file).  
+Helyi fejlesztés esetén az alkalmazásbeállítások [a local.settings.json fájlban maradnak meg.](functions-run-local.md#local-settings-file)  
 
 ## <a name="python-version"></a>Python-verzió 
 
-A Azure Functions a következő Python-verziókat támogatja:
+Az Azure Functions a következő Python-verziókat támogatja:
 
-| Függvények verziója | Python<sup>*</sup> verziók |
+| Függvények verziója | Python-verziók<sup>*</sup> |
 | ----- | ----- |
 | 3.x | 3.8<br/>3.7<br/>3.6 |
-| 2. x | 3.7<br/>3.6 |
+| 2,x | 3.7<br/>3.6 |
 
-<sup>*</sup> Hivatalos CPython-disztribúciók
+<sup>*</sup>Hivatalos CPython disztribúciók
 
-Ha egy adott Python-verziót szeretne kérni a Function alkalmazás Azure-ban való létrehozásakor, használja a [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) parancs `--runtime-version` lehetőségét. A functions futásidejű verzióját a `--functions-version` beállítás határozza meg. A Python verziója a Function alkalmazás létrehozásakor van beállítva, és nem módosítható.  
+Ha egy adott Python-verziót szeretne kérni, amikor `--runtime-version` létrehozza [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) a függvényalkalmazást az Azure-ban, használja a parancs lehetőséget. A Functions futásidejű verzióját `--functions-version` a beállítás állítja be. A Python-verzió a függvényalkalmazás létrehozásakor van beállítva, és nem módosítható.  
 
-Helyileg futtatva a futtatókörnyezet a rendelkezésre álló Python-verziót használja. 
+Helyi futtatásakor a futtatóönként a rendelkezésre álló Python-verziót használja. 
 
 ## <a name="package-management"></a>Csomagkezelés
 
-Amikor helyileg fejleszti a Azure Functions Core Tools vagy a Visual Studio Code-ot, adja hozzá a szükséges csomagok neveit és verzióit a `requirements.txt`-fájlhoz, és telepítse őket a `pip`használatával. 
+Ha helyileg fejleszti az Azure Functions Core Tools vagy a Visual Studio Code `requirements.txt` használatával, adja `pip`hozzá a szükséges csomagok nevét és verzióit a fájlhoz, és telepítse őket a használatával. 
 
-Például az alábbi követelmények fájl és pip parancs használatával telepítheti a `requests` csomagot a PyPI.
+Például a következő követelmények fájl és pip parancs `requests` segítségével telepítheti a csomagot pypi.
 
 ```txt
 requests==2.19.1
@@ -423,63 +423,63 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Közzététel az Azure-ban
 
-Ha készen áll a közzétételre, győződjön meg arról, hogy az összes nyilvánosan elérhető függőség szerepel a Project könyvtárának gyökérkönyvtárában található követelmények. txt fájlban. 
+Ha készen áll a közzétételre, győződjön meg arról, hogy az összes nyilvánosan elérhető függőség szerepel a requirements.txt fájlban, amely a projektkönyvtár gyökerében található. 
 
-A közzétételből kizárt projektfájlok és mappák, beleértve a virtuális környezet mappáját is, a. funcignore fájlban vannak felsorolva.
+A közzétételből kizárt projektfájlok és mappák, beleértve a virtuális környezet mappát is, a .funcignore fájlban jelennek meg.
 
-A Python-projekt az Azure-ba való közzétételéhez három Build művelet támogatott:
+A Python-projekt Azure-ban való közzétételéhez három buildművelet támogatott:
 
-+ Távoli Build: a függőségek a követelmények. txt fájl tartalmától függően távolról szerezhetők be. A [távoli Build](functions-deployment-technologies.md#remote-build) a javasolt Build módszer. A távoli az Azure-eszközök alapértelmezett Build-beállítása is. 
-+ Helyi Build: a függőségek a követelmények. txt fájl tartalmától függően helyileg szerezhetők be. 
-+ Egyéni függőségek: a projekt nem nyilvánosan elérhető csomagokat használ az eszközeink számára. (A Docker szükséges.)
++ Távoli létrehozás: A függőségek a requirements.txt fájl tartalma alapján távolról szerezhetők be. [A távoli létrehozás](functions-deployment-technologies.md#remote-build) az ajánlott létrehozási módszer. Távoli is az azure-eszközök alapértelmezett buildbeállítása. 
++ Helyi build: A függőségek helyibe bekéselése a requirements.txt fájl tartalma alapján. 
++ Egyéni függőségek: A projekt olyan csomagokat használ, amelyek nyilvánosan nem érhetők el az eszközeink számára. (Docker szükséges.)
 
-A függőségek létrehozásához és a folyamatos kézbesítés (CD) rendszer használatával történő közzétételhez [használja az Azure-folyamatokat](functions-how-to-azure-devops.md).
+A függőségek létrehozásához és a folyamatos kézbesítési (CD)rendszer használatával történő [közzétételhez használja az Azure Pipelines szolgáltatást.](functions-how-to-azure-devops.md)
 
-### <a name="remote-build"></a>Távoli Build
+### <a name="remote-build"></a>Távoli összeállítás
 
-Alapértelmezés szerint a Azure Functions Core Tools távoli buildet kér, amikor az alábbi, az [Azure functionapp Publishing](functions-run-local.md#publish) parancs használatával teszi közzé a Python-projektet az Azure-ban. 
+Alapértelmezés szerint az Azure Functions Core Tools távoli buildet kér, ha a következő [func azure functionapp közzétételi](functions-run-local.md#publish) parancsot használja a Python-projekt Azure-ban való közzétételéhez. 
 
 ```bash
 func azure functionapp publish <APP_NAME>
 ```
 
-Ne felejtse el lecserélni a `<APP_NAME>`t az Azure-beli Function alkalmazás nevével.
+Ne felejtse el lecserélni `<APP_NAME>` a függvényalkalmazás nevét az Azure-ban.
 
-A [Visual Studio Code Azure functions-bővítménye](functions-create-first-function-vs-code.md#publish-the-project-to-azure) alapértelmezés szerint távoli buildet is igényel. 
+Az [Azure Functions Extension for Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) alapértelmezés szerint távoli buildet is kér. 
 
-### <a name="local-build"></a>Helyi Build
+### <a name="local-build"></a>Helyi építés
 
-A távoli buildek használatának megakadályozása érdekében az alábbi, az [Azure functionapp publish](functions-run-local.md#publish) parancs használatával teheti közzé a helyi buildet. 
+Megakadályozhatja egy távoli build et a következő [func azure-közzétételi közzétételi](functions-run-local.md#publish) paranccsal a helyi buildel történő közzétételhez. 
 
 ```command
 func azure functionapp publish <APP_NAME> --build local
 ```
 
-Ne felejtse el lecserélni a `<APP_NAME>`t az Azure-beli Function alkalmazás nevével. 
+Ne felejtse el lecserélni `<APP_NAME>` a függvényalkalmazás nevét az Azure-ban. 
 
-A `--build local` lehetőség használatával a Project függőségei a követelmények. txt fájlból származnak, és ezek a függő csomagok letöltése és telepítése helyileg történik. A Project Files és a függőségek a helyi számítógépről az Azure-ba vannak telepítve. Ennek eredményeképpen egy nagyobb üzembehelyezési csomag tölthető fel az Azure-ba. Ha valamilyen okból kifolyólag, a követelmények. txt fájlhoz tartozó függőségek nem szerezhetők meg a Core Tools által, az egyéni függőségek lehetőséget kell használni a közzétételhez. 
+A `--build local` beállítás sal a projektfüggőségek a requirements.txt fájlból olvashatók be, és a függő csomagok helyileg töltődnek le és települnek. A projektfájlok és -függőségek a helyi számítógépről az Azure-ba kerülnek. Ez azt eredményezi, hogy egy nagyobb központi telepítési csomag töltődik fel az Azure-ba. Ha valamilyen okból a requirements.txt fájl függőségeit a Core Tools nem tudja beszerezni, akkor az egyéni függőségek beállítást kell használnia a közzétételhez. 
 
 ### <a name="custom-dependencies"></a>Egyéni függőségek
 
-Ha a projekt nem nyilvánosan elérhető csomagokat használ az eszközeink számára, elérhetővé teheti őket az alkalmazás számára, ha a \_\_alkalmazást\_\_/. python_packages könyvtárat. A közzététel előtt futtassa a következő parancsot a függőségek helyi telepítéséhez:
+Ha a projekt olyan csomagokat használ, amelyek nyilvánosan nem érhetők el az \_ \_eszközeink számára, elérhetővé teheti azokat az alkalmazás számára az alkalmazás\_\_/.python_packages könyvtárba való behelyezésével. A közzététel előtt futtassa a következő parancsot a függőségek helyi telepítéséhez:
 
 ```command
 pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
 ```
 
-Egyéni függőségek használata esetén a `--no-build` közzétételi lehetőséget kell használnia, mivel már telepítette a függőségeket.  
+Egyéni függőségek használata esetén a `--no-build` közzétételi beállítást kell használnia, mivel már telepítette a függőségeket.  
 
 ```command
 func azure functionapp publish <APP_NAME> --no-build
 ```
 
-Ne felejtse el lecserélni a `<APP_NAME>`t az Azure-beli Function alkalmazás nevével.
+Ne felejtse el lecserélni `<APP_NAME>` a függvényalkalmazás nevét az Azure-ban.
 
 ## <a name="unit-testing"></a>Egység tesztelése
 
-A Pythonban írt függvények a standard szintű tesztelési keretrendszerek használatával más Python-kódokhoz hasonlóan is vizsgálhatók. A legtöbb kötés esetében lehetséges, hogy létrehoz egy ál-bemeneti objektumot egy megfelelő osztály egy példányának létrehozásával a `azure.functions` csomagból. Mivel a [`azure.functions`](https://pypi.org/project/azure-functions/) csomag nem érhető el azonnal, a fenti [csomagkezelő](#package-management) részben leírtak szerint telepítse azt a `requirements.txt`-fájlon keresztül. 
+A Pythonban írt függvények a többi Python-kódhoz hasonlóan tesztelhetők szabványos tesztelési keretrendszerek használatával. A legtöbb kötés, lehetséges, hogy hozzon létre egy mock bemeneti objektum `azure.functions` létrehozásával egy példányát a megfelelő osztály a csomagból. Mivel [`azure.functions`](https://pypi.org/project/azure-functions/) a csomag nem érhető el azonnal, mindenképpen telepítse a `requirements.txt` fájlon keresztül a [csomagkezelés](#package-management) fenti szakaszában leírtak szerint. 
 
-Például a következő egy HTTP által aktivált függvény mintájának tesztelése:
+A következőkben például egy HTTP-aktivált függvény próbatesztje látható:
 
 ```json
 {
@@ -557,7 +557,7 @@ class TestFunction(unittest.TestCase):
         )
 ```
 
-Íme egy másik példa, amely egy üzenetsor által aktivált függvényt mutat be:
+Íme egy másik példa, egy várólista által aktivált funkcióval:
 
 ```json
 {
@@ -607,12 +607,12 @@ class TestFunction(unittest.TestCase):
 ```
 ## <a name="temporary-files"></a>Ideiglenes fájlok
 
-A `tempfile.gettempdir()` metódus egy ideiglenes mappát ad vissza, amely Linux rendszeren `/tmp`. Az alkalmazás ezt a könyvtárat használhatja a függvények által a végrehajtás során létrehozott és használt ideiglenes fájlok tárolására. 
+A `tempfile.gettempdir()` metódus egy ideiglenes mappát `/tmp`ad vissza, amely Linux on . Az alkalmazás használhatja ezt a könyvtárat, hogy tárolja az ideiglenes fájlokat generált és használt a funkciók végrehajtása során. 
 
 > [!IMPORTANT]
-> Az ideiglenes könyvtárba írt fájlok nem garantáltan megmaradnak a meghívások között. A Kibővítés során az ideiglenes fájlok nincsenek megosztva a példányok között. 
+> Az ideiglenes könyvtárba írt fájlok nem garantáltan megmaradnak a meghívások között. A horizontális felskálázás során az ideiglenes fájlok nem lesznek megosztva a példányok között. 
 
-Az alábbi példa egy névvel ellátott ideiglenes fájlt hoz létre az ideiglenes könyvtárban (`/tmp`):
+A következő példa egy elnevezett ideiglenes`/tmp`fájlt hoz létre az ideiglenes könyvtárban ( ):
 
 ```python
 import logging
@@ -627,17 +627,17 @@ from os import listdir
    filesDirListInTemp = listdir(tempFilePath)     
 ```   
 
-Javasoljuk, hogy a teszteket egy, a Project mappától eltérő mappában tartsa karban. Így a tesztelési kód üzembe helyezése az alkalmazással megtartható. 
+Javasoljuk, hogy a teszteket a projektmappától elkülönített mappában tartsa. Ez megakadályozza, hogy tesztkódot telepítsen az alkalmazással. 
 
 ## <a name="known-issues-and-faq"></a>Ismert problémák és gyakori kérdések
 
-Az összes ismert probléma és szolgáltatás kérését a [GitHub-problémák](https://github.com/Azure/azure-functions-python-worker/issues) listája követheti nyomon. Ha probléma lép fel, és a GitHubon nem találja a problémát, nyisson meg egy új problémát, és adja meg a probléma részletes leírását.
+Az összes ismert problémát és szolgáltatáskérést a [GitHub-problémák](https://github.com/Azure/azure-functions-python-worker/issues) listája követi nyomon. Ha problémába ütközik, és nem találja a problémát a GitHubon, nyisson meg egy új problémát, és adja meg a probléma részletes leírását.
 
 ### <a name="cross-origin-resource-sharing"></a>Eltérő eredetű erőforrások megosztása
 
-A Azure Functions támogatja a több eredetű erőforrás-megosztást (CORS). A CORS a [portálon](functions-how-to-use-azure-function-app-settings.md#cors) és az [Azure CLI](/cli/azure/functionapp/cors)-n keresztül van konfigurálva. A CORS engedélyezett Origins listája a függvény alkalmazás szintjén érvényes. Ha a CORS engedélyezve van, a válaszok közé tartozik a `Access-Control-Allow-Origin` fejléc. További információ: [Eltérő eredetű erőforrás-megosztás](functions-how-to-use-azure-function-app-settings.md#cors)
+Az Azure Functions támogatja a források közötti erőforrás-megosztás (CORS). A CORS [a portálon](functions-how-to-use-azure-function-app-settings.md#cors) és az [Azure CLI-n](/cli/azure/functionapp/cors)keresztül van konfigurálva. A CORS engedélyezett eredetlista a függvényalkalmazás szintjén érvényes. Ha a CORS engedélyezve `Access-Control-Allow-Origin` van, a válaszok tartalmazzák a fejlécet. További információ: [Eltérő eredetű erőforrás-megosztás](functions-how-to-use-azure-function-app-settings.md#cors)
 
-Az engedélyezett Origins lista [jelenleg nem támogatott](https://github.com/Azure/azure-functions-python-worker/issues/444) a Python-függvények alkalmazásaiban. Ennek a korlátozásnak a miatt a HTTP-függvények `Access-Control-Allow-Origin` fejlécét kifejezetten a következő példában látható módon kell beállítania:
+Az engedélyezett eredetlista [jelenleg nem támogatott](https://github.com/Azure/azure-functions-python-worker/issues/444) a Python-függvényalkalmazások. E miatt a korlátozás miatt kifejezetten be kell állítania a fejlécet a `Access-Control-Allow-Origin` HTTP-függvényekben, ahogy az a következő példában látható:
 
 ```python
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -652,7 +652,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     )
 ``` 
 
-Győződjön meg arról, hogy a function. JSON fájlt is frissíti a beállítások HTTP-metódusának támogatásához:
+Győződjön meg arról, hogy a function.json t is frissíti a BEÁLLÍTÁSOK HTTP módszer ének támogatásához:
 
 ```json
     ...
@@ -664,18 +664,18 @@ Győződjön meg arról, hogy a function. JSON fájlt is frissíti a beállítá
     ...
 ```
 
-Ezt a HTTP-metódust a böngészők használják az engedélyezett Origins lista egyeztetésére. 
+Ezt a HTTP-módszert használják a webböngészők az engedélyezett eredetlista egyeztetésére. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért lásd a következőket:
 
-* [Azure Functions csomag API-dokumentációja](/python/api/azure-functions/azure.functions?view=azure-python)
+* [Az Azure Functions csomag API-dokumentációja](/python/api/azure-functions/azure.functions?view=azure-python)
 * [Azure Functions – ajánlott eljárások](functions-best-practices.md)
-* [Eseményindítók és kötések Azure Functions](functions-triggers-bindings.md)
-* [BLOB Storage-kötések](functions-bindings-storage-blob.md)
-* [HTTP-és webhook-kötések](functions-bindings-http-webhook.md)
-* [Üzenetsor-tárolási kötések](functions-bindings-storage-queue.md)
+* [Az Azure Functions aktiválódik és kötéseket köt](functions-triggers-bindings.md)
+* [Blob storage-kötések](functions-bindings-storage-blob.md)
+* [HTTP- és Webhook-kötések](functions-bindings-http-webhook.md)
+* [Várólista-tárolókötések](functions-bindings-storage-queue.md)
 * [Időzítő eseményindító](functions-bindings-timer.md)
 
 

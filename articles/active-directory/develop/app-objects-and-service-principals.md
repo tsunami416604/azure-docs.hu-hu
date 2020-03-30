@@ -1,7 +1,7 @@
 ---
-title: Alkalmazások az Azure AD-ben & egyszerű szolgáltatások | Azure
+title: Alkalmazások & szolgáltatástagok az Azure AD-ben | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerkedjen meg az alkalmazás és a szolgáltatás egyszerű objektumai közötti kapcsolattal Azure Active Directoryban.
+description: Ismerje meg az alkalmazás és a szolgáltatás egyszerű objektumok közötti kapcsolat az Azure Active Directoryban.
 author: rwike77
 manager: CelesteDG
 services: active-directory
@@ -15,85 +15,85 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.openlocfilehash: 19085346fb5797245c9f71911f8178df0a1b742a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263009"
 ---
-# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Alkalmazás-és egyszerű szolgáltatások objektumai Azure Active Directory
+# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Alkalmazás- és szolgáltatásnév-objektumok az Azure Active Directoryban
 
-Előfordulhat, hogy az "alkalmazás" kifejezés jelentése nem értelmezhető, ha Azure Active Directory (Azure AD) környezetében használják. Ez a cikk az Azure AD-alkalmazások integrációjának fogalmi és konkrét szempontjait mutatja be, és egy [több-bérlős alkalmazás](developer-glossary.md#multi-tenant-application)regisztrálását és beleegyezőjét ismerteti.
+Néha az "alkalmazás" kifejezés jelentése félreérthető, ha az Azure Active Directory (Azure AD) környezetében használja. Ez a cikk tisztázza az Azure AD-alkalmazások integrációjának fogalmi és konkrét szempontjait, a regisztráció és a [több-bérlős alkalmazás](developer-glossary.md#multi-tenant-application)hozzájárulásának szemléltetésével.
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure AD-vel integrált alkalmazások a szoftver aspektusán túlmutató következményekkel járnak. Az "alkalmazás" kifejezést gyakran használják fogalmi feltételként, amely nem csupán az alkalmazás szoftverére vonatkozik, hanem az Azure AD-regisztrációra és a "beszélgetések" a hitelesítés/engedélyezés "beszélgetésekhez" is.
+Az Azure AD-vel integrált alkalmazások olyan következményekkel járnak, amelyek túlmutatnak a szoftver szemponton. "Alkalmazás" gyakran használják fogalmi kifejezésként, amely nem csak az alkalmazás szoftver, hanem az Azure AD-regisztráció és a szerepkör hitelesítési /engedélyezési "beszélgetések" futásidőben.
 
-Definíció szerint az alkalmazások a következő szerepkörökben működhetnek:
+Definíció szerint egy alkalmazás a következő szerepkörökben működhet:
 
-- [Ügyfél](developer-glossary.md#client-application) -szerepkör (erőforrás-fogyasztás)
-- [Erőforrás-kiszolgálói](developer-glossary.md#resource-server) szerepkör (API-k kimutatása az ügyfeleknek)
-- Az ügyfél-szerepkör és az erőforrás-kiszolgálói szerepkör is
+- [Ügyfélszerepkör](developer-glossary.md#client-application) (erőforrás felhasználása)
+- [Erőforrás-kiszolgálói](developer-glossary.md#resource-server) szerepkör (API-k kiteregetése az ügyfelek számára)
+- Ügyfél- és erőforrás-kiszolgálói szerepkör egyaránt
 
-Az [OAuth 2,0 engedélyezési folyamata](developer-glossary.md#authorization-grant) meghatározza a beszélgetési protokollt, amely lehetővé teszi, hogy az ügyfél/erőforrás hozzáférjen az erőforrás adataihoz, illetve megvédje azokat.
+Az [OAuth 2.0 engedélyezési engedélyezési folyamat](developer-glossary.md#authorization-grant) határozza meg a beszélgetési protokollt, amely lehetővé teszi, hogy az ügyfél/erőforrás hozzáférjen/megvédje az erőforrás adatait.
 
-A következő részekben azt láthatja, hogy az Azure AD-alkalmazás modellje hogyan jelent egy alkalmazást a tervezéskor és a futási időben.
+A következő szakaszokban láthatja, hogy az Azure AD-alkalmazásmodell egy alkalmazást jelöl tervezési és futási időben.
 
 ## <a name="application-registration"></a>Alkalmazásregisztráció
 
-Ha egy Azure AD-alkalmazást regisztrál a [Azure Portal][AZURE-Portal], két objektum jön létre az Azure ad-bérlőben:
+Amikor regisztrál egy Azure AD-alkalmazást az [Azure Portalon,][AZURE-Portal]két objektum jön létre az Azure AD-bérlőben:
 
-- Egy alkalmazás-objektum és
-- Egy egyszerű szolgáltatásnév
+- Egy alkalmazásobjektum, és
+- Egy szolgáltatásnév-objektum
 
-### <a name="application-object"></a>Application objektum
+### <a name="application-object"></a>Alkalmazásobjektum
 
-Egy Azure AD-alkalmazást egy és csak egy Application objektum definiál, amely abban az Azure AD-bérlőben található, ahol az alkalmazás regisztrálva van, vagyis az alkalmazás "Home" bérlője. A Microsoft Graph [alkalmazás entitása][MS-Graph-App-Entity] határozza meg az Application objektum tulajdonságainak sémáját.
+Az Azure AD-alkalmazást az egyetlen alkalmazásobjektum határozza meg, amely az Azure AD-bérlőben található, ahol az alkalmazás regisztrálva van, az alkalmazás "otthoni" bérlője. A Microsoft Graph [Alkalmazás entitás][MS-Graph-App-Entity] határozza meg az alkalmazásobjektum tulajdonságainak sémáját.
 
-### <a name="service-principal-object"></a>Egyszerű szolgáltatásnév objektum
+### <a name="service-principal-object"></a>Egyszerű szolgáltatásobjektum
 
-Az Azure AD-bérlő által védett erőforrások eléréséhez a hozzáférést igénylő entitást egy rendszerbiztonsági tagnek kell képviselnie. Ez a felhasználó (egyszerű felhasználónév) és az alkalmazások (egyszerű szolgáltatásnév) esetében is igaz.
+Az Azure AD-bérlő által védett erőforrások eléréséhez a hozzáférést igénylő entitást egy rendszerbiztonsági tagnak kell képviselnie. Ez mind a felhasználókra (egyszerű felhasználó) és az alkalmazásokra (egyszerű szolgáltatásra) igaz.
 
-A rendszerbiztonsági tag meghatározza az Azure AD-bérlőben a felhasználóhoz/alkalmazáshoz tartozó hozzáférési szabályzatot és engedélyeket. Ez lehetővé teszi az olyan alapvető funkciók használatát, mint a felhasználó/alkalmazás hitelesítése a bejelentkezéskor és az erőforrás-hozzáférés engedélyezésekor.
+A rendszerbiztonsági tag határozza meg a hozzáférési szabályzatot és engedélyeket a felhasználó/alkalmazás az Azure AD-bérlőben. Ez lehetővé teszi az alapvető funkciók, például a felhasználó/alkalmazás hitelesítése a bejelentkezés során, és az erőforrás-hozzáférés során engedélyezés.
 
-Ha egy alkalmazás engedélyt kap a bérlő erőforrásainak elérésére (regisztráció vagy [beleegyezés](developer-glossary.md#consent)esetén), létrejön egy egyszerű szolgáltatásnév objektum. A Microsoft Graph [ServicePrincipal entitás][MS-Graph-Sp-Entity] definiálja az egyszerű szolgáltatásnév objektumának sémáját.
+Ha egy alkalmazás engedélyt kap a bérlő erőforrásainak elérésére (regisztráció vagy [hozzájárulás](developer-glossary.md#consent)esetén), létrejön egy egyszerű szolgáltatásobjektum. A Microsoft Graph [ServicePrincipal entitás][MS-Graph-Sp-Entity] határozza meg a sémát egy egyszerű szolgáltatásobjektum tulajdonságaihoz.
 
-### <a name="application-and-service-principal-relationship"></a>Alkalmazás-és egyszerű szolgáltatás kapcsolata
+### <a name="application-and-service-principal-relationship"></a>Az alkalmazás és a szolgáltatásnév kapcsolata
 
-Tekintse át az Application objektumot az alkalmazás *globális* ábrázolásának az összes bérlőn való használatra, valamint az egyszerű szolgáltatásnév, amely egy adott bérlőn való használatra *helyi* ábrázolás.
+Vegye figyelembe az alkalmazás objektumot, mint az alkalmazás *globális* képviseletét az összes bérlő, és a szolgáltatásnév, mint a *helyi* képviselet egy adott bérlőben használható.
 
-Az Application objektum olyan sablonként szolgál, amelyből a rendszer a megfelelő szolgáltatásnév-objektumok létrehozásához használt általános és alapértelmezett tulajdonságokat *származtatja* . Az Application objektumnak ezért van 1:1 kapcsolata a szoftver alkalmazással, és egy 1: sok kapcsolat van a hozzá tartozó szolgáltatásnév-objektummal.
+Az alkalmazásobjektum szolgál sablonként, amelyből a közös és az alapértelmezett tulajdonságok *származtatása* történik a megfelelő szolgáltatásnév-objektumok létrehozásához. Az alkalmazásobjektum ezért 1:1-es kapcsolattal rendelkezik a szoftveralkalmazással, és 1:több kapcsolata van a hozzá tartozó egyszerű szolgáltatásobjektummal.
 
-Minden olyan bérlőn létre kell hozni egy szolgáltatásnevet, amelyben az alkalmazás használatban van, ami lehetővé teszi, hogy személyazonosságot hozzon létre a bejelentkezéshez és/vagy a bérlő által védett erőforrásokhoz való hozzáféréshez. Egy egybérlős alkalmazásnak csak egy egyszerű szolgáltatásnév (a saját bérlője) van, amelyet az alkalmazás regisztrációja során hoztak létre és fogadtak el. A több-bérlős webalkalmazások/API-k egy egyszerű szolgáltatásnevet is létrehoznak minden olyan bérlőn, ahol az adott bérlő felhasználója beleegyezett a használatára.
+Minden olyan bérlőben létre kell hozni egy egyszerű szolgáltatást, ahol az alkalmazást használják, lehetővé téve, hogy identitást hozzon létre a bejelentkezéshez és/vagy a bérlő által védett erőforrásokhoz való hozzáféréshez. Egybérlős alkalmazás csak egy szolgáltatásnévvel rendelkezik (a saját bérlőjében), melynek létrehozása és a használatának engedélyezése az alkalmazás regisztrációja során történik. A több-bérlős webalkalmazás/API is rendelkezik egy egyszerű szolgáltatás létrehozása minden bérlőben, ahol a felhasználó az adott bérlő hozzájárult annak használatához.
 
 > [!NOTE]
-> Az alkalmazás-objektumon végrehajtott módosításokat a rendszer csak az alkalmazás otthoni bérlője (a bérlő, ahol regisztrálva van) egyszerű szolgáltatásnév objektumában is megjeleníti. A több-bérlős alkalmazások esetében az Application objektum módosításai nem jelennek meg a fogyasztói bérlők egyszerű szolgáltatásaiban, amíg el nem távolítja a hozzáférést az [alkalmazás-hozzáférési paneljén](https://myapps.microsoft.com) , és nem ad vissza engedélyt.
+> Az alkalmazásobjektumon végrehajtott módosítások is megjelennek a szolgáltatásegyszerű objektumban az alkalmazás otthoni bérlőjében (az a bérlő, ahol regisztrálva volt). Több-bérlős alkalmazások esetén az alkalmazásobjektum módosításai nem jelennek meg a fogyasztói bérlők egyszerű szolgáltatásobjektumaiban, amíg a hozzáférést el nem távolítják az [alkalmazáshozzáférési panelen](https://myapps.microsoft.com) keresztül, és újra meg nem adják.
 >
-> Azt is vegye figyelembe, hogy a natív alkalmazások alapértelmezés szerint több-bérlőként vannak regisztrálva.
+> Azt is vegye figyelembe, hogy a natív alkalmazások alapértelmezés szerint több-bérlősként vannak regisztrálva.
 
 ## <a name="example"></a>Példa
 
-Az alábbi ábrán az alkalmazás alkalmazás-objektuma és a hozzá tartozó egyszerű szolgáltatásnév objektumok közötti kapcsolat látható az **HR**-alkalmazás nevű minta több-bérlős alkalmazás kontextusában. Ebben a példában három Azure AD-bérlő található:
+Az alábbi ábra az alkalmazás objektuma és a megfelelő egyszerű szolgáltatásobjektumok közötti kapcsolatot mutatja be egy **HR-alkalmazás**nevű minta több-bérlős alkalmazás környezetében. Ebben a példában három Azure AD-bérlő van:
 
-- **Adatum** – a **HR-alkalmazást** fejlesztő vállalat által használt bérlő
-- **Contoso** – a contoso szervezet által használt bérlő, amely a **HR-alkalmazás** fogyasztója
-- **Fabrikam** – a fabrikam-szervezet által használt bérlő, amely a **HR-alkalmazást** is használja
+- **Adatum** - A **HR alkalmazást** kifejlesztő cég által használt bérlő
+- **Contoso** – a Contoso szervezet által használt bérlő, amely a **HR-alkalmazás** fogyasztója
+- **Fabrikam** - A Fabrikam szervezet által használt bérlő, amely szintén felhasználja a **HR alkalmazást**
 
-![Kapcsolat az alkalmazás-objektum és az egyszerű szolgáltatásnév objektum között](./media/app-objects-and-service-principals/application-objects-relationship.svg)
+![Az alkalmazásobjektum és az egyszerű szolgáltatásobjektum közötti kapcsolat](./media/app-objects-and-service-principals/application-objects-relationship.svg)
 
-Ebben a példában a következő forgatókönyvben:
+Ebben a példában:
 
 | Lépés | Leírás |
 |------|-------------|
-| 1    | Az alkalmazás és a szolgáltatás egyszerű objektumainak létrehozásának folyamata az alkalmazás kezdőlapjának bérlője. |
-| 2    | Ha a contoso és a fabrikam rendszergazdája teljes körű beleegyezik, a rendszer létrehoz egy egyszerű szolgáltatásnév-objektumot a vállalat Azure AD-bérlőben, és hozzárendeli a rendszergazda által megadott engedélyeket. Azt is vegye figyelembe, hogy a HR-alkalmazás konfigurálható/úgy lett kialakítva, hogy engedélyezze a felhasználók számára az egyéni használatra való hozzájárulásukat. |
-| 3    | A HR-alkalmazás (contoso és Fabrikam) fogyasztói bérlői mindegyike saját egyszerű szolgáltatásnév-objektummal rendelkezik. Mindegyik azt jelenti, hogy az alkalmazás egy példányát futásidőben, a megfelelő rendszergazda által eljuttatott engedélyek szabályozzák. |
+| 1    | Az alkalmazás és a szolgáltatás egyszerű objektumainak létrehozása az alkalmazás otthoni bérlőjében. |
+| 2    | Amikor a Contoso és a Fabrikam-rendszergazdák teljes hozzájárulás, egy egyszerű szolgáltatás objektum jön létre a vállalat Azure AD-bérlő, és hozzárendelt e rendszergazda által megadott engedélyeket. Azt is vegye figyelembe, hogy a HR-alkalmazás konfigurálható/tervezhető úgy, hogy a felhasználók egyéni használatra engedélyezze a beleegyezést. |
+| 3    | A HR-alkalmazás (Contoso és Fabrikam) fogyasztói bérlői saját egyszerű szolgáltatásobjektummal rendelkeznek. Mindegyik az alkalmazás egy példányának futásidőben történő használatát jelöli, amelyet az adott rendszergazda által jóváhagyott engedélyek szabályoznak. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Az alkalmazás és a szolgáltatás egyszerű objektumainak lekérdezéséhez használhatja a [Microsoft Graph Explorert](https://developer.microsoft.com/graph/graph-explorer) is.
-- Az alkalmazás alkalmazás-objektumát a Microsoft Graph API, a [Azure Portal][AZURE-Portal] Application manifest Editor vagy az [Azure ad PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)segítségével érheti el, ahogyan azt a OData [alkalmazási entitása][MS-Graph-App-Entity]képviseli.
-- A Microsoft Graph API-n vagy az [Azure ad PowerShell-parancsmagokon](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)keresztül elérheti egy alkalmazás egyszerű szolgáltatásának objektumát, amelyet a OData [ServicePrincipal-entitása][MS-Graph-Sp-Entity]is képvisel.
+- A Microsoft [Graph Intézővel](https://developer.microsoft.com/graph/graph-explorer) lekérdezheti az alkalmazás és a szolgáltatásegyszerű objektumokat is.
+- Az alkalmazás objektuma a Microsoft Graph API, az [Azure Portal][AZURE-Portal] alkalmazásjegyzék-szerkesztője vagy az [Azure AD PowerShell-parancsmagokkal](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)érhető el, az OData-alkalmazás [entitása][MS-Graph-App-Entity]által képviselt.
+- Az alkalmazás egyszerű szolgáltatásobjektumát a Microsoft Graph API-n vagy az [Azure AD PowerShell-parancsmagokon](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)keresztül érheti el, az OData [ServicePrincipal entitása][MS-Graph-Sp-Entity]által képviselt.
 
 <!--Image references-->
 

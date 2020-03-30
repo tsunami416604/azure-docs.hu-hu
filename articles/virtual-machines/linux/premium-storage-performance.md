@@ -1,6 +1,6 @@
 ---
-title: 'Azure Premium Storage: Linux rendszerű virtuális gépek teljesítményének kialakítása | Microsoft Docs'
-description: Nagy teljesítményű alkalmazások tervezése az Azure Premium SSD Managed Disks használatával. A Premium Storage nagy teljesítményű, kis késleltetésű lemezes támogatást biztosít az Azure-Virtual Machines futó I/O-igényes számítási feladatokhoz.
+title: 'Azure Premium Storage: Tervezés linuxos virtuális gépeken | Microsoft dokumentumok'
+description: Nagy teljesítményű alkalmazásokat tervezz az Azure prémium szintű SSD-vel kezelt lemezekkel. A Prémium szintű storage nagy teljesítményű, alacsony késleltetésű lemeztámogatást nyújt az Azure virtuális gépeken futó I/O-igényű számítási feladatokhoz.
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
@@ -8,32 +8,32 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 9940ee4cfce9721ac65f2b3cf1469e180adfa098
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267143"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
+# <a name="azure-premium-storage-design-for-high-performance"></a>Prémium szintű Azure-tárhely: tervezés a nagy teljesítmény érdekében
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
 
 > [!NOTE]
-> Időnként előfordulhat, hogy a lemez teljesítményével kapcsolatos probléma valójában a hálózat szűk keresztmetszete. Ilyen helyzetekben érdemes optimalizálni a [hálózati teljesítményt](../../virtual-network/virtual-network-optimize-network-bandwidth.md).
+> Néha, mi feltűnik -hoz lenni korong előadás kérdés van valójában egy hálózat torlódás. Ilyen esetekben optimalizálnia kell a [hálózati teljesítményt.](../../virtual-network/virtual-network-optimize-network-bandwidth.md)
 >
-> Ha a lemez teljesítménytesztét keresi, tekintse meg a [lemez teljesítményértékelését](disks-benchmarks.md)ismertető cikket.
+> Ha ön látszó-hoz benchmark a lemezt, lásd a cikket [benchmarking a lemez](disks-benchmarks.md).
 >
-> Ha a virtuális gép támogatja a gyorsított hálózatkezelést, győződjön meg arról, hogy engedélyezve van. Ha nincs engedélyezve, a már telepített virtuális gépeken is engedélyezheti a Windows és [Linux](../../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) [rendszereken](../../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) .
+> Ha a virtuális gép támogatja a gyorsított hálózati, győződjön meg arról, hogy engedélyezve van. Ha nincs engedélyezve, engedélyezheti a már telepített virtuális gépeken [Windows](../../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) és [Linux](../../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms)rendszeren is.
 
-Mielőtt elkezdené, ha a Premium Storage új, először olvassa el az [Azure-lemez kiválasztása a IaaS virtuális gépekhez](disks-types.md) és [méretezhetőségi célokat a prémium szintű blob Storage-fiókokhoz](../../storage/blobs/scalability-targets-premium-page-blobs.md).
+Mielőtt elkezdené, ha még nem ért itáliai prémium szintű storage-t, először olvassa el az [Azure-lemeztípus kiválasztása iaaS virtuális gépekhez](disks-types.md) és [skálázhatósági célokat a prémium szintű lapblobstorage-fiókokhoz.](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
 
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]
 
-Ha a lemez teljesítménytesztét keresi, tekintse meg a [lemez teljesítményértékelését](disks-benchmarks.md)ismertető cikket.
+Ha ön látszó-hoz benchmark a lemezt, lásd a cikket [benchmarking a lemez](disks-benchmarks.md).
 
-További információ a rendelkezésre álló lemezek típusairól: [lemez típusának kiválasztása](disks-types.md)  
+További információ a rendelkezésre álló lemeztípusokról: [Lemeztípus kiválasztása](disks-types.md)  
 
-SQL Server felhasználók esetében olvassa el a SQL Server teljesítményére vonatkozó ajánlott eljárásokat ismertető cikket:
+SQL Server-felhasználók számára olvassa el az SQL Server teljesítményével kapcsolatos gyakorlati tanácsokról szóló cikkeket:
 
-* [Az Azure-beli SQL Server teljesítményének bevált eljárásai Virtual Machines](../windows/sql/virtual-machines-windows-sql-performance.md)
-* [Az Azure Premium Storage a legmagasabb teljesítményt nyújtja az Azure-beli virtuális gépek SQL Server számára](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)
+* [Gyakorlati tanácsok az SQL Server hez az Azure virtuális gépeken](../windows/sql/virtual-machines-windows-sql-performance.md)
+* [Az Azure Premium Storage a legnagyobb teljesítményt nyújtja az SQL Server számára az Azure VM-ben](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)

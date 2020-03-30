@@ -1,6 +1,6 @@
 ---
-title: Egyszeri bejelentkezés alkalmazásproxyval |} A Microsoft Docs
-description: Bemutatja, hogyan biztosít egyszeri bejelentkezés az Azure AD-alkalmazásproxy használatával.
+title: Egyszeri bejelentkezés alkalmazásproxyval | Microsoft dokumentumok
+description: Bemutatja, hogyan biztosítható egyszeri bejelentkezés az Azure AD alkalmazásproxy használatával.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,58 +17,58 @@ ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253454"
 ---
-# <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásokba az alkalmazásproxy használatával
+# <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos korlátozott delegálása az alkalmazásokba való egyszeri bejelentkezéshez alkalmazásproxyval
 
-Egyszeri bejelentkezés biztosíthatja a helyszíni Application Proxy védett integrált Windows-hitelesítés és a közzétett alkalmazásokhoz. Ezeket az alkalmazásokat egy Kerberos-jegyet megkövetelése a hozzáféréshez. Alkalmazásproxy ezeket az alkalmazásokat támogatja a Kerberos által korlátozott delegálás (KCD) használja. 
+Az integrált Windows-hitelesítéssel védett alkalmazásproxyn keresztül közzétett helyszíni alkalmazások hoz is biztosítható. Ezekhez az alkalmazásokhoz Kerberos-jegy szükséges a hozzáféréshez. Az alkalmazásproxy a Kerberos korlátozott delegálás (KCD) segítségével támogatja ezeket az alkalmazásokat. 
 
-Az alkalmazásproxy-összekötők jogosultság, így az Active Directory integrált Windows-hitelesítés (IWA) használatával a felhasználók megszemélyesítésére alkalmazások engedélyezheti az egyszeri bejelentkezés. Az összekötők küldjön és fogadjon a tokeneket a felhasználók nevében használja ezt az engedélyt.
+Az integrált Windows-hitelesítés (IWA) használatával engedélyezheti az alkalmazásokegyszeri bejelentkezést, ha az Active Directoryban engedélyt ad az alkalmazásproxy-összekötőknek a felhasználók megszemélyesítésére. Az összekötők ezt az engedélyt használják jogkivonatok küldésére és fogadására a nevükben.
 
-## <a name="how-single-sign-on-with-kcd-works"></a>Az egyszeri bejelentkezés KCD Works
-Ez a diagram ismerteti a folyamatot, amikor egy felhasználó egy IWA-t használó helyszíni alkalmazáshoz próbál hozzáférni.
+## <a name="how-single-sign-on-with-kcd-works"></a>Hogyan működik az egyszeri bejelentkezés a KCD-vel?
+Ez az ábra ismerteti a folyamatot, amikor a felhasználó megpróbál hozzáférni egy helyszíni alkalmazás, amely IWA-t használ.
 
-![A Microsoft AAD-hitelesítés folyamatábrája](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
+![Microsoft AAD hitelesítési folyamatdiagram](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
-1. A felhasználó beírja az URL-címet a helyszíni alkalmazás alkalmazás-proxyn keresztüli eléréséhez.
-2. Az alkalmazásproxy átirányítja a kérést az Azure AD authentication szolgáltatások tudnak preauthenticate. Ezen a ponton az Azure AD bármilyen megfelelő hitelesítési és engedélyezési házirendeket, mint a többtényezős hitelesítés vonatkozik. Ha a felhasználó érvényesítését, Azure ad-ben létrehoz egy jogkivonatot, és elküldi azokat a felhasználó.
-3. A felhasználó az alkalmazásproxy továbbítja a jogkivonatot.
-4. Az alkalmazásproxy érvényesíti a jogkivonatot, és lekérdezi az egyszerű felhasználónevet (UPN), majd az összekötő lekéri az egyszerű felhasználónevet és az egyszerű szolgáltatásnevet (SPN) egy kettős hitelesítésű biztonságos csatornán keresztül.
-5. Az összekötő Kerberos által korlátozott delegálás (KCD) egyeztetést végez a helyszíni AD-vel, megszemélyesítve a felhasználót, hogy Kerberos-jogkivonatot kapjon az alkalmazáshoz.
-6. Az Active Directory elküldi az alkalmazás az összekötő Kerberos-jogkivonat.
-7. Az összekötő az eredeti kérés küldése az application server, az AD-ből kapott Kerberos-jogkivonat használatával.
-8. Az alkalmazás visszaküldi a választ, az összekötőre, amelyet ezután visszaküld az alkalmazásproxy-szolgáltatás, és végül a felhasználó számára.
+1. A felhasználó adja meg az URL-címet a helyszíni alkalmazás eléréséhez alkalmazásproxyn keresztül.
+2. Az alkalmazásproxy átirányítja a kérelmet az Azure AD hitelesítési szolgáltatásaihoz az előzetes hitelesítéshez. Ezen a ponton az Azure AD alkalmazza a vonatkozó hitelesítési és engedélyezési szabályzatok, például a többtényezős hitelesítés. Ha a felhasználó érvényesítve van, az Azure AD létrehoz egy jogkivonatot, és elküldi azt a felhasználónak.
+3. A felhasználó átadja a jogkivonatot az alkalmazásproxynak.
+4. Az alkalmazásproxy ellenőrzi a jogkivonatot, és lekéri belőle a felhasználó egyszerű nevét (UPN), majd az összekötő lekéri az egyszerű felhasználónevet, és az egyszerű szolgáltatásnevet (SPN) egy kettős hitelesítésű biztonságos csatornán keresztül.
+5. Az összekötő kerberos-korlátozott delegálási (KCD) egyeztetést hajt végre a helyszíni AD-vel, megszemélyesítve a felhasználót, hogy Kerberos-jogkivonatot kapjon az alkalmazáshoz.
+6. Az Active Directory elküldi az alkalmazás Kerberos-jogkivonatát az összekötőnek.
+7. Az összekötő elküldi az eredeti kérelmet az alkalmazáskiszolgálónak az AD-től kapott Kerberos-token használatával.
+8. Az alkalmazás elküldi a választ az összekötőnek, amelyezután visszakerül az alkalmazásproxy szolgáltatásnak, és végül a felhasználónak.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Mielőtt elkezdené, az egyszeri bejelentkezés IWA alkalmazások számára, győződjön meg arról, hogy a környezet készen áll a következő beállításokat és konfigurációkat:
+Mielőtt elkezdene egyszeri bejelentkezést az IWA-alkalmazásokhoz, győződjön meg arról, hogy a környezet készen áll az alábbi beállításokkal és konfigurációkkal:
 
-* Az alkalmazások, mint például a SharePoint-webhely, az integrált Windows-hitelesítés használatára vannak beállítva. További információkért lásd: a [Kerberos-hitelesítés támogatásának engedélyezése](https://technet.microsoft.com/library/dd759186.aspx)vagy a sharepointhoz – lásd: a [Kerberos-hitelesítés tervezése a SharePoint 2013-ben](https://technet.microsoft.com/library/ee806870.aspx).
-* Minden alkalmazás rendelkezik [egyszerű szolgáltatásnév nevével](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spns-setspn-syntax-setspn-exe.aspx).
-* Az összekötő szolgáltatást futtató kiszolgáló és az alkalmazást futtató kiszolgáló olyan tartományhoz csatlakoztatott és a ugyanabban a tartományban vagy megbízható tartomány része. További információ a tartományhoz való csatlakozásról: [számítógép csatlakoztatása tartományhoz](https://technet.microsoft.com/library/dd807102.aspx).
-* Az összekötő szolgáltatást futtató kiszolgáló hozzáfér a értékűnek attribútum olvassa el a felhasználók számára. Ez az alapértelmezett beállítás előfordulhat, hogy rendelkezik lett által érintett biztonsági korlátozások a környezetben.
+* Az alkalmazások, például a SharePoint-webalkalmazások, integrált Windows-hitelesítést használnak. További információt a [Kerberos-hitelesítés támogatásának engedélyezése](https://technet.microsoft.com/library/dd759186.aspx)és a SharePoint része a [Kerberos-hitelesítés megtervezése a SharePoint 2013-ban című témakörben talál.](https://technet.microsoft.com/library/ee806870.aspx)
+* Minden alkalmazás egyszerű [szolgáltatásnévvel rendelkezik.](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spns-setspn-syntax-setspn-exe.aspx)
+* Az összekötőt futtató kiszolgáló és az alkalmazást futtató kiszolgáló tartományhoz csatlakozik, és ugyanannak a tartománynak vagy megbízható tartománynak a része. A tartományhoz való csatlakozásról a Csatlakozás tartományhoz című [témakörben talál](https://technet.microsoft.com/library/dd807102.aspx)további információt.
+* Az összekötőt futtató kiszolgáló rendelkezik hozzáféréssel a TokenGroupsGlobalAndUniversal attribútum olvasásához a felhasználók számára. Ez az alapértelmezett beállítás hatással lehet a környezet biztonsági megerősítésére.
 
 ### <a name="configure-active-directory"></a>Az Active Directory konfigurálása
-Az Active Directory konfigurálása az Application Proxy connector és az alkalmazáskiszolgáló vannak-e ugyanabban a tartományban, vagy nem függően változik.
+Az Active Directory konfigurációja attól függően változik, hogy az alkalmazásproxy-összekötő és az alkalmazáskiszolgáló ugyanabban a tartományban van-e vagy sem.
 
-#### <a name="connector-and-application-server-in-the-same-domain"></a>Összekötő és alkalmazás-kiszolgáló ugyanabban a tartományban
-1. A Active Directory területen válassza az **eszközök** > **felhasználók és számítógépek**lehetőséget.
-2. Válassza ki azt az összekötőt futtató kiszolgálón.
-3. Kattintson a jobb gombbal, és válassza a **tulajdonságok** > **delegálás**lehetőséget.
-4. Válassza a **számítógép megbízhatónak nyilvánítása csak a megadott szolgáltatások delegálásához**lehetőséget. 
-5. Válassza **a bármely hitelesítési protokoll használata**lehetőséget.
-6. Azon **szolgáltatások alatt, amelyekben ez a fiók delegált hitelesítő adatokat tud bemutatni** , adja hozzá az alkalmazáskiszolgáló SPN-identitásának értékét. Ez lehetővé teszi a felhasználók megszemélyesítésére az ad-ben az olyan alkalmazások, a listában megadott az alkalmazásproxy-összekötő.
+#### <a name="connector-and-application-server-in-the-same-domain"></a>Összekötő és alkalmazáskiszolgáló ugyanabban a tartományban
+1. Az Active Directory ban nyissa meg **az Eszközök** > **felhasználók és számítógépek**lehetőséget.
+2. Jelölje ki az összekötőt futtató kiszolgálót.
+3. Kattintson a jobb gombbal, és válassza a Tulajdonságok > **delegálása parancsot.** **Properties**
+4. Válassza **A számítógépen csak a megadott szolgáltatások delegálhatók** lehetőséget. 
+5. Válassza a **Bármely hitelesítési protokoll** lehetőséget.
+6. A **Szolgáltatások csoportban, amelynek ez a fiók delegált hitelesítő adatokat tud bemutatni,** adja hozzá az alkalmazáskiszolgáló SPN-identitásának értékét. Ez lehetővé teszi, hogy az alkalmazásproxy-összekötő megszemélyesítse az AD-ben lévő felhasználókat a listában definiált alkalmazásokkal szemben.
 
-   ![Összekötő – fenntartott példányok tulajdonságok ablak képernyőképe](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
+   ![Összekötő-SVR tulajdonságai ablak képernyőképe](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
 
-#### <a name="connector-and-application-server-in-different-domains"></a>Összekötő és az alkalmazáskiszolgáló eltérő tartományokban
-1. A tartományok közötti KCD-használat előfeltételeinek listáját a [Kerberos által korlátozott delegálás tartományok között](https://technet.microsoft.com/library/hh831477.aspx)című témakörben tekintheti meg.
-2. A webalkalmazáshoz tartozó szolgáltatásfiók (számítógép vagy dedikált tartományi felhasználói fiók) `principalsallowedtodelegateto` tulajdonságával engedélyezze a Kerberos-hitelesítés delegálását az alkalmazásproxy (összekötő) használatával. Az alkalmazáskiszolgáló a `webserviceaccount` kontextusában fut, és a delegált kiszolgáló `connectorcomputeraccount`. Futtassa az alábbi parancsokat egy tartományvezérlőn (Windows Server 2012 R2 vagy újabb rendszert futtatva) `webserviceaccount`tartományában. Mindkét fiókhoz használjon egyszerű neveket (nem UPN).
+#### <a name="connector-and-application-server-in-different-domains"></a>Összekötő és alkalmazáskiszolgáló különböző tartományokban
+1. A KCD tartományok közötti együttműködésének előfeltételeit a [Tartományok közötti Kerberos korlátozott delegálás című témakörben található.](https://technet.microsoft.com/library/hh831477.aspx)
+2. A `principalsallowedtodelegateto` webalkalmazás szolgáltatásfiókjának (számítógép ének vagy dedikált tartományi felhasználói fiókjának) tulajdonságával engedélyezheti a Kerberos hitelesítésdelegálást az alkalmazásproxyról (összekötő). Az alkalmazáskiszolgáló a környezetében `webserviceaccount` fut, és a `connectorcomputeraccount`delegáló kiszolgáló . Futtassa az alábbi parancsokat egy tartományvezérlőn (Windows Server 2012 `webserviceaccount`R2 vagy újabb rendszert futtatva) a tartományban. Mindkét fiókhoz használjon síkneveket (nem UPN).
 
-   Ha a `webserviceaccount` egy számítógépfiók, használja a következő parancsokat:
+   Ha `webserviceaccount` számítógépfiókról van-e itt, használja az alábbi parancsokat:
 
    ```powershell
    $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
@@ -78,7 +78,7 @@ Az Active Directory konfigurálása az Application Proxy connector és az alkalm
    Get-ADComputer webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
    ```
 
-   Ha a `webserviceaccount` felhasználói fiók, használja a következő parancsokat:
+   Ha `webserviceaccount` felhasználói fiók, használja az alábbi parancsokat:
 
    ```powershell
    $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
@@ -89,73 +89,73 @@ Az Active Directory konfigurálása az Application Proxy connector és az alkalm
    ```
 
 ## <a name="configure-single-sign-on"></a>Egyszeri bejelentkezés konfigurálása 
-1. Tegye közzé az alkalmazást az Application [proxyval történő alkalmazások közzététele](application-proxy-add-on-premises-application.md)című részben leírt utasítások szerint. Győződjön meg arról, hogy a **Azure Active Directory** az **előhitelesítési módszerként**van kiválasztva.
-2. Miután az alkalmazás megjelenik a vállalati alkalmazások listájában, jelölje ki, majd kattintson az **egyszeri bejelentkezés**elemre.
-3. Az egyszeri bejelentkezési mód beállítása az **integrált Windows-hitelesítésre**.  
-4. Adja meg az alkalmazáskiszolgáló **belső alkalmazásspecifikus egyszerű szolgáltatásnevet** . Ebben a példában a közzétett alkalmazás egyszerű Szolgáltatásnevét http/www.contoso.com. Ezt az SPN kell lennie, amelyhez az összekötőt használhat delegált hitelesítő adatokat a szolgáltatások listájában. 
-5. Válassza ki az összekötő **meghatalmazott bejelentkezési azonosítóját** , amelyet a felhasználók nevében kíván használni. További információ: [a különböző helyszíni és Felhőbeli identitások használata](#working-with-different-on-premises-and-cloud-identities)
+1. Tegye közzé az alkalmazást az [Alkalmazások közzététele alkalmazásproxyval](application-proxy-add-on-premises-application.md)című könyvben leírtaknak megfelelően. Győződjön meg arról, hogy az **Azure Active Directoryt** **választja előhitelesítési módszerként.**
+2. Miután az alkalmazás megjelenik a vállalati alkalmazások listájában, jelölje ki, és kattintson **az Egyszeri bejelentkezés gombra.**
+3. Állítsa az egyszeri bejelentkezési módot **integrált Windows-hitelesítésre.**  
+4. Adja meg az alkalmazáskiszolgáló **belső alkalmazás-spelét.** Ebben a példában a közzétett alkalmazás spn http/www.contoso.com. Ennek az egész szolgáltatásnévnek szerepelnie kell azon szolgáltatások listájában, amelyekhez az összekötő delegált hitelesítő adatokat tud bemutatni. 
+5. Válassza ki a **delegált bejelentkezési identitást** az összekötő számára a felhasználók nevében használandó. További információ: [A különböző helyszíni és felhőalapú identitások megtekintése](#working-with-different-on-premises-and-cloud-identities)
 
-   ![Speciális alkalmazás konfigurációja](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
+   ![Speciális alkalmazáskonfiguráció](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 
 
-## <a name="sso-for-non-windows-apps"></a>Egyszeri bejelentkezés nem Windows-alkalmazások
+## <a name="sso-for-non-windows-apps"></a>Egyszeri szolgáltatás nem Windows-alkalmazásokhoz
 
-A Kerberos-delegálás folyamat az Azure AD-alkalmazásproxy akkor kezdődik, amikor az Azure AD akkor hitelesíti a felhasználót a felhőben. A kérelem érkezik a helyszíni, miután az Azure AD-alkalmazásproxy-összekötő szerint a helyi Active Directoryval folytatott bocsát ki egy Kerberos-jegyet a felhasználó nevében. Ez a folyamatnak a neve, a Kerberos által korlátozott delegálás (KCD). A következő szakaszban kérelmet küldött a a Kerberos-jegyet a háttéralkalmazás. 
+A Kerberos-delegálási folyamat az Azure AD alkalmazásproxy ban akkor kezdődik, amikor az Azure AD hitelesíti a felhasználót a felhőben. Miután a kérelem megérkezik a helyszínen, az Azure AD alkalmazásproxy-összekötő kerberos-jegyet ad ki a felhasználó nevében a helyi Active Directoryval való együttműködéssel. Ezt a folyamatot Kerberos korlátozott delegálásnak (KCD) nevezik. A következő fázisban a rendszer egy kérelmet küld a háttéralkalmazásnak ezzel a Kerberos-jeggyel. 
 
-Nincsenek több protokollok, amelyek meghatározzák az ilyen kérések küldése. A legtöbb nem Windows-kiszolgálók várhatóan SPNEGO egyeztetni. Ez a protokoll támogatott az Azure AD-alkalmazásproxy, de alapértelmezés szerint le van tiltva. Egy kiszolgáló SPNEGO vagy standard szintű kcd Szolgáltatáshoz konfigurált, de nem mindkettőn is lehet.
+Számos protokoll határozza meg az ilyen kérések küldésének módját. A legtöbb nem Windows rendszerű kiszolgáló az SPNEGO-val szeretne tárgyalni. Ez a protokoll támogatja az Azure AD alkalmazásproxy, de alapértelmezés szerint le van tiltva. A kiszolgáló spnego-hoz vagy szabványos KCD-hez konfigurálható, de mindkettőre nem.
 
-Ha konfigurál egy összekötőt gép SPNEGO számára, ügyeljen arra, hogy az adott összekötő csoportban minden más összekötők is állítottak SPNEGO. Standard KCD várt alkalmazásokat, amelyek nincsenek beállítva SPNEGO más összekötőkön keresztül kell átirányítani.
+Ha egy csatlakozógépet konfigurál az SPNEGO-hoz, győződjön meg arról, hogy az adott összekötő csoport összes többi csatlakozója is konfigurálva van az SPNEGO-val. A szabványos KCD-t váró alkalmazásokat más, SPNEGO-hoz nem konfigurált csatlakozókon keresztül kell irányítani.
  
 
-SPNEGO engedélyezése:
+A SPNEGO engedélyezése:
 
-1. Nyisson meg egy parancssort, hogy rendszergazdaként futtatja.
-2. A parancssorból futtassa az alábbi parancsokat a SPNEGO igénylő összekötő-kiszolgálók.
+1. Nyisson meg egy rendszergazdaként futó parancssort.
+2. A parancssorból futtassa a következő parancsokat az spNEGO-t igénylő összekötő kiszolgálókon.
 
     ```
     REG ADD "HKLM\SOFTWARE\Microsoft\Microsoft AAD App Proxy Connector" /v UseSpnegoAuthentication /t REG_DWORD /d 1
     net stop WAPCSvc & net start WAPCSvc
     ```
 
-További információ a Kerberosról: [minden, amit tudni szeretne a Kerberos által korlátozott delegálásról (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd).
+A Kerberosról további információt a [Kerberos korlátozott delegálásról (KCD) szeretne tudni.](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd)
 
-Nem-Windows-alkalmazások általában felhasználói felhasználónevek vagy a SAM-fiókok nevét tartomány helyett e-mail-címek. Ilyen esetekben az alkalmazások vonatkozik, ha szüksége konfigurálja a felhőbeli identitások csatlakozni a alkalmazás identitások delegált bejelentkezési azonosító mezőjét. 
+A nem Windows-alkalmazások általában felhasználóneveket vagy SAM-fiókneveket neveznek meg a tartományi e-mail címek helyett. Ha ez a helyzet vonatkozik az alkalmazásokra, konfigurálnia kell a delegált bejelentkezési identitásmezőt, hogy a felhőidentitások az alkalmazás identitásokhoz kapcsolódjanak. 
 
-## <a name="working-with-different-on-premises-and-cloud-identities"></a>A különböző helyszíni és felhőbeli identitások
-Az alkalmazásproxy azt feltételezi, hogy a felhasználók pontosan ugyanaz az identitás a felhőben és a helyszínen rendelkeznek. Bizonyos környezetekben azonban a vállalati házirendek vagy az alkalmazás függőségei miatt előfordulhat, hogy a szervezeteknek alternatív azonosítókat kell használniuk a bejelentkezéshez. Ilyen esetekben továbbra is használhatja a KCD az egyszeri bejelentkezéshez. Konfiguráljon egy **meghatalmazott bejelentkezési azonosítót** az egyes alkalmazásokhoz, hogy megadják, melyik identitást kell használni az egyszeri bejelentkezés végrehajtásakor.  
+## <a name="working-with-different-on-premises-and-cloud-identities"></a>Különböző helyszíni és felhőalapú identitások közös munkálatai
+Az alkalmazásproxy feltételezi, hogy a felhasználók pontosan ugyanazzal az identitással rendelkeznek a felhőben és a helyszíni környezetben. Bizonyos környezetekben azonban a vállalati házirendek vagy az alkalmazásfüggőségek miatt előfordulhat, hogy a szervezeteknek alternatív azonosítókat kell használniuk a bejelentkezéshez. Ilyen esetekben továbbra is használhatja a KCD egyszeri bejelentkezéshez. Konfiguráljon **delegált bejelentkezési identitást** minden alkalmazáshoz, és adja meg, hogy melyik identitást kell használni az egyszeri bejelentkezéshez.  
 
-Ez a funkció lehetővé teszi, hogy számos különböző helyszíni és felhőalapú Identitások kell SSO a felhőből helyszíni alkalmazásokat anélkül, hogy a felhasználók különböző felhasználónevek és jelszavak rendelkező szervezeteknek. Ez magában foglalja a szervezetek, amelyek:
+Ez a funkció lehetővé teszi, hogy számos szervezet, amely különböző helyszíni és felhőalapú identitások, hogy egyszeri bejelentkezés a felhőből a helyszíni alkalmazások anélkül, hogy a felhasználók különböző felhasználóneveket és jelszavakat. Ide tartoznak azok a szervezetek is, amelyek:
 
-* Több tartományon belül (joe@us.contoso.com, joe@eu.contoso.com) és a felhőben egyetlen tartományba (joe@contoso.com) kell lennie.
-* A nem átirányítható tartománynevet belsőleg (joe@contoso.usa) és egy, a felhőben található jogi területen kell megmutatni.
-* Belsőleg nem használja a tartománynevek (joe)
-* Használjon különböző aliasokat a helyszínen és a felhőben. Például joe-johns@contoso.com vs. joej@contoso.com  
+* Több tartomány belső (joe@us.contoso.com joe@eu.contoso.com, ) és egy tartományjoe@contoso.coma felhőben ( ).
+* A nem irányítható tartománynévjoe@contoso.usabelső ( ) és egy jogi a felhőben.
+* Ne használjon tartományneveket belsőleg (joe)
+* Különböző aliasokat használhat a helyszínen és a felhőben. Például, joe-johns@contoso.com vs.joej@contoso.com  
 
-A proxyval kiválaszthatja, melyik identitás a Kerberos-jegy beszerzéséhez használhatnak. Ez a beállítás akkor alkalmazásonként. Ezek a beállítások némelyike rendszerek, amelyek nem fogadja el az e-mail cím formátuma megfelelő, mások alternatív bejelentkezési lettek kialakítva.
+Az alkalmazásproxyval kiválaszthatja, hogy melyik identitást használja a Kerberos-jegy megszerzéséhez. Ez a beállítás alkalmazásonként. Néhány ilyen lehetőség alkalmas rendszerek, amelyek nem fogadják el az e-mail cím formátum, mások célja az alternatív bejelentkezés.
 
 ![Delegált bejelentkezési azonosító paraméter képernyőképe](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_upn.png)
 
-Delegált bejelentkezési azonosító használata esetén az érték nem egyedi a tartományok és erdők a szervezet között. A probléma elkerüléséhez tegye közzé kétszer használatával két különböző összekötőcsoportok ezeket az alkalmazásokat. Minden alkalmazás rendelkezik egy másik felhasználói közönség számára, mivel az összekötők csatlakozhat egy másik tartományba.
+Delegált bejelentkezési identitás esetén előfordulhat, hogy az érték nem egyedi a szervezet összes tartományában vagy erdőjében. Ezt a problémát úgy kerülheti el, hogy két különböző összekötőcsoport használatával kétszer közzéteszi ezeket az alkalmazásokat. Mivel minden alkalmazás más felhasználói közönséggel rendelkezik, az összekötők egy másik tartományhoz csatlakozhat.
 
-### <a name="configure-sso-for-different-identities"></a>Egyszeri bejelentkezés konfigurálása a különböző identitások
-1. Az Azure AD Connect-beállítások konfigurálása, így a fő identitását az e-mail-cím (levelezés). Ez a testreszabási folyamat részeként a szinkronizálási beállítások **egyszerű felhasználónév** mezőjének módosításával történik. Ezek a beállítások is határozzák hogyan való felhasználói bejelentkezés Office 365, Windows 10-es eszközök, és egyéb alkalmazásokhoz, amelyek az Azure AD használatára az ügyfélidentitás-tárolóval.  
-   a felhasználók azonosításának ![képernyőképe – egyszerű felhasználónév legördülő](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_connect_settings.png)  
-2. A módosítandó alkalmazás konfigurációs beállításainál válassza ki a használni kívánt **delegált bejelentkezési azonosítót** :
+### <a name="configure-sso-for-different-identities"></a>Az SSO konfigurálása különböző identitásokhoz
+1. Konfigurálja az Azure AD Connect beállításait, hogy a fő identitás az e-mail cím (e-mail). Ez a testreszabási folyamat részeként történik, a szinkronizálási beállítások **egyszerű felhasználónév** mezőjének módosításával. Ezek a beállítások azt is meghatározzák, hogy a felhasználók hogyan jelentkezzenek be az Office365-be, a Windows10-eszközökbe és más alkalmazásokba, amelyek az Azure AD-t használják identitástárolóként.  
+   ![Felhasználók azonosítása képernyőkép – Egyszerű felhasználónév legördülő menü](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_connect_settings.png)  
+2. A módosítani kívánt alkalmazás konfigurációs beállításai között válassza ki a használni kívánt **delegált bejelentkezési identitást:**
 
-   * Egyszerű felhasználónév (például joe@contoso.com)
-   * Másodlagos egyszerű felhasználónév (például joed@contoso.local)
-   * (Például joe) egyszerű felhasználónév felhasználónév része
-   * Alternatív egyszerű felhasználónév (például joed) felhasználónév része
-   * A helyi SAM-fiók neve (a tartományvezérlő konfigurációja függ)
+   * Egyszerű felhasználónév (például) joe@contoso.com
+   * Alternatív egyszerű felhasználónév (például joed@contoso.local)
+   * Az egyszerű felhasználónév része (például joe)
+   * Az Alternatív egyszerű felhasználónév felhasználónév része (például joed)
+   * Helyszíni SAM-fiók neve (a tartományvezérlő konfigurációjától függ)
 
-### <a name="troubleshooting-sso-for-different-identities"></a>Egyszeri bejelentkezés hibaelhárítása a különböző identitások
-Ha az egyszeri bejelentkezés folyamata során hiba lép fel, az az összekötő számítógép eseménynaplójában jelenik meg, a [Hibaelhárítás](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)során.
-De egyes esetekben a sikeresen irányuló kérést küld a háttéralkalmazás az alkalmazás válaszol a különböző HTTP-válaszok során. Ezekben az esetekben hibaelhárítási el kell indítaniuk az alkalmazásproxy-munkamenet eseménynaplóban összekötő gépen 24029 eseményazonosítóval megvizsgálásával. A felhasználói identitás delegálásához használt belül az esemény részleteinek a "user" mezőjében jelenik meg. A munkamenet-napló bekapcsolásához válassza az **elemzési és hibakeresési naplók megjelenítése** lehetőséget az Eseménynapló Nézet menüjében.
+### <a name="troubleshooting-sso-for-different-identities"></a>Az SSO hibáinak elhárítása a különböző identitások esetén
+Ha hiba történik az SSO-folyamatban, az megjelenik az összekötő gép eseménynaplójában a [hibaelhárítás magyarázata szerint.](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+De bizonyos esetekben a kérelem sikeresen elküldve a háttéralkalmazásnak, miközben ez az alkalmazás válaszol a különböző más HTTP-válaszok. Az esetek hibaelhárítása az alkalmazásproxy-munkamenet eseménynaplójában az összekötő gépen lévő 24029-es eseményszám vizsgálatával kezdődhet. A delegáláshoz használt felhasználói identitás az esemény részleteinek "felhasználó" mezőjében jelenik meg. A munkamenetnapló bekapcsolásához válassza az Eseménynapló nézet menüjében az **Analitikus és hibakeresési naplók megjelenítése** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Alkalmazásproxy-alkalmazás konfigurálása a Kerberos által korlátozott delegálás használatára](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [Az Application proxyval kapcsolatos problémák elhárítása](application-proxy-troubleshoot.md)
+* [Alkalmazásproxy-alkalmazás konfigurálása a Kerberos korlátozott delegáláshasználatára](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+* [Az alkalmazásproxyval kapcsolatos problémák hibaelhárítása](application-proxy-troubleshoot.md)
 
 
 A legújabb híreket és frissítéseket itt találja: [Alkalmazásproxy blog](https://blogs.technet.com/b/applicationproxyblog/).

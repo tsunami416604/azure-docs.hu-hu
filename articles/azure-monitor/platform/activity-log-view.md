@@ -1,6 +1,6 @@
 ---
-title: Azure-Tevékenységnaplók eseményeinek megtekintése Azure Monitor
-description: Megtekintheti az Azure-beli tevékenység naplóját Azure Monitor és beolvashatja a PowerShell, a CLI és a REST API.
+title: Az Azure-tevékenységnapló eseményeinek megtekintése az Azure Monitorban
+description: Tekintse meg az Azure-tevékenységnaplót az Azure Monitorban, és olvassa be a PowerShell, a CLI és a REST API használatával.
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
@@ -8,59 +8,59 @@ ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275047"
 ---
-# <a name="view-and-retrieve-azure-activity-log-events"></a>Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése
+# <a name="view-and-retrieve-azure-activity-log-events"></a>Az Azure-tevékenységnapló eseményeinek megtekintése és beolvasása
 
-Az [Azure-tevékenység naplója](platform-logs-overview.md) betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. Ez a cikk a tevékenységek naplózási eseményeinek megtekintésére és beolvasására szolgáló különböző módszerekkel kapcsolatos információkat tartalmazza.
+Az [Azure-tevékenységnapló](platform-logs-overview.md) betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekbe. Ez a cikk a tevékenységnapló-események megtekintésének és beolvasásának különböző módszereit ismerteti.
 
-## <a name="azure-portal"></a>Azure Portal
-A Azure Portal **figyelő** menüjében tekintse meg a tevékenység naplóját az összes erőforráshoz. Egy adott erőforráshoz tartozó tevékenység naplójának megtekintése az erőforrás menüjének **tevékenység napló** lehetőségével.
+## <a name="azure-portal"></a>Azure portál
+Tekintse meg az összes erőforrás tevékenységnaplóját az Azure Portal **Monitor** menüjéből. Egy adott erőforrás tevékenységnaplójának megtekintése az adott erőforrás **menüjének Tevékenységnapló** beállításából.
 
-![Műveletnapló megtekintése](./media/activity-logs-overview/view-activity-log.png)
+![Tevékenységnapló megtekintése](./media/activity-logs-overview/view-activity-log.png)
 
-A tevékenységek naplózási eseményeit a következő mezők alapján szűrheti:
+A tevékenységnapló-eseményeket a következő mezők szerint szűrheti:
 
-* **TimeSpan**: az események kezdési és befejezési időpontja.
-* **Kategória**: az esemény kategóriája, a [tevékenység naplójának kategóriák részében](activity-log-view.md#categories-in-the-activity-log)leírtak szerint.
-* **Előfizetés**: egy vagy több Azure-előfizetés neve.
-* **Erőforráscsoport**: egy vagy több erőforráscsoport a kijelölt előfizetéseken belül.
-* **Erőforrás (név)** : – egy adott erőforrás neve.
-* **Erőforrás típusa**: az erőforrás típusa, például _Microsoft. számítási/virtualmachines_.
-* **Művelet neve** – egy Azure Resource Manager művelet neve, például _Microsoft. SQL/Servers/Write_.
-* **Súlyosság**: az esemény súlyossági szintje. Az elérhető értékek: _tájékoztató_, _Figyelmeztetés_, _hiba_, _kritikus_.
-* **Esemény kezdeményezője**: a műveletet végrehajtó felhasználó.
-* **Nyissa meg a keresést**: Nyissa meg a szöveges keresőmezőt, amely az összes esemény összes mezőjében megkeresi a karakterláncot.
+* **Timespan**: Az események kezdési és befejezési időpontja.
+* **Kategória**: A [tevékenységnapló kategóriák ban](activity-log-view.md#categories-in-the-activity-log)leírt eseménykategória .
+* **Előfizetés**: Egy vagy több Azure-előfizetés neve.
+* **Erőforráscsoport**: Egy vagy több erőforráscsoport a kijelölt előfizetéseken belül.
+* **Erőforrás (név)**: - Egy adott erőforrás neve.
+* **Erőforrás típusa**: Az erőforrás típusa, például _Microsoft.Compute/virtualmachines_.
+* **Művelet neve** - Egy Azure Resource Manager-művelet neve, például _Microsoft.SQL/servers/Write_.
+* **Súlyosság**: Az esemény súlyossági szintje. A rendelkezésre álló értékek _a következők: Tájékoztató_, _Figyelmeztetés_, _Hiba_, _Kritikus_.
+* **Esemény által kezdeményezett**: A felhasználó, aki a műveletet végrehajtotta.
+* **Keresés**megnyitása: Nyissa meg a szövegkeresőt, amely az adott karakterláncot keresi az összes esemény összes mezőjében.
 
-## <a name="categories-in-the-activity-log"></a>Kategóriák a tevékenység naplójában
-A tevékenység naplójának minden eseménye egy adott kategóriával rendelkezik, amelyet az alábbi táblázat ismertet. A kategóriák sémák kapcsolatos részletes információkért lásd: [Azure Activity napló esemény sémája](activity-log-schema.md). 
+## <a name="categories-in-the-activity-log"></a>Kategóriák a tevékenységnaplóban
+A tevékenységnapló ban minden eseményhez tartozik egy adott kategória, amelyet az alábbi táblázat ismertet. A kategóriák séma részleteiről az Azure [Activity Log eseményséma](activity-log-schema.md)című témakörben talál részletesinformációt. 
 
 | Kategória | Leírás |
 |:---|:---|
-| Adminisztratív | A Resource Manageren keresztül végrehajtott összes létrehozási, frissítési, törlési és műveleti művelet rekordját tartalmazza. Ilyenek például a _virtuális gépek létrehozása_ és a _hálózati biztonsági csoport törlése_.<br><br>Egy felhasználó vagy alkalmazás által a Resource Managerrel végrehajtott összes művelet egy adott erőforrástípus műveletének megfelelően van modellezve. Ha a művelet típusa _írás_, _Törlés_vagy _művelet_, akkor a művelet kezdési és sikerességi rekordjait is rögzíti a rendszer a felügyeleti kategóriában. A rendszergazdai események az előfizetés szerepköralapú hozzáférés-vezérlésének változásait is tartalmazzák. |
-| Service Health | Az Azure-ban történt összes szolgáltatás-egészségügyi incidens rekordját tartalmazza. Az _USA keleti régiójában SQL Azure Service Health eseménynek például állásidőt tapasztalhat_. <br><br>Az események Service Health hat fajta: _beavatkozás szükséges_, _támogatott helyreállítás_, _incidens_, _karbantartás_, _információ_vagy _Biztonság_. Ezek az események csak akkor jönnek létre, ha van olyan erőforrása az előfizetésben, amelyet az esemény érint.
-| Resource Health | Az Azure-erőforrásokra vonatkozó összes erőforrás-állapottal kapcsolatos esemény rekordját tartalmazza. Resource Health eseményre például a _virtuális gép állapota nem érhető el értékre módosult_.<br><br>Resource Health események a négy állapot egyikét jelezhetik: _elérhető_, nem _elérhető_, _csökkentett teljesítményű_és _ismeretlen_. Emellett Resource Health eseményeket úgy is kategorizálhatja, hogy _platform kezdeményezett_ vagy _felhasználó által kezdeményezett_. |
-| Riasztás | Az Azure-riasztások aktiválási rekordját tartalmazza. Egy riasztási esemény például a _MyVM CPU%-a az elmúlt 5 percben 80_.|
-| Automatikus méretezés | Az adott előfizetésben definiált bármely, az autoskálázási motor működésével kapcsolatos események rekordját tartalmazza. Az autoskálázási eseményre például _nem sikerült a vertikális Felskálázási művelet_. |
-| Ajánlás | A Azure Advisor ajánlásainak eseményeit tartalmazza. |
-| Biztonság | A Azure Security Center által generált riasztások rekordját tartalmazza. A biztonsági eseményekre példaként a rendszer _gyanús kettős kiterjesztésű fájlt futtat_. |
-| Szabályzat | A Azure Policy által végrehajtott összes hatás művelet műveleteit tartalmazza. Példák a házirendi eseményekre: _naplózás_ és _Megtagadás_. A házirend által végrehajtott összes művelet az erőforráson végzett műveletként van modellezve. |
+| Adminisztratív | Az Erőforrás-kezelőn keresztül végrehajtott összes létrehozási, frissítési, törlési és műveletművelet rekordját tartalmazza. A felügyeleti események közé tartozik például a _virtuális gép létrehozása_ és a hálózati biztonsági csoport _törlése._<br><br>Az Erőforrás-kezelőt használó felhasználó vagy alkalmazás minden művelete egy adott erőforrástípus műveleteként van modellezve. Ha a művelet típusa _Írás_, _Törlés_vagy _Művelet_, a művelet kezdetének és sikeressének rekordjai a Felügyeleti kategóriában kerülnek rögzítésre. A felügyeleti események közé tartozik az előfizetés szerepköralapú hozzáférés-vezérlése módosításai is. |
+| Service Health | Az Azure-ban előforduló szolgáltatásállapot-incidensek rekordját tartalmazza. Egy példa egy Service Health esemény _SQL Azure-ban az USA keleti részén tapasztalható állásidő._ <br><br>A Szolgáltatás-egészségügyi események hat fajtából származnak: _Cselekvés szükséges,_ _támogatott helyreállítás,_ _incidens,_ _karbantartás_, _információ_vagy _biztonság_. Ezek az események csak akkor jönnek létre, ha rendelkezik egy erőforrással az előfizetésben, amelyhatással lenne az esemény.
+| Resource Health | Az Azure-erőforrásokban előforduló erőforrás-állapotesemények rekordját tartalmazza. Erőforrás-állapot esemény például a _virtuális gép állapota nem érhető el._<br><br>Az erőforrás-egészségügyi események a következő négy állapot egyikét képviselhetik: _Elérhető_, _Nem érhető el_, _Degradálva_és _Ismeretlen_. Ezenkívül az erőforrás-állapotesemények _platform által kezdeményezettként_ vagy _felhasználó által kezdeményezettnek minősíthetők._ |
+| Riasztás | Az Azure-riasztások aktiválásainak rekordját tartalmazza. Egy riasztási esemény például a _myVM CPU%-a az elmúlt 5 percben több mint 80 volt._|
+| Automatikus méretezés | Az automatikus skálázási motor működésével kapcsolatos események rekordját tartalmazza az előfizetésben megadott automatikus skálázási beállítások alapján. Az automatikus skálázási esemény rekreált például az _automatikus skálázási felskálázási művelet sikertelen._ |
+| Ajánlás | Az Azure Advisor ajánlási eseményeit tartalmazza. |
+| Biztonság | Az Azure Security Center által létrehozott riasztások rekordját tartalmazza. Biztonsági esemény például a _gyanús kettős kiterjesztésű fájl végrehajtása._ |
+| Szabályzat | Az Azure Policy által végrehajtott összes hatásművelet rekordjait tartalmazza. A házirend-események közé tartozik _például_ a Naplózás és _a Megtagadás_. A szabályzat által végrehajtott minden művelet egy erőforrás-műveletként van modellezve. |
 
-## <a name="view-change-history"></a>Változási előzmények megtekintése
+## <a name="view-change-history"></a>Módosítási előzmények megtekintése
 
-A tevékenység naplójának áttekintésekor a művelet segíthet megtekinteni, hogy milyen változások történtek az adott esemény ideje alatt. Ezeket az információkat megtekintheti a **változások előzményeivel**. Válasszon ki egy olyan eseményt a tevékenységi naplóból, amelyet mélyebbre szeretne keresni. Az eseményhez kapcsolódó módosítások megtekintéséhez válassza a **change History (előzetes verzió)** lapot.
+A tevékenységnapló áttekintésekénsegíthet annak áttekintésében, hogy milyen változások történtek az adott esemény ideje alatt. Ezt az információt a **Módosítási előzmények**között tekintheti meg. Válasszon ki egy eseményt a tevékenységnaplóból, amelybe mélyebbre szeretne tekinteni. Az eseményhez kapcsolódó módosítások megtekintéséhez válassza a **Módosítási előzmények (Előnézet)** lapot.
 
-![Eseményhez tartozó előzmények listájának módosítása](media/activity-logs-overview/change-history-event.png)
+![Esemény előzménylistájának módosítása](media/activity-logs-overview/change-history-event.png)
 
-Ha az eseményhez kapcsolódó változások vannak, akkor a kiválasztott módosítások listája látható. Ekkor megnyílik a **change History (előzetes verzió)** oldal. Ezen a lapon láthatja az erőforrás módosításait. Ahogy az alábbi példában is látható, láthatjuk, hogy a virtuális gép mérete nem változik, de a virtuális gép korábbi mérete a változás előtt volt, és a módosult.
+Ha az eseményhez bármilyen módosítás tartozik, megjelenik a választható módosítások listája. Ez megnyitja a **Módosítási előzmények (Előnézet)** lapot. Ezen a lapon láthatja az erőforrás módosításait. Amint a következő példából látható, láthatjuk, hogy nem csak, hogy a virtuális gép mérete megváltozott, de mi az előző virtuális gép mérete volt, mielőtt a módosítás, és mi volt módosítva.
 
-![Változások az előzmények között oldalon látható különbségek](media/activity-logs-overview/change-history-event-details.png)
+![Különbségeket megjelenítő véleményváltozási lap](media/activity-logs-overview/change-history-event-details.png)
 
-További információ a változási előzményekről: [erőforrás-változások beolvasása](../../governance/resource-graph/how-to/get-resource-changes.md).
+Ha többet szeretne megtudni a módosítási előzményekről, olvassa el az [Erőforrás-módosítások beszerezni című témakört.](../../governance/resource-graph/how-to/get-resource-changes.md)
 
 
 
@@ -68,43 +68,43 @@ További információ a változási előzményekről: [erőforrás-változások 
 
 
 ## <a name="powershell"></a>PowerShell
-A [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) parancsmaggal kérheti le a tevékenység naplóját a powershellből. Az alábbiakban néhány gyakori példát talál.
+A [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) parancsmag segítségével a PowerShell ből a tevékenységnapló t. Az alábbiakban néhány gyakori példa látható.
 
 > [!NOTE]
-> `Get-AzLog` csak a 15 napos előzményeket biztosítja. Használja a **-MaxEvents** paramétert az utolsó N esemény lekérdezésére 15 napon belül. A 15 napnál régebbi események eléréséhez használja a REST API vagy az SDK-t. Ha **nem tartalmazza az**időpontot, az alapértelmezett érték a **befejezési időpont** mínusz egy óra. Ha nem tartalmazza a **befejezési**időt, az alapértelmezett érték az aktuális idő. Minden alkalommal UTC-ben van.
+> `Get-AzLog`csak 15 napos történelmet biztosít. A **-MaxEvents** paraméterrel 15 napon túl is lekérdezheti az utolsó N-eseményeket. A 15 napnál régebbi események eléréséhez használja a REST API-t vagy az SDK-t. Ha nem adja meg a **StartTime**értéket, akkor az alapértelmezett érték **az EndTime** mínusz egy óra. Ha nem adja meg **az EndTime**értéket, akkor az alapértelmezett érték az aktuális idő. Minden alkalommal utc-ben van.
 
 
-Megadott időpontot követően létrehozott naplóbejegyzések beolvasása:
+Adott dátum után létrehozott naplóbejegyzések betöltése:
 
 ```powershell
 Get-AzLog -StartTime 2016-03-01T10:30
 ```
 
-Naplóbejegyzések beolvasása a dátum időintervalluma között:
+Naplóbejegyzések betöltése a dátumidő-tartomány között:
 
 ```powershell
 Get-AzLog -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
-Naplóbejegyzések beolvasása egy adott erőforráscsoporthoz:
+Naplóbejegyzések beszereznie egy adott erőforráscsoportból:
 
 ```powershell
 Get-AzLog -ResourceGroup 'myrg1'
 ```
 
-Naplóbejegyzések beolvasása egy adott erőforrás-szolgáltatótól a dátum időintervalluma között:
+Naplóbejegyzések beszereznie egy adott erőforrás-szolgáltatótól egy dátumidő-tartomány között:
 
 ```powershell
 Get-AzLog -ResourceProvider 'Microsoft.Web' -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
-Naplóbejegyzések beolvasása adott hívóval:
+Naplóbejegyzések beszereznie egy adott hívóval:
 
 ```powershell
 Get-AzLog -Caller 'myname@company.com'
 ```
 
-Az utolsó 1000 esemény beolvasása:
+Szerezd meg az utolsó 1000 eseményt:
 
 ```powershell
 Get-AzLog -MaxEvents 1000
@@ -112,28 +112,28 @@ Get-AzLog -MaxEvents 1000
 
 
 ## <a name="cli"></a>parancssori felület
-Az az [monitor Activity-log](cli-samples.md#view-activity-log-for-a-subscription) paranccsal kérheti le a tevékenység naplóját a parancssori felületről. Az alábbiakban néhány gyakori példát talál.
+Az [figyelési tevékenységnapló](cli-samples.md#view-activity-log-for-a-subscription) használatával lekérheti a tevékenységnaplót a CLI-ből. Az alábbiakban néhány gyakori példa látható.
 
 
-Az összes elérhető beállítás megtekintése.
+Az összes rendelkezésre álló lehetőség megtekintése.
 
 ```azurecli
 az monitor activity-log list -h
 ```
 
-Naplóbejegyzések beolvasása egy adott erőforráscsoporthoz:
+Naplóbejegyzések beszereznie egy adott erőforráscsoportból:
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-Naplóbejegyzések beolvasása adott hívóval:
+Naplóbejegyzések beszereznie egy adott hívóval:
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-Naplók beolvasása a hívó által egy adott időtartományon belül:
+Naplók beszerezni hívó szerint egy erőforrástípuson belül, egy dátumtartományon belül:
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \
@@ -143,63 +143,63 @@ az monitor activity-log list --resource-provider Microsoft.Web \
 ```
 
 ## <a name="rest-api"></a>REST API
-A [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) használatával kérheti le a tevékenység naplóját egy Rest-ügyfélről. Az alábbiakban néhány gyakori példát talál.
+Az [Azure Monitor REST API-val](https://docs.microsoft.com/rest/api/monitor/) lekérheti a tevékenységnaplót egy REST-ügyfélből. Az alábbiakban néhány gyakori példa látható.
 
-Tevékenységek naplóinak beolvasása szűrővel:
+Tevékenységnaplók beszerezni szűrővel:
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2018-01-21T20:00:00Z' and eventTimestamp le '2018-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'
 ```
 
-Tevékenységek naplóinak beolvasása szűrővel és kijelölés:
+Tevékenységnaplók beszerezni e szűrővel, és válassza a következőt:
 
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2015-01-21T20:00:00Z' and eventTimestamp le '2015-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
 ```
 
-Tevékenységek naplóinak beolvasása a Select:
+Tevékenységnaplók beszerezni e jelölőnégyzetet a következő kkel:
 
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
 ```
 
-Tevékenységek naplóinak beolvasása szűrés vagy kiválasztás nélkül:
+Tevékenységnaplók beszereznie szűrő nélkül, vagy válassza a következőlehetőséget:
 
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
 
 
-## <a name="activity-logs-analytics-monitoring-solution"></a>Activity logs Analytics monitorozási megoldás
-Az Azure Log Analytics-figyelési megoldás több naplózási lekérdezést és nézetet tartalmaz a Log Analytics munkaterületen található műveletnapló-rekordok elemzéséhez.
+## <a name="activity-logs-analytics-monitoring-solution"></a>Tevékenységnaplók elemzésének figyelési megoldása
+Az Azure Log Analytics figyelési megoldás több naplólekérdezést és nézetet tartalmaz a Naplóelemzési munkaterületen lévő tevékenységnapló-rekordok elemzéséhez.
 
 ### <a name="prerequisites"></a>Előfeltételek
-Létre kell hoznia egy diagnosztikai beállítást, hogy az előfizetéséhez tartozó műveletnapló elküldje egy Log Analytics munkaterületre. Lásd: az [Azure platform-naplók gyűjtése Azure Monitor log Analytics munkaterületen](resource-logs-collect-workspace.md).
+Létre kell hoznia egy diagnosztikai beállítást, hogy az előfizetés tevékenységnaplóját egy Log Analytics-munkaterületre küldje. Lásd: [Azure-platformnaplók gyűjtése a Log Analytics-munkaterületen az Azure Monitorban.](resource-logs-collect-workspace.md)
 
 ### <a name="install-the-solution"></a>A megoldás telepítése
-A **Activity log Analytics** megoldás telepítéséhez használja a [figyelési megoldás telepítése](../insights/solutions.md#install-a-monitoring-solution) című szakaszt. Nincs szükség további konfigurációra.
+A **Tevékenységnapló-elemzési** megoldás telepítéséhez a [Figyelési megoldás telepítése](../insights/solutions.md#install-a-monitoring-solution) című témaköreljárásának használatával. Nincs szükség további konfigurációra.
 
-### <a name="use-the-solution"></a>A megoldás használatához
-A **műveletnapló** lap tetején található **naplók** elemre kattintva nyissa meg az előfizetéshez tartozó [Activity log Analytics figyelési megoldást](activity-log-collect.md) . Vagy a Azure Portal összes figyelési megoldásának elérése az előfizetési **figyelő** menüjében. Válassza a **továbbiak** lehetőséget a **betekintési** szakaszban, hogy megnyissa az **Áttekintés** lapot a megoldás csempével. Az **Azure-tevékenység naplói** csempén a munkaterületen található **AzureActivity** -rekordok száma látható.
+### <a name="use-the-solution"></a>Használja a megoldást
+Kattintson a **Naplók** elemre a **Tevékenységnapló** lap tetején a [Tevékenységnapló-figyelő megoldás](activity-log-collect.md) megnyitásához. Vagy az Azure Portalon **Monitor** az előfizetés figyelőmenüjében található összes figyelési megoldás eléréséhez. Válassza a **Tovább** lehetőséget az **Elemzések** szakaszban az **Áttekintés** lap megoldáscsempékkel való megnyitásához. **Az Azure-tevékenységnaplók** csempe megjeleníti az **AzureActivity-rekordok** számát a munkaterületen.
 
-![Azure Tevékenységnaplók csempéje](media/collect-activity-logs/azure-activity-logs-tile.png)
+![Az Azure-tevékenységnaplók csempéje](media/collect-activity-logs/azure-activity-logs-tile.png)
 
 
-Kattintson az **Azure-tevékenységek naplói** csempére az **Azure-tevékenység naplói** nézetének megnyitásához. A nézet a következő táblázatban szereplő vizualizációs részeket tartalmazza. Mindegyik rész legfeljebb 10 olyan elemet sorol fel, amelyek megfelelnek a megadott időtartományra vonatkozó feltételeknek. Futtathat egy olyan naplózási lekérdezést, amely az összes egyező rekordot visszaadja, ha az **összes megtekintése** elemre kattint a rész alján.
+Kattintson az **Azure-tevékenységnaplók** csempére az **Azure-tevékenységnaplók** nézet megnyitásához. A nézet az alábbi táblázatban szereplő képi megjelenítési részeket tartalmazza. Minden alkatrész legfeljebb 10 elemet sorol fel, amelyek megfelelnek az adott alkatrész adott időtartományra vonatkozó feltételeinek. Futtathat egy naplólekérdezést, amely az összes egyező rekordot visszaadja, ha a Rész alján az **Összes** megtekintése gombra kattint.
 
-![Azure Tevékenységnaplók irányítópultja](media/collect-activity-logs/activity-log-dash.png)
+![Az Azure-tevékenységnaplók irányítópultja](media/collect-activity-logs/activity-log-dash.png)
 
-| Vizualizációs rész | Leírás |
+| Képi megjelenítési rész | Leírás |
 | --- | --- |
-| Az Azure tevékenységnapló-bejegyzései | Megjeleníti az Azure-beli tevékenység naplójának felső rekordjának a kiválasztott dátumtartományt tartalmazó oszlopát, és megjeleníti az első 10 tevékenység-hívó listáját. Kattintson a sávdiagramra a `AzureActivity`naplójának kereséséhez. Kattintson egy hívó elemre, és futtassa az adott elemhez tartozó összes műveletnapló-bejegyzést. |
-| Tevékenységnaplók állapot szerint | Megjeleníti az Azure-tevékenység naplójának állapotát a kiválasztott dátumtartomány esetében, valamint az első tíz állapotüzenetek listáját. Kattintson a diagramra a `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`naplózási lekérdezésének futtatásához. Kattintson egy állapot elemre az adott állapotjelző rekord összes tevékenységi naplójára vonatkozó naplóbeli keresés futtatásához. |
-| Tevékenységnaplók erőforrás szerint | Megjeleníti a tevékenységi naplókkal rendelkező erőforrások teljes számát, és felsorolja az egyes erőforrásokhoz tartozó rekordok számát tartalmazó első tíz erőforrást. Kattintson a teljes területen a `AzureActivity | summarize AggregatedValue = count() by Resource`naplójának kereséséhez, amely megjeleníti a megoldás számára elérhető összes Azure-erőforrást. Kattintson egy erőforrásra az adott erőforráshoz tartozó összes tevékenységi rekord visszaadására szolgáló naplózási lekérdezés futtatásához. |
-| Erőforrás-szolgáltató által tevékenységeket tartalmazó naplók | Megjeleníti a tevékenységek naplóit előállító erőforrás-szolgáltatók teljes számát, és felsorolja a tíz legfontosabbat. Az összes Azure-erőforrás-szolgáltatót megjelenítő `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`hoz tartozó napló lekérdezésének futtatásához kattintson a teljes területen. Kattintson egy erőforrás-szolgáltatóra egy olyan log-lekérdezés futtatásához, amely a szolgáltató összes tevékenységi rekordját visszaadja. |
+| Az Azure-tevékenységnapló bejegyzései | A kiválasztott dátumtartomány első Azure-tevékenységnapló-bejegyzésrekordjának sávdiagramját jeleníti meg, és megjeleníti a 10 legfontosabb tevékenységhívó listáját. Kattintson a sávdiagramra a `AzureActivity`naplókeresés futtatásához. Kattintson egy hívó elemre az adott elem összes tevékenységnapló-bejegyzését visszaadó naplókeresés futtatásához. |
+| Tevékenységnaplók állapot szerint | A kiválasztott dátumtartomány perecdiagramját és az első tíz állapotrekord listáját jeleníti meg. Kattintson a diagramra a `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`naplólekérdezés futtatásához. Kattintson egy állapotelemre az állapotrekord összes tevékenységnapló-bejegyzését visszaadó naplókeresés futtatásához. |
+| Tevékenységnaplók erőforrás szerint | A tevékenységnaplókkal rendelkező erőforrások teljes számát jeleníti meg, és felsorolja az első tíz erőforrást az egyes erőforrások rekordszámával. Kattintson a teljes területre a `AzureActivity | summarize AggregatedValue = count() by Resource`naplókeresés futtatásához, amely a megoldás számára elérhető összes Azure-erőforrást megjeleníti. Kattintson egy erőforrásra az erőforrás összes tevékenységrekordját visszaadó naplólekérdezés futtatásához. |
+| Tevékenységnaplók erőforrásszolgáltató szerint | A tevékenységnaplókat előállító és az első tíz helyet tartalmazó erőforrás-szolgáltatók teljes számát jeleníti meg. Kattintson a teljes területre egy `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`naplólekérdezés futtatásához, amely az összes Azure-erőforrás-szolgáltatót megjeleníti. Kattintson egy erőforrás-szolgáltatóra a szolgáltató összes tevékenységrekordját visszaadó naplólekérdezés futtatásához. |
 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [A platform naplófájljainak áttekintése](platform-logs-overview.md)
-* [Diagnosztikai beállítás létrehozása a tevékenységek naplófájljainak más célhelyekre való küldéséhez](diagnostic-settings.md)
+* [Platformnaplók áttekintésének elolvasása](platform-logs-overview.md)
+* [Diagnosztikai beállítás létrehozása a tevékenységnaplók más helyekre való küldéséhez](diagnostic-settings.md)

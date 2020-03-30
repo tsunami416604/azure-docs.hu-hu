@@ -1,225 +1,225 @@
 ---
-title: Riasztások megtekintése és kezelése a StorSimple 8000 Series eszközhöz
-description: Ismerteti a StorSimple riasztási feltételeit és súlyosságát, a riasztási értesítések konfigurálását, valamint a StorSimple Eszközkezelő szolgáltatás használatát a riasztások kezeléséhez.
+title: A StorSimple 8000 sorozatú eszközök riasztásainak megtekintése és kezelése
+description: A StorSimple riasztási feltételeit és súlyosságát, a riasztási értesítések konfigurálásának módját, valamint a StorSimple Eszközkezelő szolgáltatás használatával a riasztások kezeléséhez használható.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267819"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>A StorSimple-riasztások megtekintése és kezelése a StorSimple Eszközkezelő szolgáltatással
+# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple-riasztások megtekintéséhez és kezeléséhez
 
 ## <a name="overview"></a>Áttekintés
 
-A StorSimple Eszközkezelő szolgáltatás **riasztások** panelje lehetővé teszi, hogy valós időben áttekintse és törölje a StorSimple-eszközökhöz kapcsolódó riasztásokat. Ebből a panelből központilag figyelheti a StorSimple-eszközök állapotát és a teljes Microsoft Azure StorSimple megoldást.
+A StorSimple Eszközkezelő szolgáltatás **Riasztások** panelje lehetővé teszi a StorSimple-eszközökkel kapcsolatos riasztások valós idejű áttekintését és törlését. Ebből a panelből központilag figyelheti a StorSimple-eszközök és a teljes Microsoft Azure StorSimple megoldás állapotproblémáit.
 
-Ez az oktatóanyag a gyakori riasztási feltételeket, a riasztás súlyossági szintjeit, valamint a riasztási értesítések konfigurálását ismerteti. Emellett riasztási gyors referenciával rendelkező táblákat is tartalmaz, amelyek lehetővé teszik, hogy gyorsan megkeresse egy adott riasztást, és megfelelően reagáljon.
+Ez az oktatóanyag ismerteti a gyakori riasztási feltételeket, a riasztás súlyossági szintjét és a riasztási értesítések konfigurálását. Emellett riasztási gyorsreferencia-táblákat is tartalmaz, amelyek lehetővé teszik egy adott riasztás gyors megkeresését és megfelelő válaszadását.
 
 ![Riasztások lap](./media/storsimple-8000-manage-alerts/configure-alerts-email11.png)
 
 ## <a name="common-alert-conditions"></a>Gyakori riasztási feltételek
 
-A StorSimple-eszköz riasztásokat hoz létre a különböző feltételekre válaszul. A riasztási feltételek leggyakoribb típusai a következők:
+A StorSimple-eszköz riasztásokat hoz létre a különböző körülményekre adott válaszként. A riasztási feltételek leggyakoribb típusai a következők:
 
-* **Hardverrel kapcsolatos problémák** – ezek a riasztások tájékoztatják a hardver állapotáról. Lehetővé teszik, hogy a belső vezérlőprogram frissítésére van szükség, ha a hálózati adapter problémába ütközik, vagy ha probléma van az egyik adatmeghajtóval.
-* **Kapcsolódási problémák** – ezek a riasztások akkor fordulnak elő, ha az adatátviteli nehézségek merülnek fel. Kommunikációs problémák léphetnek fel az Azure Storage-fiókba irányuló és onnan érkező adatok átvitele során, vagy az eszközök és a StorSimple Eszközkezelő szolgáltatás közötti kapcsolat hiánya miatt. A kommunikációs problémák némelyike a legnehezebb megoldás, mert sok meghibásodási pont van. Mindig először ellenőrizze, hogy a hálózati kapcsolat és az Internet-hozzáférés elérhető-e, mielőtt továbblépne a fejlettebb hibaelhárításra. A hibaelhárítással kapcsolatos segítségért keresse fel a következőt: [Hibaelhárítás a test-kapcsolódási parancsmaggal](storsimple-8000-troubleshoot-deployment.md).
-* **Teljesítménnyel kapcsolatos problémák** – ezek a riasztások akkor keletkeznek, ha a rendszer nem optimális teljesítményű, például ha nagy terhelés alatt áll.
+* **Hardverproblémák** – Ezek a riasztások a hardver állapotáról szólnak. Tudatják Önnel, hogy szükség van-e belső vezérlőprogram-frissítésre, ha a hálózati adapterproblémákkal rendelkezik, vagy ha probléma van az egyik adatmeghajtóval.
+* **Kapcsolódási problémák** – Ezek a riasztások akkor fordulnak elő, ha nehézségekbe ütközik az adatátvitel. Kommunikációs problémák fordulhatnak elő az Azure storage-fiókba való adatátvitel során, illetve az eszközök és a StorSimple Eszközkezelő szolgáltatás közötti kapcsolat hiánya miatt. Kommunikációs kérdések néhány legnehezebb kijavítani, mert olyan sok pont a hiba. Először mindig ellenőrizze, hogy a hálózati kapcsolat és az internet-hozzáférés elérhető-e, mielőtt továbblépne a részletesebb hibaelhárításhoz. A hibaelhárítással kapcsolatos segítségért keresse fel [a Hibaelhárítás a Test-Connection parancsmaggal kapcsolatban című témakört.](storsimple-8000-troubleshoot-deployment.md)
+* **Teljesítményproblémák** – Ezek a riasztások akkor keletkeznek, ha a rendszer nem teljesít optimálisan, például ha nagy terhelés alatt van.
 
-Emellett előfordulhat, hogy a biztonsággal, a frissítésekkel vagy a feladatok meghibásodásával kapcsolatos riasztások jelennek meg.
+Emellett biztonsági, frissítési vagy feladathibákkal kapcsolatos riasztások is megjelenhetnek.
 
-## <a name="alert-severity-levels"></a>Riasztás súlyossági szintjei
+## <a name="alert-severity-levels"></a>Riasztássúlyossági szintek
 
-A riasztások eltérő súlyossági szinttel bírnak, attól függően, hogy milyen hatással van a riasztási helyzetre, és hogy a riasztásra adott válaszra van szükség. A súlyossági szintek a következők:
+Riasztások eltérő súlyossági szint, attól függően, hogy a riasztási helyzet lesz, és a riasztásra adott válasz szükségességét. A súlyossági szintek a következőek:
 
-* **Kritikus** – ez a riasztás olyan feltételre reagál, amely hatással van a rendszer sikeres teljesítményére. A művelet végrehajtásához szükséges, hogy a StorSimple szolgáltatás ne legyen megszakítva.
-* **Figyelmeztetés** – ez az állapot kritikus lehet, ha nincs megoldva. Meg kell vizsgálnia a helyzetet, és el kell végeznie a probléma törléséhez szükséges lépéseket.
-* **Információ** – ez a riasztás olyan információkat tartalmaz, amelyek hasznosak lehetnek a rendszer nyomon követésében és kezelésében.
+* **Kritikus –** Ez a riasztás válaszegy olyan állapot, amely befolyásolja a rendszer sikeres teljesítményét. A StorSimple szolgáltatás megszakításának biztosításához műveletre van szükség.
+* **Figyelmeztetés** – Ez az állapot kritikussá válhat, ha nem oldódik meg. Vizsgálja meg a helyzetet, és tegyen meg minden szükséges intézkedést a probléma megoldásához.
+* **Információ** – Ez a riasztás olyan információkat tartalmaz, amelyek hasznosak lehetnek a rendszer nyomon követésében és kezelésében.
 
 ## <a name="configure-alert-settings"></a>Riasztási beállítások konfigurálása
 
-Megadhatja, hogy szeretne-e e-mailben értesítést kapni az egyes StorSimple-eszközök riasztási feltételeiről. Emellett a riasztások más címzettjeit is megadhatja, ha az e-mail-címüket a **többi e-mail címzettjei** mezőbe írja, pontosvesszővel elválasztva.
+Kiválaszthatja, hogy szeretne-e értesítést e-mailben a storSimple-eszközök riasztási feltételeiről. Ezenkívül azonosíthatja a többi értesítési címzettet, ha pontosvesszővel elválasztva beírja az e-mail címüket az **Egyéb e-mail címzettek** mezőbe.
 
 > [!NOTE]
-> Eszközönként legfeljebb 20 e-mail-címet adhat meg.
+> Eszközönként legfeljebb 20 e-mail címet adhat meg.
 
-Miután engedélyezte az e-mailes értesítéseket egy eszközhöz, az értesítési lista tagjai minden alkalommal kapnak egy e-mail-üzenetet, amikor kritikus riasztás történik. Az üzenetek a *storsimple-Alerts-reply\@mail.windowsazure.com* lesznek elküldve, és leírják a riasztási feltételt. A címzettek a **leiratkozás** lehetőségre kattintva eltávolíthatják magukat az e-mail értesítések listájáról.
+Miután engedélyezte az e-mail es értesítést egy eszközhöz, az értesítési lista tagjai minden kritikus riasztás esetén e-mail üzenetet kapnak. Az üzeneteket a *rendszer a\@storsimple-alerts-noreply mail.windowsazure.com* küldi el, és leírja a riasztási feltételt. A címzettek a **Leiratkozás** gombra kattintva eltávolíthatják magukat az e-mail értesítési listáról.
 
-#### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>Riasztások e-mailes értesítésének engedélyezése az eszközön
-1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. Az eszközök listájából válassza ki a konfigurálni kívánt eszközt, majd kattintson rá.
-2. Válassza az eszköz beállítások > **általános** **lehetőséget** .
+#### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>Az eszköz értesítésének e-mailes értesítésének engedélyezése
+1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. Az eszközök listájában jelölje ki és kattintson a konfigurálni kívánt eszközre.
+2. Nyissa meg az eszköz**Általános** **beállításai** > lapot.
 
    ![Riasztások panel](./media/storsimple-8000-manage-alerts/configure-alerts-email2.png)
    
-2. Az **általános beállítások** panelen lépjen a **riasztási beállítások** elemre, és állítsa be a következőket:
+2. Az **Általános beállítások** panelen nyissa meg a **Riasztás beállításait,** és állítsa be a következőket:
    
-   1. Az **e-mail értesítés küldése** mezőben válassza az **Igen**lehetőséget.
-   2. Az **e-mail szolgáltatás-rendszergazdák** mezőben válassza az **Igen** lehetőséget, ha szeretné, hogy a szolgáltatás rendszergazdája és az összes társ-rendszergazda megkapja a riasztási értesítéseket.
-   3. A **többi e-mail-címzett** mezőben adja meg az összes többi címzett e-mail-címét, akiknek a riasztási értesítéseket kell kapniuk. Adja meg a neveket úgy, hogy *valaki\@Somewhere.com*. Az e-mail-címeket pontosvesszővel válassza el egymástól. Eszközönként legfeljebb 20 e-mail-címet állíthat be. 
+   1. Az **E-mail értesítés küldése** mezőben válassza az **IGEN**lehetőséget.
+   2. Az **E-mail szolgáltatás rendszergazdái** mezőben válassza az **IGEN** lehetőséget, ha azt szeretné, hogy a szolgáltatás rendszergazdája és az összes társ-rendszergazda megkapja a riasztási értesítéseket.
+   3. Az **Egyéb e-mail címzettek** mezőbe írja be az összes többi címzett e-mail címét, akiknek meg kell kapniuk a riasztási értesítéseket. Írja be a neveket abban a *formátumban, amelyet somewhere.com.\@* Pontosvesszővel válassza el az e-mail címeket. Eszközönként legfeljebb 20 e-mail címet állíthat be. 
       
-3. Teszt e-mail értesítés küldéséhez kattintson a **Tesztüzenet küldése**elemre. A StorSimple Eszközkezelő szolgáltatás megjeleníti az állapotüzenetek üzeneteit, mert továbbítja a teszt értesítését.
+3. Teszte-mail értesítés küldéséhez kattintson a **Teszte-mail küldése**gombra. A StorSimple Eszközkezelő szolgáltatás állapotüzeneteket jelenít meg a tesztértesítés továbbításakor.
 
-    ![riasztási beállítások](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
+    ![Riasztási beállítások](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
 
-4. Ekkor megjelenik egy értesítés, amikor a teszt e-mailt elküldte. 
+4. A teszte-mail elküldésekor értesítést kap. 
    
-    ![Riasztások teszt értesítő e-mailek elküldve](./media/storsimple-8000-manage-alerts/configure-alerts-email4.png)
+    ![Riasztások tesztértesítési e-mailben](./media/storsimple-8000-manage-alerts/configure-alerts-email4.png)
    
    > [!NOTE]
-   > Ha a teszt értesítési üzenet nem küldhető el, a StorSimple Eszközkezelő szolgáltatás megfelelő hibaüzenetet jelenít meg. Várjon néhány percet, majd próbálja meg újra elküldeni a teszt értesítési üzenetet. 
+   > Ha a tesztértesítési üzenet nem küldhető el, a StorSimple Eszközkezelő szolgáltatás megjeleníti a megfelelő hibaüzenetet. Várjon néhány percet, majd próbálja meg újra elküldeni a tesztértesítési üzenetet. 
 
-5. A konfiguráció befejezése után kattintson a **Mentés**gombra. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra.
+5. Miután befejezte a konfigurációt, kattintson a **Mentés gombra.** Ha a rendszer megerősítést kér, kattintson az **Igen** gombra.
 
-     ![Riasztások teszt értesítő e-mailek elküldve](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
+     ![Riasztások tesztértesítési e-mailben](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
 
 ## <a name="view-and-track-alerts"></a>Riasztások megtekintése és nyomon követése
 
-A StorSimple Eszközkezelő szolgáltatások összegzése panel gyors áttekintést nyújt az eszközökön lévő riasztások számáról, súlyossági szint szerint rendezve.
+A StorSimple Eszközkezelő szolgáltatás összefoglaló panel segítségével gyorsan áttekintheti az eszközökön található riasztások számát, súlyossági szint szerint rendezve.
 
-![Riasztások irányítópult](./media/storsimple-8000-manage-alerts/device-summary4.png)
+![Riasztások irányítópultja](./media/storsimple-8000-manage-alerts/device-summary4.png)
 
-A súlyossági szintre kattintva megnyílik a **riasztások** panel. Az eredmények csak azokat a riasztásokat tartalmazzák, amelyek megfelelnek a súlyossági szintnek.
+A súlyossági szintre kattintva megnyílik a **Riasztások** panel. Az eredmények csak az adott súlyossági szintnek megfelelő riasztásokat tartalmazzák.
 
-Ha a listában egy riasztásra kattint, a riasztás további részleteket tartalmaz, beleértve a riasztás legutóbbi jelentésének időpontját, az eszközön előforduló riasztások számát, valamint a riasztás feloldásához javasolt műveletet. Ha ez egy hardveres riasztás, akkor a hardver-összetevőt is azonosítja.
+A listában egy riasztásra kattintva további részleteket talál a riasztásról, beleértve a riasztás legutóbbi jelentésének idejét, az eszközön a riasztás előfordulásainak számát és a riasztás feloldásához javasolt műveletet. Ha hardverriasztásról van szó, akkor a hardverösszetevőt is azonosítja.
 
-![Hardveres riasztás – példa](./media/storsimple-8000-manage-alerts/configure-alerts-email14.png)
+![Példa hardverriasztásra](./media/storsimple-8000-manage-alerts/configure-alerts-email14.png)
 
-Ha az adatokat Microsoft ügyfélszolgálata szeretné elküldeni, a riasztás részleteit szövegfájlba másolhatja. Miután végrehajtotta a javaslatot, és feloldotta a riasztási feltételt a helyszínen, törölje a riasztást az eszközről, és válassza ki a riasztást a riasztások panelen, és kattintson a **Törlés**gombra. Több riasztás törléséhez jelölje ki az egyes riasztásokat, kattintson bármelyik oszlopra a **riasztási** oszlop kivételével, majd kattintson a **Törlés** gombra, miután kiválasztotta az összes riasztást, amelyeket törölni szeretne. Vegye figyelembe, hogy egyes riasztások automatikusan törlődnek a probléma megoldásakor, vagy ha a rendszer új információkkal frissíti a riasztást.
+A riasztás részleteit átmásolhatja egy szövegfájlba, ha el kell küldenie az adatokat a Microsoft támogatási szolgálatának. Miután követte az ajánlást, és megoldotta a riasztási feltételt a helyszínen, törölje a riasztást az eszközről, ha kiválasztja a **riasztást** a Riasztások panelen, és kattintson a **Törlés**gombra. Több riasztás törléséhez jelölje ki az egyes riasztásokat, kattintson bármelyik oszlopra a **Riasztás** oszlop kivételével, majd kattintson a **Törlés** gombra, miután kiválasztotta az összes törlésre kerülő riasztást. Vegye figyelembe, hogy egyes riasztások automatikusan törlődnek, ha a probléma megoldódott, vagy amikor a rendszer új információkkal frissíti a riasztást.
 
-Ha a **Törlés**gombra kattint, lehetősége lesz a riasztással kapcsolatos megjegyzések és a probléma megoldásához szükséges lépések megadására. A rendszer néhány eseményt töröl, ha egy másik esemény új információval aktiválódik. Ebben az esetben a következő üzenet jelenik meg.
+Ha a **Törlés**gombra kattint, lehetősége lesz megjegyzéseket fűzni a riasztáshoz és a probléma megoldásához szükséges lépésekhez. A rendszer bizonyos eseményeket töröl, ha egy másik esemény új információkkal történik. Ebben az esetben a következő üzenet jelenik meg.
 
-![Riasztási üzenet törlése](./media/storsimple-manage-alerts/admin_alerts_system_clear.png)
+![Figyelmeztető üzenet törlése](./media/storsimple-manage-alerts/admin_alerts_system_clear.png)
 
 ## <a name="sort-and-review-alerts"></a>Riasztások rendezése és áttekintése
 
-Előfordulhat, hogy hatékonyabban szeretne jelentéseket futtatni a riasztásokon, hogy áttekintse és törölje őket a csoportokban. Emellett a **riasztások** panel legfeljebb 250 riasztást képes megjeleníteni. Ha túllépte a riasztások számát, nem minden riasztás jelenik meg az alapértelmezett nézetben. A következő mezőket kombinálva testreszabhatja, hogy mely riasztások jelenjenek meg:
+Hatékonyabbnak találhatja a riasztásokról szóló jelentések futtatását, hogy csoportokban ellenőrizhesse és törölhesse őket. Emellett a **Riasztások** panel legfeljebb 250 riasztást jeleníthet meg. Ha túllépte a riasztások számát, nem minden riasztás jelenik meg az alapértelmezett nézetben. A következő mezők kombinálásával testreszabhatja a megjelenített riasztásokat:
 
-* **Állapot** – **aktív** vagy **törölt** riasztásokat is megjeleníthet. Az aktív riasztások még mindig aktiválva vannak a rendszeren, míg a törölt riasztásokat a rendszergazda manuálisan törölte vagy programozott módon törölte, mert a rendszer frissítette a riasztási feltételt új információkkal.
-* **Súlyosság** – riasztásokat jeleníthet meg az összes súlyossági szintről (kritikus, figyelmeztetés, információ), vagy csak egy bizonyos súlyosságot, például csak a kritikus riasztásokat.
-* **Forrás** – megjelenítheti az összes forrásból származó riasztásokat, vagy korlátozhatja a riasztásokat a szolgáltatásból vagy az egyik vagy az összes eszközről érkezők számára.
-* **Időtartomány** – a **kezdő** és **a** dátumok és időbélyegek megadásával megtekintheti a riasztásokat az Ön által érintett időszakban.
+* **Állapot** – **Megjelenítheti az aktív** vagy **a törlési** riasztásokat. Az aktív riasztások továbbra is aktiválódnak a rendszeren, míg a törölt riasztásokat a rendszergazda manuálisan törölte, vagy programozott módon törölte, mert a rendszer új információkkal frissítette a riasztási feltételt.
+* **Súlyosság –** Megjelenítheti a riasztásokat az összes súlyossági szint (kritikus, figyelmeztetés, információ), vagy csak egy bizonyos súlyossági, például csak a kritikus riasztások.
+* **Forrás** – Megjelenítheti az összes forrásból érkező riasztásokat, vagy korlátozhatja a riasztásokat azokra, amelyek a szolgáltatásból vagy az egyik vagy az összes eszközből származnak.
+* **Időtartomány** – A **Be-** és **Záró** dátumok és időbélyegek megadásával megnézheti az önt érdeklő időszak figyelmeztetéseit.
 
 ![Riasztások listája](./media/storsimple-8000-manage-alerts/configure-alerts-email11.png)
 
 ## <a name="alerts-quick-reference"></a>Riasztások – rövid útmutató
 
-Az alábbi táblázatok felsorolják az esetlegesen felmerülő Microsoft Azure StorSimple riasztásokat, valamint a további információkat és javaslatokat, ahol elérhetők. A StorSimple-eszközökre vonatkozó riasztások a következő kategóriák valamelyikébe tartoznak:
+Az alábbi táblázatok a Microsoft Azure StorSimple által esetleg előforduló riasztásokat, valamint további információkat és javaslatokat sorolnak fel, ahol elérhetők. A StorSimple eszközriasztások a következő kategóriák valamelyikébe tartoznak:
 
-* [Felhőalapú csatlakozási riasztások](#cloud-connectivity-alerts)
-* [Fürt riasztásai](#cluster-alerts)
+* [Felhőkapcsolati riasztások](#cloud-connectivity-alerts)
+* [Fürtriasztások](#cluster-alerts)
 * [Vész-helyreállítási riasztások](#disaster-recovery-alerts)
-* [Hardveres riasztások](#hardware-alerts)
-* [Sikertelen feladatok riasztásai](#job-failure-alerts)
-* [Helyileg rögzített mennyiségi riasztások](#locally-pinned-volume-alerts)
+* [Hardverriasztások](#hardware-alerts)
+* [Feladathiba-riasztások](#job-failure-alerts)
+* [Helyileg rögzített kötetriasztások](#locally-pinned-volume-alerts)
 * [Hálózati riasztások](#networking-alerts)
-* [Teljesítmény-riasztások](#performance-alerts)
+* [Teljesítményre vonatkozó riasztások](#performance-alerts)
 * [Biztonsági riasztások](#security-alerts)
-* [Támogatási csomagra vonatkozó riasztások](#support-package-alerts)
+* [Támogatási csomagriasztás](#support-package-alerts)
 
-### <a name="cloud-connectivity-alerts"></a>Felhőalapú csatlakozási riasztások
+### <a name="cloud-connectivity-alerts"></a>Felhőkapcsolati riasztások
 
-| Riasztás szövege | Esemény | További információ/javasolt műveletek |
+| Riasztás szövege | Esemény | További információk / ajánlott intézkedések |
 |:--- |:--- |:--- |
-| Nem lehet kapcsolatot létesíteni <*Felhőbeli hitelesítő adatok nevével*>. |Nem lehet csatlakozni a Storage-fiókhoz. |Úgy tűnik, hogy az eszközhöz kapcsolódási probléma merülhet fel. A probléma azonosításához és kijavításához futtassa az `Test-HcsmConnection` parancsmagot az eszköz StorSimple Windows PowerShell felületéről. Ha a beállítások helyesek, a probléma lehet annak a Storage-fióknak a hitelesítő adataival, amelyhez a riasztás létrejött. Ebben az esetben a `Test-HcsStorageAccountCredential` parancsmaggal állapítsa meg, hogy van-e probléma a megoldással.<ul><li>Keresse meg a hálózati beállításokat.</li><li>Keresse meg a Storage-fiók hitelesítő adatait.</li></ul> |
-| Nem kaptunk szívverést az eszközről az utolsó <*szám*> percben. |Nem lehet csatlakozni az eszközhöz. |Úgy tűnik, az eszköz csatlakozási problémája van. Az eszközön a StorSimple Windows PowerShell felületén található `Test-HcsmConnection` parancsmag használatával azonosíthatja és elháríthatja a problémát, vagy kapcsolatba léphet a hálózati rendszergazdával. |
+| Nem hozható létre <*felhőhitelesítő adatok nevéhez*> kapcsolat. |Nem lehet csatlakozni a tárfiókhoz. |Úgy tűnik, hogy kapcsolódási probléma van az eszközzel. Futtassa `Test-HcsmConnection` a parancsmast a Windows PowerShell Interface for StorSimple az eszközön a probléma azonosításához és megoldásához. Ha a beállítások helyesek, a probléma lehet a hitelesítő adatait a tárfiók, amelyre a riasztás t. Ebben az esetben `Test-HcsStorageAccountCredential` a parancsmag segítségével határozza meg, hogy vannak-e megoldható problémák.<ul><li>Ellenőrizze a hálózati beállításokat.</li><li>Ellenőrizze a tárfiók hitelesítő adatait.</li></ul> |
+| Az elmúlt <*szám*> percben nem kaptunk szívverést az Ön készülékétől. |Nem lehet csatlakozni az eszközhöz. |Úgy tűnik, csatlakozási probléma van az eszközzel. Kérjük, `Test-HcsmConnection` használja a parancsmag a Windows PowerShell interface for StorSimple az eszközön, hogy azonosítsa és javítsa ki a problémát, vagy forduljon a hálózati rendszergazdához. |
 
-### <a name="storsimple-behavior-when-cloud-connectivity-fails"></a>StorSimple viselkedés a Felhőbeli kapcsolat sikertelensége esetén
+### <a name="storsimple-behavior-when-cloud-connectivity-fails"></a>StorSimple viselkedés, ha a felhőkapcsolat meghibásodik
 
-Mi történik, ha nem sikerül a Felhőbeli kapcsolat az éles környezetben futó StorSimple-eszközön?
+Mi történik, ha a felhőbeli kapcsolat meghibásodik az éles környezetben futó StorSimple-eszközhöz?
 
-Ha a Felhőbeli kapcsolat nem sikerül a StorSimple éles eszközén, akkor az eszköz állapotától függően a következők jelenhetnek meg:
+Ha a felhőbeli kapcsolat nem működik a StorSimple éles eszközön, akkor az eszköz állapotától függően a következők fordulhatnak elő:
 
-* A **helyi adatokat az eszközön**: egy ideig nem lehet megszakítani, és a rendszer továbbra is kiszolgálja az olvasást. Mivel azonban a függőben lévő IOs-növekedés és a korlát meghaladja a határértéket, az olvasási műveletek sikertelenek lesznek.
+* **Az eszközön lévő helyi adatok**hoz: Egy ideig nem lesz fennakadás, és az olvasások továbbra is kiszolgálásra kerülnek. Azonban a függőben lévő IOs-ek száma növekszik, és meghaladja a korlátot, az olvasások elkezdődhetnek sikertelenül.
 
-    Az eszközön lévő adatmennyiségtől függően az írás a Felhőbeli kapcsolat megszakadását követő első néhány órában is folytatódni fog. Az írások ezután lelassulnak, és végül sikertelenek lesznek, ha a Felhőbeli kapcsolat több órán keresztül megszakad. (A felhőbe leküldhető adatmennyiséghez ideiglenes tárterület van az eszközön. A rendszer kiüríti ezt a területet az adatküldés során. Ha a kapcsolat meghiúsul, akkor a rendszer nem küldi le a felhőbe az ebben a tárolóhelyen lévő adatvesztést, és az i/o-művelet sikertelen lesz.)
-* A **felhőben tárolt**adatműveletek esetén a legtöbb Felhőbeli kapcsolódási hiba esetén hibaüzenetet ad vissza. A kapcsolat visszaállítása után az IOs-t a felhasználó anélkül folytatja, hogy online állapotba hozza a kötetet. Ritka esetekben előfordulhat, hogy felhasználói beavatkozásra van szükség ahhoz, hogy a kötetet online állapotba vonja a Azure Portal.
-* A **Felhőbeli Pillanatképek folyamatban**: a művelet többször is próbálkozik a 4-5 órán belül, és ha a kapcsolat nem áll helyre, a Felhőbeli Pillanatképek sikertelenek lesznek.
+    Az eszközön lévő adatok mennyiségétől függően az írási műveletek a felhőbeli kapcsolat megszakadását követő első néhány órában is folytatódni fognak. Az írási műveletek majd lelassul, és végül elindul, ha a felhőkapcsolat megszakad több órán keresztül. (Az eszközön ideiglenes tároló található a felhőbe lelökendő adatok számára. Ez a terület az adatok elküldésekor kiürítésre kerül. Ha a kapcsolat meghibásodik, a tárolóterület adatai nem lesznek leküldéses a felhőbe, és az IO sikertelen lesz.)
+* **A felhőben lévő adatok esetében:** A legtöbb felhőbeli kapcsolódási hiba esetén a rendszer hibát ad vissza. A kapcsolat helyreállítása után az IOs anélkül folytatódik, hogy a felhasználónak online állapotba kellene hoznia a kötetet. Ritka esetekben felhasználói beavatkozásra lehet szükség, hogy a kötet online az Azure Portalon.
+* **A folyamatban lévő felhőbeli pillanatképek**: A művelet et 4-5 órán belül néhányszor újra próbálkozik, és ha a kapcsolat nem áll helyre, a felhőbeli pillanatképek sikertelenek lesznek.
 
-### <a name="cluster-alerts"></a>Fürt riasztásai
+### <a name="cluster-alerts"></a>Fürtriasztások
 
-| Riasztás szövege | Esemény | További információ/javasolt műveletek |
+| Riasztás szövege | Esemény | További információk / ajánlott intézkedések |
 |:--- |:--- |:--- |
-| Az eszköz feladatának átadása <*eszköz neve*>. |Az eszköz karbantartási üzemmódban van. |Az eszköz feladatátvétele a karbantartási mód beírása vagy bezárása miatt meghiúsult. Ez normális, és nincs szükség beavatkozásra. Miután tudomásul vette a riasztást, törölje azt a riasztások lapról. |
-| Az eszköz feladatának átadása <*eszköz neve*>. |Az eszköz belső vezérlőprogramja vagy a szoftver frissítése megtörtént. |A fürt feladatátvétele egy frissítés miatt történt. Ez normális, és nincs szükség beavatkozásra. Miután tudomásul vette a riasztást, törölje azt a riasztások lapról. |
-| Az eszköz feladatának átadása <*eszköz neve*>. |A vezérlő leállítása vagy újraindítása megkezdődött. |Az eszköz feladatátvétele megtörtént, mert az aktív vezérlőt a rendszergazda leállította vagy újraindította. Semmilyen műveletre sincs szükség. Miután tudomásul vette a riasztást, törölje azt a riasztások lapról. |
-| Az eszköz feladatának átadása <*eszköz neve*>. |Tervezett feladatátvétel. |Ellenőrizze, hogy ez tervezett feladatátvétel volt-e. A megfelelő művelet elvégzése után törölje a riasztást a riasztások lapról. |
-| Az eszköz feladatának átadása <*eszköz neve*>. |Nem tervezett feladatátvétel. |A StorSimple úgy van kialakítva, hogy automatikusan helyreállítsa a nem tervezett feladatátvételeket. Ha nagy számú riasztást lát, forduljon a Microsoft ügyfélszolgálatahoz. |
-| Az eszköz feladatának átadása <*eszköz neve*>. |Egyéb/ismeretlen ok. |Ha nagy számú riasztást lát, forduljon a Microsoft ügyfélszolgálatahoz. A probléma megoldása után törölje ezt a riasztást a riasztások lapról. |
-| A kritikus eszközbeállítások jelentéseinek állapota sikertelen. |DataPath-szolgáltatási hiba. |Segítségért forduljon Microsoft ügyfélszolgálatahoz. |
-| A hálózati adapter virtuális IP-címe *< az*adat> a jelentések állapota sikertelen. |Egyéb/ismeretlen ok. |Időnként előfordulhat, hogy az ideiglenes feltételek ezeket a riasztásokat okozzák. Ebben az esetben a riasztást a rendszer némi idő elteltével automatikusan törli. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
-| A hálózati adapter virtuális IP-címe *< az*adat> a jelentések állapota sikertelen. |Illesztőfelület neve *: <* adat> IP-cím `<IP address>` nem hozható online állapotba, mert a hálózaton ismétlődő IP-cím észlelhető. |Győződjön meg arról, hogy az ismétlődő IP-cím el lett távolítva a hálózatról, vagy konfigurálja újra a felületet egy másik IP-címmel. |
+| Az eszköz> *<.* |Az eszköz karbantartási üzemmódban van. |Az eszköz a karbantartási módba való belépés vagy kilépés miatt nem felelt meg. Ez normális, és nincs szükség beavatkozásra. Miután elismerte ezt a riasztást, törölje azt a riasztások oldalról. |
+| Az eszköz> *<.* |Az eszköz belső vezérlőprogramja vagy szoftvere csak frissítve lett. |Fürt feladatátvételt kapott egy frissítés miatt. Ez normális, és nincs szükség beavatkozásra. Miután elismerte ezt a riasztást, törölje azt a riasztások oldalról. |
+| Az eszköz> *<.* |A vezérlő leállt vagy újraindult. |Az eszköz feladatátvételt kapott, mert a rendszergazda leállította vagy újraindította az aktív vezérlőt. Nincs szükség beavatkozásra. Miután elismerte ezt a riasztást, törölje azt a riasztások oldalról. |
+| Az eszköz> *<.* |Tervezett feladatátvétel. |Ellenőrizze, hogy ez egy tervezett feladatátvétel volt-e. Miután megtette a megfelelő lépéseket, törölje ezt a riasztást a riasztások oldalról. |
+| Az eszköz> *<.* |Nem tervezett feladatátvétel. |A StorSimple úgy van kialakítva, hogy automatikusan helyreálljon a nem tervezett feladatátvételek miatt. Ha sok ilyen riasztást lát, forduljon a Microsoft támogatási szolgálatához. |
+| Az eszköz> *<.* |Egyéb/ismeretlen ok. |Ha sok ilyen riasztást lát, forduljon a Microsoft támogatási szolgálatához. A probléma megoldása után törölje a riasztást a riasztások lapjáról. |
+| A kritikus eszközszolgáltatás hibásként jelenti az állapotot. |Datapath szolgáltatás hibája. |Segítségért forduljon a Microsoft támogatási szolgálatához. |
+| A *DATA #* <hálózati adapter virtuális IP-címe,> hibásként jelenti állapotát. |Egyéb/ismeretlen ok. |Néha ideiglenes körülmények okozhatnak ilyen riasztásokat. Ebben az esetben ez a riasztás egy idő után automatikusan törlődik. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |
+| A *DATA #* <hálózati adapter virtuális IP-címe,> hibásként jelenti állapotát. |A kapcsolat neve: <`<IP address>` DATA *#*> IP-cím nem hozható online állapotba, mert a hálózat duplikált IP-címet észlelt. |Győződjön meg arról, hogy az ismétlődő IP-cím eltávolításra kerül a hálózatról, vagy konfigurálja újra az összeköttetést egy másik IP-címmel. |
 
 ### <a name="disaster-recovery-alerts"></a>Vész-helyreállítási riasztások
 
-| Riasztás szövege | Esemény | További információ/javasolt műveletek |
+| Riasztás szövege | Esemény | További információk / ajánlott intézkedések |
 |:--- |:--- |:--- |
-| A helyreállítási műveletek nem tudták visszaállítani a szolgáltatás összes beállítását. Az eszköz konfigurációs adategysége nem konzisztens állapotban van bizonyos eszközök esetében. |Az adatkonzisztencia a vész-helyreállítás után észlelhető. |A szolgáltatásban lévő titkosított adatokat nem szinkronizálja a rendszer az eszközön. A szinkronizálási folyamat elindításához engedélyezze az eszköz <*eszköz nevét*> a StorSimple Eszközkezelő. A StorSimple Windows PowerShell felületén futtathatja a `Restore-HcsmEncryptedServiceData` az eszközön <*eszköznév*> parancsmagon, így a régi jelszót adja meg a parancsmagnak bemenetként a biztonsági profil visszaállításához. Ezután futtassa a `Invoke-HcsmServiceDataEncryptionKeyChange` parancsmagot a szolgáltatásban tárolt adattitkosítási kulcs frissítéséhez. A megfelelő művelet elvégzése után törölje a riasztást a riasztások lapról. |
+| A helyreállítási műveletek nem tudták visszaállítani a szolgáltatás összes beállítását. Az eszközkonfigurációs adatok egyes eszközök esetében inkonzisztens állapotban vannak. |A vészhelyreállítás után észlelt adatinkonzisztencia. |A szolgáltatás titkosított adatai nincsenek szinkronizálva az eszközön lévő adatokkal. Engedélyezze az eszköz <a StorSimple Eszközkezelőtől származó *> eszköznevét* a szinkronizálási folyamat elindításához. A Windows PowerShell-felület storSimple `Restore-HcsmEncryptedServiceData` futtatni az eszközön <*eszköz nevét*> parancsmag, amely a régi jelszót, mint egy bemeneti parancsmag a biztonsági profil visszaállításához. Ezután `Invoke-HcsmServiceDataEncryptionKeyChange` futtassa a parancsmaparancsot a szolgáltatás adattitkosítási kulcsának frissítéséhez. Miután megtette a megfelelő lépéseket, törölje ezt a riasztást a riasztások oldalról. |
 
-### <a name="hardware-alerts"></a>Hardveres riasztások
+### <a name="hardware-alerts"></a>Hardverriasztások
 
-| Riasztás szövege | Esemény | További információ/javasolt műveletek |
+| Riasztás szövege | Esemény | További információk / ajánlott intézkedések |
 |:--- |:--- |:--- |
-| A hardver-összetevő <*összetevő-azonosító*> a jelentések állapota <*állapotként*>. | |Időnként előfordulhat, hogy az ideiglenes feltételek ezeket a riasztásokat okozzák. Ha igen, akkor ez a riasztás némi idő elteltével automatikusan törlődik. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
-| A passzív vezérlő meghibásodik. |A passzív (másodlagos) vezérlő nem működik. |Az eszköz működőképes, de az egyik vezérlő meghibásodik. Próbálja meg újraindítani a vezérlőt. Ha a probléma nem oldódik meg, forduljon a Microsoft ügyfélszolgálatahoz. |
+| A hardverösszetevő <*összetevő-azonosítója*> <*állapot>.* | |Néha ideiglenes körülmények okozhatnak ilyen riasztásokat. Ha igen, a riasztás egy idő után automatikusan törlődik. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |
+| A passzív vezérlő meghibásodott. |A passzív (másodlagos) vezérlő nem működik. |A készülék működik, de az egyik vezérlő hibásan működik. Próbálja meg újraindítani a vezérlőt. Ha a probléma nem oldódott meg, forduljon a Microsoft támogatási szolgálatához. |
 
-### <a name="job-failure-alerts"></a>Sikertelen feladatok riasztásai
+### <a name="job-failure-alerts"></a>Feladathiba-riasztások
 
-| Riasztás szövege | Esemény | További információ/javasolt műveletek |
+| Riasztás szövege | Esemény | További információk / ajánlott intézkedések |
 |:--- |:--- |:--- |
-| Nem sikerült biztonsági másolatot készíteni <*forrás mennyiségi csoportjának azonosítója*>. |A biztonsági mentési feladatok sikertelenek voltak. |A kapcsolódási problémák megakadályozhatják a biztonsági mentési művelet sikeres befejezését. Ha nincsenek kapcsolódási problémák, lehetséges, hogy elérte a biztonsági mentések maximális számát. Törölje a már nem szükséges biztonsági másolatokat, majd próbálja megismételni a műveletet. A megfelelő művelet elvégzése után törölje a riasztást a riasztások lapról. |
-| A <*forrás biztonsági másolati elem azonosítóinak*klónozása nem sikerült, > <*kötet sorozatszámait*> sikertelen volt. |A klónozási feladatok sikertelenek voltak. |Frissítse a biztonsági mentési listát annak ellenőrzéséhez, hogy a biztonsági másolat még érvényes-e. Ha a biztonsági mentés érvényes, lehetséges, hogy a felhőalapú kapcsolódási problémák akadályozzák a klónozási művelet sikeres befejezését. Ha nincsenek kapcsolódási problémák, lehetséges, hogy elérte a tárolási korlátot. Törölje a már nem szükséges biztonsági másolatokat, majd próbálja megismételni a műveletet. Miután elvégezte a probléma megoldásához szükséges lépéseket, törölje a riasztást a riasztások lapról. |
-| Nem sikerült visszaállítani <*forrás biztonsági másolati elem azonosítóit*>. |A visszaállítási feladatot nem sikerült végrehajtani. |Frissítse a biztonsági mentési listát annak ellenőrzéséhez, hogy a biztonsági másolat még érvényes-e. Ha a biztonsági mentés érvényes, lehetséges, hogy a felhőalapú kapcsolódási problémák akadályozzák a visszaállítási művelet sikeres befejezését. Ha nincsenek kapcsolódási problémák, lehetséges, hogy elérte a tárolási korlátot. Törölje a már nem szükséges biztonsági másolatokat, majd próbálja megismételni a műveletet. Miután elvégezte a probléma megoldásához szükséges lépéseket, törölje a riasztást a riasztások lapról. |
+| Nem sikerült biztonsági másolatot készíteni <*forráskötetcsoport azonosító>járól.* |A biztonsági mentési feladat nem sikerült. |A kapcsolódási problémák megakadályozhatják a biztonsági mentési művelet sikeres befejezését. Ha nincsenek kapcsolódási problémák, előfordulhat, hogy elérte a biztonsági mentések maximális számát. Törölje a már nem szükséges biztonsági másolatokat, és próbálkozzon újra a művelettel. Miután megtette a megfelelő lépéseket, törölje ezt a riasztást a riasztások oldalról. |
+| Nem sikerült <*forrásbiztonsági másolat azonosítóinak klónozása*> <*célkötet sorozat>számaihoz.* |A klónozási feladat nem sikerült. |Frissítse a biztonsági másolat listát, és ellenőrizze, hogy a biztonsági másolat továbbra is érvényes-e. Ha a biztonsági mentés érvényes, lehetséges, hogy a felhőbeli kapcsolódási problémák megakadályozzák a klónozási művelet sikeres befejezését. Ha nincsenek kapcsolódási problémák, előfordulhat, hogy elérte a tárolási korlátot. Törölje a már nem szükséges biztonsági másolatokat, és próbálkozzon újra a művelettel. Miután megtette a megfelelő lépéseket a probléma megoldásához, törölje a riasztást a riasztások oldalról. |
+| A *<forrásbiztonsági másolat elemazonosítóinak visszaállítása*> sikertelen. |A visszaállítási feladat nem sikerült. |Frissítse a biztonsági másolat listát, és ellenőrizze, hogy a biztonsági másolat továbbra is érvényes-e. Ha a biztonsági mentés érvényes, lehetséges, hogy a felhőbeli kapcsolódási problémák megakadályozzák a visszaállítási művelet sikeres befejezését. Ha nincsenek kapcsolódási problémák, előfordulhat, hogy elérte a tárolási korlátot. Törölje a már nem szükséges biztonsági másolatokat, és próbálkozzon újra a művelettel. Miután megtette a megfelelő lépéseket a probléma megoldásához, törölje a riasztást a riasztások oldalról. |
 
-### <a name="locally-pinned-volume-alerts"></a>Helyileg rögzített mennyiségi riasztások
+### <a name="locally-pinned-volume-alerts"></a>Helyileg rögzített kötetriasztások
 
-| Riasztás szövege | Esemény | További információ/javasolt műveletek |
+| Riasztás szövege | Esemény | További információk / ajánlott intézkedések |
 |:--- |:--- |:--- |
-| Nem sikerült létrehozni a helyi kötet <*kötet nevét*>. |A kötet-létrehozási feladata sikertelen volt. <*a hibás hibakódnak megfelelő hibaüzenetet*>. |A kapcsolódási problémák akadályozhatják a hely létrehozási műveletének sikeres befejezését. A helyileg rögzített kötetek kiosztása sűrűn történik, a lemezterület létrehozásának folyamata pedig a lépcsőzetes kötetek felhőbe való kivonásával jár. Ha nincsenek kapcsolódási problémák, előfordulhat, hogy kimerítette a helyi területet az eszközön. Annak megállapítása, hogy létezik-e a hely az eszközön a művelet újbóli megkísérlése előtt. |
-| Nem sikerült kibővíteni a helyi kötet < a*kötet nevét*>. |A kötet-módosítási feladatot a hibás*hibakódnak megfelelő < hibaüzenet*miatt nem sikerült >. |A csatlakozási problémák megakadályozhatják a kötet bővítési műveletének sikeres végrehajtását. A helyileg rögzített kötetek kiosztása sűrűn történik, és a meglévő terület kibővítésének folyamata magában foglalja a lépcsőzetes kötetek felhőbe való kivonását. Ha nincsenek kapcsolódási problémák, előfordulhat, hogy kimerítette a helyi területet az eszközön. Annak megállapítása, hogy létezik-e a hely az eszközön a művelet újbóli megkísérlése előtt. |
-| Nem sikerült a kötet <*kötetének neve*> konvertálása. |A kötet átalakítási feladata, hogy a kötet típusát a lépcsőzetesen rögzített értékre konvertálja, nem sikerült. |Nem sikerült befejezni a kötetnek a lépcsőzetesen rögzített típusról rétegűre való átalakítását. Győződjön meg arról, hogy nincsenek kapcsolódási problémák, amelyek megakadályozzák a művelet sikeres befejezését. A kapcsolódási problémák elhárításához lépjen a következőre: [Hibaelhárítás a test-HcsmConnection parancsmaggal](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Az eredeti helyileg rögzített kötet már meg lett jelölve egy lépcsőzetes kötetként, mert a helyileg rögzített kötetből származó egyes adatok átkerülnek a felhőbe az átalakítás során. Az eredő rétegű kötet továbbra is helyi helyet foglal az eszközön, amely nem igényelhető vissza a jövőbeli helyi kötetek esetében.<br>Javítsa ki a kapcsolódási problémákat, törölje a riasztást, és alakítsa vissza a kötetet az eredeti helyileg rögzített kötetre, hogy az összes, az összes adattal helyileg elérhetővé válik. |
-| Nem sikerült a kötet <*kötetének neve*> konvertálása. |Nem sikerült a kötet átalakítási feladatainak a rétegekből a helyileg rögzítettre történő átalakítására irányuló feladata. |Nem sikerült befejezni a kötet átalakítását a lépcsőzetesről a helyileg rögzített típusra. Győződjön meg arról, hogy nincsenek kapcsolódási problémák, amelyek megakadályozzák a művelet sikeres befejezését. A kapcsolódási problémák elhárításához lépjen a következőre: [Hibaelhárítás a test-HcsmConnection parancsmaggal](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Az átalakítási folyamat részeként már helyileg rögzített kötetként jelölt eredeti, többkötetes kötet továbbra is a felhőben található, az eszközön lévő, sűrűn kiépített terület azonban többé nem állítható vissza a jövőbeli helyi kötetek esetében.<br>Javítsa ki a kapcsolódási problémákat, törölje a riasztást, és konvertálja vissza a kötetet az eredeti rétegű kötet típusára annak érdekében, hogy az eszközön sűrűn kiépített helyi tárterület is visszaigényelhető legyen. |
-| A <*mennyiségi csoport neve* a helyi pillanatképekhez közeledik a helyi felhasználáshoz> |Előfordulhat, hogy a biztonsági mentési szabályzat helyi pillanatképei hamarosan elfogynak a tárhelyen, és érvénytelenítve lesznek, hogy elkerülje a gazdagép írási hibáit. |Gyakori helyi Pillanatképek a biztonsági mentési szabályzathoz társított kötetek magas adatváltozása mellett az eszközön a helyi terület gyorsan felhasználható. Törölje a már nem szükséges helyi pillanatképeket. Emellett frissítse a biztonsági mentési szabályzathoz tartozó helyi pillanatkép-ütemterveket a ritkább helyi Pillanatképek elvégzéséhez, és győződjön meg arról, hogy a Felhőbeli Pillanatképek rendszeresen zajlanak. Ha ezeket a műveleteket nem végzi el, előfordulhat, hogy a pillanatképek helyi területe hamarosan ki lesz merítve, és a rendszer automatikusan törli őket, hogy a gazdagépek írásait továbbra is sikeresen feldolgozza. |
-| A <*mennyiségi csoport neve*> helyi pillanatképei érvénytelenítve lettek. |A <*kötet csoportjának neve*> helyi pillanatképei érvénytelenítve lettek, majd törölve lettek, mert túllépték a helyi területet az eszközön. |Annak biztosítása érdekében, hogy ez a jövőben ne ismétlődjön meg, tekintse át a biztonsági mentési szabályzathoz tartozó helyi pillanatkép-ütemterveket, és törölje a már nem szükséges helyi pillanatképeket. A biztonsági mentési házirend csoportba tartozó kötetek magas adatváltozása mellett gyakori helyi Pillanatképek is okozhatják az eszközön a helyi tárterület gyors felhasználását. |
-| Nem sikerült visszaállítani <*forrás biztonsági másolati elem azonosítóit*>. |A visszaállítási feladatot nem sikerült végrehajtani. |Ha a biztonsági mentési szabályzatban helyileg rögzített és lépcsőzetes kötetek is vannak, akkor frissítse a biztonsági mentési listát, és ellenőrizze, hogy a biztonsági másolat még érvényes-e. Ha a biztonsági mentés érvényes, lehetséges, hogy a felhőalapú kapcsolódási problémák akadályozzák a visszaállítási művelet sikeres befejezését. A pillanatkép-csoport részeként visszaállított helyileg rögzített kötetek nem rendelkeznek az eszközre letöltött összes adattal, és ha a pillanatkép-csoportban lévő, többszintes és helyileg rögzített kötetek vegyesen vannak, nem lesznek szinkronban egymással. A visszaállítási művelet sikeres elvégzéséhez állítsa offline állapotba a csoportban lévő köteteket a gazdagépen, majd próbálja megismételni a visszaállítási műveletet. Vegye figyelembe, hogy a visszaállítási folyamat során végrehajtott összes módosítás elvész. |
+| A helyi kötet <*kötetneve* nem sikerült>. |A kötet létrehozási feladata nem sikerült. <*A sikertelen hibakódnak megfelelő* hibaüzenet>. |A kapcsolódási problémák megakadályozhatják a helyteremtési művelet sikeres befejezését. A helyileg rögzített kötetek vastagon vannak kiépítve, és a terület létrehozásának folyamata magában foglalja a rétegzett kötetek kiömlését a felhőbe. Ha nincsenek csatlakozási problémák, előfordulhat, hogy kimerítette az eszközön lévő helyi területet. A művelet újbóli megkísérlése előtt állapítsa meg, hogy van-e hely az eszközön. |
+| A helyi kötet <*kötet neve*> sikertelen. |A kötetmódosítási feladat <*hibakódnak megfelelő hibaüzenet*> miatt sikertelen. |A kapcsolódási problémák megakadályozhatják a kötetbővítési művelet sikeres befejezését. A helyileg rögzített kötetek vastagon vannak kiépítve, és a meglévő terület kiterjesztésének folyamata magában foglalja a rétegzett kötetek kiömlését a felhőbe. Ha nincsenek csatlakozási problémák, előfordulhat, hogy kimerítette az eszközön lévő helyi területet. A művelet újbóli megkísérlése előtt állapítsa meg, hogy van-e hely az eszközön. |
+| A kötet <*kötetnevének* konvertálása sikertelen>. |A kötettípus helyileg rögzítettről rétegzettre történő konvertálására a kötetkonverziós feladat nem sikerült. |A kötet átalakítása a helyileg rögzített típusból rétegzettre nem hajtható végre. Győződjön meg arról, hogy nincsenek olyan csatlakozási problémák, amelyek megakadályozzák a művelet sikeres befejezését. A kapcsolódási problémák elhárításához látogasson el [a Hibaelhárítás a Test-HcsmConnection parancsmaggal című témakörben.](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet)<br>Az eredeti helyileg rögzített kötet most már rétegzett kötetként van megjelölve, mivel a helyileg rögzített kötet egyes adatai kiömltek a felhőbe az átalakítás során. Az eredő rétegzett kötet továbbra is helyi helyet foglal el az eszközön, amely nem nyerhető vissza a jövőbeli helyi köteteknél.<br>Hárítsa el a kapcsolódási problémákat, törölje a riasztást, és alakítsa vissza a kötetet az eredeti, helyileg rögzített kötettípusra, hogy az összes adat ismét helyileg elérhetőlegyen. |
+| A kötet <*kötetnevének* konvertálása sikertelen>. |A kötettípus rétegzettről helyileg rögzítettre történő konvertálására irányuló kötetátalakítási feladat nem sikerült. |A kötet rétegzett típusból helyileg rögzítettre történő átalakítása nem hajtható végre. Győződjön meg arról, hogy nincsenek olyan csatlakozási problémák, amelyek megakadályozzák a művelet sikeres befejezését. A kapcsolódási problémák elhárításához látogasson el [a Hibaelhárítás a Test-HcsmConnection parancsmaggal című témakörben.](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet)<br>Az eredeti rétegzett kötet most helyileg rögzített kötetként van megjelölve az átalakítási folyamat részeként, amelytovábbra is rendelkezik a felhőben tárolt adatokkal, míg az eszköz vastagon kiépített területe a kötethez a jövőbeli helyi kötetek esetében már nem nyerhető vissza.<br>Hárítsa el a kapcsolódási problémákat, törölje a riasztást, és alakítsa vissza ezt a kötetet az eredeti rétegzett kötettípusra, hogy biztosítsa az eszközön vastagon kiépített helyi területet. |
+| Közeledik a helyi területfelhasználáshoz <*kötetcsoport nevének* helyi pillanatképeihez> |A biztonsági mentési házirend helyi pillanatképei hamarosan elfogyhatnak a helyből, és érvényteleníthetők az állomás írási hibáinak elkerülése érdekében. |A biztonsági mentési házirend-csoporthoz társított kötetek gyakori helyi pillanatképei az eszköz helyi tárhelyének gyors felhasználását eredményezik. Törölje a helyi pillanatképeket, amelyek már nincs szükség. Emellett frissítse a biztonsági mentési szabályzat helyi pillanatkép-ütemezéseit, hogy kevésbé gyakori helyi pillanatképeket készítsen, és győződjön meg arról, hogy a felhőbeli pillanatképek rendszeresen készülnek. Ha ezek a műveletek nem történnek meg, a pillanatképek helyi területe hamarosan kimerülhet, és a rendszer automatikusan törli őket annak érdekében, hogy az állomásírások feldolgozása továbbra is sikeres legyen. |
+| A *kötetcsoport nevének* <helyi pillanatképei> érvénytelenítve. |A *kötetcsoport nevének*> <helyi pillanatképei érvénytelenné váltak, majd törlődtek, mert túllépték az eszközön lévő helyi területet. |Annak érdekében, hogy ez a jövőben ne ismétlődjön meg, tekintse át a biztonsági mentési szabályzat helyi pillanatkép-ütemezéseit, és törölje a már nem szükséges helyi pillanatképeket. A biztonsági mentési házirend-csoporthoz társított kötetek gyakori helyi pillanatképei az eszköz helyi tárhelyének gyors felhasználását eredményezhetik. |
+| A *<forrásbiztonsági másolat elemazonosítóinak visszaállítása*> sikertelen. |A visszaállítási feladat nem sikerült. |Ha helyileg rögzített, vagy a helyileg rögzített és rétegzett kötetek vegyesen ebben a biztonsági mentési házirendben, frissítse a biztonsági mentési listát, és ellenőrizze, hogy a biztonsági mentés továbbra is érvényes-e. Ha a biztonsági mentés érvényes, lehetséges, hogy a felhőbeli kapcsolódási problémák megakadályozzák a visszaállítási művelet sikeres befejezését. A pillanatkép-csoport részeként visszaállított helyileg rögzített kötetek nem rendelkeznek az összes adat letöltésével az eszközre, és ha rétegzett és helyileg rögzített kötetek vegyesen vannak ebben a pillanatkép-csoportban, azok nem lesznek szinkronban egymással. A visszaállítási művelet sikeres befejezéséhez tegye offline állapotba a csoport köteteit az állomáson, majd próbálkozzon újra a visszaállítási művelettel. Vegye figyelembe, hogy a visszaállítási folyamat során végrehajtott kötetadatok módosításai elvesznek. |
 
 ### <a name="networking-alerts"></a>Hálózati riasztások
 
-| Riasztás szövege | Esemény | További információ/javasolt műveletek |
+| Riasztás szövege | Esemény | További információk / ajánlott intézkedések |
 |:--- |:--- |:--- |
-| Nem lehetett elindítani a StorSimple szolgáltatás (oka) t. |DataPath hiba |Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
-| Ismétlődő IP-cím észlelhető a következőhöz: "Data0". | |A rendszer ütközést észlelt a (z) 10.0.0.1 IP-címhez. Az eszközön lévő "Data0" hálózati erőforrás offline állapotban van *\<device1 >* . Győződjön meg arról, hogy ezt az IP-címet a hálózat egyik másik entitása sem használja. A hálózati problémák elhárításához lépjen a következőre: [Hibaelhárítás a Get-NetAdapter parancsmaggal](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). A probléma megoldása érdekében forduljon a hálózati rendszergazdához. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
-| A "Data0" IPv4-(vagy IPv6-) címe offline állapotban van. | |A "Data0" hálózati erőforrás "10.0.0.1" IP-címmel. az eszközön a "22" előtag hossza *\<a device1 >* offline állapotban van. Győződjön meg arról, hogy az illesztőhöz csatlakozó portok működnek. A hálózati problémák elhárításához lépjen a következőre: [Hibaelhárítás a Get-NetAdapter parancsmaggal](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
-| Nem lehet csatlakozni a hitelesítési szolgáltatáshoz. |DataPath hiba |A hitelesítéshez használt URLthat nem érhető el. Győződjön meg arról, hogy a tűzfalszabályok tartalmazzák a StorSimple-eszközhöz megadott URL-mintákat. A Azure Portal URL-mintázatával kapcsolatos további információkért keresse fel a https:\//aka.ms/ss-8000-network-reqs. Ha Azure Government felhőt használ, keresse fel az URL-mintákat a https:\//aka.ms/ss8000-gov-network-reqs.|
+| Nem indítható a StorSimple szolgáltatás(oka). |Datapath hiba |Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |
+| A "Data0" azonosító IP-címe. | |A rendszer ütközést észlelt a "10.0.0.1" IP-címnél. Az eszköz * \<eszközén* "Data0" hálózati erőforrás1>offline állapotban van. Győződjön meg arról, hogy ezt az IP-címet a hálózat más entitása nem használja. A hálózati problémák elhárításához nyissa meg [a Hibaelhárítás a Get-NetAdapter parancsmaggal című témakört.](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet) A probléma megoldásához forduljon a hálózati rendszergazdához. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |
+| A "Data0" IPv4(vagy IPv6) címe offline állapotban van. | |A "Data0" hálózati erőforrás "10.0.0.1" IP-címmel. és a "22" előtag hossza az * \<eszközön1>* offline állapotban van. Győződjön meg arról, hogy azok a kapcsolóportok, amelyekhez ez az összeköttetés csatlakozik, működőképesek. A hálózati problémák elhárításához nyissa meg [a Hibaelhárítás a Get-NetAdapter parancsmaggal című témakört.](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet) |
+| Nem sikerült csatlakozni a hitelesítési szolgáltatáshoz. |Datapath hiba |A hitelesítéshez használt URL-cím nem érhető el. Győződjön meg arról, hogy a tűzfalszabályok tartalmazzák a StorSimple eszközhöz megadott URL-mintákat. Az Azure Portal URL-mintáiról a\/https: /aka.ms/ss-8000-network-reqs webhelyen talál további információt. Ha az Azure Government Cloud, nyissa meg\/az URL-minták https: /aka.ms/ss8000-gov-network-reqs.|
 
-### <a name="performance-alerts"></a>Teljesítmény-riasztások
+### <a name="performance-alerts"></a>Teljesítményre vonatkozó riasztások
 
-| Riasztás szövege | Esemény | További információ/javasolt műveletek | |
+| Riasztás szövege | Esemény | További információk / ajánlott intézkedések | |
 |:--- |:--- |:--- | --- |
-| Az eszköz terhelése túllépte <*küszöbértéket*>. |A vártnál lassabb válaszidő. |Az eszköz egy nagy mennyiségű bemeneti/kimeneti terhelés alatt jelenti a kihasználtságot. Ez azt eredményezheti, hogy az eszköz nem működik, illetve. Tekintse át az eszközhöz csatolt munkaterheléseket, és állapítsa meg, hogy vannak-e olyanok, amelyek áthelyezhetők egy másik eszközre, vagy amelyekre már nincs szükség.|
-| Nem lehetett elindítani a StorSimple szolgáltatás (oka) t. |DataPath hiba |Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
+| Az eszköz terhelése túllépte <*küszöbértéket*>. |A vártnál lassabb válaszidők. |A készülék nagy bemeneti/kimeneti terhelés mellett jelenti a kihasználtságot. Ez azt eredményezheti, hogy a készülék nem működik olyan jól, ahogy kellene. Tekintse át az eszközhöz csatlakoztatott munkaterheléseket, és állapítsa meg, hogy vannak-e olyan, amely áthelyezhető egy másik eszközre, vagy amelyek már nem szükségesek.|
+| Nem indítható a StorSimple szolgáltatás(oka). |Datapath hiba |Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |
 
 ### <a name="security-alerts"></a>Biztonsági riasztások
 
-| Riasztás szövege | Esemény | További információ/javasolt műveletek |
+| Riasztás szövege | Esemény | További információk / ajánlott intézkedések |
 |:--- |:--- |:--- |
-| Microsoft ügyfélszolgálata munkamenet megkezdődött. |Harmadik féltől származó, elért támogatási munkamenet. |Ellenőrizze, hogy a hozzáférés engedélyezve van-e. A megfelelő művelet elvégzése után törölje a riasztást a riasztások lapról. |
-| A < >*elemhez*tartozó jelszó < >*időtartamában*lejár. |A jelszó lejárata közeledik. |A jelszó módosítása a lejárat előtt. |
-| Hiányzó biztonsági konfigurációs adatok a <*elem azonosítójának*>. | |A mennyiségi tárolóhoz társított kötetek nem használhatók a StorSimple-konfiguráció replikálásához. Az adatai biztonságos tárolásának biztosítása érdekében javasoljuk, hogy törölje a mennyiségi tárolót és a kötet-tárolóhoz társított köteteket. A megfelelő művelet elvégzése után törölje a riasztást a riasztások lapról. |
-| <*szám*> sikertelen bejelentkezési kísérlet <*elem-azonosító*>. |Több sikertelen bejelentkezési kísérlet. |Előfordulhat, hogy az eszköz támadás alatt áll, vagy a felhasználó helytelen jelszóval próbál csatlakozni.<ul><li>Forduljon a jogosult felhasználókhoz, és ellenőrizze, hogy ezek a kísérletek megbízható forrásból származnak-e. Ha továbbra is nagy számú sikertelen bejelentkezési kísérletet lát, érdemes lehet letiltani a távoli felügyeletet és kapcsolatba lépni a hálózati rendszergazdával. A megfelelő művelet elvégzése után törölje a riasztást a riasztások lapról.</li><li>Győződjön meg arról, hogy a Snapshot Manager példányok a megfelelő jelszóval vannak konfigurálva. A megfelelő művelet elvégzése után törölje a riasztást a riasztások lapról.</li></ul>További információért lépjen a [lejárt eszköz jelszavának módosítása](storsimple-snapshot-manager-manage-devices.md#change-an-expired-device-password)elemre. |
-| Egy vagy több hiba történt a szolgáltatásban tárolt adattitkosítási kulcs módosításakor. | |Hiba történt a szolgáltatási adattitkosítási kulcs módosításakor. Miután megoldotta a hibák feltételeit, futtassa a `Invoke-HcsmServiceDataEncryptionKeyChange` parancsmagot az eszközön található StorSimple Windows PowerShell-felületéről a szolgáltatás frissítéséhez. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatához. A probléma megoldása után törölje a riasztást a riasztások lapról. |
+| A Microsoft támogatási munkamenete megkezdődött. |Harmadik fél által elért támogatási munkamenet. |Ellenőrizze, hogy ez a hozzáférés engedélyezett-e. Miután megtette a megfelelő lépéseket, törölje ezt a riasztást a riasztások oldalról. |
+| A> *elem* <jelszava <*>.* |A jelszó lejárata közeledik. |Változtassa meg a jelszavát, mielőtt lejár. |
+| Hiányoznak <*elemazonosító*> biztonsági konfigurációs adatai. | |A kötettárolóhoz társított kötetek nem használhatók a StorSimple-konfiguráció replikálására. Annak érdekében, hogy az adatok biztonságosan tárolják, azt javasoljuk, hogy törölje a kötettárolóés a kötettárolóhoz társított köteteket. Miután megtette a megfelelő lépéseket, törölje ezt a riasztást a riasztások oldalról. |
+| <*a* <*elemazonosító*>> bejelentkezési kísérlet. |Több sikertelen bejelentkezési kísérlet. |Lehet, hogy az eszköz támadás alatt áll, vagy egy jogosult felhasználó helytelen jelszóval próbál csatlakozni.<ul><li>Lépjen kapcsolatba a jogosult felhasználókkal, és ellenőrizze, hogy ezek a kísérletek jogszerű forrásból származnak-e. Ha továbbra is nagy számú sikertelen bejelentkezési kísérletet lát, fontolja meg a távkezelés letiltását és a hálózati rendszergazdához való kapcsolatfelvétel megbúvását. Miután megtette a megfelelő lépéseket, törölje ezt a riasztást a riasztások oldalról.</li><li>Ellenőrizze, hogy a Snapshot Manager-példányok a megfelelő jelszóval vannak-e konfigurálva. Miután megtette a megfelelő lépéseket, törölje ezt a riasztást a riasztások oldalról.</li></ul>További információ: [Lejárt eszközjelszó módosítása.](storsimple-snapshot-manager-manage-devices.md#change-an-expired-device-password) |
+| Egy vagy több hiba történt a szolgáltatás adattitkosítási kulcsának módosítása közben. | |Hibák merültek fel a szolgáltatás adattitkosítási kulcsának módosítása kor. Miután kioldotta a hibafeltételeket, futtassa a `Invoke-HcsmServiceDataEncryptionKeyChange` parancsmaletet a Windows PowerShell Interface for StorSimple az eszközön a szolgáltatás frissítéséhez. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. A probléma megoldása után törölje a riasztást a riasztások lapjáról. |
 
-### <a name="support-package-alerts"></a>Támogatási csomagra vonatkozó riasztások
+### <a name="support-package-alerts"></a>Támogatási csomagriasztás
 
-| Riasztás szövege | Esemény | További információ/javasolt műveletek |
+| Riasztás szövege | Esemény | További információk / ajánlott intézkedések |
 |:--- |:--- |:--- |
-| Nem sikerült létrehozni a támogatási csomagot. |A StorSimple nem tudta előállítani a csomagot. |Próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. A probléma megoldása után törölje a riasztást a riasztások lapról. |
+| A támogatási csomag létrehozása nem sikerült. |A StorSimple nem tudta létrehozni a csomagot. |Próbálkozzon újra a művelettel. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. Miután megoldotta a problémát, törölje a riasztást a riasztások lapról. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [StorSimple hibákról és az eszközök telepítési problémáinak elhárításáról](storsimple-8000-troubleshoot-deployment.md).
+További információ a [StorSimple hibáiról és az eszközök telepítésével kapcsolatos problémák elhárításáról.](storsimple-8000-troubleshoot-deployment.md)
 

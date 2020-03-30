@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: az Office 365-erőforrások előnyben részesített adatelérési helyének konfigurálása'
-description: Ismerteti, hogyan helyezhetők el az Office 365 felhasználói erőforrásai a felhasználóhoz Azure Active Directory Connect szinkronizálással.
+title: 'Azure AD Connect: Az Office 365-erőforrások előnyben részesített adathelyének konfigurálása'
+description: Ez a témakör azt ismerteti, hogy az Azure Active Directory Connect szinkronizálásával hogyan helyezheti az Office 365 felhasználói erőforrásait a felhasználó közelébe.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,265 +16,265 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faecb0bc8cbb5ca84e9fc8bfc3cb99e2ccef1f11
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 2a71c5328c6fa85f85db4bd7e6103f6470b86d99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894569"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258328"
 ---
-# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect Sync: az Office 365-erőforrások előnyben részesített adatelérési helyének konfigurálása
-Ennek a témakörnek a célja, hogy megtudja, hogyan konfigurálhatja az attribútumot az előnyben részesített adathelyhez az Azure Active Directory (Azure AD) kapcsolódási szinkronizálásban. Ha valaki multi-geo képességeket használ az Office 365-ben, ezzel az attribútummal jelölheti meg a felhasználó Office 365-beli adatmennyiségének földrajzi helyét. (A feltételek *régiója* és a *földrajzi* terület szinonimaként használható.)
+# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect szinkronizálása: Az Office 365-erőforrások előnyben részesített adathelyének konfigurálása
+Ez a témakör célja, hogy végigvezeti, hogyan konfigurálja az attribútumot az előnyben részesített adatok helyét az Azure Active Directory (Azure AD) Connect szinkronizálás. Ha valaki multi-geo funkciókat használ az Office 365-ben, ezzel az attribútummal kijelölheti a felhasználó Office 365-adatainak földrajzi helyét. (A *régió* és *a földrajzi* terület kifejezések szinonimaként használatosak.)
 
-## <a name="enable-synchronization-of-preferred-data-location"></a>Az előnyben részesített adathely szinkronizálásának engedélyezése
-Alapértelmezés szerint a felhasználók Office 365-erőforrásai ugyanabban a földrajzi helyen találhatók, mint az Azure AD-bérlő. Ha például a bérlő a Észak-Amerikaban található, akkor a felhasználók Exchange-postaládái a Észak-Amerikaban is megtalálhatók. A többnemzetiségű szervezetek esetében ez nem lehet optimális.
+## <a name="enable-synchronization-of-preferred-data-location"></a>Az előnyben részesített adatok helyének szinkronizálásának engedélyezése
+Alapértelmezés szerint a felhasználók Office 365-erőforrásai ugyanabban a földrajzi helyen találhatók, mint az Azure AD-bérlő. Ha például a bérlő Észak-Amerikában található, akkor a felhasználók Exchange-postaládái is Észak-Amerikában találhatók. Egy multinacionális szervezet számára ez nem biztos, hogy optimális.
 
-A **preferredDataLocation**attribútum beállításával megadhatja a felhasználó földrajzi elhelyezkedését. A felhasználó Office 365-erőforrásait, például a postaládát és a OneDrive a felhasználóval megegyező földrajzi tartományba helyezheti, és továbbra is rendelkezik egy Bérlővel a teljes szervezet számára.
+A **preferredDataLocation**attribútum beállításával megadhatja a felhasználó földrajzi helyét. A felhasználó Office 365-erőforrásait, például a postaládát és a OneDrive-ot a felhasználóval azonos földrajzi helyen használhatja, és továbbra is rendelkezik egy bérlővel a teljes szervezet számára.
 
 > [!IMPORTANT]
-> A multi-geo jelenleg aktív Nagyvállalati Szerződés és legalább 500 Office 365 Services-előfizetéssel rendelkező ügyfelek számára érhető el. A részletekért forduljon a Microsoft képviselőjéhez.
+> A Multi-Geo jelenleg aktív nagyvállalati szerződéssel és legalább 500 Office 365-előfizetéssel rendelkező ügyfelek számára érhető el. A részletekért forduljon a Microsoft képviselőjéhez.
 >
 >
 
-Az Office 365 összes térségek listája megtalálható [ott, ahol az Ön adatai találhatók?](https://aka.ms/datamaps).
+Az Office 365 összes geos listája a Hol találhatók [az adatok?](https://aka.ms/datamaps).
 
-A térségek az Office 365-ben több geo esetén is elérhető:
+Az Office 365-ben a Multi-Geo számára elérhető geos a következő:
 
 | Térség | preferredDataLocation érték |
 | --- | --- |
-| Ázsia és a Csendes-óceáni térség | APC |
-| Ausztrália | Au |
-| Kanada | LEHET |
+| Ázsia és a Csendes-óceáni térség | Apc |
+| Ausztrália | Aus |
+| Kanada | Cna |
 | Európai Unió | EUR |
 | Franciaország | FRA |
 | India | IND |
 | Japán | JPN |
 | Dél-Korea | KOR |
-| Dél-afrikai Köztársaság | ZAF |
-| Egyesült Arab Emírségek | A |
-| Egyesült Királyság | GBR |
-| Egyesült Államok | NAM |
+| Dél-afrikai Köztársaság | ZAF között |
+| Egyesült Arab Emírségek | VANNAK |
+| Egyesült Királyság | Gbr |
+| Egyesült Államok | Nam |
 
-* Ha a Geo nem szerepel a táblázatban (például Dél-Amerika), akkor nem használható több földrajzi helyhez.
+* Ha egy földrajzi hely nem szerepel ebben a táblázatban (például Dél-Amerika), akkor nem használható a Multi-Geo.
 
-* Nem minden Office 365-alapú számítási feladat támogatja a felhasználó földrajzi elhelyezkedésének használatát.
+* Nem minden Office 365-feladat támogatja a felhasználó földrajzi helyének beállítását.
 
-### <a name="azure-ad-connect-support-for-synchronization"></a>A szinkronizálás Azure AD Connect támogatása
+### <a name="azure-ad-connect-support-for-synchronization"></a>Az Azure AD Connect támogatása a szinkronizáláshoz
 
-Azure AD Connect támogatja a **preferredDataLocation** attribútum szinkronizálását a 1.1.524.0 vagy újabb verzióban lévő **felhasználói** objektumokhoz. Ezek:
+Az Azure AD Connect támogatja a **preferredDataLocation** attribútum szinkronizálását az 1.1.524.0-s és újabb verziójú **felhasználói** objektumokhoz. Ezek a következők:
 
-* Az Azure AD-összekötőben az objektumtípus- **felhasználó** sémája ki van bővítve a **preferredDataLocation** attribútum belefoglalásával. Az attribútum típusa, egyértékű karakterlánc.
-* A metaverse-beli objektumtípus- **személy** sémája ki van bővítve, hogy tartalmazza a **preferredDataLocation** attribútumot. Az attribútum típusa, egyértékű karakterlánc.
+* A séma az objektum típusa **felhasználó** az Azure AD-összekötő ki van bővítve a **preferredDataLocation** attribútum. Az attribútum típusa, egyértékű karakterlánc.
+* A Metaverzumban lévő **Személy** objektumtípus sémája a **preferredDataLocation** attribútummal együtt bővül. Az attribútum típusa, egyértékű karakterlánc.
 
-Alapértelmezés szerint a **preferredDataLocation** nincs engedélyezve a szinkronizáláshoz. Ez a funkció nagyobb szervezetek számára készült. A Windows Server 2019 Active Directory sémája az **msDS-preferredDataLocation** attribútumot használja erre a célra. Ha nem frissítette a Active Directory sémát, és nem tudja megtenni, akkor meg kell adnia egy attribútumot, amely az Office 365 geo-t fogja tárolni a felhasználók számára. Ez minden szervezet esetében eltérő lesz.
+Alapértelmezés szerint **a preferredDataLocation** nincs engedélyezve a szinkronizáláshoz. Ez a funkció nagyobb szervezetek számára készült. A Windows Server 2019 Active Directory-sémája rendelkezik egy **msDS-preferredDataLocation attribútummal,** amelyet erre a célra használnia kell. Ha nem frissítette az Active Directory sémáját, és nem tudja megtenni, akkor azonosítania kell egy attribútumot, amely az Office 365 földrajzi helyének tárolására szolgál a felhasználók számára. Ez minden szervezetnél más lesz.
 
 > [!IMPORTANT]
-> Az Azure AD lehetővé teszi, hogy a **felhőalapú felhasználói objektumok** **preferredDataLocation** attribútuma közvetlenül az Azure ad PowerShell használatával legyen konfigurálva. Az Azure AD már nem teszi lehetővé a **szinkronizált felhasználói objektumok** **preferredDataLocation** attribútumának közvetlen konfigurálását az Azure ad PowerShell használatával. Ha ezt az attribútumot **szinkronizált felhasználói objektumokon**szeretné konfigurálni, akkor a Azure ad Connectt kell használnia.
+> Az Azure AD lehetővé teszi, hogy a **preferredDataLocation** attribútum **a felhőbeli felhasználói objektumokon** közvetlenül konfigurálható az Azure AD PowerShell használatával. Az attribútum **konfigurálásához szinkronizált felhasználói objektumokon**az Azure AD Connect et kell használnia.
 
 A szinkronizálás engedélyezése előtt:
 
-* Ha nem frissítette a Active Directory sémát a 2019-re, akkor döntse el, hogy melyik helyszíni Active Directory attribútumot szeretné használni a forrás attribútumként. A típusnak **egyértékű sztringnek**kell lennie.
-* Ha korábban már konfigurálta az **preferredDataLocation** attribútumot az Azure ad-ben meglévő **szinkronizált felhasználói objektumokon** az Azure ad PowerShell használatával, akkor az vezetnie a helyszíni Active Directory megfelelő **felhasználói** objektumaira kell beállítania.
+* Ha nem frissítette az Active Directory-sémát 2019-re, majd döntse el, hogy melyik helyszíni Active Directory attribútumot használja forrásattribútumként. Meg kell a típusú, **egyértékű string**.
+* Ha korábban konfigurálta a **preferredDataLocation** attribútumot az Azure AD meglévő **szinkronizált felhasználói objektumain** az Azure AD PowerShell használatával, akkor az attribútumértékeket vissza kell portolnia a megfelelő **felhasználói** objektumokhoz a helyszíni Active Directoryban.
 
     > [!IMPORTANT]
-    > Ha nem vezetnie ezeket az értékeket, Azure AD Connect eltávolítja a meglévő attribútum-értékeket az Azure AD-ben, ha engedélyezve van a **preferredDataLocation** attribútum szinkronizálása.
+    > Ha nem támogatja ezeket az értékeket, az Azure AD Connect eltávolítja a meglévő attribútumértékeket az Azure AD-ben, ha a **preferredDataLocation** attribútum szinkronizálása engedélyezve van.
 
-* Konfigurálja a forrás attribútumot legalább néhány helyszíni Active Directory felhasználói objektumon. Ezt később is használhatja ellenőrzésre.
+* Konfigurálja a forrásattribútumot legalább néhány helyszíni Active Directory-felhasználó objektumon. Ezt később is használhatja ellenőrzésre.
 
-A következő szakaszokban ismertetjük a **preferredDataLocation** attribútum szinkronizálásának engedélyezéséhez szükséges lépéseket.
+A következő szakaszok a **preferredDataLocation** attribútum szinkronizálásának engedélyezéséhez szükséges lépéseket ismertetik.
 
 > [!NOTE]
-> A lépéseket az egyerdős topológiával rendelkező Azure AD-telepítés kontextusában, valamint egyéni szinkronizálási szabályok nélkül ismertetjük. Ha többerdős topológiával rendelkezik, az egyéni szinkronizálási szabályok konfigurálva vannak, vagy átmeneti kiszolgálóval rendelkezik, a lépéseket ennek megfelelően kell módosítania.
+> A lépéseket egy erdős topológiával rendelkező Azure AD-telepítés környezetében, egyéni szinkronizálási szabályok nélkül ismertetik. Ha többerdős topológiával rendelkezik, egyéni szinkronizálási szabályok vannak konfigurálva, vagy átmeneti kiszolgálóval rendelkezik, ennek megfelelően kell módosítania a lépéseket.
 
-## <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>1\. lépés: az ütemező szinkronizálásának letiltása és annak ellenőrzése, hogy nincs-e folyamatban szinkronizálás
-Ha el szeretné kerülni az Azure AD-ba való nem kívánt módosítások elkerülését, győződjön meg arról, hogy a szinkronizálási szabályok frissítése közben nem történik szinkronizálás. A beépített szinkronizálási ütemező letiltása:
+## <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>1. lépés: A szinkronizálási ütemező letiltása és annak ellenőrzése, hogy nincs-e folyamatban szinkronizálás
+Annak elkerülése érdekében, hogy a nem kívánt módosítások exportálása az Azure AD-be, győződjön meg arról, hogy nem történik szinkronizálás történik, miközben a szinkronizálási szabályok frissítése közben történik. A beépített szinkronizálási ütemező letiltása:
 
-1. Indítsa el a PowerShell-munkamenetet a Azure AD Connect-kiszolgálón.
-2. Az ütemezett szinkronizálás letiltása a következő parancsmag futtatásával: `Set-ADSyncScheduler -SyncCycleEnabled $false`.
-3. A **synchronization Service Manager** elindításához **nyissa meg > ** **szinkronizációs szolgáltatást**.
-4. Válassza az **Operations (műveletek** ) fület, és ellenőrizze, hogy nincs *-e folyamatban*állapotú művelet.
+1. PowerShell-munkamenet indítása az Azure AD Connect-kiszolgálón.
+2. Tiltsa le az ütemezett szinkronizálást a `Set-ADSyncScheduler -SyncCycleEnabled $false`parancsmag futtatásával: .
+3. Indítsa el a **szinkronizálási szolgáltatáskezelőt** a **START** > **szinkronizálási szolgáltatás sal.**
+4. Jelölje ki a **Műveletek** lapot, és ellenőrizze, hogy nincs-e *folyamatban*lévő állapotú művelet.
 
-![Képernyőkép a Synchronization Service Managerról](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
+![Képernyőkép: Szinkronizálási szolgáltatáskezelő](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
 
-## <a name="step-2-refresh-the-schema-for-active-directory"></a>2\. lépés: az Active Directory sémájának frissítése
-Ha frissítette a Active Directory sémát a 2019-re, és a kapcsolat a séma kiterjesztése előtt lett telepítve, akkor a kapcsolódási séma gyorsítótára nem rendelkezik a frissített sémával. Ezután frissítenie kell a sémát a varázslóból, hogy az megjelenjen a felhasználói felületen.
+## <a name="step-2-refresh-the-schema-for-active-directory"></a>2. lépés: Az Active Directory sémafrissítése
+Ha frissítette az Active Directory sémát 2019-re, és a Connect telepítve lett a sémabővítmény előtt, akkor a Connect séma-gyorsítótárnem rendelkezik a frissített sémával. Ezután frissítenie kell a sémát a varázslóból, hogy megjelenjen a felhasználói felületen.
 
-1. Indítsa el a Azure AD Connect varázslót az asztalról.
-2. Válassza a **címtár-séma frissítése** lehetőséget, majd kattintson a **tovább**gombra.
-3. Adja meg az Azure AD-beli hitelesítő adatait, és kattintson a **tovább**gombra.
-4. A **címtár-séma frissítése** lapon győződjön meg arról, hogy az összes erdő ki van választva, majd kattintson a **tovább**gombra.
-5. Ha elkészült, a varázsló bezárásával.
+1. Indítsa el az Azure AD Connect varázslót az asztalról.
+2. Válassza a **Könyvtárséma frissítése** lehetőséget, majd kattintson a **Tovább**gombra.
+3. Adja meg az Azure AD hitelesítő adatait, és kattintson a **Tovább**gombra.
+4. A **Címtárséma frissítése** lapon győződjön meg arról, hogy az összes erdő ki van jelölve, és kattintson a **Tovább**gombra.
+5. Ha befejeződött, zárja be a varázslót.
 
-![Képernyőkép a címtár-séma frissítése a kapcsolat varázslóban](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-refreshschema.png)
+![Képernyőkép a Csatlakozás varázsló Címtárséma frissítése varázslóról](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-refreshschema.png)
 
-## <a name="step-3-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>3\. lépés: a forrás attribútum hozzáadása a helyszíni Active Directory összekötő sémához
-**Erre a lépésre csak akkor van szükség, ha a 1.3.21 vagy régebbi verziójú csatlakozási verziót futtatja. Ha a 1.4.18 vagy újabb verzióval rendelkezik, ugorjon az 5. lépésre.**  
-Nem minden Azure AD-attribútum importálható a helyszíni Active Directory-összekötő területére. Ha olyan attribútumot jelölt ki, amely alapértelmezés szerint nincs szinkronizálva, akkor importálnia kell azt. A forrás attribútum hozzáadása az importált attribútumok listájához:
+## <a name="step-3-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>3. lépés: A forrásattribútum hozzáadása a helyszíni Active Directory-összekötő sémához
+**Erre a lépésre csak akkor van szükség, ha a Connect 1.3.21-es vagy újabb verzióját futtatja. Ha 1.4.18-as vagy újabb, akkor ugorjon az 5.**  
+Nem minden Azure AD-attribútumok importálva a helyszíni Active Directory-összekötő térbe. Ha olyan attribútum használatát választotta, amely alapértelmezés szerint nincs szinkronizálva, akkor importálnia kell azt. A forrásattribútum hozzáadása az importált attribútumok listájához:
 
-1. Válassza a Synchronization Service Manager **Összekötők** lapját.
-2. Kattintson a jobb gombbal a helyszíni Active Directory összekötőre, majd válassza a **Tulajdonságok**lehetőséget.
-3. Az előugró párbeszédpanelen lépjen az **attribútumok kiválasztása** lapra.
-4. Győződjön meg arról, hogy a használni kívánt forrásoldali attribútum be van jelölve az attribútumok listájában. Ha nem látja az attribútumot, jelölje be az **összes megjelenítése** jelölőnégyzetet.
-5. A mentéshez kattintson **az OK gombra**.
+1. Válassza az **Összekötők** lapot a Szinkronizálási szolgáltatáskezelőben.
+2. Kattintson a jobb gombbal a helyszíni Active Directory-összekötőre, és válassza a **Tulajdonságok parancsot.**
+3. Az előugró ablakban nyissa meg az **Attribútumok kijelölése** lapot.
+4. Győződjön meg arról, hogy a használni kívánt forrásattribútum be van jelölve az attribútumlistában. Ha nem látja az attribútumot, jelölje be az **Összes megjelenítése** jelölőnégyzetet.
+5. A mentéshez válassza az **OK gombot.**
 
-![A Synchronization Service Manager és a Tulajdonságok párbeszédpanel képernyőképe](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
+![Képernyőkép: A Szinkronizálási szolgáltatáskezelő és -tulajdonságok párbeszédpanel](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
-## <a name="step-4-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>4\. lépés: **PreferredDataLocation** hozzáadása az Azure ad Connector sémához
-**Erre a lépésre csak akkor van szükség, ha a 1.3.21 vagy régebbi verziójú csatlakozási verziót futtatja. Ha a 1.4.18 vagy újabb verzióval rendelkezik, ugorjon az 5. lépésre.**  
-Alapértelmezés szerint a **preferredDataLocation** attribútum nem lett importálva az Azure ad-összekötő területére. Hozzáadás az importált attribútumok listájához:
+## <a name="step-4-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>4. lépés: **PreferredDataLocation hozzáadása** az Azure AD Connector sémához
+**Erre a lépésre csak akkor van szükség, ha a Connect 1.3.21-es vagy újabb verzióját futtatja. Ha 1.4.18-as vagy újabb, akkor ugorjon az 5.**  
+Alapértelmezés szerint a **preferredDataLocation** attribútum nem importálja az Azure AD Connector térbe. Az importált attribútumok listájához való hozzáadás:
 
-1. Válassza a Synchronization Service Manager **Összekötők** lapját.
-2. Kattintson a jobb gombbal az Azure AD-összekötőre, és válassza a **Tulajdonságok**lehetőséget.
-3. Az előugró párbeszédpanelen lépjen az **attribútumok kiválasztása** lapra.
+1. Válassza az **Összekötők** lapot a Szinkronizálási szolgáltatáskezelőben.
+2. Kattintson a jobb gombbal az Azure AD-összekötőre, és válassza **a Tulajdonságok parancsot.**
+3. Az előugró ablakban nyissa meg az **Attribútumok kijelölése** lapot.
 4. Válassza ki a **preferredDataLocation** attribútumot a listában.
-5. A mentéshez kattintson **az OK gombra**.
+5. A mentéshez válassza az **OK gombot.**
 
-![A Synchronization Service Manager és a Tulajdonságok párbeszédpanel képernyőképe](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step3.png)
+![Képernyőkép: A Szinkronizálási szolgáltatáskezelő és -tulajdonságok párbeszédpanel](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step3.png)
 
-## <a name="step-5-create-an-inbound-synchronization-rule"></a>5\. lépés: bejövő szinkronizálási szabály létrehozása
-A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum értéke a helyszíni Active Directory Forrás attribútumáról a metaverse-ba kerüljön.
+## <a name="step-5-create-an-inbound-synchronization-rule"></a>5. lépés: Bejövő szinkronizálási szabály létrehozása
+A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumértéke az intézményi Active Directory forrásattribútumából a metaverzumba folyjon.
 
-1. Indítsa el a **szinkronizálási szabályok szerkesztőjét** , és **indítsa** el > **szinkronizálási szabályok szerkesztőjét**.
-2. Állítsa be a keresési szűrő **irányát** **bejövő**értékre.
-3. Új bejövő szabály létrehozásához válassza az **új szabály hozzáadása**lehetőséget.
+1. Indítsa el a **Szinkronizálási szabályok szerkesztőjét** a **START** > **szinkronizálási szabályok szerkesztőjével.**
+2. Állítsa be, hogy az **Irány** keresési szűrő **bejövő**legyen.
+3. Új bejövő szabály létrehozásához válassza **az Új szabály hozzáadása**lehetőséget.
 4. A **Leírás** lapon adja meg a következő konfigurációt:
 
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
-    | Név | *Adjon meg egy nevet* | Például: "az AD-User preferredDataLocation" |
-    | Leírás | *Egyéni Leírás megadása* |  |
-    | Csatlakoztatott rendszerek | *A helyszíni Active Directory-összekötő kiválasztása* |  |
-    | Csatlakoztatott rendszerobjektum típusa | **Felhasználói** |  |
-    | Metaverse objektum típusa | **Személy** |  |
+    | Név | *Adjon nevet* | Például: "Az AD -tól – Felhasználó preferredDataLocation" |
+    | Leírás | *Egyéni leírás biztosítása* |  |
+    | Csatlakoztatott rendszer | *A helyszíni Active Directory-összekötő választása* |  |
+    | Csatlakoztatott rendszerobjektum-típus | **Felhasználó** |  |
+    | Metaverzum objektum típusa | **Személy** |  |
     | Hivatkozás típusa | **Csatlakozás** |  |
-    | Sorrend | *Válasszon egy 1 – 99 közötti számot* | az 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Ne válasszon olyan értéket, amelyet egy másik szinkronizálási szabály használ. |
+    | Precedencia | *Válasszon egy számot 1–99 között* | Az 1–99 egyéni szinkronizálási szabályok számára van fenntartva. Ne válasszon olyan értéket, amelyet egy másik szinkronizálási szabály használ. |
 
-5. Az összes objektum belefoglalásához hagyja üresen a **hatókör-szűrőt** . Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.
-6. Nyissa meg az **átalakítás lapot**, és hajtsa végre a következő átalakítási szabályt:
+5. Tartsa üresen **a hatókörszűrőt** az összes objektum felvételéhez. Előfordulhat, hogy módosítania kell a hatókörszűrőt az Azure AD Connect központi telepítésének megfelelően.
+6. Nyissa meg az **Átalakítás lapot**, és valósítsa meg a következő átalakítási szabályt:
 
-    | Folyamat típusa | Cél attribútum | Forrás | Egyszeri alkalmazás | Egyesítés típusa |
+    | Folyamat típusa | Cél attribútum | Forrás | Alkalmazás egyszer | Egyesítés típusa |
     | --- | --- | --- | --- | --- |
-    |Direct | preferredDataLocation | A forrás attribútum kiválasztása | Nincs bejelölve | Frissítés |
+    |Direct | preferredDataLocation | A forrásattribútum kivétele | Nincs bejelölve | Frissítés |
 
-7. A Bejövő szabály létrehozásához válassza a **Hozzáadás**lehetőséget.
+7. A bejövő szabály létrehozásához válassza a **Hozzáadás**lehetőséget.
 
-![Képernyőkép a bejövő szinkronizálási szabály létrehozásáról](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step4.png)
+![Képernyőkép: Bejövő szinkronizálási szabály létrehozása](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step4.png)
 
-## <a name="step-6-create-an-outbound-synchronization-rule"></a>6\. lépés: kimenő szinkronizálási szabály létrehozása
-A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum értéke a metaverse-ből a **preferredDataLocation** attribútumba kerüljön az Azure ad-ben:
+## <a name="step-6-create-an-outbound-synchronization-rule"></a>6. lépés: Kimenő szinkronizálási szabály létrehozása
+A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútumérték a metaverzumból az Azure **AD-ben a preferredDataLocation** attribútumba folyjon:
 
-1. Nyissa meg a **szinkronizálási szabályok szerkesztőjét**.
-2. Állítsa a keresési szűrő **irányát** **kimenő**értékre.
-3. Válassza az **új szabály hozzáadása**lehetőséget.
+1. Nyissa meg a **Szinkronizálási szabályok szerkesztőjét.**
+2. Állítsa be, hogy az **Irány** keresési szűrő **kimenő**legyen.
+3. Válassza **az Új szabály hozzáadása**lehetőséget.
 4. A **Leírás** lapon adja meg a következő konfigurációt:
 
     | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
-    | Név | *Adjon meg egy nevet* | Például: "az Azure AD – User preferredDataLocation" |
-    | Leírás | *Adja meg a leírást* ||
-    | Csatlakoztatott rendszerek | *Válassza ki az Azure AD-összekötőt* ||
-    | Csatlakoztatott rendszerobjektum típusa | **Felhasználói** ||
-    | Metaverse objektum típusa | **Személy** ||
+    | Név | *Adjon nevet* | Például: "Out to Azure AD – User preferredDataLocation" |
+    | Leírás | *Leírás megadása* ||
+    | Csatlakoztatott rendszer | *Válassza ki az Azure AD-összekötőt* ||
+    | Csatlakoztatott rendszerobjektum-típus | **Felhasználó** ||
+    | Metaverzum objektum típusa | **Személy** ||
     | Hivatkozás típusa | **Csatlakozás** ||
-    | Sorrend | *Válasszon egy 1 – 99 közötti számot* | az 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Ne válasszon olyan értéket, amelyet egy másik szinkronizálási szabály használ. |
+    | Precedencia | *Válasszon egy számot 1–99 között* | Az 1–99 egyéni szinkronizálási szabályok számára van fenntartva. Ne válasszon olyan értéket, amelyet egy másik szinkronizálási szabály használ. |
 
-5. Nyissa meg a **hatókör-szűrő** lapot, és adjon hozzá egyetlen hatókörű szűrőt két záradékkal:
+5. Nyissa meg a **Hatókörszűrő** lapot, és adjon hozzá egy két záradékkal rendelkező hatókörszűrő-csoportot:
 
     | Attribútum | Művelet | Érték |
     | --- | --- | --- |
-    | sourceObjectType | EQUAL | Felhasználó |
-    | cloudMastered | NOTEQUAL | True (Igaz) |
+    | sourceObjectType | Egyenlő | Felhasználó |
+    | cloudMastered | NEM EGYENLŐ | True (Igaz) |
 
-    A hatóköri szűrő határozza meg, hogy mely Azure AD-objektumokat alkalmazza a kimenő szinkronizálási szabály. Ebben a példában ugyanazt a hatókör-szűrőt használjuk a "kimenő az Azure AD – felhasználói identitás" OOB (beépített) szinkronizálási szabálya alapján. Megakadályozza, hogy a szinkronizálási szabály olyan **felhasználói** objektumokra legyen alkalmazva, amelyek nem szinkronizálhatók a helyszíni Active Directory. Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.
+    A hatókör-szűrő határozza meg, hogy mely Azure AD-objektumokra alkalmazza ezt a kimenő szinkronizálási szabályt. Ebben a példában ugyanazt a hatókörszűrőt használjuk az "Out to Azure AD – User Identity" OOB (out-of-box) szinkronizálási szabályból. Megakadályozza, hogy a szinkronizálási szabály olyan **felhasználói** objektumokra legyen alkalmazva, amelyek nincsenek szinkronizálva a helyszíni Active Directoryból. Előfordulhat, hogy módosítania kell a hatókörszűrőt az Azure AD Connect központi telepítésének megfelelően.
 
-6. Nyissa meg az **átalakítás** lapot, és hajtsa végre a következő átalakítási szabályt:
+6. Nyissa meg az **Átalakítás** lapot, és valósítsa meg a következő átalakítási szabályt:
 
-    | Folyamat típusa | Cél attribútum | Forrás | Egyszeri alkalmazás | Egyesítés típusa |
+    | Folyamat típusa | Cél attribútum | Forrás | Alkalmazás egyszer | Egyesítés típusa |
     | --- | --- | --- | --- | --- |
     | Direct | preferredDataLocation | preferredDataLocation | Nincs bejelölve | Frissítés |
 
-7. Zárja be a **Hozzáadás** lehetőséget a Kimenő szabály létrehozásához.
+7. A **Hozzáadás bezárása** a kimenő szabály létrehozásához.
 
-![Képernyőkép a kimenő szinkronizálási szabály létrehozásáról](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step5.png)
+![Képernyőkép: Kimenő szinkronizálási szabály létrehozása](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step5.png)
 
-## <a name="step-7-run-full-synchronization-cycle"></a>7\. lépés: teljes szinkronizálási ciklus futtatása
-Általánosságban elmondható, hogy teljes szinkronizálási ciklusra van szükség. Ennek az az oka, hogy új attribútumok lettek hozzáadva mind a Active Directory, mind az Azure AD Connector sémához, és egyéni szinkronizálási szabályokat vezetett be. Győződjön meg arról, hogy az Azure AD-ba való exportálás előtt ellenőrzi a módosításokat. A következő lépésekkel ellenőrizheti a módosításokat, miközben manuálisan futtathatja a teljes szinkronizálási ciklust alkotó lépéseket.
+## <a name="step-7-run-full-synchronization-cycle"></a>7. lépés: Teljes szinkronizálási ciklus futtatása
+Általában teljes szinkronizálási ciklusra van szükség. Ennek az az oka, hogy új attribútumokat adott hozzá az Active Directory és az Azure AD Connector sémához, és egyéni szinkronizálási szabályokat vezetett be. Ellenőrizze a módosításokat, mielőtt exportálja őket az Azure AD-be. A következő lépésekkel ellenőrizheti a módosításokat, miközben manuálisan futtathatja a teljes szinkronizálási ciklust kifutó lépéseket.
 
-1. **Teljes importálás** futtatása a helyszíni Active Directory-összekötőn:
+1. Futtassa a **teljes importálást** a helyszíni Active Directory-összekötőn:
 
-   1. Lépjen a Synchronization Service Manager **Operations (műveletek** ) lapjára.
-   2. Kattintson a jobb gombbal a helyszíni **Active Directory-összekötőre**, majd válassza a **Futtatás**lehetőséget.
-   3. A párbeszédpanelen válassza a **teljes importálás**lehetőséget, majd kattintson **az OK gombra**.
-   4. Várjon, amíg a művelet befejeződik.
+   1. Nyissa meg a Szinkronizálási szolgáltatáskezelő **Műveletek** lapját.
+   2. Kattintson a jobb gombbal a **helyszíni Active Directory-összekötőre,** és válassza a **Futtatás parancsot.**
+   3. A párbeszédpanelen válassza a **Teljes importálás**lehetőséget, majd az **OK**gombot.
+   4. Várja meg, amíg a művelet befejeződik.
 
       > [!NOTE]
-      > Ha a forrás attribútum már szerepel az importált attribútumok listájában, kihagyhatja a teljes importálást a helyszíni Active Directory-összekötőn. Ez azt jelenti, hogy a cikk korábbi, 2. lépésében nem kellett módosítania a módosításokat.
+      > Kihagyhatja a teljes importálást a helyszíni Active Directory-összekötőn, ha a forrásattribútum már szerepel az importált attribútumok listájában. Más szóval, nem kellett semmilyen változtatást a cikk korábbi 2.
 
-2. **Teljes importálás** futtatása az Azure ad-összekötőn:
+2. **Teljes importálás futtatása** az Azure AD-összekötőn:
 
-   1. Kattintson a jobb gombbal az **Azure ad-összekötőre**, majd válassza a **Futtatás**lehetőséget.
-   2. A párbeszédpanelen válassza a **teljes importálás**lehetőséget, majd kattintson **az OK gombra**.
-   3. Várjon, amíg a művelet befejeződik.
+   1. Kattintson a jobb gombbal az **Azure AD-összekötőre,** és válassza a **Futtatás parancsot.**
+   2. A párbeszédpanelen válassza a **Teljes importálás**lehetőséget, majd az **OK**gombot.
+   3. Várja meg, amíg a művelet befejeződik.
 
-3. Ellenőrizze, hogy a szinkronizálási szabály megváltozása egy meglévő **felhasználói** objektumon történt-e.
+3. Ellenőrizze, hogy a szinkronizálási szabály megváltozik-e egy meglévő **Felhasználói** objektumon.
 
-   A helyszíni Active Directory és az Azure AD **preferredDataLocation** származó forrásoldali attribútum a megfelelő összekötő-területekre lett importálva. Mielőtt továbblép a teljes szinkronizálás lépésre, végezze el a helyszíni Active Directory-összekötő területének meglévő **felhasználói** objektumának előzetes verzióját. A kiválasztott objektumnak a forrás attribútummal kell rendelkeznie. A metaverse-ben feltöltött **preferredDataLocation** sikeres előzetes verziója jól jelzi, hogy helyesen konfigurálta a szinkronizálási szabályokat. További információ az előzetes verzióról: [a módosítás ellenőrzése](how-to-connect-sync-change-the-configuration.md#verify-the-change).
+   A helyszíni Active Directory forrásattribútuma és az Azure AD-ből származó **preferredDataLocation** lett importálva az egyes összekötőhelyekbe. Mielőtt folytatná a teljes szinkronizálási lépést, végezze el az előnézetet egy meglévő **felhasználói** objektumon a helyszíni Active Directory-összekötő térben. A kiválasztott objektumnak a forrásattribútumot kell kitöltenie. A metaverzumban feltöltött **preferredDataLocation** sikeres előnézet jó jelzője annak, hogy helyesen konfigurálta a szinkronizálási szabályokat. Az előnézet módjáról [a Módosítás ellenőrzése című](how-to-connect-sync-change-the-configuration.md#verify-the-change)témakörben talál további információt.
 
-4. **Teljes szinkronizálás** futtatása a helyszíni Active Directory-összekötőn:
+4. Futtassa a **teljes szinkronizálást** a helyszíni Active Directory-összekötőn:
 
-   1. Kattintson a jobb gombbal a helyszíni **Active Directory-összekötőre**, majd válassza a **Futtatás**lehetőséget.
-   2. A párbeszédpanelen válassza a **teljes szinkronizálás**lehetőséget, majd kattintson **az OK gombra**.
-   3. Várjon, amíg a művelet befejeződik.
+   1. Kattintson a jobb gombbal a **helyszíni Active Directory-összekötőre,** és válassza a **Futtatás parancsot.**
+   2. A párbeszédpanelen válassza a **Teljes szinkronizálás**lehetőséget, majd az **OK**gombot.
+   3. Várja meg, amíg a művelet befejeződik.
 
-5. Az Azure AD-re **irányuló függőben lévő exportálás** ellenőrzése:
+5. Az Azure AD **függőben lévő exportálásának** ellenőrzése:
 
-   1. Kattintson a jobb gombbal az **Azure ad-összekötőre**, majd válassza az **összekötő terület keresése**lehetőséget.
-   2. A **keresési összekötő területe** párbeszédpanelen:
+   1. Kattintson a jobb gombbal az **Azure AD-összekötőre,** és válassza a **Keresési összekötő térben parancsot.**
+   2. A **Keresési összekötő tér** ben párbeszédpanelen:
 
-        a. **Hatókör** beállítása **függőben lévő exportálásra**.<br>
-        b. Jelölje be mind a három jelölőnégyzetet, beleértve a **Hozzáadás, a módosítás és a törlés**lehetőséget.<br>
-        c. Az exportálandó módosításokat tartalmazó objektumok listájának megtekintéséhez válassza a **Keresés**lehetőséget. Egy adott objektum változásainak vizsgálatához kattintson duplán az objektumra.<br>
-        d. Ellenőrizze, hogy a módosítások várhatóak-e.
+        a. A **Hatókör beállítása** **függőexportálásra.**<br>
+        b. Jelölje be mindhárom jelölőnégyzetet, beleértve a **Hozzáadás, a Módosítás és a Törlés jelölőnégyzetet.**<br>
+        c. Az exportálandó módosításokkal rendelkező objektumok listájának megtekintéséhez válassza a **Keresés lehetőséget.** Egy adott objektum módosításának vizsgálatához kattintson duplán az objektumra.<br>
+        d. Ellenőrizze, hogy a várt módosítások várhatók-e.
 
-6. **Exportálás** futtatása az **Azure ad Connectoron**
+6. **Exportálás futtatása** az **Azure AD-összekötőn**
 
-   1. Kattintson a jobb gombbal az **Azure ad-összekötőre**, majd válassza a **Futtatás**lehetőséget.
-   2. Az **összekötő futtatása** párbeszédpanelen válassza az **Exportálás**lehetőséget, majd kattintson **az OK gombra**.
-   3. Várjon, amíg a művelet befejeződik.
+   1. Kattintson a jobb gombbal az **Azure AD-összekötőre,** és válassza a **Futtatás parancsot.**
+   2. Az **Összekötő futtatása** párbeszédpanelen válassza az **Exportálás**lehetőséget, majd az **OK**gombot.
+   3. Várja meg, amíg a művelet befejeződik.
 
 > [!NOTE]
-> Észreveheti, hogy a lépések nem tartalmazzák a teljes szinkronizálás lépést az Azure AD-összekötőn, vagy az Exportálás lépését az Active Directory-összekötőn. A lépések nem szükségesek, mert az attribútumérték csak a helyszíni Active Directoryról az Azure AD-re áramlik.
+> Előfordulhat, hogy a lépések nem tartalmazzák a teljes szinkronizálási lépést az Azure AD-összekötőn, vagy az exportálási lépést az Active Directory-összekötőn. A lépések nem szükségesek, mert az attribútumértékek a helyszíni Active Directoryból csak az Azure AD-be áramlanak.
 
-## <a name="step-8-re-enable-sync-scheduler"></a>8\. lépés: a szinkronizálási ütemező újbóli engedélyezése
-Engedélyezze újra a beépített szinkronizálási ütemező funkciót:
+## <a name="step-8-re-enable-sync-scheduler"></a>8. lépés: Szinkronizálási ütemező újbóli engedélyezése
+A beépített szinkronizálási ütemező újbóli engedélyezése:
 
-1. Indítsa el a PowerShell-munkamenetet.
-2. Engedélyezze újra az ütemezett szinkronizálást a következő parancsmag futtatásával: `Set-ADSyncScheduler -SyncCycleEnabled $true`
+1. PowerShell-munkamenet indítása.
+2. A parancsmag futtatásával engedélyezze újra az ütemezett szinkronizálást:`Set-ADSyncScheduler -SyncCycleEnabled $true`
 
-## <a name="step-9-verify-the-result"></a>9\. lépés: az eredmény ellenőrzése
+## <a name="step-9-verify-the-result"></a>9. lépés: Az eredmény ellenőrzése
 Itt az ideje, hogy ellenőrizze a konfigurációt, és engedélyezze azt a felhasználók számára.
 
-1. Adja hozzá a Geo-t a kiválasztott attribútumhoz a felhasználónál. Az elérhető térségek listája ebben a táblázatban található.  
-![A felhasználóhoz hozzáadott AD-attribútum képernyőképe](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
-2. Várjon, amíg az attribútum szinkronizálva lesz az Azure AD-vel.
-3. Az Exchange Online PowerShell használatával ellenőrizze, hogy a postaláda-régió helyesen van-e beállítva.  
-![Képernyőfelvétel az Exchange Online PowerShellről](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
-Ha a bérlőt úgy jelölte meg, hogy használni tudja ezt a funkciót, a rendszer áthelyezi a postaládát a megfelelő földrajzi helyre. Ennek ellenőrzéséhez tekintse meg a kiszolgáló nevét, ahol a postaláda található.
+1. Adja hozzá a földrajzi hely a felhasználó kijelölt attribútumához. Az elérhető földrajzi adatok listája ebben a táblázatban található.  
+![Képernyőkép a felhasználóhoz hozzáadott AD attribútumról](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
+2. Várja meg, amíg az attribútum szinkronizálódik az Azure AD-vel.
+3. Az Exchange Online PowerShell használatával ellenőrizze, hogy a postaláda-régió megfelelően van-e beállítva.  
+![Képernyőkép az Exchange Online PowerShellről](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
+Feltételezve, hogy a bérlő meg van jelölve, hogy képes legyen használni ezt a funkciót, a postaláda a megfelelő földrajzi helyre kerül. Ez a postaláda helye szerinti kiszolgáló nevének megnézésével ellenőrizhető.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Office 365-ben elérhető multi-geo szolgáltatásról:
+További információ az Office 365-ben található Multi-Geo játékról:
 
-* [Multi-geo munkamenetek az Ignite-on](https://aka.ms/MultiGeoIgnite)
-* [Multi-geo a OneDrive](https://aka.ms/OneDriveMultiGeo)
-* [Multi-geo a SharePoint Online-ban](https://aka.ms/SharePointMultiGeo)
+* [Multi-Geo ülések ignite](https://aka.ms/MultiGeoIgnite)
+* [Többgeos a OneDrive-ban](https://aka.ms/OneDriveMultiGeo)
+* [Többgeos a SharePoint Online-ban](https://aka.ms/SharePointMultiGeo)
 
-További információ a konfigurációs modellről a Szinkronizáló motorban:
+További információ a konfigurációs modellről a szinkronizálási motorban:
 
-* További információ a konfigurációs modellről a [deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md)című cikkből.
-* További információ a kifejezés nyelvéről a [deklaratív kiépítési kifejezések ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)című cikkből.
+* A konfigurációs modellről a [Deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md)című témakörben olvashat bővebben.
+* A kifejezés nyelvéről a [Deklaratív kiépítési kifejezések ismertetése című](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)témakörben olvashat bővebben.
 
 Áttekintő témakörök:
 
-* [Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)
+* [Azure AD Connect szinkronizálás: A szinkronizálás megértése és testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

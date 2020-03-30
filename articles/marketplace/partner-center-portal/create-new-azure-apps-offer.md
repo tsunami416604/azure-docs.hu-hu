@@ -1,524 +1,523 @@
 ---
-title: Új Azure apps-ajánlat létrehozása a kereskedelmi piactéren
-description: Új Azure-alkalmazások létrehozása az Azure Marketplace-en, a AppSource-on vagy a Cloud Solution Provider (CSP) programon keresztül, a kereskedelmi piactér portál használatával a Microsoft partner Centerben.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Új Azure Apps-ajánlat létrehozása a kereskedelmi piacon
+description: Új Azure Apps-ajánlat létrehozása az Azure Piactéren, az AppSource-ban vagy a Felhőszolgáltató (CSP) programon keresztül történő listázáshoz vagy értékesítéshez a Microsoft Partner Center Kereskedelmi piactér portálján keresztül.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0ff1bbd976273a7d0cbfb22effebdf45c84d2f41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283367"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277239"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
-Az Azure-alkalmazások kereskedelmi piactéren való közzétételének lépéseit itt találja.
+Az Azure-alkalmazásajánlat kereskedelmi piacon való közzétételének lépéseit itt ismerteti.
 
-## <a name="azure-application-offer-type"></a>Azure-alkalmazás ajánlatának típusa
+## <a name="azure-application-offer-type"></a>Az Azure-alkalmazásajánlat típusa
 
-Ez a témakör az Azure-alkalmazások kínálatával kapcsolatos alapelveket ismerteti.  Ismernie kell ezeket a fogalmakat, mielőtt megkezdené egy új Azure-alkalmazás közzétételének folyamatát a piactéren.
+Ez a témakör ismerteti az Azure-alkalmazásajánlatok alapjait.  Ezeket a fogalmakat ismernie kell, mielőtt elkezdene egy új Azure-alkalmazásajánlatot közzétenni a Marketplace-en.
 
-### <a name="publishing-overview"></a>Közzététel áttekintése
+### <a name="publishing-overview"></a>Közzététel – áttekintés
 
-Az Azure Marketplace-hez készült videó- [létrehozási megoldási sablonok és a felügyelt alkalmazások](https://channel9.msdn.com/Events/Build/2018/BRK3603) az Azure-alkalmazás ajánlatának típusa:
+A [videobuilding solution templates és a managed applications for the Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603) az Azure-alkalmazásajánlat típusának bemutatása:
 
-* Milyen ajánlati típusok érhetők el;
-* Milyen technikai eszközök szükségesek;
-* Azure Resource Manager sablon létrehozása;
+* Milyen ajánlattípusok érhetők el;
+* Milyen technikai eszközökre van szükség;
+* Azure Resource Manager-sablon készítése;
 * Az alkalmazás felhasználói felületének fejlesztése és tesztelése;
-* Az alkalmazás ajánlatának közzététele;
-* Az alkalmazás felülvizsgálati folyamata.
+* Az alkalmazásajánlat közzététele;
+* A kérelem felülvizsgálati folyamata.
 
-### <a name="types-of-azure-application-plans"></a>Az Azure-alkalmazások csomagjainak típusai
+### <a name="types-of-azure-application-plans"></a>Az Azure-alkalmazáscsomagok típusai
 
-Kétféle Azure-alkalmazási csomag, felügyelt alkalmazás és megoldás-sablon található.
+Kétféle Azure-alkalmazáscsomagok, felügyelt alkalmazások és megoldássablonok.
 
-* A **megoldási sablon** az egyik fő módszer a megoldás közzétételére a piactéren. Ezt a csomagot akkor kell használni, ha a megoldás további üzembe helyezést és konfigurációs automatizálást igényel egy virtuális gépen (VM) túl.  A megoldás sablonnal több erőforrást is automatizálhat, beleértve a virtuális gépeket, a hálózatkezelést és a tárolási erőforrásokat az összetett IaaS-megoldások biztosításához.  A megoldási sablonok létrehozásával kapcsolatos további információkért tekintse meg a [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) dokumentációját.
+* **A megoldássablon** a megoldások marketplace-en való közzétételének egyik fő módja. Ez a csomagtípus akkor használatos, ha a megoldás további üzembe helyezést és konfigurációs automatizálást igényel egyetlen virtuális gépen (VM) kívül.  A megoldássablonnal automatizálhatja több erőforrás, például virtuális gépek, a hálózatkezelés és a tárolási erőforrások biztosítását az összetett IaaS-megoldások biztosításához.  A megoldássablonok létrehozásáról az [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) dokumentációjában olvashat bővebben.
 
-* A **felügyelt alkalmazás** a megoldási sablonokhoz hasonló, és egyetlen kulcsfontosságú különbség. A felügyelt alkalmazások esetében az erőforrások üzembe helyezése egy erőforráscsoportban történik, amelyet az alkalmazás közzétevője felügyel. Az erőforráscsoport az ügyfél előfizetésében található meg, de a közzétevő bérlőjének egy identitása rendelkezik hozzáféréssel az erőforráscsoporthoz. A megoldás folyamatos támogatásának költségeit a közzétevő határozza meg. A felügyelt alkalmazások segítségével egyszerűen hozhat létre és biztosíthat teljes körűen felügyelt, kulcsrakész alkalmazásokat ügyfelei számára.  További információ a felügyelt alkalmazások előnyeiről és típusairól: az [Azure által felügyelt alkalmazások áttekintése](https://docs.microsoft.com/azure/managed-applications/overview).
+* **A felügyelt alkalmazás** hasonló a megoldássablonokhoz, egy kulcskülönbséggel. A felügyelt alkalmazások esetében az erőforrások üzembe helyezése egy erőforráscsoportban történik, amelyet az alkalmazás közzétevője felügyel. Az erőforráscsoport az ügyfél előfizetésében található meg, de a közzétevő bérlőjének egy identitása rendelkezik hozzáféréssel az erőforráscsoporthoz. A megoldás folyamatos támogatásának költségeit a közzétevő határozza meg. A Felügyelt alkalmazások segítségével egyszerűen hozhat létre és szállíthat teljes körűen felügyelt, kulcsrakész alkalmazásokat ügyfeleinek.  A felügyelt alkalmazások előnyeiről és típusairól az [Azure által felügyelt alkalmazások áttekintése című témakörben olvashat bővebben.](https://docs.microsoft.com/azure/managed-applications/overview)
 
-Az összes Azure-alkalmazás legalább két fájlt tartalmaz egy `.zip` Archívum gyökérkönyvtárában:
+Minden Azure-alkalmazás legalább két fájlt tartalmaz `.zip` az archívum gyökérmappájában:
 
-* Egy [mainTemplate. JSON](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)nevű Resource Manager-sablonfájl.  Ez az a sablon, amely meghatározza az ügyfél Azure-előfizetésében telepítendő erőforrásokat.  A Resource Manager-sablonokra vonatkozó példákért tekintse meg az [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) katalógusát vagy a megfelelő [githubot: Azure Resource Manager Gyorsindítás sablonok](https://github.com/azure/azure-quickstart-templates) tárháza.
+* A [MainTemplate.json](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)nevű Erőforrás-kezelő sablonfájl.  Ez a sablon határozza meg az ügyfél Azure-előfizetésében üzembe helyezhető erőforrásokat.  Példák a Resource Manager-sablonok, tekintse meg az [Azure gyorsindítási sablonok gyűjtemény](https://azure.microsoft.com/resources/templates/) vagy a megfelelő [GitHub: Azure Resource Manager gyorsindítási sablonok](https://github.com/azure/azure-quickstart-templates) társzáma.
 
-* A [createUiDefinition. JSON](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview)nevű Azure-alkalmazás létrehozási élményének felhasználói felületi definíciója.  A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
+* A [createUiDefinition.json](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview)nevű Azure-alkalmazás létrehozási felületének felhasználói felületdefiníciója.  A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
 
-Minden új Azure-alkalmazás ajánlatának tartalmaznia kell egy [Azure-partner ügyfél-használati azonosítóját (GUID](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)).
+Minden új Azure-alkalmazásajánlatnak tartalmaznia kell egy [Azure-partner ügyfélhasználati guid azonosítót.](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)
 
 ### <a name="before-you-begin"></a>Előkészületek
 
-Tekintse át a következő Azure-alkalmazás dokumentációját, amely rövid útmutatók, oktatóanyagok és minták áttekintését nyújtja.
+Tekintse át az alábbi Azure-alkalmazás dokumentációt, amely rövid útmutatókat, oktatóanyagokat és mintákat tartalmaz.
 
-* [Azure Resource Manager sablonok ismertetése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
+* [Az Azure Resource Manager-sablonok ismertetése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
 * Gyorsútmutatók:
 
-    * [Azure Gyorsindítás sablonok](https://azure.microsoft.com/documentation/templates/)
-    * [GitHub Azure gyorsindítási sablonok](https://github.com/azure/azure-quickstart-templates)
-    * [Alkalmazás-definíció közzététele](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
-    * [A Service Catalog alkalmazás üzembe helyezése](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
+    * [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/)
+    * [GitHub Azure gyorsindítási sablonjai](https://github.com/azure/azure-quickstart-templates)
+    * [Alkalmazásdefiníció közzététele](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
+    * [Szolgáltatáskatalógusban elérhető alkalmazás üzembe helyezése](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
 * Oktatóanyagok:
 
     * [Definíciós fájlok létrehozása](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Piactéren elérhető alkalmazás közzététele](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
 
-* Minták
+* Minták:
 
     * [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
     * [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
     * [Felügyelt alkalmazási megoldások](https://docs.microsoft.com/azure/managed-applications/sample-projects)
 
-### <a name="fundamentals-in-technical-knowledge"></a>A technikai ismeretek alapjai
+### <a name="fundamentals-in-technical-knowledge"></a>A műszaki ismeretek alapjai
 
-Az adategységek tervezése, fejlesztése és tesztelése időt vesz igénybe, és technikai ismeretekre van szüksége az Azure platformról és az ajánlat létrehozásához használt technológiákról.
+Ezeknek az eszközöknek a tervezése, létrehozása és tesztelése időt vesz igénybe, és mind az Azure platform, mind az ajánlat létrehozásához használt technológiák műszaki ismerete szükséges.
 
-A mérnöki csapatnak ismernie kell a következő Microsoft-technológiákkal kapcsolatos ismereteket:
+A mérnöki csapatnak ismernie kell a következő Microsoft-technológiákat:
 
-* Az Azure- [szolgáltatások](https://azure.microsoft.com/services/)alapszintű ismerete.
-* [Azure-alkalmazások tervezése és Architect](https://azure.microsoft.com/solutions/architecture/).
-* Az [azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), az [Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)és az [Azure Networking](https://azure.microsoft.com/services/?filter=networking#networking)együttműködésének ismerete.
-* [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)működésének ismerete.
-* A [JSON](https://www.json.org/)működésének ismerete.
+* Az [Azure-szolgáltatások](https://azure.microsoft.com/services/)alapvető ismerete.
+* [Azure-alkalmazások tervezése és megtervezése.](https://azure.microsoft.com/solutions/architecture/)
+* Az [Azure virtuális gépek](https://azure.microsoft.com/services/virtual-machines/), az Azure [Storage](https://azure.microsoft.com/services/?filter=storage#storage)és az [Azure Networking munkaismerete.](https://azure.microsoft.com/services/?filter=networking#networking)
+* Az [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)munkaismerete.
+* A [JSON](https://www.json.org/)munkaismerete.
 
 ### <a name="suggested-tools"></a>Javasolt eszközök
 
-Az Azure-alkalmazás kezeléséhez válasszon egyet vagy mindkettőt a következő parancsfájl-környezetek közül:
+Az Azure-alkalmazás kezeléséhez válasszon az alábbi parancsfájl-kezelési környezetek egyikét vagy mindkettőt:
 
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 * [Azure CLI](https://docs.microsoft.com/cli/azure)
 
-Javasoljuk, hogy a következő eszközöket adja hozzá a fejlesztői környezethez:
+Javasoljuk, hogy adja hozzá a következő eszközöket a fejlesztői környezethez:
 
 * [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
-* [Visual Studio Code](https://code.visualstudio.com/) a következő kiterjesztésekkel:
-    * Kiterjesztés: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    * Kiterjesztés: [szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    * Kiterjesztés: [SZÉPÍT JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+* [Visual Studio-kód](https://code.visualstudio.com/) a következő bővítményekkel:
+    * Bővítmény: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    * Kiterjesztés: [Szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    * Kiterjesztés: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
-Az elérhető eszközöket az [Azure fejlesztői eszközök](https://azure.microsoft.com/tools/) oldalon tekintheti át.  Emellett a Visual Studio-t is használhatja a [Visual Studio Marketplace](https://marketplace.visualstudio.com/)-en.
+Tekintse át a rendelkezésre álló eszközöket az [Azure Developer Tools](https://azure.microsoft.com/tools/) lapon.  A Visual Studio használata esetén is a [Visual Studio Piactér .](https://marketplace.visualstudio.com/)
 
 ## <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
-Az Azure-alkalmazások ajánlatának létrehozása előtt először [létre kell hoznia egy partner Center-fiókot](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , és meg kell nyitnia a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), és ki kell választania az **Áttekintés** lapot.
+Az Azure-alkalmazásajánlat létrehozása előtt először létre kell [hoznia egy Partnerközpont-fiókot,](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) és meg kell nyitnia a [Kereskedelmi piactér irányítópultját,](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)és az **Áttekintés** lapon kell megnyitnod.
 
 >[!Note]
->Az ajánlat közzétételét követően a partner Centerben végzett ajánlat szerkesztése csak a rendszeren és a kirakatokban történik meg, az ismételt közzététel után.  Győződjön meg arról, hogy a módosítások elvégzése után beküldi az ajánlatot a közzétételhez.
+>Az ajánlat közzététele után a Partnerközpontban tett ajánlat szerkesztése csak az újbóli közzétételt követően frissül a rendszerben és a kirakatban.  Kérjük, győződjön meg arról, hogy a módosítások után benyújtja a közzétételi ajánlatot.
 
 ### <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
-Válassza az **+ új ajánlat** gombot, majd válassza az **Azure-alkalmazás** menüpontot. Ekkor megjelenik az **új ajánlat** párbeszédpanel.
+Válassza a **+ Új ajánlat** gombot, majd az Azure **Alkalmazás** menüelemet. Megjelenik **az Új ajánlat** párbeszédpanel.
 
-### <a name="offer-id-and-alias"></a>Ajánlat azonosítója és alias
+### <a name="offer-id-and-alias"></a>Ajánlatazonosító és alias
 
-* **Ajánlat azonosítója**: a fiókban található egyes ajánlatok egyedi azonosítója. Ez az azonosító látható lesz az ügyfelek számára a Piactéri ajánlat URL-címében, és Azure Resource Manager sablonokat (ha vannak ilyenek). <br> <br> Az ajánlat AZONOSÍTÓjának kisbetűs alfanumerikus karakternek kell lennie (beleértve a kötőjeleket és az aláhúzásokat, de nincs szóköz). Az érték 50 karakterre van korlátozva, és a Létrehozás gombra kattintva nem módosítható. <br> <br> Ha például itt adja meg `test-offer-1` itt, az ajánlat URL-címe `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`lesz. 
+* **Ajánlatazonosító:** A fiókban lévő minden egyes ajánlat egyedi azonosítója. Ez az azonosító látható lesz az ügyfelek számára a piactéri ajánlat és az Azure Resource Manager-sablonok URL-címében (ha van ilyen). <br> <br> Az ajánlatazonosítónak kisalfanumerikus karakternek kell lennie (beleértve a kötőjeleket és az aláhúzásjeleket, de nem térköz). Legfeljebb 50 karakter ből állhat, és a Létrehozás után nem módosítható. <br> <br> Ha például ide `test-offer-1` írja be, az `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`ajánlat URL-címe a . 
 
-* **Ajánlat aliasa**: az ajánlatnak a partner Centerben való hivatkozásához használt név. Ez a név nem használható a piactéren, és nem egyezik meg az ajánlat nevével és az ügyfelek számára megjelenített egyéb értékekkel. Ez az érték nem módosítható a **Létrehozás**gombra kattintva.
+* **Ajánlat alias**: A partnerközpontban az ajánlatra való hivatkozáshoz használt név. Ez a név nem lesz használva a piactéren, és eltér az ajánlat nevét és egyéb értékeket, amelyek megjelennek az ügyfelek számára. Ez az érték nem módosítható a **Létrehozás (Létrehozás) lehetőséget**követően.
 
-Miután megadta az **ajánlat-azonosítót** és az **ajánlati aliast**, válassza a **Létrehozás**lehetőséget. Ezután az ajánlat minden más részén dolgozhat.
+Miután megadta **az ajánlatazonosítóját** és **az Ajánlat aliasát,** válassza a **Létrehozás lehetőséget.** Ezután az ajánlat minden más részén dolgozhat.
 
 ## <a name="offer-setup"></a>Ajánlat beállítása
 
-Az **ajánlat beállítása** lap a következő információkat kéri. A mezők kitöltése után válassza a **Mentés** lehetőséget.
+Az **Ajánlat beállítási** lapja a következő információkat kéri. A mezők **kitöltése** után válassza a Mentés lehetőséget.
 
-### <a name="test-drive"></a>Tesztelési meghajtó
+### <a name="test-drive"></a>Tesztvezetés
 
-A test Drive nagyszerű lehetőséget nyújt arra, hogy ajánlatot nyújtson a potenciális ügyfelek számára azáltal, hogy a vásárlás előtt megkeresi a "kipróbálás előtt" lehetőséget, ami növeli a konverziót és a magas minősítésű érdeklődők generációját. [További információ a tesztelési meghajtókról.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+A tesztvezetés nagyszerű módja annak, hogy bemutassa ajánlatát a potenciális ügyfeleknek azáltal, hogy lehetőséget ad nekik arra, hogy "vásárlás előtt próbáljanak ki", ami fokozott konverziót és magasan képzett érdeklődők létrehozását eredményezi. [További információ a tesztvezetésekről.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-A tesztelési meghajtó engedélyezéséhez jelölje be a **tesztvezetés engedélyezése** jelölőnégyzetet. Ezután be kell állítania egy bemutató környezetet a [Test Drive technikai konfigurációjában](#types-of-azure-application-plans) , hogy az ügyfelek meghatározott időn belül kipróbálják az ajánlatot. 
+A tesztvezetés engedélyezéséhez jelölje be a **Tesztmeghajtó engedélyezése** jelölőnégyzetet. Ezután be kell állítania egy demonstrációs környezetet a [Tesztmeghajtó műszaki konfigurációkonfigurálásában,](#types-of-azure-application-plans) hogy az ügyfelek meghatározott ideig kipróbálhatják az ajánlatot. 
 
 >[!Note]
->Mivel az összes Azure-alkalmazás egy Azure Resource Manager sablonnal lett implementálva, az Azure-alkalmazásokhoz konfigurálható tesztelési meghajtó csak [Azure Resource Manager-alapú tesztelési meghajtó](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)lehet.
+>Mivel az összes Azure-alkalmazás egy Azure Resource Manager-sablon használatával valósul meg, az Azure-alkalmazásokhoz konfigurálható tesztmeghajtók egyetlen típusa az [Azure Resource Manager alapú tesztmeghajtó.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)
 
-#### <a name="additional-test-drive-resources"></a>További tesztelési meghajtó erőforrásai
+#### <a name="additional-test-drive-resources"></a>További tesztmeghajtó-erőforrások
 
-- [A test Drive technikai ajánlott eljárásai](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [A test Drive marketing ajánlott eljárásai](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [A test Drive áttekintése egy pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+- [A tesztvezetés műszaki gyakorlati gyakorlatai](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [A Test Drive marketingjének bevált módszerei](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Tesztvezetés – áttekintés egy pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
 
-## <a name="connect-lead-management"></a>Az érdeklődők felügyeletének összekötése
+## <a name="connect-lead-management"></a>Csatlakoztassa az érdeklődőkezelést
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-További információ: az [ólom kezelése – áttekintés](./commercial-marketplace-get-customer-leads.md).
+További információt az [Érdeklődőkezelés áttekintése című témakörben talál.](./commercial-marketplace-get-customer-leads.md)
 
-Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
+Ne feledje, hogy **mentse,** mielőtt a következő szakasz!
 
 ## <a name="properties"></a>Tulajdonságok
 
-A **Tulajdonságok** lapon megadhatja az ajánlatnak a piactéren, az alkalmazás verzióját és az ajánlatát támogató jogi szerződések alapján csoportosítani kívánt kategóriákat és iparágakat. A lap befejezése után válassza a **Mentés** lehetőséget.
+A **Tulajdonságok** lapon meghatározhatja az ajánlat csoportosításához használt kategóriákat és iparágakat a piactéren, az alkalmazás verzióján és az ajánlatot támogató jogi szerződéseken. A lap befejezése után válassza a **Mentés** gombot.
 
 ### <a name="category"></a>Kategória
 
-Válasszon ki legalább egyet, és legfeljebb három kategóriát, amelyek az ajánlatnak a piactér megfelelő keresési területeire való elhelyezésére szolgálnak. Ügyeljen arra, hogy az ajánlat leírásában ne adja meg, hogy az ajánlat hogyan támogatja ezeket a kategóriákat. 
+Válasszon ki legalább egy és legfeljebb három kategóriát, amelyek segítségével az ajánlatot a megfelelő piactérkeresési területekre helyezi. Ügyeljen arra, hogy hívja ki, hogy az ajánlat támogatja ezeket a kategóriákat az ajánlat leírása. 
 
-### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard szintű szerződés a Microsoft kereskedelmi piactérről
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>A Microsoft kereskedelmi piacterének általános szerződése
 
 [!INCLUDE [Commercial marketplace Standard Contract](./includes/marketplace-contract-text.md)]
 
-## <a name="offer-listing"></a>Ajánlati lista
+## <a name="offer-listing"></a>Ajánlat lista
 
-Az ajánlati lista oldal megjeleníti azokat a nyelveket, amelyekben az ajánlat fel lesz sorolva. Jelenleg az egyetlen elérhető lehetőség az **angol (Egyesült Államok)** .
+Az Ajánlat listalap azokat a nyelveket jeleníti meg, amelyeken az ajánlat megjelenik. Jelenleg az **angol (Egyesült Államok)** az egyetlen elérhető lehetőség.
 
-Meg kell határoznia a piactér részleteit (az ajánlat nevét, leírását, képeit stb.) az egyes nyelvekhez/piacokhoz. Válassza ki a nyelv/piac nevét az információ megadásához.
+Meg kell adnia a piactér adatait (ajánlat neve, leírása, képek stb.) az egyes nyelvekhez/piacokhoz. Válassza ki az információ megadásához szükséges nyelvet/piacnevet.
 
 > [!NOTE]
-> Az ajánlat tartalmának listázása (például a leírás, a dokumentumok, a képernyőképek, a használati feltételek stb.) nem kötelező angol nyelven lennie, amennyiben az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] verzióban érhető el." Azt is elfogadható, hogy egy *hasznos hivatkozási URL-címet* adjon meg, amely nem az ajánlatban szereplő tartalomban használt tartalmat tartalmazza.
+> Az ajánlat tartalma (például leírás, dokumentumok, képernyőképek, használati feltételek stb.) nem szükséges angol nyelven, amennyiben az ajánlat leírása a következő mondattal kezdődik: "Ez az alkalmazás csak [nem angol nyelven] érhető el." Az is elfogadható, hogy *egy hasznos link URL-t* kínál tartalmat más nyelven, mint amelyet az ajánlat lista tartalmát.
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Név
 
-Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
+Az itt megadott név az ajánlathirdetés címeként jelenik meg az ügyfelek számára. Ez a mező előre ki van töltve az **Ajánlat aliashoz** az ajánlat létrehozásakor megadott szöveggel, de ezt az értéket módosíthatja. Ez a név védjeggyel is ellátott lehet (és ön védjegy- vagy szerzői jogi szimbólumokat is tartalmazhat). A név nem lehet több 50 karakternél, és nem tartalmazhat hangulatjeleket.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
-Adja meg az ajánlat rövid leírását (legfeljebb 100 karakter), amelyet a piactér keresési eredményeiben használhat.
+Adja meg az ajánlat rövid leírását (legfeljebb 100 karakter), amely a piactér keresési eredményei között is használható.
 
-### <a name="long-summary"></a>Hosszú összefoglalás
+### <a name="long-summary"></a>Hosszú összegzés
 
-Adja meg az ajánlat hosszabb leírását (legfeljebb 256 karakter). A leírást a piactér keresési eredményeiben lehet használni.
+Adjon meg hosszabb leírást az ajánlatról (legfeljebb 256 karakter). A leírás használható a piactér keresési eredményei között.
 
 ### <a name="description"></a>Leírás
 
-Adja meg az ajánlat hosszabb leírását (legfeljebb 3 000 karakter). Ez a leírás az ügyfelek számára jelenik meg a piactér listázásának áttekintésében. Adja meg az ajánlat értékeit, a főbb előnyöket, a kategóriát és/vagy az iparági társításokat, az alkalmazáson belüli vásárlási lehetőségeket és a szükséges közzétételeket. 
+Adjon meg hosszabb leírást az ajánlatról (legfeljebb 3000 karakter). Ez a leírás jelenik meg az ügyfelek számára a piactéri lista áttekintése. Adja meg az ajánlat értékajánlatát, a legfontosabb előnyöket, a kategória- és/vagy iparági szövetségeket, az alkalmazáson belüli vásárlási lehetőségeket és a szükséges közzétételeket. 
 
-Néhány tipp a Leírás írásához:  
+Néhány tipp a leírás megírásához:  
 
-- A Leírás első néhány mondatában egyértelműen ismertesse ajánlata értékét. Adja meg a következő elemeket az érték-kiosztásban:
+- Egyértelműen írja le az ajánlat értékajánlatát a leírás első néhány mondatában. Az értékajánlatban a következő elemek szerepeljenek:
   - A termék leírása
-  - A termékből származó előnyöket biztosító felhasználó típusa
-  - Az ügyfélnek szüksége van a termék címére
-- Ne feledje, hogy az első néhány mondat a keresőmotor eredményei között jelenhet meg.  
-- Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez. Ehelyett a megadott értékre kell összpontosítania.  
-- A lehető legnagyobb mértékben használja az iparági specifikus szókincset vagy a juttatás-alapú szövegezést. 
-- HTML-címkék használatával formázhatja a leírást, és még vonzóbbá teheti őket.
+  - A termék előnyeit élvező felhasználó típusa
+  - A termék által megszólított vásárlói igények vagy fájdalom
+- Ne feledje, hogy az első néhány mondat megjelenhet a keresőmotor találatai között.  
+- Ne hagyatkozzon a termék értékesítéséhez szükséges funkciókra és funkciókra. Ehelyett összpontosítson a szállít.  
+- A lehető legnagyobb mértékben használjon iparág-specifikus szókincset vagy haszonalapú megfogalmazást. 
+- Fontolja meg a HTML-címkék használatát a leírás formázásához és vonzóbbá.
 
 ### <a name="search-keywords"></a>Kulcsszavak keresése
 
-Akár három keresési kulcsszót is megadhat, amelyek segítségével az ügyfelek megtalálják az ajánlatot a piactéren. A legjobb eredmények érdekében próbálja meg használni ezeket a kulcsszavakat a leírásában is.
+Tetszés szerint legfeljebb három keresési kulcsszót adhat meg, hogy az ügyfelek megtalálják az ajánlatot a piacon. A legjobb eredmény érdekében próbálja meg ezeket a kulcsszavakat is használni a leírásában.
 
-### <a name="support-urls"></a>Támogatási URL-címek
+### <a name="support-urls"></a>Támogatási URL-ek
 
-Ez a szakasz olyan hivatkozásokat tartalmaz, amelyek segítségével az ügyfelek megismerhetik az ajánlatával kapcsolatos további információkat.
+Ebben a szakaszban hivatkozásokat adhat meg, amelyek segítségével az ügyfelek jobban megismerhetik az ajánlatot.
 
-#### <a name="privacy-policy-url"></a>Adatvédelmi szabályzat URL-címe
+#### <a name="privacy-policy-url"></a>Adatvédelmi irányelvek URL-címe
 
-Adja meg a szervezete adatvédelmi szabályzatának URL-címét. Ön felelős azért, hogy az alkalmazás megfeleljen az adatvédelmi törvényeknek és előírásoknak, valamint érvényes adatvédelmi szabályzatot biztosítson.
+Adja meg a szervezet adatvédelmi irányelveinek URL-címét. Ön felelős annak biztosításáért, hogy alkalmazása megfeleljen az adatvédelmi törvényeknek és előírásoknak, valamint hogy érvényes adatvédelmi szabályzatot biztosítson.
 
 #### <a name="useful-links"></a>Hasznos hivatkozások
 
-Adjon meg opcionális kiegészítő online dokumentumokat a megoldásáról.  További hasznos hivatkozások hozzáadásához kattintson **a + hivatkozás hozzáadása**lehetőségre.
+Adjon meg opcionális kiegészítő online dokumentumokat a megoldásról.  További hasznos hivatkozások hozzáadása a **+ Hivatkozás hozzáadása gombra**kattintva .
 
 ### <a name="contacts"></a>Kapcsolatok
 
-Ebben a szakaszban meg kell adnia egy **támogatási kapcsolattartó** nevét, e-mail-címét és telefonszámát, valamint egy **mérnöki kapcsolattartót**. Ez az információ nem jelenik meg az ügyfelek számára, de a Microsoft számára elérhetővé válik, és a CSP-partnerek számára is biztosítható.
+Ebben a szakaszban meg kell adnia egy **támogatási partner** és egy mérnöki partner nevét, e-mail címét és **telefonszámát.** Ez az információ nem jelenik meg az ügyfelek számára, de elérhető lesz a Microsoft számára, és a kripta-partnerek rendelkezésére állhat.
 
-A **támogatási kapcsolattartó** szakaszban meg kell adnia azt a **támogatási URL-címet** is, ahol a CSP-partnerek megtalálják az ajánlat támogatását.
+A **Támogatás kapcsolatrészben** meg kell adnia a **támogatási URL-címet** is, ahol a CSP-partnerek támogatást találhatnak az ajánlathoz.
 
-### <a name="marketplace-images"></a>Marketplace-rendszerképek
+### <a name="marketplace-images"></a>Marketplace-képek
 
-Ebben a szakaszban megadhatja azokat az emblémákat és képeket, amelyeket az ajánlat vásárlónak való megjelenítésekor használni fog. Minden képnek. png formátumúnak kell lennie.
+Ebben a szakaszban olyan emblémákat és képeket adhat meg, amelyeket az ajánlat ügyfélnek való megjelenítésekor fog használni. Minden képnek .png formátumúnak kell lennie.
 
-#### <a name="store-logos"></a>Emblémák tárolása
+#### <a name="store-logos"></a>Áruházi emblémák
 
-Adja meg az ajánlat emblémáját három méretben: **kis (48 x 48)** , **közepes (90 x 90)** és **nagyméretű (216 x 216)** .
+Adja meg az ajánlat logóját három méretben: **Kicsi (48 x 48)**, **Közepes (90 X 90)** és **Nagy (216 x 216)**.
 
-#### <a name="hero"></a>Hero
+#### <a name="hero"></a>Hős
 
-A hős képe nem kötelező. Ha megadja az egyiket, a 815 x 290 képpont értéket kell mérnie.
+A hőskép nem kötelező. Ha ön beszerez egy, ez must mér 815 x betű 290 fénykép.
 
 #### <a name="screenshots"></a>Képernyőképek
 
-Képernyőképeket adhat hozzá, amelyek bemutatják, hogyan működik az ajánlata. Legfeljebb öt képernyőképet adhat hozzá. Minden képernyőképnek 1280 x 720 képpont-nek kell lennie.
+Képernyőképek hozzáadása, amelyek bemutatják az ajánlat működését. Legfeljebb öt képernyőképet adhat hozzá. Minden képernyőképnek 1280 x 720 képpontnak kell lennie.
 
 #### <a name="videos"></a>Videók
 
-Opcionálisan akár öt videót is hozzáadhat az ajánlat bemutatásához. Ezeket a videókat a YouTube és/vagy a Vimeo szolgáltatásban kell üzemeltetni. Mindegyiknél írja be a videó nevét, URL-címét és a videó miniatűr képét (1280 x 720 képpont).
+Az ajánlatot jól látható anamnézisben legfeljebb öt videót adhatsz hozzá. Ezeket a videókat a YouTube-on és/vagy a Vimeo-n kell üzemeltetni. Mindegyikhez adja meg a videó nevét, URL-címét és a videó miniatűr képét (1280 x 720 képpont).
 
-#### <a name="additional-marketplace-listing-resources"></a>További erőforrások listázása a piactéren
+#### <a name="additional-marketplace-listing-resources"></a>További piactér-listaforrások
 
-- [Ajánlott eljárások a piactér ajánlati listáihoz](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Gyakorlati tanácsok a piactéri ajánlatlistákhoz](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
 ## <a name="preview"></a>Előzetes verzió
 
-Az **előnézet** lapon megadhat egy korlátozott **előzetes** verziót, amely az ajánlat érvényességének ellenőrzéséhez nyújt segítséget a piactér szélesebb közönsége számára.
+Az **Előnézet** lapon korlátozott **előnézeti közönséget** határozhat meg az ajánlat érvényesítéséhez, mielőtt élőben közzétenné az ajánlatot a szélesebb piactéri közönség számára.
 
 > [!IMPORTANT]
-> Az ajánlat előzetes verzióban való ellenőrzése után a **Go Live** -t kell választania, mielőtt az ajánlatát élőben közzé fogja tenni a piactér nyilvános célközönsége számára.
+> Az ajánlat előzetes verzióban való ellenőrzése után az ajánlat megtekintése után **az Élő adásban** lehetőséget kell választania, mielőtt az ajánlat élőben megjelenik a piactér nyilvános közönsége számára.
 
-Az előnézeti közönséget az Azure-előfizetés AZONOSÍTÓjának GUID azonosítói határozzák meg, és mindegyikhez opcionális leírást kell párosítani.  Ezen mezők egyike sem látható az ügyfelek számára.
+Az előzetes verzióközönséget az Azure-előfizetésazonosítók azonosítói azonosítják, és mindegyikhez egy nem kötelező leírás is szerepel.  Egyik mező sem látható a vevők számára.
 
-Akár 10 Azure-előfizetési azonosítót is hozzáadhat manuálisan, akár 100-ig, ha CSV-fájlt tölt fel.  Ezeknek az előfizetéseknek a hozzáadásával olyan célközönséget határozhat meg, amely a teljes közzététel előtt lehetővé teszi az ajánlat megtekintését.  Ha az ajánlat már élő, akkor is megadhatja az előnézeti közönséget, hogy tesztelje az ajánlat módosításait és frissítéseit.
-
->[!Note]
->Az előzetes verzió célközönsége különbözik a privát közönségtől. Az előzetes verzió célközönsége a piactéren való élő közzététel *előtt* jogosult az ajánlathoz való hozzáférésre. Dönthet úgy is, hogy létrehoz egy csomagot, és csak privát célközönség számára teszi elérhetővé (a csomag rendelkezésre állása lapon).  Az előzetes verzió célközönsége megtekintheti és érvényesítheti az összes csomagot, beleértve azokat a csomagokat is, amelyek csak akkor lesznek elérhetők a privát közönség számára, ha az ajánlata teljes mértékben közzé lett téve a piactéren.
-
-## <a name="plan-overview"></a>A terv áttekintése
-
-A **terv áttekintő** lapja lehetővé teszi, hogy ugyanazon az ajánlaton belül különböző csomag-beállításokat biztosítson. Ezek a csomagok (a Cloud Partner Portal SKU-ként) a csomag típusa (a megoldás sablonja vagy a felügyelt alkalmazás), a monetizálása vagy a célközönség szempontjából eltérőek lehetnek.  Állítson be legalább egy csomagot az ajánlat a piactéren való listázásához.
-
-A létrehozást követően megtekintheti a csomag neveit, azonosítóit, a csomag típusát, a rendelkezésre állást (nyilvános vagy magánjellegű), az aktuális közzétételi állapotot és a lapon elérhető összes műveletet.
-
-A **terv áttekintésében** elérhető **műveletek** a csomag aktuális állapotától függően változnak, és a következők lehetnek:
-
-* Ha a terv állapota **Piszkozat** – delete Piszkozat.
-* Ha a terv állapota **élő** – eladási terv leállítása vagy privát célközönség szinkronizálása.
-
-### <a name="create-new-plan"></a>Új csomag létrehozása
-
-***Csomag azonosítója*** – hozzon létre egy egyedi díjcsomag-azonosítót az ajánlat egyes terveihez. Ez az azonosító a termék URL-címében szereplő ügyfelek számára jelenik meg.  Csak kisbetűket, alfanumerikus karaktereket, kötőjeleket vagy aláhúzást használjon. Ehhez a csomag-AZONOSÍTÓhoz legfeljebb 50 karakter adható meg. Ez az azonosító nem módosítható a létrehozás kiválasztása után.
-
-***Csomag neve*** – az ügyfelek ezt a nevet fogják látni, amikor dönti el, hogy melyik tervet kívánja kiválasztani az ajánlaton belül. Hozzon létre egyedi nevet az ajánlat minden csomagjának. A terv neve az adott ajánlat részét képező szoftvercsomagok megkülönböztetésére szolgál (például Ajánlat neve: Windows Server; csomagok: Windows Server 2016, Windows Server 2019).
-
-### <a name="plan-setup"></a>Csomag beállítása
-
-A **terv beállítása** lapon megadhatja a csomag típusának magas szintű konfigurációját, attól függetlenül, hogy újrahasználja-e a csomagokat egy másik csomagból, és hogy milyen felhők számára legyen elérhető a terv.  Az ezen a lapon megjelenő válaszok hatással lesznek arra, hogy mely mezők jelenjenek meg ugyanazon csomag más lapjain.
-
-#### <a name="plan-type"></a>Csomag típusa
-
-Ahogy az [Azure-alkalmazási csomagok típusaiban](#types-of-azure-application-plans)is szerepel, válassza ki, hogy a csomag tartalmaz-e megoldás sablont vagy felügyelt alkalmazást.
-
-#### <a name="this-plan-reuses-packages"></a>A terv újrahasznosítja a csomagokat
-
-Ha több azonos típusú csomaggal rendelkezik, és a csomagok azonosak egymás között, akkor kiválaszthatja, hogy a **terv újrahasznosítsa a csomagokat egy másik**csomagból.  Ha ezt a beállítást választja, az ajánlathoz tartozó más csomagok közül választhatja ki a csomagokat. 
+Akár 10 Azure-előfizetési azonosítót manuálisan, vagy akár 100-at is hozzáadhat CSV-fájl feltöltésekor.  Az előfizetések hozzáadásával olyan közönséget határoz meg, amely a teljes közzététel előtt előzetes hozzáférést biztosít az ajánlathoz.  Ha az ajánlat már él, továbbra is megadhat egy előnézeti közönséget az ajánlat módosításainak vagy frissítéseinek teszteléséhez.
 
 >[!Note]
->Ha egy másik csomagból újrahasznál csomagokat, a teljes technikai konfiguráció lap eltűnik ebből a csomagból.  A csomagra vonatkozó technikai konfiguráció részleteit, beleértve a jövőbeli frissítéseket is, a tervhez is használni fogjuk. <br> <br> Ez a beállítás a terv közzétételekor nem módosítható.
+>Az előnézeti közönség eltér a privát közönségtől. Az előnézeti közönség hozzáférhet az ajánlathoz, *mielőtt* élőben közzétesszük őket a piactereken. Dönthet úgy is, hogy létrehoz egy tervet, és csak egy privát közönség számára teszi elérhetővé (a Terv rendelkezésre állása lapon).  Az előnézeti közönség láthatja és érvényesítheti az összes tervet, beleértve azösszes olyan tervet is, amely csak a privát közönség számára lesz elérhető, miután az ajánlata teljes mértékben megjelent a piacon.
 
-#### <a name="cloud-availability"></a>Felhőbeli rendelkezésre állás
+## <a name="plan-overview"></a>Terv – áttekintés
+
+A **Terv áttekintése** lapon különböző tervbeállításokat adhat meg ugyanazon az ajánlaton belül. Ezek a csomagok (a felhőpartner-portálon található SKI-k) a terv típusa (megoldássablon és felügyelt alkalmazás), a monetization vagy a közönség tekintetében eltérőek lehetnek.  Konfiguráljon legalább egy csomagot az ajánlat marketplace-en való listázásához.
+
+A létrehozás után látni fogja a tervneveket, azonosítókat, tervtípusát, elérhetőségét (nyilvános vagy privát), az aktuális közzétételi állapotot és az ezen a lapon elérhető műveleteket.
+
+**A** Terv **áttekintésében** elérhető műveletek a terv aktuális állapotától függően változnak, és a következőket tartalmazhatják:
+
+* Ha a terv állapota **Vázlat** – Vázlat törlése.
+* Ha a csomag állapota **Élő** – Stop értékesítési terv vagy Privát közönség szinkronizálása.
+
+### <a name="create-new-plan"></a>Új terv létrehozása
+
+***Tervazonosító*** – Hozzon létre egy egyedi tervazonosítót az ajánlatban szereplő minden egyes tervhez. Ez az azonosító látható lesz a vásárlók számára a termék URL-címében.  Csak kisbetűs, alfanumerikus karaktereket, kötőjeleket vagy aláhúzásjeleket használjon. Ehhez a csomagazonosítóhoz legfeljebb 50 karakter engedélyezett. Ez az azonosító nem módosítható a létrehozás kiválasztása után.
+
+***Terv neve*** – Az ügyfelek ezt a nevet fogják látni, amikor eldöntik, hogy melyik csomagot válasszák ki az ajánlaton belül. Hozzon létre egy egyedi ajánlat nevét az ajánlatban szereplő minden csomaghoz. A terv neve az ugyanazon ajánlat részét használó szoftvercsomagok (pl. Ajánlat neve: Windows Server; csomagok: Windows Server 2016, Windows Server 2019).
+
+### <a name="plan-setup"></a>A terv beállítása
+
+A **Tervezés beállítása** lapon beállíthatja a terv típusának magas szintű konfigurációját, azt, hogy újrafelhasználja-e a csomagokat egy másik csomagból, és milyen felhőkben legyen elérhető a terv.  Az ezen a lapon található válaszok hatással lesznek arra, hogy mely mezők jelenjenek meg az ugyanazon terv többi lapján.
+
+#### <a name="plan-type"></a>Terv típusa
+
+Az [Azure-alkalmazáscsomagok típusai](#types-of-azure-application-plans)című dokumentumban ismertetett módon válassza ki, hogy a csomag tartalmaz-e megoldássablont vagy felügyelt alkalmazást.
+
+#### <a name="this-plan-reuses-packages"></a>Ez a terv újrafelhasználja a csomagokat
+
+Ha egynél több azonos típusú csomaggal rendelkezik, és a csomagok azonosak közöttük, akkor ezt **a tervet egy másik csomag csomagjainak újrafelhasználása után**választhatja.  Ha ezt a lehetőséget választja, kiválaszthatja az ajánlathoz hasonló típusú csomagok újrafelhasználásához hasonló típusú többi csomagot. 
+
+>[!Note]
+>Ha egy másik csomagból származó csomagokat újra felhasznál, a teljes Műszaki konfiguráció lap eltűnik ebből a tervből.  Ehhez a tervhez a másik csomag műszaki konfigurációs adatait is felhasználjuk, beleértve a jövőben elkészült frissítéseket is. <br> <br> A terv közzététele után ez a beállítás nem módosítható.
+
+#### <a name="cloud-availability"></a>Felhő elérhetősége
 
 Ezt a csomagot legalább egy felhőben elérhetővé kell tenni. 
 
-Válassza ki a **nyilvános Azure** lehetőséget, hogy a megoldás üzembe helyezhető legyen minden olyan nyilvános Azure-régióban, amely rendelkezik piactér-integrációval.  További információ a [földrajzi elérhetőségről](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
+Válassza ki a **Nyilvános Azure** lehetőséget, hogy a megoldás telepíthető legyen az ügyfelek számára az összes nyilvános Azure-régióban, amelyek Marketplace-integrációval rendelkeznek.  További információ a [földrajzi elérhetőségről.](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)
 
-Válassza a **Azure Government Cloud (felhő** ) lehetőséget a megoldás üzembe helyezéséhez a [Azure Government-felhőben](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome), amely egy, az Egyesült Államok szövetségi, állami, helyi vagy törzsi és partnerei által az ilyen entitások kiszolgálására jogosult ügyfelek számára szabályozott hozzáféréssel rendelkező kormányzati Közösség.  Ön, mint közzétevő, felelős a felhőalapú Közösség kiszolgálása érdekében a megfelelőségi ellenőrzés, a biztonsági intézkedések és az ajánlott eljárásokért.  A Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található).  Mielőtt közzéteszi a [Azure Government](https://aka.ms/azuregovpublish), a Microsoft azt javasolja, hogy tesztelje és érvényesítse a megoldást a környezetben, mivel egyes végpontok eltérőek lehetnek. A megoldás előkészítéséhez és teszteléséhez kérjen egy próbaverziós fiókot erről a [hivatkozásról](https://azure.microsoft.com/global-infrastructure/government/request/).
+Válassza ki az **Azure Government Cloud** opciót, hogy a megoldás telepíthető legyen az Azure Government [Cloud-](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)ban, egy kormányzati közösségi felhőben, amely ellenőrzött hozzáféréssel rendelkezik az Egyesült Államok szövetségi, állami, helyi vagy törzsi ügyfelei számára, és az entitások kiszolgálására jogosult partnerek számára.  Ön, mint a közzétevő, felelős a megfelelőségi vezérlőkért, a biztonsági intézkedésekért és a felhőalapú közösség kiszolgálásához ajánlott eljárásokért.  Az Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található).  Az Azure [Government](https://aka.ms/azuregovpublish)általi közzététel előtt a Microsoft azt javasolja, hogy tesztelje és érvényesítse a megoldást a környezetben, mivel bizonyos végpontok eltérőek lehetnek. A megoldás szakaszba hozásához és teszteléséhez kérjen próbafiókot erről a [linkről.](https://azure.microsoft.com/global-infrastructure/government/request/)
 
 >[!Note]
->A csomag egy adott felhőben elérhetőként való közzététele után a felhő nem távolítható el.
+>Ha egy csomag elérhetővé válik egy adott felhőben, a felhő nem távolítható el.
 
-**Azure Government Felhőbeli tanúsítványok**
+**Az Azure Government Felhőminősítései**
 
-Ez a beállítás csak akkor látható, ha **Azure Government felhő** van kiválasztva a **felhő rendelkezésre állása**alatt.
+Ez a beállítás csak akkor látható, ha az **Azure Government Cloud** a Felhő **elérhetősége**alatt van kiválasztva.
 
-Azure Government a szolgáltatások bizonyos kormányzati szabályozások és követelmények hatálya alá esnek, például a FedRAMP, a NIST 800,171 (DIB), a ITAR, az IRS 1075, a DoD L4 és a CJIS.  A programok minősítésének megismeréséhez akár 100 hivatkozást is megadhat, amely leírja a tanúsítványokat.  Ezek a hivatkozások vagy közvetlenül a programra mutató hivatkozások, vagy a saját webhelyein való megfelelőség leírására mutató hivatkozások.  Ezek a hivatkozások csak Azure Government Felhőbeli ügyfelek számára lesznek láthatók.
+Az Azure Government szolgáltatásai olyan adatokat kezelnek, amelyekre bizonyos kormányzati előírások és követelmények vonatkoznak, például a FedRAMP, a NIST 800.171 (DIB), az ITAR, az IRS 1075, a DoD L4 és a CJIS.  Annak érdekében, hogy felhívják a figyelmet a programok tanúsítványaira, legfeljebb 100, a minősítéseket leíró hivatkozást adhat meg.  Ezek a linkek lehetnek közvetlenül a programon található hirdetésre mutató linkek, vagy a saját webhelyein való megfelelés leírására mutató hivatkozások.  Ezek a hivatkozások csak az Azure Government Cloud-ügyfelek számára lesznek láthatók.
 
-## <a name="plan-listing"></a>Csomag listázása
+## <a name="plan-listing"></a>A terv listája
 
-A **csomag listázása** lap a csomagra vonatkozó olyan listaelemeket jeleníti meg, amelyek eltérőek lehetnek az azonos ajánlat különböző csomagjai között.
+A **Terv listaelem** lapja megjeleníti a tervspecifikus listainformációkat, amelyek különbözőek lehetnek az ugyanazon ajánlathoz tartozó különböző tervek között.
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Név
 
-Előre kitöltve a saját neve alapján, amikor létrehozta a tervét.  Ez a név fog megjelenni a piactéren megjelenített "szoftvercsomag" címmel.  Legfeljebb 100 karaktert tartalmazhat.
+A név alapján előre kitöltött csomag a létrehozáskor.  Ez a név jelenik meg a piactéren megjelenő "Szoftvercsomag" címeként.  Legfeljebb 100 karaktert tartalmazhat.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
-Adja meg a szoftveres csomag rövid összefoglalását.  Legfeljebb 100 karaktert tartalmazhat.
+Rövid encika összegzése a szoftvercsomagról.  Legfeljebb 100 karaktert tartalmazhat.
 
 ### <a name="description"></a>Leírás
 
-Ez a leírás egy olyan lehetőség, amely ismerteti, hogy mi teszi ezt a csomagot egyedivé, és hogy az Ön által kínált egyéb szoftverek milyen eltéréseket biztosítanak. Legfeljebb 2 000 karaktert tartalmazhat.
+Ez a leírás lehetőséget ad arra, hogy elmagyarázza, mi teszi ezt a szoftvertervet egyedivé, és miben különbözik az ajánlaton belüli egyéb szoftvertervektől. Legfeljebb 2000 karaktert tartalmazhat.
 
-A mezők befejezése után válassza a **Mentés** lehetőséget.
+A mezők **kitöltése** után válassza a Mentés lehetőséget.
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-A **rendelkezésre állás** lap csak a megoldási sablon csomagjai számára látható.  A tervet mindenki számára elérhetővé teheti, csak bizonyos ügyfelek (privát célközönségek) számára, valamint azt, hogy a tervet más megoldási sablon vagy csak felügyelt alkalmazások általi használatra szeretné-e ellátni.
+A **Rendelkezésre állás** lap csak a megoldássablon-tervek nél látható.  A tervet mindenki számára láthatóvá teheti, csak bizonyos ügyfelek (privát közönség) számára, és azt, hogy a tervet elrejtse-e más megoldássablon vagy felügyelt alkalmazások számára.
 
 ### <a name="plan-audience"></a>Célközönség megtervezése
 
-Beállíthatja, hogy az egyes tervek mindenki számára láthatók legyenek, vagy csak egy adott célközönségnek. Ehhez a korlátozott célközönséghez az Azure-előfizetési azonosítók használatával lehet tagságot rendelni.
+Lehetősége van úgy konfigurálni az egyes terveket, hogy mindenki vagy csak egy általad választott közönség számára látható legyen. Ebben a korlátozott közönségben az Azure-előfizetés-azonosítók használatával rendelhet tagságot.
 
-**Adatvédelem/ez egy privát csomag (nem** kötelező jelölőnégyzet) – jelölje be ezt a jelölőnégyzetet, hogy a csomag magánjellegű legyen, és csak a választott célközönségnek legyen látható. Miután közzétette saját csomagként, frissítheti a célközönséget, vagy dönthet úgy, hogy a tervet mindenki számára elérhetővé teszi. Ha a csomagot mindenki számára láthatóvá teszi, mindenki számára láthatónak kell maradnia. (A csomag nem konfigurálható újra privát csomagként).
+**Adatvédelem / Ez egy privát csomag** (Opcionális jelölőnégyzet) - Jelölje be ezt a jelölőnégyzetet, hogy a terv privát és látható csak a korlátozott közönség az Ön által választott. A privát csomagként való közzétételt követően frissítheted a célközönséget, vagy dönthetsz úgy, hogy a csomagot mindenki számára elérhetővé tesszük. Ha egy tervet mindenki számára láthatóként tesz közzé, annak mindenki számára láthatónak kell maradnia. (A terv nem konfigurálható újra magáncsomagként).
 
-**Korlátozott célközönség (Azure-előfizetési azonosítók)** – rendelje hozzá az ehhez a privát csomaghoz hozzáférő célközönséget. A hozzáférés az Azure-előfizetési azonosítók használatával van hozzárendelve, hogy tartalmazza az egyes hozzárendelt Azure-előfizetési AZONOSÍTÓk leírását. . Csv számolótábla-fájl importálása esetén legfeljebb 10 előfizetés-azonosító adható hozzá, vagy 20 000 ügyfél-előfizetés-azonosító.  Az Azure-előfizetési azonosítók GUID azonosítóként jelennek meg, és a betűknek kisebbnek kell lenniük.
+**Korlátozott közönség (Azure-előfizetés-azonosítók)** – Rendelje hozzá azt a közönséget, amely hozzáfér ehhez a privát csomaghoz. Az Access azure-előfizetés-azonosítók használatával van hozzárendelve, és minden hozzárendelt Azure-előfizetés-azonosító leírását meg kell adni. Legfeljebb 10 előfizetési azonosító adható hozzá, vagy 20 000 ügyfél előfizetési azonosítója .csv számolótábla-fájl importálása esetén.  Az Azure-előfizetésazonosítók GUID azonosítókként jelennek meg, a betűknek pedig kisbetűsnek kell lenniük.
 
 >[!Note]
->A magánjellegű célközönség (vagy a korlátozott célközönség) eltér az [**Előnézet lapon megadott**](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#preview) előnézeti célközönségtől.  Az előzetes verzió célközönsége a piactéren élőben közzétett ajánlat *előtt* jogosult az ajánlathoz való hozzáférésre. Míg a privát célközönség megjelölése csak egy adott csomagra vonatkozik, az előzetes verzió célközönsége az összes csomagot (magán vagy nem) megtekintheti érvényesítési célból.
+>A privát közönség (vagy a korlátozott célközönség) eltér az [**Előnézet**](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#preview) lapon megadott előnézeti közönségtől.  Az előnézeti közönség hozzáférhet az *ajánlathoz, mielőtt* az ajánlatot élőben közzétették volna a piactéren. Bár a privát közönség megjelölése csak egy adott csomagra vonatkozik, az előnézeti közönség az összes (privát vagy nem) csomagot megtekintheti érvényesítési célból.
 
 ### <a name="hide-plan"></a>Terv elrejtése
 
-Ha a megoldás sablonja kizárólag központilag telepíthető, ha egy másik megoldási sablon vagy egy felügyelt alkalmazás hivatkozik rá, jelölje be ezt a jelölőnégyzetet a megoldás sablonjának közzétételéhez, de az ügyfelek általi keresés és Tallózás közvetlenül a felhasználók elől való elrejtéséhez.
+Ha a megoldássablon csak közvetetten telepíthető, ha egy másik megoldássablonon vagy felügyelt alkalmazáson kívül hivatkozik, jelölje be ezt a jelölőnégyzetet a megoldássablon közzétételéhez, de közvetlenül az ügyfelek elől való elrejtéséhez.
 
 ## <a name="pricing-and-availability"></a>Díjszabás és rendelkezésre állás
 
-A **díjszabás és rendelkezésre állás** lap csak a felügyelt alkalmazások csomagjai számára látható.  Konfigurálhatja azokat a piacokat, amelyekre ez a csomag elérhető lesz, a megoldás felügyeletének havi díja, valamint azt, hogy a tervet mindenki számára vagy csak bizonyos ügyfeleknek (privát célközönségnek) kívánja-e megjeleníteni.
+A **Díjszabás és rendelkezésre állás** lap csak a felügyelt alkalmazáscsomagok nál látható.  Beállíthatja azokat a piacokat, amelyeken ez a csomag elérhető lesz, a megoldás kezelésének havi árát, valamint azt, hogy a tervet mindenki számára láthatóvá tegye-e, vagy csak bizonyos ügyfelek (privát közönség) számára.
 
 ### <a name="markets"></a>Piacok
 
-Minden csomagnak legalább egy piacon elérhetőnek kell lennie. Jelölje be annak a piaci helynek a jelölőnégyzetét, amely számára elérhetővé szeretné tenni ezt a csomagot. Egy keresőmező és egy gomb a "Tax átutalt" országok kiválasztásához, amelyben a Microsoft az Ön nevében értékesítési és használati adót alkalmaz, és a segítségére is felhasználható.
+Minden tervnek legalább egy piacon elérhetőnek kell lennie. Jelölje be a jelölőnégyzetet minden olyan piacon, ahol ezt a csomagot elérhetővé szeretné tenni. A súgó ban szerepel egy keresőmező és gomb az "Adóelengedési" országok kiválasztásához, amelyekben a Microsoft az Ön nevében átutalja az értékesítési és használati adót.
 
-Ha már beállította a csomag árát Egyesült Államok dollárban (USD), és egy másik piaci helyet ad hozzá, az új piac díját az aktuális árfolyamok alapján számítjuk ki. A közzététel előtt mindig tekintse át az egyes piacok árát. A díjszabást a módosítások mentése után a "export prics (xlsx)" hivatkozással tekintheti át.
+Ha már beállította a terv árait amerikai dollárban (USD), és egy másik piaci helyszínt ad meg, az új piac árát az aktuális árfolyamok alapján számítjuk ki. Közzététel előtt mindig tekintse át az egyes piacok árát. Az árak felülvizsgálhatók az "Export árak (xlsx)" hivatkozással a módosítások mentése után.
 
 ### <a name="pricing"></a>Díjszabás
 
-Adja meg a csomag havi árát.  Ez az ár a megoldás által központilag üzembe helyezett erőforrások esetében felmerülő bármely Azure-infrastruktúra vagy utólagos elszámolású szoftver költségein felül van.
+Adja meg a csomag havi árát.  Ez az ár az Azure-infrastruktúrán vagy a használatalapú használatalapú szoftverköltségeken felül értendő, amelyek a megoldás által üzembe helyezett erőforrásoknál merülnek fel.
 
-A helyi pénznemben (USD = Egyesült Államok dollár) beállított díjak az összes kiválasztott piac helyi pénznemére lesznek átalakítva a telepítés során elérhető aktuális árfolyamok használatával. A közzététel előtt érvényesítse ezeket az árakat a díjszabási táblázat exportálásával, és tekintse át az egyes piacokon érvényes díjakat. Ha egyéni árakat szeretne beállítani egyedi piacon, módosítsa és importálja a díjszabási táblázatot. 
-
->[!Note]
->Először mentenie kell a díjszabási módosításokat, hogy engedélyezze a díjszabási adatai exportálását.
-
-A közzététel előtt körültekintően tekintse át az árakat, mivel bizonyos korlátozások miatt a csomag közzététele után is változhatnak.  
+A helyi pénznemben (USD = amerikai dollár) meghatározott árakat a rendszer a beállítás során rendelkezésre álló aktuális árfolyamok alapján az összes kiválasztott piac helyi pénznemére váltja át. A közzététel előtt ellenőrizze ezeket az árakat az árképzési táblázat exportálásával és az egyes piacok árainak áttekintésével. Ha egyéni árakat szeretne beállítani egy adott piacon, módosítsa és importálja az árképzési táblázatot. 
 
 >[!Note]
->Miután közzétette a csomag egy piacának árát, később nem módosítható.
+>Az árképzési adatok exportálásának engedélyezéséhez először mentenie kell az árképzési módosításokat.
+
+A közzététel előtt alaposan tekintse át az árakat, mivel a terv közzététele után bizonyos korlátozások vonatkoznak arra, hogy mi változhat.  
+
+>[!Note]
+>Ha a csomagban megjelenik egy piac ára, később nem módosítható.
 
 ### <a name="plan-audience"></a>Célközönség megtervezése
 
-Beállíthatja, hogy az egyes tervek mindenki számára láthatók legyenek, vagy csak egy adott célközönségnek. Ehhez a korlátozott célközönséghez az Azure-előfizetési azonosítók használatával lehet tagságot rendelni.
+Lehetősége van úgy konfigurálni az egyes terveket, hogy mindenki vagy csak egy általad választott közönség számára látható legyen. Ebben a korlátozott közönségben az Azure-előfizetés-azonosítók használatával rendelhet tagságot.
 
-**Adatvédelem/ez egy privát csomag (nem** kötelező jelölőnégyzet) – jelölje be ezt a jelölőnégyzetet, hogy a csomag magánjellegű legyen, és csak a választott célközönségnek legyen látható. Miután közzétette saját csomagként, frissítheti a célközönséget, vagy dönthet úgy, hogy a tervet mindenki számára elérhetővé teszi. Ha a csomagot mindenki számára láthatóvá teszi, mindenki számára láthatónak kell maradnia. (A csomag nem konfigurálható újra privát csomagként).
+**Adatvédelem / Ez egy privát csomag** (Opcionális jelölőnégyzet) - Jelölje be ezt a jelölőnégyzetet, hogy a terv privát és látható csak a korlátozott közönség az Ön által választott. A privát csomagként való közzétételt követően frissítheted a célközönséget, vagy dönthetsz úgy, hogy a csomagot mindenki számára elérhetővé tesszük. Ha egy tervet mindenki számára láthatóként tesz közzé, annak mindenki számára láthatónak kell maradnia. (A terv nem konfigurálható újra magáncsomagként).
 
-**Korlátozott célközönség (Azure-előfizetési azonosítók)** – rendelje hozzá az ehhez a privát csomaghoz hozzáférő célközönséget. A hozzáférés az Azure-előfizetési azonosítók használatával van hozzárendelve, hogy tartalmazza az egyes hozzárendelt Azure-előfizetési AZONOSÍTÓk leírását. . Csv számolótábla-fájl importálása esetén legfeljebb 10 előfizetés-azonosító adható hozzá, vagy 20 000 ügyfél-előfizetés-azonosító.  Az Azure-előfizetési azonosítók GUID azonosítóként jelennek meg, és a betűknek kisebbnek kell lenniük.
-
->[!Note]
->A magánjellegű célközönség (vagy a korlátozott célközönség) eltér az [**Előnézet lapon megadott**](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#preview) előnézeti célközönségtől.  Az előzetes verzió célközönsége a piactéren élőben közzétett ajánlat *előtt* jogosult az ajánlathoz való hozzáférésre. Míg a privát célközönség megjelölése csak egy adott csomagra vonatkozik, az előzetes verzió célközönsége az összes csomagot (magán vagy nem) megtekintheti érvényesítési célból.
-
-## <a name="technical-configuration"></a>Technikai konfiguráció 
-
-A **technikai konfiguráció** lapon feltöltheti az üzembe helyezési csomagot, amely lehetővé teszi az ügyfelek számára a terv üzembe helyezését.
+**Korlátozott közönség (Azure-előfizetés-azonosítók)** – Rendelje hozzá azt a közönséget, amely hozzáfér ehhez a privát csomaghoz. Az Access azure-előfizetés-azonosítók használatával van hozzárendelve, és minden hozzárendelt Azure-előfizetés-azonosító leírását meg kell adni. Legfeljebb 10 előfizetési azonosító adható hozzá, vagy 20 000 ügyfél előfizetési azonosítója .csv számolótábla-fájl importálása esetén.  Az Azure-előfizetésazonosítók GUID azonosítókként jelennek meg, a betűknek pedig kisbetűsnek kell lenniük.
 
 >[!Note]
->Ez a lap nem jelenik meg, ha úgy konfigurálta ezt a csomagot, hogy a terv **beállítása** lapon újra használhassa a csomagokat.
+>A privát közönség (vagy a korlátozott célközönség) eltér az [**Előnézet**](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#preview) lapon megadott előnézeti közönségtől.  Az előnézeti közönség hozzáférhet az *ajánlathoz, mielőtt* az ajánlatot élőben közzétették volna a piactéren. Bár a privát közönség megjelölése csak egy adott csomagra vonatkozik, az előnézeti közönség az összes (privát vagy nem) csomagot megtekintheti érvényesítési célból.
 
-### <a name="package-details"></a>Csomag részletei
+## <a name="technical-configuration"></a>Műszaki konfiguráció 
 
-A **csomag részletei** lapra kattintva szerkesztheti a technikai konfiguráció vázlatos verzióját.
+A **műszaki konfiguráció** lapon feltöltheti a központi telepítési csomagot, amely lehetővé teszi az ügyfelek számára a csomag üzembe helyezését.
 
-***Verzió*** – a technikai konfiguráció aktuális verziójának kiosztása.  Minden alkalommal növelje ezt a verziót, amikor módosításokat tesz közzé ezen az oldalon. A verziónak `{integer}.{integer}.{integer}`formátumúnak kell lennie.
+>[!Note]
+>Ez a lap nem lesz látható, ha úgy állította be ezt a tervet, hogy a **Terv beállítása** lapon egy másik csomagból származó csomagokat használjon fel újra.
 
-***Csomagfájl*** (`.zip`) – Ez a csomag tartalmazza az ehhez a tervhez szükséges összes sablonfájlt, valamint a `.zip` fájlként csomagolt további erőforrásokat is.
+### <a name="package-details"></a>A csomag részletei
 
-Az összes Azure alkalmazáscsomag-csomagnak tartalmaznia kell ezt a két fájlt a `.zip` Archívum gyökérkönyvtárában:
+A **Csomag részletei** allap lehetővé teszi a technikai konfiguráció vázlatverziójának szerkesztését.
 
-* Egy [mainTemplate. JSON](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)nevű Resource Manager-sablonfájl.  Ez a sablon automatizálja az erőforrások üzembe helyezését az ügyfeleknek az Azure-előfizetésben.  A Resource Manager-sablonokra vonatkozó példákért tekintse meg az [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/) katalógusát vagy a megfelelő [githubot: Azure Resource Manager Gyorsindítás sablonok](https://github.com/azure/azure-quickstart-templates) tárháza.
+***Verzió*** – A műszaki konfiguráció aktuális verziójának hozzárendelése.  A lap minden egyes módosításakor növekményezheti ezt a verziót. A verziónak formátumban `{integer}.{integer}.{integer}`kell lennie.
 
-* A [createUiDefinition. JSON](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)nevű Azure-alkalmazás létrehozási élményének felhasználói felületi definíciója.
+***Csomagfájl*** `.zip`( ) - Ez a csomag tartalmazza a tervhez szükséges összes sablonfájlt, `.zip` valamint a fájlként csomagolt további erőforrásokat.
 
-Az Azure-alkalmazások minden új ajánlatának tartalmaznia kell egy [Azure-partner ügyfél-használati jóváírási](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution) GUID azonosítót is.
+Minden Azure-alkalmazáscsomag-csomagnak tartalmaznia kell ezt `.zip` a két fájlt az archívum gyökérmappájában:
+
+* A [MainTemplate.json](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)nevű Erőforrás-kezelő sablonfájl.  Ez a sablon automatizálja az erőforrások üzembe helyezését az ügyfelek Azure-előfizetésben.  Példák a Resource Manager-sablonok, tekintse meg az [Azure gyorsindítási sablonok gyűjtemény](https://azure.microsoft.com/documentation/templates/) vagy a megfelelő [GitHub: Azure Resource Manager gyorsindítási sablonok](https://github.com/azure/azure-quickstart-templates) társzáma.
+
+* A [createUiDefinition.json](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)nevű Azure-alkalmazás létrehozási felületének felhasználói felületdefiníciója.
+
+Minden új Azure-alkalmazásajánlatnak tartalmaznia kell egy [Azure-partner ügyfélhasználati](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution) guid azonosítót is.
 
 ### <a name="previously-published-packages"></a>Korábban közzétett csomagok 
 
-A **korábban közzétett csomagok** lapra kattintva megtekintheti a technikai konfiguráció összes közzétett verzióját.
+A **Korábban közzétett csomagok** allap lehetővé teszi a műszaki konfiguráció összes közzétett verziójának megtekintését.
 
-## <a name="technical-configuration-managed-application-plans-only"></a>Technikai konfiguráció (csak felügyelt alkalmazási csomagok)
+## <a name="technical-configuration-managed-application-plans-only"></a>Műszaki konfiguráció (csak felügyelt alkalmazástervek)
 
-A felügyelt alkalmazások csomagjai további bonyolultságot mutatnak a **technikai konfiguráció** lapon a fent ismertetett **verzió** és **csomagfájl** mezőkön kívül. 
+A felügyelt alkalmazástervek a fent ismertetett **Verzió-** és **Csomagfájl-mezőkön** túl további összetettséggel rendelkeznek a **Műszaki konfiguráció** lapon. 
 
-### <a name="enable-just-in-time-jit-access"></a>Igény szerinti (JIT) hozzáférés engedélyezése
+### <a name="enable-just-in-time-jit-access"></a>Just-in-time (JIT) hozzáférés engedélyezése
 
-Ezzel a beállítással engedélyezheti az igény szerinti (JIT) hozzáférést ehhez a csomaghoz.  A JIT-hozzáférés lehetővé teszi, hogy a hibaelhárítás és a karbantartás érdekében emelt szintű hozzáférést kérjen egy felügyelt alkalmazás erőforrásaihoz. Mindig csak olvasási hozzáférése van az erőforrásokhoz, de egy adott időszakra vonatkozóan nagyobb hozzáférés érhető el.  További információ: a [Azure Managed Applications igény szerinti hozzáférésének engedélyezése és kérése](https://docs.microsoft.com/azure/managed-applications/request-just-in-time-access).  Ha szeretné megkövetelni, hogy a felügyelt alkalmazás felhasználói a fiókjának állandó hozzáférését adják meg, hagyja meg ezt a beállítást, ha nincs bejelölve.
-
->[!Note]
->A funkció támogatásához frissítse a `createUiDefinition.json` fájlt.  
-
-### <a name="deployment-mode"></a>Üzembe helyezési mód
-
-Válassza ki, hogy a csomag telepítésekor a **teljes** vagy **növekményes telepítési módot** kívánja-e konfigurálni: 
-
-* **Teljes módban**az ügyfél által az alkalmazás újratelepítése a felügyelt erőforráscsoport erőforrásainak eltávolítását eredményezi, ha az erőforrások nincsenek meghatározva a `mainTemplate.json`ban. 
-* A **növekményes módban**az alkalmazás újratelepítése változatlanul hagyja a meglévő erőforrásokat.
-
-További információ az üzembe helyezési módokról: [Azure Resource Manager telepítési módok](https://docs.microsoft.com/azure/azure-resource-manager/deployment-modes).
-
-### <a name="notification-endpoint-url"></a>Értesítési végpont URL-címe
-
-Adjon meg egy HTTPS-webhook-végpontot, hogy értesítést kapjon a csomag felügyelt alkalmazás példányain lévő összes szifilisz-műveletről.
-
-### <a name="customize-allowed-customer-actions"></a>Engedélyezett felhasználói műveletek testreszabása
-
-Ezzel a beállítással adhatja meg, hogy az ügyfelek milyen műveleteket hajthatnak végre a felügyelt erőforrásokon az alapértelmezés szerint elérhető "`*/read`" műveleteken felül. 
-
-Sorolja fel azokat a további műveleteket, amelyeknek lehetővé szeretné tenni az ügyfél számára, hogy itt hajtsa végre ezt a műveletet pontosvesszővel elválasztva.  További információ: [Az Azure-erőforrások megtagadási hozzárendeléseinek ismertetése](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments).  Az elérhető műveletekért lásd: [Azure Resource Manager erőforrás-szolgáltatói műveletek](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations). Ha például engedélyezni szeretné a felhasználóknak a virtuális gépek újraindítását, adja hozzá `Microsoft.Compute/virtualMachines/restart/action` az engedélyezett műveletekhez.
-
-### <a name="global-azure--azure-government-cloud"></a>Globális Azure/Azure Government felhő
-
-Adja meg, hogy ki kell-e kezelni a felügyelt alkalmazáshoz tartozó felügyeleti hozzáférést minden támogatott felhőben.  Azokat a felhasználókat, csoportokat vagy alkalmazásokat, amelyeket a felügyelt erőforráscsoport számára engedélyezni kíván, Azure Active Directory (HRE) identitások használatával azonosíthatók.
-
-***Azure Active Directory bérlő azonosítója*** – a HRE bérlői azonosító (más néven CÍMTÁR-azonosító), amely tartalmazza azon felhasználók, csoportok vagy alkalmazások identitását, amelyekhez engedélyeket kíván adni.  Az HRE-bérlő AZONOSÍTÓját a Azure Portal [Azure Active Directory tulajdonságainál](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)találja.
-
-***Engedélyek*** – adja meg annak a felhasználónak, csoportnak vagy alkalmazásnak az Azure Active Directory objektumazonosítóét, amelynek engedélyt szeretne adni a felügyelt erőforráscsoport számára. Azonosítsa a felhasználót a résztvevő azonosítója alapján, amely a [Azure Portal Azure Active Directory felhasználók](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)paneljén található.
-
-Minden egyes rendszerbiztonsági tag esetében válassza ki az egyik Azure AD beépített szerepkört a listából (tulajdonos vagy közreműködő). A kiválasztott szerepkör leírja, hogy a rendszerbiztonsági tag milyen engedélyeket fog tartalmazni az ügyfél-előfizetés erőforrásaiban. További információkért lásd az [Azure-erőforrások beépített szerepköreit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).  A szerepköralapú hozzáférés-vezérléssel (RBAC) kapcsolatos további információkért lásd: Ismerkedés a [RBAC szolgáltatással a Azure Portalban](https://docs.microsoft.com/azure/role-based-access-control/overview).
+Ezzel a beállítással engedélyezheti a just-in-time (JIT) hozzáférést ehhez a tervhez.  JIT-hozzáférés lehetővé teszi, hogy kérjen emelt szintű hozzáférést a felügyelt alkalmazások erőforrásait hibaelhárítás vagy karbantartás. Mindig csak olvasható hozzáféréssel rendelkezik az erőforrásokhoz, de egy adott időszakban nagyobb hozzáféréssel rendelkezhet.  További információt az Azure Felügyelt alkalmazások hoz való azonnali hozzáférés engedélyezése és kérése című [témakörben talál.](https://docs.microsoft.com/azure/managed-applications/request-just-in-time-access)  Ha azt szeretné, hogy a kezelt alkalmazás fogyasztói állandó hozzáférést biztosítsanak a fiókhoz, hagyja bejelölve ezt a beállítást.
 
 >[!Note]
->Bár a felhőben legfeljebb 100 engedélyezést adhat hozzá, általában könnyebb létrehozni egy Active Directory felhasználói csoportot, és megadhatja annak AZONOSÍTÓját a "résztvevő azonosítója" értékkel.  Ez lehetővé teszi, hogy a csomag telepítése után további felhasználókat vegyen fel a felügyeleti csoportba, és csökkentse a terv frissítésének szükségességét, hogy további engedélyeket adjon hozzá.
+>Ügyeljen arra, `createUiDefinition.json` hogy frissítse a fájlt annak érdekében, hogy támogassa ezt a funkciót.  
+
+### <a name="deployment-mode"></a>Telepítési mód
+
+Adja meg, hogy **a csomag** telepítésekor a teljes vagy **a növekményes telepítési módot** kívánja-e konfigurálni: 
+
+* **Teljes módban**az alkalmazás ügyfél általi átcsoportosítása a kezelt erőforráscsoport erőforrásainak eltávolítását eredményezi, `mainTemplate.json`ha az erőforrások nincsenek definiálva a ban. 
+* **Növekményes módban**az alkalmazás átcsoportosítása változatlanul hagyja a meglévő erőforrásokat.
+
+A telepítési módokról az [Azure Resource Manager telepítési módjai](https://docs.microsoft.com/azure/azure-resource-manager/deployment-modes)ban olvashat bővebben.
+
+### <a name="notification-endpoint-url"></a>Értesítés végpontjának URL-címe
+
+Adjon meg egy HTTPS Webhook-végpontot, amely értesítéseket kap a csomagverzió felügyelt alkalmazáspéldányain végzett összes CRUD-műveletről.
+
+### <a name="customize-allowed-customer-actions"></a>Az engedélyezett vevői műveletek testreszabása
+
+Ezzel a beállítással megadhatja, hogy az ügyfelek az`*/read`alapértelmezés szerint elérhető " " műveletek mellett mely műveleteket hajthatják végre a felügyelt erőforrásokon. 
+
+Itt pontosvesszővel elválasztva sorolja fel azokat a további műveleteket, amelyeket engedélyezni szeretne az ügyfélnek.  További információt az [Azure-erőforrások hozzárendelések megtagadásának ismertetése című](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments)témakörben talál.  Az elérhető műveletekről az [Azure Resource Manager erőforrás-szolgáltató műveletei ben](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations)található. Ha például engedélyezni szeretné a fogyasztóknak `Microsoft.Compute/virtualMachines/restart/action` a virtuális gépek újraindítását, adja hozzá az engedélyezett műveletekhez.
+
+### <a name="global-azure--azure-government-cloud"></a>Globális Azure / Azure Government Cloud
+
+Adja meg, hogy ki rendelkezik felügyeleti hozzáféréssel a felügyelt alkalmazáshoz az egyes támogatott felhőben.  A felügyelt erőforráscsoportnak engedélyt kérő felhasználók, csoportok vagy alkalmazások azonosítása az Azure Active Directory (AAD) identitások használatával történik.
+
+***Azure Active Directory-bérlői azonosító*** – Az AAD-bérlői azonosító (más néven címtárazonosító), amely tartalmazza a felhasználók, csoportok vagy alkalmazások identitását, amelyeknek engedélyeket szeretne adni.  Az AAD-bérlői azonosítót az Azure Portalon, az [Azure Active Directory tulajdonságai](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)ban találja.
+
+***Engedélyek*** – adja hozzá az Azure Active Directory-objektum azonosítóját annak a felhasználónak, csoportnak vagy alkalmazásnak, amelyengedélyt szeretne adni a felügyelt erőforráscsoportnak. Azonosítsa a felhasználót a fő azonosítójuk alapján, amely az Azure Active Directory felhasználói nak paneljén található [az Azure Portalon.](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)
+
+Minden fő, válassza ki az egyik az Azure AD beépített szerepkörök a listából (tulajdonos vagy közreműködő). A kiválasztott szerepkör leírja, hogy a főtag milyen engedélyekkel rendelkezik az ügyfél-előfizetés erőforrásaira vonatkozóan. További információkért lásd az [Azure-erőforrások beépített szerepköreit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).  A szerepköralapú hozzáférés-vezérlésről (RBAC) az [RBAC első lépései az Azure Portalon](https://docs.microsoft.com/azure/role-based-access-control/overview)című témakörben talál további információt.
+
+>[!Note]
+>Bár felhőnként legfeljebb 100 engedélyt adhat hozzá, általában egyszerűbb létrehozni egy Active Directory felhasználói csoportot, és megadni az azonosítóját az "Egyszerű azonosító" alatt.  Ez lehetővé teszi, hogy a terv üzembe helyezése után további felhasználókat adjon hozzá a felügyeleti csoporthoz, és csökkentse a terv frissítésének szükségességét, csak hogy további engedélyeket adjon hozzá.
 
 ### <a name="policy-settings"></a>Szabályzatbeállítások
 
-Alkalmazza az [Azure-szabályzatokat](https://docs.microsoft.com/azure/governance/policy/overview) a felügyelt alkalmazásra a telepített megoldás megfelelőségi követelményeinek meghatározásához.  A szabályzatdefiníciókról és a paraméterértékek formátumáról tekintse meg a következő dokumentumot: [Azure Policy-minták](https://docs.microsoft.com/azure/governance/policy/samples/index).  Legfeljebb öt házirendet konfigurálhat, és az egyes házirendek közül csak egy példányt lehet beállítani.  Egyes házirendek további paramétereket igényelnek.  A naplózási házirendekhez a szabványos SKU szükséges.  A szabályzat neve legfeljebb 50 karakter hosszú lehet.
+Az [Azure-szabályzatok](https://docs.microsoft.com/azure/governance/policy/overview) alkalmazása a felügyelt alkalmazásmegfelelőségi követelmények meghatározásához a telepített megoldás.  A szabályzatdefiníciókról és a paraméterértékek formátumáról tekintse meg a következő dokumentumot: [Azure Policy-minták](https://docs.microsoft.com/azure/governance/policy/samples/index).  Legfeljebb öt házirendet állíthat be, és az egyes házirendek beállításnak csak egy példányát.  Egyes házirendek további paramétereket igényelnek.  A standard termékváltozat szükséges a naplózási házirendek.  A házirend neve legfeljebb 50 karakter ből állhat.
 
-## <a name="co-sell"></a>Közös értékesítés
+## <a name="co-sell"></a>Együttes értékesítés
 
-Az ajánlat közzétételéhez teljes mértékben nem kötelező megadni a beadás lapon található információkat. A közös értékesítésre kész és az IP közös értékesítésre kész állapotot kell elérni. Az Ön által megadott információkat a Microsoft értékesítési csapatai fogják használni, hogy a megoldásra vonatkozó további információkat kapjanak az ügyfelek igényeinek megfelelő kiértékelése során. Nem érhető el közvetlenül az ügyfeleknek.
+A Cosell lapon történő tájékoztatás teljes mértékben opcionális az ajánlat közzétételéhez. A Co-sell Ready és az IP Co-sell Ready státusz eléréséhez szükséges. A megadott adatokat a Microsoft értékesítési csapatai arra használják fel, hogy többet tudjanak meg a megoldásról, amikor kiértékelik, hogy azok megfelelnek-e az ügyfelek igényeinek. Nem érhető el közvetlenül az ügyfelek számára.
 
-További információ a lap befejezéséről: [közös értékesítés lehetőség a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell).
+A lap kitöltésével kapcsolatos további információkért lásd: [Társértékesítés lehetőség a Partnerközpontban.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)
 
-## <a name="test-drive"></a>Tesztelési meghajtó
+## <a name="test-drive"></a>Tesztvezetés
 
-A **tesztvezetés** lapon egy bemutatót (vagy "tesztelési meghajtót") állíthat be, amely lehetővé teszi az ügyfeleknek, hogy a megvásárlása előtt kipróbálják az ajánlatot. További információt a [Mi a test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive) című cikkben talál.  Ha már nem szeretne tesztelési meghajtót biztosítani az ajánlatához, térjen vissza az **ajánlat beállítása** lapra, és törölje a **Test Drive engedélyezése**jelölőnégyzet jelölését.
+A **Tesztmeghajtó** lapon beállíthat egy bemutatót (vagy "tesztmeghajtót"), amely lehetővé teszi az ügyfelek számára, hogy kipróbálják az ajánlatot, mielőtt elkötelezné magukat a megvásárlás mellett. További információ: [Mi az a Tesztmeghajtó?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)  Ha már nem szeretne tesztvezetést biztosítani az ajánlatához, térjen vissza az **Ajánlat beállítási** oldalára, és törölje a jelet **a Tesztvezetés engedélyezése**jelölőnégyzetből.
 
-### <a name="technical-configuration"></a>Technikai konfiguráció
+### <a name="technical-configuration"></a>Műszaki konfiguráció
 
-Az Azure-alkalmazások eleve a Azure Resource Manager tesztelési meghajtó típusát használják.  További információ: [Azure Resource Manager Test Drive technikai konfigurációja](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer#technical-configuration-for-azure-resource-manager-test-drive) .
+Az Azure Applications eredendően használja az Azure Resource Manager tesztmeghajtó típusát.  További [információ: Az Azure Resource Manager tesztmeghajtóműszaki konfigurációja.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer#technical-configuration-for-azure-resource-manager-test-drive)
 
-### <a name="deployment-subscription-details"></a>Központi telepítési előfizetés részletei
+### <a name="deployment-subscription-details"></a>Üzembe helyezési előfizetés részletei
 
-Ha a tesztelési meghajtót az Ön nevében szeretné üzembe helyezni, hozzon létre és adjon meg egy különálló, egyedi Azure-előfizetést. (Power BI tesztelési meghajtók esetében nem szükséges).
+A Test Drive az Ön nevében történő üzembe helyezéséhez hozzon létre és adjon meg egy külön, egyedi Azure-előfizetést. (Nem szükséges a Power BI tesztmeghajtóihoz).
 
-- **Azure-előfizetés azonosítója** (Azure Resource Manager és Logic apps esetén szükséges): adja meg az előfizetés azonosítóját, amely hozzáférést biztosít az Azure-fiók szolgáltatásaihoz az erőforrás-használat jelentéskészítéséhez és számlázásához. Javasoljuk, hogy [hozzon létre egy külön Azure-előfizetést](https://docs.microsoft.com/azure/billing/billing-create-subscription) , amelyet tesztelési meghajtókhoz kíván használni, ha még nem rendelkezik ilyennel. Az Azure-előfizetésének AZONOSÍTÓját a [Azure Portalba](https://portal.azure.com/) való bejelentkezéssel és a bal oldali menü **előfizetések** lapján érheti el. A lap kiválasztása esetén megjelenik az előfizetési azonosító (például: "a83645ac-1234-5ab6-6789-1h234g764ghty").
+- **Azure-előfizetés-azonosító** (az Azure Resource Manager és a Logic alkalmazások esetén szükséges): Adja meg az előfizetés-azonosítót, amely hozzáférést biztosít az Azure-fiókszolgáltatásaihoz az erőforrás-használati jelentések hez és a számlázáshoz. Azt javasoljuk, hogy fontolja meg [egy külön Azure-előfizetés tesztelésére,](https://docs.microsoft.com/azure/billing/billing-create-subscription) ha még nem rendelkezik. Az Azure-előfizetés-azonosítóját az Azure [Portalra](https://portal.azure.com/) való bejelentkezéssel és a bal oldali menü **Előfizetések** lapjára való navigálással találhatja meg. A lapon megjelenik az előfizetésazonosítója (pl. "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Azure ad-bérlő azonosítója** (kötelező): adja meg a Azure Active Directory (ad) [bérlői azonosítóját](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a * * tulajdonságok elemet, majd keresse **meg a felsorolt** 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév URL-címével is megkeresheti a következő helyen: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
+- **Azure AD-bérlőazonosító** (kötelező): Adja meg az Azure Active Directory (AD) [bérlői azonosítóját.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) Az azonosító megkereséséhez jelentkezzen be az [Azure Portalra,](https://portal.azure.com/)válassza a bal oldali menü Active Directory lapját, válassza a **Tulajdonságok lehetőséget, majd keresse meg a felsorolt **címtárazonosító** számot (pl. 50c464d3-4930-494c-963c-1e951d15360e). A tartománynév URL-címével is megkeresheti a szervezet [https://www.whatismytenantid.com](https://www.whatismytenantid.com)bérlői azonosítóját a következő címen: .
 
-- **Azure ad-bérlő neve** (dinamikus 365 esetén szükséges): adja meg a Azure Active Directory (ad) nevét. A név megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), a jobb felső sarokban a bérlő neve a fiók neve alatt jelenik meg.
+- **Azure AD-bérlői név** (dinamikus 365 esetén szükséges): Adja meg az Azure Active Directory (AD) nevét. Ennek a névnek a megkereséséhez jelentkezzen be az [Azure Portalra,](https://portal.azure.com/)a jobb felső sarokban a bérlő neve a fiók neve alatt jelenik meg.
 
-- **Azure ad** -alkalmazás azonosítója (kötelező): adja meg a Azure Active Directory (ad) [alkalmazás-azonosítóját](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a listában szereplő **alkalmazás-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure AD alkalmazásazonosító** (kötelező): Adja meg az Azure Active Directory (AD) [alkalmazásazonosítóját.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) Az azonosító megkereséséhez jelentkezzen be az [Azure Portalra,](https://portal.azure.com/)válassza a bal oldali menü Active Directory lapját, válassza az **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a felsorolt **alkalmazásazonosítószámot** (például 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure ad-alkalmazás ügyfél-titka** (kötelező): adja meg az Azure ad-alkalmazás [ügyfél-titkos kulcsát](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets). Az érték megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/). Válassza ki a **Azure Active Directory** fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki a test Drive alkalmazást. Ezután válassza a **tanúsítványok és titkos kulcsok**lehetőséget, válassza az **új ügyfél titka**elemet, adja meg a leírást, válassza a **soha nem** **jár le**, majd a **Hozzáadás**lehetőséget. Ügyeljen rá, hogy az értéket másolja le. (Ne navigáljon el az oldalról az érték másolása előtt, különben nem fog hozzáférni az értékhez.)
+- **Azure AD alkalmazásügyfél-titkos** (kötelező): Adja meg az Azure [AD-alkalmazásügyfél-titkos.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets) Ennek az értéknek a megkereséséhez jelentkezzen be az [Azure Portalra.](https://portal.azure.com/) Válassza az **Azure Active Directory** fülét a bal oldali menüben, válassza az **Alkalmazásregisztrációk**lehetőséget, majd válassza ki a tesztmeghajtó alkalmazást. Ezután válassza **a Tanúsítványok és titkos kulcsok**lehetőséget, válassza az Új **ügyféltitok**lehetőséget, adjon meg egy leírást, válassza a **Soha** **a Lejáratok**csoportban a Soha lehetőséget, majd válassza **a Hozzáadás lehetőséget.** Győződjön meg róla, hogy másolja le az értéket. (Ne navigáljon el az oldalról az érték másolása előtt, különben nem lesz hozzáférése az értékhez.)
 
-Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
+Ne feledje, hogy **mentse,** mielőtt a következő szakasz!
 
-### <a name="test-drive-listings-optional"></a>Tesztelési meghajtók listázása (nem kötelező)
+### <a name="test-drive-listings-optional"></a>Tesztvezetés listái (nem kötelező)
 
-A test Drive (tesztelési meghajtó) **lapon található** tesztelési **meghajtók listázása** lehetőség megjeleníti azokat a nyelveket (és piacokat), ahol a tesztelési meghajtó elérhető, jelenleg angol (Egyesült Államok) az egyetlen elérhető hely. Ezen felül az oldal megjeleníti a nyelvspecifikus lista állapotát és a hozzáadott dátumot és időt. Meg kell határoznia a tesztvezetés részleteit (Leírás, felhasználói kézikönyv, videók stb.) az egyes nyelvekhez/piacokhoz.
+A **Test Drive listázási lista** a **Tesztmeghajtó** lapon található beállítás on-át jeleníti meg azokat a nyelveket (és piacokat), ahol a tesztvezetés elérhető, jelenleg az angol (Egyesült Államok) az egyetlen elérhető hely. Ezenkívül ezen az oldalon megjelenik a nyelvspecifikus listaállapot, valamint a hozzáadott dátum/idő. Meg kell határoznia a tesztvezetés részleteit (leírás, felhasználói kézikönyv, videók stb.) az egyes nyelvekhez/piacokhoz.
 
-- **Leírás** (kötelező): írja le a tesztelési meghajtót, hogy mit kell bemutatni, a felhasználó által a kísérlethez szükséges célokat, a felderített funkciókat, valamint minden olyan releváns információt, amellyel a felhasználó eldöntheti, hogy szeretné-e beszerezni az ajánlatot. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni. 
+- **Leírás** (kötelező): Írja le a tesztvezetést, a bemutatást, a felhasználó által kísérletezendő célokat, a feltárandó funkciókat és minden olyan releváns információt, amely segít a felhasználónak eldönteni, hogy beszerezze-e az ajánlatot. Ebben a mezőben legfeljebb 3000 karakter nyi szöveg adható meg. 
 
-- **Hozzáférési információk** (Azure Resource Manager és logikai tesztelési meghajtókhoz szükséges): ismertesse, hogy az ügyfélnek milyen információra van szüksége ahhoz, hogy hozzáférhessen és használhassa ezt a teszt meghajtót. Tekintse át az ajánlat használatát, és pontosan azt, amit az ügyfélnek tudnia kell a szolgáltatások eléréséhez a tesztelési meghajtón. Ebben a mezőben legfeljebb 10 000 karaktert lehet megadni.
+- **Hozzáférés-információk** (az Azure Resource Manager és logic tesztmeghajtók esetén szükséges): Magyarázza el, hogy mit kell tudnia az ügyfélnek a tesztmeghajtó eléréséhez és használatához. Végigvezethet egy forgatókönyvet az ajánlat használatáról, és pontosan azt, hogy az ügyfélnek mit kell tudnia a funkciók eléréséhez a tesztvezetés során. Ebben a mezőben legfeljebb 10 000 karakternyi szöveg adható meg.
 
-- **Felhasználói kézikönyv** (kötelező): részletes útmutató a test Drive-élményhez. A felhasználói kézikönyvnek pontosan le kell fednie, hogy mit szeretne kapni az ügyféltől a tesztelési meghajtón, és az esetlegesen felmerülő kérdésekre mutató hivatkozásként szolgáljon. A fájlnak PDF formátumúnak kell lennie, és a feltöltés után a neve (255 karakter max).
+- **Használati útmutató** (kötelező): A tesztvezetés élményének részletes áttekintése. A felhasználói kézikönyvnek pontosan azt kell kiterjednie, hogy mit szeretne az ügyfélnek a tesztvezetés megtapasztalásából, és referenciaként kell szolgálnia az esetleges kérdéseikhez. A fájlnak PDF formátumúnak kell lennie, és feltöltés után el kell nevezni (legfeljebb 255 karakter).
 
-- **Videók: videók hozzáadása** (nem kötelező): a videók a YouTube vagy a Vimeo webhelyre tölthetők fel, és a hivatkozás és a miniatűr képét (533 x 324 képpont) is feltölthetik, így az ügyfél megtekintheti az információk áttekintését, így könnyebben megismerheti a tesztelési meghajtót, beleértve az ajánlat funkcióinak sikeres használatát és az előnyeiket kiemelő forgatókönyveket.
+- **Videók hozzáadása** (nem kötelező): A videókat fel lehet tölteni a YouTube-ra vagy a Vimeo-ra, és itt hivatkozással lehet hivatkozni egy linkre és egy miniatűr képre (533 x 324 képpont), hogy az ügyfél megtekinthesse az információk átjárását, hogy jobban megérthesse a tesztvezetést, beleértve az ajánlat funkcióinak sikeres használatát és az előnyeiket kiemelő forgatókönyveket.
   - **Név** (kötelező)
-  - **URL-cím (csak YouTube vagy Vimeo)** (kötelező)
-  - **Miniatűr (533 x 324 px)** : a képfájlnak png formátumúnak kell lennie.
+  - **URL (csak YouTube vagy Vimeo)** (kötelező)
+  - **Thumbnail (533 x 324 px)**: A képfájlnak PNG formátumúnak kell lennie.
 
-A mezők befejezése után válassza a **Mentés** lehetőséget.
+A mezők **kitöltése** után válassza a Mentés lehetőséget.
 
 ## <a name="publish"></a>Közzététel
 
-### <a name="submit-offer-to-preview"></a>Ajánlat beküldése az előzetes verzióra
+### <a name="submit-offer-to-preview"></a>Ajánlat küldése előnézetbe
 
-Miután elvégezte az ajánlat összes szükséges szakaszt, válassza a **Közzététel** elemet a portál jobb felső sarkában. A rendszer átirányítja a **felülvizsgálat és közzététel** lapra. 
+Miután elvégezte az ajánlat összes szükséges szakaszát, válassza a **közzététel** lehetőséget a portál jobb felső sarkában. A bizottság átirányítja a **Véleményezés és közzététel** lapra. 
 
-Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
+Ha ez az első alkalom, hogy közzéteszi ezt az ajánlatot, a következőket teheti:
 
-- Tekintse meg az ajánlat egyes szakaszainak befejezési állapotát.
-    - *Nincs elindítva* – azt jelenti, hogy a szakasz nem lett megérintve, és el kell végezni.
-    - *Hiányos* – azt jelenti, hogy a szakasznak meg kell oldania a hibákat, vagy további információkat kell megadni. Lépjen vissza a szakasz (ok) ra, és frissítse azt.
-    - *Complete (Befejezés* ) – azt jelenti, hogy a szakasz elkészült, minden szükséges adattal rendelkezik, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
-- Adjon meg tesztelési útmutatást a minősítési csapatnak, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez hasznos kiegészítő megjegyzések mellett.
-- Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. Küldünk Önnek egy e-mailt, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat nyilvános közzétételére (vagy ha egy privát ajánlatra a privát közönség számára).
+- Tekintse meg az ajánlat egyes szakaszainak készültségi állapotát.
+    - *Nincs elindítva* - azt jelenti, hogy a szakaszt nem érintette meg, és be kell fejezni.
+    - *Hiányos* - azt jelenti, hogy a szakasz hibákat, amelyeket ki kell javítani, vagy több információt kell megadni. Kérjük, menjen vissza a szakasz(ok) és frissítse azt.
+    - *Kész* - azt jelenti, hogy a szakasz befejeződött, az összes szükséges adatot megadta, és nincsenek hibák. Az ajánlat minden szakaszának teljes állapotban kell lennie az ajánlat elküldése előtt.
+- Adjon vizsgálati utasításokat a minősítő csoportnak, hogy az alkalmazás megfelelő tesztelése mellett adjon meg olyan kiegészítő megjegyzéseket is, amelyek hasznosak az alkalmazás megértéséhez.
+- Küldje el az ajánlatot közzétételre a **Küldés**lehetőség kiválasztásával. Küldünk Önnek egy e-mailt, hogy tudd, ha az ajánlat előnézeti verziója elérhető, hogy áttekintsd és jóváhagyd. Térjen vissza a Partnerközpontba, és válassza a **Go-live** lehetőséget az ajánlat nyilvános közzétételéhez (vagy ha privát ajánlat, a privát közönség számára).
 
 ### <a name="errors-and-review-feedback"></a>Hibák és visszajelzések áttekintése
 
-A közzétételi folyamat **manuális érvényesítési** lépése az ajánlat és a hozzá kapcsolódó technikai eszközök (különösen a Azure Resource Manager sablon) átfogó áttekintését jelenti, a problémák általában lekéréses kérelmek (PR)-hivatkozásként jelennek meg. A következő témakörből megtudhatja, hogyan tekintheti meg és válaszolhatja meg ezeket a jogcímeket: [felülvizsgálati visszajelzések feldolgozása](./azure-apps-review-feedback.md).
+A közzétételi folyamat **manuális érvényesítési** lépése az ajánlat és a hozzá tartozó technikai eszközök (különösen az Azure Resource Manager-sablon) átfogó áttekintését jelenti, a problémák általában lekéréses kérelem (PR) hivatkozásként jelennek meg. A psz-ek megtekintésének és az azokra való válaszadásnak a magyarázata a [Véleményezési visszajelzések kezelése](./azure-apps-review-feedback.md)című témakörben látható.
 
-Ha a közzétételi lépések közül egy vagy több hibát észlelt, ki kell javítania őket, és újra közzé kell tennie az ajánlatot.
+Ha hibákat észlelt egy vagy több közzétételi lépésben, ki kell javítania őket, és újra közzé kell tennie az ajánlatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

@@ -1,58 +1,57 @@
 ---
-title: Bevezetési API Azure-alkalmazásokhoz a kereskedelmi piactéren
-description: Az Azure-alkalmazások API-előfeltételei a kereskedelmi piactéren a Microsoft partner Centerben.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Bevezetési API azure-alkalmazásokhoz a kereskedelmi piactéren
+description: Az Azure-alkalmazások API-előfeltételei a Microsoft Partner Center kereskedelmi piacterén.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: c14d8c6f27e4b0f4a4a75fa14b83455ff30ee35a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: cc4d56058ce3985ec3a1d9124ef4ec73ff6be1a2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933666"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279759"
 ---
-# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>API az Azure-alkalmazások a partner Centerben való bevezetéséhez
+# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>API az Azure-alkalmazások partnerközpontban való bevezetéséhez
 
-A *partner Center beküldési API* használatával programozott módon kérdezheti le, hozhat létre és tehet közzé Azure-ajánlatokat.  Ez az API akkor hasznos, ha a fiók számos ajánlatot kezel, és szeretné automatizálni és optimalizálni az ajánlatok beküldési folyamatát.
+A *Partnerközpont beküldési API-jával* programozott módon lekérdezheti, elküldheti és közzéteheti az Azure-ajánlatokat.  Ez az API akkor hasznos, ha a fiók sok ajánlatot kezel, és automatizálni és optimalizálni szeretné az ajánlatok beküldési folyamatát.
 
 ## <a name="api-prerequisites"></a>API-előfeltételek
 
-Néhány programozott eszközre van szükség ahhoz, hogy használni lehessen a partner Center API-t az Azure-termékekhez: 
+Van néhány programozott eszköz, amely az Azure-termékek partnerközpont API-jának használatához szükséges: 
 
-- egy Azure Active Directory alkalmazás.
+- egy Azure Active Directory-alkalmazás.
 - egy Azure Active Directory (Azure AD) hozzáférési jogkivonat.
 
-### <a name="step-1-complete-prerequisites-for-using-the-partner-center-submission-api"></a>1\. lépés: a partner Center beküldési API használatának előfeltételei
+### <a name="step-1-complete-prerequisites-for-using-the-partner-center-submission-api"></a>1. lépés: A Partnerközpont beküldési API-jának teljes előfeltételei
 
-Mielőtt elkezdené a kód írását a partner Center beküldési API meghívásához, győződjön meg arról, hogy végrehajtotta a következő előfeltételeket.
+Mielőtt elkezdené írni a Partnerközpont beküldési API-jának hívásához szükséges kódot, győződjön meg arról, hogy teljesítette az alábbi előfeltételeket.
 
-- Önnek (vagy szervezetének) rendelkeznie kell egy Azure AD-címtárral, és [globális rendszergazdai](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) engedéllyel kell rendelkeznie a címtárhoz. Ha már használja az Office 365-et vagy a Microsoft egyéb üzleti szolgáltatásait, akkor már rendelkezik Azure AD-címtárral. Ellenkező esetben [új Azure ad-t hozhat létre a partner Centerben](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account) , külön díj nélkül.
+- Önnek (vagy a szervezetének) rendelkeznie kell egy Azure AD-könyvtárral, és [globális rendszergazdai](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) engedéllyel kell rendelkeznie a címtárhoz. Ha már használja az Office 365-öt vagy a Microsoft más üzleti szolgáltatásait, akkor már rendelkezik Azure AD-könyvtárral. Ellenkező esetben további díj nélkül [létrehozhat egy új Azure AD-t a Partnerközpontban.](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account)
 
-- Hozzá kell [rendelnie egy Azure ad-alkalmazást a partner Center-fiókjához](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account) , és meg kell szereznie a bérlő azonosítóját, ügyfél-azonosítóját és kulcsát. Ezekre az értékekre szüksége lesz az Azure AD hozzáférési token beszerzéséhez, amelyet a Microsoft Store beküldési API-hoz tartozó hívásokban fog használni.
+- Egy [Azure AD-alkalmazást kell társítania a Partnerközpont-fiókkal,](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account) és be kell szereznie a bérlői azonosítót, az ügyfélazonosítót és a kulcsot. Ezekre az értékekre az Azure AD-hozzáférési jogkivonat beszerzéséhez, amelyet a Microsoft Store beküldési API-hívásokhoz fog használni.
 
-#### <a name="how-to-associate-an-azure-ad-application-with-your-partner-center-account"></a>Azure AD-alkalmazás hozzárendelése a partner Center-fiókhoz
+#### <a name="how-to-associate-an-azure-ad-application-with-your-partner-center-account"></a>Azure AD-alkalmazás társítása partnerközpont-fiókkal
 
-A Microsoft Store beküldési API használatához hozzá kell rendelnie egy Azure AD-alkalmazást a partner Center-fiókjához, le kell kérnie az alkalmazás bérlői AZONOSÍTÓját és ügyfél-AZONOSÍTÓját, és elő kell készítenie egy kulcsot. Az Azure AD-alkalmazás azt az alkalmazást vagy szolgáltatást jelöli, amelyről meg szeretné hívni a partner Center beküldési API-ját. Szüksége lesz a bérlői AZONOSÍTÓra, az ügyfél-AZONOSÍTÓra és a kulcsra az API-hoz továbbított Azure AD hozzáférési jogkivonat beszerzéséhez.
+A Microsoft Store beküldési API használatához hozzá kell rendelnie egy Azure AD-alkalmazást a Partnercenter-fiókhoz, le kell kérnie az alkalmazás bérlői azonosítóját és ügyfélazonosítóját, és létre kell hoznia egy kulcsot. Az Azure AD alkalmazás azt az alkalmazást vagy szolgáltatást jelöli, amelyből meg szeretné hívni a Partnerközpont beküldési API-ját. A bérlői azonosító, az ügyfél-azonosító és a kulcs az Azure AD-hozzáférési jogkivonat, amely átaz API-t kell beszereznie.
 
 >[!Note]
->Ezt a feladatot csak egyszer kell végrehajtania. A bérlő azonosítója, az ügyfél azonosítója és kulcsa után bármikor újra felhasználhatja őket, amikor új Azure AD-hozzáférési tokent kell létrehoznia.
+>Ezt a feladatot csak egyszer kell elvégeznie. Miután rendelkezik a bérlői azonosítóval, az ügyfélazonosítóval és a kulccsal, bármikor újra felhasználhatja őket, amikor új Azure AD-hozzáférési jogkivonatlétrehozásához szüksége van.
 
-1. A partner Centerben [társítsa a szervezete partner Center-fiókját a szervezet Azure ad-címtárával](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center).
-1. Ezután a partner Center **Fiókbeállítások** szakaszának **felhasználók** lapján adja hozzá azt az alkalmazást vagy szolgáltatást jelölő [Azure ad-alkalmazást](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account) , amelyet a partner Center-fiókhoz való hozzáféréshez használni fog. Győződjön meg arról, hogy az alkalmazást a **kezelő** szerepkörhöz rendeli. Ha az alkalmazás még nem létezik az Azure AD-címtárban, [létrehozhat egy új Azure ad-alkalmazást a partner Centerben](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account).
-1. Térjen vissza a **felhasználók** lapra, kattintson az Azure ad-alkalmazás nevére, hogy megnyissa az alkalmazás beállításait, és másolja le a **bérlő azonosítóját** és az **ügyfél-azonosító** értékeit.
-1. Kattintson az **új kulcs hozzáadása**lehetőségre. A következő képernyőn másolja le a **kulcs** értékét. Ezt az információt később nem érheti el, miután elhagyja ezt a lapot. További információ: [Az Azure ad-alkalmazás kulcsainak kezelése](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys).
+1. A Partnerközpontban [társítsa a szervezet Partnerközpont-fiókját a szervezet Azure AD-könyvtárához.](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center)
+1. Ezután a **Partnerközpont** **Fiókbeállítások szakaszában** a Felhasználók lapon [adja hozzá az Azure AD-alkalmazást,](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account) amely a Partnerközpont-fiók beküldött anyagainak eléréséhez használni fog. Győződjön meg arról, hogy az alkalmazáshoz a **Kezelő** szerepkört rendelte hozzá. Ha az alkalmazás még nem létezik az Azure AD-címtárban, [létrehozhat egy új Azure AD-alkalmazást a Partner Centerben.](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account)
+1. Térjen vissza a **Felhasználók** lapra, kattintson az Azure AD-alkalmazás nevére az alkalmazásbeállításainak megugrásához, és másolja lefelé a **bérlői azonosító** és az **ügyfélazonosító** értékeit.
+1. Kattintson **az Új kulcs hozzáadása gombra.** A következő képernyőn másolja lefelé a **Kulcs** értéket. Az oldal elhagyása után nem fogja tudni újra elérni ezeket az adatokat. További információ: [Kulcsok kezelése egy Azure AD-alkalmazáshoz.](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys)
 
-### <a name="step-2-obtain-an-azure-ad-access-token"></a>2\. lépés: Azure AD hozzáférési jogkivonat beszerzése
+### <a name="step-2-obtain-an-azure-ad-access-token"></a>2. lépés: Azure AD-hozzáférési jogkivonat beszerzése
 
-Mielőtt bármelyik módszert meghívja a partner Center beküldési API-ban, először be kell szereznie egy Azure AD hozzáférési jogkivonatot, amelyet az API egyes módszereinek **engedélyezési** fejlécébe kell átadnia. A hozzáférési token beszerzése után 60 percet is igénybe vehet, mielőtt lejár. A jogkivonat lejárta után frissítheti a jogkivonatot, így továbbra is használhatja azt az API-hoz való jövőbeli hívásokban.
+Mielőtt meghívja a partnerközpont beküldési API-ban a metódusok bármelyikét, először be kell szereznie egy Azure AD-hozzáférési jogkivonatot, amelyet átkell adnia az API-ban lévő egyes metódusok **engedélyezési** fejlécének. Miután beszerezte a hozzáférési jogkivonatot, 60 perce van annak használatára, mielőtt lejár. A jogkivonat lejárta után frissítheti a jogkivonatot, így továbbra is használhatja azt az API jövőbeli hívásaiban.
 
-A hozzáférési jogkivonat beszerzéséhez kövesse az [ügyfél hitelesítő adataival](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/) megjelenő, a szolgáltatáson belüli hívások küldésére vonatkozó utasításokat, hogy `HTTP POST` küldjön a `https://login.microsoftonline.com/<tenant_id>/oauth2/token` végpontnak. Példa erre a kérelemre:
+A hozzáférési jogkivonat beszerzéséhez kövesse a [Service to Service Calls using Client Credentials (Szolgáltatás szolgáltatáshoz szolgáltatásra irányuló hívások ügyfélhitelesítő adatok használatával)](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/) című útmutató utasításait, `HTTP POST` `https://login.microsoftonline.com/<tenant_id>/oauth2/token` hogy küldjön egy a végpontra. Itt van egy minta kérés:
 
-JSONCopy
+JSONCOPY
 ```Json
 POST https://login.microsoftonline.com/<tenant_id>/oauth2/token HTTP/1.1
 Host: login.microsoftonline.com
@@ -64,10 +63,10 @@ grant_type=client_credentials
 &resource= https://api.partner.microsoft.com
 ```
 
-A `POST URI` és a *client_id* és *client_secret* paraméterek *tenant_id* értékének megadásához adja meg a bérlői azonosítót, az ügyfél-azonosítót és az alkalmazás azon kulcsát, amelyet az előző szakaszban a partner Centerből beolvasott. Az *erőforrás* -paraméterhez meg kell adnia `https://api.partner.microsoft.com`.
+A *tenant_id* érték `POST URI` a és a *client_id* és *client_secret* paraméterek, adja meg a bérlői azonosító, ügyfél-azonosító és a kulcs az alkalmazás, amely beolvasni a Partner Center az előző szakaszban. Az *erőforrásparaméterhez* meg `https://api.partner.microsoft.com`kell adnia a paramétert.
 
-### <a name="step-3-use-the-microsoft-store-submission-api"></a>3\. lépés: a Microsoft Store beküldési API használata
+### <a name="step-3-use-the-microsoft-store-submission-api"></a>3. lépés: A Microsoft Store beküldési API-jának használata
 
-Az Azure AD hozzáférési jogkivonattal metódusokat hívhat a partner Center beküldési API-ban. A kiküldetések létrehozásához vagy frissítéséhez általában több metódust kell meghívni a partner Center beküldési API-ban egy adott sorrendben. Az egyes forgatókönyvekkel és az egyes módszerek szintaxisával kapcsolatos információkért tekintse meg a betöltés API-hencegés című témakört.
+Miután rendelkezik egy Azure AD-hozzáférési jogkivonattal, metódusokat hívhat meg a Partnerközpont beküldési API-jában. A beküldött anyagok létrehozásához vagy frissítéséhez általában több metódust hív meg a Partnerközpont beküldési API-jában egy adott sorrendben. Az egyes forgatókönyvekről és az egyes módszerek szintaxisáról a Betöltési API-swagger című témakörben talál további információt.
 
 https://apidocs.microsoft.com/services/partneringestion/

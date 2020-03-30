@@ -1,6 +1,6 @@
 ---
-title: Stream Azure Active Directory naplók a Azure Monitor naplókhoz | Microsoft Docs
-description: Ismerje meg, hogyan integrálhat Azure Active Directory naplókat Azure Monitor naplókba
+title: Az Azure Active Directory-naplók streamelése az Azure Monitor naplóiba | Microsoft dokumentumok
+description: Megtudhatja, hogy miként integrálható az Azure Active Directory-naplók az Azure Monitor-naplókkal
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,31 +18,31 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266441"
 ---
-# <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD-naplók integrálása Azure Monitor naplókkal
+# <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Az Azure AD-naplók integrálása az Azure Monitor-naplókkal
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-A Azure Monitor naplók lehetővé teszik az adatok lekérdezését az egyes események megtalálásához, a trendek elemzéséhez és a különböző adatforrások közötti korreláció végrehajtásához. Az Azure AD-tevékenységek Azure Monitor naplókba való integrálásával mostantól például a következő feladatokat végezheti el:
+Az Azure Monitor naplói lehetővé teszik az adatok lekérdezését adott események megkereséséhez, trendek elemzéséhez és a különböző adatforrások közötti korreláció végrehajtásához. Az Azure AD-tevékenységnaplók integrálásával az Azure Monitor naplóiban mostantól olyan feladatokat hajthat végre, mint például:
 
- * Az Azure AD bejelentkezési naplóinak összehasonlítása Azure Security Center által közzétett biztonsági naplókkal
+ * Az Azure AD bejelentkezési naplóinak összehasonlítása az Azure Security Center által közzétett biztonsági naplókkal
 
- * Az alkalmazás bejelentkezési oldalának teljesítménybeli szűk keresztmetszetei az Azure-Application Insights alkalmazás teljesítményadatait összekapcsolásával orvosolhatók.  
+ * Az Azure Application Insights alkalmazásteljesítmény-adatainak összefüggésével háríthatja el az alkalmazás teljesítménybeli szűk keresztmetszeteit az alkalmazás bejelentkezési lapján.  
 
-Az alábbi videó egy Ignite-munkamenetből mutatja be, hogy milyen előnyökkel jár a Azure Monitor naplók használata az Azure AD-naplókhoz gyakorlati felhasználói forgatókönyvekben.
+Az alábbi videó egy Ignite-munkamenet bemutatja az Azure Monitor-naplók használatának előnyeit az Azure AD-naplók hoz gyakorlati felhasználói forgatókönyvekben.
 
 > [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
 
-Ebből a cikkből megtudhatja, hogyan integrálhatja a Azure Active Directory-(Azure AD-) naplókat a Azure Monitorokkal.
+Ebben a cikkben megtudhatja, hogyan integrálhatja az Azure Active Directory (Azure AD) naplók at Az Azure Monitor.
 
 ## <a name="supported-reports"></a>Támogatott jelentések
 
-További elemzés céljából átirányíthatja a naplózási tevékenységek naplóit és a bejelentkezési tevékenységek naplóit Azure Monitor naplókba. 
+A naplózási tevékenységnaplókat és a bejelentkezési tevékenységnaplókat további elemzés céljából átirányíthatja az Azure Monitor-naplókba. 
 
 * **Auditnaplók**: Az [auditnaplók tevékenységjelentés](concept-audit-logs.md) hozzáférést nyújt a bérlőn elvégzett összes feladat előzményeihez.
 * **Bejelentkezési naplók**: A [bejelentkezések tevékenységjelentéssel](concept-sign-ins.md) meghatározhatja, hogy ki hajtotta végre az auditnaplók által jelentett feladatokat.
@@ -58,29 +58,29 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 * Azure-előfizetés. Ha nincs Azure-előfizetése, [regisztráljon egy ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 * Egy Azure AD-bérlő.
 * Egy felhasználó, aki az adott Azure AD-bérlő *globális* vagy *biztonsági rendszergazdája*.
-* Egy Log Analytics munkaterület az Azure-előfizetésében. Megtudhatja, hogyan [hozhat létre log Analytics munkaterületet](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+* A Log Analytics munkaterület az Azure-előfizetésben. További információ a [Log Analytics-munkaterület létrehozásáról.](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)
 
-## <a name="send-logs-to-azure-monitor"></a>Naplók elküldése a Azure Monitorba
+## <a name="send-logs-to-azure-monitor"></a>Naplók küldése az Azure Monitornak
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) 
 
-2. Válassza a **Azure Active Directory** > **diagnosztikai beállítások** -> a **diagnosztikai beállítás hozzáadása**elemet. A **naplózási naplók** vagy a **bejelentkezések** lapon is kiválaszthatja a **Beállítások exportálása** lehetőséget a diagnosztikai beállítások konfigurációs oldalának beolvasásához.  
+2. Válassza az **Azure Active Directory** > **diagnosztikai beállításai** -> **diagnosztikai beállítás hozzáadása diagnosztikai beállítás**lehetőséget. A **Naplózási naplók** vagy a Bejelentkezések lapon a Beállítások **exportálása** lehetőséget is választhatja a diagnosztikai beállítások **konfigurációs** lapján.  
     
-3. A **diagnosztikai beállítások** menüben jelölje be a **Küldés log Analytics munkaterületre** jelölőnégyzetet, majd válassza a **Konfigurálás**lehetőséget.
+3. A **Diagnosztikai beállítások** menüben jelölje be a **Küldés a Log Analytics munkaterületre jelölőnégyzetet,** majd kattintson a **Konfigurálás parancsra.**
 
-4. Válassza ki azt a Log Analytics munkaterületet, amelyhez el szeretné küldeni a naplókat, vagy hozzon létre egy új munkaterületet a megadott párbeszédpanelen.  
+4. Jelölje ki azt a Log Analytics-munkaterületet, amelynek el szeretné küldeni a naplókat, vagy hozzon létre egy új munkaterületet a megadott párbeszédpanelen.  
 
 5. A következő lehetőségek egyikét vagy mindkettőt választhatja:
-    * Ha naplókat szeretne küldeni a Log Analytics munkaterületre, jelölje be a **AuditLogs** jelölőnégyzetet. 
-    * Ha bejelentkezési naplókat szeretne küldeni a Log Analytics munkaterületre, jelölje be a **SignInLogs** jelölőnégyzetet.
+    * Ha naplónaplókat szeretne küldeni a Log Analytics-munkaterületre, jelölje be az **AuditLogs jelölőnégyzetet.** 
+    * Ha bejelentkezési naplókat szeretne küldeni a Log Analytics-munkaterületre, jelölje be a **SignInLogs jelölőnégyzetet.**
 
 6. A beállítás mentéséhez kattintson a **Mentés** gombra.
 
     ![Diagnosztikai beállítások](./media/howto-integrate-activity-logs-with-log-analytics/Configure.png)
 
-7. Körülbelül 15 perc elteltével ellenőrizze, hogy az események továbbítva vannak-e a Log Analytics-munkaterületre.
+7. Körülbelül 15 perc elteltével ellenőrizze, hogy az események streamelése a Log Analytics-munkaterületre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Azure AD-beli tevékenység-naplók elemzése Azure Monitor naplókkal](howto-analyze-activity-logs-log-analytics.md)
-* [A log Analytics-nézetek telepítése és használata Azure Active Directory](howto-install-use-log-analytics-views.md)
+* [Azure AD-tevékenységnaplók elemzése az Azure Monitor-naplókkal](howto-analyze-activity-logs-log-analytics.md)
+* [Az Azure Active Directory naplóelemzési nézeteinek telepítése és használata](howto-install-use-log-analytics-views.md)
