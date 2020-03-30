@@ -1,6 +1,6 @@
 ---
-title: Az elemzési architektúra tárolása
-description: Ismerje meg, hogyan hozhat létre egy áruházbeli elemzési alkalmazást a pénztári alkalmazás sablonjának használatával IoT Central
+title: Store Analytics architektúra
+description: Ismerje meg, hogyan hozhat létre egy bolti elemzési alkalmazást az IoT Central Checkout alkalmazássablonjával
 author: avneets
 ms.author: avneets
 ms.date: 10/13/2019
@@ -10,49 +10,49 @@ ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77022120"
 ---
-# <a name="in-store-analytics-architecture"></a>Áruházbeli elemzési architektúra
+# <a name="in-store-analytics-architecture"></a>Üzleten belüli elemzési architektúra
 
 
 
-Az áruházbeli elemzési megoldások lehetővé teszik a kiskereskedelmi tárolási környezet különböző feltételeinek figyelését. Ezek a megoldások a IoT Centralon belüli alkalmazások egyikével és az alábbi architektúrával kapcsolatos útmutatásként használhatók.
+Az üzleten belüli elemzési megoldások lehetővé teszik a különböző feltételek figyelését a kiskereskedelmi környezetben. Ezek a megoldások az IoT Central alkalmazássablonjainak és az alábbi architektúrának az útmutató használatával is létrehozhatók.
 
 
-![Azure IoT Central Store Analytics](./media/architecture/store-analytics-architecture-frame.png)
+![Azure IoT Central Store elemzése](./media/architecture/store-analytics-architecture-frame.png)
 
-- IoT-érzékelők készlete telemetria-adatokat küld egy átjáró-eszközre
-- Telemetria küldő és összesített bepillantást IoT Central
-- Folyamatos adatexportálás a kívánt Azure-szolgáltatásba a manipulációhoz
-- Az adatszerkezet a kívánt formátumban strukturálható, és elküldhető egy tárolási szolgáltatásba
-- Az üzleti alkalmazások lekérhetik az adatok lekérdezését, és elemzéseket készíthetnek a kiskereskedelmi működésről
+- Telemetriai adatokat küldő IoT-érzékelők készlete egy átjáróeszközre
+- Telemetriai adatokat és összesített elemzéseket küldő átjáróeszközök az IoT Centralnak
+- Folyamatos adatexportálás a kívánt Azure-szolgáltatásba a manipuláció érdekében
+- Az adatok a kívánt formátumban strukturálhatók, és elküldhetők egy tárolási szolgáltatásnak
+- Az üzleti alkalmazások lekérdezhetik az adatokat, és olyan elemzéseket hozhatnak létre, amelyek a kiskereskedelmi műveleteket
  
-Vessünk egy pillantást a kulcsfontosságú összetevőkre, amelyek általában egy részét egy áruházbeli elemzési megoldásban játszanak.
+Vessünk egy pillantást a legfontosabb összetevők, amelyek általában szerepet játszanak egy in-store elemzési megoldás.
 
-## <a name="condition-monitoring-sensors"></a>Állapot-figyelési érzékelők
+## <a name="condition-monitoring-sensors"></a>Állapotfigyelő érzékelők
 
-Az IoT-megoldások érzékelők készletével kezdődnek a kereskedelmi tárolók környezetében lévő értelmes jelek. A fenti architektúra-diagram bal szélén különböző típusú érzékelők is tükröződnek.
+Az IoT-megoldás olyan érzékelők készletével kezdődik, amelyek értelmes jeleket rögzítenek egy kiskereskedelmi környezetből. A fenti architektúra diagram bal szélén különböző érzékelők tükrözik.
 
-## <a name="gateway-devices"></a>Átjáróeszközök
+## <a name="gateway-devices"></a>Átjáró eszközök
 
-Számos IoT érzékelő közvetlenül a felhőbe vagy a közelében található átjáró-eszközre képes nyers jeleket felvenni. Az átjáró-eszköz az adatok összesítését hajtja végre a peremen, mielőtt összefoglaló elemzéseket küld egy IoT Central alkalmazásnak. Az átjáró-eszközök feladata a parancs-és vezérlési műveletek továbbítása is a szenzoros eszközökre, ha vannak ilyenek. 
+Számos IoT-érzékelő képes nyers jeleket közvetlenül a felhőbe vagy a közelében található átjáróeszközre táplálni. Az átjáróeszköz adatösszesítést hajt végre a peremhálózaton, mielőtt összefoglaló elemzéseket küldene egy IoT Central-alkalmazásnak. Az átjáróeszközök felelősek a parancs- és vezérlőműveletek továbbításáért is az érzékelőeszközökre, ha vannak ilyenek. 
 
 ## <a name="iot-central-application"></a>IoT Central alkalmazás
 
-Az Azure IoT Central-alkalmazás különböző típusú IoT-érzékelőkből származó adatok betöltését, valamint a kiskereskedelmi tároló környezetében található átjáró-eszközöket, valamint az értelmes elemzések készletét hozza létre.
+Az Azure IoT Central alkalmazás betölt imitátai különböző típusú IoT-érzékelők, valamint átjáró eszközök a kiskereskedelmi környezetben, és létrehoz egy sor értelmes betekintést.
 
-Az Azure IoT Central egy személyre szabott élményt nyújt az áruház kezelője számára, amely lehetővé teszi számukra az infrastruktúra-eszközök távoli figyelését és felügyeletét.
+Az Azure IoT Central személyre szabott élményt is biztosít az áruház-üzemeltető számára, amely lehetővé teszi számukra az infrastruktúra-eszközök távoli figyelését és kezelését.
 
 ## <a name="data-transform"></a>Adatátalakítás
-A megoldáson belüli Azure IoT Central alkalmazás úgy konfigurálható, hogy nyers vagy összesített elemzéseket exportáljon az Azure Pásti (szolgáltatásként nyújtott platform) szolgáltatásaiba, amelyek adatkezelést végezhetnek, és gazdagítják ezeket a bepillantást, mielőtt a vállalaton belül kihelyezik őket alkalmazás. 
+Az Azure IoT Central alkalmazás egy megoldáson belül konfigurálható nyers vagy összesített elemzések exportálására az Azure PaaS (Platform-as-a-Service) szolgáltatások készletébe, amelyek adatkezelést hajthatnak végre, és gazdagítják ezeket az elemzéseket, mielőtt egy üzleti Alkalmazás. 
 
 ## <a name="business-application"></a>Üzleti alkalmazás
-A IoT-ben a kiskereskedelmi környezetben üzembe helyezett különböző típusú üzleti alkalmazások is használhatók. A kiskereskedelmi áruház kezelője vagy a személyzet tagjai ezeket az alkalmazásokat felhasználhatják az üzleti eredmények megjelenítéséhez és a valós idejű, értelmes műveletek elvégzéséhez. Ha szeretné megtudni, hogyan hozhat létre valós idejű Power BI irányítópultot a kereskedelmi csapatának, kövesse az [oktatóanyagot](./tutorial-in-store-analytics-create-app-pnp.md).
+Az IoT-adatok a kiskereskedelmi környezetben telepített különböző típusú üzleti alkalmazások működtetéséhez használhatók. A kiskereskedelmi üzlet vezetője vagy a személyzet tagja használhatja ezeket az alkalmazásokat, hogy vizualizálja az üzleti elemzéseket, és valós időben érdemi műveleteket. Ha meg szeretné tudni, hogyan hozhat létre valós idejű Power BI-irányítópultot kiskereskedelmi csapata számára, kövesse az [oktatóanyagot.](./tutorial-in-store-analytics-create-app-pnp.md)
 
-## <a name="next-steps"></a>Következő lépések
-* Ismerkedjen meg az [áruházbeli elemzési pénztár](https://aka.ms/checkouttemplate) és [az áruházbeli elemzési feltételek figyelése](https://aka.ms/conditiontemplate) alkalmazás-sablonokkal. 
-* Tekintse meg a teljes [körű oktatóanyagot](https://aka.ms/storeanalytics-tutorial) , amely végigvezeti a megoldás létrehozásán, hogyan hozhat létre megoldást az egyik áruházbeli elemzési alkalmazás-sablon használatával.
+## <a name="next-steps"></a>További lépések
+* Ismerkedés az [in-store analytics checkout](https://aka.ms/checkouttemplate) és [az in-store analytics feltételfigyelés](https://aka.ms/conditiontemplate) alkalmazássablonokkal. 
+* Vessen egy pillantást a [végpontok között bemutató,](https://aka.ms/storeanalytics-tutorial) amely végigvezeti, hogyan hozhat létre egy megoldást az egyik In Store Analytics alkalmazássablonok.

@@ -1,6 +1,6 @@
 ---
-title: Távoli asztali szolgáltatások vagy rendszergazdai jelszavának alaphelyzetbe állítása Windows rendszerű virtuális gépen | Microsoft Docs
-description: Megtudhatja, hogyan állíthatja alaphelyzetbe a fiók jelszavát vagy Távoli asztali szolgáltatások egy Windows rendszerű virtuális gépen a Azure Portal vagy a Azure PowerShell használatával.
+title: Távoli asztali szolgáltatások alaphelyzetbe állítása vagy rendszergazdai jelszavának visszaállítása Windows virtuális gépben | Microsoft dokumentumok
+description: Megtudhatja, hogyan állíthatja alaphelyzetbe a fiók jelszavát vagy a Távoli asztali szolgáltatásokat egy Windows virtuális gépen az Azure Portalon vagy az Azure PowerShellen keresztül.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,51 +15,51 @@ ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
 ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71058445"
 ---
-# <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Távoli asztali szolgáltatások vagy rendszergazdai jelszavának alaphelyzetbe állítása Windows rendszerű virtuális gépen
-Ha nem tud csatlakozni egy Windows rendszerű virtuális géphez (VM), alaphelyzetbe állíthatja a helyi rendszergazda jelszavát, vagy alaphelyzetbe állíthatja a Távoli asztali szolgáltatások konfigurációt (Windows-tartományvezérlőkön nem támogatott). Új jelszó kéréséhez használja az Azure Portalt vagy az Azure PowerShell virtuálisgép-hozzáférési bővítményét. Miután bejelentkezett a virtuális gépre, kérjen új jelszót a helyi rendszergazda számára.  
-Ha a PowerShellt használja, győződjön meg arról, hogy [telepítve van és konfigurálva van a legújabb PowerShell-modul](/powershell/azure/overview) , és be van jelentkezve az Azure-előfizetésbe. Ezeket a [lépéseket a klasszikus üzemi modellel létrehozott virtuális gépeknél is elvégezheti](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp).
+# <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Távoli asztali szolgáltatások vagy rendszergazdai jelszó alaphelyzetbe állítása Windows virtuális gépben
+Ha nem tud csatlakozni egy Windows virtuális géphez, alaphelyzetbe állíthatja a helyi rendszergazdai jelszót, vagy alaphelyzetbe állíthatja a Távoli asztali szolgáltatások konfigurációját (a Windows tartományvezérlők nem támogatják). Új jelszó kéréséhez használja az Azure Portalt vagy az Azure PowerShell virtuálisgép-hozzáférési bővítményét. Miután bejelentkezett a virtuális gépre, kérjen új jelszót a helyi rendszergazda számára.  
+PowerShell használata esetén győződjön meg arról, hogy a [legújabb PowerShell-modul telepítve van és konfigurálva](/powershell/azure/overview) van, és be van jelentkezve az Azure-előfizetésbe. Ezeket a [lépéseket a klasszikus üzemi modellel létrehozott virtuális gépeknél is elvégezheti](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp).
 
-A Távoli asztali szolgáltatások és a hitelesítő adatokat a következő módokon állíthatja alaphelyzetbe:
+A távoli asztali szolgáltatásokat és a hitelesítő adatokat a következő módon állíthatja vissza:
 
-- [Alaphelyzetbe állítás a Azure Portal használatával](#reset-by-using-the-azure-portal)
+- [Alaphelyzetbe állítás az Azure Portal használatával](#reset-by-using-the-azure-portal)
 
 - [Alaphelyzetbe állítás a VMAccess-bővítmény és a PowerShell használatával](#reset-by-using-the-vmaccess-extension-and-powershell)
 
-## <a name="reset-by-using-the-azure-portal"></a>Alaphelyzetbe állítás a Azure Portal használatával
+## <a name="reset-by-using-the-azure-portal"></a>Alaphelyzetbe állítás az Azure Portal használatával
 
-Először jelentkezzen be a [Azure Portal](https://portal.azure.com) , majd a bal oldali menüben válassza a **virtuális gépek** lehetőséget. 
+Először jelentkezzen be az [Azure Portalon,](https://portal.azure.com) és válassza **a virtuális gépek** a bal oldali menüben. 
 
 ### <a name="reset-the-local-administrator-account-password"></a>**A helyi rendszergazdai fiók jelszavának alaphelyzetbe állítása**
 
-1. Válassza ki a Windows rendszerű virtuális gépet, majd válassza a **jelszó alaphelyzetbe állítása** a **támogatás + hibaelhárítás**lehetőséget. Megjelenik a **jelszó alaphelyzetbe állítása** ablak.
+1. Jelölje ki a Windows virtuális gépét, majd válassza **a Jelszó alaphelyzetbe állítása** csoportban a **Támogatás + Hibaelhárítás lehetőséget.** Megjelenik **a Jelszó alaphelyzetbe állítása** ablak.
 
-2. Válassza a **jelszó alaphelyzetbe állítása**lehetőséget, adjon meg egy felhasználónevet és egy jelszót, majd válassza a **frissítés**lehetőséget. 
+2. Válassza **a Jelszó alaphelyzetbe állítása**lehetőséget, adjon meg egy felhasználónevet és egy jelszót, majd válassza **a Frissítés**lehetőséget. 
 
-3. Próbálkozzon újra a virtuális géphez való csatlakozással.
+3. Próbálkozzon újra a virtuális géphez való csatlakozáshoz.
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**A Távoli asztali szolgáltatások konfigurációjának alaphelyzetbe állítása**
 
-Ez a folyamat engedélyezi Távoli asztal szolgáltatást a virtuális gépen, és hozzon létre egy tűzfalszabály-szabályt az alapértelmezett RDP-porthoz: 3389.
+Ez a folyamat engedélyezi a távoli asztali szolgáltatást a virtuális gépben, és tűzfalszabályt hoz létre az alapértelmezett 3389-es RDP-porthoz.
 
-1. Válassza ki a Windows rendszerű virtuális gépet, majd válassza a **jelszó alaphelyzetbe állítása** a **támogatás + hibaelhárítás**lehetőséget. Megjelenik a **jelszó alaphelyzetbe állítása** ablak. 
+1. Jelölje ki a Windows virtuális gépét, majd válassza **a Jelszó alaphelyzetbe állítása** csoportban a **Támogatás + Hibaelhárítás lehetőséget.** Megjelenik **a Jelszó alaphelyzetbe állítása** ablak. 
 
-2. Válassza a **csak konfiguráció alaphelyzetbe állítása** lehetőséget, majd válassza a **frissítés**lehetőséget. 
+2. Válassza **a Csak konfiguráció alaphelyzetbe állítása,** majd a **Frissítés**lehetőséget. 
 
-3. Próbálkozzon újra a virtuális géphez való csatlakozással.
+3. Próbálkozzon újra a virtuális géphez való csatlakozáshoz.
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Alaphelyzetbe állítás a VMAccess-bővítmény és a PowerShell használatával
 
-Először is győződjön meg arról, hogy a [legújabb PowerShell-modul telepítve és konfigurálva](/powershell/azure/overview) van, és be van jelentkezve az Azure-előfizetésbe a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) parancsmag használatával.
+Először győződjön meg arról, hogy a [legújabb PowerShell-modul telepítve van és konfigurálva](/powershell/azure/overview) van, és a [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) parancsmag használatával be van jelentkezve az Azure-előfizetésbe.
 
 ### <a name="reset-the-local-administrator-account-password"></a>**A helyi rendszergazdai fiók jelszavának alaphelyzetbe állítása**
 
-- Állítsa vissza a rendszergazdai jelszót vagy a felhasználónevet a [set-AzVMAccessExtension PowerShell-](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) parancsmaggal. A `typeHandlerVersion` beállításnak 2,0 vagy nagyobbnak kell lennie, mivel az 1. verzió elavult. 
+- Állítsa alaphelyzetbe a rendszergazdai jelszót vagy a felhasználónevet a [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell-parancsmaggal. A `typeHandlerVersion` beállításnak legalább 2.0-nak kell lennie, mert az 1. 
 
     ```powershell
     $SubID = "<SUBSCRIPTION ID>" 
@@ -73,28 +73,28 @@ Először is győződjön meg arról, hogy a [legújabb PowerShell-modul telepí
     ```
 
     > [!NOTE] 
-    > Ha a virtuális gépen a jelenlegi helyi rendszergazdai fióktól eltérő nevet ad meg, a VMAccess-bővítmény hozzá fog adni egy helyi rendszergazdai fiókot az adott névvel, és a megadott jelszót hozzárendeli a fiókhoz. Ha a virtuális gépen létezik a helyi rendszergazdai fiók, akkor a VMAccess-bővítmény visszaállítja a jelszót. Ha a fiók le van tiltva, akkor a VMAccess-bővítmény engedélyezi azt.
+    > Ha a virtuális gépaktuális helyi rendszergazdai fiókjától eltérő nevet ad meg, a VMAccess-bővítmény hozzáad egy helyi rendszergazdai fiókot ezzel a névvel, és hozzárendeli a megadott jelszót a fiókhoz. Ha a helyi rendszergazdai fiók a virtuális gép létezik, a VMAccess-bővítmény alaphelyzetbe állítja a jelszót. Ha a fiók le van tiltva, a VMAccess-bővítmény engedélyezi azt.
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**A Távoli asztali szolgáltatások konfigurációjának alaphelyzetbe állítása**
 
-1. Állítsa vissza a virtuális gép távoli elérését a [set-AzVMAccessExtension PowerShell-](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) parancsmaggal. A következő példa alaphelyzetbe állítja a nevű `myVMAccess` hozzáférési bővítményt az `myVM` `myResourceGroup` erőforráscsoport nevű virtuális gépen:
+1. Állítsa alaphelyzetbe a virtuális gép távoli elérését a [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell-parancsmaggal. A következő példa visszaállítja `myVMAccess` az `myVM` `myResourceGroup` erőforráscsoportban megnevezett virtuális gépen megnevezett hozzáférési bővítményt:
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
     ```
 
     > [!TIP]
-    > Egy virtuális gépnek csak egyetlen VM-hozzáférési ügynöke lehet. A virtuális gép hozzáférési ügynökének tulajdonságainak beállításához használja `-ForceRerun` a következőt:. A használatakor `-ForceRerun`győződjön meg arról, hogy ugyanazt a nevet használja a virtuálisgép-hozzáférési ügynökhöz, amelyet az előző parancsokban használt.
+    > A virtuális gép bármikor csak egy virtuális gép hozzáférési ügynöke rendelkezhet. A virtuális gép hozzáférési ügynök tulajdonságainak beállításához használja ezt a `-ForceRerun` beállítást. Ha a `-ForceRerun`használata, győződjön meg arról, hogy ugyanazt a nevet használja a virtuális gép hozzáférési ügynök, amely bármely korábbi parancsokban használt.
 
-1. Ha továbbra sem tud távolról kapcsolódni a virtuális géphez, tekintse meg a [Windows-alapú Azure-beli virtuális gépek távoli asztal kapcsolatainak hibaelhárításával foglalkozó](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)témakört. Ha elveszíti a Windows tartományvezérlőhöz való kapcsolódást, vissza kell állítania a tartományvezérlő biztonsági másolatából.
+1. Ha továbbra sem tud távolról csatlakozni a virtuális géphez, olvassa el a [Távoli asztali kapcsolatok hibaelhárítása Windows-alapú Azure-virtuális géppel című témakört.](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Ha megszakad a kapcsolat a Windows tartományvezérlővel, vissza kell állítania a tartományvezérlő biztonsági másolatából.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha az Azure virtuálisgép-hozzáférési bővítmény nem válaszol, és nem tudja alaphelyzetbe állítani a jelszót, [alaphelyzetbe állíthatja a helyi Windows-jelszót](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ez a módszer fejlettebb, és megköveteli a problémás virtuális gép virtuális merevlemezének egy másik virtuális géphez való összekapcsolását. Kövesse az ebben a cikkben ismertetett lépéseket először, és csak akkor próbálkozzon az offline jelszó-visszaállítási módszerekkel, ha ezek a lépések nem működnek.
+- Ha az Azure VM access bővítmény nem válaszol, és nem tudja alaphelyzetbe állítani a jelszót, [offline állapotba állíthatja a helyi Windows-jelszót.](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Ez a módszer fejlettebb, és megköveteli, hogy csatlakoztassa a problémás virtuális gép virtuális merevlemezét egy másik virtuális géphez. Először kövesse a cikkben ismertetett lépéseket, és csak akkor kísérelje meg az offline jelszó-visszaállítási módszert, ha ezek a lépések nem működnek.
 
-- [Ismerje meg az Azure-beli virtuálisgép-bővítményeket és-funkciókat](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- [Ismerje meg az Azure virtuálisgép-bővítményeket és -funkciókat.](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-- [Kapcsolódás Azure-beli virtuális GÉPHEZ RDP vagy SSH használatával](https://msdn.microsoft.com/library/azure/dn535788.aspx).
+- [Csatlakozzon egy Azure virtuális géprdp vagy SSH.](https://msdn.microsoft.com/library/azure/dn535788.aspx)
 
-- [Windows-alapú Azure-beli virtuális gépekkel létesített távoli asztal-kapcsolatok hibáinak megoldása](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- [A Windows-alapú Azure virtuális géppel létesített távoli asztali kapcsolatok – problémamegoldás](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

@@ -1,34 +1,34 @@
 ---
-title: Azure Files visszaállítása a PowerShell-lel
-description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza Azure Files a Azure Backup szolgáltatás és a PowerShell használatával.
+title: Az Azure-fájlok visszaállítása a PowerShell segítségével
+description: Ebben a cikkben megtudhatja, hogyan állíthatja vissza az Azure Files az Azure Backup szolgáltatás és a PowerShell használatával.
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086828"
 ---
-# <a name="restore-azure-files-with-powershell"></a>Azure Files visszaállítása a PowerShell-lel
+# <a name="restore-azure-files-with-powershell"></a>Az Azure-fájlok visszaállítása a PowerShell segítségével
 
-Ez a cikk azt ismerteti, hogyan lehet visszaállítani egy teljes fájlmegosztást vagy adott fájlokat a [Azure Backup](backup-overview.md) szolgáltatás által az Azure PowerShell használatával létrehozott visszaállítási pontról.
+Ez a cikk bemutatja, hogyan állíthatja vissza a teljes fájlmegosztást, vagy adott fájlokat az [Azure Backup](backup-overview.md) szolgáltatás által az Azure Powershell használatával létrehozott visszaállítási pontról.
 
-Visszaállíthat egy teljes fájlmegosztást vagy adott fájlokat a megosztáson. Az eredeti helyre vagy egy másik helyre is visszaállíthatja.
+A megosztáson lévő teljes fájlmegosztást vagy adott fájlokat visszaállíthatja. Visszaállíthatja az eredeti vagy egy másik helyre.
 
 > [!WARNING]
-> Ellenőrizze, hogy a PS verziója frissítve lett-e az AFS biztonsági mentések esetében az "az. Recoveryservices szolgáltatónál 2.6.0" minimális verziójára. További részletekért tekintse meg a módosítás követelményét [ismertető szakaszt](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) .
+> Győződjön meg arról, hogy a PS-verzió az AFS biztonsági mentések esetében az "Az.RecoveryServices 2.6.0" minimális verziójára van frissítve. További [részletekért](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) tekintse meg a módosítás követelményét felvázoló szakaszt.
 
 ## <a name="fetch-recovery-points"></a>Helyreállítási pontok beolvasása
 
-A [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) használatával listázhatja a biztonsági másolatban szereplő elemek összes helyreállítási pontját.
+A [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) segítségével sorolja fel a biztonsági másolatban szereplő elem összes helyreállítási pontját.
 
 A következő parancsfájlban:
 
-* Az **$RP** változó a kiválasztott biztonsági mentési elemhez tartozó helyreállítási pontok tömbje az elmúlt hét napban.
-* A tömb a **0**. indexben szereplő legutóbbi helyreállítási ponttal fordított sorrendben van rendezve.
-* A helyreállítási pont kiválasztásához használja a PowerShell-tömb szabványos indexelését.
-* A példában a **$RP [0]** kiválasztja a legutóbbi helyreállítási pontot.
+* A **$rp** változó a kiválasztott biztonsági másolat elemének helyreállítási pontjainak tömbje az elmúlt hét napból.
+* A tömb az idő sorrendje fordított sorrendben van rendezve, a legutóbbi helyreállítási pont pedig **0**indexben.
+* A helyreállítási pont kiválasztásához használja a szabványos PowerShell-tömbindexelést.
+* A példában **$rp[0]** kiválasztja a legújabb helyreállítási pontot.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -38,7 +38,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $afsBkpItem -StartDate $st
 $rp[0] | fl
 ```
 
-A kimenet az alábbihoz hasonló.
+A kimenet hasonló a következőhöz.
 
 ```powershell
 FileShareSnapshotUri : https://testStorageAcct.file.core.windows.net/testAzureFS?sharesnapshot=2018-11-20T00:31:04.00000
@@ -54,24 +54,24 @@ ContainerType        : AzureStorage
 BackupManagementType : AzureStorage
 ```
 
-A megfelelő helyreállítási pont kiválasztása után visszaállíthatja a fájlmegosztást vagy a fájlt az eredeti helyre, vagy egy másik helyre.
+A megfelelő helyreállítási pont kiválasztása után visszaállíthatja a fájlmegosztást vagy -fájlt az eredeti helyre vagy egy másik helyre.
 
 ## <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Azure-fájlmegosztás visszaállítása másik helyre
 
-A [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) használatával állítsa vissza a kijelölt helyreállítási pontot. Adja meg ezeket a paramétereket a másik hely azonosításához:
+A [restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) segítségével állítsa vissza a kijelölt helyreállítási pontot. Adja meg ezeket a paramétereket a másodlagos hely azonosításához:
 
-* **TargetStorageAccountName**: a Storage-fiók, amelyhez a biztonsági másolat tartalma vissza lesz állítva. A célként megadott Storage-fióknak a tárolóval megegyező helyen kell lennie.
-* **TargetFileShareName**: a fájlmegosztás azon fiókján belüli megosztás, amelyhez a biztonsági másolat tartalma vissza lesz állítva.
-* **TargetFolder**: a fájlmegosztás alatt lévő mappa, amelyhez az adat vissza lett állítva. Ha a biztonsági másolatban lévő tartalmat vissza szeretné állítani egy gyökérkönyvtárba, adja meg a célmappa értékeit üres karakterláncként.
-* **ResolveConflict**: utasítás, ha a visszaállított adattal ütközik. A **felülírás** vagy **kihagyás**elfogadása.
+* **TargetStorageAccountName**: Az a tárfiók, amelyre a biztonsági másolatot készítő tartalom visszaáll. A céltárfióknak ugyanazon a helyen kell lennie, mint a tárolónak.
+* **TargetFileShareName**: A fájl megosztások a cél tárfiók, amelyre a biztonsági másolatot készítő tartalom vissza.
+* **TargetFolder**: Az a mappa a fájlmegosztás alatt, amelyre az adatokat visszaállítják. Ha a biztonsági másolatot tartalmazó tartalmat vissza kell állítani egy gyökérmappába, adja meg a célmappa értékeit üres karakterláncként.
+* **ResolveConflict**: Utasítás, ha ütközés van a visszaállított adatokkal. Elfogadja **a Felülírást** vagy **a Kihagyás műveletet.**
 
-Futtassa a parancsmagot a következő paraméterekkel:
+Futtassa a parancsmabot a következő paraméterekkel:
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -ResolveConflict Overwrite
 ```
 
-A parancs a következő példában látható módon visszaadja a nyomon követett AZONOSÍTÓval ellátott feladatot.
+A parancs egy nyomon követendő azonosítóval rendelkező feladatot ad vissza, ahogy az a következő példában látható.
 
 ```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -81,26 +81,26 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 
 ## <a name="restore-an-azure-file-to-an-alternate-location"></a>Azure-fájl visszaállítása másik helyre
 
-A [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) használatával állítsa vissza a kijelölt helyreállítási pontot. Adja meg ezeket a paramétereket a másik hely azonosításához, valamint a visszaállítani kívánt fájl egyedi azonosításához.
+A [restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) segítségével állítsa vissza a kijelölt helyreállítási pontot. Adja meg ezeket a paramétereket a másodlagos hely azonosításához és a visszaállítani kívánt fájl egyedi azonosításához.
 
-* **TargetStorageAccountName**: a Storage-fiók, amelyhez a biztonsági másolat tartalma vissza lesz állítva. A célként megadott Storage-fióknak a tárolóval megegyező helyen kell lennie.
-* **TargetFileShareName**: a fájlmegosztás azon fiókján belüli megosztás, amelyhez a biztonsági másolat tartalma vissza lesz állítva.
-* **TargetFolder**: a fájlmegosztás alatt lévő mappa, amelyhez az adat vissza lett állítva. Ha a biztonsági másolatban lévő tartalmat vissza szeretné állítani egy gyökérkönyvtárba, adja meg a célmappa értékeit üres karakterláncként.
-* **SourceFilePath**: a fájl abszolút elérési útja, amelyet a fájlmegosztás keretén belül helyre kell állítani karakterláncként. Ez az elérési út a **Get-AzStorageFile** PowerShell-parancsmagban használt elérési út.
-* **SourceFileType**: azt határozza meg, hogy egy könyvtár vagy egy fájl ki van-e választva. **Címtár** vagy **fájl**elfogadása.
-* **ResolveConflict**: utasítás, ha a visszaállított adattal ütközik. A **felülírás** vagy **kihagyás**elfogadása.
+* **TargetStorageAccountName**: Az a tárfiók, amelyre a biztonsági másolatot készítő tartalom visszaáll. A céltárfióknak ugyanazon a helyen kell lennie, mint a tárolónak.
+* **TargetFileShareName**: A fájl megosztások a cél tárfiók, amelyre a biztonsági másolatot készítő tartalom vissza.
+* **TargetFolder**: Az a mappa a fájlmegosztás alatt, amelyre az adatokat visszaállítják. Ha a biztonsági másolatot tartalmazó tartalmat vissza kell állítani egy gyökérmappába, adja meg a célmappa értékeit üres karakterláncként.
+* **SourceFilePath**: A fájl abszolút elérési útja, amelyet a fájlmegosztáson belül karakterláncként kell visszaállítani. Ez az elérési út ugyanaz az elérési út, amelyet a **Get-AzStorageFile** PowerShell-parancsmag használ.
+* **SourceFileType**: Azt jelzi, hogy egy könyvtár vagy fájl van-e kijelölve. Elfogadja a **címzetet** vagy **a fájlt.**
+* **ResolveConflict**: Utasítás, ha ütközés van a visszaállított adatokkal. Elfogadja **a Felülírást** vagy **a Kihagyás műveletet.**
 
-A további paraméterek (SourceFilePath és SourceFileType) csak a visszaállítani kívánt egyes fájlokhoz kapcsolódnak.
+A további paraméterek (SourceFilePath és SourceFileType) csak a visszaállítani kívánt fájlhoz kapcsolódnak.
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
 
-Ez a parancs visszaadja a nyomon követett AZONOSÍTÓval rendelkező feladatot, ahogy az az előző szakaszban is látható.
+Ez a parancs egy nyomon követendő azonosítóval rendelkező feladatot ad vissza, ahogy az az előző szakaszban látható.
 
-## <a name="restore-azure-file-shares-and-files-to-the-original-location"></a>Az Azure-fájlmegosztás és-fájlok visszaállítása az eredeti helyre
+## <a name="restore-azure-file-shares-and-files-to-the-original-location"></a>Az Azure-fájlmegosztások és -fájlok visszaállítása az eredeti helyre
 
-Amikor eredeti helyre állítja vissza a visszaállítást, nem kell megadnia a cél és a cél kapcsolatos paramétereket. Csak **ResolveConflict** kell megadni.
+Amikor visszaállít egy eredeti helyre, nem kell megadnia a cél- és célhoz kapcsolódó paramétereket. Csak **ResolveConflict** adható meg.
 
 #### <a name="overwrite-an-azure-file-share"></a>Azure-fájlmegosztás felülírása
 
@@ -114,6 +114,6 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Over
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Tudnivalók](restore-afs.md) a Azure Portal Azure Files visszaállításáról.
+[Ismerje meg](restore-afs.md) az Azure-fájlok visszaállítását az Azure Portalon.

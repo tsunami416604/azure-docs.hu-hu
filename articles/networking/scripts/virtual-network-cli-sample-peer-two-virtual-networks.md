@@ -1,6 +1,6 @@
 ---
-title: Azure CLI parancsfájl minta – társ-két virtuális hálózat | Microsoft Docs
-description: Azure CLI parancsfájl minta – társ két virtuális hálózat
+title: Azure CLI Script Sample - Peer két virtuális hálózat | Microsoft dokumentumok
+description: Azure CLI scriptminta – két virtuális hálózat társa
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -13,15 +13,15 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.openlocfilehash: 0e5aaf07b49546aca9f44dcb9a43a79127c82341
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73890240"
 ---
-# <a name="peer-two-virtual-networks"></a>Társ két virtuális hálózat
+# <a name="peer-two-virtual-networks"></a>Társviszony létesítése két virtuális hálózat között
 
-Ez a szkript két virtuális hálózatot hoz létre és csatlakoztat ugyanabban a régióban az Azure-hálózaton keresztül. A szkript futtatása után társviszonyt fog létesíteni a két virtuális hálózat között.
+Ez a parancsfájl két virtuális hálózatot hoz létre és kapcsol össze ugyanabban a régióban az Azure-hálózaton keresztül. A szkript futtatása után társviszonyt fog létesíteni a két virtuális hálózat között.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

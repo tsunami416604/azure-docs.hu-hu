@@ -1,7 +1,7 @@
 ---
-title: Megosztott hozzáférési aláírásokat használó munkafolyamat
+title: Megosztott hozzáférésű aláírásokat használó munkafolyamat
 titleSuffix: Microsoft Genomics
-description: Ez a cikk bemutatja, hogyan küldhet munkafolyamatot a Microsoft Genomics szolgáltatásnak megosztott hozzáférési aláírások (SAS) használatával a Storage-fiókok kulcsai helyett.
+description: Ez a cikk bemutatja, hogyan küldhet el egy munkafolyamatot a Microsoft Genomics szolgáltatásnak megosztott hozzáférésű aláírások (SAS) használatával a tárfiók kulcsok helyett.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72248587"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Munkafolyamat elküldése Microsoft Genomics számára tárfiókkulcs helyett SAS használatával 
 
-Ez a cikk bemutatja, hogyan küldhet munkafolyamatot a Microsoft Genomics szolgáltatásnak egy olyan config. txt fájllal, amely [megosztott hozzáférési aláírásokat (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) tartalmaz a Storage-fiók kulcsainak használata helyett. Ez a funkció hasznos lehet, ha biztonsági aggályokat vet fel, ha a tárfiókkulcs látható a config.txt fájlban. 
+Ez a cikk bemutatja, hogyan küldhet el munkafolyamatot a Microsoft Genomics szolgáltatásnak egy config.txt fájl használatával, amely [megosztott hozzáférésű aláírásokat (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) tartalmaz a tárfiók kulcsok helyett. Ez a funkció hasznos lehet, ha biztonsági aggályokat vet fel, ha a tárfiókkulcs látható a config.txt fájlban. 
 
-Ez a cikk feltételezi, hogy már telepítette és futtatta az `msgen` ügyfelet, és megismerkedett az Azure Storage használatával. Ha sikeresen elküldött egy munkafolyamatot a megadott mintaadatok használatával, készen áll a cikk folytatására. 
+Ez a cikk feltételezi, hogy már telepítette és futtatta az `msgen` ügyfelet, és megismerkedett az Azure Storage használatával. Ha sikeresen elküldött egy munkafolyamatot a megadott mintaadatok felhasználásával, készen áll a cikk folytatására. 
 
 ## <a name="what-is-a-sas"></a>Mi az SAS?
 A [közös hozzáférésű jogosultságkód (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) delegált hozzáférést biztosít a tárfiókon lévő erőforrásokhoz. Az SAS használatával a fiókkulcsok megosztása nélkül lehet hozzáférést biztosítani a tárfiókban található erőforrásokhoz. Ez a lényege a közös hozzáférésű jogosultságkód alkalmazásokban való használatának – az SAS a fiókkulcsok veszélyeztetése nélkül teszi lehetővé a tárolási erőforrások megosztását.
@@ -53,10 +53,10 @@ Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explore
 
 A bemeneti fájlokhoz tartozó SAS-kód hatókörének az adott bemeneti fájlra (blobra) kell kiterjednie. SAS-token létrehozásához [kövesse ezeket az utasításokat](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer). Az SAS létrehozása után a lekérdezési sztringgel ellátott teljes URL-cím, illetve a lekérdezési sztring önmagában is megjelenik a képernyőn, ahonnan mindkettő másolható.
 
- ![Genomics SAS Storage Explorer](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Genomics SAS Storage Explorer")
+ ![Genomika SAS Storage Explorer](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Genomika SAS Storage Explorer")
 
 
-### <a name="set-up-create-a-sas-programmatically"></a>Beállítás: az SAS programozott módon történő létrehozása
+### <a name="set-up-create-a-sas-programmatically"></a>Beállítás: SAS létrehozása programozott módon
 
 A SAS Azure Storage SDK használatával történő létrehozásáról számos nyelven elérhető dokumentáció, így a [.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), a [Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) és a [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage) nyelveken is. 
 
@@ -66,7 +66,7 @@ Az SAS SDK nélküli létrehozása esetén az SAS lekérdezési sztringjét köz
 ## <a name="add-the-sas-to-the-configtxt-file"></a>SAS hozzáadása a config.txt fájlhoz
 Ha egy SAS lekérdezési sztringgel kíván futtatni egy munkafolyamatot a Microsoft Genomics szolgáltatáson keresztül, a config.txt fájl szerkesztésével távolítsa el a kulcsokat a config.txt fájlból. Ezután az ábrán látható módon fűzze hozzá a SAS lekérdezési sztringet (amely egy `?` karakterrel kezdődik) a kimeneti tároló nevéhez. 
 
-![Genomics SAS-konfiguráció](./media/quickstart-input-sas/genomics-sas-config.png "Genomics SAS-konfiguráció")
+![Genomika SAS config](./media/quickstart-input-sas/genomics-sas-config.png "Genomika SAS config")
 
 A Microsoft Genomics Python-ügyfélen keresztül a következő paranccsal küldheti el a munkafolyamatot. Fűzze hozzá a megfelelő SAS-lekérdezési sztringet az egyes bemeneti blobnevekhez:
 
@@ -77,7 +77,7 @@ msgen submit -f [full path to your config file] -b1 [name of your first paired e
 ### <a name="if-adding-the-input-file-names-to-the-configtxt-file"></a>A bemeneti fájlnevek hozzáadása a config.txt fájlhoz
 A párosított olvasás vége fájlok nevét közvetlenül is hozzáadhatja a config.txt fájlhoz, a hozzáfűzött SAS lekérdezési tokenekkel együtt, a következőképpen:
 
-![Genomics SAS-konfigurációs blobnevek](./media/quickstart-input-sas/genomics-sas-config-blobnames.png "Genomics SAS-konfigurációs blobnevek")
+![Genomika SAS konfigurációs blobnames](./media/quickstart-input-sas/genomics-sas-config-blobnames.png "Genomika SAS konfigurációs blobnames")
 
 Ebben az esetben a Microsoft Genomics Python-ügyféllel küldje el a munkafolyamatot az alábbi paranccsal, a `-b1` és `-b2` parancs kihagyásával:
 
@@ -85,5 +85,5 @@ Ebben az esetben a Microsoft Genomics Python-ügyféllel küldje el a munkafolya
 msgen submit -f [full path to your config file] 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben fiókkulcsok helyett SAS-tokenekkel küldött el egy munkafolyamatot a Microsoft Genomics szolgáltatásba az `msgen` Python-ügyfélen keresztül. A munkafolyamatok elküldésével, illetve a Microsoft Genomics szolgáltatásban használható egyéb parancsokkal kapcsolatos további információért tekintse meg a [Gyakori kérdések](frequently-asked-questions-genomics.md) szakaszt. 

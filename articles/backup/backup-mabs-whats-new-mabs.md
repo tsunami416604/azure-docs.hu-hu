@@ -1,70 +1,70 @@
 ---
-title: Az Microsoft Azure Backup-kiszolgáló újdonságai
-description: A Microsoft Azure Backup-kiszolgáló továbbfejlesztett biztonsági mentési lehetőségeket biztosít a virtuális gépek, fájlok és mappák, munkaterhelések és egyebek védelméhez. Megtudhatja, hogyan telepítheti vagy frissíthet Azure Backup Server v3-ra.
+title: A Microsoft Azure Backup Server újdonságai
+description: A Microsoft Azure Backup Server továbbfejlesztett biztonsági mentési lehetőségeket biztosít a virtuális gépek, a fájlok és mappák, a munkaterhelések és egyebek védelmére. Ismerje meg, hogyan telepítheti vagy frissítheti az Azure Backup Server V3 rendszert.
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77582806"
 ---
-# <a name="whats-new-in-microsoft-azure-backup-server"></a>Az Microsoft Azure Backup-kiszolgáló újdonságai
+# <a name="whats-new-in-microsoft-azure-backup-server"></a>A Microsoft Azure Backup Server újdonságai
 
-A Microsoft Azure Backup Server 3. verzió (MABS v3) a legújabb frissítés, amely kritikus hibajavításokat, Windows Server 2019-támogatást, SQL 2017-támogatást és egyéb funkciókat és fejlesztéseket tartalmaz. A rögzített hibák listájának és a MABS v3 telepítési utasításának megtekintéséhez lásd a TUDÁSBÁZIS [4457852](https://support.microsoft.com/help/4457852/microsoft-azure-backup-server-v3). számú cikkét.
+A Microsoft Azure Backup Server 3-as verziója (MABS V3) a legújabb frissítés, amely kritikus hibajavításokat, Windows Server 2019-támogatást, SQL 2017-támogatást, valamint egyéb funkciókat és fejlesztéseket tartalmaz. A javított hibák listájának és a MABS V3 telepítési útmutatójának megtekintéséhez lásd a [TUDÁSBÁZIS 4457852.](https://support.microsoft.com/help/4457852/microsoft-azure-backup-server-v3)
 
-A MABS v3 a következő funkciókat tartalmazza:
+A MABS V3 a következő funkciókat tartalmazza:
 
-## <a name="volume-to-volume-migration"></a>Kötetről kötetre való Migrálás
+## <a name="volume-to-volume-migration"></a>Kötetről kötetre történő áttelepítés
 
-A MABS v2 modern biztonsági másolati tárhely (MBS)-ben bejelentettük a számítási feladatok ellátására szolgáló tárhelyet, ahol bizonyos számítási feladatokat úgy konfigurálhat, hogy a tárolási tulajdonságok alapján biztonsági mentést lehessen készíteni egy adott tárhelyre. A konfigurálást követően azonban előfordulhat, hogy bizonyos adatforrások biztonsági másolatait át kell helyeznie más tárolóba az optimalizált erőforrás-használat érdekében. A MABS v3 lehetővé teszi a biztonsági másolatok átkonfigurálását és a különböző köteteken való tárolását [három lépésben](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842).
+A Modern Backup Storage (MBS) a MABS V2-ben bejelentette, hogy számítási feladatokat tud a tárolás tulajdonságai alapján, ahol konfigurálja bizonyos számítási feladatok biztonsági mentését adott tárolóra. A konfiguráció után azonban előfordulhat, hogy bizonyos adatforrások biztonsági másolatait át kell helyeznie más tárolóba az optimalizált erőforrás-kihasználtság érdekében. A MABS V3 lehetővé teszi a biztonsági mentések áttelepítését, és beállíthatja, hogy [három lépésben](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842)egy másik köteten tárolják őket.
 
-## <a name="prevent-unexpected-data-loss"></a>Váratlan adatvesztés megakadályozása
+## <a name="prevent-unexpected-data-loss"></a>Váratlan adatvesztés megelőzése
 
-A vállalatokban a MABS-t a rendszergazdák csoportja felügyeli. Noha a biztonsági mentéshez használt tárterületre vonatkozó irányelvek is megtalálhatók, a biztonsági mentési tár MABS miatt helytelen kötet a kritikus adatvesztéshez vezethet. A MABS v3 használatával megakadályozhatja, hogy ezeket a köteteket konfigurálja úgy, hogy [ezeket a PowerShell-parancsmagokat](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage)használó tárolók számára ne legyenek elérhetők.
+A vállalatoknál a MABS-t egy rendszergazdai csoport kezeli. Bár vannak olyan biztonsági mentések tárolására vonatkozó irányelvek, amelyeket biztonsági mentések készítéséhez kell használni, a MABS biztonsági mentési tárolóként megadott helytelen kötet kritikus adatok elvesztéséhez vezethet. A MABS V3-mal megakadályozhatja az ilyen forgatókönyveket, ha ezeket a köteteket úgy konfigurálja, mint amelyek nem érhetők el a [PowerShell-parancsmagok](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage)használatával a tároláshoz.
 
-## <a name="custom-size-allocation"></a>Egyéni méret kiosztása
+## <a name="custom-size-allocation"></a>Egyéni méretfelosztás
 
-A modern biztonsági másolati tárhely (MBS) a tárolást vékonyan, és szükség esetén használja. Ehhez a MABS kiszámítja a biztonsági mentésre kerülő adatmennyiséget, amikor a védelemre van konfigurálva. Ha azonban sok fájl és mappa biztonsági mentése folyamatban van, például egy fájlkiszolgáló esetében, a méret kiszámítása hosszú időt is igénybe vehet. A MABS v3 használatával beállíthatja, hogy a MABS az alapértelmezett értékként fogadja el a kötet méretét az egyes fájlok méretének kiszámítása helyett, így időt takaríthat meg.
+A modern biztonsági mentési tároló (MBS) a tárhelyet vékonyan, szükség szerint és szükség esetén használja fel. Ehhez a MABS kiszámítja a védelemre konfigurált adatok biztonsági másolatot. Ha azonban sok fájlról és mappáról van biztonsági másolato, mint például a fájlkiszolgálóesetében, a méretszámítás hosszú időt vehet igénybe. A MABS V3 segítségével beállíthatja, hogy a MABS elfogadja a kötet méretét alapértelmezettként, ahelyett, hogy kiszámolná az egyes fájlok méretét, így időt takaríthat meg.
 
-## <a name="optimized-cc-for-rct-vms"></a>RCT virtuális gépekhez optimalizált CC
+## <a name="optimized-cc-for-rct-vms"></a>Optimalizált CC RCT virtuális gépekhez
 
-A MABS a RCT (a natív változások követése a Hyper-V-ben) használja, ami csökkenti az időigényes konzisztencia-ellenőrzés szükségességét a virtuális gépek összeomlása esetén. A RCT nagyobb rugalmasságot biztosít, mint a VSS pillanatkép-alapú biztonsági mentések által biztosított változások nyomon követése. A MABS v3 a konzisztencia-ellenőrzések során csak a módosult adatmennyiségek átvitelével optimalizálja a hálózat és a tárterület felhasználását.
+A MABS az RCT-t (a Hyper-V natív változáskövetését) használja, ami csökkenti az időigényes konzisztencia-ellenőrzések szükségességét a virtuális gép összeomlása esetén. Az RCT a VSS pillanatkép-alapú biztonsági mentések által biztosított változáskövetésnél nagyobb rugalmasságot biztosít. A MABS V3 tovább optimalizálja a hálózati és tárolási felhasználást azáltal, hogy csak a módosított adatokat viszi át a konzisztencia-ellenőrzések során.
 
-## <a name="support-to-tls-12"></a>A TLS 1,2 támogatása
+## <a name="support-to-tls-12"></a>A TLS 1.2 támogatása
 
-A TLS 1,2 a Microsoft által a legjobb osztályú titkosítással javasolt kommunikáció biztonságos módja. A MABS mostantól támogatja a TLS 1,2 kommunikációt a MABS és a védett kiszolgálók között, a tanúsítványalapú hitelesítéshez és a Felhőbeli biztonsági mentésekhez.
+A TLS 1.2 a Microsoft által javasolt biztonságos kommunikációs mód a legjobb osztálytitkosítással. A MABS mostantól támogatja a TLS 1.2-es kommunikációt a MABS és a védett kiszolgálók között a tanúsítványalapú hitelesítéshez és a felhőalapú biztonsági mentésekhez.
 
-## <a name="vmware-vm-protection-support"></a>VMware VM-védelem támogatása
+## <a name="vmware-vm-protection-support"></a>VMware VM védelem támogatása
 
-A VMware virtuális gép biztonsági mentése mostantól támogatott az éles környezetben. A MABS v3 a következőt kínálja a VMware virtuális gépek védelméhez:
+VMware VM biztonsági mentés most már támogatott éles környezetben. A MABS V3 a következőket kínálja a VMware VM védelemhez:
 
-- A vCenter és ESXi 6,5 támogatását, valamint a 5,5 és 6,0 támogatását.
-- VMware virtuális gépek automatikus védelme a felhőben. Ha új VMware virtuális gépeket ad hozzá egy védett mappához, azok automatikusan a lemezhez és a felhőhöz lesznek védve.
-- Helyreállítási hatékonyság javítása a VMware alternatív hely helyreállításához.
+- A vCenter és az ESXi 6.5 támogatása, valamint az 5.5 és a 6.0 támogatása.
+- A VMware virtuális gépek automatikus védelme a felhőbe. Ha új VMware virtuális gépeket ad hozzá egy védett mappához, azok automatikusan védettek a lemezés a felhő.
+- Helyreállítási hatékonyság javítása vmware alternatív hely helyreállítása.
 
-## <a name="sql-2017-support"></a>SQL 2017-támogatás
+## <a name="sql-2017-support"></a>Az SQL 2017 támogatása
 
-A MABS v3 az SQL 2017-mel telepíthető MABS-adatbázisként. Frissítheti az SQL Servert az SQL 2016-ről az SQL 2017-re, vagy telepítheti azt frissen. Az SQL 2017 számítási feladatok biztonsági mentését is elvégezheti fürtözött és nem fürtözött környezetben is a MABS v3 használatával.
+A MABS V3 az SQL 2017-tel mabs adatbázisként telepíthető. Az SQL-kiszolgálót frissítheti AZ SQL 2016-ról az SQL 2017-re, vagy frissen telepítheti. Az SQL 2017-es számítási feladatokról fürtözött és nem fürtözött környezetben is biztonsági másolatot tud fésülni a MABS V3-mal.
 
-## <a name="windows-server-2019-support"></a>Windows Server 2019 támogatás
+## <a name="windows-server-2019-support"></a>A Windows Server 2019 támogatása
 
-A MABS v3 telepíthető a Windows Server 2019-es verzióra. A MABS v3 és a WS2019 használatával az operációs rendszer a MABS v3 verzióra való telepítése vagy frissítése előtt, vagy a WS2016-re való frissítés után frissítheti az operációs RENDSZERét a WS2019-re.
+A MABS V3 telepíthető Windows Server 2019 rendszerre. A MABS V3 és a WS2019 használatához frissítse az operációs rendszert WS2019-re, mielőtt mabs V3-ra települne/frissítene, vagy frissítheti az operációs rendszert a V3 telepítése/frissítése után a WS2016-on.
 
-A MABS v3 egy teljes kiadás, amely közvetlenül telepíthető a Windows Server 2016, a Windows Server 2019 vagy a MABS v2 verzióról is. A Backup Server v3 verzióra való frissítés előtt olvassa el a telepítési előfeltételek című részt.
-További információ [a MABS telepítési](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#software-package)/frissítési lépéseiről.
+A MABS V3 egy teljes kiadás, és közvetlenül telepíthető a Windows Server 2016, Windows Server 2019 rendszerre, vagy frissíthető a MABS V2-ről. A Backup Server V3-ra való frissítés vagy telepítés előtt olvassa el a telepítési előfeltételeket.
+A [MABS](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#software-package)telepítési/frissítési lépéseiről itt talál további információt.
 
 > [!NOTE]
 >
-> A MABS ugyanazzal a kóddal rendelkezik, mint a System Center Data Protection Manager. A MABS v3 egyenértékű a Data Protection Manager 1807-vel.
+> A MABS kódbázisa megegyezik a System Center Data Protection Manager kódbázissal. A MABS v3 egyenértékű az 1807-es adatvédelmi menedzserrel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan készítheti elő a kiszolgálót, vagy megkezdheti a munkaterhelés védelmét:
+További információ a kiszolgáló előkészítéséről vagy a munkaterhelés védelmének megkezdéséről:
 
-- [A MABS v3 ismert problémái](backup-mabs-release-notes-v3.md)
-- [A biztonsági mentési kiszolgáló munkaterhelésének előkészítése](backup-azure-microsoft-azure-backup.md)
-- [Egy VMware-kiszolgáló biztonsági mentése a Backup Server használatával](backup-azure-backup-server-vmware.md)
-- [Biztonsági másolat készítése a Backup Server használatával SQL Server](backup-azure-sql-mabs.md)
-- [modern biztonsági másolati tárhely használata a Backup Serverrel](backup-mabs-add-storage.md)
+- [Ismert problémák a MABS V3-ban](backup-mabs-release-notes-v3.md)
+- [Biztonságimásolat-kiszolgáló munkaterhelésének előkészítése](backup-azure-microsoft-azure-backup.md)
+- [VMware-kiszolgáló biztonsági mentése a Biztonsági másolat kiszolgálójával](backup-azure-backup-server-vmware.md)
+- [Az SQL Server biztonsági mentése a Biztonsági másolat kiszolgálójával](backup-azure-sql-mabs.md)
+- [Modern biztonsági mentési tároló használata a biztonsági másolat kiszolgálójával](backup-mabs-add-storage.md)

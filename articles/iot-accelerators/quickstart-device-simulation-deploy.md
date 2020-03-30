@@ -1,5 +1,5 @@
 ---
-title: Próbálja ki, és futtatni egy szimuláció megoldás – Azure |} A Microsoft Docs
+title: Próbáljon meg futtatni egy eszközszimulációs megoldást - Azure | Microsoft dokumentumok
 description: Ebben a rövid útmutatóban üzembe helyezheti az Azure IoT-eszközszimulációt, és futtathat egy szimulációt
 author: troyhopwood
 manager: timlt
@@ -10,19 +10,19 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 68e0c3c89698bafbab65ca786231e0364900213a
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "65467824"
 ---
-# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Gyors útmutató: Helyezhet üzembe és futtathat egy IoT-eszköz szimulálása az Azure-ban
+# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Rövid útmutató: IoT-eszközszimuláció üzembe helyezése és futtatása az Azure-ban
 
 Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe az Azure IoT-eszközszimulációt IoT-megoldásának teszteléséhez. A megoldásgyorsító telepítését követően első lépésként futtathat egy mintaszimulációt.
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="deploy-device-simulation"></a>Eszközszimuláció üzembe helyezése
 
@@ -44,7 +44,7 @@ Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **
 
 Az Eszközszimulációs megoldással együtt használandó IoT Hub üzembe helyezéséhez jelölje be a jelölőnégyzetet. Később bármikor módosíthatja a szimulációja által használt IoT Hubot.
 
-Kattintson a **létrehozás** a megoldás kiépítéséhez. A folyamat legalább öt percig tart:
+Kattintson a **Létrehozás** gombra a megoldás kiépítésének megkezdéséhez. A folyamat legalább öt percig tart:
 
 ![Az eszközszimulációs megoldás adatai](./media/quickstart-device-simulation-deploy/createform.png)
 
@@ -54,7 +54,7 @@ Ha a kiépítési folyamat befejeződött, bejelentkezhet az Eszközszimuláció
 
 ![Eszközszimuláció megnyitása](./media/quickstart-device-simulation-deploy/choosenew.png)
 
-Kattintson az **Elfogadás** gombra az engedélykérések elfogadásához. Ekkor a böngészőben megjelenik az Eszközszimulációs megoldás irányítópultja.
+Kattintson az **Elfogadás** gombra az engedélykérés elfogadásához, és megjelenik az Eszközszimulációs megoldás irányítópultja a böngészőben.
 
 Az első megnyitáskor az Eszközszimuláció irányítópultján lát egy **Első lépések** című útmutatót. Kattintson az első csempére egy mintaszimuláció megnyitásához. Ha bezárja az **Első lépések** című útmutatót, megnyithatja az **Egyszerű mintaszimulációt** az irányítópulton a hozzá tartozó csempére kattintva:
 

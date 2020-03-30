@@ -1,6 +1,6 @@
 ---
-title: Alkalmazások rendszerezése gyűjtemények használatával a saját alkalmazások portálján – Azure Active Directory | Microsoft Docs
-description: Megtudhatja, hogyan érheti el és használhatja a szervezet felhőalapú alkalmazásaihoz tartozó gyűjteményeket a saját alkalmazások portálról.
+title: Alkalmazások rendszerezése a Saját alkalmazások portálgyűjteményeivel – Azure Active Directory | Microsoft dokumentumok
+description: Megtudhatja, hogy miként érheti el és használhatja a szervezet felhőalapú alkalmazásaigyűjteményeit a Saját alkalmazások portálon.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,43 +13,43 @@ ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: 1abcd22621d427244f9b0533aaea46cbf1f356ad
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77064036"
 ---
-# <a name="use-collections-in-the-my-apps-portal"></a>Gyűjtemények használata a saját alkalmazások portálján
+# <a name="use-collections-in-the-my-apps-portal"></a>Gyűjtemények használata a Saját alkalmazások portálon
 
-A gyűjtemények különböző alkalmazás-nézetek, amelyeket a **saját alkalmazások** portálon láthat. Az alkalmazások a gyűjtemények részleg vagy a felhasználói szerepkör szerint csoportosíthatók, például:. Ha nem látja az elérhető gyűjteményeket vagy kategóriákat, az azt jelenti, hogy a rendszergazda még nem állította be és nem osztotta meg Önnel a t. Ha további segítségre vagy engedélyekre van a megosztott gyűjtemények megtekintéséhez, forduljon a szervezet ügyfélszolgálatához.
+A gyűjtemények különböző alkalmazásnézetek, amelyeket a **Saját alkalmazások** portálon láthat. Az alkalmazások például részlegek funkcióvagy felhasználói szerepkör szerint csoportosíthatók gyűjteményekbe. Ha nem lát elérhető gyűjteményeket vagy kategóriákat, az azt jelenti, hogy a rendszergazda nem állított be vagy osztott meg önnel. További segítségért vagy engedélyekért forduljon a szervezet ügyfélszolgálatához a megosztott gyűjtemények megtekintéséhez.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
->Ez a tartalom a **saját alkalmazások** felhasználói számára készült. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces).
+>Ez a tartalom a **Saját alkalmazások** felhasználóinak készült. Ha Ön rendszergazda, a felhőalapú alkalmazások beállításával és kezelésével kapcsolatos további információkért az [Alkalmazáskezelési dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces)talál.
 
 ## <a name="access-apps-using-collections"></a>Alkalmazások elérése gyűjtemények használatával
 
-A **saját alkalmazások** portálon található gyűjtemények listájának alapértelmezett értéke egy elnevezett **összes**alkalmazás megjelenítése, amelynek minden alkalmazásához hozzáférése van:
+A **My Apps** portálgyűjteményeinek listája alapértelmezés szerint egy **Minden alkalmazás**nevű alkalmazást jelenít meg, amely minden olyan alkalmazást tartalmaz, amelyhez hozzáférése van:
 
-![A My apps portál összes alkalmazás lapja](media/my-applications-portal-workspaces/my-apps-all.png)
+![A Saját alkalmazások portál összes alkalmazáslapja](media/my-applications-portal-workspaces/my-apps-all.png)
 
-A listában megjelenő többi gyűjteményt a rendszergazda hozta létre, és megosztotta Önnel. Kiválaszthatja az egyik gyűjteményt, hogy a hatókörön belül több alkalmazást is megjelenítse, például a következő példában szereplő *támogatást* :
+A listában látható bármely más gyűjteményt a rendszergazda hozta létre, és megosztotta önnel. A következő *példában* az alábbi példában kiválaszthat egy ilyen gyűjteményt az alkalmazások hatókörrel rendelkező készletének megtekintéséhez:
 
-![Egyéni gyűjtemény és hatókörön belüli alkalmazások a saját alkalmazások portálon](media/my-applications-portal-workspaces/my-apps-workspace.png)
+![Egyéni gyűjtemény és alkalmazáshatókör-készlet a Saját alkalmazások portálon](media/my-applications-portal-workspaces/my-apps-workspace.png)
 
-Amikor kiválaszt és megtekint egy gyűjteményt, csak azok az alapértelmezett alkalmazások jelennek meg, amelyekhez hozzáfér.
+Amikor kijelöl és megtekint egy gyűjteményt, csak azokat az alapértelmezett alkalmazásokat látja, amelyekhez hozzáférése van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Miután az alkalmazásokat a **saját alkalmazások** portál különböző kategóriáira rendezi, a következőket teheti:
+Miután a **Saját alkalmazások** portálon különböző kategóriákba rendezi alkalmazásait, a következőket teheti:
 
-- Az alkalmazásoknak biztosított engedélyek felülvizsgálata, frissítése vagy visszavonása. További információ: [alkalmazás engedélyeinek szerkesztése vagy visszavonása a saját alkalmazások portálon](my-applications-portal-permissions-saved-accounts.md).
+- Az alkalmazásoknak adott engedélyek áttekintése, frissítése és visszavonása. További információt az [Alkalmazásengedélyek szerkesztése és visszavonása a Saját alkalmazások portálon című témakörben talál.](my-applications-portal-permissions-saved-accounts.md)
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-- [Frissítse a profilját és a fiókadatok adatait](my-account-portal-overview.md). Útmutató a **saját profil** portálon megjelenő személyes adatok frissítéséhez.
+- [Frissítse a profil- és fiókadatokat.](my-account-portal-overview.md) Útmutató a Saját profil portálon megjelenő személyes adatok **frissítéséhez.**
 
-- [Kezelheti szervezeteit](my-account-portal-organizations-page.md). Útmutatás a szervezettel kapcsolatos információk megtekintéséhez és kezeléséhez a **saját profil** portál **szervezetek** lapján.
+- [A szervezetek kezelése](my-account-portal-organizations-page.md). Útmutató a szervezetsel kapcsolatos információk megtekintéséhez és kezeléséhez a **Saját profil** portál **Szervezetek** lapján.
 
-- [A csatlakoztatott eszközök kezelése](my-account-portal-devices-page.md). Útmutató a saját munkahelyi vagy iskolai fiókjához csatlakoztatott eszközök kezeléséhez a **saját profil** portál **eszközök** lapján.
+- [A csatlakoztatott eszközök kezelése.](my-account-portal-devices-page.md) A Munkahelyi vagy iskolai fiókjával csatlakoztatott eszközök kezelésével kapcsolatos utasítások a **Saját profil** portál **Eszközök** lapján.

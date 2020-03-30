@@ -1,6 +1,6 @@
 ---
-title: XEvent gyűrűs puffer kódja
-description: Egy Transact-SQL-kódrészletet biztosít, amely egyszerűen és gyorsan használható a gyűrűs puffer céljának használatával Azure SQL Databaseban.
+title: XEvent ring pufferkódja
+description: Egy Transact-SQL-kódmintát biztosít, amely az Azure SQL Database-ben a ring buffer cél használatával egyszerűen és gyorsan használható.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,51 +12,51 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: ad98b61d6339388551af93671b3d4d892942f4e4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79213969"
 ---
-# <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>A kibővített eseményekhez tartozó gyűrűs pufferek SQL Database
+# <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Gyűrűpuffer célkódja az SQL Database kiterjesztett eseményeihez
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-A tesztelés során egy teljes kódrészletet szeretne használni a kibővített eseményekre vonatkozó információk rögzítéséhez és jelentéséhez. A kiterjesztett események legkönnyebben megcélozható a [gyűrűs puffer célja](https://msdn.microsoft.com/library/ff878182.aspx).
+Teljes kódmintát szeretne a tesztelés során egy kiterjesztett esemény adatainak rögzítésére és jelentésére szolgáló legegyszerűbb gyors módszer érdekében. A kiterjesztett eseményadatok legegyszerűbb célpontja a [gyűrűpuffer-cél.](https://msdn.microsoft.com/library/ff878182.aspx)
 
-Ez a témakör egy Transact-SQL-kód mintát mutat be, amely a következőket tartalmazza:
+Ez a témakör egy Transact-SQL kódmintát mutat be, amely:
 
-1. Létrehoz egy táblázatot, amely a következővel szemlélteti az-t:.
-2. Munkamenetet hoz létre egy meglévő kiterjesztett eseményhez, nevezetesen: **SQLServer. sql_statement_starting**.
+1. Létrehoz egy táblázatot, amelynek adatait be kell mutatni.
+2. Munkamenetet hoz létre egy meglévő kiterjesztett eseményhez, nevezetesen **az sqlserver.sql_statement_starting.**
    
-   * Az esemény olyan SQL-utasításokra korlátozódik, amelyek egy adott frissítési karakterláncot tartalmaznak: a **(z) "% Update tabEmployee%" utasítást**.
-   * Úgy dönt, hogy elküldi az esemény kimenetét egy gyűrűs puffer típusú célhoz, azaz **package0. ring_buffer**.
-3. Elindítja az esemény-munkamenetet.
-4. Néhány egyszerű SQL UPDATE-utasítást is kiad.
-5. Egy SQL SELECT utasítás kiírása az esemény kimenetének a gyűrűs pufferből való lekéréséhez.
+   * Az esemény egy adott frissítési karakterláncot tartalmazó SQL utasításokra korlátozódik: **A LIKE '%UPDATE tabEmployee%' utasítás.**
+   * Úgy dönt, hogy az esemény kimenetét egy Ring Buffer típusú célnak, azaz **a 0.ring_buffer.**
+3. Elindítja az eseménymunkamenetet.
+4. Kiad néhány egyszerű SQL UPDATE utasítást.
+5. SQL SELECT utasítást ad ki az eseménykimenet lekéréséhez a gyűrűpufferből.
    
-   * a **sys. dm_xe_database_session_targets** és más dinamikus felügyeleti nézetek (DMV-EK) vannak csatlakoztatva.
-6. Leállítja az esemény-munkamenetet.
-7. Eldobja a gyűrűs puffer célját, hogy felszabadítsa az erőforrásait.
-8. Eldobja az esemény-munkamenetet és a bemutató táblát.
+   * **a sys.dm_xe_database_session_targets** és más dinamikus felügyeleti nézetek (DMV-k) összevannak kötve.
+6. Leállítja az eseménymunkamenetet.
+7. Eldobja a gyűrűpuffer-célt, hogy felszabadítsa az erőforrásait.
+8. Eldobja az eseménymenetet és a demótáblát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-fiók és -előfizetés. Regisztrálhat [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
-* Bármely adatbázis, amelyben létrehozhat egy táblát.
+* Bármely adatbázis, amelyben táblát hozhat létre.
   
-  * Igény szerint percek alatt [létrehozhat egy **AdventureWorksLT** bemutató adatbázist](sql-database-get-started.md) .
-* SQL Server Management Studio (SSMS. exe), ideális esetben a legújabb havi frissítési verzió. 
-  A legújabb SSMS. exe fájlt a következő címről töltheti le:
+  * Tetszés szerint percek [alatt létrehozhat egy **AdventureWorksLT** bemutató adatbázist.](sql-database-get-started.md)
+* SQL Server Management Studio (ssms.exe), ideális esetben a legújabb havi frissítési verzió. 
+  A legújabb ssms.exe fájl letölthető a következő oldalról:
   
-  * A című témakör a [letöltés SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
-  * [Közvetlen hivatkozás a letöltésre.](https://go.microsoft.com/fwlink/?linkid=616025)
+  * Az [SQL Server Management Studio letöltése](https://msdn.microsoft.com/library/mt238290.aspx)című témakörben.
+  * [Közvetlen link a letöltéshez.](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>Kódminta
 
-Nagyon kicsi módosítás esetén a következő gyűrűs puffer kód Azure SQL Database vagy Microsoft SQL Server is futtatható. A különbség a (z) "_database" csomópont jelenléte a (z) 5. lépésben a FROM záradékban használt dinamikus felügyeleti nézetek (DMV) nevében. Például:
+Nagyon kis módosítással a következő ring buffer kód minta futtatható az Azure SQL Database vagy a Microsoft SQL Server. A különbség a "_database" csomópont jelenléte néhány dinamikus felügyeleti nézet (DMV) nevében, amelyet az 5. Példa:
 
-* sys. dm_xe<strong>_database</strong>_session_targets
+* sys.dm_xe<strong>_database</strong>_session_targets
 * sys.dm_xe_session_targets
 
 &nbsp;
@@ -214,15 +214,15 @@ GO
 
 &nbsp;
 
-## <a name="ring-buffer-contents"></a>Gyűrű pufferének tartalma
+## <a name="ring-buffer-contents"></a>Gyűrűpuffer tartalma
 
-A SSMS. exe fájlt használtuk a mintakód futtatásához.
+Az ssms.exe-t használtuk a kódminta futtatásához.
 
-Az eredmények megtekintéséhez a **target_data_XML**oszlop fejléc alatti cellára kattintott.
+Az eredmények megtekintéséhez az oszlopfejléc alatti cellára kattintottunk **target_data_XML.**
 
-Ezután az eredmények ablaktáblán rákattintott a cellára **target_data_XML**oszlop fejlécében. Ehhez kattintson a létrehozott egy másik fájl fülre a SSMS. exe fájlban, amelyben az eredmény cellájának tartalma XML-ként jelenik meg.
+Ezután az eredmények ablaktáblán rákattintottunk az oszlopfejléc alatti cellára **target_data_XML.** Ez a kattintás egy másik fájllapot hozott létre az ssms.exe fájlban, amelyben az eredménycella tartalma XML-ként jelent meg.
 
-A kimenet az alábbi blokkban látható. Úgy néz ki, hogy hosszú, de csak két **\<event >** elemet.
+A kimenet a következő blokkban jelenik meg. Úgy néz ki, hosszú, ** \<** de ez csak két esemény>elemek.
 
 &nbsp;
 
@@ -314,9 +314,9 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 ```
 
 
-#### <a name="release-resources-held-by-your-ring-buffer"></a>A gyűrű puffere által tárolt kiadási erőforrások
+#### <a name="release-resources-held-by-your-ring-buffer"></a>A gyűrűpuffer birtokában lévő erőforrások felszabadítása
 
-Ha befejezte a gyűrűs puffert, eltávolíthatja azt, és felszabadíthatja az általa kiadott erőforrásokat a következőhöz **hasonló módon** :
+Ha végzett a gyűrűpufferrel, eltávolíthatja azt, és felszabadíthatja az **ALTER-t** kibocsátó erőforrásait, mint például:
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -326,7 +326,7 @@ GO
 ```
 
 
-Az esemény-munkamenet definíciója frissül, de nem kerül eldobásra. Később a gyűrűs puffer egy másik példányát is hozzáadhatja az esemény-munkamenethez:
+Az eseménymunkamenet definíciója frissül, de nem kerül kiakadt. Később a csengetési puffer egy másik példányát is hozzáadhatja az eseménymunkamenethez:
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -341,13 +341,13 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 
 ## <a name="more-information"></a>További információ
 
-Azure SQL Database a kiterjesztett események elsődleges témája:
+Az Azure SQL Database kiterjesztett eseményeinek elsődleges témaköre a következő:
 
-* [Kibővített eseményekkel kapcsolatos megfontolások a SQL Databaseban](sql-database-xevent-db-diff-from-svr.md), amely a Azure SQL Database és a Microsoft SQL Server közötti különbségeket a kiterjesztett események bizonyos aspektusaival szemben.
+* [Kiterjesztett esemény szempontok az SQL Database,](sql-database-xevent-db-diff-from-svr.md)amely ellentétben áll az Azure SQL Database és a Microsoft SQL Server között eltérő kiterjesztett események bizonyos aspektusait.
 
-A kiterjesztett eseményekre vonatkozó egyéb mintakód-témakörök a következő hivatkozásokon érhetők el. A mintavételt azonban rendszeresen ellenőriznie kell, hogy látható-e a minta célja Microsoft SQL Server szemben Azure SQL Database. Ezután eldöntheti, hogy szükség van-e kisebb módosításokra a minta futtatásához.
+A kiterjesztett eseményekhez kapcsolódó egyéb kódmintatémakörök az alábbi hivatkozásokon érhetők el. Azonban rendszeresen ellenőriznie kell a mintát, hogy a minta a Microsoft SQL Server és az Azure SQL Database célzatait célozza-e. Ezután eldöntheti, hogy szükség van-e kisebb módosításokra a minta futtatásához.
 
-* Mintakód a Azure SQL Database számára: az [eseménynaplóban a kiterjesztett események SQL Database](sql-database-xevent-code-event-file.md)
+* Kódminta az Azure SQL Database-hez: [Eseményfájl célkód az SQL-adatbázis ban bekövetkező kiterjesztett eseményekhez](sql-database-xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

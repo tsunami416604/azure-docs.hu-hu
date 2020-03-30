@@ -1,6 +1,6 @@
 ---
-title: Hozzáférés-vezérlés delegálása az Azure AD-jogosultságok kezelésében a Package managerek eléréséhez – Azure Active Directory
-description: Megtudhatja, hogyan delegálhat hozzáférési szabályozást a rendszergazdáktól a csomagkezelő és a projektmenedzserek eléréséhez, hogy azok képesek legyenek a hozzáférés kezelésére.
+title: Hozzáférés-szabályozás leirányításának delegálása a csomagkezelők számára az Azure AD jogosultságkezelésben – Azure Active Directory
+description: Megtudhatja, hogy miként delegálhatja a hozzáférés-irányítást az informatikai rendszergazdáktól a csomagkezelők és a projektmenedzserek számára, hogy saját maguk is kezelhessék a hozzáférést.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,59 +17,59 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: efdc61b82a19cc5d370d6069e8c9dcd3ce5e8ae5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73174358"
 ---
-# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Hozzáférés-vezérlés delegálása az Azure AD-jogosultságok kezelésében lévő csomagkezelő hozzáféréséhez
+# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Hozzáférés-szabályozás delegálása a csomagkezelők számára az Azure AD-jogosultságkezelésben
 
-Ha a katalógusban lévő hozzáférési csomagok létrehozását és felügyeletét szeretné delegálni, adja hozzá a felhasználókat az Access Package Manager szerepkörhöz. A hozzáférési csomag kezelőjének tisztában kell lennie azzal, hogy a felhasználóknak hozzáférést kell kérniük a katalógus erőforrásaihoz. Ha például egy projekthez katalógust használ, akkor a projekthez tartozó érdeklődő a katalógushoz tartozó Access Package Manager lehet.  Az Access Package Managers nem tud erőforrásokat felvenni a katalógusba, de a hozzáférési csomagokat és házirendeket egy katalógusban kezelheti.  A hozzáférési csomag kezelőjének delegálásakor az adott személy a következőkért felelős:
+A katalógusban lévő hozzáférési csomagok létrehozásának és kezelésének delegálásához felhasználókat kell hozzáadnia a hozzáférési csomagkezelői szerepkörhöz. A hozzáférési csomagkezelőknek ismerniük kell, hogy a felhasználóknak hozzáférést kell kérniük a katalógusban lévő erőforrásokhoz. Ha például egy projekthez katalógust használnak, akkor a projektérdeklődők lehetnek a katalógus hozzáférési csomagkezelőjei.  Az Access csomagkezelők nem adhatnak hozzá erőforrásokat a katalógushoz, de kezelhetik a katalógusban lévő hozzáférési csomagokat és házirendeket.  A hozzáférési csomagkezelőre történő delegáláskor ez a személy felelős lehet a következőkért:
 
-- A felhasználó által a katalógusban szereplő erőforrásokhoz tartozó szerepkörök
-- Kinek lesz hozzáférése
-- Akinek jóvá kell hagynia a hozzáférési kérelmeket
-- Mennyi ideig tart a projekt?
+- Milyen szerepkörrel rendelkezik a felhasználó a katalógusban lévő erőforrásokhoz?
+- Kinek lesz szüksége hozzáférésre
+- Kinek kell jóváhagynia a hozzáférési kérelmeket
+- A projekt élettartama
 
-Ez a videó áttekintést nyújt arról, hogyan delegálhatja a hozzáférési szabályozást a katalógus tulajdonosától a Package Manager eléréséhez.
+Ez a videó áttekintést nyújt arról, hogyan delegálhatja a hozzáférés-szabályozást a katalógustulajdonostól a csomagkezelőhöz.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3Lq08]
 
-## <a name="as-a-catalog-owner-delegate-to-an-access-package-manager"></a>Katalógus tulajdonosaként delegált egy Access Package Manager
+## <a name="as-a-catalog-owner-delegate-to-an-access-package-manager"></a>Katalógustulajdonosként meghatalmazott a hozzáférési csomagkezelőben
 
-Az alábbi lépéseket követve rendelhet hozzá egy felhasználót az Access Package Manager szerepkörhöz:
+A felhasználó hozzárendelése a hozzáférési csomagkezelői szerepkörhöz az alábbi lépésekkel:
 
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy katalógus tulajdonosa
+**Előfeltételi szerepkör:** Globális rendszergazda, Felhasználó vagy katalógus tulajdonosa
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. Az Azure Portalon kattintson az **Azure Active Directory,** majd **az identitás-cégirányítási**.
 
-1. A bal oldali menüben kattintson a **katalógusok** lehetőségre, majd nyissa meg azt a katalógust, amelyhez hozzá szeretné adni a rendszergazdákat.
+1. A bal oldali menüben kattintson a **Katalógusok parancsra,** majd nyissa meg azt a katalógust, amelyhez rendszergazdákat szeretne hozzáadni.
 
-1. A bal oldali menüben kattintson a **szerepkörök és rendszergazdák**elemre.
+1. A bal oldali menüben kattintson a **Szerepkörök és rendszergazdák parancsra.**
 
-    ![A szerepkörök és a rendszergazdák katalógusa](./media/entitlement-management-shared/catalog-roles-administrators.png)
+    ![Katalógusok szerepkörök és rendszergazdák](./media/entitlement-management-shared/catalog-roles-administrators.png)
 
-1. Kattintson a **hozzáférési csomag kezelői hozzáadása** lehetőségre a szerepkörök tagjainak kiválasztásához.
+1. Kattintson **a Hozzáférés-kezelők hozzáadása** gombra a szerepkörök tagjainak kiválasztásához.
 
-1. A tagok hozzáadásához kattintson a **kiválasztás** gombra.
+1. A tagok hozzáadásához kattintson a **Kijelölés** gombra.
 
-## <a name="remove-an-access-package-manager"></a>Hozzáférési csomag kezelőjének eltávolítása
+## <a name="remove-an-access-package-manager"></a>Hozzáférés-kezelő eltávolítása
 
-A következő lépésekkel távolíthat el egy felhasználót a Access Package Manager szerepkörből:
+A felhasználó access package manager szerepkörből való eltávolításához kövesse az alábbi lépéseket:
 
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy katalógus tulajdonosa
+**Előfeltételi szerepkör:** Globális rendszergazda, Felhasználó vagy katalógus tulajdonosa
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. Az Azure Portalon kattintson az **Azure Active Directory,** majd **az identitás-cégirányítási**.
 
-1. A bal oldali menüben kattintson a **katalógusok** lehetőségre, majd nyissa meg azt a katalógust, amelyhez hozzá szeretné adni a rendszergazdákat.
+1. A bal oldali menüben kattintson a **Katalógusok parancsra,** majd nyissa meg azt a katalógust, amelyhez rendszergazdákat szeretne hozzáadni.
 
-1. A bal oldali menüben kattintson a **szerepkörök és rendszergazdák**elemre.
+1. A bal oldali menüben kattintson a **Szerepkörök és rendszergazdák parancsra.**
 
-1. Vegyen fel egy pipát az eltávolítani kívánt Access Package Manager mellett.
+1. Jelölje be az eltávolítani kívánt hozzáférésicsomag-kezelőt.
 
-1. Kattintson az **Eltávolítás**gombra.
+1. Kattintson az **Eltávolítás** lehetőségre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Új hozzáférési csomag létrehozása](entitlement-management-access-package-create.md)

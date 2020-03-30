@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central Micro-teljesítési központ | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre egy Micro-teljesítési központ alkalmazást a Micro-beteljesülő központ alkalmazás-sablonnal IoT Central
+title: Azure IoT Központi mikro-teljesítési központ | Microsoft dokumentumok
+description: Ismerje meg, hogyan építhet mikro-teljesítési központ alkalmazást az IoT Central Micro-fulfillment center alkalmazássablonjával
 author: avneet723
 ms.author: avneets
 ms.date: 10/13/2019
@@ -10,50 +10,50 @@ ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: f752c77a6a62b9b259a8bb1869ca03ff6a19b1f5
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77020879"
 ---
-# <a name="micro-fulfillment-center-architecture"></a>Micro-teljesítési központ architektúrája
+# <a name="micro-fulfillment-center-architecture"></a>Mikro-teljesítési központ architektúra
 
-A Micro-bevezetési központ megoldásai lehetővé teszik a teljes mértékben automatizált megfelelési központ minden aspektusának digitális összekapcsolását, figyelését és felügyeletét a költségek csökkentése érdekében az állásidő kiiktatásával, a biztonság és az általános hatékonyság növelése mellett. Ezek a megoldások a IoT Centralon belüli alkalmazások egyikével és az alábbi architektúrával kapcsolatos útmutatásként használhatók.
+A mikro-teljesítési központ megoldásai lehetővé teszik a teljesen automatizált teljesítési központ minden aspektusának digitális csatlakoztatását, felügyeletét és kezelését a költségek csökkentése érdekében az állásidő kiküszöbölésével, miközben növeli a biztonságot és az általános hatékonyságot. Ezek a megoldások az IoT Central alkalmazássablonjainak és az alábbi architektúrának az útmutató használatával is létrehozhatók.
 
-![Azure IoT Central Store Analytics](./media/architecture/micro-fulfillment-center-architecture-frame.png)
+![Azure IoT Central Store elemzése](./media/architecture/micro-fulfillment-center-architecture-frame.png)
 
-- IoT-érzékelők készlete telemetria-adatokat küld egy átjáró-eszközre
-- Telemetria küldő és összesített bepillantást IoT Central
-- Folyamatos adatexportálás a kívánt Azure-szolgáltatásba a manipulációhoz
-- Az adatszerkezet a kívánt formátumban strukturálható, és elküldhető egy tárolási szolgáltatásba
-- Az üzleti alkalmazások lekérhetik az adatok lekérdezését, és elemzéseket készíthetnek a kiskereskedelmi működésről
+- Telemetriai adatokat küldő IoT-érzékelők készlete egy átjáróeszközre
+- Telemetriai adatokat és összesített elemzéseket küldő átjáróeszközök az IoT Centralnak
+- Folyamatos adatexportálás a kívánt Azure-szolgáltatásba a manipuláció érdekében
+- Az adatok a kívánt formátumban strukturálhatók, és elküldhetők egy tárolási szolgáltatásnak
+- Az üzleti alkalmazások lekérdezhetik az adatokat, és olyan elemzéseket hozhatnak létre, amelyek a kiskereskedelmi műveleteket
  
-Vessünk egy pillantást a kulcsfontosságú összetevőkre, amelyek általában egy részét a Micro-teljesítési központ megoldásában játszanak.
+Vessünk egy pillantást a legfontosabb összetevők, amelyek általában szerepet játszanak a mikro-teljesítési központ megoldás.
 
-## <a name="robotic-carriers"></a>Robotkaros szolgáltatók
+## <a name="robotic-carriers"></a>Robothordozók
 
-A mikro-teljesítési központ megoldása valószínűleg nagy mennyiségű robot-szolgáltatót generál, amelyek különböző típusú telemetria-jeleket hoznak létre. Ezeket a jeleket egy átjáró-eszköz is betöltheti, összesítve, majd az architektúra diagram bal oldalán látható IoT Central küldi el.  
+A mikro-teljesítési központ megoldás valószínűleg egy nagy sor robot hordozók generáló különböző telemetriai jeleket. Ezeket a jeleket egy átjáróeszköz összesítheti, majd elküldheti az IoT Centralnak, ahogy az az architektúradiagram bal oldala tükröződik.  
 
-## <a name="condition-monitoring-sensors"></a>Állapot-figyelési érzékelők
+## <a name="condition-monitoring-sensors"></a>Állapotfigyelő érzékelők
 
-Az IoT-megoldások érzékelők készletével kezdődnek az értelmes jelek a teljesítési központban. A fenti architektúra-diagram bal szélén különböző típusú érzékelők is megjelennek.
+Az IoT-megoldás olyan érzékelőkkel kezdődik, amelyek értelmes jeleket rögzítenek a teljesítési központból. Ez tükröződik a különböző érzékelők a bal szélen az architektúra diagram felett.
 
-## <a name="gateway-devices"></a>Átjáróeszközök
+## <a name="gateway-devices"></a>Átjáró eszközök
 
-Számos IoT érzékelő közvetlenül a felhőbe vagy a közelében található átjáró-eszközre képes nyers jeleket felvenni. Az átjáró-eszköz az adatok összesítését hajtja végre a peremen, mielőtt összefoglaló elemzéseket küld egy IoT Central alkalmazásnak. Az átjáró-eszközök feladata a parancs-és vezérlési műveletek továbbítása is a szenzoros eszközökre, ha vannak ilyenek. 
+Számos IoT-érzékelő képes nyers jeleket közvetlenül a felhőbe vagy a közelében található átjáróeszközre táplálni. Az átjáróeszköz adatösszesítést hajt végre a peremhálózaton, mielőtt összefoglaló elemzéseket küldene egy IoT Central-alkalmazásnak. Az átjáróeszközök felelősek a parancs- és vezérlőműveletek továbbításáért is az érzékelőeszközökre, ha vannak ilyenek. 
 
 ## <a name="iot-central-application"></a>IoT Central alkalmazás
 
-Az Azure IoT Central alkalmazás különböző típusú IoT-érzékelőkből, robotokból, valamint a teljesítési központ környezetében található átjáró eszközökből származó adatokból áll, és értelmes elemzéseket hoz létre.
+Az Azure IoT Central alkalmazás különböző Típusú IoT-érzékelőkből, robotokból, valamint átjáróeszközökből származó adatokat tölt be a teljesítési központ környezetében, és értelmes elemzéseket hoz létre.
 
-Az Azure IoT Central egy személyre szabott élményt nyújt az áruház kezelője számára, amely lehetővé teszi számukra az infrastruktúra-eszközök távoli figyelését és felügyeletét.
+Az Azure IoT Central személyre szabott élményt is biztosít az áruház-üzemeltető számára, amely lehetővé teszi számukra az infrastruktúra-eszközök távoli figyelését és kezelését.
 
 ## <a name="data-transform"></a>Adatátalakítás
-A megoldáson belüli Azure IoT Central alkalmazás úgy konfigurálható, hogy nyers vagy összesített elemzéseket exportáljon az Azure Pásti (szolgáltatásként nyújtott platform) szolgáltatásaiba, amelyek adatkezelést végezhetnek, és gazdagítják ezeket a bepillantást, mielőtt üzleti tevékenységet folytatnak alkalmazás. 
+Az Azure IoT Central alkalmazás egy megoldáson belül konfigurálható nyers vagy összesített elemzések exportálására az Azure PaaS (Platform-as-a-Service) szolgáltatások készletébe, amelyek adatkezelést hajthatnak végre, és gazdagítják ezeket az elemzéseket, mielőtt egy üzleti Alkalmazás. 
 
 ## <a name="business-application"></a>Üzleti alkalmazás
-A IoT-ben a kiskereskedelmi környezetben üzembe helyezett különböző típusú üzleti alkalmazások is használhatók. A teljesítési központ kezelője vagy alkalmazottai ezeket az alkalmazásokat felhasználhatják az üzleti eredmények megjelenítéséhez, és valós időben is elvégezhetik az értelmes műveleteket. Ha szeretné megtudni, hogyan hozhat létre valós idejű Power BI irányítópultot a kereskedelmi csapatának, kövesse az [oktatóanyagot](./tutorial-in-store-analytics-create-app-pnp.md).
+Az IoT-adatok a kiskereskedelmi környezetben telepített különböző típusú üzleti alkalmazások működtetéséhez használhatók. A teljesítési központ vezetője vagy alkalmazottja használhatja ezeket az alkalmazásokat az üzleti elemzések megjelenítésére, és valós időben érdemi műveleteket tehet. Ha meg szeretné tudni, hogyan hozhat létre valós idejű Power BI-irányítópultot kiskereskedelmi csapata számára, kövesse az [oktatóanyagot.](./tutorial-in-store-analytics-create-app-pnp.md)
 
-## <a name="next-steps"></a>Következő lépések
-* Ismerkedjen meg a [Micro-beteljesülő központ](https://aka.ms/checkouttemplate) alkalmazás sablonnal. 
-* Tekintse meg az [oktatóanyagot](https://aka.ms/mfc-tutorial) , amely végigvezeti a megoldásnak a Micro-teljesítési központ alkalmazás sablonnal történő létrehozásán.
+## <a name="next-steps"></a>További lépések
+* Ismerkedjen meg a [Micro-fulfillment Center](https://aka.ms/checkouttemplate) alkalmazássablonnal. 
+* Tekintse meg az [oktatóanyagot,](https://aka.ms/mfc-tutorial) amely bemutatja, hogyan hozhat létre megoldást a Micro-fulfillment Center alkalmazássablon használatával.

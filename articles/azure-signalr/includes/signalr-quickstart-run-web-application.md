@@ -8,20 +8,20 @@ ms.date: 03/04/2019
 ms.author: antchu
 ms.custom: include file
 ms.openlocfilehash: 73d4d4e1a5f148dce6099b2d747ee1c290bcf7c1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67179490"
 ---
 ## <a name="run-the-web-application"></a>A webalkalmazás futtatása
 
-1. A folyamat megkönnyítése érdekében a GitHubon megtalálható egy egyoldalas, mintául szolgáló webalkalmazás. Nyissa meg a böngészőben a következő webhelyet: [https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/](https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/).
+1. A folyamat megkönnyítése érdekében a GitHubon megtalálható egy egyoldalas, mintául szolgáló webalkalmazás. Nyissa meg [https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/](https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/)a böngészőt a számára.
 
     > [!NOTE]
-    > A forrás a HTML-fájl a következő helyen található [/docs/demo/chat-v2/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat-v2/index.html).
+    > A HTML-fájl forrása a [/docs/demo/chat-v2/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat-v2/index.html).
 
-1. Amikor a függvény alkalmazás alap URL-Címének megadását kéri, adja meg a `http://localhost:7071`.
+1. Ha a rendszer felkéri a függvényalkalmazás kiindulási URL-címének megadására, írja be a következőt: `http://localhost:7071`.
 
 1. Amikor a rendszer erre kéri, adja meg a felhasználónevet.
 
@@ -34,4 +34,4 @@ ms.locfileid: "67179490"
 1. Nyissa meg a webalkalmazás egy másik példányát egy másik böngészőablakban. Látni fogja, hogy az elküldött üzenet az alkalmazás összes példányában megjelenik.
 
 > [!IMPORTANT]
-> HTTPS-en keresztül a HTML-oldalt szolgál ki, de a helyi Azure Functions runtime használja a HTTP alapértelmezés szerint, mert (például a Firefox) böngészőjében léptethet vegyes tartalmú szabályzat, amely blokkolja az a funkciók a weblap érkező kérelmek. A probléma megszüntetéséhez használja egy böngészőben, amely nem rendelkezik ezzel a korlátozással vagy indítsa el például egy helyi HTTP-kiszolgálót [http-kiszolgáló](https://www.npmjs.com/package/http-server) a a */docs/demo/chat-v2* könyvtár. Győződjön meg arról, a forrás adnak hozzá a `CORS` beállításával *local.settings.json*.
+> Mivel a HTML-lap HTTPS használatával jelenik meg, de a helyi Azure Functions futásidejű alapértelmezés szerint HTTP-t használ, a böngésző (például a Firefox) olyan vegyes tartalmú házirendet kényszeríthet be, amely blokkolja a kérelmeket a weboldalról a függvények betöltésére. A probléma megoldásához használjon olyan böngészőt, amely nem rendelkezik ezzel a korlátozással, vagy indítson el egy helyi HTTP-kiszolgálót, például [http-kiszolgálót](https://www.npmjs.com/package/http-server) a */docs/demo/chat-v2* könyvtárban. Győződjön meg arról, hogy az origó hozzá van adva a `CORS` *local.settings.json beállításhoz.*

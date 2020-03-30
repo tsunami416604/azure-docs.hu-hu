@@ -1,6 +1,6 @@
 ---
-title: Az adatfolyam-átalakítás megfeleltetésének áttekintése
-description: A leképezési adatfolyamban elérhető különböző átalakítások áttekintése
+title: Adatfolyam-transzformáció leképezése – áttekintés
+description: Az adatfolyam leképezése során elérhető különböző átalakítások áttekintése
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
@@ -8,34 +8,34 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 94f7277c1b741fb5ef6d2807fabbb266c0109415
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79086925"
 ---
-# <a name="mapping-data-flow-transformation-overview"></a>Az adatfolyam-átalakítás megfeleltetésének áttekintése
+# <a name="mapping-data-flow-transformation-overview"></a>Adatfolyam-transzformáció leképezése – áttekintés
 
-Alább látható a leképezési folyamat által jelenleg támogatott átalakítások listája. A konfiguráció részleteinek megismeréséhez kattintson az egyes átalakításokra.
+Az alábbi lista az adatfolyam leképezése jelenleg támogatott átalakításokat tartalmazza. Kattintson az egyes átalakítások, hogy megtanulják a konfigurációrészleteit.
 
-| Name (Név) | Kategória | Leírás |
+| Név | Kategória | Leírás |
 | ---- | -------- | ----------- |
-| [Összesített](data-flow-aggregate.md) | Séma-módosító | Definiáljon különböző típusú összesítéseket, például a SUM, a MIN, a MAX és a COUNT értéket meglévő vagy számított oszlopok szerint csoportosítva. | 
-| [Sor módosítása](data-flow-alter-row.md) | Sor módosítója | Sorok beszúrási, törlési, frissítési és upsert beállítása. |
-| [Feltételes felosztás](data-flow-conditional-split.md) | Több bemenet/kimenet | Adatsorok továbbítása különböző streamekhez a megfelelő feltételek alapján. |
-| [Származtatott oszlop](data-flow-derived-column.md) | Séma-módosító | új oszlopok előállítása vagy meglévő mezők módosítása az adatfolyam kifejezésének nyelvével. | 
-| [Létezik](data-flow-exists.md) | Több bemenet/kimenet | Győződjön meg arról, hogy az adatai más forrásokban vagy streamekben léteznek. | 
-| [Szűrő](data-flow-filter.md) | Sor módosítója | Sorok szűrése feltétel alapján. |
-| [Flatten](data-flow-flatten.md) | Séma-módosító |  A tömb értékeit hierarchikus szerkezetekben, például JSON-ban, illetve az egyes sorokba való kivonással végezheti el. |
-| [Csatlakozás](data-flow-join.md) | Több bemenet/kimenet |  Két forrásból vagy streamből származó adatok egyesítése. |
-| [Keresési](data-flow-lookup.md) | Több bemenet/kimenet | Egy másik forrásból származó adatokra mutató hivatkozás. |
-| [Új ág](data-flow-new-branch.md) | Több bemenet/kimenet | Több művelet és átalakítás alkalmazása ugyanazon az adatfolyamon. |
-| [Pivot](data-flow-pivot.md) | Séma-módosító | Összesítés, amelyben egy vagy több csoportosítási oszlop különálló oszlopokra alakítja át a különböző sorok értékeit. |
-| [Kiválasztás](data-flow-select.md) | Séma-módosító | Alias oszlopok és adatfolyam-nevek, valamint oszlopok eldobása vagy átrendezése |
-| [Mosogató](data-flow-sink.md) | - | Az adataihoz tartozó végső cél |
-| [Rendezés](data-flow-sort.md) | Sor módosítója | A bejövő sorok rendezése az aktuális adatfolyamon |
-| [Forrás](data-flow-source.md) | - | Az adatfolyam adatforrása |
-| [Helyettes kulcs](data-flow-surrogate-key.md) | Séma-módosító | Növekményes nem üzleti tetszőleges kulcs értékének hozzáadása |
-| [Union](data-flow-union.md) | Több bemenet/kimenet | Több adatfolyam függőleges egyesítése |
-| [Unpivot](data-flow-unpivot.md) | Séma-módosító | Oszlopok tagolása sorokba |
-| [Ablak](data-flow-window.md) | Séma-módosító |  Az oszlopok ablakos összesítésének meghatározása az adatfolyamokban. |
+| [Összesített](data-flow-aggregate.md) | Sémamódosító | Definiáljon különböző típusú összesítéseket, például SZUM, MIN, MAX és DARAB meglévő vagy számított oszlopok szerint csoportosítva. | 
+| [Sor módosítása](data-flow-alter-row.md) | Sormódosító | Állítson be beszúrási, törlési, frissítési és upsert házirendeket a sorokra. |
+| [Feltételes felosztás](data-flow-conditional-split.md) | Több bemenet/kimenet | Adatsorok at irányítson különböző adatfolyamokba az egyeztetési feltételek alapján. |
+| [Származtatott oszlop](data-flow-derived-column.md) | Sémamódosító | új oszlopokat hozhat létre, vagy módosíthatja a meglévő mezőket az adatfolyam-kifejezés nyelvével. | 
+| [Létezik](data-flow-exists.md) | Több bemenet/kimenet | Ellenőrizze, hogy az adatok léteznek-e más forrásban vagy adatfolyamban. | 
+| [Szűrő](data-flow-filter.md) | Sormódosító | Sor szűrése feltétel alapján. |
+| [Lelapul](data-flow-flatten.md) | Sémamódosító |  A hierarchikus struktúrákon , például a JSON-on belül vegye be a tömbértékeket, és állítsa le őket az egyes sorokba. |
+| [Csatlakozás](data-flow-join.md) | Több bemenet/kimenet |  Két forrásból vagy adatfolyamból származó adatok kombinálása. |
+| [Keresési](data-flow-lookup.md) | Több bemenet/kimenet | Hivatkozási adatok egy másik forrásból. |
+| [Új ág](data-flow-new-branch.md) | Több bemenet/kimenet | Több művelet- és átalakítást alkalmazhat ugyanarra az adatfolyamra. |
+| [Kimutatás](data-flow-pivot.md) | Sémamódosító | Olyan összesítés, amelyben egy vagy több csoportosítási oszlop különböző sorértékeit egyedi oszlopokká alakítják át. |
+| [Kiválasztás](data-flow-select.md) | Sémamódosító | Aliasoszlopok és adatfolyamnevek, valamint oszlopok eldobása vagy átrendezése |
+| [Sink (Fogadó)](data-flow-sink.md) | - | Az adatok végső úti célja |
+| [Rendezés](data-flow-sort.md) | Sormódosító | Bejövő sorok rendezése az aktuális adatfolyamban |
+| [Forrás](data-flow-source.md) | - | Adatforrás az adatfolyamhoz |
+| [Helyettes kulcs](data-flow-surrogate-key.md) | Sémamódosító | Növekménynövelő, nem üzleti jellegű tetszőleges kulcsérték hozzáadása |
+| [Unió](data-flow-union.md) | Több bemenet/kimenet | Több adatfolyam egyesítése függőlegesen |
+| [Elemi értékekre bontás](data-flow-unpivot.md) | Sémamódosító | Oszlopok elforgatása sorértékekké |
+| [Ablak](data-flow-window.md) | Sémamódosító |  Ablakalapú összesítések definiálása az adatfolyamokban. |

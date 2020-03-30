@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldások (AVS) – privát felhők – AVS
-description: Ismerkedjen meg az AVS Private Felhőkkel és fogalmakkal.
+title: Azure VMware-megoldás a CloudSimple-től – privát felhők
+description: Ismerje meg a CloudSimple privát felhők és fogalmak.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,131 +8,131 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2688edf281a6d8bc3d61e8e294c920f115f0f3f6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4fb930603455ed1a5df5d357fcab669f41a0c28c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024948"
 ---
-# <a name="avs-private-cloud-overview"></a>Az AVS Private Cloud áttekintése
+# <a name="cloudsimple-private-cloud-overview"></a>CloudSimple private cloud – áttekintés
 
-Az AVS percek alatt átalakítja és kiterjeszti a VMware-alapú számítási feladatokat a nyilvános felhőkbe. Az AVS szolgáltatás használatával natív módon telepítheti a VMware-et az Azure operációs rendszer nélküli számítógépek infrastruktúráján. Az üzembe helyezés az Azure-beli helyszíneken működik, és teljes mértékben integrálódik az Azure-felhő többi részébe.
+A CloudSimple percek alatt átalakítja és kiterjeszti a VMware-számítási feladatokat a nyilvános felhőkre. A CloudSimple szolgáltatás használatával natív módon telepítheti a VMware-t az Azure operációs rendszer nélküli féminfrastruktúrán. A központi telepítés az Azure-beli helyeken él, és teljes mértékben integrálható az Azure-felhő többi részével.
 
-Az AVS-megoldás teljes körű VMware működési folytonosságot biztosít. Ez a megoldás a következő nyilvános Felhőbeli előnyöket nyújtja:
+A CloudSimple megoldás teljes Körű VMware-működési folytonosságot biztosít. Ez a megoldás a következő nyilvános felhőbeli előnyöket biztosítja:
 
-* Rugalmasságát
+* Rugalmasság
 * Innováció
 * Hatékonyság
 
-Az AVS-vel előnyt élvez a Felhőbeli fogyasztási modell, amely csökkenti a teljes tulajdonlási költségeket. Igény szerinti üzembe helyezést, utólagos elszámolást és kapacitás-optimalizálást is kínál.
+A CloudSimple segítségével élvezheti a felhőfelhasználási modell előnyeit, amely csökkenti a teljes tulajdonlási költséget. Igény szerinti kiépítést, a felosztó-kiosztó növést és a kapacitásoptimalizálást is kínál.
 
-Az AVS teljes mértékben kompatibilis a rel:
+A CloudSimple teljes mértékben kompatibilis a következőkkel:
 
 * Meglévő eszközök
-* Ismereteit
+* Készségek
 * Folyamatok
 
-Ez a kompatibilitási funkció lehetővé teszi, hogy a csapatok az Azure-felhőben kezeljék a munkaterheléseket, anélkül, hogy megzavarják az ilyen típusú szabályzatokat:
+Ez a kompatibilitás lehetővé teszi a csapatok számára, hogy az Azure-felhőben lévő számítási feladatokat az ilyen típusú szabályzatok megszakítása nélkül kezeljék:
 
 * Network (Hálózat)
 * Biztonság  
 * Adatvédelem  
 * Naplózás
 
-Az AVS felügyeli az infrastruktúrát és az összes szükséges hálózatkezelési és felügyeleti szolgáltatást. Az AVS szolgáltatás lehetővé teszi, hogy csapata a következőkre koncentráljon:
+A CloudSimple kezeli az infrastruktúrát és az összes szükséges hálózati és felügyeleti szolgáltatást. A CloudSimple szolgáltatás lehetővé teszi, hogy csapata a következőkre összpontosítson:
 
 * Üzleti érték
-* Alkalmazás kiépítés
-* Üzleti folyamatok fenntarthatósága
+* Alkalmazások üzembe helyezése
+* Az üzletmenet folytonossága
 * Támogatás
 * Szabályzatbetartatás
 
-## <a name="avs-private-cloud-environment-overview"></a>Az AVS Private Cloud Environment áttekintése
+## <a name="private-cloud-environment-overview"></a>Privát felhőkörnyezet – áttekintés
 
-Az AVS Private Cloud egy elkülönített VMware-verem, amely a következőket támogatja:
+A privát felhő egy elkülönített VMware-verem, amely támogatja a következőket:
 
-* ESXi-gazdagépek
+* ESXi házigazdák
 * vCenter
-* vSAN
-* NSX
+* vSAN között
+* Nsx
 
-Az AVS privát felhők kezelése az AVS-portálon keresztül történik. Saját vCenter-kiszolgálóval rendelkeznek a saját felügyeleti tartományában.
+A privát felhők kezelése a CloudSimple portálon keresztül történik. Saját vCenter-kiszolgálóval rendelkeznek a saját felügyeleti tartományban.
 
-A verem a következőn fut:
+A verem fut:
 
 * Dedikált csomópontok
-* Elszigetelt operációs rendszer nélküli hardveres csomópontok
+* Elkülönített, csupasz fém hardvercsomópontok
 
-A felhasználók a natív VMware-eszközökön keresztül használják a veremet, beleértve a következőket:
+A felhasználók a vermet natív VMware eszközökkel használják fel, többek között a következőkkel:
 
 * vCenter
-* NSX-kezelő
+* NSX menedzser
 
-A dedikált csomópontok üzembe helyezése az Azure-beli helyszíneken végezhető el. Ezután felügyelheti őket az Azure-ban és az AVS-ben. Az AVS Private Cloud egy vagy több vSphere-fürtből áll, és minden fürt 3 – 16 csomópontot tartalmaz.
+Dedikált csomópontokat helyezhet üzembe az Azure-helyeken. Ezután kezelheti őket az Azure-ral és a CloudSimple-nel. A magánfelhő egy vagy több vSphere-fürtből áll, és minden fürt 3–16 csomópontot tartalmaz.
 
-A megvásárolt, utólagos elszámolású csomópontok vagy fenntartott dedikált csomópontok használatával létrehozhat egy AVS Private-felhőt.
+Létrehozhat egy privát felhőt megvásárolt, használatalapú fizetési csomópontok vagy fenntartott, dedikált csomópontok használatával.
 
-Az AVS Private Cloud a helyszíni környezethez és az Azure-hálózathoz a következő kapcsolatok használatával csatlakoztatható:
+A magánfelhőt a helyszíni környezethez és az Azure-hálózathoz csatlakoztathatja a következő kapcsolatok használatával:
 
 * Biztonságos
 * Privát VPN
 * Azure ExpressRoute
 
-Az AVS Private Cloud-környezet úgy lett kialakítva, hogy elkerülje az egyes meghibásodási pontokat:
+A privát felhő környezet célja, hogy megszüntesse az egyes meghibásodási pontokat:
 
-* Az ESXi-fürtök vSphere magas rendelkezésre állással vannak konfigurálva, és a rugalmasság érdekében a méretük legalább egy tartalék csomópontot tartalmaz.
-* a vSAN redundáns elsődleges tárterületet biztosít. a vSan legalább három csomópontot igényel az egyetlen hiba elleni védelem biztosításához. A vSAN konfigurálásával nagyobb rugalmasságot biztosíthat a nagyobb fürtök számára.
-* A vCenter, a PSC és a NSX Manager virtuális gépeket RAID-10 tárolási házirenddel is konfigurálhatja a tárolási hibák elleni védelem érdekében. a vSphere HA védelmet biztosít a csomópont-és hálózati hibák ellen.
+* Az ESXi-fürtök vSphere magas rendelkezésre állásúak, és úgy vannak méretezve, hogy legalább egy tartalék csomóponttal rendelkeznek a rugalmasság érdekében.
+* A vSAN redundáns elsődleges tárolást biztosít. A vSan legalább három csomópontot igényel, hogy védelmet nyújtson egyetlen hiba ellen. A vSAN konfigurálható úgy, hogy nagyobb rugalmasságot biztosítson a nagyobb fürtök számára.
+* A RAID-10 tárolási házirenddel rendelkező vCenter, PSC és NSX-kezelő virtuális gépek et a tárolási hibák elleni védelem érdekében konfigurálhatja. A vSphere HA védelmet nyújt a csomópont- és hálózati hibák ellen.
 
-## <a name="scenarios-for-deploying-an-avs-private-cloud"></a>Az AVS Private Cloud üzembe helyezésének forgatókönyvei
+## <a name="scenarios-for-deploying-a-private-cloud"></a>A magánfelhő üzembe helyezésének forgatókönyvei
 
-Íme néhány példa az AVS Private Cloud üzemelő példányának használati eseteire.
+Íme néhány példa a magánfelhő központi telepítéséhez használt esetekre.
 
-### <a name="data-center-retirement-or-migration"></a>Adatközpont-kivonulás vagy áttelepítés
+### <a name="data-center-retirement-or-migration"></a>Adatközpontok kivonása vagy áttelepítése
 
-* Ha eléri a meglévő adatközpont korlátait, vagy frissíti a hardvert, további kapacitást érhet el.
-* Adja hozzá a szükséges kapacitást a felhőben, és távolítsa el a hardveres frissítések kezelésének fejfájását.
-* Csökkentse a felhőbe való Migrálás kockázatát és költségeit az időigényes átalakítások vagy az újraarchitektúrák összehasonlításával.
-* A felhőbe történő Migrálás felgyorsításához használja a jól ismert VMware-eszközöket és-képességeket. A felhőben az Azure-szolgáltatások segítségével modernizálhatja alkalmazásait a tempóban.
+* További kapacitást kaphat, ha eléri a meglévő adatközpont korlátait, vagy frissíti a hardvert.
+* Adja hozzá a szükséges kapacitást a felhőben, és szüntesse meg a hardverfrissítések kezelésének fejfájását.
+* Csökkentse a felhőbe való migrálás kockázatát és költségét az időigényes konverziókhoz vagy újraarchitektúrákhoz képest.
+* A felhőbe való bevetés felgyorsításához használja a jól ismert VMware eszközöket és készségeket. A felhőben az Azure-szolgáltatások segítségével modernizálhatja alkalmazásait az Ön tempójában.
 
-### <a name="expand-on-demand"></a>Kibontás igény szerint
+### <a name="expand-on-demand"></a>Igény szerinti bővítés
 
-* Bontsa ki a felhőt a nem várt igények kielégítéséhez, például az új fejlesztési környezetekhez vagy a szezonális kapacitások kitöréséhez.
-* Igény szerint új kapacitást hozhat létre, és megtarthatja, amíg szüksége van rá.
-* Csökkentse a kezdeti befektetéseket, gyorsítsa fel a kiépítés sebességét, és csökkentse a bonyolultságot ugyanazzal az architektúrával és házirenddel mind a helyszínen, mind a felhőben.
+* Bontsa ki a felhőt a nem várt igények, például az új fejlesztési környezetek vagy a szezonális kapacitásadatlöketek kielégítésére.
+* Igény szerint hozzon létre új kapacitást, és csak addig őrizheti meg, amíg szüksége van rá.
+* Csökkentse az előzetes befektetést, gyorsítsa fel a kiépítés sebességét, és csökkentse az összetettséget ugyanazzal az architektúrával és szabályzatokkal mind a helyszíni, mind a felhőben.
 
-### <a name="disaster-recovery-and-virtual-desktops-in-the-azure-cloud"></a>Vész-helyreállítási és virtuális asztalok az Azure-felhőben
+### <a name="disaster-recovery-and-virtual-desktops-in-the-azure-cloud"></a>Katasztrófa utáni helyreállítás és virtuális asztalok az Azure-felhőben
 
-* Távoli hozzáférés létrehozása az Azure-felhőben tárolt adatelemekhez, alkalmazásokhoz és asztali gépekhez. A nagy sávszélességű kapcsolatokkal gyorsan tölthet le/tölthet le adatokat az incidensekről. Az alacsony késleltetésű hálózatok gyors válaszidőt biztosítanak a felhasználók számára egy asztali alkalmazástól.
+* Távoli hozzáférést hozhat létre az adatokhoz, alkalmazásokhoz és asztalokhoz az Azure-felhőben. A nagy sávszélességű kapcsolatok, feltöltése / letöltése adatok gyors an-át, hogy visszaszerezze az eseményeket. Az alacsony késleltetésű hálózatok gyors válaszidőt biztosítanak, amelyet a felhasználók elvárnak egy asztali alkalmazástól.
 
-* Az AVS-portál és a jól ismert VMware-eszközök használatával replikálhatja az összes házirendjét és hálózatát a felhőben. A replikáció csökkenti a DR-és VDI-implementációk létrehozásának és kezelésének erőfeszítéseit és kockázatait.
+* Replikálja az összes szabályzatot és hálózatot a felhőben a CloudSimple portál és a jól ismert VMware eszközök használatával. A replikáció csökkenti a DR és VDI implementációk létrehozásának és kezelésének erőfeszítéseit és kockázatát.
 
 ### <a name="high-performance-applications-and-databases"></a>Nagy teljesítményű alkalmazások és adatbázisok
 
-* Futtassa a legigényesebb számítási feladatokat az AVS által biztosított hiperkonvergens architektúrával.
-* Az Oracle, a Microsoft SQL Server, a köztes rendszerek és a nagy teljesítményű, nem SQL-adatbázisok futtatása.
-* A felhőt saját adatközpontként, nagy sebességű, 25 GB/s-os hálózati kapcsolattal tapasztalhatja. A nagy sebességű kapcsolatok lehetővé teszik, hogy olyan hibrid alkalmazásokat futtasson, amelyek a helyszíni, a VMware-en és az Azure-beli privát számítási feladatokon alapulnak, és nem veszélyeztethetik a teljesítményt.
+* Futtassa a legigényesebb számítási feladatokat a CloudSimple által biztosított hiperkonvergens architektúrával.
+* Futtassa az Oracle, a Microsoft SQL server, a middleware rendszerek és a nagy teljesítményű, nem SQL adatbázisok futtatását.
+* Tapasztalja meg a felhőt saját adatközpontként a nagy sebességű, 25 Gbit/s sebességű hálózati kapcsolatokkal. A nagy sebességű kapcsolatok lehetővé teszik a helyszíni, az Azure-beli VMware és az Azure privát számítási feladatainak hibrid alkalmazásait a teljesítmény veszélyeztetése nélkül.
 
 ### <a name="true-hybrid"></a>Valódi hibrid
 
-* A DevOps egyesítheti a VMware-és az Azure-szolgáltatások között.
-* Optimalizálja a VMware-felügyeletet az Azure-szolgáltatásokhoz és-megoldásokhoz, amelyek az összes számítási feladatra alkalmazhatók.
-* A nyilvános felhőalapú szolgáltatásokat anélkül érheti el, hogy kibővíti az adatközpontot, vagy újratervezi az alkalmazásokat.
-* Az Azure-beli VMware-alkalmazások identitásának, hozzáférés-vezérlési házirendjeinek, naplózásának és figyelésének központosítása.
+* A DevOps egyesítése a VMware és az Azure-szolgáltatások között.
+* Optimalizálja a VMware felügyeletét az Azure-szolgáltatásokhoz és -megoldásokhoz, amelyek az összes számítási feladatra alkalmazhatók.
+* Az adatközpont bővítése vagy az alkalmazások újratervezése nélkül is elérheti a nyilvános felhőszolgáltatásokat.
+* Központosíthatja az identitásokat, a hozzáférés-vezérlési szabályzatokat, a naplózást és a figyelést az Azure-beli VMware-alkalmazásokhoz.
 
-## <a name="limits"></a>Korlátozások
+## <a name="limits"></a>Korlátok
 
-Az alábbi táblázat az AVS Private Cloud erőforrásainak csomópontokra vonatkozó korlátozásait sorolja fel.
+Az alábbi táblázat a magánfelhő erőforrásaira vonatkozó csomópontkorlátokat sorolja fel.
 
 | Erőforrás | Korlát |
 |----------|-------|
-| A csomópontok minimális száma egy AVS Private-felhő létrehozásához | 3 |
-| Fürtben lévő csomópontok maximális száma egy AVS Private-felhőben | 16 |
-| Csomópontok maximális száma egy AVS Private-felhőben | 64 |
-| Csomópontok minimális száma egy új fürtön | 3 |
+| A magánfelhő létrehozásához szükséges csomópontok minimális száma | 3 |
+| A fürt csomópontjainak maximális száma magánfelhőben | 16 |
+| A csomópontok maximális száma a magánfelhőben | 64 |
+| Az új fürt csomópontjainak minimális száma | 3 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [hozhat létre egy AVS Private-felhőt](create-private-cloud.md)
-* Megtudhatja, hogyan [konfigurálhat egy AVS Private Cloud Environment-környezetet](quickstart-create-private-cloud.md)
+* További információ a [magánfelhő létrehozásáról](create-private-cloud.md)
+* További információ a [magánfelhő-környezet konfigurálásáról](quickstart-create-private-cloud.md)

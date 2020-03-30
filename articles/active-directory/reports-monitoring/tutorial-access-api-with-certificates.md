@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag az AD Reporting API-hoz tanúsítványok használatával | Microsoft Docs
-description: Ez az oktatóanyag azt ismerteti, hogy az Azure AD Reporting API és a tanúsítvány hitelesítő adatai segítségével hogyan kérhet le adatokat a címtárakból felhasználói beavatkozás nélkül.
+title: Oktatóanyag az AD jelentéskészítő API-hoz tanúsítványokkal | Microsoft dokumentumok
+description: Ez az oktatóanyag bemutatja, hogyan használhatja az Azure AD reporting API-t tanúsítványhitelesítő adatokkal a könyvtárakból felhasználói beavatkozás nélkül.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,42 +17,42 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d723af5d994006c4ae4f90905ede73fa87326bf
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014264"
 ---
-# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Oktatóanyag: az adatlekérdezés a Azure Active Directory Reporting API és a tanúsítványok használatával
+# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Oktatóanyag: Adatok beszereznie az Azure Active Directory jelentéskészítési API-val tanúsítványokkal
 
-Az [Azure Active Directory (Azure AD) Reporting API-k](concept-reporting-api.md) REST-alapú API-kon keresztül biztosítják az adatok szoftveres elérését. Különböző programnyelvekkel és eszközökkel hívhatja ezeket az API-kat. Ha felhasználói beavatkozás nélkül szeretné elérni az Azure AD Reporting API-t, konfigurálnia kell a hozzáférést a tanúsítványok használatához.
+Az [Azure Active Directory (Azure AD) Reporting API-k](concept-reporting-api.md) REST-alapú API-kon keresztül biztosítják az adatok szoftveres elérését. Különböző programnyelvekkel és eszközökkel hívhatja ezeket az API-kat. Ha felhasználói beavatkozás nélkül szeretné elérni az Azure AD Reporting API-t, konfigurálnia kell a tanúsítványok használatához való hozzáférést.
 
-Ebből az oktatóanyagból megtudhatja, hogyan használható egy tesztelési tanúsítvány az MS Graph API jelentésekhez való eléréséhez. Nem ajánlott éles környezetben használni a teszt tanúsítványokat. 
+Ebben az oktatóanyagban megtudhatja, hogyan használhat teszttanúsítványt az MS Graph API jelentéskészítéshez való eléréséhez. Nem javasoljuk a teszttanúsítványok használatát éles környezetben. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. A bejelentkezési információ eléréséhez győződjön meg arról, hogy rendelkezik egy prémium szintű (P1/P2) licenccel rendelkező Azure Active Directory Bérlővel. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört. Vegye figyelembe, hogy ha a frissítés előtt nem rendelkezik tevékenységi adataival, a rendszer több napot is igénybe vesz, hogy az adatai megjelenjenek a jelentésekben a prémium szintű licencre való frissítés után. 
+1. A bejelentkezési adatok eléréséhez győződjön meg arról, hogy rendelkezik egy prémium (P1/P2) licenccel rendelkező Azure Active Directory-bérlővel. Az [Azure Active Directory-kiadás](../fundamentals/active-directory-get-started-premium.md) frissítéséhez olvassa el az Azure Active Directory Premium szolgáltatás első lépéseit. Vegye figyelembe, hogy ha a frissítés előtt nem rendelkezett tevékenységi adatokkal, az adatok nak néhány napig kell tartaniuk, amíg az adatok megjelennek a jelentésekben a prémium licencre való frissítés után. 
 
-2. Hozzon létre vagy váltson át egy felhasználói fiókra a bérlő **globális rendszergazdája**, a **biztonsági rendszergazda**, a **biztonsági olvasó** vagy a **jelentéskészítő olvasó** szerepkörben. 
+2. Hozzon létre vagy váltson át egy felhasználói fiókra a **globális rendszergazda,** a **biztonsági rendszergazda,** a **biztonsági olvasó** vagy a **jelentésolvasó** szerepkörben a bérlő számára. 
 
-3. Fejezze be a [Azure Active Directory jelentési API eléréséhez szükséges előfeltételeket](howto-configure-prerequisites-for-reporting-api.md). 
+3. Töltse ki [az Azure Active Directory jelentéskészítési API elérésének előfeltételeit.](howto-configure-prerequisites-for-reporting-api.md) 
 
-4. Töltse le és telepítse az [Azure ad PowerShell V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md)-t.
+4. Töltse le és telepítse [az Azure AD PowerShell V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md)alkalmazást.
 
-5. Telepítse a [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/). Ez a modul számos segédprogramként használható parancsmagot biztosít, többek között:
+5. Telepítse [az MSCloudIdUtils alkalmazást.](https://www.powershellgallery.com/packages/MSCloudIdUtils/) Ez a modul számos segédprogramként használható parancsmagot biztosít, többek között:
     - A hitelesítéshez szükséges ADAL-kódtárak
     - a felhasználó, alkalmazáskulcsok és tanúsítványok jogkivonatainak elérését az ADAL használatával,
     - a lapokra bontott eredményeket kezelő Graph API-t.
 
-6. Ha először használja a modult a **install-MSCloudIdUtilsModule**futtatásával, akkor az **importálási modul PowerShell-** paranccsal importálhatja azt. A munkamenetnek a következő képernyőhöz hasonlóan kell kinéznie: ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Ha ez az első alkalom, hogy a modul segítségével fut **Install-MSCloudIdUtilsModule**, egyébként importálja azt az **Import-Module** Powershell paranccsal. A munkamenetnek a következő ![képernyőhöz hasonlóan kell kinéznie: Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
   
-7. Tesztelési tanúsítvány létrehozásához használja a **New-SelfSignedCertificate PowerShell-** parancsmagot.
+7. A **New-SelfSignedCertificate** Powershell parancsmunk használatával hozzon létre egy teszttanúsítványt.
 
    ```
    $cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
    ```
 
-8. Az **export-Certificate** parancsmagot exportálja egy tanúsítványfájl-fájlba.
+8. A **Tanúsítvány exportálása** parancssegítségével exportálhatja azt egy tanúsítványfájlba.
 
    ```
    Export-Certificate -Cert $cert -FilePath "C:\Reporting\MSGraph_ReportingAPI.cer"
@@ -61,15 +61,15 @@ Ebből az oktatóanyagból megtudhatja, hogyan használható egy tesztelési tan
 
 ## <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Adatok lekérése az Azure Active Directory Reporting API és tanúsítványok használatával
 
-1. Navigáljon a [Azure Portal](https://portal.azure.com), válassza a **Azure Active Directory**lehetőséget, majd válassza a **Alkalmazásregisztrációk** lehetőséget, és válassza ki az alkalmazást a listából. 
+1. Keresse meg az [Azure Portalon,](https://portal.azure.com)válassza az **Azure Active Directory**, majd válassza ki az alkalmazás **regisztrációk,** és válassza ki az alkalmazást a listából. 
 
-2. Válassza a **beállítások** > **kulcsok** lehetőséget, majd válassza a **nyilvános kulcs feltöltése**lehetőséget.
+2. Válassza a **Beállítások** > **kulcsok lehetőséget,** majd a **Nyilvános kulcs feltöltése**lehetőséget.
 
-3. Válassza ki az előző lépésben megadott tanúsítványfájl, majd válassza a **Mentés**lehetőséget. 
+3. Jelölje ki a tanúsítványfájlt az előző lépésből, és válassza a **Mentés gombot.** 
 
-4. Jegyezze fel az alkalmazás AZONOSÍTÓját és az imént regisztrált tanúsítvány ujjlenyomatát. Az ujjlenyomat megtalálásához a portál alkalmazás lapján lépjen a **Beállítások** lapra, és kattintson a **kulcsok**elemre. Az ujjlenyomat a **nyilvános kulcsok** listájában jelenik meg.
+4. Jegyezze fel az alkalmazásazonosítót és az alkalmazáshoz regisztrált tanúsítvány ujjlenyomatát. Az ujjlenyomat megkereséséhez az alkalmazás lapján a portálon válassza a **Beállítások** lapot, és kattintson a **Kulcsok gombra.** Az ujjlenyomat a **Nyilvános kulcsok** lista alatt lesz.
 
-5. Nyissa meg az alkalmazás jegyzékfájlját a beágyazott jegyzékfájl-szerkesztőben, és cserélje le a *hitelesítő adatok* tulajdonságot az új tanúsítvány adataira a következő séma használatával. 
+5. Nyissa meg az alkalmazásjegyzéket a szövegközi jegyzékszerkesztőben, és cserélje le a *keyCredentials tulajdonságot* az új tanúsítványadatokra a következő séma használatával. 
 
    ```
    "keyCredentials": [
@@ -83,24 +83,24 @@ Ebből az oktatóanyagból megtudhatja, hogyan használható egy tesztelési tan
     ]
    ```
 
-6. Mentse a jegyzékfájlt. 
+6. Mentse az utaslistát. 
   
-7. Ezzel a tanúsítvánnyal lekérheti az MS Graph API hozzáférési jogkivonatát. Használja a **Get-MSCloudIdMSGraphAccessTokenFromCert** parancsmagot a MSCloudIdUtils PowerShell-modulból, és adja át az alkalmazás azonosítóját és az előző lépésben beszerzett ujjlenyomatot. 
+7. Most egy hozzáférési jogkivonatot kaphat az MS Graph API-hoz ezzel a tanúsítvánnyal. Használja a **Get-MSCloudIdMSGraphAccessTokenFromCert** parancsmag az MSCloudIdUtils PowerShell modul, halad az alkalmazásazonosító és az ujjlenyomat kapott az előző lépésben. 
 
-   ![Azure Portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
+   ![Azure portál](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
-8. A Graph API lekérdezéséhez használja a PowerShell-parancsfájl hozzáférési tokenjét. A bejelentkezések és a directoryAudits végpont enumerálásához használja a MSCloudIDUtils **meghívása-MSCloudIdMSGraphQuery** parancsmagot. Ez a parancsmag több lapozható eredményt kezel, és elküldi ezeket az eredményeket a PowerShell-folyamatnak.
+8. Használja a powershell-parancsfájl hozzáférési jogkivonatát a Graph API lekérdezéséhez. Az **MSCloudIDUtils meghívó-MSCloudIdMSGraphQuery** parancsmagjával számba vetheti a bejelentkezéseket és a directoryAudits végpontot. Ez a parancsmag kezeli a többoldalas eredményeket, és elküldi ezeket az eredményeket a PowerShell-folyamatnak.
 
-9. A naplók lekéréséhez kérdezze le a directoryAudits-végpontot. 
+9. A citatár lekérdezéseNaplózás végpont a naplónaplók beolvasásához. 
    ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
-10. A bejelentkezési naplók lekéréséhez kérdezze le a bejelentkezések-végpontot.
+10. A bejelentkezési végpont lekérdezése a bejelentkezési naplók beolvasásához.
     ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
 
-11. Most már dönthet úgy is, hogy exportálja ezeket az adatfájlokat egy CSV-be, és ment egy SIEM rendszerbe. A szkriptet be is csomagolhatja egy ütemezett feladatba az Azure AD-adatok bérlőtől való időszakos lekérésére úgy is, hogy nem kell a forráskódban tárolnia az alkalmazáskulcsokat. 
+11. Most már választhatja, hogy ezeket az adatokat CSV-be exportálja, és siem-rendszerbe menti. A szkriptet be is csomagolhatja egy ütemezett feladatba az Azure AD-adatok bérlőtől való időszakos lekérésére úgy is, hogy nem kell a forráskódban tárolnia az alkalmazáskulcsokat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerkedés a Reporting API-k működésével](concept-reporting-api.md)
-* [Naplózási API-referenciák](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [A bejelentkezési tevékenység jelentésének API-referenciája](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [Naplózási API-hivatkozás](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+* [Bejelentkezési tevékenység jelentés API-jának hivatkozása](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

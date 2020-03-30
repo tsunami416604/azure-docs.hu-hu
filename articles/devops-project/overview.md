@@ -1,6 +1,6 @@
 ---
-title: A Azure DevOps Projects áttekintése | Microsoft Docs
-description: Azure DevOps Projects értékének megismerése
+title: Az Azure DevOps-projektek áttekintése | Microsoft dokumentumok
+description: Az Azure DevOps-projektek értékének megismerése
 services: devops-project
 documentationcenter: ''
 author: mlearned
@@ -15,67 +15,67 @@ ms.workload: ''
 ms.date: 05/03/2018
 ms.author: mlearned
 ms.openlocfilehash: d39702f8e30046dd3cf634fc67ed7095471cd629
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71971476"
 ---
-# <a name="overview-of-azure-devops-projects"></a>A Azure DevOps Projects áttekintése
+# <a name="overview-of-azure-devops-projects"></a>Az Azure DevOps-projektek áttekintése
 
- Az Azure DevOps Projects megkönnyíti az Azure használatának első lépéseit. A Azure Portalból néhány gyors lépéssel elindíthatja kedvenc alkalmazásait az Ön által választott Azure-szolgáltatásban. 
+ Az Azure DevOps-projektek megkönnyítik az azure-ral való ismerkedést. Az Azure Portalnéhány gyors lépéssel elindíthatja kedvenc alkalmazását az Ön által kiválasztott Azure-szolgáltatásban. 
 
- DevOps Projects beállítja az alkalmazás fejlesztéséhez, üzembe helyezéséhez és monitorozásához szükséges összes információt. A DevOps Projects irányítópulton figyelheti a kód véglegesítő, Build és központi telepítéseit a Azure Portal egyetlen nézetében.
+ A DevOps-projektek mindent beállít, amire szüksége van az alkalmazás fejlesztéséhez, üzembe helyezéséhez és figyeléséhez. A DevOps-projektek irányítópultján figyelheti a kódvéglegesítéseket, buildeket és üzemelő példányokat egyetlen nézetből az Azure Portalon.
 
-## <a name="why-should-i-use-devops-projects"></a>Miért érdemes használni a DevOps Projects?
+## <a name="why-should-i-use-devops-projects"></a>Miért érdemes DevOps-projekteket használni?
 
-  A DevOps Project automatizálja egy teljes folyamatos integrációs (CI) és folyamatos továbbítási (CD) folyamat telepítését az Azure-ba.  Megkezdheti a meglévő kódok használatát, vagy használhatja a megadott minta alkalmazások egyikét is. Ezután gyorsan üzembe helyezheti az alkalmazást különböző Azure-szolgáltatásokra, például a Virtual Machinesre, a App Servicera, az Azure Kubernetes Services (ak), a Azure SQL Database és az Azure Service Fabricra.  
+  A DevOps Project automatizálja a teljes folyamatos integrációs (CI) és a folyamatos kézbesítési (CD) folyamat beállítását az Azure-ba.  Kezdheti a meglévő kóddal, vagy használhatja a megadott mintaalkalmazások egyikét. Ezután gyorsan telepítheti az alkalmazást különböző Azure-szolgáltatásokba, például a Virtuális gépekre, az App Service-re, az Azure Kubernetes-szolgáltatásokra (AKS), az Azure SQL Database-re és az Azure Service Fabricre.  
 
-  DevOps Projects a DevOps-folyamat kezdeti konfigurálásához szükséges összes munkát, beleértve a kezdeti git-tárház beállítását, a CI/CD folyamat konfigurálását, Application Insights erőforrás létrehozását a figyeléshez és egyetlen a teljes megoldás nézete egy DevOps Projects irányítópult létrehozásával a Azure Portalban.
+  DevOps-projektek a devops-folyamat kezdeti konfigurálása, beleértve mindent a kezdeti Git-tárház beállítása, konfigurálása a CI/CD-folyamat, egy Application Insights-erőforrás figyelése, és egyetlen nézet a teljes megoldás létrehozása a DevOps-irányítópult az Azure Portalon.
 
-A DevOps Projects a következőhöz használható:
+A DevOps-projektek segítségével:
 
 * Az alkalmazások gyors üzembe helyezése az Azure-ban
-* Egy CI/CD-folyamat beállításának automatizálása
-* A CI/CD-folyamat megfelelő beállításának megtekintése és ismertetése
+* Ci/CD-folyamat beállításának automatizálása
+* Ci/CD-folyamat megfelelő beállításának és megértésének megtekintése és megértése
 * A kiadási folyamatok további testreszabása az adott forgatókönyvek alapján
 
-## <a name="how-do-i-use-devops-projects"></a>Hogyan használja DevOps Projects?
+## <a name="how-do-i-use-devops-projects"></a>Hogyan használhatom a DevOps-projekteket?
 
-  A DevOps Projects a Azure Portal érhető el. A portálról ugyanúgy hozhat létre DevOps Projects erőforrást, mint bármely más Azure-erőforrást. DevOps Projects a különböző konfigurációs beállításokhoz nyújt lépésenkénti varázslót.  
+  A DevOps-projektek az Azure Portalon érhetők el. Hozzon létre egy DevOps-projektek erőforrást, mint bármely más Azure-erőforrást a portálról. DevOps-projektek nyújt lépésről-lépésre varázsló-szerű élményt a különböző konfigurációs lehetőségeket.  
 
 A kezdeti beállítás során számos konfigurálási lehetőség közül választhat. Ezek a lehetőségek a következők:
 
-* A megadott minta alkalmazás használata vagy saját kód benyújtása
-* Alkalmazás nyelvének kiválasztása
-* Alkalmazás-keretrendszer kiválasztása nyelv alapján
+* A megadott mintaalkalmazás használata vagy saját kód
+* Alkalmazásnyelv kiválasztása
+* Alkalmazáskeret kiválasztása a nyelv alapján
 * Azure-szolgáltatás kiválasztása (telepítési cél)
 * Új Azure DevOps-szervezet létrehozása vagy meglévő szervezet használata 
 * Az Azure-előfizetés kiválasztása
 * Az Azure-szolgáltatások helyének kiválasztása
-* Az Azure-szolgáltatások különböző díjszabási szintjei közül választhat
+* Választás az Azure-szolgáltatások különböző tarifacsomagjai közül
 
-DevOps Projects használata után törölheti az összes erőforrást egyetlen helyről az Azure Portal DevOps Projects irányítópultján.
+A DevOps-projektek használata után az összes erőforrást egyetlen helyről is törölheti az Azure Portal DevOps-projektek irányítópultjáról.
 
-## <a name="devops-projects-and-azure-devops-integration"></a>DevOps Projects és az Azure DevOps-integrációja
+## <a name="devops-projects-and-azure-devops-integration"></a>DevOps-projektek és Az Azure DevOps-integráció
 
-DevOps Projects az Azure DevOps működteti. DevOps Projects automatizálja az Azure-folyamatokban szükséges összes munkát egy CI/CD-folyamat beállításához. Git-tárházat hoz létre egy új vagy meglévő Azure DevOps-szervezetben, majd egy minta alkalmazást vagy a meglévő kódot egy új git-tárházba véglegesíti.  
+A DevOps-projekteket az Azure DevOps működteti. A DevOps-projektek automatizálják az Azure Pipelines-ban a CI/CD-folyamat beállításához szükséges összes munkát. Létrehoz egy Git-tárházat egy új vagy meglévő Azure DevOps-szervezetben, majd véglegesíti a mintaalkalmazást vagy a meglévő kódot egy új Git-tárházba.  
 
-Az Automation egy CI-triggert is létrehoz a buildhez, hogy minden új kód véglegesítse a buildet. A DevOps Projects CD-triggert hoz létre, és minden új sikeres buildet üzembe helyez a választott Azure-szolgáltatásban.  
+Az automatizálás is létrehoz egy CI-eseményindító a build, hogy minden új kód véglegesítése kezdeményezegy buildet. A DevOps-projektek létrehozegy CD-eseményindítót, és minden új sikeres buildet telepít az Ön által kiválasztott Azure-szolgáltatásba.  
 
-A build és a kiadási folyamatok a további forgatókönyveknek megfelelően testre szabhatók. Emellett a fordítási és a kiadási folyamatokat is klónozott más projektekben való használatra.
+A build és a kiadási folyamatok a további forgatókönyveknek megfelelően testre szabhatók. Emellett klónozhatja a build- és kiadási folyamatokat más projektekben való használatra.
 
 A DevOps Project létrehozása után a következőket teheti:
 
 * A build és a kiadási folyamat testreszabása
 * Lekérési kérelmek használata a kódfolyamat kezeléséhez és a minőség magas szinten tartásához
 * Minden véglegesítés tesztelése és felépítése a kódok egyesítése előtt a minőség javítása érdekében
-* A várakozó fájlok és a problémák nyomon követése az alkalmazással együtt
+* Kövesse nyomon a hátralékéseket és problémákat az alkalmazással együtt
 
-## <a name="how-do-i-start-using-devops-projects"></a>Hogyan megkezdeni a DevOps Projects használatát?
+## <a name="how-do-i-start-using-devops-projects"></a>Hogyan kezdhetem el használni a DevOps-projekteket?
 
-* [Ismerkedés a DevOps Projects](https://docs.microsoft.com/azure/devops-project/azure-devops-project-github)
+* [A DevOps-projektek – első lépések](https://docs.microsoft.com/azure/devops-project/azure-devops-project-github)
 
-##  <a name="devops-projects-videos"></a>DevOps Projects videók
+##  <a name="devops-projects-videos"></a>DevOps-projektek – videók
 
-* [CI/CD létrehozása Azure DevOps Projects](https://www.youtube.com/watch?v=NuYDAs3kNV8)
+* [CI/CD létrehozása Azure DevOps-projektekkel](https://www.youtube.com/watch?v=NuYDAs3kNV8)

@@ -1,7 +1,7 @@
 ---
 title: Egyéni jogcímek kérése (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
-description: További információ az egyéni jogcímek igényléséről.
+description: További információ az egyéni jogcímek kérelmezése.
 services: active-directory
 documentationcenter: ''
 author: mmacy
@@ -18,27 +18,27 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 44158296faaf238fd72f2360149d3d93f68c5ba0
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085606"
 ---
-# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Útmutató: egyéni jogcímek kérése az iOS és a macOS rendszerhez készült MSAL használatával
+# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Útmutató: Egyéni jogcímek kérése az MSAL használatával iOS és macOS rendszerhez
 
-Az OpenID Connect segítségével igény szerint kérheti az egyes jogcímek visszaadását a UserInfo-végpontból és/vagy az azonosító jogkivonatban. A jogcím-kérelmek JSON-objektumként jelennek meg, amely tartalmazza a kért jogcímek listáját. További részletekért lásd: [OpenID Connect Core 1,0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) .
+OpenID Connect lehetővé teszi, hogy opcionálisan kérheti az egyes jogcímek visszaadását a UserInfo végpontés/vagy az id token. A jogcímkérés JSON-objektumként jelenik meg, amely a kért jogcímek listáját tartalmazza. További részletek az [OpenID Connect Core 1.0-ban.](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter)
 
-Az iOS és a macOS rendszerhez készült Microsoft Authentication Library (MSAL) lehetővé teszi, hogy konkrét jogcímeket kérjen az interaktív és a csendes jogkivonat-beszerzési forgatókönyvekben. Ezt a `claimsRequest` paraméterrel végezheti el.
+Az iOS és macOS rendszerhez tartozó Microsoft authentication library (MSAL) lehetővé teszi bizonyos jogcímek igénylését interaktív és csendes jogkivonat-beszerzési forgatókönyvekben. Ezt a `claimsRequest` paraméteren keresztül teszi.
 
-Több forgatókönyv is van, ahol ez szükséges. Például:
+Több forgatókönyv, ahol ez szükséges. Példa:
 
-- Az alkalmazás szabványos készletén kívüli jogcímek igénylése.
-- A standard jogcímek adott kombinációinak kérése, amelyek nem adhatók meg hatókörökkel az alkalmazáshoz. Ha például egy hozzáférési jogkivonat a hiányzó jogcímek miatt elutasításra kerül, az alkalmazás a MSAL használatával kérheti le a hiányzó jogcímeket.
+- Jogcímek kérése az alkalmazáshoz beállított szabványon kívül.
+- A szabványos jogcímek adott kombinációinak kérése, amelyek nem adhatók meg az alkalmazás hatóköreinek használatával. Ha például egy hozzáférési jogkivonatot a hiányzó jogcímek miatt utasítanak el, az alkalmazás kérheti a hiányzó jogcímeket az MSAL használatával.
 
 > [!NOTE]
-> A MSAL megkerüli a hozzáférési jogkivonat gyorsítótárát, ha meg van adva jogcím-kérelem. Fontos, hogy csak a `claimsRequest` paramétert adja meg, ha további jogcímek szükségesek (az egyes MSAL API-hívásokban mindig ugyanazt a `claimsRequest` paramétert biztosítjuk).
+> Az MSAL megkerüli a hozzáférési jogkivonat-gyorsítótárat, ha jogcímkérés van megadva. Fontos, hogy csak `claimsRequest` akkor adjon meg paramétert, ha további jogcímekre van szükség (szemben azzal, hogy mindig ugyanazt `claimsRequest` a paramétert adja meg minden Egyes MSAL API-hívásban).
 
-`claimsRequest` megadható `MSALSilentTokenParameters` és `MSALInteractiveTokenParameters`:
+`claimsRequest`a következő `MSALInteractiveTokenParameters`ben `MSALSilentTokenParameters` adható meg:
 
 ```objc
 /*!
@@ -54,16 +54,16 @@ Több forgatókönyv is van, ahol ez szükséges. Például:
 
 @end
 ```
-`MSALClaimsRequest` a JSON-jogcímek kérelmének NSString-ábrázolásával hozható létre. 
+`MSALClaimsRequest`a JSON-jogcímek kérelem NSString-ábrázolásából építhető fel. 
 
-Objective-C:
+C célkitűzés:
 
 ```objc
 NSError *claimsError = nil;
 MSALClaimsRequest *request = [[MSALClaimsRequest alloc] initWithJsonString:@"{\"id_token\":{\"auth_time\":{\"essential\":true},\"acr\":{\"values\":[\"urn:mace:incommon:iap:silver\"]}}}" error:&claimsError];
 ```
 
-Swift
+Swift:
 
 ```swift
 var requestError: NSError? = nil
@@ -73,9 +73,9 @@ let request = MSALClaimsRequest(jsonString: "{\"id_token\":{\"auth_time\":{\"ess
 
 
 
-További konkrét jogcímek igénylésével is módosítható:
+További konkrét állítások kérésével is módosítható:
 
-Objective-C:
+C célkitűzés:
 
 ```objc
 MSALIndividualClaimRequest *individualClaimRequest = [[MSALIndividualClaimRequest alloc] initWithName:@"custom_claim"];
@@ -85,7 +85,7 @@ individualClaimRequest.additionalInfo.value = @"myvalue";
 [request requestClaim:individualClaimRequest forTarget:MSALClaimsRequestTargetIdToken error:&claimsError];
 ```
 
-Swift
+Swift:
 
 ```swift
 let individualClaimRequest = MSALIndividualClaimRequest(name: "custom-claim")
@@ -103,9 +103,9 @@ do {
 
 
 
-ezt követően be kell állítani a token paramétereit, és meg kell adni az MSAL jogkivonat-felvásárlási API-k egyikének: `MSALClaimsRequest`
+`MSALClaimsRequest`ezután be kell állítani a token paramétereket, és meg kell adni az egyik MSAL token beszerzésAPI-k:
 
-Objective-C:
+C célkitűzés:
 
 ```objc
 MSALPublicClientApplication *application = ...;
@@ -118,7 +118,7 @@ parameters.claimsRequest = request;
 [application acquireTokenWithParameters:parameters completionBlock:completionBlock];
 ```
 
-Swift
+Swift:
 
 ```swift
 let application: MSALPublicClientApplication!
@@ -133,6 +133,6 @@ application.acquireToken(with: parameters) { (result: MSALResult?, error: Error?
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [hitelesítési folyamatokról és az alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md)
+További információ a [hitelesítési folyamatokról és az alkalmazásforgatókönyvekről](authentication-flows-app-scenarios.md)

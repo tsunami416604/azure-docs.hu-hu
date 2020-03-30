@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali Linux Support – Azure
-description: A Windows rendszerű virtuális asztali Linux-támogatás rövid áttekintése.
+title: Windows Virtual Desktop Linux támogatás – Azure
+description: Rövid áttekintés a Windows virtual desktop Linux-támogatásáról.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,59 +9,59 @@ ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 967fd1fa182b7c8e581fd74cc287c5a6ba0e4038
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127824"
 ---
 # <a name="linux-support"></a>Linux-támogatás
 
-A Windows rendszerű virtuális asztali Linux SDK-val különálló Windowsos virtuális asztali ügyfelet hozhat létre. Azt is megteheti, hogy lehetővé teszi a Windows rendszerű virtuális asztali támogatás használatát az ügyfélalkalmazás számára. Ez a rövid útmutató ismerteti, hogy mi a Linux SDK, és hogyan kezdheti meg a használatát.
+A Linux SDK for Windows Virtual Desktop segítségével önálló Windows Virtual Desktop ügyfélrendszert hozhat létre. Azt is használhatja, hogy engedélyezze a Windows virtuális asztal támogatását az ügyfélalkalmazásban. Ez a gyors útmutató elmagyarázza, mi a Linux SDK, és hogyan kell használni.
 
-## <a name="what-is-the-linux-sdk"></a>Mi a Linux SDK?
+## <a name="what-is-the-linux-sdk"></a>Mi az a Linux SDK?
 
-Az SDK API-k segítségével lekérheti az erőforrás-hírcsatornákat, csatlakozhat asztali vagy távoli alkalmazás-munkamenetekhez, és számos olyan átirányítást használhat, amelyet az első féltől származó ügyfelek támogatnak.
+Az SDK API-k segítségével lekérheti az erőforrás-hírcsatornákat, csatlakozhat asztali vagy távoli alkalmazásmunkamenetekhez, és számos olyan átirányítást használhat, amelyet a külső ügyfelek támogatnak.
 
 > [!NOTE]
-> Az SDK jelenleg fejlesztés alatt áll. Ezt a dokumentumot az elérhető SDK-hoz való hozzáférésre vonatkozó utasításokkal frissítjük.
+> Az SDK jelenleg fejlesztés alatt áll. Frissítjük ezt a dokumentumot az SDK elérésére vonatkozó utasításokkal, amint az elérhetővé válik.
 
 ### <a name="supported-linux-distributions"></a>Támogatott Linux-disztribúciók
 
-Az SDK az Ubuntu 18,04-es vagy újabb verzióján alapuló legtöbb operációs rendszerrel kompatibilis. Ha más Linux-disztribúcióval rendelkezik, segítünk Önnek az igényeinek legmegfelelőbb támogatásban.
+Az SDK kompatibilis az Ubuntu 18.04-es vagy újabb verzión alapuló legtöbb operációs rendszerrel. Ha van egy másik Linux disztribúció, tudunk dolgozni veled, hogy kitaláljuk, hogyan lehet a legjobban támogatja az Ön igényeinek.
 
-### <a name="feature-support"></a>Funkciók támogatása
+### <a name="feature-support"></a>Szolgáltatás támogatása
 
-Az SDK több kapcsolatot is támogat az asztali és a távoli alkalmazás-munkamenetekhez. A következő átirányítások támogatottak:
+Az SDK támogatja az asztali és távoli alkalmazásmunkamenetekhez való több csatlakozást. A következő átirányítások támogatottak:
 
 | Átirányítás       | Támogatott |
 | :---------------- | :-------: |
 | Billentyűzet          | &#10004;  |
 | Egér             | &#10004;  |
-| Hangbemenet          | &#10004;  |
-| Audiokimenet         | &#10004;  |
+| Hang          | &#10004;  |
+| Hang ki         | &#10004;  |
 | Vágólap (szöveg)  | &#10004;  |
-| Vágólap (rendszerkép) | &#10004;  |
+| Vágólap (kép) | &#10004;  |
 | Vágólap (fájl)  | &#10004;  |
-| Intelligens kártya         | &#10004;  |
+| Smartcard         | &#10004;  |
 | Meghajtó/mappa      | &#10004;  |
 
-Az SDK emellett több figyelő megjelenítési konfigurációt is támogat, feltéve, hogy a munkamenethez kiválasztott figyelők összefüggőek.
+Az SDK több monitormegjelenítési konfigurációját is támogatja, feltéve, hogy a munkamenethez kiválasztott monitorok összefüggőek.
 
-Frissítjük a dokumentumot az új funkciók és átirányítások támogatásának hozzáadásakor. Ha új szolgáltatásokat és egyéb fejlesztési funkciókat szeretne javasolni, látogasson el a [UserVoice oldalára](https://go.microsoft.com/fwlink/?linkid=2116523).
+Frissítjük ezt a dokumentumot, amikor új funkciókat és átirányításokat adunk hozzá. Ha új funkciókat és egyéb fejlesztéseket szeretne javasolni, látogasson el [uservoice oldalunkra.](https://go.microsoft.com/fwlink/?linkid=2116523)
 
 ## <a name="get-started-with-the-linux-sdk"></a>Ismerkedés a Linux SDK-val
 
-A Linux-ügyfél Windows rendszerű virtuális asztali környezethez való fejlesztése előtt a következőket kell tennie:
+A Windows Virtual Desktop Linux-ügyfélprogram fejlesztése előtt a következő dolgokat kell tennie:
 
-1. Windows rendszerű virtuális asztali környezet létrehozása és üzembe helyezése teszteléshez vagy éles környezetben való használatra.
-2. Tesztelje az elérhető első féltől származó ügyfeleket a Windows rendszerű virtuális asztali felhasználói élmény megismeréséhez.
+1. Windows virtuális asztali környezet létrehozása és üzembe helyezése tesztelésvagy éles környezet teszteléséhez vagy éles használathoz.
+2. Tesztelje a rendelkezésre álló külső ügyfeleket, hogy megismerkedjen a Windows Virtual Desktop felhasználói élményével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse meg a következő ügyfelek dokumentációját:
+Tekintse meg dokumentációnkat a következő ügyfelek számára:
 
-- [Windows asztali ügyfél](connect-windows-7-and-10.md)
+- [Windows Asztali ügyfél](connect-windows-7-and-10.md)
 - [Webes ügyfél](connect-web.md)
 - [Android-ügyfél](connect-android.md)
 - [macOS-ügyfél](connect-macos.md)

@@ -9,12 +9,12 @@ ms.date: 04/17/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 2ea82f80396c5254ac4ad47bd2395413682a96bc
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71168609"
 ---
-## <a name="supported-ssh-key-formats"></a>Támogatott SSH-kulcsok formátuma
+## <a name="supported-ssh-key-formats"></a>Támogatott SSH-kulcsformátumok
 
-Az Azure jelenleg az SSH protokoll 2 (SSH-2) RSA nyilvános-titkos kulcs párokat támogatja, amelyek minimális hossza 2048 bit. Más kulcsok, például a ED25519 és a ECDSA nem támogatottak. 
+Az Azure jelenleg támogatja az SSH protocol 2 (SSH-2) RSA nyilvános anammár a 2048 bites nyilvános anammára lévő kulcspárokat. Más kulcsfontosságú formátumok, például az ED25519 és az ECDSA nem támogatottak. 

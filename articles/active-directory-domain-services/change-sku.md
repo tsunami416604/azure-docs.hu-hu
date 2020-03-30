@@ -1,6 +1,6 @@
 ---
-title: Egy Azure AD Domain Services SKU-jának módosítása | Microsoft Docs
-description: Megtudhatja, hogyan módosítható a Azure AD Domain Services felügyelt tartomány SKU-szintje, ha az üzleti követelmények megváltoznak
+title: Az Azure AD tartományi szolgáltatások termékváltozatának módosítása | Microsoft dokumentumok
+description: Ismerje meg, hogyan kell a Termékváltozat-szintet egy Azure AD tartományi szolgáltatások által kezelt tartományban, ha az üzleti követelmények megváltoznak
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,60 +11,60 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
 ms.openlocfilehash: b65310569e95173b88dd0aa0dfe1dbacd86cc8fc
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126705"
 ---
-# <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>Meglévő Azure AD Domain Services felügyelt tartomány SKU-jának módosítása
+# <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>Meglévő Azure AD tartományi szolgáltatások felügyelt tartományának termékváltozatának módosítása
 
-Azure Active Directory Domain Services (Azure AD DS) esetében a rendelkezésre álló teljesítmény és szolgáltatások az SKU típusán alapulnak. A szolgáltatásbeli különbségek közé tartozik a biztonsági mentés gyakorisága vagy az egyirányú kimenő erdő megbízhatósági kapcsolatainak maximális száma (jelenleg előzetes verzióban érhető el). A felügyelt tartomány létrehozásakor ki kell választania egy SKU-t, és az üzleti igényeknek megfelelően át lehet váltani a SKU-ra a felügyelt tartomány telepítése után. Az üzleti követelmények változásai több gyakori biztonsági mentésre vagy további erdőszintű megbízhatósági kapcsolatok létrehozására is igénybe vehetnek. A különböző SKU-i korlátokkal és díjszabással kapcsolatos további információkért lásd az [azure AD DS SKU-fogalmakat][concepts-sku] és az [Azure AD DS díjszabási][pricing] oldalát.
+Az Azure Active Directory tartományi szolgáltatásokban (Azure AD DS) a rendelkezésre álló teljesítmény és funkciók a termékváltozat típusától függenek. Ezek a szolgáltatáskülönbségek közé tartozik a biztonsági mentés gyakorisága vagy az egyirányú kimenő erdőszintű bizalmi kapcsolatok maximális száma (jelenleg előzetes verzióban). A felügyelt tartomány létrehozásakor kiválaszthat egy termékváltozatot, és a felügyelt tartomány üzembe helyezése után az üzleti igények változásakor fel- vagy leválthatja a termékváltozatokat. Az üzleti követelmények módosításai közé tartozhat a gyakoribb biztonsági mentések szükségessége, illetve további erdőszintű bizalmi kapcsolatok létrehozása. A különböző termékváltozatok korlátairól és díjszabásáról az [Azure AD DS Termékváltozat-fogalmak][concepts-sku] és az [Azure AD DS díjszabási lapjai][pricing] című témakörben talál további információt.
 
-Ez a cikk bemutatja, hogyan módosíthatja az SKU-t egy meglévő Azure AD DS felügyelt tartományhoz a Azure Portal használatával.
+Ez a cikk bemutatja, hogyan módosíthatja a termékváltozat egy meglévő Azure AD DS felügyelt tartomány az Azure Portalon keresztül.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
+A cikk végrehajtásához a következő erőforrásokra és jogosultságokra van szükség:
 
 * Aktív Azure-előfizetés.
-    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
-    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
-* Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
-    * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
+    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Az előfizetéshez társított Azure Active Directory-bérlő, amely et egy helyszíni könyvtárral vagy egy csak felhőbeli könyvtárral szinkronizált.
+    * Szükség esetén [hozzon létre egy Azure Active Directory-bérlőt,][create-azure-ad-tenant] vagy [társítson egy Azure-előfizetést a fiókjához.][associate-azure-ad-tenant]
+* Az Azure Active Directory tartományi szolgáltatások felügyelt tartomány a konfigurált és konfigurált az Azure AD-bérlő.
+    * Szükség esetén töltse ki az oktatóanyagot [az Azure Active Directory tartományi szolgáltatások példányának létrehozásához és konfigurálásához.][create-azure-ad-ds-instance]
 
-## <a name="sku-change-limitations"></a>SKU-változások korlátai
+## <a name="sku-change-limitations"></a>Termékváltozat módosítási korlátai
 
-Az SKU-t az Azure AD DS felügyelt tartomány üzembe helyezése után felfelé vagy lefelé módosíthatja. Ha azonban egy erőforrás-erdőt (jelenleg előzetes verzióban) használ, és egyirányú kimenő erdőszintű megbízhatósági kapcsolatot hozott létre az Azure AD DS egy helyszíni AD DS-környezetbe, bizonyos korlátozások vonatkoznak az SKU-módosítási műveletre. A *prémium* és a *vállalati* SKU korlátozza a létrehozható megbízhatósági kapcsolatok számát. Nem válthat olyan SKU-ra, amelynek a maximális korlátja alacsonyabb, mint a jelenleg konfigurálva.
+Az Azure AD DS felügyelt tartomány üzembe helyezése után a skus-ok módosíthatók fel- vagy levethetők. Ha azonban egy erőforráserdőt használ (jelenleg előzetes verzióban), és egyirányú kimenő erdőszintű bizalmi kapcsolatokat hozott létre az Azure AD DS-ből egy helyszíni AD DS-környezetbe, vannak bizonyos korlátozások a termékváltozat módosítási műveletére vonatkozóan. A *prémium szintű* és a *nagyvállalati* ska-k korlátozzák a létrehozható bizalmi kapcsolatok számát. A jelenleg konfiguráltnál alacsonyabb maximális korláttal rendelkező termékváltozatra nem válthat.
 
-Például:
+Példa:
 
-* Ha két erdőszintű megbízhatósági kapcsolatot hozott létre a *prémium* SKU-ra, akkor nem lehet a *standard* SKU-ra váltani. A *standard* SKU nem támogatja az erdőszintű megbízhatósági kapcsolatot.
-* Ha pedig hét megbízhatósági kapcsolatot hozott létre a *prémium* SKU-ra, akkor nem módosítható a *vállalati* SKU-ra. A *vállalati* SKU legfeljebb öt megbízhatósági kapcsolatot támogat.
+* Ha két erdőszintű megbízhatósági kapcsolatot hozott létre a *prémium szintű* termékváltozaton, nem módosíthatja a *standard* termékváltozatra. A *standard* termékváltozat nem támogatja az erdőszintű bizalmi kapcsolatokat.
+* Vagy ha hét megbízhatósági kapcsolatot hozott létre a *prémium szintű* termékváltozaton, nem módosíthatja a *vállalati* termékváltozatra. A *vállalati* termékváltozat legfeljebb öt megbízhatósági kapcsolatot támogat.
 
-További információ ezekről a korlátokról: [Azure AD DS SKU-funkciók és korlátozások][concepts-sku].
+Ezekről a korlátokról az [Azure AD DS Termékváltozat funkcióiés korlátai][concepts-sku]című témakörben talál további információt.
 
-## <a name="select-a-new-sku"></a>Új SKU kiválasztása
+## <a name="select-a-new-sku"></a>Új termékváltozat kiválasztása
 
-Ha egy Azure AD DS felügyelt tartomány SKU-át szeretné módosítani a Azure Portal használatával, hajtsa végre a következő lépéseket:
+Egy Azure AD DS felügyelt tartomány termékváltozatának módosítása az Azure Portalon, hajtsa végre az alábbi lépéseket:
 
-1. A Azure Portal tetején keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a felügyelt tartományt a listából, például *aaddscontoso.com*.
-1. Az Azure AD DS lap bal oldali menüjében válassza a **beállítások > SKU**lehetőséget.
+1. Az Azure Portal tetején keresse meg és válassza ki az **Azure AD tartományi szolgáltatásokat.** Válassza ki a felügyelt tartományt a listából, például *aaddscontoso.com.*
+1. Az Azure AD DS lap bal oldalán található menüben válassza a **Beállítások > termékváltozat**lehetőséget.
 
-    ![Válassza ki az SKU menüpontot az Azure AD DS felügyelt tartományhoz a Azure Portal](media/change-sku/overview-change-sku.png)
+    ![Válassza ki az Azure AD DS felügyelt tartományának Termékváltozat menübeállítását az Azure Portalon](media/change-sku/overview-change-sku.png)
 
-1. A legördülő menüben válassza ki az Azure AD DS felügyelt tartományhoz használni kívánt SKU-t. Ha rendelkezik erőforrás-erdővel, a *szabványos* SKU-t nem választhatja erdőszintű megbízhatóságként, csak a *vállalati* SKU-ban vagy annál újabb verzióban.
+1. A legördülő menüben válassza ki az Azure AD DS felügyelt tartományához kívánt termékváltozatot. Ha rendelkezik egy erőforráserdővel, nem választhatja ki *a szabványos* termékváltozatot, mivel az erdőszintű bizalmi kapcsolatok csak a *vállalati* termékváltozaton vagy magasabb szintű en érhetők el.
 
-    Válassza ki a kívánt SKU-t a legördülő menüből, majd válassza a **Mentés**lehetőséget.
+    Válassza ki a kívánt termékváltozatot a legördülő menüből, majd válassza a **Mentés parancsot.**
 
-    ![Válassza ki a szükséges SKU-t a Azure Portal legördülő menüjében.](media/change-sku/change-sku-selection.png)
+    ![Válassza ki a szükséges termékváltozatot az Azure Portal legördülő menüjéből](media/change-sku/change-sku-selection.png)
 
-Az SKU típusának módosításához egy-két percet is igénybe vehet.
+A termékváltozat típusának módosítása egy-két percet is igénybe vehet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha rendelkezik erőforrás-erdővel, és további megbízhatósági kapcsolatokat szeretne létrehozni az SKU módosítása után, tekintse [meg a kimenő erdő megbízhatóságának létrehozása helyszíni tartományhoz az Azure AD DS (előzetes verzió)][create-trust]című témakört.
+Ha rendelkezik egy erőforráserdővel, és további bizalmi kapcsolatokat szeretne létrehozni a termékváltozat módosítása után, olvassa [el a Kimenő erdőszintű bizalmi kapcsolat létrehozása egy helyszíni tartományban az Azure AD DS-ben (előzetes verzió)][create-trust]című témakört.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

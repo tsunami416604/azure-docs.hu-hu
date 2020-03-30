@@ -1,7 +1,7 @@
 ---
-title: Böngészők testreszabása & webnézetekben (MSAL iOS/macOS) | Azure
+title: Böngészők testreszabása & WebViews (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogyan szabhatja testre a MSAL iOS/macOS böngésző felhasználói felületét.
+description: Ismerje meg, hogyan szabhatja testre az MSAL iOS/macOS böngészőt a felhasználók bejelentkezéséhez.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,80 +14,80 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 759f61860c62bcb668db6844df28c52fa28eac80
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085909"
 ---
-# <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Útmutató: böngészők és webnézetek testreszabása iOS/macOS rendszerhez
+# <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Útmutató: Böngészők és webnézetek testreszabása iOS/macOS rendszeren
 
-Interaktív hitelesítéshez böngésző szükséges. IOS rendszeren a Microsoft Authentication Library (MSAL) alapértelmezés szerint a rendszerböngészőt használja (amely az alkalmazás tetején jelenhet meg), hogy interaktív hitelesítést végezzen a felhasználók bejelentkezéséhez. A rendszerböngészővel megoszthatja az egyszeri bejelentkezés (SSO) állapotát más alkalmazásokkal és webalkalmazásokkal.
+Az interaktív hitelesítéshez webböngésző szükséges. IOS rendszeren a Microsoft Authentication Library (MSAL) alapértelmezés szerint a rendszer webböngészőjét használja (amely az alkalmazás tetején jelenhet meg) interaktív hitelesítéssel a felhasználók bejelentkezéséhez. A rendszerböngésző használata azzal az előnnyel jár, hogy megosztja az Egyszeri bejelentkezés (SSO) állapotot más alkalmazásokkal és webalkalmazásokkal.
 
-A felhasználói élmény megváltoztatásához testreszabhatja a konfigurációt a webes tartalmak megjelenítésének egyéb beállításaira, például a következőkre:
+A felhasználói élményt úgy módosíthatja, hogy a konfigurációt a webes tartalom megjelenítésének egyéb beállításaira szabja, például:
 
 Csak iOS esetén:
 
 - [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)
-- [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession?language=objc) 
+- [SFAuthentication session](https://developer.apple.com/documentation/safariservices/sfauthenticationsession?language=objc) 
 - [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller?language=objc)
 
-IOS és macOS esetén:
+iOS és macOS esetén:
 
 - [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc).
 
-A macOS-MSAL csak a `WKWebView`támogatja.
+Az MSAL csak a `WKWebView`macOS rendszeren támogatja a .
 
 ## <a name="system-browsers"></a>Rendszerböngészők
 
-Az iOS, a `ASWebAuthenticationSession`, a `SFAuthenticationSession`és a `SFSafariViewController` rendszerböngészőnek tekintendő. Általánosságban elmondható, hogy a rendszerböngészők a Safari böngésző alkalmazással osztják meg a cookie-kat és más webhely-adataikat.
+IOS , `ASWebAuthenticationSession` `SFAuthenticationSession`, `SFSafariViewController` és rendszerböngészőnek minősül. Általánosságban elmondható, hogy a rendszerböngészők cookie-kat és egyéb webhelyadatokat osztanak meg a Safari böngészőalkalmazással.
 
-Alapértelmezés szerint a MSAL dinamikusan felismeri az iOS-verziót, és kiválasztja az adott verzióban elérhető ajánlott rendszerböngészőt. IOS 12 + esetén `ASWebAuthenticationSession`. 
+Alapértelmezés szerint az MSAL dinamikusan észleli az iOS-verziót, és kiválasztja az adott verzióban elérhető ajánlott rendszerböngészőt. Az iOS 12+ `ASWebAuthenticationSession`rendszeren ez lesz . 
 
 | Verzió | Webböngésző |
 |:-------------:|:-------------:|
-| iOS 12 + | ASWebAuthenticationSession |
-| iOS 11 | SFAuthenticationSession |
+| iOS 12+ | ASWebAuthenticationSession |
+| iOS 11 | SFAuthentication session |
 | iOS 10 | SFSafariViewController |
 
-A fejlesztők másik rendszerböngészőt is választhatnak a MSAL-alkalmazásokhoz:
+A fejlesztők másik rendszerböngészőt is választhatnak az MSAL-alkalmazásokhoz:
 
-- a `SFAuthenticationSession` a `ASWebAuthenticationSession`iOS 11 verziója.
-- `SFSafariViewController` az általános célú, és felületet biztosít a webes böngészéshez, és a bejelentkezési célokra is használható. Az iOS 9 és 10 rendszerekben a cookie-kat és más webhelyeket megosztják a Safariban – de nem iOS 11 vagy újabb verziókban.
+- `SFAuthenticationSession`az iOS 11 `ASWebAuthenticationSession`verziója.
+- `SFSafariViewController`általánosabb célja, és egy felületet biztosít a böngészéshez az interneten, és használható bejelentkezési célokra is. Az iOS 9 és 10 rendszerben a cookie-k és a webhely egyéb adatai meg vannak osztva a Safarival , de nem az iOS 11-es és újabb verzióiban.
 
 ## <a name="in-app-browser"></a>Alkalmazáson belüli böngésző
 
-A [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview) egy alkalmazásbeli böngésző, amely webes tartalmat jelenít meg. A cookie-kat és a webhelyeket nem osztja meg más **WKWebView** -példányokkal vagy a Safari böngészővel. A WKWebView egy platformfüggetlen böngésző, amely iOS és macOS rendszereken egyaránt elérhető.
+[A WKWebView](https://developer.apple.com/documentation/webkit/wkwebview) egy alkalmazáson belüli böngésző, amely webes tartalmat jelenít meg. Nem osztja meg a cookie-kat vagy a webhely adatait más **WKWebView** példányokkal vagy a Safari böngészővel. A WKWebView egy platformfüggetlen böngésző, amely iOS és macOS rendszeren is elérhető.
 
-## <a name="cookie-sharing-and-single-sign-on-sso-implications"></a>A cookie-megosztás és az egyszeri bejelentkezés (SSO) következményei
+## <a name="cookie-sharing-and-single-sign-on-sso-implications"></a>A cookie-k megosztása és az egyszeri bejelentkezés (SSO) vonatkozásai
 
-A használt böngésző a cookie-k megosztása miatt hatással van az egyszeri bejelentkezéses felhasználói élményre. Az alábbi táblázatok összefoglalják a böngészőben az egyszeri bejelentkezést.
+Az Ön által használt böngésző hatással van az SSO-élményre a cookie-k megosztása miatt. Az alábbi táblázatok az SSO-élményeket foglalják össze böngészőnként.
 
-| Technológia    | Böngésző típusa  | iOS-elérhetőség | macOS-elérhetőség | Cookie-k és egyéb adatforgalom megosztása  | MSAL rendelkezésre állása | SSO |
+| Technológia    | Böngésző típusa  | iOS elérhetősége | a macOS elérhetősége | Cookie-k és egyéb adatok megosztása  | MSAL elérhetősége | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Rendszer | iOS12 és fel | macOS 10,15 és fel | Igen | csak iOS esetén | w/Safari-példányok
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Rendszer | iOS11 és fel | N/A | Igen | csak iOS esetén |  w/Safari-példányok
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Rendszer | iOS11 és fel | N/A | Nem | csak iOS esetén | Nem * *
-| **SFSafariViewController** | Rendszer | iOS10 | N/A | Igen | csak iOS esetén |  w/Safari-példányok
-| **WKWebView**  | Alkalmazáson belüli | iOS8 és fel | macOS 10,10 és fel | Nem | iOS és macOS | Nem * *
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Rendszer | iOS12 és fel | macOS 10.15 és fel | Igen | csak iOS esetén | w/ Safari-példányok
+| [SFAuthentication session](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Rendszer | iOS11 és fel | N/A | Igen | csak iOS esetén |  w/ Safari-példányok
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Rendszer | iOS11 és fel | N/A | Nem | csak iOS esetén | Nem**
+| **SFSafariViewController** | Rendszer | iOS10 | N/A | Igen | csak iOS esetén |  w/ Safari-példányok
+| **WKWebView**  | Alkalmazáson belüli | iOS8 és fel | macOS 10.10 és fel | Nem | iOS és macOS | Nem**
 
-\* * Az egyszeri bejelentkezés működéséhez a tokeneket meg kell osztani az alkalmazások között. Ehhez jogkivonat-gyorsítótár vagy közvetítő alkalmazás szükséges, például Microsoft Authenticator iOS rendszerhez.
+** Ahhoz, hogy az Egyszeri szolgáltatás működjön, a jogkivonatokat meg kell osztani az alkalmazások között. Ehhez jogkivonat-gyorsítótárra vagy brókeralkalmazásra, például az iOS-hez való Microsoft Authenticator alkalmazásra van szükség.
 
-## <a name="change-the-default-browser-for-the-request"></a>A kérelem alapértelmezett böngészője módosítása
+## <a name="change-the-default-browser-for-the-request"></a>A kérelem alapértelmezett böngészőjének módosítása
 
-A következő tulajdonságnak a `MSALWebviewParameters`ban való módosításához használhatja az alkalmazáson belüli böngészőt vagy egy adott rendszerböngészőt az UX-követelményektől függően:
+A felhasználói élmény követelményeitől függően alkalmazáson belüli böngészőt vagy egy adott rendszerböngészőt a következő tulajdonság módosításával `MSALWebviewParameters`használhat:
 
 ```objc
 @property (nonatomic) MSALWebviewType webviewType;
 ```
 
-## <a name="change-per-interactive-request"></a>Módosítás egy interaktív kérelem alapján
+## <a name="change-per-interactive-request"></a>Módosítás interaktív kérésenként
 
-Minden kérelem konfigurálható úgy, hogy felülírja az alapértelmezett böngészőt úgy, hogy módosítja a `MSALInteractiveTokenParameters.webviewParameters.webviewType` tulajdonságot, mielőtt átadná azt a `acquireTokenWithParameters:completionBlock:` API-nak.
+Minden kérelem beállítható úgy, hogy felülbírálja `MSALInteractiveTokenParameters.webviewParameters.webviewType` az alapértelmezett böngészőt a tulajdonság módosításával, mielőtt átadná azt az `acquireTokenWithParameters:completionBlock:` API-nak.
 
-Emellett a MSAL támogatja az átadást egy egyéni `WKWebView` a `MSALInteractiveTokenParameters.webviewParameters.customWebView` tulajdonság beállításával.
+Emellett az MSAL támogatja az `WKWebView` egyéni átadást a `MSALInteractiveTokenParameters.webviewParameters.customWebView` tulajdonság beállításával.
 
-Például:
+Példa:
 
 Objective-C
 ```objc
@@ -112,7 +112,7 @@ let interactiveParameters = MSALInteractiveTokenParameters(scopes: ["myscope"], 
 app.acquireToken(with: interactiveParameters, completionBlock: completionBlock)
 ```
 
-Ha egyéni webnézetet használ, a rendszer az értesítéseket használja a megjelenített webes tartalom állapotának jelzésére, például:
+Ha egyéni webmegtekintést használ, az értesítések jelzik a megjelenített webes tartalom állapotát, például:
 
 ```objc
 /*! Fired at the start of a resource load in the webview. The URL of the load, if available, will be in the @"url" key in the userInfo dictionary */
@@ -133,7 +133,7 @@ extern NSString *MSALWebAuthWillSwitchToBrokerApp;
 
 ### <a name="options"></a>Beállítások
 
-Az összes támogatott MSAL-típus deklarálva van a [MSALWebviewType enumerálásban](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALDefinitions.h#L47)
+Az MSAL által támogatott webböngésző-típusok deklarálva vannak az [MSALWebviewType enum](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALDefinitions.h#L47)
 
 ```objc
 typedef NS_ENUM(NSInteger, MSALWebviewType)
@@ -157,6 +157,6 @@ typedef NS_ENUM(NSInteger, MSALWebviewType)
 };
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [hitelesítési folyamatokról és az alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md)
+További információ a [hitelesítési folyamatokról és az alkalmazásforgatókönyvekről](authentication-flows-app-scenarios.md)

@@ -1,7 +1,7 @@
 ---
 title: Az Azure HDInsight-fürt megfelelő virtuálisgép-méretének kiválasztása
-description: Megtudhatja, hogyan választhatja ki a HDInsight-fürthöz megfelelő virtuálisgép-méretet.
-keywords: VM-méretek, szektorcsoport-méretek, fürtkonfiguráció
+description: Ismerje meg, hogyan választhatja ki a hdinsight-fürt megfelelő virtuálisgép-méretét.
+keywords: vm-méretek, fürtméretek, fürtkonfiguráció
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,68 +10,68 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73682212"
 ---
-# <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>A virtuális gép megfelelő méretének kiválasztása az Azure HDInsight-fürthöz
+# <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Az Azure HDInsight-fürt megfelelő virtuálisgép-méretének kiválasztása
 
-Ez a cikk azt ismerteti, hogyan választhatja ki a megfelelő virtuálisgép-méretet a HDInsight-fürt különböző csomópontjaihoz. 
+Ez a cikk ismerteti, hogyan válassza ki a megfelelő virtuális gép méretét a HDInsight-fürt különböző csomópontjaihoz. 
 
-Először is megtudhatja, hogy a virtuális gépek, például a CPU-feldolgozás, a RAM-méret és a hálózati késések tulajdonságai milyen hatással lesznek a számítási feladatok feldolgozására. Ezután gondoljon az alkalmazásra, és hogy az hogyan illeszkedik a különböző virtuálisgép-családokra. Győződjön meg arról, hogy a használni kívánt virtuálisgép-család kompatibilis-e a telepítendő fürt típusával. Az egyes fürtök összes támogatott és ajánlott virtuálisgép-méretének listáját lásd: az [Azure HDInsight által támogatott csomópont-konfigurációk](hdinsight-supported-node-configuration.md). Végül egy teljesítményteszt-folyamat segítségével tesztelheti a számítási feladatokat, és ellenőrizheti, hogy az adott családon belül melyik SKU megfelelő az Ön számára.
+Először is, hogy megértsék, hogy a virtuális gép tulajdonságai, például a CPU-feldolgozás, a RAM-méret és a hálózati késés hatással lesz a számítási feladatok feldolgozását. Ezután gondolja át az alkalmazást, és hogyan egyezik meg azzal, amire a különböző virtuálisgép-családok vannak optimalizálva. Győződjön meg arról, hogy a használni kívánt virtuálisgép-család kompatibilis a telepíteni kívánt fürttípussal. Az egyes fürttípusokhoz támogatott és ajánlott virtuálisgép-méretek listáját az [Azure HDInsight által támogatott csomópontkonfigurációk című témakörben tetszetős.](hdinsight-supported-node-configuration.md) Végül egy teljesítményértékelési folyamat segítségével tesztelheti néhány minta számítási feladatok, és ellenőrizze, hogy melyik termékváltozat az adott családon belül az Ön számára megfelelő.
 
-A fürt más szempontjainak megtervezésével, például a tárolási típus vagy a fürt méretének kiválasztásával kapcsolatos további információkért lásd: [HDInsight-fürtök kapacitásának megtervezése](hdinsight-capacity-planning.md).
+A fürt egyéb szempontjainak tervezésével, például a tárolótípus vagy a fürtméret kiválasztásával kapcsolatos további tudnivalókért olvassa el [a Kapacitástervezés hdinsight-fürtökhöz című témakört.](hdinsight-capacity-planning.md)
 
-## <a name="vm-properties-and-big-data-workloads"></a>Virtuális gép tulajdonságai és big data számítási feladatok
+## <a name="vm-properties-and-big-data-workloads"></a>Virtuálisgép-tulajdonságok és big data-számítási feladatok
 
-A virtuális gép méretét és típusát a CPU feldolgozási teljesítmény, a RAM mérete és a hálózati késés határozza meg:
+A virtuális gép méretét és típusát a PROCESSZOR feldolgozási teljesítménye, a RAM-méret és a hálózati késés határozza meg:
 
-- CPU: a virtuális gép mérete a magok számát határozza meg. Minél több magot használ, annál nagyobb az egyes csomópontok párhuzamos számítási foka. Emellett egyes virtuálisgép-típusok gyorsabb magokkal rendelkeznek.
+- CPU: A virtuális gép mérete határozza meg a magok számát. Minél több mag, annál nagyobb mértékű párhuzamos számítás minden csomópont képes elérni. Emellett egyes virtuálisgép-típusok gyorsabb magokkal rendelkeznek.
 
-- RAM: a virtuális gép mérete is a virtuális gépen elérhető RAM mennyiségét határozza meg. Olyan munkaterhelések esetében, amelyek a memóriában tárolt adatok feldolgozására, nem pedig a lemezről való olvasásra vonatkoznak, győződjön meg arról, hogy a feldolgozó csomópontok rendelkeznek elegendő memóriával az adatokhoz.
+- RAM: A virtuális gép mérete is diktálja a virtuális gépben elérhető RAM mennyiségét. A számítási feladatok, amelyek az adatokat a memóriában a feldolgozás, ahelyett, hogy a lemezről olvasás, győződjön meg arról, hogy a munkavégző csomópontok elegendő memóriával rendelkezik, hogy illeszkedjen az adatokhoz.
 
-- Hálózat: a legtöbb fürt típusa esetén a fürt által feldolgozott adattípusok nem helyi lemezen, hanem külső tárolási szolgáltatásban, például Data Lake Storage vagy az Azure Storage-ban találhatók. Vegye figyelembe a hálózati sávszélességet és az átviteli sebességet a csomópont virtuális gépe és a Storage szolgáltatás között. A virtuális gépek számára elérhető hálózati sávszélesség általában nagyobb méretekben nő. Részletekért lásd: virtuálisgép- [méretek áttekintése](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+- Hálózat: A legtöbb fürttípus esetében a fürt által feldolgozott adatok nem a helyi lemezen vannak, hanem egy külső tárolási szolgáltatásban, például a Data Lake Storage-ban vagy az Azure Storage-ban. Vegye figyelembe a hálózati sávszélesség és átviteli a csomópont virtuális gép és a tárolási szolgáltatás között. A virtuális gép számára elérhető hálózati sávszélesség általában nagyobb méretben növekszik. További részletek: [Virtuálisgép-méretek – áttekintés.](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)
 
 ## <a name="understanding-vm-optimization"></a>A virtuális gépek optimalizálásának ismertetése
 
-Az Azure-beli virtuálisgép-családok különböző használati esetekre vannak optimalizálva. Az alábbi táblázatban megtalálja a legnépszerűbb használati eseteket és a nekik megfelelő virtuálisgép-családokat.
+Az Azure virtuálisgép-családok a különböző használati esetekre vannak optimalizálva. Az alábbi táblázatban található néhány, a legnépszerűbb használati esetek és a virtuális gép családok, amelyek megfelelnek nekik.
 
 | Típus                     | Méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Belépési szint](../virtual-machines/linux/sizes-general.md)          | A, Av2  | A CPU-teljesítmény és a memória-konfigurációk a legmegfelelőbbek a belépési szintű munkaterhelésekhez, például a fejlesztéshez és a teszteléshez. Így gazdaságos, kedvező díjszabású lehetőséget biztosítanak az Azure-ral való ismerkedéshez. |
-| [Általános célú](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Kiegyensúlyozott processzor-memória arány. Ideális választás tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, valamint kis és közepes adatforgalmú webkiszolgálókhoz. |
-| [Számításra optimalizált](../virtual-machines/linux/sizes-compute.md)        | F           | Magas processzor-memória arány. Alkalmas közepes adatforgalmú webkiszolgálók, hálózati berendezések, kötegfolyamatok és alkalmazáskiszolgálók számára.        |
-| [Memóriaoptimalizált](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Magas memória-CPU arány. Ideális választás relációs adatbázis-kiszolgálókhoz, közepes és nagy gyorsítótárakhoz és memóriabeli elemzésekhez.                 |
+| [Belépés](../virtual-machines/linux/sizes-general.md)          | A, Av2  | A processzorteljesítmény és a memóriakonfigurációk a legalkalmasabbak a belépő szintű számítási feladatokhoz, például a fejlesztéshez és a teszteléshez. Gazdaságosak, és alacsony költségű lehetőséget biztosítanak az Azure-ral való ismerkedéshez. |
+| [Általános célú](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Kiegyensúlyozott CPU-memória arány. Ideális választások a teszteléshez és a fejlesztéshez, a kicsi és közepes adatbázisokhoz, illetve az alacsony és közepes forgalmú webkiszolgálókhoz. |
+| [Számításra optimalizált](../virtual-machines/linux/sizes-compute.md)        | F           | Magas CPU-memória arány. Jó közepes forgalmú webkiszolgálókhoz, hálózati készülékekhez, kötegelt folyamatokhoz és alkalmazáskiszolgálókhoz.        |
+| [Memóriaoptimalizált](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Magas memória-CPU arány. Ideális választások a relációs adatbázisok kiszolgálóihoz, a közepes és nagy gyorsítótárakhoz, valamint a memóriában végzett elemzésekhez.                 |
 
-- A HDInsight által támogatott régiókban elérhető virtuálisgép-példányok díjszabásával kapcsolatos információkért lásd: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
+- A HDInsight által támogatott régiókban elérhető virtuálisgép-példányok díjszabásáról a [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/)című témakörben talál további információt.
 
-## <a name="cost-saving-vm-types-for-light-workloads"></a>A virtuálisgép-típusok költségmegtakarítása a könnyű számítási feladatokhoz
+## <a name="cost-saving-vm-types-for-light-workloads"></a>Költségtakarékos virtuálisgép-típusok könnyű munkaterheléshez
 
-Ha fényfeldolgozási követelményekkel rendelkezik, az [F sorozat](https://azure.microsoft.com/blog/f-series-vm-size/) jó választás lehet a HDInsight megkezdéséhez. Az alacsonyabb óránkénti listaáron elérhető F-sorozat képviseli a legjobb ár–teljesítmény arányt az Azure-portfólióban az egy vCPU-ra jutó Azure-alapú számítási egységek (Azure Compute Unit, ACU) alapján.
+Ha rendelkezik a könnyű feldolgozási követelményekkel, az [F sorozat](https://azure.microsoft.com/blog/f-series-vm-size/) jó választás lehet a HDInsight megkezdéséhez. Az alacsonyabb óránkénti listaáron elérhető F-sorozat képviseli a legjobb ár–teljesítmény arányt az Azure-portfólióban az egy vCPU-ra jutó Azure-alapú számítási egységek (Azure Compute Unit, ACU) alapján.
 
-A következő táblázat a Fsv2-sorozatú virtuális gépekkel létrehozható fürtök típusát és csomópont-típusait ismerteti.
+Az alábbi táblázat az Fsv2 sorozatú virtuális gépeken létrehozható fürttípusokat és csomóponttípusokat ismerteti.
 
-| Fürt típusa | Verzió | Munkavégző csomópont | Átjárócsomópont | ZooKeeper-csomópont |
+| Fürt típusa | Verzió | Dolgozói csomópont | Fő csomópont | Zookeeper csomópont |
 |---|---|---|---|---|
-| Spark | Összes | F4 és újabb verziók | nem | nem |
-| Hadoop | Összes | F4 és újabb verziók | nem | nem |
-| Kafka | Összes | F4 és újabb verziók | nem | nem |
-| HBase | Összes | F4 és újabb verziók | nem | nem |
-| LLAP | tiltva | nem | nem | nem |
-| Storm | tiltva | nem | nem | nem |
-| ML szolgáltatás | CSAK A HDI 3,6 | F4 és újabb verziók | nem | nem |
+| Spark | Összes | F4 és újabb | nem | nem |
+| Hadoop | Összes | F4 és újabb | nem | nem |
+| Kafka | Összes | F4 és újabb | nem | nem |
+| HBase | Összes | F4 és újabb | nem | nem |
+| LLAP | Tiltva | nem | nem | nem |
+| Storm | Tiltva | nem | nem | nem |
+| ML szolgáltatás | CSAK HDI 3.6 | F4 és újabb | nem | nem |
 
-Az egyes F sorozatú SKU-k specifikációinak megtekintéséhez lásd: [f sorozatú virtuális gépek mérete](https://azure.microsoft.com/blog/f-series-vm-size/).
+Az egyes F sorozatú termékváltozatok specifikációit az [F sorozatú virtuális gépek méretei című témakörben tetszésszerint olvassa](https://azure.microsoft.com/blog/f-series-vm-size/)el.
 
-## <a name="benchmarking"></a>Teljesítménymérésre
+## <a name="benchmarking"></a>Teljesítményértékelés
 
-A teljesítményértékelés a szimulált számítási feladatok különböző virtuális gépeken való futtatásának folyamata, amellyel mérhető, hogy az éles számítási feladatokhoz milyen jól fognak elvégezni. 
+Az összehasonlítás a szimulált számítási feladatok különböző virtuális gépeken való futtatásának folyamata annak mérésére, hogy milyen jól fognak működni az éles számítási feladatokhoz. 
 
-A virtuális gépek és a fürtök méretének összehasonlításával kapcsolatos további információkért lásd: a [fürt kapacitásának megtervezése az Azure HDInsight-ben ](hdinsight-capacity-planning.md#choose-the-vm-size-and-type).
+A virtuális gép sk-ek és a fürtméretek teljesítményértékeléséről további információt a [Fürtkapacitás-tervezés az Azure HDInsightban című témakörben talál. ](hdinsight-capacity-planning.md#choose-the-vm-size-and-type)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure HDInsight által támogatott csomópont-konfigurációk](hdinsight-supported-node-configuration.md)
+- [Az Azure HDInsight támogatja a csomópontkonfigurációkat](hdinsight-supported-node-configuration.md)
 - [A Linux rendszerű virtuális gépek méretei az Azure-ban](../virtual-machines/linux/sizes.md)

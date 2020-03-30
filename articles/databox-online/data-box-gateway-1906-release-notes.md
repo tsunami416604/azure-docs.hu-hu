@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Gateway & Azure Data Box Edge 1906 kibocsátási megjegyzések | Microsoft Docs
-description: Az 1906-es kiadást futtató Azure Data Box Gateway és Azure Data Box Edge kritikus nyitott problémáit és megoldásait ismerteti.
+title: Azure Data Box Gateway & Azure Data Box Edge 1906 kiadási megjegyzések| Microsoft dokumentumok
+description: A cikk az Azure Data Box Gateway és az Azure Data Box Edge 1906-os kiadást futtató fontos nyitott problémáit és megoldásait ismerteti.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,34 +9,34 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 69c905176a5beb1c7d442cd5f1a69161cd520c5a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71099485"
 ---
-# <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Azure Data Box Edge és Azure Data Box Gateway 1906 kibocsátási megjegyzései
+# <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Az Azure Data Box Edge és az Azure Data Box Gateway 1906 kiadási megjegyzések
 
-A következő kibocsátási megjegyzések azonosítják a kritikus nyitott problémákat, valamint a Azure Data Box Edge és Azure Data Box Gateway 1906-es kiadásával kapcsolatos megoldott problémákat.
+A következő kiadási megjegyzések azonosítják a kritikus nyitott problémákat és az Azure Data Box Edge és az Azure Data Box Gateway 1906-os kiadásának megoldott problémáit.
 
-A kibocsátási megjegyzések folyamatosan frissülnek, és olyan kritikus fontosságú problémák észlelhetők, amelyek megkerülő megoldást igényelnek. A Data Box Edge/Data Box Gateway üzembe helyezése előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
+A kiadási megjegyzések folyamatosan frissülnek, és a kerülő megoldáshoz igénylő kritikus problémák felderítése után a hozzájuk. A Data Box Edge/Data Box Gateway telepítése előtt alaposan tekintse át a kiadási megjegyzésekben található információkat.
 
-Ez a kiadás megfelel a szoftver verzióinak:
+Ez a kiadás a szoftververzióknak felel meg:
 
-- **Data Box Gateway 1906 (1.6.978.743)**
+- **Data Box átjáró 1906 (1.6.978.743)**
 - **Data Box Edge 1906 (1.6.978.743)**
 
 > [!NOTE]
-> Az 1906-es frissítés Data Box Edge csak a szoftver általánosan elérhető (GA) vagy 1905-os verzióját futtató eszközökre alkalmazható.
+> Az 1906-os frissítés csak a Data Box Edge általános elérhetőségi (GA) vagy a szoftver 1905-ös verzióját futtató Data Box Edge-eszközökre alkalmazható.
 
 ## <a name="whats-new"></a>Újdonságok
 
-- **Hibajavítás a helyreállítási kulcs kezelése munkafolyamatban** – a korábbi kiadásban hiba történt, ami miatt a helyreállítási kulcs nem lett alkalmazva. Ez a hiba ebben a kiadásban van kijavítva. Javasoljuk, hogy ezt a frissítést a helyreállítási kulcs lehetővé teszi, hogy helyreállítsa az eszközön lévő adatokat, abban az esetben, ha az eszköz nem indul el. További információ: [a helyreállítási kulcs mentése Data Box Edge vagy Data Box Gateway telepítésekor](data-box-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device).
-- A **Field programozható Gate array (FPGA) naplózási funkcióinak fejlesztései** – a 1905-es verzióval kezdődően a FPGA kapcsolatos naplózási és riasztási fejlesztések történtek. Ez továbbra is szükséges frissítés a Data Box Edge esetén, ha az Edge számítási funkciót használja a FPGA. További információkért lásd: [adatok átalakítása az Edge számítási](data-box-edge-deploy-configure-compute-advanced.md)szolgáltatással a Data Box Edge.
+- **Hibajavítás a helyreállítási kulcs kezelési munkafolyamatában** - A korábbi kiadásban volt egy hiba, amely miatt a helyreállítási kulcs nem lett alkalmazva. Ez a hiba ebben a kiadásban javítva. Javasoljuk, hogy alkalmazza ezt a frissítést, mivel a helyreállítási kulcs lehetővé teszi az eszközön lévő adatok helyreállítását abban az esetben, ha az eszköz nem indul el. További információ: A [helyreállítási kulcs mentése a Data Box Edge vagy a Data Box Gateway telepítésekor.](data-box-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device)
+- **Field Programmable Gate Array (FPGA) naplózási fejlesztések** - Az 1905-ös kiadás indításakor az FPGA-val kapcsolatos naplózási és riasztási fejlesztések történtek. Ez továbbra is a Data Box Edge szükséges frissítése, ha az Edge számítási funkciót használja az FPGA-val. További információ: Hogyan [alakíthatja át az adatokat az Edge-számítással a Data Box Edge-en.](data-box-edge-deploy-configure-compute-advanced.md)
 
 ## <a name="known-issues-in-ga-release"></a>Ismert problémák a GA kiadásban
 
-Ebben a kiadásban nem jelennek meg új problémák a kiadásban. Az összes megjelent kiadási probléma az előző kiadásokból lett végrehajtva. Ha meg szeretné tekinteni az ismert problémák listáját, lépjen [a ga kiadás ismert problémáira](data-box-gateway-release-notes.md#known-issues-in-ga-release).
+Ehhez a kiadáshoz nem jelennek meg új problémák. Az összes kiadás megjegyezte, hogy a korábbi kiadásokból átkerültek. Az ismert problémák listájának megtekintéséhez olvassa el [az Ismert problémák a GA kiadásban című témakört.](data-box-gateway-release-notes.md#known-issues-in-ga-release)
 
 
 ## <a name="next-steps"></a>További lépések

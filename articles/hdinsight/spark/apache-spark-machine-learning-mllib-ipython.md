@@ -1,7 +1,7 @@
 ---
-title: Gépi tanulási példa a Spark MLlib a HDInsight-ben – Azure
-description: Ismerje meg, hogy a Spark MLlib használatával hogyan hozhat létre egy olyan gépi tanulási alkalmazást, amely az osztályozást a logisztikai regresszió használatával elemzi.
-keywords: Spark Machine learning, Spark Machine learning – példa
+title: Példa gépi tanulási példáka Spark MLlib használatára a HDInsighton – Azure
+description: Ismerje meg, hogyan használhatja a Spark MLlib egy gépi tanulási alkalmazást, amely logisztikai regressziós osztályozással elemzi az adatkészletet.
+keywords: szikragépi tanulás, szikragépi tanulási példa
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,42 +10,42 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
 ms.openlocfilehash: c8ead7abc454df387db31b2ce65d2ba714b0067d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73494085"
 ---
-# <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Gépi tanulási alkalmazások készítése és adatkészletek elemzése Apache Spark MLlib használatával
+# <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Gépi tanulási alkalmazások létrehozása és adatkészlet elemzése az Apache Spark MLlib használatával
 
-Megtudhatja, hogyan hozhat létre Apache Spark [MLlib](https://spark.apache.org/mllib/) egy gépi tanulási alkalmazás létrehozásához egy nyitott adatkészlet egyszerű prediktív elemzéséhez. A Spark beépített gépi tanulási könyvtáraiból a példa a logisztikai regresszión keresztüli *besorolást* használja. 
+Ismerje meg, hogyan hozhat létre egy gépi tanulási alkalmazást egy gépi tanulási alkalmazás létrehozásához az Apache Spark [MLlib](https://spark.apache.org/mllib/) használatával egyszerű prediktív elemzéshez egy nyílt adatkészleten. A Spark beépített gépi tanulási kódtáraiból ez a példa logisztikai regresszión keresztüli *besorolást* használ. 
 
-A MLlib egy alapszintű Spark-könyvtár, amely számos segédprogramot biztosít a gépi tanulási feladatokhoz, beleértve a következőkre alkalmas segédprogramokat:
+Az MLlib egy alapvető Spark-könyvtár, amely számos, gépi tanulási feladatokhoz hasznos segédprogramot biztosít, beleértve a következő célokra alkalmas segédprogramokat is:
 
 * Osztályozás
-* Regressziós
-* Fürtszolgáltatás
-* Témakör modellezése
-* Egyrészes értékek elbomlása (SVD) és a fő összetevők elemzése (PEM)
-* A hipotézis tesztelése és a minta statisztikáinak kiszámítása
+* Regresszió
+* Fürtözés
+* Téma modellezése
+* Egyedi érték-bomlás (SVD) és fő komponenselemzés (PCA)
+* Hipotézistesztelés és mintastatisztikák számítása
 
-## <a name="understand-classification-and-logistic-regression"></a>A besorolás és a logisztikai regresszió ismertetése
-Az *osztályozás*, amely egy népszerű gépi tanulási feladat, a bemeneti adatok kategóriákba rendezésének folyamata. A besorolási algoritmus feladata, hogy kiderítse, hogyan rendeljen hozzá "címkéket" a megadott adatokhoz. Tegyük fel például, hogy egy gépi tanulási algoritmus, amely adatokat fogad el bemenetként, és két kategóriába osztja el az állományt: a készleteket, amelyeket érdemes értékesíteni és készleteket tárolni.
+## <a name="understand-classification-and-logistic-regression"></a>Az osztályozás és a logisztikai regresszió ismertetése
+*Besorolás*, egy népszerű gépi tanulási feladat, a folyamat a bemeneti adatok kategóriákba rendezésének folyamata. Ez a feladata a besorolási algoritmus, hogy kitaláljuk, hogyan kell hozzárendelni a "címkék" a megadott bemeneti adatokat. Például gondolhat egy gépi tanulási algoritmust, amely elfogadja a készletadatokat bemenetként, és az állományt két kategóriába sorolja: az értékesíteni kívánt részvényekre és a készletre, amelyet meg kell tartania.
 
-A logisztikai regresszió a besoroláshoz használt algoritmus. A Spark logisztikai regressziós API-ját *bináris besoroláshoz*vagy a bemeneti adatok két csoportba való besorolásához lehet hasznos. További információ a logisztikai regressziókkal kapcsolatban: [wikipedia](https://en.wikipedia.org/wiki/Logistic_regression).
+A logisztikai regresszió a besoroláshoz használt algoritmus. A Spark logisztikai regressziós API-ja hasznos *a bináris osztályozáshoz,* vagy a bemeneti adatok két csoport egyikébe történő besorolásához. A logisztikai regressziókról a [Wikipédia című témakörben](https://en.wikipedia.org/wiki/Logistic_regression)talál további információt.
 
-Összefoglalva, a logisztikai regressziós folyamat egy *logisztikai függvényt* hoz létre, amellyel előre megjósolható, hogy egy bemeneti vektor egy csoportba vagy a másikba tartozik-e.  
+Összefoglalva, a logisztikai regressziós folyamat *egy logisztikai függvényt* hoz létre, amely előre jelezheti annak valószínűségét, hogy egy bemeneti vektor az egyik vagy a másik csoportba tartozik.  
 
-## <a name="predictive-analysis-example-on-food-inspection-data"></a>Prediktív elemzési példa az élelmiszer-ellenőrzési adataira
-Ebben a példában a Spark segítségével elvégezheti a [Chicago adatportálon](https://data.cityofchicago.org/)keresztül beszerzett élelmiszer-ellenőrzési adatok (**Food_Inspections1. csv**) prediktív elemzését. Ez az adatkészlet a Chicago-ban végrehajtott élelmiszer-létesítési vizsgálatokról tartalmaz információkat, beleértve az egyes létesítményekkel kapcsolatos információkat, a megtalált szabálysértéseket (ha vannak ilyenek) és a vizsgálat eredményeit. A CSV-adatfájl már elérhető a fürthöz a **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**-ben társított Storage-fiókban.
+## <a name="predictive-analysis-example-on-food-inspection-data"></a>Prediktív elemzés példa az élelmiszer-vizsgálati adatokra
+Ebben a példában a Spark segítségével prediktív elemzést végezhet az élelmiszer-vizsgálati adatokon (**Food_Inspections1.csv**), amelyeket a [City of Chicago adatportálon](https://data.cityofchicago.org/)keresztül szereztek be. Ez az adatkészlet információkat tartalmaz a Chicagóban végzett élelmiszer-ipari létesítmények vizsgálatáról, beleértve az egyes létesítményekre, a feltárt jogsértésekre (ha van ilyen) és az ellenőrzések eredményeire vonatkozó információkat. A CSV-adatfájl már elérhető a fürthöz társított tárfiókban a **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**helyen.
 
-Az alábbi lépésekben egy modellt fejleszt ki, amelyből megtudhatja, mit kell tennie az élelmiszer-ellenőrzés elvégzéséhez vagy elutasításához.
+Az alábbi lépésekben kifejleszt egy modellt, hogy mi kell ahhoz, hogy átmenjen egy élelmiszer-ellenőrzésen, vagy megbukjon.
 
-## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Apache Spark MLlib Machine learning-alkalmazás létrehozása
+## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Apache Spark MLlib gépi tanulási alkalmazás létrehozása
 
 1. Hozzon létre egy Jupyter notebookot a PySpark-kernellel. Az utasításokért lásd: [Jupyter notebook létrehozása](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
 
-2. Importálja az alkalmazáshoz szükséges típusokat. Másolja és illessze be a következő kódot egy üres cellába, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt.
+2. Importálja az alkalmazáshoz szükséges típusokat. Másolja a következő kódot egy üres cellába, majd nyomja le a **SHIFT + ENTER billentyűkombinációt.**
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -55,13 +55,13 @@ Az alábbi lépésekben egy modellt fejleszt ki, amelyből megtudhatja, mit kell
     from pyspark.sql.functions import UserDefinedFunction
     from pyspark.sql.types import *
     ```
-    A PySpark kernel miatt nem kell explicit módon létrehoznia a környezeteket. Az első kódcella futtatásakor a Spark- és Hive-környezetek automatikusan létrejönnek. 
+    A PySpark kernel miatt nem kell explicit környezeteket létrehoznia. Az első kódcella futtatásakor a Spark- és Hive-környezetek automatikusan létrejönnek. 
 
-## <a name="construct-the-input-dataframe"></a>A bemeneti dataframe felépítése
+## <a name="construct-the-input-dataframe"></a>A bemeneti adatkeret kialakítása
 
-Mivel a nyers adat CSV formátumú, a Spark kontextus használatával a fájl a memóriában strukturálatlan szövegként hívható le, majd a Python CSV-könyvtára segítségével elemezheti az egyes vonalakat.
+Mivel a nyers adatok CSV formátumban vannak, a Spark-környezet segítségével a fájlt strukturálatlan szövegként hívhatja be a memóriába, majd a Python CSV-könyvtárával elemezheti az adatok egyes vonalait.
 
-1. A következő sorok futtatásával hozzon létre egy rugalmasan elosztott adatkészletet (RDD) a bemeneti adatok importálásával és elemzésével.
+1. A bemeneti adatok importálásával és elemzésével futtassa a következő sorokat egy rugalmas elosztott adatkészlet (RDD) létrehozásához.
 
     ```PySpark
     def csvParse(s):
@@ -76,13 +76,13 @@ Mivel a nyers adat CSV formátumú, a Spark kontextus használatával a fájl a 
                     .map(csvParse)
     ```
 
-2. Futtassa a következő kódot egy sor RDD való lekéréséhez, így az adatsémát is megtekintheti:
+2. Futtassa a következő kódot, hogy beolvasson egy sort az RDD-ből, hogy megnézhesse az adatsémát:
 
     ```PySpark
     inspections.take(1)
     ```
 
-    A kimenet a következőket eredményezi:
+    A kimenet a következő:
 
     ```
     [['413707',
@@ -104,9 +104,9 @@ Mivel a nyers adat CSV formátumú, a Spark kontextus használatával a fájl a 
         '(41.97583445690982, -87.7107455232781)']]
     ```
 
-    A kimenet a bemeneti fájl sémájának egy ötletét adja meg. Magában foglalja az összes létesítmény nevét, a létesítmény típusát, a címeit, az ellenőrzések és a hely helyét, egyebek között. 
+    A kimenet a bemeneti fájl sémájának ötletét adja. Ide tartozik többek között minden létesítmény neve, a létesítmény típusa, a cím, az ellenőrzések adatai és a helyszín. 
 
-3. A következő kód futtatásával hozzon létre egy dataframe (*DF*) és egy ideiglenes táblát (*CountResults*), és néhány oszlopot, amelyek hasznosak a prediktív elemzéshez. a `sqlContext` a strukturált adatok átalakításának elvégzésére szolgál. 
+3. Futtassa a következő kódot egy adatkeret (*df*) és egy ideiglenes tábla (*CountResults*) létrehozásához néhány oszlopot, amelyek hasznosak a prediktív elemzéshez. `sqlContext`strukturált adatok on-átdolgozására szolgál. 
 
     ```PySpark
     schema = StructType([
@@ -119,15 +119,15 @@ Mivel a nyers adat CSV formátumú, a Spark kontextus használatával a fájl a 
     df.registerTempTable('CountResults')
     ```
 
-    A dataframe szereplő négy oszlop az **azonosító**, a **név**, az **eredmények**és a **szabálysértés**.
+    Az adatkeret négy érdekes oszlopa az **id**, **név**, **eredmények**és **szabálysértések**.
 
-4. A következő kód futtatásával szerezzen be egy kis mintát az adathoz:
+4. Futtassa a következő kódot, hogy egy kis mintát kapjon az adatokból:
 
     ```PySpark
     df.show(5)
     ```
 
-    A kimenet a következőket eredményezi:
+    A kimenet a következő:
 
     ```
     +------+--------------------+-------+--------------------+
@@ -141,17 +141,17 @@ Mivel a nyers adat CSV formátumú, a Spark kontextus használatával a fájl a 
     +------+--------------------+-------+--------------------+
     ```
 
-## <a name="understand-the-data"></a>Az adatgyűjtés ismertetése
+## <a name="understand-the-data"></a>Az adatok megismerése
 
-Kezdjük azzal, hogy az adatkészlet mit tartalmaz. 
+Kezdjük meg, hogy milyen az adatkészlet tartalmazza. 
 
-1. A következő kód futtatásával jelenítse meg az **eredmények** oszlopban szereplő különböző értékeket:
+1. Futtassa a következő kódot az **eredmények** oszlopában lévő különböző értékek megjelenítéséhez:
 
     ```PySpark
     df.select('results').distinct().show()
     ```
 
-    A kimenet a következőket eredményezi:
+    A kimenet a következő:
 
     ```
     +--------------------+
@@ -165,21 +165,21 @@ Kezdjük azzal, hogy az adatkészlet mit tartalmaz.
     +--------------------+
     ```
 
-2. A következő kód futtatásával jelenítheti meg az eredmények eloszlását:
+2. Az eredmények eloszlásának megjelenítéséhez futtassa a következő kódot:
 
     ```PySpark
     %%sql -o countResultsdf
     SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
-    A `%%sql` Magic ezt követően `-o countResultsdf` biztosítja, hogy a lekérdezés kimenete helyileg megmaradjon a Jupyter-kiszolgálón (általában a fürt átjárócsomóponthoz). A kimenet a megadott nevű **CountResultsdf** [pandák](https://pandas.pydata.org/) dataframe marad. További információ a `%%sql` magicról és a PySpark kernelhez elérhető egyéb varázslatokról: a [Jupyter notebookokon elérhető kernelek Apache Spark HDInsight-fürtökkel](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+    A `%%sql` varázslat, `-o countResultsdf` amelyet követ, biztosítja, hogy a lekérdezés kimenete helyileg megmarad a Jupyter-kiszolgálón (általában a fürt fejnokrészén). A kimenet [pandas](https://pandas.pydata.org/) adatkeretként marad meg a megadott **countResultsdf**névvel. A PySpark `%%sql` kernelben elérhető varázslatokról és egyéb varázslatokról a [Jupyter-jegyzetfüzetekben elérhető Kernelek Apache Spark HDInsight-fürtökkel című](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)témakörben talál további információt.
 
-    A kimenet a következőket eredményezi:
+    A kimenet a következő:
 
     ![SQL-lekérdezés kimenete](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL-lekérdezés kimenete")
 
 
-3. A [Matplotlib](https://en.wikipedia.org/wiki/Matplotlib)-t, az adatvizualizációk létrehozásához használt könyvtárat is használhatja a mintaterület létrehozásához. Mivel a parcellát a helyileg megőrzött **countResultsdf** -dataframe kell létrehozni, a kódrészletnek a `%%local` varázslattal kell kezdődnie. Ez biztosítja, hogy a kód helyileg fusson a Jupyter-kiszolgálón.
+3. A [Matplotlib](https://en.wikipedia.org/wiki/Matplotlib)könyvtárat az adatok megjelenítéséhez használt társegítségével is létrehozhatja a nyomtatás. Mivel a nyomtatást a helyileg megőrzött **countResultsdf** adatkeretből kell létrehozni, `%%local` a kódrészletnek a varázslattal kell kezdődnie. Ez biztosítja, hogy a kód helyileg fusson a Jupyter kiszolgálón.
 
     ```PySpark
     %%local
@@ -193,24 +193,24 @@ Kezdjük azzal, hogy az adatkészlet mit tartalmaz.
     plt.axis('equal')
     ```
 
-    A kimenet a következőket eredményezi:
+    A kimenet a következő:
 
-    ![Spark Machine learning-alkalmazás kimenete – tortadiagram öt különböző vizsgálati eredménnyel](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "A Spark Machine learning eredményének kimenete")
+    ![Spark gépi tanulási alkalmazás kimenete – kördiagram öt különböző vizsgálati eredménnyel](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark gépi tanulási eredmény kimenet")
 
-    Az élelmiszer-ellenőrzés eredményeinek előrejelzéséhez ki kell dolgoznia egy modellt a szabálysértések alapján. Mivel a logisztikai regresszió bináris besorolású módszer, érdemes a következő két kategóriába csoportosítani az eredményeket: **Fail** és **pass**:
+    Az élelmiszer-ellenőrzési eredmény előrejelzéséhez ki kell dolgoznia egy modellt a jogsértések alapján. Mivel a logisztikai regresszió bináris osztályozási módszer, célszerű az eredményadatokat két kategóriába sorolni: **Sikertelen** és **Átlépés**:
 
-   - Pass
-       - Pass
-       - H/feltételek továbbítása
+   - Át
+       - Át
+       - Pass w/ feltételek
    - Sikertelen
        - Sikertelen
-   - Elveti
-       - Üzleti nem található
-       - Üzleti tevékenység
+   - Elvetés
+       - Az üzleti vállalkozás nem található
+       - Üzleten kívüli
 
-     A többi eredmény ("üzleti nem található" vagy "üzleti tevékenység") nem hasznos, és az eredmények nagyon kis hányadát is elvégzik.
+     A többi eredménnyel ("Üzleti helyen nem található" vagy "Üzleten kívül") rendelkező adatok nem hasznosak, és az eredmények nagyon kis százalékát teszik ki.
 
-4. A következő kód futtatásával alakítsa át a meglévő dataframe (`df`) egy olyan új dataframe, amelyben az egyes ellenőrzések címke-megsértési párokként jelennek meg. Ebben az esetben a `0.0` egy címkéje hibát jelez, `1.0` a címkéje sikeresnek jelöli, és a `-1.0` címkéje a kettő mellett néhány eredményt jelöl. 
+4. Futtassa a következő kódot a`df`meglévő dataframe( ) új adatkeretté alakításához, ahol minden egyes ellenőrzés címke-megsértése párként jelenik meg. Ebben az esetben a `0.0` címke egy hiba, `1.0` a címke jelent a siker, és a `-1.0` címke képviseli néhány eredményt a kettő mellett. 
 
     ```PySpark
     def labelForResults(s):
@@ -224,25 +224,25 @@ Kezdjük azzal, hogy az adatkészlet mit tartalmaz.
     labeledData = df.select(label(df.results).alias('label'), df.violations).where('label >= 0')
     ```
 
-5. A következő kód futtatásával jelenítse meg a címkézett adatfeliratok egy sorát:
+5. Futtassa a következő kódot a címkézett adatok egy sorának megjelenítéséhez:
 
     ```PySpark
     labeledData.take(1)
     ```
 
-    A kimenet a következőket eredményezi:
+    A kimenet a következő:
 
     ```
     [Row(label=0.0, violations=u"41. PREMISES MAINTAINED FREE OF LITTER, UNNECESSARY ARTICLES, CLEANING  EQUIPMENT PROPERLY STORED - Comments: All parts of the food establishment and all parts of the property used in connection with the operation of the establishment shall be kept neat and clean and should not produce any offensive odors.  REMOVE MATTRESS FROM SMALL DUMPSTER. | 35. WALLS, CEILINGS, ATTACHED EQUIPMENT CONSTRUCTED PER CODE: GOOD REPAIR, SURFACES CLEAN AND DUST-LESS CLEANING METHODS - Comments: The walls and ceilings shall be in good repair and easily cleaned.  REPAIR MISALIGNED DOORS AND DOOR NEAR ELEVATOR.  DETAIL CLEAN BLACK MOLD LIKE SUBSTANCE FROM WALLS BY BOTH DISH MACHINES.  REPAIR OR REMOVE BASEBOARD UNDER DISH MACHINE (LEFT REAR KITCHEN). SEAL ALL GAPS.  REPLACE MILK CRATES USED IN WALK IN COOLERS AND STORAGE AREAS WITH PROPER SHELVING AT LEAST 6' OFF THE FLOOR.  | 38. VENTILATION: ROOMS AND EQUIPMENT VENTED AS REQUIRED: PLUMBING: INSTALLED AND MAINTAINED - Comments: The flow of air discharged from kitchen fans shall always be through a duct to a point above the roofline.  REPAIR BROKEN VENTILATION IN MEN'S AND WOMEN'S WASHROOMS NEXT TO DINING AREA. | 32. FOOD AND NON-FOOD CONTACT SURFACES PROPERLY DESIGNED, CONSTRUCTED AND MAINTAINED - Comments: All food and non-food contact equipment and utensils shall be smooth, easily cleanable, and durable, and shall be in good repair.  REPAIR DAMAGED PLUG ON LEFT SIDE OF 2 COMPARTMENT SINK.  REPAIR SELF CLOSER ON BOTTOM LEFT DOOR OF 4 DOOR PREP UNIT NEXT TO OFFICE.")]
     ```
 
-## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>Logisztikai regressziós modell létrehozása a bemeneti dataframe
+## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>Logisztikai regressziós modell létrehozása a bemeneti adatkeretből
 
-A végső feladat a címkézett adatok átalakítása olyan formátumra, amelyet a logisztikai regresszió alapján lehet elemezni. A logisztikai regressziós algoritmus bemenetének a *címke-szolgáltatás vektoros párok*készletének kell lennie, ahol a "szolgáltatás vektora" a bemeneti pontot jelképező számok vektora. Ezért át kell alakítania a "szabálysértések" oszlopot, amely félig strukturált, és számos, szabad szöveggel rendelkező megjegyzést tartalmaz a valós számok tömbje számára, amelyeket a gépek könnyedén megértettek.
+A végső feladat a címkézett adatok olyan formátummá alakítása, amely logisztikai regresszióval elemezhető. A logisztikai regressziós algoritmus bemenetének *címke-jellemző vektorpárok*készletének kell lennie, ahol a "jellemzővektor" a bemeneti pontot képviselő számok vektora. Tehát át kell alakítania a "szabálysértések" oszlopot, amely félig strukturált, és sok megjegyzést tartalmaz a szabad szövegben, egy sor valós számra, amelyet egy gép könnyen megérthet.
 
-A természetes nyelv feldolgozásának egyik szabványos gépi tanulási módszere az egyes különálló szavak "index", majd egy vektor átadása a gépi tanulási algoritmusba, hogy az egyes indexek értéke tartalmazza a szó relatív gyakoriságát a szöveges karakterláncban.
+A természetes nyelv feldolgozásának egyik szabványos gépi tanulási megközelítése az, hogy minden egyes különböző szót egy "indexhez" rendel, majd átad egy vektort a gépi tanulási algoritmusnak úgy, hogy minden index értéke tartalmazza az adott szó relatív gyakoriságát a szöveges karakterláncban.
 
-A MLlib egyszerű módszert kínál a művelet elvégzésére. Először is "tokenize" minden megsértési karakterláncot, hogy minden egyes karakterláncban beolvassa az egyes szavakat. Ezt követően egy `HashingTF` használatával alakítsa át a tokenek egyes készleteit egy szolgáltatás-vektorba, amely ezután átadható a logisztikai regressziós algoritmusnak a modell létrehozásához. Ezeket a lépéseket a "folyamat" használatával végezheti el.
+Az MLlib egyszerű módot kínál a művelet végrehajtására. Először is, "tokenize" minden megsértése string,hogy az egyes szavakat minden string. Ezután az `HashingTF` a segítségével konvertálja a tokenek minden egyes készletét egy szolgáltatásvektor, amely ezután átadható a logisztikai regressziós algoritmus egy modell létrehozásához. Ezeket a lépéseket egy "csővezeték" használatával egymás után hajthatja végre.
 
 ```PySpark
 tokenizer = Tokenizer(inputCol="violations", outputCol="words")
@@ -253,11 +253,11 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(labeledData)
 ```
 
-## <a name="evaluate-the-model-using-another-dataset"></a>Modell kiértékelése egy másik adatkészlet használatával
+## <a name="evaluate-the-model-using-another-dataset"></a>A modell kiértékelése egy másik adatkészlet használatával
 
-A korábban létrehozott modellt használva *megjósolhatja* , hogy az új ellenőrzések eredményei milyenek lesznek a megfigyelt szabálysértések alapján. Ezt a modellt a **Food_Inspections1. csv**adatkészlet alapján tanította. A modell erősségének *kiértékeléséhez* használhatja a **Food_Inspections2. csv**második adatkészletet az új adatokat. Ez a második adatkészlet (**Food_Inspections2. csv**) a fürthöz társított alapértelmezett tárolóban található.
+A korábban létrehozott modell segítségével *előre jelezheti,* hogy milyen lesz az új ellenőrzések eredménye a megfigyelt szabálysértések alapján. Ezt a modellt az **Food_Inspections1.csv**adatkészleten tanította be. A modell erősségének *kiértékeléséhez használhatja* a modell erősségét az **Food_Inspections2.csv**Food_Inspections2. Ez a második adatkészlet (**Food_Inspections2.csv**) a fürthöz társított alapértelmezett tárolótárolóban található.
 
-1. A következő kód futtatásával hozzon létre egy új dataframe, amely a modell által generált **predictionsDf** tartalmazza. A kódrészlet létrehoz egy, az **előrejelzések** alapján létrehozott ideiglenes táblát is a dataframe alapján.
+1. Futtassa a következő kódot egy új dataframe, **előrejelzésekDf,** amely tartalmazza a modell által generált előrejelzést. A kódrészlet is létrehoz egy ideiglenes tábla nevű **előrejelzések** az adatkeret alapján.
 
     ```PySpark
     testData = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
@@ -283,14 +283,14 @@ A korábban létrehozott modellt használva *megjósolhatja* , hogy az új ellen
         'prediction']
     ```
 
-1. Tekintse meg az egyik előrejelzést. A kódrészlet futtatása:
+1. Nézd meg az egyik jóslatot. Futtassa ezt a kódrészletet:
 
     ```PySpark
     predictionsDf.take(1)
     ```
 
-   A tesztelési adatkészlet első bejegyzésének előrejelzése.
-1. A `model.transform()` módszer ugyanazt az átalakítást alkalmazza minden olyan új adatváltozásra, amely ugyanazzal a sémával rendelkezik, és megérkezik az adatgyűjtés módjára. Néhány egyszerű statisztikával megtudhatja, milyen pontosak voltak a jóslatok:
+   A tesztadatkészlet első bejegyzésére vonatkozó előrejelzés térhető el.
+1. A `model.transform()` módszer ugyanazt az átalakítást alkalmazza az azonos sémával rendelkező új adatokra, és előrejelzést ad az adatok besorolásának módjáról. Meg tudod csinálni néhány egyszerű statisztika, hogy egy értelemben, hogy mennyire pontos a jóslatok voltak:
 
     ```PySpark
     numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR
@@ -302,19 +302,19 @@ A korábban létrehozott modellt használva *megjósolhatja* , hogy az új ellen
     print "This is a", str((float(numSuccesses) / float(numInspections)) * 100) + "%", "success rate"
     ```
 
-    A kimenet a következőhöz hasonlóan néz ki:
+    A kimenet a következőre néz ki:
 
     ```
     There were 9315 inspections and there were 8087 successful predictions
     This is a 86.8169618894% success rate
     ```
 
-    Ha logisztikai regressziót használ a Sparktal, pontos modellt biztosít a szabálysértési leírások angol nyelven való kapcsolatáról, illetve arról, hogy egy adott vállalkozás átadja-e az élelmiszer-ellenőrzést vagy sem.
+    A Spark logisztikai regressziójának használata pontos modellt biztosít az angol nyelvű szabálysértések leírása és a között, hogy egy adott vállalkozás megfelel-e vagy megbukik-e egy élelmiszer-ellenőrzésen.
 
 ## <a name="create-a-visual-representation-of-the-prediction"></a>Az előrejelzés vizuális ábrázolásának létrehozása
-Most létrehozhat egy végső vizualizációt, amely segít a teszt eredményeinek indoklásában.
+Most már létrehozhat egy végső vizualizációt, hogy segítsen a teszt eredményeinek megismerésében.
 
-1. Első lépésként Kinyeri a korábban létrehozott **előrejelzési** ideiglenes tábla különböző előrejelzéseit és eredményeit. A következő lekérdezések elkülönítik a kimenetet a *true_positive*, a *false_positive*, a *true_negative*és a *false_negative*. Az alábbi lekérdezésekben kikapcsolhatja a vizualizációt `-q` használatával, és a kimenetet (`-o`használatával) is mentheti a dataframes, amelyet aztán használhat a `%%local` Magic segítségével.
+1. Először a különböző előrejelzések és az eredmények az **előrejelzések** ideiglenes tábla korábban létrehozott. A következő lekérdezések *true_positive*, *false_positive*, *true_negative*és false_negative a kimenetet *választják el.* Az alábbi lekérdezésekben kikapcsolhatja a `-q` vizualizációt a kimenet `-o`használatával (a használatával) adatkeretként, amelyet aztán a `%%local` mágiával lehet használni.
 
     ```PySpark
     %%sql -q -o true_positive
@@ -336,7 +336,7 @@ Most létrehozhat egy végső vizualizációt, amely segít a teszt eredményein
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
     ```
 
-1. Végül használja az alábbi kódrészletet a mintaterület **Matplotlib**használatával történő létrehozásához.
+1. Végül a következő kódrészlettel hozza létre a telket a **Matplotlib**használatával.
 
     ```PySpark
     %%local
@@ -352,30 +352,30 @@ Most létrehozhat egy végső vizualizációt, amely segít a teszt eredményein
 
     A következő kimenetnek kell megjelennie:
 
-    ![Spark Machine learning-alkalmazás kimenete – kördiagram százaléka a sikertelen élelmiszer-ellenőrzésekhez.](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "A Spark Machine learning eredményének kimenete")
+    ![Spark gépi tanulási alkalmazás kimenete – a sikertelen élelmiszer-ellenőrzések kördiagram-százalékos aránya.](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark gépi tanulási eredmény kimenet")
 
-    Ebben a diagramban a "pozitív" eredmény a sikertelen élelmiszer-ellenőrzésre utal, míg a negatív eredmény egy átadott vizsgálatra utal.
+    Ebben a táblázatban a "pozitív" eredmény a sikertelen élelmiszer-vizsgálatra utal, míg a negatív eredmény egy átadott vizsgálatra utal.
 
 ## <a name="shut-down-the-notebook"></a>A jegyzetfüzet leállítása
-Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erőforrások felszabadításához. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ezzel leáll, és bezárja a jegyzetfüzetet.
+Miután befejezte az alkalmazás futtatását, állítsa le a jegyzetfüzetet az erőforrások felszabadításához. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ez leállítja és bezárja a jegyzetfüzetet.
 
-## <a name="seealso"></a>Lásd még:
+## <a name="see-also"></a><a name="seealso"></a>Lásd még
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Alkalmazási helyzetek
-* [Apache Spark BI: interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
-* [Apache Spark a Machine Learning használatával: a Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
-* [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)
+### <a name="scenarios"></a>Forgatókönyvek
+* [Apache Spark bi-val: Interaktív adatelemzés a Spark használatával a HDInsightban az üzletiintelligencia-eszközökkel](apache-spark-use-bi-tools.md)
+* [Apache Spark gépi tanulással: Használja a Sparkot a HDInsightban az épület hőmérsékletének elemzéséhez a fűtés- és légtechnikai adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
+* [Webhelynapló-elemzés az Apache Spark használatával a HDInsightban](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
-* [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata a Apache Spark alkalmazások távoli hibakereséséhez](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Apache Zeppelin notebookok használata Apache Spark-fürttel a HDInsight-on](apache-spark-zeppelin-notebook.md)
-* [Jupyter notebookokhoz elérhető kernelek Apache Spark-fürtben HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Az IntelliJ IDEA HDInsight eszközök beépülő moduljával távolról debugelje az Apache Spark alkalmazásokat](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Apache Zeppelin-jegyzetfüzetek használata Apache Spark-fürttel a HDInsighton](apache-spark-zeppelin-notebook.md)
+* [A Jupyter notebookhoz elérhető kernelek az Apache Spark-fürtHDInsighthoz](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 

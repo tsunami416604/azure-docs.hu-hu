@@ -1,6 +1,6 @@
 ---
-title: Teljesítményszámlálók a szegmenses Térkép kezelőjének nyomon követéséhez
-description: ShardMapManager osztály és az Adatfüggő útválasztási teljesítményszámlálók
+title: Teljesítményszámlálók a shard térképkezelő nyomon követéséhez
+description: ShardMapManager osztály- és adatfüggő útválasztási teljesítményszámlálók
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,60 +12,60 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
 ms.openlocfilehash: de481dad9dd39b301a21142c67b1baf2209f76e2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823906"
 ---
-# <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Teljesítményszámlálók létrehozása a szegmenses Térkép kezelőjé teljesítményének nyomon követéséhez
+# <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Teljesítményszámlálók létrehozása a szegmenstérkép-kezelő teljesítményének nyomon követéséhez
 
-A teljesítményszámlálók segítségével nyomon követheti az [Adatfüggő útválasztási](sql-database-elastic-scale-data-dependent-routing.md) műveletek teljesítményét. Ezek a teljesítményszámlálók a Teljesítményfigyelőben, a "Elastic Database: szegmens felügyelet" kategóriában érhetők el.
+A teljesítményszámlálók az [adatfüggő útválasztási](sql-database-elastic-scale-data-dependent-routing.md) műveletek teljesítményének nyomon követésére szolgálnak. Ezek a számlálók érhetők el a Teljesítményfigyelő, a "Rugalmas adatbázis: Shard Management" kategóriában érhető el.
 
-Rögzítheti egy szegmenses [Térkép kezelőjének](sql-database-elastic-scale-shard-map-management.md)teljesítményét, különösen az [Adatfüggő útválasztás](sql-database-elastic-scale-data-dependent-routing.md)használata esetén. A számlálók a Microsoft. Azure. SqlDatabase. ElasticScale. Client osztály metódusával jönnek létre.  
+A [szegmenstérkép-kezelő](sql-database-elastic-scale-shard-map-management.md)teljesítményét rögzítheti, különösen [adatfüggő útválasztás](sql-database-elastic-scale-data-dependent-routing.md)használata esetén. Számlálók jönnek létre a microsoft.Azure.SqlDatabase.ElasticScale.Client osztály metódusai.  
 
 
-**A legújabb verzióhoz:** Lépjen a [Microsoft. Azure. SqlDatabase. ElasticScale. Client webhelyre](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). Lásd még [az alkalmazás frissítése a legújabb rugalmas adatbázis-ügyféloldali kódtár használatára](sql-database-elastic-scale-upgrade-client-library.md)című témakört.
+**A legújabb verzió:** Látogasson el a [Microsoft.Azure.SqlDatabase.ElasticScale.Client elemre.](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) Lásd [még: Egy alkalmazás frissítése a legújabb rugalmas adatbázis-ügyfélkódtár használatához.](sql-database-elastic-scale-upgrade-client-library.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A teljesítmény kategóriájának és számlálóinak létrehozásához a felhasználónak a helyi **rendszergazdák** csoport tagjának kell lennie az alkalmazást üzemeltető gépen.  
-* A teljesítményszámláló-példányok létrehozásához és a számlálók frissítéséhez a felhasználónak a **rendszergazdák** vagy a **Teljesítményfigyelő felhasználói** csoport tagjának kell lennie.
+* A teljesítménykategória és -számlálók létrehozásához a felhasználónak az alkalmazást üzemeltető gépen a helyi **Rendszergazdák** csoport tagja kell, hogy legyen.  
+* Teljesítményszámláló-példány létrehozásához és a számlálók frissítéséhez a felhasználónak a **Rendszergazdák** vagy a **Teljesítményfigyelő felhasználói** csoportjának tagjának kell lennie.
 
-## <a name="create-performance-category-and-counters"></a>Teljesítmény kategória és számlálók létrehozása
+## <a name="create-performance-category-and-counters"></a>Teljesítménykategória és -számlálók létrehozása
 
-A számlálók létrehozásához hívja meg a [ShardMapManagementFactory osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)CreatePerformanceCategoryAndCounters metódusát. Csak egy rendszergazda hajthatja végre a metódust:
+A számlálók létrehozásához hívja meg a [ShardMapManagementFactory osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)CreatePerformanceCategoryAndCounters metódusát. A metódust csak rendszergazda hajthatja végre:
 
     ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()  
 
-[Ezt](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) a PowerShell-szkriptet használhatja a metódus végrehajtásához is.
+Ezt [a](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) PowerShell-parancsfájlt is használhatja a metódus végrehajtásához.
 A metódus a következő teljesítményszámlálókat hozza létre:  
 
-* **Gyorsítótárazott leképezések**: a szegmenses térképhez gyorsítótárazott leképezések száma.
-* **DDR-műveletek/mp**: az adatszegmensi térképhez kapcsolódó adattovábbítási műveletek aránya. Ez a számláló akkor frissül, ha a [OpenConnectionForKey ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) hívása sikeres csatlakozást eredményez a cél szegmenshez.
-* **Keresési gyorsítótár látogatottságának leképezése/mp**: a gyorsítótár keresési műveleteinek aránya a szegmenses leképezésben.
-* **Leképezési keresési gyorsítótár-kihagyás/mp**: a sikertelen gyorsítótár-keresési műveletek gyakorisága a szegmenses leképezésben való leképezésekhez.
-* A (z) **gyorsítótárban hozzáadott vagy frissített leképezések**: a szegmenshez tartozó Térkép gyorsítótárban való hozzáadásának vagy frissítésének gyakorisága.
-* **Hozzárendelések eltávolítva a gyorsítótárból/másodpercből**: a szegmensek közötti Térkép gyorsítótárában lévő leképezések eltávolításának gyakorisága.
+* **Gyorsítótárazott leképezések:** A szegmensleképezés gyorsítótárazott leképezéseinek száma.
+* **DDR-műveletek/mp**: A szegmenstérkép adatfüggő útválasztási műveleteinek mértéke. Ez a számláló frissül, ha az [OpenConnectionForKey()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) hívása sikeres kapcsolatot eredményez a célszegmenshez.
+* **Leképezési gyorsítótár-lekérések másodpercenként:** A shard-térkép leképezéseinek sikeres gyorsítótár-felolvasási műveleteinek aránya.
+* **Leképezési keresése gyorsítótár a másodpercenként:** A szegmenstérkép leképezéseinek sikertelen gyorsítótár-keresései aránya.
+* **Gyorsítótár-/mp-ben hozzáadott vagy frissített leképezések:** A leképezések hozzáadásának vagy frissítésének mértéke a shard leképezés gyorsítótárában.
+* **A gyorsítótárból/mp-ből eltávolított leképezések:** A leképezések eltávolításának mértéke a szegmensleképezés gyorsítótárából.
 
-A teljesítményszámlálók minden egyes gyorsítótárazott szegmens-leképezéshez jönnek létre.  
+Teljesítményszámlálók jönnek létre az egyes gyorsítótárazott shard térkép folyamatonként.  
 
 ## <a name="notes"></a>Megjegyzések
 
-A következő események indítják el a teljesítményszámlálók létrehozását:  
+A következő események a teljesítményszámlálók létrehozását indítják el:  
 
-* A [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) inicializálása a [lelkes betöltéssel](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy), ha a ShardMapManager tartalmaz bármely szegmenses térképet. Ezek közé tartoznak a [GetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager) és a [TryGetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) metódusok.
-* Egy szegmenses Térkép sikeres keresése ( [GetShardMap ()](https://msdn.microsoft.com/library/azure/dn824215.aspx), [GetListShardMap ()](https://msdn.microsoft.com/library/azure/dn824212.aspx) vagy [GetRangeShardMap ()](https://msdn.microsoft.com/library/azure/dn824173.aspx)használatával).
-* A CreateShardMap () használatával sikerült létrehozni a szegmenses leképezést.
+* Inicializálása a [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) [a lelkes betöltése,](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy)ha a ShardMapManager tartalmaz shard maps. Ezek közé tartozik a [GetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager) és a [TryGetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) metódusok.
+* A shard térkép sikeres felkeresni [(a GetShardMap()](https://msdn.microsoft.com/library/azure/dn824215.aspx), [a GetListShardMap()](https://msdn.microsoft.com/library/azure/dn824212.aspx) vagy a [GetRangeShardMap()](https://msdn.microsoft.com/library/azure/dn824173.aspx)használatával.
+* A shard térkép sikeres létrehozása a CreateShardMap() használatával.
 
-A teljesítményszámlálókat a rendszer az összes gyorsítótárazási művelettel frissíti a szegmens térképen és leképezéseken. A szegmens-hozzárendelés sikeres eltávolítása a DeleteShardMap () használatával a teljesítményszámlálók példányának törlését eredményezi.  
+A teljesítményszámlálók at a szegmenstérképen és a leképezéseken végrehajtott összes gyorsítótár-művelet frissíti. A shard térkép deleteShardMap() használatával sikeres eltávolítása a teljesítményszámlálók példányának törlését eredményezi.  
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-* A teljesítmény kategóriájának és számlálóinak létrehozását csak egyszer kell végrehajtani a ShardMapManager objektum létrehozása előtt. A CreatePerformanceCategoryAndCounters () parancs minden végrehajtása törli az előző számlálókat (az összes példány által jelentett adatvesztést), és újakat hoz létre.  
-* A teljesítményszámláló példányai folyamat alapján jönnek létre. A rendszer a gyorsítótárból a szegmensek összes összeomlását vagy eltávolítását eredményezi, és törli a teljesítményszámlálók példányainak törlését.  
+* A teljesítménykategória és -számlálók létrehozását csak egyszer kell végrehajtani a ShardMapManager objektum létrehozása előtt. A CreatePerformanceCategoryAndCounters() parancs minden végrehajtása törli a korábbi számlálókat (az összes példány által jelentett adatok elvesztése), és újakat hoz létre.  
+* A teljesítményszámláló-példányok folyamatonként jönnek létre. Minden alkalmazás összeomlása vagy eltávolítása a shard térkép a gyorsítótárból a teljesítményszámlálók példányainak törlését eredményezi.  
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 
 [Az Elastic Database szolgáltatásainak áttekintése](sql-database-elastic-scale-introduction.md)  
 

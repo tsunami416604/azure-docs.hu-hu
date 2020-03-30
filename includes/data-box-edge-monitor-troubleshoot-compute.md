@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: alkohli
 ms.openlocfilehash: f3bb391dceb1948820d00c0d09229f2c106ffc0b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68601338"
 ---
-Olyan Data Box Edge-eszközön, amelyen a számítási szerepkör konfigurálva van, a modulok figyeléséhez vagy a hibák megoldásához a Docker-parancsok egy részhalmaza érhető el. Az elérhető parancsok listájának megtekintéséhez kapcsolódjon [a PowerShell](#connect-to-the-powershell-interface) -felülethez, és használja `dkrdbe` a függvényt.
+A Data Box Edge-eszközön, amely a számítási szerepkör konfigurálva van, a docker-parancsok egy részhalmaza érhető el a modulok figyelésére vagy hibaelhárítására. Az elérhető parancsok listájának megtekintéséhez [csatlakozzon a PowerShell-felülethez,](#connect-to-the-powershell-interface) és használja a `dkrdbe` funkciót.
 
 ```powershell
 [10.100.10.10]: PS>dkrdbe -?
@@ -35,28 +35,28 @@ Commands:
 
 [10.100.10.10]: PS>
 ```
-A következő táblázat a rendelkezésre álló `dkrdbe`parancsok rövid leírását tartalmazza:
+Az alábbi táblázat röviden ismerteti a `dkrdbe`következő célokra rendelkezésre álló parancsokat:
 
-|A parancs  |Leírás |
+|command  |Leírás |
 |---------|---------|
-|`image`     | Lemezképek kezelése. A nem használt képek eltávolításához használja a következőt:`dkrdbe image prune -a -f`       |
-|`images`     | Lemezképek listázása         |
-|`inspect`     | Alacsony szintű információk visszaadása a Docker-objektumokon         |
-|`login`     | Bejelentkezés Docker-beállításjegyzékbe         |
-|`logout`     | Kijelentkezés Docker-beállításjegyzékből         |
-|`logs`     | Tároló naplófájljainak beolvasása        |
-|`port`     | Port hozzárendelésének vagy a tároló adott leképezésének listázása        |
+|`image`     | Képek kezelése. A nem használt képek eltávolításához használja a következőket:`dkrdbe image prune -a -f`       |
+|`images`     | Képek listázása         |
+|`inspect`     | Alacsony szintű információk visszaadása A Docker-objektumokról         |
+|`login`     | Bejelentkezés a Docker-beállításjegyzékbe         |
+|`logout`     | Kijelentkezés a Docker-beállításjegyzékből         |
+|`logs`     | Tároló naplóinak beolvasása        |
+|`port`     | Portleképezések vagy a tároló adott hozzárendelésének listázása        |
 |`ps`     | Tárolók listázása        |
-|`pull`     | Rendszerkép vagy adattár lekérése egy beállításjegyzékből         |
-|`start`     | Legalább egy leállított tároló indítása         |
-|`stats`     | A tároló (k) erőforrás-használati statisztikáinak élő stream megjelenítése         |
+|`pull`     | Kép vagy tárház lekérése rendszerleíró adatbázisból         |
+|`start`     | Egy vagy több leállított tároló indítása         |
+|`stats`     | Tároló(k) erőforrás-használati statisztikáinak élő közvetítésének megjelenítése         |
 |`stop`     | Egy vagy több futó tároló leállítása        |
-|`system`     | A Docker kezelése         |
+|`system`     | Docker kezelése         |
 |`top`     | Tároló futó folyamatainak megjelenítése         |
 
-Ha segítséget szeretne kérni bármely elérhető parancshoz, `dkrdbe <command-name> --help`használja a következőt:.
+Ha segítségre van szüksége `dkrdbe <command-name> --help`az elérhető parancsokhoz, használja a használatát.
 
-A `port` parancs használatának megismeréséhez például írja be a következőt:
+A parancs használatának megértéséhez `port` például írja be a következőt:
 
 ```powershell
 [10.100.10.10]: P> dkrdbe port --help
@@ -78,13 +78,13 @@ Options:
 [10.100.10.10]: PS>
 ```
 
-A `dkrdbe` függvényhez elérhető parancsok ugyanazokat a paramétereket használják, mint a normál Docker-parancsokhoz. A Docker parancshoz használt beállítások és paraméterek esetében lépjen a Docker [commandline használatára](https://docs.docker.com/engine/reference/commandline/docker/).
+A függvény elérhető `dkrdbe` parancsai ugyanazokat a paramétereket használják, mint a normál docker-parancsok. A docker parancshoz használt beállításokért és paraméterekért keresse [fel a Docker parancssor használata című](https://docs.docker.com/engine/reference/commandline/docker/)lehetőséget.
 
-### <a name="to-check-if-the-module-deployed-successfully"></a>A modul sikeres üzembe helyezésének megkeresése
+### <a name="to-check-if-the-module-deployed-successfully"></a>Annak ellenőrzése, hogy a modul telepítése sikeresen megtörtént-e
 
-A számítási modulok olyan tárolók, amelyeken a rendszer üzleti logikát alkalmaz. Annak vizsgálatához, hogy a számítási modul telepítése sikeresen megtörtént-e `ps` , futtassa a parancsot, és ellenőrizze, hogy fut-e a tároló (a számítási modulnak megfelelő).
+A számítási modulok olyan tárolók, amelyek üzleti logikát valósítottak meg. Annak ellenőrzéséhez, hogy egy számítási modul `ps` sikeresen telepítve van-e, futtassa a parancsot, és ellenőrizze, hogy a tároló (a számítási modulnak megfelelően) fut-e.
 
-Az összes tároló (beleértve a szüneteltetett is) listájának lekéréséhez futtassa a `ps -a` parancsot.
+Az összes tároló listájának lefoglalásához (beleértve a szüneteltett tárolókat is) futtassa a `ps -a` parancsot.
 
 ```powershell
 [10.100.10.10]: P> dkrdbe ps -a
@@ -96,9 +96,9 @@ acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/s
 [10.100.10.10]: PS>
 ```
 
-Ha hiba történt a tároló rendszerképének létrehozásakor vagy a rendszerkép húzása közben, futtassa a `logs edgeAgent`parancsot.  `EdgeAgent`a IoT Edge futtatókörnyezet tárolója, amely más tárolók kiépítési feladata.
+Ha hiba történt a tárolórendszerkép létrehozásakor vagy a `logs edgeAgent`lemezkép húzása közben, futtassa a programot.  `EdgeAgent`az IoT Edge futásidejű tároló, amely más tárolók kiépítéséért felelős.
 
-Mivel `logs edgeAgent` a rendszer az összes naplót kiírja, jó módszer a legutóbbi hibák megtekintésére, ha a `--tail 20`kapcsolót használja.
+Mivel `logs edgeAgent` az összes naplót kiírja, a legutóbbi hibák megtekintésének `--tail 20`jó módja a beállítás használata.
 
 
 ```powershell
@@ -117,12 +117,12 @@ reateOptions":"{\"HostConfig\":{\"Binds\":[\"/home/hcsshares/share4-dl460:/home/
 2019-02-28 23:38:28.480 +00:00 [DBG] [Microsoft.Azure.Devices.Edge.Agent.Core.Planners.HealthRestartPlanner] - HealthRestartPlanner created Plan, with 0 command(s).
 ```
 
-### <a name="to-get-container-logs"></a>A tároló naplófájljainak beolvasása
+### <a name="to-get-container-logs"></a>Tárolónaplók behívása
 
-Egy adott tároló naplóinak lekéréséhez először sorolja fel a tárolót, majd szerezze be az érdeklik a tároló naplóit.
+Egy adott tároló naplóinak lekérni, először sorolja fel a tárolót, majd a naplókat a tároló, amely érdekli.
 
-1. [Kapcsolódjon a PowerShell felületéhez](#connect-to-the-powershell-interface).
-2. A futó tárolók listájának lekéréséhez futtassa `ps` a parancsot.
+1. [Csatlakozzon a PowerShell-kapcsolathoz.](#connect-to-the-powershell-interface)
+2. A futó tárolók listájának `ps` leéséhez futtassa a parancsot.
 
     ```powershell
     [10.100.10.10]: P> dkrdbe ps
@@ -133,9 +133,9 @@ Egy adott tároló naplóinak lekéréséhez először sorolja fel a tárolót, 
     acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
     ```
 
-3. Jegyezze fel annak a tárolónak az AZONOSÍTÓját, amelyhez a naplók szükségesek.
+3. Jegyezze fel annak a tárolónak a tárolóazonosítóját, amelyhez a naplókra szüksége van.
 
-4. Egy adott tároló naplóinak lekéréséhez futtassa a `logs` tároló-azonosítót biztosító parancsot.
+4. Egy adott tároló naplóinak lekérnie, futtassa a `logs` tárolóazonosítót biztosító parancsot.
 
     ```powershell
     [10.100.10.10]: PS>dkrdbe logs d99e2f91d9a8
@@ -150,12 +150,12 @@ Egy adott tároló naplóinak lekéréséhez először sorolja fel a tárolót, 
     02/26/2019 18:23:38: Info: Processed event.
     ```
 
-### <a name="to-monitor-the-usage-statistics-of-the-device"></a>Az eszköz használati statisztikáinak figyelése
+### <a name="to-monitor-the-usage-statistics-of-the-device"></a>A készülék használati statisztikáinak figyelése
 
-A memória, a CPU-használat és az IO az eszközön való figyeléséhez `stats` használja az parancsot.
+Az eszközön lévő memória, processzorhasználat és i/o figyeléséhez használja a `stats` parancsot.
 
-1. [Kapcsolódjon a PowerShell felületéhez](#connect-to-the-powershell-interface).
-2. Futtassa a `stats` parancsot úgy, hogy letiltsa az élő streamet, és csak az első eredményt kérje le.
+1. [Csatlakozzon a PowerShell-kapcsolathoz.](#connect-to-the-powershell-interface)
+2. Futtassa a `stats` parancsot úgy, hogy letiltsa az élő közvetítést, és csak az első eredményt húzza le.
 
    ```powershell
    dkrdbe stats --no-stream

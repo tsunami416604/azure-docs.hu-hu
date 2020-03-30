@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Flock konfigurálása automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a nyájba.
+title: 'Oktatóanyag: A Flock konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
+description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryt úgy, hogy automatikusan kiépítse és kiirtsa a felhasználói fiókokat a Flock szolgáltatásba.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,149 +16,149 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: cd7aae05b064657c7b9072402f4bc4d4d7fef7a6
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057863"
 ---
-# <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Oktatóanyag: Flock konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
+# <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Oktatóanyag: A Flock konfigurálása az automatikus felhasználói kiépítéshez
 
-Ennek az oktatóanyagnak a célja, hogy bemutassa a Flock és Azure Active Directory (Azure AD) által elvégzendő lépéseket az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a nyájat.
+Ez az oktatóanyag célja, hogy bemutassa a Flock és az Azure Active Directory (Azure AD) által végrehajtandó lépéseket az Azure AD konfigurálásához, hogy automatikusan kiépítse és deknaktszoljon felhasználókat és/vagy csoportokat a Flock-be.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD felhasználói létesítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../app-provisioning/user-provisioning.md)
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg nyilvános előzetes verzióban van. Az előzetes verziójú funkciók általános Microsoft Azure-használati feltételeiről a [Kiegészítő használati feltételek a Microsoft Azure előzetes verzióihoz](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)című témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * Egy Azure AD-bérlő.
-* [Egy Flock-bérlő](https://flock.com/pricing/)
-* Olyan felhasználói fiók, amely rendszergazdai engedélyekkel rendelkezik a nyájban.
+* [A Flock bérlő](https://flock.com/pricing/)
+* Rendszergazdai engedélyekkel rendelkező felhasználói fiók a Flock-ben.
 
-## <a name="assigning-users-to-flock"></a>Felhasználók társítása a nyájhoz 
+## <a name="assigning-users-to-flock"></a>Felhasználók hozzárendelése az özszflockhoz 
 
-Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
+Az Azure Active Directory egy *hozzárendelések* nevű koncepciót használ annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak az Azure AD-ben egy alkalmazáshoz rendelt felhasználók és/vagy csoportok vannak szinkronizálva.
 
-Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD-beli felhasználók és/vagy csoportok hozzáférhessenek-e a nyájhoz. A döntés után ezeket a felhasználókat és/vagy csoportokat a következő utasítások követésével rendelheti hozzá a Flockhoz:
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+Az automatikus felhasználói kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoportjainak kell hozzáférniük a Flock-hez. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat a Flock-hez rendelheti az alábbi utasításokat követve:
+* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-flock"></a>Fontos Tippek a felhasználók a nyájhoz való hozzárendeléséhez 
+## <a name="important-tips-for-assigning-users-to-flock"></a>Fontos tippek a felhasználók Flock-hez való hozzárendeléséhez 
 
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a nyájhoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
+* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve flock az automatikus felhasználói kiépítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
 
-* Amikor egy felhasználót a Flock szolgáltatáshoz rendel, ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelés párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
+* Amikor egy felhasználót hozzárendel az Özszflock hoz, a hozzárendelési párbeszédpanelen ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
 
-## <a name="setup-flock--for-provisioning"></a>Állomány beállítása a kiépítés számára
+## <a name="setup-flock--for-provisioning"></a>Az Állomány beállítása a kiépítéshez
 
-Az Azure AD-vel való automatikus felhasználó-kiépítés előtt engedélyeznie kell a SCIM-létesítést az Flock-ben.
+Mielőtt konfigurálná a Flock automatikus felhasználói kiépítésaz Azure AD, engedélyeznie kell az SCIM kiépítése a Flock.
 
-1. Jelentkezzen be a [nyájba](https://web.flock.com/?). Kattintson a **Beállítások ikonra** > **a csoport kezelése**lehetőségre.
+1. Jelentkezzen be a [Flock](https://web.flock.com/?). Kattintson a **Beállítások ikon** > **A csapat kezelése gombra.**
 
     ![Flock](media/flock-provisioning-tutorial/icon.png)
 
-2. Válassza **az Auth és a kiépítés**lehetőséget.
+2. Válassza **az Hitelesítés és a Kiépítés lehetőséget.**
 
     ![Flock](media/Flock-provisioning-tutorial/auth.png)
 
-3. Másolja az **API-tokent**. Ezeket az értékeket a rendszer a Flock-alkalmazás létesítés lapjának **titkos jogkivonat** mezőjébe írja be a Azure Portal.
+3. Másolja az **API-jogkivonatot**. Ezeket az értékeket a **titkos jogkivonat** mezőben adja meg az Azure Portalon a Flock-alkalmazás kiépítés lapján.
 
     ![Flock](media/Flock-provisioning-tutorial/provisioning.png)
 
 
-## <a name="add-flock--from-the-gallery"></a>Flock hozzáadása a gyűjteményből
+## <a name="add-flock--from-the-gallery"></a>Add Flock a galériából
 
-Az Azure AD-vel való automatikus felhasználó-kiépítés esetén a Flock az Azure AD-alkalmazás-katalógusból a felügyelt SaaS-alkalmazások listájára van beállítva.
+A Flock konfigurálásához az Azure AD automatikus felhasználói kiépítéséhez hozzá kell adnia a Flock-t az Azure AD alkalmazásgyűjteményéből a felügyelt SaaS-alkalmazások listájához.
 
-**Az Azure AD-alkalmazás-katalógusból származó Flock hozzáadásához hajtsa végre a következő lépéseket:**
+**Az Azure AD alkalmazásgyűjteményből való flock hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen válassza az **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a **Minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **ablaktábla** tetején található Új alkalmazás gombra.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Flock**kifejezést, válassza a **Flock** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be az **Állomány**kifejezést, válassza az **Állomány** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Flock az eredmények listájában](common/search-new-app.png)
+    ![Állomány az eredménylistában](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-flock"></a>Az automatikus felhasználó-kiépítés beállítása a Flock-re  
+## <a name="configuring-automatic-user-provisioning-to-flock"></a>Automatikus felhasználói kiépítés konfigurálása a Flock szolgáltatásba  
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein az Azure AD-ben felhasználói és/vagy csoport-hozzárendelések alapján a felhasználók és/vagy csoportok létrehozásához, frissítéséhez és letiltásához.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználói és/vagy letiltása az Azure AD-ben lévő felhasználói és/vagy csoport-hozzárendelések alapján hozzon létre, frissítsen és tiltson le felhasználókat és/vagy csoportokat az Azure AD-ben.
 
 > [!TIP]
-> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Flock számára, a [Flock egyszeri bejelentkezés oktatóanyagában](Flock-tutorial.md)szereplő utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
+> Azt is választhatja, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Flock számára, a [Flock Single sign-on tutorial](Flock-tutorial.md)utasításait követve. Az egyszeri bejelentkezés az automatikus felhasználói kiépítéstől függetlenül konfigurálható, bár ez a két funkció kiegészíti egymást
 
-### <a name="to-configure-automatic-user-provisioning-for-flock--in-azure-ad"></a>Automatikus felhasználó-kiépítés beállítása az Azure AD-beli Flock számára:
+### <a name="to-configure-automatic-user-provisioning-for-flock--in-azure-ad"></a>Az Azure AD-ben a Flock automatikus felhasználói kiépítésének konfigurálása:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza **a Vállalati alkalmazások**lehetőséget, majd a Minden **alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Flock**elemet.
+2. Az alkalmazások listájában válassza a **Flock**lehetőséget.
 
     ![A Flock hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **létesítési módot** **Automatikus**ra.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A rendszergazdai hitelesítő adatok szakaszban adja meg a **bérlői URL-címben** és a **titkos jogkivonatban** korábban beolvasott `https://api.flock-staging.com/v2/scim` és **API-tokenek** értékét. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad képes legyen csatlakozni a nyájhoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Flock-fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A rendszergazdai hitelesítő adatok `https://api.flock-staging.com/v2/scim` szakaszban adja meg a bérlői **URL-cím,** illetve a **titkos jogkivonat** korábbi részében lekért **API-token** értékeket. Kattintson **a Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD csatlakozni tud a Flock.Click Test Connection to ensure Azure AD can connect to Flock. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a Flock-fiók rendelkezik rendszergazdai engedélyekkel, majd próbálkozzon újra.
 
-    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be a jelölőnégyzetet – **E-mail értesítés küldése hiba esetén.**
 
-    ![Értesítő E-mail](common/provisioning-notification-email.png)
+    ![Értesítési e-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a nyájhoz**lehetőséget.
+8. A **Leképezések** csoportban válassza **az Azure Active Directory felhasználóinak szinkronizálása az állományba**lehetőséget.
 
-    ![Flock-felhasználók leképezései](media/flock-provisioning-tutorial/usermapping.png)
+    ![Flock felhasználói leképezések](media/flock-provisioning-tutorial/usermapping.png)
 
-9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a-beli felhasználói fiókoknak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+9. Tekintse át az Azure AD-ről flock-ra szinkronizált felhasználói attribútumokat az **Attribútumleképezés** szakaszban. Az **Egyező** tulajdonságokként kiválasztott attribútumok a Flock felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
 
-    ![Flock felhasználói attribútumai](media/flock-provisioning-tutorial/userattribute.png)
+    ![Flock felhasználói attribútumok](media/flock-provisioning-tutorial/userattribute.png)
 
-11. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+11. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
 
-12. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Flock számára, módosítsa a **kiépítési állapotot** **a következőre** a **Beállítások** szakaszban.
+12. Az Azure AD-létesítési szolgáltatás engedélyezése flock, módosítsa a **kiépítési állapot** **be van kapcsolva** a **Beállítások** szakaszban.
 
-    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítési állapot bevan kapcsolva](common/provisioning-toggle-on.png)
 
-13. Adja meg azokat a felhasználókat és/vagy csoportokat, akiket ki szeretne építeni a nyájba. Ehhez válassza ki a kívánt értékeket a **hatókörben** a **Beállítások** szakaszban.
+13. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket a Flock szolgáltatásba szeretne kiépíteni, ha a **Beállítások** szakasz **hatókörében** kiválasztja a kívánt értékeket.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-14. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+14. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások. További információ arról, hogy mennyi ideig tart a felhasználók és/vagy csoportok kiépítése, hogy [mennyi ideig tart a felhasználók kiépítése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
+Ez a művelet elindítja a Beállítások szakasz **hatókörében** definiált összes felhasználó és/vagy csoport kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások. Ha többet szeretne tudni arról, hogy mennyi ideig tart a felhasználók és/vagy csoportok kiépítése, lásd: [Mennyi ideig tart a felhasználók kiépítése.](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)
 
-A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Flock-ben végrehajtott összes műveletet ismertetik. További információ: [a felhasználó kiépítési állapotának ellenõrzése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Az Azure AD-létesítési naplók olvasásához lásd: [jelentéskészítés az automatikus felhasználói fiók kiépítés](../app-provisioning/check-status-user-account-provisioning.md)során.
+Az Aktuális **állapot** szakasz segítségével figyelheti az előrehaladást, és kövesse a kiépítési tevékenységjelentésre mutató hivatkozásokat, amely ismerteti az Azure AD-kiépítési szolgáltatás által az özszenlén végrehajtott összes műveletet. További információ: [A felhasználói kiépítés állapotának ellenőrzése.](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) Az Azure AD kiépítési naplók olvasásához olvassa el [az Automatikus felhasználói fiók kiépítésről szóló jelentéskészítés című témakört.](../app-provisioning/check-status-user-account-provisioning.md)
 
 
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)

@@ -1,7 +1,7 @@
 ---
-title: Átalakítások és feladatok Media Services
+title: Átalakítások és feladatok a Médiaszolgáltatásokban
 titleSuffix: Azure Media Services
-description: Megtudhatja, hogyan hozhat létre átalakítókat a videók Azure Media Servicesban történő feldolgozásához szükséges szabályok leírásához.
+description: Ismerje meg, hogyan hozhat létre átalakításokat a videók Azure Media Servicesben történő feldolgozásának szabályainak leírására.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,64 +13,64 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
 ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73571233"
 ---
-# <a name="transforms-and-jobs-in-media-services"></a>Átalakítások és feladatok Media Services
+# <a name="transforms-and-jobs-in-media-services"></a>Átalakítások és feladatok a Médiaszolgáltatásokban
 
-Ez a témakör az [átalakításokkal](https://docs.microsoft.com/rest/api/media/transforms) és a [feladatokkal](https://docs.microsoft.com/rest/api/media/jobs) kapcsolatos adatokat ismerteti, és bemutatja az entitások közötti kapcsolatot.
+Ez a témakör az [átalakításokról](https://docs.microsoft.com/rest/api/media/transforms) és a feladatokról ad részletes [információt,](https://docs.microsoft.com/rest/api/media/jobs) és ismerteti az entitások közötti kapcsolatot.
 
 ## <a name="overview"></a>Áttekintés
 
-### <a name="transformsjobs-workflow"></a>Átalakítások/feladatok munkafolyamat
+### <a name="transformsjobs-workflow"></a>Átalakítások/feladatok munkafolyamata
 
-A következő ábra a transzformációk/feladatok munkafolyamatot mutatja be:
+Az alábbi ábra az átalakítások/feladatok munkafolyamatát mutatja be:
 
-![Átalakítások és feladatok munkafolyamata Azure Media Services](./media/encoding/transforms-jobs.png)
+![Átalakítások és feladatok munkafolyamata az Azure Media Servicesben](./media/encoding/transforms-jobs.png)
 
 #### <a name="typical-workflow"></a>Jellemző munkafolyamat
 
-1. Hozzon létre egy átalakítót.
-2. Feladatok küldése a transzformáció alatt.
+1. Hozzon létre egy átalakítást.
+2. Feladatok küldése az átalakítás alatt.
 3. Lista átalakítások.
-4. Ha nem tervezi, hogy a későbbiekben nem kívánja használni a transzformációt, törölje az átalakítást.
+4. Törölje az átalakítást, ha nem tervezi a jövőben isztikálandó használatát.
 
 #### <a name="example"></a>Példa
 
-Tegyük fel, hogy az összes videó miniatűr képként való kinyerését kívánja kinyerni – a lépéseket a következőképpen teheti meg:
+Tegyük fel, hogy az összes videó első képkockát miniatűr képként szeretné kibontani – a következő lépéseket tenné:
 
-1. Adja meg a receptet vagy a videók feldolgozására vonatkozó szabályt: "a videó első képkockáját használja miniatűrként".
-2. Minden videó esetében el kell utasítania a szolgáltatást:
+1. Határozza meg a receptet, vagy a videó feldolgozásának szabályát: "használja a videó első képkockát miniatűrként".
+2. Minden egyes videóhoz a következőket kell közölnia a szolgáltatásnak:
     1. Hol található a videó.
-    2. Hová kell írni a kimenet miniatűr képét.
+    2. Hol kell írni a kimeneti miniatűr képet.
 
-Az **átalakítással** egyszerre hozhatja létre a receptet (1. lépés), és elküldheti az adott receptet használó feladatokat (2. lépés).
+A **Transform** segít létrehozni a recept et egyszer (1. lépés), és küldje el jobs segítségével, hogy a recept (2. lépés).
 
 > [!NOTE]
-> **A DateTime** típus **átalakításának** és feladatainak tulajdonságai mindig UTC formátumban jelennek meg.
+> Az **Átalakítás** és a Datetime típusú **feladat** tulajdonságai mindig UTC formátumúak.
 
 ## <a name="transforms"></a>Átalakítások
 
-Az **átalakítások** használatával konfigurálhatja a videók kódolására vagy elemzésére szolgáló gyakori feladatokat. Mindegyik **transzformáció** a videó-vagy hangfájlok feldolgozására szolgáló feladatok egy receptjét vagy munkafolyamatát ismerteti. Egyetlen átalakító több szabályt is alkalmazhat. Egy átalakító például megadhatja, hogy minden videó egy adott bitrátán lévő MP4-fájlba legyen kódolva, és hogy a videó első képkockából jöjjön létre egy miniatűr kép. Minden olyan szabályhoz hozzá kell adnia egy TransformOutput-bejegyzést, amelyet fel szeretne venni az átalakításba. Az előállítók használatával adhatja meg, hogyan történjen a bemeneti médiafájlok feldolgozásának átalakítása.
+**Az Átalakítások** segítségével konfigurálhatja a videók kódolására vagy elemzésére vonatkozó gyakori feladatokat. Minden **átalakítás** a video- vagy hangfájlok feldolgozására szolgáló feladatok receptjét vagy munkafolyamatát írja le. Egyetlen átalakítás több szabályt is alkalmazhat. Az átalakítás megadhatja például, hogy minden videó egy mp4-fájlba legyen kódolva egy adott bitrátával, és hogy a videó első képkockából miniatűr kép jön létre. Minden olyan szabályhoz, amelyet be szeretne vonni az átalakításba, minden egyes szabályhoz hozzá kell adnia egy TransformOutput bejegyzést. A készletek segítségével megállapíthatja, hogy a bemeneti médiafájlok hogyan dolgozhatók fel.
 
 ### <a name="viewing-schema"></a>Séma megtekintése
 
-A Media Services v3-as verzióban az előzetes beállítások az API-ban erősen beírt entitások. Ezekhez az objektumokhoz a "séma" definíciója [nyílt API-specifikációban (vagy hencegés)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)található. A [REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)vagy más Media Services v3 SDK dokumentációjában megtekintheti az előre definiált definíciókat (például a **StandardEncoderPreset**-t) is.
+A Media Services v3-ban a készletek erősen gépelt entitások az API-ban. Ezeknek az objektumoknak a "séma" definícióját az [Open API Specification (vagy Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)tartalmazza. Az előre beállított definíciók (például **a StandardEncoderPreset)** a [REST API,](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)vagy más Media Services v3 SDK referenciadokumentációban is megtekinthetők.
 
 ### <a name="creating-transforms"></a>Átalakítások létrehozása
 
-Az átalakításokat a REST, a CLI vagy a közzétett SDK-k használatával is létrehozhatja. Az Media Services V3 API-t a Azure Resource Manager vezérli, így a Resource Manager-sablonokkal is létrehozhatja és telepítheti az átalakításokat a Media Services-fiókban. A szerepköralapú hozzáférés-vezérlés használatával zárolhatja az átalakításokhoz való hozzáférést.
+Átalakításokat hozhat létre rest, CLI vagy bármely közzétett SDK használatával. A Media Services v3 API-t az Azure Resource Manager vezérli, így az Erőforrás-kezelő-sablonok használatával is létrehozhat és telepíthet átalakításokat a Media Services-fiókban. A szerepköralapú hozzáférés-vezérlés sel zárolhatja az átalakításokhoz való hozzáférést.
 
 ### <a name="updating-transforms"></a>Átalakítások frissítése
 
-Ha frissítenie kell az [átalakítót](https://docs.microsoft.com/rest/api/media/transforms), használja a **frissítési** műveletet. Ennek célja a Leírás módosítása vagy a mögöttes TransformOutputs prioritása. Javasoljuk, hogy ezeket a frissítéseket az összes folyamatban lévő feladat befejezése után végezze el. Ha újra szeretné írni a receptet, létre kell hoznia egy új átalakítót.
+Ha frissítenie kell az [átalakítást,](https://docs.microsoft.com/rest/api/media/transforms)használja a **Frissítés** műveletet. Az alapul szolgáló TransformOutputok leírásának vagy prioritásainak módosítására szolgál. Javasoljuk, hogy az ilyen frissítéseket akkor végezze el, amikor az összes folyamatban lévő feladat befejeződött. Ha át kívánja írni a receptet, új átalakítást kell létrehoznia.
 
-### <a name="transform-object-diagram"></a>Objektum diagramjának átalakítása
+### <a name="transform-object-diagram"></a>Objektumdiagram átalakítása
 
-A következő ábrán az **átalakító** objektum és az általa hivatkozott objektumok láthatók, beleértve a származtató kapcsolatokat is. A szürke nyíl egy olyan típust mutat be, amelyet a feladatok és a zöld nyilak mutatnak az osztály származtató kapcsolatainak megjelenítéséhez.
+Az alábbi ábrán az **Átalakítás** objektum és az általa hivatkozott objektumok láthatók, beleértve a származtatási kapcsolatokat is. A szürke nyilak olyan típust mutatnak, amelyet a Feladat hivatkozások és a zöld nyilak az osztályszármazékos kapcsolatokat mutatnak.
 
 Válassza ki a képet a teljes méret megtekintéséhez.  
 
@@ -78,52 +78,52 @@ Válassza ki a képet a teljes méret megtekintéséhez.
 
 ## <a name="jobs"></a>Feladatok
 
-A **feladatnak** az a tényleges kérése, hogy Media Services az **átalakítást** egy adott bemeneti videóra vagy hangtartalomra alkalmazza. Az átalakítás létrehozása után Media Services API-kkal vagy a közzétett SDK-kkal is elküldheti a feladatokat. A **feladatok** olyan információkat határoznak meg, mint a bemeneti videó helye és a kimenet helye. Megadhatja a bemeneti videó helyét a: HTTPS URL-címek, SAS URL-címek vagy [eszközök](https://docs.microsoft.com/rest/api/media/assets)használatával.  
+A **feladat** az a tényleges kérés a Media Services számára, hogy az **Átalakítás** t egy adott bemeneti videóra vagy hangtartalomra alkalmazza. Az átalakítás létrehozása után a feladatokat a Media Services API-k vagy a közzétett SDK-k használatával küldheti el. A **feladat** olyan információkat ad meg, mint például a bemeneti videó helye és a kimenet helye. A bemeneti videó helyét a következő használatával adhatja meg: HTTPS URL-címek, SAS URL-ek vagy [Eszközök](https://docs.microsoft.com/rest/api/media/assets).  
 
-### <a name="job-input-from-https"></a>Feladathoz tartozó bemenet HTTPS-ről
+### <a name="job-input-from-https"></a>Feladat bemenete https-ből
 
-Ha a tartalom már elérhető egy URL-címen keresztül, és nem szükséges a forrásfájl tárolása az Azure-ban (például az S3-ból való importálás), használja a HTTPS-alapú [feladatokat](job-input-from-http-how-to.md) . Ez a módszer akkor is megfelelő, ha rendelkezik a tartalommal az Azure Blob Storage-ban, de nem szükséges, hogy a fájl egy eszközön legyen. Ez a módszer jelenleg csak egyetlen fájlt támogat a bevitelhez.
+Használja [a HTTPS-ből származó feladatbevitelt,](job-input-from-http-how-to.md) ha a tartalom már elérhető egy URL-címen keresztül, és nem kell tárolnia a forrásfájlt az Azure-ban (például import az S3-ból). Ez a módszer akkor is alkalmas, ha rendelkezik a tartalom az Azure Blob storage, de nincs szükség a fájl egy eszköz. Ez a módszer jelenleg csak egyetlen fájlt támogat a bevitelhez.
 
-### <a name="asset-as-job-input"></a>Az eszköz feladatként való bevitele
+### <a name="asset-as-job-input"></a>Eszköz feladatbemenetként
 
-Ha a bemeneti tartalom már egy eszközön van, vagy a tartalom helyi fájlban van tárolva, használja az [eszköz feladatként való bevitelét](job-input-from-local-file-how-to.md) . Ez akkor is jó megoldás, ha a bemeneti adategységet szeretné közzétenni a streaminghez vagy a letöltéshez (tegyük fel, hogy közzé kívánja tenni az MP4 letöltését, de a szöveg-vagy Arcfelismerés-felismerést is el szeretné végezni). Ez a módszer támogatja a többfájlos eszközöket (például a helyileg kódolt MBR-adatfolyam-készleteket).
+Használja [az eszközt feladatbemenetként,](job-input-from-local-file-how-to.md) ha a bemeneti tartalom már egy eszközben van, vagy ha a tartalom a helyi fájlban van tárolva. Ez is egy jó lehetőség, ha azt tervezi, hogy közzéteszi a bemeneti eszköz streaming vagy letöltés (mondjuk szeretné közzétenni az mp4 letölthető, hanem azt is szeretné, hogy beszéd a szöveg vagy arcfelismerés). Ez a módszer támogatja a többfájlos eszközöket (például a helyileg kódolt MBR streamelési készleteket).
 
-### <a name="checking-job-progress"></a>A feladatok állapotának ellenőrzése
+### <a name="checking-job-progress"></a>A feladat előrehaladásának ellenőrzése
 
-A feladatok előrehaladását és állapotát a Event Gridával folytatott figyelési események is beszerezhetők. További információ: [események figyelése a EventGrid használatával](job-state-events-cli-how-to.md).
+A feladatok állapota és állapota az Event Grid események figyelésével érhető el. További információ: [Események figyelése az EventGrid használatával.](job-state-events-cli-how-to.md)
 
 ### <a name="updating-jobs"></a>Feladatok frissítése
 
-A [feladat](https://docs.microsoft.com/rest/api/media/jobs) entitásban található frissítési művelettel a feladat elküldése után módosíthatja a *leírást* és a *prioritási* tulajdonságokat. A *priority* tulajdonság módosítása csak akkor lép érvénybe, ha a feladat továbbra is várólistán lévő állapotban van. Ha a feladat megkezdte a feldolgozást, vagy befejeződött, a módosítás prioritása nincs hatással.
+A [Projekt](https://docs.microsoft.com/rest/api/media/jobs) entitás frissítési művelete a feladat elküldése után módosíthatja a *leírást* és a *prioritási* tulajdonságokat. A *prioritási* tulajdonság módosítása csak akkor érvényes, ha a feladat még mindig várólistás állapotban van. Ha a feladat feldolgozása megkezdődött vagy befejeződött, a prioritás módosítása nincs hatással.
 
-### <a name="job-object-diagram"></a>Feladatütemezés diagramja
+### <a name="job-object-diagram"></a>Feladatobjektum-diagram
 
-A következő ábrán a **feladatütemezés** és az általa hivatkozott objektumok láthatók, beleértve a származtató kapcsolatokat is.
+Az alábbi ábrán a **Feladat** objektum és az általa hivatkozott objektumok láthatók, beleértve a származtatási kapcsolatokat is.
 
 Kattintson a képre a teljes méretű megjelenítéshez.  
 
 <a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a>
 
-## <a name="configure-media-reserved-units"></a>Media szolgáltatás számára fenntartott egységek konfigurálása
+## <a name="configure-media-reserved-units"></a>Media számára fenntartott egységek konfigurálása
 
-A Media Services v3 vagy Video Indexer által aktivált hangelemzési és videó-elemzési feladatokhoz kifejezetten ajánlott 10 S3-as Media szolgáltatás számára fenntartott egységekkel (MRUs) ellátni a fiókját. Ha több mint 10 S3 MRUs van szüksége, nyisson meg egy támogatási jegyet a [Azure Portal](https://portal.azure.com/)használatával.
+A Media Services v3 vagy Video Indexer által indított hangelemzési és videoelemzési feladatok esetében erősen ajánlott a fiók kiépítése 10 S3 Media szolgáltatásszámára fenntartott egységgel (MRUs). Ha 10-nél több S3 MRUs-ra van szüksége, nyisson meg egy támogatási jegyet az [Azure Portalon.](https://portal.azure.com/)
 
-Részletekért lásd: [a médiafájlok feldolgozásának skálázása a CLI-vel](media-reserved-units-cli-how-to.md).
+További információt az [Adathordozó-feldolgozás méretezése CLI-vel](media-reserved-units-cli-how-to.md).
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
+## <a name="ask-questions-give-feedback-get-updates"></a>Kérdéseket tehet fel, visszajelzést adhat, frissítéseket kaphat
 
-Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
+Tekintse meg az [Azure Media Services közösségi](media-services-community.md) cikket, ahol különböző módokon tehet fel kérdéseket, küldhet visszajelzést, és kaphat frissítéseket a Media Services szolgáltatásról.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
-* [Media Services entitások szűrése, rendezése és lapozása](entities-overview.md)
+* [Media Services-entitások szűrése, rendezése, lapozása](entities-overview.md)
 
 ## <a name="next-steps"></a>További lépések
 
-- A fejlesztés megkezdése előtt tekintse át [az Media Services V3 API](media-services-apis-overview.md) -kkal való fejlesztést (az API-k elérésére vonatkozó információkat, elnevezési konvenciókat stb.).
-- Tekintse meg a következő oktatóanyagokat:
+- A fejlesztés megkezdése előtt tekintse át [a Fejlesztés a Media Services v3 API-jával](media-services-apis-overview.md) című irányelveket (beleértve az API-k elérésére, elnevezési konvenciókra stb.)
+- Nézze meg ezeket az útmutatókat:
 
-    - [Oktatóanyag: távoli fájl kódolása URL-cím alapján és a videó továbbítása](stream-files-tutorial-with-rest.md)
-    - [Oktatóanyag: videók feltöltése, kódolása és továbbítása](stream-files-tutorial-with-api.md)
-    - [Oktatóanyag: videók elemzése Media Services v3-val](analyze-videos-tutorial-with-api.md)
+    - [Oktatóanyag: Távoli fájl kódolása URL alapján, és streamelése](stream-files-tutorial-with-rest.md)
+    - [Oktatóanyag: Videók feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)
+    - [Oktatóanyag: Videók elemzése a Media Services v3-as készülékkel](analyze-videos-tutorial-with-api.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Identity & hozzáférési biztonsági eljárások | Microsoft Docs
-description: Ez a cikk az Identitáskezelés és a hozzáférés-vezérlés ajánlott eljárásait ismerteti az Azure beépített képességeinek használatával.
+title: Az Azure-identitás & a biztonsági gyakorlati tanácsokhoz való hozzáféréshez | Microsoft dokumentumok
+description: Ez a cikk az Azure-képességek beépített használatával az identitáskezelés és a hozzáférés-vezérlés ajánlott eljárások készletét tartalmazza.
 services: security
 documentationcenter: na
 author: barclayn
@@ -16,333 +16,333 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
 ms.openlocfilehash: 52ef3a9b1df058d5d2e954b424094f9dbaeba15b
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73053341"
 ---
-# <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások
+# <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure-beli identitáskezelés és hozzáférés-vezérlés ajánlott biztonsági eljárásai
 
-Ebben a cikkben az Azure Identity Management és a hozzáférés-vezérléssel kapcsolatos ajánlott biztonsági eljárások gyűjteményét tárgyaljuk. Ezek az ajánlott eljárások az [Azure ad](../../active-directory/fundamentals/active-directory-whatis.md) -vel és az ügyfelek, például saját felhasználói élményekkel kapcsolatos tapasztalataiból származnak.
+Ebben a cikkben az Azure-identitáskezelés és a hozzáférés-vezérlés biztonsági gyakorlati tanácsok gyűjteménye. Ezek az ajánlott eljárások az [Azure AD-vel](../../active-directory/fundamentals/active-directory-whatis.md) kapcsolatos tapasztalatainkból és az önhöz hasonló ügyfelek tapasztalataiból származnak.
 
-Minden ajánlott eljáráshoz a következőket magyarázza el:
+Minden egyes bevált gyakorlathoz elmagyarázzuk a következőket:
 
-* Az ajánlott eljárás
-* Miért érdemes engedélyezni az ajánlott eljárásokat
-* Mi lehet az eredmény, ha nem sikerül engedélyezni az ajánlott eljárást
-* Az ajánlott eljárás lehetséges alternatívái
-* Hogyan sajátíthatja el az ajánlott eljárásokat
+* Mi a legjobb gyakorlat?
+* Miért szeretné engedélyezni ezt a bevált gyakorlatot?
+* Mi lehet az eredmény, ha nem engedélyezi a legjobb gyakorlatot?
+* A legjobb gyakorlat lehetséges alternatívái
+* Hogyan tanulhatja meg a legjobb gyakorlat engedélyezését?
 
-Az Azure Identity Management és a hozzáférés-vezérlés biztonsági eljárásairól szóló cikk konszenzusos véleményt és az Azure platform képességeit és funkcióit ismerteti, amelyek a cikk írásának időpontjában szerepelnek.
+Ez az Azure-identitáskezelés és hozzáférés-vezérlés biztonsági gyakorlati tanácsok cikk konszenzusos véleményen és az Azure platform képességek és szolgáltatáskészletek, acikk írásakor.
 
-A cikk írásának szándéka az, hogy az üzembe helyezést követően az "[5 lépés az identitás-infrastruktúra biztonságossá](steps-secure-identity.md)tételéhez" című ellenőrzőlista általános ütemtervet nyújtson a biztonsági helyzethez. Services.
+A szándék írásban ezt a cikket, hogy egy általános ütemtervet, hogy egy robusztusabb biztonsági testtartás telepítése után által vezetett["5 lépést, hogy biztosítsa a személyazonossági infrastruktúra](steps-secure-identity.md)" ellenőrzőlista, amely végigvezeti Önt néhány alapvető funkciók és szolgáltatások.
 
-A vélemények és technológiák idővel változnak, és ez a cikk rendszeresen frissül, hogy tükrözze ezeket a módosításokat.
+A vélemények és a technológiák idővel változnak, és ezt a cikket rendszeresen frissítik, hogy tükrözzék ezeket a változásokat.
 
-Az Azure Identity Management és a hozzáférés-vezérléssel kapcsolatos ajánlott biztonsági eljárások a jelen cikkben tárgyalják a következőket:
+Az Azure-identitáskezelés és a hozzáférés-vezérlés biztonsági gyakorlati tanácsok ebben a cikkben tárgyalt a következők:
 
-* Identitás kezelése elsődleges biztonsági peremhálózatként
-* Az Identitáskezelés központosított kezelése
+* Azonosidentitás kezelése elsődleges biztonsági kerületként
+* Identitáskezelés központosítása
 * Csatlakoztatott bérlők kezelése
 * Egyszeri bejelentkezés engedélyezése
 * Feltételes hozzáférés bekapcsolása
-* A rutin biztonsági tökéletesítésének megtervezése
+* A rendszeres biztonsági fejlesztések megtervezése
 * Jelszókezelés engedélyezése
-* A multi-Factor-ellenőrzés érvényesítése a felhasználók számára
+* Többtényezős ellenőrzés kényszerítése a felhasználók számára
 * Szerepköralapú hozzáférés-vezérlés alkalmazása
-* A Kiemelt jogosultságú fiókok alacsonyabb kitettsége
-* Az erőforrások helyének vezérlése
-* Az Azure AD használata tárolási hitelesítéshez
+* A kiemelt jogosultságú fiókok alacsonyabb kitettsége
+* Az erőforrások helyét kezelő helyek ellenőrzése
+* Az Azure AD használata a tárolási hitelesítéshez
 
-## <a name="treat-identity-as-the-primary-security-perimeter"></a>Identitás kezelése elsődleges biztonsági peremhálózatként
+## <a name="treat-identity-as-the-primary-security-perimeter"></a>Azonosidentitás kezelése elsődleges biztonsági kerületként
 
-Az identitások többsége elsődleges biztonsági szempontoknak számít. Ez a hálózati biztonság hagyományos fókuszának eltolódása. A hálózati kerületek folyamatosan egyre több porózus, és a szegélyhálózati védelem nem lehet olyan hatékony, mint a [BYOD](https://aka.ms/byodcg) -eszközök és a Felhőbeli alkalmazások robbanása előtt.
+Sokan úgy vélik, hogy az identitás a biztonság elsődleges határa. Ez a váltás a hagyományos hangsúly a hálózati biztonság. A hálózati peremek egyre porózusabbak, és ez a peremvédelem nem lehet olyan hatékony, mint a [BYOD-eszközök](https://aka.ms/byodcg) és a felhőalapú alkalmazások robbanása előtt volt.
 
-A [Azure Active Directory (Azure ad)](../../active-directory/fundamentals/active-directory-whatis.md) az identitás-és hozzáférés-kezeléshez használható Azure-megoldás. Az Azure AD egy több-bérlős, felhőalapú címtár-és Identitáskezelő szolgáltatás a Microsofttól. Az alapszintű címtárszolgáltatás, az alkalmazás-hozzáférés kezelése és az Identity Protection egyetlen megoldással kombinálható.
+[Az Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) az Azure-megoldás az identitás- és hozzáférés-kezeléshez. Az Azure AD egy több-bérlős, felhőalapú címtár- és identitáskezelési szolgáltatás a Microsofttól. Egyetlen megoldásban egyesíti az alapvető címtárszolgáltatásokat, az alkalmazáshozzáférés-kezelést és az identitásvédelmet.
 
-Az alábbi fejezetek az identitás-és hozzáférés-biztonságra vonatkozó ajánlott eljárásokat sorolja fel az Azure AD használatával.
+Az alábbi szakaszok az Azure AD használatával az identitás- és hozzáférés-biztonsággal kapcsolatos gyakorlati tanácsokat sorolják fel.
 
-**Ajánlott eljárás**: a központ biztonsági ellenőrzése és észlelése a felhasználói és szolgáltatásbeli identitások köré.
-**Részletek**: az Azure ad használatával rézvezetékes végezhet a vezérlők és az identitások.
+**Ajánlott eljárás:** A biztonsági vezérlők és észlelések középpontba kerülése a felhasználói és szolgáltatásidentitások körül.
+**Részlet:** Az Azure AD használatával a vezérlők és identitások közös en.
 
-## <a name="centralize-identity-management"></a>Az Identitáskezelés központosított kezelése
+## <a name="centralize-identity-management"></a>Identitáskezelés központosítása
 
-[Hibrid identitási](https://resources.office.com/ww-landing-M365E-EMS-IDAM-Hybrid-Identity-WhitePaper.html?) helyzetekben javasoljuk, hogy integrálja a helyszíni és a Felhőbeli címtárakat. Az integráció lehetővé teszi az IT-csoportnak, hogy a fiókokat egy adott helyről kezelhesse, függetlenül attól, hogy hol hoztak létre. Az integráció a Felhőbeli és a helyszíni erőforrások elérésének közös identitásával is segíti a felhasználókat.
+Hibrid [identitásesetén](https://resources.office.com/ww-landing-M365E-EMS-IDAM-Hybrid-Identity-WhitePaper.html?) azt javasoljuk, hogy integrálja a helyszíni és a felhőbeli könyvtárakat. Az integráció lehetővé teszi, hogy az informatikai csapat egy helyről kezelje a fiókokat, függetlenül attól, hogy hol jön létre egy fiók. Az integráció a felhőbeli és a helyszíni erőforrások eléréséhez közös identitás biztosításával is segíti a felhasználókat abban, hogy hatékonyabbak legyenek.
 
-**Ajánlott eljárás**: egyetlen Azure ad-példány létrehozása. A konzisztencia és az egyetlen mérvadó forrás is növeli az átláthatóságot, és csökkenti a biztonsági kockázatokat az emberi hibák és a konfiguráció bonyolultsága miatt.
-**Részletek**: egyetlen Azure ad-címtár kijelölése a vállalati és a szervezeti fiókok mérvadó forrásaként.
+**Ajánlott eljárás:** Hozzon létre egy Azure AD-példányt. A konzisztencia és az egységes mérvadó források növelik az egyértelműséget, és csökkentik az emberi hibákból és a konfiguráció összetettségéből eredő biztonsági kockázatokat.
+**Részlet:** Jelöljön ki egyetlen Azure AD-címt a vállalati és szervezeti fiókok mérvadó forrásaként.
 
-**Ajánlott eljárás**: a helyszíni címtárak integrálása az Azure ad-vel.  
-**Részletek**: [Azure ad Connect](/azure/active-directory/connect/active-directory-aadconnect) használatával szinkronizálja a helyszíni címtárat a felhő címtárával.
-
-> [!Note]
-> Vannak olyan [tényezők, amelyek hatással vannak a Azure ad Connect teljesítményére](../../active-directory/hybrid/plan-connect-performance-factors.md). Győződjön meg arról, Azure AD Connect elegendő kapacitással rendelkezik ahhoz, hogy a rendszerek ne akadályozzák a biztonságot és a termelékenységet. A nagyméretű vagy összetett szervezeteknek (szervezeteknek több mint 100 000 objektumot kell kiépíteniük) az [ajánlásokat](../../active-directory/hybrid/whatis-hybrid-identity.md) követve optimalizálhatja Azure ad Connect megvalósítását.
-
-**Ajánlott eljárás**: ne szinkronizálja a fiókokat az Azure ad-be, amelyek magas szintű jogosultságokkal rendelkeznek a meglévő Active Directory-példányban.
-**Részletek**: ne módosítsa az alapértelmezett [Azure ad Connect konfigurációt](../../active-directory/hybrid/how-to-connect-sync-configure-filtering.md) , amely kiszűri ezeket a fiókokat. Ez a konfiguráció csökkenti a felhőből a helyszíni eszközökre irányuló ellenfelek (ami jelentős incidenst eredményezhet) kockázatát.
-
-**Ajánlott eljárás**: a jelszó-kivonat szinkronizálásának bekapcsolása.  
-**Részletek**: a jelszó-kivonatolási szinkronizálás egy helyszíni Active Directory-példányról egy FELHŐALAPÚ Azure ad-példányra történő felhasználói jelszó-kivonatok szinkronizálására szolgáló szolgáltatás. Ez a szinkronizálás segít megvédeni a korábbi támadásokból visszajátszott kiszivárgott hitelesítő adatokat.
-
-Még ha úgy dönt, hogy összevonást használ Active Directory összevonási szolgáltatások (AD FS) (AD FS) vagy más identitás-szolgáltatókkal, beállíthatja a jelszó-kivonat szinkronizálását biztonsági mentésként, ha a helyszíni kiszolgálók meghibásodnak vagy átmenetileg elérhetetlenné válnak. Ez a szinkronizálás lehetővé teszi a felhasználók számára, hogy ugyanazzal a jelszóval jelentkezzenek be a szolgáltatásba, amelyet a helyszíni Active Directory-példányba való bejelentkezéshez használnak. Azt is lehetővé teszi, hogy az Identity Protection észlelje a feltört hitelesítő adatokat, összehasonlítva a szinkronizált jelszó-kivonatokat a biztonsággal ismert jelszavakkal, ha a felhasználó ugyanazt az e-mail címet és jelszót használta más olyan szolgáltatásokon, amelyek nem csatlakoznak az Azure AD-hez.
-
-További információ: jelszó- [kivonatolási szinkronizálás implementálása Azure ad Connect szinkronizálással](/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization).
-
-**Ajánlott eljárás**: az új alkalmazások fejlesztéséhez használja az Azure ad-t a hitelesítéshez.
-**Részletek**: a hitelesítés támogatásához használja a megfelelő képességeket:
-
-  - Azure AD az alkalmazottak számára
-  - [Azure ad B2B](../../active-directory/b2b/index.yml) vendég felhasználók és külső partnerek számára
-  - [Azure ad B2C](../../active-directory-b2c/index.yml) annak szabályozásához, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat az alkalmazások használatakor
-
-Azok a szervezetek, amelyek nem integrálják a helyszíni identitást a Felhőbeli identitással, nagyobb terheléssel rendelkezhetnek a fiókok kezelésében. Ez a terhelés növeli a hibák és a biztonsági rések valószínűségét.
+**Ajánlott eljárás:** Integrálja a helyszíni könyvtárakat az Azure AD-vel.  
+**Részlet:** Az [Azure AD Connect](/azure/active-directory/connect/active-directory-aadconnect) segítségével szinkronizálja a helyszíni címtár a felhőkönyvtárat.
 
 > [!Note]
-> Ki kell választania, hogy mely címtárakban kritikus fiókok fognak megjelenni, és hogy a használt rendszergazdai munkaállomást az új Cloud Services vagy a meglévő folyamatok felügyelik-e. A meglévő felügyeleti és identitás-kiépítési folyamatok használata csökkentheti a kockázatokat, de a támadók kockázatát is veszélyeztethetik a helyszíni fiókok és a felhőbe való belátások. Érdemes lehet más stratégiát használni a különböző szerepkörökhöz (például rendszergazdák és üzleti egység adminisztrátorai). Két lehetőség közül választhat. Az első lehetőség olyan Azure AD-fiókok létrehozása, amelyek nincsenek szinkronizálva a helyszíni Active Directory-példánnyal. Csatlakoztassa a felügyeleti munkaállomást az Azure AD-hez, amelyet Microsoft Intune használatával kezelhet és javíthat. A második lehetőség a meglévő rendszergazdai fiókok használata a helyszíni Active Directory-példányra való szinkronizálással. A Active Directory tartományban meglévő munkaállomásokat kezelheti felügyeletre és biztonságra.
+> Vannak olyan [tényezők, amelyek befolyásolják az Azure AD Connect teljesítményét.](../../active-directory/hybrid/plan-connect-performance-factors.md) Győződjön meg arról, hogy az Azure AD Connect elegendő kapacitással rendelkezik ahhoz, hogy megakadályozza az alulteljesítő rendszerek biztonságát és termelékenységét. Nagy vagy összetett szervezetek (több mint 100 000 objektumot létesítő szervezetek) követniük kell a [javaslatokat](../../active-directory/hybrid/whatis-hybrid-identity.md) az Azure AD Connect-megvalósítás optimalizálásához.
+
+**Ajánlott eljárás:** Ne szinkronizálja a fiókokat az Azure AD,amely magas jogosultságokkal rendelkezik a meglévő Active Directory-példányban.
+**Részlet:** Ne módosítsa az [alapértelmezett Azure AD Connect-konfigurációt,](../../active-directory/hybrid/how-to-connect-sync-configure-filtering.md) amely kiszűri ezeket a fiókokat. Ez a konfiguráció csökkenti annak kockázatát, hogy az ellenfelek a felhőből a helyszíni eszközökre fordulnak (ami súlyos incidenst okozhat).
+
+**Ajánlott eljárás:** Kapcsolja be a jelszókivonat-szinkronizálást.  
+**Részlet:** A jelszókivonat-szinkronizálás olyan szolgáltatás, amely a felhasználói jelszókivét szinkronizálására szolgál egy helyszíni Active Directory-példányból egy felhőalapú Azure AD-példányba. Ez a szinkronizálás segít a korábbi támadásokból kiszivárgott hitelesítő adatok újbóli lejátszása ellen.
+
+Még akkor is beállíthatja a jelszókivonat-szinkronizálást biztonsági másolatként, ha a helyszíni kiszolgálók meghibásodnak, vagy átmenetileg elérhetetlenné válnak. Ez a szinkronizálás lehetővé teszi a felhasználók számára, hogy jelentkezzen be a szolgáltatásba ugyanazt a jelszót, hogy az általuk használt bejelentkezni a helyszíni Active Directory-példány. Azt is lehetővé teszi, hogy az Identity Protection észlelje a feltört hitelesítő adatokat a szinkronizált jelszókivét és az ismerten feltört jelszavak összehasonlításával, ha a felhasználó ugyanazt az e-mail címet és jelszót használta más szolgáltatásokon, amelyek nem kapcsolódnak az Azure AD-hez.
+
+További információ: [Jelszókivonat-szinkronizálás megvalósítása az Azure AD Connect-szinkronizálással.](/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)
+
+**Ajánlott eljárás:** Az új alkalmazásfejlesztéshez használja az Azure AD-t a hitelesítéshez.
+**Részlet**: A megfelelő képességekkel támogatható a hitelesítés:
+
+  - Azure AD az alkalmazottaknak
+  - [Azure AD B2B](../../active-directory/b2b/index.yml) vendégfelhasználók nak és külső partnereknek
+  - [Az Azure AD B2C](../../active-directory-b2c/index.yml) segítségével szabályozhatja, hogy az ügyfelek hogyan regisztráljanak, jelentkezzenek be és kezeljék a profiljukat az alkalmazások használata során
+
+Azok a szervezetek, amelyek nem integrálják a helyszíni identitásukat a felhőalapú identitásukkal, nagyobb terhelést kaphatnak a fiókok kezelésében. Ez a többletterhelés növeli a hibák és a biztonsági incidensek valószínűségét.
+
+> [!Note]
+> Ki kell választania, hogy mely könyvtárakban lesznek kritikus fiókok, és hogy a használt felügyeleti munkaállomást új felhőszolgáltatások vagy meglévő folyamatok kezelik-e. A meglévő felügyeleti és identitás-létesítési folyamatok használata csökkentheti a kockázatokat, de azt is megkockáztathatja, hogy a támadó veszélyezteti a helyszíni fiókot, és a felhőbe fordul. Előfordulhat, hogy különböző szerepkörökhöz (például informatikai rendszergazdákhoz és részleggazdákhoz) szeretne másik stratégiát használni. Itt két lehetősége van. Az első lehetőség az, hogy hozzon létre azure AD-fiókok, amelyek nincsenek szinkronizálva a helyszíni Active Directory-példány. Csatlakozzon a rendszergazdai munkaállomáshoz az Azure AD-hez, amelyet a Microsoft Intune használatával kezelhet és javíthat. A második lehetőség a meglévő rendszergazdai fiókok használata a helyszíni Active Directory-példánysal való szinkronizálással. A felügyelet és a biztonság érdekében használja az Active Directory tartomány meglévő munkaállomásait.
 
 ## <a name="manage-connected-tenants"></a>Csatlakoztatott bérlők kezelése
-A biztonsági szervezetnek meg kell vizsgálnia a kockázat felmérését, és meg kell határoznia, hogy a szervezet szabályzatait és az összes szabályozási követelményt követi-e a rendszer. Győződjön meg arról, hogy a biztonsági szervezet az éles környezethez és a hálózathoz (az [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) vagy [a helyek közötti VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)-en keresztül) kapcsolódó összes előfizetéshez betekintést kapott. Az Azure AD [globális rendszergazdája/vállalati rendszergazdája](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) hozzáférhet a [felhasználói hozzáférés rendszergazdai](../../role-based-access-control/built-in-roles.md#user-access-administrator) szerepköréhez, és megtekintheti a környezethez csatlakoztatott összes előfizetést és felügyelt csoportot.
+A biztonsági szervezetnek láthatóságra van szüksége a kockázatok felméréséhez és annak meghatározásához, hogy a szervezet szabályzatait és a szabályozási követelményeket betartják-e. Győződjön meg arról, hogy a biztonsági szervezet az éles környezethez és hálózathoz (az [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) vagy a helyek közötti [VPN- en](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)keresztül) kapcsolódó összes előfizetést láthatja. Az Azure AD [globális rendszergazdája/vállalati rendszergazdája](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) magasabb szintre emelheti a [felhasználói hozzáférés-rendszergazdai](../../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkörhöz való hozzáférését, és megtekintheti a környezethez kapcsolódó összes előfizetést és felügyelt csoportot.
 
-Lásd: [jogosultságszint-emelési hozzáférés az összes Azure-előfizetés és-felügyeleti csoport kezeléséhez](../../role-based-access-control/elevate-access-global-admin.md) , hogy Ön és biztonsági csoportja megtekintse a környezetéhez kapcsolódó összes előfizetést vagy felügyeleti csoportot. A kockázatok felmérése után távolítsa el ezt a emelt szintű hozzáférést.
+Tekintse meg a hozzáférés magasabb szintű kezelését [az összes Azure-előfizetés és felügyeleti csoport kezeléséhez,](../../role-based-access-control/elevate-access-global-admin.md) hogy Ön és a biztonsági csoport megtekinthesse a környezetéhez kapcsolódó összes előfizetést vagy felügyeleti csoportot. A fokozott hozzáférés megszüntetéséhez, miután felmérte a kockázatokat.
 
 ## <a name="enable-single-sign-on"></a>Egyszeri bejelentkezés engedélyezése
 
-A mobil-első, Felhőbeli első világban az egyszeri bejelentkezést (SSO) az eszközökre, alkalmazásokra és szolgáltatásokra szeretné engedélyezni bárhonnan, így a felhasználók bárhol és bármikor dolgozhatnak. Ha több identitási megoldással rendelkezik, ez a felügyeleti probléma nem csupán az, hanem a több jelszót megjegyező felhasználók számára is.
+A mobilos, felhőalapú világban bárhonnan engedélyezni szeretné az egyszeri bejelentkezést az eszközökre, alkalmazásokra és szolgáltatásokra, hogy a felhasználók bárhol és bármikor hatékonyan dolgozhassanak. Ha több identitáskezelési megoldást kell kezelnie, ez nemcsak az informatikai, hanem a több jelszóra emlékező felhasználók számára is adminisztratív problémává válik.
 
-Ha ugyanazt az identitás-megoldást használja az összes alkalmazásához és erőforrásához, az SSO-t is elérheti. És a felhasználók ugyanazt a hitelesítő adatokat használhatják a bejelentkezéshez és a szükséges erőforrásokhoz való hozzáféréshez, függetlenül attól, hogy az erőforrások a helyszínen vagy a felhőben találhatók-e.
+Ugyanazt az identitáskezelési megoldást használja az összes alkalmazáshoz és erőforráshoz, így sso érhető el. A felhasználók ugyanazokat a hitelesítő adatokat használhatják a bejelentkezéshez és a szükséges erőforrások eléréséhez, függetlenül attól, hogy az erőforrások a helyszínen vagy a felhőben találhatók.And your users can use the same set of credentials to sign in and access the resources that they need, whether the resources are located on-premises or in the cloud.
 
-**Ajánlott eljárás**: engedélyezze az egyszeri bejelentkezést.  
-**Részletek**: az Azure ad [kiterjeszti a helyszíni Active Directory](/azure/active-directory/connect/active-directory-aadconnect) a felhőre. A felhasználók saját elsődleges munkahelyi vagy iskolai fiókját használhatják a tartományhoz csatlakoztatott eszközökhöz, a vállalati erőforrásokhoz, valamint az összes olyan webes és SaaS-alkalmazáshoz, amelyre a munkájuk elvégzéséhez szükségük van. A felhasználóknak nem kell megemlékezniük több Felhasználónév és jelszó megadására, és az alkalmazásuk hozzáférése automatikusan kiépíthető (vagy kiépíthető), a szervezeti csoporttagság és az alkalmazotti állapotuk alapján. A katalógusban szereplő alkalmazások, illetve az [Azure AD-alkalmazásproxy](/azure/active-directory/active-directory-application-proxy-get-started) használatával kifejlesztett és közzétett saját helyszíni alkalmazások hozzáférése is szabályozható.
+**Ajánlott eljárás:** SSO engedélyezése.  
+**Részletes:** Az Azure AD [kiterjeszti a helyszíni Active Directoryt](/azure/active-directory/connect/active-directory-aadconnect) a felhőre. A felhasználók használhatják az elsődleges munkahelyi vagy iskolai fiók a tartományhoz csatlakozott eszközök, vállalati erőforrások, valamint az összes webes és SaaS-alkalmazások, amelyek a munkájukelvégzéséhez szükséges. A felhasználóknak nem kell több felhasználónevet és jelszót megjegyezniük, és alkalmazásuk hozzáférése automatikusan kiépíthető (vagy megszüntethető) a szervezeti csoporttagságaik és az alkalmazotti állapotuk alapján. A katalógusban szereplő alkalmazások, illetve az [Azure AD-alkalmazásproxy](/azure/active-directory/active-directory-application-proxy-get-started) használatával kifejlesztett és közzétett saját helyszíni alkalmazások hozzáférése is szabályozható.
 
-Az egyszeri bejelentkezés lehetővé teszi, hogy a felhasználók a munkahelyi vagy iskolai fiókjuk alapján hozzáférjenek az [SaaS-alkalmazásokhoz](/azure/active-directory/active-directory-appssoaccess-whatis) az Azure ad-ben. Ez nem csak a Microsoft SaaS-alkalmazások, hanem más alkalmazások, például a [Google Apps](/azure/active-directory/active-directory-saas-google-apps-tutorial) és a [Salesforce](/azure/active-directory/active-directory-saas-salesforce-tutorial)esetében is érvényes. Beállíthatja, hogy az alkalmazás az Azure AD-t [SAML-alapú identitás-](/azure/active-directory/fundamentals-identity) szolgáltatóként használja. Biztonsági ellenőrzésként az Azure AD nem ad ki jogkivonatot, amely lehetővé teszi, hogy a felhasználók bejelentkezzenek az alkalmazásba, hacsak nem kaptak hozzáférést az Azure AD-n keresztül. Közvetlenül is megadhat hozzáférést, vagy egy olyan csoporton keresztül, amely a felhasználók tagja.
+Az SSO használatával engedélyezheti a felhasználóknak, hogy az Azure AD-ben a munkahelyi vagy iskolai fiókjuk alapján hozzáférjenek [saas-alkalmazásaikhoz.](/azure/active-directory/active-directory-appssoaccess-whatis) Ez nem csak a Microsoft SaaS-alkalmazásokra vonatkozik, hanem más alkalmazásokra is, például a [Google Apps és](/azure/active-directory/active-directory-saas-google-apps-tutorial) a [Salesforce alkalmazásokra.](/azure/active-directory/active-directory-saas-salesforce-tutorial) Konfigurálhatja az alkalmazást, hogy az Azure [AD-t SAML-alapú identitásszolgáltatóként](/azure/active-directory/fundamentals-identity) használja. Biztonsági vezérlőként az Azure AD nem ad ki olyan jogkivonatot, amely lehetővé teszi a felhasználók számára, hogy jelentkezzen be az alkalmazásba, kivéve, ha az Azure AD-n keresztül kaptak hozzáférést. Közvetlenül vagy olyan csoporton keresztül is engedélyezhet hozzáférést, amelynek a felhasználók tagjai.
 
-Azok a szervezetek, amelyek nem hoznak létre közös identitást az SSO létrehozásához a felhasználók és az alkalmazások számára, jobban ki vannak téve olyan forgatókönyvek esetén, ahol a felhasználóknak több jelszava van. Ezek a forgatókönyvek nagyobb valószínűséggel használják a felhasználókat a jelszavak újrafelhasználására vagy a gyenge jelszavak használatára.
+Azok a szervezetek, amelyek nem hoznak létre közös identitást a felhasználók és alkalmazások sso létrehozásához, jobban ki vannak téve olyan eseteknek, ahol a felhasználók több jelszóval rendelkeznek. Ezek a forgatókönyvek növelik annak valószínűségét, hogy a felhasználók újra felhasználják a jelszavakat, vagy gyenge jelszavakat használnak.
 
 ## <a name="turn-on-conditional-access"></a>Feltételes hozzáférés bekapcsolása
 
-A felhasználók különböző eszközök és alkalmazások segítségével bárhonnan hozzáférhetnek a szervezet erőforrásaihoz. Rendszergazdaként meg kell győződnie arról, hogy ezek az eszközök megfelelnek a biztonsági és megfelelőségi szabványoknak. Csak arra összpontosíthat, hogy ki férhet hozzá egy erőforráshoz, már nem elegendő.
+A felhasználók bárhonnan elérhetik a szervezet erőforrásait különböző eszközök és alkalmazások használatával. Informatikai rendszergazdaként győződjön meg arról, hogy ezek az eszközök megfelelnek a biztonsági és megfelelőségi szabványoknak. Már nem elegendő arra összpontosítani, hogy ki férhet hozzá egy erőforráshoz.
 
-A biztonság és a termelékenység egyensúlya érdekében meg kell gondolnia, hogyan érhető el egy erőforrás, mielőtt döntést hozna a hozzáférés-vezérlésről. Az Azure AD feltételes hozzáférésével ezt a követelményt kezelheti. A feltételes hozzáférés révén automatizált hozzáférés-vezérlési döntéseket hozhat a felhőalapú alkalmazások elérésére vonatkozó feltételek alapján.
+A biztonság és a termelékenység egyensúlyának megteremtéséhez át kell gondolnia, hogyan érhető el egy erőforrás, mielőtt döntést hozna a hozzáférés-vezérléssel kapcsolatban. Az Azure AD feltételes hozzáférés, ezt a követelményt. A Feltételes hozzáférés segítségével automatikus hozzáférés-vezérlési döntéseket hozhat a felhőalapú alkalmazások elérésének feltételei alapján.
 
-**Ajánlott eljárás**: a vállalati erőforrásokhoz való hozzáférés kezelése és szabályozása.  
-**Részletek**: az Azure ad [feltételes hozzáférés](/azure/active-directory/active-directory-conditional-access-azure-portal) konfigurálása az SaaS-alkalmazások és az Azure ad-hez csatlakoztatott alkalmazások csoport-, hely-és alkalmazás-érzékenysége alapján.
+**Ajánlott eljárás:** A vállalati erőforrásokhoz való hozzáférés kezelése és szabályozása.  
+**Részletes:** Konfigurálja az Azure AD [feltételes hozzáférés](/azure/active-directory/active-directory-conditional-access-azure-portal) alapján egy csoport, hely és alkalmazás érzékenysége SaaS-alkalmazások és az Azure AD-hez csatlakoztatott alkalmazások.
 
-**Ajánlott eljárás**: az örökölt hitelesítési protokollok letiltása.
-**Részletek**: a támadók minden nap kihasználják a régebbi protokollok gyengeségeit, különösen a jelszó-szórásos támadásokhoz. Feltételes hozzáférés konfigurálása az örökölt protokollok blokkolásához. További információkért tekintse meg a videó [Azure ad: do és kerülendő példák](https://www.youtube.com/watch?v=wGk0J4z90GI) című témakört.
+**Ajánlott eljárás:** Blokkolja az örökölt hitelesítési protokollokat.
+**Részletesen**: A támadók minden nap kihasználják a régebbi protokollok gyengeségeit, különösen a jelszószórásos támadások esetében. Konfigurálja a feltételes hozzáférést az örökölt protokollok blokkolására. Tekintse meg a videót az [Azure AD: Teendők és ne tegye](https://www.youtube.com/watch?v=wGk0J4z90GI) további információkért.
 
-## <a name="plan-for-routine-security-improvements"></a>A rutin biztonsági tökéletesítésének megtervezése
+## <a name="plan-for-routine-security-improvements"></a>A rendszeres biztonsági fejlesztések megtervezése
 
-A biztonság mindig folyamatosan fejlődik, és fontos, hogy a Felhőbeli és az Identity Management-keretrendszerbe építsen egy olyan módszert, amely rendszeresen mutatja a növekedést, és új módszereket biztosít a környezet biztonságossá tételéhez.
+A biztonság folyamatosan fejlődik, és fontos, hogy a felhő- és identitáskezelési keretrendszerbe építsen be egy módot a növekedés rendszeres bemutatására és a környezet védelmének új módjainak felfedezésére.
 
-Az identitások biztonságos pontszáma olyan ajánlott biztonsági vezérlők összessége, amelyeket a Microsoft tesz közzé, hogy számszerű pontszámot biztosítson a biztonsági helyzet tárgyilagos méréséhez, és segítsen a jövőbeli biztonsági fejlesztések megtervezésében. A pontszámokat a többi iparágban is megtekintheti, a saját trendek pedig az idő múlásával is.
+Az identitásbiztonságos pontszám olyan ajánlott biztonsági vezérlők készlete, amelyeket a Microsoft tesz közzé, és amely numerikus pontszámmal rendelkezik a biztonsági állapot objektív méréséhez és a jövőbeli biztonsági fejlesztések megtervezéséhez. Azt is megtekintheti a pontszám képest más iparágakban, valamint a saját trendek idővel.
 
-**Ajánlott eljárás**: az iparágban ajánlott eljárások alapján tervezze meg a rutin biztonsági felülvizsgálatait és fejlesztéseit.
-**Részletek**: az identitások biztonságos pontszáma funkció használatával rangsorolhatja a módosításokat az idő múlásával.
+**Ajánlott eljárás:** Tervezze meg a rendszeres biztonsági felülvizsgálatokat és fejlesztéseket az iparágban bevált gyakorlatok alapján.
+**Részlet:** Használja az identitás biztonságos pontszám funkciót a fejlesztések rangsorolásához az idő múlásával.
 
 ## <a name="enable-password-management"></a>Jelszókezelés engedélyezése
 
-Ha több Bérlővel rendelkezik, vagy engedélyezni szeretné a felhasználók számára a [saját jelszavának alaphelyzetbe állítását](../../active-directory/user-help/active-directory-passwords-update-your-own-password.md), fontos, hogy a megfelelő biztonsági házirendeket használja a visszaélések elkerülése érdekében.
+Ha több bérlővel rendelkezik, vagy engedélyezni szeretné a felhasználóknak a [saját jelszavuk alaphelyzetbe állítását,](../../active-directory/user-help/active-directory-passwords-update-your-own-password.md)fontos, hogy a visszaélések megelőzése érdekében megfelelő biztonsági házirendeket használjon.
 
-**Ajánlott eljárás**: az önkiszolgáló jelszó-visszaállítás (SSPR) beállítása a felhasználók számára.  
-**Részletek**: használja az Azure ad önkiszolgáló [jelszó-visszaállítási](/azure/active-directory-b2c/active-directory-b2c-reference-sspr) funkcióját.
+**Ajánlott eljárás:** Állítsa be az önkiszolgáló jelszó-visszaállítást (SSPR) a felhasználók számára.  
+**Részlet:** Használja az Azure AD [önkiszolgáló jelszó-visszaállítási](/azure/active-directory-b2c/active-directory-b2c-reference-sspr) funkciót.
 
-**Ajánlott eljárás**: figyelje, hogy a SSPR valóban használatban van-e.  
-**Részletek**: figyelje meg, hogy mely felhasználók regisztrálnak az Azure ad [jelszó-visszaállítási regisztrációs tevékenység jelentés](/azure/active-directory/active-directory-passwords-get-insights)használatával. Az Azure AD által biztosított jelentéskészítési funkció segítséget nyújt az előre elkészített jelentések használatával kapcsolatos kérdések megválaszolásához. Ha megfelelő licenccel rendelkezik, egyéni lekérdezéseket is létrehozhat.
+**Ajánlott eljárás**: Figyelemmel kíséri, hogyan és ha SSPR valóban használják.  
+**Részletes :** Az Azure AD [jelszó-visszaállítási regisztrációs tevékenység jelentésével](/azure/active-directory/active-directory-passwords-get-insights)figyelheti a regisztráló felhasználókat. Az Azure AD által biztosított jelentéskészítési funkció előre összeállított jelentések használatával segít a kérdések megválaszolása. Ha megfelelő licenccel rendelkezik, egyéni lekérdezéseket is létrehozhat.
 
-**Ajánlott eljárás**: a felhőalapú jelszóházirendek kiterjesztése a helyszíni infrastruktúrára.
-**Részletek**: a szervezet jelszavas házirendjeinek javítása a helyi jelszó módosításainak megadásával ugyanúgy végezheti el a jelszavakat, mint a felhőalapú jelszó módosításakor. Telepítse az [Azure ad-jelszavas védelmet](/azure/active-directory/authentication/concept-password-ban-bad) a Windows Server Active Directory-ügynököknek a helyszínen, hogy kiterjessze a tiltott jelszavak listáját a meglévő infrastruktúrára. Azok a felhasználók és rendszergazdák, akik a helyszíni jelszavakat módosítják, beállítják vagy alaphelyzetbe állítják, a csak felhőalapú felhasználókra vonatkozó jelszóházirend megtartásához szükségesek.
+**Ajánlott eljárás:** A felhőalapú jelszóházirendek kiterjesztése a helyszíni infrastruktúrára.
+**Részletes:** A szervezetjelszó-házirendek javítása a helyszíni jelszómódosítások ellenőrzésének elvégzésével, mint a felhőalapú jelszómódosítások esetében. Telepítse [az Azure AD jelszavas védelmét](/azure/active-directory/authentication/concept-password-ban-bad) a windows Server Active Directory-ügynökök számára a helyszínen, hogy kiterjessze a tiltott jelszólistákat a meglévő infrastruktúrára. Azoknak a felhasználóknak és rendszergazdáknak, akik a helyszínen módosítják, beállítják vagy alaphelyzetbe állítják a jelszavakat, meg kell felelniük a csak felhőalapú felhasználókkal azonos jelszóházirendnek.
 
-## <a name="enforce-multi-factor-verification-for-users"></a>A multi-Factor-ellenőrzés érvényesítése a felhasználók számára
+## <a name="enforce-multi-factor-verification-for-users"></a>Többtényezős ellenőrzés kényszerítése a felhasználók számára
 
-Javasoljuk, hogy az összes felhasználóra vonatkozóan kétlépéses ellenőrzést igényeljen. Ebbe beletartozik a szervezet rendszergazdái és más tagjai, akik jelentős hatással lehetnek a fiókjuk biztonságára (például pénzügyi tisztviselők).
+Azt javasoljuk, hogy minden felhasználóhoz kétlépéses ellenőrzést igényel. Ez magában foglalja a rendszergazdák és mások a szervezetben, akik jelentős hatással lehet, ha a fiók veszélybe (például a pénzügyi tisztviselők).
 
-Több lehetőség is van a kétlépéses ellenőrzés megkövetelésére. A legjobb megoldás az Ön által futtatott céloktól, az Azure AD-kiadástól és a licencelési programtól függ. Tekintse meg, [hogyan kell kétlépéses ellenőrzést megkövetelni a felhasználók](/azure/active-directory/authentication/howto-mfa-userstates) számára a legjobb megoldás meghatározásához. A licencekkel és a díjszabással kapcsolatos további információkért tekintse meg az [Azure ad](https://azure.microsoft.com/pricing/details/active-directory/) és az [Azure multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) díjszabási oldalát.
+A kétlépéses ellenőrzés megkövetelésére több lehetőség is van. A legjobb megoldás a céloktól, a futtatott Azure AD-kiadástól és a licencelési programtól függ. Lásd: [Hogyan követelheti meg a kétlépéses ellenőrzést a felhasználótól,](/azure/active-directory/authentication/howto-mfa-userstates) hogy meghatározza a legmegfelelőbb megoldást. A licencekkel és a díjszabással kapcsolatos további információkért tekintse meg az [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) és az [Azure többtényezős hitelesítés](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) díjszabási oldalait.
 
-A kétlépéses ellenőrzés engedélyezésének lehetőségei és előnyei a következők:
+A kétlépéses ellenőrzés engedélyezéséhez az alábbi lehetőségek és előnyök tartoznak:
 
-**1. lehetőség**: a többtényezős hitelesítés engedélyezése minden felhasználóhoz és bejelentkezési módszerhez az Azure ad biztonsági alapértelmezett **előnyökkel**: Ez a beállítás lehetővé teszi, hogy könnyen és gyorsan érvényesítse az MFA-t a környezetben lévő összes felhasználó számára, szigorú szabályzattal:
+**1. lehetőség:** Az MFA engedélyezése az összes felhasználó számára, és bejelentkezési módszerek az Azure AD biztonsági alapértelmezései **előny:** Ez a beállítás lehetővé teszi, hogy könnyen és gyorsan érvényesíteni MFA minden felhasználó a környezetben egy szigorú házirend:
 
-* Rendszergazdai fiókok és rendszergazdai bejelentkezési mechanizmusok
-* MFA-kihívás megkövetelése Microsoft Authenticatoron keresztül az összes felhasználó számára
-* Örökölt hitelesítési protokollok korlátozása.
+* Az adminisztratív fiókok és az adminisztratív bejelentkezési mechanizmusok kihívása
+* Többfa-kihívás megkövetelése a Microsoft Hitelesítőn keresztül minden felhasználó számára
+* Az örökölt hitelesítési protokollok korlátozása.
 
-Ez a módszer minden licencelési szinten elérhető, de nem keverhető a meglévő feltételes hozzáférési szabályzatokkal. További információt az Azure AD biztonsági alapértelmezései című témakörben talál.
+Ez a módszer minden licencelési réteg számára elérhető, de nem keverhető a meglévő feltételes hozzáférési házirendekkel. További információkat az Azure AD biztonsági alapbeállításaiban talál.
 
-**2. lehetőség**: [a multi-Factor Authentication engedélyezése a felhasználói állapot módosításával](../../active-directory/authentication/howto-mfa-userstates.md).   
-**Előnyök**: Ez a hagyományos módszer a kétlépéses ellenőrzés megkövetelésére. [Az azure multi-Factor Authentication a felhőben és az azure multi-Factor Authentication-kiszolgáló](/azure/active-directory/authentication/concept-mfa-whichversion)is működik. Ennek a módszernek a használatával a felhasználóknak kétlépéses ellenőrzést kell végezniük minden alkalommal, amikor bejelentkeznek, és felülbírálják a feltételes hozzáférési szabályzatokat.
+**2. lehetőség:** [A többtényezős hitelesítés engedélyezése a felhasználói állapot módosításával.](../../active-directory/authentication/howto-mfa-userstates.md)   
+**Előny**: Ez a hagyományos módszer a kétlépéses ellenőrzés megkövetelésére. Az Azure [többtényezős hitelesítésével a felhőben és az Azure többtényezős hitelesítési kiszolgálón is](/azure/active-directory/authentication/concept-mfa-whichversion)működik. Ezzel a módszerrel a felhasználóknak kétlépéses ellenőrzést kell végrehajtaniuk minden bejelentkezéskor, és felülbírálják a feltételes hozzáférési házirendeket.
 
-Annak megállapításához, hogy hol kell engedélyezni a Multi-Factor Authenticationt, tekintse meg a [szervezetem számára legmegfelelőbb Azure MFA-verziót](/azure/active-directory/authentication/concept-mfa-whichversion).
+Annak meghatározásához, hogy hol kell engedélyezni a többtényezős hitelesítést, olvassa el [az Azure MFA melyik verziója megfelelő a szervezet számára című témakört.](/azure/active-directory/authentication/concept-mfa-whichversion)
 
-**3. lehetőség**: [a multi-Factor Authentication engedélyezése feltételes hozzáférési házirenddel](/azure/active-directory/authentication/howto-mfa-getstarted).
-**Előnyök**: Ez a beállítás lehetővé teszi, hogy a [feltételes hozzáférés](/azure/active-directory/active-directory-conditional-access-azure-portal)használatával megkérdezze a kétlépéses ellenőrzést az adott körülmények között. A konkrét feltételek különböző helyekről, nem megbízható eszközökről vagy kockázatos alkalmazásokból is lehetnek felhasználói bejelentkezésre. Meghatározott feltételek meghatározása, amelyekben kétlépéses ellenőrzésre van szükség, így elkerülhető a felhasználók folyamatos rákérdezése, ami kellemetlen felhasználói élmény lehet.
+**3. lehetőség:** [Többtényezős hitelesítés engedélyezése feltételes hozzáférési házirenddel.](/azure/active-directory/authentication/howto-mfa-getstarted)
+**Előny**: Ez a beállítás lehetővé teszi, hogy meghatározott feltételek mellett kétlépcsős ellenőrzést kérjenek a [feltételes hozzáférés](/azure/active-directory/active-directory-conditional-access-azure-portal)használatával. Adott feltételek lehetnek a különböző helyekről, nem megbízható eszközökről vagy kockázatosnak ítélt alkalmazásokból érkező felhasználók bejelentkezése. Olyan konkrét feltételek meghatározása, ahol kétlépéses ellenőrzésre van szükség, elkerülheti a felhasználók folyamatos rákérdezését, ami kellemetlen felhasználói élményt okozhat.
 
-Ez a legrugalmasabb módszer a felhasználók kétlépéses ellenőrzésének engedélyezésére. A feltételes hozzáférési szabályzat engedélyezése csak a felhőben működő Azure-Multi-Factor Authentication működik, és az Azure AD prémium funkciója. Erről a módszerről a [felhőalapú Azure-multi-Factor Authentication üzembe helyezése című](/azure/active-directory/authentication/howto-mfa-getstarted)témakörben talál további információt.
+Ez a legrugalmasabb módja annak, hogy kétlépcsős ellenőrzést engedélyezze a felhasználók számára. A feltételes hozzáférési szabályzat engedélyezése csak az Azure többtényezős hitelesítésa a felhőben, és az Azure AD prémium funkciója. Erről a módszerről további információt a [felhőalapú Azure többtényezős hitelesítés telepítése](/azure/active-directory/authentication/howto-mfa-getstarted)című részben talál.
 
-**4. lehetőség**: a multi-Factor Authentication feltételes hozzáférési házirendekkel való engedélyezése a [Azure ad Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa)felhasználói és bejelentkezési kockázatainak kiértékelésével.   
-**Előnyök**: Ez a beállítás a következőket teszi lehetővé:
+**4. lehetőség:** A többtényezős hitelesítés engedélyezése feltételes hozzáférési szabályzatokkal az [Azure AD Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa)felhasználói és bejelentkezési kockázatának kiértékelésével.   
+**Előny**: Ez a beállítás lehetővé teszi, hogy:
 
-* A szervezet identitásait érintő lehetséges sebezhetőségek észlelése.
-* Konfigurálja az automatizált válaszokat a szervezete identitásával kapcsolatos gyanús műveletekre.
-* Vizsgálja meg a gyanús incidenseket, és tegye meg a megfelelő lépéseket a megoldásához.
+* A szervezet identitását érintő potenciális biztonsági rések észlelése.
+* Állítsa be az automatikus válaszokat a szervezet identitásaihoz kapcsolódó észlelt gyanús műveletekre.
+* Vizsgálja ki a gyanús eseményeket, és tegye meg a megfelelő lépéseket azok megoldásához.
 
-Ez a módszer a Azure AD Identity Protection kockázatértékelés használatával határozza meg, hogy szükséges-e kétlépéses ellenőrzés a felhasználói és bejelentkezési kockázatok alapján minden felhőalapú alkalmazás esetében. Ehhez a módszerhez Azure Active Directory P2 licencelés szükséges. A metódussal kapcsolatban a [Azure Active Directory Identity Protectionban](/azure/active-directory/identity-protection/overview)talál további információt.
+Ez a módszer az Azure AD Identity Protection kockázatkiértékelése segítségével határozza meg, hogy szükség van-e kétlépéses ellenőrzésre az összes felhőalkalmazás felhasználói és bejelentkezési kockázata alapján. Ehhez a módszerhez Azure Active Directory P2 licencelésszükséges. Erről a módszerről az [Azure Active Directory identitásvédelem](/azure/active-directory/identity-protection/overview)című dokumentumban talál további információt.
 
 > [!Note]
-> 1\. lehetőség, a Multi-Factor Authentication engedélyezése a felhasználói állapot módosításával, felülbírálja a feltételes hozzáférési szabályzatokat. Mivel a 2. és a 3. lehetőség feltételes hozzáférési házirendeket használ, nem használhatja az 1. lehetőséget.
+> 1. lehetőség, amely a többtényezős hitelesítést a felhasználói állapot módosításával engedélyezi, felülbírálja a feltételes hozzáférési házirendeket. Mivel a 2.
 
-Azok a szervezetek, amelyek nem vesznek fel az Identity Protection további rétegeit, például a kétlépéses ellenőrzést, hajlamosabbak a hitelesítő adatok ellopására irányuló támadásokra. A hitelesítő adatok ellopására irányuló támadás adatsérülést eredményezhet.
+Azok a szervezetek, amelyek nem adnak hozzá további identitásvédelmi rétegeket, például a kétlépéses ellenőrzést, hajlamosabbak a hitelesítő adatok ellopásával kapcsolatos támadásokra. A hitelesítő adatok lopás támadás a data compromise vezethet.
 
 ## <a name="use-role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés alkalmazása
 
-A felhőalapú erőforrásokhoz való hozzáférés kezelése kritikus fontosságú a felhőt használó bármely szervezet számára. A [szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/overview)segítségével felügyelheti, hogy ki férhet hozzá az Azure-erőforrásokhoz, mit tehet ezekkel az erőforrásokkal, és milyen területekhez férhet hozzá.
+A felhőalapú erőforrások hozzáférés-kezelése kritikus fontosságú minden olyan szervezet számára, amely a felhőt használja. [Szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/overview)segítségével kezelheti, hogy ki férhet hozzá az Azure-erőforrásokhoz, mit tehetnek ezekkel az erőforrásokkal, és milyen területekhez férhetnek hozzá.
 
-A csoportok vagy az egyes Azure-funkciókért felelős egyedi szerepkörök kijelölik a félreértéseket, amelyek biztonsági kockázatokat okozó emberi és automatizálási hibákhoz vezethetnek. Az adathozzáférésre vonatkozó biztonsági szabályzatokat kényszerítő szervezetek számára elengedhetetlen a hozzáférés korlátozása a [szükséges ismeret](https://en.wikipedia.org/wiki/Need_to_know) és a [legalacsonyabb jogosultsági szintű](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elvek alapján.
+Az Azure-beli adott függvényekért felelős csoportok vagy egyéni szerepkörök kijelölésével elkerülhetők azok a félreértések, amelyek olyan emberi és automatizálási hibákhoz vezethetnek, amelyek biztonsági kockázatokat okozhatnak. A hozzáférés korlátozása a [szükséges ismeret](https://en.wikipedia.org/wiki/Need_to_know) és a [legkevésbé bizalmas biztonsági](https://en.wikipedia.org/wiki/Principle_of_least_privilege) elvek alapján elengedhetetlen azon szervezetek számára, amelyek az adathozzáférésbiztonsági házirendjeit szeretnék érvényesíteni.
 
-A kockázat felmérése és javítása érdekében a biztonsági csapatnak meg kell vizsgálnia az Azure-erőforrásokat. Ha a biztonsági csapat működési felelősséggel rendelkezik, további engedélyekre van szükségük a feladataik elvégzéséhez.
+A biztonsági csapatnak rá látásra van szüksége az Azure-erőforrásokban a kockázatok felmérése és elhárítása érdekében. Ha a biztonsági csoport működési feladatokkal rendelkezik, további engedélyekre van szükségük a munkájuk hoz.
 
-A [RBAC](/azure/role-based-access-control/overview) segítségével engedélyeket rendelhet hozzá a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy adott hatókörben. A szerepkörkiosztás hatóköre előfizetés, erőforráscsoport vagy egyetlen erőforrás is lehet.
+[Az RBAC](/azure/role-based-access-control/overview) segítségével engedélyeket rendelhet a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy bizonyos hatókörön. A szerepkörkiosztás hatóköre előfizetés, erőforráscsoport vagy egyetlen erőforrás is lehet.
 
-**Ajánlott eljárás**: elkülönítheti a feladatokat a csapaton belül, és csak a felhasználók számára biztosíthatja a feladatok elvégzéséhez szükséges hozzáférés mennyiségét. Ahelyett, hogy az Azure-előfizetésben vagy-erőforrásokban mindenki számára korlátlan jogosultságot adna, csak bizonyos műveleteket engedélyezzen egy adott hatókörben.
-**Részletek**: a [beépített RBAC-szerepkörök](/azure/role-based-access-control/built-in-roles) használata az Azure-ban a felhasználókhoz való jogosultságok kiosztásához.
+**Ajánlott eljárás:** A feladatok elkülönítése a csapaton belül, és csak a felhasználók számára, hogy a feladatok elvégzéséhez szükséges. Ahelyett, hogy mindenkinek korlátlan engedélyeket adna az Azure-előfizetésében vagy az erőforrásokban, csak bizonyos műveleteket engedélyezhet egy adott hatókörben.
+**Részlet:** Az Azure [beépített RBAC-szerepkörök](/azure/role-based-access-control/built-in-roles) használatával jogosultságokat rendelhet a felhasználókhoz.
 
 > [!Note]
-> A konkrét engedélyek szükségtelen bonyolultságot és félreértéseket hoznak létre, és olyan "örökölt" konfigurációba halmozódnak, amely nehezen orvosolható, és nem kell mást tennie. Kerülje az erőforrás-specifikus engedélyeket. Ehelyett a vállalati szintű engedélyek és erőforráscsoportok felügyeleti csoportjait használhatja az előfizetéseken belüli engedélyekhez. Kerülje a felhasználó-specifikus engedélyeket. Ehelyett rendeljen hozzá hozzáférést a csoportokhoz az Azure AD-ben.
+> A speciális engedélyek szükségtelen bonyolultságot és zavart keltenek, és olyan "örökölt" konfigurációba halmozódnak fel, amelyet nehéz kijavítani anélkül, hogy félnének valamit megtörni. Kerülje az erőforrás-specifikus engedélyeket. Ehelyett használjon felügyeleti csoportokat vállalati szintű engedélyekhez és erőforráscsoportokat az előfizetéseken belüli engedélyekhez. Kerülje a felhasználóspecifikus engedélyeket. Inkább rendeljen hozzáférést csoportokhoz az Azure AD-ben.
 
-**Ajánlott eljárás**: a biztonsági csapatoknak az Azure-beli felelősségi körökkel való ellátásával biztosítható, hogy az Azure-erőforrások felmérjék és kijavíthatják a kockázatot
-**Részletek**: adja meg a biztonsági csapatoknak a RBAC [biztonsági olvasó](/azure/role-based-access-control/built-in-roles#security-reader) szerepkört. A hatáskörök hatókörének függvényében a gyökérszintű felügyeleti csoportot vagy a szegmens felügyeleti csoportot használhatja:
+**Ajánlott eljárás:** Adjon hozzáférést az Azure-erőforrások megtekintéséhez az Azure-erőforrásokat biztosító biztonsági csapatoknak, hogy felmérhessék és orvosolhassák a kockázatokat.
+**Részlet:** Adja meg a biztonsági csapatoknak az RBAC [biztonsági olvasó](/azure/role-based-access-control/built-in-roles#security-reader) szerepkört. A felelősségi köröktől függően használhatja a gyökérfelügyeleti csoportot vagy a szegmenskezelési csoportot:
 
-* Az összes vállalati erőforrásért felelős csapatok **gyökérszintű felügyeleti csoportja**
-* **Szegmens felügyeleti csoport** korlátozott hatókörű csapatok esetében (általában szabályozási vagy egyéb szervezeti határok miatt)
+* Az összes vállalati erőforrásért felelős csoportok **gyökérfelügyeleti csoportja**
+* **Szegmenskezelési csoport** korlátozott hatókörű csapatok számára (általában szabályozási vagy egyéb szervezeti határok miatt)
 
-**Ajánlott eljárás**: adja meg a megfelelő engedélyeket a közvetlen működési feladatokkal rendelkező biztonsági csapatoknak.
-**Részletek**: Tekintse át a RBAC beépített szerepköreit a megfelelő szerepkör-hozzárendeléshez. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, [Egyéni szerepköröket hozhat létre az Azure-erőforrásokhoz](/azure/role-based-access-control/custom-roles). A beépített szerepkörökhöz hasonlóan egyéni szerepköröket rendelhet hozzá a felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz az előfizetés, az erőforráscsoport és az erőforrás-hatókörök alapján.
+**Ajánlott eljárás:** Adja meg a megfelelő engedélyeket a közvetlen üzemeltetési felelősséggel rendelkező biztonsági csoportoknak.
+**Részlet:** Tekintse át az RBAC beépített szerepkörök a megfelelő szerepkör-hozzárendelés. Ha a beépített szerepkörök nem felelnek meg a szervezet egyedi igényeinek, egyéni szerepköröket hozhat létre [az Azure-erőforrásokhoz.](/azure/role-based-access-control/custom-roles) A beépített szerepkörökhöz is egyéni szerepköröket rendelhet a felhasználókhoz, csoportokhoz és egyszerű szolgáltatástagokhoz az előfizetésben, az erőforráscsoportban és az erőforrás-hatókörökben.
 
-**Ajánlott eljárások**: biztosítson Azure Security Center hozzáférést a szükséges biztonsági szerepkörökhöz. Security Center lehetővé teszi a biztonsági csapatok számára a kockázatok gyors azonosítását és szervizelését.
-**Részletek**: vegyen fel biztonsági csoportokat ezekkel a RBAC [biztonsági rendszergazdai](/azure/role-based-access-control/built-in-roles#security-admin) szerepkörrel, hogy megtekintsék a biztonsági házirendeket, megtekintsék a biztonsági állapotokat, a biztonsági szabályzatokat, a riasztásokat és a javaslatokat, valamint a riasztásokat és a javaslatokat. Ezt a felügyeleti csoport vagy a szegmens felügyeleti csoport használatával végezheti el a felelősségi köröktől függően.
+**Gyakorlati tanácsok:** Adjon hozzáférést az Azure Security Center-hez a biztonsági szerepkörökhöz, amelyeknek szükségük van rá. A Security Center lehetővé teszi a biztonsági csoportok számára a kockázatok gyors azonosítását és elhárítását.
+**Részletes:** Adja hozzá az ezeket az igényeket az RBAC [biztonsági rendszergazdai](/azure/role-based-access-control/built-in-roles#security-admin) szerepkört, hogy megtekinthesse a biztonsági házirendeket, megtekintheti a biztonsági állapotokat, szerkeszthesse a biztonsági házirendeket, megtekintheti a riasztásokat és javaslatokat, és elvethesse a riasztásokat és javaslatokat. Ezt a legfelső szintű felügyeleti csoport vagy a szegmensfelügyeleti csoport használatával teheti meg, a felelősségi köröktől függően.
 
-Azok a szervezetek, amelyek nem kényszerítik az adathozzáférés-vezérlést olyan képességek használatával, mint a RBAC, több jogosultságot is biztosítanak a felhasználók számára. Ez adatsérüléshez vezethet azáltal, hogy lehetővé teszi a felhasználók számára az adattípusok (például a nagy üzleti hatás) elérését.
+Szervezetek, amelyek nem kényszerítik ki az adatelérés-vezérlés i képességek használatával, mint az RBAC lehet, hogy a szükségesnél több jogosultságot a felhasználók számára. Ez adatsérüléshez vezethet azáltal, hogy lehetővé teszi a felhasználók számára, hogy olyan típusú adatokhoz (például nagy üzleti hatás), amelyeket nem kellett volna.
 
-## <a name="lower-exposure-of-privileged-accounts"></a>A Kiemelt jogosultságú fiókok alacsonyabb kitettsége
+## <a name="lower-exposure-of-privileged-accounts"></a>A kiemelt jogosultságú fiókok alacsonyabb kitettsége
 
-Az emelt szintű hozzáférés biztonságossá tétele kulcsfontosságú az üzleti eszközök védelmének első lépése. A biztonságos információkhoz vagy erőforrásokhoz hozzáférő személyek számának minimalizálása csökkenti annak az esélyét, hogy egy rosszindulatú felhasználó hozzáférjen az adatokhoz, vagy ha egy jogosult felhasználó véletlenül egy bizalmas erőforrást érint.
+A kiemelt hozzáférés biztonságossá tétele kritikus első lépés az üzleti eszközök védelme érdekében. A biztonságos adatokhoz vagy erőforrásokhoz hozzáféréssel rendelkező személyek számának minimalizálása csökkenti annak az esélyét, hogy egy rosszindulatú felhasználó hozzáférjen, vagy ha egy jogosult felhasználó véletlenül egy bizalmas erőforrást érint.
 
-A Kiemelt jogosultságú fiókok olyan fiókok, amelyek az informatikai rendszereket felügyelik és kezelik. A Cyber-támadók megcélozzák ezeket a fiókokat, hogy hozzáférjenek a szervezet adateszközeihez és rendszereihez. A rendszerjogosultságú hozzáférés biztonságossá tételéhez el kell különíteni a fiókokat és a rendszereket a rosszindulatú felhasználók számára elérhető kockázattól.
+A kiemelt jogosultságú fiókok informatikai rendszerekfelügyeletére és kezelésére szolgáló fiókok. A kibertámadók ezeket a fiókokat célozzák meg, hogy hozzáférjenek a szervezet adataihoz és rendszereihez. A kiemelt hozzáférés biztonságossá tétele érdekében el kell különítenie a fiókokat és a rendszereket a rosszindulatú felhasználók általi kitett kockázatoktól.
 
-Javasoljuk, hogy fejlesszen és kövessen egy olyan ütemtervet, amely biztonságos hozzáférést biztosít a Cyber-támadók ellen. További információ az Azure AD-ben, az Microsoft Azure-ban, az Office 365-ben és más felhőalapú szolgáltatásokban kezelt vagy jelentett identitások és hozzáférés biztonságossá tételéről, valamint az Azure AD-ben a [hibrid és Felhőbeli üzemelő példányokhoz ](/azure/active-directory/users-groups-roles/directory-admin-roles-secure).
+Azt javasoljuk, hogy dolgozzon ki és kövesse az ütemtervet a kiemelt hozzáférés a kibertámadók ellen. Az Azure AD, a Microsoft Azure, az Office 365 és más felhőszolgáltatások által felügyelt vagy jelentett identitások és hozzáférések biztonságossá tétele részletes ütemterv létrehozásáról az Azure AD-ben a kiemelt hozzáférés biztosítása az [Azure AD-ben](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)című részben talál tájékoztatást.
 
-A következő összefoglalja az [Azure ad-ben az emelt szintű hozzáférés biztonságossá tételével kapcsolatos](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)ajánlott eljárásokat:
+Az alábbiakban összefoglaljuk az Azure [AD hibrid és felhőalapú telepítésekhez való kiemelt hozzáférés ek védelmében](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)található ajánlott eljárásokat:
 
-**Ajánlott eljárás**: a Kiemelt fiókokhoz való hozzáférés kezelése, szabályozása és figyelése.   
-**Részletek**: [Azure ad Privileged Identity Management](/azure/active-directory/privileged-identity-management/active-directory-securing-privileged-access)bekapcsolása. A Privileged Identity Management bekapcsolását követően értesítési e-mail-üzeneteket fog kapni az emelt szintű hozzáférési szerepkör változásairól. Ezek az értesítések korai figyelmeztetést nyújtanak, ha további felhasználókat adnak hozzá a címtár magas jogosultsági szintű szerepköreihez.
+**Ajánlott eljárás:** A kiemelt fiókokhoz való hozzáférés kezelése, vezérlése és figyelése.   
+**Részlet**: Kapcsolja be az [Azure AD kiemelt identitáskezelést.](/azure/active-directory/privileged-identity-management/active-directory-securing-privileged-access) Miután bekapcsolta a kiemelt identitáskezelés, értesítést kap e-mail üzeneteket a kiemelt hozzáférési szerepkör módosításai. Ezek az értesítések korai figyelmeztetést biztosítanak, ha további felhasználókat adnak hozzá a címtár magas szintű jogosultsággal rendelkező szerepköreihez.
 
-**Ajánlott eljárás**: gondoskodjon arról, hogy minden kritikus rendszergazdai fiók felügyelve legyen az Azure ad-fiókokkal.
-**Részletek**: távolítsa el a felhasználói fiókokat a kritikus rendszergazdai szerepkörökből (például Microsoft-fiókok, például hotmail.com, live.com és Outlook.com).
+**Ajánlott eljárás:** Győződjön meg arról, hogy minden kritikus rendszergazdai fiók felügyelt Azure AD-fiókok.
+**Részlet:** Távolítsa el a fogyasztói fiókokat a kritikus rendszergazdai szerepkörökből (például a Microsoft-fiókokból, például a hotmail.com, a live.com és a outlook.com).
 
-**Ajánlott eljárás**: gondoskodjon arról, hogy az összes kritikus rendszergazdai szerepkör külön fiókkal rendelkezzen a felügyeleti feladatokhoz, hogy elkerülje az adathalászatot és más támadásokat a rendszergazdai jogosultságokkal szemben.
-**Részletek**: hozzon létre egy külön rendszergazdai fiókot, amely a rendszergazdai feladatok végrehajtásához szükséges jogosultságokat rendeli hozzá. Ezen rendszergazdai fiókok használatának letiltása a napi hatékonyságnövelő eszközökhöz, például Microsoft Office 365 e-mailekhez vagy tetszőleges webes böngészéshez.
+**Ajánlott eljárás:** Győződjön meg arról, hogy minden kritikus rendszergazdai szerepkör külön fiókkal rendelkezik a felügyeleti feladatokhoz, hogy elkerülje az adathalászatot és más támadásokat a rendszergazdai jogosultságok veszélyeztetése érdekében.
+**Részlet:** Hozzon létre egy külön rendszergazdai fiókot, amely a felügyeleti feladatok végrehajtásához szükséges jogosultságokkal van elrendelve. Tiltsa le ezeknek a felügyeleti fiókoknak a használatát a napi hatékonyságnövelő eszközökhöz, például a Microsoft Office 365-ös levelezéshez vagy az tetszőleges webböngészéshez.
 
-**Ajánlott eljárás**: a magas jogosultsági szintű szerepkörökben lévő fiókok azonosítása és kategorizálása.   
-**Részletek**: Azure ad Privileged Identity Management bekapcsolása után megtekintheti a globális rendszergazda, a Kiemelt szerepkörű rendszergazda és más magas jogosultsági szintű szerepkörök felhasználóit. Távolítsa el azokat a fiókokat, amelyekre már nincs szükség ezekben a szerepkörökben, és kategorizálja a rendszergazdai szerepkörökhöz rendelt többi fiókot:
+**Ajánlott eljárás:** Azonosítsa és kategorizálja a magas jogosultsági szintű szerepkörökben lévő fiókokat.   
+**Részletes:** Az Azure AD kiemelt identitáskezelés bekapcsolása után tekintse meg a felhasználókat, akik a globális rendszergazda, a kiemelt szereprendszergazda és más magas szintű kiemelt jogosultságú szerepkörök. Távolítsa el azokat a fiókokat, amelyekre már nincs szükség ezekben a szerepkörökben, és kategorizálja a rendszergazdai szerepkörökhöz rendelt fennmaradó fiókokat:
 
-* Egyénileg rendelhető hozzá a rendszergazda felhasználókhoz, és nem rendszergazdai célokra használható (például személyes e-mail-cím)
-* Egyénileg rendelhető hozzá a rendszergazda felhasználókhoz, és csak felügyeleti célokra van kijelölve
-* Több felhasználó között megosztott
-* Vészhelyzeti hozzáférési forgatókönyvek esetén
+* Egyénileg hozzárendelve a rendszergazdai felhasználókhoz, és nem adminisztratív célokra használható (például személyes e-mail)
+* Egyénileg hozzárendelt adminisztratív felhasználók és kijelölt adminisztratív célokra csak
+* Több felhasználó között megosztva
+* Vészhelyzeti hozzáférési forgatókönyvekhez
 * Automatikus parancsfájlok esetén
 * Külső felhasználók számára
 
-**Ajánlott eljárás**: "igény szerinti" (JIT) hozzáférés megvalósítása a jogosultságok expozíciós idejének további csökkentéséhez és a Kiemelt fiókok használatának növeléséhez.   
-**Részletek**: a Azure ad Privileged Identity Management a következőket teszi lehetővé:
+**Ajánlott eljárás:** Valósítsa meg a "just in time" (JIT) hozzáférést a jogosultságok expozíciós idejének további csökkentése és a kiemelt jogosultságú fiókok használatának láthatóságának növelése érdekében.   
+**Részletes :** Az Azure AD kiemelt identitáskezelés lehetővé teszi, hogy:
 
-* Korlátozza a felhasználókat arra, hogy csak a jogosultságokat JIT-re vegyék.
-* A lerövidített időtartamhoz rendeljen hozzá szerepköröket úgy, hogy a jogosultságok automatikusan visszavonásra kerülnek.
+* Korlátozza a felhasználókat, hogy csak a jogosultságok JIT.
+* Rendeljen szerepköröket egy rövidebb időtartamhoz, bízva abban, hogy a jogosultságok automatikusan visszavonásra kerülnek.
 
-**Ajánlott eljárás**: legalább két vészhelyzeti hozzáférési fiókot adjon meg.   
-**Részletek**: a sürgősségi hozzáférésű fiókok segítenek a szervezeteknek a rendszerjogosultságú hozzáférés korlátozásában egy meglévő Azure Active Directory környezetben. Ezek a fiókok Kiemelt jogosultságokkal rendelkeznek, és nem adott személyekhez vannak rendelve. A sürgősségi hozzáférési fiókok olyan forgatókönyvekre korlátozódnak, amelyekben nem használhatók normál rendszergazdai fiókok. A szervezeteknek csak a szükséges időtartamra kell korlátoznia a segélyhívó fiók használatát.
+**Ajánlott eljárás:** Adjon meg legalább két vészelérési fiókot.   
+**Részletes:** A segélyhívó fiókok segítségével a szervezetek korlátozhatják a kiemelt hozzáféréseket egy meglévő Azure Active Directory-környezetben. Ezek a fiókok magas szintű jogosultsággal rendelkeznek, és nem vannak hozzárendelve bizonyos személyekhez. A vészelérési fiókok olyan esetekre korlátozódnak, ahol a normál rendszergazdai fiókok nem használhatók. A szervezeteknek a segélyhívási fiók használatát csak a szükséges időre kell korlátozniuk.
 
-Értékelje ki azokat a fiókokat, amelyek a globális rendszergazdai szerepkörhöz vannak rendelve vagy jogosultak. Ha nem látja a csak felhőalapú fiókokat a `*.onmicrosoft.com` tartomány használatával (vészhelyzeti hozzáférés céljára), hozza létre őket. További információ: [a sürgősségi hozzáférés felügyeleti fiókjainak kezelése az Azure ad-ben](/azure/active-directory/users-groups-roles/directory-emergency-access).
+Értékelje ki a globális rendszergazdai szerepkörhöz rendelt vagy arra jogosult fiókokat. Ha nem lát csak felhőalapú fiókokat `*.onmicrosoft.com` a (vészelérési hozzáférésre szánt) tartomány használatával, hozza létre őket. További információ: [A segélyhívó rendszergazdai fiókok kezelése az Azure AD-ben.](/azure/active-directory/users-groups-roles/directory-emergency-access)
 
-**Ajánlott**eljárás: vészhelyzet esetén a "break Glass" folyamat van érvényben.
-**Részletek**: kövesse az [Azure ad-ben az emelt szintű hozzáférés biztonságossá tétele a hibrid és a felhőben történő üzembe helyezéshez](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)című témakör lépéseit.
+**Legjobb gyakorlat:** Vészhelyzet esetén "üvegtörési" eljárást kell bevezetni.
+**Részletes :** Kövesse a [hibrid és felhőalapú telepítések kiemelt hozzáférésének védelme az Azure AD-ben](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)című lépéseket.
 
-**Ajánlott eljárás**: az összes kritikus rendszergazdai fiók jelszó nélküli (előnyben részesített) vagy Multi-Factor Authentication megkövetelésének megkövetelése.
-**Részletek**: a [Microsoft Authenticator alkalmazás](/azure/active-directory/authentication/howto-authentication-phone-sign-in) használatával jelszó nélkül JELENTKEZHET be bármely Azure ad-fiókba. A [vállalati Windows Hello-hez](/windows/security/identity-protection/hello-for-business/hello-identity-verification)hasonlóan a Microsoft Authenticator a kulcs-alapú hitelesítés használatával engedélyezi az eszközhöz kötött felhasználói hitelesítő adatokat, és biometrikus hitelesítést vagy PIN-kódot használ.
+**Ajánlott eljárás:** Az összes kritikus rendszergazdai fiók jelszó nélküli (előnyben részesített) vagy többtényezős hitelesítés megkövetelése.
+**Részlet:** A [Microsoft Authenticator alkalmazással](/azure/active-directory/authentication/howto-authentication-phone-sign-in) jelentkezzen be bármely Azure AD-fiókba jelszó használata nélkül. A [Windows Hello for Business szolgáltatáshoz](/windows/security/identity-protection/hello-for-business/hello-identity-verification)hasonlóan a Microsoft Authenticator is kulcsalapú hitelesítést használ az eszközhöz kapcsolt és biometrikus hitelesítést vagy PIN-kódot használó felhasználói hitelesítő adatok engedélyezéséhez.
 
-Az Azure Multi-Factor Authentication bejelentkezni az összes olyan felhasználóra, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange Online-rendszergazda és SharePoint Online Rendszergazda. Engedélyezze [a rendszergazdai fiókok multi-Factor Authenticationét](/azure/active-directory/authentication/howto-mfa-userstates) , és győződjön meg arról, hogy a rendszergazdai fiók felhasználóinak regisztrálva vannak.
+Az Azure többtényezős hitelesítésének megkövetelése bejelentkezéskor minden olyan egyéni felhasználó számára, aki tartósan hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, kiemelt szerepkör-rendszergazda, Exchange Online-rendszergazda és SharePoint Online Rendszergazda. Engedélyezze [a többtényezős hitelesítést a rendszergazdai fiókokszámára,](/azure/active-directory/authentication/howto-mfa-userstates) és győződjön meg arról, hogy a rendszergazdai fiók felhasználói regisztráltak.
 
-**Ajánlott eljárás**: a kritikus rendszergazdai fiókok esetében olyan rendszergazdai munkaállomás szükséges, amelyben a termelési feladatok nem engedélyezettek (például a böngészés és az e-mail-cím). Ez biztosítja a rendszergazdai fiókokat a böngészést és e-mailt használó támadási vektorokból, és jelentősen csökkenti a jelentős incidensek kockázatát.
-**Részletek**: rendszergazdai munkaállomás használata. Válassza ki a munkaállomás biztonságának szintjét:
+**Ajánlott eljárás:** A kritikus rendszergazdai fiókok, van egy rendszergazdai munkaállomás, ahol az éles feladatok nem engedélyezettek (például a böngészés és az e-mail). Ez megvédi a rendszergazdai fiókokat a böngészést és e-maileket használó támadási vektoroktól, és jelentősen csökkenti a súlyos események kockázatát.
+**Részlet**: Használjon rendszergazdai munkaállomást. Válassza ki a munkaállomás-biztonság szintjét:
 
-- A fokozottan biztonságos hatékonyságnövelő eszközök fokozott biztonságot nyújtanak a böngészéshez és más hatékonyságnövelő feladatokhoz.
-- Az emelt [szintű hozzáférésű munkaállomások (mancsok)](/windows-server/identity/securing-privileged-access/privileged-access-workstations) egy dedikált operációs rendszert biztosítanak, amely az internetes támadásokkal és a bizalmas feladatokhoz kapcsolódó veszélyforrásokkal védett.
+- A rendkívül biztonságos hatékonyságnövelő eszközök fejlett biztonságot nyújtanak a böngészéshez és más hatékonyságnövelő feladatokhoz.
+- [A kiemelt hozzáférésű munkaállomások (EMELT hozzáférési szintű munkaállomások)](/windows-server/identity/securing-privileged-access/privileged-access-workstations) olyan dedikált operációs rendszert biztosítanak, amely védett az internetes támadásokkal és a bizalmas feladatok fenyegetésvektorival szemben.
 
-**Ajánlott eljárás**: rendszergazdai fiókok kiépítése, amikor az alkalmazottak elhagyják a szervezetét.
-**Részletek**: olyan folyamattal rendelkezik, amely letiltja vagy törli a rendszergazdai fiókokat, amikor az alkalmazottak elhagyják a szervezetét.
+**Ajánlott eljárás:** Rendszergazdai fiókok kiépítése, amikor az alkalmazottak elhagyják a szervezetet.
+**Részletes:** Olyan folyamattal rendelkezik, amely letiltja vagy törli a rendszergazdai fiókokat, amikor az alkalmazottak elhagyják a szervezetet.
 
-**Ajánlott eljárás**: a rendszergazdai fiókok rendszeres tesztelése a jelenlegi támadási technikák használatával.
-**Részletek**: az Office 365 Attack Simulator vagy egy harmadik féltől származó ajánlat használata reális támadási forgatókönyvek futtatásához a szervezetben. Ez segít a veszélyeztetett felhasználók megtalálásában a valódi támadás előtt.
+**Ajánlott eljárás:** Rendszeresen tesztelje a rendszergazdai fiókokat az aktuális támadási technikák használatával.
+**Részletes:** Az Office 365 Támadásszimulátor vagy egy harmadik fél től származó ajánlat segítségével valósághű támadási forgatókönyveket futtathat a szervezetben. Ez segíthet megtalálni a sebezhető felhasználókat, mielőtt valódi támadás történne.
 
-**Ajánlott**eljárás: lépéseket tesz a leggyakrabban használt módszerek enyhítésére.  
-**Részletek**: [azonosítsa a Microsoft-fiókokat olyan rendszergazdai szerepkörökben, amelyeket munkahelyi vagy iskolai fiókokra kell váltani](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
+**Ajánlott eljárás:** Tegyen lépéseket a leggyakrabban használt támadási technikák enyhítésére.  
+**Részlet**: [Azonosítsa azokat a Microsoft-fiókokat a munkahelyi vagy iskolai fiókokra átváltandó felügyeleti szerepkörökben](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
 
-[Különálló felhasználói fiókok és a levelezés továbbítása globális rendszergazdai fiókokhoz](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)  
+[Külön felhasználói fiókok és levéltovábbítás biztosítása globális rendszergazdai fiókok hoz](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)  
 
-[Győződjön meg arról, hogy a rendszergazdai fiókok jelszavai nemrég módosultak](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
+[Annak ellenőrzése, hogy a felügyeleti fiókok jelszavai a közelmúltban megváltoztak-e](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
 
-[Jelszó-kivonat szinkronizálásának bekapcsolása](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#turn-on-password-hash-synchronization)  
+[A jelszókivonat-szinkronizálás bekapcsolása](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#turn-on-password-hash-synchronization)  
 
-[Multi-Factor Authentication megkövetelése minden Kiemelt szerepkörrel rendelkező és a felhasználók számára elérhető felhasználók számára](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[Többtényezős hitelesítés megkövetelése az összes kiemelt szerepkörben lévő felhasználók, valamint a kitett felhasználók számára](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
 [Az Office 365 biztonságos pontszámának beszerzése (az Office 365 használata esetén)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
 
-[Tekintse át az Office 365 biztonsági és megfelelőségi útmutatóját (ha az Office 365-at használja)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[Tekintse át az Office 365 biztonsági és megfelelőségi útmutatóját (az Office 365 használata esetén)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
 
-[Office 365-tevékenységek figyelése (az Office 365 használata esetén)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#configure-office-365-activity-monitoring-if-using-office-365)  
+[Az Office 365 tevékenységfigyelésének konfigurálása (az Office 365 használata esetén)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#configure-office-365-activity-monitoring-if-using-office-365)  
 
-[Incidens/vészhelyzeti válasz terv tulajdonosainak létrehozása](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#establish-incidentemergency-response-plan-owners)  
+[Esemény- és veszélyhelyzet-reagálási terv tulajdonosok létrehozása](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#establish-incidentemergency-response-plan-owners)  
 
-[Biztonságos helyszíni privilegizált rendszergazdai fiókok](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#turn-on-password-hash-synchronization)
+[Helyszíni kiemelt rendszergazdai fiókok biztonságossá tétele](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#turn-on-password-hash-synchronization)
 
-Ha nem védi a Kiemelt jogosultságú hozzáférést, előfordulhat, hogy túl sok felhasználója van magas jogosultsági szintű szerepkörben, és a támadásokkal szemben sebezhető. Rosszindulatú szereplők, beleértve a Cyber-támadókat, gyakran a rendszergazdai fiókokat és a privilegizált hozzáférés más elemeit a bizalmas adatokhoz és rendszerekhez való hozzáféréshez a hitelesítő adatok ellopásával.
+Ha nem biztonságos a kiemelt hozzáférés, előfordulhat, hogy túl sok felhasználó magas szintű jogosultsággal rendelkező szerepkörökben, és sebezhetőbb a támadások. A rosszindulatú szereplők, beleértve a kibertámadókat is, gyakran rendszergazdai fiókokat és a kiemelt hozzáférés egyéb elemeit célozzák meg a bizalmas adatokhoz és rendszerekhez való hozzáféréshez hitelesítő adatok ellopásával.
 
-## <a name="control-locations-where-resources-are-created"></a>Az erőforrások létrehozásának vezérlési helyei
+## <a name="control-locations-where-resources-are-created"></a>Az erőforrások létrehozásának helyei
 
-A Felhőbeli operátorok számára a feladatok elvégzésének engedélyezése, miközben a szervezet erőforrásainak kezeléséhez szükséges szabályok megszegésének megakadályozása nagyon fontos. Azok a szervezetek, amelyek szabályozni szeretnék, hogy mely helyekről kell létrehozni az erőforrásokat, ezeket a webhelyeket is fel kell használni
+Nagyon fontos, hogy lehetővé tegye a felhőszolgáltatók számára a feladatok elvégzését, miközben megakadályozza, hogy megszegjék a szervezet erőforrásainak kezeléséhez szükséges konvenciókat. Szervezetek, amelyek szeretnék szabályozni a helyeket, ahol az erőforrások jönnek létre kell kemény kódot ezeket a helyeket.
 
-A [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) használatával olyan biztonsági házirendeket hozhat létre, amelyek definíciói a kifejezetten megtagadott műveleteket vagy erőforrásokat írják le. Ezeket a házirend-definíciókat a kívánt hatókörhöz, például az előfizetéshez, az erőforráscsoporthoz vagy egy adott erőforráshoz kell rendelni.
+Az [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) segítségével biztonsági szabályzatokat hozhat létre, amelyek definíciói a kifejezetten megtagadott műveleteket vagy erőforrásokat írják le. Ezeket a szabályzatdefiníciókat a kívánt hatókörhöz rendeli hozzá, például az előfizetéshez, az erőforráscsoporthoz vagy egy adott erőforráshoz.
 
 > [!NOTE]
-> A biztonsági házirendek nem egyeznek meg a RBAC. Valójában a RBAC használatával engedélyezik a felhasználók számára az erőforrások létrehozását.
+> A biztonsági házirendek nem egyeznek meg az RBAC-kal. Ők valójában használ RBAC -hoz engedélyez használók -hoz teremt azok anyagi javak.
 >
 >
 
-Azok a szervezetek, amelyek nem szabályozzák, hogy az erőforrások hogyan jöjjenek létre, érzékenyebbek azokra a felhasználókra, akik a szükségesnél több erőforrást hoznak létre. Az erőforrás-létrehozási folyamat megerősítése fontos lépés egy több-bérlős forgatókönyv biztonságossá tételéhez.
+Azok a szervezetek, amelyek nem szabályozzák az erőforrások létrehozásának módját, érzékenyebbek azokra a felhasználókra, akik a szükségesnél több erőforrás létrehozásával visszaélhetnek a szolgáltatással. Az erőforrás-létrehozási folyamat megerősítésével fontos lépés a több-bérlős forgatókönyv biztonságossá tétele.
 
-## <a name="actively-monitor-for-suspicious-activities"></a>Gyanús tevékenységek aktív figyelése
+## <a name="actively-monitor-for-suspicious-activities"></a>A gyanús tevékenységek aktív figyelése
 
-Az aktív identitás-figyelési rendszer gyorsan képes észlelni a gyanús viselkedést, és riasztást indít a további vizsgálathoz. Az alábbi táblázat két olyan Azure AD-funkciót sorol fel, amelyek segítségével a szervezetek megtekinthetik az identitásuk körét:
+Az aktív identitásfigyelő rendszer gyorsan észlelheti a gyanús viselkedést, és riasztást indíthat el további vizsgálatra. Az alábbi táblázat két Azure AD-képességet sorol fel, amelyek segítségével a szervezetek figyelhetik identitásukat:
 
-**Ajánlott**eljárás: a következő módszerekkel azonosítható:
+**Ajánlott eljárás**: Van egy módszer, amely azonosítja:
 
-- Kísérlet történt a bejelentkezés [nyomon követése nélkül](/azure/active-directory/active-directory-reporting-sign-ins-from-unknown-sources).
-- [Találgatásos](/azure/active-directory/active-directory-reporting-sign-ins-after-multiple-failures) támadás egy adott fiókkal szemben.
-- Megpróbál több helyről bejelentkezni.
-- [Fertőzött eszközökről](/azure/active-directory/active-directory-reporting-sign-ins-from-possibly-infected-devices)történő bejelentkezések.
+- A bejelentkezési kísérletek [nyomon követés nélkül.](/azure/active-directory/active-directory-reporting-sign-ins-from-unknown-sources)
+- [Brute force](/azure/active-directory/active-directory-reporting-sign-ins-after-multiple-failures) támadások ellen egy adott számla.
+- Több helyről próbál bejelentkezni.
+- Bejelentkezések fertőzött [eszközökről](/azure/active-directory/active-directory-reporting-sign-ins-from-possibly-infected-devices).
 - Gyanús IP-címek.
 
-**Részletek**: prémium szintű Azure ad [anomália-jelentések](/azure/active-directory/active-directory-view-access-usage-reports)használata. Olyan folyamatokkal és eljárásokkal kell rendelkezniük, amelyekkel a rendszergazdák napi vagy igény szerint futtathatják ezeket a jelentéseket (általában incidensek esetén).
+**Részletek:** Azure AD Premium [anomáliajelentések](/azure/active-directory/active-directory-view-access-usage-reports)használata . Olyan folyamatokkal és eljárásokkal kell rendelkeznie, amelyek alapján az informatikai rendszergazdák naponta vagy igény szerint futtatják ezeket a jelentéseket (általában incidensválasz-forgatókönyv esetén).
 
-**Ajánlott eljárás**: olyan aktív figyelési rendszerrel kell rendelkeznie, amely értesíti a kockázatokról, és az üzleti igényeknek megfelelően (magas, közepes vagy alacsony) módosíthatja a kockázati szintet.   
-**Részletek**: [Azure ad Identity Protection](/azure/active-directory/active-directory-identityprotection)használata, amely a saját irányítópultján lévő aktuális kockázatokat és napi összefoglaló értesítéseket küld e-mailben. A szervezete identitásának védelméhez olyan kockázatalapú házirendeket állíthat be, amelyek automatikusan válaszolnak az észlelt problémákra, amikor elérik egy adott kockázati szintet.
+**Ajánlott eljárás:** Rendelkezik egy aktív felügyeleti rendszerrel, amely értesíti Önt a kockázatokról, és a kockázati szintet (magas, közepes vagy alacsony) az üzleti követelményekhez igazíthatja.   
+**Részlet:** Használja [az Azure AD Identity Protection,](/azure/active-directory/active-directory-identityprotection)amely megjelöli az aktuális kockázatokat a saját irányítópultján, és e-mailben küld napi összefoglaló értesítéseket. A szervezet identitásainak védelme érdekében konfigurálhat olyan kockázatalapú házirendeket, amelyek automatikusan reagálnak az észlelt problémákra, amikor egy adott kockázati szintet elér.
 
-Azok a szervezetek, amelyek nem figyelik aktívan a személyazonossági rendszerüket, a felhasználó hitelesítő adatai veszélyben vannak. Ha nem tudja, hogy a gyanús tevékenységek ezen hitelesítő adatokon keresztül zajlanak, a szervezetek nem tudják elhárítani az ilyen típusú fenyegetést.
+Azok a szervezetek, amelyek nem figyelik aktívan identitásrendszereiket, a felhasználói hitelesítő adatok feltörésének kockázatával vannak kitéve. Anélkül, hogy tudná, hogy gyanús tevékenységek zajlanak ezeken a hitelesítő adatokon keresztül, a szervezetek nem tudják enyhíteni az ilyen típusú fenyegetést.
 
-## <a name="use-azure-ad-for-storage-authentication"></a>Az Azure AD használata tárolási hitelesítéshez
-Az [Azure Storage](/azure/storage/common/storage-auth-aad) támogatja a hitelesítést és az engedélyezést az Azure ad-vel a blob Storage és a várólista tárolásához. Az Azure AD-hitelesítéssel az Azure szerepköralapú hozzáférés-vezérlésével konkrét engedélyeket biztosíthat a felhasználóknak, csoportoknak és alkalmazásoknak egy adott blob-tároló vagy-várólista hatóköréhez.
+## <a name="use-azure-ad-for-storage-authentication"></a>Az Azure AD használata a tárolási hitelesítéshez
+[Az Azure Storage](/azure/storage/common/storage-auth-aad) támogatja a hitelesítést és az engedélyezést az Azure AD blob-tároló és várólista-tároló használatával. Az Azure AD-hitelesítéssel az Azure szerepköralapú hozzáférés-vezérlés használatával adott engedélyeket adhat a felhasználóknak, csoportoknak és alkalmazásoknak egy adott blobtároló vagy -várólista hatókörig.
 
-Javasoljuk, hogy [Az Azure ad használatával hitelesítse a tárolóhoz való hozzáférést](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/).
+Azt javasoljuk, hogy az Azure AD használatával [hitelesítse a hozzáférést a tárterülethez.](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/)
 
 ## <a name="next-step"></a>Következő lépés
 
-Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.
+Tekintse meg [az Azure biztonsági gyakorlati tanácsait és mintáit,](best-practices-and-patterns.md) amelyek további biztonsági gyakorlati tanácsokat tartalmaznak a felhőbeli megoldások tervezése, üzembe helyezése és kezelése során az Azure használatával.

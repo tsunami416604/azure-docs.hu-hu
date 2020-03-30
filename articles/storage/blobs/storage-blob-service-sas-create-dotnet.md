@@ -1,7 +1,7 @@
 ---
-title: Service SAS létrehozása tárolóhoz vagy blobhoz .NET-tel
+title: Szolgáltatás SAS létrehozása a .NET-tel rendelkező tárolóhoz vagy blobhoz
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan hozhat létre megosztott hozzáférésű aláírást (SAS) egy tárolóhoz vagy blobhoz a .NET ügyféloldali kódtár használatával.
+description: Megtudhatja, hogy miként hozhat létre egy szolgáltatás megosztott hozzáférési aláírását (SAS) egy tárolóhoz vagy blobhoz a .NET ügyfélkódtár használatával.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,23 +11,23 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
 ms.openlocfilehash: 10045a760d7e0fcb02a754bc9bb52a5ebca970f4
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137211"
 ---
-# <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Service SAS létrehozása tárolóhoz vagy blobhoz .NET-tel
+# <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Szolgáltatás SAS létrehozása a .NET-tel rendelkező tárolóhoz vagy blobhoz
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Ez a cikk bemutatja, hogyan használhatja a Storage-fiók kulcsát egy olyan tárolóhoz vagy blobhoz készült szolgáltatás SAS létrehozásához, amely az [Azure Storage ügyféloldali kódtárat](/dotnet/api/overview/azure/storage?view=azure-dotnet)használja a .net-hez.
+Ez a cikk bemutatja, hogyan lehet a tárfiók kulcs használatával szolgáltatási SAS-t létrehozni egy tárolóhoz vagy blobhoz az [Azure Storage-ügyfélkódtárban .](/dotnet/api/overview/azure/storage?view=azure-dotnet)
 
-## <a name="create-a-service-sas-for-a-blob-container"></a>Service SAS létrehozása blob-tárolóhoz
+## <a name="create-a-service-sas-for-a-blob-container"></a>Szolgáltatás SAS létrehozása blobtárolóhoz
 
-Az [CloudBlobContainer. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) metódust a tárolóhoz tartozó szolgáltatás sas létrehozásához hívja meg.
+Egy tároló szolgáltatás SAS-ának létrehozásához hívja meg a [CloudBlobContainer.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) metódust.
 
-A következő kódrészlet létrehoz egy SAS-t egy tárolón. Ha egy meglévő tárolt hozzáférési szabályzat neve van megadva, akkor ez a házirend a SAS-hoz van társítva. Ha nincs megadva tárolt hozzáférési szabályzat, a kód létrehoz egy ad hoc SAS-t a tárolón.
+A következő kód példa létrehoz egy SAS egy tárolón. Ha egy meglévő tárolt hozzáférési szabályzat neve meg van adva, akkor az adott házirend a SAS-hez van társítva. Ha nincs megadva tárolt hozzáférési szabályzat, akkor a kód létrehoz egy ad hoc SAS-t a tárolón.
 
 ```csharp
 private static string GetContainerSasUri(CloudBlobContainer container, string storedPolicyName = null)
@@ -71,9 +71,9 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 
 ## <a name="create-a-service-sas-for-a-blob"></a>Szolgáltatás SAS létrehozása blobhoz
 
-Az [CloudBlob. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) metódust a blobhoz tartozó Service sas létrehozásához hívja meg.
+Ha egy blobhoz hozzon létre egy szolgáltatás SAS-t, hívja meg a [CloudBlob.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) metódust.
 
-A következő kódrészlet egy blobon létrehoz egy SAS-t. Ha egy meglévő tárolt hozzáférési szabályzat neve van megadva, akkor ez a házirend a SAS-hoz van társítva. Ha nincs megadva tárolt hozzáférési szabályzat, a kód létrehoz egy ad hoc SAS-t a blobon.
+A következő kód példa létrehoz egy SAS egy blob. Ha egy meglévő tárolt hozzáférési szabályzat neve meg van adva, akkor az adott házirend a SAS-hez van társítva. Ha nincs megadva tárolt hozzáférési szabályzat, akkor a kód létrehoz egy ad hoc SAS-t a blobon.
 
 ```csharp
 private static string GetBlobSasUri(CloudBlobContainer container, string blobName, string policyName = null)
@@ -120,7 +120,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md)
+- [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz megosztott hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md)
 - [Szolgáltatási SAS létrehozása](/rest/api/storageservices/create-service-sas)

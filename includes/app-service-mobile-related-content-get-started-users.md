@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 09/02/2019
 ms.author: crdun
 ms.openlocfilehash: bd7a2edd41523a3a0d764059d96ae37e0b0e469f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70232034"
 ---
-* [App Service hitelesítés/engedélyezés áttekintése](../articles/app-service/overview-authentication-authorization.md).
-* [A hitelesítés és az engedélyezés speciális használata Azure App Service](../articles/app-service/app-service-authentication-how-to.md)
-* Hitelesítés hozzáadása a Mobile alkalmazáshoz: [iOS][ios-get-started-users], [Android][android-get-started-users], [Windows Universal][windows-get-started-users], [Xamarin. Android][xamarin-android-get-started-users], [Xamarin. iOS][xamarin-ios-get-started-users], [Xamarin. Forms][xamarin-forms-get-started-users], [Cordova][cordova-get-started-users].  
+* [App Service-hitelesítés / engedélyezés – áttekintés.](../articles/app-service/overview-authentication-authorization.md)
+* [A hitelesítés és az engedélyezés speciális használata az Azure App Service szolgáltatásban](../articles/app-service/app-service-authentication-how-to.md)
+* Add hitelesítés a mobil app: [iOS][ios-get-started-users], [Android][android-get-started-users], [Windows Universal][windows-get-started-users], [Xamarin.Android][xamarin-android-get-started-users], [Xamarin.iOS][xamarin-ios-get-started-users], [Xamarin.Forms][xamarin-forms-get-started-users], [Cordova][cordova-get-started-users].  
 
 [android-get-started-users]: ../articles/app-service-mobile/app-service-mobile-android-get-started-users.md
 [cordova-get-started-users]: ../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md

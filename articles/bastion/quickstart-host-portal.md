@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Kapcsolódás virtuális géphez magánhálózati IP-cím használatával: Azure Bastion'
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy Azure Bastion-gazdagépet egy virtuális gépről, és hogyan csatlakozhat biztonságosan egy magánhálózati IP-cím használatával.
+title: 'Rövid útmutató: Csatlakozás egy virtuális géphez egy privát IP-cím használatával: Azure Bastion'
+description: Ebben a cikkben megtudhatja, hogyan hozhat létre egy Azure-bastion gazdagépet egy virtuális gépről, és biztonságosan csatlakozhat egy privát IP-cím használatával.
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,90 +8,90 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0b4f0a1fa4f9cce05aa544bb24e045209a6d24ef
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137458"
 ---
-# <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Gyors útmutató: Kapcsolódás virtuális géphez magánhálózati IP-cím és Azure-alapú megerősített kapcsolat használatával
+# <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Rövid útmutató: Csatlakozás virtuális géphez egy privát IP-cím és az Azure-bastion használatával
 
-Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy virtuális géphez egy magánhálózati IP-cím használatával. Ha a-t a Bastion-n keresztül kapcsolódik, a virtuális gépeknek nincs szükségük nyilvános IP-címekre. Az ebben a cikkben ismertetett lépések segítséget nyújtanak a-ben a virtuális gépen, a portálon keresztül üzembe helyezéshez. A szolgáltatás üzembe helyezését követően az RDP/SSH-élmény az azonos virtuális hálózatban lévő összes virtuális gép számára elérhető.
+Ez a rövid útmutató cikk bemutatja, hogyan csatlakozhat egy virtuális géphez egy privát IP-cím használatával. Ha a Bastion-on keresztül csatlakozik, a virtuális gépeknek nincs szükségük nyilvános IP-címre. Ebben a cikkben leírt lépések segítségével telepítheti a Bastion-t a virtuális hálózatra a virtuális gépen keresztül a portálon. A szolgáltatás kiépítése után az RDP/SSH felület érhető el az összes virtuális gép ugyanabban a virtuális hálózatban.
 
-## <a name="prereq"></a>Előfeltételek
+## <a name="prerequisites"></a><a name="prereq"></a>Előfeltételek
 
-* Egy Azure-beli virtuális hálózat.
-* Egy Azure-beli virtuális gép, amely a virtuális hálózaton található, a 3389-es porton keresztül.
+* Egy Azure virtuális hálózat.
+* A virtuális hálózatban található, nyitott 3389-es porttal rendelkező Azure-virtuális gép.
 
 ### <a name="example-values"></a>Példaértékek
 
-|**Name (Név)** | **Érték** |
+|**Név** | **Érték** |
 | --- | --- |
-| Name (Név) |  VNet1Bastion |
+| Név |  VNet1Bastion |
 | Régió | eastus |
 | Virtuális hálózat |  VNet1 |
 | + Alhálózat neve | AzureBastionSubnet |
-| AzureBastionSubnet-címek |  10.1.254.0/27 |
+| Az AzureBastionSubnet-címek |  10.1.254.0/27 |
 | Nyilvános IP-cím |  Új létrehozása |
-| Nyilvános IP-cím neve | VNet1BastionPIP  |
-| Nyilvános IP-cím SKU |  Standard  |
-| hozzárendelés  | Statikus |
+| Nyilvános IP-cím | VNet1BastionPIP  |
+| Nyilvános IP-cím Termékváltozat |  Standard  |
+| Hozzárendelés  | Statikus |
 
-## <a name="createvmset"></a>Megerősített gazdagép létrehozása
+## <a name="create-a-bastion-host"></a><a name="createvmset"></a>Bastion-gazdagép létrehozása
 
-Amikor egy meglévő virtuális gép használatával hoz létre egy megerősített gazdagépet a portálon, a különböző beállítások automatikusan megegyeznek a virtuális géppel és/vagy a virtuális hálózattal.
+Ha egy meglévő virtuális gép használatával hoz létre megerősített állomást a portálon, a különböző beállítások automatikusan a virtuális gépnek és/vagy a virtuális hálózatnak felelnek meg.
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). Nyissa meg a virtuális gépet, majd kattintson a **Kapcsolódás**elemre.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Nyissa meg a virtuális gépet, majd kattintson a **Csatlakozás gombra.**
 
    ![virtuális gép beállításai](./media/quickstart-host-portal/vm-settings.png)
-1. A legördülő listából válassza a **Bastion**lehetőséget.
-1. A kapcsolat lapon válassza a a **Bastion használata**lehetőséget.
+1. A legördülő menüben válassza a **Bástya**lehetőséget.
+1. A Csatlakozás lapon válassza **a Bástya használata**lehetőséget.
 
-   ![Megerősített](./media/quickstart-host-portal/select-bastion.png)
+   ![bástya kiválasztása](./media/quickstart-host-portal/select-bastion.png)
 
-1. A megerősített lapon töltse ki a következő beállítások mezőket:
+1. A Bástya lapon töltse ki a következő beállításmezőket:
 
-   * **Név**: a megerősített gazdagép neve
-   * **Alhálózat**: a virtuális hálózaton belüli alhálózat, amelyre a megerősített erőforrást telepíteni fogja. Az alhálózatot a **AzureBastionSubnet**névvel kell létrehozni. A név lehetővé teszi, hogy az Azure tudja, melyik alhálózaton helyezi üzembe a megerősített erőforrást. Ez nem más, mint az átjáró alhálózata. Használjon legalább/27 vagy nagyobb (/27,/26,/25 stb.) alhálózatot.
+   * **Név**: A megerősített állomás elnevezése
+   * **Alhálózat:** Az az alhálózat a virtuális hálózaton belül, amelyre a megerősített erőforrás telepítve lesz. Az alhálózatot **Az AzureBastionSubnet**névvel kell létrehozni. A név lehetővé teszi az Azure-nak, hogy melyik alhálózatra telepítse a Bástya erőforrást. Ez eltér az átjáró alhálózatátótól. Legalább /27 vagy nagyobb (/27, /26, /25 és így tovább) alhálózatot használjon.
    
-      * Válassza az **alhálózat konfigurációjának kezelése**, majd a **+ alhálózat**lehetőséget.
-      * Az alhálózat hozzáadása lapon írja be a következőt: **AzureBastionSubnet**.
-      * A címtartomány meghatározása a CIDR-jelöléssel. Például: 10.1.254.0/27.
-      * Az alhálózat létrehozásához kattintson **az OK gombra** . A lap tetején navigáljon vissza a kilépéshez a többi beállítás befejezéséhez.
+      * Válassza **az Alhálózat-konfiguráció kezelése**lehetőséget, majd a + **Alhálózat**lehetőséget.
+      * Az Alhálózat hozzáadása lapon írja be az **AzureBastionSubnet .In**the Add subnet page, type AzureBastionSubnet .
+      * Adja meg a címtartományt cidr jelöléssel. Például: 10.1.254.0/27.
+      * Az alhálózat létrehozásához válassza az **OK gombot.** A lap tetején lépjen vissza a Bastion oldalra a többi beállítás befejezéséhez.
 
-         ![Navigáljon a megerősített beállítások menüponthoz](./media/quickstart-host-portal/navigate-bastion.png)
-   * **Nyilvános IP-cím**: Ez annak a megerősített erőforrásnak a nyilvános IP-címe, AMELYEN az RDP/SSH elérhető lesz (az 443-as porton keresztül). Hozzon létre egy új nyilvános IP-címet, vagy használjon egy meglévőt. A nyilvános IP-címnek ugyanabban a régióban kell lennie, mint a létrehozandó megerősített erőforrásnak.
-   * **Nyilvános IP-cím neve**: a nyilvános IP-cím erőforrásának neve.
-1. Az érvényesítési képernyőn kattintson a **Létrehozás**gombra. Várjon körülbelül 5 percet a megerősített erőforrás létrehozásához és üzembe helyezéséhez.
+         ![ugrás a megerősített beállításokra](./media/quickstart-host-portal/navigate-bastion.png)
+   * **Nyilvános IP-cím**: Ez annak a megerősített erőforrásnak a nyilvános IP-je, amelyen az RDP/SSH-t (a 443-as porton keresztül) hozzá fogják férni. Hozzon létre egy új nyilvános IP-címet, vagy használjon egy meglévőt. A nyilvános IP-címnek ugyanabban a régióban kell lennie, mint a létrehozott megerősített erőforrásnak.
+   * **Nyilvános IP-cím neve**: A nyilvános IP-cím erőforrás neve.
+1. Az érvényesítési képernyőn kattintson a **Létrehozás gombra.** Várjon körülbelül 5 percet a megerősített erőforrás létrehozásához és üzembe helyezéséhez.
 
-   ![megerősített gazdagép létrehozása](./media/quickstart-host-portal/bastion-settings.png)
+   ![bástyagazdagép létrehozása](./media/quickstart-host-portal/bastion-settings.png)
 
-## <a name="connect"></a>Csatlakozni
+## <a name="connect"></a><a name="connect"></a>Kapcsolódás
 
-Miután a megerősített állapotot telepítette a virtuális hálózatra, a képernyő a kapcsolódás lapra változik.
+Miután a Bastion telepítve van a virtuális hálózatra, a képernyő a csatlakozási lapra változik.
 
-1. Írja be a virtuális gép felhasználónevét és jelszavát. Ezután válassza a **kapcsolat**lehetőséget.
+1. Írja be a virtuális gép felhasználónevét és jelszavát. Ezután válassza a **Csatlakozás lehetőséget.**
 
    ![csatlakozásra](./media/quickstart-host-portal/connect.png)
-1. Az ehhez a virtuális géphez a Bastion-en keresztül létesített RDP-kapcsolat közvetlenül a Azure Portal (HTML5-n keresztül) lesz megnyitva a 443-es port és a megerősített szolgáltatás használatával.
+1. Az RDP-kapcsolat a virtuális gép hez keresztül Bastion nyílik meg közvetlenül az Azure Portalon (HTML5 felett) a 443-as port és a Bástya szolgáltatás használatával.
 
-   ![RDP-kapcsolat](./media/quickstart-host-portal/443-rdp.png)
+   ![RDP-csatlakozás](./media/quickstart-host-portal/443-rdp.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha végzett a virtuális hálózat és a virtuális gépek használatával, törölje az erőforráscsoportot és a benne található összes erőforrást:
+Ha befejezte a virtuális hálózat és a virtuális gépek használatát, törölje az erőforráscsoportot és a benne lévő összes erőforrást:
 
-1. Adja meg a *TestRG1* a portál tetején található **keresőmezőbe** , és válassza a **TestRG1** lehetőséget a keresési eredmények közül.
+1. Írja be a *TestRG1* értéket a portál tetején lévő **keresőmezőbe,** és válassza a **TestRG1** lehetőséget a keresési eredmények között.
 
 2. Válassza az **Erőforráscsoport törlése** elemet.
 
-3. Írja be a *TestRG1* **nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
+3. Írja be *a TestRG1* értéket **az ERŐFORRÁSCSOPORT NEVÉNEK BEÍRÁSához,** és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy megerősített gazdagépet hozott létre a virtuális hálózathoz, majd biztonságosan kapcsolódott egy virtuális géphez a megerősített gazdagépen keresztül.
+Ebben a rövid útmutatóban létrehozott egy bástya-állomást a virtuális hálózathoz, majd biztonságosan csatlakozott egy virtuális géphez a Bástyagazdagazdagépen keresztül.
 
-* Ha többet szeretne megtudni az Azure Bastion-ról, olvassa el a [Bastion áttekintése](bastion-overview.md) és a [megerősített GYIK](bastion-faq.md)című témakört.
-* Ha hálózati biztonsági csoportokat kíván használni az Azure megerősített alhálózattal, tekintse meg a következő témakört: a [NSG](bastion-nsg.md)használata.
-* Az Azure Bastion-gazdagép beállításainak magyarázatait tartalmazó utasításokért tekintse meg az [oktatóanyagot](bastion-create-host-portal.md).
-* A virtuálisgép-méretezési csoportokhoz való kapcsolódáshoz lásd: [Kapcsolódás virtuálisgép-méretezési csoporthoz az Azure Bastion használatával](bastion-connect-vm-scale-set.md).
+* Ha többet szeretne megtudni az Azure-bástyáról, olvassa el a [Bástya áttekintése](bastion-overview.md) és a [Bástya gyakori kérdések című témakört.](bastion-faq.md)
+* Ha hálózati biztonsági csoportokat szeretne használni az Azure Bastion alhálózattal, olvassa el a [Munka az NSG-kkel című témakört.](bastion-nsg.md)
+* Az Azure Bastion gazdagép beállításainak magyarázatát tartalmazó utasításokat az [oktatóanyag](bastion-create-host-portal.md)ban találja.
+* Virtuálisgép-méretezési csoporthoz való csatlakozásról a [Csatlakozás virtuálisgép-méretezési csoporthoz az Azure Bastion használatával (Csatlakozás virtuálisgép-méretezési csoporthoz) témakörben.](bastion-connect-vm-scale-set.md)

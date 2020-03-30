@@ -1,6 +1,6 @@
 ---
-title: A (z) "C" ügynök helyi konfigurációinak Azure Security Center ismertetése | Microsoft Docs
-description: Tudnivalók a C-hez készült Agent helyi konfigurációk Azure Security Centeráról.
+title: Az Azure Security Center ismertetése a C | Microsoft dokumentumok
+description: Ismerje meg az Azure Security Center ügynök helyi konfigurációk C.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,43 +16,43 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 2725a824da26dafcbc215e4c302ec38ad4b5a699
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68600539"
 ---
-# <a name="understanding-the-localconfigurationjson-file---c-agent"></a>A LocalConfiguration. JSON fájl ismertetése – C ügynök
+# <a name="understanding-the-localconfigurationjson-file---c-agent"></a>A LocalConfiguration.json fájl ismertetése – C-ügynök
 
-A IoT biztonsági ügynök Azure Security Center konfigurációkat használ egy helyi konfigurációs fájlból.
-A biztonsági ügynök egyszer beolvassa a konfigurációt az ügynök indításakor.
+Az Azure Security Center for IoT biztonsági ügynök konfigurációkat használ egy helyi konfigurációs fájlból.
+A biztonsági ügynök egyszer olvassa be a konfigurációt az ügynök indításakor.
 A helyi konfigurációs fájlban található konfiguráció hitelesítési konfigurációt és más ügynökkel kapcsolatos konfigurációkat tartalmaz.
-A fájl a "kulcs-érték" párokban található konfigurációkat JSON-jelöléssel tartalmazza, a konfigurációk pedig az ügynök telepítésekor kerülnek feltöltésre. 
+A fájl "Kulcs-érték" párokkonfigurációit tartalmazza JSON jelölésben, és a konfigurációk feltöltődnek az ügynök telepítésekor. 
 
-Alapértelmezés szerint a fájl a következő helyen található:/var/ASCIoTAgent/LocalConfiguration.json
+Alapértelmezés szerint a fájl a következő helyen található: /var/ASCIoTAgent/LocalConfiguration.json
 
-A konfigurációs fájl módosításai az ügynök újraindításakor lépnek életbe. 
+A konfigurációs fájl módosításaaz ügynök újraindításakor történik. 
 
-## <a name="security-agent-configurations-for-c"></a>A C biztonsági ügynök konfigurációi
+## <a name="security-agent-configurations-for-c"></a>Biztonsági ügynök konfigurációk C
 | Konfiguráció neve | Lehetséges értékek | Részletek | 
 |:-----------|:---------------|:--------|
 | Ügynökazonosító | GUID | Az ügynök egyedi azonosítója |
-| TriggerdEventsInterval | ISO8601 karakterlánc | Az aktivált események gyűjtésének ütemező időköze |
-| ConnectionTimeout | ISO8601 karakterlánc | Túllépte az időkorlátot a IoThub való kapcsolódás előtt. |
-| Authentication | JsonObject | Hitelesítési konfiguráció. Ez az objektum tartalmazza az IoTHub-hitelesítéshez szükséges összes információt |
-| Identitás | "DPS", "SecurityModule", "eszköz" | Hitelesítési identitás – DPS if hitelesítés a DPS-n keresztül történik, SecurityModule, ha a hitelesítés biztonsági modul hitelesítő adataival vagy eszközével történik, ha az eszköz hitelesítő adataival történik a hitelesítés. |
-| AuthenticationMethod | "SasToken", "SelfSignedCertificate" | a hitelesítő felhasználói titok – válassza a SasToken lehetőséget, ha a titok használata szimmetrikus kulcs, válassza az önaláírt tanúsítvány lehetőséget, ha a titok egy önaláírt tanúsítvány  |
-| FilePath | Fájl elérési útja (karakterlánc) | A hitelesítési titkot tartalmazó fájl elérési útja |
-| Állomásnév | Karakterlánc | Az Azure IOT hub állomásneve. általában < My-hub >. Azure-devices.net |
-| DeviceId | Karakterlánc | Az eszköz azonosítója (az Azure IoT Hubban regisztrálva) |
-| DPS | JsonObject | DPS-hez kapcsolódó konfigurációk |
-| IDScope | sztring | A DPS azonosító hatóköre |
-| RegistrationId | Karakterlánc  | DPS-eszköz regisztrációs azonosítója |
-| Naplózás | JsonObject | Ügynök-naplózó kapcsolódó konfigurációk |
-| SystemLoggerMinimumSeverity | 0 < = szám < = 4 | a/var/log/syslog (0 a legalacsonyabb súlyosságú) üzeneteket a rendszer naplózza. |
-| DiagnosticEventMinimumSeverity | 0 < = szám < = 4 | a rendszer a súlyossági szinttel egyenlő vagy annál nagyobb naplózási üzeneteket küld diagnosztikai eseményként (a 0 a legalacsonyabb súlyosságú). |
+| TriggerdEventsInterval | ISO8601 karakterlánc | Az aktivált események gyűjteményének ütemezői időköze |
+| ConnectionTimeout (Kapcsolatidő-túllépés) | ISO8601 karakterlánc | Az IoThub-szolgáltatással való kapcsolat időbeli túltöltése előtt |
+| Hitelesítés | JsonObject objektum | Hitelesítési konfiguráció. Ez az objektum tartalmazza az IoTHub elleni hitelesítéshez szükséges összes információt |
+| Identitás | "DPS", "SecurityModule", "Device" | Hitelesítési identitás – DPS, ha a hitelesítés DPS protokollon keresztül történik, A SecurityModule, ha a hitelesítés a biztonsági modul hitelesítő adataival vagy eszközével történik, ha a hitelesítés eszközhitelesítő adatokkal történik |
+| AuthenticationMethod (Hitelesítési módszer) | "SasToken", "SelfSignedCertificate" | a felhasználó titkos hitelesítése - Válassza a SasToken lehetőséget, ha a használati titok szimmetrikus kulcs, válassza az önaláírt tanúsítványt, ha a titkos kulcs egy önaláírt tanúsítvány  |
+| FilePath (Fájlelérési út) | Fájl elérési útja (karakterlánc) | A hitelesítési titkot tartalmazó fájl elérési útja |
+| HostName | sztring | Az azure iot hub gazdagépneve. általában <my-hub>.azure-devices.net |
+| DeviceId | sztring | Az eszköz azonosítója (az Azure IoT Hubban regisztrált) |
+| Dps | JsonObject objektum | DPS-hez kapcsolódó konfigurációk |
+| Idscope | sztring | A DPS azonosító hatóköre |
+| Regisztrációs azonosító | sztring  | DPS-eszköz regisztrációs azonosítója |
+| Naplózás | JsonObject objektum | Ügynöknaplózóval kapcsolatos konfigurációk |
+| SystemLoggerMinimumSeverity | 0 <= <szám = 4 | az ilyen súlyosságú és annál magasabb naplóüzenetek et a /var/log/syslog könyvtárba naplózza a rendszer (a 0 a legalacsonyabb súlyosság) |
+| DiagnosticEventMinimumSeverity | 0 <= <szám = 4 | az ilyen súlyosságú és annál magasabb naplóüzenetek diagnosztikai eseményekként lesznek elküldve (a 0 a legalacsonyabb súlyosság) |
 
-## <a name="security-agent-configurations-code-example"></a>Biztonsági ügynök konfigurációjának kódja – példa
+## <a name="security-agent-configurations-code-example"></a>Példa a biztonsági ügynök konfigurációinak kódjára
 ```JSON
 {
     "Configuration" : {
@@ -79,10 +79,10 @@ A konfigurációs fájl módosításai az ügynök újraindításakor lépnek é
 ```
 
 ## <a name="next-steps"></a>További lépések
-- A IoT-szolgáltatás áttekintésének [](overview.md) Azure Security Center olvasása
-- További információ a IoT- [architektúra](architecture.md) Azure Security Center
-- A IoT [szolgáltatás](quickstart-onboard-iot-hub.md) Azure Security Centerának engedélyezése
-- A IoT szolgáltatással kapcsolatos [Gyakori kérdések](resources-frequently-asked-questions.md) Azure Security Center beolvasása
-- Ismerje meg, hogyan érheti el a [nyers biztonsági információkat](how-to-security-data-access.md)
-- [Javaslatok](concept-recommendations.md) ismertetése
-- Biztonsági [riasztások](concept-security-alerts.md) ismertetése
+- Olvassa el az Azure Security Center for IoT szolgáltatás [áttekintését](overview.md)
+- További információ az Azure Security Center for IoT [Architecture szolgáltatásról](architecture.md)
+- Az Azure Security Center [ioT-szolgáltatás](quickstart-onboard-iot-hub.md) engedélyezése
+- Olvassa el az Azure Security Center for IoT szolgáltatás [gyakori kérdések](resources-frequently-asked-questions.md)
+- További információ a [nyers biztonsági adatok](how-to-security-data-access.md) eléréséről
+- Az [ajánlások megismerése](concept-recommendations.md)
+- A biztonsági [riasztások ismertetése](concept-security-alerts.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: blob Storage-események küldése a webes végpontnak – portál'
-description: 'Gyors útmutató: Azure Event Grid és Azure Portal használatával hozzon létre blob Storage-fiókot, és regisztrálja az eseményeit. Küldje el az eseményeket egy webhookba.'
+title: 'Rövid útmutató: Blob-tárolási események küldése a webvégpontra – portál'
+description: 'Rövid útmutató: Az Azure Event Grid és az Azure Portal használatával blobtár-fiókot hozhat létre, és előfizethet az eseményeket. Küldje el az eseményeket egy Webhookba.'
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 2daf17ccef1bca363fe92f71a332fbfa78637135
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844776"
 ---
-# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Gyors útmutató: blob Storage-események átirányítása webes végpontra a Azure Portal
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rövid útmutató: Blob-tárolási események irányítása a webvégpontra az Azure Portalon
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehoz egy Blob Storage-fiókot az Azure Portallal, feliratkozik a Blob Storage-hoz tartozó eseményekre, és aktivál egy eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
@@ -43,7 +43,7 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
    ![Kezdeti lépések](./media/blob-event-quickstart-portal/provide-blob-values.png)
 
 >[!NOTE]
-> Csak a **StorageV2 (általános célú v2)** és a **BlobStorage** típusú tárolási fiókok támogatják az események integrálását. A **Storage (Genral Purpose v1)** *nem* támogatja a Event Grid integrációját.
+> Csak **a storageV2 (általános célú v2)** és **a BlobStorage** támogatási eseményintegrációs tárfiókok. **A storage (genral purpose v1)** *nem* támogatja az Event Griddel való integrációt.
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
@@ -105,7 +105,7 @@ A Blob Storage-hoz egy eseményt egy fájl feltöltésével aktiválhat. A fájl
 
 1. Keresse meg tallózással a tesztfájlt, és töltse fel.
 
-1. Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Az üzenet JSON formátumú, és egy vagy több eseményből álló tömböt tartalmaz. A következő példában a JSON-üzenet egyetlen eseményt tartalmazó tömböt tartalmaz. Tekintse meg a webalkalmazását, és észreveheti, hogy az fogadott egy blob által létrehozott eseményt. 
+1. Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Az üzenet JSON formátumú, és egy vagy több eseményt tartalmazó tömböt tartalmaz. A következő példában a JSON-üzenet egy tömböt tartalmaz egy eseménnyel. Tekintse meg a webalkalmazását, és észreveheti, hogy az fogadott egy blob által létrehozott eseményt. 
 
    ```json
    [{
@@ -139,7 +139,7 @@ Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létr
 
 Válassza ki az erőforráscsoportot, majd válassza az **Erőforráscsoport törlése** elemet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan hozhat létre egyéni témaköröket és esemény-előfizetéseket, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

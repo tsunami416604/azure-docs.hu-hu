@@ -1,95 +1,95 @@
 ---
-title: Tanúsítványok elforgatása az Azure Kubernetes szolgáltatásban (ak)
-description: Megtudhatja, hogyan forgathatja el a tanúsítványokat egy Azure Kubernetes-szolgáltatási (ak-) fürtben.
+title: Tanúsítványok elforgatása az Azure Kubernetes szolgáltatásban (AKS)
+description: Ismerje meg, hogyan forgathatja el a tanúsítványokat egy Azure Kubernetes-szolgáltatás (AKS) fürtben.
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
 ms.openlocfilehash: f299b13baf5811b92bdc2e40b027868617d7574c
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79368519"
 ---
-# <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Tanúsítványok elforgatása az Azure Kubernetes szolgáltatásban (ak)
+# <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Tanúsítványok elforgatása az Azure Kubernetes szolgáltatásban (AKS)
 
-Az Azure Kubernetes Service (ak) tanúsítványokat használ a számos összetevőjével való hitelesítéshez. Időnként előfordulhat, hogy ezeket a tanúsítványokat biztonsági vagy házirendi okokból kell elforgatnia. Előfordulhat például, hogy az összes tanúsítvány 90 naponkénti elforgatására vonatkozó szabályzattal rendelkezik.
+Az Azure Kubernetes-szolgáltatás (AKS) tanúsítványokat használ a hitelesítéshez számos összetevőjével. Biztonsági vagy házirend-okokból időnként szükség lehet a tanúsítványok elforgatására. Előfordulhat például, hogy 90 naponta elforgatja az összes tanúsítványt.
 
-Ez a cikk bemutatja, hogyan forgathatja el a tanúsítványokat az AK-fürtben.
+Ez a cikk bemutatja, hogyan forgathatja el a tanúsítványokat az AKS-fürtben.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ehhez a cikkhez az Azure CLI 2.0.77 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ez a cikk megköveteli, hogy az Azure CLI 2.0.77-es vagy újabb verzióját futtassa. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
-## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>AK-tanúsítványok, hitelesítésszolgáltatók és szolgáltatásfiókok
+## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>AKS-tanúsítványok, hitelesítésszolgáltatók és szolgáltatásfiókok
 
-Az AK a következő tanúsítványokat, hitelesítésszolgáltatókat és szolgáltatásfiókokat hozza létre és használja:
+Az AKS a következő tanúsítványokat, hitelesítésszolgáltatókat és szolgáltatásfiókokat hoz létre és használja:
 
-* Az AK API-kiszolgáló létrehoz egy, a fürt HITELESÍTÉSSZOLGÁLTATÓjának nevezett hitelesítésszolgáltatót (CA).
-* Az API-kiszolgáló rendelkezik egy fürt HITELESÍTÉSSZOLGÁLTATÓval, amely az API-kiszolgáló és a kubelets közötti egyirányú kommunikációhoz tartozó tanúsítványokat aláírja.
-* Minden kubelet létrehoz egy tanúsítvány-aláírási kérelmet (CSR) is, amelyet a fürt HITELESÍTÉSSZOLGÁLTATÓja aláír a kubelet és az API-kiszolgáló közötti kommunikációhoz.
-* A etcd a etcd és az API-kiszolgáló közötti kommunikációhoz a fürt HITELESÍTÉSSZOLGÁLTATÓja aláírja a tanúsítványt.
-* A etcd kulcs értéke tároló olyan HITELESÍTÉSSZOLGÁLTATÓT hoz létre, amely aláírja a tanúsítványokat, és engedélyezi az adatreplikációt a etcd-replikák között az AK-fürtben.
-* Az API-gyűjtő a fürt HITELESÍTÉSSZOLGÁLTATÓját használja a más API-kkal folytatott kommunikációhoz, például a nyílt Service Broker az Azure-hoz. Az API-gyűjtő rendelkezhet saját HITELESÍTÉSSZOLGÁLTATÓval is a tanúsítványok kiállításához, de jelenleg a fürt HITELESÍTÉSSZOLGÁLTATÓját használja.
-* Mindegyik csomópont egy szolgáltatásfiók-(SA-) tokent használ, amelyet a fürt HITELESÍTÉSSZOLGÁLTATÓja aláír.
-* Az `kubectl` ügyfél rendelkezik tanúsítvánnyal az AK-fürttel való kommunikációhoz.
+* Az AKS API-kiszolgáló létrehoz egy hitelesítésszolgáltatót (CA), a fürthitelesítésszolgáltatót.
+* Az API-kiszolgáló rendelkezik egy fürthitelesítési webhel, amely aláírja az API-kiszolgáló és a kubelets közötti egyirányú kommunikáció tanúsítványait.
+* Minden kubelet is létrehoz egy tanúsítvány-aláíró kérelem (CSR), amely a fürt hitelesítésszolgáltató által aláírt, a kubelet az API-kiszolgáló közötti kommunikációhoz.
+* Az etcd kulcs értéktárolója rendelkezik egy, a fürthitelesítésszolgáltató által aláírt tanúsítvánnyal az API-kiszolgálóval való kommunikációhoz.
+* Az etcd kulcsérték-tároló létrehoz egy hitelesítésszolgáltatót, amely tanúsítványokat ír alá az AKS-fürt etcd replikai közötti adatreplikáció hitelesítéséhez és engedélyezéséhez.
+* Az API-gyűjtő a fürthitelesítésszolgáltató segítségével adja ki a más API-kkal, például az Azure-hoz való nyílt szolgáltatásközvetítővel való kommunikációhoz szükséges tanúsítványokat. Az API-összesítő rendelkezhet saját hitelesítésszolgáltatóval is a tanúsítványok kiállításához, de jelenleg a fürthitelesítésszolgáltatót használja.
+* Minden csomópont egy szolgáltatásfiók (SA) jogkivonatot használ, amelyet a fürthitelesítésszolgáltató ír alá.
+* Az `kubectl` ügyfél rendelkezik egy tanúsítvánnyal az AKS-fürttel való kommunikációhoz.
 
 > [!NOTE]
-> A március 2019 előtt létrehozott AK-fürtökhöz két év után járó tanúsítványok tartoznak. A március 2019-ig vagy bármely, a tanúsítvánnyal elforgatott fürttel létrehozott fürtnek 30 év után lejár a fürt HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa. Minden más tanúsítvány két év után lejár. Annak ellenőrzéséhez, hogy a fürt létrejött-e, a `kubectl get nodes` használatával megtekintheti a Node-készletek *korát* .
+> A 2019 márciusa előtt létrehozott AKS-fürtök rendelkeznek két év elteltével lejáró tanúsítványokkal. A 2019 márciusa után létrehozott vagy a tanúsítványokkal elforgatott fürtök fürthitelesítési tanúsítványokkal rendelkeznek, amelyek 30 év után lejárnak. Az összes többi tanúsítvány két év után lejár. A fürt létrehozásának ellenőrzéséhez `kubectl get nodes` tekintse meg a csomópontkészletek *korát.*
 > 
-> Emellett a fürt tanúsítványának lejárati dátumát is megtekintheti. A következő parancs például megjeleníti a *myAKSCluster* -fürthöz tartozó tanúsítvány részleteit.
+> Ezenkívül ellenőrizheti a fürt tanúsítványának lejárati dátumát is. A következő parancs például megjeleníti a *myAKSCluster* fürt tanúsítványának részleteit.
 > ```console
 > kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
 > openssl x509 -in my-cert.crt -text
 > ```
 
-## <a name="rotate-your-cluster-certificates"></a>A fürt tanúsítványainak elforgatása
+## <a name="rotate-your-cluster-certificates"></a>A fürttanúsítványok elforgatása
 
 > [!WARNING]
-> A tanúsítványok `az aks rotate-certs` használatával történő elforgatása akár 30 percnyi állásidőt is okozhat az AK-fürt számára.
+> A tanúsítványok elforgatása `az aks rotate-certs` akár 30 perc leállást is okozhat az AKS-fürtszámára.
 
-Az [az AK Get-hitelesítő adatok][az-aks-get-credentials] használatával jelentkezzen be az AK-fürtbe. Ez a parancs a `kubectl` ügyféltanúsítványt is letölti és konfigurálja a helyi gépen.
+Az [aks get-credentials][az-aks-get-credentials] használatával jelentkezzen be az AKS-fürtbe. Ez a parancs letölti `kubectl` és konfigurálja az ügyféltanúsítványt a helyi számítógépen.
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
-A `az aks rotate-certs` használatával elforgathatja az összes tanúsítványt, hitelesítésszolgáltatót és SAs-t a fürtön.
+A `az aks rotate-certs` fürt összes tanúsítványának, hitelesítésszolgáltatójának és hitelesítésszolgáltatójának elforgatására használható.
 
 ```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 > [!IMPORTANT]
-> `az aks rotate-certs` befejezéséhez akár 30 percet is igénybe vehet. Ha a parancs végrehajtása nem sikerül, a `az aks show` használatával ellenőrizze, hogy a fürt állapota a *tanúsítvány elforgatása*-e. Ha a fürt hibás állapotban van, futtassa újra a `az aks rotate-certs` a tanúsítványok újbóli elforgatásához.
+> A befejezés akár 30 `az aks rotate-certs` percet is igénybe vehet. Ha a parancs befejezése `az aks show` előtt sikertelen, ellenőrizze, hogy a fürt állapota *Tanúsítvány elforgatása*. Ha a fürt meghibásodott állapotban `az aks rotate-certs` van, futtassa újra a tanúsítványok újraforgatásához.
 
-`kubectl` parancs futtatásával ellenőrizze, hogy a régi tanúsítványok már nem érvényesek-e. Mivel nem frissítette `kubectl`által használt tanúsítványokat, hibaüzenet jelenik meg.  Például:
+Ellenőrizze, hogy a régi tanúsítványok már `kubectl` nem érvényesek-e egy parancs futtatásával. Mivel nem frissítette a `kubectl`tanúsítványokat, hibaüzenet jelenik meg.  Példa:
 
 ```console
 $ kubectl get no
 Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "ca")
 ```
 
-Frissítse az `kubectl` által használt tanúsítványt `az aks get-credentials`futtatásával.
+Frissítse a futtató `kubectl` `az aks get-credentials`által használt tanúsítványt.
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-Ellenőrizze, hogy a tanúsítványok frissítve lettek-e egy `kubectl` parancs futtatásával, amely mostantól sikeres lesz. Például:
+Ellenőrizze, hogy a tanúsítványok `kubectl` at egy parancs futtatásával frissítették-e, ami most sikeres lesz. Példa:
 
 ```console
 kubectl get no
 ```
 
 > [!NOTE]
-> Ha olyan szolgáltatásokkal rendelkezik, amelyek az AK-on felül futnak, például az [Azure dev Spaces][dev-spaces]szolgáltatást, előfordulhat, hogy [frissítenie kell a szolgáltatásokhoz kapcsolódó tanúsítványokat][dev-spaces-rotate] is.
+> Ha olyan szolgáltatások, amelyek futnak az AKS-en, például az [Azure Dev Spaces,][dev-spaces]előfordulhat, hogy frissítenie kell [a szolgáltatásokhoz kapcsolódó tanúsítványokat][dev-spaces-rotate] is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez a cikk azt mutatja be, hogyan lehet automatikusan elforgatni a fürt tanúsítványait, hitelesítésszolgáltatóit és SAs-adatait. A biztonsági [és az Azure Kubernetes szolgáltatásban (ak) elérhető ajánlott eljárások][aks-best-practices-security-upgrades] további információkat találnak az AK biztonsággal kapcsolatos ajánlott eljárásairól.
+Ez a cikk bemutatja, hogyan kell automatikusan forgatni a fürt tanúsítványait, hitelesítésszolgáltatóit és kiszolgálóit. Az AKS biztonsági gyakorlati tanácsairól az [Azure Kubernetes-szolgáltatás (AKS) szolgáltatásban található fürtbiztonsággal és -frissítésektel kapcsolatos gyakorlati tanácsok című témakört az Azure Kubernetes-szolgáltatásban (AKS)][aks-best-practices-security-upgrades] talál.
 
 
 [azure-cli-install]: /cli/azure/install-azure-cli

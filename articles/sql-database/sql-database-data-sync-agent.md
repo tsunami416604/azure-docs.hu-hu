@@ -1,6 +1,6 @@
 ---
-title: SQL-adatszinkronizálás adatszinkronizálási ügynök
-description: Ismerje meg, hogyan telepítheti és futtathatja az Azure SQL-adatszinkronizálás adatszinkronizálási ügynökét, hogy szinkronizálja az információkat a helyszíni SQL Server-adatbázisokkal
+title: Adatszinkronizáló ügynök az SQL-adatszinkronizáláshoz
+description: Megtudhatja, hogy miként telepítheti és futtathatja az Azure SQL Data Sync adatszinkronizálási ügynökét az adatok helyszíni SQL Server-adatbázisokkal való szinkronizálásához
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,216 +12,216 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: 6d0a728401ac9f0156cc8fa913ce486bb577c6dd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73825177"
 ---
-# <a name="data-sync-agent-for-azure-sql-data-sync"></a>Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke
+# <a name="data-sync-agent-for-azure-sql-data-sync"></a>Adatszinkronizáló ügynök az Azure SQL Data Sync-hez
 
-Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynökének telepítésével és konfigurálásával szinkronizálhatja a helyszíni SQL Server adatbázisokkal rendelkező adatszinkronizálási ügynököt. További információ a SQL-adatszinkronizálásről: az [adatok szinkronizálása több Felhőbeli és helyszíni adatbázis között SQL-adatszinkronizálásokkal](sql-database-sync-data.md).
+Szinkronizálja az adatokat a helyszíni SQL Server-adatbázisokkal az Azure SQL Data Sync adatszinkronizálási ügynökének telepítésével és konfigurálásával. Az SQL Data Sync szolgáltatásról további információt az [Adatok szinkronizálása több felhőbeli és helyszíni adatbázisban](sql-database-sync-data.md)az SQL Data Sync segítségével című témakörben talál.
 
 > [!IMPORTANT]
-> Az Azure SQL-adatszinkronizálás jelenleg **nem** támogatja Azure SQL Database felügyelt példányok használatát.
+> Az Azure SQL Data Sync jelenleg **nem** támogatja az Azure SQL Database felügyelt példánya.
 
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
-Az adatszinkronizálási ügynök letöltéséhez lépjen a [SQL Azure adatszinkronizálási ügynök](https://www.microsoft.com/download/details.aspx?id=27693)elemre.
+Az adatszinkronizálási ügynök letöltéséhez nyissa meg az [SQL Azure Data Sync Agent](https://www.microsoft.com/download/details.aspx?id=27693)című.
 
-### <a name="install-silently"></a>Csendes telepítés
+### <a name="install-silently"></a>Telepítése csendben
 
-Ha az adatszinkronizálási ügynököt csendesen szeretné telepíteni a parancssorból, adjon meg egy, az alábbi példához hasonló parancsot. Keresse meg a letöltött. msi fájl fájlnevét, és adja meg a saját értékeit a **TARGETDIRCDotNet** és a **SERVICEACCOUNT** argumentumhoz.
+Ha a parancssorból csendben szeretné telepíteni az adatszinkronizálási ügynököt, írjon be egy, az alábbi példához hasonló parancsot. Ellenőrizze a letöltött .msi fájl fájlnevét, és adja meg saját értékeit a **TARGETDIR** és **SERVICEACCOUNT** argumentumoknak.
 
-- Ha nem ad meg értéket a **TARGETDIRCDotNet**, az alapértelmezett érték `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`.
+- Ha nem ad meg értéket a **TARGETDIR** `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`értékhez, az alapértelmezett érték a .
 
-- Ha a `LocalSystem` a **SERVICEACCOUNT**értékeként adja meg, akkor a SQL Server hitelesítést akkor használja, ha úgy konfigurálja az ügynököt, hogy a helyszíni SQL Serverhoz kapcsolódjon.
+- Ha a `LocalSystem` **SERVICEACCOUNT**értékét adja meg, használja az SQL Server hitelesítést, amikor konfigurálja az ügynököt a helyszíni SQL Server kiszolgálóhoz való csatlakozásra.
 
-- Ha a **SERVICEACCOUNT**értékeként tartományi felhasználói fiókot vagy helyi felhasználói fiókot ad meg, akkor a **SERVICEPASSWORD** argumentummal is meg kell adnia a jelszót. Például: `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
+- Ha a **SERVICEACCOUNT**értékeként tartományi felhasználói fiókot vagy helyi felhasználói fiókot ad meg, akkor a jelszót a **SERVICEPASSWORD** argumentummal is meg kell adnia. Például: `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
 
 ```cmd
 msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
 ```
 
-## <a name="sync-data-with-sql-server-on-premises"></a>Az SQL Server helyszíni szinkronizálása
+## <a name="sync-data-with-sql-server-on-premises"></a>Adatok szinkronizálása a helyszíni SQL Server kiszolgálóval
 
-Az adatszinkronizálási ügynök konfigurálásához, hogy szinkronizálja az adatszinkronizálást egy vagy több helyszíni SQL Server-adatbázissal, tekintse [meg a helyszíni SQL Server-adatbázis hozzáadása](sql-database-get-started-sql-data-sync.md#add-on-prem)című témakört.
+Az adatszinkronizálási ügynök konfigurálása egy vagy több helyszíni SQL Server-adatbázissal való szinkronizáláshoz olvassa el [a Helyszíni SQL Server-adatbázis hozzáadása című témakört.](sql-database-get-started-sql-data-sync.md#add-on-prem)
 
-## <a name="agent-faq"></a>Adatszinkronizálási ügynök – gyakori kérdések
+## <a name="data-sync-agent-faq"></a><a name="agent-faq"></a>Adatszinkronizálási ügynök – gyakori kérdések
 
-### <a name="why-do-i-need-a-client-agent"></a>Miért van szükségem ügyfél-ügynökre
+### <a name="why-do-i-need-a-client-agent"></a>Miért van szükségem ügyfélügynökre?
 
-A SQL-adatszinkronizálás szolgáltatás az ügyfél ügynökén keresztül kommunikál SQL Server adatbázisokkal. Ez a biztonsági szolgáltatás megakadályozza a közvetlen kommunikációt a tűzfal mögötti adatbázisokkal. Ha a SQL-adatszinkronizálás szolgáltatás kommunikál az ügynökkel, a titkosított kapcsolatokat és egyedi tokent vagy *ügynököt*használ. A SQL Server adatbázisok hitelesítik az ügynököt a kapcsolatok karakterláncának és az ügynök kulcsának használatával. Ez a kialakítás magas szintű biztonságot nyújt az adatai számára.
+Az SQL Data Sync szolgáltatás az ügyfélügynökön keresztül kommunikál az SQL Server adatbázisaival. Ez a biztonsági szolgáltatás megakadályozza a tűzfal mögötti adatbázisokkal való közvetlen kommunikációt. Amikor az SQL Data Sync szolgáltatás kommunikál az ügynökkel, ezt titkosított kapcsolatok és egy egyedi jogkivonat vagy *ügynökkulcs*használatával teszi. Az SQL Server-adatbázisok a kapcsolati karakterlánc és az ügynökkulcs használatával hitelesítik az ügynököt. Ez a kialakítás magas szintű biztonságot nyújt az adatok számára.
 
-### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>A helyi ügynök felhasználói felületének több példánya is futtatható
+### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>A helyi ügynök felhasználói felületének hány példánya futtatható
 
 A felhasználói felületnek csak egy példánya futtatható.
 
-### <a name="how-can-i-change-my-service-account"></a>Hogyan változtathatom meg a szolgáltatásfiókot
+### <a name="how-can-i-change-my-service-account"></a>Hogyan változtathatom meg a szolgáltatásfiókomat?
 
-Miután telepítette az ügynököt, az egyetlen módszer a szolgáltatásfiók módosítására, hogy eltávolítsa, és telepítsen egy új ügyfélszolgáltatást az új szolgáltatásfiók használatával.
+Az ügyfélügynök telepítése után a szolgáltatásfiók módosításának egyetlen módja az eltávolítás és az új szolgáltatásfiókkal rendelkező új ügyfélügynök telepítése.
 
-### <a name="how-do-i-change-my-agent-key"></a>Az ügynök kulcsának módosítása Hogyan
+### <a name="how-do-i-change-my-agent-key"></a>Hogyan változtathatom meg az ügynökkulcsomat?
 
-Az ügynök kulcsát csak egyszer használhatja ügynök. Nem használható fel újra, ha eltávolítja, majd újratelepíti az új ügynököt, és nem is használhatja több ügynök. Ha egy meglévő ügynökhöz új kulcsot kell létrehoznia, akkor győződjön meg arról, hogy ugyanazt a kulcsot rögzíti az ügyfél ügynökével és a SQL-adatszinkronizálás szolgáltatással.
+Az ügynökkulcsot csak egyszer használhatja egy ügynök. Nem használható fel újra, ha eltávolít, majd újratelepít egy új ügynököt, és több ügynök sem használhatja. Ha új kulcsot kell létrehoznia egy meglévő ügynökhöz, biztosnak kell lennie abban, hogy ugyanazt a kulcsot rögzíti az ügyfélügynök és az SQL Data Sync szolgáltatás.
 
-### <a name="how-do-i-retire-a-client-agent"></a>Ügyfél-ügynök kivonása Hogyan
+### <a name="how-do-i-retire-a-client-agent"></a>Hogyan vonhatok ki egy ügyfélügynököt?
 
-Az ügynökök azonnali érvénytelenítéséhez vagy kivonásához a kulcs újralétrehozása a portálon, de ne küldje el az ügynök felhasználói felületén. A kulcs újragenerálása érvényteleníti az előző kulcsot, függetlenül attól, hogy a kapcsolódó ügynök online vagy offline állapotban van-e.
+Az ügynök azonnali érvénytelenítéséhez vagy kivonásához hozza létre újra a kulcsot a portálon, de ne küldje el az ügynök felhasználói felületén. A kulcs újragenerálása érvényteleníti az előző kulcsot, függetlenül attól, hogy a megfelelő ügynök online vagy offline állapotban van-e.
 
-### <a name="how-do-i-move-a-client-agent-to-another-computer"></a>Ügyféloldali ügynök áthelyezése másik számítógépre Hogyan
+### <a name="how-do-i-move-a-client-agent-to-another-computer"></a>Hogyan helyezhetek át ügyfélügynököt egy másik számítógépre?
 
-Ha a helyi ügynököt egy másik számítógépről szeretné futtatni, mint amelyen jelenleg van, tegye a következőket:
+Ha a helyi ügynököt a jelenlegitől eltérő számítógépről szeretné futtatni, tegye a következőket:
 
 1. Telepítse az ügynököt a kívánt számítógépre.
-2. Jelentkezzen be a SQL-adatszinkronizálás portálra, és állítson be egy ügynököt az új ügynökhöz.
-3. Az új ügynök felhasználói felületén küldje el az új ügynököt.
-4. Várjon, amíg az ügyfél-ügynök letölti a korábban regisztrált helyszíni adatbázisok listáját.
-5. Adja meg az adatbázis hitelesítő adatait az összes olyan adatbázishoz, amely nem érhető el. Ezeknek az adatbázisoknak elérhetőnek kell lenniük az új számítógépről, amelyen az ügynök telepítve van.
+2. Jelentkezzen be az SQL Data Sync portálra, és hozza létre újra az új ügynök ügynökkulcsát.
+3. Az új ügynök felhasználói felületének használatával küldje el az új ügynökkulcsot.
+4. Várjon, amíg az ügyfélügynök letölti a korábban regisztrált helyszíni adatbázisok listáját.
+5. Adja meg az adatbázis hitelesítő adatait az összes olyan adatbázishoz, amely elérhetetlenként jelenik meg. Ezeknek az adatbázisoknak elérhetőnek kell lenniük abból az új számítógépből, amelyre az ügynök telepítve van.
 
-## <a name="agent-tshoot"></a>Az adatszinkronizálási ügynökkel kapcsolatos problémák elhárítása
+## <a name="troubleshoot-data-sync-agent-issues"></a><a name="agent-tshoot"></a>Adatszinkronizálási ügynökkel kapcsolatos problémák elhárítása
 
-- [Sikertelen volt az ügyfél-ügynök telepítése, eltávolítása vagy javítása](#agent-install)
+- [Az ügyfélügynök telepítése, eltávolítása vagy javítása sikertelen](#agent-install)
 
-- [Az ügyfél ügynöke nem működik az Eltávolítás megszakítása után](#agent-uninstall)
+- [Az ügyfélügynök nem működik az eltávolítás megszakítása után](#agent-uninstall)
 
-- [Az adatbázis nem szerepel az ügynökök listáján](#agent-list)
+- [Az adatbázisom nem szerepel az ügyintézők listájában](#agent-list)
 
-- [Az ügyfél ügynöke nem indul el (1069-es hiba)](#agent-start)
+- [Az ügyfélügynök nem indul el (1069-es hiba)](#agent-start)
 
-- [Nem tudom elküldeni az ügynök kulcsát](#agent-key)
+- [Nem tudom beküldeni az ügynökkulcsot.](#agent-key)
 
-- [Az ügyfél ügynöke nem törölhető a portálról, ha a hozzá tartozó helyszíni adatbázis nem érhető el](#agent-delete)
+- [Az ügyfélügynök nem törölhető a portálról, ha a társított helyszíni adatbázis nem érhető el](#agent-delete)
 
-- [A helyi szinkronizáló ügynök alkalmazás nem tud kapcsolódni a helyi szinkronizálási szolgáltatáshoz](#agent-connect)
+- [A helyi szinkronizálási ügynök alkalmazás nem tud csatlakozni a helyi szinkronizálási szolgáltatáshoz](#agent-connect)
 
-### <a name="agent-install"></a>Sikertelen volt az ügyfél-ügynök telepítése, eltávolítása vagy javítása
+### <a name="the-client-agent-install-uninstall-or-repair-fails"></a><a name="agent-install"></a>Az ügyfélügynök telepítése, eltávolítása vagy javítása sikertelen
 
-- **OK**. Ennek a hibának számos oka lehet. A hiba konkrét okának meghatározásához tekintse meg a naplókat.
+- **Oka**. Számos forgatókönyv okozhatja ezt a hibát. A hiba konkrét okának meghatározásához tekintse meg a naplókat.
 
-- **Megoldás**. A hiba konkrét okának megállapításához állítson elő és tekintse meg a Windows Installer naplókat. A naplózást bekapcsolhatja a parancssorba. Ha például a letöltött telepítőfájl `SQLDataSyncAgent-2.0-x86-ENU.msi`, a naplófájlokat a következő parancssorok segítségével hozhatja meg és vizsgálja meg:
+- **felbontás .** A hiba konkrét okának megkereséséhez hozza létre és tekintse meg a Windows Installer naplóit. A naplózást a parancssorban kapcsolhatja be. Ha például a letöltött `SQLDataSyncAgent-2.0-x86-ENU.msi`telepítési fájl, naplófájlokat hozhat létre és vizsgálhat meg a következő parancssorokkal:
 
-  - Telepítésekhez: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
-  - Eltávolítás esetén: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Telepítések esetén:`msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Eltávolításesetén:`msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
-    Bekapcsolhatja a naplózást is a Windows Installer által végrehajtott összes telepítéshez. A Microsoft Tudásbázis cikke a [Windows Installer naplózásának engedélyezéséhez](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) egy kattintással elérhető megoldást biztosít a Windows Installer naplózásának bekapcsolásához. A naplófájlok helyét is megadja.
+    A Windows Installer által végrehajtott összes telepítésnél is bekapcsolhatja a naplózást. A Microsoft Tudásbázis [cikke: A Windows Installer naplózásának engedélyezése](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) egykattintásos megoldást kínál a Windows Installer naplózásának bekapcsolására. Azt is előírja a helyét a naplókat.
 
-### <a name="agent-uninstall"></a>Az ügyfél ügynöke nem működik az Eltávolítás megszakítása után
+### <a name="the-client-agent-doesnt-work-after-i-cancel-the-uninstall"></a><a name="agent-uninstall"></a>Az ügyfélügynök nem működik az eltávolítás megszakítása után
 
-Az ügyfél ügynöke nem működik, még az eltávolításának megszakítása után is.
+Az ügyfélügynök nem működik, még az eltávolítás megszakítása után sem.
 
-- **OK**. Ennek az az oka, hogy a SQL-adatszinkronizálás ügyfél ügynöke nem tárolja a hitelesítő adatokat.
+- **Oka**. Ennek az az oka, hogy az SQL Data Sync ügyfélügynök nem tárolja a hitelesítő adatokat.
 
-- **Megoldás**. A következő két megoldás kipróbálására van lehetősége:
+- **felbontás .** A következő két megoldás közül választhat:
 
-    -   A Services. msc segítségével adja meg újra az ügyfél ügynökének hitelesítő adatait.
-    -   Távolítsa el ezt az ügynököt, majd telepítsen egy újat. Töltse le és telepítse a legújabb ügyfél-ügynököt a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=27693).
+    -   A services.msc segítségével adja meg újra az ügyfélügynök hitelesítő adatait.
+    -   Távolítsa el ezt az ügyfélügynököt, majd telepítsen egy újat. Töltse le és telepítse a legújabb ügyfélügynököt a [letöltőközpontból.](https://www.microsoft.com/download/details.aspx?id=27693)
 
-### <a name="agent-list"></a>Az adatbázis nem szerepel az ügynökök listáján
+### <a name="my-database-isnt-listed-in-the-agent-list"></a><a name="agent-list"></a>Az adatbázisom nem szerepel az ügyintézők listájában
 
-Amikor meglévő SQL Server adatbázist próbál hozzáadni egy szinkronizálási csoporthoz, az adatbázis nem jelenik meg az ügynökök listájában.
+Amikor egy meglévő SQL Server-adatbázist próbál hozzáadni egy szinkronizálási csoporthoz, az adatbázis nem jelenik meg az ügynökök listájában.
 
-A probléma a következő esetekben fordulhat elő:
+Ezek a forgatókönyvek okozhatják a problémát:
 
-- **OK**. Az ügyfél-ügynök és a szinkronizálási csoport különböző adatközpontokban található.
+- **Oka**. Az ügyfélügynök és a szinkronizálási csoport különböző adatközpontokban található.
 
-- **Megoldás**. Az ügyfél-ügynöknek és a szinkronizálási csoportnak ugyanabban az adatközpontban kell lennie. Ennek beállításához két lehetőség közül választhat:
+- **felbontás .** Az ügyfélügynöknek és a szinkronizálási csoportnak ugyanabban az adatközpontban kell lennie. Ennek beállításához két lehetősége van:
 
-    -   Hozzon létre egy új ügynököt abban az adatközpontban, amelyben a szinkronizálási csoport található. Ezután regisztrálja az adatbázist az ügynökkel.
-    -   Az aktuális szinkronizálási csoport törlése. Ezután hozza létre újra a szinkronizálási csoportot abban az adatközpontban, amelyben az ügynök található.
+    -   Hozzon létre egy új ügynököt abban az adatközpontban, ahol a szinkronizálási csoport található. Ezután regisztrálja az adatbázist az ügynöknél.
+    -   Az aktuális szinkronizálási csoport törlése. Ezután hozza létre újra a szinkronizálási csoportot abban az adatközpontban, ahol az ügynök található.
 
-- **OK**. Az ügyfél-ügynök listája nem aktuális.
+- **Oka**. Az ügyfélügynök adatbázislistája nem aktuális.
 
-- **Megoldás**. Állítsa le, majd indítsa újra az ügyfél-ügynök szolgáltatást.
+- **felbontás .** Állítsa le, majd indítsa újra az ügyfélügynök-szolgáltatást.
 
-    A helyi ügynök csak az ügynök kulcsának első beadásakor tölti le a társított adatbázisok listáját. Nem tölti le a társított adatbázisok listáját a következő ügynök kulcsának beküldésekor. Az ügynök áthelyezése során regisztrált adatbázisok nem jelennek meg az eredeti ügynök példányában.
+    A helyi ügynök csak az ügynökkulcs első elküldésével tölti le a társított adatbázisok listáját. Nem tölti le a kapcsolódó adatbázisok listáját a további ügynökkulcs-beküldéseken. Az ügynökáthelyezés során regisztrált adatbázisok nem jelennek meg az eredeti ügynökpéldányban.
 
-### <a name="agent-start"></a>Az ügyfél ügynöke nem indul el (1069-es hiba)
+### <a name="client-agent-doesnt-start-error-1069"></a><a name="agent-start"></a>Az ügyfélügynök nem indul el (1069-es hiba)
 
-Felderíti, hogy az ügynök nem fut SQL Server üzemeltető számítógépen. Amikor megkísérli manuálisan elindítani az ügynököt, megjelenik egy párbeszédpanel, amelyen a "hiba 1069: a szolgáltatás nem indult el a bejelentkezési hiba miatt." hibaüzenet jelenik meg.
+A rendszer felderíti, hogy az ügynök nem sql server t futtató számítógépen fut. Amikor megpróbálja manuálisan elindítani az ügynököt, megjelenik egy párbeszédpanel, amely a következő üzenetet jeleníti meg: "Hiba 1069: A szolgáltatás bejelentkezési hiba miatt nem indult el."
 
-![Adatszinkronizálási hiba 1069 párbeszédpanel](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
+![Az Adatszinkronizálási hiba 1069 párbeszédpanel](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
 
-- **OK**. Ennek a hibának a valószínű oka, hogy a helyi kiszolgálón lévő jelszó megváltozott az ügynök és az ügynök jelszavának létrehozása óta.
+- **Oka**. A hiba valószínűleg az okozza, hogy a helyi kiszolgálón lévő jelszó megváltozott az ügynök és az ügynök jelszavának létrehozása óta.
 
-- **Megoldás**. Frissítse az ügynök jelszavát az aktuális kiszolgáló jelszavára:
+- **felbontás .** Frissítse az ügynök jelszavát a kiszolgáló aktuális jelszavára:
 
-  1. Keresse meg az SQL-adatszinkronizálás ügyfél-ügynök szolgáltatást.  
-    a. Válassza az **Indítás**lehetőséget.  
-    b. A keresőmezőbe írja be a **Services. msc**kifejezést.  
-    c. A keresési eredmények között válassza a **szolgáltatások**lehetőséget.  
-    d. A **szolgáltatások** ablakban görgessen a **SQL-adatszinkronizálás-ügynök**bejegyzéséhez.  
-  1. Kattintson a jobb gombbal **SQL-adatszinkronizálás ügynökre**, majd válassza a **Leállítás**lehetőséget.
-  1. Kattintson a jobb gombbal **SQL-adatszinkronizálás ügynökre**, majd válassza a **Tulajdonságok**lehetőséget.
-  1. **SQL-adatszinkronizálás ügynök tulajdonságai**lapon válassza a **Bejelentkezés** lapot.
-  1. A **jelszó** mezőbe írja be a jelszavát.
-  1. A **Jelszó megerősítése** mezőbe írja be újra a jelszót.
+  1. Keresse meg az SQL Data Sync ügyfélügynök-szolgáltatást.  
+    a. Válassza az **Indítás** elemet.  
+    b. A keresőmezőbe írja be a **services.msc**.  
+    c. A keresési eredmények között válassza a **Szolgáltatások**lehetőséget.  
+    d. A **Szolgáltatások** ablakban görgessen az **SQL Data Sync Agent**bejegyzéséhez.  
+  1. Kattintson a jobb gombbal **az SQL Data Sync Agent**elemre, majd válassza a **Leállítás parancsot.**
+  1. Kattintson a jobb gombbal **az SQL Data Sync Agent elemre,** majd válassza a Tulajdonságok **parancsot.**
+  1. Az **SQL Data Sync Agent tulajdonságai párbeszédpanelen**jelölje be a **Bejelentkezés** lapot.
+  1. A **Jelszó** mezőbe írja be a jelszavát.
+  1. A **Jelszó megerősítése** párbeszédpanelen adja meg újra a jelszót.
   1. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
-  1. A **szolgáltatások** ablakban kattintson a jobb gombbal a **SQL-adatszinkronizálás ügynök** szolgáltatásra, majd kattintson az **Indítás**parancsra.
-  1. A **szolgáltatások** ablak bezárásához.
+  1. A **Szolgáltatások** ablakban kattintson a jobb gombbal az **SQL Data Sync Agent** szolgáltatásra, majd kattintson a Start **parancsra.**
+  1. Zárja be a **Szolgáltatások ablakot.**
 
-### <a name="agent-key"></a>Nem tudom elküldeni az ügynök kulcsát
+### <a name="i-cant-submit-the-agent-key"></a><a name="agent-key"></a>Nem tudom beküldeni az ügynökkulcsot.
 
-Miután létrehozta vagy újból létrehozta az ügynök kulcsát, megpróbálja elküldeni a kulcsot a SqlAzureDataSyncAgent alkalmazáson keresztül. A Küldés nem hajtható végre.
+Miután létrehozott vagy újra létrehozott egy kulcsot egy ügynökhöz, megpróbálja elküldeni a kulcsot az SqlAzureDataSyncAgent alkalmazáson keresztül. A beküldés nem fejeződik be.
 
-![Szinkronizálási hiba párbeszédpanel – nem lehet elküldeni az ügynök kulcsát](media/sql-database-troubleshoot-data-sync/sync-error-cant-submit-agent-key.png)
+![Szinkronizálási hiba párbeszédpanel – Nem lehet elküldeni az ügynökkulcsot](media/sql-database-troubleshoot-data-sync/sync-error-cant-submit-agent-key.png)
 
-- **Előfeltételek**. A folytatás előtt tekintse át a következő előfeltételeket:
+- **Előfeltételek**. A folytatás előtt ellenőrizze az alábbi előfeltételeket:
 
-  - A SQL-adatszinkronizálás Windows-szolgáltatás fut.
+  - Az SQL Data Sync Windows szolgáltatás fut.
 
-  - A SQL-adatszinkronizálás Windows-szolgáltatáshoz tartozó szolgáltatásfiók hálózati hozzáféréssel rendelkezik.
+  - Az SQL Data Sync Windows-szolgáltatás szolgáltatásfiókja hálózati hozzáféréssel rendelkezik.
 
-  - A kimenő 1433-as port nyitva van a helyi tűzfalszabály-szabályban.
+  - A kimenő 1433-as port meg van nyitva a helyi tűzfalszabályban.
 
-  - A rendszer hozzáadja a helyi IP-címet a szinkronizálási metaadat-adatbázis kiszolgálói vagy adatbázis-tűzfalszabály-szabályához.
+  - A helyi ip hozzáadódik a kiszolgáló vagy adatbázis tűzfalszabálya a szinkronizálásmetaadat-adatbázishoz.
 
-- **OK**. Az ügynök kulcsa egyedileg azonosítja az egyes helyi ügynököket. A kulcsnak két feltételnek kell megfelelnie:
+- **Oka**. Az ügynökkulcs egyedileg azonosítja az egyes helyi ügynököket. A kulcsnak két feltételnek kell megfelelnie:
 
-  -   Az SQL-adatszinkronizálás-kiszolgálón lévő ügyfél-ügynök kulcsnak és a helyi számítógépnek azonosnak kell lennie.
-  -   Az ügyfél-ügynök kulcsa csak egyszer használható.
+  -   Az SQL Data Sync kiszolgáló és a helyi számítógép ügyfélügynök-kulcsának azonosnak kell lennie.
+  -   Az ügyfélügynök kulcs csak egyszer használható.
 
-- **Megoldás**. Ha az ügynök nem működik, ez azért van, mert az egyik vagy mindkét feltétel nem teljesül. Az ügynök újbóli működésének megkezdéséhez:
+- **felbontás .** Ha az ügynök nem működik, annak az az oka, hogy az egyik vagy mindkét feltétel nem teljesül. Ahhoz, hogy az ügynök újra dolgozni:
 
-  1. Új kulcs létrehozása.
+  1. Hozzon létre egy új kulcsot.
   1. Alkalmazza az új kulcsot az ügynökre.
 
   Az új kulcs alkalmazása az ügynökre:
 
-  1. A Fájlkezelőben lépjen az ügynök telepítési könyvtárába. Az alapértelmezett telepítési könyvtár a C:\\Program Files (x86)\\Microsoft SQL-adatszinkronizálás.
-  1. Kattintson duplán a bin alkönyvtárra.
-  1. Nyissa meg a SqlAzureDataSyncAgent alkalmazást.
-  1. Válassza a **küldési ügynök kulcsa**lehetőséget.
-  1. A rendelkezésre álló helyen illessze be a kulcsot a vágólapról.
-  1. Kattintson az **OK** gombra.
-  1. A program lezárása.
+  1. A Fájlkezelőben nyissa meg az ügynök telepítési könyvtárát. Az alapértelmezett telepítési könyvtár\\a C: Program\\Files (x86) Microsoft SQL Data Sync.
+  1. Kattintson duplán a raktárhely alkönyvtárára.
+  1. Nyissa meg az SqlAzureDataSyncAgent alkalmazást.
+  1. Válassza **az Ügynökkulcs küldése lehetőséget.**
+  1. A rendelkezésre álló helyre illessze be a kulcsot a vágólapról.
+  1. Válassza **az OK gombot.**
+  1. Zárja be a programot.
 
-### <a name="agent-delete"></a>Az ügyfél ügynöke nem törölhető a portálról, ha a hozzá tartozó helyszíni adatbázis nem érhető el
+### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a>Az ügyfélügynök nem törölhető a portálról, ha a társított helyszíni adatbázis nem érhető el
 
-Ha egy SQL-adatszinkronizálás ügyfél-ügynökkel regisztrált helyi végpont (azaz adatbázis) nem érhető el, az ügyfél ügynöke nem törölhető.
+Ha egy SQL Data Sync ügyfélügynökkel regisztrált helyi végpont (azaz adatbázis) elérhetetlenné válik, az ügyfélügynök nem törölhető.
 
-- **OK**. Nem lehet törölni a helyi ügynököt, mert a nem elérhető adatbázis még regisztrálva van az ügynökben. Amikor megpróbálja törölni az ügynököt, a törlési folyamat megkísérli elérni az adatbázist, ami nem sikerül.
+- **Oka**. A helyi ügynök nem törölhető, mert az elérhetetlen adatbázis továbbra is regisztrálva van az ügynökkel. Amikor megpróbálja törölni az ügynököt, a törlési folyamat megpróbálja elérni az adatbázist, amely sikertelen.
 
-- **Megoldás**. Törölje a nem elérhető adatbázist a "kényszerített Törlés" paranccsal.
+- **felbontás .** Az elérhetetlen adatbázis törléséhez használja a "force delete" parancsot.
 
 > [!NOTE]
-> Ha a szinkronizálási metaadatokat tartalmazó táblák a "kényszerített Törlés" után is megmaradnak, a `deprovisioningutil.exe` használatával törölje őket.
+> Ha a szinkronizálási metaadattáblák a "force delete" után is megmaradnak, törölje `deprovisioningutil.exe` őket.
 
-### <a name="agent-connect"></a>A helyi szinkronizáló ügynök alkalmazás nem tud kapcsolódni a helyi szinkronizálási szolgáltatáshoz
+### <a name="local-sync-agent-app-cant-connect-to-the-local-sync-service"></a><a name="agent-connect"></a>A helyi szinkronizálási ügynök alkalmazás nem tud csatlakozni a helyi szinkronizálási szolgáltatáshoz
 
-- **Megoldás**. Próbálja meg a következőket:
+- **felbontás .** Próbálja meg a következőket:
 
   1. Lépjen ki az alkalmazásból.  
-  1. Nyissa meg a összetevő-szolgáltatások panelt.  
-    a. A tálcán a keresőmezőbe írja be a **Services. msc parancsot**.  
-    b. A keresési eredmények között kattintson duplán a **szolgáltatások**elemre.  
-  1. Állítsa le a **SQL-adatszinkronizálás** szolgáltatást.
-  1. Indítsa újra a **SQL-adatszinkronizálás** szolgáltatást.  
+  1. Nyissa meg a Komponensszolgáltatások panelt.  
+    a. A tálca keresőmezőjébe írja be a **services.msc**.  
+    b. A keresési eredmények között kattintson duplán a **Szolgáltatások**elemre.  
+  1. Állítsa le az **SQL Data Sync** szolgáltatást.
+  1. Indítsa újra az **SQL Data Sync** szolgáltatást.  
   1. újra meg kell nyitniuk az alkalmazást;
 
 ## <a name="run-the-data-sync-agent-from-the-command-prompt"></a>Az adatszinkronizálási ügynök futtatása a parancssorból
 
-A parancssorból a következő adatszinkronizálási ügynök parancsait futtathatja:
+A parancssorból a következő Adatszinkronizáló-ügynök parancsokat futtathatja:
 
 ### <a name="ping-the-service"></a>A szolgáltatás pingelése
 
@@ -251,7 +251,7 @@ SqlDataSyncAgentCommand.exe -action displayregistereddatabases
 SqlDataSyncAgentCommand.exe -action "displayregistereddatabases"
 ```
 
-### <a name="submit-the-agent-key"></a>Az ügynök kulcsának elküldése
+### <a name="submit-the-agent-key"></a>Az ügynökkulcs elküldése
 
 #### <a name="usage"></a>Használat
 
@@ -282,9 +282,9 @@ SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -da
 
 ```
 
-### <a name="unregister-a-database"></a>Adatbázis regisztrációjának törlése
+### <a name="unregister-a-database"></a>Adatbázis regisztrációjának megszüntetése
 
-Ha ezt a parancsot használja egy adatbázis regisztrációjának megszüntetésére, a rendszer teljesen kiépíti az adatbázist. Ha az adatbázis más szinkronizálási csoportokban is részt vesz, a művelet megszakítja a többi szinkronizálási csoportot.
+Ha ezzel a paranccsal törölje az adatbázis regisztrációját, az teljesen megoldahassa az adatbázist. Ha az adatbázis más szinkronizálási csoportokban is részt vesz, ez a művelet megszakítja a többi szinkronizálási csoportot.
 
 #### <a name="usage"></a>Használat
 
@@ -316,17 +316,17 @@ SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -da
 
 ## <a name="next-steps"></a>További lépések
 
-A SQL-adatszinkronizálásról további információt a következő cikkekben talál:
+Az SQL Data Sync ről az alábbi cikkekben talál további információt:
 
--   Áttekintés – az [adatszinkronizálás több felhőalapú és helyszíni adatbázis között az Azure SQL-adatszinkronizálás](sql-database-sync-data.md)
+-   Áttekintés – [Adatok szinkronizálása több felhőbeli és helyszíni adatbázisban az Azure SQL Data Sync segítségével](sql-database-sync-data.md)
 -   Adatszinkronizálás beállítása
-    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizáláshoz](sql-database-get-started-sql-data-sync.md)
+    - A portálon – [Oktatóanyag: Az SQL Data Sync beállítása az Adatok szinkronizálásához az Azure SQL Database és a helyszíni SQL Server között](sql-database-get-started-sql-data-sync.md)
     - A PowerShell-lel
         -  [A PowerShell használata több Azure SQL-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [A PowerShell használata egy Azure SQL-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Ajánlott eljárások – [ajánlott eljárások az Azure SQL-adatszinkronizálás](sql-database-best-practices-data-sync.md)
--   Figyelő – [SQL-adatszinkronizálás figyelése Azure monitor naplókkal](sql-database-sync-monitor-oms.md)
--   Hibaelhárítás – [Az Azure SQL-adatszinkronizálás hibáinak elhárítása](sql-database-troubleshoot-data-sync.md)
+-   Gyakorlati tanácsok – [Gyakorlati tanácsok az Azure SQL Data Sync szolgáltatáshoz](sql-database-best-practices-data-sync.md)
+-   Figyelő – [SQL-adatszinkronizálás figyelése az Azure Figyelő naplóival](sql-database-sync-monitor-oms.md)
+-   Hibaelhárítás – [Az Azure SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása](sql-database-troubleshoot-data-sync.md)
 -   A szinkronizálási séma frissítése
-    -   A Transact-SQL- [ben – automatizálja a séma változásainak az Azure-ban való replikálását SQL-adatszinkronizálás](sql-database-update-sync-schema.md)
-    -   A PowerShell [használatával – egy meglévő szinkronizálási csoportban lévő szinkronizálási séma frissítéséhez használja a PowerShellt](scripts/sql-database-sync-update-schema.md) .
+    -   Transact-SQL - [A sémamódosítások replikációjának automatizálása az Azure SQL Data Sync-ben](sql-database-update-sync-schema.md)
+    -   A PowerShell használatával – [A PowerShell használatával frissítse a szinkronizálási sémát egy meglévő szinkronizálási csoportban](scripts/sql-database-sync-update-schema.md)

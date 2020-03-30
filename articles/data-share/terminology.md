@@ -1,66 +1,66 @@
 ---
 title: Az Azure Data Share terminológiája
-description: Ismerje meg az Azure-adatmegosztásban használt erőforrások (adatszolgáltató, adatfogyasztó, adatmegosztás, megosztási előfizetés, pillanatkép, meghívás, címzett) leírására használt általános kifejezéseket.
+description: Ismerje meg az Azure Data Share-ben használt erőforrások (adatszolgáltató, adatfogyasztó, adatmegosztás, megosztási előfizetés, pillanatkép, meghívás, címzett) leírására használt általános kifejezéseket.)
 ms.service: data-share
 author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73468554"
 ---
-# <a name="azure-data-share-concepts"></a>Az Azure-adatmegosztás fogalmai 
+# <a name="azure-data-share-concepts"></a>Az Azure-adatmegosztási fogalmak 
 
-Az Azure-beli adatmegosztás néhány új, az adatmegosztással kapcsolatos terminológiát mutat be. Ez a cikk néhány olyan gyakran használt kifejezést ismertet, amelyet láthat a szolgáltatás során. 
+Az Azure Data Share bevezet néhány új, az adatmegosztással kapcsolatos terminológiát. Ez a cikk ismerteti a szolgáltatás során használt, gyakran használt kifejezéseket. 
 
 ## <a name="data-provider"></a>Adatszolgáltató
 
-Az adatszolgáltató az a szervezet, amelyik az adatmegosztást a fogyasztókkal. Általában az adatszolgáltató lehet a tulajdonos vagy az adatkezelő. Az adatszolgáltatók különböző típusú adattípusokat oszthatnak meg. Néhány példa arra, hogy egy adatszolgáltató szeretne-e megosztani nyers adatmennyiséget, például az értékesítési pontot vagy az idősorozat-adatmennyiséget. Előfordulhat, hogy egy adatszolgáltató meg szeretné osztani az előre feldolgozható, az elemzéseket és az elemzéseket is tartalmazó, korábban feldolgozatlan, megtekintett adatgyűjtési 
+Az adatszolgáltató az a szervezet, amely adatokat oszt meg a fogyasztókkal. Az adatszolgáltató általában lehet az adatok tulajdonosa vagy kurátora. Az adatszolgáltatók különböző típusú adatokat szeretnének megosztani. Néhány példa az adatszolgáltatók által megosztani kívánt adatokra, például az értékesítési pont vagy az idősorozat-adatok. Előfordulhat, hogy egy adatszolgáltató olyan előre feldolgozott, válogatott adatokat is szeretne megosztani, amelyek már tartalmaznak elemzéseket és elemzéseket. 
 
 ## <a name="data-consumer"></a>Adatfogyasztó 
 
-Az adatfogyasztó az a szervezet, amely adatszolgáltatótól fogadja az adatforrást. Előfordulhat, hogy az adatfogyasztó a saját adattal szeretné csatlakoztatni a megosztott adatforrásokat az elemzések kinyeréséhez. Bizonyos esetekben előfordulhat, hogy az adatfogyasztó olyan, már feldolgozott adatkérést kap, amely már fel van dolgozva. 
+Az adatfogyasztó az a szervezet, amely adatokat fogad egy adatszolgáltatótól. Előfordulhat, hogy az adatfogyasztó a megosztott adatokat saját adataival szeretné összeilleszteni az elemzések lenyerése érdekében. Bizonyos esetekben előfordulhat, hogy az adatfogyasztó már feldolgozott adatokat kap. 
 
-## <a name="data-share"></a>Adatmegosztás
+## <a name="data-share"></a>Data Share
 
-Az adatmegosztások olyan adatkészletek csoportja, amelyek egyetlen entitásként vannak megosztva. Az adatkészletek több Azure-adatforrásból is származhatnak, amelyeket az Azure-adatmegosztás támogat. Az Azure-beli adatmegosztás jelenleg az Azure Blob Storage és Azure Data Lake Store használatát is támogatja. 
+Az adatmegosztás olyan adatkészletek csoportja, amelyek egyetlen entitásként vannak megosztva. Az adatkészletek számos Azure-adatforrásból származhatnak, amelyeket az Azure Data Share támogat. Jelenleg az Azure Data Share támogatja az Azure Blob Storage-ot és az Azure Data Lake Store-t. 
 
 ## <a name="share-subscription"></a>Előfizetés megosztása 
 
-A megosztási előfizetések akkor jönnek létre, amikor az adatfogyasztó elfogad egy adatmegosztási meghívást egy adatszolgáltatótól. Az adatszolgáltatók megtekinthetik az aktív megosztás-előfizetéseket **, ha az**Azure-beli adatmegosztási fiókjában navigálnak az **Elküldett megosztásokhoz**
+A megosztási előfizetés akkor jön létre, amikor egy adatfogyasztó elfogadja az adatszolgáltatótól származó adatmegosztási meghívót. Az adatszolgáltatók úgy tekinthetik meg az aktív megosztási előfizetéseket, hogy az Azure-adatmegosztási fiókjukban **az Elküldött megosztásokra** navigálnak, és kiválasztják **az Előfizetések megosztása**lehetőséget.
 
-Egy adatfogyasztó megtekintheti, hogy rendelkezik-e aktív megosztási előfizetéssel, ha a **kapott megosztásokra** navigál, és megtekinti a kapott megosztások állapotát. 
+Az adatfogyasztó ellenőrizheti, hogy rendelkezik-e aktív megosztás-előfizetéssel, ha a **Fogadott megosztások** elemre navigál, és megtekinti a kapott megosztások állapotát. 
 
 ## <a name="snapshot"></a>Pillanatkép
 
-Adatmegosztási meghívást elfogadó adatfogyasztó létrehozhat pillanatképet. Ha elfogadják a meghívót, elindíthatják a velük megosztott adatok teljes pillanatképét. A pillanatkép az adatok másolata azon a ponton, amikor az adatfogyasztó létrehozta a pillanatképet. 
+Pillanatképet hozhat létre egy adatfogyasztó, amikor elfogadja az adatmegosztási meghívót. Amikor elfogadnak egy meghívást, teljes pillanatképet indíthatnak a velük megosztott adatokról. A pillanatkép az adatok másolata abban az időpontban, amikor az adatfogyasztó létrehozta a pillanatképet. 
 
-A pillanatképek két típusa létezik – teljes és növekményes. A teljes pillanatkép az adatmegosztáson belüli összes adatát tartalmazza. A növekményes Pillanatképek a legutóbbi pillanatkép elindítása óta frissített/hozzáadott összes adatértéket tartalmazzák. 
+Kétféle pillanatképek - teljes és növekményes. A teljes pillanatkép az adatmegosztáson belüli összes adatot tartalmazza. A növekményes pillanatkép tartalmazza az összes olyan adatot, amely az utolsó pillanatkép aktiválása óta frissült/hozzáadva. 
 
-## <a name="snapshot-settings-in-azure-data-share"></a>Pillanatkép-beállítások az Azure-beli adatmegosztásban
+## <a name="snapshot-settings-in-azure-data-share"></a>Pillanatkép-beállítások az Azure Data Share-ben
  
-Egy adatszolgáltató engedélyezheti az adatmegosztás pillanatkép-beállítását. Ez a beállítás lehetővé teszi, hogy az adatfogyasztók megkapják a növekményes frissítéseket. Ezt a beállítást engedélyezni kell, ha az adatszolgáltató szeretné, hogy az adatkezelők a megosztott adatkezelési szolgáltatásban is megkapják a frissítéseket. 
+Az adatszolgáltató engedélyezheti az adatmegosztás pillanatkép-beállítását. Ez a beállítás lehetővé teszi az adatfogyasztók számára, hogy a növekményes frissítéseket megkapják, amint azok bekövetkeznek. Ezt a beállítást engedélyezni kell, ha az adatszolgáltató azt szeretné, hogy az adatfogyasztók megkapják a megosztott adatok frissítéseit. 
 
-Ha egy adatszolgáltató engedélyezi ezt a beállítást, egy ismétlődési időköz is kiválasztható. Az ismétlődési időköz lehet óránként vagy naponta. 
+Ha egy adatszolgáltató engedélyezi ezt a beállítást, ismétlődési időköz választható ki. Az ismétlődési időköz lehet óránként vagy naponta. 
 
-Egy adatfogyasztónak lehetősége van arra, hogy a pillanatkép-ütemterven belül fogadja a növekményes frissítéseket, beleértve azokat az adattípusokat is, amelyek megváltoztak, mert először létrehoztak egy új pillanatképet. 
+Az adatfogyasztó nak lehetősége van arra, hogy engedélyezze ezt a pillanatkép-ütemezést, hogy növekményes frissítéseket kapjon, amely tartalmazza az új pillanatkép első létrehozása óta megváltozott adatokat. 
 
 ## <a name="invitation"></a>Meghívás
 
-Egy adatszolgáltató több címzettet is meghívhat az adatmegosztásra. Ezt úgy teheti meg, hogy a címzetteket hozzáadja az adatmegosztáshoz. A meghívókat egy adatmegosztás létrehozása után is fel lehet venni. 
+Az adatszolgáltatók több címzettet is meghívhatnak az adatmegosztásra. Ezt úgy tehetik meg, hogy hozzáadják a címzetteket az adatmegosztáshoz. Az adatmegosztás létrehozása után is felveheti a meghívókat. 
 
-Egy adatszolgáltató törölhet egy meghívót, miután elküldték, ha még nem fogadták el. Ha az adatszolgáltató töröl egy meghívót, és még nem fogadta el, az adatfogyasztó nem fogja tudni elfogadni. 
+Ha az adatszolgáltató elküldés után törölheti a felkérést, törölheti azt. Ha az adatszolgáltató töröl egy meghívót, és még nem fogadták el, az adatfogyasztó nem fogja tudni elfogadni azt. 
 
-A meghívások naponta akár ötször is elküldhetők. 
+A meghívók naponta legfeljebb ötször küldhetők újra. 
 
 ## <a name="recipient"></a>Címzett
 
-A címzett olyan személy, aki meghívót kap egy adatmegosztásra. Egy adatszolgáltató jellemzően a létrehozott adatmegosztáshoz adja hozzá a címzetteket. Ha egy meghívás címzettjei elfogadják a meghívót, az adatfogyasztónak lesznek.  
+A címzett olyan személy, aki meghívást kap egy adatmegosztásra. Az adatszolgáltatók általában hozzáadják a címzetteket az általuk létrehozott adatmegosztáshoz. Miután a meghívó címzettje elfogadta a meghívást, adatfogyasztóvá válik.  
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.
+Az adatok megosztásának megkezdéséhez folytassa az [adatkezelési oktatóanyag megosztásával.](share-your-data.md)

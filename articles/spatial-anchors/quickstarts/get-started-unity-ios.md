@@ -1,6 +1,6 @@
 ---
 title: 'Rövid útmutató: Unity iOS-alkalmazás létrehozása'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre olyan iOS-alkalmazást, amely az Unity használatával térbeli horgonyokat használ.
+description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre egy iOS-alkalmazást a Térbeli horgonyok használatával.
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,24 +9,24 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 37a82c4001dd42a4cfbbb9dabec29f28359afd75
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240589"
 ---
-# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Gyors útmutató: Unity iOS-alkalmazás létrehozása az Azure térbeli Horgonyokkal
+# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Rövid útmutató: Unity iOS-alkalmazás létrehozása az Azure Spatial Anchors alkalmazással
 
-Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Unity iOS-alkalmazást az [Azure térbeli horgonyok](../overview.md)használatával. Az Azure térbeli horgonyok egy többplatformos fejlesztői szolgáltatás, amely lehetővé teszi, hogy vegyes valóságot hozzon létre olyan objektumok használatával, amelyek az adott helyen maradnak a helyükön az egyes eszközökön. Ha elkészült, egy olyan egységgel rendelkező ARKit iOS-alkalmazás fog rendelkezni, amely képes a térbeli horgonyok mentésére és visszahívására.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre Unity iOS-alkalmazást az [Azure Spatial Anchors](../overview.md)használatával. Az Azure Spatial Anchors egy platformfüggetlen fejlesztői szolgáltatás, amely lehetővé teszi, hogy vegyes valóság élményeket hozzon létre olyan objektumok használatával, amelyek az eszközök között megőrzik helyüket az idő múlásával. Ha végzett, egy Unity-vel készült ARKit iOS-alkalmazással rendelkezik, amely képes menteni és felidézni egy térbeli horgonyt.
 
 A következőket fogja megtanulni:
 
 > [!div class="checklist"]
 > * Térbeli horgonyok fiók létrehozása
-> * Az egység létrehozási beállításainak előkészítése
-> * A térbeli horgonyok fiókazonosító és a fiók kulcsának konfigurálása
-> * A Xcode projekt exportálása
-> * Üzembe helyezés és Futtatás iOS-eszközön
+> * Unity-összeállítási beállítások előkészítése
+> * A Térbeli horgonyok fiókazonosítójának és a fiókkulcsának konfigurálása
+> * Az Xcode projekt exportálása
+> * Telepítés és futtatás iOS-eszközön
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,13 +34,13 @@ A következőket fogja megtanulni:
 
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- Egy <a href="https://unity3d.com/get-unity/download" target="_blank">2019,1 vagy 2019,2 egységgel</a>rendelkező MacOS-gép, amely a <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>legújabb verzióját és a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> -t telepítette.
-- A git telepítése a HomeBrew használatával történik. Adja meg a következő parancsot a terminál egyetlen sorában: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ezután futtassa `brew install git` és `brew install git-lfs`.
-- A fejlesztők által engedélyezett <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit-kompatibilis</a> IOS-eszköz.
+- A MacOS gép <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 vagy 2019.2</a>, a legújabb <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>, és <a href="https://cocoapods.org" target="_blank">CocoaPods</a> telepítve.
+- Git keresztül telepített HomeBrew. Írja be a következő parancsot a `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`terminál egyetlen sorába: . Ezután `brew install git` fuss `brew install git-lfs`és .
+- Egy fejlesztő engedélyezte <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">az ARKit-kompatibilis</a> iOS-eszközt.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="download-and-open-the-unity-sample-project"></a>Az Unity Sample projekt letöltése és megnyitása
+## <a name="download-and-open-the-unity-sample-project"></a>Töltse le és nyissa meg a Unity mintaprojektet
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
@@ -48,33 +48,33 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 [!INCLUDE [iOS Unity Build Settings](../../../includes/spatial-anchors-unity-ios-build-settings.md)]
 
-## <a name="configure-account-identifier-and-key"></a>Fiók azonosítójának és kulcsának konfigurálása
+## <a name="configure-account-identifier-and-key"></a>Fiókazonosító és kulcs konfigurálása
 
-A **projekt** ablaktáblán navigáljon a `Assets/AzureSpatialAnchors.Examples/Scenes` elemre, és nyissa meg a `AzureSpatialAnchorsBasicDemo.unity` jelenet fájlt.
+A **Project** ablaktáblán `Assets/AzureSpatialAnchors.Examples/Scenes` keresse `AzureSpatialAnchorsBasicDemo.unity` meg és nyissa meg a jelenetfájlt.
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-Mentse a jelenetet a **fájl** -> **Mentés**lehetőség kiválasztásával.
+Mentse a jelenetet a **Fájlmentés** -> lehetőség**kiválasztásával.**
 
-## <a name="export-the-xcode-project"></a>A Xcode projekt exportálása
+## <a name="export-the-xcode-project"></a>Az Xcode projekt exportálása
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
 [!INCLUDE [Configure Xcode](../../../includes/spatial-anchors-unity-ios-xcode.md)]
 
-A horgonyok elhelyezéséhez és felidézéséhez kövesse az alkalmazás utasításait.
+Kövesse az utasításokat az alkalmazásban, hogy helyezzen el és visszahívása horgonyt.
 
-Ha elkészült, állítsa le az alkalmazást a **Leállítás** a Xcode gomb megnyomásával.
+Ha végzett, állítsa le az alkalmazást a **Stop** in Xcode billentyű lenyomásával.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="rendering-issues"></a>Renderelési problémák
 
-Ha az alkalmazás futtatásakor nem látja a kamerát háttérként (például üres, kék vagy más textúrákat lát), akkor valószínűleg újra kell importálnia az eszközöket az Unity-ben. Állítsa le az alkalmazást. Az egység felső menüjében válassza az **eszközök-> az összes újraimportálása**elemet. Ezután futtassa újra az alkalmazást.
+Az alkalmazás futtatásakor, ha nem látja a kamerát háttérként (például üres, kék vagy más textúrákat lát), akkor valószínűleg újra kell importálnia az eszközöket a Unity-ben. Állítsa le az alkalmazást. Az Egység felső menüjében válassza **az Eszközök -> Újraimportálja az összeset**lehetőséget. Ezután futtassa újra az alkalmazást.
 
-### <a name="cocoapods-issues-on-macos-catalina-1015"></a>CocoaPods kapcsolatos problémák macOS Catalinaen (10,15)
+### <a name="cocoapods-issues-on-macos-catalina-1015"></a>CocoaPods kérdések macOS Catalina (10,15)
 
-Ha nemrég frissítette a macOS Catalina (10,15) alkalmazást, és előzőleg telepítette a CocoaPods-t, előfordulhat, hogy a CocoaPods sérült állapotban van, és nem tudja megfelelően konfigurálni a hüvelyeket és `.xcworkspace` a Project-fájlokat. A probléma megoldásához a következő parancsok futtatásával újra kell telepítenie a CocoaPods:
+Ha a közelmúltban frissített macOS Catalina (10,15), és cocoaPods telepítve előre, CocoaPods lehet egy törött `.xcworkspace` állapotban, és nem megfelelően beállítani a hüvelyek és a projekt fájlokat. A probléma megoldásához a következő parancsok futtatásával kell újratelepítenie a CocoaPods-ot:
 
 ```shell
 brew update
@@ -82,13 +82,13 @@ brew install cocoapods --build-from-source
 brew link --overwrite cocoapods
 ```
 
-### <a name="unity-20193"></a>Unity 2019,3
+### <a name="unity-20193"></a>Egység 2019.3
 
-A változtatások miatt a 2019,3 egység jelenleg nem támogatott. Használja a 2019,1 vagy a 2019,2 egységet.
+A változások megszakadása miatt a Unity 2019.3 jelenleg nem támogatott. Kérjük, használja a Unity 2019.1 vagy 2019.2.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: térbeli horgonyok megosztása az eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Oktatóanyag: Térbeli horgonyok megosztása az eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)

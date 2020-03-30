@@ -1,6 +1,6 @@
 ---
-title: Az Azure HDInsight 3,6 kaptár számítási feladatait áttelepítheti HDInsight 4,0
-description: Megtudhatja, hogyan telepítheti át Apache Hive számítási feladatait a 3,6-es HDInsight a HDInsight 4,0-ra.
+title: Az Azure HDInsight 3.6 Hive-számítási feladatok áttelepítése a HDInsight 4.0-ra
+description: Ismerje meg, hogyan telepítheti át az Apache Hive-számítási feladatokat a HDInsight 3.6-on a HDInsight 4.0-s rendszerbe.
 author: msft-tacox
 ms.author: tacox
 ms.reviewer: jasonh
@@ -8,45 +8,45 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.openlocfilehash: ec96189185a06c1fcbd95eed6216ade47f3089c3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79214648"
 ---
-# <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Az Azure HDInsight 3,6 kaptár számítási feladatait áttelepítheti HDInsight 4,0
+# <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Az Azure HDInsight 3.6 Hive-számítási feladatok áttelepítése a HDInsight 4.0-ra
 
-Ebből a dokumentumból megtudhatja, hogyan telepítheti át Apache Hive és LLAP számítási feladatait a HDInsight 3,6 HDInsight 4,0-es verzióra. A HDInsight 4,0 újabb kaptár-és LLAP funkciókat biztosít, mint például a jelentős nézetek és a lekérdezési eredmények gyorsítótárazása. Ha a számítási feladatokat a HDInsight 4,0-re telepíti át, a 3. struktúra számos újabb funkcióját használhatja, amelyek nem érhetők el a HDInsight 3,6-on.
+Ez a dokumentum bemutatja, hogyan telepítheti át az Apache Hive- és LLAP-számítási feladatokat a HDInsight 3.6-on a HDInsight 4.0-ra. A HDInsight 4.0 újabb Hive- és LLAP-funkciókat, például materializált nézeteket és lekérdezési eredmény-gyorsítótárazást biztosít. Amikor áttelepíti a számítási feladatokat a HDInsight 4.0-s verzióra, a Hive 3 számos újabb, a HDInsight 3.6-on nem elérhető szolgáltatását használhatja.
 
-Ez a cikk a következő témákat tárgyalja:
+Ez a cikk a következő témákkal foglalkozik:
 
-* A kaptár metaadatainak áttelepítése a HDInsight 4,0-re
-* SAVAS és nem savas táblák biztonságos áttelepítése
-* A struktúra biztonsági házirendjének megőrzése HDInsight-verziókon keresztül
-* Lekérdezés végrehajtása és hibakeresése a HDInsight 3,6 és a HDInsight 4,0 között
+* Hive-metaadatok áttelepítése a HDInsight 4.0-s rendszerre
+* Acid és nem ACID asztalok biztonságos kioldódása
+* A Hive biztonsági házirendjeinek megőrzése a HDInsight-verziókban
+* Lekérdezés-végrehajtás és hibakeresés a HDInsight 3.6-ról a HDInsight 4.0-ra
 
-A kaptár egyik előnye, hogy lehetővé teszi a metaadatok exportálását egy külső adatbázisba (ez a struktúra Metaadattár néven ismert). A **Metaadattár struktúra** feladata a táblák statisztikáinak tárolása, beleértve a tábla tárolási helyét, az oszlopnevek és a tábla indexét. A metaadattár-adatbázis sémája eltér a kaptár-verzióktól. A Hive-metaadattár biztonságos frissítésének ajánlott módja a másolat létrehozása, és a másolás frissítése az aktuális éles környezet helyett.
+A Hive egyik előnye, hogy képes metaadatokat exportálni egy külső adatbázisba (a továbbiakban: A Hive Metastore). A **Hive Metastore** felelős a táblastatisztikák tárolásáért, beleértve a tábla tárolási helyét, az oszlopneveket és a táblaindex adatait. A metatár-adatbázis sémája eltér a Hive-verziók között. A Hive metastore biztonságos frissítésének ajánlott módja egy másolat létrehozása és a másolat frissítése az aktuális éles környezet helyett.
 
-## <a name="copy-metastore"></a>Metaadattár másolása
+## <a name="copy-metastore"></a>Metastore másolása
 
-A HDInsight 3,6 és a HDInsight 4,0 különböző metaadattár sémákat igényel, és nem oszthat meg egyetlen metaadattár.
+A HDInsight 3.6-os és HDInsight 4.0-s hdinsight-sémákat igényelnek, és nem tudnak megosztani egyetlen metatárolót.
 
-### <a name="external-metastore"></a>Külső metaadattár
+### <a name="external-metastore"></a>Külső metastore
 
-Hozzon létre egy új másolatot a külső metaadattár. Ha külső metaadattár használ, az egyik biztonságos és egyszerű módszer a metaadattár másolására, ha az adatbázist másik néven szeretné [visszaállítani](../../sql-database/sql-database-recovery-using-backups.md#point-in-time-restore) a SQL Database Restore függvény használatával.  További információ a külső metaadattár HDInsight-fürthöz való csatolásáról: [külső metaadat-tárolók használata az Azure HDInsight](../hdinsight-use-external-metadata-stores.md) .
+Hozzon létre egy új másolatot a külső metastore. Ha külső metatárolót használ, a metatároló ról történő másolásegyik biztonságos és egyszerű módja [az adatbázis](../../sql-database/sql-database-recovery-using-backups.md#point-in-time-restore) visszaállítása más néven az SQL Database-visszaállítási funkcióval.  A külső metatárolók HDInsight-fürthöz való csatolásáról további információt az [Azure HDInsight külső metaadat-tárolóinak](../hdinsight-use-external-metadata-stores.md) használata.
 
-### <a name="internal-metastore"></a>Belső metaadattár
+### <a name="internal-metastore"></a>Belső metabolt
 
-Ha a belső metaadattár használja, a lekérdezésekkel exportálhatja az objektum-definíciókat a Hive-metaadattárban, és importálhatja őket egy új adatbázisba.
+Ha a belső metatárolót használja, lekérdezésekkel exportálhatja az objektumdefiníciókat a Hive metatárolóban, és importálhatja őket egy új adatbázisba.
 
-A szkript befejezése után feltételezhető, hogy a régi fürtöt a rendszer többé nem fogja használni a parancsfájlban hivatkozott táblák vagy adatbázisok eléréséhez.
+A parancsfájl befejezése után feltételezzük, hogy a régi fürt a továbbiakban nem lesz használva a parancsfájlban említett táblák vagy adatbázisok eléréséhez.
 
 > [!NOTE]
-> A savas táblák esetében a tábla alatti adatmennyiség új másolatát fogja létrehozni.
+> ACID-táblák esetében a tábla alatti adatok új másolata jön létre.
 
-1. Kapcsolódjon a HDInsight-fürthöz egy [Secure Shell-(SSH-) ügyfél](../hdinsight-hadoop-linux-use-ssh-unix.md)használatával.
+1. Csatlakozzon a HDInsight-fürthöz [egy Secure Shell (SSH) ügyfél](../hdinsight-hadoop-linux-use-ssh-unix.md)használatával.
 
-1. A következő parancs beírásával csatlakozhat a HiveServer2-hez a [Beeline-ügyféllel](../hadoop/apache-hadoop-use-hive-beeline.md) az Open SSH-munkamenetből:
+1. Csatlakozzon a HiveServer2-hez a [Beeline ügyféllel](../hadoop/apache-hadoop-use-hive-beeline.md) a megnyitott SSH-munkamenetből a következő parancs megadásával:
 
     ```hiveql
     for d in `beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show databases;"`; 
@@ -94,157 +94,157 @@ A szkript befejezése után feltételezhető, hogy a régi fürtöt a rendszer t
     done
     ```
 
-    Ez a parancs létrehoz egy **alltables. HQL**nevű fájlt.
+    Ez a parancs **egy alltables.hql**nevű fájlt hoz létre.
 
-1. Lépjen ki az SSH-munkamenetből. Ezután adjon meg egy scp-parancsot a **alltables. HQL** helyi letöltéséhez.
+1. Lépjen ki az SSH-munkamenetből. Ezután adjon meg egy scp parancsot az **alltables.hql** helyi letöltéséhez.
 
     ```bash
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
     ```
 
-1. Töltse fel a **alltables. HQL** az *új* HDInsight-fürtre.
+1. Töltse fel **az alltables.hql fájlt** az *új* HDInsight-fürtbe.
 
     ```bash
     scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
-1. Ezután használja az SSH-t az *új* HDInsight-fürthöz való kapcsolódáshoz. Futtassa az alábbi kódot az SSH-munkamenetből:
+1. Ezután az SSH segítségével csatlakozzon az *új* HDInsight-fürthöz. Futtassa a következő kódot az SSH-munkamenetből:
 
     ```bash
     beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" -i alltables.hql
     ```
 
 
-## <a name="upgrade-metastore"></a>Metaadattár frissítése
+## <a name="upgrade-metastore"></a>Metastore frissítése
 
-A metaadattár **másolásának** befejeződése után futtasson egy [séma-frissítési parancsfájlt a meglévő](../hdinsight-hadoop-customize-cluster-linux.md) HDInsight 3,6-fürtön az új metaadattár a kaptár 3 sémára való frissítéséhez. Ez lehetővé teszi, hogy az adatbázis HDInsight 4,0 metaadattár legyen csatolva.
+Miután a metatároló **példány befejeződött,** futtasson egy sémafrissítési parancsfájlt a [parancsfájlműveletben](../hdinsight-hadoop-customize-cluster-linux.md) a meglévő HDInsight 3.6-fürtön az új metatároló Hive 3 sémára való frissítéséhez. Ez lehetővé teszi, hogy az adatbázis HDInsight 4.0 metastore-ként legyen csatolva.
 
-Használja az alábbi táblázatban szereplő értékeket. Cserélje le a `SQLSERVERNAME DATABASENAME USERNAME PASSWORD`t a **másolt** Hive-metaadattár megfelelő értékeire, szóközzel elválasztva. Ne adja meg a ". database.windows.net" kifejezést az SQL Server nevének megadásakor.
+Használja az alábbi táblázatban szereplő értékeket. Cserélje `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` le a megfelelő értékeket a **másolt** Hive metastore, szóközökkel elválasztva. Az SQL-kiszolgáló nevének megadásakor ne adja meg a ".database.windows.net" értéket.
 
 |Tulajdonság | Érték |
 |---|---|
-|Parancsfájl típusa|– Egyéni|
-|Name (Név)|Struktúra frissítése|
-|Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
-|Csomópont típusa (i)|Head|
-|Paraméterek|SQLSERVERNAME DATABASENAME FELHASZNÁLÓNÉV JELSZAVA|
+|Parancsfájl típusa|- Egyéni|
+|Név|Hive-frissítés|
+|Bash parancsfájl URI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
+|Csomóponttípus(ok)|Head|
+|Paraméterek|SQLSERVERNAME ADATBÁZISNÉV FELHASZNÁLÓNÉV JELSZÓ|
 
 > [!Warning]  
-> A HDInsight 3,6 metaadat-sémát a HDInsight 4,0 sémába konvertáló frissítés nem vonható vissza.
+> A HDInsight 3.6 metaadatsémát HDInsight 4.0-s sémává konvertáló frissítés nem vonható vissza.
 
-A frissítés ellenőrzéséhez futtassa a következő SQL-lekérdezést az adatbázison:
+A frissítést úgy ellenőrizheti, hogy a következő sql-lekérdezést futtatja az adatbázison:
 
 ```sql
 select * from dbo.version
 ```
 
-## <a name="migrate-hive-tables-to-hdinsight-40"></a>Struktúra-táblák migrálása HDInsight 4,0-re
+## <a name="migrate-hive-tables-to-hdinsight-40"></a>Hive-táblák áttelepítése a HDInsight 4.0-s rendszerbe
 
-Miután befejezte az előző lépések végrehajtását a kaptár Metaadattár HDInsight 4,0-re való átadásához, a metaadattár rögzített táblák és adatbázisok a HDInsight 4,0-fürtön lesznek láthatók a fürtön belüli `show tables` vagy `show databases` végrehajtásával. A HDInsight 4,0-fürtök lekérdezés-végrehajtásával kapcsolatos információkért lásd: [HDInsight-verziók lekérdezési végrehajtása](#query-execution-across-hdinsight-versions) .
+A Hive Metastore HDInsight 4.0-ra való áttelepítéséhez szükséges előző lépések befejezése után a metatárolóban rögzített táblák és adatbázisok `show tables` a `show databases` HDInsight 4.0-s fürtön belül ről láthatók lesznek a fürt végrehajtásával vagy a fürtön belül. A HDInsight 4.0-fürtök lekérdezés-végrehajtásáról a HDInsight 4.0-s fürtjein a lekérdezések végrehajtásáról című [témakörben](#query-execution-across-hdinsight-versions) talál.
 
-A táblákból származó tényleges adatok azonban nem érhetők el, amíg a fürt nem fér hozzá a szükséges Storage-fiókokhoz. A következő lépések végrehajtásával gondoskodhat arról, hogy a HDInsight 4,0-fürtje hozzáférhessen a régi HDInsight 3,6-fürthöz tartozó adatbázisokhoz:
+A táblákból származó tényleges adatok azonban nem érhetők el, amíg a fürt nem rendelkezik hozzáféréssel a szükséges tárfiókokhoz. Ha biztosítani szeretné, hogy a HDInsight 4.0-fürt ugyanazokat az adatokat tudja elérni, mint a régi HDInsight 3.6-os fürt, hajtsa végre az alábbi lépéseket:
 
-1. Határozza meg a tábla vagy az adatbázis Azure Storage-fiókját.
+1. Határozza meg a tábla vagy az adatbázis Azure tárfiókját.
 
-1. Ha a HDInsight 4,0-fürt már fut, csatolja az Azure Storage-fiókot a fürthöz a Ambari-n keresztül. Ha még nem hozta létre a HDInsight 4,0-fürtöt, győződjön meg arról, hogy az Azure Storage-fiók az elsődleges vagy másodlagos fürt Storage-fiókként van megadva. További információ a Storage-fiókok HDInsight-fürtökhöz való hozzáadásáról: [további Storage-fiókok hozzáadása a HDInsight](../hdinsight-hadoop-add-storage.md).
+1. Ha a HDInsight 4.0-s fürtmár fut, csatolja az Azure storage-fiókot a fürthöz az Ambari-n keresztül. Ha még nem hozta létre a HDInsight 4.0-fürt, győződjön meg arról, hogy az Azure storage-fiók elsődleges vagy másodlagos fürttárfiókként van megadva. A tárfiókok HDInsight-fürtökhöz való hozzáadásáról további információt a [További tárfiókok hozzáadása a HDInsighthoz című témakörben talál.](../hdinsight-hadoop-add-storage.md)
 
-## <a name="deploy-new-hdinsight-40-and-connect-to-the-new-metastore"></a>Az új HDInsight 4,0 üzembe helyezése és az új metaadattár való kapcsolódás
+## <a name="deploy-new-hdinsight-40-and-connect-to-the-new-metastore"></a>Az új HDInsight 4.0 üzembe helyezése és csatlakozás az új metatárolóhoz
 
-A séma verziófrissítésének befejezése után helyezzen üzembe egy új HDInsight 4,0-fürtöt, és kapcsolódjon a frissített metaadattár. Ha már telepítette a 4,0-es rendszert, állítsa be úgy, hogy a Ambari-ből csatlakozhasson a metaadattár.
+A séma frissítés befejezése után telepítsen egy új HDInsight 4.0-s fürtöt, és csatlakoztassa a frissített metatárolót. Ha már telepítette a 4.0-s t, állítsa be úgy, hogy az Ambari-ból kapcsolódjon a metatárhoz.
 
-## <a name="run-schema-migration-script-from-hdinsight-40"></a>Séma-áttelepítési parancsfájl futtatása a HDInsight 4,0-ből
+## <a name="run-schema-migration-script-from-hdinsight-40"></a>Sémaáttelepítési parancsfájl futtatása a HDInsight 4.0-s részéről
 
-A táblákat a HDInsight 3,6 és a HDInsight 4,0 eltérő módon kezelik. Ezért nem oszthat meg ugyanazokat a táblákat különböző verziójú fürtökhöz. Ha a HDInsight 3,6-et a HDInsight 4,0-as verziójával megegyező időpontban szeretné használni, az egyes verziókhoz külön másolatokkal kell rendelkeznie.
+A HDInsight 3.6 és a HDInsight 4.0 eltérően kezeli a táblázatokat. Emiatt nem oszthatja meg ugyanazokat a táblákat a különböző verziók fürtjeihez. Ha a HDInsight 3.6-ot a HDInsight 4.0-s verziójával egy időben szeretné használni, minden verzióhoz külön másolattal kell rendelkeznie az adatokról.
 
-A struktúra számítási feladatához a savas és a nem savas táblák kombinációja is tartozhat. A HDInsight 3,6 (kaptár 2) és a kaptár on HDInsight 4,0 (kaptár 3) közötti egyik fő különbség a táblákhoz tartozó sav-megfelelés. A HDInsight 3,6-ben a kaptárak megfelelőségének engedélyezése további konfigurációt igényel, de a HDInsight 4,0-táblákban alapértelmezés szerint sav-kompatibilis. A Migrálás előtt csak az 3,6-es fürtön található sav tábla egyik jelentős tömörítését kell végrehajtani. Futtassa a következő lekérdezést a kaptár vagy a Beeline nézetből:
+A Hive munkaterhelés tartalmazhat sav és nem ACID táblák keveréke. Az egyik legfontosabb különbség a HIVE hdinsight 3.6 (Hive 2) és a Hive hdinsight 4.0 (Hive 3) az ACID-megfelelőség a táblák. A HDInsight 3.6-ban a Hive ACID-megfelelőség engedélyezése további konfigurációt igényel, de a HDInsight 4.0-táblákban alapértelmezés szerint ACID-kompatibilisek. Az áttelepítés előtt csak akkor szükséges, ha a 3.6-os fürt ACID-táblája ellen jelentős tömörítést kell futtatni. A Hive nézetben vagy a Beeline nézetben futtassa a következő lekérdezést:
 
 ```sql
 alter table myacidtable compact 'major';
 ```
 
-Erre a tömörítésre azért van szükség, mert a HDInsight 3,6 és a HDInsight 4,0 sav táblázata eltérően értelmezi a savas különbözeteket. A tömörítés olyan tiszta Palat kényszerít, amely garantálja a konzisztenciát. A [kaptár-áttelepítési dokumentáció](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.3.0/bk_ambari-upgrade-major/content/prepare_hive_for_upgrade.html) 4. szakasza útmutatást tartalmaz a HDINSIGHT 3,6 savas táblák tömeges tömörítéséhez.
+Ez a tömörítés azért szükséges, mert a HDInsight 3.6 és a HDInsight 4.0 ACID-táblák eltérően értelmezik az ACID-különbözeteket. A tömörítés tiszta pala, amely garantálja a konzisztenciát. A [Hive áttelepítési dokumentáció](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.3.0/bk_ambari-upgrade-major/content/prepare_hive_for_upgrade.html) 4 szakasza útmutatást tartalmaz a HDInsight 3.6 ACID-táblák tömeges tömörítéséhez.
 
-A metaadattár áttelepítési és tömörítési lépéseinek elvégzése után áttelepítheti a tényleges raktárat. A kaptár-tárház áttelepítésének befejezése után a HDInsight 4,0 Warehouse a következő tulajdonságokkal fog rendelkezni:
+Miután elvégezte a metatároló áttelepítési és tömörítési lépéseit, áttelepítheti a tényleges raktárat. A Hive-raktár áttelepítésének befejezése után a HDInsight 4.0-s raktár a következő tulajdonságokkal rendelkezik:
 
 |3.6 |4.0 |
 |---|---|
 |Külső táblák|Külső táblák|
-|Nem tranzakciós felügyelt táblák|Külső táblák|
-|Tranzakciós felügyelt táblák|Felügyelt táblák|
+|Nem tranzakciós kezelt táblák|Külső táblák|
+|Tranzakciós kezelt táblák|Felügyelt táblák|
 
-Előfordulhat, hogy a Migrálás végrehajtása előtt módosítania kell a raktár tulajdonságait. Ha például azt szeretné, hogy egy harmadik fél (például egy HDInsight 3,6-fürt) egy táblát fog elérni, akkor az áttelepítés befejeződése után a táblának kívül kell lennie. A HDInsight 4,0-ben minden felügyelt tábla tranzakciós. Ezért a HDInsight 4,0 felügyelt tábláihoz csak a HDInsight 4,0-fürtök férhetnek hozzá.
+Előfordulhat, hogy az áttelepítés végrehajtása előtt módosítania kell a raktár tulajdonságait. Ha például azt várja, hogy egy harmadik fél (például egy HDInsight 3.6-fürt) egy táblához hozzáfér, a táblának az áttelepítés befejezése után külsőnek kell lennie. A HDInsight 4.0-s felbontásban minden felügyelt tábla tranzakciós. Ezért a HDInsight 4.0 felügyelt tábláit csak a HDInsight 4.0-fürtök érhetik el.
 
-Miután helyesen beállította a táblázat tulajdonságait, hajtsa végre a kaptár Warehouse áttelepítési eszközt az egyik fürt átjárócsomópontokkal az SSH-rendszerhéj használatával:
+A tábla tulajdonságainak megfelelő beállítása után hajtsa végre a Hive-raktár áttelepítési eszközét az SSH-rendszerhéj használatával a fürt egyik headnode-jából:
 
-1. Csatlakozzon a fürt átjárócsomóponthoz SSH használatával. Útmutatásért lásd: [Kapcsolódás a HDInsight az SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md)
-1. `sudo su - hive` futtatásával nyisson meg egy bejelentkezési rendszerhéjat a kaptár felhasználóként
-1. Határozza meg az adatplatform-verem verzióját a `ls /usr/hdp`végrehajtásával. Ekkor megjelenik a következő parancsban használni kívánt Version sztring.
-1. Futtassa a következő parancsot a rendszerhéjból. Cserélje le a `STACK_VERSION`t az előző lépésben szereplő Version sztringre:
+1. Csatlakozzon a fürt fejnod ssh használatával. További információt a [Csatlakozás a HDInsighthoz SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md)
+1. Nyisson meg egy bejelentkezési rendszerhéjat Hive-felhasználóként a`sudo su - hive`
+1. Határozza meg az adatplatform `ls /usr/hdp`verem verzióját a végrehajtásával. Ez egy verziókarakterláncot jelenít meg, amelyet a következő parancsban kell használnia.
+1. Hajtsa végre a következő parancsot a rendszerhéjból. Cserélje `STACK_VERSION` le az előző lépés verziókarakterláncára:
 
 ```bash
 /usr/hdp/STACK_VERSION/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
 ```
 
-Az áttelepítési eszköz befejeződése után a kaptár-tárház készen áll a HDInsight 4,0-re.
+Az áttelepítési eszköz befejezése után a Hive-raktár készen áll a HDInsight 4.0-s készletére.
 
 > [!Important]  
-> A HDInsight 4,0 felügyelt táblái (beleértve a 3,6-ból áttelepített táblákat is) más szolgáltatásokkal vagy alkalmazásokkal nem érhetők el, beleértve a HDInsight 3,6-fürtöket.
+> A HDInsight 4.0 felügyelt tábláit (beleértve a 3.6-ból áttelepített táblákat is) más szolgáltatások vagy alkalmazások, köztük a HDInsight 3.6-os fürtök nem érhetik el.
 
-## <a name="secure-hive-across-hdinsight-versions"></a>Biztonsági struktúra HDInsight-verziókon keresztül
+## <a name="secure-hive-across-hdinsight-versions"></a>Biztonságos hive a HDInsight-verziókban
 
-A HDInsight 3,6 óta a HDInsight a HDInsight Enterprise Security Package (ESP) használatával integrálódik a Azure Active Directoryba. Az ESP a Kerberos és az Apache Ranger használatával kezeli a fürtön belüli adott erőforrások engedélyeit. A HDInsight 3,6-es struktúrában üzembe helyezett Ranger-házirendek a következő lépésekkel telepíthetők át a HDInsight 4,0-re:
+A HDInsight 3.6 óta a HDInsight a HDInsight Enterprise Security Package (ESP) használatával integrálható az Azure Active Directoryval. Az ESP a Kerberos és az Apache Ranger segítségével kezeli a fürtön belüli erőforrások engedélyeit. A HIVe-n a HDInsight 3.6-ban telepített Ranger-házirendek a következő lépésekkel telepíthetők át a HDInsight 4.0-s rendszerre:
 
-1. Navigáljon a Ranger Service Manager panelre a HDInsight 3,6-fürtben.
-2. Navigáljon a **struktúra** nevű szabályzathoz, és exportálja a szabályzatot egy JSON-fájlba.
-3. Győződjön meg arról, hogy az exportált házirend JSON-ban hivatkozott összes felhasználó létezik az új fürtben. Ha a felhasználó a szabályzat JSON-ban szerepel, de nem létezik az új fürtben, adja hozzá a felhasználót az új fürthöz, vagy távolítsa el a hivatkozást a szabályzatból.
-4. Navigáljon a **Ranger Service Manager** panelre a HDInsight 4,0-fürtben.
-5. Navigáljon a **kaptár** nevű szabályzathoz, és importálja a Ranger Policy JSON-t a 2. lépésből.
+1. Nyissa meg a Ranger Service Manager panelt a HDInsight 3.6-os fürtben.
+2. Keresse meg a **HIVE** nevű házirendet, és exportálja a házirendet egy jsonfájlba.
+3. Győződjön meg arról, hogy az exportált házirendjében hivatkozott összes felhasználó létezik az új fürtben. Ha egy felhasználó ra hivatkozik a házirend json, de nem létezik az új fürtben, vagy adja hozzá a felhasználót az új fürthöz, vagy távolítsa el a hivatkozást a házirendből.
+4. Nyissa meg a **Ranger Service Manager** panelt a HDInsight 4.0-fürtben.
+5. Keresse meg a **HIVE** nevű házirendet, és importálja a ranger házirend jsonját a 2.
 
-## <a name="check-compatibility-and-modify-codes-as-needed-in-test-app"></a>Ellenőrizze a kompatibilitást, és szükség szerint módosítsa a kódokat az alkalmazás teszteléséhez.
+## <a name="check-compatibility-and-modify-codes-as-needed-in-test-app"></a>Kompatibilitás ellenőrzése és szükség szerint a kódok módosítása a tesztalkalmazásban
 
-A munkaterhelések, például a meglévő programok és lekérdezések áttelepítésekor ellenőrizze a kibocsátási megjegyzéseket és a dokumentációt, és szükség szerint alkalmazza a módosításokat. Ha a HDInsight 3,6-fürt megosztott Sparkot és Hive-metaadattár használ, akkor a [kaptár-tárház összekötőjét használó további konfigurációra](./apache-hive-warehouse-connector.md) van szükség.
+A számítási feladatok, például a meglévő programok és lekérdezések áttelepítésekor ellenőrizze a kibocsátási megjegyzéseket és a dokumentációt a módosításokról, és szükség szerint alkalmazza a módosításokat. Ha a HDInsight 3.6-fürt megosztott Spark- és Hive metatárolót használ, további konfigurációra van szükség a [Hive Warehouse Connector használatával.](./apache-hive-warehouse-connector.md)
 
 ## <a name="deploy-new-app-for-production"></a>Új alkalmazás üzembe helyezése éles környezetben
 
-Az új fürtre való váltáshoz például telepíthet egy új ügyfélalkalmazás alkalmazást, és használhatja azt új éles környezetként, vagy frissítheti meglévő ügyfélalkalmazásját, és átválthat a HDInsight 4,0-re.
+Az új fürtre való váltáshoz például telepíthet egy új ügyfélalkalmazást, és használhatja azt új éles környezetként, vagy frissítheti a meglévő ügyfélalkalmazást, és átválthat a HDInsight 4.0-ra.
 
-## <a name="switch-hdinsight-40-to-the-production"></a>HDInsight 4,0 váltása az éles környezetbe
+## <a name="switch-hdinsight-40-to-the-production"></a>Váltás a HDInsight 4.0-s sorozatra
 
-Ha a tesztelés során eltérések jöttek létre a metaadattár, előbb frissítenie kell a változtatásokat a váltás előtt. Ebben az esetben exportálhatja & importálhatja a metaadattár, majd újra elvégezheti a frissítést.
+Ha a tesztelés során különbségek et hoztak létre a metatárolóban, a váltás előtt frissítenie kell a módosításokat. Ebben az esetben exportálhatja & importálhatja a metatárolót, majd újra frissíthet.
 
-## <a name="remove-the-old-production"></a>A régi éles környezet eltávolítása
+## <a name="remove-the-old-production"></a>A régi termelés eltávolítása
 
-Miután meggyőződött arról, hogy a kiadás elkészült és teljes mértékben működőképes, eltávolíthatja a 3,6-es és a korábbi metaadattár-verziót. A környezet törlése előtt győződjön meg arról, hogy minden migrálva van.
+Miután megerősítette, hogy a kiadás teljes és teljes mértékben működőképes, eltávolíthatja a 3.6-os verziót és az előző metakészletet. A környezet törlése előtt győződjön meg arról, hogy minden áttelepítésre kerül.
 
-## <a name="query-execution-across-hdinsight-versions"></a>Lekérdezés végrehajtása HDInsight-verziókon keresztül
+## <a name="query-execution-across-hdinsight-versions"></a>Lekérdezés-végrehajtás a HDInsight-verziókban
 
-A HDInsight 3,6-fürtön belül két módon hajtható végre a kaptár/LLAP lekérdezések. A HiveCLI parancssori felületet biztosít, a TEZ nézet/struktúra nézet pedig grafikus felhasználói felületen alapuló munkafolyamatot biztosít.
+A HIVe/LLAP-lekérdezések hdinsight 3.6-os fürtön belüli végrehajtásának és hibakeresésének két módja van. A HiveCLI parancssori élményt nyújt, a Tez nézet/Hive nézet pedig GUI-alapú munkafolyamatot.
 
-A HDInsight 4,0-ben a HiveCLI lecserélte a Beeline elemre. A HiveCLI egy takarékossági ügyfél az 1. Hiveserver, a Beeline pedig egy JDBC-ügyfél, amely hozzáférést biztosít a 2. Hiveserver. A Beeline bármely más JDBC-kompatibilis adatbázis-végponthoz való kapcsolódáshoz is használható. A Beeline a 4,0-es HDInsight-on keresztül érhető el anélkül, hogy telepítésre lenne szükség.
+A HDInsight 4.0-s felbontásban a HiveCLI-t a Beeline váltotta fel. A HiveCLI a Hiveserver 1 takarékossági ügyfele, a Beeline pedig egy JDBC-ügyfél, amely hozzáférést biztosít a Hiveserver 2-höz. A Beeline bármely más JDBC-kompatibilis adatbázis-végponthoz is használható. A Beeline azonnal elérhető a HDInsight 4.0-n, mindenféle telepítés nélkül.
 
-A HDInsight 3,6-ben a kaptár-kiszolgálóval való interakcióra szolgáló grafikus felhasználói felület a Ambari struktúra nézet. A HDInsight 4,0 nem Ambari nézettel rendelkezik. Lehetőséget biztosítunk ügyfeleinknek az adatelemzési Studio (DAS) használatára, amely nem alapvető HDInsight szolgáltatás. A DAS nem támogatja a HDInsight-fürtöket, és nem hivatalosan támogatott csomag. A DAS azonban a következő módon telepíthető a fürtre a [parancsfájl](../hdinsight-hadoop-customize-cluster-linux.md) használatával:
+A HDInsight 3.6-ban a Hive-kiszolgálóval való interakcióra szolgáló grafikus felhasználói felület-ügyfél az Ambari Hive nézet. A HDInsight 4.0 nem szállít ambari nézetben. Biztosítottuk ügyfeleink számára a Data Analytics Studio (DAS) használatát, amely nem egy alapvető HDInsight-szolgáltatás. A DAS nem szállít hdinsight-fürtökkel, és nem hivatalosan támogatott csomag. A DAS azonban [parancsfájlművelettel](../hdinsight-hadoop-customize-cluster-linux.md) telepíthető a fürtre az alábbiak szerint:
 
 |Tulajdonság | Érték |
 |---|---|
-|Parancsfájl típusa|– Egyéni|
-|Name (Név)|DAS|
-|Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|Csomópont típusa (i)|Head|
+|Parancsfájl típusa|- Egyéni|
+|Név|Das|
+|Bash parancsfájl URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
+|Csomóponttípus(ok)|Head|
 
-Várjon 10 – 15 percet, majd indítsa el az adatelemzési stúdiót a következő URL-cím használatával: `https://CLUSTERNAME.azurehdinsight.net/das/`.
+Várjon 10-15 percet, majd indítsa el `https://CLUSTERNAME.azurehdinsight.net/das/`a Data Analytics Studio-t a következő URL-cím használatával: .
 
-A DAS-hoz való hozzáférés előtt a Ambari felhasználói felületének frissítése és/vagy az összes Ambari-összetevő újraindítása szükséges lehet.
+A DAS elérése előtt szükség lehet az Ambari felhasználói felület frissítésére és/vagy az összes Ambari összetevő újraindítására.
 
-Ha a DAS telepítve van, ha nem látja a futtatott lekérdezéseket a lekérdezések megjelenítőben, hajtsa végre a következő lépéseket:
+A DAS telepítése után, ha nem látja a lekérdezések megjelenítőben futtatott lekérdezéseket, tegye a következő lépéseket:
 
-1. Állítsa be a kaptár, a TEZ és a DAS konfigurációit az útmutatóban ismertetett módon a [Das telepítésének hibaelhárítása](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html)című részben leírtak szerint.
-2. Győződjön meg arról, hogy a következő Azure Storage-címtár-konfiguráció a lapok blobja, és hogy azok szerepelnek a `fs.azure.page.blob.dirs`alatt:
+1. Állítsa be a Hive, A Tez és a DAS konfigurációit az ebben az útmutatóban leírtak [szerint a DAS telepítésének hibaelhárításához.](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html)
+2. Győződjön meg arról, hogy az alábbi Azure-tárolókönyvtár-konfigurációk lapblobok, és a következők: `fs.azure.page.blob.dirs`
     * `hive.hook.proto.base-directory`
     * `tez.history.logging.proto-base-dir`
-3. Indítsa újra a HDFS, a kaptárt, a TEZ és a DAS-t mindkét átjárócsomópontokkal.
+3. Indítsa újra a HDFS,Hive, Tez és DAS mindkét headnodes.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [HDInsight 4,0 közlemény](../hdinsight-version-release.md)
-* [HDInsight 4,0 Deep Dive](https://azure.microsoft.com/blog/deep-dive-into-azure-hdinsight-4-0/)
-* [3. struktúra – savas táblák](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/using-hiveql/content/hive_3_internals.html)
+* [A HDInsight 4.0 közleménye](../hdinsight-version-release.md)
+* [HDInsight 4.0 mély merülés](https://azure.microsoft.com/blog/deep-dive-into-azure-hdinsight-4-0/)
+* [Hive 3 ACID táblázatok](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/using-hiveql/content/hive_3_internals.html)

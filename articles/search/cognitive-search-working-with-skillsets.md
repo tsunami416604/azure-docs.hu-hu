@@ -1,7 +1,7 @@
 ---
-title: Készségkészlet-fogalmak és-munkafolyamatok
+title: Skillset fogalmak és munkafolyamat
 titleSuffix: Azure Cognitive Search
-description: A szakértelmével egy mesterséges intelligenciát létrehozó folyamat készítése az Azure Cognitive Searchban. Ismerje meg a készségkészlet-összeállítással kapcsolatos fontos fogalmakat és részleteket.
+description: Skillsets van hol vagy szerző egy AI dúsítás folyamat -ban Azure Cognitive Kutatás. Ismerje meg a fontos fogalmakat és részleteket skillset összetételét.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
@@ -9,130 +9,130 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 8b45840215092281c7fbc8d499e26b095b374dd6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77191026"
 ---
-# <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Készségkészlet-fogalmak és-összeállítás az Azure Cognitive Search
+# <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Skillset-fogalmak és kompozíciók az Azure Cognitive Search-ben
 
-Ez a cikk azoknak a fejlesztőknek szól, akiknek alaposabban meg kell ismerniük, hogyan működik a dúsítási folyamat, és feltételezi, hogy az AI-bővítési folyamat fogalmi ismerete van. Ha új ez a fogalom, kezdje a következővel:
-+ [AI-gazdagítás az Azure Cognitive Search](cognitive-search-concept-intro.md)
-+ [Knowledge Store (előzetes verzió)](knowledge-store-concept-intro.md)
+Ez a cikk azoknak a fejlesztőknek szól, akiknek mélyebb ismeretekre van szükségük a dúsítási folyamat működéséről, és feltételezi, hogy rendelkezik az AI-bővítési folyamat fogalmi ismeretekkel. Ha ön új ez fogalom, elkezd -val:
++ [AI gazdagítása az Azure Cognitive Search-ben](cognitive-search-concept-intro.md)
++ [Tudástároló (előzetes verzió)](knowledge-store-concept-intro.md)
 
-## <a name="specify-the-skillset"></a>A Készségkészlet meghatározása
-A készségkészlet az Azure Cognitive Search újrafelhasználható erőforrása, amely olyan kognitív képességek gyűjteményét határozza meg, amelyek a szöveg-és képtartalom elemzéséhez, átalakításához és bővítéséhez használatosak az indexelés során. A készségkészlet létrehozása lehetővé teszi szöveg-és képgazdagítás csatolását az adatfeldolgozási fázisban, új információk és struktúrák kinyerése és létrehozása a nyers tartalomból.
+## <a name="specify-the-skillset"></a>Adja meg a Skillset
+A skillset egy újrafelhasználható erőforrás az Azure Cognitive Search, amely meghatározza a kognitív képességek elemzéséhez használt, átalakítása és a szöveg vagy kép tartalom indexelés során használt kognitív képességek gyűjteménye. A skillset létrehozása lehetővé teszi, hogy szöveg- és képbővítéseket csatoljon az adatbetöltési fázisban, új információk és struktúrák kinyerése és létrehozása a nyers tartalomból.
 
-A készségkészlet három tulajdonsága van:
+A skillset három tulajdonsággal rendelkezik:
 
-+   ```skills```, a képességek rendezetlen gyűjteménye, amelyhez a platform meghatározza a végrehajtás sorrendjét az egyes képességekhez szükséges bemenetek alapján
-+   ```cognitiveServices```, a meghívott kognitív képességek számlázásához szükséges kognitív szolgáltatások kulcsa
-+   ```knowledgeStore```azt a Storage-fiókot, ahol a dúsított dokumentumokat tervezik
++   ```skills```, a képességek rendezetlen gyűjteménye, amelyhez a platform az egyes szakértelemhez szükséges bemenetek alapján határozza meg a végrehajtás sorrendjét
++   ```cognitiveServices```, a kognitív szolgáltatások kulcsa szükséges számlázása a kognitív képességek meghívott
++   ```knowledgeStore```, az a tárfiók, ahol a bővített dokumentumok kivetítésre kerülnek
 
 
 
-A szakértelmével JSON-ban vannak létrehozva. A [kifejezés nyelve](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)segítségével összetett szakértelmével hozhat létre a hurok és az [elágazás](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) használatával. A kifejezés nyelve a [JSON-mutató](https://tools.ietf.org/html/rfc6901) elérési útjának jelölését használja, és néhány módosítással azonosítja a csomópontokat a dúsítási fában. A ```"/"``` a fában alacsonyabb szintre halad, és a ```"*"``` a környezet minden operátora számára működik. Ezeket a fogalmakat a legjobban egy példával ismertetjük. Az egyes fogalmak és képességek szemléltetésére a [Hotel Reviews minta](knowledge-store-connect-powerbi.md) készségkészlet mutatunk. Ha a készségkészlet az Adatimportálási munkafolyamat követése után szeretné megtekinteni, REST API-ügyfelet kell használnia [a készségkészlet lekéréséhez](https://docs.microsoft.com/rest/api/searchservice/get-skillset).
+Skillsets szerzője JSON. A [kifejezésnyelv](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)használatával bonyolult készségeket hozhat létre a hurkolással és [az elágazással.](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) A kifejezés nyelve a [JSON-mutató](https://tools.ietf.org/html/rfc6901) elérési útjának néhány módosításával azonosítja a dúsítási fa csomópontjait. A ```"/"``` a fa egy szinttel ```"*"``` alacsonyabb szintjén halad át, és a környezetben minden operátorként működik. Ezeket a fogalmakat a legjobban egy példával lehet leírni. A koncepciók és képességek bemutatására végigsétálunk a [szálloda értékelései között.](knowledge-store-connect-powerbi.md) A skillset megtekintéséhez, miután követte az importálási adatok munkafolyamat, akkor kell használni a REST API-ügyfél [a skillset beszerzése.](https://docs.microsoft.com/rest/api/searchservice/get-skillset)
 
-### <a name="enrichment-tree"></a>Dúsítási fa
+### <a name="enrichment-tree"></a>Dúsító fa
 
-Annak megtervezéséhez, hogy egy készségkészlet fokozatosan gazdagítsa a dokumentumot, kezdjük azzal, amit a dokumentum úgy néz ki, hogy bármilyen alkoholtartalom-növelést lehessen. A dokumentum repedésének kimenete függ az adatforrástól és a kiválasztott elemzési módból. Ez annak a dokumentumnak a állapota is, amelyet a [mező-hozzárendelések](search-indexer-field-mappings.md) az adatok keresési indexbe való felvételekor a tartalom forrásaként használhatnak.
-![Knowledge Store a folyamat ábráján](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Knowledge Store a folyamat ábráján")
+Ha el szeretné képzelni, hogy egy készségkészlet hogyan gazdagítja fokozatosan a dokumentumot, kezdjük azzal, hogy hogyan néz ki a dokumentum, mielőtt bármilyen gazdagodás következne be. A dokumentumfeltörés kimenete az adatforrástól és a kiválasztott elemzési módtól függ. Ez annak a dokumentumnak az állapota is, amelyből a [mezőleképezések](search-indexer-field-mappings.md) tartalmat tudnak forrásolni, amikor adatokat adnak hozzá a keresési indexhez.
+![Tudástároló a folyamatábrán](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Tudástároló a folyamatábrán")
 
-Ha egy dokumentum a dúsítási folyamatban van, akkor a rendszer a tartalom és a hozzájuk kapcsolódó dúsítások fájáként jeleníti meg. Ezt a fát a dokumentum repedésének kimenete hozza létre. A dúsítási fa formátuma lehetővé teszi, hogy a dúsítási folyamat a metaadatokat még a primitív adattípusokhoz csatolja, nem egy érvényes JSON-objektum, de érvényes JSON formátumba is beilleszthető. A következő táblázat a dúsítási folyamatba bekerülő dokumentum állapotát mutatja be:
+Ha egy dokumentum a dúsítási folyamat, akkor jelenik meg, mint egy fa a tartalom és a kapcsolódó dúsítások. Ez a fa példányos, mint a kimenet idokumentum repedés. A dúsítási fa formátumlehetővé teszi, hogy a dúsítási folyamat metaadatokat csatoljon még primitív adattípusokhoz is, nem érvényes JSON-objektum, de érvényes JSON formátumba vetíthető. Az alábbi táblázat a dúsítási folyamatba belépő dokumentum állapotát mutatja be:
 
-|AdatSource\Parsing mód|Alapértelmezett|JSON, JSON-sorok & CSV|
+|Adatforrás\Elemzési mód|Alapértelmezett|JSON, JSON Vonalak & CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
+|Blob Storage|/dokumentum/tartalom<br>/dokumentum/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
 |SQL|/document/{column1}<br>/document/{column2}<br>…|N/A |
 |Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N/A|
 
- A képességek végrehajtásával új csomópontokat vesznek fel a dúsítási fában. Ezek az új csomópontok ezután az alárendelt képességekhez bemenetként, a Knowledge Store-ban való kivetítéssel, vagy az index mezőihez való leképezéssel használhatók. A dúsítások nem változtathatók meg, a csomópontok nem szerkeszthetők. Mivel a szakértelmével összetettebbek, így a dúsítási fában marad, de a dúsítási fában nem minden csomópontnak kell azt az indexbe vagy a tudásbázisba tenni. 
+ A képességek végrehajtása, új csomópontokat adnak hozzá a dúsító fa. Ezek az új csomópontok ezután az alsóbb rétegbeli képességek bemeneteként használhatók, kivetítve a tudástárolóba, vagy indexmezőkleképezéseként. A dúsítások nem módosíthatók: a létrehozás után a csomópontok nem szerkeszthetők. Ahogy a skillsets egyre összetettebb, így lesz a dúsító fa, de nem minden csomópont a dúsító fa kell tenni, hogy az index vagy a tudás tároló. 
 
-A dúsítások csak egy részhalmazát különítheti el az indexbe vagy a Knowledge Store-ba.
-A dokumentum további részében feltételezzük, hogy a [Hotel Reviews példával](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi)dolgozunk, de ugyanezek a fogalmak a dokumentumok más adatforrásokból való bővítésére is érvényesek.
+Szelektíven csak az index vagy a tudástároló dúsítási alkészletét tarthatja meg.
+A dokumentum további részében azt feltételezzük, hogy [szállodai értékelésekkel](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi)dolgozunk , de ugyanazok a fogalmak vonatkoznak az összes többi adatforrásból származó dokumentumok gazdagítására.
 
 ### <a name="context"></a>Környezet
-Minden egyes szaktudáshoz környezet szükséges. A környezet meghatározza A következőket:
-+   A képzettség végrehajtásának száma a kiválasztott csomópontok alapján. A gyűjtemény típusú környezeti értékek esetében a befejezéshez ```/*``` hozzáadásával a program a gyűjtemény minden példánya esetében egyszer meghívja a képességet. 
-+   Ahol a dúsítási fában a rendszer felveszi a képzettségi kimeneteket. A rendszer mindig hozzáadja a kimeneteket a fában a környezeti csomópont gyermekeiként. 
-+   A bemenetek alakja. Többszintű gyűjtemények esetén a szülő-gyűjtemény kontextusának beállítása hatással lesz a szakértelem bemenetének alakzatára. Ha például van egy alkoholtartalom-növelési fája az országok listájával, a rendszer minden olyan állapotot tartalmaz, amely tartalmazza a ZipCodes tartalmazó listát.
+Minden szakértelemhez kontextus szükséges. A környezet határozza meg:
++   A szakértelem végrehajtásának száma a kiválasztott csomópontok alapján. A típusgyűjtemény környezeti értékeinek ```/*``` hozzáadása a végén a szakértelem meghívását eredményezi a gyűjtemény minden egyes példánya esetén. 
++   Ahol a dúsítási fa a szakértelem kimenetek egészül ki. A kimenetek mindig a környezeti csomópont gyermekeiként kerülnek a fához. 
++   A bemenetek alakja. Többszintű gyűjtemények esetén a szülőgyűjtemény környezetének beállítása hatással lesz a szakértelem bemenetének alakjára. Ha például van egy dúsító fával az országok listájával, mindegyik az irányítószámok listáját tartalmazó állapotlistával gazdagítva.
 
-|Környezet|Input (Bemenet)|Bemenet alakja|Szaktudás meghívása|
+|Környezet|Input (Bemenet)|A bemenet alakja|Szakértelem meghívása|
 |---|---|---|---|
-|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Az ország összes ZipCodes listája |Országonként egyszer |
-|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Az állapotban lévő ZipCodes listája | Az ország és az állapot kombinációja után|
+|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Az ország összes irányítószámának listája |Országonként egyszer |
+|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Az irányítószámok listája az államban | Országonként és államonként egyszer|
 
-### <a name="sourcecontext"></a>SourceContext
+### <a name="sourcecontext"></a>Forráskörnyezet
 
-A `sourceContext` csak a szaktudás bemenetei és a [kivetítések](knowledge-store-projection-overview.md)esetében használatos. Többszintű, beágyazott objektumok létrehozásához használatos. Előfordulhat, hogy létre kell hoznia egy új objektumot, hogy beírja bemenetként egy képességbe vagy projektbe a Knowledge Store-ba. Mivel a dúsítási csomópontok nem lehetnek érvényes JSON-objektumok a dúsítási fában, és a fában lévő csomópontra hivatkoznak, csak a csomópont állapotát adja vissza a létrehozáskor, a dúsítások és a kivetítések létrehozásához pedig jól formázott JSON-objektumot kell létrehoznia. A `sourceContext` lehetővé teszi egy hierarchikus, névtelen típusú objektum összeállítását, amely több ismeretet igényelne, ha csak a környezetet használta. A `sourceContext` használata a következő szakaszban látható. Tekintse meg a szakértelem kimenetét, amely a dúsítást generálta annak megállapításához, hogy az érvényes JSON-objektum-e, és nem egyszerű típus.
+`sourceContext` Az csak szakértelem-bemenetekben és [előrejelzésekben használatos](knowledge-store-projection-overview.md). Többszintű, beágyazott objektumok építésére szolgál. Előfordulhat, hogy létre kell hoznia egy új objektumot, hogy vagy adja át egy szakértelem vagy projekt bemeneteként a tudástárba. Mivel a dúsítási csomópontok nem lehetnek érvényes JSON-objektumok a dúsítási fában, és a fa csomópontjára való hivatkozás csak a csomópont létrehozásakor adja vissza a csomópont állapotát, a dúsítások szakértelem-bemenetként vagy kivetítésként használva egy jól formázott JSON-objektum létrehozásához. A `sourceContext` lehetővé teszi egy hierarchikus, névtelen típusú objektum létrehozásához, amely több készséget igényelne, ha csak a környezetet használja. A `sourceContext` használat a következő szakaszban látható. Tekintse meg a szakértelem kimenet, amely létrehozott egy dúsítási annak megállapítására, hogy érvényes JSON-objektum, és nem egy primitív típusú.
 
 ### <a name="projections"></a>Leképezések
 
-A kivetítési folyamat kijelöli a csomópontokat a dúsítási fában, hogy a rendszer mentse a Tudásbázisban. A kivetítések a dokumentum (tartalom és dúsítások) egyéni alakzatai, amelyek tábla-vagy objektum-kivetítésként is kiállíthatók. További információ a kivetítések használatáról: [a kivetítések használata](knowledge-store-projection-overview.md).
+A vetítés az a folyamat, amelynek során kiválasztja a tudástárolóban mentendő csomópontokat a dúsítási fából. A vetítések a dokumentum egyéni alakzatai (tartalom és dúsítások), amelyek tábla- vagy objektumvetületként is kiadhatók. Ha többet szeretne tudni az előrejelzésekkel való munkáról, olvassa el [az Előrejelzések kelései](knowledge-store-projection-overview.md).
 
-![Mező-hozzárendelési beállítások](./media/cognitive-search-working-with-skillsets/field-mapping-options.png "Mező-hozzárendelési beállítások a dúsítási folyamathoz")
+![Mezőleképezési beállítások](./media/cognitive-search-working-with-skillsets/field-mapping-options.png "Mezőleképezési beállítások a dúsítási folyamathoz")
 
-A fenti diagram azt a választót írja le, amely a dúsítási folyamaton alapul.
+A fenti diagram a dúsítási folyamat helye alapján ismerteti a kijelölt választót.
 
-## <a name="generate-enriched-data"></a>Dúsított adathalmazok előállítása 
+## <a name="generate-enriched-data"></a>Bővített adatok létrehozása 
 
-Most ugorjon át a Hotel Reviews készségkészlet, és kövesse az [oktatóanyagot](knowledge-store-connect-powerbi.md) a készségkészlet létrehozásához, vagy [tekintse](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/samples/skillset.json) meg a készségkészlet. A következőt fogjuk megtekinteni:
+Most lépjen át a szálloda értékelés skillset, akkor kövesse a [bemutató,](knowledge-store-connect-powerbi.md) hogy megteremtse a skillset vagy [tekintse meg](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/samples/skillset.json) a skillset. Meg fogjuk nézni:
 
-* a dúsítási fa fejlődése az egyes képességek végrehajtásával 
-* a környezet és a bemenetek működése annak megállapítása érdekében, hogy a szaktudás hányszor fut 
-* a bemenet alakja a kontextuson alapul. 
+* hogyan fejlődik a dúsító fa az egyes készségek végrehajtásával 
+* hogyan működik a környezet és a bemenetek annak meghatározásához, hogy egy szakértelem hányszor hajtvégre 
+* a szövegkörnyezetalapján a bemenet alakja. 
 
-Mivel a tagolt szöveges elemzési módot használjuk az indexelő számára, a dúsítási folyamaton belüli dokumentumok a CSV-fájl egyetlen sorát jelölik.
+Mivel az indexelő hez a tagolt szövegelemzési módot használjuk, a dúsítási folyamaton belüli dokumentum egyetlen sort jelent a CSV-fájlban.
 
-### <a name="skill-1-split-skill"></a>Skill #1: megosztási képesség 
+### <a name="skill-1-split-skill"></a>skill #1: split készség 
 
-![a dúsítás fája a dokumentum repedése után](media/cognitive-search-working-with-skillsets/enrichment-tree-doc-cracking.png "A dúsítási fa a dokumentum repedése és a szaktudás végrehajtása előtt")
+![dúsítási fa a dokumentum feltörése után](media/cognitive-search-working-with-skillsets/enrichment-tree-doc-cracking.png "Dúsítási fa a dokumentum feltörése után és a szakértelem végrehajtása előtt")
 
-A ```"/document/reviews_text"```szaktudási kontextusával ezt a képességet egyszer kell végrehajtani a `reviews_text`. A szakértelem kimenete egy lista, amelyen a `reviews_text` 5000 karakterből álló szegmensbe van felosztva. A felosztott képességből származó kimenet neve `pages`, és a rendszer hozzáadja a dúsítási fában. A `targetName` funkció lehetővé teszi a képzettségi kimenet átnevezését a dúsítási fában való felvétel előtt.
+A ( a) szakértelemivel ez ```"/document/reviews_text"``` `reviews_text`a képesség egyszer végre fog hajtani a számára. A szakértelem kimenet egy `reviews_text` lista, ahol a van osztva 5000 karakter szegmensek. A felosztási szakértelem kimenete neve `pages` és hozzáadása a dúsítási fához. A `targetName` szolgáltatás lehetővé teszi egy szakértelem-kimenet átnevezését, mielőtt hozzáadna a dúsítási fához.
 
-A dúsítási fában már van egy új csomópont, amely a szakértelem kontextusában van elhelyezve. Ez a csomópont bármilyen képzettségi, leképezési vagy kimeneti mezők leképezéséhez elérhető.
+A dúsítási fa most már egy új csomópont keretében a szakértelem. Ez a csomópont minden szakértelem, vetítés vagy kimeneti mező leképezése számára elérhető.
 
 
-Az összes dúsítás legfelső szintű csomópontja `"/document"`. A blob-indexelő használatakor a `"/document"` csomópont `"/document/content"` és `"/document/normalized_images"`alárendelt csomópontokkal fog rendelkezni. A CSV-adatkapcsolatok használatakor, ahogy az ebben a példában is látható, az oszlopnevek a `"/document"`alatti csomópontokra lesznek leképezve. A csomópont által egy adott képességhez hozzáadott alkoholtartalom-növeléshez a dúsítás teljes elérési útjára van szükség. Ha például azt szeretné, hogy a ```pages``` csomópont szövege bemenetként egy másik szakértelmet adjon meg, akkor ```"/document/reviews_text/pages/*"```ként kell megadnia.
+Az összes dúsítás gyökércsomópontja . `"/document"` Blob indexelők, a `"/document"` csomópont lesz gyermek csomópontok `"/document/content"` és. `"/document/normalized_images"` A CSV-adatokkal végzett munka során, ahogy ebben a példában `"/document"`is, az oszlopnevek az alatta lévő csomópontokra lesznek leképezve. A szakértelem által a csomóponthoz hozzáadott dúsítások eléréséhez a dúsítás teljes elérési útja szükséges. Ha például a ```pages``` csomópont szövegét egy másik szakértelem beviteleként szeretné használni, meg ```"/document/reviews_text/pages/*"```kell adnia azt .
  
- ![a bővítési fa a szaktudás után #1](media/cognitive-search-working-with-skillsets/enrichment-tree-skill1.png "A szaktudás #1 végrehajtása után a dúsítási fa")
+ ![dúsító fa után készség #1](media/cognitive-search-working-with-skillsets/enrichment-tree-skill1.png "Dúsítási fa a szakértelem #1 végrehajtása után")
 
-### <a name="skill-2-language-detection"></a>A szaktudás #2 a nyelvfelismerés
- Míg a nyelvi észlelési képesség a készségkészlet definiált harmadik (skill #3) képesség, a következő végrehajtandó képesség. Mivel nem blokkolja semmilyen bemenetet, az előzővel párhuzamosan fog megjelenni. Az előtte lévő felosztási képességhez hasonlóan a nyelvi észlelési képességet is egyszer kell meghívja az egyes dokumentumokhoz. A dúsítási fában már van egy új csomópont a nyelvhez.
- ![a bővítési fa a szaktudás után #2](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "A szaktudás #2 végrehajtása után a dúsítási fa")
+### <a name="skill-2-language-detection"></a>Készség #2 nyelv felismerése
+ Míg a nyelvfelismerési szakértelem a skillsetben meghatározott harmadik (készség#3) szakértelem, ez a következő végrehajtandó szakértelem. Mivel nem blokkolja a bemenetek, akkor hajtsa végre párhuzamosan az előző szakértelem. Az azt megelőző felosztási szakértelemhez hasonlóan a nyelvfelismerési szakértelem is egyszer meghívásra kerül minden dokumentumhoz. A dúsító fa most már egy új csomópont a nyelv.
+ ![dúsító fa után készség #2](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Dúsítási fa a #2 végrehajtása után")
  
- ### <a name="skill-3-key-phrases-skill"></a>Skill #3: a kulcsfontosságú kifejezések ismerete 
+ ### <a name="skill-3-key-phrases-skill"></a>Skill #3: Key kifejezések skill 
 
-```/document/reviews_text/pages/*``` a legfontosabb kifejezések ismeretének kontextusát egyszer kell meghívni a `pages` gyűjtemény minden eleméhez. A skill kimenete a társított oldal elem alatti csomópont lesz. 
+Mivel ```/document/reviews_text/pages/*``` a kontextus a legfontosabb kifejezések szakértelem meghívása egyszer a `pages` gyűjtemény minden elem. A szakértelem kimenete egy csomópont lesz a társított oldalelem alatt. 
 
- Most már képesnek kell lennie arra, hogy megtekintse a készségkészlet képességeit, és láthatóvá tegye, hogy a dúsítások fája hogyan fog növekedni az egyes képességek végrehajtásával. Bizonyos készségek, például az egyesítési képesség és a formáló képesség, új csomópontokat is létrehozhatnak, de csak a meglévő csomópontok adatait használják, és nem hozhatók létre az új net-bővítések.
+ Most már képesnek kell lennie arra, hogy nézd meg a többi készségek a skillset és elképzelni, hogy a fa a dúsítások továbbra is növekedni fog a végrehajtása minden készség. Egyes képességek, például az egyesítési szakértelem és a formázó-szakértelem is hoznak létre új csomópontokat, de csak meglévő csomópontokból származó adatokat használnak, és nem hoznak létre nettó új gazdagítást.
 
-![a dúsítás fája az összes ismeret után](media/cognitive-search-working-with-skillsets/enrichment-tree-final.png "A dúsítás fája az összes ismeret után")
+![dúsító fa után minden készségek](media/cognitive-search-working-with-skillsets/enrichment-tree-final.png "Dúsító fa után minden készségek")
 
-A fenti fában látható összekötők színei azt jelzik, hogy a dúsítások különböző képességekkel lettek létrehozva, és a csomópontokat külön kell kezelni, és nem lesznek a fölérendelt csomópont kiválasztásakor visszaadott objektum részei.
+A fenti fa összekötőinek színei azt jelzik, hogy a dúsításokat különböző képességek hozták létre, és a csomópontokat egyenként kell kezelni, és nem lesznek részei a szülőcsomópont kiválasztásakor visszaadott objektumnak.
 
-## <a name="save-enrichments-in-a-knowledge-store"></a>Bővítések mentése a Knowledge Store-ban 
+## <a name="save-enrichments-in-a-knowledge-store"></a>Gazdagítások mentése tudástárolóban 
 
-A szakértelmével olyan tudásbázist is definiálhat, amelyben a dúsított dokumentumok táblázatként vagy objektumként is kiállíthatók. A dúsított információk a Tudásbázisban történő mentéséhez a dúsított dokumentumra vonatkozó kivetítéseket határozhat meg. További információ a Knowledge Store-ról: a [Knowledge Store áttekintése](knowledge-store-concept-intro.md)
+Skillsets is meghatározza a tudás tároló, ahol a bővített dokumentumok vetíthető késedelmi táblák vagy objektumok. Ha a bővített adatokat a tudástárolóba szeretné menteni, meg kell határoznia a bővített dokumentum vetületeinek készletét. Ha többet szeretne megtudni a tudástárolóról, olvassa el a [tudástároló áttekintését](knowledge-store-concept-intro.md)
 
-### <a name="slicing-projections"></a>Kivetítések szeletelése
+### <a name="slicing-projections"></a>Szeletelési vetületek
 
-A táblázatos kivetítési csoportok definiálásakor a dúsítási fa egyetlen csomópontja több kapcsolódó táblába is feldarabolható. Ha olyan táblát ad hozzá a forrás elérési útjához, amely egy meglévő tábla kivetítésének gyermeke, akkor az eredményül kapott alárendelt csomópont nem lesz a meglévő táblázatos leképezés gyermeke, hanem az új, kapcsolódó, táblázatba kerül. Ez a szeletelési módszer lehetővé teszi, hogy egyetlen csomópontot határozzon meg egy olyan alakzatban, amely a tábla összes vetületének forrása lehet. 
+Táblázatvetítési csoport definiálásakor a dúsítási fa egyetlen csomópontja több kapcsolódó táblára szeletelhető. Ha olyan táblát ad hozzá, amelynek forráselérési útja egy meglévő táblavetítés gyermeke, az eredményül kapott gyermekcsomópont nem lesz a meglévő táblavetítés gyermeke, hanem az új, kapcsolódó táblába lesz vetítve. Ez a szeletelési technika lehetővé teszi, hogy egyetlen csomópontot definiáljon egy formázó-szakértelemben, amely az összes táblavetés forrása lehet. 
 
-### <a name="shaping-projections"></a>Kivetítések kialakítása
+### <a name="shaping-projections"></a>Vetítések alakítása
 
-A kivetítést kétféleképpen lehet definiálni. Egy formázó képességgel létrehozhat egy új csomópontot, amely a kivetítéshez használt összes dúsítás legfelső szintű csomópontja. Ezután az előrejelzések szerint csak az alakzatra vonatkozó szakértelem kimenetére hivatkozhat. A vetítési definícióban is beágyazhat egy kivetítési formát.
+A vetület kétféleképpen határozható meg. Használhat egy formázó-képességet egy új csomópont létrehozásához, amely az összes kivetített dúsítás gyökércsomópontja. Ezután a kivetítésekben csak a formázó képesség kimenetére hivatkozik. A vetítési definíción belül is kialakíthat egy vetületet.
 
-A formáló megközelítés részletesebb, mint a beágyazott alakítás, azonban biztosítja, hogy a dúsítási fa összes mutációja a szaktudásban legyen, és hogy a kimenet egy olyan objektum, amely újra felhasználható. A beágyazott kialakítás lehetővé teszi, hogy létrehozza a szükséges alakzatot, de egy névtelen objektum, és csak azokhoz a vetítésekhez érhető el, amelyekhez definiálva van. A módszerek együtt vagy külön is használhatók. A portál munkafolyamatban létrehozott készségkészlet is tartalmaz. A táblázatos kivetítésekhez egy formálói képességet használ, de a legfontosabb kifejezések táblázatának bevetítéséhez is a beágyazott alakítást használja.
+A formázó megközelítés bőbeszédűbb, mint a szövegközi formázás, de biztosítja, hogy a dúsító fa összes mutációja a képességekben legyen, és hogy a kimenet olyan objektum legyen, amely újra felhasználható. A szövegközi formázás lehetővé teszi a szükséges alakzat létrehozását, de névtelen objektum, és csak azon vetítés számára érhető el, amelyhez definiálva van. A megközelítések együttesen vagy külön-külön is használhatók. A portálmunkafolyamatban létrehozott skillset mindkettőt tartalmazza. A táblavetések hez formázó-készséget használ, de a szövegközi formázást is használja a kulcskifejezések táblázatának kivetítéséhez.
 
-A példa kiterjesztéséhez dönthet úgy, hogy eltávolítja a beágyazott formázást, és egy formáló képességgel létrehoz egy új csomópontot a legfontosabb kifejezésekhez. A következő szakaszokban a két lehetőség közül választhat, hogy egy három táblázatból álló alakzatot hozzon létre: `hotelReviewsDocument`, `hotelReviewsPages`és `hotelReviewsKeyPhrases`.
+A példa kiterjesztéséhez eltávolíthatja a szövegközi formázást, és formázó-képességgel új csomópontot hozhat létre a kulcskifejezésekhez. Ha három táblára vetített alakzatot `hotelReviewsDocument`szeretne `hotelReviewsPages`létrehozni, nevezetesen a , és `hotelReviewsKeyPhrases`a két lehetőséget a következő szakaszok ismertetik.
 
 
-#### <a name="shaper-skill-and-projection"></a>Formáló képesség és kivetítés 
+#### <a name="shaper-skill-and-projection"></a>Formázó készség és vetítés 
 
 > [!Note]
-> A dokumentum táblázat néhány oszlopa el lett távolítva ebből a példából a rövidség kedvéért.
+> A dokumentumtábla néhány oszlopát rövidséggel törölték ebből a példából.
 >
 ```json
 {
@@ -204,10 +204,10 @@ A példa kiterjesztéséhez dönthet úgy, hogy eltávolítja a beágyazott form
 }
 ```
 
-A fenti `outputs` szakaszban definiált `tableprojection`-csomóponttal mostantól a szeletelés funkciót is használhatja a `tableprojection` csomópont különböző táblákba való kivetítéséhez:
+A `tableprojection` fenti `outputs` szakaszban definiált csomóponttal most már használhatjuk a szeletelési funkciót a `tableprojection` csomópont egyes részeinek különböző táblákba történő kivetítéséhez:
 
 > [!Note]
-> Ez csak a Knowledge Store-konfigurációban található kivetítés részlete.
+> Ez csak a tudástároló konfigurációjában lévő vetítés egy részlete.
 >
 ```json
 "projections": [
@@ -233,9 +233,9 @@ A fenti `outputs` szakaszban definiált `tableprojection`-csomóponttal mostant�
 ]
 ```
 
-#### <a name="inline-shaping-projections"></a>Kivetítések beágyazott kialakítása
+#### <a name="inline-shaping-projections"></a>Inline formáló vetületek
 
-A beágyazott alakítási megközelítés nem igényel formálói képességet, mivel a kivetítésekhez szükséges összes alakzat létrehozásához szükség van. Az előző példához hasonló adatprojektek kivetítéséhez a beágyazott leképezési lehetőség a következőképpen fog kinézni:
+A szövegközi formázási megközelítés nem igényel formázókészséget, mivel az előrejelzésekhez szükséges összes alakzat akkor jön létre, amikor szükség van rájuk. Ha ugyanazokat az adatokat szeretné kivetíteni, mint az előző példában, a szövegközi vetítési lehetőség a következőképpen néz ki:
 
 ```json
 "projections": [
@@ -295,11 +295,11 @@ A beágyazott alakítási megközelítés nem igényel formálói képességet, 
 ]
 ```
   
-A módszerek közül az egyik megfigyelés, hogy az `"Keyphrases"` értékeit hogyan tervezték a `"sourceContext"`. A karakterláncok gyűjteményét tartalmazó `"Keyphrases"` csomópont maga az oldal szövegének gyermeke. Mivel azonban a vetítésekhez JSON-objektumra van szükség, és az oldal egy primitív (string), a `"sourceContext"` a kulcs kifejezésének egy nevesített tulajdonsággal rendelkező objektumba való becsomagolására szolgál. Ez a módszer lehetővé teszi, hogy a primitívek egymástól függetlenül legyenek kitervezve.
+Mindkét megközelítés egyik észrevétele az, `"Keyphrases"` hogy az `"sourceContext"`értékek hogyan vetítődnek előre a használatával. A `"Keyphrases"` karakterláncok gyűjteményét tartalmazó csomópont maga is az oldal szövegének gyermeke. Mivel azonban a kivetítések hez JSON-objektum szükséges, `"sourceContext"` és az oldal primitív (karakterlánc), a program a kulcsmondatot egy elnevezett tulajdonsággal rendelkező objektumba csomagolja. Ez a technika lehetővé teszi, hogy még a primitívek is egymástól függetlenül legyenek kivetítve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A következő lépésként hozza létre az első készségkészlet kognitív ismeretekkel.
+Következő lépésként hozza létre az első skillset kognitív készségekkel.
 
 > [!div class="nextstepaction"]
-> [Hozza létre az első készségkészlet](cognitive-search-defining-skillset.md).
+> [Hozza létre az első skillset](cognitive-search-defining-skillset.md).

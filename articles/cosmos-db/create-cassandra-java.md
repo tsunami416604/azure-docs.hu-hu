@@ -1,5 +1,5 @@
 ---
-title: Java-alkalmazás létrehozása Azure Cosmos DB Cassandra API
+title: Java-alkalmazás létrehozása az Azure Cosmos DB Cassandra API-val
 description: Ez a rövid útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Cassandra API profilalkalmazások létrehozására az Azure Portal és a Java használatával
 ms.service: cosmos-db
 author: SnehaGunda
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 5a21f36136c6f1d77a2e9cb9108f539c9fb39334
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77134912"
 ---
-# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB Cassandra API-alapú adatkezeléshez
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Rövid útmutató: Java-alkalmazás létrehozása az Azure Cosmos DB Cassandra API-adatok kezeléséhez
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -25,14 +25,14 @@ ms.locfileid: "77134912"
 > * [Python](create-cassandra-python.md)
 >  
 
-Ebben a rövid útmutatóban egy Azure Cosmos DB Cassandra API fiókot hoz létre, és a GitHubról származó Cassandra Java-alkalmazást használ egy Cassandra-adatbázis és-tároló létrehozásához. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
+Ebben a rövid útmutatóban hozzon létre egy Azure Cosmos DB Cassandra API-fiókot, és a GitHubról klónozott Cassandra Java-alkalmazással hozzon létre egy Cassandra-adatbázist és -tárolót. Az Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, a tábla, a kulcsérték és a grafikonadatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Vagy [próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen Azure-előfizetés nélkül.
-- [Java fejlesztői készlet (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Mutasson a `JAVA_HOME` környezeti változót arra a mappára, ahol a JDK telepítve van.
-- A [Maven bináris archívuma](https://maven.apache.org/download.cgi). Ubuntu rendszeren futtassa `apt-get install maven` a Maven telepítéséhez.
-- [Git](https://www.git-scm.com/downloads). Ubuntu rendszeren futtassa `sudo apt-get install git` a git telepítéséhez.
+- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Vagy [próbálja ki az Azure Cosmos DB-t ingyenesen](https://azure.microsoft.com/try/cosmosdb/) Azure-előfizetés nélkül.
+- [Java Fejlesztési Készlet (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Irányítsa a `JAVA_HOME` környezeti változót arra a mappára, ahol a JDK telepítve van.
+- A [Maven bináris archívum](https://maven.apache.org/download.cgi). Az Ubuntu, `apt-get install maven` fuss telepíteni Maven.
+- [Git](https://www.git-scm.com/downloads). Az Ubuntu, `sudo apt-get install git` fuss telepíteni Git.
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -42,7 +42,7 @@ A dokumentum-adatbázis létrehozásához először létre kell hoznia egy Cassa
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig váltsunk át kódok használatára. A következő lépésekben elvégezheti a Cassandra-alkalmazás klónozását a GitHubról, beállíthatja a kapcsolati sztringet, és futtathatja az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+Most pedig váltsunk át kódok használatára. A következő lépésekben elvégezheti a Cassandra-alkalmazás klónozását a GitHubról, beállíthatja a kapcsolati sztringet, és futtathatja az alkalmazást. Látni fogja, mennyire egyszerű programozott módon dolgozni az adatokkal. 
 
 1. Nyisson meg egy parancssort. Hozzon létre egy `git-samples` nevű mappát. Ezután zárja be a parancssort.
 
@@ -56,7 +56,7 @@ Most pedig váltsunk át kódok használatára. A következő lépésekben elvé
     cd "C:\git-samples"
     ```
 
-3. Az alábbi parancs futtatásával klónozhatja a mintatárházat. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
+3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started.git
@@ -64,7 +64,7 @@ Most pedig váltsunk át kódok használatára. A következő lépésekben elvé
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan hozza létre a kód az adatbázis erőforrásait, tekintse át a következő kódrészleteket. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra. Ezek a kódrészletek mind a *src/Main/Java/com/Azure/cosmosdb/Cassandra/util/CassandraUtils. Java* fájlból származnak.  
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan hozza létre a kód az adatbázis erőforrásait, tekintse át a következő kódrészleteket. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra. Ezek a kódrészletek mind az *src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java* fájlból származnak.  
 
 * A Cassandra gazdagép-, port-, felhasználónév-, jelszó- és SSL-beállításai meg vannak adva. A kapcsolati sztring adatai az Azure Portal kapcsolati sztring oldaláról származnak.
 
@@ -78,7 +78,7 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan hozza létre a kó
     return cluster.connect();
     ```
 
-A következő kódrészletek a *src/Main/Java/com/Azure/cosmosdb/Cassandra/adattár/UserRepository. Java* fájlból származnak.
+A következő kódrészletek az *src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java* fájlból származnak.
 
 * Új kulcsterület létrehozása.
 
@@ -142,29 +142,29 @@ A következő kódrészletek a *src/Main/Java/com/Azure/cosmosdb/Cassandra/adatt
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba. A kapcsolati sztring részletei lehetővé teszik az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal.
 
-1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a **kapcsolatok karakterlánc**lehetőséget. 
+1. Az Azure Cosmos DB-fiókjában az [Azure Portalon](https://portal.azure.com/)válassza a **Kapcsolati karakterlánc**lehetőséget. 
 
     ![Felhasználónév megtekintése és másolás az Azure Portal Kapcsolati sztring oldaláról](./media/create-cassandra-java/copy-username-connection-string-azure-portal.png)
 
-2. Válassza a ![Másolás gomb](./media/create-cassandra-java/copy-button-azure-portal.png) a CONTACT POINT érték másolásához.
+2. Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-java/copy-button-azure-portal.png) a CONTACT POINT érték másolásához.
 
-3. Nyissa meg a *config. properties* fájlt a *C:\git-samples\azure-cosmosdb-Cassandra-Java-Getting-started\java-examples\src\main\resources* mappából. 
+3. Nyissa meg a *config.properties* fájlt a *C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources* mappából. 
 
 3. Illessze be a CONTACT POINT értéket a Portalból a `<Cassandra endpoint host>` helyére a 2. sorban.
 
-    A *config. properties fájl 2.* sora a következőhöz hasonlóan néz ki: 
+    Line 2 *config.properties* most meg hasonló 
 
     `cassandra_host=cosmos-db-quickstart.cassandra.cosmosdb.azure.com`
 
 3. Lépjen vissza a portálra, és másolja a USERNAME értéket. Illessze be a USERNAME értéket a Portalból a 4. sorban található `<cassandra endpoint username>` érték helyére.
 
-    A *config. properties fájl 4.* sora ekkor a következőhöz hasonlóan néz ki: 
+    A *config.properties* 4. 
 
     `cassandra_username=cosmos-db-quickstart`
 
-4. Lépjen vissza a portálra, és másolja a jelszó értékét. Illessze be a PASSWORD értéket a Portalból az 5. sorban található `<cassandra endpoint password>` érték helyére.
+4. Lépjen vissza a portálra, és másolja a PASSWORD értéket. Illessze be a PASSWORD értéket a Portalból az 5. sorban található `<cassandra endpoint password>` érték helyére.
 
-    A *config. properties 5.* sora ekkor a következőhöz hasonlóan néz ki: 
+    A *config.properties* 5. 
 
     `cassandra_password=2Ggkr662ifxz2Mg...==`
 
@@ -172,7 +172,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 6. Ha a 6. sort egy adott SSL-tanúsítvány használatára módosította, frissítse a 7. sort a tanúsítvány jelszavával. 
 
-7. Mentse a *config. properties* fájlt.
+7. Mentse a *config.properties* fájlt.
 
 ## <a name="run-the-java-app"></a>A Java-alkalmazás futtatása
 
@@ -196,13 +196,13 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     A terminálablak értesítéseket jelenít meg a kulcstér és a tábla létrehozásáról. Ezt követően kiválasztja és visszaadja a táblában található összes felhasználót, és megjeleníti a kimenetet, majd azonosító alapján kiválaszt egy sort, és megjeleníti az értéket.  
 
-    Nyomja le a CTRL + C billentyűkombinációt a program végrehajtásának leállításához és a konzol ablak bezárásához.
+    Nyomja le a Ctrl+C billentyűkombinációt a program végrehajtásának leállításához és a konzolablak bezárásához.
 
 4. Ha megnyitja az **Adatkezelőt** az Azure Portalon, lekérdezheti és módosíthatja és használhatja az új adatokat. 
 
-    ![Adatkezelő-Azure Cosmos DBban lévő adatmegjelenítés](./media/create-cassandra-java/view-data-explorer-java-app.png)
+    ![Az adatok megtekintése az Adatkezelőben - Azure Cosmos DB](./media/create-cassandra-java/view-data-explorer-java-app.png)
 
-## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
@@ -210,9 +210,9 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy Azure Cosmos DB fiókot a Cassandra API, és hogyan futtathat egy Cassandra Java-alkalmazást, amely létrehoz egy Cassandra-adatbázist és-tárolót. Mostantól további adatait is importálhatja a Azure Cosmos DB-fiókjába. 
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB-fiókot cassandra API-val, és futtathatja a Cassandra Java-alkalmazást, amely cassandra-adatbázist és -tárolót hoz létre. Most már importálhat további adatokat az Azure Cosmos DB-fiókjába. 
 
 > [!div class="nextstepaction"]
 > [Cassandra-adatok importálása az Azure Cosmos DB-be](cassandra-import-data.md)
