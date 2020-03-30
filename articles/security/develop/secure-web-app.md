@@ -1,7 +1,7 @@
 ---
-title: Biztonságos webalkalmazás fejlesztése | Microsoft Docs
-description: Ez az egyszerű minta alkalmazás olyan ajánlott biztonsági eljárásokat valósít meg, amelyek javítják az alkalmazást és a szervezete biztonsági helyzetét az Azure-ban való fejlesztés során.
-keywords: Na
+title: Biztonságos webes alkalmazás kidolgozása | Microsoft dokumentumok
+description: Ez az egyszerű mintaalkalmazás olyan biztonsági gyakorlati tanácsokat valósít meg, amelyek javítják az alkalmazást és a szervezet biztonsági állapotát az Azure-ban való fejlesztés során.
+keywords: na
 services: security
 documentationcenter: na
 author: isaiah-msft
@@ -16,189 +16,203 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 640900458eccc36afe58cb148ffd7b94b43be879
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 75890efebc42b74c56fb95ed1803152b516588b9
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934915"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385214"
 ---
-# <a name="develop-a-secure-web-app"></a>Biztonságos webalkalmazás fejlesztése
+# <a name="develop-a-secure-web-app"></a>Biztonságos webalkalmazások fejlesztése
 
-Ez a minta egy egyszerű Python-alkalmazás, amely a biztonsági erőforrásokra mutató hivatkozásokat tartalmazó weblapot jelenít meg az Azure-beli alkalmazások fejlesztéséhez. Az alkalmazás olyan biztonsági eljárásokat valósít meg, amelyek segíthetnek az alkalmazás és a szervezet biztonsági helyzetének javításában az Azure-beli alkalmazások fejlesztésekor.
+Ez a minta egy egyszerű Python-alkalmazás, amely egy olyan weblapot jelenít meg, amely az Azure-beli alkalmazások fejlesztéséhez szükséges biztonsági erőforrásokra mutató hivatkozásokat jelenít meg. Az alkalmazás olyan biztonsági gyakorlati tanácsokat valósít meg, amelyek segíthetnek az alkalmazás és a szervezet biztonsági helyzetének javításában, amikor alkalmazásokat fejleszt az Azure-ban.
 
-Az alkalmazás-összetevők megfelelő konfigurálásának biztosítása érdekében kövesse a cikkben ismertetett lépéseket. Az adatbázis, Azure App Service, Azure Key Vault példány és az Azure Application Gateway példánya egymástól függ.
+Az alkalmazás-összetevők megfelelő konfigurálásának biztosításához egymás után kövesse a cikkben ismertetett lépéseket. Az adatbázis, az Azure App Service, az Azure Key Vault-példány és az Azure Application Gateway-példány egymástól függ.
 
-Az üzembe helyezési parancsfájlok beállítják az infrastruktúrát. Az üzembe helyezési parancsfájlok futtatása után az összetevők és szolgáltatások összekapcsolásához meg kell adnia néhány manuális konfigurációt a Azure Portalban.
+A központi telepítési parancsfájlok beállítják az infrastruktúrát. A központi telepítési parancsfájlok futtatása után az Azure Portalon manuálisan kell konfigurálnia az összetevők és szolgáltatások összekapcsolását.
 
-A minta alkalmazás az Azure-ban olyan alkalmazások fejlesztését célozza meg, akik biztonsági mértékeket szeretnének megvalósítani az alkalmazásaikban.
+A mintaalkalmazás az Azure-on olyan alkalmazásokat fejlesztő kezdők nek szól, akik biztonsági intézkedéseket szeretnének végrehajtani az alkalmazásaikban.
 
-Az alkalmazás fejlesztése és üzembe helyezése során megismerheti a következőket:
+Az alkalmazás fejlesztése és üzembe helyezése során megtudhatja, hogyan:
 
-- Hozzon létre egy Azure Key Vault példányt, tárolja és kérje le a titkokat.
-- Azure Database for PostgreSQL üzembe helyezése, biztonságos jelszavak beállítása és hozzáférés engedélyezése.
-- Futtasson egy alpesi Linux-tárolót az Azure Web Apps for Linux platformon, és engedélyezze az Azure-erőforrások felügyelt identitásait.
-- Hozzon létre és konfiguráljon egy Azure Application Gateway példányt egy olyan tűzfallal, amely az [OWASP Top 10 szabályrendszert](https://coreruleset.org/)használja.
-- Az Azure-szolgáltatások használatával engedélyezheti az átvitelben és a nyugalmában lévő adatok titkosítását.
+- Hozzon létre egy Azure Key Vault-példányt, tároljon és szerezzen be titkokat belőle.
+- Telepítse az Azure Database for PostgreSQL-t, állítson be biztonságos jelszavakat, és engedélyezze a hozzáférést.
+- Futtasson egy Alpine Linux-tárolót az Azure Web Apps for Linux on, és engedélyezze az Azure-erőforrások felügyelt identitások.
+- Hozzon létre és konfiguráljon egy Azure Application Gateway-példányt egy [OWASP Top 10 Ruleset](https://coreruleset.org/)rendszert használó tűzfallal.
+- Engedélyezze az adatok titkosítását az átvitel és az inaktív szolgáltatások használatával.
 
-Az alkalmazás fejlesztése és üzembe helyezése után be kell állítania az alábbi minta-webalkalmazást, valamint a konfigurációs és biztonsági mértékeket.
+Az alkalmazás fejlesztése és üzembe helyezése után a következő minta webalkalmazást, valamint a leírt konfigurációs és biztonsági intézkedéseket fogja beállítani.
 
 ![Minta webalkalmazás](./media/secure-web-app/demo-app.png)
 
 ## <a name="architecture"></a>Architektúra
-Az alkalmazás egy tipikus n szintű alkalmazás három réteggel. Itt látható az előtér-, a háttér-és az adatbázis-réteg az integrált figyelési és titkos felügyeleti összetevőkkel:
+
+Az alkalmazás egy tipikus n-szintű alkalmazás három réteggel. Az előtér, a háttérrendszer és az integrált figyelési és titkos felügyeleti összetevőket tartalmazó adatbázisréteg itt látható:
 
 ![Alkalmazásarchitektúra](./media/secure-web-app/architecture.png)
 
-Az architektúra az alábbi összetevőkből áll:
+Az architektúra a következő összetevőkből áll:
 
-- [Azure Application Gateway](../../application-gateway/index.yml). Átjárót és tűzfalat biztosít az alkalmazás architektúrája számára.
-- [Azure Web Apps Linuxon](../../app-service/containers/app-service-linux-intro.md). A tároló futtatókörnyezetét biztosítja a Python-alkalmazás Linux-környezetben való futtatásához.
-- [Azure Key Vault](../../key-vault/index.yml). Tárolja és titkosítja az alkalmazás titkait, és felügyeli a rájuk épülő hozzáférési szabályzatok létrehozását.
-- [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/). Biztonságosan tárolja az alkalmazás adatfájljait.
-- [Azure Security Center](../../security-center/index.yml) és az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Monitorozást és riasztásokat biztosít az alkalmazás működéséről.
+- [Az Azure Application Gateway](../../application-gateway/index.yml)alkalmazást. Biztosítja az átjárót és a tűzfalat az alkalmazásarchitektúrához.
+- [Azure Web Apps Linux on](../../app-service/containers/app-service-linux-intro.md). A tároló futásidejű a Python-alkalmazás Linux-környezetben való futtatásához.
+- [Az Azure Key Vault](../../key-vault/index.yml). Tárolja és titkosítja az alkalmazás titkosítatait, és kezeli a hozzáférési szabályzatok létrehozását körülöttük.
+- [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/). Biztonságosan tárolja alkalmazásunk adatait.
+- [Az Azure Security Center](../../security-center/index.yml) és [az Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Figyelést és riasztásokat biztosít az alkalmazás működéséről.
 
-## <a name="threat-model"></a>Veszélyforrások modellje
-A veszélyforrások modellezése a potenciális biztonsági fenyegetések azonosításának folyamata a vállalat és az alkalmazás számára, majd a megfelelő kockázatcsökkentő terv biztosítása.
+## <a name="threat-model"></a>Fenyegetésmodell
 
-Ez a példa a [Microsoft Threat Modeling Tool](threat-modeling-tool.md) használta a biztonságos minta alkalmazás veszélyforrások modellezésének megvalósítására. Az összetevők és az adatfolyamatok diagramon való kiépítésével a fejlesztési folyamat elején azonosíthatja a problémákat és a fenyegetéseket. Ez később időt és pénzt takarít meg.
+A fenyegetésmodellezés az üzleti és alkalmazásra leselkedő potenciális biztonsági fenyegetések azonosításának folyamata, majd annak biztosítása, hogy megfelelő kockázatcsökkentési terv legyen érvényben.
 
-Ez a minta alkalmazáshoz tartozó veszélyforrás-modell:
+Ez a minta a [Microsoft Threat Modeling Tool segítségével](threat-modeling-tool.md) valósította meg a biztonságos mintaalkalmazás fenyegetésmodellezését. Az összetevők és az adatfolyamok diagrammal azonosíthatja a problémákat és fenyegetéseket a fejlesztési folyamat korai szakaszában. Ez időt és pénzt takarít meg később.
 
-![Veszélyforrások modellje](./media/secure-web-app/threat-model.png)
+Ez a mintaalkalmazás fenyegetésmodellje:
 
-A veszélyforrások modellezése eszköz által generált veszélyforrások és potenciális sebezhetőségek a következő képernyőképen jelennek meg. A fenyegetés modell áttekintést nyújt a feltett támadási felületről, és felszólítja a fejlesztőket a problémák enyhítésére.
+![Fenyegetésmodell](./media/secure-web-app/threat-model.png)
 
-![A veszélyforrások modell kimenete](./media/secure-web-app/threat-model-output.png)
+Néhány minta fenyegetések és a potenciális biztonsági rések, amelyek a fenyegetés modellezési eszköz generálja a következő képernyőképen látható. A fenyegetésmodell áttekintést ad a támadási felület elérhetővé, és kéri a fejlesztőket, hogy gondolja át, hogyan lehet enyhíteni a problémákat.
 
-Az előző veszélyforrás-modell kimenetének SQL-injektálását például a felhasználói bevitelek tisztításával és a Azure Database for PostgreSQL tárolt funkcióinak használatával csökkenthetők. Ez a megoldás megakadályozza a lekérdezések tetszőleges végrehajtását az adatolvasások és írások során.
+![Fenyegetésmodell kimenete](./media/secure-web-app/threat-model-output.png)
 
-A fejlesztők javítják a rendszerek általános biztonságát azáltal, hogy elhárítják az egyes fenyegetéseket a veszélyforrások modelljének kimenetében.
+Például az SQL-injektálás az előző fenyegetésmodell kimenetét a felhasználói bemenetek fertőtlenítése és a tárolt függvények használatával az Azure Database for PostgreSQL használatával. Ez a megoldás megakadályozza a lekérdezések tetszőleges végrehajtását az adatok olvasása és írása során.
+
+A fejlesztők a fenyegetésmodell kimenetében lévő fenyegetések csökkentésével javítják a rendszer általános biztonságát.
 
 ## <a name="deployment"></a>Környezet
-A következő lehetőségek lehetővé teszik a Linux futtatását Azure App Serviceon:
 
-- Válasszon egy tárolót az Azure-beli előre összeállított Microsoft-tárolók listájából, amelyek támogató technológiákkal lettek létrehozva (Python, Ruby, PHP, Java, Node. js, .NET Core).
-- Egyéni kialakítású tároló használata. Válassza ki a saját tároló-nyilvántartásokat a rendszerkép forrásaként, és építsen a HTTP-t támogató számos elérhető technológiára.
+A következő lehetőségek lehetővé teszik a Linux futtatását az Azure App Service szolgáltatásban:
 
-Ebben a példában azt a telepítési parancsfájlt fogja futtatni, amely telepíti a webappot App Service és létrehozza az erőforrásokat.
+- Válasszon egy tárolót az Azure-beli, támogató technológiákkal (Python, Ruby, PHP, Java, Node.js, .NET Core) létrehozott, előre összeállított Microsoft-tárolók listájából.
+- Használjon egyéni tárolót. Válassza ki a saját tároló-jegyzékek forrásaként a rendszerkép, és épít a számos rendelkezésre álló technológiák, amelyek támogatják a HTTP.Select your own container regissasas as the source of the image and build on the many available technologies that support HTTP.
 
-Az alkalmazás az alább látható különböző üzembe helyezési modelleket használhatja:
+Ebben a példában futtatja a központi telepítési parancsfájlt, amely telepíti a webapp-ra az App Service-re, és létrehozza az erőforrásokat.
 
-![Üzembe helyezési adatfolyam diagramja](./media/secure-web-app/deployment.png)
+Az alkalmazás használhatja a különböző telepítési modellek alább látható:
 
-Az Azure-ban számos módon telepíthet alkalmazásokat, beleértve a következőket:
+![Központi telepítési adatfolyam-diagram](./media/secure-web-app/deployment.png)
+
+Az Azure-ban számos módon telepíthet alkalmazásokat, többek között:
 
 - Azure Resource Manager-sablonok
 - PowerShell
 - Azure CLI
-- Azure Portal
+- Azure portál
 - Azure DevOps
 
-Ez az alkalmazás használatban van:
+Ez az alkalmazás használt:
 
-- [](https://docs.docker.com/) A Docker létrehozza és felépíti a tároló lemezképeit.
+- [Docker](https://docs.docker.com/) a tárolórendszerképek létrehozásához és létrehozásához.
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) üzembe helyezéshez.
-- A [Docker hub](https://hub.docker.com/) tároló-beállításjegyzékként.
+- [Docker Hub,](https://hub.docker.com/) mint a tároló beállításjegyzék.
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 
 ### <a name="network"></a>Network (Hálózat)
-A minta alkalmazás végpontok közötti SSL-titkosítást használ a hálózatra irányuló és onnan kimenő forgalomhoz. Az átjáró önaláírt tanúsítvánnyal van konfigurálva.
-> [!IMPORTANT]
-> Ebben a bemutatóban egy önaláírt tanúsítványt használunk. Éles környezetben egy ellenőrzött hitelesítésszolgáltatótól (CA) kell beszerezni a tanúsítványokat.
 
-Az alkalmazás tűzfala emellett megvizsgálja a bejövő forgalmat és a riasztásokat a rendszergazdáknál, ha a hálózati forgalomban kártékony forgalom észlelhető.
-Application Gateway csökkenti a fenyegetések modellben felderített DDoS-és SQL-befecskendezési fenyegetések lehetőségét.
+A mintaalkalmazás végpontok közötti SSL-titkosítást használ a hálózatba beáramló és a hálózatból kiáramló, a tranzitadatokhoz. Az átjáró önaláírt tanúsítvánnyal van konfigurálva.
+> [!IMPORTANT]
+> Ebben az bemutatóban önaláírt tanúsítvány t használ. Éles környezetben a tanúsítványokat ellenőrzött hitelesítésszolgáltatótól (CA) kell beszereznie.
+
+Az alkalmazás tűzfala is megvizsgálja a bejövő forgalmat, és figyelmezteti a rendszergazdákat, ha rosszindulatú forgalmat észlel a hálózati forgalomban.
+Az Application Gateway csökkenti a fenyegetésmodellben felderített DDoS- és SQL-injektálási fenyegetések lehetőségét.
 
 ### <a name="identity"></a>Identitás
-A portálra való bejelentkezéshez a minta alkalmazás többtényezős hitelesítést használ Azure Active Directory (Azure AD) rendszergazdák számára, akik hozzá vannak rendelve az erőforrásokhoz.
-A minta alkalmazás felügyelt identitásokat használ a titkos kulcsok olvasására és beolvasására a Azure Key Vaultból, így biztosítva, hogy az alkalmazásnak ne kelljen a titkos kódokhoz tartozó hitelesítő adatokkal és tokenekkel elolvasnia a titkokat. Az Azure AD automatikusan létrehozza azokat az egyszerű szolgáltatásokat, amelyeket az alkalmazásnak a felügyelt identitások használatakor el kell olvasnia és módosítania kell a titkokat.
 
-Az Azure-erőforrások és az MFA felügyelt identitásai révén a támadók megnehezítik a jogosultságok megszerzését és a jogosultságuk kiterjesztését a rendszeren. Ez a fenyegetés a fenyegetés modellben lett kimutatva.
-Az alkalmazás az OAuth-t használja, amely lehetővé teszi, hogy a OAuth alkalmazásban regisztrált felhasználók bejelentkezzenek az alkalmazásba.
+A portálra való bejelentkezéshez a mintaalkalmazás többtényezős hitelesítést használ az Azure Active Directory (Azure AD) rendszergazdáiszámára, akik az erőforrásokhoz kapnak hozzáférést.
+A mintaalkalmazás felügyelt identitások használatával szerez engedélyeket az Azure Key Vault titkos kulcsainak olvasásához és lekéréséhez, biztosítva, hogy az alkalmazásnak nem kell titkos hitelesítő adatokat és jogkivonatokat kódolnia a titkos kulcsok olvasásához. Az Azure AD automatikusan létrehozza a szolgáltatásnéveket, amelyeket az alkalmazásnak el kell olvasnia, és módosítja a titkos kulcsokat a felügyelt identitások használatba kerülésekor.
+
+Felügyelt identitások az Azure-erőforrások és az MFA megnehezíti az ellenfelek számára, hogy jogosultságot szerezzenek, és bővítsék a jogosultságaikat a rendszerben. Erre a fenyegetésre a fenyegetési modell is rámutatott.
+Az alkalmazás oauth-ot használ, amely lehetővé teszi az OAuth alkalmazásban regisztrált felhasználók számára, hogy bejelentkezzenek az alkalmazásba.
 
 ### <a name="storage"></a>Storage
-A PostgreSQL-adatbázisban lévő adatok Azure Database for PostgreSQL automatikusan titkosítva maradnak a nyugalmi állapotban. Az adatbázis engedélyezi a App Service IP-címeket, így csak a telepített App Service webalkalmazás férhet hozzá az adatbázis-erőforrásokhoz a megfelelő hitelesítő adatokkal.
 
-### <a name="logging-and-auditing"></a>Naplózás és naplózás
-Az alkalmazás végrehajtja a naplózást Application Insights használatával követheti a metrikákat, a naplókat és a kivételeket. Ez a naplózás elegendő alkalmazás-metaadatokat biztosít ahhoz, hogy tájékoztassák a fejlesztőket és az operatív csapat tagjait az alkalmazás állapotáról. Emellett a biztonsági incidensek esetén is elegendő mennyiségű adattal rendelkezik.
+A PostgreSQL-adatbázisban lévő adatokat az Azure Database for PostgreSQL automatikusan titkosítja. Az adatbázis engedélyezi az App Service IP-címeit, így csak a telepített App Service-webalkalmazás férhet hozzá az adatbázis-erőforrásokhoz a megfelelő hitelesítési hitelesítő adatokkal.
+
+### <a name="logging-and-auditing"></a>Naplózás
+
+Az alkalmazás megvalósítja a naplózást az Application Insights használatával a metrikák, naplók és kivételek nyomon követésére. Ez a naplózás elegendő alkalmazásmetaadatot biztosít ahhoz, hogy tájékoztassa a fejlesztőket és a műveleti csapat tagjait az alkalmazás állapotáról. Biztonsági incidensek esetén elegendő adatot is biztosít a nyomon lépéshez.
 
 ## <a name="cost-considerations"></a>Költségekkel kapcsolatos szempontok
-Ha még nem rendelkezik Azure-fiókkal, akkor létrehozhat egy ingyenes fiókot. A kezdéshez nyissa meg az [ingyenes fiók lapot](https://azure.microsoft.com/free/) , és tekintse meg, hogy mit tehet egy ingyenes Azure-fiókkal, és hogy mely termékek ingyenesek 12 hónapig.
 
-Ha a minta alkalmazásban lévő erőforrásokat a biztonsági funkciókkal szeretné üzembe helyezni, a prémium funkciókért kell fizetnie. Az alkalmazások skálázása, valamint az Azure által kínált ingyenes csomagok és kísérletek frissítése az alkalmazásokra vonatkozó követelmények kielégítése érdekében várható, hogy a költségek növekednek. A költségek becsléséhez használja az Azure [díjszabási számológépét](https://azure.microsoft.com/pricing/calculator/) .
+Ha még nem rendelkezik Azure-fiókkal, létrehozhat egy ingyeneset. Az [ingyenes fiókoldalra](https://azure.microsoft.com/free/) feladhatja a kezdéshez, megtudhatja, hogy mit tehet egy ingyenes Azure-fiókkal, és megtudhatja, hogy mely termékek 12 hónapig ingyenesek.
+
+Az erőforrások üzembe helyezéséhez a mintaalkalmazásban a biztonsági funkciókkal, meg kell fizetnie néhány prémium funkciók. Mivel az alkalmazás méretei és az Azure által kínált ingyenes szintek és próbaverziók frissítése az alkalmazás követelményeinek teljesítése érdekében, a költségek növekedhetnek. Az Azure [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) segítségével megbecsülheti a költségeket.
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
+
 ### <a name="prerequisites"></a>Előfeltételek
-Az alkalmazás működésének megkezdéséhez telepítenie kell az alábbi eszközöket:
 
-- Az alkalmazás kódjának módosítására és megtekintésére szolgáló Kódszerkesztő. A [Visual Studio Code](https://code.visualstudio.com/) egy nyílt forráskódú lehetőség.
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&viewFallbackFrom=azure-cli-latest,) a fejlesztői számítógépen.
-- [Git](https://git-scm.com/) a rendszeren. A git a forráskód helyi klónozására szolgál.
-- [jQ](https://stedolan.github.io/jq/), egy UNIX-eszköz, amely felhasználóbarát módon kérdezi le a JSON-t.
+Az alkalmazás üzembe kapcsolásához telepítenie kell az alábbi eszközöket:
 
-A minta alkalmazás erőforrásainak üzembe helyezéséhez Azure-előfizetés szükséges. Ha nem rendelkezik Azure-előfizetéssel, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a minta alkalmazás teszteléséhez.
+- Kódszerkesztő az alkalmazáskód módosításához és megtekintéséhez. [A Visual Studio Code](https://code.visualstudio.com/) egy nyílt forráskódú lehetőség.
+- [Azure CLI](/cli/azure/install-azure-cli) a fejlesztői számítógépen.
+- [Git](https://git-scm.com/) a rendszer. A Git a forráskód helyi klónozására szolgál.
+- [jq](https://stedolan.github.io/jq/), egy UNIX eszköz a JSON felhasználóbarát lekérdezésére.
 
-Az eszközök telepítése után már készen áll az alkalmazás üzembe helyezésére az Azure-ban.
+A mintaalkalmazás erőforrásainak üzembe helyezéséhez Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a mintaalkalmazás teszteléséhez.
+
+Az eszközök telepítése után készen áll az alkalmazás azure-ra való üzembe helyezésére.
 
 ### <a name="environment-setup"></a>A környezet beállítása
-Futtassa a telepítési parancsfájlokat a környezet és az előfizetés beállításához:
 
-1. A forráskód-tárház klónozásához használja ezt a git-parancsot:
+Futtassa a központi telepítési parancsfájlokat a környezet és az előfizetés beállításához:
 
-   ``` git
+1. A forráskódtár klónozásához használja ezt a Git parancsot:
+
+   ```shell
    git clone https://github.com/Azure-Samples/sample-linux-python-app tutorial-project
    ```
-2. A könyvtárba való áthelyezéshez használja a következő parancsot:
 
-   ```
+2. A könyvtárba való beköltözéshez használja a következő parancsot:
+
+   ```shell
    cd tutorial-project/scripts
    ```
 
-3. A parancsfájlok mappában vannak olyan fájlok, amelyek az Ön által használt platformra (Windows vagy Linux) vonatkoznak. Mivel az Azure CLI már telepítve van, jelentkezzen be az Azure-fiókba a parancssorban ehhez a CLI-parancs futtatásával:
+3. Vannak olyan fájlok a parancsfájlok mappájában, amelyek a használt platformra (Windows vagy Linux) vonatkoznak. Mivel az Azure CLI már telepítve van, jelentkezzen be az Azure-fiókba a parancssorból az Azure CLI parancs futtatásával:
 
-   ``` azurecli
+   ```azurecli-interactive
    az login
    ```
 
-Ekkor megnyílik a böngésző, és jelentkezzen be a hitelesítő adataival. A bejelentkezést követően megkezdheti az erőforrások telepítését a parancssorból.
+Megnyílik a böngésző, és bejelentkezik a hitelesítő adataival. A bejelentkezés után megkezdheti az erőforrások központi telepítését a parancssorból.
 
-A telepítési parancsfájlok `deploy-powershell.ps1` és `deploy-bash.sh` a teljes alkalmazást telepítő programkódot tartalmaznak.
+A központi `deploy-powershell.ps1` telepítési `deploy-bash.sh` parancsfájlok és a kódot tartalmazó, amely telepíti a teljes alkalmazást.
 A megoldás üzembe helyezése:
 
-1. Ha a PowerShell-t futtatja `deploy-powershell.ps1` a fájl futtatásával, írja `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` be a régió és az erőforráscsoport nevének lecserélése megfelelő Azure-régiókkal és az erőforráscsoport nevét.
-2. Ha Linux rendszeren futtatja a `deploy-bash.sh` fájlt `/deploy-bash.sh REGION RESOURCE_GROUP_NAME`, akkor előfordulhat, hogy beírja a fájl végrehajtható fájlját`chmod +x deploy-bash.sh`
+1. Ha a PowerShell futtassa `deploy-powershell.ps1` a `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` fájlt a régió és az erőforráscsoport nevének megfelelő Azure-régiókra és az erőforráscsoport nevére való lecserélésével.
+2. Ha Linuxon futtassa a `deploy-bash.sh` `/deploy-bash.sh REGION RESOURCE_GROUP_NAME`fájlt a beírással, akkor lehet, hogy a fájlt végrehajthatóvá kell tennie a`chmod +x deploy-bash.sh`
 
-Az alábbi példák a legfontosabb összetevők töredékeit mutatják be. A példákat egyenként vagy a többi összetevővel is üzembe helyezheti a fájlok telepítése lehetőség futtatásával.
+Az alábbi példák a legfontosabb összetevők kódrészleteket mutatják be. A példákat egyenként vagy a többi összetevővel együtt is telepítheti a központi telepítés fájlok futtatásával.
 
-### <a name="implementation-guidance"></a>Implementálási segédlet
-Az üzembe helyezési parancsfájl egy olyan parancsfájl, amely négy fázisra osztható fel. Mindegyik fázis üzembe helyezi és konfigurálja az [architektúra](#architecture)-diagramban található Azure-erőforrásokat.
+### <a name="implementation-guidance"></a>Végrehajtási útmutató
 
-A négy fázis a következők:
+A központi telepítési parancsfájl egy parancsfájl, amely négy fázisra bontható. Minden fázis telepíti és konfigurálja az [architektúradiagramban](#architecture)található Azure-erőforrást.
 
-- Azure Key Vault üzembe helyezése.
-- Azure Database for PostgreSQL üzembe helyezése.
-- Azure-Web Apps üzembe helyezése Linuxon.
-- Application Gateway üzembe helyezése a webalkalmazási tűzfallal.
+A négy fázis a következő:
 
-Az egyes fázisok a korábban üzembe helyezett erőforrások konfigurációjának használatával épülnek fel az előzőre.
+- Telepítse az Azure Key Vaultot.
+- Telepítse az Azure Database for PostgreSQL-t.
+- Telepítse az Azure Web Apps linuxos telepítése.
+- Telepítse az Application Gateway alkalmazást webalkalmazás-tűzfallal.
 
-A megvalósítás lépéseinek elvégzéséhez győződjön meg arról, hogy telepítette az [Előfeltételek](#prerequisites)szakaszban felsorolt eszközöket.
+Minden fázis az előzőre épül a korábban üzembe helyezett erőforrások konfigurációjának használatával.
 
-#### <a name="deploy-azure-key-vault"></a>Azure Key Vault üzembe helyezése
-Ebben a szakaszban egy Azure Key Vault-példányt hoz létre és helyez üzembe, amely a titkok és a tanúsítványok tárolására szolgál.
+A megvalósítási lépések végrehajtásához győződjön meg arról, hogy telepítette az [Előfeltételek](#prerequisites)csoportban felsorolt eszközöket.
 
-Az üzembe helyezés befejezése után az Azure-ban üzembe helyezhető egy Azure Key Vault példány.
+#### <a name="deploy-azure-key-vault"></a>Az Azure Key Vault telepítése
 
-Azure Key Vault üzembe helyezése az Azure CLI használatával:
+Ebben a szakaszban hozzon létre és telepítsen egy Azure Key Vault-példányt, amely titkos kulcsok és tanúsítványok tárolására szolgál.
 
-1. Deklarálja Azure Key Vault változóit.
-2. Regisztrálja a Azure Key Vault szolgáltatót.
-3. Hozza létre a példányhoz tartozó erőforráscsoportot.
-4. Hozza létre a Azure Key Vault példányt a 3. lépésben létrehozott erőforráscsoporthoz.
+Miután befejezte a központi telepítést, rendelkezik egy Azure Key Vault-példány üzembe helyezésével az Azure-ban.
 
-   ``` azurecli
+Az Azure Key Vault üzembe helyezése az Azure CLI használatával:
+
+1. Deklarálja az Azure Key Vault változóit.
+2. Regisztrálja az Azure Key Vault-szolgáltatót.
+3. Hozza létre a példány erőforráscsoportját.
+4. Hozza létre az Azure Key Vault-példányt a 3.
+
+   ```powershell-interactive
 
     function Get-Hash() {
         return (New-Guid).Guid.Split('-')[4]
@@ -233,24 +247,26 @@ Azure Key Vault üzembe helyezése az Azure CLI használatával:
        --verbose
 
    ```
-Ajánlott a felügyelt identitások használata az Azure-erőforrásokhoz olyan alkalmazásokban, amelyek a Key Vault használatával férnek hozzá az erőforrásokhoz. A biztonsági helyzet akkor nő, ha a hozzáférési kulcsok Key Vault nem a kódban vagy a konfigurációban vannak tárolva.
 
-#### <a name="deploy-azure-database-for-postgresql"></a>Azure Database for PostgreSQL üzembe helyezése
-Azure Database for PostgreSQL a következő módon működik: először hozza létre az adatbázis-kiszolgálót, majd hozza létre azt az adatbázist, amelybe a sémát és az adatfájlokat tárolni szeretné.
+Ajánlott eljárás az Azure-erőforrások felügyelt identitások használata olyan alkalmazásokban, amelyek key vault használatával erőforrások eléréséhez. A biztonsági állapot növekszik, ha a Key Vault hozzáférési kulcsai nem kódvagy konfiguráció ban tárolódnak.
 
-Az üzembe helyezés befejezése után egy PostgreSQL-kiszolgáló és egy Azure-beli adatbázis fut.
+#### <a name="deploy-azure-database-for-postgresql"></a>Az Azure Database telepítése a PostgreSQL-hez
 
-Azure Database for PostgreSQL üzembe helyezése az Azure CLI használatával:
+Az Azure Database for PostgreSQL a következőképpen működik, először hozza létre az adatbázis-kiszolgálót, majd hozza létre azt az adatbázist, amelyen a sémát és az adatokat tárolni szeretné.
+
+A központi telepítés befejezése után egy PostgreSQL-kiszolgáló és az Azure-on futó adatbázis fut.
+
+Az Azure Database for PostgreSQL üzembe helyezése az Azure CLI használatával:
 
 1. Nyisson meg egy terminált az Azure CLI-vel és az Azure-előfizetés beállításával.
-2. Az adatbázis eléréséhez használt biztonságos Felhasználónév és jelszó kombinációjának létrehozása. (Ezeket a Azure Key Vault az azokat használó alkalmazások számára kell tárolni.)
-3. Hozza létre a PostgreSQL-kiszolgáló példányát.
-4. Hozzon létre egy adatbázist a 3. lépésben létrehozott kiszolgálópéldány alapján.
-5. Futtassa a PostgreSQL-szkripteket a PostgreSQL-példányon.
+2. Hozzon létre egy biztonságos felhasználónevet és jelszókombinációt, amely az adatbázis eléréséhez használatos. (Ezeket az Azure Key Vaultban kell tárolni az őket használó alkalmazások számára.)
+3. Hozza létre a PostgreSQL kiszolgálópéldányt.
+4. Hozzon létre egy adatbázist a 3.
+5. PostgreSQL parancsfájlok futtatása a PostgreSQL példányon.
 
-Az alábbi kód az Azure kulcstartóban tárolt PGUSERNAME és PGPASSWORD-titkokra támaszkodik a fenti kulcstartó üzembe helyezése lépésből.
+Az alábbi kód az Azure KeyVault-ban tárolt PGUSERNAME és PGPASSWORD titkos kulcsokra támaszkodik a fenti keyvault-lépés központi telepítéséből.
 
-   ``` azurecli
+   ```powershell-interactive
    $pgUsername = $(az keyvault secret show --name PGUSERNAME --vault-name $kvName --query value) -replace '"',''
    $pgPassword = $(az keyvault secret show --name PGPASSWORD --vault-name $kvName --query value) -replace '"',''
 
@@ -291,31 +307,31 @@ Az alábbi kód az Azure kulcstartóban tárolt PGUSERNAME és PGPASSWORD-titkok
        --verbose
    ```
 
-Az adatbázis központi telepítése után a hitelesítő adatait és a kapcsolati karakterláncot a Azure Key Vaultban kell tárolnia.
-A parancsfájlok mappában található egy `functions.sql` fájl, amely tartalmazza azt a com/pgSQL kódot, amely a futtatott függvényeket hozza létre a futtatásakor. A fájl futtatása a felparaméterezi az SQL-injektálás korlátozására.
+Az adatbázis üzembe helyezése után az Azure Key Vaultban kell tárolnia a hitelesítő adatait és a kapcsolati karakterláncot.
+A parancsfájlok mappájában van `functions.sql` egy fájl, amely tartalmazza a PL / pgSQL kódot, amely tárolja a tárolt függvényeket, amikor futtatja. A fájl futtatása paraméterezi az SQL-injektálás korlátozásához a bemeneteket.
 
-A PostgreSQL egy nevű `psql` eszközzel van ellátva, amely az adatbázishoz való kapcsolódásra szolgál. A futtatásához `functions.sql`csatlakoznia kell a Azure Database for PostgreSQL-példányhoz a helyi gépről, és onnan kell futtatnia. A psql eszköz telepítése a PostgreSQL alapértelmezett telepítése minden operációs rendszeren megtalálható.
-További információkért tekintse meg a [Psql dokumentációját](https://www.postgresql.org/docs/9.3/app-psql.html).
+A PostgreSQL egy olyan `psql` eszközzel van eljárva, amely az adatbázishoz való csatlakozásra szolgál. A `functions.sql`futtatásához csatlakoznia kell az Azure Database for PostgreSQL-példányhoz a helyi számítógépről, és onnan kell futtatnia. Telepítése a psql eszköz tartalmazza az alapértelmezett telepítés PostgreSQL minden operációs rendszer.
+További információt a [psql dokumentációban talál.](https://www.postgresql.org/docs/9.3/app-psql.html)
 
-A Azure Cloud shell az `psql` eszközt is tartalmazza. A Azure Portal Cloud Shell közvetlenül a Cloud Shell ikonra kattintva is használhatja.
+Az Azure Cloud `psql` Shell is tartalmazza az eszközt. A Cloud Shell közvetlenül az Azure Portalon keresztül is használható a Cloud Shell ikon kiválasztásával.
 
 A PostgreSQL-példány távoli elérésének engedélyezéséhez engedélyeznie kell az IP-címet a PostgreSQL-ben.
-A hozzáférés engedélyezéséhez lépjen a **kapcsolatbiztonsági** lapra, válassza az **ügyfél IP-** címének hozzáadása lehetőséget, és mentse az új beállításokat.
+Ezt a hozzáférést úgy engedélyezheti, hogy a **Kapcsolat biztonsága** lapra lép, az **Ügyfél IP hozzáadása**lehetőséget választja, és menti az új beállításokat.
 
 ![Ügyfél IP-címének engedélyezése](./media/secure-web-app/add-client-ip-postgres.png)
 
-Ha a helyi psql eszköz helyett Cloud Shell használ, válassza az Azure- **szolgáltatásokhoz való hozzáférés engedélyezése** lehetőséget, és módosítsa az értékét **a on** értékre, hogy engedélyezze a Cloud shell-hozzáférést.
+Ha a helyi psql eszköz helyett a Cloud Shellt használja, válassza az **Azure-szolgáltatások hoz való hozzáférés engedélyezése lehetőséget,** és módosítsa annak értékét **ON-ra** a Cloud Shell-hozzáférés engedélyezéséhez.
 
-Ezután kapcsolódjon a példányhoz az alábbi psql parancs kapcsolati karakterlánc-paraméterekkel való futtatásával a Azure Portal található PostgreSQL-példány kapcsolati karakterláncok lapján.
-Cserélje le az üres kapcsos zárójeleket az adatbázis kapcsolatok karakterlánc paneljéről, valamint a jelszót a Azure Key Vault.
+Ezután csatlakozzon a példányhoz az alábbi psql parancs futtatásával kapcsolati karakterlánc-paraméterekkel az Azure Portalon a PostgreSQL-példány **Kapcsolatkarakterláncok** lapján.
+Cserélje le az üres kapcsos zárójelek az adatbázis Kapcsolati karakterlánc paneljének paramétereivel és a jelszóval az Azure Key Vault jelszavával.
 
-```sql
+```shell
 psql "host={} port=5432 dbname=hellodb user={} password=PGPASSWORD sslmode=require"
 ```
 
-A következő com/pgSQL parancsfájl futtatásával ellenőrizze, hogy csatlakozik-e az adatbázishoz. A szkript létrehozza az adatok adatbázisba való beszúrásához használt tárolt függvényeket.
+Futtassa a következő PL/pgSQL parancsfájlt, miután meggyőződett arról, hogy csatlakozik az adatbázishoz. A parancsfájl létrehozza az adatok adatbázisba való beszúrásához használt tárolt függvényeket.
 
-```sql
+```shell
 CREATE OR REPLACE FUNCTION insert_visitor(country VARCHAR(40), browser VARCHAR(40), operating_system VARCHAR(40)) RETURNS void AS $$
 BEGIN
     INSERT INTO visitor(
@@ -332,7 +348,6 @@ BEGIN
 END;
 $$ LANGUAGE PLPGSQL;
 
-
 CREATE OR REPLACE FUNCTION insert_azure_document(title VARCHAR(40), url VARCHAR(100), category VARCHAR(40)) RETURNS void AS $$
 BEGIN
     INSERT INTO azure_document(
@@ -348,29 +363,29 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
+Az SSL- és hitelesítésszolgáltató (CA) postgreSQL-ellenőrzésének beállításáról az [SSL-kapcsolat konfigurálása az Azure Database for PostgreSQL alkalmazásban](/azure/postgresql/concepts-ssl-connection-security)című témakörben talál további információt.
 
-Az SSL és a hitelesítésszolgáltató (CA) PostgreSQL-ellenőrzésének beállításával kapcsolatos további információkért lásd: [az SSL-kapcsolat konfigurálása a Azure Database for PostgreSQLban](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
+A tárolóban egy főtanúsítvány is található. A tanúsítvány megszerzése érdekében tett lépések a következők:
 
-A tároló főtanúsítványt tartalmaz. A tanúsítvány beszerzésének lépései a következők:
-
-1. Töltse le a tanúsítványt a hitelesítésszolgáltatótól [](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt).
-2. [Töltse le és telepítse az OpenSSL-](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)t a gépén.
+1. Töltse le a tanúsítványfájlt a [hitelesítésszolgáltatótól.](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt)
+2. [Töltse le és telepítse az OpenSSL-t a gépére.](/azure/postgresql/concepts-ssl-connection-security)
 3. A tanúsítványfájl dekódolása:
 
-   ```powershell
+   ```shell
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-További információ az SSL-biztonság konfigurálása a PostgreSQL-hez itt az [SSL-kapcsolat biztonságának konfigurálása](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)című cikk nyújt tájékoztatást.
+Tudjon meg többet arról, hogyan kell beállítani SSL biztonság PostgreSQL itt [konfigurálása SSL Connection Security](/azure/postgresql/concepts-ssl-connection-security).
 
-#### <a name="deploy-azure-web-apps-on-linux"></a>Azure-Web Apps üzembe helyezése Linux rendszeren
-A Linux-szolgáltatásokat egyszerűen hozhatja létre Azure App Service az Azure-ban a széles körben használt nyelvekhez, például a Pythonhoz, a Rubyhez és C#a Javához készült előre összeállított tárolók és képek készlete is elérhető. Az Azure támogatja az egyéni tárolókat is, amelyek lehetővé teszik, hogy gyakorlatilag minden programozási nyelv fusson a Azure App Service platformon.
+#### <a name="deploy-azure-web-apps-on-linux"></a>Azure Web Apps telepítése Linuxon
 
-Az üzembe helyezett alkalmazás egy egyszerű Python-alkalmazás, amely a legújabb Ubuntu Linux disztribúción fut. A szolgáltatás az előző szakaszban létrehozott Azure Key Vault és PostgreSQL-példányokhoz kapcsolódik a hitelesítő adatok kezeléséhez és az adattároláshoz.
+Könnyedén hozhat létre Linux-szolgáltatásokat az Azure App Service-en felül, mivel az Azure előre összeállított tárolókat és lemezképeket biztosít a széles körben használt nyelvekhez, például a Pythonhoz, a Rubyhoz, a C#-hoz és a Java-hoz. Az Azure egyéni tárolókat is támogat, amelyek gyakorlatilag az összes programozási nyelv futtatását lehetővé teszik az Azure App Service platformon.
 
-Az alkalmazás gyökérkönyvtárában a következő Docker-fájl található:
+A telepített alkalmazás egy egyszerű Python alkalmazás, amely a legújabb Ubuntu Linux disztribúción fut. Az Azure Key Vault és a PostgreSQL-példányokhoz csatlakozik, amelyeket az előző szakaszokban hoztak létre a hitelesítő adatok és az adatok tárolása érdekében.
 
-``` docker
+A következő Docker-fájl az alkalmazás gyökérmappájában található:
+
+```dockerfile
 # Docker file for the basic web app
 # Using the latest Alpine Linux
 
@@ -421,17 +436,17 @@ USER appuser
 ENTRYPOINT ["/usr/local/bin/init.sh"]
 ```
 
-A fenti Docker a Azure Container Registryon `mcr.microsoft.com/samples/basic-linux-app`tárolt tároló összeállítására szolgál.
+A fenti Dockerfile az Azure Container Registry rendszerében tárolt `mcr.microsoft.com/samples/basic-linux-app`tároló létrehozásához használatos.
 
 Az alábbi kód:
 
-1. Deklarálja a App Service példány változóit és nevét.
-2. Létrehoz egy erőforráscsoportot a App Service tervhez.
-3. Azure-Web Apps létrehozása Linux-tárolók példányain.
-4. Engedélyezi a Web App-tároló naplózását.
-5. Beállítja az alkalmazások konfigurációját a tároló Alkalmazásbeállítások között.
+1. Deklarálja az App Service-példány változóit és neveit.
+2. Létrehozza az Erőforráscsoportot az App Service-csomaghoz.
+3. Az Azure Web Apps linuxos tárolók példányának leszolgáltatása.
+4. Engedélyezi a webalkalmazás-tároló naplózását.
+5. Beállít néhány alkalmazáskonfigurációt a tároló alkalmazásbeállításaiban.
 
-   ```
+   ```powershell-interactive
    Write-Host "Retrieving the Azure Key Vault URL"
    $kvURI = $(az keyvault show --name $kvName --query properties.vaultUri)
 
@@ -500,36 +515,36 @@ Az alábbi kód:
            --end-ip-address $outboundIps[$i] `
            --verbose
    }
-
    ```
 
-Ez a szkript létrehoz egy hozzárendelt identitást az App Service-példányhoz, amelyet az MSI használatával használhat a kód vagy konfiguráció során felhasználható kódolási titkok nélküli Azure Key Vault.
+Ez a parancsfájl létrehoz egy hozzárendelt identitást az App Service-példány, amely az MSI-vel használható az Azure Key Vault használatával, kód vagy konfiguráció ban titkos kulcsok szigorú kódolása nélkül.
 
-Lépjen a portál Azure Key Vault példányára, hogy engedélyezze a hozzárendelt identitást a hozzáférési szabályzat lapon. Válassza az **új hozzáférési házirend hozzáadása**lehetőséget. A **rendszerbiztonsági tag kiválasztása**területen keresse meg az alkalmazás nevét, amely hasonló a létrehozott app Service példány nevéhez.
-Az alkalmazáshoz csatolt egyszerű szolgáltatásnak láthatónak kell lennie. Válassza ki, és mentse a hozzáférési szabályzat lapot, ahogy az alábbi képernyőképen is látható.
+Nyissa meg az Azure Key Vault-példányt a portálon, hogy engedélyezze a hozzárendelt identitást a hozzáférési szabályzat **lapon.** Az **Egyszerű kiválasztása csoportban**keresse meg a létrehozott App Service-példány nevéhez hasonló alkalmazásnevet.
+Az alkalmazáshoz csatolt egyszerű szolgáltatásnak láthatónak kell lennie. Jelölje ki, és mentse a hozzáférési szabályzat lapját, ahogy az az alábbi képernyőképen látható.
 
-Mivel az alkalmazásnak csak a kulcsokat kell lekérnie, a titkok lehetőségnél válassza ki a **Get** engedélyt, amely lehetővé teszi a hozzáférést a megadott jogosultságok csökkentése mellett.
+Mivel az alkalmazásnak csak kulcsokat kell letöltenie, válassza az Engedély **beolvasása** a titkos kulcsok beállításokat, amely engedélyezi a hozzáférést, miközben csökkenti a megadott jogosultságokat.
 
-![Hozzáférési szabályzat Key Vault](./media/secure-web-app/kv-access-policy.png)
+![A Key Vault hozzáférési irányelvei](./media/secure-web-app/kv-access-policy.png)
 
-*Key Vault hozzáférési szabályzat létrehozása*
+*Key Vault-hozzáférési házirend létrehozása*
 
-Mentse a hozzáférési házirendet, majd mentse az új módosítást a **hozzáférési házirendek** lapon a házirendek frissítéséhez.
+Mentse a hozzáférési házirendet, majd mentse az új módosítást a **Hozzáférési házirendek** lapon a házirendek frissítéséhez.
 
-#### <a name="deploy-application-gateway-with-web-application-firewall-enabled"></a>Application Gateway üzembe helyezése a webalkalmazási tűzfallal engedélyezve
-A Web Apps szolgáltatásban nem javasoljuk, hogy közvetlenül az interneten keresztül tegye elérhetővé a szolgáltatásokat.
-A terheléselosztás és a tűzfalszabályok nagyobb biztonságot és szabályozást biztosítanak a bejövő forgalom számára, és segítenek a felügyeletben.
+#### <a name="deploy-application-gateway-with-web-application-firewall-enabled"></a>Alkalmazásátjáró központi telepítése engedélyezve a webalkalmazás tűzfalával
 
-Application Gateway példány üzembe helyezése:
+A webes alkalmazásokban nem ajánlott a szolgáltatásokat közvetlenül a külvilág számára elérhetővé tenni az interneten.
+A terheléselosztás és a tűzfalszabályok nagyobb biztonságot nyújtanak, és szabályozhatják a bejövő forgalmat, és segítenek annak kezelésében.
 
-1. Hozzon létre egy erőforráscsoportot az Application Gateway kibontásához.
-2. Hozzon létre egy virtuális hálózatot az átjáróhoz való csatlakoztatáshoz.
-3. Hozzon létre egy alhálózatot az átjáróhoz a virtuális hálózaton.
+Alkalmazásátjáró-példány telepítése:
+
+1. Hozza létre az erőforráscsoportot az alkalmazásátjáró elhelyezésére.
+2. Az átjáróhoz csatolandó virtuális hálózat kiépítése.
+3. Hozzon létre egy alhálózatot az átjáróhoz a virtuális hálózatban.
 4. Nyilvános IP-cím kiépítése.
-5. Az Application Gateway kiépítése.
-6. Engedélyezze a webalkalmazási tűzfalat az átjárón.
+5. Az alkalmazásátjáró kiépítése.
+6. Engedélyezze a webalkalmazás tűzfalát az átjárón.
 
-   ``` azurecli
+   ```powershell-interactive
    az keyvault certificate create --vault-name $kvName `
        --name $certName `
        --policy `@policy.json `
@@ -556,15 +571,15 @@ Application Gateway példány üzembe helyezése:
 
 Az előző szkript:
 
-1. Létrehoz egy új önaláírt tanúsítványt az Azure-ban.
-2. Letölti az önaláírt tanúsítványt Base64 kódolású fájlként.
-3. Jelszót hoz létre az önaláírt tanúsítványhoz.
-4. Exportálja a tanúsítványt a jelszóval aláírt PFX-fájlként.
-5. A tanúsítvány jelszavát a Azure Key Vault tárolja.
+1. Új önaláírt tanúsítványt hoz létre az Azure-ban.
+2. Az önaláírt tanúsítványt base64 kódolású fájlként tölti le.
+3. Létrehoz egy jelszót az önaláírt tanúsítványhoz.
+4. A tanúsítványt a jelszóval aláírt PFX-fájlként exportálja.
+5. A tanúsítvány jelszavát az Azure Key Vaultban tárolja.
 
-Ez a szakasz az Application Gateway üzembe helyezését végzi el:
+Ez a szakasz telepíti az alkalmazásátjárót:
 
-```powershell
+```powershell-interactive
 # Create a virtual network required by the gateway
 Write-Host "Creating the Azure Virtual Network: $($vnetName)"
 az network vnet create --name $vnetName `
@@ -662,55 +677,56 @@ az network application-gateway http-settings update --gateway-name $gwName `
     --verbose
 ```
 
-Az üzembe helyezés befejezése után egy webalkalmazási tűzfallal rendelkező Application Gateway van engedélyezve.
+A központi telepítés befejezése után egy alkalmazásátjáró, amelyen engedélyezve van a webalkalmazás tűzfala.
 
-Az átjáró-példány a HTTPS 443-es portját teszi elérhetővé. Ez a konfiguráció biztosítja, hogy az alkalmazás csak a 443-es porton keresztül legyen elérhető a HTTPS protokollon keresztül.
+Az átjárópéldány https-hez való 443-as portot teszi elérhetővé. Ez a konfiguráció biztosítja, hogy az alkalmazás unk csak a 443-as https-porton érhető el.
 
-A nem használt portok blokkolása és a támadási felületek expozíciójának korlátozása az ajánlott biztonsági eljárás.
+A nem használt portok blokkolása és a támadási felület expozíciójának korlátozása biztonsági gyakorlat.
 
 #### <a name="add-network-security-groups-to-the-app-service-instance"></a>Hálózati biztonsági csoportok hozzáadása az App Service-példányhoz
 
-App Service példányok integrálható a virtuális hálózatokkal. Ez az integráció lehetővé teszi, hogy az alkalmazás bejövő és kimenő forgalmát kezelő hálózati biztonsági csoportházirend-házirendekkel konfigurálják őket.
+Az App Service-példányok integrálhatók a virtuális hálózatokkal. Ez az integráció lehetővé teszi, hogy konfigurálható a hálózati biztonsági csoport házirendek, amelyek kezelik az alkalmazás bejövő és kimenő forgalmat.
 
-1. A szolgáltatás engedélyezéséhez az Azure app Service-példány panel **Beállítások**területén válassza a **hálózatkezelés**lehetőséget. A jobb oldali ablaktábla VNet- **integráció**területén válassza a **konfigurálásához kattintson ide**.
+1. A funkció engedélyezéséhez az Azure App szolgáltatáspéldány **panelen**a Beállítások csoportban válassza a **Hálózat lehetőséget.** A jobb oldali ablaktáblában a **Virtuálishálózat-integráció**csoportban válassza a **Kattintson ide lehetőséget a konfigurálásához.**
 
-   ![Új virtuális hálózat integrációja](./media/secure-web-app/app-vnet-menu.png)
+   ![Új virtuális hálózati integráció](./media/secure-web-app/app-vnet-menu.png)
 
-    *Új Virtual Network Integration for App Service*
-1. A következő lapon válassza a **VNET hozzáadása (előzetes verzió)** lehetőséget.
+    *Új virtuális hálózati integráció az App Service-hez*
 
-1. A következő menüben válassza ki azt a virtuális hálózatot, amely a (z `hello-vnet`) rendszerű központi telepítésben lett létrehozva. Létrehozhat egy új alhálózatot, vagy kijelölhet egy meglévőt is.
-   Ebben az esetben hozzon létre egy új alhálózatot. Állítsa a **címtartományt** a **10.0.3.0/24** értékre, és nevezze el az alhálózati **alkalmazás-** alhálózatot.
+1. A következő lapon válassza a **VNET hozzáadása (előnézet) lehetőséget.**
 
-   ![App Service virtuális hálózati konfiguráció](./media/secure-web-app/app-vnet-config.png)
+1. A következő menüben válassza ki a telepítésben `hello-vnet`létrehozott virtuális hálózatot, amely a alkalmazáslal kezdődik. Létrehozhat egy új alhálózatot, vagy kijelölhet egy meglévőt.
+   Ebben az esetben hozzon létre egy új alhálózatot. Állítsa a **Cím tartományt** **10.0.3.0/24-re,** és nevezze el az alhálózati **alkalmazás-alhálózatot.**
 
-    *App Service virtuális hálózati konfigurációja*
+   ![Az App Service virtuális hálózati konfigurációja](./media/secure-web-app/app-vnet-config.png)
 
-Most, hogy engedélyezte a virtuális hálózat integrációját, hozzáadhat hálózati biztonsági csoportokat az alkalmazáshoz.
+    *Virtuális hálózati konfiguráció az App Service-hez*
 
-1. A keresőmező segítségével keressen **hálózati biztonsági csoportokat**. Az eredmények között válassza a **hálózati biztonsági csoportok** lehetőséget.
+Most, hogy engedélyezte a virtuális hálózati integrációt, hálózati biztonsági csoportokat adhat az alkalmazáshoz.
+
+1. Használja a keresőmezőt, keressen **hálózati biztonsági csoportokat**. Az eredmények között válassza a **Hálózati biztonsági csoportok** lehetőséget.
 
     ![Hálózati biztonsági csoportok keresése](./media/secure-web-app/nsg-search-menu.png)
 
     *Hálózati biztonsági csoportok keresése*
 
-2. A következő menüben válassza a **Hozzáadás**lehetőséget. Adja meg a NSG **nevét** és azt az **erőforráscsoportot** , amelyben a helye található. Ez a NSG az Application Gateway alhálózatára lesz alkalmazva.
+2. A következő menüben válassza a **Hozzáadás parancsot.** Adja meg annak az NSG-nek és **erőforráscsoportnak** a **nevét,** amelyben lennie kell. Ez az NSG az alkalmazásátjáró alhálózatára lesz alkalmazva.
 
     ![NSG létrehozása](./media/secure-web-app/nsg-create-new.png)
 
     *NSG létrehozása*
 
-3. A NSG létrehozása után válassza ki azt. A paneljén a **Beállítások**területen válassza a **bejövő biztonsági szabályok**elemet. Konfigurálja ezeket a beállításokat, hogy engedélyezze az Application Gateway felé irányuló kapcsolatokat az 443-as porton keresztül.
+3. Az NSG létrehozása után válassza ki. A panelen a **Beállítások**csoportban válassza **a Bejövő biztonsági szabályok lehetőséget.** Konfigurálja ezeket a beállításokat úgy, hogy a 443-as porton keresztül az alkalmazásátjáróba érkező kapcsolatok is elérhetők.
 
-   ![A NSG konfigurálása](./media/secure-web-app/nsg-gateway-config.png)
+   ![Az NSG konfigurálása](./media/secure-web-app/nsg-gateway-config.png)
 
-   *A NSG konfigurálása*
+   *Az NSG konfigurálása*
 
-4. Az átjáró NSG kimenő szabályaiban adjon hozzá egy olyan szabályt, amely engedélyezi a kimenő kapcsolatokat a App Service-példányhoz egy olyan szabály létrehozásával, amely `AppService`a szolgáltatási címkét célozza meg:
+4. Az átjáró NSG kimenő szabályaiban adjon hozzá egy szabályt, amely lehetővé teszi a kimenő kapcsolatokat az App Service-példányhoz a szolgáltatáscímkét `AppService`megcélozó szabály létrehozásával:
 
-   ![Kimenő szabályok hozzáadása a NSG](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
+   ![Kimenő szabályok hozzáadása az NSG-hez](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
 
-   *Kimenő szabályok hozzáadása a NSG*
+   *Kimenő szabályok hozzáadása az NSG-hez*
 
     Adjon hozzá egy másik kimenő szabályt, amely lehetővé teszi, hogy az átjáró kimenő szabályokat küldjön egy virtuális hálózatra.
 
@@ -718,256 +734,262 @@ Most, hogy engedélyezte a virtuális hálózat integrációját, hozzáadhat h�
 
     *Másik kimenő szabály hozzáadása*
 
-5. A NSG alhálózatok paneljén válassza a **hozzárendelés**lehetőséget, válassza ki a központi telepítésben létrehozott virtuális hálózatot, és válassza ki a **GW-alhálózat**nevű átjáró-alhálózatot. A NSG az alhálózatra alkalmazza a rendszer.
+5. Az NSG alhálózati paneljén válassza a **Társítás**lehetőséget, válassza ki a központi telepítésben létrehozott virtuális hálózatot, és válassza ki a **gw-alhálózat nevű átjáró-alhálózatot.** Az NSG az alhálózatra van alkalmazva.
 
-6. Hozzon létre egy másik NSG, mint az előző lépésben, ezúttal a App Service példányra vonatkozóan. Adja meg a nevet. Adja hozzá a bejövő szabályt az 443-as porthoz, ahogy az Application Gateway-NSG tette.
+6. Hozzon létre egy másik NSG, mint a korábbi lépésben, ezúttal az App Service-példány. Mondj neki egy nevet. Adja hozzá a 443-as port bejövő szabályát, ahogy azt az nsg-hez az alkalmazásátjáróhoz.
 
-   Ha App Service példánya van telepítve egy App Service Environment példányon, amely nem ebben az alkalmazásban, akkor a App Service NSG bejövő biztonsági csoportjain a 454-455-es port megnyitásával engedélyezheti a Azure Service Health-mintavételek számára a bejövő szabályok megadását. A konfiguráció a következő:
+   Ha egy App Service-példány telepítve van egy App Service-környezet-példány, amely nem ez a helyzet az alkalmazás, hozzáadhat bejövő szabályokat, amelyek lehetővé teszik az Azure Service Health-mintavételek megnyitásával portok 454-455 az App Service NSG bejövő biztonsági csoportok. Itt a konfiguráció:
 
-   ![Azure Service Health-mintavétel szabályainak hozzáadása](./media/secure-web-app/nsg-create-healthprobes.png)
+   ![Szabályok hozzáadása az Azure Service Health-mintavételekhez](./media/secure-web-app/nsg-create-healthprobes.png)
 
-    *Azure Service Health-mintavétel szabályainak hozzáadása (csak App Service Environment)*
+    *Az Azure Service Health-mintavételek szabályainak hozzáadása (csak Az App Service-környezetben)*
 
-7. A kimenő biztonsági szabályokban hozzon létre egy új kimenő biztonsági szabályt, amely lehetővé teszi, hogy az App Service-példány kommunikáljon a PostgreSQL-adatbázissal. Konfigurálja a következőhöz hasonló módon:
+7. A kimenő biztonsági szabályokban hozzon létre egy új kimenő biztonsági szabályt, amely lehetővé teszi, hogy az App Service-példány kommunikáljon a PostgreSQL-adatbázissal. Konfigurálja a következőket:
 
-   ![A kimenő PostgreSQL-kapcsolatok engedélyezésére szolgáló szabály](./media/secure-web-app/nsg-outbound-postgresql.png)
+   ![A kimenő PostgreSQL-kapcsolatok engedélyezésére adott szabály](./media/secure-web-app/nsg-outbound-postgresql.png)
 
-   *Szabály hozzáadása a kimenő PostgreSQL-kapcsolatok engedélyezéséhez*
+   *A kimenő PostgreSQL-kapcsolatok engedélyezéséhez tartozó szabály hozzáadása*
 
-A támadási felület korlátozásához módosítsa a App Service hálózati beállításokat úgy, hogy csak az Application Gateway hozzáférjen az alkalmazáshoz.
-Ehhez lépjen a App Service hálózat lapra, válassza az **IP-korlátozások** lapot, és hozzon létre egy engedélyezési szabályt, amely lehetővé teszi, hogy csak az Application Gateway IP-címe legyen közvetlenül elérhető a szolgáltatáshoz.
+A támadási felület korlátozásához módosítsa az App Service hálózati beállításait úgy, hogy csak az alkalmazásátjáró férhessen hozzá az alkalmazáshoz.
+Ehhez lépjen be az App Service-hálózat fülre, válassza az **IP-korlátozások** lapot, és hozzon létre egy engedélyezési szabályt, amely lehetővé teszi, hogy csak az alkalmazásátjáró IP-címe férhessen hozzá közvetlenül a szolgáltatáshoz.
 
-Az átjáró IP-címét az Áttekintés lapjáról kérheti le. Az **IP-CIDR** lapon adja meg az IP-címet a következő formátumban: `<GATEWAY_IP_ADDRESS>/32`.
+Az átjáró IP-címét az áttekintő lapról kérheti le. Az **IP-cím CIDR** lapján adja meg `<GATEWAY_IP_ADDRESS>/32`az IP-címet a következő formátumban: .
 
 ![Csak az átjáró engedélyezése](./media/secure-web-app/app-allow-gw-only.png)
 
-*A App Service elérésének engedélyezése csak az átjáró IP-címéhez*
+*Csak az átjáró IP-címének engedélyezése az App Service eléréséhez*
 
+#### <a name="implement-azure-active-directory-oauth"></a>Az Azure Active Directory oauth megvalósítása
 
-#### <a name="implement-azure-active-directory-oauth"></a>Azure Active Directory OAuth megvalósítása
+A minta webalkalmazás-lapon terjesztett Azure-dokumentumok olyan erőforrások az alkalmazásunkban, amelyek védelemre szorulnak. Az Azure Active Directory (Azure AD) segítségével különböző hitelesítési folyamatok használatával valósíthatja meg a webes, asztali és mobilalkalmazások hitelesítését.
+Az alkalmazás **a Bejelentkezés a Microsofttal**, amely lehetővé teszi az alkalmazás számára, hogy olvassa el az egybérlős Azure AD-felhasználó listájához hozzáadott felhasználók profiljait.
 
-A minta webalkalmazás oldalon elosztott Azure-dokumentumok olyan erőforrások az alkalmazásban, amelyeknek szüksége lehet a védelemre. Az Azure Active Directory (Azure AD) használatával különböző hitelesítési folyamatokkal implementálhatja a webes, asztali és mobil alkalmazások hitelesítését.
-Az alkalmazás a **Microsofttal**való bejelentkezést használja, amely lehetővé teszi az alkalmazás számára, hogy beolvassa az egybérlős Azure ad-felhasználó listájához hozzáadott felhasználók profilját.
+Az Azure Portalon konfigurálja az alkalmazást a szükséges hitelesítő adatok használatára:
 
-A Azure Portal konfigurálja az alkalmazást a szükséges hitelesítő adatok használatára:
+1. Válassza az **Azure Active Directory**t, vagy keresse meg a keresőmező használatával.
 
-1. Válassza a **Azure Active Directory**lehetőséget, vagy keresse meg a keresést a keresőmező használatával.
-
-2. **Új regisztráció**kiválasztása:
+2. Válassza **az Új regisztráció lehetőséget:**
 
    ![Regisztráció létrehozása](./media/secure-web-app/ad-auth-create.png)
 
-   *Azure AD-alkalmazás regisztrálásának létrehozása*
+   *Azure AD-alkalmazás regisztrációjának létrehozása*
 
-3. A következő lapon adja meg az alkalmazás nevét. A **támogatott fiókok típusai**területen **csak a szervezeti címtárban**válassza a fiókok elemet.
-    Az **átirányítási URI**területen adja meg azt az alaptartományt, amelyen az alkalmazás fut, valamint egy a jogkivonat-végponttal. Példa: *GATEWAY_HASH*. cloudapp.net/token.
+3. A következő lapon adja meg az alkalmazás nevét. A **Támogatott fióktípusok csoportban**válassza **a Csak ebben a szervezeti címtárban a Fiókok**lehetőséget.
+    Az **Átirányítás URI**csoportban adja meg azt az alaptartományt, amelyen az alkalmazás futni fog, plusz egy a jogkivonat-végpontdal. Például: *GATEWAY_HASH*.cloudapp.net/token.
 
-   ![Az Azure AD-alkalmazás regisztrálásának konfigurálása](./media/secure-web-app/ad-auth-type.png)
+   ![Az Azure AD-alkalmazás regisztrációjának konfigurálása](./media/secure-web-app/ad-auth-type.png)
 
-   *Az Azure AD-alkalmazás regisztrálásának konfigurálása*
+   *Az Azure AD-alkalmazás regisztrációjának konfigurálása*
 
-4. Megjelenik egy képernyő, amely megjeleníti a regisztrált alkalmazást és annak adatait. Ezt az információt fel kell vennie az Azure Key Vault-példányba.
-   1. Másolja át az alkalmazás (ügyfél) AZONOSÍTÓját, és mentse Key Vault `CLIENTID`néven.
-   2. Másolja az előző lépésben megadott átirányítási URI-t `REDIRECTURI`, és mentse azt.
-   3. Másolja az Azure AD alapértelmezett könyvtárának nevét, amelynek a formátuma a *Name*. microsoftonline.com, és mentse Key Vaultként `TENANT`.
-   4. Nyissa meg a korábban létrehozott Azure AD-alkalmazás **tanúsítványok & titkok** lapját, és válassza az **új ügyfél titka**lehetőséget, ahogy az alábbi képernyőképen is látható. Állítsa be a lejárati dátumot, majd másolja a generált értéket, és mentse Key Vaultként `CLIENTSECRET`.
+4. Megjelenik egy képernyő, amely a regisztrált alkalmazást és annak adatait jeleníti meg. Ezt az információt hozzá kell adnia az Azure Key Vault-példányhoz.
+   1. Másolja az alkalmazás (ügyfél) azonosítóját, és `CLIENTID`mentse a Key Vaultban .
+   2. Másolja az előző lépésben megadott átirányítási URI-t, és mentse a ( más ) néven. `REDIRECTURI`
+   3. Másolja az Azure AD alapértelmezett könyvtárnevét, amelynek *formátumneve*.microsoftonline.com, `TENANT`és mentse a Key Vault-ba.
+   4. Nyissa meg a **tanúsítványok & titkos kulcsok** lapot az Azure AD alkalmazás, amely korábban létrehozott, és válassza az Új ügyfél **titkos**kulcsot , ahogy az alábbi képernyőképen látható. Állítson be egy lejárati dátumot, majd másolja `CLIENTSECRET`a létrehozott értéket, és mentse a Key Vaultban .
 
-      ![Azure AD-engedélyezési titok](./media/secure-web-app/ad-auth-secrets.png)
+      ![Az Azure AD engedélyezési titkos](./media/secure-web-app/ad-auth-secrets.png)
 
-      *Azure AD-engedélyezési titok*
+      *Az Azure AD engedélyezési titkos*
 
-   5. Biztonságos, véletlenszerű titkos kulcs létrehozása bármely parancssori/online eszköz használatával. Mentse Key Vaultként `FLASKSECRETKEY`. Az alkalmazás-keretrendszer ezt a kulcsot használja a munkamenetek létrehozásához.
-        A titkos kulcsok létrehozásával kapcsolatos további információkért lásd: [lombik](http://flask.pocoo.org/docs/1.0/quickstart/#sessions)-munkamenetek.
+   5. Hozzon létre egy biztonságos véletlen titkos kulcsot bármely parancssori/ online eszközzel. Mentse a Key `FLASKSECRETKEY`Vault ba. Az alkalmazáskeretrendszer ezt a kulcsot használja munkamenetek létrehozásához.
+        A titkos kulcs létrehozásáról a [Lombik-munkamenetek ( Lombik-munkamenetek ) (Lombik-munkamenetek) (Lombik-munkamenetek) (Lombik-munkamenetek) (Lombik-munkamenet](http://flask.pocoo.org/docs/1.0/quickstart/#sessions)
 
-5. A bejelentkezés konfigurálása után fel kell vennie a felhasználókat az Azure AD-hivatkozásba, hogy be lehessen jelentkezni az erőforrásba. A hozzáadáshoz nyissa meg a **felhasználók** lapot az Azure ad-ban, válassza a **minden felhasználó**lehetőséget, majd válassza az **új felhasználó** vagy az **új vendég felhasználó**lehetőséget. Teszteléshez hozzáadhat egy vendég felhasználót, és meghívhatja a felhasználót a címtárba. Új felhasználót is hozzáadhat, ha az alkalmazást futtató tartomány érvényesítése megtörtént. Ebben a példában csak az Azure AD-bérlőben regisztrált felhasználók regisztrálhatók a hozzáféréshez. A több-bérlős bejelentkezések elérésével kapcsolatos információkért tekintse meg a dokumentációt.
+5. A bejelentkezés konfigurálása után hozzá kell adnia a felhasználókat az Azure AD-hivatkozáshoz, hogy azok bejelentkezhessenek az erőforrásba. Hozzáadásukhoz nyissa meg az Azure AD **Felhasználók** lapját, válassza a **Minden felhasználó**lehetőséget, majd válassza az **Új felhasználó** vagy az **Új vendégfelhasználó lehetőséget.** A teszteléshez hozzáadhat egy vendégfelhasználót, és meghívhatja a felhasználót a címtárba. Vagy hozzáadhat egy új felhasználót, ha az a tartomány, amelyen az alkalmazás fut, érvényesítve van. Ebben a példában csak az Azure AD-bérlőben regisztrált felhasználók regisztrálhatók a hozzáféréshez. A több-bérlős bejelentkezési hozzáférésről a dokumentációban olvashat.
 
    ![Felhasználók hozzáadása az alapértelmezett tartományhoz](./media/secure-web-app/ad-auth-add-user.png)
 
-   *Felhasználók hozzáadása az alapértelmezett Azure Active Directory tartományhoz*
+   *Felhasználók hozzáadása az alapértelmezett Azure Active Directory-tartományhoz*
 
-Miután hozzáadta az Azure AD-konfigurációt és a titkos kulcsokat a Key Vaulthoz, a felhasználók az Azure OAuth-hitelesítés használatával hitelesíthetők az alkalmazásba.
-Az alkalmazás kódjában ezt a Azure Active Directory Authentication Library (ADAL) kezeli.
+Miután hozzáadja az Azure AD-konfigurációt és titkos kulcsokat a Key Vaulthoz, a felhasználók az Azure OAuth-hitelesítés használatával hitelesíthetők az alkalmazásban.
+Az alkalmazáskódban ezt az Azure Active Directory hitelesítési könyvtár (ADAL) kezeli.
 
-Miután a titkok bekerültek a Key Vaultba, és az alkalmazás hozzáfér a titkokhoz és az adatbázishoz, az Application Service elérhető az átjáró alkalmazásának URL https://GATEWAY_HASH.cloudapp.net) -címén keresztül (amely a panelről szerezhető be).
+Miután a titkos kulcsok a Key Vaultban vannak, és az alkalmazás hozzáfér a titkos kulcsokhozhttps://GATEWAY_HASH.cloudapp.net)és az adatbázishoz, az alkalmazásszolgáltatás elérhető az átjáró alkalmazás URL-címén ( , amely a panelből szerezhető be.
 
-Ha az Azure AD-ba való bejelentkezéskor egy hibaüzenet jelenik meg, amely szerint a "felhasználó nincs regisztrálva abban a címtárban, amelyet be szeretne jelentkezni," fel kell vennie a felhasználót. A felhasználó hozzáadásához nyissa meg az Azure AD Users ( **felhasználók** ) lapját, és adja hozzá manuálisan a felhasználót a részletek beírásával vagy a felhasználó meghívásával, ha az e-mail-címét vendégként adja meg az Azure ad-ban a **vendég** meghívása panelen.
+Ha az Azure AD-be való bejelentkezéskor egy hibaüzenet jelenik meg, amely szerint "A felhasználó nincs regisztrálva abban a címtárban, amelybe be szeretne jelentkezni", hozzá kell adnia a felhasználót. A felhasználó hozzáadásához lépjen az Azure AD **Felhasználók** lapjára, és adja hozzá manuálisan a felhasználót az adatuk megadásával, vagy hívja meg a felhasználót úgy, hogy megadja az e-mail címét vendégfelhasználóként az Azure AD-be a **Vendég meghívása** panelen.
 
-#### <a name="deploy-application-insights"></a>Application Insights üzembe helyezése
-Most, hogy az alkalmazás telepítve van és működik, az alkalmazáson belüli hibákat kell kezelnie a naplózási és nyomkövetési adatgyűjtés mellett.
-A naplózási és nyomkövetési adatgyűjtés az alkalmazásban megjelenő naplózási eseményeket jeleníti meg.
+#### <a name="deploy-application-insights"></a>Az Application Insights üzembe helyezése
+Most, hogy az alkalmazás üzembe helyezése és működése, az alkalmazáson belül előforduló hibákat, valamint a naplózási és nyomkövetési adatgyűjtést kell kezelnie.
+A naplózási és nyomkövetési adatgyűjtés az alkalmazásban bekövetkező naplózási eseményeket tekinti meg.
 
-Application Insights egy olyan szolgáltatás, amely a felhasználók vagy a rendszer által létrehozható naplókat gyűjti.
+Az Application Insights egy olyan szolgáltatás, amely a felhasználók vagy a rendszer által létrehozható naplókat gyűjti.
 
-Application Insights példány létrehozása:
+Application Insights-példány létrehozása:
 
-1. A Azure Portal található keresőmező használatával keressen **Application Insights** .
-2. Válassza a **Application Insights**lehetőséget. Adja meg az itt látható adatokat egy példány létrehozásához.
+1. Az **Application Insights** keresése az Azure Portal keresőmezőjének használatával.
+2. Válassza az **Application Insights** lehetőséget. Adja meg az itt látható részleteket egy példány létrehozásához.
 
-   ![Application Insights példány létrehozása](./media/secure-web-app/app-insights-data.png)
+   ![Application Insights-példány létrehozása](./media/secure-web-app/app-insights-data.png)
 
-Az üzembe helyezés befejezése után Application Insights példánya van.
+A központi telepítés befejezése után egy Application Insights-példányt.
 
-Miután létrehozta az Applications-elemzések példányát, meg kell adnia az alkalmazásnak a rendszerállapot-kulcsot, amely lehetővé teszi, hogy naplókat küldjön a felhőbe. Ezt úgy teheti meg, hogy beolvassa a Application Insights kulcsot, és az Azure által a Application Insights számára biztosított alkalmazás-tárakon belül használja. Az ajánlott eljárás az, hogy a kulcsokat és a titkokat a Azure Key Vault tárolja, hogy azok biztonságban maradjanak.
+Az Applications Insights-példány létrehozása után meg kell, hogy az alkalmazás tudatában legyen a műszerezési kulcs, amely lehetővé teszi, hogy naplókat küld jön a felhőbe. Ehhez az Application Insights-kulcs lekérésével és az Azure által az Application Insights hoz biztosított alkalmazáskódtárban való használatával. Az ajánlott eljárás a kulcsok és a titkos kulcsok tárolása az Azure Key Vaultban a biztonságuk érdekében.
 
-Az alapszintű minta alkalmazás esetében az Applications-elemzések példányának létrehozása után az alkalmazásnak ismernie kell a kialakítási kulcsot, amely lehetővé teszi, hogy a naplófájlokat küldjön a felhőbe.
-A Key Vaultban állítson `APPINSIGHTSKEY` be egy titkos kulcsot, és állítsa be az értékét a kialakítási kulcsként. Ez lehetővé teszi, hogy az alkalmazás naplókat és mérőszámokat küldjön Application Insights.
+Az alapszintű mintaalkalmazás hozlétre az Applications Insights-példány létrehozása után, meg kell, hogy az alkalmazás tudatában a műszerezési kulcs, amely lehetővé teszi, hogy naplókat küldeni a felhőbe.
+A Key Vaultban `APPINSIGHTSKEY` állítson be egy titkos kulcsot, és állítsa be annak értékét műszerezési kulcsként. Ez lehetővé teszi, hogy az alkalmazás naplókat és mutatókat küldjön az Application Insightsnak.
 
-#### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Többtényezős hitelesítés implementálása Azure Active Directory
-A rendszergazdáknak biztosítaniuk kell, hogy a portálon lévő előfizetési fiókok védve legyenek. Az előfizetés sebezhető a támadásokkal szemben, mert kezeli a létrehozott erőforrásokat. Az előfizetés védetté tételéhez engedélyezze a többtényezős hitelesítést az előfizetés **Azure Active Directory** lapján.
+#### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Többtényezős hitelesítés megvalósítása az Azure Active Directoryhoz
 
-Az Azure AD olyan szabályzatok alapján működik, amelyek egy adott feltételnek megfelelő felhasználóra vagy felhasználói csoportokra vonatkoznak.
-Az Azure egy alapértelmezett szabályzatot hoz létre, amely megadja, hogy a rendszergazdáknak kétfaktoros hitelesítésre van szükségük a portálra való bejelentkezéshez.
-A házirend engedélyezése után a rendszer felszólítja a kijelentkezésre, majd a Azure Portalba való bejelentkezésre.
+A rendszergazdáknak gondoskodniuk kell arról, hogy a portálon lévő előfizetési fiókok védettek legyenek. Az előfizetés ki van téve a támadásoknak, mert kezeli a létrehozott erőforrásokat. Az előfizetés védelme érdekében engedélyezze a többtényezős hitelesítést az **előfizetés Azure Active Directory** lapján.
 
-Az MFA engedélyezése rendszergazdai bejelentkezésekhez:
+Az Azure AD olyan szabályzatok alapján működik, amelyek egy bizonyos feltételeknek megfelelő felhasználóra vagy felhasználói csoportokra vonatkoznak.
+Az Azure létrehoz egy alapértelmezett szabályzatot, amely meghatározza, hogy a rendszergazdáknak kétfaktoros hitelesítésre van szükségük a portálra való bejelentkezéshez.
+A szabályzat engedélyezése után előfordulhat, hogy a rendszer kéri, hogy jelentkezzen ki, és jelentkezzen be újra az Azure Portalra.
 
-1. Lépjen a **Azure Active Directory** lapra a Azure Portal
-2. A biztonság kategóriában válassza a feltételes hozzáférés lehetőséget. Ezt a képernyőt látja:
+Az MFA engedélyezése a rendszergazdai bejelentkezések számára:
+
+1. Nyissa meg az **Azure Active Directory** lapot az Azure Portalon
+2. A biztonsági kategória alatt válassza a feltételes hozzáférést. Ekkor az alábbi képernyő jelenik meg:
 
    ![Feltételes hozzáférés – házirendek](./media/secure-web-app/ad-mfa-conditional-add.png)
 
-Ha nem tud új szabályzatot létrehozni:
+Ha nem tud új házirendet létrehozni:
 
 1. Nyissa meg az **MFA** lapot.
-2. Válassza a prémium szintű Azure AD **ingyenes próbaverzió** hivatkozást az ingyenes próbaverzióra való előfizetéshez.
+2. Válassza ki az Azure AD Premium **ingyenes próbahivatkozást** az ingyenes próbaverzióra való előfizetéshez.
 
-   ![prémium szintű Azure AD ingyenes próbaverzió](./media/secure-web-app/ad-trial-premium.png)
+   ![Az Azure AD Premium ingyenes próbaverziója](./media/secure-web-app/ad-trial-premium.png)
 
-Térjen vissza a feltételes hozzáférés képernyőre.
+Visszatérés a feltételes hozzáférési képernyőre.
 
 1. Válassza az új házirend lapot.
 2. Adja meg a házirend nevét.
-3. Válassza ki azokat a felhasználókat vagy csoportokat, amelyeknek engedélyezni szeretné az MFA-t.
-4. A **hozzáférés-vezérlés**területen válassza az **Engedélyezés** lapot, majd válassza a többtényezős **hitelesítés** megkövetelése (és egyéb beállítások) lehetőséget.
+3. Jelölje ki azokat a felhasználókat vagy csoportokat, amelyeknek engedélyezni szeretné az MFA-t.
+4. Az **Access-vezérlők csoportban**jelölje be a **Grant** fül, majd a **Többtényezős hitelesítés megkövetelése** (és egyéb beállítások szükség esetén) lehetőséget.
 
    ![MFA megkövetelése](./media/secure-web-app/ad-mfa-conditional-add.png)
 
-A házirendet a képernyő felső részén található jelölőnégyzet bejelölésével vagy a **feltételes hozzáférés** lapon is engedélyezheti. Ha a házirend engedélyezve van, a felhasználóknak MFA-ra van szükségük a portálra való bejelentkezéshez.
+A házirendet a képernyő tetején lévő jelölőnégyzet bejelölésével engedélyezheti, vagy a **Feltételes hozzáférés** lapon. Ha a házirend engedélyezve van, a felhasználóknak többfunkciós kell lennia a portálra való bejelentkezéshez.
 
-Létezik egy alapkonfigurációra vonatkozó szabályzat, amely minden Azure-rendszergazda esetében MFA-t igényel. Azonnal engedélyezheti a portálon. Előfordulhat, hogy a házirend engedélyezése érvényteleníti az aktuális munkamenetet, és ismét be kell jelentkeznie.
+Van egy alaptervi szabályzat, amely az összes Azure-rendszergazdák többszintű szolgáltatását igényli. Engedélyezheti azt azonnal a portálon. A házirend engedélyezése érvénytelenítheti az aktuális munkamenetet, és kényszerítheti, hogy újra jelentkezzen be.
 
-Ha az alapkonfiguráció házirendje nincs engedélyezve:
-1.  Válassza **az MFA megkövetelése rendszergazdák számára**lehetőséget.
-2.  Válassza a **házirend azonnali használata**lehetőséget.
+Ha az alapházirend nincs engedélyezve:
 
-   ![Válassza a házirend azonnali használata lehetőséget](./media/secure-web-app/ad-mfa-conditional-enable.png)
+1. Válassza **az MFA megkövetelése a rendszergazdákszámára**lehetőséget.
+2. Válassza a **Házirend használata azonnal**lehetőséget.
 
-#### <a name="use-azure-sentinel-to-monitor-apps-and-resources"></a>Alkalmazások és erőforrások figyelése az Azure Sentinel használatával
+   ![Azonnal válassza a Házirend használata lehetőséget.](./media/secure-web-app/ad-mfa-conditional-enable.png)
 
-Mivel az alkalmazás növekszik, nehéz lesz összesíteni az erőforrásoktól kapott összes biztonsági jelet és mérőszámot, és azok működés közbeni módon elérhetővé válnak.
+#### <a name="use-azure-sentinel-to-monitor-apps-and-resources"></a>Alkalmazások és erőforrások figyelése az Azure Sentinel segítségével
 
-Az Azure Sentinel úgy lett kialakítva, hogy adatokat gyűjtsön, észlelje a fenyegetések típusait, és betekintést nyújtson a biztonsági incidensekre.
-Amíg a manuális beavatkozásra vár, az Azure Sentinel előre megírt forgatókönyvekkel is hivatkozhat a riasztások és az incidensek kezelési folyamatainak kiindítására.
+Az alkalmazás növekedésével nehéz lesz összesíteni az erőforrásokból kapott összes biztonsági jelet és metrikát, és azokat műveletorientált módon hasznossá tenni.
 
-A minta alkalmazás több, az Azure Sentinel által figyelhető erőforrásból áll.
-Az Azure Sentinel beállításához először létre kell hoznia egy Log Analytics munkaterületet, amely a különböző erőforrásokból gyűjtött összes adatokat tárolja.
+Az Azure Sentinel célja az adatok gyűjtése, a lehetséges fenyegetések típusának észlelése és a biztonsági incidensek láthatósága.
+Amíg manuális beavatkozásra vár, az Azure Sentinel előre megírt forgatókönyvekre támaszkodhat a riasztások és az incidenskezelési folyamatok indításához.
 
-A munkaterület létrehozásához:
+A mintaalkalmazás több erőforrásból áll, amelyeket az Azure Sentinel figyelhet.
+Az Azure Sentinel beállításához először létre kell hoznia egy Log Analytics-munkaterületet, amely tárolja a különböző erőforrásokból gyűjtött összes adatot.
 
-1. A Azure Portal keresési mezőjében keresse meg a **log Analytics**. Válassza **log Analytics**munkaterületek lehetőséget.
+A munkaterület létrehozása:
 
-   ![Log Analytics munkaterületek keresése](./media/secure-web-app/sentinel-log-analytics.png)
+1. Az Azure Portal keresőmezőjében keresse meg a **Log Analytics**kifejezést. Válassza **a Log Analytics-munkaterületek lehetőséget.**
 
-    *Log Analytics munkaterületek keresése*
+   ![Log Analytics-munkaterületek keresése](./media/secure-web-app/sentinel-log-analytics.png)
 
-2. A következő lapon válassza a **Hozzáadás** lehetőséget, majd adjon meg egy nevet, egy erőforráscsoportot és egy helyet a munkaterületnek.
-   ![Log Analytics-munkaterület létrehozása](./media/secure-web-app/sentinel-log-analytics-create.png)
+    *Log Analytics-munkaterületek keresése*
 
-   *Log Analytics-munkaterület létrehozása*
+2. A következő lapon válassza a **Hozzáadás** lehetőséget, majd adja meg a munkaterület nevét, erőforráscsoportját és helyét.
+   ![A Log Analytics-munkaterület létrehozása](./media/secure-web-app/sentinel-log-analytics-create.png)
 
-3. Az **Azure Sentinel**kereséséhez használja a keresőmezőt.
+   *A Log Analytics-munkaterület létrehozása*
+
+3. A keresőmező segítségével keresse meg az **Azure Sentinel**.
 
    ![Az Azure Sentinel keresése](./media/secure-web-app/sentinel-add.png)
 
     *Az Azure Sentinel keresése*
 
-4. Válassza a **Hozzáadás** lehetőséget, majd válassza ki a korábban létrehozott log Analytics munkaterületet.
+4. Válassza **a Hozzáadás** lehetőséget, majd válassza ki a korábban létrehozott Log Analytics-munkaterületet.
 
-   ![Log Analytics munkaterület hozzáadása](./media/secure-web-app/sentinel-workspace-add.png)
+   ![Log Analytics-munkaterület hozzáadása](./media/secure-web-app/sentinel-workspace-add.png)
 
-    *Log Analytics munkaterület hozzáadása*
+    *Log Analytics-munkaterület hozzáadása*
 
-5. Az **Azure Sentinel-** adatösszekötők lap **konfiguráció**területén válassza az adatösszekötők lehetőséget. Egy Azure-szolgáltatásokból álló tömb jelenik meg, amely a Log Analytics Storage-példányhoz kapcsolható az Azure Sentinel elemzéséhez.
+5. Az **Azure Sentinel – Adatösszekötők** lap **Konfiguráció csoportban**válassza az **Adatösszekötők**lehetőséget. Megjelenik egy azure-szolgáltatások tömbje, amely az Azure Sentinel ben elemzésre hivatkozhat a Log Analytics-tárházhoz.
 
-   ![Log Analytics adatösszekötők](./media/secure-web-app/sentinel-connectors.png)
+   ![Log Analytics-adatösszekötők](./media/secure-web-app/sentinel-connectors.png)
 
     *Adatösszekötő hozzáadása az Azure Sentinelhez*
 
-   Például az Application Gateway összekapcsolásához hajtsa végre a következő lépéseket:
+   Az alkalmazásátjáró csatlakoztatásához például tegye a következőket:
 
-   1. Nyissa meg az Azure Application Gateway példány panelt.
-   2. A **figyelés**válassza **diagnosztikai beállítások**.
-   3. Válassza a **diagnosztikai beállítás hozzáadása**lehetőséget.
+   1. Nyissa meg az Azure Application Gateway példány panel.
+   2. A **Monitorozás** területen kattintson a **Diagnosztikai beállítások** elemre.
+   3. Válassza **a Diagnosztikai beállítás hozzáadása lehetőséget.**
 
-      ![Application Gateway diagnosztika hozzáadása](./media/secure-web-app/sentinel-gateway-connector.png)
+      ![Alkalmazásátjáró diagnosztikájának hozzáadása](./media/secure-web-app/sentinel-gateway-connector.png)
 
-      *Application Gateway diagnosztika hozzáadása*
+      *Alkalmazásátjáró diagnosztikájának hozzáadása*
 
-   4. A **diagnosztikai beállítások** lapon válassza ki a létrehozott log Analytics munkaterületet, majd válassza ki az összes összegyűjteni kívánt metrikát, és küldje el az Azure sentinelnek. Kattintson a **Mentés** gombra.
+   4. A **Diagnosztikai beállítások** lapon válassza ki a létrehozott Log Analytics-munkaterületet, majd válassza ki az azure Sentinelnek gyűjtésre és elküldésre kívánt összes metrikát. Kattintson a **Mentés** gombra.
 
-        ![Azure Sentinel-összekötő beállításai](./media/secure-web-app/sentinel-connector-settings.png)
+        ![Az Azure Sentinel-összekötő beállításai](./media/secure-web-app/sentinel-connector-settings.png)
 
-        *Azure Sentinel-összekötő beállításai*
+        *Az Azure Sentinel-összekötő beállításai*
 
-  Az erőforrás metrikái az Azure Sentinelben találhatók, ahol lekérdezheti és megvizsgálhatja azokat.
+  Az erőforrás metrikák az Azure Sentinel, ahol lekérdezheti és kivizsgálhatja őket.
 
-   Adja hozzá ugyanezeket a metrikákat a Azure Key Vault, a nyilvános IP-cím, a Azure Database for PostgreSQL és minden olyan szolgáltatás diagnosztikai beállításainál, amelyek támogatják a fiókjában a diagnosztikai naplókat.
+   Adja hozzá ugyanazokat a metrikákat az Azure Key Vault diagnosztikai beállításaiban, a nyilvános IP-címben, az Azure Database for PostgreSQL-ben és a fiókjában diagnosztikai naplókat támogató szolgáltatásokban.
 
-A metrikák beállítása után az Azure Sentinel elemezni kívánt adatokat tartalmaz.
+A metrikák beállítása után az Azure Sentinel elemzési adatokat.
 
 ## <a name="evaluate-and-verify"></a>Értékelés és ellenőrzés
-Az architektúra fejlesztése és üzembe helyezése után biztosítania kell, hogy a kód és a központilag telepített szolgáltatások megfeleljenek a biztonsági előírásoknak. A következő lépésekkel ellenőrizheti a szoftvereket:
+
+Az architektúra fejlesztése és üzembe helyezése után meg kell győződnie arról, hogy a kód és az üzembe helyezett szolgáltatások megfelelnek a biztonsági szabványoknak. A következő lépéseket teheti meg a szoftver ellenőrzéséhez:
 
 - Statikus kód elemzése
-- Sebezhetőségi vizsgálat
-- Sebezhetőségek keresése és javítása az alkalmazás függőségeiben
+- Biztonsági rés vizsgálata
+- Az alkalmazásfüggőségek biztonsági réseinek keresése és javítása
 
-Ezek a biztonságos fejlesztés ajánlott eljárásainak alapvető építőelemei.
+Ezek a biztonságos fejlesztés bevált gyakorlatai alapvető építőkövei.
 
 ### <a name="static-code-analysis"></a>Statikus kód elemzése
-A minta alkalmazás esetében a statikus elemzési eszközökkel történő ellenőrzés az alkalmazás kódjában található biztonsági rések megkeresését jelenti, például a szennyező ellenőrzés és az adatáramlás-elemzés segítségével. A Python statikus elemzési eszközei nagyobb megbízhatóságot biztosítanak az alkalmazás biztonsága érdekében.
 
-**Lint**
+A mintaalkalmazás esetében a statikus elemzési eszközökkel végzett ellenőrzés magában foglalja az alkalmazáskód biztonsági rései nek keresését olyan technikák alkalmazásokkal, mint a beaint-ellenőrzés és az adatáramlás-elemzés. A Python statikus elemző eszközei nagyobb megbízhatóságot biztosítanak az alkalmazás biztonságának biztosításában.
 
-A PyFlakes egy Python-áttöltési könyvtár, amely lehetővé teszi a Dead Code és a nem használt függvények eltávolítását az alkalmazásokból az itt látható módon:
+**Szösz**
 
-![PyFlakes](./media/secure-web-app/pyflakes.png)
+PyFlakes, a Python szöszszín könyvtár, segít eltávolítani halott kódot és a nem használt funkciókat alkalmazások, ahogy itt látható:
 
-A feltöltés olyan tippeket és lehetséges módosításokat tesz lehetővé, amelyek lehetővé teszik a kód megtisztítását, és a futás közben kevésbé valószínű hibákat.
+![PyFlakes (PyFlakes)](./media/secure-web-app/pyflakes.png)
 
-**PyLint**
+A szöszles idoben tippeket és lehetséges módosításokat biztosít, amelyek a kód ot tisztábbá és kevésbé hibahasznatokozhatják futásidőben.
 
-A PyLint a projekt legnagyobb értékét biztosította. A kód szabványos ellenőrzéseket, hibaellenőrzésokat és újrabontási tippeket hajt végre, így biztosítva, hogy a kiszolgálón futó kód biztonságban legyen. Ha a PyLint segítségével frissíti a kódot, a hibákat kihagyhatja, és javíthatja a PyLint-minősítést, ahogy az alábbi képek is megjelennek.
+**PyLint között**
 
-![PyLint előtt](./media/secure-web-app/before-pylint.png)
+A PyLint adta a projekt legnagyobb értékét. Kódszabvány-ellenőrzéseket, hibaellenőrzést és refactoring tippeket hajt végre annak érdekében, hogy a kiszolgálón futó kód biztonságos legyen. A PyLint használatával frissítheti a kódot, kiküszöbölheti a hibákat, és javíthatja a PyLint minősítést, ahogy az alábbi képek mutatják.
 
-*PyLint előtt*
+![Mielőtt PyLint](./media/secure-web-app/before-pylint.png)
 
-Miután kijavította a felmerülő eszközök által talált hibakódokat, nagyobb megbízhatósággal rendelkezik, hogy a kód nem a hibákra van kitéve. A hibák kijavítása jelentősen csökkenti azokat a biztonsági kockázatokat, amelyek akkor fordulhatnak elő, amikor a kód üzembe helyezése éles környezetekben történik.
+*Mielőtt PyLint*
+
+Miután kijavította a szöszlesi eszközök által talált kódhibákat, nagyobb biztos lehet abban, hogy a kód nem hajlamos a hibákra. A hibák kijavítása jelentősen csökkenti azokat a biztonsági kockázatokat, amelyek akkor jelentkezhetnek, ha a kód éles környezetben van telepítve.
 
 ![Pylint után](./media/secure-web-app/after-pylint.png)
 
-*PyLint után*
+*Miután PyLint*
 
-### <a name="vulnerability-scanning"></a>Sebezhetőségi vizsgálat
-A [OWASP Zap](https://www.zaproxy.org/) eszköze egy nyílt forráskódú, webalkalmazások sebezhetőségét vizsgáló képolvasó, amellyel ellenőrizhető, hogy milyen biztonsági réseket használhat a minta alkalmazás. Ha az eszközt a minta alkalmazásban futtatja, a rendszer néhány lehetséges hibát és támadási vektort feltár.
+### <a name="vulnerability-scanning"></a>Biztonsági rés vizsgálata
 
-![ZAP-eszköz](./media/secure-web-app/zap-tool.png)
+[Az OWASP ZAP eszköze](https://www.zaproxy.org/) egy nyílt forráskódú webalkalmazás-biztonsági résellenőrző, amellyel ellenőrizheti a mintaalkalmazás biztonsági réseit. Az eszköz futtatása a mintaalkalmazásban néhány lehetséges hibát és támadási vektort tár fel.
 
-*ZAP-eszköz*
+![ZAP eszköz](./media/secure-web-app/zap-tool.png)
 
-### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>Biztonsági rések keresése és javítása az alkalmazás függőségeiben
-Az alkalmazások függőségeinek megkereséséhez és kijavításához használhatja a [OWASP függőség-ellenőrzését](https://www.owasp.org/index.php/OWASP_Dependency_Check).
+*ZAP eszköz*
 
-A biztonság egy hasonló alkalmazás, amely ellenőrzi a függőségeket. A [githubon](https://github.com/pyupio/safety)is megtalálhatja. A biztonsági rések a jól ismert sebezhetőségi adatbázisokban találhatók.
+### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>Az alkalmazásfüggőségek biztonsági rései nek keresése és javítása
+
+Az alkalmazásfüggőségek megkereséséhez és javításához [használhatja az OWASP függőségi ellenőrzése](https://www.owasp.org/index.php/OWASP_Dependency_Check).
+
+A biztonság egy hasonló alkalmazás, amely ellenőrzi a függőségeket. Megtalálható a [GitHubon.](https://github.com/pyupio/safety) Biztonsági vizsgálatok a jól ismert biztonsági résadatbázisokban található biztonsági rések után.
 
 ![Biztonsági](./media/secure-web-app/pysafety.png)
 
 *Biztonsági*
 
 ## <a name="next-steps"></a>További lépések
-A következő cikkek segíthetnek a biztonságos alkalmazások megtervezésében, fejlesztésében és üzembe helyezésében.
 
-- [Tervezési](secure-design.md)
+Az alábbi cikkek segítségével biztonságos alkalmazásokat tervezhet, fejleszthet és helyezhet üzembe.
+
+- [Tervezés](secure-design.md)
 - [Fejlesztés](secure-develop.md)
-- [Üzembe helyezés](secure-deploy.md)
+- [Telepítés](secure-deploy.md)

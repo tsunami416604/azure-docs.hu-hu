@@ -5,20 +5,20 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f60f248ec3fbbe5adfb61bf361546d1d5e238f54
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 5db2fb34a6d9330e745a9b4d1f5fed538e96c557
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238544"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239306"
 ---
-# <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Oktatóanyag: Függő erőforrásokkal ellátott Azure Resource Manager-sablonok létrehozása
+# <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Oktatóanyag: Arm-sablonok létrehozása függő erőforrásokkal
 
-Megtudhatja, hogyan hozhat létre Azure Resource Manager sablont több erőforrás üzembe helyezéséhez és a telepítési sorrend konfigurálásához. A sablon létrehozását követően az üzembe helyezés az Azure Portal Cloud Shelljének használatával történik.
+Ismerje meg, hogyan hozhat létre egy Azure Resource Manager (ARM) sablont több erőforrás üzembe helyezéséhez és a telepítési sorrend konfigurálásához. A sablon létrehozását követően az üzembe helyezés az Azure Portal Cloud Shelljének használatával történik.
 
-Az oktatóanyag során egy tárfiókot, egy virtuális gépet, egy virtuális hálózatot és néhány egyéb függő erőforrást fog létrehozni. Bizonyos erőforrások nem helyezhetők üzembe addig, amíg egy másik erőforrás létre nem lett hozva. Nem hozhat létre például virtuális gépet addig, amíg annak tárfiókja és hálózati adaptere létre nem lett hozva. Ezt a kapcsolatot úgy definiáljuk, hogy egy adott erőforrás más erőforrásokkal áll függőségi viszonyban. A Resource Manager kiértékeli az erőforrások közötti függőségeket, majd azokat függőségi sorrendben üzembe helyezi. Ha az erőforrások között nincs függőségi viszony, akkor a Resource Manager párhuzamosan helyezi üzembe azokat. További információkat [az erőforrások Azure Resource Manager-sablonokban történő üzembehelyezési sorrendjének meghatározását](./define-resource-dependency.md) ismertető témakörben talál.
+Az oktatóanyag során egy tárfiókot, egy virtuális gépet, egy virtuális hálózatot és néhány egyéb függő erőforrást fog létrehozni. Bizonyos erőforrások nem helyezhetők üzembe addig, amíg egy másik erőforrás létre nem lett hozva. Nem hozhat létre például virtuális gépet addig, amíg annak tárfiókja és hálózati adaptere létre nem lett hozva. Ezt a kapcsolatot úgy definiáljuk, hogy egy adott erőforrás más erőforrásokkal áll függőségi viszonyban. A Resource Manager kiértékeli az erőforrások közötti függőségeket, majd azokat függőségi sorrendben üzembe helyezi. Ha az erőforrások között nincs függőségi viszony, akkor a Resource Manager párhuzamosan helyezi üzembe azokat. További [információ: Az erőforrások ARM-sablonokban történő üzembe helyezésének sorrendjének meghatározása.](./define-resource-dependency.md)
 
-![Resource Manager-sablon függő erőforrásainak telepítési sorrendi diagramja](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
+![Erőforrás-kezelő sablonfüggő erőforrások telepítési sorrendjének diagramja](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -27,32 +27,32 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A sablon vizsgálata
 > * A sablon üzembe helyezése
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Visual Studio Code a Resource Manager-eszközök bővítménnyel. További információ: [Azure Resource Manager sablonok létrehozása a Visual Studio Code használatával](use-vs-code-to-create-template.md).
+* Visual Studio CodeResource Manager Tools bővítménnyel. Lásd: [A Visual Studio-kód használata ARM-sablonok létrehozásához.](use-vs-code-to-create-template.md)
 * A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót a virtuális gép rendszergazdai fiókjához. Íme egy példa jelszó automatikus létrehozására:
 
     ```console
     openssl rand -base64 32
     ```
-    Az Azure Key Vault funkciója a titkosítási kulcsok és egyéb titkos kulcsok biztonságos megőrzése. További információkért lásd [Oktatóanyag: Az Azure Key Vault integrálása a Resource Manager-sablon üzembehelyezési folyamatába](./template-tutorial-use-key-vault.md). Javasoljuk továbbá, hogy a jelszót három havonta frissítse.
+    Az Azure Key Vault funkciója a titkosítási kulcsok és egyéb titkos kulcsok biztonságos megőrzése. További információ: [Az Azure Key Vault integrálása az ARM-sablon üzembe helyezésében](./template-tutorial-use-key-vault.md)című témakörben olvashat. Javasoljuk továbbá, hogy a jelszót három havonta frissítse.
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
-Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattáraként szolgálnak. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. A jelen oktatóanyagban használt sablon [egyszerű, windowsos virtuális gép üzembe helyezése](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) néven található meg.
+Az Azure QuickStart Templates az ARM-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. A jelen oktatóanyagban használt sablon [egyszerű, windowsos virtuális gép üzembe helyezése](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) néven található meg.
 
-1. A Visual Studio Code-ban válassza a **File** (Fájl) >**Open File** (Fájl megnyitása) elemet.
+1. A Visual Studio-kódból válassza a **Fájlmegnyitása**>**fájl**lehetőséget.
 2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
-4. A **File** (Fájl) >**Save As** (Mentés másként) kiválasztásával mentheti a fájl egy másolati példányát a helyi számítógépre, **azuredeploy.json** néven.
+4. Válassza a **Fájlmentés**>**másként** lehetőséget, ha a fájl egy példányát az **azuredeploy.json**nevű számítógépre szeretné menteni.
 
 ## <a name="explore-the-template"></a>A sablon vizsgálata
 
@@ -77,16 +77,16 @@ Amikor ebben a szakaszban a sablont vizsgálja, próbálja megválaszolni a köv
 
      Érdemes megismerkedni a sablon alapvető működésével, mielőtt megkezdi annak testreszabását.
 
-2. Bontsa ki az első erőforrást. Ez egy tárfiók. Hasonlítsa össze az erőforrás-definíciót a [sablonreferenciával](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+2. Bontsa ki az első erőforrást. Ez egy tárfiók. Hasonlítsa össze az erőforrás-definíciót a [sablonhivatkozással.](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)
 
     ![Visual Studio Code – Azure Resource Manager-sablonok, tárfiók-definíciók](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
-3. Bontsa ki a második erőforrást. Az erőforrástípus `Microsoft.Network/publicIPAddresses`. Hasonlítsa össze az erőforrás-definíciót a [sablonreferenciával](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+3. Bontsa ki a második erőforrást. Az erőforrástípus `Microsoft.Network/publicIPAddresses`. Hasonlítsa össze az erőforrás-definíciót a [sablonhivatkozással.](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)
 
     ![Visual Studio Code – Azure Resource Manager-sablonok, nyilvános IP-cím definíciója](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
 4. Bontsa ki a negyedik erőforrást. Az erőforrástípus `Microsoft.Network/networkInterfaces`:
 
-    ![Visual Studio Code Azure Resource Manager sablonok dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
+    ![Visual Studio Code Azure Resource Manager-sablonok attól függ, hogy](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
     A dependsOn elem lehetővé teszi, hogy egy adott erőforrást egy vagy több erőforrástól függőként lehessen meghatározni. Az erőforrás két másik erőforrástól függ:
 
@@ -108,16 +108,16 @@ A függőségek megadásával a Resource Manager már hatékonyan képes üzembe
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-A sablonok üzembe helyezésének számos módszere létezik.  Ebben az oktatóanyagban az Azure Portal Cloud Shelljét fogja használni.
+A sablonok üzembe helyezésének számos módszere van.  Ebben az oktatóanyagban az Azure Portal Cloud Shelljét fogja használni.
 
 1. Jelentkezzen be a [Cloud Shellbe](https://shell.azure.com).
 1. Válassza a Cloud Shell bal felső sarkában található **PowerShell** elemet, majd a **Megerősítés** lehetőséget.  Ebben az oktatóanyagban a PowerShellt fogja használni.
 1. A Cloud Shellben kattintson a **Fájl feltöltése** lehetőségre:
 
-    ![Azure Portal – Cloud Shell – Fájl feltöltése](./media/template-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
+    ![Fájl feltöltése az Azure Portal Cloud Shell szolgáltatásával](./media/template-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
 1. Válassza ki az oktatóanyag korábbi részében mentett sablont. Alapértelmezés szerint a fájl neve a következő: **azuredeploy.json**.  Ha ilyen néven már létezik fájl, a rendszer értesítés nélkül felülírja a régit.
 
-    Igény szerint az **ls $Home** parancsot és a **Cat $Home/azuredeploy.JSON** parancsot is használhatja annak ellenőrzéséhez, hogy a fájlok feltöltése sikeresen megtörtént-e.
+    Az **ls $HOME** parancs és a **cat $HOME/azuredeploy.json** parancs segítségével ellenőrizheti, hogy a fájlok feltöltése sikeresen megtörtént-e.
 
 1. Futtassa az alábbi PowerShell-parancsokat a Cloud Shellben. A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót a virtuális gép rendszergazdai fiókjához. Lásd: [Előfeltételek](#prerequisites).
 
@@ -154,14 +154,14 @@ A sablonok üzembe helyezésének számos módszere létezik.  Ebben az oktatóa
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 
-1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
+1. Az Azure Portalon válassza a bal oldali menü **Erőforráscsoport** lehetőséget.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
 3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
-4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
+4. Válassza a felső menü **Erőforráscsoport törlése** parancsát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban létrehozott és üzembe helyezett egy virtuális gép, egy virtuális hálózat és a függő erőforrások létrehozására szolgáló sablont. A telepítési parancsfájlok az üzembe helyezés előtti és utáni műveletek végrehajtásához való használatáról további információt a következő témakörben talál:
+Ebben az oktatóanyagban létrehozott és üzembe helyezett egy virtuális gép, egy virtuális hálózat és a függő erőforrások létrehozására szolgáló sablont. A központi telepítési parancsfájlok üzembe helyezés előtti/utáni műveletek végrehajtásáról a következő témakörökből megtudhatja:
 
 > [!div class="nextstepaction"]
-> [Üzembehelyezési parancsfájl használata](./template-tutorial-deployment-script.md)
+> [Üzembehelyezési szkript használata](./template-tutorial-deployment-script.md)

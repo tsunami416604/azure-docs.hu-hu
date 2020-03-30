@@ -1,107 +1,114 @@
 ---
-title: Media Services által ajánlott élő adatfolyam-kódolók – Azure | Microsoft Docs
-description: Ismerkedjen meg a Media Services által ajánlott élő streaming helyszíni kódolókkal
+title: A Media Services által ajánlott élő közvetítés-kódolók - Azure | Microsoft dokumentumok
+description: További információ a Media Services által ajánlott, helyszíni élő streamelési kódolókról
 services: media-services
-keywords: kódolás; kódolók; adathordozó
+keywords: kódolás;kódolók;adathordozó
 author: johndeu
 manager: johndeu
 ms.author: johndeu
 ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 3b7a75ac1c0876d562dc49e9253fe734475a551a
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: 5e16f1fb948ddb435c5002c16125b36fa61d50a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79298954"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336251"
 ---
-# <a name="tested-on-premises-live-streaming-encoders"></a>Helyszíni élő adatfolyam-kódolók tesztelése
+# <a name="tested-on-premises-live-streaming-encoders"></a>Tesztelt helyszíni élő streamelési kódolók
 
-Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) (csatorna) az élő közvetítésre szánt tartalom feldolgozásához szükséges folyamatot jelöli. Az élő esemény két módon fogadja az élő bemeneti adatfolyamokat.
+Az Azure Media Servicesben egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) (csatorna) egy élő közvetítési tartalom feldolgozásához. Az élő esemény kétféleképpen fogad élő bemeneti adatfolyamokat.
 
-* A helyszíni élő kódoló egy többszörös sávszélességű RTMP vagy Smooth Streaming (darabolt MP4) streamet küld az élő eseményre, amely nincs engedélyezve az élő kódolás végrehajtásához Media Services. A betöltött adatfolyamok további feldolgozás nélkül haladnak át az élő eseményeken. Ezt a metódust **áteresztőnek**nevezzük. Azt javasoljuk, hogy az élő kódoló többszörös átviteli sebességű streameket küldjön egyetlen sávszélességű adatfolyamként egy átmenő élő esemény helyett, hogy az adaptív sávszélességű adatfolyamot továbbítsa az ügyfélnek. 
+* A helyszíni élő kódoló többátviteli sebességű RTMP- vagy sima streamelési (töredezett MP4) adatfolyamot küld az élő eseményre, amely nincs engedélyezve a Media Services élő kódolásához. A bevitt adatfolyamok további feldolgozás nélkül haladnak át az élő eseményeken. Ezt a módszert **pass-through-nak nevezzük.** Azt javasoljuk, hogy az élő kódoló küldjön többsávszélességű adatfolyamok helyett egy egysávszélességű stream egy áthaladási élő esemény, amely lehetővé teszi az adaptív sávszélességű streamelés az ügyfél számára. 
 
-    Ha több sávszélességű adatfolyamot használ az átmenő élő eseményhez, szinkronizálni kell a video GOP-méretet és a különböző bitráták videós darabjait, hogy elkerülje a nem várt viselkedést a lejátszási oldalon.
+    Ha többbitráta-adatfolyamot használ az átmenő élő eseményhez, a videó GOP-méretét és a különböző bitrátákon lévő videotöredékeket szinkronizálni kell, hogy elkerülje a váratlan viselkedést a lejátszási oldalon.
 
   > [!TIP]
-  > Az átmenő módszer használata a leggazdaságosabb módja az élő közvetítésnek.
+  > Az áthaladási módszer használata a leggazdaságosabb módja az élő közvetítésnek.
  
-* A helyszíni élő kódoló egyetlen sávszélességű streamet küld az élő eseménynek, amely lehetővé teszi, hogy az Media Services az alábbi formátumok valamelyikével végezzen élő kódolást: RTMP vagy Smooth Streaming (töredezett MP4). Az élő esemény ezután a bejövő egyszeri átviteli sebességű adatfolyam élő kódolását egy többszörös sávszélességű (adaptív) videó streamre hajtja végre.
+* A helyszíni élő kódoló egy egybitrátús adatfolyamot küld az élő eseményre, amely a Media Services szolgáltatással élő kódolást engedélyez a következő formátumok egyikén: RTMP vagy Smooth Streaming (töredezett MP4). Az élő esemény ezután élő kódolást hajt végre a bejövő egysávszélességű adatfolyamról egy többsávszélességű (adaptív) videoadatfolyamba.
 
-Ez a cikk a tesztelt helyszíni élő adatfolyam-kódolókat ismerteti. A helyszíni élő kódoló ellenőrzésével kapcsolatos útmutatásért lásd [a helyszíni kódoló ellenőrzése](become-on-premises-encoder-partner.md) című témakört.
+Ez a cikk ismerteti a helyszíni élő streamelő kódolókat. A helyszíni élő kódoló ellenőrzésére vonatkozó tudnivalókért tekintse [meg a helyszíni kódoló ellenőrzése](become-on-premises-encoder-partner.md)
 
-A Media Services élő kódolásával kapcsolatos részletes információkért lásd: [élő adatfolyamok Media Services v3](live-streaming-overview.md).
+A Media Services szolgáltatással való élő kódolásról a [Media Services 3-as oldalával című élő közvetítés](live-streaming-overview.md)című témakörben talál részletes információt.
 
-## <a name="encoder-requirements"></a>Kódolóval kapcsolatos követelmények
+## <a name="encoder-requirements"></a>Kódoló követelmények
 
-A kódolók csak HTTPS-vagy RTMP-protokollok használata esetén támogatják a TLS 1,2-et.
+A kódolóknak HTTPS vagy RTMPS protokollok használata esetén támogatniuk kell a TLS 1.2-t.
 
-## <a name="live-encoders-that-output-rtmp"></a>Az RTMP kimenetét futtató élő kódolók
+## <a name="live-encoders-that-output-rtmp"></a>RTMP-t kibocsátó élő kódolók
 
-A Media Services a következő, RTMP kimenetű élő kódolók használatát javasolja. A támogatott URL-sémák `rtmp://` vagy `rtmps://`.
+A Media Services a következő, RTMP kimenetű élő kódolók használatát javasolja. A támogatott URL-sémák vagy `rtmp://` . `rtmps://`
 
 Amikor RTMP-vel streamel, ellenőrizze a tűzfal és/vagy a proxy beállításaiban, hogy az 1935-ös és az 1936-os kimenő TCP-portok nyitva vannak-e.<br/><br/>
 Amikor RTMPS-sel streamel, ellenőrizze a tűzfal és/vagy a proxy beállításaiban, hogy a 2935-ös és a 2936-os kimenő TCP-portok nyitva vannak-e.
 
 > [!NOTE]
-> A kódolók számára a TLS 1,2-et a RTMP protokoll használatakor kell támogatni.
+> A kódolóknak támogatniuk kell a TLS 1.2 protokollt RTMPS protokollok használata esetén.
 
 - Adobe Flash Media Live Encoder 3.2
-- [Cambria élő 4,3](https://www.capellasystems.net/products/cambria-live/)
-- Elemi élő (2.14.15 és újabb verzió)
+- [Cambria Élő 4,3](https://www.capellasystems.net/products/cambria-live/)
+- Elemental Live (2.14.15-ös és újabb verzió)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
 - Switcher Studio (iOS)
-- Wirecast (13.0.2 vagy újabb verzió) a TLS 1,2-követelmény miatt
-- Wirecast-k (csak RTMP támogatott)
+- Telestream Wirecast (13.0.2-es vagy újabb verzió a TLS 1.2 követelmény miatt)
+- Telestream Wirecast S (csak RTMP támogatott)
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
 - VMIX
 - xStream
-- [FFmpeg](https://www.ffmpeg.org)
-- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) 7. hős és Hero 8
+- [Ffmpeg](https://www.ffmpeg.org)
+- [GoPro között](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hero 7 és Hero 8
 - [Restream.io](https://restream.io/)
 
-## <a name="live-encoders-that-output-fragmented-mp4"></a>Feldarabolt MP4 kimenetű élő kódolók
+## <a name="live-encoders-that-output-fragmented-mp4"></a>Töredezett MP4-et kibocsátó élő kódolók
 
-Media Services javasolja a következő élő kódolók egyikének használatát, amelyekben a többszörös sávszélességű Smooth Streaming (töredékes MP4) kimenetként van használatban. A támogatott URL-sémák `http://` vagy `https://`.
+A Media Services az alábbi élő kódolók egyikének használatát javasolja, amelyek többátviteli sebességű smooth streamelést (töredezett MP4) használnak kimenetként. A támogatott URL-sémák vagy `http://` . `https://`
 
 > [!NOTE]
-> HTTPS protokollok használata esetén a kódolóknak támogatniuk kell a TLS 1,2-et.
+> A kódolóknak támogatniuk kell a TLS 1.2 protokollt HTTPS protokollok használata esetén.
 
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemi élő (a TLS 1,2-követelmény miatti 2.14.15 és újabb verzió)
+- Elemental Live (2.14.15-ös és újabb verzió a TLS 1.2 követelmény miatt)
 - Envivio 4Caster C4 Gen III 
-- Imagine Communications Selenio MCP3
+- Képzeld el, Kommunikáció Selenio MCP3
 - Media Excel Hero Live és Hero 4K (UHD/HEVC)
-- [FFmpeg](https://www.ffmpeg.org)
+- [Ffmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
->  Ha több nyelven végez élő eseményeket (például egy angol hangsávot és egy spanyol hangsávot), akkor ezt a Media Excel Live encoderben állíthatja be úgy, hogy az élő hírcsatornát továbbítsa egy átmenő élő eseményre.
+>  Ha több nyelven (például egy angol és egy spanyol hangsávon) közvetít élő eseményeket, ezt a Media Excel élő kódolójával valósíthatja meg, amely úgy van beállítva, hogy az élő közvetítést egy átmenő élő eseményre küldje.
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Helyszíni élő kódoló beállításainak konfigurálása
 
-Arról, hogy milyen beállítások érvényesek az élő esemény típusára, lásd: [élő események típusai összehasonlítás](live-event-types-comparison.md).
+Ha tudni szeretné, hogy milyen beállítások érvényesek az élő eseménytípusra, olvassa el az [Élő eseménytípusok összehasonlítása című témakört.](live-event-types-comparison.md)
 
 ### <a name="playback-requirements"></a>Lejátszási követelmények
 
-A tartalom lejátszásához a hang-és video streamnek is jelen kell lennie. A csak videó stream lejátszása nem támogatott.
+A tartalom lejátszásához hang- és videoadatfolyamnak is jelen kell lennie. A csak videoadatfolyam lejátszása nem támogatott.
 
 ### <a name="configuration-tips"></a>Konfigurációs tippek
 
-- Amikor csak lehetséges, hardveresen rögzített beállítású internet kapcsolat használatára.
-- A sávszélesség-követelmények meghatározásakor a továbbítási bitrátát dupla értékre kell kiszámítani. Bár nem kötelező, ez az egyszerű szabály segít csökkenteni a hálózati torlódás hatását.
-- Szoftveralapú kódolók használatáról, amikor el minden felesleges programot zárja be.
-- A kódoló konfigurációjának a megkezdése után történő módosítása negatív hatással van az eseményre. A konfigurációs változások hatására az esemény instabillá válhat. 
-- Győződjön meg arról, hogy elegendő időt ad az esemény beállítására. A nagy léptékű események esetében javasoljuk, hogy a telepítőt egy órával az esemény előtt indítsa el.
+- Lehetőség szerint használjon vezetékes internetkapcsolatot.
+- A sávszélesség-követelmények meghatározásakor duplázza meg a streamelési bitrátákat. Bár nem kötelező, ez az egyszerű szabály segít a hálózati torlódások hatásának csökkentésében.
+- Szoftveralapú kódolók használata esetén zárja be a szükségtelen programokat.
+- A kódoló konfigurációjának módosítása a lenyomás megkezdése után negatív hatással van az eseményre. A konfigurációs módosítások az esemény instabillá válását okozhatják. 
+- Győződjön meg arról, hogy elegendő időt ad magának az esemény beállításához. Nagy méretű események esetén azt javasoljuk, hogy a beállítást egy órával az esemény előtt indítsd el.
+- Használja a H.264 video- és AAC audio kodek kimenetet.
+- Győződjön meg arról, hogy van kulcsképkocka vagy GOP időbeli igazítás a videó minőségei között.
+- Győződjön meg arról, hogy minden egyes videóminőséghez egyedi adatfolyam-név szerepel.
+- Az optimális adaptív bitráta-teljesítmény érdekében használjon szigorú CBR kódolást.
+
+> [!IMPORTANT]
+> Nézze meg a fizikai állapotát a gép (CPU / Memória / stb), mint a töredékek feltöltése a felhőbe jár CPU és IO műveleteket. Ha módosítja a beállításokat a kódoló, biztos, hogy állítsa vissza a csatornák / élő esemény a változás hatályba.
 
 ## <a name="see-also"></a>Lásd még
 
-[Élő közvetítés a Media Services v3-val](live-streaming-overview.md)
+[Élő közvetítés a Media Services v3-as ával](live-streaming-overview.md)
 
 ## <a name="next-steps"></a>További lépések
 

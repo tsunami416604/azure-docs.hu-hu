@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD Connect szinkronizálási szabály testreszabása |} A Microsoft Docs
-description: Ez a témakör ismerteti az Azure AD Connect telepítésével kapcsolatos problémák elhárítása.
+title: Szinkronizálási szabály testreszabása az Azure AD Connectben | Microsoft Dokumentumok"
+description: Ez a témakör az Azure AD Connect telepítésével kapcsolatos problémák elhárításának lépéseit ismerteti.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,41 +16,41 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a65d4c477d0e3aa9d5feea53e3e667ece651c83f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60351068"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>Szinkronizálási szabály testre szabása
 
-## <a name="recommended-steps"></a>**Javasolt lépések**
+## <a name="recommended-steps"></a>**Ajánlott lépések**
 
-A szinkronizálási Szabályszerkesztő segítségével szerkesztheti, vagy hozzon létre egy új szinkronizálási szabályt. Meg kell lennie a módosításokat a szinkronizálási szabályokon tapasztalt felhasználó. Megfelelő módosításokat a cél-címtár objektumait törlését eredményezheti. Kérjük, olvassa el [ajánlott dokumentumok](#recommended-documents) próbál a jeggyel szakértelmet szinkronizálási szabályait. Módosíthatja egy szinkronizálási szabály hajtania az alábbi lépéseket:
+A szinkronizálási szabály szerkesztőjével szerkesztheti vagy létrehozhat egy új szinkronizálási szabályt. A szinkronizálási szabályok módosításához tapasztalt felhasználónak kell lennie. Bármilyen helytelen módosítás az objektumok törlését eredményezheti a célkönyvtárból. Kérjük, olvassa el [az Ajánlott dokumentumok elolvasását,](#recommended-documents) hogy szakértelmet szerezzen a szinkronizálási szabályokterén. A szinkronizálási szabályok módosításához hajtsa végre a következő lépéseket:
 
-* Indítsa el a szinkronizálási szerkesztő, az alkalmazás menüből a desktop alább látható módon:
+* Indítsa el a szinkronizálási szerkesztőt az asztali alkalmazás menüből az alábbi módon:
 
-    ![Szinkronizálási Szabályszerkesztő menü](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/syncruleeditormenu.png)
+    ![Szinkronizálási szabályszerkesztő menü](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/syncruleeditormenu.png)
 
-* Annak érdekében, hogy testre szabhatja a alapértelmezett szinkronizálási szabályt, klónozza a szinkronizálási Szabályszerkesztővel, amely másolatot készít a szabványos alapértelmezett szabályt, és tiltsa le a "Szerkesztés" gombra kattintva a meglévő szabályt. 100-nál kisebb prioritással a klónozott szabály mentéséhez.  Sorrend határozza meg, milyen szabály wins (numerikus érték kisebb) egy ütközésének feloldása egy attribútum folyamat ütközés esetén.
+* Az alapértelmezett szinkronizálási szabály testreszabásához klónozza a meglévő szabályt a Szinkronizálási szabályok szerkesztőjének "Szerkesztés" gombjára kattintva, amely létrehozza a szabványos alapértelmezett szabály másolatát, és letiltja azt. Mentse a klónozott szabályt 100-nál kisebb prioritással.  A prioritás határozza meg, hogy melyik szabály nyer (alacsonyabb numerikus érték) ütközésfeloldást, ha attribútumfolyamat-ütközés van.
 
-    ![Synchronization Rule Editor](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/clonerule.png)
+    ![Szinkronizálási szabály szerkesztője](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/clonerule.png)
 
-* Egy adott attribútum módosításakor ideális esetben érdemes csak megtartani a módosítása attribútum a klónozott szabályban.  Az alapértelmezett szabály engedélyezze, hogy a módosított attribútum származnak klónozott szabály és egyéb attribútumok útvonalról alapértelmezett standard szabályból. 
+* Egy adott attribútum módosításakor ideális esetben csak a klónozott szabályban tartsa meg a módosító attribútumot.  Ezután engedélyezze az alapértelmezett szabályt, hogy a módosított attribútum klónozott szabályból származzon, és más attribútumokat az alapértelmezett normál szabályból vegye ki. 
 
-* Vegye figyelembe, hogy abban az esetben, ahol a számított érték a módosított attribútum a klónozott szabályban má hodnotu NULL, és nem NULL, a szabványos alapértelmezett szabály, majd a not NULL értékkel legyőzi, és lecseréli a NULL érték. Ha nem szeretné, hogy a rendszer NULL értéket cserélje le egy nem NULL értéket, majd a klónozott szabályban AuthoritativeNull hozzárendelése.
+* Kérjük, vegye figyelembe, hogy abban az esetben, ha a módosított attribútum számított értéke NULL a klónozott szabályban, és nem NULL az alapértelmezett általános szabályban, akkor a nem NULL érték nyer, és felülírja a NULL értéket. Ha nem szeretné, hogy a NULL értéket nem NULL értékkel helyettesítse, akkor rendelje hozzá a MérvativeNull értéket a klónozott szabályban.
 
-* Módosíthatja egy **kimenő** szabály, a szinkronizálási Szabályszerkesztő a szűrő módosítása.
+* **Kimenő** szabály módosításához módosítsa a szűrőt a szinkronizálási szabály szerkesztőjéből.
 
 ## <a name="recommended-documents"></a>**Ajánlott dokumentumok**
-* [Az Azure AD Connect szinkronizálása: Műszaki fogalmak](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
-* [Az Azure AD Connect szinkronizálása: Az architektúra ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
-* [Az Azure AD Connect szinkronizálása: A deklaratív üzembe helyezés ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Az Azure AD Connect szinkronizálása: A deklaratív üzembehelyezési kifejezések ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
-* [Az Azure AD Connect szinkronizálása: Az alapértelmezett konfiguráció ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
-* [Az Azure AD Connect szinkronizálása: A felhasználók, csoportok és kapcsolatok ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Az Azure AD Connect szinkronizálása: Árnyékattribútumok](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Az Azure AD Connect szinkronizálása: technikai kulcsfogalmak](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
+* [Azure AD Connect szinkronizálás: Az architektúra ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
+* [Azure AD Connect szinkronizálás: A deklaratív kiépítés ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
+* [Azure AD Connect szinkronizálás: A deklaratív létesítési kifejezések ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
+* [Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
+* [Azure AD Connect szinkronizálás: A felhasználók, csoportok és kapcsolattartók ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
+* [Azure AD Connect szinkronizálás: Árnyékattribútumok](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Az Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md).
-- [Mi a hibrid identitás? ](whatis-hybrid-identity.md).
+- [Mi a hibrid identitás?](whatis-hybrid-identity.md)

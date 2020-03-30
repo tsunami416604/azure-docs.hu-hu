@@ -1,47 +1,47 @@
 ---
 title: Egyedi kulcsok definiálása egy Azure Cosmos-tárolóhoz
-description: Ismerje meg, hogyan határozhat meg egyedi kulcsokat egy Azure Cosmos-tárolóhoz Azure Portal, PowerShell, .net, Java és számos más SDK használatával.
+description: Ismerje meg, hogyan definiálhat egyedi kulcsokat egy Azure Cosmos-tárolóhoz az Azure Portal, a PowerShell, a .Net, a Java és számos más SDK használatával.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.openlocfilehash: fa62495a7b51c9a06a91102299378c15e811eae0
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74872111"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Egyedi kulcsok definiálása egy Azure Cosmos-tárolóhoz
 
-Ez a cikk bemutatja az [egyedi kulcsok](unique-keys.md) definiálásának különböző módjait az Azure Cosmos-tárolók létrehozásakor. Ezt a műveletet jelenleg a Azure Portal vagy az egyik SDK használatával lehet elvégezni.
+Ez a cikk bemutatja az egyedi kulcsok definiálásának különböző [módjait](unique-keys.md) az Azure Cosmos-tároló létrehozásakor. Jelenleg az Azure Portalon vagy az SDK-k egyikén keresztül hajthatja végre ezt a műveletet.
 
-## <a name="use-the-azure-portal"></a>Az Azure-portál használata
+## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
-1. [Hozzon létre egy új Azure Cosmos-fiókot](create-sql-api-dotnet.md#create-account) , vagy válasszon ki egy meglévőt.
+1. [Hozzon létre egy új Azure Cosmos-fiókot,](create-sql-api-dotnet.md#create-account) vagy válasszon ki egy meglévőt.
 
-1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza ki a használni kívánt tárolót.
+1. Nyissa meg az **Adatkezelő** ablaktáblát, és jelölje ki azt a tárolót, amelyen dolgozni szeretne.
 
-1. Kattintson az **új tároló**elemre.
+1. Kattintson az **Új tároló gombra.**
 
-1. A **tároló hozzáadása** párbeszédpanelen kattintson az **+ egyedi kulcs hozzáadása** lehetőségre egy egyedi kulcs hozzáadásához.
+1. A **Tároló hozzáadása** párbeszédpanelen kattintson a **+ Egyedi kulcs hozzáadása** gombra egy egyedi kulcsbejegyzés hozzáadásához.
 
-1. Adja meg az egyedi kulcs megkötésének elérési útját (ke) t
+1. Az egyedi kulcsmegkötés elérési útjának megadása
 
-1. Ha szükséges, vegyen fel további egyedi kulcs-bejegyzéseket a **+ egyedi kulcs hozzáadása** lehetőségre kattintva.
+1. Ha szükséges, adjon hozzá több egyedi kulcs bejegyzések kattintva **+ Egyedi kulcs hozzáadása**
 
-    ![Képernyőkép a Azure Portal egyedi kulcs megkötésének bejegyzéséről](./media/how-to-define-unique-keys/unique-keys-portal.png)
+    ![Képernyőkép az Azure Portalon található egyedi kulcsmegkötési bejegyzésről](./media/how-to-define-unique-keys/unique-keys-portal.png)
 
-## <a name="use-powershell"></a>A PowerShell használata
+## <a name="use-powershell"></a>Powershell használata
 
-Egyedi kulcsokkal rendelkező tároló létrehozásához lásd: [Azure Cosmos-tároló létrehozása egyedi kulccsal és TTL-vel](manage-with-powershell.md#create-container-unique-key-ttl)
+Hozzon létre egy tárolót egyedi kulcsokkal [lásd: Hozzon létre egy Azure Cosmos-tároló egyedi kulccsal és TTL](manage-with-powershell.md#create-container-unique-key-ttl)
 
-## <a name="use-the-net-sdk-v2"></a>A .NET SDK v2 használata
+## <a name="use-the-net-sdk-v2"></a>A .NET SDK V2 használata
 
-Amikor új tárolót hoz létre a [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)használatával, egy `UniqueKeyPolicy` objektum használható egyedi kulcsokra vonatkozó megkötések definiálásához.
+Új tároló létrehozásakor a [.NET SDK v2 használatával](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)egy `UniqueKeyPolicy` objektum használható egyedi kulcsmegkötések definiálásához.
 
 ```csharp
 client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), new DocumentCollection
@@ -59,9 +59,9 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 });
 ```
 
-## <a name="use-the-net-sdk-v3"></a>A .NET SDK v3 használata
+## <a name="use-the-net-sdk-v3"></a>A .NET SDK V3 használata
 
-Amikor új tárolót hoz létre a [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)használatával, az SDK Fluent API segítségével tömör és olvasható módon deklarálhatja az egyedi kulcsokat.
+Új tároló létrehozásakor a [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)használatával, használja az SDK gördülékeny API-t az egyedi kulcsok tömör és olvasható módon deklarálása.
 
 ```csharp
 await client.GetDatabase("database").DefineContainer(name: "container", partitionKeyPath: "/myPartitionKey")
@@ -78,7 +78,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 ## <a name="use-the-java-sdk"></a>A Java SDK használata
 
-Amikor új tárolót hoz létre a [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)-val, egy `UniqueKeyPolicy` objektum használható egyedi kulcsokra vonatkozó megkötések definiálásához.
+Új tároló létrehozásakor a [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)használatával egy `UniqueKeyPolicy` objektum használható egyedi kulcsmegkötések definiálására.
 
 ```java
 // create a new DocumentCollection object
@@ -113,9 +113,9 @@ container.setUniqueKeyPolicy(uniqueKeyPolicy);
 client.createCollection(String.format("/dbs/%s", "database"), container, null);
 ```
 
-## <a name="use-the-nodejs-sdk"></a>A Node. js SDK használata
+## <a name="use-the-nodejs-sdk"></a>A Node.js SDK használata
 
-Ha a [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos)-val új tárolót hoz létre, egy `UniqueKeyPolicy` objektum használható egyedi kulcsokra vonatkozó megkötések definiálásához.
+Új tároló létrehozásakor a [Node.js SDK](https://www.npmjs.com/package/@azure/cosmos)használatával egy `UniqueKeyPolicy` objektum használható egyedi kulcsmegkötések definiálásához.
 
 ```javascript
 client.database('database').containers.create({
@@ -131,7 +131,7 @@ client.database('database').containers.create({
 
 ## <a name="use-the-python-sdk"></a>A Python SDK használata
 
-Amikor új tárolót hoz létre a [PYTHON SDK](https://pypi.org/project/azure-cosmos/)használatával, az egyedi kulcsokra vonatkozó megkötések a paraméterként átadott szótár részeként adhatók meg.
+Amikor egy új tárolót hoz létre a [Python SDK](https://pypi.org/project/azure-cosmos/)használatával, egyedi kulcsmegkötések adhatók meg a paraméterként megadott szótár részeként.
 
 ```python
 client.CreateContainer('dbs/' + config['DATABASE'], {
@@ -145,7 +145,7 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 })
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [particionálásról](partition-data.md)
-- Az [indexelés működésének](index-overview.md) megismerése
+- Az [indexelés működésének megismerése](index-overview.md)

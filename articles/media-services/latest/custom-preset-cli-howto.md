@@ -1,6 +1,6 @@
 ---
-title: Kódolás a Media Services v3 CLI – az Azure használatával egyéni átalakító |} A Microsoft Docs
-description: Ez a témakör bemutatja, hogyan használható az Azure Media Services v3 kódolása a CLI-vel Egyéni átalakító.
+title: Egyéni átalakítás kódolása a Media Services v3 Azure CLI használatával | Microsoft dokumentumok
+description: Ez a témakör bemutatja, hogyan használhatja az Azure Media Services v3-as egyéni átalakításkódolásához az Azure CLI használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,37 +12,39 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 42b7c2d86525c428253137b424fe58bb61edba70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762021"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382953"
 ---
-# <a name="how-to-encode-with-a-custom-transform---cli"></a>Az egyéni átalakítási – parancssori felület kódolása
+# <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Kódolás egyéni átalakítással - Azure CLI
 
-Ha az Azure Media Services encoding, ismerkedhet meg gyorsan az, ahogyan az ágazatban kialakult bevált gyakorlaton alapuló ajánlott a beépített beállítások egyikét a [fájlok Streamelési](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) a rövid útmutató. Az egyedi, amelyekre az adott forgatókönyv vagy eszközkövetelmények készletek is létrehozható.
+Az Azure Media Services használatával történő kódolás során gyorsan elkezdheti az ajánlott beépített készletek egyikét, amelyek az iparági bevált gyakorlatokon alapulnak, ahogy azt a [streamelési fájlok](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) rövid útmutatója is mutatja. Egyéni készletet is létrehozhat az adott forgatókönyv vagy eszköz követelményeinek megcélzásához.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-Egyéni készletek létrehozásakor a következő szempontokat kell figyelembe venni:
+Egyéni készletek létrehozásakor a következő szempontok érvényesek:
 
-* Minden értékét magasságát és szélességét AVC tartalom kezelésére kell költeni 4 többszörösének kell lennie.
-* Az Azure Media Services v3-as a kódolási bitsebességre való átkódolása összes bit / másodperc. Ez különbözik a készletek a v2 API-kkal használt egységet kilobit/másodperc. Például ha az átviteli sebesség a v2-ben van megadva, 128 (kilobit/másodperc), a v3-as volna meg akkor 128000 (bit/másodperc).
+* Az AVC-tartalom magasságának és szélességének minden értékének a 4 többszörösének kell lennie.
+* Az Azure Media Services v3-as részében az összes kódolási bitsebesség bitper másodpercben van. Ez eltér a v2 API-kkal rendelkező készletektől, amelyek kilobit/második egységként használták a kilobitokat/ a második at. Ha például a v2-ben a bitráta 128 (kilobit/másodperc), akkor a v3-ban 128000 (bit/másodperc) lesz megadva.
 
-## <a name="prerequisites"></a>Előfeltételek 
+## <a name="prerequisites"></a>Előfeltételek
 
-[A Media Services-fiók létrehozása](create-account-cli-how-to.md). <br/>Ellenőrizze, hogy ne felejtse el az erőforráscsoport nevét és a Media Services-fiók nevét. 
+[Hozzon létre egy Media Services-fiókot](create-account-cli-how-to.md).
+
+Győződjön meg arról, hogy nem emlékszik az erőforráscsoport nevére és a Media Services-fiók nevére.
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
-## <a name="define-a-custom-preset"></a>Egyéni előbeállítás definiálása
+## <a name="define-a-custom-preset"></a>Egyéni készlet definiálása
 
-Az alábbi példa egy új átalakítás kérelem törzsét határozza meg. Azt adja meg, amelyet szeretnénk hozható létre, ha az átalakítás szolgál csoportját. 
+A következő példa egy új átalakítás kérelemtörzsét határozza meg. Meghatározzuk a kimenetek egy készletét, amelyet az átalakítás során szeretnénk létrehozni.
 
-Ebben a példában először hozzáadunk egy AacAudio réteget a hang kódolása és két H264Video réteget a videó kódolásához. A videó rétegekben hogy címkék hozzárendelésére, hogy a kimeneti fájl nevében szereplő használható. Ezután szeretnénk a kimenetet a miniatűrök is tartalmazhatnak. Az alábbi példában képek PNG formátumú, a bemeneti videó felbontása 50 %-át, vagy három időbélyegeket – {25 %-kal, 50 %-os, 75}, a bemeneti videó hosszától egy előállított adjuk meg. Végül adjuk meg a formátum a kimeneti fájlok – egy videó és hang-, a másik pedig a miniatűrök. Mivel több H264Layers rendelkezünk, egyedi nevek rétegenként eredményező makrók van. Azt is, vagy használja a `{Label}` vagy `{Bitrate}` makró-, a példa bemutatja a korábbi.
+Ebben a példában először a hangkódoláshoz adunk hozzá egy AacAudio réteget, és két H264Video réteget a videó kódoláshoz. A videorétegeken címkéket rendelünk hozzá, hogy azok használhatók legyenek a kimeneti fájlnevekben. Ezután azt szeretnénk, hogy a kimenet is tartalmazza a miniatűröket. Az alábbi példában png formátumú képeket adunk meg, amelyek a bemeneti videó felbontásának 50%-ában, és a bemeneti videó hosszának {25%, 50%, 75} - létrehozásához. Végül, mi határozza meg a formátumot a kimeneti fájlokat - az egyik a videó + audio, és egy másik a miniatűrök. Mivel több H264Layers-ünk van, olyan makrókat kell használnunk, amelyek rétegenként egyedi neveket hoznak létre. Használhatjuk vagy `{Label}` `{Bitrate}` makrót, a példa az előbbit mutatja.
 
-Az átalakítási fájlba mentése fogjuk. Ebben a példában azt a nevet a fájlnak `customPreset.json`. 
+Ezt az átalakítást egy fájlba fogjuk menteni. Ebben a példában elnevezzük a fájlt `customPreset.json`.
 
 ```json
 {
@@ -120,25 +122,24 @@ Az átalakítási fájlba mentése fogjuk. Ebben a példában azt a nevet a fáj
         }
     ]
 }
-
 ```
 
-## <a name="create-a-new-transform"></a>Hozzon létre egy új átalakítás  
+## <a name="create-a-new-transform"></a>Új átalakítás létrehozása  
 
-Ebben a példában létrehozunk egy **átalakítása** , amely a korábban meghatározott egyéni előbeállítás alapul. Egy-egy átalakítási létrehozásakor először ellenőrizze Ha egy már létezik. Ha az átalakítás létezik, akkor újra felhasználhatja. A következő `show` parancsot adja vissza a `customTransformName` átalakítása, ha létezik:
+Ebben a példában létrehozunk egy **átalakítást,** amely a korábban definiált egyéni készleten alapul. Átalakítás létrehozásakor először ellenőrizze, hogy létezik-e már ilyen. Ha létezik az átalakítás, használja fel újra. A `show` következő parancs `customTransformName` visszaadja az átalakítást, ha létezik:
 
-```cli
+```azurecli-interactive
 az ams transform show -a amsaccount -g amsResourceGroup -n customTransformName
 ```
 
-A következő CLI-paranccsal megtekintheti az átalakítás a (korábban meghatározott) egyéni előbeállítás alapján hoz létre. 
+A következő Azure CLI parancs létrehozza az átalakítást az egyéni készlet (korábban definiált) alapján.
 
-```cli
+```azurecli-interactive
 az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName --description "Basic Transform using a custom encoding preset" --preset customPreset.json
 ```
 
-A Media Services a alkalmazni az átalakítás a megadott videó vagy hang kell egy adott átalakítási feladat elküldéséhez. Egy teljes példa bemutatja, hogyan lehet elküldeni egy egy-egy átalakítási feladat, lásd: [a rövid útmutató: Stream-videó fájlok – parancssori felület](stream-files-cli-quickstart.md).
+Ahhoz, hogy a Media Services alkalmazza az átalakítást a megadott videóra vagy hangra, el kell küldenie egy feladatot az adott átalakítás alatt. Egy teljes példa, amely bemutatja, hogyan küldhet el egy feladatot egy átalakítás alatt, lásd: [Rövid útmutató: Videofájlok streamelése - Azure CLI](stream-files-cli-quickstart.md).
 
 ## <a name="see-also"></a>Lásd még
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](/cli/azure/ams)

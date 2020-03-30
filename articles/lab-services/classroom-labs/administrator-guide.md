@@ -1,6 +1,6 @@
 ---
-title: Azure Lab Services – rendszergazdai útmutató | Microsoft Docs
-description: Ez az útmutató segít a rendszergazdáknak, hogy Azure Lab Services használatával hozzanak létre és kezeljenek labor-fiókokat.
+title: Azure Lab Services – Rendszergazdai útmutató | Microsoft dokumentumok
+description: Ez az útmutató az Azure Lab Services használatával laborfiókokat létrehozó és kezelő rendszergazdákat segíti.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,235 +13,251 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 318f16df6ac10be5909b255f2f1988be028d0eef
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 8608aaab7bb8b6d10e67f27678c17f20a6c243da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78162424"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370850"
 ---
-# <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – rendszergazdai útmutató
-Az Egyetem Felhőbeli erőforrásait kezelő informatikai rendszergazdák általában felelősek az iskolájuk laboratóriumi fiókjának beállításához. A labor-fiók beállítása után a rendszergazdák vagy a pedagógusok létrehozzák a labor-fiókban található tantermi laborokat. Ez a cikk átfogó áttekintést nyújt az érintett Azure-erőforrásokról és a létrehozásához szükséges útmutatóról.
+# <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – Rendszergazdai útmutató
+Az egyetem felhőalapú erőforrásait kezelő informatikai rendszergazdák általában felelősek az iskola laborfiókjának beállításáért. A tesztkörnyezet-fiók beállítása után a rendszergazdák vagy az oktatók a tesztkörnyezet-fiókban található tantermi laborokat hoznak létre. Ez a cikk magas szintű áttekintést nyújt az azure-erőforrásokról és a létrehozásukhoz.
 
-![Azure-erőforrások magas szintű megtekintése egy labor-fiókban](../media/administrator-guide/high-level-view.png)
+![Az Azure-erőforrások magas szintű nézete laborfiókban](../media/administrator-guide/high-level-view.png)
 
-- A tanterem Labs egy Azure Lab Services által birtokolt Azure-előfizetésen belül üzemel.
-- A labor fiókok, a megosztott képkatalógus és a képverziók az előfizetésen belül találhatók.
-- A labor-fiókját és a megosztott képtárat is megtekintheti ugyanabban az erőforráscsoporthoz. Ebben a diagramban különböző erőforráscsoportok találhatók. 
+- Az osztálytermi laborok az Azure Lab Services tulajdonában lévő Azure-előfizetésen belül találhatók.
+- A laborfiókok, a megosztott képgaléria és a képverziók az előfizetésen belül találhatók.
+- A tesztkörnyezet-fiók és a megosztott képtár ugyanabban az erőforráscsoportban rendelkezhet. Ebben az ábrán különböző erőforráscsoportokban vannak. 
 
-## <a name="subscription"></a>Előfizetést
-Az Egyetem egy vagy több Azure-előfizetéssel rendelkezik. Az előfizetés segítségével kezelhető a számlázás és a biztonság az összes olyan Azure-resources\services esetében, amelyet a rendszer használ, beleértve a laboratóriumi fiókokat is.
+## <a name="subscription"></a>Előfizetés
+Az egyetem egy vagy több Azure-előfizetéssel rendelkezik. Az előfizetés a számlázás és a biztonság kezelésére szolgál az összes Azure-erőforrások\szolgáltatások, amelyek a benne használt, beleértve a labor fiókok.
 
-A labor-fiók és az előfizetése közötti kapcsolat azért fontos, mert:
+A tesztkörnyezet-fiók és az előfizetés közötti kapcsolat azért fontos, mert:
 
-- A számlázás a labor-fiókot tartalmazó előfizetésen keresztül történik.
-- Az előfizetés Azure Active Directory (AD) bérlője számára elérhetővé teheti a felhasználókat Azure Lab Serviceshoz. Hozzáadhat egy felhasználót labor-fiók owner\contributor, osztálytermi labor creatorként vagy tantermi labor tulajdonosként.
+- A számlázás a tesztkörnyezet-fiókot tartalmazó előfizetésen keresztül történik.
+- Az előfizetés Azure Active Directory (AD) bérlői hozzáférését biztosíthatja a felhasználóknak az Azure Lab Services szolgáltatáshoz. Hozzáadhat egy felhasználót tesztkörnyezet-fiók tulajdonosaként\közreműködő, tantermi laborlétrehozó vagy tantermi labor tulajdonos.
 
-A tantermi laborokat és a virtuális gépeket (VM) felügyeli és üzemelteti a Azure Lab Services által birtokolt előfizetésen belül.
+Az osztálytermi laborok és virtuális gépeik (VM-ek) az Azure Lab Services tulajdonában lévő előfizetésen belül kerülnek az Ön számára.
 
 ## <a name="resource-group"></a>Erőforráscsoport
-Egy előfizetés egy vagy több erőforráscsoportot tartalmaz. Az erőforráscsoportok használatával létrehozhatók az Azure-erőforrások logikai csoportjai, amelyek ugyanabban a megoldásban együtt használatosak.  
+Az előfizetés egy vagy több erőforráscsoportot tartalmaz. Az erőforráscsoportok az Azure-erőforrások logikai csoportjainak létrehozásához használatosak, amelyek ugyanazon a megoldáson belül használatosak.  
 
-Labor-fiók létrehozásakor be kell állítania azt az erőforráscsoportot, amely a labor-fiókot tartalmazza. 
+Laborfiók létrehozásakor konfigurálnia kell a laborfiókot tartalmazó erőforráscsoportot. 
 
-[Megosztott képgyűjtemény](#shared-image-gallery)létrehozásakor is szükség van egy erőforráscsoporthoz. Dönthet úgy, hogy két különálló erőforráscsoporthoz helyezi el a labor-fiókját és a közös rendszerkép-katalógust, amely akkor jellemző, ha a képtárat különböző megoldásokban szeretné megosztani. Vagy dönthet úgy is, hogy ugyanabba az erőforráscsoporthoz helyezi őket.
+[Megosztott képtár](#shared-image-gallery)létrehozásakor erőforráscsoport is szükséges. Dönthet úgy, hogy a tesztkörnyezet-fiókot és a megosztott képgalériát két külön erőforráscsoportba helyezi, ami jellemző, ha a képgalériát különböző megoldások között kívánja megosztani. Vagy dönthet úgy is, hogy ugyanabba az erőforráscsoportba helyezi őket.
 
-Amikor létrehoz egy tesztkörnyezet-fiókot, automatikusan létrehozhat és csatolhat megosztott képtárat.  Ez a beállítás azt eredményezi, hogy a labor fiók és a megosztott rendszerkép-katalógus külön erőforráscsoportok között jön létre. Ezt a viselkedést a jelen oktatóanyagban ismertetett lépések használatakor fogja látni: a [megosztott rendszerkép-gyűjtemény konfigurálása a tesztkörnyezet létrehozásakor](how-to-attach-detach-shared-image-gallery.md#configure-at-the-time-of-lab-account-creation). A cikk tetején található rendszerkép ezt a konfigurációt is használja. 
+Laborfiók létrehozásakor automatikusan létrehozhat és csatolhat egy megosztott képgalériát egyszerre.  Ez a beállítás azt eredményezi, hogy a tesztkörnyezet-fiók és a megosztott képtár jön létre külön erőforráscsoportokban. Ez a viselkedés az oktatóanyagban leírt lépések használatakor jelenik meg: [Megosztott képgaléria konfigurálása a tesztkörnyezet-fiók létrehozásakor](how-to-attach-detach-shared-image-gallery.md#configure-at-the-time-of-lab-account-creation). A cikk tetején található kép is ezt a konfigurációt használja. 
 
-Javasoljuk, hogy az erőforráscsoportok szerkezetének megtervezéséhez növelje meg az idő előtti időt, mivel a létrehozása után *nem* lehet módosítani a labor-fiók vagy a megosztott képgyűjtemény erőforráscsoportot. Ha módosítania kell az erőforrás-csoportot ezen erőforrások esetében, törölnie kell, majd újra létre kell hoznia a tesztkörnyezet and\or megosztott képtárat.
+Azt javasoljuk, hogy az erőforráscsoportok szerkezetének megtervezéséhez előre fordíts időt, mivel létrehozása után *nem* lehet módosítani egy tesztkörnyezet-fiók vagy megosztott képgaléria erőforráscsoportját. Ha módosítania kell ezeknek az erőforrásoknak az erőforráscsoportját, törölnie kell, majd újra létre kell hoznia a tesztkörnyezet-fiókot és\vagy a megosztott képgalériát.
 
 ## <a name="lab-account"></a>Labor-fiók
-A labor-fiókok egy vagy több osztályterem Labs számára tárolóként szolgálnak. A Azure Lab Services első lépéseiben gyakran csak egyetlen labor-fiókkal rendelkezhet. A labor használatának skálázása után később további labor-fiókokat is létrehozhat.
+A laborfiók egy vagy több tantermi labor tárolójaként szolgál. Az Azure Lab Services első lépésekén gyakori, hogy csak egyetlen laborfiókkal rendelkezik. A labor használat méretezése, később dönthet úgy, hogy hozzon létre további tesztkörnyezet-fiókok.
 
-Az alábbi lista olyan forgatókönyveket mutat be, amelyekben több labor-fiók is hasznos lehet:
+Az alábbi lista azokat a forgatókönyveket emeli ki, amelyekben egynél több tesztkörnyezet-fiók hasznos lehet:
 
-- **Különböző házirend-követelmények kezelése a tanterem Labs-ben** 
+- **Különböző házirend-követelmények kezelése az osztálytermi laborokban** 
     
-    Labor-fiók beállításakor olyan házirendeket állít be, amelyek az Lab-fiókban az *összes* osztályterem Labs-re érvényesek, például:
-    - Az Azure-beli virtuális hálózat olyan megosztott erőforrásokkal rendelkezik, amelyekhez a tanterem Lab hozzáférhet. Előfordulhat például, hogy olyan osztályterem Labs-készlettel rendelkezik, amelynek hozzáférésre van szüksége egy megosztott adatkészlethez egy virtuális hálózaton belül.
-    - Azok a virtuálisgép-lemezképek, amelyeket a tanterem Labs használhat a virtuális gépek létrehozásához. Előfordulhat például, hogy olyan osztályterem Labs-készlettel rendelkezik, amelynek hozzáférésre van szüksége a [Data Science VM for Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) Marketplace-rendszerképhez. 
+    Laborfiók beállításakor olyan szabályzatokat állít be, amelyek a laborfiók alatt az *összes* tantermi laborra vonatkoznak, például:
+    - Az Azure virtuális hálózat megosztott erőforrásokkal, amelyek az osztályteremben labor ban férhet hozzá. Például előfordulhat, hogy egy sor tantermi laborok, amelyek hozzáférést igényelnek egy megosztott adatkészlet egy virtuális hálózaton belül.
+    - A virtuális gép (VM) lemezképek, amelyek az osztályteremben laborok virtuális gépek létrehozásához használható. Például előfordulhat, hogy egy tantermi laborok, amelyek hozzáférést igényelnek a [Data Science VM linuxos](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) piactér-rendszerképhez. 
     
-    Ha olyan tantermi laborokkal rendelkezik, amelyek egymástól egyedi házirend-követelményekkel rendelkeznek, érdemes lehet külön labor-fiókokat létrehozni a tantermi laborok külön történő kezeléséhez.
+    Ha olyan tantermi laborokkal rendelkezik, amelyek egymástól egyedi házirend-követelményeket támasztanak, hasznos lehet külön laborfiókokat létrehozni ezeknek az osztálytermi laboroknak a külön-külön történő kezeléséhez.
 
-- **Elkülönített költségvetés labor-fiókkal**
+- **Külön költségvetés laborfiók szerint**
   
-    Ahelyett, hogy az összes osztályterem Lab-költséget egyetlen labor-fiókon keresztül kellene jelentenie, egy világosabban elkülönített költségvetést kell használnia. Például létrehozhat labor-fiókokat az egyetemi matematikai részleg, a számítástechnikai részleg és így tovább, hogy elkülönítse a költségvetést a részlegek között.  Ezután megtekintheti az egyes labor-fiókok költségeit [Azure Cost Management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)használatával.
+    Ahelyett, hogy az összes tantermi labor költséget egyetlen laborfiókon keresztül jelenti, szüksége lehet egy világosabban elkülönített költségvetésre. Létrehozhat például laborfiókokat az egyetem matematikai osztályához, számítógép-tudományi osztályához stb., hogy elkülönítse a költségvetést a részlegek között.  Ezután megtekintheti az egyes tesztkörnyezet-fiókok költségét az [Azure Cost Management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)használatával.
     
-- **Kísérleti laborok elkülönítése a active\production Labs-ből**
+- **Kísérleti laborok elkülönítése az aktív\termelési laboroktól**
   
-    Előfordulhat, hogy olyan esetekre van szükség, amikor egy labor-fiókra vonatkozó házirend-módosításokat kíván használni anélkül, hogy ez hatással lenne a active\production Labs-ra. Ilyen esetben a tesztelési célokra külön labor-fiók létrehozása lehetővé teszi a módosítások elkülönítését. 
+    Előfordulhat, hogy olyan esetekben, ahol szeretné teszten házirend-módosítások at egy tesztkörnyezet-fiók potenciálisan hatással aktív\termelési laborok. Az ilyen típusú forgatókönyv, egy külön laborfiók létrehozása próbacélokra lehetővé teszi a módosítások elkülönítését. 
 
 ## <a name="classroom-lab"></a>Tantermi labor
-Az osztályterem Lab olyan virtuális gépeket tartalmaz, amelyek mindegyike egyetlen tanulóhoz van rendelve. Általánosságban elmondható, hogy az alábbiakra számíthat:
+Az osztálytermi labor virtuális gépeket (VM-eket) tartalmaz, amelyek mindegyike egyetlen tanulóhoz van rendelve. Általánosságban elmondható, hogy számíthat a következőkre:
 
-- Minden osztályhoz egy osztályterem labor tartozik.
-- Hozzon létre egy új osztályterem Labs-készletet minden félévben (vagy az osztály minden egyes időkerete esetén). Az azonos Rendszerképbeli igényekkel rendelkező osztályok esetében általában [megosztott](#shared-image-gallery) képkatalógust kell használni a rendszerképek és a félévek közötti újrafelhasználáshoz.
+- Minden osztályhoz egy tantermi labor tartozik.
+- Hozzon létre egy új tantermi laborok minden félévben (vagy minden egyes időkeretben az osztály kínálnak). Általában az osztályok, amelyek az azonos képigényeket, használjon [megosztott képgalériát](#shared-image-gallery) a képek újra felhasználása laborok és szemeszter között.
 
-A következő szempontokat kell figyelembe vennie az osztályterem Labs szerkezetének meghatározásakor:
+Vegye figyelembe a következő pontokat, amikor meghatározza, hogyan strukturálja az osztálytermi laborjait:
 
-- **A tantermi laborban lévő összes virtuális gép a közzétett lemezképpel azonos képpel van telepítve**. 
+- **Az osztályterem-laborban lévő összes virtuális gép ugyanazzal a lemezképpel van telepítve, mint a közzétett**
 
-    Ennek eredményeképpen, ha olyan osztállyal rendelkezik, amelyhez különböző tesztkörnyezet-lemezképek is közzé lesznek téve, külön tantermi laborokat kell létrehozni mindegyikhez.
+    Ennek eredményeképpen, ha egy osztály, amely előírja, hogy a különböző laborképek et közzé kell tenni egy időben, külön tantermi laborok kell létrehozni mindegyikhez.
   
-- A **használati kvóta a labor szintjén van beállítva, és a laborban lévő összes felhasználóra érvényes**. 
+- **A használati kvóta a labor szintjén van beállítva, és a tesztkörnyezet összes felhasználójára vonatkozik**
     
-    Ha különböző kvótákat szeretne beállítani a felhasználók számára, külön tantermi laborokat kell létrehoznia. A kvóta beállítása után azonban lehetőség van több óra hozzáadására egy adott felhasználó számára.
+    Különböző kvóták beállítása a felhasználók számára, létre kell hoznia külön tantermi labs. A kvóta beállítása után azonban több órát is hozzáadhat egy adott felhasználóhoz.
   
-- **Az indítási vagy leállítási ütemterv a tesztkörnyezet szintjén van beállítva, és a laboron belüli összes virtuális gépre vonatkozik**. 
+- **Az indítási vagy leállítási ütemezés a labor szintjén van beállítva, és a laboron belüli összes virtuális gépre vonatkozik**
 
-    Az előző ponthoz hasonlóan, ha különböző ütemterveket kell beállítania a felhasználóknak, külön tantermi laborokat kell létrehoznia. 
+    Az előző ponthoz hasonlóan, ha különböző ütemezéseket kell beállítania a felhasználók számára, külön tantermi laborokat kell létrehoznia. 
 
-## <a name="shared-image-gallery"></a>Közös Képtár
-A megosztott képkatalógus egy labor-fiókhoz van csatolva, és központi tárházként szolgál a lemezképek tárolásához. A rendszer egy képet ment a katalógusba, ha egy oktató úgy dönt, hogy egy tantermi labor sablonjának virtuális gépről (VM) exportálja. Minden alkalommal, amikor egy oktató módosítja a sablon virtuális gépet és az exportot, a rendszer menti a rendszerkép új verzióit a korábbi verziók fenntartása mellett.
+## <a name="shared-image-gallery"></a>Megosztott képgaléria
+A megosztott képgaléria egy tesztkörnyezet-fiókhoz van csatolva, és központi tárházként szolgál a képek tárolásához. A rendszer egy képet a katalógusba ment, amikor egy oktató úgy dönt, hogy egy tantermi labor sablon virtuális gépéről (VM) exportál. Minden alkalommal, amikor egy oktató módosítja a sablon virtuális gép és az export, a rendszerkép új verziói mentésre, miközben a korábbi verziók.
 
-Az oktatók közzétehetnek egy rendszerkép-verziót a megosztott rendszerkép-katalógusban, amikor új osztálytermi labort hoznak létre. Bár a katalógus egy rendszerkép több verzióját is képes tárolni, a pedagógusok csak a legújabb verziót tudják kiválasztani a tesztkörnyezet létrehozásakor.
+Az oktatók közzétehetik a képverziót a megosztott képgalériából, amikor új tantermi labort hoznak létre. Bár a katalógus egy kép több verzióját is tárolhatja, az oktatók csak a legújabb verziót választhatják ki a tesztkörnyezet létrehozása során.
 
-A megosztott képkatalógus egy opcionális erőforrás, amelyet nem kell azonnal megadnia, ha csak néhány osztálytermi labort használ. A megosztott képkatalógus használata azonban számos előnnyel jár, amelyek hasznosak a több osztályterem Labs-vel való méretezéshez:
+Megosztott képgaléria egy opcionális erőforrás, amely nem feltétlenül kell azonnal, ha csak néhány tantermi laborok kezdve. A megosztott képgaléria használata azonban számos előnnyel jár, amelyek hasznosak, mivel több tantermi labort szeretne:
 
-- **Lehetővé teszi egy sablonbeli virtuálisgép-rendszerkép verzióinak mentését és kezelését**.
+- **Lehetővé teszi a sablon virtuálisgép-lemezképverzióinak mentését és kezelését**
 
-    Érdemes egyéni rendszerképet létrehozni, vagy változtatásokat (szoftvereket, konfigurációt stb.) készíteni a nyilvános Piactéri galériából.  Például gyakori az oktatók számára, hogy különböző software\tooling kelljen telepíteni. Ahelyett, hogy a tanulók manuálisan telepítik ezeket az előfeltételeket a saját, a sablon virtuálisgép-rendszerképének különböző verzióit exportálhatja egy megosztott képgyűjteménybe. Ezek a rendszerkép-verziók később új osztályterem Labs létrehozásakor is használhatók.
-- **Lehetővé teszi a sablonok virtuálisgép-rendszerképeinek sharing\reuse a tanterem Labs**-ben.
+    Hasznos, ha egyéni lemezképet hoz létre, vagy módosítja (szoftver, konfiguráció és így tovább) egy képet a nyilvános piactér-galériából.  Például gyakori, hogy az oktatók különböző szoftverek\eszközök telepítését követelik meg. Ahelyett, hogy a diákoknak manuálisan kellene telepíteniük ezeket az előfeltételeket, a sablon virtuálisgép-lemezkép különböző verziói exportálhatók egy megosztott képtárba. Ezek a lemezképek ezután új tantermi laborok létrehozásakor használhatók.
+- **Lehetővé teszi a sablon virtuálisgép-lemezképeinek megosztását\újrafelhasználását az osztálytermi laborokban**
 
-    Mentheti és újra felhasználhatja a képeket, így nem kell minden alkalommal konfigurálnia a rendszerképet, amikor új osztálytermi labort hoz létre. Ha például több olyan osztályt is kínálunk, amelyek ugyanazt a rendszerképet igénylik, ezt a rendszerképet csak egyszer kell létrehoznia, és exportálni kell a megosztott képkatalógusba, hogy az a tanterem Labs-ban is megosztható legyen.
-- **Biztosítja a lemezkép rendelkezésre állását a replikáción keresztül**.
+    Mentheti és újra felhasználhatja a képet, így nem kell minden új tantermi labor létrehozásakor teljesen konfigurálnia a képet. Ha például több osztályt kínálnak, amelyekugyanazt a lemezképet igényelik, ezt a képet csak egyszer kell létrehozni, és exportálni kell a megosztott képgalériába, hogy meg osztható legyen az osztálytermi laborok között.
+- **Biztosítja a kép replikációs rendelkezésre állását**
 
-    Amikor egy osztálytermi laborból menti a megosztott képtárat, a rendszer automatikusan replikálja a rendszerképet [az azonos földrajzi régión belüli más régiókba](https://azure.microsoft.com/global-infrastructure/regions/). Abban az esetben, ha egy régió esetében leáll a rendszerkép közzététele, nem érinti a rendszerképet, mert egy másik régióból származó rendszerkép-replikát lehet használni.  A virtuális gépek több replikából való közzététele is segíthet a teljesítményben.
+    Amikor egy tantermi laborból menti a megosztott képgalériába, a rendszer automatikusan replikálja a képet az azonos földrajzi területen belüli más [területekre.](https://azure.microsoft.com/global-infrastructure/regions/) Abban az esetben, ha egy régióban van egy kimaradás, a rendszerkép közzététele az osztályteremben laborban nem érinti, mivel egy más régióból származó lemezkép replikája használható.  Virtuális gépek közzététele több replikák is segíthet a teljesítmény.
 
-A megosztott rendszerképek logikai csoportosításához több lehetőség közül választhat:
+A megosztott képek logikus csoportosításához több lehetőség közül választhat:
 
-- Hozzon létre több megosztott rendszerkép-gyűjteményt. Az egyes tesztkörnyezet-fiókok csak egy megosztott képtárat tudnak csatlakozni, így a beállításhoz több tesztkörnyezet is létre kell hoznia.
-- Vagy használhat egyetlen megosztott képtárat is, amelyet több Lab fiók is megoszt. Ebben az esetben az egyes tesztkörnyezet-fiókok csak azokat a lemezképeket engedélyezhetik, amelyek alkalmazhatók a benne található tantermi laborokra.
+- Hozzon létre több megosztott képgalériát. Minden tesztkörnyezet-fiók csak egy megosztott képtárhoz tud csatlakozni, ezért ez a beállítás több tesztkörnyezet-fiókot is létre kell hoznia.
+- Vagy használhat egyetlen megosztott képgalériát, amelyet több tesztkörnyezet-fiók oszt meg. Ebben az esetben minden egyes tesztkörnyezet-fiók engedélyezheti, hogy csak azokat a képeket, amelyek a benne található tantermi laborok.
 
 ## <a name="naming"></a>Elnevezés
-A Azure Lab Services első lépéseinél javasoljuk, hogy hozzon létre elnevezési konvenciókat az erőforráscsoportok, a labor-fiókok, a tanterem Labs és a megosztott képgyűjtemény számára. Míg a létrehozott elnevezési konvenciók egyediek lesznek a szervezet igényeinek megfelelően, az alábbi táblázat az általános irányelveket ismerteti.
+Az Azure Lab Services első lépéseisorán azt javasoljuk, hogy hozzon létre elnevezési konvenciókat az erőforráscsoportok, a laborfiókok, az osztálytermi laborok és a megosztott képgaléria számára. Bár a létrehozandó elnevezési konvenciók egyediek lesznek a szervezet igényeinek megfelelően, az alábbi táblázat általános irányelveket vázol fel.
 
 | Erőforrás típusa | Szerepkör | Javasolt minta | Példák |
 | ------------- | ---- | ----------------- | -------- | 
-| Erőforráscsoport | Egy vagy több Lab-fiókot, valamint egy vagy több megosztott képgyűjteményt tartalmaz | \<szervezet rövid neve\>-\<Environment\>-RG<ul><li>A **szervezet rövid neve** azonosítja annak a szervezetnek a nevét, amelyet az erőforráscsoport támogat</li><li>A **környezet** azonosítja az erőforrás környezetét, például a próbaüzem vagy a gyártás</li><li>A **RG** a következő erőforrástípus: erőforráscsoport.</li></ul> | contosouniversitylabs – RG<br/>contosouniversitylabs-Pilot-RG<br/>contosouniversitylabs – Prod-RG |
-| Labor-fiók | Egy vagy több labort tartalmaz | \<szervezet rövid neve\>-\<Environment\>-La<ul><li>A **szervezet rövid neve** azonosítja annak a szervezetnek a nevét, amelyet az erőforráscsoport támogat</li><li>A **környezet** azonosítja az erőforrás környezetét, például a próbaüzem vagy a gyártás</li><li>A **La** az erőforrástípus: Lab-fiók.</li></ul> | contosouniversitylabs-La<br/>mathdeptlabs-La<br/>sciencedeptlabs – pilóta – La<br/>sciencedeptlabs-Prod-La |
-| Tantermi labor | Egy vagy több virtuális gépet tartalmaz |\<osztály neve\>-\<időkerete\>-\<oktató azonosítója\><ul><li>Az **osztály neve** azonosítja a labor által támogatott osztály nevét.</li><li>Az **időkeret** azonosítja azt az időkeretet, amelyben az osztály elérhető.</li>Az **oktatási azonosító** azonosítja azt a pedagógust, amely a labor tulajdonosa.</li></ul> | CS1234-fall2019-johndoe<br/>CS1234-spring2019-johndoe | 
-| Közös Képtár | Egy vagy több virtuálisgép-rendszerkép-verziót tartalmaz | \<szervezet rövid neve\>gyűjtemény | contosouniversitylabsgallery |
+| Erőforráscsoport | Egy vagy több tesztkörnyezet-fiókot és egy vagy több megosztott képgalériát tartalmaz | \<szervezet rövid\>-\<\>név környezet -rg<ul><li>**A szervezet rövid neve** azonosítja annak a szervezetnek a nevét, amelyet az erőforráscsoport támogat</li><li>**A környezet** azonosítja az erőforrás környezetét, például a Kísérleti vagy az Éles</li><li>**Rg** az erőforrástípust jelenti: erőforráscsoport.</li></ul> | contosouniversitylabs-rg<br/>contosouniversitylabs-pilot-rg<br/>contosouniversitylabs-prod-rg |
+| Labor-fiók | Egy vagy több labort tartalmaz | \<szervezet rövid\>-\<\>név környezet -la<ul><li>**A szervezet rövid neve** azonosítja annak a szervezetnek a nevét, amelyet az erőforráscsoport támogat</li><li>**A környezet** azonosítja az erőforrás környezetét, például a Kísérleti vagy az Éles</li><li>**La** jelentése az erőforrás típusa: labor számla.</li></ul> | contosouniversitylabs-la<br/>mathdeptlabs-la<br/>sciencedeptlabs-pilot-la<br/>sciencedeptlabs-prod-la |
+| Tantermi labor | Egy vagy több virtuális gépet tartalmaz |\<osztálynév\>-\<időkeretoktatói\>-\<azonosítója\><ul><li>**Az osztály neve** azonosítja a labor által támogatott osztály nevét.</li><li>**Az időkeret** azonosítja azt az időkeretet, amelyben az osztály fel van ajánlva.</li>**Az oktatási azonosító** azonosítja a labort birtokló oktatót.</li></ul> | CS1234-fall2019-johndoe<br/>CS1234-spring2019-johndoe | 
+| Megosztott képgaléria | Egy vagy több virtuálisgép-lemezkép-verziót tartalmaz | \<szervezet rövid\>név galéria | contosouniversitylabsgaléria |
 
-További információ az Azure-erőforrások elnevezéséről: az [Azure-erőforrások elnevezési konvenciói](/azure/architecture/best-practices/naming-conventions).
+Az azure-erőforrások elnevezésével kapcsolatos további információkért tekintse [meg az Azure-erőforrások elnevezési konvencióit.](/azure/architecture/best-practices/naming-conventions)
 
-## <a name="regions-or-locations"></a>Régiók vagy helyszínek
-A Azure Lab Services erőforrásainak beállításakor meg kell adnia az erőforrást tároló adatközpont régióját (vagy helyét). Itt talál további információt arról, hogy a régió milyen hatással van a labor üzembe helyezéséhez használt alábbi erőforrások mindegyikére:
+## <a name="regionslocations"></a>Régiók\helyek
 
-- **Erőforráscsoport**
+Az Azure Lab Services erőforrásainak beállításakor meg kell adnia az erőforrást üzemeltető adatközpont egy régióját (vagy helyét). Az alábbiakban további részleteket arégió hatása az egyes erőforrások at egy labor beállítása.
 
-    A régió határozza meg azt az adatközpontot, ahol a rendszer az erőforráscsoport adatait tárolja. Az erőforráscsoporthoz tartozó Azure-erőforrások a szülőtől különböző régiókban is lehetnek.
-- **Lab-fiók vagy osztálytermi labor**
+### <a name="resource-group"></a>Erőforráscsoport
 
-    A labor fiókjának helye az erőforrás régióját jelöli.  
+A régió határozza meg azt az adatközpontot, ahol az erőforráscsoport adatai tárolódnak. Az erőforráscsoportban található Azure-erőforrások a szülőtől eltérő régiókban lehetnek.
+
+### <a name="lab-account"></a>Labor-fiók
+
+A tesztkörnyezet-fiók helye azt a régiót jelzi, amelyben ez az erőforrás létezik.  
+
+### <a name="classroom-lab"></a>Tantermi labor
     
-    A tanterem Labs használatával a Azure Lab Services automatikusan kiválasztja azt a régiót, amelyet az egyes laborok a rendelkezésre álló kapacitás alapján telepítenek.  Pontosabban Azure Lab Services keresi a rendelkezésre állást azokban a [régiókban, amelyek a labor-fiókkal megegyező földrajzi területen belül vannak](https://azure.microsoft.com/global-infrastructure/regions). 
-    
-    Ha egy rendszergazda lehetővé teszi, hogy a labor-készítők kiválasszák a tantermi tesztkörnyezet helyét, a kiválasztáshoz elérhető helyek a labor létrehozásakor rendelkezésre álló regionális kapacitáson alapulnak.
+Az osztálytermi labor helye a következő tényezőktől függ:
 
-    A tanterem laborjának helye határozza meg azt is, hogy mely virtuálisgép-számítási méretek érhetők el a kiválasztáshoz. Bizonyos számítási méretek csak bizonyos helyszíneken érhetők el.
-- **Közös Képtár**
+  - **A laborfiók egy virtuális hálózatra (VNet) koncettedik**
+  
+    A tesztkörnyezet-fiók egy virtuális hálózat, ha ugyanabban a régióban vannak [társviszonyban.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network)  Ha egy tesztkörnyezet-fiók társviszonyban van egy virtuális hálózattal, tantermi laborok automatikusan létre jönnek ugyanabban a régióban, mint a laborfiók és a virtuális hálózat.
 
-    A régió jelzi azt a forrás-régiót, ahol az első rendszerkép-verzió tárolódik, mielőtt a rendszer automatikusan replikálja a célhelyekre.
+    > [!NOTE]
+    > Ha egy tesztkörnyezet-fiók társviszonyban van egy virtuális hálózattal, a labor létrehozója számára a **labor helyének kiválasztására** beállítás le van tiltva. Erről a beállításról további információ található a cikkben: [A labor készítője kiválaszthatja a labor helyét.](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)
     
-Általános szabály egy erőforrás régiójának beállítása a felhasználókhoz legközelebb eső értékre. A tanterem Labs esetében ez azt jelenti, hogy a tanulók számára legközelebb eső tantermi labort hozza létre. Az online kurzusok, ahol a tanulók szerte a világon találhatók, a legjobb ítélet alapján kell létrehoznia a központilag elhelyezett tantermi labort. Vagy feloszthat egy osztályt több osztályterem Labs-ra a tanulók régiója alapján.
+  - **Nincs virtuális hálózat társviszonyban, ***és*** a labor alkotók nem szabad kiválasztani a labor helyét**
+  
+    Ha **nincs** virtuális hálózat társviszonyban a *laborfiók* és a [tesztkörnyezet alkotói **nem** szabad kiválasztani a labor helyét,](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)tantermi laborok automatikusan létre jön nek egy olyan régióban, amely rendelkezik a virtuális gép kapacitása.  Pontosabban az Azure Lab Services olyan régiókban keresi a rendelkezésre [állást, amelyek a laborfiókkal azonos földrajzi helyen találhatók.](https://azure.microsoft.com/global-infrastructure/regions)
+
+  - **Nincs virtuális hálózat társviszonyban, ***és*** a labor alkotók számára megengedett, hogy válassza ki a labor helyét**
+       
+    Ha **nincs** virtuális hálózat társviszony-létesített és [a tesztkörnyezet alkotói számára lehetővé teszik, hogy válassza ki a labor helyét,](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)a helyek, amelyeket a tesztkörnyezet létrehozója a rendelkezésre álló kapacitás alapján.
+
+Általános szabály, hogy egy erőforrás régióját a felhasználókhoz legközelebb eső régióra állítsa be. Az tantermi laborok esetében ez azt jelenti, hogy létre kell hoznunk a diákokhoz legközelebb eső tantermi labort. Az online tanfolyamok, ahol a diákok találhatók a világ minden tájáról, meg kell használni a legjobb ítéletet, hogy hozzon létre egy osztályteremben labor, amely központi elhelyezkedésű. Vagy ossza fel az osztályt több tantermi laborra a diákok régiója alapján.
+
+### <a name="shared-image-gallery"></a>Megosztott képgaléria
+
+A régió azt a forrásrégiót jelzi, ahol az első képverzió tárolódik, mielőtt automatikusan replikálni a célterületekre.
 
 ## <a name="vm-sizing"></a>Virtuális gép méretezése
-Amikor a rendszergazdák vagy a labor készítői létrehoznak egy tantermi labort, a következő virtuálisgép-méretek közül választhatnak a tanterem igényei alapján. Ne feledje, hogy az elérhető számítási méretek attól a régiótól függenek, amelyben a labor-fiókja található:
+Amikor a rendszergazdák vagy a laborkészítők létrehoznak egy tantermi labort, a következő virtuálisgép-méretek közül választhatnak az osztályuk igényei alapján. Ne feledje, hogy az elérhető számítási méretek attól függ, hogy a régió, ahol a tesztkörnyezet fiók található:
 
-| Méret | Adatait tartalmazza | Javasolt használat |
-| ---- | ----- | ------------- |
-| Kicsi| <ul><li>2 mag</li><li>3,5 GB RAM</li></ul> | Ez a méret a legmegfelelőbb a parancssorhoz, a webböngésző megnyitásához, az alacsony forgalmú webkiszolgálók, a kis és közepes adatbázisok eléréséhez. |
-| Közepes | <ul><li>4 mag</li><li>7 GB RAM</li></ul> | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez. |
-| Közepes (beágyazott virtualizálás) | <ul><li>4 mag</li><li>16 GB RAM</li></ul> | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez.  Ez a méret támogatja a beágyazott virtualizálás szolgáltatást is. |
-| Nagy | <ul><li>8 mag</li><li>32 GB RAM</li></ul> | Ez a méret a gyorsabb processzorokat, nagyobb teljesítményű helyi lemezeket, nagyméretű adatbázisokat és nagyméretű memória-gyorsítótárat igénylő alkalmazások számára ajánlott.  Ez a méret támogatja a beágyazott virtualizálás szolgáltatást is. |
-| Kis GPU (vizualizáció) | <ul><li>6 mag</li><li>56 GB RAM</li> | Ez a méret a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz, a kódoláshoz, például az OpenGL és a DirectX keretrendszerekhez használható. |
-| Kis GPU (számítás) | <ul><li>6 mag</li><li>56 GB RAM</li></ul> |Ez a méret a nagy számítógépes igényű alkalmazások, például a mesterséges intelligencia és a Deep learning esetében ajánlott. |
-| Közepes GPU (vizualizáció) | <ul><li>12 mag</li><li>112 GB RAM</li></ul> | Ez a méret a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz, a kódoláshoz, például az OpenGL és a DirectX keretrendszerekhez használható. |
+| Méret | Jellemzők | Adatsorozat | Javasolt használat |
+| ---- | ----- | ------ | ------------- |
+| Kicsi| <ul><li>2 mag</li><li>3,5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a legalkalmasabb a parancssori, webböngésző, alacsony forgalmú webszerverek, kis és közepes adatbázisok megnyitásához. |
+| Közepes | <ul><li>4 mag</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a legalkalmasabb relációs adatbázisokhoz, memórián belüli gyorsítótárazáshoz és elemzésekhez. |
+| Közepes (beágyazott virtualizáció) | <ul><li>4 mag</li><li>16 GB RAM</li></ul> | [Standard_DC4s_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a legalkalmasabb relációs adatbázisokhoz, memórián belüli gyorsítótárazáshoz és elemzésekhez.  Ez a méret támogatja a beágyazott virtualizációt is. |
+| Nagy | <ul><li>8 mag</li><li>32 GB RAM</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a legalkalmasabb olyan alkalmazásokhoz, amelyeknek gyorsabb processzorokra, jobb helyi lemezteljesítményre, nagy adatbázisokra, nagy memória-gyorsítótárakra van szükségük.  Ez a méret támogatja a beágyazott virtualizációt is. |
+| Kis GPU (képi megjelenítés) | <ul><li>6 mag</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Ez a méret a legalkalmasabb távoli vizualizációra, streamelésre, játékra, kódolásra olyan keretrendszerek használatával, mint az OpenGL és a DirectX. |
+| Kis GPU (számítás) | <ul><li>6 mag</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Ez a méret a legalkalmasabb számítógép-igényes alkalmazásokhoz, mint a mesterséges intelligencia és a deep learning. |
+| Közepes GPU (képi megjelenítés) | <ul><li>12 mag</li><li>112 GB RAM</li></ul>  | [Standard_NC12](https://docs.microsoft.com/azure/virtual-machines/nc-series) | Ez a méret a legalkalmasabb távoli vizualizációra, streamelésre, játékra, kódolásra olyan keretrendszerek használatával, mint az OpenGL és a DirectX. |
 
 ## <a name="manage-identity"></a>Identitás kezelése
-Az [Azure szerepköralapú hozzáférés-vezérlésének](https://docs.microsoft.com/azure/role-based-access-control/overview)használatával a következő szerepkörök rendelhetők hozzá a labor-fiókokhoz és a tanterem Labs-hoz:
+Az [Azure szerepköralapú hozzáférés-vezérlésével](https://docs.microsoft.com/azure/role-based-access-control/overview)a következő szerepkörök rendelhetők hozzá a laborfiókokhoz és az osztálytermi laborokhoz való hozzáféréshez:
 
-- **Labor-fiók tulajdonosa**
+- **Tesztkörnyezetfiók tulajdonosa**
 
-    A labor-fiókot létrehozó rendszergazda automatikusan hozzáadja a tesztkörnyezet **tulajdonosi** szerepköréhez.  A **tulajdonosi** szerepkörhöz rendelt rendszergazda a következőket teheti:
-     - Módosítsa a labor-fiók beállításait.
-     - Adja meg a rendszergazdának a labor-fiók tulajdonosként vagy közreműködőként való elérését. 
-     - Oktatóknak, tulajdonosoknak vagy közreműködőknek hozzáférést biztosíthat a tantermi laborokhoz.
-     - Az összes osztályterem Labs létrehozása és kezelése a labor-fiókon belül.
+    A tesztkörnyezet-fiókot létrehozó rendszergazda automatikusan hozzáadódik a tesztkörnyezet-fiók **tulajdonosi** szerepköréhez.  A **Tulajdonos** szerepkörhöz rendelt rendszergazda a következőket teheti:
+     - Módosítsa a tesztkörnyezet-fiók beállításait.
+     - Más rendszergazdáknak tulajdonosként vagy közreműködőként hozzáférést biztosíthat a tesztkörnyezet-fiókhoz. 
+     - Hozzáférést biztosítaz oktatóknak az oktatói laborokhoz alkotókként, tulajdonosokként vagy közreműködőkként.
+     - A laborfiókban található összes tantermi labor létrehozása és kezelése.
 
-- **Labor-fiók közreműködői**
+- **Laborfiók közreműködője**
 
-    A **közreműködői** szerepkörhöz rendelt rendszergazda a következőket teheti:
-    - Módosítsa a labor-fiók beállításait.
-    - Az összes osztályterem Labs létrehozása és kezelése a labor-fiókon belül.
+    A **közreműködői** szerepkörhöz rendelt rendszergazda:
+    - Módosítsa a tesztkörnyezet-fiók beállításait.
+    - A laborfiókon belüli összes tantermi labor létrehozása és kezelése.
     
-    Azonban *nem* tudnak más felhasználóknak hozzáférést biztosítani a labor-fiókokhoz vagy a tantermi laborokhoz.
+    Azonban *nem* adhatnak hozzáférést más felhasználóknak sem a laborfiókokhoz, sem az osztálytermi laborokhoz.
 
-- **Tantermi tesztkörnyezet létrehozója**
+- **Tantermi labor készítője**
 
-    A tantermi laborok tesztkörnyezetben való létrehozásához a pedagógusnak a **labor létrehozói** szerepkör tagjának kell lennie.  Amikor egy oktató létrehoz egy osztályterem labort, a rendszer automatikusan hozzáadja őket a labor tulajdonosaként.  Tekintse meg az oktatóanyagot, amely bemutatja, hogyan [adhat hozzá felhasználót a **labor létrehozói** szerepkörhöz](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role). 
+    Tantermi laborok létrehozásához egy laborfiókon belül, az oktatónak a **Lab Creator** szerepkör tagjának kell lennie.  Amikor egy oktató létrehoz egy tantermi labort, a program automatikusan hozzáadja őket a labor tulajdonosaként.  Tekintse meg az oktatóanyagot arról, hogyan [adhat hozzá felhasználót a **Lab Creator** szerepkörhöz.](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role) 
 
-- **Tantermi labor owner\contributor**
+- **Tantermi labor tulajdonosa\közreműködő**
   
-    A pedagógusok megtekinthetik és módosíthatják a tantermi labor beállításait, ha a labor **tulajdonosi** vagy **közreműködői** szerepkörének tagjai. Emellett a labor-fiók **olvasó** szerepkörének is tagjai.
+    Az oktatók megtekinthetik és módosíthatják az osztálytermi labor beállításait, ha egy labor **tulajdonosának** vagy **közreműködői** szerepkörének tagjai; a laborfiók **Olvasó** szerepkörének is tagja kell lenniük.
 
-    A labor **tulajdonosi** és **közreműködői** szerepkörei közötti fő különbség az, hogy a közreműködők *nem* biztosíthatnak más felhasználóknak hozzáférést a csak labor tulajdonosai számára, hogy más felhasználóknak is hozzáférjenek a laborhoz.
+    A **tesztkörnyezet tulajdonosa** és **közreműködői** szerepkörei közötti egyik legfontosabb különbség az, hogy egy közreműködő *nem* adhat hozzáférést más felhasználóknak a labor kezeléséhez – csak a tulajdonosok adhatnak hozzáférést más felhasználóknak a tesztkörnyezet kezeléséhez.
     
-    Emellett a pedagógus *nem tud* új osztályterem Labs-t létrehozni, kivéve, ha a **labor létrehozói** szerepkör tagja is.
+    Emellett egy oktató *nem hozhat* létre új tantermi teszteredményeket, kivéve, ha ők is a Lab **Creator** szerepkör tagjai.
 
-- **Közös Képtár**
+- **Megosztott képgaléria**
     
-    Ha megosztott képtárat csatlakoztat egy Lab-fiókhoz, a Lab-fiók owners\contributors és a labor creators\owners\contributors automatikusan hozzáférést kapnak a képek megtekintéséhez és mentéséhez a gyűjteményben. 
+    Amikor megosztott képgalériát csatol egy tesztkörnyezet-fiókhoz, a tesztkörnyezet-fiók tulajdonosai\közreműködők és a tesztkörnyezet alkotói\tulajdonosok\közreműködők automatikusan hozzáférést kapnak a katalógusban lévő képek megtekintéséhez és mentéséhez. 
 
-Az alábbi tippek segítséget nyújtanak a szerepkörök hozzárendeléséhez:
-   - Általában csak a rendszergazdáknak kell tartozniuk a labor-fiók **tulajdonosi** vagy **közreműködői** szerepköreihez; több owner\contributor. is rendelkezhet
+Íme néhány tipp a szerepkörök hozzárendeléséhez:
+   - Általában csak a rendszergazdák lehetnek tagjai a tesztkörnyezet-fiók **tulajdonosi** vagy **közreműködői** szerepkörök; lehet, hogy egynél több tulajdonos\közreműködő is rendelkezik.
 
-   - Ahhoz, hogy a pedagógus új tantermi laborokat hozzon létre, és felügyelje a létrehozott laborokat; csak hozzá kell rendelnie a hozzáférést a **labor létrehozói** szerepkörhöz.
+   - Annak érdekében, hogy egy oktató képes legyen új tantermi laborokat létrehozni és kezelni az általuk létrehozott laborokat; csak hozzáférést kell hozzárendelnie a **Lab Creator** szerepkörhöz.
    
-   - Ahhoz, hogy a pedagógus képes legyen az adott tantermi laborok kezelésére, de *nem* lehet új laborokat létrehozni; a **tulajdonosi** vagy **közreműködői** szerepkörhöz hozzá kell rendelnie a hozzáférést a felügyelni kívánt tantermi laborokhoz.  Tegyük fel például, hogy egy professzort és egy tanítási asszisztenst is szeretne használni egy osztályterem laborhoz.  Tekintse meg az útmutatót, amely bemutatja, hogyan [adhat hozzá felhasználót tulajdonosként egy osztálytermi laborhoz](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner).
+   - Annak érdekében, hogy egy oktató képes legyen bizonyos tantermi laborok kezelésére, de *nem* új laborok létrehozására; hozzáférést kell hozzárendelnie a **tulajdonosi** vagy **közreműködői** szerepkörhöz az általuk kezelt tantermi laborok mindegyikéhez.  Előfordulhat például, hogy egy professzornak és egy tanársegédnek is engedélyezni szeretné, hogy egy tantermi labor társtulajdonában legyen.  Tekintse meg az útmutatót arról, hogyan [adhat hozzá egy felhasználót tulajdonosként egy tantermi laborhoz.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner)
 
 ## <a name="pricing"></a>Díjszabás
 
 ### <a name="azure-lab-services"></a>Azure Lab Services
-A Azure Lab Services díjszabását a következő cikk ismerteti: [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/).
+Az Azure Lab Services díjszabását a következő cikk ismerteti: [Azure Lab Services díjszabása.](https://azure.microsoft.com/pricing/details/lab-services/)
 
-A megosztott képkatalógus díjszabását is figyelembe kell vennie, ha azt tervezi, hogy a rendszerképek tárolásához és kezeléséhez használja azt. 
+Ha a lemezképek tárolására és kezelésére kívánja használni, figyelembe kell vennie a megosztott képgaléria díjszabását is. 
 
-### <a name="shared-image-gallery"></a>Közös Képtár
-A megosztott képgyűjtemény létrehozása és a labor-fiókhoz való csatolása ingyenes. A költségek nem merülnek fel, amíg nem ment egy rendszerkép-verziót a gyűjteménybe. A megosztott képkatalógus használatának díjszabása általában meglehetősen elhanyagolható, de fontos tisztában lennie azzal, hogyan számítja ki a számítást, mivel az nem szerepel a Azure Lab Services díjszabásában.  
+### <a name="shared-image-gallery"></a>Megosztott képgaléria
+Megosztott képgaléria létrehozása és csatolása a tesztkörnyezet-fiókhoz ingyenes. A költségek nem merülnek fel, amíg nem menti a képverziót a katalógusba. Általában a megosztott képgaléria használatának díjszabása meglehetősen elhanyagolható, de fontos megérteni, hogyan számítják ki, mivel nem szerepel az Azure Lab Services díjszabásában.  
 
-### <a name="storage-charges"></a>Tárolási díjak
-A képverziók tárolásához a megosztott képgyűjtemény szabványos HDD által felügyelt lemezeket használ. A használt HDD által felügyelt lemez mérete az éppen tárolt lemezkép-verzió méretétől függ. A díjszabást a következő cikkben tekintheti meg: [felügyelt lemezek díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
+#### <a name="storage-charges"></a>Tárolási díjak
+A lemezképek verzióinak tárolásához a megosztott képgaléria szabványos HDD-vel kezelt lemezeket használ. A használt HDD-kezelt lemez mérete a tárolt lemezkép méretétől függ. Az árképzés díjszabását a következő cikkben [tekintheti](https://azure.microsoft.com/pricing/details/managed-disks/)meg.
 
 
-### <a name="replication-and-network-egress-charges"></a>Replikációs és hálózati kimenő forgalom díjai
-Ha a tanterem Lab sablonjának virtuális gépe (VM) használatával ment egy rendszerkép-verziót, Azure Lab Services először a forrás-régióban tárolja, majd automatikusan replikálja a forrás rendszerkép verzióját egy vagy több célpontra. Fontos megjegyezni, hogy Azure Lab Services automatikusan replikálja a forrás-rendszerkép verzióját a földrajzi hely összes olyan [régiójába](https://azure.microsoft.com/global-infrastructure/regions/) , ahol az osztályterem-tesztkörnyezet található. Ha például az osztályterem Lab az Egyesült államokbeli földrajzban van, a rendszer a rendszerkép verzióját az Egyesült Államokban létező nyolc régióba replikálja.
+#### <a name="replication-and-network-egress-charges"></a>Replikációs és hálózati kimenő díjak
+Amikor egy tantermi labor sablonvirtuális gépével (VM) menti a lemezképet, az Azure Lab Services először egy forrásrégióban tárolja, majd automatikusan replikálja a forráslemezkép verzióját egy vagy több célrégióba. Fontos megjegyezni, hogy az Azure Lab Services automatikusan replikálja a forráslemez verzióját az összes [célrégióban a földrajzi,](https://azure.microsoft.com/global-infrastructure/regions/) ahol az osztályteremben labor található. Ha például az osztálytermi labor az Egyesült Államok földrajzi területén található, a rendszer az Egyesült Államokban meglévő nyolc régió mindegyikére replikálja a lemezkép-verziót.
 
-A kimenő hálózati forgalom akkor fordul elő, ha egy rendszerkép verziója replikálódik a forrás régiójából a további célpontokra. A kiszámított összeg a rendszerkép verziójának méretétől függ, amikor a rendszerkép adatait először a forrás régiójából továbbítja a rendszer.  A díjszabással kapcsolatos részletekért tekintse meg a következő cikket: a [sávszélesség díjszabása](https://azure.microsoft.com/pricing/details/bandwidth/).
+A hálózati kimenő forgalom díja akkor jelentkezik, amikor egy lemezkép-verzió replikálása a forrásrégióból további célterületekre történik. A felszámított összeg a lemezkép-verzió méretétől függ, amikor a rendszerkép adatai először a forrásrégióból kerülnek átvitelre.  Az árképzésrészleteiről a következő cikkben olvashat: [Sávszélesség-díjszabásrészletei](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-Az [oktatási megoldások](https://www.microsoft.com/licensing/licensing-programs/licensing-for-industries?rtc=1&activetab=licensing-for-industries-pivot:primaryr3) ügyfelei lemondanak a kimenő forgalomért fizetendő díjakról. További információért forduljon a fiók kezelőjéhez.  További információkért lásd: a csatolt dokumentum **Gyakori kérdések** című szakasza, konkrétan az a kérdés, hogy milyen adatátviteli programok léteznek az akadémiai ügyfelek számára, és Hogyan szerezhetem be a minősítést?.
+[Oktatási megoldások](https://www.microsoft.com/licensing/licensing-programs/licensing-for-industries?rtc=1&activetab=licensing-for-industries-pivot:primaryr3) az ügyfelek lehet eltekinteni a kifizető kimenő díjakat. További információért forduljon a fiókkezelőjéhez.  További információt a csatolt dokumentum **GYIK** részében talál, különösen a "Milyen adatátviteli programok léteznek a tudományos ügyfelek számára, és hogyan minősíthetem?".
 
-### <a name="pricing-example"></a>Példa a díjszabásra
-A fent ismertetett díjszabás beolvasása érdekében tekintse meg a sablon virtuálisgép-rendszerképének mentését bemutató példát a megosztott képkatalógusba. A következő helyzetekben feltételezzük:
+#### <a name="pricing-example"></a>Példa árképzésre
+A fent leírt díjszabás újrabedugni, nézzünk meg egy példát a sablon virtuálisgép-kép mentése a megosztott képgalériába. Tegyük fel a következő eseteket:
 
-- Egy egyéni virtuálisgép-lemezképpel rendelkezik.
-- A rendszerkép két verzióját menti.
-- A labor az Egyesült Államokban található, amely összesen nyolc régióval rendelkezik.
-- Minden rendszerkép-verzió 32 GB méretű; Ennek eredményeképpen a HDD által felügyelt lemez ára $1,54 havonta.
+- Egyetlen egyéni virtuálisgép-lemezképet kap.
+- A kép két verzióját menti.
+- A laborja az USA-ban van, ahol összesen nyolc régió van.
+- Minden lemezkép verzió32 GB méretű; ennek eredményeként, a HDD-kezelt lemez ára 1,54 $ havonta.
 
-A teljes díj a következőképpen becsülhető meg:
+A teljes költséget a következőként becsülik meg:
 
-Lemezképek száma × a verziók száma × a replikák száma × felügyelt lemez ára
+Képek száma × verziók száma × replikák száma × felügyelt lemez ára
 
-Ebben a példában a Cost a következő:
+Ebben a példában a költség:
 
-1 egyéni rendszerkép (32 GB) x 2 verzió x 8 amerikai régió x $1,54 = $24,64/hó
+1 egyéni kép (32 GB) x 2 verzió x 8 amerikai régió x $1.54 = $24.64 havonta
 
-### <a name="cost-management"></a>Cost Management
-Fontos, hogy a labor-fiók rendszergazdája a katalógusból rendszeresen törölje a szükségtelen rendszerkép-verziókat. 
+#### <a name="cost-management"></a>Cost Management
+Fontos, hogy a tesztkörnyezet-fiók rendszergazdája a költségek kezeléséhez rendszeresen a szükségtelen lemezkép-verziók a katalógusból. 
 
-A költségek csökkentése érdekében ne törölje a replikálást meghatározott régiókba (ez a lehetőség a megosztott képtárban található). Előfordulhat, hogy a replikációs módosítások kedvezőtlen hatással lehetnek az Azure Lab szolgáltatásban a megosztott képtárban mentett rendszerképekből származó virtuális gépek közzétételének képességére.
+A költségek csökkentése érdekében ne törölje az adott régiókra irányuló replikációt (ez a lehetőség a megosztott képgalériában található). A replikációs módosítások káros hatással lehetnek az Azure Lab Service azon képességére, hogy virtuális gépeket tegyen közzé a megosztott képgalériában mentett lemezképekről.
 
-## <a name="next-steps"></a>Következő lépések
-A labor-fiókok és a laborok létrehozásával kapcsolatos részletes útmutatásért lásd: [oktatóanyag: tesztkörnyezet beállítása](tutorial-setup-lab-account.md)
+## <a name="next-steps"></a>További lépések
+Tekintse meg az oktatóanyagban a laborfiók és a labor létrehozásához adott lépésenkénti utasításokat: [Útmutató beállítása](tutorial-setup-lab-account.md)

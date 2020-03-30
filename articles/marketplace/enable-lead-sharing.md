@@ -1,18 +1,18 @@
 ---
 title: Érdeklődőmegosztás engedélyezése az Azure Piactéren | Azure
 description: Megtudhatja, hogyan engedélyezheti az érdeklődőmegosztást az Azure Piactéren és az AppSource-ban, az alkalmazás- és szolgáltatásközzétevők számára.
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
-ms.openlocfilehash: 09282f3a54eeded52c63fab6bfe13528eaace48a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b41a29fb3548937e9071cfb9f065dd46f63df83e
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286302"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387606"
 ---
 # <a name="enable-lead-sharing"></a>Érdeklődők megosztásának bekapcsolása
 Annak biztosítása, hogy az Azure [Marketplace-en](https://azuremarketplace.microsoft.com) vagy a [Microsoft AppSource-ban](https://appsource.microsoft.com) engedélyezve legyen az érdeklődőkezelés, segítséget nyújt a következő közönségek kapcsolattartási adatainak fogadásában:

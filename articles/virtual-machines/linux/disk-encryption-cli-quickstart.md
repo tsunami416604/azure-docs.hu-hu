@@ -1,30 +1,30 @@
 ---
 title: Linux rendszerű virtuális gép létrehozása és titkosítása az Azure CLI-vel
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és titkosíthat Linux rendszerű virtuális gépeket az Azure CLI használatával
+description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre és titkosíthat linuxos virtuális gépet az Azure CLI használatával
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: 14b6f07ead59f3d86b80489460956dd37fb7378b
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 1362844de0a6b5d8cee4555c3d24833affe71640
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970693"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385146"
 ---
-# <a name="quickstart-create-and-encrypt-a-linux-vm-with-the-azure-cli"></a>Gyors útmutató: linuxos virtuális gép létrehozása és titkosítása az Azure CLI-vel
+# <a name="quickstart-create-and-encrypt-a-linux-vm-with-the-azure-cli"></a>Rövid útmutató: Linuxos virtuális gép létrehozása és titkosítása az Azure CLI-vel
 
-Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan hozhat létre és titkosíthat linuxos virtuális gépet (VM) az Azure CLI használatával.
+Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan használhatja az Azure CLI-t egy Linux virtuális gép (VM) létrehozásához és titkosításához.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+Ha úgy dönt, hogy telepíti és használja az Azure CLI helyileg, ez a rövid útmutató megköveteli, hogy az Azure CLI 2.0.30-as vagy újabb verzióját. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" --location "eastus"
@@ -45,7 +45,7 @@ az vm create \
 
 A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány percet vesz igénybe. A következő kimeneti példa azt mutatja be, hogy a virtuális gép létrehozási művelete sikeres volt.
 
-```azurecli-interactive
+```
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -58,12 +58,12 @@ A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány p
 }
 ```
 
-## <a name="create-a-key-vault-configured-for-encryption-keys"></a>Titkosítási kulcsokhoz konfigurált Key Vault létrehozása
+## <a name="create-a-key-vault-configured-for-encryption-keys"></a>Titkosítási kulcsokhoz konfigurált kulcstartó létrehozása
 
-Az Azure Disk Encryption egy Azure Key Vault tárolja a titkosítási kulcsát. Hozzon létre egy Key Vault az [az Key Vault Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create)paranccsal. Ha engedélyezni szeretné a Key Vault a titkosítási kulcsok tárolásához, használja az--enabled-for-Disk-Encryption paramétert.
+Az Azure lemeztitkosítás tárolja a titkosítási kulcsot egy Azure Key Vaultban. Hozzon létre egy key vault az [keyvault létrehozása.](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) Ha engedélyezni szeretné, hogy a Key Vault tárolja a titkosítási kulcsokat, használja a --enabled-for-disk-encryption paramétert.
 
 > [!Important]
-> Minden Key vaultnak rendelkeznie kell egy egyedi névvel az Azure-ban. Az alábbi példákban cserélje le a < saját egyedi-kulcstartó-Name > a választott névre.
+> Minden key vault kell egy nevet, amely egyedi az Azure-ban. Az alábbi példákban cserélje le <egyedi keyvault-neve> a választott nevet.
 
 ```azurecli-interactive
 az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myResourceGroup" --location "eastus" --enabled-for-disk-encryption
@@ -71,35 +71,35 @@ az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myReso
 
 ## <a name="encrypt-the-virtual-machine"></a>A virtuális gép titkosítása
 
-Titkosítsa a virtuális gépet az [az VM encryption](/cli/azure/vm/encryption?view=azure-cli-latest)paranccsal, és adjon egyedi Key Vault nevet a--Disk-Encryption-kulcstartó paraméternek.
+Titkosítsa a virtuális gép [az vm titkosítással,](/cli/azure/vm/encryption?view=azure-cli-latest)amely megadja az egyedi Key Vault nevét a --disk-encryption-keyvault paraméter.
 
 ```azurecli-interactive
 az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-keyvault "<your-unique-keyvault-name>"
 ```
 
-A folyamat visszatérési időpontja után a rendszer elfogadta a titkosítási kérelmet. A folyamat figyeléséhez használja a "show" parancsot. " A "show" parancs az az [VM show](/cli/azure/vm/encryption#az-vm-encryption-show).
+Egy pillanat múlva a folyamat visszatér, "A titkosítási kérelmet elfogadták. Kérjük, használja a "show" parancsot a folyamat figyeléséhez.". A "show" parancs az [vm show](/cli/azure/vm/encryption#az-vm-encryption-show).
 
 ```azurecli-interactive
 az vm show --name "myVM" -g "MyResourceGroup"
 ```
 
-Ha engedélyezve van a titkosítás, a visszaadott kimenetben a következő jelenik meg:
+Ha a titkosítás engedélyezve van, a visszaadott kimenetben a következő látható lesz:
 
-```azurecli-interactive
+```
 "EncryptionOperation": "EnableEncryption"
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, az az [Group delete](/cli/azure/group) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és a Key Vault. 
+Ha már nincs szükség, az [az csoport törlése](/cli/azure/group) paranccsal eltávolíthatja az erőforráscsoportot, a virtuális gép és a key vault. 
 
 ```azurecli-interactive
 az group delete --name "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy virtuális gépet, létrehozott egy Key Vault, amely engedélyezte a titkosítási kulcsokat, és titkosította a virtuális gépet.  A következő cikkből többet tudhat meg a Linux rendszerű virtuális gépek további Azure Disk Encryptionéről.
+Ebben a rövid útmutatóban létrehozott egy virtuális gépet, létrehozott egy Key Vaultot, amely engedélyezte a titkosítási kulcsokat, és titkosította a virtuális gépet.  A következő cikkhez továbbfejlesztve további információarról, ha többet szeretne megtudni a Linux os virtuális gépekhez való további lemeztitkosításról.
 
 > [!div class="nextstepaction"]
-> [Azure Disk Encryption áttekintése](disk-encryption-overview.md)
+> [Azure lemeztitkosítás – áttekintés](disk-encryption-overview.md)

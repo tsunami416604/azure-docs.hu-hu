@@ -1,113 +1,109 @@
 ---
-title: Nagy számú VMware virtuális gép értékelése az Azure-ba való Migrálás Azure Migrate használatával | Microsoft Docs
-description: Ismerteti, hogyan lehet kiértékelni az Azure-ba való áttelepítéshez szükséges nagy számú VMware virtuális gépet a Azure Migrate szolgáltatás használatával.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
-ms.topic: conceptual
-ms.date: 07/12/2019
-ms.author: hamusa
-ms.openlocfilehash: f76134ffc6a7becb9b5719dcb3d826130b7cfa86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+title: Nagy számú VMware virtuális gép felmérése az Azure-ba való migráláshoz az Azure Migrate segítségével
+description: A cikk azt ismerteti, hogy miként lehet felmérni a Virtuálisgép-szolgáltatások nagy számú virtuális gépét az Azure-ba való áttelepítéshez az Azure Migrate szolgáltatás használatával.e
+ms.topic: how-to
+ms.date: 03/23/2020
+ms.openlocfilehash: d404583b1bad474a5e24e8c7cf060aeb80d610bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453274"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336850"
 ---
-# <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Nagy számú VMware virtuális gép értékelése az Azure-ba való áttelepítéshez
+# <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Nagyszámú VMware virtuális gép felmérése az Azure-ba való migráláshoz
 
 
-Ez a cikk bemutatja, hogyan értékelheti a helyszíni VMware virtuális gépek nagy számait (1000-35000) az Azure-ba való áttelepítéshez az Azure Migrate Server Assessment Tool használatával.
+Ez a cikk ismerteti, hogyan értékelheti a helyszíni VMware virtuális gépek nagy számú (1000-35 000) az Azure-ba való áttelepítéshez az Azure-ba való áttelepítéshez az Azure Áttelepítési kiszolgáló értékelése eszközzel.
 
-[Azure Migrate](migrate-services-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz. 
+[Az Azure Migrate](migrate-services-overview.md) olyan eszközök központi eszköze, amelyek segítségével felderítheti, felmérheti és áttelepítheti az alkalmazásokat, az infrastruktúrát és a számítási feladatokat a Microsoft Azure-ba. A központ tartalmazza az Azure Migrate eszközöket és a külső független szoftverszállítói (ISV) ajánlatokat. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * Tervezze meg az értékelést a skálán.
-> * Azure-engedélyek konfigurálása és a VMware előkészítése az értékeléshez.
+> * Nagyszabású értékelési terv.
+> * Konfigurálja az Azure-engedélyeket, és készítse elő a VMware-t az értékelésre.
 > * Hozzon létre egy Azure Migrate projektet, és hozzon létre egy értékelést.
-> * Tekintse át az értékelést az áttelepítés megtervezése során.
+> * Tekintse át az értékelést az áttelepítés megtervezésekor.
 
 
 > [!NOTE]
-> Ha szeretné kipróbálni egy próba-koncepciót néhány virtuális gép értékeléséhez, mielőtt a méretezést kivizsgáljuk, kövesse az [oktatóanyag-sorozatot](tutorial-prepare-vmware.md)
+> Ha ki szeretné próbálni a proof-of-concept, hogy értékelje egy pár virtuális gépek értékelése előtt nagy méretekben, kövesse [az oktatóanyag-sorozat](tutorial-prepare-vmware.md)
 
-## <a name="plan-for-assessment"></a>Az értékelés megtervezése
+## <a name="plan-for-assessment"></a>Értékelési terv
 
-A nagyszámú VMware virtuális gép értékelésének tervezésekor néhány dolgot érdemes meggondolni:
+A VMware virtuális gépek nagy számának felmérése során néhány dolgot át kell gondolnia:
 
-- **Tervezze meg Azure Migrate projekteket**: Ismerje meg, hogyan helyezhet üzembe Azure Migrate-projekteket. Ha például az adatközpontok különböző földrajzi területeken vannak, vagy ha a felderítést, az értékelést vagy az áttelepítéssel kapcsolatos metaadatokat más földrajzi helyeken kell tárolnia, akkor lehet, hogy több projektre van szüksége. 
-- **Berendezések megtervezése**: Azure Migrate a virtuális gépek folyamatos felderítéséhez helyszíni Azure Migrate berendezést használ, amely VMWare virtuális gépként van üzembe helyezve. A készülék figyeli a környezet változásait, például virtuális gépek, lemezek vagy hálózati adapterek hozzáadását. Emellett metaadatokat és teljesítményadatokat is küld az Azure-nak. Meg kell állapítani, hogy hány készüléket kell telepítenie.
-- A **felderítési fiókok megtervezése**: az Azure Migrate készülék olyan fiókot használ, amely hozzáféréssel rendelkezik vCenter Serverhoz, hogy felderítse a virtuális gépeket az értékeléshez és az áttelepítéshez Ha több mint 10 000 virtuális gépet keres, állítson be több fiókot.
+- **Tervezze meg az Azure Migrate-projekteket:** Az Azure Migrate-projektek üzembe helyezésének kivárható. Ha például az adatközpontok különböző földrajzi területeken találhatók, vagy a felderítéssel, értékeléssel vagy áttelepítéssel kapcsolatos metaadatokat egy másik földrajzi helyen kell tárolnia, előfordulhat, hogy több projektre van szüksége. 
+- **Berendezések tervezése:** Az Azure Migrate egy helyszíni Azure Migrate-berendezést használ, amelyet VMware virtuális gépként telepítenek üzembe a virtuális gépek folyamatos felderítéséhez. A készülék figyeli a környezeti változásokat, például virtuális gépek, lemezek vagy hálózati adapterek hozzáadását. Metaadatokat és teljesítményadatokat is küld az Azure-ba. Meg kell, hogy kitaláljuk, hogy hány készüléket kell telepíteni.
+- **A felderítési fiókok tervezése:** Az Azure Migrate appliance egy virtuális központ-kiszolgálóhoz hozzáféréssel rendelkező fiókot használ a virtuális gépek felmérése és áttelepítése során. Ha több mint 10 000 virtuális gépet fedez fel, állítson be több fiókot.
 
 
 ## <a name="planning-limits"></a>Tervezési korlátok
  
-Használja az ebben a táblázatban foglalt korlátokat a tervezéshez.
+A táblában összegzett korlátokat használja a tervezéshez.
 
 **Tervezés** | **Korlátok**
 --- | --- 
-**Azure Migrate projektek** | Egy projektben akár 35 000 virtuális gépet is megvizsgálhat.
-**Azure Migrate berendezés** | Egy készülék legfeljebb 10 000 virtuális gépet képes felderíteni egy vCenter Server.<br/> Egy készülék csak egyetlen vCenter Server tud csatlakozni.<br/> Egy berendezés csak egyetlen Azure Migrate projekthez társítható.<br/>  Tetszőleges számú készülék társítható egyetlen Azure Migrate-projekthez is. <br/><br/> 
-**Csoport** | Egyetlen csoportban legfeljebb 35 000 virtuális gépet adhat hozzá.
-**Azure Migrate Értékelés** | Egyetlen értékeléssel akár 35 000 virtuális gépet is megvizsgálhat.
+**Azure Áttelepítési projektek** | Akár 35 000 virtuális gépet is felmérhet egy projektben.
+**Azure Migrate-berendezés** | Egy készülék legfeljebb 10 000 virtuális gépet képes felderíteni egy vCenter-kiszolgálón.<br/> Egy készülék csak egyetlen vCenter-kiszolgálóhoz tud csatlakozni.<br/> Egy készülék csak egyetlen Azure Migrate projekthez társítható.<br/>  Tetszőleges számú készülék társítható egyetlen Azure Migrate projekthez. <br/><br/> 
+**Csoport** | Egy csoportban legfeljebb 35 000 virtuális gépet adhat hozzá.
+**Azure Áttelepítés felmérése** | Egyetlen értékelés ben legfeljebb 35 000 virtuális gépet értékelhet.
 
-Ezekkel a korlátozásokkal kapcsolatban néhány példa az üzemelő példányokra:
+Ezeket a korlátokat szem előtt tartva, íme néhány példa a központi telepítések:
 
 
-**vCenter server** | **Kiszolgálókon futó virtuális gépek** | **Ajánlás** | **Művelet**
+**vCenter-kiszolgáló** | **Virtuális gépek a kiszolgálón** | **Ajánlás** | **Művelet**
 ---|---|---
-Egy | < 10 000 | Egy Azure Migrate projekt.<br/> Egy készülék.<br/> Egy vCenter-fiók a felderítéshez. | Állítsa be a készüléket, és kapcsolódjon vCenter Server fiókkal.
-Egy | > 10 000 | Egy Azure Migrate projekt.<br/> Több készülék.<br/> Több vCenter-fiók. | Állítsa be a készüléket minden 10 000 virtuális gépre.<br/><br/> Állítsa be a vCenter-fiókokat, és ossza fel a leltárt, hogy korlátozza a fiókok hozzáférését a 10 000-nél kevesebb virtuális gépre.<br/> Csatlakoztasson minden készüléket a vCenter-kiszolgálóhoz egy fiókkal.<br/> Elemezheti a függőségeket a különböző készülékekkel felderített gépek között.
-Többszörös | < 10 000 |  Egy Azure Migrate projekt.<br/> Több készülék.<br/> Egy vCenter-fiók a felderítéshez. | Állítsa be a készülékeket, és kapcsolódjon a vCenter Serverhoz egy fiókkal.<br/> Elemezheti a függőségeket a különböző készülékekkel felderített gépek között.
-Többszörös | > 10 000 | Egy Azure Migrate projekt.<br/> Több készülék.<br/> Több vCenter-fiók. | Ha vCenter Server felderítést < 10 000 virtuális gépeket, állítson be egy berendezést az egyes vCenter Serverokhoz.<br/><br/> Ha vCenter Server felderítést > 10 000 virtuális gépeket, állítson be egy berendezést minden 10 000 virtuális gép számára.<br/> Állítsa be a vCenter-fiókokat, és ossza fel a leltárt, hogy korlátozza a fiókok hozzáférését a 10 000-nél kevesebb virtuális gépre.<br/> Csatlakoztasson minden készüléket a vCenter-kiszolgálóhoz egy fiókkal.<br/> Elemezheti a függőségeket a különböző készülékekkel felderített gépek között.
+Eggyel | 10 000 < | Egy Azure Migrate projekt.<br/> Egy készülék.<br/> Egy vCenter-fiók felderítéséhez. | Állítsa be a készüléket, csatlakozzon a vCenter Server egy fiókkal.
+Eggyel | 10 000 > | Egy Azure Migrate projekt.<br/> Több készülék.<br/> Több vCenter-fiók. | Állítsa be a készüléket minden 10 000 virtuális géphez.<br/><br/> VCenter-fiókok beállítása, és a készlet felosztása a fiók hoz való hozzáférés 10 000-nél kevesebb, mint 10 000 virtuális gépek.<br/> Csatlakoztassa az egyes készülékeket a vCenter-kiszolgálóhoz egy fiókkal.<br/> Elemezheti a különböző készülékekkel felderített gépek függőségeit.
+Többszörös | 10 000 < |  Egy Azure Migrate projekt.<br/> Több készülék.<br/> Egy vCenter-fiók felderítéséhez. | Állítsa be a készülékeket, csatlakozzon a vCenter Server egy fiókkal.<br/> Elemezheti a különböző készülékekkel felderített gépek függőségeit.
+Többszörös | 10 000 > | Egy Azure Migrate projekt.<br/> Több készülék.<br/> Több vCenter-fiók. | Ha a vCenter Server felderítése 10 000 virtuális gépet <, állítson be egy-egy készüléket minden egyes vCenter-kiszolgálóhoz.<br/><br/> Ha a vCenter Server felderítése 10 000 virtuális gépet >, állítson be egy készüléket minden 10 000 virtuális géphez.<br/> VCenter-fiókok beállítása, és a készlet felosztása a fiók hoz való hozzáférés 10 000-nél kevesebb, mint 10 000 virtuális gépek.<br/> Csatlakoztassa az egyes készülékeket a vCenter-kiszolgálóhoz egy fiókkal.<br/> Elemezheti a különböző készülékekkel felderített gépek függőségeit.
 
 
-## <a name="plan-discovery-in-a-multi-tenant-environment"></a>A felderítés tervezése több-bérlős környezetben
+## <a name="plan-discovery-in-a-multi-tenant-environment"></a>Felderítés tervezése több-bérlős környezetben
 
-Ha több-bérlős környezetet szeretne tervezni, a felderítést a vCenter Serverra szűkítheti.
+Ha több-bérlős környezetet tervez, a felderítéshatókörrel a vCenter-kiszolgálón.
 
-- A berendezés felderítési hatókörét beállíthatja egy vCenter Server adatközpontra, fürtökre vagy a fürtök, a gazdagépek vagy az egyes virtuális gépek mappájára vagy mappára.
-- Ha a környezet a bérlők között van megosztva, és az egyes bérlőket külön szeretné felderíteni, akkor a hatókörhöz való hozzáférést a berendezés által a felderítéshez használt vCenter-fiókhoz is elérheti. 
-    - Előfordulhat, hogy a virtuális gépek mappáinak hatókörét szeretné használni, ha a bérlők megosztják a gazdagépeket. Azure Migrate nem tudja felderíteni a virtuális gépeket, ha a vCenter-fiókhoz hozzáférés van megadva a vCenter VM-mappa szintjén. Ha a virtuális gép mappáiban szeretné kiterjeszteni a felderítést, a vCenter-fióknak csak olvasási hozzáférése van hozzárendelve a virtuális gép szintjén. A felderítés hatókörkezelésével kapcsolatos további információkat [itt](tutorial-assess-vmware.md#set-the-scope-of-discovery) találja.
+- Beállíthatja a készülék felderítési hatókört egy vCenter Server adatközpontok, fürtök vagy mappák fürtök, állomások vagy mappa a gazdagépek, vagy az egyes virtuális gépek.
+- Ha a környezet meg van osztva a bérlők között, és szeretné felderíteni az egyes bérlők külön-külön, a hozzáférést a vCenter-fiókhoz, amely a készülék felderítésére használja. 
+    - Előfordulhat, hogy virtuális gép mappák szerint szeretné hatókört használni, ha a bérlők megosztják az állomásokat. Az Azure Migrate nem tudja felderíteni a virtuális gépeket, ha a vCenter-fiók a vCenter virtuálisgép mappájának szintjén biztosított hozzáféréssel rendelkezik. Ha a virtuális gép mappák általi felderítés hatókörét szeretné hatókörbe helyezni, ezt úgy teheti meg, hogy biztosítja, hogy a vCenter-fiók csak olvasható hozzáféréssel rendelkezik a virtuális gép szintjén. [További információ](set-discovery-scope.md).
 
 ## <a name="prepare-for-assessment"></a>Felkészülés az értékelésre
 
-Az Azure és a VMware előkészítése a kiszolgálók értékeléséhez. 
+Készítse elő az Azure-t és a VMware-t a kiszolgáló felméréséhez. 
 
-1. Ellenőrizze [a VMware támogatási követelményeit és korlátozásait](migrate-support-matrix-vmware.md).
-2. Az Azure-fiók engedélyeinek beállítása a Azure Migrate való interakcióhoz.
-3. A VMware előkészítése az értékeléshez.
+1. Ellenőrizze a [VMware támogatási követelményeit és korlátait.](migrate-support-matrix-vmware.md)
+2. Állítsa be az Azure-fiók engedélyeit az Azure Migrate szolgáltatással való együttműködéshez.
+3. Készítse elő a VMware-t az értékelésre.
 
-A beállítások konfigurálásához kövesse az [oktatóanyag](tutorial-prepare-vmware.md) utasításait.
+Az [oktatóanyag](tutorial-prepare-vmware.md) utasításainak megfelelően konfigurálhatja ezeket a beállításokat.
 
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
-A tervezési követelményekkel összhangban tegye a következőket:
+A tervezési követelményeknek megfelelően tegye a következőket:
 
-1. Hozzon létre egy Azure Migrate projekteket.
-2. Adja hozzá a Azure Migrate Server Assessment eszközt a projektekhez.
+1. Hozzon létre egy Azure Migrate-projekteket.
+2. Adja hozzá az Azure Áttelepítési kiszolgáló értékelése eszközt a projektekhez.
 
 [További információ](how-to-add-tool-first-time.md)
 
-## <a name="create-and-review-an-assessment"></a>Értékelés létrehozása és áttekintése
+## <a name="create-and-review-an-assessment"></a>Értékelés létrehozása és felülvizsgálata
 
-1. Hozzon létre értékeléseket a VMware virtuális gépekhez.
-1. Tekintse át az áttelepítési tervezés előkészítésének értékelését.
+1. VMware virtuális gépek revonatkozó értékelések et hozhat létre.
+1. Tekintse át az értékeléseket az áttelepítés tervezésére való felkészülés során.
 
 
-A beállítások konfigurálásához kövesse az [oktatóanyag](tutorial-assess-vmware.md) utasításait.
+Az [oktatóanyag](tutorial-assess-vmware.md) utasításainak megfelelően konfigurálhatja ezeket a beállításokat.
     
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben:
  
 > [!div class="checklist"] 
-> * A VMware virtuális gépek Azure Migrate értékelésének tervezett méretezése
-> * Az Azure és a VMware előkészítése az értékeléshez
-> * Létrehozott egy Azure Migrate projektet és futtatott értékeléseket
-> * Az áttelepítésre való felkészülés során felülvizsgálták az értékeléseket.
+> * Az Azure Migrate-értékelések méretezése vmware virtuális gépekhez
+> * Előkészített Azure és VMware értékelésre
+> * Létrehozott egy Azure Migrate projektet, és lefuttatott felméréseket
+> * A migrációra való felkészülés során felülvizsgált értékelések.
 
-Most [megtudhatja, hogyan](concepts-assessment-calculation.md) számítja ki az értékeléseket, és hogyan [módosíthatja az értékeléseket](how-to-modify-assessment.md).
+Most [megtudhatja, hogyan](concepts-assessment-calculation.md) számítják ki az értékeléseket, és hogyan módosíthatják az [értékeléseket.](how-to-modify-assessment.md)
