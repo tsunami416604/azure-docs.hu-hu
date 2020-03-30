@@ -1,5 +1,5 @@
 ---
-title: 'Hálózati partnerek: Azure Networking | Microsoft Docs'
+title: 'Hálózati partnerek: Azure Networking | Microsoft dokumentumok'
 description: Ez a cikk az MSP hálózati partnerek listáját tartalmazza
 services: networking
 author: skishen525
@@ -7,58 +7,58 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 14f9d698f36fd26563677ef5b3cb82fc8ecf3a4c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: dc78f105d353a9a17af4b33dfc806eed91e7c6dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588960"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063202"
 ---
-# <a name="about-azure-networking-msp-partners"></a>Tudnivalók az Azure hálózatkezelési MSP-partnereiről
+# <a name="about-azure-networking-msp-partners"></a>Az Azure Networking MSP-partnerek –
 
-Az [Azure hálózatkezeléssel felügyelt szolgáltatói (msp) Partnerprogram](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/) lehetővé teszi, hogy a hálózati szolgáltatások, a telcos és a rendszerintegrátorok (SIs) olyan felhőalapú és hibrid hálózati szolgáltatásokat nyújtsanak, amelyek az Azure hálózatkezelési termékeinek és szolgáltatásainak körébe vannak foglalva.
+Az [Azure Networking Managed Service Provider (MSP) partnerprogram](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/) lehetővé teszi, hogy a hálózati szolgáltatásokra összpontosító MSP-k, Telcos és rendszerintegrátorok (SI-k) felhőalapú és hibrid hálózati szolgáltatásokat kínáljanak, amelyek az Azure hálózati termékekkel és szolgáltatásokkal kapcsolatos portfóliójára összpontosítanak.
 
-Az Azure hálózatkezelési MSP a felügyelt szolgáltatók speciális készletei, amelyek a Felhőbeli és a hibrid hálózatkezelés minden aspektusában a vállalati Felhőbeli hálózatkezelési igényeket és kihívásokat kezelik. A felügyelt hálózati szolgáltatások közé tartozik a következő szolgáltatások legalább egyike: hálózati architektúra, tervezés, üzembe helyezés, műveletek, karbantartás és optimalizálás.
+Az Azure Networking MSP-k a felügyelt szolgáltatók speciális készletei, amelyek a felhőbeli és hibrid hálózatok minden területén kielégítik a vállalati felhőhálózati igényeket és kihívásokat. A felügyelt hálózati szolgáltatások a következő szolgáltatások közül egyet vagy többet tartalmaznak: hálózati architektúra, tervezés, üzembe helyezés, üzemeltetés, karbantartás és optimalizálás.
 
-![MSP][0]
+![Msp][0]
 
-Az ügyfelek az Azure Marketplace-en vagy közvetlenül az MSP-ből vásárolhatják meg az MSP által felügyelt szolgáltatások ajánlatait. A MSP az Azure [Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/)használatával üzembe helyezhetik és kezelhetik az Azure hálózati erőforrásait az ügyfelek előfizetései és az erőforrásai számára.
+Az ügyfelek megvásárolhatják az MSP által felügyelt szolgáltatások ajánlatait az Azure Marketplace-en, vagy közvetlenül az MSP-ből. Az MSP-k az Azure-beli hálózati erőforrásokat az ügyfelek előfizetéseiben és erőforráscsoportjaiban helyezhetik üzembe és kezelhetik az [Azure Világítótorony](https://azure.microsoft.com/services/azure-lighthouse/)használatával.
 
-## <a name="msp"></a>Azure Marketplace-ajánlatok az Azure Networking MSP-partnerek számára
+## <a name="azure-marketplace-offers-by-azure-networking-msp-partners"></a><a name="msp"></a>Az Azure Networking MSP-partnerek Azure Piactér-ajánlatai
 
-Az ebben a szakaszban található hivatkozásokra kattintva további információt találhat az Azure hálózati MSP-partnerek által kínált felügyelt felhőalapú hálózati szolgáltatásokról. Ha a Cloud Network Services-partner nem szerepel az alábbi szakaszban, akkor a szolgáltató vegye fel velünk a kapcsolatot. Felvehetik velünk a kapcsolatot, ha e-mailt küldenek a ManagedVirtualWAN@microsoft.comnak. 
+Az Azure Networking MSP-partnerek által kínált felügyelt felhőhálózati hálózati szolgáltatásokkal kapcsolatos további információkért használja az ebben a szakaszban található hivatkozásokat. Ha felhőhálózati szolgáltatási partnere nem szerepel az alábbi szakaszban, vegye fel velünk a kapcsolatot a szolgáltatóval. Felvehetik velünk a kapcsolatot, ha e-mailt küldenek a- ManagedVirtualWAN@microsoft.com 
 
-| **MSP** | **Cloud Network Transformation Services** | **Felügyelt ExpressRoute** | **Felügyelt virtuális WAN** |
+| **Msp** | **Felhőhálózati átalakítási szolgáltatások** | **Felügyelt ExpressRoute** | **Felügyelt virtuális WAN** |
 | ---| ---| ---| ---|
-|[ANS csoport, Egyesült Királyság](https://www.ans.co.uk/)|[Azure Managed SVC + ANS Glass 10wk implementáció](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|||||
-|[Aryaka Networks hálózatok](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Networks Azure-kapcsolat](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Networks Azure-beli virtuális WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.aryaka_azure_virtual_wan?tab=Overview) | | |
-|[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Hálózati transzformációs tanácsadás: 1 – HR Értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting)|||||
-|[Kialakulás](https://www.coevolve.com/services/azure-networking-services/)|||[Felügyelt VMware SD-WAN virtuális Edge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
-|[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|[Hálózati optimalizálás az Azure-ban: 2 – HR-Értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/colttechnologyservices.azure_networking)|||||
-|[NTT-adatkészletek](https://us.nttdata.com/en/digital/cloud-transformation)|[Felügyelt szolgáltatások: 10 hetes implementáció](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/nttdata-2932930.managed_service)|||||
-|[Equinix](https://www.equinix.com/)|[Felhőre optimalizált WAN engagement: 4 napos Értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.cloud_optimized_wan_workshop)|[ExpressRoute csatlakozási stratégia: 3 napos workshop](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.eps_expressroute)||||
-|[IIJ](https://www.iij.ad.jp/biz/cloudex/)|[ExpressRoute implementáció: 1 – HR-Összefoglaló](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxm_consulting)|[ExpressRoute: 2 – hét implementáció](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxmer_consulting)||||
-|[Infosys](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|[Infosys-integráció + az Azure-hoz](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/infosysltd.infosys-integrate-for-azure?tab=Overview)|||||
-|[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|[Azure hálózati Értékelés – 5 nap](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/interxionhq.inxn_azure_networking_assessment)|||||
-|[Liquid Telecom](https://liquidcloud.africa/azure-networking)|[Felhőalapú készültség – 2 órás Értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/liquidtelecommunicationsoperationslimited.liquid_cloud_readiness_assessment)|||||
-|[Macquarie Telecom](https://macquariecloudservices.com/azure-managed-services/)|[Macquarie Cloud Services Consult: 2 – HR workshop](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/macquariecloudservices.clear_for_takeoff_consulting_service)||[SD-WAN virtuális peremhálózati telepítés a Macquarie Cloud használatával](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.nanaged_network_services?tab=Overview)|||
-|[Oncore Cloud Services]( https://www.oncore.cloud/services/ue-for-expressroute/)||[UniversalEdge az Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oncore_cloud_services-4944214.universaledge_for_expressroute?tab=Overview)||||
-|[Orixcom]( https://www.orixcom.com/cloud-solutions/)||[Orixcom által felügyelt ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_managed_expressroute?tab=Overview)|[Orixcom SD – WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_sd_wan?tab=Overview)|||
-|[SoftBank]( https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_az/)|[Azure hálózati tanácsadó szolgáltatás: 1 – hét értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_nw_msp_service_azure); [Azure Assessment szolgáltatás: 1Week](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_msp_service_azure_01?tab=Overview&pub_source=email&pub_status=success)|||||
-|[TCTS](https://www.tatacommunications-ts.com/index.php)|[Azure-áttelepítés: 3 hetes Értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/tcs.azure_migration_assessment)|||||
-|[Tata-kommunikáció](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)||[Felügyelt Azure-ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_expressroute?tab=Overview)|[Felügyelt virtuális WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_azure_vwan_for_sdwan?tab=Overview)|||
-|[Éberség](https://vigilant.it/manage-cloud-service/)|[Azure Health-ellenőrzés: 5 napos Értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 napos megvalósítás](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
-|[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis által felügyelt ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[A Vandis által felügyelt VWAN Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Palo Alto-hálózatokkal felügyelt VWAN-Vandis](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
+|[ANS Csoport Magyarország](https://www.ans.co.uk/)|[Azure Managed Svc + ANS Glass 10wk implementáció](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|||||
+|[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Azure virtuális WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.aryaka_azure_virtual_wan?tab=Overview) | | |
+|[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Hálózatátalakítási tanácsadás: 1 órás értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting)|||||
+|[Együttalakulni](https://www.coevolve.com/services/azure-networking-services/)|||[Felügyelt VMware SD-WAN Virtual Edge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
+|[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|[Hálózatoptimalizálás az Azure-ban: 2 órás értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/colttechnologyservices.azure_networking)|||||
+|[NTT-adatok](https://us.nttdata.com/en/digital/cloud-transformation)|[Felügyelt szolgáltatások: 10 hetes megvalósítás](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/nttdata-2932930.managed_service)|||||
+|[Equinix](https://www.equinix.com/)|[Felhőre optimalizált WAN-elköteleződés: 4 napos értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.cloud_optimized_wan_workshop)|[ExpressRoute kapcsolódási stratégia: 3 napos workshop](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.eps_expressroute)||||
+|[IIJ között](https://www.iij.ad.jp/biz/cloudex/)|[ExpressRoute megvalósítása: 1 órás eligazítás](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxm_consulting)|[ExpressRoute: 2-Wk megvalósítás](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxmer_consulting)||||
+|[Infosys között](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|[Infosys Integrate+ for Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/infosysltd.infosys-integrate-for-azure?tab=Overview)|||||
+|[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|[Azure hálózati felmérés – 5 nap](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/interxionhq.inxn_azure_networking_assessment)|||||
+|[Liquid Telecom](https://liquidcloud.africa/azure-networking)|[Felhőre való felkészültség - 2 órás értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/liquidtelecommunicationsoperationslimited.liquid_cloud_readiness_assessment)|||||
+|[Macquarie Távközlési](https://macquariecloudservices.com/azure-managed-services/)|[Macquarie Cloud Services Consult: 2 órás Műhely](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/macquariecloudservices.clear_for_takeoff_consulting_service)||[SD-WAN Virtual Edge telepítése a Macquarie Cloud-tól](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.nanaged_network_services?tab=Overview)|||
+|[Oncore felhőszolgáltatások]( https://www.oncore.cloud/services/ue-for-expressroute/)||[UniversalEdge for Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oncore_cloud_services-4944214.universaledge_for_expressroute?tab=Overview)||||
+|[Orixcom között]( https://www.orixcom.com/cloud-solutions/)||[Orixcom felügyelt ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_managed_expressroute?tab=Overview)|[Orixcom SD-WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_sd_wan?tab=Overview)|||
+|[Softbank]( https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_az/)|[Azure Network Consulting Service: 1-Wk értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_nw_msp_service_azure); [Azure assessment szolgáltatás: 1Week](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_msp_service_azure_01?tab=Overview&pub_source=email&pub_status=success)|||||
+|[TCTS](https://www.tatacommunications-ts.com/index.php)|[Azure Migration: 3 hetes értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/tcs.azure_migration_assessment)|||||
+|[Tata Communications](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)||[Felügyelt Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_expressroute?tab=Overview)|[Felügyelt virtuális WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_azure_vwan_for_sdwan?tab=Overview)|||
+|[Éber IT](https://vigilant.it/manage-cloud-service/)|[Azure állapotfelmérés: 5 napos értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 napos megvalósítás](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
+|[Vandis között](https://www.vandis.com/microsoft-azure-practice/)||[Vandis felügyelt ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Vandis menedzselt VWAN Powered by Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Vandis menedzselt VWAN Powered by Palo Alto Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Az Azure piactéren a következő Azure hálózati MSP-partnerek által kínált új felügyelt biztonsági szolgáltatásokat és felügyelt MEC-szolgáltatásokat kínáljuk: [Amdocs](https://www.amdocs.com/); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);    [IX elérés](https://www.ixreach.com/services/sdn-cloud-connect/);  [Felhő](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [Megaport](https://www.megaport.com/services/microsoft-expressroute/);  [OmniClouds](https://omniclouds.com/services/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms);  [Technikai Mahindra](https://networkservices.techmahindra.com/pages/default.aspx); [Összevont vezeték nélküli](https://www.federatedwireless.com/caas/)
+Az Azure Marketplace-en többek között új felügyelt biztonsági szolgáltatásokat és felügyelt MEC-szolgáltatásokat kínálnak a következő Azure Networking MSP-partnerektől: [Amdocs](https://www.amdocs.com/); [AXESDN;](https://www.axesdn.com/en/azure-msp.html) [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);    [IX Elérés;](https://www.ixreach.com/services/sdn-cloud-connect/)  [InterCloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [Megaport](https://www.megaport.com/services/microsoft-expressroute/);  [OmniClouds](https://omniclouds.com/services/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms);  [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx); [Összevont vezeték nélküli](https://www.federatedwireless.com/caas/)
 
-## <a name="expressroute"></a>ExpressRoute-partnerek
+## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute-partnerek
 
-További információ a partnerekről: [ExpressRoute-partnerek és-helyszínek](../expressroute/expressroute-locations-providers.md).
+A partnerekről az [ExpressRoute-partnerek és -helyek](../expressroute/expressroute-locations-providers.md)című témakörben talál további információt.
 
-## <a name="vwan"></a>Virtuális WAN-partnerek
+## <a name="virtual-wan-partners"></a><a name="vwan"></a>Virtuális WAN-partnerek
 
-További információ a partnerekről: [virtuális WAN-partnerek és szolgáltatók](../virtual-wan/virtual-wan-locations-partners.md).
+A partnerekről a [Virtual WAN-partnerek és szolgáltatók](../virtual-wan/virtual-wan-locations-partners.md)című témakörben talál további információt.
 
 <!--Image References-->
-[0]: ./media/networking-partners-msp/msp.png "MSP-program leírása"
+[0]: ./media/networking-partners-msp/msp.png "Msp program leírása"

@@ -1,87 +1,87 @@
 ---
-title: Az Azure IoT Central-alkalmazások eszköz-sablon verziószámozásának ismertetése | Microsoft Docs
-description: Új verziók létrehozásával, valamint az élő csatlakoztatott eszközök hatása nélkül megismételheti az eszközök sablonjait
+title: Az Azure IoT Central-alkalmazások eszközsablon-verziószámozásának ismertetése | Microsoft dokumentumok
+description: Az eszközsablonok on-át itegetése új verziók létrehozásával és az élő csatlakoztatott eszközök befolyásolása nélkül
 author: sarahhubbard
 ms.author: sahubbar
 ms.date: 12/09/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 530208ed82c95187fac2173aa763ef5507f56b0b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: bb77d1a09cb2692765c4c834ce617d13465d4d67
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018210"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157568"
 ---
-# <a name="create-a-new-device-template-version"></a>Új sablon-verzió létrehozása
+# <a name="create-a-new-device-template-version"></a>Új eszközsablon-verzió létrehozása
 
 
 
-Az Azure IoT Central lehetővé teszi a IoT alkalmazások gyors fejlesztését. Az eszköz képességeinek, nézeteinek és testreszabásainak hozzáadásával, szerkesztésével vagy törlésével gyorsan megismételheti az eszközök sablonját. Miután közzétette az eszköz sablonját, az eszköz képességeinek modellje a modell melletti zárolási ikonokkal együtt **jelenik** meg. Ha módosítani szeretné az eszköz képességeinek modelljét, létre kell hoznia az eszköz sablonjának új verzióját. Eközben a felhő tulajdonságai, a testreszabások és a nézetek bármikor szerkeszthetők, anélkül, hogy az eszközt kellene használnia. Miután mentette a módosításokat, közzéteheti az eszköz sablonját, hogy a legutóbbi módosítások elérhetők legyenek az operátor számára a Device Explorerban való megjelenítéshez.
+Az Azure IoT Central lehetővé teszi az IoT-alkalmazások gyors fejlesztését. Az eszközsablon-tervek gyors analfabetizálhatók az eszközképességek, nézetek és testreszabások hozzáadásával, szerkesztésével vagy törlésével. Miután közzétette az eszközsablont, az eszközképességi modell **közzétettként** jelenik meg a modell mellett a zárolási ikonokkal. Az eszközképességi modell módosításához létre kell hoznia az eszközsablon új verzióját. Eközben a felhő tulajdonságait, testreszabások és nézetek mind szerkeszthetők bármikor anélkül, hogy verzióaz eszköz sablon. Miután mentette a módosítások bármelyikét, közzéteheti az eszközsablont, hogy a legutóbbi módosításokat elérhetővé tegye az üzemeltető számára az Eszközkezelőben való megtekintéshez.
 
 > [!NOTE]
-> Az eszközök létrehozásával kapcsolatos további tudnivalókért tekintse meg az [eszköz sablonjának beállítása és kezelése](howto-set-up-template.md) című témakört.
+> Ha többet szeretne tudni az eszközsablon létrehozásáról, olvassa el az [Eszközsablon beállítása és kezelése című témakört.](howto-set-up-template.md)
 
-## <a name="add-customizations-to-the-device-template-without-versioning"></a>Testreszabások hozzáadása az eszköz sablonhoz verziószámozás nélkül
+## <a name="add-customizations-to-the-device-template-without-versioning"></a>Testreszabások hozzáadása az eszközsablonhoz verziószámozás nélkül
 
-Az eszköz képességeinek bizonyos elemei szerkeszthetők, anélkül, hogy az eszköz sablonját és felületét kellene megadnia. Ilyen mezők például a megjelenítendő név, a szemantikai típus, a minimális érték, a maximális érték, a tizedesjegyek, a szín, az egység, a megjelenítési egység, a Megjegyzés és a leírás. A következő testreszabások egyikének hozzáadása:
+Az eszköz képességeinek bizonyos elemei az eszközsablon és -felületek verziószámozása nélkül szerkeszthetők. Ezek közé a mezők közé tartozik például a megjelenítendő név, a szemantikai típus, a minimális érték, a maximális érték, a tizedesjegyek, a szín, az egység, a megjelenítési egység, a megjegyzés és a leírás. Az alábbi testreszabások egyikének hozzáadása:
 
-1. Nyissa meg az **eszközök sablonjai** lapot.
-1. Válassza ki a testreszabni kívánt sablont.
+1. Nyissa meg az **Eszközsablonok** lapot.
+1. Válassza ki a testre szabni kívánt eszközsablont.
 1. Válassza a **Testreszabás** lapot.
-1. Itt jelennek meg az eszköz képességeinek modelljében meghatározott összes képesség. Az itt szerkeszthető mezők menthetők és felhasználhatók az alkalmazásban, anélkül, hogy az eszköz sablonját kellene használnia. Ha vannak olyan mezők, amelyek csak olvashatók, akkor módosítania kell az eszköz sablonját, hogy megváltoztassa ezeket. Válasszon ki egy szerkeszteni kívánt mezőt, és írjon be minden új értéket.
-1. Kattintson a **Mentés** gombra. Mostantól ezek az értékek felülbírálják az eszköz sablonjában eredetileg mentett bármit, és az alkalmazáson keresztül lesznek használva.
+1. Az eszközképességi modellben definiált összes képesség itt jelenik meg. Az itt szerkeszthető összes mező menthető és használható az alkalmazásban anélkül, hogy az eszközsablont verzióra kellene használnia. Ha vannak olyan mezők, amelyeket csak olvashatóan szeretne módosítani, a módosításhoz az eszközsablont kell verzióznia. Jelölje ki a szerkesztni kívánt mezőt, és írja be az új értékeket.
+1. Kattintson a **Mentés** gombra. Most ezek az értékek felülírnak mindent, ami eredetileg az eszközsablonba lett mentve, és az alkalmazáson keresztül lesznek használva.
 
-## <a name="versioning-a-device-template"></a>Egy eszköz sablonjának verziószámozása
+## <a name="versioning-a-device-template"></a>Eszközsablon verziószámozása
 
-Az eszköz sablonjának új verziójának létrehozásakor létrejön a sablon piszkozata, amelyben az eszköz képességi modellje szerkeszthető lehet. A közzétett felületek minden esetben közzé lesznek téve, amíg azok nem külön verzióban vannak. A közzétett illesztőfelületek módosításához először létre kell hoznia egy új sablon-verziót.
+Az eszközsablon új verziójának létrehozásával létrejön a sablon vázlatverziója, amelyen az eszközképességi modell szerkeszthető. A közzétett felületek mindaddig közzé maradnak, amíg külön-külön verziójúk nem lesznek. A közzétett felület módosításához először létre kell hoznia egy új eszközsablon-verziót.
 
-Az eszköz sablonjának csak akkor kell szerepelnie, ha az eszköz képességeinek modelljét szeretné szerkeszteni, de nem szerkesztheti a testreszabások szakaszban az eszköz sablonjában. 
+Az eszközsablont csak akkor kell verziószámba adni, ha az eszközképességi modell egy olyan részét próbálja szerkeszteni, amelyet nem szerkeszthet az eszközsablon testreszabási szakaszában. 
 
-Eszköz sablonjának verziója:
+Az eszközsablon verziószámba adása:
 
-1. Nyissa meg az **eszközök sablonjai** lapot.
-1. Válassza ki azt az eszközt, amelyre a verziót kívánja.
-1. Kattintson a lap tetején található **Version (verzió** ) gombra, és adjon meg egy új nevet a sablonnak. Egy új nevet javasoltunk, amely szerkeszthető.
-1. Kattintson a **Create** (Létrehozás) gombra.
-1. Most az eszköz sablonja vázlat módban van. Látni fogja, hogy a felületek továbbra is zárolva vannak, és a szerkesztéshez egyenként kell verziót használnia. 
+1. Nyissa meg az **Eszközsablonok** lapot.
+1. Válassza ki a verziót kipróbálandó eszközsablont.
+1. Kattintson a lap tetején található **Verzió** gombra, és adjon új nevet a sablonnak. Javasoltunk egy új nevet, amely szerkeszthető.
+1. Kattintson **a Létrehozás gombra.**
+1. Most az eszközsablon vázlat módban van. Látni fogja, hogy a felületek még mindig zárolva vannak, és a szerkesztéshez külön-külön kell verziót adni. 
 
-### <a name="versioning-an-interface"></a>Felület verziószámozása
+### <a name="versioning-an-interface"></a>Kapcsolat verziószámozása
 
-Az interfészek verziószámozása lehetővé teszi a már létrehozott felületen belüli képességek hozzáadását, frissítését és eltávolítását. 
+A kapcsolat verziószámozása lehetővé teszi a már létrehozott felületen belüli képességek hozzáadását, frissítését és eltávolítását. 
 
-Egy felület verziójának megrendeléséhez:
+Annak érdekében, hogy változat egy felület:
 
-1. Nyissa meg az **eszközök sablonjai** lapot.
-1. Válassza ki a Piszkozat módban lévő sablont.
-1. Válassza ki azt a felületet, amelyet közzé szeretne tenni, és szerkeszteni kívánja a közzétett módban.
-1. Kattintson a **verzió** gombra a csatoló oldal tetején. 
-1. Kattintson a **Create** (Létrehozás) gombra.
-1. Most az illesztőfelület vázlat módban van. A meglévő testreszabások és nézetek megszakítása nélkül lehetősége lesz felvenni vagy szerkeszteni a felület képességeit. 
-
-> [!NOTE]
-> Az Azure IoT által közzétett standard felületek nem telepíthetők és nem szerkeszthetők. Ezek a standard felületek az eszközök tanúsítására szolgálnak.
+1. Nyissa meg az **Eszközsablonok** lapot.
+1. Válassza ki a vázlat módban lévő eszközsablont.
+1. Válassza ki a közzétenni kívánt módban lévő és szerkesztésre kívánt felületet.
+1. Kattintson a **kapcsolatlap** tetején található Verzió gombra. 
+1. Kattintson **a Létrehozás gombra.**
+1. Most a felület vázlat módban van. A meglévő testreszabások és nézetek megtörése nélkül adhat hozzá vagy szerkeszthet funkciókat a felületen. 
 
 > [!NOTE]
-> Miután közzétette az illesztőfelületet, nem törölheti a képességeit sem Piszkozat módban. A képességeket csak vázlat módban lehet szerkeszteni vagy felvenni az illesztőfelületbe.
+> Az Azure IoT által közzétett szabványos felületek nem lehet verziót verziózott vagy szerkesztett. Ezek a szabványos illesztők eszközminősítéshez használatosak.
+
+> [!NOTE]
+> Miután a felület már megjelent, akkor nem lehet törölni sem, hogy a képességek még egy vázlat módban. A képességek csak vázlat módban szerkeszthetők vagy adhatók hozzá a kapcsolathoz.
 
 
-## <a name="migrate-a-device-across-device-template-versions"></a>Eszköz átmigrálása az eszköz sablonjának verziói között
+## <a name="migrate-a-device-across-device-template-versions"></a>Eszköz áttelepítése az eszközsablon-verziók között
 
-Az eszköz sablonjának több verzióját is létrehozhatja. Idővel több csatlakoztatott eszköz fog rendelkezni ezekkel az eszközökkel. Az eszközöket áttelepítheti az eszköz sablonjának egyik verziójából egy másikba. Az alábbi lépések bemutatják, hogyan telepíthet át egy eszközt:
+Az eszközsablonnak több verzióját is létrehozhatja. Idővel több csatlakoztatott eszköz esablonok használatával fog rendelkezni. Az eszközök áttelepíthetők az eszközsablon egyik verziójából a másikba. Az alábbi lépések az eszközök áttelepítését ismertetik:
 
-1. Lépjen a **Device Explorer** lapra.
-1. Válassza ki az eszközt, amelyet át kell telepítenie egy másik verzióra.
-1. Válassza az **áttelepítés**lehetőséget.
-1. Válassza ki azt a verziószámot, amelyen át szeretné telepíteni az eszközt, majd válassza az **áttelepítés**lehetőséget.
+1. Nyissa meg az **Eszközkezelő** lapot.
+1. Válassza ki azt az eszközt, amelyet át szeretne telepíteni egy másik verzióra.
+1. Válassza **az Áttelepítés**lehetőséget.
+1. Jelölje ki azt az eszközsablont, amelynek verziószáma az eszköz áttelepítése, és válassza az **Áttelepítés**lehetőséget.
 
-![Eszköz áttelepítésének módja](media/howto-version-device-template/pick-version.png)
+![Eszköz áttelepítése](media/howto-version-device-template/pick-version.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan használhatja az eszköz sablonjának verzióit az Azure IoT Central alkalmazásban, a következő lépés a javasolt lépés:
+Most, hogy megtanulta az eszközsablon-verziók használatát az Azure IoT Central alkalmazásban, az alábbiakban a következő javasolt lépés:
 
 > [!div class="nextstepaction"]
-> [Telemetria-szabályok létrehozása](tutorial-create-telemetry-rules.md)
+> [Telemetriai szabályok létrehozása](tutorial-create-telemetry-rules.md)

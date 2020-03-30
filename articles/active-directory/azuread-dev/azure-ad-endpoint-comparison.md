@@ -1,6 +1,6 @@
 ---
-title: Miért érdemes frissíteni a Microsoft Identity platformot (v 2.0) | Azure
-description: Ismerje meg a Microsoft Identity platform (v 2.0) végpontja és a Azure Active Directory (Azure AD) v 1.0 végpont közötti különbségeket, és ismerkedjen meg a 2.0-s verzióra való frissítés előnyeivel.
+title: Miért frissítsen a Microsoft identity platformra (2.0-s verzió) | Azure
+description: Ismerje meg a Microsoft identity platform (2.0) végpont és az Azure Active Directory (Azure AD) 1.0-s verzióbeli végpont közötti különbségeket, és ismerje meg a 2.0-s verzióra való frissítés előnyeit.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,60 +12,61 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
-ms.openlocfilehash: d910a76397a40a14d960b59f60561cbee470f5c4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ROBOTS: NOINDEX
+ms.openlocfilehash: 67a54a2cd4fa071fd47bcebb9aa53fd11fefd61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79263685"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154916"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Miért érdemes Microsoft Identitásplatformra (a 2.0-s verzióra) frissíteni?
 
-Új alkalmazás fejlesztésekor fontos tudni a Microsoft Identity platform (v 2.0) és a Azure Active Directory (v 1.0) végpontok közötti különbségeket. Ez a cikk a végpontok és a Microsoft Identity platform meglévő korlátai közötti fő különbségeket ismerteti.
+Új alkalmazás fejlesztése során fontos tudni, hogy a microsoftidentity platform (2.0) és az Azure Active Directory (1.0-s verzió) végpontok közötti különbségeket. Ez a cikk ismerteti a végpontok közötti főbb különbségeket és a Microsoft identity platform néhány meglévő korlátozását.
 
 > [!NOTE]
-> A Microsoft Identity platform végpontja nem támogatja az összes Azure AD-forgatókönyvet és-funkciót. Annak megállapításához, hogy érdemes-e a Microsoft Identity platform-végpontot használni, olvassa el a [Microsoft Identity platform korlátozásait](#limitations)ismertetőt.
+> A Microsoft identity platform végpont jatttal nem támogatja az összes Azure AD-forgatókönyvek és -szolgáltatások. Annak megállapításához, hogy a Microsoft identity platform végpontját kell-e használnia, olvassa el a [Microsoft identity platform korlátait.](#limitations)
 
-## <a name="who-can-sign-in"></a>Kik jelentkezhetnek be
+## <a name="who-can-sign-in"></a>Ki jelentkezhet be?
 
-![Ki jelentkezhet be az 1.0-s és a 2.0-s végpontokkal](media/azure-ad-endpoint-comparison/who-can-signin.svg)
+![Ki tud bejelentkezni az 1.0-s és a 2.0-s végponttal?](media/azure-ad-endpoint-comparison/who-can-signin.svg)
 
-* A v 1.0 végpont lehetővé teszi, hogy csak a munkahelyi és iskolai fiókok jelentkezzenek be az alkalmazásba (Azure AD)
-* A Microsoft Identity platform végpontja lehetővé teszi a munkahelyi és iskolai fiókok Azure AD-és személyes Microsoft-fiókjai (MSA), például a hotmail.com, a outlook.com és a msn.com használatát a bejelentkezéshez.
-* Mindkét végpont fogadja az Azure AD-címtár *[vendég felhasználói](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* számára az *[egybérlős](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* vagy a bérlői végpontra (`https://login.microsoftonline.com/{TenantId_or_Name}`) való rámutató alkalmazásokhoz konfigurált *több-bérlős* alkalmazások bejelentkezését is.
+* A v1.0-s végpont lehetővé teszi, hogy csak a munkahelyi és iskolai fiókok jelentkezzen be az alkalmazásba (Azure AD)
+* A Microsoft identity platform végpont lehetővé teszi az Azure AD-ből és a személyes Microsoft-fiókokból (MSA), például hotmail.com, outlook.com és msn.com, a munkahelyi és iskolai fiókok bejelentkezését.
+* Mindkét végpont elfogadja az *[Egybérlősként](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* konfigurált alkalmazások vagy a bérlőspecifikus végpontra (`https://login.microsoftonline.com/{TenantId_or_Name}`való pontra való pontra beállított *több-bérlős* alkalmazások számára az Azure AD-címtár *[vendégfelhasználóinak](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* bejelentkezését is.
 
-A Microsoft Identity platform végpontja lehetővé teszi olyan alkalmazások írását, amelyek elfogadják a személyes Microsoft-fiókokból, valamint a munkahelyi és iskolai fiókokból érkező bejelentkezéseket. Ez lehetővé teszi, hogy az alkalmazást teljes mértékben fiók-agnosztikusként írja. Ha például az alkalmazás meghívja a [Microsoft Graph](https://graph.microsoft.io), néhány további funkció és adat is elérhető lesz a munkahelyi fiókok, például a SharePoint-webhelyek vagy a címtáradatok számára. Azonban számos művelethez, például [egy felhasználó levelezésének olvasásához](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0)ugyanez a kód férhet hozzá az e-mailekhez a személyes és munkahelyi és az iskolai fiókokhoz is.
+A Microsoft identity platform végpont lehetővé teszi, hogy olyan alkalmazásokat írjon, amelyek személyes Microsoft-fiókokból, valamint munkahelyi és iskolai fiókokból fogadnak bejelentkezéseket. Ez lehetővé teszi, hogy írjon az alkalmazás teljesen fiók-agnosztikus. Ha például az alkalmazás meghívja a [Microsoft Graph programot,](https://graph.microsoft.io)néhány további funkció és adat is elérhető lesz a munkahelyi fiókokhoz, például a SharePoint-webhelyekhez vagy a címtáradatokhoz. De sok művelet, mint például [a Reading a felhasználó e-mail](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0), ugyanazt a kódot érheti el az e-mail mind a személyes és a munkahelyi és iskolai számlák.
 
-A Microsoft Identity platform végpontja esetében a Microsoft Authentication Library (MSAL) használatával férhet hozzá a fogyasztó, az oktatási és a vállalati világhoz. Az Azure AD v 1.0 végpont csak a munkahelyi és iskolai fiókokból érkező bejelentkezéseket fogadja el.
+A Microsoft identity platform végpontja, használhatja a Microsoft Authentication Library (MSAL) a fogyasztói, oktatási és vállalati világok eléréséhez. Az Azure AD v1.0-s végpont csak munkahelyi és iskolai fiókokból fogadja el a bejelentkezéseket.
 
-## <a name="incremental-and-dynamic-consent"></a>Növekményes és dinamikus beleegyezett
+## <a name="incremental-and-dynamic-consent"></a>Növekményes és dinamikus hozzájárulás
 
-Az Azure AD 1.0-s verziójának végpontját használó alkalmazásoknak előre meg kell adniuk a szükséges OAuth 2,0-engedélyeket, például:
+Az Azure AD v1.0-s végpontját használó alkalmazásoknak előzetesen meg kell adniuk a szükséges OAuth 2.0-s engedélyeket, például:
 
-![Az engedélyek regisztrációjának felhasználói felületét bemutató példa](./media/azure-ad-endpoint-comparison/app-reg-permissions.png)
+![Példa az Engedélyek regisztrációs felhasználói felületére](./media/azure-ad-endpoint-comparison/app-reg-permissions.png)
 
-A közvetlenül az alkalmazás regisztrálására beállított engedélyek **statikusak**. Míg a Azure Portalban definiált alkalmazás statikus engedélyei megőrzik a kód szép és egyszerű használatát, néhány lehetséges problémát jelent a fejlesztők számára:
+A közvetlenül az alkalmazás **static**regisztrációján beállított engedélyek statikusak. Bár az Azure Portalon definiált alkalmazás statikus engedélyei a kódot szépen és egyszerűen tartják, a fejlesztők számára néhány lehetséges problémát jelent:
 
-* Az alkalmazásnak minden, a felhasználó első bejelentkezéséhez szükséges engedélyt kell kérnie. Ez olyan engedélyek hosszú listáját eredményezheti, amelyek a végfelhasználók számára nem tudják jóváhagyni az alkalmazás hozzáférését a kezdeti bejelentkezéskor.
+* Az alkalmazásnak minden olyan engedélyt meg kell kérnie, amelyre a felhasználó első bejelentkezése kor szüksége lenne. Ez az engedélyek hosszú listájához vezethet, amely megakadályozza a végfelhasználókat az alkalmazás hozzáférésének jóváhagyásától a kezdeti bejelentkezéskor.
 
-* Az alkalmazásnak ismernie kell az összes olyan erőforrást, amely bármikor elérhető. Nehéz volt olyan alkalmazásokat létrehozni, amelyek tetszőleges számú erőforráshoz férnek hozzá.
+* Az alkalmazásnak tudnia kell az összes erőforrást, amelyhez valaha is hozzáférhet. Nehéz volt olyan alkalmazásokat létrehozni, amelyek tetszőleges számú erőforráshoz férhetnek hozzá.
 
-A Microsoft Identity platform-végponttal figyelmen kívül hagyhatja az alkalmazás regisztrációs információjában megadott statikus engedélyeket a Azure Portal és a kérések engedélyeit Növekményesen kéri, ami azt jelenti, hogy a minimálisan szükséges engedélyek nincsenek előre megadva egyre több időt vesz igénybe, mivel az ügyfél további alkalmazás-funkciókat használ. Ehhez bármikor megadhatja az alkalmazás által igényelt hatóköröket, ha a hozzáférési token kérésekor a `scope` paraméter új hatóköreit is beleértve – anélkül, hogy előzetesen definiálni kellene őket az alkalmazás regisztrációs adataiban. Ha a felhasználó még nem járult hozzá a kérelemhez hozzáadott új hatókörökhöz, a rendszer kérni fogja, hogy csak az új engedélyeket fogadja el. További információ: [engedélyek, beleegyezőség és hatókörök](../develop/v2-permissions-and-consent.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
+A Microsoft identity platform végpont, figyelmen kívül hagyhatja az alkalmazás regisztrációs adatait az Azure Portalon meghatározott statikus engedélyeket, és ehelyett növekményesen kérhet engedélyeket, ami azt jelenti, hogy a legminimálisabb engedélykészletet kell kérnie előre és idővel egyre nagyobb lesz, mivel az ügyfél további alkalmazásfunkciókat használ. Ehhez bármikor megadhatja az alkalmazás igényeinek hatóköreit úgy, hogy az `scope` új hatóköröket a paraméterbe is beírja egy hozzáférési jogkivonat kérésekor – anélkül, hogy előre meg kellene határoznia azokat az alkalmazás regisztrációs adataiközött. Ha a felhasználó még nem járult hozzá a kérelemhez hozzáadott új hatókörökhöz, a rendszer csak az új engedélyekhez való hozzájárulásra kéri őket. További információ: [engedélyek, jóváhagyások és hatókörök.](../develop/v2-permissions-and-consent.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
 
-Lehetővé teszi, hogy az alkalmazások a `scope` paraméterrel dinamikusan igényeljenek engedélyeket, így teljes körűen vezérelhetik a felhasználók felhasználói élményét. Emellett betöltheti a belefoglalt felhasználói élményt, és megkérheti az összes engedélyt egy kezdeti engedélyezési kérelemben. Ha az alkalmazásnak nagy számú engedélyre van szüksége, növekményes módon gyűjtheti ezeket az engedélyeket a felhasználótól, mivel az alkalmazás bizonyos funkcióit az idő múlásával próbálja meg használni.
+Ha lehetővé teszi, hogy egy `scope` alkalmazás dinamikusan kérjen engedélyeket a paraméteren keresztül, a fejlesztők teljes mértékben szabályozhatják a felhasználói élményt. A jóváhagyási élmény frontra is betölthető, és egy kezdeti engedélyezési kérelemben kérheti az összes engedélyt. Ha az alkalmazásnak nagy számú engedélyre van szüksége, ezeket az engedélyeket fokozatosan gyűjtheti össze a felhasználótól, amikor az alkalmazás bizonyos funkcióit idővel megpróbálják használni.
 
-A szervezet nevében végrehajtott rendszergazdai jóváhagyás továbbra is az alkalmazáshoz regisztrált statikus engedélyeket igényli, ezért az alkalmazás regisztrációs portálján meg kell adnia az alkalmazásokra vonatkozó engedélyeket, ha rendszergazdai jogosultsággal kell rendelkeznie a teljes szervezet nevében történő jóváhagyáshoz. Ez csökkenti a szervezeti rendszergazda által az alkalmazás beállításához szükséges ciklusokat.
+A szervezet nevében végzett rendszergazdai hozzájáruláshoz továbbra is szükség van az alkalmazáshoz regisztrált statikus engedélyekre, ezért be kell állítania ezeket az engedélyeket az alkalmazásokhoz az alkalmazásregisztrációs portálon, ha szüksége van egy rendszergazdára, hogy a teljes szervezet nevében beleegyezést adjon. Ez csökkenti a szervezet rendszergazdája által az alkalmazás beállításához szükséges ciklusokat.
 
 ## <a name="scopes-not-resources"></a>Hatókörök, nem erőforrások
 
-A v 1.0-s végpontot használó alkalmazások esetében az alkalmazás **erőforrásként**vagy tokenek címzettjeiként működhet. Az erőforrások meghatározhatnak számos **hatókört** vagy **oAuth2Permissions** , amelyek megértik, lehetővé téve, hogy az ügyfélalkalmazások az adott erőforrásból származó jogkivonatokat igényeljenek egy adott hatókörhöz. Vegye figyelembe a Microsoft Graph API-t egy erőforrásra példaként:
+A v1.0-s végpontot használó alkalmazások esetében az alkalmazások **erőforrásként**vagy jogkivonatok címzettjeként is viselkedhetnek. Egy erőforrás számos **hatókört** vagy **oAuth2Engedélyeket** határozhat meg, amelyeket megért, lehetővé téve az ügyfélalkalmazások számára, hogy jogkivonatokat kérjenek az adott erőforrásból a hatókörök bizonyos készletéhez. Tekintsük a Microsoft Graph API-t egy erőforrás példájaként:
 
-* Erőforrás-azonosító vagy `AppID URI`: `https://graph.microsoft.com/`
-* Hatókörök vagy `oAuth2Permissions`: `Directory.Read`, `Directory.Write`stb.
+* Erőforrás-azonosító, `AppID URI`vagy:`https://graph.microsoft.com/`
+* Hatókörök, `oAuth2Permissions`vagy `Directory.Read` `Directory.Write`: , , és így tovább.
 
-Ez a Microsoft Identity platform végpontjának igaz értéke. Egy alkalmazás továbbra is erőforrásként működhet, hatóköröket határozhat meg, és egy URI azonosítóval azonosítható. Az ügyfélalkalmazások továbbra is igényelhetnek hozzáférést ezekhez a hatókörökhöz. Az ügyfél által kért engedélyek azonban megváltoztak.
+Ez igaz a Microsoft identity platform végpont. Egy alkalmazás továbbra is erőforrásként viselkedhet, hatóköröket definiálhat, és uri-val azonosíthatja őket. Az ügyfélalkalmazások továbbra is kérhetnek hozzáférést ezekhez a hatókörökhöz. Azonban az, ahogyan az ügyfél kéri ezeket az engedélyeket megváltozott.
 
-A 1.0-s végpont esetében az OAuth 2,0-es verziójának engedélyezése az Azure AD-nak való kérelme a következőképpen néz ki:
+A v1.0-s végpont esetében az OAuth 2.0-s engedélyezési kérelem az Azure AD-nek a következőkre nézhet:
 
 ```text
 GET https://login.microsoftonline.com/common/oauth2/authorize?
@@ -74,9 +75,9 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-Itt az **erőforrás** -paraméter jelezte, hogy az ügyfélalkalmazás milyen erőforrást kér az engedélyezéshez. Az Azure AD a Azure Portal statikus konfigurációja alapján kiszámítja az alkalmazás által igényelt engedélyeket, és ennek megfelelően kiállított jogkivonatokat.
+Itt az **erőforrás-paraméter** jelezte, hogy az ügyfélalkalmazás melyik erőforrást kéri az engedélyezéshez. Az Azure AD kiszámította az alkalmazás által megkövetelt engedélyeket az Azure Portal statikus konfigurációja alapján, és ennek megfelelően kiadta a jogkivonatokat.
 
-A Microsoft Identity platform végpontját használó alkalmazások esetében ugyanaz a OAuth 2,0-as engedélyezési kérelem a következőképpen néz ki:
+A Microsoft identity platform végpontját használó alkalmazások esetében ugyanaz az OAuth 2.0-s engedélyezési kérelem a következőképpen néz ki:
 
 ```text
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -85,112 +86,112 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-Itt a **hatókör** paraméter jelzi, hogy az alkalmazás mely erőforrásokra és engedélyekre kér engedélyt. A kívánt erőforrás továbbra is szerepel a kérelemben – a hatókör-paraméter mindegyik értékében szerepel. A hatókör-paraméter ily módon történő használata lehetővé teszi, hogy a Microsoft Identity platform végpontja jobban megfeleljen a OAuth 2,0 specifikációjának, és szorosabban illeszkedjen a közös iparági gyakorlatokhoz. Azt is lehetővé teszi, hogy az alkalmazások [növekményes](#incremental-and-dynamic-consent) belefoglalást kérjenek – csak akkor kérnek engedélyeket, ha az alkalmazás előtte szükséges.
+Itt a **hatókör** paraméter azt jelzi, hogy az alkalmazás melyik erőforrást és engedélyeket kéri az engedélyezéshez. A kívánt erőforrás továbbra is jelen van a kérelemben – a hatókör paraméter minden értékében szerepel. A hatókör paraméter ily módon lehetővé teszi, hogy a Microsoft identity platform végpont jobban megfelel az OAuth 2.0 specifikáció, és jobban igazodik a közös iparági gyakorlat. Azt is lehetővé teszi, hogy az alkalmazások [növekményes beleegyezést](#incremental-and-dynamic-consent) tegyenek – csak akkor kérnek engedélyeket, ha az alkalmazás megköveteli őket, nem pedig előre.
 
 ## <a name="well-known-scopes"></a>Jól ismert hatókörök
 
-### <a name="offline-access"></a>Offline hozzáférés
+### <a name="offline-access"></a>Kapcsolat nélküli hozzáférés
 
-Előfordulhat, hogy a Microsoft Identity platform-végpontot használó alkalmazásokhoz új, jól ismert engedélyekre van szükség az alkalmazások számára – a `offline_access` hatókört. Az összes alkalmazásnak ezt az engedélyt kell kérnie, ha egy felhasználó nevében kell hozzáférni az erőforrásokhoz egy hosszabb ideig, még akkor is, ha a felhasználó nem fogja aktívan használni az alkalmazást. A `offline_access` hatókör a felhasználó beleegyezési párbeszédablakában jelenik meg, amikor **bármikor hozzáfér az adataihoz**, amelyet a felhasználónak el kell fogadnia. A `offline_access` engedély kérése lehetővé teszi, hogy a webalkalmazás a Microsoft Identity platform-végpontról fogadja a OAuth 2,0 refresh_tokens. A frissítési tokenek hosszú élettartamú, és az új OAuth 2,0 hozzáférési tokenek esetében kicserélhető a hosszabb hozzáférés érdekében.
+A Microsoft identity platform végpontot használó alkalmazások új, jól ismert engedélyek `offline_access` használatát igényelhetik az alkalmazásokhoz – a hatókörhöz. Minden alkalmazásnak kérnie kell ezt az engedélyt, ha hosszabb ideig kell hozzáférnie a felhasználó nevében lévő erőforrásokhoz, még akkor is, ha a felhasználó nem használja aktívan az alkalmazást. A `offline_access` hatókör a jóváhagyási párbeszédekben a felhasználó számára **bármikor access your data**néven jelenik meg, amelybe a felhasználónak el kell fogadnia. Az engedély `offline_access` kérése lehetővé teszi, hogy a webalkalmazás oauth 2.0 refresh_tokens kapjon a Microsoft identitásplatform-végpontról. A frissítési jogkivonatok hosszú élettartamúak, és hosszabb ideig cserélhetők az új OAuth 2.0 hozzáférési jogkivonatokra.
 
-Ha az alkalmazás nem kéri a `offline_access` hatókörét, nem kap frissítési jogkivonatokat. Ez azt jelenti, hogy amikor bevált egy engedélyezési kódot a OAuth 2,0-es engedélyezési kód folyamatában, a rendszer csak a hozzáférési jogkivonatot fogja kapni a `/token` végponttól. A hozzáférési jogkivonat rövid ideig érvényes (általában egy óra), de végül lejár. Ebben az időpontban az alkalmazásnak újra kell irányítani a felhasználót a `/authorize` végpontra egy új engedélyezési kód beolvasásához. Az átirányítás során előfordulhat, hogy a felhasználónak újra meg kell adnia a hitelesítő adatait, vagy újból el kell fogadnia az engedélyeket az alkalmazás típusától függően.
+Ha az alkalmazás nem `offline_access` kéri a hatókört, nem kap frissítési jogkivonatokat. Ez azt jelenti, hogy amikor bevált egy engedélyezési kódot az OAuth 2.0 engedélyezési `/token` kód folyamatában, csak egy hozzáférési jogkivonatot kap vissza a végpontról. Ez a hozzáférési jogkivonat rövid ideig (általában egy óráig) érvényes marad, de végül lejár. Ekkor az alkalmazásnak vissza kell irányítania a felhasználót `/authorize` a végpontra az új engedélyezési kód lekéréséhez. Az átirányítás során előfordulhat, hogy a felhasználónak az alkalmazás típusától függően újra meg kell adnia a hitelesítő adatait, vagy újra meg kell adnia az engedélyeket.
 
-Ha többet szeretne megtudni a 2,0-es, `refresh_tokens`-es és `access_tokens`OAuth, tekintse meg a [Microsoft Identity platform protokoll-referenciáját](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
+Ha többet szeretne megtudni az OAuth 2.0-ról, `refresh_tokens`és `access_tokens`tekintse meg a Microsoft [identity platform protokollhivatkozását.](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
 
 ### <a name="openid-profile-and-email"></a>OpenID, profil és e-mail
 
-A Microsoft Identity platformmal a legtöbb alapszintű OpenID Connect bejelentkezési folyamat nagy mennyiségű információt nyújt a felhasználóról az eredményül kapott *id_tokenban*. A id_token lévő jogcímek magukban foglalhatják a felhasználó nevét, az előnyben részesített felhasználónevet, az e-mail-címet, az objektumazonosítót és egyebeket.
+A Microsoft identity platformmal való legalapvetőbb OpenID Connect bejelentkezési folyamat korábban sok információt szolgáltatna a felhasználóról az eredményül kapott *id_token.* A id_token a jogcímek tartalmazhatják a felhasználó nevét, elsődleges felhasználónevét, e-mail címét, objektumazonosítóját stb.
 
-A `openid` hatókörben lévő információk mostantól korlátozzák az alkalmazáshoz való hozzáférést. A `openid` hatókör csak azt engedélyezi, hogy az alkalmazás bejelentkezzen a felhasználóba, és megkapja az alkalmazásra vonatkozó azonosítót a felhasználó számára. Ha a felhasználó személyes adatait szeretné lekérni az alkalmazásban, az alkalmazásnak további engedélyeket kell kérnie a felhasználótól. Két új hatókör, `email` és `profile`lehetővé teszi további engedélyek kérését.
+Az információ, `openid` amelyhez a hatókör hozzáférést biztosít az alkalmazásszámára, mostantól korlátozott. A `openid` hatókör csak azt teszi lehetővé, hogy az alkalmazás bejelentkezzen a felhasználóba, és megkapja a felhasználó alkalmazásspecifikus azonosítóját. Ha személyes adatokat szeretne kapni a felhasználóról az alkalmazásban, az alkalmazásnak további engedélyeket kell kérnie a felhasználótól. Két új `email` hatókör, `profile`és lehetővé teszi, hogy további engedélyeket kérjen.
 
-* A `email` hatókör lehetővé teszi, hogy az alkalmazás a id_token `email` jogcímen keresztül hozzáférjen a felhasználó elsődleges e-mail-címéhez, feltéve, hogy a felhasználó címezhető e-mail-címmel rendelkezik.
-* A `profile` hatóköre hozzáférést biztosít az alkalmazásnak a felhasználóval kapcsolatos összes egyéb alapvető információhoz, például a nevüket, az előnyben részesített felhasználónevet, az objektumazonosítót és így tovább a id_token.
+* A `email` hatókör lehetővé teszi az alkalmazás számára a `email` hozzáférést a felhasználó elsődleges e-mail címéhez a id_token a jogcímen keresztül, feltéve, hogy a felhasználó rendelkezik címezhető e-mail címmel.
+* A `profile` hatókör hozzáférést biztosít az alkalmazás számára a felhasználóval kapcsolatos összes többi alapvető információhoz, például a felhasználó nevéhez, az előnyben részesített felhasználónévhez, az objektumazonosítóhoz és így tovább, a id_token.
 
-Ezek a hatókörök lehetővé teszik az alkalmazás minimális közzétételi módon történő kódolását, így csak a felhasználónak kell megkérnie azon információk körét, amelyekre az alkalmazásnak szüksége van a feladatához. További információ ezekről a hatókörökről: [a Microsoft Identity platform hatókör-referenciája](../develop/v2-permissions-and-consent.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
+Ezek a hatókörök lehetővé teszik az alkalmazás minimális közzétételi módon történő kódolását, így csak az okat az információkat kérheti a felhasználótól, amelyre az alkalmazásnak szüksége van a feladatához. Ezekről a hatókörökről további információt [a Microsoft identity platform hatókörének hivatkozási útmutatójában talál.](../develop/v2-permissions-and-consent.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
 
-## <a name="token-claims"></a>Jogkivonatok jogcímei
+## <a name="token-claims"></a>Token jogcímek
 
-A Microsoft Identity platform végpontja alapértelmezés szerint kisebb értékű jogcímeket ad ki a jogkivonatokban. Ha olyan alkalmazásokkal és szolgáltatásokkal rendelkezik, amelyek egy, a Microsoft Identity platform jogkivonatában alapértelmezés szerint nem megadott, egy adott jogcímtől függenek, akkor a [választható jogcímek](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) funkció használatával vegye fel ezt a jogcímet.
+A Microsoft identity platform végpontja alapértelmezés szerint kisebb jogcímeket ad ki a jogkivonatokban, hogy a hasznos adatkis maradjon. Ha olyan alkalmazásokkal és szolgáltatásokkal rendelkezik, amelyek egy 1.0-s jogkivonat ban egy adott jogcímtől függenek, amely alapértelmezés szerint nem érhető el egy Microsoft-identitásplatform-jogkivonatban, fontolja meg a [választható jogcímek](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) szolgáltatás használatát a jogcím felvételéhez.
 
 > [!IMPORTANT]
-> a 1.0-s és a v 2.0-tokenek a 1.0-s és a v 2.0-s végpontok esetében is kiállíthatók. id_tokens *mindig* egyezik a kért végponttal, és a hozzáférési tokenek *mindig* egyeznek a webes API által várt formátummal, amelyet az ügyfél a token használatával hív meg.  Tehát ha az alkalmazás a v 2.0-s végpontot használja a Microsoft Graph meghívására, amely a v 1.0 formátum hozzáférési jogkivonatait várja, az alkalmazás egy jogkivonatot kap a 1.0-s formátumban.  
+> az 1.0-s és a 2.0-s kulcsokat a v1.0 és a v2.0 végpontok is kiadhatják! id_tokens *mindig* egyezik a végpont, ahonnan kérték, és a hozzáférési jogkivonatok *mindig* megfelelnek a webes API által várt formátumnak, amelyet az ügyfél az adott jogkivonat használatával fog hívni.  Így ha az alkalmazás a v2.0-végpontot használja a Microsoft Graph hívásához, amely a 1.0-s formátumú hozzáférési jogkivonatokat várja, az alkalmazás egy jogkivonatot kap a v1.0 formátumban.  
 
 ## <a name="limitations"></a>Korlátozások
 
-A Microsoft Identity platform használatakor néhány korlátozást kell figyelembe vennie.
+A Microsoft identity platform használatakor néhány korlátozást figyelembe kell venni.
 
-Ha a Microsoft Identity platformmal integrált alkalmazásokat készít, el kell döntenie, hogy a Microsoft Identity platform végpontja és a hitelesítési protokollok megfelelnek-e az igényeinek. A v 1.0-s végpont és a platform továbbra is teljes mértékben támogatott, és bizonyos szempontból a Microsoft Identity platformmal meggazdagodik a szolgáltatás. A Microsoft Identity platform azonban [jelentős előnyökkel jár](azure-ad-endpoint-comparison.md) a fejlesztők számára.
+A Microsoft identity platformmal integrálható alkalmazások létrehozásakor el kell döntenie, hogy a Microsoft identity platform végpontja és a hitelesítési protokollok megfelelnek-e az igényeinek. A v1.0-s végpont és a platform továbbra is teljes mértékben támogatott, és bizonyos tekintetben több funkciógazdag, mint a Microsoft identitás platform. A Microsoft identity platform azonban [jelentős előnyöket biztosít](azure-ad-endpoint-comparison.md) a fejlesztők számára.
 
-Íme egy egyszerűsített javaslat a fejlesztőknek most:
+Az alábbiakban egy egyszerűsített javaslat a fejlesztők számára:
 
-* Ha azt szeretné, hogy támogassa a személyes Microsoft-fiókokat az alkalmazásban, vagy új alkalmazást ír, használja a Microsoft Identity platformot. Mielőtt azonban megkezdené, győződjön meg róla, hogy megértette a cikkben tárgyalt korlátozásokat.
-* Ha SAML-re támaszkodó alkalmazást telepít át vagy frissít, nem használhatja a Microsoft Identity platformot. Ehelyett tekintse meg az [Azure ad v 1.0 útmutatóját](v1-overview.md).
+* Ha személyes Microsoft-fiókokat szeretne vagy szeretne támogatni az alkalmazásban, vagy új alkalmazást ír, használja a Microsoft identity platformot. De mielőtt megtenné, győződjön meg róla, hogy megértette a cikkben tárgyalt korlátozásokat.
+* Ha saml-re támaszkodó alkalmazást telepít át vagy frissít, nem használhatja a Microsoft identity platformot. Ehelyett tekintse meg az [Azure AD 1.0-s megfelelő útmutatót.](v1-overview.md)
 
-A Microsoft Identity platform végpontja kizárja az itt felsorolt korlátozásokat, így csak a Microsoft Identity platform-végpontot kell használnia. Addig is ebből a cikkből megtudhatja, hogy az Ön számára megfelelő-e a Microsoft Identity platform végpontja. A Microsoft Identity platform-végpont aktuális állapotának megfelelően továbbra is frissíti ezt a cikket. Térjen vissza a követelmények újraértékeléséhez a Microsoft Identity platform képességein.
+A Microsoft identity platform végpont jatttot, hogy megszüntesse az itt felsorolt korlátozásokat, így csak akkor kell használni a Microsoft identity platform végpont. Addig is használja ezt a cikket annak megállapítására, hogy a Microsoft identity platform végpont ja- d. Továbbra is frissítjük ezt a cikket, hogy tükrözze a Microsoft identity platform végpontjának aktuális állapotát. Látogasson vissza, hogy újraértékelje a követelményeket a Microsoft identity platform képességeivel szemben.
 
-### <a name="restrictions-on-app-registrations"></a>Az alkalmazások regisztrálásának korlátozásai
+### <a name="restrictions-on-app-registrations"></a>Az alkalmazásregisztrációk korlátozása
 
-Minden olyan alkalmazáshoz, amelyet integrálni szeretne a Microsoft Identity platform-végponttal, létrehozhat egy alkalmazást a Azure Portal új [ **Alkalmazásregisztrációk** felhasználói felületén](https://aka.ms/appregistrations) . A meglévő Microsoft-fiók alkalmazások nem kompatibilisek a portálsal, de az összes Azure AD-alkalmazás, függetlenül attól, hogy hol vagy mikor regisztrálták őket.
+Minden olyan alkalmazás, amely integrálni szeretne a Microsoft identity platform végpont, létrehozhat egy alkalmazás regisztrációaz új [ **alkalmazásregisztrációs** élményt](https://aka.ms/appregistrations) az Azure Portalon. A meglévő Microsoft-fiókalkalmazások nem kompatibilisek a portállal, de az összes Azure AD-alkalmazás, függetlenül attól, hogy hol és mikor regisztrálták őket.
 
-A munkahelyi és iskolai fiókokat támogató Alkalmazásregisztrációk és a személyes fiókok a következő kikötésekkel rendelkeznek:
+A munkahelyi és iskolai fiókokat támogató alkalmazásregisztrációk, valamint a személyes fiókok a következő kikötésekkel rendelkeznek:
 
-* Alkalmazás-AZONOSÍTÓként csak két alkalmazás titka engedélyezett.
-* A bérlőben nem regisztrált alkalmazások csak a regisztrált fiókkal kezelhetők. Más fejlesztővel nem osztható meg. Ez a legtöbb olyan alkalmazás esetében, amelyet az alkalmazás regisztrációs portálján személyes Microsoft-fiók regisztráltak. Ha több fejlesztővel is meg szeretné osztani az alkalmazást, regisztrálja az alkalmazást egy bérlőn a Azure Portal új **Alkalmazásregisztrációk** szakasza segítségével.
-* Az átirányítási URL-cím formátuma több korlátozást is igénybe vehet. Az átirányítási URL-címmel kapcsolatos további információkért tekintse meg a következő szakaszt.
+* Alkalmazásazonosítónként csak két alkalmazástitok engedélyezett.
+* Egy olyan alkalmazás, amely nem regisztrált a bérlőben, csak a regisztrált fiókkal kezelhető. Nem osztható meg más fejlesztőkkel. Ez a helyzet a legtöbb olyan alkalmazás esetében, amelyet személyes Microsoft-fiókkal regisztráltak az Alkalmazásregisztrációs portálon. Ha több fejlesztővel szeretné megosztani az alkalmazásregisztrációt, regisztrálja az alkalmazást egy bérlőben az Azure Portal új **alkalmazásregisztrációk** szakaszával.
+* Az átirányítási URL formátuma számos engedélyezett korlátozást. Az URL-cím átirányításáról a következő szakaszban talál további információt.
 
 ### <a name="restrictions-on-redirect-urls"></a>Az átirányítási URL-címekre vonatkozó korlátozások
 
-A Microsoft Identity platformhoz regisztrált alkalmazások korlátozott számú átirányítási URL-értékre korlátozódnak. A webalkalmazások és szolgáltatások átirányítási URL-címének a séma `https`kell kezdődnie, és minden átirányítási URL-értéknek egyetlen DNS-tartományhoz kell tartoznia.  A regisztrációs rendszer összehasonlítja a meglévő átirányítási URL-cím teljes DNS-nevét a hozzáadott átirányítási URL-cím DNS-nevével. a `http://localhost` átirányítási URL-címként is támogatott.  
+A Microsoft identity platformra regisztrált alkalmazások csak korlátozott számú átirányítási URL-értékre vannak korlátozva. A webalkalmazások és -szolgáltatások átirányítási URL-címének a sémával `https`kell kezdődnie, és minden átirányítási URL-értéknek egyetlen DNS-tartományon kell megosztania.  A regisztrációs rendszer összehasonlítja a meglévő átirányítási URL teljes DNS-nevét a hozzáadni kívánt átirányítási URL DNS-nevével. `http://localhost`átirányítási URL-címként is támogatott.  
 
 A DNS-név hozzáadására irányuló kérelem sikertelen lesz, ha a következő feltételek egyikének értéke igaz:  
 
-* Az új átirányítási URL-cím teljes DNS-neve nem egyezik meg a meglévő átirányítási URL-cím DNS-nevével.
-* Az új átirányítási URL-cím teljes DNS-neve nem a meglévő átirányítási URL-cím altartománya.
+* Az új átirányítási URL teljes DNS-neve nem egyezik meg a meglévő átirányítási URL DNS-nevével.
+* Az új átirányítási URL teljes DNS-neve nem a meglévő átirányítási URL altartománya.
 
-#### <a name="example-1"></a>1\. példa
+#### <a name="example-1"></a>1. példa
 
-Ha az alkalmazásnak `https://login.contoso.com`átirányítási URL-címe van, akkor hozzáadhat egy átirányítási URL-címet, ahol a DNS-név pontosan megfelel az alábbi példában látható módon:
+Ha az alkalmazás rendelkezik `https://login.contoso.com`a átirányítási URL-címmel, hozzáadhat egy átirányítási URL-címet, ahol a DNS-név pontosan megegyezik, ahogy az a következő példában látható:
 
 `https://login.contoso.com/new`
 
-Vagy a login.contoso.com DNS-altartományára is hivatkozhat, ahogy az az alábbi példában is látható:
+Vagy hivatkozhat a login.contoso.com DNS-altartományára, ahogy az a következő példában látható:
 
 `https://new.login.contoso.com`
 
-#### <a name="example-2"></a>2\. példa
+#### <a name="example-2"></a>2. példa
 
-Ha olyan alkalmazást szeretne használni, amely átirányítási URL-címekkel rendelkezik `login-east.contoso.com` és `login-west.contoso.com`, akkor az átirányítási URL-címeket a következő sorrendben kell felvennie:
+Ha olyan alkalmazást szeretne, `login-east.contoso.com` amely `login-west.contoso.com` rendelkezik és átirányítási URL-címként rendelkezik, a következő sorrendben kell hozzáadnia ezeket az átirányítási URL-címeket:
 
 `https://contoso.com`  
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`  
 
-Az utóbbi kettőt hozzáadhatja, mert az első átirányítási URL-cím altartományai, a contoso.com.
+Az utóbbi kettőt hozzáadhatja, mert ők az első átirányítási URL altartományai, contoso.com.
 
-Egy adott alkalmazáshoz csak 20 Válasz URL-cím tartozhat – ez a korlát minden olyan alkalmazási típusra vonatkozik, amelyet a regisztráció támogat (egyoldalas alkalmazás (SPA), natív ügyfél, webalkalmazás és szolgáltatás).  
+Egy adott alkalmazáshoz csak 20 válasz URL-cím lehet – ez a korlát a regisztráció által támogatott összes alkalmazástípusra (egyoldalas alkalmazásra (SPA), natív ügyfélre, webalkalmazásra és szolgáltatásra vonatkozik).  
 
-Ha szeretné megtudni, hogyan regisztrálhat egy alkalmazást a Microsoft Identity platformmal való használatra, tekintse meg [az alkalmazás regisztrálása az új Alkalmazásregisztrációk felülettel](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)című témakört.
+Ha meg szeretné tudni, hogyan regisztrálhat egy alkalmazást a Microsoft identity platformmal való használatra, olvassa el [az Alkalmazás regisztrálása az új alkalmazásregisztrációk szolgáltatással című témakört.](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
 
-### <a name="restrictions-on-libraries-and-sdks"></a>Tárak és SDK-k korlátozása
+### <a name="restrictions-on-libraries-and-sdks"></a>Könyvtárakra és SDK-kra vonatkozó korlátozások
 
-Jelenleg a Microsoft Identity platform végpontjának függvénytár-támogatása korlátozott. Ha éles alkalmazásban szeretné használni a Microsoft Identity platform végpontját, a következő lehetőségek közül választhat:
+Jelenleg a Microsoft identity platform végpont könyvtártámogatása korlátozott. Ha a Microsoft identity platform végpontját egy éles alkalmazásban szeretné használni, a következő lehetőségek közül választhat:
 
-* Ha webalkalmazást hoz létre, az általánosan elérhető kiszolgálóoldali middleware-t biztonságosan használhatja a bejelentkezéshez és a jogkivonatok érvényesítéséhez. Ezek közé tartozik a OWIN OpenID Connect middleware a ASP.NET és a Node. js Passport beépülő modul. A Microsoft middleware-t használó kódrészletek esetében tekintse meg a [Microsoft Identity platform első lépések](../develop/v2-overview.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#getting-started) című szakaszát.
-* Ha asztali vagy mobil alkalmazást hoz létre, használhatja a Microsoft Authentication librarys (MSAL) egyikét. Ezek a kódtárak általánosan elérhetők, vagy éles környezetben támogatott előzetes verzióban, így biztonságos módon használhatók éles alkalmazásokban. További információt az előzetes verzióról és a [hitelesítő függvénytárak dokumentációjában](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)elérhető könyvtárakról itt olvashat.
-* A Microsoft-kódtárak által nem támogatott platformok esetében az alkalmazás kódjában lévő protokoll üzeneteinek közvetlen küldésével és fogadásával integrálható a Microsoft Identity platform-végpontba. Az OpenID Connect és a OAuth protokollok [explicit módon dokumentálva vannak](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) , így segít az ilyen integrációban.
-* Végül használhatja a nyílt forráskódú OpenID Connect és a OAuth kódtárat a Microsoft Identity platform végpontjának integrálásához. A Microsoft Identity platform végpontjának kompatibilisnek kell lennie a számos nyílt forráskódú protokoll-kódtáraval anélkül, hogy módosításokat kellene megadnia. Az ilyen típusú könyvtárak rendelkezésre állása nyelvtől és platformtól függően változik. Az [OpenID Connect](https://openid.net/connect/) és a [OAuth 2,0](https://oauth.net/2/) websites fenntartják a népszerű implementációk listáját. További információ: [Microsoft Identity platform és Authentication librarys](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json), valamint a Microsoft Identity platform-végponttal tesztelt nyílt forráskódú ügyféloldali kódtárak és minták listája.
-* Referenciául a Microsoft Identity platform közös végpontjának `.well-known` végpontja `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`. Cserélje le a `common`t a bérlői AZONOSÍTÓra a bérlőre vonatkozó adatlekérdezéshez.  
+* Ha egy webalkalmazást hoz fel, biztonságosan használhatja az általánosan elérhető kiszolgálóoldali köztes szoftvert a bejelentkezéshez és a jogkivonat-érvényesítéshez. Ezek közé tartozik az OWIN OpenID Connect köztes ASP.NET és a Node.js Passport beépülő modul. A Microsoft middleware-t használó kódmintákat a [Microsoft identity platform első lépések](../develop/v2-overview.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#getting-started) című szakaszában.
+* Ha asztali számítógépet vagy mobilalkalmazást hoz unk, használhatjuk a Microsoft hitelesítési kódtárak (MSAL) egyikét. Ezek a tárak általában elérhetők, vagy éles környezetben támogatott előzetes verzióban érhetők el, így biztonságosan használhatók éles alkalmazásokban. Az előzetes verzió feltételeiről és a rendelkezésre álló tárakról a [hitelesítési könyvtárakhivatkozásban olvashat bővebben.](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
+* A Microsoft-kódtárak ban nem szereplő platformok esetében a Microsoft identity platform végpontjával integrálható, ha közvetlenül küld és fogad protokollüzeneteket az alkalmazáskódban. Az OpenID Connect és az OAuth protokollok [kifejezetten dokumentálva vannak](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) az ilyen integráció érdekében.
+* Végül a nyílt forráskódú OpenID Connect és Az OAuth kódtárak segítségével integrálható a Microsoft identity platform végpontjával. A Microsoft identity platform végpontjának módosítás nélkül kompatibilisnek kell lennie számos nyílt forráskódú protokolltárral. Az ilyen típusú könyvtárak elérhetősége nyelvtől és platformtól függően változik. Az [OpenID Connect](https://openid.net/connect/) és [az OAuth 2.0](https://oauth.net/2/) weboldalak listát vezetnek a népszerű implementációkról. További információ: [Microsoft identity platform és authentication libraries](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json), valamint a microsoftidentity platform végpontjával tesztelt nyílt forráskódú ügyfélkódtárak és minták listája.
+* A microsoftos `.well-known` identitásplatform közös végpontjának végpontja. `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` Cserélje `common` le a bérlőazonosítót, hogy a bérlőre vonatkozó adatokat kapjon.  
 
-### <a name="protocol-changes"></a>Protokoll módosításai
+### <a name="protocol-changes"></a>Protokollváltozások
 
-A Microsoft Identity platform végpontja nem támogatja az SAML vagy a WS-Federation használatát; csak az OpenID Connect és a OAuth 2,0 használatát támogatja.  A OAuth 2,0 protokollnak a v 1.0 végpontról történő jelentős módosításai a következők: 
+A Microsoft identity platform végpontja nem támogatja az SAML vagy a WS-Federation; ez egyetlen támogat Nyit Összeköt és OAuth 2.0.  Az OAuth 2.0 protokollok 1.0-s végpontjának jelentős módosításai a következők: 
 
-* Az `email` jogcímet akkor adja vissza a rendszer, ha egy opcionális jogcím konfigurálva van, **vagy** hatókör = e-mail-cím lett megadva a kérelemben. 
-* A `scope` paraméter mostantól támogatott a `resource` paraméter helyett.  
-* Számos válasz lett módosítva, hogy azok megfeleljenek a OAuth 2,0-specifikációnak, például helytelenül ad vissza `expires_in` as int karakterlánc helyett.  
+* A `email` jogcím akkor kerül visszaadásra, ha egy választható jogcím van **konfigurálva, vagy** scope=email van megadva a kérelemben. 
+* A `scope` paraméter most már támogatott `resource` a paraméter helyett.  
+* Számos válasz módosult, hogy azok jobban megfeleljenek az OAuth 2.0 `expires_in` specifikációnak, például helyesen adják vissza int-ként a karakterlánc helyett.  
 
-A Microsoft Identity platform végpontjában támogatott protokoll-funkciók jobb megismeréséhez tekintse meg az [OpenID Connect és a OAuth 2,0 protokoll-referenciát](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
+A Microsoft identity platform végpontjában támogatott protokollfunkciók hatókörének jobb megértéséhez olvassa el az [OpenID Connect és az OAuth 2.0 protokollhivatkozás című témakört.](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
 
-#### <a name="saml-restrictions"></a>SAML-korlátozások
+#### <a name="saml-restrictions"></a>SAML korlátozások
 
-Ha a Windows-alkalmazásokban Active Directory-hitelesítési tár (ADAL) használta, lehetséges, hogy kihasználta a Windows integrált hitelesítés előnyeit, amely a Security Assertion Markup Language (SAML) jogcímet használja. Ezzel a támogatással az összevont Azure AD-bérlők felhasználói a hitelesítő adatok megadása nélkül csendes módon hitelesíthetők a helyszíni Active Directory-példánnyal. Az SAML-jogcímek engedélyezése nem támogatott a Microsoft Identity platform végpontján.
+Ha már használta az Active Directory hitelesítési könyvtárat (ADAL) a Windows-alkalmazásokban, akkor lehet, hogy kihasználta a Windows integrált hitelesítést, amely a Security Assertion Markup Language (SAML) feltételérvényesítési támogatást használja. Ezzel a támogatással az összevont Azure AD-bérlők felhasználói csendben hitelesíthetik magukat a helyszíni Active Directory-példányukkal hitelesítő adatok megadása nélkül. Az SAML-alapkiállítások megadása nem támogatott a Microsoft identity platform végpontján.

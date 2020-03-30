@@ -5,51 +5,51 @@ ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
 ms.openlocfilehash: 256510f855256e648ae9203f46eb9f66c9ffaed6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77029202"
 ---
 ## <a name="publish-the-project-to-azure"></a>A projekt közzététele az Azure-ban
 
-Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást hoz létre az Azure-előfizetésében, majd üzembe helyezi a kódot. 
+Ebben a szakaszban hozzon létre egy függvényalkalmazást és a kapcsolódó erőforrásokat az Azure-előfizetésében, majd telepítse a kódot. 
 
-1. Válassza ki az Azure ikont a tevékenység sávjában, majd az **Azure: functions** területen válassza az **üzembe helyezés az alkalmazásban** ... gombot.
+1. Válassza az Azure ikont a tevékenységsávon, majd az **Azure: Functions** területen válassza a Telepítés a **függvényalkalmazáshoz...** gombot.
 
     ![A projekt közzététele az Azure-ban](media/functions-publish-project-vscode/function-app-publish-project.png)
 
-1. Adja meg a következő információkat a kérdésekben:
+1. Adja meg a következő információkat a következő utasításokat:
 
-    + **Előfizetés kiválasztása**: válassza ki a használni kívánt előfizetést. Ez nem jelenik meg, ha csak egy előfizetéssel rendelkezik.
+    + **Válassza ki az előfizetést:** Válassza ki a használni kívánt előfizetést. Ez nem jelenik meg, ha csak egy előfizetéssel rendelkezik.
 
-    + **Függvényalkalmazás kiválasztása az Azure-ban**: válassza a `+ Create new Function App` (nem `Advanced`) lehetőséget. Ez a cikk nem támogatja a [speciális közzétételi folyamatot](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options). 
+    + **Válassza ki a Függvényalkalmazást az Azure-ban:** Válassza (nem `+ Create new Function App` `Advanced`). Ez a cikk nem támogatja a [speciális közzétételi folyamatot.](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options) 
     
     >[!IMPORTANT]
     > Meglévő függvényalkalmazásba való közzététel felülírja az adott alkalmazás tartalmát az Azure-ban. 
     
-    + **Adja meg a Function alkalmazás globálisan egyedi nevét**: írjon be egy URL-útvonalon érvényes nevet. A rendszer érvényesíti a beírt nevet, hogy a Azure Functions egyedi legyen. 
+    + **Adjon meg egy globálisan egyedi nevet a függvényalkalmazásnak**: Írjon be egy URL-elérési úton érvényes nevet. A beírt név érvényesítve van, hogy megbizonyosodjon arról, hogy az Azure Functions egyedi. 
     
     ::: zone pivot="programming-language-python"
-    + **Válasszon egy futtatókörnyezetet**: válassza ki, hogy a Python melyik verzióját helyileg futtatja. Az `python --version` parancs használatával megtekintheti a verziót.
+    + **Válasszon futásidejű:** Válassza ki a Python helyileg futtatott verzióját. A paranccsal ellenőrizheti a `python --version` saját verzióját.
     ::: zone-end
 
     ::: zone pivot="programming-language-javascript,programming-language-typescript"
-    + **Válassza ki a kívánt futtatókörnyezetet**: válassza ki a helyileg futtatott Node. js-verziót. Az `node --version` parancs használatával megtekintheti a verziót.
+    + **Válasszon futásidejű:** Válassza ki a Node.js verzióját, amelyen helyileg futott. A paranccsal ellenőrizheti a `node --version` saját verzióját.
     ::: zone-end
 
-    + **Válasszon egy helyet az új erőforrásokhoz**: a jobb teljesítmény érdekében válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) . 
+    + **Válasszon helyet az új erőforrásokhoz:** A jobb teljesítmény érdekében válasszon egy közeli [régiót.](https://azure.microsoft.com/regions/) 
     
 1.  Ha elkészült, a következő Azure-erőforrások jönnek létre az előfizetésben:
 
-    + **[Erőforráscsoport](../articles/azure-resource-manager/management/overview.md)** : az összes létrehozott Azure-erőforrást tartalmazza. A név a Function alkalmazás nevén alapul.
-    + **[Storage-fiók](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** : a standard Storage-fiók egy egyedi névvel jön létre, amely a függvény alkalmazásának nevén alapul.
-    + **[Üzemeltetési terv](../articles/azure-functions/functions-scale.md)** : az USA nyugati régiójában jön létre egy használati terv, amely a kiszolgáló nélküli Function alkalmazást üzemelteti.
-    + **Function alkalmazás**: a projekt üzembe helyezése és futtatása ebben az új Function alkalmazásban történik.
-    + **Application Insights**: a Function alkalmazáshoz csatlakoztatott példány a függvény neve alapján jön létre.
+    + **[Erőforráscsoport:](../articles/azure-resource-manager/management/overview.md)** Tartalmazza az összes létrehozott Azure-erőforrások. A név a függvényalkalmazás nevén alapul.
+    + **[Tárfiók:](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** A standard tárfiók jön létre egy egyedi nevet, amely a függvény alkalmazás neve alapján jön létre.
+    + **[Üzemeltetési terv:](../articles/azure-functions/functions-scale.md)** Az USA nyugati régiójában egy felhasználási terv jön létre a kiszolgáló nélküli függvényalkalmazás üzemeltetéséhez.
+    + **Függvényalkalmazás:** A projekt telepítve van, és ebben az új függvényalkalmazásban fut.
+    + **Application Insights:** Egy példány, amely csatlakozik a függvényalkalmazáshoz, a függvény neve alapján jön létre.
 
     A függvényalkalmazás létrehozása és a telepítőcsomag alkalmazása után megjelenik egy értesítés. 
     
-1. Válassza ki az értesítés **kimenetének megtekintése** lehetőséget a létrehozási és a telepítési eredmények megtekintéséhez, beleértve a létrehozott Azure-erőforrásokat is. Ha kihagyja az értesítést, válassza a jobb alsó sarokban található harang ikont az újbóli megjelenítéshez.
+1. Válassza a **Kimenet megtekintése** ebben az értesítésben a létrehozási és üzembe helyezési eredmények megtekintéséhez, beleértve a létrehozott Azure-erőforrásokat. Ha elmulasztja az értesítést, a jobb alsó sarokban lévő csengő ikonra választva újra láthassa.
 
     ![Teljes értesítés létrehozása](media/functions-publish-project-vscode/function-create-notifications.png)

@@ -1,75 +1,75 @@
 ---
 title: Azure HPC-gyorsítótár létrehozása
-description: Azure HPC cache-példány létrehozása
+description: Azure HPC-gyorsítótár-példány létrehozása
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: rohogue
-ms.openlocfilehash: 793a80e7019e72c1cb3087da02d5642639cb8d5e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c6090d19ce530829b79dca69636c2123e2519961
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80129552"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC-gyorsítótár létrehozása
 
-A gyorsítótár létrehozásához használja a Azure Portal.
+Az Azure Portal segítségével hozza létre a gyorsítótárat.
 
-![képernyőkép a gyorsítótár áttekintéséről Azure Portalban, a létrehozás gombbal alul](media/hpc-cache-home-page.png)
+![képernyőkép a gyorsítótár áttekintéséről az Azure Portalon, alul a Létrehozás gombbal](media/hpc-cache-home-page.png)
 
-## <a name="define-basic-details"></a>Alapszintű részletek meghatározása
+## <a name="define-basic-details"></a>Alapvető részletek meghatározása
 
-![képernyőkép a Project details lapról Azure Portal](media/hpc-cache-create-basics.png)
+![képernyőkép a projekt részletei lapról az Azure Portalon](media/hpc-cache-create-basics.png)
 
-A **projekt részletei**területen válassza ki azt az előfizetést és erőforráscsoportot, amely a gyorsítótárat fogja tárolni. Győződjön meg arról, hogy az előfizetés szerepel a [hozzáférési](hpc-cache-prereqs.md#azure-subscription) listán.
+A **Project Details (Projekt részletei)** területen válassza ki a gyorsítótárat üzemeltető előfizetést és erőforráscsoportot. Győződjön meg arról, hogy az előfizetés szerepel a [hozzáférési](hpc-cache-prereqs.md#azure-subscription) listán.
 
-A **szolgáltatás részletei**területen adja meg a gyorsítótár nevét és a többi attribútumot:
+A **Szolgáltatás részletei területen**állítsa be a gyorsítótár nevét és az alábbi attribútumokat:
 
-* Hely – válasszon egy [támogatott régiót](hpc-cache-overview.md#region-availability).
-* Virtuális hálózat – választhat egy meglévőt, vagy létrehozhat egy új virtuális hálózatot.
-* Alhálózat – válasszon ki vagy hozzon létre legalább 64 IP-címmel rendelkező alhálózatot (/24), amelyet csak ehhez az Azure HPC cache-példányhoz fog használni.
+* Hely – Válasszon egyet a [támogatott régiók közül.](hpc-cache-overview.md#region-availability)
+* Virtuális hálózat – Kiválaszthat egy meglévőt, vagy létrehozhat egy új virtuális hálózatot.
+* Alhálózat – Válasszon vagy hozzon létre egy legalább 64 IP-című (/24) alhálózatot, amely csak ehhez az Azure HPC-gyorsítótár-példányhoz lesz használva.
 
-## <a name="set-cache-capacity"></a>Gyorsítótár kapacitásának beállítása
+## <a name="set-cache-capacity"></a>Gyorsítótár-kapacitás beállítása
 <!-- referenced from GUI - update aka.ms link if you change this header text -->
 
-A **gyorsítótár** lapon be kell állítania a gyorsítótár kapacitását. Az itt megadott értékek határozzák meg, hogy a gyorsítótár milyen mennyiségű adattal rendelkezhet, és hogy milyen gyorsan lehet az ügyfelek kéréseinek kiszolgálására.
+A **Gyorsítótár** lapon be kell állítania a gyorsítótár kapacitását. Az itt megadott értékek határozzák meg, hogy a gyorsítótár mennyi adatot tárolhat, és milyen gyorsan tudja kiszolgálni az ügyfélkérelmeket.
 
-A kapacitás a gyorsítótár költségeit is befolyásolja.
+A kapacitás a gyorsítótár költségére is hatással van.
 
-Válassza ki a kapacitást a következő két érték beállításával:
+A következő két érték beállításával válassza ki a kapacitást:
 
-* A gyorsítótár (átviteli sebesség) maximális adatátviteli sebessége GB/másodpercben
-* A gyorsítótárazott adathoz lefoglalt tárterület mennyisége (TB)
+* A gyorsítótár maximális adatátviteli sebessége (átviteli sebesség) GB/másodpercben
+* A gyorsítótárazott adatok számára lefoglalt tárterület mennyisége TB-ben
 
-Válassza ki az elérhető átviteli sebesség és a gyorsítótár tárolási méretének egyikét.
+Válasszon egyet a rendelkezésre álló átviteli értékek és a gyorsítótár tárolási méretek közül.
 
-Ne feledje, hogy a tényleges adatátviteli sebesség a munkaterhelés, a hálózati sebesség és a tárolási célok típusától függ. A megadott értékek a teljes gyorsítótárrendszer maximális átviteli sebességét határozzák meg, de ezek közül néhányat a rendszer a terhelési feladatokhoz használ. Ha például egy ügyfél olyan fájlt kér, amely még nem található meg a gyorsítótárban, vagy ha a fájl elavultként van megjelölve, a gyorsítótár a háttérbeli tárolóból beolvassa az átviteli sebességét.
+Ne feledje, hogy a tényleges adatátviteli sebesség a munkaterheléstől, a hálózati sebességtől és a tárolási célok típusától függ. A választott értékek a teljes gyorsítótár-rendszer maximális átviteli értékét határozzák meg, de ezek közül néhány általános feladatokhoz használatos. Ha például egy ügyfél olyan fájlt kér, amely még nincs a gyorsítótárban tárolva, vagy ha a fájl elavultként van megjelölve, a gyorsítótár az átviteli kapacitás egy részét használja a háttér-tárolóból való lekéréshez.
 
-Az Azure HPC gyorsítótára felügyeli, hogy mely fájlok vannak gyorsítótárazva és előre betöltve a gyorsítótár találati arányának maximalizálása érdekében. A gyorsítótár tartalmának folyamatos ellenőrzése megtörténik, és a fájlok átkerülnek a hosszú távú tárolásba, ha ritkábban férnek hozzá. Válasszon egy olyan gyorsítótár-tárolási méretet, amely kényelmesen tárolhatja a munkafájlok aktív készletét, és további helyet biztosít a metaadatok és egyéb terhelések számára.
+Az Azure HPC cache kezeli, hogy mely fájlok gyorsítótárazott és előre betöltött, hogy maximalizálja a gyorsítótár találati arány. A gyorsítótár tartalmát folyamatosan értékeli, és a fájlokat áthelyezi a hosszú távú tárolóba, amikor ritkábban férnek hozzá. Válasszon olyan gyorsítótár-tárolóméretet, amely kényelmesen elfér a munkafájlok aktív készletében, és további helyet biztosít a metaadatok és egyéb terhelések számára.
 
-![a gyorsítótár-méretezés oldalának képernyőképe](media/hpc-cache-create-capacity.png)
+![képernyőkép a gyorsítótár méretezési lapjáról](media/hpc-cache-create-capacity.png)
 
-## <a name="add-resource-tags-optional"></a>Erőforrás-Címkék hozzáadása (nem kötelező)
+## <a name="add-resource-tags-optional"></a>Erőforráscímkék hozzáadása (nem kötelező)
 
-A **címkék** lapon hozzáadhat erőforrás- [CÍMKÉKET](https://go.microsoft.com/fwlink/?linkid=873112) az Azure HPC cache-példányhoz.
+A **Címkék** lap lehetővé teszi, hogy [erőforrás-címkéket](https://go.microsoft.com/fwlink/?linkid=873112) az Azure HPC cache-példány.
 
 ## <a name="finish-creating-the-cache"></a>A gyorsítótár létrehozásának befejezése
 
-Az új gyorsítótár konfigurálása után kattintson a **felülvizsgálat + létrehozás** fülre. A portál ellenőrzi a beállításokat, és lehetővé teszi a lehetőségek áttekintését. Ha minden helyes, kattintson a **Létrehozás**gombra.
+Az új gyorsítótár konfigurálása után kattintson a **Véleményezés + létrehozás** fülre. A portál ellenőrzi a beállításokat, és lehetővé teszi a választási lehetőségek áttekintését. Ha minden rendben van, kattintson a **Létrehozás gombra.**
 
-A gyorsítótár létrehozása körülbelül 10 percet vesz igénybe. A folyamat nyomon követhető a Azure Portal értesítések paneljén.
+A gyorsítótár létrehozása körülbelül 10 percet vesz igénybe. Az Azure Portal értesítési paneljén nyomon követheti a folyamatot.
 
-![képernyőkép a gyorsítótár létrehozásáról "üzembe helyezés folyamatban" és "értesítések" oldalain a portálon](media/hpc-cache-deploy-status.png)
+![képernyőkép a gyorsítótár létrehozásáról szóló "üzembe helyezés folyamatban" és "értesítések" oldalakról a portálon](media/hpc-cache-deploy-status.png)
 
-A létrehozás befejeződése után egy értesítés jelenik meg az új Azure HPC cache-példányra mutató hivatkozással, a gyorsítótár pedig megjelenik az előfizetés **erőforrások** listájában.
+A létrehozás befejezéseután megjelenik egy értesítés az új Azure HPC-gyorsítótár-példányra mutató hivatkozással, és a gyorsítótár megjelenik az előfizetés **erőforrások** listájában.
 <!-- double check on notification -->
 
-![képernyőkép az Azure HPC cache-példányról Azure Portal](media/hpc-cache-new-overview.png)
+![képernyőkép az Azure HPC cache-példányáról az Azure Portalon](media/hpc-cache-new-overview.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Miután a gyorsítótár megjelenik az **erőforrások** listában, adja meg a tárolási célokat, hogy a gyorsítótár hozzáférjen az adatforrásokhoz.
+Miután a gyorsítótár megjelenik az **Erőforrások** listában, határozza meg a tárolási célokat, hogy a gyorsítótár hozzáférést biztosítson az adatforrásokhoz.
 
-* [Tárolási célok hozzáadása](hpc-cache-add-storage.md)
+* [Céltárak hozzáadása](hpc-cache-add-storage.md)

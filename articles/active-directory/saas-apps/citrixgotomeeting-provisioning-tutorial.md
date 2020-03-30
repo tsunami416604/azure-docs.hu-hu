@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a GoToMeeting konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és GoToMeeting között.
+title: 'Oktatóanyag: A GoToMeeting konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a GoToMeeting között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,84 +16,84 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0ac06fc3018b4230cbf32712067c48400599082
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77058263"
 ---
-# <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés GoToMeeting konfigurálása
+# <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Oktatóanyag: A GoToMeeting konfigurálása automatikus felhasználói kiépítéshez
 
-Ennek az oktatóanyagnak a célja, hogy megmutassa a GoToMeeting és az Azure AD-ben elvégzendő lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a GoToMeeting.
+Ez az oktatóanyag célja, hogy megmutassa a GoToMeeting és az Azure AD által végrehajtandó lépéseket a felhasználói fiókok automatikus kiépítéséhez és az Azure AD-ről a GoToMeeting-re való automatikus kiépítéséhez és kiépítésének kiteljesítéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
 
 *   Egy Azure Active Directory-bérlő.
-*   GoToMeeting egyszeri bejelentkezésre alkalmas előfizetés.
-*   Felhasználói fiók a GoToMeeting-ben a csoport rendszergazdai engedélyeivel.
+*   A GoToMeeting egyszeri bejelentkezéssel rendelkező előfizetés.
+*   A GoToMeeting felhasználói fiókja a Csoportfelügyeleti engedélyekkel.
 
-## <a name="assigning-users-to-gotomeeting"></a>Felhasználók kiosztása a GoToMeeting
+## <a name="assigning-users-to-gotomeeting"></a>Felhasználók hozzárendelése a GoToMeeting hez
 
-Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. A felhasználói fiókok automatikus kiosztásának kontextusában a rendszer csak azokat a felhasználókat és csoportokat szinkronizálja, amelyeket az Azure AD-alkalmazáshoz rendeltek.
+Az Azure Active Directory a "hozzárendelések" nevű koncepciót használja annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói fiók kiépítése, csak a felhasználók és csoportok, amelyek "hozzárendelt" egy alkalmazás az Azure AD-ben szinkronizálva van.
 
-A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználói és/vagy csoportjai képviselik a GoToMeeting alkalmazáshoz hozzáférő felhasználókat. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat a GoToMeeting-alkalmazáshoz:
+A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD-ben mely felhasználók és/vagy csoportok képviselik azon felhasználókat, akiknek hozzáférésre van szükségük a GoToMeeting alkalmazáshoz. Miután eldöntötte, ezeket a felhasználókat hozzárendelheti a GoToMeeting alkalmazáshoz az alábbi utasításokat követve:
 
-[Felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-gotomeeting"></a>Fontos Tippek a felhasználók GoToMeeting való hozzárendeléséhez
+### <a name="important-tips-for-assigning-users-to-gotomeeting"></a>Fontos tippek a felhasználók GoToMeeting hez való hozzárendeléséhez
 
-*   Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a GoToMeeting a létesítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
+*   Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve a GoToMeeting a létesítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
 
-*   Ha a felhasználó GoToMeeting rendel hozzá, ki kell választania egy érvényes felhasználói szerepkört. Az "alapértelmezett hozzáférés" szerepkör nem működik a kiépítés során.
+*   Amikor egy felhasználót a GoToMeeting programhoz rendel, érvényes felhasználói szerepkört kell választania. Az "Alapértelmezett hozzáférés" szerepkör nem működik a kiépítés.
 
-## <a name="enable-automated-user-provisioning"></a>Automatikus felhasználó-kiépítés engedélyezése
+## <a name="enable-automated-user-provisioning"></a>Automatikus felhasználói kiépítés engedélyezése
 
-Ez a szakasz végigvezeti az Azure AD-nek a GoToMeeting felhasználói fiók létesítési API-hoz való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználó-és GoToMeeting alapján a felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
+Ez a szakasz végigvezeti az Azure AD-t a GoToMeeting felhasználói fiók létesítési API-jához való csatlakoztatásával, valamint a kiépítési szolgáltatás konfigurálásával a hozzárendelt felhasználói fiókok létrehozásához, frissítéséhez és letiltásához a GoToMeetingben az Azure AD-ben a felhasználói és csoport-hozzárendelés alapján.
 
 > [!TIP]
-> Dönthet úgy is, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a GoToMeeting, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+> Az [Azure Portalon](https://portal.azure.com)található utasításokat követve engedélyezheti az SAML-alapú egyszeri bejelentkezést a GoToMeeting hez. Egyszeri bejelentkezés konfigurálható az automatikus kiépítéstől függetlenül, bár ez a két funkció kiegészíti egymást.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>A felhasználói fiókok automatikus üzembe helyezésének konfigurálása:
+### <a name="to-configure-automatic-user-account-provisioning"></a>A felhasználói fiókok automatikus kiépítésének konfigurálása:
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszt.
+1. Az [Azure Portalon](https://portal.azure.com)keresse meg az **Azure Active Directory > Vállalati alkalmazások > az összes alkalmazás** szakaszt.
 
-1. Ha már konfigurálta a GoToMeeting az egyszeri bejelentkezéshez, keresse meg a GoToMeeting-példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **GoToMeeting** az alkalmazás-gyűjteményben. Válassza a GoToMeeting lehetőséget a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
+1. Ha már konfigurálta a GoToMeeting programot egyszeri bejelentkezéshez, keresse meg a GoToMeeting példányát a keresőmező segítségével. Ellenkező esetben válassza **a Hozzáadás** lehetőséget, és keresse meg a **GoToMeeting elemet** az alkalmazásgyűjteményben. Válassza a Keresés gombra a keresési eredmények között, és vegye fel az alkalmazások listájára.
 
-1. Válassza ki a GoToMeeting példányát, majd válassza a **kiépítés** lapot.
+1. Válassza ki a GoToMeeting példányát, majd válassza a **Kiépítés** lapot.
 
-1. Állítsa a **kiépítési** módot **automatikus**értékre. 
+1. Állítsa a **létesítési** módot **Automatikus**ra. 
 
-    ![kiépítési](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![Kiépítés](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
-1. A rendszergazdai hitelesítő adatok szakaszban hajtsa végre a következő lépéseket:
+1. A Rendszergazdai hitelesítő adatok csoportban hajtsa végre az alábbi lépéseket:
    
-    a. A **GoToMeeting rendszergazda felhasználóneve** szövegmezőbe írja be a rendszergazda felhasználónevét.
+    a. A **GoToMeeting Admin felhasználónév** mezőbe írja be a rendszergazda felhasználónevét.
 
-    b. A **GoToMeeting rendszergazdai jelszó** szövegmezőben a rendszergazda jelszava.
+    b. A **GoToMeeting Felügyeleti jelszó** szövegmezőben a rendszergazda jelszava.
 
-1. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a GoToMeeting-alkalmazáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a GoToMeeting-fiókja rendelkezik rendszergazdai jogosultságokkal, és ismételje meg a **"rendszergazdai hitelesítő adatok"** lépést.
+1. Az Azure Portalon kattintson a **Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD csatlakozni tud a GoToMeeting alkalmazáshoz. Ha a kapcsolat sikertelen, győződjön meg arról, hogy a GoToMeeting-fiók rendelkezik a Csoport felügyeleti engedélyével, és próbálja meg újra a **"Rendszergazdai hitelesítő adatok"** című lépést.
 
-1. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia az **értesítő e-mailek** mezőben, majd jelölje be a jelölőnégyzetet.
-
-1. Kattintson a **Mentés gombra.**
-
-1. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a GoToMeeting lehetőséget.**
-
-1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az GoToMeeting-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a GoToMeeting felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
-
-1. Az Azure AD-kiépítési szolgáltatás GoToMeeting való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a beállítások **szakaszban:**
+1. Adja meg annak a személynek vagy csoportnak az e-mail címét, akinek kiépítési hibaértesítéseket kell kapnia az **Értesítési e-mail** mezőben, és jelölje be a jelölőnégyzetet.
 
 1. Kattintson a **Mentés gombra.**
 
-Elindítja a felhasználók és csoportok szakaszban GoToMeeting rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a GoToMeeting alkalmazásban végrehajtott összes műveletet.
+1. A Leképezések csoportban válassza **az Azure Active Directory felhasználóinak szinkronizálása a GoToMeeting szolgáltatásba lehetőséget.**
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
+1. Az **Attribútum-leképezések** szakaszban tekintse át az Azure AD-ről a GoToMeeting szolgáltatásra szinkronizált felhasználói attribútumokat. Az **Egyező** tulajdonságokként kijelölt attribútumok a GoToMeeting program felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások véglegesítéséhez kattintson a Mentés gombra.
 
-## <a name="additional-resources"></a>További háttéranyagok
+1. Az Azure AD-kiépítési szolgáltatás engedélyezéséhez a GoToMeeting szolgáltatáshoz módosítsa a **Kiépítés állapotát** **be beállításra** a Beállítások szakaszban
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
+1. Kattintson a **Mentés gombra.**
+
+Elindítja a Felhasználók és csoportok szakaszban a GoToMeeting hez rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg a szolgáltatás fut. A Szinkronizálás **részletei** szakaszban figyelheti a folyamatot, és követheti a kiépítési tevékenységnaplókra mutató hivatkozásokat, amelyek a kiépítési szolgáltatás által a GoToMeeting alkalmazásban végrehajtott összes műveletet ismertetik.
+
+Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat bővebben.
+
+## <a name="additional-resources"></a>További források
+
+* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrix-gotomeeting-tutorial)
 

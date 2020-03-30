@@ -1,48 +1,48 @@
 ---
-title: Felügyeleti tárolt eljárások – Azure Database for MySQL
-description: Megtudhatja, hogy az Azure Database for MySQL tárolt eljárásai hasznosak-e az adatreplikáció konfigurálásához, az időzóna és a lekérdezési lekérdezések megadásához.
+title: Tárolt eljárások kezelése – Azure Database for MySQL
+description: Ismerje meg, hogy mely tárolt eljárások at Azure Database for MySQL hasznos az adatok replikációjának konfigurálásához, az időzóna beállításához és a lekérdezések leállításához.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 7ab77f822ace61ccb023dffe6d79fb1d08278d11
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 6a3fa40eaae174d3616fd0318f81576b7c59eac7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74774940"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067705"
 ---
-# <a name="azure-database-for-mysql-management-stored-procedures"></a>Azure Database for MySQL felügyelet tárolt eljárásai
+# <a name="azure-database-for-mysql-management-stored-procedures"></a>Az Azure Database for MySQL felügyeleti tárolt eljárásai
 
-A tárolt eljárások Azure Database for MySQL-kiszolgálókon érhetők el a MySQL-kiszolgáló kezeléséhez. Ide tartozik a kiszolgáló kapcsolatainak kezelése, a lekérdezések és a felhőbe irányuló replikálás beállítása.  
+A tárolt eljárások elérhetők az Azure Database for MySQL kiszolgálókon a MySQL-kiszolgáló kezelésének elősegítésére. Ez magában foglalja a kiszolgáló kapcsolatainak, lekérdezéseinek és az adatreplikáció beállításának kezelését.  
 
-## <a name="data-in-replication-stored-procedures"></a>Tárolt eljárások felhőbe irányuló replikálás
+## <a name="data-in-replication-stored-procedures"></a>Tárolt adatreplikációs eljárások
 
 A beérkező adatokra épülő replikáció lehetővé teszi, hogy szinkronizálja egy helyszínen, virtuális gépeken vagy más felhőszolgáltatók által üzemeltetett adatbázis-szolgáltatásokban futó MySQL-kiszolgáló adatait az Azure Database for MySQL szolgáltatásba.
 
-A következő tárolt eljárások a főkiszolgálók és a replikák közötti felhőbe irányuló replikálás beállítására és eltávolítására szolgálnak.
+A következő tárolt eljárások segítségével állítsa be vagy távolítsa el a replikát és a kópia közötti adatreplikációt.
 
-|**Tárolt eljárás neve**|**Bemeneti paraméterek**|**Kimeneti paraméterek**|**Használati Megjegyzés**|
+|**Tárolt eljárás neve**|**Bemeneti paraméterek**|**Kimeneti paraméterek**|**Használati megjegyzés**|
 |-----|-----|-----|-----|
-|*MySQL. az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|–|Az adatok SSL-móddal történő átviteléhez adja át a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány környezetét a master_ssl_ca paraméternek. </br><br>Az adatok SSL nélküli átviteléhez adjon meg egy üres karakterláncot a master_ssl_ca paraméternek.|
-|*MySQL. az_replication _start*|–|–|Elindítja a replikálást.|
-|*MySQL. az_replication _stop*|–|–|Leállítja a replikálást.|
-|*MySQL. az_replication _remove_master*|–|–|Eltávolítja a replikálási kapcsolatot a fő és a replika között.|
-|*MySQL. az_replication_skip_counter*|–|–|Egy replikációs hiba kihagyása.|
+|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|N/A|Az SSL-módban történő adatátvitelhez adja át a hitelesítésszolgáltatói tanúsítvány környezetét a master_ssl_ca paraméterbe. </br><br>Ha SSL nélküli adatátvitelhez üres karakterláncot szeretne átadni a master_ssl_ca paraméterbe.|
+|*mysql.az_replication _start*|N/A|N/A|Elindítja a replikációt.|
+|*mysql.az_replication _stop*|N/A|N/A|Leállítja a replikációt.|
+|*mysql.az_replication _remove_master*|N/A|N/A|Eltávolítja a főkiszolgáló és a replika közötti replikációs kapcsolatot.|
+|*mysql.az_replication_skip_counter*|N/A|N/A|Kihagy egy replikációs hibát.|
 
-A Azure Database for MySQL a Master és a replika közötti felhőbe irányuló replikálás beállításához tekintse meg a [felhőbe irányuló replikálás konfigurálását ismertető témakört](howto-data-in-replication.md).
+Ha be szeretné állítani a főkiszolgáló és a kópia közötti adatreplikációt a MySQL Azure Database szolgáltatásában, olvassa el [az Adatreplikáció konfigurálását.](howto-data-in-replication.md)
 
 ## <a name="other-stored-procedures"></a>Egyéb tárolt eljárások
 
-A következő tárolt eljárások érhetők el Azure Database for MySQL a kiszolgáló kezeléséhez.
+A következő tárolt eljárások érhetők el az Azure Database for MySQL a kiszolgáló kezeléséhez.
 
-|**Tárolt eljárás neve**|**Bemeneti paraméterek**|**Kimeneti paraméterek**|**Használati Megjegyzés**|
+|**Tárolt eljárás neve**|**Bemeneti paraméterek**|**Kimeneti paraméterek**|**Használati megjegyzés**|
 |-----|-----|-----|-----|
-|*MySQL. az_kill*|processlist_id|–|[`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) paranccsal egyenértékű. Leállítja a megadott processlist_idhoz társított kapcsolatokat, miután leállította a kapcsolatok végrehajtásának utasításait.|
-|*MySQL. az_kill_query*|processlist_id|–|[`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) paranccsal egyenértékű. Leállítja azt az utasítást, amely szerint a kapcsolatok jelenleg végrehajtás alatt állnak. Maga a kapcsolatok maradnak életben.|
-|*MySQL. az_load_timezone*|–|–|Betölti az időzóna-táblákat, hogy az `time_zone` paraméter elnevezett értékre legyen beállítva (pl. "USA/csendes-óceáni térség").|
+|*mysql.az_kill*|processlist_id|N/A|Egyenértékű [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) a parancs. Megszakítja a megadott processlist_id kapcsolódó kapcsolatot a kapcsolat által futtatott bármely utasítás megszüntetése után.|
+|*mysql.az_kill_query*|processlist_id|N/A|Egyenértékű [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) a parancs. Megszakítja a kapcsolat által jelenleg végrehajtó utasítást. Életben hagyja magát a kapcsolatot.|
+|*mysql.az_load_timezone*|N/A|N/A|Időzóna-táblák betöltése, hogy a `time_zone` paraméter elnevezett értékekre legyen állítva (pl. "US/Pacific").|
 
-## <a name="next-steps"></a>Következő lépések
-- További információ a [felhőbe irányuló replikálás](howto-data-in-replication.md) beállításáról
-- Az [időzóna-táblázatok](howto-server-parameters.md#working-with-the-time-zone-parameter) használatának ismertetése
+## <a name="next-steps"></a>További lépések
+- Az [adatreplikáció](howto-data-in-replication.md) beállítása
+- Az [időzóna-táblák](howto-server-parameters.md#working-with-the-time-zone-parameter) használatának elsajátítása

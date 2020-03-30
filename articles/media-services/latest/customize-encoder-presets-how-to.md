@@ -1,6 +1,6 @@
 ---
-title: Kódolás a Media Services v3 .NET – Azure használatával egyéni átalakító |} A Microsoft Docs
-description: Ez a témakör bemutatja, hogyan használható az Azure Media Services v3 kódolása a .NET használatával egyéni átalakító.
+title: Egyéni átalakítás kódolása a Media Services 3.NET v - Azure használatával | Microsoft dokumentumok
+description: Ez a témakör bemutatja, hogyan használhatja az Azure Media Services v3-as egyéni átalakítást a .NET használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,53 +9,53 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: seodec18
 ms.date: 05/03/2019
 ms.author: juliako
-ms.openlocfilehash: 2167a74dc81bdbb2562211cf5c0195a755941d9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seodec18
+ms.openlocfilehash: ebe701032e6416b3e007a28db62f5a8235bb1bb1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148334"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80068034"
 ---
-# <a name="how-to-encode-with-a-custom-transform---net"></a>Az egyéni átalakítási – .NET kódolása
+# <a name="how-to-encode-with-a-custom-transform---net"></a>Hogyan kódolj egyéni átalakítással - .NET
 
-Ha az Azure Media Services encoding, ismerkedhet meg gyorsan az, ahogyan az ágazatban kialakult bevált gyakorlaton alapuló ajánlott a beépített beállítások egyikét a [fájlok Streamelési](stream-files-tutorial-with-api.md) oktatóanyag. Az egyedi, amelyekre az adott forgatókönyv vagy eszközkövetelmények készletek is létrehozható.
+Az Azure Media Services használatával történő kódolás során gyorsan elkezdheti az iparági bevált eljárásokon alapuló ajánlott beépített készletek egyikét, ahogy azt a [Streamelési fájlok](stream-files-tutorial-with-api.md) oktatóanyaga is bemutatja. Egyéni készletet is létrehozhat az adott forgatókönyv vagy eszköz követelményeinek megcélzásához.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-Egyéni készletek létrehozásakor a következő szempontokat kell figyelembe venni:
+Egyéni készletek létrehozásakor a következő szempontok érvényesek:
 
-* Minden értékét magasságát és szélességét AVC tartalom kezelésére kell költeni 4 többszörösének kell lennie.
-* Az Azure Media Services v3-as a kódolási bitsebességre való átkódolása összes bit / másodperc. Ez különbözik a készletek a v2 API-kkal használt egységet kilobit/másodperc. Például ha az átviteli sebesség a v2-ben van megadva, 128 (kilobit/másodperc), a v3-as volna meg akkor 128000 (bit/másodperc).
+* Az AVC-tartalom magasságának és szélességének minden értékének a 4 többszörösének kell lennie.
+* Az Azure Media Services v3-as részében az összes kódolási bitsebesség bitper másodpercben van. Ez eltér a v2 API-kkal rendelkező készletektől, amelyek kilobit/második egységként használták a kilobitokat/ a második at. Ha például a v2-ben a bitráta 128 (kilobit/másodperc), akkor a v3-ban 128000 (bit/másodperc) lesz megadva.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-[A Media Services-fiók létrehozása](create-account-cli-how-to.md)
+[Media Services-fiók létrehozása](create-account-cli-how-to.md)
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-Klónozza a GitHub-adattár, amely tartalmazza a teljes .NET Core-minta a gépre a következő paranccsal:  
+Klónozzon egy GitHub-tárházat, amely a teljes .NET Core mintát tartalmazza a gépre a következő paranccsal:  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials.git
  ```
  
-Az egyéni előre definiált mintát található a [EncodeCustomTransform](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/EncodeCustomTransform/) mappát.
+Az egyéni készletminta az [EncodeCustomTransform](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/EncodeCustomTransform/) mappában található.
 
-## <a name="create-a-transform-with-a-custom-preset"></a>Hozzon létre egy-egy átalakítási egyéni előbeállítás 
+## <a name="create-a-transform-with-a-custom-preset"></a>Átalakítás létrehozása egyéni készlettel 
 
-Egy új létrehozásakor [átalakítása](https://docs.microsoft.com/rest/api/media/transforms), meg kell adnia a kívánt műveleteket, mint kimenet előállításához. A kötelező paraméter egy [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput) objektum, ahogyan az az alábbi kódban látható. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. A **Előbeállítást** ismerteti, részletes utasításokat a videó és/vagy hang feldolgozási műveletek, amelyeket szeretne létrehozni a kívánt **TransformOutput**. A következő **TransformOutput** hoz létre egyéni kodeket, és a réteg kimeneti beállításait.
+Új [átalakítás](https://docs.microsoft.com/rest/api/media/transforms)létrehozásakor meg kell adnia, hogy mit szeretne kimenetként létrehozni. A kötelező paraméter egy [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput) objektum, ahogyan az az alábbi kódban látható. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. A **készlet** a kívánt **TransformOutput**létrehozásához használt video- és/vagy hangfeldolgozási műveletek lépésenkénti utasításait ismerteti. A következő **TransformOutput** egyéni kodek- és rétegkimeneti beállításokat hoz létre.
 
-[Átalakítások](https://docs.microsoft.com/rest/api/media/transforms) létrehozásakor ellenőrizze a **Get** metódussal, hogy létezik-e már átalakítás, ahogyan az az alábbi kódban látható. A Media Services v3 **első** módszerek is szolgálnak az entitásokon **null** Ha az entitás nem létezik (a kis-és ellenőrizze a nevét).
+[Átalakítások](https://docs.microsoft.com/rest/api/media/transforms) létrehozásakor ellenőrizze a **Get** metódussal, hogy létezik-e már átalakítás, ahogyan az az alábbi kódban látható. A Media Services v3-as, **Get** metódusok entitások null értéket ad **vissza,** ha az entitás nem létezik (a kis- és nagybetűk nem megkülönböztető ellenőrzése a név).
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa határozza meg, amelyet szeretnénk hozható létre, ha az átalakítás szolgál. Először hozzáadunk egy AacAudio réteget a hang kódolása és két H264Video réteget a videó kódolásához. A videó rétegekben hogy címkék hozzárendelésére, hogy a kimeneti fájl nevében szereplő használható. Ezután szeretnénk a kimenetet a miniatűrök is tartalmazhatnak. Az alábbi példában képek PNG formátumú, a bemeneti videó felbontása 50 %-át, vagy három időbélyegeket – {25 %-kal, 50 %-os, 75}, a bemeneti videó hosszától egy előállított adjuk meg. Végül adjuk meg a formátum a kimeneti fájlok – egy videó és hang-, a másik pedig a miniatűrök. Mivel több H264Layers rendelkezünk, egyedi nevek rétegenként eredményező makrók van. Azt is, vagy használja a `{Label}` vagy `{Bitrate}` makró-, a példa bemutatja a korábbi.
+A következő példa azokat a kimeneteket határozza meg, amelyeket az átalakítás során létre szeretnénk hozni. Először a hangkódoláshoz adunk hozzá Egy AacAudio réteget, és két H264Video réteget a videó kódoláshoz. A videorétegeken címkéket rendelünk hozzá, hogy azok használhatók legyenek a kimeneti fájlnevekben. Ezután azt szeretnénk, hogy a kimenet is tartalmazza a miniatűröket. Az alábbi példában png formátumú képeket adunk meg, amelyek a bemeneti videó felbontásának 50%-ában, és a bemeneti videó hosszának {25%, 50%, 75} - létrehozásához. Végül, mi határozza meg a formátumot a kimeneti fájlokat - az egyik a videó + audio, és egy másik a miniatűrök. Mivel több H264Layers-ünk van, olyan makrókat kell használnunk, amelyek rétegenként egyedi neveket hoznak létre. Használhatjuk vagy `{Label}` `{Bitrate}` makrót, a példa az előbbit mutatja.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/EncodeCustomTransform/MediaV3ConsoleApp/Program.cs#EnsureTransformExists)]
 
 ## <a name="next-steps"></a>További lépések
 
-[Adatfolyam-fájlok](stream-files-tutorial-with-api.md) 
+[Fájlok streamelése](stream-files-tutorial-with-api.md) 

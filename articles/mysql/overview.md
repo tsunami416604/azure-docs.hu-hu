@@ -1,22 +1,22 @@
 ---
-title: Áttekintés – Azure Database for MySQL
-description: Ismerkedjen meg az Azure Database for MySQL szolgáltatással, amely a Microsoft Cloud-on alapuló, a MySQL Community Edition rendszerre épülő, kapcsolódó adatbázis-szolgáltatás.
+title: Áttekintés - Azure Database for MySQL
+description: Ismerje meg az Azure Database for MySQL szolgáltatást, amely a MySQL Community Edition szolgáltatáson alapuló, a Microsoft felhőjében található relációs adatbázis-szolgáltatás.
 author: ajlam
 ms.service: mysql
 ms.author: andrela
 ms.custom: mvc
 ms.topic: overview
-ms.date: 12/02/2019
-ms.openlocfilehash: b7b29a07e9d56a9b961192352d0bfa13a8986d7a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 8f49811ad0d40c70933d32227cfb17a5144b857a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775117"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067825"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Mi az Azure Database for MySQL?
 
-A Azure Database for MySQL a Microsoft Cloud-on alapuló, a [MySQL Community Edition](https://www.mysql.com/products/community/) (a GPLv2 licenc alatt elérhető) adatbázismotor, a 5,6, a 5,7 és a 8,0 verziók alapján készült, a Microsoft felhőben található, Azure Database for MySQL a következőket biztosítja:
+Az Azure Database for MySQL egy relációs adatbázis-szolgáltatás a Microsoft felhőben, amely a [MySQL Community Edition](https://www.mysql.com/products/community/) (gplv2 licenc alatt érhető el) adatbázismotoron, az 5.6-os, az 5.7-es és a 8.0-s verziókon alapul. Az Azure Database for MySQL a következőket nyújtja:
 
 - Beépített magas rendelkezésre állás további költség nélkül.
 - Kiszámítható teljesítmény, használatalapú díjszabással.
@@ -29,29 +29,29 @@ Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik 
 
 ![Azure Database for MySQL fogalmi diagram](media/overview/1-azure-db-for-mysql-conceptual-diagram.png)
 
-Ez a Azure Database for MySQL cikk a teljesítménygel, a méretezhetőséggel és a kezelhetőséggel kapcsolatos alapfogalmakat és funkciókat mutatja be, amelyek a részletekre mutató hivatkozásokat tartalmaznak. Tekintse meg ezeket a rövid útmutatókat a kezdéshez:
+Ez a cikk az Azure Database for MySQL alapfogalmait és a teljesítményre, méretezhetőségre és kezelhetőségre vonatkozó funkcióit ismerteti, a részletek feltárására szolgáló hivatkozásokkal. Tekintse meg ezeket a rövid útmutatókat a kezdéshez:
 
 - [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure CLI használatával](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 Több Azure CLI-mintát talál itt:
 
-- [Azure CLI-minták a Azure Database for MySQLhoz](sample-scripts-azure-cli.md)
+- [Azure CLI-példák az Azure Database for MySQL-hez](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Teljesítmény módosítása és skálázása másodperceken belül
-A Azure Database for MySQL szolgáltatás számos szolgáltatási szintet kínál: alapszintű, általános célú és memória optimalizálva. Az egyes szintek különböző teljesítményt és képességeket kínálnak, így különböző adatbázis-tevékenységprofilokat képesek támogatni, a könnyűtől a nehéz számítási feladatokig. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részletekért tekintse meg a [díjszabási szintet](concepts-service-tiers.md) .
+Az Azure Database for MySQL szolgáltatás számos szolgáltatási szintet kínál: alapszintű, általános célú és memóriaoptimalizált. Az egyes szintek különböző teljesítményt és képességeket kínálnak, így különböző adatbázis-tevékenységprofilokat képesek támogatni, a könnyűtől a nehéz számítási feladatokig. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részleteket a [Tarifacsomagok](concepts-service-tiers.md) ban találja.
 
 ## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
 Hogyan lehet megállapítani, hogy mikor van szükség fel- és leskálázásra? Használja a virtuális magokon alapuló, teljesítmény-értékeléssel kombinált, beépített teljesítménymonitorozó és riasztási eszközöket. Ezek az eszközök lehetővé teszik a virtuális magok aktuális vagy a becsült teljesítményigényeken alapuló fel- vagy leskálázása hatásainak gyors kiértékelését. A részleteket a [riasztások](howto-alert-on-metric.md) leírása tartalmazza.
 
 ## <a name="keep-your-app-and-business-running"></a>Biztosítsa alkalmazása és vállalkozása folyamatos működését
-Az Azure szolgáltatói szerződésében (SLA) az ágazatban élenjáró módon 99,99 százalékos rendelkezésre állást biztosítunk – a Microsoft által kezelt adatbázisok globális hálózata teszi lehetővé, hogy alkalmazása a hét mind a 7 napján, napi 24 órában fusson. Minden Azure Database for MySQL-kiszolgáló esetében kihasználhatja a beépített biztonság, hibatűrés és adatvédelem előnyeit, amelyeket egyébként nem kell megvásárolnia vagy megterveznie, kiépítenie és kezelnie. A Azure Database for MySQL használatával az időponthoz tartozó visszaállítással visszaállíthatja a kiszolgálót egy korábbi állapotba, a 35 nap visszamenőleg visszamenőleg.
+Az Azure szolgáltatói szerződésében (SLA) az ágazatban élenjáró módon 99,99 százalékos rendelkezésre állást biztosítunk – a Microsoft által kezelt adatbázisok globális hálózata teszi lehetővé, hogy alkalmazása a hét mind a 7 napján, napi 24 órában fusson. A MySQL-kiszolgálókhoz készült minden Azure Database használatával kihasználhatja a beépített biztonságot, a hibatűrést és az adatvédelmet, amelyeket egyébként meg kellene vásárolnia vagy meg kellene terveznie, megkell építenie és kezelnie kellene. Az Azure Database for MySQL segítségével a kiszolgáló korábbi állapotának helyreállításához használhatja az időponthoz való tapont-visszaállítást, akár 35 napig is vissza.
 
-## <a name="secure-your-data"></a>Adatbiztonság
-Az Azure Database Services olyan adatbiztonságot biztosít, amely Azure Database for MySQL megtartja az olyan funkciókat, amelyek korlátozzák a hozzáférést, a REST-alapú és a mozgásban lévő adatok védelméhez, és a tevékenységek figyeléséhez. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban](https://www.microsoft.com/trustcenter/security) talál információkat. A Azure Database for MySQL biztonsági funkcióival kapcsolatos további információkért tekintse meg a [Biztonság áttekintése](concepts-security.md)című témakört.
+## <a name="secure-your-data"></a>Az adatok védelme
+Az Azure adatbázis-szolgáltatásai nak hagyománya van az adatbiztonság, amelyet az Azure Database for MySQL védelme biztosít, olyan funkciókkal, amelyek korlátozzák a hozzáférést, védik az inaktív és mozgásban lévő adatokat, és segítenek a tevékenységek figyelésében. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban](https://www.microsoft.com/trustcenter/security) talál információkat. Az Azure Database for MySQL biztonsági funkcióiról a biztonsági áttekintésben olvashat [bővebben.](concepts-security.md)
 
 ## <a name="contacts"></a>Kapcsolatok
-Ha bármilyen kérdése vagy javaslata van a Azure Database for MySQL használatáról, küldjön e-mailt a Azure Database for MySQL csapatnak ([@Ask a MySQL-hez készült Azure db](mailto:AskAzureDBforMySQL@service.microsoft.com)-t). Ez az e-mail-cím nem technikai támogatási alias.
+Ha bármilyen kérdése vagy javaslata merülhet fel az Azure Database for MySQL használatával kapcsolatban, küldjön egy e-mailt az Azure Database for MySQL Team[ @Ask (Azure DB for MySQL)](mailto:AskAzureDBforMySQL@service.microsoft.com)számára. Ez az e-mail cím nem technikai támogatási alias.
 
 Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 
@@ -59,9 +59,9 @@ Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 - Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
-## <a name="next-steps"></a>Következő lépések
-Most, hogy elolvasta a Azure Database for MySQL bevezetését, és megválaszolta a "mi az Azure Database for MySQL?" kérdést? készen áll a következőre:
+## <a name="next-steps"></a>További lépések
+Most, hogy elolvasta az Azure Database for MySQL bevezetőjét, és megválaszolta a "Mi az Azure Database for MySQL?" kérdésre. készen áll a következőkre:
 
 - Tekintse meg az árképzést ismertető oldalt a költségek összehasonlításáért és árkalkulációjáért. [Díjszabás](https://azure.microsoft.com/pricing/details/mysql/)
 - Első lépésként hozza létre első kiszolgálóját. [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md)
-- Hozza létre első alkalmazását a kívánt nyelv használatával: [Python](./connect-python.md) | [Node. js](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [php](./connect-php.md) | [.net (C#)](./connect-csharp.md) | [Go](./connect-go.md)
+- Készítsd el az első alkalmazást a kívánt nyelv használatával: [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md)

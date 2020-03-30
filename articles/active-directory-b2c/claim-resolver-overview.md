@@ -1,30 +1,30 @@
 ---
-title: Igénylések feloldói az egyéni házirendekben
+title: Igénylés-feloldók egyéni házirendekben
 titleSuffix: Azure AD B2C
-description: Ismerje meg, hogyan használhatók a jogcímek feloldói a Azure Active Directory B2C egyéni házirendjében.
+description: Megtudhatja, hogyan használhatja a jogcímfeloldókat egy egyéni szabályzatban az Azure Active Directory B2C-ben.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 02277d2da2e431ac1cefdd9b018af4c25f7d5a9a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: cba97b84f77bd4e2d4cfd97601fa4f8637105eb4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189837"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051410"
 ---
-# <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a jogcímek feloldóinak Azure Active Directory B2C egyéni házirendekben
+# <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Jogcímfeloldók az Azure Active Directory B2C egyéni szabályzataiban
 
-A Azure Active Directory B2C (Azure AD B2C) [Egyéni szabályzatok](custom-policy-overview.md) által felismert feloldók az engedélyezési kérelemre vonatkozó környezeti információkat biztosítanak, például a szabályzat nevét, a kérelem KORRELÁCIÓs azonosítóját, a felhasználói felület nyelvét és egyebeket.
+Az Azure Active Directory B2C (Azure AD B2C) [egyéni szabályzatai](custom-policy-overview.md) ban a jogcímoldók környezeti információkat nyújtanak egy engedélyezési kérelemről, például a szabályzat nevéről, a kérelemkorrelációs azonosítójáról, a felhasználói felület nyelvéről és egyebekről.
 
-Ha a jogcím-feloldót egy bemeneti vagy kimeneti jogcímben szeretné használni, Definiáljon egy karakterlánc- **claimType**a [ClaimsSchema](claimsschema.md) elem alatt, majd állítsa be a **DefaultValue** -feloldót a bemeneti vagy kimeneti jogcím elemben. Azure AD B2C beolvassa a jogcím-feloldó értékét, és a technikai profilban szereplő értéket használja.
+Jogcímfeloldó bemeneti vagy kimeneti jogcímben való használatához definiáljon egy **karakterlánc-jogcímet**a [ClaimsSchema](claimsschema.md) elem alatt, majd állítsa be a **DefaultValue értéket** a jogcímfeloldóhoz a bemeneti vagy kimeneti jogcímösszetevőben. Az Azure AD B2C beolvassa a jogcímfeloldó értékét, és a technikai profilban használja az értéket.
 
-A következő példában egy `correlationId` nevű jogcím-típus `string`**adattípussal** van definiálva.
+A következő példában egy `correlationId` megnevezett jogcímtípus van `string`definiálva a **DataType (Adattípus)** segítségével.
 
 ```XML
 <ClaimType Id="correlationId">
@@ -34,118 +34,120 @@ A következő példában egy `correlationId` nevű jogcím-típus `string`**adat
 </ClaimType>
 ```
 
-A technikai profilban rendelje hozzá a jogcím feloldóját a jogcím típusához. Azure AD B2C feltölti a jogcím-feloldó értékét `{Context:CorrelationId}` a jogcím `correlationId`, és elküldi a jogcímet a technikai profilnak.
+A technikai profilban rendelje hozzá a jogcímfeloldót a jogcímtípushoz. Az Azure AD B2C feltölti a jogcímfeloldó `{Context:CorrelationId}` értékét a jogcímcím, `correlationId` és elküldi a jogcímet a technikai profilba.
 
 ```XML
 <InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{Context:CorrelationId}" />
 ```
 
-## <a name="claim-resolver-types"></a>Jogcím-feloldási típusok
+## <a name="claim-resolver-types"></a>Jogcímfeloldó típusai
 
-A következő fejezetei az elérhető jogcímek feloldóit sorolja fel.
+A következő szakaszok felsorolják az elérhető jogcímfeloldókat.
 
 ### <a name="culture"></a>Kulturális környezet
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
-| {Kulturális környezet: LanguageName} | A nyelv két betűs ISO-kódja. | hu |
-| {Kulturális környezet: LCID}   | A nyelvi kód LCID-je. | 1033 |
-| {Kulturális környezet: RegionName} | A régió két betűs ISO-kódja. | US |
-| {Kulturális környezet: RFC5646} | A RFC5646 nyelvének kódja | en-US |
+| {Kulturális:LanguageName} | A nyelv kétbetűs ISO-kódja. | hu |
+| {Kulturális:LCID}   | A nyelvkód LCID-je. | 1038 |
+| {Kultúra:RegionName} | A régió kétbetűs ISO-kódja. | USA |
+| {Kultúra:RFC5646} | Az RFC5646 nyelvkód. | en-US |
 
 ### <a name="policy"></a>Szabályzat
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
-| {Policy:PolicyId} | A függő entitás házirendjének neve. | B2C_1A_signup_signin |
-| {Policy:RelyingPartyTenantId} | A függő entitás házirendjének bérlői azonosítója. | your-tenant.onmicrosoft.com |
-| {Policy:TenantObjectId} | A függő entitás házirendjének bérlői objektumának azonosítója. | 00000000-0000-0000-0000-000000000000 |
-| {Policy:TrustFrameworkTenantId} | A megbízhatósági keretrendszer bérlői azonosítója. | your-tenant.onmicrosoft.com |
+| {Házirend:Házirendazonosító} | A függő entitás házirendjének neve. | B2C_1A_signup_signin |
+| {Házirend:RelyingPartyTenantId} | A függő entitás házirendjének bérlői azonosítója. | your-tenant.onmicrosoft.com |
+| {Házirend:TenantObjectId} | A függő entitásházirend bérlői objektumazonosítója. | 00000000-0000-0000-0000-000000000000 |
+| {Házirend:TrustFrameworkTenantId} | A megbízhatósági keretrendszer bérlői azonosítója. | your-tenant.onmicrosoft.com |
 
 ### <a name="openid-connect"></a>OpenID Connect
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |A `acr_values` lekérdezési karakterlánc paraméter. | – |
-| {OIDC:ClientId} |A `client_id` lekérdezési karakterlánc paraméter. | 00000000-0000-0000-0000-000000000000 |
+| {OIDC:AuthenticationContextReferences} |A `acr_values` lekérdezési karakterlánc paraméter. | N/A |
+| {OIDC:Ügyfélazonosító} |A `client_id` lekérdezési karakterlánc paraméter. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |A `domain_hint` lekérdezési karakterlánc paraméter. | facebook.com |
 | {OIDC:LoginHint} |  A `login_hint` lekérdezési karakterlánc paraméter. | someone@contoso.com |
-| {OIDC:MaxAge} | A `max_age`. | – |
+| {OIDC:MaxAge} | A `max_age`. | N/A |
 | {OIDC:Nonce} |A `Nonce` lekérdezési karakterlánc paraméter. | defaultNonce |
-| {OIDC:Prompt} | A `prompt` lekérdezési karakterlánc paraméter. | bejelentkezés |
-| {OIDC: erőforrás} |A `resource` lekérdezési karakterlánc paraméter. | – |
-| {OIDC: hatókör} |A `scope` lekérdezési karakterlánc paraméter. | OpenID |
-| {OIDC: RedirectUri} |A `redirect_uri` lekérdezési karakterlánc paraméter. | https://jwt.ms |
+| {OIDC:Jelszó}| Az erőforrás-tulajdonos i jelszó hitelesítő adatai a felhasználó jelszavát [áramtalanítók.](ropc-custom.md)| jelszó1| 
+| {OIDC:Kérdés} | A `prompt` lekérdezési karakterlánc paraméter. | bejelentkezés |
+| {OIDC:RedirectUri} |A `redirect_uri` lekérdezési karakterlánc paraméter. | https://jwt.ms |
+| {OIDC:Erőforrás} |A `resource` lekérdezési karakterlánc paraméter. | N/A |
+| {OIDC:hatókör} |A `scope` lekérdezési karakterlánc paraméter. | Openid |
+| {OIDC:Felhasználónév}| Az [erőforrás-tulajdonos jelszóhitelesítő adatai a](ropc-custom.md) felhasználó felhasználónevét áramtalanítódulják.| emily@contoso.com| 
 
 ### <a name="context"></a>Környezet
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
-| {Context: BuildNumber} | Az Identity Experience Framework verziószáma (Build száma).  | 1.0.507.0 |
-| {Context:CorrelationId} | A korrelációs azonosítót.  | 00000000-0000-0000-0000-000000000000 |
-| {Context:DateTimeInUtc} |A dátum és idő (UTC).  | 10/10/2018 12:00:00 PM |
-| {Context: Deploymentmode beállítása} |A házirend-telepítési mód.  | Production |
-| {Context:IPAddress} | A felhasználó IP-címe. | 11.111.111.11 |
-| {Context: KMSI} | Azt jelzi, hogy be van-e jelölve [a bejelentkezve marad](custom-policy-keep-me-signed-in.md) jelölőnégyzet. |  true |
+| {Context:BuildNumber} | Az Identitáskezelési keretrendszer verziója (buildszáma).  | 1.0.507.0 |
+| {Context:CorrelationId} | A korrelációs azonosító.  | 00000000-0000-0000-0000-000000000000 |
+| {Környezet:DateTimeInUtc} |A dátum időpontja UTC-ben.  | 2018.10.10. 12:00:00 |
+| {Context:DeploymentMode} |A házirend telepítési módja.  | Production |
+| {Környezet:IPAddress} | A felhasználó IP-címe. | 11.111.111.11 |
+| {Környezet:KMSI} | Azt jelzi, hogy [a Be jelentkezve maradjon](custom-policy-keep-me-signed-in.md) jelölőnégyzet be jelölve. |  igaz |
 
 ### <a name="non-protocol-parameters"></a>Nem protokoll paraméterek
 
-Egy OIDC-vagy OAuth2-kérelem részeként megadott paraméter neve a felhasználói úton lévő jogcímek számára képezhető le. Előfordulhat például, hogy az alkalmazástól érkező kérelem tartalmaz egy lekérdezési karakterlánc paramétert `app_session`, `loyalty_number`vagy bármely egyéni lekérdezési karakterlánc nevével.
+Az OIDC vagy OAuth2 kérelem részeként szereplő bármely paraméternév leképezhető egy jogcímhez a felhasználói út során. Az alkalmazástól érkező kérelem tartalmazhat például egy lekérdezési `app_session` `loyalty_number`karakterlánc-paramétert , vagy bármely egyéni lekérdezési karakterláncot.
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------------------- | --------|
-| {OAUTH-KV:campaignId} | Egy lekérdezési karakterlánc paraméter. | Hawaii |
-| {OAUTH-KV:app_session} | Egy lekérdezési karakterlánc paraméter. | A3C5R |
-| {OAUTH-KV:loyalty_number} | Egy lekérdezési karakterlánc paraméter. | 1234 |
-| {OAUTH-KV: bármely egyéni lekérdezési karakterlánc} | Egy lekérdezési karakterlánc paraméter. | – |
+| {OAUTH-KV:campaignId} | Lekérdezési karakterlánc paraméter. | Hawaii |
+| {OAUTH-KV:app_session} | Lekérdezési karakterlánc paraméter. | A3C5R |
+| {OAUTH-KV:loyalty_number} | Lekérdezési karakterlánc paraméter. | 1234 |
+| {OAUTH-KV:bármely egyéni lekérdezési karakterlánc} | Lekérdezési karakterlánc paraméter. | N/A |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------------------- | --------|
-| {oauth2: access_token} | A hozzáférési jogkivonat. | – |
+| {oauth2:access_token} | A hozzáférési jogkivonat. | N/A |
 
 
 ### <a name="saml"></a>SAML
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
-| {SAML: AuthnContextClassReferences} | A `AuthnContextClassRef` elem értéke az SAML-kérelemből. | urn: Oasis: nevek: TC: SAML: 2.0: AC: osztályok: PasswordProtectedTransport |
-| {SAML: NameIdPolicyFormat} | A `Format` attribútum az SAML-kérelem `NameIDPolicy` elemétől. | urn: Oasis: nevek: TC: SAML: 1.1: nameid-Format: emailAddress |
-| {SAML: kiállító} |  Az SAML-kérelem SAML `Issuer` elemének értéke.| https://contoso.com |
-| {SAML: AllowCreate} | A `AllowCreate` attribútum értéke az SAML-kérelem `NameIDPolicy` elemében. | True (Igaz) |
-| {SAML: ForceAuthn} | A `ForceAuthN` attribútum értéke az SAML-kérelem `AuthnRequest` elemében. | True (Igaz) |
-| {SAML: ProviderName} | A `ProviderName` attribútum értéke az SAML-kérelem `AuthnRequest` elemében.| Contoso.com |
+| {SAML:AuthnContextClassReferences} | Az `AuthnContextClassRef` elem értéke az SAML-kérelemből. | urn:oázis:nevek:tc:SAML:2.0:ac:classes:PasswordProtectedTransport |
+| {SAML:NameIdPolicyFormat} | Az `Format` attribútum, az `NameIDPolicy` SAML-kérelem eleméből. | urn:oázis:nevek:tc:SAML:1.1:nameid-format:emailAddress |
+| {SAML:Kiállító} |  Az SAML-kérelem SAML `Issuer` elemértéke.| `https://contoso.com` |
+| {SAML:AllowCreate} | Az `AllowCreate` attribútum értéke az `NameIDPolicy` SAML-kérelem eleméből. | True (Igaz) |
+| {SAML:ForceAuthn} | Az `ForceAuthN` attribútum értéke az `AuthnRequest` SAML-kérelem eleméből. | True (Igaz) |
+| {SAML:Szolgáltatónév} | Az `ProviderName` attribútum értéke az `AuthnRequest` SAML-kérelem eleméből.| Contoso.com |
 
-## <a name="using-claim-resolvers"></a>Jogcímek feloldóinak használata
+## <a name="using-claim-resolvers"></a>Jogcímfeloldók használata
 
-A jogcímek feloldóit a következő elemekkel használhatja:
+A jogcímfeloldókat a következő elemekkel használhatja:
 
 | Elem | Elem | Beállítások |
 | ----- | ----------------------- | --------|
-|Application Insights műszaki profil |`InputClaim` | |
-|[Azure Active Directory](active-directory-technical-profile.md) műszaki profil| `InputClaim`, `OutputClaim`| 1, 2|
-|[OAuth2](oauth2-technical-profile.md) műszaki profil| `InputClaim`, `OutputClaim`| 1, 2|
-|[OpenID Connect](openid-connect-technical-profile.md) – technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
-|[Jogcím-átalakítási](claims-transformation-technical-profile.md) technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
-|[Rest-szolgáltató](restful-technical-profile.md) technikai profilja| `InputClaim`| 1, 2|
-|[Egy saml2](saml-technical-profile.md) műszaki profil| `OutputClaim`| 1, 2|
-|[Önérvényesített](self-asserted-technical-profile.md) technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
-|[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
-|[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
-|[RelyingParty](relyingparty.md#technicalprofile) műszaki profil| `OutputClaim`| 2 |
+|Az Application Insights technikai profilja |`InputClaim` | |
+|[Az Azure Active Directory](active-directory-technical-profile.md) technikai profilja| `InputClaim`, `OutputClaim`| 1, 2|
+|[OAuth2](oauth2-technical-profile.md) technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[OpenID Connect](openid-connect-technical-profile.md) technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[Jogcímek átalakítása](claims-transformation-technical-profile.md) technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[RESTful szolgáltató](restful-technical-profile.md) technikai profilja| `InputClaim`| 1, 2|
+|[SAML2](saml-technical-profile.md) technikai profil| `OutputClaim`| 1, 2|
+|[Önérvényesítő](self-asserted-technical-profile.md) technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[Tartalomdefiníció](contentdefinitions.md)| `LoadUri`| |
+|[ContentDefinitionParameters (ContentDefinitionParameters)](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
+|[RelyingParty](relyingparty.md#technicalprofile) technikai profil| `OutputClaim`| 2 |
 
-Beállítások
-1. A `IncludeClaimResolvingInClaimsHandling` metaadatokat a `true`értékre kell beállítani.
-1. A bemeneti vagy kimeneti jogcímek attribútumának `AlwaysUseDefaultValue` `true`értékre kell állítani.
+Beállítások:
+1. A `IncludeClaimResolvingInClaimsHandling` metaadatokat a `true`ikonra kell állítani.
+1. A bemeneti vagy `AlwaysUseDefaultValue` kimeneti jogcímek attribútumot a -ra `true`kell állítani.
 
-## <a name="claim-resolvers-samples"></a>A jogcím-feloldók mintái
+## <a name="claim-resolvers-samples"></a>Jogcímfeloldók mintái
 
-### <a name="restful-technical-profile"></a>REST-technikai profil
+### <a name="restful-technical-profile"></a>RESTful műszaki profil
 
-A [Rest](restful-technical-profile.md) -alapú műszaki profilokban érdemes lehet elküldeni a felhasználó nyelvét, a szabályzat nevét, a hatókört és az ügyfél-azonosítót. Ezen jogcímek alapján a REST API képes egyéni üzleti logikát futtatni, és ha szükséges, honosított hibaüzenetet kell létrehoznia.
+A [RESTful](restful-technical-profile.md) technikai profilban érdemes lehet elküldeni a felhasználói nyelvet, a házirend nevét, a hatókört és az ügyfélazonosítót. A jogcímek alapján a REST API futtathatja az egyéni üzleti logikát, és szükség esetén feltud vetni egy honosított hibaüzenetet.
 
-A következő példa egy REST-alapú műszaki profilt mutat be ebben a forgatókönyvben:
+A következő példa egy RESTful technikai profilt mutat be ezzel a forgatókönyvvel:
 
 ```XML
 <TechnicalProfile Id="REST">
@@ -169,13 +171,13 @@ A következő példa egy REST-alapú műszaki profilt mutat be ebben a forgatók
 
 ### <a name="direct-sign-in"></a>Közvetlen bejelentkezés
 
-A jogcímek feloldóinak használatával előre feltöltheti a bejelentkezési nevet vagy a közvetlen bejelentkezést egy adott közösségi identitás-szolgáltatóba, például a Facebook, a LinkedIn vagy egy Microsoft-fiók. További információ: [közvetlen bejelentkezés beállítása Azure Active Directory B2C használatával](direct-signin.md).
+A jogcímfeloldók használatával előre feltöltheti a bejelentkezési nevet, vagy közvetlen bejelentkezést adhat egy adott közösségi identitásszolgáltatónak, például a Facebooknak, a LinkedInnek vagy egy Microsoft-fióknak. További információ: [Közvetlen bejelentkezés beállítása az Azure Active Directory B2C használatával](direct-signin.md)című témakörben talál.
 
-### <a name="dynamic-ui-customization"></a>Dinamikus felhasználói felület testreszabása
+### <a name="dynamic-ui-customization"></a>A felhasználói felület dinamikus testreszabása
 
-Azure AD B2C lehetővé teszi a lekérdezési karakterlánc paramétereinek átadását a HTML-tartalom definíciós végpontjai számára az oldal tartalmának dinamikus megjelenítéséhez. Ez lehetővé teszi például a háttérkép módosítását a Azure AD B2C regisztrációs vagy bejelentkezési oldalon a webes vagy mobil alkalmazásból átadott egyéni paraméter alapján. További információ: [a felhasználói felület dinamikus konfigurálása egyéni házirendek használatával Azure Active Directory B2Cban](custom-policy-ui-customization.md). A HTML-lapot nyelvi paraméter alapján is honosíthatja, vagy az ügyfél-azonosító alapján módosíthatja a tartalmat.
+Az Azure AD B2C lehetővé teszi, hogy lekérdezési karakterlánc-paramétereket a HTML-tartalom definíciós végpontok dinamikusan megjeleníteni az oldal tartalmát. Például ez lehetővé teszi, hogy módosítsa a háttérképet az Azure AD B2C regisztrációs vagy bejelentkezési lap alapján egy egyéni paraméter, amely átad a web vagy mobilalkalmazás. További információ: [Dinamikusan konfigurálja a felhasználói felületet az Azure Active Directory B2C egyéni szabályzatai használatával.](custom-policy-ui-customization.md) A HTML-lapot nyelvi paraméter alapján is honosíthatja, vagy módosíthatja a tartalmat az ügyfélazonosító alapján.
 
-A következő példa a **campaignId** nevű lekérdezési karakterlánc paramétert adja át `hawaii`értékkel, `en-US`**és az ügyfél** -azonosítót jelképező **alkalmazással** :
+A következő példa a **campaignId** nevű lekérdezési `Hawaii`karakterlánc-paraméterben halad át , a nyelvkódéssal **language** `en-US`és az ügyfélazonosítót képviselő **alkalmazással:**
 
 ```XML
 <UserJourneyBehaviors>
@@ -187,7 +189,7 @@ A következő példa a **campaignId** nevű lekérdezési karakterlánc paramét
 </UserJourneyBehaviors>
 ```
 
-Ennek eredményeképpen a Azure AD B2C elküldi a fenti paramétereket a HTML-tartalom oldalának:
+Ennek eredményeképpen az Azure AD B2C elküldi a fenti paramétereket a HTML-tartalomlapra:
 
 ```
 /selfAsserted.aspx?campaignId=hawaii&language=en-US&app=0239a9cc-309c-4d41-87f1-31288feb2e82
@@ -195,7 +197,7 @@ Ennek eredményeképpen a Azure AD B2C elküldi a fenti paramétereket a HTML-ta
 
 ### <a name="content-definition"></a>Tartalom definíciója
 
-A [ContentDefinition](contentdefinitions.md) `LoadUri`elküldheti a jogcímek feloldóit a tartalmak különböző helyekről való lekéréséhez a használt paraméterek alapján.
+A [ContentDefinition](contentdefinitions.md) `LoadUri`alkalmazásban a használt paraméterek alapján jogcímfeloldókat küldhet a különböző helyekről származó tartalom lekérése céljából.
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -204,9 +206,9 @@ A [ContentDefinition](contentdefinitions.md) `LoadUri`elküldheti a jogcímek fe
 </ContentDefinition>
 ```
 
-### <a name="application-insights-technical-profile"></a>Application Insights műszaki profil
+### <a name="application-insights-technical-profile"></a>Az Application Insights technikai profilja
 
-Az Azure Application Insights és a jogcím-feloldók segítségével elemzéseket nyerhet a felhasználói viselkedésről. A Application Insights technikai profilban elküldheti azokat a bemeneti jogcímeket, amelyeket az Azure Application Insights tart fenn. További információ: a [felhasználói viselkedés nyomon követése Azure ad B2C-útvonalakon Application Insights használatával](analytics-with-application-insights.md). Az alábbi példa a házirend-azonosítót, a korrelációs azonosítót, a nyelvet és az ügyfél-azonosítót küldi az Azure Application Insightsnak.
+Az Azure Application Insights és a jogcímfeloldók segítségével betekintést nyerhet a felhasználók viselkedéséről. Az Application Insights technikai profilban olyan bemeneti jogcímeket küld, amelyek megmaradnak az Azure Application Insights számára. További információ: [A felhasználói viselkedés nyomon követése az Azure AD B2C-utazások ban az Application Insights használatával.](analytics-with-application-insights.md) A következő példa elküldi a szabályzatazonosítót, a korrelációs azonosítót, a nyelvet és az ügyfélazonosítót az Azure Application Insightsnak.
 
 ```XML
 <TechnicalProfile Id="AzureInsights-Common">
@@ -222,9 +224,9 @@ Az Azure Application Insights és a jogcím-feloldók segítségével elemzések
 </TechnicalProfile>
 ```
 
-### <a name="relying-party-policy"></a>Függő entitások házirendje
+### <a name="relying-party-policy"></a>A függő entitás irányelvei
 
-A [függő entitások](relyingparty.md) szabályzatának technikai profiljában érdemes lehet a bérlői azonosítót vagy korrelációs azonosítót küldeni a függő entitás alkalmazásnak a JWT belül.
+A [függő entitás](relyingparty.md) technikai profilban érdemes lehet a bérlői azonosítót vagy a korrelációs azonosítót a függő entitás alkalmazásának a JWT-n belül küldeni.
 
 ```XML
 <RelyingParty>

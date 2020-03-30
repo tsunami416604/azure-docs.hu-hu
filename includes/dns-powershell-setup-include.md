@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
 ms.openlocfilehash: 32c516ccee3a9f4f7604a3e330285703a776b47d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67133370"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Az Azure PowerShell beállítása az Azure DNS-hez
@@ -38,7 +38,7 @@ Find-Module -Name AzureRM.Dns
 Find-Module -Name AzureRM.Network 
 ``` 
  
-A fenti parancsok kimenetének megjelenítése, hogy az AzureRM.Dns verziója 4.1.0-s vagy újabb verziójú, pedig az AzureRM.Network 5.4.0-s vagy újabb kell.  
+A fenti parancsok kimenetének meg kell mutatnia, hogy az AzureRM.Dns 4.1.0-s vagy újabb verziója, és az AzureRM.Network 5.4.0-s vagy újabb verziója.  
 
 Ha a rendszeren korábbi verziók vannak telepítve, telepítheti az Azure PowerShell legújabb verzióját, vagy letöltheti és telepítheti a fenti modulokat a PowerShell-galériából a fenti hivatkozásokkal, amelyek a modulverziók mellett találhatók. Ezután az alábbi parancsokkal telepítheti őket. Mindkét modul szükséges, és teljes mértékben kompatibilis a korábbi verziókkal. 
 
@@ -52,7 +52,7 @@ Install-Module -Name AzureRM.Network -Force
 
 ### <a name="sign-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába
 
-Nyissa meg a PowerShell konzolt, és csatlakozzon a fiókjához. További információkért lásd: [jelentkezzen be az AzureRM](/powershell/azure/azurerm/authenticate-azureps).
+Nyissa meg a PowerShell konzolt, és csatlakozzon a fiókjához. További információ: [Bejelentkezés az AzureRM szolgáltatással című témakörben.](/powershell/azure/azurerm/authenticate-azureps)
 
 ```powershell
 Connect-AzureRmAccount
@@ -66,15 +66,15 @@ Keresse meg a fiókot az előfizetésekben.
 Get-AzureRmSubscription
 ```
 
-Válassza ki, hogy melyik Azure előfizetést fogja használni.
+Válassza ki, hogy melyek Azure-előfizetését használja.
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionName "your_subscription_name"
 ```
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport megadjon egy helyet. Ez a hely lesz az erőforráscsoport erőforrásainak alapértelmezett helye. Mivel azonban minden DNS-erőforrás globális, nem pedig regionális, az erőforráscsoport kiválasztott helye nincs hatással az Azure DNS szolgáltatásra.
+Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport adjon meg egy helyet. Ez a hely lesz az erőforráscsoport erőforrásainak alapértelmezett helye. Mivel azonban minden DNS-erőforrás globális, nem pedig regionális, az erőforráscsoport kiválasztott helye nincs hatással az Azure DNS szolgáltatásra.
 
 Ezt a lépést kihagyhatja, ha egy meglévő erőforráscsoportot használ.
 

@@ -5,31 +5,31 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: orspodek
 ms.openlocfilehash: a2297301a0b9c0540c73c0f50483cccfc3181a0f
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79128752"
 ---
-### <a name="event-system-properties-mapping"></a>Eseményrendszer tulajdonságai leképezése
+### <a name="event-system-properties-mapping"></a>Eseményrendszer tulajdonságainak leképezése
 
 > [!Note]
-> * A Rendszertulajdonságok Egyrekordos események esetén támogatottak.
-> * `csv` leképezés esetén a tulajdonságok a rekord elején lesznek hozzáadva. `json` leképezés esetén a tulajdonságok a legördülő listában megjelenő név szerint lesznek hozzáadva.
+> * A rendszertulajdonságok egyrekordú események esetén támogatottak.
+> * A `csv` leképezéshez a rendszer a rekord elején adja hozzá a tulajdonságokat. A `json` leképezéshez a tulajdonságok a legördülő listában megjelenő névnek megfelelően kerülnek hozzáadásra.
 
-Ha a tábla **adatforrás** szakaszában az **eseményrendszer tulajdonságai** lehetőséget választotta, a táblázat sémájában és a leképezésben a következő tulajdonságokat kell tartalmaznia.
+Ha a tábla **Adatforrás** szakaszában az **Eseményrendszer tulajdonságai** lehetőséget választotta, a következő tulajdonságokat kell szerepelnie a táblasémában és a leképezésben.
 
-**Példa táblázatos sémára**
+**Példa táblasémára**
 
-Ha az adatai három oszlopot tartalmaznak (`Timespan`, `Metric`és `Value`), és a benne foglalt tulajdonságok `x-opt-enqueued-time` és `x-opt-offset`, a parancs használatával hozza létre vagy módosítsa a tábla sémáját:
+Ha az adatok három`Timespan` `Metric`oszlopot `Value`( , és `x-opt-enqueued-time` ) `x-opt-offset`tartalmaznak, és a benne lévő tulajdonságok a következők, és a, a táblaséma létrehozása vagy módosítása a következő paranccsal:
 
 ```kusto
     .create-merge table TestTable (TimeStamp: datetime, Metric: string, Value: int, EventHubEnqueuedTime:datetime, EventHubOffset:string)
 ```
 
-**Példa CSV-megfeleltetésre**
+**Példa CSV-leképezésre**
 
-Az alábbi parancsok futtatásával adja hozzá az adatokhoz a rekord elejét. Megjegyzés sorszámai
+Futtassa a következő parancsokat, hogy adatokat adjon a rekord elejéhez. Megjegyzés: a csoportértékek.
 
 ```kusto
     .create table TestTable ingestion csv mapping "CsvMapping1"
@@ -42,9 +42,9 @@ Az alábbi parancsok futtatásával adja hozzá az adatokhoz a rekord elejét. M
     ']'
 ```
  
-**Példa JSON-megfeleltetésre**
+**Példa JSON-leképezésre**
 
-A rendszer a Rendszertulajdonságok neveivel adja hozzá az adatforrásokat, ahogy azok megjelennek az **adatkapcsolat** panel **eseményrendszer tulajdonságai** listájában. Futtassa a következő parancsokat:
+Az adatok a rendszertulajdonságok neveinek használatával kerülnek hozzáadásra, ahogy azok megjelennek az **Adatkapcsolat** panel **Eseményrendszer tulajdonságai** listájában. Futtassa a következő parancsokat:
 
 ```kusto
     .create table TestTable ingestion json mapping "JsonMapping1"

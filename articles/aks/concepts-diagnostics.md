@@ -1,86 +1,86 @@
 ---
-title: Az Azure Kubernetes Service (ak) diagnosztika áttekintése
-description: Ismerje meg az Azure Kubernetes Service-beli öndiagnosztizáló fürtöket.
+title: Az Azure Kubernetes-szolgáltatás (AKS) diagnosztikai áttekintése
+description: Ismerje meg a fürtök öndiagnosztizálása az Azure Kubernetes szolgáltatásban.
 services: container-service
 author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
 ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126602"
 ---
-# <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Az Azure Kubernetes Service Diagnostics (előzetes verzió) áttekintése
+# <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Az Azure Kubernetes szolgáltatásdiagnosztika (előzetes verzió) – áttekintés
 
-Az Azure Kubernetes Service (ak) fürtökkel kapcsolatos hibák elhárítása fontos része a fürt karbantartásának, különösen akkor, ha a fürt kritikus fontosságú számítási feladatokat futtat. Az AK-diagnosztika egy intelligens, öndiagnosztikai felület, amely segítséget nyújt a fürtben felmerülő problémák azonosításában és megoldásában. Az AK-diagnosztika a felhőben natív, és további konfiguráció vagy számlázási díj nélkül is felhasználható.
+Az Azure Kubernetes-szolgáltatás (AKS) fürtproblémáinak elhárítása fontos része a fürt karbantartásának, különösen akkor, ha a fürt kritikus fontosságú számítási feladatokat futtat. Az AKS Diagnostics egy intelligens, öndiagnosztikai élmény, amely segít azonosítani és megoldani a fürt problémáit. Az AKS Diagnostics natív felhőalapú, és további konfiguráció vagy számlázási költség nélkül is használhatja.
 
-Ez a funkció már nyilvános előzetes verzióban érhető el.
+Ez a funkció mostantól nyilvános előzetes verzióban érhető el.
 
-## <a name="open-aks-diagnostics"></a>AK-diagnosztika megnyitása
+## <a name="open-aks-diagnostics"></a>AKS-diagnosztika megnyitása
 
-Az AK-diagnosztika elérése:
+Az AKS diagnosztika elérése:
 
-- A [Azure Portal](https://portal.azure.com)navigáljon a Kubernetes-fürthöz.
-- A bal oldali navigációs panelen kattintson a **probléma diagnosztizálása és megoldása** elemre, amely az AK-diagnosztika megnyitására szolgál.
-- Válassza ki azt a kategóriát, amely a legjobban leírja a fürt problémáját a Kezdőlap csempén található kulcsszavakat használva, vagy írjon be egy kulcsszót, amely a legjobban leírja a problémát a keresősáv esetében, például a _fürt csomópontjaival kapcsolatos problémákat_.
+- Keresse meg a Kubernetes-fürtöt az [Azure Portalon.](https://portal.azure.com)
+- Kattintson **a diagnosztizálása és a problémák megoldása** a bal oldali navigációs, amely megnyitja AKS Diagnosztika.
+- Válasszon olyan kategóriát, amely a legjobban leírja a fürt kérdését a kezdőlap csempéjének kulcsszavaival, vagy írjon be egy olyan kulcsszót, amely a legjobban leírja a problémát a keresősávban, például _fürtcsomópont-problémák_.
 
 ![Kezdőlap](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
 
 ## <a name="view-a-diagnostic-report"></a>Diagnosztikai jelentés megtekintése
 
-Miután rákattint egy kategóriára, megtekintheti a fürthöz tartozó diagnosztikai jelentést. A diagnosztikai jelentés intelligens módon hívja fel, hogy van-e probléma a fürtben állapot ikonokkal. Az egyes témakörök részletezéséhez kattintson a **További információ** lehetőségre a probléma részletes leírásának, a javasolt műveletek, a hasznos dokumentumok hivatkozásainak, a kapcsolódó metrikák és a naplózási adatok megtekintéséhez. A diagnosztikai jelentések intelligens módon jönnek létre a fürt aktuális állapotán alapuló különböző ellenőrzések futtatása után. A diagnosztikai jelentések hasznos eszközt jelenthetnek a fürt problémájának meghatározásához és a probléma megoldásához szükséges következő lépések megkereséséhez.
+Miután rákattintott egy kategóriára, megtekintheti a fürtre jellemző diagnosztikai jelentést. A diagnosztikai jelentés intelligens módon jelzi, ha a fürtben bármilyen probléma merül fel az állapotikonok segítségével. Az egyes témaköröket a **További információk** elemre kattintva megtekintheti a probléma részletes leírását, az ajánlott műveleteket, a hasznos dokumentumokra mutató hivatkozásokat, a kapcsolódó mutatókat és a naplózási adatokat. A diagnosztikai jelentések intelligens módon jönnek létre a fürt jelenlegi állapota alapján, miután különböző ellenőrzéseket futtattak. A diagnosztikai jelentések hasznos eszközt jelentenek a fürt problémájának azonosításához és a probléma megoldásához szükséges következő lépések megkereséséhez.
 
 ![Diagnosztikai jelentés](./media/concepts-diagnostics/diagnostic-report.png)
 
 ![Bővített diagnosztikai jelentés](./media/concepts-diagnostics/node-issues.png)
 
-## <a name="cluster-insights"></a>Fürtbeli adatfelismerések
+## <a name="cluster-insights"></a>Fürtelemzési adatok
 
-A következő diagnosztikai ellenőrzések érhetők el a **Fürtbeli**adatvizsgálatokban.
+A következő diagnosztikai ellenőrzések érhetők el a **Cluster Insights**.
 
-### <a name="cluster-node-issues"></a>Fürt csomópontjaival kapcsolatos problémák
+### <a name="cluster-node-issues"></a>Fürtcsomópont-problémák
 
-A fürtcsomópont hibát észlel a csomópontokkal kapcsolatos hibáknál, amelyek miatt a fürt váratlanul működhet.
+A fürtcsomóproblémák olyan csomópontokkal kapcsolatos problémákat keresnek, amelyek miatt a fürt váratlanul viselkedhet.
 
-- Csomópont-készültségi problémák
-- Csomóponti hibák
-- Nincs elegendő erőforrás
-- Hiányzó csomópont IP-konfiguráció
-- Csomópont-CNI hibák
+- Csomópontkészenléti problémák
+- Csomóponthibák
+- Nincs elegendő forrás
+- Hiányzik a csomópont IP-konfigurációja
+- Csomópontcni-hibái
 - A csomópont nem található
-- Csomópont kikapcsolva
+- Csomópont kikapcsolása
 - Csomópont-hitelesítési hiba
-- Csomópont Kube – elavult proxy
+- Csomópont kube-proxy elavult
 
-### <a name="create-read-update--delete-operations"></a>& Törlési műveletek létrehozása, olvasása, frissítése
+### <a name="create-read-update--delete-operations"></a>Műveletek létrehozása, olvasása, frissítése & törlése
 
-A szifilisz-műveletek minden olyan szifilisz-műveletet megkeresnek, amely problémákat okozhat a fürtben.
+A CRUD Operations ellenőrzi azokat a CRUD-műveleteket, amelyek problémákat okozhatnak a fürtben.
 
-- A használatban lévő alhálózat törlési műveletének hibája
-- Hálózati biztonsági csoport törlési műveletének hibája
-- Használatban lévő útválasztási tábla törlési műveletének hibája
+- Használatban lévő alhálózati törlési művelet hiba
+- Hálózati biztonsági csoport törlési művelete – hiba
+- Használatban lévő útvonaltábla törlési művelete hiba
 - Hivatkozott erőforrás-kiépítési hiba
-- A nyilvános IP-cím törlési műveletének hibája
-- Telepítési hiba az üzembe helyezési kvóta miatt
+- Nyilvános IP-cím törlési művelete hiba
+- Telepítési hiba a telepítési kvóta miatt
 - Működési hiba a szervezeti házirend miatt
-- Hiányzó előfizetés-regisztráció
+- Hiányzik az előfizetés regisztrációja
 - Virtuálisgép-bővítmény kiépítési hibája
-- Alhálózat kapacitása
-- A kvóta túllépte a hibát.
+- Alhálózati kapacitás
+- A kvóta túllépte a hibát
 
 ### <a name="identity-and-security-management"></a>Identitás és biztonsági felügyelet
 
-Az identitás-és biztonsági felügyelet észleli a hitelesítési és engedélyezési hibákat, amelyek megakadályozhatják a fürtön keresztüli kommunikációt.
+Az Identitás- és biztonságkezelés olyan hitelesítési és engedélyezési hibákat észlel, amelyek megakadályozhatják a fürttel való kommunikációt.
 
-- Csomópont-engedélyezési hibák
-- 401 hiba
-- 403 hiba
+- Csomópontengedélyezési hibák
+- 401-es hibák
+- 403-as hibák
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Gyűjtsön naplókat, amelyek segítenek a fürtökkel kapcsolatos problémák további hibaelhárításában az [AK-periszkóp](https://aka.ms/aksperiscope)használatával.
+Az [AKS Periscope](https://aka.ms/aksperiscope)használatával naplókat gyűjthet a fürtproblémák további elhárításához.
 
-Tegye fel kérdéseit vagy visszajelzéseit a [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) címen a "[diag]" cím hozzáadásával.
+Tegye fel kérdéseit vagy visszajelzését a [UserVoice-on](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) a "[Diag]" hozzáadásával a címben.

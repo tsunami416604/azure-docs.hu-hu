@@ -1,24 +1,24 @@
 ---
 title: Kényszerített bújtatás konfigurálása
-description: Megtudhatja, hogyan engedélyezheti a App Service Environment működését, ha a kimenő forgalom kényszerített bújtatást végez a virtuális hálózaton.
+description: Ismerje meg, hogyan engedélyezheti, hogy az App Service-környezet működjön, ha a kimenő forgalom kényszerített bújtatása a virtuális hálózatban.
 author: ccompy
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: e0164ac3903c63632c97c4a089066cf6ad23b31b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 3e0c56ed669ecda5a130dcf9df103bc8a19faf06
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687176"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80057434"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Az App Service-környezet konfigurálása kényszerített bújtatással
 
-Az App Service-környezet (ASE) az Azure App Service üzemelő példánya az ügyfelek Azure Virtual Network-hálózatában. Számos ügyfél konfigurálja az Azure-beli virtuális hálózatait VPN-ek vagy Azure ExpressRoute-kapcsolatok segítségével úgy, hogy azok a helyszíni hálózatok kiterjesztéseként működjenek. A kényszerített bújtatás átirányítja az internetre irányuló forgalmat a VPN-re vagy egy virtuális berendezésre. A virtuális készülékeket gyakran a kimenő hálózati forgalom vizsgálatára és naplózására használják. 
+Az App Service-környezet (ASE) az Azure App Service üzemelő példánya az ügyfelek Azure Virtual Network-hálózatában. Számos ügyfél konfigurálja az Azure-beli virtuális hálózatait VPN-ek vagy Azure ExpressRoute-kapcsolatok segítségével úgy, hogy azok a helyszíni hálózatok kiterjesztéseként működjenek. A kényszerített bújtatás átirányítja az internetre irányuló forgalmat a VPN-re vagy egy virtuális berendezésre. A virtuális berendezéseket gyakran használják a kimenő hálózati forgalom ellenőrzésére és naplózására. 
 
-A kiegészítő szolgáltatás számos külső függőséggel rendelkezik, amelyek leírása a [app Service Environment hálózati architektúra][network] dokumentumban található. Általában az ASE minden kimenő függőségének az ASE virtuális IP-címén kell keresztülmennie. Ha az alábbi információk felhasználása nélkül módosítja a forgalom útválasztását az ASE-re vagy az ASE-ről, az ASE működése leáll.
+Az ASE több külső függőséggel rendelkezik, amelyek leírását megtalálhatja az [App Service-környezet hálózati architektúráját][network] ismertető dokumentumban. Általában az ASE minden kimenő függőségének az ASE virtuális IP-címén kell keresztülmennie. Ha az alábbi információk felhasználása nélkül módosítja a forgalom útválasztását az ASE-re vagy az ASE-ről, az ASE működése leáll.
 
 Egy Azure-beli virtuális hálózatban az útválasztás a leghosszabb előtag-megfeleltetés (LPM) alapján történik. Ha egynél több útvonal rendelkezik ugyanazzal az LPM megfeleltetéssel, akkor a rendszer az útvonalat a kiindulás alapján választja ki, az alábbi sorrendben:
 
@@ -26,7 +26,7 @@ Egy Azure-beli virtuális hálózatban az útválasztás a leghosszabb előtag-m
 * BGP-útvonal (ExpressRoute használatánál)
 * Rendszerútvonal
 
-Ha többet szeretne megtudni az útválasztásról egy virtuális hálózatban, olvassa el a [felhasználó által megadott útvonalakat és az IP-továbbítást][routes]. 
+Ha többet szeretne megtudni a virtuális hálózatokban történő útválasztásról, olvassa el a [felhasználó által megadott útvonalakat és IP-továbbítást][routes] ismertető cikket. 
 
 Ha nem közvetlenül az internetre szeretné átirányítani a kimenő ASE-forgalmat, az alábbi lehetőségei vannak:
 
@@ -55,33 +55,33 @@ Ha a hálózat már irányít forgalmat a helyszínen, létre kell hozni egy alh
 
 ## <a name="configure-your-ase-subnet-to-ignore-bgp-routes"></a>ASE-alhálózat konfigurálása a BGP-útvonalak figyelmen kívül hagyására ## 
 
-Az ASE-alhálózatot konfigurálhatja a BGP-útvonalak figyelmen kívül hagyására.  Ha a BGP-útvonalak figyelmen kívül hagyásához vannak konfigurálva, a kisegítő lehetőség problémák nélkül hozzáférhet a függőségeihez.  Ahhoz azonban, hogy az alkalmazásai hozzá tudjanak férni a helyszíni erőforrásokhoz, UDR-eket is létre kell hoznia.
+Az ASE-alhálózatot konfigurálhatja a BGP-útvonalak figyelmen kívül hagyására.  Ha úgy van beállítva, hogy figyelmen kívül hagyja a BGP-útvonalakat, az ASE minden probléma nélkül hozzáférhet a függőségeihez.  Ahhoz azonban, hogy az alkalmazásai hozzá tudjanak férni a helyszíni erőforrásokhoz, UDR-eket is létre kell hoznia.
 
 ASE-alhálózat konfigurálása a BGP-útvonalak figyelmen kívül hagyására:
 
 * Hozzon létre egy UDR-t, és rendelje hozzá az ASE-alhálózathoz, ha ez még nem történt meg.
-* Az Azure Portalon nyissa meg az ASE-alhálózathoz rendelt útválasztási táblázat felhasználói felületét.  Válassza a Konfiguráció lehetőséget.  A BGP-útvonalpropagálást állítsa Letiltva állapotúra.  Kattintson a Mentés gombra. A kikapcsoláshoz használt dokumentáció az [útválasztási táblázat létrehozása][routetable] dokumentumban található.
+* Az Azure Portalon nyissa meg az ASE-alhálózathoz rendelt útválasztási táblázat felhasználói felületét.  Válassza a Konfiguráció lehetőséget.  A BGP-útvonalpropagálást állítsa Letiltva állapotúra.  Kattintson a Mentés gombra. A beállítás kikapcsolására vonatkozó információkat az [útválasztási táblázat létrehozásával][routetable] foglalkozó témakörben találja meg.
 
-Miután konfigurálta a bevezető alhálózatot az összes BGP-útvonal figyelmen kívül hagyásához, az alkalmazások többé nem lesznek elérhetők a helyszínen. Annak engedélyezéséhez, hogy az alkalmazások hozzáférjenek a helyszíni erőforrásokhoz, szerkessze a UDR rendelt alhálózatot, és adjon hozzá útvonalakat a helyszíni címtartományok számára. A Következő ugrási típus értéke legyen Virtuális hálózati átjáró. 
+Miután beállította az ASE alhálózatot az összes BGP-útvonal figyelmen kívül hagyására, az alkalmazások a továbbiakban nem lesznek elérhetők a helyszínen. Ahhoz, hogy az alkalmazások hozzáférjenek a helyszíni erőforrásokhoz, szerkesztheti az ASE-alhálózathoz rendelt UDR-t, és hozzáadhat útvonalakat a helyszíni címtartományokhoz. A Következő ugrási típus értéke legyen Virtuális hálózati átjáró. 
 
 
 ## <a name="configure-your-ase-with-service-endpoints"></a>Az ASE konfigurálása szolgáltatásvégpontokkal ##
 
 Ha az Azure SQL és az Azure Storage felé irányuló forgalmon kívül az ASE összes kimenő forgalmát át szeretné irányítani, végezze el a következő lépéseket:
 
-1. Hozzon létre egy útválasztási táblázatot, és rendelje hozzá az ASE-alhálózathoz. Keresse meg a régiónak megfelelő címeket [app Service Environment felügyeleti címeket][management]. Hozzon létre útvonalakat ezekhez a címekhez egy következő ugrási típusú internettel. Ezekre az útvonalakra azért van szükség, mert az App Service Environment bejövő felügyeleti forgalmának ugyanarra a címre kell válaszolnia, amelyet elküldtek.   
+1. Hozzon létre egy útválasztási táblázatot, és rendelje hozzá az ASE-alhálózathoz. Keresse meg a régiójának megfelelő címeket az [App Service-környezet kezelési címeit][management] ismertető szakaszban. Hozzon létre útvonalakat ezekhez a címekhez egy következő ugrási típusú internettel. Ezekre az útvonalakra azért van szükség, mert az App Service-környezet bejövő felügyeleti forgalom kell válaszolni a címet, amelynek elküldte.   
 
 2. Engedélyezze a szolgáltatásvégpontokat az Azure SQL-hez és az Azure Storage-hoz az ASE-alhálózattal.  Miután ezt a lépést elvégezte, konfigurálhatja virtuális hálózatát kényszerített bújtatással.
 
-Ha ASE-t olyan virtuális hálózaton szeretné létrehozni, amely már konfigurálva lett arra, hogy minden forgalmat irányítson a helyszínen, az ASE-t Resource Manager-sablon használatával kell létrehozni.  ASE nem hozható létre a portállal egy már meglévő alhálózatban.  Amikor üzembe helyezi az ASE-t egy olyan virtuális hálózatban, amely már konfigurálva lett a kimenő forgalom irányítására a helyszínen, az ASE-t egy Resource Manager-sablon használatával kell létrehozni, ami lehetővé teszi egy meglévő alhálózat megadását. A bevezetési sablon használatával történő telepítésével kapcsolatos részletekért olvassa el a [app Service Environment sablon][template]alapján történő létrehozását ismertető cikkből.
+Ha ASE-t olyan virtuális hálózaton szeretné létrehozni, amely már konfigurálva lett arra, hogy minden forgalmat irányítson a helyszínen, az ASE-t Resource Manager-sablon használatával kell létrehozni.  ASE nem hozható létre a portállal egy már meglévő alhálózatban.  Amikor üzembe helyezi az ASE-t egy olyan virtuális hálózatban, amely már konfigurálva lett a kimenő forgalom irányítására a helyszínen, az ASE-t egy Resource Manager-sablon használatával kell létrehozni, ami lehetővé teszi egy meglévő alhálózat megadását. Az ASE sablonnal történő központi telepítéséről olvassa el [az App Service-környezet létrehozása sablon használatával][template]című részt.
 
-A szolgáltatásvégpontokkal Azure-beli virtuális hálózatok és alhálózatok készletére korlátozhatja a több-bérlős szolgáltatásokhoz való hozzáférést. A szolgáltatási végpontokról a [Virtual Network szolgáltatási végpontok][serviceendpoints] dokumentációjában olvashat bővebben. 
+A szolgáltatásvégpontokkal Azure-beli virtuális hálózatok és alhálózatok készletére korlátozhatja a több-bérlős szolgáltatásokhoz való hozzáférést. A szolgáltatásvégpontokról bővebben a [virtuális hálózatok szolgáltatásvégpontjaival][serviceendpoints] kapcsolatos dokumentációban olvashat. 
 
 Amikor engedélyezi a szolgáltatásvégpontokat egy erőforráson, az összes többi útvonalhoz képest nagyobb prioritású útvonalak jönnek létre. Ha kényszerítetten bújtatott ASE-vel használ szolgáltatásvégpontokat, az Azure SQL és az Azure Storage felügyeleti forgalma nem kényszerítetten bújtatott. Az ASE többi függőségi forgalma kényszerítetten bújtatott, és nem veszhet el, különben az ASE nem működik megfelelően.
 
 Amikor a szolgáltatásvégpontok engedélyezettek egy Azure SQL-példánnyal rendelkező alhálózaton, akkor az erről az alhálózatról elért összes Azure SQL-példányhoz engedélyezve kell lennie a szolgáltatásvégpontoknak. Ha több Azure SQL-példányt szeretne elérni ugyanarról az alhálózatról, nem engedélyezheti a szolgáltatásvégpontokat csak az egyik Azure SQL-példányon, egy másikon pedig nem.  Az Azure Storage nem úgy viselkedik, mint az Azure SQL.  Amikor az Azure Storage szolgáltatáshoz engedélyezi a szolgáltatásvégpontokat, azzal zárolja az erőforráshoz való hozzáférést az alhálózatról, de továbbra is elérhet más Azure Storage-fiókokat, még akkor is, ha azokon nincsenek engedélyezve a szolgáltatásvégpontok.  
 
-Ha kényszerített bújtatást konfigurál egy hálózatszűrő berendezéssel, akkor ne feledje, hogy az ASE az Azure SQL és az Azure Storage mellett más függőségekkel is rendelkezik. Ha a forgalom le van tiltva a függőségek számára, a bevezetés nem fog megfelelően működni.
+Ha kényszerített bújtatást konfigurál egy hálózatszűrő berendezéssel, akkor ne feledje, hogy az ASE az Azure SQL és az Azure Storage mellett más függőségekkel is rendelkezik. Ha a forgalom le van tiltva a függőségek, az ASE nem fog megfelelően működni.
 
 ![Kényszerített bújtatás szolgáltatásvégpontokkal][2]
 
@@ -89,7 +89,7 @@ Ha kényszerített bújtatást konfigurál egy hálózatszűrő berendezéssel, 
 
 Ha az Azure Storage felé irányuló forgalmon kívül bújtatni szeretné az ASE összes kimenő forgalmát, végezze el a következő lépéseket:
 
-1. Hozzon létre egy útválasztási táblázatot, és rendelje hozzá az ASE-alhálózathoz. Keresse meg a régiónak megfelelő címeket [app Service Environment felügyeleti címeket][management]. Hozzon létre útvonalakat ezekhez a címekhez egy következő ugrási típusú internettel. Ezekre az útvonalakra azért van szükség, mert az App Service Environment bejövő felügyeleti forgalmának ugyanarra a címre kell válaszolnia, amelyet elküldtek. 
+1. Hozzon létre egy útválasztási táblázatot, és rendelje hozzá az ASE-alhálózathoz. Keresse meg a régiójának megfelelő címeket az [App Service-környezet kezelési címeit][management] ismertető szakaszban. Hozzon létre útvonalakat ezekhez a címekhez egy következő ugrási típusú internettel. Ezekre az útvonalakra azért van szükség, mert az App Service-környezet bejövő felügyeleti forgalom kell válaszolni a címet, amelynek elküldte. 
 
 2. Szolgáltatásvégpontok engedélyezése az Azure Storage szolgáltatáshoz az ASE alhálózattal
 
@@ -101,7 +101,7 @@ Ha az Azure Storage felé irányuló forgalmon kívül bújtatni szeretné az AS
 
    A lap tetején kattintson a **PUT** elemre. Ez a lehetőség aktivál egy méretezési műveletet az App Service-környezetben, és beállítja a tűzfalat.
 
-A bevezetők _címeinek létrehozásához_kövesse az [app Service Environment sablonban való létrehozása][template] és a megfelelő sablon lekérése című témakör útmutatását.  Szerkessze az azuredeploy.json fájl „resources” (erőforrások) szakaszát, de a „properties” (tulajdonságok) blokkot ne, és a **userWhitelistedIpRanges** értékhez adjon hozzá egy sort a saját értékeivel.
+_Az ASE létrehozása a kimenő forgalmi címekkel_: Kövesse az [App Service-környezet sablonnal történő létrehozását][template] ismertető cikk utasításait, és kérje le a megfelelő sablont.  Szerkessze az azuredeploy.json fájl „resources” (erőforrások) szakaszát, de a „properties” (tulajdonságok) blokkot ne, és a **userWhitelistedIpRanges** értékhez adjon hozzá egy sort a saját értékeivel.
 
     "resources": [
       {

@@ -1,46 +1,46 @@
 ---
-title: Durable Functions létrehozása a Azure Portal használatával
-description: Megtudhatja, hogyan telepítheti a Azure Functions Durable Functions bővítményét a portál fejlesztéséhez.
+title: Tartós függvények létrehozása az Azure Portal használatával
+description: Ismerje meg, hogyan telepítheti a Durable Functions bővítményt az Azure Functions portálfejlesztéshez.
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: azfuncdf
 ms.openlocfilehash: 0060088acb100036c094406e01d0d736a4af88eb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75769642"
 ---
-# <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions létrehozása a Azure Portal használatával
+# <a name="create-durable-functions-using-the-azure-portal"></a>Tartós függvények létrehozása az Azure Portal használatával
 
-A Azure Functions [Durable functions](durable-functions-overview.md) -bővítménye a [Microsoft. Azure. Webjobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)NuGet csomagban található. Ezt a bővítményt telepíteni kell a Function alkalmazásban. Ez a cikk bemutatja, hogyan telepítheti a csomagot úgy, hogy tartós funkciókat fejlesszen ki a Azure Portalban.
+Az Azure Functions [tartós függvények](durable-functions-overview.md) bővítménye a [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)nuGet csomagban található. Ezt a bővítményt telepíteni kell a függvényalkalmazásban. Ez a cikk bemutatja, hogyan telepítheti ezt a csomagot, hogy tartós függvények az Azure Portalon.
 
 > [!NOTE]
 > 
-> * Ha tartós funkciókat fejleszt a alkalmazásban C#, érdemes megfontolnia a [Visual Studio 2019 fejlesztését](durable-functions-create-first-csharp.md).
-> * Ha a JavaScriptben tartós funkciókat fejleszt, érdemes megfontolnia a [Visual Studio Code-fejlesztést](./quickstart-js-vscode.md).
+> * Ha a C# függvényben tartós funkciókat fejleszt, inkább a [Visual Studio 2019 fejlesztését](durable-functions-create-first-csharp.md)érdemes figyelembe venni.
+> * Ha javascriptben tartós függvényeket fejleszt, inkább a [Visual Studio Code fejlesztését](./quickstart-js-vscode.md)érdemes figyelembe venni.
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-A függvények végrehajtásának üzemeltetéséhez Function-alkalmazás szükséges. A Function app lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése, skálázása és megosztása érdekében. Létrehozhat .NET-vagy JavaScript-alkalmazást is.
+Bármely függvény végrehajtásának üzemeltetéséhez rendelkeznie kell egy függvényalkalmazással. A függvényalkalmazás lehetővé teszi a függvények logikai egységként történő csoportosítását az erőforrások egyszerűbb kezelése, üzembe helyezése, méretezése és megosztása érdekében. Létrehozhat .NET vagy JavaScript alkalmazást.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
-Alapértelmezés szerint a létrehozott Function alkalmazás a Azure Functions futtatókörnyezet 2. x verzióját használja. A Durable Functions bővítmény a (z) és a (z) Azure Functions futtatókörnyezetének 1. x és C#2. x verziójában is működik a JavaScriptben, és a 2. x verzió. A sablonok azonban csak akkor érhetők el, ha a kiválasztott nyelvtől függetlenül megcélozzák a futtatókörnyezet 2. x verzióját.
+Alapértelmezés szerint a létrehozott függvényalkalmazás az Azure Functions futásidejű 2.x-es verzióját használja. A Durable Functions bővítmény az Azure Functions futásidejű C#-ban 1.x és 2.x-es verzióján, valamint a JavaScript 2.x-es verzióján is működik. A sablonok azonban csak akkor érhetők el, ha a futásidejű 2.x-es verzióját célozza meg, függetlenül a választott nyelvtől.
 
-## <a name="install-the-durable-functions-npm-package-javascript-only"></a>A tartós függvények NPM-csomagjának telepítése (csak JavaScript)
+## <a name="install-the-durable-functions-npm-package-javascript-only"></a>A tartós funkciókat ellátó npm csomag telepítése (csak JavaScript esetén)
 
-Ha JavaScript-Durable Functions hoz létre, akkor telepítenie kell a [`durable-functions` NPM csomagot](https://www.npmjs.com/package/durable-functions).
+Ha JavaScript durable functions-et hoz létre, telepítenie kell az [ `durable-functions` npm csomagot.](https://www.npmjs.com/package/durable-functions)
 
-1. Válassza ki a függvény alkalmazásának nevét, majd a **platform funkcióit**, majd a **speciális eszközöket (kudu)** .
+1. Válassza ki a függvényalkalmazás nevét, majd a **Platform Features**, majd **a Speciális eszközök (Kudu)** lehetőséget.
 
-   ![Functions platform-funkciók kudu kiválasztása](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+   ![Funkciók platform funkciók válassza Kudu](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
 
-2. A kudu-konzolon válassza a **Debug konzol** , majd a **cmd parancsot**.
+2. A Kudu konzolon belül válassza a **Debug konzol,** majd a **CMD**lehetőséget.
 
    ![Kudu hibakeresési konzol](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-3. A Function alkalmazás fájljának könyvtár-struktúrájának meg kell jelennie. Navigáljon a `site/wwwroot` mappához. Innen feltölthet egy `package.json` fájlt úgy, hogy áthúzza a fájl könyvtár ablakba. A minta `package.json` a következő:
+3. A függvényalkalmazás fájlkönyvtár-struktúrájának meg kell jelennie. Navigáljon a `site/wwwroot` mappához. Innen úgy tölthet fel `package.json` egy fájlt, hogy behúzza a fájlkönyvtár ablakába. A `package.json` minta az alábbiakban található:
 
     ```json
     {
@@ -50,15 +50,15 @@ Ha JavaScript-Durable Functions hoz létre, akkor telepítenie kell a [`durable-
     }
     ```
 
-   ![Kudu feltöltési csomag. JSON](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   ![Kudu feltöltés package.json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-4. A `package.json` feltöltése után futtassa a `npm install` parancsot a kudu távoli végrehajtási konzolról.
+4. Miután `package.json` feltöltötte a `npm install` parancsot, futtassa a parancsot a Kudu távoli végrehajtási konzolról.
 
-   ![Kudu NPM-telepítés futtatása](./media/durable-functions-create-portal/kudu-npm-install.png)
+   ![Kudu fuss npm telepítés](./media/durable-functions-create-portal/kudu-npm-install.png)
 
 ## <a name="create-an-orchestrator-function"></a>Orchestrator függvény létrehozása
 
-1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
+1. Bontsa ki a **+** függvényalkalmazást, és kattintson a **Funkciók**gomb ra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
 
    ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
 
@@ -66,29 +66,29 @@ Ha JavaScript-Durable Functions hoz létre, akkor telepítenie kell a [`durable-
 
     ![Függvények rövid útmutatója - további sablonok kiválasztása](./media/durable-functions-create-portal/add-first-function.png)
 
-1. A keresőmezőbe írja be a `durable` kifejezést, majd válassza a **DURABLE FUNCTIONS http-indító** sablont.
+1. A keresőmezőbe írja `durable` be a kívánt parancsot, és válassza a **Durable Functions HTTP starter** sablont.
 
-1. Ha a rendszer kéri, válassza a **telepítés** lehetőséget az Azure DurableTask bővítmény és a Function alkalmazásban lévő függőségek telepítéséhez. A bővítményt csak egyszer kell telepíteni az adott függvényalkalmazáshoz. A telepítést követően válassza a **Folytatás** gombot.
+1. Amikor a rendszer kéri, válassza **a Telepítés** lehetőséget az Azure DurableTask bővítmény és a függvényalkalmazásban lévő függőségek telepítéséhez. A bővítményt csak egyszer kell telepíteni az adott függvényalkalmazáshoz. A telepítést követően válassza a **Folytatás** gombot.
 
     ![Kötési bővítmények telepítése](./media/durable-functions-create-portal/install-durabletask-extension.png)
 
-1. A telepítés befejezése után nevezze el az új függvényt `HttpStart` majd válassza a **Létrehozás**lehetőséget. A létrehozott függvény az előkészítés elindítására szolgál.
+1. A telepítés befejezése után nevezze `HttpStart` el az új függvényt, és válassza a **Létrehozás gombot.** A létrehozott függvény a vezénylés elindításához használatos.
 
-1. Hozzon létre egy másik függvényt a Function alkalmazásban, ezúttal a **Durable functions Orchestrator** sablon használatával. Nevezze el az új összehangoló függvényt `HelloSequence`.
+1. Hozzon létre egy másik függvényt a függvényalkalmazásban, ezúttal a **Durable Functions Orchestrator** sablon használatával. Nevezze el az `HelloSequence`új vezénylési függvényt.
 
-1. Hozzon létre egy `Hello` nevű harmadik függvényt a **Durable functions Activity** sablon használatával.
+1. Hozzon létre `Hello` egy harmadik függvényt, amelyet a **Tartós függvények tevékenység sablonnal** neveznek el.
 
-## <a name="test-the-durable-function-orchestration"></a>A tartós függvények előkészítésének tesztelése
+## <a name="test-the-durable-function-orchestration"></a>A tartós függvény vezénylésének tesztelése
 
-1. Lépjen vissza a **HttpStart** függvényhez, válassza a **</> a függvény URL-címének beolvasása** lehetőséget, és **másolja** az URL-címet. Ezt az URL-címet használhatja a **HelloSequence** függvény elindításához.
+1. Lépjen vissza a **HttpStart** függvényhez, válassza **a</> függvény URL-címének bemásolása** és az URL **másolása lehetőséget.** Ezzel az URL-címmel indíthatja el a **HelloSequence** függvényt.
 
-1. Használjon olyan HTTP-eszközt, mint a Poster vagy a cURL, hogy POST-kérést küldjön a másolt URL-címre. A következő példa egy olyan cURL-parancs, amely POST-kérést küld a tartós függvénynek:
+1. A HTTP-eszköz, például a Postman vagy a cURL használatával POST-kérelmet küldhet a másolt URL-címre. A következő példa egy cURL parancs, amely POST-kérelmet küld a tartós függvénynek:
 
     ```bash
     curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-    Ebben a példában a `{your-function-app-name}` az a tartomány, amely a Function alkalmazás neve. A válaszüzenet URI-végpontok készletét fogja tartalmazni, amelyek a végrehajtás monitorozásához és szabályozásához használhatók fel hasonlóan a következő példához:
+    Ebben a `{your-function-app-name}` példában a tartomány, amely a függvényalkalmazás neve. A válaszüzenet URI-végpontok készletét fogja tartalmazni, amelyek a végrehajtás monitorozásához és szabályozásához használhatók fel hasonlóan a következő példához:
 
     ```json
     {  
@@ -100,7 +100,7 @@ Ha JavaScript-Durable Functions hoz létre, akkor telepítenie kell a [`durable-
     }
     ```
 
-1. Hívja meg az `statusQueryGetUri` Endpoint URI-t, és láthatja a tartós függvény aktuális állapotát, ami a következő példához hasonló lehet:
+1. Hívja `statusQueryGetUri` meg a végpont URI-ját, és láthatja a tartós függvény aktuális állapotát, amely a következő példához hasonlóan nézhet ki:
 
     ```json
         {
@@ -112,7 +112,7 @@ Ha JavaScript-Durable Functions hoz létre, akkor telepítenie kell a [`durable-
         }
     ```
 
-1. Folytassa a `statusQueryGetUri` végpont meghívását mindaddig, amíg az állapot be nem **fejeződik**, és az alábbi példához hasonló választ láthat:
+1. Folytassa a `statusQueryGetUri` végpont hívását, amíg az állapot **befejezettre**nem változik, és a következő példához hasonló választ lát:
 
     ```json
     {
@@ -128,9 +128,9 @@ Ha JavaScript-Durable Functions hoz létre, akkor telepítenie kell a [`durable-
         }
     ```
 
-Az első tartós funkció most már működik az Azure-ban.
+Az első tartós függvény most már működik az Azure-ban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További tudnivalók a tartós függvények gyakori mintái](durable-functions-overview.md#application-patterns)
+> [További információ a tartós függvények gyakori mintáiról](durable-functions-overview.md#application-patterns)

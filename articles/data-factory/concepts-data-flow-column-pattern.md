@@ -1,74 +1,86 @@
 ---
-title: Oszlopok mintái Azure Data Factory leképezési adatfolyamban
-description: Általánosított Adatátalakítási minták létrehozása Azure Data Factory leképezési adatforgalmához tartozó oszlopos minták használatával
+title: Oszlopminták az Azure Data Factory leképezési adatfolyamában
+description: Általános adatátalakítási minták létrehozása oszlopminták használatával az Azure Data Factory leképezési adatfolyamaiban
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: 0c9a3c2ef05f4a11933ca7fc81c7c0f87a612293
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: bfb4eeef482c4944e75b7805642bc93c23195208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79243808"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065524"
 ---
-# <a name="using-column-patterns-in-mapping-data-flow"></a>Oszlopok mintáinak használata a leképezési adatfolyamban
+# <a name="using-column-patterns-in-mapping-data-flow"></a>Oszlopminták használata az adatfolyam leképezésében
 
-Számos leképezési adatfolyam-átalakítás lehetővé teszi a sablon oszlopainak a rögzített oszlopnevek helyett a mintázatok alapján történő hivatkozását. Ezt a megfeleltetést *oszlopbeli mintázatoknak*nevezzük. Megadhat mintázatokat az oszlopoknak a név, az adattípus, a stream vagy a pozíció alapján történő egyeztetéséhez a mezők nevének megadása helyett. Az oszlopok mintája két esetben hasznos:
+Számos leképezési adatfolyam-átalakítás lehetővé teszi, hogy a sablonoszlopokra a minták alapján hivatkozzon a kódolt oszlopnevek helyett. Ezt az egyezést *oszlopmintáknak nevezzük.* A pontos mezőnevek megkövetelése helyett mintákat is definiálhat az oszlopok nak a név, adattípus, adatfolyam vagy pozíció alapján. Két olyan forgatókönyv létezik, ahol az oszlopminták hasznosak:
 
-* Ha a bejövő forrás mezői gyakran változnak, például a szövegfájlokban vagy a NoSQL-adatbázisokban lévő oszlopok módosításának esetére. Ez a forgatókönyv a [séma drift](concepts-data-flow-schema-drift.md)néven ismert.
-* Ha egy gyakori műveletet szeretne végezni az oszlopok nagy csoportjára. Például minden olyan oszlopot, amely "Total" értékkel rendelkezik az oszlop nevében, dupla értékre kívánja feldolgozni.
+* Ha a bejövő forrásmezők gyakran változnak, például a szövegfájlok vagy a NoSQL adatbázisok oszlopainak módosítása. Ezt a forgatókönyvet [sémaeltolódásnak nevezzük.](concepts-data-flow-schema-drift.md)
+* Ha egy általános műveletet szeretne végezni egy nagy oszlopcsoporton. Ha például minden olyan oszlopot kettős be dobásra szeretne vetni, amelynek oszlopnevében "összes" van.
 
-Az oszlopok mintázata jelenleg a származtatott oszlop, az összesítés, a kiválasztás és a fogadó átalakításban érhető el.
+Az oszlopminták jelenleg a származtatott oszlopban, összesítésben, kijelölésben és fogadóban érhetők el.
 
-## <a name="column-patterns-in-derived-column-and-aggregate"></a>Oszlopos minták származtatott oszlopban és összesítésben
+## <a name="column-patterns-in-derived-column-and-aggregate"></a>Oszlopminták a származtatott oszlopban és összesítésben
 
-Ha egy származtatott oszlopban vagy egy összesített átalakítás összesítések lapján szeretne oszlop mintát felvenni, kattintson a plusz ikonra a meglévő oszlop jobb oldalán. Válassza az **oszlop hozzáadása minta**lehetőséget. 
+Ha egy származtatott oszlopban vagy egy összesítés összesítése lapján oszlopmintát szeretne hozzáadni, kattintson a meglévő oszlop jobb oldalán található plusz ikonra. Válassza **az Oszlopminta hozzáadása lehetőséget.** 
 
-![oszlop mintázatai](media/data-flow/columnpattern.png "Oszlopminták")
+![oszlopminták](media/data-flow/columnpattern.png "Oszlopminták")
 
-A [Kifejezésszerkesztő](concepts-data-flow-expression-builder.md) segítségével adja meg a egyezési feltételt. Hozzon létre egy logikai kifejezést, amely az oszlop `name`, `type`, `stream`és `position` alapján megfelel az oszlopoknak. A minta minden olyan oszlopot érint, amely sodródik vagy definiálva lesz, ahol a feltétel igaz értéket ad vissza.
+Használja a [kifejezésszerkesztőt](concepts-data-flow-expression-builder.md) az egyezési feltétel megadásához. Hozzon létre egy logikai kifejezést, `stream`amely `position` megfelel az oszlopoknak a `name`, `type`, és az oszlop alapján. A minta hatással lesz minden oszlop, sodródott vagy definiált, ahol a feltétel igaz értéket ad vissza.
 
-Az egyeztetési feltétel alá tartozó két kifejezés mező adja meg az érintett oszlopok új neveit és értékeit. Az egyező mező meglévő értékének megkereséséhez használja a `$$`. A bal oldali kifejezés mezőben a név és a jobb oldali kifejezés mező határozza meg az értéket.
+Az egyezési feltétel alatti két kifejezésmező az érintett oszlopok új nevét és értékeit adja meg. Az `$$` egyező mező meglévő értékére való hivatkozás. A bal oldali kifejezés mező határozza meg a nevet, a jobb oldali kifejezésmező pedig az értéket.
 
-![oszlop mintázatai](media/data-flow/columnpattern2.png "Oszlopminták")
+![oszlopminták](media/data-flow/columnpattern2.png "Oszlopminták")
 
-A fenti oszlop mintája minden dupla típusú oszlopra illeszkedik, és egy összesített oszlopot hoz létre egymás után. Az új oszlop neve az egyező oszlop neve az "_total" értékkel összefűzve. Az új oszlop értéke a meglévő dupla érték lekerekített, összesített összege.
+A fenti oszlopminta minden azonos típusú oszlopnak felel meg, és egyezésenként egy összesítő oszlopot hoz létre. Az új oszlop neve az egyező oszlop neve, amely "_total" -val van összefűzve. Az új oszlop értéke a meglévő kettős érték kerekített, összesített összege.
 
-Az egyeztetési feltétel helyességének ellenőrzéséhez ellenőrizheti a **megvizsgálandó** lapon definiált oszlopok kimeneti sémáját, vagy beolvashatja az adatok pillanatképét az **adatelőnézet** lapon. 
+Az egyeztetési feltétel helyességének ellenőrzéséhez érvényesítheti a meghatározott oszlopok kimeneti sémáját a **Vizsgálat** lapon, vagy pillanatképet kaphat az adatokról az **Adatok előnézete** lapon. 
 
-![oszlop mintázatai](media/data-flow/columnpattern3.png "Oszlopminták")
+![oszlopminták](media/data-flow/columnpattern3.png "Oszlopminták")
 
-## <a name="rule-based-mapping-in-select-and-sink"></a>Szabályon alapuló hozzárendelés a Select és a mosogatóban
+## <a name="rule-based-mapping-in-select-and-sink"></a>Szabályalapú leképezés a kijelölésben és a fogadóban
 
-A forrásban lévő oszlopok leképezése és az átalakítások kiválasztása esetén rögzített leképezési vagy szabály-alapú leképezéseket adhat hozzá. Ha ismeri az adatok sémáját, és meghatározott oszlopokat vár a forrás adatkészletből, hogy mindig megfeleljenek az adott statikus neveknek, használja a rögzített leképezést. Ha rugalmas sémákat használ, a szabályon alapuló leképezés használatával hozzon létre egy minta egyezést az oszlopok `name`, `type`, `stream`és `position` alapján. A rögzített és a szabályokon alapuló leképezések tetszőleges kombinációja lehet. 
+Amikor oszlopokat térképez le a forrásban, és átalakításokat választ ki, rögzített leképezést vagy szabályalapú leképezéseket adhat hozzá. Egyezés `name`a `type` `stream`, `position` , és oszlopok alapján. A rögzített és a szabályalapú leképezések tetszőleges kombinációját használhatja. Alapértelmezés szerint az 50 oszlopnál nagyobb méretű összes vetület alapértelmezés szerint szabályalapú leképezést kap, amely minden oszlopban megfelel, és a bemeneti nevet adja ki. 
 
-Szabály alapú hozzárendelés hozzáadásához kattintson a **leképezés hozzáadása** elemre, és válassza a **szabály alapú leképezés**lehetőséget.
+Szabályalapú leképezés hozzáadásához kattintson a **Leképezés hozzáadása** gombra, és válassza a **Szabályalapú leképezés**lehetőséget.
 
-![szabály alapú leképezés](media/data-flow/rule2.png "Szabály alapú leképezés")
+![szabályalapú leképezés](media/data-flow/rule2.png "Szabályalapú leképezés")
 
-A bal oldali kifejezés mezőbe írja be a logikai egyezési feltételt. A jobb oldali kifejezés mezőben adja meg, hogy az egyeztetett oszlop hogyan lesz leképezve. A megegyező mező meglévő nevére való hivatkozáshoz használja a `$$`.
+Minden szabályalapú leképezéshez két bemenet szükséges: az a feltétel, amelyalapján egyeztetni kell, és hogy mi az egyes leképezett oszlopok elnevezése. Mindkét értéket a [kifejezésszerkesztő](concepts-data-flow-expression-builder.md)adja meg. A bal oldali kifejezésmezőbe írja be a logikai egyezési feltételt. A jobb kifejezésmezőben adja meg, hogy az egyező oszlop hoz mihez lesz leképezve.
 
-Ha a lefelé mutató Chevron ikonra kattint, megadhat egy regex-leképezési feltételt.
+![szabályalapú leképezés](media/data-flow/rule-based-mapping.png "Szabályalapú leképezés")
 
-Kattintson a szemüveg ikonra egy szabály alapú hozzárendelés mellett, hogy megtekintse, hogy mely definiált oszlopok vannak összehasonlítva, és mire vannak leképezve.
+A `$$` szintaxissal hivatkozzon egy egyező oszlop bemeneti nevére. A fenti képet példaként használva tegyük fel, hogy a felhasználó minden olyan karakterláncoszlopot meg szeretne egyeztetni, amelynek neve hat karakternél rövidebb. Ha egy bejövő oszlop `test`ot `$$ + '_short'` neveztek el, `test_short`a kifejezés átnevezi az oszlopot . Ha ez az egyetlen létező leképezés, akkor a feltételnek nem megfelelő összes oszlop el lesz hagyva a kimenetelen adatokból.
 
-![szabály alapú leképezés](media/data-flow/rule1.png "Szabály alapú leképezés")
+A minták egyaránt illeszkednek az elsodródott és a definiált oszlopokhoz. Ha meg szeretné tekinteni, hogy mely definiált oszlopokat képezi le egy szabály, kattintson a szabály melletti szemüveg ikonra. Ellenőrizze a kimenetet az adatok előnézetével.
 
-A fenti példában két szabály-alapú hozzárendelés jön létre. Az első a "Movie" névvel ellátott összes oszlopot felveszi, és leképezi őket a meglévő értékekre. A második szabály a regexet használja a "Movie" kezdetű összes oszlop megfeleltetéséhez, és leképezi őket a "movieId" oszlopra.
+### <a name="regex-mapping"></a>Regex feltérképezése
 
-Ha a szabály több azonos leképezést eredményez, engedélyezze az ismétlődő **bemenetek kihagyását** , vagy hagyja meg az ismétlődő **kimeneteket** az ismétlődések elkerülése érdekében.
+Ha a lefelé mutató sávnyíl ikonra kattint, megadhat egy regex-leképezési feltételt. A regex-leképezési feltétel megfelel a megadott regex feltételnek megfelelő összes oszlopnévnek. Ez szabványos szabályalapú hozzárendelésekkel kombinálva használható.
 
-## <a name="pattern-matching-expression-values"></a>Mintázattal egyező kifejezés értékei.
+![szabályalapú leképezés](media/data-flow/regex-matching.png "Szabályalapú leképezés")
 
-* a `$$` az egyes egyezések nevét vagy értékét futtatja futási időben
-* `name` a bejövő oszlopok nevét jelöli
-* `type` az egyes bejövő oszlopok adattípusát jelöli
-* `stream` az egyes adatfolyamokhoz társított nevet vagy a folyamat átalakítását jelöli
-* `position` az adatfolyamat oszlopainak sorszáma
+A fenti példa megegyezik `(r)` a regex mintával vagy bármely oszlopnévvel, amely kisbetűs r-t tartalmaz. A normál szabályalapú leképezéshez hasonlóan az összes egyező `$$` oszlopot a jobb oldali feltétel módosítja a szintaxis használatával.
 
-## <a name="next-steps"></a>Következő lépések
-* További információ az adatátalakítások hozzárendelési folyamatának [kifejezési nyelvéről](data-flow-expression-functions.md)
-* Oszlopok mintáinak használata a fogadó [átalakításban](data-flow-sink.md) és az [átalakítás kiválasztása](data-flow-select.md) szabály alapú leképezéssel
+### <a name="rule-based-hierarchies"></a>Szabályalapú hierarchiák
+
+Ha a definiált vetület hierarchiával rendelkezik, szabályalapú leképezéssel képezheti le a hierarchiák aloszlopait. Adja meg az egyező feltételt és azt az összetett oszlopot, amelynek aloszlopait le szeretné képezni. A program minden egyező aloszlopot a jobb oldalon megadott "Név mint" szabállyal hoz létre.
+
+![szabályalapú leképezés](media/data-flow/rule-based-hierarchy.png "Szabályalapú leképezés")
+
+A fenti példa az összetett oszlop `a`összes aloszlopának megfelel. `a`két aloszlopot tartalmaz, `b` és `c`a. A kimeneti séma `b` két `c` oszlopot tartalmaz, és `$$`a "Név mint" feltétel .
+
+## <a name="pattern-matching-expression-values"></a>Mintázategyező kifejezésértékek.
+
+* `$$`lefordítja az egyes mérkőzések nevét vagy értékét futási időben
+* `name`az egyes bejövő oszlopok nevét jelöli
+* `type`az egyes bejövő oszlopok adattípusát jelöli
+* `stream`az egyes adatfolyamok nevének, illetve a folyamat átalakításának
+* `position`az oszlopok sorpozíciója az adatfolyamban
+
+## <a name="next-steps"></a>További lépések
+* További információ az adatátalakítások leképezési [adatfolyam-kifejezésnyelvéről](data-flow-expression-functions.md)
+* Oszlopminták használata a [fogadó transzformációjában,](data-flow-sink.md) és [az átalakítás kiválasztása](data-flow-select.md) szabályalapú leképezéssel

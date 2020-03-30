@@ -1,6 +1,6 @@
 ---
-title: Figyelő Azure Site Recovery | Microsoft Docs
-description: Azure Site Recovery replikációs problémák és műveletek figyelése és hibaelhárítása a portál használatával
+title: Az Azure site recovery figyelése | Microsoft dokumentumok
+description: Az Azure Site Recovery replikációs problémáinak és műveleteinek figyelése és elhárítása a portál használatával
 author: raynew
 manager: carmonm
 ms.service: site-recovery
@@ -8,177 +8,177 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: aa9d776df50306ab1705426c923413b5a5d545a5
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68717350"
 ---
-# <a name="monitor-site-recovery"></a>Figyelő Site Recovery
+# <a name="monitor-site-recovery"></a>A Site Recovery monitorozása
 
-Ebből a cikkből megtudhatja, hogyan [](site-recovery-overview.md)figyelheti az Azure Site Recoveryt site Recovery beépített figyelés használatával.  A következőket figyelheti:
+Ebben a cikkben megtudhatja, hogyan figyelheti az Azure [Site Recovery](site-recovery-overview.md), a Site Recovery beépített figyelés használatával.  A következőket figyelheti:
 
 - A Site Recovery által replikált gépek állapota és állapota
 - A gépek feladatátvételi állapotának tesztelése.
-- A konfigurációt és a replikálást érintő problémák és hibák.
+- A konfigurációt és a replikációt érintő problémák és hibák.
 - Infrastruktúra-összetevők, például helyszíni kiszolgálók.
 
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Mielőtt elkezdené, érdemes áttekinteni a [gyakori figyelési kérdéseket](monitoring-common-questions.md) .
+Előfordulhat, hogy a kezdés előtt át szeretné tekinteni a [gyakori figyelési kérdéseket.](monitoring-common-questions.md)
 
-## <a name="monitor-in-the-dashboard"></a>Figyelő az irányítópulton
+## <a name="monitor-in-the-dashboard"></a>Monitor az irányítópulton
 
-1. A tárolóban kattintson az **Áttekintés**elemre. A Recovery Services irányítópult egyetlen helyen összesíti a tár összes figyelési információját. Mindkét Site Recovery és a Azure Backup szolgáltatáshoz lapok is vannak, amelyek között válthat.
+1. A tárolóban kattintson az **Áttekintés gombra.** A Helyreállítási szolgáltatások irányítópultja egyetlen helyen egyesíti a tároló összes figyelési információját. Vannak lapok mind a Site Recovery és az Azure Backup szolgáltatáshoz, és válthat közöttük.
 
-    ![Site Recovery irányítópult](./media/site-recovery-monitor-and-troubleshoot/dashboard.png)
+    ![Webhely-helyreállítási irányítópult](./media/site-recovery-monitor-and-troubleshoot/dashboard.png)
 
-2. Az irányítópulton különböző területekre szűkítheti a részletezést. 
+2. Az irányítópultról részletezze a különböző területeket. 
 
-    ![Site Recovery irányítópult](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png).
+    ![Webhely-helyreállítási irányítópult](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png).
 
-3. A **replikált elemek**területen kattintson az **összes megtekintése** elemre a tárolóban lévő összes kiszolgáló megtekintéséhez.
-4. A részletezéshez kattintson az egyes szakaszok állapot részleteire.
-5. Az **infrastruktúra nézetben**a replikálni kívánt gépek típusától függően rendezheti a figyelési adatokat.
+3. A **Replikált elemek alkalmazásban**kattintson az Összes **megtekintése** elemre a tároló összes kiszolgálójának megtekintéséhez.
+4. A részletezéshez kattintson az egyes szakaszok állapotrészleteire.
+5. Infrastruktúra **nézetben**rendezze a figyelési adatokat a replikáló gépek típusa szerint.
 
 ## <a name="monitor-replicated-items"></a>Replikált elemek figyelése
 
-A **replikált elemekben**figyelje a tárolóban lévő összes olyan gép állapotát, amelyen engedélyezve van a replikáció.
+A **Replikált elemek alkalmazásban**figyelje a tárolóban lévő összes olyan gép állapotát, amelyen engedélyezve van a replikáció.
 
 **Állapot** | **Részletek**
 --- | ---
-Kifogástalan | A replikáció általában folyamatban van. A rendszer nem észlel hibát vagy figyelmeztetési tüneteket.
-Figyelmeztetés | A rendszer egy vagy több olyan figyelmeztetési tünetet észlel, amely hatással lehet a replikációra.
-Kritikus | Egy vagy több kritikus replikációs hiba tünetei észlelhetők.<br/><br/> Ezek a hibák általában a replikálás során beragadtak, vagy az adatváltozási sebességnek megfelelően nem haladnak előre.
-Nem alkalmazható | Azok a kiszolgálók, amelyeknek jelenleg nem várható a replikálásuk. Ilyenek lehetnek a feladatátvétel alatt álló gépek.
+Kifogástalan | A replikáció normálisan halad. A rendszer nem észlel hiba- vagy figyelmeztető tüneteket.
+Figyelmeztetés | A rendszer egy vagy több olyan figyelmeztető tünetet észlel, amely hatással lehet a replikációra.
+Kritikus | A rendszer egy vagy több kritikus replikációs hibajelenséget észlelt.<br/><br/> Ezek a hibajelenségek általában azt jelzik, hogy a replikáció beragadt, vagy nem halad olyan gyorsan, mint az adatok változási sebessége.
+Nem alkalmazható | Azok a kiszolgálók, amelyek várhatóan nem replikálódnak. Ez magában foglalhatja a feladatátvételt leadott gépeket is.
 
-## <a name="monitor-test-failovers"></a>Feladatátvételi teszt figyelése
+## <a name="monitor-test-failovers"></a>Tesztfeladat-átvételek figyelése
 
-A **feladatátvételi teszt sikeressége**során figyelje a tárolóban lévő gépek feladatátvételi állapotát.
+A **feladatátvételi teszt sikeres,** figyelheti a feladatátvételi állapotát a tárolóban lévő gépek.
 
-- Javasoljuk, hogy hat havonta legalább egyszer futtasson feladatátvételi tesztet a replikált gépeken. Ez a módszer azt vizsgálja, hogy a feladatátvétel a várt módon működik-e, az éles környezet megszakítása nélkül. 
-- A feladatátvételi teszt csak akkor tekinthető sikeresnek, ha a feladatátvétel és feladatátvétel utáni karbantartás sikeresen befejeződött.
+- Azt javasoljuk, hogy a replikált gépeken legalább hathavonta egyszer futtasson egy tesztfeladat-átvételt. Ez egy módja annak ellenőrzésére, hogy a feladatátvétel a várt módon működik, anélkül, hogy megzavarná az éles környezetben. 
+- A tesztfeladat-átvétel csak akkor tekinthető sikeresnek, ha a feladatátvétel és a feladatátvétel utáni karbantartás sikeresen befejeződött.
 
 **Állapot** | **Részletek**
 --- | ---
-A teszt elvégzése ajánlott | Azok a gépek, amelyeknek nincs feladatátvételi tesztje, mivel a védelem engedélyezve volt.
-Sikeresen végrehajtva | Gépek sikeres feladatátvételi teszttel.
-Nem alkalmazható | Azok a gépek, amelyek jelenleg nem jogosultak feladatátvételi tesztre. A feladatátvételt nem igénylő gépek például a kezdeti replikálási/tesztelési feladatátvétel/feladatátvétel folyamatban van.
+Ajánlott vizsgálat | Azok a gépek, amelyek a védelem engedélyezése óta nem történt tesztfeladat-átvétel.
+Sikeresen végrehajtva | Sikeres vagy sikeresebb tesztfeladat-felvevőfeladatokkal rendelkező gépek.
+Nem alkalmazható | Gépek, amelyek jelenleg nem jogosultak a teszt feladatátvételre. Például a feladatátvételt megvevő gépek kezdeti replikációs/teszt feladatátvétel/feladatátvétel folyamatban van.
 
 ## <a name="monitor-configuration-issues"></a>Konfigurációs problémák figyelése
 
-**Konfigurációs problémák**esetén figyelje azokat a problémákat, amelyek hatással lehetnek a sikeres feladatátvételre.
+A **konfigurációs problémák**ban figyelje azolyan problémákat, amelyek hatással lehetnek a sikeres feladatátvételi képességre.
 
-- A konfigurációs problémákat (kivéve a szoftverfrissítés rendelkezésre állását) egy periodikus érvényesítő művelet észleli, amely alapértelmezés szerint 12 óránként fut. Az érvényesítési művelet azonnal futtatható, ha a frissítés ikonra kattint a **konfigurációs problémák** szakasz fejléce mellett.
-- A hivatkozásokra kattintva további részleteket tudhat meg. Az egyes gépeket érintő problémák esetén kattintson a **szükséges figyelmet** a **cél konfigurációk** oszlopban. A részletek közé tartoznak a szervizeléssel kapcsolatos javaslatok.
+- A konfigurációs problémákat (a szoftverfrissítések rendelkezésre állása kivételével) egy 12 óránként 12 óránként futó rendszeres érvényesítő művelet észleli. A validátorműveletet kényszerítheti az azonnali futtatásra, ha a **Konfigurációs problémák** szakasz fejléce melletti frissítésikonra kattint.
+- További részletekért kattintson a hivatkozásokra. Az adott gépeket érintő problémák esetén kattintson a **Szükséges figyelem** a **Célkonfigurációk** oszlopban. A részletek közé tartoznak a javítási javaslatok.
 
 **Állapot** | **Részletek**
 --- | ---
 Hiányzó konfigurációk | Hiányzik egy szükséges beállítás, például egy helyreállítási hálózat vagy egy erőforráscsoport.
-Hiányzó erőforrások | Egy megadott erőforrás nem található, vagy nem érhető el az előfizetésben. Az erőforrás például törölve lett vagy át lett telepítve. A figyelt erőforrások közé tartozik a célként megadott erőforráscsoport, a cél VNet/alhálózat, a napló/cél Storage-fiók, a cél rendelkezésre állási csoport, a célként megadott IP-cím.
-Előfizetési kvóta |  A rendszer összehasonlítja a rendelkezésre álló előfizetési erőforrás-kvóta egyenlegét a tárolóban lévő összes gép feladatátvételéhez szükséges egyenleggel.<br/><br/> Ha nincs elegendő erőforrás, a rendszer nem elegendő kvóta-egyenleget jelez.<br/><br/> A kvóták a virtuális gépek alapszámának, a virtuálisgép-család alapszámának, a hálózati kártya (NIC) darabszámának figyelésére szolgálnak.
-Szoftverfrissítések | Az új szoftverfrissítések rendelkezésre állása és a lejáró szoftverekkel kapcsolatos információk.
+Hiányzó erőforrások | Egy adott erőforrás nem található, vagy nem érhető el az előfizetésben. Például az erőforrást törölték vagy áttelepítették. Figyelt erőforrások közé tartozik a cél erőforráscsoport, cél Virtuálishálózat/alhálózat, log/target storage fiók, cél rendelkezésre állási készlet, cél IP-cím.
+Előfizetési kvóta |  A rendelkezésre álló előfizetési erőforrás kvóta egyenlege összehasonlítja a tárolóban lévő összes gép feladatátvételhez szükséges egyenleg.<br/><br/> Ha nincs elegendő erőforrás, a rendszer nem jelenti a kvótaegyenleget.<br/><br/> A kvóták figyelik a virtuális gépek magszámát, a virtuális gépek és a virtuális kártya magszámát, a hálózati kártya (NIC) számát.
+Szoftverfrissítések | Az új szoftverfrissítések elérhetősége és a lejáró szoftververziókra vonatkozó információk.
 
 
-## <a name="monitor-errors"></a>Figyelési hibák
+## <a name="monitor-errors"></a>Monitor hibák
 
-A **hiba**összefoglalása során figyelje a jelenleg aktív hibák tüneteit, amelyek hatással lehetnek a tárolóban lévő kiszolgálók replikálására, és figyelheti az érintett gépek számát.
+A **Hibaösszegzés**ben figyelje a jelenleg aktív hibajelenségeket, amelyek hatással lehetnek a tárolóban lévő kiszolgálók replikációjára, és figyelheti az érintett gépek számát.
 
-- A helyszíni infrastruktúra-összetevőket érintő hibák megjelennek a szakasz elején. Például nem érkezik szívverés a Azure Site Recovery szolgáltatótól a helyszíni konfigurációs kiszolgálón vagy a Hyper-V-gazdagépen.
-- Ezt követően a replikált kiszolgálókat érintő replikációs hibák tünetei láthatók.
-- A tábla bejegyzései a hiba súlyosságának csökkenő sorrendjében vannak rendezve, majd az érintett gépek számának csökkenő sorrendbe állításával.
-- Az érintett kiszolgálók száma hasznos módszer annak megértéséhez, hogy egyetlen mögöttes probléma milyen hatással lehet több gépre. Például egy hálózati hiba hatással lehet az Azure-ba replikált összes gépre. 
-- Egyetlen kiszolgálón több replikációs hiba is megjelenhet. Ebben az esetben minden egyes hiba tünete a kiszolgálót az érintett kiszolgálók listáján számolja. A probléma kijavítása után a replikációs paraméterek javulnak, és a rendszer törli a hibát a gépről.
+- A helyszíni infrastruktúra-összetevőket érintő hibák a szakasz kezdetét jelentik. Például nem kap egy szívverést az Azure Site Recovery Provider a helyszíni konfigurációs kiszolgálón, vagy a Hyper-V állomás.
+- Ezután a replikált kiszolgálókat érintő replikációs hibajelenségek jelennek meg.
+- A táblabejegyzések rendezése a hiba súlyosságának csökkenő sorrendje, majd az érintett gépek számlálási sorrendje szerint történik.
+- Az érintett kiszolgálók száma hasznos módja annak megértéséhez, hogy egy mögöttes probléma hatással lehet-e több gépre. Például egy hálózati hiba potenciálisan hatással lehet az Azure-ba replikáló összes gépre. 
+- Egyetlen kiszolgálón több replikációs hiba is előfordulhat. Ebben az esetben minden hibatünet megszámolja, hogy a kiszolgáló szerepel-e az érintett kiszolgálók listájában. A probléma kijavítása után javulnak a replikációs paraméterek, és a hiba törlődik a gépről.
 
-## <a name="monitor-the-infrastructure"></a>Az infrastruktúra figyelése.
+## <a name="monitor-the-infrastructure"></a>Figyelje az infrastruktúrát.
 
-Az **infrastruktúra nézetben**figyelje a replikációban részt vevő infrastruktúra-összetevőket, valamint a kiszolgálók és az Azure-szolgáltatások közötti kapcsolati állapotot.
+Az **Infrastruktúra nézetben**figyelheti a replikációban részt vevő infrastruktúra-összetevőket, valamint a kiszolgálók és az Azure-szolgáltatások közötti kapcsolat állapotát.
 
-- A zöld vonal azt jelzi, hogy a kapcsolatok kifogástalanok.
-- Az átfedésben lévő hibát jelző piros vonal azt jelzi, hogy a kapcsolódást befolyásoló hibák közül egy vagy több is fennáll.
--  Vigye az egérmutatót a hiba ikon fölé a hiba és az érintett entitások számának megjelenítéséhez. Kattintson az érintett entitások szűrt listájának ikonjára.
+- A zöld vonal azt jelzi, hogy a kapcsolat kifogástalan.
+- A becsukott hiba ikonnal ellátott piros vonal egy vagy több olyan hibajelenség meglétét jelzi, amelyek hatással vannak a kapcsolatra.
+-  Vigye az egérmutatót a hiba ikonra a hiba és az érintett entitások számának megjelenítéséhez. Kattintson az érintett entitások szűrt listájának ikonjára.
 
-    ![Site Recovery infrastruktúra nézet (tároló)](./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)
+    ![Hely-helyreállítási infrastruktúra nézete (tároló)](./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)
 
-### <a name="tips-for-monitoring-the-infrastructure"></a>Tippek az infrastruktúra monitorozásához
+### <a name="tips-for-monitoring-the-infrastructure"></a>Tippek az infrastruktúra figyeléséhez
 
-- Győződjön meg arról, hogy a helyszíni infrastruktúra-összetevők (konfigurációs kiszolgáló, folyamat-kiszolgálók, VMM-kiszolgálók, Hyper-V-gazdagépek, VMware-gépek) a Site Recovery szolgáltató és/vagy ügynökök legújabb verzióit futtatják.
-- Az infrastruktúra nézet összes funkciójának használatához az ezen összetevőkhöz tartozó [22-es kumulatív frissítést](https://support.microsoft.com/help/4072852) kell futtatnia.
-- Az infrastruktúra nézet használatához válassza ki a megfelelő replikációs forgatókönyvet a környezetében. További részletekért tekintse meg a nézet részletezését. A következő táblázat bemutatja, hogy mely forgatókönyvek jelennek meg.
+- Győződjön meg arról, hogy a helyszíni infrastruktúra-összetevők (konfigurációs kiszolgáló, folyamatkiszolgálók, VMM-kiszolgálók, Hyper-V-állomások, VMware-gépek) a Site Recovery Provider és/vagy az ügynökök legújabb verzióját futtatják.
+- Az infrastruktúra nézet összes szolgáltatásának használatához ezen összetevők [22.](https://support.microsoft.com/help/4072852)
+- Az infrastruktúra nézet használatához válassza ki a megfelelő replikációs forgatókönyvet a környezetben. További részletekért részletezhet a nézetben. Az alábbi táblázat bemutatja, hogy mely esetek jelennek meg.
 
-    **Forgatókönyv** | **Állapot**  | **Elérhető a nézet?**
+    **Forgatókönyv** | **Állapot**  | **Elérhető megtekintés?**
     --- |--- | ---
-    **Replikáció a helyszíni helyek között** | Minden állapot | Nem 
-    **Azure-beli virtuális gépek Azure-régiók közötti replikációja**  | Replikáció engedélyezve/kezdeti replikálás folyamatban | Igen
-    **Azure-beli virtuális gépek Azure-régiók közötti replikációja** | Feladatátvétel/feladat-visszavétel | Nem   
-    **VMware-replikáció az Azure-ba** | Replikáció engedélyezve/kezdeti replikálás folyamatban | Igen     
-    **VMware-replikáció az Azure-ba** | Feladatátvétel/feladatátvétel meghiúsult | Nem      
-    **Hyper-V-replikáció az Azure-ba** | Feladatátvétel/feladatátvétel meghiúsult | Nem
+    **Replikáció a helyszíni helyek között** | Minden állam | Nem 
+    **Az Azure virtuális gép replikációja az Azure-régiók között**  | Replikáció engedélyezett/kezdeti replikáció folyamatban | Igen
+    **Az Azure virtuális gép replikációja az Azure-régiók között** | Feladatátvétel/feladat-visszavétel | Nem   
+    **VMware–Azure replikálás** | Replikáció engedélyezett/kezdeti replikáció folyamatban | Igen     
+    **VMware–Azure replikálás** | Feladatátvétel/feladat-visszavétel | Nem      
+    **Hyper-V–Azure replikálás** | Feladatátvétel/feladat-visszavétel | Nem
 
-- Egy replikáló gép infrastruktúra-nézetének megtekintéséhez a tároló menüjében kattintson a **replikált elemek**elemre, és válasszon egy kiszolgálót.  
+- Egyetlen replikálógép infrastruktúranézetének megtekintéséhez kattintson a tároló **menüreplikált elemek parancsára,** és jelöljön ki egy kiszolgálót.  
 
 
 
 
 ## <a name="monitor-recovery-plans"></a>Helyreállítási tervek figyelése
 
-A **helyreállítási tervekben**figyelje a csomagok számát, új csomagokat hozzon létre, és módosítsa a meglévőket.  
+A **Helyreállítási tervek**alkalmazásban figyelje a tervek számát, hozzon létre új terveket, és módosítsa a meglévőket.  
 
 ## <a name="monitor-jobs"></a>Feladatok figyelése
 
-A **feladatok**területen figyelje site Recovery műveletek állapotát.
+A **Feladatok alkalmazásban**figyelje a Hely-helyreállítási műveletek állapotát.
 
-- A Azure Site Recovery legtöbb művelete aszinkron módon történik, és nyomon követési feladatot hoz létre, és a művelet előrehaladásának követésére szolgál. 
-- A feladatütemezés minden olyan információt tartalmaz, amire szüksége van az állapot nyomon követéséhez és a művelet végrehajtásához. 
+- Az Azure Site Recovery legtöbb művelete aszinkron módon történik, és egy nyomon követési feladat jön létre, és a művelet előrehaladásának nyomon követésére szolgál. 
+- A feladatobjektum rendelkezik a művelet állapotának és előrehaladásának nyomon követéséhez szükséges összes információval. 
 
-A feladatokat a következőképpen figyelheti:
+A feladatok figyelése az alábbiak szerint:
 
-1. Az irányítópult > **feladatok** szakaszban megtekintheti az elmúlt 24 órában megjelenő feladatok összegzését, amelyek folyamatban vannak, vagy a bevitelre várnak. Bármelyik állapotra kattintva további információkat kaphat a kapcsolódó feladatokról.
-2. Az összes feladat megjelenítéséhez kattintson az **összes megtekintése** elemre az elmúlt 24 órában.
+1. Az irányítópult > **feladatok** szakaszban láthatja az elmúlt 24 órában befejezett, folyamatban lévő vagy a bemenetre váró feladatok összegzését. Bármelyik állapotra kattintva további információkat kaphat a megfelelő feladatokról.
+2. Kattintson **az Összes megtekintése** gombra az elmúlt 24 óra összes feladatának megtekintéséhez.
 
     > [!NOTE]
-    > A feladat adatait a tár menüjéből > **site Recovery**feladatokhoz is elérheti. 
+    > A feladatadatokat a **webhely-helyreállítási feladatok**> tároló menüből is elérheti. 
 
-2. A **site Recovery feladatok** listában megjelenik a feladatok listája. A felső menüben lekérdezheti egy adott feladat hibáit, szűrheti a feladatok listáját meghatározott feltételek alapján, és exportálhatja a kijelölt feladat részleteit az Excel programba.
-3. A feladatok részletezéséhez kattintson rá. 
+2. A **Hely-helyreállítási feladatok** listában megjelenik a feladatok listája. A felső menüben egy adott feladathiba részleteit kaphatja meg, szűrheti a feladatlistát adott feltételek alapján, és exportálhatja a kiválasztott feladatadatokat az Excelbe.
+3. A feladatra kattintva részletezheti a feladatot. 
 
 ## <a name="monitor-virtual-machines"></a>Virtuális gépek figyelése
 
-A **replikált elemek**listájában szerezze be a replikált gépek listáját. 
-    ![A replikált elemek listájának Site Recovery nézete](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-list-view.png)
+A **Replikált elemek alkalmazásban**lekell szereznie a replikált gépek listáját. 
+    ![Hely-helyreállítási replikált elemek listájának nézete](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-list-view.png)
 
-2. Az információk megtekinthetők és szűrhetők. A felső művelet menüben műveleteket hajthat végre egy adott gépre vonatkozóan, beleértve a feladatátvételi teszt futtatását vagy adott hibák megtekintését is.
-3. Az **oszlopok** elemre kattintva további oszlopokat jeleníthet meg, például megjelenítheti a RPO, a célként megadott konfigurációs problémákat és a replikációs hibákat.
-4. Kattintson a **Filter (szűrő** ) elemre az információk meghatározott paraméterek, például a replikálási állapot vagy egy adott replikációs házirend alapján történő megtekintéséhez.
-5. Kattintson a jobb gombbal egy gépre olyan műveletek elindításához, mint például a feladatátvételi teszt, vagy a hozzá tartozó konkrét hiba részleteinek megtekintéséhez.
-6. Kattintson egy gépre a további részletek részletezéséhez. A részletek a következők:
-   - **Replikációs információk**: A gép aktuális állapota és állapota.
-   - **RPO** (helyreállítási pont célja): A virtuális gép aktuális RPO és a RPO legutóbbi kiszámításának időpontja.
-   - **Helyreállítási pontok**: A gép legújabb elérhető helyreállítási pontjai.
-   - **Feladatátvételi készültség**: Azt jelzi, hogy a rendszer futtatott-e feladatátvételi tesztet a gépen, a gépen futó ügynök verziója (a mobilitási szolgáltatást futtató gépek esetében) és a konfigurációs problémák.
-   - **Hibák**: A számítógépen jelenleg megfigyelt replikációs hiba tünetei, valamint a lehetséges okok/műveletek listája.
-   - **Események**: A gépet érintő közelmúltbeli események kronológiai listája. A hiba részletei a jelenleg megfigyelhető hibák tüneteit mutatják, míg az események a gépet érintő problémák múltbeli rekordjai.
-   - **Infrastruktúra nézet**: Azt mutatja, hogy az infrastruktúra milyen állapotban van, amikor a gépek az Azure-ba replikálódnak.
+2. Megtekintheti és szűrheti az információkat. A műveletmenü tetején műveleteket hajthat végre egy adott gépen, beleértve a tesztfeladat-átvételt vagy bizonyos hibák megtekintését.
+3. Kattintson **az Oszlopok gombra** további oszlopok megjelenítéséhez, például az RPO megjelenítéséhez, a célkonfigurációs problémák és a replikációs hibák megjelenítéséhez.
+4. Kattintson **a Szűrő** gombra az információk megtekintéséhez adott paraméterek alapján, például a replikáció állapota vagy egy adott replikációs házirend alapján.
+5. Kattintson a jobb gombbal egy gépre a műveletek, például a teszt feladatátvétel kezdeményezéséhez, vagy a hozzá társított konkrét hibarészletek megtekintéséhez.
+6. Kattintson a gépre, hogy további részleteket részletezz. Részletek a következők:
+   - **Replikációs információ**: A számítógép aktuális állapota és állapota.
+   - **RPO** (helyreállítási pont célja): A virtuális gép aktuális RPO-ja és az RPO utolsó kiszámításának időpontja.
+   - **Helyreállítási pontok**: A gép legfrissebb rendelkezésre álló helyreállítási pontjai.
+   - **Feladatátvételi készenlét**: Azt jelzi, hogy a teszt feladatátvétel futott-e a gépen, a számítógépen futó ügynökverzió (a Mobility szolgáltatást futtató gépekhez) és a konfigurációs problémák.
+   - **Hibák**: A számítógépen jelenleg megfigyelt replikációs hibajelenségek listája, valamint a lehetséges okok/műveletek.
+   - **Események**: A gépre gyakorolt legutóbbi események időrendi listája. A hiba részletei a jelenleg megfigyelhető hibajelenségeket mutatják, míg az események a gépet érintő problémák előzményrekordja.
+   - **Infrastruktúra nézet:** Az infrastruktúra állapotát jeleníti meg a forgatókönyvhöz, amikor a gépek replikálnak az Azure-ba.
 
-     ![Site Recovery replikált elemek részletei/áttekintés](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
+     ![A hely-helyreállítási replikált elem részletei/áttekintése](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 
-## <a name="subscribe-to-email-notifications"></a>Előfizetés e-mailes értesítésekre
+## <a name="subscribe-to-email-notifications"></a>Feliratkozás az e-mailértesítésekre
 
-Feliratkozhat e-mail-értesítések fogadására ezekre a kritikus eseményekre:
+Feliratkozhat az alábbi kritikus eseményekről szóló e-mail-értesítésekre:
  
 - A replikált gép kritikus állapota.
-- Nincs kapcsolat a helyszíni infrastruktúra-összetevők és a Site Recovery szolgáltatás között. A tárolóban regisztrált Site Recovery és helyszíni kiszolgálók közötti kapcsolat Szívveréses mechanizmus használatával észlelhető.
+- Nincs kapcsolat a helyszíni infrastruktúra-összetevők és a Site Recovery szolgáltatás között. A site recovery és a tárolóban regisztrált helyszíni kiszolgálók közötti kapcsolatot szívveréses mechanizmus sal észleli a rendszer.
 - Feladatátvételi hibák.
 
-Az előfizetés a következőképpen történik:
+Iratkozzon fel az alábbiak szerint:
 
-A tár > **figyelés** szakaszban kattintson az **site Recovery események**elemre.
-1. Kattintson az **e-mail értesítések**lehetőségre.
-1. Az **e-mail-értesítések**területen kapcsolja be az értesítéseket, és válassza ki, hogy kinek szeretné elküldeni a szolgáltatást. Az összes előfizetés-rendszergazdának elküldheti az értesítéseket, és opcionálisan meghatározott e-mail-címeket is küldhet.
+A tároló> **figyelése** csoportban kattintson a **Hely-helyreállítási események**elemre.
+1. Kattintson az **E-mail-értesítések** elemre.
+1. Az **E-mail értesítés**ben kapcsolja be az értesítéseket, és adja meg, hogy kinek küldjön. Elküldheti az összes előfizetés-rendszergazdának értesítést és opcionálisan konkrét e-mail címeket.
 
-    ![E-mail értesítés](./media/site-recovery-monitor-and-troubleshoot/email.png)
+    ![E-mail-értesítések](./media/site-recovery-monitor-and-troubleshoot/email.png)
 
 ## <a name="next-steps"></a>További lépések
 
-[Ismerkedjen meg](monitor-log-analytics.md) a Azure monitor site Recovery monitorozásával.
+[Ismerje meg a](monitor-log-analytics.md) Site Recovery figyelését az Azure Monitorsegítségével.

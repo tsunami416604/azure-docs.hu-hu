@@ -1,17 +1,17 @@
 ---
-title: Az Azure Cosmos DB Emulatort tanúsítványok exportálása
+title: Az Azure Cosmos DB Emulator tanúsítványok exportálása
 description: Ha olyan nyelveken és futtatókörnyezetekben fejleszt, amelyek nem használják a Windows-tanúsítványtárolót, akkor exportálnia és kezelnie kell az SSL-tanúsítványokat. Ez a bejegyzés lépésről lépésre leírja a teendőket.
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: a398c10511fdd3891a2c429f0ef46869dcc48922
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 623837b30038ef8524aef1e87aeb5933204925a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244451"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156021"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java-, Python- és Node.js-környezethez használható Azure Cosmos DB Emulator-tanúsítványok exportálása
 
@@ -70,7 +70,7 @@ Mindkét tanúsítvány újragenerálható a Windows-tálcán futó Azure Cosmos
 
 ## <a name="how-to-use-the-certificate-in-java"></a>A tanúsítvány használata a Javában
 
-Java-alkalmazások vagy a mongodb-hez az alkalmazásokat, amelyek a Java-ügyfél használata esetén könnyebb a tanúsítvány telepítése a tanúsítványtárolójába Java alapértelmezett megadásának, mint a `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` jelzők. A mellékelt [Java bemutatóalkalmazás](https://localhost:8081/_explorer/index.html) például az alapértelmezett tanúsítványtárolóra épül.
+Java-alkalmazások vagy Java-ügyfél-alkalmazást használó MongoDB-alkalmazások futtatásakor könnyebb telepíteni a `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` tanúsítványt a Java alapértelmezett tanúsítványtárolójába, mint a jelzők átadása. A mellékelt [Java bemutatóalkalmazás](https://localhost:8081/_explorer/index.html) például az alapértelmezett tanúsítványtárolóra épül.
 
 A [Tanúsítvány hozzáadása a Java CA tanúsítványtárolójához](https://docs.microsoft.com/azure/java-add-certificate-ca-store) című cikk utasításai alapján importálja az X.509-tanúsítványt az alapértelmezett Java-tanúsítványtárolóba. Tartsa szem előtt, hogy a keytool parancs futtatásakor a %JAVA_HOME% könyvtárban fog dolgozni.
 

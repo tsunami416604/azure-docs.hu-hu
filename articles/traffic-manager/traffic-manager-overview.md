@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: rohink
-ms.openlocfilehash: c8f604c042aee8b1af30af9da5a43ed2cd79f214
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6eb1ce18f3bc6674efd5343306fff617bc9cd1f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77014385"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80060802"
 ---
-# <a name="what-is-traffic-manager"></a>Mi a Traffic Manager?
+# <a name="what-is-traffic-manager"></a>Mi az a Traffic Manager?
 Az Azure Traffic Manager egy DNS-alapú forgalom-terheléselosztó, amely lehetővé teszi a szolgáltatásokhoz érkező forgalom optimális elosztását a globális Azure-régiókban, miközben magas rendelkezésre állást és válaszkészséget biztosít.
 
 A Traffic Manager DNS használatával a leginkább megfelelő szolgáltatási végpontra irányítja az ügyfélkéréseket a forgalom-útválasztási módszer és a végpont állapota alapján. A végpont egy, az Azure-on kívül vagy belül üzemeltetett, internetkapcsolattal rendelkező szolgáltatás. A Traffic Manager különböző [forgalom-útválasztási módszereket](traffic-manager-routing-methods.md) és [végpont-monitorozási lehetőségeket](traffic-manager-monitoring.md) biztosít, hogy megfeleljen a különböző alkalmazások igényeinek és az automatikus feladatátvételi modelleknek. A Traffic Manager ellenáll a meghibásodásoknak, beleértve akár egy egész Azure-régió meghibásodását is.
 
 >[!NOTE]
-> Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre. Ha Transport Layer Security (TLS) protokoll-lezárást („SSL-kiszervezés”) vagy per-HTTP/HTTPS kérelmeket vagy alkalmazásréteg-feldolgozást keres, tekintse át az [Application Gatewayt](../application-gateway/application-gateway-introduction.md) ismertető cikket. Ha regionális terheléselosztást keres, tekintse át [Load Balancer](../load-balancer/load-balancer-overview.md). A végpontok közötti forgatókönyvek esetében előnyt jelenthet ezen megoldások igény szerinti kombinációja.
+> Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre. Ha Transport Layer Security (TLS) protokoll-lezárást („SSL-kiszervezés”) vagy per-HTTP/HTTPS kérelmeket vagy alkalmazásréteg-feldolgozást keres, tekintse át az [Application Gatewayt](../application-gateway/application-gateway-introduction.md) ismertető cikket. Ha regionális terheléselosztást keres, tekintse át [a Terheléselosztót.](../load-balancer/load-balancer-overview.md) A végpontok közötti forgatókönyvek esetében előnyt jelenthet ezen megoldások igény szerinti kombinációja.
 >
-> Az Azure terheléselosztási lehetőségeinek összehasonlítását lásd: [Az Azure terheléselosztási lehetőségeinek áttekintése](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+> Az Azure terheléselosztási beállítások összehasonlításáról [az Azure terheléselosztási lehetőségeinek áttekintése](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)című témakörben olvashat.
 
-Traffic Manager a következő funkciókat kínálja:
+A Traffic Manager a következő szolgáltatásokat kínálja:
 
 ## <a name="increase-application-availability"></a>Alkalmazás rendelkezésre állásának növelése
 
@@ -41,7 +41,7 @@ Az Azure lehetővé teszi a felhőszolgáltatások vagy webhelyek futtatását a
 
 ## <a name="perform-service-maintenance-without-downtime"></a>Állásidő nélküli rendszerkarbantartás végrehajtása
 
-Állásidő nélkül hajthat végre tervezett karbantartási műveleteket az alkalmazásokon. A Traffic Manager a karbantartás folyamatban van, és átirányítja a forgalmat az alternatív végpontokra.
+Állásidő nélkül hajthat végre tervezett karbantartási műveleteket az alkalmazásokon. A Traffic Manager átirányíthatja a forgalmat alternatív végpontokra, amíg a karbantartás folyamatban van.
 
 ## <a name="combine-hybrid-applications"></a>Hibrid alkalmazások kombinációja
 
@@ -49,14 +49,14 @@ A Traffic Manager támogatja a külső, nem Azure-végpontokat, ami lehetővé t
 
 ## <a name="distribute-traffic-for-complex-deployments"></a>Forgalom elosztása összetett üzemelő példányokhoz
 
-A [beágyazott Traffic Manager profilok](traffic-manager-nested-profiles.md)használatával több forgalom-útválasztási módszer kombinálható összetett és rugalmas szabályok létrehozásához a nagyobb, összetettebb központi telepítések igényei szerint.
+A [beágyazott Traffic Manager-profilok](traffic-manager-nested-profiles.md)használatával több forgalom-útválasztási módszer kombinálható kifinomult és rugalmas szabályok létrehozásához a nagyobb, összetettebb telepítések igényeinek megfelelően.
 
 ## <a name="pricing"></a>Díjszabás
 
 Díjszabási információkért tekintse meg a [Traffic Manager díjszabását](https://azure.microsoft.com/pricing/details/traffic-manager/) ismertető részt.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Útmutató a [Traffic Manager-profil létrehozásához](traffic-manager-create-profile.md).
 - Útmutató a [Traffic Manager működéséhez](traffic-manager-how-it-works.md).

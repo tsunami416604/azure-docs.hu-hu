@@ -1,77 +1,77 @@
 ---
-title: Bevezetés a blob (Object) tárolóba – Azure Storage
+title: Bevezetés a Blob (objektum) tárolásba – Azure Storage
 description: Azure Blob Storage nagy mennyiségű strukturálatlan objektumadat, például szöveg vagy bináris adat tárolására szolgál. Az Azure Blob Storage nagymértékben skálázható és magas rendelkezésre állású. Az ügyfelek a PowerShellből vagy az Azure CLI-ből érhetik el a Blob Storage tárolóban lévő adatobjektumokat, programozhatóan az Azure Storage ügyfélkódtárakon keresztül vagy REST használatával.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 03/04/2020
+ms.date: 03/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: aeb6971d37601367e62b8f883ccbc576e9534cdb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ff1d34462680ddd6be7f1a47d9a27594bcce4ff6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79240533"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061491"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Az Azure Blob Storage bemutatása
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
-## <a name="blob-storage-resources"></a>BLOB Storage-erőforrások
+## <a name="blob-storage-resources"></a>Blob-tárolási erőforrások
 
-A blob Storage háromféle típusú erőforrást kínál:
+A Blob storage háromféle erőforrást kínál:
 
-- A **Storage-fiók**
-- Egy **tároló a Storage** -fiókban
-- Egy tárolóban lévő **blob**
+- A **tárfiók**
+- Tároló **container** a tárfiókban
+- **Blob egy** tárolóban
 
 Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
-![a fiók blob és a Container erőforrás közötti kapcsolat](./media/storage-blobs-introduction/blob1.png)
+![Tárfiók, tárolók és blobok közötti kapcsolatot bemutató diagram](./media/storage-blobs-introduction/blob1.png)
 
 ### <a name="storage-accounts"></a>Tárfiókok
 
-A Storage-fiók egyedi névteret biztosít az Azure-ban az adataihoz. Az Azure Storage-ban tárolt összes objektumhoz tartozik egy olyan címe, amely tartalmazza az egyedi fióknevet. A fióknév és az Azure Storage blob-végpont kombinációja a Storage-fiókban lévő objektumok alapcímeit képezi.
+A tárfiók egyedi névteret biztosít az Azure-ban az adatokszámára. Az Azure Storage-ban tárolt minden objektum rendelkezik egy címmel, amely tartalmazza az Ön egyedi fióknevét. A fiók név és az Azure Storage blob végpont kombinációja képezi a tárfiókban lévő objektumok alapcímét.
 
-Ha például a Storage-fiók neve *mystorageaccount*, akkor a blob Storage alapértelmezett végpontja a következő:
+Ha például a tárfiók neve *mystorageaccount,* akkor a Blob storage alapértelmezett végpontja a következő:
 
 ```
 http://mystorageaccount.blob.core.windows.net 
 ```
 
-A Storage-fiók létrehozásával kapcsolatban tekintse meg [a Storage-fiók létrehozása](../common/storage-account-create.md)című témakört. További információ a Storage-fiókokról: az [Azure Storage-fiók áttekintése](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Tárfiók létrehozásához [lásd: Tárfiók létrehozása.](../common/storage-account-create.md) A tárfiókokról az [Azure storage-fiók áttekintése című témakörben olvashat bővebben.](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 
-Egy tároló blobokat szervez, hasonlóan a fájlrendszer egy könyvtárához. Egy tárfiók korlátlan számú tárolót tartalmazhat, egy tároló pedig korlátlan számú blob tárolására használható. 
+A tároló a fájlrendszerben lévő könyvtárhoz hasonlóan blobok készletét rendezi. Egy tárfiók korlátlan számú tárolót tartalmazhat, egy tároló pedig korlátlan számú blob tárolására használható. 
 
   > [!NOTE]
-  > A tárolók nevei csak kisbetűket tartalmazhatnak. További információ a tárolók elnevezéséről: [tárolók, blobok és metaadatok elnevezése és hivatkozása](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata).
+  > A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók elnevezéséről a [Tárolók, blobok és metaadatok elnevezése és hivatkozása](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)című témakörben talál további információt.
 
 ### <a name="blobs"></a>Blobok
  
-Az Azure Storage három típusú blobot támogat:
+Az Azure Storage háromféle blobot támogat:
 
-- A **Blobok** a szöveg és a bináris adat tárolására, körülbelül 4,7 TB-ra. A blokkblobok önállóan felügyelhető adatblokkokból állnak.
-- A **hozzáfűzési Blobok** olyan blokkokból állnak, mint a blokkos Blobok, de a hozzáfűzési műveletekre vannak optimalizálva. A hozzáfűző blobok ideálisak például a virtuális gépek adatainak naplózásához és hasonló forgatókönyvekhez.
-- Az **oldal Blobok** legfeljebb 8 TB méretű véletlenszerű hozzáférési fájlokat tárolhatnak. Az oldal Blobok tárolják a virtuális merevlemezeket (VHD-fájlokat), és az Azure-beli virtuális gépek lemezként szolgálnak. További információ a lapok Blobokkal kapcsolatban: [Az Azure-oldal Blobok áttekintése](storage-blob-pageblob-overview.md)
+- **A blokkblobok** szöveget és bináris adatokat tárolnak, akár 4,7 TB-ig. A blokkblobok önállóan felügyelhető adatblokkokból állnak.
+- **A hozzáfűző blobok** blokkokból, például blokkblobokból állnak, de hozzáfűző műveletekre vannak optimalizálva. A hozzáfűző blobok ideálisak például a virtuális gépek adatainak naplózásához és hasonló forgatókönyvekhez.
+- **A lapblobok** legfeljebb 8 TB méretű véletlen hozzáférésű fájlokat tárolnak. A lapblobok virtuális merevlemez-fájlokat (VHD) tárolnak, és az Azure virtuális gépek lemezeiként szolgálnak. A lapblobokról az [Azure-lapblobok áttekintése című](storage-blob-pageblob-overview.md) témakörben olvashat bővebben.
 
-A Blobok különböző típusaival kapcsolatos további információkért lásd: a [Blobok, a Blobok hozzáfűzése és az oldal Blobok ismertetése](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+A különböző típusú blobokról a [Blokkblobok, a Hozzáfűző blobok és a Lapblobok ismertetése](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)című témakörben talál további információt.
 
-## <a name="move-data-to-blob-storage"></a>Az adatáthelyezés a blob Storage-ba
+## <a name="move-data-to-blob-storage"></a>Adatok áthelyezése a Blob Storage-ba
 
-Számos megoldás létezik a meglévő és a blob Storage-tárolóba való áttelepítéshez:
+Számos megoldás létezik a meglévő adatok Blob storage-ba történő áttelepítésére:
 
-- A **AzCopy** egy könnyen használható parancssori eszköz a Windows és a Linux rendszerhez, amely a blob Storage-ba, a tárolók között vagy a Storage-fiókokba másolt adatok másolására szolgál. További információ a AzCopy: [adatok átvitele a AzCopy v10-vel (előzetes verzió)](../common/storage-use-azcopy-v10.md). 
-- Az **Azure Storage adatátviteli könyvtára** egy .net-függvénytár az Azure Storage-szolgáltatások közötti adatáthelyezéshez. A AzCopy segédprogram az adatátviteli függvénytárral együtt épül fel. További információt az adatátviteli [függvénytár dokumentációjában](/dotnet/api/microsoft.azure.storage.datamovement) talál. 
-- **Azure Data Factory** támogatja az adatok másolását a blob Storage-ba és a-ból a fiók kulcsa, a közös hozzáférési aláírás, az egyszerű szolgáltatásnév vagy a felügyelt identitások használatával az Azure-erőforrásokhoz. További információ: [adatok másolása az Azure Blob Storage-ba vagy onnan az Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
-- A **Blobfuse** egy virtuális fájlrendszer-illesztőprogram az Azure Blob Storage szolgáltatáshoz. A blobfuse használatával elérheti a meglévő blokk blob-adatait a Storage-fiókban a Linux fájlrendszerén keresztül. További információ: a [blob Storage csatlakoztatása fájlrendszerként a blobfuse](storage-how-to-mount-container-linux.md)használatával.
-- **Azure Data Box** szolgáltatás elérhető a helyszíni adatok blob Storage-ba történő átviteléhez, ha a nagyméretű adathalmazok vagy hálózati korlátozások miatt az adatok feltöltése nem reális. Az adatmérettől függően [Azure Data Box Disk](../../databox/data-box-disk-overview.md), [Azure Data Box](../../databox/data-box-overview.md)vagy [Azure Data Box Heavy](../../databox/data-box-heavy-overview.md) eszközt kérhet a Microsofttól. Ezután átmásolhatja az adatait az eszközökre, és visszaküldheti azokat a Microsoftnak a blob Storage-ba való feltöltéshez.
-- Az **Azure import/export szolgáltatás** lehetővé teszi nagy mennyiségű adatok importálását és exportálását a Storage-fiókba az Ön által megadott merevlemez-meghajtók használatával. További információ: [a Microsoft Azure import/export szolgáltatás használata adatok blob Storage-tárolóba történő átviteléhez](../common/storage-import-export-service.md).
+- **Az AzCopy** egy könnyen használható windowsos és linuxos parancssori eszköz, amely adatokat másol a Blob storage-ba, a tárolók között vagy a tárfiókok között. Az AzCopy programról további információt [az Adatok átvitele az AzCopy v10(Előzetes verzió) alkalmazásban című témakörben talál.](../common/storage-use-azcopy-v10.md) 
+- Az **Azure Storage Data Movement könyvtár** egy .NET-kódtár az Azure Storage-szolgáltatások közötti átmozgatáshoz. Az AzCopy segédprogram az Adatmozgatás könyvtárral együtt épül fel. További információt az Adatmozgatási könyvtár [referenciadokumentációjában](/dotnet/api/microsoft.azure.storage.datamovement) talál. 
+- **Az Azure Data Factory** támogatja az adatok másolását a Blob storage-ba és onnan a fiókkulcs, a megosztott hozzáférés-aláírás, a szolgáltatás névvel ellátott vagy felügyelt identitások az Azure-erőforrások használatával. További információ: [Adatok másolása azure blob tárhelyre vagy azure Data Factory használatával.](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 
+- **A Blobfuse** az Azure Blob storage virtuális fájlrendszer-illesztőprogramja. A blobfuse segítségével elérheti a meglévő blokkblob-adatokat a storage-fiókjában a Linux fájlrendszeren keresztül. További információ: [Blob storage csatlakoztatása fájlrendszerként blobfuse.For](storage-how-to-mount-container-linux.md)more information, to How to mount Blob storage as a file system with blobfuse .
+- **Az Azure Data Box** szolgáltatás akkor érhető el a Blob storage-ba való helyszíni adatok átviteléhez, ha a nagy adatkészletek vagy hálózati korlátozások irreálissá teszik az adatok hálózaton keresztüli feltöltését. Az adatok méretétől függően azure [data box lemezt,](../../databox/data-box-disk-overview.md) [Azure Data Boxot](../../databox/data-box-overview.md)vagy [Azure Data Box Heavy](../../databox/data-box-heavy-overview.md) eszközöket kérhet a Microsofttól. Ezután átmásolhatja az adatokat ezekre az eszközökre, és visszaküldheti őket a Microsoftnak a Blob storage-ba való feltöltéshez.
+- Az **Azure importálási/exportálási szolgáltatás** lehetővé teszi nagy mennyiségű adat importálását vagy exportálását a tárfiókba az Ön által megadott merevlemezek használatával. További információt [a Microsoft Azure importálási/exportálási szolgáltatásának használata a Blob storage-ba történő átviteléhez című témakörben talál.](../common/storage-import-export-service.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tárfiók létrehozása](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [A blob Storage méretezhetőségi és teljesítménybeli céljai](scalability-targets.md)
+- [Méretezhetőségi és teljesítménycélok a Blob storage-hoz](scalability-targets.md)

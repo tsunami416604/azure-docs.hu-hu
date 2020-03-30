@@ -9,21 +9,21 @@ ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: ddab6927044ce638e50ff3ad79aa3c35d046c820
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "69520846"
 ---
-Az alábbi konfigurációt használták a következő lépésekhez:
+Az alábbi lépésekhez a következő konfigurációt használtuk:
 
   | | |
   |---|---|
-  |Számítógép| Ubuntu Server 18.04|
-  |Függőségek| strongSwan |
+  |Computer| Ubuntu Server 18.04|
+  |Függőségek| erősSwan |
 
 
-A szükséges alapú strongswan-konfiguráció telepítéséhez használja az alábbi parancsokat:
+A következő parancsokkal telepítse a szükséges strongSwan konfigurációt:
 
 ```
 sudo apt install strongswan
@@ -37,10 +37,10 @@ sudo apt install strongswan-pki
 sudo apt install libstrongswan-extra-plugins
 ```
 
-Az Azure parancssori felületének telepítéséhez használja az alábbi parancsot:
+Az Azure parancssori felületének telepítéséhez használja a következő parancsot:
 
 ```
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ```
 
-[További tudnivalók az Azure CLI telepítéséről](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
+[További utasítások az Azure CLI telepítéséhez](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest)

@@ -1,5 +1,5 @@
 ---
-title: Kapcsolat a go-Azure Database for MySQL használatával
+title: Csatlakozás a Go használatával – Azure Database for MySQL
 description: Ez a rövid útmutató több Go-mintakódot biztosít, amelyekkel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla.
 author: ajlam
 ms.author: andrela
@@ -7,16 +7,16 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: b3ee0caa380cacc697a87307c3107b93aa241afb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 5b55c457f5e30b1b844aafd0114f73b62bdbcac7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770764"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067979"
 ---
 # <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>MySQL-hez készült Azure-adatbázis: Csatlakozás és adatok lekérdezése a Go használatával
-Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni az Azure Database for MySQL-hez Windows, Ubuntu Linux és Apple macOS platformról [Go](https://golang.org/) nyelven írt kóddal. Bemutatjuk, hogy SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. Ez a témakör azt feltételezi, hogy Ön a Go használata terén rendelkezik fejlesztési tapasztalatokkal, de az Azure Database for MySQL használatában még járatlan.
+Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni az Azure Database for MySQL-hez Windows, Ubuntu Linux és Apple macOS platformról [Go](https://golang.org/) nyelven írt kóddal. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. Ez a témakör azt feltételezi, hogy Ön a Go használata terén rendelkezik fejlesztési tapasztalatokkal, de az Azure Database for MySQL használatában még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
@@ -29,9 +29,9 @@ Telepítse a [Gót](https://golang.org/doc/install) és a [go-sql-driver for MyS
 ### <a name="windows"></a>Windows
 1. [Töltse le](https://golang.org/dl/) és telepítse a Microsoft Windowshoz készült Go-t a [telepítési utasítások](https://golang.org/doc/install) szerint.
 2. Nyissa meg a parancssort a Start menüből.
-3. Hozzon létre egy mappát a projekt számára, például `mkdir  %USERPROFILE%\go\src\mysqlgo` kérdésre adott válaszban foglalt lépéseket.
+3. Hozzon létre egy mappát a projekt számára, például `mkdir  %USERPROFILE%\go\src\mysqlgo`.
 4. Nyissa meg a projektmappát (például `cd %USERPROFILE%\go\src\mysqlgo`).
-5. Úgy állítsa be a GOPATH környezeti változóját, hogy a forráskód könyvtárára mutasson. `set GOPATH=%USERPROFILE%\go` kérdésre adott válaszban foglalt lépéseket.
+5. Úgy állítsa be a GOPATH környezeti változóját, hogy a forráskód könyvtárára mutasson. `set GOPATH=%USERPROFILE%\go`.
 6. Telepítse a [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) illesztőt a `go get github.com/go-sql-driver/mysql` parancs futtatásával.
 
    Összefoglalva, telepítse a Go-t, majd futtassa ezeket a parancsokat a parancssorban:
@@ -60,7 +60,7 @@ Telepítse a [Gót](https://golang.org/doc/install) és a [go-sql-driver for MyS
    ```
 
 ### <a name="apple-macos"></a>Apple macOS
-1. Töltse le és telepítse a Gót a platformjának megfelelő [telepítési utasítások](https://golang.org/doc/install) szerint. 
+1. Töltse le és telepítse a Go-t a platformnak megfelelő [telepítési utasításoknak](https://golang.org/doc/install) megfelelően. 
 2. Indítsa el a Bash felületet.
 3. Hozzon létre egy mappát a projekt számára a kezdőkönyvtárban (például `mkdir -p ~/go/src/mysqlgo/`).
 4. Nyissa meg a projektmappát (például `cd ~/go/src/mysqlgo/`).
@@ -78,7 +78,7 @@ Telepítse a [Gót](https://golang.org/doc/install) és a [go-sql-driver for MyS
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 3. Kattintson a kiszolgálónévre.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
@@ -86,11 +86,11 @@ Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szüks�
    
 
 ## <a name="build-and-run-go-code"></a>Go kód felépítése és futtatása 
-1. Golang-kód írásához használhat egy egyszerű szövegszerkesztőt, ilyen például Microsoft Windows rendszeren a Jegyzettömb, Ubuntu rendszeren a [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) vagy a [Nano](https://www.nano-editor.org/), macOS rendszeren pedig a TextEdit. Ha a funkciógazdagabb interaktív fejlesztési környezeteket (IDE-ket) részesít előnyben, próbálja ki a Jetbrains [Gogland](https://www.jetbrains.com/go/) a Microsoft [Visual Studio Code](https://code.visualstudio.com/) vagy az [Atom](https://atom.io/) eszközt.
+1. Golang-kód írásához használhat egy egyszerű szövegszerkesztőt, ilyen például Microsoft Windows rendszeren a Jegyzettömb, Ubuntu rendszeren a [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) vagy a [Nano](https://www.nano-editor.org/), macOS rendszeren pedig a TextEdit. Ha gazdagabb interaktív fejlesztői környezetet (IDE) szeretne, próbálja ki a [Gogland](https://www.jetbrains.com/go/) by Jetbrains-t, a [Visual Studio Code](https://code.visualstudio.com/) by Microsoft-ot vagy [az Atom-ot.](https://atom.io/)
 2. Az alábbi szakaszokban található Go-kódokat illessze be szövegfájlokba, majd mentse a fájlokat a projektmappába \*.go kiterjesztéssel, például `%USERPROFILE%\go\src\mysqlgo\createtable.go` (Windows) vagy `~/go/src/mysqlgo/createtable.go` (Linux) elérési úton.
 3. Keresse meg a `HOST`, a `DATABASE`, a `USER` és a `PASSWORD` állandót a kódban, és a példaértékeket cserélje le a saját értékeire. 
 4. Nyissa meg a parancssort vagy a Bash felületet. Lépjen a projektmappára. Windows rendszer például a következővel: `cd %USERPROFILE%\go\src\mysqlgo\`. Linuxon: `cd ~/go/src/mysqlgo/`.  A fentiekben említettek közül egyes IDE-szerkesztők hibakeresési és futásidejű képességeket biztosítanak anélkül, hogy rendszerhéjparancsokra lenne szükség.
-5. Futtassa a kódot a `go run createtable.go` parancs beírásával az alkalmazás fordításához és futtatásához. 
+5. A kód futtatásához írja be a `go run createtable.go` parancsot az alkalmazás lefordításához és futtatásához. 
 6. Vagy a kód natív alkalmazásba való beépítéséhez írja be a `go build createtable.go` parancsot, majd indítsa el a `createtable.exe` fájlt az alkalmazás futtatásához.
 
 ## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
@@ -348,6 +348,6 @@ func main() {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./concepts-migrate-import-export.md)

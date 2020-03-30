@@ -1,6 +1,6 @@
 ---
-title: Az alkalmazás felhasználói felületének honosítása egyéni házirenddel
-description: Ismerje meg, hogyan honosíthatja felhasználói felületét egyéni házirend használatával Azure Active Directory B2Cban.
+title: Az alkalmazás felhasználói felületének honosítása egyéni szabályzattal
+description: Ismerje meg a honosításegy felhasználói felület egy egyéni szabályzat az Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,26 +11,26 @@ ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1401cbe1920c7c6df804aadbba1751612ba9cf06
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126789"
 ---
-# <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás felhasználói felületének honosítása egyéni házirend használatával Azure Active Directory B2C
+# <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás felhasználói felületének honosítása egyéni szabályzathasználatával az Azure Active Directory B2C-ben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A Azure Active Directory B2C (Azure AD B2C) nyelvi testreszabása lehetővé teszi, hogy az ügyfelek igényeinek megfelelően különböző nyelveket is kielégítse. A Microsoft a 36 nyelvekhez biztosít fordításokat, de bármilyen nyelven saját fordításokat is megadhat. Ha a felhasználói élmény csak egyetlen nyelven érhető el, testreszabhatja a lapokon található bármely szöveget. 
+Nyelvi testreszabás az Azure Active Directory B2C (Azure AD B2C) lehetővé teszi, hogy különböző nyelveken, hogy megfeleljen az ügyfél igényeinek. A Microsoft 36 nyelv fordítását biztosítja, de saját fordításokat is biztosíthat bármely nyelvhez. Még akkor is testreszabhatja az oldalakon lévő szövegeket, ha a felhasználói élmény csak egy nyelvre van megadva. 
 
-Ebből a cikkből megtudhatja, hogyan támogathatja a házirendben szereplő több területi vagy nyelvi beállítást a felhasználói útvonalakhoz. A honosítás három lépésből áll: állítsa be a támogatott nyelvek explicit listáját, adjon meg nyelvspecifikus karakterláncokat és gyűjteményeket, és szerkessze az oldal [tartalmának definícióját](contentdefinitions.md) . 
+Ez a cikk bemutatja, hogyan támogathatja a felhasználói utazások házirendjében több területi beállításokat vagy nyelveket. A honosítás három lépést igényel: a támogatott nyelvek explicit listájának beállítása, nyelvspecifikus karakterláncok és gyűjtemények megadása, valamint a lap [tartalomdefiníciójának](contentdefinitions.md) szerkesztése. 
 
 ## <a name="set-up-the-list-of-supported-languages"></a>A támogatott nyelvek listájának beállítása
 
-Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>.
+Nyissa meg a házirend bővítményfájlját. <em> `SocialAndLocalAccounts/` </em>Például.
 
 1. Keresse meg a [BuildingBlocks](buildingblocks.md) elemet. Ha az elem nem létezik, adja hozzá.
-1. Adja hozzá a `Localization` elemet a támogatott nyelvekkel: Angol (alapértelmezett) és spanyol.  
+1. Adja `Localization` hozzá az elemet a támogatott nyelvekhez: angol (alapértelmezett) és spanyol.  
 
 
 ```XML
@@ -42,14 +42,14 @@ Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em>`S
 </Localization>
 ```
 
-## <a name="provide-language-specific-labels"></a>Nyelvspecifikus címkék megadása
+## <a name="provide-language-specific-labels"></a>Nyelvspecifikus címkék biztosítása
 
-A `Localization` elem [LocalizedResources](localization.md#localizedresources) a honosított karakterláncok listáját tartalmazza. A honosított erőforrások elem rendelkezik egy azonosítóval, amely a honosított erőforrások egyedi azonosítására szolgál. Ezt a termékazonosító később használják a [Content definition](contentdefinitions.md) elemben.
+Az elem [honosított erőforrásai](localization.md#localizedresources) a `Localization` honosított karakterláncok listáját tartalmazzák. A honosított erőforrások elem azonosítója a honosított erőforrások egyedi azonosítására szolgál. Ez az azonosító a [tartalomdefiníciós](contentdefinitions.md) elem későbbi részében használatos.
 
-A honosított erőforrások elemeit a tartalom definíciójában és a támogatni kívánt nyelveken konfigurálhatja. Az angol és a spanyol nyelvű egyesített regisztrációs vagy bejelentkezési lapok testreszabásához a `</SupportedLanguages>` elem lezárása után adja hozzá a következő `LocalizedResources` elemeket.
+A tartalomdefinícióhoz és a támogatni kívánt nyelvekhez honosított erőforráselemeket állíthat be. Az egységes regisztrációs vagy bejelentkezési oldalak angol és spanyol nyelven való `LocalizedResources` testreszabásához az `</SupportedLanguages>` elem bezárása után adja hozzá a következő elemeket.
 
 > [!NOTE]
-> Az alábbi példában a font `#` szimbólumot felvettük az egyes sorok koldulása során, így a képernyőn megtalálhatja a honosított címkéket a easly.
+> A következő mintában hozzáadtuk a font `#` szimbólumot az egyes sorok koldulásához, így könnyedén megtalálhatja a honosított címkéket a képernyőn.
 
 ```XML
 <!--Local account sign-up or sign-in page English-->
@@ -212,11 +212,11 @@ A honosított erőforrások elemeit a tartalom definíciójában és a támogatn
 </LocalizedResources>
 ```
 
-## <a name="edit-the-content-definition-with-the-localization"></a>A tartalom definíciójának szerkesztése a honosítással
+## <a name="edit-the-content-definition-with-the-localization"></a>A tartalomdefiníció szerkesztése a honosítással
 
-Illessze be a ContentDefinitions elem teljes tartalmát, amelyet a BuildingBlocks elem gyermekeiként másolt.
+Illessze be a BuildingBlocks elem gyermekként másolt ContentDefinitions elem teljes tartalmát.
 
-A következő példában az angol (en) és a spanyol (es) egyéni sztringek hozzáadódnak a regisztrációs vagy bejelentkezési laphoz, valamint a helyi fiók regisztrációs lapjához. Az egyes **LocalizedResourcesReference** **LocalizedResourcesReferenceId** megegyeznek a területi beállításokkal, de az azonosítóhoz bármilyen karakterláncot használhat. Minden nyelv és oldal kombináció esetében mutasson a korábban létrehozott megfelelő **LocalizedResources** .
+A következő példában angol (en) és spanyol (ek) egyéni karakterláncok kerülnek a regisztrációs vagy bejelentkezési lapra, valamint a helyi fiók regisztrációs oldalára. A **LocalizedResourcesReferenceId** minden **LocalizedResourcesReference** ugyanaz, mint a területi beállítás, de bármelyik karakterláncot használhatja azonosítóként. Minden egyes nyelv és oldalkombináció esetében a korábban létrehozott **honosított erőforrásokra** mutat.
 
 ```XML
 <ContentDefinitions>
@@ -238,21 +238,21 @@ A következő példában az angol (en) és a spanyol (es) egyéni sztringek hozz
 
 ##  <a name="upload-and-test-your-updated-custom-policy"></a>A frissített egyéni szabályzat feltöltése és tesztelése
 
-### <a name="upload-the-custom-policy"></a>Egyéni szabályzat feltöltése
+### <a name="upload-the-custom-policy"></a>Az egyéni házirend feltöltése
 
-1. Mentse a bővítmények fájlt.
-1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
-1. Keresse meg és válassza ki a **Azure ad B2C**.
-1. A **szabályzatok**területen válassza az **identitási élmény keretrendszere**elemet.
-1. Válassza az **egyéni házirend feltöltése**lehetőséget.
-1. Töltse fel a korábban módosított kiterjesztéseket tartalmazó fájlt.
+1. Mentse a kiterjesztésfájlt.
+1. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja, ha a felső **menüben** a Directory + előfizetésszűrőt választja, és kiválasztja a bérlőt tartalmazó könyvtárat.
+1. Keresse meg és válassza az **Azure AD B2C**lehetőséget.
+1. A **Házirendek**csoportban válassza **az Identitáskezelési keretrendszert**.
+1. Válassza **az Egyéni házirend feltöltése lehetőséget.**
+1. Töltse fel a korábban módosított bővítményfájlt.
 
 ### <a name="test-the-custom-policy-by-using-run-now"></a>Az egyéni házirend tesztelése a **Futtatás most** használatával
 
-1. Válassza ki a feltöltött szabályzatot, majd válassza a **Futtatás most**lehetőséget.
-1. Látnia kell a honosított regisztrációs vagy bejelentkezési oldalt.
-1. Kattintson a regisztrációs hivatkozásra, és tekintse meg a honosított regisztrációs lapot.
-1. A böngésző alapértelmezett nyelvének átváltása spanyolra. Vagy hozzáadhatja a lekérdezési karakterlánc paramétert is, `ui_locales` az engedélyezési kérelemhez. Például: 
+1. Válassza ki a feltöltött házirendet, majd válassza a **Futtatás most**lehetőséget.
+1. Látnia kell a honosított regisztrációs vagy bejelentkezési lapot.
+1. Kattintson a regisztrációs linkre, és látnia kell a honosított regisztrációs oldalt.
+1. Váltson a böngésző alapértelmezett nyelvére spanyolra. Vagy hozzáadhatja a lekérdezési `ui_locales` karakterlánc paramétert az engedélyezési kérelemhez. Példa: 
 
 ```http
 https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
@@ -260,6 +260,6 @@ https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/oauth2/v2.0/authorize
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [honosítási](localization.md) elemről a IEF-hivatkozásban.
-- Tekintse meg a Azure AD B2Cban elérhető [honosítási karakterlánc-azonosítók](localization-string-ids.md) listáját.
+- További információ az [IEF-hivatkozás lokalizációs](localization.md) eleméről.
+- Tekintse meg az Azure AD B2C-ben elérhető [honosítási karakterlánc-azonosítók](localization-string-ids.md) listáját.
 

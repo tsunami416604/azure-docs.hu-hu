@@ -1,148 +1,148 @@
 ---
-title: 'Rövid útmutató: Node. js-alapú Webalkalmazás létrehozása'
-description: Percek alatt üzembe helyezheti az első Node. js-"Helló világ!" alkalmazás Azure App Service. A Visual Studio Code használatával telepíthető, amely a App Service üzembe helyezésének számos módszerének egyike.
+title: 'Rövid útmutató: Node.js webalkalmazás létrehozása'
+description: Az első Node.js Hello World alkalmazást percek alatt telepítheti az Azure App Service szolgáltatásba. A Visual Studio-kód használatával telepíti, amely az App Service szolgáltatásban való üzembe helyezés számos módja.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 03/04/2020
-ms.custom: seodec18
+ms.custom: mvc, devcenter, seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 1f105792a95115580d52444a617b3fc1678843ca
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: bcb0ae2457175e7511c3539187d72d48e80baa5b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374079"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047135"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban 
 
-Ismerkedjen meg Azure App Service egy Node. js/Express alkalmazás helyi létrehozásával a Visual Studio Code használatával, majd telepítse az alkalmazást a felhőbe. Mivel ingyenes App Service szintet használ, a rövid útmutató elvégzéséhez nem jár költséggel.
+Az Azure App Service használatának megkezdéséhez hozzon létre egy Node.js/Express alkalmazást helyileg a Visual Studio-kód használatával, majd telepítse az alkalmazást a felhőbe. Mivel egy ingyenes App Service-szint, nem jár költségeket a rövid útmutató végrehajtásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension).
-- [Node.js és npm](https://nodejs.org). Futtassa a parancsot `node --version` annak ellenőrzéséhez, hogy a Node. js telepítve van-e.
-- [Visual Studio Code](https://code.visualstudio.com/).
-- A Visual Studio Code [Azure app Service bővítménye](vscode:extension/ms-azuretools.vscode-azureappservice) .
+- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension).
+- [Node.js és npm](https://nodejs.org). Futtassa `node --version` a parancsot a Node.js telepítésének ellenőrzéséhez.
+- [Visual Studio kód](https://code.visualstudio.com/).
+- Az [Azure App Service-bővítmény](vscode:extension/ms-azuretools.vscode-azureappservice) a Visual Studio-kódhoz.
 
-## <a name="clone-and-run-a-local-nodejs-application"></a>Helyi Node. js-alkalmazás klónozása és futtatása
+## <a name="clone-and-run-a-local-nodejs-application"></a>Helyi Node.js alkalmazás klónozása és futtatása
 
-1. A helyi számítógépen nyisson meg egy terminált, és klónozással nyissa meg a minta tárházat:
+1. A helyi számítógépen nyisson meg egy terminált, és klónozza a mintatárolót:
 
     ```bash
     git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
     ```
 
-1. Navigáljon az új alkalmazás mappájába:
+1. Navigálás az új alkalmazásmappába:
 
     ```bash
     cd nodejs-docs-hello-world
     ```
 
-1. Az alkalmazás elindítása helyi teszteléshez:
+1. Indítsa el az alkalmazást a helyi teszteléshez:
 
     ```bash
     npm start
     ```
     
-1. Nyissa meg a böngészőt, és navigáljon [http://localhost:1337](http://localhost:1337). A böngészőben a következő üzenetnek kell megjelennie: ""Helló világ!"alkalmazás!".
+1. Nyissa meg a [http://localhost:1337](http://localhost:1337)böngészőt, és keresse meg a t. A böngészőben meg kell jelennie a "Hello World!".
 
-1. A kiszolgáló leállításához nyomja le a **Ctrl**+**C** billentyűkombinációt a terminálon.
+1. A kiszolgáló leállításához nyomja le a **Ctrl**+**C** billentyűt a terminálon.
 
 > [!div class="nextstepaction"]
-> [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
+> [Belefutottam egy problémába.](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
 
 ## <a name="deploy-the-app-to-azure"></a>Az alkalmazás üzembe helyezése az Azure-ban
 
-Ebben a szakaszban a Node. js-alkalmazást a VS Code és a Azure App Service bővítmény használatával helyezi üzembe az Azure-ban.
+Ebben a szakaszban telepíti a Node.js alkalmazást az Azure-ba a VS Code és az Azure App Service-bővítmény használatával.
 
-1. Győződjön meg arról, hogy a terminálon a *NodeJS-docs-Hello-World* mappában van, majd indítsa el a Visual Studio Code-ot a következő paranccsal:
+1. Győződjön meg arról, hogy a terminálon a *nodejs-docs-hello-world* mappában van, majd indítsa el a Visual Studio Code alkalmazást a következő paranccsal:
 
     ```bash
     code .
     ```
 
-1. A VS Code tevékenység sávján válassza ki az Azure-emblémát az **Azure app Service** Explorer megjelenítéséhez. Válassza a bejelentkezés az Azure-ba **...** lehetőséget, és kövesse az utasításokat. (Lásd: [Az Azure-bejelentkezés hibaelhárítása](#troubleshooting-azure-sign-in) , ha hibákat futtat.) A bejelentkezést követően a tallózónak meg kell jelennie az Azure-előfizetés nevének.
+1. A VS Code tevékenységi sávon válassza ki az Azure emblémát az **AZURE APP SERVICE explorer** megjelenítéséhez. Válassza **a Bejelentkezés az Azure-ba lehetőséget,** és kövesse az utasításokat. (Lásd: [Az Azure-bejelentkezés ek elhárítása](#troubleshooting-azure-sign-in) az alábbi témakörben, ha hibákba ütközik.) Miután bejelentkezett, az explorernek meg kell jelennie az Azure-előfizetés nevében.
 
     ![Bejelentkezés az Azure-ba](containers/media/quickstart-nodejs/sign-in.png)
 
-1. Az **Azure app Service** EXPLORERBEN a vs Code-ban kattintson a kék felfelé mutató nyíl ikonra az alkalmazás üzembe helyezéséhez az Azure-ban. (Ugyanezt a parancsot a **parancssorból** is meghívhatja (**Ctrl**+**SHIFT**+**P**) a "üzembe helyezés a webalkalmazásba" parancs beírásával, majd a **Azure app Service: telepítés a webalkalmazásba**lehetőségre).
+1. A VS Code **AZURE APP SERVICE** explorer ben válassza ki a kék felfelé mutató nyíl ikont az alkalmazás Azure-ba való üzembe helyezéséhez. (Ugyanazt a parancsot a **parancspalettából** is meghívhatja (**Ctrl**+**Shift**+**P**) a "deploy to web app" beírásával és az Azure App **Service: Deploy to Web App**parancs kiválasztásával.
 
-    ![Üzembe helyezés a webalkalmazásban](containers/media/quickstart-nodejs/deploy.png)
+    ![Üzembe helyezés a Web App ban](containers/media/quickstart-nodejs/deploy.png)
         
-1. Válassza ki a *NodeJS-docs-Hello-World* mappát.
+1. Válassza ki a *nodejs-docs-hello-world* mappát.
 
-1. Válasszon egy létrehozási lehetőséget azon operációs rendszer alapján, amelyre telepíteni kívánja a következőt:
+1. Válasszon egy létrehozási lehetőséget azon operációs rendszer alapján, amelyre telepíteni szeretné a következőket:
 
-    - Linux: válassza az **új Webalkalmazás létrehozása** lehetőséget.
-    - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**
+    - Linux: Válassza **az Új webalkalmazás létrehozása lehetőséget**
+    - Windows: Válassza **az Új webalkalmazás létrehozása lehetőséget... Speciális**
 
-1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER**billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket ("A-Z", "a-z" és "0-9") és kötőjeleket ("-") kell használnia.
+1. Írja be a webalkalmazás globálisan egyedi nevét, és nyomja le az **Enter billentyűt.** A névnek egyedinek kell lennie az Azure-ban, és csak alfanumerikus karaktereket ('A-Z', "a-z" és "0-9") és kötőjeleket ('-') kell használnia.
 
-1. A Linux megcélzása esetén válasszon egy Node. js-verziót, ha a rendszer kéri. Az **LTS** -verzió használata javasolt.
+1. Ha a Linux ot célozza, válassza ki a Node.js verziót, amikor a rendszer kéri. **LTS-verzió** használata ajánlott.
 
-1. Ha a Windowst célozza meg, kövesse a további utasításokat:
-    1. Válassza az **Új erőforráscsoport létrehozása**lehetőséget, majd adja meg az erőforráscsoport nevét, például `AppServiceQS-rg`.
-    1. Válassza a **Windows** lehetőséget az operációs rendszer számára.
-    1. Válassza az **új App Service terv létrehozása**lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan`), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
-    1. Válassza **a Kihagyás lehetőséget,** amikor a rendszer rákérdez a Application Insightsra.
-    1. Válasszon egy Önhöz közeli régiót vagy az elérni kívánt erőforrások közelében.
+1. Ha a Windows rendszert célozza, kövesse a további utasításokat:
+    1. Válassza **az Új erőforráscsoport létrehozása**lehetőséget, majd adja `AppServiceQS-rg`meg az erőforráscsoport nevét, például .
+    1. Válassza a **Windows** elemet az operációs rendszerhez.
+    1. Válassza **az Új App Service-csomag létrehozása**lehetőséget, `AppServiceQS-plan`majd adja meg a csomag nevét (például ), majd válassza az **F1 Free** lehetőséget a tarifacsomaghoz.
+    1. Válassza **a Kihagyás most,** amikor az Application Insights kérdéséről kérdezve.
+    1. Válasszon egy közeli régiót vagy az elérni kívánt erőforrásokat.
 
-1. Az összes kérésre való válaszadás után a VS Code megjeleníti az alkalmazáshoz létrehozott Azure-erőforrásokat az értesítési felugró ablakban.
+1. Miután válaszolt az összes kérdésre, a VS-kód megjeleníti az alkalmazáshoz az értesítési előugró ablakban létrehozott Azure-erőforrásokat.
 
-    Linux rendszeren való üzembe helyezéskor válassza az **Igen** lehetőséget, ha a rendszer felszólítja, hogy frissítse a konfigurációt `npm install` futtatásához a cél Linux-kiszolgálón.
+    Linuxra való üzembe helyezéskor válassza az **Igen** lehetőséget, amikor a rendszer kéri a konfiguráció frissítését a cél Linux-kiszolgálón való futtatáshoz. `npm install`
 
-    ![Rákérdezés a konfiguráció frissítésére a cél Linux-kiszolgálón](containers/media/quickstart-nodejs/server-build.png)
+    ![A cél Linux-kiszolgáló konfigurációjának frissítésére vonatkozó kérdés](containers/media/quickstart-nodejs/server-build.png)
 
-1. Ha a rendszer kéri, válassza az **Igen** lehetőséget, és **mindig telepítse a "NodeJS-docs-Hello-World" munkaterületet az (alkalmazás neve)** elemre. Ha az **Igen** lehetőséget választja, a vs Code automatikusan ugyanazt a app Service webalkalmazást célozza meg a későbbi központi telepítésekkel.
+1. Válassza az **Igen** lehetőséget, amikor a rendszer **a "nodejs-docs-hello-world" munkaterületet telepíti (alkalmazásnév)"** lehetőséget. **Az Igen** lehetőséget választva a VS-kód automatikusan megcélozhatja ugyanazt az App Service Web App-ot a későbbi központi telepítésekkel.
 
-1. Ha Linux rendszerre telepíti a rendszert, válassza a **Tallózás webhely** lehetőséget a kérdésben, hogy a telepítés befejezése után megtekintse a frissen telepített webalkalmazást. A böngészőben meg kell jelennie a következőnek: ""Helló világ!"alkalmazás!"
+1. Ha linuxos üzembe helyezést hajt végre, válassza a **Webhely böngészése** lehetőséget a kérdésben a frissen telepített webalkalmazás megtekintéséhez a telepítés befejezése után. A böngészőnek meg kell jelenítenie a "Hello World!"
 
-1. Ha Windows rendszeren telepíti a rendszert, először be kell állítania a Node. js verziószámát a webalkalmazáshoz:
+1. Windows rendszerre történő telepítés esetén először be kell állítania a Node.js verziószámát a webalkalmazáshoz:
 
-    1. A VS Code-ban bontsa ki a csomópontot az új App Service-hez, kattintson a jobb gombbal az **Alkalmazásbeállítások**elemre, majd válassza az **új beállítás hozzáadása lehetőséget...** :
+    1. A VS-kód ban bontsa ki az új alkalmazásszolgáltatás csomópontját, kattintson a jobb gombbal az **Alkalmazásbeállítások**elemre, és válassza **az Új beállítás hozzáadása parancsot...**:
 
-        ![Alkalmazás-beállítási parancs hozzáadása](containers/media/quickstart-nodejs/add-setting.png)
+        ![Alkalmazásbeállítás hozzáadása parancs](containers/media/quickstart-nodejs/add-setting.png)
 
-    1. Adja meg `WEBSITE_NODE_DEFAULT_VERSION` a beállítási kulcshoz.
-    1. Adja meg `10.15.2` értéket a beállítás értékeként.
-    1. Kattintson a jobb gombbal az App Service-csomópontra, és válassza az **Újraindítás** lehetőséget.
+    1. Adja `WEBSITE_NODE_DEFAULT_VERSION` meg a beállítási kulcsot.
+    1. Adja `10.15.2` meg a beállítási értéket.
+    1. Kattintson a jobb gombbal az alkalmazásszolgáltatás csomópontjára, és válassza az **Újraindítás** parancsot
 
-        ![App Service-parancs újraindítása](containers/media/quickstart-nodejs/restart.png)
+        ![Az alkalmazásszolgáltatás újraindítása parancs](containers/media/quickstart-nodejs/restart.png)
 
-    1. Kattintson a jobb gombbal az App Service-csomópontra, és válassza a **Tallózás webhely**lehetőséget.
+    1. Kattintson még egyszer a jobb gombbal az alkalmazásszolgáltatás csomópontjára, és válassza a **Webhely tallózása parancsot.**
 
 > [!div class="nextstepaction"]
-> [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
+> [Belefutottam egy problémába.](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
 
-### <a name="troubleshooting-azure-sign-in"></a>Azure-bejelentkezés hibaelhárítása
+### <a name="troubleshooting-azure-sign-in"></a>Az Azure-bejelentkezés hibáinak elhárítása
 
-Ha az Azure-ba való bejelentkezéskor a **"nem található az előfizetés neve [előfizetés-azonosító]"** hibaüzenet jelenik meg, annak oka az lehet, hogy a proxy mögött van, és nem érhető el az Azure API. A `export`használatával konfigurálhatja a `HTTP_PROXY` és `HTTPS_PROXY` környezeti változókat a terminálon a proxy adataival.
+Ha az Azure-ba való bejelentkezéskor a **"Nem található előfizetés [subscription ID] nevű előfizetés t,** annak az lehet az oka, hogy egy proxy mögött van, és nem tudja elérni az Azure API-t. Konfigurálja `HTTPS_PROXY` és állítsa be `export` `HTTP_PROXY` a környezeti változókat a proxyadatokkal a terminálon a használatával.
 
 ```bash
 export HTTPS_PROXY=https://username:password@proxy:8080
 export HTTP_PROXY=http://username:password@proxy:8080
 ```
 
-Ha a környezeti változók beállítása nem javítsa ki a problémát, vegye fel velünk a kapcsolatot, ha a fenti **probléma** gombra kattintott.
+Ha a környezeti változók beállítása nem oldja meg a problémát, lépjen kapcsolatba velünk a fenti **Probléma** gomb kiválasztásával.
 
 ### <a name="update-the-app"></a>Az alkalmazás frissítése
 
-Az alkalmazás módosításait úgy helyezheti üzembe, hogy a VS Code-ban szerkeszti a módosításokat, majd menti a fájlokat, majd ugyanazzal a folyamattal használja, mint a meglévő alkalmazás kiválasztását, és nem hoz létre újat.
+Az alkalmazás módosításait úgy telepítheti, hogy módosításokat végez a VS-kódban, menti a fájlokat, majd ugyanazt a folyamatot használja, mint mielőtt csak a meglévő alkalmazást választaná, nem pedig újat hoz létre.
 
 ## <a name="viewing-logs"></a>Naplók megtekintése
 
-Az alkalmazásból közvetlenül a VS Code kimenet ablakban tekintheti meg a naplófájlok kimenetét (meghívások `console.log`).
+A naplókimenet `console.log`(hívások) közvetlenül az alkalmazásból, a VS Code kimeneti ablakban tekinthető meg.
 
-1. Az **Azure app Service** Explorerben kattintson a jobb gombbal az alkalmazás csomópontjára, és válassza a **streaming naplók indítása**lehetőséget.
+1. Az **AZURE APP SERVICE** explorerben kattintson a jobb gombbal az alkalmazáscsomópontra, és válassza a **Streamelési naplók indítása parancsot.**
 
-    ![Adatfolyam-naplók indítása](containers/media/quickstart-nodejs/view-logs.png)
+    ![Streamelési naplók indítása](containers/media/quickstart-nodejs/view-logs.png)
 
-1. Ha a rendszer kéri, válassza a naplózás engedélyezését, és indítsa újra az alkalmazást. Az alkalmazás újraindítása után a VS Code kimenet ablak megnyílik a log streamtel létesített kapcsolatban. 
+1. Amikor a rendszer kéri, engedélyezze a naplózást, és indítsa újra az alkalmazást. Az alkalmazás újraindítása után megnyílik a VS-kód kimeneti ablaka a naplófolyamhoz való csatlakozással. 
 
-    ![Naplózás engedélyezése és újraindítás](containers/media/quickstart-nodejs/enable-restart.png)
+    ![Naplózás és újraindítás engedélyezése](containers/media/quickstart-nodejs/enable-restart.png)
 
-1. Néhány másodperc elteltével a kimeneti ablak egy üzenetet jelenít meg, amely jelzi, hogy csatlakozik a log-streaming szolgáltatáshoz. A böngészőben az oldal frissítésével több kimeneti tevékenység is létrehozható.
+1. Néhány másodperc múlva a kimeneti ablakban megjelenik egy üzenet, amely jelzi, hogy csatlakozik a napló-streaming szolgáltatáshoz. Több kimeneti tevékenységet generálhat, ha frissíti az oldalt a böngészőben.
 
     <pre>
     Connecting to log stream...
@@ -151,11 +151,11 @@ Az alkalmazásból közvetlenül a VS Code kimenet ablakban tekintheti meg a nap
     </pre>
 
 > [!div class="nextstepaction"]
-> [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
+> [Belefutottam egy problémába.](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
+Gratulálunk, sikeresen befejezte ezt a rövid útmutatót!
 
 Ezután tekintse meg a többi Azure-bővítményt.
 
@@ -163,6 +163,6 @@ Ezután tekintse meg a többi Azure-bővítményt.
 * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 * [Docker-eszközök](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 * [Azure CLI-eszközök](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
-* [Eszközök Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+* [Az Azure Resource Manager eszközei](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
-Az Azure Extension Packhez készült [Node Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) telepítésével vagy az összes beszerzésével.
+Vagy mindet beszerezheti a [Node Pack for Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) bővítménycsomag telepítésével.

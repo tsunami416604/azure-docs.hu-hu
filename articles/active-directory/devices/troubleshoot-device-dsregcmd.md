@@ -1,6 +1,6 @@
 ---
-title: Hibakeresés a dsregcmd parancs használatával – Azure Active Directory
-description: A dsregcmd kimenetének használata az Azure AD-ban lévő eszközök állapotának megismeréséhez
+title: Hibaelhárítás a dsregcmd parancs használatával – Azure Active Directory
+description: A dsregcmd kimenetének használata az eszközök állapotának megértéséhez az Azure AD-ben
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,37 +11,37 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 676a1dd2435d17db2151bdf21f1989e7f182701b
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: 2cd782cdab625934fe60617142e5ac0baf756398
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136483"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128763"
 ---
-# <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Eszközök hibaelhárítása a dsregcmd parancs használatával
+# <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>A dsregcmd paranccsal használható eszközök hibaelhárítása
 
-A dsregcmd/status segédprogramot tartományi felhasználói fiókkal kell futtatni.
+A dsregcmd /status segédprogramot tartományi felhasználói fiókként kell futtatni.
 
 ## <a name="device-state"></a>Eszköz állapota
 
-Ez a szakasz az eszköz csatlakoztatási állapotának paramétereit sorolja fel. Az alábbi táblázat felsorolja az eszköz különböző illesztési állapotokban való bekapcsolásának feltételeit.
+Ez a szakasz az eszközillesztési állapot paramétereit sorolja fel. Az alábbi táblázat felsorolja a különböző illesztési állapotokban lévő eszköz rekretiójának kritériumait.
 
-| AzureAdJoined | EnterpriseJoined | DomainJoined | Eszköz állapota |
+| AzureAdCsatlakozott | Vállalathoz csatlakozva | Tartományhoz csatlakozva | Eszköz állapota |
 | ---   | ---   | ---   | ---   |
-| igen | NO | NO | Azure AD-hez csatlakoztatott |
-| NO | NO | igen | Tartományhoz csatlakoztatott |
-| igen | NO | igen | Hibrid AD-hez csatlakoztatott |
-| NO | igen | igen | A helyszíni DRS csatlakoztatva |
+| IGEN | NO | NO | Az Azure AD csatlakozott |
+| NO | NO | IGEN | Tartomány csatlakozott |
+| IGEN | NO | IGEN | Hibrid AD csatlakozott |
+| NO | IGEN | IGEN | Helyszíni DRS-csatlakozás |
 
 > [!NOTE]
-> Workplace Join (az Azure AD-ben regisztrált) állapot a "felhasználói állapot" szakaszban jelenik meg
+> A munkahelyi csatlakozás (Az Azure AD regisztrált) állapota a "Felhasználóállapot" szakaszban jelenik meg
 
-- **AzureAdJoined:** – az "igen" értékre állítva, ha az eszköz csatlakoztatva van az Azure ad-hez. "Nem" egyéb esetben.
-- **EnterpriseJoined:** -az "igen" értékre van állítva, ha az eszköz egy helyszíni DRS-hoz csatlakozik. Egy eszköz nem lehet egyszerre EnterpriseJoined és AzureAdJoined.
-- **DomainJoined:** – az "igen" értékre van állítva, ha az eszköz tartományhoz (ad) van csatlakoztatva.
-- **Tartománynév:** – állítsa be a tartomány nevét, ha az eszköz tartományhoz van csatlakoztatva.
+- **AzureAdJoined:** - Állítsa "IGEN" beállításra, ha az eszköz csatlakozik az Azure AD-hez. "NEM" egyébként.
+- **EnterpriseJoined:** - Állítsa "IGEN" beállításra, ha az eszköz egy helyszíni DRS-hez csatlakozik. Egy eszköz nem lehet egyszerre EnterpriseJoined és AzureAdJoined.
+- **DomainJoined:** - Állítsa "IGEN" értékre, ha az eszköz tartományhoz (AD) csatlakozik.
+- **Tartománynév:** - Állítsa a tartomány nevére, ha az eszköz tartományhoz csatlakozik.
 
-### <a name="sample-device-state-output"></a>Példa eszköz állapotának kimenetére
+### <a name="sample-device-state-output"></a>Mintaeszköz-állapot kimenete
 
 ```
 +----------------------------------------------------------------------+
@@ -54,18 +54,18 @@ Ez a szakasz az eszköz csatlakoztatási állapotának paramétereit sorolja fel
 +----------------------------------------------------------------------+
 ```
 
-## <a name="device-details"></a>Eszköz adatai
+## <a name="device-details"></a>Eszközadatok
 
-Csak akkor jelenik meg, ha az eszköz az Azure AD-hez csatlakozott vagy a hibrid Azure AD-hez csatlakozik (nem az Azure AD-ben regisztrált). Ez a szakasz felsorolja az eszköz a felhőben tárolt adatait.
+Csak akkor jelenik meg, ha az eszköz az Azure AD-hez vagy hibrid Azure AD-hez csatlakozott (nem az Azure AD regisztrált). Ez a szakasz a felhőben tárolt eszközazonosító adatokat sorolja fel.
 
-- **DeviceID:** – az eszköz egyedi azonosítója az Azure ad-bérlőben
-- **Ujjlenyomat:** – az eszköz tanúsítványának ujjlenyomata 
-- **DeviceCertificateValidity:** – az eszköz tanúsítványának érvényessége
-- **KeyContainerId:** – az eszköz tanúsítványához tartozó titkos kulcs ContainerId
-- Kulcstartó **:** – az eszköz titkos kulcsának tárolására szolgáló (hardver/szoftver).
-- **TpmProtected:** -"igen", ha az eszköz titkos kulcsát hardveres TPM tárolja.
+- **DeviceId:** - az eszköz egyedi azonosítója az Azure AD-bérlőben
+- **Ujjlenyomat:** - Az eszköztanúsítvány ujjlenyomata 
+- **DeviceCertificateValidity:** - Az eszköztanúsítvány érvényessége
+- **KeyContainerId:** - Az eszköz tanúsítványához társított eszköz titkos kulcsának tárolóazonosítója
+- **KeyProvider:** - KeyProvider (Hardver/Szoftver) az eszköz személyes kulcsának tárolására szolgál.
+- **TpmProtected:** - "IGEN", ha az eszköz személyes kulcsa hardveres TPM-ben van tárolva.
 
-### <a name="sample-device-details-output"></a>Minta eszköz részleteinek kimenete
+### <a name="sample-device-details-output"></a>Minta eszköz részletei kimenet
 
 ```
 +----------------------------------------------------------------------+
@@ -81,17 +81,17 @@ Csak akkor jelenik meg, ha az eszköz az Azure AD-hez csatlakozott vagy a hibrid
 +----------------------------------------------------------------------+
 ```
 
-## <a name="tenant-details"></a>Bérlő részletei
+## <a name="tenant-details"></a>Bérlő adatai
 
-Csak akkor jelenik meg, ha az eszköz az Azure AD-hez csatlakozott vagy a hibrid Azure AD-hez csatlakozik (nem az Azure AD-ben regisztrált). Ez a szakasz felsorolja a bérlő közös adatait, amikor egy eszköz csatlakozik az Azure AD-hez.
-
-> [!NOTE]
-> Ha a szakasz MDM URL-címei üresek, azt jelzi, hogy a MDM nincs konfigurálva, vagy az aktuális felhasználó nem a MDM-regisztráció hatókörében van. A MDM konfigurációjának áttekintéséhez tekintse meg az Azure AD mobilitási beállításait.
+Csak akkor jelenik meg, ha az eszköz az Azure AD-hez vagy hibrid Azure AD-hez csatlakozott (nem az Azure AD regisztrált). Ez a szakasz felsorolja a közös bérlői részleteket, amikor egy eszköz csatlakozik az Azure AD-hez.
 
 > [!NOTE]
-> Még ha a MDM URL-címek is láthatók, ez nem jelenti azt, hogy az eszközt egy MDM felügyeli. Az információk akkor jelennek meg, ha a bérlő az automatikus regisztráláshoz MDM-konfigurációt is tartalmaz, akkor is, ha maga az eszköz nem felügyelt. 
+> Ha az Ebben a szakaszban szereplő MDM URL-címek üresek, az azt jelzi, hogy az MDM nem volt konfigurálva, vagy az aktuális felhasználó nem tartozik az MDM-regisztráció hatókörébe. Az MDM-konfiguráció áttekintéséhez tekintse meg az Azure AD Mobilitás-beállításait.
 
-### <a name="sample-tenant-details-output"></a>Példa bérlői részletek kimenetére
+> [!NOTE]
+> Még akkor is, ha mdm URL-eket lát, ez nem jelenti azt, hogy az eszközt egy MDM kezeli. Az információ akkor jelenik meg, ha a bérlő rendelkezik MDM-konfiguráció automatikus igénylési akkor is, ha maga az eszköz nem felügyelt. 
+
+### <a name="sample-tenant-details-output"></a>Minta bérlő részletei kimenet
 
 ```
 +----------------------------------------------------------------------+
@@ -124,22 +124,22 @@ Csak akkor jelenik meg, ha az eszköz az Azure AD-hez csatlakozott vagy a hibrid
 
 ## <a name="user-state"></a>Felhasználói állapot
 
-Ez a szakasz felsorolja az eszközre jelenleg bejelentkezett felhasználó különböző attribútumainak állapotát.
+Ez a szakasz az eszközre jelenleg bejelentkezett felhasználó különböző attribútumainak állapotát sorolja fel.
 
 > [!NOTE]
 > Az érvényes állapot lekéréséhez a parancsnak felhasználói környezetben kell futnia.
 
-- **NgcSet:** – ha az aktuálisan bejelentkezett felhasználóhoz be van állítva, a "yes" értékre kell állítani.
-- **NgcKeyId:** – a Windows Hello-kulcs azonosítója, ha az aktuálisan bejelentkezett felhasználóhoz be van állítva.
-- **CanReset:** – azt jelzi, hogy a Windows Hello-kulcs alaphelyzetbe állítható-e a felhasználó által. 
-- **Lehetséges értékek:** -DestructiveOnly, NonDestructiveOnly, DestructiveAndNonDestructive vagy ismeretlen, ha hiba történt. 
-- **WorkplaceJoined:** – az "igen" értékre állítva, ha az Azure ad-beli regisztrált fiókok hozzá lettek adva az eszközhöz az aktuális Ntuser-környezetben.
-- **WamDefaultSet:** – állítsa Igen értékre, ha a bejelentkezett felhasználóhoz LÉTREJÖN egy WAM alapértelmezett webfiók. Ez a mező hibát jelez, ha a dsreg/status rendszergazdai környezetben fut. 
-- **WamDefaultAuthority:** – az Azure ad-ben "szervezetek" értékre van állítva.
-- **WamDefaultId:** – mindig "https://login.microsoft.com" az Azure ad-hez.
-- **WamDefaultGUID:** – a WAM szolgáltató (Azure AD/Microsoft-fiók) GUID azonosítója az alapértelmezett WAM webfiókhoz. 
+- **NgcSet:** - Állítsa "IGEN" beállításra, ha windows Hello kulcs van beállítva az aktuálisbejelentkezett felhasználóhoz.
+- **NgcKeyId:** - A Windows Hello-kulcs azonosítója, ha az aktuálisbejelentkezett felhasználóhoz van beállítva.
+- **CanReset:** - Azt jelzi, hogy a Windows Hello kulcsot a felhasználó alaphelyzetbe állíthatja-e. 
+- **Lehetséges értékek:** - DestructiveOnly, NonDestructiveOnly, DestructiveAndNonDestructive, vagy Ismeretlen, ha hiba. 
+- **WorkplaceJoined:** - Állítsa "IGEN" értékre, ha az Azure AD regisztrált fiókjai hozzá lettek adva az eszközhöz az aktuális NTUSER környezetben.
+- **WamDefaultSet:** - Állítsa "IGEN" értékre, ha wam alapértelmezett WebAccount-ot hoz létre a bejelentkezett felhasználó számára. Ez a mező hibát jelezhet, ha a dsreg /status rendszergazdajog ú parancssorból fut. 
+- **WamDefaultAuthority:** - Az Azure AD "szervezetek" értékre van állítva.
+- **WamDefaultId:** -https://login.microsoft.comMindig " " az Azure AD.WamDefaultId: - Always " " for Azure AD.
+- **WamDefaultGUID:** - A WAM-szolgáltató (Azure AD/Microsoft-fiók) GUID azonosítója az alapértelmezett WAM WebAccount hoz. 
 
-### <a name="sample-user-state-output"></a>Felhasználói állapot kimenetének mintája
+### <a name="sample-user-state-output"></a>Minta felhasználói állapot kimenete
 
 ```
 +----------------------------------------------------------------------+
@@ -160,21 +160,21 @@ Ez a szakasz felsorolja az eszközre jelenleg bejelentkezett felhasználó kül�
 
 ## <a name="sso-state"></a>SSO-állapot
 
-Ez a szakasz figyelmen kívül hagyható az Azure AD által regisztrált eszközökön.
+Ez a szakasz figyelmen kívül hagyható az Azure AD regisztrált eszközök.
 
 > [!NOTE]
 > A parancsnak felhasználói környezetben kell futnia az adott felhasználó érvényes állapotának lekéréséhez.
 
-- **AzureAdPrt:** – az "igen" értékre van állítva, ha a bejelentkezett felhasználó számára egy PRT van jelen az eszközön.
-- **AzureAdPrtUpdateTime:** – a PRT utolsó frissítésekor a következő időpontra van BEÁLLÍTVA: UTC.
-- **AzureAdPrtExpiryTime:** – az UTC időpontra van állítva, amikor a PRT lejár, ha nem újítja meg.
-- **AzureAdPrtAuthority:** – Azure ad-szolgáltató URL-címe
-- **EnterprisePrt:** – állítsa Igen értékre, ha az eszköz a helyszíni ADFS-vel kapcsolatos PRT-ket tartalmaz. A hibrid Azure AD-hez csatlakoztatott eszközök esetében az eszközön az Azure AD-vel és a helyszíni AD-vel egyidejűleg is lehet PRT-ket csatlakoztatni. A helyszíni csatlakoztatott eszközök csak nagyvállalati PRT-vel rendelkeznek.
-- **EnterprisePrtUpdateTime:** – a vállalati PRT utolsó frissítésének időpontjában (UTC) van beállítva.
-- **EnterprisePrtExpiryTime:** – az UTC időpontra van állítva, amikor a PRT lejár, ha nem újítja meg.
-- **EnterprisePrtAuthority:** – ADFS-szolgáltató URL-címe
+- **AzureAdPrt:** - Állítsa "IGEN" beállítás, ha a bejelentkezett felhasználó prt-je van az eszközön.
+- **AzureAdPrtUpdateTime:** - Állítsa be az UTC-ben, amikor a PRT utolsó frissítése.
+- **AzureAdPrtExpiryTime:** - Állítsa be az UTC-ben, amikor a PRT lejár, ha nem újítja meg.
+- **AzureAdPrtAuthority:** - Az Azure AD-szolgáltató URL-címe
+- **EnterprisePrt:** - Állítsa "IGEN" beállításra, ha az eszköz PRT-vel rendelkezik a helyszíni ADFS-ből. A hibrid Azure AD-hez csatlakozó eszközök esetében az eszköz prt-vel rendelkezhet az Azure AD-ből és a helyszíni AD-ből egyidejűleg. A helyszíni összekapcsolt eszközök csak enterprise PRT-vel rendelkeznek.
+- **EnterprisePrtUpdateTime:** - Állítsa be az UTC-ben az Enterprise PRT utolsó frissítésének idejét.
+- **EnterprisePrtExpiryTime:** - Állítsa be azt az időt UTC-ben, amikor a PRT lejár, ha nem újítja meg.
+- **EnterprisePrtAuthority:** - ADFS-szolgáltató URL-címe
 
-### <a name="sample-sso-state-output"></a>SSO-állapot kimenetének mintája
+### <a name="sample-sso-state-output"></a>Minta SSO-állapot kimenete
 
 ```
 +----------------------------------------------------------------------+
@@ -193,25 +193,25 @@ Ez a szakasz figyelmen kívül hagyható az Azure AD által regisztrált eszköz
 +----------------------------------------------------------------------+
 ```
 
-## <a name="diagnostic-data"></a>Diagnosztikai adatszolgáltatások
+## <a name="diagnostic-data"></a>Diagnosztikai adatok
 
-### <a name="pre-join-diagnostics"></a>Csatlakozás előtti diagnosztika
+### <a name="pre-join-diagnostics"></a>Előzetes csatlakoztatási diagnosztika
 
-Ez a szakasz csak akkor jelenik meg, ha az eszköz tartományhoz csatlakozik, és nem tud hibrid Azure AD-csatlakozást létesíteni.
+Ez a szakasz csak akkor jelenik meg, ha az eszköz tartományhoz csatlakozik, és nem tud hibrid Azure AD-csatlakozás.
 
-Ez a szakasz különböző teszteket hajt végre a csatlakozási hibák diagnosztizálásához. Ez a szakasz az előző (?) részleteit is tartalmazza. Ez az információ tartalmazza a hiba fázisát, a hibakódot, a kiszolgálói kérelem AZONOSÍTÓját, a kiszolgáló válaszának http-állapotát, a kiszolgálói válasz hibaüzenetét.
+Ez a szakasz különböző teszteket hajt végre az illesztési hibák diagnosztizálása érdekében. Ez a rész az előző (?) részleteit is tartalmazza. Ez az információ tartalmazza a hibafázist, a hibakódot, a kiszolgálókérésazonosítót, a kiszolgálóválasz http állapotát, a kiszolgálóválasz-hibaüzenetet.
 
-- **Felhasználói környezet:** – az a környezet, amelyben a diagnosztika fut. Lehetséges értékek: rendszer, nem EMELt szintű felhasználó, EMELt szintű felhasználó. 
+- **Felhasználói környezet:** - Az a környezet, amelyben a diagnosztika fut. Lehetséges értékek: SYSTEM, UN-ELEVATED User, ELEVATED User. 
 
    > [!NOTE]
-   > Mivel a tényleges illesztés a rendszerkörnyezetben történik, a diagnosztika futtatása a rendszerkörnyezetben a legközelebb esik a tényleges illesztési forgatókönyvhöz. A diagnosztika a rendszerkörnyezetben való futtatásához a dsregcmd/status parancsot egy rendszergazda jogú parancssorból kell futtatni.
+   > Mivel a tényleges illesztés a RENDSZER környezetben történik, a rendszerkörnyezetben a diagnosztika futtatása a legközelebb áll a tényleges illesztési forgatókönyvhöz. A DIAgnosztika SYSTEM környezetben történő futtatásához a dsregcmd /status parancsot rendszergazdai jogú parancssorból kell futtatni.
 
-- **Ügyfél időpontja:** – a rendszeridő UTC szerint.
-- **Ad-kapcsolat tesztelése:** – a test kapcsolati tesztet hajt végre a tartományvezérlőn. Ennek a tesztnek a hibája valószínűleg csatlakozási hibákat eredményez az előzetes ellenőrzési fázisban.
-- **Ad-konfigurációs teszt:** – a teszt beolvassa és ellenőrzi, hogy az scp-objektum megfelelően van-e konfigurálva a helyszíni ad-erdőben. Ebben a tesztben a hibák valószínűleg csatlakozási hibákat eredményeznek a felderítési fázisban a hibakód 0x801c001d.
-- **DRS felderítési teszt:** – a teszt lekéri a DRS-végpontokat a felderítési metaadatok végpontján, és elvégzi a felhasználói tartományra vonatkozó kérelmet. Ebben a tesztben a hibák valószínűleg csatlakozási hibákat eredményeznek a felderítési fázisban.
-- **DRS-kapcsolat tesztelése:** a test alapszintű kapcsolati tesztet hajt végre a DRS-végponton.
-- **Jogkivonat-beszerzési teszt:** a test megpróbál beolvasni egy Azure ad-hitelesítési tokent, ha a felhasználói bérlő összevont. Ebben a tesztben a hibák valószínűleg csatlakozási hibákat eredményeznek az hitelesítési fázisban. Ha az Auth nem sikerül, a rendszer tartalékként kísérli meg a szinkronizálási csatlakozást, kivéve, ha a tartalék explicit módon le van tiltva az alábbi beállításkulcs-beállításokkal.
+- **Ügyfélidő:** - A rendszeridő UTC-ben.
+- **AD-kapcsolati teszt:** - A teszt kapcsolódási tesztet hajt végre a tartományvezérlőn. A teszt hibája valószínűleg csatlakozási hibákat eredményez az ellenőrzés előtti fázisban.
+- **AD konfigurációs teszt:** - Ellenőrizze az olvasásokat, és ellenőrizze, hogy az SCP-objektum megfelelően van-e konfigurálva a helyszíni AD erdőben. A teszt hibái valószínűleg a 0x801c001d hibakódú felderítési fázis csatlakozási hibáit eredményeznék.
+- **DRS-felderítési teszt:** - A teszt lekéri a DRS-végpontokat a felderítési metaadat-végpontból, és felhasználói birodalom-kérelmet hajt végre. A teszt hibái valószínűleg csatlakozási hibákat eredményeznek a felderítési fázisban.
+- **DRS-kapcsolatteszt:** - A teszt alapvető kapcsolódási tesztet hajt végre a DRS-végponton.
+- **Jogkivonat-beszerzési teszt:** – Tesztelje az Azure AD hitelesítési jogkivonatot, ha a felhasználó bérlője össze van téve. A teszt hibái valószínűleg csatlakozási hibákat eredményeznének az auth fázisban. Ha az auth sikertelen szinkronizálási illesztést a rendszer tartalékként kísérel meg, kivéve, ha a tartalék kifejezetten le van tiltva az alábbi beállításkulcs-beállításokkal.
 ```
     Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
     Value: FallbackToSyncJoin
@@ -220,18 +220,18 @@ Ez a szakasz különböző teszteket hajt végre a csatlakozási hibák diagnosz
     Value: 0x1 -> Enabled
     Default (No Key): Enabled
  ```
-- **Tartalék szinkronizáláshoz – csatlakozás:** – az "enabled" értékre állítva, ha a fenti beállításkulcs lehetővé teszi, hogy a tartalék szinkronizálási hibákkal való CSATLAKOZTATÁSa ne legyen jelen. Ez a beállítás a Windows 10 1803-es és újabb verzióiban érhető el.
-- **Korábbi regisztráció:** – az előző csatlakozási kísérlet ideje. A rendszer csak a sikertelen csatlakoztatási kísérleteket naplózza.
-- **Error fázis:** – a csatlakozás megszakított szakasza. A lehetséges értékek: előzetes vizsgálat, felderítés, hitelesítés, csatlakozás.
-- **Ügyfél-errorcode:** – visszaadott ügyfél-HIBAKÓD (HRESULT).
-- **Kiszolgáló errorcode:** – kiszolgálói hibakód, ha a rendszer elküldte a kérelmet a kiszolgálónak, és a kiszolgáló egy hibakódtal válaszolt vissza. 
-- **Kiszolgálói üzenet:** – a hibakódtal együtt visszaadott kiszolgálói üzenet.
-- **Https-állapot:** – a kiszolgáló által visszaadott http-állapot.
-- **Kérelem azonosítója:** – a rendszer elküldi a-ügyfél kérelemazonosító a kiszolgálónak. Hasznos a kiszolgálóoldali naplók összekapcsolásához.
+- **Tartalék a Szinkronizálás-csatlakozáshoz:** - Állítsa "Engedélyezve" értékre, ha a fenti beállításkulcs, hogy megakadályozza az illesztés hitelesítési hibákkal való szinkronizálását, NINCS jelen. Ez a beállítás a Windows 10 1803-as és újabb verzióiból érhető el.
+- **Előző regisztráció:** - Az előző csatlakozási kísérlet bekövetkezésének időpontja. A rendszer csak a sikertelen csatlakozási kísérleteket naplózza.
+- **Hibafázis:** - Az illesztés azon szakasza, amelyben megszakadt. A lehetséges értékek az előzetes ellenőrzés, a felfedezés, az auth, a csatlakozás.
+- **Ügyfél hibakódja:** - A visszaadott ügyfélhibakód (HRESULT).
+- **Kiszolgálóhibakódja:** - Kiszolgálói hibakód, ha a rendszer kérést küldött a kiszolgálónak, és a kiszolgáló hibakóddal válaszolt. 
+- **Kiszolgálói üzenet:** - A kiszolgáló üzeneta a hibakóddal együtt visszaadva.
+- **Https status:** - A kiszolgáló által visszaadott http-állapot.
+- **Kérelemazonosító:** - A kiszolgálónak küldött ügyfél-kérelemazonosító. Hasznos a kiszolgálóoldali naplókkal való korrelációhoz.
 
-### <a name="sample-pre-join-diagnostics-output"></a>Mintavétel előtti diagnosztika kimenete
+### <a name="sample-pre-join-diagnostics-output"></a>Minta előzetes csatlakoztatási diagnosztikai kimenete
 
-A következő példa egy felderítési hiba miatt sikertelen diagnosztikai tesztet mutat be.
+A következő példa bemutatja a diagnosztikai teszt sikertelen felderítési hibával.
 
 ```
 +----------------------------------------------------------------------+
@@ -255,7 +255,7 @@ A következő példa egy felderítési hiba miatt sikertelen diagnosztikai teszt
 +----------------------------------------------------------------------+
 ```
 
-A következő példa a diagnosztikai tesztek elvégzését mutatja be, de a regisztrációs kísérlet sikertelen volt, mert a szinkronizáláshoz való csatlakozás várható. Miután a Azure AD Connect szinkronizálási feladata befejeződik, az eszköz csatlakozhat.
+A következő példa azt mutatja, diagnosztikai tesztek haladnak, de a regisztrációs kísérlet sikertelen volt egy könyvtárhiba, amely várhatóan a szinkronizálási illesztés. Miután az Azure AD Connect szinkronizálási feladat befejeződött, az eszköz képes lesz csatlakozni.
 
 ```
 +----------------------------------------------------------------------+
@@ -286,12 +286,12 @@ A következő példa a diagnosztikai tesztek elvégzését mutatja be, de a regi
 
 ### <a name="post-join-diagnostics"></a>Csatlakozás utáni diagnosztika
 
-Ez a szakasz a felhőhöz csatlakoztatott eszközön elvégzett, józan ész-ellenőrzések kimenetét jeleníti meg.
+Ez a szakasz a felhőhöz csatlakozott eszközön végrehajtott józansági ellenőrzések kimenetét jeleníti meg.
 
-- **AadRecoveryEnabled:** – ha az "igen", az eszközön tárolt kulcsok nem használhatók, és az eszköz ki van jelölve helyreállításra. A következő bejelentkezés elindítja a helyreállítási folyamatot, majd regisztrálja újra az eszközt.
-- **KeySignTest:** – ha a "Passed" az eszköz kulcsai jó állapotban vannak. Ha a KeySignTest sikertelen, az eszköz általában a helyreállításhoz lesz megjelölve. A következő bejelentkezés elindítja a helyreállítási folyamatot, majd regisztrálja újra az eszközt. A hibrid Azure AD-hez csatlakoztatott eszközök esetén a helyreállítás csendes. Az Azure AD-hez csatlakoztatott vagy az Azure AD-regisztrációt követően az eszközök szükség esetén megkérik a felhasználók hitelesítését az eszköz helyreállításához és újbóli regisztrálásához. **A KeySignTest emelt szintű jogosultságok szükségesek.**
+- **AadRecoveryEnabled:** - Ha "IGEN", az eszközben tárolt kulcsok nem használhatók, és az eszköz meg van jelölve a helyreállításhoz. A következő bejelentkezés elindítja a helyreállítási folyamatot, és újra regisztrálja az eszközt.
+- **KeySignTest:** - Ha "ÁT" az eszköz kulcsok jó állapotban vannak. Ha a KeySignTest sikertelen, az eszköz általában meg lesz jelölve a helyreállításhoz. A következő bejelentkezés elindítja a helyreállítási folyamatot, és újra regisztrálja az eszközt. A hibrid Azure AD-hez csatlakozó eszközök a helyreállítás néma. Míg az Azure AD csatlakozott, vagy az Azure AD regisztrált, az eszközök kérni fogja a felhasználói hitelesítés t, és szükség esetén regisztrálja újra az eszközt. **A KeySignTest emelt szintű jogosultságokat igényel.**
 
-#### <a name="sample-post-join-diagnostics-output"></a>Példa a csatlakozás utáni diagnosztika kimenetére
+#### <a name="sample-post-join-diagnostics-output"></a>Minta csatlakozás utáni diagnosztikai kimenet
 
 ```
 +----------------------------------------------------------------------+
@@ -303,26 +303,26 @@ Ez a szakasz a felhőhöz csatlakoztatott eszközön elvégzett, józan ész-ell
 +----------------------------------------------------------------------+
 ```
 
-## <a name="ngc-prerequisite-check"></a>NGC Előfeltételek ellenőrzése
+## <a name="ngc-prerequisite-check"></a>NGC előfeltétel-ellenőrzés
 
-Ez a szakasz a vállalati Windows Hello (WHFB) üzembe helyezéséhez szükséges előfeltételek-ellenőrzéseket végzi. 
+Ez a szakasz a Windows Hello for Business (WHFB) kiépítésének perquisite ellenőrzéseit végzi. 
 
 > [!NOTE]
-> Ha a felhasználó már sikeresen beállította a WHFB-t, előfordulhat, hogy a dsregcmd-/status nem látja az NGC előfeltétel-ellenőrzési részleteit.
+> Előfordulhat, hogy nem látja az NGC előzetes ellenőrzési adatait a dsregcmd /status kapcsolóban, ha a felhasználó már sikeresen konfigurálta a WHFB-t.
 
-- **IsDeviceJoined:** – az "igen" értékre állítva, ha az eszköz csatlakoztatva van az Azure ad-hez.
-- **IsUserAzureAD:** – az "igen" értékre állítva, ha a bejelentkezett felhasználó megtalálható az Azure ad-ben.
-- **PolicyEnabled:** – állítsa az "igen" értékre, ha a WHFB szabályzat engedélyezve van az eszközön.
-- **PostLogonEnabled:** – az "igen" értékre állítva, ha a WHFB-regisztrációt a platform natív módon indítja el. Ha a "nem" értékre van állítva, az azt jelzi, hogy egy egyéni mechanizmus aktiválja a vállalati Windows Hello-regisztrációt
-- **DeviceEligible:** – az "igen" értékre állítva, ha az eszköz megfelel a WHFB-regisztrációhoz szükséges hardverkövetelmények követelményeinek.
-- **SessionIsNotRemote:** – állítsa Igen értékre, ha az aktuális felhasználó közvetlenül az eszközre van bejelentkezve, és nem távolról.
-- **CertEnrollment:** – a WHFB tanúsítvány-megbízhatóság telepítésére vonatkozik, amely a WHFB tanúsítványigénylési szolgáltatóját jelzi. A "beléptetési szolgáltató" értékre van állítva, ha a WHFB házirend forrása Csoportházirend, "mobileszköz-kezelés", ha a forrás MDM. "nincs", máskülönben
-- **AdfsRefreshToken:** – a WHFB tanúsítvány-megbízhatóság telepítésére vonatkozó specifikus. Csak akkor jelennek meg, ha a CertEnrollment "beléptetési szolgáltató". Azt jelzi, hogy az eszköz rendelkezik-e vállalati PRT-vel a felhasználó számára.
-- **AdfsRaIsReady:** – a WHFB tanúsítvány-megbízhatóság telepítésére vonatkozó specifikus.  Csak akkor jelennek meg, ha a CertEnrollment "beléptetési szolgáltató". Állítsa az Igen értékre, ha az ADFS a WHFB által támogatott felderítési metaadatokban szerepel, *és* ha elérhető a bejelentkezési tanúsítvány sablonja.
-- **LogonCertTemplateReady:** – a WHFB tanúsítvány-megbízhatóság telepítésére vonatkozó specifikus. Csak akkor jelennek meg, ha a CertEnrollment "beléptetési szolgáltató". Ha az "igen" értékre van állítva, ha a bejelentkezési tanúsítvány sablonjának állapota érvényes, és segít az ADFS-k hibakeresésében.
-- **PreReqResult:** – a WHFB előfeltétel-kiértékelésének eredményét adja meg. Ha a felhasználó a következő alkalommal jelentkezik be, a "kiépítés" értékre van állítva, ha a WHFB-regisztráció Bejelentkezés utáni feladatként indul el.
+- **IsDeviceJoined:** - Állítsa "IGEN" beállításra, ha az eszköz csatlakozik az Azure AD-hez.
+- **IsUserAzureAD:** - Állítsa "IGEN" beállításra, ha a bejelentkezett felhasználó jelen van az Azure AD-ben.
+- **PolicyEnabled:** - Állítsa "IGEN" értékre, ha a WHFB-házirend engedélyezve van az eszközön.
+- **PostLogonEnabled:** - Állítsa "IGEN" értékre, ha a WHFB-regisztrációt a platform natív módon indítja el. Ha "NEM" értékre van állítva, az azt jelzi, hogy a Windows Hello vállalati verzióra való regisztrációt egy egyéni mechanizmus váltja ki.
+- **DeviceEligible:** - Állítsa "IGEN" értékre, ha az eszköz megfelel a WHFB-re való regisztrálás hardverkövetelményének.
+- **SessionIsNotRemote:** - Állítsa "IGEN" beállításra, ha az aktuális felhasználó közvetlenül az eszközre van bejelentkezve, és nem távolról.
+- **CertEnrollment:** - A WHFB tanúsítványmegbízhatósági telepítésére jellemző, jelezve a WHFB tanúsítványigénylési hatóságát. Állítsa "regisztrációs hatóság", ha a whfb-házirend forrása csoportházirend, "mobileszköz-kezelés", ha a forrás MDM. "nincs" egyébként
+- **AdfsRefreshToken:** - a WHFB tanúsítványmegbízhatóság ikörnyezetére jellemző. Csak akkor jelenik meg, ha a CertEnrollment "beléptetési hatóság". Azt jelzi, hogy az eszköz rendelkezik-e vállalati PRT-vel a felhasználó számára.
+- **AdfsRaIsReady:** - a WHFB tanúsítványmegbízhatóság ikörnyezetére jellemző.  Csak akkor jelenik meg, ha a CertEnrollment "beléptetési hatóság". Állítsa "IGEN" értékre, ha az ADFS a felderítési metaadatokban a WHFB-t támogatja, *és* ha a bejelentkezési tanúsítványsablon elérhető.
+- **LogonCertTemplateReady:** - a WHFB tanúsítványmegbízhatóság ikörnyezetére jellemző. Csak akkor jelenik meg, ha a CertEnrollment "beléptetési hatóság". Állítsa "IGEN" beállításra, ha a bejelentkezési tanúsítványsablon állapota érvényes, és segít az ADFS RA hibaelhárításában.
+- **PreReqResult:** - Az összes WHFB előfeltétel-értékelés eredményét adja meg. Állítsa a "Kiépítés" értékre, ha a WHFB-regisztráció bejelentkezés utáni feladatként indul el, amikor a felhasználó legközelebb bejelentkezik.
 
-### <a name="sample-ngc-prerequisite-check-output"></a>Az NGC előfeltétel-ellenőrzési kimenetének mintája
+### <a name="sample-ngc-prerequisite-check-output"></a>Minta NGC előfeltétel-ellenőrzés kimenete
 
 ```
 +----------------------------------------------------------------------+
@@ -343,6 +343,6 @@ Ez a szakasz a vállalati Windows Hello (WHFB) üzembe helyezéséhez szüksége
 +----------------------------------------------------------------------+
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További kérdések: eszközkezelés – [Gyakori kérdések](faq.md)
+További kérdések az [eszközkezelésről szóló gyakori kérdések ben](faq.md)

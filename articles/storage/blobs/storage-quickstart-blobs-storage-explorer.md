@@ -1,24 +1,24 @@
 ---
-title: Rövid útmutató – blob létrehozása Azure Storage Explorer
+title: Rövid útmutató – Blob létrehozása az Azure Storage Explorer rel
 titleSuffix: Azure Storage
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy tárolót és egy blobot a Azure Storage Explorer használatával, letöltheti a blobot a helyi számítógépre, és megtekintheti a tárolóban lévő összes blobot.
+description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre egy tárolót és egy blobot az Azure Storage Explorer használatával, hogyan töltheti le a blobot a helyi számítógépre, és hogyan tekintheti meg a tárolóban lévő összes blobot.
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: f19152b5b8bc569fa07109b6135fa85b9b55bff1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 04530844316610bb8a97e8a299b5fb41ebf49955
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892464"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061369"
 ---
-# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>Gyors útmutató: Blobok létrehozása a Azure Storage Explorer használatával
+# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>Gyorsútmutató: Blob létrehozásához használja az Azure Storage Explorert
 
-Ebből a rövid útmutatóból elsajátíthatja, hogyan hozhat létre egy tárolót és egy blobot az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan tekintheti meg a tárolóban található összes blobot. Ezenkívül megtanulja, hogyan készíthet pillanatfelvételt egy blobról, hogyan kezelheti a tárolók hozzáférési szabályzatait, illetve hogyan hozhat létre közös hozzáférésű jogosultságkódot.
+Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre egy tárolót és egy blobot az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan tekintheti meg a tárolóban található összes blobot. Ezenkívül megtanulja, hogyan készíthet pillanatfelvételt egy blobról, hogyan kezelheti a tárolók hozzáférési szabályzatait, illetve hogyan hozhat létre közös hozzáférésű jogosultságkódot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,13 +30,13 @@ A rövid útmutatóhoz az Azure Storage Explorer telepítése szükséges. Az Az
 
 Első indításkor megjelenik a **Microsoft Azure Storage Explorer – Csatlakozás** ablak. A Storage Explorer számos különféle módot kínál a tárfiókokhoz való csatlakozáshoz. A csatlakozási lehetőségeket az alábbi táblázat ismerteti:
 
-|Tevékenység|Rendeltetés|
+|Tevékenység|Cél|
 |---|---|
-|Azure-fiók hozzáadása | Átirányítja a szervezet bejelentkezési lapjára az Azure-ba való hitelesítéshez. |
+|Azure-fiók hozzáadása | Átirányítja a szervezet bejelentkezési oldalára, hogy hitelesítse az Azure-ba. |
 |Kapcsolati sztring vagy közös hozzáférésű jogosultságkód URI azonosítójának használata | Egy tároló vagy tárfiók közvetlen elérésére szolgál egy SAS-token vagy egy közös kapcsolati sztring segítségével. |
 |Tárfióknév és -kulcs használata| Csatlakozzon az Azure Storage-hoz a tárfiók nevével és kulcsával.|
 
-Válassza **Az Azure-fiók hozzáadása** lehetőséget, és kattintson **a bejelentkezés..** . elemre. A képernyőn megjelenő utasításokat követve jelentkezzen be az Azure-fiókjába.
+Válassza **az Azure-fiók hozzáadása** lehetőséget, és kattintson a Bejelentkezés **gombra.** Kövesse a képernyőn megjelenő utasításokat az Azure-fiókjába való bejelentkezéshez.
 
 ![Microsoft Azure Storage Explorer – Csatlakozás ablak](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
@@ -48,7 +48,7 @@ A csatlakozás befejeztével az Azure Storage Explorer betöltést követően me
 
 A blobok minden esetben egy tárolóba lesznek feltöltve. Így a blobok csoportjait ugyanúgy rendszerezheti, ahogy a fájlokat a számítógép mappáiban.
 
-Tároló létrehozásához bontsa ki az előző lépésben létrehozott tárfiókot. Válassza a **Blobtárolók** lehetőséget, kattintson a jobb gombbal, majd válassza a **Blobtároló létrehozása** lehetőséget. Adja meg a blobtároló nevét. A blob-tárolók elnevezésére vonatkozó szabályok és korlátozások listáját a [tároló létrehozása](storage-quickstart-blobs-dotnet.md#create-a-container) című szakaszban találja. Ha végzett, nyomja le az **Enter** billentyűt a blobtároló létrehozásához. A sikeresen létrehozott blobtároló megjelenik a kiválasztott tárfiókhoz tartozó **Blobtárolók** mappában.
+Tároló létrehozásához bontsa ki az előző lépésben létrehozott tárfiókot. Válassza a **Blobtárolók** lehetőséget, kattintson a jobb gombbal, majd válassza a **Blobtároló létrehozása** lehetőséget. Adja meg a blobtároló nevét. Tekintse meg a [Tároló létrehozása](storage-quickstart-blobs-dotnet.md#create-a-container) szakaszban a blobtárolók elnevezésére vonatkozó szabályok és korlátozások listáját. Ha végzett, nyomja le az **Enter** billentyűt a blobtároló létrehozásához. A sikeresen létrehozott blobtároló megjelenik a kiválasztott tárfiókhoz tartozó **Blobtárolók** mappában.
 
 ## <a name="upload-blobs-to-the-container"></a>Blobok feltöltése a tárolóba
 
@@ -84,17 +84,17 @@ Az Azure Storage Explorer lehetővé teszi a blobokról készült [pillanatképe
 
 ## <a name="manage-access-policies"></a>Hozzáférési szabályzatok kezelése
 
-A Storage Explorer felhasználói felületén lehetőség nyílik a tárolók hozzáférési szabályzatainak kezelésére. Kétféle biztonságos hozzáférési szabályzat (SAS) létezik: szolgáltatás- és fiókszintű. A fiókszintű SAS a tárfiókra érvényes, továbbá több szolgáltatásra és erőforrásra is vonatkozhat. A szolgáltatásszintű SAS egy adott szolgáltatás erőforrására érvényes. A szolgáltatási szint SAS létrehozásához kattintson a jobb gombbal bármelyik tárolóra, és válassza a **hozzáférési házirendek kezelése...** lehetőséget. A fiók szintű SAS létrehozásához kattintson a jobb gombbal a Storage-fiókra.
+A Storage Explorer felhasználói felületén lehetőség nyílik a tárolók hozzáférési szabályzatainak kezelésére. Kétféle biztonságos hozzáférési szabályzat (SAS) létezik: szolgáltatás- és fiókszintű. A fiókszintű SAS a tárfiókra érvényes, továbbá több szolgáltatásra és erőforrásra is vonatkozhat. A szolgáltatásszintű SAS egy adott szolgáltatás erőforrására érvényes. Szolgáltatásiszint-SAS létrehozásához kattintson a jobb gombbal bármelyik tárolóra, és válassza **a Hozzáférési házirendek kezelése parancsot...**. Egy sas-szintű fióklétrehozásához kattintson a jobb gombbal a tárfiókra.
 
 Válassza a **Hozzáadás** lehetőséget egy új hozzáférési szabályzat hozzáadásához és a szabályzat engedélyeinek megadásához. Ha végzett, kattintson a **Mentés** gombra a hozzáférési szabályzat mentéséhez. A szabályzat innentől kezdve elérhető lesz a közös hozzáférésű jogosultságkódok konfigurálásakor.
 
 ## <a name="work-with-shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok használata
 
-A közös hozzáférésű jogosultságkódok (SAS) a Storage Exploreren keresztül kérhetők le. Kattintson a jobb gombbal a Storage-fiókra, a tárolóra vagy a blobra, majd válassza a **közös hozzáférésű aláírás beolvasása...** lehetőséget. Válassza ki a kezdő és a lejárati időt, valamint a SAS URL-címére vonatkozó engedélyeket, és válassza a **Létrehozás**lehetőséget. A lekérdezési sztringgel ellátott teljes URL-cím, illetve a lekérdezési sztring önmagában is megjelenik a következő képernyőn, ahonnan mindkettő másolható.
+A közös hozzáférésű jogosultságkódok (SAS) a Storage Exploreren keresztül kérhetők le. Kattintson a jobb gombbal egy tárfiókra, tárolóra vagy blobra, és válassza **a Megosztott hozzáférésű aláírás bekerülése parancsot...**. Válassza ki a Kezdési és Lejárati időt, valamint a SAS URL-címének engedélyeit, és válassza a **Létrehozás lehetőséget.** A lekérdezési sztringgel ellátott teljes URL-cím, illetve a lekérdezési sztring önmagában is megjelenik a következő képernyőn, ahonnan mindkettő másolható.
 
 ![Microsoft Azure Storage Explorer – Tárolóban lévő blobok listázása](media/storage-quickstart-blobs-storage-explorer/sharedaccesssignature.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között az **Azure Storage Explorer** használatával. Ha bővebb információra van szüksége a Blob Storage használatával kapcsolatban, lépjen tovább a Blob Storage használati útmutatójára.
 

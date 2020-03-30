@@ -1,9 +1,9 @@
 ---
-title: Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében – Azure Active Directory
-description: Megtudhatja, hogyan engedélyezheti a szervezeten kívüli felhasználók számára a hozzáférési csomagok bekérését, így dolgozhat a projekteken.
+title: Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságkezelésben – Azure Active Directory
+description: Megtudhatja, hogy miként engedélyezheti a szervezeten kívüli személyeknek, hogy hozzáférési csomagokat kérjenek, hogy ön együttműködhessen a projekteken.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,125 +12,127 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/22/2020
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ecf3a8819518c674a3d8bd7af55d1a3c6393c42
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: ee370bc9c381eb11ae7cae53b31d0c987c52733c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483856"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128610"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében
 
-Az Azure AD-jogosultságok kezelése lehetővé teszi, hogy együttműködjön a szervezeten kívüli személyekkel. Ha gyakran dolgozik együtt a külső Azure AD-címtárban vagy-tartományban lévő felhasználókkal, csatlakoztatott szervezetként is hozzáadhatja őket. Ez a cikk azt ismerteti, hogyan adhat hozzá egy csatlakoztatott szervezetet, hogy lehetővé tegye a szervezeten kívüli felhasználók számára az erőforrások kérését a címtárban.
+Az Azure Active Directory (Azure AD) jogosultságkezeléssel együttműködhet a szervezeten kívüli személyekkel. Ha gyakran együttműködik a felhasználókkal egy külső Azure AD-címtárban vagy tartományban, hozzáadhatja őket, mint egy csatlakoztatott szervezet. Ez a cikk azt ismerteti, hogyan vehet fel egy csatlakoztatott szervezetet, hogy a szervezeten kívüli felhasználók erőforrásokat kérhessenek a címtárban.
 
-## <a name="what-is-a-connected-organization"></a>Mi az a csatlakoztatott szervezet?
+## <a name="what-is-a-connected-organization"></a>Mi az összekapcsolt szervezet?
 
-A csatlakoztatott szervezet egy külső Azure AD-címtár vagy-tartomány, amelyhez kapcsolata van.
+A csatlakoztatott szervezet egy külső Azure AD-címtár vagy tartomány, amely kapcsolatban áll.
 
-Tegyük fel például, hogy a Woodgrove bankban dolgozik, és két külső szervezettel kíván együttműködni. Ez a két szervezet különböző konfigurációkkal rendelkezik:
+Tegyük fel például, hogy a Woodgrove Banknál dolgozik, és két külső szervezettel szeretne együttműködni. Ez a két szervezet különböző konfigurációkkal rendelkezik:
 
-- A Graphic Design Institute az Azure AD-t használja, és a felhasználók egyszerű felhasználónevet használnak `graphicdesigninstitute.com`
-- A contoso még nem használja az Azure AD-t. A contoso felhasználói egyszerű felhasználónevet `contoso.com`.
+- A Graphic Design Institute az Azure AD-t használja, és a felhasználók egy egyszerű felhasználónévvel rendelkeznek, amely *graphicdesigninstitute.com*végződik.
+- A Contoso még nem használja az Azure AD-t. A Contoso-felhasználók egyszerű felhasználónévvel rendelkeznek, amely *contoso.com*végződik.
 
-Ebben az esetben két csatlakoztatott szervezetet is beállíthat. Hozzon létre egy csatlakoztatott szervezetet a Graphic Design Institute számára, és egyet a contoso számára. Ha ezt követően hozzáadja a két csatlakoztatott szervezetet egy szabályzathoz, akkor az egyes szervezetek felhasználóinak a szabályzatnak megfelelő egyszerű felhasználónevet igényelhetnek hozzáférési csomagokat. A graphicdesigninstitute.com tartománnyal rendelkező felhasználói egyszerű névvel rendelkező felhasználók megfelelnek a Graphic Design Institute csatlakoztatott szervezetének, és engedélyezni kell a kérelmek küldését, míg a felhasználók egy egyszerű felhasználónévvel rendelkeznek, amely a contoso.com tartományával egyezik a contoso-beli csatlakoztatott szervezet és csomagok igénylésére is jogosult. Továbbá, mivel a grafikai tervező Intézet az Azure AD-t használja, minden olyan felhasználó, aki egy [ellenőrzött tartományhoz](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) tartozó egyszerű névvel van ellátva
+Ebben az esetben két csatlakoztatott szervezetet konfigurálhat. Hozzon létre egy csatlakoztatott szervezet Grafikai Tervező Intézet és egy Contoso. Ha ezután hozzáadja a két csatlakoztatott szervezetet egy házirendhez, a házirendnek megfelelő egyszerű felhasználónévvel rendelkező szervezetek felhasználói hozzáférési csomagokat kérhetnek. A *graphicdesigninstitute.com* tartománysal rendelkező egyszerű felhasználónévvel rendelkező felhasználók megegyeznének a Grafikai Intézethez kapcsolódó szervezettel, és engedélyeznék számukra a kérelmek küldését. A *contoso.com* tartománysal rendelkező egyszerű felhasználónévvel rendelkező felhasználók megfelelnek a Contoso-hoz kapcsolódó szervezetnek, és csomagokat is kérhetnek. És mivel a Graphic Design Institute az Azure AD-t használja, minden olyan egyszerű névvel rendelkező felhasználó, amely megfelel a bérlőhöz hozzáadott [ellenőrzött tartománynak,](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) például *a graphicdesigninstitute.example,* ugyanazzal a házirenddel is kérhet hozzáférési csomagokat.
 
-![Példa csatlakoztatott szervezetre](./media/entitlement-management-organization/connected-organization-example.png)
+![Példa csatlakoztatott szervezeti](./media/entitlement-management-organization/connected-organization-example.png)
 
-Az Azure AD-címtár vagy-tartomány felhasználóinak hitelesítése a hitelesítés típusától függ. A csatlakoztatott szervezetek hitelesítési típusai a következők:
+Az Azure AD-címtárból vagy tartományhitelesítésből származó felhasználók hitelesítésének módja a hitelesítés típusától függ. Az összekapcsolt szervezetek hitelesítési típusai a következők:
 
 - Azure AD
 - [Közvetlen összevonás](../b2b/direct-federation.md)
-- [Egyszeri jelszó](../b2b/one-time-passcode.md) (tartomány)
+- [Egyszeri jelkód](../b2b/one-time-passcode.md) (tartomány)
 
-A csatlakoztatott szervezetek hozzáadásával kapcsolatos bemutatóért tekintse meg a következő videót:
+A csatlakoztatott szervezet hozzáadásának bemutatásához tekintse meg az alábbi videót:
 
 >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4dskS]
 
 ## <a name="add-a-connected-organization"></a>Csatlakoztatott szervezet hozzáadása
 
-Kövesse az alábbi lépéseket egy külső Azure AD-címtár vagy-tartomány csatlakoztatott szervezetként való hozzáadásához.
+Külső Azure AD-címtár vagy tartomány csatlakoztatott szervezetként való hozzáadásához kövesse az ebben a szakaszban található utasításokat.
 
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy vendég meghívója
+**Előfeltételi szerepkör**: *Globális rendszergazda*, *Felhasználói rendszergazda*vagy *Vendégmeghívó*
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. Az Azure Portalon válassza az **Azure Active Directory**lehetőséget, majd válassza az **Identitáscég-irányítási**lehetőséget.
 
-1. A bal oldali menüben kattintson a **csatlakoztatott szervezetek** elemre, majd kattintson a **csatlakoztatott szervezet hozzáadása**lehetőségre.
+1. A bal oldali ablaktáblában válassza a **Csatlakoztatott szervezetek**lehetőséget, majd a Csatlakoztatott **szervezet hozzáadása**lehetőséget.
 
-    ![Identitás szabályozása – csatlakoztatott szervezetek – csatlakoztatott szervezet hozzáadása](./media/entitlement-management-organization/connected-organization.png)
+    ![A "Csatlakoztatott szervezet hozzáadása" gomb](./media/entitlement-management-organization/connected-organization.png)
 
-1. Az **alapvető beállítások** lapon adja meg a szervezet megjelenítendő nevét és leírását.
+1. Válassza az **Alapok** lapot, majd adja meg a szervezet megjelenítendő nevét és leírását.
 
-    ![Csatlakoztatott szervezet hozzáadása – alapismeretek lap](./media/entitlement-management-organization/organization-basics.png)
+    ![A "Csatlakoztatott szervezet hozzáadása" alapjai ablaktábla](./media/entitlement-management-organization/organization-basics.png)
 
-1. A **címtár + tartomány** lapon kattintson a **címtár + tartomány hozzáadása** lehetőségre a címtárak és tartományok kiválasztása ablaktábla megnyitásához.
+1. Válassza a **Címtár + tartomány** lapot, majd a **Címtár hozzáadása + tartomány**lehetőséget.
 
-1. Adja meg a tartománynevet az Azure AD-címtár vagy-tartomány kereséséhez. A teljes tartománynevet kell beírnia.
+    Megnyílik **a Könyvtárak kiválasztása + tartományok** ablaktábla.
 
-1. Ellenőrizze, hogy a megfelelő szervezet-e a megadott névvel és hitelesítési típussal. A felhasználók bejelentkezésének módja a hitelesítési típustól függ.
+1. A keresőmezőbe írjon be egy tartománynevet az Azure AD-címtár vagy tartomány kereséséhez. Ügyeljen arra, hogy adja meg a teljes domain nevet.
 
-    ![Csatlakoztatott szervezet hozzáadása – könyvtárak és tartományok kijelölése](./media/entitlement-management-organization/organization-select-directories-domains.png)
+1. Ellenőrizze, hogy a szervezet neve és a hitelesítés típusa helyes-e. A felhasználók bejelentkezésének módja a hitelesítés típusától függ.
 
-1. Az Azure AD-címtár vagy-tartomány hozzáadásához kattintson a **Hozzáadás** gombra. Jelenleg csak egy Azure AD-címtár vagy-tartomány adható hozzá csatlakoztatott szervezeten belül.
+    ![A "Könyvtárak kiválasztása + tartományok" ablaktábla](./media/entitlement-management-organization/organization-select-directories-domains.png)
+
+1. Válassza **a Hozzáadás** lehetőséget az Azure AD-címtár vagy -tartomány hozzáadásához. Jelenleg csatlakoztatott szervezetenként csak egy Azure AD-címtárat vagy tartományt adhat hozzá.
 
     > [!NOTE]
-    > Az Azure AD-címtár vagy-tartomány összes felhasználója ezt a hozzáférési csomagot fogja kérni. Ez magában foglalja az Azure AD-beli felhasználókat a címtárhoz társított összes altartományból, kivéve, ha ezeket a tartományokat az Azure B2B engedélyezési vagy megtagadási listája blokkolja. További információ: a [vállalatközi felhasználók meghívásának engedélyezése vagy letiltása adott szervezetekben](../b2b/allow-deny-list.md).
+    > Az Azure AD címtárból vagy tartományból származó összes felhasználó kérheti ezt a hozzáférési csomagot. Ez magában foglalja az Azure AD-ben a címtárhoz társított összes altartományfelhasználóit, kivéve, ha ezeket a tartományokat az Azure AD üzleti vállalkozás (B2B) engedélyezési vagy megtagadási lista blokkolja. További információt az [Adott szervezetek B2B-felhasználóinak szóló meghívók engedélyezése vagy letiltása című témakörben talál.](../b2b/allow-deny-list.md)
 
-1. Az Azure AD-címtár vagy-tartomány hozzáadása után kattintson a **kiválasztás**elemre.
+1. Miután hozzáadta az Azure AD címtárát vagy tartományát, válassza a **Kiválasztás lehetőséget.**
 
     A szervezet megjelenik a listában.
 
-    ![Csatlakoztatott szervezet hozzáadása – címtárak lap](./media/entitlement-management-organization/organization-directory-domain.png)
+    ![A "Címtár + tartomány" ablaktábla](./media/entitlement-management-organization/organization-directory-domain.png)
 
-1. A **szponzorok** lapon adja hozzá az opcionális szponzorokat ehhez a csatlakoztatott szervezethez.
+1. Válassza a **Szponzorok** lapot, majd adja hozzá a nem kötelező szponzorokat ehhez a csatlakoztatott szervezethez.
 
-    A szponzorok olyan belső vagy külső felhasználók, akik már szerepelnek a címtárban, amely az ezzel a csatlakoztatott szervezettel való kapcsolat kapcsolódási pontként szolgál. A belső szponzorok a címtárban tag felhasználók. A külső szponzorok a csatlakoztatott szervezet azon felhasználói, akik korábban meghívást kaptak, és már szerepelnek a címtárban. A szponzorokat jóváhagyóként lehet használni, ha a csatlakoztatott szervezet felhasználói hozzáférést igényelnek ehhez a hozzáférési csomaghoz. További információ a vendég felhasználó címtárban való meghívásáról: [Azure Active Directory B2B együttműködéssel rendelkező felhasználók hozzáadása a Azure Portal](../b2b/add-users-administrator.md).
+    A szponzorok már a címtárban lévő belső vagy külső felhasználók, akik a kapcsolat felvételének szempontjából a kapcsolattartó pontot képezik. A belső szponzorok a címtár ban lévő tagfelhasználók. A külső szponzorok a csatlakoztatott szervezet olyan vendégfelhasználói, akiket korábban meghívtak, és már szerepelnek a címtárban. A szponzorok jóváhagyóként használhatók, ha a csatlakoztatott szervezet felhasználói hozzáférést kérnek ehhez a hozzáférési csomaghoz. A vendégfelhasználó könyvtárba való meghívásáról az [Azure Active Directory B2B együttműködési felhasználóinak hozzáadása az Azure Portalon](../b2b/add-users-administrator.md)című témakörben talál további információt.
 
-    Ha a **Hozzáadás/Eltávolítás**gombra kattint, megjelenik egy ablaktábla, amely kijelöli a belső vagy külső szponzorokat. A panelen megjelenik a címtárban található felhasználók és csoportok szűretlen listája.
+    Ha a **Hozzáadás/eltávolítás lehetőséget választja,** megnyílik egy ablaktábla, amelyben belső vagy külső szponzorokat választhat. Az ablaktábla a címtárban lévő felhasználók és csoportok szűretlen listáját jeleníti meg.
 
-    ![Hozzáférési csomag – házirend – csatlakoztatott szervezet hozzáadása – szponzorok lap](./media/entitlement-management-organization/organization-sponsors.png)
+    ![A Szponzorok ablaktábla](./media/entitlement-management-organization/organization-sponsors.png)
 
-1. A **felülvizsgálat + létrehozás** lapon tekintse át a szervezet beállításait, majd kattintson a **Létrehozás**gombra.
+1. Válassza a **Véleményezés + Létrehozás** lapot, tekintse át a szervezeti beállításokat, majd válassza a **Létrehozás lehetőséget.**
 
-    ![Hozzáférési csomag – házirend – csatlakoztatott szervezet hozzáadása – áttekintés + Létrehozás lap](./media/entitlement-management-organization/organization-review-create.png)
+    ![A "Véleményezés + létrehozás" ablaktábla](./media/entitlement-management-organization/organization-review-create.png)
 
 ## <a name="update-a-connected-organization"></a>Csatlakoztatott szervezet frissítése 
 
-Ha a csatlakoztatott szervezet egy másik tartományra vált, ha új névvel rendelkezik a szervezet számára, vagy módosítani szeretné a szponzorokat, frissítheti a csatlakoztatott szervezetet.
+Ha a csatlakoztatott szervezet egy másik tartományra változik, a szervezet neve megváltozik, vagy módosítani szeretné a szponzorokat, az ebben a szakaszban található utasításokat követve frissítheti a csatlakoztatott szervezetet.
 
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy vendég meghívója
+**Előfeltételi szerepkör**: *Globális rendszergazda*, *Felhasználói rendszergazda*vagy *Vendégmeghívó*
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. Az Azure Portalon válassza az **Azure Active Directory**lehetőséget, majd válassza az **Identitáscég-irányítási**lehetőséget.
 
-1. A bal oldali menüben kattintson a **csatlakoztatott szervezetek** elemre, majd a csatlakoztatott szervezet megnyitásához kattintson a elemre.
+1. A bal oldali ablaktáblában válassza a **Csatlakoztatott szervezetek**lehetőséget, majd a megnyitáshoz jelölje ki a csatlakoztatott szervezetet.
 
-1. Az Áttekintés lapon kattintson a **Szerkesztés** elemre a szervezet nevének vagy leírásának módosításához.  
+1. A csatlakoztatott szervezet áttekintő ablaktábláján válassza a **Szerkesztés** lehetőséget a szervezet nevének vagy leírásának módosításához.  
 
-1. A címtár + tartomány lapon kattintson a **könyvtár és tartomány frissítése** lehetőségre egy másik könyvtárra vagy tartományra való váltáshoz.
+1. A **Címtár + tartomány** ablaktáblán válassza a **Címtár + tartomány frissítése** lehetőséget egy másik könyvtárra vagy tartományra való váltáshoz.
 
-1. A szponzorok lapon kattintson a **belső szponzorok hozzáadása** vagy a **külső szponzorok hozzáadása** lehetőségre a felhasználó szponzorként való hozzáadásához.  Egy szponzor eltávolításához kattintson a szponzorra, majd a jobb oldali menüben kattintson a **Törlés**parancsra.
+1. A **Szponzorok** ablaktáblán válassza a **Belső szponzorok hozzáadása** vagy Külső szponzorok **hozzáadása** lehetőséget, ha egy felhasználót szponzorként szeretne felvenni. Szponzor eltávolításához jelölje ki a szponzort, és a jobb oldali ablaktáblában válassza a **Törlés**lehetőséget.
 
 
 ## <a name="delete-a-connected-organization"></a>Csatlakoztatott szervezet törlése
 
-Ha már nincs kapcsolata egy külső Azure AD-címtárral vagy-tartománnyal, akkor törölheti a csatlakoztatott szervezetet.
+Ha már nem rendelkezik kapcsolattal egy külső Azure AD-címtárvagy tartomány, törölheti a csatlakoztatott szervezet.
 
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy vendég meghívója
+**Előfeltételi szerepkör**: *Globális rendszergazda*, *Felhasználói rendszergazda*vagy *Vendégmeghívó*
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. Az Azure Portalon válassza az **Azure Active Directory**lehetőséget, majd válassza az **Identitáscég-irányítási**lehetőséget.
 
-1. A bal oldali menüben kattintson a **csatlakoztatott szervezetek** elemre, majd a csatlakoztatott szervezet megnyitásához kattintson a elemre.
+1. A bal oldali ablaktáblában válassza a **Csatlakoztatott szervezetek**lehetőséget, majd a megnyitáshoz jelölje ki a csatlakoztatott szervezetet.
 
-1. Az Áttekintés lapon kattintson a **Törlés** gombra a csatlakoztatott szervezet törléséhez.
+1. A csatlakoztatott szervezet áttekintő ablaktábláján válassza a **Törlés** lehetőséget a törléshez.
 
-    Jelenleg csak akkor törölhet egy csatlakoztatott szervezetet, ha nincsenek csatlakoztatott felhasználók.
+    Jelenleg csak akkor törölheti a csatlakoztatott szervezetet, ha nincsenek csatlakoztatott felhasználók.
 
-    ![Identitás szabályozása – csatlakoztatott szervezetek – csatlakoztatott szervezet törlése](./media/entitlement-management-organization/organization-delete.png)
+    ![A csatlakoztatott szervezet Törlése gombja](./media/entitlement-management-organization/organization-delete.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Hozzáférés szabályozása külső felhasználók számára](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users)
-- [A címtárban nem szereplő felhasználók számára](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
+- [Külső felhasználók hozzáférésének szabályozása](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users)
+- [A címtárban nem lévő felhasználók hozzáférése szabályozása](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
