@@ -1,5 +1,5 @@
 ---
-title: Egy Azure Cosmos DB Node.js-alkalmazás létrehozása a Gremlin API-val
+title: Azure Cosmos DB Node.js alkalmazás létrehozása a Gremlin API használatával
 description: A cikk egy Node.js-kódmintát mutat be, amellyel csatlakozhat egy Azure Cosmos DB-adatbázishoz, és lekérdezéseket hajthat végre
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 7ab259886409610fc89c35f4c96c9babb977b44d
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e6456c79dbce1f8bb874ce4c88b932e592235a82
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061813"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80244426"
 ---
-# <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: Node. js-alkalmazás létrehozása Azure Cosmos DB Gremlin API-fiók használatával
+# <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Rövid útmutató: Node.js alkalmazás létrehozása az Azure Cosmos DB Gremlin API-fiók használatával
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -23,14 +23,14 @@ ms.locfileid: "77061813"
 > * [Java](create-graph-java.md)
 > * [Node.js](create-graph-nodejs.md)
 > * [Python](create-graph-python.md)
-> * [PHP](create-graph-php.md)
+> * [Php](create-graph-php.md)
 >  
 
-Ebben a rövid útmutatóban egy Azure Cosmos DB Gremlin (Graph) API-fiókot hoz létre és kezel a Azure Portal, és az adatok hozzáadásához a GitHubról klónozott Node. js-alkalmazást kell használnia. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
+Ebben a rövid útmutatóban hozzon létre és kezeljen egy Azure Cosmos DB Gremlin (graph) API-fiókot az Azure Portalról, és adjon hozzá adatokat a GitHubról klónozott Node.js alkalmazás használatával. Az Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, a tábla, a kulcsérték és a grafikonadatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
-- [Node. js 0.10.29 +](https://nodejs.org/).
+- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) 
+- [Node.js 0.10.29+](https://nodejs.org/).
 - [Git](https://git-scm.com/downloads).
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
@@ -43,9 +43,9 @@ Ebben a rövid útmutatóban egy Azure Cosmos DB Gremlin (Graph) API-fiókot hoz
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig klónozunk egy Gremlin API-alkalmazást a GitHubról, beállítjuk a kapcsolati sztringet, majd futtatni fogjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+Most pedig klónozunk egy Gremlin API-alkalmazást a GitHubról, beállítjuk a kapcsolati sztringet, majd futtatni fogjuk az alkalmazást. Látni fogja, mennyire egyszerű programozott módon dolgozni az adatokkal. 
 
-1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
+1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
 
     ```bash
     md "C:\git-samples"
@@ -57,7 +57,7 @@ Most pedig klónozunk egy Gremlin API-alkalmazást a GitHubról, beállítjuk a 
     cd "C:\git-samples"
     ```
 
-3. Az alábbi parancs futtatásával klónozhatja a mintatárházat. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
+3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started.git
@@ -71,7 +71,7 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az 
 
 Az alábbi kódrészletek mind az *app.js* fájlból származnak.
 
-Ez a konzol alkalmazás a nyílt forráskódú [Gremlin Node. js](https://www.npmjs.com/package/gremlin) -illesztőt használja.
+Ez a konzolalkalmazás a nyílt forráskódú [Gremlin Node.js illesztőprogramot](https://www.npmjs.com/package/gremlin) használja.
 
 * Létrejön a Gremlin-ügyfél.
 
@@ -94,7 +94,7 @@ Ez a konzol alkalmazás a nyílt forráskódú [Gremlin Node. js](https://www.np
 
     ```
 
-  A konfigurációk mind a *config. js fájlban*szerepelnek, amelyet a [következő szakaszban](#update-your-connection-string)szerkesztünk.
+  A konfigurációk mind *config.js*, amit szerkesztünk a [következő szakaszban](#update-your-connection-string).
 
 * A rendszer függvények sorozatát definiálja a különböző Gremlin-műveletek végrehajtásához. Ez az egyik közülük:
 
@@ -125,7 +125,7 @@ Ez a konzol alkalmazás a nyílt forráskódú [Gremlin Node. js](https://www.np
     }
     ```
 
-* A fájl végén minden metódust meghívja a rendszer. Így egymás után lesznek végrehajtva:
+* A fájl végén az összes metódus meghívása megtörténik. Így egymás után lesznek végrehajtva:
 
     ```javascript
     client.open()
@@ -148,15 +148,15 @@ Ez a konzol alkalmazás a nyílt forráskódú [Gremlin Node. js](https://www.np
 
 ## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
 
-1. Nyissa meg a *config. js* fájlt. 
+1. Nyissa meg a *config.js* fájlt. 
 
-2. A *config. js fájlban*adja meg a `config.endpoint` kulcsot a **Gremlin Endpoint** értékével a Azure Portal Cosmos db fiókjának **Áttekintés** lapján. 
+2. A *config.js*alkalmazásban `config.endpoint` töltse ki a kulcsot a **Gremlin Végpont** értékkel a Cosmos DB-fiók **áttekintése lapján** az Azure Portalon. 
 
     `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
-    ![Hozzáférési kulcs megtekintése és másolása a Azure Portal, áttekintés oldalon](./media/create-graph-nodejs/gremlin-uri.png)
+    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal on Áttekintés lap](./media/create-graph-nodejs/gremlin-uri.png)
 
-3. A *config. js*fájlban adja meg a config. PrimaryKey értéket a Azure Portal Cosmos db fiókjának **kulcsok** oldalának **elsődleges kulcs** értékével. 
+3. A *config.js*alkalmazásban töltse ki a config.primaryKey értéket az **elsődleges kulcs** értékével a Cosmos DB-fiók **Kulcsok** lapján az Azure Portalon. 
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -164,12 +164,12 @@ Ez a konzol alkalmazás a nyílt forráskódú [Gremlin Node. js](https://www.np
 
 4. A config.database és a config.collection értékéhez adja meg az adatbázis és a gráf (tároló) nevét. 
 
-Íme egy példa arra, hogy a befejezett *config. js* fájlnak hogyan kell kinéznie:
+Íme egy példa arra, hogyan kell kinéznie a befejezett *config.js* fájlnak:
 
 ```javascript
 var config = {}
 
-// Note that this must not have HTTPS or the port number
+// Note that this must include the protocol (HTTPS:// for .NET SDK URI or wss:// for Gremlin Endpoint) and the port number
 config.endpoint = "https://testgraphacct.gremlin.cosmosdb.azure.com:443/"; 
 config.primaryKey = "Pams6e7LEUS7LJ2Qk0fjZf3eGo65JdMWHmyn65i52w8ozPX2oxY3iP0yu05t9v1WymAHNcMwPIqNAEv3XDFsEg==";
 config.database = "graphdb"
@@ -180,11 +180,11 @@ module.exports = config;
 
 ## <a name="run-the-console-app"></a>A konzolalkalmazás futtatása
 
-1. Nyisson meg egy terminál ablakot, és módosítsa (`cd` parancs használatával) a projektben található *Package. JSON* fájl telepítési könyvtárába.
+1. Nyisson meg egy terminálablakot, és váltson (a paranccsal) `cd` a projektben található *package.json* fájl telepítési könyvtárára.
 
 2. Futtassa az `npm install` parancsot a szükséges npm-modulok (köztük a `gremlin`) telepítéséhez.
 
-3. Futtassa a `node app.js` parancsot a terminálban a node-alkalmazás elindításához.
+3. Futtassa a `node app.js` parancsot egy terminálban a node-alkalmazás elindításához.
 
 ## <a name="browse-with-data-explorer"></a>Tallózás az Adatkezelővel
 
@@ -196,7 +196,7 @@ A mintaalkalmazás által létrehozott adatok a **Gráf** lap következő panel�
 
 A szűrő teszteléséhez hajtsa végre a `g.V()` függvényt a következővel: `.has('firstName', 'Thomas')`. Vegye figyelembe, hogy az érték megkülönbözteti a kis- és nagybetűket.
 
-## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
@@ -204,9 +204,9 @@ A szűrő teszteléséhez hajtsa végre a `g.V()` függvényt a következővel: 
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebből a cikkből megtudhatta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre egy gráfot Adatkezelő használatával, és hogyan futtathat egy Node. js-alkalmazást a gráfhoz való adatfelvételhez. Mostantól a Gremlin használatával összetettebb lekérdezéseket is létrehozhat, és hatékony gráfbejárási logikákat implementálhat. 
+Ebben a cikkben megtanulta, hogyan hozhat létre egy Azure Cosmos DB-fiókot, hogyan hozhat létre egy grafikont a Data Explorer használatával, és futtasson egy Node.js alkalmazást adatok hozzáadásához a diagramhoz. Mostantól a Gremlin használatával összetettebb lekérdezéseket is létrehozhat, és hatékony gráfbejárási logikákat implementálhat. 
 
 > [!div class="nextstepaction"]
 > [Lekérdezés a Gremlin használatával](tutorial-query-graph.md)
