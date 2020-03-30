@@ -1,66 +1,66 @@
 ---
-title: Az Azure IoT Hub Direct metódusok ismertetése | Microsoft Docs
-description: Fejlesztői útmutató – közvetlen metódusok használatával meghívhatja a programkódot az eszközökön egy szolgáltatási alkalmazásból.
+title: Az Azure IoT Hub közvetlen metódusainak megismerése | Microsoft dokumentumok
+description: Fejlesztői útmutató – közvetlen módszerekkel hívja meg a kódot az eszközökön egy szolgáltatásalkalmazásból.
 author: nberdy
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: rezas
-ms.openlocfilehash: 4732304384b8c221ae7c8d99da7f714613ad9050
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d4040a4d0cf3fadf7a6e07c0e03e105975d17040
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271277"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499264"
 ---
-# <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Közvetlen metódusok megismerése és meghívása IoT Hub
+# <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Közvetlen metódusok megismerése és meghívása az IoT Hubból
 
-IoT Hub lehetővé teszi közvetlen metódusok meghívását a felhőből származó eszközökön. A közvetlen metódusok a kérés-válasz interakciót egy olyan eszközhöz hasonlítják, amely a HTTP-híváshoz hasonlóan sikeres vagy sikertelen (a felhasználó által megadott időtúllépés után). Ez a megközelítés olyan esetekben hasznos, amikor az azonnali művelet végrehajtása eltérő lehet attól függően, hogy az eszköz válaszol-e.
+Az IoT Hub lehetővé teszi a közvetlen metódusok meghívását a felhőből származó eszközökön. A közvetlen metódusok a HTTP-híváshoz hasonló eszközzel folytatott kérés-válasz interakciót jelentik, mivel azok azonnal sikeresek vagy sikertelenek (a felhasználó által megadott időkérés után). Ez a megközelítés olyan esetekben hasznos, ahol az azonnali cselekvés folyamata eltérő attól függően, hogy az eszköz képes volt-e válaszolni.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Minden eszköz metódusa egyetlen eszközt céloz meg. [A feladatok több eszközön való ütemezésével](iot-hub-devguide-jobs.md) megtudhatja, hogyan lehet a közvetlen metódusokat több eszközön meghívni, és ütemezni a leválasztott eszközök meghívását.
+Minden eszközmetódus egyetlen eszközt céloz meg. [A feladatok ütemezése több eszközön](iot-hub-devguide-jobs.md) bemutatja, hogyan lehet közvetlen metódusokat meghívni több eszközön, és hogyan ütemezheti a metódusok meghívását a leválasztott eszközökre.
 
-A IoT Hub **Service-csatlakozási** engedélyeivel bárki meghívhatja az eszközön a metódust.
+Bárki, aki **szolgáltatás connect** engedélyekkel rendelkezik az IoT Hubon, meghívhat egy metódust egy eszközön.
 
-A közvetlen metódusok a kérelem-válasz mintát követik, és olyan kommunikációra szolgálnak, amelyek azonnali megerősítést igényelnek az eredményük alapján. Például az eszköz interaktív vezérlése, például ventilátor bekapcsolása.
+A közvetlen módszerek a kérés-válasz mintát követik, és olyan kommunikációra szolgálnak, amely azonnali megerősítést igényel az eredményükről. Például az eszköz interaktív vezérlése, például egy ventilátor bekapcsolása.
 
-Ha kétségei vannak a kívánt tulajdonságok, közvetlen metódusok vagy a felhőből az eszközre irányuló üzenetek használatával kapcsolatban, tekintse meg a [felhőből az eszközre irányuló kommunikációs útmutatót](iot-hub-devguide-c2d-guidance.md) .
+Tekintse meg a [felhőből az eszközre irányuló kommunikáció útmutatást,](iot-hub-devguide-c2d-guidance.md) ha kétségei vannak a kívánt tulajdonságok, a közvetlen módszerek vagy a felhőből az eszközre irányuló üzenetek használata között.
 
 ## <a name="method-lifecycle"></a>Módszer életciklusa
 
-A közvetlen metódusok implementálva vannak az eszközön, és az adattartalom megfelelő létrehozásához nulla vagy több bemenet szükséges. Közvetlen metódust hív meg egy szolgáltatással szemben álló URI-n (`{iot hub}/twins/{device id}/methods/`) keresztül. Az eszközök közvetlen metódusokat fogadnak egy adott eszközre vonatkozó MQTT-témakörben (`$iothub/methods/POST/{method name}/`) vagy a AMQP-hivatkozásokon keresztül (a `IoThub-methodname` és a `IoThub-status` alkalmazás tulajdonságain). 
+A közvetlen metódusok az eszközön vannak megvalósítva, és a megfelelő példányszámhoz nulla vagy több bemenetre lehet szükség a metódus hasznos adatában. Közvetlen metódust egy szolgáltatásfelé néző`{iot hub}/twins/{device id}/methods/`URI ( ) keresztül hív meg. Az eszköz közvetlen metódusokat fogad egy eszközspecifikus MQTT-témakörön (`$iothub/methods/POST/{method name}/`) `IoThub-methodname` `IoThub-status` vagy AMQP-hivatkozásokon (a és az alkalmazás tulajdonságokon) keresztül. 
 
 > [!NOTE]
-> Ha egy eszközön közvetlen metódust hív meg, a tulajdonságok nevei és értékei csak az US-ASCII nyomtatható alfanumerikus karaktereket tartalmazhatják, kivéve a következő készletben szereplőket: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
+> Ha közvetlen metódust hív meg egy eszközön, a tulajdonságnevek és értékek csak US-ASCII nyomtatható alfanumerikus értékeket tartalmazhatnak, kivéve a következő készletben szereplő értékeket:``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
-A közvetlen metódusok szinkronban vannak, és sikeresek vagy sikertelenek az időkorlát után (alapértelmezett: 30 másodperc, 5 és 300 másodperc között állítható be). A közvetlen metódusok olyan interaktív helyzetekben hasznosak, amikor azt szeretné, hogy az eszköz csak akkor járjon el, ha az eszköz online állapotban van, és parancsokat fogad. Tegyük fel például, hogy a telefonról bekapcsol egy fényt. Ezekben az esetekben azonnali sikerességet vagy hibát szeretne látni, hogy a felhőalapú szolgáltatás a lehető leghamarabb képes legyen az eredményre. Előfordulhat, hogy az eszköz valamilyen üzenetet ad vissza a metódus eredményeként, de nem szükséges ehhez a metódushoz. A metódusok hívásakor nincs garancia a rendelésre vagy a párhuzamossági szemantikara.
+A közvetlen metódusok szinkronok, és vagy sikeresek vagy sikertelenek az időtúlidőszak után (alapértelmezett: 30 másodperc, 5 és 300 másodperc között állítható). A közvetlen módszerek olyan interaktív helyzetekben hasznosak, amikor azt szeretné, hogy az eszköz akkor és csak akkor működjön, ha az eszköz online állapotban van, és parancsokat fogad. Például a telefon ról bekapcsolni a lámpát. Ezekben a forgatókönyvekben azonnali sikeres vagy sikertelen, hogy a felhőszolgáltatás a lehető leghamarabb az eredmény szerint jár el. Előfordulhat, hogy az eszköz a módszer eredményeképpen visszaad egy üzenettörzset, de a módszer hez nincs szükség. Nincs garancia a rendelésre vagy a metódushívások egyidejűségi szemantikájára.
 
-A közvetlen metódusok csak HTTPS-alapúak, a MQTT vagy a AMQP az eszköz oldaláról.
+A közvetlen metódusok csak https-alapúak a felhőoldalról, az MQTT vagy az AMQP pedig az eszköz oldalról.
 
-A metódus-kérelmek és válaszok adattartalma egy JSON-dokumentum, amely akár 128 KB-ig is használható.
+A metóduskérések és -válaszok hasznos terhelése legfeljebb 128 KB JSON-dokumentum.
 
-## <a name="invoke-a-direct-method-from-a-back-end-app"></a>Közvetlen metódus meghívása egy háttérbeli alkalmazásból
+## <a name="invoke-a-direct-method-from-a-back-end-app"></a>Közvetlen metódus meghívása háttéralkalmazásból
 
-Most hívja meg a közvetlen metódust egy háttérbeli alkalmazásból.
+Most egy háttéralkalmazásból egy közvetlen metódus meghívása.
 
 ### <a name="method-invocation"></a>Metódus meghívása
 
-Az eszközök közvetlen metódusának meghívása a következő elemekből álló HTTPS-hívások:
+Az eszközön a közvetlen metódusmetódusok https-hívások, amelyek a következő elemekből állnak:
 
-* Az eszközhöz tartozó *kérelem URI-ja* az [API-verzióval](/rest/api/iothub/service/invokedevicemethod)együtt:
+* Az eszközre jellemző *kérelem URI-ja* az [API-verzióval](/rest/api/iothub/service/devicemethod/invokedevicemethod)együtt:
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
     ```
 
-* A POST *metódus*
+* A POST *módszer*
 
-* Az engedélyezést, a kérelem AZONOSÍTÓját, a tartalom típusát és a tartalom kódolását tartalmazó *fejlécek* .
+* Az engedélyezést, a kérelemazonosítót, a tartalomtípust és a tartalomkódolást tartalmazó *fejlécek.*
 
-* Egy transzparens JSON- *törzs* a következő formátumban:
+* Átlátszó *JSON-törzs* a következő formátumban:
 
     ```json
     {
@@ -73,14 +73,14 @@ Az eszközök közvetlen metódusának meghívása a következő elemekből áll
     }
     ```
 
-A kérelemben `responseTimeoutInSeconds`ként megadott érték az az időtartam, ameddig a IoT Hub szolgáltatásnak meg kell várnia a közvetlen metódus végrehajtásának befejezéséhez az eszközön. Állítsa be ezt az időkorlátot úgy, hogy az egy adott eszköz által várt végrehajtási időnek megfelelően legyen legalább egy ideig. Ha nincs megadva időtúllépés, a rendszer az alapértelmezett 30 másodperc értéket használja. A `responseTimeoutInSeconds` minimális és maximális értéke 5 és 300 másodperc.
+A `responseTimeoutInSeconds` kérelemben megadott érték az az időmennyiség, amely alatt az IoT Hub-szolgáltatásnak meg kell várnia a közvetlen metódus végrehajtásának befejezését az eszközön. Állítsa be ezt az időoutot legalább addig, amíg egy eszköz közvetlen metódusa várható végrehajtási ideje. Ha nincs megadva időtúl- és időtúlérték, a rendszer a 30 másodperces alapértelmezett értéket használja. A minimális és `responseTimeoutInSeconds` maximális értékek 5, illetve 300 másodpercre vannak.
 
-A kérelemben `connectTimeoutInSeconds`ként megadott érték azt az időtartamot határozza meg, ameddig egy közvetlen IoT Hub metódus meghívásakor a szolgáltatásnak meg kell várnia, hogy egy leválasztott eszköz online állapotba kerüljön. Az alapértelmezett érték 0, ami azt jelenti, hogy az eszközöknek már online állapotba kell esniük a közvetlen metódus meghívása után. A `connectTimeoutInSeconds` maximális értéke 300 másodperc.
+A `connectTimeoutInSeconds` kérelemhez megadott érték az az időmennyiség, amely az IoT Hub-szolgáltatás nak meg kell várnia egy leválasztott eszköz online állapotba kerülése után egy közvetlen metódus meghívása kor. Az alapértelmezett érték 0, ami azt jelenti, hogy az eszközöknek már online állapotban kell lenniük egy közvetlen metódus meghívásakor. A maximális `connectTimeoutInSeconds` érték 300 másodperc.
 
 
 #### <a name="example"></a>Példa
 
-A `curl`t használó barebone-példa alább olvasható. 
+Lásd alább a barebone `curl`példa segítségével . 
 
 ```bash
 curl -X POST \
@@ -99,16 +99,16 @@ curl -X POST \
 
 ### <a name="response"></a>Válasz
 
-A háttérbeli alkalmazás a következő elemekből álló választ kap:
+A háttéralkalmazás a következő elemekből álló választ kap:
 
-* *Http-állapotkód*:
-  * 200 a közvetlen metódus sikeres végrehajtását jelzi;
-  * 404 azt jelzi, hogy az eszköz azonosítója érvénytelen, vagy ha az eszköz nem volt online, és `connectTimeoutInSeconds` ezt követően a közvetlen metódus meghívása után (a rendszer a mellékelt hibaüzenetet használja a kiváltó ok megértéséhez);
-  * az 504 azt jelzi, hogy az eszköz által okozott átjáró időtúllépése nem válaszol a közvetlen metódusra a `responseTimeoutInSeconds`on belül.
+* *HTTP állapotkód:*
+  * A 200 a közvetlen módszer sikeres végrehajtását jelzi;
+  * A 404 azt jelzi, hogy az eszközazonosító érvénytelen, vagy hogy az eszköz nem `connectTimeoutInSeconds` volt online, amikor közvetlen metódust kért, majd azt követően (a kiváltó ok megértéséhez használjon kísérő hibaüzenetet);
+  * Az 504 azt jelzi, hogy az eszköz nem `responseTimeoutInSeconds`válaszol a közvetlen metódushívásra a rendszeren belül.
 
-* A ETag, a kérelem AZONOSÍTÓját, a tartalom típusát és a tartalom kódolását tartalmazó *fejlécek* .
+* Az ETag-et, a kérelemazonosítót, a tartalomtípust és a tartalomkódolást tartalmazó *fejlécek.*
 
-* Egy JSON- *törzs* a következő formátumban:
+* *JSON-törzs* a következő formátumban:
 
     ```json
     {
@@ -117,27 +117,27 @@ A háttérbeli alkalmazás a következő elemekből álló választ kap:
     }
     ```
 
-    Az eszköz a `status` és a `body` egyaránt megadja, és az eszköz saját állapotkódot és/vagy leírását használva válaszol.
+    `status` Mindkettő, `body` és az eszköz biztosítja, és az eszköz saját állapotkódjával és/vagy leírásával válaszol.
 
-### <a name="method-invocation-for-iot-edge-modules"></a>Metódus meghívása IoT Edge modulokhoz
+### <a name="method-invocation-for-iot-edge-modules"></a>Metódus meghívása IoT Edge-modulokhoz
 
-A közvetlen metódusok modul-AZONOSÍTÓval történő meghívása támogatott a [IoT C# Service Client SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/)-ban.
+A modulazonosítót használó közvetlen metódusok meghívását az [IoT Service Client C# SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/)támogatja.
 
-Erre a célra használja a `ServiceClient.InvokeDeviceMethodAsync()` metódust, és adja át a `deviceId` és a `moduleId` paraméterként.
+Erre a célra `ServiceClient.InvokeDeviceMethodAsync()` használja a módszert, és adja át a `deviceId` és `moduleId` paraméterekként.
 
-## <a name="handle-a-direct-method-on-a-device"></a>Közvetlen metódus kezelése egy eszközön
+## <a name="handle-a-direct-method-on-a-device"></a>Közvetlen metódus kezelése eszközön
 
-Nézzük meg, hogyan kezelheti a Direct metódust egy IoT-eszközön.
+Nézzük meg, hogyan kezelhető egy közvetlen módszer egy IoT-eszközön.
 
 ### <a name="mqtt"></a>MQTT
 
-A következő szakasz a MQTT protokollra mutat.
+A következő szakasz az MQTT protokollhoz kapcsolódik.
 
 #### <a name="method-invocation"></a>Metódus meghívása
 
-Az eszközök közvetlen metódus-kérelmeket fogadnak a MQTT témakörben: `$iothub/methods/POST/{method name}/?$rid={request id}`. Az eszközönkénti előfizetések száma legfeljebb 5 lehet. Ezért javasoljuk, hogy ne fizessen elő külön az egyes közvetlen metódusokra. Ehelyett érdemes megfontolni a `$iothub/methods/POST/#`ra való feliratkozást, majd a kívánt metódus neve alapján szűrni a továbbított üzeneteket.
+Az eszközök közvetlen metóduskéréseket kapnak `$iothub/methods/POST/{method name}/?$rid={request id}`az MQTT témában: . Az eszközönkénti előfizetések száma legfeljebb 5 lehet. Ezért ajánlott, hogy ne iratkozzon fel minden egyes közvetlen módszerre külön-külön. Ehelyett érdemes előírni, `$iothub/methods/POST/#` majd szűrni a kézbesített üzenetek et a kívánt metódusnevek alapján.
 
-Az eszköz által fogadott törzs formátuma a következő:
+Az eszköz által kapott test formátuma a következő:
 
 ```json
 {
@@ -146,67 +146,67 @@ Az eszköz által fogadott törzs formátuma a következő:
 }
 ```
 
-A metódusokra vonatkozó kérelmek QoS 0.
+A metóduskérelmek QoS 0.
 
 #### <a name="response"></a>Válasz
 
-Az eszköz válaszokat küld `$iothub/methods/res/{status}/?$rid={request id}`re, ahol:
+A készülék válaszokat `$iothub/methods/res/{status}/?$rid={request id}`küld a alkalmazásnak, ahol:
 
-* A `status` tulajdonság a metódus-végrehajtás eszköz által megadott állapota.
+* A `status` tulajdonság a metódusvégrehajtásá eszköz által biztosított állapota.
 
-* A `$rid` tulajdonság az IoT Hubtól kapott hívási kérelem azonosítója.
+* A `$rid` tulajdonság az IoT Hubtól kapott metódus meghívási azonosítója.
 
-A törzset az eszköz állítja be, és bármely állapot lehet.
+A testet az eszköz állítja be, és bármilyen állapot lehet.
 
 ### <a name="amqp"></a>AMQP
 
-A következő szakasz a AMQP protokollra mutat.
+A következő szakasz az AMQP protokollhoz kapcsolódik.
 
 #### <a name="method-invocation"></a>Metódus meghívása
 
-Az eszköz fogadja a közvetlen metódusok kérelmeit a következő címen található fogadási hivatkozás létrehozásával: `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`.
+Az eszköz közvetlen metóduskéréseket kap a `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`cím fogadási hivatkozásának létrehozásával.
 
-A AMQP üzenet a metódus kérését képviselő fogadási hivatkozáson érkezik. A következő szakaszt tartalmazza:
+Az AMQP-üzenet a metóduskérést reprezentatot jelölő fogadási hivatkozásra érkezik. Ez tartalmazza a következő szakaszokat:
 
-* A korrelációs azonosító tulajdonsága, amely tartalmazza a kérelem AZONOSÍTÓját, amelyet vissza kell adni a megfelelő metódus válaszával.
+* A korrelációs azonosító tulajdonság, amely egy kérelemazonosítót tartalmaz, amelyet vissza kell adni a megfelelő metódusválasznak.
 
-* Egy `IoThub-methodname`nevű alkalmazás-tulajdonság, amely a meghívott metódus nevét tartalmazza.
+* Egy alkalmazástulajdonság, `IoThub-methodname`amely a meghívott metódus nevét tartalmazza.
 
-* Az AMQP JSON-ként tartalmazó üzenet törzse.
+* Az AMQP üzenet törzse, amely a metódus hasznos adatát json-ként tartalmazza.
 
 #### <a name="response"></a>Válasz
 
-Az eszköz létrehoz egy küldési hivatkozást a metódus válaszának visszaadásához a következő címen: `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`.
+Az eszköz küldő hivatkozást hoz létre, hogy visszaadja a metódusválaszt a címre. `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
 
-A metódus válaszát a rendszer a küldési hivatkozáson adja vissza, a következő módon strukturálva:
+A metódus válasza a küldő linken kerül visszaadásra, és a következőképpen épül fel:
 
-* A korrelációs azonosító tulajdonsága, amely a metódus kérelmi üzenetében átadott kérés AZONOSÍTÓját tartalmazza.
+* A korrelációs azonosító tulajdonság, amely a metódus kérésüzenetében átadott kérelemazonosítót tartalmazza.
 
-* Egy `IoThub-status`nevű alkalmazás-tulajdonság, amely a felhasználó által megadott metódus állapotot tartalmazza.
+* Egy alkalmazástulajdonság, `IoThub-status`amely a felhasználó által megadott metódusállapotot tartalmazza.
 
-* A AMQP JSON-ként tartalmazó üzenet törzse.
+* Az AMQP üzenet törzse, amely a metódusválaszt JSON-ként tartalmazza.
 
 ## <a name="additional-reference-material"></a>További referenciaanyagok
 
-A IoT Hub Fejlesztői útmutatóban található további témakörök a következők:
+Az IoT Hub fejlesztői útmutatójának további referenciatémakörei a következők:
 
-* [IoT hub végpontok](iot-hub-devguide-endpoints.md) ismertetik a különböző végpontokat, amelyeket az egyes IoT hub a futásidejű és a felügyeleti műveletek számára tesz elérhetővé.
+* [Az IoT Hub-végpontok](iot-hub-devguide-endpoints.md) ismerteti a különböző végpontok, amelyek az egyes IoT-központok elérhetővé teszi a futásidejű és felügyeleti műveletek.
 
-* A [szabályozás és a kvóták](iot-hub-devguide-quotas-throttling.md) ismertetik az alkalmazandó kvótákat és a IoT hub használatakor várható szabályozási viselkedést.
+* [A sávszélesség-szabályozás és](iot-hub-devguide-quotas-throttling.md) a kvóták ismerteti a kvótákat, amelyek vonatkoznak, és a szabályozás viselkedése várható, ha az IoT Hub használatakor.
 
-* Az [Azure IoT-eszközök és-szolgáltatások SDK](iot-hub-devguide-sdks.md) -k felsorolja azokat a különböző nyelvi SDK-kat, amelyek a IoT hub használatával kommunikáló eszköz-és szolgáltatás-alkalmazások fejlesztéséhez használhatók.
+* [Az Azure IoT-eszközök és szolgáltatások SDK-k](iot-hub-devguide-sdks.md) felsorolja a különböző nyelvi SDK-k segítségével, ha az IoT Hub-szolgáltatást használó eszköz- és szolgáltatásalkalmazásokat is fejleszt.
 
-* Az [ikrek, a feladatok és az üzenet-útválasztás IoT hub lekérdezési nyelve](iot-hub-devguide-query-language.md) leírja a IoT hub lekérdezési nyelvet, amellyel információkat kérhet le az eszközről az ikrekről és a feladatokról IoT hub.
+* [Az IoT Hub iker- és üzenettovábbítási nyelvének IoT Hub-lekérdezési nyelve](iot-hub-devguide-query-language.md) az IoT Hub-lekérdezési nyelv, amely az eszköz twins és feladatok információkat az IoT Hub.
 
-* [IOT hub MQTT-támogatás](iot-hub-mqtt-support.md) további információkat nyújt a MQTT protokoll IoT hub támogatásáról.
+* [Az IoT Hub MQTT-támogatása](iot-hub-mqtt-support.md) további információt nyújt az MQTT protokoll IoT Hub-támogatásáról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte a közvetlen módszerek használatát, érdemes lehet a következő IoT Hub fejlesztői útmutató cikke érdekli:
+Most, hogy megtanulta a közvetlen módszerek használatát, érdekelheti az IoT Hub fejlesztői útmutatója a következő cikket:
 
 * [Feladatok ütemezése több eszközön](iot-hub-devguide-jobs.md)
 
-Ha szeretné kipróbálni a cikkben ismertetett fogalmak némelyikét, érdemes lehet az alábbi IoT Hub oktatóanyagot felvenni:
+Ha szeretné kipróbálni a cikkben ismertetett fogalmak némelyikét, az Alábbi IoT Hub-oktatóanyag érdekelheti:
 
 * [Közvetlen metódusok használata](quickstart-control-device-node.md)
-* [Eszközkezelés a VS Code-hoz készült Azure IoT-eszközökkel](iot-hub-device-management-iot-toolkit.md)
+* [Eszközfelügyelet VS Code-hoz készült Azure IoT-eszközökkel](iot-hub-device-management-iot-toolkit.md)

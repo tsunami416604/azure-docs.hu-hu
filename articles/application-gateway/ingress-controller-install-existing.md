@@ -1,52 +1,52 @@
 ---
-title: Bejövő vezérlő létrehozása meglévő Application Gateway
-description: Ez a cikk tájékoztatást nyújt arról, hogyan helyezhet üzembe egy Application Gateway beléptetési vezérlőt egy meglévő Application Gateway.
+title: Be- és átjáró létrehozása meglévő alkalmazásátjáróval
+description: Ez a cikk az Application Gateway ingress controller meglévő application gateway-rel való központi telepítéséről nyújt tájékoztatást.
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: dec43a4d7eb5a9546fcd77cce972b93542ea3b10
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 048ab7249b27839890bab3e677154ca3c7a0cc98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795956"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239432"
 ---
-# <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Application Gateway beáramlási vezérlő (AGIC) telepítése meglévő Application Gateway használatával
+# <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Alkalmazásátjáró be- és élesztire vonatkozó vezérlőjének (AGIC) telepítése meglévő alkalmazásátjáró használatával
 
-A Application Gateway beáramló vezérlő (AGIC) a Kubernetes-fürtön belüli Pod.
-A AGIC figyeli a Kubernetes [bejövő](https://kubernetes.io/docs/concepts/services-networking/ingress/) erőforrásait, és a Kubernetes-fürt állapota alapján létrehozza és alkalmazza Application Gateway konfigurációt.
+Az Application Gateway ingress controller (AGIC) egy pod a Kubernetes-fürtön belül.
+Az AGIC figyeli a Kubernetes [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) erőforrásokat, és létrehozza és alkalmazza az Application Gateway konfigurációját a Kubernetes-fürt állapota alapján.
 
-## <a name="outline"></a>Szerkezeti
+## <a name="outline"></a>Vázlat:
 - [Előfeltételek](#prerequisites)
-- [Azure Resource Manager hitelesítés (ARM)](#azure-resource-manager-authentication)
-    - 1\. lehetőség: a [HRE-Pod-Identity beállítása](#set-up-aad-pod-identity) és az Azure-identitás létrehozása a Fegyvereken
-    - 2\. lehetőség: [egyszerű szolgáltatás használata](#using-a-service-principal)
-- [A beáramló vezérlő telepítése a Helm használatával](#install-ingress-controller-as-a-helm-chart)
-- [Több fürt/megosztott Application Gateway](#multi-cluster--shared-application-gateway): telepítse a AGIC egy olyan környezetben, ahol a Application Gateway egy vagy több AK-fürt és/vagy más Azure-összetevő között meg van osztva.
+- [Azure Resource Manager-hitelesítés (ARM)](#azure-resource-manager-authentication)
+    - 1. lehetőség: [Aad-pod-identity beállítása és Azure-identitás](#set-up-aad-pod-identity) létrehozása AZ ARM-eken
+    - 2. lehetőség: [Egyszerű szolgáltatás használata](#using-a-service-principal)
+- [A be- és visszajáró vezérlő telepítése a Helm használatával](#install-ingress-controller-as-a-helm-chart)
+- [Többfürtös / megosztott alkalmazásátjáró:](#multi-cluster--shared-application-gateway)Telepítse az AGIC-et olyan környezetben, ahol az Application Gateway meg van osztva egy vagy több AKS-fürt és/vagy más Azure-összetevők között.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a dokumentum azt feltételezi, hogy már telepítve van a következő eszközök és infrastruktúra:
-- [AK](https://azure.microsoft.com/services/kubernetes-service/) , [speciális hálózatkezelés](https://docs.microsoft.com/azure/aks/configure-azure-cni) engedélyezve
-- [Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant) ugyanabban a virtuális hálózatban, mint AK
-- [HRE Pod-identitás](https://github.com/Azure/aad-pod-identity) telepítve az AK-fürtön
-- A [Cloud Shell](https://shell.azure.com/) az Azure rendszerhéj-környezet, amely `az` parancssori felülettel, `kubectl`tel és `helm` telepítve van. Ezek az eszközök az alábbi parancsokhoz szükségesek.
+Ez a dokumentum feltételezi, hogy már telepítve van a következő eszközök és infrastruktúra:
+- [AKS,](https://azure.microsoft.com/services/kubernetes-service/) [ha engedélyezve van a speciális hálózatkezelés](https://docs.microsoft.com/azure/aks/configure-azure-cni)
+- [Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant) ugyanabban a virtuális hálózatban, mint az AKS
+- [Az AKS-fürtre telepített AAD pod identitás](https://github.com/Azure/aad-pod-identity)
+- [A Cloud Shell](https://shell.azure.com/) az Azure `az` rendszerhéj-környezet, amely CLI-vel rendelkezik, `kubectl`és `helm` telepítve van. Ezek az eszközök szükségesek az alábbi parancsokhoz.
 
-A AGIC telepítése előtt __készítsen biztonsági másolatot a Application Gateway konfigurációról__ :
-  1. [Azure Portal](https://portal.azure.com/) navigáljon a `Application Gateway`-példányhoz
-  2. `Export template` kattintson a `Download`
+Az AGIC telepítése előtt __készítsen biztonsági másolatot az Application Gateway konfigurációjáról:__
+  1. az [Azure Portal](https://portal.azure.com/) `Application Gateway` használata navigálhat a példányhoz
+  2. a `Export template` kattintástól`Download`
 
-A letöltött zip-fájl JSON-sablonokkal, bash-és PowerShell-parancsfájlokkal is rendelkezik, amelyekkel visszaállíthatók az alkalmazás-átjárók, amelyek szükségesek lesznek
+A letöltött zip fájl JSON-sablonokkal, bash- és PowerShell-parancsfájlokkal fog rendelkezni, amelyekkel visszaállíthatja az App Gateway-t, ha ez szükségessé válik
 
-## <a name="install-helm"></a>A Helm telepítése
-A [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) a Kubernetes csomagkezelő. A `application-gateway-kubernetes-ingress`-csomag telepítéséhez használni fogjuk.
-[Cloud Shell](https://shell.azure.com/) használata a Helm telepítéséhez:
+## <a name="install-helm"></a>Helm telepítése
+[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) a Kubernetes csomagkezelője. Kihasználjuk a `application-gateway-kubernetes-ingress` csomag telepítéséhez.
+A Helm telepítése a [Cloud Shell](https://shell.azure.com/) használatával:
 
-1. Telepítse a [helmt](https://docs.microsoft.com/azure/aks/kubernetes-helm) , és futtassa a következőt `application-gateway-kubernetes-ingress` Helm-csomag hozzáadásához:
+1. Telepítse [a Helm-et,](https://docs.microsoft.com/azure/aks/kubernetes-helm) és futtassa a következőt a helm csomag hozzáadásához: `application-gateway-kubernetes-ingress`
 
-    - *RBAC engedélyezve* AK-fürt
+    - *RBAC engedélyezve* AKS-fürt
 
     ```bash
     kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -54,57 +54,57 @@ A [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) a Kubernetes csom
     helm init --tiller-namespace kube-system --service-account tiller-sa
     ```
 
-    - *RBAC letiltva* AK-fürt
+    - *RBAC letiltva* AKS-fürt
 
     ```bash
     helm init
     ```
 
-1. Adja hozzá a AGIC Helm-tárházat:
+1. Adja hozzá az AGIC Helm adattárat:
     ```bash
     helm repo add application-gateway-kubernetes-ingress https://appgwingress.blob.core.windows.net/ingress-azure-helm-package/
     helm repo update
     ```
 
-## <a name="azure-resource-manager-authentication"></a>Azure Resource Manager hitelesítés
+## <a name="azure-resource-manager-authentication"></a>Azure Resource Manager hitelesítése
 
-A AGIC a Kubernetes API-kiszolgálóval és a Azure Resource Manager kommunikál. Az API-k eléréséhez identitás szükséges.
+Az AGIC kommunikál a Kubernetes API-kiszolgálóval és az Azure Resource Managerrel. Ezmegköveteli az identitás t az API-k eléréséhez.
 
-## <a name="set-up-aad-pod-identity"></a>A HRE Pod-identitás beállítása
+## <a name="set-up-aad-pod-identity"></a>AAD Pod-identitás beállítása
 
-A [HRE Pod Identity](https://github.com/Azure/aad-pod-identity) egy, a AGIC-hoz hasonló vezérlő, amely szintén az AK-on fut. A Kubernetes-hüvelyek Azure Active Directory identitásait köti össze. A Kubernetes Pod-ban lévő alkalmazás identitásának megléte szükséges ahhoz, hogy kommunikálni tudjon más Azure-összetevőkkel. Ebben az esetben szükség van a AGIC Pod engedélyezésére a HTTP-kérések [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-re való elvégzéséhez.
+[Az AAD Pod Identity](https://github.com/Azure/aad-pod-identity) az AGIC-hez hasonló vezérlő, amely az AKS-en is fut. Az Azure Active Directory-identitások a Kubernetes-podok. Identitás szükséges egy kubernetes-podban egy alkalmazás, hogy képes legyen kommunikálni más Azure-összetevőkkel. Ebben az esetben itt engedélyre van szükségünk az AGIC pod, hogy HTTP kérelmek [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
-A [HRE Pod Identity telepítési utasításait](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra) követve adja hozzá ezt az összetevőt az AK-hoz.
+Kövesse az [AAD Pod identity telepítési utasításokat,](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra) hogy hozzáadja ezt az összetevőt az AKS-hez.
 
-Ezután létre kell hoznia egy Azure-identitást, és hozzá kell adnia az IT-részleg engedélyeit.
-A [Cloud Shell](https://shell.azure.com/) használatával futtassa az alábbi parancsokat, és hozzon létre egy identitást:
+Ezután létre kell hoznunk egy Azure-identitást, és arm-engedélyeket kell adnunk neki.
+A [Cloud Shell](https://shell.azure.com/) használatával futtathatja az alábbi parancsokat, és identitást hozhat létre:
 
-1. Hozzon létre egy Azure-identitást **ugyanabban az erőforráscsoporthoz, amelyben az AK-csomópontok vannak**. A megfelelő erőforráscsoport kiválasztása fontos. Az alábbi parancsban szükséges erőforráscsoport *nem* az AK-portál ablaktáblán hivatkozott. Ez a `aks-agentpool` virtuális gépek erőforráscsoport. Az erőforráscsoport általában a `MC_`tel kezdődik, és tartalmazza az AK nevét. Például: `MC_resourceGroup_aksABCD_westus`
+1. Hozzon létre egy Azure-identitást **ugyanabban az erőforráscsoportban, mint az AKS-csomópontok.** Fontos a megfelelő erőforráscsoport kiválasztása. Az alábbi parancsban szükséges erőforráscsoport *nem* az AKS portálablaktáblán hivatkozott erőforráscsoport. Ez a `aks-agentpool` virtuális gépek erőforráscsoportja. Általában az erőforráscsoport `MC_` az AKS nevével kezdődik, és tartalmazza azt. Például:`MC_resourceGroup_aksABCD_westus`
 
-    ```bash
+    ```azurecli
     az identity create -g <agent-pool-resource-group> -n <identity-name>
     ```
 
-1. Az alábbi szerepkör-hozzárendelési parancsokhoz be kell szereznie `principalId` az újonnan létrehozott identitáshoz:
+1. Az alábbi szerepkör-hozzárendelési parancsokhoz be kell szereznünk `principalId` az újonnan létrehozott identitást:
 
-    ```bash
+    ```azurecli
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. Adja meg az identitásnak `Contributor` hozzáférést a Application Gatewayhoz. Ehhez a Application Gateway AZONOSÍTÓjának kell kinéznie, amely a következőhöz hasonló lesz: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. Adja meg `Contributor` az identitás hozzáférést az Alkalmazásátjáróhoz. Ehhez szüksége van az Alkalmazásátjáró azonosítójára, amely valahogy így fog kinézni:`/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
-    Az előfizetésben található Application Gateway-azonosítók listájának lekérése a: `az network application-gateway list --query '[].id'`
+    Az alkalmazásátjáró-azonosítók listájának beszerezése az előfizetésben a következőkkel:`az network application-gateway list --query '[].id'`
 
-    ```bash
+    ```azurecli
     az role assignment create \
         --role Contributor \
         --assignee <principalId> \
         --scope <App-Gateway-ID>
     ```
 
-1. Adja meg az identitásnak `Reader` hozzáférést a Application Gateway erőforráscsoporthoz. Az erőforráscsoport azonosítója a következőképpen fog kinézni: `/subscriptions/A/resourceGroups/B`. Az összes erőforráscsoport az alábbiakkal szerezhető be: `az group list --query '[].id'`
+1. Adja meg `Reader` az identitás hozzáférést az Application Gateway erőforráscsoporthoz. Az erőforráscsoport azonosítója a `/subscriptions/A/resourceGroups/B`következőként fog kinézni: . Az összes erőforráscsoportot a következőkkel szerezheti be:`az group list --query '[].id'`
 
-    ```bash
+    ```azurecli
     az role assignment create \
         --role Reader \
         --assignee <principalId> \
@@ -112,36 +112,36 @@ A [Cloud Shell](https://shell.azure.com/) használatával futtassa az alábbi pa
     ```
 
 ## <a name="using-a-service-principal"></a>Egyszerű szolgáltatás használata
-A AGIC hozzáférését az ARM-Kubernetes titkos kulcson keresztül is megadhatja.
+Az ARM-hoz egy Kubernetes-titokon keresztül is lehet hozzáférést biztosítani az ARM-hoz.
 
-1. Hozzon létre egy Active Directory egyszerű szolgáltatást, és Base64-kódolással kódolja. A JSON-blob Kubernetes való mentéséhez Base64-kódolás szükséges.
+1. Hozzon létre egy Active Directory egyszerű szolgáltatást, és kódolja a base64.Create an Active Directory Service Principal and encode with base64. A base64 kódolás szükséges a JSON blob kubernetes menti.
 
-```bash
+```azurecli
 az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0
 ```
 
-2. Adja hozzá a Base64 kódolású JSON-blobot a `helm-config.yaml` fájlhoz. `helm-config.yaml` a következő szakaszban talál további információt.
+2. Adja hozzá a base64 kódolású JSON blobot a `helm-config.yaml` fájlhoz. További információ `helm-config.yaml` a következő szakaszban található.
 ```yaml
 armAuth:
     type: servicePrincipal
     secretJSON: <Base64-Encoded-Credentials>
 ```
 
-## <a name="install-ingress-controller-as-a-helm-chart"></a>A bejövő vezérlő telepítése Helm-diagramként
-Az első néhány lépésben a Helm-t a Kubernetes-fürtön telepítjük. A AGIC Helm-csomag telepítéséhez használja a [Cloud shellt](https://shell.azure.com/) :
+## <a name="install-ingress-controller-as-a-helm-chart"></a>A be- és visszavezető vezérlő telepítése helmdiagramként
+Az első néhány lépésben telepítjük a Helm's Tiller-t a Kubernetes fürtre. Az AGIC Helm csomag telepítéséhez használja a [Cloud Shell](https://shell.azure.com/) t:
 
-1. Adja hozzá a `application-gateway-kubernetes-ingress` Helm-tárházat, és hajtson végre egy Helm-frissítést
+1. Adja `application-gateway-kubernetes-ingress` hozzá a kormánytárt, és hajtsa végre a helm frissítését
 
     ```bash
     helm repo add application-gateway-kubernetes-ingress https://appgwingress.blob.core.windows.net/ingress-azure-helm-package/
     helm repo update
     ```
 
-1. Töltse le a Helm-config. YAML fájlt, amely az AGIC-t konfigurálja:
+1. Letöltés helm-config.yaml, amely konfigurálja AGIC:
     ```bash
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/sample-helm-config.yaml -O helm-config.yaml
     ```
-    Vagy másolja az alábbi YAML-fájlt: 
+    Vagy másolja az alábbi YAML fájlt: 
     
     ```yaml
     # This file contains the essential configs for the ingress controller helm chart
@@ -196,21 +196,21 @@ Az első néhány lépésben a Helm-t a Kubernetes-fürtön telepítjük. A AGIC
         apiServerAddress: <aks-api-server-address>
     ```
 
-1. Szerkessze a Helm-config. YAML, és töltse ki `appgw` és `armAuth`értékeit.
+1. Edit helm-config.yaml és töltse `appgw` ki `armAuth`az értékeket és .
     ```bash
     nano helm-config.yaml
     ```
 
     > [!NOTE] 
-    > A `<identity-resource-id>` és `<identity-client-id>` az előző szakaszban beállított Azure AD-identitás tulajdonságai. Ezt az információt a következő parancs futtatásával kérheti le: `az identity show -g <resourcegroup> -n <identity-name>`, ahol `<resourcegroup>` az az erőforráscsoport, amelyben a legfelső szintű AK-fürt objektum, Application Gateway és felügyelt azonosítás van üzembe helyezve.
+    > Az `<identity-resource-id>` `<identity-client-id>` és az előző szakaszban beállított Azure AD Identity tulajdonságai. Ezeket az adatokat a következő `az identity show -g <resourcegroup> -n <identity-name>`parancs `<resourcegroup>` futtatásával kérheti be: .
 
-1. A Helm chart `application-gateway-kubernetes-ingress` telepítése az előző lépés `helm-config.yaml` konfigurációjával
+1. Helm-diagram `application-gateway-kubernetes-ingress` telepítése `helm-config.yaml` az előző lépés konfigurációjával
 
     ```bash
     helm install -f <helm-config.yaml> application-gateway-kubernetes-ingress/ingress-azure
     ```
 
-    Azt is megteheti, hogy a `helm-config.yaml` és a Helm parancsot egyetlen lépésben kombinálja:
+    Másik lehetőségként egy `helm-config.yaml` lépésben egyesítheti a és a Helm parancsot:
     ```bash
     helm install ./helm/ingress-azure \
          --name ingress-azure \
@@ -228,29 +228,29 @@ Az első néhány lépésben a Helm-t a Kubernetes-fürtön telepítjük. A AGIC
          --set aksClusterConfiguration.apiServerAddress=aks-abcdefg.hcp.westus2.azmk8s.io
     ```
 
-1. Ellenőrizze, hogy az újonnan létrehozott Pod naplója megfelelően elindult-e
+1. Ellenőrizze az újonnan létrehozott pod naplójában, hogy ellenőrizze, hogy megfelelően indult-e el
 
-Tekintse meg [ezt a útmutatót](ingress-controller-expose-service-over-http-https.md) , amelyből megtudhatja, hogyan tehet elérhetővé egy AK-szolgáltatást http-n vagy HTTPS-en keresztül az interneten egy Azure-Application Gateway használatával.
+Tekintse meg [ezt az útmutatót,](ingress-controller-expose-service-over-http-https.md) amelyből megtudhatja, hogyan teheti elérhetővé az AKS-szolgáltatást HTTP-n vagy HTTPS-en keresztül az interneten egy Azure Application Gateway használatával.
 
 
 
-## <a name="multi-cluster--shared-application-gateway"></a>Több fürt/megosztott Application Gateway
-Alapértelmezés szerint a AGIC feltételezi, hogy a Application Gatewayhoz társított teljes tulajdonosi jogosultsággal rendelkezik. A AGIC 0.8.0 és újabb verziói egyetlen Application Gateway is megoszthatnak más Azure-összetevőkkel. Előfordulhat például, hogy ugyanazt a Application Gatewayt használjuk a virtuálisgép-méretezési csoporton és egy AK-fürtön üzemeltetett alkalmazásokhoz.
+## <a name="multi-cluster--shared-application-gateway"></a>Többfürtös / megosztott alkalmazásátjáró
+Alapértelmezés szerint az AGIC átveszi annak az Alkalmazásátjárónak a teljes tulajdonjogát, amelyhez kapcsolódik. Az AGIC 0.8.0-s és újabb verziója egyetlen Application Gateway-t oszthat meg más Azure-összetevőkkel. Használhatjuk például ugyanazt az Application Gateway alkalmazást a Virtuálisgép-méretezési csoportban üzemeltetett alkalmazáshoz, valamint egy AKS-fürthöz.
 
-A beállítás engedélyezése előtt __készítsen biztonsági másolatot a Application Gateway konfigurációjától__ :
-  1. [Azure Portal](https://portal.azure.com/) navigáljon a `Application Gateway`-példányhoz
-  2. `Export template` kattintson a `Download`
+A beállítás engedélyezése előtt __készítsen biztonsági másolatot az Application Gateway konfigurációjáról:__
+  1. az [Azure Portal](https://portal.azure.com/) `Application Gateway` használata navigálhat a példányhoz
+  2. a `Export template` kattintástól`Download`
 
-A letöltött zip-fájl JSON-sablonokat, bash-és PowerShell-parancsfájlokat tartalmaz, amelyeket a Application Gateway visszaállítására használhat.
+A letöltött zip-fájl JSON-sablonokkal, bash- és PowerShell-parancsfájlokkal fog rendelkezni, amelyekkel visszaállíthatja az Application Gateway-t
 
 ### <a name="example-scenario"></a>Példaforgatókönyv
-Tekintsük át a két webhely forgalmát kezelő képzeletbeli Application Gateway:
-  - `dev.contoso.com` – egy új AK-ban üzemeltetve, Application Gateway és AGIC használatával
-  - `prod.contoso.com` – [Azure virtuálisgép-méretezési csoporton](https://azure.microsoft.com/services/virtual-machine-scale-sets/) futtatva
+Nézzünk meg egy képzeletbeli Application Gateway, amely kezeli a forgalmat két webhely:
+  - `dev.contoso.com`- egy új AKS-en, az Application Gateway és az AGIC használatával
+  - `prod.contoso.com`- üzemeltetett egy [Azure virtuális gép scale set](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
 
-Az alapértelmezett beállításokkal a AGIC 100%-os tulajdonjogot feltételez a Application Gateway számára. A AGIC felülírja az összes app Gateway konfigurációját. Ha a `prod.contoso.com` (Application Gateway) szolgáltatásban manuálisan hozunk létre figyelőt, anélkül, hogy az a Kubernetes-ba kerül, a AGIC másodpercek alatt törli a `prod.contoso.com`-konfigurációt.
+Az alapértelmezett beállításokkal az AGIC 100%-os tulajdonjogot feltételez az alkalmazásátjáróban, amelyre rámutatott. Az AGIC felülírja az App Gateway összes konfigurációját. Ha úgy döntünk, hogy `prod.contoso.com` manuálisan hozzon létre egy figyelőt (az Application Gateway-en), anélkül, `prod.contoso.com` hogy definiálnánk azt a Kubernetes Ingressben, az AGIC másodperceken belül törli a konfigurációt.
 
-A AGIC telepítéséhez és a virtuálisgép-méretezési csoportba tartozó gépek `prod.contoso.com` kiszolgálásához a csak `dev.contoso.com` konfigurálásához korlátozni kell a AGIC. Ez megkönnyíti a következő [CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)létrehozásával:
+Az AGIC telepítéséhez `prod.contoso.com` és a virtuális gépméretezési készletű gépeinkből `dev.contoso.com` való kiszolgáláshoz az AGIC-et csak konfigurálásra kell korlátoznunk. Ezt megkönnyíti a következő [CRD-k](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)példányosítása:
 
 ```bash
 cat <<EOF | kubectl apply -f -
@@ -263,12 +263,12 @@ spec:
 EOF
 ```
 
-A fenti parancs egy `AzureIngressProhibitedTarget` objektumot hoz létre. Ez lehetővé teszi a AGIC (0.8.0 és újabb verziók) ismeretét, hogy megApplication Gateway létét a `prod.contoso.com`, és explicit módon arra utasítja, hogy ne módosítsa az adott állomásnévhez kapcsolódó konfigurációt.
+A fenti parancs `AzureIngressProhibitedTarget` létrehoz egy objektumot. Ez tudatja az AGIC-et (0.8.0-s vagy újabb `prod.contoso.com` verzió) az Application Gateway konfigurációjának létezéséről, és kifejezetten utasítja, hogy ne változtasson az adott állomásnévhez kapcsolódó konfigurációkat.
 
 
-### <a name="enable-with-new-agic-installation"></a>Engedélyezés új AGIC-telepítéssel
-A AGIC (0.8.0 és újabb verzió) a Application Gateway konfiguráció egy részhalmazára való korlátozásához módosítsa a `helm-config.yaml` sablont.
-A `appgw:` szakaszban adja hozzá `shared` kulcsot, és állítsa be a következőre: `true`.
+### <a name="enable-with-new-agic-installation"></a>Engedélyezés új AGIC telepítéssel
+Ha az AGIC (0.8.0-s vagy újabb verzió) az `helm-config.yaml` Application Gateway konfigurációjának egy részhalmazára szeretné korlátozni, módosítsa a sablont.
+A `appgw:` szakasz alatt `shared` adja hozzá a `true`kulcsot, és állítsa a .
 
 ```yaml
 appgw:
@@ -278,12 +278,12 @@ appgw:
     shared: true                        # <<<<< Add this field to enable shared Application Gateway >>>>>
 ```
 
-A Helm módosításainak alkalmazása:
-  1. Győződjön meg arról, hogy a `AzureIngressProhibitedTarget` CRD telepítve van a szolgáltatással:
+Alkalmazza a Helm változások:
+  1. Győződjön `AzureIngressProhibitedTarget` meg arról, hogy a CRD a következőkkel van telepítve:
       ```bash
       kubectl apply -f https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/ae695ef9bd05c8b708cedf6ff545595d0b7022dc/crds/AzureIngressProhibitedTarget.yaml
       ```
-  2. A Helm frissítése:
+  2. Frissítés Helm:
       ```bash
       helm upgrade \
           --recreate-pods \
@@ -291,20 +291,20 @@ A Helm módosításainak alkalmazása:
           ingress-azure application-gateway-kubernetes-ingress/ingress-azure
       ```
 
-Ennek eredményeképpen az AK új példánya lesz `AzureIngressProhibitedTarget` nevű `prohibit-all-targets`:
+Ennek eredményeként az AKS lesz `AzureIngressProhibitedTarget` egy `prohibit-all-targets`új példány a neve:
 ```bash
 kubectl get AzureIngressProhibitedTargets prohibit-all-targets -o yaml
 ```
 
-Az objektum `prohibit-all-targets`, ahogy a neve is jelzi, tiltja, hogy a AGIC *bármely* gazdagép és elérési út esetében megváltoztassa a konfigurációt.
-A Helm telepítése `appgw.shared=true` telepíti a AGIC-t, de nem módosítja a Application Gateway.
+Az `prohibit-all-targets`objektum , ahogy a neve is mutatja, megtiltja az AGIC számára, hogy *bármely* állomás és elérési út konfigurációját módosítsa.
+Helm telepítése `appgw.shared=true` telepíti AGIC, de nem módosítja az Application Gateway.
 
 
-### <a name="broaden-permissions"></a>Kiterjesztési engedélyek
-Mivel a `appgw.shared=true`, és az alapértelmezett `prohibit-all-targets` blokkolja a AGIC-t a konfiguráció alkalmazásából.
+### <a name="broaden-permissions"></a>Engedélyek kiszélesítése
+Mivel a `appgw.shared=true` Helm `prohibit-all-targets` és az alapértelmezett blokkolja az AGIC-et a konfigurációk alkalmazásában.
 
-AGIC engedélyek kiterjesztése a rel:
-1. Hozzon létre egy új `AzureIngressProhibitedTarget` a megadott beállítással:
+Az AGIC-engedélyek kiszélesítése a következőkkel:
+1. Hozzon `AzureIngressProhibitedTarget` létre egy újat az adott beállítással:
     ```bash
     cat <<EOF | kubectl apply -f -
     apiVersion: "appgw.ingress.k8s.io/v1"
@@ -316,18 +316,18 @@ AGIC engedélyek kiterjesztése a rel:
     EOF
     ```
 
-2. Csak a saját egyéni tiltás létrehozása után törölheti az alapértelmezettet, amely túl széles:
+2. Csak a saját egyéni tiltás létrehozása után törölheti az alapértelmezettet, amely túl tág:
 
     ```bash
     kubectl delete AzureIngressProhibitedTarget prohibit-all-targets
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Meglévő AGIC-telepítés engedélyezése
-Tegyük fel, hogy már van egy működő AK-beli, Application Gateway és konfigurált AGIC a fürtben. A `prod.contosor.com` és az AK-ból érkező adatforgalom sikeresen szolgál. Szeretnénk `staging.contoso.com` hozzáadni a meglévő Application Gatewayhoz, de [virtuális gépen](https://azure.microsoft.com/services/virtual-machines/)kell üzemeltetni. Újra felhasználjuk a meglévő Application Gateway, és manuálisan konfiguráljuk a figyelőt és a háttér-készleteket a `staging.contoso.com`hoz. De a Application Gateway konfiguráció manuális csípése (a [portálon](https://portal.azure.com), az [ARM API](https://docs.microsoft.com/rest/api/resources/) -kon vagy a [Terraform](https://www.terraform.io/)-on keresztül) ütközne a teljes tulajdonú AGIC. Röviddel a módosítások alkalmazása után a AGIC felülírja vagy törli őket.
+Tegyük fel, hogy már van egy működő AKS, Application Gateway, és konfigurált AGIC a fürtben. Van egy Ingress `prod.contosor.com` számára, és sikeresen szolgálja a forgalmat, hogy az AKS. Szeretnénk hozzáadni `staging.contoso.com` a meglévő Application Gateway, de meg kell, hogy a virtuális [gép.](https://azure.microsoft.com/services/virtual-machines/) Újra felfogjuk használni a meglévő Application Gateway alkalmazást, és manuálisan konfigurálunk egy figyelő- és háttérkészletet a számára. `staging.contoso.com` De manuálisan csípés Application Gateway config [(portálon](https://portal.azure.com)keresztül, [ARM API-k](https://docs.microsoft.com/rest/api/resources/) vagy [Terraform](https://www.terraform.io/)) ütközne AGIC feltételezések teljes tulajdon. Röviddel a módosítások alkalmazása után az AGIC felülírja vagy törli azokat.
 
-A AGIC megtilthatja, hogy a konfiguráció egy részhalmaza módosítható legyen.
+Megtilthatjuk az AGIC-nek, hogy módosítsa a konfiguráció egy részhalmazát.
 
-1. `AzureIngressProhibitedTarget` objektum létrehozása:
+1. Objektum `AzureIngressProhibitedTarget` létrehozása:
     ```bash
     cat <<EOF | kubectl apply -f -
     apiVersion: "appgw.ingress.k8s.io/v1"
@@ -344,4 +344,4 @@ A AGIC megtilthatja, hogy a konfiguráció egy részhalmaza módosítható legye
     kubectl get AzureIngressProhibitedTargets
     ```
 
-3. Application Gateway konfiguráció módosítása a portálon keresztül – figyelők hozzáadása, útválasztási szabályok, háttérrendszer stb. Az általunk létrehozott új objektum (`manually-configured-staging-environment`) letiltja a `staging.contoso.com`hoz kapcsolódó Application Gateway-konfiguráció felülírását AGIC.
+3. Az Application Gateway konfigurációjának módosítása portálon keresztül - figyelők hozzáadása, útválasztási szabályok, háttérrendszerek stb. Az általunk létrehozott`manually-configured-staging-environment`új objektum ( ) megtiltja az `staging.contoso.com`AGIC számára az Alkalmazásátjáró konfigurációjának felülírását.

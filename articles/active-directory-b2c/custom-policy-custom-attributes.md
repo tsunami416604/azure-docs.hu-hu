@@ -1,306 +1,144 @@
 ---
 title: Saját attribútumok hozzáadása egyéni házirendekhez
 titleSuffix: Azure AD B2C
-description: A bővítmény tulajdonságainak és egyéni attribútumainak, valamint a felhasználói felületen való használatát bemutató bemutató.
+description: Forgatókönyv a bővítménytulajdonságok és az egyéni attribútumok használatáról, valamint azok a felhasználói felületen való használatáról.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/04/2017
+ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c145b0efa2f1c06710e1d41f606f918a7439820a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: bc5204518cb6e801ba661aecd5498a501122225f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189497"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473659"
 ---
-# <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: egyéni attribútumok használata egyéni profil-szerkesztési házirendben
+# <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: Egyéni attribútumok engedélyezése egyéni profilházirendben
+
+A [Jogcímek hozzáadása és a felhasználói bevitel testreszabása egyéni házirendek használatával](custom-policy-configure-user-input.md) című cikkben megtudhatja, hogyan használhatja a beépített felhasználói profil [attribútumait.](user-profile-attributes.md) Ebben a cikkben egy egyéni attribútumot engedélyez az Azure Active Directory B2C (Azure AD B2C) címtárban. Később az új attribútumot egyéni jogcímként használhatja [a felhasználói folyamatokban](user-flow-overview.md) vagy [az egyéni házirendekben](custom-policy-get-started.md) egyidejűleg.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ebben a cikkben egy egyéni attribútumot hoz létre a Azure Active Directory B2C (Azure AD B2C) könyvtárban. Ezt az új attribútumot egyéni jogcímként fogja használni a profil szerkesztése felhasználói úton.
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-Kövesse a [Azure Active Directory B2C: Ismerkedés az egyéni szabályzatokkal](custom-policy-get-started.md)című cikk lépéseit.
+Kövesse az Azure [Active Directory B2C: Ismerkedés](custom-policy-get-started.md)az egyéni házirendek című cikkben leírt lépésekkel.
 
-## <a name="use-custom-attributes-to-collect-information-about-your-customers-in-azure-ad-b2c-by-using-custom-policies"></a>Egyéni attribútumok használata az ügyfelekkel kapcsolatos adatok gyűjtéséhez Azure AD B2C egyéni szabályzatok használatával
-A Azure AD B2C könyvtára egy beépített attribútumokkal rendelkezik. Ilyenek például az **Utónév**, a **vezetéknév**, a **város**, az **Irányítószám**és a **userPrincipalName**. Gyakran létre kell hoznia saját attribútumait, például a következő példákat:
-* Egy ügyfél felé irányuló alkalmazásnak meg kell őriznie egy olyan attribútumot, mint a **LoyaltyNumber.**
-* Az identitás-szolgáltató egyedi felhasználói azonosítóval rendelkezik, például **uniqueUserGUID** , amelyet menteni kell.
-* Egy egyéni felhasználói útra van szükség egy olyan felhasználó állapotára, mint a **migrationStatus**.
+## <a name="use-custom-attributes-to-collect-information-about-your-customers"></a>Egyéni attribútumok használata az ügyfelekkel kapcsolatos információk gyűjtésére 
 
-Azure AD B2C kiterjeszti az egyes felhasználói fiókokban tárolt attribútumok készletét. Ezeket az attribútumokat a [Microsoft Graph API](manage-user-accounts-graph-api.md)használatával is elolvashatja és elvégezheti.
+Az Azure AD B2C könyvtár hoz egy [beépített attribútumkészlet.](user-profile-attributes.md) Azonban gyakran létre kell hoznia saját attribútumait az adott forgatókönyv kezeléséhez, például akkor, ha:
 
-A bővítmény tulajdonságai a címtárban lévő felhasználói objektumok sémáját bővítik. A használati feltételek *kiterjesztésének tulajdonsága*, az *egyéni attribútum*és az *egyéni jogcím* a jelen cikk kontextusában ugyanezt a dolgot tekinti át. A név a környezettől, például az alkalmazástól, az objektumtól vagy a házirendtől függően változhat.
+* Az ügyfél felé néző alkalmazásnak meg kell persistnia egy **LoyaltyId attribútumot.**
+* Az identitásszolgáltató egyedi felhasználói azonosítóval, **uniqueUserGUID**azonosítóval rendelkezik, amelyet meg kell tartani.
+* Az egyéni felhasználói útnak meg kell persistnie a felhasználó állapotát, **migrationStatus**, hogy más logika működjön.
 
-A bővítmény tulajdonságai csak akkor regisztrálhatók egy alkalmazás-objektumon, ha egy felhasználóhoz tartozó adatmennyiséget tartalmaznak. A tulajdonság az alkalmazáshoz van csatolva. Az Application objektumnak írási hozzáféréssel kell rendelkeznie a Extension tulajdonság regisztrálásához. Az összes típus és az összes alkalmazás száz kiterjesztési tulajdonsága egyetlen objektumba is írható. A bővítmény tulajdonságai hozzáadódnak a cél könyvtár-típushoz, és azonnal elérhetővé válnak a Azure AD B2C Directory-bérlőben.
-Ha az alkalmazás törölve van, akkor a bővítmény tulajdonságai és az összes felhasználóhoz tartozó adategység is törlődik. Ha az alkalmazás egy kiterjesztési tulajdonságot töröl, az el lesz távolítva a cél Directory-objektumokon, és az értékek törlődnek.
+Az Azure AD B2C lehetővé teszi az egyes felhasználói fiókokban tárolt attribútumok készletének bővítését. Ezeket az attribútumokat a [Microsoft Graph API](manage-user-accounts-graph-api.md)segítségével is elolvashatja és írhatja.
 
-A bővítmény tulajdonságai csak a bérlőben regisztrált alkalmazások kontextusában léteznek. Az alkalmazás **kivonatjogcím** szerepelnie kell a-t használó objektumban.
+## <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C bővítmények alkalmazás
 
->[!NOTE]
->A Azure AD B2C könyvtár általában `b2c-extensions-app`nevű webalkalmazást tartalmaz. Ezt az alkalmazást elsősorban a B2C beépített szabályzatai használják a Azure Portal használatával létrehozott egyéni jogcímekhez. Azt javasoljuk, hogy csak a speciális felhasználók regisztrálják a B2C egyéni szabályzatok bővítményeit az alkalmazás használatával.
-Az utasításokat a jelen cikk **következő lépések** szakasza tartalmazza.
+A bővítményattribútumok csak akkor regisztrálhatók egy alkalmazásobjektumon, ha azok egy felhasználó adatait is tartalmazhatják. A bővítmény attribútum a b2c-extensions-app nevű alkalmazáshoz van csatolva. Ne módosítsa ezt az alkalmazást, mivel az Azure AD B2C felhasználói adatok tárolására használja. Ez az alkalmazás az Azure AD B2C, alkalmazásregisztrációk.
 
-## <a name="create-a-new-application-to-store-the-extension-properties"></a>Új alkalmazás létrehozása a bővítmény tulajdonságainak tárolásához
+A *kifejezéskiterjesztés tulajdonság*, *egyéni attribútum*és *egyéni jogcím* hivatkoznak ugyanarra a dologra a cikk összefüggésében. A név a környezettől, például az alkalmazástól, az objektumtól vagy a házirendtől függően változik.
 
-1. Nyisson meg egy böngészési munkamenetet, és navigáljon a [Azure Portal](https://portal.azure.com). Jelentkezzen be a konfigurálni kívánt B2C-címtár rendszergazdai hitelesítő adataival.
-2. A bal oldali navigációs menüben válassza a **Azure Active Directory** lehetőséget. Előfordulhat, hogy a **További szolgáltatások**lehetőség kiválasztásával kell megkeresnie.
-3. Válassza az **Alkalmazásregisztrációk** elemet. Válassza az **Új alkalmazás regisztrálása** elemet.
-4. Adja meg a következő bejegyzéseket:
-    * A webalkalmazás neve: **WebApp-GraphAPI-DirectoryExtensions**.
-    * Az alkalmazás típusa: **Web App/API**.
-    * A bejelentkezési URL-cím: **https://{tenantName}. onmicrosoft. com/WebApp-GraphAPI-DirectoryExtensions**.
-5. Kattintson a **Létrehozás** gombra.
-6. Válassza ki az újonnan létrehozott webalkalmazást.
-7. Válassza a **beállítások** > a **szükséges engedélyek**lehetőséget.
-8. Válassza ki az API **Windows Azure Active Directory**.
-9. Adja meg az alkalmazás engedélyeinek bejelölését: **Címtáradatok olvasása és írása**. Ezután válassza a **Save** (Mentés) lehetőséget.
-10. Válassza az **engedélyek megadása** lehetőséget, és erősítse meg az **Igen értéket**.
-11. Másolja a következő azonosítókat a vágólapra, és mentse őket:
-    * **Alkalmazás azonosítója**. Példa: `103ee0e6-f92d-4183-b576-8c3739027780`.
-    * **Objektumazonosító**. Példa: `80d8296a-da0a-49ee-b6ab-fd232aa45201`.
+## <a name="get-the-application-properties"></a>Az alkalmazás tulajdonságainak beszereznie
 
-## <a name="modify-your-custom-policy-to-add-the-applicationobjectid"></a>Egyéni szabályzat módosítása a **ApplicationObjectId** hozzáadásához
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, majd válassza ki az Azure AD B2C bérlőt tartalmazó könyvtárat.
+1. A bal oldali menüben válassza az **Azure AD B2C**lehetőséget. Vagy válassza a **Minden szolgáltatás** lehetőséget, és keresse meg az **Azure AD B2C elemet.**
+1. Válassza **az Alkalmazásregisztrációk (Előnézet)** lehetőséget, majd a **Minden alkalmazás**lehetőséget.
+1. Válassza `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` ki az alkalmazást.
+1. Másolja a következő azonosítókat a vágólapra, és mentse őket:
+    * **Alkalmazásazonosító**. Példa: `11111111-1111-1111-1111-111111111111`.
+    * **Objektumazonosító**. Példa: `22222222-2222-2222-2222-222222222222`.
 
-Amikor követte a [Azure Active Directory B2C: Ismerkedés az egyéni szabályzatokkal](custom-policy-get-started.md)című témakör lépéseit, letöltötte és módosította **a TrustFrameworkBase. XML**, a **TrustFrameworkExtensions. XML**, a **SignUpOrSignin. XML**, a **ProfileEdit. XML**és a **PasswordReset. XML**nevű [fájlokat](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) . Ebben a lépésben több módosítást hajt végre a fájlokon.
+## <a name="modify-your-custom-policy"></a>Az egyéni házirend módosítása
 
-* Nyissa meg a **TrustFrameworkBase. XML** fájlt, és adja hozzá a `Metadata` szakaszt az alábbi példában látható módon. Szúrja be a korábban rögzített objektumazonosítót a `ApplicationObjectId` értékhez és a `ClientId` értékhez rögzített alkalmazás AZONOSÍTÓját:
+Ha engedélyezni szeretné az egyéni attribútumokat a házirendben, adja meg az **alkalmazásazonosítót** és az **alkalmazásobjektum-azonosítót** az AAD-Common technikai profil metaadataiközött. Az *AAD-Common* technikai profil megtalálható az alap [Azure Active Directory](active-directory-technical-profile.md) technikai profil, és támogatja az Azure AD felhasználói felügyeletét. Más Azure AD technikai profilok közé tartozik az AAD-common a konfiguráció kihasználásához. Az AAD-Common technikai profil felülbírálása a mellékfájlban.
+
+1. Nyissa meg a házirend bővítményfájlját. <em> `SocialAndLocalAccounts/` </em>Például.
+1. Keresse meg a ClaimsProviders elemet. Adjon hozzá egy új jogcímszolgáltatót a ClaimsProviders elemhez.
+1. Cserélje `ApplicationObjectId` le a korábban rögzített objektumazonosítóra. Ezután `ClientId` cserélje le az alkalmazásazonosítót, amelyet korábban rögzített az alábbi kódrészletben.
 
     ```xml
-    <ClaimsProviders>
-      <ClaimsProvider>
-        <DisplayName>Azure Active Directory</DisplayName>
+    <ClaimsProvider>
+      <DisplayName>Azure Active Directory</DisplayName>
+      <TechnicalProfiles>
         <TechnicalProfile Id="AAD-Common">
-          <DisplayName>Azure Active Directory</DisplayName>
-          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-
-          <!-- Provide objectId and appId before using extension properties. -->
           <Metadata>
-            <Item Key="ApplicationObjectId">insert objectId here</Item>
-            <Item Key="ClientId">insert appId here</Item>
+            <!--Insert b2c-extensions-app application ID here, for example: 11111111-1111-1111-1111-111111111111-->  
+            <Item Key="ClientId"></Item>
+            <!--Insert b2c-extensions-app application ObjectId here, for example: 22222222-2222-2222-2222-222222222222-->
+            <Item Key="ApplicationObjectId"></Item>
           </Metadata>
-          <!-- End of changes -->
-
-          <CryptographicKeys>
-            <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
-          </CryptographicKeys>
-          <IncludeInSso>false</IncludeInSso>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
         </TechnicalProfile>
-      </ClaimsProvider>
-    </ClaimsProviders>
+      <TechnicalProfiles> 
+    </ClaimsProvider>
     ```
+
+## <a name="upload-your-custom-policy"></a>Az egyéni szabályzat feltöltése
+
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+2. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, ha a felső **menüben** a Directory + előfizetésszűrőt választja, és kiválasztja az Azure AD B2C-bérlőt tartalmazó könyvtárat.
+3. Válassza az **Összes szolgáltatás lehetőséget** az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Alkalmazásregisztrációk lehetőséget.**
+4. Válassza **az Identitáskezelési keretrendszert**.
+5. Válassza **az Egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított TrustFrameworkExtensions.xml házirendfájlokat.
 
 > [!NOTE]
-> Ha a **kivonatjogcím** első alkalommal ír az újonnan létrehozott Extension tulajdonságra, előfordulhat, hogy egyszeri hibát tapasztal. A bővítmény tulajdonságot az első használatkor hozza létre a rendszer.
+> Az első alkalommal, amikor az Azure AD technikai profil megmarad a címtárban, ellenőrzi, hogy az egyéni attribútum létezik-e. Ha nem, létrehozza az egyéni attribútumot.  
 
-## <a name="use-the-new-extension-property-or-custom-attribute-in-a-user-journey"></a>Az új bővítmény tulajdonság vagy az egyéni attribútum használata felhasználói úton
+## <a name="create-a-custom-attribute-through-azure-portal"></a>Egyéni attribútum létrehozása az Azure Portalon keresztül
 
-1. Nyissa meg a **ProfileEdit. XML** fájlt.
-2. Adjon hozzá egy egyéni jogcímet `loyaltyId`. A `<RelyingParty>` elemben szereplő egyéni jogcím belefoglalásával az alkalmazás jogkivonatában szerepel.
+Ugyanazok a bővítményattribútumok vannak megosztva a beépített és az egyéni házirendek között. Amikor egyéni attribútumokat ad hozzá a portálon keresztül, ezek az attribútumok regisztrálva vannak a **b2c-extensions-app** használatával, amely minden B2C-bérlőben megtalálható.
 
-    ```xml
-    <RelyingParty>
-      <DefaultUserJourney ReferenceId="ProfileEdit" />
-      <TechnicalProfile Id="PolicyProfile">
-        <DisplayName>PolicyProfile</DisplayName>
-        <Protocol Name="OpenIdConnect" />
-        <OutputClaims>
-          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-          <OutputClaim ClaimTypeReferenceId="city" />
+Ezeket az attribútumokat a portál felhasználói felületének használatával hozhatja létre az egyéni házirendekben való használatuk előtt vagy után. Kövesse az egyéni attribútumok definiálásának útmutatóját [az Azure Active Directory B2C-ben.](user-flow-custom-attributes.md) Amikor **hűségazonosítót** hoz létre a portálon, a következőképpen kell hivatkoznia rá:
 
-          <!-- Provide the custom claim identifier -->
-          <OutputClaim ClaimTypeReferenceId="extension_loyaltyId" />
-          <!-- End of changes -->
-        </OutputClaims>
-        <SubjectNamingInfo ClaimType="sub" />
-      </TechnicalProfile>
-    </RelyingParty>
-    ```
+|Név     |Használt |
+|---------|---------|
+|`extension_loyaltyId`  | Egyéni szabályzat|
+|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|
 
-3. Nyissa meg a **TrustFrameworkExtensions. XML** fájlt, és adja hozzá a`<ClaimsSchema>` elemet és annak alárendelt elemeit a `BuildingBlocks` elemhez:
+A következő példa bemutatja az egyéni attribútumok használatát egy Azure AD B2C egyéni házirend-jogcímdefinícióban.
 
-    ```xml
-    <BuildingBlocks>
-      <ClaimsSchema>
-        <ClaimType Id="extension_loyaltyId">
-          <DisplayName>Loyalty Identification Tag</DisplayName>
-          <DataType>string</DataType>
-          <UserHelpText>Your loyalty number from your membership card</UserHelpText>
-          <UserInputType>TextBox</UserInputType>
-        </ClaimType>
-      </ClaimsSchema>
-    </BuildingBlocks>
-    ```
-
-4. Adja hozzá ugyanazt a `ClaimType` definíciót a **TrustFrameworkBase. xml fájlhoz**. Az alap-és a kiterjesztési fájlokban nem szükséges `ClaimType` definíciót hozzáadni. A következő lépésekben azonban adja hozzá a `extension_loyaltyId`t a **TechnicalProfiles** az alapfájlban. Így a szabályzat-érvényesítő elutasítja az alapfájl feltöltését anélkül. Hasznos lehet a **ProfileEdit** nevű felhasználói út végrehajtásának nyomon követése a **TrustFrameworkBase. XML** fájlban. Keresse meg a szerkesztőben ugyanazt a nevet használó felhasználói utat. Figyelje meg, hogy az 5. lépés a következőt hívja meg: **TechnicalProfileReferenceID = "SelfAsserted-ProfileUpdate**. Keresse meg és vizsgálja meg ezt a **kivonatjogcím** , hogy megismerkedjen a folyamattal.
-
-5. Nyissa meg a **TrustFrameworkBase. XML** fájlt, és adja hozzá a `loyaltyId` bemeneti és kimeneti jogcímként a **Kivonatjogcím SelfAsserted-ProfileUpdate**:
-
-    ```xml
-    <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
-      <DisplayName>User ID signup</DisplayName>
-      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-      <Metadata>
-        <Item Key="ContentDefinitionReferenceId">api.selfasserted.profileupdate</Item>
-      </Metadata>
-      <IncludeInSso>false</IncludeInSso>
-      <InputClaims>
-        <InputClaim ClaimTypeReferenceId="alternativeSecurityId" />
-        <InputClaim ClaimTypeReferenceId="userPrincipalName" />
-        <InputClaim ClaimTypeReferenceId="givenName" />
-        <InputClaim ClaimTypeReferenceId="surname" />
-
-        <!-- Add the loyalty identifier -->
-        <InputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
-        <!-- End of changes -->
-      </InputClaims>
-      <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
-        <OutputClaim ClaimTypeReferenceId="givenName" />
-        <OutputClaim ClaimTypeReferenceId="surname" />
-
-        <!-- Add the loyalty identifier -->
-        <OutputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
-        <!-- End of changes -->
-
-      </OutputClaims>
-      <ValidationTechnicalProfiles>
-        <ValidationTechnicalProfile ReferenceId="AAD-UserWriteProfileUsingObjectId" />
-      </ValidationTechnicalProfiles>
-    </TechnicalProfile>
-    ```
-
-6. A **TrustFrameworkBase. XML** fájlban adja hozzá a `loyaltyId` jogcímet a **Kivonatjogcím HRE-UserWriteProfileUsingObjectId**. Ez a kiegészítés megőrzi a jogcím értékét a könyvtár aktuális felhasználójának bővítmény tulajdonságában:
-
-    ```xml
-    <TechnicalProfile Id="AAD-UserWriteProfileUsingObjectId">
-      <Metadata>
-        <Item Key="Operation">Write</Item>
-        <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">false</Item>
-        <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
-      </Metadata>
-      <IncludeInSso>false</IncludeInSso>
-      <InputClaims>
-        <InputClaim ClaimTypeReferenceId="objectId" Required="true" />
-      </InputClaims>
-      <PersistedClaims>
-        <PersistedClaim ClaimTypeReferenceId="objectId" />
-        <PersistedClaim ClaimTypeReferenceId="givenName" />
-        <PersistedClaim ClaimTypeReferenceId="surname" />
-
-        <!-- Add the loyalty identifier -->
-        <PersistedClaim ClaimTypeReferenceId="extension_loyaltyId" />
-        <!-- End of changes -->
-
-      </PersistedClaims>
-      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-    </TechnicalProfile>
-    ```
-
-7. A **TrustFrameworkBase. XML** fájlban adja hozzá a `loyaltyId` jogcímet a **Kivonatjogcím HRE-UserReadUsingObjectId** elemhez, hogy minden alkalommal beolvassa a bővítmény attribútum értékét, amikor egy felhasználó bejelentkezik. Eddig a **TechnicalProfiles** csak a helyi fiókok forgalmában módosultak. Ha azt szeretné, hogy az új attribútum egy közösségi vagy összevont fiókban legyen, egy másik **TechnicalProfiles** kell módosítani. Lásd a **következő lépések** szakaszt.
-
-    ```xml
-    <TechnicalProfile Id="AAD-UserReadUsingObjectId">
-      <Metadata>
-        <Item Key="Operation">Read</Item>
-        <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
-      </Metadata>
-      <IncludeInSso>false</IncludeInSso>
-      <InputClaims>
-        <InputClaim ClaimTypeReferenceId="objectId" Required="true" />
-      </InputClaims>
-      <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
-        <OutputClaim ClaimTypeReferenceId="displayName" />
-        <OutputClaim ClaimTypeReferenceId="otherMails" />
-        <OutputClaim ClaimTypeReferenceId="givenName" />
-        <OutputClaim ClaimTypeReferenceId="surname" />
-
-        <!-- Add the loyalty identifier -->
-        <OutputClaim ClaimTypeReferenceId="extension_loyaltyId" />
-        <!-- End of changes -->
-
-      </OutputClaims>
-      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-    </TechnicalProfile>
-    ```
-
-## <a name="test-the-custom-policy"></a>Egyéni szabályzat tesztelése
-
-1. Nyissa meg a Azure AD B2C panelt, és navigáljon az **Identity Experience Framework** > **Egyéni házirendek**elemre.
-1. Válassza ki a feltöltött egyéni szabályzatot. Válassza a **Futtatás most**lehetőséget.
-1. Regisztráljon egy e-mail-cím használatával.
-
-Az alkalmazásnak visszaadott azonosító jogkivonat magában foglalja az új bővítmény tulajdonságot, amely a **extension_loyaltyId**előtt megjelenő egyéni jogcím. Lásd a következő példát:
-
-```json
-{
-  "exp": 1493585187,
-  "nbf": 1493581587,
-  "ver": "1.0",
-  "iss": "https://contoso.b2clogin.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
-  "sub": "a58e7c6c-7535-4074-93da-b0023fbaf3ac",
-  "aud": "4e87c1dd-e5f5-4ac8-8368-bc6a98751b8b",
-  "acr": "b2c_1a_trustframeworkprofileedit",
-  "nonce": "defaultNonce",
-  "iat": 1493581587,
-  "auth_time": 1493581587,
-  "extension_loyaltyId": "abc",
-  "city": "Redmond"
-}
+```xml
+<BuildingBlocks>
+  <ClaimsSchema>
+    <ClaimType Id="extension_loyaltyId">
+      <DisplayName>Loyalty Identification</DisplayName>
+      <DataType>string</DataType>
+      <UserHelpText>Your loyalty number from your membership card</UserHelpText>
+      <UserInputType>TextBox</UserInputType>
+    </ClaimType>
+  </ClaimsSchema>
+</BuildingBlocks>
 ```
+
+A következő példa bemutatja egy egyéni attribútum használatát az Azure AD B2C egyéni szabályzat egy technikai profil, bemenet, kimenet és a megőrzött jogcímek használatát.
+
+```xml
+<InputClaims>
+  <InputClaim ClaimTypeReferenceId="extension_loyaltyId"  />
+</InputClaims>
+<PersistedClaims>
+  <PersistedClaim ClaimTypeReferenceId="extension_loyaltyId" />
+</PersistedClaims>
+<OutputClaims>
+  <OutputClaim ClaimTypeReferenceId="extension_loyaltyId" />
+</OutputClaims>
+```
+
+## <a name="use-a-custom-attribute-in-a-policy"></a>Egyéni attribútum használata házirendben
+
+Kövesse a [jogcímek hozzáadására és a felhasználói bevitel egyéni házirendek használatával történő testreszabására vonatkozó útmutatást.](custom-policy-configure-user-input.md) Ez a minta egy beépített "város" követelést használ. Egyéni attribútum használatához cserélje le a "város" szót a saját egyéni attribútumaival.
+
 
 ## <a name="next-steps"></a>További lépések
 
-1. A következő **TechnicalProfiles**megváltoztatásával adja hozzá az új jogcímet a folyamatokhoz a közösségi fiókba való bejelentkezéshez. A közösségi és összevont fiókok ezt a két **TechnicalProfiles** használják a bejelentkezéshez. A felhasználó adatai a **alternativeSecurityId** , a felhasználói objektum lokátorának használatával írhatók és olvashatók.
+További információk:
 
-   ```xml
-    <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
-
-    <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-   ```
-
-2. Használja ugyanazt a bővítmény-attribútumot a beépített és az egyéni házirendek között. Ha bővítményt vagy egyéni, attribútumokat ad hozzá a portál felületén keresztül, ezeket az attribútumokat az összes B2C-bérlőben található **B2C-Extensions-app** használatával regisztrálja a rendszer. Az alábbi lépéseket követve használhatja a bővítmény attribútumait az egyéni házirendben:
-
-   a. A portal.azure.com-ben a B2C-bérlőn belül navigáljon **Azure Active Directory** , és válassza a **Alkalmazásregisztrációk**lehetőséget.
-   b. Keresse meg a **B2C-Extensions-app** elemet, és válassza ki.
-   c. Az **Essentials (alapvető**) területen adja meg az **alkalmazás azonosítóját** és az **objektum azonosítóját**.
-   d. Vegye fel őket a **HRE-Common kivonatjogcím-** metaadatokba:
-
-   ```xml
-      <ClaimsProviders>
-        <ClaimsProvider>
-          <DisplayName>Azure Active Directory</DisplayName>
-          <TechnicalProfile Id="AAD-Common">
-            <DisplayName>Azure Active Directory</DisplayName>
-            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-            <!-- Provide objectId and appId before using extension properties. -->
-            <Metadata>
-              <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
-              <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
-            </Metadata>
-   ```
-
-3. Maradjon konzisztens a portál felületén. Az egyéni szabályzatok használata előtt hozza létre ezeket az attribútumokat a portál felhasználói felületén. Amikor **ActivationStatus** hoz létre a portálon, az alábbiak szerint kell megadnia:
-
-   ```
-   extension_ActivationStatus in the custom policy.
-   extension_<app-guid>_ActivationStatus via Graph API.
-   ```
-
-## <a name="reference"></a>Leírások
-
-A bővítmény tulajdonságaival kapcsolatos további információkért tekintse meg az [Egyéni adatok hozzáadása az erőforrásokhoz bővítmények használatával](https://docs.microsoft.com/graph/extensibility-overview)című cikket.
-
-> [!NOTE]
-> * A **kivonatjogcím** egy olyan elemtípus vagy függvény, amely meghatározza a végpont nevét, metaadatait és protokollját. A **kivonatjogcím** részletezi az identitási keretrendszer által végrehajtott jogcímek cseréjét. Ha ezt a függvényt egy előkészítési lépésben vagy egy másik **kivonatjogcím**hívja meg, a **Szabályzattípushoz** és a **OutputClaims** paraméterként van megadva a hívónak.
-> * A Graph API-bővítmény attribútumai a Convention `extension_ApplicationObjectID_attributename`használatával vannak elnevezve.
-> * Az egyéni házirendek a bővítmény attribútumait **extension_attributenameként**tekintik meg. Ez a hivatkozás kihagyja a **ApplicationObjectId** az XML-ben.
-> * Az attribútum AZONOSÍTÓját a következő formátumban kell megadnia **extension_attributename** bárhol legyen hivatkozva.
+- [Az Azure AD B2C felhasználói profil attribútumai](user-profile-attributes.md)
+- [Bővítményattribútum-definíció](user-profile-attributes.md#extension-attributes)
+- [Azure AD B2C felhasználói fiókok kezelése a Microsoft Graph segítségével](manage-user-accounts-graph-api.md)

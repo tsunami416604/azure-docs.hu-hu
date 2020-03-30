@@ -1,106 +1,106 @@
 ---
-title: Árképzési szintek – Azure Database for MySQL
-description: Ismerkedjen meg a Azure Database for MySQL különböző díjszabási szintjeivel, beleértve a számítási generációkat, a tárolási típusokat, a tárterület méretét, a virtuális mag, a memóriát és a biztonsági másolatok megőrzési időszakait.
+title: Tarifacsomagok – Azure Database for MySQL
+description: Ismerje meg az Azure Database for MySQL különböző tarifacsomagjait, beleértve a számítási generációkat, a tárolási típusokat, a tárhelyméretet, a virtuális magokat, a memóriát és a biztonsági mentés megőrzési időszakait.
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: cf959112a2a717da1005be062dda3b83163d8d6c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79269444"
 ---
-# <a name="azure-database-for-mysql-pricing-tiers"></a>Árképzési szintek Azure Database for MySQL
+# <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database a MySQL-díjszabási szintekhez
 
-A Azure Database for MySQL-kiszolgálót a három különböző díjszabási szint egyikében hozhatja létre: alapszintű, általános célú és memória optimalizálva. Az árképzési csomagokat a virtuális mag olyan számítási mennyisége különbözteti meg, amely kiépíthető, memóriát virtuális mag, valamint az adatok tárolására szolgáló tárolási technológiát. Minden erőforrást a MySQL-kiszolgáló szintjén kell kiépíteni. A kiszolgálók egy vagy több adatbázissal rendelkezhetnek.
+Létrehozhat egy Azure Database for MySQL-kiszolgálót a három különböző tarifacsomag egyikében: Alapszintű, általános célú és memóriaoptimalizált. A tarifacsomagok a kiépíthető virtuális magok, a virtuális magonkénti memória és az adatok tárolására használt tárolási technológia által differenciált számítási mennyiség alapján vannak megkülönböztetve. Minden erőforrás a MySQL-kiszolgáló szintjén van kiépítve. A kiszolgálónak egy vagy több adatbázisa lehet.
 
-|    | **Basic** | **általános célú** | **Memória optimalizálva** |
+|    | **Basic** | **Általános cél** | **Memória optimalizált** |
 |:---|:----------|:--------------------|:---------------------|
-| Számítási generáció | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
-| Virtuális mag | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
-| Memória/virtuális mag | 2 GB | 5 GB | 10 GB |
-| Tárterület mérete | 5 GB – 1 TB | 5 GB – 16 TB | 5 GB – 16 TB |
-| Adatbázis biztonsági másolatának megőrzési időtartama | 7 – 35 nap | 7 – 35 nap | 7 – 35 nap |
+| Számításgenerálás | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 (1998. |
+| virtuális magok | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
+| Memória virtuális magonként | 2 GB | 5 GB | 10 GB |
+| Tárhely mérete | 5 GB és 1 TB között | 5 GB és 16 TB között | 5 GB és 16 TB között |
+| Adatbázis biztonsági mentési megőrzési időszaka | 7-35 nap | 7-35 nap | 7-35 nap |
 
-Árképzési szintek kiválasztásához használja a következő táblázatot kiindulási pontként.
+Tarifacsomag kiválasztásához használja az alábbi táblázatot kiindulási pontként.
 
 | Tarifacsomag | Kívánt teljesítményprofilok |
 |:-------------|:-----------------|
-| Alapszintű | Könnyű számítási és I/O-teljesítményt igénylő munkaterhelések. Ilyenek például a fejlesztéshez és teszteléshez használt kiszolgálók, vagy a kisméretű, ritkán használt alkalmazások. |
-| Általános célú | A legtöbb üzleti számítási feladat, amely kiegyensúlyozott számítást és memóriát igényel a méretezhető I/O-átviteli sebességgel. Ilyenek például a web-és mobil alkalmazások és más vállalati alkalmazások üzemeltetésére szolgáló kiszolgálók.|
-| Memóriára optimalizált | Nagy teljesítményű adatbázis-munkaterhelések, amelyek memóriabeli teljesítményt igényelnek a gyorsabb tranzakció-feldolgozáshoz és a nagyobb egyidejűséghez. Ilyenek például a valós idejű és a nagy teljesítményű tranzakciós vagy analitikai alkalmazások feldolgozására szolgáló kiszolgálók.|
+| Basic | Könnyű számítási és I/O-teljesítményt igénylő munkaterhelések. Ilyenek például a fejlesztéshez vagy teszteléshez használt kiszolgálók, vagy a kis méretű, ritkán használt alkalmazások. |
+| Általános célú | A legtöbb üzleti számítási feladatok, amelyek megkövetelik a kiegyensúlyozott számítási és memória méretezhető I/O átviteli. Ilyenek például a web- és mobilalkalmazások, valamint más vállalati alkalmazások üzemeltetésére szolgáló kiszolgálók.|
+| Memóriaoptimalizált | Nagy teljesítményű adatbázis-munkaterhelések, amelyek a gyorsabb tranzakciófeldolgozás és a nagyobb egyidejűség érdekében memórián belüli teljesítményt igényelnek. Ilyenek például a valós idejű adatok feldolgozására szolgáló kiszolgálók és a nagy teljesítményű tranzakciós vagy analitikus alkalmazások.|
 
-A kiszolgáló létrehozása után a virtuális mag, a hardver-létrehozási és az árképzési szint (kivéve az alapszintű és az alapszintű) számát másodpercek alatt módosíthatja. A tárolási mennyiség és a biztonsági mentés megőrzési időszaka egymástól függetlenül is beállítható az alkalmazás leállása nélkül. A biztonsági mentési tár típusa nem módosítható a kiszolgáló létrehozása után. További információ: [Scale Resources (erőforrások méretezése](#scale-resources) ) szakasz.
+A kiszolgáló létrehozása után a virtuális magok, a hardvergenerálás és a tarifacsomag száma (kivéve az alapszintű és az alapszintű) másodpercek alatt módosítható. Emellett önállóan módosíthatja a tárhely et és a biztonsági mentés megőrzési időszakot fel- vagy leközben, alkalmazásállás nélkül. A kiszolgáló létrehozása után nem módosíthatja a biztonsági másolat tárolási típusát. További információt az [Erőforrások méretezése](#scale-resources) című szakaszban talál.
 
-## <a name="compute-generations-and-vcores"></a>Számítási generációk és virtuális mag
+## <a name="compute-generations-and-vcores"></a>Számítási generációk és virtuális magok
 
-A számítási erőforrások virtuális mag-ként vannak megadva, amely az alapul szolgáló hardver logikai PROCESSZORát jelöli. Kelet-Kína 1, Észak-Kína 1, US DoD – középső régió és US DoD – keleti régió az Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokon alapuló Gen 4 logikai processzorokat használ. Minden más régió az Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzorokon alapuló Gen 5 logikai CPU-ket használ.
+A számítási erőforrások virtuális magként vannak megadva, amelyek az alapul szolgáló hardver logikai processzorát képviselik. Kína Kelet 1, Kína Északi 1, MINKET DoD Központi, és MINKET DoD Kelet hasznosít Gen 4 logikus CPU amit van azon alapszik Intel E5-2673 v3 (Haswell) 2.4-GHz folyamat. Minden más régió az Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzorokon alapuló Gen 5 logikai processzorokat használja.
 
-## <a name="storage"></a>Tárterület
+## <a name="storage"></a>Storage
 
-Az Ön által kiépített tárterület a Azure Database for MySQL-kiszolgáló számára elérhető tárolási kapacitás mennyisége. A tárterületet az adatbázisfájlok, az ideiglenes fájlok, a tranzakciónaplók és a MySQL-kiszolgáló naplófájljai használják. A kiépített tárterület teljes mennyisége határozza meg a kiszolgáló számára elérhető I/O-kapacitást is.
+A kiépített tárterület az Azure Database for MySQL-kiszolgáló számára rendelkezésre álló tárkapacitása. A tároló az adatbázisfájlokhoz, az ideiglenes fájlokhoz, a tranzakciónaplókhoz és a MySQL kiszolgálónaplóihoz használatos. A kiépített tárterület teljes mennyisége meghatározza a kiszolgáló számára elérhető I/O-kapacitást is.
 
-|    | **Basic** | **általános célú** | **Memória optimalizálva** |
+|    | **Basic** | **Általános cél** | **Memória optimalizált** |
 |:---|:----------|:--------------------|:---------------------|
-| Tárolási típus | Alapszintű tárterület | általános célú Storage | általános célú Storage |
-| Tárterület mérete | 5 GB – 1 TB | 5 GB – 16 TB | 5 GB – 16 TB |
-| Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
-| IOPS | Változó |3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
+| Tárolási típus | Egyszerű tárhely | Általános célú tárolás | Általános célú tárolás |
+| Tárhely mérete | 5 GB és 1 TB között | 5 GB és 16 TB között | 5 GB és 16 TB között |
+| Tárolási növekményméret | 1 GB | 1 GB | 1 GB |
+| IOPS | Változó |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max 20 000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max 20 000 IOPS |
 
 > [!NOTE]
-> A 16TB és a 20 000 IOPS a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA nyugati régiója, USA északi középső régiója, USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Japán, Korea középső , Dél-Korea, Kelet-Ausztrália, Kelet-Ausztrália.
+> A 16 TB-os és 20 000 IOPS-os tárhely a következő régiókban támogatott: USA keleti régiója, USA keleti régiója 2, USA középső régiója, USA északi régiója, USA déli régiója, Észak-Európa, Nyugat-Európa, Az Egyesült Királyság déli része, az Egyesült Királyság nyugati, délkelet-ázsiai, kelet-ázsiai, kelet-, nyugat-japán, közép-európai régiója , Korea South, Ausztrália Kelet- és Ausztrália Délkelet.
 >
-> Minden más régió akár 4TB, akár 6000 IOPS is támogat.
+> Minden más régió legfeljebb 4 TB tárhelyet és akár 6000 IOPS-t támogat.
 >
 
-A kiszolgáló létrehozásakor és után további tárolókapacitást is hozzáadhat, és lehetővé teheti, hogy a rendszer automatikusan növelje a tárterületet a számítási feladatok tárolási feladatainak megfelelően. 
+A kiszolgáló létrehozása során és után további tárolókapacitást adhat hozzá, és lehetővé teheti, hogy a rendszer automatikusan bővítse a tárhelyet a számítási feladatok tárolási felhasználása alapján. 
 
 >[!NOTE]
-> A tárterületet csak felfelé, nem lefelé lehet méretezni.
+> A tárhely csak felskálázható, nem csökkenthető.
 
-Az alapszintű csomag nem biztosít IOPS garanciát. A általános célú és a memória optimalizált díjszabási szintjein a IOPS a kiépített tároló méretével, 3:1 arányban méretezhető.
+Az alapszintű szint nem biztosít IOPS-garanciát. Az általános cél és a memória optimalizált tarifacsomagok, az IOPS-skálázás a kiosztott tárolási mérete 3:1 arányban.
 
-Az I/O-használatot a Azure Portal vagy az Azure CLI-parancsok használatával figyelheti. A figyelni kívánt mérőszámok a [tárolási korlát, a tárolási százalék, a felhasznált tárterület és az IO százalék](concepts-monitoring.md).
+Az I/O-felhasználás figyelheti az Azure Portalon vagy az Azure CLI-parancsok használatával. A figyeléshez szükséges mérőszámok a [tárolási korlát, a tárolási százalék, a használt tárhely és az IO százalék](concepts-monitoring.md).
 
 ### <a name="reaching-the-storage-limit"></a>A tárolási korlát elérése
 
-A 100 GB-nál kisebb kiosztott tárolóval rendelkező kiszolgálók csak olvashatók, ha az ingyenes tárterület kevesebb, mint 5%-a kiépített tároló mérete. A 100 GB-nál nagyobb kiépített tárhellyel rendelkező kiszolgálók csak olvashatónak lesznek jelölve, ha az elérhető tárterület kisebb, mint 5 GB.
+A 100 GB-nál kisebb kiépített tárterülettel rendelkező kiszolgálók írásvédettek, ha az ingyenes tárhely a kiosztott tárméret 5%-ánál kisebb. A 100 GB-nál nagyobb kiépített tárhellyel rendelkező kiszolgálók csak olvashatónak lesznek jelölve, ha az elérhető tárterület kisebb, mint 5 GB.
 
-Ha például 110 GB tárhellyel rendelkezik, és a tényleges kihasználtság meghaladja az 105 GB-ot, a kiszolgáló csak olvashatóként van megjelölve. Ha 5 GB tárterületet osztott ki, akkor a kiszolgáló csak olvashatóként van megjelölve, ha az ingyenes tárterület 256 MB-nál kevesebbet ér el.
+Ha például 110 GB tárhelyet létesített, és a tényleges kihasználtság meghaladja a 105 GB-ot, a kiszolgáló írásvédettként van megjelölve. Másik lehetőségként, ha 5 GB tárhelyet létesített, a kiszolgáló írásvédettként lesz megjelölve, ha az ingyenes tárhely eléri a 256 MB-nál kisebb.
 
 Mialatt a szolgáltatás csak olvashatóvá próbálja tenni a kiszolgálót, minden új írási tranzakció kérését blokkolja a rendszer, és a meglévő aktív tranzakciók végrehajtása folytatódik. A kiszolgáló csak olvashatóként való beállításakor minden későbbi írási művelet és tranzakció meghiúsul. Az olvasási lekérdezések továbbra is zavartalanul működnek. A kiépített tárterület növelése után a kiszolgáló ismét készen fog állni az írási tranzakciók elfogadására.
 
-Javasoljuk, hogy kapcsolja be a tárterület automatikus növekedését, vagy hozzon létre egy riasztást, amely értesíti, ha a kiszolgáló tárterülete eléri a küszöbértéket, így elkerülhető a csak olvasható állapot. További információt a [riasztás beállításával](howto-alert-on-metric.md)kapcsolatos dokumentációban talál.
+Azt javasoljuk, hogy kapcsolja be a tárolás automatikus növekedését, vagy állítson be egy riasztást, amely értesíti, ha a kiszolgáló tárhelye megközelíti a küszöbértéket, így elkerülheti az írásvédett állapotba való bejutást. További információt a riasztás [beállításáról](howto-alert-on-metric.md)szóló dokumentációban talál.
 
-### <a name="storage-auto-grow"></a>Tárterület automatikus növekedése
+### <a name="storage-auto-grow"></a>A tárolás automatikus annekta
 
-A tárterület automatikus növekedése megakadályozza, hogy a kiszolgáló kifogyjon a tárolóból, és csak olvasható legyen. Ha engedélyezve van a tárterület automatikus növekedése, a tárterület automatikusan növekszik a munkaterhelés befolyásolása nélkül. A 100 GB-nál kisebb kiosztott tárterülettel rendelkező kiszolgálók esetében a kiosztott tárterület mérete 5 GB-kal nő, ha az ingyenes tárterület a kiépített tároló 10%-a alá esik. A 100 GB-nál több kiosztott tárterülettel rendelkező kiszolgálók esetében a kiosztott tárterület mérete 5%-kal nő, ha a szabad tárterület mérete nem éri el a kiosztott tárterület méretének 10 GB-ot. A fent megadott maximális tárolási korlátok érvényesek.
+Az automatikus tárhelynövekedés megakadályozza, hogy a kiszolgáló kifogyjon a tárhelyből, és csak olvashatóvá váljon. Ha a tároló automatikus növekedése engedélyezve van, a tároló automatikusan növekszik anélkül, hogy befolyásolna a számítási feladatokat. A 100 GB-nál kisebb kiépített tárterülettel rendelkező kiszolgálók esetében a kiosztott tárterület mérete 5 GB-tal nő, ha az ingyenes tárterület a kiosztott tár 10%-a alatt van. A 100 GB-nál több kiépített tárhellyel rendelkező kiszolgálók esetében a kiosztott tárterület 5%-kal nő, ha a szabad tárhely a kiosztott tárterület 10 GB-ja alatt van. A fent meghatározott maximális tárolási korlátok érvényesek.
 
-Ha például 1000 GB tárhelyet használ, és a tényleges kihasználtság meghaladja az 990 GB-ot, a kiszolgáló tárterületének mérete az 1050 GB-ra nő. Ha 10 GB tárterületet telepített, akkor a tárterület mérete 15 GB-ra nő, ha kevesebb, mint 1 GB tárterület ingyenes.
+Ha például 1000 GB tárhelyet létesített, és a tényleges kihasználtság meghaladja a 990 GB-ot, a kiszolgáló tárhelymérete 1050 GB-ra nő. Másik lehetőségként, ha 10 GB tárhelyet létesített, a tárterület mérete 15 GB-ra nő, ha kevesebb, mint 1 GB tárterület ingyenes.
 
-Ne feledje, hogy a tárterület csak akkor méretezhető, ha nem.
+Ne feledje, hogy a tároló csak felskálázható, nem lefelé.
 
-## <a name="backup"></a>Biztonsági mentés
+## <a name="backup"></a>Backup
 
-A szolgáltatás automatikusan biztonsági másolatot készít a kiszolgálóról. A megőrzési időtartamot 7 és 35 nap közé is kiválaszthatja. A általános célú és a memóriára optimalizált kiszolgálók dönthetnek úgy, hogy a biztonsági mentések földrajzilag redundáns tárolóhelyet biztosítanak. További információ a biztonsági mentésekről a [fogalmakat ismertető cikkben](concepts-backup.md).
+A szolgáltatás automatikusan biztonsági mentést készít a kiszolgálóról. 7 és 35 nap közötti megőrzési időszakot választhat. Az általános célú és memóriaoptimalizált kiszolgálók dönthetnek úgy, hogy georedundáns tárolással rendelkeznek a biztonsági mentések számára. További információ a biztonsági mentésekről a [fogalmakról szóló cikkben.](concepts-backup.md)
 
 ## <a name="scale-resources"></a>Erőforrások skálázása
 
-A kiszolgáló létrehozása után egymástól függetlenül módosíthatja a virtuális mag, a hardverek generációját, az árképzési szintet (kivéve az alapszintű és az alapszintű), a tárterület mennyiségét és a biztonsági mentés megőrzési időtartamát. A biztonsági mentési tár típusa nem módosítható a kiszolgáló létrehozása után. A virtuális mag száma növelhető felfelé vagy lefelé. A biztonsági másolat megőrzési időtartama 7 – 35 nap között méretezhető. A tárterület mérete csak növelni lehet. Az erőforrások méretezése történhet a portálon vagy az Azure CLI-n keresztül. Az Azure CLI-vel történő skálázásra példa: Azure Database for MySQL- [kiszolgáló figyelése és méretezése az Azure CLI használatával](scripts/sample-scale-server.md).
+A kiszolgáló létrehozása után egymástól függetlenül módosíthatja a virtuális magokat, a hardvergenerálást, a tarifacsomagot (kivéve az alapszintű kiszolgálót és az alapterületről), a tárterület mennyiségét és a biztonsági mentés megőrzési időszakát. A kiszolgáló létrehozása után nem módosíthatja a biztonsági másolat tárolási típusát. A virtuális magok száma fel- vagy leskálázható. A biztonsági mentés megőrzési időszak a 7-35 nap fel- vagy leskálázható. A tároló mérete csak növelhető. Az erőforrások méretezése a portálon vagy az Azure CLI-n keresztül végezhető el. Az Azure CLI használatával történő méretezésről a [Monitor and Scale a Azure Database for MySQL-kiszolgáló](scripts/sample-scale-server.md)az Azure CLI használatával című témakörben található.
 
-Ha megváltoztatja a virtuális mag számát, a hardver generálását vagy az árképzési szintet, az eredeti kiszolgáló egy példánya létrejön az új számítási foglalással. Amint a kiszolgáló üzemel, a kapcsolatok átállnak az új kiszolgálóra. Az új kiszolgálóra való váltás pillanatában nem hozható létre új kapcsolat, és a nem véglegesített tranzakciók vissza lesznek állítva. Ez az időtartam változó, de a legtöbb esetben egy percnél kevesebb időt vesz igénybe.
+Ha módosítja a virtuális magok számát, a hardvergenerálást vagy a tarifacsomagot, az új számítási foglalással létrejön az eredeti kiszolgáló másolata. Amint a kiszolgáló üzemel, a kapcsolatok átállnak az új kiszolgálóra. Az új kiszolgálóra való váltás pillanatában nem hozható létre új kapcsolat, és a nem véglegesített tranzakciók vissza lesznek állítva. Ez az időtartam változó, de a legtöbb esetben egy percnél kevesebb időt vesz igénybe.
 
-A tárterület skálázása és a biztonsági mentés megőrzési időtartamának módosítása igaz online művelet. Nincs leállás, és az alkalmazása nincs hatással. A kiépített tároló méretével IOPS a IOPS elérhetővé teheti a kiszolgáló számára a tárterület növelésével.
+A tárhely méretezése és a biztonsági mentési megőrzési időszak módosítása valódi online műveletek. Nincs állásidő, és az alkalmazás nem érinti. Ahogy az IOPS a kiosztott tárterület méretével skálázódik, növelheti a kiszolgáló számára elérhető IOPS-t a tárterület bővítésével.
 
 ## <a name="pricing"></a>Díjszabás
 
-A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/mysql/). A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) a kiválasztott beállítások alapján megjeleníti a havi költséget a **díjszabási szintek** lapon. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása**, majd az **adatbázisok** kategóriát, és **Azure Database for MySQL** a beállítások testreszabásához.
+A legfrissebb árképzési információkat a szolgáltatás [díjszabási oldalán](https://azure.microsoft.com/pricing/details/mysql/)találja. A kívánt konfiguráció költségének megtekintéséhez az [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) a **csomagdíj** lapon jeleníti meg a kiválasztott beállítások alapján. Ha nem rendelkezik Azure-előfizetéssel, az Azure díjkalkulátor használatával lehívhatja a becsült árat. Az [Azure díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **Elemek hozzáadása**lehetőséget, bontsa ki az **Adatbázisok kategóriát,** és válassza az **Azure Database for MySQL** lehetőséget a beállítások testreszabásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan [hozhat létre MySQL-kiszolgálót a portálon](howto-create-manage-server-portal.md).
-- A [szolgáltatás korlátainak](concepts-limits.md)megismerése.
-- Ismerje meg, hogyan [bővítheti az olvasási replikákat](howto-read-replicas-portal.md).
+- Ismerje meg, hogyan [hozhat létre MySQL szervert a portálon](howto-create-manage-server-portal.md).
+- További információ a [szolgáltatási korlátokról.](concepts-limits.md)
+- További információ az [olvasási replikákkal való horizontális felskálázásról.](howto-read-replicas-portal.md)

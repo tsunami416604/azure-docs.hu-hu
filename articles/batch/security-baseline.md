@@ -1,6 +1,6 @@
 ---
-title: Azure biztonsági alapkonfiguráció a Batch szolgáltatáshoz
-description: Azure biztonsági alapkonfiguráció a Batch szolgáltatáshoz
+title: Azure biztonsági alapkonfiguráció köteghez
+description: Azure biztonsági alapkonfiguráció köteghez
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -8,44 +8,44 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: af0466299d1f972fe9334beb5f31c886c1928a1c
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: a9569c1f5de797c77f447b5df15e85a57e8be84b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78328999"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472928"
 ---
-# <a name="azure-security-baseline-for-batch"></a>Azure biztonsági alapkonfiguráció a Batch szolgáltatáshoz
+# <a name="azure-security-baseline-for-batch"></a>Azure biztonsági alapkonfiguráció köteghez
 
-A Batch Azure biztonsági alapkonfigurációja olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
+Az Azure Security Baseline for Batch javaslatokat tartalmaz, amelyek segítenek a központi telepítés biztonsági állapotának javításában.
 
-A szolgáltatások alapterve az [Azure Security Benchmark 1,0-es verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
+A szolgáltatások alapkonfigurációja az [Azure Security Benchmark 1.0-s verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tartalmaz arra vonatkozóan, hogy miként biztosíthatja felhőalapú megoldásait az Azure-ban az ajánlott eljárásokra vonatkozó útmutatónkkal.
 
-További információ: [Azure Security](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)alapkonfigurációk áttekintése.
+További információ: [Azure Security Baselines overview](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*További információt a [Security Control: Network Security](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)című témakörben talál.*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: az erőforrások védelme hálózati biztonsági csoportokkal vagy Azure Firewall a Virtual Network
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Erőforrások védelme hálózati biztonsági csoportokkal vagy az Azure tűzfallal a virtuális hálózaton
 
-**Útmutató**: Azure batch készlet (ek) üzembe helyezése a virtuális hálózaton belül. Ahhoz, hogy a készlet számítási csomópontjai biztonságosan kommunikáljanak más virtuális gépekkel vagy helyszíni hálózattal, egy Azure-beli virtuális hálózat alhálózatában is kiépítheti a készletet. Emellett a készletet a virtuális hálózaton belül is üzembe helyezheti, így szabályozhatja az egyes csomópontok hálózati adapterei (NIC) és az alhálózatok biztonságossá tételéhez használt hálózati biztonsági csoportot (NSG). Konfigurálja úgy a NSG, hogy csak a megbízható IP-/Locations érkező adatforgalmat engedélyezze az interneten.
+**Útmutató:** Telepítse az Azure Batch-készlet(ek) virtuális hálózaton belül. Annak engedélyezéséhez, hogy a készlet számítási csomópontjai biztonságosan kommunikálhassanak más virtuális gépekkel vagy egy helyszíni hálózattal, kiépítheti a készletet egy Azure virtuális hálózat alhálózatában. Emellett a készlet virtuális hálózaton belüli üzembe helyezése lehetővé teszi az egyes csomópontok hálózati összeköttetések (NIC) és az alhálózat védelmére használt hálózati biztonsági csoport (NSG) vezérlését. Állítsa be az NSG-t úgy, hogy csak megbízható IP-címről/helyekről engedélyezze a forgalmat az interneten.
 
 
-Azure Batch-készlet létrehozása egy Virtual Networkon belül:
+Azure-kötegkészlet létrehozása virtuális hálózaton belül:
 
 https://docs.microsoft.com/azure/batch/batch-virtual-network
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: a virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: A virtuális hálózatok, alhálózatok és a NICS konfigurációjának és forgalmának figyelése és naplózása
 
-**Útmutató**: a Batch-készlethez társított virtuális hálózattal/hálózati biztonsági csoporttal (NSG) kapcsolatos hálózati védelmi javaslatok Azure Security Center használata és szervizelése. Engedélyezze a flow-naplókat a Batch-készlet védetté tételéhez használt NSG, és küldje el a naplókat egy Azure Storage-fiókba a forgalom naplózásához. NSG-naplókat is küldhet egy Azure Log Analytics-munkaterületre, és az Azure Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. Az Azure Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati hibás konfigurációk meghatározását.
+**Útmutató:** Használja az Azure Security Centert, és orvosolja a kötegkészlethez társított virtuális hálózati/ hálózati biztonsági csoporthoz (NSG) kapcsolódó hálózatvédelmi javaslatokat. Engedélyezze a folyamatnaplókat a batch-készlet védelmére használt NSG-n, és küldjön naplókat egy Azure Storage-fiókba a forgalom naplózása érdekében. NSG-folyamatnaplókat is küldhet egy Azure Log Analytics-munkaterületre, és az Azure Traffic Analytics segítségével betekintést nyújthat az Azure-felhőben a forgalom áramlásába. Az Azure Traffic Analytics néhány előnye a hálózati tevékenység vizualizálása és a forró pontok azonosítása, a biztonsági fenyegetések azonosítása, a forgalomáramlási minták megértése és a hálózati téves konfigurációk azonosítása.
 
 
-A NSG folyamat naplófájljainak engedélyezése:
+Az NSG-folyamatnaplók engedélyezése:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
@@ -55,126 +55,126 @@ A Traffic Analytics engedélyezése és használata:
 https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
-A Azure Security Center által biztosított hálózati biztonság ismertetése:
+Az Azure Security Center által biztosított hálózati biztonság megismerése:
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="13-protect-critical-web-applications"></a>1,3: a kritikus webalkalmazások megóvása
+### <a name="13-protect-critical-web-applications"></a>1.3: A kritikus fontosságú webes alkalmazások védelme
 
-**Útmutató**: nem alkalmazható, a teljesítményteszt a Azure app Service-vagy IaaS-példányokon futó webalkalmazásokhoz készült.
+**Útmutatás:** Nem alkalmazható, a Benchmark az Azure App Service- vagy IaaS-példányokon futó webalkalmazásokhoz készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: nem alkalmazható
+**Felelősség**: Nem alkalmazható
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártékony IP-címekkel folytatott kommunikáció megtagadása
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Az ismert rosszindulatú IP-címekkel folytatott kommunikáció megtagadása
 
-**Útmutató**: az Azure DDoS (Distributed szolgáltatásmegtagadás) standard szintű védelem engedélyezése a virtuális hálózaton, amely megvédi Azure batch-készletét a DDOS-támadások elleni védelemhez. A Azure Security Center integrált fenyegetési intelligencia használatával megtagadhatja a kommunikációt az ismert kártékony vagy nem használt internetes IP-címekkel.
+**Útmutató:** Engedélyezze az Azure DDoS (elosztott szolgáltatásmegtagadási) standard szintű védelmet a virtuális hálózaton, amely védi az Azure Batch-készletet a DDoS-támadások elleni védelem érdekében. Az Azure Security Center integrált fenyegetésfelderítési szolgáltatásával megtagadhatja az ismert rosszindulatú vagy nem használt internetes IP-címekkel folytatott kommunikációt.
 
 
-A DDoS Protection konfigurálása:
+A DDoS-védelem konfigurálása:
 
 https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
 
-Az Azure Security Center integrált veszélyforrások felderítésének ismertetése:
+Ismerje meg az Azure Security Center integrált fenyegetésekkel kapcsolatos intelligenciáját:
 
 https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1,5: hálózati csomagok és adatforgalmi naplók rögzítése
+### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Hálózati csomagok és folyamatnaplók rögzítése
 
-**Útmutató**: engedélyezze a flow-naplókat a Azure batch készletének védelméhez használt hálózati biztonsági csoporton (NSG), és küldje el a naplókat egy Azure Storage-fiókba a forgalom naplózásához.
+**Útmutató:** Folyamatnaplók engedélyezése az Azure Batch-készlet védelmére használt hálózati biztonsági csoporton (NSG), és naplók küldése egy Azure Storage-fiókba a forgalom naplózása érdekében.
 
 
-A NSG folyamat naplófájljainak engedélyezése:
+Az NSG-folyamatnaplók engedélyezése:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems"></a>1,6: hálózati alapú behatolás-észlelési/Behatolás-megelőzési rendszerek üzembe helyezése
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems"></a>1.6: Hálózatalapú behatolásérzékelő/behatolásmegelőző rendszerek telepítése
 
-**Útmutató**: Ha megfelelőségi célokra van szükség, válasszon ki egy hálózati virtuális berendezést az Azure piactéren, amely támogatja a betöltési észlelési rendszerek (azonosítók) és a behatolás-megelőzési rendszerek (IP-címek) funkcióit.
-
-
-Ha a betörési észlelés és/vagy a tartalom-ellenőrzésen alapuló megelőzés nem követelmény, akkor az Azure Firewall a veszélyforrások felderítésére használható. Azure Firewall fenyegetés intelligencián alapuló szűréssel riasztást kaphat, és megtagadhatja az ismert kártékony IP-címek és tartományok felé irányuló forgalmat. Az IP-címek és tartományok forrása a Microsoft Threat Intelligence-hírcsatorna.
+**Útmutatás:** Ha megfelelőségi célokból szükséges, válasszon ki egy hálózati virtuális berendezést az Azure Piactérről, amely támogatja a behatolásészlelési rendszereket (IDS) és a behatolásmegelőző rendszerek (IPS) funkcióit a hasznos terhelés vizsgálati képességekkel.
 
 
-Azure Firewall üzembe helyezése egy nyilvános IP-címmel, ugyanabban a virtuális hálózatban, mint a Azure Batch Pool-csomópontok. Konfigurálja a hálózati címfordítási (NAT-) szabályokat az interneten található megbízható helyek és az egyes készlet-csomópontok magánhálózati IP-címei között. A Azure Firewall a veszélyforrások felderítése területen állítsa be a "riasztás és megtagadás" beállítást, hogy megakadályozza a riasztást, és blokkolja az ismert kártékony IP-címekre és tartományokra irányuló forgalmat. Az IP-címek és tartományok a Microsoft Threat Intelligence-hírcsatornából származnak, és csak a legmagasabb szintű megbízhatósági rekordok tartoznak ide. 
+Ha a behatolásészlelés és/vagy a hasznos adatvizsgálaton alapuló megelőzés nem követelmény, az Azure Firewall fenyegetésfelderítési szolgáltatással használható. Az Azure Firewall fenyegetésintelligencia-alapú szűrés riasztást adhat és megtagadhatja az ismert rosszindulatú IP-címekre és tartományokra irányuló forgalmat. Az IP-címek és tartományok a Microsoft Threat Intelligence hírcsatornából származnak.
 
 
-Azure Batch-készlet létrehozása egy Virtual Networkon belül:
+Telepítse az Azure Firewall nyilvános IP-címet ugyanabban a virtuális hálózatban, mint az Azure Batch Pool-csomópontok. Konfigurálja a hálózati címfordítási (NAT) szabályokat az interneten lévő megbízható helyek és az egyes készletcsomópontok privát IP-címei között. Az Azure tűzfalon a Fenyegetésintelligencia alatt konfigurálja a "Riasztás és megtagadás" beállítást az ismert rosszindulatú IP-címek és tartományok irányuló/ onnan érkező forgalom riasztásához és blokkolásához. Az IP-címek és tartományok a Microsoft Threat Intelligence hírcsatornából származnak, és csak a legmagasabb megbízhatósági rekordok szerepelnek. 
+
+
+Azure-kötegkészlet létrehozása virtuális hálózaton belül:
 
 https://docs.microsoft.com/azure/batch/batch-virtual-network
 
 
-Azure Firewall üzembe helyezése:
+Az Azure Tűzfal telepítése:
 
 https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
 
-Azure Marketplace:
+Azure Piactér:
 
 https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="17-manage-traffic-to-your-web-applications"></a>1,7: a webes alkalmazások forgalmának kezelése
+### <a name="17-manage-traffic-to-your-web-applications"></a>1.7: A webes alkalmazások forgalmának kezelése
 
-**Útmutató**: nem alkalmazható, a teljesítményteszt a Azure app Service-vagy IaaS-példányokon futó webalkalmazásokhoz készült.
+**Útmutatás:** Nem alkalmazható, a Benchmark az Azure App Service- vagy IaaS-példányokon futó webalkalmazásokhoz készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: nem alkalmazható
+**Felelősség**: Nem alkalmazható
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: a hálózati biztonsági szabályok bonyolultságának és adminisztratív terhelésének csökkentése
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: A hálózati biztonsági szabályok összetettségének és adminisztratív terhelésének minimalizálása
 
-**Útmutató**: a virtuális hálózati szolgáltatás címkéi segítségével definiálhatja a hálózati biztonsági csoportokhoz vagy a Azure batch-készlet (ek) hez társított Azure-tűzfalakhoz tartozó hálózati hozzáférés-vezérlést. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha egy szabály megfelelő forrás vagy cél mezőjében megadja a szolgáltatási címke nevét (például ApiManagement), akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
+**Útmutatás:** A virtuális hálózati szolgáltatás címkék segítségével határozza meg a hálózati hozzáférés-vezérlésa a hálózati biztonsági csoportok vagy az Azure Batch-készlet(ek) társított Azure-csoport.Guidance: Use virtual network service tags to define network access controls on network security groups or Azure Firewalls associated with your Azure Batch pool(s). Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. A szolgáltatáscímke nevének (pl. ApiManagement) megadásával a szabály megfelelő forrás- vagy célmezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatáscímke által felölelt címelőtagokat, és automatikusan frissíti a szolgáltatáscímkét a címek változásakor.
 
 
-A szolgáltatási címkék megismerése és használata:
+A szolgáltatáscímkék ismertetése és használata:
 
 https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: A hálózati eszközök szabványos biztonsági konfigurációinak karbantartása
 
-**Útmutató**: a Azure batch készlet (ek) hoz tartozó hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. batch" és a "Microsoft. Network" névterekben, hogy egyéni szabályzatokat hozzon létre a Azure Batch-készletek hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez.
+**Útmutató:** Szabványos biztonsági konfigurációk definiálása és megvalósítása az Azure Batch-készlet(ek)hez az Azure-szabályzattal társított hálózati erőforrásokhoz. A "Microsoft.Batch" és a "Microsoft.Network" névterekben az Azure-szabályzataliasok használatával egyéni szabályzatokat hozhat létre az Azure Batch-készletek hálózati konfigurációjának naplózásához vagy érvényesítéséhez.
 
 
 
-Azure Policy konfigurálása és kezelése:
+Az Azure-szabályzat konfigurálása és kezelése:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="110-document-traffic-configuration-rules"></a>1,10: a dokumentum forgalmának konfigurációs szabályai
+### <a name="110-document-traffic-configuration-rules"></a>1.10: Dokumentum forgalom konfigurációs szabályok
 
-**Útmutató**: az Azure batch-készletekhez társított hálózati biztonsággal és adatforgalommal kapcsolatos címkék használata a hálózati szolgáltatási csoportokhoz (NSG) és az egyéb erőforrásokhoz. Az egyes NSG-szabályok esetében a "Leírás" mezővel adhatja meg az üzleti igényeket és/vagy időtartamot (stb.) minden olyan szabályhoz, amely engedélyezi a hálózatra irányuló adatforgalmat.
-
-
-A címkézéshez kapcsolódó beépített Azure Policy-definíciók bármelyikét használhatja, például a "címke és az érték megkövetelése" beállítást, hogy az összes erőforrás címkével legyen létrehozva, és értesítse a meglévő címkézetlen erőforrásokról.
+**Útmutató:** Címkék használata hálózati szolgáltatáscsoportok (NSG-k) és egyéb, a hálózati biztonsághoz és az Azure-kötegkészletekhez társított hálózati biztonsághoz és forgalomhoz kapcsolódó erőforrásokhoz. Az egyes NSG-szabályok esetében a "Leírás" mezőben adhatja meg az üzleti igényt és/vagy az időtartamot (stb.) minden olyan szabályhoz, amely engedélyezi a hálózatra irányuló/onnan érkező forgalmat.
 
 
-A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet vagy végezhet műveleteket az erőforrásokon.
+Használja a címkézéssel kapcsolatos beépített Azure-szabályzat-definíciók bármelyikét, például a "Címke és annak értéke" használatával győződjön meg arról, hogy minden erőforrás címkékkel jön létre, és értesítheti a meglévő címkézetlen erőforrásokról.
+
+
+Használhatja az Azure PowerShell vagy az Azure CLI a look-up, vagy műveleteket hajt végre az erőforrások alapján a címkéket.
 
 
 Címkék létrehozása és használata:
@@ -182,242 +182,242 @@ Címkék létrehozása és használata:
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
-Virtuális hálózat létrehozása:
+Hogyan hozzunk létre egy virtuális hálózat:
 
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
 
-NSG létrehozása:
+Hogyan hozzunk létre egy NSG:
 
 https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: automatikus eszközök használata a hálózati erőforrások konfigurációjának figyelésére és a változások észlelésére
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Automatizált eszközök használata a hálózati erőforrás-konfigurációk figyelésére és a változások észlelésére
 
-**Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure batch-készletekhez kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
+**Útmutató:** Az Azure-tevékenységnapló segítségével figyelheti a hálózati erőforrás-konfigurációkat, és észlelheti az Azure Batch-készletekhez kapcsolódó hálózati erőforrások változásait. Hozzon létre riasztásokat az Azure Monitoron belül, amelyek a kritikus hálózati erőforrások módosításakor aktiválódnak.
 
-Azure-Tevékenységnaplók eseményeinek megtekintése és beolvasása: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view 
+Az Azure-tevékenységnapló eseményeinek megtekintése és beolvasása:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view 
 
-Riasztások létrehozása Azure Monitorban: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Riasztások létrehozása az Azure Monitorban:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="logging-and-monitoring"></a>Naplózás és monitorozás
 
-*További információ [: Security Control: naplózás és figyelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*További információ: [Security Control: Logging and Monitoring](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2,1: a jóváhagyott idő-szinkronizálási források használata
+### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Jóváhagyott időszinkronizálási források használata
 
-**Útmutató**: a Azure batch alapértelmezés szerint a Microsoft biztosítja az idő szinkronizálását. Ha azonban bizonyos időszinkronizálási követelményekkel rendelkezik, ezeket a módosításokat végrehajthatja.
+**Útmutató:** Az Azure Batch esetében a Microsoft alapértelmezés szerint időszinkronizálást biztosít. Ha azonban konkrét időszinkronizálási követelményekkel rendelkezik, ezeket a módosításokat megvalósíthatja.
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
 **Felelősség**: Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
+### <a name="22-configure-central-security-log-management"></a>2.2: A központi biztonsági napló kezelésének konfigurálása
 
-**Útmutató**: a Azure batch fiókja Azure monitor a fürtözött eszközök által generált biztonsági adatokat összesítve. Az egyéni lekérdezések használatával észlelheti és reagálhat a környezetbeli fenyegetésekre.  Az erőforrás-szintű figyelés Azure Batch a Batch API-k segítségével figyelheti vagy lekérdezheti az erőforrások állapotát, beleértve a feladatokat, a feladatokat, a csomópontokat és a készleteket.
+**Útmutató:** Az Azure Batch-fiók az Azure Monitorra a fürteszközök által létrehozott biztonsági adatok összesítéséhez. Az egyéni lekérdezések kihasználásával észlelheti és reagálhat a környezetben lévő fenyegetésekre.  Az Azure Batch erőforrásszintű figyelése, a Batch API-k segítségével az erőforrások állapotának figyelése vagy lekérdezése, beleértve a feladatok, feladatok, csomópontok és készletek.
 
 
 
-Azure Batch fiók bevezetésének módja Azure Monitor:
+Azure Batch-fiók berendelése az Azure Monitorba:
 
 https://docs.microsoft.com/azure/batch/batch-diagnostics
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: az Azure-erőforrások naplózásának engedélyezése
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Naplózás engedélyezése az Azure Resources számára
 
-**Útmutató**: Azure batch fiók szintű figyeléshez az egyes batch-fiókokat a Azure monitor szolgáltatásainak használatával figyelheti. Azure Monitor a Batch-fiók szintjén (például készletekben, feladatokban és feladatokban) lévő erőforrások mérőszámait és opcionálisan diagnosztikai naplóit gyűjti. Az adatok gyűjtése és felhasználása manuálisan vagy programozott módon a Batch-fiókban lévő tevékenységek figyeléséhez és a problémák diagnosztizálásához.
-
-
-Az erőforrás-szint figyeléséhez használja a Azure Batch API-kat az erőforrások állapotának figyeléséhez vagy lekérdezéséhez, beleértve a feladatokat, a feladatokat, a csomópontokat és a készleteket. Azure Batch
+**Útmutató:** Az Azure Batch-fiók szintfigyeléséhez figyelheti az egyes Batch-fiókokat az Azure Monitor funkcióival. Az Azure Monitor metrikákat és opcionálisan diagnosztikai naplókat gyűjt a Batch-fiók szintjén, például készletek, feladatok és feladatok hatóköre i. erőforrásokhoz. Ezeket az adatokat manuálisan vagy programozott módon gyűjtse össze és használja fel a Batch-fiók tevékenységeinek figyeléséhez és a problémák diagnosztizálásához.
 
 
-Azure Batch fiók szintű figyelés és naplózás konfigurálása:
+Az Azure Batch erőforrásszint-figyeléséhez használja az Azure Batch API-kat az erőforrások állapotának figyelésére vagy lekérdezésére, beleértve a feladatokat, feladatokat, csomópontokat és készleteket.
+
+
+Az Azure Batch-fiókszintű figyelés és naplózás konfigurálása:
 
 https://docs.microsoft.com/azure/batch/monitoring-overview
 
 
-A Batch erőforrás-szintű figyelésének ismertetése:
+A Kötegelt erőforrásszintű figyelés ismertetése:
 
 https://docs.microsoft.com/azure/batch/monitoring-overview#batch-resource-monitoring
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="24-collect-security-logs-from-operating-system"></a>2,4: biztonsági naplók gyűjtése az operációs rendszerből
+### <a name="24-collect-security-logs-from-operating-system"></a>2.4: Biztonsági naplók gyűjtése az operációs rendszerből
 
-**Útmutató**: a Azure Monitor a Azure batch-fiók erőforrásaihoz tartozó mérőszámokat és diagnosztikai naplókat gyűjt. Az adatok gyűjtését és felhasználását többféleképpen is megfigyelheti Azure Batch-fiókja és a problémák diagnosztizálásához. A metrikai riasztásokat úgy is konfigurálhatja, hogy értesítést kapjon, ha egy metrika eléri a megadott értéket.
-
-
-Ha szükséges, az egyes készlet-csomópontokhoz biztonságos rendszerhéj (SSH) vagy RDP protokoll (RDP) használatával kapcsolódhat a helyi operációsrendszer-naplók eléréséhez.
+**Útmutatás: Az**Azure Monitor az Azure Batch-fiókban lévő erőforrások metrikákat és diagnosztikai naplókat gyűjti. Gyűjtse össze és használja fel ezeket az adatokat az Azure Batch-fiók figyelése és a problémák diagnosztizálása számos módon. Metrikariasztásokat is konfigurálhat, így értesítést kaphat, ha egy metrika elér egy megadott értéket.
 
 
-Diagnosztikai naplók gyűjtése a Azure Batch-fiókból:
+Ha szükséges, a helyi operációs rendszer naplóinak eléréséhez csatlakozhat az egyes készletcsomópontokhoz a Biztonságos rendszerhéj (SSH) vagy a Remote Desktop Protocol (RDP) segítségével.
+
+
+Diagnosztikai naplók gyűjtése az Azure Batch-fiókból:
 
 https://docs.microsoft.com/azure/batch/batch-diagnostics#batch-diagnostics
 
 
-Távoli kapcsolódás a Azure Batch Pool-csomópontokhoz:
+Hogyan csatlakozhat távolról az Azure Batch-készlet csomópontjaihoz:
 
 https://docs.microsoft.com/azure/batch/batch-api-basics#error-handling
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
+### <a name="25-configure-security-log-storage-retention"></a>2.5: A biztonsági napló tárolásának konfigurálása
 
-**Útmutató**: Azure batch fiók beléptetése Azure monitorra. Győződjön meg arról, hogy a használt Azure Log Analytics munkaterület rendelkezik a szervezet megfelelőségi előírásai szerint beállított napló megőrzési időtartamával
+**Útmutató:** Az Azure Batch-fiók az Azure Monitorra. Győződjön meg arról, hogy az Azure Log Analytics használt munkaterület a szervezet megfelelőségi szabályzatainak megfelelően beállított naplómegőrzési időszakkal rendelkezik
 
 
-Azure Batch figyelés és naplózás konfigurálása:
+Az Azure Batch figyelésének és naplózásának konfigurálása:
 
 https://docs.microsoft.com/azure/batch/monitoring-overview
 
 
-Az Azure Log Analytics munkaterület megőrzési idejének konfigurálása:
+Az Azure Log Analytics munkaterület-megőrzési időszakának konfigurálása:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
+### <a name="26-monitor-and-review-logs"></a>2.6: Naplók nyomon követése és felülvizsgálata
 
-**Útmutató**: Azure batch metrikai riasztások létrehozása, amelyek akkor aktiválódnak, ha egy adott metrika értéke átlép egy adott küszöbértéket.
-
-
-Azure Batch metrikai riasztások konfigurálása:
-
-https://docs.microsoft.com/azure/batch/batch-diagnostics
-
-**Azure Security Center figyelés**: jelenleg nem érhető el
-
-**Felelősség**: ügyfél
-
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: riasztások engedélyezése rendellenes tevékenységhez
-
-**Útmutató**: Azure batch metrikai riasztások létrehozása, amelyek akkor aktiválódnak, ha egy adott metrika értéke átlép egy adott küszöbértéket.
+**Útmutatás:** Hozzon létre Azure Batch metrika riasztások, amelyek akkor aktiválódnak, ha egy adott metrika értéke átlépi egy adott küszöbértéket.
 
 
-Azure Batch metrikai riasztások konfigurálása:
+Az Azure Batch metrikariasztásai konfigurálása:
 
 https://docs.microsoft.com/azure/batch/batch-diagnostics
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="28-centralize-anti-malware-logging"></a>2,8: kártevő szoftverek közötti naplózás központosítása
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Riasztás engedélyezése rendellenes tevékenységre
 
-**Útmutató**: a Windows Defender használata az egyes batch-csomópontokon a Windows operációs rendszerek esetében, illetve a Linux használata esetén saját kártevő szoftvereket is biztosíthat.
+**Útmutatás:** Hozzon létre Azure Batch metrika riasztások, amelyek akkor aktiválódnak, ha egy adott metrika értéke átlépi egy adott küszöbértéket.
 
-**Azure Security Center figyelés**: igen
 
-**Felelősség**: ügyfél
+Az Azure Batch metrikariasztásai konfigurálása:
 
-### <a name="29-enable-dns-query-logging"></a>2,9: DNS-lekérdezések naplózásának engedélyezése
+https://docs.microsoft.com/azure/batch/batch-diagnostics
 
-**Útmutató**: harmadik féltől származó megoldás implementálása DNS-naplózáshoz
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Felelősség**: Ügyfél
 
-**Felelősség**: ügyfél
+### <a name="28-centralize-anti-malware-logging"></a>2.8: A kártevőirtó rendszer központosítása
 
-### <a name="210-enable-command-line-audit-logging"></a>2,10: parancssori naplózás engedélyezése
+**Útmutató:** A Windows operációs rendszerek esetében használja a Windows Defender rendszert az egyes kötegcsomópontokon, vagy biztosítson saját kártevőirtó megoldást Linux használata esetén.
 
-**Útmutató**: a konzol naplózásának és a PowerShell átírásának manuális konfigurálása a csomópontok alapján.
+**Az Azure Security Center figyelése:** Igen
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Felelősség**: Ügyfél
 
-**Felelősség**: ügyfél
+### <a name="29-enable-dns-query-logging"></a>2.9: Dns-lekérdezés naplózásának engedélyezése
+
+**Útmutató:** Harmadik féltől származó megoldás megvalósítása a dns naplózáshoz
+
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+
+**Felelősség**: Ügyfél
+
+### <a name="210-enable-command-line-audit-logging"></a>2.10: Parancssori naplózás engedélyezése
+
+**Útmutató:** A konzolnaplózás és a PowerShell-átírás manuális konfigurálása csomópontonként.
+
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+
+**Felelősség**: Ügyfél
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információ [: Security Control (identitás és Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)).*
+*További információt a [Biztonságvezérlés: Identitás- és hozzáférés-vezérlés](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)című témakörben talál.*
 
-### <a name="31-maintain-inventory-of-administrative-accounts"></a>3,1: a rendszergazdai fiókok leltárának fenntartása
+### <a name="31-maintain-inventory-of-administrative-accounts"></a>3.1: Az igazgatási számlák leltárának karbantartása
 
-**Útmutató**: a Azure batch-készlet üzembe helyezése során létrehozott helyi rendszergazdai fiók, valamint a létrehozott egyéb fiókok nyilvántartásának fenntartása. Továbbá, ha Azure Active Directory (HRE) integrációt használ, a HRE beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és ezért lekérdezhető. A HRE PowerShell-modullal ad hoc lekérdezéseket olyan fiókok felderítéséhez, amelyek tagjai a felügyeleti csoportoknak.
-
-
-Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatokat is használhat.
+**Útmutató:** Az Azure Batch-készlet kiépítése során létrehozott helyi felügyeleti fiók, valamint a létrehozott egyéb fiókok rekordjának karbantartása. Emellett az Azure Active Directory (AAD) integráció, az AAD beépített szerepkörök, amelyek explicit módon hozzá kell rendelni, és ezért lekérdezhető. Az AAD PowerShell modul segítségével adhoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjaiként rendelkező fiókok felderítéséhez.
 
 
-Címtárbeli szerepkör beszerzése a HRE-ben a PowerShell-lel:
+Emellett használhatja az Azure Security Center identitás- és hozzáférés-kezelési javaslatait.
+
+
+Címtárszerepkör beszereznie az AAD-ben a PowerShell használatával:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
 
-Címtárbeli szerepkör tagjainak beszerzése a HRE-ben a PowerShell-lel:
+Címtárszerepkör tagjainak beszereznie az AAD-ben a PowerShell használatával:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
 
-Identitás és hozzáférés figyelése Azure Security Centerekkel:
+Az identitás okának és a hozzáférésnek az Azure Security Centerrel való figyelése:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
+### <a name="32-change-default-passwords-where-applicable"></a>3.2: Az alapértelmezett jelszavak módosítása adott esetben
 
-**Útmutató**: Azure batch-készlet kiépítés esetén a helyi számítógép-fiókok létrehozására van lehetőség. Nincsenek módosítható alapértelmezett jelszavak, azonban a Secure Shell-(SSH-) és a RDP protokoll-(RDP-) hozzáféréshez eltérő jelszavakat is megadhat. Azure Batch készlet konfigurálása után létrehozhat egy véletlenszerű felhasználót az egyes csomópontokhoz a Azure Portal vagy a Azure Resource Manager API-n keresztül.
+**Útmutató:** Az Azure Batch-készlet kiépítésekor lehetőséget kap helyi számítógép-fiókok létrehozására. Nincsenek módosítható alapértelmezett jelszavak, azonban különböző jelszavakat adhat meg a Biztonságos rendszerhéj (SSH) és a Távoli asztali protokoll (RDP) eléréséhez. Az Azure Batch-készlet konfigurálása után létrehozhat egy véletlenszerű felhasználót az azure-portálon belüli egyes csomópontokhoz, vagy az Azure Resource Manager API-n keresztül.
 
 
 Felhasználó hozzáadása adott számítási csomóponthoz:
 
 https://docs.microsoft.com/rest/api/batchservice/computenode/adduser
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="33-ensure-the-use-of-dedicated-administrative-accounts"></a>3,3: a dedikált rendszergazdai fiókok használatának biztosítása
+### <a name="33-ensure-the-use-of-dedicated-administrative-accounts"></a>3.3: A dedikált adminisztratív számlák használatának biztosítása
 
-**Útmutató**: Azure batch-alkalmazások hitelesítésének integrálása Azure Active Directory használatával. Szabályzatokat és eljárásokat hozhat létre a dedikált rendszergazdai fiókok használata körül.
-
-
-Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatokat is használhat.
+**Útmutató:** Az Azure Batch-alkalmazások hitelesítésének integrálása az Azure Active Directoryval. Házirendeket és eljárásokat hozhat létre a dedikált felügyeleti fiókok használatával kapcsolatban.
 
 
-Batch-alkalmazások hitelesítése Azure Active Directory használatával:
+Emellett használhatja az Azure Security Center identitás- és hozzáférés-kezelési javaslatait.
+
+
+Kötegelt alkalmazások hitelesítése az Azure Active Directoryval:
 
 https://docs.microsoft.com/azure/batch/batch-aad-auth
 
 
-Identitás és hozzáférés figyelése Azure Security Centerekkel:
+Az identitás okának és a hozzáférésnek az Azure Security Centerrel való figyelése:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="34-utilize-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) kihasználása Azure Active Directory
+### <a name="34-utilize-single-sign-on-sso-with-azure-active-directory"></a>3.4: Egyszeri bejelentkezés (SSO) kihasználása az Azure Active Directoryval
 
-**Útmutató**: nem alkalmazható, míg a Azure batch támogatja az Azure ad-hitelesítést, az egyszeri bejelentkezés nem támogatott.
+**Útmutatás:** Nem alkalmazható, míg az Azure Batch támogatja az Azure AD-hitelesítést, egyszeri bejelentkezés nem támogatott.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: nem alkalmazható
+**Felelősség**: Nem alkalmazható
 
-### <a name="35-use-multifactor-authentication-for-all-azure-active-directory-based-access"></a>3,5: többtényezős hitelesítés használata az összes Azure Active Directory-alapú hozzáféréshez.
+### <a name="35-use-multifactor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Használja a többtényezős hitelesítés t az összes Azure Active Directory-alapú hozzáféréshez.
 
-**Útmutató**: Azure batch-alkalmazások hitelesítésének integrálása Azure Active Directory (HRE) használatával. Engedélyezze a HRE multi-Factor Authentication (MFA) használatát, és kövesse Azure Security Center identitás-és hozzáférés-kezelési javaslatait.
+**Útmutató:** Az Azure Batch-alkalmazások hitelesítésének integrálása az Azure Active Directoryval (AAD). Engedélyezze az AAD többtényezős hitelesítést (MFA), és kövesse az Azure Security Center identitás- és hozzáférés-kezelési javaslatait.
  
 
 
@@ -426,20 +426,20 @@ Az MFA engedélyezése az Azure-ban:
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
-Identitás és hozzáférés figyelése Azure Security Centeron belül:
+Az Azure Security Center identitásának és hozzáférésének figyelése:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: dedikált gépek (privilegizált hozzáférési munkaállomások) használata az összes felügyeleti feladathoz
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Dedikált gépek (kiemelt hozzáférésű munkaállomások) használata minden felügyeleti feladathoz
 
-**Útmutató**: a (Kiemelt jogosultságú hozzáférési munkaállomások) használata a többtényezős hitelesítés (MFA) használatával, amely a Azure batch-erőforrások bejelentkezésére és konfigurálására van konfigurálva.
+**Útmutató:** Emelt szintű munkaállomások (privilegizált hozzáférési munkaállomások) használata többtényezős hitelesítéssel (MFA) konfigurálva az Azure Batch-erőforrások ba való bejelentkezéshez és konfigurálásához.
 
 
-További tudnivalók az emelt szintű hozzáférésű munkaállomásokról:
+Tudnivalók a kiemelt hozzáférésű munkaállomásokról:
 
 https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
@@ -448,255 +448,255 @@ Az MFA engedélyezése az Azure-ban:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: naplózás és riasztás a gyanús tevékenységekről a rendszergazdai fiókoktól
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: Napló és riasztás a gyanús tevékenységekről az adminisztratív fiókokból
 
-**Útmutató**: ha a Azure batch-alkalmazások integrált hitelesítése Azure Active Directory (HRE) használatával történik, a naplók és riasztások generálásához Azure Active Directory biztonsági jelentéseket kell használni, ha a környezetben gyanús vagy nem biztonságos tevékenységet végeznek. A Azure Security Center használatával figyelheti az identitás-és hozzáférési tevékenységeket.
+**Útmutató:** Ha integrált hitelesítést rendelkezik az Azure Batch-alkalmazások hoz az Azure Active Directory (AAD), azure Active Directory biztonsági jelentések létrehozásához naplók és riasztások, ha gyanús vagy nem biztonságos tevékenység történik a környezetben. Az Azure Security Center használatával figyelheti az identitás- és hozzáférési tevékenységeket.
 
 
-A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása:
+Kockázatos tevékenységesetén megjelölt Azure AD-felhasználók azonosítása:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
 
-A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Centerban:
+A felhasználók identitásának és hozzáférési tevékenységének figyelése az Azure Security Centerben:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="38-manage-azure-resource-from-only-approved-locations"></a>3,8: az Azure-erőforrások kezelése csak jóváhagyott helyekről
+### <a name="38-manage-azure-resource-from-only-approved-locations"></a>3.8: Az Azure-erőforrás kezelése csak jóváhagyott helyekről
 
-**Útmutató**: ha a Azure batch-alkalmazások integrált hitelesítése Azure Active Directory-mel rendelkezik, használhatja a feltételes hozzáférést elnevezett helyekkel, hogy az IP-címtartományok, illetve országok/régiók számára csak az adott logikai csoportokban engedélyezze a hozzáférést.
+**Útmutató:** Ha integrált hitelesítést az Azure Batch-alkalmazások az Azure Active Directory, használhatja feltételes hozzáférés elnevezett helyek, hogy csak az IP-címtartományok vagy országok/régiók meghatározott logikai csoportjaiból engedélyezi a hozzáférést.
 
 
 
-Elnevezett helyszínek konfigurálása az Azure-ban:
+Named-helyek konfigurálása az Azure-ban:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
+### <a name="39-use-azure-active-directory"></a>3.9: Az Azure Active Directory használata
 
-**Útmutató**: a Azure Active Directory (HRE) használata központi hitelesítési és engedélyezési rendszerként, valamint a Azure batch alkalmazások hitelesítésének integrálása a HRE használatával. A HRE erős titkosítással védi az adatok védelmét a nyugalmi és átviteli állapotban lévő adatokhoz. A HRE a felhasználó hitelesítő adatait is sók, kivonatok és biztonságosan tárolja.
+**Útmutató:** Használja az Azure Active Directoryt (AAD) központi hitelesítési és engedélyezési rendszerként, és integrálja az Azure Batch-alkalmazások hitelesítését az AAD-vel. Az AAD az adatokat erős titkosítással védi az inaktív és az átvitel során tárolt adatokhoz. Az AAD a felhasználói hitelesítő adatokat is megsózta, kiigazítja és biztonságosan tárolja.
 
 
-HRE-példány létrehozása és konfigurálása:
+AAD-példány létrehozása és konfigurálása:
 
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
 
-Batch-alkalmazások hitelesítése a HRE:
+A Batch-alkalmazások hitelesítése az AAD-vel:
 
 https://docs.microsoft.com/azure/batch/batch-aad-auth
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Rendszeresen vizsgálja felül és egyeztetje össze a felhasználói hozzáférést
 
-**Útmutató**: a Azure Active Directory (HRE) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure Identity hozzáférési felülvizsgálatok használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználók hozzáférését rendszeresen áttekintheti, hogy csak a megfelelő felhasználók férhessenek hozzá.
+**Útmutató:** Az Azure Active Directory(AAD) naplókat biztosít az elavult fiókok felderítéséhez. Emellett használhatja az Azure Identity Access Reviews segítségével hatékonyan kezelheti a csoporttagságokat, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználók hozzáférése rendszeresen ellenőrizhető, hogy csak a megfelelő felhasználók rendelkezhessenek folyamatos hozzáféréssel.
 
 
-Az Azure Identity hozzáférési felülvizsgálatok használata:
+Az Azure Identity Access-vélemények használata:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: az inaktivált fiókok elérésére irányuló kísérletek figyelése
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Az inaktivált fiókok elérésére irányuló kísérletek figyelése
 
-**Útmutató**: diagnosztikai beállítások létrehozása Azure Active Directory felhasználói fiókok számára, a naplók és a bejelentkezési naplók elküldése egy Azure log Analytics-munkaterületre. A kívánt riasztások konfigurálása az Azure Log Analytics-munkaterületen belül.
+**Útmutató:** Diagnosztikai beállítások létrehozása az Azure Active Directory felhasználói fiókokhoz, a naplónaplók és a bejelentkezési naplók küldése az Azure Log Analytics-munkaterületre. Konfigurálja a kívánt riasztásokat az Azure Log Analytics-munkaterületen belül.
 
 
-Azure-beli tevékenység-naplók integrálása a Azure Monitorba:
+Az Azure-tevékenységnaplók integrálása az Azure Monitorba:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Riasztás a fiókbejelentkezési viselkedés eltéréséről
 
-**Útmutató**: a Azure Active Directory (HRE) kockázati észlelésekkel és az Identity Protection szolgáltatással konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. Emellett további vizsgálatot is betöltheti az Azure Sentinelbe.
+**Útmutató:** Az Azure Active Directory (AAD) kockázatészlelési és identitásvédelmi szolgáltatás használatával konfigurálhatja a felhasználói identitásokkal kapcsolatos észlelt gyanús műveletekre adott automatikus válaszokat. Emellett további vizsgálat céljából adatokat is bevihet az Azure Sentinelbe.
 
 
-HRE kockázatos bejelentkezések megtekintése:
+Az AAD kockázatos bejelentkezések megtekintése:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
 
-Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése:
+Az identitásvédelem kockázati házirendjeinek konfigurálása és engedélyezése:
 
 https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
 
-Az Azure Sentinel előkészítése:
+Az Azure Sentinel fedélzeti szolgáltatása:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="313-divprovide-microsoft-with-access-to-relevant-customer-data-during-support-scenariosbrdiv"></a>3,13: <div>A Microsoft számára biztosítson hozzáférést a kapcsolódó ügyféladatok számára a támogatási forgatókönyvek során<br></div>
+### <a name="313-divprovide-microsoft-with-access-to-relevant-customer-data-during-support-scenariosbrdiv"></a>3.13: <div>Hozzáférés biztosítása a Microsoft számára a releváns ügyféladatokhoz támogatási forgatókönyvek során<br></div>
 
-**Útmutató**: nem érhető el; Azure Batch Ügyfélszéf még nem támogatott. Ügyfélszéf támogatott szolgáltatások listája: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+**Útmutató**: Nem áll rendelkezésre; Az Ügyfélszéf még nem támogatott az Azure Batch számára. Az ügyfélszéfáltal támogatott szolgáltatások listája:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információkért lásd [: biztonsági ellenőrzés:](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)adatvédelem.*
+*További információ: [Security Control: Data Protection](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Az érzékeny információk leltárának karbantartása
 
-**Útmutató**: a címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követését.
+**Útmutató:** Címkék használatával segítséget nyújt a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követéséhez.
 
 
 Címkék létrehozása és használata:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Érzékeny információkat tároló vagy feldolgozó rendszerek elkülönítése
 
-**Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. Azure Batch készleteket virtuális hálózattal/alhálózattal kell elválasztani, megfelelően címkézve, és hálózati biztonsági csoportokkal (NSG) kell biztosítani. Azure Batch az adataikat egy biztonságos Azure Storage-fiókban kell tárolni.
+**Útmutató:** Külön előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztéshez, teszteléshez és éles séghez. Az Azure Batch-készleteket virtuális hálózatnak/alhálózatnak kell elválasztani, megfelelően címkézni és hálózati biztonsági csoportokkal (NSG) kell biztosítani. Az Azure Batch-adatokat egy biztonságos Azure Storage-fiókban kell tárolni.
 
 
-Azure Batch-készlet létrehozása egy Virtual Networkon belül:
+Azure-kötegkészlet létrehozása virtuális hálózaton belül:
 
 https://docs.microsoft.com/azure/batch/batch-virtual-network
 
 
-Azure Storage-fiókok biztonságossá tétele:
+Az Azure Storage-fiókok védelme:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: a bizalmas adatok jogosulatlan átvitelének figyelése és blokkolása.
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Figyelemmel kíséri és blokkolja a bizalmas adatok jogosulatlan továbbítását.
 
-**Útmutató**: az olyan Azure Storage-fiókok esetében, amelyek bizalmas információkat tartalmaznak a Azure batch készlet (ek) hez, és amelyek bizalmas adatokat tartalmaznak, megjelölhetik őket a címkék használatával, és biztonságossá tehetik azokat az Azure ajánlott eljárásaival.
-
-
-Az adatazonosítási, besorolási és veszteség-megelőzési funkciók még nem érhetők el az Azure Storage vagy a számítási erőforrások számára. Külső gyártótól származó megoldás implementálása, ha az szükséges a megfelelőség szempontjából.
+**Útmutató:** Az Azure Storage-fiókok társított Azure Batch Pool(ok), amelyek bizalmas információkat tartalmaznak, jelölje meg őket bizalmas címkék használatával, és biztonságossá őket az Azure gyakorlati.
 
 
-A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
+Az Azure Storage- és számítási erőforrásokhoz még nem érhetők el adatazonosítási, besorolás- és veszteségmegelőzési funkciók. Harmadik féltől származó megoldás megvalósítása, ha a megfelelőségi célokból szükséges.
 
 
-Az ügyfelek adatvédelem az Azure-ban:
+A Microsoft által kezelt mögöttes platform esetében a Microsoft minden ügyféltartalmat érzékenynek tekint, és mindent megtesz azért, hogy megvédje az ügyfelek adatvesztését és expozícióját. Annak érdekében, hogy az Azure-on belüli ügyféladatok biztonságban legyenek, a Microsoft hatékony adatvédelmi vezérlőket és képességeket vezetett be és tart fenn.
+
+
+Az ügyfelek adatainak védelme az Azure-ban:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
-Azure Storage-fiókok biztonságossá tétele:
+Az Azure Storage-fiókok védelme:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Az összes bizalmas információ titkosítása szállítás közben
 
-**Útmutató**: az összes bizalmas adat titkosítása az átvitel során. A Microsoft Azure-erőforrások alapértelmezés szerint a TLS 1,2-et fogják egyeztetni. Győződjön meg arról, hogy a Azure Batch készletekhez vagy adattárakhoz (Azure Storage-fiókokhoz) csatlakozó ügyfelek képesek a TLS 1,2-es vagy újabb egyeztetésére.
-
-
-Győződjön meg arról, hogy HTTPS szükséges a Azure Batch adatait tartalmazó Storage-fiók eléréséhez.
+**Útmutató:** Az összes bizalmas információ titkosítása az átvitel során. A Microsoft Azure-erőforrások alapértelmezés szerint egyeztetik a TLS 1.2-t. Győződjön meg arról, hogy az Azure Batch-készletekhez vagy adattárakhoz (Azure Storage-fiókok) csatlakozó ügyfelek képesek-e a TLS 1.2-es vagy nagyobb egyeztetésére.
 
 
-Az Azure Storage-fiók titkosításának megismerése az átvitel során:
+Győződjön meg arról, hogy a HTTPS szükséges az Azure Batch-adatokat tartalmazó tárfiók eléréséhez.
+
+
+Az Azure Storage-fiók titkosításának ismertetése átvitel közben:
 
 https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: aktív felderítési eszköz használata a bizalmas adatok azonosítására
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Aktív felderítési eszköz használata a bizalmas adatok azonosítására
 
-**Útmutató**: az olyan Azure Storage-fiókok esetében, amelyek bizalmas információkat tartalmaznak a Azure batch készlet (ek) hez, és amelyek bizalmas adatokat tartalmaznak, megjelölhetik őket a címkék használatával, és biztonságossá tehetik azokat az Azure ajánlott eljárásaival.
-
-
-Az adatazonosítási, besorolási és veszteség-megelőzési funkciók még nem érhetők el az Azure Storage vagy a számítási erőforrások számára. Külső gyártótól származó megoldás implementálása, ha az szükséges a megfelelőség szempontjából.
+**Útmutató:** Az Azure Storage-fiókok társított Azure Batch Pool(ok), amelyek bizalmas információkat tartalmaznak, jelölje meg őket bizalmas címkék használatával, és biztonságossá őket az Azure gyakorlati.
 
 
-A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
+Az Azure Storage- és számítási erőforrásokhoz még nem érhetők el adatazonosítási, besorolás- és veszteségmegelőzési funkciók. Harmadik féltől származó megoldás megvalósítása, ha a megfelelőségi célokból szükséges.
 
 
-Az ügyfelek adatvédelem az Azure-ban:
+A Microsoft által kezelt mögöttes platform esetében a Microsoft minden ügyféltartalmat érzékenynek tekint, és mindent megtesz azért, hogy megvédje az ügyfelek adatvesztését és expozícióját. Annak érdekében, hogy az Azure-on belüli ügyféladatok biztonságban legyenek, a Microsoft hatékony adatvédelmi vezérlőket és képességeket vezetett be és tart fenn.
+
+
+Az ügyfelek adatainak védelme az Azure-ban:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
-Azure Storage-fiókok biztonságossá tétele:
+Az Azure Storage-fiókok védelme:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Az Azure RBAC használatával szabályozhatja az erőforrásokhoz való hozzáférést
 
-**Útmutató**: a Azure Active Directory (HRE) szerepköralapú hozzáférés-vezérlés (RBAC) használatával szabályozhatja az Azure-erőforrások felügyeleti síkjával, például a Batch-fiókkal, a Batch-készlettel és a Storage-fiókokkal való hozzáférést.
+**Útmutató:** Az Azure Active Directory(AAD) szerepköralapú hozzáférés-vezérlés (RBAC) használatával szabályozhatja az Azure-erőforrások felügyeleti síkjához való hozzáférést, beleértve a batch-fiókot, a kötegkészlet(eke)t és a storage-fiókokat.
 
 
-Az Azure RBAC ismertetése:
+Az Azure RBAC megismerése:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
 
-A RBAC konfigurálása az Azure-ban:
+Az RBAC konfigurálása az Azure-ban:
 
 https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: a gazdagép-alapú adatvesztés-megelőzés használata a hozzáférés-vezérlés kikényszeríthető
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: A hozzáférés-vezérlés kényszerítése gazdagép-alapú adatveszteség-megelőzéshasználatával
 
-**Útmutató**: az adatazonosítási, besorolási és veszteség-megelőzési funkciók még nem érhetők el az Azure Storage vagy a számítási erőforrások számára. Külső gyártótól származó megoldás implementálása, ha az szükséges a megfelelőség szempontjából.
-
-
-
-A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
+**Útmutató:** Az adatok azonosításával, besorolásával és a veszteségmegelőzési funkciókmég nem érhetők el az Azure Storage- vagy számítási erőforrásokhoz. Harmadik féltől származó megoldás megvalósítása, ha a megfelelőségi célokból szükséges.
 
 
 
-Az ügyfelek adatvédelem az Azure-ban:
+A Microsoft által kezelt mögöttes platform esetében a Microsoft minden ügyféltartalmat érzékenynek tekint, és mindent megtesz azért, hogy megvédje az ügyfelek adatvesztését és expozícióját. Annak érdekében, hogy az Azure-on belüli ügyféladatok biztonságban legyenek, a Microsoft hatékony adatvédelmi vezérlőket és képességeket vezetett be és tart fenn.
+
+
+
+Az ügyfelek adatainak védelme az Azure-ban:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: bizalmas adatok titkosítása a nyugalmi állapotban
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Bizalmas információk titkosítása nyugalmi
 
-**Útmutató**: a Azure batch fiókjához társított Storage-fiókok esetében ajánlott engedélyezni a Microsoft számára a titkosítási kulcsok kezelését, azonban szükség esetén lehetősége van a saját kulcsok kezelésére.
+**Útmutató:** Az Azure Batch-fiókhoz társított tárfiókok esetében ajánlott engedélyezni a Microsoft számára a titkosítási kulcsok kezelését, azonban szükség esetén kezelheti a saját kulcsait.
 
 
 
@@ -704,21 +704,21 @@ Az Azure Storage-fiókok titkosítási kulcsainak kezelése:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Naplózza és figyelmeztesse a kritikus Azure-erőforrások változásait
 
-**Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a Azure batch-fiókokhoz/készletekhez kapcsolódó vagy azokhoz kapcsolódó kritikus Azure-erőforrásokra vonatkoznak.
-
-
-
-A Azure Batch készlethez társított Storage-fiókok diagnosztikai beállításainak konfigurálása a készlet adatain végzett összes szifilisz-művelet figyeléséhez és naplózásához.
+**Útmutató:** Az Azure-figyelő és az Azure-tevékenységnapló használatával riasztásokat hozhat létre az Azure Batch-fiókokhoz/-készletekhez kapcsolódó vagy azokhoz társított kritikus Azure-erőforrások módosításakor.
 
 
 
-Riasztások létrehozása az Azure Activity log-eseményekhez:
+Konfigurálja az Azure Batch-készlethez társított tárfiókok diagnosztikai beállításait az összes CRUD-művelet figyeléséhez és naplózásához a készletadatokkal.
+
+
+
+Értesítések létrehozása az Azure-tevékenységnapló eseményeihez:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
@@ -728,70 +728,70 @@ További naplózás/naplózás engedélyezése egy Azure Storage-fiókhoz:
 
 https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információ [: Security Control: sebezhetőségi kezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*További információt a [Biztonsági ellenőrzés: Biztonsági rés kezelése című](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)témakörben talál.*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Automatikus biztonsági résellenőrző eszközök futtatása
 
-**Útmutató**: a Azure batch Pool-csomópontok esetében a biztonsági rések kezelésére szolgáló megoldás kezeléséért felelős.
+**Útmutató:** Az Azure Batch Pool-csomópontok, ön felelős a biztonsági rés kezelési megoldás kezeléséért.
 
 
-Ha Rapid7, Qualys vagy bármely más sebezhetőség-kezelési platformra vonatkozó előfizetéssel rendelkezik, manuálisan telepítheti a sebezhetőségi felmérési ügynököket a Batch-készlet csomópontjain, és kezelheti a csomópontokat a megfelelő portálon keresztül.
+Ha Rapid7, Qualys vagy bármely más biztonsági réskezelési platform-előfizetéssel rendelkezik, manuálisan telepítheti a biztonsági rések felmérésére szolgáló ügynököket a Batch készletcsomópontokra, és kezelheti a csomópontokat az adott portálon keresztül.
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: az operációs rendszer automatikus javításának felügyeleti megoldásának telepítése
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Az operációs rendszer automatikus javításkezelési megoldásának telepítése
 
-**Útmutató**: a Microsoft az alapszintű Azure batch Pool-csomópontok rendszerképeinek karbantartásához és frissítéséhez. Győződjön meg arról, hogy Azure Batch a készlet csomópontjainak operációs rendszere továbbra is a fürt élettartama alatt marad, ami szükségessé teheti az automatikus frissítések engedélyezését, a csomópontok figyelését vagy rendszeres újraindítást.
+**Útmutató: A**Microsoft az alap Azure Batch Pool-készlet csomópontrendszerképek karbantartásához és frissítéséhez. Győződjön meg arról, hogy az Azure Batch Pool-csomópontok operációs rendszere a fürt élettartama alatt is javításra szorul, amely automatikus frissítések engedélyezését, a csomópontok figyelését vagy az időszakos újraindításokat igényelheti.
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: automatizált Third Party Software javítás-felügyeleti megoldás telepítése
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Automatizált, harmadik féltől származó szoftverjavítás-kezelési megoldás telepítése
 
-**Útmutató**: Azure batch Pool-csomópontok harmadik féltől származó alkalmazásai a fürt élettartamának időtartamára kiterjedően maradnak, ami szükségessé teheti az automatikus frissítések engedélyezését, a csomópontok figyelését vagy az időszakos újraindítást.
+**Útmutató:** Győződjön meg arról, hogy az Azure Batch Pool-csomópontok külső alkalmazások továbbra is javítva a fürt élettartama alatt, amely szükség lehet az automatikus frissítések engedélyezéséhez, a csomópontok figyelése, vagy időszakos újraindítások végrehajtása.
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: a biztonsági rések keresésének összehasonlítása
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Összehasonlítás back-to-back biztonsági rés vizsgál
 
-**Útmutató**: Ha Rapid7, Qualys vagy bármely más sebezhetőségi kezelési platformra vonatkozó előfizetéssel rendelkezik, használhatja a gyártó portálját a biztonsági rések vizsgálatának megtekintésére és összehasonlítására.
+**Útmutató:** Rapid7, Qualys vagy bármely más biztonsági réskezelő platform előfizetés e esetén használhatja az adott szállító portálját a biztonsági rések megtekintéséhez és összehasonlításához.
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: kockázatértékelési folyamat használatával rangsorolhatja a felderített biztonsági rések szervizelését.
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: A felfedezett biztonsági rések helyreállításának fontossági sorrendbe adására kockázatminősítési eljárást kell alkalmazni.
 
-**Útmutató**: általános kockázati pontozási programot (például gyakori sebezhetőségi pontozási rendszer) vagy a harmadik féltől származó ellenőrzési eszköz által biztosított alapértelmezett kockázati minősítéseket használjon.
+**Útmutató:** Használjon közös kockázatpontozási programot (pl. közös biztonsági réspontozási rendszert) vagy a külső ellenőrzési eszköz által biztosított alapértelmezett kockázati minősítéseket.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="inventory-and-asset-management"></a>Leltár-és eszközfelügyelet
 
-*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*További információ: [Security Control: Inventory and Asset Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
 
-### <a name="61-use-azure-asset-discovery"></a>6,1: az Azure Asset Discovery használata
+### <a name="61-use-azure-asset-discovery"></a>6.1: Az Azure Asset Discovery használata
 
-**Útmutató**: az Azure Resource Graph használatával lekérdezheti és felderítheti az előfizetése (i) n belüli összes erőforrást (például a számítási, tárolási, hálózati stb.). Győződjön meg arról, hogy megfelelő (olvasási) engedélyekkel rendelkezik a bérlőben, és képes felsorolni az összes Azure-előfizetést, valamint az előfizetésében lévő erőforrásokat.
-
-
-Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keresztül lehetséges, erősen ajánlott Azure Resource Manager (ARM) erőforrások létrehozása és használata.
+**Útmutatás:** Az Azure Resource Graph használatával lekérdezheti/felderítheti az összes erőforrást (például a számítási, tárolási, hálózati stb.) az előfizetés(ek)en belül. Győződjön meg arról, hogy rendelkezik a megfelelő (olvasási) engedélyekkel a bérlőben, és képes-e az összes Azure-előfizetés, valamint az előfizetéseken belüli erőforrások számbavételére.
 
 
-Lekérdezések létrehozása az Azure Graph használatával:
+Bár a klasszikus Azure-erőforrások fedezhetők fel az Azure Resource Graph Explorer, erősen ajánlott létrehozni és használni az Azure Resource Manager (ARM) erőforrásokat a jövőben.
+
+
+Lekérdezések létrehozása az Azure Resource Graph Explorer rel:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -801,30 +801,30 @@ Az Azure-előfizetések megtekintése:
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
 
-Az Azure RBAC ismertetése:
+Az Azure RBAC megismerése:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="62-maintain-asset-metadata"></a>6,2: az eszköz metaadatainak fenntartása
+### <a name="62-maintain-asset-metadata"></a>6.2: Az eszköz metaadatainak karbantartása
 
-**Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
+**Útmutató:** Címkék alkalmazása az Azure-erőforrásokra, amelyek metaadatokat adnak, hogy logikusan rendszerezzék őket egy taxonómiába.
 
 
 Címkék létrehozása és használata:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6,3: jogosulatlan Azure-erőforrások törlése
+### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Jogosulatlan Azure-erőforrások törlése
 
-**Útmutató**: a címkézés, a felügyeleti csoportok és az elkülönített előfizetések használata, ha szükséges, az eszközök rendszerezéséhez és nyomon követéséhez. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
+**Útmutató:** Adott esetben címkézéssel, felügyeleti csoportokkal és külön előfizetésekkel rendszerezheti és nyomon követheti az eszközöket. A készlet rendszeres egyeztetése és a jogosulatlan erőforrások időben történő törlése az előfizetésből.
 
 
 
@@ -834,271 +834,271 @@ https://docs.microsoft.com/azure/billing/billing-create-subscription
 
 
 
-Management Groups létrehozása:
+Felügyeleti csoportok létrehozása:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
 
 
-Létrehozás és felhasználói Címkék:
+Címkék létrehozása és használata:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="64-maintain-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: a jóváhagyott Azure-erőforrások és-szoftverek leltárának karbantartása.
+### <a name="64-maintain-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: A jóváhagyott Azure-erőforrások és szoftvercímek leltárának karbantartása.
 
-**Útmutató**: a jóváhagyott Azure-erőforrások és jóváhagyott szoftverek listájának meghatározása számítási erőforrásokhoz
+**Útmutató:** A jóváhagyott Azure-erőforrások és a számítási erőforrások jóváhagyott szoftvereinek listájának meghatározása
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: a nem jóváhagyott Azure-erőforrások figyelése
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: A nem jóváhagyott Azure-erőforrások figyelése
 
-**Útmutató**: az Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával:
-
-- Nem engedélyezett erőforrástípusok
-- Engedélyezett erőforrástípusok
-
-
-Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetése (ke) n belüli erőforrásait. Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
-
-
-Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-
-Lekérdezések létrehozása az Azure Graph használatával: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
-**Azure Security Center figyelés**: jelenleg nem érhető el
-
-**Felelősség**: ügyfél
-
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: a nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
-
-**Útmutató**: Azure batch Pool-csomópontok esetében hozzon létre egy külső gyártótól származó megoldást, amely figyeli a nem jóváhagyott szoftveralkalmazások fürt csomópontjait.
-
-**Azure Security Center figyelés**: jelenleg nem érhető el
-
-**Felelősség**: ügyfél
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
-
-**Útmutató**: Azure batch Pool-csomópontok esetében hozzon létre egy külső gyártótól származó megoldást, amely figyeli a nem jóváhagyott szoftveralkalmazások fürt csomópontjait.
-
-**Azure Security Center figyelés**: jelenleg nem érhető el
-
-**Felelősség**: ügyfél
-
-### <a name="68-use-only-approved-applications"></a>6,8: csak jóváhagyott alkalmazások használata
-
-**Útmutató**: Azure batch Pool-csomópontok esetében hozzon létre egy harmadik féltől származó megoldást, amely megakadályozza a jogosulatlan szoftverek futtatását.
-
-**Azure Security Center figyelés**: jelenleg nem érhető el
-
-**Felelősség**: ügyfél
-
-### <a name="69-use-only-approved-azure-services"></a>6,9: csak jóváhagyott Azure-szolgáltatások használata
-
-**Útmutató**: az Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával:
-
+**Útmutató: Az**Azure-szabályzat használatával korlátozásokat helyezhet el az ügyfél-előfizetés(ek)ben létrehozható erőforrások típusára vonatkozóan a következő beépített szabályzatdefiníciók használatával:
 
 - Nem engedélyezett erőforrástípusok
 - Engedélyezett erőforrástípusok
 
 
-Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Az Azure Resource Graph használatával erőforrásokat kérdezhet le/fedezhet fel az előfizetése(i)n belül. Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóváhagyásra kerül.
 
 
-Adott erőforrástípus megtagadása a következővel: Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
-
-**Azure Security Center figyelés**: jelenleg nem érhető el
-
-**Felelősség**: ügyfél
-
-### <a name="610-implement-approved-application-list"></a>6,10: jóváhagyott alkalmazások listájának implementálása
-
-**Útmutató**: Azure batch Pool-csomópontokhoz hozzon létre egy harmadik féltől származó megoldást, amely megakadályozza a jogosulatlan fájltípusok végrehajtását.
-
-**Azure Security Center figyelés**: jelenleg nem érhető el
-
-**Felelősség**: ügyfél
-
-### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6,11: <div>A felhasználók Azure Resource Manager interakciójának korlátozása parancsfájlok használatával</div>
-
-**Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja a felhasználók a Azure Resource Manager interakcióját a "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával.
+Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Lekérdezések létrehozása az Azure Resource Graph Explorer rel:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: korlátozza a felhasználók számára a parancsfájlok végrehajtásának lehetőségét a számítási erőforrásokon belül
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: A nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
 
-**Útmutató**: nem alkalmazható,
+**Útmutató:** Az Azure Batch Pool-csomópontok, valósítson meg egy harmadik féltől származó megoldás a nem jóváhagyott szoftveralkalmazások fürtcsomópontok figyelésére.
 
-Ez nem alkalmazható Azure Batchre, mert a Azure Batch-készletek felhasználói (nem rendszergazdák) nem igényelnek hozzáférést az egyes csomópontokhoz a feladatok futtatásához. A fürt rendszergazdája már rendelkezik rendszergazdai hozzáféréssel az összes csomóponthoz.
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Felelősség**: Ügyfél
 
-**Felelősség**: nem alkalmazható
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: A nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizikailag vagy logikailag elkülöníthető a nagy kockázatú alkalmazások
+**Útmutató:** Az Azure Batch Pool-csomópontok, valósítson meg egy harmadik féltől származó megoldás a nem jóváhagyott szoftveralkalmazások fürtcsomópontok figyelésére.
 
-**Útmutató**: nem alkalmazható, a teljesítményteszt a Azure app Service-vagy IaaS-példányokon futó webalkalmazásokhoz készült.
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Felelősség**: Ügyfél
 
-**Felelősség**: nem alkalmazható
+### <a name="68-use-only-approved-applications"></a>6.8: Csak jóváhagyott alkalmazásokat használjon
+
+**Útmutató:** Az Azure Batch Pool-csomópontok, valósítson meg egy harmadik féltől származó megoldást, hogy megakadályozzák a jogosulatlan szoftverek végrehajtását.
+
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+
+**Felelősség**: Ügyfél
+
+### <a name="69-use-only-approved-azure-services"></a>6.9: Csak jóváhagyott Azure-szolgáltatások használata
+
+**Útmutató: Az**Azure-szabályzat használatával korlátozásokat helyezhet el az ügyfél-előfizetés(ek)ben létrehozható erőforrások típusára vonatkozóan a következő beépített szabályzatdefiníciók használatával:
+
+
+- Nem engedélyezett erőforrástípusok
+- Engedélyezett erőforrástípusok
+
+
+Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
+
+Adott erőforrástípus megtagadása az Azure-szabályzattal:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+
+**Felelősség**: Ügyfél
+
+### <a name="610-implement-approved-application-list"></a>6.10: A jóváhagyott pályázati lista végrehajtása
+
+**Útmutató:** Az Azure Batch Pool-csomópontok, valósítson meg egy harmadik féltől származó megoldás, hogy megakadályozzák a jogosulatlan fájltípusok végrehajtását.
+
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+
+**Felelősség**: Ügyfél
+
+### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6.11: <div>Korlátozza a felhasználók azon képességét, hogy parancsfájlokon keresztül kommunikáljanak az Azure Resource Managerrel</div>
+
+**Útmutató:** Az Azure feltételes hozzáférés használatával korlátozhatja a felhasználók azon képességét, hogy az Azure Resource Manager rel való interakciót a "Blokk hozzáférés" konfigurálásával a "Microsoft Azure Management" alkalmazás konfigurálásával.
+
+
+A feltételes hozzáférés beállítása az Azure Resource Manager elérésének letiltásához:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+
+**Felelősség**: Ügyfél
+
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Korlátozza a felhasználók azon képességét, hogy parancsfájlokat hajtsanak végre a számítási erőforrásokon belül
+
+**Útmutató**: Nem alkalmazható,
+
+Ez nem vonatkozik az Azure Batch, a felhasználók (nem rendszergazdák) az Azure Batch-készletek nem kell hozzáférni az egyes csomópontok feladatok futtatásához. A fürt rendszergazdája már rendelkezik root hozzáféréssel az összes csomóponthoz.
+
+**Az Azure Security Center figyelése:** Nem alkalmazható
+
+**Felelősség**: Nem alkalmazható
+
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Fizikailag vagy logikailag elkülönítve a magas kockázatú alkalmazások
+
+**Útmutatás:** Nem alkalmazható, a Benchmark az Azure App Service- vagy IaaS-példányokon futó webalkalmazásokhoz készült.
+
+**Az Azure Security Center figyelése:** Nem alkalmazható
+
+**Felelősség**: Nem alkalmazható
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*További információt a [Biztonsági ellenőrzés: Biztonságos konfiguráció című](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)témakörben talál.*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
-**Útmutató**: Azure Policy aliasok használata a "Microsoft. batch" névtérben egyéni szabályzatok létrehozásához a Azure batch-fiókok és-készletek konfigurációjának naplózásához vagy érvényesítéséhez.
+**Útmutató:** Azure Policy aliasok a "Microsoft.Batch" névtérben egyéni szabályzatok létrehozásához az Azure Batch-fiókok és készletek konfigurációjának naplózásához vagy érvényesítéséhez.
 
 
-Az elérhető Azure Policy aliasok megtekintése:
+Az elérhető Azure-szabályzataliasok megtekintése:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Azure Policy konfigurálása és kezelése:
+Az Azure-szabályzat konfigurálása és kezelése:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="72-establish-secure-configurations-for-your-operating-system"></a>7,2: biztonságos konfigurációk létrehozása az operációs rendszerhez
+### <a name="72-establish-secure-configurations-for-your-operating-system"></a>7.2: Biztonságos konfigurációk létrehozása az operációs rendszerhez
 
-**Útmutató**: biztonságos konfigurációk létrehozása a Batch Pool-csomópontok operációs rendszeréhez.
+**Útmutató:** Hozzon létre biztonságos konfigurációkat a batch pool-csomópontok operációs rendszeréhez.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="73-maintain-secure-configurations-for-all-azure-resources"></a>7,3: biztonságos konfigurációk karbantartása az összes Azure-erőforráshoz
+### <a name="73-maintain-secure-configurations-for-all-azure-resources"></a>7.3: Biztonságos konfigurációk karbantartása az összes Azure-erőforráshoz
 
-**Útmutató**: a Batch-fiókhoz és-készletekhez (például virtuális hálózatokhoz, alhálózatokhoz, Azure-tűzfalakhoz, Azure Storage-fiókokhoz stb.) kapcsolódó Azure-erőforrások biztonságos beállításainak érvénybe léptetéséhez használja az Azure Policy [deny] és a [telepítés, ha nem létezik] lehetőséget. A következő névterekben található Azure Policy aliasokat használhatja egyéni házirendek létrehozásához:
+**Útmutató:** Az Azure-szabályzat [megtagadás] és a [deploy, ha nem létezik] használatával kényszerítheti a batch-fiókhoz és készletekhez kapcsolódó Azure-erőforrások (például virtuális hálózatok, alhálózatok, Azure-tűzfalak, Azure Storage-fiókok stb.) biztonságos beállításait. Az alábbi névterekből származó Azure-szabályzataliasok használatával egyéni szabályzatokat hozhat létre:
 
 - Microsoft.Batch
 - Microsoft.Storage
 - Microsoft.Network
 
 
-Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-Azure Policy effektusok ismertetése: https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Az Azure-szabályzat hatásainak megismerése:https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="74-maintain-secure-configurations-for-operating-systems"></a>7,4: biztonságos konfigurációk karbantartása operációs rendszerekhez
+### <a name="74-maintain-secure-configurations-for-operating-systems"></a>7.4: Biztonságos konfigurációk karbantartása az operációs rendszerekhez
 
-**Útmutató**: Azure Batch a Microsoft által felügyelt és karbantartott készlet operációs rendszer lemezképeit. Az operációs rendszer szintű állapot konfigurációjának végrehajtásáért felelős.
+**Útmutató:** Az Azure Batch Pool operációsrendszer-lemezképek, amelyeket a Microsoft kezel és karbantart. Ön felelős az operációs rendszer szintű állapotkonfiguráció megvalósításáért.
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: az Azure-erőforrások biztonságos tárolása
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Az Azure-erőforrások biztonságos tárolása az Azure-erőforrások konfigurálásában
 
-**Útmutató**: Ha egyéni Azure-szabályzat-definíciókat használ a Azure batch fiókokhoz, készletekhez vagy kapcsolódó erőforrásokhoz, az Azure Repos használatával biztonságosan tárolhatja és kezelheti a kódot.
+**Útmutató:** Ha egyéni Azure-szabályzat-definíciókat használ az Azure Batch-fiókokhoz, készletekhez vagy kapcsolódó erőforrásokhoz, használja az Azure Repos-t a kód biztonságos tárolásához és kezeléséhez.
 
 
-Kód tárolása az Azure DevOps:
+Kód tárolása az Azure DevOps-ban:
 
 https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
 
-Az Azure Repos dokumentációja:
+Azure Repos dokumentáció:
 
 https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
+### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Biztonságosan tárolja az operációs rendszer egyedi lemezképeit
 
-**Útmutató**: Ha egyéni rendszerképeket használ a Azure batch készletekhez, használja a szerepköralapú hozzáférés-vezérlést (RBAC) annak biztosítására, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
+**Útmutató:** Ha egyéni lemezképek et használ az Azure Batch-készletek, használja a szerepköralapú hozzáférés-vezérlés (RBAC) annak biztosításához, hogy csak a jogosult felhasználók férhetnek hozzá a rendszerképekhez.
 
 
-A RBAC megismerése az Azure-ban:
+Az RBAC ismertetése az Azure-ban:
 
 https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
 
 
-A RBAC konfigurálása az Azure-ban:
+Az RBAC konfigurálása az Azure-ban:
 
 https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7,7: rendszerkonfiguráció-felügyeleti eszközök telepítése
+### <a name="77-deploy-system-configuration-management-tools"></a>7.7: A rendszerkonfiguráció-kezelő eszközök telepítése
 
-**Útmutató**: beépített Azure Policy-definíciók használata a Azure batch kapcsolódó erőforrás-konfigurációk riasztásához, naplózásához és érvényesítéséhez.  Használjon Azure Policy aliasokat a "Microsoft. batch" névtérben, hogy egyéni szabályzatokat hozzon létre a Azure Batch-fiókokhoz és-készletekhez. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez.
+**Útmutatás:** A beépített Azure-szabályzat-definíciók használatával riasztást, naplózást és kényszerítést az Azure Batch-hez kapcsolódó erőforrás-konfigurációk.  A "Microsoft.Batch" névtérben az Azure Policy-aliasok használatával egyéni szabályzatokat hozhat létre az Azure Batch-fiókokhoz és -készletekhez. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirendkivételek kezeléséhez.
 
 
 
-Azure Policy konfigurálása és kezelése:
+Az Azure-szabályzat konfigurálása és kezelése:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: rendszerkonfiguráció-felügyeleti eszközök központi telepítése operációs rendszerekhez
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Rendszerkonfiguráció-kezelő eszközök telepítése operációs rendszerekhez
 
-**Útmutató**: egy külső gyártótól származó megoldás implementálása a Azure batch Pool-csomópontok operációs rendszereinek kívánt állapotának fenntartásához.
+**Útmutató:** Valósítson meg egy külső gyártótól származó megoldást az Azure Batch Pool-csomópontok operációs rendszerei kívánt állapotának fenntartásához.
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: az Azure-szolgáltatások automatizált konfigurációs figyelésének megvalósítása
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Automatikus konfigurációfigyelés megvalósítása az Azure-szolgáltatásokhoz
 
-**Útmutató**: Azure Policy aliasok használata a "Microsoft. batch" névtérben egyéni szabályzatok létrehozásához a Azure batch példányának naplózásához vagy érvényesítéséhez. A kifejezetten a Azure Batchhoz létrehozott beépített szabályzatokat vagy a Azure Batch által használt erőforrásokat is használhatja, például:
+**Útmutató:** Azure Policy aliasok a "Microsoft.Batch" névtérben egyéni szabályzatok létrehozásához az Azure Batch-példány naplózása vagy kényszerítése. Használhatja a kifejezetten az Azure Batchhez létrehozott beépített szabályzatokat vagy az Azure Batch által használt erőforrásokat is, például:
 
-- Az alhálózatokat hálózati biztonsági csoporttal kell társítani – a Storage-fiókoknak virtuális hálózati szolgáltatási végpontot kell használniuk
-- A Batch-fiókokban lévő diagnosztikai naplókat engedélyezni kell
+- Az alhálózatokat egy hálózati biztonsági csoporthoz kell társítani - A tárfiókoknak virtuális hálózati szolgáltatás végpontját kell használniuk
+- A Batch-fiókok diagnosztikai naplóit engedélyezni kell
 
-Az elérhető Azure Policy aliasok megtekintése: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Az elérhető Azure-szabályzataliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-
-**Azure Security Center figyelés**: jelenleg nem érhető el
-
-**Felelősség**: ügyfél
-
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: az operációs rendszerek automatikus konfiguráció-figyelésének megvalósítása
-
-**Útmutató**: külső gyártótól származó megoldás implementálása Azure batch Pool-csomópontok operációs rendszerei állapotának figyeléséhez.
-
-**Azure Security Center figyelés**: jelenleg nem érhető el
-
-**Felelősség**: ügyfél
-
-### <a name="711-securely-manage-azure-secrets"></a>7,11: biztonságos felügyelet az Azure Secrets-ben
-
-**Útmutató**: az Azure Storage-fiókokon belüli készlet-tárolás kulcsainak kezeléséhez Azure Key Vault használható Azure batch üzemelő példányok esetében.
+Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-Integráció az Azure felügyelt identitásokkal:
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+
+**Felelősség**: Ügyfél
+
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Az operációs rendszerek automatikus konfigurációfigyelésének megvalósítása
+
+**Útmutató:** Harmadik féltől származó megoldás megvalósítása az Azure Batch-készlet csomópontjaioperációs rendszerei állapotának figyelésére.
+
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
+
+**Felelősség**: Ügyfél
+
+### <a name="711-securely-manage-azure-secrets"></a>7.11: Az Azure-titkok biztonságos kezelése
+
+**Útmutató:** Az Azure Key Vault azure batch-telepítésekkel használható az Azure Storage-fiókokon belüli készlettárolás kulcsainak kezeléséhez.
+
+
+Integrálás az Azure felügyelt identitásaival:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
@@ -1108,237 +1108,237 @@ Azure Key Vault létrehozása:
 https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
 
-Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása:
+A Kulcstartó hitelesítése felügyelt identitással:
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="712-securely-and-automatically-manage-identities"></a>7,12: az identitások biztonságos és automatikus kezelése
+### <a name="712-securely-and-automatically-manage-identities"></a>7.12: Biztonságosés automatikus annektálta a személyazonosságot
 
-**Útmutató**: nem érhető el, Managed Service Identity Azure batch nem támogatott
+**Útmutató:** Nem érhető el, az Azure Batch nem támogatja a felügyelt szolgáltatásidentitást
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: nem alkalmazható
+**Felelősség**: Nem alkalmazható
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: A nem kívánt hitelesítő adatok expozíciójának kiküszöbölése
 
-**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze. 
+**Útmutató:** A hitelesítő adatok at a kódon belüli hitelesítő adatok azonosítására valósíthatja meg. A Hitelesítő adatok olvasója azt is ösztönzi a felderített hitelesítő adatok áthelyezése biztonságosabb helyekre, például az Azure Key Vault. 
 
-Hitelesítőadat-olvasó beállítása: https://secdevtools.azurewebsites.net/helpcredscan.html
+A Hitelesítő adatok képolvasójának beállítása:https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*További információ: [Security Control: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: központilag felügyelt kártevő szoftverek használata
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Központilag kezelt kártevőirtó szoftverek használata
 
-**Útmutató**: a Windows Defender használata a Windows operációs rendszerek esetében az egyes Azure batch Pool-csomópontokon, illetve a Linux használata esetén saját kártevő szoftvereket is biztosíthat.
+**Útmutató:** A Windows-operációs rendszerek esetében használja a Windows Defender szolgáltatást az egyes Azure Batch-készletcsomópontokon, vagy biztosítson saját kártevőirtó megoldást Linux használata esetén.
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: a nem számítási Azure-erőforrásokra feltöltött fájlok előzetes vizsgálata
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: A nem számítási Azure-erőforrásokba feltöltendő fájlok előzetes beszkéselése
 
-**Útmutató**: a Microsoft antimalware engedélyezve van a mögöttes gazdagépen, amely támogatja az Azure-szolgáltatásokat (például Azure batch), azonban nem az ügyfél tartalmán fut.
-
-
-A nem számítási Azure-erőforrásokra feltöltött fájlok előzetes vizsgálata, például App Service, Data Lake Storage, Blob Storage stb. A Microsoft nem fér hozzá az ügyféladatokat ezekben a példányokban.
+**Útmutató: A**Microsoft Antimalware engedélyezve van az alapul szolgáló gazdagépen, amely támogatja az Azure-szolgáltatásokat (például az Azure Batch), de nem fut az ügyfél tartalom.
 
 
-Ismerje meg a Microsoft antimalware az Azure Cloud Services és Virtual Machines:
+A nem számítási Azure-erőforrásokba feltöltött fájlok, például az App Service, a Data Lake Storage, a Blob Storage stb. A Microsoft ezekben az esetekben nem fér hozzá az ügyféladatokhoz.
+
+
+Ismerje meg a Microsoft kártevőirtó szoftvereit az Azure Felhőszolgáltatásokhoz és a virtuális gépekhez:
 
 https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: a kártevő szoftverek és az aláírások frissítésének ellenőrzése
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: A kártevőirtó szoftverek és aláírások frissítésének biztosítása
 
-**Útmutató**: a Windows Defender használata az egyes Azure batch Pool-csomópontokon Windows operációs rendszerek esetén, valamint az automatikus frissítés engedélyezése. A Linux használata esetén saját kártevő-ellenes megoldást biztosíthat.
+**Útmutató:** Windows operációs rendszerek esetén használja a Windows Defender t az egyes Azure Batch-készletcsomópontokon, és győződjön meg arról, hogy az automatikus frissítés engedélyezve van. Biztosítson saját kártevőirtó megoldást Linux használata esetén.
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*További információ: [Security Control: Data Recovery](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Rendszeres automatizált biztonsági másolatot kell biztosítani
 
-**Útmutató**: Ha Azure Storage-fiókot használ a Azure batch készlet adattárához, válassza ki a megfelelő redundancia-beállítást (LRS, ZRS, GRS, ra-GRS). 
-
-
-Tárolási redundancia konfigurálása az Azure Storage-fiókokhoz:
-
-https://docs.microsoft.com/azure/storage/common/storage-redundancy
-
-**Azure Security Center figyelés**: nem alkalmazható
-
-**Felelősség**: ügyfél
-
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: teljes rendszerbiztonsági mentés és biztonsági másolat készítése bármely ügyfél által felügyelt kulcsról
-
-**Útmutató**: Ha Azure Storage-fiókot használ a Azure batch készlet adattárához, válassza ki a megfelelő redundancia-beállítást (LRS, ZRS, GRS, ra-GRS).  Ha a Azure Batch üzembe helyezésének bármely részéhez Azure Key Vault használ, győződjön meg róla, hogy a kulcsok biztonsági mentése megtörténik.
+**Útmutató:** Ha egy Azure Storage-fiók az Azure Batch Pool adattár, válassza ki a megfelelő redundancia-beállítás (LRS, ZRS, GRS, RA-GRS). 
 
 
-Tárolási redundancia konfigurálása az Azure Storage-fiókokhoz:
+A tárolási redundancia beállítása az Azure Storage-fiókokhoz:
 
 https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-Key Vault-kulcsok biztonsági mentése az Azure-ban:
+**Felelősség**: Ügyfél
+
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Teljes rendszerbiztonsági mentés és biztonsági mentés bármely ügyfél által kezelt kulcsról
+
+**Útmutató:** Ha egy Azure Storage-fiók az Azure Batch Pool adattár, válassza ki a megfelelő redundancia-beállítás (LRS, ZRS, GRS, RA-GRS).  Ha az Azure Key Vault az Azure Batch-telepítés bármely részében, győződjön meg a kulcsokról.
+
+
+A tárolási redundancia beállítása az Azure Storage-fiókokhoz:
+
+https://docs.microsoft.com/azure/storage/common/storage-redundancy
+
+
+A kulcstároló kulcsainak biztonsági mentése az Azure-ban:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: az összes biztonsági másolat ellenőrzése, beleértve az ügyfél által felügyelt kulcsokat
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Az összes biztonsági mentés ellenőrzése, beleértve az ügyfél által kezelt kulcsokat is
 
-**Útmutató**: Ha saját kulcsokat felügyel az Azure Storage-fiókokhoz vagy az Azure batch-implementációhoz kapcsolódó bármely más erőforráshoz, a biztonsági másolatban szereplő kulcsok visszaállítását rendszeresen tesztelje.
+**Útmutató:** Ha az Azure Storage-fiókok saját kulcsait vagy az Azure Batch-implementációhoz kapcsolódó bármely más erőforrást kezel, rendszeresen tesztelje a biztonsági másolatot kérő kulcsok visszaállítását.
 
 
-Key Vault-kulcsok biztonsági mentése az Azure-ban:
+A kulcstároló kulcsainak biztonsági mentése az Azure-ban:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
 
-Ügyfél által felügyelt kulcs visszaállítása a PowerShell-lel:
+Ügyfél által kezelt kulcs visszaállítása a PowerShell használatával:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: A biztonsági mentések és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
-**Útmutató**: ha a Azure Key Vault a Azure batch Pool Storage-fiókokhoz kapcsolódó kulcsok tárolására használatos, engedélyezze a helyreállítható törlést Azure Key Vault a kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemmel való ellátásához.
+**Útmutató:** Ha az Azure Key Vault az Azure Batch Pool storage-fiókokhoz kapcsolódó kulcsok tárolására szolgál, engedélyezze a soft-delete szolgáltatást az Azure Key Vaultban a kulcsok véletlen vagy rosszindulatú törlés elleni védelme érdekében.
 
 
-A Soft delete engedélyezése a Azure Key Vaultban:
+A beállítható törlés engedélyezése az Azure Key Vaultban:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ [: Security Control: incidens válasza](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*További információ: [Security Control: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
 
-### <a name="101-create-incident-response-guide"></a>10,1: incidens-válasz létrehozási útmutatója
+### <a name="101-create-incident-response-guide"></a>10.1: Incidenselhárítási útmutató létrehozása
 
-**Útmutató**: Ellenőrizze, hogy vannak-e olyan írásos incidensek, amelyek meghatározzák a személyzet szerepköreit, valamint az incidensek kezelésének és kezelésének fázisait.
+**Útmutató:** Győződjön meg arról, hogy vannak olyan írásos eseményreagálási tervek, amelyek meghatározzák a személyzet szerepköreit, valamint az incidenskezelés/-kezelés fázisait.
 
 
 
-Munkafolyamat-automatizálás konfigurálása Azure Security Centeron belül:
+Munkafolyamat-automatizálások konfigurálása az Azure Security Centerben:
 
 https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="102-create-incident-scoring-and-prioritization-procedure"></a>10,2: incidens-pontozási és rangsorolási eljárás létrehozása
+### <a name="102-create-incident-scoring-and-prioritization-procedure"></a>10.2: Incidenspontozási és rangsorolási eljárás létrehozása
 
-**Útmutató**: a Security Center súlyosságot rendel a riasztásokhoz, így könnyebben rangsorolhatja az egyes riasztásokban való részvétel sorrendjét, hogy az erőforrások biztonsága esetén azonnal elérhető legyen. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint azt a megbízhatósági szintet, amely a riasztáshoz vezető tevékenység mögött rosszindulatú szándékú volt.
+**Útmutatás: A**Security Center súlyossági szintet rendel a riasztásokhoz, hogy segítsen rangsorolni az egyes riasztások hozadékát, így ha egy erőforrás biztonsága veszélybe kerül, azonnal hozzáérhet. A súlyosság attól függ, hogy a Security Center mennyire magabiztos a keresésben, vagy a riasztás kiadásához használt analitikus, valamint a riasztáshoz vezető tevékenység mögött rosszindulatú szándék megbízhatósági szintje.
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
+### <a name="103-test-security-response-procedures"></a>10.3: A tesztelési biztonsági reagálási eljárások
 
-**Útmutató**: a rendszerek incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatok végrehajtása. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
+**Útmutató:** Végezzen gyakorlatokat a rendszerek incidenselhárítási képességeinek rendszeres ütemben való teszteléséhez. Azonosítsa a gyenge pontokat és hiányosságokat, és szükség szerint vizsgálja felül a tervet.
 
-Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához, valamint a programok gyakorlati képzéséhez: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+Tekintse meg a NIST kiadványát: Útmutató az informatikai tervekés képességek tesztelési, képzési és edzésprogramjaihoz:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10,4: biztonsági incidensek elérhetőségének biztosítása és riasztási értesítések konfigurálása &nbsp;biztonsági incidensekhez
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10.4: Adja meg a biztonsági &nbsp;incidensek elérhetőségét, és állítsa be a riasztási értesítéseket a biztonsági eseményekhez
 
-**Útmutató**: a Microsoft a biztonsági incidensekkel kapcsolatos kapcsolattartási adatokat arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az Ön adatait egy törvénytelen vagy jogosulatlan fél is hozzáférte.
+**Útmutató: A**Microsoft a biztonsági incidensek kapcsolattartási adatait arra használja fel, hogy kapcsolatba lépjen Önnel, ha a Microsoft Security Response Center (MSRC) azt észleli, hogy az ön adataihoz jogellenes vagy jogosulatlan fél fért hozzá.
 
 
 
-A Azure Security Center biztonsági kapcsolattartó beállítása:
+Az Azure Security Center biztonsági kapcsolattartójának beállítása:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center figyelése:** Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: biztonsági riasztások beépítése az incidensek gyorsreagáló rendszerébe
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Biztonsági riasztások beépítése az incidenselhárítási rendszerbe
 
-**Útmutató**: az Azure Security Center-riasztások és-javaslatok exportálása a folyamatos exportálás funkció használatával. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Az Azure Security Center adatösszekötővel továbbíthatja a riasztásokat az Azure Sentinel szolgáltatásba.
+**Útmutató:** Exportálja az Azure Security Center riasztások és javaslatok a folyamatos exportálás funkció használatával. A Folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális exportálását, vagy folyamatos, folyamatos módon. Használhatja az Azure Security Center adatösszekötőt a riasztások streameléséhez az Azure Sentinel.
 
 
-Folyamatos exportálás konfigurálása:
+A folyamatos exportálás konfigurálása:
 
 https://docs.microsoft.com/azure/security-center/continuous-export
 
 
-Riasztások továbbítása az Azure Sentinelbe:
+Értesítések streamelése az Azure Sentinelbe:
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10,6: a biztonsági riasztásokra adott válasz automatizálása
+### <a name="106-automate-the-response-to-security-alerts"></a>10.6: A biztonsági riasztásokra adott válasz automatizálása
 
-**Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan aktiválhatja a válaszokat a "Logic apps" használatával a biztonsági riasztások és javaslatok esetében.
+**Útmutató:** Az Azure Security Center munkafolyamat-automatizálási szolgáltatásával automatikusan elindíthatja a "Logic Apps" biztonsági riasztásokra és javaslatokra vonatkozó válaszokat.
 
 
 
-A Munkafolyamat-automatizálás és a Logic Apps konfigurálása:
+A munkafolyamat-automatizálás és a logikai alkalmazások konfigurálása:
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center figyelése:** Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*További információ: [Security Control: Penetration Tests and Red Team Exercises](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat 60 napon belüli szervizelésének biztosítása.
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11.1: Végezzen rendszeres behatolási tesztelést az Azure-erőforrásokon, és 60 napon belül biztosítsa az összes kritikus biztonsági megállapítás elhárítását.
 
-**Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék meg a Microsoft-házirendeket:
+**Útmutató:** Kérjük, kövesse a Microsoft kötelezettségvállalási szabályzatát, hogy a behatolási tesztek ne sértsék meg a Microsoft irányelveit:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
 
 
-A Microsoft által felügyelt felhő-infrastruktúrával,-szolgáltatásokkal és-alkalmazásokkal kapcsolatos további információkért tekintse meg a következő témakört: 
+A Microsoft stratégiájáról és a Red Teaming és az élő webhely behatolási tesztelésének végrehajtásáról a Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatos további információkat itt talál: 
 
 https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center figyelése:** Nem alkalmazható
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Tekintse meg az [Azure biztonsági referenciaértékét](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- További információ az [Azure biztonsági alapkonfigurációiról](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

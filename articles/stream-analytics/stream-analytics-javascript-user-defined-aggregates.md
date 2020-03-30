@@ -1,30 +1,30 @@
 ---
-title: JavaScript nyelvű felhasználó által definiált összesítések az Azure Stream Analytics szolgáltatásban
-description: Ez a cikk azt ismerteti, hogyan hajtható végre speciális lekérdezési mechanika JavaScript felhasználó által definiált összesítésekkel Azure Stream Analyticsban.
-author: rodrigoamicrosoft
+title: JavaScript-felhasználó által definiált összesítések az Azure Stream Analytics szolgáltatásban
+description: Ez a cikk ismerteti, hogyan hajthatja végre a speciális lekérdezési mechanika javascript-felhasználó által definiált összesítések az Azure Stream Analytics.
+author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: d9b37810146f66806be9b8ce7a38f8dac31facb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c509d174787a58abeee33e039eb7bbbcbcb43f38
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426091"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531734"
 ---
-# <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>JavaScript felhasználó által definiált összesítések Azure Stream Analytics
+# <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Az Azure Stream Analytics JavaScript által definiált összesítések
  
-Azure Stream Analytics támogatja a JavaScriptben írt, felhasználó által definiált összesítéseket (UDA), így összetett állapot-nyilvántartó üzleti logikát valósíthat meg. A UDA-en belül teljes mértékben szabályozhatja az állapot adatstruktúráját, az állapot felhalmozódását, az állapot-összesítést és az összesített eredmények számítását. A cikk bemutatja a két különböző JavaScript UDA felületet, a UDA létrehozásának lépéseit, valamint azt, hogy miként használhatók a UDA az ablakos műveletekkel Stream Analytics lekérdezésben.
+Az Azure Stream Analytics támogatja a felhasználó által definiált aggregátumok (UDA) JavaScript nyelven írt, lehetővé teszi, hogy összetett állapotalapú üzleti logika megvalósítását. Az UDA-n belül teljes hozzáféréssel rendelkezik az állapotadat-szerkezet, az állapotfelhalmozódás, az állapotdekumuláció és az összesített eredményszámítás felett. A cikk bemutatja a két különböző JavaScript UDA-felületeket, az UDA létrehozásának lépéseit, valamint az UDA használatának módját ablakalapú műveletekkel a Stream Analytics-lekérdezésben.
 
-## <a name="javascript-user-defined-aggregates"></a>Felhasználó által definiált JavaScript-összesítések
+## <a name="javascript-user-defined-aggregates"></a>JavaScript-felhasználó által definiált összesítések
 
-A felhasználó által definiált összesítést a rendszer egy időablak-specifikáción felül használja az adott ablakban lévő események összesítésére, és egyetlen eredmény értékét eredményezi. A UDA két típusa van, amelyek Stream Analytics támogatják a ma, a AccumulateOnly és a AccumulateDeaccumulate szolgáltatást. Mindkét típusú UDA felhasználható a bukdácsoló, a hopping, a csúszó és a munkamenet ablakban is. A AccumulateDeaccumulate UDA jobb, mint a AccumulateOnly-UDA, ha a használata a hopping, a csúszó és a munkamenet ablakával együtt történik. A két típus egyikét választhatja a használt algoritmus alapján.
+A felhasználó által definiált összesítés takarásként az ablakspecifikáción alapul, és az adott ablakban lévő eseményeket összesíti, és egyetlen eredményértéket hoz létre. A Stream Analytics által ma támogatott UDA-felületek nek két típusa van: AccumulateOnly és AccumulateDeaccumulate. Mindkét típusú UDA használható Tumbling, Hopping, Sliding és Session Window. Az AaccumulateDeaccumulate UDA jobban teljesít, mint az AkkumOnly UDA, ha az Ugráló, Csúszó és Munkamenet ablakkal együtt használja. A két típus közül választhat a használt algoritmus alapján.
 
-### <a name="accumulateonly-aggregates"></a>AccumulateOnly-összesítések
+### <a name="accumulateonly-aggregates"></a>AkkumulációCsak aggregátumok
 
-A AccumulateOnly aggregátumok csak az új eseményeket tudják felhalmozni az állapotukba, az algoritmus nem engedélyezi az értékek felhalmozódását. Válassza ezt az összesítési típust, ha az állapot értékének kibontása nem lehetséges. A AccumulatOnly-összesítések JavaScript-sablonja a következő:
+AccumulateCsak aggregátumok csak felhalmozódnak az új események az állam, az algoritmus nem teszi lehetővé az értékek deaccumulation. Akkor válassza ezt az összesített típust, ha az állapotértékből származó eseményadatok dekamezenstal való felhalmozódása nem valósítható meg. Az alábbiakban a JavaScript sablon AccumulatOnly összesítések:
 
 ```JavaScript
 // Sample UDA which state can only be accumulated.
@@ -43,9 +43,9 @@ function main() {
 }
 ```
 
-### <a name="accumulatedeaccumulate-aggregates"></a>AccumulateDeaccumulate-összesítések
+### <a name="accumulatedeaccumulate-aggregates"></a>Akkumulált aggregátumok
 
-A AccumulateDeaccumulate összesítések lehetővé teszik egy korábbi halmozott érték kivonását az állapotból, például eltávolít egy kulcs-érték párokat az események listájából, vagy kivonja az értéket a Sum aggregált állapotból. A AccumulateDeaccumulate-összesítések JavaScript-sablonja a következő:
+Az akkumulált aggregátumok lehetővé teszik egy korábbi halmozott érték deaktakulását az állapotból, például eltávolítanak egy kulcs-érték párt az eseményértékek listájáról, vagy kivonnak egy értéket az összegösszesítés állapotából. A következőkben a JavaScript sablon accumulatedeaccumulate összesítések:
 
 ```JavaScript
 // Sample UDA which state can be accumulated and deaccumulated.
@@ -72,60 +72,60 @@ function main() {
 }
 ```
 
-## <a name="uda---javascript-function-declaration"></a>UDA – JavaScript-függvény deklarációja
+## <a name="uda---javascript-function-declaration"></a>UDA - JavaScript függvény deklaráció
 
-Minden JavaScript-UDA egy Function Object deklaráció definiál. A UDA definíciójának fő elemei a következők.
+Minden JavaScript UDA-t egy függvényobjektum-deklaráció határoz meg. Az UDA-definíció főbb elemei a következőkben találhatók.
 
 ### <a name="function-alias"></a>Függvény aliasa
 
-A függvény aliasa a UDA azonosítója. Stream Analytics lekérdezésben való híváskor mindig használjon UDA aliast a "uda" értékkel együtt. előtagot.
+A függvényalias az UDA-azonosító. A Stream Analytics-lekérdezésben történő behíváskor mindig uda aliast használjon egy "uda"-val együtt. előtagot.
 
 ### <a name="function-type"></a>Függvény típusa
 
-A UDA a Function típusának JavaScript- **uda**kell lennie.
+UDA esetén a függvénytípusnak **Javascript UDA-nak**kell lennie.
 
 ### <a name="output-type"></a>Kimenet típusa
 
-Egy adott típus, amely Stream Analytics a feladatokhoz, vagy "bármelyik", ha a lekérdezésben szeretné kezelni a típust.
+Egy adott típus, amelyet a Stream Analytics-feladat támogatott, vagy "Bármilyen", ha kezelni szeretné a típust a lekérdezésben.
 
 ### <a name="function-name"></a>Függvény neve
 
-A függvény objektumának neve. A függvény nevének meg kell egyeznie a UDA aliasával.
+A függvényobjektum neve. A függvény nevének meg kell egyeznie az UDA aliasévával.
 
-### <a name="method---init"></a>Metódus – init ()
+### <a name="method---init"></a>Módszer - init()
 
-Az init () metódus inicializálja az Összesítés állapotát. Ezt a metódust az ablak indításakor hívja meg a rendszer.
+Az init() metódus inicializálja az aggregátum állapotát. Ez a metódus az ablak indításakor jelenik meg.
 
-### <a name="method--accumulate"></a>Metódus – felhalmozási ()
+### <a name="method--accumulate"></a>Módszer – akkumuláció()
 
-A felhalmozási () metódus a UDA állapotát az előző állapot és az aktuális esemény értékei alapján számítja ki. Ezt a metódust akkor kell meghívni, amikor egy esemény időablakba kerül (TUMBLINGWINDOW, HOPPINGWINDOW, SLIDINGWINDOW vagy SESSIONWINDOW).
+A accumulate() metódus az előző állapot és az aktuális eseményértékek alapján számítja ki az UDA-állapotot. Ez a metódus akkor van meghívva, amikor egy esemény időablakba lép (TUMBLINGWINDOW, HOPPINGWINDOW, SLIDINGWINDOW vagy SESSIONWINDOW).
 
-### <a name="method--deaccumulate"></a>Metódus – felhalmozás ()
+### <a name="method--deaccumulate"></a>Módszer – deaccumulate()
 
-A defelhalmozási () metódus az előző állapot és az aktuális esemény értékei alapján újraszámítja az állapotot. Ezt a metódust akkor kell meghívni, amikor egy esemény elhagyja a SLIDINGWINDOW vagy a SESSIONWINDOW.
+A deaccumulate() metódus újraszámítja az állapotot az előző állapot és az aktuális eseményértékek alapján. Ez a metódus akkor lesz meghívva, ha egy esemény ből csúszóablak vagy sessionwindow lép.
 
-### <a name="method--deaccumulatestate"></a>Metódus – deaccumulateState ()
+### <a name="method--deaccumulatestate"></a>Módszer – deaccumulateState()
 
-A deaccumulateState () metódus újraszámítja az állapotot az előző állapot és egy ugrás állapota alapján. Ezt a metódust akkor kell meghívni, ha egy adott esemény egy HOPPINGWINDOW hagy.
+A deaccumulateState() metódus újraszámítja az állapotot az előző állapot és az ugrás állapota alapján. Ez a módszer akkor van meghívva, ha egy eseménykészlet hoppingwindow-t hagy.
 
-### <a name="method--computeresult"></a>Metódus – computeResult ()
+### <a name="method--computeresult"></a>Módszer – computeResult()
 
-A computeResult () metódus összesített eredményt ad vissza az aktuális állapot alapján. Ezt a metódust az időablak végén kell meghívni (TUMBLINGWINDOW, HOPPINGWINDOW, SLIDINGWINDOW vagy SESSIONWINDOW).
+A computeResult() metódus az aktuális állapot alapján adja vissza az összesített eredményt. Ezt a módszert egy időablak végén (TUMBLINGWINDOW, HOPPINGWINDOW, SLIDINGWINDOW vagy SESSIONWINDOW) nevezzük meg.
 
 ## <a name="javascript-uda-supported-input-and-output-data-types"></a>JavaScript UDA támogatott bemeneti és kimeneti adattípusok
-A JavaScript UDA-adattípusok esetében tekintse meg a **stream Analytics és a JavaScript típusú** [integrálás a JavaScript-UDF](stream-analytics-javascript-user-defined-functions.md)való átalakítását ismertető szakaszt.
+JavaScript UDA-adattípusok esetén olvassa el a [JavaScript UDF-ek integrálása](stream-analytics-javascript-user-defined-functions.md) **Stream Analytics és JavaScript típusú átalakítás** című szakaszt.
 
-## <a name="adding-a-javascript-uda-from-the-azure-portal"></a>JavaScript-UDA hozzáadása a Azure Portal
+## <a name="adding-a-javascript-uda-from-the-azure-portal"></a>JavaScript UDA hozzáadása az Azure Portalról
 
-Az alábbiakban bemutatjuk, hogyan hozhat létre UDA a portálról. Az itt használt példa a számítási idő súlyozott átlaga.
+Az alábbiakban végigsétálunk az UDA-nak a Portal-ból történő létrehozásának folyamatán. Az itt használt példa az idősúlyozott átlagok kiszámítása.
 
-Most hozzon létre egy JavaScript-UDA egy meglévő ASA-feladatban a következő lépések végrehajtásával.
+Most hozzon létre egy JavaScript UDA egy meglévő ASA-feladat a következő lépéseket.
 
-1. Jelentkezzen be Azure Portal, és keresse meg a meglévő Stream Analytics feladatot.
-1. Ezután kattintson a functions hivatkozásra a **feladatok topológiája**alatt.
-1. Új függvény hozzáadásához kattintson a **Hozzáadás** ikonra.
-1. Az új függvény nézetben válassza a **JavaScript uda** lehetőséget a függvény típusaként, majd megjelenik egy alapértelmezett uda-sablon a szerkesztőben.
-1. Töltse ki a "TWA" nevet a UDA-aliasként, és módosítsa a függvény implementációját a következőképpen:
+1. Jelentkezzen be az Azure Portalra, és keresse meg meglévő Stream Analytics-feladatát.
+1. Ezután kattintson a funkciók linkre **a FELADAT TOPOLÓGIA**csoportban.
+1. Új funkció hozzáadásához kattintson a **Hozzáadás** ikonra.
+1. Az Új függvény nézetben válassza a **JavaScript UDA** függvénytípust, majd megjelenik egy alapértelmezett UDA-sablon a szerkesztőben.
+1. Töltse ki a "TWA" uda aliasként, és módosítsa a függvény implementációját a következőképpen:
 
     ```JavaScript
     // Sample UDA which calculate Time-Weighted Average of incoming values.
@@ -167,13 +167,13 @@ Most hozzon létre egy JavaScript-UDA egy meglévő ASA-feladatban a következő
     }
     ```
 
-1. Ha a Save (Mentés) gombra kattint, a UDA megjelenik a függvények listáján.
+1. Miután a "Mentés" gombra kattintott, az UDA megjelenik a funkciólistában.
 
-1. Kattintson a "TWA" nevű új függvényre, és tekintse meg a függvény definícióját.
+1. Kattintson az új funkció "TWA", akkor ellenőrizze a funkció meghatározása.
 
-## <a name="calling-javascript-uda-in-asa-query"></a>JavaScript UDA meghívása az ASA-lekérdezésben
+## <a name="calling-javascript-uda-in-asa-query"></a>JavaScript UDA hívása az ASA-lekérdezésben
 
-Azure Portal és nyissa meg a feladatot, szerkessze a lekérdezést, és hívja meg a TWA () függvényt egy "uda." mandátum-előtaggal. Példa:
+Az Azure Portalon, és nyissa meg a feladatot, szerkesztheti a lekérdezést, és hívja meg a TWA() függvényt az "uda" megbízáselőtaggal. Példa:
 
 ```SQL
 WITH value AS
@@ -191,9 +191,9 @@ FROM value
 GROUP BY TumblingWindow(minute, 5)
 ```
 
-## <a name="testing-query-with-uda"></a>Lekérdezés tesztelése a UDA
+## <a name="testing-query-with-uda"></a>Lekérdezés tesztelése UDA-val
 
-Hozzon létre egy helyi JSON-fájlt az alábbi tartalommal, töltse fel a fájlt Stream Analytics feladatokba, és tesztelje a fenti lekérdezést.
+Hozzon létre egy helyi JSON-fájlt az alábbi tartalommal, töltse fel a fájlt a Stream Analytics-feladatba, és tesztelje a fenti lekérdezést.
 
 ```JSON
 [
@@ -223,14 +223,14 @@ Hozzon létre egy helyi JSON-fájlt az alábbi tartalommal, töltse fel a fájlt
 ]
 ```
 
-## <a name="get-help"></a>Segítség
+## <a name="get-help"></a>Segítségkérés
 
 További segítségért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
+* [Bevezetés az Azure Stream Analytics szolgáltatásba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
-* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics lekérdezés nyelvi referenciája](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
+* [Az Azure Stream Analytics lekérdezési nyelvének hivatkozása](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Az Azure Stream Analytics felügyeleti REST API-hivatkozása](https://msdn.microsoft.com/library/azure/dn835031.aspx)

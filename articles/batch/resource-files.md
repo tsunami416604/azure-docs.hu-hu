@@ -1,48 +1,48 @@
 ---
-title: Erőforrás-fájlok létrehozása és használata – Azure Batch
-description: Megtudhatja, hogyan hozhat létre batch-forrásfájlokat különböző bemeneti forrásokból. Ez a cikk néhány gyakori módszert ismertet a virtuális gépek létrehozásához és elhelyezéséhez.
+title: Erőforrásfájlok létrehozása és használata – Azure Batch
+description: Ismerje meg, hogyan hozhat létre Batch erőforrásfájlokat különböző bemeneti forrásokból. Ez a cikk néhány gyakori módszert tartalmaz a virtuális gépek létrehozásához és helytasztásához.
 services: batch
 author: LauraBrenner
 manager: evansma
 ms.service: batch
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/18/2020
 ms.author: labrenne
-ms.openlocfilehash: dd8046891362cf4d4d7eed805fbc13d0f784a99c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0fe859ac30e7b8050d1f4688d7cf106a465e7566
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019264"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531141"
 ---
-# <a name="creating-and-using-resource-files"></a>Erőforrás-fájlok létrehozása és használata
+# <a name="creating-and-using-resource-files"></a>Erőforrásfájlok létrehozása és használata
 
-Egy Azure Batch feladatnak gyakran kell valamilyen adattípust feldolgoznia. Az erőforrásfájl azt jelenti, hogy az adatok a Batch virtuális gépre (VM) feladaton keresztül adhatók meg. Az összes típusú feladat támogatja az erőforrás-fájlokat: feladatok, indítási feladatok, feladat-előkészítési feladatok, feladat-felszabadítási feladatok stb. Ez a cikk néhány gyakori módszert ismertet az erőforrás-fájlok létrehozásával és a virtuális gépekre való elhelyezésével kapcsolatban.  
+Az Azure Batch-feladat feldolgozása gyakran valamilyen adatfeldolgozási. Erőforrás-fájlok a módja annak, hogy ezeket az adatokat a Batch virtuális gép (VM) egy feladaton keresztül. Minden típusú feladat támogatja az erőforrásfájlokat: tevékenységek, kezdési feladatok, feladat-előkészítési feladatok, feladatkiadási feladatok stb. Ez a cikk néhány gyakori módszert tartalmaz az erőforrásfájlok létrehozásához és a virtuális gépre való helytázásához.  
 
-Az erőforrás-fájlok egy olyan mechanizmus, amellyel az adatkötegbe helyezhető egy virtuális gépre, de az adattípusa és a használatuk módja rugalmas. Vannak azonban néhány gyakori felhasználási eset:
+Az erőforrásfájlok adatokat helyeznek el a batch-ben lévő virtuális gépre, de az adatok típusa és felhasználása rugalmas. Vannak azonban néhány gyakori használati esetek:
 
-1. Általános fájlok kiépítése az egyes virtuális gépeken egy indítási tevékenységben lévő erőforrás-fájlok használatával
-1. A tevékenységek által feldolgozandó bemeneti adatok kiépítése
+1. Közös fájlok kiépítése minden virtuális gépen erőforrásfájlok használatával egy indítási feladaton
+1. Feladatok által feldolgozandó bemeneti adatok biztosítása
 
-Gyakori fájlok lehetnek például egy indítási feladatban lévő fájlok, amelyek a tevékenységek által futtatott alkalmazások telepítéséhez használatosak. A bemeneti adatok lehetnek nyers képek vagy videók adatai, illetve a Batch által feldolgozandó összes adat.
+A gyakori fájlok lehetnek például a feladatok futtatásához használt alkalmazások telepítéséhez használt indítási feladat fájljai. A bemeneti adatok lehetnek nyers kép- vagy videoadatok, vagy a Batch által feldolgozandó információk.
 
-## <a name="types-of-resource-files"></a>Az erőforrásfájl típusai
+## <a name="types-of-resource-files"></a>Az erőforrásfájlok típusai
 
-Az erőforrás-fájlok létrehozásához néhány különböző lehetőség áll rendelkezésre. Az erőforrás-fájlok létrehozási folyamata attól függően változik, hogy hol tárolja az eredeti adatforrást.
+Az erőforrásfájlok létrehozásához több különböző lehetőség áll rendelkezésre. Az erőforrásfájlok létrehozási folyamata az eredeti adatok tárolási helyétől függően változik.
 
-Az erőforrásfájl létrehozásának lehetőségei:
+Erőforrásfájl létrehozásának lehetőségei:
 
-- [Storage-tároló URL-címe](#storage-container-url): a rendszer létrehoz egy erőforráscsoportot az Azure-ban található bármely Storage-tárolóból.
-- [Storage-tároló neve](#storage-container-name): a köteghez csatolt Azure Storage-fiókban lévő tároló nevéből hoz létre egy erőforráscsoportot.
-- [Webes végpont](#web-endpoint): bármely érvényes HTTP URL-címről létrehoz egy erőforrásfájl-fájlt
+- [Tároló URL-címe:](#storage-container-url)Erőforrásfájlt hoz létre az Azure bármely tárolótárolójából
+- [Tároló neve:](#storage-container-name)Erőforrás-fájlt hoz létre egy tároló nevéből egy Batch-hez kapcsolódó Azure-tárfiókban
+- [Webvégpont](#web-endpoint): Erőforrásfájlt hoz létre bármely érvényes HTTP-URL-címből
 
-### <a name="storage-container-url"></a>Storage-tároló URL-címe
+### <a name="storage-container-url"></a>Tároló URL-címe
 
-A Storage-tároló URL-címe azt jelenti, hogy a megfelelő engedélyekkel férhet hozzá az Azure Storage-tárolóban található fájlokhoz.
+A tároló URL-címének használatával a megfelelő engedélyekkel hozzáférhet az Azure bármely tárolójában lévő fájlokhoz. 
 
-Ebben C# a példában a fájlok már fel lettek töltve egy Azure Storage-tárolóba blob Storage-ként. Az erőforrásfájl létrehozásához szükséges adateléréshez először be kell szereznie a tárolóhoz való hozzáférést.
+Ebben a C# példában a fájlok már feltöltve egy Azure storage blob storage-ként egy Azure storage-ba. Az erőforrásfájl létrehozásához szükséges adatok eléréséhez először hozzá kell férnünk a tárolótárolóhoz.
 
-Hozzon létre egy közös hozzáférésű aláírás (SAS) URI-t a Storage-tároló eléréséhez szükséges megfelelő engedélyekkel. Állítsa be az SAS lejárati idejét és engedélyeit. Ebben az esetben nincs megadva kezdési időpont, így a SAS azonnal érvényes lesz, és a létrehozása után két órával lejár.
+Hozzon létre egy közös hozzáférésű aláírás (SAS) URI-t a tárolótároló eléréséhez megfelelő engedélyekkel. Állítsa be a SAS lejárati idejét és engedélyeit. Ebben az esetben nincs megadva kezdési időpont, így a SAS azonnal érvényessé válik, és két órával a létrehozása után lejár.
 
 ```csharp
 SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
@@ -53,9 +53,9 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 ```
 
 > [!NOTE]
-> A tárolók hozzáféréséhez `Read` és `List` engedélyekkel kell rendelkeznie, míg a blob-hozzáféréssel csak `Read` engedélyre van szükség.
+> A tároló-hozzáféréshez `Read` mindkettővel `List` és engedélyekkel kell rendelkeznie, `Read` míg a blob-hozzáféréshez csak engedélyszükséges.
 
-Az engedélyek konfigurálása után hozza létre az SAS-jogkivonatot, és formázza az SAS URL-címét a tárolóhoz való hozzáféréshez. A Storage-tárolóhoz tartozó formázott SAS URL-cím használatával [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet)tartalmazó erőforrásfájl hozható elő.
+Az engedélyek konfigurálása után hozza létre a SAS-jogkivonatot, és formázza a SAS URL-címét a tárolótárolóhoz való hozzáféréshez. A tároló formázott SAS-URL-címének használatával [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet)hozzon létre egy erőforrásfájlt a használatával.
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -66,15 +66,15 @@ string containerSasUrl = String.Format("{0}{1}", container.Uri, sasToken);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ```
 
-Az SAS URL-cím generálásának alternatívája a névtelen, nyilvános olvasási hozzáférés engedélyezése egy tárolóhoz és a blobokhoz az Azure Blob Storage-ban. Így csak olvasási hozzáférést biztosíthat ezekhez az erőforrásokhoz anélkül, hogy meg kellene osztania a fiók kulcsát, és nem igényel SAS-t. A nyilvános olvasási hozzáférés jellemzően olyan forgatókönyvekhez használatos, amelyekben bizonyos Blobok mindig elérhetők a névtelen olvasási hozzáféréshez. Ha ez a forgatókönyv megfelel a megoldásnak, a blob-adataihoz való hozzáférés kezelésével kapcsolatos további tudnivalókért tekintse meg a Blobok [Névtelen elérését](../storage/blobs/storage-manage-access-to-resources.md) ismertető cikket.
+A SAS-URL-cím létrehozásának alternatívája a névtelen, nyilvános olvasási hozzáférés engedélyezése egy tárolóhoz és annak blobjaihoz az Azure Blob storage-ban. Ezzel írásvédett hozzáférést biztosíthat ezekhez az erőforrásokhoz a fiókkulcs megosztása és SAS megkövetelése nélkül. A nyilvános olvasási hozzáférés általában olyan esetekben használatos, ahol bizonyos blobok mindig elérhetők legyenek a névtelen olvasási hozzáféréshez. Ha ez a forgatókönyv megfelel a megoldásnak, tekintse meg a névtelen hozzáférést a [blobok](../storage/blobs/storage-manage-access-to-resources.md) cikket a blob adatokhoz való hozzáférés kezeléséről.
 
-### <a name="storage-container-name"></a>Storage-tároló neve
+### <a name="storage-container-name"></a>Tároló tárolójának neve
 
-A SAS URL-cím konfigurálása és létrehozása helyett használhatja az Azure Storage-tároló nevét a blob-adatai eléréséhez. A használt Storage-tárolónak az Azure Storage-fiókban kell lennie, amely a Batch-fiókjához van csatolva, amelyet az autostorage-fióknak nevezünk. Az autostorage-fiók tárolási tárolójának használatával megkerülheti az SAS URL-cím konfigurálását és létrehozását a tárolók eléréséhez.
+SAS-URL-cím konfigurálása és létrehozása helyett használhatja az Azure storage-tároló nevét a blob adatok eléréséhez. A használt tárolónak a Batch-fiókhoz kapcsolódó Azure storage-fiókban kell lennie. Ezt a tárfiókot automatikus tárfióknak nevezzük. Az automatikus tárolási tároló használatával megkerülheti a SAS-URL-cím konfigurálását és létrehozását a tárolótároló eléréséhez.
 
-Ebben a példában feltételezzük, hogy az erőforrás-fájl létrehozásához használt adatforgalom már egy, a Batch-fiókhoz társított Azure Storage-fiókban van. Ha nem rendelkezik automatikus Storage-fiókkal, tekintse meg a [Batch-fiók létrehozása](batch-account-create-portal.md) című témakör lépéseit, amelyekkel megtudhatja, hogyan hozhat létre és kapcsolhat össze egy fiókot.
+Ebben a példában feltételezzük, hogy az erőforrásfájl létrehozásához használt adatok már a Batch-fiókhoz kapcsolódó Azure Storage-fiókban vannak. Ha nem rendelkezik automatikus tárolási fiókkal, tekintse meg a [Kötegfiók létrehozása](batch-account-create-portal.md) című témakör lépéseit a fiók létrehozásáról és csatolásáról.
 
-A társított Storage-fiók használatával nem kell SAS URL-címet létrehoznia és konfigurálnia a tárolóban. Ehelyett adja meg a Storage-tároló nevét a társított Storage-fiókban.
+Egy csatolt tárfiók használatával nem kell létrehoznia és konfigurálnia egy SAS URL-címet egy tárolótárolóhoz. Ehelyett adja meg a tároló a kapcsolódó tárfiókban a tároló nevét.
 
 ```csharp
 ResourceFile inputFile = ResourceFile.FromAutoStorageContainer(containerName);
@@ -82,9 +82,9 @@ ResourceFile inputFile = ResourceFile.FromAutoStorageContainer(containerName);
 
 ### <a name="web-endpoint"></a>Webes végpont
 
-Az Azure Storage szolgáltatásba nem feltöltött adatfájlok továbbra is használhatók az erőforrások létrehozásához. A bemeneti adatokat tartalmazó érvényes HTTP URL-címet is megadhatja. A rendszer az URL-címet a Batch API számára adja meg, majd az adatfájlt használja az erőforrás létrehozásához.
+Az Azure Storage-ba nem feltöltött adatok továbbra is felhasználhatók erőforrásfájlok létrehozásához. A bemeneti adatokat tartalmazó érvényes HTTP-URL-címet megadhat. Az URL-cím a Batch API-hoz, majd az adatok at egy erőforrásfájl létrehozásához használja.
 
-A következő C# példában a bemeneti adatok a fiktív GitHub-végponton vannak tárolva. Az API lekérdezi a fájlt az érvényes webes végpontból, és létrehoz egy, a feladat által felhasználható forrásfájlt. Ehhez a forgatókönyvhöz nem szükségesek hitelesítő adatok.
+A következő C# példában a bemeneti adatok egy fiktív GitHub-végponton található. Az API lekéri a fájlt az érvényes webes végpontról, és létrehoz egy erőforrásfájlt, amelyet a feladat használ fel. Ehhez a forgatókönyvhöz nincs szükség hitelesítő adatokra.
 
 ```csharp
 ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt", filePath);
@@ -92,23 +92,23 @@ ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt",
 
 ## <a name="tips-and-suggestions"></a>Tippek és javaslatok
 
-Az egyes Azure Batch-feladatok különböző fájlokat használnak, ezért a Batch olyan lehetőségeket kínál, amelyekkel a fájlok kezelhetők a feladatokban. A következő forgatókönyvek nem teljes körűek, hanem néhány gyakori szituációra vonatkoznak, és javaslatokat nyújtanak.
+Minden Egyes Azure Batch-feladat másként használja a fájlokat, ezért a Batch rendelkezik a feladatok fájljainak kezelésére rendelkezésre álló lehetőségekkel. A következő forgatókönyvek nem célja, hogy átfogó, hanem néhány gyakori helyzetek és ajánlásokat.
 
-### <a name="many-resource-files"></a>Számos erőforrás-fájl
+### <a name="many-resource-files"></a>Számos erőforrásfájl
 
-A Batch-feladat több olyan feladatot is tartalmazhat, amelyek mindegyike azonos, közös fájlokat használ. Ha az általános feladatsorok számos feladat között vannak megosztva, akkor a fájlok használata helyett a fájlokat tartalmazó alkalmazáscsomag használata jobb megoldás lehet. Az alkalmazás csomagjai a letöltési sebesség optimalizálását biztosítják. Emellett az alkalmazáscsomag adatai is gyorsítótárazva vannak a feladatok között, így ha a feladatsorok nem változnak gyakran, az alkalmazáscsomag hasznos lehet a megoldáshoz. Alkalmazáscsomag használata esetén nem kell manuálisan több erőforrást kezelnie, vagy SAS URL-címeket létrehoznia az Azure Storage-ban található fájlokhoz való hozzáféréshez. A Batch a háttérben működik együtt az Azure Storage szolgáltatással az alkalmazáscsomag számítási csomópontokon való tárolásához és üzembe helyezéséhez.
+A kötegelt feldolgozás több olyan feladatot is tartalmazhat, amelyek mindegyike ugyanazokat a gyakori fájlokat használja. Ha a gyakori feladatfájlok sok feladat között vannak megosztva, jobb megoldás lehet, ha az alkalmazáscsomagot használja a fájlok tárolására az erőforrásfájlok használata helyett. Az alkalmazáscsomagok optimalizálást biztosítanak a letöltési sebességhez. Emellett az alkalmazáscsomagokban lévő adatok a feladatok között gyorsítótárazva vannak, így ha a feladatfájlok nem változnak gyakran, az alkalmazáscsomagok megfelelőek lehetnek a megoldáshoz. Az alkalmazáscsomagok segítségével nem kell manuálisan kezelnie több erőforrásfájlt, vagy SAS URL-címeket létrehoznia az Azure Storage-ban lévő fájlok eléréséhez. Batch működik a háttérben az Azure Storage tárolja és telepítse az alkalmazáscsomagok számítási csomópontok.
 
-Ha az egyes feladatokhoz több fájl is tartozik, az erőforrás-fájlok többnyire a legjobb megoldásnak bizonyulnak. Az egyedi fájlokat használó feladatokat gyakran frissíteni kell vagy le kell cserélni, ami nem olyan egyszerű, mint az alkalmazás-csomagok tartalmának használata. Az erőforrás-fájlok további rugalmasságot biztosítanak az egyes fájlok frissítéséhez, hozzáadásához és szerkesztéséhez.
+Ha minden feladatban sok fájl található, az erőforrásfájlok a legjobb megoldás, mivel az egyedi fájlokat használó feladatokat gyakran frissíteni vagy cserélni kell, ami nem olyan egyszerű az alkalmazáscsomagok tartalmával. Az erőforrásfájlok további rugalmasságot biztosítanak az egyes fájlok frissítéséhez, hozzáadásához vagy szerkesztéséhez.
 
-### <a name="number-of-resource-files-per-task"></a>Erőforrás-fájlok száma tevékenység alapján
+### <a name="number-of-resource-files-per-task"></a>Erőforrásfájlok száma feladatonként
 
-Ha egy feladatban több száz erőforrás van megadva, a Batch elutasítja a feladatát, mert túl nagy. A feladatok minimalizálása érdekében a legjobb, ha a feladatban lévő erőforrás-fájlok számát minimálisra csökkenti.
+Ha egy tevékenységen több száz erőforrásfájl van megadva, előfordulhat, hogy a Batch túl nagyként utasítja el a feladatot. A legjobb, ha a feladatokat kicsiben tartja, minimalizálva magának a tevékenységnek az erőforrásfájljait.
 
-Ha nincs mód a feladat által igényelt fájlok számának minimalizálására, akkor optimalizálhatja a feladatot úgy, hogy létrehoz egy erőforrás-tárolót, amely az erőforrás-fájlok tárolóhelyére hivatkozik. Ehhez helyezze el az erőforrás-fájlokat egy Azure Storage-tárolóba, és használja az erőforrás-fájlok különböző "Container" módjait. A blob-előtag beállításaival megadhatja a feladatokhoz letölthető fájlok gyűjteményeit.
+Ha nincs mód a feladat által igényelt fájlok számának minimalizálására, optimalizálhatja a feladatot, ha egyetlen erőforrásfájlt hoz létre, amely az erőforrásfájlok tárolótárolójára hivatkozik. Ehhez helyezze az erőforrásfájlokat egy Azure Storage-tárolóba, és használja a különböző "tároló" [módszerek](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods) erőforrásfájlok. A blob előtag beállításaival megadhatja a feladatokhoz letöltendő fájlok gyűjteményeit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ismerje meg az [alkalmazás csomagjait](batch-application-packages.md) az erőforrás-fájlok alternatívájaként.
-- További információ a tárolók erőforrás-fájlokhoz való használatáról: [tároló munkaterhelések](batch-docker-container-workloads.md).
-- Ha szeretné megtudni, hogyan gyűjtheti és mentheti a tevékenységek kimeneti adatait, tekintse meg a feladatok [és tevékenységek kimenetének](batch-task-output.md)megtartása című témakört.
+- Információ az [alkalmazáscsomagokról](batch-application-packages.md) az erőforrásfájlok alternatívájaként.
+- Az erőforrásfájlok tárolóinak használatáról a [Tárolómunkaterhelések](batch-docker-container-workloads.md)című témakörben talál további információt.
+- A feladatok kimeneti adatainak összegyűjtéséről és mentéséről a [Feladat és a feladat kimenetének megőrzése](batch-task-output.md)című témakörben olvashat.
 - Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).

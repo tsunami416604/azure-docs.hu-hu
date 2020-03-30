@@ -1,43 +1,43 @@
 ---
 title: Prémium szintű Azure-fájlmegosztás létrehozása
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre prémium szintű Azure-fájlmegosztást.
+description: Ebben a cikkben megtudhatja, hogyan hozhat létre prémium szintű Azure-fájlmegosztást.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 237846ec3adda208126aeb22e7900cbf5118ee95
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 7680a28b165dc252159cf95311439508d3c867e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598663"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529107"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Prémium szintű Azure-fájlmegosztás létrehozása
-A prémium szintű fájlmegosztás a SSD-tárolóeszközökön érhető el, és hasznos az IO-igényes számítási feladatokhoz, beleértve az üzemeltetési adatbázisokat és a nagy teljesítményű számítástechnikai (HPC) szolgáltatásokat. A prémium szintű fájlmegosztás a FileStorage-fióknak nevezett, speciális célú Storage-fiókban van tárolva. A prémium fájlmegosztás nagy teljesítményű és nagyvállalati szintű alkalmazásokhoz lett tervezve, amelyek konzisztens, alacsony késésű, magas IOPS és nagy átviteli sebességű megosztásokat biztosítanak.
+A prémium szintű fájlmegosztások ssd-s (SSD) adathordozókon találhatók, és hasznosak az IO-igényes számítási feladatokhoz, beleértve az adatbázisok üzemeltetését és a nagy teljesítményű számítástechnikát (HPC). Prémium fájlmegosztások vannak elrendezve egy speciális célú tárfiók-típusú, úgynevezett FileStorage-fiók. A prémium szintű fájlmegosztások nagy teljesítményű és nagyvállalati méretű alkalmazásokhoz készültek, így konzisztens, alacsony késleltetésű, magas IOPS-és nagy átviteli sebességű megosztásokat biztosítanak.
 
-Ez a cikk bemutatja, hogyan hozhatja létre ezt az új fióktípus [Azure Portal](https://portal.azure.com/), Azure PowerShell és Azure CLI használatával.
+Ez a cikk bemutatja, hogyan hozhat létre ezt az új fióktípust az [Azure Portal](https://portal.azure.com/), az Azure PowerShell és az Azure CLI használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure-erőforrások, például a prémium szintű Azure-fájlmegosztás eléréséhez Azure-előfizetésre van szükség. Ha még nem rendelkezik előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a Kezdés előtt.
+Az Azure-erőforrások, beleértve a prémium Szintű Azure-fájlmegosztások eléréséhez szüksége lesz egy Azure-előfizetésre. Ha még nem rendelkezik előfizetéssel, akkor a kezdés előtt hozzon létre egy [ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
-## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Prémium fájlmegosztás létrehozása a Azure Portal használatával
+## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Prémium szintű fájlmegosztás létrehozása az Azure Portalon
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
-### <a name="create-a-filestorage-storage-account"></a>FileStorage-fiók létrehozása
+### <a name="create-a-filestorage-storage-account"></a>Fájltároló tárfiók létrehozása
 
-Most már készen áll a Storage-fiók létrehozására.
+Most már készen áll a tárfiók létrehozására.
 
-Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforráscsoport egy logikai tároló az Azure-szolgáltatások csoportosításához. A tárfiók létrehozásakor lehetősége van létrehozni egy új erőforráscsoportot, vagy választhat egy meglévő erőforráscsoportot. Ez a cikk bemutatja, hogyan hozhat létre egy új erőforráscsoportot.
+Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforráscsoport egy logikai tároló az Azure-szolgáltatások csoportosításához. A tárfiók létrehozásakor lehetősége van létrehozni egy új erőforráscsoportot, vagy választhat egy meglévő erőforráscsoportot. Ez a cikk bemutatja, hogyan hozhat létre új erőforráscsoportot.
 
-1. A Azure Portal válassza a bal oldali menüben a **Storage-fiókok** lehetőséget.
+1. Az Azure Portalon válassza **a storage-fiókok** a bal oldali menüben.
 
-    ![Azure Portal fő lap Storage-fiók kiválasztása](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
+    ![Az Azure Portal főlapjának kiválasztása tárfiók](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
 1. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
 1. Válassza ki azt az előfizetést, amelyben létre kívánja hozni a tárfiókot.
@@ -45,63 +45,63 @@ Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforr�
 
 1. Ezután adja meg a tárfiók nevét. A választott névnek az Azure-on belül egyedinek kell lennie. A név 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
 1. Válassza ki a tárfiókja helyét, vagy használja az alapértelmezett helyet.
-1. A **teljesítmény** beállításnál válassza a **prémium**lehetőséget.
-1. Válassza a **Fiók típusa** lehetőséget, és válassza a **FileStorage**lehetőséget.
-1. Hagyja meg a **replikálást** a **helyileg REDUNDÁNS tárolás (LRS)** alapértelmezett értékére.
+1. A **Teljesítmény** csoportban válassza a **Prémium**lehetőséget.
+1. Válassza **a Fióktípusú** lehetőséget, majd a **FileStorage**lehetőséget.
+1. Hagyja, hogy a **Replikáció** beállítása a **helyileg redundáns tárolás (LRS)** alapértelmezett értékére van állítva.
 
-    ![Storage-fiók létrehozása prémium fájlmegosztás esetén](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
+    ![Prémium fájlmegosztáshoz hozzunk létre tárfiókot](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
 1. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához válassza a **Felülvizsgálat + létrehozás** elemet.
 1. Kattintson a **Létrehozás** gombra.
 
-A Storage-fiók erőforrásának létrehozása után navigáljon hozzá.
+A tárfiók-erőforrás létrehozása után keresse meg azt.
 
 ### <a name="create-a-premium-file-share"></a>Prémium szintű fájlmegosztás létrehozása
 
-1. A Storage-fiók bal oldali menüjében görgessen a **Fájlszolgáltatások** szakaszhoz, majd válassza a **fájlok**lehetőséget.
-1. Prémium fájlmegosztás létrehozásához válassza a **fájlmegosztás** lehetőséget.
-1. Adjon meg egy nevet és egy kívánt kvótát a fájlmegosztás számára, majd válassza a **Létrehozás**lehetőséget.
+1. A tárfiók bal oldali menüjében görgessen a **Fájlszolgáltatás** szakaszhoz, és válassza a **Fájlok**lehetőséget.
+1. Prémium fájlmegosztás létrehozásához válassza a **Fájlmegosztás** lehetőséget.
+1. Adja meg a fájlmegosztás nevét és kívánt kvótáját, majd válassza a **Létrehozás gombot.**
 
 > [!NOTE]
-> A kiosztott megosztási méretek a megosztási kvóta szerint vannak megadva, a fájlmegosztás számlázása a kiosztott méret alapján történik, további részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/storage/files/) .
+> A kiosztott megosztási méretek a megosztási kvóta, a fájlmegosztások számlázása a kiosztott méret, további részletekért tekintse meg az [árképzési oldalon.](https://azure.microsoft.com/pricing/details/storage/files/)
 
    ![Prémium szintű fájlmegosztás létrehozása](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha meg szeretné tisztítani a cikkben létrehozott erőforrásokat, egyszerűen törölheti az erőforráscsoportot. Az erőforráscsoport törlésével a társított Storage-fiók, valamint az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
+Ha törölni szeretné a cikkben létrehozott erőforrásokat, egyszerűen törölheti az erőforráscsoportot. Az erőforráscsoport törlése a társított tárfiókot, valamint az erőforráscsoporthoz társított egyéb erőforrásokat is törli.
 
-## <a name="create-a-premium-file-share-using-powershell"></a>Prémium fájlmegosztás létrehozása a PowerShell használatával
+## <a name="create-a-premium-file-share-using-powershell"></a>Prémium szintű fájlmegosztás létrehozása a PowerShell használatával
 
 ### <a name="create-an-account-using-powershell"></a>Fiók létrehozása a PowerShell használatával
 
 Először telepítse a [PowerShellGet](/powershell/scripting/gallery/installing-psget) modul legújabb verzióját.
 
-Ezután frissítse a PowerShell-modult, jelentkezzen be az Azure-előfizetésbe, hozzon létre egy erőforráscsoportot, majd hozzon létre egy Storage-fiókot.
+Ezután frissítse a PowerShell-modult, jelentkezzen be az Azure-előfizetésbe, hozzon létre egy erőforráscsoportot, majd hozzon létre egy tárfiókot.
 
 ### <a name="upgrade-your-powershell-module"></a>A PowerShell-modul frissítése
 
-Ha prémium szintű fájlmegosztást szeretne használni a PowerShell-lel, telepítenie kell az az. Storage modul Version 1.4.0 vagy a legújabb az. Storage modult.
+A PowerShell prémium szintű fájlmegosztásának kezeléséhez telepítenie kell egy Az.Storage modul 1.4.0-s verzióját vagy a legújabb Az.Storage-modult.
 
-Először nyissa meg egy PowerShell-munkamenetet emelt szintű engedélyekkel.
+Indítsa el egy emelt szintű engedélyekkel rendelkező PowerShell-munkamenet megnyitásával.
 
-Telepítse az az. Storage modult:
+Az Az.Storage modul telepítése:
 
 ```powershell
 Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 ```
 
-### <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetésbe
+### <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be Azure-előfizetésbe
 
-Használja a `Connect-AzAccount` parancsot, és kövesse a képernyőn megjelenő utasításokat a hitelesítéshez.
+Használja `Connect-AzAccount` a parancsot, és kövesse a képernyőn megjelenő utasításokat a hitelesítéshez.
 
 ```powershell
 Connect-AzAccount
 ```
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Új erőforráscsoport PowerShell-lel való létrehozásához használja a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot:
+Ha új erőforráscsoportot szeretne létrehozni a PowerShell használatával, használja a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot:
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -111,9 +111,9 @@ $location = "westus2"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-### <a name="create-a-filestorage-storage-account"></a>FileStorage-fiók létrehozása
+### <a name="create-a-filestorage-storage-account"></a>FileStorage-tárfiók létrehozása
 
-FileStorage Storage-fiók PowerShellből való létrehozásához használja a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) parancsot:
+FileStorage-tárfiók létrehozásához a PowerShellből használja a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) parancsot:
 
 ```powershell
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
@@ -121,10 +121,10 @@ $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fil
 
 ### <a name="create-a-premium-file-share"></a>Prémium szintű fájlmegosztás létrehozása
 
-Most, hogy rendelkezik egy FileStorage-fiókkal, létrehozhat egy prémium szintű fájlmegosztást. Hozzon létre egyet a [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) parancsmag használatával.
+Most, hogy rendelkezik egy FileStorage-fiókkal, létrehozhat egy prémium fájlmegosztást. A [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) parancsmag használatával hozzon létre egyet.
 
 > [!NOTE]
-> A kiosztott megosztási méretek a megosztási kvóta szerint vannak megadva, a fájlmegosztás számlázása a kiosztott méret alapján történik, további részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/storage/files/) .
+> A kiosztott megosztási méretek a megosztási kvóta, a fájlmegosztások számlázása a kiosztott méret, további részletekért tekintse meg az [árképzési oldalon.](https://azure.microsoft.com/pricing/details/storage/files/)
 
 ```powershell
 New-AzStorageShare `
@@ -134,23 +134,23 @@ New-AzStorageShare `
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az erőforráscsoport és a hozzá tartozó erőforrások eltávolításához, beleértve az új Storage-fiókot is, használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot: 
+Az erőforráscsoport és a hozzá tartozó erőforrások eltávolításához, beleértve az új tárfiókot is, használja az [Eltávolítás-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot: 
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="create-a-premium-file-share-using-azure-cli"></a>Prémium fájlmegosztás létrehozása az Azure CLI-vel
+## <a name="create-a-premium-file-share-using-azure-cli"></a>Prémium szintű fájlmegosztás létrehozása az Azure CLI használatával
 
-Azure Cloud Shell indításához jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+Az Azure Cloud Shell elindításához jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-Ha be szeretné jelentkezni a CLI helyi telepítésére, először győződjön meg arról, hogy rendelkezik a legújabb verzióval, majd futtassa a login parancsot:
+Ha be szeretne jelentkezni a CLI helyi telepítésébe, először győződjön meg arról, hogy a legújabb verzióval rendelkezik, majd futtassa a bejelentkezési parancsot:
 
-```cli
+```azurecli
 az login
 ```
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Ha az Azure CLI használatával kíván új erőforráscsoportot létrehozni, használja az [az group create](/cli/azure/group) parancsot.
 
@@ -160,9 +160,9 @@ az group create `
     --location westus2
 ```
 
-### <a name="create-a-filestorage-storage-account"></a>FileStorage-fiók létrehozása
+### <a name="create-a-filestorage-storage-account"></a>FileStorage-tárfiók létrehozása
 
-Az az [Storage Account Create](/cli/azure/storage/account) paranccsal hozzon létre egy FileStorage-fiókot az Azure CLI használatával.
+FileStorage-tárfiók létrehozásához az Azure CLI-ből használja az [az storage-fiók létrehozása](/cli/azure/storage/account) parancsot.
 
 ```azurecli-interactive
 az storage account create `
@@ -175,9 +175,9 @@ az storage account create `
 
 ### <a name="get-the-storage-account-key"></a>A tárfiókkulcs lekérése
 
-A Storage-fiókok kulcsai a Storage-fiók erőforrásaihoz való hozzáférést szabályozzák. ebben a cikkben a kulcsot használjuk a prémium fájlmegosztás létrehozásához. A kulcsok automatikusan jönnek létre a tárfiókok létrehozásakor. Az [az storage account keys list](/cli/azure/storage/account/keys) paranccsal kérheti le a tárfiók tárfiókkulcsait:
+A tárfiók kulcsai szabályozzák az erőforrásokhoz való hozzáférést egy tárfiókban, ebben a cikkben a kulcsot használjuk prémium szintű fájlmegosztás létrehozásához. A kulcsok automatikusan jönnek létre a tárfiókok létrehozásakor. Az [az storage account keys list](/cli/azure/storage/account/keys) paranccsal kérheti le a tárfiók tárfiókkulcsait:
 
-```azurecli-interactive 
+```azurecli-interactive
 STORAGEKEY=$(az storage account keys list \
     --resource-group "myResourceGroup" \
     --account-name $STORAGEACCT \
@@ -186,10 +186,10 @@ STORAGEKEY=$(az storage account keys list \
 
 ### <a name="create-a-premium-file-share"></a>Prémium szintű fájlmegosztás létrehozása
 
-Most, hogy rendelkezik egy FileStorage-fiókkal, létrehozhat egy prémium szintű fájlmegosztást. Hozzon létre egyet az az [Storage Share Create](/cli/azure/storage/share) paranccsal.
+Most, hogy rendelkezik egy filestorage fiókkal, létrehozhat egy prémium fájlmegosztást. Az [az storage share create](/cli/azure/storage/share) paranccsal hozzon létre egyet.
 
 > [!NOTE]
-> A kiosztott megosztási méretek a megosztási kvóta szerint vannak megadva, a fájlmegosztás számlázása a kiosztott méret alapján történik, további részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/storage/files/) .
+> A kiosztott megosztási méretek a megosztási kvóta, a fájlmegosztások számlázása a kiosztott méret, további részletekért tekintse meg az [árképzési oldalon.](https://azure.microsoft.com/pricing/details/storage/files/)
 
 ```azurecli-interactive
 az storage share create \
@@ -206,9 +206,9 @@ Az [az group delete](/cli/azure/group) paranccsal eltávolítható az erőforrá
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy prémium szintű fájlmegosztást hozott létre. Ha többet szeretne megtudni a fiók által kínált teljesítményről, folytassa a tervezési útmutató teljesítményszint szakaszával.
+Ebben a cikkben létrehozott egy prémium fájlmegosztást. Ha többet szeretne megtudni a teljesítmény ről, amelyet a fiók kínál, folytassa a tervezési útmutató teljesítményszint szakaszával.
 
 > [!div class="nextstepaction"]
-> [Fájlmegosztási rétegek](storage-files-planning.md#storage-tiers)
+> [Fájlmegosztási szintek](storage-files-planning.md#storage-tiers)

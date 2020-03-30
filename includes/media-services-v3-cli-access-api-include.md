@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 58e9156091702718dccd75eb4a57e5b6d8c1f073
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9d8de8826fc3dfcc2360eb3b6c82b3ff8d65d845
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896327"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79461231"
 ---
-## <a name="access-the-media-services-api"></a>Hozzáférés a Media Services API-hoz
+### <a name="access-the-media-services-api"></a>Hozzáférés a Media Services API-hoz
 
 Az Azure Media Services API-khoz való csatlakozáshoz használja az Azure AD szolgáltatásnév hitelesítését. Az alábbi parancs létrehoz egy Azure AD-alkalmazást, majd egy szolgáltatásnevet csatol a fiókhoz. A visszaadott értékeket használja az alkalmazás konfigurálásához.
 
-A szkript futtatása előtt cserélje le a `amsaccount`t, és `amsResourceGroup` az erőforrások létrehozásakor kiválasztott nevekre. `amsaccount`: a szolgáltatásnév csatolásához használni kívánt Azure Media Services-fiók neve.
+A parancsfájl futtatása előtt `amsaccount` cserélje `amsResourceGroup` le a és az okat az erőforrások létrehozásakor kiválasztott neveket. `amsaccount`: a szolgáltatásnév csatolásához használni kívánt Azure Media Services-fiók neve.
 
-Ha több előfizetéshez is rendelkezik hozzáféréssel, először állítsa be az aktív előfizetést arra az előfizetésre, ahol a Media Services fiókot létrehozták.
+Ha több előfizetéshez is hozzáfér, először állítsa be az aktív előfizetést arra az előfizetésre, amelyhez a Media Services-fiókot létrehozták.
 
 ```azurecli
 az account set --subscription subscriptionId

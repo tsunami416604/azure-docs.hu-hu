@@ -1,7 +1,7 @@
 ---
-title: 'Szöveg előfeldolgozása: modul-hivatkozás'
+title: 'Előfolyamat szövege: modul hivatkozása'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használható a szöveg megtisztítása és leegyszerűsítése Azure Machine Learning a szöveg előfeldolgozására szolgáló modul használatával.
+description: Ismerje meg, hogyan használhatja a Szöveg előfeldolgozása modult az Azure Machine Learningben a szöveg tisztításához és egyszerűsítéséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,82 +9,82 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: a8938eba0f7af995086ab1e2baba41aee7dc6330
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 6e4d4c8f798418e090caeba091dec33c71f0458f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153808"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477493"
 ---
 # <a name="preprocess-text"></a>Szöveg előfeldolgozása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
 
-A szöveg megtisztításához és leegyszerűsítéséhez használja az **előfeldolgozási szöveg** modult. Támogatja ezeket a gyakori szöveg-feldolgozási műveleteket:
+A **Szöveg előfeldolgozása** modullal tisztítsa meg és egyszerűsítheti a szöveget. Támogatja ezeket a gyakori szövegfeldolgozási műveleteket:
 
-* Leállítás – szavak eltávolítása
-* Adott cél karakterláncok keresése és cseréje reguláris kifejezések használatával
-* Morfológiai elemzéshez, amely több kapcsolódó szót konvertál egyetlen kanonikus űrlapra
-* Kis-és nagybetűk normalizálása
-* Bizonyos osztályok, például számok, speciális karakterek és ismétlődő karakterek (például "AAAA") eltávolítása
-* E-mailek és URL-címek azonosítása és eltávolítása
+* A stop-szavak eltávolítása
+* Reguláris kifejezések használata adott célkarakterláncok kereséséhez és cseréjéhez
+* Lemmatization, amely több kapcsolódó szót konvertál egyetlen kanonikus formává
+* Eset normalizálása
+* Bizonyos karakterosztályok, például számok, speciális karakterek és ismétlődő karakterek sorozatainak eltávolítása, mint például az "aaaa"
+* Az e-mailek és URL-ek azonosítása és eltávolítása
 
-Az **előfeldolgozó szöveges** modul jelenleg csak az angol nyelvet támogatja.
+A **Folyamat előtti szöveg** modul jelenleg csak az angol nyelvet támogatja.
 
 ## <a name="configure-text-preprocessing"></a>Szöveg előfeldolgozásának konfigurálása  
 
-1.  Adja hozzá az **előfeldolgozó szöveg** modult a folyamathoz Azure Machine learning. Ez a modul a **text Analytics**alatt található.
+1.  Adja hozzá a **folyamatelőre szöveg** modult az Azure Machine Learningben. Ezt a modult a **Text Analytics**csoportban találja.
 
-1. Csatlakoztasson egy olyan adatkészletet, amelynek legalább egy oszlopa tartalmaz szöveget.
+1. Olyan adatkészlet csatlakoztatása, amely legalább egy szöveget tartalmazó oszlopot tartalmaz.
 
-1. Válassza ki a nyelvet a **nyelv** legördülő listából.
+1. Válassza ki a nyelvet a **Nyelv** legördülő listából.
 
-1. **Tiszta szöveg oszlop**: válassza ki az elődolgozni kívánt oszlopot.
+1. **A tisztítandó szövegoszlop**: Jelölje ki az előfeldolgozni kívánt oszlopot.
 
-1. **Leállítási szavak eltávolítása**: akkor válassza ezt a lehetőséget, ha előre definiált nem indexelendő szót-listát kíván alkalmazni a Text (szöveg) oszlopra. 
+1. **Stop szavak eltávolítása**: Akkor válassza ezt a beállítást, ha előre definiált stopword listát szeretne alkalmazni a szövegoszlopra. 
 
-    A nem indexelendő szót listája nyelvtől függő és testreszabható.
+    A stopword listák nyelvfüggőek és testreszabhatók.
 
-1. **Morfológiai elemzéshez**: akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a szavak a kanonikus űrlapon megjelenjenek. Ez a beállítás akkor hasznos, ha csökkenteni szeretné az egyéb hasonló szöveges tokenek egyedi előfordulásának számát.
+1. **Lemmatization**: Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a szavak a gyűjtőformában jelennek meg. Ez a beállítás az egyébként hasonló szöveges tokenek egyedi előfordulásainak számának csökkentéséhez hasznos.
 
-    A morfológiai elemzéshez folyamat nagymértékben nyelvtől függ.
+    A lemmatization folyamat erősen nyelvfüggő..
 
-1. **Mondatok észlelése**: akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a modul az elemzés végrehajtásakor beillesszen egy mondathoz tartozó határt.
+1. **Mondatok észlelése**: Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a modul mondathatárjelet szúrjon be az elemzés végrehajtásakor.
 
-    Ez a modul három cső karakterből álló sorozatot használ, `|||` a lezáró mondatot jelöli.
+    Ez a modul három csőkarakterből álló sorozatot `|||` használ a mondatleterminátor ábrázolására.
 
-1. Az opcionális keresési és lecserélési műveleteket reguláris kifejezésekkel hajthatja végre.
+1. A választható keresés és csere műveleteket reguláris kifejezésekkel hajthatja végre.
 
-    * **Egyéni reguláris kifejezés**: határozza meg a keresett szöveget.
-    * **Egyéni helyettesítő sztring**: egyetlen helyettesítő érték definiálása.
+    * **Egyéni reguláris kifejezés:** Adja meg a keresett szöveget.
+    * **Egyéni cserekarakterlánc:** Adjon meg egyetlen csereértéket.
 
-1. Kis **-és nagybetűk normalizálása**: válassza ezt a beállítást, ha ASCII nagybetűs karaktereket szeretne a kisbetűs űrlapjaira konvertálni.
+1. **Kisbetűs sé normalizálja a kisbetűs tokot:** Akkor válassza ezt a beállítást, ha az ASCII kiskaraktereket kisbetűs alakokká szeretné konvertálni.
 
-    Ha a karakterek nincsenek normalizálva, a kis-és nagybetűket tartalmazó szó két különböző szónak tekintendő.
+    Ha a karakterek nem normalizálódnak, ugyanaz a szó nagy- és kisbetűkkel két különböző szónak számít.
 
-1. A következő típusokat is eltávolíthatja a feldolgozott kimeneti szövegből:
+1. A feldolgozott kimeneti szövegből a következő típusú karaktereket vagy karaktersorozatokat is eltávolíthatja:
 
-    * **Számok eltávolítása**: válassza ezt a lehetőséget, ha el szeretné távolítani a megadott nyelv összes numerikus karakterét. Az azonosító számok tartományra és nyelvtől függenek. Ha a numerikus karakterek egy ismert szó szerves részét képezik, előfordulhat, hogy a számot nem távolítja el a rendszer.
+    * **Számok eltávolítása**: Ezzel a beállítással távolíthatja el a megadott nyelv összes numerikus karakterét. Az azonosító számok tartományfüggőek és nyelvfüggőek. Ha a numerikus karakterek egy ismert szó szerves részét képezik, előfordulhat, hogy a szám nem lesz eltávolítva.
     
-    * **Speciális karakterek eltávolítása**: ezzel a beállítással távolíthatja el a nem alfanumerikus speciális karaktereket.
+    * **Speciális karakterek eltávolítása**: Ezzel a beállítással távolíthatja el a nem alfanumerikus speciális karaktereket.
     
-    * **Duplikált karakterek eltávolítása**: Ha ezt a beállítást választja, akkor a több mint kétszeresére ismétlődő sorokban távolítsa el a felesleges karaktereket. Például az "AAAAA" karakterláncot az "AA" értékre kell csökkenteni.
+    * **Ismétlődő karakterek eltávolítása**: Ezzel a beállítással további karaktereket távolíthat el minden olyan sorozatból, amely több mint kétszer ismétlődik. Például egy olyan sorozat, mint az "aaaaa" az "aa" lesz.
     
-    * **E-mail-címek eltávolítása**: válassza ezt a lehetőséget, ha el szeretné távolítani a formátum `<string>@<string>`ét.  
-    * **URL-címek eltávolítása**: válassza ezt a lehetőséget, ha el szeretné távolítani a következő URL-előtagokat tartalmazó sorozatot: `http`, `https`, `ftp`, `www`
+    * **E-mail címek eltávolítása**: Ezzel a `<string>@<string>`beállítással a formátum tetszőleges sorrendjét távolíthatja el.  
+    * **URL-ek eltávolítása:** Ezzel a beállítással eltávolíthatja a következő `http`URL-előtagokat tartalmazó szekvenciákat: , `https`, `ftp`,`www`
     
-1. Művelet-összevonások **kibontása**: Ez a beállítás csak olyan nyelvekre vonatkozik, amelyek művelet-összevonásokat használnak; jelenleg csak angol nyelven érhető el. 
+1. **Igeösszehúzódások kibontása:** Ez a beállítás csak azige-összehúzódásokat használó nyelvekre vonatkozik; jelenleg csak angol nyelven. 
 
-    A beállítás kiválasztásával például lecserélheti a *"nem maradok"* kifejezést a *"ne*maradjon ott" kifejezésre.
+    Ha például ezt a lehetőséget választja, a *"nem maradnál ott"* kifejezést a *"nem maradnál ott"* kifejezést.
 
-1. **Fordított perjelek normalizálása a perjelhez**: válassza ezt a lehetőséget, ha a `\\` összes példányát le szeretné képezni `/`.
+1. **Fordított perjelek normalizálása perjelre**: Ezzel a `\\` `/`beállítással az összes példányt a hoz szeretné leképezni.
 
-1. **Tokenek felosztása speciális karaktereknél**: akkor válassza ezt a lehetőséget, ha a szavakat olyan karaktereken szeretné megszüntetni, mint például a `&`, `-`és így tovább. Ez a beállítás a speciális karaktereket is csökkentheti, ha kétszer ismétlődik. 
+1. **Tokenek felosztása speciális karaktereken:** Akkor válassza ezt a `&`lehetőséget, ha meg szeretné törni a szavakat olyan karaktereken, mint a , `-`, és így tovább. Ez a beállítás akkor is csökkentheti a speciális karaktereket, ha az ismétlődő több mint kétszer ismétlődik. 
 
-    A `MS---WORD` sztring például három tokenre, `MS`ra, `-`ra és `WORD`re lesz elválasztva.
+    A `MS---WORD` karakterlánc például három tokenre, `MS`, `-`, `WORD`és a .
 
-1. A folyamat futtatása.
+1. Küldje el a folyamatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

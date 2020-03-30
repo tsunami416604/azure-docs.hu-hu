@@ -1,49 +1,48 @@
 ---
-title: Azure-tárolók rendszerképének támogatási beállításai | Azure piactér
-description: Az Azure-tároló támogatási beállításainak konfigurálása.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Azure-tárolók lemezképének támogatási beállításai | Azure Piactér
+description: Konfigurálja az Azure-tároló támogatási beállításait.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 144512683e6afa643639ba12b071e2a3ed7e01bd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8124828c565f344387ae946a1fa6e61a84675b81
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823095"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279963"
 ---
-# <a name="container-support-tab"></a>Tároló-támogatás lap
+# <a name="container-support-tab"></a>A Tároló támogatása lap
 
-Az **új ajánlat** lap **támogatás** lapján megadhatja az ajánlat technikai és felhasználói támogatási forrásait.  A következő bemeneti területek a támogatási űrlapon találhatók: **mérnöki kapcsolattartás**, **ügyfélszolgálat**és **támogatási URL-címek**. A mezőhöz hozzáfűzni kívánt csillag (*) azt jelzi, hogy a név megadása kötelező.
+Az **Új ajánlat** lap **Támogatás** lapján technikai és felhasználói támogatási erőforrásokat biztosíthat az ajánlathoz.  A támogatási űrlapon a következő beviteli területek találhatók: **Mérnöki kapcsolat**, **Ügyfélszolgálat**és **Támogatási URL-ek**. A mezőnévhez csatolt csillag (*) azt jelzi, hogy szükség van rá.
 
 
-## <a name="support-form-fields"></a>Támogatási űrlap mezői
+## <a name="support-form-fields"></a>Űrlapmezők támogatása
 
-Adja meg a mérnöki kapcsolattartási és ügyfélszolgálati mezők szükséges adatait.
+Adja meg a szükséges információkat a Mérnöki kapcsolattartó és ügyfélszolgálat mezőkhöz.
 
 
 ### <a name="engineering-contact"></a>Mérnöki kapcsolattartó
 
-A mérnöki kapcsolattartás a szervezet és a Microsoft közötti technikai Kapcsolatfelvétel. A kötelező mezőket csillag (*) alapján vádoljuk.
+A Mérnöki kapcsolattartó a szervezet és a Microsoft közötti műszaki kapcsolat. A kötelező mezőket csillag (*) vádolja.
 
-- **Név\*** – a technikai/mérnöki támogatásként szolgáló személy vagy csoport neve.
-- E- **mail-\*** – ennek a technikai kapcsolatnak az e-mail-címe.
-- **Telefonos\*** telefonszám a technikai támogatáshoz.
+- **Név\* ** – a műszaki/mérnöki támogatásként szolgáló személy vagy csoport neve.
+- **E-mail\* ** - E-mail címe ennek a technikai kapcsolattartónak.
+- **Telefonszám\* ** - Telefonszám a technikai támogatáshoz.
 
 
 ### <a name="customer-support"></a>Ügyfélszolgálat
 
-Az ügyfél-támogatási partner az Azure-beli ügyfelek által megnyitott támogatási jegyeket kapja meg.  A kötelező mezőket csillag (*) alapján vádoljuk.
+Az ügyfélszolgálati kapcsolattartó megkapja az ügyfelek által az Azure-ban megnyitott támogatási jegyeket.  A kötelező mezőket csillag (*) vádolja.
 
-- **Név\*** – az ügyfél-támogatási szolgálatként szolgáló személy vagy csoport neve.
-- **E-mail\*** – e támogatási partner e-mail-címe.
-- **Telefonos\*** – telefonos ügyfélszolgálat.
+- **Név\* ** – az ügyfélszolgálatként szolgáló személy vagy csoport neve.
+- **E-mail\* ** - A támogatási kapcsolattartó e-mail címe.
+- **Telefonszám\* ** – Az ügyfélszolgálat telefonszáma.
 
 
 ## <a name="next-steps"></a>További lépések
 
-A támogatási információk megadása után készen áll az [ajánlat közzétételére](./cpp-publish-offer.md). 
+Miután befejezte a támogatási információk megadását, készen áll [az ajánlat közzétételére.](./cpp-publish-offer.md) 
 

@@ -1,7 +1,7 @@
 ---
-title: 'Többosztályos logisztikai regresszió: modul leírása'
+title: 'Többosztályos logisztikai regresszió: modulhivatkozás'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használható a többosztályos logisztikai regressziós modul a Azure Machine Learning egy logisztikai regressziós modell létrehozásához, amely több érték előrejelzésére is használható.
+description: Ismerje meg, hogyan használhatja a többosztályos logisztikai regressziós modult az Azure Machine Learningben egy logisztikai regressziós modell létrehozásához, amely több érték előrejelzésére használható.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,59 +9,59 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 40193a2547959b44c5753cfcc6ccad9344ab9486
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ca446b0ab67a8a202c1f4d505262660ac55f42db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920433"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456165"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Többosztályos logisztikai regressziós modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
 
-Ezzel a modullal létrehozhat egy logisztikai regressziós modellt, amely több érték előrejelzésére is használható.
+Ezzel a modullal hozzon létre egy logisztikai regressziós modellt, amely több érték előrejelzésére használható.
 
-A logisztikai regressziót használó besorolás felügyelt tanulási módszer, ezért címkével ellátott adatkészletet igényel. A modellt úgy kell betanítani, hogy a modellt és a címkézett adatkészletet bemenetként adja meg egy modulhoz, például a [betanítási modellhez](./train-model.md). A betanított modell ezután felhasználható az új bemeneti példák értékeinek előrejelzésére.
+A logisztikai regresszió használatával történő besorolás felügyelt tanulási módszer, ezért egy címkézett adatkészletet igényel. A modell betanításával adja meg a modell és a címkézett adatkészlet bemenetként egy modul, például [a train modell.](./train-model.md) A betanított modell ezután új bemeneti példák értékeinek előrejelzésére használható.
 
-A Azure Machine Learning egy [kétosztályos logisztikai regressziós](./two-class-logistic-regression.md) modult is biztosít, amely a bináris vagy dichotóm változók besorolására alkalmas.
+Az Azure Machine Learning egy [kétosztályos logisztikai regressziós](./two-class-logistic-regression.md) modult is biztosít, amely bináris vagy dichotomous változók besorolására alkalmas.
 
-## <a name="about-multiclass-logistic-regression"></a>A többosztályos logisztikai regresszió ismertetése
+## <a name="about-multiclass-logistic-regression"></a>Többosztályos logisztikai regresszió –
 
-A logisztikai regresszió egy jól ismert módszer a statisztikában, amely az eredmény valószínűségének előrejelzésére szolgál, és népszerű a besorolási feladatokhoz. Az algoritmus azt jelzi, hogy egy esemény előfordulásának valószínűsége egy logisztikai függvénynek megfelelő adat betöltésével várható. 
+A logisztikai regresszió egy jól ismert módszer a statisztikákban, amely az eredmény valószínűségének előrejelzésére szolgál, és népszerű a besorolási feladatokban. Az algoritmus előre jelzi egy esemény előfordulásának valószínűségét azáltal, hogy adatokat illeszt egy logisztikai függvényhez. 
 
-A többosztályos logisztikai regresszió esetében az osztályozó használatával több eredmény is kiszámítható.
+A többosztályos logisztikai regresszió, az osztályozó több kimenetel előrejelzésére használható.
 
 ## <a name="configure-a-multiclass-logistic-regression"></a>Többosztályos logisztikai regresszió konfigurálása
 
-1. Adja hozzá a **többosztályos logisztikai regressziós** modult a folyamathoz.
+1. Adja hozzá a **többosztályos logisztikai regressziós modult** a folyamathoz.
 
-2. Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.
+2. Adja meg, hogyan szeretné betanítani a modellt az **Oktatói mód létrehozása** beállítás beállításával.
 
-    + **Egyetlen paraméter**: akkor használja ezt a beállítást, ha tudja, hogyan szeretné konfigurálni a modellt, és az értékek egy adott készletét argumentumként adja meg.
+    + **Egyetlen paraméter**: Akkor használja ezt a beállítást, ha tudja, hogyan szeretné konfigurálni a modellt, és argumentumként adjon meg egy adott értékkészletet.
 
-    + **Paraméter tartománya**: akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.  
+    + **Paramétertartomány**: Akkor válassza ezt a lehetőséget, ha nem biztos a legjobb paraméterekben, és paraméterkeresést szeretne futtatni. Válasszon ki egy értéktartományt, amely felett iterálni, és a [Tune Model Hyperparameters](tune-model-hyperparameters.md) iterálja az összes lehetséges kombinációa a megadott beállítások meghatározásához a hiperparaméterek, amelyek az optimális eredményt.  
 
-3. **Optimalizálási tolerancia**: az optimalizáló konvergenciájának küszöbértékét határozza meg. Ha az ismétlések közötti javulás kisebb a küszöbértéknél, az algoritmus leáll, és az aktuális modellt adja vissza.
+3. **Optimalizálási tolerancia**, adja meg az optimalizáló konvergenciájának küszöbértékét. Ha az ismétlések közötti javulás kisebb, mint a küszöbérték, az algoritmus leáll, és az aktuális modellt adja vissza.
 
-4. **L1 regularizációs súlyozás**, **L2 regularizációs súlya**: adjon meg egy értéket, amelyet az L1 és az L2 regularizációs paraméterekhez kell használni. A nem nulla értékű érték mindkét esetében ajánlott.
+4. **L1 regularizációs súly**, **L2 regularizációs súly**: Írja be az L1 és L2 regularizációs paraméterekhez használandó értéket. Mindkettőhez nem nulla érték ajánlott.
 
-    A regularizációs olyan módszer, amellyel megelőzhető a rendkívül hatékony értékekkel rendelkező modellek szankcionálása. A regularizációs úgy működik, hogy a hipotézis hibája alapján együttható értékekkel társított büntetést ad hozzá. A rendkívül hatékony értékekkel rendelkező pontos modell többek között büntethető, de a kevésbé pontos, konzervatív értékekkel rendelkező modellek kevesebbet büntetik.
+    A szabályosítás olyan módszer, amely megakadályozza a túlszerelést a szélsőséges együtthatóértékű modellek szankcionálásával. A szabályosítás úgy működik, hogy az együttható értékekhez kapcsolódó büntetést hozzáadja a hipotézis hibájához. Egy szélsőséges együtthatóértékű pontos modellt jobban büntetnének, de egy kevésbé pontos, konzervatívabb értékekkel rendelkező modellt kevesebbbüntetéssel sújtanának.
 
-     Az L1 és az L2 regularizációs különböző effektusokkal és felhasználással rendelkeznek. Az L1 a ritka modellekre is alkalmazható, amelyek hasznosak lehetnek a nagy dimenziós adattípusok használatakor. Ezzel szemben az L2 regularizációs a nem ritka adatértékekhez ajánlott.  Ez az algoritmus az L1 és az L2 regularizációs értékek lineáris kombinációját támogatja: vagyis ha `x = L1` és `y = L2`, `ax + by = c` meghatározza a regularizációs feltételeinek lineáris hosszát.
+     L1 és L2 regularization különböző hatások és felhasználások. Az L1 ritka modellekre alkalmazható, ami akkor hasznos, ha nagy dimenziós adatokkal dolgozik. Ezzel szemben az L2-es regisztálás előnyösebb a nem ritka adatok esetében.  Ez az algoritmus támogatja az L1 és L2 regularizációs `x = L1` `y = L2`értékek `ax + by = c` lineáris kombinációját: azaz, ha és , meghatározza a regisztizálási kifejezések lineáris tartományát.
 
-     Az L1 és a L2 kifejezések különböző lineáris kombinációit tervezték logisztikai regressziós modellekhez, például a [rugalmas háló regularizációs](https://wikipedia.org/wiki/Elastic_net_regularization).
+     Az L1 és L2 kifejezések különböző lineáris kombinációit dolgozták ki a logisztikai regressziós modellekhez, mint például a [rugalmas hálós regularizáció.](https://wikipedia.org/wiki/Elastic_net_regularization)
 
-6. **Véletlenszerű számú mag**: adjon meg egy egész számot, amelyet az algoritmus magjaként kíván használni, ha azt szeretné, hogy az eredmények a futtatások során ismételhetők legyenek. Ellenkező esetben a rendszer egy rendszeróra-értéket használ a magokként, amely némileg eltérő eredményeket eredményezhet ugyanazon folyamat futtatásában.
+6. **Véletlenszámmag:** Írjon be egy egész értéket, amelyet az algoritmus magjaként használ, ha azt szeretné, hogy az eredmények megismételhetők legyenek a futtatások on keresztül. Ellenkező esetben a rendszeróra értéke a vetőmag, amely képes némileg eltérő eredményeket fut az azonos folyamat.
 
-8. Egy címkézett adatkészlet és az egyik betanítási modul összekötése:
+8. Láncolt adatkészlet és a vonatmodulok egyikének csatlakoztatása:
 
-    + Ha az **oktatói módot** **egyetlen paraméterként**állítja be, használja a [Train Model](./train-model.md) modult.
+    + Ha az **Oktató létrehozása módot** egy **paraméterre állítja**be, használja a [Betanítási modell](./train-model.md) modult.
 
-9. A folyamat futtatása.
+9. Küldje el a folyamatot.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

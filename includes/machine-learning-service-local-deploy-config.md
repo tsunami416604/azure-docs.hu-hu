@@ -2,23 +2,23 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: c288ea4a2c62999f27b3f07c39df40dae7ab1426
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 60c754aeec3157abee02eb136dcf148c440d8da0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926936"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477272"
 ---
-A `deploymentconfig.json` dokumentum bejegyzései a [LocalWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py)paramétereit képezik le. A következő táblázat ismerteti a JSON-dokumentum entitásai és a metódus paramétereinek megfeleltetését:
+A dokumentum `deploymentconfig.json` bejegyzései a [LocalWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py)paramétereire vannak leképezve. Az alábbi táblázat a JSON-dokumentumban szereplő entitások és a módszer paraméterei közötti leképezést ismerteti:
 
-| JSON-entitás | Metódus paramétere | Leírás |
+| JSON entitás | Metódus paramétere | Leírás |
 | ----- | ----- | ----- |
-| `computeType` | n/a | A számítási cél. Helyi célok esetén az értéknek `local`nak kell lennie. |
-| `port` | `port` | A helyi port, amelyen elérhetővé kívánja tenni a szolgáltatás HTTP-végpontját. |
+| `computeType` | NA | A számítási cél. Helyi célok esetén az `local`értéknek . |
+| `port` | `port` | A helyi port, amelyen a szolgáltatás HTTP-végpontját elérhetővé teszi. |
 
-Ez a JSON egy példaként szolgáló telepítési konfiguráció a parancssori felülettel való használatra:
+Ez a JSON egy példa a központi telepítési konfiguráció a CLI-vel való használatra:
 
 ```json
 {

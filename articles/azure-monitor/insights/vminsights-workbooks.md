@@ -1,136 +1,132 @@
 ---
-title: Interaktív jelentések létrehozása Azure Monitor for VMs munkafüzetekkel | Microsoft Docs
-description: Egyszerűsítse az összetett jelentéskészítést az előre definiált és az egyéni paraméteres munkafüzetekkel a Azure Monitor for VMs számára.
+title: Interaktív jelentések létrehozása (Azure Monitor virtuális gépekhez) munkafüzetek használatával
+description: Egyszerűsítse az összetett jelentéseket az azure-figyelő előre definiált és egyéni paraméterezett munkafüzeteivel.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/15/2019
-ms.openlocfilehash: 7ec24f1eca0b2cf1d5ea2c171573f7c5e47319af
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/12/2020
+ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670678"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480453"
 ---
-# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interaktív jelentések létrehozása Azure Monitor for VMs munkafüzetekkel
+# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interaktív jelentések létrehozása (Azure Monitor virtuális gépekhez) munkafüzetek használatával
 
-A munkafüzetek szövegeket, [naplókat](../log-query/query-language.md), metrikákat és paramétereket egyesítenek gazdag interaktív jelentésekben. A munkafüzetek szerkeszthető más csapattagok számára, akik ugyanahhoz az Azure-erőforrásokhoz férnek hozzá.
+A munkafüzetek a szöveget, [a naplólekérdezéseket,](../log-query/query-language.md)a mutatókat és a paramétereket gazdag interaktív jelentésekké egyesítik. A munkafüzeteket bármely más csapattag szerkeszti, akik hozzáférnek ugyanazokhoz az Azure-erőforrásokhoz.
 
-A munkafüzetek hasznosak a következő forgatókönyvekhez:
+A munkafüzetek olyan esetekben hasznosak, mint például:
 
-* A virtuális gép használatának megvizsgálása, ha nem ismeri a kamat metrikáit: CPU-kihasználtság, lemezterület, memória, hálózati függőségek stb. A többi használati elemzési eszköztől eltérően a munkafüzetek több fajta vizualizációt és elemzést is lehetővé tesznek, így nagyszerűen használhatók az ilyen típusú, ingyenes űrlapos feltáráshoz.
-* Elmagyarázza a csapatának, hogy a közelmúltban kiépített virtuális gép hogyan végezze el a teljesítménymutatók megjelenítését a főszámlálók és más naplózási események mérőszámai alapján.
-* Megoszthatja a virtuális gép átméretezési kísérletének eredményét a csapat más tagjaival. Megadhatja a kísérlet szöveggel kapcsolatos céljait, majd megjelenítheti a kísérlet kiértékeléséhez használt egyes használati metrikákat és elemzési lekérdezéseket, valamint egyértelmű hívási feladatokkal, hogy az egyes metrikák a fenti vagy a cél alatt voltak-e.
-* A leállás következményeinek jelentése a virtuális gép használatáról, az adatok összevonásáról, a szöveg magyarázatáról, valamint a következő lépések megvitatására a leállások jövőbeli megelőzése érdekében.
+* A virtuális gép használatának feltárása, ha nem ismeri előre az érdeklődési mutatókat: CPU-használat, lemezterület, memória, hálózati függőségek stb. A többi használatelemző eszközzel ellentétben a munkafüzetek segítségével többféle vizualizációt és elemzést kombinálhat, így nagyszerűek az ilyen típusú szabad formájú feltáráshoz.
+* Elmagyarázza a csapatnak, hogyan teljesít egy nemrég kiépített virtuális gép, a fő számlálók és más naplóesemények metrikáinak megjelenítésével.
+* A virtuális gép átméretezési kísérletének eredményei megosztása a csapat többi tagjával. Elmagyarázhatja a kísérlet céljait a szöveggel, majd megjelenítheti a kísérlet kiértékeléséhez használt egyes használati metrikákat és elemzési lekérdezéseket, valamint egyértelmű kijelentéseket arról, hogy az egyes metrikák a cél felett vagy alatt voltak-e.
+* Jelentés a szolgáltatáskimaradás hatása a virtuális gép használatára, adatok kombinálásával, szöveges magyarázattal és a jövőbeli kimaradások megelőzésére szolgáló következő lépések megvitatásával.
 
-Azure Monitor for VMs több munkafüzetet is tartalmaz az első lépések elkezdéséhez, és az alábbi táblázat összefoglalja őket.
+Az alábbi táblázat összefoglalja az Azure Monitor virtuális gépekhez a kezdéshez tartalmaz munkafüzeteket.
 
 | Munkafüzet | Leírás | Hatókör |
 |----------|-------------|-------|
-| Teljesítmény | A Top N List és Diagrams nézet testreszabható verzióját jeleníti meg egyetlen munkafüzetben, amely az összes engedélyezett Log Analytics teljesítményszámlálókat kihasználja.| Skálán |
-| Teljesítményszámlálók | Felső N diagramos nézet a teljesítményszámlálók széles készletében. | Skálán |
-| Kapcsolatok | A kapcsolatok részletes áttekintést nyújtanak a figyelt virtuális gépek bejövő és kimenő kapcsolatairól. | Skálán |
-| Aktív portok | A figyelt virtuális gépek portjaira és a kiválasztott időkeretbe tartozó tevékenységekre vonatkozó folyamatok listáját jeleníti meg. | Skálán |
-| Nyitott portok | Megadja a megfigyelt virtuális gépeken megnyitott portok számát, valamint a nyitott portok részleteit. | Skálán |
-| Sikertelen kapcsolatok | Megjeleníti a sikertelen kapcsolatok számát a figyelt virtuális gépeken, a meghibásodási trendet, és ha a hibák százalékos aránya növekszik az idő múlásával. | Skálán |
-| Biztonság és naplózás | A TCP/IP-forgalom elemzése, amely a teljes kapcsolatokra, valamint a rosszindulatú kapcsolatokra mutat, ahol az IP-végpontok globálisan találhatók.  Az összes funkció engedélyezéséhez engedélyeznie kell a biztonsági észlelést. | Skálán |
-| TCP-forgalom | Egy rangsorolt jelentés a megfigyelt virtuális gépekhez, valamint az elküldött, fogadott és teljes hálózati forgalomhoz egy rácsban, és egy trendvonalként jelenik meg. | Skálán |
-| Adatforgalom-összehasonlítás | Ez a munkafüzet lehetővé teszi a hálózati forgalom trendjeinek összehasonlítását egyetlen gép vagy egy számítógépcsoport esetében. | Skálán |
-| Teljesítmény | A teljesítmény nézet testreszabható verzióját nyújtja, amely az összes engedélyezett Log Analytics teljesítményszámlálókat kihasználja. | Egyetlen virtuális gép | 
-| Kapcsolatok | A kapcsolatok részletes áttekintést nyújtanak a virtuális gépről érkező bejövő és kimenő kapcsolatokról. | Egyetlen virtuális gép |
+| Teljesítmény | A Top N-lista és a Diagramok nézet testreszabható verzióját biztosítja egyetlen munkafüzetben, amely kihasználja az összes engedélyezett Log Analytics teljesítményszámlálót.| Méretarányban |
+| Teljesítményszámlálók | Top N diagramnézet a teljesítményszámlálók széles körében. | Méretarányban |
+| Kapcsolatok | A kapcsolatok részletes nézetet biztosít a figyelt virtuális gépek bejövő és kimenő kapcsolatairól. | Méretarányban |
+| Aktív portok | Azokat a folyamatokat tartalmazza, amelyek a figyelt virtuális gépek portjaihoz és a kiválasztott időkereten belül végzett tevékenységükhöz kötődnek. | Méretarányban |
+| Nyitott portok | A figyelt virtuális gépeken megnyitott portok számát és a nyitott portok részleteit tartalmazza. | Méretarányban |
+| Sikertelen kapcsolatok | A sikertelen kapcsolatok száma a figyelt virtuális gépeken, a hibatrend megjelenítése, és ha a hibák százalékos aránya növekszik az idő múlásával. | Méretarányban |
+| Biztonság és naplózás | A TCP/IP-forgalom elemzése, amely az általános kapcsolatokról, a rosszindulatú kapcsolatokról számol be, ahol az IP-végpontok globálisan vannak.  Az összes szolgáltatás engedélyezéséhez engedélyeznie kell a biztonsági észlelést. | Méretarányban |
+| TCP-forgalom | Rangsorolt jelentés a figyelt virtuális gépekhez és azok elküldött, fogadott és teljes hálózati forgalmához egy rácsban, és trendvonalként jelenik meg. | Méretarányban |
+| Adatforgalom-összehasonlítás | Ez a munkafüzet lehetővé teszi a hálózati forgalom trendek összehasonlítását egyetlen gép vagy egy gépcsoport esetében. | Méretarányban |
+| Teljesítmény | Teljesítménynézetünk testreszabható verzióját biztosítja, amely kihasználja az összes engedélyezett Log Analytics teljesítményszámlálót. | Egyetlen virtuális gép | 
+| Kapcsolatok | A kapcsolatok részletes nézetet biztosít a virtuális gépről érkező és kimenő kapcsolatokról. | Egyetlen virtuális gép |
  
-## <a name="starting-with-a-template-or-saved-workbook"></a>Kezdés sablon vagy mentett munkafüzet alapján
+## <a name="creating-a-new-workbook"></a>Új munkafüzet létrehozása
 
-A munkafüzetek egymástól függetlenül szerkeszthető diagramokat, táblázatokat, szövegeket és beviteli vezérlőket tartalmazó részből állnak. A munkafüzetek jobb megismeréséhez nyisson meg egy sablont, és ismerkedjen meg az egyéni munkafüzetek létrehozásával. 
+A munkafüzet ektől függetlenül szerkeszthető diagramokból, táblázatokból, szövegekből és beviteli vezérlőkből álló szakaszokból áll. A munkafüzetek jobb megértéséhez kezdjük egy sablon megnyitásával, és mutassuk be az egyéni munkafüzet létrehozását. 
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-2. Válassza a **Virtual Machines**lehetőséget.
+2. Válassza a **Virtuális gépek**lehetőséget.
 
 3. Válasszon ki egy virtuális gépet a listából.
 
-4. A virtuális gép lap **figyelés** területén válassza az eredmények **(előzetes verzió)** lehetőséget.
+4. A virtuális gép lapján a **Figyelés** csoportban válassza **az Insights**lehetőséget.
 
-5. A virtuális gépek elemzése lapon válassza a **teljesítmény** vagy **Maps** fület, majd válassza a **munkafüzetek megtekintése** lehetőséget az oldalon található hivatkozásra kattintva. 
+5. A Virtuálisgép-elemzési lapon válassza a **Teljesítmény** vagy a **Térképek** lapot, majd a lapon található hivatkozásról válassza a **Munkafüzetek megtekintése** lehetőséget. A legördülő listában válassza az Ugrás a **galériába**lehetőséget.
 
-    ![Képernyőkép a munkafüzetek közötti navigálásról](media/vminsights-workbooks/workbook-option-01.png)
+    ![Képernyőkép a munkafüzet legördülő listájáról](media/vminsights-workbooks/workbook-dropdown-gallery-01.png)
 
-6. A legördülő listában válassza a **Ugrás** a katalógusba lehetőséget a lista alján.
+    Ezzel elindítja a munkafüzetgyűjteményt számos előre elkészített munkafüzettel, amelyek segítséget nyújtanak az első lépésekhez.
 
-    ![Képernyőfelvétel a munkafüzet legördülő listájáról](media/vminsights-workbooks/workbook-dropdown-gallery-01.png)
+7. Hozzon létre egy új munkafüzetet az **Új**lehetőség kiválasztásával.
 
-    Számos előre elkészített munkafüzettel elindítja a munkafüzet-katalógust, amely segítséget nyújt az első lépésekhez.
+    ![Képernyőkép a munkafüzetgyűjteményről](media/vminsights-workbooks/workbook-gallery-01.png)
 
-7. Kezdjük az **alapértelmezett sablonnal**, amely az első **lépések**fejléc alatt található.
+## <a name="editing-workbook-sections"></a>Munkafüzetszakaszok szerkesztése
 
-    ![Képernyőfelvétel a munkafüzet-gyűjteményről](media/vminsights-workbooks/workbook-gallery-01.png)
+A munkafüzetek két üzemmódban is rendelkeznek: **szerkesztési módés** **olvasási mód.** Amikor először indít el egy új munkafüzetet, **az szerkesztési módban**nyílik meg. A munkafüzet összes tartalmát megjeleníti, beleértve az egyébként rejtett lépéseket és paramétereket is. **Az olvasási mód** egyszerűsített jelentésstílus-nézetet jelenít meg. Olvasási mód lehetővé teszi, hogy absztrakt el a komplexitás, hogy bement létre egy jelentést, miközben még mindig az alapul szolgáló mechanika csak néhány kattintásnyira van, ha szükséges a módosításhoz.
 
-## <a name="editing-workbook-sections"></a>Munkafüzet fejezeteinek szerkesztése
+![Virtuális gépek Azure-figyelője munkafüzetek szakaszszerkesztő vezérlők](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 
-A munkafüzeteknek két módja van: **szerkesztési mód**és **olvasási mód**. Az alapértelmezett sablon létrehozásakor a rendszer **szerkesztési módban**nyitja meg a munkafüzetet. Megjeleníti a munkafüzet összes tartalmát, beleértve az egyébként rejtett lépéseket és paramétereket is. Az **olvasási mód** egy egyszerűsített jelentési stílus nézetet jelenít meg. Az olvasási mód lehetővé teszi, hogy absztrakt legyen a jelentés létrehozása során felmerülő összetettség, miközben az alapul szolgáló mechanika még csak néhány kattintással elérhető, ha a módosításra szükség van.
+1. Ha végzett egy szakasz szerkesztésével, kattintson a szakasz bal alsó sarkában található **Szerkesztés nélkül** elemre.
 
-![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
+2. Szakasz másolatának létrehozásához kattintson a **Szakasz klónozása** ikonra. Az ismétlődő szakaszok létrehozása nagyszerű módja annak, hogy a lekérdezések en a korábbi ismétlések elvesztése nélkül iteráljon.
 
-1. Ha elkészült egy szakasz szerkesztésével, kattintson a **kész szerkesztés** gombra a szakasz bal alsó sarkában.
+3. Ha feljebb szeretne lépni egy munkafüzet egy szakaszával, kattintson a **Fel** vagy **a Le** ikonra.
 
-2. Egy szakasz másodpéldányának létrehozásához kattintson a **szakasz klónozása** ikonra. Az ismétlődő lépések létrehozása nagyszerű módja annak, hogy a lekérdezéseket az előző iterációk elvesztése nélkül lehessen megismételni.
+4. Ha véglegesen el szeretne távolítani egy **szakaszt,** kattintson az Eltávolítás ikonra.
 
-3. Ha feljebb szeretne helyezni egy szakaszt egy munkafüzetben, kattintson a **fel** vagy **a lejjebb ikonra** .
+## <a name="adding-text-and-markdown-sections"></a>Szöveg és Markdown-szakaszok hozzáadása
 
-4. Egy szakasz végleges eltávolításához kattintson az **Eltávolítás** ikonra.
+Ha címsorokat, magyarázatokat és kommentárokat ad a munkafüzethez, akkor a táblázatok és diagramok készletét narratívaként alakíthatja át. A munkafüzetek szövegszakaszai támogatják a szövegformázás [Markdown szintaxisát,](https://daringfireball.net/projects/markdown/) például a címsorokat, a félkövér, a dőlt és a listajeles listákat.
 
-## <a name="adding-text-and-markdown-sections"></a>Szöveg-és Markdown-csoportok hozzáadása
+Ha szövegszakaszt szeretne hozzáadni a munkafüzethez, használja a **Szöveg hozzáadása** gombot a munkafüzet alján vagy bármely szakasz alján.
 
-A fejlécek, a magyarázatok és a kommentárok hozzáadása a munkafüzetekhez megkönnyíti a táblázatok és diagramok egy csoportba való bekapcsolását. A munkafüzetek szöveges szakaszai támogatják a [Markdown szintaxisát](https://daringfireball.net/projects/markdown/) , például a fejléceket, a félkövér, a dőlt és a listajeles listákat.
+## <a name="adding-query-sections"></a>Lekérdezési szakaszok hozzáadása
 
-Ha szöveges szakaszt szeretne felvenni a munkafüzetbe, használja a munkafüzet alján található **szöveg hozzáadása** gombot, vagy a szakasz alján.
+![Lekérdezés szakasz a munkafüzetekben](media/vminsights-workbooks/005-workbook-query-section.png)
 
-## <a name="adding-query-sections"></a>Lekérdezési csoportok hozzáadása
+Ha lekérdezési szakaszt szeretne hozzáadni a munkafüzethez, használja a **Lekérdezés hozzáadása** gombot a munkafüzet alján vagy bármely szakasz alján.
 
-![A munkafüzetek lekérdezési szakasza](media/vminsights-workbooks/005-workbook-query-section.png)
+A lekérdezési szakaszok rendkívül rugalmasak, és olyan kérdések megválaszolására használhatók, mint például:
 
-A lekérdezési szakasz a munkafüzethez való hozzáadásához használja a munkafüzet alján található **lekérdezés hozzáadása** gombot, vagy a szakasz alján.
+* Hogyan volt a CPU-használat ugyanebben az időszakban, mint a hálózati forgalom növekedése?
+* Mi volt a tendencia a rendelkezésre álló lemezterület az elmúlt hónapban?
+* Hány hálózati kapcsolat hibák nem a virtuális gép tapasztalata az elmúlt két hétben? 
 
-A lekérdezési szakaszban nagyon rugalmasak, és a következő kérdésekre lehet válaszolni:
+Nem csak arra korlátozódik, hogy lekérdezze azt a virtuális gépet, amelyből elindította a munkafüzetet. Több virtuális gép, valamint a Log Analytics-munkaterületek között is lekérdezheti a lekérdezést, feltéve, hogy rendelkezik hozzáférési engedéllyel ezekhez az erőforrásokhoz.
 
-* Milyen időszakban használta a CPU-kihasználtságot a hálózati forgalom növekedése közben?
-* Mi volt az elmúlt hónapban elérhető lemezterület trendje?
-* Hány hálózati kapcsolattal kapcsolatos hiba történt a virtuális gépen az elmúlt két hétben? 
-
-Nem csak a virtuális gép kontextusában, a munkafüzetből indított lekérdezésre korlátozódik. Több virtuális gépen is lekérdezheti, Log Analytics munkaterületeken, ha rendelkezik hozzáférési engedéllyel az erőforrásokhoz.
-
-Adatok befoglalása más Log Analytics munkaterületekről vagy egy adott Application Insights alkalmazásból a **munkaterület** -azonosító használatával. Ha többet szeretne megtudni az erőforrások közötti lekérdezésekről, tekintse meg a [hivatalos útmutatást](../log-query/cross-workspace-query.md).
+Más Log Analytics-munkaterületekből vagy egy adott Application Insights-alkalmazásból származó adatok felvétele a **munkaterület-azonosító** használatával. Ha többet szeretne megtudni az erőforrás-közi lekérdezésekről, olvassa el a [hivatalos útmutatást.](../log-query/cross-workspace-query.md)
 
 ### <a name="advanced-analytic-query-settings"></a>Speciális analitikus lekérdezési beállítások
 
-Mindegyik szakasz saját speciális beállításokat tartalmaz, amelyek a **Paraméterek hozzáadása** gombtól jobbra található beállítások ![munkafüzetek](media/vminsights-workbooks/006-settings.png) szakaszban találhatók.
+Minden szakasz saját speciális beállításokkal rendelkezik, ![amelyek a](media/vminsights-workbooks/006-settings.png) Beállítások Munkafüzetek szakasz szerkesztési vezérlőiikonon keresztül érhetők el, amelyek a **Paraméterek hozzáadása** gomb tól jobbra találhatók.
 
-![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/007-settings-expanded.png)
+![Virtuális gépek Azure-figyelője munkafüzetek szakaszszerkesztő vezérlők](media/vminsights-workbooks/007-settings-expanded.png)
 
 |         |          |
 | ---------------- |:-----|
-| **Egyéni szélesség**    | Az elem tetszőleges méretűvé válik, így több elem is elfér egyetlen sorban, így jobban rendszerezheti a diagramokat és a táblákat gazdag interaktív jelentésekben.  |
-| **Feltételesen látható** | Itt adhatja meg, hogy az olvasási módban megadott paraméterek alapján elrejtse a lépéseket. |
-| **Paraméter exportálása**| A rács vagy a diagram kiválasztott sora számára lehetővé teheti, hogy későbbi lépéseket okozzon az értékek módosításához vagy láthatóvá váljon.  |
-| **Lekérdezés megjelenítése nem szerkesztéskor** | Megjeleníti a diagram vagy a tábla feletti lekérdezést még olvasási módban is.
-| **Megnyitás az Analyticsben gomb megjelenítése nem szerkesztéskor** | Hozzáadja a kék elemzési ikont a diagram jobb oldali sarkához az egykattintásos hozzáférés engedélyezéséhez.|
+| **Egyéni szélesség**    | Tetszőleges méretűvé teszi az elemeket, így egyetlen sorban több elemet is elilleszthet, így a diagramokat és a táblázatokat gazdag interaktív jelentésekbe rendezheti.  |
+| **Feltételesen látható** | Adja meg, ha olvasási módban szeretné elrejteni a paramétereken alapuló lépéseket. |
+| **Paraméter exportálása**| Hagyja, hogy a rács vagy a diagram kijelölt sora később módosíthatja az értékeket, vagy láthatóvá váljon.  |
+| **Lekérdezés megjelenítése szerkesztés kor** | A lekérdezést a diagram vagy a táblázat felett jeleníti meg, még olvasási módban is.
+| **Megnyitás az elemzésben gomb szerkesztés kor** | Hozzáadja a kék Analytics ikont a diagram jobb sarkához, hogy egy kattintással hozzáférhessen.|
 
-Ezeknek a beállításoknak a nagy része meglehetősen intuitív, de a **Paraméterek exportálásának** megismeréséhez érdemes megvizsgálni egy olyan munkafüzetet, amely használja ezt a funkciót.
+A legtöbb ilyen beállítás meglehetősen intuitív, de a **paraméter exportálásához** jobb megvizsgálni egy munkafüzetet, amely kihasználja ezt a funkciót.
 
-Az egyik előre elkészített munkafüzet – **TCP-forgalom**, amely a virtuális gép kapcsolatainak metrikáit ismerteti.
+Az egyik előre összeállított munkafüzetek - **TCP Traffic**, a virtuális gép csatlakozási metrikák információkat tartalmaz.
 
-A munkafüzet első szakasza a naplózási lekérdezési adatmennyiségen alapul. A második szakasz a naplózási lekérdezési adatmennyiségen alapul, de az első táblázatban szereplő sorok interaktív módon frissülnek a diagramok tartalmával:
+A munkafüzet első szakasza a naplólekérdezési adatokon alapul. A második szakasz a naplólekérdezési adatokon is alapul, de az első tábla egy sorának kijelölése interaktívmódon frissíti a diagramok tartalmát:
 
-![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
+![Virtuális gépek Azure-figyelője munkafüzetek szakaszszerkesztő vezérlők](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
 
-A viselkedés az **elem kiválasztásakor lehetséges, a paraméterek** speciális beállításainak exportálása, amelyek engedélyezve vannak a tábla naplójának lekérdezésében.
+A viselkedés az Elem **kiválasztásakor** lehetőség szerint exportálhat egy speciális paraméterbeállításokat, amelyek engedélyezve vannak a tábla naplólekérdezésében.
 
-![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/009-settings-export.png)
+![Virtuális gépek Azure-figyelője munkafüzetek szakaszszerkesztő vezérlők](media/vminsights-workbooks/009-settings-export.png)
 
-A második naplózási lekérdezés ezt követően kijelöli az exportált értékeket, amikor egy sor kiválasztásával létrehoz egy olyan értéket, amelyet a szakasz fejléce és diagramjai használnak. Ha nincs kiválasztva sor, elrejti a szakasz fejlécét és a diagramokat. 
+A második naplólekérdezés ezután az exportált értékeket használja, amikor egy sor van kiválasztva, hogy olyan értékeket hozzon létre, amelyeket aztán a szakaszfejléc ek és a diagramok használnak. Ha nincs kijelölt sor, elrejti a szakaszfejlécet és a diagramokat. 
 
-A második szakaszban található rejtett paraméter például a következő hivatkozást használja a rácsban kiválasztott sorból:
+A második szakaszban lévő rejtett paraméter például a következő hivatkozást használja a rácsban kijelölt sorból:
 
 ```
 VMConnection
@@ -139,58 +135,58 @@ VMConnection
 | summarize Sent = sum(BytesSent), Received = sum(BytesReceived) by bin(TimeGenerated, {TimeRange:grain})
 ```
 
-## <a name="adding-metrics-sections"></a>Metrikák fejezeteinek hozzáadása
+## <a name="adding-metrics-sections"></a>Metrikaszakaszok hozzáadása
 
-A metrikák részben teljes hozzáférést biztosítanak a Azure Monitor metrikák adatait az interaktív jelentésekhez. Azure Monitor for VMs az előre elkészített munkafüzetek általában analitikus lekérdezési adatokat tartalmaznak metrikus adatok helyett.  Dönthet úgy, hogy metrikus adatokkal rendelkező munkafüzeteket hoz létre, így teljes mértékben kihasználhatja mindkét funkció előnyeit egy helyen. Lehetősége van arra is, hogy az erőforrásokból származó metrikus adatokat bármely olyan előfizetésből lehívhatja, amelyhez hozzáfér.
+A Metrikák szakaszok teljes hozzáférést biztosítanak az Azure Monitor metrikaadatainak interaktív jelentésekbe való beépítéséhez. Az Azure Monitor virtuális gépek, az előre összeállított munkafüzetek általában tartalmaznak analitikus lekérdezési adatok at metrikaadatok helyett.  Dönthet úgy, hogy mérőszámadatokat tartalmazó munkafüzeteket hoz létre, amelyek lehetővé teszik, hogy mindkét funkció ból kihasználhassa a legjobbat egy helyen. Azt is lehetővé teszi, hogy lekérése metrika adatokat az erőforrások bármelyik előfizetések hozzáféréssel rendelkezik.
 
-Itt látható egy példa arra, hogy a virtuális gép adatai egy munkafüzetbe kerüljenek, és a CPU-teljesítmény rácsos megjelenítését biztosítják:
+Íme egy példa arra, hogy a virtuális gép adatai bevannak húzva egy munkafüzetbe, hogy a PROCESSZOR teljesítményének rácsos vizualizációját biztosítsák:
 
-![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/010-metrics-grid.png)
+![Virtuális gépek Azure-figyelője munkafüzetek szakaszszerkesztő vezérlők](media/vminsights-workbooks/010-metrics-grid.png)
 
-## <a name="adding-parameter-sections"></a>Paraméterek hozzáadása
+## <a name="adding-parameter-sections"></a>Paraméterszakaszok hozzáadása
 
-A munkafüzet-paraméterek lehetővé teszik az értékek módosítását a munkafüzetben anélkül, hogy manuálisan kellene szerkeszteni a lekérdezési vagy szöveges szakaszt. Ez megszünteti az alapul szolgáló analitikai lekérdezési nyelv megismerésének követelményét, és nagy mértékben kiterjeszti a munkafüzet-alapú jelentéskészítés lehetséges célközönségét.
+A munkafüzet paraméterei lehetővé teszik a munkafüzet értékeinek módosítását anélkül, hogy manuálisan kellene módosítani a lekérdezési vagy szövegszakaszokat. Ez megszünteti azt a követelményt, hogy meg kell érteni az alapul szolgáló elemzési lekérdezési nyelvet, és jelentősen kibővíti a munkafüzet-alapú jelentések potenciális közönségét.
 
-A paraméterek értékei a lekérdezés, a szöveg vagy más paraméterek részekben vannak lecserélve, ha a paraméter nevét kapcsos zárójelbe helyezi, például ``{parameterName}``. A paraméterek nevei a hasonló szabályokra korlátozódnak JavaScript-azonosítóként, alfabetikus karakterként vagy aláhúzásként, amelyet alfanumerikus karakterek vagy aláhúzások követnek. Az **a1** például engedélyezve van, de az **1a** nem engedélyezett.
+A paraméterek értékeit a lekérdezési, szöveg- vagy más paraméterszakaszokban lecseréli a ``{parameterName}``paraméter neve kapcsos zárójelbe, például . A paraméternevek a JavaScript-azonosítókhoz, alfabetikus karakterekhez vagy aláhúzásjelekhez hasonló szabályokra korlátozódnak, amelyeket alfanumerikus karakterek vagy aláhúzásjelek követnek. Például **az a1** megengedett, de az **1a** nem megengedett.
 
-A paraméterek lineárisak, a munkafüzetek elejétől kezdve, és a későbbi lépésekig áramlanak.  A munkafüzet későbbi részében deklarált paraméterek felülbírálják a korábban bejelentett paramétereket. Ez azt is lehetővé teszi, hogy a lekérdezéseket használó paraméterek hozzáférjenek a korábban definiált paraméterek értékeihez. A paraméter lépésein belül a paraméterek is lineárisak, balról jobbra, ahol a jobb oldali paraméterek az adott lépésben korábban bejelentett paraméterektől függően változhatnak.
+A paraméterek lineárisak, a munkafüzet tetejétől kezdve a későbbi lépésekig.  A munkafüzet ben később deklarált paraméterek felülbírálhatják a korábban deklarált paramétereket. Ez azt is lehetővé teszi, hogy a paraméterek et használó paraméterek a korábban definiált paraméterek értékeinek eléréséhez. Egy paraméter lépésén belül a paraméterek is lineárisak, balról jobbra, ahol a jobb oldali paraméterek függhetnek egy paramétertől, amelyet ugyanebben a lépésben korábban deklaráltak.
  
-Négy különböző típusú paraméter létezik, amelyek jelenleg támogatottak:
+Jelenleg négy különböző típusú paraméter létezik, amelyek jelenleg támogatottak:
 
 |                  |      |
 | ---------------- |:-----|
-| **Szöveg**    | Lehetővé teszi a felhasználó számára a szövegmező szerkesztését, és opcionálisan megadhat egy lekérdezést az alapértelmezett érték kitöltéséhez. |
-| **Legördülő lista** | Lehetővé teszi a felhasználó számára az értékek egy halmazának kiválasztását. |
-| **Időtartomány-választó**| Lehetővé teszi a felhasználó számára, hogy kiválassza az időtartomány-értékek előre meghatározott készletét, vagy válasszon egy egyéni időtartományból.|
-| **Erőforrás-választó** | Lehetővé teszi a felhasználó számára a munkafüzethez kiválasztott erőforrások kiválasztását.|
+| **Szöveg**    | Lehetővé teszi a felhasználó számára a szövegdoboz szerkesztését, és tetszés szerint megadhat egy lekérdezést az alapértelmezett érték kitöltéséhez. |
+| **Legördülő lista** | Lehetővé teszi, hogy a felhasználó egy értékkészlet közül válasszon. |
+| **Időtartomány-választó**| Lehetővé teszi, hogy a felhasználó előre meghatározott időtartomány-értékek közül válasszon, vagy egyéni időtartományból válasszon.|
+| **Erőforrás-választó** | Lehetővé teszi a felhasználó számára, hogy a munkafüzethez kiválasztott erőforrások közül válasszon.|
 
-### <a name="using-a-text-parameter"></a>Szöveges paraméter használata
+### <a name="using-a-text-parameter"></a>Szövegparaméter használata
 
-A szövegmezőben a felhasználói típusok értékét a rendszer közvetlenül a lekérdezésben cseréli le, és nem jár el. Ha a szükséges érték egy karakterlánc, a lekérdezésnek idézőjelekkel kell rendelkeznie a paraméter körül (például **"{paraméter}"** ).
+A felhasználó által a szövegmezőben beírt érték közvetlenül a lekérdezésben kerül lecserélésre, kiváltás vagy idézés nélkül. Ha a szükséges érték karakterlánc, a lekérdezésnek idézőjelekkel kell rendelkeznie a paraméter körül (például **"{parameter}" ).**
 
-A Text paraméter lehetővé teszi, hogy a szövegmezőben lévő értéket bárhol lehessen használni. Ez lehet egy tábla neve, egy oszlop neve, egy függvény neve, operátor stb.  A Text paraméter típusa beállítás az **alapértelmezett érték beolvasása az elemzési lekérdezésből**, amely lehetővé teszi, hogy a munkafüzet szerzője lekérdezés használatával töltse fel az adott szövegmező alapértelmezett értékét.
+A szövegparaméter lehetővé teszi, hogy a szövegdobozban lévő érték bárhol használható legyen. Ez lehet egy tábla neve, oszlop neve, függvény neve, operátor, stb.  A szövegparaméter típusa rendelkezik egy ** Alapértelmezett érték beszámítása az elemzési lekérdezésből**beállítással, amely lehetővé teszi, hogy a munkafüzet szerzője lekérdezéssel feltöltse a szövegmező alapértelmezett értékét.
 
-Amikor az alapértelmezett értéket használja egy napló lekérdezésből, a rendszer csak az első sor első értékét (0. sor, 0. oszlop) használja alapértelmezett értékként. Ezért javasolt a lekérdezés korlátozása, hogy csak egy sort és egy oszlopot adjanak vissza. A rendszer figyelmen kívül hagyja a lekérdezés által visszaadott összes egyéb adatkérést. 
+Naplólekérdezés alapértelmezett értékének használatakor a program csak az első sor első értékét használja (0. sor, 0. oszlop). Ezért ajánlott korlátozni a lekérdezést, hogy csak egy sort és egy oszlopot ad vissza. A lekérdezés által visszaadott egyéb adatokat a rendszer figyelmen kívül hagyja. 
 
-A lekérdezés által visszaadott értéket a rendszer közvetlenül a szökés vagy az idézés nélkül váltja fel. Ha a lekérdezés nem ad vissza sorokat, a paraméter eredménye vagy üres karakterlánc (ha a paraméter nem szükséges) vagy nincs megadva (ha a paraméter megadása kötelező).
+Bármilyen értéket is ad vissza a lekérdezés, közvetlenül lecserélődik, és nem kerül ki, és nem idéz. Ha a lekérdezés nem ad vissza sorokat, a paraméter eredménye vagy egy üres karakterlánc (ha a paraméter nem szükséges) vagy nincs definiálva (ha a paraméter szükséges).
 
-### <a name="using-a-drop-down"></a>Legördülő lista használata
+### <a name="using-a-drop-down"></a>Legördülő menü használata
 
-A legördülő paraméter típusa lehetővé teszi egy legördülő lista létrehozását, amely lehetővé teszi egy vagy több érték kijelölését.
+A legördülő paraméter típusa lehetővé teszi egy legördülő vezérlő létrehozását, amely lehetővé teszi egy vagy több érték kiválasztását.
 
-A legördülő lista egy log lekérdezéssel vagy JSON-vel van feltöltve. Ha a lekérdezés egy oszlopot ad vissza, az abban az oszlopban szereplő értékek mind az érték, mind a felirat szerepel a legördülő menüben. Ha a lekérdezés két oszlopot ad vissza, akkor az első oszlop az érték, a második oszlop pedig a legördülő menüben látható felirat. Ha a lekérdezés három oszlopot ad vissza, a harmadik oszlop a legördülő lista alapértelmezett kijelölését jelzi. Ez az oszlop bármilyen típusú lehet, de a legegyszerűbb a logikai vagy numerikus típusok használata, ahol a 0 hamis, és 1 igaz.
+A legördülő menüt naplólekérdezés vagy JSON tölti fel. Ha a lekérdezés egy oszlopot ad vissza, az oszlopban lévő értékek a legördülő vezérlőelem ben szereplő értéket és feliratot is tartalmazják. Ha a lekérdezés két oszlopot ad vissza, az első oszlop az érték, a második pedig a legördülő menüben látható címke. Ha a lekérdezés három oszlopot ad vissza, a harmadik oszlop jelzi az alapértelmezett kijelölést a legördülő menüben. Ez az oszlop bármilyen típusú lehet, de a legegyszerűbb a bool vagy numerikus típusok használata, ahol a 0 hamis, és az 1 igaz.
 
-Ha az oszlop karakterlánc típusú, a null/üres karakterlánc hamisnak minősül, és minden más érték igaznak minősül. Az egyszeres kijelölés legördülő menüben a true értékkel rendelkező első érték lesz az alapértelmezett kijelölés.  Több kijelölés legördülő lista esetén az összes igaz értékkel rendelkező érték lesz az alapértelmezett kijelölt készlet. A legördülő listában szereplő elemek bármilyen sorrendben jelennek meg, mint a lekérdezés által visszaadott sorok. 
+Ha az oszlop karakterlánctípusú, a null/üres karakterlánc hamisnak, és minden más érték igaznak minősül. Egyetlen kijelölés legördülő lista esetén a program az első, valódi értékkel rendelkező értéket használja alapértelmezett ként.  Több kijelöléslegördülő menü esetén a program minden valós értékű értéket használ alapértelmezettként. A legördülő menü elemei a lekérdezés által visszaadott sorok sorrendjében jelennek meg. 
 
-Tekintsük át a kapcsolatok áttekintése jelentésben szereplő paramétereket. Kattintson a Szerkesztés szimbólumra az **irány**mellett.
+Tekintsük át a Kapcsolatok áttekintése jelentésben található paramétereket. Kattintson az **Irány**gomb melletti szerkesztési szimbólumra.
 
-![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/011-workbook-using-dropdown.png)
+![Virtuális gépek Azure-figyelője munkafüzetek szakaszszerkesztő vezérlők](media/vminsights-workbooks/011-workbook-using-dropdown.png)
 
-Ekkor elindul a **paraméter szerkesztése** menüelem.
+Ezzel elindítja a **Paraméter szerkesztése** menüelemet.
 
-![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/012-workbook-edit-parameter.png)
+![Virtuális gépek Azure-figyelője munkafüzetek szakaszszerkesztő vezérlők](media/vminsights-workbooks/012-workbook-edit-parameter.png)
 
-A JSON lehetővé teszi, hogy létrehoz egy tetszőleges táblát, amely tartalmakkal van feltöltve. A következő JSON például két értéket hoz létre a legördülő menüben:
+A JSON lehetővé teszi, hogy tetszőleges, tartalommal feltöltött táblát hozzon létre. A következő JSON például két értéket hoz létre a legördülő menüben:
 
 ```
 [
@@ -199,7 +195,7 @@ A JSON lehetővé teszi, hogy létrehoz egy tetszőleges táblát, amely tartalm
 ]
 ```
 
-A további alkalmazható példa a legördülő lista használata a teljesítményszámlálók alapján a következő névvel:
+Egy alkalmazhatóbb példa egy legördülő lista használata a teljesítményszámlálók név szerint történő kiválasztásához:
 
 ```
 Perf
@@ -208,44 +204,44 @@ Perf
 | project Counter = pack('counter', CounterName, 'object', ObjectName), CounterName, group = ObjectName
 ```
 
-A lekérdezés a következőképpen jeleníti meg az eredményeket:
+A lekérdezés az eredményeket a következőképpen jeleníti meg:
 
-![Teljesítményszámláló legördülő lista](media/vminsights-workbooks/013-workbook-edit-parameter-perf-counters.png)
+![Perf számláló legördülő](media/vminsights-workbooks/013-workbook-edit-parameter-perf-counters.png)
 
-A legördülő lista hihetetlenül hatékony eszközöket biztosít az interaktív jelentések testreszabásához és létrehozásához.
+A legördülő menük hihetetlenül hatékony eszközök az interaktív jelentések testreszabásához és létrehozásához.
 
-### <a name="time-range-parameters"></a>Időintervallum-paraméterek
+### <a name="time-range-parameters"></a>Időtartomány paraméterei
 
-Míg a legördülő menüből a saját egyéni időtartomány-paramétert is létrehozhatja, a beépített időtartomány-paraméter típusát is használhatja, ha nem kell ugyanolyan fokú rugalmasságot biztosítania. 
+Bár a legördülő paraméter típusán keresztül saját egyéni időtartomány-paramétert hozhat létre, használhatja a beépített időtartomány paramétertípusát is, ha nincs szüksége ugyanolyan fokú rugalmasságra. 
 
-Az időtartomány-paraméterek típusának 15 alapértelmezett tartománya van, amelyek öt perctől az utolsó 90 napra mutatnak. Lehetőség van az egyéni időtartomány kiválasztására is, amely lehetővé teszi, hogy a jelentés kezelője explicit indítási és leállítási értékeket válasszon az időtartományhoz.
+Az időtartomány-paramétertípusok 15 alapértelmezett tartományt használnak, amelyek öt perctől az utolsó 90 napig terjednek. Lehetőség van egyéni időtartomány-kiválasztásengedélyezésére is, amely lehetővé teszi, hogy a jelentés kezelője explicit kezdő és leállítási értékeket válasszon az időtartományhoz.
 
 ### <a name="resource-picker"></a>Erőforrás-választó
 
-Az erőforrás-választó paraméterének típusa lehetővé teszi, hogy a jelentést bizonyos típusú erőforrásokra szűkítse. Példa egy előre elkészített munkafüzetre, amely kihasználja az erőforrás-választó típusát a **teljesítmény** munkafüzetben.
+Az erőforrás-választó paraméter típusa lehetővé teszi a jelentés hatókörét bizonyos típusú erőforrásokra. Az erőforrás-választó típusát használó előre összeállított munkafüzet a **Teljesítmény** munkafüzet.
 
-![Munkaterületek legördülő lista](media/vminsights-workbooks/014-workbook-edit-parameter-workspaces.png)
+![Munkaterületek legördülő menü](media/vminsights-workbooks/014-workbook-edit-parameter-workspaces.png)
 
 ## <a name="saving-and-sharing-workbooks-with-your-team"></a>Munkafüzetek mentése és megosztása a csapattal
 
-A munkafüzetek egy Log Analytics munkaterületen vagy egy virtuálisgép-erőforráson belül lesznek mentve attól függően, hogy hogyan fér hozzá a munkafüzetek katalógusához. A munkafüzet menthető az Ön számára magánjellegű **saját jelentések** szakaszba, vagy a **megosztott jelentések** szakaszban, amely mindenki számára elérhető az erőforráshoz való hozzáféréssel. Az erőforrás összes munkafüzetének megtekintéséhez kattintson a művelet sávban a **Megnyitás** gombra.
+A munkafüzetek a Naplóelemzési munkaterületen vagy a virtuálisgép-erőforrásban kerülnek mentésre, attól függően, hogy hogyan éri el a munkafüzetgyűjteményt. A munkafüzet et a **Saját jelentések** szakaszba lehet menteni, amely magánjellegű, vagy a **Megosztott jelentések** szakaszba, amely mindenki számára elérhető, aki hozzáfér az erőforráshoz. Az erőforrás összes munkafüzetének megtekintéséhez kattintson a műveletsáv **Megnyitás** gombjára.
 
-A jelenleg **saját jelentésekban**lévő munkafüzetek megosztása:
+A **Saját jelentések**ben lévő munkafüzet megosztása:
 
-1. Kattintson a **Megnyitás** gombra a műveleti sávon
-2. Kattintson a "..." a megosztani kívánt munkafüzet melletti gomb
-3. Kattintson **a áthelyezés megosztott jelentésekre**elemre.
+1. Kattintson a **műveletsáv Megnyitás** gombjára
+2. Kattintson a "..." gombot a megosztani kívánt munkafüzet mellett
+3. Kattintson **az Áthelyezés megosztott jelentésekre gombra.**
 
-Egy hivatkozással vagy e-mailen keresztüli munkafüzet megosztásához kattintson a művelet sávban a **megosztás** elemre. Ne feledje, hogy a hivatkozás címzettjeinek hozzáféréssel kell rendelkezniük ehhez az erőforráshoz a Azure Portal a munkafüzet megtekintéséhez. A módosítások elvégzéséhez a címzetteknek legalább közreműködői engedélyekkel kell rendelkezniük az erőforráshoz.
+Ha egy munkafüzetet hivatkozással vagy e-mailben szeretne megosztani, kattintson a műveletsáv **Megosztás gombjára.** Ne feledje, hogy a hivatkozás címzettjeinek hozzáférésre van szükségük ehhez az erőforráshoz az Azure Portalon a munkafüzet megtekintéséhez. A szerkesztéshez a címzetteknek legalább közreműködői engedélyekkel kell rendelkezniük az erőforráshoz.
 
-Egy munkafüzetre mutató hivatkozás rögzítése egy Azure-irányítópulton:
+Munkafüzetre mutató hivatkozás rögzítése Egy Azure-irányítópultra:
 
-1. Kattintson a **Megnyitás** gombra a műveleti sávon
-2. Kattintson a "..." a rögzíteni kívánt munkafüzet melletti gomb
-3. Kattintson **a rögzítés az irányítópulton**elemre.
+1. Kattintson a **műveletsáv Megnyitás** gombjára
+2. Kattintson a "..." gombot a rögzíteni kívánt munkafüzet mellett
+3. Kattintson **a Rögzítés az irányítópultra gombra.**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A korlátozások és a virtuális gépek teljes teljesítményének azonosításához lásd: az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md).
+- A korlátozások és a virtuális gép általános teljesítményének azonosításáról az [Azure virtuális gép teljesítményének megtekintése](vminsights-performance.md)című témakörben van.
 
-- Az észlelt alkalmazások függőségeivel kapcsolatos további tudnivalókért lásd: [Azure monitor for VMS Térkép megtekintése](vminsights-maps.md).
+- A felderített alkalmazásfüggőségekről az [Azure-figyelő szolgáltatás virtuális gépek leképezésének megtekintése.](vminsights-maps.md)

@@ -1,35 +1,35 @@
 ---
-title: Magas rendelkezésre állás – Azure Database for MariaDB
-description: Ez a témakör a magas rendelkezésre állásról nyújt tájékoztatást a Azure Database for MariaDB használatakor
+title: Magas rendelkezésre állás - Azure-adatbázis a MariaDB-hez
+description: Ez a témakör az Azure Database for MariaDB használata esetén rendelkezésre álló magas rendelkezésre állásról nyújt tájékoztatást.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 797a94a561351ac7f5317f2f215b56f6944c023f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: a87646f6195a06cf0a5382cb248efa5516c953f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772526"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531991"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-mariadb"></a>Magas rendelkezésre állással kapcsolatos fogalmak a Azure Database for MariaDB
-A Azure Database for MariaDB szolgáltatás garantált magas szintű rendelkezésre állást biztosít. A pénzügyileg támogatott szolgáltatói szerződés (SLA) az általánosan elérhető 99,99%-os. A szolgáltatás használata során gyakorlatilag nincs alkalmazás-leállási idő.
+# <a name="high-availability-concepts-in-azure-database-for-mariadb"></a>Magas rendelkezésre állási fogalmak a MariaDB Azure Database-ben
+Az Azure Database for MariaDB szolgáltatás garantáltan magas szintű rendelkezésre állást biztosít. A pénzügyileg támogatott szolgáltatásiszint-szerződés (SLA) 99,99%, általános anammár a rendelkezésre állás függvényében. A szolgáltatás használata gyakorlatilag nincs alkalmazás leállási idő.
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
-A magas rendelkezésre állású (HA) modell a beépített feladatátvételi mechanizmusokon alapul, ha csomópont szintű megszakítás történik. A csomópont-szintű megszakítás hardverhiba miatt vagy egy szolgáltatás központi telepítésére adott válaszként fordulhat elő.
+A magas rendelkezésre állású (HA) modell a beépített feladatátvételi mechanizmusokon alapul, amikor csomópontszintű megszakítás történik. A csomópontszintű megszakítás hardverhiba vagy a szolgáltatás központi telepítésére adott válasz miatt fordulhat elő.
 
-Egy Azure Database for MariaDB adatbázis-kiszolgálón végzett módosítások mindig egy tranzakció kontextusában történnek. A módosításokat a rendszer szinkron módon rögzíti az Azure Storage-ban a tranzakció véglegesítése közben. Ha csomópont-szintű megszakítás történik, az adatbázis-kiszolgáló automatikusan létrehoz egy új csomópontot, és az új csomóponthoz csatolja az adattárat. Minden aktív kapcsolat el lesz dobva, és a fedélzeti tranzakciók nincsenek véglegesítve.
+A MariaDB adatbázis-kiszolgálóazure-adatbázis-kiszolgálón végrehajtott módosítások mindig egy tranzakció környezetében történnek. A módosításokat a rendszer szinkron módon rögzíti az Azure storage-ban, amikor a tranzakció véglegesítésre kerül. Ha csomópontszintű megszakítás történik, az adatbázis-kiszolgáló automatikusan létrehoz egy új csomópontot, és adattárolást csatol az új csomóponthoz. Az aktív kapcsolatok megszakadnak, és a rendszer nem véglegesíti a bejövő tranzakciókat.
 
 ## <a name="application-retry-logic-is-essential"></a>Az alkalmazás újrapróbálkozási logikája elengedhetetlen
-Fontos, hogy a MariaDB adatbázis-alkalmazásai felkészültek legyenek az eldobott kapcsolatok észlelésére és újrapróbálkozására. Az alkalmazás újrapróbálkozásakor az alkalmazás kapcsolata transzparens módon át lesz irányítva az újonnan létrehozott példányra, amely átveszi a sikertelen példányra.
+Fontos, hogy a MariaDB adatbázis-alkalmazások az eldobott kapcsolatok és sikertelen tranzakciók észlelésére és újrapróbálkozására készültek. Amikor az alkalmazás újrapróbálkozik, az alkalmazás kapcsolata transzparens módon átirányítja az újonnan létrehozott példány, amely átveszi a sikertelen példány.
 
-Az Azure-ban belsőleg az átjáró az új példánnyal létesített kapcsolatok átirányítására szolgál. Megszakítás esetén a teljes feladatátvételi folyamat általában több tízezer másodpercig tart. Mivel az átirányítás belsőleg van kezelve az átjárón, a külső kapcsolatok karakterlánca ugyanaz marad az ügyfélalkalmazások számára.
+Az Azure-on belül egy átjáró segítségével átirányítják a kapcsolatokat az új példányra. Megszakítás esetén a teljes feladatátvételi folyamat általában több tíz másodpercet vesz igénybe. Mivel az átirányítást az átjáró belsőleg kezeli, a külső kapcsolati karakterlánc ugyanaz marad az ügyfélalkalmazások esetében.
 
-## <a name="scaling-up-or-down"></a>Felfelé vagy lefelé skálázás
-A HA-modellhez hasonlóan, amikor egy Azure Database for MariaDB vertikálisan fel-vagy leskálázásra kerül, létrejön egy új kiszolgálópéldány a megadott mérettel. A meglévő adattárolás le van választva az eredeti példányból, és az új példányhoz van csatolva.
+## <a name="scaling-up-or-down"></a>Fel- vagy leskálázás
+A HA-modellhez hasonlóan, amikor egy Azure Database for MariaDB fel- vagy leskálázásra kerül, egy új kiszolgálópéldány jön létre a megadott mérettel. A meglévő adattároló leválik az eredeti példányról, és az új példányhoz kapcsolódik.
 
-A skálázási művelet során az adatbázis-kapcsolatok megszakítása történik. Az ügyfélalkalmazások le vannak választva, és a nyitott nem véglegesített tranzakciók megszakadnak. Miután az ügyfélalkalmazás újrapróbálkozik a kapcsolódással, vagy új kapcsolódást végez, az átjáró irányítja a kapcsolódást az újonnan méretezett példányhoz.
+A méretezési művelet során megszakad az adatbázis-kapcsolatok. Az ügyfélalkalmazások levannak választva, és a nyitott nem véglegesített tranzakciók megszakadnak. Miután az ügyfélalkalmazás újrapróbálkozik a kapcsolattal, vagy új kapcsolatot létesít, az átjáró az újonnan méretezett példányhoz irányítja a kapcsolatot.
 
-## <a name="next-steps"></a>Következő lépések
-- A szolgáltatás áttekintését lásd: [Azure Database for MariaDB áttekintése](overview.md)
+## <a name="next-steps"></a>További lépések
+- A szolgáltatás áttekintését az [Azure Database for MariaDB áttekintése című témakörben találja.](overview.md)

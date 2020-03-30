@@ -6,21 +6,21 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 02/26/2020
+ms.date: 03/17/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 5f1672b53fa9bd8c8126fefd092e1be78a844ab9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ed27097d29f3a10e708044ad7e2e30736e2c60e6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241247"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79471846"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
 ![ICSA-tanúsítvány](media/overview/icsa-cert-firewall-small.png)
 
-Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi. Ez egy teljesen állapot-nyilvántartó tűzfal, amely beépített, magas rendelkezésre állású és korlátlan Felhőbeli méretezhetőséggel rendelkezik.
+Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi. Egy teljes mértékben állapotalapú tűzfalszolgáltatás, beépített magas rendelkezésre állással és korlátlan felhőméretezhetőséggel.
 
 ![Tűzfal áttekintése](media/overview/firewall-threat.png)
 
@@ -30,22 +30,22 @@ Az Azure Firewall az alábbi szolgáltatásokat kínálja:
 
 ## <a name="built-in-high-availability"></a>Beépített magas rendelkezésre állás
 
-A magas rendelkezésre állás beépített, így nincs szükség további terheléselosztó megadására, és nincs szükség a konfigurálásra.
+A magas rendelkezésre állás be van építve, így nincs szükség további terheléselosztókra, és nincs mit konfigurálnia.
 
 ## <a name="availability-zones"></a>Rendelkezésre állási zónák
 
-A Azure Firewall az üzembe helyezés során konfigurálható úgy, hogy a nagyobb rendelkezésre állás érdekében több Availability Zones is kiterjedhet. A Availability Zones a rendelkezésre állás 99,99%-os üzemidőre növekszik. További információ: Azure Firewall [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/). Ha két vagy több Availability Zones van kiválasztva, a 99,99%-os rendelkezésre állási SLA-t ajánljuk.
+Az Azure Firewall konfigurálható a központi telepítés során, hogy több rendelkezésre állási zónára is kiterjedjen a nagyobb rendelkezésre állás érdekében. A rendelkezésre állási zónák esetén a rendelkezésre állás 99,99%-ra nő. További információt az Azure firewall [szolgáltatásiszint-szerződésében (SLA) talál.](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/) A 99,99%-os rendelkezésre állási SLA két vagy több rendelkezésre állási zóna kiválasztásakor érhető el.
 
-A szolgáltatáshoz a 99,95%-os SLA-t használó szabványos szolgáltatási szabványnak megfelelően a Azure Firewallt is hozzárendelheti egy adott zónához.
+Az Azure Firewall-t is társíthatja egy adott zónához csak közelségi okokból, a 99.95%-os SLA szolgáltatás használatával.
 
-Egy rendelkezésre állási zónában üzembe helyezett tűzfal esetében nincs további díj. A Availability Zoneshoz társított bejövő és kimenő adatátvitelek esetében azonban további költségek is rendelkezésre állnak. További információ: a [sávszélesség díjszabása](https://azure.microsoft.com/pricing/details/bandwidth/).
+A rendelkezésre állási zónában telepített tűzfalak nem járnak további költségekért. A rendelkezésre állási zónákhoz kapcsolódó bejövő és kimenő adatátvitelek további költségei azonban további költségekkel járnak. További információt a [Sávszélesség díjszabásának részletei című témakörben talál.](https://azure.microsoft.com/pricing/details/bandwidth/)
 
-Azure Firewall Availability Zones a Availability Zones támogató régiókban érhetők el. További információ: [Mi a Availability Zones az Azure-ban?](../availability-zones/az-overview.md#services-support-by-region)
+Az Azure tűzfal rendelkezésre állási zónái olyan régiókban érhetők el, amelyek támogatják a rendelkezésre állási zónákat. További információ: [Mik a rendelkezésre állási zónák az Azure-ban?](../availability-zones/az-overview.md#services-support-by-region)
 
 > [!NOTE]
-> Availability Zones csak az üzembe helyezés során állítható be. Meglévő tűzfal nem konfigurálható úgy, hogy tartalmazza a Availability Zones.
+> A rendelkezésre állási zónák csak a központi telepítés során konfigurálhatók. Meglévő tűzfal nem konfigurálható rendelkezésre állási zónákra.
 
-További információ a Availability Zonesről: [Mi az az Azure Availability Zones?](../availability-zones/az-overview.md)
+A rendelkezésre állási zónákról a [Mik azok a rendelkezésre állási zónák az Azure-ban?](../availability-zones/az-overview.md)
 
 ## <a name="unrestricted-cloud-scalability"></a>Korlátlan felhőalapú skálázhatóság
 
@@ -53,7 +53,7 @@ Az Azure Firewall akármeddig felskálázható a változó hálózati forgalom k
 
 ## <a name="application-fqdn-filtering-rules"></a>Alkalmazások teljes tartománynevére vonatkozó szűrési szabályok
 
-A kimenő HTTP/S-forgalom vagy az Azure SQL-forgalom (előzetes verzió) a teljes tartománynevek (FQDN) megadott listájára korlátozható, beleértve a Wild kártyákat is. Ez a szolgáltatás nem igényel SSL-megszakítást.
+Korlátozhatja a kimenő HTTP/S-forgalmat vagy az Azure SQL-forgalmat (előzetes verzió) a teljesen minősített tartománynevek (FQDN) megadott listájára, beleértve a helyettesítő karaktereket is. Ez a funkció nem igényel SSL-megszüntetést.
 
 ## <a name="network-traffic-filtering-rules"></a>Hálózati forgalomra vonatkozó szűrési szabályok
 
@@ -65,38 +65,38 @@ Az FQDN-címkékkel egyszerűen engedélyezheti a jól ismert Azure-szolgáltat�
 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
 
-A szolgáltatáscímkék IP-címelőtagok csoportjait jelölik, így a segítségükkel csökkenthető a biztonsági szabályok létrehozásának összetettsége. Nem hozhat létre saját szolgáltatási címkét, és nem adhatja meg, hogy mely IP-címek szerepeljenek a címkén belül. A szolgáltatáscímkékben lévő címelőtagokat a Microsoft kezeli, és a címek változásával automatikusan frissíti a szolgáltatáscímkéket.
+A szolgáltatáscímkék IP-címelőtagok csoportjait jelölik, így a segítségükkel csökkenthető a biztonsági szabályok létrehozásának összetettsége. Nem hozhat létre saját szolgáltatáscímkét, és nem adhatja meg, hogy mely IP-címek szerepeljenek a címkén. A szolgáltatáscímkékben lévő címelőtagokat a Microsoft kezeli, és a címek változásával automatikusan frissíti a szolgáltatáscímkéket.
 
 ## <a name="threat-intelligence"></a>Fenyegetésészlelési intelligencia
 
-A fenyegetésekkel kapcsolatos intelligencia-alapú szűrés engedélyezhető a tűzfal számára, hogy riasztást kapjon, és megtagadja a forgalmat az ismert kártékony IP-címekre és tartományokra. Az IP-címek és tartományok forrása a Microsoft Threat Intelligence-hírcsatorna.
+A fenyegetésfelderítésen alapuló szűrés engedélyezhető a tűzfal számára, hogy figyelmeztesse és megtagadja az ismert rosszindulatú IP-címekről és tartományokról érkező/azokba irányuló forgalmat. Az IP-címek és tartományok a Microsoft Threat Intelligence hírcsatornából származnak.
 
 ## <a name="outbound-snat-support"></a>Kimenő SNAT-támogatás
 
-A rendszer a kimenő virtuális hálózati forgalomhoz tartozó minden IP-címet lefordít az Azure Firewall nyilvános IP-címére (forráshálózati címfordítás, SNAT). Azonosíthatja és engedélyezheti a virtuális hálózatból a távoli internetes célhelyekre irányuló forgalmat. A Azure Firewall nem SNAT, ha a cél IP-cím egy [IANA RFC 1918-es](https://tools.ietf.org/html/rfc1918)magánhálózati IP-címtartomány. 
+A rendszer a kimenő virtuális hálózati forgalomhoz tartozó minden IP-címet lefordít az Azure Firewall nyilvános IP-címére (forráshálózati címfordítás, SNAT). Azonosíthatja és engedélyezheti a virtuális hálózatból a távoli internetes célhelyekre irányuló forgalmat. Az Azure Firewall nem snat, ha a cél IP egy privát IP-tartomány [iANA RFC 1918.](https://tools.ietf.org/html/rfc1918) 
 
-Ha a szervezete nyilvános IP-címtartományt használ a magánhálózatok számára, Azure Firewall a SNAT a AzureFirewallSubnet-ben lévő egyik tűzfal magánhálózati IP-címére irányítja át a forgalmat. A Azure Firewall konfigurálhatja úgy, hogy **ne** SNAT a nyilvános IP-címtartományt. További információ: [Azure Firewall SNAT magánhálózati IP-címtartományok](snat-private-range.md).
+Ha a szervezet nyilvános IP-címtartományt használ a magánhálózatokhoz, az Azure Firewall sNAT-ot használ az AzureFirewallSubnet tűzfal egyik privát IP-címére irányuló forgalom. Beállíthatja, hogy az Azure Firewall **ne** snat a nyilvános IP-címtartományban. További információ: [Azure Firewall SNAT private IP address ranges](snat-private-range.md).
 
 ## <a name="inbound-dnat-support"></a>Bejövő DNAT-támogatás
 
-A tűzfal nyilvános IP-címére irányuló bejövő internetes hálózati forgalom le van fordítva (célként megadott hálózati címfordítás), és a virtuális hálózatok magánhálózati IP-címeire szűrve.
+A tűzfal nyilvános IP-címére irányuló bejövő internetes hálózati forgalom lefordításra kerül (célhálózati cím fordítása), és a virtuális hálózatok magánhálózati IP-címeire szűrve történik.
 
 ## <a name="multiple-public-ip-addresses"></a>Több nyilvános IP-cím
 
-A tűzfallal több nyilvános IP-címet is hozzárendelhet (legfeljebb 100).
+A tűzfalhoz több nyilvános IP-címet (legfeljebb 100) társíthat.
 
-Ez a következő forgatókönyveket teszi lehetővé:
+Ez a következő eseteket teszi lehetővé:
 
-- **DNAT** – a háttér-kiszolgálókra több szabványos port-példányt is lefordíthat. Ha például két nyilvános IP-címmel rendelkezik, akkor mindkét IP-cím esetében lefordíthatja a 3389-es TCP-portot.
-- **SNAT** – további portok érhetők el a kimenő SNAT-kapcsolatokhoz, ami csökkenti a SNAT-portok kimerülésének lehetséges lehetőségét. Ekkor Azure Firewall véletlenszerűen kiválasztja a forrás nyilvános IP-címét, amelyet a rendszer a kapcsolódáshoz használ. Ha a hálózaton bármilyen alsóbb rétegbeli szűrés van, engedélyeznie kell a tűzfalhoz társított összes nyilvános IP-címet.
+- **DNST** – Több szabványos portpéldányt is lefordíthat a háttérkiszolgálókra. Ha például két nyilvános IP-címmel rendelkezik, a 3389-es TCP-portot (RDP) mindkét IP-címhez lefordíthatja.
+- **SNAT** - További portok állnak rendelkezésre a kimenő SNAT-kapcsolatokhoz, csökkentve az SNAT-port okának kimerülését. Ebben az időben az Azure Firewall véletlenszerűen kiválasztja a forrás nyilvános IP-címet használni a kapcsolatot. Ha a hálózaton van-e alsóbb rétegbeli szűrés, engedélyeznie kell a tűzfalhoz társított összes nyilvános IP-címet.
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-naplózás
 
-A rendszer minden eseményt integrál a Azure Monitorba, így lehetővé teszi a naplók archiválását egy Storage-fiókba, az események továbbítását az Event hub-ba, vagy elküldheti őket Azure Monitor naplókba.
+Minden esemény integrálva van az Azure Monitorral, így archiválhatja a naplókat egy tárfiókba, eseményeket streamelhet az Event Hubra, vagy elküldheti őket az Azure Monitor naplóiba.
 
 ## <a name="certifications"></a>Tanúsítványok
 
-A Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls (SOC), a Nemzetközi Szabványügyi Szervezet (ISO) és a ICSA Labs megfelelője. További információ: [Azure Firewall megfelelőségi tanúsítványok](compliance-certifications.md).
+Az Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls (SOC), a International Organization for Standardization (ISO) és az ICSA Labs előírása. További információt az [Azure Firewall megfelelőségi tanúsítványai című témakörben talál.](compliance-certifications.md)
 
 
 ## <a name="known-issues"></a>Ismert problémák
@@ -105,22 +105,23 @@ Az Azure Firewall az alábbi ismert hibákkal rendelkezik:
 
 |Probléma  |Leírás  |Kezelés  |
 |---------|---------|---------|
-A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési szabályok nem működnek az internetre irányuló forgalom esetében|A nem TCP/UDP-protokollokra vonatkozó hálózati szűrési szabályok nem működnek a nyilvános IP-címre vonatkozó forráshálózati címfordítással. A nem TCP/UDP-protokollok a küllők alhálózatai és a virtuális hálózatok között támogatottak.|Az Azure Firewall a Standard Load Balancert használja, [amely jelenleg nem támogatja a forráshálózati címfordítást az IP-protokollokon](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview). A forgatókönyv egy későbbi kiadásban való támogatásának lehetőségeit vizsgálja.|
-|A PowerShell és a CLI nem támogatja az ICMP-t|Az Azure PowerShell és a CLI nem támogatja az ICMP-t érvényes protokollként a hálózati szabályok között.|Az ICMP protokollt a Portálon és a REST API is használhatja protokollként. Hamarosan felvesszük az ICMP-t a PowerShellben és a CLI-ben.|
-|Az FQDN-címkék protokoll: port megadását igénylik|Az FQDN-címkékkel rendelkező alkalmazás-szabályok port: protokoll-definíciót igényelnek.|A port:protokoll értékként használhat **https**-t. Azon dolgozunk, hogy ezt a mezőt nem kötelező megadni, ha FQDN-címkéket használunk.|
-|A tűzfal más erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott|A tűzfal más erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott.|A funkció támogatása a közúti térképen is elérhető. Ahhoz, hogy egy tűzfalat áthelyezzen másik erőforráscsoportba vagy előfizetésbe, először törölnie kell az aktuális példányt, és újra létre kell hoznia az új erőforráscsoportban vagy előfizetésben.|
-|A fenyegetések felderítésével kapcsolatos riasztások maszkolása is lehetséges|A kimenő szűréshez használt 80/443-as célként megadott hálózati szabályok a fenyegetések felderítésére vonatkozó riasztásokat észlelnek, ha csak riasztás módra vannak konfigurálva.|Hozzon létre kimenő szűrést az 80/443-hoz az alkalmazási szabályok használatával. Vagy módosítsa a fenyegetés intelligencia módot a **riasztás és a Megtagadás**értékre.|
-|A Azure Firewall csak a névfeloldáshoz használja Azure DNS|Azure Firewall csak Azure DNS használatával oldja fel a teljes tartományneveket. Az egyéni DNS-kiszolgálók nem támogatottak. Más alhálózatokon nincs hatással a DNS-feloldásra.|Dolgozunk ennek a korlátozásnak a kihasználása érdekében.|
-|Azure Firewall SNAT/DNAT nem működik a magánhálózati IP-címekhez|Azure Firewall SNAT/DNAT-támogatás az internetes kimenő/bejövő forgalomra korlátozódik. A SNAT/DNAT jelenleg nem működik a magánhálózati IP-címekhez. Tegyük fel például, hogy küllős volt.|Ez egy aktuális korlátozás.|
-|Nem lehet eltávolítani az első nyilvános IP-konfigurációt|Minden Azure Firewall nyilvános IP-cím hozzá van rendelve egy *IP-konfigurációhoz*.  Az első IP-konfiguráció a tűzfal központi telepítése során lesz hozzárendelve, és általában a tűzfal alhálózatára mutató hivatkozást is tartalmaz (kivéve, ha explicit módon másképpen van konfigurálva a sablon központi telepítésen keresztül). Ezt az IP-konfigurációt nem lehet törölni, mert a tűzfal lefoglalása megtörtént. Továbbra is módosíthatja vagy eltávolíthatja az IP-konfigurációhoz társított nyilvános IP-címet, ha a tűzfalon legalább egy másik nyilvános IP-cím használható.|Ez az elvárt működés.|
-|A rendelkezésre állási zónák konfigurálása csak az üzembe helyezés során lehetséges.|A rendelkezésre állási zónák konfigurálása csak az üzembe helyezés során lehetséges. A tűzfal telepítése után nem konfigurálható Availability Zones.|Ez az elvárt működés.|
-|SNAT a bejövő kapcsolatokon|A DNAT kívül a tűzfal nyilvános IP-címén (bejövő) keresztül létesített kapcsolatok a címfordítást egyikéhez tartoznak. Ez a követelmény ma (aktív/aktív NVA esetén is) biztosítja a szimmetrikus útválasztást.|A HTTP/S eredeti forrásának megőrzése érdekében érdemes lehet [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) -fejléceket használni. Például olyan szolgáltatást használhat, mint például az [Azure bejárati ajtó](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) vagy az [Azure Application Gateway](../application-gateway/rewrite-http-headers.md) a tűzfal előtt. A WAF az Azure bejárati ajtajának részeként is hozzáadhatja a tűzfalhoz.
-|Az SQL FQDN szűrése csak proxy módban támogatott (1433-es port)|Azure SQL Database, Azure SQL Data Warehouse és Azure SQL felügyelt példány esetén:<br><br>Az előzetes verzióban az SQL FQDN-szűrés csak proxy módban támogatott (1433-es port).<br><br>Azure SQL-IaaS esetén:<br><br>Ha nem szabványos portokat használ, megadhatja ezeket a portokat az alkalmazási szabályokban.|Az SQL átirányítási módban, amely az alapértelmezett, ha az Azure-on keresztül csatlakozik, ehelyett a Azure Firewall hálózati szabályok részeként használhatja az SQL-szolgáltatás címkéjét.
-|A 25-ös TCP-porton nem engedélyezett a kimenő forgalom| A 25-ös TCP-portot használó kimenő SMTP-kapcsolatok le vannak tiltva. A 25-ös port elsődlegesen a nem hitelesített e-mailek kézbesítéséhez használatos. Ez a virtuális gépek alapértelmezett platform-viselkedése. További információ: [a kimenő SMTP-kapcsolatokkal kapcsolatos problémák elhárítása az Azure-ban](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). A virtuális gépektől eltérően azonban jelenleg nem lehet engedélyezni ezt a funkciót Azure Firewallon.|Kövesse a javasolt módszert az e-mailek küldéséhez az SMTP hibaelhárítási cikkében leírtak szerint. Vagy zárja ki azt a virtuális gépet, amelynek a kimenő SMTP-hozzáférésre van szüksége az alapértelmezett útvonalról a tűzfalra, ehelyett konfigurálja a kimenő hozzáférést közvetlenül az internethez.
-|Az aktív FTP nem támogatott|Az aktív FTP szolgáltatás le van tiltva Azure Firewall az FTP-PORT parancs használatával történő FTP-visszafordulási támadásokkal szembeni védelem érdekében.|Ehelyett használhatja a passzív FTP-t. A tűzfalon továbbra is explicit módon meg kell nyitnia a 20. és a 21. TCP-portot.
+A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési szabályok nem működnek az internetre irányuló forgalom esetében|A nem TCP/UDP protokollok hálózati szűrési szabályai nem működnek az SNAT-tal a nyilvános IP-címhez. A nem TCP/UDP-protokollok a küllők alhálózatai és a virtuális hálózatok között támogatottak.|Az Azure Firewall a Standard Load Balancert használja, [amely jelenleg nem támogatja a forráshálózati címfordítást az IP-protokollokon](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview). Megvizsgáljuk a lehetőségeket, hogy támogassa ezt a forgatókönyvet egy későbbi kiadásban.|
+|A PowerShell és a CLI nem támogatja az ICMP-t|Az Azure PowerShell és a CLI nem támogatja az ICMP-t érvényes protokollként a hálózati szabályokban.|Továbbra is használható az ICMP protokollként a portálon és a REST API-n keresztül. Azon dolgozunk, hogy icmp-t adjunk hozzá a PowerShellhez és a CLI-hez.|
+|Az FQDN-címkék protokoll: port megadását igénylik|Az FQDN-címkékkel rendelkező alkalmazásszabályok port: protokolldefiníciót igényelnek.|A port:protokoll értékként használhat **https**-t. Azon dolgozunk, hogy ezt a mezőt választhatóvá tegyük a teljes tartománynév-címkék használata esetén.|
+|Tűzfal áthelyezése másik erőforráscsoportba vagy előfizetésbe nem támogatott|Tűzfal áthelyezése egy másik erőforráscsoportba vagy előfizetésbe nem támogatott.|Ezt a funkciót támogatja az útitervünkben. Ahhoz, hogy egy tűzfalat áthelyezzen másik erőforráscsoportba vagy előfizetésbe, először törölnie kell az aktuális példányt, és újra létre kell hoznia az új erőforráscsoportban vagy előfizetésben.|
+|A fenyegetésfelderítési riasztások maszkosak lehetnek|A kimenő szűrési 80/443 céllal rendelkező hálózati szabályok csak riasztási módra konfigurálva a fenyegetésfelderítési riasztásokat maszkok.|Kimenő szűrés létrehozása a 80/443-hoz alkalmazásszabályok használatával. Vagy módosítsa a fenyegetésfelderítési módot **Riasztás és megtagadás**módra.|
+|Az Azure Firewall csak névfeloldáshoz használja az Azure DNS-t|Az Azure Firewall csak Azure DNS-sel oldja fel a teljes tartománynokat. Az egyéni DNS-kiszolgáló nem támogatott. Nincs hatással a DNS-feloldás más alhálózatok.|Azon dolgozunk, hogy enyhítsük ezt a korlátozást.|
+|Az Azure Firewall SNAT/DNAT nem működik privát IP-helyek esetén|Az Azure Firewall SNAT/DNAT támogatás az internetes kimenő forgalomra/be- és bejutásra korlátozódik. Az SNAT/DNAT jelenleg nem működik a privát IP-célok esetében. Például, beszélt beszélt.|Ez egy jelenlegi korlátozás.|
+|Nem lehet eltávolítani az első nyilvános IP-konfigurációt|Minden Azure Tűzfal nyilvános IP-cím van rendelve egy *IP-konfigurációhoz.*  Az első IP-konfiguráció a tűzfal központi telepítése során van hozzárendelve, és általában a tűzfal alhálózatára mutató hivatkozást is tartalmaz (kivéve, ha a sablon telepítésén keresztül kifejezetten eltérően van konfigurálva). Ez az IP-konfiguráció nem törölhető, mert az a tűzfal lefoglalását lecsökkentené. Továbbra is módosíthatja vagy eltávolíthatja az IP-konfigurációhoz társított nyilvános IP-címet, ha a tűzfal legalább egy másik nyilvános IP-címmel rendelkezik.|Ez az elvárt működés.|
+|A rendelkezésre állási zónák csak a központi telepítés során konfigurálhatók.|A rendelkezésre állási zónák csak a központi telepítés során konfigurálhatók. A tűzfal telepítése után nem konfigurálható a rendelkezésre állási zónák.|Ez az elvárt működés.|
+|SNAT bejövő kapcsolatokon|A DNST mellett a tűzfalon keresztüli (bejövő) kapcsolatok a tűzfal egyik privát IP-címéhez snated.Addition to DNAT, connections via the firewall public IP address (inbound) are SNATed to one of the firewall private IP. Ez a követelmény ma (aktív/aktív nva-k esetében is) a szimmetrikus útválasztás biztosítása érdekében.|A HTTP/S eredeti forrásának megőrzéséhez érdemes [lehet XFF-fejléceket](https://en.wikipedia.org/wiki/X-Forwarded-For) használni. Például használjon egy szolgáltatást, például [az Azure bejárati ajtaját](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) vagy az [Azure Application Gateway](../application-gateway/rewrite-http-headers.md) a tűzfal előtt. WaF-ot is hozzáadhat az Azure Bejárati ajtajához és láncolatához.
+|Az SQL FQDN-szűrés támogatása csak proxy módban (1433-as port)|Az Azure SQL Database, az Azure SQL Data Warehouse és az Azure SQL felügyelt példány esetén:<br><br>Az előzetes verzió során az SQL FQDN-szűrés csak proxy módban (1433-as port) támogatott.<br><br>Az Azure SQL IaaS esetén:<br><br>Ha nem szabványos portokat használ, megadhatja ezeket a portokat az alkalmazásszabályokban.|Sql átirányítási módban, amely az alapértelmezett, ha az Azure-on belülről csatlakozik, ehelyett szűrheti a hozzáférést az SQL szolgáltatáscímke használatával az Azure Firewall hálózati szabályok részeként.
+|A 25-ös TCP-port kimenő forgalma nem engedélyezett| A 25-ös TCP-portot használó kimenő SMTP-kapcsolatok le vannak tiltva. A 25-ös portot elsősorban a nem hitelesített e-mailek kézbesítéséhez használják. Ez a virtuális gépek alapértelmezett platformviselkedése. További információt a [Kimenő SMTP-kapcsolattal kapcsolatos problémák elhárítása az Azure-ban](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)című témakörben talál. Azonban a virtuális gépekkel ellentétben jelenleg nem lehetséges ez a funkció az Azure Firewall.|Kövesse az ajánlott módszert az E-mail küldéséhez az SMTP hibaelhárítási cikkben dokumentált módon. Vagy zárja ki azt a virtuális gépet, amelynek kimenő SMTP-hozzáférést kell biztosítania az alapértelmezett útvonalról a tűzfalhoz, és ehelyett közvetlenül az internethez konfigurálja a kimenő hozzáférést.
+|Az aktív FTP nem támogatott|Az aktív FTP le van tiltva az Azure Tűzfalon az FTP-port paranccsal történő FTP-visszafordulási támadások elleni védelem érdekében.|Használhatja passzív FTP helyett. A tűzfalon továbbra is kifejezetten meg kell nyitnia a 20-as és 21-es TCP-portokat.
+|Az SNAT-port kihasználtsági mutatója 0%-ot mutat|Az Azure Firewall SNAT-port kihasználtsági metrikája 0%-os használatot mutathat még SNAT-portok használata esetén is. Ebben az esetben a metrika használata a tűzfal állapotmetrika részeként helytelen eredményt ad.|Ezt a problémát kijavították, és a termelésre való bevezetés 2020 májusára irányul. Bizonyos esetekben a tűzfal újratelepítése megoldja a problémát, de nem konzisztens. Köztes megoldásként csak a tűzfal állapotával keresse meg az *állapot=degradálódott*, az *állapot=nem kifogástalan.* Port kimerültség jelenik meg *a leromlott*. *Nem kifogástalan* van fenntartva a későbbi használatra, ha a több metrikák hatással van a tűzfal állapotát. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon](tutorial-firewall-deploy-portal.md)
+- [Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon](tutorial-firewall-deploy-portal.md)
 - [Azure Firewall üzembe helyezése sablon használatával](deploy-template.md)
 - [Azure Firewall-tesztkörnyezet létrehozása](scripts/sample-create-firewall-test.md)

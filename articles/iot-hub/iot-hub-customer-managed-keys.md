@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub az adatok titkosítását az ügyfelek által felügyelt kulcsok használatával | Microsoft Docs
-description: Inaktív adatok titkosítása az ügyfél által felügyelt kulcsokkal IoT Hub
+title: Az Azure IoT Hub adattitkosítása inaktív ügyfél által felügyelt kulcsokon keresztül| Microsoft dokumentumok
+description: Az adatok titkosítása az IoT Hub ügyfél által felügyelt kulcsaival
 author: ash2017
 manager: briz
 ms.service: iot-hub
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: asrastog
 ms.openlocfilehash: 609f68c79159c4ce17468fc1df13c0c9eae7f211
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79370576"
 ---
-# <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>Inaktív adatok titkosítása az ügyfél által felügyelt kulcsokkal IoT Hub
+# <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>Az adatok titkosítása az IoT Hub ügyfél által felügyelt kulcsaival
 
-IoT Hub támogatja az inaktív adatok titkosítását az ügyfél által felügyelt kulcsokkal (CMK), más néven saját kulcs használata (BYOK), az Azure IoT Hub támogatása. Az Azure IoT Hub inaktív és átvitel alatt álló adatok titkosítását teszi lehetővé. Alapértelmezés szerint a IoT Hub a Microsoft által felügyelt kulcsokat használja az adattitkosításhoz. A CMK-támogatással az ügyfelek mostantól a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)használatával titkosítják az inaktív adatok titkosítását az ügyfelek által felügyelt kulcs titkosítási kulccsal.
+Az IoT Hub támogatja az adatok titkosítását az ügyfél által felügyelt kulcsokkal (CMK), más néven a saját kulcs (BYOK) használatával, az Azure IoT Hub támogatása. Az Azure IoT Hub biztosítja az adatok titkosítását az inaktív és az átvitel során. Alapértelmezés szerint az IoT Hub microsoft által felügyelt kulcsokat használ az adatok titkosításához. A CMK-támogatással az ügyfelek mostantól az Ügyfelek key encryption kulccsal titkosítják az [inaktív](https://azure.microsoft.com/services/key-vault/)adatokat az Azure Key Vault használatával.
 
-Ehhez a funkcióhoz új IoT Hub (alapszintű vagy standard szintű csomag) létrehozására van szükség az alábbi régiók egyikében: USA keleti régiója, USA 2. nyugati régiója, USA déli középső régiója vagy US Gov. Ha szeretné kipróbálni ezt a funkciót, lépjen kapcsolatba velünk a [Microsoft támogatási szolgálatán](https://azure.microsoft.com/support/create-ticket/)keresztül. Ossza meg vállalata nevét és előfizetési AZONOSÍTÓját, amikor kapcsolatba lép a Microsoft ügyfélszolgálatával.
+Ehhez a képességhez új IoT-központ (alap- vagy standard szint) létrehozása szükséges a következő régiók egyikében: USA keleti régió, USA nyugati régiója 2, USA déli középső régiója vagy usa gov. A funkció kipróbálásához lépjen kapcsolatba velünk a [Microsoft támogatási szolgálatán](https://azure.microsoft.com/support/create-ticket/)keresztül. Ossza meg cégnevét és előfizetési azonosítóját, amikor kapcsolatba lép a Microsoft támogatási szolgálatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [További információ a IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub)
+* [További információ az IoT Hubról](https://docs.microsoft.com/azure/iot-hub/about-iot-hub)
 
-* [További információ a Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [További információ az Azure Key Vaultról](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

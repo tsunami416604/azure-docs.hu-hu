@@ -1,31 +1,29 @@
 ---
-title: Az alkalmazás közzétételére vonatkozó kérelem
-description: .
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+title: Az alkalmazás közzétételére irányuló kérelem
+description: Az alkalmazás közzétételi adatai a Partnerközpont piactéren.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 9558e7684fa8ab742319890940800da85daa1706
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: bbe829314358b42b52db51d65b3e76d438eb1f87
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814756"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285418"
 ---
-# <a name="request-to-publish-the-app"></a>Az alkalmazás közzétételére vonatkozó kérelem
+# <a name="request-to-publish-the-app"></a>Az alkalmazás közzétételének kérése
 
-![Kattintson a közzétételhez](./media/CRMScreenShot18.png)
+![Kattintson a közzétételre](./media/CRMScreenShot18.png)
 
-1. Kattintson a Közzététel gombra, és küldje el ajánlatát a minősítési csapatnak. Az ajánlat állapotát a status (állapot) lapon tekintheti meg.
+1. Kattintson a Közzététel gombra, ha elküldheti ajánlatát tanúsítványcsapatunknak. Az ajánlat állapotát az Állapot lapon tekintheti meg.
 
-![Kiadvány állapotának áttekintése](./media/CRMScreenShot19.png)
+![Közzététel állapotának áttekintése](./media/CRMScreenShot19.png)
 
 ## <a name="republish-the-app"></a>Az alkalmazás ismételt közzététele
 
- Ha egy alkalmazás ismételt közzétételére vonatkozó kérésre van szüksége, először kattintson a közzététel megszakítása gombra az állapot lapon (ha a kérelem már nem aktív, ugorja át ezt a lépést). Végezze el a módosításokat az alkalmazásban, frissítse az ajánlatot ennek megfelelően, majd kattintson a Közzététel gombra az újbóli küldéshez. # Speciális szempontok a Microsoft Dynamics 365 Business Edition rendszerhez: a Microsoft Dynamics 365 üzleti kiadásaihoz készült megoldások további ellenőrzéseken mennek át a minősítés során, így biztosítva, hogy az üzleti kiadások korlátai betartásra kerülnek. A Business Edition-korlátokat itt dokumentáljuk. # Segítség kérése. Ha problémákba ütközik, a jobb felső sarokban található gombra kattintva naplózhat egy támogatási jegyet.
+ Ha egy alkalmazás újbóli közzétételére vonatkozó kérelmet kell benyújtania, először kattintson a Közzététel visszavonása gombra az Állapot lap alatt (ha a kérés már nem aktív, hagyja ki ezt a lépést). Módosítsa az alkalmazást, frissítse ennek megfelelően az ajánlatot, majd kattintson a Közzététel gombra az újraküldéshez. # A Microsoft Dynamics 365 Business Edition speciális szempontjai Kérjük, vegye figyelembe, hogy a Microsoft Dynamics 365 Business Editions alkalmazáshoz készült megoldásokat a minősítés során további ellenőrzéseknek vetik alá, hogy biztosítsák a Business Edition-korlátozások betartását. A Business Edition-korlátozásokat itt dokumentáljuk. # Segítségért. Ha problémákba ütközik, a jobb felső sarokban található gombra kattintva naplózhatja a támogatási jegyet, és használhatja a helyére.
 
 ![Az alkalmazás újbóli közzététele](./media/CRMScreenShot20.png)

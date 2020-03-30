@@ -1,51 +1,49 @@
 ---
-title: Az Azure Marketplace és a AppSource kiadói profil kezelése
-description: Az Azure Marketplace és a AppSource kiadói profiljának kezelése
-services: Azure, Marketplace, Cloud Partner Portal,
+title: Az Azure Marketplace és az AppSource közzétevői profiljának kezelése
+description: Az Azure Marketplace és az AppSource közzétevői profiljának kezelése
 author: qianw211
-manager: pbutlerm
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: pabutler
-ms.openlocfilehash: c9e8e73d18ec0c2a7334fbb5521e89ead4334cc7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9b89ff803e08d0ca929eea913be9a1c87664b124
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826368"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280235"
 ---
-# <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>Az Azure Marketplace és a AppSource kiadói profil kezelése
+# <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>Az "Azure Marketplace" és az "AppSource" közzétevői profiljának kezelése
 
-Ez a dokumentum végigvezeti a felhasználók a regisztrált közzétevői profilban való megtekintésének és kezelésének lépésén.
+Ez a dokumentum a regisztrált közzétevői profil felhasználóinak megtekintésére és kezelésére szolgáló végigjárás.
 
-Ezzel a lépéssel elvégezte az Azure Marketplace és a AppSource kiadó lépéseinek elvégzését. A közzétevő profil regisztrálva van a **[Cloud Partner Portal](https://cloudpartner.azure.com/)** a partneri kérelem jóváhagyása után. A közzétevő profilja a partner regisztrálása során használt fiókból közzétett összes ajánlatra és SKU-ra érvényes lesz.
+Ekkorra már elvégezte a lépéseket, hogy egy Azure Marketplace-és AppSource-kiadó. A közzétevői profil regisztrálva van a **[Cloud Partner Portal-on](https://cloudpartner.azure.com/)** a partnerkérés jóváhagyását követően. A közzétevői profil a partnerregisztráció során használt fiókból közzétett összes ajánlatra és sem-re vonatkozik.
 
-Ha még nem regisztrálta a céget felhőalapú partnerként, tekintse meg a következő témakört: Ismerkedés [a Cloud Partner portálral](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal).
+Ha még nem regisztrálta a vállalatát felhőpartnerként, olvassa [el az Első lépések a felhőpartner-portált.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal)
 
-**Közzétevői profil**: a közzétevői profil megkülönbözteti a vállalatot az Azure Marketplace-en és a AppSource. A csomag a közzétevő AZONOSÍTÓját, a megjelenítendő nevet és a tulajdonos e-mail-címeit tartalmazza. A jól felügyelt profil növeli a láthatóságot, és segít a piactéren a felhasználók számára a megfelelő ajánlat azonosításában és kiválasztásában.
+**Közzétevői profil:** A közzétevői profil megkülönbözteti a vállalatot az Azure Piactéren és az AppSource-on. Ez áll a kiadói azonosító, megjelenítendő név, és a tulajdonos e-mail(ek). A jól kezelt profil növeli a láthatóságot, és segít a piactér felhasználóinak könnyen azonosítani és kiválasztani a megfelelő ajánlatot.
 
 > [!NOTE]
-> A kiadói azonosító és a regisztrált tulajdonos e-mail-címe nem szerkeszthető az első ajánlat közzétételekor. Megtekintheti azonban a profilt, és szerkesztheti a közzétevő megjelenítendő nevét a Cloud Partner Portal.
+> A közzétevőazonosítója és a regisztrált tulajdonosi e-mail címe nem szerkeszthető az első ajánlat közzététele után. Azonban megtekintheti a profilját, és szerkesztheti a közzétevő megjelenítendő nevét a Cloud Partner Portal.However you can view your profile and edit the publisher display name from the Cloud Partner Portal.
 
 <!-- Dummy comment added to suppress MD linter warning -->
 
 > [!NOTE]
-> Felhasználók (közreműködők és tulajdonosok) hozzáadása a közzétételi profilhoz a Felhőbeli partner portál felhasználók szakaszából, a bal oldali navigációs ablaktábla felhasználók szakaszában.
+> Felhasználók (közreműködők és tulajdonosok) hozzáadása a közzétételi profilhoz a felhőpartner-portál Felhasználók szakaszának Bal oldali navigációs ablakának Felhasználók szakaszából."
 
-A **közzétevői profil megtekintéséhez és kezeléséhez**a jobb felső menüsorban kattintson a **közzétevő profil fülre**.
+**A közzétevői profil megtekintéséhez és kezeléséhez**a jobb felső menüsorból kattintson a **Publisher-profil fülre**.
 
-![Közzétevői profil lap – közzétevő profil](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofilenew.png)
+![Közzétevői profil lap- közzétevői profil](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofilenew.png)
 
-![Közzétevői profil részletei – közzétevői profil részletei](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledetails.png)
+![Közzétevő iprofilának részletei – közzétevői profil részletei](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledetails.png)
 
-**A Fejlesztői központ fiókjának összekapcsolása**: a meglévő fejlesztői központ fiókját a Cloud Partner Portalon is összekapcsolhatja a közzétevői profiljával.
-Először jelentkezzen be a portálra ugyanazzal az e-mail-címmel, amelyet a Fejlesztői központ fiókjának regisztrálásához használt. Ezután a közzétevői profil oldala megjeleníti a Fejlesztői központ fiókjának állapotát, a Fejlesztői központ fiók tulajdonosának e-mail-címét és a Fejlesztői központ fiókjának nevét.
+**A fejlesztői központ-fiók összekapcsolása:** Meglévő Fejlesztői központ-fiókját is összekapcsolhatja a közzétevői profiljával a Cloud Partner Portalon.
+Először jelentkezzen be a portálra ugyanazzal az e-mail címmel, amely a fejlesztői központ-fiók regisztrálásához használt. Ezután a közzétevői profillap megjeleníti a fejlesztői központ fiók állapotát, a Fejlesztői központ fiók tulajdonosának e-mail címét és a Fejlesztői központ fiók nevét.
 
 >[!NOTE]
->A Fejlesztői központ fiókjának regisztrációja kötelező a fizetős piacra helyezett SKU-ra való közzétételhez.
+>A Fejlesztői központ fiókregisztrációja kötelező a fizetős piaci hely ski-k közzétételéhez.
 
-Ha nem rendelkezik [fejlesztői központ-fiókkal](./cloud-partner-portal-dev-center-accounts-registration.md), létrehozhat egy fiókot. Ezután adja hozzá a regisztrált e-mail-címet tulajdonosként az ajánlatának Cloud Partner Portal. A tulajdonos csak a regisztrált e-mail-címet adhatja hozzá a közzétételi profilhoz a **felhasználói** szakaszban. Ezután jelentkezzen be a portálra ugyanazzal az e-mail-címmel, és csatolja a Fejlesztői központ fiókját.
+Ha nem rendelkezik [Fejlesztői központ-fiókkal,](./cloud-partner-portal-dev-center-accounts-registration.md)létrehozhat egy fiókot. Ezután adja meg a regisztrált e-mail címet tulajdonosként a Cloud Partner Portal webhelyen az ajánlatához. A tulajdonos csak a felhasználó **szakaszból** adhat hozzá a regisztrált e-mail címet a közzétételi profilhoz. Ezután jelentkezzen be a portálra ugyanazzal az e-mail címmel, és kapcsolja össze a fejlesztői központ-fiókját.
 
-![Közzétevői profil részletei – közzétevői profil leírása](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledescription.png)
+![Közzétevő iprofilja – közzétevői profil leírása](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledescription.png)

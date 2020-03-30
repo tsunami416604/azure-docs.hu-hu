@@ -1,7 +1,7 @@
 ---
-title: 'Pontszám SVD ajánló: modul referenciája'
+title: 'Pontszám SVD ajánló: Modul hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a score SVD ajánló modulját Azure Machine Learning az adathalmazokra vonatkozó ajánlások előrejelzéséhez.
+description: Ismerje meg, hogyan használhatja a Score SVD recommender modult az Azure Machine Learningben egy adatkészlet relevancia-előrejelzéseinek pontozásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,118 +9,118 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/10/2020
-ms.openlocfilehash: a3eafc28dc6d0f44a1f1019cb3393259aa2a698a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 82c3454ad4c8db3a9b19084f5b6ece988cc86b9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920348"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455978"
 ---
 # <a name="score-svd-recommender"></a>SVD-ajánló pontozása
 
-Ez a cikk azt ismerteti, hogyan használható a score SVD ajánló modul a Azure Machine Learning Designerben (előzetes verzió). Ezzel a modullal előrejelzéseket hozhat létre egy betanított javaslati modell használatával az egyértékű dekompozíciós (SVD) algoritmus alapján.
+Ez a cikk ismerteti, hogyan használhatja a Score SVD ajánló modul az Azure Machine Learning designer (előzetes verzió). Ezzel a modullal előrejelzéseket hozhat létre egy betanított javaslatmodell használatával az egyértékű bomlás (SVD) algoritmus on alapul.
 
-A SVD ajánló két különböző típusú előrejelzést tud előállítani:
+Az SVD-ajánló két különböző típusú előrejelzést tud létrehozni:
 
-- [Egy adott felhasználó és tétel minősítésének előrejelzése](#prediction-of-ratings)
-- [Elemek ajánlása egy felhasználónak](#recommendations-for-users)
+- [Adott felhasználó és elem minősítésének előrejelzése](#prediction-of-ratings)
+- [Elemek ajánlása a felhasználónak](#recommendations-for-users)
 
-A második típusú előrejelzések létrehozásakor az alábbi módokon is működhet:
+A második típusú előrejelzés létrehozásakor az alábbi módok egyikében működhet:
 
-- Az **éles üzemmód** az összes felhasználót vagy elemet veszi figyelembe. Ez általában egy webszolgáltatásban használatos.
+- **A termelési mód** az összes felhasználót vagy cikket figyelembe veszi. Általában egy webszolgáltatásban használják.
 
-  Új felhasználók számára is létrehozhat pontszámokat, nem csak a betanítás során látott felhasználókat. További információ: [technikai megjegyzések](#technical-notes). 
+  Az új felhasználók számára nem csak a képzés során látott felhasználók hozhatja létre a pontszámokat. További információt a [technikai megjegyzésekben](#technical-notes)talál. 
 
-- A **kiértékelési mód** a felhasználók vagy a kiértékelhető elemek csökkentett készletén működik. Általában a folyamat műveletei során használatos.
+- **A kiértékelési mód** a kiértékelhető felhasználók vagy elemek csökkentett készletén működik. Általában a csővezeték-műveletek során használják.
 
-A SVD ajánló algoritmussal kapcsolatos további információkért tekintse meg a Research Paper [Matrix faktorizációs-technikákat az ajánló rendszerek esetében](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf).
+Az SVD ajánlóalgoritmusával kapcsolatos további információkért tekintse meg a [Mátrix faktorizációs technikákat az ajánlórendszerekhez](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf)című kutatási tanulmányban.
 
-## <a name="how-to-configure-score-svd-recommender"></a>A score SVD ajánló konfigurálása
+## <a name="how-to-configure-score-svd-recommender"></a>A Score SVD ajánló konfigurálása
 
-Ez a modul két különböző típusú előrejelzést támogat, amelyek mindegyike eltérő követelményeket támaszt. 
+Ez a modul kétféle előrejelzést támogat, amelyek mindegyike különböző követelményekkel. 
 
-###  <a name="prediction-of-ratings"></a>Minősítések előrejelzése
+###  <a name="prediction-of-ratings"></a>A minősítések előrejelzése
 
-A minősítések előrejelzése során a modell kiszámítja, hogy a felhasználó hogyan reagál egy adott elemre a betanítási adatok alapján. A pontozás bemeneti adatának meg kell adnia egy felhasználót és a díjszabást is.
+Ha előre jelzi a minősítéseket, a modell kiszámítja, hogy a felhasználó hogyan fog reagálni egy adott elemre, a betanítási adatok alapján. A pontozási bemeneti adatoknak meg kell adniuk mind a felhasználót, mind a díjköteles elemet.
 
-1. Adjon hozzá egy betanított javaslatot a folyamathoz, és kapcsolódjon a **betanított SVD-ajánlóhoz**. A modellt a [Train SVD ajánló](train-SVD-recommender.md) moduljának használatával kell létrehoznia.
+1. Adjon hozzá egy betanított javaslatmodellt a folyamathoz, és csatlakoztassa a **betanított SVD-ajánlóhoz.** Létre kell hoznia a modellt a [Train SVD recommender](train-SVD-recommender.md) modul használatával.
 
-2. Az **Ajánlói előrejelző típushoz**válassza a **minősítési előrejelzés**lehetőséget. Nincs szükség más paraméterekre.
+2. Az **Ajánló előrejelzési típusú,** válassza **Értékelés Előrejelzése**. Nincs szükség más paraméterekre.
 
-3. Adja hozzá azokat az adatokat, amelyekhez előrejelzéseket kíván készíteni, majd a **pontszámhoz kapcsolódjon az adatkészlethez**.
+3. Adja hozzá azokat az adatokat, amelyekhez előrejelzéseket szeretne készíteni, és csatlakoztassa őket **az adatkészlethez a pontozáshoz.**
 
-   Ahhoz, hogy a modell megjósolja a minősítéseket, a bemeneti adatkészletnek tartalmaznia kell a felhasználó-elem párokat.
+   Ahhoz, hogy a modell előre jelezze a minősítéseket, a bemeneti adatkészletnek tartalmaznia kell a felhasználói elem párjait.
 
-   Az adatkészlet az első és a második oszlopban szereplő felhasználói elem párokra vonatkozóan opcionális harmadik oszlopot is tartalmazhat. A harmadik oszlop azonban figyelmen kívül lesz hagyva az előrejelzés során.
+   Az adatkészlet az első és a második oszlopban tartalmazhatja a felhasználói elempár minősítéseinek opcionális harmadik oszlopát. De a harmadik oszlop figyelmen kívül lesz hagyva az előrejelzés során.
 
-4. A folyamat futtatása.
+4. Küldje el a folyamatot.
 
 ### <a name="results-for-rating-predictions"></a>A minősítési előrejelzések eredményei 
 
-A kimeneti adatkészlet három oszlopot tartalmaz: felhasználók, elemek, valamint az egyes bemeneti felhasználók és elemek előre jelzett minősítése.
+A kimeneti adatkészlet három oszlopot tartalmaz: felhasználókat, elemeket és az egyes bemeneti felhasználók és elemek előre jelzett minősítését.
 
-###  <a name="recommendations-for-users"></a>Javaslatok felhasználók számára 
+###  <a name="recommendations-for-users"></a>Javaslatok a felhasználók számára 
 
-A felhasználókra vonatkozó elemek ajánlásához adja meg a felhasználók és az elemek listáját bemenetként. Ezekből az adatokból a modell a meglévő elemek és felhasználók ismereteit használja az egyes felhasználókra vonatkozó, valószínűleg fellebbezéssel rendelkező elemek listájának létrehozásához. Testreszabhatja a visszaadott javaslatok számát. Továbbá beállíthat egy küszöbértéket a javaslatok létrehozásához szükséges korábbi ajánlások számának megadásához.
+Ha elemeket szeretne javasolni a felhasználóknak, adja meg a felhasználók és elemek listáját bemenetként. Ezekből az adatokból a modell a meglévő elemekkel és felhasználókkal kapcsolatos ismereteit felhasználva hozza létre az egyes felhasználók számára valószínűleg vonzó elemek listáját. Testreszabhatja a visszaadott javaslatok számát. És beállíthatja a javaslat létrehozásához szükséges korábbi javaslatok számát.
 
-1. Adjon hozzá egy betanított javaslatot a folyamathoz, és kapcsolódjon a **betanított SVD-ajánlóhoz**.  A modellt a [Train SVD ajánló](train-svd-recommender.md) moduljának használatával kell létrehoznia.
+1. Adjon hozzá egy betanított javaslatmodellt a folyamathoz, és csatlakoztassa a **betanított SVD-ajánlóhoz.**  Létre kell hoznia a modellt a [Train SVD recommender](train-svd-recommender.md) modul használatával.
 
-2. A felhasználók listájának megjelenítéséhez állítsa az **Ajánlói előrejelzési típust** **elemre**.
+2. Ha a felhasználók listájához szeretne elemeket ajánlani, állítsa **az Ajánló előrejelzési kedvesét** **a cikkajánlásra.**
 
-3. Az **ajánlott elemek kiválasztásához**jelezze, hogy éles környezetben vagy modell kiértékeléséhez használja-e a pontozási modult. Válasszon egyet az alábbi értékek közül:
+3. Az **ajánlott cikk kiválasztása esetén**adja meg, hogy a pontozási modult használja-e éles környezetben vagy modellkiértékeléshez. Válasszon az alábbi értékek közül:
 
-    - **Az összes elemből**: válassza ezt a lehetőséget, ha egy webszolgáltatásban vagy éles környezetben használni kívánt folyamatot állít be.  Ez a beállítás engedélyezi az *éles üzemmódot*. A modul javaslatokat tesz a betanítás során látható összes elemről.
+    - **Minden cikk:** Válassza ezt a lehetőséget, ha egy folyamatot állít be egy webszolgáltatásban vagy éles környezetben való használatra.  Ez a beállítás lehetővé teszi *a termelési módot.* A modul ajánlásokat tesz a képzés során látható összes elemből.
 
-    - **A névleges elemek közül (a modell kiértékeléséhez)** : válassza ezt a lehetőséget, ha modellt fejleszt vagy tesztel. Ez a beállítás lehetővé teszi a *kiértékelési módot*. A modul csak a megadott bemeneti adatkészletben lévő elemekről tesz javaslatokat.
+    - **A névleges elemek (a modell kiértékelése)**: Válassza ezt a lehetőséget, ha a fejlődő vagy tesztelési modell. Ez a beállítás lehetővé teszi *a kiértékelési módot.* A modul csak a bemeneti adatkészlet ben szereplő, minősített elemekből tesz javaslatokat.
     
-    - Nem **értékelt elemektől (új elemek a felhasználók számára)** : válassza ezt a lehetőséget, ha azt szeretné, hogy a modul csak a nem értékelt betanítási adatkészletben lévő elemekről tegyen javaslatot. 
+    - **A Nem minősített elemek (javasoljon új elemeket a felhasználóknak)**: Válassza ezt a lehetőséget, ha azt szeretné, hogy a modul csak a betanítási adatkészlet azon elemeiből tegyen javaslatokat, amelyek nincsenek minősítve. 
 
-4. Adja hozzá azt az adatkészletet, amelyhez előrejelzéseket kíván készíteni, majd a pontszámhoz kapcsolódjon az **adatkészlethez**.
+4. Adja hozzá azt az adatkészletet, amelyhez előrejelzéseket szeretne készíteni, és csatlakoztassa **az adatkészlethez a pontszámhoz.**
 
-    - **Minden elemnél**a bemeneti adatkészletnek egy oszlopból kell állnia. Azon felhasználók azonosítóit tartalmazza, amelyekhez javaslatokat szeretne tenni.
+    - Az **Összes elemből beállításhoz**a bemeneti adatkészletnek egy oszlopból kell állnia. Azon felhasználók azonosítóit tartalmazza, amelyekre vonatkozóan ajánlásokat kell tenni.
 
-      Az adatkészlet tartalmazhatja az elemek azonosítóinak és minősítésének két további oszlopát is, de ez a két oszlop figyelmen kívül lesz hagyva. 
+      Az adatkészlet tartalmazhat egy további két oszlopot az elemazonosítókból és minősítésekből, de ezt a két oszlopot figyelmen kívül hagyja. 
 
-    - A **névleges elemektől (a modell kiértékeléséhez)** a bemeneti adatkészletnek a felhasználó-elem párokból kell állnia. Az első oszlopnak tartalmaznia kell a felhasználói azonosítót. A második oszlopnak tartalmaznia kell a megfelelő elemek azonosítóit.
+    - A **Számított elemek (modellkiértékeléshez)** esetében a bemeneti adatkészletnek felhasználói elempárokból kell állnia. Az első oszlopnak tartalmaznia kell a felhasználói azonosítót. A második oszlopnak tartalmaznia kell a megfelelő cikkazonosítókat.
 
-      Az adatkészlet tartalmazhat a felhasználói elemek minősítésének harmadik oszlopát is, de ez az oszlop figyelmen kívül lesz hagyva.
+      Az adatkészlet tartalmazhat egy harmadik oszlopot a felhasználói elemek minősítéseiből, de ezt az oszlopot figyelmen kívül hagyja.
 
-    - A nem **értékelt elemek esetében (az új elemek felhasználók számára történő javaslatához)** a bemeneti adatkészletnek felhasználói elemből álló párokból kell állnia. Az első oszlopnak tartalmaznia kell a felhasználói azonosítót. A második oszlopnak tartalmaznia kell a megfelelő elemek azonosítóit.
+    - A **Nem minősített elemek (új elemek et javasolanak a felhasználóknak)** esetében a bemeneti adatkészletnek felhasználói elempárokból kell állnia. Az első oszlopnak tartalmaznia kell a felhasználói azonosítót. A második oszlopnak tartalmaznia kell a megfelelő cikkazonosítókat.
 
-     Az adatkészlet tartalmazhat a felhasználói elemek minősítésének harmadik oszlopát is, de ez az oszlop figyelmen kívül lesz hagyva.
+     Az adatkészlet tartalmazhat egy harmadik oszlopot a felhasználói elemek minősítéseiből, de ezt az oszlopot figyelmen kívül hagyja.
 
-5. A **felhasználó számára ajánlott elemek maximális száma**: Itt adhatja meg az egyes felhasználók számára visszaadni kívánt elemek számát. Alapértelmezés szerint a modul öt elemet javasol.
+5. **A felhasználónak ajánlandó elemek maximális száma**: Adja meg az egyes felhasználók számára visszaküldendő elemek számát. Alapértelmezés szerint a modul öt elemet javasol.
 
-6. **A javaslati készlet minimális mérete felhasználónként**: adjon meg egy értéket, amely azt jelzi, hogy hány előzetes javaslat szükséges. Alapértelmezés szerint ez a paraméter 2 értékre van állítva, ami azt jelenti, hogy legalább két másik felhasználó javasolta az elem megadását.
+6. **A javaslatkészlet minimális mérete felhasználónként:** Adjon meg egy értéket, amely azt jelzi, hogy hány korábbi javaslatra van szükség. Alapértelmezés szerint ez a paraméter 2-re van állítva, ami azt jelenti, hogy legalább két másik felhasználó ajánlotta az elemet.
 
-   Ezt a lehetőséget csak akkor használja, ha próbaverziós módban dolgozik. A beállítás nem érhető el, ha az **összes elemből** vagy **a nem értékelt elemek közül a lehetőséget választja (új elemeket javasol a felhasználóknak)** .
+   Ezt a beállítást csak akkor használja, ha értékelési módban pontozást szeretne. Ez a beállítás nem érhető el, ha az **Összes elemtől** vagy a Nem minősített elemektől lehetőséget választja **(új elemeket javasol a felhasználóknak).**
 
-7.  A nem **értékelt elemek esetében (az új elemek felhasználók számára történő javaslatához)** használja a **betanítási adatok**nevű harmadik bemeneti portot, hogy eltávolítsa azokat az elemeket, amelyek már a jóslat eredményeiből lettek kiértékelve.
+7.  A **Nem minősített elemek (új elemek et javasolanak a felhasználóknak)** esetében használja a harmadik bemeneti portot, a Training **Data**nevet, és távolítsa el azokat az elemeket, amelyek már vannak minősítve az előrejelzési eredményekből.
 
-    A szűrő alkalmazásához az eredeti betanítási adatkészletet a bemeneti porthoz kell kapcsolni.
+    A szűrő alkalmazásához csatlakoztassa az eredeti betanítási adatkészletet a bemeneti porthoz.
 
-8. A folyamat futtatása.
+8. Küldje el a folyamatot.
 
-### <a name="results-of-item-recommendation"></a>Az elemek javaslatának eredményei
+### <a name="results-of-item-recommendation"></a>A cikkre vonatkozó ajánlás eredményei
 
-A score SVD ajánló által visszaadott pontozásos adatkészlet felsorolja az egyes felhasználók ajánlott elemeit:
+A Score SVD recommender által visszaadott pontozott adatkészlet felsorolja az egyes felhasználók számára ajánlott elemeket:
 
-- Az első oszlop tartalmazza a felhasználói azonosítókat.
-- Számos további oszlop jön létre, attól függően, hogy milyen értékre van beállítva a **felhasználó számára ajánlott elemek maximális száma**. Minden oszlop egy javasolt (azonosítóval rendelkező) tételt tartalmaz. A javaslatok a felhasználó-tétel affinitás szerint vannak rendezve. A legmagasabb affinitású tétel az **1**. oszlopba kerül.
+- Az első oszlop a felhasználói azonosítókat tartalmazza.
+- A **felhasználónak ajánlandó elemek maximális száma**értéktől függően számos további oszlop jön létre. Minden oszlop tartalmaz egy ajánlott elemet (azonosító szerint). A javaslatok a felhasználói elemek affinitása szerint vannak rendezve. A legnagyobb affinitással rendelkező elem az **1.**
 
 > [!WARNING]
-> Ezt a pontozásos adatkészletet a [kiértékelést ajánló](evaluate-recommender.md) modul használatával nem értékelheti ki.
+> Ezt a pontozott adatkészletet nem tudja kiértékelni az [Ajánló kiértékelése](evaluate-recommender.md) modul használatával.
 
 
 ##  <a name="technical-notes"></a>Technikai megjegyzések
 
-Ha rendelkezik egy, a SVD ajánlóval rendelkező folyamattal, és a modellt éles környezetbe helyezi át, vegye figyelembe, hogy fontos különbségek vannak az ajánló kiértékelési módban való használata és éles módban való használata között.
+Ha rendelkezik egy folyamat az SVD-ajánló, és helyezze át a modellt éles környezetbe, vegye figyelembe, hogy vannak kulcsfontosságú különbségek az ajánló használata a kiértékelési módban, és éles módban használja.
 
-A kiértékeléshez a definíció szerint olyan előrejelzések szükségesek, amelyeket a rendszer egy tesztelési készletben ellenőrizheti a *terepi igazságban* . Az ajánló kiértékelése során csak azokat az elemeket kell megjósolni, amelyek a tesztelési készletben lettek értékelve. Ez korlátozza az előre jelzett lehetséges értékeket.
+Az értékelés definíció szerint olyan előrejelzéseket igényel, amelyek egy tesztkészletben ellenőrizhetők a *földi igazsággal* szemben. Az ajánló kiértékelésekor csak a tesztkészletben értékelt elemeket kell előre jeleznie. Ez korlátozza az előre jelzett lehetséges értékeket.
 
-A modell működővé tenni az előrejelzési módot általában úgy módosítja, hogy az összes lehetséges elem alapján javaslatokat tegyen, hogy a lehető legjobb előrejelzések legyenek. Ezen előrejelzések nagy része nem rendelkezik megfelelő indokokkal. Így az ajánlás pontossága nem ellenőrizhető ugyanúgy, mint a folyamat műveletei során.
+A modell üzembe astaként általában módosítja az előrejelzési módot, hogy az összes lehetséges elem alapján javaslatokat tegyen a legjobb előrejelzések lehetővé tétele érdekében. Sok ilyen jóslatok, nincs megfelelő földi igazság. Így a javaslat pontossága nem ellenőrizhető ugyanúgy, mint a csővezeték-műveletek során.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

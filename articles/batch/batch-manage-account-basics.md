@@ -1,6 +1,6 @@
 ---
-title: Fiók kezelése – Azure Batch | Microsoft Docs
-description: Megtudhatja, mi tartalmaz egy Azure Batch fiókot
+title: A fiók kezelése - Azure Batch | Microsoft dokumentumok
+description: Ismerje meg, mi tartalmaz egy Azure Batch-fiókot
 services: batch
 documentationcenter: ''
 author: LauraBrenner
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 72630a2003b63e60ba79882e1861283173840425
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: a4df2ec0439e659fd8dc1448c6209c9718114791
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79375186"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479790"
 ---
 # <a name="manage-your-batch-account"></a>A Batch-fiók kezelése
 
@@ -29,35 +29,36 @@ Azure Batch-fiókot az [Azure Portalon](batch-account-create-portal.md)hozhat l�
 
 Több Batch számítási feladatot is futtathat egyetlen Batch-fiókon, de el is oszthatja a számítási feladatokat ugyanazon előfizetéshez, de különböző Azure-régiókhoz tartozó Batch-fiókok között.
 
-## <a name="components-of-the-batch-account"></a>A Batch-fiók összetevői
+## <a name="components-of-the-batch-account"></a>A Batch számla összetevői
 
-A Batch-fiók lehetővé teszi, hogy hatékonyan futtasson nagy méretű párhuzamos és nagy teljesítményű számítástechnikai (HPC) kötegelt feladatokat az Azure-ban. A felügyelt fiókon belül:
+A Batch-fiók lehetővé teszi, hogy az Azure-ban hatékonyan futtasson nagyméretű párhuzamos és nagy teljesítményű számítási (HPC) kötegelt feladatokat. A kezelt fiókon belül:
 
 - a futtatott alkalmazások
 
-- készletek és csomópontok kiosztása a készleteken belül
+- a halmazok és csomópontok elosztása a halmazokon belül
 
-- a feladatok száma és típusai 
+- a feladatok száma és típusa 
 
-- az adatok bemenete és kimenete. A feladatok kezeléséhez nincs szükség további szoftver telepítésére.
+- az adatok bevitele és kimenete. A feladatok kezeléséhez nem kell további szoftvereket telepítenie.
 
-- A Batch-fiók létrehozásakor a rendszer megkéri, hogy rendeljen hozzá egy nevet. Ez a név megegyezik az AZONOSÍTÓval, és a hozzárendelés után nem módosítható.
+- A Batch-fiók létrehozásakor a rendszer arra kéri, hogy rendeljen hozzá nevet. Ez a név az azonosítója, és a hozzárendelt név nem módosítható.
 
-- Egy fiók nevének módosításához törölnie kell, és létre kell hoznia egy új batch-fiókot.
+- A fiók nevének módosításához törölnie kell azt, és létre kell hoznia egy új Batch-fiókot.
 
 - A fiók a használni kívánt előfizetésen belül jön létre.
 
-- A fiók használatával azonosíthatja és lekérheti az elsődleges és a másodlagos fiókok kulcsait az előfizetésében található bármely batch-fiókból.
+- A fiók segítségével azonosíthatja és lekérheti az elsődleges és másodlagos fiókkulcsokat az előfizetés bármely Batch-fiókjából.
 
-- A fiók a készlet kiosztásával és a fő kvótákkal kapcsolatos információkat tart fenn.  
+- A fiók a készletfelosztással és az alapkvótákkal kapcsolatos információkat tartja fenn.  
 
-- A fiók a hely adatait tartalmazza.
+- A fiók helyadatokat tartalmaz.
 
-- A fiók azonosítja a Storage-fiókját.
+- A fiók azonosítja a tárfiókot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Hozzon létre egy batch-fiókot a [Azure Portal](batch-account-create-portal.md)használatával.
-- Hozzon létre egy batch-fiókot programozott módon, például a [Batch Management .net könyvtárával](batch-management-dotnet.md).
-- A [Azure batch-készletben lévő számítási csomópontok távoli elérésének konfigurálása vagy letiltása](pool-endpoint-configuration.md).
-- [Feladat-előkészítési és feladat-kiadási feladatok futtatása kötegelt számítási csomópontokon](batch-job-prep-release.md)
+- Batch-fiók létrehozása az [Azure Portalhasználatával.](batch-account-create-portal.md)
+- Hozzon létre egy Batch-fiókot programozott módon, például a [Kötegkezelés .NET könyvtárral.](batch-management-dotnet.md)
+- [Konfigurálja vagy tiltsa le a távoli hozzáférést az Azure Batch-készlet számítási csomópontjaihoz.](pool-endpoint-configuration.md)
+- [Feladat-előkészítési és feladatkiadási feladatok futtatása kötegelt számítási csomópontokon](batch-job-prep-release.md)
+

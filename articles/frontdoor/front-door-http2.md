@@ -1,6 +1,6 @@
 ---
-title: Azure bejárati szolgáltatás – HTTP2-támogatás | Microsoft Docs
-description: Ez a cikk segítséget nyújt az Azure bejárati szolgáltatásának HTTP/2-támogatásának megismeréséhez
+title: Azure Bejárati ajtó - HTTP2 támogatás | Microsoft dokumentumok
+description: Ez a cikk segítséget nyújt a HTTP/2 támogatásmegismeréséhez az Azure Bejárati ajtajában
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,41 +11,41 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: c3c1721454c0b3c96071c685a764f34d4fa540b9
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 415a89cbccd6b43d64ba1a553d44ac003df5806a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775266"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471625"
 ---
-# <a name="http2-support-in-azure-front-door-service"></a>HTTP/2 támogatás az Azure bejárati ajtó szolgáltatásában
+# <a name="http2-support-in-azure-front-door"></a>HTTP/2 támogatás az Azure bejárati ajtajában
 
-Jelenleg a HTTP/2 támogatás aktív az összes bejárati ajtó konfigurációjában. Az ügyfelektől nem szükséges további művelet.
+Jelenleg a HTTP/2 támogatás minden bejárati ajtó konfigurációhoz aktív. Az ügyfelektől nincs szükség további lépésekre.
 
-A HTTP/2 a HTTP/1.1 fő verziója. Gyorsabb webes teljesítményt, kisebb válaszidőt és továbbfejlesztett felhasználói élményt biztosít, miközben megtartja az ismerős HTTP-metódusokat, az állapot-kódokat és a szemantikai funkciókat. Bár a HTTP/2 a HTTP-vel és a HTTPS-vel való együttműködésre lett tervezve, sok ügyfél-webböngésző csak a HTTP/2 protokollt támogatja Transport Layer Security (TLS) protokollon keresztül.
+A HTTP/2 a HTTP/1.1 egyik fő módosítása. Gyorsabb webes teljesítményt, csökkentett válaszidőt és jobb felhasználói élményt biztosít, miközben megőrzi a jól ismert HTTP-módszereket, állapotkódokat és szemantikát. Bár a HTTP/2 http-vel és HTTPS-lel való együttműködésre szolgál, sok ügyfélwebböngésző csak a HTTP/2-t támogatja a Transport Layer Security (TLS) protokollal szemben.
 
-### <a name="http2-benefits"></a>HTTP/2 előnyök
+### <a name="http2-benefits"></a>HTTP/2 előnyei
 
 A HTTP/2 előnyei a következők:
 
-*   **Multiplex és Egyidejűség**
+*   **Multiplexelés és egyidejűség**
 
-    A HTTP 1,1 használatával több erőforrás-kérelemhez több TCP-kapcsolat szükséges, és minden kapcsolathoz teljesítménybeli terhelés tartozik. A HTTP/2 lehetővé teszi több erőforrás kérelmezését egyetlen TCP-kapcsolatban.
+    A HTTP 1.1 használatával több erőforrás-kérelem esetén több TCP-kapcsolatra van szükség, és minden kapcsolathoz teljesítményterhelés jár. A HTTP/2 lehetővé teszi, hogy egyetlen TCP-kapcsolaton keresztül több erőforrást igényeljen.
 
 *   **Fejléc tömörítése**
 
-    Ha tömöríti a HTTP-fejléceket a kiszolgált erőforrásokhoz, a vezetékes idő jelentősen csökken.
+    A kiszolgált erőforrások HTTP-fejléceinek tömörítésével jelentősen csökken a vezetéken töltött idő.
 
-*   **Stream-függőségek**
+*   **Streamfüggőségek**
 
-    A stream-függőségek lehetővé teszik az ügyfél számára, hogy jelezze a kiszolgálónak, hogy mely erőforrások rendelkeznek prioritással.
+    Az adatfolyam-függőségek lehetővé teszik az ügyfél számára, hogy jelezze a kiszolgálónak, hogy mely erőforrások élveznek prioritást.
 
 
-## <a name="http2-browser-support"></a>HTTP/2 böngésző-támogatás
+## <a name="http2-browser-support"></a>HTTP/2 böngésző támogatása
 
-Az összes fő böngésző implementálta a HTTP/2-támogatást a jelenlegi verzióiban. A nem támogatott böngészők automatikusan tartalék HTTP/1.1-re.
+Az összes főbb böngészők végre HTTP / 2 támogatást a jelenlegi verziók. A nem támogatott böngészők automatikusan visszatérnek a HTTP/1.1-re.
 
-|Browser|Minimális verzió|
+|Böngésző|Minimális verzió|
 |-------------|------------|
 |Microsoft Edge| 12|
 |Google Chrome| 43|
@@ -53,11 +53,11 @@ Az összes fő böngésző implementálta a HTTP/2-támogatást a jelenlegi verz
 |Opera| 32|
 |Safari| 9|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a HTTP/2-ről, látogasson el az alábbi forrásokra:
 
-- [HTTP/2 specifikációs Kezdőlap](https://http2.github.io/)
-- [Hivatalos HTTP/2 – gyakori kérdések](https://http2.github.io/faq/)
-- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- [HTTP/2 specifikáció honlapja](https://http2.github.io/)
+- [Hivatalos HTTP/2 GYIK](https://http2.github.io/faq/)
+- Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

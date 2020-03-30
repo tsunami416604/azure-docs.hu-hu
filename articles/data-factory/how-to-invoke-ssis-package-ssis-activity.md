@@ -1,6 +1,6 @@
 ---
-title: SSIS-csomag futtatása a SSIS-csomag végrehajtása tevékenységgel
-description: Ez a cikk azt ismerteti, hogyan futtathat egy SQL Server Integration Services-(SSIS-) csomagot egy Azure Data Factory-folyamatban a SSIS-csomag végrehajtása tevékenység használatával.
+title: SSIS-csomag futtatása ssis-csomag végrehajtásával tevékenységgel
+description: Ez a cikk ismerteti, hogyan futtathat egy SQL Server Integration Services (SSIS) csomagot egy Azure Data Factory-folyamat az SSIS-csomag végrehajtása tevékenység használatával.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -15,125 +15,125 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/14/2019
 ms.openlocfilehash: 6027c2d94535ca2ef5c41e7027fe070c6ccb21a0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260630"
 ---
-# <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>SSIS-csomag futtatása a SSIS-csomag végrehajtása tevékenységgel Azure Data Factory
-Ez a cikk azt ismerteti, hogyan futtathat egy SQL Server Integration Services-(SSIS-) csomagot egy Azure Data Factory-folyamatban a SSIS-csomag végrehajtása tevékenység használatával. 
+# <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>SSIS-csomag futtatása az SSIS-csomag végrehajtása tevékenységgel az Azure Data Factoryben
+Ez a cikk ismerteti, hogyan futtathat egy SQL Server Integration Services (SSIS) csomagot egy Azure Data Factory-folyamat az SSIS-csomag végrehajtása tevékenység használatával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Hozzon létre egy Azure-SSIS integrációs modult (IR), ha még nem rendelkezik az oktatóanyag részletes utasításait követve [: kiépítés Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md).
+Hozzon létre egy Azure-SSIS-integrációs futásidejűt (IR), ha még nem rendelkezik ilyenel az [oktatóanyag: Azure-SSIS IR kiépítés](tutorial-create-azure-ssis-runtime-portal.md)című lépésének lépésenkénti utasításait követve.
 
-## <a name="run-a-package-in-the-azure-portal"></a>Csomag futtatása a Azure Portal
-Ebben a szakaszban a Data Factory felhasználói felületén (UI) vagy az alkalmazáson keresztül hozhat létre egy Data Factory folyamatot a SSIS-csomagot futtató végrehajtási SSIS-csomag tevékenységgel.
+## <a name="run-a-package-in-the-azure-portal"></a>Csomag futtatása az Azure Portalon
+Ebben a szakaszban a Data Factory felhasználói felület (UI) vagy az alkalmazás segítségével hozzon létre egy Data Factory folyamat ot az SSIS-csomag végrehajtására vonatkozó tevékenység végrehajtásával, amely az SSIS-csomagot futtatja.
 
-### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Folyamat létrehozása SSIS-csomag végrehajtása tevékenységgel
-Ebben a lépésben a Data Factory felhasználói felületét vagy az alkalmazást használja egy folyamat létrehozásához. Vegyen fel egy végrehajtási SSIS-csomag tevékenységet a folyamatba, és konfigurálja úgy, hogy futtassa a SSIS-csomagot. 
+### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Folyamat létrehozása SSIS-csomag végrehajtásával
+Ebben a lépésben a Data Factory felhasználói felületvagy alkalmazás segítségével hozzon létre egy folyamatot. Hozzáad egy SSIS-csomag végrehajtása tevékenységet a folyamathoz, és konfigurálja az SSIS-csomag futtatásához. 
 
-1. A Azure Portal Data Factory áttekintés vagy Kezdőlap lapján válassza a **szerző & figyelő** csempét, hogy elindítsa a Data Factory felhasználói felületét vagy alkalmazását egy külön lapon. 
+1. A Data Factory áttekintése vagy kezdőlapja az Azure Portalon, válassza a **Szerzői & figyelés** csempe a Data Factory felhasználói felület vagy alkalmazás egy külön lapon. 
 
-   ![Data Factory Kezdőlap](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
+   ![A Data Factory kezdőlapja](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 
    Az **Első lépések** lapon válassza a **Folyamat létrehozása** lehetőséget. 
 
    ![Első lépések lap](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
 
-1. A **tevékenységek** eszközkészletben bontsa ki az **általános**elemet. Ezután húzzon egy **SSIS-csomag végrehajtása** tevékenységet a folyamat tervező felületére. 
+1. A **Tevékenységek** eszközkészletben bontsa ki az **Általános**elemet. Ezután húzza az **SSIS-csomag végrehajtása** tevékenységet a folyamattervező felületére. 
 
-   ![SSIS-csomag végrehajtása tevékenység áthúzása a tervező felületére](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
+   ![Végrehajtási SSIS-csomagtevékenység húzása a tervezőfelületre](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
 
-1. A SSIS-csomag végrehajtása tevékenység **általános** lapján adja meg a tevékenység nevét és leírását. Adja meg a választható **időtúllépést** és az **újrapróbálkozási** értékeket.
+1. Az SSIS-csomag végrehajtása tevékenység **Általános** lapján adja meg a tevékenység nevét és leírását. Állítsa be a választható **időmegtetési** és **újrapróbálkozási** értékeket.
 
    ![Tulajdonságok beállítása az Általános lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-1. A SSIS-csomag végrehajtása tevékenység **Beállítások** lapján válasszon egy Azure-SSIS IR, amelyen futtatni szeretné a csomagot. Ha a csomag Windows-hitelesítést használ az adattárakhoz való hozzáféréshez (például SQL-kiszolgálók vagy a helyszíni vagy Azure Files-alapú fájlmegosztás), jelölje be a **Windows-hitelesítés** jelölőnégyzetet. Adja meg a csomag végrehajtási hitelesítő adatainak értékét a **tartomány**, a **Felhasználónév**és a **jelszó** mezőkben. 
+1. Az SSIS-csomag végrehajtása tevékenység **Beállítások** lapján válasszon ki egy Azure-SSIS-ir-t, ahol futtatni szeretné a csomagot. Ha a csomag Windows-hitelesítést használ az adattárak eléréséhez (például SQL-kiszolgálók vagy fájlmegosztások a helyszínen vagy az Azure Files), jelölje be a **Windows-hitelesítés** jelölőnégyzetet. Adja meg a csomag végrehajtási hitelesítő adatainak értékeit a **Tartomány**, **Felhasználónév**és **Jelszó** mezőben. 
 
-    Azt is megteheti, hogy az Azure Key vaultban tárolt titkos kulcsokat használja értékként. Ehhez jelölje be az **Azure Key Vault** jelölőnégyzetet a megfelelő hitelesítő adatok mellett. Válassza ki vagy szerkessze a meglévő Key Vault társított szolgáltatást, vagy hozzon létre egy újat. Ezután válassza ki a hitelesítő adat értékének titkos nevét vagy verzióját.
+    Azt is megteheti, hogy az Azure key vaultban tárolt titkos kulcsokat is használhatja értékként. Ehhez jelölje be az **AZURE KEY VAULT** jelölőnégyzetet a megfelelő hitelesítő adatok mellett. Válassza ki vagy szerkessze a meglévő key vault csatolt szolgáltatást, vagy hozzon létre egy újat. Ezután válassza ki a hitelesítő adatok értékének titkos nevét vagy verzióját.
 
-    A Key Vault társított szolgáltatás létrehozásakor vagy szerkesztésekor kiválaszthatja vagy szerkesztheti a meglévő kulcstartót, vagy létrehozhat egy újat is. Ha még nem tette meg, győződjön meg arról, hogy Data Factory felügyelt identitás-hozzáférést biztosít a kulcstartóhoz. A titkokat közvetlenül a következő formátumban is megadhatja: `<Key vault linked service name>/<secret name>/<secret version>`. Ha a csomag futtatásához 32 bites futtatókörnyezet szükséges, jelölje be a **32 bites futtatókörnyezet** jelölőnégyzetet.
+    A kulcstartóhoz csatolt szolgáltatás létrehozásakor vagy szerkesztésekor kijelölheti vagy szerkesztheti a meglévő kulcstartót, vagy létrehozhat egy újat. Győződjön meg arról, hogy a Data Factory felügyelt identitás hozzáférést a key vault, ha még nem tette meg. A titkos kulcsokat közvetlenül a `<Key vault linked service name>/<secret name>/<secret version>`következő formátumban is megadhatja: . Ha a csomag futtatásához 32 bites futásidejű időre van szüksége, jelölje be a **32 bites futásidejű** jelölőnégyzetet.
 
-   A **csomag helye**területen válassza a **SSISDB**, a fájlrendszer **(csomag)** , a **fájlrendszer (projekt)** vagy a **beágyazott csomag**elemet. Ha a **SSISDB** lehetőséget választja, amely automatikusan ki van választva, ha a Azure-SSIS IR a Azure SQL Database-kiszolgáló vagy a felügyelt példány által ÜZEMELTETett SSIS-katalógussal (SSISDB) lett kiépítve, adja meg azt a csomagot, amelyet a SSISDB üzembe helyezett. 
+   A **Csomag helyéhez**válassza az **SSISDB**, **a File System (Package)**, **a File System (Project)** vagy **a Embedded package lehetőséget.** Ha az **SSISDB-t** választja a csomag helyeként, amely automatikusan kiválasztásra kerül, ha az Azure-SSIS ir-t egy Azure SQL Database-kiszolgáló vagy felügyelt példány által üzemeltetett SSIS-katalógussal (SSISDB) kiépítették, adja meg a ssisisdb-be üzembe helyezett csomagot. 
 
-    Ha a Azure-SSIS IR fut, és a **manuális bejegyzések** jelölőnégyzet nincs bejelölve, tallózással keresse meg és válassza ki a meglévő mappákat, projekteket, csomagokat és környezeteket a SSISDB. Válassza a **frissítés** lehetőséget az újonnan hozzáadott mappák, projektek, csomagok vagy KÖRNYEZETek SSISDB való beolvasásához, hogy azok elérhetők legyenek a böngészéshez és a kiválasztáshoz. A csomagok végrehajtásához szükséges környezetek tallózásához vagy kiválasztásához előre be kell állítania a projekteket, hogy a SSISDB alatt található azonos mappák hivatkozásaiként adja hozzá ezeket a környezeteket. További információ: [SSIS-környezetek létrehozása és leképezése](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014).
+    Ha az Azure-SSIS ir fut, és a **Kézi bejegyzések** jelölőnégyzet nincs bejelölve, tallózással és a meglévő mappák, projektek, csomagok vagy környezetek kiválasztásával az SSISDB-ből. Válassza a **Frissítés** lehetőséget, ha az újonnan hozzáadott mappákat, projekteket, csomagokat vagy környezeteket szeretné lekérni az SSISDB-ből, hogy azok böngészhessenek és kiválaszthassanak. A csomagvégrehajtás-végrehajtások környezetének tallózásához vagy kiválasztásához előzetesen konfigurálnia kell a projekteket úgy, hogy ezeket a környezeteket az SSISDB csoport ban lévő mappákból származó hivatkozásokként adják hozzá. További információt az [SSIS-környezetek létrehozása és leképezése](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)című témakörben talál.
 
-   A **naplózási szint**beállításnál válassza ki a csomag végrehajtásának előre meghatározott hatókörét. Ha ehelyett a testreszabott naplózási nevet szeretné megadni, jelölje be a **testreszabott** jelölőnégyzetet. 
+   A **naplózási szint hez**válassza ki a naplózás előre meghatározott hatókörét a csomag végrehajtásához. Jelölje be a **Testreszabott jelölőnégyzetet,** ha helyette a testreszabott naplózási nevet szeretné megadni. 
 
-   ![Tulajdonságok beállítása a beállítások lapon – automatikus](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
+   ![Tulajdonságok beállítása a Beállítások lapon – Automatikus](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
-   Ha a Azure-SSIS IR nem fut, vagy a **manuális bejegyzések** jelölőnégyzet be van jelölve, adja meg a csomag-és környezeti elérési utakat a SSISDB közvetlenül a következő formátumokban: `<folder name>/<project name>/<package name>.dtsx` és `<folder name>/<environment name>`.
+   Ha az Azure-SSIS IR nem fut, vagy a **Kézi bejegyzések** jelölőnégyzet be van jelölve, adja meg a `<folder name>/<project name>/<package name>.dtsx` `<folder name>/<environment name>`csomag és a környezet elérési útjait az SSISDB-ből közvetlenül a következő formátumokban: és .
 
-   ![Tulajdonságok beállítása a beállítások lapon – manuális](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
+   ![Tulajdonságok beállítása a Beállítások lapon - Kézi](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-   Ha a csomag helyeként kiválasztja a **fájlrendszert (csomag)** , amely automatikusan ki van választva, ha a Azure-SSIS IR SSISDB nélkül lett kiépítve, adja meg a futtatni kívánt csomagot az univerzális elnevezési KONVENCIÓ (UNC) elérési útjának megadásával a csomagfájl (`.dtsx`) számára a **csomag elérési útja** mezőben. Ha például Azure Files tárolja a csomagot, a csomagjának elérési útja `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`. 
+   Ha a **Fájlrendszer (csomag)** lehetőséget választja a csomag helyeként, amely automatikusan kiválasztásra kerül, ha az Azure-SSIS ir-t SSISDB nélkül`.dtsx`lett kiépítve, adja meg a futtatni kívánt csomagot a csomagfájl ( UNC) elérési útjának megadásával a **Csomag elérési útja** mezőben. Ha például a csomagot az Azure Files ban `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`tárolja, a csomag elérési útja a . 
    
-   Ha a csomagot külön fájlban konfigurálja, akkor a **konfigurációs elérési út** mezőben meg kell adnia a konfigurációs fájl (`.dtsConfig`) UNC elérési útját is. Ha például a konfigurációját a Azure Files tárolja, a konfigurációs elérési útja `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`.
+   Ha a csomagot külön fájlban konfigurálja, a konfigurációs fájlhoz`.dtsConfig`( ) unc elérési utat kell megadnia a **Konfigurációs útvonal** mezőben. Ha például a konfigurációt az Azure Files `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`ban tárolja, a konfigurációs elérési útja a .
 
-   ![Tulajdonságok beállítása a beállítások lapon – manuális](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
+   ![Tulajdonságok beállítása a Beállítások lapon - Kézi](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
 
-   Ha a **fájlrendszer (projekt)** lehetőséget választja a csomag helyeként, adja meg a futtatni kívánt csomagot a projekt **elérési útja** mezőben a PROJEKTFÁJL (`.ispac`) UNC elérési útjának megadásával, valamint egy csomagfájl (`.dtsx`) a projektben a **csomag neve** mezőben. Ha például a projektet a Azure Files tárolja, a projekt elérési útja `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`.
+   Ha a csomag helyeként a **Fájlrendszer (Project)** lehetőséget választja, adja meg a`.ispac`futtatni kívánt csomagot úgy, hogy`.dtsx`a Projekt elérési útja ( ) UNC elérési útját adja meg a projekt elérési **útja** mezőben, és egy csomagfájlt ( ) a **projektből** a Csomag neve mezőben. Ha például a projektet az Azure Files `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`ban tárolja, a projekt elérési útja a .
 
-   ![Tulajdonságok beállítása a beállítások lapon – manuális](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
+   ![Tulajdonságok beállítása a Beállítások lapon - Kézi](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
-   Ezután adja meg a projekthez, csomaghoz vagy konfigurációs fájlokhoz való hozzáféréshez szükséges hitelesítő adatokat. Ha korábban már megadta a csomag-végrehajtási hitelesítő adatok értékeit (lásd az előzőt), akkor újra felhasználhatja őket úgy, hogy kijelöli a **csomag-végrehajtás hitelesítő adataival megegyező** jelölőnégyzetet. Ellenkező esetben adja meg a csomag hozzáférési hitelesítő adatainak értékét a **tartomány**, a **Felhasználónév**és a **jelszó** mezőkben. Ha például a projektet, csomagot vagy konfigurációt Azure Filesban tárolja, a tartomány `Azure`, a Felhasználónév `<storage account name>`, és a jelszó `<storage account key>`. 
+   Ezután adja meg a projekt-, csomag- vagy konfigurációs fájlok eléréséhez szükséges hitelesítő adatokat. Ha korábban megadta a csomag végrehajtási hitelesítő adatainak értékeit (lásd az előzőt), újra felhasználhatja őket a **Csomag-végrehajtási hitelesítő adatok** ként jelölőnégyzetek bejelölésével. Ellenkező esetben adja meg a csomag hozzáférési hitelesítő adatainak értékeit a **Tartomány**, **Felhasználónév**és **Jelszó** mezőbe. Ha például a projektet, csomagot vagy konfigurációt az `Azure`Azure Files szolgáltatásban tárolja, a tartomány a , a felhasználónév `<storage account name>`a , a jelszó pedig `<storage account key>`. 
 
-   Azt is megteheti, hogy a Key vaultban tárolt titkos kódokat értékként használja (lásd az előzőt). Ezekkel a hitelesítő adatokkal érheti el a csomagokat és a gyermek csomagokat a csomag végrehajtása tevékenységben, mindezt a saját elérési úttal vagy ugyanazon projekttel, valamint a csomagokban megadott konfigurációkkal. 
+   Azt is megteheti, hogy a kulcstartóban tárolt titkos kulcsokat azok értékeiként használhatja (lásd az előzőt). Ezek a hitelesítő adatok a csomag és a gyermekcsomagok eléréséhez a Csomag végrehajtása feladat, mind a saját elérési útját, vagy ugyanazt a projektet, valamint konfigurációk, amelyek tartalmazzák a csomagokban megadott. 
 
-   Ha kijelöli a **beágyazott csomag** lehetőséget a csomag helyeként, húzza a csomagot a futtatásához, vagy **töltse fel** azt egy fájl mappájából a megadott mezőbe. A csomag automatikusan tömörítve és beágyazva lesz a tevékenység hasznos adataiba. A beágyazás után később is **letöltheti** a csomagot szerkesztésre. A beágyazott csomagot úgy is **parametrizálja** , hogy hozzárendeli azt egy olyan folyamat-paraméterhez, amely több tevékenységben is felhasználható, így optimalizálhatja a folyamat adattartalma méretét. Ha a beágyazott csomag nem minden titkosítva van, és a csomag végrehajtása feladatot érzékeljük, akkor a **csomag végrehajtása feladat** jelölőnégyzet automatikusan ki lesz választva, és a rendszer automatikusan hozzáadja a megfelelő, a fájlrendszerre vonatkozó hivatkozásokkal rendelkező gyermek csomagokat is. Ha nem tudjuk felderíteni a csomag végrehajtása feladatot, manuálisan kell kijelölnie a **csomag végrehajtása feladatot** jelölőnégyzetet, és hozzá kell adnia a megfelelő gyermek csomagokat a fájlrendszer hivatkozásával, ha azt is beágyazza. Ha a gyermek csomagok SQL Server referenciákat használnak, győződjön meg arról, hogy a Azure-SSIS IR a SQL Server elérhető.  Jelenleg nem támogatott a projektre vonatkozó hivatkozások használata a gyermek csomagokhoz.
+   Ha a **Beágyazott csomag** lehetőséget választja a csomag helyeként, húzza a csomagot a futtatáshoz, vagy töltse **fel** egy fájlmappából a megadott mezőbe. A csomag automatikusan tömörítésre kerül, és beágyazódik a tevékenység hasznos adatába. Miután beágyazódott, **letöltheti** a csomagot később szerkesztésre. A beágyazott csomagot **paraméterezheti** úgy, hogy hozzárendeli egy csővezeték-paraméterhez, amely több tevékenységben is használható, így optimalizálhatja a folyamat hasznos adatának méretét. Ha a beágyazott csomag nem minden titkosított, és észleljük a Csomag végrehajtása feladat használatát, a **Csomag végrehajtása jelölőnégyzet** automatikusan be lesz jelölve, és a megfelelő gyermekcsomagok a fájlrendszerhivatkozásokkal automatikusan hozzáadva lesznek, hogy ön is beágyazza őket. Ha nem észleljük a Csomag végrehajtása feladat használatát, manuálisan kell bejelölnie a **Csomagfeladat végrehajtása** jelölőnégyzetet, és hozzá kell adnia a megfelelő gyermekcsomagokat a fájlrendszerükhivatkozásaival, hogy ön is beágyazza őket. Ha a gyermekcsomagok SQL Server-hivatkozásokat használnak, győződjön meg arról, hogy az SQL Server elérhető az Azure-SSIS IR szolgáltatása által.  A projekthivatkozások használata gyermekcsomagokhoz jelenleg nem támogatott.
    
-   ![Tulajdonságok beállítása a beállítások lapon – manuális](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
+   ![Tulajdonságok beállítása a Beállítások lapon - Kézi](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
    
-   Ha a **EncryptAllWithPassword** vagy a **EncryptSensitiveWithPassword** védelmi szintet használta a csomagnak a SQL Server Data Tools használatával történő létrehozásakor, írja be a jelszó értékét a **titkosítási jelszó** mezőbe. Azt is megteheti, hogy a Key vaultban tárolt titkos kulcsot használja értékként (lásd az előzőt). Ha a **EncryptSensitiveWithUserKey** védelmi szintet használta, adja meg a bizalmas értékeket a konfigurációs fájlokban vagy a **SSIS paraméterek**, a **Csatlakozáskezelő**vagy a **tulajdonság felülbírálásai** lapon (lásd: később). 
+   Ha az **EncryptAllWithPassword** vagy **az EncryptSensitiveWithPassword** védelmi szintet használta, amikor a csomagot az SQL Server Data Tools segítségével hozta létre, írja be a jelszó értékét a **Titkosítási jelszó** mezőbe. Másik lehetőségként használhatja a kulcstartóban tárolt titkos kulcsot értékként (lásd az előzőt). Ha az **EncryptSensitiveWithUserKey** védelmi szintet használta, adja meg újra a bizalmas értékeket a konfigurációs fájlokban vagy az **SSIS-paraméterek**, **a Kapcsolatkezelők**vagy a **Tulajdonságfelülírás** lapon (lásd később). 
 
-   Ha a **EncryptAllWithUserKey** védelmi szintet használta, az nem támogatott. A csomagot úgy kell konfigurálni, hogy SQL Server Data Tools vagy a `dtutil` parancssori segédprogram használatával más védelmi szintet használjon. 
+   Ha az **EncryptAllWithUserKey** védelmi szintet használta, az nem támogatott. Újra kell konfigurálnia a csomagot, hogy egy másik `dtutil` védelmi szintet használjon az SQL Server Data Tools vagy a parancssori segédprogram segítségével. 
    
-   A **naplózási szint**beállításnál válassza ki a csomag végrehajtásának előre meghatározott hatókörét. Ha ehelyett a testreszabott naplózási nevet szeretné megadni, jelölje be a **testreszabott** jelölőnégyzetet. Ha a csomag végrehajtását a csomagban megadható szabványos naplózási szolgáltatók használatával szeretné naplózni, a **naplózási útvonal** mezőben adja meg az UNC elérési út megadásával a napló mappáját. Ha például Azure Files tárolja a naplókat, a naplózási útvonal `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`. A rendszer létrehoz egy almappát ezen az elérési úton a SSIS-csomag végrehajtása tevékenység futtatási AZONOSÍTÓját követő minden egyes csomaghoz, amelyben a naplófájlok öt percenként jönnek létre. 
+   A **naplózási szint hez**válassza ki a naplózás előre meghatározott hatókörét a csomag végrehajtásához. Jelölje be a **Testreszabott jelölőnégyzetet,** ha helyette a testreszabott naplózási nevet szeretné megadni. Ha a csomagvégrehajtás-végrehajtásokat a csomagban megadható szabványos naplószolgáltatók használatán túl szeretné naplózni, adja meg a naplómappát úgy, hogy a naplózási elérési utat megadja a **Naplózási elérési út** mezőben. Ha például a naplókat az Azure Files ban `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`tárolja, a naplózási elérési út a . Ezen az elérési úton létrejön egy almappa minden egyes futtatott csomaghoz, amely az SSIS-csomag végrehajtása tevékenység futtatási azonosítójáról kapta a nevét, amelyben a naplófájlok ötpercenként jönnek létre. 
    
-   Végül adja meg a log mappa eléréséhez szükséges hitelesítő adatokat. Ha korábban már megadta a csomag-hozzáférési hitelesítő adatok értékeit (lásd az előzőt), akkor újra felhasználhatja őket úgy, hogy kijelöli a **csomag hozzáférési hitelesítő adatai** jelölőnégyzetet. Ellenkező esetben adja meg a naplózási hozzáférési hitelesítő adatok értékeit a **tartomány**, a **Felhasználónév**és a **jelszó** mezőkben. Ha például Azure Files tárolja a naplókat, a tartomány `Azure`, a Felhasználónév `<storage account name>`, és a jelszó `<storage account key>`. 
+   Végül adja meg a naplómappa eléréséhez szükséges hitelesítő adatokat. Ha korábban megadta a csomag-hozzáférési hitelesítő adatok értékeit (lásd az előzőt), újra felhasználhatja őket, ha bejelöli a **Csomag-hozzáférési hitelesítő adatok** at. Ellenkező esetben adja meg a naplózási hozzáférési hitelesítő adatok értékeit a **Tartomány**, **Felhasználónév**és **Jelszó** mezőbe. Ha például a naplókat az Azure Files `Azure`szolgáltatásban tárolja, `<storage account name>`a tartomány `<storage account key>`a , a felhasználónév a , a jelszó pedig . 
 
-    Azt is megteheti, hogy a Key vaultban tárolt titkos kódokat értékként használja (lásd az előzőt). A rendszer ezeket a hitelesítő adatokat használja a naplók tárolásához. 
+    Azt is megteheti, hogy a kulcstartóban tárolt titkos kulcsokat azok értékeiként használhatja (lásd az előzőt). Ezek a hitelesítő adatok a naplók tárolására szolgálnak. 
    
-   Az összes korábban említett UNC elérési út esetében a teljes fájlnévnek 260 karakternél rövidebbnek kell lennie. A könyvtár nevének 248 karakternél rövidebbnek kell lennie.
+   A korábban említett összes UNC elérési út esetében a teljesen minősített fájlnévnek 260 karakternél rövidebbnek kell lennie. A könyvtárnév nek 248 karakternél rövidebbnek kell lennie.
 
-1. Ha a Azure-SSIS IR fut a **SSIS parameters (paraméterek** ) lapon a SSIS végrehajtásakor, a **SSISDB** a csomag helyeként van kiválasztva, és a **Beállítások** lapon a **manuális bejegyzések** jelölőnégyzet be van jelölve, a kiválasztott projektben vagy csomagban lévő meglévő SSIS-paraméterek az értékek hozzárendeléséhez lesznek megjelenítve. Ellenkező esetben megadhatja, hogy az egyes értékek manuálisan legyenek hozzárendelve. Győződjön meg arról, hogy léteznek, és helyesen vannak megadva a csomag végrehajtásának sikerességéhez. 
+1. Az SSIS-csomag végrehajtása tevékenység **SSIS-paraméterek** lapján, ha az Azure-SSIS IR fut, az **SSISDB** lesz a csomag helye, és a **Beállítások** lap **Kézi bejegyzések** jelölőnégyzete törlődik, a kiválasztott projektben vagy az SSISDB-től származó csomagban meglévő SSIS-paraméterek jelennek meg, hogy értékeket rendeljen hozzájuk. Ellenkező esetben egyenként megadhatja őket, hogy manuálisan rendeljen hozzájuk értékeket. Győződjön meg arról, hogy léteznek, és helyesen vannak megadva a csomag végrehajtásának sikeres végrehajtásához. 
    
-   Ha a **EncryptSensitiveWithUserKey** védelmi szintet használta SQL Server Data Tools és **fájlrendszer (csomag)** vagy **fájlrendszer (projekt)** használatával, akkor a csomag helyeként is be kell írnia a bizalmas paramétereket, hogy értékeket Rendeljen hozzájuk a konfigurációs fájlokban vagy ezen a lapon. 
+   Ha az **EncryptSensitiveWithUserKey** védelmi szintet használta, amikor a csomagot az SQL Server Data Tools és **a File System (Package)** segítségével hozta létre, vagy **a Fájlrendszer (Project)** van kiválasztva a csomag helyeként, akkor a bizalmas paramétereket is újra be kell írnia ahhoz, hogy értékeket rendeljen hozzájuk a konfigurációs fájlokban vagy ezen a lapon. 
    
-   Ha értékeket rendel hozzá a paraméterekhez, hozzáadhat dinamikus tartalmat kifejezések, függvények, Data Factory rendszerváltozók, valamint Data Factory folyamat paramétereinek vagy változóinak használatával. Azt is megteheti, hogy a Key vaultban tárolt titkos kódokat értékként használja (lásd az előzőt).
+   Amikor értékeket rendel a paraméterekhez, dinamikus tartalmat adhat hozzá kifejezések, függvények, Data Factory rendszerváltozók és Data Factory folyamatparaméterek vagy -változók használatával. Azt is megteheti, hogy a kulcstartóban tárolt titkos kulcsokat azok értékeiként használhatja (lásd az előzőt).
 
-   ![Tulajdonságok beállítása a SSIS Parameters lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
+   ![Tulajdonságok beállítása az SSIS-paraméterek lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
-1. Ha a Azure-SSIS IR fut a SSIS-csomaghoz tartozó **kapcsolatkezelő** lapon, a **SSISDB** lehetőség van kiválasztva a csomag helyeként, és a **Beállítások** lapon a **manuális bejegyzések** jelölőnégyzet be van jelölve, a kiválasztott projektben vagy csomagban lévő, a SSISDB-ből származó meglévő kapcsolatok megjelennek az értékek a tulajdonságaihoz való hozzárendeléséhez. Ellenkező esetben megadhatja, hogy egy-egy értéket rendeljen hozzá a tulajdonságaihoz manuálisan. Győződjön meg arról, hogy léteznek, és helyesen vannak megadva a csomag végrehajtásának sikerességéhez. 
+1. Az SSIS-csomag végrehajtása tevékenység **kapcsolatkezelői** lapján, ha az Azure-SSIS IR fut, az **SSISDB** lesz a csomag helye, és a **Beállítások** lap **Kézi bejegyzések** jelölőnégyzete törlődik, a kiválasztott projekt vagy ssisisdb-csomag meglévő kapcsolatkezelői jelennek meg, hogy értékeket rendeljen a tulajdonságaikhoz. Ellenkező esetben egyenként megadhatja őket, hogy manuálisan rendeljenek értékeket a tulajdonságaikhoz. Győződjön meg arról, hogy léteznek, és helyesen vannak megadva a csomag végrehajtásának sikeres végrehajtásához. 
    
-   Ha a csomag létrehozásakor a **EncryptSensitiveWithUserKey** védelmi szintet használta SQL Server Data Tools és **fájlrendszer (csomag)** vagy **fájlrendszer (projekt)** használatával, akkor is meg kell adnia a bizalmas kapcsolatkezelő tulajdonságait, hogy értékeket Rendeljen hozzájuk a konfigurációs fájlokban vagy ezen a lapon. 
+   Ha az **EncryptSensitiveWithUserKey** védelmi szintet használta, amikor a csomagot az SQL Server Data Tools és **a File System (Package)** segítségével hozta létre, vagy a **Fájlrendszer (Project)** van kiválasztva a csomag helyeként, akkor a bizalmas csatlakozáskezelő tulajdonságokat is újra be kell írnia ahhoz, hogy értékeket rendeljen hozzájuk a konfigurációs fájlokban vagy ezen a lapon. 
    
-   Ha értékeket rendel a Csatlakozáskezelő tulajdonságaihoz, a kifejezések, függvények, Data Factory rendszerváltozók és Data Factory folyamat paramétereinek vagy változóinak használatával adhat hozzá dinamikus tartalmat. Azt is megteheti, hogy a Key vaultban tárolt titkos kódokat értékként használja (lásd az előzőt).
+   Amikor értékeket rendel a kapcsolatkezelő tulajdonságaihoz, dinamikus tartalmat adhat hozzá kifejezések, függvények, Data Factory rendszerváltozók és Data Factory folyamatparaméterek vagy -változók használatával. Azt is megteheti, hogy a kulcstartóban tárolt titkos kulcsokat azok értékeiként használhatja (lásd az előzőt).
 
-   ![Tulajdonságok beállítása a kapcsolatkezelő lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
+   ![Tulajdonságok beállítása a Kapcsolatkezelők lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
 
-1. A SSIS-csomag végrehajtása művelet **Tulajdonságok felülbírálása** lapján adja meg a kiválasztott csomagban lévő meglévő tulajdonságok elérési útját, hogy az értékeket manuálisan rendelje hozzá. Győződjön meg arról, hogy léteznek, és helyesen vannak megadva a csomag végrehajtásának sikerességéhez. A felhasználói változó értékének felülbírálásához például adja meg az elérési útját a következő formátumban: `\Package.Variables[User::<variable name>].Value`. 
+1. Az SSIS-csomag végrehajtása tevékenység **tulajdonságfelülbírálások** lapján egyenként adja meg a kijelölt csomag meglévő tulajdonságainak elérési útjait, hogy manuálisan rendeljen hozzájuk értékeket. Győződjön meg arról, hogy léteznek, és helyesen vannak megadva a csomag végrehajtásának sikeres végrehajtásához. Ha például felül szeretné írni a felhasználói változó értékét, adja `\Package.Variables[User::<variable name>].Value`meg az elérési útját a következő formátumban: . 
    
-   Ha a csomag létrehozásakor a **EncryptSensitiveWithUserKey** védelmi szintet használta SQL Server Data Tools és **fájlrendszer (csomag)** vagy **fájlrendszer (projekt)** használatával, akkor a bizalmas tulajdonságokat is újra meg kell adnia, hogy értékeket Rendeljen hozzájuk a konfigurációs fájlokban vagy ezen a lapon. 
+   Ha az **EncryptSensitiveWithUserKey** védelmi szintet használta, amikor a csomagot az SQL Server Data Tools és **a File System (Package)** segítségével hozta létre, vagy **a Fájlrendszer (Project)** van kiválasztva a csomag helyeként, akkor a bizalmas tulajdonságokat is újra be kell írnia, hogy értékeket rendeljen hozzájuk a konfigurációs fájlokban vagy ezen a lapon. 
    
-   Amikor értékeket rendel a tulajdonságokhoz, hozzáadhat dinamikus tartalmat kifejezések, függvények, Data Factory rendszerváltozók, valamint Data Factory folyamat paramétereinek vagy változóinak használatával.
+   Amikor értékeket rendel a tulajdonságokhoz, dinamikus tartalmat adhat hozzá kifejezések, függvények, Data Factory rendszerváltozók és A Data Factory folyamatparaméterei vagy változói használatával.
 
-   ![Tulajdonságok beállítása a tulajdonság-felülbírálások lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
+   ![Tulajdonságok beállítása a Tulajdonságfelülírások lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
 
-   A konfigurációs fájlokban és a **SSIS paraméterek** lapon hozzárendelt értékek felülbírálása a **Csatlakozáskezelő** vagy a **tulajdonság felülbírálási** lapjaival lehetséges. A **kapcsolatkezelő** lapon megadott értékek felülbírálása a **Tulajdonságok** felülbírálásai lapon is megadható.
+   A konfigurációs fájlokban és az **SSIS-paraméterek** lapon hozzárendelt értékek felülbírálhatók a **Kapcsolatkezelők** vagy a **Tulajdonságfelülírás okokkal.** A **Kapcsolatkezelők** lapon hozzárendelt értékek a **Tulajdonságfelülírások** lapon is felülbírálhatók.
 
-1. A folyamat konfigurációjának ellenőrzéséhez kattintson az **Érvényesítés** elemre az eszköztáron. A folyamat- **ellenőrzési jelentés**bezárásához válassza a **>>** lehetőséget.
+1. A folyamatkonfiguráció érvényesítéséhez válassza az **Eszköztár Érvényesítés parancsát.** A **folyamatérvényesítési**jelentés **>>** bezárásához válassza a lehetőséget.
 
-1. A folyamat Data Factory való közzétételéhez válassza az **összes közzététele**lehetőséget. 
+1. A folyamat adatgyárban való közzétételéhez válassza **az Összes közzététele**lehetőséget. 
 
 ### <a name="run-the-pipeline"></a>A folyamat futtatása
-Ebben a lépésben elindítja a folyamat futtatását. 
+Ebben a lépésben egy folyamatfuttatást indít el. 
 
-1. A folyamat futtatásának elindításához válassza az **aktiválás** lehetőséget az eszköztáron, majd válassza az **aktiválás most**lehetőséget. 
+1. Folyamatfuttatás indításához válassza az **Eseményindító** lehetőséget az eszköztáron, majd az **Eseményindító most**lehetőséget. 
 
    ![Aktiválás most](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
 
@@ -141,45 +141,45 @@ Ebben a lépésben elindítja a folyamat futtatását.
 
 ### <a name="monitor-the-pipeline"></a>A folyamat figyelése
 
-1. Váltson a bal oldali **Monitor** (Monitorozás) lapra. Megtekintheti a folyamat futását és állapotát, valamint egyéb információkat, például a **Futtatás kezdési** idejét. A nézet frissítéséhez válassza a **Frissítés** parancsot.
+1. Váltson a bal oldali **Monitorozás** lapra. Láthatja a folyamat futását és állapotát más információkkal együtt, például a **Futtatás kezdési** idejét. A nézet frissítéséhez válassza a **Frissítés** parancsot.
 
    ![Folyamatfuttatások](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
-2. Kattintson a **Műveletek** oszlopban található **Tevékenységfuttatások megtekintése** hivatkozásra. Csak egy tevékenység fut, mert a folyamat csak egy tevékenységet tartalmaz. Ez a SSIS-csomag végrehajtása tevékenység.
+2. Kattintson a **Műveletek** oszlopban található **Tevékenységfuttatások megtekintése** hivatkozásra. Csak egy tevékenységfuttatást lát, mert a folyamat csak egy tevékenységet rendelkezik. Ez az SSIS-csomag végrehajtása tevékenység.
 
    ![Tevékenységfuttatások](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
 
-3. Futtassa a következő lekérdezést az SQL Server SSISDB-adatbázisán a csomag végrehajtásának ellenőrzéséhez. 
+3. Futtassa a következő lekérdezést az SQL-kiszolgáló SSISDB-adatbázisában, és ellenőrizze, hogy a csomag végrehajtása történt-e. 
 
    ```sql
    select * from catalog.executions
    ```
 
-   ![Csomagok végrehajtásának ellenőrzése](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
+   ![Csomagvégrehajtás-végrehajtások ellenőrzése](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
-4. A SSISDB végrehajtási AZONOSÍTÓját a folyamat által futtatott tevékenység kimenetében is lekérheti, és az azonosító használatával további részletes végrehajtási naplókat és hibaüzeneteket is megtudhat a SQL Server Management Studio.
+4. Az SSISDB végrehajtási azonosítót a folyamatfolyamat-futtatás kimenetéből is lekérdezheti, és az azonosító segítségével átfogóbb végrehajtási naplókat és hibaüzeneteket ellenőrizhet az SQL Server Management Studio-ban.
 
-   ![A végrehajtás AZONOSÍTÓjának beolvasása.](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
+   ![Szerezd meg a kivégzés azonosítót.](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
 
-### <a name="schedule-the-pipeline-with-a-trigger"></a>A folyamat beosztása triggerrel
+### <a name="schedule-the-pipeline-with-a-trigger"></a>A folyamat ütemezése eseményindítóval
 
-Létrehozhat egy ütemezett triggert is a folyamathoz, hogy a folyamat ütemezésen, például óránként vagy naponta fusson. Példaként tekintse meg a következőt: [create a Factory-Data Factory UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
+Ütemezett eseményindítót is létrehozhat a folyamathoz, hogy a folyamat ütemezés szerint, például óránként vagy naponta futhasson. Például lásd: [Adatgyár létrehozása - Data Factory UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
 
-## <a name="run-a-package-with-powershell"></a>Csomag futtatása a PowerShell-lel
-Ebben a szakaszban a Azure PowerShell használatával hozzon létre egy Data Factory folyamatot egy végrehajtási SSIS csomaggal, amely a SSIS-csomagot futtatja. 
+## <a name="run-a-package-with-powershell"></a>Csomag futtatása a PowerShell használatával
+Ebben a szakaszban az Azure PowerShell használatával hozzon létre egy Data Factory-folyamatot egy SSIS-csomag végrehajtására vonatkozó tevékenységvégrehajtásával, amely az SSIS-csomagot futtatja. 
 
-Telepítse a legújabb Azure PowerShell modulokat a [Azure PowerShell telepítésével és konfigurálásával kapcsolatos](/powershell/azure/install-az-ps)részletes útmutató lépéseit követve.
+Telepítse a legújabb Azure PowerShell-modulokat az Azure [PowerShell telepítése és konfigurálása](/powershell/azure/install-az-ps)című témakör részletes útmutatójának követésével.
 
-### <a name="create-a-data-factory-with-azure-ssis-ir"></a>Hozzon létre egy adatgyárat Azure-SSIS IR
-Használhat olyan meglévő adatelőállítót, amely már rendelkezik Azure-SSIS IR kiépítve, vagy létrehozhat egy új, Azure-SSIS IRkal rendelkező adatgyárat. Kövesse az oktatóanyag részletes utasításait [: SSIS-csomagok üzembe helyezése az Azure-](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure-powershell)ban a PowerShell használatával.
+### <a name="create-a-data-factory-with-azure-ssis-ir"></a>Adatgyár létrehozása az Azure-SSIS IR-vel
+Használhatja a meglévő adatgyár, amely már rendelkezik az Azure-SSIS ir kiépített, vagy hozzon létre egy új adatgyár az Azure-SSIS IR. Kövesse az oktatóanyag részletes [utasításait: SSIS-csomagok telepítése az Azure-ba a PowerShellen keresztül.](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure-powershell)
 
-### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Folyamat létrehozása SSIS-csomag végrehajtása tevékenységgel 
-Ebben a lépésben létrehoz egy folyamatot a SSIS-csomag végrehajtása tevékenységgel. A tevékenység futtatja a SSIS-csomagot. 
+### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Folyamat létrehozása SSIS-csomag végrehajtásával 
+Ebben a lépésben hozzon létre egy folyamatot egy SSIS-csomag végrehajtása tevékenységvégrehajtásával. A tevékenység futtatja az SSIS-csomagot. 
 
-1. Hozzon létre egy *RunSSISPackagePipeline. JSON* nevű JSON-fájlt a *C:\ADF\RunSSISPackage* mappában az alábbi példához hasonló tartalommal.
+1. Hozzon létre egy *RunSSISPackagePipeline.json* nevű JSON-fájlt a *C:\ADF\RunSSISPackage* mappában, amelynek tartalma hasonló a következő példához.
 
    > [!IMPORTANT]
-   > A fájl mentése előtt cserélje le az Objektumnév, a leírások és az elérési utak, a tulajdonság vagy a paraméterek értékét, a jelszavakat és az egyéb változó értékeket. 
+   > A fájl mentése előtt cserélje le az objektumneveket, leírásokat és elérési utakat, tulajdonság- vagy paraméterértékeket, jelszavakat és egyéb változóértékeket. 
     
    ```json
    {
@@ -286,7 +286,7 @@ Ebben a lépésben létrehoz egy folyamatot a SSIS-csomag végrehajtása tevéke
    }
    ```
 
-   A fájlrendszerben, fájlmegosztást vagy Azure Filesban tárolt csomagok végrehajtásához adja meg a csomag és a naplózási hely tulajdonságainak értékét a következőképpen:
+   A fájlrendszerekben, fájlmegosztásokban vagy Az Azure Filesban tárolt csomagok végrehajtásához adja meg a csomag és a helytulajdonságok értékét az alábbiak szerint:
 
    ```json
    {
@@ -335,7 +335,7 @@ Ebben a lépésben létrehoz egy folyamatot a SSIS-csomag végrehajtása tevéke
    }
    ```
 
-   A fájlrendszerekben, fájlmegosztást vagy Azure Filesban tárolt projekteken belüli csomagok végrehajtásához adja meg a csomag Location tulajdonságának értékeit az alábbiak szerint:
+   A fájlrendszerekben, fájlmegosztásokban vagy Azure Filesban tárolt projekteken belüli csomagok végrehajtásához adja meg a csomag helytulajdonságának értékeit az alábbiak szerint:
 
    ```json
    {
@@ -366,7 +366,7 @@ Ebben a lépésben létrehoz egy folyamatot a SSIS-csomag végrehajtása tevéke
    }
    ```
 
-   Beágyazott csomagok végrehajtásához adja meg a csomag Location tulajdonságának értékeit az alábbiak szerint:
+   Beágyazott csomagok végrehajtásához írja be a csomag helytulajdonságának értékeit az alábbiak szerint:
 
    ```json
    {
@@ -391,9 +391,9 @@ Ebben a lépésben létrehoz egy folyamatot a SSIS-csomag végrehajtása tevéke
    }
    ```
 
-2. A Azure PowerShellban váltson a *C:\ADF\RunSSISPackage* mappára.
+2. Az Azure PowerShellben váltson a *C:\ADF\RunSSISPackage* mappára.
 
-3. A folyamat **RunSSISPackagePipeline**létrehozásához futtassa a **set-AzDataFactoryV2Pipeline** parancsmagot.
+3. **A RunSSISPackagePipeline**folyamat létrehozásához futtassa a **Set-AzDataFactoryV2Pipeline** parancsmamot.
 
    ```powershell
    $DFPipeLine = Set-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
@@ -402,7 +402,7 @@ Ebben a lépésben létrehoz egy folyamatot a SSIS-csomag végrehajtása tevéke
                                                   -DefinitionFile ".\RunSSISPackagePipeline.json"
    ```
 
-   Itt látható a minta kimenete:
+   Itt a minta kimenet:
 
    ```
    PipelineName      : Adfv2QuickStartPipeline
@@ -413,7 +413,7 @@ Ebben a lépésben létrehoz egy folyamatot a SSIS-csomag végrehajtása tevéke
    ```
 
 ### <a name="run-the-pipeline"></a>A folyamat futtatása
-A folyamat futtatásához használja a **meghívó-AzDataFactoryV2Pipeline** parancsmagot. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
+Használja az **Invoke-AzDataFactoryV2Pipeline** parancsmag a folyamat futtatásához. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
 
 ```powershell
 $RunId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
@@ -423,7 +423,7 @@ $RunId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactor
 
 ### <a name="monitor-the-pipeline"></a>A folyamat figyelése
 
-A folyamat futási állapotának folyamatos, az adatok másolásának befejezéséig tartó ellenőrzéséhez futtassa az alábbi PowerShell-szkriptet. Másolja vagy illessze be a következő szkriptet a PowerShell-ablakba, majd kattintson az ENTER gombra. 
+A folyamat futási állapotának folyamatos, az adatok másolásának befejezéséig tartó ellenőrzéséhez futtassa az alábbi PowerShell-szkriptet. Másolja vagy illessze be a következő parancsfájlt a PowerShell-ablakban, és válassza az Enter lehetőséget. 
 
 ```powershell
 while ($True) {
@@ -444,12 +444,12 @@ while ($True) {
 }   
 ```
 
-A folyamatot a Azure Portal használatával is nyomon követheti. Részletes útmutatásért lásd: [a folyamat figyelése](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+A folyamat az Azure Portal használatával is figyelheti. A részletes útmutatásról a [Folyamat figyelése](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)című témakörben talál.
 
-### <a name="schedule-the-pipeline-with-a-trigger"></a>A folyamat beosztása triggerrel
-Az előző lépésben igény szerint futtatta a folyamatot. Létrehozhat egy ütemezett triggert is, amely a folyamat ütemezett futtatására szolgál, például óránként vagy naponta.
+### <a name="schedule-the-pipeline-with-a-trigger"></a>A folyamat ütemezése eseményindítóval
+Az előző lépésben igény szerint futtatta a folyamatot. Ütemezési eseményindítót is létrehozhat a folyamat ütemezés szerinti futtatásához, például óránkénti vagy napi.
 
-1. Hozzon létre egy *MyTrigger. JSON* nevű JSON-fájlt a *C:\ADF\RunSSISPackage* mappában a következő tartalommal: 
+1. Hozzon létre egy *MyTrigger.json* nevű JSON-fájlt a *C:\ADF\RunSSISPackage* mappában a következő tartalommal: 
         
    ```json
    {
@@ -475,29 +475,29 @@ Az előző lépésben igény szerint futtatta a folyamatot. Létrehozhat egy üt
    }    
    ```
     
-1. A Azure PowerShellban váltson a *C:\ADF\RunSSISPackage* mappára.
-1. Futtassa a **set-AzDataFactoryV2Trigger** parancsmagot, amely létrehozza az triggert. 
+1. Az Azure PowerShellben váltson a *C:\ADF\RunSSISPackage* mappára.
+1. Futtassa a **Set-AzDataFactoryV2Trigger** parancsmast, amely létrehozza az eseményindítót. 
 
    ```powershell
    Set-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
                                    -DataFactoryName $DataFactory.DataFactoryName `
                                    -Name "MyTrigger" -DefinitionFile ".\MyTrigger.json"
    ```
-1. Alapértelmezés szerint az trigger leállított állapotban van. Indítsa el a triggert a **Start-AzDataFactoryV2Trigger** parancsmag futtatásával. 
+1. Alapértelmezés szerint az eseményindító leállított állapotban van. Indítsa el az eseményindítót a **Start-AzDataFactoryV2Trigger** parancsmag futtatásával. 
 
    ```powershell
    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
                                      -DataFactoryName $DataFactory.DataFactoryName `
                                      -Name "MyTrigger" 
    ```
-1. A **Get-AzDataFactoryV2Trigger** parancsmag futtatásával ellenőrizze, hogy elindult-e az trigger. 
+1. Ellenőrizze, hogy az eseményindító **elindul-e a Get-AzDataFactoryV2Trigger** parancsmag futtatásával. 
 
    ```powershell
    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName `
                                    -DataFactoryName $DataFactoryName `
                                    -Name "MyTrigger"     
    ```    
-1. Futtassa a következő parancsot a következő óra után. Ha például az aktuális időpont 3:25 PM UTC, futtassa a parancsot 4 órakor UTC-kor. 
+1. Futtassa a következő parancsot a következő óra után. Ha például az aktuális idő 15:25-kor (UTC) van, futtassa a parancsot 16:00-kor UTC-kor. 
     
    ```powershell
    Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName `
@@ -507,12 +507,12 @@ Az előző lépésben igény szerint futtatta a folyamatot. Létrehozhat egy üt
                                       -TriggerRunStartedBefore "2017-12-09"
    ```
 
-   Futtassa a következő lekérdezést az SQL Server SSISDB-adatbázisán a csomag végrehajtásának ellenőrzéséhez. 
+   Futtassa a következő lekérdezést az SQL-kiszolgáló SSISDB-adatbázisában, és ellenőrizze, hogy a csomag végrehajtása történt-e. 
 
    ```sql
    select * from catalog.executions
    ```
 
-## <a name="next-steps"></a>Következő lépések
-Tekintse meg a következő blogbejegyzést:
-- [Az ETL/ELT-munkafolyamatok modernizálása és kiterjesztése a SSIS-tevékenységekkel Azure Data Factory-folyamatokban](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)
+## <a name="next-steps"></a>További lépések
+Lásd a következő blogbejegyzést:
+- [Az ETL/ELT-munkafolyamatok modernizálása és bővítése SSIS-tevékenységekkel az Azure Data Factory folyamataiban](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)

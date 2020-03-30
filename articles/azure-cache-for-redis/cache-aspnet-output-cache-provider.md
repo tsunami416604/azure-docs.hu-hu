@@ -1,27 +1,27 @@
 ---
-title: ASP.NET kimeneti gyorsítótár-szolgáltató az Azure cache-hez a Redis
-description: Ismerje meg, hogyan gyorsítótárazhatja a ASP.NET az Azure cache használatával a Redis. A Redis kimeneti gyorsítótár-szolgáltatója egy folyamaton kívüli tárolási mechanizmus a kimeneti gyorsítótár-adattároláshoz.
+title: ASP.NET kimeneti gyorsítótárszolgáltatója a Redis azure-gyorsítótárához
+description: Ismerje meg, hogyan gyorsítótárazhat ASP.NET lapkimenetet az Azure Cache for Redis használatával. A Redis kimeneti gyorsítótár-szolgáltató egy folyamaton kívüli tárolási mechanizmus a kimeneti gyorsítótár adataihoz.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: 1a375f063d398c19ed86a0a401e2a41c696ef4e2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: af003f1f0422c2351bcdf9b0c0010e38785c0344
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412990"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530325"
 ---
-# <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET kimeneti gyorsítótár-szolgáltató az Azure cache-hez a Redis
+# <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET kimeneti gyorsítótárszolgáltatója a Redis azure-gyorsítótárához
 
-A Redis kimeneti gyorsítótár-szolgáltatója egy folyamaton kívüli tárolási mechanizmus a kimeneti gyorsítótár-adattároláshoz. Ez az adat kifejezetten a teljes HTTP-válaszokra vonatkozik (az oldal kimeneti gyorsítótárazása). A szolgáltató a 4. ASP.NET bevezetett új kimeneti gyorsítótár-szolgáltatói bővíthetőségi pontra csatlakozik.
+A Redis kimeneti gyorsítótár-szolgáltató egy folyamaton kívüli tárolási mechanizmus a kimeneti gyorsítótár adataihoz. Ezek az adatok kifejezetten a teljes HTTP-válaszok (lap kimeneti gyorsítótárazás). A szolgáltató a 4.-ASP.NET bevezetett új kimeneti gyorsítótár-szolgáltató bővíthetőségi pontjához csatlakozik.
 
-A Redis kimeneti gyorsítótár-szolgáltató használatához először konfigurálja a gyorsítótárat, majd konfigurálja a ASP.NET alkalmazást a Redis kimeneti gyorsítótár-szolgáltató NuGet csomagjának használatával. Ez a témakör útmutatást nyújt az alkalmazás konfigurálásához a Redis kimeneti gyorsítótár-szolgáltató használatára. Az Azure cache Redis-példány létrehozásával és konfigurálásával kapcsolatos további információkért lásd: [gyorsítótár létrehozása](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
+A Redis kimeneti gyorsítótár-szolgáltató használatához először konfigurálja a gyorsítótárat, majd konfigurálja a ASP.NET alkalmazást a Redis kimeneti gyorsítótárszolgáltató NuGet csomaghasználatával. Ez a témakör útmutatást nyújt az alkalmazás a Redis kimeneti gyorsítótárszolgáltató használatához való konfigurálásához. Az Azure Cache for Redis-példány létrehozásáról és konfigurálásáról további információt a Gyorsítótár létrehozása című témakörben [talál.](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)
 
-## <a name="store-aspnet-page-output-in-the-cache"></a>ASP.NET-oldal kimenetének tárolása a gyorsítótárban
+## <a name="store-aspnet-page-output-in-the-cache"></a>ASP.NET lapkimenet tárolása a gyorsítótárban
 
-Ha a Visual Studióban szeretné konfigurálni az ügyfélalkalmazás-t a Redis munkamenet-állapot NuGet-csomagjának Azure cache szolgáltatásával, kattintson a **NuGet csomagkezelő**, **csomagkezelő konzol** elemre az **eszközök** menüből.
+Ha egy ügyfélalkalmazást szeretne beállítani a Visual Studióban az Azure Cache for Redis Session State NuGet csomag használatával, kattintson az Eszközök menü **NuGet csomagkezelő**, **Csomagkezelő konzol** **parancsára.**
 
 Futtassa az alábbi parancsot a `Package Manager Console` ablakából.
 
@@ -29,12 +29,12 @@ Futtassa az alábbi parancsot a `Package Manager Console` ablakából.
 Install-Package Microsoft.Web.RedisOutputCacheProvider
 ```
 
-A Redis kimeneti gyorsítótár-szolgáltató NuGet csomagja a StackExchange. Redis. StrongName csomagtól függ. Ha a StackExchange. Redis. StrongName csomag nem szerepel a projektben, az telepítve van. A Redis kimeneti gyorsítótár-szolgáltató NuGet csomaggal kapcsolatos további információkért tekintse meg a [RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/) -NuGet lapot.
+A Redis kimeneti gyorsítótárszolgáltató NuGet csomag függősége a StackExchange.Redis.StrongName csomag. Ha a StackExchange.Redis.StrongName csomag nem található a projektben, akkor telepítve van. A Redis kimeneti gyorsítótárszolgáltató NuGet csomagjáról a [RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/) NuGet oldalon talál további információt.
 
 >[!NOTE]
->Az erős névvel ellátott StackExchange. Redis. StrongName csomag mellett a StackExchange. Redis nem erős nevű verziója is létezik. Ha a projekt a nem erős névvel ellátott StackExchange. Redis verziót használja, el kell távolítania azt; Ellenkező esetben a projekt elnevezési ütközéseit fogja tapasztalni. További információ ezekről a csomagokról: [.net gyorsítótár-ügyfelek konfigurálása](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+>Az erős nevű StackExchange.Redis.StrongName csomag mellett a StackExchange.Redis nem erős nevű verziója is megjelenik. Ha a projekt a nem erős nevű StackExchange.Redis verziót használja, el kell távolítania azt; ellenkező esetben a projekt ben elnevezési ütközéseket tapasztal. Ezekről a csomagokról további információt a [.NET gyorsítótárazási ügyfelek konfigurálása című témakörben talál.](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)
 
-A NuGet csomag letölti és hozzáadja a szükséges szerelvény-hivatkozásokat, és hozzáadja a következő szakaszt a web. config fájlhoz. Ez a szakasz tartalmazza a ASP.NET alkalmazás szükséges konfigurációját a Redis kimeneti gyorsítótár-szolgáltató használatához.
+A NuGet csomag letölti és hozzáadja a szükséges összeállítási hivatkozásokat, és hozzáadja a következő szakaszt a web.config fájlhoz. Ez a szakasz tartalmazza a szükséges konfigurációt a ASP.NET alkalmazás a Redis kimeneti gyorsítótárszolgáltató használatához.
 
 ```xml
 <caching>
@@ -49,35 +49,34 @@ A NuGet csomag letölti és hozzáadja a szükséges szerelvény-hivatkozásokat
 </caching>
 ```
 
-Konfigurálja az attribútumokat a Microsoft Azure Portal cache paneljének értékeivel, és szükség szerint konfigurálja a többi értéket. A gyorsítótár tulajdonságainak elérésére vonatkozó utasításokért tekintse meg az [Azure cache konfigurálása a Redis-beállításokhoz](cache-configure.md#configure-azure-cache-for-redis-settings)című témakört.
+Konfigurálja az attribútumokat a Microsoft Azure portalon a gyorsítótár-panelértékeivel, és szükség szerint konfigurálja a többi értéket. A gyorsítótár tulajdonságainak eléréséről az [Azure Cache beállítása a Redis-beállításokhoz című](cache-configure.md#configure-azure-cache-for-redis-settings)témakörben olvashat.
 
-| Attribútum | Type (Típus) | Alapértelmezett | Leírás |
+| Attribútum | Típus | Alapértelmezett | Leírás |
 | --------- | ---- | ------- | ----------- |
-| *gazdagép* | sztring | localhost | A Redis-kiszolgáló IP-címe vagy állomásneve |
-| *Port* | pozitív egész szám | 6379 (nem SSL)<br/>6380 (SSL) | Redis-kiszolgáló portja |
-| *accessKey* | sztring | "" | Redis-kiszolgáló jelszavának engedélyezése, ha engedélyezve van a Redis engedélyezése. Alapértelmezés szerint az érték üres karakterlánc, ami azt jelenti, hogy a munkamenet-állapot szolgáltatója nem használ jelszót a Redis-kiszolgálóhoz való csatlakozáskor. **Ha a Redis-kiszolgáló nyilvánosan elérhető hálózatban (például Azure Redis Cache) található, ügyeljen arra, hogy a biztonság növelése érdekében engedélyezze a Redis-engedélyezést, és adjon meg egy biztonságos jelszót.** |
-| *SSL* | logikai | **false** | Azt jelzi, hogy SSL-kapcsolaton keresztül kapcsolódik-e a Redis-kiszolgálóhoz. Alapértelmezés szerint ez az érték **hamis** , mert a Redis nem támogatja az SSL használatát a dobozból. **Ha olyan Azure Redis Cache használ, amely támogatja az SSL-t a jelölőnégyzetből, ügyeljen rá, hogy a biztonság növelése érdekében állítsa igaz értékre.**<br/><br/>A nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. Ha ezt a beállítást használja az SSL-port használatára, válassza az **igaz** értéket. A nem SSL port engedélyezésével kapcsolatos további információkért tekintse meg a [gyorsítótár konfigurálása](cache-configure.md) témakör [elérési portok](cache-configure.md#access-ports) című szakaszát. |
-| *databaseIdNumber* | pozitív egész szám | 0 | *Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>Határozza meg, hogy melyik Redis-adatbázist kívánja használni. |
-| *connectionTimeoutInMilliseconds* | pozitív egész szám | A StackExchange. Redis által biztosított | A *ConnectTimeout* beállítására szolgál a StackExchange. Redis. ConnectionMultiplexer létrehozásakor. |
-| *operationTimeoutInMilliseconds* | pozitív egész szám | A StackExchange. Redis által biztosított | A *SyncTimeout* beállítására szolgál a StackExchange. Redis. ConnectionMultiplexer létrehozásakor. |
-| *ConnectionString* (érvényes StackExchange. Redis kapcsolati sztring) | sztring | *n/a* | A AppSettings vagy a web. config fájlra, vagy egy érvényes StackExchange. Redis kapcsolati sztringre mutató hivatkozás. Ez az attribútum a *gazdagép*, a *port*, az *accessKey*, az *SSL*és más StackExchange. Redis attribútumok értékeit biztosítja. A *ConnectionString*részletesebb ismertetését lásd: a [ConnectionString beállítása](#setting-connectionstring) az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
-| *settingsClassName*<br/>*settingsMethodName* | sztring<br/>sztring | *n/a* | *Ezek az attribútumok csak a web. config vagy a AppSettings használatával adhatók meg.*<br/><br/>Ezekkel az attribútumokkal adhat meg egy kapcsolódási karakterláncot. a *settingsClassName* a *settingsMethodName*által megadott metódust tartalmazó szerelvény minősített osztályának kell lennie.<br/><br/>A *settingsMethodName* által megadott metódusnak nyilvános, statikus és Void értékűnek kell lennie (nem kell paramétereket megadnia) a **karakterlánc**visszatérési típusával. Ez a metódus a tényleges kapcsolatok karakterláncát adja vissza. |
-| *loggingClassName*<br/>*loggingMethodName* | sztring<br/>sztring | *n/a* | *Ezek az attribútumok csak a web. config vagy a AppSettings használatával adhatók meg.*<br/><br/>Ezekkel az attribútumokkal hibakeresést végezhet az alkalmazásban, ha naplókat biztosít a munkamenet-állapot/kimeneti gyorsítótárból, valamint a StackExchange. Redis naplókat. a *loggingClassName* a *loggingMethodName*által megadott metódust tartalmazó szerelvény minősített osztályának kell lennie.<br/><br/>A *loggingMethodName* által megadott metódusnak nyilvános, statikus és Void értékűnek kell lennie (nem kell paramétereket megadnia) a **System. IO. TextWriter**visszatérési típusával. |
-| *applicationName* | sztring | Az aktuális folyamat moduljának neve vagy "/" | *Csak SessionStateProvider*<br/>*Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>A Redis cache-ben használandó alkalmazásnév-előtag. Az ügyfél különböző célokra használhatja ugyanazt a Redis cache-gyorsítótárat. Annak biztosításához, hogy a munkamenetkulcsok ne ütköznek, az alkalmazás neve előtaggal megadható. |
-| *throwOnError* | logikai | igaz | *Csak SessionStateProvider*<br/>*Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>Azt határozza meg, hogy hiba esetén kivételt kell-e kidobni.<br/><br/>További információ a *throwOnError*: [Megjegyzések a *ThrowOnError* ](#notes-on-throwonerror) -ben az [attribútumok megjegyzései](#attribute-notes) szakaszban. |>*Microsoft. Web. Redis. RedisSessionStateProvider. LastException*. |
-| *retryTimeoutInMilliseconds* | pozitív egész szám | 5000 | *Csak SessionStateProvider*<br/>*Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>Ennyi ideig próbálkozzon újra egy művelet sikertelensége esetén. Ha ez az érték kisebb, mint a *operationTimeoutInMilliseconds*, akkor a szolgáltató nem próbálkozik újra.<br/><br/>További információ a *retryTimeoutInMilliseconds*: [Megjegyzések a *RetryTimeoutInMilliseconds* ](#notes-on-retrytimeoutinmilliseconds) -ben az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
-| *redisSerializerType* | sztring | *n/a* | Meghatározza a Microsoft. Web. Redis által megvalósított osztály szerelvényének minősített típusának nevét. ISerializer, amely az értékek szerializálására és deszerializálására szolgáló egyéni logikát tartalmazza. További információ: a [ *redisSerializerType* ismertetése](#about-redisserializertype) az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
-|
+| *Fogadó* | sztring | "localhost" | A Redis-kiszolgáló IP-címe vagy állomásneve |
+| *port* | pozitív egész szám | 6379 (nem SSL)<br/>6380 (SSL) | Redis szerverport |
+| *accessKey (accessKey)* | sztring | "" | Redis kiszolgáló jelszavát, ha a Redis-engedélyezés engedélyezve van. Az érték alapértelmezés szerint üres karakterlánc, ami azt jelenti, hogy a munkamenet-állapot szolgáltatója nem használ jelszót a Redis-kiszolgálóhoz való csatlakozáskor. **Ha a Redis-kiszolgáló egy nyilvánosan elérhető hálózat, például az Azure Redis cache, győződjön meg róla, hogy engedélyezi a Redis-engedélyezés a biztonság növelése érdekében, és biztonságos jelszót.** |
+| *Ssl* | logikai | **Hamis** | A Redis-kiszolgálóhoz való csatlakozás ssl-en keresztül. Ez az érték alapértelmezés szerint **hamis,** mert a Redis nem támogatja az SSL-t a dobozból. **Ha az SSL-t támogató Azure Redis-gyorsítótárat használja, a biztonság növelése érdekében állítsa be ezt igaz értékre.**<br/><br/>A nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. Adja meg **a true** értéket ehhez a beállításhoz az SSL-port használatához. A nem SSL-port engedélyezéséről a [Gyorsítótár konfigurálása](cache-configure.md) témakör [Access Ports](cache-configure.md#access-ports) című szakaszában olvashat bővebben. |
+| *databaseIdNumber* | pozitív egész szám | 0 | *Ez az attribútum csak a web.config vagy az AppSettings fájlon keresztül adható meg.*<br/><br/>Adja meg, hogy melyik Redis-adatbázist használja. |
+| *connectionTimeoutEzmillimásodpercben* | pozitív egész szám | Által biztosított StackExchange.Redis | A *ConnectTimeout* beállítására szolgál a StackExchange.Redis.ConnectionMultiplexer létrehozásakor. |
+| *operationTimeoutEzredmásodpercben* | pozitív egész szám | Által biztosított StackExchange.Redis | A *SyncTimeout* beállítására szolgál a StackExchange.Redis.ConnectionMultiplexer létrehozásakor. |
+| *connectionString* (Érvényes StackExchange.Redis kapcsolati karakterlánc) | sztring | *N/a* | Vagy egy paraméterhivatkozás az AppSettings vagy a web.config fájlra, vagy pedig egy érvényes StackExchange.Redis kapcsolati karakterlánc. Ez az attribútum *állomás,* *port,* *accessKey*, *ssl*és más StackExchange.Redis attribútumok értékeit adhat meg. A *connectionString*című témakörben az [Attribute notes](#attribute-notes) szakasz [connectionString beállítása](#setting-connectionstring) című témakörben található. |
+| *settingsClassName*<br/>*settingsMethodName* | sztring<br/>sztring | *N/a* | *Ezek az attribútumok csak a web.config vagy az AppSettings fájlon keresztül adhatók meg.*<br/><br/>Ezekkel az attribútumokkal kapcsolati karakterláncot adhat meg. *a settingsClassName* elemképminősített osztálynévnek kell lennie, amely a *settingsMethodName*.<br/><br/>Az *settingsMethodName* által megadott metódusnak nyilvánosnak, statikusnak és érvénytelennek kell lennie (nem kell paramétereket venni), **karakterlánctípussal.** Ez a módszer a tényleges kapcsolati karakterláncot adja vissza. |
+| *naplózásOsztályneve*<br/>*loggingMetódusneve* | sztring<br/>sztring | *N/a* | *Ezek az attribútumok csak a web.config vagy az AppSettings fájlon keresztül adhatók meg.*<br/><br/>Ezekkel az attribútumokkal hibakeresés az alkalmazás azáltal, hogy naplók at session state/output cache együtt naplók StackExchange.Redis. *a(z) loggingClassName* elemező minősített osztálynévnek kell lennie, amely a *loggingMethodName*paraméterben megadott metódust tartalmazza.<br/><br/>A *loggingMethodName* paraméter által megadott metódusnak nyilvánosnak, statikusnak és érvénytelennek kell lennie (nem kell semmilyen paramétert figyelembe venni), **a System.IO.TextWriter**visszatérési típussal. |
+| *alkalmazásnév* | sztring | Az aktuális folyamat modulneve vagy "/" | *Csak sessionStateprovider*<br/>*Ez az attribútum csak a web.config vagy az AppSettings fájlon keresztül adható meg.*<br/><br/>A Redis gyorsítótárban használandó alkalmazásnév-előtag. Az ügyfél használhatja ugyanazt a Redis cache különböző célokra. Annak biztosításához, hogy a munkamenetkulcsok ne ütközzenek, az alkalmazás nevével előtaggal rögzíthető. |
+| *throwOnError* | logikai | igaz | *Csak sessionStateprovider*<br/>*Ez az attribútum csak a web.config vagy az AppSettings fájlon keresztül adható meg.*<br/><br/>Azt jelzi, hogy hiba esetén kivételt kell-e tenni.<br/><br/>A *throwOnError*hibáról az [Attribútummegjegyzések](#attribute-notes) szakasz [Megjegyzések a *hibáról* ](#notes-on-throwonerror) című témakörben található. |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*. |
+| *újrapróbálkozási időoutEzredmásodpercben* | pozitív egész szám | 5000 | *Csak sessionStateprovider*<br/>*Ez az attribútum csak a web.config vagy az AppSettings fájlon keresztül adható meg.*<br/><br/>Mennyi ideig kell újrapróbálkozni, ha egy művelet sikertelen. Ha ez az érték kisebb, mint *operationTimeoutInMilliseconds*, a szolgáltató nem próbálja meg újra.<br/><br/>Az *újrapróbálkozási idő– Ezredmásodperc ben*további tudnivalókat az [Attribútumjegyzetek](#attribute-notes) szakasz Ban [található: "Az *újrapróbálkozási időről időpontban, ezössze00másodperc).* ](#notes-on-retrytimeoutinmilliseconds) |
+| *redisSerializerType típus* | sztring | *N/a* | Megadja a Microsoft.Web.Redis programot megvalósító osztály szerelvényminősített típusnevét. ISerializer, és amely tartalmazza az egyéni logika szerializálására és deszerializálására az értékeket. További információ: [ *A redisSerializerType* ](#about-redisserializertype) az [Attribútummegjegyzések](#attribute-notes) szakaszban. |
 
-## <a name="attribute-notes"></a>Attribútumok megjegyzései
+## <a name="attribute-notes"></a>Attribútumjegyzetek
 
 ### <a name="setting-connectionstring"></a>*ConnectionString* beállítása
 
-A *ConnectionString* értéke kulcsként szolgál a tényleges kapcsolati karakterlánc lekéréséhez a appSettings-ből, ha van ilyen karakterlánc a appSettings-ben. Ha nem található a AppSettings-ben, a *ConnectionString* értéket fogja használni a rendszer a web. config **ConnectionString** szakasz tényleges kapcsolati karakterláncának beolvasásához, ha ez a szakasz létezik. Ha a kapcsolati karakterlánc nem létezik a AppSettings vagy a web. config **ConnectionString** szakaszban, akkor a *ConnectionString* karakterlánc értéke lesz a kapcsolati sztring a StackExchange. Redis. ConnectionMultiplexer létrehozásakor.
+A *connectionString* értéke kulcsként szolgál a tényleges kapcsolati karakterlánc appsettings-ból történő lehívásához, ha ilyen karakterlánc létezik az AppSettings alkalmazásban. Ha nem található az AppSettings fájlban, a *connectionString* értéke lesz kulcsként a tényleges kapcsolati karakterlánc lekéréséhez a web.config **ConnectionString** szakaszból, ha az a szakasz létezik. Ha a kapcsolati karakterlánc nem létezik az AppSettings vagy a web.config **ConnectionString** szakaszban, a stackexchange.redis.connectionmultiplexer létrehozásakor a *connectionString* literális értéke lesz a kapcsolati karakterlánc.
 
-Az alábbi példák bemutatják a *ConnectionString* használatának módját.
+Az alábbi példák bemutatják a *connectionString* használatának módját.
 
-#### <a name="example-1"></a>1\. példa
+#### <a name="example-1"></a>1. példa
 
 ```xml
 <connectionStrings>
@@ -85,7 +84,7 @@ Az alábbi példák bemutatják a *ConnectionString* használatának módját.
 </connectionStrings>
 ```
 
-`web.config`a tényleges érték helyett használja a fenti kulcs paraméter értékét.
+A `web.config`alkalmazásban a fenti kulcsot használja paraméterértékként a tényleges érték helyett.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -97,7 +96,7 @@ Az alábbi példák bemutatják a *ConnectionString* használatának módját.
 </sessionState>
 ```
 
-#### <a name="example-2"></a>2\. példa
+#### <a name="example-2"></a>2. példa
 
 ```xml
 <appSettings>
@@ -105,7 +104,7 @@ Az alábbi példák bemutatják a *ConnectionString* használatának módját.
 </appSettings>
 ```
 
-`web.config`a tényleges érték helyett használja a fenti kulcs paraméter értékét.
+A `web.config`alkalmazásban a fenti kulcsot használja paraméterértékként a tényleges érték helyett.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -117,7 +116,7 @@ Az alábbi példák bemutatják a *ConnectionString* használatának módját.
 </sessionState>
 ```
 
-#### <a name="example-3"></a>3\. példa
+#### <a name="example-3"></a>3. példa
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -129,25 +128,25 @@ Az alábbi példák bemutatják a *ConnectionString* használatának módját.
 </sessionState>
 ```
 
-### <a name="notes-on-throwonerror"></a>Megjegyzések a *throwOnError*
+### <a name="notes-on-throwonerror"></a>Megjegyzések a *throwOnError-hoz*
 
-Ha a munkamenet-művelet során hiba lép fel, a munkamenet-állapot szolgáltatója kivételt fog kiváltani. Ezzel leállítja az alkalmazást.
+Jelenleg, ha hiba történik egy munkamenet-művelet során, a munkamenet-állapot szolgáltató kivételt fog kidobni. Ez leállítja az alkalmazást.
 
-Ez a viselkedés olyan módon módosult, amely támogatja a meglévő ASP.NET munkamenet-szolgáltatói felhasználók elvárásait, miközben szükség esetén kivételeket is megadhat. Az alapértelmezett viselkedés továbbra is kivételt jelez, ha hiba történik, összhangban a többi ASP.NET munkamenet-szolgáltatóval; a meglévő kódnak ugyanúgy kell működnie, mint korábban.
+Ez a viselkedés úgy módosult, hogy támogatja a meglévő ASP.NET munkamenet-állapot-szolgáltató felhasználóinak elvárásait, ugyanakkor lehetővé teszi a kivételek, ha szükséges. Az alapértelmezett viselkedés továbbra is kivételt okoz, ha hiba történik, összhangban más ASP.NET munkamenet-állapot szolgáltatók; a meglévő kódnak ugyanúgy kell működnie, mint korábban.
 
-Ha a *throwOnError* false ( **hamis**) értékre van állítva, akkor a kivételek eldobása helyett a művelet csendes hibát jelez. Ha meg szeretné tudni, hogy hiba történt-e, és ha igen, keresse meg a kivételt, ellenőrizze a *Microsoft. Web. Redis. RedisSessionStateProvider. LastException*statikus tulajdonságát.
+Ha a *throwOnError értéket* **hamisra**állítja, akkor hiba esetén kivétel takarása helyett csendben sikertelen lesz. Ha meg szeretné tudni, hogy hiba történt-e, és ha igen, ismerje meg, mi volt a kivétel, ellenőrizze a *Microsoft.Web.Redis.RedisSessionStateProvider.LastException*statikus tulajdonságát.
 
-### <a name="notes-on-retrytimeoutinmilliseconds"></a>Megjegyzések a *retryTimeoutInMilliseconds*
+### <a name="notes-on-retrytimeoutinmilliseconds"></a>Az *újrapróbálkozási időről ezredmásodpercben* írt megjegyzések
 
-Ez némi újrapróbálkozási logikát biztosít ahhoz, hogy leegyszerűsítse az esetet, amikor egy munkamenet-művelet a hálózati hiba miatt meghiúsul, de az újrapróbálkozási időtúllépés vagy az újrapróbálkozások teljes körű ellenőrzése is lehetővé teszi.
+Ez néhány újrapróbálkozási logikát biztosít, hogy egyszerűsítse azt az esetet, amikor egyes munkamenet-műveleteknek újra meg kell próbálniuk a hálózati hiba miatt, miközben lehetővé teszi az újrapróbálkozási időtúltöltés szabályozását vagy az újrapróbálkozás teljes körű letiltását.
 
-Ha a *retryTimeoutInMilliseconds* egy számra (például 2000-re) állítja be, akkor amikor egy munkamenet-művelet meghiúsul, a 2000 ezredmásodperc elteltével újra próbálkozik, mielőtt hibát észlel. Annak érdekében, hogy a munkamenet-szolgáltató alkalmazza ezt az újrapróbálkozási logikát, csak konfigurálja az időkorlátot. Az első újrapróbálkozás 20 ezredmásodperc után történik, ami a legtöbb esetben elegendő a hálózati hiba bekövetkezésekor. Ezt követően a rendszer másodpercenként újra próbálkozik, amíg ki nem fejeződik. Az időtúllépést követően még egyszer újra próbálkozik, hogy a rendszer ne vágja le az időtúllépést (legfeljebb) egy másodpercen belül.
+Ha *az újrapróbálkozási időszámozást* egy számra állítja be, például 2000-re, majd ha egy munkamenet-művelet sikertelen, 2000 ezredmásodpercre újra próbálkozik, mielőtt hibaként kezelne. Tehát, ha a munkamenet-állapot szolgáltató ja, hogy alkalmazza ezt az újrapróbálkozási logikát, csak konfigurálja az időtúltöltést. Az első újrapróbálkozás 20 ezredmásodperc után történik, ami a legtöbb esetben elegendő, ha hálózati hiba lép fel. Ezután minden másodpercben újra próbálkozik, amíg időtúlóráznak. Rögtön az időtúlután újra megpróbálja még egyszer, hogy megbizonyosodjon arról, hogy nem vágja le az időtúlot (legfeljebb) egy másodperccel.
 
-Ha nem hiszem, hogy újra kell próbálkoznia (például ha a Redis-kiszolgálót az alkalmazással megegyező gépen futtatja), vagy ha saját kezűleg szeretné kezelni az újrapróbálkozási logikát, állítsa a *retryTimeoutInMilliseconds* 0-ra.
+Ha úgy gondolja, hogy nem kell újrapróbálkoznia (például amikor a Redis-kiszolgálót ugyanazon a gépen futtatja, mint az alkalmazást), vagy ha saját maga szeretné kezelni az újrapróbálkozási logikát, állítsa az *újrapróbálkozási időszint0-t* 0-ra.
 
-### <a name="about-redisserializertype"></a>A *redisSerializerType* névjegye
+### <a name="about-redisserializertype"></a>A *redisSerializerType-ról*
 
-Alapértelmezés szerint a Redis lévő értékek tárolására szolgáló szerializálás a **BinaryFormatter** osztály által megadott bináris formátumban történik. A *redisSerializerType* használatával adja meg a **Microsoft. Web. Redis. ISerializer** nevű osztály szerelvényének minősített típusának nevét, és az egyéni logikával szerializálhatja és deszerializálhatja az értékeket. Íme például egy JSON-szerializáló osztály a JSON.NET használatával:
+Alapértelmezés szerint a Redis-en lévő értékek tárolására szolgáló szerializálás a **BinaryFormatter** osztály által biztosított bináris formátumban történik. A *redisSerializerType használatával* adja meg a **Microsoft.Web.Redis.ISerializer** t implementáló osztály szerelvényminősített típusnevét, amely rendelkezik az értékek szerializálásához és deszerializálásához szükséges egyéni logikával. Például, itt van egy Json serializer osztály JSON.NET használatával:
 
 ```cs
 namespace MyCompany.Redis
@@ -173,7 +172,7 @@ namespace MyCompany.Redis
 }
 ```
 
-Feltételezve, hogy ez az osztály egy **MyCompanyDll**nevű szerelvényben van definiálva, a *redisSerializerType* paramétert a következő használatára állíthatja be:
+Feltéve, hogy ez az osztály **a MyCompanyDll**nevű kódösszeállításban van definiálva, beállíthatja a *redisSerializerType* paramétert a használatához:
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -186,18 +185,24 @@ Feltételezve, hogy ez az osztály egy **MyCompanyDll**nevű szerelvényben van 
 </sessionState>
 ```
 
-## <a name="output-cache-directive"></a>Kimeneti gyorsítótár direktíva
+## <a name="output-cache-directive"></a>Kimeneti gyorsítótár-irányelv
 
-Adjon hozzá egy OutputCache-direktívát minden olyan laphoz, amelyhez gyorsítótárazni kívánja a kimenetet.
+Adjon hozzá egy OutputCache-direktívát minden olyan laphoz, amelynek a kimenetét gyorsítótárazni kívánja.
 
 ```xml
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-Az előző példában a gyorsítótárazott lap az 60 másodperces gyorsítótárban marad, és az oldal egy másik verzióját gyorsítótárazza az egyes paraméterek kombinációjára. A OutputCache direktívával kapcsolatos további információkért lásd: [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837).
+Az előző példában a gyorsítótárban lévő oldaladatok 60 másodpercig maradnak a gyorsítótárban, és az egyes paraméterkombinációkhoz az oldal egy másik verziója kerül a gyorsítótárba. A OutputCache direktíváról [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837)további információt a.
 
-A lépések elvégzése után az alkalmazás a Redis kimeneti gyorsítótár-szolgáltató használatára van konfigurálva.
+A lépések végrehajtása után az alkalmazás a Redis kimeneti gyorsítótárszolgáltató használatára van konfigurálva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="third-party-output-cache-providers"></a>Külső kimeneti gyorsítótár-szolgáltatók
 
-Tekintse meg az [Azure Cache ASP.NET munkamenet-szolgáltatóját a Redis](cache-aspnet-session-state-provider.md).
+* [NCache](https://www.alachisoft.com/blogs/how-to-use-a-distributed-cache-for-asp-net-output-cache/)
+* [Apache Ignite](https://apacheignite-net.readme.io/docs/aspnet-output-caching)
+
+
+## <a name="next-steps"></a>További lépések
+
+Tekintse meg a [ASP.NET a Redis Azure-gyorsítótára munkamenet-állapotszolgáltatóját.](cache-aspnet-session-state-provider.md)

@@ -1,7 +1,7 @@
 ---
 title: Adatok összegzése
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhatja ki az adatkészletek oszlopaihoz tartozó alapszintű leíró statisztikai jelentést az Azure Machine Learning-ben az összegző adatok modul használatával.
+description: Megtudhatja, hogyan használhatja az Adatok összegzése modult az Azure Machine Learningben egy adatkészlet oszlopaihoz alapvető leíró statisztikai jelentés létrehozásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,82 +9,82 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
-ms.openlocfilehash: be6fd633f026c98e8f75467dc8661e695e121721
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b0def12582dd3795e1b17334406e28d77c3c5656
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841267"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477442"
 ---
 # <a name="summarize-data"></a>Adatok összegzése
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk ismerteti az Azure Machine Learning designer modulját (előzetes verzió).
 
-Az összesítő adat modul használatával olyan szabványos statisztikai mértékeket hozhat létre, amelyek leírják a bemeneti tábla minden oszlopát.
+Az Adatok összegzése modul segítségével hozzon létre egy sor szabványos statisztikai mértékeket, amelyek leírják a bemeneti tábla egyes oszlopait.
 
-Az összegző statisztika akkor hasznos, ha meg szeretné ismerni a teljes adatkészlet jellemzőit. Előfordulhat például, hogy tudnia kell a következőket:
+Az összegző statisztikák akkor hasznosak, ha meg szeretné érteni a teljes adatkészlet jellemzőit. Előfordulhat például, hogy tudnia kell:
 
 - Hány hiányzó érték van az egyes oszlopokban?
-- Hány egyedi érték van a funkció oszlopban?
-- Mi az egyes oszlopok átlagos és szórása?
+- Hány egyedi érték van egy jellemzőoszlopban?
+- Mi az egyes oszlopok átlaga és szórása?
 
-A modul kiszámítja az egyes oszlopok fontos pontszámait, és a bemenetként megadott összes változó (adatoszlop) összesítő statisztikájának sorát adja vissza.
+A modul kiszámítja az egyes oszlopok fontos pontszámait, és minden bemenetként megadott változóhoz (adatoszlophoz) egy sor összefoglaló statisztikát ad vissza.
 
-## <a name="how-to-configure-summarize-data"></a>Az adatösszesítés konfigurálása  
+## <a name="how-to-configure-summarize-data"></a>Az adatok összegzése beállítás  
 
-1. Adja hozzá az **összesítő** adatmodult a folyamathoz. Ez a modul a Designer **statisztikai függvények** kategóriájában található meg.
+1. Adja hozzá az **Adatok összegzése** modult a folyamathoz. Ezt a modult a **tervező Statisztikai függvények** kategóriájában találja.
 
-1. Kapcsolja be azt az adatkészletet, amelyhez jelentést szeretne készíteni.
+1. Kapcsolja össze azt az adatkészletet, amelyhez jelentést szeretne létrehozni.
 
-    Ha csak néhány oszlopra szeretne jelentést készíteni, használja az oszlopok [kiválasztása az adatkészlet](select-columns-in-dataset.md) modulban lehetőséget, hogy az oszlopok egy részhalmazát feldolgozza.
+    Ha csak néhány oszlopról szeretne jelentést tenni, az [Adatkészlet oszlopok kijelölése](select-columns-in-dataset.md) modullal vetítheti ki az oszlopok egy részhalmazát.
 
-1. Nincs szükség további paraméterekre. Alapértelmezés szerint a modul a bemenetként megadott összes oszlopot elemzi, az oszlopok értékeinek típusától függően pedig az eredmények szakaszban leírtak szerint a megfelelő statisztikai adatokat [jeleníti](#results) meg.
+1. Nincs szükség további paraméterekre. Alapértelmezés szerint a modul elemzi a bemenetként megadott összes oszlopot, és az oszlopokban lévő értékek típusától függően az [Eredmények](#results) szakaszban leírtak szerint egy megfelelő statisztikai készletet ad ki.
 
-1. A folyamat futtatása.
+1. Küldje el a folyamatot.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
-A modul jelentései a következő statisztikákat is tartalmazhatják. 
+A modulból származó jelentés a következő statisztikákat tartalmazhatja. 
 
-|oszlop neve|Leírás|
+|Oszlop neve|Leírás|
 |------|------|  
-|**Funkció**|Az oszlop neve|
-|**Száma**|Az összes sor száma|
+|**Szolgáltatás**|Az oszlop neve|
+|**Darabszám**|Az összes sor száma|
 |**Egyedi értékek száma**|Egyedi értékek száma az oszlopban|
 |**Hiányzó értékek száma**|Egyedi értékek száma az oszlopban|
-|**Min**|Legalacsonyabb érték az oszlopban|  
-|**Max**|Legmagasabb érték az oszlopban|
-|**Értem**|Az összes oszlop értékének középértéke|
-|**Középérték szórása**|Oszlop értékeinek szórása|
-|**1. kvartilis**|Érték az első kvartilis|
-|**Medián**|Medián oszlop értéke|
-|**harmadik kvartilis**|Érték a harmadik kvartilis|
-|**Mód**|Oszlop értékeinek módja|
-|**Tartomány**|A maximális és a minimális értékek közötti értékek számát jelző egész szám|
-|**Minta eltérése**|Az oszlop eltérése; Lásd: Megjegyzés|
-|**Minta szórása**|Oszlop szórása; Lásd: Megjegyzés|
-|**Minta torzítása**|Az oszlop torzítása; Lásd: Megjegyzés|
-|**Minta csúcsosságát**|Csúcsosságát az oszlophoz; Lásd: Megjegyzés|
-|**P 0.5**|0,5% percentilis|
+|**Min**|Az oszlop legalacsonyabb értéke|  
+|**Max**|Az oszlop legmagasabb értéke|
+|**Jelent**|Az összes oszlopérték átlaga|
+|**Átlagos eltérés**|Az oszlopértékek átlagos eltérése|
+|**1. Kvartilis**|Érték az első kvartilisnél|
+|**Medián**|Medián oszlopérték|
+|**3. Kvartilis**|Érték a harmadik kvartilisnél|
+|**Mód**|Az oszlopértékek módja|
+|**Tartomány**|Egész szám, amely a maximális és a legkisebb értékek közötti értékek számát jelöli|
+|**Mintavariancia**|Oszlop varianciája; lásd: Megjegyzés|
+|**Minta szórása**|Az oszlop szórása; lásd: Megjegyzés|
+|**Minta ferdesége**|Az oszlop ferdesége; lásd: Megjegyzés|
+|**Minta Kurtosis**|Kurtózis oszlophoz; lásd: Megjegyzés|
+|**P0.5**|0,5% percentilis|
 |**P1**|1% percentilis|
-|**P5**|5%-os percentilis|
-|**P95**|95% percentilis|
-|**P 99,5**|99,5% percentilis |
+|**P5**|5% percentilis|
+|**95. p.**|95% percentilis|
+|**99,5 p.5**|99,5% percentilis |
 
 ## <a name="technical-notes"></a>Technikai megjegyzések
 
-- A nem numerikus oszlopok esetében a rendszer csak a darabszám, az egyedi értékek száma és a hiányzó értékek értékét számítja ki. Más statisztikák esetében null értéket ad vissza.
+- Nem numerikus oszlopok esetén csak a Darabszám, az Egyedi értékek száma és a Hiányzó értékek száma értékeit számítja ki a program. Más statisztikák esetén null értéket ad vissza a függvény.
 
-- A logikai értékeket tartalmazó oszlopok a következő szabályok használatával lesznek feldolgozva:
+- A logikai értékeket tartalmazó oszlopok feldolgozása a következő szabályok szerint:
 
-    - A min érték kiszámításakor a logikai és a rendszer alkalmazza.
+    - A Min számításakor logikai ÉS alkalmazásra kerül.
     
-    - A Max számításakor logikai vagy alkalmazva
+    - A Max érték számításakor logikai VAGY
     
-    - A számítási tartománynál a modul először ellenőrzi, hogy az oszlopban szereplő egyedi értékek száma 2-e.
+    - A Tartomány számításakor a modul először azt ellenőrzi, hogy az oszlopban szereplő egyedi értékek száma 2-nek felel-e meg.
     
-    - A lebegőpontos számításokat igénylő statisztikai adatok feldolgozásakor az igaz értéket a 1,0-as értékként kezeli a rendszer, a hamis értékek pedig 0,0-ként lesznek kezelve.
+    - Bármely lebegőpontos számítást igénylő statisztika számításakor a True értékeket a függvény 1,0-ként, a Hamis értékeket pedig 0,0-ként kezeli.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .  
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md)  

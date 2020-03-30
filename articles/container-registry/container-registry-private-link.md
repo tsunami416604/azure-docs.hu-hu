@@ -1,35 +1,35 @@
 ---
 title: Privát hivatkozás beállítása
-description: Privát végpont beállítása egy tároló-beállításjegyzékben és privát hivatkozás engedélyezése egy helyi virtuális hálózaton
+description: Privát végpont beállítása tárolóbeállításjegyzékben, és privát kapcsolat engedélyezése a helyi virtuális hálózatban
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 57c2a59ad8b16c39c7c577173feae68dcb263277
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: de8228d84497e71f24dba3dd4e6162cb6735a8c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79203355"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498918"
 ---
-# <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Azure Private-hivatkozás konfigurálása Azure Container registryhez 
+# <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Az Azure Private Link konfigurálása egy Azure-tároló beállításjegyzékéhez 
 
-Beállíthat egy [privát végpontot](../private-link/private-endpoint-overview.md) az Azure Container registryhez, hogy az Azure-beli virtuális hálózat ügyfelei biztonságosan hozzáférjenek a beállításjegyzékhez [privát kapcsolaton](../private-link/private-link-overview.md)keresztül. A magánhálózati végpont egy IP-címet használ a beállításjegyzékhez tartozó virtuális hálózati címtartomány alapján. A virtuális hálózat és a beállításjegyzék ügyfelei közötti hálózati forgalom áthalad a virtuális hálózaton és a Microsoft gerinc hálózatán lévő privát kapcsolaton, ami kiküszöböli a nyilvános internetről való kitettséget.
+Beállíthat egy [privát végpontot](../private-link/private-endpoint-overview.md) az Azure container registry számára, így az Azure virtuális hálózaton lévő ügyfelek biztonságosan hozzáférhetnek a rendszerleíró adatbázishoz egy [privát kapcsolaton](../private-link/private-link-overview.md)keresztül. A magánvégpont a rendszerleíró adatbázis virtuális hálózati címteréből származó IP-címet használ. A virtuális hálózaton lévő ügyfelek és a rendszerleíró adatbázis közötti hálózati forgalom áthalad a virtuális hálózaton és a Microsoft gerinchálózatán lévő magánkapcsolaton, így kiküszöböli a nyilvános internetről érkező kitettséget.
 
-Megadhatja a magánhálózati végpont [DNS-beállításait](../private-link/private-endpoint-overview.md#dns-configuration) , hogy a beállítások a beállításjegyzék lefoglalt magánhálózati IP-címére legyenek feloldva. A DNS-konfigurációval a hálózatban lévő ügyfelek és szolgáltatások továbbra is hozzáférhetnek a beállításjegyzékhez a beállításjegyzék teljes tartománynevénél, például *myregistry.azurecr.IO*.
+A saját végpont [DNS-beállításait konfigurálhatja,](../private-link/private-endpoint-overview.md#dns-configuration) így a beállítások a rendszerleíró adatbázis lefoglalt privát IP-címére oldódnak fel. A DNS-konfigurációval a hálózat ügyfelei és szolgáltatásai továbbra is hozzáférhetnek a rendszerleíró adatbázishoz a rendszerleíró adatbázis teljesen minősített tartománynevével, például *myregistry.azurecr.io.*
 
-Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry SKU](container-registry-skus.md)-i.
+Ez a funkció a **prémium szintű** tároló beállításjegyzék-szolgáltatásszintjén érhető el. A beállításjegyzék-szolgáltatási szintekről és -korlátozásokról az [Azure Container Registry ska](container-registry-skus.md)című témakörben talál további információt.
 
 > [!IMPORTANT]
 > Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások](#preview-limitations) érvényesek. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
-## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
+## <a name="preview-limitations"></a>Előnézeti korlátozások
 
-* Jelenleg nem állíthat be privát végponttal rendelkező magánhálózati kapcsolatot egy [földrajzilag replikált beállításjegyzékben](container-registry-geo-replication.md). 
+* Jelenleg nem lehet beállítani egy privát kapcsolatot egy privát végpont egy [georeplikált rendszerleíró adatbázisban.](container-registry-geo-replication.md) 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A cikkben szereplő Azure CLI-lépések használatához ajánlott az Azure CLI-es vagy újabb verziója. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli]. Vagy futtassa [Azure Cloud Shell](../cloud-shell/quickstart.md).
-* Ha még nem rendelkezik tároló-beállításjegyzékkel, hozzon létre egyet (prémium szintű csomag szükséges), és küldjön le egy mintát, például `hello-world` a Docker hub-ból. A beállításjegyzék létrehozásához például használja az [Azure Portal][quickstart-portal] vagy az [Azure CLI][quickstart-cli] -t.
-* Ha egy másik Azure-előfizetésben lévő privát hivatkozás használatával szeretné konfigurálni a beállításjegyzék-hozzáférést, regisztrálnia kell az erőforrás-szolgáltatót az előfizetésben lévő Azure Container Registryhoz. Például:
+* Az Azure CLI ebben a cikkben az Azure CLI 2.2.0-s vagy újabb verziója használata ajánlott. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli]. Vagy futtassa az [Azure Cloud Shellben.](../cloud-shell/quickstart.md)
+* Ha még nem rendelkezik egy tároló beállításjegyzékkel, hozzon létre egy `hello-world` (prémium szintű szükséges) és leküldéses egy mintarendszerkép, például a Docker Hub. Például az [Azure Portalon][quickstart-portal] vagy az [Azure CLI-ben][quickstart-cli] hozzon létre egy beállításjegyzéket.
+* Ha egy másik Azure-előfizetésben lévő privát hivatkozás használatával szeretné konfigurálni a beállításjegyzék-hozzáférést, regisztrálnia kell az azure-tároló beállításjegyzékerőforrás-szolgáltatóját az adott előfizetésben. Példa:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of private link>
@@ -37,7 +37,7 @@ Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten 
   az provider register --namespace Microsoft.ContainerRegistry
   ``` 
 
-A cikkben szereplő Azure CLI-példák az alábbi környezeti változókat használják. A környezetnek megfelelő helyettesítő értékeket. Az összes példa a bash-rendszerhéjra van formázva:
+Az Azure CLI példák ebben a cikkben a következő környezeti változók at használja. A környezetnek megfelelő értékek helyettesítése. Minden példa a Bash rendszerhéjhoz van formázva:
 
 ```bash
 registryName=<container-registry-name>
@@ -48,15 +48,15 @@ vmName=<virtual-machine-name>
 
 ## <a name="create-a-docker-enabled-virtual-machine"></a>Docker-kompatibilis virtuális gép létrehozása
 
-Tesztelési célból használjon Docker-kompatibilis Ubuntu virtuális gépet az Azure Container Registry eléréséhez. Ha Azure Active Directory hitelesítést kíván használni a beállításjegyzékben, telepítse az [Azure CLI][azure-cli] -t is a virtuális gépre. Ha már rendelkezik Azure-beli virtuális géppel, ugorja át ezt a létrehozási lépést.
+Tesztelési célokra használja a Docker-kompatibilis Ubuntu virtuális gép egy Azure-tároló beállításjegyzék eléréséhez. Az Azure Active Directory-hitelesítés a beállításjegyzékben, telepítse az [Azure CLI][azure-cli] a virtuális gépre. Ha már rendelkezik egy Azure virtuális géppel, hagyja ki ezt a létrehozási lépést.
 
-Használhatja ugyanazt az erőforráscsoportot a virtuális géphez és a tároló-beállításjegyzékhez is. Ez a beállítás leegyszerűsíti a tisztítást a végén, de nem kötelező. Ha úgy dönt, hogy külön erőforráscsoportot hoz létre a virtuális géphez és a virtuális hálózathoz, futtassa az [az Group Create][az-group-create]parancsot:
+Használhatja ugyanazt az erőforráscsoportot a virtuális gép és a tároló beállításjegyzék. Ez a beállítás leegyszerűsíti a karbantartást a végén, de nem szükséges. Ha úgy dönt, hogy külön erőforráscsoportot hoz létre a virtuális géphez és a virtuális hálózathoz, futtassa az [az csoport létrehozása:][az-group-create]
 
 ```azurecli
 az group create --name $resourceGroup --location $registryLocation
 ```
 
-Most helyezzen üzembe egy alapértelmezett Ubuntu Azure-beli virtuális gépet az [az VM Create][az-vm-create]paranccsal. A következő példa egy *myDockerVM*nevű virtuális gépet hoz létre.
+Most üzembe helyezhet egy alapértelmezett Ubuntu Azure virtuális gépet [az az vm create][az-vm-create]segítségével. A következő példa létrehoz egy *myDockerVM*nevű virtuális gép.
 
 ```azurecli
 az vm create \
@@ -67,24 +67,24 @@ az vm create \
   --generate-ssh-keys
 ```
 
-A virtuális gép létrehozása néhány percig tart. Ha a parancs befejeződik, jegyezze fel az Azure CLI által megjelenített `publicIpAddress`. Ezzel a címtől SSH-kapcsolatokat hozhat a virtuális géphez.
+A virtuális gép létrehozása néhány percig tart. Amikor a parancs befejeződik, `publicIpAddress` vegye figyelembe az Azure CLI által megjelenített. Ezzel a címmel SSH-kapcsolatokat létesítanek a virtuális géppel.
 
 ### <a name="install-docker-on-the-vm"></a>A Docker telepítése a virtuális gépre
 
-A virtuális gép futása után létesítsen SSH-kapcsolatokat a virtuális géppel. Cserélje le a *publicIpAddress* -t a virtuális gép nyilvános IP-címére.
+A virtuális gép futtatása után, hogy egy SSH-kapcsolat a virtuális gép. Cserélje le *a nyilvános IpAddress-t* a virtuális gép nyilvános IP-címére.
 
 ```bash
 ssh azureuser@publicIpAddress
 ```
 
-Futtassa az alábbi parancsokat a Docker telepítéséhez az Ubuntu virtuális gépen:
+Futtassa a következő parancsokat a Docker ubuntus virtuális gépre való telepítéséhez:
 
 ```bash
 sudo apt-get update
 sudo apt install docker.io -y
 ```
 
-A telepítés után futtassa a következő parancsot annak ellenőrzéséhez, hogy a Docker megfelelően fut-e a virtuális gépen:
+A telepítés után futtassa a következő parancsot annak ellenőrzéséhez, hogy a Docker megfelelően fut-e a virtuális számítógépen:
 
 ```bash
 sudo docker run -it hello-world
@@ -100,21 +100,21 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
 
-Az Azure CLI az Ubuntu rendszerű virtuális gépen való telepítéséhez kövesse az Azure CLI az [apt-vel](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) való telepítésének lépéseit. Például:
+Kövesse az [Azure CLI telepítése apt](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) az Azure CLI telepítéséhez az Ubuntu virtuális gépen. Példa:
 
 ```bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ```
 
-Lépjen ki az SSH-kapcsolatban.
+Lépjen ki az SSH-kapcsolatból.
 
-## <a name="set-up-private-link---cli"></a>Privát hivatkozás beállítása – parancssori felület
+## <a name="set-up-private-link---cli"></a>Privát kapcsolat beállítása - CLI
 
-### <a name="get-network-and-subnet-names"></a>Hálózati és alhálózatok nevének lekérése
+### <a name="get-network-and-subnet-names"></a>Hálózati és alhálózati nevek beszerezése
 
-Ha még nem rendelkezik velük, szüksége lesz egy virtuális hálózat és alhálózat nevére a privát hivatkozás beállításához. Ebben a példában ugyanazt az alhálózatot használja a virtuális géphez és a beállításjegyzék privát végpontja számára. Számos esetben azonban a végpontot külön alhálózatban kell beállítania. 
+Ha még nem rendelkezik velük, a privát kapcsolat beállításához szüksége lesz egy virtuális hálózat és alhálózat nevére. Ebben a példában ugyanazt az alhálózatot használja a virtuális géphez és a rendszerleíró adatbázis privát végpontjához. Azonban sok esetben a végpontot egy külön alhálózatban kell beállítani. 
 
-Amikor létrehoz egy virtuális GÉPET, az Azure alapértelmezés szerint ugyanahhoz az erőforráscsoporthoz hoz létre egy virtuális hálózatot. A virtuális hálózat neve a virtuális gép nevén alapul. Ha például a virtuális gép *myDockerVM*nevezi el, az alapértelmezett virtuális hálózat neve *myDockerVMVNET*, és egy *myDockerVMSubnet*nevű alhálózattal rendelkezik. Állítsa be ezeket az értékeket környezeti változókba az az [Network vnet List][az-network-vnet-list] parancs futtatásával:
+Virtuális gép létrehozásakor az Azure alapértelmezés szerint létrehoz egy virtuális hálózatot ugyanabban az erőforráscsoportban. A virtuális hálózat neve a virtuális gép nevén alapul. Ha például a virtuális gépet *myDockerVM-nek*nevezi el, az alapértelmezett virtuális hálózat neve *myDockerVMVNET*, *egy myDockerVMSubnet*nevű alhálózattal. Állítsa be ezeket az értékeket a környezeti változókban az [az hálózati virtuális hálózat lista][az-network-vnet-list] parancsának futtatásával:
 
 ```azurecli
 networkName=$(az network vnet list \
@@ -131,7 +131,7 @@ echo subnetName=$subnetName
 
 ### <a name="disable-network-policies-in-subnet"></a>Hálózati házirendek letiltása az alhálózatban
 
-[Tiltsa le a hálózati házirendeket](../private-link/disable-private-endpoint-network-policy.md) , például a hálózati biztonsági csoportokat a magánhálózati végponthoz tartozó alhálózatban. Az alhálózat konfigurációjának frissítése az [az Network vnet subnet Update][az-network-vnet-subnet-update]:
+[Tiltsa le a hálózati házirendeket,](../private-link/disable-private-endpoint-network-policy.md) például a hálózati biztonsági csoportokat a magánhálózati végpont alhálózatában. Az alhálózati konfiguráció frissítése [az az hálózati virtuális hálózat alhálózati frissítésével:][az-network-vnet-subnet-update]
 
 ```azurecli
 az network vnet subnet update \
@@ -141,11 +141,11 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies
 ```
 
-### <a name="configure-the-private-dns-zone"></a>A magánhálózati DNS-zóna konfigurálása
+### <a name="configure-the-private-dns-zone"></a>A privát DNS-zóna konfigurálása
 
-Hozzon létre egy privát DNS-zónát a priviate Azure Container Registry-tartományhoz. A későbbi lépések során DNS-rekordokat hoz létre a beállításjegyzék-tartományhoz ezen a DNS-zónán belül.
+Hozzon létre egy privát DNS-zónát a priviátus Azure-tároló beállításjegyzék-tartományához. A későbbi lépésekben dns-rekordokat hozhat létre a rendszerleíró tartományhoz ebben a DNS-zónában.
 
-Ha privát zónát szeretne használni az Azure Container Registry alapértelmezett DNS-feloldásának felülbírálásához, akkor a zónának **privatelink.azurecr.IO**nevűnek kell lennie. A privát zóna létrehozásához futtassa a következő az [Network Private-DNS Zone Create][az-network-private-dns-zone-create] parancsot:
+Ha privát zónát szeretne használni az Azure-tároló beállításjegyzékének alapértelmezett DNS-feloldásának felülbírálásához, a zónát **privatelink.azurecr.io**kell nevezni. Futtassa a következő [az hálózati private-dns zone create][az-network-private-dns-zone-create] parancsot a privát zóna létrehozásához:
 
 ```azurecli
 az network private-dns zone create \
@@ -155,7 +155,7 @@ az network private-dns zone create \
 
 ### <a name="create-an-association-link"></a>Társítási hivatkozás létrehozása
 
-Az az [Network Private-DNS link vnet Create][az-network-private-dns-link-vnet-create] paranccsal társíthatja a saját zónáját a virtuális hálózattal. Ez a példa egy *myDNSLink*nevű hivatkozást hoz létre.
+[Futtassa az az-hálózat private-dns kapcsolat vnet létrehozása][az-network-private-dns-link-vnet-create] társítani a privát zóna a virtuális hálózathoz. Ez a példa létrehoz egy *myDNSLink*nevű linket.
 
 ```azurecli
 az network private-dns link vnet create \
@@ -166,18 +166,18 @@ az network private-dns link vnet create \
   --registration-enabled false
 ```
 
-### <a name="create-a-private-registry-endpoint"></a>Privát beállításjegyzékbeli végpont létrehozása
+### <a name="create-a-private-registry-endpoint"></a>Saját rendszerleíró adatbázis-végpont létrehozása
 
-Ebben a szakaszban a beállításjegyzék saját végpontját hozza létre a virtuális hálózaton. Először szerezze be a beállításjegyzék erőforrás-AZONOSÍTÓját:
+Ebben a szakaszban hozza létre a rendszerleíró adatbázis privát végpontját a virtuális hálózatban. Először a rendszerleíró adatbázis erőforrás-azonosítóját kapja meg:
 
 ```azurecli
 registryID=$(az acr show --name $registryName \
   --query 'id' --output tsv)
 ```
 
-Futtassa az az [Network Private-Endpoint Create][az-network-private-endpoint-create] parancsot a beállításjegyzék privát végpontjának létrehozásához.
+Futtassa az [az hálózati magánvégpont létrehozási][az-network-private-endpoint-create] parancsát a rendszerleíró adatbázis saját végpontjának létrehozásához.
 
-A következő példa létrehozza a végpont *myPrivateEndpoint* és a szolgáltatáshoz kapcsolódó *myConnection*. A végponthoz tartozó tároló beállításjegyzék-erőforrásának megadásához pass `--group-ids registry`:
+A következő példa létrehozza a *myPrivateEndpoint* és a szolgáltatáskapcsolat *myConnection végpontját.* A végpont tárolóbeállítási erőforrásának megadásához adja át a következőt: `--group-ids registry`
 
 ```azurecli
 az network private-endpoint create \
@@ -190,9 +190,9 @@ az network private-endpoint create \
     --connection-name myConnection
 ```
 
-### <a name="get-private-ip-addresses"></a>Magánhálózati IP-címek lekérése
+### <a name="get-private-ip-addresses"></a>Privát IP-címek begyűjtése
 
-Futtassa az [az Network Private-Endpoint show][az-network-private-endpoint-show] parancsot a hálózati adapter azonosító végpontjának lekérdezéséhez:
+[Futtassa az az hálózati magánvégpont-megjelenítést][az-network-private-endpoint-show] a hálózati csatoló azonosítójának végpontjának lekérdezéséhez:
 
 ```azurecli
 networkInterfaceID=$(az network private-endpoint show \
@@ -202,7 +202,7 @@ networkInterfaceID=$(az network private-endpoint show \
   --output tsv)
 ```
 
-A hálózati adapterhez társított két magánhálózati IP-cím a tároló-beállításjegyzékhez: egy a beállításjegyzékhez, egy pedig a beállításjegyzék adatvégpontja. A tároló-beállításjegyzék és a beállításjegyzék adatvégpontjának magánhálózati IP-címeinek lekéréséhez futtassa a következőt az [Resource show][az-resource-show] paranccsal:
+A hálózati adapterhez két magánhálózati IP-cím tartozik a tárolóbeállításjegyzékhez: az egyik a rendszerleíró adatbázishoz, a másik pedig a rendszerleíró adatbázis adatvégpontja. Futtassa a következő [az-erőforrás show][az-resource-show] parancsokat a tárolóbeállítás-jegyzék és a rendszerleíró adatbázis adatvégpontjának privát IP-címeinek lekérni:
 
 ```azurecli
 privateIP=$(az resource show \
@@ -219,9 +219,9 @@ dataEndpointPrivateIP=$(az resource show \
 
 ### <a name="create-dns-records-in-the-private-zone"></a>DNS-rekordok létrehozása a privát zónában
 
-A következő parancsok DNS-rekordokat hoznak létre a saját zónában a beállításjegyzék-végponthoz és az adatvégponthoz. Ha például egy *myregistry* nevű beállításjegyzék található a *westeurope* régióban, a végpontok nevei `myregistry.azurecr.io` és `myregistry.westeurope.data.azurecr.io`. 
+A következő parancsok DNS-rekordokat hoznak létre a rendszerleíró adatbázis végpontjának és adatvégpontjának privát zónájában. Ha például a *westeurope* régióban van egy *myregistry* nevű `myregistry.azurecr.io` rendszerleíró `myregistry.westeurope.data.azurecr.io`adatbázis, a végpontnevek a és a . 
 
-Először futtassa az az [Network Private-DNS Record-set a Create (létrehozás][az-network-private-dns-record-set-a-create] ) lehetőséget, hogy üres rekordhalmazt hozzon létre a beállításjegyzék-végpont és az adatvégpont számára:
+Először futtassa [az az hálózat private-dns rekord-set a create][az-network-private-dns-record-set-a-create] létrehozni üres A rekordhalmazok a rendszerleíró adatbázis végpont és az adatok végpont:
 
 ```azurecli
 az network private-dns record-set a create \
@@ -236,7 +236,7 @@ az network private-dns record-set a create \
   --resource-group $resourceGroup
 ```
 
-Futtassa az az [Network Private-DNS Record-set a Add-Record][az-network-private-dns-record-set-a-add-record] parancsot a beállításjegyzék-végpont és az adatvégpont rekordjainak létrehozásához:
+Futtassa az [az hálózat private-dns rekord-set egy add-record][az-network-private-dns-record-set-a-add-record] parancsot, hogy megteremtse az A rekordokat a rendszerleíró adatbázis végpontja és az adatok végpontja:
 
 ```azurecli
 az network private-dns record-set a add-record \
@@ -253,74 +253,74 @@ az network private-dns record-set a add-record \
   --ipv4-address $dataEndpointPrivateIP
 ```
 
-A magánhálózati kapcsolat már konfigurálva van, és használatra kész.
+A privát kapcsolat most konfigurálva van, és készen áll a használatra.
 
-## <a name="set-up-private-link---portal"></a>Privát hivatkozás beállítása – portál
+## <a name="set-up-private-link---portal"></a>Privát kapcsolat beállítása - portál
 
-A következő lépések feltételezik, hogy már rendelkezik virtuális hálózattal és alhálózattal a teszteléshez. [Létrehozhat egy új virtuális hálózatot és alhálózatot](../virtual-network/quick-create-portal.md)is.
+A következő lépések feltételezik, hogy már rendelkezik egy virtuális hálózat és alhálózat beállítása a virtuális gép tesztelésre. [Új virtuális hálózatot és alhálózatot](../virtual-network/quick-create-portal.md)is létrehozhat.
 
 ### <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
 
-1. A portálon navigáljon a tároló-beállításjegyzékhez.
-1. A **Beállítások**területen válassza a **privát végponti kapcsolatok (előzetes verzió)** lehetőséget.
-1. Válassza a **+ privát végpont**lehetőséget.
-1. Az **alapvető beállítások** lapon adja meg vagy válassza ki a következő adatokat:
+1. A portálon keresse meg a tároló beállításjegyzékét.
+1. A **Beállítások csoportban**válassza **a Privát végpontkapcsolatok (előnézet) lehetőséget.**
+1. Válassza **a + Privát végpont lehetőséget.**
+1. Az **Alapok lapon** adja meg vagy jelölje ki a következő adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | **Projekt részletei** | |
-    | Előfizetést | Válassza ki előfizetését. |
-    | Erőforráscsoport | Adja meg egy meglévő csoport nevét, vagy hozzon létre egy újat.|
+    | Előfizetés | Válassza ki előfizetését. |
+    | Erőforráscsoport | Írja be egy meglévő csoport nevét, vagy hozzon létre egy újat.|
     | **Példány részletei** |  |
-    | Name (Név) | Adjon meg egy egyedi nevet. |
+    | Név | Adjon meg egy egyedi nevet. |
     |Régió|Válasszon régiót.|
     |||
-5. Válassza a **Tovább: erőforrás**elemet.
+5. Válassza a **Tovább: Erőforrás**lehetőséget.
 6. Adja meg vagy válassza ki a következő adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    |Kapcsolati módszer  | Válassza a **Kapcsolódás egy Azure-erőforráshoz a címtárban**lehetőséget.|
-    | Előfizetést| Válassza ki előfizetését. |
-    | Erőforrás típusa | Válassza a **Microsoft. ContainerRegistry/nyilvántartások**lehetőséget. |
-    | Erőforrás |Válassza ki a beállításjegyzék nevét|
-    |Cél alerőforrás |**Beállításjegyzék** kiválasztása|
+    |Kapcsolati módszer  | Válassza **a Csatlakozás egy Azure-erőforráshoz a címtárban**lehetőséget.|
+    | Előfizetés| Válassza ki előfizetését. |
+    | Erőforrás típusa | Válassza a **Microsoft.ContainerRegistry/registryregistry lehetőséget.** |
+    | Erőforrás |A rendszerleíró adatbázis nevének kiválasztása|
+    |Cél alerőforrás |**Rendszerleíró adatbázis** kiválasztása|
     |||
-7. Válassza a **Tovább: konfigurálás**lehetőséget.
-8. Adja meg vagy válassza ki az adatokat:
+7. Válassza a **Tovább lehetőséget: Konfiguráció**.
+8. Adja meg vagy jelölje ki az adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     |**Hálózat**| |
-    | Virtuális hálózat| Válassza ki azt a virtuális hálózatot, amelyben a virtuális gép telepítve van, például *myDockerVMVNET*. |
-    | Alhálózat | Válasszon ki egy alhálózatot, például a *myDockerVMSubnet* , ahol a virtuális gép telepítve van. |
-    |**saját DNS integráció**||
-    |Integrálás saját DNS-zónával |Válassza az **Igen** lehetőséget. |
-    |saját DNS zóna |Select *(új) privatelink.azurecr.IO* |
+    | Virtuális hálózat| Válassza ki azt a virtuális hálózatot, amelyben a virtuális gép telepítve van, például *a myDockerVMVNET.* |
+    | Alhálózat | Válasszon ki egy alhálózatot, például *a myDockerVMSubnet,* ahol a virtuális gép telepítve van. |
+    |**Privát DNS-integráció**||
+    |Integrálás privát DNS-zónával |Válassza az **Igen** lehetőséget. |
+    |Privát DNS-zóna |Válassza *ki az (Új) privatelink.azurecr.io* |
     |||
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
-2. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. A véleményezés + **létrehozás** lap, ahol az Azure érvényesíti a konfigurációt. 
+2. Amikor megjelenik az **Érvényesítési átadott** üzenet, válassza a **Létrehozás gombot.**
 
-A magánhálózati végpont létrehozása után a magánhálózati zónában a DNS-beállítások a végpont **Áttekintés** lapján jelennek meg.
+A privát végpont létrehozása után a privát zónában lévő DNS-beállítások megjelennek a végpont **áttekintése** lapon.
 
 ![Végpont DNS-beállításai](./media/container-registry-private-link/private-endpoint-overview.png)
 
-A magánhálózati kapcsolat konfigurálva van, és használatra kész.
+A privát kapcsolat most már konfigurálva van, és használatra kész.
 
-## <a name="validate-private-link-connection"></a>Privát kapcsolati kapcsolat ellenőrzése
+## <a name="validate-private-link-connection"></a>Privát kapcsolat ellenőrzése
 
-Győződjön meg arról, hogy a privát végpont alhálózatán belüli erőforrások magánhálózati IP-címmel csatlakoznak a beállításjegyzékhez, és a saját DNS-zónák megfelelő integrációja szükséges.
+Ellenőrizze, hogy a privát végpont alhálózatán belüli erőforrások privát IP-címen keresztül kapcsolódnak-e a rendszerleíró adatbázishoz, és a megfelelő privát DNS-zóna integrációval rendelkeznek.You should validate that the resources within the subnet of the private endpoint connect to your registry over a private IP address, and have the correct private DNS zone integration.
 
-A magánhálózati kapcsolat kapcsolatának ellenőrzéséhez SSH-kapcsolatot kell létesítenie a virtuális hálózatban beállított virtuális géppel.
+A privát kapcsolat ellenőrzéséhez az SSH a virtuális hálózatban beállított virtuális géphez.
 
-Futtassa a `nslookup` parancsot a beállításjegyzék IP-címének feloldásához a privát hivatkozáson keresztül:
+Futtassa a `nslookup` parancsot a rendszerleíró adatbázis IP-címének feloldásához a privát hivatkozáson keresztül:
 
 ```bash
 nslookup $registryName.azurecr.io
 ```
 
-Például a kimenet a beállításjegyzék IP-címét jeleníti meg az alhálózat címterület:
+Példa kimenet mutatja a rendszerleíró adatbázis IP-címét a címtérben az alhálózat:
 
 ```console
 [...]
@@ -329,7 +329,7 @@ Name:   myregistry.privatelink.azurecr.io
 Address: 10.0.0.6
 ```
 
-Hasonlítsa össze ezt az eredményt azzal a nyilvános IP-címmel, `nslookup` kimenetében ugyanazon a beállításjegyzéken keresztül egy nyilvános végponton:
+Hasonlítsa össze ezt az `nslookup` eredményt az ugyanazon beállításjegyzék kimenetében lévő nyilvános IP-címmel egy nyilvános végponton:
 
 ```console
 [...]
@@ -338,49 +338,49 @@ Name:   myregistry.westeurope.cloudapp.azure.com
 Address: 40.78.103.41
 ```
 
-### <a name="registry-operations-over-private-link"></a>Beállításjegyzékbeli műveletek privát kapcsolaton keresztül
+### <a name="registry-operations-over-private-link"></a>Beállításjegyzék-műveletek magánkapcsolaton keresztül
 
-Győződjön meg arról is, hogy az alhálózaton található virtuális gépről beállításjegyzék-műveleteket is végrehajthat. Létesítsen SSH-kapcsolatokat a virtuális géppel, és futtassa az [ACR login][az-acr-login] parancsot a beállításjegyzékbe való bejelentkezéshez. A virtuális gép konfigurációjától függően előfordulhat, hogy a következő parancsokat kell előadnia `sudo`.
+Ellenőrizze azt is, hogy az alhálózat ban lévő virtuális gépről képes-e beállításjegyzék-műveleteket végrehajtani. SSH-kapcsolatot létesítsen a virtuális géppel, és futtassa [az acr bejelentkezést][az-acr-login] a rendszerleíró adatbázisba való bejelentkezéshez. A virtuális gép konfigurációjától függően előfordulhat, hogy `sudo`előtaggal kell előtagoznia a következő parancsokat.
 
 ```bash
 az acr login --name $registryName
 ```
 
-A beállításjegyzékből olyan rendszerleíróadatbázis-műveleteket hajthat végre, mint például a `docker pull`. Cserélje le a `hello-world:v1`t a beállításjegyzék megfelelő képére és címkéjére, a regisztrációs kiszolgáló neve (az összes kisbetűs) előtaggal.
+Olyan beállításjegyzék-műveletekvégrehajtása, amelyekkel `docker pull` mintalemezképet szeretne levenni a beállításjegyzékből. Cserélje `hello-world:v1` le a rendszerleíró adatbázisnak megfelelő, a rendszerleíró adatbázis bejelentkezési kiszolgálójának (minden kisbetűs) előtaggal ellátott lemezképre és címkére:
 
 ```bash
 docker pull myregistry.azurecr.io/hello-world:v1
 ``` 
 
-A Docker sikeresen lekéri a rendszerképet a virtuális gépre.
+A Docker sikeresen lekéri a lemezképet a virtuális gépre.
 
-## <a name="manage-private-endpoint-connections"></a>Magánhálózati végpontok kapcsolatainak kezelése
+## <a name="manage-private-endpoint-connections"></a>Privát végpontkapcsolatok kezelése
 
-Felügyelheti a beállításjegyzék saját végpont-kapcsolatait a Azure Portal használatával, vagy az az [ACR Private-Endpoint-Connection][az-acr-private-endpoint-connection] paranccsal elérhető parancsok használatával. A műveletek közé tartozik a beállításjegyzék privát végpont-kapcsolatainak jóváhagyása, törlése, listázása, elutasítása vagy megjelenítése.
+A beállításjegyzék privát végpontkapcsolatainak kezelése az Azure Portalon keresztül, vagy az [az acr private-endpoint-connection][az-acr-private-endpoint-connection] parancscsoport parancsainak használatával. A műveletek közé tartozik a rendszerleíró adatbázis privát végpontkapcsolatainak jóváhagyása, törlése, listázása, elutasítása vagy megjelenítése.
 
-Ha például egy beállításjegyzék privát végpont-kapcsolatait szeretné kilistázni, futtassa az az [ACR Private-Endpoint-Connection List][az-acr-private-endpoint-connection-list] parancsot. Például:
+Például egy beállításjegyzék privát végpontkapcsolatainak listázásához futtassa az [az acr private-endpoint-connection list][az-acr-private-endpoint-connection-list] parancsot. Példa:
 
 ```azurecli
 az acr private-endpoint-connection list \
   --registry-name $registryName 
 ```
 
-Ha a jelen cikkben ismertetett lépésekkel állít be egy privát végponti kapcsolatot, a beállításjegyzék automatikusan fogadja a RBAC-engedélyekkel rendelkező ügyfelek és szolgáltatások kapcsolatait a beállításjegyzékben. Beállíthatja a végpontot a kapcsolatok manuális jóváhagyásának megköveteléséhez. További információ a privát végpontok kapcsolatainak jóváhagyásáról és elutasításáról: [privát végponti kapcsolat kezelése](../private-link/manage-private-endpoint.md).
+Ha a cikkben ismertetett lépésekkel állít be magánhálózati végponti kapcsolatot, a beállításjegyzék automatikusan elfogadja az RBAC-engedéllyel rendelkező ügyfelek és szolgáltatások kapcsolatait. Beállíthatja, hogy a végpont a kapcsolatok manuális jóváhagyását igényelje. A magánhálózati végpontkapcsolatok jóváhagyásáról és elutasításáról a [Privát végpontkapcsolat kezelése](../private-link/manage-private-endpoint.md)című témakörben talál további információt.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha az összes Azure-erőforrást ugyanabban az erőforráscsoporthoz hozta létre, és már nincs rájuk szükség, akkor az erőforrásokat egyetlen [az Group delete](/cli/azure/group) paranccsal törölheti:
+Ha az összes Azure-erőforrást ugyanabban az erőforráscsoportban hozta létre, és már nincs rájuk szüksége, szükség esetén törölheti az erőforrásokat egyetlen [az csoport törlési](/cli/azure/group) parancsával:
 
 ```azurecli
 az group delete --name $resourceGroup
 ```
 
-A portálon található erőforrások törléséhez navigáljon az erőforráscsoporthoz. Miután betöltötte az erőforráscsoportot, kattintson az **erőforráscsoport törlése** elemre az erőforráscsoport és az ott tárolt erőforrások eltávolításához.
+Az erőforrások karbantartásához a portálon keresse meg az erőforráscsoportot. Az erőforráscsoport betöltése után kattintson az **Erőforráscsoport törlése gombra** az erőforráscsoport és az ott tárolt erőforrások eltávolításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Ha többet szeretne megtudni a privát hivatkozásokról, tekintse meg az [Azure Private link](../private-link/private-link-overview.md) dokumentációját.
-* A privát hivatkozás helyett a beállításjegyzék-hozzáférés korlátozására szolgáló hálózati hozzáférési szabályok állíthatók be. További információ: Azure [Container Registry-hozzáférés korlátozása Azure-beli virtuális hálózati vagy tűzfalszabályok használatával](container-registry-vnet.md).
+* Ha többet szeretne megtudni a Privát hivatkozásról, tekintse meg az [Azure Private Link](../private-link/private-link-overview.md) dokumentációját.
+* A magánhálózati kapcsolat alternatívája a hálózati hozzáférési szabályok beállítása a rendszerleíró adatbázis hoz való hozzáférés korlátozására. További információ: [Hozzáférés korlátozása egy Azure-tároló beállításjegyzékéhez egy Azure virtuális hálózati vagy tűzfalszabályok használatával.](container-registry-vnet.md)
 
 <!-- LINKS - external -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms
@@ -409,10 +409,10 @@ A portálon található erőforrások törléséhez navigáljon az erőforráscs
 [az-network-vnet-list]: /cli/azure/network/vnet/#az-network-vnet-list
 [az-network-private-endpoint-create]: /cli/azure/network/private-endpoint#az-network-private-endpoint-create
 [az-network-private-endpoint-show]: /cli/azure/network/private-endpoint#az-network-private-endpoint-show
-[az-network-private-dns-zone-create]: /cli/azure/network/private-dns-zone/create#az-network-private-dns-zone-create
-[az-network-private-dns-link-vnet-create]: /cli/azure/network/private-dns-link/vnet#az-network-private-dns-link-vnet-create
-[az-network-private-dns-record-set-a-create]: /cli/azure/network/private-dns-record/set/a#az-network-private-dns-record-set-a-create
-[az-network-private-dns-record-set-a-add-record]: /cli/azure/network/private-dns-record/set/a#az-network-private-dns-record-set-a-add-record
+[az-network-private-dns-zone-create]: /cli/azure/network/private-dns/zone#az-network-private-dns-zone-create
+[az-network-private-dns-link-vnet-create]: /cli/azure/network/private-dns/link/vnet#az-network-private-dns-link-vnet-create
+[az-network-private-dns-record-set-a-create]: /cli/azure/network/private-dns/record-set/a#az-network-private-dns-record-set-a-create
+[az-network-private-dns-record-set-a-add-record]: /cli/azure/network/private-dns/record-set/a#az-network-private-dns-record-set-a-add-record
 [az-resource-show]: /cli/azure/resource#az-resource-show
 [quickstart-portal]: container-registry-get-started-portal.md
 [quickstart-cli]: container-registry-get-started-azure-cli.md

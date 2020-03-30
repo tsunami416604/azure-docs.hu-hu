@@ -1,7 +1,7 @@
 ---
-title: 'Sorok hozzáadása: modul-hivatkozás'
+title: 'Sorok hozzáadása: Modulhivatkozás'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan összefűzheti a két adathalmazt a Azure Machine Learning sorok hozzáadása moduljának használatával.
+description: Ismerje meg, hogyan használhatja a Sorok hozzáadása modult az Azure Machine Learningben két adatkészlet összefűzéséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,37 +9,37 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 7787a765bf48adc15f4675c6c03ff3d04fa388c6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: cd9b5f8f182c4deab746d2c41e516a6ac23fb7aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918495"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477731"
 ---
 # <a name="add-rows-module"></a>Sorok hozzáadása modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
 
-Ezzel a modullal összefűzheti a két adatkészletet. Az Összefűzés során a rendszer hozzáadja a második adatkészlet sorait az első adatkészlet végéhez.  
+Ezzel a modullal két adatkészletet fűzhet össze. Összefűzéskor a második adatkészlet sorai hozzáadódnak az első adatkészlet végéhez.  
   
-A sorok összefűzése olyan helyzetekben hasznos, mint például a következők:  
+A sorok összefűzése olyan esetekben hasznos, mint például a következő:  
   
-+ Létrehozta az értékelési statisztikák sorozatát, és egy táblázatba szeretné egyesíteni a könnyebb jelentéskészítés érdekében.  
++ Számos értékelési statisztikát hozott létre, és a könnyebb jelentéskészítés érdekében egyetlen táblába szeretné egyesíteni őket.  
   
-+ Különböző adatkészletekkel dolgozik, és a végső adatkészlet létrehozásához egyesíteni kívánja az adatkészleteket.  
++ Különböző adatkészletekkel dolgozik, és az adatkészleteket végleges adatkészlet létrehozásához kombinálni szeretné.  
 
-## <a name="how-to-use-add-rows"></a>A sorok hozzáadása  
+## <a name="how-to-use-add-rows"></a>Sorok hozzáadása  
 
-Két adatkészletből származó sorok összefűzéséhez a soroknak pontosan ugyanazzal a sémával kell rendelkezniük. Ez azt jelenti, hogy ugyanaz a számú oszlop és ugyanolyan típusú adattípus szerepel az oszlopokban.
+Két adatkészlet sorainak összefűzéséhez a soroknak pontosan ugyanazzal a sémával kell rendelkezniük. Ez azt jelenti, hogy ugyanannyi oszlop és azonos típusú adat jelenik meg az oszlopokban.
 
-1.  Húzza a **sorok hozzáadása** modult a folyamatba, és az **adatátalakítás**alatt találja.
+1.  Húzza a **Sorok hozzáadása** modult a folyamatba, Az **Adatátalakítás**területen található.
 
-2. Az adatkészletek csatlakoztatása a két bemeneti porthoz. A hozzáfűzni kívánt adatkészletet a második (jobb oldali) porthoz kell csatlakoztatni. 
+2. Csatlakoztassa az adatkészleteket a két bemeneti porthoz. A hozzáfűzött adatkészletet a második (jobb oldali) porthoz kell csatlakoztatni. 
   
-3.  A folyamat futtatása. A kimeneti adatkészlet sorainak számának egyenlőnek kell lennie a bemeneti adatkészletek sorainak összegével.
+3.  Küldje el a folyamatot. A kimeneti adatkészlet sorainak számának meg kell egyeznie a két bemeneti adatkészlet sorainak összegével.
 
-    Ha ugyanazt az adatkészletet adja hozzá a **sorok hozzáadása** modul mindkét bemenetéhez, a rendszer duplikálja az adatkészletet. 
+    Ha ugyanazt az adatkészletet adja hozzá a **Sorok hozzáadása** modul mindkét bemenetéhez, az adatkészlet duplikálódik. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

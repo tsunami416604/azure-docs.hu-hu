@@ -1,6 +1,6 @@
 ---
-title: SMB-kötet létrehozása a Azure NetApp Fileshoz | Microsoft Docs
-description: Leírja, hogyan lehet SMB-kötetet létrehozni a Azure NetApp Fileshoz.
+title: SMB-kötet létrehozása az Azure NetApp-fájlokhoz | Microsoft dokumentumok
+description: Bemutatja, hogyan hozhat létre SMB-kötetet az Azure NetApp-fájlokhoz.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,40 +12,40 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 03/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 7affd408ce2471f34a8362ba32101b639aafc514
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b2000c3fd3d64793f797e997d8f3c10eaed5d7aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586605"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409589"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
-Azure NetApp Files támogatja az NFS-és SMBv3-köteteket. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. Ez a cikk bemutatja, hogyan hozhat létre SMBv3-köteteket. Ha NFS-kötetet szeretne létrehozni, tekintse [meg az NFS-kötet létrehozása Azure NetApp Fileshoz](azure-netapp-files-create-volumes.md)című témakört. 
+Az Azure NetApp Files támogatja az NFS- és SMBv3-köteteket. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. Ez a cikk bemutatja, hogyan hozhat létre Egy SMBv3 kötet. Ha NFS-kötetet szeretne létrehozni, olvassa [el az NFS-kötet létrehozása az Azure NetApp-fájlokhoz című témakört.](azure-netapp-files-create-volumes.md) 
 
 ## <a name="before-you-begin"></a>Előkészületek 
 A cikk előfeltételeinek részeként korábban már be kellett állítania egy kapacitáskészletet.   
-[Kapacitási készlet beállítása](azure-netapp-files-set-up-capacity-pool.md)   
-Az alhálózatot delegálni kell Azure NetApp Files.  
-[Alhálózat delegálása Azure NetApp Filesre](azure-netapp-files-delegate-subnet.md)
+[Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)   
+Az alhálózatot delegálni kell az Azure NetApp-fájlokszámára.  
+[Alhálózat delegálása az Azure NetApp Fileshoz](azure-netapp-files-delegate-subnet.md)
 
-## <a name="requirements-for-active-directory-connections"></a>Active Directory kapcsolatokra vonatkozó követelmények
+## <a name="requirements-for-active-directory-connections"></a>Az Active Directory-kapcsolatokra vonatkozó követelmények
 
- SMB-kötet létrehozása előtt létre kell hoznia Active Directory kapcsolatokat. A Active Directory kapcsolatokra vonatkozó követelmények a következők: 
+ SMB-kötet létrehozása előtt létre kell hoznia az Active Directory-kapcsolatokat. Az Active Directory-kapcsolatok ra vonatkozó követelmények a következők: 
 
-* A használt rendszergazdai fióknak képesnek kell lennie számítógépfiókok létrehozására a megadható szervezeti egység (OU) elérési úton.  
+* A használt rendszergazdai fióknak képesnek kell lennie a gépfiókok létrehozására a szervezeti egység elérési útján, amelyet meg fog adni.  
 
-* A megfelelő portokat meg kell nyitni a megfelelő Windows Active Directory (AD) kiszolgálón.  
+* A megfelelő portoknak nyitva kell lenniük a megfelelő Windows Active Directory (AD) kiszolgálón.  
     A szükséges portok a következők: 
 
-    |     Szolgáltatás           |     Port     |     Protokoll     |
+    |     Szolgáltatás           |     Port     |     Protocol (Protokoll)     |
     |-----------------------|--------------|------------------|
-    |    AD Web Services    |    9389      |    TCP           |
+    |    AD webszolgáltatások    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    N/A       |    Visszhangos válasz    |
+    |    ICMPv4             |    N/A       |    Visszhang válasz    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -56,86 +56,129 @@ Az alhálózatot delegálni kell Azure NetApp Files.
     |    NetBIOS-név       |    138       |    UDP           |
     |    SAM/LSA            |    445       |    TCP           |
     |    SAM/LSA            |    445       |    UDP           |
-    |    W32Time            |    123       |    UDP           |
+    |    w32idő            |    123       |    UDP           |
 
-* A célként megadott Active Directory tartományi szolgáltatások helyének topológiájának meg kell felelnie az ajánlott eljárásoknak, különösen az Azure-VNet, ahol a Azure NetApp Files telepítve van.  
+* A célzott Active Directory tartományi szolgáltatások helytopológiájának be kell tartania az ajánlott eljárásokat, különösen az Azure Virtuális hálózatot, ahol az Azure NetApp-fájlok telepítve van.  
 
-    Egy új vagy meglévő Active Directory-helyhez hozzá kell adni a Azure NetApp Files központilag telepített virtuális hálózat címterület (ahol a tartományvezérlő elérhető a Azure NetApp Files-ben). 
+    Az Azure NetApp-fájlokat kiszolgáló virtuális hálózat címterét hozzá kell adni egy új vagy meglévő Active Directory-helyhez (ahol az Azure NetApp Files által elérhető tartományvezérlő érhető el). 
 
-* A megadott DNS-kiszolgálóknak elérhetőknek kell lenniük a Azure NetApp Files [delegált alhálózatán](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) .  
+* A megadott DNS-kiszolgálóknak elérhetőnek kell lenniük az Azure NetApp-fájlok [delegált alhálózatáról.](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)  
 
-    Lásd: [Azure NetApp Files hálózati tervezéssel kapcsolatos irányelvek](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) a támogatott hálózati topológiák esetében.
+    A támogatott hálózati topológiákhoz [lásd: Az Azure NetApp Files hálózattervezés irányelvei.](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)
 
-    A hálózati biztonsági csoportoknak (NSG) és a tűzfalaknak megfelelően konfigurált szabályokkal kell rendelkezniük a Active Directory és a DNS forgalmi kéréseinek engedélyezéséhez. 
+    A hálózati biztonsági csoportoknak (NSG-knek) és tűzfalaknak megfelelően konfigurált szabályokkal kell rendelkezniük az Active Directory és a DNS-forgalom kéréseinek engedélyezéséhez. 
 
-* A Azure NetApp Files delegált alhálózatnak képesnek kell lennie arra, hogy elérje a tartomány összes Active Directory tartományi szolgáltatások (Hozzáadás) tartományvezérlőjét, beleértve az összes helyi és távoli tartományvezérlőt is. Ellenkező esetben a szolgáltatás megszakítása is bekövetkezhet.  
+* Az Azure NetApp-fájlok delegált alhálózatának képesnek kell lennie a tartomány összes Active Directory tartományi szolgáltatás (ADDS) tartományvezérlőjének elérésére, beleértve az összes helyi és távoli tartományvezérlőt is. Ellenkező esetben a szolgáltatás megszakadhat.  
 
-    Ha olyan tartományvezérlővel rendelkezik, amely nem érhető el a Azure NetApp Files delegált alhálózaton keresztül, megadhat egy Active Directory helyet az Active Directory-kapcsolat létrehozásakor.  Azure NetApp Files csak a tartományvezérlővel kell kommunikálnia azon a helyen, ahol a Azure NetApp Files delegált alhálózati címtartomány található.
+    Ha olyan tartományvezérlőivel rendelkezik, amelyek et az Azure NetApp Files delegált alhálózata nem érhető el, az Active Directory-kapcsolat létrehozásakor megadhat egy Active Directory-helyet.  Az Azure NetApp Files-nak csak azon a helyen lévő tartományvezérlőkkel kell kommunikálnia, ahol az Azure NetApp Files delegált alhálózati címterülete található.
 
-    Lásd: [a hely topológiájának megtervezése az](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) ad-helyekre és-szolgáltatásokra vonatkozóan. 
+    Lásd: [A webhelytopológia tervezése az](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) AD-webhelyekről és -szolgáltatásokról. 
     
-További információ a további AD-információkról: Azure NetApp Files [SMB-gyakori kérdések](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) . 
+Tekintse meg az Azure NetApp Files [SMB gyakori kérdéseket](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) a további AD-információkról. 
 
-## <a name="create-an-active-directory-connection"></a>Active Directory-kapcsolatok létrehozása
+## <a name="decide-which-domain-services-to-use"></a>A használni használandó tartományi szolgáltatások eldöntése 
 
-1. A NetApp-fiókból kattintson **Active Directory kapcsolatok**elemre, majd kattintson a **Csatlakozás**elemre.  
+Az Azure NetApp-fájlok az [Active Directory tartományi szolgáltatások](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (ADDS) és az Azure Active Directory tartományi szolgáltatások (AADDS) az AD-kapcsolatok.  Az AD-kapcsolat létrehozása előtt el kell döntenie, hogy az ADDS vagy az AADDS lehetőséget használja-e.  
 
-    ![Active Directory kapcsolatok](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
+További információ: [Összehasonlítása saját felügyelt Active Directory tartományi szolgáltatások, Az Azure Active Directory és a felügyelt Azure Active Directory tartományi szolgáltatások](https://docs.microsoft.com/azure/active-directory-domain-services/compare-identity-solutions). 
 
-2. A csatlakozás Active Directory ablakban adja meg a következő információkat:
+### <a name="active-directory-domain-services"></a>Active Directory tartományi szolgáltatások
+
+Használhatja a kívánt [Active Directory helyek és szolgáltatások](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) hatókörét az Azure NetApp-fájlokhoz. Ez a beállítás lehetővé teszi az [Azure NetApp-fájlok által elérhető](azure-netapp-files-network-topologies.md)olvasási és írási műveleteket az Active Directory tartományi szolgáltatások (ADDS) tartományvezérlőinek. Azt is megakadályozza, hogy a szolgáltatás olyan tartományvezérlőkkel kommunikáljon, amelyek nem szerepelnek a megadott Active Directory – helyek és szolgáltatások helyen. 
+
+Ha az ADDS használatakor meg szeretné találni a webhely nevét, lépjen kapcsolatba a szervezet Active Directory tartományi szolgáltatásokért felelős felügyeleti csoportjával. Az alábbi példa az Active Directory – helyek és szolgáltatások beépülő modult mutatja be, ahol a webhely neve megjelenik: 
+
+![Active Directory - helyek és szolgáltatások](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-and-services.png)
+
+Amikor AD-kapcsolatot konfigurál az Azure NetApp-fájlokhoz, megadhatja a webhely nevét az **AD helynév** mező hatókörében.
+
+### <a name="azure-active-directory-domain-services"></a>Azure Active Directory tartományi szolgáltatások 
+
+Az Azure Active Directory tartományi szolgáltatások (AADDS) konfigurációját és útmutatását lásd: [Azure AD tartományi szolgáltatások dokumentációja.](https://docs.microsoft.com/azure/active-directory-domain-services/)
+
+Az Azure NetApp-fájlokra további AADDS-szempontok vonatkoznak: 
+
+* Győződjön meg arról, hogy a virtuális hálózat vagy az alhálózat, ahol az AADDS telepítve van, ugyanabban az Azure-régióban található, mint az Azure NetApp Files központi telepítése.
+* Ha egy másik virtuális hálózatot használ abban a régióban, ahol az Azure NetApp-fájlok telepítve van, hozzon létre egy társviszony-létesítést a két virtuális hálózat között.
+* Az Azure NetApp `user` `resource forest` Files támogatja és írja.
+* A szinkronizálás típusának kiválasztásához `All` válassza `Scoped`a vagy a lehetőséget.   
+    Ha a `Scoped`lehetőséget választja, győződjön meg arról, hogy a megfelelő Azure AD-csoport van kiválasztva az SMB-megosztások eléréséhez.  Ha bizonytalan, használhatja a `All` szinkronizálás típusát.
+* A nagyvállalati vagy prémium termékváltozat használata szükséges. A standard termékváltozat nem támogatott.
+
+Active Directory-kapcsolat létrehozásakor vegye figyelembe az AADDS következő sajátosságait:
+
+* **Az Elsődleges DNS**, **másodlagos DNS**és **AD DNS-tartománynév** az AADDS menüben található információ.  
+DNS-kiszolgálók esetén két IP-cím lesz használva az Active Directory-kapcsolat konfigurálására. 
+* A szervezeti egység `OU=AADDC Computers`elérési **útja** .  
+Ez a beállítás a **NetApp-fiók** **Active Directory-kapcsolatok** csoportban van konfigurálva:
+
+  ![Szervezeti egység elérési útja](../media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
+
+* **A felhasználónév** hitelesítő adatai bármely felhasználó lehetnek, aki az Azure AD csoport **Azure AD DC-rendszergazdáknak**a tagja.
+
+
+## <a name="create-an-active-directory-connection"></a>Active Directory-kapcsolat létrehozása
+
+1. NetApp-fiókjában kattintson az **Active Directory-kapcsolatok**elemre, majd a **Csatlakozás gombra.**  
+
+    ![Active Directory-kapcsolatok](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
+
+2. Az Active Directoryhoz való csatlakozás ablakban adja meg a következő információkat a használni kívánt tartományi szolgáltatások alapján:  
+
+    A használt tartományi szolgáltatásokkal kapcsolatos információkért [lásd: A használni kívánt tartományi szolgáltatások eldöntése](#decide-which-domain-services-to-use). 
 
     * **Elsődleges DNS**  
-        Ez az a DNS, amely szükséges a Active Directory tartományhoz való csatlakozáshoz és az SMB-hitelesítési műveletekhez. 
-    * **Másodlagos DNS-**    
-        Ez a másodlagos DNS-kiszolgáló a redundáns Name Services biztosításához. 
-    * **AD DNS-tartománynév**  
-        Ez annak a Active Directory tartományi szolgáltatások a tartományneve, amelyhez csatlakozni szeretne.
-    * **AD-hely neve**  
-        Ennek a helynek a neve, amelyet a tartományvezérlő felderítése korlátozni fog.
+        Ez az Active Directory tartományhoz való csatlakozáshoz és az SMB hitelesítési műveletekhez szükséges DNS. 
+    * **Másodlagos DNS**   
+        Ez a másodlagos DNS-kiszolgáló a redundáns névszolgáltatások biztosítására. 
+    * **AD DNS-tartományneve**  
+        Ez annak az Active Directory tartományi szolgáltatásnak a tartományneve, amelyhez csatlakozni szeretne.
+    * **AD-webhely neve**  
+        Ez az a helynév, amelyre a tartományvezérlő felderítése korlátozott lesz.
     * **SMB-kiszolgáló (számítógépfiók) előtagja**  
-        Ez az Active Directory lévő számítógépfiók elnevezési előtagja, amelyet a Azure NetApp Files új fiókok létrehozásához fog használni.
+        Ez az Active Directory ban lévő számítógépfiók elnevezési előtagja, amelyet az Azure NetApp Files új fiókok létrehozásához fog használni.
 
-        Ha például a szervezet által a fájlkiszolgálók számára használt elnevezési szabvány a NAS-01, a NAS-02..., a NAS-045, akkor a "NAS" értéket kell megadnia az előtaghoz. 
+        Ha például a szervezet által a fájlkiszolgálókhoz használt elnevezési szabvány NAS-01, NAS-02..., NAS-045, akkor az előtaghoz "NAS" értéket kell megadnia. 
 
-        A szolgáltatás szükség szerint további számítógép-fiókokat hoz létre Active Directory.
+        A szolgáltatás szükség szerint további számítógépfiókokat hoz létre az Active Directoryban.
 
     * **Szervezeti egység elérési útja**  
-        Ez a szervezeti egység (OU) LDAP-elérési útja, ahol a rendszer az SMB-kiszolgáló számítógép-fiókjait hozza létre. Ez a szervezeti egység = második szint, OU = első szint. 
+        Ez annak a szervezeti egységnek az LDAP-elérési útja, ahol az SMB-kiszolgálószámítógép-fiókok létrejönnek. Ez azt, OU = második szint, OU = első szinten. 
 
-        Ha a Azure NetApp Filest használja a Azure Active Directory Domain Services, a szervezeti egység elérési útja `OU=AADDC Computers` a NetApp-fiókhoz tartozó Active Directory konfigurálásakor.
+        Ha Az Azure NetApp-fájlokat az Azure Active Directory tartományi `OU=AADDC Computers` szolgáltatásokkal használja, a szervezeti egység elérési útja az Active Directory konfigurálása a NetApp-fiókhoz.
         
-    * Hitelesítő adatok, beleértve a **felhasználónevet** és a **jelszót** is
+    * Hitelesítő adatok, beleértve a **felhasználónevet** és **a jelszót**
 
-    ![Csatlakozás Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![Csatlakozás az Active Directoryhoz](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
 3. Kattintson a **Csatlakozás** parancsra.  
 
-    Megjelenik a létrehozott Active Directory-kapcsolatok.
+    Megjelenik a létrehozott Active Directory-kapcsolat.
 
-    ![Active Directory kapcsolatok](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
+    ![Active Directory-kapcsolatok](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
 
 > [!NOTE] 
-> A Felhasználónév és a jelszó mezőket a Active Directory-kapcsolatok mentése után szerkesztheti. A kapcsolatok mentése után a többi érték nem szerkeszthető. Ha bármilyen más értéket módosítania kell, először törölnie kell minden telepített SMB-kötetet, majd törölnie és újra létre kell hoznia a Active Directory-kapcsolatokat.
+> Az Active Directory-kapcsolat mentése után szerkesztheti a felhasználónév- és jelszómezőket. A kapcsolat mentése után más értékek nem szerkeszthetők. Ha más értékeket is módosítania kell, először törölnie kell az üzembe helyezett SMB-köteteket, majd törölnie kell, majd újra létre kell hoznia az Active Directory-kapcsolatot.
 
 ## <a name="add-an-smb-volume"></a>SMB-kötet hozzáadása
 
-1. Kattintson a **kötetek** panelre a kapacitási készletek panelen. 
+1. Kattintson a Kapacitáskészletek panel **Kötetek** paneljének elemre. 
 
-    ![A kötetek navigálása](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
+    ![Navigálás a kötetekre](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
 2. Kattintson a **+ Kötet létrehozása** lehetőségre egy kötet létrehozásához.  
-    Megjelenik a kötet létrehozása ablak.
+    Megjelenik a Kötet létrehozása ablak.
 
-3. A kötet létrehozása ablakban kattintson a **Létrehozás** gombra, és adja meg a következő mezők adatait:   
+3. A Kötet létrehozása ablakban kattintson a **Létrehozás** és a következő mezők adatainak megadására:   
     * **Kötet neve**      
         Adja meg a létrehozni kívánt kötet nevét.   
 
-        A kötet nevének egyedinek kell lennie az egyes kapacitási készleteken belül. Legalább három karakter hosszúnak kell lennie. Bármely alfanumerikus karaktert használhat.   
+        A kötetnevének minden kapacitáskészleten belül egyedinek kell lennie. Legalább három karakter hosszúnak kell lennie. Bármilyen alfanumerikus karaktert használhat.   
 
-        A kötet neveként nem használható `default`.
+        Kötetnévként nem `default` használható.
 
-    * **Kapacitási készlet**  
-        Határozza meg azt a kapacitási készletet, amelyben létre szeretné hozni a kötetet.
+    * **Kapacitáskészlet**  
+        Adja meg azt a kapacitáskészletet, amelyhez a kötetet létre kívánja hozni.
 
     * **Kvóta**  
         Adja meg a kötet számára kiosztott logikai tárterület mennyiségét.  
@@ -143,37 +186,37 @@ További információ a további AD-információkról: Azure NetApp Files [SMB-g
         A **Rendelkezésre álló kvóta** mező a kiválasztott kapacitáskészletben fel nem használt terület mennyiségét mutatja, amely felhasználható egy új kötet létrehozása során. Az új kötet mérete nem haladhatja meg a rendelkezésre álló kvótát.  
 
     * **Virtuális hálózat**  
-        Itt adhatja meg azt az Azure-beli virtuális hálózatot (VNet), amelyről el szeretné érni a kötetet.  
+        Adja meg azt az Azure virtuális hálózatot (VNet), amelyből a kötetet el szeretné érni.  
 
-        A megadott VNet rendelkeznie kell egy Azure NetApp Files delegált alhálózattal. A Azure NetApp Files szolgáltatás csak ugyanarról a VNet érhető el, vagy egy olyan VNet, amely ugyanabban a régióban található, mint a kötet VNet-társításon keresztül. Az Express Route használatával is elérheti a kötetet a helyszíni hálózatról.   
+        A megadott virtuális hálózatnak rendelkeznie kell az Azure NetApp-fájlok delegált alhálózatával. Az Azure NetApp-fájlok szolgáltatás csak ugyanabból a virtuális hálózatból vagy egy virtuális hálózatról érhető el, amely ugyanabban a régióban van, mint a kötet a virtuális hálózat társviszony-létesítésén keresztül. A kötetet a helyszíni hálózatról is elérheti az Expressz útvonalon keresztül.   
 
     * **Alhálózat**  
-        Itt adhatja meg a kötethez használni kívánt alhálózatot.  
-        A megadott alhálózatot delegálni kell Azure NetApp Files. 
+        Adja meg a kötethez használni kívánt alhálózatot.  
+        A megadott alhálózatot delegálni kell az Azure NetApp-fájlokban. 
         
-        Ha nem delegált alhálózatot, a kötet létrehozása lapon kattintson az **új létrehozása** lehetőségre. Ezután az alhálózat létrehozása lapon adja meg az alhálózati adatokat, majd válassza a **Microsoft. NetApp/kötetek** lehetőséget az alhálózat delegálásához Azure NetApp Files számára. Minden VNet csak egy alhálózat delegálható Azure NetApp Filesra.   
+        Ha még nem delegált alhálózatot, kattintson az **Új létrehozása** gombra a Kötet létrehozása lapon. Ezután az Alhálózat létrehozása lapon adja meg az alhálózati adatokat, és válassza a **Microsoft.NetApp/kötetek** lehetőséget az Azure NetApp-fájlok alhálózatának delegálásához. Minden virtuális hálózatban csak egy alhálózat delegálható az Azure NetApp-fájlokszámára.   
  
         ![Kötet létrehozása](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Alhálózat létrehozása](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-4. Kattintson a **protokoll** elemre, és hajtsa végre a következő információkat:  
-    * Válassza az **SMB** lehetőséget a kötethez tartozó protokoll típusaként. 
-    * Válassza ki a **Active Directory** -kapcsolatokat a legördülő listából.
-    * Adja meg a megosztott kötet nevét a **megosztási névben**.
+4. Kattintson a **Protokoll** elemre, és töltse ki a következő információkat:  
+    * Válassza az **SMB** protokolltípust a kötethez. 
+    * Válassza ki az **Active Directory-kapcsolatot** a legördülő listából.
+    * Adja meg a megosztott kötet nevét a **Megosztás név ben.**
 
-    ![SMB protokoll meghatározása](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
+    ![SMB protokoll megadása](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
 
-5. A kötet részleteinek áttekintéséhez kattintson a **felülvizsgálat + létrehozás** elemre.  Ezután kattintson a **Létrehozás** gombra az SMB-kötet létrehozásához.
+5. Kattintson **a Véleményezés + Létrehozás gombra** a kötet részleteinek áttekintéséhez.  Ezután kattintson a **Létrehozás** gombra az SMB-kötet létrehozásához.
 
-    A létrehozott kötet megjelenik a kötetek lapon. 
+    A létrehozott kötet megjelenik a Kötetek lapon. 
  
     A kötetek a kapacitáskészletről öröklik az előfizetésre, az erőforráscsoportra és a helyre vonatkozó attribútumokat. A kötet üzembe helyezésének állapotát az Értesítések lapon követheti nyomon.
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
-* [Kötetek csatlakoztatása vagy leválasztása Windows vagy Linux rendszerű virtuális gépekhez](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)
 * [SMB – gyakori kérdések](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
-* [Ismerje meg az Azure-szolgáltatások virtuális hálózati integrációját](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
-* [Új Active Directory erdő telepítése az Azure CLI-vel](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)
+* [További információ az Azure-szolgáltatások virtuális hálózati integrációjáról](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
+* [Új Active Directory-erdő telepítése az Azure CLI használatával](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

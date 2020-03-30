@@ -1,29 +1,29 @@
 ---
-title: Az Azure dev Spaces-fürt konfigurálása a Helm 3 (előzetes verzió) használatához
+title: Az Azure dev spaces-fürt beállítása a Helm 3 használatára (előzetes verzió)
 services: azure-dev-spaces
 ms.date: 02/28/2020
 ms.topic: conceptual
-description: Ismerje meg, hogyan konfigurálhatja a dev Spaces-fürtöt a Helm 3 használatára
-keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 9e3f3ff90d36215c386bf1d8b8ec1edd54ebfb6a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+description: Ismerje meg, hogyan konfigurálhatja a fejlesztői tereket a Helm 3 használatára
+keywords: Azure dev spaces, fejlesztői terek, Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók
+ms.openlocfilehash: dbccb2618fd5a27805261d60e7891d920e0bc372
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78202259"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454295"
 ---
-# <a name="configure-your-azure-dev-spaces-cluster-to-use-helm-3-preview"></a>Az Azure dev Spaces-fürt konfigurálása a Helm 3 (előzetes verzió) használatához
+# <a name="configure-your-azure-dev-spaces-cluster-to-use-helm-3-preview"></a>Az Azure dev spaces-fürt beállítása a Helm 3 használatára (előzetes verzió)
 
-Az Azure dev-helyek alapértelmezés szerint a Helm 2-t használják a felhasználói szolgáltatások telepítéséhez az AK-fürtön található fejlesztői tárhelyeken. Engedélyezheti az Azure dev Spaces használatát a Helm 3 helyett, ha a felhasználói szolgáltatásokat a fejlesztői tárhelyeken telepíti. Függetlenül attól, hogy a Helm Azure dev Spaces melyik verzióját használja a felhasználói szolgáltatások telepítésére, továbbra is használhatja a 2. vagy a 3. ügyfelet a saját kiadásainak ugyanazon a fürtön való kezelésére.
+Az Azure dev spaces a Helm 2 alapértelmezés szerint a felhasználói szolgáltatások telepítése a fejlesztési terek az AKS-fürtön. Engedélyezheti, hogy az Azure Dev Spaces helm 3-at használjon a Helm 2 felhasználói szolgáltatások fejlesztési terekben való telepítése helyett. Függetlenül attól, hogy a Helm Azure Dev Spaces a felhasználói szolgáltatások telepítéséhez használt, továbbra is használhatja a Helm 2 vagy 3 ügyfél kezelheti a saját kiadások ugyanazon a fürtön.
 
-A Helm 3 engedélyezésekor az Azure dev Spaces különböző módon viselkedik, amikor a felhasználói szolgáltatásokat a következő módokon telepíti a fejlesztői tárhelyekre:
+Ha engedélyezi a Helm 3 szolgáltatást, az Azure Dev Spaces másképpen viselkedik, amikor a felhasználói szolgáltatásokat fejlesztői terekbe telepíti a következő módokon:
 
-* A kormányrúd már nincs telepítve a fürtön a *azds* névtérben.
-* A Helm tárolja a kiadási információkat abban a névtérben, ahol a szolgáltatás telepítve van a *azds* névtér helyett.
-* A Helm 3 kiadási adatai abban a névtérben maradnak, ahol a szolgáltatás a vezérlő törlése után települ.
-* Az Azure dev Spaces által kezelt bármely kiadást közvetlenül használhatja a-fürtön a Helm 3 ügyféllel.
+* A talajművelés immár nincs telepítve a fürtre az *azds* névtérben.
+* A Helm a kiadási információkat abban a névtérben tárolja, ahol a szolgáltatás telepítve van az *azds* névtér helyett.
+* A Helm 3 kiadási információi abban a névtérben maradnak, ahol a szolgáltatás telepítve van a vezérlő törlése után.
+* Közvetlenül kommunikálhat az Azure Dev Spaces által a fürtön a Helm 3 ügyfél használatával kezelt bármely kiadással.
 
-Ebből az útmutatóból megtudhatja, hogyan engedélyezheti a Helm 3 for Azure dev Spaces szolgáltatást a felhasználói szolgáltatások fejlesztői tárhelyeken való telepítéséhez.
+Ebben az útmutatóban megtudhatja, hogyan engedélyezheti a Helm 3 az Azure Dev Spaces felhasználói szolgáltatások telepítését a fejlesztői terekben.
 
 > [!IMPORTANT]
 > Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
@@ -33,26 +33,26 @@ Ebből az útmutatóból megtudhatja, hogyan engedélyezheti a Helm 3 for Azure 
 ### <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free).
-* [Telepített Azure CLI][azure-cli].
+* [Az Azure CLI telepítve van.][azure-cli]
 
-### <a name="register-the-helm3preview-preview-feature"></a>Regisztrálja a Helm3Preview előzetes verziójának funkcióját
+### <a name="register-the-helm3preview-preview-feature"></a>A Helm3Preview előzetes verzió funkció regisztrálása
 
-Ha engedélyezni szeretné az Azure dev Spaces számára a 3. Helm használatát a felhasználói szolgáltatások fejlesztői tárhelyeken való telepítéséhez, először engedélyezze az előfizetéshez tartozó *Helm3Preview* funkció jelzőjét az az *Feature Register* paranccsal:
+Ha engedélyezni szeretné, hogy az Azure Dev Spaces a Helm 3 szolgáltatást használja a felhasználói szolgáltatások fejlesztési terekben való telepítéséhez, először engedélyezze a *Helm3Preview* szolgáltatásjelzőt az előfizetésen az *az szolgáltatásregiszter* parancs használatával:
 
 > [!WARNING]
-> A *Helm3Preview* funkció jelzőjén az Azure dev Spaces szolgáltatást ENGEDÉLYEZő AK-fürtök ezt az előnézeti élményt fogják használni. Ha továbbra is engedélyezni szeretné a teljes mértékben támogatott Azure dev-helyeket az AK-fürtökön, ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Az előzetes verzió funkcióinak teszteléséhez használjon külön tesztelési vagy fejlesztési Azure-előfizetést.
+> A *Helm3Preview* funkciójelzővel engedélyező Bármely AKS-fürt, amelyen engedélyezi az Azure Dev Spaces-t, ezt az előnézeti élményt fogja használni. Ha továbbra is engedélyezni szeretné a teljes mértékben támogatott Azure Dev Spaces-t Az AKS-fürtökön, ne engedélyezze az előzetes verziójú funkciókat az éles előfizetéseken. Használjon külön teszt- vagy fejlesztési Azure-előfizetést az előzetes verziójú funkciók teszteléséhez.
 
 ```azure-cli
 az feature register --namespace Microsoft.DevSpaces --name Helm3Preview
 ```
 
-A regisztráció elvégzése néhány percet vesz igénybe. A regisztrációs állapotot az az *Feature show* paranccsal tekintheti meg:
+A regisztráció befejezéséhez néhány percet is igénybe vesz. Ellenőrizze a regisztrációs állapotot az *az szolgáltatásmegjelenítés* paranccsal:
 
 ```azure-cli
 az feature show --namespace Microsoft.DevSpaces --name Helm3Preview
 ```
 
-Ha az *állapot* *regisztrálva*van, frissítse a *Microsoft. DevSpaces* regisztrációját az *az Provider Register*paranccsal:
+Ha az *állapot* *regisztrálva*van, frissítse a *Microsoft.DevSpaces* regisztrációját az *provider register*használatával:
 
 ```azure-cli
 az provider register --namespace Microsoft.DevSpaces
@@ -60,36 +60,36 @@ az provider register --namespace Microsoft.DevSpaces
 
 ### <a name="limitations"></a>Korlátozások
 
-A szolgáltatás előzetes verziójában a következő korlátozások érvényesek:
+A következő korlátozások érvényesek, amíg ez a funkció előzetes verzióban érhető el:
 
-* A szolgáltatás nem használható a meglévő számítási feladatokkal rendelkező AK-fürtökön. Létre kell hoznia egy új AK-fürtöt.
+* Ez a szolgáltatás nem használható meglévő munkaterheléssel rendelkező AKS-fürtökön. Új AKS-fürtöt kell létrehoznia.
 
 ## <a name="create-your-cluster"></a>A fürt létrehozása
 
-Hozzon létre egy új AK-fürtöt egy olyan régióban, amely rendelkezik ezzel az előzetes verziójú funkcióval. Az alábbi parancsok létrehoznak egy *MyResourceGroup* nevű erőforráscsoportot és egy *MYAKS* nevű új AK-fürtöt az *USA déli középső* régiójában:
+Hozzon létre egy új AKS-fürtöt egy olyan régióban, amely rendelkezik ezzel az előnézeti funkcióval. Az alábbi parancsok létrehoznak egy *SamiresourceGroup* nevű erőforráscsoportot és egy Új AKS-fürtöt, amelynek neve *MyAKS:*
 
 ```azure-cli
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
-## <a name="enable-azure-dev-spaces"></a>Az Azure dev Spaces használatának engedélyezése
+## <a name="enable-azure-dev-spaces"></a>Azure dev-szóközök engedélyezése
 
-A *use-dev-Spaces* paranccsal engedélyezze a fejlesztői szóközöket az AK-fürtön, és kövesse az utasításokat. Az alábbi parancs lehetővé teszi a dev Spaces használatát a *MyAKS* -fürtön a *MyResourceGroup* csoportban, és létrehoz egy alapértelmezett fejlesztői helyet.
+Használja a *használat-dev-spaces* paranccsal engedélyezheti a fejlesztői szóközöket az AKS-fürtön, és kövesse az utasításokat. Az alábbi parancs engedélyezi a Fejlesztői szóközöket a *MyResourceGroup* csoport *MyAKS* fürtjében, és létrehoz egy alapértelmezett fejlesztői területet.
 
 ```cmd
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
 ```
 
-## <a name="verify-dev-spaces-is-running-helm-3"></a>Ellenőrizze, hogy a dev Spaces fut-e a Helm 3
+## <a name="verify-dev-spaces-is-running-helm-3"></a>Ellenőrizze, hogy a fejlesztői terek helm 3-at futtatnak-e
 
-Győződjön meg arról, hogy a kormányrúd nem fut a *azds* névtérben lévő központi telepítések listázásával:
+Ellenőrizze, hogy a talajművelésnem fut-e az *azds* névtérben lévő központi telepítések listázásával:
 
 ```cmd
 kubectl get deployment -n azds
 ```
 
-Győződjön meg róla, hogy az azds *-* névtérben nem fut a rendszer. Például:
+Ellenőrizze, hogy a *talajművelés-üzembe helyezés* nem fut-e az azds névtérben. Példa:
 
 ```console
 $ kubectl get deployments -n azds
@@ -98,12 +98,12 @@ azds-webhook-deployment   2/2     2            2           39m
 traefik                   1/1     1            1           39m
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
+Ismerje meg, hogy az Azure Dev Spaces hogyan segít összetettebb alkalmazások fejlesztésében több tárolóközött, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést a kód különböző verzióival vagy ágaival való együttműködéssel különböző helyeken.
 
 > [!div class="nextstepaction"]
-> [Csoportmunka az Azure fejlesztői Spaces szolgáltatásban][team-quickstart]
+> [Csapatfejlesztés az Azure Dev Spaces-ben][team-quickstart]
 
 
 [azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest

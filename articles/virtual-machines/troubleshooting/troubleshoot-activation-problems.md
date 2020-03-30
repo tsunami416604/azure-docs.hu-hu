@@ -1,6 +1,6 @@
 ---
-title: A Windows rendszerű virtuális gépek aktiválásával kapcsolatos problémák elhárítása az Azure-ban | Microsoft Docs
-description: Az Azure-beli Windows rendszerű virtuális gépek aktiválási problémáinak kijavításához szükséges hibaelhárítási lépéseket ismerteti
+title: A Windows virtuális gépek aktiválási problémáinak elhárítása az Azure-ban| Microsoft dokumentumok
+description: A Windows virtuálisgépek aktiválásával kapcsolatos problémák Azure-beli javításának elhárítási lépései
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -13,48 +13,48 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: a1c2049d7355ab946dbf426ec71f7f6178b8f153
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 5c84588290ce769b556002469b6a11c6950bb878
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819102"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476552"
 ---
-# <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Az Azure Windows rendszerű virtuális gépek aktiválási problémáinak elhárítása
+# <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Windows rendszerű virtuális gépek Azure-ban való aktiválási problémáinak hibaelhárítása
 
-Ha az Azure Windows rendszerű virtuális gép (VM) egyéni rendszerképből való aktiválása során problémát tapasztal, a probléma elhárításához használhatja a dokumentumban található információkat. 
+Ha az egyéni lemezképből létrehozott Azure Windows virtuális gép (VM) aktiválásakor problémája van, a jelen dokumentumban megadott információk segítségével elháríthatja a problémát. 
 
-## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Azure KMS-végpontok ismertetése az Azure-beli Windows termékaktiválás Virtual Machines
+## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Az Azure KMS-végpontok működésének megismerése az Azure-beli virtuális gépek Windows termékaktiválása kapcsán
 
-Az Azure különböző végpontokat használ a KMS (kulcskezelő szolgáltatások) aktiválásához attól függően, hogy melyik felhő-régión belül található a virtuális gép. A hibaelhárítási útmutató használatakor használja az adott régióra érvényes KMS-végpontot.
+Az Azure különböző végpontokat használ a KMS (Key Management Services) aktiválásához attól függően, hogy a virtuális gép a felhőrégióban található-e. A hibaelhárítási útmutató használatakor használja a megfelelő KMS-végpontot, amely a régióra vonatkozik.
 
-* Azure nyilvános felhő régiói: kms.core.windows.net:1688
-* Azure China 21Vianet nemzeti Felhőbeli régiók: kms.core.chinacloudapi.cn:1688
-* Azure Germany – nemzeti Felhőbeli régiók: kms.core.cloudapi.de:1688
-* Azure US Gov nemzeti Felhőbeli régiók: kms.core.usgovcloudapi.net:1688
+* Az Azure nyilvános felhőrégiói: kms.core.windows.net:1688
+* Az Azure China 21Vianet nemzeti felhőrégiói: kms.core.chinacloudapi.cn:1688
+* Az Azure Germany nemzeti felhőrégiói: kms.core.cloudapi.de:1688
+* Az Azure US Gov nemzeti felhőrégiói: kms.core.usgovcloudapi.net:1688
 
 ## <a name="symptom"></a>Hibajelenség
 
-Amikor egy Azure Windows rendszerű virtuális gépet próbál aktiválni, a következőhöz hasonló hibaüzenet jelenik meg:
+Amikor megpróbál aktiválni egy Azure Windows virtuális gép, hibaüzenet jelenik meg hasonlít a következő minta:
 
-**Hiba: a 0xC004F074 LicensingService jelentett, hogy a számítógép nem aktiválható. Nem lehet kapcsolatot létesíteni a kulcs ManagementService (KMS). További információért tekintse meg az alkalmazás eseménynaplóját.**
+**Hiba: 0xC004F074 A Software LicensingService arról számolt be, hogy a számítógépet nem lehetett aktiválni. Nem lehet kapcsolatba lépni a kulcskezelő szolgáltatással (KMS). További információt az alkalmazás eseménynaplójában talál.**
 
 ## <a name="cause"></a>Ok
 
-Az Azure-beli virtuális gépek aktiválásával kapcsolatos problémák általában akkor fordulnak elő, ha a Windows rendszerű virtuális gép nincs konfigurálva a megfelelő KMS-ügyfél telepítési kulcsával, vagy a Windows rendszerű virtuális gép kapcsolódási problémája van az Azure KMS szolgáltatással (kms.core.windows.net, 1688-as port 
+Az Azure-beli virtuális gépek aktiválási problémái akkor jelentkeznek, ha a Windows rendszerű virtuális gép nem a megfelelő KMS-ügyféltelepítési kulccsal lett konfigurálva, vagy a Windows rendszerű virtuális gép nem tud csatlakozni az Azure KMS-szolgáltatáshoz (kms.core.windows.net, 1688-as port). 
 
 ## <a name="solution"></a>Megoldás
 
 >[!NOTE]
->Ha helyek közötti VPN-t és kényszerített bújtatást használ, tekintse meg az [Egyéni Azure-útvonalak használata a KMS-Aktiválás kényszerített bújtatással való engedélyezését](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)ismertető témakört. 
+>Ha helyek közötti VPN-t és kényszerített bújtatást használ, olvassa el az [Azure egyéni útvonalak használata a KMS-aktiválás kötelező bújtatással történő engedélyezéséhez.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling) 
 >
->Ha a ExpressRoute-t használja, és van egy alapértelmezett útvonala, akkor [Az Azure-beli virtuális gép nem tud aktiválni a ExpressRoute](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx)-et.
+>Ha ExpressRoute-ot használ, és közzétett egy alapértelmezett útvonalat, olvassa el a [Letiltható internetkapcsolat expressroute-áramkörökhöz kapcsolódó virtuális hálózatokkal való blokkolása?](https://docs.microsoft.com/azure/expressroute/expressroute-faqs).
 
-### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>1\. lépés a megfelelő KMS-ügyfél telepítési kulcsának konfigurálása
+### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>1. lépés A megfelelő KMS-ügyfélbeállítási kulcs konfigurálása
 
-Az egyéni rendszerképből létrehozott virtuális gép esetében konfigurálnia kell a megfelelő KMS-ügyfél telepítési kulcsát a virtuális géphez.
+Az egyéni lemezképből létrehozott virtuális gép esetében konfigurálnia kell a megfelelő KMS-ügyfélbeállítási kulcsot a virtuális géphez.
 
-1. Futtassa az **slmgr. vbs/dlv** egy rendszergazda jogú parancssorban. Tekintse meg a Leírás értékét a kimenetben, majd döntse el, hogy a kiskereskedelmi (kereskedelmi csatornán) vagy a Volume (VOLUME_KMSCLIENT) licenc adathordozóján lett létrehozva:
+1. Futtassa **az slmgr.vbs /dlv** parancsot egy rendszergazda jogú parancssorban. Ellenőrizze a Leírás értéket a kimenetben, majd állapítsa meg, hogy kiskereskedelmi (kiskereskedelmi csatorna) vagy mennyiségi (VOLUME_KMSCLIENT) licencadathordozóról hozták-e létre:
   
 
     ```
@@ -75,34 +75,36 @@ Az egyéni rendszerképből létrehozott virtuális gép esetében konfigurálni
     cscript c:\windows\system32\slmgr.vbs /ipk CB7KF-BWN84-R7R2Y-793K2-8XDDG
     ```
 
-### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>2\. lépés a virtuális gép és az Azure KMS szolgáltatás közötti kapcsolat ellenőrzése
+### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>2. lépés A virtuális gép és az Azure KMS szolgáltatás közötti kapcsolat ellenőrzése
 
-1. Töltse le és csomagolja ki a [PSping](http:/technet.microsoft.com/sysinternals/jj729731.aspx) eszközt a virtuális gép egy olyan helyi mappájába, amely nem aktiválódik. 
+1. Töltse le és bontsa ki a [PSping](http:/technet.microsoft.com/sysinternals/jj729731.aspx) eszközt a virtuális gép egy helyi mappájába, amely nem aktiválható. 
 
-2. Lépjen a Start menüre, keresse meg a Windows PowerShellt, kattintson a jobb gombbal a Windows PowerShell elemre, majd válassza a Futtatás rendszergazdaként parancsot.
+2. Nyissa meg a kezdőképernyőt, keressen a Windows PowerShellen, kattintson a jobb gombbal a Windows PowerShell elemre, és válassza a Futtatás rendszergazdaként parancsot.
 
-3. Győződjön meg arról, hogy a virtuális gép úgy van konfigurálva, hogy a megfelelő Azure KMS-kiszolgálót használja. Ehhez futtassa a következő parancsot:
+3. Győződjön meg arról, hogy a virtuális gép úgy van konfigurálva, hogy a megfelelő Azure KMS-kiszolgálót használja. Ehhez futtassa az alábbi parancsot:
   
     ```powershell
     Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
 
-    A parancsnak vissza kell térnie: a kulcskezelő szolgáltatás kms.core.windows.net:1688 beállítása sikeres.
+    A parancsnak a következőt kell visszaadnia: A kulcskezelő szolgáltatás számítógépének neve kms.core.windows.net:1688 sikeresen.
 
-4. A Psping használatával ellenőrizze, hogy van-e kapcsolat a KMS-kiszolgálóval. Lépjen abba a mappába, amelybe kibontotta a letöltött Pstools.zip fájlt, majd futtassa a következőt:
+4. A Psping használatával ellenőrizze, hogy csatlakozik-e a KMS-kiszolgálóhoz. Lépjen abba a mappába, amelybe kibontotta a letöltött Pstools.zip fájlt, majd futtassa a következőt:
   
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-   A kimenet második – utolsó sorában ellenőrizze, hogy látható-e: elküldött = 4, fogadott = 4, elveszett = 0 (0% Loss).
+   A kimenet utolsó előtti sorában győződjön meg arról, hogy a következőket látja: Elküldve = 4, Beérkezett = 4, Elveszett = 0 (0% veszteség).
 
-   Ha az elveszett érték nagyobb nullánál (nulla), a virtuális gépnek nincs kapcsolata a KMS-kiszolgálóval. Ebben az esetben, ha a virtuális gép egy virtuális hálózaton található, és van megadva egyéni DNS-kiszolgáló, meg kell győződnie arról, hogy a DNS-kiszolgáló képes a kms.core.windows.net feloldására. Vagy módosítsa a DNS-kiszolgálót úgy, hogy az a kms.core.windows.net oldja fel.
+   Ha az Elveszett érték nagyobb, mint 0 (nulla), a virtuális gép nem rendelkezik kapcsolattal a KMS-kiszolgálóval. Ebben az esetben, ha a virtuális gép egy virtuális hálózatban van, és egyéni DNS-kiszolgáló van megadva, meg kell győződnie arról, hogy a DNS-kiszolgáló képes feloldani kms.core.windows.net. Vagy módosítsa a DNS-kiszolgálót olyanra, amely megoldja kms.core.windows.net.
 
-   Figyelje meg, hogy ha eltávolít egy virtuális hálózatról az összes DNS-kiszolgálót, a virtuális gépek az Azure belső DNS-szolgáltatását használják. Ez a szolgáltatás képes megoldani a kms.core.windows.net.
+   Figyelje meg, hogy ha eltávolítja az összes DNS-kiszolgálók egy virtuális hálózatról, a virtuális gépek az Azure belső DNS-szolgáltatás. Ez a szolgáltatás feloldhatja kms.core.windows.net.
   
-    Győződjön meg arról is, hogy a virtuális gépen a tűzfal nem blokkolja a kimenő hálózati forgalmat a KMS-végpontra, a 1688-as portot.
+    Győződjön meg arról is, hogy a kimenő hálózati forgalmat a KMS-végpont 1688 port nem blokkolja a tűzfal a virtuális gép.
 
-5. Miután meggyőződött a kms.core.windows.net való sikeres csatlakozásról, futtassa a következő parancsot az emelt szintű Windows PowerShell-parancssorban. Ez a parancs több alkalommal megpróbálja elvégezni az aktiválást.
+5. Ellenőrizze a [Network Watcher Next Hop](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) használatával, hogy a kérdéses virtuális gép következő ugrástípusa a cél IP 23.102.135.246 (kms.core.windows.net) vagy a megfelelő KMS-végpont IP-címe, amely a régióra vonatkozik, az **internet**.  Ha az eredmény VirtualAppliance vagy VirtualNetworkGateway, akkor valószínű, hogy létezik alapértelmezett útvonal.  Lépjen kapcsolatba a hálózati rendszergazdával, és működjön együtt velük a helyes lépések meghatározásához.  Ez lehet egy [egyéni útvonal,](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation) ha a megoldás összhangban van a szervezet szabályzataival.
+
+6. Miután ellenőrizte, hogy sikeresen csatlakozik a kms.core.windows.net helyhez, futtassa a következő parancsot a rendszergazda jogú Windows PowerShell-parancssorban. Ez a parancs több alkalommal megpróbálja elvégezni az aktiválást.
 
     ```powershell
     1..12 | ForEach-Object { Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato" ; start-sleep 5 }
@@ -110,26 +112,26 @@ Az egyéni rendszerképből létrehozott virtuális gép esetében konfigurálni
 
     A sikeres aktiválás az alábbihoz hasonló információkat ad vissza:
     
-    **Windows (R), pl. serverdatacenter Edition aktiválása (12345678-1234-1234-1234-12345678)...  A termék sikeresen aktiválva.**
+    **Windows(R), ServerDatacenter kiadás aktiválása (12345678-1234-1234-1234-12345678) ...  A termék sikeresen aktiválva.**
 
-## <a name="faq"></a>Gyakori kérdések 
+## <a name="faq"></a>GYIK 
 
-### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>Létrehoztam a Windows Server 2016-et az Azure Marketplace-ről. Be kell állítania a KMS-kulcsot a Windows Server 2016 aktiválásához? 
+### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>A Windows Server 2016-ot az Azure Piactérről hoztam létre. Be kell konfigurálnom a KMS-kulcsot a Windows Server 2016 aktiválásához? 
 
  
-Nem. Az Azure Marketplace-en található rendszerkép már konfigurálva van a megfelelő KMS-ügyfél telepítési kulcsával. 
+Nem. Az Azure Marketplace-en a rendszerkép rendelkezik a megfelelő KMS-ügyfélbeállítási kulcs már konfigurálva van. 
 
-### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>A Windows-aktiválás ugyanúgy működik, függetlenül attól, hogy a virtuális gép Azure Hybrid Use Benefitt (HUB) használ-e? 
+### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>A Windows aktiválása ugyanúgy működik, függetlenül attól, hogy a virtuális gép az Azure Hybrid Use Benefit (HUB) (HUB) vagy sem? 
 
  
 Igen. 
  
 
-### <a name="what-happens-if-windows-activation-period-expires"></a>Mi történik, ha a Windows-aktiválási időszak lejár? 
+### <a name="what-happens-if-windows-activation-period-expires"></a>Mi történik, ha a Windows aktiválási időszaka lejár? 
 
  
-Ha a türelmi időszak lejárt, és a Windows még nem aktiválódik, a Windows Server 2008 R2 és a Windows újabb verziói további értesítéseket jelenítenek meg az aktiválással kapcsolatban. Az asztali háttérkép feketén marad, és a Windows Update csak a biztonsági és kritikus frissítéseket telepíti, de nem kötelező frissítéseket is. Tekintse meg az értesítések szakaszt a [licencelési feltételek](https://technet.microsoft.com/library/ff793403.aspx) lap alján.   
+Ha a türelmi időszak lejárt, és a Windows még mindig nincs aktiválva, a Windows Server 2008 R2 és a Windows újabb verziói további értesítéseket jelenítenek meg az aktiválásról. Az asztal háttérképe fekete marad, és a Windows Update csak biztonsági és kritikus frissítéseket telepít, a választható frissítéseket azonban nem. Lásd az Értesítések szakaszt a [Licencelési feltételek](https://technet.microsoft.com/library/ff793403.aspx) lap alján.   
 
-## <a name="need-help-contact-support"></a>Segítség Vegye fel a kapcsolatot az ügyfélszolgálattal.
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
 
 Ha további segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

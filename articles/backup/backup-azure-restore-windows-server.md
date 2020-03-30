@@ -1,147 +1,149 @@
 ---
-title: Az Azure-ban tárolt adatvisszaállítás Windows Serverre
-description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure-ban tárolt információkat egy Windows Server vagy Windows rendszerű számítógépre a Microsoft Azure Recovery Services-(MARS-) ügynökkel.
+title: Adatok visszaállítása az Azure-ban Windows-kiszolgálóra
+description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure-ban tárolt adatokat windowsos kiszolgálóra vagy Windows-számítógépre a Microsoft Azure Recovery Services (MARS) ügynökkel.
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: e12596b496483b872f76ccd610fd70710327b586
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 25ca8eecaeb615f071340188a23fae7978ddb75c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248046"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409813"
 ---
-# <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Fájlok visszaállítása a Windowsba az Azure Resource Manager üzemi modell használatával
+# <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Fájlok visszaállítása a Windows rendszerbe az Azure Resource Manager telepítési modelljének használatával
 
-Ez a cikk azt ismerteti, hogyan lehet visszaállítani az adatok biztonsági mentési tárból. Az adatok visszaállításához használja az Microsoft Azure Recovery Services (MARS) ügynök adatok helyreállítása varázslóját. A következőket teheti:
+Ez a cikk bemutatja, hogyan lehet visszaállítani az adatokat egy biztonsági mentési tárolóból. Az adatok visszaállításához használja az Adatok helyreállítása varázslót a Microsoft Azure Recovery Services (MARS) ügynökben. A következőket teheti:
 
-* Állítsa vissza az adatokat ugyanarra a gépre, amelyről a biztonsági másolatok készültek.
+* Adatok visszaállítása ugyanarra a gépre, amelyről a biztonsági mentések készültek.
 * Adatok visszaállítása egy másik gépre.
 
-Az azonnali visszaállítás funkcióval írható helyreállítási pontok pillanatképét csatlakoztathatja helyreállítási kötetként. Ezután felfedezheti a helyreállítási kötetet, és átmásolhatja a fájlokat egy helyi számítógépre, ezzel szelektív módon helyreállíthatja a fájlokat.
+Az Azonnali visszaállítás funkcióval egy írható helyreállítási pont pillanatképét csatlakoztathatja helyreállítási kötetként. Ezután megismerheti a helyreállítási kötetet, és fájlokat másolhat a helyi számítógépre, így szelektíven visszaállíthatja a fájlokat.
 
 > [!NOTE]
-> A [januári 2017 Azure Backup frissítésre](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) van szükség, ha az adatvisszaállításhoz szeretné használni az azonnali visszaállítást. Emellett a biztonsági mentési adattárakat a támogatási cikkben felsorolt területi beállításokban kell védeni. Az azonnali visszaállítást támogató területi beállítások legújabb listáját a [január 2017 Azure Backup Update webhelyen](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) találhatja meg.
+> [2017. januári Azure Backup-frissítés](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) re van szükség, ha az azonnali visszaállítással szeretné visszaállítani az adatokat. Emellett a biztonsági mentési adatokat a támogatási cikkben felsorolt területi beállításokban lévő tárolókban is védeni kell. Az azonnali visszaállítást támogató területi beállítások at a [2017 januári Azure Backup frissítésében](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) tekintheti meg.
 >
 
-Az Azure Portal Recovery Services tárolókkal való azonnali visszaállítást használhat. Ha biztonsági mentési tárolókban tárolta az adattárolást, a rendszer átalakította Recovery Services-tárolóra. Ha azonnali visszaállítást szeretne használni, töltse le a MARS-frissítést, és kövesse az azonnali visszaállítást megemlítő eljárásokat.
+Használja az azonnali visszaállítást a Recovery Services-tárolókkal az Azure Portalon. Ha a biztonsági másolat tárolóiban tároltadatokat a rendszer helyreállítási szolgáltatások tárolóivá konvertálta őket. Ha az Azonnali visszaállítást szeretné használni, töltse le a MARS frissítést, és kövesse az Azonnali visszaállítást megemlítő eljárásokat.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="use-instant-restore-to-recover-data-to-the-same-machine"></a>Az adatok ugyanarra a gépre való helyreállításához használja az azonnali visszaállítást
+## <a name="use-instant-restore-to-recover-data-to-the-same-machine"></a>Adatok visszaállítása ugyanarra a gépre az Azonnali visszaállítás funkcióval
 
-Ha véletlenül törölt egy fájlt, és vissza szeretné állítani ugyanarra a gépre (amelyről a biztonsági mentés készül), a következő lépések segítenek az adatok helyreállításában.
+Ha véletlenül törölt egy fájlt, és vissza szeretné állítani ugyanarra a számítógépre (ahonnan a biztonsági mentés készült), a következő lépések segítenek az adatok helyreállításában.
 
-1. Nyissa meg a **Microsoft Azure Backup** beépülő modult. Ha nem tudja, hol telepítette a beépülő modult, keresse meg **Microsoft Azure Backup**a számítógépet vagy a kiszolgálót.
+1. Nyissa meg a **Microsoft Azure Backup** beépülő modult. Ha nem tudja, hol volt telepítve a beépülő modul, keressen a számítógépen vagy a **kiszolgálón**a Microsoft Azure Backup .
 
     Az asztali alkalmazásnak meg kell jelennie a keresési eredmények között.
 
-2. A varázsló elindításához kattintson az **adatok helyreállítása** elemre.
+2. A varázsló elindításához válassza az **Adatok helyreállítása** lehetőséget.
 
-    ![Képernyőkép a Azure Backupről, az adatok kiemelésével](./media/backup-azure-restore-windows-server/recover.png)
+    ![Képernyőkép az Azure Backup biztonsági mentéséről, kiemelve az Adatok helyreállítása](./media/backup-azure-restore-windows-server/recover.png)
 
-3. A **első lépések** lapon a **következőt**válassza ki **ezt a kiszolgálót (`<server name>`)**  > .
+3. Az **Első lépések** lapon az adatok ugyanarra a kiszolgálóra vagy számítógépre való visszaállításához válassza a Ez a **kiszolgáló (`<server name>`)** > **Tovább**lehetőséget.
 
-    ![Képernyőfelvétel az adatok helyreállítása varázsló Első lépések oldaláról](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
+    ![Képernyőkép: Az Adatok helyreállítása varázsló első lépései lap](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. A **helyreállítási mód kiválasztása** lapon válassza az **egyes fájlok és mappák** lehetőséget > **tovább**elemre.
+4. A **Helyreállítási mód kiválasztása** lapon válassza **az Egyéni fájlok és mappák** > **A Tovább lehetőséget.**
 
-    ![Képernyőkép az adatok helyreállítása varázsló helyreállítási mód kiválasztása lapján](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
+    ![Képernyőkép: Az Adatok helyreállítása varázsló helyreállítási mód kiválasztása lapja](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
-   > Az egyes fájlok és mappák visszaállításának lehetősége a .NET-keretrendszer 4.5.2-es vagy újabb verziójára van szükség. Ha nem látja az **egyes fájlok és mappák** beállítást, a .NET-keretrendszert a 4.5.2-es vagy újabb verzióra kell frissíteni, majd próbálkozzon újra.
+   > Az egyes fájlok és mappák visszaállításához a .NET Framework 4.5.2-es vagy újabb verziószükséges. Ha nem látja az **Egyedi fájlok és mappák** lehetőséget, frissítenie kell a .NET Framework rendszert a 4.5.2-es vagy újabb verzióra, majd próbálkozzon újra.
  
    > [!TIP]
-   > Az **egyes fájlok és mappák** lehetőséggel gyorsan hozzáférhet a helyreállítási ponthoz tartozó adatfájlokhoz. Alkalmas az egyes fájlok helyreállítására, a mérete nem haladhatja meg a 80 GB-ot, és az átviteli vagy a másolási sebesség akár 6 MBps is lehet. A **Volume (kötet** ) beállítással egy adott köteten található összes biztonsági másolati elem helyreállítható. Ez a beállítás gyorsabb átviteli sebességet biztosít (akár 60 MBps), ami ideális a nagyméretű adatok vagy a teljes kötetek helyreállításához.
+   > Az **Egyes fájlok és mappák** beállítás lehetővé teszi a helyreállítási pont adatainak gyors elérését. Alkalmas az egyes fájlok helyreállítására, amelyek mérete nem haladja meg a 80 GB-ot, és akár 6 Mb/s átviteli vagy másolási sebességet kínál a helyreállítás során. A **Kötet** beállítás helyreállítja az összes biztonsági másolatot egy adott köteten. Ez a beállítás gyorsabb adatátviteli sebességet biztosít (akár 60 Mb/s), amely ideális nagy méretű adatok vagy teljes kötetek helyreállításához.
 
-5. A **kötet és dátum kiválasztása** lapon válassza ki azt a kötetet, amely tartalmazza a visszaállítani kívánt fájlokat és mappákat.
+5. A **Kötet és dátum kiválasztása** lapon jelölje ki a visszaállítani kívánt fájlokat és mappákat tartalmazó kötetet.
 
-    A naptárban válasszon ki egy helyreállítási pontot. A **félkövérrel szedett** dátumok azt jelzik, hogy legalább egy helyreállítási pont rendelkezésre áll. Ha egy adott napon belül több helyreállítási pont is elérhető, válassza ki az adott helyreállítási pontot az **idő** legördülő menüből.
+    A naptárban jelöljön ki egy helyreállítási pontot. A **félkövérrel szedett** dátumok legalább egy helyreállítási pont elérhetőségét jelzik. Ha egy adott napon belül több helyreállítási pont is elérhető, válassza ki az adott helyreállítási pontot az **Idő** legördülő menüből.
 
-    ![Képernyőfelvétel az adatok helyreállítása varázsló kötet és dátum kiválasztása lapján](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
+    ![Képernyőkép: Az Adatok helyreállítása varázsló Kötet és dátum kiválasztása lap](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
 
-6. Miután kiválasztotta a helyreállítási pontot a visszaállításhoz, válassza a **Csatlakoztatás**lehetőséget.
+6. Miután kiválasztotta a visszaállítani kívánt helyreállítási pontot, válassza a **Mount**lehetőséget.
 
-    Azure Backup csatlakoztatja a helyi helyreállítási pontot, és helyreállítási kötetként használja.
+    Az Azure Backup csatlakoztatja a helyi helyreállítási pontot, és helyreállítási kötetként használja.
 
-7. A **Fájlok tallózása és helyreállítása** lapon a **Tallózás** gombra kattintva nyissa meg a Windows Intézőt, és keresse meg a kívánt fájlokat és mappákat.
+7. A **Tallózás és a Fájlok helyreállítása** lapon válassza a **Tallózás** gombot a Windows Intéző megnyitásához, és keresse meg a kívánt fájlokat és mappákat.
 
-    ![Az adatok helyreállítása varázsló képernyőképe – fájlok tallózása és helyreállítása lap](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
+    ![Képernyőkép: Az Adatok helyreállítása varázsló tallózása és helyreállása lap](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
-8. A Windows Intézőben másolja a visszaállítani kívánt fájlokat és mappákat, majd illessze be őket a kiszolgáló vagy a számítógép helyi helyére. A fájlokat közvetlenül a helyreállítási kötetről is megnyithatja vagy továbbíthatja, és ellenőrizheti, hogy a megfelelő verziókat kívánja-e helyreállítani.
+8. A Windows Intézőben másolja a visszaállítani kívánt fájlokat és mappákat, és illessze be őket a kiszolgáló vagy a számítógép helyi helyére. A fájlokat közvetlenül a helyreállítási kötetről nyithatja meg vagy streamelheti, és ellenőrizheti, hogy a megfelelő verziókat javítja-e.
 
-    ![Képernyőkép a Windows Intézőben, a másolás kiemelve](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
+    ![Képernyőkép a Windows Intézőről, kiemelt Másolás](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 
-9. Ha elkészült, a **Fájlok tallózása és helyreállítása** lapon válassza a **Leválasztás**lehetőséget. Ezután az **Igen** gombra kattintva erősítse meg, hogy le kívánja választani a kötetet.
+9. Ha végzett, a **Tallózás és helyreállító fájlok** lapon válassza a **Leválasztás**lehetőséget. Ezután válassza az **Igen** lehetőséget a kötet leválasztásának megerősítéséhez.
 
-    ![Az adatok helyreállítása varázsló képernyőképe – fájlok tallózása és helyreállítása lap](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
+    ![Képernyőkép: Az Adatok helyreállítása varázsló tallózása és helyreállása lap](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Ha nem választja ki a **Leválasztás**lehetőséget, a helyreállítási kötet a csatlakoztatása után 6 órán keresztül továbbra is csatlakoztatva marad. A csatlakoztatási idő azonban akár legfeljebb 24 óráig is meghosszabbítható egy folyamatban lévő fájl másolásakor. A kötet csatlakoztatása közben nem fut biztonsági mentési művelet. A kötet csatlakoztatásakor ütemezett biztonsági mentési művelet a helyreállítási kötet leválasztása után fog futni.
+    > Ha nem választja a **Leválasztás**lehetőséget, a helyreállítási kötet a csatlakoztatástól kezdve 6 órán át csatlakoztatva marad. Folyamatban lévő fájlmásolás esetén azonban a csatlakoztatási idő legfeljebb 24 órára hosszabbodik meg. A kötet csatlakoztatása közben nem futnak biztonsági mentési műveletek. A kötet csatlakoztatása korként ütemezett biztonsági mentési műveletek a helyreállítási kötet leválasztása után futnak.
     >
 
-## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>Az egy másik gépre való visszaállításhoz használja az azonnali visszaállítást
+## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>Adatok visszaállítása alternatív gépre az Azonnali visszaállítás funkcióval
 
-Ha a teljes kiszolgáló elvész, a Azure Backup adatokat egy másik gépre is helyreállíthatja. Az alábbi lépések bemutatják a munkafolyamatot.
+Ha a teljes kiszolgáló elvész, továbbra is helyreállíthatja az adatokat az Azure Backup egy másik gépre. A következő lépések a munkafolyamatot szemléltetik.
 
 Ezek a lépések a következő terminológiát tartalmazzák:
 
-* *Forrásoldali gép* – az eredeti gép, amelyről a biztonsági mentés készült, és amely jelenleg nem érhető el.
-* *Célszámítógép* – az a gép, amelyre az Adathelyreállítás történik.
-* *Minta* -tár – az a Recovery Services tároló, amelybe a forrásszámítógép és a célszámítógép regisztrálva van.
+* *Forrásgép* – Az eredeti gép, amelyről a biztonsági mentés készült, és amely jelenleg nem érhető el.
+* *Célgép* – Az a gép, amelyre az adatok helyreállnak.
+* *Mintatároló* – A Recovery Services-tároló, amelyhez a forrásgép és a célgép regisztrálva van.
 
 > [!NOTE]
-> A biztonsági mentések nem állíthatók vissza olyan célszámítógépre, amely az operációs rendszer korábbi verzióját futtatja. Például egy Windows 7 rendszerű számítógépről készített biztonsági másolat visszaállítható Windows 7 (vagy újabb) rendszerű számítógépen. Windows 8 rendszerű számítógépről készített biztonsági másolat nem állítható vissza Windows 7 rendszerű számítógépre.
+> A biztonsági mentések nem állíthatók vissza olyan célszámítógépre, amely az operációs rendszer egy korábbi verzióját futtatja. Például egy Windows 7 rendszerű számítógépről készített biztonsági másolat visszaállítható windows 7 (vagy újabb) számítógépen. A Windows 8 rendszerű számítógépekről készített biztonsági másolat nem állítható vissza Windows 7 rendszerű számítógépre.
 >
 >
 
-1. Nyissa meg a **Microsoft Azure Backup** beépülő modult a célszámítógépen.
+1. Nyissa meg a **Microsoft Azure biztonsági mentés** beépülő modult a célgépen.
 
-2. Győződjön meg arról, hogy a célszámítógép és a forrásszámítógép ugyanahhoz a Recovery Services-tárolóhoz van regisztrálva.
+2. Győződjön meg arról, hogy a célgép és a forrásgép ugyanahhoz a Recovery Services-tárolóhoz van regisztrálva.
 
-3. Válassza az **adatok helyreállítása** lehetőséget az **adatok helyreállítása varázsló**megnyitásához.
+3. Az **Adatok helyreállítása** varázsló megnyitásához válassza az Adatok **helyreállítása varázsló**megnyitásához.
 
-    ![Képernyőkép a Azure Backupről, az adatok kiemelésével](./media/backup-azure-restore-windows-server/recover.png)
+    ![Képernyőkép az Azure Backup biztonsági mentéséről, kiemelve az Adatok helyreállítása](./media/backup-azure-restore-windows-server/recover.png)
 
-4. A **első lépések** lapon válasszon **egy másik kiszolgálót**.
+4. Az **Első lépések** lapon válassza a **Másik kiszolgáló**lehetőséget.
 
-    ![Képernyőfelvétel az adatok helyreállítása varázsló Első lépések oldaláról](./media/backup-azure-restore-windows-server/alternatemachine_gettingstarted_instantrestore.png)
+    ![Képernyőkép: Az Adatok helyreállítása varázsló első lépései lap](./media/backup-azure-restore-windows-server/alternatemachine_gettingstarted_instantrestore.png)
 
-5. Adja meg a tár hitelesítő adatait tartalmazó fájlt, amely megfelel a mintatartó tárolónak, majd kattintson a **Tovább gombra**.
+5. Adja meg a tároló hitelesítő fájlját, amely megfelel a mintatárolónak, és válassza a **Tovább**gombot.
 
-    Ha a tároló hitelesítőadat-fájlja érvénytelen (vagy lejárt), töltse le a tárolóban lévő új hitelesítőadat-fájlt a Azure Portal. A tár érvényes hitelesítő adatainak megadását követően megjelenik a megfelelő biztonságimásolat-tároló neve.
+    Ha a tároló hitelesítő fájl érvénytelen (vagy lejárt), töltse le az új tároló hitelesítő fájl az Azure Portalon a mintatárolóból. Miután megadott egy érvényes tároló hitelesítő adatokat, megjelenik a megfelelő biztonsági mentési tároló neve.
 
-6. A **biztonsági mentési kiszolgáló kiválasztása** lapon válassza ki a forrásszámítógép listáját a megjelenített gépek listájából, és adja meg a jelszót. Ezután kattintson a **Tovább** gombra.
+6. A **Tartalékkiszolgáló kiválasztása** lapon válassza ki a forrásgépet a megjelenített gépek listájából, és adja meg a jelszót. Ezután válassza a **Tovább**gombot.
 
-    ![Képernyőkép az adatok helyreállítása varázsló biztonsági mentési kiszolgáló kiválasztása lapján](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
+    ![Képernyőkép: Az Adatok helyreállítása varázsló Tartalékkiszolgáló kiválasztása lapja](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. A **helyreállítási mód kiválasztása** lapon válassza az **egyes fájlok és mappák** lehetőséget > **tovább**elemre.
+7. A **Helyreállítási mód kiválasztása** lapon válassza **az Egyes fájlok és mappák** > **A Tovább lehetőséget.**
 
-    ![Képernyőkép az adatok helyreállítása varázsló helyreállítási mód kiválasztása lapján](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
+    ![Képernyőkép: Az Adatok helyreállítása varázsló helyreállítási mód kiválasztása lapja](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 
-8. A **kötet és dátum kiválasztása** lapon válassza ki azt a kötetet, amely tartalmazza a visszaállítani kívánt fájlokat és mappákat.
+8. A **Kötet és dátum kiválasztása** lapon jelölje ki a visszaállítani kívánt fájlokat és mappákat tartalmazó kötetet.
 
-    A naptárban válasszon ki egy helyreállítási pontot. A **félkövérrel szedett** dátumok azt jelzik, hogy legalább egy helyreállítási pont rendelkezésre áll. Ha egy adott napon belül több helyreállítási pont is elérhető, válassza ki az adott helyreállítási pontot az **idő** legördülő menüből.
+    A naptárban jelöljön ki egy helyreállítási pontot. A **félkövérrel szedett** dátumok legalább egy helyreállítási pont elérhetőségét jelzik. Ha egy adott napon belül több helyreállítási pont is elérhető, válassza ki az adott helyreállítási pontot az **Idő** legördülő menüből.
 
-    ![Képernyőfelvétel az adatok helyreállítása varázsló kötet és dátum kiválasztása lapján](./media/backup-azure-restore-windows-server/alternatemachine_selectvolumedate_instantrestore.png)
+    ![Képernyőkép: Az Adatok helyreállítása varázsló Kötet és dátum kiválasztása lap](./media/backup-azure-restore-windows-server/alternatemachine_selectvolumedate_instantrestore.png)
 
-9. Válassza a **Csatlakoztatás** lehetőséget a helyreállítási pont helyi csatlakoztatásához helyreállítási kötetként a célszámítógépen.
+9. Válassza a **Csatlakoztatás** lehetőséget a helyreállítási pont helyi csatlakoztatásához helyreállítási kötetként a célgépen.
 
-10. A **Fájlok tallózása és helyreállítása** lapon a **Tallózás** gombra kattintva nyissa meg a Windows Intézőt, és keresse meg a kívánt fájlokat és mappákat.
+10. A **Tallózás és a Fájlok helyreállítása** lapon válassza a **Tallózás** gombot a Windows Intéző megnyitásához, és keresse meg a kívánt fájlokat és mappákat.
 
-    ![Az adatok helyreállítása varázsló képernyőképe – fájlok tallózása és helyreállítása lap](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
+    ![Képernyőkép: Az Adatok helyreállítása varázsló tallózása és helyreállása lap](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
 
-11. A Windows Intézőben másolja a fájlokat és mappákat a helyreállítási kötetről, és illessze be őket a célszámítógép helyére. A fájlokat közvetlenül a helyreállítási kötetről is megnyithatja vagy továbbíthatja, és ellenőrizheti, hogy a megfelelő verziók helyreállítva lettek-e.
+11. A Windows Intézőben másolja a fájlokat és mappákat a helyreállítási kötetről, és illessze be őket a célszámítógép helyére. A fájlokat közvetlenül a helyreállítási kötetről nyithatja meg vagy streamelheti, és ellenőrizheti, hogy a megfelelő verziók helyreállnak-e.
 
-    ![Képernyőkép a Windows Intézőben, a másolás kiemelve](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
+    ![Képernyőkép a Windows Intézőről, kiemelt Másolás](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
-12. Ha elkészült, a **Fájlok tallózása és helyreállítása** lapon válassza a **Leválasztás**lehetőséget. Ezután az **Igen** gombra kattintva erősítse meg, hogy le kívánja választani a kötetet.
+12. Ha végzett, a **Tallózás és helyreállító fájlok** lapon válassza a **Leválasztás**lehetőséget. Ezután válassza az **Igen** lehetőséget a kötet leválasztásának megerősítéséhez.
 
-    ![Az adatok helyreállítása varázsló képernyőképe – fájlok tallózása és helyreállítása lap](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
+    ![Képernyőkép: Az Adatok helyreállítása varázsló tallózása és helyreállása lap](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Ha nem választja ki a **Leválasztás**lehetőséget, a helyreállítási kötet a csatlakoztatása után 6 órán keresztül továbbra is csatlakoztatva marad. A csatlakoztatási idő azonban akár legfeljebb 24 óráig is meghosszabbítható egy folyamatban lévő fájl másolásakor. A kötet csatlakoztatása közben nem fut biztonsági mentési művelet. A kötet csatlakoztatásakor ütemezett biztonsági mentési művelet a helyreállítási kötet leválasztása után fog futni.
+    > Ha nem választja a **Leválasztás**lehetőséget, a helyreállítási kötet a csatlakoztatástól kezdve 6 órán át csatlakoztatva marad. Folyamatban lévő fájlmásolás esetén azonban a csatlakoztatási idő legfeljebb 24 órára hosszabbodik meg. A kötet csatlakoztatása közben nem futnak biztonsági mentési műveletek. A kötet csatlakoztatása korként ütemezett biztonsági mentési műveletek a helyreállítási kötet leválasztása után futnak.
     >
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy helyreállítja a fájlokat és mappákat, [kezelheti a biztonsági mentéseket](backup-azure-manage-windows-server.md).
+* Most, hogy helyreállt a fájlok és mappák, kezelheti [a biztonsági másolatokat.](backup-azure-manage-windows-server.md)
+
+* [Gyakori kérdések a fájlok és mappák biztonsági mentésével kapcsolatban.](backup-azure-file-folder-backup-faq.md)
