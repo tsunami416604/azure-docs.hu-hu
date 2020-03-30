@@ -1,6 +1,6 @@
 ---
-title: A hírcsatorna-feldolgozó függvénytárának módosítása Azure Cosmos DB
-description: Megtudhatja, hogyan használhatja a Azure Cosmos DB változása a hírcsatorna-feldolgozó függvénytárat a változási hírcsatorna beolvasásához
+title: Hírcsatorna-processzorkönyvtár módosítása az Azure Cosmos DB-ben
+description: Ismerje meg, hogyan használhatja az Azure Cosmos DB változáscsatorna-processzor könyvtárát a módosítási hírcsatorna, a változáscsatorna-processzor összetevőinek olvasásához
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,81 +9,81 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: e71b2807595aebeb1f0c8682fde119f4e267e55d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273309"
 ---
-# <a name="change-feed-processor-in-azure-cosmos-db"></a>Adatcsatorna-processzor módosítása Azure Cosmos DB 
+# <a name="change-feed-processor-in-azure-cosmos-db"></a>A változáscsatorna feldolgozója az Azure Cosmos DB-ben 
 
-A Change feed processzor a [Azure Cosmos db SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3)részét képezi. Leegyszerűsíti a változási csatorna olvasásának folyamatát, és az események feldolgozását a több fogyasztó számára is hatékonyan terjeszti.
+A változáscsatorna-processzor az [Azure Cosmos DB SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3)része. Leegyszerűsíti a változáscsatorna olvasásának folyamatát, és hatékonyan osztja el az eseményfeldolgozást több fogyasztó között.
 
-A Change feed Processor Library fő előnye a hibatűrő viselkedés, amely biztosítja a változási hírcsatornában lévő összes esemény "legalább egyszeri" kézbesítését.
+A változáscsatorna-processzorkönyvtár fő előnye a hibatűrő viselkedése, amely biztosítja a változáscsatorna összes eseményének "legalább egyszer" kézbesítését.
 
-## <a name="components-of-the-change-feed-processor"></a>A módosítási hírcsatorna processzorának összetevői
+## <a name="components-of-the-change-feed-processor"></a>A változásadagolási processzor összetevői
 
-A módosítási hírcsatorna processzorának megvalósításának négy fő összetevője van: 
+A változás-előtolási processzor megvalósításának négy fő összetevője van: 
 
-1. **A figyelt tároló:** A figyelt tárolóban szerepelnek azok az adatok, amelyekről a változási csatornát létrehozták. A figyelt tároló összes beszúrása és frissítése megjelenik a tároló változási hírcsatornájában.
+1. **A megfigyelt tároló:** A figyelt tároló rendelkezik az adatokat, amelyekből a változáscsatorna jön létre. A figyelt tároló minden lapka és frissítés a tároló módosítási hírcsatornájában tükröződik.
 
-1. **A bérlet tárolója:** A bérlet tároló állapot-tárolóként működik, és koordinálja a változási csatornát több feldolgozón keresztül. A bérlet tároló a figyelt tárolóval megegyező fiókban vagy egy külön fiókban is tárolható. 
+1. **A lízingkonténer:** A bérlettároló állapottárolóként működik, és a változáscsatorna feldolgozása több dolgozó között feldolgozó. A címbérlet-tároló a figyelt tárolóval azonos fiókban vagy egy külön fiókban tárolható. 
 
-1. **A gazdagép:** A gazdagép egy olyan alkalmazás-példány, amely a változási hírcsatorna-feldolgozó használatával figyeli a módosításokat. Az azonos címbérleti konfigurációval rendelkező példányok párhuzamosan futhatnak, de minden példánynak más **példánynév**is kell lennie. 
+1. **A házigazda:** Az állomás olyan alkalmazáspéldány, amely a változáscsatorna-processzort használja a változások figyelésére. Az azonos címbérlet-konfigurációval rendelkező példányok párhuzamosan futhatnak, de minden példánynak más **példánynévvel kell rendelkeznie.** 
 
-1. **A delegált:** A delegált az a kód, amely meghatározza, hogy az Ön és a fejlesztő milyen módosításokat szeretne végrehajtani a változási hírcsatorna-feldolgozó által beolvasott minden egyes kötegben. 
+1. **A meghatalmazott:** A meghatalmazott az a kód, amely meghatározza, hogy Ön, a fejlesztő mit szeretne tenni a változáscsatorna-feldolgozó által leolvasható módosítások minden egyes kötegével. 
 
-Ha szeretné jobban megismerni, hogy a változási hírcsatorna processzorának négy eleme hogyan működik együtt, tekintsük át az alábbi ábrán látható példát. A figyelt tároló tárolja a dokumentumokat, és a "City" partíciót használja a partíciós kulcsként. Láthatjuk, hogy a partíciós kulcs értékei az elemeket tartalmazó tartományokban vannak elosztva. Két gazdagép-példány létezik, és a módosítási hírcsatorna processzora különböző tartományokat rendel az egyes példányokhoz a számítási eloszlás maximalizálása érdekében. Minden tartományt párhuzamosan kell beolvasni, és az előrehaladását a bérlet tárolójában lévő többi tartománytól elkülönítve kell karbantartani.
+Ha jobban meg szeretné tudni, hogyan működik együtt a változáscsatorna-processzor e négy eleme, tekintsen meg egy példát az alábbi ábrán. A figyelt tároló tárolja a dokumentumokat, és a "Város" a partíciókulcs. Azt látjuk, hogy a partíciókulcs-értékek elemeket tartalmazó tartományokban vannak elosztva. Két állomáspéldány létezik, és a változáscsatorna-feldolgozó különböző partíciókulcs-értékeket rendel minden példányhoz a számítási eloszlás maximalizálása érdekében. Minden tartomány párhuzamosan olvasható, és a folyamat a lízingtároló más tartományaitól elkülönítve marad.
 
-![Példa a hírcsatorna processzorának módosítására](./media/change-feed-processor/changefeedprocessor.png)
+![Példa a hírcsatorna-feldolgozó módosítása](./media/change-feed-processor/changefeedprocessor.png)
 
-## <a name="implementing-the-change-feed-processor"></a>A változási csatorna processzorának implementálása
+## <a name="implementing-the-change-feed-processor"></a>A módosítási hírcsatorna-processzor megvalósítása
 
-A belépési pont mindig a figyelt tároló, `Container` `GetChangeFeedProcessorBuilder`meghívott példányból:
+A belépési pont mindig a figyelt `Container` tároló, `GetChangeFeedProcessorBuilder`egy ön által hívott példányból:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
-Ahol az első paraméter egy különálló név, amely leírja a processzor célját, a második pedig a módosításokat kezelő delegált implementáció. 
+Ahol az első paraméter egy külön név, amely leírja a processzor célját, a második név pedig a delegált implementációja, amely kezeli a módosításokat. 
 
-Egy delegált példa:
+Egy meghatalmazott például a következő:
 
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-Végül megadhatja a processzor-példány nevét a `WithInstanceName` és azt a tárolót, amely a bérlet állapotát `WithLeaseContainer`sal tartja karban.
+Végül meg kell adnia ennek `WithInstanceName` a processzorpéldánynak a nevét, `WithLeaseContainer`és amely a címbérlet állapotát a tárolója.
 
-A `Build` meghívásával elindíthatja a processzor példányát, amely a `StartAsync`meghívásával indítható el.
+A `Build` hívás sal a `StartAsync`.
 
-## <a name="processing-life-cycle"></a>Életciklus feldolgozása
+## <a name="processing-life-cycle"></a>Feldolgozási életciklus
 
-A gazdagép-példányok normál életciklusa:
+A gazdapéldány normál életciklusa a következő:
 
-1. Olvassa el a változási csatornát.
-1. Ha nincsenek változások, az alvó állapotot előre definiált ideig (testreszabható `WithPollInterval` a Builder-ben), és nyissa meg a #1.
-1. Ha vannak változások, küldje el azokat a **delegált**számára.
-1. Ha a delegálás **sikeresen**dolgozza fel a módosításokat, frissítse a címbérleti tárolót a legutóbbi feldolgozott időponttal, és lépjen #1.
+1. Olvassa el a változás hírcsatornát.
+1. Ha nincsenek módosítások, aludjon egy előre meghatározott ideig (testreszabható a Szerkesztőben), `WithPollInterval` és lépjen #1.
+1. Ha vannak módosítások, küldje el őket a **meghatalmazottnak.**
+1. Amikor a meghatalmazott **sikeresen**befejezi a módosítások feldolgozását, frissítse a címbérlet-tárolót a legújabb feldolgozott időpontmal, és lépjen #1.
 
 ## <a name="error-handling"></a>Hibakezelés
 
-A módosítási hírcsatorna processzora a felhasználói kódok hibáira is rugalmas. Ez azt jelenti, hogy ha a delegált implementációja kezeletlen kivételt tartalmaz (#4. lépés), akkor a rendszer leállítja a szál feldolgozását, és létrehoz egy új szálat. Az új szál azt vizsgálja, hogy a címbérleti tároló milyen legkésőbbi időpontot adott a partíciós kulcs értékeinek, és onnan indítsa újra a rendszert, és így gyakorlatilag ugyanazt a köteget küldi el a delegált állapotnak. Ez a viselkedés mindaddig folytatódni fog, amíg a delegált nem dolgozza fel megfelelően a módosításokat, és ez az oka, hogy a változási hírcsatorna processzorának "legalább egyszer" garanciája van, mert ha a delegált kód dob, akkor újra próbálkozik a kötegtel.
+A változáscsatorna-processzor rugalmas a felhasználói kódhibákkal szemben. Ez azt jelenti, hogy ha a delegált megvalósítása nem kezelt kivétellel (#4 lépéssel) rendelkezik, akkor az adott módosítási köteget feldolgozó szál feldolgozása le áll, és új szál jön létre. Az új szál ellenőrzi, hogy melyik volt a legutóbbi időpont, amellyel a bérlettároló rendelkezik a partíciókulcs-értékek tartományához, és onnan újraindul, és hatékonyan elküldi ugyanazt a módosítási köteget a delegáltnak. Ez a viselkedés addig folytatódik, amíg a meghatalmazott helyesen nem dolgozza fel a módosításokat, és ez az oka annak, hogy a változáscsatorna-feldolgozó "legalább egyszer" garanciával rendelkezik, mert ha a delegált kód eldob, újra megpróbálja újra az adott köteget.
 
 ## <a name="dynamic-scaling"></a>Dinamikus méretezés
 
-Ahogy az a bevezetésben is említettük, a változási hírcsatorna processzora több példányon is eloszthatja a számítási kapacitást. Az alkalmazás több példányát is üzembe helyezheti az adatmódosítási folyamattal, és kihasználhatja, az egyetlen kulcsfontosságú követelmény a következő:
+Ahogy a bevezetés során említettük, a változáscsatorna-feldolgozó automatikusan el tudja osztani a számítási adatokat több példány között. Az alkalmazás több példányát is telepítheti a változáscsatorna-feldolgozó használatával, és kihasználhatja azt, az egyetlen legfontosabb követelmény a következő:
 
-1. Minden példánynak ugyanazzal a bérlet-tároló konfigurációval kell rendelkeznie.
-1. Minden példánynak ugyanazzal a munkafolyamat-névvel kell rendelkeznie.
-1. Minden példánynak más példánynév (`WithInstanceName`) kell lennie.
+1. Minden példánynak azonos címbérleti tárolókonfigurációval kell rendelkeznie.
+1. Minden példánynak azonos munkafolyamatnévvel kell rendelkeznie.
+1. Minden példánynak más példánynévvel`WithInstanceName`( kell rendelkeznie .
 
-Ha ezt a három feltételt alkalmazza, akkor a módosítási hírcsatorna processzora egyenlő terjesztési algoritmussal osztja szét a bérleti tároló összes bérletét az összes futó példányon és a integrálással számításon keresztül. Egy bérlet csak egy példány tulajdonosa lehet egy adott időpontban, így a példányok maximális száma megegyezik a bérletek számával.
+Ha ez a három feltétel érvényes, majd a változáscsatorna-feldolgozó egyenlő terjesztési algoritmus használatával elosztja a címbérletek a lízingtárolóban az összes futó példányok között, és párhuzamosítani számít. Egy bérlet csak egy példány tulajdonában lehet egy adott időpontban, így a példányok maximális száma megegyezik a bérletek számával.
 
-A példányok száma növelhető és csökkenthető, és a módosítási hírcsatorna processzora a megfelelő újraterjesztéssel dinamikusan módosítja a terhelést.
+A példányok száma növekedhet és csökkenhet, és a változás-hírcsatorna-processzor dinamikusan módosítja a terhelést a megfelelő újraelosztással.
 
-Emellett a változási hírcsatorna processzora dinamikusan alkalmazkodik a tárolók méretezéséhez, az átviteli sebesség vagy a tárterület növekedése miatt. Ha a tároló növekszik, a változási hírcsatorna-feldolgozó transzparens módon kezeli ezeket a forgatókönyveket a bérletek dinamikus növelésével és az új bérletek meglévő példányok közötti elosztásával.
+Ezenkívül a változáscsatorna-feldolgozó dinamikusan alkalmazkodhat a tárolók méretezéséhez az átviteli vagy tárolási növekedés miatt. A tároló növekedésével a változáscsatorna-feldolgozó transzparens módon kezeli ezeket a forgatókönyveket a bérletek dinamikus növelésével és az új bérletek meglévő példányok közötti elosztásával.
 
-## <a name="change-feed-and-provisioned-throughput"></a>A hírcsatorna és a kiosztott átviteli sebesség módosítása
+## <a name="change-feed-and-provisioned-throughput"></a>Csatorna és a kiépített átviteli felvétel módosítása
 
-A felszámított RUs díja, mivel a Cosmos-tárolókban lévő és kívüli adatáthelyezés mindig RUs-t használ. A bérleti tároló által felhasznált RUs díjait kell fizetnie.
+A felhasznált RUs-ok díja díja van, mivel a Cosmos-tárolókba való adatáthelyezés mindig a RUs-okat használja fel. A lízingtároló által felhasznált RUs-ok díja felszámítása.
 
 ## <a name="additional-resources"></a>További források
 
@@ -91,11 +91,11 @@ A felszámított RUs díja, mivel a Cosmos-tárolókban lévő és kívüli adat
 * [Használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [További minták a GitHubon](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgozó szolgáltatással kapcsolatos változásokról:
+Most a következő cikkekben olvashat bővebben a hírcsatorna-feldolgozó módosításáról:
 
-* [A hírcsatorna változásának áttekintése](change-feed.md)
-* [Áttelepítés a Change feed Processor Library webhelyről](how-to-migrate-from-change-feed-library.md)
-* [A Change feed kalkulátor használata](how-to-use-change-feed-estimator.md)
-* [Hírcsatorna-processzor kezdő időpontjának módosítása](how-to-configure-change-feed-start-time.md)
+* [A módosítási hírcsatorna áttekintése](change-feed.md)
+* [Az áttelepítés a módosítási hírcsatorna-processzorkönyvtárból](how-to-migrate-from-change-feed-library.md)
+* [A változáscsatorna-becslő használata](how-to-use-change-feed-estimator.md)
+* [Változáscsatorna-feldolgozó indításának időpontja](how-to-configure-change-feed-start-time.md)

@@ -1,6 +1,6 @@
 ---
-title: IoT Plug and Play kódtárak és SDK-k
-description: Információk a IoT-Plug and Play engedélyezett megoldások fejlesztéséhez rendelkezésre álló eszköz-és szolgáltatási könyvtárakról.
+title: IoT Plug and Play könyvtárak és SDK-k
+description: Információk az IoT Plug and Play-kompatibilis megoldások fejlesztéséhez elérhető eszköz- és szolgáltatástárakról.
 author: dominicbetts
 ms.author: dobett
 ms.date: 01/08/2020
@@ -8,34 +8,34 @@ ms.topic: reference
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b328d7fe4cf3a3487614ed93dcf130aa7a233efd
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 394edc24cfeefb96cb2f412985cb990a2306bb09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830570"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064332"
 ---
-# <a name="iot-plug-and-play-libraries-and-sdks"></a>IoT Plug and Play kódtárak és SDK-k
+# <a name="iot-plug-and-play-libraries-and-sdks"></a>IoT Plug and Play könyvtárak és SDK-k
 
-A IoT Plug and Play könyvtárak és SDK-k lehetővé teszik a fejlesztők számára, hogy több platformon különböző programozási nyelvek használatával IoT megoldásokat építsenek. A következő táblázat a kezdéshez segítséget nyújtó mintákra és gyors útmutatóra mutató hivatkozásokat tartalmaz:
+Az IoT Plug and Play-kódtárak és Az SDK-k lehetővé teszik a fejlesztők számára, hogy különböző programozási nyelvek használatával több platformon is többféle programozási nyelvet használjanak. Az alábbi táblázat a mintákra mutató hivatkozásokat és rövid útmutatókat tartalmaz az első lépések hez:
 
-## <a name="microsoft-supported-libraries-and-sdks"></a>Microsoft által támogatott kódtárak és SDK-k
+## <a name="microsoft-supported-libraries-and-sdks"></a>Microsoft által támogatott tárak és SDK-k
 
-| Platform | Könyvtár/csomag | Forráskód | Minta | Gyors útmutató | Leírások |
+| Platform | Könyvtár/csomag | Forráskód | Sample | Első lépések | Referencia |
 | -------- | ------- | ----------- | ------ | ---------- | --------- |
-| C/Linux  | [Eszköz SDK az apt-get](https://github.com/Azure/azure-iot-sdk-c/blob/public-preview/iothub_client/readme.md#aptgetpackage) | [GitHubon](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) | [Digitális Twin Client-minták](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/digitaltwin_client/samples) | [Kapcsolódás IoT Hubhoz](./quickstart-connect-pnp-device-c-linux.md) | [Referencia](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/) |
-| C/Windows  | [Eszköz SDK a Vcpkg](https://github.com/Azure/azure-iot-sdk-c/blob/public-preview/doc/setting_up_vcpkg.md#setup-c-sdk-vcpkg-for-windows-development-environment) | [GitHubon](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) | [Digitális Twin Client-minták](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/digitaltwin_client/samples) | [Kapcsolódás IoT Hubhoz](./quickstart-connect-pnp-device-c-windows.md) | [Referencia](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/) |
-| C/mbed  | [Az eszköz SDK BEÁGYAZva](https://github.com/Azure/azure-iot-sdk-c/blob/public-preview/iothub_client/readme.md#mbed) | [GitHubon](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) | [Digitális Twin Client-minták](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/digitaltwin_client/samples) |  | [Referencia](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/) |
-| C/Arduino  | [Device SDK az Arduino IDE-ben](https://github.com/Azure/azure-iot-sdk-c/blob/public-preview/iothub_client/readme.md#arduino) | [GitHubon](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) | [Digitális Twin Client-minták](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/digitaltwin_client/samples) |  | [Referencia](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/) |
-| C/iOS  | [Eszköz SDK a CocoaPod](https://cocoapods.org/pods/AzureIoTHubClient) | [GitHubon](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) | [Digitális Twin Client-minták](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/digitaltwin_client/samples) |  | [Referencia](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/) |
-| C#    | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices.DigitalTwin.Client) | [GitHubon](https://github.com/Azure/azure-iot-sdk-csharp) | [Digitális kettős minták](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/digitaltwin/Samples) | [Kapcsolódás IoT Hubhoz](./quickstart-connect-pnp-device-csharp.md) | [Referencia](https://docs.microsoft.com/dotnet/api/overview/azure/iot/client?view=azure-dotnet) |
-| Java   | [Maven 3](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/digital-twin-device-client-preview/1.0.0) | [GitHubon](https://github.com/Azure/azure-iot-sdk-java) | [Digitális kettős minták](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/digital-twin/Samples) | [Kapcsolódás IoT Hubhoz](./quickstart-connect-pnp-device-java.md) | [Referencia](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device) |
-| Node.js | [NPM](https://www.npmjs.com/package/azure-iot-digitaltwins-device) | [GitHubon](https://github.com/Azure/azure-iot-sdk-node/tree/digitaltwins-preview) | [Digitális kettős minták](https://github.com/Azure/azure-iot-sdk-node/tree/digitaltwins-preview/digitaltwins/samples) | [Kapcsolódás IoT Hubhoz](./quickstart-connect-pnp-device-node.md) | [Referencia](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device) |
+| C/Linux  | [Eszköz SDK az apt-get](https://github.com/Azure/azure-iot-sdk-c/blob/public-preview/iothub_client/readme.md#aptgetpackage) | [Github](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) | [Digitális Twin ügyfélminták](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/digitaltwin_client/samples) | [Csatlakozás az IoT Hubhoz](./quickstart-connect-pnp-device-c-linux.md) | [Referencia](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/) |
+| C/Windows  | [Eszköz SDK vcpkg](https://github.com/Azure/azure-iot-sdk-c/blob/public-preview/doc/setting_up_vcpkg.md#setup-c-sdk-vcpkg-for-windows-development-environment) | [Github](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) | [Digitális Twin ügyfélminták](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/digitaltwin_client/samples) | [Csatlakozás az IoT Hubhoz](./quickstart-connect-pnp-device-c-windows.md) | [Referencia](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/) |
+| C/mbed  | [Eszköz SDK-ja az EMBED-en](https://github.com/Azure/azure-iot-sdk-c/blob/public-preview/iothub_client/readme.md#mbed) | [Github](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) | [Digitális Twin ügyfélminták](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/digitaltwin_client/samples) |  | [Referencia](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/) |
+| C/Arduino  | [Eszköz SDK az Arduino IDE-ben](https://github.com/Azure/azure-iot-sdk-c/blob/public-preview/iothub_client/readme.md#arduino) | [Github](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) | [Digitális Twin ügyfélminták](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/digitaltwin_client/samples) |  | [Referencia](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/) |
+| C/iOS  | [Eszköz SDK a CocoaPod](https://cocoapods.org/pods/AzureIoTHubClient) | [Github](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) | [Digitális Twin ügyfélminták](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/digitaltwin_client/samples) |  | [Referencia](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/) |
+| C#    | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices.DigitalTwin.Client) | [Github](https://github.com/Azure/azure-iot-sdk-csharp) | [Digitális Twin minták](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/digitaltwin/Samples) | [Csatlakozás az IoT Hubhoz](./quickstart-connect-pnp-device-csharp.md) | [Referencia](https://docs.microsoft.com/dotnet/api/overview/azure/iot/client?view=azure-dotnet) |
+| Java   | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/digital-twin-device-client-preview/1.0.0) | [Github](https://github.com/Azure/azure-iot-sdk-java) | [Digitális Twin minták](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/digital-twin/Samples) | [Csatlakozás az IoT Hubhoz](./quickstart-connect-pnp-device-java.md) | [Referencia](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device) |
+| Node.js | [NPM](https://www.npmjs.com/package/azure-iot-digitaltwins-device) | [Github](https://github.com/Azure/azure-iot-sdk-node/tree/digitaltwins-preview) | [Digitális Twin minták](https://github.com/Azure/azure-iot-sdk-node/tree/digitaltwins-preview/digitaltwins/samples) | [Csatlakozás az IoT Hubhoz](./quickstart-connect-pnp-device-node.md) | [Referencia](https://docs.microsoft.com/javascript/api/azure-iot-device/) |
 
-## <a name="iot-hub-support"></a>IoT Hub támogatás
+## <a name="iot-hub-support"></a>Az IoT Hub támogatása
 
-A IoT Plug and Play eszköz képességeit csak az [ingyenes és a standard szintű IoT hubok](../iot-hub/iot-hub-scaling.md)támogatják.
+Az IoT Plug and Play eszközök képességeit csak [az ingyenes és szabványos szintű IoT-központok támogatják.](../iot-hub/iot-hub-scaling.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az eszköz SDK-jai és kódtárai mellett a REST API-kkal is használhatja a modell-adattárakat.
+Az eszköz SDK-k és kódtárak mellett rest API-k használatával is kommunikálhat a modelltártárakkal.

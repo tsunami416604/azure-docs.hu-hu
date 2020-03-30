@@ -1,13 +1,13 @@
 ---
 title: 'GYIK: Azure Files biztonsági mentése'
-description: Ebből a cikkből megismerheti az Azure-fájlmegosztás Azure Backup szolgáltatással való védelemmel kapcsolatos gyakori kérdésekre adott válaszokat.
+description: Ebben a cikkben felderítheti a válaszokat az Azure-fájlmegosztások Azure Backup szolgáltatással való védelmével kapcsolatos gyakori kérdésekre.
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.openlocfilehash: c69d4642aefbd599d3783dcdfa059a0cd9d129d9
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302542"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
@@ -34,11 +34,11 @@ Igen. A szinkronizált csoportokhoz csatlakoztatott Azure-fájlmegosztások véd
 
 Ha biztonsági mentéskor egy Storage-fiókra kattint az abban lévő fájlmegosztások felderítése érdekében, a Storage-fiókot abból a tárolóról regisztrálja, amelyről ezt végzi. Ha úgy dönt, hogy egy másik tárolóval védi meg a fájlmegosztásokat, [szüntesse meg](troubleshoot-azure-files.md#configuring-backup) a kiválasztott Storage-fiók regisztrációját a tárolóból.
 
-### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Módosíthatom azt a tárolót, amelyre biztonsági másolatot készítek a fájlmegosztást?
+### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Megváltoztathatom azt a Trezort, amelyről biztonsági másolatot tudok tenni a fájlmegosztásokról?
 
-Igen. Azonban [le kell állítania egy fájlmegosztás védelmét](manage-afs-backup.md#stop-protection-on-a-file-share) a csatlakoztatott tárolóból, törölni kell a Storage-fiók [regisztrációját](troubleshoot-azure-files.md#configuring-backup) , majd egy másik tárból kell megadnia azt.
+Igen. Azonban le kell állítania a védelmet a csatlakoztatott tárolóból származó [fájlmegosztáson,](manage-afs-backup.md#stop-protection-on-a-file-share) törölje a tárfiókot, majd védje meg egy másik tárolótól. [Unregister](troubleshoot-azure-files.md#configuring-backup)
 
-### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>Milyen térségek tud biztonsági másolatot készíteni az Azure-fájlmegosztásról?
+### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>Melyik földrajzi területen lehet biztonsági másolatot tenni az Azure File-megosztásokról?
 
 Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban és csak a következő helyeken érhető el:
 
@@ -67,23 +67,23 @@ Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban é
 - USA nyugati régiója (WUS)
 - USA nyugati középső régiója (WCUS)
 - USA 2. nyugati régiója (WUS 2)
-- US Gov Arizona (UGA)
-- US Gov Texas (UGT)
-- US Gov Virginia (UGV)
-- Közép-Ausztrália (ACL)
-- Nyugat-India (INW)
-- Dél-Afrika északi régiója (SAN)
-- Észak-Egyesült Arab (karbamid)
-- Közép-Franciaország (FRC)
+- Us Gov Arizona (UGA)
+- Us Gov Texas (UGT)
+- Us Gov Virginia (UGV)
+- Ausztrália Központi (ACL)
+- India Nyugat(INW)
+- Dél-Afrika Észak(SAN)
+- Egyesült Arab Emírségek északi(UAN)
+- Franciaország Központi (FRC)
 - Észak-Németország (GN)                       
-- Középnyugat-Németország (GWC)
-- Dél-Afrika nyugati régiója (SAW)
-- UAE Central (UAC)
-- NAZT (Kelet-Norvégia)     
-- NWW (Norvégia nyugati régiója)
+- Németország Nyugat-Közép (GWC)
+- Délnyugat (SAW)
+- Egyesült Arab Emírségek központi (UAC)
+- NWE (Norvégia Kelet)     
+- NWW (Norvégia Nyugati)
 - SZN (Észak-Svájc)
 
-Ha a fenti listában nem szereplő régióban kell használnia ezt a megoldást, írjon a következő e-mail-címre: [AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com).
+Írjon, [AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com) ha egy adott geo, amely nem szerepel a fent felsorolt.
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Hány Azure-fájlmegosztást védhetek meg egy tárban?
 
@@ -93,11 +93,11 @@ Az előzetes verzióban táranként legfeljebb 50 tárfiók Azure-fájlmegosztá
 
 Nem. A Storage-fiókban lévő összes fájlmegosztás számára csak ugyanazzal a tárolóval biztosítható védelem.
 
-## <a name="backup"></a>Biztonsági mentés
+## <a name="backup"></a>Backup
 
-### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Hány ütemezett biztonsági mentést állíthatok be fájlmegosztás esetén?
+### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Hány ütemezett biztonsági mentést konfigurálhatok fájlmegosztásonként?
 
-A Azure Backup jelenleg az Azure-fájlmegosztás napi biztonsági mentésének ütemezését támogatja.
+Az Azure Backup jelenleg támogatja az Azure fájlmegosztások ütemezett napi egyszeri biztonsági mentésének konfigurálását.
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share"></a>Hány igény szerinti biztonsági mentést készíthetek fájlmegosztásonként?
 
@@ -115,29 +115,29 @@ Igen. Ha a védelem leállításakor a **Biztonsági másolatok adatainak megőr
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Mi történik, ha megszakítok egy folyamatban lévő visszaállítási feladatot?
 
-Ha egy folyamatban lévő visszaállítási feladat meg lett szakítva, a visszaállítási folyamat leáll, és a megszakítás előtt visszaállított összes fájl megmarad a konfigurált célhelyen (eredeti vagy másodlagos helyen) a visszaállítások nélkül.
+Ha egy folyamatban lévő visszaállítási feladat megszakad, a visszaállítási folyamat leáll, és az összes fájl visszaállítása a megszakítás előtt, maradjon a beállított cél (eredeti vagy alternatív helyen) nélkül rollbacks.
 
 ## <a name="manage-backup"></a>Biztonsági mentés kezelése
 
-### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>Használhatom a PowerShellt az Azure-fájlmegosztás biztonsági másolatainak konfigurálására/kezelésére/visszaállítására?
+### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>Használhatom a PowerShellt az Azure-fájlmegosztások biztonsági másolatainak konfigurálásához,kezeléséhez/visszaállításához?
 
-Igen. A részletes dokumentációt [itt](backup-azure-afs-automation.md) tekintheti meg
+Igen. Kérjük, olvassa el a részletes [dokumentációt itt](backup-azure-afs-automation.md)
 
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-it"></a>Hozzáférhetek az Azure biztonsági mentések által készített pillanatképekhez és csatlakoztathatom azokat?
 
 Az Azure Backup által készített minden pillanatkép elérhető a portál Pillanatképek megtekintése részén, illetve a PowerShell vagy a parancssori felület segítségével. Az Azure Files megosztási pillanatképeiről információkért lásd: [Az Azure Files megosztási pillanatképeinek áttekintése (előzetes verzió)](../storage/files/storage-snapshots-files.md).
 
-### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Mi a biztonsági mentésekhez konfigurálható maximális adatmegőrzés?
+### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Mi a biztonsági mentések maximális megőrzése, amelyet konfigurálhatok?
 
-Az Azure-fájlmegosztás biztonsági mentése lehetővé teszi, hogy a szabályzatokat 180 napig megtartva konfigurálja. A [PowerShell "igény szerinti biztonsági mentés" lehetőségének](backup-azure-afs-automation.md#trigger-an-on-demand-backup)használatával azonban akár 10 évig is megtarthatja a helyreállítási pontot.
+Az Azure-fájlmegosztások biztonsági mentése lehetővé teszi a szabályzatok konfigurálását akár 180 napos megőrzéssel. Azonban a [PowerShell "Igény szerinti biztonsági mentés" lehetőség](backup-azure-afs-automation.md#trigger-an-on-demand-backup)használatával akár 10 évig is megtarthatja a helyreállítási pontot.
 
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share"></a>Mi történik, ha módosítom az Azure-fájlmegosztáshoz tartozó biztonsági mentési szabályzatot?
 
 Amikor új házirendet alkalmaznak a fájlmegosztáso(ko)n, az új szabályzat ütemezése és megőrzése érvényes. Ha növeli a megőrzési időtartamot, a meglévő helyreállítási pontok az új szabályzatnak megfelelően megmaradnak. Ha csökkenti a megőrzési időtartamot, a helyreállítási pontok a következő tisztítási feladat során törlendőként lesznek megjelölve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a Azure Backup egyéb területeiről, tekintse meg a következő biztonsági mentési gyakori kérdéseket:
+Ha többet szeretne megtudni az Azure Backup egyéb területeiről, tekintse meg a biztonsági mentéssel kapcsolatos gyakori kérdéseket:
 
 - [Helyreállítási tár – GYIK](backup-azure-backup-faq.md)
 - [Azure-beli virtuális gép biztonsági mentése – GYIK](backup-azure-vm-backup-faq.md)

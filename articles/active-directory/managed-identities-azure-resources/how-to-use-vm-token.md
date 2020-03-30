@@ -1,6 +1,6 @@
 ---
 title: Felügyelt identitások használata virtuális gépen hozzáférési jogkivonat beszerzéséhez – Azure AD
-description: Részletes utasítások és példák egy virtuális gépen található Azure-erőforrások felügyelt identitásának használatára egy OAuth hozzáférési jogkivonat beszerzéséhez.
+description: Lépésenkénti utasítások és példák az Azure-erőforrások felügyelt identitások egy virtuális gépeken oauth hozzáférési jogkivonat megszerzéséhez.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,56 +15,56 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ac0f4d5c10cf128b6161163a81cc171bcafbd36
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: a58103bad3914bd0c0c6e70f8e3d2882271e1070
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158995"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049199"
 ---
-# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Egy Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának használata hozzáférési jogkivonat beszerzéséhez 
+# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Felügyelt identitások használata Azure-erőforrásokhoz egy Azure virtuális gépen egy hozzáférési jogkivonat beszerzéséhez 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 
-Az Azure-erőforrások felügyelt identitásai az Azure-szolgáltatásokat a Azure Active Directory automatikusan felügyelt identitással biztosítják. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, és nem rendelkezik hitelesítő adatokkal a kódban. 
+Az Azure-erőforrások felügyelt identitásai automatikusan felügyelt identitást biztosítaz Azure-szolgáltatásokszámára az Azure Active Directoryban. Ezzel az identitással hitelesítheti magát minden olyan szolgáltatás, amely támogatja az Azure AD-hitelesítést, anélkül, hogy hitelesítő adatokat a kódot. 
 
-Ez a cikk különböző kódokat és parancsfájl-példákat tartalmaz a tokenek beszerzéséhez, valamint útmutatást nyújt a fontos témakörökhöz, például a jogkivonat lejáratának és a HTTP-hibáknak a kezelésére 
+Ez a cikk különböző kód- és parancsfájlpéldákat tartalmaz a jogkivonat-beszerzéshez, valamint útmutatást nyújt olyan fontos témakörökhöz, mint a jogkivonat lejárati és HTTP-hibáinak kezelése. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Ha azt tervezi, hogy a jelen cikkben szereplő Azure PowerShell példákat is használja, telepítse a [Azure PowerShell](/powershell/azure/install-az-ps)legújabb verzióját.
+Ha az Azure PowerShell-példákat szeretné használni ebben a cikkben, telepítse az [Azure PowerShell](/powershell/azure/install-az-ps)legújabb verzióját.
 
 
 > [!IMPORTANT]
-> - A cikkben szereplő összes mintakód/szkript azt feltételezi, hogy az ügyfél az Azure-erőforrások felügyelt identitásával rendelkező virtuális gépen fut. Használja a virtuális gép "kapcsolódás" funkcióját a Azure Portal, hogy távolról csatlakozhasson a virtuális GÉPHEZ. A virtuális gépeken található Azure-erőforrások felügyelt identitásának engedélyezésével kapcsolatos részletekért lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrások számára a Azure Portal](qs-configure-portal-windows-vm.md)vagy az egyik varianting article (POWERSHELL, CLI, sablon vagy Azure SDK használatával). 
+> - Ebben a cikkben az összes mintakód/parancsfájl feltételezi, hogy az ügyfél egy felügyelt identitásokkal rendelkező virtuális gépen fut az Azure-erőforrásokhoz. Használja a virtuális gép "Connect" funkció az Azure Portalon, távolról csatlakozhat a virtuális géphez. Az Azure-erőforrások felügyelt identitásainak virtuális gépeken való engedélyezéséről az [Azure-erőforrások felügyelt identitásainak konfigurálása az Azure Portalon,](qs-configure-portal-windows-vm.md)vagy az egyik változatcikk (PowerShell, CLI, sablon vagy Egy Azure SDK használatával) című témakörben olvashat. 
 
 > [!IMPORTANT]
-> - Az Azure-erőforrások felügyelt identitásának biztonsági határa az az erőforrás, amelyet a használ. A virtuális gépen futó összes kód/szkript kérheti és beolvashatja az összes elérhető felügyelt identitás jogkivonatát. 
+> - Az Azure-erőforrások felügyelt identitásainak biztonsági határa az az erőforrás, amelyen használják. A virtuális gépen futó összes kód/parancsfájl kérheti és lekérheti a rajta elérhető felügyelt identitások jogkivonatait. 
 
 ## <a name="overview"></a>Áttekintés
 
-Az ügyfélalkalmazások felügyelt identitásokat igényelhetnek az Azure-erőforrások csak az adott erőforráshoz való [hozzáféréshez használható hozzáférési jogkivonattal](../develop/developer-glossary.md#access-token) . A jogkivonat az [Azure-erőforrások egyszerű szolgáltatásának felügyelt identitásán alapul](overview.md#how-does-the-managed-identities-for-azure-resources-work). Ezért nincs szükség arra, hogy az ügyfél regisztrálja magát egy hozzáférési jogkivonat beszerzéséhez a saját egyszerű szolgáltatásnév keretében. A jogkivonat alkalmas tulajdonosi jogkivonatként használni az [ügyfél hitelesítő adatait igénylő szolgáltatások közötti hívásokban](../develop/v2-oauth2-client-creds-grant-flow.md).
+Egy ügyfélalkalmazás kérheti felügyelt identitások az Azure-erőforrások [csak alkalmazás-hozzáférési jogkivonat](../develop/developer-glossary.md#access-token) egy adott erőforrás eléréséhez. A jogkivonat [az Azure resources egyszerű szolgáltatásszolgáltatásának felügyelt identitásain alapul.](overview.md#how-does-the-managed-identities-for-azure-resources-work) Mint ilyen, nincs szükség arra, hogy az ügyfél regisztrálja magát egy hozzáférési jogkivonat megszerzéséhez saját szolgáltatásnév alatt. A jogkivonat alkalmas az [ügyfél hitelesítő adatait igénylő szolgáltatás-szolgáltatás hívások](../develop/v2-oauth2-client-creds-grant-flow.md)tulajdonosi jogkivonataként való használatra.
 
 |  |  |
 | -------------- | -------------------- |
-| [Token beszerzése HTTP használatával](#get-a-token-using-http) | Az Azure Resources jogkivonat-végponthoz tartozó felügyelt identitások protokolljának részletei |
-| [Jogkivonat beszerzése a .NET-hez készült Microsoft. Azure. Services. AppAuthentication kódtár használatával](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Példa a Microsoft. Azure. Services. AppAuthentication függvénytár .NET-ügyfélről való használatára
-| [Token beszerzése aC#](#get-a-token-using-c) | Példa felügyelt identitások használatára az Azure-erőforrások REST-végpontja számára egy C# ügyfélről |
-| [Token beszerzése a Javával](#get-a-token-using-java) | Példa felügyelt identitások használatára az Azure-erőforrások REST-végpontja számára egy Java-ügyfélből |
-| [Token beszerzése a go használatával](#get-a-token-using-go) | Példa felügyelt identitások használatára az Azure-erőforrások REST-végpontján egy go-ügyfélből |
-| [Token beszerzése Azure PowerShell használatával](#get-a-token-using-azure-powershell) | Példa felügyelt identitások használatára az Azure-erőforrások REST-végpontján egy PowerShell-ügyfélről |
-| [Token beszerzése a CURL használatával](#get-a-token-using-curl) | Példa felügyelt identitások használatára az Azure-erőforrások REST-végpontján egy bash/CURL-ügyfélből |
-| A jogkivonat gyorsítótárazásának feldolgozása | Útmutató a lejárt hozzáférési tokenek kezelésére |
-| [Hibakezelés](#error-handling) | Útmutató az Azure Resources jogkivonat-végponthoz tartozó felügyelt identitások által visszaadott HTTP-hibák kezeléséhez |
-| [Az Azure-szolgáltatások erőforrás-azonosítói](#resource-ids-for-azure-services) | Honnan kaphat erőforrás-azonosítókat a támogatott Azure-szolgáltatásokhoz |
+| [Token beszereznie HTTP-n keresztül](#get-a-token-using-http) | Az Azure-erőforrások tokenvégpontjának felügyelt identitásai protokollrészletei |
+| [Token beszereznie a Microsoft.Azure.Services.AppAuthentication könyvtár segítségével.](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Példa a Microsoft.Azure.Services.AppAuthentication könyvtár .NET-ügyfélből történő használatára
+| [Token beszereznie C használatával #](#get-a-token-using-c) | Példa felügyelt identitások használatára az Azure Resources REST-végponthoz c# ügyfélből |
+| [Token beszereznie Java használatával](#get-a-token-using-java) | Példa felügyelt identitások használatára az Azure Resources REST-végponthoz Java-ügyféltől |
+| [Token beszereznie az Ugrás használatával](#get-a-token-using-go) | Példa felügyelt identitások használatára az Azure Resources REST-végponthoz egy Go-ügyféltől |
+| [Token beszereznie az Azure PowerShell használatával](#get-a-token-using-azure-powershell) | Példa felügyelt identitások használatára az Azure-erőforrások REST-végpontja powershell-ügyfélből |
+| [Token beszereznie a CURL használatával](#get-a-token-using-curl) | Példa felügyelt identitások használatára az Azure-erőforrások REST-végpontja számára egy Bash/CURL-ügyféltől |
+| Token-gyorsítótárazás kezelése | Útmutató a lejárt hozzáférési jogkivonatok kezeléséhez |
+| [Hibakezelés](#error-handling) | Útmutató az Azure-erőforrások tokenvégpontja felügyelt identitásaiból visszaadott HTTP-hibák kezeléséhez |
+| [Az Azure-szolgáltatások erőforrás-azonosítói](#resource-ids-for-azure-services) | Hol kaphat erőforrásazonosítókat a támogatott Azure-szolgáltatásokhoz? |
 
-## <a name="get-a-token-using-http"></a>Token beszerzése HTTP használatával 
+## <a name="get-a-token-using-http"></a>Token beszereznie HTTP-n keresztül 
 
-A hozzáférési token beszerzésének alapvető felülete a REST-alapú, így elérhetővé válik bármely, a virtuális gépen futó ügyfélalkalmazás számára, amely HTTP REST-hívásokat tesz lehetővé. Ez hasonló az Azure AD programozási modellhez, kivéve, ha az ügyfél egy végpontot használ a virtuális gépen (vs egy Azure AD-végpont).
+A hozzáférési jogkivonat beszerzésének alapvető felülete a REST-en alapul, így a virtuális számítógépen futó minden olyan ügyfélalkalmazás számára elérhetővé válik, amely HTTP REST-hívásokat tud kezdeményezni. Ez hasonló az Azure AD programozási modellhez, kivéve, hogy az ügyfél egy végpontot használ a virtuális gépen (szemben egy Azure AD-végpont).
 
-Példa az Azure Instance Metadata Service (IMDS) végpontjának használatával történő kérelemre *(ajánlott)* :
+Mintakérelem az Azure Instance metaadatszolgáltatás (IMDS) végpontját használva *(ajánlott)*:
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -72,16 +72,16 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 
 | Elem | Leírás |
 | ------- | ----------- |
-| `GET` | A HTTP-művelet, amely azt jelzi, hogy a végpontról kívánja beolvasni az adatait. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
-| `http://169.254.169.254/metadata/identity/oauth2/token` | Az Azure-erőforrások végpontjának felügyelt identitásai a Instance Metadata Service számára. |
-| `api-version`  | Egy lekérdezési karakterlánc paraméter, amely a IMDS-végpont API-verzióját jelzi. Használja az API-verziót `2018-02-01` vagy újabb. |
-| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Emellett megjelenik a kiállított jogkivonat `aud` (célközönség) jogcímében is. Ez a példa jogkivonatot kér a Azure Resource Managerhoz való hozzáféréshez, amely a https://management.azure.com/alkalmazás-azonosító URI-ja. |
-| `Metadata` | Egy HTTP-kérelem fejlécének mezője, amelyet az Azure-erőforrások felügyelt identitásai igényelnek a kiszolgálóoldali kérelmek hamisításának (SSRF) támadása ellen. Ezt az értéket a "true" értékre kell beállítani, az összes kisbetű esetében. |
-| `object_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a object_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
-| `client_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a client_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
-| `mi_res_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a mi_res_idét (Azure Resource ID) jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van. |
+| `GET` | A HTTP-művelet, amely azt jelzi, hogy adatokat szeretne beolvasni a végpontból. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
+| `http://169.254.169.254/metadata/identity/oauth2/token` | Az Azure-erőforrások végpontja felügyelt identitások a példány metaadat-szolgáltatás. |
+| `api-version`  | Egy lekérdezési karakterlánc-paraméter, amely az IMDS-végpont API-verzióját jelzi. Használja az `2018-02-01` API-verziót vagy annak nagyobb verzióját. |
+| `resource` | A lekérdezési karakterlánc paraméter, amely a célerőforrás alkalmazásazonosítóuri-ját jelzi. A kiadott jogkivonat `aud` (közönség) jogcímében is megjelenik. Ez a példa egy jogkivonatot kér az Azure Resource `https://management.azure.com/`Manager eléréséhez, amely alkalmazásazonosító URI-val rendelkezik. |
+| `Metadata` | Egy HTTP-kérelem fejlécmezője, amelyet az Azure-erőforrások felügyelt identitásai igényelnek a kiszolgálóoldali kérelemhamisítás (SSRF) támadáselleni megoldásként. Ezt az értéket "igaz" értékre kell állítani, minden kisbetűvel. |
+| `object_id` | (Nem kötelező) Egy lekérdezési karakterlánc paraméter, amely a felügyelt identitás object_id jelzi, amelyhez a jogkivonatot szeretné. Kötelező, ha a virtuális gép több felhasználó által hozzárendelt felügyelt identitások rendelkezik.|
+| `client_id` | (Nem kötelező) Egy lekérdezési karakterlánc paraméter, amely a felügyelt identitás client_id jelzi, amelyhez a jogkivonatot szeretné. Kötelező, ha a virtuális gép több felhasználó által hozzárendelt felügyelt identitások rendelkezik.|
+| `mi_res_id` | (Nem kötelező) Egy lekérdezési karakterlánc-paraméter, amely a felügyelt identitás mi_res_id (Azure Resource ID) jelzi, amelyhez a jogkivonatot szeretné. Kötelező, ha a virtuális gép több felhasználó által hozzárendelt felügyelt identitások rendelkezik. |
 
-Mintául szolgáló kérelem az Azure-erőforrások virtuálisgép-bővítmény végpontjának felügyelt identitások használatával (a 2019 januári verzióban való *használatra tervezett)* :
+Mintakérelem az Azure-erőforrások virtuálisgép-bővítményvégpontjának felügyelt identitásait használva *(2019 januárjában evevésre tervezve)*:
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -90,14 +90,14 @@ Metadata: true
 
 | Elem | Leírás |
 | ------- | ----------- |
-| `GET` | A HTTP-művelet, amely azt jelzi, hogy a végpontról kívánja beolvasni az adatait. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
-| `http://localhost:50342/oauth2/token` | Az Azure-erőforrások végpontjának felügyelt identitásai, ahol a 50342 az alapértelmezett port, és konfigurálható. |
-| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Emellett megjelenik a kiállított jogkivonat `aud` (célközönség) jogcímében is. Ez a példa jogkivonatot kér a Azure Resource Managerhoz való hozzáféréshez, amely a https://management.azure.com/alkalmazás-azonosító URI-ja. |
-| `Metadata` | Egy HTTP-kérelem fejlécének mezője, amelyet az Azure-erőforrások felügyelt identitásai igényelnek a kiszolgálóoldali kérelmek hamisításának (SSRF) támadása ellen. Ezt az értéket a "true" értékre kell beállítani, az összes kisbetű esetében.|
-| `object_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a object_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
-| `client_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a client_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
+| `GET` | A HTTP-művelet, amely azt jelzi, hogy adatokat szeretne beolvasni a végpontból. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
+| `http://localhost:50342/oauth2/token` | Az Azure-erőforrások végpontjának felügyelt identitásai, ahol az 50342 az alapértelmezett port, és konfigurálható. |
+| `resource` | A lekérdezési karakterlánc paraméter, amely a célerőforrás alkalmazásazonosítóuri-ját jelzi. A kiadott jogkivonat `aud` (közönség) jogcímében is megjelenik. Ez a példa egy jogkivonatot kér az Azure Resource `https://management.azure.com/`Manager eléréséhez, amely alkalmazásazonosító URI-val rendelkezik. |
+| `Metadata` | Egy HTTP-kérelem fejlécmezője, amelyet az Azure-erőforrások felügyelt identitásai igényelnek a kiszolgálóoldali kérelemhamisítás (SSRF) támadáselleni megoldásként. Ezt az értéket "igaz" értékre kell állítani, minden kisbetűvel.|
+| `object_id` | (Nem kötelező) Egy lekérdezési karakterlánc paraméter, amely a felügyelt identitás object_id jelzi, amelyhez a jogkivonatot szeretné. Kötelező, ha a virtuális gép több felhasználó által hozzárendelt felügyelt identitások rendelkezik.|
+| `client_id` | (Nem kötelező) Egy lekérdezési karakterlánc paraméter, amely a felügyelt identitás client_id jelzi, amelyhez a jogkivonatot szeretné. Kötelező, ha a virtuális gép több felhasználó által hozzárendelt felügyelt identitások rendelkezik.|
 
-Példa a válaszra:
+Mintaválasz:
 
 ```json
 HTTP/1.1 200 OK
@@ -115,19 +115,19 @@ Content-Type: application/json
 
 | Elem | Leírás |
 | ------- | ----------- |
-| `access_token` | A kért hozzáférési jogkivonat. A biztonságos REST API hívásakor a jogkivonat beágyazva van a `Authorization` kérelem fejléc mezőjébe "tulajdonos" tokenként, amely lehetővé teszi az API számára a hívó hitelesítését. | 
+| `access_token` | A kért hozzáférési jogkivonat. Biztonságos REST API hívása kor a `Authorization` jogkivonat "tulajdonosi" jogkivonatként van beágyazva a kérelem fejlécmezőjébe, lehetővé téve az API számára a hívó hitelesítését. | 
 | `refresh_token` | Az Azure-erőforrások felügyelt identitásai nem használják. |
-| `expires_in` | Azon másodpercek száma, ameddig a hozzáférési jogkivonat továbbra is érvényben marad, a lejárat időpontja előtt. A kiállítási idő a jogkivonat `iat` jogcímében található. |
-| `expires_on` | A TimeSpan, amikor lejár a hozzáférési jogkivonat. A dátum az "1970-01-01T0:0: 0Z UTC" (a token `exp` jogcímnek felel meg) másodpercek száma. |
-| `not_before` | A TimeSpan, ha a hozzáférési jogkivonat érvénybe lép, és el lehet fogadni. A dátum az "1970-01-01T0:0: 0Z UTC" (a token `nbf` jogcímnek felel meg) másodpercek száma. |
-| `resource` | Az erőforráshoz a hozzáférési tokent kérték, amely megfelel a kérelem `resource` lekérdezési karakterlánc paraméterének. |
-| `token_type` | A token típusa, amely egy "tulajdonos" hozzáférési jogkivonat, ami azt jelenti, hogy az erőforrás hozzáférést biztosíthat a jogkivonat tulajdonosához. |
+| `expires_in` | A hozzáférési jogkivonat a kiállítás időpontjától számított másodpercek száma, mielőtt lejárna. A kiállítás ideje megtalálható a jogkivonat jogcímében. `iat` |
+| `expires_on` | A hozzáférési jogkivonat lejáratának időtartománya. A dátum az "1970-01-01T0:0:0Z UTC" (a jogkivonat jogcímének `exp` megfelelő) másodpercek számaként jelenik meg. |
+| `not_before` | A hozzáférési jogkivonat érvénybe lépésének és elfogadott időtartamának. A dátum az "1970-01-01T0:0:0Z UTC" (a jogkivonat jogcímének `nbf` megfelelő) másodpercek számaként jelenik meg. |
+| `resource` | Az erőforrás, amelyhez hozzáférési jogkivonatot kértek, amely megfelel a `resource` kérelem lekérdezési karakterlánc paraméterének. |
+| `token_type` | A jogkivonat típusa, amely egy "tulajdonos" hozzáférési jogkivonat, ami azt jelenti, hogy az erőforrás hozzáférést biztosíthat a jogkivonat tulajdonosához. |
 
-## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Jogkivonat beszerzése a .NET-hez készült Microsoft. Azure. Services. AppAuthentication kódtár használatával
+## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Token beszereznie a Microsoft.Azure.Services.AppAuthentication könyvtár segítségével.
 
-A .NET-alkalmazások és-függvények esetében az Azure-erőforrások felügyelt identitásával való együttműködés legegyszerűbb módja a Microsoft. Azure. Services. AppAuthentication csomag. Ez a kódtár lehetővé teszi a kód helyi tesztelését a fejlesztői gépen, a Visual studióból, az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)-ből vagy Active Directory integrált hitelesítésből származó felhasználói fiók használatával. A könyvtár helyi fejlesztési lehetőségeiről további információt a [Microsoft. Azure. Services. AppAuthentication dokumentációjában](/azure/key-vault/service-to-service-authentication)talál. Ez a szakasz bemutatja, hogyan kezdheti meg a kódtárat a kódban.
+A .NET-alkalmazások és -függvények esetében az Azure-erőforrások felügyelt identitásaival való munka legegyszerűbb módja a Microsoft.Azure.Services.AppAuthentication csomag. Ez a könyvtár azt is lehetővé teszi, hogy tesztelje a kódot helyileg a fejlesztői gépen, a Visual Studio, az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)vagy az Active Directory integrált hitelesítés felhasználói fiókjának használatával. A tár helyi fejlesztési lehetőségeiről a [Microsoft.Azure.Services.AppAuthentication hivatkozáscímű témakörben lehet további további adatokat.](/azure/key-vault/service-to-service-authentication) Ez a szakasz bemutatja, hogyan kezdheti el a kódban lévő tárt.
 
-1. Adjon hozzá hivatkozásokat a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és a [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) kulcstartó NuGet-csomagjaihoz az alkalmazáshoz.
+1. Hivatkozások hozzáadása a [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és a [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet csomagokhoz az alkalmazáshoz.
 
 2.  Adja hozzá a következő kódot az alkalmazáshoz:
 
@@ -141,9 +141,9 @@ A .NET-alkalmazások és-függvények esetében az Azure-erőforrások felügyel
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-Ha többet szeretne megtudni a Microsoft. Azure. Services. AppAuthentication és az általa közzétett műveletekről, tekintse meg a [Microsoft. Azure. Services. AppAuthentication referenciáját](/azure/key-vault/service-to-service-authentication) , valamint a [felügyelt identitásokkal rendelkező app Service és kulcstartót az Azure-erőforrások .net-mintában](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Ha többet szeretne megtudni a Microsoft.Azure.Services.AppAuthentication szolgáltatásról és az általa elérhetővé tett műveletekről, olvassa el a [Microsoft.Azure.Services.AppAuthentication referencia-](/azure/key-vault/service-to-service-authentication) és az [Azure-erőforrások .NET-mintájával rendelkező Alkalmazásszolgáltatást és KeyVault-ot.](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)
 
-## <a name="get-a-token-using-c"></a>Token beszerzése aC#
+## <a name="get-a-token-using-c"></a>Token beszereznie C használatával #
 
 ```csharp
 using System;
@@ -176,9 +176,9 @@ catch (Exception e)
 
 ```
 
-## <a name="get-a-token-using-java"></a>Token beszerzése a Javával
+## <a name="get-a-token-using-java"></a>Token beszereznie Java használatával
 
-Használja ezt a [JSON-függvénytárat](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core/2.9.4) a jogkivonatok Java használatával való lekéréséhez.
+Ezzel a [JSON-kódtárral](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core/2.9.4) javadat kérhet be.
 
 ```Java
 import java.io.*;
@@ -220,7 +220,7 @@ class GetMSIToken {
 }
 ```
 
-## <a name="get-a-token-using-go"></a>Token beszerzése a go használatával
+## <a name="get-a-token-using-go"></a>Token beszereznie az Ugrás használatával
 
 ```
 package main
@@ -298,12 +298,12 @@ func main() {
 }
 ```
 
-## <a name="get-a-token-using-azure-powershell"></a>Token beszerzése Azure PowerShell használatával
+## <a name="get-a-token-using-azure-powershell"></a>Token beszereznie az Azure PowerShell használatával
 
-Az alábbi példa bemutatja, hogyan használhatók a felügyelt identitások az Azure-erőforrások REST-végponthoz egy PowerShell-ügyfélről a következőre:
+A következő példa bemutatja, hogyan használhatja az Azure-erőforrások REST-végpontjának felügyelt identitásait egy PowerShell-ügyféltől a következőkhöz:
 
-1. Hozzáférési jogkivonat beszerzése.
-2. A hozzáférési token használatával meghívhat egy Azure Resource Manager REST API, és információkat kaphat a virtuális gépről. Ügyeljen arra, hogy az előfizetés-AZONOSÍTÓját, az erőforráscsoport nevét és a virtuális gép nevét a `<SUBSCRIPTION-ID>`, `<RESOURCE-GROUP>`és `<VM-NAME>`esetében helyettesítse.
+1. Szerezzen be egy hozzáférési jogkivonatot.
+2. A hozzáférési jogkivonat használatával hívja meg az Azure Resource Manager REST API-t, és a virtuális gép ről szerezzen be információkat. Ügyeljen arra, hogy az előfizetés-azonosítót, az erőforráscsoport `<RESOURCE-GROUP>`nevét `<VM-NAME>`és a virtuálisgép nevét helyettesítse a, `<SUBSCRIPTION-ID>`illetve a.
 
 ```azurepowershell
 Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Headers @{Metadata="true"}
@@ -325,7 +325,7 @@ echo $vmInfoRest
 
 ```
 
-## <a name="get-a-token-using-curl"></a>Token beszerzése a CURL használatával
+## <a name="get-a-token-using-curl"></a>Token beszereznie a CURL használatával
 
 ```bash
 curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s
@@ -340,69 +340,69 @@ access_token=$(echo $response | python -c 'import sys, json; print (json.load(sy
 echo The managed identities for Azure resources access token is $access_token
 ```
 
-## <a name="token-caching"></a>Jogkivonat-gyorsítótárazás
+## <a name="token-caching"></a>Token gyorsítótárazása
 
-Míg az Azure-erőforrásokhoz használt felügyelt identitások (az Azure-erőforrások virtuálisgép-bővítményének IMDS/felügyelt identitása) a gyorsítótár-jogkivonatokat használják, javasoljuk, hogy a token-gyorsítótárazást a kódban is implementálja. Ennek eredményeképpen elő kell készítenie azokat a forgatókönyveket, amelyekben az erőforrás azt jelzi, hogy a jogkivonat lejárt. 
+Míg a felügyelt identitások az Azure-erőforrások alrendszer használatban van (IMDS/felügyelt identitások az Azure-erőforrások virtuálisgép-bővítmény) nem gyorsítótár-jogkivonatok, azt is javasoljuk, hogy a kódban a token-gyorsítótárazás. Ennek eredményeképpen elő kell készítenie olyan esetekre, ahol az erőforrás azt jelzi, hogy a jogkivonat lejárt. 
 
-Az Azure AD-ra irányuló hívásokat csak a következő esetekben lehet bevezetni:
-- a gyorsítótár-kihagyás oka az Azure-erőforrások alrendszerének gyorsítótárában található felügyelt identitások nem rendelkeznek jogkivonat
-- a gyorsítótárazott jogkivonat lejárt
+Az Azure AD-be irányuló vezetékközbeni hívások csak akkor eredményeznek eredményt, ha:
+- gyorsítótár-tévesztés az Azure-erőforrások alrendszer-gyorsítótárának felügyelt identitásaiban lévő token hiánya miatt következik be
+- a gyorsítótárazott token lejárt
 
 ## <a name="error-handling"></a>Hibakezelés
 
-Az Azure-erőforrásokhoz tartozó felügyelt identitások a HTTP-válaszüzenet fejlécének állapotkód mezőjén keresztül jelentkeznek a 4xx vagy 5xx hibák esetén:
+Az Azure-erőforrások végpontjának felügyelt identitásai hibákat jeleznek a HTTP-válaszüzenet fejlécének állapotkód mezőjén keresztül, 4xx vagy 5xx hibaként:
 
-| Állapotkód | Hiba oka | Kezelés |
+| Állapotkód | Hiba oka | Hogyan kell kezelni |
 | ----------- | ------------ | ------------- |
-| 404 nem található. | A IMDS-végpont frissítése folyamatban van. | Próbálkozzon újra a expontential leállítási. Lásd az alábbi útmutatást. |
-| 429 túl sok kérés. |  Elérte a IMDS szabályozási korlátot. | Próbálja megismételni az exponenciális leállítási. Lásd az alábbi útmutatást. |
-| 4xx hiba a kérelemben. | Egy vagy több kérelem paramétere helytelen volt. | Ne próbálkozzon újra.  További információért tekintse meg a hiba részleteit.  a 4xx hibák a tervezési idejű hibák.|
-| 5xx átmeneti hiba történt a szolgáltatástól. | Az Azure-erőforrások alrendszerhez vagy Azure Active Directory felügyelt identitása átmeneti hibát adott vissza. | Az újrapróbálkozást legalább 1 másodperc várakozás után érdemes elvégezni.  Ha túl gyorsan vagy túl gyakran próbálkozik újra, a IMDS és/vagy az Azure AD-re vonatkozó korlátozási hiba léphet fel (429).|
-| timeout | A IMDS-végpont frissítése folyamatban van. | Próbálkozzon újra a expontential leállítási. Lásd az alábbi útmutatást. |
+| 404 Nem található. | Az IMDS-végpont frissítése. | Próbálkozzon újra az Expontential Backoff segítségével. Lásd az alábbi útmutatást. |
+| 429 Túl sok kérés. |  IMDS-szabályozási korlát elérése. | Próbálkozzon újra exponenciális visszalépéssel. Lásd az alábbi útmutatást. |
+| 4xx Hiba kérésre. | Egy vagy több kérelemparaméter helytelen volt. | Ne próbálkozzon újra.  További információkért vizsgálja meg a hiba részleteit.  A 4xx hibák tervezési idejű hibák.|
+| 5xx Átmeneti hiba a szolgáltatásból. | Az Azure-erőforrások alrendszer vagy az Azure Active Directory felügyelt identitások átmeneti hibát adott vissza. | Legalább 1 másodperc várakozás után biztonságosan újrapróbálkozhat.  Ha túl gyorsan vagy túl gyakran próbálja meg újra, az IMDS és/vagy az Azure AD sebességkorlátozási hibát (429) adhat vissza.|
+| timeout | Az IMDS-végpont frissítése. | Próbálkozzon újra az Expontential Backoff segítségével. Lásd az alábbi útmutatást. |
 
-Ha hiba történik, a megfelelő HTTP-válasz törzse JSON-t tartalmaz a hiba részleteivel:
+Hiba esetén a megfelelő HTTP-választörzs JSON-t tartalmaz a következő hibarészleteivel:
 
 | Elem | Leírás |
 | ------- | ----------- |
-| error   | Hiba azonosítója. |
-| error_description | Hiba részletes leírása. **A hibákkal kapcsolatos leírások bármikor megváltoztathatók. Ne írjon olyan kódot, amely az ágakat a hiba leírásában szereplő értékek alapján írja.**|
+| error   | Hibaazonosító. |
+| error_description | A hiba részletes leírása. **A hibaleírások bármikor változhatnak. Ne írjon olyan kódot, amely a hibaleírásban lévő értékek alapján ágazik.**|
 
-### <a name="http-response-reference"></a>HTTP-válasz referenciája
+### <a name="http-response-reference"></a>HTTP-válasz hivatkozása
 
-Ez a szakasz a lehetséges hibákra adott válaszokat dokumentálja. A "200 OK" állapot sikeres válasz, és a hozzáférési jogkivonat a Válasz törzs JSON-ban található, a access_token elemben.
+Ez a szakasz a lehetséges hibaválaszokat dokumentálja. A "200 OK" állapot sikeres válasz, és a hozzáférési jogkivonat a JSON választörzsben található, a access_token elemben.
 
 | Állapotkód | Hiba | Hiba leírása | Megoldás |
 | ----------- | ----- | ----------------- | -------- |
-| 400 hibás kérelem | invalid_resource | AADSTS50001: a *\<URI\>* nevű alkalmazás nem található a (z) *\<bérlő-azonosító\>* nevű bérlőben. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy a bérlő bármelyik felhasználója beleegyezett. Lehetséges, hogy nem megfelelő bérlőnek küldték a hitelesítési kérelmet. \ | (Csak Linux) |
-| 400 hibás kérelem | bad_request_102 | Nincs megadva a szükséges metaadat-fejléc | A kérelemből hiányzik a `Metadata`-kérelem fejléce mező, vagy helytelenül van formázva. Az értéket `true`ként kell megadni, az összes kisbetű esetében. Példaként tekintse meg a "minta kérés" szakaszt az előző REST szakaszban.|
-| 401 jogosulatlan | unknown_source | Ismeretlen forrás *\<URI\>* | Ellenőrizze, hogy a HTTP GET kérelem URI-ja helyesen van-e formázva. A `scheme:host/resource-path` részt `http://localhost:50342/oauth2/token`ként kell megadni. Példaként tekintse meg a "minta kérés" szakaszt az előző REST szakaszban.|
-|           | invalid_request | A kérelemből hiányzik egy kötelező paraméter, a paraméter értéke érvénytelen, a paraméter többször is szerepel, vagy más módon helytelen formátumú. |  |
-|           | unauthorized_client | Az ügyfél nem jogosult hozzáférési jogkivonat igénylésére a metódus használatával. | Olyan kérelem okozta, amely nem használ helyi visszacsatolást a bővítmény meghívásához, vagy olyan virtuális gépen, amely nem rendelkezik felügyelt identitásokkal az Azure-erőforrásokhoz megfelelően konfigurálva. Ha segítségre van szüksége a virtuálisgép-konfigurációval kapcsolatban, tekintse [meg a felügyelt identitások konfigurálása az Azure-erőforrásokhoz a Azure Portal segítségével](qs-configure-portal-windows-vm.md) című témakört. |
-|           | access_denied | Az erőforrás-tulajdonos vagy az engedélyezési kiszolgáló megtagadta a kérelmet. |  |
-|           | unsupported_response_type | Az engedélyezési kiszolgáló nem támogatja hozzáférési jogkivonat beszerzését ezzel a módszerrel. |  |
-|           | invalid_scope | A kért hatókör érvénytelen, ismeretlen vagy helytelen formátumú. |  |
-| 500 belső kiszolgálóhiba | ismeretlen | Nem sikerült beolvasni a tokent az Active Directoryból. Részletekért lásd: *\<fájl elérési útjának naplófájljai\>* | Ellenőrizze, hogy az Azure-erőforrásokhoz tartozó felügyelt identitások engedélyezve lettek-e a virtuális gépen. Ha segítségre van szüksége a virtuálisgép-konfigurációval kapcsolatban, tekintse [meg a felügyelt identitások konfigurálása az Azure-erőforrásokhoz a Azure Portal segítségével](qs-configure-portal-windows-vm.md) című témakört.<br><br>Ellenőrizze azt is, hogy a HTTP GET kérelem URI-ja helyesen van-e formázva, különösen a lekérdezési karakterláncban megadott erőforrás-URI-t. Tekintse meg a "minta kérést" az előző REST szakaszban, vagy az Azure [ad-hitelesítést támogató Azure-szolgáltatásokat](services-support-msi.md) a szolgáltatások és a hozzájuk tartozó erőforrás-azonosítók listájához.
+| 400 rossz kérés | invalid_resource | AADSTS50001: Az * \<URI\> * nevű alkalmazás nem található a * \<tenant-id\>* nevű bérlőben. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy a bérlő bármely felhasználója hozzájárult hozzá. Lehet, hogy nem a megfelelő bérlőnek küldte el a hitelesítési kérelmet.\ | (Csak Linux) |
+| 400 rossz kérés | bad_request_102 | A szükséges metaadat-fejléc nincs megadva | Vagy `Metadata` hiányzik a kérelem fejlécmezője a kérésből, vagy helytelenül van formázva. Az értéket úgy kell `true`megadni, hogy minden kisbetűs. Tekintse meg a "Minta kérelem" az előző REST szakaszban egy példa.|
+| 401 Jogosulatlan | unknown_source | Ismeretlen forrás * \<URI-ja\>* | Ellenőrizze, hogy a HTTP GET-kérelem URI-ja megfelelően van-e formázva. Az `scheme:host/resource-path` adagot a `http://localhost:50342/oauth2/token`ban kell megadni. Tekintse meg a "Minta kérelem" az előző REST szakaszban egy példa.|
+|           | invalid_request | A kérelemből hiányzik egy kötelező paraméter, érvénytelen paraméterértéket tartalmaz, egynél többször tartalmaz paramétert, vagy más módon hibásan formázott. |  |
+|           | unauthorized_client | Az ügyfél nem jogosult hozzáférési jogkivonat ot kérni ezzel a módszerrel. | Egy kérelem, amely nem használja a helyi visszacsatolás a bővítmény hívásához, vagy egy virtuális gép, amely nem rendelkezik felügyelt identitások az Azure-erőforrások megfelelően konfigurált. Lásd: [Felügyelt identitások konfigurálása az Azure-erőforrások egy virtuális gép az Azure Portalon,](qs-configure-portal-windows-vm.md) ha segítségre van szüksége a virtuális gép konfigurációját. |
+|           | access_denied | Az erőforrás tulajdonosa vagy az engedélyezési kiszolgáló megtagadta a kérést. |  |
+|           | unsupported_response_type | Az engedélyezési kiszolgáló nem támogatja a hozzáférési jogkivonat beszerzését ezzel a módszerrel. |  |
+|           | invalid_scope | A kért hatókör érvénytelen, ismeretlen vagy hibásan formázott. |  |
+| 500 Belső kiszolgálóhiba | Ismeretlen | Nem sikerült beolvasni a jogkivonatot az Active directoryból. További részletek a * \<fájlok elérési útjának naplózása\>* | Ellenőrizze, hogy az Azure-erőforrások felügyelt identitások engedélyezve van-e a virtuális gépen. Lásd: [Felügyelt identitások konfigurálása az Azure-erőforrások egy virtuális gép az Azure Portalon,](qs-configure-portal-windows-vm.md) ha segítségre van szüksége a virtuális gép konfigurációját.<br><br>Ellenőrizze azt is, hogy a HTTP GET-kérelem URI-ja megfelelően van-e formázva, különösen a lekérdezési karakterláncban megadott erőforrás-URI.Also verify that your HTTP GET request URI is formated correctly, especially the resource URI specified in the query string. Tekintse meg a "Mintakérelem" az előző REST szakaszban egy példa, vagy [az Azure-szolgáltatások, amelyek támogatják az Azure AD-hitelesítés](services-support-msi.md) a szolgáltatások listáját és a megfelelő erőforrás-azonosítók.
 
 ## <a name="retry-guidance"></a>Újrapróbálkozási útmutató 
 
-Javasoljuk, hogy próbálkozzon újra, ha 404, 429 vagy 5xx hibakódot kap (lásd a fenti [hibakódot](#error-handling) ).
+Javasoljuk, hogy próbálkozzon újra, ha 404-es, 429-es vagy 5xx-es hibakódot kap (lásd a fenti [Hibakezelés](#error-handling) című témakört).
 
-A szabályozás korlátozásai az IMDS-végponton végrehajtott hívások számára vonatkoznak. Ha túllépi a sávszélesség-szabályozási küszöbértéket, a IMDS végpontja korlátozza a további kérelmeket, amíg a szabályozás érvényben van. Ebben az időszakban a IMDS-végpont a 429-as HTTP-állapotkódot ("túl sok kérelem") adja vissza, és a kérések sikertelenek lesznek. 
+A sávszélesség-szabályozási korlátok az IMDS-végpontra irányuló hívások számára vonatkoznak. A sávszélesség-szabályozási küszöbérték túllépése esetén az IMDS-végpont korlátozza a további kérelmeket, amíg a szabályozás érvényben van. Ebben az időszakban az IMDS-végpont a 429-es HTTP-állapotkódot adja vissza ("Túl sok kérés"), és a kérelmek sikertelenek lesznek. 
 
 Az újrapróbálkozáshoz a következő stratégiát javasoljuk: 
 
-| **Újrapróbálkozási stratégia** | **Beállítások** | **Értékek** | **Működési elv** |
+| **Újrapróbálkozási stratégia** | **Beállítások** | **Értékek** | **Működés** |
 | --- | --- | --- | --- |
-|ExponentialBackoff |Ismétlések száma<br />Visszatartás (min.)<br />Visszatartás (max.)<br />Visszatartás (változás)<br />Első gyors újrapróbálkozás |5<br />0 másodperc<br />60 másodperc<br />2 másodperc<br />false |1\. kísérlet – 0 mp. késleltetés<br />2\. kísérlet – kb. 2 mp. késleltetés<br />3\. kísérlet – kb. 6 mp. késleltetés<br />4\. kísérlet – kb. 14 mp. késleltetés<br />5\. kísérlet – kb. 30 mp. késleltetés |
+|ExponentialBackoff |Ismétlések száma<br />Visszatartás (min.)<br />Visszatartás (max.)<br />Visszatartás (változás)<br />Első gyors újrapróbálkozás |5<br />0 másodperc<br />60 másodperc<br />2 másodperc<br />hamis |1. kísérlet – 0 mp. késleltetés<br />2. kísérlet – kb. 2 mp. késleltetés<br />3. kísérlet – kb. 6 mp. késleltetés<br />4. kísérlet – kb. 14 mp. késleltetés<br />5. kísérlet – kb. 30 mp. késleltetés |
 
 ## <a name="resource-ids-for-azure-services"></a>Az Azure-szolgáltatások erőforrás-azonosítói
 
-Tekintse meg az Azure ad- [hitelesítést támogató Azure-szolgáltatásokat](services-support-msi.md) az Azure ad-t támogató erőforrások listájáért, valamint az Azure-erőforrások felügyelt identitásokkal való tesztelését, valamint a hozzájuk tartozó erőforrás-azonosítókat.
+Tekintse meg az [Azure-szolgáltatásokat, amelyek támogatják az Azure AD-hitelesítést](services-support-msi.md) az Azure AD-t támogató és felügyelt identitásokkal az Azure-erőforrásokkal és a megfelelő erőforrás-azonosítókkal tesztelt erőforrások listájáért.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Az Azure-beli virtuális gépeken található Azure-erőforrások felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrásokhoz a Azure Portal használatával](qs-configure-portal-windows-vm.md).
+- Ha engedélyezni szeretné az Azure-erőforrások felügyelt identitások egy Azure virtuális gép, [az Azure-erőforrások felügyelt identitások konfigurálása egy virtuális gép en az Azure Portalon.](qs-configure-portal-windows-vm.md)
 
 
 

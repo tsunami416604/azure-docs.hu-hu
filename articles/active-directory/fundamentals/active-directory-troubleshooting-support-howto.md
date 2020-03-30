@@ -1,6 +1,6 @@
 ---
-title: Segítség keresése és a egy támogatási jegyet – Azure Active Directory |} A Microsoft Docs
-description: Segítséget kaphat, és nyisson egy támogatási jegyet az Azure Active Directory kapcsolatos utasításokat.
+title: Segítség keresése és támogatási jegy megnyitása - Azure Active Directory | Microsoft dokumentumok
+description: Útmutató az Azure Active Directory támogatási jegyéhez való segítség bekéréséről és megnyitásáról.
 services: active-directory
 documentationcenter: na
 author: msaburnley
@@ -15,79 +15,90 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dce9b93dfe4ddfca370d1d3131d1d12cb6f121d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1193bfc08ccbd86d4da09c4de472f09bb49208f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561755"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049941"
 ---
-# <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Segítség keresése, és nyisson egy támogatási jegyet az Azure Active Directory
-A Microsoft globális műszaki, értékesítés előtti, számlázási és előfizetés-támogatás az Azure Active Directory (Azure AD) biztosít. Támogatás online és telefonon a fizetős Microsoft Azure és a próba-előfizetések is érhető el. Telefonos és online számlázási támogatás más nyelveken érhetők el. 
+# <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Segítség keresése és támogatási jegy megnyitása az Azure Active Directoryhoz
+A Microsoft globális technikai, értékesítés előtti, számlázási és előfizetési támogatást nyújt az Azure Active Directoryhoz (Azure AD). A microsoft Azure fizetős és próba-előfizetéseihez online és telefonon is elérhető. Telefonos támogatás és online számlázási támogatás más nyelveken is elérhető. 
 
 ## <a name="find-help-without-opening-a-support-ticket"></a>Segítség keresése támogatási jegy megnyitása nélkül
 
-Támogatási jegy létrehozása előtt tekintse meg az alábbi forrásanyagokat válaszokat és információkat. 
+Mielőtt támogatási jegyet hozna létre, keressen válaszokat és információkat az alábbi helyeken. 
 
-* A tartalmat, például útmutató információkat vagy a kódmintákban informatikai szakemberek és fejlesztők számára, tekintse meg a [technikai dokumentációja a docs.microsoft.com webhelyen közzétett](https://docs.microsoft.com/azure/active-directory/).
+* Az informatikai szakemberek nek és fejlesztőknek szóló tartalom, például útmutató vagy kódminták a [docs.microsoft.com.](https://docs.microsoft.com/azure/active-directory/)
 
-* A [Microsoft technikai közössége](https://techcommunity.microsoft.com/) az informatikai szakemberek és ügyfeleink együttműködésének, megosztásának és megismerésének helyszíne. A [Microsoft technikai közösségi információs](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) központját a bejelentések, blogbejegyzések, kérdezz-Me-ANYTHING (ama) szakértőkkel folytatott interakciók és egyéb tevékenységek használják. Emellett [csatlakozás a Közösséghez a ötleteket szeretne elküldeni](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities).
+* A [Microsoft Technical Community](https://techcommunity.microsoft.com/) az a hely, ahol informatikai profi partnereink és ügyfeleink együttműködhetnek, megoszthatnak és tanulhatnak. A [Microsoft Technical Community Info Center](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) a bejelentéseket, blogbejegyzéseket, kérdezz bármit (AMA) szakértőkkel folytatott interakciókhoz és egyebekhez használható. Ön is [csatlakozhat a közösséghez, hogy nyújtsa be ötleteit](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities).
 
 
-## <a name="open-a-support-ticket"></a>Hozzon létre egy támogatási jegyet
+## <a name="open-a-support-ticket"></a>Támogatási jegy megnyitása
 
-Ha nem találja a választ önsegítő erőforrások segítségével, online támogatási jegy megnyithatja. Így akkor kapcsolatot építhetünk a támogatási szakértők, akik az Ön problémájának megoldására szakértők nyisson meg egy adott probléma csak egyes támogatási jegyet. Azure Active Directory fejlesztői csapataival is, rangsorolja a alapuló incidenseket, amelyek akkor jönnek létre, szolgáltatás fejlesztései gyakran Ön hozzájárul a munkájukat.
+Ha önsegítő erőforrások kal nem tud választ találni, megnyithat egy online támogatási jegyet. Minden támogatási jegyet csak egyetlen problémára kell megnyitnia, hogy összekapcsolhassuk Önt a támogatási mérnökökkel, akik a probléma tárgyszakértői. Emellett az Azure Active Directory mérnöki csapatai a létrehozott incidensek alapján rangsorolják a munkájukat, így gyakran hozzájárul a szolgáltatás fejlesztéséhez.
 
-### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-azure-portal"></a>Hogyan nyithat egy támogatási jegyet az Azure Portalon az Azure AD-hez
+### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-azure-portal"></a>Támogatási jegy megnyitása az Azure AD-hez az Azure Portalon
 
 > [!NOTE]
-> Számlázási vagy előfizetési problémák esetén a [Microsoft 365 felügyeleti](https://admin.microsoft.com)központot kell használnia.
+> Számlázási vagy előfizetési problémák esetén a [Microsoft 365 Felügyeleti központot kell használnia.](https://admin.microsoft.com)
 > 
 
-1. Jelentkezzen be a [az Azure Portalon](https://portal.azure.com) , és nyissa meg **Azure Active Directory**.
+1. Jelentkezzen be [az Azure Portalra,](https://portal.azure.com) és nyissa meg az **Azure Active Directoryt.**
    
-2. Görgessen le a **hibaelhárítás + támogatás** válassza **új támogatási kérelem**.
+2. Görgessen le a **Hibaelhárítás + Támogatás laphoz,** és válassza az **Új támogatási kérelem**lehetőséget.
    
-3. Az a **alapjai** panelen a **Problématípus**, jelölje be **technikai**.
-   
-4. A **szolgáltatás**válassza **Azure Active Directory**, majd válassza ki **tovább**.
+3. Az **Alapok** panelen a **Probléma típusmezőben**válassza a **Technical**lehetőséget.
 
-5. A **probléma** panelen válasszon ki egy [súlyosságot](https://azure.microsoft.com/support/plans/response/).
+4. Válassza ki **az előfizetést.**
+
+5. A **Service (Szolgáltatás)** csoportban válassza az **Azure Active Directory**lehetőséget.
+
+6. **Összegzés** létrehozása a kérelemhez. Az összegzésnek 140 karakternél nem lehet hosszabb.
   
-6. Válassza ki egy **Problem type**, majd válassza ki a **kategória** erre. Ezen a ponton azt is rendelkezésre állnak az önsegítő információkat a probléma kategóriája.
+7. Jelöljön ki egy **Probléma típust**, majd jelöljön ki egy kategóriát az adott típushoz. Ezen a ponton önsegítő információkat is kap a problémakategóriájához.
   
-7. Vegye fel a többi probléma adatait, és kattintson a **tovább**.
-  
-8. Adja meg kapcsolattartási adatait, és válassza ki **létrehozás**.
-  ![A probléma kategóriája önsegítő képernyőkép](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
+7. Adja hozzá a probléma többi részét, és kattintson a **Tovább**gombra. 
+
+8. Ezen a ponton önsegítő megoldásokat és dokumentációt kínálunk önnek a **Megoldások** panelen. Ha az ottani megoldások egyike sem oldja meg a problémát, kattintson a **Tovább**gombra. 
+
+9. A **Részletek** panelen töltse ki a szükséges részleteket, és válassza ki a [Súlyosság lehetőséget.](https://azure.microsoft.com/support/plans/response/) 
+ 
+![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
+ 
+10. Adja meg kapcsolattartási adatait, és válassza a **Tovább gombot.** 
+
+
+8. Adja meg a kapcsolattartási adatokat, és válassza **a Létrehozás lehetőséget.**
+  ![Probléma kategória önsegítő képernyőkép](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>Támogatási jegy megnyitása az Azure AD-hez a Microsoft 365 felügyeleti központban
 
 > [!NOTE]
 > Az Azure AD támogatása a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com) csak rendszergazdák számára érhető el. 
 
-1. Jelentkezzen be a [Microsoft 365 felügyeleti](https://admin.microsoft.com) központba egy Enterprise Mobility + Security (EMS) licenccel rendelkező fiókkal.
+1. Jelentkezzen be a [Microsoft 365 Felügyeleti központba](https://admin.microsoft.com) egy Enterprise Mobility + Security (EMS) licenccel rendelkező fiókkal.
 
-2. A **támogatás** csempén válassza az **új szolgáltatás kérése**elemet:
+2. A **Támogatás** csempén válassza az **Új szolgáltatáskérelem**lehetőséget:
 
-3. A **támogatás áttekintése** lapon válassza az **Identitáskezelés** vagy **a felhasználó-és tartományi felügyelet**elemet:
+3. A **Támogatás áttekintése** lapon válassza az **Identitáskezelés** vagy **a Felhasználó- és tartománykezelés lehetőséget:**
 
-4. A **funkció**, válassza ki az Azure AD-funkció, amelynek támogatási kívánja.
+4. A **Funkció,** válassza ki az Azure AD-szolgáltatás, amelynek támogatni szeretné.
 
-5. A **tünet**, egy megfelelő tünet, foglalja össze a problémát és adja meg az érintett adatokat, majd válassza ki és **tovább**.
+5. A **Tünet területen**válassza ki a megfelelő tünetet, foglalja össze a problémát, adja meg a megfelelő részleteket, majd válassza a **Tovább**gombot.
 
-6. Válassza ki a felajánlott önsegítő erőforrások közül, vagy válasszon **Igen, továbbra is** vagy **nem, a kérelem visszavonása**.
+6. Válasszon egyet a felajánlott önsegítő erőforrások közül, vagy válassza az **Igen, a folytatás** vagy **a Nem lehetőséget, és szakítsa meg a kérést.**
 
-7. Ha folytatja, a rendszer megkéri a részleteket. Bármely rendelkezik, amely képviseli a problémát, és válassza ki fájlokat is csatolhat **tovább**.
+7. Ha folytatja, további részleteket kell megadnia. A problémát képviselő fájlokat csatolhatja, majd válassza a **Tovább**gombot.
 
-8. Adja meg kapcsolattartási adatait, és válassza ki **kérés elküldése**.
+8. Adja meg kapcsolattartási adatait, és válassza **a Kérelem küldése**lehetőséget.
 
 ## <a name="get-phone-support"></a>Telefonos segítség
 
-Tekintse meg a [forduljon a Microsoft támogatás](https://portal.office.com/Support/ContactUs.aspx) támogatási telefonszámokat beszerzéséhez.
+A támogatási telefonszámok beszerzéséhez keresse [fel a Microsofttámogatási](https://portal.office.com/Support/ContactUs.aspx) oldalt.
 
 ##  <a name="next-steps"></a>További lépések
 
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/)
 
-* [Műszaki dokumentációja a docs.microsoft.com webhelyen](https://docs.microsoft.com/azure/active-directory/)
+* [Műszaki dokumentáció docs.microsoft.com](https://docs.microsoft.com/azure/active-directory/)

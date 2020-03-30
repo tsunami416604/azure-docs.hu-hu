@@ -1,36 +1,36 @@
 ---
-title: Statikus kötet létrehozása hüvelyekhez az Azure Kubernetes szolgáltatásban (ak)
-description: Megtudhatja, hogyan hozhat létre manuálisan Azure-lemezekkel rendelkező köteteket az Azure Kubernetes Service (ak) szolgáltatásban található Pod használatával
+title: Statikus kötet létrehozása podok számára az Azure Kubernetes-szolgáltatásban (AKS)
+description: Megtudhatja, hogyan hozhat létre manuálisan kötetet az Azure Kubernetes-szolgáltatás (AKS) podjával való használatra az Azure Kubernetes szolgáltatásban (AKS)
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: b84f62dd02aa29a4c1aa64e3235c0a1e7cc66522
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 17795ae696c0d710f099a5c21aa754fc925953ca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596742"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80047943"
 ---
-# <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure-lemezekkel rendelkező kötet manuális létrehozása és használata az Azure Kubernetes szolgáltatásban (ak)
+# <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Kötet manuális létrehozása és használata Azure-lemezekkel az Azure Kubernetes-szolgáltatásban (AKS)
 
-A tároló-alapú alkalmazásoknak gyakran kell elérniük és megőrizniük az adatmennyiséget egy külső adatköteten. Ha egyetlen Pod-hozzáférésre van szükség a tárolóhoz, az Azure-lemezek használatával natív kötetet adhat az alkalmazás használatához. Ebből a cikkből megtudhatja, hogyan hozhat létre manuálisan Azure-lemezeket, és hogyan csatlakoztathatja egy Pod-hez az AK-ban.
+A tárolóalapú alkalmazásoknak gyakran kell hozzáférniük és meg kell őrizniük az adatokat egy külső adatköteten. Ha egy pod nak szüksége van a tároláshoz való hozzáférésre, azure-lemezek használatával egy natív kötetet az alkalmazás használata. Ez a cikk bemutatja, hogyan hozhat létre manuálisan egy Azure-lemezt, és csatolja azt egy pod az AKS-ben.
 
 > [!NOTE]
-> Az Azure-lemezek egyszerre csak egyetlen Pod csatlakoztatására használhatók. Ha egy állandó kötetet több hüvelyben kell megosztania, használja a [Azure Files][azure-files-volume].
+> Egy Azure-lemez egyszerre csak egyetlen podra csatlakoztatható. Ha egy állandó kötetet több podközött kell megosztania, használja az [Azure Files szolgáltatást.][azure-files-volume]
 
-A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-beli alkalmazások tárolási beállításai][concepts-storage].
+A Kubernetes-kötetekről az [AKS-ben lévő alkalmazások tárolási beállításai][concepts-storage]című témakörben talál további információt.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AKS-fürttel. Ha AKS-fürtre van szüksége, tekintse meg az AKS [gyorsútmutatót az Azure CLI használatával][aks-quickstart-cli] vagy az Azure Portal [használatával.][aks-quickstart-portal]
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió megkereséséhez futtassa a `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Az Azure CLI 2.0.59-es vagy újabb verziójára is szüksége van telepítve és konfigurálva. Futtassa `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni kell, olvassa el [az Azure CLI telepítése][install-azure-cli]című témakört.
 
 ## <a name="create-an-azure-disk"></a>Azure-lemez létrehozása
 
-Ha az AK-val való használatra létrehoz egy Azure-lemezt, akkor a **csomópont** -erőforráscsoport létrehozhatja a lemez erőforrását. Ez a megközelítés lehetővé teszi az AK-fürt számára a lemez erőforrásának elérését és kezelését. Ha ehelyett külön erőforráscsoporthoz hozza létre a lemezt, akkor a fürthöz tartozó Azure Kubernetes szolgáltatás (ak) egyszerű szolgáltatásnevet kell megadnia az `Contributor` szerepkörnek a lemez erőforráscsoporthoz.
+Amikor létrehoz egy Azure-lemezt az AKS-hez, létrehozhatja a lemezerőforrást a csomóponterőforrás-csoportban. **node** Ez a megközelítés lehetővé teszi, hogy az AKS-fürt hozzáférjen és kezelje a lemezerőforrást. Ha ehelyett egy külön erőforráscsoportban hozza létre a lemezt, az Azure Kubernetes Service `Contributor` (AKS) egyszerű szolgáltatása a fürt szerepkört kell adnia a lemez erőforráscsoportjának. Azt is megteheti, hogy a rendszer hozzárendelt felügyelt identitás engedélyek helyett a szolgáltatás névsor. További információ: [Felügyelt identitások használata.](use-managed-identity.md)
 
-Ehhez a cikkhez hozza létre a lemezt a csomópont-erőforráscsoporthoz. Először kérje le az erőforráscsoport nevét az az [AK show][az-aks-show] paranccsal, és adja hozzá a `--query nodeResourceGroup` Query paramétert. A következő példa lekéri a csomópont-erőforráscsoportot az AK-fürt neve *myAKSCluster* az erőforráscsoport neve *myResourceGroup*:
+Ebben a cikkben hozza létre a lemezt a csomópont erőforráscsoportban. Először az erőforráscsoport nevét az [az aks][az-aks-show] `--query nodeResourceGroup` show paranccsal kapja meg, és adja hozzá a lekérdezési paramétert. A következő példa a *myResourceGroup*erőforráscsoport nevű erőforráscsoport ban az AKS-fürt *myAKSCluster* nevű csomóponterőforrás-csoportját kapja:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -38,7 +38,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Most hozzon létre egy lemezt az az [Disk Create][az-disk-create] paranccsal. Adja meg az előző parancsban beszerzett csomópont-erőforráscsoport nevét, majd a lemez erőforrásának nevét, például *myAKSDisk*. A következő példa egy *20*GIB-lemezt hoz létre, és a létrehozás után kiírja a lemez azonosítóját. Ha létre kell hoznia egy lemezt a Windows Server-tárolókkal való használatra (jelenleg előzetes verzióban érhető el), adja hozzá a `--os-type windows` paramétert a lemez helyes formázásához.
+Most hozzon létre egy lemezt az [az lemez létrehozása][az-disk-create] paranccsal. Adja meg az előző parancsban kapott csomóponterőforrás-csoport nevét, majd a lemezerőforrás nevét, például a *myAKSDisk*nevet. A következő példa létrehoz egy *20*GiB-lemezt, és a lemez azonosítóját a létrehozás után adja ki. Ha létre kell hoznia egy lemezt a Windows Server-tárolókhoz `--os-type windows` (jelenleg előzetes verzióban az AKS-ben), adja hozzá a paramétert a lemez megfelelő formázásához.
 
 ```azurecli-interactive
 az disk create \
@@ -49,9 +49,9 @@ az disk create \
 ```
 
 > [!NOTE]
-> Az Azure-lemezek számlázása az SKU alapján történik egy adott méretre. Ezek az SKU-32GiB az S4 vagy a P4 lemezeken a S80-vagy P80-lemezek 32TiB (előzetes verzió). A prémium szintű felügyelt lemez átviteli sebessége és IOPS teljesítménye az AK-fürtben található csomópontok SKU-jának és példányának méretétől függ. Lásd: [Managed Disks díjszabása és teljesítménye][managed-disk-pricing-performance].
+> Az Azure-lemezek számlázása a termékváltozat egy adott méretre. Ezek a termékkiállítások az S4 vagy P4 lemezek 32GiB-jétől az S80 vagy P80 lemezekhez (előzetes verzióban) 32TiB-ig terjednek. A prémium szintű felügyelt lemez átviteli és IOPS-teljesítménye a termékváltozattól és az AKS-fürt csomópontjainak méretétől is függ. Lásd: [A felügyelt lemezek díjszabása és teljesítménye.][managed-disk-pricing-performance]
 
-A lemez erőforrás-azonosítója a parancs sikeres befejeződése után jelenik meg, ahogy az a következő példában látható. Ez a lemez-azonosító a lemez a következő lépésben való csatlakoztatására szolgál.
+A lemezerőforrás-azonosító akkor jelenik meg, ha a parancs sikeresen befejeződött, ahogy az a következő példakimeneten is látható. Ez a lemezazonosító a lemez csatlakoztatására szolgál a következő lépésben.
 
 ```console
 /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
@@ -59,7 +59,7 @@ A lemez erőforrás-azonosítója a parancs sikeres befejeződése után jelenik
 
 ## <a name="mount-disk-as-volume"></a>Lemez csatlakoztatása kötetként
 
-Az Azure-lemez Pod-ba való csatlakoztatásához konfigurálja a kötetet a tároló specifikációjában. hozzon létre egy új, `azure-disk-pod.yaml` nevű fájlt a következő tartalommal. Frissítse `diskName` az előző lépésben létrehozott lemez nevével, és `diskURI` a lemez létrehozása parancs kimenetében látható lemez azonosítójával. Ha szükséges, frissítse a `mountPath`, amely az az elérési út, ahol az Azure-lemez csatlakoztatva van a pod-hoz. A Windows Server-tárolók esetében (jelenleg előzetes verzióban) a Windows PATH Convention, például a *'d: "* *mountPath* használatával adható meg.
+Az Azure-lemez csatlakoztatásához a pod, konfigurálja a kötetet `azure-disk-pod.yaml` a tárolóban spec. Hozzon létre egy új nevű fájlt a következő tartalommal. Frissítés `diskName` az előző lépésben létrehozott lemez nevével és `diskURI` a lemezlétrehozás parancs kimenetén látható lemezazonosítóval. Ha szükséges, `mountPath`frissítse a , amely az elérési utat, ahol az Azure-lemez csatlakoztatva van a pod. Windows Server-tárolók esetén (jelenleg előzetes verzióban az AKS-ben) adjon meg egy *mountPath-ot* a Windows elérési út konvenciója, például a *"D:"* használatával.
 
 ```yaml
 apiVersion: v1
@@ -88,13 +88,13 @@ spec:
           diskURI: /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
 ```
 
-A pod létrehozásához használja a `kubectl` parancsot.
+A `kubectl` parancs segítségével hozza létre a pod.
 
 ```console
 kubectl apply -f azure-disk-pod.yaml
 ```
 
-Most már rendelkezik egy futó Pod lemezzel, amelyen `/mnt/azure`található. A `kubectl describe pod mypod` használatával ellenőrizheti, hogy a lemez csatlakoztatása sikeres volt-e. A következő összefoglalt példa kimenet a tárolóban csatlakoztatott kötetet mutatja:
+Most már rendelkezik egy futó pod `/mnt/azure`egy Azure-lemez csatlakoztatva. A lemez `kubectl describe pod mypod` sikeres csatlakoztatásának ellenőrzéséhez használható. A következő kondenzált példa kimenet a tárolóba szerelt kötetet mutatja:
 
 ```
 [...]
@@ -121,11 +121,11 @@ Events:
 [...]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
+A kapcsolódó gyakorlati tanácsok értése: [Gyakorlati tanácsok a tároláshoz és a biztonsági mentések az AKS-ben.][operator-best-practices-storage]
 
-További információ az AK-fürtökről az Azure-lemezekkel kapcsolatban: [Kubernetes beépülő modul Azure-lemezekhez][kubernetes-disks].
+Az AKS-fürtök Azure-lemezekkel való interakciójáról további információt az [Azure Disks Kubernetes beépülő moduljában talál.][kubernetes-disks]
 
 <!-- LINKS - external -->
 [kubernetes-disks]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md

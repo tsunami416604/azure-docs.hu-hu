@@ -1,6 +1,6 @@
 ---
-title: Javaslatok készítése az Apache Mahout használatával az Azure HDInsight
-description: Megtudhatja, hogyan hozhatja ki a HDInsight (Hadoop) a filmkészítési javaslatokat az Apache Mahout Machine learning-kódtár használatával.
+title: Javaslatok létrehozása az Apache Mahout használatával az Azure HDInsightban
+description: Ismerje meg, hogyan használhatja az Apache Mahout gépi tanulási könyvtárat a HDInsight (Hadoop) segítségével a filmjavaslatok létrehozásához.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,47 +9,47 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
 ms.openlocfilehash: 33110e9f1d45fcd11e5f4cad1b589ab929a9472d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75767636"
 ---
-# <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>Filmkészítési javaslatok előállítása az Apache Mahout és az Apache Hadoop HDInsight (SSH) használatával
+# <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>Filmjavaslatok készítése az Apache Mahout használatával az Apache Hadoop segítségével a HDInsightban (SSH)
 
 [!INCLUDE [mahout-selector](../../../includes/hdinsight-selector-mahout.md)]
 
-Ismerje meg, hogyan hozhatja elő a filmkészítési javaslatokat az [Apache Mahout](https://mahout.apache.org) Machine learning-kódtár és az Azure HDInsight használatával.
+Ismerje meg, hogyan használhatja az [Apache Mahout](https://mahout.apache.org) gépi tanulási könyvtárát az Azure HDInsight-mal filmjavaslatok létrehozásához.
 
-A Mahout egy [gépi tanulási](https://en.wikipedia.org/wiki/Machine_learning) könyvtár a Apache Hadoop számára. A Mahout az adatfeldolgozáshoz szükséges algoritmusokat, például a szűrést, a besorolást és a fürtözést is tartalmazza. Ebben a cikkben egy ajánlási motort használ, amely a barátok által készített filmek alapján készít javaslatokat.
+A Mahout az Apache Hadoop [gépi tanulási](https://en.wikipedia.org/wiki/Machine_learning) könyvtára. A Mahout algoritmusokat tartalmaz az adatok feldolgozásához, például a szűréshez, a besoroláshoz és a fürtözéshez. Ebben a cikkben egy ajánlási motor segítségével generálhat olyan filmjavaslatokat, amelyek az ismerőseid által látott filmeken alapulnak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy Apache Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
+Apache Hadoop-fürt a HDInsighton. Lásd: [Első lépések a HDInsight linuxos alkalmazásával.](./apache-hadoop-linux-tutorial-get-started.md)
 
 ## <a name="apache-mahout-versioning"></a>Apache Mahout verziószámozás
 
-A HDInsight-ben található Mahout verziójával kapcsolatos további információkért lásd: [HDInsight-verziók és Apache Hadoop-összetevők](../hdinsight-component-versioning.md).
+A Mahout HDInsight-verziójáról a [HDInsight-verziók és az Apache Hadoop-összetevők](../hdinsight-component-versioning.md)című témakörben talál további információt.
 
-## <a name="understanding-recommendations"></a>A javaslatok ismertetése
+## <a name="understanding-recommendations"></a>Az ajánlások ismertetése
 
-A Mahout által biztosított függvények egyike egy ajánlási motor. Ez a motor `userID`, `itemId`és `prefValue` formátumban fogadja el az adatmennyiséget (az elemre vonatkozó beállítás). A Mahout Ezután elvégezheti a közös előfordulási elemzést annak megállapításához, hogy az adott *elemhez előnyben részesített felhasználók is rendelkeznek-e ezekkel a többi elemmel*. A Mahout ezután meghatározza a hasonló elemekkel rendelkező felhasználókat, amelyekkel ajánlásokat lehet tenni.
+A Mahout által biztosított egyik funkció egy ajánlási motor. Ez a motor a , `userID` `itemId`és `prefValue` (az elem előnyben részesítése) formátumú adatokat fogad el. A Mahout ezután közös előfordulási elemzést végezhet annak meghatározására, hogy azok *a felhasználók, akik előnyben részesítik az elemet, szintén előnyben részesítik ezeket az elemeket.* A Mahout ezután meghatározza a hasonló elem beállításaival rendelkező felhasználókat, amelyek javaslatok at tehetnek.
 
-A következő munkafolyamat egy egyszerűsített példa, amely a Movie-adatbevitelt használja:
+A következő munkafolyamat egy egyszerűsített példa, amely filmadatokat használ:
 
-* **Közös előfordulás**: Joe, Alice és Bob minden tetszett *Star Wars*, *a birodalom*visszatér, és *visszaküldi a jedit*. A Mahout határozza meg, hogy a fenti filmek egyike, a másik kettőhöz hasonlóan a felhasználók is hasonlóak.
+* **Együtt előfordulása:** Joe, Alice, és Bob minden tetszett *Star Wars,* *A Birodalom visszavág*, és a Return of *the Jedi*. Mahout határozza meg, hogy a felhasználók, akik szeretik az egyik ilyen filmek is, mint a másik kettő.
 
-* **Együttes előfordulás**: Bob és Alice is tetszett *a Phantom árnyak*, *a klónok támadása*és *a Sith bosszúja*. A Mahout határozza meg, hogy az előző három filmhez hasonló felhasználók is szeretik a három filmet.
+* **Együtt előfordulása**: Bob és Alice is tetszett *a Phantom Menace*, Attack of the *Clones*, és *a Revenge of the Sith*. Mahout határozza meg, hogy a felhasználók, akik szerették az előző három film is, mint ez a három film.
 
-* **Hasonlósági javaslat**: mivel Joe tetszett az első három film, a Mahout olyan filmeket keres, amelyeket mások hasonló beállításokkal kedveltek, de Joe nem figyelt (tetszett/értékelt). Ebben az esetben a Mahout *a Phantom árnyak*, a *klónok támadását*és *a Sith bosszúját*javasolja.
+* **Hasonlóság ajánlás:** Mivel Joe tetszett az első három film, Mahout néz filmeket, hogy mások hasonló preferenciák tetszett, de Joe nem nézte meg (tetszett / értékelt). Ebben az esetben Mahout ajánlja: *The Phantom Menace*, Attack of the *Clones*és *Revenge of the Sith*.
 
-### <a name="understanding-the-data"></a>Az adatgyűjtés ismertetése
+### <a name="understanding-the-data"></a>Az adatok ismertetése
 
-A [GroupLens Research](https://grouplens.org/datasets/movielens/) kényelmesen, a Mahout-mel kompatibilis formátumban biztosítja a filmek minősítési információit. Ezek az adatkészletek a fürt alapértelmezett tárolójában érhetők el `/HdiSamples/HdiSamples/MahoutMovieData`.
+A [GroupLens Research](https://grouplens.org/datasets/movielens/) kényelmesen biztosít minősítési adatokat a filmekhez a Mahout-tal kompatibilis formátumban. Ezek az adatok a fürt alapértelmezett `/HdiSamples/HdiSamples/MahoutMovieData`tárolóján érhetők el a.-on.
 
-Két fájl, `moviedb.txt` és `user-ratings.txt`. Az elemzés során a rendszer a `user-ratings.txt` fájlt használja. A `moviedb.txt` a felhasználóbarát szöveges információk megadására szolgál az eredmények megtekintésekor.
+Két fájl `moviedb.txt` van, `user-ratings.txt`és . A `user-ratings.txt` fájl az elemzés során használatos. `moviedb.txt` Az segítségével felhasználóbarát szöveges információkat adhat meg az eredmények megtekintésekor.
 
-A `user-ratings.txt`ban található adat `userID`, `movieID`, `userRating`és `timestamp`szerkezettel rendelkezik, amely azt jelzi, hogy az egyes felhasználók milyen arányban értékeltek egy filmet. Íme egy példa az adatmennyiségre:
+`user-ratings.txt` A benne lévő adatok `userID`szerkezete `userRating`, `timestamp`, `movieID`és , amely azt jelzi, hogy az egyes felhasználók milyen magasra értékelték a mozgóképet. Íme egy példa az adatokra:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -59,24 +59,24 @@ A `user-ratings.txt`ban található adat `userID`, `movieID`, `userRating`és `t
 
 ## <a name="run-the-analysis"></a>Az elemzés futtatása
 
-1. A fürthöz való kapcsolódáshoz használja az [SSH-parancsot](../hdinsight-hadoop-linux-use-ssh-unix.md) . Szerkessze az alábbi parancsot az CLUSTERNAME helyére a fürt nevével, majd írja be a következő parancsot:
+1. Az [ssh paranccsal](../hdinsight-hadoop-linux-use-ssh-unix.md) csatlakozhat a fürthöz. Az alábbi parancs szerkesztésével cserélje le a CLUSTERNAME-t a fürt nevére, majd írja be a parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. A következő parancs használatával futtassa a javaslati feladatot:
+1. A javaslati feladat futtatásához használja a következő parancsot:
 
     ```bash
     mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
     ```
 
 > [!NOTE]  
-> A feladat végrehajtása több percet is igénybe vehet, és több MapReduce-feladatot is futtathat.
+> A feladat több percet is igénybe vehet, és több MapReduce feladatot is futtathat.
 
 ## <a name="view-the-output"></a>A kimenet megtekintése
 
-1. Miután a feladatok befejeződik, a következő paranccsal tekintheti meg a generált kimenetet:
+1. A feladat befejezése után a következő paranccsal tekintse meg a létrehozott kimenetet:
 
     ```bash
     hdfs dfs -text /example/data/mahoutout/part-r-00000
@@ -91,24 +91,24 @@ A `user-ratings.txt`ban található adat `userID`, `movieID`, `userRating`és `t
     4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
     ```
 
-    Az első oszlop a `userID`. A (z) "[" és "]" fájlban található értékek `movieId`:`recommendationScore`.
+    Az első oszlop `userID`a . A "[" és "]" `movieId`értékek`recommendationScore`a következők: .
 
-2. A MovieDB. txt fájllal együtt a kimenetet is használhatja, hogy további információkat szolgáltasson a javaslatokról. Először másolja a fájlokat helyileg a következő parancsok használatával:
+2. Használhatja a kimenetet, valamint a moviedb.txt, hogy további információt a javaslatokat. Először másolja a fájlokat helyileg a következő parancsokkal:
 
     ```bash
     hdfs dfs -get /example/data/mahoutout/part-r-00000 recommendations.txt
     hdfs dfs -get /HdiSamples/HdiSamples/MahoutMovieData/* .
     ```
 
-    Ez a parancs a kimeneti adatokat egy **javaslatok. txt** nevű fájlba másolja az aktuális könyvtárban, valamint a film adatfájljaival együtt.
+    Ez a parancs a kimeneti adatokat egy **recommendations.txt** nevű fájlba másolja az aktuális könyvtárba, a mozgókép-adatfájlokkal együtt.
 
-3. A következő parancs használatával hozzon létre egy Python-parancsfájlt, amely a javaslatok kimenetében szereplő adatokat keresi meg.
+3. A következő paranccsal hozzon létre egy Python-parancsfájlt, amely megkeresi a javaslatok kimenetében szereplő adatok filmneveit:
 
     ```bash
     nano show_recommendations.py
     ```
 
-    A szerkesztő megnyitásakor használja a következő szöveget a fájl tartalmának megfelelően:
+    Amikor a szerkesztő megnyílik, a fájl tartalmaként a következő szöveget használja:
 
    ```python
    #!/usr/bin/env python
@@ -162,23 +162,23 @@ A `user-ratings.txt`ban található adat `userID`, `movieID`, `userRating`és `t
    print "------------------------"
    ```
 
-    Nyomja le a **CTRL-X**, az **Y**billentyűt, és végül **adja meg** az adatmentést.
+    Az adatok mentéséhez nyomja le a **Ctrl-X**, **Y**billentyűkombinációt, és végül az **Enter billentyűt.**
 
-4. Futtassa a Python-szkriptet. Az alábbi parancs feltételezi, hogy abban a könyvtárban van, ahol az összes fájl le lett töltve:
+4. Futtassa a Python-szkriptet. A következő parancs feltételezi, hogy abban a könyvtárban van, ahol az összes fájlt letöltik:
 
     ```bash
     python show_recommendations.py 4 user-ratings.txt moviedb.txt recommendations.txt
     ```
 
-    Ez a parancs a 4. felhasználói AZONOSÍTÓhoz generált ajánlásokat vizsgálja.
+    Ez a parancs a 4-es felhasználói azonosítóhoz létrehozott javaslatokat vizsgálja.
 
-   * A **User-Ratings. txt** fájl a minősítés alatt álló filmek beolvasására szolgál.
+   * A **user-ratings.txt** fájl a minősített filmek lekéréséhez használatos.
 
-   * A **MovieDB. txt** fájl a filmek nevének beolvasására szolgál.
+   * A **moviedb.txt** fájl segítségével letölteni a nevét a filmeket.
 
-   * A **javaslatok. txt** a felhasználóhoz tartozó filmkészítési javaslatok beolvasására szolgál.
+   * A **recommendations.txt** fájl a felhasználó filmjavaslatainak lekéréséhez használatos.
 
-     A parancs kimenete az alábbi szöveghez hasonló:
+     A parancs kimenete hasonló a következő szöveghez:
 
         ```output
         Seven Years in Tibet (1997), score=5.0
@@ -192,22 +192,22 @@ A `user-ratings.txt`ban található adat `userID`, `movieID`, `userRating`és `t
         Time to Kill, A (1996), score=5.0
         ```
 
-## <a name="delete-temporary-data"></a>Ideiglenes adatmennyiség törlése
+## <a name="delete-temporary-data"></a>Ideiglenes adatok törlése
 
-A Mahout-feladatok nem távolítják el a feladat feldolgozása során létrehozott ideiglenes adatok körét. Az `--tempDir` paraméter meg van adva a példa feladatokban, hogy az ideiglenes fájlokat egy adott elérési útra különítse el az egyszerű törlés érdekében. Az ideiglenes fájlok eltávolításához használja a következő parancsot:
+A Mahout-feladatok nem távolítják el a feladat feldolgozása során létrehozott ideiglenes adatokat. A `--tempDir` paraméter a példafeladatban van megadva, hogy az ideiglenes fájlokat egy adott elérési útba különítse el a könnyebb törlés érdekében. Az ideiglenes fájlok eltávolításához használja a következő parancsot:
 
 ```bash
 hdfs dfs -rm -f -r /temp/mahouttemp
 ```
 
 > [!WARNING]  
-> Ha újra futtatni szeretné a parancsot, törölnie kell a kimeneti könyvtárat is. A következő paranccsal törölheti a könyvtárat:
+> Ha újra szeretné futtatni a parancsot, törölnie kell a kimeneti könyvtárat is. A könyvtár törléséhez használja az alábbiakat:
 >
 > `hdfs dfs -rm -f -r /example/data/mahoutout`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan használhatja a Mahout-t, Fedezze fel a HDInsight-on tárolt adatkezelés egyéb módszereit:
+Most, hogy megtanulta a Mahout használatát, fedezze fel a HDInsight-adatokkal való munka más módjait:
 
-* [Apache Hive HDInsight](hdinsight-use-hive.md)
-* [MapReduce a HDInsight](hdinsight-use-mapreduce.md)
+* [Apache Hive HDInsightdal](hdinsight-use-hive.md)
+* [MapReduce a HDInsight segítségével](hdinsight-use-mapreduce.md)

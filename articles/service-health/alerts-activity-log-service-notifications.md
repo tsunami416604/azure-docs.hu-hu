@@ -1,106 +1,106 @@
 ---
-title: Eseménynapló-riasztások fogadása az Azure szolgáltatási értesítésein
-description: Értesítés küldése SMS-ben, e-mailben vagy webhookon az Azure-szolgáltatás bekövetkeztekor.
+title: Tevékenységnapló-értesítések fogadása az Azure szolgáltatásértesítéseiről
+description: Értesítést kaphat SMS-ben, e-mailben vagy webhookon keresztül, ha az Azure-szolgáltatás megtörténik.
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: d318adc76959ac24f4be9946167965a83053f632
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75749317"
 ---
-# <a name="create-activity-log-alerts-on-service-notifications"></a>Műveletnapló-riasztások létrehozása a szolgáltatási értesítéseken
+# <a name="create-activity-log-alerts-on-service-notifications"></a>Tevékenységnapló-riasztások létrehozása szolgáltatási értesítésekhez
 ## <a name="overview"></a>Áttekintés
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a műveletnapló riasztásait a szolgáltatás állapotára vonatkozó értesítésekhez a Azure Portal használatával.  
+Ez a cikk bemutatja, hogyan állíthatja be a tevékenységnapló-riasztásokat a szolgáltatás állapoti értesítéseihez az Azure Portal használatával.  
 
-A szolgáltatás állapotára vonatkozó értesítések tárolása az [Azure-tevékenység naplójában](../azure-monitor/platform/platform-logs-overview.md) történik, mivel a tevékenységi naplóban tárolt adatok valószínűleg nagy mennyiségű információval rendelkeznek, külön felhasználói felület áll rendelkezésre, amely megkönnyíti a riasztások megtekintését és beállítását a szolgáltatás állapotával kapcsolatos értesítéseken. 
+A szolgáltatásállapot-értesítések az [Azure tevékenységnaplójában](../azure-monitor/platform/platform-logs-overview.md) tárolódnak, mivel a tevékenységnaplóban esetleg nagy mennyiségű információ tárolható, külön felhasználói felület található, amely megkönnyíti a szolgáltatásállapot-értesítések rekedésének megtekintését és beállítását. 
 
-Riasztást kaphat, ha az Azure szolgáltatás-állapotra vonatkozó értesítéseket küld az Azure-előfizetésre. A riasztást a következő alapján állíthatja be:
+Riasztást kaphat, amikor az Azure szolgáltatásállapot-értesítéseket küld az Azure-előfizetéséhez. A riasztás a következők alapján konfigurálható:
 
-- A szolgáltatás állapotáról szóló értesítés (szolgáltatási problémák, tervezett karbantartás, egészségügyi tanácsadók) osztálya.
+- A szolgáltatás állapotértesítésének osztálya (szolgáltatási problémák, tervezett karbantartás, egészségügyi tanácsok).
 - Az érintett előfizetés.
-- Az érintett szolgáltatás (ok).
-- Az érintett régió (k).
+- Az érintett szolgáltatás(ok).
+- Az érintett régió(k).
 
 > [!NOTE]
-> A szolgáltatás állapotára vonatkozó értesítések nem küldenek riasztást az erőforrás-állapottal kapcsolatos eseményekről.
+> A szolgáltatásállapot-értesítések nem küld riasztást az erőforrás-állapoteseményekről.
 
-Azt is beállíthatja, hogy a rendszer kik számára küldje a riasztást:
+Azt is beállíthatja, hogy kinek kell elküldeni a riasztást:
 
-- Válasszon ki egy meglévő műveleti csoportot.
-- Hozzon létre egy új műveleti csoportot (amely a jövőbeli riasztásokhoz használható).
+- Jelöljön ki egy meglévő műveletcsoportot.
+- Hozzon létre egy új műveletcsoportot (amely későbbi riasztásokhoz használható).
 
 A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/platform/action-groups.md) szóló cikkben talál.
 
-A Service Health értesítési riasztások Azure Resource Manager sablonok használatával történő konfigurálásával kapcsolatos információkért lásd: [Resource Manager-sablonok](../azure-monitor/platform/alerts-activity-log.md).
+A szolgáltatásállapot-értesítési riasztások Azure Resource Manager-sablonok használatával történő konfigurálásáról az [Erőforrás-kezelő-sablonok című témakörben olvashat.](../azure-monitor/platform/alerts-activity-log.md)
 
-### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>Tekintse meg az első Azure Service Health riasztás beállítását bemutató videót
+### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>Nézzen meg egy videót az első Azure Service Health-riasztás beállításáról
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
-## <a name="alert-and-new-action-group-using-azure-portal"></a>Riasztás és új műveleti csoport a Azure Portal használatával
-1. A [portálon](https://portal.azure.com)válassza a **Service Health**lehetőséget.
+## <a name="alert-and-new-action-group-using-azure-portal"></a>Riasztás és új műveletcsoport az Azure Portal használatával
+1. A [portálon](https://portal.azure.com)válassza a **Szolgáltatás állapota**lehetőséget.
 
     ![A "Service Health" szolgáltatás](media/alerts-activity-log-service-notifications/home-servicehealth.png)
 
-1. A **riasztások** szakaszban válassza az **állapot riasztások**lehetőséget.
+1. A **Riasztások csoportban** válassza az **Állapotriasztások lehetőséget.**
 
-    ![Az "állapot-riasztások" lap](media/alerts-activity-log-service-notifications/alerts-blades-sh.png)
+    ![Az "Egészségügyi riasztások" lap](media/alerts-activity-log-service-notifications/alerts-blades-sh.png)
 
-1. Válassza a **szolgáltatás állapotának létrehozása riasztás** lehetőséget, és töltse ki a mezőket.
+1. Válassza **a Szolgáltatásállapot-riasztás létrehozása lehetőséget,** és töltse ki a mezőket.
 
-    ![A "szolgáltatás állapotára figyelmeztető riasztás létrehozása" parancs](media/alerts-activity-log-service-notifications/service-health-alert.png)
+    ![A "Szolgáltatás állapotriasztásának létrehozása" parancs](media/alerts-activity-log-service-notifications/service-health-alert.png)
 
-1. Válassza ki azokat az **előfizetéseket**, **szolgáltatásokat**és **régiókat** , amelyekről riasztást szeretne kapni.
+1. Válassza ki azt az **Előfizetést**, **szolgáltatásokat**és **régiókat,** amelyekről értesítést szeretne kapni.
 
-    ![A "műveletnapló hozzáadása riasztás" párbeszédpanel](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
+    ![A "Tevékenységnapló-riasztás hozzáadása" párbeszédpanel](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
 
     > [!NOTE]
-    > Ez az előfizetés a műveletnapló riasztásának mentéséhez használatos. A riasztási erőforrás erre az előfizetésre van telepítve, és figyeli az eseményeket a tevékenység naplójában.
+    > Ez az előfizetés a tevékenységnapló-riasztás mentésére szolgál. A riasztási erőforrás telepítve van az előfizetésben, és figyeli az eseményeket a tevékenységnaplóban.
 
-1. Válassza ki a riasztáshoz használni kívánt **esemény típusát** : *szolgáltatási probléma*, *tervezett karbantartás*és *állapot-tanácsadók* 
+1. Válassza ki azokat az **eseménytípusokat,** amelyekről értesítést szeretne kapni: *Szolgáltatási probléma,* *Tervezett karbantartás*és Egészségügyi *tanácsadás* 
 
-1. Adja meg a riasztás részleteit a **riasztási szabály nevének** és **leírásának**megadásával.
+1. Adja meg a riasztás részleteit a **riasztási szabály nevének** és **leírásának megadásával.**
 
-1. Válassza ki azt az **erőforráscsoportot** , amelyben menteni szeretné a riasztást.
+1. Jelölje ki azt az **erőforráscsoportot,** amelybe a riasztást menteni szeretné.
 
-1. Hozzon létre egy új műveleti csoportot az **új műveleti csoport**lehetőség kiválasztásával. Írjon be egy nevet a **műveleti csoport neve** mezőbe, és adjon meg egy nevet a **rövid név** mezőben. A rövid név a riasztás elküldésekor küldött értesítésekben hivatkozik.
+1. Új műveletcsoport létrehozása az **Új műveletcsoport**kiválasztásával. Írjon be egy nevet a **Műveletcsoport neve** mezőbe, és írjon be egy nevet a **Rövid név** mezőbe. A rövid név reked az értesítésekben, amelyek a riasztás tüzek esetén küldött.
 
-    ![Új műveleti csoport létrehozása](media/alerts-activity-log-service-notifications/action-group-creation.png)
+    ![Új műveletcsoport létrehozása](media/alerts-activity-log-service-notifications/action-group-creation.png)
 
-1. Adja meg a fogadók listáját a fogadó:
+1. Határozza meg a fogadók listáját a fogadó félkészülék ének megadásával:
 
-    a. **Név**: adja meg a fogadó nevét, aliasát vagy azonosítóját.
+    a. **Név**: Adja meg a címzett nevét, aliasát vagy azonosítóját.
 
-    b. **Művelettípus**: válassza az SMS-t, e-mailt, webhookot, az Azure-alkalmazást és egyebeket.
+    b. **Művelettípus:** Válassza ki az SMS-t, az e-mailt, a webhookot, az Azure-alkalmazást és egyebeket.
 
-    c. **Részletek**: a kiválasztott Művelettípus alapján adja meg a telefonszámot, az e-mail-címet, a webhook URI-ját stb.
+    c. **Részletek**: A kiválasztott művelettípus alapján adjon meg egy telefonszámot, e-mail címet, webhook URI-t stb.
 
-1. A műveleti csoport létrehozásához kattintson **az OK gombra** , majd **hozzon létre riasztási szabályt** a riasztás befejezéséhez.
+1. A műveletcsoport létrehozásához válassza az **OK gombot,** majd a **Riasztási szabály létrehozása** a riasztás befejezéséhez lehetőséget.
 
-Néhány percen belül a riasztás aktív, és a létrehozáskor megadott feltételek alapján kezdi meg az indítást.
+Néhány percen belül a riasztás aktív, és a létrehozás során megadott feltételek alapján aktiválódik.
 
-Megtudhatja, hogyan [konfigurálhat webhook-értesítéseket a meglévő probléma-felügyeleti rendszerekhez](service-health-alert-webhook-guide.md). A műveletnapló-riasztások webhook-sémájával kapcsolatos információkért lásd: [webhookok az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log-alerts-webhook.md).
+További információ [arról, hogyan konfigurálható a webhook-értesítések a meglévő problémakezelő rendszerekhez.](service-health-alert-webhook-guide.md) A tevékenységnapló-riasztások webhook-sémájáról a [Webhooks for Azure-tevékenységnapló-riasztások](../azure-monitor/platform/activity-log-alerts-webhook.md)című témakörben talál további információt.
 
 >[!NOTE]
->Az ezekben a lépésekben definiált műveleti csoport az összes jövőbeli riasztási definícióhoz használható meglévő műveleti csoportként.
+>Az ezekben a lépésekben definiált műveletcsoport újrafelhasználható, mint egy meglévő műveletcsoport az összes jövőbeli riasztásdefiníciók.
 >
 
-## <a name="alert-with-existing-action-group-using-azure-portal"></a>Riasztás meglévő műveleti csoporttal Azure Portal használatával
+## <a name="alert-with-existing-action-group-using-azure-portal"></a>Riasztás meglévő műveletcsoporttal az Azure Portal használatával
 
-1. A szolgáltatás állapotáról szóló értesítés létrehozásához kövesse az előző szakasz 1 – 6. lépését. 
+1. Kövesse az előző szakasz 1–6. 
 
-1. A **műveleti csoport meghatározása**területen kattintson a **műveleti csoport kiválasztása** gombra. Válassza ki a megfelelő műveleti csoportot.
+1. A **Műveletcsoport definiálása csoportban**kattintson a **Műveletcsoport kijelölése** gombra. Válassza ki a megfelelő műveletcsoportot.
 
-1. Válassza a **Hozzáadás** lehetőséget a műveleti csoport hozzáadásához, majd **hozzon létre riasztási szabályt** a riasztás befejezéséhez.
+1. Válassza a **Hozzáadás** lehetőséget a műveletcsoport hozzáadásához, majd a **Riasztási szabály létrehozása a** riasztás befejezéséhez lehetőséget.
 
-Néhány percen belül a riasztás aktív, és a létrehozáskor megadott feltételek alapján kezdi meg az indítást.
+Néhány percen belül a riasztás aktív, és a létrehozás során megadott feltételek alapján aktiválódik.
 
-## <a name="alert-and-new-action-group-using-the-azure-resource-manager-templates"></a>Riasztás és új műveleti csoport a Azure Resource Manager sablonok használatával
+## <a name="alert-and-new-action-group-using-the-azure-resource-manager-templates"></a>Riasztás és új műveletcsoport az Azure Resource Manager-sablonok használatával
 
-A következő példa egy műveleti csoportot hoz létre egy e-mail céllal, és engedélyezi az összes szolgáltatás állapotának értesítését a cél előfizetéshez.
+Az alábbiakban egy példa, amely létrehoz egy műveletcsoportot egy e-mail cél, és lehetővé teszi az összes szolgáltatás állapoti értesítések a cél-előfizetés.
 
 ```json
 {
@@ -190,18 +190,18 @@ A következő példa egy műveleti csoportot hoz létre egy e-mail céllal, és 
 
 ## <a name="manage-your-alerts"></a>A riasztások kezelése
 
-Miután létrehozta a riasztást, a **figyelő** **riasztások** szakaszában látható. Válassza ki a kezelni kívánt riasztást:
+Miután létrehozott egy riasztást, az látható lesz a **Figyelő** **Riasztások** szakaszában. Válassza ki a kezelni kívánt riasztást:
 
-* Szerkessze.
+* Edit it.
 * Törölje.
-* Tiltsa le vagy engedélyezze, ha átmenetileg le kívánja állítani vagy folytatni szeretné a riasztási értesítések fogadását.
+* Tiltsa le vagy engedélyezze azt, ha ideiglenesen le szeretné állítani vagy folytatni szeretné a riasztási értesítések fogadását.
 
-## <a name="next-steps"></a>Következő lépések
-- További információ [a Azure Service Health riasztások beállításával kapcsolatos ajánlott eljárásokról](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
-- Ismerje meg, hogyan állíthat be [Azure Service Health Mobile leküldéses értesítéseket](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
-- Megtudhatja, hogyan [konfigurálhat webhook-értesítéseket a meglévő probléma-felügyeleti rendszerekhez](service-health-alert-webhook-guide.md).
-- Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](service-notifications.md).
-- Tudnivalók az [értesítési ráta korlátozásáról](../azure-monitor/platform/alerts-rate-limiting.md).
-- Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/platform/activity-log-alerts-webhook.md).
-- [Tekintse át a tevékenységek naplójának riasztásait](../azure-monitor/platform/alerts-overview.md), és Ismerje meg, hogyan fogadhat riasztásokat.
-- További információ a [műveleti csoportokról](../azure-monitor/platform/action-groups.md).
+## <a name="next-steps"></a>További lépések
+- Ismerje meg [az Azure Service Health-riasztások beállításával kapcsolatos gyakorlati tanácsokat.](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa)
+- Ismerje meg, hogyan [állíthat be mobil leküldéses értesítéseket az Azure Service Health szolgáltatáshoz.](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw)
+- További információ [arról, hogyan állíthat be webhook-értesítéseket a meglévő problémakezelő rendszerekhez.](service-health-alert-webhook-guide.md)
+- További információ a [szolgáltatásállapot-értesítésekről.](service-notifications.md)
+- További információ az [értesítési sebesség korlátozásáról.](../azure-monitor/platform/alerts-rate-limiting.md)
+- Tekintse át a [tevékenységnapló-riasztási webhook-sémáját.](../azure-monitor/platform/activity-log-alerts-webhook.md)
+- Áttekintést [kaphat a tevékenységnapló-riasztásokról,](../azure-monitor/platform/alerts-overview.md)és megtudhatja, hogyan fogadhat értesítéseket.
+- További információ a [műveletcsoportokról](../azure-monitor/platform/action-groups.md).

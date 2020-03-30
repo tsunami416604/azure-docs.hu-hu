@@ -1,76 +1,64 @@
 ---
-title: Egyéni vezérlők az Azure AD feltételes hozzáférésben
-description: Ismerje meg, hogyan működnek az egyéni vezérlők a Azure Active Directory feltételes hozzáférésben.
+title: Egyéni vezérlők az Azure AD feltételes hozzáférésében
+description: Ismerje meg, hogyan működnek az egyéni vezérlők az Azure Active Directory feltételes hozzáférésében.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 02/25/2020
+ms.date: 03/18/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb
+ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fff08690eb2807fbbd50f297761c57d3fef88fe
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: f8c149279a755eb186a3fdc7891e9b511d18c7f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78671846"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050549"
 ---
 # <a name="custom-controls-preview"></a>Egyéni vezérlők (előzetes verzió)
 
-Az egyéni vezérlők a prémium szintű Azure Active Directory P1 kiadás egyik funkciója. Egyéni vezérlők használatakor a rendszer átirányítja a felhasználókat egy kompatibilis szolgáltatáshoz, hogy az Azure Active Directoryon kívül további követelményeket is kielégítse. Ennek a vezérlőnek a kielégítéséhez a rendszer átirányítja a felhasználó böngészőjét a külső szolgáltatáshoz, végrehajtja a szükséges hitelesítési vagy ellenőrzési tevékenységeket, majd átirányítja a Azure Active Directoryre. Azure Active Directory ellenőrzi a választ, és ha a felhasználó hitelesítése vagy ellenőrzése sikeres volt, a felhasználó folytatja a feltételes hozzáférés folyamatát.
+Az egyéni vezérlők az Azure Active Directory előzetes verziói. Egyéni vezérlők használata esetén a felhasználók átirányításra kerülnek egy kompatibilis szolgáltatásba, hogy megfeleljenek az Azure Active Directoryn kívüli hitelesítési követelményeknek. A vezérlő teljesítése érdekében a felhasználó böngészője átlesz irányítva a külső szolgáltatásra, elvégzi a szükséges hitelesítést, majd visszairányítja az Azure Active Directoryba. Az Azure Active Directory ellenőrzi a választ, és ha a felhasználó sikeresen hitelesítettvagy érvényesített, a felhasználó folytatja a feltételes hozzáférési folyamat.
 
-Ezek a vezérlők lehetővé teszik bizonyos külső vagy egyéni szolgáltatások használatát feltételes hozzáférés-vezérlésként, és általában kibővítik a feltételes hozzáférés képességeit.
-
-A jelenleg kompatibilis szolgáltatást nyújtó szolgáltatók a következők:
-
-- [Duo biztonság](https://duo.com/docs/azure-ca)
-- [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
-- [GSMA](https://mobileconnect.io/azure/)
-- [Pingelési identitás](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
-- [RSA](https://community.rsa.com/docs/DOC-81278)
-- [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
-- [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
-- [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
-- [Thales (Gemalto)](https://resources.eu.safenetid.com/help/AzureMFA/Azure_Help/Index.htm)
-- [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
-
-A szolgáltatásokkal kapcsolatos további információkért forduljon közvetlenül a szolgáltatóhoz.
+> [!NOTE]
+> Az Egyéni vezérlés funkció módosításairól a 2020. [What's new update](../fundamentals/whats-new.md#upcoming-changes-to-custom-controls)
 
 ## <a name="creating-custom-controls"></a>Egyéni vezérlők létrehozása
 
-Egyéni vezérlő létrehozásához először kapcsolatba kell lépnie a használni kívánt szolgáltatóval. Az egyes nem Microsoft-szolgáltatók saját folyamattal és követelményekkel rendelkeznek a szolgáltatás regisztrálásához, előfizetéséhez vagy egyéb részévé tételéhez, és jelezniük kell, hogy a feltételes hozzáféréssel szeretne integrálni. Ezen a ponton a szolgáltató JSON formátumú adatblokkot biztosít Önnek. Ez az információ lehetővé teszi, hogy a szolgáltató és a feltételes hozzáférés együtt működjön a bérlő számára, létrehozza az új vezérlőt, és meghatározza, hogy a feltételes hozzáférés Hogyan állapítható meg, hogy a felhasználók sikeresen végrehajtották-e az ellenőrzést a szolgáltatóval.
+Az Egyéni vezérlők a jóváhagyott hitelesítésszolgáltatók korlátozott készletével működik együtt. Egyéni vezérlő létrehozásához először vegye fel a kapcsolatot a használni kívánt szolgáltatóval. Minden nem microsoftos szolgáltató saját folyamattal és követelményekkel rendelkezik a regisztrációhoz, az előfizetéshez vagy más módon a szolgáltatás részévé váláshoz, valamint annak jelzéséhez, hogy integrálni kíván a feltételes hozzáféréssel. Ezen a ponton a szolgáltató json formátumban egy adatblokkot biztosít. Ezek az adatok lehetővé teszik a szolgáltató és a feltételes hozzáférés együtt dolgozni a bérlő, létrehozza az új vezérlőt, és meghatározza, hogyan feltételes hozzáférés tudja megmondani, ha a felhasználók sikeresen elvégezték az ellenőrzést a szolgáltatóval.
 
-Egyéni vezérlők nem használhatók az Identity Protection automatizálásához, amely többtényezős hitelesítést igényel, vagy a szerepköröket a Privileged Identity Managerben (PIM) kell megemelni.
+Másolja a JSON-adatokat, majd illessze be a kapcsolódó szövegdobozba. Ne módosítsa a JSON-t, hacsak nem érti meg kifejezetten a módosítást. Bármilyen módosítás megszakíthatja a kapcsolatot a szolgáltató és a Microsoft között, és potenciálisan zárolhatja Önt és felhasználóit a fiókokból.
 
-Másolja a JSON-adatforrást, majd illessze be a kapcsolódó szövegmezőbe. Ne módosítsa a JSON-t, kivéve, ha explicit módon megértette az Ön által végzett módosítást. A változtatások miatt a szolgáltató és a Microsoft közötti kapcsolat megszakadhat, és előfordulhat, hogy az Ön és a felhasználók is zárolják magukat a fiókból.
+Az egyéni vezérlőelem létrehozásának lehetősége a **Feltételes hozzáférés** lap **Kezelés** szakaszában található.
 
-Az egyéni vezérlő létrehozásának lehetősége a **feltételes hozzáférés** lap **kezelés** szakaszában található.
+![Vezérlés](./media/controls/82.png)
 
-![Vezérlő](./media/controls/82.png)
+Az **Új egyéni vezérlő elemre**kattintva megnyílik egy panel, amelyen a vezérlő JSON-adatai nak szövegdoboza található.  
 
-Az **új egyéni vezérlő**elemre kattintva megnyílik egy panel, amely a vezérlőelem JSON-adataihoz tartozó szövegmezővel rendelkezik.  
-
-![Vezérlő](./media/controls/81.png)
+![Vezérlés](./media/controls/81.png)
 
 ## <a name="deleting-custom-controls"></a>Egyéni vezérlők törlése
 
-Egyéni vezérlő törléséhez először gondoskodnia kell arról, hogy ne legyen használatban semmilyen feltételes hozzáférési házirendben. Ha elkészült:
+Egyéni vezérlő törléséhez először meg kell győződnie arról, hogy nem használatos a feltételes hozzáférési házirendben. A teljes teljesítményt követően:
 
-1. Ugrás az egyéni vezérlők listára
-1. Kattintson a...  
+1. Ugrás az Egyéni vezérlők listára
+1. Kattintson...  
 1. Válassza a **Törlés** elemet.
 
 ## <a name="editing-custom-controls"></a>Egyéni vezérlők szerkesztése
 
-Egyéni vezérlő szerkesztéséhez törölnie kell a jelenlegi vezérlőt, és létre kell hoznia egy új vezérlőt a frissített információkkal.
+Egyéni vezérlő szerkesztéséhez törölnie kell az aktuális vezérlőt, és új vezérlőt kell létrehoznia a frissített adatokkal.
+
+## <a name="known-limitations"></a>Ismert korlátozások
+
+Az egyéni vezérlők nem használhatók az Identity Protection olyan automatizálásával, amely azure-beli többtényezős hitelesítést, Azure AD önkiszolgáló jelszó-visszaállítást (SSPR) igényel, megfelel a többtényezős hitelesítési jogcímkövetelményeinek, vagy nem emelheti a szerepköröket a kiemelt jogosultságú Identitáskezelő (PIM).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
+- [Feltételes hozzáférés közös házirendjei](concept-conditional-access-policy-common.md)
 
 - [Csak jelentési mód](concept-conditional-access-report-only.md)
 
-- [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
+- [Bejelentkezési viselkedés szimulálása a Feltételes hozzáférés Mi ha eszközzel](troubleshoot-conditional-access-what-if.md)

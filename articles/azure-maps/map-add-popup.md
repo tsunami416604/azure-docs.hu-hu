@@ -1,7 +1,7 @@
 ---
-title: Felugró ablak hozzáadása egy ponthoz a térképen | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan adhat hozzá egy előugró pontot egy ponthoz a Microsoft Azure Maps web SDK használatával.
-author: jingjing-z
+title: Felugró ablak hozzáadása a térkép egy pontjához | Microsoft Azure Maps
+description: Ebből a cikkből megtudhatja, hogyan adhat hozzá felugró ablakot egy ponthoz a Microsoft Azure Maps Web SDK használatával.
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 02/27/2020
 ms.topic: conceptual
@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 588de08666930937c3ad965b2609f8e207b75eca
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: cf6424d2a6cbcfb7c5052201b5a9190c81fddaff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208848"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055955"
 ---
-# <a name="add-a-popup-to-the-map"></a>Felugró ablak hozzáadása a térképhez
+# <a name="add-a-popup-to-the-map"></a>Előugró ablak hozzáadása a térképhez
 
-Ez a cikk bemutatja, hogyan adhat hozzá egy előugró pontot egy térképen.
+Ez a cikk bemutatja, hogyan adhat felugró ablakot a térkép egy pontjához.
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-A következő kód egy pont funkciót helyez el, amely `name` és `description` tulajdonságokkal rendelkezik a térképhez egy szimbólum réteg használatával. Az [előugró osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) egy példánya jön létre, de nem jelenik meg. Az Egérgombok az előugró ablak megnyitásának és bezárásának elindításához lesznek hozzáadva a szimbólum réteghez. Ha a jelölő szimbólum látható, az előugró ablak `position` tulajdonsága a jelölő pozíciójának megfelelően frissül, és a `content` lehetőség frissül, és egy olyan HTML-kódot tartalmaz, amely betakarja a pont szolgáltatás `name` és `description` tulajdonságait. Ekkor megjelenik az előugró ablak a térképen a `open` függvény használatával.
+A következő kód egy pontjellemzőt `description` ad hozzá a térképhez, amely nek van `name` és tulajdonságai vannak egy szimbólumréteg használatával. Létrejön az [előugró osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup) egy példánya, de nem jelenik meg. Az egéresemények hozzáadódnak a szimbólumréteghez, hogy elindítsák az előugró ablak megnyitását és bezárását. Amikor a jelölő szimbólum rámutat, a `position` felugró ablak tulajdonsága frissül `content` a jelölő pozíciójával, és `name` `description` a beállítás néhány HTML-kóddal frissül, amely az egérmutatót tartalmazó pontjellemző és tulajdonságainak körülfolyatása. A felugró ablak ezután a `open` funkciójával jelenik meg a térképen.
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -76,177 +76,202 @@ map.events.add('mouseleave', symbolLayer, function (){
 });
 ```
 
-Alább látható a fenti funkciók teljes futási kódjának mintája.
+Az alábbiakban a fenti funkciók teljes futókód-mintája látható.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Felugró ablak hozzáadása a Azure Maps használatával' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io'>CodePen</a>Azure Maps Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>használatával</a> .
+<iframe height='500' scrolling='no' title='Előugró ablak hozzáadása az Azure Maps használatával' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Toll <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>hozzáadása előugró ablakot az Azure Maps</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 
-## <a name="reusing-a-popup-with-multiple-points"></a>Felugró ablak újrahasználata több ponttal
+## <a name="reusing-a-popup-with-multiple-points"></a>Felugró ablak újrafelhasználása több ponttal
 
-Vannak olyan esetek, amikor a legjobb módszer egy előugró ablak létrehozása és újbóli felhasználása. Előfordulhat például, hogy nagy számú ponttal rendelkezik, és egyszerre csak egy előugró ablak jelenik meg. A felugró ablak újrafelhasználásával jelentősen csökken az alkalmazás által létrehozott DOM-elemek száma, ami jobb teljesítményt nyújt. Az alábbi minta 3 pontos funkciókat hoz létre. Ha bármelyikre kattint, megjelenik egy előugró ablak, amely az adott pont funkciójának tartalmát jeleníti meg.
+Vannak olyan esetek, amikor a legjobb megközelítés az, hogy hozzon létre egy felugró és újra azt. Előfordulhat például, hogy nagy számú ponttal rendelkezik, és egyszerre csak egy felugró ablakot szeretne megjeleníteni. A felugró ablak újbóli felhasználásával az alkalmazás által létrehozott DOM-elemek száma jelentősen csökken, ami jobb teljesítményt nyújthat. A következő minta 3 pontos funkciókat hoz létre. Ha bármelyikre kattint, egy felugró ablak jelenik meg az adott pontfunkció tartalmával.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Felugró ablak újrahasználata több PIN-kód használatával' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>A <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával megtekintheti a tollat a <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>felugró ablak újrafelhasználásával több PIN</a> -kódra.
+<iframe height='500' scrolling='no' title='Felugró ablak újrafelhasználása több pinekkel' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>újrafelhasználása popup több pin</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="customizing-a-popup"></a>Felugró ablak testreszabása
+## <a name="customizing-a-popup"></a>Előugró ablak testreszabása
 
-Alapértelmezés szerint az előugró ablak fehér háttérrel, a lenti mutató nyílra, valamint a jobb felső sarokban található Bezárás gombra mutat. Az alábbi minta a háttérszínt feketére módosítja a felugró ablak `fillColor` lehetőségével. A Bezárás gomb a `CloseButton` beállítás hamis értékre állításával távolítható el. Az előugró ablak HTML-tartalma 10 képpont kitöltését használja az előugró ablak széleiből. A szöveg fehér színű, így szépen megjelenik a fekete háttéren.  
+Alapértelmezés szerint a felugró ablak fehér háttérrel, alul mutatónyíllal, a jobb felső sarokban pedig bezárás gombbal rendelkezik. A következő minta a felugró `fillColor` ablak beállításával feketére változtatja a háttérszínt. A bezárás gomb a `CloseButton` beállítás hamis beállításával törlődik. A felugró ablak HTML-tartalma 10 képpontnyi párnázott at használ a felugró ablak szélétől. A szöveg fehér, így szépen megjelenik a fekete háttéren.  
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Testreszabott előugró ablak" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) által a <a href='https://codepen.io'>CodePen</a> <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>testreszabott előugró ablakát</a> .
+Tekintse meg az Azure Maps által<a href='https://codepen.io/azuremaps'>@azuremaps</a>testre szabott pen <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>testreszabott előugró ablakot</a> ( ) a <a href='https://codepen.io'>CodePen-en.</a>
 </iframe>
 
-## <a name="add-popup-templates-to-the-map"></a>Felugró sablonok hozzáadása a térképhez
+## <a name="add-popup-templates-to-the-map"></a>Előugró sablonok hozzáadása a térképhez
 
-Az előugró sablonok segítségével egyszerűen hozhat létre adatvezérelt elrendezéseket az előugró ablakokhoz. Az alábbi szakaszokban számos előugró sablon használható a formázott tartalom létrehozásához a szolgáltatások tulajdonságai segítségével.
+Az előugró sablonok megkönnyítik az adatalapú elrendezések létrehozását az előugró ablakokhoz. Az alábbi szakaszok bemutatják a különböző előugró sablonok használatát a formázott tartalom létrehozásához a szolgáltatások tulajdonságainak használatával.
 
-### <a name="string-template"></a>Karakterlánc-sablon
+> [!NOTE]
+> Alapértelmezés szerint az előugró sablont használó összes tartalom biztonsági szolgáltatásként az iframe-en belül lesz. Vannak azonban korlátozások:
+>
+> - Minden parancsfájl, űrlap, mutatózárolás és felső navigációs funkció le van tiltva. A hivatkozások a kattintáskor új lapon nyílhatnak meg. 
+> - Azok a régebbi böngészők, `srcdoc` amelyek nem támogatják a paramétert az iframe-eken, kis mennyiségű tartalom megjelenítésére korlátozódnak.
+> 
+> Ha megbízik a felugró ablakokba betöltött adatokban, és potenciálisan azt szeretné, hogy ezek a parancsfájlok előugró ablakokba töltődjenek be, akkor ezt letilthatja az előugró sablonok `sandboxContent` beállításfalsera állításával. 
 
-A karakterlánc-sablon a szolgáltatás tulajdonságainak értékeivel helyettesíti a helyőrzőket. A szolgáltatás tulajdonságait nem kell karakterlánc típusú értékhez rendelni. `value1` például egy egész számot tárol. A rendszer ezeket az értékeket továbbítja a `popupTemplate`Content (tartalom) tulajdonságához. 
+### <a name="string-template"></a>Karakterláncsablon
 
-A `numberFormat` beállítás a megjelenítendő szám formátumát adja meg. Ha a `numberFormat` nincs megadva, akkor a kód az előugró sablonok dátumának formátumát fogja használni. A `numberFormat` lehetőség a [Number. toLocaleString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) függvény használatával formázza a számokat. Nagy számok formázásához érdemes lehet a [NumberFormat. Format](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/format)függvényeket használni a `numberFormat` kapcsolóval. Például az alábbi kódrészlet `maximumFractionDigits`t használ a tört számjegyek számának két értékre való korlátozásához.
+A Karakterlánc sablon a helyőrzőket a jellemzőtulajdonságok értékeire cseréli. A szolgáltatás tulajdonságaihoz nem kell Karakterlánc típusú értéket rendelni. Például `value1` egy egész szám van. Ezeket az értékeket ezután `popupTemplate`átadják a tartalom tulajdonságának. 
+
+A `numberFormat` beállítás a megjelenítendő szám formátumát adja meg. Ha `numberFormat` a nincs megadva, akkor a kód az előugró sablonok dátumformátumát fogja használni. A `numberFormat` beállítás a [Számok.toLocaleString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) függvénnyel formázza a számokat. Nagy számok formázásához használja `numberFormat` a beállítást a [NumberFormat.format](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/format)függvényekkel. Az alábbi `maximumFractionDigits` kódrészlet például a törtszámjegyek számát kettőre korlátozza.
 
 > [!Note]
-> A karakterlánc-sablonnak csak egy módja lehet képek megjelenítésére. Először is a karakterlánc-sablonnak rendelkeznie kell egy képcímkével. A képcímkének átadott értéknek a rendszerkép URL-címének kell lennie. Ezután a karakterlánc-sablonnak `isImage` True értékre kell állítania a `HyperLinkFormatOptions`ban. A `isImage` beállítással megadhatja, hogy a hiperhivatkozás egy képhez legyen betöltve, és a hiperhivatkozás betöltődik egy képcímkébe. Ha a hiperhivatkozásra kattint, megnyílik a rendszerkép.
+> A Karakterlánc-sablon csak egy módon jelenítheti meg a képeket. Először a Karakterlánc sablonban képcímkével kell rendelkeznie. A képcímkének átadott értéknek egy kép URL-címének kell lennie. Ezután a Karakterlánc sablonnak true értékre kell állítanom `isImage` a `HyperLinkFormatOptions`ban. A `isImage` beállítás azt adja meg, hogy a hivatkozás képhez van,és a hivatkozás betöltődik egy képcímkába. Amikor a hivatkozásra kattint, megnyílik a kép.
 
 ```javascript
-new atlas.data.Feature(new atlas.data.Point([-20, -20]), {
+var templateOptions = {
+  content: 'This template uses a string template with placeholders.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
+  numberFormat: {
+    maximumFractionDigits: 2
+  }
+};
+
+var feature = new atlas.data.Feature(new atlas.data.Point([0, 0]), {
     title: 'Template 1 - String template',
     value1: 1.2345678,
     value2: {
         subValue: 'Pizza'
     },
-    arrayValue: [3, 4, 5, 6],
-    popupTemplate: {
-        content: 'This template uses a string template with placeholders.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
-        numberFormat: {
-            maximumFractionDigits: 2
-        }
-    }
-}),
+    arrayValue: [3, 4, 5, 6]
+});
+
+var popup = new atlas.Popup({
+  content: atlas.PopupTemplate.applyTemplate(feature.properties, templateOptions),
+  position: feature.geometry.coordinates
+});
 ```
 
-### <a name="propertyinfo-template"></a>PropertyInfo-sablon
+### <a name="propertyinfo-template"></a>PropertyInfo sablon
 
-A PropertyInfo sablon a szolgáltatás elérhető tulajdonságait jeleníti meg. A `label` beállítás megadja a felhasználónak megjelenítendő szöveget. Ha `label` nincs megadva, a hiperhivatkozás megjelenik. Ha pedig a hiperhivatkozás egy rendszerkép, az "ALT" címkéhez rendelt érték jelenik meg. A `dateFormat` megadja a dátum formátumát, és ha nincs megadva a dátumformátum, a dátum karakterláncként jelenik meg. A `hyperlinkFormat` lehetőség a kattintható hivatkozásokat jeleníti meg, hasonlóan a `email` lehetőség is használható a kattintható e-mail-címek megjelenítéséhez.
+A PropertyInfo sablon megjeleníti a szolgáltatás elérhető tulajdonságait. A `label` beállítás a felhasználó számára megjelenítendő szöveget adja meg. Ha `label` nincs megadva, akkor a hivatkozás jelenik meg. Ha pedig a hivatkozás kép, az "alt" címkéhez rendelt érték jelenik meg. A `dateFormat` megadott dátum formátuma, és ha a dátumformátum nincs megadva, akkor a dátum karakterláncként jelenik meg. A `hyperlinkFormat` lehetőség teszi kattintható linkek, `email` hasonlóképpen, a lehetőséget lehet használni, hogy kattintható e-mail címeket.
 
-Mielőtt a PropertyInfo sablon megjeleníti a tulajdonságokat a végfelhasználónak, rekurzív módon ellenőrzi, hogy a tulajdonságok valóban meg vannak-e adva a szolgáltatáshoz. A stílus és a cím tulajdonságainak megjelenítését is figyelmen kívül hagyja. Például nem fog megjelenni `color`, `size`, `anchor`, `strokeOpacity`és `visibility`. Tehát ha a tulajdonságok elérési útjának ellenőrzése befejeződött a háttérben, a PropertyInfo sablon táblázatos formátumban jeleníti meg a tartalmat.
+Mielőtt a PropertyInfo sablon megjelenítené a tulajdonságokat a végfelhasználó számára, rekurzív módon ellenőrzi, hogy a tulajdonságok valóban definiálva vannak-e az adott szolgáltatáshoz. Figyelmen kívül hagyja a stílus- és címtulajdonságok megjelenítését is. Például nem `color`jelenik meg, `anchor` `strokeOpacity` `visibility` `size`, , , és . Így ha a tulajdonságútvonal ellenőrzése befejeződött a háttérben, a PropertyInfo sablon táblaformátumban jeleníti meg a tartalmat.
 
 ```javascript
-new atlas.data.Feature(new atlas.data.Point([20, -20]), {
+var templateOptions = {
+  content: [
+    {
+        propertyPath: 'createDate',
+        label: 'Created Date'
+    },
+    {
+        propertyPath: 'dateNumber',
+        label: 'Formatted date from number',
+        dateFormat: {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          timeZone: 'UTC',
+          timeZoneName: 'short'
+        }
+    },
+    {
+        propertyPath: 'url',
+        label: 'Code samples',
+        hideLabel: true,
+        hyperlinkFormat: {
+          lable: 'Go to code samples!',
+          target: '_blank'
+        }
+    },
+    {
+        propertyPath: 'email',
+        label: 'Email us',
+        hideLabel: true,
+        hyperlinkFormat: {
+          target: '_blank',
+          scheme: 'mailto:'
+        }
+    }
+  ]
+};
+
+var feature = new atlas.data.Feature(new atlas.data.Point([0, 0]), {
     title: 'Template 2 - PropertyInfo',
     createDate: new Date(),
     dateNumber: 1569880860542,
     url: 'https://aka.ms/AzureMapsSamples',
-    email: 'info@microsoft.com',
-    popupTemplate: {
-        content: [{
-    propertyPath: 'createDate',
-    label: 'Created Date'
-    },
-    {
-    propertyPath: 'dateNumber',
-    label: 'Formatted date from number',
-    dateFormat: {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        timeZone: 'UTC',
-        timeZoneName: 'short'
-    }
-    },
-    {
-    propertyPath: 'url',
-    label: 'Code samples',
-    hideLabel: true,
-    hyperlinkFormat: {
-        lable: 'Go to code samples!',
-        target: '_blank'
-    }
-    },
-    {
-    propertyPath: 'email',
-    label: 'Email us',
-    hideLabel: true,
-    hyperlinkFormat: {
-        target: '_blank',
-        scheme: 'mailto:'
-        }
-    }
-        ]
-    }
+    email: 'info@microsoft.com'
 }),
 
+var popup = new atlas.Popup({
+  content: atlas.PopupTemplate.applyTemplate(feature.properties, templateOptions),
+  position: feature.geometry.coordinates
+});
 ```
 
-### <a name="multiple-content-templates"></a>Több tartalmi sablon
+### <a name="multiple-content-templates"></a>Több tartalomsablon
 
-A szolgáltatás a karakterlánc-sablon és a PropertyInfo-sablon együttes használatával is megjelenítheti a tartalmakat. Ebben az esetben a karakterlánc-sablon a helyőrző értékeket fehér háttérként jeleníti meg.  A és a PropertyInfo-sablon egy teljes szélességű képet jelenít meg egy táblában. A példában szereplő tulajdonságok hasonlóak az előző mintákban ismertetett tulajdonságokhoz.
+A szolgáltatás a Karakterlánc sablon és a PropertyInfo sablon kombinációjával is megjelenítheti a tartalmat. Ebben az esetben a Karakterlánc sablon fehér háttéren jeleníti meg a helyőrzők értékeit.  A PropertyInfo sablon pedig teljes szélességű képet jelenít meg egy táblázatban. A mintában szereplő tulajdonságok hasonlóak az előző mintákban ismertetett tulajdonságokhoz.
 
 ```javascript
-new atlas.data.Feature(new atlas.data.Point([0, 0]), {
+var templateOptions = {
+  content: [
+    'This template has two pieces of content; a string template with placeholders and a array of property info which renders a full width image.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
+    [{
+      propertyPath: 'imageLink',
+      label: 'Image',
+      hideImageLabel: true,
+      hyperlinkFormat: {
+        isImage: true
+      }
+    }]
+  ],
+  numberFormat: {
+    maximumFractionDigits: 2
+  }
+};
+
+var feature = new atlas.data.Feature(new atlas.data.Point([0, 0]), {
     title: 'Template 3 - Multiple content template',
     value1: 1.2345678,
     value2: {
     subValue: 'Pizza'
     },
     arrayValue: [3, 4, 5, 6],
-    imageLink: 'https://azuremapscodesamples.azurewebsites.net/common/images/Pike_Market.jpg',
-    popupTemplate: {
-    content: [
-      'This template has two pieces of content; a string template with placeholders and a array of property info which renders a full width image.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
-      [{
-        propertyPath: 'imageLink',
-        label: 'Image',
-        hideImageLabel: true,
-        hyperlinkFormat: {
-          isImage: true
-        }
-      }]
-    ],
-    numberFormat: {
-      maximumFractionDigits: 2
-    }
-    }
-    }),
-]);
+    imageLink: 'https://azuremapscodesamples.azurewebsites.net/common/images/Pike_Market.jpg'
+});
+
+var popup = new atlas.Popup({
+  content: atlas.PopupTemplate.applyTemplate(feature.properties, templateOptions),
+  position: feature.geometry.coordinates
+});
 ```
 
 ### <a name="points-without-a-defined-template"></a>Meghatározott sablon nélküli pontok
 
-Ha az előugró sablon nincs definiálva karakterlánc-sablonként, PropertyInfo-sablonként vagy mindkettő kombinációja, akkor az alapértelmezett beállításokat használja. Ha a `title` és a `description` az egyetlen hozzárendelt tulajdonság, a felugró sablon fehér hátteret, a jobb felső sarokban található bezárás gombot jeleníti meg. A kis-és közepes képernyőkön pedig az alján egy nyíl látható. Az alapértelmezett beállítások egy táblában szerepelnek a `title` és a `description`tól eltérő összes tulajdonsághoz. Még ha az alapértelmezett beállításokra is visszaesik, az előugró sablon programozott módon is kezelhető. Például a felhasználók kikapcsolhatják a hiperhivatkozások észlelését, és az alapértelmezett beállítások továbbra is érvényesek lesznek a többi tulajdonságra.
+Ha az előugró sablon nincs string sablonként, PropertyInfo sablonként vagy a kettő kombinációjában definiálva, akkor az alapértelmezett beállításokat használja. Ha `title` a `description` és az egyetlen hozzárendelt tulajdonság, az előugró sablon fehér hátteret, a jobb felső sarokban lévő bezárás gombot jeleníti meg. És a kis és közepes képernyőkön egy nyíl látható az alján. Az alapértelmezett beállítások a és a `title` `description`tulajdonságon kívül az összes tulajdonságtáblán belül jelennek meg. Még akkor is, ha visszaesik az alapértelmezett beállításokra, az előugró sablon továbbra is programozott módon módosítható. A felhasználók például kikapcsolhatják a hivatkozásészlelést, és az alapértelmezett beállítások továbbra is érvényesek lesznek más tulajdonságokra.
 
-Kattintson a pontokra a térképen a CodePen. A térképen a következő felugró sablonok mindegyike látható: karakterlánc-sablon, PropertyInfo-sablon és több tartalom sablon. A sablonok az alapértelmezett beállításokkal való megjelenítésének módját is három pont mutatja.
+Kattintson a térképpontjaira a CodePen-ben. A következő előugró sablonok mindegyikéhez van egy pont a térképen: Karakterláncsablon, PropertyInfo sablon és Több tartalomsablon. Három pont ból is megtudhatja, hogyan jelennek meg a sablonok az alapértelmezett beállításokkal.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lásd a toll <a href='https://codepen.io/azuremaps/pen/dyovrzL/'>PopupTemplates</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Előugró sablonok' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/dyovrzL/'>PopupTemplates</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) című témakört a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 
-## <a name="reuse-popup-template"></a>Felbukkanó sablon újbóli felhasználása
+## <a name="reuse-popup-template"></a>Előugró sablon újrafelhasználása
 
-A felugró ablak újrafelhasználásához hasonlóan felhasználhatja a felugró sablonokat is. Ez a megközelítés akkor lehet hasznos, ha egyszerre csak egy előugró sablont szeretne megjeleníteni, több pontra. Az előugró sablon újrafelhasználásával csökken az alkalmazás által létrehozott DOM-elemek száma, ami javítja az alkalmazás teljesítményét. A következő minta ugyanazt a felugró sablont használja három pontra. Ha bármelyikre kattint, megjelenik egy előugró ablak, amely az adott pont funkciójának tartalmát jeleníti meg.
+Az előugró ablakok újrafelhasználásához hasonlóan újra felhasználhatja az előugró sablonokat. Ez a megközelítés akkor hasznos, ha egyszerre csak egy előugró sablont szeretne megjeleníteni több ponthoz. Az előugró sablon újbóli felhasználásával csökken az alkalmazás által létrehozott DOM-elemek száma, ami ezután javítja az alkalmazás teljesítményét. A következő minta ugyanazt az előugró sablont használja három ponthoz. Ha bármelyikre kattint, egy felugró ablak jelenik meg az adott pontfunkció tartalmával.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='ReusePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lásd a toll <a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='ÚjrafelhasználásPopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) című témakört a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 
-## <a name="popup-events"></a>Felugró események
+## <a name="popup-events"></a>Előugró események
 
-Az előugró ablakok megnyithatók, lezárhatók és áthúzhatók. Az előugró osztály olyan eseményeket biztosít, amelyek segítségével a fejlesztők reagálni tudnak ezekre az eseményekre. Az alábbi példa azt mutatja be, hogy a felhasználó mikor nyitja meg, zárja be vagy húzza az előugró ablakokat. 
+Az előugró ablakok megnyithatók, bezárhatók és áthúzhatók. Az előugró osztály eseményeket biztosít, amelyek segítik a fejlesztőket az ilyen eseményekre való reagálásban. A következő minta kiemeli, hogy mely események indulnak el, amikor a felhasználó megnyitja, bezárja vagy húzza az előugró ablakot. 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Felugró események" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>felugró eseményeit</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Előugró események" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg az Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>pen-előugró eseményeit</a> ( ) a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 
 ## <a name="next-steps"></a>További lépések
@@ -254,21 +279,24 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>felugró 
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [Lakosság](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Felugró ablak](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
 
 > [!div class="nextstepaction"]
-> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
-
-A következő nagyszerű cikkekből megtudhatja a kódok teljes mintáit:
+> [Előugró beállítások](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
 
 > [!div class="nextstepaction"]
-> [Szimbólum réteg hozzáadása](./map-add-pin.md)
+> [Előugró sablon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popuptemplate)
+
+A teljes kódmintákhoz lásd az alábbi nagyszerű cikkeket:
+
+> [!div class="nextstepaction"]
+> [Szimbólumréteg hozzáadása](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
 > [HTML-jelölő hozzáadása](./map-add-custom-html.md)
 
 > [!div class="nextstepaction"]
-> [Vonal rétegének hozzáadása](map-add-line-layer.md)
+> [Vonalréteg hozzáadása](map-add-line-layer.md)
 
 > [!div class="nextstepaction"]
-> [Sokszög réteg hozzáadása](map-add-shape.md)
+> [Sokszögréteg hozzáadása](map-add-shape.md)

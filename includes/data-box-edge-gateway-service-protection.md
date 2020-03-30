@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 248d10e8814d195a515a658653cfc38de7dd4652
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179764"
 ---
-- A Data Box Edge szolgáltatás eléréséhez a szervezet kell rendelkeznie a nagyvállalati szerződés (EA) vagy a Cloud Solution Provider (CSP)-előfizetés. További információkért lásd: [Azure-előfizetéssel regisztrálhat](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/).
-- Ez a felügyeleti szolgáltatás az Azure-ban üzemel, mert védi az Azure biztonsági szolgáltatásait. Az Azure által biztosított biztonsági funkciókkal kapcsolatos további információkért látogasson el a [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/security/).
-- A felügyeleti műveletek SDK-t is igénybe a titkosítási kulcs az erőforráshoz a **eszköztulajdonságok**. Megtekintheti a titkosítási kulcs csak akkor, ha rendelkezik engedéllyel az erőforrás Graph API-hoz.
+- A Data Box Edge szolgáltatás eléréséhez a szervezetnek nagyvállalati szerződéssel (EA) vagy felhőszolgáltatói (CSP) előfizetéssel kell rendelkeznie. További információ: [Regisztráció Azure-előfizetésre című témakörben.](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)
+- Mivel ez a felügyeleti szolgáltatás az Azure-ban található, az Azure biztonsági funkciói védik. Az Azure által biztosított biztonsági funkciókról további információt a [Microsoft Azure Adatvédelmi központban talál.](https://azure.microsoft.com/support/trust-center/security/)
+- Az SDK felügyeleti műveletek hez beszerezheti az erőforrás titkosítási kulcsát az **Eszköz tulajdonságai ban.** A titkosítási kulcs csak akkor tekinthető meg, ha rendelkezik az Erőforrásgráf API-hoz szükséges engedélyekkel.

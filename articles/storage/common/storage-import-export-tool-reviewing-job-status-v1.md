@@ -1,6 +1,6 @@
 ---
-title: Az Azure import/export-feladatok állapotának áttekintése – v1 | Microsoft Docs
-description: Az importálási/exportálási feladatok állapotának megtekintéséhez az importálási vagy exportálási feladatok futtatásakor létrehozott naplófájlok használatát ismerheti meg.
+title: Az Azure importálási/exportálási feladat állapotának áttekintése - 1. Microsoft dokumentumok
+description: Megtudhatja, hogy az importálási/exportálási feladat futtatásakor létrehozott naplófájlok hogyan használhatók az importálási/exportálási feladat állapotának megtekintéséhez.
 author: twooley
 services: storage
 ms.service: storage
@@ -9,28 +9,28 @@ ms.date: 01/26/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: 33e6ecca0eb4ca05b1f6bf53cdb3bd4ac8c8d8a9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978437"
 ---
-# <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Azure-beli importálási/exportálási feladatok állapotának áttekintése a másolási naplófájlokkal
-Ha az Microsoft Azure Import/Export szolgáltatás egy importálási vagy exportálási feladatokhoz tartozó meghajtókat dolgoz fel, a naplófájlokat a Storage-fiókba másolja, vagy a Blobok importálásához vagy exportálásához. A naplófájl az importált vagy exportált fájlok részletes állapotát tartalmazza. Az egyes másolási naplófájlok URL-címét a Befejezett feladatok állapotának lekérdezése során adja vissza a rendszer. További információért lásd a [feladatok beolvasása](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get) című témakört.  
+# <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Az Azure importálási/exportálási feladat állapotának áttekintése naplófájlok másolásával
+Amikor a Microsoft Azure importálási/exportálási szolgáltatási folyamatok egy importálási vagy exportálási feladathoz társított meghajtók, azt írja a másolási naplófájlokat a tárfiókba, vagy ahonnan blobok importálása vagy exportálása. A naplófájl részletes állapotot tartalmaz az importált vagy exportált fájlokról. Az egyes másolati naplófájlok URL-címét a rendszer a befejezett feladat állapotának lekérdezésekénél adja vissza; További információt a [Munkabeszerezés című](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get) témakörben talál.  
 
-## <a name="example-urls"></a>Példa URL-címekre
+## <a name="example-urls"></a>Példa URL-címek
 
-Az alábbi URL-címek egy importálási feladatokhoz tartozó naplófájlok másolására szolgálnak két meghajtóval:  
+A következő példák példa URL-címek a két meghajtóval rendelkező importálási feladat naplófájljainak másolásához:  
 
  `http://myaccount.blob.core.windows.net/ImportExportStatesPath/waies/myjob_9WM35C2V_20130921-034307-902_error.xml`  
 
  `http://myaccount.blob.core.windows.net/ImportExportStatesPath/waies/myjob_9WM45A6Q_20130921-042122-021_error.xml`  
 
- Lásd: [importálási/exportálási szolgáltatás naplófájljának formátuma](../storage-import-export-file-format-log.md) a másolási naplók formátuma és az állapotkódok teljes listája.  
+ A másolási naplók formátumát és az állapotkódok teljes listáját lásd: [Import/Export service Log File Format](../storage-import-export-file-format-log.md) .  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
- * [Az Azure import/export eszköz beállítása](storage-import-export-tool-setup-v1.md)   
+ * [Az Azure importálási/exportálási eszközbeállítása](storage-import-export-tool-setup-v1.md)   
  * [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
  * [Importálási feladat javítása](../storage-import-export-tool-repairing-an-import-job-v1.md)   
  * [Exportálási feladat javítása](../storage-import-export-tool-repairing-an-export-job-v1.md)   

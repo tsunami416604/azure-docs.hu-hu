@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 87fd6b626efb60c7fc7ec8896f2c3758ae5cc33c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67178926"
 ---
 ### <a name="app-service-plan"></a>App Service-csomag
-Az service-csomagban a webalkalmazás üzemeltetéséhez létrehoz. Azt adja meg a terv keretében nevét a **hostingPlanName** paraméter. A csomag helye ugyanazon a helyen használt erőforráscsoport. Díjszabási szint és a feldolgozó mérete vannak megadva a **termékváltozat** és **workerSize** paraméterek
+Létrehozza a webalkalmazás üzemeltetésére vonatkozó szolgáltatási tervet. A terv nevét a **hostingPlanName** paraméteren keresztül adja meg. A terv helye megegyezik az erőforráscsoporthoz használt helyével. A tarifacsomag és a dolgozó mérete a **termékváltozatban** és a **workerSize** paraméterekben van megadva.
 
     {
       "apiVersion": "2015-08-01",

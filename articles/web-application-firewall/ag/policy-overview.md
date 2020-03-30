@@ -1,65 +1,65 @@
 ---
-title: Az Azure webalkalmazási tűzfal (WAF) szabályzatának áttekintése
-description: Ez a cikk áttekintést nyújt a webalkalmazási tűzfal (WAF) globális, a webhelyről és az URI-szabályzatokról.
+title: Az Azure webalkalmazás-tűzfal (WAF) házirendjének áttekintése
+description: Ez a cikk a WEBApplication Firewall (WAF) globális, helyenkénti és URI-nkénti házirendjeinek áttekintése.
 services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: d90c887c2e93b44a8dd13dab0b4f03665ea335c3
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: fff4fb5707c07098fd7fac261a36909224365cdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960957"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060272"
 ---
-# <a name="azure-web-application-firewall-waf-policy-overview"></a>Az Azure webalkalmazási tűzfal (WAF) szabályzatának áttekintése
+# <a name="azure-web-application-firewall-waf-policy-overview"></a>Az Azure webalkalmazás-tűzfal (WAF) házirendjének áttekintése
 
-A webalkalmazási tűzfal házirendjei a WAF összes beállítását és konfigurációját tartalmazzák. Ide tartoznak a kizárások, az egyéni szabályok, a felügyelt szabályok stb. Ezeket a szabályzatokat ezután egy Application Gateway (Global), egy figyelő (hely) vagy egy elérésiút-alapú szabály (URI) társítják, amelyek érvénybe lépnek.
+A webalkalmazás tűzfalházirendjei tartalmazzák az összes WAF-beállítást és -konfigurációt. Ez magában foglalja a kizárásokat, az egyéni szabályokat, a felügyelt szabályokat és így tovább. Ezek a házirendek ezután egy alkalmazásátjáróhoz (globális), egy figyelőhöz (webhelyenként) vagy egy elérési útnivalóra (URI-nként) társítva vannak, hogy érvénybe lépjenek.
 
 > [!NOTE]
-> Az Azure webalkalmazási tűzfal (WAF) webhelyenként és URI-alapú házirendek nyilvános előzetes verzióban érhetők el.
+> Az Azure Web Application Firewall (WAF) webhelyenként és URI-nkénti szabályzatok nyilvános előzetes verzióban vannak.
 > 
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-A létrehozható szabályzatok száma nincs korlátozva. Amikor létrehoz egy házirendet, az alkalmazásnak hozzá kell rendelnie egy Application Gateway-hez, amely érvénybe lép. Az Application Gateway, a figyelők és az elérésiút-alapú szabályok tetszőleges kombinációjával társítható.
+Nincs korlátozva a létrehozható házirendek száma. Amikor létrehoz egy házirendet, azt egy alkalmazásátjáróhoz kell társozni, hogy érvénybe lépjen. Az alkalmazásátjárók, figyelők és az elérési út alapú szabályok bármilyen kombinációjával társítható.
 
-## <a name="global-waf-policy"></a>Globális WAF házirend
+## <a name="global-waf-policy"></a>Globális WAF-politika
 
-Ha globálisan társít egy WAF-házirendet, a Application Gateway WAF mögötti összes hely védelme ugyanazokkal a felügyelt szabályokkal, egyéni szabályokkal, kizárásokkal és egyéb konfigurált beállításokkal történik.
+Ha globálisan társít waf-szabályzatot, az Application Gateway WAF mögött minden webhely ugyanazokat a felügyelt szabályokat, egyéni szabályokat, kizárásokat és minden más konfigurált beállítást védi.
 
-Ha egyetlen szabályzatot szeretne alkalmazni az összes webhelyre, társíthatja a szabályzatot az Application gatewayhez. További információkért lásd: [webalkalmazási tűzfal házirendjeinek létrehozása Application Gateway](create-waf-policy-ag.md) számára a WAF szabályzat létrehozásához és alkalmazásához a Azure Portal használatával. 
+Ha azt szeretné, hogy egyetlen házirend legyen az összes webhelyre, társíthatja a házirendet az alkalmazásátjáróhoz. További információ: [Webapplication Firewall házirendek létrehozása az Application Gateway](create-waf-policy-ag.md) létrehozásához és alkalmazásához waf-szabályzat az Azure Portalon. 
 
-## <a name="per-site-waf-policy"></a>Helyek közötti WAF szabályzat
+## <a name="per-site-waf-policy"></a>Webhelyenkénti WAF-házirend
 
-A helyek közötti WAF házirendek segítségével több, különböző biztonsági igényekkel rendelkező helyet is megadhat egy WAF mögött. Ha például öt hely van a WAF mögött, öt különálló WAF-szabályzat közül választhat (egyet az egyes figyelőknél) a kizárások, az egyéni szabályok, a felügyelt szabálykészlet és az egyes helyek összes többi WAF-beállításának testreszabásához.
+A webhelyenkénti WAF-házirendek segítségével több, eltérő biztonsági igényekkel rendelkező hely védheti meg egyetlen WAF-ot a webhelyenkénti házirendek használatával. Ha például a WAF mögött öt hely van, öt külön WAF-házirend (mindegyik figyelőhöz egy) rendelkezhet a kizárások, az egyéni szabályok, a felügyelt szabálykészletek és az egyes helyek összes többi WAF-beállítás testreszabásához.
 
-Tegyük fel, hogy az Application Gateway globális szabályzatot alkalmaz. Ezután egy másik szabályzatot alkalmaz egy figyelőre az Application Gateway-ben. A figyelő szabályzata most már csak ezt a figyelőt veszi érvénybe. Az Application Gateway globális házirendje továbbra is érvényes minden olyan figyelőre és elérésiút-alapú szabályra, amely nem rendelkezik a hozzájuk rendelt házirenddel.
+Tegyük fel, hogy az alkalmazásátjáró globális szabályzatot alkalmaz. Ezután egy másik szabályzatot alkalmaz egy figyelőaz adott alkalmazásátjárón. A hallgató politikája most lép hatályba, hogy csak a hallgató. Az alkalmazásátjáró globális szabályzata továbbra is vonatkozik az összes többi figyelők és az elérési út-alapú szabályok, amelyek nem rendelkeznek egy adott szabályzat hozzájuk rendelt.
 
-## <a name="per-uri-policy"></a>URI-szabályzat
+## <a name="per-uri-policy"></a>URI-nkénti házirend
 
-Az URI szintjének még részletesebb testreszabásához WAF szabályzatot rendelhet hozzá elérésiút-alapú szabállyal. Ha vannak olyan lapok, amelyek különböző házirendeket igényelnek egy adott helyen, akkor módosíthatja a WAF szabályzatot, amely csak egy adott URI-t érint. Ez egy fizetési vagy bejelentkezési oldalra, vagy bármely más olyan URI-ra vonatkozhat, amely még konkrétabb WAF-házirendet igényel, mint a WAF mögött található többi hely.
+Az URI-szintig még több testreszabásérdekében a WAF-házirendet egy elérési útalapú szabályhoz társíthatja. Ha egy helyen belül vannak olyan lapok, amelyek különböző házirendeket igényelnek, módosíthatja a WAF-házirendet, amely csak egy adott URI-t érint. Ez vonatkozhat egy fizetési vagy bejelentkezési lapra, vagy bármely más URI-ra, amelynek még specifikusabb WAF-házirendre van szüksége, mint a WAF mögött álló többi webhely.
 
-A WAF-házirendekhez hasonlóan a pontosabb házirendek felülbírálják a kevésbé specifikuskat. Ez azt jelenti, hogy egy URL-elérésiút-térképhez tartozó URI-szabályzat felülbírálja a fölötte lévő vagy a globális WAF szabályzatot.
+A webhelyenkénti WAF-házirendekhez, a konkrétabb házirendek is felülbírálják a kevésbé specifikusakat. Ez azt jelenti, hogy az URL-elérési út térképén lévő URI-házirend felülírja a felette lévő webhelyeket vagy globális WAF-házirendeket.
 
 ## <a name="example"></a>Példa
 
-Tegyük fel, hogy három hellyel rendelkezik: a contoso.com, a fabrikam.com és a adatum.com az Application Gateway mögött. Azt szeretné, hogy a WAF mind a három helyre legyen alkalmazva, de a adatum.com-mel kell felvennie a biztonságot, mert az ügyfelek meglátogatják, böngészhetik és vásárolhatják meg a termékeket.
+Tegyük fel, hogy három webhelye van: contoso.com, fabrikam.com és adatum.com ugyanazon alkalmazásátjáró mögött. Azt szeretné, hogy a WAF mindhárom webhelyre alkalmazva legyen, de nagyobb biztonságra van szüksége adatum.com mert az ügyfelek itt látogatják meg, böngészheti kontőket és vásárolnak termékeket.
 
-Globális házirendet alkalmazhat a WAF, bizonyos alapbeállításokkal, kizárásokkal vagy egyéni szabályokkal, ha szükséges, hogy leállítsa a hamis pozitív adatokat a forgalom blokkolására. Ebben az esetben nincs szükség a globális SQL-befecskendezési szabályok futtatására, mivel a fabrikam.com és a contoso.com SQL-háttér nélküli statikus lapok. Így letilthatja ezeket a szabályokat a globális szabályzatban.
+Alkalmazhat egy globális házirendet a WAF-re, néhány alapvető beállítással, kizárással vagy egyéni szabállyal, ha szükséges, hogy leállítsa a forgalom blokkolását. Ebben az esetben nincs szükség globális SQL-injektálási szabályok futtatására, mert fabrikam.com és contoso.com statikus oldalak sql háttérrendszer nélkül. Így letilthatja ezeket a szabályokat a globális házirendben.
 
-Ez a globális szabályzat alkalmas a contoso.com és a fabrikam.com, de körültekintően kell megfelelnie a adatum.com, ahol a bejelentkezési adatokat és a befizetéseket kezelik. A adatum-figyelőre alkalmazhat egy helyi házirendet, és megtarthatja a futó SQL-szabályokat. Azt is feltételezi, hogy egy cookie blokkolja a forgalmat, így a cookie-k kizárásával leállíthatja a hamis pozitív értéket. 
+Ez a globális szabályzat alkalmas contoso.com és fabrikam.com, de óvatosabbnak kell lennie a adatum.com ahol a bejelentkezési információk és a kifizetések kezelése történik. Alkalmazhat egy helyenkénti házirendet az adatum figyelőre, és az SQL-szabályok at futtathatja. Azt is tételezzük fel, hogy egy cookie blokkolja a forgalmat, így kizárást hozhat létre az adott cookie-hoz, hogy leállítsa a hamis pozitív. 
 
-A adatum.com/payments URI-ja az, ahol óvatosnak kell lennie. Ezért alkalmazzon egy másik szabályzatot az URI-ra, és hagyja az összes szabályt, és távolítsa el az összes kivételt is.
+Az URI adatum.com/payments az, ahol óvatosnak kell lennie. Ezért alkalmazzon egy másik házirendet az URI-ra, és hagyja az összes szabályt engedélyezve, és távolítsa el az összes kizárást.
 
-Ebben a példában egy globális szabályzattal rendelkezik, amely két helyre vonatkozik. Van egy helyhez tartozó szabályzata, amely egy adott helyre vonatkozik, majd egy URI-házirend, amely egy adott elérésiút-alapú szabályra vonatkozik. Lásd: (hivatkozás beszúrása itt, ha létezik) útmutató – a jelen példában a megfelelő PowerShellhez hozzon létre egy-egy webhelyre és egy URI-szabályzatot.
+Ebben a példában két webhelyre vonatkozó globális szabályzattal rendelkezik. Van egy helyenkénti házirendje, amely egy webhelyre vonatkozik, majd egy URI-nkénti házirend, amely egy adott elérési útalapú szabályra vonatkozik. Lásd (hivatkozás beszúrása itt, ha létezik) hogyan hozhat létre per-site és per-URI szabályzatok a megfelelő PowerShell ebben a példában.
 
 ## <a name="existing-waf-configurations"></a>Meglévő WAF-konfigurációk
 
-Az új webalkalmazási tűzfal WAF-beállításai (egyéni szabályok, felügyelt szabálykészlet-konfigurációk, kizárások stb.) léteznek egy WAF-szabályzatban. Ha rendelkezik meglévő WAF, ezek a beállítások továbbra is előfordulhatnak a WAF-konfigurációban. Az új WAF házirendre való áttéréssel kapcsolatos további információkért lásd: (hivatkozás: WAF-konfiguráció áttelepítésének WAF-házirendre). 
+A WebApplication Firewall összes WAF-beállítása (egyéni szabályok, felügyelt szabálykészlet-konfigurációk, kizárások és így tovább.) létezik a WAF-házirendben. Ha már rendelkezik WAF-fel, ezek a beállítások továbbra is létezhetnek a WAF-konfigurációban. Az új WAF-házirendre való áttérésről a [WAF Config áttelepítése WAF-házirendbe](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy)című további információkért. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Hozzon létre egy hely és egy URI-házirendet a Azure PowerShell használatával.
+Az Azure PowerShell használatával webhelyenkénti és URI-nkénti szabályzatokat hozhat létre.

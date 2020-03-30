@@ -1,6 +1,6 @@
 ---
-title: Probléma az alkalmazásproxy-ügynök összekötő telepítésekor | Microsoft Docs
-description: Az alkalmazásproxy-ügynök összekötő telepítésekor esetlegesen felmerülő problémák elhárítása
+title: Probléma az alkalmazásproxy-összekötő telepítésekor | Microsoft dokumentumok
+description: Az alkalmazásproxy-ügynök-összekötő telepítésekor felmerülő problémák elhárítása
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,64 +16,64 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a35558b81d064680981bcf403a3584e3a3d00e4f
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 466e1ce0efbdec3f5475634f3857d02554d93d98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311742"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049130"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor
 
-A Microsoft HRE alkalmazásproxy-összekötő egy belső tartomány-összetevő, amely kimenő kapcsolatokat használ a felhőben elérhető végpont és a belső tartomány közötti kapcsolat létrehozásához.
+A Microsoft AAD alkalmazásproxy-összekötő egy belső tartományi összetevő, amely kimenő kapcsolatokat használ a felhőben elérhető végpont és a belső tartomány közötti kapcsolat létrehozásához.
 
-## <a name="general-problem-areas-with-connector-installation"></a>Általános problémás területek az összekötő telepítésével
+## <a name="general-problem-areas-with-connector-installation"></a>Általános problémás területek a csatlakozó telepítésével
 
-Ha egy összekötő telepítése nem sikerül, a kiváltó ok általában az alábbi területek egyike:
+Ha egy összekötő telepítése sikertelen, a kiváltó ok általában az alábbi területek egyike:
 
-1.  **Kapcsolat** – a sikeres telepítés befejezéséhez az új összekötőnek regisztrálnia kell és meg kell teremtenie a jövőbeli megbízhatósági tulajdonságokat. Ezt úgy teheti meg, hogy csatlakozik a HRE Application proxy Cloud Service-hez.
+1.  **Kapcsolat** – a sikeres telepítés befejezéséhez az új összekötőnek regisztrálnia kell és létre kell hoznia a jövőbeli megbízhatósági tulajdonságokat. Ez az AAD alkalmazásproxy felhőszolgáltatáshoz való csatlakozással történik.
 
-2.  **Megbízhatósági kapcsolat létesítése** – az új összekötő létrehoz egy önaláírt tanúsítványt, és regisztrálja magát a Cloud Service-ben.
+2.  **Bizalmi alapú létrehozás** – az új összekötő létrehoz egy önaláírt tanúsítványt, és regisztrálja a felhőszolgáltatásra.
 
 3.  **A rendszergazda hitelesítése** – a telepítés során a felhasználónak rendszergazdai hitelesítő adatokat kell megadnia az összekötő telepítésének befejezéséhez.
 
 > [!NOTE]
-> Az összekötő telepítési naplói megtalálhatók a% TEMP% mappában, és további információkat is megadhatnak a telepítési hibák okának megadásáról.
+> Az összekötő telepítési naplói a %TEMP% mappában találhatók, és további információt nyújtanak arról, hogy mi okozza a telepítési hibát.
 
-## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>A Cloud Application proxy szolgáltatás és a Microsoft bejelentkezési oldal kapcsolatának ellenőrzése
+## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>A felhőalkalmazás-proxy szolgáltatás és a Microsoft bejelentkezési lapjához való kapcsolódás ellenőrzése
 
-**Cél:** Ellenőrizze, hogy az összekötő számítógép tud-e csatlakozni a HRE-alkalmazásproxy-regisztrációs végponthoz és a Microsoft bejelentkezési oldalához.
+**Célkitűzés:** Ellenőrizze, hogy az összekötő gép csatlakozhat-e az AAD alkalmazásproxy regisztrációs végpontjához és a Microsoft bejelentkezési lapjához.
 
-1.  Az összekötő-kiszolgálón futtassa a port tesztet a [Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) vagy más port tesztelési eszköz használatával annak ellenőrzéséhez, hogy a 443-es és a 80-es portok nyitva vannak-e.
+1.  Az összekötő kiszolgálón futtasson porttesztet [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) vagy más portvizsgáló eszközzel annak ellenőrzésére, hogy a 443-as és a 80-as port nyitva van-e.
 
-2.  Ha a portok bármelyike nem sikeres, ellenőrizze, hogy a tűzfal vagy a háttér-proxy hozzáfér-e a szükséges tartományokhoz és portokhoz. lásd: a helyszíni [környezet előkészítése](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
+2.  Ha a portok bármelyike nem sikerül, ellenőrizze, hogy a tűzfal vagy a háttérproxy hozzáfér-e a szükséges tartományokhoz és portokhoz, lásd: A helyszíni környezet előkészítése című [témakört.](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)
 
-3.  Nyisson meg egy böngészőt (külön lapon), és lépjen a következő weblapra: <https://login.microsoftonline.com>, és ellenőrizze, hogy be tud-e jelentkezni az adott oldalra.
+3.  Nyisson meg egy böngészőt (külön lapot), `https://login.microsoftonline.com`és lépjen a következő weblapra: , győződjön meg arról, hogy be tud jelentkezni az adott oldalra.
 
-## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>A számítógép-és háttér-összetevők támogatásának ellenőrzése az alkalmazásproxy megbízhatósági tanúsítványában
+## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>A számítógép- és háttérösszetevők támogatásának ellenőrzése az alkalmazásproxy megbízhatósági tanúsítványához
 
-**Cél:** Győződjön meg arról, hogy az összekötő gép, a háttér-proxy és a tűzfal támogatja az összekötő által a jövőbeli megbízhatóság érdekében létrehozott tanúsítványt.
+**Célkitűzés:** Ellenőrizze, hogy az összekötő gép, a háttérproxy és a tűzfal támogatja-e az összekötő által a jövőbeli megbízhatósági kapcsolathoz létrehozott tanúsítványt.
 
 >[!NOTE]
->Az összekötő megpróbál létrehozni egy, a TLS 1.2 által támogatott SHA512-tanúsítványt. Ha a gép vagy a háttérrendszer tűzfala és proxyja nem támogatja a TLS 1.2-et, a telepítés sikertelen lesz.
+>Az összekötő megpróbál létrehozni egy SHA512 tanúsítványt, amelyet a TLS1.2 támogat. Ha a számítógép vagy a háttértűzfal és a proxy nem támogatja a TLS1.2-t, a telepítés sikertelen lesz.
 >
 >
 
-**A probléma megoldásához:**
+**A probléma megoldása:**
 
-1.  Ellenőrizze, hogy a gép támogatja-e a TLS 1.2-et – a 2012 R2 utáni összes Windows-verziónak támogatnia kell a TLS 1,2 Ha az összekötő-számítógép 2012 R2 vagy korábbi verziójú, akkor győződjön meg arról, hogy a következő Tudásbázis vannak telepítve a gépre: <https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
+1.  Ellenőrizze, hogy a készülék támogatja-e a TLS1.2-t – A 2012 Utáni R2 minden windowsos verziónak támogatnia kell a TLS 1.2-t. Ha a csatlakozógép a 2012 R2 vagy korábbi verzióból származik, győződjön meg arról, hogy a következő kb-ek vannak telepítve a számítógépre:<https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
 
-2.  Forduljon a hálózati rendszergazdához, és kérje meg, hogy ellenőrizze, hogy a háttér-proxy és a tűzfal nem blokkolja-e a kimenő forgalom SHA512.
+2.  Lépjen kapcsolatba a hálózati rendszergazdával, és ellenőrizze, hogy a háttérproxy és a tűzfal nem blokkolja-e az SHA512-t a kimenő forgalom számára.
 
-## <a name="verify-admin-is-used-to-install-the-connector"></a>Ellenőrizze, hogy a rendszergazda az összekötő telepítéséhez használt-e
+## <a name="verify-admin-is-used-to-install-the-connector"></a>Annak ellenőrzése, hogy a rendszergazda az összekötő telepítéséhez használható-e
 
-**Cél:** Ellenőrizze, hogy az összekötőt telepítő felhasználó a megfelelő hitelesítő adatokkal rendelkező rendszergazda-e. A felhasználónak jelenleg legalább egy alkalmazás-rendszergazdának kell lennie ahhoz, hogy a telepítés sikeres legyen.
+**Célkitűzés:** Ellenőrizze, hogy az összekötőt telepíteni próbáló felhasználó megfelelő hitelesítő adatokkal rendelkező rendszergazda-e. A telepítés sikeresedéséhez a felhasználónak jelenleg legalább alkalmazásrendszergazdának kell lennie.
 
 **A hitelesítő adatok helyességének ellenőrzése:**
 
-Kapcsolódjon <https://login.microsoftonline.com>hoz, és használja ugyanazokat a hitelesítő adatokat. Győződjön meg arról, hogy a bejelentkezés sikeres. A felhasználói szerepkört úgy tekintheti meg, hogy **Azure Active Directory** -&gt; **felhasználókat és csoportokat** -&gt; **minden felhasználó számára**. 
+Csatlakozzon `https://login.microsoftonline.com` és használja ugyanazokat a hitelesítő adatokat. Ellenőrizze, hogy a bejelentkezés sikeres-e. A felhasználói szerepkört az **Azure Active Directory**  - &gt; **felhasználói és csoportjai**  - &gt; **minden felhasználónak**a segítségével ellenőrizheti. 
 
-Válassza ki a felhasználói fiókot, majd a "címtárbeli szerepkör" lehetőséget az eredményül kapott menüben. Győződjön meg arról, hogy a kiválasztott szerepkör az "Application Administrator". Ha nem fér hozzá a fenti lépésekhez tartozó lapokhoz, nem rendelkezik a szükséges szerepkörrel.
+Válassza ki a felhasználói fiókot, majd a "Könyvtárszerepkör" lehetőséget az eredményül kapott menüben. Ellenőrizze, hogy a kijelölt szerepkör "Alkalmazás-rendszergazda"-e. Ha a lépések mentén nem tud hozzáférni az oldalakhoz, nem rendelkezik a szükséges szerepkörvel.
 
-## <a name="next-steps"></a>Következő lépések
-[Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)
+## <a name="next-steps"></a>További lépések
+[Az Azure AD alkalmazásproxy-összekötők megismerése](application-proxy-connectors.md)

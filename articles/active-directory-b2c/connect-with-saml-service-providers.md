@@ -1,83 +1,83 @@
 ---
-title: Azure AD B2C konfigurálása SAML-identitásszolgáltató az alkalmazásaihoz
+title: Az Azure AD B2C konfigurálása SAML IdP-ként az alkalmazásokhoz
 title-suffix: Azure AD B2C
-description: A Azure AD B2C konfigurálása az SAML protokoll érvényesítéséhez az alkalmazásokban (szolgáltatók). A Azure AD B2C az SAML-alkalmazáshoz (identitásszolgáltató) fog működni.
+description: Az Azure AD B2C konfigurálása SAML protokollállítások biztosítása az alkalmazások (szolgáltatók) számára. Az Azure AD B2C az SAML-alkalmazás egyetlen identitásszolgáltatójaként (IdP) fog működni.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4cf572b09f1e44faca002528fd00fe5be0b51bc5
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: a72b5b50daaae33336de9caab5202c2bf42f5c15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933023"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051619"
 ---
-# <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
+# <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása az Azure AD B2C-ben
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Active Directory B2C (Azure AD B2C), hogy Security Assertion Markup Language (SAML) identitás-szolgáltatóként (identitásszolgáltató) működjön az alkalmazásaihoz.
+Ebben a cikkben megtudhatja, hogyan konfigurálhatja az Azure Active Directory B2C (Azure AD B2C) biztonsági helyestmondás-azonosító nyelv (SAML) identitásszolgáltató (IdP) az alkalmazások.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="scenario-overview"></a>Forgatókönyv áttekintése
 
-Azok a szervezetek, amelyek az ügyfél identitás-és hozzáférés-kezelési megoldásként Azure AD B2C használják, interakciót igényelhetnek az SAML protokoll használatával történő hitelesítésre konfigurált identitás-szolgáltatókkal vagy alkalmazásokkal.
+Az Azure AD B2C-t ügyfélidentitás- és hozzáférés-kezelési megoldásként használó szervezeteknek interakcióra lehet szükségük az IMAprotokoll használatával történő hitelesítésre konfigurált identitásszolgáltatókkal vagy alkalmazásokkal.
 
-Azure AD B2C az SAML együttműködési képességet kétféleképpen éri el:
+Az Azure AD B2C kétféleképpen valósítja meg az SAML-együttműködési műveleteket:
 
-* *Identitás-szolgáltatóként* (identitásszolgáltató) és az egyszeri bejelentkezés (SSO) az SAML-alapú szolgáltatók (az alkalmazások) használatával történő megvalósítása
-* *Szolgáltatóként (SP* ) és az SAML-alapú Identitáskezelés, például a Salesforce és az ADFS használatával való interakció
+* *Identitásszolgáltatóként* (IdP) való működéssel és egyszeri bejelentkezés (SSO) elérésével az SAML-alapú szolgáltatókkal (az Ön alkalmazásaival)
+* Szolgáltatóként *service provider* (SP) és saml-alapú identitásszolgáltatókkal, például a Salesforce-szal és az ADFS-sel való együttműködéssel
 
-![Diagram a B2C mint Identity Provider a bal oldali és a B2C szolgáltatóként a jobb oldalon](media/saml-identity-provider/saml-idp-diagram-01.jpg)
+![Diagram: B2C identitásszolgáltatóként a bal oldalon és B2C mint szolgáltató a jobb oldalon](media/saml-identity-provider/saml-idp-diagram-01.jpg)
 
-A két nem kizárólagos alapszintű forgatókönyvek összefoglalása az SAML használatával:
+A két nem kizárólagos alapforgatókönyv összefoglalása az SAML-lel:
 
 | Forgatókönyv | Azure AD B2C szerepkör | Használati útmutató |
 | -------- | ----------------- | ------- |
-| Az alkalmazás egy SAML-állítást vár a hitelesítés elvégzéséhez. | **Azure AD B2C identitás-szolgáltatóként (identitásszolgáltató) működik**<br />Azure AD B2C SAML-identitásszolgáltató viselkedik az alkalmazásokban. | Ez a cikk. |
-| A felhasználóknak egyszeri bejelentkezésre van szükségük egy SAML-kompatibilis identitás-szolgáltatóval, például az ADFS, a Salesforce vagy a Shibboleth.  | **Azure AD B2C szolgáltatóként működik (SP)**<br />A Azure AD B2C szolgáltatóként működik, amikor az SAML-identitás szolgáltatóhoz csatlakozik. Ez egy összevonási proxy az alkalmazás és a SAML-identitás szolgáltatója között.  | <ul><li>[Bejelentkezés beállítása SAML-identitásszolgáltató az ADFS-ben egyéni szabályzatok használatával](identity-provider-adfs2016-custom.md)</li><li>[Bejelentkezés beállítása Salesforce SAML-szolgáltatóval egyéni szabályzatok használatával](identity-provider-salesforce-custom.md)</li></ul> |
+| Az alkalmazás elvárja, hogy egy SAML-állítás a hitelesítés befejezéséhez. | **Az Azure AD B2C identitásszolgáltatóként (IdP) működik**<br />Az Azure AD B2C saml idp-ként működik az alkalmazásokhoz. | Ez a cikk. |
+| A felhasználóknak egyszeri bejelentkezésre van szükségük egy SAML-kompatibilis identitásszolgáltatóval, például az ADFS-sel, a Salesforce-szal vagy a Shibboleth-tel.  | **Az Azure AD B2C szolgáltatóként (SP) működik**<br />Az Azure AD B2C szolgáltatóként működik, amikor az SAML-identitásszolgáltatóhoz csatlakozik. Ez egy összevonási proxy az alkalmazás és az SAML-identitásszolgáltató között.  | <ul><li>[Az ADFS-sel való bejelentkezés beállítása SAML idP-ként egyéni házirendek használatával](identity-provider-adfs2016-custom.md)</li><li>[Bejelentkezés beállítása Salesforce SAML-szolgáltatóval egyéni házirendek használatával](identity-provider-salesforce-custom.md)</li></ul> |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure ad B2Cban](custom-policy-get-started.md). A *SocialAndLocalAccounts* egyéni házirendre van szüksége a cikkben tárgyalt egyéni házirend alapszintű csomagjából.
-* A Security Assertion Markup Language (SAML) protokoll alapszintű ismerete.
-* SAML-szolgáltatóként (SP) konfigurált webalkalmazás. Ebben az oktatóanyagban egy általunk biztosított [SAML-teszt alkalmazást][samltest] használhat.
+* Hajtsa végre az [Azure AD B2C egyéni szabályzatokkal való ismerkedés című](custom-policy-get-started.md)lépéseit. Szüksége van a *SocialAndLocalAccounts* egyéni szabályzat a cikkben tárgyalt egyéni szabályzat kezdőcsomag.
+* A Security Assertion Markup Language (SAML) protokoll alapvető ismerete.
+* SAML-szolgáltatóként (SP) konfigurált webalkalmazás. Ebben az oktatóanyagban használhatja az általunk biztosított [SAML tesztalkalmazást.][samltest]
 
 ## <a name="components-of-the-solution"></a>A megoldás összetevői
 
-Ehhez a forgatókönyvhöz három fő összetevő szükséges:
+A forgatókönyvhöz három fő összetevő szükséges:
 
-* Az SAML- **szolgáltató** lehetővé teszi az SAML-kérelmek küldését, valamint a Azure ad B2C-ból származó SAML-kijelentések fogadását, dekódolását és reagálását. Ezt a függő entitásnak is nevezzük.
-* Nyilvánosan elérhető SAML- **metaadatok végpontja** a szolgáltató számára.
-* [Azure AD B2C bérlő](tutorial-create-tenant.md)
+* **SAML-szolgáltató,** amely képes SAML-kérelmek küldésére, fogadására, dekódolására és az Azure AD B2C SAML-kijelentéseire való válaszadásra. Ez is ismert, mint a függő fél.
+* Nyilvánosan elérhető SAML **metaadat-végpont** a szolgáltató számára.
+* [Azure AD B2C-bérlő](tutorial-create-tenant.md)
 
-Ha még nem rendelkezik SAML-szolgáltatóval és a hozzá tartozó metaadat-végponttal, akkor a teszteléshez elérhetővé tett SAML-alkalmazást használhatja.
+Ha még nem rendelkezik SAML-szolgáltatóval és társított metaadat-végponttal, használhatja ezt a minta SAML-alkalmazást, amelyet tesztelésre tettünk elérhetővé:
 
-[SAML-teszt alkalmazás][samltest]
+[SAML tesztalkalmazás][samltest]
 
-## <a name="1-set-up-certificates"></a>1. tanúsítványok beállítása
+## <a name="1-set-up-certificates"></a>1. Tanúsítványok beállítása
 
-A szolgáltató és a Azure AD B2C közötti megbízhatósági kapcsolat létrehozásához meg kell adnia a webalkalmazás X509 tanúsítványait.
+A szolgáltató és az Azure AD B2C közötti megbízhatósági kapcsolat létrehozásához meg kell adnia az X509-es webalkalmazás-tanúsítványokat.
 
 * **Szolgáltatói tanúsítványok**
-  * A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány. Ezt a tanúsítványt a szolgáltató használja a Azure AD B2Cba küldendő SAML-kérelem aláírásához. Azure AD B2C beolvassa a nyilvános kulcsot a szolgáltatói metaadatokból az aláírás ellenőrzéséhez.
-  * Választható A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány. Azure AD B2C beolvassa a nyilvános kulcsot a szolgáltatói metaadatokból az SAML-állítás titkosításához. A szolgáltató ezután a titkos kulcsot használja az állítás visszafejtéséhez.
-* **Tanúsítványok Azure AD B2C**
-  * Azure AD B2C található titkos kulccsal rendelkező tanúsítvány. Ezt a tanúsítványt a Azure AD B2C a szolgáltatónak küldött SAML-válasz aláírására használja. A szolgáltató beolvassa a Azure AD B2C metaadatok nyilvános kulcsát az SAML-válasz aláírásának ellenőrzéséhez.
+  * Tanúsítvány a webalkalmazásban tárolt személyes kulccsal. Ezt a tanúsítványt a szolgáltató az Azure AD B2C-nek küldött SAML-kérelem aláírására használja. Az Azure AD B2C beolvassa a nyilvános kulcsot a szolgáltató metaadataiból az aláírás érvényesítéséhez.
+  * (Nem kötelező) Tanúsítvány a webalkalmazásban tárolt személyes kulccsal. Az Azure AD B2C beolvassa a nyilvános kulcsot a szolgáltató metaadataiaz SAML-állítás titkosításához. A szolgáltató ezután a személyes kulccsal visszafejti a feltételt.
+* **Azure AD B2C tanúsítványok**
+  * Tanúsítvány egy személyes kulc az Azure AD B2C. Ezt a tanúsítványt az Azure AD B2C használja a szolgáltatónak küldött SAML-válasz aláírásához. A szolgáltató beolvassa az Azure AD B2C metaadat-nyilvános kulcsot az SAML-válasz aláírásának ellenőrzéséhez.
 
-Használhat egy nyilvános hitelesítésszolgáltató által kiadott tanúsítványt, vagy ebben az oktatóanyagban egy önaláírt tanúsítványt.
+Használhatja a nyilvános hitelesítésszolgáltató által kiállított tanúsítványt, vagy ebben az oktatóanyagban önaláírt tanúsítványt.
 
-### <a name="11-prepare-a-self-signed-certificate"></a>1,1 önaláírt tanúsítvány előkészítése
+### <a name="11-prepare-a-self-signed-certificate"></a>1.1 Önaláírt tanúsítvány előkészítése
 
-Ha még nem rendelkezik tanúsítvánnyal, az oktatóanyaghoz használhat önaláírt tanúsítványt is. Windows rendszeren a PowerShell [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) parancsmag segítségével hozhatja elő a tanúsítványt.
+Ha még nem rendelkezik tanúsítvánnyal, az oktatóanyaghoz önaláírt tanúsítványt is használhat. Windows rendszerben a PowerShell [Új-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) parancsmaghasználatával hozhat létre tanúsítványt.
 
-1. Futtassa ezt a PowerShell-parancsot egy önaláírt tanúsítvány létrehozásához. Módosítsa a `-Subject` argumentumot az alkalmazásához, és Azure AD B2C a bérlő nevét. A `-NotAfter` dátum módosításával a tanúsítvány eltérő lejáratát is megadhatja.
+1. Hajtsa végre ezt a PowerShell-parancsot önaláírt tanúsítvány létrehozásához. Módosítsa `-Subject` az argumentumot az alkalmazás és az Azure AD B2C bérlői név nek megfelelően. A `-NotAfter` dátumot úgy is módosíthatja, hogy a tanúsítványhoz más lejárati értéket adjon meg.
 
     ```PowerShell
     New-SelfSignedCertificate `
@@ -90,36 +90,36 @@ Ha még nem rendelkezik tanúsítvánnyal, az oktatóanyaghoz használhat önal�
         -CertStoreLocation "Cert:\CurrentUser\My"
     ```
 
-1. Nyissa meg a **felhasználói tanúsítványok kezelése** > az **aktuális felhasználó** > **személyes** > **tanúsítványokat** > *yourappname.yourtenant.onmicrosoft.com*
-1. Válassza ki a tanúsítványt > **művelet** > **minden feladat** > **Exportálás**
-1. Válassza az **igen** > **következő** > **Igen, a titkos kulcs exportálása** > **tovább**
-1. Az **exportálási fájlformátum** alapértelmezett értékének elfogadása
-1. Adja meg a tanúsítvány jelszavát
+1. A **Felhasználói tanúsítványok** > **kezelése – Aktuális felhasználói** > **személyes** > **tanúsítványok** > *yourappname.yourtenant.onmicrosoft.com* megnyitása
+1. A **művelet** > >**minden feladat exportálása** > tanúsítvány**kiválasztása**
+1. Válassza az **Igen** > **következő** > **igen lehetőséget, exportálja a személyes kulcsot** > **Tovább**
+1. A **Fájlformátum exportálása** alapértelmezéseinek elfogadása
+1. Jelszó megadása a tanúsítványhoz
 
-### <a name="12-upload-the-certificate"></a>1,2 a tanúsítvány feltöltése
+### <a name="12-upload-the-certificate"></a>1.2 A tanúsítvány feltöltése
 
-Ezután töltse fel az SAML-jogkivonatot és a válasz aláíró tanúsítványát Azure AD B2C.
+Ezután töltse fel az SAML-állítás- és válaszaláíró tanúsítványt az Azure AD B2C-be.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg a Azure ad B2C bérlőt.
-1. A **házirendek**területen válassza az **identitási élmény keretrendszere** , majd a **házirend-kulcsok**elemet.
-1. Válassza a **Hozzáadás**lehetőséget, majd válassza a beállítások > a **feltöltés** **lehetőséget** .
-1. Írjon be egy **nevet**, például *SamlIdpCert*. Az előtag *B2C_1A_* automatikusan hozzáadódik a kulcs nevéhez.
-1. Töltse fel a tanúsítványt a fájl feltöltése vezérlőelem használatával.
+1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com) és keresse meg az Azure AD B2C-bérlőt.
+1. A **Házirendek**csoportban válassza **az Identitáskezelési keretrendszert,** majd **a Házirendkulcsok lehetőséget.**
+1. Válassza **a Hozzáadás**lehetőséget, majd a**Feltöltés** **beállításai lehetőséget.** > 
+1. Írjon be egy **nevet**, például *SamlIdpCert*. A *B2C_1A_* előtag automatikusan hozzáadódik a kulcs nevéhez.
+1. Töltse fel a tanúsítványt a fájlfeltöltési vezérlővel.
 1. Adja meg a tanúsítvány jelszavát.
 1. Kattintson a **Létrehozás** gombra.
 1. Ellenőrizze, hogy a kulcs a várt módon jelenik-e meg. Például *B2C_1A_SamlIdpCert*.
 
-## <a name="2-prepare-your-policy"></a>2. a szabályzat előkészítése
+## <a name="2-prepare-your-policy"></a>2. Készítse elő a politika
 
-### <a name="21-create-the-saml-token-issuer"></a>2,1 az SAML-jogkivonat kiállítójának létrehozása
+### <a name="21-create-the-saml-token-issuer"></a>2.1 Az SAML token kibocsátójának létrehozása
 
-Most adja hozzá a bérlői képességet, hogy SAML-jogkivonatokat bocsásson ki az [SAML-jogkivonat kiállítója](saml-issuer-technical-profile.md) és a [SAML-munkamenet-szolgáltató](custom-policy-reference-sso.md#samlssosessionprovider) technikai profiljai használatával.
+Most adja hozzá a bérlő saml tokenek kiadására képes [saml tokenek, SAML token kibocsátó](saml-issuer-technical-profile.md) és [SAML munkamenet-szolgáltató](custom-policy-reference-sso.md#samlssosessionprovider) technikai profilok használatával.
 
-Nyissa meg `SocialAndLocalAccounts\` **`TrustFrameworkExtensions.xml`** az egyéni házirend alapszintű csomagban.
+Nyissa `SocialAndLocalAccounts\` **`TrustFrameworkExtensions.xml`** meg az egyéni házirend kezdőcsomagjában.
 
-Keresse meg a `<ClaimsProviders>` szakaszt, és adja hozzá a következő XML-kódrészletet.
+Keresse `<ClaimsProviders>` meg a szakaszt, és adja hozzá a következő XML-kódrészletet.
 
-Módosíthatja a `IssuerUri` metaadatok értékét. Ez az a kiállítói URI, amelyet a rendszer az SAML-válaszban ad vissza Azure AD B2Cból. A függő entitás alkalmazását úgy kell konfigurálni, hogy a kiállítói URI-t fogadja az SAML-érvényesítés ellenőrzése során.
+Módosíthatja a `IssuerUri` metaadatok értékét. Ez a kiállító URI-t, amely az Azure AD B2C SAML válaszában ad vissza. A függő entitás alkalmazást úgy kell konfigurálni, hogy az SAML-helyességérvényesítési ellenőrzés során elfogadja a kiállító URI-ját.
 
 ```XML
 <ClaimsProvider>
@@ -155,17 +155,17 @@ Módosíthatja a `IssuerUri` metaadatok értékét. Ez az a kiállítói URI, am
 </ClaimsProvider>
 ```
 
-## <a name="3-add-the-saml-relying-party-policy"></a>3. adja hozzá az SAML függő entitás házirendjét
+## <a name="3-add-the-saml-relying-party-policy"></a>3. Adja hozzá az SAML függő entitás házirend
 
-Most, hogy a bérlő kiállíthatja az SAML-kijelentéseket, létre kell hoznia az SAML függő entitásra vonatkozó házirendet, és módosítania kell a felhasználói utat, hogy JWT helyett SAML-állítást adjon ki.
+Most, hogy a bérlő saml-állításokat adhat ki, létre kell hoznia az SAML függő entitás házirendjét, és módosítania kell a felhasználói utat úgy, hogy egy JWT helyett SAML-állítást adjon ki.
 
-### <a name="31-create-sign-up-or-sign-in-policy"></a>3,1 regisztrációs vagy bejelentkezési szabályzat létrehozása
+### <a name="31-create-sign-up-or-sign-in-policy"></a>3.1 Előfizetési vagy bejelentkezési szabályzat létrehozása
 
-1. Hozzon létre egy másolatot a *SignUpOrSignin. XML* fájlról a Starter Pack munkakönyvtárában, és mentse azt egy új névvel. Például: *SignUpOrSigninSAML. XML*. Ez a függő entitás házirend-fájlja.
+1. Hozzon létre egy másolatot a *SignUpOrSignin.xml* fájlról az indítócsomag munkakönyvtárában, és mentse el egy új névvel. Például *SignUpOrSigninSAML.xml*. Ez a függő entitás házirendfájlja.
 
-1. Nyissa meg a *SignUpOrSigninSAML. XML* fájlt az előnyben részesített szerkesztőben.
+1. Nyissa meg a *SignUpOrSigninSAML.xml* fájlt a kívánt szerkesztőben.
 
-1. Módosítsa a szabályzat `PolicyId`ét és `PublicPolicyUri` _B2C_1A_signup_signin_samlre_ és `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml`ra az alább látható módon.
+1. Változtassa `PolicyId` meg `PublicPolicyUri` a és a `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml` politika _B2C_1A_signup_signin_saml_ és az alábbiakban látható módon.
 
     ```XML
     <TrustFrameworkPolicy
@@ -178,7 +178,7 @@ Most, hogy a bérlő kiállíthatja az SAML-kijelentéseket, létre kell hoznia 
     PublicPolicyUri="http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml">
     ```
 
-1. Közvetlenül a `<RelyingParty>` elem előtt adja hozzá a következő XML-kódrészletet. Ez az XML felülírja a _SignUpOrSignIn_ felhasználói út 7-es számú lépését. Ha az alapszintű csomag egy másik mappájából indult, vagy testreszabhatja a felhasználói utat az előkészítési lépések hozzáadásával vagy eltávolításával, ügyeljen arra, hogy a (`order` elemben) a jogkivonat-kiállítói lépéshez megadott számmal (például a másik alapszintű csomag mappáiban a 4. lépés 4-es számú, a `SocialAccounts` és a 9 `SocialAndLocalAccountsWithMfa`) tartozó `LocalAccounts`érték legyen igazítva.
+1. Adja hozzá a következő XML-kódrészletet közvetlenül az `<RelyingParty>` elem előtt. Ez az XML felülírja a _SignUpOrSignIn_ felhasználói út 7-es számú vezénylési lépését. Ha az indítócsomag egy másik mappájából indította el, vagy vezénylési lépések hozzáadásával vagy eltávolításával testreszabta a felhasználói utazást, győződjön meg arról, hogy a szám `order` (az elemben) a tokenkibocsátó lépéshez megadott hoz igazodik (például a másik kezdőcsomag mappájában a 4. lépés `LocalAccounts`a , 6 és `SocialAccounts` 9) esetében). `SocialAndLocalAccountsWithMfa`
 
     ```XML
     <UserJourneys>
@@ -190,7 +190,7 @@ Most, hogy a bérlő kiállíthatja az SAML-kijelentéseket, létre kell hoznia 
     </UserJourneys>
     ```
 
-1. Cserélje le a `<RelyingParty>` elem teljes `<TechnicalProfile>` elemét a következő technikai profil XML-kódjára.
+1. Cserélje le `<TechnicalProfile>` az `<RelyingParty>` elem teljes elemét a következő technikai profil XML-re.
 
     ```XML
     <TechnicalProfile Id="PolicyProfile">
@@ -208,9 +208,9 @@ Most, hogy a bérlő kiállíthatja az SAML-kijelentéseket, létre kell hoznia 
     </TechnicalProfile>
     ```
 
-1. `tenant-name` frissítése a Azure AD B2C bérlő nevével.
+1. Frissítse `tenant-name` az Azure AD B2C-bérlő nevével.
 
-A végleges függő entitás házirend-fájljának a következőhöz hasonlóan kell kinéznie:
+A végső függő entitás házirendfájljának a következőkre kell hasonlítania:
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -255,49 +255,49 @@ A végleges függő entitás házirend-fájljának a következőhöz hasonlóan 
 </TrustFrameworkPolicy>
 ```
 
-### <a name="32-upload-and-test-your-policy-metadata"></a>3,2 a szabályzat metaadatainak feltöltése és tesztelése
+### <a name="32-upload-and-test-your-policy-metadata"></a>3.2 Az irányelv metaadatainak feltöltése és tesztelése
 
-Mentse a módosításokat, és töltse fel az új házirend-fájlt. Miután feltöltötte mindkét szabályzatot (a kiterjesztést és a függő entitás fájljait), nyisson meg egy webböngészőt, és navigáljon a szabályzat metaadataihoz.
+Mentse a módosításokat, és töltse fel az új házirendfájlt. Miután feltöltötte mindkét házirendet (a bővítményt és a függő entitás fájljait), nyisson meg egy webböngészőt, és keresse meg a házirend metaadatait.
 
-Azure AD B2C Policy IDENTITÁSSZOLGÁLTATÓ metaadatok az SAML-protokollban használt információk, amelyek lehetővé teszik az SAML-identitások szolgáltatójának konfigurálását. A metaadatok határozzák meg a szolgáltatások helyét, például a bejelentkezést és a kijelentkezést, a tanúsítványokat, a bejelentkezési metódusokat és egyebeket. A Azure AD B2C szabályzat metaadatai a következő URL-címen érhetők el. Cserélje le a `tenant-name`t a Azure AD B2C bérlő nevére, és `policy-name` a házirend nevét (AZONOSÍTÓját):
+Az Azure AD B2C-házirend IDP metaadatai az SAML protokollban használt adatok az SAML-identitásszolgáltató konfigurációjának felfedéséhez. A metaadatok határozzák meg a szolgáltatások helyét, például a bejelentkezést és a kijelentkezést, a tanúsítványokat, a bejelentkezési módszert stb. Az Azure AD B2C-szabályzat metaadatai a következő URL-címen érhetők el. Cserélje `tenant-name` le az Azure AD B2C-bérlő nevére és `policy-name` a szabályzat nevére (ID):
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
-Most már készen áll az egyéni házirend-és Azure AD B2C-bérlőre. Ezután hozzon létre egy alkalmazás-regisztrációt Azure AD B2C.
+Az egyéni szabályzat és az Azure AD B2C-bérlő már készen áll. Ezután hozzon létre egy alkalmazásregisztrációt az Azure AD B2C-ben.
 
-## <a name="4-setup-application-in-the-azure-ad-b2c-directory"></a>4. telepítő alkalmazás a Azure AD B2C könyvtárban
+## <a name="4-setup-application-in-the-azure-ad-b2c-directory"></a>4. Beállítási alkalmazás az Azure AD B2C címtárban
 
-### <a name="41-register-your-application-in-azure-active-directory"></a>4,1 az alkalmazás regisztrálása Azure Active Directory
+### <a name="41-register-your-application-in-azure-active-directory"></a>4.1 Az alkalmazás regisztrálása az Azure Active Directoryban
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.
-1. Adja meg az alkalmazás **nevét** . Például: *SAMLApp1*.
-1. A **támogatott fióktípus**területen válassza az **ebben a szervezeti könyvtárban lévő fiókok** lehetőséget
-1. Az **átirányítási URI**területen válassza a **web**lehetőséget, majd írja be a `https://localhost`. Ezt az értéket később módosíthatja az alkalmazás regisztrációs jegyzékfájljában.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, majd válassza ki az Azure AD B2C bérlőt tartalmazó könyvtárat.
+1. A bal oldali menüben válassza az **Azure AD B2C**lehetőséget. Vagy válassza a **Minden szolgáltatás** lehetőséget, és keresse meg az **Azure AD B2C elemet.**
+1. Válassza **az Alkalmazásregisztrációk (Előzetes verzió)** lehetőséget, majd az **Új regisztráció**lehetőséget.
+1. Adja meg az alkalmazás **nevét.** Például *SAMLApp1*.
+1. A **Támogatott fióktípusok csoportban**válassza a **Csak ebben a szervezeti címtárban lévő Fiókok lehetőséget.**
+1. Az **Átirányítás URI csoportban**válassza `https://localhost`a **Web**lehetőséget, majd írja be a billentyűt. Ezt az értéket később módosíthatja az alkalmazásregisztrációs jegyzékfájljában.
 1. Kattintson a **Register** (Regisztrálás) elemre.
 
-### <a name="42-update-the-app-manifest"></a>4,2 az alkalmazás jegyzékfájljának frissítése
+### <a name="42-update-the-app-manifest"></a>4.2 Az alkalmazásjegyzék frissítése
 
-Az SAML-alkalmazások esetében több tulajdonságot kell konfigurálni az alkalmazás regisztrációs jegyzékfájljában.
+Saml-alkalmazások esetén számos tulajdonságot kell konfigurálnia az alkalmazásregisztrációs jegyzékben.
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon az előző szakaszban létrehozott alkalmazás-regisztrációhoz.
-1. A **kezelés**területen válassza a **jegyzékfájl** elemet a jegyzékfájl-szerkesztő megnyitásához. A következő fejezetekben számos tulajdonságot kell módosítania.
+1. Az [Azure Portalon](https://portal.azure.com)keresse meg az előző szakaszban létrehozott alkalmazásregisztrációt.
+1. A **Kezelés csoportban**válassza a **Jegyzékfájl** lehetőséget a jegyzékszerkesztő megnyitásához. A következő szakaszokban több tulajdonságot is módosíthat.
 
 #### <a name="identifieruris"></a>identifierUris
 
-A `identifierUris` egy olyan felhasználó által definiált URI-t tartalmazó karakterlánc-gyűjtemény, amely egyedileg azonosít egy webalkalmazást a saját Azure AD B2C bérlőn belül. A szolgáltatónak az SAML-kérelem `Issuer` elemében kell megadnia ezt az értéket.
+A `identifierUris` egy karakterlánc-gyűjtemény, amely a felhasználó által definiált URI(k) tartalmazó, amely egyedileg azonosítja a webalkalmazást az Azure AD B2C bérlőn belül. A szolgáltatónak ezt az `Issuer` értéket az SAML-kérelem elemében kell beállítania.
 
 #### <a name="samlmetadataurl"></a>samlMetadataUrl
 
-Ez a tulajdonság a szolgáltató nyilvánosan elérhető metaadat-URL-címét jelöli. A metaadatok URL-címe bármely névtelenül elérhető végpontra feltöltött metaadat-fájlra mutathat, például a blob Storage-hoz.
+Ez a tulajdonság a szolgáltató nyilvánosan elérhető metaadat-URL-címét jelöli. A metaadat-URL-cím bármely névtelenül elérhető végpontra feltöltött metaadatfájlra mutathat, például blob storage-ra.
 
-A metaadatok az SAML-protokollban használt információk egy SAML-fél, például egy szolgáltató konfigurációjának elérhetővé tétele érdekében. A metaadatok határozzák meg a szolgáltatások helyét, például a bejelentkezést és a kijelentkezést, a tanúsítványokat, a bejelentkezési metódusokat és egyebeket. Azure AD B2C beolvassa a szolgáltatói metaadatokat, és ennek megfelelően működik. A metaadatok nem szükségesek. Megadhat néhány attribútumot is, például a válasz URI-t és a kijelentkezési URI-t közvetlenül az alkalmazás jegyzékfájljában.
+A metaadatok az SAML protokollban használt információk egy SAML-fél, például egy szolgáltató konfigurációjának felfedésére. A metaadatok határozzák meg a szolgáltatások helyét, például a bejelentkezést és a kijelentkezést, a tanúsítványokat, a bejelentkezési módszert stb. Az Azure AD B2C beolvassa a szolgáltató metaadatait, és ennek megfelelően jár el. A metaadatok nem szükségesek. Megadhat néhány attribútumot is, például a válasz URI-ját és a kijelentkezési URI-t közvetlenül az alkalmazásjegyzékben.
 
-Ha az SAML-metaadatok URL-címében és az alkalmazás regisztrációs jegyzékfájljában *is vannak* megadva tulajdonságok, a rendszer **egyesíti**őket. A metaadatok URL-címében megadott tulajdonságokat a rendszer először dolgozza fel, és elsőbbséget élvez.
+Ha az SAML metaadat-URL-címében és az alkalmazásregisztrációs jegyzékben *is* vannak megadva tulajdonságok, a **rendszer egyesíti**őket. A metaadat-URL-címben megadott tulajdonságok at dolgozza fel először, és elsőbbséget élveznek.
 
-Ebben az oktatóanyagban, amely az SAML-teszt alkalmazást használja, használja a következő értéket a `samlMetadataUrl`számára:
+Ehhez az oktatóanyaghoz, amely az SAML tesztalkalmazást használja, használja a következő `samlMetadataUrl`értéket:
 
 ```JSON
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
@@ -305,11 +305,11 @@ Ebben az oktatóanyagban, amely az SAML-teszt alkalmazást használja, használj
 
 #### <a name="replyurlswithtype-optional"></a>replyUrlsWithType (nem kötelező)
 
-Ha nem ad meg metaadat-URI-t, explicit módon megadhatja a válasz URL-címét. Ez a választható tulajdonság a `AssertionConsumerServiceUrl` (`SingleSignOnService` URL-címet a szolgáltatói metaadatokban) jelöli, és a `BindingType` `HTTP POST`.
+Ha nem ad meg metaadat-URI-t, explicit módon megadhatja a válasz URL-címét. Ez a választható `AssertionConsumerServiceUrl` tulajdonság`SingleSignOnService` a ( URL-címet jelöli `BindingType` a szolgáltató `HTTP POST`metaadataiban), és a t an atanak kell tekinteni.
 
-Ha a válasz URL-címét és a kijelentkezési URL-címet a szolgáltatói metaadatok használata nélkül konfigurálja az alkalmazás jegyzékfájljában, akkor a Azure AD B2C nem ellenőrzi az SAML-kérelem aláírását, és nem titkosítja az SAML-választ.
+Ha úgy dönt, hogy konfigurálja a válasz URL-címét és a kijelentkezési URL-t az alkalmazásjegyzékben a szolgáltató metaadatainak használata nélkül, az Azure AD B2C nem ellenőrzi az SAML-kérelem aláírását, és nem titkosítja az SAML-választ.
 
-Ebben az oktatóanyagban, amelyben az SAML-teszt alkalmazást használja, a `replyUrlsWithType` `url` tulajdonságát állítsa a következő JSON-kódrészletben látható értékre.
+Ebben az oktatóanyagban, amelyben az SAML `url` tesztalkalmazást `replyUrlsWithType` használja, állítsa be a tulajdonságát a következő JSON-kódrészletben látható értékre.
 
 ```JSON
 "replyUrlsWithType":[
@@ -322,60 +322,61 @@ Ebben az oktatóanyagban, amelyben az SAML-teszt alkalmazást használja, a `rep
 
 #### <a name="logouturl-optional"></a>logoutUrl (nem kötelező)
 
-Ez a választható tulajdonság a `Logout` URL-címet jelöli (`SingleLogoutService` URL-címet a függő entitás metaadataiban), és a `BindingType` erre a `Http-Redirect`feltételezi.
+Ez a választható `Logout` tulajdonság`SingleLogoutService` az URL-címet ( URL-t `BindingType` jelöli a függő `Http-Redirect`entitás metaadataiban), és az ehhez a függvényt feltételezi.
 
-Ebben az oktatóanyagban, amely az SAML-teszt alkalmazást használja, hagyja `logoutUrl` beállítani a `https://samltestapp2.azurewebsites.net/logout`:
+Ehhez az oktatóanyaghoz, amely az `logoutUrl` SAML `https://samltestapp2.azurewebsites.net/logout`tesztalkalmazást használja, hagyja a következőre:
 
 ```JSON
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",
 ```
 
-## <a name="5-update-your-application-code"></a>5. az alkalmazás kódjának frissítése
+## <a name="5-update-your-application-code"></a>5. Az alkalmazás kódjának frissítése
 
-Az utolsó lépés a Azure AD B2C engedélyezése SAML-identitásszolgáltató az SAML függő entitás alkalmazásában. Minden alkalmazás eltérő, és ennek lépései eltérőek. Részletekért olvassa el az alkalmazás dokumentációját.
+Az utolsó lépés az, hogy az Azure AD B2C saml idp-ként engedélyezze az SAML függő entitás alkalmazásában. Minden alkalmazás más, és a lépések, hogy erre változik. A részleteket az alkalmazás dokumentációjában találja.
 
-Általában a következők szükségesek:
+Az alábbiak némelyike vagy mindegyike általában kötelező:
 
-* **Metaadatok**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **Kiállító**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name`
-* **Bejelentkezési URL-cím/SAML-végpont/SAML URL-cím**: a metaadat-fájlban található érték bejelölése
-* **Tanúsítvány**: ez *B2C_1A_SamlIdpCert*, de a titkos kulcs nélkül. A tanúsítvány nyilvános kulcsának beszerzése:
+* **Metaadatok**:`https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **Kiállító**: Az entitásazonosító használata a metaadatfájlban
+* **Bejelentkezési url/SAML végpont/SAML URL**: Ellenőrizze az értéket a metaadatfájlban
+* **Tanúsítvány**: Ez *B2C_1A_SamlIdpCert,* de a személyes kulcs nélkül. A tanúsítvány nyilvános kulcsának beszerezése:
 
     1. Nyissa meg a fent megadott metaadat-URL-címet.
-    1. Másolja az értéket a `<X509Certificate>` elembe.
+    1. Másolja az `<X509Certificate>` elem becses értékét.
     1. Illessze be egy szövegfájlba.
-    1. Mentse a szövegfájlt *. cer* fájlként.
+    1. Mentse a szövegfájlt *.cer* fájlként.
 
-### <a name="51-test-with-the-saml-test-app-optional"></a>5,1 tesztelés az SAML-teszt alkalmazással (opcionális)
+### <a name="51-test-with-the-saml-test-app-optional"></a>5.1 Teszt az SAML tesztalkalmazással (nem kötelező)
 
-Az oktatóanyag elvégzéséhez az [SAML-teszt alkalmazás][samltest]használatával:
+Az oktatóanyag befejezéséhez a [SAML tesztalkalmazásunk][samltest]használatával:
 
 * A bérlő nevének frissítése
-* Frissítse a házirend nevét, például *B2C_1A_signup_signin_saml*
-* Adja meg a kiállító URI azonosítóját: `https://contoso.onmicrosoft.com/app-name`
+* Házirend nevének frissítése, például *B2C_1A_signup_signin_saml*
+* Adja meg ezt a kiállító URI-ját:`https://contoso.onmicrosoft.com/app-name`
 
-Válassza a **Bejelentkezés** lehetőséget, és a felhasználónak be kell jelentkeznie a végfelhasználó bejelentkezési képernyőjére. Bejelentkezéskor az SAML-jogcímet vissza kell adni a minta alkalmazásnak.
+Válassza **a Bejelentkezés** lehetőséget, és megjelenik egy felhasználói bejelentkezési képernyő. Bejelentkezéskor egy SAML-feltétel t a mintaalkalmazás visszaad.
 
 ## <a name="sample-policy"></a>Minta szabályzat
 
-Egy teljes minta szabályzatot biztosítunk, amely az SAML-teszt alkalmazással való teszteléshez használható.
+Teljes mintaszabályzatot biztosítunk, amelyet az SAML tesztalkalmazással való teszteléshez használhat.
 
-1. Az [SAML-SP által kezdeményezett bejelentkezési minta házirend](https://github.com/azure-ad-b2c/saml-sp/tree/master/policy/SAML-SP-Initiated) letöltése
-1. `TenantId` frissítése a bérlő nevével egyezően, például *contoso.b2clogin.com*
-1. A szabályzat nevének megtartása *B2C_1A_SAML2_signup_signin*
+1. Az [SAML-SP által kezdeményezett bejelentkezési mintaházirend](https://github.com/azure-ad-b2c/saml-sp/tree/master/policy/SAML-SP-Initiated) letöltése
+1. A `TenantId` bérlő nevének megfelelő frissítés, például *contoso.b2clogin.com*
+1. A házirend nevének megtartása *B2C_1A_SAML2_signup_signin*
 
-## <a name="supported-and-unsupported-saml-modalities"></a>Támogatott és nem támogatott SAML-módozatok
+## <a name="supported-and-unsupported-saml-modalities"></a>Támogatott és nem támogatott SAML módozat
 
-A saját metaadat-végponton keresztül a következő, SAML-függő entitások (RP) támogatottak:
+A következő SAML függő entitás (RP) forgatókönyvek a saját metaadat-végponton keresztül támogatottak:
 
-* Több kijelentkezési URL-cím vagy POST-kötés a kijelentkezési URL-címhez az Application/Service Principal objektumban.
-* Az alkalmazás/szolgáltatás egyszerű objektumában az RP-kérelmek ellenőrzéséhez írja be az aláíró kulcsot.
-* A jogkivonat-titkosítási kulcs megadásához az Application/Service Principal objektumban.
-* Az identitás-szolgáltató által kezdeményezett bejelentkezések jelenleg nem támogatottak az előzetes verzióban.
+* Több kijelentkezési URL-cím vagy POST kötés az alkalmazás/egyszerű szolgáltatásobjektum kijelentkezési URL-címéhez.
+* Adja meg az aláíró kulcsot az alkalmazás/egyszerű szolgáltatásobjektum RP-kérelmeinek ellenőrzéséhez.
+* Adja meg a token titkosítási kulcsot az alkalmazás/egyszerű szolgáltatásobjektumban.
+* Az identitásszolgáltató által kezdeményezett bejelentkezések jelenleg nem támogatottak az előzetes verzióban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információt az [SAML-protokollról az Oasis webhelyén](https://www.oasis-open.org/)talál.
+- Az [SAML protokollról](https://www.oasis-open.org/)további információt az OASIS honlapján talál.
+- Az SAML-teszt webalkalmazás beszerezhető az [Azure AD B2C GitHub közösségi tártárából.](https://github.com/azure-ad-b2c/saml-sp-tester)
 
 <!-- LINKS - External -->
 [samltest]: https://aka.ms/samltestapp

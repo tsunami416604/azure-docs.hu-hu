@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center és az Azure Kubernetes szolgáltatás
-description: Ismerkedjen meg Azure Security Center Azure Kubernetes-szolgáltatásokkal való integrálásával
+title: Az Azure Security Center és az Azure Kubernetes szolgáltatás
+description: Ismerje meg az Azure Security Center és az Azure Kubernetes-szolgáltatások integrációját
 services: security-center
 documentationcenter: na
 author: memildin
@@ -12,55 +12,53 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0743499b019bd1c7b985636e886eee9352284a55
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: d1cd4691586b27282d221a19c5fb7a1af034ed6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616070"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125161"
 ---
-# <a name="azure-kubernetes-services-integration-with-security-center-preview"></a>Az Azure Kubernetes Services integrációja Security Center (előzetes verzió)
-Az Azure Kubernetes Service (ak) a Microsoft által felügyelt szolgáltatás a tároló alkalmazások fejlesztéséhez, üzembe helyezéséhez és kezeléséhez. 
+# <a name="azure-kubernetes-services-integration-with-security-center"></a>Az Azure Kubernetes-szolgáltatások integrációja a Biztonsági központtal
 
-Az AK-k együttes használata a Azure Security Center Standard szintjével (lásd a [díjszabást](security-center-pricing.md)) az AK-csomópontok, a Felhőbeli forgalom és a biztonsági vezérlők mélyebb megismeréséhez.
+Az Azure Kubernetes-szolgáltatás (AKS) a Microsoft felügyelt szolgáltatása a tárolóba helyezett alkalmazások fejlesztéséhez, telepítéséhez és kezeléséhez. 
 
-A Security Center biztonsági előnyöket biztosít az AK-fürtök számára az AK fő csomópontja által már összegyűjtött adatok használatával. 
+Az AKS-t az Azure Security Center standard csomagjával (lásd: [díjszabás)](security-center-pricing.md)együtt használhatja az AKS-csomópontok, a felhőbeli forgalom és a biztonsági vezérlők mélyebb láthatóságának megszerzéséhez.
 
-![A Azure Security Center és az Azure Kubernetes Service (ak) magas szintű áttekintése](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
+A Security Center biztonsági előnyökkel jár az AKS-fürtök számára az AKS főcsomópont által már összegyűjtött adatok használatával. 
 
-Ez a két eszköz együttesen a legjobb Felhőbeli natív Kubernetes biztonsági ajánlatot alkotja. 
+![Az Azure Security Center és az Azure Kubernetes-szolgáltatás (AKS) magas szintű áttekintése](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
+
+Ez a két eszköz együttesen alkotja a legjobb felhőalapú Kubernetes biztonsági kínálatot. 
 
 ## <a name="benefits-of-integration"></a>Az integráció előnyei
 
 A két szolgáltatás együttes használata a következőket biztosítja:
 
-* **Biztonsági javaslatok** – Security Center AZONOSÍTJA az AK-erőforrásokat, és kategorizálja őket: a fürtöktől az egyes virtuális gépekig. Ezután megtekintheti az egyes erőforrásokra vonatkozó biztonsági javaslatokat. További információkért tekintse meg a tárolók javaslatait a [javaslatok hivatkozási listájában](recommendations-reference.md#recs-computeapp). 
+* **Biztonsági javaslatok** – A Security Center azonosítja az AKS-erőforrásokat, és kategorizálja őket: a fürtöktől az egyes virtuális gépekig. Ezután megtekintheti az erőforrásonkénti biztonsági javaslatokat. További információt a tárolók ajánlásai ban, az [ajánlások hivatkozási listájában talál.](recommendations-reference.md#recs-computeapp) 
 
-    > [!NOTE]
-    > Ha egy Security Center javaslat neve "(előzetes verzió)" címkével végződik, a javaslat előnézeti természetére hivatkozik, nem a szolgáltatásra.
+* **Környezetedzés** – A Security Center folyamatosan figyeli a Kubernetes-fürtök és a Docker-konfigurációk konfigurációját. Ezután olyan biztonsági javaslatokat hoz létre, amelyek tükrözik az iparági szabványokat.
 
-* **Környezet megerősítése** – Security Center folyamatosan figyeli a Kubernetes-fürtök és a Docker-konfigurációk konfigurációját. Ezután biztonsági javaslatokat hoz létre az iparági szabványoknak megfelelően.
-
-* **Futásidejű védelem** – a következő AK-források folyamatos elemzése révén Security Center riasztást küld, és a gazdagépen és az AK *-* beli fürt szintjén észlelt kártékony tevékenységekre figyelmeztet:
-    * Nyers biztonsági események, például a hálózati adatfeldolgozás és a folyamat létrehozása
+* **Futásidejű védelem** – A Következő AKS-források folyamatos elemzésével a Security Center figyelmezteti a gazdagép *en és* az AKS-fürt szintjén észlelt fenyegetésekre és rosszindulatú tevékenységekre:
+    * Nyers biztonsági események, például hálózati adatok és folyamatok létrehozása
     * A Kubernetes naplója
 
-    További információ: [veszélyforrások elleni védelem Azure-tárolók](threat-protection.md#azure-containers) esetén
+    További információ: [Fenyegetésvédelem az Azure-tárolókhoz](threat-protection.md#azure-containers)
 
-    A lehetséges riasztások listájáért tekintse meg a riasztások hivatkozási táblázatának következő részeit: [AK-fürt szintű riasztások](alerts-reference.md#alerts-akscluster) és [tároló-gazdagép szintű riasztások](alerts-reference.md#alerts-containerhost).  
+    A lehetséges riasztások listáját a riasztások hivatkozási táblázata: [AKS-fürtszintű riasztások](alerts-reference.md#alerts-akscluster) és [a tárolóállomás-szintű riasztások](alerts-reference.md#alerts-containerhost)című témakörben található ezeket a szakaszokat tartalmazza.  
 
-![Azure Security Center és az Azure Kubernetes szolgáltatás (ak) részletesebben](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
+![Az Azure Security Center és az Azure Kubernetes-szolgáltatás (AKS) részletesebben](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
 
 > [!NOTE]
-> A Kubernetes-környezet Azure Security Center által beolvasott adatok némelyike bizalmas adatokat is tartalmazhat.
+> Az Azure Security Center által a Kubernetes-környezetből beolvasott adatok egy része bizalmas adatokat tartalmazhat.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a Security Center tárolójának biztonsági funkcióiról, tekintse meg a következő témakört:
+Ha többet szeretne tudni a Security Center tárolóbiztonsági szolgáltatásairól, olvassa el az:
 
-* [Azure Security Center és tárolók biztonsága](container-security.md)
+* [Az Azure Security Center és a tárolóbiztonság](container-security.md)
 
-* [Integráció a Azure Container Registry](azure-container-registry-integration.md)
+* [Integráció az Azure Container Registryvel](azure-container-registry-integration.md)
 
-* [Adatkezelés a Microsoftnál](https://www.microsoft.com/trust-center/privacy/data-management) – ismerteti a Microsoft-szolgáltatások (például az Azure, az Intune és az Office 365) adatszabályzatait, a Microsoft adatkezelésének részleteit és az adatokat érintő adatmegőrzési házirendeket.
+* [Adatkezelés a Microsoftnál](https://www.microsoft.com/trust-center/privacy/data-management) – A Microsoft-szolgáltatások (beleértve az Azure, az Intune és az Office 365 adatházirendjeit), a Microsoft adatkezelésének részleteit és az adatokat érintő adatmegőrzési irányelveket ismerteti

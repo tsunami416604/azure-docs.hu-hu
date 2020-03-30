@@ -1,41 +1,76 @@
 ---
-title: Felügyelt identitások konfigurálása az Azure Adatkezelő-fürthöz
-description: Ismerje meg, hogyan konfigurálhatja a felügyelt identitásokat az Azure Adatkezelő-fürthöz.
+title: Felügyelt identitások konfigurálása az Azure Data Explorer-fürthöz
+description: Ismerje meg, hogyan konfigurálhatja a felügyelt identitásokat az Azure Data Explorer-fürthöz.
 author: saguiitay
 ms.author: itsagui
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: e76ae2e072bb780ac9788902e9157db871e4f09d
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.date: 03/12/2020
+ms.openlocfilehash: f9592f5d2666684e0cf5eef687b1e69cfb55066c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373378"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065560"
 ---
-# <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Felügyelt identitások konfigurálása az Azure Adatkezelő-fürthöz
+# <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Felügyelt identitások konfigurálása az Azure Data Explorer-fürthöz
 
-[Azure Active Directory felügyelt identitás](/azure/active-directory/managed-identities-azure-resources/overview) lehetővé teszi, hogy a fürt könnyedén HOZZÁFÉRHESSEN más HRE-védelemmel ellátott erőforrásokhoz, például a Azure Key Vaulthoz. Az identitást az Azure platform kezeli, és nincs szükség titkos kódok kiépítésére vagy elforgatására. Ez a cikk bemutatja, hogyan hozhat létre felügyelt identitást az Azure Adatkezelő-fürtökhöz. A felügyelt identitás konfigurálása jelenleg csak az [ügyfél által felügyelt kulcsoknak a fürthöz való engedélyezése](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)esetén támogatott.
+Az [Azure Active Directory felügyelt identitása](/azure/active-directory/managed-identities-azure-resources/overview) lehetővé teszi, hogy a fürt könnyen hozzáférjen más AAD-védelemmel ellátott erőforrásokhoz, például az Azure Key Vaulthoz. Az identitást az Azure platform kezeli, és nem követeli meg, hogy kiépítse vagy elforgassa a titkos kulcsokat. Ez a cikk bemutatja, hogyan hozhat létre felügyelt identitást az Azure Data Explorer-fürtökhöz. A felügyelt identitáskonfiguráció jelenleg csak a [fürt ügyfél által felügyelt kulcsainak engedélyezéséhez](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)támogatott.
 
 > [!Note]
-> Az Azure Adatkezelő felügyelt identitásai nem a várt módon fognak működni, ha az alkalmazást áttelepítik az előfizetések vagy a bérlők között. Az alkalmazásnak új identitást kell beszereznie, amely a szolgáltatás [identitásának eltávolításával](#remove-an-identity)és újbóli engedélyezésével végezhető el. Az alsóbb rétegbeli erőforrások hozzáférési házirendjeit is frissíteni kell az új identitás használatára.
+> Felügyelt identitások az Azure Data Explorer nem fog megfelelően viselkednek, ha az alkalmazás áttelepítése az előfizetések vagy a bérlők között. Az alkalmazásnak új identitást kell beszereznie, amely a funkció [letiltásával](#remove-a-system-assigned-identity) és [újbóli engedélyezésével végezhető](#add-a-system-assigned-identity) el. Az alsóbb rétegbeli erőforrások hozzáférési házirendjeit is frissíteni kell az új identitás használatához.
 
 ## <a name="add-a-system-assigned-identity"></a>Rendszerhez rendelt identitás hozzáadása
+                                                                                                    
+Rendeljen hozzá egy rendszeráltal hozzárendelt identitást, amely a fürthöz van kötve, és törlődik, ha a fürt törlődik. Egy fürt csak egy rendszerhez rendelt identitással rendelkezhet. A rendszer által hozzárendelt identitással rendelkező fürt létrehozásához egy további tulajdonságot kell beállítani a fürtön. A rendszer által hozzárendelt identitás c#, ARM-sablonok vagy az Azure Portal használatával kerül hozzáadásra az alábbiakban részletezett módon.
 
-A fürthöz hozzárendelhető egy, a fürthöz kötött rendszerszintű identitás, amelyet a **rendszer** töröl, ha a fürt törölve lett. Egy fürthöz csak egy rendszer által hozzárendelt identitás tartozhat. A rendszer által hozzárendelt identitású fürtök létrehozásához további tulajdonságot kell beállítani a fürtön.
+# <a name="azure-portal"></a>[Azure-portál](#tab/portal)
 
-### <a name="add-a-system-assigned-identity-using-c"></a>Rendszerhez rendelt identitás hozzáadása aC#
+### <a name="add-a-system-assigned-identity-using-the-azure-portal"></a>Rendszeráltal hozzárendelt identitás hozzáadása az Azure Portalon
 
-Felügyelt identitás Azure Adatkezelő C# -ügyfél használatával történő beállításához tegye a következőket:
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
-* Telepítse az [Azure adatkezelő (Kusto) NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Telepítse a [Microsoft. IdentityModel. clients. ActiveDirectory NuGet-csomagot](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) a hitelesítéshez.
-* A következő példa futtatásához [hozzon létre egy Azure ad-alkalmazást és egy](/azure/active-directory/develop/howto-create-service-principal-portal) egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz. Szerepkör-hozzárendelést az előfizetés hatókörében adhat hozzá, és lekérheti a szükséges `Directory (tenant) ID`, `Application ID`és `Client Secret`.
+#### <a name="new-azure-data-explorer-cluster"></a>Új Azure Data Explorer-fürt
 
-#### <a name="create-or-update-your-cluster"></a>Fürt létrehozása vagy frissítése
+1. [Azure Data Explorer-fürt létrehozása](/azure/data-explorer/create-cluster-database-portal#create-a-cluster) 
+1. A **Biztonság** lapon > **Rendszer hozzárendelt identitása**lapon válassza **a Be**lehetőséget. A rendszer hozzárendelt identitásának eltávolításához válassza a **Ki**lehetőséget.
+2. **Válassza a Tovább:Címkék>** vagy a Véleményezés + **létrehozás** lehetőséget a fürt létrehozásához.
 
-1. Hozza létre vagy frissítse a fürtöt a `Identity` tulajdonság használatával:
+    ![Rendszerhez rendelt identitás hozzáadása új fürthöz](media/managed-identities/system-assigned-identity-new-cluster.png)
+
+#### <a name="existing-azure-data-explorer-cluster"></a>Meglévő Azure Data Explorer-fürt
+
+1. Nyisson meg egy meglévő Azure Data Explorer-fürtöt.
+1. Válassza a **Beállítások** > **identitás a** portál bal oldali ablaktáblájában lehetőséget.
+1. Az **Identitás** ablaktáblán > **Rendszer hozzárendelt** lapján:
+   1. Az **Állapot** csúszka áthelyezése **be állásba.**
+   1. **Mentés** kiválasztása
+   1. Az előugró ablakban válassza az **Igen** lehetőséget.
+
+    ![Rendszerhez rendelt identitás hozzáadása](media/managed-identities/turn-system-assigned-identity-on.png)
+
+1. Néhány perc múlva a képernyőn látható: 
+  * **Objektumazonosító** – ügyfél által kezelt kulcsokhoz használatos 
+  * **Szerepkör-hozzárendelések** – kattintson a hivatkozásra a megfelelő szerepkörök hozzárendeléséhez
+
+    ![Rendszerhez rendelt identitás](media/managed-identities/system-assigned-identity-on.png)
+
+# <a name="c"></a>[C #](#tab/c-sharp)
+
+### <a name="add-a-system-assigned-identity-using-c"></a>Rendszeráltal hozzárendelt identitás hozzáadása C használatával #
+
+#### <a name="prerequisites"></a>Előfeltételek
+
+Felügyelt identitás beállítása az Azure Data Explorer C# ügyfélhasználatával:
+
+* Telepítse az [Azure Data Explorer (Kusto) NuGet csomagot.](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)
+* Telepítse a [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet csomagot](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) hitelesítésre.
+* [Hozzon létre egy Azure AD-alkalmazást](/azure/active-directory/develop/howto-create-service-principal-portal) és egyszerű szolgáltatást, amely képes hozzáférni az erőforrásokhoz. A szerepkör-hozzárendelést az előfizetés hatóköréhez `Application ID`adja `Client Secret`hozzá, és megkapja a szükséges `Directory (tenant) ID`, és a.
+
+#### <a name="create-or-update-your-cluster"></a>A fürt létrehozása vagy frissítése
+
+1. Hozza létre vagy frissítse `Identity` a fürtöt a tulajdonság használatával:
 
     ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -52,7 +87,7 @@ Felügyelt identitás Azure Adatkezelő C# -ügyfél használatával történő 
     {
         SubscriptionId = subscriptionId
     };
-    
+                                                                                                    
     var resourceGroupName = "testrg";
     var clusterName = "mykustocluster";
     var location = "Central US";
@@ -65,26 +100,28 @@ Felügyelt identitás Azure Adatkezelő C# -ügyfél használatával történő 
     await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
     ```
     
-2. A következő parancs futtatásával ellenőrizze, hogy a fürt sikeresen létrejött vagy frissült-e a személyazonossággal:
+2. Futtassa a következő parancsot annak ellenőrzéséhez, hogy a fürt sikeresen létrejött-e vagy frissített-e identitással:
 
     ```csharp
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-    Ha az eredmény `ProvisioningState`t tartalmaz a `Succeeded` értékkel, akkor a fürt létrehozása vagy frissítése megtörtént, és a következő tulajdonságokkal kell rendelkeznie:
-   
+    Ha az `ProvisioningState` eredmény `Succeeded` tartalmazza az értéket, akkor a fürt jött létre vagy frissített, és rendelkeznie kell a következő tulajdonságokkal:
+
     ```csharp
     var principalId = cluster.Identity.PrincipalId;
     var tenantId = cluster.Identity.TenantId;
     ```
 
-    a `PrincipalId` és `TenantId` GUID azonosítókkal lesznek lecserélve. A `TenantId` tulajdonság azonosítja azt a HRE-bérlőt, amelyhez az identitás tartozik. A `PrincipalId` a fürt új identitásának egyedi azonosítója. A HRE belül az egyszerű szolgáltatásnév neve megegyezik a App Service vagy Azure Functions példányával.
+`PrincipalId`guid-okkal. `TenantId` A `TenantId` tulajdonság azonosítja azt az AAD-bérlőt, amelyhez az identitás tartozik. Az `PrincipalId` a fürt új identitásának egyedi azonosítója. Az AAD-n belül az egyszerű szolgáltatás ugyanaz a név, amelyet az App Service- vagy az Azure Functions-példánynak adott.
 
-### <a name="add-a-system-assigned-identity-using-an-azure-resource-manager-template"></a>Rendszerhez rendelt identitás hozzáadása Azure Resource Manager sablon használatával
+# <a name="arm-template"></a>[ARM sablon](#tab/arm)
 
-Az Azure-erőforrások üzembe helyezésének automatizálásához Azure Resource Manager sablon használható. Ha többet szeretne megtudni az Azure Adatkezelő üzembe helyezéséről, tekintse meg [az azure adatkezelő-fürt és-adatbázis létrehozása Azure Resource Manager sablon használatával](create-cluster-database-resource-manager.md)című témakört.
+### <a name="add-a-system-assigned-identity-using-an-azure-resource-manager-template"></a>Rendszeráltal kijelölt identitás hozzáadása Azure Resource Manager-sablon használatával
 
-A rendszer által hozzárendelt típus hozzáadásával közli az Azure-t, hogy létrehozza és felügyelje a fürt identitását. Minden `Microsoft.Kusto/clusters` típusú erőforrást identitással lehet létrehozni az erőforrás-definícióban a következő tulajdonsággal együtt: 
+Az Azure Resource Manager-sablon segítségével automatizálható az Azure-erőforrások üzembe helyezésének. Ha többet szeretne tudni az Azure Data Explorerben való üzembe helyezésről, olvassa [el az Azure Data Explorer-fürt és-adatbázis létrehozása Azure Resource Manager-sablon használatával című témakört.](create-cluster-database-resource-manager.md)
+
+A rendszer által hozzárendelt típus hozzáadása lekéri az Azure-t, hogy hozza létre és kezelje a fürt identitását. Bármilyen típusú `Microsoft.Kusto/clusters` erőforrás létrehozható identitással, ha a következő tulajdonságot is beírja az erőforrás-definícióba: 
 
 ```json
 "identity": {
@@ -92,7 +129,7 @@ A rendszer által hozzárendelt típus hozzáadásával közli az Azure-t, hogy 
 }    
 ```
 
-Például:
+Példa:
 
 ```json
 {
@@ -113,7 +150,7 @@ Például:
 }
 ```
 
-A fürt létrehozásakor a következő tulajdonságokkal rendelkezik:
+A fürt létrehozásakor a következő további tulajdonságokkal rendelkezik:
 
 ```json
 "identity": {
@@ -123,11 +160,44 @@ A fürt létrehozásakor a következő tulajdonságokkal rendelkezik:
 }
 ```
 
-a `<TENANTID>` és `<PRINCIPALID>` GUID azonosítókkal lesznek lecserélve. A `TenantId` tulajdonság azonosítja azt a HRE-bérlőt, amelyhez az identitás tartozik. A `PrincipalId` a fürt új identitásának egyedi azonosítója. A HRE belül az egyszerű szolgáltatásnév neve megegyezik a App Service vagy Azure Functions példányával.
+`<TENANTID>`guid-okkal. `<PRINCIPALID>` A `TenantId` tulajdonság azonosítja azt az AAD-bérlőt, amelyhez az identitás tartozik. Az `PrincipalId` a fürt új identitásának egyedi azonosítója. Az AAD-n belül az egyszerű szolgáltatás ugyanaz a név, amelyet az App Service- vagy az Azure Functions-példánynak adott.
 
-## <a name="remove-an-identity"></a>Identitás eltávolítása
+---
 
-A rendszer által hozzárendelt identitások eltávolítása a HRE-ből is törölve lesz. A rendszer által hozzárendelt identitások is automatikusan törlődnek a HRE-ből, ha a fürterőforrás törölve lett. A szolgáltatás letiltásával a rendszer által hozzárendelt identitások eltávolíthatók:
+## <a name="remove-a-system-assigned-identity"></a>Rendszeráltal hozzárendelt identitás eltávolítása
+
+A rendszer által hozzárendelt identitás eltávolítása az AAD-ből is törlődik. A rendszer által hozzárendelt identitások is automatikusan törlődnek az AAD-ből a fürterőforrás törlésekor. A rendszer által hozzárendelt identitás a szolgáltatás letiltásával távolítható el.  A rendszer által hozzárendelt identitás eltávolítása C#, ARM-sablonok vagy az Azure Portal használatával az alábbiakban részletezett használatával.
+
+# <a name="azure-portal"></a>[Azure-portál](#tab/portal)
+
+### <a name="remove-a-system-assigned-identity-using-the-azure-portal"></a>Rendszeráltal hozzárendelt identitás eltávolítása az Azure Portalon
+
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Válassza a **Beállítások** > **identitás a** portál bal oldali ablaktáblájában lehetőséget.
+1. Az **Identitás** ablaktáblán > **Rendszer hozzárendelt** lapján:
+    1. Mozgassa az **Állapot** csúszkát **Ki**állásba.
+    1. **Mentés** kiválasztása
+    1. Az előugró ablakban válassza az **Igen** lehetőséget a rendszerhez rendelt identitás letiltásához. Az **Identitás** ablaktábla visszaáll ugyanarra a feltételre, mint a rendszer által hozzárendelt identitás hozzáadása előtt.
+
+    ![A rendszer hezrendelt identitása ki van kapcsolva](media/managed-identities/system-assigned-identity.png)
+
+# <a name="c"></a>[C #](#tab/c-sharp)
+
+### <a name="remove-a-system-assigned-identity-using-c"></a>Rendszeráltal hozzárendelt identitás eltávolítása C használatával #
+
+A rendszer által hozzárendelt identitás eltávolításához futtassa az alábbi parancsot:
+
+```csharp
+var identity = new Identity(IdentityType.None);
+var cluster = new Cluster(location, sku, identity: identity);
+await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
+```
+
+# <a name="arm-template"></a>[ARM sablon](#tab/arm)
+
+### <a name="remove-a-system-assigned-identity-using-an-azure-resource-manager-template"></a>Rendszeráltal kijelölt identitás eltávolítása Azure Resource Manager-sablon használatával
+
+A rendszer által hozzárendelt identitás eltávolításához futtassa az alábbi parancsot:
 
 ```json
 "identity": {
@@ -135,9 +205,11 @@ A rendszer által hozzárendelt identitások eltávolítása a HRE-ből is tör�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+---
 
-* [Azure Adatkezelő-fürtök védelme az Azure-ban](security.md)
-* [A fürt biztonságossá tétele az Azure adatkezelő-Azure Portalban](manage-cluster-security.md) a titkosítás nyugalmi állapotban való engedélyezésével.
- * [Ügyfél által felügyelt kulcsok konfigurálása a használatávalC#](customer-managed-keys-csharp.md)
- * [Az ügyfél által felügyelt kulcsok konfigurálása a Azure Resource Manager sablon használatával](customer-managed-keys-resource-manager.md)
+## <a name="next-steps"></a>További lépések
+
+* [Biztonságos Azure Data Explorer-fürtök az Azure-ban](security.md)
+* [Biztonságossá a fürt az Azure Data Explorer – Azure Portal](manage-cluster-security.md) in in-in titkosítás engedélyezésével.
+ * [Ügyfél által kezelt kulcsok konfigurálása C használatával #](customer-managed-keys-csharp.md)
+ * [Ügyfél által kezelt kulcsok konfigurálása az Azure Resource Manager sablon használatával](customer-managed-keys-resource-manager.md)

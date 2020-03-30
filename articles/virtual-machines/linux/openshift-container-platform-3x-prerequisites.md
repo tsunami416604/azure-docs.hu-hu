@@ -1,6 +1,6 @@
 ---
-title: OpenShift Container platform 3,11 az Azure-előfeltételekben
-description: Az OpenShift Container platform 3,11 Azure-beli üzembe helyezésének előfeltételei.
+title: OpenShift Container Platform 3.11 az Azure előfeltételeiben
+description: Az OpenShift Container Platform 3.11 azure-beli üzembe helyezésének előfeltételei.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -14,63 +14,64 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 76e7a9aa9c0f17501885c8bd06c6997fdc8d2104
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: b2b34a6fdf96613c5bc372e585598fabbe43d53d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255697"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066610"
 ---
-# <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>A OpenShift Container platform 3,11 Azure-beli üzembe helyezésének gyakori előfeltételei
+# <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Az OpenShift Container Platform 3.11 azure-beli üzembe helyezésének gyakori előfeltételei
 
-Ez a cikk a OpenShift-tároló platformjának vagy OKD az Azure-ban való üzembe helyezésének általános előfeltételeit ismerteti.
+Ez a cikk az OpenShift Container Platform vagy az OKD azure-beli üzembe helyezésének gyakori előfeltételeit ismerteti.
 
-A OpenShift telepítése Ansible forgatókönyveket használ. A Ansible a Secure Shell (SSH) használatával csatlakozik a fürt összes gazdagépéhez a telepítési lépések befejezéséhez.
+Az OpenShift telepítése Ansible forgatókönyveket használ. Az Ansible a Secure Shell (SSH) segítségével csatlakozik az összes fürtállomáshoz a telepítési lépések végrehajtásához.
 
-Ha a Ansible lehetővé teszi az SSH-csatlakozást a távoli gazdagépekhez, nem adhat meg jelszót. Emiatt a titkos kulcshoz nem tartozhat jelszó (hozzáférési kód) társítva, vagy a telepítés meghiúsul.
+Amikor ansible teszi az SSH-kapcsolat a távoli állomások, nem tud belépni a jelszót. Emiatt a személyes kulcshoz nem lehet jelszó (jelszó) társítva, különben a központi telepítés sikertelen lesz.
 
-Mivel a virtuális gépek (VM-EK) Azure Resource Manager-sablonokon keresztül telepíthetők, a rendszer ugyanazt a nyilvános kulcsot használja az összes virtuális géphez való hozzáféréshez. A megfelelő titkos kulcsnak a virtuális gépen kell lennie, amely az összes forgatókönyvét is végrehajtja. A művelet biztonságos elvégzéséhez az Azure Key Vault használatával továbbítja a titkos kulcsot a virtuális géphez.
+Mivel a virtuális gépek (VM-ek) az Azure Resource Manager-sablonokon keresztül üzembe helyezhetők, ugyanazt a nyilvános kulcsot használják az összes virtuális gép eléréséhez. A megfelelő titkos kulcsnak a virtuális gépen kell lennie, amely az összes forgatókönyvet is végrehajtja. A művelet biztonságos végrehajtásához egy Azure-key vault segítségével adja át a személyes kulcsot a virtuális gép.
 
-Ha állandó tárterületre van szükség a tárolók számára, akkor állandó kötetek szükségesek. A OpenShift támogatja az Azure-beli virtuális merevlemezeket (VHD-ket) az állandó kötetek számára, de az Azure-t először a felhőalapú szolgáltatóként kell konfigurálni.
+Ha a tárolók állandó tárolása szükséges, akkor állandó kötetekre van szükség. OpenShift támogatja az Azure virtuális merevlemezek (VHDs) állandó kötetek, de az Azure-t először be kell állítani a felhőszolgáltató.
 
-Ebben a modellben a OpenShift:
+Ebben a modellben az OpenShift:
 
-- Egy VHD-objektumot hoz létre egy Azure Storage-fiókban vagy egy felügyelt lemezen.
-- Csatlakoztatja a virtuális merevlemezt egy virtuális géphez, és formázza a kötetet.
-- Csatlakoztatja a kötetet a pod-hoz.
+- VHD-objektumot hoz létre egy Azure-tárfiókban vagy egy felügyelt lemezben.
+- A virtuális merevlemezt virtuális géphez csatlakoztatja, és formázza a kötetet.
+- A kötetet a podhoz csatlakoztatja.
 
-Ahhoz, hogy ez a konfiguráció működjön, a OpenShift engedélyekkel kell rendelkeznie ezen feladatok végrehajtásához az Azure-ban. Erre a célra egy egyszerű szolgáltatásnév használatos. Az egyszerű szolgáltatásnév egy Azure Active Directory biztonsági fiók, amely engedélyeket biztosít az erőforrásokhoz.
+Ahhoz, hogy ez a konfiguráció működjön, az OpenShift-nek engedélyekre van szüksége a feladatok Azure-beli végrehajtásához. Erre a célra egy szolgáltatásnév használatos. Az egyszerű szolgáltatás egy biztonsági fiók az Azure Active Directoryban, amely engedéllyel rendelkezik az erőforrásokhoz.
 
-Az egyszerű szolgáltatásnak hozzá kell férnie a fürtöt alkotó Storage-fiókokhoz és virtuális gépekhez. Ha az összes OpenShift-fürterőforrás egyetlen erőforráscsoport számára van üzembe helyezve, az egyszerű szolgáltatás engedélyt kap az adott erőforráscsoport számára.
+A szolgáltatásnévnek hozzáféréssel kell rendelkeznie a fürtből álló tárfiókokhoz és virtuális gépekhez. Ha az összes OpenShift fürterőforrás egyetlen erőforráscsoportra telepíthető, az egyszerű szolgáltatás engedélyeket kaphat az adott erőforráscsoporthoz.
 
-Ez az útmutató az előfeltételekhez társított összetevők létrehozását ismerteti.
+Ez az útmutató ismerteti, hogyan hozhat létre az előfeltételektársított összetevők.
 
 > [!div class="checklist"]
-> * Hozzon létre egy Key vaultot a OpenShift-fürt SSH-kulcsainak kezeléséhez.
-> * Hozzon létre egy egyszerű szolgáltatást az Azure Cloud Provider általi használatra.
+> * Hozzon létre egy key vault sSH-kulcsok kezelésére az OpenShift fürthöz.
+> * Hozzon létre egy egyszerű szolgáltatás az Azure Cloud-szolgáltató általi használatra.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
-Jelentkezzen be az Azure-előfizetésbe az az [login](/cli/azure/reference-index) paranccsal, és kövesse a képernyőn megjelenő utasításokat, vagy kattintson a **kipróbálás** gombra a Cloud Shell használatához.
+Jelentkezzen be az Azure-előfizetésbe az [az bejelentkezési](/cli/azure/reference-index) paranccsal, és kövesse a képernyőn megjelenő utasításokat, vagy kattintson **a Próbálja ki a** Cloud Shell használatához gombra.
 
-```azurecli 
+```azurecli
 az login
 ```
+
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A Key Vault üzemeltetéséhez dedikált erőforráscsoportot kell használnia. Ez a csoport a OpenShift-fürt erőforrásainak üzembe helyezéséhez használt erőforráscsoporthoz eltér.
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A key vault üzemeltetéséhez használjon dedikált erőforráscsoportot. Ez a csoport elkülönül attól az erőforráscsoporttól, amelybe az OpenShift fürt erőforrásai tanak.
 
-A következő példában létrehozunk egy *keyvaultrg* nevű erőforráscsoportot a *eastus* helyen:
+A következő példa létrehoz egy *keyvaultrg* nevű erőforráscsoportot az *eastus* helyen:
 
-```azurecli 
+```azurecli
 az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
-Hozzon létre egy kulcstartót, amely a fürthöz tartozó SSH-kulcsokat az az kulcstartó [create](/cli/azure/keyvault) paranccsal tárolja. A kulcstároló nevének globálisan egyedinek kell lennie, és engedélyezni kell a sablon központi telepítéséhez, vagy a központi telepítés "KeyVaultParameterReferenceSecretRetrieveFailed" hibaüzenettel fog működni.
+Hozzon létre egy key vault tárolja az SSH-kulcsokat a fürt az [az keyvault create](/cli/azure/keyvault) paranccsal. A kulcstartó nevének globálisan egyedinek kell lennie, és engedélyezni kell a sablon telepítéséhez, különben a telepítés sikertelen lesz a "KeyVaultParameterReferenceSecretRetrieveFailed" hibával.
 
-A következő példa egy kulcstartó nevű kulcstárolót hoz *létre a* *keyvaultrg* erőforráscsoporthoz:
+A következő példa létrehoz egy keyvault nevű keyvault nevű *keyvault* a *keyvaultrg* erőforráscsoportban:
 
 ```azurecli 
 az keyvault create --resource-group keyvaultrg --name keyvault \
@@ -79,30 +80,30 @@ az keyvault create --resource-group keyvaultrg --name keyvault \
 ```
 
 ## <a name="create-an-ssh-key"></a>SSH-kulcs létrehozása 
-Egy SSH-kulcsra van szükség a OpenShift-fürthöz való hozzáférés biztonságossá tételéhez. Hozzon létre egy SSH-kulcspárt a `ssh-keygen` parancs használatával (Linux vagy macOS rendszeren):
+Az OpenShift-fürthöz való hozzáférés biztosításához SSH-kulcs szükséges. Hozzon létre egy SSH `ssh-keygen` kulcspár segítségével a parancs (Linux vagy macOS):
  
- ```bash
+```bash
 ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 ```
 
 > [!NOTE]
-> Az SSH-kulcspárt nem lehet jelszó/hozzáférési kód.
+> Az SSH kulcspárnem rendelkezhet jelszóval/ jelszóval.
 
-A Windows SSH-kulcsaival kapcsolatos további információkért lásd: [ssh-kulcsok létrehozása Windows](/azure/virtual-machines/linux/ssh-from-windows)rendszeren. Ügyeljen arra, hogy az OpenSSH formátumban exportálja a titkos kulcsot.
+A Windows SSH-kulcsairól az [SSH-kulcsok létrehozása Windows rendszeren](/azure/virtual-machines/linux/ssh-from-windows)című témakörben talál további információt. Ügyeljen arra, hogy a személyes kulcsot OpenSSH formátumban exportálja.
 
-## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>A titkos SSH-kulcs tárolása Azure Key Vault
-A OpenShift üzemelő példány a létrehozott SSH-kulcsot használja a OpenShift-főkiszolgáló hozzáférésének biztosításához. Ha engedélyezni szeretné a központi telepítés számára az SSH-kulcs biztonságos lekérését, az alábbi paranccsal tárolja Key Vault a kulcsot:
+## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>Az SSH személyes kulcsának tárolása az Azure Key Vaultban
+Az OpenShift központi telepítése a létrehozott SSH-kulcs segítségével biztosítja az OpenShift főkiszolgálóhoz való hozzáférést. Ha engedélyezni szeretné, hogy a központi telepítés biztonságosan lekérje az SSH-kulcsot, tárolja a kulcsot a Key Vaultban a következő paranccsal:
 
 ```azurecli
 az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/openshift_rsa
 ```
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása 
-A OpenShift felhasználónévvel és jelszóval vagy egyszerű szolgáltatásnév használatával kommunikál az Azure-nal. Az Azure egyszerű szolgáltatás olyan biztonsági identitás, amely az alkalmazásokkal, szolgáltatásokkal és automatizálási eszközökkel, például a OpenShift is használható. Megadhatja és meghatározhatja azokat az engedélyeket, amelyeket az egyszerű szolgáltatás az Azure-ban végrehajthat. A teljes előfizetés helyett érdemes az egyszerű szolgáltatásnév engedélyeit az adott erőforráscsoportok hatókörére kiterjeszteni.
+Az OpenShift felhasználónévvel és jelszóval vagy egyszerű szolgáltatással kommunikál az Azure-ral. Az Azure egyszerű szolgáltatásegy biztonsági identitás, amely az alkalmazások, szolgáltatások és automatizálási eszközök, például openshift használható. Ön szabályozza és határozza meg az engedélyeket, hogy mely műveleteket a szolgáltatásnév végezhet az Azure-ban. A legjobb, ha a szolgáltatásnév engedélyeit a teljes előfizetés helyett adott erőforráscsoportokra is lehatja.
 
-Hozzon létre egy egyszerű szolgáltatást az [az ad SP Create-for-RBAC](/cli/azure/ad/sp) , és adja meg a OpenShift által igényelt hitelesítő adatokat.
+Hozzon létre egy egyszerű szolgáltatás az [ad sp create-for-rbac](/cli/azure/ad/sp) és a hitelesítő adatok kimenete, hogy Az OpenShift szüksége van.
 
-A következő példa létrehoz egy szolgáltatásnevet, és hozzárendeli az IT közreműködői engedélyeket egy *openshiftrg*nevű erőforráscsoporthoz.
+A következő példa létrehoz egy egyszerű szolgáltatásszolgáltatást, és közreműködői engedélyeket rendel hozzá egy *openshiftrg*nevű erőforráscsoporthoz.
 
 Először hozza létre az *openshiftrg*nevű erőforráscsoportot:
 
@@ -110,19 +111,21 @@ Először hozza létre az *openshiftrg*nevű erőforráscsoportot:
 az group create -l eastus -n openshiftrg
 ```
 
-Egyszerű szolgáltatásnév létrehozása:
+Egyszerű szolgáltatás létrehozása:
 
 ```azurecli
 az group show --name openshiftrg --query id
 ```
-Mentse a parancs kimenetét, és a $scope helyett használja a következő parancsban
+
+Mentse a parancs kimenetét, és használja a $scope helyett a következő parancsban
 
 ```azurecli
 az ad sp create-for-rbac --name openshiftsp \
       --role Contributor --scopes $scope \
 ```
 
-Jegyezze fel a parancs által visszaadott appId tulajdonságot és jelszót:
+Vegye figyelembe az appId tulajdonságot és a parancsból visszaadott jelszót:
+
 ```json
 {
   "appId": "11111111-abcd-1234-efgh-111111111111",
@@ -132,46 +135,47 @@ Jegyezze fel a parancs által visszaadott appId tulajdonságot és jelszót:
   "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 }
 ```
+
  > [!WARNING] 
- > Ügyeljen arra, hogy a biztonságos jelszót írja le, mert a jelszó újbóli beolvasása nem lehetséges.
+ > Ügyeljen arra, hogy írja le a biztonságos jelszót, mert nem lesz lehetséges, hogy letölteni ezt a jelszót újra.
 
-Az egyszerű szolgáltatásokkal kapcsolatos további információkért lásd: [Azure-szolgáltatásnév létrehozása az Azure CLI-vel](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
+A szolgáltatásegyszerű szolgáltatásokról további információt az [Azure service principal azure CLI-vel című témakörben](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)talál.
 
-## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Csak Resource Manager-sablonra vonatkozó előfeltételek
+## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Csak az Erőforrás-kezelő sablonra vonatkozó előfeltételek
 
-A titkos SSH-kulcs (**sshPrivateKey**), az Azure ad Client Secret (**aadClientSecret**), a OpenShift admin password (**OpenshiftPassword**) és a Red Hat előfizetés-kezelő jelszava vagy az aktiválási kulcs (**rhsmPasswordOrActivationKey**) számára létre kell hozni a titkokat.  Emellett ha egyéni SSL-tanúsítványokat használ, akkor hat további titkot kell létrehoznia – **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**és **masterkeyfile**.  A paramétereket részletesebben is ismertetjük.
+Titkos kulcsokat kell létrehozni az SSH titkos kulcshoz **(sshPrivateKey),** az Azure AD ügyféltitkos kulcshoz (**aadClientSecret),** OpenShift rendszergazdai jelszóhoz (**openshiftPassword**) és a Red Hat Subscription Manager jelszóhoz vagy aktiválási kulcshoz (**rhsmPasswordOrActivationKey**).  Ezenkívül egyéni SSL-tanúsítványok esetén hat további titkos kulcsot kell létrehozni - **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**és **masterkeyfile**.  Ezeket a paramétereket részletesebben ismertetjük.
 
-A sablon megadott titkos nevekre hivatkozik, ezért a fent felsorolt félkövér neveket **kell** használnia (kis-és nagybetűk megkülönböztetése).
+A sablon konkrét titkos nevekre hivatkozik, ezért a fent felsorolt félkövér neveket **kell** használnia (a kis- és nagybetűk megkülönböztetése).
 
 ### <a name="custom-certificates"></a>Egyéni tanúsítványok
 
-Alapértelmezés szerint a sablon a OpenShift webkonzol és az útválasztási tartomány önaláírt tanúsítványainak használatával helyez üzembe egy OpenShift-fürtöt. Ha egyéni SSL-tanúsítványokat szeretne használni, állítsa a "routingCertType" lehetőséget az "egyéni" és a "masterCertType" értékre az "Custom" értékre.  A tanúsítványokhoz. PEM formátumban kell lennie a CA, a CERT és a Key fájloknak.  Egyéni tanúsítványokat is használhat egy másikhoz, de nem.
+Alapértelmezés szerint a sablon egy OpenShift-fürtöt telepít az OpenShift webkonzol és az útválasztási tartomány önaláírt tanúsítványai val. Ha egyéni SSL-tanúsítványokat szeretne használni, állítsa a "routingCertType" (routingCertType' (intézi) és a "masterCertType" (egyéni' beállítását 'custom' (egyéni) beállításra.  A tanúsítványokhoz a hitelesítésszolgáltató, a tanúsítvány és a kulcsfájlok .pem formátumban vannak.  Lehetőség van egyéni tanúsítványok használatára az egyikhez, de a másikhoz nem.
 
-Ezeket a fájlokat Key Vault titokban kell tárolnia.  Ugyanazt a Key Vault használja, mint a titkos kulcshoz használt.  Ahelyett, hogy 6 további bemenetet követel meg a titkos kódokhoz, a sablon nem módosítható, hogy az egyes SSL-tanúsítványfájl-fájlokhoz egyedi titkos neveket használjon.  Tárolja a tanúsítvány adatait az alábbi táblázat információi alapján.
+Ezeket a fájlokat a Key Vault titkos fájljaiban kell tárolnia.  Használja ugyanazt a Key Vaultot, mint a személyes kulcshoz használt.  Ahelyett, hogy 6 további bemenetet igényelne a titkos nevekhez, a sablon kódolva van, hogy az SSL-tanúsítványfájlok mindegyikéhez speciális titkos neveket használjon.  A tanúsítvány adatokat az alábbi táblázatban szereplő adatok alapján tárolhatja.
 
-| Titok neve      | Tanúsítványfájl   |
+| Titkos név      | Tanúsítványfájl   |
 |------------------|--------------------|
-| mastercafile     | fő HITELESÍTÉSSZOLGÁLTATÓI fájl     |
-| mastercertfile   | fő tanúsítvány fájlja   |
-| masterkeyfile    | főkulcs fájlja    |
-| routingcafile    | útválasztási HITELESÍTÉSSZOLGÁLTATÓI fájl    |
-| routingcertfile  | útválasztási tanúsítvány fájlja  |
-| routingkeyfile   | útválasztási kulcs fájlja   |
+| mastercafile     | fő hitelesítéshitelesítés-fájl     |
+| mastercertfile   | fő CERT fájl   |
+| masterkeyfile    | főkulcsfájl    |
+| routingcafile    | társhitelesítésfájl továbbítása    |
+| routingcertfile  | műveletterv CERT-fájl  |
+| routingkeyfile   | útválasztás kulcsfájl   |
 
-Hozza létre a titkokat az Azure CLI használatával. Alább látható egy példa.
+Hozza létre a titkos kulcsokat az Azure CLI használatával. Az alábbiakban egy példa.
 
-```bash
+```azurecli
 az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez a cikk a következő témákat tárgyalta:
+Ez a cikk a következő témaköröket ismerteti:
 > [!div class="checklist"]
-> * Hozzon létre egy Key vaultot a OpenShift-fürt SSH-kulcsainak kezeléséhez.
-> * Hozzon létre egy egyszerű szolgáltatásnevet a Azure Cloud Solution Provider általi használatra.
+> * Hozzon létre egy key vault sSH-kulcsok kezelésére az OpenShift fürthöz.
+> * Hozzon létre egy egyszerű szolgáltatás az Azure Cloud Solution Provider általi használatra.
 
-Következő lépésként helyezzen üzembe egy OpenShift-fürtöt:
+Ezután telepítsen egy OpenShift-fürtöt:
 
-- [OpenShift-tároló platform üzembe helyezése](./openshift-container-platform-3x.md)
-- [A OpenShift-tároló platform saját üzemeltetésű Piactéri ajánlatának üzembe helyezése](./openshift-container-platform-3x-marketplace-self-managed.md)
+- [OpenShift tárolóplatform telepítése](./openshift-container-platform-3x.md)
+- [OpenShift container platform saját felügyelt piactéri ajánlatának üzembe helyezése](./openshift-container-platform-3x-marketplace-self-managed.md)

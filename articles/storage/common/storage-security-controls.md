@@ -1,24 +1,23 @@
 ---
-title: Az Azure Storage biztonsági vezérlői
+title: Biztonsági vezérlők az Azure Storage-hoz
 description: Az Azure Storage kiértékelésére szolgáló biztonsági vezérlők ellenőrzőlistája
 services: storage
-documentationcenter: ''
 author: msmbaldwin
-manager: rkarlin
 ms.service: storage
+ms.subservice: common
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2cc54077456fce1e7e0f47843a762beee8e715f7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 379acaf48c02f0a579c07773cd48366d962a44f5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526756"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061113"
 ---
-# <a name="security-controls-for-azure-storage"></a>Az Azure Storage biztonsági vezérlői
+# <a name="security-controls-for-azure-storage"></a>Biztonsági vezérlők az Azure Storage-hoz
 
-Ez a cikk az Azure Storage-ba beépített biztonsági vezérlőket dokumentálja. 
+Ez a cikk az Azure Storage beépített biztonsági vezérlőket dokumentálja. 
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
@@ -26,42 +25,42 @@ Ez a cikk az Azure Storage-ba beépített biztonsági vezérlőket dokumentálja
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen |  |
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Lásd: [Storage Service encryption az ügyfél által felügyelt kulcsokkal Azure Key Vaultban](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
-| Oszlop szintű titkosítás (Azure Data Services)| N/A |  |
-| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | A szabványos HTTPS/TLS-mechanizmusok támogatása.  A felhasználók a szolgáltatásba való továbbítás előtt is titkosítani tudják az adatokat. |
-| Titkosított API-hívások| Igen |  |
+| Kiszolgálóoldali titkosítás inaktív állapotban: Microsoft által felügyelt kulcsok | Igen |  |
+| Kiszolgálóoldali titkosítás inaktív állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Lásd: [Tárolási szolgáltatás titkosítása az ügyfél által felügyelt kulcsok használatával az Azure Key Vaultban.](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+| Oszlopszintű titkosítás (Azure Data Services)| N/A |  |
+| Titkosítás átvitel közben (például ExpressRoute-titkosítás, virtuális hálózat-titkosítás és Virtuálishálózati titkosítás)| Igen | Támogatja a szabványos HTTPS/TLS mechanizmusokat.  A felhasználók titkosíthatják az adatokat is, mielőtt azokat továbbítanák a szolgáltatásnak. |
+| TITKOSÍTOTT API-hívások| Igen |  |
 
-## <a name="network"></a>Hálózat
+## <a name="network"></a>Network (Hálózat)
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatás végpontjának támogatása| Igen |  |
-| VNet-befecskendezés támogatása| N/A |  |
-| Hálózati elkülönítés és tűzfalak támogatása| Igen | |
-| Kényszerített bújtatás támogatása| N/A |  |
+| A szolgáltatás végpontjának támogatása| Igen |  |
+| A VNet injekciózás támogatása| N/A |  |
+| Hálózati elkülönítés és tűzfaltámogatás| Igen | |
+| Kényszerített bújtatástámogatása| N/A |  |
 
-## <a name="monitoring--logging"></a>& Naplózás figyelése
+## <a name="monitoring--logging"></a>Naplózás & figyelése
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | Azure Monitor metrikák|
-| Vezérlési és felügyeleti síkok naplózása és naplózása | Igen | Azure Resource Manager tevékenység naplója |
-| Adatsíkok naplózása és naplózása| Igen | Szolgáltatás-diagnosztikai naplók.|
+| Azure figyelési támogatás (Naplóelemzés, Alkalmazáselemzések stb.)| Igen | Az Azure Monitor metrikák|
+| Vezérlő és felügyeleti sík naplózása és naplózása | Igen | Az Azure Resource Manager tevékenységnaplója |
+| Adatsík naplózása és naplózása| Igen | Szolgáltatásdiagnosztikai naplók.|
 
 ## <a name="identity"></a>Identitás
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Authentication| Igen | Azure Active Directory, megosztott kulcs, közös hozzáférési jogkivonat. |
-| Engedélyezés| Igen | Támogatás engedélyezése RBAC, POSIX ACL-eken és SAS-tokeneken keresztül |
+| Hitelesítés| Igen | Azure Active Directory, Megosztott kulcs, Megosztott hozzáférési jogkivonat. |
+| Engedélyezés| Igen | Támogatási engedélyezés RBAC, POSIX ACL-ek és SAS-tokenek en keresztül |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | Azure Resource Manager API-k támogatása az erőforrás-szolgáltatónál |
+| Konfigurációkezelés támogatása (a konfiguráció verziószámozása stb.)| Igen | Az Erőforrás-szolgáltató verziószámozásának támogatása az Azure Resource Manager API-kon keresztül |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../../security/fundamentals/security-controls.md).
+- További információ az [Azure-szolgáltatások beépített biztonsági vezérlőiről.](../../security/fundamentals/security-controls.md)

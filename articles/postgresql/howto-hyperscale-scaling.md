@@ -1,47 +1,52 @@
 ---
-title: A kiszolgáló csoport skálázása – nagy kapacitású (Citus) – Azure Database for PostgreSQL
-description: A kiszolgáló csoport memóriájának, lemezének és CPU-erőforrásainak módosítása a megnövekedett terhelés kezelésére
+title: Kiszolgálócsoport méretezése - Nagy kapacitású (Citus) – Azure-adatbázis a PostgreSQL-hez
+description: A kiszolgálócsoport memóriájának, lemezének és processzorerőforrásainak beállítása a megnövekedett terhelés kezeléséhez
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: bec2a40d8cf5fb178418ec6bb59a52a0bfe3eb8c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 3/16/2020
+ms.openlocfilehash: fa48ca287c248155a0271b5134be782d8db1c785
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79280442"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063104"
 ---
-# <a name="scale-a-hyperscale-citus-server-group"></a>Nagy kapacitású-(Citus-) kiszolgálócsoport méretezése
+# <a name="scale-a-hyperscale-citus-server-group"></a>Nagyméretű (Citus) kiszolgálócsoport méretezése
 
-A Azure Database for PostgreSQL-nagy kapacitású (Citus) önkiszolgáló skálázást biztosít a megnövekedett terhelés kezelésére. A Azure Portal megkönnyíti az új munkavégző csomópontok hozzáadását és a meglévő csomópontok virtuális mag növelését.
+Azure Database for PostgreSQL – Hyperscale (Citus) önkiszolgáló skálázást biztosít a megnövekedett terhelés kezeléséhez. Az Azure Portalon egyszerűen adhat hozzá új feldolgozócsomópontokat, és növelheti a meglévő csomópontok virtuális magjait.
 
 ## <a name="add-worker-nodes"></a>Munkavégző csomópontok hozzáadása
 
-Csomópontok hozzáadásához nyissa meg a **configure (Konfigurálás** ) lapot a nagy kapacitású (Citus) kiszolgálócsoport számára.  Ha a **munkavégző csomópontok száma** fölé húzza a csúszkát, az érték módosul.
+Csomópontok hozzáadásához nyissa meg a Nagykapacitású (Citus) kiszolgálócsoport **Konfigurálás** lapját.  A **munkavégző csomópontok számának** csúszkájának húzása megváltoztatja az értéket.
 
-![Erőforrás-csúszkák](./media/howto-hyperscale-scaling/01-sliders-workers.png)
+![Erőforrás csúszkák](./media/howto-hyperscale-scaling/01-sliders-workers.png)
 
-Kattintson a **Save (Mentés** ) gombra a módosított érték életbe léptetéséhez.
+A **Mentett** gombra kattintva a módosított érték érvénybe léptetéséhez kattintson.
 
 > [!NOTE]
-> A növekedés és a mentés után a munkavégző csomópontok száma nem csökkenthető a csúszka használatával.
+> A növelést és mentést követően a munkavégző csomópontok száma nem csökkenthető a csúszka használatával.
 
-### <a name="rebalance-shards"></a>Szegmensek kiegyensúlyozása
+### <a name="rebalance-shards"></a>Szilánkok egyensúlyának helyreállítása
 
-Az újonnan hozzáadott csomópontok kihasználása érdekében újra kell osztania az [elosztott tábla](concepts-hyperscale-distributed-data.md#shards)szegmenseit, ami azt jelenti, hogy a meglévő csomópontokból származó szegmensek áthelyezése az újakra történik. Először ellenőrizze, hogy az új feldolgozók sikeresen befejezték-e az üzembe helyezést. Ezután indítsa el a szegmens-újraelosztást a psql-mel és a-t futtató fürt-koordinátor csomóponthoz való csatlakozással:
+Az újonnan hozzáadott csomópontok előnyeinek kihasználásához újra egyensúlyoznia kell az elosztott [táblaszilánkokat,](concepts-hyperscale-distributed-data.md#shards)ami azt jelenti, hogy néhány szegmenst áthelyez a meglévő csomópontokról az újakra. Először ellenőrizze, hogy az új dolgozók sikeresen befejezték-e a kiépítést. Ezután indítsa el a shard rebalancer, a fürt koordinátorcsomópont psql és futás:
 
 ```sql
 SELECT rebalance_table_shards('distributed_table_name');
 ```
 
-A `rebalance_table_shards` függvény a (z) argumentumban található tábla együttes [elhelyezés](concepts-hyperscale-colocation.md) csoportjában lévő összes táblát újraegyenlíti. Így nem kell minden elosztott táblához meghívnia a függvényt, csak egy reprezentatív táblán kell meghívnia az egyes közös helyek csoportjából.
+A `rebalance_table_shards` függvény újraegyensúlyozza az argumentumában megnevezett tábla [helymegosztási](concepts-hyperscale-colocation.md) csoportjának összes tábláját. Így nem kell minden elosztott tábla függvényét meghívnia, csak hívja meg az egyes helymegosztási csoportok reprezentatív tábláján.
 
-## <a name="increase-vcores"></a>Virtuális mag javítása
+## <a name="increase-or-decrease-vcores-on-nodes"></a>Virtuális magok növelése vagy csökkentése csomópontokon
 
-Az új csomópontok hozzáadásán kívül növelheti a meglévő csomópontok képességeit is. Ez a funkció jelenleg előzetes verzióban érhető el – Ha nagyobb virtuális mag szeretne kérni a kiszolgálócsoport csomópontjaihoz, vegye [fel a kapcsolatot az Azure ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+> [!NOTE]
+> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Ha a kiszolgálócsoport csomópontjainak virtuális magjaiban szeretne változtatni, forduljon az [Azure ügyfélszolgálatához.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
 
-## <a name="next-steps"></a>Következő lépések
+Az új csomópontok hozzáadása mellett növelheti a meglévő csomópontok képességeit. A számítási kapacitás fel- és leigazítása hasznos lehet a teljesítménykísérletekhez, valamint a forgalmi igények rövid vagy hosszú távú változásaihoz.
 
-További információ a kiszolgálói csoportok [teljesítményének lehetőségeiről](concepts-hyperscale-configuration-options.md).
+Az összes munkavégző csomópont virtuális magjainak módosításához módosítsa a **virtuális magok** csúszkáját a **Konfiguráció (munkavégző csomópontonként)** csoportban. A koordinátori csomópont virtuális magjai egymástól függetlenül módosíthatók. Kattintson a **Konfiguráció módosítása** hivatkozásra a **koordinátor csomópont**alatt . Megjelenik egy párbeszédpanel a koordinátor virtuális magok és tárolókapacitásának csúszkáival. Módosítsa a csúszkákat a kívánt módon, és válassza **az OK gombot.**
+
+## <a name="next-steps"></a>További lépések
+
+További információ a kiszolgálócsoport [teljesítménybeállításairól.](concepts-hyperscale-configuration-options.md)

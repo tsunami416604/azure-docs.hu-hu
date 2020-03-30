@@ -1,6 +1,6 @@
 ---
-title: Az Azure Virtual Machines általános PowerShell-parancsai
-description: Általános PowerShell-parancsok az Azure-beli Windows rendszerű virtuális gépek létrehozásának és kezelésének megkezdéséhez.
+title: Gyakori PowerShell-parancsok az Azure virtuális gépekhez
+description: Gyakori PowerShell-parancsok a Windows-virtuális gépek létrehozásának és kezelésének megkezdéséhez az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,61 +15,61 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 1d66908d956f60ec894af50c45fd64387639addf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981279"
 ---
-# <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Általános PowerShell-parancsok az Azure-Virtual Machines létrehozásához és kezeléséhez
+# <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Gyakran használt PowerShell-parancsok az Azure-beli virtuális gépek létrehozásához és kezeléséhez
 
-Ez a cikk az Azure-előfizetésben található virtuális gépek létrehozásához és kezeléséhez használható Azure PowerShell-parancsokat ismerteti.  Az adott parancssori kapcsolókkal és lehetőségekkel kapcsolatos részletesebb segítségért használhatja a **Get-Help** *parancsot*.
+Ez a cikk néhány Azure PowerShell-parancs, amely segítségével virtuális gépek et hozhat létre és kezelhet az Azure-előfizetésben.  Az adott parancssori kapcsolókkal és beállításokkal kapcsolatos részletesebb segítségért a Segítség *parancs segítségével*kaphat **segítséget.**
 
  
 
 Ezek a változók akkor lehetnek hasznosak, ha a cikkben szereplő parancsok közül többet futtat:
 
-- $location – a virtuális gép helye. A [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) használatával megkeresheti az Ön számára megfelelő [földrajzi régiót](https://azure.microsoft.com/regions/) .
+- $location - A virtuális gép helye. A [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) segítségével megkeresheti az Ön számára működő [földrajzi régiót.](https://azure.microsoft.com/regions/)
 - $myResourceGroup – a virtuális gépet tartalmazó erőforráscsoport neve.
-- $myVM – a virtuális gép neve.
+- $myVM - A virtuális gép neve.
 
 ## <a name="create-a-vm---simplified"></a>Virtuális gép létrehozása – egyszerűsített
 
 | Tevékenység | Parancs |
 | ---- | ------- |
-| Egyszerű virtuális gép létrehozása | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -Name $myVM <BR></BR><BR></BR> A New-AzVM *egyszerűsített* paramétereket tartalmaz, ahol minden szükséges egyetlen név. A-name értéket fogja használni az új virtuális gép létrehozásához szükséges összes erőforrás neveként. Több is megadható, de ez minden szükséges.|
-| Virtuális gép létrehozása egyéni rendszerképből | New-AzVm-ResourceGroupName $myResourceGroup-Name $myVM ImageName "myImage" – hely $location  <BR></BR><BR></BR>Már létre kell hoznia egy saját [felügyelt képet](capture-image-resource.md). A rendszerkép használatával több, azonos virtuális gép is létrehozható. |
+| Egyszerű virtuális gép létrehozása | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -Név $myVM <BR></BR><BR></BR> A New-AzVM *egyszerűsített* paramétereket rendelkezik, ahol csak egyetlen névre van szükség. A -Name érték lesz az új virtuális gép létrehozásához szükséges összes erőforrás neve. Ennél többet is megadhat, de ez minden, ami szükséges.|
+| Virtuális gép létrehozása egyéni rendszerképből | New-AzVm -ResourceGroupName $myResourceGroup -Name $myVM ImageName "myImage" -Hely $location  <BR></BR><BR></BR>Be kell, hogy már létrehozta a saját [felügyelt lemezképet](capture-image-resource.md). A lemezkép segítségével több, azonos virtuális gépek. |
 
 
 
-## <a name="create-a-vm-configuration"></a>Virtuális gép konfigurációjának létrehozása
-
-| Tevékenység | Parancs |
-| ---- | ------- |
-| Virtuális gép konfigurációjának létrehozása |$vm = [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) -VMName $MyVM-VMSize "Standard_D1_v1"<BR></BR><BR></BR>A virtuálisgép-konfiguráció a virtuális gép beállításainak definiálására vagy frissítésére szolgál. A konfiguráció inicializálva van a virtuális gép nevével és [méretével](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). |
-| Konfigurációs beállítások hozzáadása |$vm = [set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) -VM $VM-Windows-számítógépnév $MyVM-hitelesítőadat $cred-ProvisionVMAgent-EnableAutoUpdate<BR></BR><BR></BR>Az operációs rendszer beállításai, beleértve a [hitelesítő adatokat](https://technet.microsoft.com/library/hh849815.aspx) , hozzá lettek adva a New-AzVMConfig használatával korábban létrehozott konfigurációs objektumhoz. |
-| Hálózati adapter hozzáadása |$vm = [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMNetworkInterface) -VM $VM-ID $nic. ID<BR></BR><BR></BR>A virtuális gépnek [hálózati adapterrel](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kell rendelkeznie a virtuális hálózatban való kommunikációhoz. A [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) használatával lekérheti a meglévő hálózati adapterek objektumait is. |
-| Platform rendszerképének meghatározása |$vm = [set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) -VM $VM-közzétevő neve "publisher_name"-ajánlat "publisher_offer"-sku "product_sku"-version "Latest"<BR></BR><BR></BR>A rendszer a korábban a New-AzVMConfig használatával létrehozott konfigurációs objektumhoz adja hozzá a [rendszerképekkel kapcsolatos adatokat](cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . A parancs által visszaadott objektum csak akkor használatos, ha az operációsrendszer-lemezt platform-lemezkép használatára állítja be. |
-| Virtuális gép létrehozása |[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -ResourceGroupName $MyResourceGroup-Location $Location-VM $VM<BR></BR><BR></BR>Az összes erőforrás egy [erőforráscsoporthoz](../../azure-resource-manager/management/manage-resource-groups-powershell.md)lett létrehozva. A parancs futtatása előtt futtassa a New-AzVMConfig, a set-AzVMOperatingSystem, a set-AzVMSourceImage, a Add-AzVMNetworkInterface és a set-AzVMOSDisk parancsot. |
-| Virtuális gép frissítése |[Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) -ResourceGroupName $MYRESOURCEGROUP – VM $VM<BR></BR><BR></BR>Szerezze be a virtuális gép aktuális konfigurációját a Get-AzVM használatával, módosítsa a virtuálisgép-objektum konfigurációs beállításait, majd futtassa ezt a parancsot. |
-
-## <a name="get-information-about-vms"></a>Virtuális gépek adatainak beolvasása
+## <a name="create-a-vm-configuration"></a>Virtuálisgép-konfiguráció létrehozása
 
 | Tevékenység | Parancs |
 | ---- | ------- |
-| Egy előfizetésben lévő virtuális gépek listázása |[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) |
-| Erőforráscsoporthoz tartozó virtuális gépek listázása |Get-AzVM-ResourceGroupName $myResourceGroup<BR></BR><BR></BR>Az előfizetéshez tartozó erőforráscsoportok listájának lekéréséhez használja a [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup). |
-| Virtuális gép adatainak lekérése |Get-AzVM-ResourceGroupName $myResourceGroup – név $myVM |
+| Virtuálisgép-konfiguráció létrehozása |$vm = [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) -VMName $myVM -VMSize "Standard_D1_v1"<BR></BR><BR></BR>A virtuális gép konfigurációja a virtuális gép beállításainak meghatározására vagy frissítésére szolgál. A konfiguráció inicializálása a virtuális gép nevével és [méretével](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)történik. |
+| Konfigurációs beállítások hozzáadása |$vm = [Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) -VM $vm -Windows -Számítógépnév $myVM -Credential $cred -ProvisionVMAgent -EnableAutoUpdate<BR></BR><BR></BR>Az operációs rendszer beállításai, beleértve a [hitelesítő adatokat](https://technet.microsoft.com/library/hh849815.aspx) is, hozzáadódnak a New-AzVMConfig használatával korábban létrehozott konfigurációs objektumhoz. |
+| Hálózati adapter hozzáadása |$vm = [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMNetworkInterface) -VM $vm -Id $nic. Id<BR></BR><BR></BR>A virtuális gépnek [hálózati adapterrel](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kell rendelkeznie a virtuális hálózatban való kommunikációhoz. A [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) segítségével egy meglévő hálózati illesztőobjektum ot is bekereshet. |
+| Platformkép megadása |$vm = [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) -VM $vm -PublisherName "publisher_name" -Ajánlat "publisher_offer" -Skus "product_sku" -Verzió "legújabb"<BR></BR><BR></BR>[A képadatok](cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hozzáadódnak a Korábban a New-AzVMConfig használatával létrehozott konfigurációs objektumhoz. A parancsból visszaadott objektum csak akkor használatos, ha az operációs rendszer lemezét platformlemez használatára állítja be. |
+| Virtuális gép létrehozása |[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -ResourceGroupName $myResourceGroup -Hely $location -VM $vm<BR></BR><BR></BR>Minden erőforrás egy [erőforráscsoportban](../../azure-resource-manager/management/manage-resource-groups-powershell.md)jön létre. A parancs futtatása előtt futtassa a New-AzVMConfig, a Set-AzVMOperatingSystem, a Set-AzVMSourceImage, az Add-AzVMNetworkInterface és a Set-AzVMOSDisk parancsot. |
+| Virtuális gép frissítése |[Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) -ResourceGroupName $myResourceGroup -VM $vm<BR></BR><BR></BR>A get-AzVM használatával szerezd be az aktuális virtuális gép konfigurációját, módosítsa a konfigurációs beállításokat a virtuális gép objektumán, majd futtassa ezt a parancsot. |
+
+## <a name="get-information-about-vms"></a>A virtuális gépekről szóló információk
+
+| Tevékenység | Parancs |
+| ---- | ------- |
+| Virtuális gépek listázása előfizetésben |[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) |
+| Virtuális gépek listázása erőforráscsoportban |Get-AzVM -ResourceGroupName $myResourceGroup<BR></BR><BR></BR>Az előfizetéserőforrás-csoportok listájának leéséhez használja a [Get-AzResourceGroup csoportot.](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup) |
+| Virtuális gép adatainak lekérése |Get-AzVM -ResourceGroupName $myResourceGroup -Name $myVM |
 
 ## <a name="manage-vms"></a>Virtuális gépek kezelése
 | Tevékenység | Parancs |
 | --- | --- |
-| Virtuális gép elindítása |[Start-AzVM](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) -ResourceGroupName $MyResourceGroup – név $myVM |
-| Virtuális gép leállítása |[Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) -ResourceGroupName $MyResourceGroup-Name $myVM |
-| Futó virtuális gép újraindítása |[Restart-AzVM](https://docs.microsoft.com/powershell/module/az.compute/restart-azvm) -ResourceGroupName $MyResourceGroup-Name $myVM |
-| Virtuális gép törlése |[Remove-AzVM](https://docs.microsoft.com/powershell/module/az.compute/remove-azvm) -ResourceGroupName $MyResourceGroup-Name $myVM |
+| Virtuális gép elindítása |[Start-AzVM](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) -ResourceGroupName $myResourceGroup -Name $myVM |
+| Virtuális gép leállítása |[Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) -ResourceGroupName $myResourceGroup -Name $myVM |
+| Futó virtuális gép újraindítása |[Restart-AzVM](https://docs.microsoft.com/powershell/module/az.compute/restart-azvm) -ResourceGroupName $myResourceGroup -Name $myVM |
+| Virtuális gép törlése |[Remove-AzVM](https://docs.microsoft.com/powershell/module/az.compute/remove-azvm) -ResourceGroupName $myResourceGroup -Name $myVM |
 
 
-## <a name="next-steps"></a>Következő lépések
-* A virtuális gépek létrehozásának alapvető lépései a [Windows virtuális gép létrehozása a Resource Manager és a PowerShell használatával](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című témakörben találhatók.
+## <a name="next-steps"></a>További lépések
+* Tekintse meg a virtuális gépek létrehozásának alapvető lépéseit a Windows virtuális gép létrehozása az [Erőforrás-kezelő és a PowerShell használatával](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című témakörben.
 

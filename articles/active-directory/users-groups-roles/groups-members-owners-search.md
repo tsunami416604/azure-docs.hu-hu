@@ -1,6 +1,6 @@
 ---
-title: Csoportok tagjai és tulajdonosainak keresése és szűrése (előzetes verzió) – Azure Active Directory | Microsoft Docs
-description: Csoportok tagjai és tulajdonosainak keresése és szűrése a Azure Portalban.
+title: Tagok és tulajdonosok keresése és szűrése (előzetes verzió) – Azure Active Directory | Microsoft dokumentumok
+description: A keresés és a szűrés csoportosítja a tagokat és a tulajdonosokat az Azure Portalon.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,72 +15,72 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78206112"
 ---
-# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Csoportok és tagok keresése (előzetes verzió) Azure Active Directory
+# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Csoportok és tagok keresése (előzetes verzió) az Azure Active Directoryban
 
-Ebből a cikkből megtudhatja, hogyan keresheti meg egy csoport tagjait és tulajdonosait, és hogyan használhatja a keresési szűrőket a csoportok fejlesztésének előzetes verziójának részeként a Azure Active Directory (Azure AD) portálon. A csoportok számos olyan fejlesztéssel rendelkeznek, amelyek segítségével gyorsan és egyszerűen kezelheti a csoportokat, beleértve a tagokat és a tulajdonosokat is. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Ez a cikk bemutatja, hogyan kereshet tagokat és tulajdonosokat egy csoport, és hogyan használhatja a keresési szűrők et az Azure Active Directory (Azure AD) portálon a csoportok fejlesztési előnézetének részeként. A csoportok számos fejlesztést tartalmaznak, amelyek segítenek a csoportok gyors és egyszerű kezelésében, beleértve a tagokat és a tulajdonosokat is. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az előzetes verzió változásai a következők:
+Az előnézet változásai a következők:
 
-- Új csoportok keresési képességek, például alsztring keresés a csoportok neveiben
-- Új szűrési és rendezési beállítások a tag és a tulajdonos listán
-- Új keresési funkciók a tagok és a tulajdonosok listájához
-- A nagyméretű csoportok pontosabb csoportosítási száma
+- Új csoportok keresési lehetőségei, például karakterlánc-részkeresés a csoportnevekben
+- Új szűrési és rendezési beállítások a tag- és tulajdonoslistákon
+- Új keresési lehetőségek a tagok és a tulajdonosok listáihoz
+- Pontosabb csoportszámok nagy csoportok esetén
 
 ## <a name="enabling-and-managing-the-preview"></a>Az előnézet engedélyezése és kezelése
 
-Könnyedén csatlakozhat az előzetes verzióhoz:
+Megkönnyítettük az előzetes verzióhoz való csatlakozást:
 
-  1. Jelentkezzen be az [Azure ad-portálra](https://portal.azure.com), és válassza a **csoportok**lehetőséget.
-  2. A groups – all groups (csoportok – minden csoport) lapon válassza a lap tetején található szalagcímet az előzetes verzióhoz való csatlakozáshoz.
+  1. Jelentkezzen be az [Azure AD portálra](https://portal.azure.com), és válassza a **Csoportok**lehetőséget.
+  2. A Csoportok – Minden csoport lapon jelölje ki a szalagcímet a lap tetején, hogy csatlakozzon az előnézethez.
 
-A legújabb funkciókat és a tökéletesítéseket is megtekintheti, ha az **összes csoport** lapon az **előnézet információ** lehetőségre kattint. Az előzetes verzióhoz való csatlakozást követően az előnézeti címkét az összes olyan csoportnál láthatja, amely az előzetes verzió részét képezi. Nem minden csoport lap frissült az előzetes verzió részeként.
+A legújabb funkciókat és fejlesztéseket úgy is megtekintheti, hogy a Minden csoport lapon **az Előnézeti adatok** lehetőséget **választja.** Miután csatlakozott az előnézethez, megtekintheti az előnézeti címkét az összes olyan csoportoldalon, amelynek fejlesztése van, és amely az előnézet részét képezi. Nem minden csoportlap lett frissítve az előnézet részeként.
 
-Ha problémák merülnek fel, a **minden csoport** lap tetején található szalagcím kiválasztásával visszaválthat a régi élményre. Nagyra értékeljük visszajelzését, hogy fejlesszük a tapasztalatainkat.
+Ha bármilyen problémája van, visszaválthat az örökölt élményre, ha kiválasztja a szalagcímet a **Minden csoport** lap tetején. Nagyra értékeljük a visszajelzést, hogy javíthassuk tapasztalatunkat.
 
 ## <a name="group-search-and-sorting"></a>Csoportos keresés és rendezés
 
-A csoportok listájának keresését továbbfejlesztettük, így amikor megadhat egy keresési karakterláncot, a keresés automatikusan végrehajt egy `startswith` és alkarakterlánc-keresést a csoportok neveinek listáján. Az alkarakterlánc-keresés csak egész szavakon hajtható végre, és nem tartalmaz speciális karaktereket. A karakterlánc-keresés a kis-és nagybetűk megkülönböztetésére szolgál.
+A csoportlista keresése tovább lett fejlesztve, így amikor beírhat `startswith` egy keresési karakterláncot, a keresés automatikusan végrehajtegy és karakterlánc-részkeresést a csoportnevek listáján. A karakterlánc-részkeresés csak teljes szavakon történik, és nem tartalmaz speciális karaktereket. A karakterláncrész-keresés ben a kis- és nagybetűk et nem lehet figyelembe.
 
-![új alkarakterlánc-keresések a minden csoport lapon](./media/groups-members-owners-search/groups-search-preview.png)
+![új részkarakterlánc-keresések a Minden csoport lapon](./media/groups-members-owners-search/groups-search-preview.png)
 
-Például a "Policy" kifejezésre való keresés most a "MDM Policy – West" és a "Policy Group" értéket fogja visszaadni. A rendszer nem ad vissza egy "New_policy" nevű csoportot.
+A "házirend" kifejezésre való keresés például most antól az "MDM-házirend – Nyugat" és a "Házirendcsoport" szöveget is visszaadja. A "New_policy" nevű csoportot nem adja vissza.
 
-- Ugyanezt a keresést is végrehajthatja a csoporttagság-listán.
-- Mostantól a név oszlop fejlécének jobb oldalán található nyilak alapján rendezheti a csoportok listáját a lista növekvő vagy csökkenő sorrendbe rendezéséhez.
+- Ugyanezt a keresést a csoporttagsági listákon is elvégezheti.
+- A lista mostantól név szerint rendezhető a névoszlop fejlécéből jobbra lévő nyilakkal a lista növekvő vagy csökkenő sorrendben történő rendezéséhez.
 
-## <a name="group-member-search-and-filtering"></a>Csoporttagok keresése és szűrése
+## <a name="group-member-search-and-filtering"></a>Csoporttag keresése és szűrése
 
-### <a name="search-group-member-and-owner-lists"></a>Keresési csoport tagjai és tulajdonosi listája
+### <a name="search-group-member-and-owner-lists"></a>A csoport tagjainak és tulajdonosi listáinak keresése
 
-Mostantól megkeresheti egy adott csoport tagjait név szerint, és ugyanezt a keresést is végrehajthatja a csoport tulajdonosainak listáján. Ha az új funkcióban karakterláncot ad meg a keresőmezőbe, a rendszer automatikusan elvégzi a startswith keresését. Például a "Scott" kifejezés a Scott Wilkinson-t fogja visszaadni.
+Most antól név szerint kereshet egy adott csoport tagjai között, és ugyanezt a keresést a csoport tulajdonosainak listáján is elvégezheti. Az új felületen, ha karakterláncot ad meg a keresőmezőbe, a kezdetű keresés automatikusan elvégezhető. A "Scott" kifejezésre keresve például Scott Wilkinson lesz a visszaadás.
 
-![az új alsztring a csoporttagok és a tulajdonosok listája alapján keres](./media/groups-members-owners-search/members-list.png)
+![új részkarakterlánc-keresések a csoporttagok és a tulajdonosok listáján](./media/groups-members-owners-search/members-list.png)
 
-### <a name="filter-member-and-owners-list"></a>Tag és tulajdonosok listájának szűrése
+### <a name="filter-member-and-owners-list"></a>Tagok és tulajdonosok listájának szűrése
 
-A keresésen kívül a tag és a tulajdonos listáját is szűrheti felhasználói típus szerint. Ez a lista felhasználó típusa oszlopában található információ. Így szűrheti a listát a tagok és a vendégek között annak megállapításához, hogy vannak-e a csoportban lévő vendégek.
+A keresés mellett mostantól a tag- és tulajdonoslistákat is szűrheti felhasználótípus szerint. Ez a lista Felhasználó típus oszlopában található információ. Így szűrheti a listát a tagok és a vendégek, hogy meghatározza, ha vannak olyan vendégek a csoportban.
 
 ### <a name="view-and-manage-membership"></a>Tagság megtekintése és kezelése
 
-Egy adott csoport közvetlen tagjainak megtekintése mellett most már megtekintheti a csoport tagjainak listáját a tagok oldalon. A tagok listán a csoport minden egyedi tagja szerepel, beleértve a tranzitív tagokat is.
+Az adott csoport közvetlen tagjainak megtekintése mellett a csoport összes tagjának listáját is megtekintheti a Tagok oldalon. A tagok listája tartalmazza a csoport összes egyedi tagját, beleértve a tranzitív tagokat is.
 
-A közvetlen tagok listáját és az összes tag listát is megkeresheti és szűrheti egyenként. A minden tag lista szűrése nem befolyásolja a közvetlen tagok listáján alkalmazott szűrőket.
+A közvetlen tagok és az összes tag egyenként is kereshetésés szűrése. Az összes taglista szűrése nincs hatással a közvetlen tagok listájára alkalmazott szűrőkre.
 
 ## <a name="improved-group-member-counts"></a>Továbbfejlesztett csoporttagok száma
 
-Javítottuk a csoport **áttekintő** oldalát, hogy a csoportok tagjainak száma minden méretben elérhető legyen. A tagok számát még a több mint 1 000 taggal rendelkező csoportok esetében is megtekintheti. Most már megtekintheti a csoport közvetlen tagjainak teljes számát és a tagságok teljes számát (a csoport minden egyedi tagja, beleértve a tranzitív tagokat is) az **Áttekintés** oldalon.
+Javítottuk a csoport **áttekintése** oldalt, hogy a csoporttagok számát minden méretű csoporthoz megadhassuk. A tagok száma még az 1000-nél több tagot számláló csoportok esetében is látható. Most már láthatja a csoport közvetlen tagjainak teljes számát és a teljes tagsági számot (a csoport összes egyedi tagját, beleértve a tranzitív tagokat is) az **Áttekintés** oldalon.
 
-![Nagyobb pontosság a csoporttagság száma szerint](./media/groups-members-owners-search/member-numbers.png)
+![Nagyobb pontosság a csoporttagságok számában](./media/groups-members-owners-search/member-numbers.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ezek a cikkek további információkat nyújtanak a csoportok Azure AD-beli használatáról.
+Ezek a cikkek további információt nyújtanak a csoportok azure AD-ben való munkáról.
 
 - [Csoportok és tagok megtekintése](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [Csoporttagság kezelése](../fundamentals/active-directory-groups-membership-azure-portal.md)
@@ -89,4 +89,4 @@ Ezek a cikkek további információkat nyújtanak a csoportok Azure AD-beli hasz
 - [Az erőforrásokhoz való hozzáférés kezelése csoportokkal](../fundamentals/active-directory-manage-groups.md)
 - [Az SaaS-alkalmazásokhoz való hozzáférés kezelése csoportokkal](groups-saasapps.md)
 - [Csoportok kezelése PowerShell-parancsokkal](groups-settings-v2-cmdlets.md)
-- [Azure-előfizetés hozzáadása a Azure Active Directoryhoz](../fundamentals/active-directory-how-subscriptions-associated-directory.md)
+- [Azure-előfizetés hozzáadása az Azure Active Directoryhoz](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

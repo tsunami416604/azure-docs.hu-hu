@@ -1,52 +1,52 @@
 ---
-title: Tárolók figyelése Azure Monitor naplókkal
-description: Azure Monitor naplókat használhat az Azure Service Fabric-fürtökön futó tárolók figyelésére.
+title: Tárolók figyelése az Azure Monitor-naplókkal
+description: Azure Monitor naplók azure Service Fabric-fürtöken futó tárolók figyeléséhez.
 author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 8d4231de13da3f8b2960bd4852136f803a97a546
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614434"
 ---
-# <a name="monitor-containers-with-azure-monitor-logs"></a>Tárolók figyelése Azure Monitor naplókkal
+# <a name="monitor-containers-with-azure-monitor-logs"></a>Tárolók figyelése az Azure Monitor-naplókkal
  
-Ez a cikk ismerteti azokat a lépéseket, amelyek szükségesek a Azure Monitor naplók tároló-figyelési megoldás beállításához a tároló eseményeinek megtekintéséhez. Ha a fürtöt tároló események gyűjtésére szeretné beállítani, tekintse meg ezt a [lépésenkénti útmutatót](service-fabric-tutorial-monitoring-wincontainers.md). 
+Ez a cikk ismerteti az Azure Monitor naplók tárolófigyelési megoldás tárolóesemények megtekintéséhez szükséges lépéseket. Ha be szeretné állítani a fürtöt a tárolóesemények gyűjtésére, tekintse meg ezt [a részletes oktatóanyagot.](service-fabric-tutorial-monitoring-wincontainers.md) 
 
 [!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)]
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="set-up-the-container-monitoring-solution"></a>A tároló-figyelési megoldás beállítása
+## <a name="set-up-the-container-monitoring-solution"></a>A tárolófigyelési megoldás beállítása
 
 > [!NOTE]
-> Azure Monitor naplókat kell beállítania a fürthöz, valamint rendelkeznie kell a csomópontokon telepített Log Analytics-ügynökkel. Ha nem, kövesse a [Azure monitor-naplók beállítása](service-fabric-diagnostics-oms-setup.md) és [a log Analytics-ügynök hozzáadása a fürthöz](service-fabric-diagnostics-oms-agent.md) című témakör lépéseit.
+> Be kell állítania az Azure Monitor-naplókat a fürthöz, valamint telepítenie kell a Log Analytics-ügynököt a csomópontokon. Ha nem, kövesse az Azure Monitor naplók beállítása és [a Log Analytics-ügynök hozzáadása a fürthöz](service-fabric-diagnostics-oms-agent.md) című [lépéseit.](service-fabric-diagnostics-oms-setup.md)
 
-1. Miután a fürt be van állítva Azure Monitor naplókkal és a Log Analytics ügynökkel, helyezze üzembe a tárolókat. Várjon, amíg a tárolók üzembe helyezhetők, mielőtt továbblép a következő lépésre.
+1. Miután a fürt be van állítva az Azure Monitor naplók és a Log Analytics-ügynök, telepítse a tárolók. Várja meg, amíg a tárolók üzembe helyezése, mielőtt a következő lépésre.
 
-2. Az Azure Marketplace-en keresse meg a *tároló-figyelési megoldást* , és kattintson a monitoring és felügyelet kategória alatt látható **Container monitoring Solution** erőforrásra.
+2. Az Azure Marketplace-en keresse meg a *Tárolófigyelési megoldást,* és kattintson a **Tárolófigyelési megoldás** erőforrásra, amely megjelenik a Figyelés + Kezelés kategóriában.
 
     ![Tárolómegoldások hozzáadása](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
-3. Hozza létre a megoldást egy olyan munkaterületen belül, amely már létre van hozva a fürthöz. Ez a módosítás automatikusan elindítja az ügynököt a Docker-információk tárolókban való összegyűjtésének megkezdéséhez. Körülbelül 15 perc múlva látnia kell a megoldást a bejövő naplók és statisztikák alapján, ahogy az alábbi képen is látható.
+3. Hozza létre a megoldást ugyanazon a munkaterületen belül, amely már létrejött a fürthöz. Ez a módosítás automatikusan elindítja az ügynököt, hogy kezdje el a docker-adatok gyűjtését a tárolókon. Körülbelül 15 perc múlva, meg kell jelennie a megoldás világít a bejövő naplók és statisztikák, amint az alábbi képen látható.
 
-    ![Alapszintű Log Analytics irányítópult](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
+    ![Egyszerű logelemzési irányítópult](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
 
-Az ügynök lehetővé teszi több, a tárolóra vonatkozó naplók begyűjtését Azure Monitor naplókban, illetve a teljesítménymutatók megjelenítéséhez. A gyűjtött naplózási típusok a következők:
+Az ügynök lehetővé teszi, hogy több tároló-specifikus naplók, amelyek lekérdezhetők az Azure Monitor naplók, vagy teljesítménymutatók megjelenítésére használható gyűjteménye. A gyűjtött naplótípusok a következők:
 
-* ContainerInventory: a tároló helyének, nevének és képeinek információit jeleníti meg
-* ContainerImageInventory: a telepített lemezképekkel kapcsolatos információk, beleértve az azonosítókat és a méreteket
-* ContainerLog: megadott hibanapló, Docker-naplók (StdOut stb.) és egyéb bejegyzések
-* ContainerServiceLog: a futtatott Docker Daemon-parancsok
-* Perf: teljesítményszámlálók, beleértve a tároló CPU-t, a memóriát, a hálózati forgalmat, a lemez i/o-t és az egyéni metrikákat a gazdagépekről
+* ContainerInventory: információkat jelenít meg a tároló helyéről, nevéről és lemezképeiről
+* ContainerImageInventory: az üzembe helyezett lemezképekre vonatkozó információk, beleértve az azonosítókat vagy méreteket
+* ContainerLog: konkrét hibanaplók, docker-naplók (stdout, stb.) és egyéb bejegyzések
+* ContainerServiceLog: futtatott docker démonparancsok
+* Perf: teljesítményszámlálók, beleértve a tároló processzorát, a memóriát, a hálózati forgalmat, a lemez i/o-t és az egyéni metrikákat a gazdagépekről
 
 
 
-## <a name="next-steps"></a>Következő lépések
-* További információ a [Azure monitor naplók tárolói megoldásáról](../azure-monitor/insights/containers.md).
-* További információ a Service Fabric- [Service Fabric és-tárolók](service-fabric-containers-overview.md) tároló-előkészítéséről
-* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciókkal
-* Azure Monitor naplók konfigurálása [automatizált riasztási](../log-analytics/log-analytics-alerts.md) szabályok beállításához az észlelés és a diagnosztika támogatásához
+## <a name="next-steps"></a>További lépések
+* További információ az [Azure Monitor naplótárolók megoldásáról.](../azure-monitor/insights/containers.md)
+* További információ a tárolóvezénylésről a Service Fabric - [Service Fabric és tárolók](service-fabric-containers-overview.md)
+* Ismerkedjen meg az Azure Monitor naplóinak részeként kínált [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciókkal
+* Az Azure Monitor naplóinak konfigurálása [automatikus riasztási](../log-analytics/log-analytics-alerts.md) szabályok beállításához a felderítés és a diagnosztika elősegítésére

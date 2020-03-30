@@ -1,6 +1,6 @@
 ---
-title: Apache Hive lekérdezések futtatása a HDInsight .NET SDK használatával – Azure
-description: Megtudhatja, hogyan küldhet Apache Hadoop feladatokat az Azure HDInsight Apache Hadoop a HDInsight .NET SDK használatával.
+title: Apache Hive-lekérdezések futtatása HDInsight .NET SDK használatával – Azure
+description: Ismerje meg, hogyan küldhet apache Hadoop-feladatokat az Azure HDInsight Apache Hadoop ba a HDInsight .NET SDK használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,43 +9,43 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: a9d71c8aebb9cc4a0adbd461aead6e2612bd13bd
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552491"
 ---
-# <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Apache Hive lekérdezések futtatása a HDInsight .NET SDK-val
+# <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Apache Hive-lekérdezések futtatása a HDInsight .NET SDK használatával
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Megtudhatja, hogyan küldhet Apache Hive-lekérdezéseket a HDInsight .NET SDK-val. A kaptár- C# táblák listázásához és a találatok megjelenítéséhez olyan programot kell írnia, amely elküld egy kaptár-lekérdezést.
+Ismerje meg, hogyan küldhet Apache Hive-lekérdezéseket a HDInsight .NET SDK használatával. C# programot ír, hogy elküldje a Hive-lekérdezést a Hive-táblák listázásához, és jelenítse meg az eredményeket.
 
 > [!NOTE]  
-> A cikkben szereplő lépéseket Windows-ügyfélről kell végrehajtani. A Linux, OS X vagy UNIX rendszerű ügyfél a kaptárral való használatához való használatáról a cikk tetején látható Tab választót használhatja.
+> A cikkben ismertetett lépéseket Windows-ügyfélről kell végrehajtani. A Linux, OS X vagy Unix kliens ek ként a Hive-val való együttműködésre vonatkozó információkért használja a cikk tetején látható lapválasztót.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk elkezdése előtt a következő elemeket kell megadnia:
+A cikk megkezdése előtt a következő elemekkel kell rendelkeznie:
 
-* Egy Apache Hadoop-fürt a HDInsight-ben. Lásd: Ismerkedés [a Linux-alapú Hadoop a HDInsight-ben](apache-hadoop-linux-tutorial-get-started.md).
+* Apache Hadoop-fürt a HDInsightban. Lásd: [A Linux-alapú Hadoop használatának első lépései a HDInsightban.](apache-hadoop-linux-tutorial-get-started.md)
 
     > [!IMPORTANT]  
-    > 2017. szeptember 15-én a HDInsight .NET SDK csak az Azure Storage-fiókokból származó struktúra-lekérdezési eredmények visszaküldését támogatja. Ha ezt a példát egy olyan HDInsight-fürthöz használja, amely a Azure Data Lake Storage elsődleges tárolóként használja, a keresési eredmények nem kérhetők le a .NET SDK használatával.
+    > 2017. szeptember 15-től a HDInsight .NET SDK csak az Azure Storage-fiókokból származó hive-lekérdezési eredményeket támogatja. Ha ezt a példát egy HDInsight-fürttel használja, amely az Azure Data Lake Storage-t használja elsődleges tárolóként, a .NET SDK használatával nem lehet lekérni a keresési eredményeket.
 
-* A [Visual Studio](https://visualstudio.microsoft.com/vs/community/) 2013-es és újabb kiadásait. Legalább a munkaterhelés **.net Desktop fejlesztését** telepíteni kell.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/community/) 2013-as és azon túl. Legalább a .NET asztali munkabehaszni a **(a) kiszolgálón** kell lennie.
 
-## <a name="run-a-hive-query"></a>Struktúra-lekérdezés futtatása
+## <a name="run-a-hive-query"></a>Hive-lekérdezés futtatása
 
-A HDInsight .NET SDK .NET-ügyfélszoftvereket biztosít, ami megkönnyíti a HDInsight-fürtökkel való együttműködését a .NET-keretrendszerrel.
+A HDInsight .NET SDK .NET ügyféltárakat biztosít, így könnyebben dolgozhat a .NET-ről származó HDInsight-fürtökkel.
 
-1. Hozzon C# létre egy Console-alkalmazást a Visual Studióban.
+1. Hozzon létre egy C# konzolalkalmazást a Visual Studióban.
 
-1. A Nuget Package Manager konzolon futtassa a következő parancsot:
+1. A Nuget Csomagkezelő konzolon futtassa a következő parancsot:
 
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
-1. Szerkessze az alábbi kódot a változók értékeinek inicializálásához: `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName`. Ezután használja a felülvizsgált kódot a **program.cs** teljes tartalmára a Visual Studióban.
+1. Az alábbi kód szerkesztésével inicializálja `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName`a változók értékeit: . Ezután használja a módosított kódot a Visual Studio **Program.cs** teljes tartalmaként.
 
     ```csharp
     using System.Collections.Generic;
@@ -134,16 +134,16 @@ A HDInsight .NET SDK .NET-ügyfélszoftvereket biztosít, ami megkönnyíti a HD
 
 1. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Az alkalmazás kimenetének a következőhöz hasonlónak kell lennie:
+Az alkalmazás kimenetének hasonlónak kell lennie a következőkhöz:
 
-![HDInsight Hadoop-struktúra kimenete](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
+![HDInsight Hadoop Hive-feladat kimenete](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan küldhet Apache Hive lekérdezéseket a HDInsight .NET SDK-val. További információt a következő cikkekben talál:
+Ebben a cikkben megtanulta, hogyan küldhet Apache Hive-lekérdezéseket a HDInsight .NET SDK használatával. További információ: a következő cikkek:
 
-* [Ismerkedés az Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
-* [Apache Hadoop-fürtök létrehozása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md)
-* [HDInsight .NET SDK-dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
-* [Apache Sqoop használata a HDInsight](apache-hadoop-use-sqoop-mac-linux.md)
+* [Ismerkedés az Azure HDInsight-mal](apache-hadoop-linux-tutorial-get-started.md)
+* [Apache Hadoop-fürtök létrehozása a HDInsightban](../hdinsight-hadoop-provision-linux-clusters.md)
+* [HDInsight .NET SDK–hivatkozás](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [Az Apache Sqoop használata a HDInsight segítségével](apache-hadoop-use-sqoop-mac-linux.md)
 * [Nem interaktív hitelesítéssel ellátott .Net HDInsight-alkalmazások létrehozása](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)

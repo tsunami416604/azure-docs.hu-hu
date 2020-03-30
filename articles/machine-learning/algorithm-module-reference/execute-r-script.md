@@ -1,7 +1,7 @@
 ---
-title: 'R-szkript végrehajtása: modul-hivatkozás'
+title: 'R-parancsfájl végrehajtása: modulhivatkozás'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja az r-parancsfájl végrehajtása Azure Machine Learning az R-kód futtatásához.
+description: Ismerje meg, hogyan használhatja az R-parancsfájl végrehajtása modult az Azure Machine Learning r-kód futtatásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,31 +9,31 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 1cf8c208e83950706278e2cff5d13951393eec8f
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: f038293b48956ac89314e426df3f5dc491954df3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79140773"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064217"
 ---
 # <a name="execute-r-script"></a>R-szkript végrehajtása
 
-Ez a cikk azt ismerteti, hogyan használható az r- **parancsfájl végrehajtása** az r-kód futtatásához a Azure Machine learning Designer (előzetes verzió) folyamatában.
+Ez a cikk ismerteti, hogyan használhatja az **R-parancsfájl végrehajtása** modul r-kód futtatásához az Azure Machine Learning designer (előzetes verzió) folyamat.
 
-Az R használatával olyan feladatokat hajthat végre, amelyeket jelenleg nem támogat a meglévő modulok, például a következők: 
+Az R segítségével olyan feladatokat hajthat végre, amelyeket jelenleg nem támogatnak a meglévő modulok, például: 
 - Egyéni adatátalakítások létrehozása
-- Saját mérőszámok használata az előrejelzések kiértékeléséhez
-- Modellek létrehozása a tervezőben nem önálló modulként megvalósított algoritmusok használatával
+- Az előrejelzések kiértékeléséhez használja saját mutatóit
+- Modellek et hozhat létre olyan algoritmusok használatával, amelyek nincsenek önálló modulként megvalósítva a tervezőben
 
-## <a name="r-version-support"></a>R-verziók támogatása
+## <a name="r-version-support"></a>R verzió támogatása
 
-A Azure Machine Learning Designer a CRAN (átfogó R Archive Network) R-eloszlását használja. A jelenleg használt verzió a CRAN 3.5.1-es verziója.
+Az Azure Machine Learning tervezője az R CRAN (Comprehensive R Archive Network) disztribúcióját használja. A jelenleg használt verzió a CRAN 3.5.1.
 
 ## <a name="supported-r-packages"></a>Támogatott R-csomagok
 
-Az R-környezet előre telepítve van több mint 100 csomaggal. A teljes listát az [előre telepített R-csomagok](#pre-installed-r-packages)című szakaszban találja.
+Az R környezet előre telepítve van, több mint 100 csomaggal. A teljes listát az Előre telepített R csomagok című [szakaszban található.](#pre-installed-r-packages)
 
-A következő kódot is hozzáadhatja bármelyik **Execute R script** modulhoz, és megtekintheti a telepített csomagokat.
+A következő kódot bármely **R-parancsfájl-végrehajtás** modulhoz hozzáadhatja, és megtekintheti a telepített csomagokat.
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -43,10 +43,10 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-## <a name="installing-r-packages"></a>R-csomagok telepítése
-További R-csomagok telepítéséhez használja a `install.packages()` metódust. Ügyeljen arra, hogy megadja a CRAN-tárházat. A csomagok minden **végrehajtási r script** modulhoz telepítve vannak, és nem oszthatók meg más **végrehajtási r-parancsfájl** -modulok között.
+## <a name="installing-r-packages"></a>R csomagok telepítése
+További R-csomagok telepítéséhez `install.packages()` használja a módszert. Ügyeljen arra, hogy adja meg a CRAN repository. A csomagok minden **R-parancsfájl-végrehajtás** modulhoz telepítve vannak, és nem vannak megosztva más **R-parancsfájl-műveletek végrehajtása** moduljai között.
 
-Ez a példa bemutatja az állatkert telepítését:
+Ez a minta bemutatja, hogyan kell telepíteni Zoo:
 ```R
 # R version: 3.5.1
 # The script MUST contain a function named azureml_main
@@ -65,12 +65,12 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
  > [!NOTE]
-  > Győződjön meg arról, hogy a csomag már létezik a telepítés előtt, hogy elkerülje az ismételt telepítést. Például a fenti mintakód `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`. Előfordulhat, hogy a telepítés megismétlése webszolgáltatási kérés időtúllépését okozhatja.     
+  > Ellenőrizze, hogy a telepítés előtt létezik-e a csomag, hogy elkerülje az ismételt telepítést. Mint `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` a fenti minta kód. Az ismételt telepítés a webszolgáltatás-kérelmek időeltelését okozhatja.     
 
 ## <a name="upload-files"></a>Fájlok feltöltése
-Az **r-szkript végrehajtása** támogatja a fájlok feltöltését Azure Machine learning R SDK használatával.
+Az **R-parancsfájl végrehajtása** támogatja a fájlok feltöltését az Azure Machine Learning R SDK használatával.
 
-Az alábbi példa bemutatja, hogyan tölthet fel egy képfájlt az **R-szkript végrehajtása**során:
+A következő példa bemutatja, hogyan tölthet fel képfájlt az **R parancsfájl végrehajtása funkcióban:**
 ```R
 
 # R version: 3.5.1
@@ -97,34 +97,34 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-A folyamat sikeres elküldését követően a rendszerképet a modul jobb oldali paneljén tekintheti meg
+A folyamat futtatása után megtekintheti a kép előnézetét a modul jobb oldali paneljén
 
-[!div class="mx-imgBorder"]
-![feltöltve – rendszerkép](media/module/upload-image-in-r-script.png)
+> [!div class="mx-imgBorder"]
+> ![Feltöltött kép](media/module/upload-image-in-r-script.png)
 
-## <a name="how-to-configure-execute-r-script"></a>Az R-szkript végrehajtásának konfigurálása
+## <a name="how-to-configure-execute-r-script"></a>Az R-parancsfájl végrehajtásának konfigurálása
 
-Az **R-szkript végrehajtása** modul olyan mintakód-kódot tartalmaz, amelyet kiindulási pontként használhat. Az R- **parancsfájl végrehajtása** modul konfigurálásához adja meg a végrehajtandó bemeneteket és kódokat.
+Az **R-parancsfájl végrehajtása** modul mintakódot tartalmaz, amely kiindulási pontként használható. Az **R-parancsfájl végrehajtása** modul konfigurálásához adjon meg egy bemeneti és kódkészletet.
 
 ![R-modul](media/module/execute-r-script.png)
 
-A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek konvertálva, ha ezzel a modullal vannak feltöltve.
+A tervezőben tárolt adatkészletek automatikusan R adatkeretté alakulnak, amikor ezzel a modullal vannak betöltve.
 
-1.  Adja hozzá az **R-szkript végrehajtása** modult a folyamathoz.
+1.  Adja hozzá az **R-parancsfájl végrehajtása** modult a folyamathoz.
 
   
 
-1. Csatlakoztasson a parancsfájlhoz szükséges összes bemenetet. A bemenetek nem kötelezőek, és tartalmazhatnak adatokat és további R-kódokat is.
+1. Csatlakoztassa a parancsfájl által szükséges bemeneteket. A bemenetek nem kötelezőek, és tartalmazhatnak adatokat és további R-kódot.
 
-    * **DataSet1 elemet**: az első bemenetre hivatkozzon `dataframe1`ként. A bemeneti adatkészletet CSV-ként, TSV-ként, ARFF-ként, vagy egy Azure Machine Learning adatkészlet összekapcsolásával kell formázni.
+    * **Adatkészlet1**: Hivatkozzon az `dataframe1`első bemenetre . A bemeneti adatkészletet CSV, TSV, ARFF formátumban kell formázni, vagy csatlakozhat egy Azure Machine Learning-adatkészlethez.
 
-    * **Dataset2**: a második bemenetre hivatkozik `dataframe2`ként. Ezt az adatkészletet CSV-ként, TSV-ként, ARFF-fájlként vagy Azure Machine Learning-adatkészletként kell formázni.
+    * **Adatkészlet2**: A második `dataframe2`bemenetre hivatkozik . Ezt az adatkészletet CSV-, TSV-fájlként vagy Azure Machine Learning-adatkészletként is kell formázni.
 
-    * **Parancsfájl-csomag**: a harmadik bemenet a ZIP-fájlokat is elfogadja. A tömörített fájl több fájlt és több fájltípust is tartalmazhat.
+    * **Script Bundle**: A harmadik bemenet elfogadja zip fájlokat. A tömörített fájl több fájlt és több fájltípust tartalmazhat.
 
-1. Az **r-szkript** szövegmezőbe írja be vagy illessze be az érvényes R-szkriptet.
+1. Az **R parancsfájl** szövegmezőjébe írja be vagy illessze be az érvényes R parancsfájlt.
 
-    Az első lépésekhez az R- **szkript** szövegmező előre ki van töltve a mintakód segítségével, amelyet szerkeszthet vagy lecserélheti.
+    Az első lépések érdekében az **R-parancsfájl** szövegmezője előre ki van töltve mintakóddal, amelyet szerkeszthet vagy lecserélhet.
     
     ```R
     # R version: 3.5.1
@@ -146,50 +146,50 @@ A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek kon
     }
     ```
 
- * A szkriptnek tartalmaznia kell egy `azureml_main`nevű függvényt, amely a modul belépési pontja.
+ * A parancsfájlnak tartalmaznia `azureml_main`kell egy függvényt, amely a modul belépési pontja.
 
- * A belépési pont függvény legfeljebb két bemeneti argumentumot tartalmazhat: `Param<dataframe1>` és `Param<dataframe2>`
+ * A belépési pont függvény legfeljebb két `Param<dataframe1>` bemeneti argumentumot tartalmazhat: és`Param<dataframe2>`
  
    > [!NOTE]
-    > Az **R-szkript végrehajtása** modulnak átadott adatok `dataframe1` és `dataframe2`ra hivatkoznak, amely eltér a Azure Machine learning designertől (a tervezői hivatkozás `dataset1`, `dataset2`). Győződjön meg arról, hogy a bemeneti adatok megfelelően vannak referneced a szkriptben.  
+    > Az **R-parancsfájl végrehajtása** modulnak átadott `dataframe1` `dataframe2`adatokra a program az Azure Machine Learning `dataset1` `dataset2`tervezőjétől (a tervezői hivatkozás , a ,) eltérő néven hivatkozik. Ellenőrizze, hogy a bemeneti adatok helyesen hivatkoznak-e a parancsfájlba.  
  
     > [!NOTE]
-    >  Előfordulhat, hogy a meglévő R-kódnak kisebb módosításokra van szüksége a tervezői folyamatokban való futtatáshoz. Például a CSV formátumban megadott bemeneti adatokat explicit módon át kell alakítani egy adatkészletbe, mielőtt használni lehetne a kódban. Az R nyelvben használt adatok és oszlopok különböző módokon különböznek a tervezőben használt adatok és oszlopok típusaitól.
+    >  A meglévő R-kód kisebb módosításokat igényelhet a tervezői folyamatban való futtatáshoz. A CSV formátumban megadott bemeneti adatokat például explicit módon adatkészletgé kell konvertálni, mielőtt a kódot használhatná. Az R nyelvben használt adat- és oszloptípusok bizonyos szempontból eltérnek a tervezőben használt adatoktól és oszloptípusoktól.
 
-1.  **Véletlenszerű mag**: adjon meg egy értéket, amelyet az R-környezetben kell használni véletlenszerű mag értékként. Ez a paraméter egyenértékű az R-kódban lévő `set.seed(value)` meghívásával.  
+1.  **Véletlen mag:** Írjon be egy értéket, amelyet az R környezeten belül véletlenszerű magértékként szeretne használni. Ez a paraméter `set.seed(value)` egyenértékű az R-kódban való hívássel.  
 
-1. A folyamat futtatása.  
+1. Küldje el a folyamatot.  
 
 ## <a name="results"></a>Results (Eredmények)
 
-Az **r-szkriptek végrehajtása** modulok több kimenetet is visszaadhatnak, de r-adatkeretként kell megadni őket. Az adatkereteket a rendszer automatikusan átalakítja a tervezőben lévő adatkészletekbe a más modulokkal való kompatibilitás érdekében.
+Az **R-parancsfájl végrehajtása** modulok több kimenetet is visszaadhatnak, de r-adatkeretként kell megadni őket. Az adatkeretek automatikusan adatkészletekké alakulnak át a tervezőben, hogy kompatibilisek más modulokkal.
 
-Az R standard üzeneteit és hibáit a rendszer visszaadja a modul naplójába.
+Az R szabványos üzenetei és hibái visszakerülnek a modul naplójába.
 
-Ha az eredményeket az R-szkriptben kell kinyomtatnia, a kinyomtatott eredményeket a modul jobb oldali paneljének **kimenet + naplók** lapján található **70_driver_log** alatt találja.
+Ha az R parancsfájlban kell kinyomtatnia az eredményeket, a nyomtatott eredményeket a **70_driver_log** a modul jobb oldali panelén található **Kimenetek+naplók** lapon találja.
 
-## <a name="sample-scripts"></a>Mintaparancsfájlok
+## <a name="sample-scripts"></a>Mintaszkriptek
 
-A folyamatokat többféleképpen is kiterjesztheti egyéni R-szkriptek használatával.  Ez a szakasz a gyakori feladatokhoz tartalmaz mintakód-kódot.
+Számos módon kiterjesztheti a folyamatot az egyéni R-parancsfájl használatával.  Ez a szakasz mintakódot tartalmaz a gyakori feladatokhoz.
 
 
-### <a name="add-r-script-as-an-input"></a>R-szkript hozzáadása bemenetként
+### <a name="add-r-script-as-an-input"></a>R parancsfájl hozzáadása bemenetként
 
-Az **r-szkript végrehajtása** modul bemenetként támogatja a tetszőleges r-parancsfájlokat. Ehhez a ZIP-fájl részeként fel kell tölteni őket a munkaterületre.
+Az **R-parancsfájl végrehajtása** modul tetszőleges R parancsfájlokat támogat bemenetként. Ehhez a ZIP-fájl részeként fel kell tölteni őket a munkaterületre.
 
-1. Ha R-kódot tartalmazó ZIP-fájlt szeretne feltölteni a munkaterületre, nyissa meg az **adatkészletek** eszközcsoport lapot, kattintson az **adatkészlet létrehozása**elemre, majd válassza a **helyi fájl** és a **fájl** adatkészlet típusa lehetőséget.  
+1. Ha R-kódot tartalmazó ZIP-fájlt szeretne feltölteni a munkaterületre, nyissa meg az **Adatkészletek** eszközlapját, kattintson az **Adatkészlet létrehozása gombra,** majd válassza **a Helyi fájlból** lehetőséget, és a **Fájl** adatkészlet típusa lehetőséget.  
 
-1. Ellenőrizze, hogy a zip-fájl elérhető- **e a bal** oldali modul faszerkezetek **kategóriájának adatkészletek** listájában.
+1. Ellenőrizze, hogy a tömörített fájl elérhető-e a Bal oldali modulfa **Adatkészletek** kategóriájának **Saját adatkészletek** listájában.
 
-1.  Kapcsolja össze az adatkészletet a **parancsfájl-csomag** bemeneti portjával.
+1.  Csatlakoztassa az adatkészletet a **Script Bundle beviteli** portjához.
 
 1. A ZIP-fájlban található összes fájl elérhető a folyamat futási ideje alatt. 
 
-    Ha a parancsfájl-köteg fájlja tartalmaz egy címtár-struktúrát, a rendszer megőrzi a struktúrát. Azonban módosítania kell a kódot, hogy a könyvtár **./script csomagot** adja meg az elérési útra.
+    Ha a parancsfájlkötegfájl könyvtárstruktúrát tartalmaz, a struktúra megmarad. A könyvtár **./Script Bundle** elérési útját azonban módosítania kell a kód módosításához.
 
 ### <a name="process-data"></a>Adatok feldolgozása
 
-Az alábbi példa bemutatja, hogyan méretezhető és normalizálható a bemeneti adatok:
+A következő minta bemutatja, hogyan méretezhető késedelmi adatok:
 
 ```R
 # R version: 3.5.1
@@ -218,15 +218,15 @@ azureml_main <- function(dataframe1, dataframe2){
 }
  ```
 
-### <a name="read-a-zip-file-as-input"></a>ZIP-fájl beolvasása bemenetként
+### <a name="read-a-zip-file-as-input"></a>ZIP-fájl olvasása bemenetként
 
-Ez a minta bemutatja, hogyan használható a ZIP-fájlban található adatkészlet bemenetként az **R-szkript végrehajtása** modulba.
+Ez a minta bemutatja, hogyan használható egy adatkészlet egy ZIP-fájlban az **R-parancsfájl végrehajtása** modul bemeneteként.
 
-1. Hozzon létre egy CSV formátumú adatfájlt, és nevezze el "mydatafile. csv" néven.
+1. Hozza létre az adatfájlt CSV formátumban, és nevezze el "mydatafile.csv" néven.
 1. Hozzon létre egy ZIP-fájlt, és adja hozzá a CSV-fájlt az archívumhoz.
-1. Töltse fel a tömörített fájlt a Azure Machine Learning munkaterületre. 
-1. Az eredményül kapott adatkészlet csatlakoztatása az R- **szkript végrehajtásához** tartozó modul **ScriptBundle** -bemenetéhez.
-1. A következő kód használatával olvassa be a CSV-adatait a tömörített fájlból.
+1. Töltse fel a tömörített fájlt az Azure Machine Learning-munkaterületre. 
+1. Csatlakoztassa az eredményül kapott adatkészletet az **R-parancsfájl végrehajtása** modul **ScriptBundle** bemenetéhez.
+1. A következő kód segítségével olvassa be a CSV adatokat a tömörített fájlból.
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -239,7 +239,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ### <a name="replicate-rows"></a>Sorok replikálása
 
-Ez a minta bemutatja, hogyan replikálhat pozitív rekordokat egy adatkészletben a minta kiegyensúlyozásához:
+Ez a minta bemutatja, hogyan replikálható a pozitív rekordok egy adatkészletben a minta egyensúlyának kiegyenlítéséhez:
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -254,11 +254,11 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-### <a name="pass-r-objects-between-execute-r-script-modules"></a>R-objektumok átadása az R-parancsfájl-modulok végrehajtása között
+### <a name="pass-r-objects-between-execute-r-script-modules"></a>R-objektumok átkapcsolása R-parancsfájl-modulok végrehajtása között
 
-Az r-objektumokat a belső szerializálási mechanizmus használatával lehet átadni az **r szkript végrehajtása** modul példányai között. Ez a példa feltételezi, hogy át szeretné helyezni a `A` nevű R-objektumot két **végrehajtási R-parancsfájl** modul között.
+R-objektumokat adhat át az **R-parancsfájl végrehajtása** modul példányai között a belső szerializálási mechanizmus használatával. Ez a példa feltételezi, hogy a `A` két **R-parancsfájl-végrehajtás** modul között elnevezett R-objektumot szeretné áthelyezni.
 
-1. Adja hozzá az első **végrehajtási R-parancsfájlt** a folyamathoz, és írja be a következő kódot az **r-szkript** szövegmezőbe egy szerializált objektum létrehozásához `A` a modul kimeneti adattáblájában lévő oszlopként:  
+1. Adja hozzá az első **R-parancsfájl-végrehajtás** modult a folyamathoz, és írja be `A` a következő kódot az R **parancsfájl** mezőbe, ha szerializált objektumot hoz létre oszlopként a modul kimeneti adattáblájában:  
   
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -272,11 +272,11 @@ Az r-objektumokat a belső szerializálási mechanizmus használatával lehet á
     }
     ```
 
-    Az egész típusra történő explicit konverzió történik, mivel a szerializálási függvény az R `Raw` formátumban jeleníti meg az adatokat, amelyet a tervező nem támogat.
+    Az explicit átalakítás egész típusra azért történik, mert a szerializálási függvény az R `Raw` formátumban adja ki az adatokat, amelyet a tervező nem támogat.
 
-1. Vegyen fel egy második példányt az **R szkript végrehajtása** modulhoz, és kapcsolja az előző modul kimeneti portjához.
+1. Adja hozzá az **R-parancsfájl végrehajtása** modul második példányát, és csatlakoztassa az előző modul kimeneti portjához.
 
-1. Az **R-szkript** szövegmezőbe írja be a következő kódot, hogy kinyerje az objektum `A` a bemeneti adatok táblából. 
+1. Írja be a következő kódot az R `A` **script** szövegmezőbe az objektum beviteli adattáblából való kinyeréséhez. 
 
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -287,9 +287,9 @@ Az r-objektumokat a belső szerializálási mechanizmus használatával lehet á
     }
     ```
 
-## <a name="pre-installed-r-packages"></a>Előre telepített R-csomagok
+## <a name="pre-installed-r-packages"></a>Előre telepített R csomagok
 
-A használható előre telepített R-csomagok aktuális listája:
+Az előre telepített R csomagok aktuális listája:
 
 |              |            | 
 |--------------|------------| 
@@ -297,146 +297,146 @@ A használható előre telepített R-csomagok aktuális listája:
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 
-| alap         | 3.5.1      | 
-| base64enc    | 0,1 – 3      | 
-| BH           | 1.69.0 – 1   | 
-| kötés        | 0.1.1      | 
+| base         | 3.5.1      | 
+| base64enc    | 0.1-3      | 
+| BH           | 1.69.0-1   | 
+| bindr        | 0.1.1      | 
 | bindrcpp     | 0.2.2      | 
-| bitops       | 1.0 – 6      | 
-| indítás         | 1.3 – 22     | 
-| seprű        | 0.5.2      | 
-| hívó        | 3.2.0      | 
-| kalap jel        | 6.0 – 84     | 
+| bitops       | 1.0-6      | 
+| indítás         | 1.3-22     | 
+| broom        | 0.5.2      | 
+| callr        | 3.2.0      | 
+| caret        | 6.0-84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
-| Osztály        | 7.3 – 15     | 
-| CLI          | 1.1.0      | 
-| Cliper        | 0.6.0      | 
-| fürt      | 2.0.7 – 1    | 
-| codetools    | 0.2 – 16     | 
-| színtér   | 1.4 – 1      | 
-| fordítóprogram     | 3.5.1      | 
-| zsírkréta       | 1.3.4      | 
-| Curl         | 3.3        | 
-| az adattábla   | 1.12.2     | 
-| datasets     | 3.5.1      | 
+| osztály        | 7.3-15     | 
+| cli          | 1.1.0      | 
+| vágó        | 0.6.0      | 
+| cluster      | 2.0.7-1    | 
+| codetools    | 0.2-16     | 
+| colorspace   | 1.4-1      | 
+| compiler     | 3.5.1      | 
+| crayon       | 1.3.4      | 
+| curl         | 3.3        | 
+| data.table   | 1.12.2     | 
+| adathalmazok     | 3.5.1      | 
 | DBI          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
 | digest       | 0.6.19     | 
 | dplyr        | 0.7.6      | 
-| e1071        | 1.7 – 2      | 
-| értékelés     | 0,14       | 
+| e1071        | 1.7-2      | 
+| értékelés     | 0.14       | 
 | fansi        | 0.4.0      | 
-| Forcats      | 0.3.0      | 
+| forcats      | 0.3.0      | 
 | foreach      | 1.4.4      | 
-| külföldi      | 0.8-71     | 
-| FS           | 1.3.1      | 
-| GData        | 2.18.0     | 
-| generikus     | 0.0.2      | 
+| foreign      | 0.8-71     | 
+| Fs           | 1.3.1      | 
+| gdata        | 2.18.0     | 
+| Generikus     | 0.0.2      | 
 | ggplot2      | 3.2.0      | 
-| glmnet       | 2.0 – 18     | 
-| ragasztó         | 1.3.1      | 
-| Gower        | 0.2.1      | 
+| glmnet       | 2.0-18     | 
+| glue         | 1.3.1      | 
+| gower        | 0.2.1      | 
 | gplots       | 3.0.1.1    | 
-| grafikus     | 3.5.1      | 
+| Grafikák     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| rács         | 3.5.1      | 
+| grid         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
-| tevékenységnaplóiban        | 2.1.0      | 
-| magas szintű        | 0,8        | 
-| HMS          | 0.4.2      | 
+| haven        | 2.1.0      | 
+| highr        | 0.8        | 
+| hms          | 0.4.2      | 
 | htmltools    | 0.3.6      | 
 | httr         | 1.4.0      | 
-| IPRED        | 0,9 – 9      | 
-| Iterátornak    | 1.0.10     | 
+| ipred        | 0.9-9      | 
+| iterators    | 1.0.10     | 
 | jsonlite     | 1.6        | 
-| KernSmooth   | 23e – 15    | 
-| kötés        | 1,23       | 
-| címkézés     | 0,3        | 
-| rácsos      | 0,20 – 38    | 
-| láva         | 1.6.5      | 
+| KernSmooth   | 2.23-15    | 
+| knitr        | 1,23       | 
+| labeling     | 0.3        | 
+| lattice      | 0.20-38    | 
+| lava         | 1.6.5      | 
 | lazyeval     | 0.2.2      | 
 | lubridate    | 1.7.4      | 
 | magrittr     | 1.5        | 
-| Markdown     | 1          | 
-| MASS         | 7.3 – 51.4   | 
-| Mátrix       | 1.2 – 17     | 
-| metódusok      | 3.5.1      | 
+| markdown     | 1          | 
+| MASS         | 7.3-51.4   | 
+| Matrix       | 1.2-17     | 
+| methods      | 3.5.1      | 
 | mgcv         | 1.8-28     | 
-| MIME         | 0,7        | 
+| mime         | 0.7        | 
 | ModelMetrics | 1.2.2      | 
-| modellező       | 0.1.4      | 
+| modelr       | 0.1.4      | 
 | munsell      | 0.5.0      | 
-| nlme         | 3.1 – 140    | 
-| a beoltás         | 7.3 – 12     | 
+| nlme         | 3.1-140    | 
+| nnet         | 7.3-12     | 
 | numDeriv     | 2016.8-1.1 | 
-| OpenSSL      | 1.4        | 
+| openssl      | 1.4        | 
 | párhuzamos     | 3.5.1      | 
-| Pillar       | 1.4.1      | 
+| pillar       | 1.4.1      | 
 | pkgconfig    | 2.0.2      | 
 | plogr        | 0.2.0      | 
 | plyr         | 1.8.4      | 
 | prettyunits  | 1.0.2      | 
 | processx     | 3.3.1      | 
 | prodlim      | 2018.04.18 | 
-| haladás     | 1.2.2      | 
-| PS           | 1.3.0      | 
-| a dorombolás        | 0.3.2      | 
-| quadprog     | 1.5 – 7      | 
-| quantmod     | 0,4 – 15     | 
+| progress     | 1.2.2      | 
+| Ps           | 1.3.0      | 
+| purrr        | 0.3.2      | 
+| quadprog     | 1.5-7      | 
+| quanteda     | 0.4-15     | 
 | R6           | 2.4.0      | 
 | randomForest | 4.6-14     | 
-| RColorBrewer | 1.1 – 2      | 
+| RColorBrewer | 1.1-2      | 
 | Rcpp         | 1.0.1      | 
 | RcppRoll     | 0.3.0      | 
-| olvasó        | 1.3.1      | 
+| readr        | 1.3.1      | 
 | readxl       | 1.3.1      | 
-| receptet      | 0.1.5      | 
-| visszavágót      | 1.0.1      | 
+| recipes      | 0.1.5      | 
+| rematch      | 1.0.1      | 
 | reprex       | 0.3.0      | 
 | reshape2     | 1.4.3      | 
-| reticulate   | 1,12       | 
+| reticulate   | 1.12       | 
 | rlang        | 0.4.0      | 
-| rmarkdown    | 1,13       | 
-| ROCR         | 1.0 – 7      | 
-| rpart        | 4.1 – 15     | 
+| rmarkdown    | 1.13       | 
+| ROCR         | 1.0-7      | 
+| rpart        | 4.1-15     | 
 | rstudioapi   | 0,1        | 
 | rvest        | 0.3.4      | 
-| mérlegek       | 1.0.0      | 
-| választó      | 0,4 – 1      | 
-| térbeli      | 7.3 – 11     | 
-| spline      | 3.5.1      | 
-| SQUAREM      | 2017.10 – 1  | 
-| statisztikák        | 3.5.1      | 
+| scales       | 1.0.0      | 
+| selectr      | 0.4-1      | 
+| spatial      | 7.3-11     | 
+| splines      | 3.5.1      | 
+| SQUAREM      | 2017.10-1  | 
+| stats        | 3.5.1      | 
 | stats4       | 3.5.1      | 
 | stringi      | 1.4.3      | 
-| karakterlánc      | 1.3.1      | 
-| túlélési     | 2.44 – 1.1   | 
+| stringr      | 1.3.1      | 
+| survival     | 2.44-1.1   | 
 | sys          | 3,2        | 
 | tcltk        | 3.5.1      | 
 | tibble       | 2.1.3      | 
-| megtakarító        | 0.8.3      | 
+| tidyr        | 0.8.3      | 
 | tidyselect   | 0.2.5      | 
 | tidyverse    | 1.2.1      | 
 | timeDate     | 3043.102   | 
-| tinytex      | 0,13       | 
+| tinytex között      | 0.13       | 
 | eszközök        | 3.5.1      | 
-| tseries      | 0,10 – 47    | 
-| TTR          | 0.23 – 4     | 
-| UTF8         | 1.1.4      | 
+| tseries      | 0.10-47    | 
+| TTR          | 0.23-4     | 
+| utf8         | 1.1.4      | 
 | utils        | 3.5.1      | 
 | vctrs        | 0.1.0      | 
 | viridisLite  | 0.3.0      | 
-| kanóc      | 0,3 – 2      | 
-| a        | 2.1.2      | 
-| xfun         | 0,8        | 
+| whisker      | 0.3-2      | 
+| withr        | 2.1.2      | 
+| xfun között         | 0.8        | 
 | xml2         | 1.2.0      | 
-| XTS          | 0,11 – 2     | 
-| YAML         | 2.2.0      | 
+| xts          | 0.11-2     | 
+| yaml         | 2.2.0      | 
 | zeallot      | 0.1.0      | 
-| állatkert          | 1.8-6      | 
+| zoo          | 1.8-6      | 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

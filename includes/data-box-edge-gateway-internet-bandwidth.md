@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 02/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 69f77bf969c5d9adfb084682fbbc9eb9e762c8b4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179567"
 ---
-Az eszközök úgy tervezték, hogy megfelelően működjenek, amikor az internetkapcsolat lassú, vagy beolvasása megszakítva. Szokásos üzemi körülmények között azt javasoljuk, hogy használja: 
+Az eszközöket úgy tervezték, hogy továbbra is működjenek, ha az internetkapcsolat lassú vagy megszakad. Normál üzemi körülmények között javasoljuk, hogy használja: 
 
-- Legalább 10 MB/s sávszélesség és a frissített marad, az eszköz letöltéséhez.
-- Legalább 20 MB/s dedikált sávszélesség és a fájlok átvitelét le- és feltöltése.
+- Legalább 10 Mb/s letöltési sávszélesség az eszköz frissítésének biztosításához.
+- Legalább 20 Mbps dedikált feltöltési és letöltési sávszélesség fájlok átviteléhez.
 

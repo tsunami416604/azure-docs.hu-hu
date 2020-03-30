@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: fe5daa38c43723c85fb464e191ee4a3e85700e0b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179075"
 ---
 1. Miután az Azure virtuális gép létrejött és fut, kattintson a Virtual Machines ikonra az Azure Portalon a virtuális gépek megtekintéséhez.
 
-1. Kattintson a három pontot ábrázoló gombra ( **...** ) az új virtuális gép mellett.
+1. Kattintson a három pontot ábrázoló gombra (**...**) az új virtuális gép mellett.
 
-1. Kattintson a **Connect** (Csatlakozás) gombra.
+1. Kattintson a **Csatlakozás** gombra.
 
    ![Csatlakozás a portálon lévő virtuális géphez](./media/virtual-machines-sql-server-remote-desktop-connect/azure-virtual-machine-connect.png)
 

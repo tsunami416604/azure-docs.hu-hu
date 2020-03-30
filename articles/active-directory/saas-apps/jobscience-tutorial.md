@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Jobscience |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Jobscience között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Jobscience szolgáltatással | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Jobscience között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,305 +15,305 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8199f106c234e216a0982dc9e51413ccf30ae93a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2f0ea5b922b2c958aabf5be3a6123bb81a8f0234
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60268699"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80048511"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Jobscience
+# <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Oktatóanyag: Az Azure Active Directory integrációja a Jobscience szolgáltatással
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Jobscience integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Jobscience-t az Azure Active Directoryval (Azure AD).
 
-Jobscience integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+A Jobscience integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-- Szabályozhatja, hogy ki férhet hozzá Jobscience Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Jobscience (egyszeri bejelentkezés) az Azure AD-fiókjukkal
-- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
+- Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a Jobscience-hez
+- Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve jelentkezzenek be a Jobscience (Single Sign-On) szolgáltatásba az Azure AD-fiókjukkal
+- Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, tekintse meg, [hogy mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval.](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Jobscience az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció konfigurálásához a Jobscience szolgáltatással a következő elemekre van szükség:
 
 - Azure AD-előfizetés
-- Egy Jobscience egyszeri bejelentkezés engedélyezve van az előfizetés
+- A Jobscience egyszeri bejelentkezésre engedélyezett előfizetés
 
 > [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
+> Az oktatóanyag lépéseinek teszteléséhez nem javasoljuk éles környezet használatát.
 
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
+Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi ajánlásokat:
 
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a ide-egy havi próbalehetőség: [Próbaverziós ajánlat](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetet, kivéve, ha ez szükséges.
+- Ha nem rendelkezik Azure AD próbakörnyezettel, itt egy hónapos próbaverziót kaphat: [Próbaajánlat.](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
+Ebben az oktatóanyagban teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben. Az oktatóanyagban ismertetett forgatókönyv két fő építőelemből áll:
 
-1. Jobscience hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Jobscience hozzáadása a galériából
+1. Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-## <a name="adding-jobscience-from-the-gallery"></a>Jobscience hozzáadása a katalógusból
-Az Azure AD integrálása a Jobscience konfigurálásához hozzá kell Jobscience a katalógusból a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-jobscience-from-the-gallery"></a>Jobscience hozzáadása a galériából
+A Jobscience azure AD-be való integrálásának konfigurálásához hozzá kell adnia a feladattudományt a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Jobscience hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Ha a katalógusból szeretné hozzáadni a Jobscience-t, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára. 
 
     ![Active Directory][1]
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Nyissa meg a **Vállalati alkalmazások at.** Akkor megy **Minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
     ![Alkalmazások][3]
 
-1. A Keresés mezőbe írja be a **Jobscience**.
+1. A keresőmezőbe írja be a **Jobscience (Feladattudomány) kifejezést.**
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/jobscience-tutorial/tutorial_jobscience_search.png)
+    ![Azure AD-tesztfelhasználó létrehozása](./media/jobscience-tutorial/tutorial_jobscience_search.png)
 
-1. Az eredmények panelen válassza ki a **Jobscience**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredménypanelen válassza a **Feladattudomány**lehetőséget, majd az alkalmazás hozzáadásához kattintson a **Hozzáadás** gombra.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/jobscience-tutorial/tutorial_jobscience_addfromgallery.png)
+    ![Azure AD-tesztfelhasználó létrehozása](./media/jobscience-tutorial/tutorial_jobscience_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban konfigurálja, és a teszt "Britta Simon." nevű felhasználó Jobscience az Azure AD egyszeri bejelentkezés tesztelése
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+Ebben a szakaszban konfigurálja és teszteli az Azure AD egyszeri bejelentkezését a Jobscience-tel egy "Britta Simon" nevű tesztfelhasználó alapján.
 
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Jobscience mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Jobscience hivatkozás kapcsolata kell létrehozni.
+Egyszeri bejelentkezés a munka, az Azure AD tudnia kell, hogy mi a megfelelő felhasználó jobscience az Azure AD-ben egy felhasználó számára. Más szóval létre kell hozni egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó a Feladattudományi létre kell hozni.
 
-Jobscience, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+A Feladattudományi, rendelje hozzá a **felhasználónév** értékét az Azure AD-ben, mint a **felhasználónév** a kapcsolat létrehozásához.
 
-Az Azure AD egyszeri bejelentkezés az Jobscience tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Jobscience szolgáltatással a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Jobscience tesztfelhasználó létrehozása](#creating-a-jobscience-test-user)**  – egy megfelelője a Britta Simon Jobscience, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Konfigurálása az Azure AD egyszeri bejelentkezés](#configuring-azure-ad-single-sign-on)** – a felhasználók számára, hogy ezt a funkciót.
+1. **[Azure AD-tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+1. **[Jobscience tesztfelhasználó létrehozása](#creating-a-jobscience-test-user)** – britta Simon megfelelője a Jobscience-ben, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
+1. **[Az Azure AD-tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)** – annak érdekében, hogy Britta Simon az Azure AD egyszeri bejelentkezést használhasson.
+1. **[Az egyszeri bejelentkezés tesztelése](#testing-single-sign-on)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Jobscience alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon, és konfigurálja az egyszeri bejelentkezést a Jobscience alkalmazásban.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Jobscience, hajtsa végre az alábbi lépéseket:**
+**Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre a következő lépéseket:**
 
-1. Az Azure Portalon az a **Jobscience** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az Azure Portalon a **Jobscience** alkalmazásintegrációs lapon kattintson az **Egyszeri bejelentkezés gombra.**
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az **egyszeri bejelentkezés** párbeszédpanelen válassza a **Mód** **SAML-alapú bejelentkezés** lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
 
-1. Az a **Jobscience tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. A **Feladattudományi tartomány és AZ URL-címek szakaszban hajtsa** végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/jobscience-tutorial/tutorial_jobscience_url.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe:  `http://<company name>.my.salesforce.com`
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
-    > Az érték nem valódi. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Ez az érték lekéréséhez [Jobscience ügyfél-támogatási csapatának](https://www.jobscience.com/support) vagy az SSO-profilból hoz létre amely kifejtett az oktatóanyag későbbi részében. 
+    > Ez az érték nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Ezt az értéket [a Jobscience Ügyfél támogatási csapat,](https://www.jobscience.com/support) vagy az SSO-profilt hoz létre, amely később az oktatóanyag ismerteti. 
  
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az **SAML aláíró tanúsítvány csoportban** kattintson a **Tanúsítvány (Base64)** elemre, majd mentse a tanúsítványfájlt a számítógépre.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
 
-1. Kattintson a **mentése** gombra.
+1. Kattintson a **Mentés** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/jobscience-tutorial/tutorial_general_400.png)
 
-1. Az a **Jobscience konfigurációs** területén kattintson **konfigurálása Jobscience** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. A **Feladattudományi konfiguráció csoportban** kattintson a **Feladattudomány konfigurálása gombra** a **Bejelentkezéskonfigurálásablak** megnyitásához. Másolja a **kijelentkezési URL-címet, az SAML entitásazonosítót és az SAML egyszeri bejelentkezési szolgáltatás URL-címét** a **rövid útmutató szakaszból.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
 
-1. Jelentkezzen be rendszergazdaként a Jobscience vállalati webhely.
+1. Jelentkezzen be a Jobscience vállalati webhelyére rendszergazdaként.
 
-1. Lépjen a **telepítő**.
+1. Nyissa meg a **telepítőt.**
    
-   ![A telepítő](./media/jobscience-tutorial/IC784358.png "beállítása")
+   ![Telepítés](./media/jobscience-tutorial/IC784358.png "Telepítés")
 
-1. A bal oldali navigációs ablaktáblán a a **Administer** területén kattintson **tartományok kezelése** bontsa ki a kapcsolódó csomópontot, majd **saját tartomány** megnyitásához a **Saját tartomány** lapot. 
+1. A bal oldali navigációs ablak **Felügyeleti** szakaszában kattintson a **Tartománykezelés gombra** a kapcsolódó szakasz kibontásához, majd a **Saját tartomány** elemre kattintva nyissa meg a Saját **tartomány** lapot. 
    
-   ![Saját tartomány](./media/jobscience-tutorial/ic767825.png "saját tartomány")
+   ![Saját tartomány](./media/jobscience-tutorial/ic767825.png "Saját tartomány")
 
-1. Győződjön meg arról, hogy a tartomány megfelelően van beállítva, győződjön meg arról, hogy "**4. lépés telepíti a felhasználók számára**", és tekintse át a "**beállításaim tartomány**".
+1. Annak ellenőrzéséhez, hogy a tartomány megfelelően van-e beállítva, ellenőrizze, hogy az**My Domain Settings**a "**4.**
 
-    ![Tartományi felhasználó](./media/jobscience-tutorial/ic784377.png "tartományi felhasználóra")
+    ![Felhasználóra telepített tartomány](./media/jobscience-tutorial/ic784377.png "Felhasználóra telepített tartomány")
 
-1. Kattintson a Jobscience vállalati webhely **biztonsági vezérlők**, és kattintson a **egyszeri bejelentkezési beállításainak**.
+1. A Feladattudományi vállalat webhelyén kattintson a **Biztonsági vezérlők**, majd **az Egyszeri bejelentkezési beállítások parancsra.**
     
-    ![Biztonsági vezérlők](./media/jobscience-tutorial/ic784364.png "biztonsági vezérlőket")
+    ![Biztonsági vezérlők](./media/jobscience-tutorial/ic784364.png "Biztonsági vezérlők")
 
-1. Az a **egyszeri bejelentkezési beállításainak** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az **Egyszeri bejelentkezés beállításai** csoportban hajtsa végre az alábbi lépéseket:
     
-    ![Egyszeri bejelentkezés beállításai](./media/jobscience-tutorial/ic781026.png "egyszeri bejelentkezés beállításai")
+    ![Egyszeri bejelentkezés beállításai](./media/jobscience-tutorial/ic781026.png "Egyszeri bejelentkezés beállításai")
     
-    a. Válassza ki **SAML engedélyezett**.
+    a. Válassza **az SAML Enabled lehetőséget.**
 
-    b. Kattintson az **Új** lehetőségre.
+    b. Kattintson **az Új gombra.**
 
-1. Az a **SAML egyszeri bejelentkezési beállítás szerkesztése** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az **SAML Egyszeri bejelentkezés beállítása szerkesztés párbeszédpanelen** hajtsa végre az alábbi lépéseket:
     
     ![SAML egyszeri bejelentkezési beállítás](./media/jobscience-tutorial/ic784365.png "SAML egyszeri bejelentkezési beállítás")
     
-    a. Az a **neve** szövegmezőbe írja be a konfiguráció nevét.
+    a. A **Név** mezőbe írja be a konfiguráció nevét.
 
-    b. A **kibocsátó** szövegmezőjébe illessze be az értéket, **SAML Entitásazonosító**, Azure Portalról másolt.
+    b. A **Kiállító** szövegmezőbe illessze be az Azure Portalról másolt **SAML-entitásazonosító**értékét.
 
-    c. Az a **entitásazonosító** szövegmezőbe írja be `https://salesforce-jobscience.com`
+    c. Az **Entitásazonosító** szövegmezőbe írja be a következőt:`https://salesforce-jobscience.com`
 
-    d. Kattintson a **Tallózás** az Azure AD-tanúsítvány feltöltéséhez.
+    d. Kattintson **a Tallózás** gombra az Azure AD-tanúsítvány feltöltéséhez.
 
-    e. Mint **SAML identitástípus**válassza **helyességi feltétel tartalmazza a felhasználói objektum összevonási Azonosítóját**.
+    e. **Saml identity type (SAML identity type)** néven jelölje be a **Helyességi feltétel a Felhasználói objektum összevonási azonosítóját.**
 
-    f. Mint **SAML identitás hely**, jelölje be **identitás a tulajdonos utasítás NameIdentfier elemében van**.
+    f. Saml **identity location (SAML identitáshely)** ként válassza az Identitás elem ét **a Tárgy utasítás NameIdentfier elemében**elemet.
 
-    g. A **Identity Provider bejelentkezési URL-cím** szövegmezőbe, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
+    g. Az **Identitásszolgáltató bejelentkezési URL-címmezőjébe** illessze be az **SamL Single Sign-On Service URL-címének**értékét, amelyet az Azure Portalról másolt.
 
-    h. A **Identity Provider kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket, **kijelentkezéses URL-cím**, Azure Portalról másolt.
+    h. Az **Identitásszolgáltató kijelentkezési URL-címmezőjébe** illessze be a **Kijelentkezési URL értékét,** amelyet az Azure Portalról másolt.
 
-    i. Kattintson a **Save** (Mentés) gombra.
+    i. Kattintson a **Mentés** gombra.
 
-1. A bal oldali navigációs ablaktáblán a a **Administer** területén kattintson **tartományok kezelése** bontsa ki a kapcsolódó csomópontot, majd **saját tartomány** megnyitásához a **Saját tartomány** lapot. 
+1. A bal oldali navigációs ablak **Felügyeleti** szakaszában kattintson a **Tartománykezelés gombra** a kapcsolódó szakasz kibontásához, majd a **Saját tartomány** elemre kattintva nyissa meg a Saját **tartomány** lapot. 
     
-    ![Saját tartomány](./media/jobscience-tutorial/ic767825.png "saját tartomány")
+    ![Saját tartomány](./media/jobscience-tutorial/ic767825.png "Saját tartomány")
 
-1. Az a **saját tartomány** lap a **bejelentkezési oldal márkajelzési** területén kattintson **szerkesztése**.
+1. A **Saját tartomány** lap **Bejelentkezési lap márkajelzése** csoportban kattintson a **Szerkesztés gombra.**
     
-    ![Bejelentkezési oldal márkajelzési](./media/jobscience-tutorial/ic767826.png "arculat megjelenítése a bejelentkezési oldal")
+    ![Bejelentkezési oldal márkajelzése](./media/jobscience-tutorial/ic767826.png "Bejelentkezési oldal márkajelzése")
 
-1. Az a **bejelentkezési oldal márkajelzési** lap a **hitelesítési szolgáltatás** részben, a neve a **SAML egyszeri bejelentkezési beállításainak** jelenik meg. Válassza ki, és kattintson a **mentése**.
+1. A **Bejelentkezési lap márkajelzése** lap **Hitelesítési szolgáltatás** szakaszában megjelenik az **SAML SSO-beállítások** neve. Jelölje ki, majd kattintson a **Mentés gombra.**
     
-    ![Bejelentkezési oldal márkajelzési](./media/jobscience-tutorial/ic784366.png "arculat megjelenítése a bejelentkezési oldal")
+    ![Bejelentkezési oldal márkajelzése](./media/jobscience-tutorial/ic784366.png "Bejelentkezési oldal márkajelzése")
 
-1. Beolvasni az SP által kezdeményezett egyszeri bejelentkezést a bejelentkezési URL-cím kattintson a a **egyszeri bejelentkezés beállításainak** a a **biztonsági vezérlők** menü szakaszban.
+1. Az SP által kezdeményezett egyszeri bejelentkezési URL-cím hez kattintson a **Biztonsági vezérlők** **menürész Egyszeri bejelentkezési beállításaira.**
 
-    ![Biztonsági vezérlők](./media/jobscience-tutorial/ic784368.png "biztonsági vezérlőket")
+    ![Biztonsági vezérlők](./media/jobscience-tutorial/ic784368.png "Biztonsági vezérlők")
     
-    Kattintson a fenti lépésben létrehozott SSO-profilra. A vállalat ezen a lapon látható az URL-cím az egyszeri bejelentkezéshez (például [ https://companyname.my.salesforce.com?so=companyid ](https://companyname.my.salesforce.com?so=companyid).    
+    Kattintson a fenti lépésben létrehozott SSO-profilra. Ezen a lapon a vállalat egyszeri bejelentkezési `https://companyname.my.salesforce.com?so=companyid`URL-címe látható (például .    
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Az alkalmazás beállítása közben az [Azure Portalon](https://portal.azure.com)belül elolvashatja ezen utasítások tömör verzióját!  Miután hozzáadta ezt az alkalmazást az **Active Directory > Enterprise Applications** szakaszból, egyszerűen kattintson az Egyszeri **bejelentkezés** fülre, és az alsó **konfigurációs** szakaszon keresztül érheti el a beágyazott dokumentációt. A beágyazott dokumentációs funkcióról itt olvashat bővebben: [Az Azure AD beágyazott dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+### <a name="creating-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-![Az Azure AD-felhasználó létrehozása][100]
+![Azure AD-felhasználó létrehozása][100]
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+**Ha tesztfelhasználót szeretne létrehozni az Azure AD-ben, hajtsa végre a következő lépéseket:**
 
-1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
+1. Az **Azure Portalon**a bal oldali navigációs ablakban kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/jobscience-tutorial/create_aaduser_01.png) 
+    ![Azure AD-tesztfelhasználó létrehozása](./media/jobscience-tutorial/create_aaduser_01.png) 
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez nyissa meg a **Felhasználók és csoportok** lapot, és kattintson a Minden felhasználó **elemre.**
     
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/jobscience-tutorial/create_aaduser_02.png) 
+    ![Azure AD-tesztfelhasználó létrehozása](./media/jobscience-tutorial/create_aaduser_02.png) 
 
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. A **Felhasználó** párbeszédpanel megnyitásához kattintson a párbeszédpanel tetején a **Hozzáadás** gombra.
  
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/jobscience-tutorial/create_aaduser_03.png) 
+    ![Azure AD-tesztfelhasználó létrehozása](./media/jobscience-tutorial/create_aaduser_03.png) 
 
-1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. A **Felhasználó** párbeszédpanelen hajtsa végre az alábbi lépéseket:
  
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/jobscience-tutorial/create_aaduser_04.png) 
+    ![Azure AD-tesztfelhasználó létrehozása](./media/jobscience-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
+    a. A **Név** mezőbe írja be **a BrittaSimon (BrittaSimon)** mezőbe.
 
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
+    b. A **Felhasználónév** mezőbe írja be BrittaSimon **e-mail címét.**
 
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
+    c. Válassza **a Jelszó megjelenítése** lehetőséget, és írja le a **Jelszó**értékét.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson **a Létrehozás gombra.**
  
-### <a name="creating-a-jobscience-test-user"></a>Jobscience tesztfelhasználó létrehozása
+### <a name="creating-a-jobscience-test-user"></a>Feladattudományi tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók Jobscience jelentkezzen be, akkor ki kell építeni Jobscience be. Jobscience, esetén kiépítése a manuális feladat.
+Annak érdekében, hogy az Azure AD-felhasználók bejelentkezhessenek a Jobscience-be, ki kell építeni őket a Jobscience-be. Jobscience esetén kiépítése manuális feladat.
 
 >[!NOTE]
->Bármely más Jobscience felhasználói fiók létrehozása eszközöket használhatja, vagy API-k által biztosított Jobscience üzembe helyezni az Azure Active Directory felhasználói fiókokat.
+>Az Azure Active Directory felhasználói fiókok kiépítéséhez bármely más Jobscience felhasználói fiók létrehozási eszköz vagy API-k segítségével azure Active Directory felhasználói fiókok kiépítése.
 >  
         
-**Felhasználók átadásának konfigurálása, hajtsa végre az alábbi lépéseket:**
+**A felhasználói kiépítés konfigurálásához hajtsa végre a következő lépéseket:**
 
-1. Jelentkezzen be a **Jobscience** rendszergazdaként a vállalati webhely.
+1. Jelentkezzen be **a Jobscience** vállalati webhelyére rendszergazdaként.
 
-1. Nyissa meg a telepítő.
+1. Nyissa meg a telepítőt.
    
-   ![A telepítő](./media/jobscience-tutorial/ic784358.png "beállítása")
-1. Lépjen a **felhasználók kezelése \> felhasználók**.
+   ![Telepítés](./media/jobscience-tutorial/ic784358.png "Telepítés")
+1. Nyissa meg a **Felhasználók \> kezelése lehetőséget.**
    
-   ![Felhasználók](./media/jobscience-tutorial/ic784369.png "felhasználók")
-1. Kattintson a **új felhasználó**.
+   ![Felhasználók](./media/jobscience-tutorial/ic784369.png "Felhasználók")
+1. Kattintson **az Új felhasználó gombra.**
    
-   ![Minden felhasználó](./media/jobscience-tutorial/ic784370.png "minden felhasználó")
-1. Az a **felhasználó szerkesztése** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+   ![Minden felhasználó](./media/jobscience-tutorial/ic784370.png "Minden felhasználó")
+1. A **Felhasználó szerkesztése** párbeszédpanelen hajtsa végre az alábbi lépéseket:
    
-   ![Felhasználó szerkesztése](./media/jobscience-tutorial/ic784371.png "felhasználó szerkesztése")
+   ![Felhasználói szerkesztés](./media/jobscience-tutorial/ic784371.png "Felhasználói szerkesztés")
    
-   a. Az a **Utónév** szövegmezőbe Britta például a felhasználó utónevét adja.
+   a. Az **Utónév** mezőbe írja be a felhasználó keresztnevét, például Britta.
    
-   b. Az a **Vezetéknév** szövegmezőbe írja be például a Simon a felhasználó vezetékneve.
+   b. A **Vezetéknév** mezőbe írja be a felhasználó vezetéknevét, például Simont.
    
-   c. Az a **Alias** szövegmezőbe írja be a felhasználó például brittas aliasnevet.
+   c. Az **Alias** mezőbe írja be a felhasználó aliasnevét, például brittas.
 
-   d. Az a **E-mail** szövegmezőbe írja be az e-mail-cím, felhasználó, például Brittasimon@contoso.com.
+   d. Az **E-mail** mezőbe írja be a Brittasimon@contoso.comfelhasználó e-mail címét, például .
 
-   e. Az a **felhasználónév** beviteli mező, írja be a felhasználónevet a felhasználó például Brittasimon@contoso.com.
+   e. A **Felhasználónév** mezőbe írja be a felhasználó Brittasimon@contoso.comnevét, például .
 
-   f. Az a **becenév** szövegmezőbe írja be a felhasználó például Simon nick nevét.
+   f. A **Nick név** mezőbe írja be a felhasználó nicknevét, például Simont.
 
-   g. Kattintson a **Save** (Mentés) gombra.
+   g. Kattintson a **Mentés** gombra.
 
     
 > [!NOTE]
-> Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a egy hivatkozást, mielőtt aktívvá válik, győződjön meg arról, hogy fiókjuk követi.
+> Az Azure Active Directory-fiók tulajdonosa kap egy e-mailt, és egy hivatkozást követ, hogy erősítse meg a fiók, mielőtt aktívvá válik.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Jobscience Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezheti Britta Simon számára az Azure egyszeri bejelentkezést a Jobscience-hez való hozzáférés biztosításával.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon rendel Jobscience, hajtsa végre az alábbi lépéseket:**
+**Ha Britta Simont hozzá szeretné rendelni a Feladattudományhoz, hajtsa végre a következő lépéseket:**
 
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások nézetét, majd keresse meg a címtárnézetet, és nyissa meg a **Vállalati alkalmazások,** majd kattintson a **Minden alkalmazás**elemre .
 
     ![Felhasználó hozzárendelése][201] 
 
-1. Az alkalmazások listájában jelölje ki a **Jobscience**.
+1. Az alkalmazások listájában válassza a **Feladattudomány**lehetőséget.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/jobscience-tutorial/tutorial_jobscience_app.png) 
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson a **Felhasználók és csoportok**parancsra.
 
     ![Felhasználó hozzárendelése][202] 
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson **a Hozzáadás** gombra. Ezután válassza a **Felhasználók és csoportok** lehetőséget a Hozzárendelés **hozzáadása** párbeszédpanelen.
 
     ![Felhasználó hozzárendelése][203]
 
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a Felhasználók listában.
 
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **Kijelölés** gombra a **Felhasználók és csoportok** párbeszédpanelen.
 
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzárendelés** **gombra** a Hozzárendelés hozzáadása párbeszédpanelen.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a Jobscience csempére kattint, meg kell lekérése automatikusan bejelentkezett az Jobscience alkalmazáshoz.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
+Amikor a Hozzáférési panelen a Feladattudományi csempére kattint, automatikusan bejelentkezik a Feladattudományi alkalmazásba.
+A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](../user-help/active-directory-saas-access-panel-introduction.md)
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

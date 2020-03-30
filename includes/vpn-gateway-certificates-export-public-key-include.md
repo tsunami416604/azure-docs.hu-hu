@@ -5,19 +5,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/13/2019
+ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: afd4836229c60ebef1536d4fa1ca4206a492e56d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d2dba0f657b418267db90c07014dc8996ed12a10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178995"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059930"
 ---
-Önaláírt főtanúsítvány létrehozása után exportálja a főtanúsítvány nyilvános kulcsú .cer fájlját (ne a titkos kulcsot). Később fogja feltölteni ezt a fájlt az Azure-bA. A következő lépések segítségével exportálhatja a az önaláírt főtanúsítványhoz tartozó .cer fájlt:
+Az önaláírt főtanúsítvány létrehozása után exportálja a legfelső szintű tanúsítvány nyilvános kulcsának .cer fájlját (nem a személyes kulcsot). Ezt a fájlt később feltölti az Azure-ba. Az alábbi lépések segítségével exportálhatja a .cer fájlt az önaláírt főtanúsítványhoz:
 
-1. A .cer fájl tanúsítványból történő beszerzéséhez nyissa meg a **Felhasználói tanúsítványok kezelése** elemet. Keresse meg az önaláírt főtanúsítványt. Ezt általában a „Tanúsítványok – aktuális felhasználó\Személyes\Tanúsítványok” útvonalon érheti el. Ha megtalálta, kattintson rá a jobb egérgombbal. Kattintson a **Minden feladat**, majd az **Exportálás** elemre. Megnyílik a **Tanúsítványexportáló varázsló**. Ha nem találja a tanúsítványt aktuális felhasználó\személyes\tanúsítványok útvonalon, előfordulhat, hogy véletlenül nyitotta "Tanúsítványok – helyi számítógép", "Tanúsítványok – aktuális felhasználó" helyett). Ha meg szeretné nyitni a Certificate Manager PowerShell-lel, adja meg jelenlegi felhasználó hatókörében *certmgr* a konzolablakban.
+1. A .cer fájl tanúsítványból történő beszerzéséhez nyissa meg a **Felhasználói tanúsítványok kezelése** elemet. Keresse meg az önaláírt főtanúsítványt. Ezt általában a „Tanúsítványok – aktuális felhasználó\Személyes\Tanúsítványok” útvonalon érheti el. Ha megtalálta, kattintson rá a jobb egérgombbal. Kattintson a **Minden feladat**, majd az **Exportálás** elemre. Megnyílik a **Tanúsítványexportáló varázsló**. Ha nem találja a tanúsítványt az Aktuális felhasználó\Személyes\Tanúsítványok mappában, előfordulhat, hogy véletlenül a "Tanúsítványok - helyi számítógép" mappát nyitotta meg a "Tanúsítványok – jelenlegi felhasználó" helyett. Ha meg szeretné nyitni a Tanúsítványkezelőt az aktuális felhasználói hatókörben a PowerShell használatával, írja be a *certmgr parancsot* a konzolablakba.
 
    ![Exportálás](./media/vpn-gateway-certificates-export-public-key-include/export.png)
 2. A varázslóban kattintson a **Tovább** gombra.
@@ -25,11 +25,11 @@ ms.locfileid: "67178995"
    ![Tanúsítvány exportálása](./media/vpn-gateway-certificates-export-public-key-include/exportwizard.png)
 3. Válassza a **Nem, nem akarom exportálni a titkos kulcsomat** lehetőséget, majd kattintson a **Tovább** gombra.
 
-   ![Nem akarom exportálni a titkos kulcs](./media/vpn-gateway-certificates-export-public-key-include/notprivatekey.png)
+   ![Ne exportálja a személyes kulcsot](./media/vpn-gateway-certificates-export-public-key-include/notprivatekey.png)
 4. Az **Exportfájlformátum** lapon válassza a **Base-64 kódolású X.509 (.CER)** lehetőséget, majd kattintson a **Tovább** gombra.
 
-   ![Base-64 kódolású](./media/vpn-gateway-certificates-export-public-key-include/base64.png)
-5. A **exportálandó fájl**, **Tallózás** arra a helyre, amelyhez exportálja a tanúsítványt. A **Fájlnév** mezőben nevezze el a tanúsítványfájlt. Ezután kattintson a **Tovább** gombra.
+   ![Base-64 kódolt](./media/vpn-gateway-certificates-export-public-key-include/base64.png)
+5. Exportálási **fájl**esetén **keresse meg** azt a helyet, ahhoz a helyhez, ahba exportálni szeretné a tanúsítványt. A **Fájlnév** mezőben nevezze el a tanúsítványfájlt. Ezután kattintson a **Tovább gombra.**
 
    ![Tallózás](./media/vpn-gateway-certificates-export-public-key-include/browse.png)
 6. Kattintson a **Befejezés** gombra a tanúsítvány exportálásához.
@@ -37,10 +37,10 @@ ms.locfileid: "67178995"
    ![Befejezés](./media/vpn-gateway-certificates-export-public-key-include/finish.png)
 7. A tanúsítvány exportálása sikeresen megtörtént.
 
-   ![Siker](./media/vpn-gateway-certificates-export-public-key-include/success.png)
-8. Az exportált tanúsítványt ehhez hasonlóan néz ki:
+   ![Sikeres](./media/vpn-gateway-certificates-export-public-key-include/success.png)
+8. Az exportált tanúsítvány a következőhöz hasonlóan néz ki:
 
    ![Exportált](./media/vpn-gateway-certificates-export-public-key-include/exported.png)
-9. Nyissa meg a Jegyzettömbben az exportált tanúsítványt, ha valami hasonló ebben a példában láthatja. A kék szakaszában az Azure-bA feltöltött adatokat tartalmazza. A Jegyzettömb alkalmazásban nyissa meg a tanúsítványt, és nem tűnik ehhez hasonló, általában ez azt jelenti, hogy nem exportált, használja a Base-64 kódolású X.509 (. CER) formátumban. Emellett ha egy másik szöveges szerkesztő használni kívánt, ismerje meg, hogy egyes szerkesztők megjelentetni nem kívánt formázása a háttérben. Ez problémákat, ha ezt a tanúsítványt a szöveget az Azure-bA feltöltött hozhat létre.
+9. Ha az exportált tanúsítványt a Jegyzettömb segítségével nyitja meg, akkor valami hasonlót lát, mint ez a példa. A szakasz kék tartalmazza az Azure-ba feltöltött információkat. Ha a tanúsítványt a Jegyzettömbbel nyitja meg, és az nem hasonlít ehhez, ez általában azt jelenti, hogy nem a Base-64 kódolású X.509(. CER) formátumban. Továbbá, ha más szövegszerkesztőt szeretne használni, értse meg, hogy egyes szerkesztők nem kívánt formázást vezethetnek be a háttérben. Ez problémákat okozhat, ha a tanúsítványból az Azure-ba feltöltött szöveget.
 
-   ![Nyissa meg a Jegyzettömbben](./media/vpn-gateway-certificates-export-public-key-include/notepad.png)
+   ![Megnyitás a Jegyzettömbbel](./media/vpn-gateway-certificates-export-public-key-include/notepad.png)
