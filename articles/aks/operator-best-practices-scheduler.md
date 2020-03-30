@@ -1,44 +1,44 @@
 ---
-title: Kezelői ajánlott eljárások – alapszintű Scheduler-funkciók az Azure Kubernetes Servicesben (ak)
-description: Az Azure Kubernetes Service (ak) szolgáltatás alapszintű ütemező funkcióinak, például az erőforrás-kvóták és a pod-megszakadási költségvetések használatára vonatkozó ajánlott eljárásainak megismerése
+title: Operátori gyakorlati tanácsok – Alapvető ütemező funkciók az Azure Kubernetes-szolgáltatásokban (AKS)
+description: Ismerje meg a fürtoperátor okainak gyakorlati tanácsait az alapvető ütemező funkciók, például az erőforráskvóták és a pod megszakítási költségvetések használatával az Azure Kubernetes szolgáltatásban (AKS)
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: cccc476a944b28d24c53a947e434d465c94f94ee
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126572"
 ---
-# <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az Azure Kubernetes szolgáltatás alapszintű ütemező funkcióinak használatához (ak)
+# <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes-szolgáltatás (AKS) alapvető ütemező funkcióinak gyakorlati tanácsok
 
-A fürtök Azure Kubernetes szolgáltatásban (ak) való kezelése során gyakran kell elkülönítenie a csapatokat és a munkaterheléseket. A Kubernetes Scheduler olyan funkciókat biztosít, amelyek segítségével szabályozhatja a számítási erőforrások eloszlását, vagy korlátozhatja a karbantartási események hatását.
+A fürtök kezelése az Azure Kubernetes-szolgáltatás (AKS) kezelése során gyakran kell elkülöníteni a csapatokat és a számítási feladatokat. A Kubernetes-ütemező olyan funkciókat biztosít, amelyek lehetővé teszik a számítási erőforrások elosztásának szabályozását, vagy a karbantartási események hatásának korlátozását.
 
-Ez az ajánlott eljárási cikk a fürtcsomópontok alapszintű Kubernetes-ütemezési szolgáltatásaira koncentrál. Ebben a cikkben az alábbiakkal ismerkedhet meg:
+Ez az ajánlott eljárások cikk a Fürt-üzemeltetők alapvető Kubernetes ütemezési szolgáltatásaira összpontosít. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Erőforrás-kvóták használata a csapatok vagy munkaterhelések számára meghatározott mennyiségű erőforrás biztosításához
-> * Az ütemezett karbantartás hatásának korlátozása a pod-megszakadási költségvetések használatával
-> * Hiányzó Pod-erőforrásokra vonatkozó kérelmek és korlátozások keresése a `kube-advisor` eszköz használatával
+> * Erőforráskvóták használata meghatározott mennyiségű erőforrás biztosításához csapatoknak vagy munkaterheléseknek
+> * Korlátozza az ütemezett karbantartás hatását a pod megszakítási költségvetések használatával
+> * Hiányzó pod erőforrás-kérelmek és `kube-advisor` korlátozások ellenőrzése az eszközzel
 
-## <a name="enforce-resource-quotas"></a>Erőforrás-kvóták betartatása
+## <a name="enforce-resource-quotas"></a>Erőforráskvóták kényszerítése
 
-**Ajánlott eljárási útmutató** – erőforrás-kvóták megtervezése és alkalmazása a névtér szintjén. Ha a hüvely nem határozza meg az erőforrás-kérelmeket és a korlátozásokat, utasítsa el a telepítést. Figyelje az erőforrás-használatot, és szükség szerint módosítsa a kvótákat.
+**Ajánlott eljárásokra vonatkozó útmutatás** – Erőforráskvóták tervezése és alkalmazása a névtér szintjén. Ha a podok nem határoznak meg erőforrás-kérelmeket és korlátokat, utasítsa el a központi telepítést. Figyelje az erőforrás-használatot, és szükség szerint módosítsa a kvótákat.
 
-Az erőforrás-kérelmek és a korlátozások a pod-specifikációba kerülnek. Ezeket a korlátokat a Kubernetes ütemező használja a központi telepítés ideje alatt, hogy megtalálják a fürtben elérhető csomópontot. Ezek a korlátozások és kérések az egyes Pod-szinten működnek. További információ ezekről az értékekről: [Pod-erőforrásokra vonatkozó kérelmek és korlátok meghatározása][resource-limits] .
+Az erőforrás-kérelmek és korlátok a pod specifikációjába kerülnek. Ezeket a korlátokat a Kubernetes-ütemező használja a központi telepítés idején egy elérhető csomópont megkereséséhez a fürtben. Ezek a korlátok és kérések az egyes pod okán működnek. Az értékek meghatározásáról további információt a [Pod erőforrás-kérések és -korlátok megadása című][resource-limits] témakörben talál.
 
-Az erőforrások egy fejlesztői csapaton vagy projekten belüli lefoglalásához és korlátozásához használjon erőforrás- *kvótákat*. Ezek a kvóták definiálva vannak egy névtérhez, és a következők alapján adhatók meg a kvóták:
+Ha erőforrásokat szeretne lefoglalni és korlátozni egy fejlesztői csoportban vagy projektben, *erőforráskvótákat kell használnia.* Ezek a kvóták névtéren vannak definiálva, és a kvóták beállítására használhatók a következő képpen:
 
-* **Számítási erőforrások**, például CPU és memória, vagy GPU-k.
-* A **tárolási erőforrások**, beleértve az adott tárolási osztály köteteinek teljes számát vagy lemezterületét.
-* Az **objektumok száma**, például a titkok, szolgáltatások vagy feladatok maximális száma hozható létre.
+* **Számítási erőforrások**, például a PROCESSZOR és a memória, vagy gpu-k.
+* **A tárolási erőforrások**tartalmazzák az adott tárolóosztály köteteinek teljes számát vagy lemezterület-mennyiségét.
+* **Az objektumok száma**, például a titkos kulcsok, szolgáltatások vagy munkahelyek maximális száma hozható létre.
 
-A Kubernetes nem véglegesíti az erőforrásokat. Ha az erőforrás-kérelmek vagy-korlátok összesített összesített összege eléri a hozzárendelt kvótát, a további központi telepítések nem lesznek sikeresek.
+A Kubernetes nem véglegesíti túl az erőforrásokat. Miután az erőforrás-kérelmek vagy korlátok összesített összege túllépi a hozzárendelt kvótát, további telepítések nem sikeresek.
 
-Az erőforrás-kvóták meghatározásakor a névtérben létrehozott összes hüvelynek korlátozásokat vagy kéréseket kell megadnia a pod-specifikációkban. Ha nem adja meg ezeket az értékeket, elutasítja az üzemelő példányt. Ehelyett beállíthatja [a névterek alapértelmezett kéréseit és korlátait][configure-default-quotas].
+Erőforráskvóták definiálásakor a névtérben létrehozott összes podnak korlátokat vagy kéréseket kell megadnia a pod specifikációiban. Ha nem adják meg ezeket az értékeket, elutasíthatja a központi telepítést. Ehelyett beállíthatja a [névtér alapértelmezett kéréseit és korlátait.][configure-default-quotas]
 
-A következő példa a *dev-app-Team-kvóták* nevű YAML jegyzékfájlt tartalmazza. a YAML összesen *10* processzor, *20Gi* és *10* hüvely rögzített korlátot állít be:
+A következő példa: *dev-app-team-quotas.yaml* nevű YAML-jegyzékfájl összesen *10* processzort, *20G* memóriát és *10* podot állít be:
 
 ```yaml
 apiVersion: v1
@@ -52,32 +52,32 @@ spec:
     pods: "10"
 ```
 
-Ezt az erőforrás-kvótát a névtér, például a *fejlesztői alkalmazások*megadásával lehet alkalmazni:
+Ez az erőforráskvóta a névtér megadásával alkalmazható, például *a fejlesztői alkalmazások:*
 
 ```console
 kubectl apply -f dev-app-team-quotas.yaml --namespace dev-apps
 ```
 
-Az alkalmazás-fejlesztőknek és a tulajdonosoknak az igényeik megértéséhez és a megfelelő erőforrás-kvóták alkalmazásához kell dolgozniuk.
+Együttműködve az alkalmazásfejlesztőkkel és -tulajdonosokkal az igényeik megértéséhez és a megfelelő erőforráskvóták alkalmazásához.
 
-Az elérhető erőforrás-objektumokkal, hatókörökkel és prioritásokkal kapcsolatos további információkért lásd: [erőforrás-kvóták a Kubernetes-ben][k8s-resource-quotas].
+A rendelkezésre álló erőforrás-objektumokról, hatókörökről és prioritásokról a [Kubernetes erőforráskvótái][k8s-resource-quotas]című témakörben talál további információt.
 
-## <a name="plan-for-availability-using-pod-disruption-budgets"></a>Megtervezheti a rendelkezésre állást a pod megszakadási költségkeretek használatával
+## <a name="plan-for-availability-using-pod-disruption-budgets"></a>Pod megszakítási költségvetések használatával a rendelkezésre állás megtervezése
 
-**Ajánlott eljárási útmutató** – az alkalmazások rendelkezésre állásának fenntartása, a pod-megszakadási költségvetések (PDBs-EK) meghatározása, amelyekkel meggyőződhet arról, hogy a fürtben minimális számú hüvely érhető el.
+**Ajánlott eljárások –** Az alkalmazások rendelkezésre állásának fenntartása érdekében határozza pod megszakítási költségvetések (PDF) győződjön meg arról, hogy a fürtben elérhető minimális számú podok.
 
-Két, a hüvelyek eltávolítását okozó zavaró esemény:
+Két zavaró esemény okozza a hüvelyek eltávolítását:
 
-* A *kényszer nélküli fennakadások* olyan események, amelyek túlmutatnak a fürt vagy az alkalmazás tulajdonosának jellemző irányításán.
-  * Ezek a akaratlanul fellépő hibák a fizikai gépen, a kernel pánikján vagy a csomópontos virtuális gépek törlésén is hardverhiba
-* Az *önkéntes megszakítások* a fürt vagy az alkalmazás tulajdonosa által kért események.
-  * Ezek az önkéntes fennakadások közé tartoznak a fürtök frissítése, a frissített központi telepítési sablon, vagy a pod véletlen törlése.
+* *A nem önkéntes megszakítások* olyan események, amelyek kívül esnek a fürtüzemeltető vagy az alkalmazás tulajdonosának tipikus ellenőrzésén.
+  * Ezek a nem szándékos zavarok közé tartozik a hardverhiba a fizikai gépen, a kernel pánik, vagy a csomópont VM törlése
+* *Az önkéntes megszakítások* a fürt üzemeltetője vagy az alkalmazás tulajdonosa által kért események.
+  * Ezek az önkéntes megszakítások közé tartozik a fürtfrissítések, egy frissített központi telepítési sablon, vagy véletlenül egy pod törlése.
 
-A kényszer nélküli fennakadások enyhítése a hüvelyek több replikájának használatával végezhető el egy üzemelő példányban. Ha több csomópontot futtat az AK-fürtben, a nem kötelezően megszakadó fennakadásokkal is segít. Az önkéntes megszakadások esetén a Kubernetes olyan *Pod-megszakítási költségvetést* biztosít, amely lehetővé teszi, hogy a fürt operátora meghatározza a minimális rendelkezésre álló vagy maximális számú erőforrás-darabszámot. Ezek a pod-megszakadási költségvetések lehetővé teszik, hogy megtervezze, hogyan reagálnak az üzembe helyezések vagy a replikák egy önkéntes megszakítási esemény bekövetkeztekor.
+A nem önkéntes megszakítások lehet csökkenteni a podok több replikák egy központi telepítésben használatával. Több csomópont futtatása az AKS-fürtben is segít ezeket a nem önkéntes megszakítások. Önkéntes megszakítások esetén a Kubernetes *pod megszakítási költségvetéseket* biztosít, amelyek lehetővé teszik a fürtoperátor számára, hogy meghatározza a minimálisan elérhető vagy maximálisan elérhető erőforrásszámot. Ezek a pod megszakítási költségvetések segítségével megtervezheti, hogyan üzemelő példányok vagy replikakészletek reagálnak, ha egy önkéntes megszakítási esemény bekövetkezik.
 
-Ha egy fürtöt frissíteni kell, vagy a központi telepítési sablon frissült, a Kubernetes ütemező gondoskodik arról, hogy a további hüvelyek más csomópontokon is ütemezhetők legyenek, mielőtt az önkéntes megszakítási események folytatódnak. Az ütemező várakozik a csomópont újraindítása előtt, amíg a megadott számú hüvely sikeresen ütemezve lett a fürt más csomópontjain.
+Ha egy fürtet frissíteni kell, vagy egy központi telepítési sablont frissíteni kell, a Kubernetes-ütemező gondoskodik arról, hogy további podok vannak ütemezve más csomópontokon, mielőtt az önkéntes megszakítási események folytatódhatnak. Az ütemező megvárja, mielőtt egy csomópont újraindul, amíg a megadott számú podok sikeresen ütemezve a fürt más csomópontjain.
 
-Lássunk egy példát egy olyan másodpéldányra, amelyben öt, NGINX-t futtató hüvely található. A kópiakészlet hüvelyei a címke `app: nginx-frontend`hoz vannak rendelve. Egy önkéntes megszakítási esemény, például egy fürt frissítése során győződjön meg arról, hogy legalább három hüvely továbbra is fut. A *PodDisruptionBudget* objektum következő YAML-jegyzékfájlja határozza meg ezeket a követelményeket:
+Nézzünk egy példát egy replika készlet öt podok, amelyek az NGINX fut. A kópiakészletben lévő hüvelyek hozzá vannak rendelve a címkét. `app: nginx-frontend` Egy önkéntes megszakítási esemény, például a fürt frissítése során győződjön meg arról, hogy legalább három podok továbbra is futnak. A *PodDisruptionBudget* objektum következő YAML-jegyzékfájlja határozza meg a következő követelményeket:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -91,9 +91,9 @@ spec:
       app: nginx-frontend
 ```
 
-Meghatározhatja a százalékos értéket is *(például 60%* ), amely lehetővé teszi, hogy automatikusan kompenzálja a másodpéldányok számát a hüvelyek számának skálázása során.
+Egy százalékot is megadhat, például *60%-ot,* amely lehetővé teszi a replikakészlet automatikus kompenzálását a podok számának növelése.
 
-Megadhatja a kópiakészlet nem elérhető példányainak maximális számát. A maximálisan nem elérhető hüvelyek esetében a százalékos érték is meghatározható. A következő Pod-megszakadási költségvetési YAML-jegyzék azt határozza meg, hogy a kópiakészlet legfeljebb két hüvelye nem érhető el:
+A kópiakészletben legfeljebb több nem elérhető példányt adhat meg. Ismét a maximálisan nem elérhető podok százalékos aránya is megadható. A következő pod megszakítási költségvetés YAML-jegyzékfájl határozza meg, hogy a replikakészletben legfeljebb két pod nem érhető el:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -107,32 +107,32 @@ spec:
       app: nginx-frontend
 ```
 
-Miután definiálta a pod-megszakadási költségvetést, azt a többi Kubernetes objektummal együtt hozza létre az AK-fürtben:
+Miután a pod megszakítási költségvetés definiálva van, hozza létre az AKS-fürtben, mint bármely más Kubernetes objektum:
 
 ```console
 kubectl apply -f nginx-pdb.yaml
 ```
 
-Az alkalmazás-fejlesztőknek és a tulajdonosoknak az igényeik megértéséhez és a megfelelő Pod-megszakadási költségvetések alkalmazásához kell dolgozniuk.
+Együttműködve az alkalmazásfejlesztők kel és a tulajdonosok, hogy megértsék az igényeiket, és alkalmazza a megfelelő pod megszakítási költségvetések.
 
-További információ a pod-megszakadási költségvetések használatáról: [megszakadási költségvetés megadása az alkalmazáshoz][k8s-pdbs].
+A pod megszakítási költségvetések használatával kapcsolatos további információkért [lásd: Az alkalmazás megszakítási költségkeretének megadása.][k8s-pdbs]
 
-## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>A fürtökkel kapcsolatos problémák rendszeres keresése a Kube-Advisor szolgáltatással
+## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>Rendszeresen ellenőrizze a kube-advisor fürtproblémáit
 
-**Ajánlott eljárási útmutató** – rendszeresen futtatja `kube-advisor` nyílt forráskódú eszköz legújabb verzióját a fürttel kapcsolatos problémák észlelése érdekében. Ha erőforrás-kvótákat alkalmaz egy meglévő AK-fürtön, akkor először `kube-advisor` futtassa a következőt: az erőforrás-kérelmeket és korlátozásokat nem tartalmazó hüvelyek megtalálásához.
+**Ajánlott eljárások –** Rendszeresen futtassa a nyílt forráskódú eszköz legújabb verzióját `kube-advisor` a fürtben felmerülő problémák észleléséhez. Ha erőforráskvótákat alkalmaz egy meglévő AKS-fürtön, először futtassa `kube-advisor` azokat a podokat, amelyek nem rendelkeznek erőforrás-kérelmekkel és korlátokkal.
 
-A [Kube-Advisor][kube-advisor] eszköz egy kapcsolódó, AK-beli nyílt forráskódú projekt, amely egy Kubernetes-fürtöt és a megtalált problémákkal kapcsolatos jelentéseket keres. Az egyik hasznos lehetőség az, hogy azonosítsa azokat a hüvelyeket, amelyek nem rendelkeznek erőforrás-kérelmekkel és korlátokkal.
+A [kube-advisor][kube-advisor] eszköz egy társított AKS nyílt forráskódú projekt, amely megvizsgálja a Kubernetes-fürtöt, és jelentéseket készít a talált problémákról. Egy hasznos ellenőrzés, hogy azonosítsa a podok, amelyek nem rendelkeznek erőforrás-kérelmek és korlátok érvényben.
 
-Az Kube-Advisor eszköz jelentést készíthet az erőforrás-kérésekről, valamint a Windows-alkalmazások és a Linux-alkalmazások PodSpecs hiányzó korlátairól, de a Kube-Advisor eszköznek egy linuxos Pod-on kell ütemeznie. Egy Pod-t úgy ütemezhet, hogy egy adott operációs rendszert futtató csomópont-készleten fusson a pod konfigurációjában a [csomópont-választó][k8s-node-selector] használatával.
+A kube-advisor eszköz jelentést tehet az erőforrás-kérelemről, és a PodSpecs for Windows alkalmazások, valamint a Linux-alkalmazások hiányzó korlátairól, de maga a kube-advisor eszköz egy Linux podon kell ütemezve. Ütemezheti a pod egy adott operációs rendszerrel rendelkező csomópontkészleten a pod konfigurációjában lévő [csomópontválasztó][k8s-node-selector] használatával.
 
-Egy több fejlesztői csapatot és alkalmazást futtató AK-fürtben nehéz lehet nyomon követni a hüvelyeket ezen erőforrás-kérelmek és korlátok beállítása nélkül. Ajánlott eljárásként rendszeresen futtasson `kube-advisor` az AK-fürtökön, különösen akkor, ha nem rendel hozzá erőforrás-kvótát a névterekhez.
+Egy AKS-fürt, amely több fejlesztői csapatok és alkalmazások, nehéz lehet nyomon követni podok nélkül ezeket az erőforrás-kérelmeket és korlátokat beállítva. Ajánlott eljárásként rendszeresen `kube-advisor` futtassa az AKS-fürtökön, különösen akkor, ha nem rendel erőforráskvótákat a névterekhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez a cikk az alapszintű Kubernetes Scheduler-funkciókra összpontosít. Az AK-beli fürtműveleteket kapcsolatos további információkért tekintse meg az alábbi ajánlott eljárásokat:
+Ez a cikk a Kubernetes ütemező alapvető szolgáltatásaira összpontosított. Az AKS fürtműveleteiről az alábbi gyakorlati tanácsokban talál további információt:
 
-* [Több-bérlős és fürt-elkülönítés][aks-best-practices-cluster-isolation]
-* [Speciális Kubernetes Scheduler-funkciók][aks-best-practices-advanced-scheduler]
+* [Több-bérlős működés és fürtelkülönítés][aks-best-practices-cluster-isolation]
+* [Speciális Kubernetes ütemező funkciók][aks-best-practices-advanced-scheduler]
 * [Hitelesítés és engedélyezés][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->

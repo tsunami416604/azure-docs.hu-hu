@@ -1,5 +1,5 @@
 ---
-title: A Microsoft Identity platformmal regisztrált alkalmazás eltávolítása | Azure
+title: A Microsoft-identitásplatformon regisztrált alkalmazás eltávolítása | Azure
 description: Útmutató a Microsoft identitásplatformján regisztrált alkalmazás eltávolításához.
 services: active-directory
 author: rwike77
@@ -13,13 +13,13 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 3cc9e4458f14a63bad7f484bc16683248895ede9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240848"
 ---
-# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Rövid útmutató: a Microsoft Identity platformmal regisztrált alkalmazások eltávolítása
+# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Rövid útmutató: A Microsoft identitásplatformján regisztrált alkalmazás eltávolítása
 
 Az alkalmazásokat a Microsoft identitásplatformján regisztráló nagyvállalati fejlesztőknek és SaaS-szolgáltatóknak (szoftverszolgáltatók) esetenként el kell távolítaniuk az alkalmazás regisztrációját.
 
@@ -30,7 +30,7 @@ Ennek a rövid útmutatónak a segítségével megtanulhatja a következőket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Rendelkeznie kell egy olyan Bérlővel, amely regisztrálva van az alkalmazásokban. Az alkalmazások hozzáadásával és regisztrálásával kapcsolatban tekintse meg [az alkalmazásoknak a Microsoft identitásplatformján történő regisztrálását](quickstart-register-app.md) ismertető cikket.
+Rendelkeznie kell egy bérlő, amely az alkalmazások regisztrálva van. Az alkalmazások hozzáadásával és regisztrálásával kapcsolatban tekintse meg [az alkalmazásoknak a Microsoft identitásplatformján történő regisztrálását](quickstart-register-app.md) ismertető cikket.
 
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>A saját maga vagy a szervezete által fejlesztett alkalmazás eltávolítása
 
@@ -38,9 +38,9 @@ A saját maga vagy a szervezete által regisztrált alkalmazásokat egy alkalmaz
 
 ### <a name="to-remove-an-application"></a>Alkalmazás eltávolítása
 
-1. Jelentkezzen be [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiókjával.
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 2. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-3. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk**lehetőséget. Keresse meg, és válassza ki a konfigurálni kívánt alkalmazást. Miután kiválasztotta az alkalmazást, megjelenik annak **Áttekintés** lapja.
+3. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást, majd válassza az **Alkalmazásregisztrációk**lehetőséget. Keresse meg, és válassza ki a konfigurálni kívánt alkalmazást. Miután kiválasztotta az alkalmazást, megjelenik annak **Áttekintés** lapja.
 4. Az **Áttekintés** lapon válassza a **Törlés** elemet.
 5. Kattintson az **Igen** gombra az alkalmazás törlésének megerősítéséhez.
 
@@ -53,11 +53,11 @@ Ha az **alkalmazásregisztrációkat** egy bérlő kontextusában tekinti meg, a
 
 Egy alkalmazás az Ön könyvtárához való hozzáférésének eltávolításához (a hozzájárulás megadása után) a vállalati rendszergazdának el kell távolítania az alkalmazás szolgáltatásnevét. A rendszergazdának globális rendszergazdai hozzáféréssel kell rendelkeznie, és az Azure Portalon keresztül távolíthatja el az alkalmazást, vagy az [Azure AD PowerShell-parancsmagok](https://go.microsoft.com/fwlink/?LinkId=294151) használatával törölheti a hozzáférést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át az alkalmazásfelügyelethez kapcsolódó alábbi rövid útmutatókat is:
 
-* [Alkalmazás regisztrálása a Microsoft identitásplatformján](quickstart-register-app.md)
+* [Alkalmazás regisztrálása a Microsoft Identity Platformon](quickstart-register-app.md)
 * [Ügyfélalkalmazás konfigurálása a webes API-k elérésére](quickstart-configure-app-access-web-apis.md)
-* [Alkalmazás konfigurálása a webes API-k közzétételére](quickstart-configure-app-expose-web-apis.md)
+* [Alkalmazás konfigurálása webes API-k közzétételére](quickstart-configure-app-expose-web-apis.md)
 * [Alkalmazás által támogatott fiókok módosítása](quickstart-modify-supported-accounts.md)

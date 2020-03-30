@@ -1,6 +1,6 @@
 ---
-title: Egyszeri jelszavas hitelesítés a VÁLLALATKÖZI vendég felhasználói számára – Azure AD
-description: E-mail egyszeri jelszó használata a B2B vendég-felhasználók hitelesítéséhez Microsoft-fiók nélkül.
+title: Egyszeri jelkód-hitelesítés B2B vendégfelhasználók számára – Azure AD
+description: Az E-mail egyszeri jelkód használata a B2B vendégfelhasználók hitelesítéséhez Microsoft-fiók nélkül.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,74 +13,74 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263373"
 ---
-# <a name="email-one-time-passcode-authentication-preview"></a>E-mail egyszeri jelszó-hitelesítés (előzetes verzió)
+# <a name="email-one-time-passcode-authentication-preview"></a>E-mail küldése egyszeri jelkód-hitelesítésről (előzetes verzió)
 
 |     |
 | --- |
-| Az egyszeri e-mailes PIN-kód a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Az egyszeri e-mail-kód az Azure Active Directory nyilvános előzetes verziójú szolgáltatása. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Ez a cikk azt ismerteti, hogyan engedélyezhető a levelezés egyszeri jelszavas hitelesítése a B2B vendég felhasználói számára. Az egyszeri e-mail-jelszó funkció hitelesíti a B2B vendég felhasználóit, ha nem hitelesíthetők más módon, például az Azure AD-vel, a Microsoft-fiók (MSA) vagy a Google Federation szolgáltatással. Egyszeri jelszavas hitelesítés esetén nincs szükség Microsoft-fiók létrehozására. Ha a vendég felhasználó bevált egy meghívót, vagy egy megosztott erőforráshoz fér hozzá, ideiglenes kódot kérhet, amelyet a rendszer elküld az e-mail-címére. Ezután a kód beírásával folytathatja a bejelentkezést.
+Ez a cikk bemutatja, hogyan engedélyezheti az e-mail egyszeri jelkód-hitelesítést a B2B vendégfelhasználók számára. Az e-mail egyszeri jelkód funkció hitelesíti a B2B vendégfelhasználókat, ha nem hitelesíthetők más eszközökkel, például az Azure AD-vel, egy Microsoft-fiókkal (MSA) vagy a Google-összevonással. Az egyszeri jelkód-hitelesítéssel nincs szükség Microsoft-fiók létrehozására. Amikor a vendégfelhasználó bevált egy meghívót, vagy hozzáfér egy megosztott erőforráshoz, kérhet egy ideiglenes kódot, amelyet a rendszer az e-mail címére küld. Ezután beírják ezt a kódot a bejelentkezés folytatásához.
 
-Ez a funkció jelenleg előzetes verzióként érhető el (lásd az alábbi [előnézetet](#opting-in-to-the-preview) ). Az előnézet után a szolgáltatás alapértelmezés szerint be lesz kapcsolva az összes bérlőnél.
-
-> [!NOTE]
-> Egyszeri jelszóval rendelkező felhasználóknak be kell jelentkezniük egy olyan hivatkozás használatával, amely tartalmazza a bérlői környezetet (például `https://myapps.microsoft.com/?tenantid=<tenant id>` vagy `https://portal.azure.com/<tenant id>`, vagy egy ellenőrzött tartomány esetén `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Az alkalmazásokra és az erőforrásokra mutató közvetlen hivatkozásokat is használhatja, amennyiben azok tartalmazzák a bérlői környezetet. A vendég felhasználók jelenleg nem tudnak bejelentkezni a bérlői kontextus nélküli végpontok használatával. A `https://myapps.microsoft.com`, `https://portal.azure.com`vagy a csapatok közös végpontjának használata például hibát eredményez. 
-
-## <a name="user-experience-for-one-time-passcode-guest-users"></a>Felhasználói élmény egyszeri jelszó vendég felhasználói számára
-Egyszeri PIN-kód-hitelesítéssel a vendég felhasználó a közvetlen hivatkozásra kattintva vagy a meghívó e-mailben is beválthatja a meghívót. Mindkét esetben egy üzenet jelenik meg a böngészőben, amely azt jelzi, hogy a rendszer elküld egy kódot a vendég felhasználói e-mail-címére. A vendég felhasználó kiválasztja a **küldési kódot**:
- 
-   ![A kód küldése gombra mutató képernyőkép](media/one-time-passcode/otp-send-code.png)
- 
-A rendszer elküld egy jelszót a felhasználó e-mail-címére. A felhasználó lekéri a PIN-kódot az e-mailben, és beírja a böngészőablakba:
- 
-   ![A kód megadása lapot ábrázoló képernyőfelvétel](media/one-time-passcode/otp-enter-code.png)
- 
-A vendég felhasználó hitelesítése megtörtént, és láthatja a megosztott erőforrást, vagy folytathatja a bejelentkezést. 
+Ez a funkció jelenleg előzetes verzióban érhető el (lásd: Az alábbi [előzetes verzióra való feliratkozás).](#opting-in-to-the-preview) Az előzetes verzió után ez a funkció alapértelmezés szerint be lesz kapcsolva az összes bérlő esetében.
 
 > [!NOTE]
-> Az egyszeri PIN-kódok 30 percig érvényesek. 30 perc elteltével az adott egyszeri PIN-kód már nem érvényes, és a felhasználónak újat kell igényelnie. A felhasználói munkamenetek 24 óra elteltével lejárnak. Ezt követően a vendég felhasználó új jelszót kap az erőforráshoz való hozzáféréskor. A munkamenet lejárata nagyobb biztonságot nyújt, különösen akkor, ha a vendég felhasználó elhagyja a vállalatot, vagy már nincs hozzáférése.
+> Az egyszeri jelkódú felhasználóknak a bérlői környezetet tartalmazó `https://myapps.microsoft.com/?tenantid=<tenant id>` hivatkozással kell bejelentkezniük (például vagy `https://portal.azure.com/<tenant id>`, vagy ellenőrzött tartomány `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`esetén). Az alkalmazásokhoz és erőforrásokhoz mutató közvetlen hivatkozások is működnek, amennyiben tartalmazzák a bérlői környezetet. A vendégfelhasználók jelenleg nem tudnak bejelentkezni olyan végpontok használatával, amelyek nem rendelkeznek bérlői környezetben. Ha például `https://myapps.microsoft.com` `https://portal.azure.com`a , vagy a Teams közös végpontot használja, az hibát eredményez. 
 
-## <a name="when-does-a-guest-user-get-a-one-time-passcode"></a>Mikor kap egyszeri jelszót a vendég felhasználó?
-
-Ha egy vendég felhasználó bevált egy meghívót, vagy egy olyan erőforrásra mutató hivatkozást használ, amelyet megosztottak velük, akkor egyszeri jelszót kapnak, ha:
-- Nem rendelkezik Azure AD-fiókkal 
-- Nincs Microsoft-fiók 
-- A meghívó bérlő nem állította be a Google-összevonást @gmail.com és @googlemail.com felhasználók számára 
-
-A meghívás időpontjában nincs jelezve, hogy a meghívott felhasználó egyszer használatos hitelesítő adatokat fog használni. Ha azonban a vendég felhasználó bejelentkezik, egyszeri jelszó-hitelesítés lesz a tartalék módszer, ha más hitelesítési módszer nem használható. 
-
-Megtekintheti azokat a vendég felhasználókat, akik a Azure Portal egyszer használatos PIN-kóddal hitelesítik magukat, **Azure Active Directory** > **szervezeti kapcsolatokat** > **más szervezetek felhasználóinak**.
-
-![Képernyőfelvétel: egyszeri jelszóval rendelkező felhasználó, amely az OTP forrás értékét tartalmazza](media/one-time-passcode/otp-users.png)
+## <a name="user-experience-for-one-time-passcode-guest-users"></a>Felhasználói élmény egyszeri jelkódú vendégfelhasználók számára
+Az egyszeri jelkód-hitelesítéssel a vendégfelhasználó egy közvetlen hivatkozásra kattintva vagy a meghívó e-mail használatával válthatja be a meghívót. A böngészőben megjelenő üzenet mindkét esetben azt jelzi, hogy a rendszer kódot küld a vendégfelhasználó e-mail címére. A vendégfelhasználó a **Kód küldése**lehetőséget választja:
+ 
+   ![A Kód küldése gombbal látható képernyőkép](media/one-time-passcode/otp-send-code.png)
+ 
+A felhasználó e-mail címére a rendszer jelkódot küld. A felhasználó lekéri a jelszót az e-mailből, és beírja a böngészőablakba:
+ 
+   ![Az Enter kódlapját ábrázoló képernyőkép](media/one-time-passcode/otp-enter-code.png)
+ 
+A vendégfelhasználó most már hiteles, és láthatja a megosztott erőforrást, vagy folytathatja a bejelentkezést. 
 
 > [!NOTE]
-> Amikor egy felhasználó egyszeri jelszót vált ki, és később beolvas egy MSA, egy Azure AD-fiókot vagy más összevont fiókot, a rendszer továbbra is egyszer használatba veszi a hitelesítő kódot. Ha frissíteni szeretné a hitelesítési módszert, törölheti a vendég felhasználói fiókját, és újból meghívhatja őket.
+> Az egyszeri kódok 30 percig érvényesek. 30 perc elteltével az adott egyszeri jelkód már nem érvényes, és a felhasználónak újat kell kérnie. A felhasználói munkamenetek 24 óra elteltével lejárnak. Ezt követően a vendégfelhasználó kap egy új jelkódot, amikor hozzáférnek az erőforráshoz. A munkamenet lejárata nagyobb biztonságot nyújt, különösen akkor, ha egy vendégfelhasználó elhagyja a vállalatot, vagy már nincs szüksége hozzáférésre.
+
+## <a name="when-does-a-guest-user-get-a-one-time-passcode"></a>Mikor kap egy vendégfelhasználó egyszeri jelkódot?
+
+Amikor egy vendégfelhasználó bevált egy meghívót, vagy egy vele megosztott erőforrásra mutató hivatkozást használ, egyszeri jelszót kap, ha:
+- Nem rendelkeznek Azure AD-fiókkal 
+- Nem rendelkeznek Microsoft-fiókkal 
+- A meghívó bérlő nem állította @gmail.com be @googlemail.com a Google-összevonást a felhasználók és a felhasználók számára 
+
+A meghívás időpontjában nincs arra utaló jel, hogy a meghívott felhasználó egyszeri jelkód-hitelesítést fog használni. De amikor a vendég felhasználó bejelentkezik, egyszeri jelkód-hitelesítés lesz a tartalék módszer, ha más hitelesítési módszer nem használható. 
+
+Megtekintheti a vendég felhasználók, akik hitelesítik az egyszeri jelkódok az Azure Portalon az **Azure Active Directory** > **szervezeti kapcsolatok** > **felhasználók más szervezetekből.**
+
+![Képernyőkép egy egyszeri jelkódhasználóról, aki nakja piszkotp forrásértékkel van elévülve](media/one-time-passcode/otp-users.png)
+
+> [!NOTE]
+> Amikor egy felhasználó bevált egy egyszeri jelkódot, és később beszerez egy MSA-, Azure AD-fiókot vagy más összevont fiókot, továbbra is egy egyszeri jelkód használatával hitelesítve lesz. Ha frissíteni szeretné a hitelesítési módszert, törölheti a vendégfelhasználói fiókjukat, és újra meghívhatja őket.
 
 ### <a name="example"></a>Példa
-Vendég felhasználói alexdoe@gmail.com meghívja a fabrikam-t, amelyhez nincs beállítva a Google Federation. Alex nem rendelkezik Microsoft-fiók. Egy egyszeri jelszót kapnak a hitelesítéshez.
+A alexdoe@gmail.com vendégfelhasználó meghívást kap a Fabrikam-ba, amely nem rendelkezik google-összevonási beállítással. Alex nem rendelkezik Microsoft-fiókkal. Egyszeri jelszót kapnak a hitelesítéshez.
 
-## <a name="opting-in-to-the-preview"></a>Az előnézet megválasztása 
-Eltarthat néhány percig, amíg a beavatkozás érvénybe lép. Ezt követően csak az újonnan meghívott felhasználók használhatnak egyszeri jelszavas hitelesítést. Azok a vendég felhasználók, akik korábban beváltottak egy meghívót, továbbra is ugyanazt a hitelesítési módszert használják.
+## <a name="opting-in-to-the-preview"></a>Feliratkozás az előnézetre 
+Eltarthat néhány percig, amíg az opt-in művelet érvénybe lép. Ezt követően csak a fenti feltételeknek megfelelő újonnan meghívott felhasználók fogják használni az egyszeri jelkód-hitelesítést. Azok a vendégfelhasználók, akik korábban beváltottak egy meghívót, továbbra is ugyanazt a hitelesítési módszert fogják használni.
 
-### <a name="to-opt-in-using-the-azure-ad-portal"></a>Az Azure AD-portál használatának engedélyezése
-1.  Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad globális rendszergazdaként.
-2.  A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
-3.  A **kezelés**területen válassza a **szervezeti kapcsolatok**elemet.
-4.  Válassza a **Beállítások**lehetőséget.
-5.  Az **E-mail egyszeri jelszó engedélyezése a vendégek számára (előzetes verzió)** területen válassza az **Igen**lehetőséget.
+### <a name="to-opt-in-using-the-azure-ad-portal"></a>Az Azure AD-portál használatának letiltása
+1.  Jelentkezzen be az [Azure Portalon](https://portal.azure.com/) azure AD globális rendszergazdaként.
+2.  A navigációs ablakban válassza az **Azure Active Directory**lehetőséget.
+3.  A **Kezelés csoportban**válassza a **Szervezeti kapcsolatok lehetőséget.**
+4.  Válassza a **Beállítások lehetőséget.**
+5.  Az **Egyszeri e-mail címkód engedélyezése a vendégeknek (előzetes verzió)** csoportban válassza az **Igen**lehetőséget.
  
-### <a name="to-opt-in-using-powershell"></a>A PowerShell használatának engedélyezése
+### <a name="to-opt-in-using-powershell"></a>Engedélyezés a PowerShell használatával
 
-Először telepítenie kell az Azure AD PowerShell for Graph modul (AzureADPreview) legújabb verzióját. Ezután meghatározhatja, hogy a B2B-szabályzatok már léteznek-e, és futtatják-e a megfelelő parancsokat.
+Először telepítenie kell az Azure AD PowerShell graph modul (AzureADPreview) legújabb verzióját. Ezután meghatározza, hogy a B2B-házirendek már léteznek-e, és futtathatja a megfelelő parancsokat.
 
-#### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>Előfeltétel: a legújabb AzureADPreview-modul telepítése
+#### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>Előfeltétel: Telepítse a legújabb AzureADPreview modult
 Először ellenőrizze, melyik modulokat telepítette. Nyissa meg a Windows PowerShellt rendszergazdaként (Futtatás rendszergazdaként), majd futtassa a következő parancsot:
  
 ```powershell  
@@ -107,24 +107,24 @@ Ha az AzureADPreview modul anélkül megjelenik anélkül, hogy újabb verzióra
    Install-Module AzureADPreview 
   ```
 
-Előfordulhat, hogy kap egy kérdést, hogy a modult nem megbízható tárházból telepíti. Ez akkor fordul elő, ha korábban még nem állította be megbízható tárháznak a PSGallery tárházat. Nyomja meg az **Y-t** a modul telepítéséhez.
+Előfordulhat, hogy kap egy kérdést, hogy a modult nem megbízható tárházból telepíti. Ez akkor fordul elő, ha korábban még nem állította be megbízható tárháznak a PSGallery tárházat. Nyomja meg **Y**-t a modul telepítéséhez.
 
-#### <a name="check-for-existing-policies-and-opt-in"></a>Meglévő szabályzatok keresése és az engedélyezése
+#### <a name="check-for-existing-policies-and-opt-in"></a>Meglévő házirendek ellenőrzése és engedélyezés
 
-Ezután ellenőrizze, hogy van-e B2BManagementPolicy jelenleg a következő futtatásával:
+Ezután ellenőrizze, hogy létezik-e jelenleg B2BManagementPolicy a következő futtatásával:
 
 ```powershell 
 $currentpolicy =  Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 $currentpolicy -ne $null
 ```
-- Ha a kimenet hamis, a szabályzat jelenleg nem létezik. Hozzon létre egy új B2BManagementPolicy, és a következő parancs futtatásával lépjen be az előnézetbe:
+- Ha a kimenet hamis, a házirend jelenleg nem létezik. Hozzon létre egy új B2BManagementPolicy és opt-in az előnézet futtatásával a következő:
 
    ```powershell 
    $policyValue=@("{`"B2BManagementPolicy`":{`"PreviewPolicy`":{`"Features`":[`"OneTimePasscode`"]}}}")
    New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true
    ```
 
-- Ha a kimenet igaz, a B2BManagementPolicy házirend jelenleg létezik. A szabályzat frissítéséhez és az előzetes verzióra való feliratkozáshoz futtassa a következőt:
+- Ha a kimenet igaz, a B2BManagementPolicy házirend jelenleg létezik. A házirend frissítéséhez és az előzetes verzióhoz való bejelentkezéshez futtassa a következőket:
   
    ```powershell 
    $policy = $currentpolicy.Definition | ConvertFrom-Json
@@ -133,25 +133,25 @@ $currentpolicy -ne $null
    Set-AzureADPolicy -Definition $updatedPolicy -Id $currentpolicy.Id
    ```
 
-## <a name="opting-out-of-the-preview-after-opting-in"></a>Az előzetes verzió kiválasztását követően
-Eltarthat néhány percig, amíg a letiltási művelet érvénybe lép. Ha kikapcsolja az előzetes verziót, az egyszeri jelszót beváltó vendég-felhasználók nem fognak tudni bejelentkezni. Törölheti a vendég felhasználót, és újból meghívhatja a felhasználót, hogy engedélyezze a bejelentkezést egy másik hitelesítési módszer használatával.
+## <a name="opting-out-of-the-preview-after-opting-in"></a>Az előzetes verzió letiltása a feliratkozás után
+Az opt-out művelet érvénybe léptetése eltarthat néhány percig. Ha kikapcsolja az előnézetet, az egyszeri jelkódot beváltott vendégfelhasználók nem tudnak bejelentkezni. Törölheti a vendégfelhasználót, és újra meghívhatja a felhasználót, hogy egy másik hitelesítési módszerrel újra bejelentkezhessenek.
 
-### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Az előnézet kikapcsolása az Azure AD-portál használatával
-1.  Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad globális rendszergazdaként.
-2.  A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
-3.  A **kezelés**területen válassza a **szervezeti kapcsolatok**elemet.
-4.  Válassza a **Beállítások**lehetőséget.
-5.  Az **E-mail egyszeri jelszó engedélyezése a vendégek számára (előzetes verzió)** területen válassza a **nem**lehetőséget.
+### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Az előzetes verzió kikapcsolása az Azure AD portálhasználatával
+1.  Jelentkezzen be az [Azure Portalon](https://portal.azure.com/) azure AD globális rendszergazdaként.
+2.  A navigációs ablakban válassza az **Azure Active Directory**lehetőséget.
+3.  A **Kezelés csoportban**válassza a **Szervezeti kapcsolatok lehetőséget.**
+4.  Válassza a **Beállítások lehetőséget.**
+5.  Az **Egyszeri e-mail-kód engedélyezése a vendégeknek (előzetes verzió)** csoportban válassza a **Nem**lehetőséget.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>Az előnézet kikapcsolása a PowerShell használatával
-Telepítse a legújabb AzureADPreview-modult, ha még nem rendelkezik ezzel (lásd [az előfeltételt: telepítse a fenti legújabb AzureADPreview-modult](#prerequisite-install-the-latest-azureadpreview-module) ). Ezt követően győződjön meg arról, hogy az egyszeri jelszó-előnézeti házirend jelenleg létezik a következő futtatásával:
+Telepítse a legújabb AzureADPreview modult, ha még nem rendelkezik vele [(lásd: Előfeltétel: Telepítse a fenti legújabb AzureADPreview modult).](#prerequisite-install-the-latest-azureadpreview-module) Ezután ellenőrizze, hogy az egyszeri jelkód-előzetes verzióra vonatkozó szabályzat jelenleg létezik-e a következők futtatásával:
 
 ```powershell 
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 ($currentPolicy -ne $null) -and ($currentPolicy.Definition -like "*OneTimePasscode*")
 ```
 
-Ha a kimenet igaz, a következő parancs futtatásával lépjen ki az előnézetből:
+Ha a kimenet igaz, a következő futtatásával válassza le az előnézetet:
 
 ```powershell 
 $policy = $currentpolicy.Definition | ConvertFrom-Json

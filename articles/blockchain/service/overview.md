@@ -1,88 +1,88 @@
 ---
 title: Az Azure Blockchain szolgáltatás áttekintése
-description: Az Azure Blockchain Service áttekintése
+description: Az Azure Blockchain szolgáltatás áttekintése
 ms.date: 03/12/2020
 ms.topic: overview
 ms.reviewer: ravastra
 ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79205072"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Mi az az Azure Blockchain Service?
 
-Az Azure Blockchain Service egy teljes körűen felügyelt Főkönyv szolgáltatás, amely lehetővé teszi a felhasználók számára, hogy az Azure-ban méretezhető Blockchain-hálózatokat fejlesszenek és működtessenek. Az infrastruktúra felügyeletének és a blockchain hálózati irányításának egységes szabályozásával az Azure Blockchain Service a következőket biztosítja:
+Az Azure Blockchain Service egy teljes körűen felügyelt főkönyvi szolgáltatás, amely lehetővé teszi a felhasználók számára, hogy az Azure-ban nagy méretekben növekedjenek és működtessenek blokklánc-hálózatokat. Az Azure Blockchain Service egységes vezérlést biztosít mind az infrastruktúra-kezelés, mind a blokklánc-hálózat szabályozása számára:
 
-* Egyszerű hálózati üzembe helyezés és műveletek
-* Beépített konzorciumok felügyelete
-* Intelligens szerződések fejlesztése ismerős fejlesztői eszközökkel
+* Egyszerű hálózati telepítés és műveletek
+* Beépített konzorciumkezelés
+* Intelligens szerződések kidolgozása ismerős fejlesztési eszközökkel
 
-Az Azure Blockchain szolgáltatás több Főkönyv protokoll támogatására lett kialakítva. Jelenleg a [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konszenzusi mechanizmus használatával támogatja a Ethereum [kvórum](https://www.goquorum.com/) főkönyvét.
+Az Azure Blockchain szolgáltatás több főkönyvi protokoll t támogatja. Jelenleg az [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konszenzusos mechanizmus alkalmazásával támogatja az Ethereum [Quorum](https://www.goquorum.com/) főkönyvét.
 
-Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik további költség nélkül érhető el. Az alkalmazások fejlesztésére és az üzleti logikára összpontosíthat, és nem kell időt és erőforrásokat lefoglalnia a virtuális gépek és az infrastruktúra kezeléséhez. Emellett továbbra is fejlesztheti alkalmazását az Ön által választott nyílt forráskódú eszközökkel és platformmal anélkül, hogy új ismeretekkel kellene elsajátítani a megoldásokat.
+Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik további költség nélkül érhető el. Az alkalmazásfejlesztésre és az üzleti logikára összpontosíthat ahelyett, hogy időt és erőforrásokat különítene meg a virtuális gépek és az infrastruktúra kezelésére. Ezenkívül tovább fejlesztheti alkalmazását az Ön által választott nyílt forráskódú eszközökkel és platformokkal, hogy új készségek elsajátítása nélkül is szállíthassa megoldásait.
 
-## <a name="network-deployment-and-operations"></a>Hálózati telepítés és műveletek
+## <a name="network-deployment-and-operations"></a>Hálózat üzembe helyezése és műveletei
 
-Az Azure Blockchain szolgáltatás üzembe helyezése az Azure Blockchain bővítmény használatával történik a Azure Portalon, az Azure CLI-n vagy a Visual Studio code-on keresztül. Az üzembe helyezés egyszerűsítve van, beleértve a tranzakciós és a érvényesítő csomópontok, az Azure Virtual Networks a biztonsági elkülönítés és a szolgáltatás által felügyelt tárolók kiépítését is.  Emellett egy új blockchain-tag telepítésekor a felhasználók is létrehozhatnak vagy csatlakozhatnak konzorciumot.  A konzorciumok lehetővé teszik, hogy a különböző Azure-előfizetések több résztvevője is biztonságosan tudjon kommunikálni egymással egy megosztott blockchain.  Ez az egyszerűsített üzembe helyezés a blockchain hálózati üzembe helyezését nap és perc között csökkenti.
+Az Azure Blockchain szolgáltatás üzembe helyezése az Azure Portalon, az Azure CLI-n keresztül vagy a Visual Studio-kódon keresztül történik az Azure Blockchain bővítmény használatával. A központi telepítés egyszerűsödik, beleértve a tranzakciós és az érvényesítő csomópontok kiépítését, az Azure virtuális hálózatokat a biztonsági elkülönítéshez, valamint a szolgáltatás által felügyelt tárolást.  Emellett egy új blokklánc-tag telepítésekor a felhasználók konzorciumot is létrehoznak, vagy csatlakoznak hozzá.  A konzorciumok lehetővé teszik, hogy a különböző Azure-előfizetésekben lévő több fél biztonságosan kommunikáljon egymással egy megosztott blokkláncon.  Ez az egyszerűsített telepítés napokról percekre csökkenti a blokklánc-hálózati telepítést.
 
-### <a name="performance-and-service-tiers"></a>Teljesítmény-és szolgáltatási szintek
+### <a name="performance-and-service-tiers"></a>Teljesítmény- és szolgáltatásszintek
 
-Az Azure Blockchain Service két szolgáltatási szintet kínál: *Alapszintű* és *standard*. Az egyes szintek különböző teljesítményt és képességeket biztosítanak a könnyű fejlesztési és tesztelési feladatoknak a nagy mértékben méretezhető üzemi blockchain való üzembe helyezéséhez. A fogalmak fejlesztéséhez, teszteléséhez és bizonyításához *használja az alapszintű* csomagot. Használja a *standard* szintű üzemi szintű üzembe helyezést. Mindkét réteg tartalmaz legalább egy tranzakciós csomópontot és egy validator csomópontot (alapszintű) vagy két validator csomópontot (standard). 
+Az Azure Blockchain Szolgáltatás két szolgáltatási szintet kínál: *alapszintű* és *standard.* Minden egyes szint különböző teljesítményt és képességeket kínál a könnyű fejlesztési és a számítási feladatok teszteléséhez a masszívan skálázott éles blokklánc-telepítésekig. Használja az *alapszintű* szintet a fejlesztéshez, teszteléshez és a fogalmak igazolásához. Használja a *standard* szint éles szintű központi telepítések. Mindkét szint legalább egy tranzakciócsomópontot és egy érvényesítő csomópontot (Alapszintű) vagy két validátor-csomópontot (Standard) tartalmaz. 
 
 ![Árképzési szintek](./media/overview/pricing-tiers.png)
 
-Amellett, hogy két érvényesítő csomópontot kínál, a *standard* szint 2 *virtuális mag* biztosít minden tranzakcióhoz és érvényesítő csomóponthoz, míg az alapszintű csomag 1 virtuális mag konfigurációt kínál.  A tranzakció-és validator-csomópontok 2 virtuális mag kínálva az 1 virtuális mag a kvórum főkönyvéhez rendelhető, míg a fennmaradó 1 virtuális mag más infrastruktúrához kapcsolódó szolgáltatásokhoz is használható, így biztosítva az optimális teljesítményt az éles blockchain-munkaterhelések számára. A díjszabással kapcsolatos további információkért lásd: az [Azure Blockchain Service díjszabása](https://azure.microsoft.com/pricing/details/blockchain-service).
+Amellett, hogy két validator csomópontot kínál, a *standard* szint 2 *virtuális magot* biztosít minden tranzakcióhoz és validator csomóponthoz, míg az alapszintű szint 1 virtuálismagos konfigurációt kínál.  2 virtuális mag felajánlásával a tranzakciós és érvényesítő csomópontokhoz, 1 virtuális mag is felsodható a Kvórum főkönyvhöz, míg a fennmaradó 1 virtuális mag használható más infrastruktúrával kapcsolatos szolgáltatásokhoz, biztosítva az optimális teljesítményt az éles blokklánc-számítási feladatokhoz. A díjszabással kapcsolatos további információkért lásd: [Azure Blockchain Service díjszabása.](https://azure.microsoft.com/pricing/details/blockchain-service)
 
 ### <a name="security-and-maintenance"></a>Biztonság és karbantartás
 
-Az első blockchain-tag üzembe helyezése után további tranzakciós csomópontokat adhat hozzá a taghoz.  Alapértelmezés szerint a tranzakciós csomópontok védettek a tűzfalszabályok között, és a hozzáféréshez konfiguráció szükséges.  Emellett az összes tranzakciós csomópont a TLS-n keresztül titkosítja az adatátvitelt.  Több lehetőség létezik a tranzakciós csomópont-hozzáférés biztonságossá tételéhez, beleértve a tűzfalszabályok, az alapszintű hitelesítés, a hozzáférési kulcsok és a Azure Active Directory integrációját. További információ: a [tranzakciós csomópontok konfigurálása](configure-transaction-nodes.md) és [Azure Active Directory hozzáférés konfigurálása](configure-aad.md).
+Az első blokklánc-tag kiépítése után további tranzakciócsomópontokat adhat hozzá a taghoz.  Alapértelmezés szerint a tranzakciócsomópontok tűzfalszabályokon keresztül védettek, és a hozzáféréshez konfigurációra van szükség.  Emellett minden tranzakciós csomópont titkosítja a mozgásban lévő adatokat a TLS-en keresztül.  A tranzakciós csomópont-hozzáférés biztonságossá tétele több lehetőség gel rendelkezik, beleértve a tűzfalszabályokat, az alapfokú hitelesítést, a hozzáférési kulcsokat és az Azure Active Directory-integrációt. További információt a [Tranzakciócsomópontok konfigurálása](configure-transaction-nodes.md) és [az Azure Active Directory-hozzáférés konfigurálása](configure-aad.md)című témakörben talál.
 
-Felügyelt szolgáltatásként az Azure Blockchain Service biztosítja, hogy a Blockchain-tag csomópontjai a legújabb gazda operációs rendszerrel és a Főkönyv szoftveres verem frissítéseivel legyenek javítva, és a magas rendelkezésre álláshoz vannak konfigurálva (csak a standard csomag esetében), ami kiküszöböli a DevOps nagy részét. a hagyományos IaaS blockchain-csomópontokhoz szükséges.  A javítással és a frissítésekkel kapcsolatos további információkért lásd: az [Azure Blockchain Service Ledger támogatott verziói](ledger-versions.md).
+Felügyelt szolgáltatásként az Azure Blockchain Szolgáltatás biztosítja, hogy a blokklánc-tag csomópontjai javításra kerülnek a legújabb gazdaoperációs rendszer- és főkönyvi szoftververem-frissítésekkel, amelyek magas rendelkezésre állásra vannak konfigurálva (csak standard szinten), így a DevOps nagy része ki van kapcsolva. hagyományos IaaS blokklánc-csomópontokhoz szükséges.  A javításokkal és frissítésekkel kapcsolatos további információkért tekintse meg az [Azure Blockchain Service támogatott főkönyvi verzióit.](ledger-versions.md)
 
 ### <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
-Emellett az Azure Blockchain szolgáltatás részletes mérőszámokat biztosít Azure Monitor szolgáltatáson keresztül, amely betekintést nyújt a csomópontok CPU-, memória-és tárterület-használati adataiba.  A Azure Monitor hasznos betekintést nyújt a blockchain hálózati tevékenységekkel, például a kibányászott tranzakciókkal, a tranzakciós várólista mélységével és az aktív kapcsolatokkal.  A metrikák testreszabhatók úgy, hogy nézeteiket szolgáltassanak a blockchain-alkalmazás szempontjából fontos adatokhoz.  Emellett a küszöbértékeket olyan riasztások segítségével is meghatározhatja, amelyek lehetővé teszik a felhasználók számára olyan műveletek elindítását, mint például az e-mailek vagy SMS-üzenetek elküldése, a logikai alkalmazás, az Azure-függvény futtatása vagy egy egyéni módon definiált webhookra
+Emellett az Azure Blockchain Service gazdag metrikákat biztosít az Azure Monitor szolgáltatáson keresztül, amelyek betekintést nyújtanak a csomópontok PROCESSZOR-, memória- és tárhelyhasználatába.  Az Azure Monitor hasznos betekintést nyújt a blokklánc hálózati tevékenységekbe, például a tranzakciókba és a bányászott blokkokba, a tranzakciós várólista mélységébe és az aktív kapcsolatokba.  Metrikák testreszabható, hogy a blockchain alkalmazás számára fontos elemzési nézeteket.  Emellett küszöbértékek segítségével adható meg a riasztások, amelyek lehetővé teszik a felhasználók számára, hogy olyan műveleteket, például e-mail vagy szöveges üzenet küldése, logikai alkalmazás futtatása, Az Azure-függvény vagy egy egyéni legdefiniált webhook.
 
 ![Mérőszámok](./media/overview/metrics.png)
 
-Az Azure Log Analytics segítségével a felhasználók megtekinthetik a kvórum főkönyvéhez kapcsolódó naplókat, illetve egyéb fontos információkat, például a tranzakciós csomópontokhoz való kapcsolódási kísérleteket.
+Az Azure Log Analytics segítségével a felhasználók megtekinthetik a Kvórum főkönyvhöz kapcsolódó naplókat, vagy más fontos információkat, például a tranzakciócsomópontokhoz való megkísérelt kapcsolatokat.
 
-## <a name="built-in-consortium-management"></a>Beépített konzorciumok felügyelete
+## <a name="built-in-consortium-management"></a>Beépített konzorciumkezelés
 
-Az első blockchain-tag üzembe helyezésekor csatlakozhat vagy létrehozhat egy új konzorciumot.  A konzorcium olyan logikai csoport, amely a többrésztvevős folyamatokban lebonyolított blockchain-tagok közötti irányítás és kapcsolat kezelésére szolgál.  Az Azure Blockchain szolgáltatás beépített irányítási ellenőrzéseket biztosít az előre definiált intelligens szerződések segítségével, amelyek meghatározzák, hogy a konzorcium milyen műveleteket végezhet.  Ezek az irányítási vezérlők a konzorcium rendszergazdája által igény szerint testreszabhatók. Új konzorcium létrehozásakor a blockchain-tag a konzorcium alapértelmezett rendszergazdája, amely lehetővé teszi más felek meghívását a konzorciumhoz való csatlakozásra.  A konzorciumot csak akkor lehet csatlakoztatni, ha korábban meghívott.  Konzorciumhoz való csatlakozáskor a blockchain-tag a konzorcium rendszergazdája által bevezetett irányítási szabályozás hatálya alá esik.
+Az első blokklánc-tag telepítésekor vagy csatlakozik, vagy hozzon létre egy új konzorciumot.  A konzorcium egy logikai csoport, amely a többrésztvevős folyamatban lebonyolító blokklánc-tagok közötti irányítás és kapcsolat kezelésére szolgál.  Az Azure Blockchain Service beépített cégirányítási vezérlőket biztosít előre meghatározott intelligens szerződések en keresztül, amelyek meghatározzák, hogy a konzorcium tagjai milyen műveleteket hajthatnak végre.  Ezeket a cégirányítási vezérlőket szükség szerint testre szabhatja a konzorcium rendszergazdája. Amikor új konzorciumot hoz létre, a blockchain tagja a konzorcium alapértelmezett rendszergazdája, lehetővé téve, hogy más feleket is meghívjon a konzorciumhoz.  Csak akkor csatlakozhat konzorciumhoz, ha korábban már meghívást kapott.  Konzorciumhoz való csatlakozáskor a blokklánc-tag a konzorcium rendszergazdája által bevezetett irányítási vezérlők hatálya alá tartozik.
 
-![Konzorciumok kezelése](./media/overview/consortium.png)
+![Konzorciumirányítás](./media/overview/consortium.png)
 
-A konzorciumok felügyeleti műveletei, például a tagok hozzáadása és eltávolítása egy konzorciumból a PowerShell és a REST API használatával érhetők el. Az általános felületek használatával programozott módon kezelheti a konzorciumot, nem pedig a szilárdtest-alapú intelligens szerződések módosítását és elküldését. További információ: [Consortium Management](consortium.md).
+A konzorciumkezelési műveletek, például a tagok hozzáadása és eltávolítása egy konzorciumból a PowerShellen és a REST API-n keresztül érhető el. A szilárdságalapú intelligens szerződések módosítása és benyújtása helyett programozott módon kezelheti a konzorciumokat a közös interfészek használatával. További információt a [konzorciumkezelés című témakörben talál.](consortium.md)
 
-## <a name="develop-using-familiar-development-tools"></a>Fejlesztés ismerős fejlesztői eszközök használatával
+## <a name="develop-using-familiar-development-tools"></a>Fejlesztés ismert fejlesztési eszközökkel
 
-A nyílt forráskódú kvórum Ethereum főkönyve alapján ugyanúgy fejlesztheti az Azure Blockchain-szolgáltatáshoz tartozó alkalmazásokat, mint a meglévő Ethereum-alkalmazásokhoz. A vezető iparági partnerekkel együttműködve a Visual Studio Code bővítmény lehetővé teszi, hogy a fejlesztők olyan ismerős eszközöket használjanak, mint például a szarvasgomba Suite intelligens szerződések létrehozásához. Az Azure Blockchain Development Kit bővítmény használatával a fejlesztők létrehozhatnak vagy csatlakozhatnak egy meglévő konzorciumhoz, így az összes IDE-ből létrehozhatók és üzembe helyezhetők intelligens szerződések. Az Azure Blockchain Visual Studio Code bővítmény használatával létrehozhat vagy csatlakozhat egy meglévő konzorciumhoz, így az összes IDE-ből létrehozhatja és üzembe helyezheti az intelligens szerződéseit. További információkért lásd: az [Azure Blockchain Development Kit a vs Code piactéren](https://aka.ms/vscodebcextension) és az [Azure Blockchain Development Kit felhasználói útmutatójában](https://aka.ms/vscodebcextensionwiki).
+A nyílt forráskódú Quorum Ethereum főkönyv alapján ugyanúgy fejleszthet alkalmazásokat az Azure Blockchain Szolgáltatáshoz, mint a meglévő Ethereum-alkalmazások esetében. A vezető iparági partnerekkel együttműködve az Azure Blockchain Development Kit Visual Studio Code bővítmény lehetővé teszi a fejlesztők számára, hogy olyan ismerős eszközöket használjanak ki, mint a Szarvasgomba Suite, intelligens szerződések et hozhatnak létre. Az Azure Blockchain Development Kit bővítmény használatával a fejlesztők létrehozhatnak, vagy csatlakozhatnak a konzorciumhoz, így egyetlen IDE-ből hozhat létre és helyezhet üzembe intelligens szerződéseket. Az Azure Blockchain Visual Studio Code bővítmény használatával létrehozhat vagy csatlakozhat egy meglévő konzorciumhoz, így egyetlen IDE-ből hozhat létre és helyezhet üzembe intelligens szerződéseket. További információ: [Azure Blockchain Development Kit a VS Code piactéren](https://aka.ms/vscodebcextension) és az [Azure Blockchain Development Kit felhasználói útmutató.](https://aka.ms/vscodebcextensionwiki)
 
-## <a name="publish-blockchain-data"></a>Blockchain-adatbázis közzététele
+## <a name="publish-blockchain-data"></a>Blokklánc-adatok közzététele
 
-Az Azure Blockchain Service-hez készült Blockchain-Data Manager az Azure Blockchain szolgáltatás tranzakciós információit rögzíti, átalakítja és kézbesíti az Azure-szolgáltatásokkal való megbízható és skálázható Blockchain Azure Event Grid-integrációt biztosító témaköröknek. A Blockchain Data Manager használatával integrálhatja az alkalmazásokat és az adattárakat. További információ: [Blockchain Data Manager az Azure Blockchain Service](data-manager.md)-ben.
+A Blockchain Data Manager for Azure Blockchain Service rögzíti, átalakítja és kézbesíti az Azure Blockchain Service tranzakciós adatait az Azure Event Grid-témakörökbe, amelyek megbízható és skálázható blockchain főkönyvi integrációt biztosítanak az Azure-szolgáltatásokkal. A Blockchain Data Manager segítségével integrálhatja az off-chain alkalmazásokat és adattárakat. További információ: [Blockchain Data Manager for Azure Blockchain Service](data-manager.md).
 
 ## <a name="support-and-feedback"></a>Támogatás és visszajelzés
 
-Az Azure Blockchain híreket az Azure [Blockchain blogon](https://azure.microsoft.com/blog/topics/blockchain/) tekintheti meg, ahol naprakészen tarthatja a Blockchain szolgáltatás ajánlatait és az Azure Blockchain Engineering csapata információit.
+Az Azure Blockchain hírekért látogasson el az [Azure Blockchain blogjára,](https://azure.microsoft.com/blog/topics/blockchain/) hogy naprakész legyen az Azure Blockchain mérnöki csapatának blockchain szolgáltatásajánlatairól és információiról.
 
-Ha visszajelzést szeretne küldeni a termékről, vagy új funkciókat szeretne kérni, szavazzon a [blockchain készült Azure visszajelzési fórumán](https://aka.ms/blockchainuservoice)keresztül.
+A termékvisszajelzés biztosításához vagy új funkciók igényléséhez szavazzon egy ötletre az [Azure blockchain visszajelzési fórumán](https://aka.ms/blockchainuservoice)keresztül.
 
 ### <a name="community-support"></a>Közösségi támogatás
 
-Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szakértőivel.
+Vegye fel a kapcsolatot a Microsoft mérnökeivel és az Azure Blockchain közösségi szakértőivel.
 
-* [Azure Blockchain MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Azure Blockchain MSDN fórum](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Első lépésként próbálkozzon egy rövid útmutatóval, vagy további részletekért tekintse meg ezeket az erőforrásokat.
-* [Blockchain-tag létrehozása a Azure Portal használatával](create-member.md) vagy [blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md)
-* A Cost-összehasonlításokhoz és a számológépekhez tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/blockchain-service).
-* Az első alkalmazás létrehozása az [Azure Blockchain Development Kit](https://github.com/Azure-Samples/blockchain-devkit) használatával
+Első lépésekhez próbálkozzon egy rövid útmutatóval, vagy további részleteket ezekből az erőforrásokból.
+* [Hozzon létre egy blockchain tagot az Azure Portalon,](create-member.md) vagy [hozzon létre egy blockchain tagot az Azure CLI használatával](create-member-cli.md)
+* A költségösszehasonlításokat és a számológépeket az [árképzési oldalon](https://azure.microsoft.com/pricing/details/blockchain-service)találja.
+* Az első alkalmazás létrehozása az [Azure Blockchain fejlesztői készletével](https://github.com/Azure-Samples/blockchain-devkit)
 * Az Azure Blockchain VSCode bővítmény [felhasználói útmutatója](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki)

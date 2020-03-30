@@ -1,6 +1,6 @@
 ---
 title: Hitelesítés és engedélyezés
-description: Ismerje meg, hogy az alkalmazás vagy szolgáltatás milyen módon tud hitelesíteni az Azure térbeli Horgonyokban, valamint az Azure térbeli horgonyokhoz való hozzáférést biztosító vezérlési szinteket.
+description: Ismerje meg, hogy egy alkalmazás vagy szolgáltatás milyen különböző módokon hitelesítheti magát az Azure Spatial Anchors számára, valamint az Azure Spatial Anchors-hoz való hozzáférés hez való hozzáférés hez való hozzáférés hez szükséges vezérlőszintek.
 author: julianparismorgan
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,49 +9,49 @@ ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: df27a77c202951a6c789703f12712e75bd8b5906
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77656977"
 ---
-# <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure térbeli horgonyokhoz
+# <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure Spatial Anchors számára
 
-Ebben a szakaszban az Azure térbeli horgonyok alkalmazásból vagy webszolgáltatásból való hitelesítésének különféle módjait ismertetjük, valamint az Azure-címtár (Azure AD) szerepköralapú Access Control használatának módja a térbeli horgonyok fiókjaihoz való hozzáférés szabályozásához.
+Ebben a szakaszban bemutatjuk, hogy milyen különböző módokon hitelesítheti magát az Azure Spatial Anchors az alkalmazásból vagy a webszolgáltatásból, valamint azt, hogy milyen módon használhatja a szerepköralapú hozzáférés-vezérlést az Azure Directoryban (Azure AD) a térbeli horgonyok fiókjaihoz való hozzáférés szabályozására.
 
 ## <a name="overview"></a>Áttekintés
 
-![Az Azure térbeli horgonyok hitelesítésének áttekintése](./media/spatial-anchors-authentication-overview.png)
+![Az Azure Spatial Anchors hitelesítésének áttekintése](./media/spatial-anchors-authentication-overview.png)
 
-Egy adott Azure térbeli horgonyhoz tartozó fiók eléréséhez az ügyfeleknek először hozzáférési tokent kell beszerezniük az Azure Mixed Reality biztonságijogkivonat-szolgáltatásból (STS). Az STS Live-ból 24 órán keresztül beszerzett tokenek, valamint a térbeli horgonyok szolgáltatásaira vonatkozó információk, amelyek lehetővé teszik a fiók engedélyezési döntését, és biztosítják, hogy csak a jogosult résztvevői férhessenek hozzá a fiókhoz.
+Egy adott Azure Spatial Anchors-fiók eléréséhez az ügyfeleknek először be kell szerezniük egy hozzáférési jogkivonatot az Azure Mixed Reality Security Token Service (STS) szolgáltatásból. Az STS-ből 24 órán keresztül beszerzett jogkivonatok, amelyek információkat tartalmaznak a Spatial Anchors szolgáltatások számára a fiók engedélyezési döntéseihez, és biztosítják, hogy csak az engedélyezett rendszertagok férhessenek hozzá a fiókhoz.
 
-Hozzáférési jogkivonatok bármelyik fiók kulcsaiból vagy az Azure AD-ből kiállított jogkivonatokból szerezhetők be.
+Access-jogkivonatok beszerezhető cserébe vagy fiókkulcsok, vagy az Azure AD által kibocsátott jogkivonatok.
 
-A fiókok kulcsai lehetővé teszik az Azure térbeli horgonyok szolgáltatás használatának gyors megkezdését; az alkalmazás éles környezetben való üzembe helyezése előtt azonban javasoljuk, hogy frissítse az alkalmazást az Azure AD-alapú hitelesítés használatára.
+A fiókkulcsok lehetővé teszik az Azure Spatial Anchors szolgáltatás használatának gyors megkezdését; azonban az alkalmazás éles környezetben való üzembe helyezése előtt azt javasoljuk, hogy frissítse az alkalmazást az Azure AD-alapú hitelesítés használatához.
 
-Az Azure AD-hitelesítési tokenek kétféleképpen érhetők el:
+Az Azure AD hitelesítési jogkivonatok kétféleképpen szerezhetők be:
 
-- Ha vállalati alkalmazást hoz létre, és a vállalata az Azure ad-t használja identitásrendszer, használhat felhasználói Azure ad-hitelesítést az alkalmazásban, és hozzáférést biztosíthat a térbeli horgonyokhoz a meglévő Azure ad-beli biztonsági csoportok használatával, vagy közvetlenül a szervezet felhasználói számára.
-- Ellenkező esetben javasoljuk, hogy az Azure AD-jogkivonatokat egy, az alkalmazást támogató webszolgáltatásból szerezze be. A támogató webszolgáltatás használata a javasolt hitelesítési módszer az üzemi alkalmazások számára, mivel elkerüli a hitelesítő adatok beágyazását az ügyfélalkalmazás Azure térbeli horgonyokhoz való hozzáféréséhez.
+- Ha nagyvállalati alkalmazást hoz létre, és vállalata az Azure AD-t használja identitásrendszerként, használhatja a felhasználóalapú Azure AD-hitelesítést az alkalmazásban, és hozzáférést adhat a térbeli horgonyok fiókjaihoz a meglévő Azure AD biztonsági csoportok használatával, vagy közvetlenül a szervezet felhasználóinak.
+- Ellenkező esetben azt javasoljuk, hogy az Azure AD-jogkivonatok beszerzése egy webszolgáltatás támogatja az alkalmazást. A támogató webszolgáltatás használata az éles alkalmazások ajánlott hitelesítési módja, mivel elkerüli az Azure Spatial Anchors eléréséhez szükséges hitelesítő adatok beágyazását az ügyfélalkalmazásban.
 
-## <a name="account-keys"></a>Fiók kulcsai
+## <a name="account-keys"></a>Fiókkulcsok
 
-Az első lépésekhez az Azure térbeli horgonyok fiókjához való hozzáféréshez használható fiókok kulcsai. A fiók kulcsait a Azure Portal fogja megtalálni. Navigáljon a fiókjához, és válassza a "kulcsok" fület.
+A fiókkulcsok használata az Azure Spatial Anchors-fiók eléréséhez a legegyszerűbb módja az első lépéseknek. A fiókkulcsokat az Azure Portalon találja. Nyissa meg a fiókját, és válassza a "Kulcsok" lapot.
 
-![Az Azure térbeli horgonyok hitelesítésének áttekintése](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
+![Az Azure Spatial Anchors hitelesítésének áttekintése](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
 
 
-A rendszer két kulcsot tesz elérhetővé, amelyek egyszerre érvényesek a térbeli horgonyok fiókhoz való hozzáféréshez. Javasoljuk, hogy rendszeresen frissítse a fiók eléréséhez használt kulcsot. a két különálló érvényes kulcs lehetővé teszi az ilyen frissítések állásidő nélküli engedélyezését; csak az elsődleges kulcsot és a másodlagos kulcsot kell frissítenie.
+Két kulcs érhető el, amelyek egyszerre érvényesek a Térbeli horgonyok fiókhoz való hozzáféréshez. Javasoljuk, hogy rendszeresen frissítse a fiók eléréséhez használt kulcsot; a két különálló érvényes kulcs lehetővé teszi az ilyen frissítéseket állásidő nélkül; csak frissítenie kell az elsődleges és a másodlagos kulcsot.
 
-Az SDK beépített támogatást nyújt a fiókok kulcsaival történő hitelesítéshez; egyszerűen be kell állítania a AccountKey tulajdonságot a cloudSession objektumon.
+Az SDK beépített támogatást nyújt a fiókkulcsok hitelesítéséhez; egyszerűen be kell állítania a AccountKey tulajdonságot a cloudSession objektumon.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
 ```
 
-# <a name="objc"></a>[ObjC](#tab/objc)
+# <a name="objc"></a>[ObjC között](#tab/objc)
 
 ```objc
 _cloudSession.configuration.accountKey = @"MyAccountKey";
@@ -69,14 +69,14 @@ _cloudSession!.configuration.accountKey = "MyAccountKey"
 mCloudSession.getConfiguration().setAccountKey("MyAccountKey");
 ```
 
-# <a name="c-ndk"></a>[C++NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
 configuration->AccountKey(R"(MyAccountKey)");
 ```
 
-# <a name="c-winrt"></a>[C++WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -85,48 +85,48 @@ configuration.AccountKey(LR"(MyAccountKey)");
 
 ---
 
-Ha elkészült, az SDK kezeli a hozzáférési tokenhez tartozó fiók kulcsának cseréjét, valamint az alkalmazáshoz tartozó jogkivonatok szükséges gyorsítótárazását.
+Ha ez megtörtént, az SDK kezeli a fiókkulcs cseréjét egy hozzáférési jogkivonathoz, és az alkalmazás jogkivonatainak szükséges gyorsítótárazását.
 
 > [!WARNING]
-> A fiók kulcsainak használata ajánlott a gyors beléptetéshez, de csak a fejlesztés és a prototípusok során. Erősen ajánlott, hogy az alkalmazást az élesben lévő beágyazott fiók kulcsa alapján szállítsa az alkalmazásba, és Ehelyett használja a következőként felsorolt felhasználó-vagy szolgáltatás-alapú Azure AD-hitelesítési módszereket.
+> A fiókkulcsok használata a gyors beszálláshoz ajánlott, de csak fejlesztés/prototípus készítés során. Erősen ajánlott, hogy ne szállítsa az alkalmazást éles környezetbe egy beágyazott fiókkulcs használatával, és ehelyett a következőként felsorolt felhasználó- vagy szolgáltatásalapú Azure AD-hitelesítési megközelítéseket használja.
 
-## <a name="azure-ad-user-authentication"></a>Azure AD-beli felhasználói hitelesítés
+## <a name="azure-ad-user-authentication"></a>Azure AD-felhasználó hitelesítése
 
-Azure Active Directory felhasználókat célzó alkalmazások esetén az ajánlott módszer egy Azure AD-jogkivonat használata a felhasználó számára, amelyet a [MSAL-könyvtár](../../active-directory/develop/msal-overview.md)használatával szerezhet be. Kövesse az [alkalmazás regisztrálása](../../active-directory/develop/quickstart-register-app.md)című útmutatóban felsorolt lépéseket, amelyek a következőket tartalmazzák:
+Az Azure Active Directory-felhasználókat célzó alkalmazások esetében az ajánlott megközelítés egy Azure AD-token használata a felhasználó számára, amely az [MSAL-kódtár](../../active-directory/develop/msal-overview.md)használatával szerezhető be. Kövesse a felsorolt lépéseket a [regiszter egy alkalmazás rövid útmutató](../../active-directory/develop/quickstart-register-app.md), amely tartalmazza:
 
-1. Konfiguráció a Azure Portalban
-    1.  Az alkalmazás regisztrálása az Azure AD-ben **natív alkalmazásként**. A regisztrálás részeként meg kell határoznia, hogy az alkalmazás több-bérlős vagy sem, és megadja az alkalmazáshoz engedélyezett átirányítási URL-címeket.
-        1.  Váltson az **API-engedélyek** lapra
-        2.  Válassza **az engedély hozzáadása** lehetőséget
-            1.  Válassza a **vegyes valóság erőforrás-szolgáltató** elemet **a saját szervezet által használt API** -k alatt
+1. Konfiguráció az Azure Portalon
+    1.  Regisztrálja az alkalmazást az Azure **AD-ben natív alkalmazásként.** A regisztráció részeként meg kell határoznia, hogy az alkalmazás több-bérlős legyen-e vagy sem, és meg kell adnia az alkalmazás számára engedélyezett átirányítási URL-eket.
+        1.  Váltás az **API-engedélyek** lapra
+        2.  Engedély **hozzáadása** lehetőséget
+            1.  Válassza a **vegyes valóságerőforrás-szolgáltatót** a **szervezetáltal használt API-k** lapon
             2.  **Delegált engedélyek** kiválasztása
-            3.  Jelölje be a **mixedreality. bejelentkezési** jelölőnégyzetet a **mixedreality** alatt
-            4.  Válassza az **engedélyek hozzáadása** lehetőséget
-        3.  Adja meg a **rendszergazdai jóváhagyást**
-    2.  Adja meg az alkalmazás vagy a felhasználók számára az erőforráshoz való hozzáférést:
-        1.  Navigáljon a térbeli horgonyok erőforrásához Azure Portal
-        2.  Váltson a **hozzáférés-vezérlés (iam)** lapra
-        3.  A **szerepkör-hozzárendelés hozzáadása** megnyomva
+            3.  Jelölje be a **mixedreality.signin** jelölőnégyzetet **a mixedreality** alatt
+            4.  **Engedélyek hozzáadása** kiválasztása
+        3.  Válassza **a Rendszergazdai hozzájárulás megadása lehetőséget.**
+    2.  Az alkalmazás vagy a felhasználók hozzáférésének megadása az erőforráshoz:
+        1.  Keresse meg a Spatial Anchors erőforrást az Azure Portalon
+        2.  Váltás a **Hozzáférés-vezérlés (IAM)** lapra
+        3.  Hit **Szerepkör-hozzárendelés hozzáadása**
             1.  [Szerepkör kiválasztása](#role-based-access-control)
-            2.  A **Select (kiválasztás** ) mezőben adja meg azon felhasználók, csoportok és/vagy alkalmazások nevét, amelyekhez hozzáférést szeretne rendelni.
+            2.  A **Kijelölés** mezőbe írja be annak a felhasználónak, csoportnak és/vagy alkalmazásnak a nevét, amelyhez hozzáférést kíván rendelni.
             3.  Kattintson a **Mentés** gombra.
 2. A kódban:
-    1.  Ügyeljen arra, hogy a saját Azure AD-alkalmazásának **alkalmazás-azonosítóját** és **átirányítási URI-ját** használja az **ügyfél-azonosító** és a **RedirectUri** paraméterként a ADAL-ben.
-    2.  Adja meg a bérlő adatait:
-        1.  Ha az alkalmazás **csak a saját szervezetet**támogatja, cserélje le ezt az értéket a **bérlői azonosító** vagy a **bérlő nevére** (például contoso.microsoft.com).
-        2.  Ha az alkalmazás **bármely szervezeti címtárban támogatja a fiókokat**, cserélje le ezt az értéket **szervezetekkel**
-        3.  Ha az alkalmazás támogatja az **összes Microsoft-fiók felhasználót**, cserélje le ezt az értéket **közösre**
-    3.  A jogkivonat-kérelemben állítsa az **erőforrást** "https://sts.mixedreality.azure.com" értékre. Ez az "erőforrás" arra utal az Azure AD-ra, hogy az alkalmazás jogkivonatot kér az Azure térbeli horgonyok szolgáltatáshoz.
+    1.  Győződjön meg arról, hogy az **alkalmazásazonosítót** használja, és **átirányítja** a saját Azure AD-alkalmazás Uri-ját **ügyfélazonosítóként** és **RedirectUri-paraméterekként** az ADAL-ban
+    2.  Állítsa be a bérlői adatokat:
+        1.  Ha az alkalmazás csak a **Saját szervezet**lehetőséget támogatja, cserélje le ezt az értéket a **bérlői azonosítóra** vagy **a bérlő nevére** (például contoso.microsoft.com)
+        2.  Ha az alkalmazás támogatja a **fiókok at bármely szervezeti címtárban,** cserélje le ezt az értéket **szervezetek**
+        3.  Ha az alkalmazás támogatja **az összes Microsoft-fiókfelhasználót,** cserélje le ezt az értéket **a Common**
+    3.  A jogkivonat-kérelemben állítsahttps://sts.mixedreality.azure.comaz **erőforrást** " ".On your token request, set the resource to " ". Ez az "erőforrás" jelzi az Azure AD-nek, hogy az alkalmazás egy jogkivonatot kér az Azure Spatial Anchors szolgáltatáshoz.
 
-Ezzel az alkalmazásnak képesnek kell lennie az Azure AD-token MSAL való beszerzésére; beállíthatja, hogy az Azure AD-jogkivonat **authenticationToken** legyen a felhőalapú munkamenet-konfigurációs objektumon.
+Ezzel az alkalmazás nak képesnek kell lennie arra, hogy beszerezze az MSAL egy Azure AD-jogkivonatot; beállíthatja, hogy az Azure AD token **a hitelesítéstoken** a felhőbeli munkamenet konfigurációs objektum.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AuthenticationToken = @"MyAuthenticationToken";
 ```
 
-# <a name="objc"></a>[ObjC](#tab/objc)
+# <a name="objc"></a>[ObjC között](#tab/objc)
 
 ```objc
 _cloudSession.configuration.authenticationToken = @"MyAuthenticationToken";
@@ -144,14 +144,14 @@ _cloudSession!.configuration.authenticationToken = "MyAuthenticationToken"
 mCloudSession.getConfiguration().setAuthenticationToken("MyAuthenticationToken");
 ```
 
-# <a name="c-ndk"></a>[C++NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
 configuration->AuthenticationToken(R"(MyAuthenticationToken)");
 ```
 
-# <a name="c-winrt"></a>[C++WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -160,35 +160,35 @@ configuration.AuthenticationToken(LR"(MyAuthenticationToken)");
 
 ---
 
-## <a name="azure-ad-service-authentication"></a>Azure AD-szolgáltatás hitelesítése
+## <a name="azure-ad-service-authentication"></a>Azure AD szolgáltatás hitelesítése
 
-Az Azure térbeli horgonyokat használó alkalmazások éles környezetben való üzembe helyezéséhez ajánlott lehetőség, hogy kihasználja a hitelesítési kérelmeket közvetítő háttér-szolgáltatást. Az általános sémának az alábbi ábrán leírt módon kell szerepelnie:
+Az ajánlott lehetőség az Azure Spatial Anchors éles környezetben az Azure Spatial Anchors éles környezetben történő üzembe helyezéséhez, hogy kihasználja a háttérszolgáltatás, amely a hitelesítési kérelmek közvetítése. Az általános rendszernek az ábrán leírt módon kell lennie:
 
-![Az Azure térbeli horgonyok hitelesítésének áttekintése](./media/spatial-anchors-aad-authentication.png)
+![Az Azure Spatial Anchors hitelesítésének áttekintése](./media/spatial-anchors-aad-authentication.png)
 
-A rendszer azt feltételezi, hogy az alkalmazás saját mechanizmust használ (például: Microsoft-fiók, PlayFab, Facebook, Google ID, Custom username/Password stb.) a háttérbeli szolgáltatáshoz való hitelesítéshez. Miután a felhasználók hitelesítése megtörtént a háttér-szolgáltatásban, a szolgáltatás lekérhet egy Azure AD-tokent, kicserélheti az Azure térbeli horgonyok hozzáférési jogkivonatára, majd visszaküldheti azt az ügyfélalkalmazás számára.
+Itt feltételezzük, hogy az alkalmazás saját mechanizmust használ (például Microsoft-fiók, PlayFab, Facebook, Google ID, egyéni felhasználónév/jelszó stb.) a háttérszolgáltatás hitelesítéséhez. Miután a felhasználók hitelesítve vannak a háttérszolgáltatásban, hogy a szolgáltatás lekérheti az Azure AD-jogkivonatot, cserélje ki egy hozzáférési jogkivonatot az Azure Spatial Anchors számára, és visszaküldheti azt az ügyfélalkalmazásnak.
 
-Az Azure AD hozzáférési jogkivonatot a MSAL- [könyvtár](../../active-directory/develop/msal-overview.md)használatával kéri le a rendszer. Kövesse az [alkalmazás regisztrálása](../../active-directory/develop/quickstart-register-app.md)című útmutatóban felsorolt lépéseket, amelyek a következőket tartalmazzák:
+Az Azure AD-hozzáférési jogkivonat beolvasása az [MSAL-kódtár](../../active-directory/develop/msal-overview.md)használatával történik. Kövesse a felsorolt lépéseket a [regiszter egy alkalmazás rövid útmutató](../../active-directory/develop/quickstart-register-app.md), amely tartalmazza:
 
-1.  Konfiguráció a Azure Portalban:
-    1.  Az alkalmazás regisztrálása az Azure AD-ben:
-        1.  Azure Portalban navigáljon a **Azure Active Directory**, és válassza az **alkalmazás-regisztrációk** lehetőséget.
-        2.  **Új alkalmazás regisztrációjának** kiválasztása
-        3.  Adja meg az alkalmazás nevét, válassza a **webalkalmazás/API** lehetőséget az alkalmazás típusaként, és adja meg a szolgáltatáshoz tartozó hitelesítési URL-címet. Ezután nyomja meg a **create (létrehozás**) gombra.
-        4.  Az alkalmazásban nyomja meg a **Beállítások**, majd a **kulcsok** fület. adja meg a kulcs nevét, válasszon egy időtartamot, majd kattintson a **Mentés gombra**. Ügyeljen arra, hogy az adott időpontban megjelenő kulcs értékét mentse, mert a webszolgáltatás kódjában szerepelnie kell a szolgáltatásnak.
-    2.  Adja meg az alkalmazás és/vagy a felhasználók hozzáférését az erőforráshoz:
-        1.  Navigáljon a térbeli horgonyok erőforrásához Azure Portal
-        2.  Váltson a **hozzáférés-vezérlés (iam)** lapra
-        3.  A **szerepkör-hozzárendelés hozzáadása** megnyomva
+1.  Konfiguráció az Azure Portalon:
+    1.  Regisztrálja alkalmazását az Azure AD-ben:
+        1.  Az Azure Portalon keresse meg az **Azure Active Directoryt,** és válassza ki **az alkalmazásregisztrációkat**
+        2.  **Új alkalmazásregisztráció** kiválasztása
+        3.  Adja meg az alkalmazás nevét, válassza a **Web app / API** alkalmazástípusként, és adja meg a szolgáltatás hitelesítési URL-címét. Ezután nyomja **le a Create (Létrehozás) lenyomul.**
+        4.  Az adott alkalmazásban nyomja le a **Beállítások gombot,** majd a **Billentyűk** lapot. **Save** Győződjön meg arról, hogy mentse a kulcs érték jelenik meg abban az időben, ahogy meg kell, hogy tartalmazza azt a webszolgáltatás kódját.
+    2.  Az alkalmazás és/vagy a felhasználók hozzáférésének megadása az erőforráshoz:
+        1.  Keresse meg a Spatial Anchors erőforrást az Azure Portalon
+        2.  Váltás a **Hozzáférés-vezérlés (IAM)** lapra
+        3.  Hit **Szerepkör-hozzárendelés hozzáadása**
         1.  [Szerepkör kiválasztása](#role-based-access-control)
-        2.  A **Select (kiválasztás** ) mezőben adja meg a létrehozott alkalmazás (ok) nevét, és amelyhez hozzáférést szeretne hozzárendelni. Ha azt szeretné, hogy az alkalmazás felhasználói különböző szerepkörökkel rendelkezzenek a térbeli horgonyok fiókjában, több alkalmazást kell regisztrálnia az Azure AD-ben, és hozzá kell rendelnie egy külön szerepkörhöz. Ezután implementálja az engedélyezési logikát, hogy a megfelelő szerepkört használja a felhasználók számára.
+        2.  A **kijelölendő** mezőben adja meg a létrehozott alkalmazás(ok) nevét, amelyhez hozzáférést kíván rendelni. Ha azt szeretné, hogy az alkalmazás felhasználói különböző szerepköröket a Spatial Anchors-fiókkal szemben, regisztráljon több alkalmazást az Azure AD-ben, és rendeljen mindegyikhez külön szerepkört. Ezután valósítsa meg az engedélyezési logikát a megfelelő szerepkör használatához a felhasználók számára.
     3.  Kattintson a **Mentés** gombra.
-2.  A kódban (Megjegyzés: a GitHubon található szolgáltatási mintát használhatja):
-    1.  Ügyeljen arra, hogy a saját Azure AD-alkalmazásának alkalmazás-AZONOSÍTÓját, az alkalmazás titkos kulcsát és átirányítási URI-ját használja az ügyfél-azonosító, a titkos kulcs és a RedirectUri paraméterként a ADAL
-    2.  Adja meg a bérlő AZONOSÍTÓját a saját AAAzure, és adja hozzá a bérlő AZONOSÍTÓját a ADAL-ben található Authority paraméterben.
-    3.  A jogkivonat-kérelemben állítsa az **erőforrást** "https://sts.mixedreality.azure.com" értékre.
+2.  A kódban (megjegyzés: használhatja a GitHubon található szolgáltatásmintát):
+    1.  Győződjön meg arról, hogy az alkalmazásazonosítót, az alkalmazástitkos kulcsot és a saját Azure AD-alkalmazás Uri-ját használja ügyfélazonosítóként, titkos és RedirectUri-paraméterekként az ADAL-ban
+    2.  Állítsa be a bérlőazonosítót a saját AAAzure ADD-bérlőazonosítójára az ADAL jogosultsági paraméterében
+    3.  A jogkivonat-kérelemben állítsahttps://sts.mixedreality.azure.comaz **erőforrást** " "
 
-Ezzel a háttér-szolgáltatás lekérheti az Azure AD-tokent. Ezután egy MR-tokenre cserélheti azt, amelyet vissza fog térni az ügyfélnek. A MR-tokenek lekéréséhez egy Azure AD-tokent kell használni REST-hívással. Íme egy példa a hívásra:
+Ezzel a háttérszolgáltatás egy Azure AD-jogkivonat ot is lekérhet. Ezután kicserélheti egy MR-tokenre, amely visszafog térni az ügyfélnek. Egy Mr-jogkivonat lekérése egy Azure AD-jogkivonat használatával rest-hívás történik. Itt van egy minta hívás:
 
 ```
 GET https://mrc-auth-prod.trafficmanager.net/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
@@ -205,19 +205,19 @@ MS-CV: 05JLqWeKFkWpbdY944yl7A.0
 {"AccessToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2MzYyMTk5ZTI2NjQxOGU4ZjE3MThlM2IyMThjZTIxIiwidHlwIjoiSldUIn0.eyJqdGkiOiJmMGFiNWIyMy0wMmUxLTQ1MTQtOWEzNC0xNzkzMTA1NTc4NzAiLCJjYWkiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJ0aWQiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJhaWQiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJhYW8iOi0xLCJhcHIiOiJlYXN0dXMyIiwicmlkIjoiL3N1YnNjcmlwdGlvbnMvNzIzOTdlN2EtNzA4NC00ODJhLTg3MzktNjM5Y2RmNTMxNTI0L3Jlc291cmNlR3JvdXBzL3NhbXBsZV9yZXNvdXJjZV9ncm91cC9wcm92aWRlcnMvTWljcm9zb2Z0Lk1peGVkUmVhbGl0eS9TcGF0aWFsQW5jaG9yc0FjY291bnRzL2RlbW9fYWNjb3VudCIsIm5iZiI6MTU0NDU0NzkwMywiZXhwIjoxNTQ0NjM0MzAzLCJpYXQiOjE1NDQ1NDc5MDMsImlzcyI6Imh0dHBzOi8vbXJjLWF1dGgtcHJvZC50cmFmZmljbWFuYWdlci5uZXQvIiwiYXVkIjoiaHR0cHM6Ly9tcmMtYW5jaG9yLXByb2QudHJhZmZpY21hbmFnZXIubmV0LyJ9.BFdyCX9UJj0i4W3OudmNUiuaGgVrlPasNM-5VqXdNAExD8acFJnHdvSf6uLiVvPiQwY1atYyPbOnLYhEbIcxNX-YAfZ-xyxCKYb3g_dbxU2w8nX3zDz_X3XqLL8Uha-rkapKbnNgxq4GjM-EBMCill2Svluf9crDmO-SmJbxqIaWzLmlUufQMWg_r8JG7RLseK6ntUDRyDgkF4ex515l2RWqQx7cw874raKgUO4qlx0cpBAB8cRtGHC-3fA7rZPM7UQQpm-BC3suXqRgROTzrKqfn_g-qTW4jAKBIXYG7iDefV2rGMRgem06YH_bDnpkgUa1UgJRRTckkBuLkO2FvA"}
 ```
 
-Ahol az engedélyezési fejléc a következőképpen van formázva: `Bearer <accoundId>:<accountKey>`
+Ha az engedélyezési fejléc formázása a következő:`Bearer <accoundId>:<accountKey>`
 
-A válasz pedig az MR tokent tartalmazza egyszerű szövegben.
+És a válasz tartalmazza az MR token egyszerű szövegben.
 
-Ekkor a rendszer visszaküldi az MR tokent az ügyfélnek. Az ügyfélalkalmazás ezután a Felhőbeli munkamenet-konfigurációban állíthatja be hozzáférési jogkivonatként.
+Ezt az MR-jogkivonatot ezután visszaadja az ügyfélnek. Az ügyfélalkalmazás ezután beállíthatja, mint a hozzáférési jogkivonatot a felhőbeli munkamenet konfigurációjában.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccessToken = @"MyAccessToken";
 ```
 
-# <a name="objc"></a>[ObjC](#tab/objc)
+# <a name="objc"></a>[ObjC között](#tab/objc)
 
 ```objc
 _cloudSession.configuration.accessToken = @"MyAccessToken";
@@ -235,14 +235,14 @@ _cloudSession!.configuration.accessToken = "MyAccessToken"
 mCloudSession.getConfiguration().setAccessToken("MyAccessToken");
 ```
 
-# <a name="c-ndk"></a>[C++NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
 configuration->AccessToken(R"(MyAccessToken)");
 ```
 
-# <a name="c-winrt"></a>[C++WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -253,24 +253,24 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-Az alkalmazásokhoz, szolgáltatásokhoz vagy a szolgáltatás Azure AD-felhasználóinak biztosított hozzáférés szintjének szabályozásához a következő szerepköröket hozta létre, amelyeket szükség szerint rendelhet hozzá az Azure térbeli szerkesztőpontok fiókjaihoz:
+A szolgáltatás alkalmazások, szolgáltatások vagy Azure AD-felhasználók számára biztosított hozzáférési szint szabályozása érdekében a következő szerepkörök et hozták létre, amelyeket szükség szerint hozzárendelhet az Azure Spatial Anchors-fiókokhoz:
 
-- **Térbeli horgonyok fiókjának tulajdonosa**: az e szerepkörrel rendelkező alkalmazások vagy felhasználók létrehozhatnak térbeli horgonyokat, lekérdezéseket végezhetnek, és törölhetik azokat. Ha a fiók kulcsainak használatával hitelesíti a fiókot, a rendszer hozzárendeli a **térbeli horgonyok fiók tulajdonosi** szerepkörét a hitelesített rendszerbiztonsági tag számára.
-- **Térbeli horgonyok fiókjának közreműködői**: a szerepkörrel rendelkező alkalmazások vagy felhasználók létrehozhatnak térbeli horgonyokat, lekérdezéseket végezhetnek, de nem törölhetik azokat.
-- **Térbeli horgonyok fiókjának olvasója**: azok az alkalmazások vagy felhasználók, akik ezt a szerepkört használják, csak a térbeli horgonyok lekérdezésére képesek, de újakat nem hozhatnak létre, törölhetik a meglévőket, vagy frissíthetik a metaadatokat a térbeli horgonyokon. Ez általában olyan alkalmazásokhoz használatos, ahol egyes felhasználók a környezetet használják, míg mások csak az adott környezetbe helyezett horgonyokat tudják visszahívni.
+- **Térbeli horgonyok fióktulajdonosa:** az ilyen szerepkört bekezelő alkalmazások vagy felhasználók képesek térbeli horgonyokat létrehozni, lekérdezni és törölni őket. Amikor fiókkulcsokkal hitelesíti a fiókját, a **Spatial Anchors fióktulajdonosszerepkör** a hitelesített egyszerű felhasználóhoz lesz rendelve.
+- **Térbeli horgonyok fiók közreműködője:** alkalmazások vagy felhasználók, amelyek ezt a szerepkört képesek létrehozni térbeli horgonyok, lekérdezés számukra, de nem tudja törölni őket.
+- **Térbeli horgonyok fiókolvasó:** az ilyen szerepkörrel rendelkező alkalmazások vagy felhasználók csak térbeli horgonyokat kérdezhetnek le, de nem hozhatnak létre újakat, nem törölhetik a meglévőket, és nem frissíthetik a térbeli horgonyok metaadatait. Ezt általában olyan alkalmazásokhoz használják, ahol egyes felhasználók a környezetet gondozzák, míg mások csak a korábban az adott környezetben elhelyezett horgonyokat tudják visszahívni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Hozza létre első alkalmazását az Azure térbeli Horgonyokkal.
-
-> [!div class="nextstepaction"]
-> [Unity (HoloLens)](../quickstarts/get-started-unity-hololens.md)
+Hozza létre első alkalmazását az Azure Spatial Anchors segítségével.
 
 > [!div class="nextstepaction"]
-> [Unity (iOS)](../quickstarts/get-started-unity-ios.md)
+> [Egység (HoloLens)](../quickstarts/get-started-unity-hololens.md)
 
 > [!div class="nextstepaction"]
-> [Unity (Android)](../quickstarts/get-started-unity-android.md)
+> [Egység (iOS)](../quickstarts/get-started-unity-ios.md)
+
+> [!div class="nextstepaction"]
+> [Egység (Android)](../quickstarts/get-started-unity-android.md)
 
 > [!div class="nextstepaction"]
 > [iOS](../quickstarts/get-started-ios.md)

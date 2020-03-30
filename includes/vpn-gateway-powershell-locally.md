@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8d5c54dbc3d207ac0c16121b2c0368d052b10cd3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660484"
 ---
-A Azure PowerShell-parancsmagokat helyileg is telepítheti és futtathatja a számítógépen. A PowerShell-parancsmagok gyakran frissülnek. Ha még nem telepítette a legújabb verziót, az utasításokban megadott értékek sikertelenek lehetnek. A számítógépen telepített Azure PowerShell verzióinak megkereséséhez használja a `Get-Module -ListAvailable Az` parancsmagot. A telepítéséhez vagy frissítéséhez tekintse meg [a Azure PowerShell modul telepítését](/powershell/azure/install-az-ps)ismertető témakört.
+Az Azure PowerShell-parancsmagokat helyileg is telepítheti és futtathatja a számítógépen. A PowerShell-parancsmagok gyakran frissülnek. Ha még nem telepítette a legújabb verziót, az utasításokban megadott értékek sikertelenek lehetnek. A számítógépre telepített Azure PowerShell-verziók megkereséséhez használja a `Get-Module -ListAvailable Az` parancsmast. A telepítéshez vagy frissítéshez [olvassa el az Azure PowerShell-modul telepítése című témakört.](/powershell/azure/install-az-ps)

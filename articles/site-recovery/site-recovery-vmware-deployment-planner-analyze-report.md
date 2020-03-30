@@ -1,6 +1,6 @@
 ---
-title: A VMware vész-helyreállítási Deployment Planner jelentés elemzése Azure Site Recovery
-description: Ez a cikk azt ismerteti, hogyan elemezheti a helyreállítási Deployment Planner által generált jelentést az Azure-ba történő VMware vész-helyreállításhoz Azure Site Recovery használatával.
+title: A VMware vész-helyreállítási jelentésének elemzése az Azure Site Recovery szolgáltatással
+description: Ez a cikk ismerteti, hogyan elemezheti a jelentést a helyreállítási telepítés tervezője a VMware vész-helyreállítási azure-ba, az Azure Site Recovery használatával.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257510"
 ---
-# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>A VMware vész-helyreállítási Deployment Planner jelentés elemzése az Azure-ba
+# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>A VMware vész-helyreállítási jelentésének elemzése az Azure-ba
 
 Az elkészített Microsoft Excel-jelentés a következő táblázatokat tartalmazza:
 ## <a name="on-premises-summary"></a>Helyszíni összefoglalás
@@ -92,7 +92,7 @@ Ha az eszközt olyan konfigurációs kiszolgálón vagy folyamatkiszolgálón fu
 A Site Recovery minden vállalati üzemelő példánya esetében az [ExpressRoute](https://aka.ms/expressroute) használata javasolt.
 
 ### <a name="required-storage-accounts"></a>Szükséges tárfiókok
-A következő diagram az összes kompatibilis virtuális gép védelméhez szükséges (standard és prémium szintű) tárfiókok teljes számát mutatja. A „VM-storage placement” (Virtuálisgép-tároló elhelyezése) szakaszból megtudhatja, hogy melyik tárfiókot melyik virtuális géphez használhatja. Ha a Deployment Planner v 2.5-ös verziójával rendelkezik, ez a javaslat csak a replikáláshoz szükséges standard gyorsítótárbeli Storage-fiókok számát jeleníti meg, mivel az adatai közvetlenül Managed Disksba kerülnek.
+A következő diagram az összes kompatibilis virtuális gép védelméhez szükséges (standard és prémium szintű) tárfiókok teljes számát mutatja. A „VM-storage placement” (Virtuálisgép-tároló elhelyezése) szakaszból megtudhatja, hogy melyik tárfiókot melyik virtuális géphez használhatja. Ha a Deployment Planner 2.5-ös számát használja, ez a javaslat csak a replikációhoz szükséges szabványos gyorsítótár-tárfiókok számát jeleníti meg, mivel az adatok közvetlenül felügyelt lemezekre írása folyamatban van.
 
 ![Szükséges tárfiókok a Deployment Planner eszközben](media/site-recovery-vmware-deployment-planner-analyze-report/required-storage-accounts-v2a.png)
 
@@ -157,19 +157,19 @@ Előfordulhat olyan helyzet, hogy legfeljebb x Mbps sávszélességet tud beáll
 ## <a name="vm-storage-placement"></a>Virtuálisgép-tároló elhelyezése
 
 >[!Note]
->A Deployment Planner v 2.5-ös verzióban azt ajánljuk, hogy a tárolók elhelyezése olyan gépek esetében, amelyek közvetlenül a felügyelt lemezekre replikálódnak.
+>A Deployment Planner 2.5-ös v2.5-től kezdődően azt javasolja, hogy a gépek tárolási elhelyezése, amely közvetlenül replikálódik a felügyelt lemezekre.
 
 ![Virtuálisgép-tároló elhelyezése](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
-**Replikációs tár típusa**: vagy egy standard vagy prémium szintű felügyelt lemez, amely a **virtuális gépekről** az oszlopba helyezendő összes megfelelő virtuális gép replikálására szolgál.
+**Replikációs tároló típusa:** egy szabványos vagy prémium szintű felügyelt lemez, amely a virtuális gépekben említett összes megfelelő virtuális gép **replikálására szolgál.**
 
-**Log Storage-fiók típusa**: az összes replikációs naplót egy standard Storage-fiók tárolja.
+**Naplótárfiók típusa:** Az összes replikációs napló egy szabványos tárfiókban van tárolva.
 
-A **Storage-fiók javasolt előtagja**: a javasolt három karakterből álló előtag, amelyet a cache Storage-fiók elnevezéséhez használhat. Saját előtagot is használhat, de az eszköz által javasolt nevek követik a [tárfiókok partíció-elnevezési szabályait](https://aka.ms/storage-performance-checklist).
+**Javasolt előtag a tárfiókhoz:** A javasolt háromkarakteres előtag, amely a gyorsítótár-tárfiók elnevezéséhez használható. Saját előtagot is használhat, de az eszköz által javasolt nevek követik a [tárfiókok partíció-elnevezési szabályait](https://aka.ms/storage-performance-checklist).
 
-**Javasolt log-fiók neve**: a tárolási fiók neve, miután belefoglalta a javasolt előtagot. Cserélje le a csúcsos zárójelben (< és >) lévő nevet a kívánt értékre.
+**Javasolt naplófiók neve**: A tárfiók neve a javasolt előtag után. Cserélje le a csúcsos zárójelben (< és >) lévő nevet a kívánt értékre.
 
-**Elhelyezés összegzése**: a virtuális gépeknek a tárolási típus szerint történő védelméhez szükséges lemezek összegzése. Magában foglalja a virtuális gépek teljes számát, a teljes kiosztott méretet az összes lemezen, valamint a lemezek teljes számát.
+**Elhelyezés összegzése:** A védett virtuális gépek tárolási típus szerinti összegzése. Tartalmazza a virtuális gépek teljes számát, az összes lemez teljes kiosztott méretét és a lemezek teljes számát.
 
 **Virtual Machines to Place** (Elhelyezendő virtuális gépek): Az összes olyan virtuális gép listája, amelyet az optimális teljesítmény és használat érdekében az adott tárfiókon ajánlott elhelyezni.
 
@@ -178,7 +178,7 @@ A **Storage-fiók javasolt előtagja**: a javasolt három karakterből álló el
 
 **VM Name** (Virtuális gép neve): Jelentés létrehozásakor a VMListFile-ban használt virtuálisgépnév vagy IP-cím. Ez az oszlop a virtuális gépekhez csatolt lemezek (VMDK-k) listáját is megjeleníti. Az ismétlődő nevű vagy IP-című vCenter-beli virtuális gépek megkülönböztetésére a nevek tartalmazzák az ESXi-gazdagépnevet is. A feltüntetett ESXi-gazdagép az a számítógép, ahol a virtuális gép megtalálható volt, amikor az eszköz először felderítette azt a profilkészítés során.
 
-**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes\*** (Igen) lehet. **Igen**\* azon példányok esetében, amelyekben a virtuális gép elfér a [prémium SSD](../virtual-machines/windows/disks-types.md)-k számára. Itt a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt. Például:
+**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes\*** (Igen) lehet. **Igen** \* azokban az esetekben, amikor a virtuális gép alkalmas [prémium SSD-k](../virtual-machines/windows/disks-types.md). Itt a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt. Példa:
 * 128 GB alatt P10.
 * 128 GB és 256 GB között P15
 * 256 GB és 512 GB között P20.
@@ -186,11 +186,11 @@ A **Storage-fiók javasolt előtagja**: a javasolt három karakterből álló el
 * 1025 GB és 2048 GB között P40.
 * 2049 GB és 4095 GB között P50.
 
-Ha például a számítási feladatok jellemzői alapján egy lemez a P20-as vagy P30-as kategóriába tartozik, de a mérete alapján egy alacsonyabb prémium szintű tárolólemez-típusba kerül, az eszköz **Yes**\* (Igen) megjelöléssel látja el ezeket a virtuális gépeket. Az eszköz azt is javasolja, hogy módosítsa a forráslemez méretét, hogy a lemez megfeleljen az ajánlott prémium szintű tárolólemez-típusnak, vagy hogy módosítsa a céllemez típusát a feladatátvétel után.
+Ha például egy lemez munkaterhelési jellemzői a P20 vagy P30 kategóriába sorolják, de a méret alacsonyabb prémium szintű tárolólemez-típusra van leképezve, az eszköz **igennel**\*jelöli a virtuális gépet. Az eszköz azt is javasolja, hogy módosítsa a forráslemez méretét, hogy a lemez megfeleljen az ajánlott prémium szintű tárolólemez-típusnak, vagy hogy módosítsa a céllemez típusát a feladatátvétel után.
 
 **Storage Type** (Tároló típusa): Standard vagy Premium.
 
-**Replikációhoz létrehozott Asrseeddisk (felügyelt lemez)** : a replikáció engedélyezésekor létrehozott lemez neve. Az Azure-ban tárolja az adattárakat és annak pillanatképeit.
+**A replikációhoz létrehozott Asrseeddisk (Felügyelt lemez)**: A replikáció engedélyezésekor létrehozott lemez neve. Az adatokat és a pillanatképeket az Azure-ban tárolja.
 
 **Peak R/W IOPS (with Growth Factor)** (Írási/olvasási IOPS-csúcsérték (növekedési tényezővel)): A lemez írási/olvasási IOPS-csúcsértéke (az alapértelmezett érték a 95. percentilis), beleértve a későbbi növekedési faktort is (az alapértelmezett érték: 30%). Vegye figyelembe, hogy egy virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes virtuálisgép-lemezek írási/olvasási IOPS-értékeinek összegével. Ez azért van, mert a virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
 
@@ -221,14 +221,14 @@ Ha például a számítási feladatok jellemzői alapján egy lemez a P20-as vag
 
 **VM Compatibility** (Virtuális gép kompatibilitása): Azt jelzi, hogy miért nem kompatibilis az adott virtuális gép a Site Recoveryvel való használattal. Az indokok a virtuális gép minden nem kompatibilis lemezénél vannak megadva, és a közzétett [tárhelykorlátok](https://aka.ms/azure-storage-scalbility-performance) alapján a következők lehetnek:
 
-* Az adatlemez mérete vagy helytelen operációsrendszer-lemez mérete nem megfelelő. [Tekintse át](vmware-physical-azure-support-matrix.md#azure-vm-requirements) a támogatási korlátokat. 
+* Hibás adatlemez méret vagy hibás operációsrendszer-lemezméret. [Tekintse át](vmware-physical-azure-support-matrix.md#azure-vm-requirements) a támogatási korlátokat. 
 * A virtuális gép teljes mérete (replikáció + TFO) meghaladja a támogatott tárfiók méretkorlátozását (35 TB). Ez a fajta inkompatibilitás általában akkor fordul elő, ha a virtuális gép egy lemezének egyik teljesítményjellemzője meghaladja a támogatott standard szintű tárolóra vonatkozó Azure- vagy Site Recovery-korlátozásokat. Egy ilyen példány a prémium szintű tárolózónába kényszeríti a virtuális gépet. A prémium szintű tárfiókok maximális támogatott mérete azonban 35 TB, és egyetlen védett virtuális gép nem védhető több tárfiókon keresztül. Ügyeljen arra is, hogy amikor a feladatátvételi tesztet védett virtuális gépen hajtja végre, akkor az ugyanazon a tárfiókon fut, ahol a replikáció folyik. Ezen a példányon a lemez méretének kétszeresét kell kiosztani, hogy a replikáció is folytatódhasson, és ezzel párhuzamosan a feladatátvételi teszt is sikeres legyen.
 
 * A forrás IOPS-érték meghaladja a tároló lemezenkénti 7500-as IOPS-korlátját.
 
 * A forrás IOPS-érték meghaladja a tároló virtuális gépenkénti 80 000-es IOPS-korlátját.
 
-* Az átlagos adatváltozás meghaladja a támogatott Site Recovery adatváltozási korlátot 20 MB/s értékre a lemez átlagos I/O-méretéhez.
+* Az átlagos adatforgalom meghaladja a támogatott site recovery adatforgalom a lemez átlagos I/O-mérete esetén 20 MB/s-os korlátot.
 
 * Az összes virtuális gépre vonatkozó adatváltozás csúcsértéke meghaladja a Site Recovery virtuális gépenkénti 54 Mb/s-os támogatott adatváltozási csúcsérték korlátját.
 
@@ -255,19 +255,19 @@ Ha például a számítási feladatok jellemzői alapján egy lemez a P20-as vag
 
 **Boot Type** (Rendszerindítás típusa): A virtuális gép rendszerindítási típusa. Ez BIOS vagy EFI lehet.  Jelenleg az Azure Site Recovery támogatja a Windows Server EFI típusú virtuális gépeket (Windows Server 2012, 2012 R2 és 2016) abban az esetben, ha a rendszerindító lemez partícióinak száma kevesebb mint 4, a rendszerindító szektor mérete pedig 512 bájt. Az EFI típusú virtuális gépek védelme érdekében az Azure Site Recovery mobilitási szolgáltatás verziójának legalább 9.13-asnak kell lennie. Az EFI virtuális gépek esetében kizárólag a feladatátvétel támogatott. A feladat-visszavétel nem támogatott.
 
-**Operációs rendszer típusa**: a virtuális gép operációs rendszerének típusa. Ennek értéke Windows, Linux vagy egyéb lehet a virtuális gép létrehozása során a VMware vSphere használatával kiválasztott sablon alapján.
+**Operációs rendszer típusa:** A virtuális gép operációs rendszer típusa. Ennek értéke Windows, Linux vagy egyéb lehet a virtuális gép létrehozása során a VMware vSphere használatával kiválasztott sablon alapján.
 
 ## <a name="azure-site-recovery-limits"></a>Az Azure Site Recovery korlátai
 Az alábbi táblázat az Azure Site Recovery korlátait tartalmazza. Ezek a korlátok a saját tesztjeinken alapulnak, de nem fedhetik le az alkalmazások minden lehetséges I/O-kombinációját. A tényleges eredmények a saját alkalmazásának I/O-műveletei alapján változhatnak. A legjobb eredmények érdekében még az üzembe helyezés megtervezése után is ajánlott az alkalmazás alapos tesztelése feladatátvételi tesztek használatával, így valós képet kaphat az alkalmazás teljesítményéről.
 
-**Replikáció tárolási célja** | **Forráslemez átlagos I/O-mérete** |**Forráslemez átlagos adatváltozása** | **Forráslemez teljes napi adatváltozása**
+**Replikáció tárolási célja** | **Átlagos forráslemez I/O-mérete** |**Forráslemez átlagos adatváltozása** | **Forráslemez teljes napi adatváltozása**
 ---|---|---|---
 Standard szintű Storage | 8 KB | 2 MB/s | Lemezenként 168 GB
 Prémium szintű P10 vagy P15 lemez | 8 KB  | 2 MB/s | Lemezenként 168 GB
 Prémium szintű P10 vagy P15 lemez | 16 KB | 4 MB/s |  Lemezenként 336 GB
 Prémium szintű P10 vagy P15 lemez | 32 KB vagy több | 8 MB/s | Lemezenként 672 GB
 Prémium szintű P20, P30, P40 vagy P50 lemez | 8 KB    | 5 MB/s | Lemezenként 421 GB
-Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több | 20 MB/s | 1684 GB/lemez
+Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több | 20 MB/s | 1684 GB lemezenként
 
 **Forrásadat-változás** | **Felső korlát**
 ---|---
@@ -281,5 +281,5 @@ Ezek átlagos értékek, amelyek 30 százalékos I/O-átfedést feltételeznek. 
 További információk a [költségbecslésről](site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információk a [költségbecslésről](site-recovery-vmware-deployment-planner-cost-estimation.md).

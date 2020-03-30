@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: előzetes verzióban elérhető funkciók | Microsoft Docs'
-description: Ez a témakör részletesen ismerteti a Azure AD Connect előzetes verziójában elérhető funkciókat.
+title: 'Azure AD Connect: Funkciók előzetes verzióban | Microsoft dokumentumok'
+description: Ez a témakör részletesebben ismerteti az Okat, amelyek előzetes verzióban az Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,41 +17,41 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261280"
 ---
-# <a name="more-details-about-features-in-preview"></a>További információ az előzetes verzió szolgáltatásairól
-Ez a témakör a jelenleg előzetes verzióban elérhető szolgáltatások használatát ismerteti.
+# <a name="more-details-about-features-in-preview"></a>További részletek az előzetes verzióban elérhető funkciókról
+Ez a témakör az előzetes verzióban elérhető funkciók használatát ismerteti.
 
 ## <a name="group-writeback"></a>Group writeback (Csoportvisszaíró)
-A választható funkciókban a Group visszaírási beállítás lehetővé teszi, hogy az **Office 365-csoportokat** egy olyan erdőhöz visszaírási, amelyen telepítve van az Exchange. Ez egy olyan csoport, amely mindig a felhőben van elsajátítva. Ha helyszíni Exchange-kiszolgálóval rendelkezik, akkor a helyszíni Exchange-postaládával rendelkező felhasználók a csoportokból küldhetnek és fogadhatnak e-maileket.
+A választható funkciókban a csoportvisszaírás beállításával visszaírhatja az **Office 365-csoportokat** egy olyan erdőbe, amelyen telepítve van az Exchange. Ez egy olyan csoport, amely mindig elsajátította a felhőben. Ha az Exchange helyszíni, majd írhatja vissza ezeket a csoportokat a helyszíni, így a felhasználók egy helyszíni Exchange-postafiók küldhet és fogadhat e-maileket ezekből a csoportokból.
 
-További információt az Office 365-csoportokról és azok használatáról [itt](https://aka.ms/O365g)találhat.
+Az Office 365-csoportokról és azok használatáról itt olvashat [bővebben.](https://aka.ms/O365g)
 
-Az Office 365-csoportok terjesztési csoportként jelennek meg a helyszíni AD DSban. Az új csoport típusának felismeréséhez a helyszíni Exchange-kiszolgálónak az Exchange 2013 8. kumulatív frissítésének (a 2015. márciusi kiadásban) vagy az Exchange 2016-nek kell lennie.
+Az Office 365-csoport a helyszíni AD DS-ben terjesztési csoportként jelenik meg. A helyszíni Exchange-kiszolgálónak az Exchange 2013 8.
 
-**Megjegyzések az előzetes verzióban**
+**Jegyzetek az előnézet alatt**
 
-* A címjegyzék attribútum jelenleg nincs feltöltve az előzetes verzióban. Ezen attribútum nélkül a csoport nem látható a GAL-ben. Az attribútum feltöltésének legegyszerűbb módja az Exchange PowerShell-parancsmag `update-recipient`használata.
-* Csak az Exchange-sémával rendelkező erdők érvényes célok a csoportokhoz. Ha nem észlelt Exchange-t, a csoport visszaírási nem lehet engedélyezni.
-* Jelenleg csak egyerdős Exchange-szervezet üzemelő példányok támogatottak. Ha több helyszíni Exchange-szervezettel is rendelkezik, akkor az ilyen csoportok számára helyszíni GALSync-megoldásra van szükség, hogy megjelenjenek a többi erdőben.
-* A csoport visszaírási funkciója nem kezeli a biztonsági csoportokat és a terjesztési csoportokat.
+* A címjegyzék attribútum a rendszerben jelenleg nincs feltöltve. E tulajdonság nélkül a csoport nem látható a gal-ban. Az attribútum feltöltésének legegyszerűbb módja az Exchange PowerShell-parancsmag `update-recipient`használata.
+* Csak az Exchange-sémával rendelkező erdők érvényesek a csoportokszámára. Ha a rendszer nem észlelt Exchange-et, a csoportvisszaírás nem engedélyezhető.
+* Jelenleg csak az egyerdős Exchange-szervezet telepítései támogatottak. Ha egynél több Exchange-szervezet van a helyszínen, akkor szüksége van egy helyszíni GALSync-megoldásra ahhoz, hogy ezek a csoportok megjelenjenek a többi erdőben.
+* A Csoport visszaírása szolgáltatás nem kezeli a biztonsági csoportokat vagy a terjesztési csoportokat.
 
 > [!NOTE]
-> A csoport visszaírási prémium szintű Azure AD-előfizetésre van szükség.
+> Az Azure AD Premium-előfizetés szükséges a csoport visszaírásához.
 > 
 >
 
-## <a name="user-writeback"></a>Felhasználói visszaírási
+## <a name="user-writeback"></a>Felhasználói visszaírás
 > [!IMPORTANT]
-> A felhasználói visszaírási előzetes verziójának funkcióját a rendszer a 2015-es augusztusi frissítésből törölte Azure AD Connect. Ha engedélyezte, tiltsa le ezt a funkciót.
+> A felhasználói visszaírási előnézeti funkció az Azure AD Connect 2015 augusztusi frissítésében lett eltávolítva. Ha engedélyezte, akkor tiltsa le ezt a funkciót.
 >
 >
 
 ## <a name="next-steps"></a>További lépések
-Folytassa [Azure ad Connect egyéni telepítését](how-to-connect-install-custom.md).
+Folytassa [az Azure AD Connect egyéni telepítését.](how-to-connect-install-custom.md)
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

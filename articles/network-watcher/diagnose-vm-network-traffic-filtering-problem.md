@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: a virtuálisgép-hálózati forgalom szűrési problémáinak diagnosztizálása – Azure Portal'
+title: 'Rövid útmutató: Virtuálisgép hálózati forgalomszűrőjének diagnosztizálása – Azure Portal'
 titleSuffix: Azure Network Watcher
 description: Ebből a rövid útmutatóból megtudhatja, hogyan diagnosztizálhatja a virtuális gépek hálózati forgalmi szűrőproblémáit az Azure Network Watcher IP-folyamat ellenőrzése funkciójával.
 services: network-watcher
@@ -18,17 +18,17 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241597"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Rövid útmutató: Virtuális gép hálózati forgalmi szűrőhibájának diagnosztizálása az Azure Portal használatával
 
 Ennek a rövid útmutatónak a követésével egy virtuális gépet fog üzembe helyezni, majd ellenőriz egy IP-címre és URL-címre irányuló és egy IP-címről érkező kommunikációt. Meghatározza a kommunikációs hiba okát és feloldásának módját.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -37,17 +37,17 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
 1. Az Azure Portal bal felső sarkában kattintson az **+ Erőforrás létrehozása** gombra.
-2. Válassza a **számítás**lehetőséget, majd válassza a **Windows Server 2016 Datacenter** vagy az **Ubuntu Server**verzióját.
-3. Adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza az **OK** elemet:
+2. Válassza **a Számítás**lehetőséget, majd válassza a Windows Server **2016 Datacenter** vagy az Ubuntu **Server**egy verzióját.
+3. Írja be vagy jelölje ki a következő adatokat, fogadja el a fennmaradó beállítások alapértelmezett beállításait, majd kattintson az **OK gombra:**
 
     |Beállítás|Érték|
     |---|---|
-    |Name (Név)|myVM|
+    |Név|myVM|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Előfizetést| Válassza ki előfizetését.|
+    |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+    |Hely| **Usa keleti része**|
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **Beállítások** területen fogadja el az összes alapértelmezett beállítást, majd kattintson az **OK** gombra.
@@ -61,8 +61,8 @@ A hálózati kommunikáció Network Watcherrel való teszteléséhez először e
 
 Ha már van hálózati figyelő engedélyezve legalább egy régióban, akkor folytassa az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) lépéssel.
 
-1. Válassza a portálon a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Amikor a **Network Watcher** elem megjelenik az eredmények között, válassza ki.
-2. Engedélyezze a hálózati figyelőt az USA keleti régiójában, mert az előző lépésben ebben a régióban helyezte üzembe a virtuális gépet. Válassza a **Régiók** elemet a kibontásához, majd válassza az **USA keleti régiója** elem jobb oldalán található **...** lehetőséget az alábbi ábrán látható módon:
+1. A portálon válassza a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
+2. Engedélyezze a hálózati figyelőt az USA keleti régiójában, mert az előző lépésben ebben a régióban helyezte üzembe a virtuális gépet. Válassza a **Régiók** lehetőséget a kibontáshoz, majd válassza a **...** jelet az **USA keleti régiója** melletti jobb oldalon, az alábbi ábrán látható módon:
 
     ![A Network Watcher engedélyezése](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
 
@@ -72,7 +72,7 @@ Ha már van hálózati figyelő engedélyezve legalább egy régióban, akkor fo
 
 Amikor létrehoz egy virtuális gépet, az Azure az alapértelmezésnek megfelelően engedélyezi és tiltja le a virtuális gépre irányuló és onnan érkező forgalmat. Később felülbírálhatja az Azure alapértelmezett beállításait, és további forgalomtípusokat engedélyezhet vagy tilthat le.
 
-1. Válassza a portálon a **Minden szolgáltatás** lehetőséget. A **minden szolgáltatás** *szűrő* mezőbe írja be a *Network Watcher*. Amikor a **Network Watcher** elem megjelenik az eredmények között, válassza ki.
+1. A portálon válassza a **Minden szolgáltatás** lehetőséget. A **Minden szolgáltatás** *Szűrő* mezőbe írja be a *Network Watcher* kifejezést. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
 2. A **HÁLÓZATI DIAGNOSZTIKAI ESZKÖZÖK** területen válassza az **IP-folyamat ellenőrzése** lehetőséget.
 3. Jelölje ki az előfizetését, adja meg vagy válassza ki a következő értékeket, és válassza az **Ellenőrzés** lehetőséget, az alábbi képen látható módon:
 
@@ -81,11 +81,11 @@ Amikor létrehoz egy virtuális gépet, az Azure az alapértelmezésnek megfelel
     | Erőforráscsoport    | Válassza a myResourceGroup lehetőséget                                                                            |
     | Virtuális gép   | Válassza a myVm lehetőséget                                                                                       |
     | Hálózati illesztő | myvm – A portál által a virtuális gép létrehozásakor létrehozott hálózati adapter neve ettől eltérő. |
-    | Protokoll          | TCP                                                                                               |
+    | Protocol (Protokoll)          | TCP                                                                                               |
     | Irány         | Kimenő                                                                                          |
     | Helyi IP-cím  | 10.0.0.4                                                                                          |
     | Helyi port      | 60000                                                                                                |
-    | Távoli IP-cím | 13.107.21.200 – a www. Bing. com > < címeinek egyike.                                             |
+    | Távoli IP-cím | 13.107.21.200 - Az <www.bing.com> egyik címe.                                             |
     | Távoli port       | 80                                                                                                |
 
     ![IP-forgalom ellenőrzése](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)
@@ -109,7 +109,7 @@ Most, hogy tudja, hogy mely biztonsági szabályok engedélyezik vagy tagadják 
     ![Biztonsági szabályok előtagjai](./media/diagnose-vm-network-traffic-filtering-problem/security-rule-prefixes.png)
 
     A listában lévő előtagok egyike a **12.0.0.0/6**, amely magában foglalja a 12.0.0.1–15.255.255.254 tartományba tartozó IP-címeket. Mivel a 13.107.21.200 ebbe a címtartományba esik, az **AllowInternetOutBound** szabály engedélyezi a kimenő forgalmat. Emellett nincsenek magasabb prioritású (alacsonyabb számú) szabályok megjelenítve a 2. lépésben szereplő ábrán, amelyek felülbírálnák ezt a szabályt. Zárja be a **Címelőtagok** mezőt. Ha szeretné letiltani a 13.107.21.200 címre kimenő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely letiltja az IP-címre kimenő forgalmat a 80-as porton.
-4. Amikor az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) 4. lépésében futtatta a 172.131.0.100 címre kimenő forgalom ellenőrzését, megtudta, hogy a **DefaultOutboundDenyAll** szabály letiltotta a kommunikációt. Ez a szabály egyenértékű a 2. lépésben megjelenített ábrán látható **DenyAllOutBound** szabállyal, amely a **0.0.0.0/0** értéket határozza meg a **CÉL** értékeként. A szabály megtagadja a 172.131.0.100 címre kimenő kommunikációt, mert a cím nincs semmilyen más, az ábrán látható **Kimeneti szabály** **CÉL** értékén belül. Ha szeretné engedélyezni a kimenő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely engedélyezi az 172.131.0.100 IP-címre kimenő forgalmat a 80-as porton.
+4. Amikor az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) 4. lépésében futtatta a 172.131.0.100 címre kimenő forgalom ellenőrzését, megtudta, hogy a **DefaultOutboundDenyAll** szabály letiltotta a kommunikációt. Ez a szabály egyenértékű a 2. lépésben megjelenített ábrán látható **DenyAllOutBound** szabállyal, amely a **0.0.0.0/0** értéket határozza meg a **CÉL** értékeként. A szabály megtagadja a 172.131.0.100 címre kimenő kommunikációt, mert a cím nincs semmilyen más, az ábrán látható **Kimeneti szabály****CÉL** értékén belül. Ha szeretné engedélyezni a kimenő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely engedélyezi az 172.131.0.100 IP-címre kimenő forgalmat a 80-as porton.
 5. Amikor az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) 5. lépésében futtatta a 172.131.0.100 címről bejövő forgalom ellenőrzését, megtudta, hogy a **DefaultInboundDenyAll** szabály letiltotta a kommunikációt. Ez a szabály megfelel a 2. lépésben az ábrán látható **DenyAllInBound** szabálynak. A **DenyAllInBound** szabály érvényesül, mert nincs magasabb prioritású szabály, amely lehetővé tenné a 172.31.0.100 címről a 80-as porton a virtuális gépre érkező bejövő forgalmat. Ha szeretné engedélyezni a bejövő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely engedélyezi a 172.31.0.100 címről bejövő forgalmat a 80-as porton.
 
 Az ebben a rövid útmutatóban található ellenőrzések az Azure-konfigurációt tesztelték. Ha az ellenőrzések a várt eredményt adták vissza, és továbbra is hálózati problémákat tapasztal, ellenőrizze, hogy nincs-e tűzfal a virtuális gép és a között a végpont között, amelyikkel kommunikál, és hogy a virtuális gép operációs rendszerének tűzfala nem engedélyezi-e vagy tagadja meg a kommunikációt.
@@ -122,7 +122,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lév�
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be a *myResourceGroup* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy virtuális gépet, és diagnosztizálta a bejövő és kimenő hálózati forgalom szűrőit. Megtudta, hogy hálózati biztonsági csoportszabályok engedélyezik vagy tiltják le a virtuális gépekről érkező vagy oda irányuló adatforgalmat. További információ a [biztonsági szabályokról](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és a [biztonsági szabályok létrehozásának](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule) módjáról.
 

@@ -1,39 +1,39 @@
 ---
 title: Élő ASP.NET-webapp figyelése az Azure Application Insights segítségével | Microsoft Docs
-description: Megfigyelheti egy webhely teljesítményét annak ismételt üzembe helyezése nélkül. A helyszíni vagy virtuális gépeken üzemeltetett ASP.NET webalkalmazásokkal működik.
+description: Megfigyelheti egy webhely teljesítményét annak ismételt üzembe helyezése nélkül. Együttműködik ASP.NET helyszíni vagy virtuális gépeken üzemeltetett webalkalmazásokkal.
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670049"
 ---
-# <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Az eszköz webalkalmazásai futásidőben Application Insights kód nem csatolhatók
+# <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Eszköz webalkalmazások futásidőben az Application Insights Codeless Attach segítségével
 
 > [!IMPORTANT]
-> A Állapotmonitor használata már nem ajánlott. A Azure Monitor Application Insights ügynök váltotta fel (korábban Állapotmonitor v2 néven). Tekintse [meg a helyszíni kiszolgálók](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) és az Azure-beli [virtuális gépek és a virtuálisgép-méretezési csoport központi telepítésének](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)dokumentációját.
+> Az Állapotfigyelő használata már nem ajánlott. Azt váltotta fel az Azure Monitor Application Insights Ügynök (korábbi neve Status Monitor v2). Tekintse meg a [dokumentációt a helyszíni kiszolgálók központi telepítések](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) vagy [az Azure virtuális gép és a virtuális gép méretezési csoport központi telepítések.](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)
 
 Egy élő webalkalmazást a kód módosítása vagy ismételt telepítése nélkül is kialakíthat az Azure Application Insights használatával. Ehhez [Microsoft Azure](https://azure.com)-előfizetésre van szükség.
 
-A Állapotmonitor az IIS-ben üzemeltetett .NET-alkalmazások vagy a helyszínen, vagy egy virtuális gépen is használható.
+Az Állapotfigyelő az IIS-ben vagy a virtuális gépben üzemeltetett .NET-alkalmazások eszköze.
 
-- Ha az alkalmazás üzembe helyezése Azure-beli virtuális GÉPRE vagy Azure virtuálisgép-méretezési csoportba történik, kövesse [az alábbi utasításokat](azure-vm-vmss-apps.md).
-- Ha az alkalmazás üzembe helyezése az Azure app Servicesben történik, kövesse [az alábbi utasításokat](azure-web-apps.md).
-- Ha az alkalmazás üzembe helyezése egy Azure-beli virtuális gépen történik, akkor a Application Insights figyelését az Azure Vezérlőpultról kapcsolhatja be.
-- (Külön cikkek is vannak az [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)kialakításával kapcsolatban.)
+- Ha az alkalmazás telepítve van az Azure Virtuálisgép vagy az Azure virtuálisgép-méretezési csoportban, kövesse [az alábbi utasításokat.](azure-vm-vmss-apps.md)
+- Ha az alkalmazás telepítve van az Azure-alkalmazásszolgáltatásokban, kövesse [az alábbi utasításokat.](azure-web-apps.md)
+- Ha az alkalmazás telepítve van egy Azure-beli virtuális gép, az Application Insights figyelése az Azure vezérlőpultról.
+- (Az [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)műszerezéséről külön cikkek is találhatók.)
 
 
-![Képernyőkép az App Insights áttekintése gráfok sikertelen kérelmek, a kiszolgáló válaszidejét és a kiszolgálói kérelmekre vonatkozó információkat tartalmazó](./media/monitor-performance-live-website-now/overview-graphs.png)
+![Képernyőkép az App Insights áttekintő grafikonjairól, amelyek a sikertelen kérelmekre, a kiszolgálóválaszidőre és a kiszolgálói kérelmekre vonatkozó információkat tartalmazzák](./media/monitor-performance-live-website-now/overview-graphs.png)
 
-A .NET-webalkalmazásokra vonatkozó Application Insights alkalmazásához két útvonal közül választhat:
+Az Application Insights alkalmazást két útvonal közül választhat a .NET webalkalmazásokra:
 
-* **Létrehozás ideje:** [adja hozzá a Application Insights SDK][greenbrown] -t a webalkalmazás kódjához.
+* **Felépítési idő:** [Adja az Application Insights SDK-t][greenbrown] a webalkalmazás kódjához.
 * **Futási idő:** A webalkalmazását a kiszolgálón, az alábbiakban leírtak szerint, a kód újraépítése és újratelepítése nélkül alakíthatja ki.
 
 > [!NOTE]
-> Ha kiépítési időt használ, a futásidejű rendszerállapot-kialakítás nem fog működni, még akkor sem, ha be van kapcsolva.
+> Ha buildidő-műszerezést használ, a futási idő-műszerezés akkor sem fog működni, ha be van kapcsolva.
 
 Itt található egy összefoglaló az egyes módszerek eredményeiről:
 
@@ -43,7 +43,7 @@ Itt található egy összefoglaló az egyes módszerek eredményeiről:
 | [Részletes kivételek](../../azure-monitor/app/asp-net-exceptions.md) | |Igen |
 | [Függőségek diagnosztikája](../../azure-monitor/app/asp-net-dependencies.md) |.NET 4.6+ esetén, kevésbé részletesen |Igen, teljes részletesség: eredménykódok, SQL-parancsszöveg, HTTP-parancsok|
 | [Rendszerteljesítmény-számlálók](../../azure-monitor/app/performance-counters.md) |Igen |Igen |
-| [API egyéni telemetria][api] |Igen |Nem |
+| [API egyéni telemetriához][api] |Igen |Nem |
 | [Nyomkövetési napló integrációja](../../azure-monitor/app/asp-net-trace-logs.md) |Igen |Nem |
 | [Lapmegtekintések és felhasználói adatok](../../azure-monitor/app/javascript.md) |Igen |Nem |
 | Szükség van a kód ismételt felépítésére |Igen | Nem |
@@ -58,7 +58,7 @@ Ha az alkalmazás egy IIS-kiszolgálón fut, engedélyezze az Application Insigh
 2. Ha az Application Insights Állapotfigyelő még nincs telepítve, [töltse le és futtassa a telepítőt](#download).
 3. Az Állapotfigyelőben válassza ki a megfigyelni kívánt telepített webappot vagy webhelyet. Jelentkezzen be az Azure-beli hitelesítő adataival.
 
-    Konfigurálja az erőforrást, amelyben az eredményeket látni szeretné az Application Insights portálon. (Általában az a legjobb megoldás, ha létrehoz egy új erőforrást. Válasszon ki egy meglévő erőforrást, ha már rendelkezik [webes tesztekkel][availability] vagy [ügyfél-figyeléssel][client] az alkalmazáshoz.) 
+    Konfigurálja az erőforrást, amelyben az eredményeket látni szeretné az Application Insights portálon. (Általában az a legjobb megoldás, ha létrehoz egy új erőforrást. Meglévő erőforrást akkor válasszon, ha már rendelkezik [webes tesztekkel][availability] vagy [ügyfélfigyeléssel][client] az alkalmazáshoz.) 
 
     ![Válasszon egy alkalmazást és egy erőforrást.](./media/monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
@@ -74,7 +74,7 @@ Az Application Insights engedélyezése DLL-eket és az ApplicationInsights.conf
 
 ## <a name="when-you-re-publish-your-app-re-enable-application-insights"></a>Az Application Insights ismételt engedélyezése az alkalmazás ismételt közzétételekor
 
-Mielőtt újra közzéteszi az alkalmazást, vegye fontolóra [Application Insights hozzáadását a Visual Studióban található kódhoz][greenbrown]. Ezzel részletesebb telemetriához jut, és egyéni telemetriát is írhat.
+Mielőtt újra közzéteszi az alkalmazást, fontolja [az Application Insights hozzáadását a kódhoz a Visual Studióban][greenbrown]. Ezzel részletesebb telemetriához jut, és egyéni telemetriát is írhat.
 
 Ha anélkül szeretné újra közzétenni az alkalmazást, hogy a kódhoz hozzáadná az Application Insightst, vegye figyelembe, hogy az üzembehelyezési folyamat törölheti a DLL-eket és az ApplicationInsights.config fájlt a közzétett webhelyről. Ezért:
 
@@ -84,20 +84,20 @@ Ha anélkül szeretné újra közzétenni az alkalmazást, hogy a kódhoz hozzá
 4. Állítsa vissza a .config fájlon végrehajtott szerkesztéseket.
 
 
-## <a name="troubleshoot"></a>Hibaelhárítás
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>hibaelhárítással
 
 ### <a name="confirm-a-valid-installation"></a>Érvényes telepítés megerősítése 
 
-Ezeket a lépéseket végrehajtva ellenőrizheti, hogy a telepítés sikeres volt-e.
+Íme néhány lépés, amelyet végrehajthat annak megerősítésére, hogy a telepítés sikeres volt.
 
-- Győződjön meg arról, hogy a applicationInsights. config fájl megtalálható a cél alkalmazás könyvtárban, és tartalmazza a rendszerállapotkulcsot.
+- Ellenőrizze, hogy az applicationInsights.config fájl szerepel-e a célalkalmazás könyvtárában, és tartalmazza-e az ikey-t.
 
-- Ha azt gyanítja, hogy az adatok hiányoznak, futtathat egy egyszerű lekérdezést az [Analytics szolgáltatásban](../log-query/get-started-portal.md) , amely felsorolja az összes olyan felhőalapú szerepkört, amely jelenleg telemetria küld.
+- Ha azt gyanítja, hogy az adatok [Analytics](../log-query/get-started-portal.md) hiányoznak futtathat egy egyszerű lekérdezést az Analytics-ben, hogy felsorolja az összes felhőszerepkört, amely jelenleg telemetriai adatokat küld.
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
 
-- Ha meg kell győződnie arról, hogy a Application Insights sikeresen csatolva van, futtathatja a [Sysinternals fogópontot](https://docs.microsoft.com/sysinternals/downloads/handle) egy parancssorablakban annak ellenőrzéséhez, hogy az IIS betöltötte-e a applicationinsights. dll fájlt.
+- Ha meg kell erősítenie, hogy az Application Insights sikeresen csatolva futtathatja a [Sysinternals Handle](https://docs.microsoft.com/sysinternals/downloads/handle) parancsot egy parancsablakban annak megerősítéséhez, hogy az applicationinsights.dll betöltést kapott az IIS.
   ```cmd
   handle.exe /p w3wp.exe
   ```
@@ -109,17 +109,17 @@ Ezeket a lépéseket végrehajtva ellenőrizheti, hogy a telepítés sikeres vol
 
 ### <a name="unable-to-login"></a>Nem lehet bejelentkezni
 
-* Ha Állapotmonitor nem tud bejelentkezni, hajtsa végre a parancssor telepítését. Állapotmonitor megpróbál bejelentkezni a rendszerállapotkulcsot, de ezt manuálisan is megadhatja a következő paranccsal:
+* Ha az Állapotfigyelő nem tud bejelentkezni, inkább egy parancssori telepítést végez. Az Állapotfigyelő megkísérli a bejelentkezést az ikey összegyűjtésére, de ezt manuálisan is megadhatja a következő paranccsal:
 
 ```powershell
 Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
 Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-000-000-000-0000000
 ```
 
-### <a name="could-not-load-file-or-assembly-systemdiagnosticsdiagnosticsource"></a>Nem tölthető be a (z) "System. Diagnostics. DiagnosticSource" fájl vagy szerelvény.
+### <a name="could-not-load-file-or-assembly-systemdiagnosticsdiagnosticsource"></a>A 'System.Diagnostics.DiagnosticSource' fájl vagy szerelvény nem tölthető be.
 
-Ezt a hibát a Application Insights engedélyezése után kaphatja meg. Ennek az az oka, hogy a telepítő lecseréli ezt a DLL-t a bin-címtárban.
-A web. config frissítésének javításához:
+Előfordulhat, hogy ez a hiba az Application Insights engedélyezése után. Ennek az az oka, hogy a telepítő lecseréli ezt a dll-t a bin könyvtárban.
+A web.config frissítésének javítása:
 
 ```xml
 <dependentAssembly>
@@ -128,49 +128,49 @@ A web. config frissítésének javításához:
 </dependentAssembly>
 ```
 
-Ezt a problémát [itt](https://github.com/Microsoft/ApplicationInsights-Home/issues/301)követjük nyomon.
+Mi nyomon ezt a kérdést [itt](https://github.com/Microsoft/ApplicationInsights-Home/issues/301).
 
 
-### <a name="application-diagnostic-messages"></a>Alkalmazás diagnosztikai üzenetei
+### <a name="application-diagnostic-messages"></a>Alkalmazásdiagnosztikai üzenetek
 
-* Nyissa meg az Állapotfigyelőt, és válassza ki az alkalmazását a bal oldali panelen. Ellenőrizze, hogy vannak-e diagnosztikai üzenetek ehhez az alkalmazáshoz a „Konfigurációs értesítések” szakaszban:
+* Nyissa meg az Állapotfigyelőt, és válassza ki az alkalmazását a bal oldali panelen.  Ellenőrizze, hogy vannak-e diagnosztikai üzenetek ehhez az alkalmazáshoz a „Konfigurációs értesítések” szakaszban:
 
   ![A Teljesítmény panel megnyitása a kérelem, a válaszidő, a függőség és egyéb adatok megtekintéséhez](./media/monitor-performance-live-website-now/appinsights-status-monitor-diagnostics-message.png)
   
 ### <a name="detailed-logs"></a>Részletes naplók
 
-* Alapértelmezés szerint a Állapotmonitor a következő helyen fogja kimutatni a diagnosztikai naplókat: `C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
+* Alapértelmezés szerint az Állapotfigyelő diagnosztikai naplókat a következő helyen adja ki:`C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
 
-* A részletes naplók kimenetének módosításához módosítsa a konfigurációs fájlt: `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config`, és vegyen fel `<add key="TraceLevel" value="All" />` a `appsettings`.
-Ezután indítsa újra az állapot-figyelőt.
+* Részletes naplók kimenetéhez módosítsa a konfigurációs `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` fájlt: `<add key="TraceLevel" value="All" />` és `appsettings`adja hozzá a hoz.
+Ezután indítsa újra az állapotfigyelőt.
 
-* Mivel Állapotmonitor egy .NET-alkalmazás, a .net-nyomkövetést is engedélyezheti, ha [hozzáadja a megfelelő diagnosztikát a konfigurációs fájlhoz](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element). Például bizonyos helyzetekben hasznos lehet megtekinteni, hogy mi történik a hálózati szinten a [hálózati nyomkövetés konfigurálásával](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)
+* Mivel az Állapotfigyelő egy .NET alkalmazás, a [.net nyomkövetést is engedélyezheti, ha hozzáadja a megfelelő diagnosztikát a konfigurációs fájlhoz.](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element) Bizonyos esetekben például hasznos lehet a hálózati szintű események megtekintése a [hálózati nyomkövetés konfigurálásával.](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)
 
-### <a name="insufficient-permissions"></a>Nem megfelelő engedélyek
+### <a name="insufficient-permissions"></a>Nincs elég engedély
   
 * Ha a kiszolgálón „elégtelen engedélyekkel” kapcsolatos üzenet jelenik meg, próbálja meg a következőt:
   * Az IIS-kezelőben válassza ki az alkalmazáskészletét, nyissa meg a **Speciális beállítások** elemet, és a **Folyamatmodell** területen jegyezze fel az identitást.
   * A Számítógép-kezelés vezérlőpulton adja ezt az identitást a Teljesítményfigyelő felhasználói csoporthoz.
 
-### <a name="conflict-with-systems-center-operations-manager"></a>Ütközés a System Center Operations Manager
+### <a name="conflict-with-systems-center-operations-manager"></a>Ütközés a Systems Center operations managerrel
 
 * Ha MMA/SCOM (Systems Center Operations Manager) van telepítve a kiszolgálón, néhány verzió esetében ütközés léphet fel. Távolítsa el az SCOM-ot és az Állapotfigyelőt is, és telepítse újra a legújabb verziókat.
 
-### <a name="failed-or-incomplete-installation"></a>Sikertelen vagy hiányos telepítés
+### <a name="failed-or-incomplete-installation"></a>Sikertelen vagy nem teljes telepítés
 
-Ha a Állapotmonitor a telepítés során meghiúsul, akkor a nem teljes telepítéssel maradhat, amelyet a Állapotmonitor nem tud helyreállítani. Ehhez manuális alaphelyzetbe kell állítani.
+Ha az Állapotfigyelő a telepítés során meghibásodik, előfordulhat, hogy egy nem teljes telepítés marad, amelyből az Állapotfigyelő nem képes helyreállítani. Ehhez manuális alaphelyzetbe állításra van szükség.
 
-Törölje az alkalmazás könyvtárában található összes fájlt:
-- A bin könyvtár bármely DLL-fájlja "Microsoft.AI"-val kezdődik. vagy "Microsoft. ApplicationInsights.".
-- Ez a DLL a következő bin könyvtárban található: "Microsoft. Web. Infrastructure. dll"
-- Ez a DLL a következő bin könyvtárban található: "System. Diagnostics. DiagnosticSource. dll"
-- Az alkalmazás könyvtárában távolítsa el a "App_Data \packages"
-- Az alkalmazás könyvtárában távolítsa el a "applicationinsights. config" fájlt.
+Törölje az alkalmazáskönyvtárban található fájlok bármelyikét:
+- A bin könyvtárban lévő dl-ek a "Microsoft.AI" kezdetű. vagy "Microsoft.ApplicationInsights".
+- Ez a DLL a "Microsoft.Web.Infrastructure.dll" tárolókönyvtárban
+- Ez a DLL a "System.Diagnostics.DiagnosticS.DiagnosticSource.dll" tárolókönyvtárban
+- Az alkalmazáskönyvtárban távolítsa el a "App_Data\packages"
+- Az alkalmazáskönyvtárból távolítsa el az "applicationinsights.config"
 
 
 ### <a name="additional-troubleshooting"></a>További hibaelhárítás
 
-* Lásd: további [Hibaelhárítás][qna].
+* Lásd: További [hibaelhárítás][qna].
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 Operációs rendszeri támogatás az Application Insights Állapotfigyelőhöz a kiszolgálón:
@@ -181,7 +181,7 @@ Operációs rendszeri támogatás az Application Insights Állapotfigyelőhöz a
 * Windows Server 2012 R2
 * Windows Server 2016
 
-a legújabb SP és a .NET Framework 4,5 (Állapotmonitor a keretrendszer ezen verziójára épül)
+a legújabb SP és .NET Framework 4.5 (Status Monitor épül ez a verzió a keretrendszer)
 
 Az ügyféloldalon: Windows 7, 8, 8.1 és 10, szintén a .NET-keretrendszer 4.5-ös verziójával
 
@@ -238,7 +238,7 @@ Derítse ki, melyik alkalmazások állnak megfigyelés alatt:
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
 * `-Name`: A webalkalmazás neve az IIS-ben.
-* `-InstrumentationKey` (nem kötelező.) Ezzel a paranccsal módosíthatja azt az erőforrást, amelyre az alkalmazás telemetria el lesz küldve.
+* `-InstrumentationKey`(Nem kötelező.) Ezzel módosíthatja azt az erőforrást, amelyre az alkalmazás telemetriai adatokat küld.
 * Ez a parancsmag:
   * frissíti az elnevezett alkalmazást a gépre legutóbb letöltött SDK-verzióra. (Csak akkor működik, ha `SdkState==EnabledAfterDeployment`)
   * Ha megad egy kialakítási kulcsot, újrakonfigurálja az elnevezett alkalmazást, hogy telemetriát küldjön az erőforrásnak ezzel a kulccsal. (Akkor működik, ha `SdkState != Disabled`)
@@ -247,7 +247,7 @@ Derítse ki, melyik alkalmazások állnak megfigyelés alatt:
 
 * letölti a legújabb Application Insights SDK-t a kiszolgálóra.
 
-## <a name="questions"></a>Kérdések az Állapotfigyelővel kapcsolatban
+## <a name="questions-about-status-monitor"></a><a name="questions"></a>Kérdések az Állapotfigyelővel kapcsolatban
 
 ### <a name="what-is-status-monitor"></a>Mi az Állapotfigyelő?
 
@@ -268,14 +268,14 @@ Az alkalmazás önmagától nem gyűjt telemetriai adatokat, csupán a webalkalm
 
 Ha kiválaszt egy webalkalmazást, amelyet az Állapotfigyelővel szeretne beállítani:
 
-* Letölti és elhelyezi az Application Insights-szerelvényeket és az ApplicationInsights.config fájlt a webalkalmazás bináris fájljainak mappáját.
+* Letölti és elhelyezi az Application Insights-összeállításokat és az ApplicationInsights.config fájlt a webalkalmazás bináris mappájába.
 * A függőségi hívások összegyűjtéséhez engedélyezi a CLR-profilkészítést.
 
-### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Application Insights SDK melyik verzióját telepíti az állapotfigyelő?
+### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Az Application Insights SDK melyik verzióját telepíti az Állapotfigyelő?
 
-Jelen pillanatban állapotfigyelője csak az Application Insights SDK-verziók 2.3-as vagy 2.4 telepíthetők. 
+Az Állapotfigyelő jelenleg csak az Application Insights SDK 2.3-as vagy 2.4-es verzióját telepítheti. 
 
-A Application Insights SDK 2,4-es verziója az [utolsó olyan verzió, amely támogatja a .net 4,0-](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1) et, amely [EOL január 2016](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/)volt. Ezért a mostantól Állapotmonitor használható a .NET 4,0-alkalmazások kiszolgálása érdekében. 
+Az Application Insights SDK 2.4-es verziója az [utolsó verzió, amely támogatja a .NET 4.0-t,](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1) amely [2016 januárja](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/)volt az EOL. Ezért a .NET 4.0 alkalmazás instrumentumozására az Állapotfigyelő használható. 
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>Az alkalmazás frissítésekor minden alkalommal futtatnom kell az Állapotfigyelőt?
 
@@ -304,13 +304,13 @@ A fordítási során már kiépített alkalmazások esetén:
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="download"></a>Állapotmonitor letöltése
+## <a name="download-status-monitor"></a><a name="download"></a>Állapotfigyelő letöltése
 
 - Az új [PowerShell-modul](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) használata
-- A [Állapotmonitor telepítőjének](https://go.microsoft.com/fwlink/?LinkId=506648) letöltése és futtatása
-- Vagy futtasson [webplatform-telepítőt](https://www.microsoft.com/web/downloads/platform.aspx) , és keressen rá Application Insights állapotfigyelő.
+- Az [Állapotfigyelő telepítőjének](https://go.microsoft.com/fwlink/?LinkId=506648) letöltése és futtatása
+- Vagy [futtassa a Web Platform Installer alkalmazást,](https://www.microsoft.com/web/downloads/platform.aspx) és keressen benne az Application Insights Állapotfigyelőre.
 
-## <a name="next"></a>Következő lépések
+## <a name="next-steps"></a><a name="next"></a>További lépések
 
 A telemetriai adatok megtekintése:
 
@@ -320,9 +320,9 @@ A telemetriai adatok megtekintése:
 
 További telemetriai funkciók hozzáadása:
 
-* [Létrehozhat webes teszteket][availability] annak biztosításához, hogy a hely élőben maradjon.
-* [Vegye fel a webes ügyfél telemetria][usage] a kivételek megjelenítéséhez a weblap kódjában, és lehetővé teszi a nyomkövetési hívások beszúrását.
-* [Vegyen fel Application INSIGHTS SDK-t a kódra][greenbrown] , hogy nyomkövetési és bejelentkezési hívásokat lehessen beszúrni
+* [Létrehozhat webes teszteket][availability] annak biztosításához, hogy a hely elérhető maradjon.
+* [Webesügyfél-telemetriát adhat hozzá][usage], hogy lássa a weblapkód kivételeit, és nyomkövetési hívásokat szúrhasson be.
+* [Application Insights SDK-t adhat a kódhoz][greenbrown], hogy nyomkövetési és naplóhíváskat szúrhasson be
 
 <!--Link references-->
 

@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás SQL Server virtuális géphez az Azure-ban (klasszikus) | Microsoft Docs
-description: Megtudhatja, hogyan csatlakozhat az Azure-beli virtuális gépeken futó SQL Serverhoz. Ez a témakör a klasszikus telepítési modellt használja. A forgatókönyvek a hálózati konfigurációtól és az ügyfél helyétől függően eltérőek.
+title: Csatlakozás SQL Server virtuális géphez az Azure-ban (Klasszikus) | Microsoft dokumentumok
+description: Ismerje meg, hogyan csatlakozhat az Azure-ban virtuális gépen futó SQL Serverhez. Ez a témakör a klasszikus üzembe helyezési modellt használja. A forgatókönyvek a hálózati konfigurációtól és az ügyfél helyétől függően eltérőek lehetnek.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -17,13 +17,13 @@ ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: 4627d9c4fa5c87e8e80ab80892062dabd77e9229
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249710"
 ---
-# <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Kapcsolódás SQL Server virtuális géphez az Azure-ban (klasszikus üzembe helyezés)
+# <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Csatlakozás Azure-beli SQL Server-alapú virtuális géphez (klasszikus üzembe helyezési modell)
 > [!div class="op_single_selector"]
 > * [Resource Manager](../sql/virtual-machines-windows-sql-connect.md)
 > * [Klasszikus](../classic/sql-connect.md)
@@ -31,69 +31,69 @@ ms.locfileid: "79249710"
 > 
 
 ## <a name="overview"></a>Áttekintés
-Ez a témakör azt ismerteti, hogyan lehet csatlakozni az Azure-beli virtuális gépen futó SQL Server-példányhoz. [Általános csatlakozási forgatókönyveket](#connection-scenarios) tartalmaz, és [részletesen ismerteti a SQL Server-kapcsolatok Azure-beli virtuális gépen való konfigurálásának lépéseit](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
+Ez a témakör azt ismerteti, hogyan csatlakozhat az Azure virtuális gépen futó SQL Server-példányhoz. Néhány [általános kapcsolódási forgatókönyvet tartalmaz,](#connection-scenarios) majd részletes lépéseket tartalmaz [az SQL Server-kapcsolat konfigurálásához egy Azure virtuális gépben.](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)
 
 > [!IMPORTANT] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ha Resource Manager-alapú virtuális gépeket használ, tekintse meg a következőt: [kapcsolódás SQL Server virtuális géphez az Azure-ban a Resource Manager használatával](../sql/virtual-machines-windows-sql-connect.md).
+> Az Azure két különböző üzembe helyezési modellt rendelkezik az erőforrások létrehozásához és az erőforrásokkal való munkához: [az Erőforrás-kezelő és a Klasszikus.](../../../azure-resource-manager/management/deployment-models.md) Ez a cikk a klasszikus üzembe helyezési modell használatával ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ha Erőforrás-kezelő virtuális gépeket használ, olvassa el [a Csatlakozás sql server virtuális géphez az Azure-ban az Erőforrás-kezelő használatával](../sql/virtual-machines-windows-sql-connect.md)című témakört.
 
-## <a name="connection-scenarios"></a>Kapcsolatok forgatókönyvei
-Az ügyfélnek a virtuális gépen futó SQL Serverhoz való csatlakozásának módja eltér az ügyfél helyétől és a számítógép/hálózat konfigurációjától függően. Ezek a forgatókönyvek a következőket biztosítják:
+## <a name="connection-scenarios"></a>Csatlakozási forgatókönyvek
+Az ügyfél virtuális gépen futó SQL Server kiszolgálóhoz való csatlakozásának módja az ügyfél helyétől és a gép/hálózat konfigurációjától függően eltérő lehet. Ezek a forgatókönyvek a következőket biztosítják:
 
-* [Kapcsolódás SQL Server ugyanahhoz a felhőalapú szolgáltatáshoz](#connect-to-sql-server-in-the-same-cloud-service)
-* [Kapcsolódás SQL Server az interneten keresztül](#connect-to-sql-server-over-the-internet)
-* [Kapcsolódás SQL Server ugyanahhoz a virtuális hálózathoz](#connect-to-sql-server-in-the-same-virtual-network)
+* [Csatlakozás az SQL Server kiszolgálóhoz ugyanabban a felhőszolgáltatásban](#connect-to-sql-server-in-the-same-cloud-service)
+* [Csatlakozás az SQL Server kiszolgálóhoz az interneten keresztül](#connect-to-sql-server-over-the-internet)
+* [Csatlakozás az SQL Server kiszolgálóhoz ugyanabban a virtuális hálózatban](#connect-to-sql-server-in-the-same-virtual-network)
 
 > [!NOTE]
-> A fenti módszerek bármelyikének használata előtt a [kapcsolat konfigurálásához a cikkben ismertetett lépéseket](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)kell követnie.
+> Mielőtt kapcsolatba lépne ezekkel a módszerekkel, a kapcsolat konfigurálásához kövesse a [jelen cikkben leírt lépéseket.](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)
 > 
 > 
 
-### <a name="connect-to-sql-server-in-the-same-cloud-service"></a>Kapcsolódás SQL Server ugyanahhoz a felhőalapú szolgáltatáshoz
-Ugyanabban a felhőalapú szolgáltatásban több virtuális gép is létrehozható. A virtuális gépek példájának megismeréséhez tekintse meg a virtuális [gépek virtuális hálózattal vagy felhőalapú szolgáltatással való összekapcsolását](/previous-versions/azure/virtual-machines/windows/classic/connect-vms-classic#connect-vms-in-a-standalone-cloud-service)ismertető témakört. Ez a forgatókönyv akkor fordul elő, ha egy virtuális gépen lévő ügyfél megpróbál csatlakozni egy másik virtuális gépen futó SQL Serverhoz ugyanazon a felhőalapú szolgáltatásban.
+### <a name="connect-to-sql-server-in-the-same-cloud-service"></a>Csatlakozás az SQL Server kiszolgálóhoz ugyanabban a felhőszolgáltatásban
+Több virtuális gép is létrehozható ugyanabban a felhőszolgáltatásban. A virtuális gépek forgatókönyvének megértéséhez olvassa el [A virtuális gépek csatlakoztatása virtuális hálózattal vagy felhőszolgáltatással című témakört.](/previous-versions/azure/virtual-machines/windows/classic/connect-vms-classic#connect-vms-in-a-standalone-cloud-service) Ebben a forgatókönyvben az egyik virtuális gépen lévő ügyfél megpróbál csatlakozni az SQL Server kiszolgálóhoz, amely ugyanazon a felhőszolgáltatásban fut egy másik virtuális gépen.
 
-Ebben az esetben a virtuális gép **neve** (a portálon **számítógépnév** vagy **állomásnév** ) használatával kapcsolódhat. A virtuális gép számára a létrehozás során megadott név. Ha például az SQL-alapú virtuális gép **mysqlvm**nevezte el, akkor az azonos felhőalapú szolgáltatásban lévő ügyfél virtuális gépe a következő kapcsolati karakterláncot használhatja a kapcsolódáshoz:
+Ebben a forgatókönyvben csatlakozhat a virtuális gép **neve** (más néven is megjelenik **a számítógép név** vagy **állomásnév** a portálon). Ezt a nevet adta meg a virtuális gépnek a létrehozás során. Ha például az SQL VM **mysqlvm**nevet kapta, az ugyanabban a felhőszolgáltatásban lévő ügyfélvirtuális gép a következő kapcsolati karakterláncot használhatja a csatlakozáshoz:
 
     "Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
 
-### <a name="connect-to-sql-server-over-the-internet"></a>Kapcsolódás SQL Server az interneten keresztül
-Ha az internetről szeretne csatlakozni a SQL Server adatbázis-motorhoz, létre kell hoznia egy virtuálisgép-végpontot a bejövő TCP-kommunikációhoz. Ez az Azure-konfigurációs lépés a TCP-port bejövő forgalmát egy olyan TCP-portra irányítja, amelyet elér a virtuális gép.
+### <a name="connect-to-sql-server-over-the-internet"></a>Csatlakozás az SQL Server kiszolgálóhoz az interneten keresztül
+Ha az internetről szeretne csatlakozni az SQL Server adatbázis-motorjához, létre kell hoznia egy virtuális gép végpontját a bejövő TCP-kommunikációhoz. Ez az Azure-konfigurációs lépés a TCP-port bejövő forgalmát egy olyan TCP-portra irányítja, amelyet elér a virtuális gép.
 
-Az interneten keresztüli csatlakozáshoz a virtuális gép DNS-nevét és a virtuális gép végpontjának portszámát kell használnia (a cikk későbbi részében). A DNS-név megkereséséhez navigáljon a Azure Portal, és válassza a **virtuális gépek (klasszikus)** lehetőséget. Ezután válassza ki a virtuális gépet. A **DNS-név** az **Áttekintés** szakaszban látható.
+Az interneten keresztül történő csatlakozáshoz a virtuális gép DNS-nevét és a virtuális gép végpontjának portszámát kell használnia (a cikk későbbi részében konfigurálva). A DNS-név megkereséséhez keresse meg az Azure Portalt, és válassza a **Virtuális gépek (klasszikus)** lehetőséget. Ezután válassza ki a virtuális gépet. A **DNS-név** az **Áttekintés** szakaszban látható.
 
-Vegyünk például egy **mysqlvm** nevű klasszikus virtuális gépet a **Mysqlvm7777.cloudapp.net** DNS-nevével, valamint egy **57500**-es virtuálisgép-végpontot. Ha megfelelően konfigurált kapcsolatot használ, a következő kapcsolati karakterlánc használatával érheti el a virtuális gépet bárhonnan az interneten:
+Vegyünk például egy **mysqlvm** nevű klasszikus virtuális **gépet, amelynek** DNS-neve mysqlvm7777.cloudapp.net és **egy 57500-as**virtuálisgép-végpont. Feltételezve, hogy megfelelően konfigurált kapcsolat, a következő kapcsolati karakterlánc használható a virtuális gép eléréséhez bárhonnan az interneten:
 
     "Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
 
-Bár ez lehetővé teszi az ügyfelek számára az interneten keresztüli kapcsolódást, ez nem jelenti azt, hogy bárki csatlakozhat a SQL Serverhoz. Az ügyfeleken kívül a helyes felhasználónévvel és jelszóval kell rendelkeznie. A további biztonság érdekében ne használja a jól ismert 1433-as portot a nyilvános virtuális gép végpontja számára. Ha lehetséges, érdemes lehet egy ACL-t hozzáadni a végponthoz, hogy csak az Ön által engedélyezett ügyfelekre korlátozza a forgalmat. Az ACL-ek végpontokkal való használatával kapcsolatos utasításokért lásd: [az ACL kezelése egy végponton](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
+Bár ez lehetővé teszi a kapcsolatot az ügyfelek számára az interneten keresztül, ez nem jelenti azt, hogy bárki csatlakozhat az SQL Server. A külső ügyfeleknek a megfelelő felhasználónévvel és jelszóval kell rendelkezniük. A további biztonság érdekében ne használja a jól ismert 1433-as portot a nyilvános virtuális gép végpontjához. És ha lehetséges, fontolja meg egy ACL hozzáadása a végponthoz, hogy korlátozza a forgalmat csak az ügyfelek számára lehetővé teszi. Az ACL végpontokkal való használatával kapcsolatos tudnivalókért olvassa el [az ACL kezelése végponton című témakört.](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)
 
 > [!NOTE]
-> Fontos megjegyezni, hogy ha ezt a technikát a SQL Serversal való kommunikációra használja, az Azure-adatközpontból érkező összes kimenő adatforgalomra a kimenő adatforgalomra vonatkozó normál [díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/)érvényes.
+> Fontos megjegyezni, hogy ha ezt a technikát használja az SQL Server szolgáltatással való kommunikációhoz, az Azure-adatközpontból érkező összes kimenő adat normál díjszabás alá esik [a kimenő adatátvitelek esetén.](https://azure.microsoft.com/pricing/details/data-transfers/)
 > 
 > 
 
-### <a name="connect-to-sql-server-in-the-same-virtual-network"></a>Kapcsolódás SQL Server ugyanahhoz a virtuális hálózathoz
-A [Virtual Network](../../../virtual-network/virtual-networks-overview.md) további forgatókönyveket tesz lehetővé. Ugyanazon a virtuális hálózaton is csatlakoztathatók a virtuális gépek, még akkor is, ha ezek a virtuális gépek különböző felhőalapú szolgáltatásokban vannak. A helyek közötti [VPN](../../../vpn-gateway/vpn-gateway-site-to-site-create.md)használatával olyan hibrid architektúrát is létrehozhat, amely a helyszíni hálózatokkal és számítógépekkel összekapcsolja a virtuális gépeket.
+### <a name="connect-to-sql-server-in-the-same-virtual-network"></a>Csatlakozás az SQL Server kiszolgálóhoz ugyanabban a virtuális hálózatban
+[A virtuális hálózat](../../../virtual-network/virtual-networks-overview.md) további forgatókönyveket tesz lehetővé. A virtuális gépeket ugyanabban a virtuális hálózatban csatlakoztathatja, még akkor is, ha ezek a virtuális gépek különböző felhőszolgáltatásokban léteznek. A [helyek közötti VPN-nel](../../../vpn-gateway/vpn-gateway-site-to-site-create.md)pedig létrehozhat egy hibrid architektúrát, amely összeköti a virtuális gépeket a helyszíni hálózatokkal és gépekkel.
 
-A Virtual Networks lehetővé teszi az Azure-beli virtuális gépek tartományhoz való csatlakoztatását is. Ez az egyetlen módszer a Windows-hitelesítés használatára a SQL Server. A többi csatlakoztatási forgatókönyvhöz felhasználónevek és jelszavak szükségesek az SQL-hitelesítéshez.
+Virtuális hálózatok is lehetővé teszi, hogy csatlakozzon az Azure-beli virtuális gépek egy tartományhoz. Ez az egyetlen módja annak, hogy a Windows-hitelesítést az SQL Server kiszolgálóra használja. A többi kapcsolati forgatókönyv hez SQL-hitelesítés szükséges felhasználónevekkel és jelszavakkal.
 
-Ha tartományi környezetet és Windows-hitelesítést fog konfigurálni, nem kell a cikkben ismertetett lépéseket használnia a nyilvános végpont vagy az SQL-hitelesítés és-bejelentkezések konfigurálásához. Ebben az esetben a kapcsolati karakterláncban a SQL Server VM nevének megadásával csatlakozhat a SQL Server-példányhoz. Az alábbi példa azt feltételezi, hogy a Windows-hitelesítés is konfigurálva van, és hogy a felhasználó hozzáférést kapott a SQL Server-példányhoz.
+Ha tartományi környezetet és Windows-hitelesítést szeretne konfigurálni, nem kell a jelen cikkben ismertetett lépéseket használnia a nyilvános végpont vagy az SQL-hitelesítés és bejelentkezések konfigurálásához. Ebben az esetben csatlakozhat az SQL Server-példányhoz az SQL Server virtuális gép nevének megadásával a kapcsolati karakterláncban. A következő példa feltételezi, hogy a Windows-hitelesítés is konfigurálva van, és hogy a felhasználó hozzáférést kapott az SQL Server-példányhoz.
 
     "Server=mysqlvm;Integrated Security=true"
 
-## <a name="steps-for-configuring-sql-server-connectivity-in-an-azure-vm"></a>A SQL Server-kapcsolat Azure-beli virtuális gépen való konfigurálásának lépései
-A következő lépések bemutatják, hogyan csatlakozhat az interneten keresztül az SQL Server-példányhoz SQL Server Management Studio (SSMS) használatával. Ugyanezek a lépések érvényesek arra, hogy a SQL Server virtuális gépet elérhetővé tegye az alkalmazásai számára, a helyszíni és az Azure-ban egyaránt.
+## <a name="steps-for-configuring-sql-server-connectivity-in-an-azure-vm"></a>Az SQL Server-kapcsolat azure-beli virtuális gépben való konfigurálásának lépései
+Az alábbi lépések bemutatják, hogyan csatlakozhat az SQL Server-példányhoz az SQL Server Management Studio (SSMS) használatával. Azonban ugyanazok a lépések vonatkoznak arra, hogy az SQL Server virtuális gép elérhetővé az alkalmazások, a helyszíni és az Azure-ban futó.
 
-Ahhoz, hogy csatlakozni lehessen SQL Server egy másik virtuális gépről vagy az internetről, a következő szakaszokban leírtak szerint kell végrehajtania az alábbi feladatokat:
+Mielőtt egy másik virtuális gépről vagy az internetről csatlakozhatna az SQL Server példányához, a következő szakaszokban leírtak szerint el kell végeznie a következő feladatokat:
 
 * [TCP-végpont létrehozása a virtuális géphez](#create-a-tcp-endpoint-for-the-virtual-machine)
-* [A TCP-portok megnyitása a Windows tűzfalban](#open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine)
-* [SQL Server konfigurálása a TCP protokoll figyelésére](#configure-sql-server-to-listen-on-the-tcp-protocol)
-* [SQL Server konfigurálása vegyes módú hitelesítéshez](#configure-sql-server-for-mixed-mode-authentication)
-* [SQL Server hitelesítési bejelentkezések létrehozása](#create-sql-server-authentication-logins)
+* [TCP-portok megnyitása a Windows tűzfalon](#open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine)
+* [Az SQL Server konfigurálása a TCP-protokoll figyeléséhez](#configure-sql-server-to-listen-on-the-tcp-protocol)
+* [Az SQL Server konfigurálása vegyes módú hitelesítéshez](#configure-sql-server-for-mixed-mode-authentication)
+* [SQL Server-hitelesítési bejelentkezés létrehozása](#create-sql-server-authentication-logins)
 * [A virtuális gép DNS-nevének meghatározása](#determine-the-dns-name-of-the-virtual-machine)
-* [Kapcsolódás az adatbázis-motorhoz egy másik számítógépről](#connect-to-the-database-engine-from-another-computer)
+* [Csatlakozás az adatbázismotorhoz egy másik számítógépről](#connect-to-the-database-engine-from-another-computer)
 
-A következő ábra összegzi a kapcsolatok elérési útját:
+A kapcsolat elérési útját az alábbi ábra foglalja össze:
 
 ![Csatlakozás SQL Server virtuális géphez](../../../../includes/media/virtual-machines-sql-server-connection-steps/SQLServerinVMConnectionMap.png)
 
@@ -103,12 +103,12 @@ A következő ábra összegzi a kapcsolatok elérési útját:
 
 [!INCLUDE [Connect to SQL Server in a VM Classic Steps](../../../../includes/virtual-machines-sql-server-connection-steps-classic.md)]
 
-## <a name="next-steps"></a>További lépések
-Ha a magas rendelkezésre állás és a vész-helyreállítás AlwaysOn rendelkezésre állási csoportok használatát is tervezi, érdemes fontolóra vennie egy figyelő megvalósítását. Az adatbázis-ügyfelek nem közvetlenül az egyik SQL Server példányhoz csatlakoznak a figyelőhöz. A figyelő a rendelkezésre állási csoportban lévő elsődleges replikára irányítja az ügyfeleket. További információ: [ILB-figyelő konfigurálása AlwaysOn rendelkezésre állási csoportokhoz az Azure-ban](../classic/ps-sql-int-listener.md).
+## <a name="next-steps"></a>Következő lépések
+Ha azt is tervezi, hogy alwayson rendelkezésre állási csoportok magas rendelkezésre állási és vész-helyreállítási, érdemes egy figyelő megvalósítását. Az adatbázis-ügyfelek nem közvetlenül az SQL Server-példányokhoz, hanem a figyelőhöz csatlakoznak. A figyelő az ügyfeleket az elsődleges replika az elérhetőségi csoportban. További információt az [ILB-figyelő konfigurálása az AlwaysOn rendelkezésre állási csoportokhoz az Azure-ban című témakörben talál.](../classic/ps-sql-int-listener.md)
 
-Fontos, hogy áttekintse az Azure-beli virtuális gépeken futó SQL Serverra vonatkozó összes ajánlott biztonsági gyakorlatot. További információkért lásd [az SQL Server Azure-beli virtuális gépeken történő futtatásának biztonsági szempontjait](../sql/virtual-machines-windows-sql-security.md).
+Fontos, hogy tekintse át az Összes biztonsági gyakorlati az Sql Server azure-beli virtuális gépen futó. További információkért lásd [az SQL Server Azure-beli virtuális gépeken történő futtatásának biztonsági szempontjait](../sql/virtual-machines-windows-sql-security.md).
 
 Az Azure virtuális gépeken futó SQL Server [képzési tervének felfedezése](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/). 
 
-A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további témakörökért lásd: [SQL Server az azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Az SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további témaköröket [az SQL Server azure-beli virtuális gépeken című témakörben talál.](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Blobok listázása a .NET-Azure Storage használatával
-description: Megtudhatja, hogyan listázhat blobokat egy tárolóban az Azure Storage-fiókban a .NET ügyféloldali kódtár használatával. A példák a Blobok listázására, illetve a Blobok hierarchikus listázására szolgálnak, mintha könyvtárakba vagy mappákba vannak rendezve.
+title: Blobok listázása a .NET használatával – Azure Storage
+description: Megtudhatja, hogyan listázhatja a blobokat egy tárolóban az Azure Storage-fiókban a .NET ügyfélkódtár használatával. A kódpéldák bemutatják, hogyan listázhatja a blobokat egy egyszerű listában, illetve hogyan listázhatja a blobokat hierarchikusan, mintha könyvtárakba vagy mappákba lennének rendezve.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,63 +9,63 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: eb62883859a3efeb1c05deb38d8a40fba76e9cdf
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137920"
 ---
 # <a name="list-blobs-with-net"></a>Blobok listázása .NET-tel
 
-Ha a kódból listázza a blobokat, megadhatja az eredmények Azure Storage-ból való visszaadásának módját. Megadhatja az egyes eredményekben visszaadott eredmények számát, majd beolvashatja a következő készleteket. Megadhat egy előtagot olyan Blobok visszaadásához, amelyek neve megegyezik a karakterrel vagy karakterlánccal. Emellett a blobokat egy egyszerű felsorolási struktúrában vagy hierarchikusan is listázhatja. A hierarchikus lista a blobokat úgy adja vissza, mintha mappákba vannak rendezve. 
+Amikor a blobok a kódból, megadhatja, hogy számos lehetőséget az Eredmények visszaaz Azure Storage-ból. Megadhatja az egyes eredményhalmazokban visszaadandó eredmények számát, majd lekérheti a következő halmazokat. Megadhat egy előtagot olyan blobok visszaadására, amelyek neve ezzel a karakterrel vagy karakterlánccal kezdődik. És a blobokat egy sima listastruktúrában vagy hierarchikusan is listázhatja. A hierarchikus listablobokat úgy adja vissza, mintha mappákba lennének rendezve. 
 
-Ez a cikk bemutatja, hogyan listázhat blobokat az [Azure Storage .net-hez készült ügyféloldali kódtára](/dotnet/api/overview/azure/storage?view=azure-dotnet)használatával.  
+Ez a cikk bemutatja, hogyan listázhatoa a blobokat a [.NET Azure Storage ügyfélkódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet)használatával.  
 
-## <a name="understand-blob-listing-options"></a>A Blobok listázási beállításainak ismertetése
+## <a name="understand-blob-listing-options"></a>A bloblista-beállítások ismertetése
 
-A Storage-fiókban lévő Blobok listázásához hívja a következő módszerek egyikét:
+A blobok listában egy tárfiókban, hívja meg az alábbi módszerek egyikét:
 
-- [CloudBlobClient. ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
-- [CloudBlobClient. ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
-- [CloudBlobClient. ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmentedasync)
+- [CloudBlobClient.ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
+- [CloudBlobClient.ListBlobsSzegmentált](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
+- [CloudBlobClient.ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmentedasync)
 
-A tárolóban lévő Blobok listázásához hívja a következő módszerek egyikét:
+A blobok listában egy tárolóban, hívja meg az alábbi módszerek egyikét:
 
-- [CloudBlobContainer. ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs)
-- [CloudBlobContainer. ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
-- [CloudBlobContainer. ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)
+- [CloudBlobContainer.ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs)
+- [CloudBlobContainer.ListBlobsSzegmentált](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
+- [CloudBlobContainer.ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)
 
-Ezeknek a módszereknek a túlterhelései további beállításokat biztosítanak a Blobok a listázási művelet által történő visszaadásához. Ezeket a beállításokat a következő szakaszokban ismertetjük.
+Ezek a módszerek túlterhelése további lehetőségeket biztosít a blobok listaművelet általi visszaadásának kezeléséhez. Ezeket a beállításokat a következő szakaszok ismertetik.
 
-### <a name="manage-how-many-results-are-returned"></a>A visszaadott eredmények számának kezelése
+### <a name="manage-how-many-results-are-returned"></a>A visszaadott eredmények nagy számára
 
-Alapértelmezés szerint a listázási művelet egyszerre legfeljebb 5000 eredményt ad vissza. Ha kisebb eredményeket szeretne visszaadni, adjon meg nullától eltérő értéket a `maxresults` paraméternek az egyik **ListBlobs** metódus hívásakor.
+Alapértelmezés szerint a listaelem-művelet egyszerre legfeljebb 5000 eredményt ad vissza. Kisebb eredményhalmaz támpontként adjon meg egy `maxresults` nem nulla értéket a paraméterhez a **ListBlobs metódusok** egyikének hívásakor.
 
-Ha a listázási művelet több mint 5000 blobot ad vissza, vagy ha olyan értéket adott meg, `maxresults` úgy, hogy a listázási művelet a Storage-fiókban lévő tárolók egy részhalmazát adja vissza, akkor az Azure Storage egy *folytatási tokent* ad vissza a Blobok listájával. A folytatási token egy átlátszatlan érték, amelyet az Azure Storage következő eredményeinek lekérésére használhat.
+Ha egy listázási művelet több mint 5000 blobot ad vissza, vagy ha `maxresults` olyan értéket adott meg, amelyhez a listabavételi művelet a tárolók egy részét adja vissza a tárfiókban, majd az Azure Storage egy *folytatási jogkivonatot* ad vissza a blobok listájával. A folytatási jogkivonat egy átlátszatlan érték, amely segítségével lekérheti a következő eredmények et az Azure Storage-ból.
 
-A kódban ellenőrizze a folytatási token értékét annak meghatározásához, hogy null értékű-e. Ha a folytatási jogkivonat null értékű, akkor az eredmények halmaza befejeződött. Ha a folytatási jogkivonat nem null értékű, akkor ismét hívja meg a listázási műveletet, és a folytatási tokenben adja meg a következő eredmények beolvasását, amíg a folytatási jogkivonat null nem lesz.
+A kódban ellenőrizze a folytatási jogkivonat értékét, és állapítsa meg, hogy null értékű-e. Ha a folytatási jogkivonat null értékű, akkor az eredmények készlete befejeződik. Ha a folytatási jogkivonat nem null, akkor hívja meg újra a listaelem-műveletet, és adja át a folytatási jogkivonatot a következő eredményhalmaz lekéréséhez, amíg a folytatási jogkivonat null értékű nem lesz.
 
 ### <a name="filter-results-with-a-prefix"></a>Eredmények szűrése előtaggal
 
-A tárolók listájának szűréséhez a `prefix` paraméterhez meg kell adni egy karakterláncot. Az előtag-karakterlánc tartalmazhat egy vagy több karaktert. Az Azure Storage ezt követően csak azokat a blobokat adja vissza, amelyeknek a neve az adott előtaggal kezdődik.
+A tárolók listájának szűréséhez adjon `prefix` meg egy karakterláncot a paraméterhez. Az előtag karakterlánca egy vagy több karaktert is tartalmazhat. Az Azure Storage majd csak azokat a blobokat adja vissza, amelyek nek a neve ezzel az előtaggal kezdődik.
 
-### <a name="return-metadata"></a>Metaadatok visszaküldése
+### <a name="return-metadata"></a>Visszaadott metaadatok
 
-Ha a blob-metaadatokat az eredményekkel szeretné visszaadni, akkor a [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) enumerálás **metaadat** értékét kell megadnia. Az Azure Storage tartalmazza az összes visszaadott blob metaadatait, így nem kell meghívnia a kontextus egyik **FetchAttributes** metódusát a blob metaadatainak lekéréséhez.
+Blob metaadatok visszaadása az eredményekkel, adja meg a [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) enumerálás **metaadatértékét.** Az Azure Storage metaadatokat tartalmaz minden visszaadott blob, így ebben a környezetben nem kell meghívnia a **FetchAttributes metódusok** egyikét a blob metaadatok lekéréséhez.
 
-### <a name="flat-listing-versus-hierarchical-listing"></a>A lapos Listázás és a hierarchikus Listázás
+### <a name="flat-listing-versus-hierarchical-listing"></a>Lakáslista kontra hierarchikus lista
 
-A blobokat az Azure Storage-ban egy egyszerű paradigma, nem pedig hierarchikus paradigma (például klasszikus fájlrendszer) szerint rendezi a rendszer. A blobokat azonban a *virtuális könyvtárakba* rendezheti a mappák struktúrájának kiépítéséhez. A virtuális könyvtár a blob nevének részét képezi, amelyet a határoló karakter jelez.
+Az Azure Storage-ban lévő blobok egy hierarchikus paradigma (például egy klasszikus fájlrendszer) helyett egy átalányparadigma szerint vannak rendezve. A blobokat azonban *virtuális könyvtárakba* rendezheti, hogy egy mappastruktúrát utánozzon. A virtuális könyvtár a blob nevének részét képezi, és a határoló karakter jelzi.
 
-Ha a blobokat virtuális könyvtárakba szeretné szervezni, használjon egy elválasztó karaktert a blob nevében. Az alapértelmezett elválasztó karakter egy perjel (/), de bármilyen karaktert megadhat elválasztóként.
+Blobok virtuális könyvtárakba rendezéséhez használjon határoló karaktert a blob nevében. Az alapértelmezett határoló karakter egy perjel (/), de bármely karaktert megadhat határolójelként.
 
-Ha elválasztó karakterrel nevezi el a blobokat, a Blobok hierarchikus listázása is megadható. Hierarchikus listázási művelet esetén az Azure Storage a szülőobjektum alá tartozó összes virtuális könyvtárat és blobot visszaadja. A listázási művelet rekurzív módon hívható át a hierarchiába, hasonlóan ahhoz, ahogy a klasszikus fájlrendszer programozott módon bejárta.
+Ha a blobok nevét egy határolójel használatával, majd választhat, hogy a blobok hierarchikusan listázható. Hierarchikus listázási művelet esetén az Azure Storage a szülőobjektum alatt lévő virtuális könyvtárakat és blobokat adja vissza. A listaelemezési műveletet rekurzív módon hívhatja meg a hierarchián való áthaladáshoz, hasonlóan ahhoz, ahogyan a klasszikus fájlrendszeren programozott módon haladna át.
 
-## <a name="use-a-flat-listing"></a>Egyszerű lista használata
+## <a name="use-a-flat-listing"></a>Lapos listahasználata
 
-Alapértelmezés szerint a listázási művelet egy egyszerű listaelemben lévő blobokat ad vissza. Egy egyszerű felsorolásban a blobokat nem a virtuális könyvtár rendezi.
+Alapértelmezés szerint a listaelem-művelet blobokat ad vissza egy egypados listában. Egy lapos listalista blobok nem virtuális könyvtár szerint vannak rendezve.
 
-Az alábbi példa felsorolja a megadott tárolóban lévő blobokat egy egyszerű lista használatával, egy választható szegmens méretének megadása mellett, és a blob nevét a konzol ablakába írja.
+A következő példa felsorolja a blobok a megadott tárolóban egy lapos lista, egy választható szegmens mérete megadva, és írja a blob nevét egy konzolablakba.
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -108,7 +108,7 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
-A minta kimenete a következőhöz hasonló:
+A minta kimenete hasonló a következőkhöz:
 
 ```
 Blob name: FolderA/blob1.txt
@@ -124,11 +124,11 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 ## <a name="use-a-hierarchical-listing"></a>Hierarchikus lista használata
 
-Ha hierarchikusan hívja meg a listázási műveletet, az Azure Storage a hierarchia első szintjén adja vissza a virtuális könyvtárakat és blobokat. Az egyes virtuális könyvtárak [előtag](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) tulajdonsága úgy van beállítva, hogy egy rekurzív hívásban továbbítsa az előtagot a következő könyvtár lekéréséhez.
+Amikor hierarchikusan hív meg egy adatlapi műveletet, az Azure Storage a hierarchia első szintjén adja vissza a virtuális könyvtárakat és blobokat. Az egyes virtuális könyvtárak [előtag](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) tulajdonsága úgy van beállítva, hogy az előtagot rekurzív hívásban adja át a következő könyvtár beolvasásához.
 
-A Blobok hierarchikus listázásához állítsa a listázási metódus `useFlatBlobListing` paraméterét **hamis**értékre.
+A blobok hierarchikus listázásához állítsa a `useFlatBlobListing` listaelemmetódus paraméterét **false**értékűre.
 
-Az alábbi példa felsorolja a megadott tárolóban lévő blobokat egy egyszerű lista használatával, egy választható szegmens méretének megadása mellett, és a blob nevét a konzol ablakba írja.
+A következő példa felsorolja a blobok a megadott tárolóban egy lapos lista, egy választható szegmens mérete megadva, és írja a blob nevét a konzol ablakba.
 
 ```csharp
 private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer container, string prefix)
@@ -183,7 +183,7 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
 }
 ```
 
-A minta kimenete a következőhöz hasonló:
+A minta kimenete hasonló a következőkhöz:
 
 ```
 Virtual directory prefix: FolderA/
@@ -203,11 +203,11 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 ```
 
 > [!NOTE]
-> A blob-Pillanatképek nem szerepelhetnek hierarchikus listázási műveletekben.
+> A blob-pillanatképek nem szerepelhetnek hierarchikus listázási műveletben.
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-- [Blobok listázása](/rest/api/storageservices/list-blobs)
-- [BLOB-erőforrások enumerálása](/rest/api/storageservices/enumerating-blob-resources)
+- [Blobok listája](/rest/api/storageservices/list-blobs)
+- [Blob-erőforrások számbavétele](/rest/api/storageservices/enumerating-blob-resources)

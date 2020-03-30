@@ -1,35 +1,35 @@
 ---
-title: Azure Container Registry integrálása az Azure Kubernetes szolgáltatással
-description: Ismerje meg, hogyan integrálható az Azure Kubernetes szolgáltatás (ak) a Azure Container Registry (ACR) használatával
+title: Az Azure Container Registry integrálása az Azure Kubernetes szolgáltatással
+description: Ismerje meg, hogyan integrálható az Azure Kubernetes-szolgáltatás (AKS) az Azure Container Registry (ACR) szolgáltatással
 services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
 ms.openlocfilehash: f83faf05eb7099557d5b653e0b24591062c44d11
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79368451"
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Hitelesítés Azure Container Registry az Azure Kubernetes szolgáltatással
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Container Registryvel történő hitelesítés az Azure Kubernetes Service-ből (AKS)
 
-Ha Azure Container Registryt (ACR) használ az Azure Kubernetes szolgáltatással (ak), akkor hitelesítési mechanizmust kell létrehoznia. Ez a cikk példákat tartalmaz a két Azure-szolgáltatás közötti hitelesítés konfigurálására.
+Ha az Azure Kubernetes-szolgáltatással (AKS) azure Container Registry (ACR) szolgáltatást használja, létre kell hozni egy hitelesítési mechanizmust. Ez a cikk példákat tartalmaz a két Azure-szolgáltatás közötti hitelesítés konfigurálása.
 
-Beállíthatja az AK-t az ACR-integrációra néhány egyszerű parancsban az Azure CLI-vel.
+Az AKS-t az ACR-integrációhoz néhány egyszerű parancsban állíthatja be az Azure CLI-vel.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A példákhoz a következők szükségesek:
+Ezek a példák a következőket igénylik:
 
-* Az **Azure-előfizetéshez** tartozó **tulajdonosi** vagy **Azure-fiók rendszergazdai** szerepköre
-* Azure CLI-verzió 2.0.73 vagy újabb verziója
+* **Tulajdonos** vagy **Azure-fiók rendszergazdai** szerepköre az **Azure-előfizetésben**
+* Az Azure CLI 2.0.73-as vagy újabb verziója
 
-Ha el szeretné kerülni a **tulajdonosi** vagy az **Azure-fiók rendszergazdai** szerepkörének megkövetelését, manuálisan is konfigurálhat egy egyszerű szolgáltatásnevet, vagy használhat egy meglévő egyszerű szolgáltatásnevet az ACR-ből való hitelesítéshez. További információkért tekintse meg az [ACR-hitelesítés egyszerű szolgáltatásokkal](../container-registry/container-registry-auth-service-principal.md) vagy a [Kubernetes egy lekéréses titokkal történő hitelesítését](../container-registry/container-registry-auth-kubernetes.md)ismertető témakört.
+Annak elkerülése érdekében, **hogy egy tulajdonos** vagy az **Azure-fiók rendszergazdai** szerepkör, manuálisan konfigurálhatja a szolgáltatásnévi manuálisan, vagy egy meglévő egyszerű szolgáltatás hitelesítéséhez ACR az AKS-ből. További információ: [ACR-hitelesítés egyszerű szolgáltatásokkal](../container-registry/container-registry-auth-service-principal.md) vagy [Hitelesítés a Kubernetes-ből lekéréses titkos adatokkal.](../container-registry/container-registry-auth-kubernetes.md)
 
-## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Új AK-fürt létrehozása ACR-integrációval
+## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Új AKS-fürt létrehozása ACR-integrációval
 
-Itt állíthatja be az AK-t és az ACR-integrációt az AK-fürt kezdeti létrehozása során.  Annak engedélyezéséhez, hogy egy AK-fürt együttműködjön az ACR-szel, egy Azure Active Directory **egyszerű szolgáltatásnevet** használ. A következő CLI-parancs lehetővé teszi egy meglévő ACR engedélyezését az előfizetésében, és konfigurálja az egyszerű szolgáltatásnév megfelelő **ACRPull** -szerepkörét. Adja meg az alábbi paraméterek érvényes értékeit.
+Az AKS- és ACR-integrációt az AKS-fürt kezdeti létrehozása során állíthatja be.  Annak engedélyezéséhez, hogy egy AKS-fürt kommunikáljon az ACR-rel, egy Azure Active **Directory-szolgáltatásegyszerű** szolgáltatást használ. A következő CLI parancs lehetővé teszi egy meglévő ACR engedélyezését az előfizetésben, és konfigurálja a megfelelő **ACRPull** szerepkört az egyszerű szolgáltatáshoz. Adja meg az alábbi paraméterek érvényes értékeit.
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
@@ -42,7 +42,7 @@ az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr $MYACR
 ```
 
-Alternatív megoldásként megadhatja az ACR nevét egy ACR erőforrás-AZONOSÍTÓval, amelynek formátuma a következő:
+Másik lehetőségként megadhatja az ACR-nevet egy ACR erőforrásazonosító val, amely a következő formátummal rendelkezik:
 
 `/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
 
@@ -50,23 +50,23 @@ Alternatív megoldásként megadhatja az ACR nevét egy ACR erőforrás-AZONOSÍ
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr /subscriptions/<subscription-id>/resourceGroups/myContainerRegistryResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry
 ```
 
-Ez a lépés több percet is igénybe vehet.
+Ez a lépés több percig is eltarthat.
 
-## <a name="configure-acr-integration-for-existing-aks-clusters"></a>ACR-integráció konfigurálása meglévő AK-fürtökhöz
+## <a name="configure-acr-integration-for-existing-aks-clusters"></a>ACR-integráció konfigurálása meglévő AKS-fürtökhöz
 
-Az alábbihoz tartozó **ACR-Name** vagy **ACR-Resource-id** érvényes értékek megadásával integrálhat egy meglévő, meglévő "ACR" típusú fürtöket.
+Integráljon egy meglévő ACR-t a meglévő AKS-fürtökkel az **acr-name** vagy **acr-resource-id** érvényes értékeinek biztosításával az alábbiak szerint.
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
 ```
 
-vagy,
+Vagy
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 ```
 
-Az ACR és az AK-fürt közötti integrációt is eltávolíthatja a következőkkel
+Az ACR és az AKS-fürt közötti integrációt a következő
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
@@ -78,26 +78,26 @@ vagy
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
 ```
 
-## <a name="working-with-acr--aks"></a>ACR-& AK használata
+## <a name="working-with-acr--aks"></a>Az ACR & aKS-sel való együttműködés
 
-### <a name="import-an-image-into-your-acr"></a>Rendszerkép importálása az ACR-be
+### <a name="import-an-image-into-your-acr"></a>Kép importálása az ACR-be
 
-Importáljon egy rendszerképet a Docker hub-ből az ACR-be a következő parancs futtatásával:
+Importáljon egy lemezképet a docker hubról az ACR-be az alábbi futtatásával:
 
 
 ```azurecli
 az acr import  -n <myContainerRegistry> --source docker.io/library/nginx:latest --image nginx:v1
 ```
 
-### <a name="deploy-the-sample-image-from-acr-to-aks"></a>A minta rendszerképének üzembe helyezése ACR-ből AK-ra
+### <a name="deploy-the-sample-image-from-acr-to-aks"></a>A mintakép telepítése az ACR-ről az AKS-re
 
-Győződjön meg arról, hogy megfelelő AK-beli hitelesítő adatokkal rendelkezik
+Annak ellenőrzése, hogy rendelkezik-e a megfelelő AKS-hitelesítő adatokkal
 
 ```azurecli
 az aks get-credentials -g myResourceGroup -n myAKSCluster
 ```
 
-Hozzon létre egy **ACR-Nginx. YAML** nevű fájlt, amely a következőket tartalmazza:
+Hozzon létre egy **acr-nginx.yaml** nevű fájlt, amely a következőket tartalmazza:
 
 ```yaml
 apiVersion: apps/v1
@@ -123,19 +123,19 @@ spec:
         - containerPort: 80
 ```
 
-Ezután futtassa ezt az üzembe helyezést az AK-fürtben:
+Ezután futtassa ezt a központi telepítést az AKS-fürtben:
 
 ```console
 kubectl apply -f acr-nginx.yaml
 ```
 
-A központi telepítést a futtatásával figyelheti:
+A központi telepítést a következő futtatásával figyelheti:
 
 ```console
 kubectl get pods
 ```
 
-Két futó hüvelynek kell lennie.
+Két futókabinod kellene.
 
 ```output
 NAME                                 READY   STATUS    RESTARTS   AGE

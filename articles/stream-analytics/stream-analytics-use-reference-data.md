@@ -1,6 +1,6 @@
 ---
-title: Referenciák használata a Azure Stream Analyticsban való keresésekhez
-description: Ez a cikk azt ismerteti, hogyan használhatók a hivatkozási adatok a Azure Stream Analytics feladatok lekérdezési tervében lévő adatok kereséséhez vagy összekapcsolásához.
+title: Referenciaadatok használata az Azure Stream Analytics-ben a keresgélésekhez
+description: Ez a cikk ismerteti, hogyan használhatja a referenciaadatokat az Azure Stream Analytics-feladat lekérdezési tervében lévő adatok kereséséhez vagy korrelációjához.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
@@ -8,113 +8,113 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
 ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267286"
 ---
-# <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics-keresések hivatkozási adatainak használata
+# <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Referenciaadatok használata a Stream Analytics-ben lévő keresgélő műveletekhez
 
-A hivatkozási adatok (más néven keresési táblázat) egy olyan véges adathalmaz, amely statikus vagy lassan változik a természetben, a keresés végrehajtásához vagy az adatfolyamok bővítéséhez. Például egy IoT-forgatókönyvben tárolhatók metaadatok az érzékelőkről (amelyek nem változnak gyakran) a hivatkozási adatokban, és a valós idejű IoT-adatfolyamokhoz csatlakoznak. Azure Stream Analytics betölti a memóriában lévő hivatkozási adatmennyiséget, hogy alacsony késésű adatfolyam-feldolgozást érjen el. Ha a Azure Stream Analytics-feladatokban szeretné használni a hivatkozásokat, a lekérdezésben általában egy [hivatkozási adatokhoz való csatlakozást](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) fog használni. 
+A referenciaadatok (más néven lookup table) egy véges adatkészlet, amely statikus vagy lassan változó jellegű, és amelyet a keresés hez vagy az adatfolyamok bővítéséhez használnak. Egy IoT-forgatókönyvben például tárolhatja az érzékelők metaadatait (amelyek nem változnak gyakran) a referenciaadatokban, és valós idejű IoT-adatfolyamokkal összekapcsolhatja azokat. Az Azure Stream Analytics betölti a referenciaadatokat a memóriában az alacsony késésű adatfolyam-feldolgozás elérése érdekében. A referenciaadatok az Azure Stream Analytics-feladatban, általában egy [referencia-adatillesztés](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) a lekérdezésben. 
 
-Stream Analytics támogatja az Azure Blob Storage-t, és Azure SQL Database a hivatkozási adattárolási rétegként. Átalakíthatja és/vagy átmásolhatja a blob Storage-ba Azure Data Factory a [felhőalapú és a helyszíni adattárak tetszőleges számú](../data-factory/copy-activity-overview.md)felhasználására is.
+A Stream Analytics támogatja az Azure Blob storage-ot és az Azure SQL Database-t a referenciaadatok tárolási rétegeként. Az Azure Data Factory ból blobtárolóba is átalakíthatja és/vagy másolhatja a referenciaadatokat, hogy [tetszőleges számú felhőalapú és helyszíni adattárakat használhasson.](../data-factory/copy-activity-overview.md)
 
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
-A hivatkozási adatok a Blobok nevében megadott dátum/idő növekvő sorrendjében (a bemeneti konfigurációban definiált) Blobok sorozatából vannak modellezve. A művelet **csak** az utolsó blob által a sorozatban megadott értéknél **nagyobb** dátum/idő használatával támogatja a folyamat végének hozzáadását.
+A referenciaadatok a blobok sorozataként vannak modellezve (a bemeneti konfigurációban definiálva) a blob nevében megadott dátum/idő növekvő sorrendjében. **Csak** akkor támogatja a hozzáadást a sorozat végére a sorozat utolsó blobja által megadottnál **nagyobb** dátum/idő használatával.
 
-### <a name="configure-blob-reference-data"></a>BLOB-hivatkozási adatértékek konfigurálása
+### <a name="configure-blob-reference-data"></a>Blob referenciaadatainak konfigurálása
 
-A hivatkozási adatok konfigurálásához először létre kell hoznia egy olyan bemenetet, amely **hivatkozási adatokat tartalmaz**. Az alábbi táblázat bemutatja, hogy milyen tulajdonságokat kell megadnia a hivatkozási adatok bemenetének a leírásával való létrehozásakor:
+A referenciaadatok konfigurálásához először referenciaadatok típusú bevitelt kell **létrehoznia.** Az alábbi táblázat ismerteti az egyes tulajdonságokat, amelyeket meg kell adnia a referenciaadatok bevitelének létrehozásakor a leírással:
 
 |**Tulajdonság neve**  |**Leírás**  |
 |---------|---------|
-|Input Alias (Bemeneti alias)   | Egy rövid név, amelyet a rendszer a lekérdezésben a bemenetre való hivatkozáshoz fog használni.   |
-|Tárfiók   | Annak a Storage-fióknak a neve, ahol a Blobok találhatók. Ha a Stream Analytics-feladatokkal megegyező előfizetésben szerepel, kiválaszthatja a legördülő menüből.   |
-|Tárfiók kulcsa   | A storage-fiókhoz társított titkos kulcs. Ezt automatikusan kitölti a rendszer, ha a Storage-fiók ugyanabban az előfizetésben van, mint a Stream Analytics-feladatokhoz.   |
-|Storage-tároló   | Tárolók biztosítják a Microsoft Azure Blob service-ben tárolt blobok logikai jellegű csoportosítását. A Blob szolgáltatáshoz feltölt egy blobot, ha meg kell adnia egy adott blob-tárolót.   |
-|Path Pattern (Elérésiút-minta)   | A Blobok megadott tárolón belüli megkereséséhez használt elérési út. Az elérési úton a következő két változó egy vagy több példányát is megadhatja:<BR>{date}, {time}<BR>1\. példa: termékek/{Date}/{Time}/Product-list. csv<BR>2\. példa: termékek/{Date}/Product-list. csv<BR>3\. példa: Product-list. csv<BR><br> Ha a blob nem létezik a megadott elérési úton, a Stream Analytics-feladatot a blob elérhetővé válása határozatlan ideig megvárja.   |
-|Dátumformátum [nem kötelező]   | Ha a megadott elérésiút-mintában a {Date} értéket használta, akkor kiválaszthatja azt a dátumformátum-formátumot, amelyben a Blobok a támogatott formátumok legördülő menüjéből vannak rendszerezve.<BR>Példa: éééé/hh/nn, hh/nn/éééé stb.   |
-|Időformátum [nem kötelező]   | Ha a megadott elérési úton a {Time} értéket használta, akkor kiválaszthatja azt az időformátumot, amelyben a Blobok a támogatott formátumok legördülő menüjéből vannak rendszerezve.<BR>Példa: HH, HH/hh vagy HH-mm.  |
-|Esemény szerializálási formátuma   | Annak biztosítása érdekében, hogy a lekérdezések a várt módon működjenek, Stream Analytics tudnia kell, hogy melyik szerializálási formátumot használja a bejövő adatfolyamok számára. A hivatkozási adatformátumok esetében a támogatott formátumok a CSV és a JSON.  |
-|Encoding   | Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum.  |
+|Input Alias (Bemeneti alias)   | A feladatlekérdezésben a bemenetre való hivatkozáshoz használt rövid név.   |
+|Tárfiók   | Annak a tárfióknak a neve, ahol a blobok találhatók. Ha ugyanabban az előfizetésben van, mint a Stream Analytics-feladat, kiválaszthatja azt a legördülő menüből.   |
+|Tárfiók kulcsa   | A tárfiókhoz társított titkos kulcs. Ez automatikusan kitöltődik, ha a tárfiók ugyanabban az előfizetésben van, mint a Stream Analytics-feladat.   |
+|Tároló tároló   | A tárolók logikai csoportosítást biztosítanak a Microsoft Azure Blob szolgáltatásban tárolt blobok számára. Amikor feltölt egy blobot a Blob szolgáltatásba, meg kell adnia egy tárolót az adott blobhoz.   |
+|Path Pattern (Elérésiút-minta)   | A blobok a megadott tárolón belüli megkereséséhez használt elérési út. Az elérési úton belül a következő két változó egy vagy több példányát adhatja meg:<BR>{date}, {time}<BR>1. példa: termékek/{date}/{time}/product-list.csv<BR>2. példa: termékek/{date}/product-list.csv<BR>3. példa: terméklista.csv<BR><br> Ha a blob nem létezik a megadott elérési úton, a Stream Analytics-feladat megvárja a korlátlan ideig a blob elérhetővé válik.   |
+|Dátumformátum [nem kötelező]   | Ha a megadott elérési útmintán belül {date} elemet használt, akkor kiválaszthatja azt a dátumformátumot, amelyben a blobok a támogatott formátumok legördülő legördülő legördülő menüből vannak rendezve.<BR>Példa: YYYY/HH/DD, MM/DD/YYYY stb.   |
+|Időformátum [nem kötelező]   | Ha a megadott elérési útmintán belül {time} programot használt, akkor kiválaszthatja azt az időformátumot, amelyben a blobok a támogatott formátumok legördülő legördülő menüből vannak rendezve.<BR>Példa: HH, HH/mm vagy HH-mm.  |
+|Eseményszeresítési formátum   | Annak érdekében, hogy a lekérdezések a várt módon működjenek, a Stream Analytics-nek tudnia kell, hogy milyen szerializálási formátumot használ a bejövő adatfolyamokhoz. A referenciaadatok esetében a támogatott formátumok a CSV és a JSON.  |
+|Encoding   | Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum.  |
 
-### <a name="static-reference-data"></a>Statikus referenciák
+### <a name="static-reference-data"></a>Statikus referenciaadatok
 
-Ha a hivatkozási adatok várhatóan nem változnak, akkor a statikus hivatkozási adatok támogatása a bemeneti konfigurációban statikus elérési út megadásával engedélyezhető. Azure Stream Analytics felveszi a blobot a megadott elérési útra. nem kötelező {date} és {Time} helyettesítési token. Mivel a hivatkozási adatértékek nem változtathatók meg Stream Analyticsban, a statikus hivatkozási adatblobok felülírása nem ajánlott.
+Ha a referenciaadatok várhatóan nem változnak, akkor a statikus referenciaadatok támogatása statikus elérési út megadásával engedélyezhető a bemeneti konfigurációban. Az Azure Stream Analytics felveszi a blobot a megadott elérési útról. {date} és {time} helyettesítő tokenek nem szükségesek. Mivel a referenciaadatok nem módosíthatók a Stream Analytics szolgáltatásban, nem ajánlott felülírni egy statikus referencia-adatblobot.
 
-### <a name="generate-reference-data-on-a-schedule"></a>Hivatkozási információ létrehozása ütemterv alapján
+### <a name="generate-reference-data-on-a-schedule"></a>Hivatkozási adatok létrehozása ütemezés szerint
 
-Ha a hivatkozási adatok lassan módosulnak, akkor a hivatkozási adatok frissítésének támogatása a {Date} és az {Time} helyettesítési tokent használó bemeneti konfigurációban megadott elérésiút-minta megadásával engedélyezhető. Stream Analytics felveszi a frissített hivatkozási adatdefiníciókat ezen elérésiút-minta alapján. Például az **"éééé-hh-nn"** dátumformátum és a **"hh-mm"** időformátuma `sample/{date}/{time}/products.csv` az Stream Analytics a frissített blob `sample/2015-04-16/17-30/products.csv` a 5:30 PM április 16-án 2015 UTC időzóna.
+Ha a referenciaadatok lassan változó adatkészlet, akkor a referenciaadatok frissítésének támogatása engedélyezve van a ({date} és {time} helyettesítő tokenek használatával a bemeneti konfigurációban egy elérési út minta megadásával. A Stream Analytics felveszi a frissített referenciaadat-definíciókat ezen elérési út minta alapján. Például egy `sample/{date}/{time}/products.csv` **"YYYY-MM-DD"** dátumformátumú és **"HH-mm"** időformátumú minta arra utasítja a `sample/2015-04-16/17-30/products.csv` Stream Analytics-et, hogy 2015.
 
-Azure Stream Analytics automatikusan megkeresi a frissített hivatkozási adatblobokat egy perces intervallumban. Ha az időbélyeg 10:30:00-as számú blobja kis késleltetéssel van feltöltve (például 10:30:30), a blobra hivatkozó Stream Analytics-feladatban kis késleltetést fog tapasztalni. Az ilyen helyzetek elkerülése érdekében javasoljuk, hogy a megcélzott tényleges időpontnál (10:30:00) korábbinál töltse fel a blobot, hogy a Stream Analytics feladatnak elegendő idő legyen ahhoz, hogy felderítse és betöltse a memóriába és műveleteket hajtson végre. 
+Az Azure Stream Analytics egy perces időközzel automatikusan megkeresi a frissített referenciaadat-blobokat. Ha egy blob időbélyeg 10:30:00 feltöltése kis késéssel (például 10:30:30), észre fogja venni, egy kis késés a Stream Analytics feladat hivatkozva ez a blob. Az ilyen esetek elkerülése érdekében ajánlott a blob feltöltése korábban, mint a cél érvényességi idő (10:30:00 ebben a példában), hogy a Stream Analytics-feladat elegendő időt felderítése és betöltése a memóriába, és műveletekvégrehajtása. 
 
 > [!NOTE]
-> Jelenleg Stream Analytics feladat csak akkor keresi a Blobok frissítését, ha a gép ideje a blob nevében kódolt időpontra van beállítva. A feladatok például a lehető leghamarabb megkeresik a `sample/2015-04-16/17-30/products.csv`t, de az 2015 UTC időzónában nem korábbi, mint 5:30 PM. április 16-án. A rendszer *soha nem* keres olyan blobot, amely a felderített utolsónál korábbi kódolású.
+> Jelenleg a Stream Analytics-feladatok csak akkor keresik a blob frissítését, ha a gép időbeli ütemezése a blob nevében kódolt időhöz. Például a feladat a `sample/2015-04-16/17-30/products.csv` lehető leghamarabb, de legkorábban 17:30-kor, 2015. Soha *nem* fog keresni egy blob egy kódolt idő korábbi, mint az utolsó, amely felfedezett.
 > 
-> Ha például a feladatban megtalálta a blobot `sample/2015-04-16/17-30/products.csv` akkor a rendszer figyelmen kívül hagyja az összes olyan fájlt, amely a 5:30. április 16-ától korábbi, 2015, így ha egy későn érkező `sample/2015-04-16/17-25/products.csv` blob ugyanabban a tárolóban jön létre, a feladatot nem fogja használni.
+> Ha például a feladat `sample/2015-04-16/17-30/products.csv` megtalálja a blobot, figyelmen kívül hagyja azokat a fájlokat, amelyek kódolt dátuma 2015. `sample/2015-04-16/17-25/products.csv`
 > 
-> Hasonlóképpen, ha a `sample/2015-04-16/17-30/products.csv` csak a 10:03. április 16-án, 2015-ban készült, de a tárolóban nincs korábbi dátummal rendelkező blob, a feladattal a 10:03. április 16-ától kezdődően a fájlt fogja használni 2015, majd addig használja az előző hivatkozási adatait.
+> Hasonlóképpen, `sample/2015-04-16/17-30/products.csv` ha csak 2015.
 > 
-> Ez alól kivételt képez, ha a feladatsornak időben újra fel kell dolgoznia az adatfeldolgozást, vagy amikor a feladatot először indítja el. A kezdéskor a rendszer a feladatok kezdési időpontja előtt előállított legújabb blobot keresi. Erre azért van szükség, hogy a feladatok elindulásakor ne legyen **üres** a hivatkozás adatkészlete. Ha az egyik nem található, a feladattípus a következő diagnosztikai: `Initializing input without a valid reference data blob for UTC time <start time>`jeleníti meg.
+> Ez alól kivételt képez, ha a feladatnak újra fel kell dolgoznia az adatokat az időben, vagy amikor a feladat először elindul. Kezdési időpontban a feladat a feladat megadott kezdési időpontja előtt létrehozott legújabb blobot keresi. Ez annak biztosítására szolgál, hogy a feladat indításakor egy **nem üres referencia-adatkészlet** legyen. Ha nem található, a feladat a `Initializing input without a valid reference data blob for UTC time <start time>`következő diagnosztikát jeleníti meg: .
 
-A [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) a stream Analytics által a hivatkozási adatok definícióinak frissítéséhez szükséges frissített Blobok létrehozásának feladatát is felhasználhatja. A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. Data Factory támogatja a [nagy számú felhőalapú és helyszíni adattárakhoz való csatlakozást](../data-factory/copy-activity-overview.md) , valamint az adatáthelyezést a megadott menetrend szerint. További információ és lépésenkénti útmutató arról, hogyan állíthat be egy Data Factory folyamatot, hogy olyan Stream Analyticsre hivatkozzon, amely előre meghatározott ütemterv alapján frissül, és tekintse meg ezt a [GitHub-mintát](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs).
+[Az Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) segítségével vezénylheti a Stream Analytics által a referencia-adatdefiníciók frissítéséhez szükséges frissített blobok létrehozásának feladatát. A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. A Data Factory támogatja a [nagyszámú felhőalapú és helyszíni adattárakhoz való csatlakozást,](../data-factory/copy-activity-overview.md) valamint az adatok egyszerű, a megadott rendszeres ütemezés szerint történő áthelyezését. További információkért és lépésről lépésre, hogyan állíthat be egy Data Factory folyamat ot a Stream Analytics, amely egy előre meghatározott ütemezés szerint frissül, tekintse meg ezt a [GitHub-mintát.](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs)
 
-### <a name="tips-on-refreshing-blob-reference-data"></a>Tippek a blob-referenciák frissítéséhez
+### <a name="tips-on-refreshing-blob-reference-data"></a>Tippek a blobreferencia-adatok frissítéséhez
 
-1. Ne írja felül a hivatkozási adatblobokat, mivel azok nem változtathatók meg.
-2. A hivatkozási adatai frissítésének ajánlott módja a következő:
-    * {Date}/{Time} használata az elérési út mintájában
-    * Adjon hozzá egy új blobot a feladatban megadott tároló-és elérésiút-minta használatával
-    * A sorozatban az utolsó blob által megadott dátum/idő értéknél **nagyobb** dátumot és időpontot használjon.
-3. A hivatkozási adatblobok **nem** a blob "utolsó módosításának" időpontjában vannak rendezve, de csak a blob nevében megadott idő és dátum alapján a {Date} és a {Time} helyettesítéssel.
-3. Ha nem szeretne nagy számú blobot listázni, érdemes törölni a nagyon régi blobokat, amelyekkel a feldolgozás már nem lesz végrehajtva. Vegye figyelembe, hogy az ASA-nek bizonyos helyzetekben újra fel kell dolgoznia egy kis mennyiségű újrafeldolgozást, például újraindítást.
+1. Ne írja felül a referencia-adatblobokat, mivel azok nem módosíthatók.
+2. A referenciaadatok frissítésének ajánlott módja a következő:
+    * {date}/{time} használata az elérési út mintájában
+    * Új blob hozzáadása a feladat bemenetében definiált azonos tároló és elérési út mintájával
+    * Használjon a sorozat utolsó blobja által megadottnál **nagyobb** dátumot/időpontot.
+3. A referencia-adatblobokat **nem** a blob "Utolsó módosítás" ideje rendezi, hanem csak a blob nevében megadott időpontés dátum szerint a(z) {date} és {time} helyettesítések használatával.
+3. Annak elkerülése érdekében, hogy nagy számú blobok, fontolja meg a nagyon régi blobok, amelyek feldolgozása már nem történik meg. Vegye figyelembe, hogy az ASA előfordulhat, hogy bizonyos esetekben, például újraindítás esetén újra fel kell dolgoznia egy kis mennyiséget.
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 
-Azure SQL Database a hivatkozási adatok beolvasása a Stream Analytics feladataival történik, és a memóriában pillanatképként tárolódik a feldolgozáshoz. A rendszer a hivatkozási adatok pillanatképét a konfigurációs beállításokban megadott Storage-fiókban is tárolja. A tároló automatikusan létrejön a feladatok indításakor. Ha a feladatot leállítja vagy hibás állapotba lép, a rendszer törli az automatikusan létrehozott tárolókat a feladatok újraindításakor.  
+Az Azure SQL Database referenciaadatait a Stream Analytics-feladat lekéri, és a memóriában pillanatképként tárolja a feldolgozáshoz. A referenciaadatok pillanatképét is tárolja egy tárolóban egy tárfiókban, amely a konfigurációs beállításokban megadott. A tároló automatikusan létrejön, amikor a feladat elindul. Ha a feladat levan állítva, vagy hibás állapotba kerül, az automatikusan létrehozott tárolók törlődnek a feladat újraindításakor.  
 
-Ha a hivatkozási adatok lassan változó adathalmazt használnak, rendszeres időközönként frissítenie kell a feladatokban használt pillanatképet. Stream Analytics lehetővé teszi a frissítési sebesség beállítását a Azure SQL Database bemeneti kapcsolatok konfigurálásakor. A Stream Analytics futtatókörnyezet a frissítési gyakoriság által megadott időközönként lekérdezi a Azure SQL Database. A leggyorsabb frissítési sebesség percenként egyszer használható. Az egyes frissítések esetében Stream Analytics egy új pillanatképet tárol a megadott Storage-fiókban.
+Ha a referenciaadatok lassan változó adatkészlet, rendszeresen frissítenie kell a feladatban használt pillanatképet. A Stream Analytics lehetővé teszi a frissítési gyakoriság beállítását az Azure SQL Database bemeneti kapcsolat konfigurálásakor. A Stream Analytics futásidejű lekérdezi az Azure SQL-adatbázis a frissítési gyakoriság által megadott időközönként. A támogatott leggyorsabb frissítési gyakoriság percenként egyszer érhető el. Minden frissítéshez a Stream Analytics egy új pillanatképet tárol a megadott tárfiókban.
 
-Stream Analytics két lehetőséget biztosít a Azure SQL Database lekérdezésére. A pillanatkép-lekérdezés kötelező, és az egyes feladatokban szerepelnie kell. Stream Analytics rendszeresen futtatja a pillanatkép-lekérdezést a frissítési időköz alapján, és a lekérdezés eredményét (a pillanatképet) használja a hivatkozási adathalmazként. A pillanatkép-lekérdezésnek a legtöbb forgatókönyvnek megfelelőnek kell lennie, de ha nagy adatkészletekkel és gyors frissítési sebességekkel teljesítménnyel kapcsolatos problémákba ütközik, használhatja a különbözeti lekérdezési lehetőséget. A hivatkozási adatkészlet visszaadására több mint 60 másodpercet elfoglaló lekérdezések időtúllépést eredményeznek.
+A Stream Analytics két lehetőséget biztosít az Azure SQL-adatbázis lekérdezéséhez. A pillanatkép-lekérdezés kötelező, és minden feladatban szerepelnie kell. A Stream Analytics rendszeresidőközönként futtatja a pillanatkép-lekérdezést a frissítési időköz alapján, és a lekérdezés (a pillanatkép) eredményét használja referenciaadatkészletként. A pillanatkép-lekérdezésnek a legtöbb forgatókönyvnek megfelelőnek kell lennie, de ha nagy adatkészletekkel és gyors frissítési gyakorisággal merül fel, használhatja a különbözeti lekérdezést. A referencia-adatkészlet visszaadásához 60 másodpercnél tovább igénybe vehet lekérdezések időhosszabbítást eredményeznek.
 
-A különbözeti lekérdezés beállításnál Stream Analytics először a pillanatkép-lekérdezést futtatja egy alapkonfiguráció-adatkészlet beszerzéséhez. Ezt követően a Stream Analytics rendszeres időközönként futtatja a különbözeti lekérdezést a növekményes módosítások beolvasására szolgáló frissítési időköz alapján. Ezeket a növekményes módosításokat a rendszer folyamatosan alkalmazza a hivatkozási adathalmazra, hogy azok frissítve legyenek. A különbözeti lekérdezés használatával csökkentheti a tárolási költségeket és a hálózati I/O-műveleteket.
+A különbözeti lekérdezési beállítással a Stream Analytics először futtatja a pillanatkép-lekérdezést, hogy lepelegy alapszintű referencia-adatkészletet. Után a Stream Analytics rendszeresen futtatja a különbözeti lekérdezést a frissítési időköz alapján a növekményes módosítások lekéréséhez. Ezek a növekményes módosítások folyamatosan alkalmazzák a referenciaadatkészletet, hogy naprakészek maradjanak. A különbözeti lekérdezés használata csökkentheti a tárolási költségeket és a hálózati I/O-műveleteket.
 
-### <a name="configure-sql-database-reference"></a>SQL Database-hivatkozás konfigurálása
+### <a name="configure-sql-database-reference"></a>SQL-adatbázis hivatkozásának konfigurálása
 
-A SQL Database hivatkozási adatok konfigurálásához először létre kell hoznia a **hivatkozási adatok** bevitelét. Az alábbi táblázat minden olyan tulajdonságot ismertet, amelyet meg kell adnia a hivatkozási adatok bemenetének a leírásával való létrehozásakor. További információ: [Azure stream Analytics feladathoz tartozó SQL Database hivatkozási adatainak használata](sql-reference-data.md).
+Az SQL Database referenciaadatainak konfigurálásához először létre kell **hoznia a referenciaadatok** bevitelét. Az alábbi táblázat ismerteti az egyes tulajdonságokat, amelyeket meg kell adnia, miközben létrehozza a referencia-adatbevitelt a leírásával. További információ: [Referenciaadatok használata SQL-adatbázisból egy Azure Stream Analytics-feladathoz](sql-reference-data.md)című témakörben talál.
 
-[Azure SQL Database felügyelt példányt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) a hivatkozásként használt adatok bemenetként használhatja. [Azure SQL Database felügyelt példányban konfigurálnia kell a nyilvános végpontot](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) , majd manuálisan kell konfigurálnia a következő beállításokat a Azure stream Analyticsban. A SQL Servert futtató Azure-beli virtuális gépeket az alábbi beállítások manuális konfigurálásával is támogatja.
+Használhatja [az Azure SQL Database felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) referencia-adatbevitelként. Konfigurálnia kell [a nyilvános végpontot az Azure SQL Database felügyelt példányában,](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) majd manuálisan kell konfigurálnia a következő beállításokat az Azure Stream Analytics-ben. Az SQL Servert futtató, adatbázist tartalmazó virtuális gépet az alábbi beállítások manuális konfigurálásával is támogatja.
 
 |**Tulajdonság neve**|**Leírás**  |
 |---------|---------|
-|Bemeneti alias|Egy rövid név, amelyet a rendszer a lekérdezésben a bemenetre való hivatkozáshoz fog használni.|
-|Előfizetést|Válassza ki az előfizetését|
-|Adatbázis|A hivatkozási adatait tartalmazó Azure SQL Database. Azure SQL Database felügyelt példány esetében az 3342-es portot kell megadni. Például: *sampleserver. public. database. Windows. net, 3342*|
-|Felhasználónév|A Azure SQL Databasehoz társított Felhasználónév.|
-|Jelszó|A Azure SQL Databasehoz társított jelszó.|
-|Rendszeres frissítés|Ez a beállítás lehetővé teszi a frissítési sebesség kiválasztását. A "bekapcsolva" beállítással megadhatja a frissítési gyakoriságot a DD: óó: PP értékben.|
-|Pillanatkép-lekérdezés|Ez az alapértelmezett lekérdezési beállítás, amely beolvassa a hivatkozási adatait a SQL Databaseból.|
-|Különbözeti lekérdezés|A nagyméretű adatkészletekkel és a rövid frissítési gyakorisággal rendelkező speciális forgatókönyvek esetében válassza a különbözeti lekérdezés hozzáadását.|
+|Bemeneti alias|A feladatlekérdezésben a bemenetre való hivatkozáshoz használt rövid név.|
+|Előfizetés|Válassza ki az előfizetését|
+|Adatbázis|Az Azure SQL-adatbázis, amely tartalmazza a referenciaadatokat. Az Azure SQL Database felügyelt példánya esetén meg kell adnia a 3342-es portot. Például *sampleserver.public.database.windows.net,3342*|
+|Felhasználónév|Az Azure SQL-adatbázishoz társított felhasználónév.|
+|Jelszó|Az Azure SQL-adatbázishoz társított jelszó.|
+|Rendszeres frissítés|Ezzel a beállítással frissítési gyakoriságot választhat. Ha a "Be" lehetőséget választja, megadhatja a frissítési gyakoriságot a DD:ÓÓ:PP-ben.|
+|Pillanatkép-lekérdezés|Ez az alapértelmezett lekérdezési beállítás, amely beolvassa a referenciaadatokat az SQL-adatbázisból.|
+|Különbözeti lekérdezés|A speciális forgatókönyvek nagy adatkészletek és a rövid frissítési gyakoriság, válassza ki, hogy adjunk hozzá egy különbözeti lekérdezést.|
 
-## <a name="size-limitation"></a>Méret korlátozása
+## <a name="size-limitation"></a>Méretkorlátozás
 
-A Stream Analytics **legfeljebb 300 MB méretű**hivatkozási adatmennyiséget támogat. A hivatkozási adatmennyiség 300 MB-os maximális mérete csak egyszerű lekérdezésekkel érhető el. Mivel a lekérdezések összetettsége az állapot-nyilvántartó feldolgozást is magában foglalja, például ablakos összesítéseket, időbeli illesztéseket és időbeli elemzési függvényeket, a rendszer várhatóan csökkenti a hivatkozási adatok maximális támogatott méretét. Ha Azure Stream Analytics nem tudja betölteni a hivatkozási adatok betöltését, és összetett műveleteket hajt végre, a feladat elfogy a memóriában, és sikertelen lesz. Ilyen esetekben a SU% kihasználtsági metrika eléri a 100%-ot.    
+A Stream Analytics **300 MB-os maximális méretű**referenciaadatokat támogat. A referenciaadatok maximális méretének 300 MB-os határa csak egyszerű lekérdezésekkel érhető el. Mivel a lekérdezés összetettsége az állapotalapú feldolgozást is magában foglalja, például az ablakos aggregátumokat, az időbeli illesztéseket és az időbeli analitikus függvényeket, a referenciaadatok maximális támogatott mérete várhatóan csökken. Ha az Azure Stream Analytics nem tudja betölteni a referenciaadatokat, és összetett műveleteket végrehajtani, a feladat elfogy a memória, és nem sikerül. Ilyen esetekben az SU % kihasználtsági mutató eléri a 100%-ot.    
 
-|**Folyamatos átviteli egységek száma**  |**Kb. maximálisan támogatott méret (MB)**  |
+|**Streamelési egységek száma**  |**Kb. Maximális méret támogatott (MB-ban)**  |
 |---------|---------|
 |1   |50   |
 |3   |150   |
 |6 és azon túl   |300   |
 
-Ha a feladatokhoz tartozó folyamatos átviteli egységek száma nem haladja meg a 6-at, a rendszer nem növeli a támogatott maximális mennyiségű hivatkozási értéket.
+A 6-ot meghaladó számú streamelési egység növelése nem növeli a referenciaadatok maximális támogatott méretét.
 
-A tömörítés támogatása nem érhető el a referenciaadatoknál. 
+A hivatkozási adatokhoz nem áll rendelkezésre a tömörítés támogatása. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Stream Analytics-feladatok létrehozása a Azure Portal használatával](stream-analytics-quick-create-portal.md)
+> [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

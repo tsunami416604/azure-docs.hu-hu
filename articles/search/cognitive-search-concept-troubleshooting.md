@@ -1,7 +1,7 @@
 ---
-title: Tippek a mesterséges intelligenciának kialakításához
+title: Tippek a ai-dúsítás tervezéséhez
 titleSuffix: Azure Cognitive Search
-description: Tippek és hibaelhárítás az AI-bővítési folyamatok Azure-Cognitive Search történő beállításához.
+description: Tippek és hibaelhárítás az AI-bővítési folyamatok azure Cognitive Search beállításához.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,35 +9,35 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245485"
 ---
-# <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tippek az AI-bővítéshez az Azure Cognitive Search
+# <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tippek a a i-k gazdagításhoz az Azure Cognitive Search szolgáltatásban
 
-Ez a cikk azokat a tippeket és trükköket tartalmazza, amelyek az Azure Cognitive Search AI-bővítési képességeinek megismeréséhez szükségesek. 
+Ez a cikk az Azure Cognitive Search ai-bővítési képességeinek első lépéseit követően mozgásban tartandó tippek és trükkök listáját tartalmazza. 
 
-Ha még nem tette volna meg, ugorjon végig az [oktatóanyagban: Ismerje meg, hogyan hívhatja meg az AI-gazdagító API-kat](cognitive-search-quickstart-blob.md) a mesterséges intelligenciák blob-adatforrásokra való alkalmazásával.
+Ha még nem tette meg, lépjen végig az [oktatóanyagon: Ismerje meg, hogyan hívhatja meg az AI-bővítési API-kat](cognitive-search-quickstart-blob.md) az AI-dúsítások blob adatforrásra történő alkalmazásának gyakorlatához.
 
-## <a name="tip-1-start-with-a-small-dataset"></a>1\. tipp: Kezdés kis adatkészlettel
-A problémák gyors megtalálásának legjobb módja az, hogy növelje a hibák elhárításának sebességét. Az indexelési idő csökkentésének legjobb módja az indexelt dokumentumok számának csökkentése. 
+## <a name="tip-1-start-with-a-small-dataset"></a>1. tipp: Kezdés kis adatkészlettel
+A problémák gyors megtalálásának legjobb módja a problémák megoldásának sebessége. Az indexelési idő csökkentésének legjobb módja az indexelendő dokumentumok számának csökkentése. 
 
-Első lépésként hozzon létre egy adatforrást mindössze néhány dokumentum/rekord használatával. A dokumentum mintájának jól láthatónak kell lennie az indexelt dokumentumok különböző részein. 
+Először hozzon létre egy adatforrást csak néhány dokumentummal/rekorddal. A dokumentummintának jól kell ábrázolnia az indexelt dokumentumok sokféleségét. 
 
-Futtassa a dokumentum mintáját a végpontok közötti folyamaton, és győződjön meg arról, hogy az eredmények megfelelnek az igényeinek. Ha elégedett az eredménnyel, további fájlokat adhat hozzá az adatforráshoz.
+Futtassa a dokumentummintát a végpontok között futó folyamaton keresztül, és ellenőrizze, hogy az eredmények megfelelnek-e az igényeinek. Ha elégedett az eredménnyel, további fájlokat adhat az adatforráshoz.
 
-## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>2\. tipp: Ellenőrizze, hogy helyesek-e az adatforrás hitelesítő adatai
-Az adatforrás-kapcsolatok nem lettek érvényesítve, amíg meg nem határoz egy olyan indexelő, amelyik azt használja. Ha olyan hibák jelennek meg, amelyek megemlítik, hogy az indexelő nem tudja beolvasni az adatvesztést, ügyeljen a következőre:
-- A kapcsolatok karakterlánca helyes. Ha SAS-jogkivonatokat hoz létre, akkor ügyeljen arra, hogy az Azure Cognitive Search által várt formátumot használja. A különböző támogatott formátumok megismeréséhez lásd: [hitelesítő adatok megadása szakasz](
-https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials) .
-- Az indexelő tárolójának neve helyes.
+## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>2. tipp: Ellenőrizze, hogy az adatforrás hitelesítő adatai helyesek-e
+Az adatforrás-kapcsolat nem érvényesítve, amíg meg nem határoz egy indexelőt, amely azt használja. Ha bármilyen hibát észlel, amely szerint az indexelő nem tudja megkeresni az adatokat, győződjön meg arról, hogy:
+- A kapcsolati karakterlánc helyes. Különösen sas-jogkivonatok létrehozásakor győződjön meg arról, hogy az Azure Cognitive Search által várt formátumot használja. A különböző támogatott formátumokról a [Hitelesítő adatok megadása című témakörben](
+https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials) olvashat.
+- A tároló neve az indexelőben helyes.
 
-## <a name="tip-3-see-what-works-even-if-there-are-some-failures"></a>3\. tipp: mi működik, még akkor is, ha vannak hibák
-Időnként előfordulhat, hogy egy kis hiba leállítja az indexelő a zeneszámokban. Ez rendben van, ha egyenként szeretné kijavítani a problémákat. Előfordulhat azonban, hogy figyelmen kívül hagyja az adott típusú hibát, így az indexelő továbbra is megtekintheti, hogy milyen folyamatok működnek valójában.
+## <a name="tip-3-see-what-works-even-if-there-are-some-failures"></a>3. tipp: Nézze meg, mi működik, még akkor is, ha vannak hibák
+Néha egy kis hiba megállítja az indexelőt a sávban. Ez rendben van, ha azt tervezi, hogy erősít kérdések egyenként. Előfordulhat azonban, hogy figyelmen kívül szeretne hagyni egy adott típusú hibát, lehetővé téve az indexelő folytatását, hogy láthassa, hogy a folyamatok valójában hogyan működnek.
 
-Ebben az esetben érdemes megállapítania, hogy az indexelő figyelmen kívül hagyja a hibákat. Ezt úgy teheti meg, hogy a *maxFailedItems* és a *maxFailedItemsPerBatch* értéket a-1 értékre állítja be az indexelő definíciójának részeként.
+Ebben az esetben érdemes lehet megmondani az indexelőnek, hogy hagyja figyelmen kívül a hibákat. Ehhez a *maxFailedItems* és *a maxFailedItemsPerBatch* értéket -1-ként kell beállítania az indexelő definíciója részeként.
 
 ```
 {
@@ -49,16 +49,16 @@ Ebben az esetben érdemes megállapítania, hogy az indexelő figyelmen kívül 
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>4\. tipp: dúsított dokumentumok megtekintése a motorháztető alatt 
-A dúsított dokumentumok a dúsítás során létrehozott ideiglenes struktúrák, majd a feldolgozás befejezésekor törlődnek.
+## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>4. tipp: A motorháztető alatti bővített dokumentumok 
+A bővített dokumentumok a dúsítás során létrehozott ideiglenes struktúrák, majd a feldolgozás befejezésekor törlődnek.
 
 Ha pillanatképet szeretne készíteni az indexelés során létrejött bővített dokumentumról, adja hozzá az indexhez az ```enriched``` mezőt. Az indexelő automatikusan hozzáadja a mezőhöz az adott dokumentum bővítéseinek sztringes leképezését.
 
 Az ```enriched``` mező egy sztringet tartalmaz, amely a JSON-ban szereplő memóriabeli bővített dokumentum logikai leképezése.  A mező értéke azonban egy érvényes JSON-dokumentum. Mivel az idézőjelek előtt escape-karakter áll, a `\"` karaktereket `"` karakterre kell cserélnie, ha a dokumentumot formázott JSON-ként szeretné megtekinteni. 
 
-A dúsított mező csak hibakeresési célokat szolgál, így könnyebben megismerheti annak a tartalomnak a logikai formáját, amellyel a kifejezéseket kiértékeli a rendszer. Ez a mező nem függhet indexelési célokra.
+A bővített mező csak hibakeresési célokra szolgál, hogy segítsen megérteni annak a tartalomnak a logikai alakját, amelyellen a kifejezések kiértékelése folyamatban van. Indexelési célokból nem függhet ettől a mezőtől.
 
-Az index definíciójának részeként vegyen fel egy ```enriched``` mezőt hibakeresési célokra:
+```enriched``` Mező hozzáadása az indexdefiníció részeként hibakeresés céljából:
 
 #### <a name="request-body-syntax"></a>Kéréstörzs szintaxisa
 ```json
@@ -77,36 +77,36 @@ Az index definíciójának részeként vegyen fel egy ```enriched``` mezőt hiba
 }
 ```
 
-## <a name="tip-5-expected-content-fails-to-appear"></a>5\. tipp: a várt tartalom nem jelenik meg
+## <a name="tip-5-expected-content-fails-to-appear"></a>5. tipp: A várt tartalom nem jelenik meg
 
-A hiányzó tartalom az indexelés során eldobott dokumentumok eredménye lehet. Az ingyenes és az alapszintű csomagok esetében a dokumentumok mérete alacsony. Az indexelés során a korlátot meghaladó fájlok el lettek dobva. Az eldobott dokumentumokat a Azure Portalban tekintheti meg. A Search szolgáltatás Irányítópultján kattintson duplán az indexelő csempére. Tekintse át a sikeres dokumentumok indexelésének arányát. Ha az érték nem 100%, akkor további részletekért kattintson az arányra. 
+A hiányzó tartalom az indexelés során a dokumentumok eldobásának eredménye lehet. Az ingyenes és az alapszintű csomagok alacsony korláttal rendelkeznek a dokumentumméretre vonatkozóan. A korlátot meghaladó fájlok az indexelés során eldobódnak. Az eldobott dokumentumok az Azure Portalon. A keresési szolgáltatás irányítópultján kattintson duplán az Indexelők csempére. Tekintse át az indexelt sikeres dokumentumok arányát. Ha nem 100%, akkor kattintson az arány, hogy minél több részletet. 
 
-Ha a probléma fájlmérethez kapcsolódik, a következőhöz hasonló hibaüzenet jelenhet meg: "a blob \<file-Name > mérete \<fájl mérete > bájt, ami meghaladja az aktuális szolgáltatási réteghez tartozó dokumentumok kinyerésének maximális méretét." Az indexelő korlátaival kapcsolatos további információkért lásd: [szolgáltatási korlátok](search-limits-quotas-capacity.md).
+Ha a probléma a fájlmérettel kapcsolatos, a következőhöz \<hasonló hibaüzenet jelenhet meg: \<"A blob fájlnév>" fájlméret-> bájtméretű, ami meghaladja az aktuális szolgáltatási szint dokumentumkinyerésének maximális méretét." Az indexelőkorlátokról a [Szolgáltatáskorlátok](search-limits-quotas-capacity.md)című témakörben talál további információt.
 
-A tartalom nem jelenik meg egy második oka, hogy kapcsolódó bemeneti/kimeneti leképezési hibák merülhetnek fel. Például a kimeneti cél neve "People", de az index mező neve kisbetűs "emberek". A rendszer 201 sikeres üzeneteket adhat vissza a teljes folyamathoz, így úgy gondolja, hogy sikeres volt az indexelés, ha valójában egy mező üres. 
+A tartalom megjelenésének másik oka lehet a kapcsolódó bemeneti/kimeneti leképezési hiba. A kimeneti célneve például "Személyek", de az indexmező neve kisbetűs "személyek". A rendszer 201 sikeres üzenetet adhat vissza a teljes folyamathoz, így úgy gondolja, hogy az indexelés sikeres volt, amikor egy mező valójában üres. 
 
-## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>6\. tipp: a feldolgozás kiterjesztése a maximális futási idő után (24 órás időszak)
+## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>6. tipp: A feldolgozás kiterjesztése a maximális futási időn túl (24 órás ablak)
 
-A képelemzés még egyszerű esetekre is számításba vehető, így ha a képek különösen nagyok vagy bonyolultak, a feldolgozási idő túllépheti a maximálisan engedélyezett időt. 
+A képelemzés még egyszerű esetekben is számításigényes, így ha a képek különösen nagyok vagy összetettek, a feldolgozási idő meghaladhatja a maximálisan engedélyezett időt. 
 
-A maximális futási idő a következő szintektől függ: több perc az ingyenes szinten, a számlázható rétegek 24 órás indexelése. Ha a feldolgozás nem hajtható végre egy 24 órás időszakon belül az igény szerinti feldolgozáshoz, váltson ütemezésre, hogy az indexelő feldolgozza a feldolgozást, ahol abbahagyta. 
+A maximális futási idő rétegenként változik: néhány perc az ingyenes szinten, 24 órás indexelés a számlázható szinteken. Ha a feldolgozás nem fejeződik be egy 24 órás időszakon belül az igény szerinti feldolgozás, váltson át egy ütemezést, hogy az indexelő vegye fel a feldolgozást, ahol abbahagyta. 
 
-Az ütemezett indexek esetében az indexelés az utolsó ismert jó dokumentumon folytatja az ütemezést. Ismétlődő ütemezés használatával az indexelő az összes nem feldolgozott lemezkép feldolgozásának idejére áttekintheti az adott lemezképen keresztüli várakozó képeket. Az ütemterv szintaxisával kapcsolatos további információkért lásd [: 3. lépés: Create-an-indexelő](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) , vagy az [Indexelő ütemezhetnek az Azure Cognitive Search](search-howto-schedule-indexers.md).
+Ütemezett indexelők esetén az indexelés az ütemezés szerint folytatódik az utolsó ismert helyes dokumentumnál. Az ismétlődő ütemezés használatával az indexelő órák vagy napok sorozatán keresztül dolgozhat végig a képhátralékon, amíg az összes fel nem dolgozott kép feldolgozása meg nem halad. Az ütemezés szintaxisáról további információt a [3.](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) [How to schedule indexers for Azure Cognitive Search](search-howto-schedule-indexers.md)
 
 > [!NOTE]
-> Ha egy indexelő egy bizonyos ütemezésre van beállítva, de többször is meghibásodik ugyanazon a dokumentumon, és minden egyes futtatásakor újra leáll, az indexelő egy ritkábban (legfeljebb legalább 24 óránként) fog futni, amíg a folyamat sikeresen elvégezte az előrehaladást. a.  Ha úgy gondolja, hogy rögzítette a problémát, amely miatt az indexelő egy bizonyos ponton elakadt, igény szerint futtathatja az Indexelő szolgáltatást, és ha a folyamat sikeresen elvégezte az előrehaladást, az indexelő az ütemezési intervallumba ismét visszatér.
+> Ha egy indexelő egy bizonyos ütemezésre van beállítva, de minden egyes futtatáskor ismételten sikertelen ugyanazon a dokumentumon, az indexelő kevésbé gyakori időközönként (legfeljebb 24 óránként egyszer) kezd futni, amíg sikeresen nem halad előre. Újra.  Ha úgy gondolja, hogy kijavította azt a problémát, amely miatt az indexelő egy bizonyos ponton elakadt, végrehajthatja az indexelő igény szerinti futtatását, és ha ez sikeresen halad előre, az indexelő ismét visszatér a beállított ütemezési időközéhez.
 
-A portálon alapuló indexeléshez (a gyors útmutatóban leírtak szerint) a "Futtatás egyszer" indexelő beállítás a feldolgozást 1 órára korlátozza (`"maxRunTime": "PT1H"`). Előfordulhat, hogy hosszabb időre szeretné kiterjeszteni a feldolgozási ablakot.
+Portálalapú indexelés esetén (a rövid útmutatóban leírtak szerint) az "egyszer futtatás" indexelő beállítás kiválasztása 1 órára korlátozza a feldolgozást.`"maxRunTime": "PT1H"` Érdemes lehet kiterjeszteni a feldolgozási ablakot valami hosszabbra.
 
-## <a name="tip-7-increase-indexing-throughput"></a>7\. tipp: az indexelési teljesítmény növelése
+## <a name="tip-7-increase-indexing-throughput"></a>7. tipp: Az indexelési átviteli arány növelése
 
-[Párhuzamos indexeléshez](search-howto-large-index.md)helyezze az adatait több tárolóba vagy több virtuális mappába ugyanabban a tárolóban. Ezután hozzon létre több DataSource és indexelő párokat. Az összes indexelő használhatja ugyanazt a készségkészlet, és az azonos keresési indexbe írhat, így a keresési alkalmazásnak nem kell megismernie ezt a particionálást.
-További információ: [nagyméretű adathalmazok indexelése](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
+A [párhuzamos indexelés,](search-howto-large-index.md)helyezze az adatokat több tárolóba vagy több virtuális mappák ugyanabban a tárolóban. Ezután hozzon létre több adatforrás- és indexelő-párt. Minden indexelők használhatja ugyanazt skillset és írja be az azonos cél keresési index, így a keresési alkalmazás nem kell tisztában ezt a particionálás.
+További információ: [Nagy adatkészletek indexelése](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
 ## <a name="see-also"></a>Lásd még
 + [Rövid útmutató: AI-dúsítási folyamat létrehozása a portálon](cognitive-search-quickstart-blob.md)
-+ [Oktatóanyag: az AI-gazdagítás REST API-k megismerése](cognitive-search-tutorial-blob.md)
-+ [Adatforráshoz tartozó hitelesítő adatok megadása](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
-+ [Nagyméretű adathalmazok indexelése](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
-+ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
-+ [A dúsított mezők indexhez való leképezése](cognitive-search-output-field-mapping.md)
++ [Oktatóanyag: AI-dúsítási REST API-k megismerése](cognitive-search-tutorial-blob.md)
++ [Adatforrás-hitelesítő adatok megadása](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
++ [Nagy adatkészletek indexelése](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
++ [Hogyan definiálni a skillset](cognitive-search-defining-skillset.md)
++ [Bővített mezők hozzárendelése indexhez](cognitive-search-output-field-mapping.md)

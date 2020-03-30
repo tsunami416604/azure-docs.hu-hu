@@ -1,7 +1,7 @@
 ---
 title: Betanítási adatok importálása
 titleSuffix: ML Studio (classic) - Azure
-description: Adatok importálása a Azure Machine Learning Studioba (klasszikus) különböző adatforrásokból. Ismerje meg, hogy milyen adattípusok és adatformátumok támogatottak.
+description: Hogyan importálhatja az adatokat az Azure Machine Learning Studio (klasszikus) különböző adatforrásokból. További információ a támogatott adattípusokról és adatformátumokról.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,78 +11,78 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
 ms.openlocfilehash: cee49124a7547399889e425008a8580b9b25945a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217984"
 ---
-# <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Betanítási adatok importálása Azure Machine Learning Studioba (klasszikus) különböző adatforrásokból
+# <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>A betanítási adatok importálása az Azure Machine Learning Studio -ba (klasszikus) különböző adatforrásokból
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Ha Machine Learning Studio (klasszikus) használatával szeretne saját adatait használni a prediktív elemzési megoldások fejlesztéséhez és betanításához, a következő adatok használhatók: 
+Ha saját adatait szeretné használni a Machine Learning Studio-ban (klasszikus) egy prediktív elemzési megoldás kifejlesztéséhez és betanításához, a következő adatokat használhatja: 
 
-* **Helyi fájl** – a saját munkaterületen lévő adatkészlet-modul létrehozásához a merevlemezről előre be kell tölteni a helyi adatokat.
-* **Online adatforrások** – az [adatok importálása][import-data] modul használatával férhet hozzá az egyes online forrásokból származó adatokhoz, miközben a kísérlet fut
-* **Machine learning Studio (klasszikus) kísérlet** – az adatkészletként mentett adatokat Machine learning Studio (klasszikus)
-* Helyszíni [**SQL Server adatbázis**](use-data-from-an-on-premises-sql-server.md) – a helyszíni SQL Server-adatbázisból származó adatok használata az adatok manuális másolása nélkül
+* **Helyi fájl** – Helyi adatok betöltése idő előtt a merevlemezről adatkészletmodul létrehozásához a munkaterületen
+* **Online adatforrások** – Az [Adatok importálása][import-data] modullal a kísérlet futása közben több online forrásból származó adatok hozhatja meg a hozzáférést
+* **Machine Learning Studio (klasszikus) kísérlet** – Adatkészletként mentett adatok használata a Machine Learning Studio-ban (klasszikus)
+* [**Helyszíni SQL Server-adatbázis**](use-data-from-an-on-premises-sql-server.md) – Adatok használata helyszíni SQL Server-adatbázisból anélkül, hogy manuálisan kellene másolnia az adatokat
 
 > [!NOTE]
-> A Machine Learning Studio (klasszikus) szolgáltatásban számos minta adathalmaz érhető el, amelyeket az adatképzéshez használhat. Ezekről további információt [a minta adatkészletek használata Azure Machine learning Studio (klasszikus)](use-sample-datasets.md)című témakörben talál.
+> Számos minta adatkészletek érhetők el a Machine Learning Studio (klasszikus), amely a betanítási adatok. Ezekről [a mintaadatkészletek használata az Azure Machine Learning Studioban (klasszikus) című témakörben](use-sample-datasets.md)talál.
 
 ## <a name="prepare-data"></a>Adatok előkészítése
 
-A Machine Learning Studio (klasszikus) úgy van kialakítva, hogy téglalap-vagy táblázatos adatokkal működjön, például a szöveges adatokat, amelyek egy adatbázisból tagolt vagy strukturált adatokat használnak, bár bizonyos esetekben nem téglalap alakú adatok is használhatók.
+A Machine Learning Studio (klasszikus) úgy van kialakítva, hogy négyszögletes vagy táblázatos adatokkal, például adatbázisból deszelt vagy strukturált adatokkal működjön, bár bizonyos körülmények között nem téglalap alakú adatok használhatók.
 
-A legjobb, ha az adatai viszonylag tisztaak, mielőtt a Studio (klasszikus) szolgáltatásba importálja őket. Tegyük fel például, hogy ügyelnie kell az olyan problémákra, mint például a nem idézett karakterláncok.
+A legjobb, ha az adatok viszonylag tiszta, mielőtt importálja őket studio (klasszikus). Például érdemes gondoskodni a problémákról, például a nem jegyzett karakterláncokkal.
 
-Vannak azonban olyan modulok a Studióban (klasszikus), amelyek lehetővé teszik az adatfeldolgozást a kísérletben az Adatimportálás után. Az Ön által használt gépi tanulási algoritmustól függően előfordulhat, hogy el kell döntenie, hogyan fogja kezelni az adatok szerkezeti problémáit, például a hiányzó értékeket és a ritka adatmennyiségeket, és vannak olyan modulok, amelyek segíthetnek. A függvényeket végrehajtó modulok esetében tekintse meg a modul paletta **adat-átalakítási** szakaszát.
+Vannak azonban olyan modulok a Studio (klasszikus), amelyek lehetővé teszik bizonyos manipuláció az adatok a kísérleten belül az adatok importálása után. A gépi tanulási algoritmusok használata, előfordulhat, hogy el kell döntenie, hogyan fogja kezelni az adatok strukturális problémák, mint például a hiányzó értékek és ritka adatok, és vannak modulok, amelyek segíthetnek ebben. Keresse meg a modulpaletta **Adattranszformáció** szakaszában az okat ellátó modulokat.
 
-A kísérlet bármely pontján megtekintheti vagy letöltheti a modul által előállított adatokat a kimeneti portra kattintva. A modultól függően előfordulhat, hogy más letöltési lehetőségek is rendelkezésre állnak, vagy a Studio (klasszikus) webböngészőjében megjelenítheti az adatait.
+A kísérlet bármely pontján megtekintheti vagy letöltheti a modul által létrehozott adatokat a kimeneti portra kattintva. A modultól függően különböző letöltési lehetőségek állnak rendelkezésre, vagy a webböngészőben lévő adatokat a Studio (klasszikus) alkalmazásban is megjelenítheti.
 
 ## <a name="supported-data-formats-and-data-types"></a>Támogatott adatformátumok és adattípusok
 
-A kísérletbe több adattípust is importálhat, attól függően, hogy milyen mechanizmust használ az adatok importálásához, és honnan származik:
+Számos adattípust importálhat a kísérletbe attól függően, hogy milyen mechanizmust használ az adatok importálásához, és honnan származik:
 
-* Egyszerű szöveg (. txt)
-* Vesszővel tagolt értékek (CSV) fejléctel (. csv) vagy anélkül (. NH. csv)
-* Tabulátorral tagolt értékek (TSV) fejléctel (. TSV) vagy anélkül (. NH. TSV)
+* Egyszerű szöveg (.txt)
+* Vesszővel tagolt értékek (CSV) fejléccel (.csv) vagy anélkül (.nh.csv)
+* Tabulátorral tagolt értékek (TSV) fejléccel (.tsv) vagy anélkül (.nh.tsv)
 * Excel-fájl
 * Azure-tábla
-* Struktúra táblázata
-* SQL Database-táblázat
+* Hive tábla
+* SQL adatbázistábla
 * OData-értékek
-* SVMLight-adatok (. SVMLight) (lásd a formátumra vonatkozó [SVMLight-definíciót](http://svmlight.joachims.org/) )
-* Attribútum-kapcsolati fájlformátum (ARFF) adatai (. ARFF) (lásd a [ARFF definícióját](https://weka.wikispaces.com/ARFF) a formázási adatokhoz).
-* Zip-fájl (. zip)
-* R-objektum vagy munkaterület-fájl (. RData
+* SVMLight-adatok (.svmlight) (a formátumra vonatkozó információkat lásd az [SVMLight definíciójában)](http://svmlight.joachims.org/)
+* Attribútumkapcsolati fájlformátum (ARFF) adatai (.arff) (a formátumra vonatkozó információkat lásd az [ARFF definíciójában)](https://weka.wikispaces.com/ARFF)
+* Zip-fájl (.zip)
+* R objektum vagy munkaterületi fájl (. RData)
 
-Ha olyan formátumú adatokat importál, mint például a metaadatokat tartalmazó ARFF, a Studio (klasszikus) ezt a metaadatokat használja az egyes oszlopok fejlécének és adattípusának meghatározásához.
+Ha az adatokat metaadatokat tartalmazó formátumban, például ARFF formátumban importálja, a Studio (klasszikus) ezt a metaadatot használja az egyes oszlopok fejlécének és adattípusának meghatározásához.
 
-Ha olyan adatokat importál, mint például a TSV vagy CSV formátum, amely nem tartalmazza ezt a metaadatokat, a Studio (klasszikus) az adatok mintavételezésével kikövetkezteti az egyes oszlopok adattípusát. Ha az adathalmazok nem rendelkeznek oszlopfejlécek, a Studio (klasszikus) alapértelmezett neveket is tartalmaz.
+Ha olyan adatokat importál, mint például a TSV vagy a CSV formátum, amely nem tartalmazza ezeket a metaadatokat, a Studio (klasszikus) az adatok mintavételezésével következtet az egyes oszlopok adattípusára. Ha az adatok nem tartalmaznak oszlopfejléceket, a Studio (klasszikus) alapértelmezett neveket ad meg.
 
-A [metaadatok szerkesztése][edit-metadata] modul használatával explicit módon megadhatja vagy módosíthatja az oszlopok fejléceit és adattípusait.
+A [Metaadatok szerkesztése][edit-metadata] modul segítségével explicit módon megadhatja vagy módosíthatja az oszlopok címsorait és adattípusait.
 
-A Studio (klasszikus) a következő adattípusokat ismeri fel:
+A következő adattípusokat ismeri fel a Studio (klasszikus):
 
 * Sztring
 * Egész szám
-* Dupla
+* Double
 * Logikai
 * DateTime
-* Időtartam
+* időtartam
 
-A Studio egy ***adattábla*** nevű belső adattípust használ a modulok közötti adatátvitelhez. Az adatokat adattábla formátumba explicit módon konvertálhatja az [átalakítás adatkészletbe][convert-to-dataset] modul használatával.
+A Studio egy ***adattábla*** nevű belső adattípust használ az adatok modulok közötti átadására. Az adatokat explicit módon adattábla formátumba konvertálhatja a [Convert to Dataset][convert-to-dataset] module segítségével.
 
-Az adattáblán kívül más formátumokat is tartalmazó modulok a következő modulba való átadásuk előtt csendes adattáblára konvertálják az adattáblát.
+Minden olyan modul, amely az adattáblától eltérő formátumokat fogad el, az adatokat csendesen adattáblává konvertálja, mielőtt átadná a következő modulnak.
 
-Szükség esetén átalakíthatja az adattábla formátumát CSV-, TSV-, ARFF-vagy SVMLight-formátumba más konverziós modulok használatával.
-A függvényeket végrehajtó modulok esetében tekintse meg a modul paletta **adatformátum-konverziók** szakaszát.
+Szükség esetén az adattábla-formátumot más konverziós modulok használatával visszakonvertálhatja CSV, TSV, ARFF vagy SVMLight formátumba.
+Keresse meg a modulpaletta **Adatformátum-átalakítások** szakaszában az okat ellátó modulokat.
 
 ## <a name="data-capacities"></a>Adatkapacitások
 
-A Machine Learning Studio (klasszikus) moduljai a gyakori felhasználási esetekben legfeljebb 10 GB-nyi sűrű numerikus adatokat támogató adatkészleteket támogatnak. Ha egy modul egynél több bemenetből fogad adatokat, a bemenet összesített mérete nem haladhatja meg a 10 GB-ot. A struktúra vagy a Azure SQL Database lekérdezések használatával nagyobb adatkészleteket is megadhat, vagy az adatok importálása előtt használhatja a Learning by Counts előfeldolgozást is.  
+A Machine Learning Studio (klasszikus) moduljai akár 10 GB sűrű numerikus adatadatkészletet is támogatnak a gyakori használati esetekhez. Ha egy modul egynél több bemenetből fogad adatokat, a bemenet összesített mérete nem haladhatja meg a 10 GB-ot. A Hive vagy az Azure SQL Database lekérdezései használatával mintát vehet a nagyobb adatkészletekből, vagy használhatja a Learning by Count előfeldolgozást az adatok importálása előtt.  
 
 A szolgáltatásnormalizálás során a következő, 10 GB alá korlátozott adattípusok bővíthetők nagyobb adatkészletekké:
 
@@ -99,89 +99,89 @@ A következő modulok 10 GB-nál kisebb adatkészletekre vannak korlátozva:
 * Olyan modulok, amelyeknél a kimeneti adatok mérete meghaladhatja a bemeneti adatok méretét; például az egyesítés vagy a szolgáltatáskivonatolás
 * Kereszt-ellenőrzés, modell-hiperparaméterek beállítása, sorszámregresszió és multi-osztályú osztályozás nagyszámú ismétlés esetében
 
-A pár GB-nál nagyobb adatkészletek esetében töltse fel az adatokat az Azure Storage-ba vagy a Azure SQL Databaseba, vagy használja az Azure HDInsight-t ahelyett, hogy közvetlenül egy helyi fájlból kellene feltöltenie.
+A néhány GB-nél nagyobb adatkészletek esetén töltse fel az adatokat az Azure Storage-ba vagy az Azure SQL Database-be, vagy használja az Azure HDInsight-ot, ahelyett, hogy közvetlenül egy helyi fájlból töltene fel.
 
-A képadatokról a lemezképek [importálása](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/import-images#bkmk_Notes) modul dokumentációjában talál információt.
+A képadatokkal kapcsolatos információkat a [Képek importálása](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/import-images#bkmk_Notes) modul hivatkozásában találja.
 
 ## <a name="import-from-a-local-file"></a>Importálás helyi fájlból
 
-Feltölthet egy adatfájlt a merevlemezről a Studio (klasszikus) betanítási adatként való használatra. Az adatfájlok importálásakor létre kell hoznia egy adatkészlet-modult, amely készen áll a munkaterületen végzett kísérletekhez való használatra.
+Az adatfájlt feltöltheti a merevlemezről, hogy betanítási adatként használhassa a Studio (klasszikus) programban. Adatfájl importálásakor létrehoz egy adatkészletmodult, amely készen áll a munkaterületi kísérletekben való használatra.
 
-Adatokat importálhat a helyi merevlemezen, tegye a következőket:
+Ha adatokat szeretne importálni egy helyi merevlemezről, tegye a következőket:
 
-1. Kattintson a Studio (klasszikus) ablakának alján található **+ új** elemre.
-2. Válassza az **adatkészlet** és **a helyi fájl**lehetőséget.
-3. Az **új adatkészlet feltöltése** párbeszédpanelen tallózással keresse meg a feltölteni kívánt fájlt.
-4. Adjon meg egy nevet, az adattípus azonosításához, és igény szerint adjon meg egy leírást. Leírását javasolt – lehetővé teszi bármely jellemzőinek a jövőben az adatok használatakor vegye figyelembe az adatok rögzítéséhez.
-5. Ez a jelölőnégyzet egy **meglévő adatkészlet új verziója** , amely új adatokat tartalmazó meglévő adatkészlet frissítését teszi lehetővé. Ehhez jelölje be ezt a jelölőnégyzetet, majd írja be egy meglévő adatkészlet nevét.
+1. Kattintson a Studio (klasszikus) ablak alján a **+ÚJ** gombra.
+2. Válassza **az ADATKÉSZLET** és a HELYI FÁJL **ELEMET.**
+3. Az **Új adatkészlet feltöltése** párbeszédpanelen keresse meg a feltölteni kívánt fájlt.
+4. Adjon meg egy nevet, azonosítsa az adattípust, és adja meg a leírást. A leírás ajánlott - lehetővé teszi, hogy rögzítse az adatokkal kapcsolatos olyan jellemzőket, amelyeket az adatok jövőbeni használatakor szeretne megjegyezni.
+5. A **jelölőnégyzet: Ez egy meglévő adatkészlet új verziója** lehetővé teszi egy meglévő adatkészlet új adatokkal való frissítését. Ehhez kattintson erre a jelölőnégyzetre, majd írja be egy meglévő adatkészlet nevét.
 
-![Töltse fel egy új adatkészlet](./media/import-data/upload-dataset-from-local-file.png)
+![Új adatkészlet feltöltése](./media/import-data/upload-dataset-from-local-file.png)
 
-Feltöltés ideje az adatok méretétől és a szolgáltatás a kapcsolat sebességétől függ. Ha tudja, hogy a fájl hosszú időt vesz igénybe, megteheti, hogy a Studio (klasszikus) szolgáltatáson belül más dolgokat is végrehajthat. Azonban a böngésző bezárása az adatfeltöltés befejezése előtt a feltöltés sikertelen lesz.
+A feltöltési idő az adatok méretétől és a szolgáltatáshoz való csatlakozás sebességétektől függ. Ha tudja, hogy a fájl hosszú időt vesz igénybe, akkor a várakozás ideje alatt más dolgokat is megtehet a Studio (klasszikus) belsejében. Azonban az adatfeltöltés befejezése előtt bezárja a böngészőt, és a feltöltés sikertelen lesz.
 
-Az adatok feltöltését követően egy adatkészlet modulban tárolja, és bármely a kísérletvászonra a munkaterületén érhető el.
+Az adatok feltöltése után egy adatkészletmodultárolja őket, és a munkaterület bármely kísérlete számára elérhetővé válik.
 
-A kísérletek szerkesztésekor a modul paletta **mentett adatkészletek** listájában található **saját adatkészletek** listájában megtalálhatja a feltöltött adatkészleteket. Húzza át, és dobja el az adatkészletet a kísérlet vászonra, ha meg szeretné használni az adatkészlet további elemzés és gépi tanulás.
+Amikor szerkeszt egy kísérletet, megtalálhatja a feltöltött adatkészletek adatkészletek **listájában** a modulpaletta **Mentett adatkészletek** listájában. Az adatkészletet a kísérlet vászonra húzhatja, ha az adatkészletet további elemzésekhez és gépi tanuláshoz szeretné használni.
 
 ## <a name="import-from-online-data-sources"></a>Importálás online adatforrásokból
 
-Az [adatimportálási][import-data] modul használatával a kísérlet során különböző online adatforrásokból származó adatok importálhatók, miközben a kísérlet fut.
+Az [Adatok importálása][import-data] modul használatával a kísérlet a kísérlet futása közben különböző online adatforrásokból importálhat adatokat.
 
 > [!NOTE]
-> Ez a cikk az [adatok importálása][import-data] modullal kapcsolatos általános információkat tartalmazza. Az adattípusokkal, a formátumokkal, a paraméterekkel és a gyakori kérdésekre adott válaszokkal kapcsolatos részletesebb információkért tekintse meg az [adatimportálási][import-data] modul modul-referenciát ismertető témakörét.
+> Ez a cikk általános információkat tartalmaz az [Adatok importálása][import-data] modulról. Az adatok eléréséhez, formátumaihoz, paramétereinek és a gyakori kérdésekre adott válaszoknak a részletesebb tudnivalói az [Adatok importálása][import-data] modul modultémakörében talál további információt.
 
-Az [adatok importálása][import-data] modul használatával számos online adatforrásból elérheti az adatait, miközben a kísérlet fut:
+[Az Adatok importálása][import-data] modul használatával a kísérlet futása közben számos online adatforrás egyikéből érheti el az adatokat:
 
-* Egy webes URL-címe, HTTP-n keresztül
-* Hadoop HiveQL használatával
+* Webes URL HTTP-t használó
+* Hadoop a HiveQL használatával
 * Azure Blob Storage
 * Azure-tábla
-* Azure SQL database vagy SQL Server Azure virtuális gépen
-* A helyszíni SQL Server-adatbázis
-* Adatcsatorna-szolgáltató, aktuálisan OData
+* Azure SQL-adatbázis vagy SQL Server az Azure VM-en
+* Helyszíni SQL Server-adatbázis
+* Adatcsatorna-szolgáltató, az OData jelenleg
 * Azure Cosmos DB
 
-Mivel ez a betanítási információ a kísérlet futtatása közben is elérhető, csak ebben a kísérletben érhető el. Az adatkészletek moduljában tárolt adatokat összehasonlítva a munkaterületen lévő összes kísérlet elérhetővé válik.
+Mivel ez a betanítási adatok a kísérlet futása közben érhetők el, csak abban a kísérletben érhető el. Összehasonlításképpen, az adatkészletmodulban tárolt adatok a munkaterület bármely kísérlete számára elérhetők.
 
-Ha az online adatforrásokat a Studio (klasszikus) kísérletben szeretné elérni, adja hozzá az [adatimportálási][import-data] modult a kísérlethez. Az adatforrás kiválasztásához és konfigurálásához válassza az **adat importálása varázslót** a **Tulajdonságok** szakaszban a részletes útmutatóban. Azt is megteheti, hogy manuálisan kiválasztja az **adatforrást** a **Tulajdonságok** területen, és megadja az adatok eléréséhez szükséges paramétereket.
+Ha a Studio (klasszikus) kísérletben szeretne online adatforrásokat elérni, adja hozzá az [Adatok importálása][import-data] modult a kísérlethez. Ezután válassza **az Adatok importálása varázsló indítása** lehetőséget a **Tulajdonságok csoportban** az adatforrás kijelöléséhez és konfigurálásához. Másik lehetőségként manuálisan is kiválaszthatja **az Adatforrás** t **a Tulajdonságok** csoportban, és megadhatja az adatok eléréséhez szükséges paramétereket.
 
-Az online adatforrás támogatott az alábbi táblázatban vannak esethez. Ez a táblázat is összefoglalja a támogatott formátumok és adatok elérésére használt paraméterek.
+A támogatott online adatforrások tételes ek az alábbi táblázatban találhatók. Ez a táblázat összefoglalja a támogatott fájlformátumokat és az adatok eléréséhez használt paramétereket is.
 
 > [!IMPORTANT]
-> Az adatok [importálása][import-data] és [exportálása][export-data] modulok jelenleg csak a klasszikus üzemi modellel létrehozott Azure Storage-ból olvashatók és írhatók. Más szóval az új Azure Blob Storage fióktípus egy gyakran használt adatok tároláselérési rétegében vagy a ritkán használt adatok hozzáférési rétege által még nem támogatott.
+> Jelenleg az [Adatok importálása][import-data] és [az adatok exportálása][export-data] modulok csak az Azure storage-ból hozhat létre a klasszikus telepítési modell segítségével. Más szóval az új Azure Blob Storage-fiók típusa, amely egy gyakori elérésű tárolási szint vagy ritka elérésű tárolási hozzáférési szint még nem támogatott.
 >
-> Bármely általánosan, Azure storage-fiókok előfordulhat, hogy létrehozott előtt elérhetővé váltak a szolgáltatás a beállítás nem befolyásolja.
-> Ha létre kell hoznia egy új fiókot, válassza a **klasszikus** lehetőséget a telepítési modellhez, vagy használja a Resource Managert, és válassza az **általános célú** elemet a **fiók típusaként**a **blob Storage** helyett.
+> Általában a szolgáltatásbeállítás elérhetővé vált elérhetővé vált Azure storage-fiókok at általában nem érinti.
+> Ha új fiókot kell létrehoznia, válassza a **Klasszikus** lehetőséget a központi telepítési modellhez, vagy használja az Erőforrás-kezelőt, és válassza **az Általános célú** lehetőséget a **Fióktípus Blob storage** **helyett.**
 >
-> További információt az [Azure Blob Storage: gyakori és](../../storage/blobs/storage-blob-storage-tiers.md)ritka elérésű tárolási szintek című témakörben talál.
+> További információ: [Azure Blob Storage: Hot and Cool Storage Tiers](../../storage/blobs/storage-blob-storage-tiers.md).
 
-### <a name="supported-online-data-sources"></a>Online adatforrás támogatott
-A Azure Machine Learning Studio (klasszikus) **adatimportálási** modul a következő adatforrásokat támogatja:
+### <a name="supported-online-data-sources"></a>Támogatott online adatforrások
+Az Azure Machine Learning Studio (klasszikus) **Import Data** modul a következő adatforrásokat támogatja:
 
 | Adatforrás | Leírás | Paraméterek |
 | --- | --- | --- |
-| A HTTP Protokollon keresztül, a webes URL-címe |A vesszővel elválasztott értékeket (CSV), a tabulátorral tagolt értékeket (TSV), a attribútum-relációs fájlformátumra (ARFF) és a támogatási vektor gépek (SVM-világos) formátumban, adatokat olvas be minden olyan webes URL-címe, amely a HTTP Protokollt használ |<b>URL</b>: a fájl teljes nevét adja meg, beleértve a webhely URL-címét és a fájlnevet bármilyen kiterjesztéssel. <br/><br/><b>Adatformátum</b>: a támogatott adatformátumok egyikét adja meg: CSV, TSV, ARFF vagy SVM. Ha az adatok egy fejléc sorra, rendelje hozzá az oszlopok neveit szolgál. |
-| Hadoop/HDFS |Beolvassa az adatokat a Hadoop elosztott storage-ból. Azt adja meg a kívánt HiveQL, egy SQL-szerű lekérdezési nyelv segítségével adatokat. A HiveQL az adatok összesítéséhez és az Adatszűrés végrehajtásához is használható, mielőtt hozzáadja az adatokat a studióhoz (klasszikus). |<b>Struktúra adatbázis-lekérdezése</b>: megadja az adatlétrehozáshoz használt kaptár-lekérdezést.<br/><br/><b>HCatalog-kiszolgáló URI-ja</b> : a fürt nevét a&lt;a *fürt neve&gt;. azurehdinsight.net* formátumban adja meg.<br/><br/><b>Hadoop felhasználói fiók neve</b>: a fürt kiépítéséhez használt Hadoop-felhasználói fiók nevét adja meg.<br/><br/><b>Hadoop felhasználói fiók jelszava</b> : a fürt kiépítés során használt hitelesítő adatokat adja meg. További információ: [Hadoop-fürtök létrehozása a HDInsight-ben](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).<br/><br/><b>Kimeneti adatforgalom helye</b>: Megadja, hogy az adatokat egy Hadoop elosztott fájlrendszerben (HDFS) vagy az Azure-ban tárolja-e a rendszer. <br/><ul>Ha kimeneti adatokat tárolja a HDFS-ben, adja meg a HDFS-kiszolgáló URI-t. (Ügyeljen arra, használja a HDInsight-fürt nevét, a HTTPS:// előtag nélkül). <br/><br/>Ha a kimeneti adatokat tárolja az Azure-ban, adjon meg, hogy az Azure storage-fiók neve, a tárelérési kulcs és a tároló neve.</ul> |
-| SQL-adatbázis |Beolvassa vagy egy Azure virtuális gépen futó SQL Server-adatbázis egy Azure SQL database-ben tárolt adatokat. |<b>Adatbázis-kiszolgáló neve</b>: annak a kiszolgálónak a nevét adja meg, amelyen az adatbázis fut.<br/><ul>Azure SQL Database esetén adja meg a kiszolgáló nevét, amely akkor jön létre. Általában a *&lt;generated_identifier&gt;. database.Windows.net.* <br/><br/>Azure-beli virtuális gépen futtatott SQL Server esetén a következőt írja be *: TCP:&lt;virtuális gép DNS-neve&gt;, 1433*</ul><br/><b>Adatbázis neve </b>: a kiszolgálón található adatbázis nevét adja meg. <br/><br/><b>Kiszolgáló felhasználói fiókjának neve</b>: egy olyan fiók felhasználónevét adja meg, amely hozzáférési engedélyekkel rendelkezik az adatbázishoz. <br/><br/><b>Kiszolgáló felhasználói fiókjának jelszava</b>: megadja a felhasználói fiók jelszavát.<br/><br/><b>Adatbázis-lekérdezés</b>: adjon meg egy SQL-utasítást, amely leírja az olvasni kívánt információkat. |
-| Helyszíni SQL Database adatbázis |Beolvassa a helyszíni SQL-adatbázisban tárolt adatokat. |<b>Adatátjáró</b>: annak a számítógépnek a neve, amelyen a SQL Server-adatbázishoz hozzáférő adatkezelés átjáró található. Az átjáró beállításával kapcsolatos információkért tekintse [meg a helyszíni SQL Serverből származó adatokkal végzett speciális elemzések Azure Machine learning Studio (klasszikus) használatával](use-data-from-an-on-premises-sql-server.md)című témakört.<br/><br/><b>Adatbázis-kiszolgáló neve</b>: annak a kiszolgálónak a nevét adja meg, amelyen az adatbázis fut.<br/><br/><b>Adatbázis neve </b>: a kiszolgálón található adatbázis nevét adja meg. <br/><br/><b>Kiszolgáló felhasználói fiókjának neve</b>: egy olyan fiók felhasználónevét adja meg, amely hozzáférési engedélyekkel rendelkezik az adatbázishoz. <br/><br/><b>Felhasználónév és jelszó</b>: az adatbázis hitelesítő adatainak megadásához kattintson az <b>értékek megadása</b> elemre. Használhatja az integrált Windows-hitelesítést vagy SQL Server-hitelesítéssel attól függően, hogy hogyan a helyszíni SQL Server konfigurálva van-e.<br/><br/><b>Adatbázis-lekérdezés</b>: adjon meg egy SQL-utasítást, amely leírja az olvasni kívánt információkat. |
-| Azure-tábla |Adatokat olvas be a Table service az Azure Storage-ban.<br/><br/>Ha nagy mennyiségű adat ritkán olvasni, használja az Azure Table Service. Biztosít egy rugalmas, nem relációs (NoSQL), rugalmasan méretezhető, költséghatékony és magas rendelkezésre állású tárolási megoldást. |Az **adatimportálási** beállítások attól függően változnak, hogy a nyilvános adatokhoz vagy egy olyan privát Storage-fiókhoz fér hozzá, amelyhez bejelentkezési hitelesítő adatok szükségesek. Ezt a <b>hitelesítési típus</b> határozza meg, amelynek értéke "PublicOrSAS" vagy "account" lehet, amelyek mindegyike saját paramétereket tartalmaz. <br/><br/><b>Nyilvános vagy közös hozzáférésű aláírás (SAS) URI</b>: a paraméterek a következők:<br/><br/><ul><b>Tábla URI-ja</b>: a tábla nyilvános vagy sas URL-címét adja meg.<br/><br/><b>Megadja a tulajdonságok neveinek vizsgálatához szükséges sorokat</b>: az értékek a megadott számú sor vizsgálatára <i>legjobb n</i> , vagy <i>ScanAll</i> a tábla összes sorának lekéréséhez. <br/><br/>Ha az adat homogén és kiszámítható, javasoljuk, hogy válassza a *legjobb n* lehetőséget, és adjon meg egy számot N értékre. Nagyméretű táblák esetén ez gyorsabb olvasási időt eredményezhet.<br/><br/>Ha az adat strukturálva van, és a tábla mélysége és pozíciója alapján változik, válassza a *ScanAll* lehetőséget az összes sor vizsgálatához. Ez biztosítja, hogy az eredményül kapott tulajdonság és a metaadatok átalakítási integritását.<br/><br/></ul><b>Privát Storage-fiók</b>: a paraméterek a következők: <br/><br/><ul><b>Fióknév</b>: az olvasni kívánt táblát tartalmazó fiók nevét adja meg.<br/><br/><b>Fiók kulcsa</b>: a fiókhoz társított tárolási kulcsot adja meg.<br/><br/><b>Táblanév</b> : az olvasni kívánt adatmennyiséget tartalmazó tábla nevét adja meg.<br/><br/>A <b>tulajdonságok nevének vizsgálatára szolgáló sorok</b>: az értékek a megadott számú sor vizsgálatára <i>legjobb n</i> , vagy <i>ScanAll</i> a tábla összes sorának lekéréséhez.<br/><br/>Ha az adat homogén és kiszámítható, javasoljuk, hogy válassza a *legjobb n* lehetőséget, és adjon meg egy számot N értékre. Nagyméretű táblák esetén ez gyorsabb olvasási időt eredményezhet.<br/><br/>Ha az adat strukturálva van, és a tábla mélysége és pozíciója alapján változik, válassza a *ScanAll* lehetőséget az összes sor vizsgálatához. Ez biztosítja, hogy az eredményül kapott tulajdonság és a metaadatok átalakítási integritását.<br/><br/> |
-| Azure Blob Storage |Olvassa be az Azure Storage, beleértve a képeket, strukturálatlan szöveges vagy bináris adatok a Blob service-ben tárolt adatokat.<br/><br/>Használhatja a blobszolgáltatás nyilvánosan elérhetővé tehet adatokat, vagy privát módon tárolhat. Az adatok bármely pontjáról elérheti HTTP vagy HTTPS-kapcsolatok használatával. |Az **adatimportálási** modul beállításai attól függően változnak, hogy a nyilvános adatokat vagy egy olyan privát Storage-fiókot használ, amelyhez bejelentkezési hitelesítő adatok szükségesek. Ezt a <b>hitelesítési típus</b> határozza meg, amelynek értéke "PublicOrSAS" vagy "account" lehet.<br/><br/><b>Nyilvános vagy közös hozzáférésű aláírás (SAS) URI</b>: a paraméterek a következők:<br/><br/><ul><b>URI</b>: a tárolási blob nyilvános vagy sas URL-címét adja meg.<br/><br/><b>Fájlformátum</b>: a blob serviceban lévő adatformátumot határozza meg. A támogatott formátumok a következők: CSV, TSV és ARFF.<br/><br/></ul><b>Privát Storage-fiók</b>: a paraméterek a következők: <br/><br/><ul><b>Fióknév</b>: az olvasni kívánt blobot tartalmazó fiók nevét adja meg.<br/><br/><b>Fiók kulcsa</b>: a fiókhoz társított tárolási kulcsot adja meg.<br/><br/><b>Tároló, könyvtár vagy blob elérési útja</b> : az olvasni kívánt adatmennyiséget tartalmazó blob nevét adja meg.<br/><br/><b>Blob fájlformátum</b>: a blob szolgáltatásban található adatformátumot határozza meg. A támogatott formátumok a CSV, TSV, ARFF, fürt megosztott kötetei szolgáltatás a megadott kódolás és Excel. <br/><br/><ul>Ha a formátum CSV- vagy TSV, mindenképpen azt jelzik, hogy a fájl tartalmaz egy fejléc sorra.<br/><br/>Az Excel-beállítás segítségével adatokat olvasni az Excel-munkafüzetek. Az <i>Excel adatformátuma</i> beállításban jelezze, hogy az adatai Excel-munkalapokon vagy Excel-táblázatban találhatók-e. Az <i>Excel-táblázat vagy a beágyazott tábla </i>beállításnál adja meg annak a lapnak vagy táblának a nevét, amelyet olvasni szeretne.</ul><br/> |
-| Adatcsatorna-szolgáltató |Adatokat olvas be egy támogatott adatcsatorna-szolgáltató. Jelenleg csak az Open Data protokoll (OData) formátum támogatott. |<b>Adattartalom típusa</b>: megadja a OData formátumát.<br/><br/><b>Forrás URL-címe</b>: az adatcsatorna teljes URL-címét adja meg. <br/>Például a következő URL-cím olvasható a Northwind mintaadatbázis: https://services.odata.org/northwind/northwind.svc/ |
+| Webes URL HTTP-n keresztül |Az adatokat vesszővel tagolt értékekben (CSV), tabulátorral tagolt értékekben (TSV), attribútumkapcsolatú fájlformátumban (ARFF) és Support Vector Machines (SVM-light) formátumban olvassa be az adatokat a HTTP-t használó webes URL-címekről |<b>URL</b>: Megadja a fájl teljes nevét, beleértve a webhely URL-címét és a fájlnevét, bármilyen kiterjesztéssel. <br/><br/><b>Adatformátum</b>: A támogatott adatformátumok egyikét adja meg: CSV, TSV, ARFF vagy SVM-light. Ha az adatok fejlécsorral rendelkeznek, oszlopnevek hozzárendelésére szolgál. |
+| Hadoop/HDFS |Adatokat olvas fel a Hadoop elosztott tárolójából. A kívánt adatokat a HiveQL SQL-szerű lekérdezési nyelv használatával adhatja meg. HiveQL is használható adatok összesítésére és adatszűrés végrehajtására, mielőtt hozzáadja az adatokat a Studio (klasszikus). |<b>Hive adatbázis-lekérdezés:</b>Megadja az adatok létrehozásához használt Hive lekérdezést.<br/><br/><b>HCatalog-kiszolgáló URI:</b> A fürt nevét a * &lt;&gt;fürtnevének .azurehdinsight.net formátumával adta meg.*<br/><br/><b>Hadoop felhasználói fiók neve</b>: Megadja a fürt kiépítéséhez használt Hadoop felhasználói fiók nevét.<br/><br/><b>Hadoop felhasználói fiók jelszava</b> : Megadja a fürt kiépítésekor használt hitelesítő adatokat. További információ: [Hadoop-fürtök létrehozása a HDInsightban](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)című témakörben talál.<br/><br/><b>Kimeneti adatok helye:</b>Megadja, hogy az adatok egy Hadoop elosztott fájlrendszerben (HDFS) vagy az Azure-ban tárolódnak.Location of output data: Specifies whether the data is stored in a Hadoop distributed file system (HDFS) or in Azure. <br/><ul>Ha a kimeneti adatokat HDFS-ben tárolja, adja meg a HDFS-kiszolgáló URI-ját. (Ügyeljen arra, hogy a HDInsight-fürt nevét a HTTPS:// előtag nélkül használja). <br/><br/>Ha a kimeneti adatokat az Azure-ban tárolja, meg kell adnia az Azure storage-fiók nevét, storage-hozzáférési kulcs és storage-tároló nevét.</ul> |
+| SQL-adatbázis |Az Azure SQL-adatbázisban vagy egy Azure virtuális gépen futó SQL Server-adatbázisban tárolt adatok olvasása. |<b>Adatbázis-kiszolgáló neve</b>: Annak a kiszolgálónak a nevét adja meg, amelyen az adatbázis fut.<br/><ul>Az Azure SQL Database adja meg a létrehozott kiszolgáló nevét. Általában a * &lt;&gt;generated_identifier .database.windows.net.* <br/><br/>Az Azure virtuális gépen üzemeltetett SQL-kiszolgáló esetén adja meg a *tcp:&lt;Virtual Machine DNS Name ( virtuális gép&gt;DNS-neve ) 1433*</ul><br/><b>Adatbázis neve </b>: Megadja a kiszolgálón lévő adatbázis nevét. <br/><br/><b>Kiszolgálói felhasználói fiók neve</b>: Az adatbázishoz hozzáférési engedéllyel rendelkező fiók felhasználónevét adja meg. <br/><br/><b>Kiszolgálói felhasználói fiók jelszava</b>: Megadja a felhasználói fiók jelszavát.<br/><br/><b>Adatbázis-lekérdezés</b>:Adjon meg egy SQL utasítást, amely leírja az elolvasni kívánt adatokat. |
+| Helyszíni SQL-adatbázis |A helyszíni SQL-adatbázisban tárolt adatok olvasása. |<b>Adatátjáró</b>: Megadja a számítógépre telepített adatkezelési átjáró nevét, amelyen hozzáférhet az SQL Server adatbázisához. Az átjáró beállításáról a [Speciális elemzések végrehajtása az Azure Machine Learning Studio -val (klasszikus) helyszíni SQL-kiszolgálóadatainak használatával című témakörben](use-data-from-an-on-premises-sql-server.md)talál.<br/><br/><b>Adatbázis-kiszolgáló neve</b>: Annak a kiszolgálónak a nevét adja meg, amelyen az adatbázis fut.<br/><br/><b>Adatbázis neve </b>: Megadja a kiszolgálón lévő adatbázis nevét. <br/><br/><b>Kiszolgálói felhasználói fiók neve</b>: Az adatbázishoz hozzáférési engedéllyel rendelkező fiók felhasználónevét adja meg. <br/><br/><b>Felhasználónév és jelszó:</b>Kattintson <b>az Értékek megadása</b> elemre az adatbázis hitelesítő adatainak megadásához. A Helyszíni SQL Server konfigurálásától függően használhatja a Windows integrált hitelesítést vagy az SQL Server-hitelesítést.<br/><br/><b>Adatbázis-lekérdezés</b>:Adjon meg egy SQL utasítást, amely leírja az elolvasni kívánt adatokat. |
+| Azure-tábla |Adatokolvasás a Table szolgáltatás az Azure Storage-ban.<br/><br/>Ha ritkán nagy mennyiségű adatot olvas, használja az Azure Table Service. Rugalmas, nem relációs (NoSQL), masszívan méretezhető, olcsó és magas rendelkezésre állású tárolási megoldást biztosít. |Az Adatok **importálása párbeszédpanel** beállításai attól függően változnak, hogy nyilvános adatokhoz vagy bejelentkezési hitelesítő adatokat igénylő magántárfiókhoz fér-e hozzá. Ezt a <b>hitelesítéstípusa</b> határozza meg, amelynek értéke "PublicOrSAS" vagy "Account", amelyek mindegyike saját paraméterkészletet rendelkezik. <br/><br/><b>Nyilvános vagy megosztott hozzáférésű aláírás (SAS) URI</b>: A paraméterek a következők:<br/><br/><ul><b>Táblázat URI</b>: Megadja a tábla nyilvános vagy SAS URL-címét.<br/><br/><b>Megadja a tulajdonságneveket keresgélésre váró sorokat:</b>Az értékek <i>TopN</i> a megadott számú sor beolvasásához, vagy a <i>ScanAll</i> érték a táblázat összes sorának beolvasásához. <br/><br/>Ha az adatok homogének és kiszámíthatóak, ajánlott a *TopN* lehetőséget választani, és az N számot megadni. Nagy táblák esetén ez gyorsabb olvasási időt eredményezhet.<br/><br/>Ha az adatok a táblázat mélységétől és pozíciójától függően változó tulajdonságkészletekkel vannak felépítve, válassza a *ScanAll* lehetőséget az összes sor betöltéséhez. Ez biztosítja az eredményül kapott tulajdonság és metaadat-átalakítás integritását.<br/><br/></ul><b>Privát tárfiók:</b>A paraméterek a következők: <br/><br/><ul><b>Fiók név</b>: Megadja annak a fióknak a nevét, amely az olvasandó táblát tartalmazza.<br/><br/><b>Fiókkulcs</b>: A fiókhoz társított tárolókulcs megadása.<br/><br/><b>Tábla neve</b> : Megadja az olvasandó adatokat tartalmazó tábla nevét.<br/><br/><b>A tulajdonságneveket keresve keresandó sorok</b>: Az értékek <i>TopN</i> a megadott számú sor beolvasásához, vagy a <i>ScanAll</i> a táblázat összes sorának beolvasásához.<br/><br/>Ha az adatok homogének és kiszámíthatóak, azt javasoljuk, hogy válassza a *TopN* lehetőséget, és adjon meg egy számot az N-hez. Nagy táblák esetén ez gyorsabb olvasási időt eredményezhet.<br/><br/>Ha az adatok a táblázat mélységétől és pozíciójától függően változó tulajdonságkészletekkel vannak felépítve, válassza a *ScanAll* lehetőséget az összes sor betöltéséhez. Ez biztosítja az eredményül kapott tulajdonság és metaadat-átalakítás integritását.<br/><br/> |
+| Azure Blob Storage |Az Azure Storage Blob szolgáltatásában tárolt adatok olvasása, beleértve a képeket, a strukturálatlan szöveget vagy a bináris adatokat.<br/><br/>A Blob szolgáltatás használatával nyilvánosan elérhetővé tehet adatokat, vagy az alkalmazásadatok privát tárolására. Az adatokat bárhonnan elérheti HTTP- vagy HTTPS-kapcsolatok használatával. |Az Adatok **importálása** modul beállításai attól függően változnak, hogy nyilvános adatokhoz vagy bejelentkezési hitelesítő adatokat igénylő magántárfiókhoz fér-e hozzá. Ezt a hitelesítés típusa határozza <b>meg,</b> amelynek értéke "PublicOrSAS" vagy "Account".<br/><br/><b>Nyilvános vagy megosztott hozzáférésű aláírás (SAS) URI</b>: A paraméterek a következők:<br/><br/><ul><b>URI</b>: Megadja a nyilvános vagy SAS URL-címet a tárolási blobhoz.<br/><br/><b>Fájlformátum:</b>Megadja az adatok formátumát a Blob szolgáltatásban. A támogatott formátumok a CSV, a TSV és az ARFF.<br/><br/></ul><b>Privát tárfiók:</b>A paraméterek a következők: <br/><br/><ul><b>Fióknév</b>: Megadja az olvasni kívánt blobot tartalmazó fiók nevét.<br/><br/><b>Fiókkulcs</b>: A fiókhoz társított tárolókulcs megadása.<br/><br/><b>A tároló, a könyvtár vagy</b> a blob elérési útja: Megadja az olvasandó adatokat tartalmazó blob nevét.<br/><br/><b>Blob fájlformátum:</b>Megadja az adatok formátumát a blob szolgáltatásban. A támogatott adatformátumok a CSV, A TSV, AZ ARFF, a megadott kódolású CSV és az Excel. <br/><br/><ul>Ha a formátum CSV vagy TSV, mindenképpen jelezze, hogy a fájl tartalmaz-e fejlécsort.<br/><br/>Az Excel beállítással exceles munkafüzetekből olvashat adatokat. Az <i>Excel adatformátum-formátumában</i> adja meg, hogy az adatok Excel-munkalaptartományban vagy Excel-táblázatban vannak-e. Az <i>Excel-lapon vagy </i>a beágyazott táblázatban adja meg annak a lapnak vagy táblázatnak a nevét, amelyből olvasni szeretne.</ul><br/> |
+| Adatcsatorna-szolgáltató |Egy támogatott hírcsatorna-szolgáltatótól olvas be adatokat. Jelenleg csak az Open Data Protocol (OData) formátum támogatott. |<b>Adattartalom-típus</b>: Megadja az OData formátumot.<br/><br/><b>Forrás URL</b>-címe : Megadja az adatcsatorna teljes URL-címét. <br/>Például a következő URL-cím olvasható a Northwind mintaadatbázisból:https://services.odata.org/northwind/northwind.svc/ |
 
 ## <a name="import-from-another-experiment"></a>Importálás másik kísérletből
 
-Időnként előfordulhat, hogy egy kísérletből közbenső eredményt szeretne készíteni, és egy másik kísérlet részeként használja. Ehhez mentse a modult adatkészletként:
+Lesznek olyan esetek, amikor egy kísérlet köztes eredményét szeretné használni egy másik kísérlet részeként. Ehhez mentse a modult adatkészletként:
 
-1. Kattintson az adatkészletként menteni kívánt modul kimenetére.
-2. Kattintson **a Mentés adatkészletként**lehetőségre.
-3. Ha a rendszer kéri, adjon meg egy nevet és egy leírást, amely lehetővé teszi az adatkészlet egyszerű azonosítását.
-4. Kattintson az **OK pipa gombra** .
+1. Kattintson annak a modulnak a kimenetére, amelyet adatkészletként szeretne menteni.
+2. Kattintson **a Mentés adatkészletként gombra.**
+3. Amikor a rendszer kéri, adjon meg egy nevet és egy leírást, amely lehetővé teszi az adatkészlet egyszerű azonosítását.
+4. Kattintson az **OK** gombra.
 
-A Mentés befejeződése után az adatkészlet elérhető lesz a munkaterületen lévő bármilyen kísérletben. Ez a modul paletta **mentett adatkészletek** listájában található.
+Amikor a mentés befejeződik, az adatkészlet a munkaterületen bármely kísérletben használható lesz. Ez a modulpaletta **Mentett adatkészletek** listájában található.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Az Adatimportálási és adatexportálási modulokat használó Azure Machine Learning Studio webszolgáltatások üzembe helyezése](web-services-that-use-import-export-modules.md)
+[Az Adatok importálása és az adatexportálásmodulokat használó Azure Machine Learning Studio webszolgáltatások üzembe helyezése](web-services-that-use-import-export-modules.md)
 
 
 <!-- Module References -->

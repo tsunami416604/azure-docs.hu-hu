@@ -1,6 +1,6 @@
 ---
 title: Az Azure Files méretezhetőségi és teljesítménycéljai
-description: További információk a méretezhetőségi és teljesítménycéljai az Azure Files között, beleértve a kapacitás, a kérelmek arányának és a bejövő és kimenő sávszélesség korlátja.
+description: Ismerje meg az Azure Files méretezhetőségi és teljesítménycéljait, beleértve a kapacitást, a kérelmek arányát, valamint a bejövő és kimenő sávszélesség-korlátokat.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,108 +8,108 @@ ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255131"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 
-A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő SMB protokollon keresztül érhető el. Ez a cikk ismerteti a méretezhetőségi és teljesítménycéljai Azure Files és az Azure File Sync.
+[Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztásokat kínál a felhőben, amelyek az iparági szabványnak megfelelő SMB protokollon keresztül érhetők el. Ez a cikk ismerteti az Azure Files és az Azure File Sync méretezhetőségi és teljesítménycélokat.
 
-Az itt felsorolt méretezhetőségi és teljesítménycéljai csúcskategóriás célozza, de hatással lehet más változókat a központi telepítésben. Például egy fájl az átviteli sebességet is korlátozhatja a rendelkezésre álló hálózati sávszélességet, nem csak a az Azure Files szolgáltatást futtató kiszolgálók. Erősen ajánlott a tesztelés a használati mintáját, és határozza meg, a méretezhetőség és teljesítmény az Azure Files megfelel-e a követelményeknek. Idővel ezek a korlátok növelését is igyekszünk áthelyezését. Kérjük, ne habozzon, hogy küldjön visszajelzést az alábbi megjegyzésekben vagy a [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files), hogy mely korlátokat szeretné megtekinteni.
+Az itt felsorolt méretezhetőségi és teljesítménycélok csúcskategóriás célok, de a központi telepítés más változói is hatással lehetnek rájuk. Például egy fájl átviteli mertéje is korlátozhatja a rendelkezésre álló hálózati sávszélességet, nem csak az Azure Files szolgáltatást üzemeltető kiszolgálók. Javasoljuk, hogy tesztelje a használati mintát annak megállapítására, hogy az Azure Files méretezhetősége és teljesítménye megfelel-e az Ön igényeinek. Elkötelezettek vagyunk amellett is, hogy idővel növeljük ezeket a korlátokat. Kérjük, ne habozzon visszajelzést adni nekünk, akár az alábbi megjegyzésekben, akár az [Azure Files UserVoice-on,](https://feedback.azure.com/forums/217298-storage/category/180670-files)amelyekkel kapcsolatban növelni szeretné a korlátozásokat.
 
-## <a name="azure-storage-account-scale-targets"></a>Az Azure storage-fiók méretezési célok
+## <a name="azure-storage-account-scale-targets"></a>Az Azure storage-fiók méretezési céljai
 
-A szülő erőforrás Azure-fájlmegosztások az Azure storage-fiók. Storage-fiók az Azure-beli adatok tárolására használható több tárolószolgáltatások, beleértve az Azure Files között, amelyet egy tárolókészletet jelöli. Egyéb szolgáltatások, amelyek az adatok tárolása a storage-fiókok az Azure Blob storage, Azure Queue storage és Azure Table storage. A következő célokat a alkalmazni adatok tárolása a storage-fiókban az összes tárolási szolgáltatások:
+Az Azure-fájlmegosztás szülőerőforrása egy Azure-tárfiók. A tárfiók az Azure-ban egy tárkészletet jelöl, amelyet több tárolási szolgáltatás, köztük az Azure Files is használhat az adatok tárolására. A tárfiókokban tárolt egyéb szolgáltatások az Azure Blob storage, az Azure Queue storage és az Azure Table storage. A következő célok az összes tárfiókban tárolt összes társzolgáltatást alkalmazza:
 
 [!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 > [!Important]  
-> Az általános célú Storage-fiókok más tárolási szolgáltatásokból való kihasználtsága hatással van az Azure-fájlmegosztás használatára a Storage-fiókban. Például ha eléri a maximális tárfiókok kapacitásával az Azure Blob storage, nem tudja hozni az Azure-fájlmegosztás, az új fájlok akkor is, ha az Azure-fájlmegosztás maximális megosztási méreténél.
+> Az egyéb társzolgáltatások általános célú tárfiók-kihasználtsága hatással van az Azure-fájlmegosztásokra a tárfiókban. Ha például eléri a maximális tárfiók kapacitását az Azure Blob storage segítségével, akkor nem hozhat létre új fájlokat az Azure-fájlmegosztáson, még akkor sem, ha az Azure-fájlmegosztás a maximális megosztási méret alatt van.
 
 ## <a name="azure-files-scale-targets"></a>Az Azure Files méretezési célok
 
-Háromféle korlátozást kell figyelembe venni a Azure Files: Storage-fiókok,-megosztások és-fájlok esetében.
+Az Azure Files esetében három korlátozási kategóriát kell figyelembe venni: tárfiókok, megosztások és fájlok.
 
-Például: prémium fájlmegosztás esetén egyetlen megosztás elérheti a 100 000 IOPS, és egyetlen fájl akár 5 000 IOPS is méretezhető. Ha tehát három fájl található egy megosztásban, az adott megosztásból lekérhető maximális IOPS 15 000.
+Például: Prémium fájlmegosztások esetén egyetlen megosztás 100 000 IOPS-t érhet el, és egyetlen fájl akár 5000 IOPS-t is felskálázhat. Tehát, ha három fájl egy megosztás, a maximális IOPS kaphat, hogy a részvény 15.000.
 
-### <a name="standard-storage-account-limits"></a>Standard Storage-fiók korlátai
+### <a name="standard-storage-account-limits"></a>Szokásos tárfiók-korlátok
 
-Ezeket a korlátokat az [Azure Storage-fiók méretezési céljai](#azure-storage-account-scale-targets) című szakaszban találja.
+Tekintse meg az [Azure storage-fiók méretezési célok](#azure-storage-account-scale-targets) szakasz ezeket a korlátokat.
 
-### <a name="premium-filestorage-account-limits"></a>Prémium szintű FileStorage-fiók korlátai
+### <a name="premium-filestorage-account-limits"></a>Prémium filestorage fiók korlátai
 
 [!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
 
 > [!IMPORTANT]
-> A Storage-fiókra vonatkozó korlátozások minden megosztásra érvényesek. A FileStorage-fiókok maximálisra skálázása csak akkor érhető el, ha FileStorage-fiókban csak egy megosztás van.
+> A tárfiók-korlátok az összes megosztásra vonatkoznak. A FileStorage-fiókok maximális felskálázása csak akkor érhető el, ha FileStorage-fiókonként csak egy megosztás van.
 
-### <a name="file-share-and-file-scale-targets"></a>Fájlmegosztás és méretezési célok
+### <a name="file-share-and-file-scale-targets"></a>Fájlmegosztási és fájlméretezési célok
 
 > [!NOTE]
-> Az 5 TiB-nál nagyobb szabványos fájlmegosztás bizonyos korlátozásokkal és regionális korlátozásokkal rendelkezik.
-> A korlátozások, a regionális információk és a nagyobb fájlmegosztás-méretek engedélyezésére vonatkozó utasítások listáját a tervezési útmutató a további [fájlmegosztás](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) című szakasza tartalmazza.
+> Standard fájl részvények nagyobb, mint 5 TiB bizonyos korlátozások és a regionális korlátozásokat.
+> A korlátozások, a területi információk és a nagyobb fájlmegosztási méretek engedélyezésére vonatkozó utasításokat a tervezési útmutató [Beépített fájlmegosztási](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) szakaszában találja.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
 [!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
-## <a name="azure-file-sync-scale-targets"></a>Az Azure File Sync méretezési célok
+## <a name="azure-file-sync-scale-targets"></a>Az Azure File Sync skálázási céljai
 
-Azure File Sync a korlátlan használat céljával lett tervezve, de a korlátlan használat nem mindig lehetséges. Az alábbi táblázat a Microsoft tesztelésének határait mutatja be, és azt is jelzi, hogy mely célok rögzített határértékek:
+Az Azure File Sync célja a korlátlan használat, de a korlátlan használat nem mindig lehetséges. Az alábbi táblázat a Microsoft tesztelésének határait mutatja be, és azt is, hogy mely célok a szigorú korlátok:
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
-### <a name="azure-file-sync-performance-metrics"></a>Az Azure File Sync teljesítmény-mérőszámok
+### <a name="azure-file-sync-performance-metrics"></a>Az Azure File Sync teljesítménymetrikái
 
-Az Azure File Sync ügynök fut, amely csatlakozik az Azure-fájlmegosztások Windows kiszolgáló gépen, mivel a hatékony teljesítményt attól függ, hogy az infrastruktúra tényező: Windows Server és az alapul szolgáló lemez konfigurációját a hálózati sávszélesség a kiszolgáló és az Azure storage között a fájl méretével, a teljes adatkészlet méretét, és a tevékenység az adatkészlethez. Mivel az Azure File Sync a fájlok szintjén működik, a teljesítményjellemzők az Azure File Sync-alapú megoldás jobban mérik a másodpercenként feldolgozott (fájlok és könyvtárak) objektumok száma.
+Mivel az Azure File Sync ügynök egy Olyan Windows Server-gépen fut, amely az Azure-fájlmegosztásokhoz csatlakozik, a tényleges szinkronizálási teljesítmény számos tényezőtől függ az infrastruktúrában: a Windows Server től és az alapul szolgáló lemezkonfigurációtól, a hálózati sávszélességtől a kiszolgáló és az Azure-tároló, a fájlméret, a teljes adatkészlet mérete és az adatkészlet tevékenysége között. Mivel az Azure File Sync fájlszinten működik, az Azure File Sync-alapú megoldás teljesítményjellemzőit jobban méri konkretizálják a másodpercenként feldolgozott objektumok (fájlok és könyvtárak) száma.
 
-Az Azure File Sync, a teljesítmény fontos két szakaszban végzik:
+Az Azure File Sync esetében a teljesítmény két szakaszban kritikus:
 
-1. **Kezdeti egyszeri kiépítés**: a teljesítmény optimalizálásához a kezdeti kiépítés során tekintse meg a bevezetést [Azure file Sync](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) az optimális üzembe helyezési részletekért.
-2. **Folyamatos szinkronizálás**: miután az Azure-fájlmegosztás először befejeződik az adatgyűjtés során, Azure file Sync több végpontot is megtart a szinkronizálásban.
+1. **Kezdeti egyszeri üzembe helyezés:** A kezdeti kiépítés teljesítményének optimalizálása érdekében tekintse meg [az Üzembe helyezés az Azure File Sync](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) az optimális üzembe helyezési részleteket.
+2. **Folyamatos szinkronizálás:** Miután az adatok at az Azure fájlmegosztások, az Azure File Sync több végpontszinkronban tartja.
 
-Segítséget az egyes szakaszok üzembe helyezésének megtervezése, az alábbiakban az eredmények figyelhetők egy konfigurációs rendszereken belső tesztelése során
+Az egyes szakaszok üzembe helyezésének megtervezéséhez az alábbiakban a rendszer belső tesztelése során megfigyelt eredményeket
 
-| Rendszer-konfiguráció |  |
+| Rendszerkonfiguráció |  |
 |-|-|
-| CPU | 64 virtuális maggal és 64 MiB L3-gyorsítótár |
-| Memória | 128 GiB |
-| Lemez | Akkumulátor a RAID 10-zel SAS-lemezek biztonsági gyorsítótár |
-| Network (Hálózat) | 1 GB/s hálózat |
+| CPU | 64 virtuális magok 64 MiB L3 cache |
+| Memory (Memória) | 128 GiB |
+| Lemez | SAS lemezek RAID 10 akkumulátorral ellátott gyorsítótárral |
+| Network (Hálózat) | 1 Gbps hálózat |
 | Számítási feladat | Általános célú fájlkiszolgáló|
 
-| Kezdeti egyszeri kiépítése  |  |
+| Kezdeti egyszeri kiépítés  |  |
 |-|-|
-| Objektumok száma | 25 000 000 objektum |
-| Adatkészlet mérete| ~ 4,7 TiB |
-| Átlagos mérete | ~ 200 KiB (legnagyobb fájl: 100 GiB) |
-| Töltse fel az átviteli sebesség | 20 objektum másodpercenként/szinkronizálási csoportonként |
-| Namespace letöltési átviteli * | 400 objektum/másodperc |
+| Objektumok száma | 25 millió tárgy |
+| Adatkészlet mérete| ~4,7 TiB |
+| Átlagos fájlméret | ~200 KiB (Legnagyobb fájl: 100 GiB) |
+| Átviteli áttöltő | Szinkronizálási csoportonként másodpercenként 20 objektum |
+| Névtér letöltési átviteli fóka* | 400 objektum másodpercenként |
 
-Ha a kiszolgáló új végpont létrehozása az Azure File Sync ügynök nem töltse le a fájl tartalma. Először szinkronizálja a teljes névterét és a majd eseményindítók háttér-e letölteni a fájlokat, akár teljes egészében visszaírási, vagy ha, felhőbeli rétegezés engedélyezve van, a kiszolgálói végpont beállított felhőalapú rétegzési szabályzat.
+*Új kiszolgálóvégpont létrehozásakor az Azure File Sync ügynök nem tölti le a fájltartalmát. Először szinkronizálja a teljes névteret, majd elindítja a háttér-visszahívást a fájlok teljes teljes letöltéséhez, vagy ha a felhőrétegezés engedélyezve van, a kiszolgáló végpontján beállított felhőrétegezési házirendre.
 
-| Folyamatban lévő szinkronizálás  |   |
+| Folyamatos szinkronizálás  |   |
 |-|--|
-| Szinkronizált objektumok száma| 125,000 objektumok (~ 1 %-os forgalom) |
-| Adatkészlet mérete| 50 GB |
-| Átlagos mérete | Körülbelül 500 KiB |
-| Töltse fel az átviteli sebesség | 20 objektum másodpercenként/szinkronizálási csoportonként |
-| Teljes átviteli sebesség * | 60 objektum/másodperc |
+| Szinkronizált objektumok száma| 125 000 objektum (~1% forgalom) |
+| Adatkészlet mérete| 50 GiB |
+| Átlagos fájlméret | ~500 KiB |
+| Átviteli áttöltő | Szinkronizálási csoportonként másodpercenként 20 objektum |
+| Teljes letöltési átviteli -átmenő* | 60 objektum másodpercenként |
 
-\* Ha felhőbeli rétegezés engedélyezve van, akkor valószínű, hogy tekintse át az adatokat a rendszer letölti a fájlt csak néhány jobb teljesítményt. Az Azure File Sync csak letölti az adatokat a gyorsítótárban tárolt fájlok, a végpontok bármelyikét, módosításakor. Rétegzett vagy újonnan létrehozott fájlokhoz az ügynök nem tölti le a fájl adatait, és inkább csak szinkronizálja a névtér összes kiszolgálói végpontot. Az ügynök is támogatja a részleges letöltés rétegzett fájlok, a felhasználó által elért. 
+*Ha a felhőrétegezés engedélyezve van, valószínűleg jobb teljesítményt fog megfigyelni, mivel csak a fájladatok egy része töltődik le. Az Azure File Sync csak akkor tölti le a gyorsítótárazott fájlok adatait, ha azok a végpontok bármelyikén módosulnak. A rétegzett vagy újonnan létrehozott fájlok esetében az ügynök nem tölti le a fájladatokat, hanem csak szinkronizálja a névteret az összes kiszolgálói végponthoz. Az ügynök is támogatja a rétegzett fájlok részleges letöltését, mivel azok a felhasználó által elért. 
 
 > [!Note]  
-> A fenti számok nem állnak arra utalhat, hogy a teljesítmény, amely fog tapasztalni. A tényleges teljesítmény több tényezőtől függ, ez a szakasz elején leírt módon.
+> A fenti számok nem jelzik a teljesítményt, amit tapasztalni fog. A tényleges teljesítmény több tényezőtől függ, ahogy azt a szakasz elején ismertetett.
 
-Az üzemelő példány általános útmutatásként kell tartania néhány dolgot figyelembe:
+A telepítés általános útmutatójaként érdemes néhány dolgot szem előtt tartania:
 
-- Az objektum átviteli körülbelül méretezi a kiszolgálón a szinkronizálási csoportok száma arányos. Jobb átviteli sebességet, amely is korlátozza a kiszolgáló és a hálózat egy kiszolgálón több szinkronizálási csoportokba felosztása a adatokat eredményez.
-- Az objektum átviteli sebesség a MiB s sebességet fordítottan arányos. A kisebb fájlok esetében tapasztalható nagyobb átviteli sebességet egy második, de alacsonyabb MiB s sebességet feldolgozott objektumok számának tekintetében. Ezzel szemben nagyobb méretű fájlok, kap egy második, de magasabb MiB s sebességet feldolgozott kevesebb objektumot. Az Azure Files méretezési célokat a MiB s sebességet korlátozza.
+- Az objektum átviteli átadója körülbelül a kiszolgálón lévő szinkronizálási csoportok számával arányosan méreteződik. Az adatok több szinkronizálási csoportra történő felosztása a kiszolgálón jobb átviteli forgalmat eredményez, amelyet a kiszolgáló és a hálózat is korlátoz.
+- Az objektum átviteli áteresztője fordítottan arányos a MiB másodpercenkénti átviteli. Kisebb fájlok esetén nagyobb átviteli eresztést fog tapasztalni a másodpercenként feldolgozott objektumok száma, de alacsonyabb MiB másodpercenkénti átviteli igény tekintetében. Ezzel szemben a nagyobb fájlok esetén kevesebb objektumot dolgoz fel másodpercenként, de nagyobb MiB másodpercenkénti átviteli. A MiB másodpercenkénti átviteli lépték et az Azure Files méretezési célok korlátozzák.
 
 ## <a name="see-also"></a>Lásd még
 

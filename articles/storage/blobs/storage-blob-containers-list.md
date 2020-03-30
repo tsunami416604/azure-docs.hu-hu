@@ -1,6 +1,6 @@
 ---
-title: BLOB-tárolók listázása a .NET-Azure Storage használatával
-description: Megtudhatja, hogyan listázhatja a blob-tárolókat az Azure Storage-fiókban a .NET ügyféloldali kódtár használatával.
+title: Blobtárolók listázása .NET -- Azure Storage
+description: Megtudhatja, hogyan listázhatja a blobtárolókat az Azure Storage-fiókban a .NET ügyfélkódtár használatával.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,44 +9,44 @@ ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79135904"
 ---
-# <a name="list-blob-containers-with-net"></a>BLOB-tárolók listázása a .NET-tel
+# <a name="list-blob-containers-with-net"></a>Blobtárolók listázása .NET-tel
 
-Amikor egy Azure Storage-fiókban lévő tárolókat listáz a kódból, megadhat számos lehetőséget, amelyekkel kezelheti az Azure Storage-beli eredmények eredményét. Ez a cikk bemutatja, hogyan listázhat tárolókat a [.net-hez készült Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet)használatával.  
+Amikor a tárolókat egy Azure Storage-fiókban sorolja fel a kódból, számos lehetőséget adhat meg az Eredmények Azure Storage-ból való visszaadásának kezeléséhez. Ez a cikk bemutatja, hogyan listázhatok a tárolókat a [.NET Azure Storage ügyfélkódtárhasználatával.](/dotnet/api/overview/azure/storage?view=azure-dotnet)  
 
 ## <a name="understand-container-listing-options"></a>A tárolók listázási beállításainak ismertetése
 
-A Storage-fiókban lévő tárolók listázásához hívja a következő módszerek egyikét:
+A tárolók listájának listázásához hívja meg az alábbi módszerek egyikét:
 
-- [ListContainersSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmented)
+- [ListContainersszegénes](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmented)
 - [ListContainersSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmentedasync)
 
-Ezeknek a módszereknek a túlterhelései további lehetőségeket biztosítanak a tárolók a listázási művelettel történő visszaküldéséhez. Ezeket a beállításokat a következő szakaszokban ismertetjük.
+Ezek a módszerek túlterhelése további lehetőségeket biztosít a tárolók lista-művelet általi visszaküldésének kezeléséhez. Ezeket a beállításokat a következő szakaszok ismertetik.
 
-### <a name="manage-how-many-results-are-returned"></a>A visszaadott eredmények számának kezelése
+### <a name="manage-how-many-results-are-returned"></a>A visszaadott eredmények nagy számára
 
-Alapértelmezés szerint a listázási művelet egyszerre legfeljebb 5000 eredményt ad vissza. Ha kisebb eredményeket szeretne visszaadni, adjon meg nullától eltérő értéket a `maxresults` paraméternek az egyik **ListContainerSegmented** metódus hívásakor.
+Alapértelmezés szerint a listaelem-művelet egyszerre legfeljebb 5000 eredményt ad vissza. Kisebb eredményhalmaz visszaadásához adjon meg nem nulla `maxresults` értéket a paraméterhez a **ListContainerSegmented** metódusok egyikének hívásakor.
 
-Ha a Storage-fiók több mint 5000 tárolót tartalmaz, vagy ha olyan értéket adott meg `maxresults` például, hogy a listázási művelet a Storage-fiókban lévő tárolók egy részhalmazát adja vissza, akkor az Azure Storage egy *folytatási tokent* ad vissza a tárolók listájával. A folytatási token egy átlátszatlan érték, amelyet az Azure Storage következő eredményeinek lekérésére használhat.
+Ha a tárfiók több mint 5000 tárolót tartalmaz, `maxresults` vagy ha olyan értéket adott meg, amely a listabavételi művelet a tárolók egy részét adja vissza a tárfiókban, majd az Azure Storage egy *folytatási jogkivonatot* ad vissza a tárolók listájával. A folytatási jogkivonat egy átlátszatlan érték, amely segítségével lekérheti a következő eredmények et az Azure Storage-ból.
 
-A kódban ellenőrizze a folytatási token értékét annak meghatározásához, hogy null értékű-e. Ha a folytatási jogkivonat null értékű, akkor az eredmények halmaza befejeződött. Ha a folytatási jogkivonat nem null értékű, akkor hívja meg újra a **ListContainersSegmented** vagy a **ListContainersSegmentedAsync** , majd a folytatási tokenben adja meg a következő eredmények beolvasását, amíg a folytatási token null nem lesz.
+A kódban ellenőrizze a folytatási jogkivonat értékét, és állapítsa meg, hogy null értékű-e. Ha a folytatási jogkivonat null értékű, akkor az eredmények készlete befejeződik. Ha a folytatási token nem null, akkor hívja meg újra **a ListContainersSegmented** vagy **a ListContainersSegmentedAsync metódust,** és adja át a folytatási jogkivonatot a következő eredményhalmaz beolvasásához, amíg a folytatási token null értékű nem lesz.
 
 ### <a name="filter-results-with-a-prefix"></a>Eredmények szűrése előtaggal
 
-A tárolók listájának szűréséhez a `prefix` paraméterhez meg kell adni egy karakterláncot. Az előtag-karakterlánc tartalmazhat egy vagy több karaktert. Az Azure Storage ezt követően csak azokat a tárolókat adja vissza, amelyeknek a neve az adott előtaggal kezdődik.
+A tárolók listájának szűréséhez adjon `prefix` meg egy karakterláncot a paraméterhez. Az előtag karakterlánca egy vagy több karaktert is tartalmazhat. Az Azure Storage majd csak azokat a tárolókat adja vissza, amelyek nek a neve ezzel az előtaggal kezdődik.
 
-### <a name="return-metadata"></a>Metaadatok visszaküldése
+### <a name="return-metadata"></a>Visszaadott metaadatok
 
-Ha vissza szeretné állítani a tároló metaadatait az eredményekkel, akkor a [ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) enumerálás **metaadat** értékét kell megadnia. Az Azure Storage a visszaadott tárolók metaadatait tartalmazza, így nem kell meghívnia az egyik **FetchAttributes** metódust is a tároló metaadatainak beolvasásához.
+A tároló metaadatainak az eredményekkel együtt történő visszaadására adja meg a [ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) enumerálás **metaadatértékét.** Az Azure Storage metaadatokat tartalmaz minden egyes visszaadott tárolóval, így nem kell meghívnia a **FetchAttributes metódusok** egyikét is a tároló metaadatainak lekéréséhez.
 
-## <a name="example-list-containers"></a>Példa: tárolók listázása
+## <a name="example-list-containers"></a>Példa: Tárolók listázása
 
-A következő példa aszinkron módon Listázza azokat a tárolókat, amelyek egy megadott előtaggal kezdődnek. A példa egyszerre 5 eredményből álló tárolókat listáz, és a folytatási tokent használja az eredmények következő szegmensének beszerzéséhez. A példa a tároló metaadatait is visszaadja az eredményekkel együtt.
+A következő példa aszinkron módon felsorolja a tárolók egy tárfiókban, hogy kezdődik egy megadott előtag. A példa felsorolja a tárolók lépésekben 5 eredmények egy időben, és használja a folytatási jogkivonatot, hogy a következő szegmensben az eredmények. A példa is ad tároló metaadatait az eredményekkel.
 
 ```csharp
 private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient,
@@ -100,5 +100,5 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 ## <a name="see-also"></a>Lásd még
 
-[Tárolók listázása](/rest/api/storageservices/list-containers2) a [blob-erőforrások enumerálása](/rest/api/storageservices/enumerating-blob-resources)
-
+[Blob-erőforrások](/rest/api/storageservices/list-containers2)
+[számbavétele tárolók listázása](/rest/api/storageservices/enumerating-blob-resources)

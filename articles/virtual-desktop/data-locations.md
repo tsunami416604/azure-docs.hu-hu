@@ -1,6 +1,6 @@
 ---
-title: Adatterületek a Windows rendszerű virtuális asztali környezethez – Azure
-description: Röviden áttekintheti, hogy a Windows rendszerű virtuális asztali adatok és metaadatok mely helyein vannak tárolva.
+title: A Windows Virtual Desktop adathelyei – Azure
+description: Rövid áttekintés awindows virtuális asztal adatainak és metaadatainak tárolásáról.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,20 +9,20 @@ ms.date: 09/27/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 5f48586f38c310c77c61f470d3e2fbc819c33f71
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128057"
 ---
-# <a name="data-locations-for-windows-virtual-desktop"></a>Adatterületek a Windows rendszerű virtuális asztali környezethez
+# <a name="data-locations-for-windows-virtual-desktop"></a>A Windows virtuális asztal adathelyei
 
-A Windows virtuális asztal jelenleg minden földrajzi helyen elérhető. Kezdetben a szolgáltatás metaadatainak csak a Egyesült Államok (US) földrajzban tárolhatók. A rendszergazdák kiválaszthatják, hogy a virtuális gépek és a társított szolgáltatások, például a fájlkiszolgálók létrehozásakor hol tárolhatják a felhasználói adataikat. Tudjon meg többet az Azure földrajzi helyekről az [Azure Datacenter térképen](https://azuredatacentermap.azurewebsites.net/).
+A Windows virtuális asztal jelenleg minden földrajzi helyen elérhető. Kezdetben a szolgáltatás metaadatai csak az Egyesült Államok (USA) földrajzi helyén tárolhatók. A rendszergazdák kiválaszthatják a felhasználói adatok tárolására szolgáló helyet, amikor létrehozják a gazdakészlet virtuális gépeit és a kapcsolódó szolgáltatásokat, például a fájlkiszolgálókat. További információ az Azure-beli földrajzi területekről az [Azure adatközpont-leképezésen.](https://azuredatacentermap.azurewebsites.net/)
 
 >[!NOTE]
->A Microsoft nem szabályozza és nem korlátozza azokat a régiókat, amelyeken Ön vagy felhasználói hozzáférhetnek a felhasználóhoz és az alkalmazásra vonatkozó adataihoz.
+>A Microsoft nem szabályozza és nem korlátozza azon régiókat, ahol Ön vagy a felhasználók hozzáférhetnek a felhasználó- és alkalmazásspecifikus adatokhoz.
 
 >[!IMPORTANT]
->A Windows rendszerű virtuális asztali szolgáltatás a globális metaadat-információkat, például a bérlői neveket, a gazdagépek nevét, az alkalmazások csoportjának nevét, valamint az egyszerű felhasználóneveket a Egyesült Államok található adatközpontban tárolja. A tárolt metaadatok a nyugalmi állapotban vannak titkosítva, és a Geo-redundáns tükrök a Egyesült Államokon belül maradnak. Az összes vásárlói adat, például az Alkalmazásbeállítások és a felhasználói adat, az ügyfél által választott helyen található, és nem a szolgáltatás kezeli.
+>A Windows Virtuális asztal globális metaadatokat tárol, például bérlőneveket, állomáskészletneveket, alkalmazáscsoportneveket és egyszerű felhasználóneveket az Egyesült Államokban található adatközpontban. A tárolt metaadatok titkosítva vannak intve, és a georedundáns tükrök az Egyesült Államokban maradnak. Minden ügyféladat, például az alkalmazásbeállítások és a felhasználói adatok azügyfél által választott helyen találhatók, és nem a szolgáltatás kezeli őket.
 
-A szolgáltatás metaadatait a rendszer a vész-helyreállítási célú Egyesült Államok replikálja.
+A szolgáltatás metaadatai a vész-helyreállítási célokra replikálódnak az Egyesült Államokban.

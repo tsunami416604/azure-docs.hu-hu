@@ -1,6 +1,6 @@
 ---
-title: A tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használathoz
-description: Áttekintést nyújt a tárolási típusokról, valamint arról, hogyan működnek együtt az Azure HDInsight.
+title: Az Azure HDInsight-fürtökkel használható tárolási lehetőségek összehasonlítása
+description: Áttekintést nyújt a tárolási típusokról és az Azure HDInsight-val való munkájukról.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,107 +8,107 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 98d71434ac9e3f712be0cbd8c505b7d5a537e7cc
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79095546"
 ---
-# <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>A tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használathoz
+# <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Az Azure HDInsight-fürtökkel használható tárolási lehetőségek összehasonlítása
 
-HDInsight-fürtök létrehozásakor több különböző Azure Storage-szolgáltatás közül választhat:
+HdInsight-fürtök létrehozásakor választhat néhány különböző Azure storage-szolgáltatás közül:
 
 * Azure Storage
-* 2\. generációs Azure Data Lake Storage
-* 1\. generációs Azure Data Lake Storage
+* 2. generációs Azure Data Lake Storage
+* 1. generációs Azure Data Lake Storage
 
-Ez a cikk áttekintést nyújt ezekről a tárolási típusokról és azok egyedi funkcióiról.
+Ez a cikk áttekintést nyújt ezekről a tárolási típusokról és azok egyedi szolgáltatásairól.
 
-A következő táblázat összefoglalja a HDInsight különböző verziói által támogatott Azure Storage-szolgáltatásokat:
+Az alábbi táblázat összefoglalja a HDInsight különböző verzióival támogatott Azure Storage-szolgáltatásokat:
 
-| Tárolási szolgáltatás | Fiók típusa | Névtér típusa | Támogatott szolgáltatások | Támogatott teljesítményszint | Támogatott hozzáférési szintek | HDInsight verziója | Fürt típusa |
+| Tárolási szolgáltatás | Fiók típusa | Névtér típusa | Támogatott szolgáltatások | Támogatott teljesítményszintek | Támogatott hozzáférési szintek | HDInsight verzió | Fürt típusa |
 |---|---|---|---|---|---|---|---|
-|2\. generációs Azure Data Lake Storage| Általános célú v2 | Hierarchikus (fájlrendszer) | Blob | Standard | Gyors elérésű, ritka elérésű Archívum | 3.6. + | Mind a Spark 2,1, mind a 2,2 kivételével|
-|Azure Storage| Általános célú v2 | Objektum | Blob | Standard | Gyors elérésű, ritka elérésű Archívum | 3.6. + | Összes |
-|Azure Storage| Általános célú v1 | Objektum | Blob | Standard | N/A | Összes | Összes |
-|Azure Storage| Blob Storage** | Objektum | BLOB letiltása | Standard | Gyors elérésű, ritka elérésű Archívum | Összes | Összes |
-|1\. generációs Azure Data Lake Storage| N/A | Hierarchikus (fájlrendszer) | N/A | N/A | N/A | 3,6 csak | A HBase kivételével |
+|2. generációs Azure Data Lake Storage| Általános célú V2 | Hierarchikus (fájlrendszer) | Blob | Standard | Forró, Hűvös, Archívum | 3,6+ | A Spark 2.1 és 2.2 kivételével|
+|Azure Storage| Általános célú V2 | Objektum | Blob | Standard | Forró, Hűvös, Archívum | 3,6+ | Összes |
+|Azure Storage| Általános célú V1 | Objektum | Blob | Standard | N/A | Összes | Összes |
+|Azure Storage| Blob-tároló** | Objektum | Blob blokkolása | Standard | Forró, Hűvös, Archívum | Összes | Összes |
+|1. generációs Azure Data Lake Storage| N/A | Hierarchikus (fájlrendszer) | N/A | N/A | N/A | 3.6 Csak | Minden, kivéve a HBase |
 
-\* * A HDInsight-fürtök esetében csak a másodlagos Storage-fiókok lehetnek BlobStorage, és az oldal Blobja nem támogatott tárolási lehetőség.
+**HdInsight-fürtök esetén csak a másodlagos tárfiókok lehetnek BlobStorage típusúak, és a Lapblob nem támogatott tárolási lehetőség.
 
-Az Azure Storage-fiókok típusairól további információt az [Azure Storage-fiók áttekintése](../storage/common/storage-account-overview.md) című témakörben talál.
+Az Azure Storage-fióktípusokkal kapcsolatos további információkért tekintse meg az [Azure storage-fiók áttekintése című témakört.](../storage/common/storage-account-overview.md)
 
-További információ az Azure Storage hozzáférési szintjeiről [: Azure Blob Storage: Premium (előzetes verzió), gyakori, ritka elérésű és archív tárolási szintek](../storage/blobs/storage-blob-storage-tiers.md)
+Az Azure Storage hozzáférési szintjeiről további információt az [Azure Blob storage: Premium (előzetes verzió), a gyakori elérésű, a ritka elérésű és az archív tárolási szintek című témakörben talál.](../storage/blobs/storage-blob-storage-tiers.md)
 
-Létrehozhat egy fürtöt az elsődleges és választható másodlagos tárolók különböző szolgáltatásainak kombinációi használatával. A következő táblázat összefoglalja a HDInsight által jelenleg támogatott fürtök tárolási konfigurációit:
+Fürtöt az elsődleges és választható másodlagos tároláshoz különböző szolgáltatáskombinációk használatával hozhat létre. Az alábbi táblázat a HDInsight által jelenleg támogatott fürttárolási konfigurációkat foglalja össze:
 
-| HDInsight verziója | Elsődleges tárterület | Másodlagos tároló | Támogatott |
+| HDInsight verzió | Elsődleges tárolás | Másodlagos tárolás | Támogatott |
 |---|---|---|---|
-| 3,6 & 4,0 | Általános célú v1, általános célú v2 | Általános célú v1, általános célú v2, BlobStorage (blokk Blobok) | Igen |
-| 3,6 & 4,0 | Általános célú v1, általános célú v2 | 2\. generációs Data Lake Storage | Nem |
-| 3,6 & 4,0 | Data Lake Storage Gen2 * | 2\. generációs Data Lake Storage | Igen |
-| 3,6 & 4,0 | Data Lake Storage Gen2 * | Általános célú v1, általános célú v2, BlobStorage (blokk Blobok) | Igen |
-| 3,6 & 4,0 | 2\. generációs Data Lake Storage | 1\. generációs Data Lake Storage | Nem |
-| 3.6 | 1\. generációs Data Lake Storage | 1\. generációs Data Lake Storage | Igen |
-| 3.6 | 1\. generációs Data Lake Storage | Általános célú v1, általános célú v2, BlobStorage (blokk Blobok) | Igen |
-| 3.6 | 1\. generációs Data Lake Storage | 2\. generációs Data Lake Storage | Nem |
-| 4.0 | 1\. generációs Data Lake Storage | Bármelyik | Nem |
-| 4.0 | Általános célú v1, általános célú v2 | 1\. generációs Data Lake Storage | Nem |
+| 3,6 & 4,0 | Általános célú V1 , Általános célú V2 | Általános célú V1 , Általános célú V2, BlobStorage(Blokkblobok) | Igen |
+| 3,6 & 4,0 | Általános célú V1 , Általános célú V2 | 2. generációs Data Lake Storage | Nem |
+| 3,6 & 4,0 | Data Lake Storage Gen2* | 2. generációs Data Lake Storage | Igen |
+| 3,6 & 4,0 | Data Lake Storage Gen2* | Általános célú V1 , Általános célú V2, BlobStorage(Blokkblobok) | Igen |
+| 3,6 & 4,0 | 2. generációs Data Lake Storage | 1. generációs Data Lake Storage | Nem |
+| 3.6 | 1. generációs Data Lake Storage | 1. generációs Data Lake Storage | Igen |
+| 3.6 | 1. generációs Data Lake Storage | Általános célú V1 , Általános célú V2, BlobStorage(Blokkblobok) | Igen |
+| 3.6 | 1. generációs Data Lake Storage | 2. generációs Data Lake Storage | Nem |
+| 4.0 | 1. generációs Data Lake Storage | Bármelyik | Nem |
+| 4.0 | Általános célú V1 , Általános célú V2 | 1. generációs Data Lake Storage | Nem |
 
-\* = Ez lehet egy vagy több Data Lake Storage Gen2 fiók is, feltéve, hogy mindegyik telepítő ugyanazt a felügyelt identitást használja a fürt eléréséhez.
+*=Ez lehet egy vagy több Data Lake Storage Gen2-fiók, feltéve, hogy mindegyik úgy van beállítva, hogy ugyanazt a felügyelt identitást használja a fürthozzáféréshez.
 
 > [!Note] 
-> Data Lake Storage Gen2 elsődleges tároló nem támogatott a Spark 2,1 vagy 2,2 fürtök esetében. 
+> A Data Lake Storage Gen2 elsődleges tárolója nem támogatott a Spark 2.1 vagy 2.2 fürtök esetében. 
 
-## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Azure Data Lake Storage Gen2 használata az Azure HDInsight Apache Hadoop
+## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Az Azure Data Lake Storage Gen2 használata az Apache Hadoop segítségével az Azure HDInsightban
 
-A Azure Data Lake Storage Gen2 a Azure Data Lake Storage Gen1 alapvető funkcióit veszi át, és integrálja őket az Azure Blob Storage-ba. Ezek a funkciók olyan fájlrendszert tartalmaznak, amely kompatibilis a Hadoop, a Azure Active Directory (Azure AD) és a POSIX-alapú hozzáférés-vezérlési listákkal (ACL-ekkel). Ez a kombináció lehetővé teszi, hogy kihasználhassa a Azure Data Lake Storage Gen1 teljesítményét, miközben a blob Storage rétegbeli és adatkezelési életciklus-kezelését is használja.
+Az Azure Data Lake Storage Gen2 az Azure Data Lake Storage Gen1 alapvető funkcióit veszi igénybe, és integrálja azokat az Azure Blob storage-ba. Ezek a funkciók közé tartozik a fájlrendszer, amely kompatibilis a Hadoop, az Azure Active Directory (Azure AD) és a POSIX-alapú hozzáférés-vezérlési listák (ACLs). Ez a kombináció lehetővé teszi, hogy kihasználja az Azure Data Lake Storage Gen1 teljesítményét, miközben a Blob storage rétegezési és adatéletciklus-kezelését is használja.
 
-További információ a Azure Data Lake Storage Gen2ről: a [Azure Data Lake Storage Gen2 bemutatása](../storage/blobs/data-lake-storage-introduction.md).
+Az Azure Data Lake Storage Gen2 szolgáltatásról az [Azure Data Lake Storage Gen2 – Bevezetés](../storage/blobs/data-lake-storage-introduction.md)című témakörben talál további információt.
 
-### <a name="core-functionality-of-azure-data-lake-storage-gen2"></a>A Azure Data Lake Storage Gen2 alapvető funkciói
+### <a name="core-functionality-of-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 alapvető funkciói
 
-* A **Hadoop kompatibilis hozzáférés:** A Azure Data Lake Storage Gen2ban ugyanúgy kezelheti és érheti el az adatelérést, mint egy Hadoop-elosztott fájlrendszer (HDFS). Az Azure Blob fájlrendszer (ABFS) illesztőprogramja minden Apache Hadoop környezetben elérhető, beleértve az Azure HDInsight és a Azure Databricks. A ABFS használatával férhet hozzá a Data Lake Storage Gen2 tárolt adatszolgáltatásokhoz.
+* **A Hadoop-al kompatibilis hozzáférés:** Az Azure Data Lake Storage Gen2-ben ugyanúgy kezelheti és érheti el az adatokat, mint a Hadoop elosztott fájlrendszer (HDFS) használatával. Az Azure Blob File System (ABFS) illesztőprogram jattson az összes Apache Hadoop környezetben, beleértve az Azure HDInsight és az Azure Databricks. Az ABFS használatával a Data Lake Storage Gen2-ben tárolt adatok eléréséhez.
 
-* **POSIX-engedélyek felülbírálása:** A Data Lake Gen2 biztonsági modellje támogatja az ACL és a POSIX engedélyeket, valamint a Data Lake Storage Gen2ra vonatkozó további részletességet. A beállítások a felügyeleti eszközök vagy keretrendszerek, például a Apache Hive és a Apache Spark használatával konfigurálhatók.
+* **PoSIX engedélyek egy része:** A Data Lake Gen2 biztonsági modellje támogatja az ACL és a POSIX engedélyeket, valamint néhány további, a Data Lake Storage Gen2-re jellemző extra részletességet. A beállítások konfigurálhatók felügyeleti eszközökön vagy keretrendszereken, például az Apache Hive-n és az Apache Sparkon keresztül.
 
-* **Költséghatékonyság:** A Data Lake Storage Gen2 alacsony költséghatékonyságú tárolási kapacitást és tranzakciókat biztosít. Az Azure Blob Storage életciklusának funkciói lehetővé teszik az alacsonyabb költségek csökkentését azáltal, hogy a számlázási sebességet az életciklusán keresztül mozgatják.
+* **Költséghatékonyság:** A Data Lake Storage Gen2 alacsony költségű tárolókapacitást és tranzakciókat kínál. Az olyan funkciók, mint például az Azure Blob tárolási életciklusa, csökkentik a költségeket azáltal, hogy az adatok életciklusa során módosítják a számlázási díjakat.
 
-* **A blob Storage-eszközökkel,-keretrendszerekkel és-alkalmazásokkal való kompatibilitás:** Data Lake Storage Gen2 továbbra is együttműködik számos eszközzel, keretrendszert és alkalmazást a blob Storage-hoz.
+* **Kompatibilitás a Blob-tárolóeszközökkel, keretrendszerekkel és alkalmazásokkal:** A Data Lake Storage Gen2 továbbra is számos eszközzel, keretrendszerrel és alkalmazással működik a Blob storage számára.
 
-* **Optimalizált illesztőprogram:** A ABFS-illesztőprogram kifejezetten big data elemzésekhez van optimalizálva. A megfelelő REST API-k az elosztott fájlrendszer (DFS) végpontján (dfs.core.windows.net) vannak felszínben.
+* **Optimalizált illesztőprogram:** Az ABFS-illesztőprogram kifejezetten a big data-elemzéshez van optimalizálva. A megfelelő REST API-k az elosztott fájlrendszer (DFS) végponton keresztül kerülnek felszínre, dfs.core.windows.net.
 
-### <a name="whats-new-for-azure-data-lake-storage-gen-2"></a>A 2. generációs Azure Data Lake Storage újdonságai
+### <a name="whats-new-for-azure-data-lake-storage-gen-2"></a>Az Azure Data Lake Storage Gen 2 újdonságai
 
-#### <a name="managed-identities-for-secure-file-access"></a>Felügyelt identitások biztonságos fájlokhoz való hozzáféréshez
+#### <a name="managed-identities-for-secure-file-access"></a>Felügyelt identitások a biztonságos fájlhozzáféréshez
 
-Az Azure HDInsight felügyelt identitásokat használ a Azure Data Lake Storage Gen2 lévő fájlokhoz való hozzáférés biztonságossá tételéhez. A felügyelt identitások olyan Azure Active Directory funkciói, amelyek automatikusan felügyelt hitelesítő adatokkal rendelkező Azure-szolgáltatásokat biztosítanak. Ezek a hitelesítő adatok a Active Directory hitelesítést támogató bármely szolgáltatás hitelesítésére használhatók. A felügyelt identitások használatához nem szükséges a hitelesítő adatok tárolása a kódban vagy a konfigurációs fájlokban.
+Az Azure HDInsight felügyelt identitások használatával biztosítja a fürt hozzáférést az Azure Data Lake Storage Gen2 fájljaihoz. A felügyelt identitások az Azure Active Directory egyik szolgáltatása, amely automatikusan felügyelt hitelesítő adatokat biztosít az Azure-szolgáltatások számára. Ezek a hitelesítő adatok az Active Directory-hitelesítést támogató szolgáltatások hitelesítésére használhatók. Felügyelt identitások használata nem igényel hitelesítő adatokat kód- vagy konfigurációs fájlokban tárolni.
 
-További információ: [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md).
+További információ: [Felügyelt identitások az Azure-erőforrásokhoz.](../active-directory/managed-identities-azure-resources/overview.md)
 
 #### <a name="azure-blob-file-system-driver"></a>Azure Blob fájlrendszer-illesztőprogram
 
-Apache Hadoop alkalmazások natívan várnak a helyi lemezes tárolóból származó adatok olvasására és írására. A Hadoop fájlrendszer-illesztőprogram, például a ABFS lehetővé teszi a Hadoop-alkalmazások számára a felhőalapú tárolást a normál Hadoop-fájlrendszer műveleteinek emulálása révén. Az illesztőprogram átalakítja az alkalmazásból kapott parancsokat olyan műveletekre, amelyeket az aktuális felhőalapú tárolási platform megértett.
+Az Apache Hadoop alkalmazások natív módon elvárják az adatok olvasását és írását a helyi lemeztárolóból. A Hadoop fájlrendszer-illesztőprogram, például az ABFS lehetővé teszi, hogy a Hadoop-alkalmazások a normál Hadoop fájlrendszer-műveletek emulálásával működjenek együtt a felhőalapú tárolással. Az illesztőprogram az alkalmazástól kapott parancsokat olyan műveletekké alakítja, amelyeket a tényleges felhőtárolási platform megért.
 
-Korábban a Hadoop fájlrendszer-illesztőprogram az összes fájlrendszerbeli műveletet átalakította az Azure Storage-REST API a hívások az ügyfél oldalán, majd meghívja a REST API. Ez az ügyféloldali átalakítás azonban több REST API hívását eredményezte egyetlen fájlrendszer-művelethez, például egy fájl átnevezéséhez. A ABFS áthelyezte a Hadoop fájlrendszer logikáját az ügyfél oldaláról a kiszolgáló oldalára. A Azure Data Lake Storage Gen2 API mostantól párhuzamosan fut a blob API-val. Ez a Migrálás javítja a teljesítményt, mivel a Hadoop-fájlrendszerrel kapcsolatos gyakori műveletek egy REST API hívással hajthatók végre.
+Korábban a Hadoop fájlrendszer-illesztőprogram az összes fájlrendszer-műveletet az Ügyféloldalon az Azure Storage REST API-hívásokra konvertálta, majd meghívta a REST API-t. Ez az ügyféloldali átalakítás azonban több REST API-t eredményezett egyetlen fájlrendszer-művelethez, például egy fájl átnevezéséhez. Az ABFS a Hadoop fájlrendszer logikájának egy részét az ügyféloldalról a kiszolgálóoldalra helyezte át. Az Azure Data Lake Storage Gen2 API most párhuzamosan fut a Blob API-val. Ez az áttelepítés javítja a teljesítményt, mert mostantól a Hadoop fájlrendszer gyakori műveletei egyetlen REST API-hívással hajthatók végre.
 
-További információkért lásd [Az Azure Blob fájlrendszer-illesztőprogramot (ABFS): a Hadoop dedikált Azure Storage-illesztőprogramját](../storage/blobs/data-lake-storage-abfs-driver.md).
+További információ: [The Azure Blob Filesystem driver (ABFS): A dedikált Azure Storage-illesztőprogram hadoop.](../storage/blobs/data-lake-storage-abfs-driver.md)
 
-#### <a name="uri-scheme-for-azure-data-lake-storage-gen-2"></a>URI-séma a Azure Data Lake Storage Gen 2 
+#### <a name="uri-scheme-for-azure-data-lake-storage-gen-2"></a>URI-séma az Azure Data Lake Storage Gen 2-hez 
 
-Azure Data Lake Storage Gen2 egy új URI-sémát használ az Azure Storage-ban lévő fájlok eléréséhez a HDInsight-ből:
+Az Azure Data Lake Storage Gen2 új URI-sémát használ az Azure Storage-ban lévő fájlok HDInsightból való eléréséhez:
 
 `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
 
 Az URI-séma SSL-titkosítású hozzáférést biztosít.
 
-`<FILE_SYSTEM_NAME>` a fájlrendszer Data Lake Storage Gen2 elérési útját azonosítja.
+`<FILE_SYSTEM_NAME>`azonosítja a Fájlrendszer Data Lake Storage Gen2 elérési útját.
 
-`<ACCOUNT_NAME>` azonosítja az Azure Storage-fiók nevét. Szükség van a teljes tartománynévre (FQDN-re).
+`<ACCOUNT_NAME>`azonosítja az Azure Storage-fiók nevét. Szükség van a teljes tartománynévre (FQDN-re).
 
-`<PATH>` a fájl vagy a könyvtár HDFS elérési útja.
+`<PATH>`a HDFS fájl- vagy könyvtárelérési útja.
 
-Ha `<FILE_SYSTEM_NAME>` és `<ACCOUNT_NAME>` érték nincs megadva, a rendszer az alapértelmezett fájlrendszert használja. Az alapértelmezett fájlrendszer fájljaihoz használjon relatív elérési útvonalat vagy abszolút elérési utat. Például a HDInsight-fürtökhöz tartozó `hadoop-mapreduce-examples.jar`-fájl a következő elérési utak egyikének használatával hívható meg:
+Ha a `<FILE_SYSTEM_NAME>` `<ACCOUNT_NAME>` megadott és a nincs érték, akkor a rendszer az alapértelmezett fájlrendszert használja. Az alapértelmezett fájlrendszerben lévő fájlokhoz használjon relatív elérési utat vagy abszolút elérési utat. A HDInsight-fürtökhöz tartozó `hadoop-mapreduce-examples.jar` fájlra például az alábbi elérési utak egyikével lehet hivatkozni:
 
 ```
 abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
@@ -116,135 +116,135 @@ abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduc
 ```
 
 > [!Note]
-> A fájlnév a 2,1-es és 1,6-es HDInsight-verziókban `hadoop-examples.jar`. Ha a HDInsight-en kívül található fájlokkal dolgozik, a legtöbb segédprogram nem ismeri fel a ABFS formátumát, hanem egy alapszintű elérésiút-formátumot vár, például `example/jars/hadoop-mapreduce-examples.jar`.
+> A fájlnév `hadoop-examples.jar` a HDInsight 2.1-es és 1.6-os verzióiban található. Ha a HDInsight-on kívüli fájlokkal dolgozik, azt fogja találni, hogy a legtöbb segédprogram nem ismeri fel `example/jars/hadoop-mapreduce-examples.jar`az ABFS formátumot, hanem alapvető elérési útformátumot vár, például .
 
-További információ: [a Azure Data Lake Storage GEN2 URI használata](../storage/blobs/data-lake-storage-introduction-abfs-uri.md).
+További információ: [Az Azure Data Lake Storage Gen2 URI használata.](../storage/blobs/data-lake-storage-introduction-abfs-uri.md)
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Az Azure Storage egy robusztus általános célú tárolási megoldás, amely zökkenőmentesen integrálható a HDInsight. A HDInsight egy blobtárolót használhat az Azure Storage-ben a fürt alapértelmezett fájlrendszereként. A HDFS felületen keresztül a HDInsight-összetevők teljes készlete működhet közvetlenül a strukturált vagy strukturálatlan, blobként tárolt adaton.
+Az Azure Storage egy robusztus általános célú tárolási megoldás, amely zökkenőmentesen integrálható a HDInsightdal. A HDInsight egy blobtárolót használhat az Azure Storage-ben a fürt alapértelmezett fájlrendszereként. Egy HDFS-felületen keresztül a HDInsight összetevőinek teljes készlete közvetlenül működhet a blobként tárolt strukturált vagy strukturálatlan adatokon.
 
-Javasoljuk, hogy külön tároló tárolókat használjon az alapértelmezett fürtöt tárolóhoz és az üzleti adataihoz, hogy elkülönítse a HDInsight-naplókat és az ideiglenes fájlokat a saját üzleti adataitól. Javasoljuk továbbá, hogy törölje az alapértelmezett BLOB-tárolót, amely az alkalmazás-és rendszernaplókat tartalmazza, miután mindegyik használattal csökkenti a tárolási költségeket. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
+Azt javasoljuk, hogy az alapértelmezett fürttárolóhoz és az üzleti adatokhoz különtárolótárolókat használjon a HDInsight-naplók és az ideiglenes fájlok elkülönítéséhez a saját üzleti adataitól. Azt is javasoljuk, hogy minden használat után a tárolási költségek csökkentése után az alapértelmezett blob tároló, amely tartalmazza az alkalmazás és a rendszer naplók. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
 
-Ha úgy dönt, hogy védi a Storage-fiókot a **tűzfalakkal és a virtuális hálózatokkal** kapcsolatos korlátozásokkal a **kiválasztott hálózatokon**, ügyeljen arra, hogy a kivételt engedélyezze a **megbízható Microsoft-szolgáltatások számára** ... így a HDInsight hozzáférhet a Storage-fiókhoz.
+Ha úgy dönt, hogy a tárfiókot a **tűzfalak és** a virtuális hálózatok korlátozások **a kiválasztott hálózatokon,** győződjön meg róla, hogy a kivétel engedélyezése megbízható **Microsoft-szolgáltatások ,** hogy a HDInsight hozzáférhet a tárfiókhoz.
 
 ### <a name="hdinsight-storage-architecture"></a>HDInsight tároló-architektúra
 
-Az alábbi ábra az Azure Storage HDInsight architektúrájának absztrakt nézetét tartalmazza:
+Az alábbi ábra az Azure Storage HDInsight-architektúrájának absztrakt nézetét tartalmazza:
 
-![HDInsight-tár architektúra](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "HDInsight-tár architektúra")
+![HDInsight tárolási architektúra](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "HDInsight tárolási architektúra")
 
 A HDInsight hozzáférést nyújt a helyileg a számítási csomópontokhoz csatlakozó elosztott fájlrendszerhez. Ez a fájlrendszer a teljes URI használatával érhető el, például:
 
     hdfs://<namenodehost>/<path>
 
-A HDInsight-on keresztül az Azure Storage-ban is elérhetők az adatkészletek. A szintaxis a következő:
+A HDInsight segítségével az Azure Storage-ban is hozzáférhet az adatokhoz. A szintaxis a következő:
 
     wasb://<containername>@<accountname>.blob.core.windows.net/<path>
 
-HDInsight-fürtökkel rendelkező Azure Storage-fiók használata esetén vegye figyelembe a következő alapelveket:
+Az Azure Storage-fiók HDInsight-fürtökkel való használatakor vegye figyelembe az alábbi alapelveket:
 
 * **Fürthöz csatlakozó tárolók a tárfiókokban:** Mivel a fiók neve és kulcsa társítva van a fürttel a létrehozás során, teljes hozzáféréssel rendelkezik a tárolókban lévő összes blobhoz.
 
-* **Nyilvános tárolók vagy nyilvános Blobok olyan Storage-fiókokban, amelyek *nem* kapcsolódnak fürthöz:** Csak olvasási jogosultsággal rendelkezik a tárolóban lévő blobokhoz.
+* **Nyilvános tárolók vagy nyilvános blobok a fürthöz *nem* kapcsolódó tárfiókokban:** Csak olvasási engedéllyel rendelkezik a tárolókban lévő blobokhoz.
   
   > [!NOTE]  
-  > A nyilvános tárolók lehetővé teszik az adott tárolóban elérhető Blobok listájának lekérését és a tároló metaadatainak beolvasását. A nyilvános blobok esetén csak akkor érheti el a blobokat, ha ismeri a pontos URL-t. További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](../storage/blobs/storage-manage-access-to-resources.md) foglalkozó témakört.
+  > Nyilvános tárolók lehetővé teszi, hogy egy listát az összes blobok, amelyek a tárolóban elérhető, és a tároló metaadatok beszerzése. A nyilvános blobok esetén csak akkor érheti el a blobokat, ha ismeri a pontos URL-t. További információt a [Névtelen olvasási hozzáférés kezelése a tárolókhoz és blobokhoz című témakörben talál.](../storage/blobs/storage-manage-access-to-resources.md)
 
-* Olyan **tárolók, amelyek *nem* csatlakoznak fürthöz:** A tárolóban lévő Blobok csak akkor érhetők el, ha a Webhcaten-feladatok elküldésekor a Storage-fiókot definiálja. 
+* **Fürthöz *nem* kapcsolódó tárolók magántárolói:** A tárolókban lévő blobok csak akkor férhetnek hozzá a tárolókban, ha a WebHCat-feladatok elküldésekor definiálja a tárfiókot. 
 
-A létrehozási folyamat során meghatározott tárfiókok és a kulcsaik a %HADOOP_HOME%/conf/core-site.xml fájlban találhatók a fürtcsomópontokon. Alapértelmezés szerint a HDInsight a Core-site. xml fájlban meghatározott tárolási fiókokat használja. Ezt a beállítást az [Apache Ambari](./hdinsight-hadoop-manage-ambari.md)használatával lehet módosítani.
+A létrehozási folyamat során meghatározott tárfiókok és a kulcsaik a %HADOOP_HOME%/conf/core-site.xml fájlban találhatók a fürtcsomópontokon. Alapértelmezés szerint a HDInsight a core-site.xml fájlban definiált tárfiókokat használja. Ezt a beállítást az [Apache Ambari segítségével módosíthatja.](./hdinsight-hadoop-manage-ambari.md)
 
-Több Webhcaten-feladat, többek között a Apache Hive, a MapReduce, a Apache Hadoop streaming és az Apache Pig, a Storage-fiókok és-metaadatok leírását is elvégezheti. (Ez jelenleg csak a Storage-fiókkal rendelkező Pig esetében érvényes, metaadatok esetében nem.) További információ: [HDInsight-fürt használata másodlagos Storage-fiókokkal és-metaadattárak](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx).
+Több WebHCat-feladat, köztük az Apache Hive, a MapReduce, az Apache Hadoop streaming és az Apache Pig, hordozhatja a tárfiókok és a metaadatok leírását. (Ez jelenleg a tárfiókkal rendelkező Pig esetében igaz, metaadatokesetén azonban nem.) További információ: [HDInsight-fürt használata alternatív tárfiókokkal és metaáruházakkal.](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx)
 
-A blobok a strukturált és strukturálatlan adatokhoz használhatók. A blob-tárolók az értékeket kulcs/érték párokként tárolják, és nem rendelkeznek címtár-hierarchiával. A kulcs neve azonban tartalmazhat perjel karaktert (/) úgy, hogy úgy jelenjen meg, mintha egy fájl egy könyvtár struktúráján belül tárolódik. A blob kulcsa például lehet `input/log1.txt`. Nem létezik tényleges `input` könyvtár, de a kulcsnévben lévő perjel karakter miatt a kulcs egy fájl elérési útjára hasonlít.
+A blobok a strukturált és strukturálatlan adatokhoz használhatók. A Blob-tárolók kulcs-/értékpárokként tárolják az adatokat, és nem rendelkeznek címtárhierarchiával. A kulcsnév azonban tartalmazhat perjel karaktert ( / ), hogy úgy tűnjön, mintha egy fájl egy könyvtárstruktúrában lenne tárolva. Például egy blob kulcsa `input/log1.txt`lehet. Nincs `input` tényleges könyvtár, de a kulcsnevében lévő perjel miatt a kulcs fájlelérési útnak tűnik.
 
-### <a id="benefits"></a>Az Azure Storage előnyei
-A nem közösen elhelyezett számítási fürtök és tárolási erőforrások implicit teljesítménnyel kapcsolatos költségekkel rendelkeznek. Ezeket a költségeket a számítási fürtök az Azure-régióban található Storage-fiók erőforrásaihoz közeledő módon történő létrehozásával csökkentik. Ebben a régióban a számítási csomópontok hatékonyan férhetnek hozzá az adatokhoz az Azure Storage-on belüli nagy sebességű hálózaton keresztül.
+### <a name="benefits-of-azure-storage"></a><a id="benefits"></a>Az Azure Storage előnyei
+A nem közös helyen található számítási fürtök és tárolási erőforrások implicit teljesítményköltségekkel járnak. Ezeket a költségeket mérséklődik a számítási fürtök az Azure-régión belüli tárfiók-erőforrások közelében történő létrehozásának módja. Ebben a régióban a számítási csomópontok hatékonyan hozzáférhetnek az adatokhoz az Azure Storage-on belüli nagy sebességű hálózaton keresztül.
 
-Ha a HDFS helyett az Azure Storage-ban tárolja az adattárolást, számos előnnyel jár:
+Ha az adatokat az Azure Storage-ban tárolja a HDFS helyett, számos előnnyel jár:
 
-* **Adatok újbóli használata és megosztása:** A HDFS-ben az adatok a számítási fürtön belül találhatóak. Csak a számítási fürtöt elérő alkalmazások használhatják az adatokat HDFS API-k használatával. Az Azure Storage-ban tárolt adatok ezzel szemben a HDFS API-kon vagy a blob Storage REST API-kon keresztül érhetők el. Ennek a megoldásnak a miatt a nagyobb alkalmazások (beleértve az egyéb HDInsight-fürtöket) és az eszközök is használhatók az adatfeldolgozásra és-felhasználásra.
+* **Adatok újbóli használata és megosztása:** A HDFS-ben az adatok a számítási fürtön belül találhatóak. Csak a számítási fürtöt elérő alkalmazások használhatják az adatokat HDFS API-k használatával. Ezzel szemben az Azure Storage-ban tárolt adatok a HDFS API-kon vagy a Blob storage REST API-kon keresztül érhetők el. Ezen elrendezés miatt az alkalmazások (beleértve más HDInsight-fürtöket is) és eszközök nagyobb készlete használható az adatok előállításához és felhasználásához.
 
-* **Adatarchiválás:** Ha az Azure Storage-ban tárolják az adattárolást, a számításhoz használt HDInsight-fürtöket a felhasználói adatvesztés nélkül lehet biztonságosan törölni.
+* **Adatarchiválás:** Ha az adatokat az Azure Storage tárolja, a hdinsight-fürtök számítási biztonságosan törölhetők felhasználói adatok elvesztése nélkül.
 
-* **Adattárolási díj:** Az adatok elosztott fájlrendszerbeli tárolásának hosszú távú tárolása költségesebb, mint az adatok Azure Storage-tárolóban való tárolása, mert a számítási fürt díja meghaladja az Azure Storage költségeit. Továbbá, mivel az adatoknak nem kell újratölteniük minden számítási fürt létrehozásakor, az adattöltés költségeit is menteni kell.
+* **Adattárolási költség:** Az adatok dfs-ben való hosszú távú tárolása költségesebb, mint az adatok tárolása az Azure Storage-ban, mivel a számítási fürt költsége magasabb, mint az Azure Storage költsége. Emellett mivel az adatokat nem kell újratölteni minden számítási fürt létrehozásakor, az adatbetöltési költségeket is megtakaríthatja.
 
-* **Rugalmas kibővítés:** Bár a HDFS kibővített fájlrendszert biztosít, a léptéket a fürthöz létrehozott csomópontok száma határozza meg. A skála módosítása bonyolultabb lehet, mint az Azure Storage-ban automatikusan elérhető rugalmas skálázási funkciókra támaszkodva.
+* **Rugalmas kibővítés:** Bár a HDFS kibővített fájlrendszert biztosít, a léptéket a fürthöz létrehozott csomópontok száma határozza meg. A méretezés módosítása bonyolultabb lehet, mint az Azure Storage-ban automatikusan megkapandó rugalmas skálázási képességekre támaszkodva.
 
-* **Geo-replikáció:** Az Azure Storage-t földrajzilag lehet replikálni. Bár a Geo-replikáció földrajzi helyreállítást és adatredundanciát biztosít, a földrajzilag replikált helyre történő feladatátvétel jelentősen befolyásolja a teljesítményt, és további költségeket eredményezhet. Ezért válassza a Geo-replikációt óvatosan, és csak akkor, ha az adatmennyiség indokolja a további költségeket.
+* **Georeplikáció:** Az Azure Storage georeplikált lehet. Bár a georeplikáció földrajzi helyreállítást és adatredundanciát biztosít, a georeplikált helyre történő feladatátvétel súlyosan befolyásolja a teljesítményt, és további költségekkel járhat. Ezért körültekintően válassza a georeplikációt, és csak akkor, ha az adatok értéke indokolja a többletköltséget.
 
-Bizonyos MapReduce-feladatok és csomagok olyan köztes eredményeket hozhatnak létre, amelyeket nem szeretne az Azure Storage-ban tárolni. Ebben az esetben dönthet úgy, hogy az adattárolást a helyi HDFS tárolja. A HDInsight az elosztott fájlrendszert használja több ilyen köztes eredményhez a kaptár-feladatokban és más folyamatokban.
+Bizonyos MapReduce feladatok és csomagok köztes eredményeket hozhatnak létre, amelyeket nem szeretne tárolni az Azure Storage-ban. Ebben az esetben választhatja az adatokat a helyi HDFS-ben tárolhatja. A HDInsight a DFS-t használja a Hive-feladatokban és más folyamatokban elért több köztes eredményhez.
 
 > [!NOTE]  
-> A legtöbb HDFS-parancs (például `ls`, `copyFromLocal`és `mkdir`) a várt módon működik az Azure Storage-ban. Az Azure Storage-ban csak a natív HDFS-implementációra (azaz a DFS-re) jellemző parancsokra, például a `fschk`ra és a `dfsadmin`re van mód.
+> A legtöbb HDFS-parancs `ls` `copyFromLocal`(például , és `mkdir`) a várt módon működik az Azure Storage-ban. Csak a natív HDFS-implementációra jellemző parancsok (amelyet DFS-nek neveznek), például `fschk` és `dfsadmin`a , különböző viselkedést mutatnak az Azure Storage-ban.
 
-## <a name="overview-of-azure-data-lake-storage-gen1"></a>A Azure Data Lake Storage Gen1 áttekintése
+## <a name="overview-of-azure-data-lake-storage-gen1"></a>Az Azure Data Lake storage gen1 áttekintése
 
-A Azure Data Lake Storage Gen1 egy nagyvállalati szintű nagy kapacitású adattár big data analitikus számítási feladatokhoz. A Azure Data Lake használatával bármilyen méretű, típusú és feldolgozási sebességű adatot rögzíthet egy helyen az operatív és a felderítő elemzéshez.
+Az Azure Data Lake Storage Gen1 egy nagyvállalati szintű, nagyméretű tárház big data-elemzési számítási feladatokhoz. Az Azure Data Lake használatával bármilyen méretű, típusú és betöltési sebességű adatokat rögzíthet egy helyen a működési és feltáró elemzések hez.
 
-A WebHDFS-kompatibilis REST API-k használatával férhet hozzá Data Lake Storage Gen1 a Hadoop (HDInsight-fürthöz elérhető). Data Lake Storage Gen1 úgy lett kialakítva, hogy lehetővé tegye az elemzést a tárolt adatokon, és az adatelemzési forgatókönyvekben teljesítményre hangolva. A jelölőnégyzetből megtalálhatja azokat a képességeket, amelyek elengedhetetlenek a valós nagyvállalati használati esetekhez. A képességek közé tartozik a biztonság, a kezelhetőség, a méretezhetőség, a megbízhatóság és a rendelkezésre állás.
+A Data Lake Storage Gen1 elérése a Hadoopból (hdinsight-fürtesetén érhető el) a WebHDFS-kompatibilis REST API-k használatával. A Data Lake Storage Gen1 a tárolt adatok elemzésének engedélyezésére szolgál, és az adatelemzési forgatókönyvek ben a teljesítményre van hangolva. A beépített rendszer tartalmazza azokat a képességeket, amelyek elengedhetetlenek a valós vállalati használati esetekhez. Ezek közé tartozik a biztonság, a kezelhetőség, a méretezhetőség, a megbízhatóság és a rendelkezésre állás.
 
-További információ a Azure Data Lake Storage Gen1ről: [Azure Data Lake Storage Gen1 részletes áttekintése](../data-lake-store/data-lake-store-overview.md).
+Az Azure Data Lake Storage Gen1 szolgáltatásról az [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)részletes áttekintése című témakörben olvashat bővebben.
 
-A Data Lake Storage Gen1 főbb képességei a következők:
+A Data Lake Storage Gen1 legfontosabb képességei a következők.
 
-### <a name="compatibility-with-hadoop"></a>Kompatibilitás a Hadoop
+### <a name="compatibility-with-hadoop"></a>Kompatibilitás a Hadoop-mal
 
-Data Lake Storage Gen1 egy Apache Hadoop fájlrendszer, amely kompatibilis a HDFS, és együttműködik a Hadoop-ökoszisztémával.  A WebHDFS API-t használó meglévő HDInsight-alkalmazások és-szolgáltatások könnyen integrálhatók Data Lake Storage Gen1val. A Data Lake Storage Gen1 a WebHDFS-kompatibilis REST-felületet is elérhetővé teszi az alkalmazásokhoz.
+A Data Lake Storage Gen1 egy Apache Hadoop fájlrendszer, amely kompatibilis a HDFS-sel, és együttműködik a Hadoop ökoszisztémával.  A WebHDFS API-t használó meglévő HDInsight-alkalmazások vagy -szolgáltatások könnyen integrálhatók a Data Lake Storage Gen1 szolgáltatással. A Data Lake Storage Gen1 egy WebHDFS-kompatibilis REST-felületet is elérhetővé teszi az alkalmazások számára.
 
-A Data Lake Storage Gen1ban tárolt adatai könnyen elemezhetők a Hadoop analitikai keretrendszerek, például a MapReduce vagy a kaptár használatával. Az Azure HDInsight-fürtök üzembe helyezhetők és konfigurálhatók úgy, hogy közvetlenül hozzáférhessenek Data Lake Storage Gen1ban tárolt adatszolgáltatásokhoz.
+A Data Lake Storage Gen1-ben tárolt adatok könnyen elemezhetők a Hadoop analitikus keretrendszerek, például a MapReduce vagy a Hive használatával. Az Azure HDInsight-fürtök kiépíthetők és konfigurálhatók úgy, hogy közvetlenül hozzáférjenek a Data Lake Storage Gen1-ben tárolt adatokhoz.
 
 ### <a name="unlimited-storage-petabyte-files"></a>Korlátlan tárterület, petabájtnyi fájlok
 
-Data Lake Storage Gen1 korlátlan tárhelyet biztosít, és alkalmas a különböző adatelemzések tárolására. Nem korlátozza a fiók méreteit, a fájlméretet, illetve a adattóban tárolható adatmennyiséget. Az egyes fájlok mérete kilobájttól a petabájt-ig terjedhet, így a Data Lake Storage Gen1 kiváló választás bármilyen típusú adatok tárolására. A rendszer több másolat készítésével tárolja az adattárolási tartósan, és nem korlátozza, hogy mennyi ideig tárolhatók az adatközpontok.
+A Data Lake Storage Gen1 korlátlan tárhelyet biztosít, és számos adat tárolására alkalmas az elemzéshez. Nem korlátozza a fiókméretet, a fájlméretet vagy az adattóban tárolható adatok mennyiségét. Az egyes fájlok mérete a kilobájttól a petabájtig terjedhet, így a Data Lake Storage Gen1 nagyszerű választás bármilyen típusú adat tárolására. Az adatok tárolása tartósan több másolat készítésével történik, és nincs korlátozva, hogy az adatok mennyi ideig tárolhatók az adattóban.
 
-### <a name="performance-tuning-for-big-data-analytics"></a>Teljesítmény-Finomhangolás a big data elemzésekhez
+### <a name="performance-tuning-for-big-data-analytics"></a>Teljesítményhangolás big data-elemzéshez
 
-Data Lake Storage Gen1 a nagy mennyiségű adatok lekérdezéséhez és elemzéséhez szükséges nagy teljesítményű analitikai rendszerek futtatására készült. A adat-tó több különálló Storage-kiszolgálón is elterjed egy fájl részein. Az adatok elemzésekor ez a telepítő javítja az olvasási sebességet, ha a fájl párhuzamosan van beolvasva.
+A Data Lake Storage Gen1 nagyméretű analitikus rendszerek futtatására készült, amelyek nagy mennyiségű adat lekérdezéséhez és elemzéséhez nagy mennyiségű adat lekérdezéséhez és elemzéséhez szükséges. A data lake a fájl egyes részeit több egyedi tárolókiszolgálóra is elosztja. Adatok elemzésekor ez a beállítás javítja az olvasási átviteli szintet, ha a fájlt párhuzamosan olvassa be.
 
-### <a name="readiness-for-enterprise-highly-available-and-secure"></a>Nagyvállalati készültség: kiválóan elérhető és biztonságos
+### <a name="readiness-for-enterprise-highly-available-and-secure"></a>Vállalati használatra való felkészültség: Magas rendelkezésre állás és biztonság
 
-A Data Lake Storage Gen1 iparági szintű rendelkezésre állást és megbízhatóságot biztosít. Az adategységek tárolása tartósan történik: a redundáns másolatok megvédik a váratlan hibákat. A vállalatok a meglévő adatplatformjuk fontos részeként használhatják a Data Lake Storage Gen1 a megoldásokban.
+A Data Lake Storage Gen1 iparági szabványoknak megfelelő elérhetőséget és megbízhatóságot biztosít. Az adatelemek tárolása tartósan: a redundáns másolatok nem várt hibák ellen. A vállalatok a Data Lake Storage Gen1-et a meglévő adatplatformjuk fontos részeként használhatják a megoldásaikban.
 
-A Data Lake Storage Gen1 nagyvállalati szintű biztonságot is biztosít a tárolt adattároláshoz. További információ: az [adatok biztonságossá tétele a Azure Data Lake Storage Gen1ban](#DataLakeStoreSecurity).
+A Data Lake Storage Gen1 nagyvállalati szintű biztonságot is nyújt a tárolt adatok számára. További információ: [Adatok védelme az Azure Data Lake Storage Gen1](#DataLakeStoreSecurity)alkalmazásban.
 
 ### <a name="flexible-data-structures"></a>Rugalmas adatstruktúrák
 
-A Data Lake Storage Gen1 a natív formátumban tárolhatja az összes olyan adatforrást, amely korábbi átalakítások nélkül is használható. Data Lake Storage Gen1 nem szükséges sémát meghatározni az betöltés előtt. Az egyéni elemzési keretrendszer értelmezi az adatelemzést, és definiál egy sémát az elemzés időpontjában. Mivel az képes tetszőleges méretű és formátumú fájlokat tárolni, a Data Lake Storage Gen1 képes kezelni a strukturált, a félig strukturált és a strukturálatlan adatmennyiséget.
+A Data Lake Storage Gen1 bármilyen adatot tárolhat natív formátumban, ahogy van, előzetes átalakítások nélkül. A Data Lake Storage Gen1 nem igényel sémát az adatok betöltése előtt. Az egyes analitikus keretrendszer értelmezi az adatokat, és meghatározza a sémát az elemzés időpontjában. Mivel tetszőleges méretű és formátumú fájlokat képes tárolni, a Data Lake Storage Gen1 képes kezelni a strukturált, félstrukturált és strukturálatlan adatokat.
 
-Data Lake Storage Gen1 tárolók alapvetően mappák és fájlok. A tárolt adatai SDK-k, a Azure Portal és a Azure PowerShell használatával működnek. Ha ezeket a csatolókat és a megfelelő tárolókat használva helyezi el az adatait a tárolóba, bármilyen típusú adatait tárolhatja. Data Lake Storage Gen1 nem végez semmilyen speciális adatkezelést az általa tárolt adatok típusától függően.
+Data Lake Storage Gen1 tárolók adatok lényegében mappák és fájlok. A tárolt adatok on sdks, az Azure Portal és az Azure PowerShell használatával működik. Mindaddig, amíg az adatokat az áruházba ezek a felületek és a megfelelő tárolók használatával helyezi el, bármilyen típusú adatot tárolhat. A Data Lake Storage Gen1 nem végez speciális adatkezelést az általa tárolt adatok típusa alapján.
 
-## <a name="DataLakeStoreSecurity"></a>Adatbiztonság a Data Lake Storage Gen1ban
-A Data Lake Storage Gen1 a hitelesítéshez Azure Active Directory használ, és hozzáférés-vezérlési listákat (ACL-eket) használ az adataihoz való hozzáférés kezelésére.
+## <a name="data-security-in-data-lake-storage-gen1"></a><a name="DataLakeStoreSecurity"></a>Adatbiztonság a Data Lake Storage Gen1 szolgáltatásban
+A Data Lake Storage Gen1 az Azure Active Directoryt használja a hitelesítéshez, és hozzáférés-vezérlési listákat (ACL-eket) használ az adatokhoz való hozzáférés kezeléséhez.
 
-| **Funkció** | **Leírás** |
+| **Szolgáltatás** | **Leírás** |
 | --- | --- |
-| Authentication |A Data Lake Storage Gen1 az Azure Active Directory (Azure AD) szolgáltatással integrálható az identitás-és hozzáférés-kezeléshez a Data Lake Storage Gen1 tárolt összes adattal. Az integráció miatt Data Lake Storage Gen1 az Azure AD összes funkciójának előnyeit. Ezen funkciók közé tartozik a többtényezős hitelesítés, a feltételes hozzáférés, a szerepköralapú hozzáférés-vezérlés, az alkalmazások használatának figyelése, a biztonsági monitorozás és a riasztások. A Data Lake Storage Gen1 támogatja a OAuth 2,0 protokollt a REST-felületen belüli hitelesítéshez. Lásd: [Azure Data Lake Storage Gen1on belüli hitelesítés Azure Active Directory használatával](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
-| Hozzáférés-vezérlés |Data Lake Storage Gen1 hozzáférés-vezérlést biztosít a WebHDFS protokoll által közzétett POSIX stílusú engedélyek támogatásával. A hozzáférés-vezérlési listák a gyökérkönyvtáron, az alkönyvtárakon és az egyes fájlokon is engedélyezhetők. Az ACL-ek Data Lake Storage Gen1 környezetében való működésével kapcsolatos további információkért lásd: [Data Lake Storage Gen1 hozzáférés-vezérlése](../data-lake-store/data-lake-store-access-control.md). |
-| Titkosítás |A Data Lake Storage Gen1 a fiókban tárolt adathalmazok titkosítását is biztosítja. Data Lake Storage Gen1 fiók létrehozásakor megadhatja a titkosítási beállításokat. Megadhatja, hogy az adatai titkosítva legyenek, vagy a titkosítás nélkül is legyenek kiválasztva. További információ: [titkosítás Data Lake Storage Gen1ban](../data-lake-store/data-lake-store-encryption.md). A titkosítással kapcsolatos konfiguráció megadására vonatkozó utasításokért lásd: [a Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](../data-lake-store/data-lake-store-get-started-portal.md). |
+| Hitelesítés |A Data Lake Storage Gen1 integrálható az Azure Active Directoryval (Azure AD) a Data Lake Storage Gen1-ben tárolt összes adat identitás- és hozzáférés-kezeléséhez. Az integráció miatt a Data Lake Storage Gen1 az Azure AD összes funkciójának előnyeit élvezi. Ezek közé tartozik a többtényezős hitelesítés, a feltételes hozzáférés, a szerepköralapú hozzáférés-vezérlés, az alkalmazáshasználat figyelése, a biztonsági figyelés és riasztás, és így tovább. A Data Lake Storage Gen1 támogatja az OAuth 2.0 protokollt a REST-csatolón belüli hitelesítéshez. Lásd: [Hitelesítés az Azure Data Lake Storage Gen1 szolgáltatásban az Azure Active Directory használatával](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
+| Hozzáférés-vezérlés |A Data Lake Storage Gen1 a WebHDFS protokoll által elérhetővé tett POSIX-stílusú engedélyek támogatásával biztosít hozzáférés-vezérlést. A hozzáférés-vezérlési listák a gyökérkönyvtáron, az alkönyvtárakon és az egyes fájlokon is engedélyezhetők. Az ACL-ek működéséről a Data Lake Storage Gen1 környezetében további információt a [Hozzáférés-vezérlés a Data Lake Storage Gen1 programban című témakörben talál.](../data-lake-store/data-lake-store-access-control.md) |
+| Titkosítás |A Data Lake Storage Gen1 titkosítást is biztosít a fiókban tárolt adatokhoz. A titkosítási beállításokat a Data Lake Storage Gen1 fiók létrehozásakor adja meg. Választhatja az adatok titkosítását, vagy választhatja a nem titkosítást. További információ: [Encryption in Data Lake Storage Gen1](../data-lake-store/data-lake-store-encryption.md). A titkosítással kapcsolatos konfigurációk biztosításáról az [Azure Data Lake Storage Gen1 használatának első lépései az Azure Portal használatával című témakörben](../data-lake-store/data-lake-store-get-started-portal.md)talál. |
 
-Ha többet szeretne megtudni az Data Lake Storage Gen1-beli adatvédelmet illetően, tekintse meg [a Azure Data Lake Storage Gen1 tárolt adatainak biztonságossá](../data-lake-store/data-lake-store-secure-data.md)tételét ismertető témakört.
+Ha többet szeretne tudni az adatok védelméről a Data Lake Storage Gen1 szolgáltatásban, olvassa el [az Azure Data Lake Storage Gen1 szolgáltatásban tárolt adatok védelme.](../data-lake-store/data-lake-store-secure-data.md)
 
-## <a name="applications-that-are-compatible-with-data-lake-storage-gen1"></a>Data Lake Storage Gen1-kompatibilis alkalmazások
-A Data Lake Storage Gen1 kompatibilis a Hadoop-ökoszisztémában található legtöbb nyílt forráskódú összetevővel. Emellett egyéb Azure-szolgáltatásokkal is jól integrálható.  Az alábbi hivatkozásokat követve további információkat tudhat meg arról, hogyan használhatók a Data Lake Storage Gen1 a nyílt forráskódú összetevőkkel és más Azure-szolgáltatásokkal is.
+## <a name="applications-that-are-compatible-with-data-lake-storage-gen1"></a>A Data Lake Storage Gen1-tel kompatibilis alkalmazások
+A Data Lake Storage Gen1 kompatibilis a Hadoop ökoszisztéma legtöbb nyílt forráskódú összetevőjével. Emellett egyéb Azure-szolgáltatásokkal is jól integrálható.  Az alábbi hivatkozásokra kattintva többet is megtudhat arról, hogyan használható a Data Lake Storage Gen1 a nyílt forráskódú összetevőkkel és más Azure-szolgáltatásokkal.
 
-* A Data Lake Storage Gen1val együttműködő nyílt forráskódú alkalmazások listájának megtekintéséhez tekintse [meg a nyílt forráskódú Big Data a Azure Data Lake Storage Gen1t használó alkalmazásokat](../data-lake-store/data-lake-store-compatible-oss-other-applications.md) .
-* Tekintse meg a [Azure Data Lake Storage Gen1 integrációja más Azure-szolgáltatásokkal](../data-lake-store/data-lake-store-integrate-with-other-services.md) című témakört, amelyből megtudhatja, hogyan Data Lake Storage Gen1 használhatja más Azure-szolgáltatásokkal a különböző forgatókönyvek széles skáláját.
-* Lásd: a [Azure Data Lake Storage Gen1 használata Big Data követelményekhez](../data-lake-store/data-lake-store-data-scenarios.md) , amelyből megtudhatja, hogyan használhatja az Data Lake Storage Gen1 olyan helyzetekben, mint például az adatok betöltése, az adatok feldolgozása, az adatok letöltése és az adatok megjelenítése.
+* Az [Azure Data Lake Storage Gen1 szolgáltatással működő nyílt forráskódú big data-alkalmazások 1.](../data-lake-store/data-lake-store-compatible-oss-other-applications.md)
+* Az [Azure Data Lake Storage Gen1 integrálása más Azure-szolgáltatásokkal](../data-lake-store/data-lake-store-integrate-with-other-services.md) a Data Lake Storage Gen1 más Azure-szolgáltatásokkal való használatának megértéséhez a forgatókönyvek szélesebb körének engedélyezéséhez.
+* A Data [Lake Storage Gen1 használatával a Big Data Storage](../data-lake-store/data-lake-store-data-scenarios.md) Gen1 használatával megtudhatja, hogyan használhatja a Data Lake Storage Gen1-et olyan forgatókönyvekben, mint az adatok betöltése, az adatok feldolgozása, az adatok letöltése és az adatok megjelenítése.
 
 ## <a name="data-lake-storage-gen1-file-system-adl"></a>Data Lake Storage Gen1 fájlrendszer (adl://)
-A Hadoop-környezetekben (HDInsight-fürttel elérhető) az új fájlrendszer, a Azuredatalakefilesystemet (adl://) segítségével érheti el Data Lake Storage Gen1. A adl://-t használó alkalmazások és szolgáltatások teljesítménye olyan módon optimalizálható, amely jelenleg nem érhető el a WebHDFS-ben. Ennek eredményeképpen a Data Lake Storage Gen1 használatakor a rugalmasságot úgy érheti el, hogy a javasolt adl://használja a legjobb teljesítményt, vagy megtartja a meglévő kódokat, ha továbbra is közvetlenül használja a WebHDFS API-t. Az Azure HDInsight teljes mértékben kihasználja a Azuredatalakefilesystemet, hogy a lehető legjobb teljesítményt nyújtsa Data Lake Storage Gen1on.
+Hadoop-környezetekben (HDInsight-fürttel érhető el) az új fájlrendszeren, az AzureDataLakeFilesystemen (adl://) keresztül érheti el a Data Lake Storage Gen1 szolgáltatást. A adl:// használó alkalmazások és szolgáltatások teljesítménye olyan módon optimalizálható, amely jelenleg nem érhető el a WebHDFS fájlrendszerben. Ennek eredményeképpen a Data Lake Storage Gen1 használataesetén rugalmasságot kap, hogy az ajánlott adl:// használatával a legjobb teljesítményt nyújtsa, vagy a meglévő kódot a WebHDFS API közvetlen használatával továbbra is használja. Az Azure HDInsight teljes mértékben kihasználja az AzureDataLakeFilesystem előnyeit, hogy a legjobb teljesítményt nyújtsa a Data Lake Storage Gen1 szolgáltatáson.
 
-A következő lépésekkel érheti el Data Lake Storage Gen1 adatait:
+A Data Lake Storage Gen1 szolgáltatásban tárolt adatok az alábbi használatával érhetők el:
 
 `adl://<data_lake_storage_gen1_name>.azuredatalakestore.net`
 
-A Data Lake Storage Gen1 lévő adatok elérésével kapcsolatos további információkért lásd: [a tárolt adatokon elérhető műveletek](../data-lake-store/data-lake-store-get-started-portal.md#properties).
+A Data Lake Storage Gen1 szolgáltatásban található adatok eléréséről [a Tárolt adatokon elérhető műveletek című](../data-lake-store/data-lake-store-get-started-portal.md#properties)témakörben talál további információt.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Bevezetés a Azure Data Lake Storage Gen2ba](../storage/blobs/data-lake-storage-introduction.md)
+* [Bevezetés az Azure Data Lake Storage Gen2 szolgáltatásba](../storage/blobs/data-lake-storage-introduction.md)
 * [A Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md)

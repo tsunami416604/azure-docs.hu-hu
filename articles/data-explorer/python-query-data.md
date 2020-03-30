@@ -1,6 +1,6 @@
 ---
-title: Adatlekérdezés az Azure Adatkezelő Python Library használatával
-description: Ebből a cikkből megtudhatja, hogyan kérdezheti le az Azure Adatkezelő adatait a Python használatával.
+title: Adatok lekérdezése az Azure Data Explorer Python-kódtár használatával
+description: Ebben a cikkben megtudhatja, hogyan lehet adatokat lekérdezni az Azure Data Explorer python használatával.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,23 +8,23 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: ebd65f2dcbb0040b764290627bbfd2901aa9a7d3
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77443975"
 ---
-# <a name="query-data-using-the-azure-data-explorer-python-library"></a>Adatlekérdezés az Azure Adatkezelő Python Library használatával
+# <a name="query-data-using-the-azure-data-explorer-python-library"></a>Adatok lekérdezése az Azure Data Explorer Python-kódtár használatával
 
-Ebben a cikkben az Azure Adatkezelő használatával kérdez le adatlekérdezéseket. Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz.
+Ebben a cikkben az Azure Data Explorer használatával lekérdezi az adatokat. Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz.
 
-Az Azure Data Explorer [adatügyfélkódtárat biztosít a Pythonhoz](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ez a kódtár lehetővé teszi adatok lekérdezését a kódból. Kapcsolódjon egy olyan táblához a *Súgó-fürtön* , amelyet a tanulás támogatásához állítottunk be. Lekérdezheti a fürtben található táblát, és visszaküldheti az eredményeket.
+Az Azure Data Explorer [adatügyfélkódtárat biztosít a Pythonhoz](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ez a kódtár lehetővé teszi adatok lekérdezését a kódból. Csatlakozzon egy táblázathoz a *súgófürt,* amely már létrehozott a tanulás támogatásához. Lekérdezhet egy táblát a fürtön, és visszaadhatja az eredményeket.
 
 Ez a cikk [Azure-jegyzetfüzetként](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb)is elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Python 3.4 +](https://www.python.org/downloads/)
+* [Python 3.4+](https://www.python.org/downloads/)
 
 * Vállalati e-mail-fiók, amely az Azure Active Directory (AAD) tagja
 
@@ -67,7 +67,7 @@ KUSTO_CLUSTER = "https://help.kusto.windows.net/"
 KUSTO_DATABASE = "Samples"
 ```
 
-Most hozza létre a kapcsolati sztringet. Ez a példa eszközhitelesítést használ a fürt eléréséhez. Használhatja a HRE- [alkalmazás tanúsítványát](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), a [HRE](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), valamint a [HRE-felhasználót és-jelszót](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)is.
+Most hozza létre a kapcsolati sztringet. Ez a példa eszközhitelesítést használ a fürt eléréséhez. Használhatja [az AAD alkalmazástanúsítványt](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [az AAD alkalmazáskulcsot](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), valamint az [AAD felhasználót és a jelszót](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)is.
 
 ```python
 KCSB = KustoConnectionStringBuilder.with_aad_device_authentication(
@@ -97,7 +97,7 @@ df
 
 Meg kell jelennie a StormEvents táblában szereplő első tíz eredménynek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Adatbevitel az Azure Adatkezelő Python Library használatával](python-ingest-data.md)
+> [Adatok betöltése az Azure Data Explorer Python-tár használatával](python-ingest-data.md)

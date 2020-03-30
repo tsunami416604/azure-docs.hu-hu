@@ -1,6 +1,6 @@
 ---
-title: Önkiszolgáló alkalmazás-hozzárendelés konfigurálása | Microsoft Docs
-description: Az önkiszolgáló alkalmazás-hozzáférés engedélyezése lehetővé teszi, hogy a felhasználók megtalálják a saját alkalmazásaikat
+title: Az önkiszolgáló alkalmazás-hozzárendelés konfigurálása | Microsoft dokumentumok
+description: Az önkiszolgáló alkalmazások hozzáférésének engedélyezése, hogy a felhasználók megtalálják saját alkalmazásaikat
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,80 +15,68 @@ ms.topic: article
 ms.date: 10/23/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbeb25f1190754b4264cfbab9d8a03a6b65c4dff
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bcccc64e0c766164a06932e9b65a4459816f9deb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895963"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409116"
 ---
-# <a name="how-to-configure-self-service-application-assignment"></a>Önkiszolgáló alkalmazás-hozzárendelés konfigurálása
+# <a name="how-to-configure-self-service-application-assignment"></a>Az önkiszolgáló alkalmazás-hozzárendelés konfigurálása
 
-Ahhoz, hogy a felhasználók saját maguk is felfedezzék az alkalmazásokat a hozzáférési paneljéről, engedélyeznie kell az **önkiszolgáló alkalmazásokhoz való hozzáférést** minden olyan alkalmazáshoz, amelyet engedélyezni kíván a felhasználók számára az önfelderítéshez és a hozzáférés kéréséhez. Ez a funkció olyan alkalmazásokhoz érhető el, amelyeket az Azure [ad](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)-katalógusból, az [Azure ad Application proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) -ból vagy [felhasználói vagy rendszergazdai hozzájárulással](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)adott hozzá. 
+Ahhoz, hogy a felhasználók saját maguk fedezhessék fel az alkalmazásokat a Saját alkalmazások hozzáférési paneljükről, engedélyeznie kell **az önkiszolgáló alkalmazások hozzáférését** minden olyan alkalmazáshoz, amelyet lehetővé kíván tenni a felhasználók számára, hogy önfelderítsék és hozzáférést kérjenek. Ez a funkció az [Azure AD-galériából](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app), az [Azure AD alkalmazásproxyból](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) hozzáadott vagy [a felhasználó vagy a rendszergazda hozzájárulásával](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)hozzáadott alkalmazások számára érhető el. 
 
-Ez a funkció nagyszerű lehetőséget nyújt arra, hogy időt és pénzt takarítson meg informatikai csoportként, és a Azure Active Directory használatával korszerű alkalmazások központi telepítésének részeként erősen ajánlott.
+Ez a funkció nagyszerű módja annak, hogy időt és pénzt takarítson meg informatikai csoportként, és erősen ajánlott egy modern alkalmazás-telepítés részeként az Azure Active Directoryval.
 
-A szolgáltatás használatával a következőket teheti:
+Ez a szolgáltatás lehetővé teszi:
 
--   Lehetővé teszi a felhasználók számára, hogy az IT-csoport kellemetlensége nélkül is felfedezzék az alkalmazásokat az [alkalmazás-hozzáférési panelről](https://myapps.microsoft.com/) .
+-   Lehetővé teszi a felhasználók számára, hogy saját maguk fedezhessék fel az alkalmazásokat a [Saját alkalmazások hozzáférési panelről](https://myapps.microsoft.com/) anélkül, hogy zavarnák az informatikai csoportot.
 
--   Adja hozzá ezeket a felhasználókat egy előre konfigurált csoporthoz, így megtekintheti, hogy ki igényelt hozzáférést, távolítsa el a hozzáférést, és kezelje a hozzájuk rendelt szerepköröket.
+-   Adja hozzá ezeket a felhasználókat egy előre konfigurált csoporthoz, így láthatja, hogy ki kért hozzáférést, eltávolíthatja a hozzáférést, és kezelheti a hozzájuk rendelt szerepköröket.
 
--   Opcionálisan engedélyezheti az üzleti jóváhagyónak az alkalmazás-hozzáférési kérelmek jóváhagyását, hogy az informatikai csoportnak ne kelljen.
+-   Tetszés szerint engedélyezheti, hogy egy üzleti jóváhagyó jóváhagyja az alkalmazáshozzáférési kérelmeket, így az informatikai csoportnak nem kell.
 
--   Opcionálisan akár 10 személyt is beállíthat, akik jóváhagyják az alkalmazáshoz való hozzáférést.
+-   Tetszés szerint legfeljebb 10 személyt konfigurálhat, akik jóváhagyhatják az alkalmazáshoz való hozzáférést.
 
--   Opcionálisan engedélyezheti az üzleti jóváhagyó számára, hogy beállítsa azokat a jelszavakat, amelyeket a felhasználók az alkalmazásba való bejelentkezéshez használhatnak közvetlenül az üzleti jóváhagyó [alkalmazás-hozzáférési paneljéről](https://myapps.microsoft.com/).
+-   Ha engedélyezi a vállalati jóváhagyónak, hogy közvetlenül a vállalkozás jóváhagyójának [alkalmazás-hozzáférési paneljéből](https://myapps.microsoft.com/)állítsa be azokat a jelszavakat, amelyekkel a felhasználók bejelentkezhetnek az alkalmazásba.
 
--   Opcionálisan automatikusan hozzárendelheti az önkiszolgáló hozzárendelt felhasználókat egy alkalmazás-szerepkörhöz.
+-   Szükség esetén automatikusan automatikusan hozzárendeli az önkiszolgáló hozzárendelt felhasználókat egy alkalmazásszerepkörhöz közvetlenül.
 
-## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Az önkiszolgáló alkalmazás-hozzáférés engedélyezése lehetővé teszi, hogy a felhasználók megtalálják a saját alkalmazásaikat
+## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Az önkiszolgáló alkalmazások hozzáférésének engedélyezése, hogy a felhasználók megtalálják saját alkalmazásaikat
 
-Az önkiszolgáló alkalmazás-hozzáférés lehetővé teszi a felhasználók számára az alkalmazások önfelderítését, opcionálisan lehetővé teszi, hogy az üzleti csoport jóváhagyja az alkalmazásokhoz való hozzáférést. Lehetővé teheti az üzleti csoport számára, hogy az adott felhasználókhoz rendelt hitelesítő adatokat a hozzáférési panelektől közvetlenül a jelszó egyszeri bejelentkezésre szolgáló alkalmazásokban kezelhesse.
+Az önkiszolgáló alkalmazások elérése nagyszerű módja annak, hogy a felhasználók önfelderíthessék az alkalmazásokat, és adott esetben lehetővé tegyék az üzleti csoport számára az alkalmazásokhoz való hozzáférés jóváhagyását. Az alkalmazásokon egyszeri jellel rendelkező jelszó esetén engedélyezheti az üzleti csoportszámára a felhasználókhoz rendelt hitelesítő adatok kezelését a saját Saját alkalmazások hozzáférési paneljeikről.
 
-Az önkiszolgáló alkalmazások alkalmazáshoz való hozzáférésének engedélyezéséhez kövesse az alábbi lépéseket:
+Ha engedélyezni szeretné az önkiszolgáló alkalmazások hozzáférését egy alkalmazáshoz, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként.**
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) globális rendszergazdaként.
 
-2.  Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** elemre kattintva.
+2. Válassza az **Azure Active Directory**lehetőséget. A bal oldali navigációs menüben válassza a **Vállalati alkalmazások lehetőséget.**
 
-3.  Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
+3. Válassza ki az alkalmazást a listából. Ha nem látja az alkalmazást, írja be a nevét a keresőmezőbe. Vagy használja a szűrővezérlőket az alkalmazás típusának, állapotának vagy láthatóságának kiválasztásához, majd válassza **az Alkalmaz**lehetőséget.
 
-4.  a Azure Active Directory bal oldali navigációs menüjében kattintson a **vállalati alkalmazások** elemre.
+4. A bal oldali navigációs menüben válassza az **Önkiszolgáló**lehetőséget.
 
-5.  kattintson a **minden alkalmazás** elemre az alkalmazások listájának megtekintéséhez.
+5. Ha engedélyezni szeretné az önkiszolgáló alkalmazások hozzáférését ehhez az alkalmazáshoz, kapcsolja **Yes.** be a **Felhasználók hozzáférésének engedélyezése az alkalmazáshoz?**
 
-    * Ha nem látja a használni kívánt alkalmazást, használja a **minden alkalmazás lista** tetején található **szűrő** vezérlőelemet, és állítsa a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra.**
-
-6.  Válassza ki azt az alkalmazást, amely számára engedélyezni szeretné az önkiszolgáló hozzáférést a listáról.
-
-7.  Az alkalmazás betöltése után kattintson az **önkiszolgáló** elemre az alkalmazás bal oldali navigációs menüjében.
-
-8.  Az alkalmazás önkiszolgáló alkalmazásokhoz való hozzáférésének engedélyezéséhez kapcsolja be a **felhasználók számára az alkalmazáshoz való hozzáférés kérését?** váltson át az Igen értékre **.**
-
-9.  Ezután válassza ki azt a csoportot, amelyhez hozzá szeretné adni az alkalmazáshoz hozzáférést kérő felhasználókat, kattintson a címke melletti választóra, **amelyhez hozzá** kívánja adni a felhasználókat, és válasszon ki egy csoportot.
+6. A **Hozzá rendelt felhasználók hoz**lehetőséget választva kattintson a **Csoport kiválasztása**gombra. Válasszon egy csoportot, majd kattintson **a Kijelölés gombra.** Ha egy felhasználó kérelmét jóváhagyják, a rendszer hozzáadja őket ehhez a csoporthoz. A csoport tagságának megtekintésekor láthatja, hogy önkiszolgáló hozzáféréssel rendelkezik-e az alkalmazáshoz.
   
     > [!NOTE]
-    > A helyszínen szinkronizált csoportok nem támogatottak ahhoz a csoporthoz, amelyhez hozzáférést kérő felhasználóknak hozzá kell adni az alkalmazást.
-  
-10. Nem **kötelező:** Ha szeretné megkövetelni, hogy a felhasználók hozzáférhessenek-e az üzleti jóváhagyáshoz, akkor az **alkalmazáshoz való hozzáférés engedélyezése előtt állítsa be a jóváhagyás megkövetelése** beállítást. az **Igen**értékre vált.
+    > Ez a beállítás nem támogatja a helyszíni szinkronizálású csoportokat.
 
-11. Nem **kötelező: csak jelszó egyszeri bejelentkezést használó alkalmazások esetében,** ha engedélyezni szeretné, hogy ezek az üzleti jóváhagyók megadják az alkalmazásnak a jóváhagyott felhasználók számára eljuttatott jelszavakat, állítsa be a **jóváhagyók engedélyezése a felhasználó jelszavának beállításához alkalmazás?** Váltás az **Igen**értékre.
+7. **Nem kötelező:** Ha a felhasználók hozzáférésének engedélyezéséhez üzleti jóváhagyást szeretne igényelni, állítsa be **Yes**a **Jóváhagyás megkövetelése az alkalmazáshoz való hozzáférés megadása előtt?**
 
-12. Nem **kötelező:** Azon üzleti jóváhagyók megadásához, akik számára engedélyezett az alkalmazáshoz való hozzáférés jóváhagyása, kattintson az **alkalmazáshoz való hozzáférés jóváhagyására jogosult** címke melletti választóra? a legfeljebb 10 egyéni üzleti jóváhagyó kiválasztásához.
+8. **Nem kötelező: Ha csak egyszer jelű jelszóval használják a jelszót,** hogy az üzleti jóváhagyók megadhassák az alkalmazásnak a jóváhagyott felhasználók **Yes**számára küldött jelszavakat, állítsa be a **Jóváhagyók számára a felhasználó jelszavait az alkalmazáshoz?**
 
-     > [!NOTE]
-     > A csoportok nem támogatottak.
-     >
-     >
+9. **Nem kötelező:** Az alkalmazáshoz való hozzáférés jóváhagyására engedélyezett üzleti jóváhagyók megadásához a **Ki hagyhatja jóvá az alkalmazáshoz való hozzáférést?** gomb, **kattintson a Jóváhagyók kiválasztása**parancsra, majd válasszon ki legfeljebb 10 egyéni üzleti jóváhagyót. Ezután kattintson a **Kiválasztás** elemre.
 
-13. Nem **kötelező:** **a szerepköröket közzétevő alkalmazások esetében**, ha az önkiszolgáló jóváhagyott felhasználókat szeretné hozzárendelni egy szerepkörhöz, kattintson arra a választóra, **amelynek a szerepkörét el szeretné rendelni a felhasználóknak az alkalmazásban?** a szerepkör kiválasztásához, amelyhez a felhasználók hozzá kell rendelni.
+    >[!NOTE]
+    >A csoportok nem támogatottak. Legfeljebb 10 egyéni üzleti jóváhagyó t választhat ki. Ha több jóváhagyót ad meg, bármely jóváhagyó jóváhagyhat egy hozzáférési kérelmet.
 
-14. Kattintson a panel tetején található **Save (Mentés** ) gombra a befejezéshez.
+10. **Nem kötelező:** **A szerepköröket tartalmazó alkalmazások esetén**az önkiszolgálójóváhagyott felhasználókszerepkörhöz rendeléséhez a Felhasználók számára melyik szerepkör t rendelje hozzá ebben az **alkalmazásban?**, kattintson a **Szerepkör kiválasztása**gombra, majd válassza ki azt a szerepkört, amelyhez ezeket a felhasználókat hozzá kell rendelni. Ezután kattintson a **Kiválasztás** elemre.
 
-Az önkiszolgáló alkalmazás konfigurálásának befejezése után a felhasználók az [alkalmazás-hozzáférési panelre](https://myapps.microsoft.com/) léphetnek, és a **+ Hozzáadás** gombra kattintva megkereshetik azokat az alkalmazásokat, amelyekhez engedélyezte az önkiszolgáló hozzáférést. Az üzleti jóváhagyók az [alkalmazás hozzáférési paneljén](https://myapps.microsoft.com/)is megtekinthetik az értesítéseket. Engedélyezheti az e-mailek értesítését, ha egy felhasználó hozzáférést kért egy olyan alkalmazáshoz, amelyhez jóváhagyás szükséges. 
+11. A befejezéshez kattintson az ablaktábla tetején található **Mentés** gombra.
 
-Ezek a jóváhagyások csak az egyszeri jóváhagyási munkafolyamatokat támogatják, ami azt jelenti, hogy ha több jóváhagyót ad meg, akkor az egyetlen jóváhagyó jóváhagyhatja az alkalmazáshoz való hozzáférést.
+Az önkiszolgáló alkalmazások konfigurálásának befejezése után a felhasználók a [Saját alkalmazások hozzáférési panelre](https://myapps.microsoft.com/) navigálhatnak, és az **önkiszolgáló alkalmazások hozzáadása** gombra kattintva megkereshetik azokat az alkalmazásokat, amelyek önkiszolgáló hozzáféréssel rendelkeznek. Az üzleti jóváhagyók a [Saját alkalmazások hozzáférési panelen](https://myapps.microsoft.com/)is megjelennek egy értesítés. Engedélyezheti, hogy egy e-mailt értesítsen őket, ha a felhasználó hozzáférést kért egy olyan alkalmazáshoz, amely jóváhagyást igényel.
 
-## <a name="next-steps"></a>Következő lépések
-[Azure Active Directory beállítása az önkiszolgáló csoportok felügyeletéhez](../users-groups-roles/groups-self-service-management.md)
+## <a name="next-steps"></a>További lépések
+[Az Azure Active Directory beállítása önkiszolgáló csoportkezelésre](../users-groups-roles/groups-self-service-management.md)

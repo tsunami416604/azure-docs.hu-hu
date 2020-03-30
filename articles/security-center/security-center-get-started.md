@@ -1,5 +1,5 @@
 ---
-title: Frissítés a standard szintű csomagra – Azure Security Center
+title: Frissítés standard szintű szintre – Azure Security Center
 description: Ez a rövid útmutató bemutatja, hogyan frissíthet a Security Center Standard tarifacsomagjára a biztonság további erősítése érdekében.
 services: security-center
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
 ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73664288"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Rövid útmutató: Azure-előfizetés felvétele a Security Center Standard verziójába
-Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Míg az Ingyenes szint korlátozott biztonságot nyújt, és azt is csak az Azure-erőforrások számára, a Standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center segítségével megtalálhatja és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolásához, észlelheti a fenyegetéseket az analitika és az intelligencia használatával, valamint gyorsan reagálhat, ha a rendszer támadás alatt áll. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Míg az Ingyenes szint korlátozott biztonságot nyújt, és azt is csak az Azure-erőforrások számára, a Standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center segítségével megtalálhatja és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolásához, észlelheti a fenyegetéseket az analitika és az intelligencia használatával, valamint gyorsan reagálhat, ha a rendszer támadás alatt áll. Kipróbálhatja a Security Center Standard-ot díjmentesen. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 Ebben a cikkben frissíteni fog a Standard szintre a további biztonság érdekében, és telepíteni fogja a Microsoft Monitoring Agentet a virtuális gépekre a biztonsági rések és fenyegetések monitorozásához.
 
@@ -50,7 +50,7 @@ A Security Center első indítása után néhány percen belül a következők j
 A Security Center képességeinek teljes körű kihasználása érdekében végre kell hajtania az alábbi lépéseket a Standard szintre való frissítéshez és a Microsoft Monitoring Agent telepítéséhez.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Frissítés a Standard szintre
-A Security Center rövid útmutatóinak és oktatóanyagainak elvégzéséhez frissítenie kell a Standard szintre. Security Center Standard ingyenes próbaverziót is rendelkezésre áll. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). 
+A Security Center rövid útmutatóinak és oktatóanyagainak elvégzéséhez frissítenie kell a Standard szintre. A Security Center Standard ingyenes próbaverziója van. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). 
 
 1. A Security Center főmenüjében válassza az **Első lépések** elemet.
  
@@ -72,9 +72,9 @@ Ha az automatikus kiépítés engedélyezve van, a Security Center telepíti a M
 
 A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése:
 
-1. A Security Center Főmenüben válassza a **díjszabás & beállítások**lehetőséget.
-2. Az előfizetés sorában kattintson arra az előfizetésre, amelyre módosítani szeretné a beállításokat.
-3. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést** **Be** értékre.
+1. A Biztonsági központ főmenüjében válassza **az Árképzési & beállítások lehetőséget.**
+2. Az előfizetés sorában kattintson arra az előfizetésre, amelyen módosítani szeretné a beállításokat.
+3. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést****Be** értékre.
 4. Kattintson a **Mentés** gombra.
 ---
   ![Automatikus kiépítés engedélyezése][6]
@@ -86,16 +86,16 @@ Az Azure-beli virtuális gépekbe való új betekintésnek köszönhetően a Sec
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, továbbra is a Standard szintet futtassa, és hagyja engedélyezve az automatikus kiépítést. Ha nem folytatja a munkát, vagy vissza szeretne térni az Ingyenes szintre:
 
-1. Térjen vissza a Security Center főmenüre, és válassza a **díjszabás & beállítások**lehetőséget.
-2. Kattintson arra az előfizetésre, amelyet az ingyenes szintjére szeretne váltani.
+1. Térjen vissza a Biztonsági központ főmenüjéhez, és válassza **az Árképzési & beállítások lehetőséget.**
+2. Kattintson arra az előfizetésre, amelyet az ingyenes szintre szeretne váltani.
 3. A **Tarifacsomag** pont alatt válassza az **Ingyenes** lehetőséget az előfizetés Standard szintről Ingyenes szintre való módosításához.
 5. Kattintson a **Mentés** gombra.
 
 Ha le szeretné tiltani az automatikus kiépítést:
 
-1. Térjen vissza a Security Center főmenüre, és válassza a **díjszabás & beállítások**lehetőséget.
-2. Tisztítsa meg az előfizetést, amelynél le szeretné tiltani az automatikus kiépítés szolgáltatást.
-3. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést** **Ki** értékre.
+1. Térjen vissza a Biztonsági központ főmenüjéhez, és válassza **az Árképzési & beállítások lehetőséget.**
+2. Tiszta az előfizetés, amely le szeretné tiltani az automatikus kiépítés.
+3. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést****Ki** értékre.
 4. Kattintson a **Mentés** gombra.
 
 >[!NOTE]

@@ -1,116 +1,116 @@
 ---
-title: Gyakori kérdések – Network Performance Monitor megoldás az Azure-ban | Microsoft Docs
-description: Ez a cikk az Azure-Network Performance Monitorokkal kapcsolatos gyakori kérdéseket rögzíti. Network Performance Monitor (NPM) segít a hálózatok teljesítményének közel valós idejű figyelésében, valamint a hálózati teljesítmény szűk keresztmetszetének észlelésében és megkeresésében.
+title: Gyakran feltett kérdések – Hálózati teljesítményfigyelő megoldás az Azure-ban | Microsoft dokumentumok
+description: Ez a cikk az Azure-beli Hálózati teljesítményfigyelővel kapcsolatos gyakori kérdéseket rögzíti. A Hálózati teljesítményfigyelő (NPM) segítségével közel valós időben figyelheti a hálózatok teljesítményét, és észlelheti és megkeresheti a hálózati teljesítménybeli szűk keresztmetszeteket.
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
 ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096228"
 ---
-# <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
+# <a name="network-performance-monitor-solution-faq"></a>Gyakori kérdések a Hálózati teljesítményfigyelő megoldásáról
 
-![Network Performance Monitor szimbólum](media/network-performance-monitor-faq/npm-symbol.png)
+![Hálózati teljesítményfigyelő szimbólum](media/network-performance-monitor-faq/npm-symbol.png)
 
-Ez a cikk az Azure-beli Network Performance Monitor (NPM) kapcsolatos gyakori kérdéseket (GYIK) rögzíti
+Ez a cikk az Azure-ban a Hálózati teljesítményfigyelővel (NPM) kapcsolatos gyakori kérdéseket (GYIK) tartalmazza
 
-A [Network Performance monitor](/azure/networking/network-monitoring-overview) egy felhőalapú [hibrid hálózati figyelési](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) megoldás, amely a hálózati infrastruktúra különböző pontjai közötti hálózati teljesítmény figyelését segíti. Emellett a [szolgáltatás-és alkalmazás-végpontok](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) hálózati kapcsolatának figyelésére és [Az Azure-ExpressRoute teljesítményének figyelésére](../../azure-monitor/insights/network-performance-monitor-expressroute.md)is lehetőséget nyújt. 
+[A Network Performance Monitor](/azure/networking/network-monitoring-overview) egy felhőalapú [hibrid hálózatfigyelési](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) megoldás, amely segít a hálózati infrastruktúra különböző pontjai közötti hálózati teljesítmény figyelésében. Emellett segít a [szolgáltatás- és alkalmazásvégpontokhoz](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) való hálózati kapcsolat figyelésében, valamint [az Azure ExpressRoute teljesítményének figyelésében.](../../azure-monitor/insights/network-performance-monitor-expressroute.md) 
 
-A Network Performance Monitor észleli a hálózati problémákat, például a forgalmi blackholing, az útválasztási hibákat, valamint azokat a problémákat, amelyeket a hagyományos hálózati figyelési módszerek nem képesek észlelni. A megoldás riasztásokat készít, és értesíti, amikor egy hálózati kapcsolat meghaladja a küszöbértéket. Emellett biztosítja a hálózat teljesítményével kapcsolatos problémák időbeni észlelését és leszűkíti a hiba forrásának helyszínét egy hálózati szegmensre vagy eszközre. 
+A Hálózati teljesítményfigyelő észleli az olyan hálózati problémákat, mint a forgalom blackholing, útválasztási hibák és a hagyományos hálózati figyelési módszerek által nem észlelt problémák. A megoldás riasztásokat készít, és értesíti, amikor egy hálózati kapcsolat meghaladja a küszöbértéket. Emellett biztosítja a hálózat teljesítményével kapcsolatos problémák időbeni észlelését és leszűkíti a hiba forrásának helyszínét egy hálózati szegmensre vagy eszközre. 
 
-További információ a [Network Performance monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) által támogatott különböző képességekről online érhető el.
+A [Hálózati teljesítményfigyelő](https://docs.microsoft.com/azure/networking/network-monitoring-overview) által támogatott különböző funkciókról további információ érhető el az interneten.
 
 ## <a name="set-up-and-configure-agents"></a>Ügynökök beállítása és konfigurálása
 
-### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>Milyen platformokra vonatkozó követelmények vonatkoznak a NPM figyeléséhez használt csomópontokra?
-Az alábbiakban az NPM különböző képességeire vonatkozó platformokra vonatkozó követelmények láthatók:
+### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>Milyen platformkövetelmények vonatkoznak az NPM általfigyelandó csomópontokra?
+Az alábbiakban felsoroljuk az NPM különböző képességeinek platformkövetelményeit:
 
-- A NPM Teljesítményfigyelő és szolgáltatás-csatlakozási figyelő képességei a Windows Servert és a Windows asztali számítógépeket, illetve az ügyfél operációs rendszereit is támogatják. A Windows Server operációs rendszer támogatott verziói a 2008 SP1 vagy újabb verzió. A Windows rendszerű asztali számítógépek/ügyfél-verziók a következők: Windows 10, Windows 8,1, Windows 8 és Windows 7. 
-- A NPM ExpressRoute-figyelő funkciója csak a Windows Server (2008 SP1 vagy újabb) operációs rendszert támogatja.
+- Az NPM Teljesítményfigyelő és szolgáltatáskapcsolat-figyelő képességei a Windows server és a Windows asztali/ügyféloperációs rendszereket egyaránt támogatják. A Windows server operációs rendszer támogatott verziói a 2008 SP1 vagy újabb verziók. A támogatott Windows asztali/ügyfélverziók a Következők: Windows 10, Windows 8.1, Windows 8 és Windows 7. 
+- Az NPM ExpressRoute-figyelő funkciója csak a Windows server (2008 SP1 vagy újabb) operációs rendszert támogatja.
 
-### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Használhatok Linux rendszerű gépeket figyelési csomópontként a NPM-ben?
-A Linux-alapú csomópontokat használó hálózatok figyelésének lehetősége jelenleg előzetes verzióban érhető el. Forduljon a fiók kezelőjéhez, és tudjon meg többet. A Linux-ügynökök csak a NPM számára biztosítanak figyelési képességet, és nem érhetők el a szolgáltatás-kapcsolódási figyelőhöz és a ExpressRoute figyelési képességeihez
+### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Használhatom a Linux-gépeket figyelési csomópontként az NPM-ben?
+A Linux-alapú csomópontok használatával a hálózatok figyelésének képessége jelenleg előzetes verzióban érhető el. További tudnivalókért fordulj on-a Account Manager hez. A Linux-ügynökök csak az NPM Teljesítményfigyelő képességéhez biztosítanak figyelési képességet, és nem érhetők el a Szolgáltatáskapcsolat-figyelő és az ExpressRoute-figyelő képességeihez
 
-### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Mik a NPM által a figyeléshez használt csomópontok méretére vonatkozó követelmények?
-Ahhoz, hogy a NPM megoldás a csomópontokon futó virtuális gépeken a hálózatok figyelésére fusson, a csomópontoknak legalább 500 MB memóriával és egy mag kell rendelkezniük. Nem kell külön csomópontokat használnia a NPM futtatásához. A megoldás olyan csomópontokon is futhat, amelyeken más munkaterhelések futnak. A megoldás képes a figyelési folyamat leállítására, ha az több mint 5%-os CPU-t használ.
+### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Milyen méretkövetelmények vonatkoznak az NPM általfigyelandó csomópontokra?
+Az NPM-megoldás csomópontokon futó virtuális gépeken a hálózatok figyeléséhez a csomópontoknak legalább 500 MB memóriával és egy maggal kell rendelkezniük. Az NPM futtatásához nem kell külön csomópontokat használnia. A megoldás futtatható csomópontokon, amelyek más számítási feladatok futnak rajta. A megoldás képes leállítani a figyelési folyamatot, ha több mint 5% CPU-t használ.
 
-### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>A NPM használatához csatlakoztatni kell a saját csomópontokat közvetlen ügynökként vagy System Center Operations Manageron keresztül?
-A Teljesítményfigyelő és a szolgáltatás-csatlakozási figyelő funkciói támogatják a [közvetlen ügynökként csatlakoztatott](../../azure-monitor/platform/agent-windows.md) csomópontokat, és [Operations Manageron keresztül csatlakoznak](../../azure-monitor/platform/om-agents.md).
+### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Az NPM használatához közvetlen ügynökként vagy a System Center Operations Manager en keresztül csatlakoztassam a csomópontjaimat?
+Mind a Teljesítményfigyelő, mind a Szolgáltatáskapcsolat-figyelő képességei támogatják a [közvetlen ügynökként összekapcsolt](../../azure-monitor/platform/agent-windows.md) és az [Operations Manager en keresztül csatlakoztatott csomópontokat.](../../azure-monitor/platform/om-agents.md)
 
-Az ExpressRoute-figyelési funkció esetében az Azure-csomópontokat csak közvetlen ügynökként kell csatlakoztatni. Az Operations Manageron keresztül csatlakoztatott Azure-csomópontok nem támogatottak. A helyszíni csomópontok esetében a közvetlen ügynökként és Operations Manager-n keresztül csatlakozó csomópontok ExpressRoute-áramkör figyelésére is használhatók.
+ExpressRoute-figyelő képesség esetén az Azure-csomópontokcsak közvetlen ügynökként kell csatlakozniuk. Az Operations Manager en keresztül csatlakoztatott Azure-csomópontok nem támogatottak. A helyszíni csomópontok esetében a közvetlen ügynökként és az Operations Manageren keresztül csatlakoztatott csomópontok támogatják az ExpressRoute-kapcsolat figyelését.
 
-### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Melyik protokollt kell választani a TCP és az ICMP között a figyeléshez?
-Ha Windows Server-alapú csomópontokkal figyeli a hálózatot, javasoljuk, hogy a TCP protokollt használja figyelési protokollként, mivel ez nagyobb pontosságot biztosít. 
+### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Melyik protokollt kell kiválasztani a TCP és az ICMP között a monitorozáshoz?
+Ha a hálózatot Windows kiszolgálóalapú csomópontokkal figyeli, javasoljuk, hogy a TCP protokollt használja figyelési protokollként, mivel az nagyobb pontosságot biztosít. 
 
-Az ICMP használata a Windows rendszerű asztali számítógépekhez és az ügyfél operációs rendszer alapú csomópontjaihoz ajánlott. Ez a platform nem teszi lehetővé, hogy a TCP-adat a nyers szoftvercsatornán legyen elküldve, amelyet a NPM a hálózati topológia felderítésére használ.
+Az ICMP használata Windows asztali/ügyféloperációs rendszeralapú csomópontokhoz ajánlott. Ez a platform nem teszi lehetővé a TCP-adatok nyers szoftvercsatornákon keresztüli küldését, amelyet az NPM a hálózati topológia felderítésére használ.
 
-Az egyes protokollok relatív előnyeiről [itt](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol)talál további információt.
+További részleteket az egyes protokollok relatív előnyeiről [itt kaphat.](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol)
 
-### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Hogyan állíthatok be egy csomópontot a figyelés támogatásához a TCP protokoll használatával?
-Ahhoz, hogy a csomópont támogassa a figyelést a TCP protokoll használatával: 
+### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Hogyan konfigurálhatok egy csomópontot a TCP protokoll használatával történő figyelés támogatására?
+A csomópont számára a TCP protokoll használatával történő figyelés támogatása: 
 * Győződjön meg arról, hogy a csomópont platformja Windows Server (2008 SP1 vagy újabb).
-* Futtassa a [EnableRules. ps1](https://aka.ms/npmpowershellscript) PowerShell-szkriptet a csomóponton. További részletekért tekintse meg az [utasításokat](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) .
+* Futtassa [az EnableRules.ps1](https://aka.ms/npmpowershellscript) Powershell parancsfájlt a csomóponton. További részleteket az [utasításokban](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) talál.
 
 
-### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Hogyan változtathatom meg a NPM által használt TCP-portot a figyeléshez?
-A NPM által a figyeléshez használt TCP-portot a [EnableRules. ps1](https://aka.ms/npmpowershellscript) parancsfájl futtatásával módosíthatja. Meg kell adnia a paraméterként használni kívánt portszámot. Ha például engedélyezni szeretné a TCP-t a 8060-as porton, futtassa `EnableRules.ps1 8060`. Győződjön meg arról, hogy ugyanazt a TCP-portot használja a figyeléshez használt összes csomóponton.
+### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Hogyan módosíthatom az NPM által a figyeléshez használt TCP-portot?
+Az [EnableRules.ps1](https://aka.ms/npmpowershellscript) parancsfájl futtatásával módosíthatja az NPM által a figyeléshez használt TCP-portot. Meg kell adnia a paraméterként használni kívánt portszámot. Ha például engedélyezni szeretné a TCP protokollt a 8060-as porton, futtassa a futtassa a futtassa a t. `EnableRules.ps1 8060` Győződjön meg arról, hogy ugyanazt a TCP-portot használja a figyeléshez használt összes csomóponton.
 
-A parancsfájl csak a Windows tűzfalat konfigurálja helyileg. Ha a hálózati tűzfal vagy a hálózati biztonsági csoport (NSG) szabályai vannak, győződjön meg arról, hogy engedélyezik a NPM által használt TCP-portra irányuló forgalmat.
+A parancsfájl csak a Windows tűzfalat konfigurálja helyileg. Ha hálózati tűzfal- vagy hálózati biztonsági csoportra (NSG) vonatkozó szabályokkal rendelkezik, győződjön meg arról, hogy engedélyezik az NPM által használt TCP-portra szánt forgalmat.
 
-### <a name="how-many-agents-should-i-use"></a>Hány ügynököt használok?
+### <a name="how-many-agents-should-i-use"></a>Hány ügynököt használjak?
 Minden figyelni kívánt alhálózathoz legalább egy ügynököt kell használnia.
 
-### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Legfeljebb hány ügynököt használhatok, vagy hibaüzenetet látok. elérte a konfigurációs korlátot?
-A NPM az IP-címek számát 5000 IP-címekre korlátozza munkaterületen. Ha egy csomópont IPv4-és IPv6-címeket is tartalmaz, akkor ez a csomópont 2 IP-címének számít. Ezért a 5000 IP-cím korlátja határozza meg az ügynökök számának felső határát. A NPM > csomópontok lapján törölheti az inaktív ügynököket, > a konfigurálást. A NPM az összes olyan IP-cím előzményeit is fenntartja, amely az ügynököt futtató virtuális géphez lett társítva, és mindegyik külön IP-címmel van elfoglalva, amely a felső határ 5000 IP-címeihez járul hozzá. A munkaterülethez tartozó IP-címek felszabadításához használhatja a csomópontok lapot a nem használt IP-címek törléséhez.
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Mi a maximális számú ügynökök tudom használni, vagy látom hiba ".... elérte a konfigurációs korlátot"?
+Az NPM munkaterületenként 5000 IP-re korlátozza az IP-k számát. Ha egy csomópont iPv4- és IPv6-címekkel is rendelkezik, ez az adott csomópont 2 IP-címének számít. Ezért ez az 5000 IP-re vonatkozó korlát határozná meg az ügynökök számára vonatkozó felső határt. Az Inaktív ügynökök törölhetők az NPM >> Konfigurálás csoportjának Csomópontjai lapjáról. Az NPM az ügynöket üzemeltető virtuális géphez valaha is hozzárendelt ip-címeket is megőrzi, és mindegyik külön IP-címnek számít, amely hozzájárul az 5000 IP-cím felső határához. A munkaterület IP-szolgáltatóinak felszabadításához a Csomópontok lapon törölheti a nem használt IP-ket.
 
 ## <a name="monitoring"></a>Figyelés
 
-### <a name="how-are-loss-and-latency-calculated"></a>A veszteségek és a késések kiszámítása
-A forrásoldali ügynökök TCP SYN-kérelmeket küldenek (ha a TCP protokoll figyelésre van kiválasztva) vagy ICMP ECHO-kéréseket (ha az ICMP protokoll figyelésre van kiválasztva) a cél IP-címhez rendszeres időközönként, így biztosítva a forrás-cél IP-cím közötti összes elérési utat. a kombinációt a rendszer fedezi. Az egyes elérési utak elvesztésének és késésének kiszámításához a fogadott csomagok százalékos arányát és az oda-és bejárási időt kell mérni. Ezeket az adatokat a lekérdezési időköz és az összes elérési út alapján összesíti a rendszer az adott lekérdezési időközhöz tartozó IP-kombinációhoz tartozó veszteségek és késések összesített értékeinek beszerzéséhez.
+### <a name="how-are-loss-and-latency-calculated"></a>Hogyan számítják ki a veszteséget és a késést?
+A forrásügynökök vagy TCP SYN-kérelmeket (ha a TCP-t választják a figyelési protokollként) vagy ICMP ECHO-kérelmeket (ha az ICMP-t választják a figyelésprotokollként) rendszeres időközönként küldik a cél IP-címnek annak biztosítása érdekében, hogy a forrás-cél IP-cím közötti összes elérési út kombináció takarja. A fogadott csomagok és a csomag-oda-vissza utazási idő százalékos arányát mérik az egyes útvonalak veszteségének és késésének kiszámításához. Ezeket az adatokat a lekérdezési időköz és az összes elérési út összesített értékek lekéri az IP-kombináció az adott lekérdezési időköz.
 
-### <a name="with-what-frequency-does-the-source-agent-send-packets-to-the-destination-for-monitoring"></a>Milyen gyakorisággal küldi el a forrás ügynök a csomagokat a figyelés céljára?
-A Teljesítményfigyelő és a ExpressRoute figyelési képességei esetében a forrás 5 másodpercenként küld csomagokat, és rögzíti a hálózati méréseket. Ezeket az adatokat 3 perces lekérdezési intervallumban összesítjük a veszteségek és a késések átlagos és maximális értékeinek kiszámításához. A szolgáltatás-kapcsolódási figyelő képességhez a csomagok hálózati mérésre való küldésének gyakoriságát a felhasználó által az adott teszthez megadott gyakoriság határozza meg a teszt konfigurálása során.
+### <a name="with-what-frequency-does-the-source-agent-send-packets-to-the-destination-for-monitoring"></a>Milyen gyakorisággal küld a forrásügynök csomagokat a célhelyre figyelésre?
+A Teljesítményfigyelő és az ExpressRoute-figyelő képességeinek a forrás 5 másodpercenként küldi a csomagokat, és rögzíti a hálózati méréseket. Ezeket az adatokat egy 3 perces lekérdezési időközön keresztül összesíti a veszteség és a késés átlagos és csúcsértékeinek kiszámításához. A Szolgáltatáskapcsolat-figyelő képesség esetében a csomagok hálózati mérésre való küldésének gyakoriságát a felhasználó által az adott teszthez a teszt konfigurálása során megadott gyakoriság határozza meg.
 
-### <a name="how-many-packets-are-sent-for-monitoring"></a>Hány csomagot küld a rendszer a figyeléshez?
-A forrás-ügynök által a lekérdezésben a célhelyre küldött csomagok száma adaptív, és a tulajdonosi algoritmus határozza meg, amely különböző hálózati topológiák esetében eltérő lehet. A forrás – cél IP-kombináció közötti hálózati elérési utak száma több, mint a küldött csomagok száma. A rendszer biztosítja, hogy a forrás – cél IP-kombináció közötti összes útvonal le legyen fedve.
+### <a name="how-many-packets-are-sent-for-monitoring"></a>Hány csomagot küld a rendszer figyelésre?
+A forrásügynök által a céllekérdezésbe küldött csomagok száma adaptív, és a saját algoritmusunk határozza meg, amely különböző lehet a különböző hálózati topológiák esetében. A forrás-cél IP-kombináció közötti hálózati útvonalak száma több az elküldött csomagok száma. A rendszer biztosítja, hogy a forrás-cél IP-kombináció közötti összes elérési utat lefedje a rendszer.
 
-### <a name="how-does-npm-discover-network-topology-between-source-and-destination"></a>Hogyan észleli a NPM a hálózati topológiát a forrás és a cél között?
-A NPM a traceroute alapján szabadalmaztatott algoritmust használ a forrás és a cél közötti összes útvonal és ugrás felderítésére.
+### <a name="how-does-npm-discover-network-topology-between-source-and-destination"></a>Hogyan deríti fel az NPM a hálózati topológiát a forrás és a cél között?
+Az NPM a Traceroute-on alapuló saját algoritmust használ a forrás és a cél közötti összes útvonal és ugrás felderítésére.
 
-### <a name="does-npm-provide-routing-and-switching-level-info"></a>A NPM biztosítja az útválasztási és a váltási szintű adatokat 
-Bár a NPM képes észlelni az összes lehetséges útvonalat a forrás-ügynök és a cél között, nem biztosítja, hogy az adott munkaterhelések által küldött csomagok milyen útvonalat hoztak létre. A megoldás segítségével azonosíthatja az elérési utakat és a mögöttes hálózati ugrásokat, amelyek a vártnál több késést adnak hozzá.
+### <a name="does-npm-provide-routing-and-switching-level-info"></a>Az NPM biztosítja az útválasztási és kapcsolási szint adatait 
+Bár az NPM képes észlelni a forrásügynök és a cél közötti összes lehetséges útvonalat, nem biztosít betekintést abba, hogy az adott számítási feladatok által küldött csomagok melyik útvonalat vitték. A megoldás segítségével azonosíthatja az elérési utakat és az alapul szolgáló hálózati ugrásokat, amelyek a vártnál több késést adnak hozzá.
 
-### <a name="why-are-some-of-the-paths-unhealthy"></a>Miért nem megfelelő az elérési utak némelyike?
-Különböző hálózati elérési utak létezhetnek a forrás és a cél IP-címei között, és minden elérési út eltérő lehet a veszteségek és a késések értékével. A NPM a nem kifogástalan állapotú (piros színnel jelölt) elérési utakat jelzi, hogy a veszteségek és/vagy késések értéke nagyobb legyen, mint a figyelési konfigurációban beállított megfelelő küszöbérték.
+### <a name="why-are-some-of-the-paths-unhealthy"></a>Miért nem megfelelőek az elérési utak?
+A forrás- és a célIP-ek között különböző hálózati elérési utak létezhetnek, és minden elérési út nak eltérő veszteség- és késésértéke lehet. Az NPM azokat az elérési utakat nem kifogástalanállapotúként jelöli meg (piros színnel jelölve), amelyek nél a veszteség és/vagy késés értéke nagyobb, mint a figyelési konfigurációban beállított küszöbérték.
 
-### <a name="what-does-a-hop-in-red-color-signify-in-the-network-topology-map"></a>Mit jelent a piros színű Ugrás a hálózati topológia térképen?
-Ha egy ugrás vörös színű, azt jelenti, hogy az egy nem megfelelő állapotú elérési út része. A NPM csak a nem kifogástalan állapotú elérési utakat jelöli meg, nem különíti el az egyes elérési utak állapotát. A zavaró ugrások azonosításához megtekintheti az ugrások közötti késést, és elkülönítheti azokat, amelyek a vártnál több időt vesznek igénybe.
+### <a name="what-does-a-hop-in-red-color-signify-in-the-network-topology-map"></a>Mit jelent a piros színű ugrás a hálózati topológia térképen?
+Ha egy ugrás piros, azt jelzi, hogy legalább egy nem megfelelő elérési út része. Az NPM csak az elérési utakat jelöli meg nem kifogástalanállapotúként, nem különíti el az egyes útvonalak állapotát. A problémás ugrások azonosításához megtekintheti az ugrásról ugrásra ugrásra késést, és elkülönítheti a vártnál több késést hozzáadó késést.
 
-### <a name="how-does-fault-localization-in-performance-monitor-work"></a>Hogyan működik a teljesítményproblémák lokalizálása a Teljesítményfigyelőben?
-A NPM egy valószínűségi mechanizmust használ a meghibásodási valószínűségek az egyes hálózati elérési utakhoz, hálózati szegmensekhez és az összetevők hálózati ugrásokhoz való hozzárendeléséhez azon nem kifogástalan elérési utak száma alapján, amelyek részét képezik. Mivel a hálózati szegmensek és a komló több nem megfelelő állapotú elérési út részévé válik, a hozzájuk tartozó hibák valószínűsége növekszik. Ez az algoritmus akkor működik a legjobban, ha sok olyan csomóponttal rendelkezik, amelynek NPM-ügynöke csatlakozik egymáshoz, mivel ez növeli az adatpontokat a hiba valószínűségének kiszámításához.
+### <a name="how-does-fault-localization-in-performance-monitor-work"></a>Hogyan működik a hibahovanodás a Teljesítményfigyelőben?
+Az NPM valószínűségi mechanizmust használ a hibavalószínűségek hozzárendelésére minden egyes hálózati útvonalhoz, hálózati szegmenshez és az összetevők hálózati ugrásaihoz a nem megfelelő állapotú elérési utak száma alapján. Ahogy a hálózati szegmensek és ugrások egyre több nem megfelelő elérési út részévé válnak, a hozzájuk társított hibavalószínűség nő. Ez az algoritmus akkor működik a legjobban, ha sok csomópont van, amelyekhez az NPM-ügynök csatlakozik egymáshoz, mivel ez növeli a hibavalószínűségek kiszámításához szükséges adatpontokat.
 
-### <a name="how-can-i-create-alerts-in-npm"></a>Hogyan hozhatok létre riasztásokat a NPM-ben?
-Részletes útmutatásért tekintse meg [a riasztások című szakaszt a dokumentációban](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts) .
+### <a name="how-can-i-create-alerts-in-npm"></a>Hogyan hozhatok létre riasztásokat az NPM-ben?
+A [részletes útmutatást a dokumentáció figyelmeztetésekkel kapcsolatos szakaszában](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts) találja.
 
-### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>A riasztások alapértelmezett Log Analytics lekérdezései
-Teljesítményfigyelő lekérdezése
+### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Melyek a riasztások alapértelmezett Log Analytics-lekérdezései
+Teljesítményfigyelő lekérdezés
 
     NetworkMonitoring 
      | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
      | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
     
-Szolgáltatás-kapcsolódási figyelő lekérdezése
+Szolgáltatáskapcsolat figyelőlekérdezése
 
     NetworkMonitoring                 
      | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
      | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
     
-ExpressRoute-figyelő lekérdezések: áramkörök lekérdezése
+ExpressRoute-figyelő lekérdezései: Áramkörök lekérdezés
 
     NetworkMonitoring
     | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
@@ -133,144 +133,144 @@ Gyakori lekérdezés
     | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") 
 
-### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>Az útválasztók és a kiszolgálók önálló eszközökként is NPM?
-A NPM csak az alapul szolgáló hálózati ugrások (kapcsolók, útválasztók, kiszolgálók stb.) IP-címét és állomásnevét azonosítja a forrás és a cél IP-címei között. Emellett meghatározza az azonosított ugrások közötti késést is. Nem figyeli külön a mögöttes ugrásokat.
+### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>Az NPM figyelheti az útválasztókat és a kiszolgálókat egyedi eszközként?
+Az NPM csak az alapul szolgáló hálózati ugrások (kapcsolók, útválasztók, kiszolgálók stb.) IP- és állomásnevét azonosítja a forrás- és célIP-cím között. Azt is azonosítja a késés között azonosított ugrások. Nem egyénileg figyeli ezeket az alapul szolgáló ugrásokat.
 
-### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Használható NPM az Azure és az AWS közötti hálózati kapcsolat figyelésére?
-Igen. A részletekért tekintse meg az [Azure, az AWS és a helyszíni hálózatok figyelése a NPM használatával című](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/) cikket.
+### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Használható az NPM az Azure és az AWS közötti hálózati kapcsolat figyelésére?
+Igen. A részleteket az Azure, az [AWS és a helyszíni hálózatok npm használatával című](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/) cikkben olvashat.
 
-### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>A ExpressRoute sávszélesség-használat bejövő vagy kimenő?
-A sávszélesség-használat a bejövő és a kimenő sávszélesség teljes száma. Ez a bit/mp értékben van kifejezve.
+### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>Bejövő vagy kimenő az ExpressRoute sávszélesség-használat?
+A sávszélesség-használat a bejövő és kimenő sávszélesség összege. Bit/mp-ben van kifejezve.
 
-### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>Lekérhetjük a bejövő és kimenő sávszélességre vonatkozó információkat a ExpressRoute?
-Az elsődleges és a másodlagos sávszélesség bejövő és kimenő értékeit is rögzítheti.
+### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>Kaphatunk bejövő és kimenő sávszélesség-információkat az ExpressRoute-hoz?
+Az elsődleges és a másodlagos sávszélesség bejövő és kimenő értékei rögzíthetők.
 
-MS-társi szintű információk esetében használja az alábbi lekérdezést a naplóbeli keresésben
+Az MS társviszony-létesítési szintre vonatkozó információkhoz használja az alábbi lekérdezést a Naplókeresés ben
 
     NetworkMonitoring 
      | where SubType == "ERMSPeeringUtilization"
      | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
     
-A privát peering szintű információkhoz használja az alábbi lekérdezést a naplóbeli keresésben
+A privát társviszony-létesítési szinttel kapcsolatos információkhoz használja az alábbi lekérdezést a Naplókeresés ben
 
     NetworkMonitoring 
      | where SubType == "ERVNetConnectionUtilization"
      | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
   
-Az áramköri szintű információk esetében használja az alábbi lekérdezést a naplóbeli keresésben
+Az áramköri szintű információkért használja az alábbi lekérdezést a Naplókeresés ben
 
     NetworkMonitoring 
         | where SubType == "ERCircuitTotalUtilization"
         | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
 
-### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Mely régiók támogatottak a NPM teljesítményének monitorozásához?
-A NPM a világ bármely részén lévő hálózatok közötti kapcsolat figyelésére a [támogatott régiók](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) egyikében üzemeltetett munkaterületről
+### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Mely régiók támogatottak az NPM teljesítményfigyelője számára?
+Az NPM a világ bármely részén, a [támogatott régiók](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) egyikében üzemeltetett munkaterületről képes figyelni a hálózatok közötti kapcsolatot
 
-### <a name="which-regions-are-supported-for-npms-service-connectivity-monitor"></a>Mely régiók támogatottak a NPM szolgáltatás kapcsolódási figyelője számára?
-A NPM a világ bármely részén a szolgáltatásokhoz való kapcsolódást a [támogatott régiók](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) egyikében üzemeltetett munkaterületről tudja figyelni.
+### <a name="which-regions-are-supported-for-npms-service-connectivity-monitor"></a>Mely régiók támogatottak az NPM szolgáltatáskapcsolat-figyelőjében?
+Az NPM a világ bármely részén, a [támogatott régiók](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) egyikében üzemeltetett munkaterületről figyelheti a szolgáltatásokkal való kapcsolatot
 
-### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Mely régiók támogatottak a NPM ExpressRoute-figyelője számára?
-A NPM bármely Azure-régióban található ExpressRoute-áramköröket nyomon követheti. A NPM való bevezetéshez Log Analytics munkaterületre lesz szükség, amelyet a [támogatott régiók](/azure/expressroute/how-to-npm) egyikében kell üzemeltetni.
+### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Mely régiók támogatottak az NPM ExpressRoute-figyelőjében?
+Az NPM figyelheti az ExpressRoute-áramkörökbármely Azure-régióban található. Az NPM-hez való alaplaphoz olyan Log Analytics-munkaterületre van szükség, amelyet a támogatott régiók egyikében kell [üzemeltetni.](/azure/expressroute/how-to-npm)
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Miért nem azonosított ugrások vannak megjelölve a hálózati topológia nézetben?
-A NPM a traceroute módosított verzióját használja a forrás ügynök és a cél közötti topológia felderítésére. Az azonosítatlan ugrás azt jelenti, hogy a hálózati ugrás nem válaszolt a forrásoldali ügynök traceroute-kérelmére. Ha három egymást követő hálózati ugrás nem válaszol az ügynök traceroute-re, a megoldás megjelöli a nem válaszoló ugrásokat azonosítatlan, és nem próbál további ugrásokat felderíteni.
+### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Miért van néhány ugrás azonosítatlanként megjelölve a hálózati topológia nézetben?
+Az NPM a traceroute módosított verzióját használja a topológia felderítéséhez a forrásügynöktől a célig. Egy azonosítatlan ugrás azt jelzi, hogy a hálózati ugrás nem válaszolt a forrásügynök traceroute-kérelmére. Ha három egymást követő hálózati ugrás nem válaszol az ügynök nyomkövetési útvonalára, a megoldás azonosítatlanként jelöli meg a nem válaszoló ugrásokat, és nem próbál meg több ugrást észlelni.
 
-Előfordulhat, hogy egy ugrás az alábbi forgatókönyvek közül egy vagy több esetében nem válaszol a traceroute-re:
+Előfordulhat, hogy egy ugrás nem válaszol egy nyomkövetési útvonalra az alábbi esetek közül egy vagy több esetén:
 
-* Az útválasztók úgy lettek konfigurálva, hogy ne tárják fel identitásukat.
+* Az útválasztók úgy vannak beállítva, hogy ne fedjék fel identitásukat.
 * A hálózati eszközök nem engedélyezik ICMP_TTL_EXCEEDED forgalmat.
-* A tűzfal blokkolja a ICMP_TTL_EXCEEDED választ a hálózati eszközről.
+* A tűzfal blokkolja a hálózati eszköz ICMP_TTL_EXCEEDED válaszát.
 
-Ha a végpontok egyike az Azure-ban található, a traceroute azonosítatlan ugrásokat jelenít meg, mivel az Azure-infrastruktúra nem fedi fel az identitást a traceroute számára. 
+Ha a végpontok bármelyike az Azure-ban található, traceroute azonosítatlan ugrásokat jelenít meg, mivel az Azure Infrastructure nem fedi fel a traceroute identitását. 
 
-### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Riasztásokat kapok a nem kifogástalan állapotú tesztekhez, de nem látok magas értékeket a NPM elvesztése és késési gráfjában. Hogyan a nem megfelelő állapotú elemek ellenőrzését?
-A NPM riasztást küld, ha a forrás és a cél között a végpontok közötti késés a közöttük lévő bármely útvonal küszöbértékét keresztezi. Egyes hálózatok több elérési úttal rendelkeznek, amelyek ugyanahhoz a forráshoz és célhoz kapcsolódnak. A NPM egy riasztást vált ki, a sérült elérési út nem megfelelő. A gráfokban látható veszteség és késés az összes útvonal átlagos értéke, ezért előfordulhat, hogy nem jeleníti meg egyetlen útvonal pontos értékét. Annak megismeréséhez, hogy a küszöbérték hogyan lett megszegve, keresse meg a riasztás "altípus" oszlopát. Ha a problémát egy elérési út okozta, az altípus értéke NetworkPath lesz (a Teljesítményfigyelő tesztek esetében), a EndpointPath (a Service connectivity monitor tesztek esetében) és a ExpressRoutePath (ExpressRotue-figyelő tesztek esetében). 
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Riasztást kapok a nem megfelelő állapotú tesztekhez, de nem látom a magas értékeket az NPM veszteség- és késleltetési grafikonjában. Hogyan ellenőrizhetem, hogy mi nem megfelelő?
+Az NPM riasztást küld, ha a forrás és a cél közötti végpontok közötti késés átlépi a köztük lévő útvonalak küszöbértékét. Egyes hálózatok több útvonala is kapcsolódik ugyanahhoz a forráshoz és célhoz. Az NPM riasztást küld, amely szerint minden elérési út nem kifogástalan. A grafikonokon látható veszteség és késés az összes útvonal átlagos értéke, ezért előfordulhat, hogy nem mutatja egyetlen görbe pontos értékét. Ha meg szeretné tudni, hogy hol törta meg a küszöbértéket, keresse meg a riasztás "SubType" oszlopát. Ha a problémát egy elérési út okozza, a SubType érték a NetworkPath (teljesítményfigyelő tesztekhez), az EndpointPath (a Szolgáltatáskapcsolat-figyelő tesztekhez) és az ExpressRoutePath (ExpressRotue figyelőtesztekhez). 
 
-A keresendő lekérdezési útvonal sérült:
+A megkeresni kívánt mintalekérdezés elérési útja nem kifogástalan:
 
     NetworkMonitoring 
     | where ( SubType == "ExpressRoutePath")
     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and          CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
     | project SubType, LossHealthState, LatencyHealthState, MedianLatency 
 
-### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>Miért jelenik meg a teszt állapota, de a topológia nem 
-A NPM különböző időközönként figyeli a végpontok közötti adatvesztést, a késést és a topológiát. A veszteséget és a késést 5 másodpercenként, és három percenként összesítjük (a Teljesítményfigyelő és az Express Route monitor esetében), míg a topológia kiszámítása 10 percenként egyszer a traceroute használatával történik. Például 3:44 és 4:04 között a topológia háromszor frissíthető (3:44, 3:54, 4:04), a veszteséget és a késést azonban hét alkalommal frissítik (3:44, 3:47, 3:50, 3:53, 3:56, 3:59, 4:02). A 3:54-at generált topológia a 3:56, 3:59 és 4:02 értéknél kiszámított veszteséget és késést fogja megjeleníteni. Tegyük fel, hogy riasztást kap arról, hogy az ER-áramkör állapota 3:59. Jelentkezzen be a NPM-be, és próbálja meg beállítani a topológiai időt 3:59-re. A NPM a 3:54-kor generált topológiát fogja megjeleníteni. A hálózat utolsó ismert topológiájának megismeréséhez hasonlítsa össze a TimeProcessed (a veszteségek és a késések kiszámításának időpontját) és a TracerouteCompletedTime (a topológia kiszámításának időpontját). 
+### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>Miért nem kifogástalan a tesztem, de a topológia nem 
+Az NPM különböző időközönként figyeli a végpontok közötti veszteséget, késést és topológiát. A veszteséget és a késést 5 másodpercenként egyszer mérik, és hárompercenként összesítik (a Teljesítményfigyelő és az Expressz útvonal-figyelő esetében), míg a topológiát a traceroute 10 percenként egyszer történő kiszámítása korként számítja ki. Például 3:44 és 4:04 között a topológia háromszor frissíthető (3:44, 3:54, 4:04), de a veszteség és a késés körülbelül hétalkalommal frissül (3:44, 3:47, 3:50, 3:53, 3:56, 3:59, 4:02). A 3:54-kor létrehozott topológia a 3:56, 3:59 és 4:02-kor kiszámított veszteség és késés miatt jelenik meg. Tegyük fel, hogy riasztást kap arról, hogy az ER-áramkör 3:59-kor nem kifogástalan állapotú. Jelentkezzen be az NPM-be, és próbálja meg a topológia idejét 3:59-re állítani. Az NPM 3:54-kor hozza létre a topológiát. A hálózat utolsó ismert topológiájának megértéséhez hasonlítsa össze az Időfeldolgozott mezőket (a veszteség és a késés kiszámításának időpontjában) és a TracerouteCompletedTime(a topológia számításának időpontja). 
 
-### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>Mi a különbség a NetworkMonitoring tábla E2EMedianLatency és AvgHopLatencyList mezői között
-A E2EMedianLatency a TCP ping tesztek eredményeinek összesítése után 3 percenként frissülő késés, míg a AvgHopLatencyList a traceroute alapján 10 percenként frissül. A E2EMedianLatency kiszámításának pontos időpontjának megismeréséhez használja a TimeProcessed mezőt. Ha szeretné megismerni, hogy a traceroute hogyan fejeződött be és frissítették a AvgHopLatencyList, használja a TracerouteCompletedTime mezőt
+### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>Mi a különbség az E2EMedianLatency és az AvgHopLatencyList mezők között a NetworkMonitoring táblában?
+Az E2EMedianLatency a tcp ping tesztek eredményeinek összesítése után hárompercenként frissített késés, míg az AvgHopLatencyList 10 percenként frissül a traceroute alapján. Az E2EMedianLatency kiszámításának pontos időpontjának megértéséhez használja a TimeProcessed mezőt. A traceroute befejezésének és frissítésének pontos időpontjához használja a TracerouteCompletedTime mezőt.
 
-### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Miért különböznek a HopLatencyValues a hop-by-hop késési számoktól 
-A HopLatencyValues forrása a végpont.
-Például: ugrások – A, B, C. AvgHopLatency-10, 15, 20. Ez azt jelenti, hogy A forrás a késés = 10, a forrás – B késés = 15, a forrás – C késés pedig 20. A felhasználói felület a-B ugrások késését 5-ként számítja ki a topológiában.
+### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Miért különböznek az ugrásról ugrásra leskelődési számok a HopLatencyValues értékektől? 
+A HopLatencyValues a végpont forrása.
+Például: Ugrások - A,B, C. AvgHopLatency - 10,15,20. Ez azt jelenti, forrás A késés = 10, forrás B késés = 15 és a forrás a C késés 20. A felhasználói felület kiszámítja az A-B ugrás késleltetést 5-tel a topológiában
 
-### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>A megoldás 100%-os csökkenést mutat, de kapcsolat van a forrás és a cél között.
-Ez akkor fordulhat elő, ha a gazdagép tűzfala vagy a köztes tűzfal (hálózati tűzfal vagy Azure NSG) blokkolja a forrás-ügynök és a cél közötti kommunikációt a NPM figyeléséhez használt porton keresztül (alapértelmezés szerint a port 8084, kivéve, ha a az ügyfél megváltoztatta ezt).
+### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>A megoldás 100%-os veszteséget mutat, de van kapcsolat a forrás és a cél között
+Ez akkor fordulhat elő, ha a gazdatűzfal vagy a köztes tűzfal (hálózati tűzfal vagy Az Azure NSG) blokkolja a forrásügynök és az NPM által figyelésre használt porton keresztüli cél közötti kommunikációt (alapértelmezés szerint a port 8084, kivéve, ha a port ügyfél megváltoztatta ezt).
 
-* Annak ellenőrzéséhez, hogy a gazdagép tűzfala nem blokkolja-e a kommunikációt a szükséges porton, tekintse meg a forrás és a cél csomópontok állapotát a következő nézetből: Network Performance Monitor-> Configuration-> csomópontok. 
-  Ha nem kifogástalan állapotú, tekintse meg az utasításokat, és végezze el a megfelelő lépéseket. Ha a csomópontok állapota Kifogástalan, lépjen a b lépésre. az alábbiakban.
-* Annak ellenőrzéséhez, hogy a közbenső hálózati tűzfal vagy az Azure NSG nem blokkolja-e a szükséges porton keresztüli kommunikációt, használja a külső gyártótól származó PsPing segédprogramot az alábbi utasítások használatával:
-  * a psping segédprogram letölthető [innen](https://technet.microsoft.com/sysinternals/psping.aspx) 
-  * Futtassa a következő parancsot a forrás csomópontról.
-    * psping-n 15 \<cél csomópontjának IP-címe\>:p ortNumber alapértelmezett NPM 8084 portot használ. Ha ezt explicit módon módosította a EnableRules. ps1 parancsfájllal, adja meg az Ön által használt egyéni portszámot. Ez a ping az Azure-gépről a helyi környezetbe
-* Ellenőrizze, hogy a pingek sikeresek-e. Ha nem, akkor azt jelzi, hogy egy közbenső hálózati tűzfal vagy az Azure NSG blokkolja a port forgalmát.
-* Most futtassa a parancsot a cél csomópontról a forrás csomópont IP-címére.
+* Annak ellenőrzéséhez, hogy a gazdatűzfal nem blokkolja-e a kommunikációt a szükséges porton, tekintse meg a forrás- és célcsomópontok állapotát a következő nézetből: Hálózati teljesítményfigyelő -> konfiguráció -> csomópontok. 
+  Ha nem megfelelőállapotban vannak, tekintse meg az utasításokat, és tegye meg a szükséges lépéseket. Ha a csomópontok kifogástalanok, lépjen a b lépésre. az alábbiakban.
+* Annak ellenőrzéséhez, hogy egy köztes hálózati tűzfal vagy az Azure NSG nem blokkolja a kommunikációt a szükséges porton, használja a külső psping segédprogramot az alábbi utasítások használatával:
+  * psping segédprogram letölthető [itt](https://technet.microsoft.com/sysinternals/psping.aspx) 
+  * Futtassa a következő parancsot a forráscsomópontról.
+    * psping -n \<15 célcsomópont\>IPAddress :portNumber Alapértelmezés szerint az NPM 8084-es portot használ. Abban az esetben, ha ezt kifejezetten módosította az EnableRules.ps1 parancsfájl használatával, adja meg a használt egyéni portszámot). Ez egy ping az Azure-gépről a helyszíni
+* Ellenőrizze, hogy a pingelések sikeresek-e. Ha nem, akkor azt jelzi, hogy egy köztes hálózati tűzfal vagy az Azure NSG blokkolja a forgalmat ezen a porton.
+* Most futtassa a parancsot a célcsomópontról a forráscsomópont IP-címére.
 
 
-### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>Az A csomópont veszteséget okoz a B csomóponton, de a B csomópontból nem. miért?
-Mivel az A és B közötti hálózati elérési utak a B és A közötti hálózati útvonalaktól eltérőek lehetnek, a veszteségek és késések különböző értékei figyelhetők meg.
+### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>Az A csomópontból B csomópontba veszteség van, de a B csomópontból nem. miért?
+Mivel az A és B közötti hálózati útvonalak eltérhetnek a B és A közötti hálózati útvonalaktól, a veszteség és a késés különböző értékei figyelhetők meg.
 
-### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Miért nem észlelhetők a ExpressRoute-áramkörök és a társ-összekapcsolási kapcsolatok?
-A NPM most felfedi a ExpressRoute-áramköröket és az összes olyan előfizetésben lévő kapcsolatot, amelyhez a felhasználónak hozzáférése van. Válassza ki az összes olyan előfizetést, ahol az expressz útvonal-erőforrások össze vannak kapcsolva, és engedélyezze a figyelést minden felderített erőforráshoz A NPM megkeresi a kapcsolatok objektumait, amikor felvesz egy privát társítást, ezért ellenőrizze, hogy van-e társítva VNET a társával.
+### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Miért nem derítik fel az összes ExpressRoute-kapcsolatomat és társviszony-létesítési kapcsolatomat?
+Az NPM mostantól felderíti az ExpressRoute-áramköröket és társviszony-létesítési kapcsolatokat minden olyan előfizetésben, amelyhez a felhasználó hozzáfér. Válassza ki az összes olyan előfizetést, amelyhez az Expressz útvonal-erőforrások kapcsolódnak, és engedélyezze az egyes felderített erőforrások figyelését. Az NPM megkeresi a kapcsolatobjektumokat a privát társviszony-létesítés felderítésekénekéneksorán, ezért ellenőrizze, hogy a társviszony-létesítéshez tartozik-e virtuális hálózat.
 
-### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>Az ER-figyelő funkció diagnosztikai üzenettel rendelkezik, "a forgalom nem halad át semmilyen áramkörön". az mit jelent?
+### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>Az ER-figyelő képesség diagnosztikai üzenettel rendelkezik: "A forgalom nem halad át semmilyen áramkörön". Ez mit jelent?
 
-Előfordulhat, hogy a helyszíni és az Azure-csomópontok közötti kapcsolat kifogástalan, de a forgalom nem halad át a NPM által figyelt ExpressRoute-áramkörön. 
+Lehet, hogy van egy forgatókönyv, ahol a helyszíni és az Azure-csomópontok között kifogástalan kapcsolat van, de a forgalom nem megy át az NPM által figyelt ExpressRoute-áramkörön. 
 
 Ez a következő esetekben fordulhat elő:
 
-* Az ER áramkör nem érhető el.
-* Az útválasztási szűrők úgy vannak konfigurálva, hogy elsőbbséget biztosítanak más útvonalaknak (például egy VPN-kapcsolatnak vagy egy másik ExpressRoute áramkörnek) a kívánt ExpressRoute áramkörön. 
-* A ExpressRoute áramkör figyelési konfigurációban való figyelésére kiválasztott helyszíni és Azure-csomópontok nem rendelkeznek kapcsolattal egymással a kívánt ExpressRoute áramkörön keresztül. Győződjön meg arról, hogy a figyelni kívánt ExpressRoute-áramkörön a megfelelő csomópontok vannak kiválasztva.
+* A er áramkör leállt.
+* Az útvonalszűrők úgy vannak konfigurálva, hogy elsőbbséget biztosítsanak más útvonalaknak (például VPN-kapcsolatnak vagy más ExpressRoute-kapcsolatnak) a tervezett ExpressRoute-áramkörhöz képest. 
+* A helyszíni és az Azure-csomópontok kiválasztott figyelése az ExpressRoute-kapcsolat a figyelési konfigurációban, nem rendelkeznek egymással a kívánt ExpressRoute-kapcsolat on the intended ExpressRoute-kapcsolat. Győződjön meg arról, hogy a figyelni kívánt ExpressRoute-kapcsolaton keresztül megfelelő csomópontokat választott egymáshoz.
 
-### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>A ExpressRoute-áramkör figyelésének konfigurálása közben az Azure-csomópontok nem észlelhetők.
-Ez akkor fordulhat elő, ha az Azure-csomópontok Operations Manageron keresztül csatlakoznak. A ExpressRoute-figyelő funkció csak azokat az Azure-csomópontokat támogatja, amelyek közvetlen ügynökként vannak csatlakoztatva.
+### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>Az ExpressRoute-kapcsolatfigyelés konfigurálása közben az Azure-csomópontok nem észlelhetők.
+Ez akkor fordulhat elő, ha az Azure-csomópontok az Operations Manager en keresztül csatlakoznak. Az ExpressRoute-figyelő képesség csak azokat az Azure-csomópontokat támogatja, amelyek közvetlen ügynökként kapcsolódnak.
 
-### <a name="i-cannot-discover-by-expressroute-circuits-in-the-oms-portal"></a>Nem tudom felderíteni a ExpressRoute-áramköröket a OMS-portálon
-Bár a NPM mind a Azure Portal, mind a OMS-portálon használható, a ExpressRoute-figyelő funkció áramkör-felderítése csak a Azure Portalon keresztül működik. Miután a rendszer felderíti az áramkört a Azure Portalon keresztül, használhatja a két portál bármelyikét. 
+### <a name="i-cannot-discover-by-expressroute-circuits-in-the-oms-portal"></a>Nem tudok ExpressRoute-áramkörök segítségével felfedezni az OMS-portálon
+Bár az NPM az Azure Portalon és az OMS-portálon is használható, az ExpressRoute-figyelőben lévő körfelderítés csak az Azure Portalon keresztül működik. Miután az azure-portálon keresztül felderített ék az áramköröket, a két portál valamelyikében használhatja a funkciót. 
 
-### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-network-loss-as-well-as-latency-are-shown-as-na"></a>A szolgáltatás-kapcsolódási figyelő képességben a szolgáltatás válaszideje, a hálózati veszteség, valamint a késés a NA-ként jelenik meg.
+### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-network-loss-as-well-as-latency-are-shown-as-na"></a>A Szolgáltatáskapcsolat-figyelő képességében a szolgáltatás válaszideje, a hálózati veszteség és a késés NA-ként jelenik meg
 Ez akkor fordulhat elő, ha egy vagy több igaz:
 
-* A szolgáltatás nem érhető el.
-* A szolgáltatáshoz való hálózati kapcsolat ellenőrzéséhez használt csomópont nem érhető el.
-* A teszt konfigurációjában megadott cél helytelen.
-* A csomópontnak nincs hálózati kapcsolata.
+* A szolgáltatás nak vége.
+* A szolgáltatáshálózati kapcsolat ellenőrzésére használt csomópont nem működik.
+* A tesztkonfigurációban megadott cél helytelen.
+* A csomópont nem rendelkezik hálózati kapcsolattal.
 
-### <a name="in-the-service-connectivity-monitor-capability-a-valid-service-response-time-is-shown-but-network-loss-as-well-as-latency-are-shown-as-na"></a>A szolgáltatás-kapcsolódási figyelő funkcióban érvényes szolgáltatási válaszidő jelenik meg, de a hálózati veszteség, valamint a késés is NA-ként jelenik meg.
+### <a name="in-the-service-connectivity-monitor-capability-a-valid-service-response-time-is-shown-but-network-loss-as-well-as-latency-are-shown-as-na"></a>A Szolgáltatáskapcsolat-figyelő ben érvényes szolgáltatásválaszidő jelenik meg, de a hálózati veszteség és a késés NA-ként jelenik meg.
  Ez akkor fordulhat elő, ha egy vagy több igaz:
 
-* Ha a szolgáltatáshoz való hálózati kapcsolat ellenőrzéséhez használt csomópont egy Windows-ügyfélszámítógép, vagy a célként megadott szolgáltatás blokkolja az ICMP-kéréseket, vagy a hálózati tűzfal blokkolja a csomóponttól származó ICMP-kérelmeket.
-* A hálózati mérések elvégzése jelölőnégyzet üres a tesztelési konfigurációban.
+* Ha a szolgáltatás hálózati kapcsolatának ellenőrzésére használt csomópont egy Windows-ügyfélszámítógép, vagy a célszolgáltatás blokkolja az ICMP-kérelmeket, vagy egy hálózati tűzfal blokkolja a csomópontból származó ICMP-kérelmeket.
+* A Hálózati mérések végrehajtása jelölőnégyzet üres a tesztkonfigurációban.
 
-### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>A szolgáltatás-kapcsolódási figyelő képességben a szolgáltatás válaszideje NA, de a hálózati veszteség, valamint a késés érvényes
-Ez akkor fordulhat elő, ha a célként megadott szolgáltatás nem webalkalmazás, de a teszt webes tesztként van konfigurálva. Szerkessze a teszt konfigurációját, és válassza ki a teszt típusát a web helyett hálózatként.
+### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>A Szolgáltatáskapcsolat-figyelő képességben a szolgáltatás válaszideje NA, de a hálózati veszteség és a késés érvényes
+Ez akkor fordulhat elő, ha a célszolgáltatás nem webalkalmazás, de a teszt webes tesztként van konfigurálva. A tesztkonfiguráció szerkesztése, és válassza a teszttípusát hálózatként a web helyett.
 
 ## <a name="miscellaneous"></a>Egyéb
 
-### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Hatással van-e a figyelésre használt csomópont teljesítményére?
-A NPM folyamat úgy van beállítva, hogy leálljon, ha a gazdagép CPU-erőforrásainak több mint 5%-át használja. Ezzel biztosíthatja, hogy a csomópontokat a szokásos számítási feladatokhoz a teljesítmény befolyásolása nélkül tudja használni.
+### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Van-e teljesítményhatása a figyeléshez használt csomópontra?
+Az NPM-folyamat úgy van beállítva, hogy leálljon, ha a gazdaprocesszor-erőforrások több mint 5%-át használja. Ez biztosítja, hogy a csomópontok at a szokásos számítási feladatok a teljesítmény befolyásolása nélkül továbbra is használhatja.
 
-### <a name="does-npm-edit-firewall-rules-for-monitoring"></a>A NPM szerkesztheti a figyelési szabályokat?
-A NPM csak helyi Windows tűzfal-szabályt hoz létre azon csomópontokon, amelyeken a EnableRules. ps1 PowerShell-parancsfájl fut, hogy az ügynökök TCP-kapcsolatokat hozzanak létre egymással a megadott porton. A megoldás nem módosítja a hálózati tűzfal vagy a hálózati biztonsági csoport (NSG) szabályait.
+### <a name="does-npm-edit-firewall-rules-for-monitoring"></a>Szerkeszti az NPM a figyelési tűzfalszabályokat?
+Az NPM csak egy helyi Windows tűzfalszabályt hoz létre azon a csomóponton, amelyen az EnableRules.ps1 Powershell parancsfájl fut, hogy az ügynökök tcp-kapcsolatokat hozzanak létre egymással a megadott porton. A megoldás nem módosítja a hálózati tűzfalat vagy a hálózati biztonsági csoport (NSG) szabályait.
 
 ### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>Hogyan ellenőrizhetem a figyeléshez használt csomópontok állapotát?
-A figyeléshez használt csomópontok állapotát a következő nézetből tekintheti meg: Network Performance Monitor-> Configuration-> csomópontok. Ha egy csomópont nem kifogástalan állapotú, megtekintheti a hiba részleteit, és elvégezheti a javasolt műveletet.
+A figyeléshez használt csomópontok állapotát a következő nézetből tekintheti meg: Hálózati teljesítményfigyelő -> Konfiguráció -> csomópontok. Ha egy csomópont nem kifogástalan állapotú, megtekintheti a hiba részleteit, és végrehajthatja a javasolt műveletet.
 
-### <a name="can-npm-report-latency-numbers-in-microseconds"></a>NPM a jelentés késési számait a másodpercenként?
-A NPM felkerekíti a késési számokat a felhasználói felületen és ezredmásodpercben. Ugyanazokat az adatokat a rendszer magasabb részletességgel tárolja (esetenként akár négy tizedesjegy is).
+### <a name="can-npm-report-latency-numbers-in-microseconds"></a>Az NPM jelentheti a késésszámokat mikroszekundumokban?
+Az NPM a késésszámokat a felhasználói felületen és ezredmásodpercben kerekíti. Ugyanezeket az adatokat nagyobb részletességgel (néha akár négy tizedesjegypontossággal) tárolják.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a Network Performance Monitorről az [Azure-beli Network Performance monitor megoldásra](../../azure-monitor/insights/network-performance-monitor.md)való hivatkozással.
+- A Hálózati teljesítményfigyelőről az [Azure Hálózati teljesítményfigyelő megoldására](../../azure-monitor/insights/network-performance-monitor.md)hivatkozva olvashat bővebben.

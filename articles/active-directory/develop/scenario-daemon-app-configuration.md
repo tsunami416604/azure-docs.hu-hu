@@ -1,6 +1,6 @@
 ---
-title: Webes API-kat meghívó Daemon-alkalmazások konfigurálása – Microsoft Identity platform | Azure
-description: Megtudhatja, hogyan konfigurálhatja a webes API-kat meghívó Daemon-alkalmazás kódját (alkalmazás konfigurációja)
+title: Webes API-kat hívó démonalkalmazások konfigurálása – Microsoft identity platform | Azure
+description: Megtudhatja, hogy miként konfigurálhatja a webes API-kat meghívjaó démonalkalmazás kódját (alkalmazáskonfiguráció)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,52 +16,52 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: fc441ef64f98ace04b7b847c03d575215656f9db
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77611835"
 ---
-# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó Daemon-alkalmazás – kód konfigurálása
+# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>A webes API-kat meghívjaó Démonalkalmazás – kódkonfiguráció
 
-Megtudhatja, hogyan konfigurálhatja a webes API-kat meghívó Daemon-alkalmazás kódját.
+Ismerje meg, hogyan konfigurálhatja a kódot a démonalkalmazás, amely meghívja a webes API-k.
 
-## <a name="msal-libraries-that-support-daemon-apps"></a>Daemon-alkalmazásokat támogató MSAL-kódtárak
+## <a name="msal-libraries-that-support-daemon-apps"></a>Démonalkalmazásokat támogató MSAL-könyvtárak
 
-Ezek a Microsoft-kódtárak támogatják a Daemon-alkalmazásokat:
+Ezek a Microsoft-kódtárak támogatják a démonalkalmazásokat:
 
-  MSAL-könyvtár | Leírás
+  MSAL könyvtár | Leírás
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatott a Daemon-alkalmazások létrehozásához. (A UWP, a Xamarin. iOS és az Xamarin. Android nem támogatott, mert ezek a platformok nyilvános ügyfélalkalmazások létrehozásához használatosak.)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Démon-alkalmazások támogatása a Pythonban.
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | A démon-alkalmazások támogatása a javában.
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET Framework és a . (Az UWP, a Xamarin.iOS és a Xamarin.Android nem támogatott, mert ezeket a platformokat nyilvános ügyfélalkalmazások készítésére használják.)
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Démonalkalmazások támogatása pythonban.
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Daemon alkalmazások támogatása Java-ban.
 
-## <a name="configure-the-authority"></a>A szolgáltató konfigurálása
+## <a name="configure-the-authority"></a>A jogosultságjogalkalmazás konfigurálása
 
-A Daemon-alkalmazások a delegált engedélyek helyett alkalmazás-engedélyeket használnak. Ezért a támogatott fióktípus nem lehet fiók bármilyen szervezeti címtárban vagy személyes Microsoft-fiók (például Skype, Xbox, Outlook.com). Nincs olyan bérlői rendszergazda, aki beleegyezik a Microsoft személyes fiókjához tartozó Daemon-alkalmazásba. A szervezetem vagy a fiókjaim *fiókjait* *minden szervezetnél*ki kell választania.
+A démonalkalmazások a delegált engedélyek helyett alkalmazásengedélyeket használnak. Így a támogatott fióktípusa nem lehet fiók semmilyen szervezeti címtárban vagy személyes Microsoft-fiókban (például Skype, Xbox, Outlook.com). Nincs bérlői rendszergazda, aki beleegyezést ad egy Microsoft-személyes fiók démonalkalmazásához. Ki kell választania *a szervezetemben* lévő fiókokat vagy *bármely szervezet fiókjait.*
 
-Így az alkalmazás konfigurációjában megadott szolgáltatónak Bérlőnek kell lennie (a bérlő AZONOSÍTÓját vagy a szervezethez társított tartománynevet kell megadnia).
+Így az alkalmazás konfigurációjában megadott jogosultságot bérlőnek kell megadnia (bérlői azonosító vagy a szervezethez társított tartománynév megadása).
 
-Ha Ön ISV, és több-bérlős eszközt szeretne biztosítani, használhatja a `organizations`. Ne feledje azonban, hogy az ügyfeleket is meg kell magyaráznia, hogy hogyan adhat meg rendszergazdai jóváhagyást. Részletekért lásd: a teljes bérlő belefoglalásának [kérelmezése](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). A MSAL esetében jelenleg is van korlátozás: `organizations` csak akkor engedélyezett, ha az ügyfél hitelesítő adatai egy alkalmazás titkos kulcsa (nem tanúsítvány).
+If you're an ISV and want to provide a multitenant tool, you can use `organizations`. Ne feledd azonban, hogy azt is el kell magyaráznod az ügyfeleidnek, hogyan adhatsz rendszergazdai hozzájárulást. További információt a [Teljes bérlő hozzájárulásának kérése.](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) Emellett jelenleg van egy korlátozás az `organizations` MSAL: csak akkor engedélyezett, ha az ügyfél hitelesítő adatok egy alkalmazás titkos (nem egy tanúsítvány).
 
-## <a name="configure-and-instantiate-the-application"></a>Az alkalmazás konfigurálása és példányának beállítása
+## <a name="configure-and-instantiate-the-application"></a>Az alkalmazás konfigurálása és példányosítása
 
-A MSAL-könyvtárakban az ügyfél hitelesítő adatai (titkos vagy tanúsítvány) a bizalmas ügyfélalkalmazás-építés paramétereként lesznek átadva.
+Az MSAL-kódtárakban az ügyfél hitelesítő adatai (titkos vagy tanúsítvány) a bizalmas ügyfélalkalmazás-kialakítás paramétereként kerülnek átadásra.
 
 > [!IMPORTANT]
-> Még akkor is, ha az alkalmazás egy olyan konzolos alkalmazás, amely szolgáltatásként fut, és amely egy démon alkalmazás, bizalmas ügyfélalkalmazás szükséges.
+> Még akkor is, ha az alkalmazás egy szolgáltatásként futó konzolalkalmazás, ha démonalkalmazásról van szó, bizalmas ügyfélalkalmazásnak kell lennie.
 
 ### <a name="configuration-file"></a>Konfigurációs fájl
 
-A konfigurációs fájl határozza meg a következőket:
+A konfigurációs fájl a következőket határozza meg:
 
-- A hatóság vagy a Felhőbeli példány és a bérlő azonosítója.
-- Az alkalmazás regisztrálásakor kapott ügyfél-azonosító.
-- Vagy egy ügyfél titka vagy egy tanúsítvány.
+- A hatóság vagy a felhőpéldány és a bérlőazonosító.
+- Az ügyfélazonosító, amelyet az alkalmazás regisztrációjából kapott.
+- Vagy egy ügyféltitok, vagy egy tanúsítvány.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-a [appSettings. JSON](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) fájlt a [.net Core Console Daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) mintából.
+[appsettings.json](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) a [.NET Core konzoldémon-mintából.](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
 
 ```JSon
 {
@@ -73,11 +73,11 @@ a [appSettings. JSON](https://github.com/Azure-Samples/active-directory-dotnetco
 }
 ```
 
-`ClientSecret` vagy `CertificateName`biztosít. Ezek a beállítások kizárólagosak.
+Ön vagy `ClientSecret` a, `CertificateName`vagy a . Ezek a beállítások kizárólagosak.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Ha titkos ügyfelet hoz létre az ügyfél titkos kulcsaival, a [Python Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) -minta [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) konfigurációs fájlja a következő:
+Ha ügyféltitkokkal rendelkező bizalmas ügyfelet hoz létre, a python [démonmintában](https://github.com/Azure-Samples/ms-identity-python-daemon) a [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) konfigurációs fájl a következő:
 
 ```Json
 {
@@ -89,7 +89,7 @@ Ha titkos ügyfelet hoz létre az ügyfél titkos kulcsaival, a [Python Daemon](
 }
 ```
 
-Ha tanúsítványokkal rendelkező bizalmas ügyfelet hoz létre, a [Python Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) -minta [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) konfigurációs fájlja a következő:
+Ha tanúsítványokat tartalmazó bizalmas ügyfelet hoz létre, a python [démonmintában](https://github.com/Azure-Samples/ms-identity-python-daemon) a [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) konfigurációs fájl a következő:
 
 ```Json
 {
@@ -113,20 +113,20 @@ Ha tanúsítványokkal rendelkező bizalmas ügyfelet hoz létre, a [Python Daem
 
 ---
 
-### <a name="instantiate-the-msal-application"></a>A MSAL alkalmazás példányának példánya
+### <a name="instantiate-the-msal-application"></a>Az MSAL alkalmazás példányosítása
 
-A MSAL alkalmazás létrehozásához hozzá kell adnia, hivatkoznia vagy importálnia kell a MSAL-csomagot (a nyelvtől függően).
+Az MSAL alkalmazás példányosításához hozzá kell adnia, hivatkoznia kell vagy importálnia kell az MSAL-csomagot (a nyelvtől függően).
 
-Az építkezés eltérő, attól függően, hogy az ügyfél titkos kulcsait vagy tanúsítványait használja (vagy speciális forgatókönyvként, aláírt kijelentésként).
+Az építés eltérő, attól függően, hogy ügyféltitkokat vagy tanúsítványokat (vagy speciális forgatókönyvként aláírt állításokat használ).
 
-#### <a name="reference-the-package"></a>A csomagra mutató hivatkozás
+#### <a name="reference-the-package"></a>Hivatkozás a csomagra
 
-Hivatkozzon a MSAL csomagra az alkalmazás kódjában.
+Hivatkozzon az MSAL-csomagra az alkalmazáskódjában.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Adja hozzá a [Microsoft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet-csomagot az alkalmazáshoz.
-A MSAL.NET-ben a bizalmas ügyfélalkalmazás a `IConfidentialClientApplication` felület által reprezentált.
+Adja hozzá a [Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet csomagot az alkalmazáshoz.
+A MSAL.NET a bizalmas ügyfélalkalmazást `IConfidentialClientApplication` a felület képviseli.
 Használja a MSAL.NET névteret a forráskódban.
 
 ```csharp
@@ -154,9 +154,9 @@ import com.microsoft.aad.msal4j.SilentParameters;
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-a-client-secret"></a>A bizalmas ügyfélalkalmazás példányának létrehozása az ügyfél titkos kódjával
+#### <a name="instantiate-the-confidential-client-application-with-a-client-secret"></a>A bizalmas ügyfélalkalmazás példányosítása ügyféltokkal
 
-Az alábbi kód segítségével hozhatja létre a bizalmas ügyfélalkalmazás egy ügyfél titkos kulcsával:
+Itt a kód, hogy példányosítani a bizalmas ügyfélalkalmazás egy ügyfél titkos:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -196,9 +196,9 @@ ConfidentialClientApplication cca =
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-a-client-certificate"></a>A bizalmas ügyfélalkalmazás példányának létrehozása ügyféltanúsítványt
+#### <a name="instantiate-the-confidential-client-application-with-a-client-certificate"></a>A bizalmas ügyfélalkalmazás példányosítása ügyféltanúsítvánnyal
 
-A következő kód segítségével hozhat létre egy alkalmazást egy tanúsítvánnyal:
+Az alábbiakban a tanúsítványt igénylő alkalmazások létrehozásának kódja:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -227,7 +227,7 @@ app = msal.ConfidentialClientApplication(
 
 # <a name="java"></a>[Java](#tab/java)
 
-A MSAL Java-ban két építő található a bizalmas ügyfélalkalmazás tanúsítványokkal történő létrehozásához:
+Az MSAL Java-ban két építő van a bizalmas ügyfélalkalmazás tanúsítványokkal történő példányosítására:
 
 ```Java
 
@@ -260,18 +260,18 @@ ConfidentialClientApplication cca =
 
 ---
 
-#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>Speciális forgatókönyv: a bizalmas ügyfélalkalmazás példánya az ügyfél-kijelentésekkel
+#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>Speciális forgatókönyv: A bizalmas ügyfélalkalmazás példányosítása ügyfélállításokkal
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Az ügyfél titkos kulcsa vagy tanúsítványa helyett a bizalmas ügyfélalkalmazás is igazolhatja az identitását az ügyfél-kijelentések használatával.
+Az ügyféltitok vagy a tanúsítvány helyett a bizalmas ügyfélalkalmazás is bizonyíthatja személyazonosságát az ügyfélállítások használatával.
 
-A MSAL.NET kétféle módszerrel biztosítanak aláírt állításokat a bizalmas ügyfélalkalmazás számára:
+MSAL.NET két módszerrel rendelkezik az aláírt állítások bizalmas ügyfélalkalmazáshoz való biztosításához:
 
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-`WithClientAssertion`használatakor meg kell adnia egy aláírt JWT. Ez a speciális forgatókönyv részletesen szerepel az [ügyfél-kijelentésekben](msal-net-client-assertions.md).
+A használatakor `WithClientAssertion`meg kell adnia egy aláírt JWT-t. Ez a speciális forgatókönyv az [Ügyfél állítások](msal-net-client-assertions.md)ban található.
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -280,8 +280,8 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-`WithClientClaims`használatakor a MSAL.NET egy aláírt jogcímet hoz létre, amely tartalmazza az Azure AD által várt jogcímeket, valamint az elküldeni kívánt további ügyfelek jogcímeit.
-Ez a kód a következőket mutatja be:
+A használata `WithClientClaims`kor MSAL.NET egy aláírt állítást hoz létre, amely tartalmazza az Azure AD által várt jogcímeket, valamint további ügyféljogcímeket, amelyeket el szeretne küldeni.
+Ez a kód bemutatja, hogyan kell ezt csinálni:
 
 ```csharp
 string ipAddress = "192.168.1.2";
@@ -293,11 +293,11 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();```
 ```
 
-További részletekért lásd: [ügyfél-kijelentések](msal-net-client-assertions.md).
+A részleteket lásd még: [Ügyfélállítások](msal-net-client-assertions.md).
 
 # <a name="python"></a>[Python](#tab/python)
 
-A MSAL Pythonban megadhatja az ügyfél jogcímeit a `ConfidentialClientApplication`titkos kulcsa által aláírt jogcímek használatával.
+Az MSAL Pythonban az ügyféljogcímeket a `ConfidentialClientApplication`személyes kulcs által aláírt jogcímek használatával biztosíthatja.
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -313,7 +313,7 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-Részletekért tekintse meg a MSAL Python dokumentációját a [ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__).
+További információt a [ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__)MSAL Python referenciadokumentációjában talál.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -329,21 +329,21 @@ ConfidentialClientApplication cca =
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Daemon-alkalmazás – jogkivonatok beszerzése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
+> [Démon alkalmazás - tokenek beszerzése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Daemon-alkalmazás – jogkivonatok beszerzése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
+> [Démon alkalmazás - tokenek beszerzése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Daemon-alkalmazás – jogkivonatok beszerzése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
+> [Démon alkalmazás - tokenek beszerzése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
 
 ---

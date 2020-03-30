@@ -1,6 +1,6 @@
 ---
-title: A Linux rendszerű virtuális gép a grub Rescue-t indítja
-description: Nem sikerült elindítani a virtuális gépet, mert a virtuális gép megadta a mentési konzolt
+title: Linux VM csizma Grub Rescue
+description: A virtuális gép nem tudott elindulni, mert a virtuális gép belépett egy mentőkonzolba
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -14,59 +14,59 @@ ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
 ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77561949"
 ---
-# <a name="linux-vm-boots-to-grub-rescue"></a>A Linux rendszerű virtuális gép a grub Rescue-t indítja
+# <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM csizma Grub Rescue
 
-Azt azonosította, hogy a virtuális gép (VM) megadta a mentési konzolt. A probléma akkor fordul elő, ha a Linux rendszerű virtuális gép mostanában kernel-módosításokat hajtott végre, például a kernel frissítése során, és a rendszerindítási folyamat során a kernel hibái miatt már nem indul el megfelelően. A rendszerindítási folyamat során, amikor a rendszerindító betöltő megkísérli megkeresni a Linux-kernelt, és kikapcsolja a rendszerindítási vezérlőt, a virtuális gép a handoff meghibásodása esetén a mentési konzolba lép.
+Azonosítottuk, hogy a virtuális gép (VM) belépett egy mentési konzolra. A probléma akkor fordul elő, amikor a Linux virtuális gép kernel módosításait a közelmúltban alkalmazták, például a kernel frissítése, és a rendszerindítási folyamat során a kernel hibák miatt már nem indul el megfelelően. A rendszerindítási folyamat során, amikor a rendszertöltő megpróbálja megtalálni a Linux kernelt, és átadja a rendszerindítási vezérlőt, a virtuális gép belép egy mentési konzolba, amikor a átadás sikertelen.
 
-Ha azt tapasztalja, hogy a jövőben nem tud virtuális géphez csatlakozni, a Azure Portal rendszerindítási diagnosztika paneljén megtekintheti a virtuális gép képernyőképét. Ez segíthet a probléma diagnosztizálásában és annak megállapításában, hogy egy hasonló rendszerindítási hiba okozza-e.
+Ha úgy találja, hogy a jövőben nem tud csatlakozni egy virtuális géphez, megtekintheti a virtuális gép képernyőképének képernyőképet az Azure Portalon a rendszerindítási diagnosztikai panel használatával. Ez segíthet a probléma diagnosztizálásában és annak megállapításában, hogy egy hasonló rendszerindítási hiba okozza-e.
 
 ## <a name="recommended-steps"></a>Javasolt lépések
 
-A kapott hibától függően kövesse az alábbi kockázatcsökkentő lépéseket:
+Kövesse az alábbi kockázatcsökkentési lépéseket a kapott hibától függően:
 
-### <a name="error---unknown-filesystem"></a>Hiba – ismeretlen fájlrendszer
+### <a name="error---unknown-filesystem"></a>Hiba - Ismeretlen fájlrendszer
 
-* Ha a rendszer **ismeretlen**hibát észlel, akkor ez a hiba a rendszerindító partíció fájlrendszerének sérülése vagy helytelen kernel-konfiguráció miatt eredményezhet.
+* Ha az **Ismeretlen fájlrendszer**hibaüzenetet kapja, ez a hiba a rendszerindító partíció fájlrendszerének sérüléséből vagy a rendszermag konfigurációjának helytelen konfigurációjából eredhet.
 
-   * Fájlrendszerrel kapcsolatos problémák esetén hajtsa végre a következő cikkben ismertetett lépéseket [: Linux Recovery: nem lehet SSH-t Linux virtuális géphez a fájlrendszer hibái miatt (fsck, inode)](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/).
-   * Kernel-problémák esetén kövesse a [Linux helyreállítás: a kernel problémákkal kapcsolatos nem rendszerindítási problémák manuális kijavítása](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/), illetve a Linux-helyreállítás című cikk lépéseit [: a nem rendszerindítási problémák kijavítása kernel-problémákról a kromát használatával](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/).
+   * A fájlrendszerrel kapcsolatos problémák esetén kövesse a [Linux Recovery: Nem lehet Az SSH-tól linuxos virtuális gépig a fájlrendszer hibái (fsck, inodes) miatt.](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/)
+   * Kernel problémák esetén kövesse a [Linux Recovery: A kernelproblémákkal kapcsolatos nem rendszerindítási problémák manuális javítása,](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/)vagy [a Linux-helyreállítás: A chroot használatával kapcsolatos kernelproblémákkal kapcsolatos nem rendszerindítási problémák megoldása.](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)
    
-### <a name="error---file-not-found"></a>Hiba – a fájl nem található
+### <a name="error---file-not-found"></a>Hiba - A fájl nem található
 
-* Ha a következő hibaüzenetet kapta **: 15. a fájl nem található, vagy a kezdeti RAM lemez** vagy a **initrd/initramfs fájl nem található**, kövesse az alábbi lépéseket.
+* Ha a **hiba 15: A fájl nem található, vagy a kezdeti RAM lemez** vagy **initrd /initramfs fájl nem található,** kövesse az alábbi lépéseket.
 
-    * A hiányzó fájl `/boot/grub2/grub.cfg` vagy `initrd/initramfs` folytassa a következő folyamattal:
+    * A hiányzó `/boot/grub2/grub.cfg` fájl `initrd/initramfs` esetén vagy folytassa a következő eljárással:
 
-    1. Győződjön meg arról, hogy `/etc/default/grub` létezik, és megfelelő/kívánt beállításokkal rendelkezik. Ha nem tudja, hogy melyek az alapértelmezett beállítások, megtekintheti a működő virtuális gépeket.
+    1. Győződjön meg arról, `/etc/default/grub` hogy létezik, és a helyes / kívánt beállításokat. Ha nem tudja, hogy melyek az alapértelmezett beállítások, ellenőrizheti a működő virtuális gép.
 
-    2. Ezután futtassa a következő parancsot a konfiguráció újralétrehozásához: `grub2-mkconfig -o /boot/grub2/grub.cfg`
+    2. Ezután futtassa a következő parancsot a konfiguráció újragenerálásához:`grub2-mkconfig -o /boot/grub2/grub.cfg`
 
-   * Ha a hiányzó fájl `/boot/grub/menu.lst`, akkor ez a hiba a régebbi operációsrendszer-verziók esetében (**RHEL 6. x**, **CentOS 6. x** és **Ubuntu 14,04**), így a parancsok eltérhetnek. A megfelelő parancsok biztosításához egy régi kiszolgálót kell megadnia, és tesztelni kell.
+   * Ha a hiányzó `/boot/grub/menu.lst`fájl , ez a hiba a régebbi operációs rendszer verziók (**RHEL 6.x**, **Centos 6.x** és **Ubuntu 14.04**), így a parancsok eltérőek lehetnek. Meg kell felpörgetni egy régi szervert, és tesztelni eszükséges parancsokat biztosítani.
 
-### <a name="error---no-such-partition"></a>Hiba – nincs ilyen partíció
+### <a name="error---no-such-partition"></a>Hiba - Nincs ilyen partíció
 
-* Ha **nem kap ilyen partíciót**, tekintse meg az [eseti forgatókönyvet: "nincs ilyen partíció" hibaüzenetet, miközben megpróbálta ELINDÍTANI a virtuális gépet az operációs rendszer meghajtójának kibővítésére tett kísérlet után](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/).
+* Ha a hibaüzenet **nem ilyen partíció**, olvassa el [esetforgatókönyv : "nincs ilyen partíció" hiba, miközben megpróbálja elindítani a virtuális gép, miután megpróbálta kiterjeszteni az operációs rendszer meghajtóját](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/).
 
-### <a name="error---grubcfg-file-not-found"></a>Hiba – a grub. cfg fájl nem található
+### <a name="error---grubcfg-file-not-found"></a>Hiba - a grub.cfg fájl nem található
 
-* Ha **nem találja a/boot/GRUB2/grub.cfg fájlt**, kövesse az alábbi lépéseket.
+* Ha a **hibát a /boot/grub2/grub.cfg fájl nem találja,** kövesse az alábbi lépéseket.
 
-    * A hiányzó fájl `/boot/grub2/grub.cfg` vagy `initrd/initramfs` folytassa a következő folyamattal:
+    * A hiányzó `/boot/grub2/grub.cfg` fájl `initrd/initramfs` esetén vagy folytassa a következő eljárással:
 
-    1. Győződjön meg arról, hogy `/etc/default/grub` létezik, és megfelelő/kívánt beállításokkal rendelkezik. Ha nem tudja, hogy melyek az alapértelmezett beállítások, megtekintheti a működő virtuális gépeket.
+    1. Győződjön meg arról, `/etc/default/grub` hogy létezik, és a helyes / kívánt beállításokat. Ha nem tudja, hogy melyek az alapértelmezett beállítások, ellenőrizheti a működő virtuális gép.
 
-    2. Ezután futtassa a következő parancsot a konfiguráció újralétrehozásához: `grub2-mkconfig -o /boot/grub2/grub.cfg`.
+    2. Ezután futtassa a következő parancsot a konfiguráció újragenerálásához: `grub2-mkconfig -o /boot/grub2/grub.cfg`.
 
-   * Ha a hiányzó fájl `/boot/grub/menu.lst`, akkor ez a hiba a régebbi operációsrendszer-verziók esetében (**RHEL 6. x**, **CentOS 6. x** és **Ubuntu 14,04**), így a parancsok elhalasztható. Hozzon létre egy régi kiszolgálót, és ellenőrizze, hogy a megfelelő parancsok vannak-e megadva.
+   * Ha a hiányzó `/boot/grub/menu.lst`fájl , ez a hiba a régebbi operációs rendszer verziók (**RHEL 6.x**, **Centos 6.x** és **Ubuntu 14.04**), így a parancsok elhalaszthatja. Hajtson fel egy régi kiszolgálót, és tesztelje, hogy biztosan a megfelelő parancsok álljanak rendelkezésre.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Virtual Machine Agent áttekintése](../extensions/agent-windows.md)
-* [Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez](../extensions/features-windows.md)
+* [Az Azure virtuálisgép-ügynök – áttekintés](../extensions/agent-windows.md)
+* [Virtuálisgép-bővítmények és -szolgáltatások a Windows rendszerhez](../extensions/features-windows.md)
 

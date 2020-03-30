@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Data Box Disk biztonsági funkciók | AdatMicrosoft Docs
-description: A Azure Data Box Disk által megvalósított biztonsági szolgáltatásokat ismerteti, amelyek lehetővé teszik nagy mennyiségű adatok átvitelét az Azure-ba
+title: A Microsoft Azure Data Box Disk biztonsági szolgáltatásai | Microsoft Dokumentumok az adatokban
+description: Az Azure Data Box Disk felhőalapú megoldásához megvalósított biztonsági funkciók ismertetése, amely lehetővé teszi nagy mennyiségű adat átvitelét az Azure-ba
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79117269"
 ---
-# <a name="azure-data-box-disk-security-and-data-protection"></a>Biztonság és adatvédelem Azure Data Box Disk
+# <a name="azure-data-box-disk-security-and-data-protection"></a>Az Azure Data Box Disk biztonsága és adatvédelem
 
 A cikk az Azure Data Box Disk biztonsági szolgáltatásait ismerteti, amelyekkel biztosítható a Data Box megoldás összetevőinek és bennük tárolt adatoknak a védelme. 
 
@@ -89,8 +89,8 @@ Az Azure Data Box Disk a szolgáltatás alábbi főbb példányaiban gyűjt és 
 További információkért lásd a Microsoft szabályzatát a [biztonsági és adatkezelési központban](https://www.microsoft.com/trustcenter).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A [Data Box Disk követelményeinek](data-box-disk-system-requirements.md) áttekintése.
+- A [Data Box Disk rendszerkövetelményeinek](data-box-disk-system-requirements.md) áttekintése.
 - A [Data Box Disk korlátainak](data-box-disk-limits.md) megismerése.
 - Az [Azure Data Box Disk](data-box-disk-quickstart-portal.md) gyors üzembe helyezése az Azure Portalon.

@@ -1,6 +1,6 @@
 ---
-title: Készlet kiépítése virtuális hálózatban – Azure Batch | Microsoft Docs
-description: Batch-készlet létrehozása egy Azure-beli virtuális hálózatban, hogy a számítási csomópontok biztonságosan kommunikálhassanak a hálózaton lévő más virtuális gépekkel, például a fájlkiszolgálón.
+title: Készlet kiépítése virtuális hálózatban - Azure Batch | Microsoft dokumentumok
+description: Batch-készlet létrehozása egy Azure virtuális hálózatban, hogy a számítási csomópontok biztonságosan kommunikálhassanak a hálózat többi virtuális gépével, például egy fájlkiszolgálóval.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -10,61 +10,61 @@ ms.date: 04/10/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: bbe38a9dc7be749b8e138ff3ca9ec4f06255b389
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247747"
 ---
-# <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása egy virtuális hálózaton
+# <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása virtuális hálózatban
 
-Azure Batch készlet létrehozásakor kiépítheti a készletet egy Ön által megadott Azure-beli [virtuális hálózat](../virtual-network/virtual-networks-overview.md) (VNet) alhálózatában. Ez a cikk azt ismerteti, hogyan lehet batch-készleteket beállítani egy VNet. 
+Amikor létrehoz egy Azure Batch-készletet, kiépítheti a készletet egy [azure-beli virtuális hálózat](../virtual-network/virtual-networks-overview.md) (VNet) megadott alhálózatában. Ez a cikk bemutatja, hogyan állíthat be egy kötegkészletet egy virtuális hálózatban. 
 
-## <a name="why-use-a-vnet"></a>Miért érdemes VNet használni?
+## <a name="why-use-a-vnet"></a>Miért érdemes használni a virtuális hálózatot?
 
-Egy Azure Batch-készlet olyan beállításokkal rendelkezik, amelyekkel a számítási csomópontok kommunikálhatnak egymással – például több példányos feladatok futtatásához. Ezek a beállítások nem igényelnek külön VNet. Alapértelmezés szerint azonban a csomópontok nem tudnak kommunikálni olyan virtuális gépekkel, amelyek nem részei a Batch-készletnek, például a licenckiszolgálót vagy a fájlkiszolgálón. Annak érdekében, hogy a készlet számítási csomópontjai biztonságosan kommunikáljanak más virtuális gépekkel vagy helyszíni hálózattal, a készletet egy Azure-VNet alhálózatán is kiépítheti. 
+Az Azure Batch-készlet beállításai lehetővé teszik a számítási csomópontok egymással való kommunikációt – például többpéldányos feladatok futtatásához. Ezek a beállítások nem igényelnek külön virtuális hálózatot. Alapértelmezés szerint azonban a csomópontok nem tudnak kommunikálni olyan virtuális gépekkel, amelyek nem részei a batch készletnek, például licenckiszolgálóval vagy fájlkiszolgálóval. Annak engedélyezéséhez, hogy a készlet számítási csomópontjai biztonságosan kommunikálhassanak más virtuális gépekkel vagy egy helyszíni hálózattal, kiépítheti a készletet egy Azure virtuális hálózat alhálózatában. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Hitelesítés**. Egy Azure-beli virtuális hálózat használatához a Batch-ügyfél API-jának Azure Active Directory- (AD-) hitelesítést kell használnia. Az Azure AD Azure Batch-támogatásának dokumentációjáért lásd a [Batch szolgáltatás Active Directoryval történő hitelesítésével](batch-aad-auth.md) foglalkozó témakört. 
 
-* **Egy Azure-VNet**. A VNet követelményeinek és konfigurációjának megtekintéséhez tekintse meg a következő szakaszt. Egy vagy több alhálózattal rendelkező VNet előkészítéséhez használhatja a Azure Portal, Azure PowerShell, az Azure parancssori felületét (CLI) vagy más metódusokat is.  
-  * Azure Resource Manager-alapú VNet létrehozásával kapcsolatban lásd: [virtuális hálózat létrehozása](../virtual-network/manage-virtual-network.md#create-a-virtual-network). A Resource Manager-alapú VNet új központi telepítések esetén ajánlott, és csak a virtuális gép konfigurációjában található készletekben támogatott.
-  * Klasszikus VNet létrehozásával kapcsolatban lásd: [virtuális hálózat (klasszikus) létrehozása több alhálózattal](../virtual-network/create-virtual-network-classic.md). A klasszikus VNet csak a Cloud Services konfigurációjában található készletekben támogatott.
+* **Egy Azure-virtuális hálózat**. Tekintse meg a következő szakaszban a virtuális hálózat követelményeinek és konfigurációjának. Egy vagy több alhálózattal rendelkező virtuális hálózat előzetes előkészítéséhez használhatja az Azure Portalt, az Azure PowerShellt, az Azure parancssori felületet (CLI) vagy más módszereket.  
+  * Az Azure Resource Manager-alapú virtuális hálózat létrehozásáról a [Virtuális hálózat létrehozása](../virtual-network/manage-virtual-network.md#create-a-virtual-network)című témakörben található. Az erőforrás-kezelő-alapú virtuális hálózat használata új központi telepítésekhez ajánlott, és csak a virtuális gép konfigurációjában lévő készletek esetén támogatott.
+  * Klasszikus virtuális hálózat létrehozásához [lásd: Virtuális hálózat létrehozása (klasszikus) több alhálózattal.](../virtual-network/create-virtual-network-classic.md) A klasszikus virtuális hálózat csak a Cloud Services-konfigurációban lévő készleteken támogatott.
 
 ## <a name="vnet-requirements"></a>A virtuális hálózat követelményei
 
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
-## <a name="create-a-pool-with-a-vnet-in-the-portal"></a>Készlet létrehozása VNet a portálon
+## <a name="create-a-pool-with-a-vnet-in-the-portal"></a>Virtuális hálózattal rendelkező készlet létrehozása a portálon
 
-Miután létrehozta a VNet, és hozzárendelt egy alhálózatot, létrehozhat egy batch-készletet az adott VNet. A következő lépésekkel hozhat létre egy készletet a Azure Portalből: 
+Miután létrehozta a virtuális hálózatot, és hozzárendelt egy alhálózatot, létrehozhat egy batch készletet az adott virtuális hálózattal. Az alábbi lépésekkel hozzon létre egy készletet az Azure Portalon: 
 
-1. Az Azure portálon lépjen Batch-fiókjára. Ennek a fióknak ugyanabban az előfizetésben és régióban kell lennie, mint a használni kívánt VNet tartalmazó erőforráscsoport. 
-2. A bal oldali **Beállítások** ablakban válassza a **készletek** menüpontot.
-3. A **készletek** ablakban válassza a **Hozzáadás** parancsot.
-4. A **készlet hozzáadása** ablakban válassza ki a használni kívánt beállítást a **rendszerkép típusa** legördülő listából. 
-5. Válassza ki a megfelelő **közzétevőt/ajánlatot/SKU-** t az egyéni rendszerképhez.
-6. Megadhatja a fennmaradó szükséges beállításokat, beleértve a **csomópont méretét**, a **célként kijelölt csomópontokat**és az **alacsony prioritású csomópontokat**, valamint a kívánt választható beállításokat.
-7. A **Virtual Network**területen válassza ki a használni kívánt virtuális hálózatot és alhálózatot.
+1. Az Azure portálon lépjen Batch-fiókjára. Ennek a fióknak ugyanabban az előfizetésben és régióban kell lennie, mint a használni kívánt virtuális hálózatot tartalmazó erőforráscsoportnak. 
+2. A bal oldali **Beállítások** ablakban válassza a **Készletek** menüelemet.
+3. A **Készletek** ablakban válassza a **Hozzáadás** parancsot.
+4. A **Készlet hozzáadása** ablakban válassza ki a használni kívánt beállítást a **Képtípus** legördülő menüből. 
+5. Válassza ki a megfelelő **Publisher/Offer/Sku** az egyéni lemezképhez.
+6. Adja meg a fennmaradó szükséges beállításokat, beleértve a **csomópont méretét**, a **célzott csomópontokat**és **az alacsony prioritású csomópontokat,** valamint a kívánt választható beállításokat.
+7. A **Virtuális hálózat ban**válassza ki a használni kívánt virtuális hálózatot és alhálózatot.
   
    ![Készlet hozzáadása virtuális hálózattal](./media/batch-virtual-network/add-vnet-pool.png)
 
-## <a name="user-defined-routes-for-forced-tunneling"></a>A kényszerített bújtatáshoz tartozó felhasználó által megadott útvonalak
+## <a name="user-defined-routes-for-forced-tunneling"></a>Felhasználó által definiált útvonalak kényszerített bújtatáshoz
 
-Előfordulhat, hogy a szervezete követelményei szerint a rendszer átirányítja (kényszeríti) az internetre irányuló forgalmat az alhálózatról a helyszíni helyre a vizsgálat és a naplózás érdekében. Lehetséges, hogy engedélyezte a kényszerített bújtatást a VNet alhálózatai számára. 
+Előfordulhat, hogy a szervezetben követelmények vannak az internethez kötött forgalom átirányítására (kényszerítése) az alhálózatból a helyszíni helyre ellenőrzés és naplózás céljából. Lehet, hogy engedélyezte a kényszerített bújtatás a virtuális hálózat alhálózatában. 
 
-Annak biztosítása érdekében, hogy a Azure Batch-készlet számítási csomópontjai olyan VNet működjenek, amelyeken engedélyezve van a kényszerített bújtatás, hozzá kell adnia a következő, [felhasználó által definiált útvonalakat](../virtual-network/virtual-networks-udr-overview.md) ehhez az alhálózathoz:
+Annak érdekében, hogy az Azure Batch-készlet számítási csomópontjai olyan virtuális hálózaton működjenek, amelynek kötelező a bújtatása engedélyezve van, hozzá kell adnia a következő [felhasználó által definiált útvonalakat](../virtual-network/virtual-networks-udr-overview.md) az adott alhálózathoz:
 
-* A Batch szolgáltatásnak kommunikálnia kell a készlet számítási csomópontjaival az ütemezési feladatokhoz. A kommunikáció engedélyezéséhez adjon hozzá egy felhasználó által megadott útvonalat a Batch szolgáltatás által használt egyes IP-címekhez abban a régióban, ahol a Batch-fiók létezik. További információ a Batch szolgáltatás IP-címeinek beszerzéséről: [szolgáltatások címkéi a helyszínen](../virtual-network/service-tags-overview.md)
+* A Batch szolgáltatásnak kommunikálnia kell a készlet számítási csomópontjaival a feladatok ütemezéséhez. A kommunikáció engedélyezéséhez adjon hozzá egy felhasználó által definiált útvonalat a Batch szolgáltatás által használt minden egyes IP-címhez abban a régióban, ahol a Batch-fiók létezik. A Batch szolgáltatás IP-címeinek listájának beszerzéséről a [helyszíni szolgáltatáscímkék című témakörben olvashat.](../virtual-network/service-tags-overview.md)
 
-* Győződjön meg arról, hogy az Azure Storage-ba irányuló kimenő adatforgalom (pontosabban az űrlap URL-címei `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`és `<account>.blob.core.windows.net`) nincs letiltva a helyszíni hálózati berendezésen keresztül.
+* Győződjön meg arról, hogy az Azure Storage -ba irányuló kimenő forgalom (különösen az űrlap `<account>.table.core.windows.net`URL-címei , `<account>.queue.core.windows.net`és `<account>.blob.core.windows.net`) nem blokkolva van a helyszíni hálózati berendezésen keresztül.
 
-Felhasználó által definiált útvonal hozzáadásakor adja meg az útvonalat az egyes kapcsolódó batch IP-címek előtagjához, és állítsa be a **következő ugrás típusát** az **Internet**értékre. Lásd a következő példát:
+Amikor felhasználó által definiált útvonalat ad hozzá, határozza meg az útvonalat az egyes kapcsolódó Batch IP-címelőtagokhoz, és állítsa a **Következő ugrás típust** **az internetre.** Lásd a következő példát:
 
 ![Felhasználó által megadott útvonal](./media/batch-virtual-network/user-defined-route.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).
-- A felhasználó által megadott útvonal létrehozásával kapcsolatos további információkért lásd: [felhasználó által definiált útvonal-Azure Portal létrehozása](../virtual-network/tutorial-create-route-table-portal.md).
+- A Batch részletes áttekintését a [Nagyméretű párhuzamos számítási megoldások fejlesztése a Batch segítségével](batch-api-basics.md)című témakörben találja.
+- A felhasználó által definiált útvonal létrehozásáról további információ: [Create a user-defined route - Azure Portal](../virtual-network/tutorial-create-route-table-portal.md).

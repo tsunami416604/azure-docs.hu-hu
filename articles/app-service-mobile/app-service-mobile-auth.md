@@ -1,77 +1,77 @@
 ---
 title: Hitelesítés és engedélyezés
-description: A Azure App Service hitelesítési/engedélyezési funkciójának fogalmi referenciája és áttekintése, különösen a Mobile apps esetében.
+description: Az Azure App Service hitelesítési/engedélyezési szolgáltatásának általános áttekintése és áttekintése, különösen a mobilalkalmazásokhoz.
 ms.topic: article
 ms.date: 10/01/2016
 ms.openlocfilehash: 4a9ef62178b9a58fa8703413a09114a617d1d239
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459463"
 ---
-# <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Hitelesítés és engedélyezés Azure App Service Mobile apps esetén
+# <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Hitelesítés és engedélyezés mobilalkalmazásokhoz az Azure App Service-ben
 
-Ez a cikk azt ismerteti, hogyan működik a hitelesítés és az engedélyezés, ha natív Mobile apps-t fejleszt App Service háttérrel. A App Service integrált hitelesítést és engedélyezést biztosít, így a Mobile apps a App Serviceban lévő kódok módosítása nélkül is képes aláírni a felhasználókat. Egyszerű módszert biztosít az alkalmazás védelme és a felhasználónkénti adatmennyiség használata. 
+Ez a cikk ismerteti, hogyan működik a hitelesítés és az engedélyezés, ha natív mobilalkalmazások at fejleszt az App Service háttérrendszerrel. Az App Service integrált hitelesítést és engedélyezést biztosít, így a mobilalkalmazások anélkül jelentkezhetnek be a felhasználókba, hogy módosítanák a kódot az App Service-ben. Ez egy egyszerű módja annak, hogy megvédje az alkalmazást, és a felhasználónkénti adatokkal való munkavégzést. 
 
-Ez a cikk a Mobile apps fejlesztésére koncentrál. A Mobile apps App Service hitelesítésének és engedélyezésének gyors megkezdéséhez tekintse meg az alábbi oktatóanyagok az iOS-alkalmazáshoz (vagy az [Android], a [Windows], [Xamarin.iOS], a [Xamarin.Android], a [Xamarin.Forms]vagy a [Cordova]) való [hitelesítés hozzáadását][iOS] ismertető témakört. 
+Ez a cikk a mobilalkalmazás-fejlesztésre összpontosít. Az App Service-hitelesítés és -engedélyezés gyors megkezdéséhez olvassa el az alábbi oktatóanyagok [egyikét: Hitelesítés hozzáadása az iOS-alkalmazáshoz][iOS] (vagy [Android,] [Windows,] [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms]vagy [Cordova]). 
 
-A hitelesítés és az engedélyezés App Serviceban való működésével kapcsolatos információkért lásd: [hitelesítés és engedélyezés a Azure app Serviceban](../app-service/overview-authentication-authorization.md).
+A hitelesítés és engedélyezés működéséről az App Service-ben a [Hitelesítés és engedélyezés az Azure App Service szolgáltatásban](../app-service/overview-authentication-authorization.md)című témakörben talál tájékoztatást.
 
-## <a name="authentication-with-provider-sdk"></a>Hitelesítés szolgáltatói SDK-val
+## <a name="authentication-with-provider-sdk"></a>Hitelesítés szolgáltatós SDK-val
 
-Miután minden App Service konfigurálva van, módosíthatja a mobil ügyfeleket, hogy bejelentkezzenek App Serviceba. Két megközelítés van:
+Miután minden konfigurálva van az App Service-ben, módosíthatja a mobilügyfeleket, hogy jelentkezzenek be az App Service szolgáltatással. Két megközelítés van itt:
 
-* Olyan SDK-t használjon, amelyet egy adott identitás-szolgáltató tesz közzé a személyazonosság azonosításához, majd a App Servicehoz való hozzáféréshez.
-* Használjon egy sor kódot, hogy a Mobile Apps ügyfél-SDK be tudja jelentkezni a felhasználókba.
+* Használjon egy SDK-t, amelyet egy adott identitásszolgáltató tesz közzé az identitás létrehozásához, majd az App Service-hez való hozzáféréshez.
+* Használjon egyetlen kódsort, hogy a Mobilalkalmazások ügyfél SDK-ja bejelentkezhessen a felhasználókhoz.
 
 > [!TIP]
-> A legtöbb alkalmazásnak rendelkeznie kell egy szolgáltatói SDK-val, hogy következetesebb felhasználói élményt kapjon a felhasználók bejelentkeznek, a jogkivonat-frissítési támogatás használatához, valamint a szolgáltató által megadott egyéb előnyök beszerzéséhez.
+> A legtöbb alkalmazás nak egy szolgáltató SDK-t kell használnia, hogy konzisztensebb felhasználói élményt kapjon a felhasználók bejelentkezésekor, a tokenfrissítési támogatás használatához, és hogy a szolgáltató által megadott egyéb előnyöket kapjon.
 > 
 > 
 
-Ha szolgáltatói SDK-t használ, a felhasználók bejelentkezhetnek olyan élménybe, amely szorosabban integrálódik az alkalmazás által futtatott operációs rendszerbe. Ez a módszer szolgáltatói jogkivonatot és néhány felhasználói információt is biztosít az ügyfélen, ami sokkal egyszerűbbé teszi a Graph API-k felhasználását és a felhasználói élmény testreszabását. Alkalmanként a blogok és a fórumok esetében az úgynevezett "ügyfél-folyamat" vagy "ügyfél által irányított folyamat", mivel a kód az ügyfélen jelentkezik a felhasználók számára, és az ügyfél kódja hozzáfér a szolgáltatói jogkivonathoz.
+Szolgáltató SDK használata esetén a felhasználók bejelentkezhetnek egy olyan élménybe, amely szorosabban integrálódik az alkalmazás által futtatott operációs rendszerrel. Ez a módszer egy szolgáltatói jogkivonatot és néhány felhasználói információt is biztosít az ügyfélen, ami sokkal könnyebbé teszi a grafikon API-k felhasználását és a felhasználói élmény testreszabását. Alkalmanként a blogok és fórumok, ez a továbbiakban az "ügyfél-folyamat" vagy "ügyfél-irányított folyamat", mert a kódot az ügyfél jelek a felhasználók, és az ügyfélkód hozzáfér a szolgáltató jogkivonatot.
 
-A szolgáltatói jogkivonat beszerzése után az ellenőrzéshez App Service kell elküldeni. Miután App Service érvényesíti a jogkivonatot, App Service létrehoz egy új App Service tokent, amelyet a rendszer visszaadott az ügyfélnek. A Mobile Apps Client SDK rendelkezik segítő módszerekkel az Exchange kezeléséhez, és automatikusan csatolja a jogkivonatot az alkalmazás összes kéréséhez. A fejlesztők a szolgáltatói jogkivonatra mutató hivatkozást is megtarthatnak.
+A szolgáltatói jogkivonat beszerzése után el kell küldeni az App Service-nek ellenőrzésre. Miután az App Service érvényesíti a jogkivonatot, az App Service létrehoz egy új App Service-jogkivonatot, amely visszakerül az ügyfélnek. A Mobile Apps ügyfél SDK rendelkezik segítő módszerek kel a csere kezeléséhez, és automatikusan csatolja a jogkivonatot az összes kérelmet az alkalmazás háttérrendszeréhez. A fejlesztők a szolgáltatói jogkivonatra mutató hivatkozást is megtarthatnak.
 
-A hitelesítési folyamattal kapcsolatos további információkért lásd: [app Service hitelesítési folyamat](../app-service/overview-authentication-authorization.md#authentication-flow). 
+A hitelesítési folyamattal kapcsolatos további információkért lásd: [App Service hitelesítési folyamat.](../app-service/overview-authentication-authorization.md#authentication-flow) 
 
-## <a name="authentication-without-provider-sdk"></a>Hitelesítés szolgáltatói SDK nélkül
+## <a name="authentication-without-provider-sdk"></a>Hitelesítés szolgáltató nélkül SDK
 
-Ha nem szeretne szolgáltatói SDK-t beállítani, engedélyezheti a Azure App Service Mobile Apps funkciójának bejelentkezni. A Mobile Apps Client SDK egy webes nézetet nyit meg a választott szolgáltatóhoz, és bejelentkezik a felhasználóval. A blogok és fórumok időnként a "kiszolgálói folyamatnak" vagy a "kiszolgáló által irányított folyamatnak" nevezik, mivel a kiszolgáló felügyeli a felhasználókat, és az ügyfél-SDK soha nem fogadja el a szolgáltatói jogkivonatot.
+Ha nem szeretne szolgáltatóSDK-t beállítani, engedélyezheti, hogy az Azure App Service mobilalkalmazások funkciója jelentkezzen be. A Mobile Apps ügyfél SDK megnyit egy webes nézetet az Ön által választott szolgáltató számára, és bejelentkezik a felhasználóba. Alkalmanként a blogok és fórumok, ez az úgynevezett "kiszolgáló iflow" vagy "kiszolgáló által irányított folyamat", mert a kiszolgáló kezeli a folyamatot, amely aláírja a felhasználók, és az ügyfél SDK soha nem kapja meg a szolgáltató token.
 
-A folyamat elindítására szolgáló kód az egyes platformokhoz tartozó hitelesítési oktatóanyag részét képezi. A folyamat végén az ügyfél-SDK App Service tokent tartalmaz, és a jogkivonat automatikusan csatolva lesz az alkalmazás-háttérbeli összes kérelemhez.
+A folyamat elindításához szükséges kód az egyes platformok hitelesítési oktatóanyaga tartalmazza. A folyamat végén az ügyfél SDK rendelkezik egy App Service-jogkivonattal, és a jogkivonat automatikusan csatlakozik az alkalmazás háttérrendszeréhez tartozó összes kérelemhez.
 
-A hitelesítési folyamattal kapcsolatos további információkért lásd: [app Service hitelesítési folyamat](../app-service/overview-authentication-authorization.md#authentication-flow). 
-## <a name="more-resources"></a>További segédanyagok
+A hitelesítési folyamattal kapcsolatos további információkért lásd: [App Service hitelesítési folyamat.](../app-service/overview-authentication-authorization.md#authentication-flow) 
+## <a name="more-resources"></a>További erőforrások
 
-A következő oktatóanyagok azt mutatják be, hogyan adhat hozzá hitelesítést a mobil ügyfelekhez a [kiszolgáló által irányított folyamat](../app-service/overview-authentication-authorization.md#authentication-flow)használatával:
+A következő oktatóanyagok bemutatják, hogyan adhat hitelesítést a mobilügyfelekhez a [kiszolgáló által irányított folyamat](../app-service/overview-authentication-authorization.md#authentication-flow)használatával:
 
-* [Hitelesítés hozzáadása iOS-alkalmazáshoz][iOS]
+* [Hitelesítés hozzáadása az iOS-alkalmazáshoz][iOS]
 * [Hitelesítés hozzáadása az Android-alkalmazáshoz][Android]
 * [Hitelesítés hozzáadása a Windows-alkalmazáshoz][Windows]
-* [Hitelesítés hozzáadása a Xamarin. iOS-alkalmazáshoz][Xamarin.iOS]
-* [Hitelesítés hozzáadása a Xamarin. Android-alkalmazáshoz][Xamarin.Android]
-* [Hitelesítés hozzáadása a Xamarin. Forms alkalmazáshoz][Xamarin.Forms]
-* [Hitelesítés hozzáadása a Cordova-alkalmazáshoz][Cordova]
+* [Hitelesítés hozzáadása a Xamarin.iOS alkalmazáshoz][Xamarin.iOS]
+* [Hitelesítés hozzáadása a Xamarin.Android alkalmazáshoz][Xamarin.Android]
+* [Hitelesítés hozzáadása a Xamarin.Forms alkalmazáshoz][Xamarin.Forms]
+* [Hitelesítés hozzáadása a Cordova alkalmazáshoz][Cordova]
 
-Használja az alábbi erőforrásokat, ha a Azure Active Directory [ügyfél által irányított folyamatot](../app-service/overview-authentication-authorization.md#authentication-flow) szeretné használni:
+A következő erőforrásokat használja, ha az Ügyfél [által irányított folyamatot](../app-service/overview-authentication-authorization.md#authentication-flow) szeretné használni az Azure Active Directoryhoz:
 
-* [Az iOS-es Active Directory-hitelesítési tár használata][ADAL-iOS]
-* [Az Android rendszerhez készült Active Directory-hitelesítési tár használata][ADAL-Android]
-* [A Windows és a Xamarin Active Directory-hitelesítési tár használata][ADAL-dotnet]
+* [Az iOS Active Directory hitelesítési könyvtárának használata][ADAL-iOS]
+* [Az Android Active Directory hitelesítési könyvtárának használata][ADAL-Android]
+* [A Windows és a Xamarin Active Directory hitelesítési könyvtárának használata][ADAL-dotnet]
 
-Használja a következő erőforrásokat, ha a Facebook-hoz készült [ügyfél-irányított folyamatot](../app-service/overview-authentication-authorization.md#authentication-flow) szeretné használni:
+Ha a Facebook [ügyféloldali folyamatát](../app-service/overview-authentication-authorization.md#authentication-flow) szeretné használni, használja a következő erőforrásokat:
 
-* [Az iOS-hez készült Facebook SDK használata](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
+* [Az iOS-es Facebook SDK használata](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
 
-Használja a következő erőforrásokat, ha az [ügyfél által irányított folyamatot](../app-service/overview-authentication-authorization.md#authentication-flow) szeretné használni a Twitteren:
+Használja a következő erőforrásokat, ha az [ügyfél által irányított folyamatot](../app-service/overview-authentication-authorization.md#authentication-flow) szeretné használni a Twitterhez:
 
-* [Az iOS-hez készült Twitter-háló használata](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
+* [A Twitter Fabric iOS-hez való használata](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
 
-Használja a következő erőforrásokat, ha a Google-hoz készült [ügyfél-átirányítású folyamatot](../app-service/overview-authentication-authorization.md#authentication-flow) szeretné használni:
+A következő erőforrásokat használja, ha a Google [ügyféláltal irányított folyamatát](../app-service/overview-authentication-authorization.md#authentication-flow) szeretné használni:
 
-* [Az iOS-hez készült Google bejelentkezési SDK használata](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
+* [A Google bejelentkezési SDK használata iOS-hez](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 
 [iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
 [Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md

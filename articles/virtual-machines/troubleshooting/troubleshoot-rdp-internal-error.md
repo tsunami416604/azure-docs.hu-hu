@@ -1,6 +1,6 @@
 ---
-title: Belső hiba történik, amikor RDP-kapcsolattal csatlakozik az Azure Virtual Machineshoz | Microsoft Docs
-description: Ismerje meg a Microsoft Azure-ban RDP belső kapcsolatos hibák elhárítása. |} A Microsoft Docs
+title: Belső hiba történik, amikor RDP-kapcsolatot hoz létre az Azure virtuális gépekkel | Microsoft dokumentumok
+description: Megtudhatja, hogy miként háríthatja el az RDP belső hibáit a Microsoft Azure-ban.| Microsoft dokumentumok
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,24 +13,24 @@ ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
 ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266922"
 ---
-#  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Belső hiba akkor fordul elő, amikor próbál csatlakozni egy Azure virtuális géphez a távoli asztalon keresztül
+#  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Belső hiba jelentkezik, ha távoli asztalon keresztül próbál csatlakozni az Azure-beli virtuális géphez
 
-Ez a cikk ismerteti, amikor megpróbál kapcsolódni egy virtuális géphez (VM) a Microsoft Azure-ban tapasztalható hiba.
+Ez a cikk egy olyan hibát ismertet, amely a Microsoft Azure virtuális géphez (VM) való csatlakozáskor jelenhet meg.
 
 
-## <a name="symptoms"></a>Tünetek
+## <a name="symptoms"></a>Probléma
 
-A távoli asztal protokoll (RDP) használatával nem lehet csatlakozni egy Azure virtuális Gépen. A kapcsolatot a "Távoli konfigurálása" szakaszban elakad, vagy a következő hibaüzenet jelenik meg:
+Nem tud csatlakozni egy Azure virtuális gép a távoli asztali protokoll (RDP) használatával. A kapcsolat elakad a "Távoli konfigurálása" szakaszban, vagy a következő hibaüzenet jelenik meg:
 
 - RDP belső hiba
 - Belső hiba történt
-- Ez a számítógép nem lehet csatlakozni a távoli számítógéppel. Próbáljon meg újra. Ha a probléma továbbra is fennáll, forduljon a tulajdonosa, a távoli számítógép vagy a hálózati rendszergazda
+- Ez a számítógép nem csatlakoztatható a távoli számítógéphez. Próbálkozzon újra a csatlakozáshoz. Ha a probléma továbbra is fennáll, forduljon a távoli számítógép tulajdonosához vagy a hálózati rendszergazdához
 
 
 ## <a name="cause"></a>Ok
@@ -43,33 +43,33 @@ A probléma a következő okok miatt fordulhat elő:
 
 ## <a name="solution"></a>Megoldás
 
-Mielőtt végrehajtaná ezeket a lépéseket, az érintett virtuális gép operációsrendszer-lemezének pillanatkép készítése a biztonsági mentéséhez. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
+Az alábbi lépések végrehajtása előtt készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információt a [Lemez pillanatképe](../windows/snapshot-copy-managed-disk.md)című témakörben talál.
 
-A probléma elhárításához használja a soros konzolt, vagy [javítsa ki a virtuális gépet](#repair-the-vm-offline) úgy, hogy a virtuális gép operációsrendszer-lemezét egy helyreállítási virtuális géphez csatolja.
+A probléma elhárításához használja a soros konzolt, vagy [javítsa ki a virtuális gép offline](#repair-the-vm-offline) állapotba helyezését a virtuális gép operációs rendszerlemezének helyreállítási virtuális géphez csatlakoztatásával.
 
 
-### <a name="use-serial-control"></a>Soros vezérlőelem használata
+### <a name="use-serial-control"></a>Soros vezérlő használata
 
-Kapcsolódjon a [soros konzolhoz, és nyissa meg a PowerShell-példányt](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Ha a soros konzol nincs engedélyezve a virtuális gépen, lépjen a [virtuális gép kijavítása offline](#repair-the-vm-offline) szakaszra.
+Csatlakozzon a [Soros konzolhoz, és nyissa meg a PowerShell-példányt.](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+) Ha a soros konzol nincs engedélyezve a virtuális gép, nyissa meg a [javítás a virtuális gép offline](#repair-the-vm-offline) szakaszban.
 
-#### <a name="step-1-check-the-rdp-port"></a>. Lépés: 1 Ellenőrizze az RDP-port
+#### <a name="step-1-check-the-rdp-port"></a>Lépés: 1 Ellenőrizze az RDP portot
 
-1. Egy PowerShell-példányban a [netstat](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
-) használatával győződjön meg arról, hogy a 8080-es portot más alkalmazások használják-e:
+1. Egy PowerShell-példányban a [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
+) segítségével ellenőrizze, hogy a 8080-as portot más alkalmazások használják-e:
 
         Netstat -anob |more
-2. Ha Termservice.exe 8080-as portot használ, akkor folytassa a 2. lépés. Ha egy másik szolgáltatás vagy alkalmazás eltérő Termservice.exe 8080-as portot használ, kövesse az alábbi lépéseket:
+2. Ha a Termservice.exe 8080-as portot használ, folytassa a 2. Ha a Termservice.exe-től eltérő másik szolgáltatás vagy alkalmazás a 8080-as portot használja, kövesse az alábbi lépéseket:
 
-    1. Állítsa le a szolgáltatást, amely a 3389-szolgáltatást használ:
+    1. Állítsa le a 3389 szolgáltatást használó alkalmazás szolgáltatását:
 
             Stop-Service -Name <ServiceName> -Force
 
-    2. Indítsa el a terminálszolgáltatás:
+    2. Indítsa el a terminálszolgáltatást:
 
             Start-Service -Name Termservice
 
-2. Ha az alkalmazás nem lehet leállítani, vagy ez a módszer nem vonatkozik Önre, módosítsa a portot, az RDP-hez:
+2. Ha az alkalmazás nem állítható le, vagy ha ez a módszer nem vonatkozik Önre, módosítsa az RDP portját:
 
     1. A port módosítása:
 
@@ -79,15 +79,15 @@ Kapcsolódjon a [soros konzolhoz, és nyissa meg a PowerShell-példányt](./seri
             
             Start-Service -Name Termservice 
 
-    2. Állítsa be az új port a tűzfalon:
+    2. Állítsa be az új port tűzfalát:
 
             Set-NetFirewallRule -Name "RemoteDesktop-UserMode-In-TCP" -LocalPort <NEW PORT (decimal)>
 
-    3. [Frissítse a hálózati biztonsági csoportot az új portra](../../virtual-network/security-overview.md) a Azure Portal RDP-porton.
+    3. [Frissítse az új port hálózati biztonsági csoportját](../../virtual-network/security-overview.md) az Azure Portal RDP-portján.
 
-#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>2\. lépés: Az RDP-önaláírt tanúsítvány a megfelelő engedélyek beállítása
+#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>2. lépés: Állítsa be a megfelelő engedélyeket az RDP önaláírt tanúsítvány
 
-1.  Egy PowerShell-példány futtassa a következő parancsokat egyenként az RDP-önaláírt tanúsítvány megújítása:
+1.  Egy PowerShell-példányban egyenként futtassa a következő parancsokat az RDP önaláírt tanúsítványának megújításához:
 
         Import-Module PKI 
     
@@ -101,18 +101,18 @@ Kapcsolódjon a [soros konzolhoz, és nyissa meg a PowerShell-példányt](./seri
 
         Start-Service -Name "SessionEnv"
 
-2. Ha ez a módszer használatával a tanúsítvány nem tudják megújítani, próbálja meg az RDP-önaláírt tanúsítvány megújítása távolról:
+2. Ha ezzel a módszerrel nem tudja megújítani a tanúsítványt, próbálja meg távolról megújítani az RDP-alapú önaláírt tanúsítványt:
 
-    1. Egy olyan működő virtuális gépről, amely a problémát okozó virtuális géphez kapcsolódik, írja be az **MMC** parancsot a **Futtatás** mezőbe a Microsoft Management Console megnyitásához.
-    2. A **fájl** menüben kattintson a **beépülő modul hozzáadása/eltávolítása**elemre, válassza a **tanúsítványok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-    3. Válassza a **számítógépfiókok**lehetőséget, válasszon **másik számítógépet**, majd adja hozzá a probléma virtuális gép IP-címét.
-    4. Nyissa meg a **távoli Desktop\Certificates** mappát, kattintson a jobb gombbal a tanúsítványra, majd válassza a **Törlés**lehetőséget.
-    5. A PowerShell-példány a soros konzolból indítsa újra a távoli asztal konfigurálásának szolgáltatást:
+    1. Egy működő virtuális gép, amely kapcsolatban áll a problémát tapasztal, írja be az **mmc** a **Futtatás** mezőbe a Microsoft Management Console megnyitásához.
+    2. A **Fájl** menüben válassza a **Beépülő modul hozzáadása/eltávolítása menüBen**a **Tanúsítványok**, majd a **Hozzáadás parancsot.**
+    3. Válassza **a Számítógépfiókok**lehetőséget, válassza **a Másik számítógép**lehetőséget, majd adja hozzá a problémás virtuális gép IP-címét.
+    4. Nyissa meg a **Távoli asztal\Tanúsítványok** mappát, kattintson a jobb gombbal a tanúsítványra, majd válassza a **Törlés parancsot.**
+    5. A Serial Console egyik PowerShell-példányában indítsa újra a Távoli asztal konfigurációja szolgáltatást:
 
             Stop-Service -Name "SessionEnv"
 
             Start-Service -Name "SessionEnv"
-3. Állítsa alaphelyzetbe a MachineKeys mappa engedélyeit.
+3. Állítsa alaphelyzetbe a MachineKeys mappa engedélyét.
 
         remove-module psreadline icacls
 
@@ -132,44 +132,44 @@ Kapcsolódjon a [soros konzolhoz, és nyissa meg a PowerShell-példányt](./seri
         
         Restart-Service TermService -Force
 
-4. Indítsa újra a virtuális Gépet, és ismételje meg a távoli asztali kapcsolatot a virtuális gép indítása. Ha a hiba továbbra is fennáll, lépjen a következő lépéssel.
+4. Indítsa újra a virtuális gép, majd próbálja meg egy távoli asztali kapcsolat indítása a virtuális gép. Ha a hiba továbbra is előfordul, folytassa a következő lépéssel.
 
-#### <a name="step-3-enable-all-supported-tls-versions"></a>3\. lépés: Engedélyezze az összes támogatott TLS-verziók
+#### <a name="step-3-enable-all-supported-tls-versions"></a>3. lépés: Az összes támogatott TLS-verzió engedélyezése
 
-Az RDP-ügyfelet használja az alapértelmezett protokoll a TLS 1.0. Azonban ez módosítható a TLS 1.1-et az új standard vált. A TLS 1.1 le van tiltva, a virtuális gépen, ha a kapcsolat nem jön létre.
-1.  CMD-példányban engedélyezze a TLS protokoll:
+Az RDP-ügyfél a TLS 1.0 protokollt használja alapértelmezett protokollként. Ez azonban megváltoztatható TLS 1.1-re, amely az új szabványsá vált. Ha a TLS 1.1 le van tiltva a virtuális gépen, a kapcsolat sikertelen lesz.
+1.  CMD-példányban engedélyezze a TLS protokollt:
 
         reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
 
         reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
 
         reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
-2.  Módosítások felülírása megakadályozni az AD-házirend, ideiglenesen állítsa le a csoportházirend frissítése:
+2.  Ha meg szeretné akadályozni, hogy az AD-házirend felülírja a módosításokat, ideiglenesen állítsa le a csoportházirend frissítését:
 
         REG add "HKLM\SYSTEM\CurrentControlSet\Services\gpsvc" /v Start /t REG_DWORD /d 4 /f
-3.  A virtuális gép újraindítása, hogy a módosítások életbe léptetéséhez. Ha a probléma megoldódott, futtassa a következő parancsot a csoportházirend újbóli engedélyezése:
+3.  Indítsa újra a virtuális gép, hogy a módosítások érvénybe lépnek. Ha a probléma megoldódott, futtassa a következő parancsot a csoportházirend újbóli engedélyezéséhez:
 
         sc config gpsvc start= auto sc start gpsvc
 
         gpupdate /force
-    Ha a módosítás visszavonásra kerül, az azt jelenti, hogy nincs-e az Active Directory-házirend a vállalati tartomány. Akkor módosítsa az adott házirendnek forduljon elő ismét a probléma elkerülése érdekében.
+    Ha a módosítás visszaáll, az azt jelenti, hogy a vállalati tartományban van egy Active Directory-házirend. Meg kell változtatni, hogy a politika, hogy elkerüljék ezt a problémát előforduló újra.
 
-### <a name="repair-the-vm-offline"></a>Javítsa ki a virtuális Gépet kapcsolat nélküli módban
+### <a name="repair-the-vm-offline"></a>A virtuális gép offline javítása
 
-#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez
+#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Az operációs rendszer lemezének csatolása helyreállítási virtuális géphez
 
-1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
-2. Miután az operációsrendszer-lemezt csatlakoztatta a helyreállítási virtuális géphez, ellenőrizze, hogy a lemez **online** állapotban van-e megjelölve a Lemezkezelés konzolon. Vegye figyelembe a meghajtóbetűjelet, amely a csatlakoztatott operációsrendszer-lemez van rendelve.
-3. Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
+1. [Csatlakoztassa az operációs rendszer lemezét egy helyreállítási virtuális géphez.](../windows/troubleshoot-recovery-disks-portal.md)
+2. Miután az operációs rendszer lemeze csatlakozik a helyreállítási virtuális géphez, győződjön meg arról, hogy a lemez **online** ként van megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjelet.
+3. Távoli asztali kapcsolat indítása a helyreállítási virtuális géppel.
 
-#### <a name="enable-dump-log-and-serial-console"></a>Memóriakép napló és a soros konzol engedélyezése
+#### <a name="enable-dump-log-and-serial-console"></a>Memóriaképnapló és soros konzol engedélyezése
 
-Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következő szkriptet.
+A memóriaképnapló és a Soros konzol engedélyezéséhez futtassa a következő parancsfájlt.
 
-1. Nyisson meg egy rendszergazda jogú parancssor-munkamenetet (**Futtatás rendszergazdaként**).
+1. Nyisson meg egy rendszergazdai parancssori munkamenetet (**Futtatás rendszergazdaként**).
 2. Futtassa a következő parancsfájlt:
 
-    Ez a szkript feltételezzük, hogy a meghajtóbetűjel van rendelve a csatlakoztatott operációsrendszer-lemez-e F. cserélje le ezt a meghajtóbetűjelet, a virtuális gép a megfelelő értékkel.
+    Ebben a parancsfájlban feltételezzük, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel f. Cserélje le ezt a meghajtóbetűjelet a virtuális gép megfelelő értékével.
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -193,10 +193,10 @@ Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következ�
     reg unload HKLM\BROKENSYSTEM
     ```
 
-#### <a name="reset-the-permission-for-machinekeys-folder"></a>MachineKeys mappa engedélyeinek alaphelyzetbe állítása
+#### <a name="reset-the-permission-for-machinekeys-folder"></a>A MachineKeys mappa engedélyének alaphelyzetbe állítása
 
-1. Nyisson meg egy rendszergazda jogú parancssor-munkamenetet (**Futtatás rendszergazdaként**).
-2. Futtassa a következő szkriptet. Ez a szkript feltételezzük, hogy a meghajtóbetűjel van rendelve a csatlakoztatott operációsrendszer-lemez-e F. cserélje le ezt a meghajtóbetűjelet, a virtuális gép a megfelelő értékkel.
+1. Nyisson meg egy rendszergazdai parancssori munkamenetet (**Futtatás rendszergazdaként**).
+2. Futtassa az alábbi parancsprogramot. Ebben a parancsfájlban feltételezzük, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel f. Cserélje le ezt a meghajtóbetűjelet a virtuális gép megfelelő értékével.
 
         Md F:\temp
 
@@ -212,10 +212,10 @@ Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következ�
 
         icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt
 
-#### <a name="enable-all-supported-tls-versions"></a>Engedélyezze a TLS az összes támogatott verzió
+#### <a name="enable-all-supported-tls-versions"></a>Az összes támogatott TLS-verzió engedélyezése
 
-1.  Nyisson meg egy rendszergazda jogú parancssor-munkamenetet (**Futtatás rendszergazdaként**), és futtassa a következő parancsokat. Az alábbi parancsfájl feltételezi, hogy a csatlakoztatott operációsrendszer-lemez meghajtóbetűjelét van hozzárendelve F. cserélje le ezt a meghajtóbetűjelet, a megfelelő értékkel van a virtuális géphez.
-2.  Ellenőrzés, amely a TLS engedélyezve van:
+1.  Nyisson meg egy rendszergazdai parancssori munkamenetet (**Futtatás rendszergazdaként**), és futtassa a következő parancsokat. A következő parancsfájl feltételezi, hogy az illesztőprogram betűjele van rendelve a csatlakoztatott operációs rendszer lemez F. Cserélje le ezt a meghajtóbetűjelet a megfelelő értéket a virtuális gép.
+2.  Ellenőrizze, hogy melyik TLS engedélyezve van:
 
         reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
@@ -231,7 +231,7 @@ Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következ�
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWO
 
-3.  Ha a kulcs nem létezik, vagy az értéke **0**, engedélyezze a protokollt a következő parancsfájlok futtatásával:
+3.  Ha a kulcs nem létezik, vagy értéke **0,** engedélyezze a protokollt a következő parancsfájlok futtatásával:
 
         REM Enable TLS 1.0, TLS 1.1 and TLS 1.2
 
@@ -262,7 +262,7 @@ Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következ�
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
-5.  [Válassza le az operációsrendszer-lemezt, és hozza létre újra a virtuális gépet](../windows/troubleshoot-recovery-disks-portal.md), majd győződjön meg arról, hogy a probléma megoldódott-e.
+5.  [Válassza le az operációs rendszer lemezét, és hozza létre újra a virtuális gép](../windows/troubleshoot-recovery-disks-portal.md), majd ellenőrizze, hogy a probléma megoldódott.
 
 
 

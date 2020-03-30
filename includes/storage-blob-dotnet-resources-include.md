@@ -9,31 +9,31 @@ ms.date: 01/15/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 8ca4b1ce6e0470476e9f16ed338b8707d3faf90f
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128473"
 ---
-## <a name="resources-for-development-with-net"></a>Erőforrások a .NET-tel való fejlesztéshez
+## <a name="resources-for-development-with-net"></a>Fejlesztési erőforrások a .NET segítségével
 
-Az alábbi hivatkozások hasznos erőforrásokat biztosítanak a fejlesztők számára az Azure Storage .NET-hez készült ügyféloldali kódtára használatával.
+Az alábbi hivatkozások hasznos erőforrásokat biztosítanak a .NET Azure Storage-ügyfélkódtárhasználatával használó fejlesztők számára.
 
-### <a name="azure-storage-common-apis"></a>Azure Storage – általános API-k
+### <a name="azure-storage-common-apis"></a>Az Azure Storage gyakori API-jai
 
-- [API-referenciák dokumentációja](/dotnet/api/overview/azure/storage)
-- [Könyvtár forráskódja](https://github.com/Azure/azure-storage-net/tree/master/Common)
+- [API-referenciadokumentáció](/dotnet/api/overview/azure/storage)
+- [Tár forráskódja](https://github.com/Azure/azure-storage-net/tree/master/Common)
 - [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 
-### <a name="blob-storage-apis"></a>A BLOB storage API-k
+### <a name="blob-storage-apis"></a>Blob tárolási API-k
 
-- [API-referenciák dokumentációja](/dotnet/api/overview/azure/storage)
-- [Könyvtár forráskódja](https://github.com/Azure/azure-storage-net/tree/master/Blob)
-- [Csomag (NuGet) a 11. x verzióhoz](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
-- [Csomag (NuGet) a 12. x verzióhoz](https://www.nuget.org/packages/Azure.Storage.Blobs)
+- [API-referenciadokumentáció](/dotnet/api/overview/azure/storage)
+- [Tár forráskódja](https://github.com/Azure/azure-storage-net/tree/master/Blob)
+- [Csomag (NuGet) a 11.x verzióhoz](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+- [Csomag (NuGet) a 12.x verzióhoz](https://www.nuget.org/packages/Azure.Storage.Blobs)
 - [Minták](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
-### <a name="net-tools"></a>.NET-eszközök
+### <a name="net-tools"></a>.NET eszközök
 
 - [.NET](https://dotnet.microsoft.com/download/)
-- [Visual Studio](https://visualstudio.microsoft.com/)
+- [Vizuális stúdió](https://visualstudio.microsoft.com/)

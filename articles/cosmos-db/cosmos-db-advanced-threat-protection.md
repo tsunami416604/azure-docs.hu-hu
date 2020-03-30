@@ -1,6 +1,6 @@
 ---
-title: Komplex veszélyforrások elleni védelem Azure Cosmos DB
-description: Ismerje meg, hogyan biztosítja a Azure Cosmos DB az inaktív adatok titkosítását és megvalósítását.
+title: Komplex veszélyforrások elleni védelem az Azure Cosmos DB-hez
+description: Ismerje meg, hogy az Azure Cosmos DB hogyan biztosítja az inaktív adatok titkosítását, és hogyan valósítható meg.
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/13/2019
@@ -9,105 +9,105 @@ ms.author: memildin
 author: memildin
 manager: rkarlin
 ms.openlocfilehash: bcc1c6ffe7cdec4aed325a67969235ae993a5109
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77614835"
 ---
-# <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>A Azure Cosmos DB komplex veszélyforrások elleni védelme (előzetes verzió)
+# <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Komplex veszélyforrások elleni védelem az Azure Cosmos DB számára (előzetes verzió)
 
-A Azure Cosmos DB komplex veszélyforrások elleni védelme további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel Azure Cosmos DB fiókok eléréséhez vagy kihasználásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelésére, akár biztonsági szakértő nélkül, akár a központi biztonsági figyelő rendszerekkel való integrációhoz.
+Az Azure Cosmos DB komplex veszélyforrások elleni védelem egy további biztonsági intelligenciaréteget biztosít, amely észleli az Azure Cosmos DB-fiókok elérésére vagy kihasználására irányuló szokatlan és potenciálisan káros kísérleteket. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül is, hogy biztonsági szakértő lenne, és integrálja azokat a központi biztonsági felügyeleti rendszerekkel.
 
-A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a biztonsági riasztások integrálva vannak [Azure Security Centerekkel](https://azure.microsoft.com/services/security-center/), és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és szervizelésével kapcsolatos ajánlásokkal együtt.
+A biztonsági riasztások akkor aktiválódnak, ha tevékenységi rendellenességek lépnek fel. Ezek a biztonsági riasztások integrálva vannak [az Azure Security Centerrel,](https://azure.microsoft.com/services/security-center/)és e-mailben is elküldésre kerülnek az előfizetés-rendszergazdáknak, a gyanús tevékenység részleteivel és a fenyegetések kivizsgálásával és elhárításával kapcsolatos javaslatokkal.
 
 > [!NOTE]
 >
-> * A Azure Cosmos DB komplex veszélyforrások elleni védelme jelenleg csak az SQL API esetében érhető el.
-> * A Azure Cosmos DB komplex veszélyforrások elleni védelme jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
+> * Az Azure Cosmos DB komplex veszélyforrások elleni védelem jelenleg csak az SQL API-hoz érhető el.
+> * Az Azure Cosmos DB komplex veszélyforrások elleni védelme jelenleg nem érhető el az Azure kormányzati és a szuverén felhőrégióiban.
 
-A biztonsági riasztások teljes körű vizsgálatához javasolt a [diagnosztikai naplózás engedélyezése Azure Cosmos DBban](https://docs.microsoft.com/azure/cosmos-db/logging), amely maga az adatbázison naplózza a műveleteket, beleértve a szifiliszi műveleteket az összes dokumentumon, tárolón és adatbázison.
+A biztonsági riasztások teljes körű vizsgálati tapasztalata érdekében azt javasoljuk, hogy engedélyezzük a diagnosztikai naplózást az [Azure Cosmos DB-ben,](https://docs.microsoft.com/azure/cosmos-db/logging)amely naplózza a műveleteket az adatbázisban, beleértve a CRUD-műveleteket az összes dokumentumon, tárolón és adatbázison.
 
 ## <a name="threat-types"></a>Fenyegetéstípusok
 
-A Azure Cosmos DB komplex veszélyforrások elleni védelme olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. Jelenleg a következő riasztásokat indítja el:
+Az Azure Cosmos DB komplex veszélyforrások elleni védelem észleli a rendellenes tevékenységeket, amelyek szokatlan és potenciálisan káros adatbázisok elérésére vagy kihasználására irányuló kísérleteket jeleznek. Jelenleg a következő riasztásokat indíthatja el:
 
-- **Hozzáférés szokatlan helyekről**: Ez a riasztás akkor aktiválódik, ha módosul a hozzáférési minta egy Azure Cosmos-fiókhoz, ahol valaki egy szokatlan földrajzi helyről kapcsolódott a Azure Cosmos db végponthoz. Bizonyos esetekben a riasztás jogszerű műveletet észlel, ami egy új alkalmazás vagy fejlesztői karbantartási művelet. Más esetekben a riasztás rosszindulatú műveletet észlel egy korábbi alkalmazotttól, külső támadótól stb.
+- **Hozzáférés szokatlan helyekről:** Ez a riasztás akkor aktiválódik, ha egy Azure Cosmos-fiók hozzáférési mintájában megváltozik, ahol valaki szokatlan földrajzi helyről csatlakozott az Azure Cosmos DB-végponthoz. Bizonyos esetekben a riasztás észleli a jogos művelet, azaz egy új alkalmazás vagy fejlesztő karbantartási művelet. Más esetekben a riasztás rosszindulatú műveletet észlel egy korábbi alkalmazotttól, külső támadótól stb.
 
-- **Szokatlan adatok kinyerése**: Ez a riasztás akkor aktiválódik, ha az ügyfél szokatlan adatmennyiséget nyer ki egy Azure Cosmos db fiókból. Ez lehet annak a tünete, hogy egyes adatok kiszűrése a fiókban tárolt adatok külső adattárba történő átviteléhez.
+- **Szokatlan adatkinyerés:** Ez a riasztás akkor aktiválódik, ha egy ügyfél szokatlan mennyiségű adatot nyer ki egy Azure Cosmos DB-fiókból. Ez lehet a tünete néhány adat kiszivárgásvégzett át a fiókban tárolt összes adatot egy külső adattárba.
 
 ## <a name="set-up-advanced-threat-protection"></a>Komplex veszélyforrások elleni védelem beállítása
 
-### <a name="set-up-atp-using-the-portal"></a>ATP beállítása a portál használatával
+### <a name="set-up-atp-using-the-portal"></a>Az ATP beállítása a portál használatával
 
-1. Indítsa el a Azure Portalt a [https://portal.azure.com](https://portal.azure.com/).
+1. Indítsa el az [https://portal.azure.com](https://portal.azure.com/)Azure Portalt a helyen.
 
-2. A Azure Cosmos DB fiók **Beállítások** menüjében válassza a **fokozott biztonság**lehetőséget.
+2. Az Azure Cosmos DB-fiókjában a **Beállítások** menüben válassza a **Speciális biztonság parancsot.**
 
-    ![ATP beállítása](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png)
+    ![Az ATP beállítása](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png)
 
-3. A **speciális biztonsági** beállítások panelen:
+3. A **Speciális biztonsági** konfiguráció panelen:
 
-    * Kattintson a komplex **veszélyforrások elleni védelem** lehetőségre a **beállításához.**
-    * Kattintson a **Save (Mentés** ) gombra az új vagy frissített összetett veszélyforrások elleni védelmi szabályzat mentéséhez.   
+    * Kattintson a **Speciális veszélyforrások elleni védelem** beállításra, ha **be**szeretné állítani.
+    * Az új vagy frissített Advanced Threat Protection-szabályzat mentéséhez kattintson a **Mentés** lehetőségre.   
 
-### <a name="set-up-atp-using-rest-api"></a>ATP beállítása REST API használatával
+### <a name="set-up-atp-using-rest-api"></a>Atp beállítása REST API-val
 
-A REST API-parancsokkal létrehozhat, frissíthet vagy beszerezhet egy adott Azure Cosmos DB fiók komplex veszélyforrások elleni védelmének beállítását.
+A Rest API-parancsok használatával hozzon létre, frissítse vagy szerezzen be egy adott Azure Cosmos DB-fiók komplex veszélyforrások elleni védelmi beállítást.
 
 * [Komplex veszélyforrások elleni védelem – létrehozás](https://go.microsoft.com/fwlink/?linkid=2099745)
-* [Komplex veszélyforrások elleni védelem – Get](https://go.microsoft.com/fwlink/?linkid=2099643)
+* [Komplex veszélyforrások elleni védelem - Get](https://go.microsoft.com/fwlink/?linkid=2099643)
 
-### <a name="set-up-atp-using-azure-powershell"></a>ATP beállítása Azure PowerShell használatával
+### <a name="set-up-atp-using-azure-powershell"></a>Az ATP beállítása az Azure PowerShell használatával
 
 Használja a következő PowerShell-parancsmagokat:
 
-* [Komplex veszélyforrások elleni védelem engedélyezése](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409)
-* [Komplex veszélyforrások elleni védelem](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
-* [A komplex veszélyforrások elleni védelem letiltása](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
+* [A Komplex veszélyforrások elleni védelem engedélyezése](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409)
+* [Speciális veszélyforrások elleni védelem](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
+* [Irányított veszélyforrások elleni védelem letiltása](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
 
-### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használata
+### <a name="using-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok használata
 
-Azure Resource Manager-sablonnal beállíthatja, hogy a rendszer engedélyezve legyen a komplex veszélyforrások elleni védelem Cosmos DB.
-További információ: CosmosDB- [fiók létrehozása komplex veszélyforrások elleni védelemmel](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/).
+Azure Resource Manager-sablon használatával állítsa be a Cosmos DB-t, ha a komplex veszélyforrások elleni védelem engedélyezve van.
+További információ: [Create a CosmosDB Account with Advanced Threat Protection (CosmosDB-fiók létrehozása speciális veszélyforrások elleni védelemmel).](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/)
 
-### <a name="using-azure-policy"></a>Azure Policy használata
+### <a name="using-azure-policy"></a>Az Azure-szabályzat használata
 
-A Cosmos DB a komplex veszélyforrások elleni védelem engedélyezéséhez használjon Azure Policy.
+Azure-szabályzat használatával engedélyezze a Cosmos DB komplex veszélyforrások elleni védelmét.
 
-1. Indítsa el az Azure **Policy-fogalommeghatározások** lapot, és keressen rá a Cosmos db házirend komplex **veszélyforrások elleni védelmének üzembe helyezése** lehetőségre.
+1. Indítsa el az Azure **Policy - Definíciók** lapot, és keresse meg a Központi veszélyforrások elleni védelem üzembe helyezése a **Cosmos DB-szabályzatot.**
 
     ![Keresési szabályzat](./media/cosmos-db-advanced-threat-protection/cosmos-db.png) 
 
-1. Kattintson a komplex **veszélyforrások elleni védelem telepítése CosmosDB** házirendre, majd kattintson a **hozzárendelés**elemre.
+1. Kattintson a **CosmosDB speciális veszélyforrások elleni védelmének telepítésére,** majd a **Hozzárendelés gombra.**
 
     ![Előfizetés vagy csoport kiválasztása](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png)
 
 
-1. A **hatókör** mezőben kattintson a három pontra, válasszon ki egy Azure-előfizetést vagy erőforráscsoportot, majd kattintson a **kiválasztás**elemre.
+1. A **Hatókör mezőben** kattintson a három elemre, válasszon ki egy Azure-előfizetést vagy erőforráscsoportot, majd kattintson a **Kijelölés gombra.**
 
     ![Házirend-definíciók lap](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png)
 
 
-1. Adja meg a többi paramétert, majd kattintson a **hozzárendelés**elemre.
+1. Írja be a többi paramétert, majd kattintson **a Hozzárendelés gombra.**
 
-## <a name="manage-atp-security-alerts"></a>ATP biztonsági riasztások kezelése
+## <a name="manage-atp-security-alerts"></a>Az ATP biztonsági riasztásainak kezelése
 
-Ha Azure Cosmos DB tevékenység anomália történik, a rendszer egy biztonsági riasztást indít el a gyanús biztonsági eseménnyel kapcsolatos információkkal. 
+Amikor az Azure Cosmos DB tevékenységa anomáliák fordulnak elő, egy biztonsági riasztás aktiválódik a gyanús biztonsági esemény információkat. 
 
- Azure Security Center az aktuális [biztonsági riasztásokat](../security-center/security-center-alerts-overview.md)áttekintheti és kezelheti.  Kattintson egy adott riasztásra [Security Center](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) a lehetséges okok és az ajánlott műveletek megtekintéséhez és a lehetséges fenyegetések enyhítéséhez. Az alábbi képen egy példa látható a Security Centerban megadott riasztási adatokra.
+ Az Azure Security Center ben áttekintheti és kezelheti az aktuális [biztonsági riasztásokat.](../security-center/security-center-alerts-overview.md)  Kattintson egy adott riasztásra a [Security Centerben](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) a lehetséges okok és a potenciális fenyegetés kivizsgálására és csökkentésére javasolt műveletek megtekintéséhez. Az alábbi képen egy példa a biztonsági központban megadott riasztási részletekre mutat be.
 
  ![Fenyegetés részletei](./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png)
 
-A rendszer a riasztás részleteivel és a javasolt műveletekkel kapcsolatos e-mail-értesítést is küld. Az alábbi képen egy riasztási e-mail látható.
+A rendszer e-mailértesítést is küld a riasztás részleteivel és az ajánlott műveletekkel. Az alábbi képen egy figyelmeztető e-mail látható.
 
  ![Riasztás részletei](./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png)
 
-## <a name="cosmos-db-atp-alerts"></a>ATP-riasztások Cosmos DB
+## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP riasztások
 
- A Azure Cosmos DB-fiókok figyelése során generált riasztások listájának megtekintéséhez tekintse meg a Azure Security Center dokumentációjának [Cosmos db riasztások](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos) című szakaszát.
+ Az Azure Cosmos DB-fiókok figyelésekén létrehozott riasztások listájának megtekintéséhez tekintse meg a [Cosmos DB riasztások](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos) szakaszaz Azure Security Center dokumentációjában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ a [diagnosztikai naplózásról Azure Cosmos db](cosmosdb-monitor-resource-logs.md)
-* További információ a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* További információ a [diagnosztikai naplózásról az Azure Cosmos DB-ben](cosmosdb-monitor-resource-logs.md)
+* További információ az [Azure Security Centerről](https://docs.microsoft.com/azure/security-center/security-center-intro)

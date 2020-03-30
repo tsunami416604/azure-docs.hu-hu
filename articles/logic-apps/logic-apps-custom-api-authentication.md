@@ -1,163 +1,163 @@
 ---
-title: Hitelesítés hozzáadása az egyéni API-khoz irányuló hívások biztonságossá tételéhez
-description: A hitelesítés beállítása az egyéni API-khoz érkező hívások biztonságának növeléséhez Azure Logic Apps
+title: Hitelesítés hozzáadása az egyéni API-k hívásainak védelméhez
+description: A hitelesítés beállítása az Azure Logic Apps egyéni API-k hívásainak biztonságának növelése érdekében
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77191410"
 ---
-# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>A Azure Logic Apps egyéni API-khoz érkező hívások biztonságának fokozása
+# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Az Azure Logic Apps egyéni API-khívásainak biztonsága
 
-Az API-k hívásának biztonsága érdekében beállíthatja Azure Active Directory (Azure AD) hitelesítését a Azure Portal segítségével, így nem kell frissítenie a kódot. Alternatív megoldásként a hitelesítés előírásához és kényszerítéséhez az API kódját is használhatja.
+Az API-k hívásainak biztonsága érdekében az Azure Active Directory (Azure AD) hitelesítést az Azure Portalon keresztül állíthatja be, így nem kell frissítenie a kódot. Alternatív megoldásként a hitelesítés előírásához és kényszerítéséhez az API kódját is használhatja.
 
-## <a name="authentication-options-for-your-api"></a>Az API hitelesítési beállításai
+## <a name="authentication-options-for-your-api"></a>Az API hitelesítési lehetőségei
 
-Az egyéni API-hívások biztonsága az alábbi módokon javítható:
+Az egyéni API-hoz való hívások biztonságát az alábbi módokon növelheti:
 
-* [Nem változik a kód módosítása](#no-code): az API-t az [Azure Active Directory (Azure ad)](../active-directory/fundamentals/active-directory-whatis.md) segítségével az Azure Portal keresztül biztosíthatja, így nem kell frissítenie a kódot, vagy újra kell telepítenie az API-t.
+* [Nincs kódmódosítás:](#no-code)Védje az API-t az [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) használatával az Azure Portalon keresztül, így nem kell frissítenie a kódot, vagy újratelepítenie kell az API-t.
 
   > [!NOTE]
-  > Alapértelmezés szerint a Azure Portal bekapcsolt Azure AD-hitelesítés nem biztosít részletes engedélyt. Ez a hitelesítés például zárolja az API-t egy adott bérlőre, nem pedig egy adott felhasználóra vagy alkalmazásra. 
+  > Alapértelmezés szerint az Azure AD-hitelesítés, amely bevan kapcsolva az Azure Portalon nem nyújt részletes engedélyezést. Például ez a hitelesítés zárolja az API-t csak egy adott bérlő, nem egy adott felhasználó vagy alkalmazás. 
 
-* [Frissítse API-kódját](#update-code): gondoskodjon az API-k biztonságáról a [tanúsítványalapú hitelesítés](#certificate), az [alapszintű hitelesítés](#basic)vagy az [Azure ad-hitelesítés](#azure-ad-code) kód használatával történő betartatásával.
+* [Az API-kód frissítése:](#update-code)Az API védelme [tanúsítványhitelesítés,](#certificate) [alapfokú hitelesítés](#basic)vagy [Azure AD-hitelesítés](#azure-ad-code) kódon keresztüli kényszerítésével.
 
 <a name="no-code"></a>
 
-### <a name="authenticate-calls-to-your-api-without-changing-code"></a>A kód módosítása nélkül hitelesítheti az API-hívásokat
+### <a name="authenticate-calls-to-your-api-without-changing-code"></a>Az API-ba irányuló hívások hitelesítése a kód módosítása nélkül
 
-A metódus általános lépései:
+A módszer általános lépései:
 
-1. Hozzon létre két Azure Active Directory (Azure AD) alkalmazás-identitást: egyet a logikai alkalmazáshoz, egy pedig a webalkalmazáshoz (vagy egy API-alkalmazáshoz).
+1. Hozzon létre két Azure Active Directory (Azure AD) alkalmazásidentitást: egyet a logikai alkalmazáshoz, egyet pedig a webalkalmazáshoz (vagy AZ API-alkalmazáshoz).
 
-2. Az API-hívások hitelesítéséhez használja a logikai alkalmazáshoz tartozó Azure AD-alkalmazás identitásához társított egyszerű szolgáltatás hitelesítő adatait (ügyfél-azonosító és titkos kulcs).
+2. Az API-hoz való hívások hitelesítéséhez használja a hitelesítő adatokat (ügyfél-azonosító és titkos) az Azure AD-alkalmazás identitásához társított a logikai alkalmazáshoz tartozó.
 
-3. Adja meg az alkalmazás azonosítóit a logikai alkalmazás definíciójában.
+3. Az alkalmazásazonosítók felvétele a logikai alkalmazás definíciójába.
 
-#### <a name="part-1-create-an-azure-ad-application-identity-for-your-logic-app"></a>1\. rész: Azure AD-alkalmazás identitásának létrehozása a logikai alkalmazáshoz
+#### <a name="part-1-create-an-azure-ad-application-identity-for-your-logic-app"></a>1. rész: Hozzon létre egy Azure AD-alkalmazás identitását a logikai alkalmazáshoz
 
-A logikai alkalmazás ezt az Azure AD-alkalmazás identitását használja az Azure AD-vel való hitelesítéshez. Ezt az identitást csak egyszer kell beállítania a címtárhoz. Dönthet például úgy, hogy ugyanazt az identitást használja az összes logikai alkalmazáshoz, de az egyes logikai alkalmazások egyedi identitásait is létrehozhatja. Ezeket az identitásokat beállíthatja a Azure Portalban, vagy használhatja a [PowerShellt](#powershell).
+A logikai alkalmazás ezt az Azure AD-alkalmazásidentitást használja az Azure AD-vel való hitelesítéshez. Ezt az identitást csak egyszer kell beállítania a címtárhoz. Például dönthet úgy, hogy ugyanazt az identitást használja az összes logikai alkalmazáshoz, még akkor is, ha minden logikai alkalmazáshoz létrehozhat egyedi identitásokat. Ezeket az identitásokat az Azure Portalon állíthatja be, vagy használhatja a [PowerShellt.](#powershell)
 
-**Hozza létre az alkalmazás identitását a logikai alkalmazáshoz a Azure Portal**
+**Az alkalmazásidentitás létrehozása a logikai alkalmazáshoz az Azure Portalon**
 
-1. A [Azure Portal](https://portal.azure.com "https://portal.azure.com")válassza a **Azure Active Directory**lehetőséget. 
+1. Az [Azure Portalon](https://portal.azure.com "https://portal.azure.com")válassza az **Azure Active Directory**lehetőséget. 
 
-2. Győződjön meg arról, hogy a webalkalmazás vagy az API-alkalmazás ugyanazon a címtárban van.
-
-   > [!TIP]
-   > A címtárak váltásához válassza ki a profilt, és válasszon másik könyvtárat. Vagy válassza az **áttekintés** > a **váltási könyvtár**lehetőséget.
-
-3. A könyvtár menü **kezelés**területén válassza a **Alkalmazásregisztrációk** > **új alkalmazás regisztrálása**lehetőséget.
+2. Ellenőrizze, hogy ugyanabban a címtárban van-e, mint a webalkalmazás vagy az API-alkalmazás.
 
    > [!TIP]
-   > Alapértelmezés szerint az alkalmazás-regisztrációk lista megjeleníti az összes alkalmazás regisztrációját a címtárban. Ha csak az alkalmazás regisztrációit szeretné megtekinteni, a keresőmező mellett válassza a **saját alkalmazások**lehetőséget. 
+   > Könyvtárak közötti váltáshoz válassza ki a profilját, és válasszon másik könyvtárat. Vagy válassza **az Áttekintés** > **Átváltsa a könyvtárat**.
 
-   ![Új alkalmazás regisztrációjának létrehozása](./media/logic-apps-custom-api-authentication/new-app-registration-azure-portal.png)
+3. A címtár menü **Kezelése területén**válassza az Új**alkalmazásregisztráció alkalmazásregisztráció** **lehetőséget.** > 
 
-4. Adjon nevet az alkalmazásnak, hagyja üresen az **alkalmazás típusát** a **Web App/API**értékre, adjon meg egy egyedi karakterláncot a **bejelentkezési URL-cím**tartományként, majd válassza a **Létrehozás**lehetőséget.
+   > [!TIP]
+   > Alapértelmezés szerint az alkalmazásregisztrációs lista a címtárban lévő összes alkalmazásregisztrációt megjeleníti. Ha csak az alkalmazásregisztrációkat szeretné megtekinteni, a keresőmező mellett válassza a **Saját alkalmazások**lehetőséget. 
 
-   ![Adja meg az alkalmazás identitásának nevét és bejelentkezési URL-címét](./media/logic-apps-custom-api-authentication/logic-app-identity-azure-portal.png)
+   ![Új alkalmazásregisztráció létrehozása](./media/logic-apps-custom-api-authentication/new-app-registration-azure-portal.png)
 
-   A logikai alkalmazáshoz létrehozott alkalmazás-identitás most megjelenik az alkalmazás-regisztrációk listájában.
+4. Adjon nevet az alkalmazásidentitásnak, hagyja **az alkalmazástípust** **webalkalmazásra /API-ra**állítva, adjon meg egy egyedi karakterláncot, amely a **bejelentkezési URL-cím**tartományaként van formázva, majd válassza **a Create (Létrehozás) lehetőséget.**
 
-   ![A logikai alkalmazás alkalmazás-identitása](./media/logic-apps-custom-api-authentication/logic-app-identity-created.png)
+   ![Név és bejelentkezési URL-cím megadásához az alkalmazásidentitáshoz](./media/logic-apps-custom-api-authentication/logic-app-identity-azure-portal.png)
 
-5. Az alkalmazás-regisztrációk listában válassza ki az új alkalmazás-identitást. Másolja ki és mentse a 3. részben található logikai alkalmazás "ügyfél-AZONOSÍTÓként" használandó **alkalmazás-azonosítóját** .
+   A logikai alkalmazáshoz létrehozott alkalmazásidentitás most megjelenik az alkalmazásregisztrációk listájában.
 
-   ![A Logic App-alkalmazás AZONOSÍTÓjának másolása és mentése](./media/logic-apps-custom-api-authentication/logic-app-application-id.png)
+   ![A logikai alkalmazás alkalmazásidentitása](./media/logic-apps-custom-api-authentication/logic-app-identity-created.png)
 
-6. Ha az alkalmazás-identitás beállításai nem láthatók, válassza a **Beállítások** vagy **az összes beállítás**lehetőséget.
+5. Az alkalmazásregisztrációk listájában válassza ki az új alkalmazásidentitást. Másolja és mentse az **alkalmazásazonosítót,** hogy a logikai alkalmazás "ügyfélazonosítójaként" használja a 3.
 
-7. Az **API-hozzáférés**területen válassza a **kulcsok**lehetőséget. A **Leírás**mezőben adja meg a kulcs nevét. A **lejárat**alatt válassza ki a kulcs időtartamát.
+   ![Alkalmazásazonosító másolása és mentése a logikai alkalmazáshoz](./media/logic-apps-custom-api-authentication/logic-app-application-id.png)
 
-   Az Ön által létrehozott kulcs az alkalmazás identitásának "titkos" vagy jelszava a logikai alkalmazáshoz.
+6. Ha az alkalmazásidentitás-beállítások nem láthatók, válassza a **Beállítások** vagy **a Minden beállítás lehetőséget.**
 
-   ![Kulcs létrehozása a logikai alkalmazás identitásához](./media/logic-apps-custom-api-authentication/create-logic-app-identity-key-secret-password.png)
+7. Az **API Access csoportban**válassza a **Kulcsok lehetőséget.** A **Leírás csoportban**adja meg a kulcs nevét. A **Lejár,** válassza ki a kulcs időtartamát.
 
-8. Az eszköztáron válassza a **Mentés**lehetőséget. Az **érték**alatt a kulcs most megjelenik. 
-Ügyeljen arra, hogy a kulcsot a későbbi használatra **másolja és mentse** , mert a kulcs rejtve marad a **kulcsok** lapon.
+   A létrehozott kulcs az alkalmazásidentitás "titkos" vagy jelszóként működik a logikai alkalmazáshoz.
 
-   Ha a logikai alkalmazást a 3. részben konfigurálja, a kulcsot a "titkos" vagy a "jelszó" értékre kell beállítania.
+   ![Kulcs létrehozása a logikai alkalmazás identitáshoz](./media/logic-apps-custom-api-authentication/create-logic-app-identity-key-secret-password.png)
 
-   ![A kulcs másolása és mentése később](./media/logic-apps-custom-api-authentication/logic-app-copy-key-secret-password.png)
+8. Az eszköztáron válassza a **Mentés gombot.** Az **Érték**csoportban megjelenik a kulcs. 
+**Győződjön meg arról, hogy a kulcsot** későbbi használatra másolja és menti, mert a kulcs rejtve marad, amikor elhagyja a **Kulcsok** lapot.
+
+   Amikor konfigurálja a logikai alkalmazást a 3.
+
+   ![Kulcs másolása és mentése későbbi használatra](./media/logic-apps-custom-api-authentication/logic-app-copy-key-secret-password.png)
 
 <a name="powershell"></a>
 
-**Az alkalmazás identitásának létrehozása a logikai alkalmazáshoz a PowerShellben**
+**Az alkalmazásidentitás létrehozása a logikai alkalmazáshoz a PowerShellben**
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ezt a feladatot Azure Resource Manager a PowerShell használatával hajthatja végre. Futtassa a következő parancsokat a PowerShellben:
+Ezt a feladatot az Azure Resource Manager powershell segítségével hajthatja végre. A PowerShellben futtassa a következő parancsokat:
 
 1. `Add-AzAccount`
 
 1. `$SecurePassword = Read-Host -AsSecureString`
 
-1. Adja meg a jelszót, majd nyomja le az ENTER billentyűt.
+1. Írjon be egy jelszót, és nyomja le az Enter billentyűt.
 
 1. `New-AzADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
 
-1. Ügyeljen arra, hogy a **bérlői azonosítót** (az Azure ad-bérlő GUID azonosítóját), az **alkalmazás azonosítóját**és a használt jelszót másolja.
+1. Győződjön meg arról, hogy másolja a **bérlői azonosítót** (GUID az Azure AD-bérlő), az **alkalmazásazonosítót**és a használt jelszót.
 
-További információ: [egyszerű szolgáltatásnév létrehozása a PowerShell-lel az erőforrások eléréséhez](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+További információkért megtudhatja, hogyan [hozhat létre egyszerű szolgáltatást a PowerShell használatával az erőforrások eléréséhez.](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
-#### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>2\. rész: Azure AD-alkalmazás identitásának létrehozása webalkalmazáshoz vagy API-alkalmazáshoz
+#### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>2. rész: Hozzon létre egy Azure AD-alkalmazás identitását a webalkalmazáshoz vagy az API-alkalmazáshoz
 
-Ha a webalkalmazás vagy az API-alkalmazás már telepítve van, bekapcsolhatja a hitelesítést, és létrehozhatja az alkalmazás identitását a Azure Portal. Ellenkező esetben [a Azure Resource Manager sablonnal való üzembe helyezéskor bekapcsolhatja a hitelesítést](#authen-deploy). 
+Ha a webalkalmazás vagy AZ API-alkalmazás már telepítve van, bekapcsolhatja a hitelesítést, és létrehozhatja az alkalmazás identitását az Azure Portalon. Ellenkező esetben [bekapcsolhatja a hitelesítést, amikor egy Azure Resource Manager-sablonnal telepíti.](#authen-deploy) 
 
-**Az alkalmazás identitásának létrehozása és a hitelesítés bekapcsolása a Azure Portal a telepített alkalmazásokhoz**
+**Hozza létre az alkalmazásidentitást, és kapcsolja be a hitelesítést az Azure Portalon telepített alkalmazásokhoz**
 
-1. A [Azure Portal](https://portal.azure.com "https://portal.azure.com")keresse meg és válassza ki a webalkalmazást vagy API-alkalmazást. 
+1. Az [Azure Portalon](https://portal.azure.com "https://portal.azure.com")keresse meg és válassza ki a webalkalmazást vagy API-alkalmazást. 
 
-2. A **Beállítások**területen válassza a **hitelesítés/engedélyezés**lehetőséget. A **app Service hitelesítés**területen kapcsolja be **a**hitelesítést. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget.
+2. A **Beállítások csoportban**válassza a **Hitelesítés/engedélyezés**lehetőséget. Az **App Service-hitelesítés**csoportban kapcsolja be **a hitelesítést.** A **Hitelesítésszolgáltatók csoportban**válassza az **Azure Active Directory**lehetőséget.
 
-   ![Hitelesítés bekapcsolása](./media/logic-apps-custom-api-authentication/custom-web-api-app-authentication.png)
+   ![A hitelesítés bekapcsolása](./media/logic-apps-custom-api-authentication/custom-web-api-app-authentication.png)
 
-3. Most hozzon létre egy alkalmazás-identitást a webalkalmazáshoz vagy az API-alkalmazáshoz az itt látható módon. A **Azure Active Directory beállítások** lapon állítsa a **felügyeleti módot** **expressz**értékre. Válassza az **új ad-alkalmazás létrehozása**lehetőséget. Adjon nevet az alkalmazásnak, majd kattintson **az OK gombra**. 
+3. Most hozzon létre egy alkalmazásidentitást a webalkalmazáshoz vagy az API-alkalmazáshoz, ahogy az itt látható. Az **Azure Active Directory beállításai** lapon állítsa **a Felügyeleti módot** **expresszre.** Válassza **az Új AD-alkalmazás létrehozása**lehetőséget. Adjon nevet az alkalmazásidentitásának, és válassza **az OK gombot.** 
 
-   ![Alkalmazás-identitás létrehozása webalkalmazáshoz vagy API-alkalmazáshoz](./media/logic-apps-custom-api-authentication/custom-api-application-identity.png)
+   ![Alkalmazásidentitás létrehozása a webalkalmazáshoz vagy az API-alkalmazáshoz](./media/logic-apps-custom-api-authentication/custom-api-application-identity.png)
 
 4. A **Hitelesítés/Engedélyezés** lapon kattintson a **Mentés** gombra.
 
-Most meg kell keresnie a webalkalmazáshoz vagy API-alkalmazáshoz társított alkalmazás-identitás ügyfél-AZONOSÍTÓját és a bérlői AZONOSÍTÓját. Ezeket az azonosítókat a 3. részben tekintjük át. Ezért folytassa ezeket a lépéseket a Azure Portal.
+Most meg kell találnia az ügyfél-azonosítót és a bérlői azonosítót a webalkalmazáshoz vagy API-alkalmazáshoz társított alkalmazásidentitáshoz. Ezeket az azonosítókat a 3. Így folytassa ezeket a lépéseket az Azure Portalon.
 
-**A webalkalmazás vagy az API-alkalmazás ügyfél-AZONOSÍTÓjának és bérlői AZONOSÍTÓjának megkeresése a Azure Portal**
+**Az alkalmazásidentitás ügyfélazonosítójának és bérlői azonosítójának megkeresése a webalkalmazáshoz vagy API-alkalmazáshoz az Azure Portalon**
 
-1. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget. 
+1. A **Hitelesítésszolgáltatók csoportban**válassza az **Azure Active Directory**lehetőséget. 
 
    ![Válassza az „Azure Active Directory” elemet](./media/logic-apps-custom-api-authentication/custom-api-app-identity-client-id-tenant-id.png)
 
-2. A **Azure Active Directory beállítások** lapon állítsa be a **felügyeleti módot** a **speciális**értékre.
+2. Az **Azure Active Directory beállításai** lapon állítsa **a Felügyeleti módot** **Speciális beállításra.**
 
-3. Másolja ki az **ügyfél-azonosítót**, és mentse a GUID azonosítót a 3. részben való használatra.
+3. Másolja az **ügyfélazonosítót**, és mentse a GUID azonosítót a 3.
 
    > [!TIP] 
-   > Ha az **ügyfél-azonosító** és a **kiállító URL-címe** nem jelenik meg, próbálja meg frissíteni a Azure Portal, és ismételje meg az 1. lépést.
+   > Ha **az ügyfélazonosító** és **a kiállító url-címe** nem jelenik meg, próbálja meg frissíteni az Azure Portalt, és ismételje meg az 1.
 
-4. A **kiállító URL-címe**területen másolja és mentse a 3. rész GUID azonosítóját. Ezt a GUID-t a webalkalmazás vagy az API-alkalmazás telepítési sablonjában is használhatja, ha szükséges.
+4. A **Kiállító url-címét csoportban**másolja és mentse csak a 3. Ezt a GUID-ot a webalkalmazásban vagy az API-alkalmazás központi telepítési sablonjában is használhatja, ha szükséges.
 
-   Ez a GUID az adott bérlő GUID-azonosítója ("bérlői azonosító"), és az alábbi URL-címen kell megjelennie: `https://sts.windows.net/{GUID}`
+   Ez a GUID az adott bérlő GUID azonosítója ("bérlőazonosító"), és meg kell jelennie ebben az URL-címen:`https://sts.windows.net/{GUID}`
 
-5. A módosítások mentése nélkül zárjuk be a **Azure Active Directory beállítások** lapot.
+5. A módosítások mentése nélkül zárja be az **Azure Active Directory beállításai** lapot.
 
 <a name="authen-deploy"></a>
 
-**Hitelesítés bekapcsolása Azure Resource Manager sablonnal való üzembe helyezéskor**
+**A hitelesítés bekapcsolása Azure Resource Manager-sablonnal történő üzembe helyezéskor**
 
-Továbbra is létre kell hoznia egy Azure AD-alkalmazás identitását a webalkalmazáshoz vagy API-alkalmazáshoz, amely eltér a logikai alkalmazás alkalmazás-identitásával. Az alkalmazás identitásának létrehozásához kövesse az Azure Portal 2. részében szereplő előző lépéseket. 
+Továbbra is létre kell hoznia egy Azure AD-alkalmazás identitását a webalkalmazáshoz vagy AZ API-alkalmazáshoz, amely eltér a logikai alkalmazás identitásától. Az alkalmazásidentitás létrehozásához kövesse az Azure Portal 2. 
 
-Követheti az 1. rész lépéseit is, de ügyeljen arra, hogy a webalkalmazás vagy az API-alkalmazás tényleges `https://{URL}` használja a **bejelentkezési URL-cím** és az **alkalmazás-azonosító URI-ja**számára. A fenti lépésekben az ügyfél-azonosítót és a bérlő AZONOSÍTÓját is el kell menteni az alkalmazás telepítési sablonjában, valamint a 3. részhez.
+Az `https://{URL}` **Sign-on URL** **1.** Ezekből a lépésekből mentheti az ügyfélazonosítót és a bérlői azonosítót az alkalmazás központi telepítési sablonjában való használatra, valamint a 3.
 
 > [!NOTE]
-> Amikor létrehozza az Azure AD-alkalmazás identitását a webalkalmazáshoz vagy az API-alkalmazáshoz, a Azure Portalt kell használnia, nem a PowerShellt. A PowerShell-parancsmagot nem állítja be a felhasználók webhelyekre való aláírásához szükséges engedélyeket.
+> Amikor létrehozza az Azure AD-alkalmazás identitását a webalkalmazáshoz vagy AZ API-alkalmazáshoz, az Azure Portalt kell használnia, nem a PowerShellt. A PowerShell-parancslap nem állítja be a felhasználók webhelyre való bejelentkezéséhez szükséges engedélyeket.
 
-Az ügyfél-azonosító és a bérlői azonosító beszerzése után adja meg ezeket az azonosítókat a webalkalmazás vagy API-alkalmazás alforrásaként a telepítési sablonban:
+Miután letette az ügyfélazonosítót és a bérlői azonosítót, adja meg ezeket az azonosítókat a webalkalmazás vagy az API-alkalmazás alerőforrásaként a központi telepítési sablonban:
 
 ``` json
 "resources": [ 
@@ -177,15 +177,15 @@ Az ügyfél-azonosító és a bérlői azonosító beszerzése után adja meg ez
 ]
 ```
 
-Ha üres webalkalmazást és logikai alkalmazást szeretne automatikusan telepíteni Azure Active Directory hitelesítéssel együtt, [tekintse meg a teljes sablont itt](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-custom-api/azuredeploy.json), vagy kattintson az **üzembe helyezés az Azure** -ba lehetőségre:
+Ha egy üres webalkalmazást és egy logikai alkalmazást az Azure Active Directory-hitelesítéssel együtt automatikusan üzembe szeretne helyezni, [tekintse meg a teljes sablont itt,](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-custom-api/azuredeploy.json)vagy kattintson a Telepítés az **Azure-ba** gombra:
 
 [![Üzembe helyezés az Azure-ban](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
-#### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>3\. rész: a logikai alkalmazás engedélyezési szakaszának feltöltése
+#### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>3. rész: Az Engedélyezés szakasz feltöltése a logikai alkalmazásban
 
-Az előző sablonban már be van állítva ez az engedélyezési szakasz, de ha közvetlenül készíti elő a logikai alkalmazást, meg kell adnia a teljes körű engedélyezési szakaszt.
+Az előző sablon már rendelkezik ezzel az engedélyezési szakaszbeállítással, de ha közvetlenül a logikai alkalmazást hozza létre, akkor a teljes engedélyezési szakaszt is tartalmaznia kell.
 
-Nyissa meg a logikai alkalmazás definícióját a kód nézetben, nyissa meg a **http** -művelet definícióját, keresse meg az **engedélyezési** szakaszt, és adja meg a következő tulajdonságokat:
+Nyissa meg a logikai alkalmazás definícióját kódnézetben, lépjen a **HTTP-műveletdefinícióra,** keresse meg az **Engedélyezés szakaszt,** és adja meg az alábbi tulajdonságokat:
 
 ```json
 {
@@ -199,14 +199,14 @@ Nyissa meg a logikai alkalmazás definícióját a kód nézetben, nyissa meg a 
 
 | Tulajdonság | Kötelező | Leírás | 
 | -------- | -------- | ----------- | 
-| tenant | Igen | Az Azure AD-bérlő GUID azonosítója | 
-| audience | Igen | Az elérni kívánt cél erőforrás GUID azonosítója, amely a webalkalmazás vagy API-alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
-| clientId | Igen | A hozzáférést kérő ügyfél GUID azonosítója, amely a logikai alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
-| titkos kód | Igen | A hozzáférési jogkivonatot kérő ügyfélhez tartozó alkalmazás identitásának kulcsa vagy jelszava | 
-| type | Igen | A hitelesítési típus. ActiveDirectoryOAuth-hitelesítés esetén az érték `ActiveDirectoryOAuth`. | 
+| Bérlő | Igen | Az Azure AD-bérlő GUID azonosítója | 
+| Közönség | Igen | A célerőforrás GUID azonosítója, amely a webalkalmazás vagy AZ API-alkalmazás alkalmazásidentitásából származó ügyfélazonosító | 
+| ügyfél-azonosító | Igen | A hozzáférést kérő ügyfél GUID azonosítója, amely a logikai alkalmazás alkalmazásidentitásából származó ügyfélazonosító | 
+| titkos kód | Igen | A hozzáférési jogkivonatot kérő ügyfél alkalmazásidentitásából származó kulcs vagy jelszó | 
+| type | Igen | A hitelesítés típusa. ActiveDirectoryOAuth hitelesítés esetén az `ActiveDirectoryOAuth`érték . | 
 |||| 
 
-Például:
+Példa:
 
 ``` json
 {
@@ -230,13 +230,13 @@ Például:
 
 <a name="update-code"></a>
 
-### <a name="secure-api-calls-through-code"></a>Biztonságos API-hívások kód használatával
+### <a name="secure-api-calls-through-code"></a>Biztonságos API-hívások kódon keresztül
 
 <a name="certificate"></a>
 
 #### <a name="certificate-authentication"></a>Tanúsítványhitelesítés
 
-Ha ellenőrizni szeretné a logikai alkalmazás bejövő kérelmeit a webalkalmazásba vagy az API-alkalmazásba, használhat ügyféltanúsítványt. A kód beállításához megtudhatja, [hogyan konfigurálhatja a TLS kölcsönös hitelesítését](../app-service/app-service-web-configure-tls-mutual-auth.md).
+A logikai alkalmazásból a webalkalmazásba vagy az API-alkalmazásba érkező bejövő kérelmek érvényesítéséhez használhatja az ügyféltanúsítványokat. A kód beállításáról megtudhatja, [hogyan konfigurálható a TLS kölcsönös hitelesítése.](../app-service/app-service-web-configure-tls-mutual-auth.md)
 
 Az **Engedélyezés** szakaszban adja meg a következő tulajdonságokat:
 
@@ -250,16 +250,16 @@ Az **Engedélyezés** szakaszban adja meg a következő tulajdonságokat:
 
 | Tulajdonság | Kötelező | Leírás |
 | -------- | -------- | ----------- |
-| `type` | Igen | A hitelesítési típus. Az SSL-Ügyféltanúsítványok esetében az értéknek `ClientCertificate`nak kell lennie. |
-| `password` | Nem | Az ügyféltanúsítvány eléréséhez használt jelszó (PFX-fájl) |
-| `pfx` | Igen | Az ügyféltanúsítvány Base64 kódolású tartalma (PFX-fájl) |
+| `type` | Igen | A hitelesítés típusa. SSL-ügyféltanúsítványok esetén az `ClientCertificate`értéknek . |
+| `password` | Nem | Az ügyféltanúsítvány elérésének jelszava (PFX-fájl) |
+| `pfx` | Igen | Az ügyféltanúsítvány base64 kódolású tartalma (PFX-fájl) |
 ||||
 
 <a name="basic"></a>
 
 #### <a name="basic-authentication"></a>Alapszintű hitelesítés
 
-Ha ellenőrizni szeretné a logikai alkalmazás bejövő kérelmeit a webalkalmazásba vagy az API-alkalmazásba, használhatja az egyszerű hitelesítést, például a felhasználónevet és a jelszót. Az egyszerű hitelesítés egy gyakori minta, amely a webalkalmazás vagy API-alkalmazás felépítéséhez használt bármilyen nyelven használható.
+A logikai alkalmazásból a webalkalmazásba vagy az API-alkalmazásba érkező bejövő kérelmek érvényesítéséhez használhatja az alapfokú hitelesítést, például a felhasználónevet és a jelszót. Az alapfokú hitelesítés gyakori minta, és ezt a hitelesítést a webalkalmazás vagy AZ API-alkalmazás létrehozásához használt bármely nyelven használhatja.
 
 Az **Engedélyezés** szakaszban adja meg a következő tulajdonságokat:
 
@@ -273,18 +273,18 @@ Az **Engedélyezés** szakaszban adja meg a következő tulajdonságokat:
 
 | Tulajdonság | Kötelező | Leírás | 
 | -------- | -------- | ----------- | 
-| type | Igen | A használni kívánt hitelesítési típus. Az alapszintű hitelesítés esetében az értéknek `Basic`nak kell lennie. | 
-| felhasználónév | Igen | A hitelesítéshez használni kívánt Felhasználónév | 
+| type | Igen | A használni kívánt hitelesítési típus. Az alapfokú hitelesítéshez `Basic`az értéknek . | 
+| felhasználónév | Igen | A hitelesítéshez használni kívánt felhasználónév | 
 | jelszó | Igen | A hitelesítéshez használni kívánt jelszó | 
 |||| 
 
 <a name="azure-ad-code"></a>
 
-#### <a name="azure-active-directory-authentication-through-code"></a>Hitelesítés Azure Active Directory kóddal
+#### <a name="azure-active-directory-authentication-through-code"></a>Azure Active Directory-hitelesítés kódon keresztül
 
-Alapértelmezés szerint a Azure Portal bekapcsolt Azure AD-hitelesítés nem biztosít részletes engedélyt. Ez a hitelesítés például zárolja az API-t egy adott bérlőre, nem pedig egy adott felhasználóra vagy alkalmazásra. 
+Alapértelmezés szerint az Azure AD-hitelesítés, amely bevan kapcsolva az Azure Portalon nem nyújt részletes engedélyezést. Például ez a hitelesítés zárolja az API-t csak egy adott bérlő, nem egy adott felhasználó vagy alkalmazás. 
 
-Ha korlátozni szeretné a logikai alkalmazás API-hozzáférését a kódban, bontsa ki a JSON webes tokent (JWT) tartalmazó fejlécet. Keresse meg a hívó identitását, és utasítsa el a nem egyező kérelmeket.
+Az API-hozzáférés korlátozása a logikai alkalmazáshoz a kódon keresztül, bontsa ki a fejlécet, amely a JSON-webtoken (JWT). Ellenőrizze a hívó identitását, és utasítsa el a nem egyező kéréseket.
 
 <!-- Going further, to implement this authentication entirely in your own code, 
 and not use the Azure portal, learn how to 
@@ -293,6 +293,6 @@ and not use the Azure portal, learn how to
 To create an application identity for your logic app and use that identity to call your API, 
 you must follow the previous steps. -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Egyéni API-k üzembe helyezése és meghívása a Logic app-munkafolyamatokból](../logic-apps/logic-apps-custom-api-host-deploy-call.md)
+* [Egyéni API-k üzembe helyezése és hívása logikai alkalmazás-munkafolyamatokból](../logic-apps/logic-apps-custom-api-host-deploy-call.md)

@@ -1,6 +1,6 @@
 ---
-title: Rendszerfrissítések alkalmazása a Azure Security Centerban | Microsoft Docs
-description: Ebből a dokumentumból megtudhatja, hogyan implementálhatja a Azure Security Center javaslatokat a rendszerfrissítések **alkalmazása** és a **rendszerfrissítések újraindítása után**.
+title: Rendszerfrissítések alkalmazása az Azure Security Centerben | Microsoft dokumentumok
+description: Ez a dokumentum bemutatja, hogyan valósíthatja meg az Azure Security Center ajánlásait **A rendszerfrissítések alkalmazása** és **újraindítása után.**
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,71 +14,71 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
 ms.openlocfilehash: 3f27753b0775f44cbdf9d4c478a19e423b8e1f19
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604553"
 ---
-# <a name="apply-system-updates-in-azure-security-center"></a>Rendszerfrissítések alkalmazása Azure Security Center
-Azure Security Center a napi Windows és Linux rendszerű virtuális gépeket (VM) és számítógépeket figyeli az operációs rendszer frissítéseinek hiányában. Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját Windows Update vagy Windows Server Update Services (WSUS) szolgáltatásból attól függően, hogy melyik szolgáltatást konfigurálja a Windows rendszerű számítógépen. A Security Center a Linux rendszerekben a legújabb frissítéseket is ellenőrzi. Ha a virtuális gép vagy számítógép nem rendelkezik rendszerfrissítéssel, Security Center javasolja, hogy alkalmazza a rendszerfrissítéseket.
+# <a name="apply-system-updates-in-azure-security-center"></a>Rendszerfrissítések alkalmazása az Azure Security Centerben
+Az Azure Security Center naponta figyeli a Windows és Linux rendszerű virtuális gépeket és számítógépeket, az operációs rendszer hiányzó frissítéseit keresve. A Security Center az elérhető biztonsági és fontos frissítések listáját a Windows Update-tól vagy a Windows Server Update Servicestől (WSUS) kéri le attól függően, hogy melyik szolgáltatás van konfigurálva egy Windows rendszerű számítógépen. A Security Center a Linux rendszerek legújabb frissítéseit is ellenőrzi. Ha a virtuális vagy fizikai számítógépről hiányzik egy rendszerfrissítés, akkor a Security Center javaslatot tesz a rendszerfrissítések alkalmazására.
 
-## <a name="implement-the-recommendation"></a>A javaslat implementálása
-A rendszerfrissítések alkalmazása a Security Center javaslata. Ha a virtuális gép vagy számítógép nem rendelkezik rendszerfrissítéssel, akkor ez a javaslat a **javaslatok** és a **számítás**területen jelenik meg.  Az ajánlás kiválasztásával megnyílik a **rendszerfrissítések alkalmazása** irányítópult.
+## <a name="implement-the-recommendation"></a>Az ajánlás végrehajtása
+A rendszerfrissítések alkalmazása javaslatként jelenik meg a Security Centerben. Ha a virtuális gép vagy a számítógép hiányzik egy rendszerfrissítés, ez a javaslat jelenik meg **a javaslatok és** a **Számítási**csoportban.  A javaslat kiválasztásával megnyílik a **Rendszerfrissítések alkalmazása** irányítópult.
 
-Ebben a példában a **számítást**fogjuk használni.
+Ebben a példában a **Compute**.
 
-1. A Security Center Főmenüben válassza a **számítás** lehetőséget.
+1. Válassza a Biztonsági központ főmenüjének **Számítási parancsát.**
 
-   ![Számítás kiválasztása][1]
+   ![Számítási válasz kiválasztása][1]
 
-2. A **számítás**területen válassza a **hiányzó rendszerfrissítések**elemet. Megnyílik a **rendszerfrissítések alkalmazása** irányítópult.
+2. A **Számítás**csoportban válassza **a Hiányzó rendszerfrissítések lehetőséget.** Megnyílik **a Rendszerfrissítések alkalmazása** irányítópult.
 
    ![Rendszerfrissítések irányítópultjának alkalmazása][2]
 
-   Az irányítópult tetején a következőket nyújtja:
+   Az irányítópult teteje a következőket tartalmazza:
 
-    - A Windows-és Linux-alapú virtuális gépek és számítógépek teljes száma rendszerfrissítéssel.
-    - A virtuális gépeken és számítógépeken hiányzó kritikus frissítések teljes száma.
-    - A virtuális gépeken és számítógépeken hiányzó biztonsági frissítések teljes száma.
+    - A rendszerfrissítéseket nem jelző Windows- és Linux-virtuális gépek és számítógépek teljes száma.
+    - A virtuális gépeken és a számítógépeken hiányzó kritikus frissítések teljes száma.
+    - A virtuális gépeken és a számítógépeken hiányzó biztonsági frissítések teljes száma.
 
-   Az irányítópult alján a virtuális gépek és számítógépek összes hiányzó frissítése szerepel, valamint a hiányzó frissítés súlyossága.  A lista a következőket tartalmazza:
+   Az irányítópult alján felsorolja az összes hiányzó frissítéseket a virtuális gépek és a számítógépek, és a hiányzó frissítés súlyosságát.  A lista a következőket tartalmazza:
 
-    - NÉV: a hiányzó frissítés neve.
-    - nem. Virtuális gépek & számítógépek: azon virtuális gépek és számítógépek teljes száma, amelyek esetében ez a frissítés hiányzik.
-    - ÁLLAPOT: a javaslat jelenlegi állapota:
+    - NÉV – A hiányzó frissítés neve.
+    - nem. Virtuális gépek & számítógépek: A frissítésből hiányzó virtuális gépek és számítógépek száma összesen.
+    - STATE (Állapot): a javaslat aktuális állapota:
 
-      - Megnyitás: a javaslat még nincs megcímezve.
-      - Folyamatban: a javaslat jelenleg az adott erőforrásokra van alkalmazva, és nincs szükség beavatkozásra.
-      - Megoldott: a javaslat már befejeződött. (A probléma megoldása után a bejegyzés halványan jelenik meg.)
+      - Nyitott: Az ajánlásmég nem lett megoldva.
+      - In Progress (Folyamatban): folyamatban van a javaslat alkalmazása az érintett erőforrásokra, további lépésekre nincs szükség.
+      - Resolved (Megoldott): a javaslat alkalmazása megtörtént. (A probléma megoldása után a bejegyzés halványan jelenik meg.)
 
-    - SÚLYOSSÁG: az adott javaslat súlyosságát írja le:
+    - SEVERITY (Súlyosság): az adott javaslat súlyosságát határozza meg:
 
-      - High (magas): egy értelmes erőforrás (alkalmazás, virtuális gép vagy hálózati biztonsági csoport) biztonsági rése van, és figyelmet igényel.
-      - Közepes: nem kritikus vagy további lépések szükségesek egy folyamat befejezéséhez vagy egy biztonsági rés megszüntetéséhez.
-      - Alacsony: A biztonsági rést orvosolni kell, de nincs szükség azonnali beavatkozásra. (Az alacsony súlyosságú javaslatok alapértelmezés szerint nem láthatók, de a szűrővel bekapcsolhatja megjelenítésüket.)
+      - High (Magas): biztonsági rés található egy fontos erőforrásnál (alkalmazás, virtuális gép, hálózati biztonsági csoport) és beavatkozást igényel.
+      - Medium (Közepes): nem kritikus vagy kiegészítő lépések elvégzése szükséges egy folyamat befejezéséhez vagy egy biztonsági rés megszüntetéséhez.
+      - Low (Alacsony): a biztonsági rést be kell tömni, de a probléma nem igényel azonnali beavatkozást. (Az alacsony súlyosságú javaslatok alapértelmezés szerint nem láthatók, de a szűrővel bekapcsolhatja megjelenítésüket.)
 
-3. A részletek megtekintéséhez válasszon ki egy hiányzó frissítést a listából.
+3. A részletek megtekintéséhez jelöljön ki egy hiányzó frissítést a listában.
 
    ![Hiányzó biztonsági frissítés][3]
 
-4. Kattintson a **Keresés** ikonra a felső menüszalagon.  A rendszer megnyit egy Azure Monitor naplókat a keresési lekérdezésben, amelyből hiányzik a frissítés.
+4. A felső menüszalagon válassza a **Keresés** ikont.  Az Azure Monitor naplói lekérdezések keresési lekérdezés megnyílik szűrve a számítógépek hiányzik a frissítés.
 
-   ![Azure Monitor naplók keresése][4]
+   ![Az Azure Monitor naplóinak keresése][4]
 
-5. További információért válasszon egy számítógépet a listából. Megnyílik egy másik keresési eredmény, amely csak az adott számítógéphez szűrt adatokat.
+5. További információért jelöljön ki egy számítógépet a listából. Egy másik keresési eredmény csak az adott számítógépre szűrt adatokkal nyílik meg.
 
-    ![Azure Monitor naplók keresése][5]
+    ![Az Azure Monitor naplóinak keresése][5]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
-* [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.
-* [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
-* [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
-* [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Ez a cikk ismerteti a partnermegoldások biztonsági állapotának figyelését.
-* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [A biztonsági javaslatok kezelése az Azure Security Centerben](security-center-recommendations.md) – Ismerje meg, hogyan segíthetnek a javaslatok az Azure-erőforrások védelmében.
+* [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) – Ismerje meg, hogyan figyelheti az Azure-erőforrások állapotát.
+* [Biztonsági riasztások kezelése és megválaszolása az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – Ismerje meg, hogyan kezelheti és válaszolhat azokra a biztonsági riasztásokra.
+* [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
+* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések keresése az Azure biztonságáról és megfelelőségéről.
 
 <!--Image references-->
 [1]: ./media/security-center-apply-system-updates/missing-system-updates.png

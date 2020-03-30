@@ -1,7 +1,7 @@
 ---
-title: Fiók SAS létrehozása a .NET-tel
+title: Fiók létrehozása SAS-szal a .NET segítségével
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan hozhat létre egy fiókhoz megosztott hozzáférési aláírást (SAS) a .NET ügyféloldali kódtár használatával.
+description: Megtudhatja, hogy miként hozhat létre közös hozzáférésű fiókaláírást (SAS) a .NET ügyfélkódtár használatával.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,23 +11,23 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 9da27cef7bafa94715a42db86fc5a5675a049eb1
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137869"
 ---
-# <a name="create-an-account-sas-with-net"></a>Fiók SAS létrehozása a .NET-tel
+# <a name="create-an-account-sas-with-net"></a>Fiók létrehozása SAS-szal a .NET segítségével
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Ez a cikk bemutatja, hogyan hozhat létre fiók SAS-t a .NET-hez készült [Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet)használatával a Storage-fiók kulcsa alapján.
+Ez a cikk bemutatja, hogyan hozhat létre egy fiók SAS-t a [.NET Azure Storage ügyfélkódtárjával.](/dotnet/api/overview/azure/storage?view=azure-dotnet)
 
 ## <a name="create-an-account-sas"></a>Fiók SAS létrehozása
 
-Ha fiókot szeretne létrehozni egy tárolóhoz, hívja meg a [CloudStorageAccount. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) metódust.
+Ha sas-t szeretne létrehozni egy tárolóhoz, hívja meg a [CloudStorageAccount.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) metódust.
 
-A következő kódrészlet egy olyan fiókot hoz létre, amely érvényes a blob és a Fájlszolgáltatások számára, és az ügyfél engedélyei olvasási, írási és listázási engedélyt biztosít a szolgáltatási szintű API-k eléréséhez. A fiók SAS korlátozza a protokollt a HTTPS-re, ezért HTTPS-kapcsolattal kell elvégeznie a kérést. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
+A következő kódpélda létrehoz egy fiókot SAS, amely érvényes a Blob és a Fájl szolgáltatások, és megadja az ügyfél engedélyek olvasási, írási és lista engedélyek eléréséhez szolgáltatásszintű API-k. The account SAS restricts the protocol to HTTPS, so the request must be made with HTTPS. Ne felejtse el a szögletes zárójelekben lévő helyőrző értékeket a saját értékeire cserélni:
 
 ```csharp
 static string GetAccountSASToken()
@@ -51,9 +51,9 @@ static string GetAccountSASToken()
 }
 ```
 
-## <a name="use-an-account-sas-from-a-client"></a>Fiók SAS használata ügyfélről
+## <a name="use-an-account-sas-from-a-client"></a>Ügyféltől származó fiók SAS használata
 
-Ha a fiók SAS-t használja a Blob servicehoz tartozó szolgáltatási szintű API-k eléréséhez, a Storage-fiókhoz állítson össze egy Blob service-ügyfél objektumot a SAS és a blob Storage-végpont használatával. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
+A fiók SAS használatával a Blob szolgáltatás szolgáltatásszintű API-k eléréséhez, készítse el a Blob szolgáltatás ügyfélobjektum a SAS és a Blob storage-végpont a tárfiókhoz. Ne felejtse el a szögletes zárójelekben lévő helyőrző értékeket a saját értékeire cserélni:
 
 ```csharp
 static void UseAccountSAS(string sasToken)
@@ -95,7 +95,7 @@ static void UseAccountSAS(string sasToken)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](storage-sas-overview.md)
+- [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz megosztott hozzáférésű aláírások (SAS) használatával](storage-sas-overview.md)
 - [Fiók SAS létrehozása](/rest/api/storageservices/create-account-sas)

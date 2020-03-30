@@ -1,101 +1,101 @@
 ---
-title: Az Azure-tevékenység naplójának összegyűjtése diagnosztikai beállításokkal – Azure Monitor | Microsoft Docs
-description: Diagnosztikai beállításokkal továbbíthatja az Azure-tevékenységek naplóit Azure Monitor naplókba, az Azure Storage-ba vagy az Azure Event Hubsba.
+title: Az Azure-tevékenységnapló gyűjtése diagnosztikai beállításokkal - Azure Monitor | Microsoft dokumentumok
+description: Diagnosztikai beállítások használatával továbbítsa az Azure-tevékenységnaplókat az Azure Monitor-naplók, az Azure storage vagy az Azure Event Hubs.
 author: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 02/04/2020
 ms.openlocfilehash: 6d4c724c7cfb4c1779f0fc6592a7e61e060755b9
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096897"
 ---
-# <a name="update-to-azure-activity-log-collection-and-export"></a>Frissítés az Azure Activity log-gyűjteményre és-exportálásra
-Az [Azure-tevékenység naplója](platform-logs-overview.md) egy olyan [platform-napló](platform-logs-overview.md) , amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. Az [Event hub-vagy Storage-fiókba](activity-log-export.md) vagy [log Analytics-munkaterületre](activity-log-collect.md) irányuló tevékenység-naplóbejegyzések küldési módszere a [diagnosztikai beállítások](diagnostic-settings.md)használatára változott. Ez a cikk a módszerek közötti különbséget ismerteti, valamint azt, hogy miként lehet törölni a régi beállításokat az előkészítés során a diagnosztikai beállításokra való váltáshoz.
+# <a name="update-to-azure-activity-log-collection-and-export"></a>Frissítés az Azure-tevékenységnapló-gyűjteményhez és -exportáláshoz
+Az [Azure-tevékenységnapló](platform-logs-overview.md) egy [platformnapló,](platform-logs-overview.md) amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekbe. A tevékenységnapló-bejegyzések [eseményközpontba vagy tárfiókba,](activity-log-export.md) illetve [a Log Analytics-munkaterületre](activity-log-collect.md) történő küldésének módja [a diagnosztikai beállítások](diagnostic-settings.md)használatára változott. Ez a cikk ismerteti a módszerek közötti különbséget, és azt, hogy hogyan törölheti az örökölt beállításokat a diagnosztikai beállítások módosításának előkészítése során.
 
 
 ## <a name="differences-between-methods"></a>A módszerek közötti különbségek
 
 ### <a name="advantages"></a>Előnyök
-A diagnosztikai beállítások használata a következő előnyökkel jár az aktuális módszereknél:
+A diagnosztikai beállítások használata a következő előnyökkel jár a jelenlegi módszerekkel szemben:
 
-- Konzisztens módszer az összes platform naplójának összegyűjtéséhez.
-- Gyűjtsön több előfizetésre és bérlőre kiterjedő tevékenység naplóját.
-- A szűrő gyűjtemény csak bizonyos kategóriákhoz tartozó naplókat gyűjt.
-- Az összes műveletnapló-kategória összegyűjtése. Egyes kategóriák gyűjtése nem a régi metódussal történik.
-- Gyorsabb késés a naplók betöltéséhez. Az előző metódus körülbelül 15 percet vesz igénybe, míg a diagnosztikai beállítások csak 1 percet vesznek fel.
+- Konzisztens módszer az összes platformnapló összegyűjtésére.
+- Tevékenységnapló gyűjtése több előfizetésés bérlő között.
+- Szűrőgyűjtés, hogy csak bizonyos kategóriáknaplóit gyűjtse össze.
+- Gyűjtse össze az összes tevékenységnapló-kategóriát. Egyes kategóriák nem gyűjtik örökölt módszerrel.
+- Gyorsabb késés a naplóbetöltéshez. Az előző módszer körülbelül 15 perces késés, míg a diagnosztikai beállítások hozzáteszi, csak körülbelül 1 perc.
 
-### <a name="considerations"></a>Megfontolások
-A funkció engedélyezése előtt vegye figyelembe a következő részleteket a tevékenység naplóinak gyűjtéséhez a diagnosztikai beállítások használatával.
+### <a name="considerations"></a>Megfontolandó szempontok
+A szolgáltatás engedélyezése előtt vegye figyelembe a tevékenységnapló-gyűjtemény diagnosztikai beállításokkal történő gyűjtésének következő részleteit.
 
-- A tevékenység naplójának az Azure Storage-ba való gyűjtésének megőrzési beállítása el lett távolítva, ami azt jelenti, hogy az adatok határozatlan ideig lesznek tárolva, amíg el nem távolítja.
-- Jelenleg csak az előfizetési szint diagnosztikai beállításait lehet létrehozni a Azure Portal használatával. Más módszerek, például a PowerShell vagy a CLI használatához létrehozhat egy Resource Manager-sablont.
+- A tevékenységnapló Azure storage-ba történő gyűjtésére szolgáló adatmegőrzési beállítás el lett távolítva, ami azt jelenti, hogy az adatok határozatlan ideig tárolódnak, amíg el nem távolítja őket.
+- Jelenleg csak az Azure Portal használatával hozhat létre előfizetési szint diagnosztikai beállítást. Más módszerek, például a PowerShell vagy a CLI használatához létrehozhat egy Erőforrás-kezelő sablont.
 
 
-### <a name="differences-in-data"></a>Adateltérések
-A diagnosztikai beállítások a tevékenység naplójának összegyűjtéséhez használt korábbi módszerekkel azonos adatokat gyűjtenek a következő jelenlegi eltérésekkel:
+### <a name="differences-in-data"></a>Az adatok eltérései
+A diagnosztikai beállítások ugyanazokat az adatokat gyűjtik, mint a tevékenységnapló gyűjtésére használt korábbi módszerek, a következő aktuális különbségekkel:
 
-A következő oszlopok el lettek távolítva. Ezeknek az oszlopoknak a pótlása eltérő formátumú, ezért előfordulhat, hogy módosítania kell azokat a napló-lekérdezéseket, amelyek használják azokat. Előfordulhat, hogy az eltávolított oszlopok továbbra is láthatók a sémában, de az adatokkal nem lesznek feltöltve.
+A következő oszlopok at eltávolították. Ezeknek az oszlopoknak a cseréje más formátumú, ezért előfordulhat, hogy módosítania kell az azokat használó naplólekérdezéseket. Előfordulhat, hogy továbbra is megjelennek az eltávolított oszlopok a sémában, de nem lesznek feltöltve adatokkal.
 
-| Oszlop eltávolítva | Helyettesítő oszlop |
+| Eltávolított oszlop | Csere oszlop |
 |:---|:---|
-| ActivityStatus    | ActivityStatusValue    |
-| ActivitySubstatus | ActivitySubstatusValue |
-| OperationName     | OperationNameValue     |
-| ResourceProvider  | ResourceProviderValue  |
+| ActivityStatus (Tevékenységállapota)    | ActivityStatusValue    |
+| ActivitySubstatus (Tevékenységsubstatus) | ActivitySubstatusValue érték |
+| OperationName     | OperationNameValue érték     |
+| ResourceProvider  | ResourceProviderValue érték  |
 
-A következő oszlop lett hozzáadva:
+A következő oszlopmal egészült ki:
 
 - Authorization_d
 - Claims_d
 - Properties_d
 
 > [!IMPORTANT]
-> Bizonyos esetekben az oszlopok értékei az összes nagybetűvel rendelkezhetnek. Ha olyan lekérdezéssel rendelkezik, amely tartalmazza ezeket az oszlopokat, a [= ~ operátort](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators) kell használnia a kis-és nagybetűk megkülönböztetésének összehasonlításához.
+> Bizonyos esetekben az oszlopokban lévő értékek nagybetűsek lehetnek. Ha olyan lekérdezéssel rendelkezik, amely ezeket az oszlopokat tartalmazza, az [=~ operátorral](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators) végezze el a kis- és nagybetűk megkülönböztetését.
 
-## <a name="work-with-legacy-settings"></a>Régi beállítások használata
-A tevékenység naplójának összegyűjtéséhez használt örökölt beállítások továbbra is működni fognak, ha nem kívánja helyettesíteni a diagnosztikai beállításokat. A következő módszer használatával kezelheti az előfizetések naplójának profilját.
+## <a name="work-with-legacy-settings"></a>A régi beállítások használata
+A tevékenységnapló gyűjtésére szolgáló örökölt beállítások továbbra is működnek, ha nem választja úgy, hogy diagnosztikai beállítással helyettesíti. Az alábbi módszerrel kezelheti az előfizetés naplóprofilját.
 
-1. A Azure Portal **Azure monitor** menüjében válassza a **műveletnapló**elemet.
+1. Az **Azure-portál Azure Monitor** menüjében válassza a **Tevékenységnapló**lehetőséget.
 3. Kattintson a **Diagnosztikai beállítások** elemre.
 
    ![Diagnosztikai beállítások](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
-4. A régi élményhez kattintson a lila szalagcímre.
+4. Kattintson a lila banner az örökölt élmény.
 
-    ![Korábbi élmény](media/diagnostic-settings-subscription/legacy-experience.png)
+    ![Örökölt élmény](media/diagnostic-settings-subscription/legacy-experience.png)
 
 
-A régi gyűjtemény módszereinek használatáról a következő cikkekben talál további információt.
+Az örökölt gyűjtési módszerek használatával kapcsolatos részleteket az alábbi cikkekben találja.
 
-- [Azure-beli tevékenység-naplók gyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](activity-log-collect.md)
-- [Azure-beli tevékenységek naplóinak gyűjtése a Azure Monitor Azure Active Directory-bérlők között](activity-log-collect-tenants.md)
-- [Azure-Tevékenységnaplók exportálása a Storage-ba vagy az Azure Event Hubsba](activity-log-export.md)
+- [Azure-tevékenységnaplók gyűjtése és elemzése az Azure-figyelő Log Analytics-munkaterületén](activity-log-collect.md)
+- [Azure-tevékenységnaplók gyűjtése az Azure Monitorban az Azure Active Directory-bérlők között](activity-log-collect-tenants.md)
+- [Azure-tevékenységnapló exportálása tárhelyre vagy Azure-eseményközpontokba](activity-log-export.md)
 
 ## <a name="disable-existing-settings"></a>Meglévő beállítások letiltása
-A diagnosztikai beállításokkal történő engedélyezés előtt tiltsa le a tevékenység meglévő gyűjteményét. Ha mindkettő engedélyezve van, duplikált adatértéket eredményezhet.
+A diagnosztikai beállítások használata előtt le kell tiltania a tevékenység meglévő gyűjteményét. Ha mindkettő engedélyezve van, az ismétlődő adatokat eredményezhet.
 
-### <a name="disable-collection-into-log-analytics-workspace"></a>Gyűjtemény letiltása Log Analytics munkaterületre
+### <a name="disable-collection-into-log-analytics-workspace"></a>Gyűjtemény letiltása a Log Analytics-munkaterületen
 
-1. Nyissa meg a **log Analytics munkaterületek** menüt a Azure Portal, és válassza ki a munkaterületet a tevékenység naplójának összegyűjtéséhez.
-2. A munkaterület menü **munkaterület adatforrásai** területén válassza az **Azure-tevékenység napló**elemet.
-3. Kattintson a leválasztani kívánt előfizetésre.
-4. Kattintson a **Leválasztás** lehetőségre, majd az **Igen** gombra, amikor a rendszer megkérdezi, hogy erősítse meg
+1. Nyissa meg a **Log Analytics-munkaterületek** menüt az Azure Portalon, és válassza ki a munkaterületet a tevékenységnapló gyűjtéséhez.
+2. A munkaterület menüjének **Munkaterület-adatforrások** szakaszában válassza az **Azure-tevékenységnapló t.**
+3. Kattintson a kapcsolat bontásához kívánt előfizetésre.
+4. Kattintson **a Kapcsolat bontása,** majd az **Igen** gombra, amikor a rendszer a választás megerősítésére kéri.
 
-### <a name="disable-log-profile"></a>Log-profil letiltása
+### <a name="disable-log-profile"></a>Naplóprofil letiltása
 
-1. Az örökölt beállítások megnyitásához használja az [örökölt beállításokkal végzett munka](#work-with-legacy-settings) című témakörben leírt eljárást.
-2. Tiltsa le az aktuális gyűjteményt a Storage vagy az Event hub szolgáltatásban.
+1. A korábbi beállítások megnyitásához használja a [Korábbi beállítások használata](#work-with-legacy-settings) című részben ismertetett eljárást.
+2. Tiltson le minden aktuális gyűjteményt a tárolókba vagy az eseményközpontokba.
 
 
 
-## <a name="activity-log-monitoring-solution"></a>Műveletnapló-figyelési megoldás
-Az Azure Log Analytics-figyelési megoldás több naplózási lekérdezést és nézetet tartalmaz a Log Analytics munkaterületen található műveletnapló-rekordok elemzéséhez. Ez a megoldás a Log Analytics munkaterületen összegyűjtött naplózási adatokat használja, és a tevékenység naplójának diagnosztikai beállításokkal történő begyűjtése után továbbra is működni fog. A megoldás részleteiért tekintse meg a [Tevékenységnaplók Analytics-figyelési megoldást](activity-log-collect.md#activity-logs-analytics-monitoring-solution) .
+## <a name="activity-log-monitoring-solution"></a>Tevékenységnapló-figyelő megoldás
+Az Azure Log Analytics figyelési megoldás több naplólekérdezést és nézetet tartalmaz a Naplóelemzési munkaterületen lévő tevékenységnapló-rekordok elemzéséhez. Ez a megoldás a Log Analytics-munkaterületen gyűjtött naplóadatokat használja, és továbbra is módosítások nélkül fog működni, ha diagnosztikai beállításokkal gyűjti a tevékenységnaplót. A megoldással kapcsolatos részletekért tekintse meg a [Tevékenységnaplók elemzésfigyelési megoldását.](activity-log-collect.md#activity-logs-analytics-monitoring-solution)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [További információ a tevékenység naplóról](../../azure-resource-manager/management/view-activity-logs.md)
+* [További információ a tevékenységnaplóról](../../azure-resource-manager/management/view-activity-logs.md)
 * [További információ a diagnosztikai beállításokról](diagnostic-settings.md)

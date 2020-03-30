@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali személyes asztal hozzárendelésének típusa – Azure
-description: A hozzárendelés típusának konfigurálása a Windows rendszerű virtuális asztali személyes asztali készlethez.
+title: Windows Virtual Desktop személyes asztali feladattípusa – Azure
+description: A Windows Virtual Desktop személyes asztali gazdakészlet hozzárendeléstípusának konfigurálása.
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
@@ -9,43 +9,43 @@ ms.date: 12/10/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 41b24a94d36b21fe5d5f539e056abb535bda433a
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128284"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>A személyes asztali címkészlet-hozzárendelés típusának konfigurálása
+# <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>A személyes asztali gazdagépkészlet hozzárendeléstípusának konfigurálása
 
-A személyes asztali címkészlet hozzárendelési típusának konfigurálásával beállíthatja a Windows rendszerű virtuális asztali környezetét, hogy jobban megfeleljen az igényeinek. Ebben a témakörben bemutatjuk, hogyan konfigurálhatja az automatikus vagy közvetlen hozzárendelést a felhasználók számára.
+Beállíthatja a személyes asztali gazdakészlet hozzárendelési típusát úgy, hogy a Windows virtuális asztal környezetét az igényeinek megfelelően állítsa be. Ebben a témakörben bemutatjuk, hogyan konfigurálhatja az automatikus vagy közvetlen hozzárendelést a felhasználók számára.
 
 >[!NOTE]
-> A cikkben szereplő utasítások csak a személyes asztali gazdagépekre érvényesek, nem készletezett gazdagépek, mivel a készletezett gazdagépek felhasználói nem vannak hozzárendelve adott munkamenet-gazdagépekhez.
+> A cikkben szereplő utasítások csak a személyes asztali gazdakészletekre vonatkoznak, a készletezett gazdakészletekre nem, mivel a készletezett gazdakészletekfelhasználói nincsenek hozzárendelve adott munkamenet-gazdagépekhez.
 
 ## <a name="configure-automatic-assignment"></a>Automatikus hozzárendelés konfigurálása
 
-Az automatikus hozzárendelés az alapértelmezett hozzárendelési típus a Windows rendszerű virtuális asztali környezetben létrehozott új személyes asztali gazdagépek számára. A felhasználók automatikus hozzárendeléséhez nincs szükség egy adott munkamenet-gazdagépre.
+Az automatikus hozzárendelés a Windows virtuális asztal környezetben létrehozott új személyes asztali gazdakészletek alapértelmezett hozzárendelési típusa. A felhasználók automatikus hozzárendeléséhez nincs szükség adott munkamenet-gazdagépre.
 
-A felhasználók automatikus hozzárendeléséhez először rendelje hozzá azokat a személyes asztali gazdagéphez, hogy azok a hírcsatornában lássák az asztalt. Amikor egy hozzárendelt felhasználó elindítja az asztalt a hírcsatornájában, a rendszer egy rendelkezésre álló munkamenet-gazdagépet igényel, ha még nem csatlakoztak a gazdagéphez, amely befejezi a hozzárendelési folyamatot.
+Ha automatikusan hozzá szeretne rendelni a felhasználókat, először rendelje hozzá őket a személyes asztali gazdakészlethez, hogy azok a hírcsatornájukban láthassák az asztalt. Amikor egy hozzárendelt felhasználó elindítja az asztalt a hírcsatornájában, akkor egy elérhető munkamenet-gazdatornokat igényel, ha még nem csatlakozott a gazdakészlethez, amely befejezi a hozzárendelési folyamatot.
 
-Mielőtt elkezdené, [töltse le és importálja a Windows rendszerű virtuális asztali PowerShell-modult](/powershell/windows-virtual-desktop/overview/) , ha még nem tette meg. 
+Mielőtt elkezdené, [töltse le és importálja a Windows Virtual Desktop PowerShell modult,](/powershell/windows-virtual-desktop/overview/) ha még nem tette meg. 
 
 > [!NOTE]
-> Az utasítások követése előtt győződjön meg arról, hogy telepítette a Windows rendszerű virtuális asztali PowerShell-modul 1.0.1534.2001 vagy újabb verzióját.
+> Az alábbi utasítások bekerülése előtt győződjön meg arról, hogy telepítette a Windows Virtual Desktop PowerShell 1.0.1534.2001-es vagy újabb verzióját.
 
-Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
+Ezután futtassa a következő parancsmast a fiókjába való bejelentkezéshez:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-A következő PowerShell-parancsmag futtatásával konfigurálhatja, hogy a gazdagépek automatikusan rendeljenek felhasználókat a virtuális gépekhez:
+Ha úgy szeretne konfigurálni egy gazdakészletet, hogy a felhasználók automatikusan hozzárendeljenek a virtuális gépekhez, futtassa a következő PowerShell-parancsmacamot:
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -AssignmentType Automatic
 ```
 
-A következő PowerShell-parancsmag futtatásával rendelhet hozzá felhasználót a személyes asztali gazdagéphez:
+Ha egy felhasználót hozzá szeretne rendelni a személyes asztali gazdakészlethez, futtassa a következő PowerShell-parancsmackét:
 
 ```powershell
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
@@ -53,29 +53,29 @@ Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -Use
 
 ## <a name="configure-direct-assignment"></a>Közvetlen hozzárendelés konfigurálása
 
-Az automatikus hozzárendeléstől eltérően a közvetlen hozzárendelés használatakor a felhasználót a személyes asztali gazdagéphez és egy adott munkamenet-gazdagéphez is hozzá kell rendelnie, mielőtt csatlakozni tudnak a személyes asztalhoz. Ha a felhasználó csak a munkamenetgazda-hozzárendelés nélküli gazdagépekhez van hozzárendelve, nem férhetnek hozzá az erőforrásokhoz.
+Az automatikus hozzárendeléssel ellentétben a közvetlen hozzárendelés használatakor a felhasználót mind a személyes asztali gazdakészlethez, mind egy adott munkamenet-gazdagéphez hozzá kell rendelnie ahhoz, hogy a személyes asztalhoz csatlakozhassanak. Ha a felhasználó csak munkamenet-gazdagép-hozzárendelés nélküli gazdakészlethez van hozzárendelve, nem fog tudni hozzáférni az erőforrásokhoz.
 
-A következő PowerShell-parancsmag futtatásával konfigurálhatja a gazdagépeket, hogy a felhasználók közvetlen hozzárendelését igénylik a munkamenet-gazdagépekhez:
+Ha úgy szeretne konfigurálni egy gazdakészletet, hogy a felhasználók közvetlen hozzárendelését követelje meg a munkamenet-állomásokhoz, futtassa a következő PowerShell-parancsmacsat:
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -AssignmentType Direct
 ```
 
-A következő PowerShell-parancsmag futtatásával rendelhet hozzá felhasználót a személyes asztali gazdagéphez:
+Ha egy felhasználót hozzá szeretne rendelni a személyes asztali gazdakészlethez, futtassa a következő PowerShell-parancsmackét:
 
 ```powershell
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-Ha egy felhasználót egy adott munkamenet-gazdagéphez szeretne rendelni, futtassa a következő PowerShell-parancsmagot:
+Ha egy felhasználót egy adott munkamenet-állomáshoz szeretne hozzárendelni, futtassa a következő PowerShell-parancsmast:
 
 ```powershell
 Set-RdsSessionHost <tenantname> <hostpoolname> -Name <sessionhostname> -AssignedUser <userupn>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy konfigurálta a személyes asztal hozzárendelési típusát, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, és tesztelheti azt egy felhasználói munkamenet részeként. A következő két útmutató bemutatja, hogyan csatlakozhat egy munkamenethez az Ön által választott ügyfél használatával:
+Most, hogy konfigurálta a személyes asztal-hozzárendelés típusát, bejelentkezhet egy Windows virtuális asztali ügyfélbe, hogy tesztelje azt egy felhasználói munkamenet részeként. A következő két útmutató megmutatja, hogyan csatlakozhat egy munkamenethez az Ön által választott ügyfél segítségével:
 
-- [Kapcsolat a Windows asztali ügyféllel](connect-windows-7-and-10.md)
-- [A webes ügyféllel való kapcsolat](connect-web.md)
+- [Kapcsolódás a Windows asztali ügyféllel](connect-windows-7-and-10.md)
+- [Kapcsolódás a webügyféllel](connect-web.md)

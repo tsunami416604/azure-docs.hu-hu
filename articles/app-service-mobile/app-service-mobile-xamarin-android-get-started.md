@@ -1,16 +1,16 @@
 ---
-title: Ismerkedés a Xamarin. Android-alkalmazásokkal
-description: Ez az oktatóanyag az Azure-Mobile Apps Xamarin Android-fejlesztéshez való használatának megkezdéséhez nyújt útmutatást.
+title: Első lépések a Xamarin.Android alkalmazásokkal
+description: Az Azure Mobile Apps for Xamarin Android-fejlesztés hez való használatának megkezdéséhez kövesse ezt az oktatóanyagot.
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: b42205436c88f9075423bfcaf9e5a9fd931ee4f4
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461368"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Xamarin.Android-alkalmazás létrehozása
@@ -19,7 +19,7 @@ ms.locfileid: "77461368"
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag azt ismerteti, hogyan adhat felhőalapú háttérszolgáltatásokat Xamarin.Android-alkalmazásokhoz. További információ: [Mi a Mobile Apps szolgáltatás?](app-service-mobile-value-prop.md).
 
-Alább az elkészült alkalmazás képernyőképe látható:
+A kész alkalmazásról az alábbiakban látható egy képernyőkép:
 
 ![][0]
 
@@ -38,39 +38,39 @@ Mobile Apps-háttéralkalmazás létrehozásához tegye a következőket.
 
 Már kiépített egy Azure Mobile Apps-háttérszolgáltatást, amelyet mobil ügyfélalkalmazásai használni tudnak. A következő lépésben le kell töltenie egy kiszolgálóprojektet egy egyszerű „Teendőlista” háttéralkalmazáshoz, és közzé kell tennie az Azure-ban.
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Adatbázis-kapcsolatok létrehozása és az ügyfél és a kiszolgáló projekt konfigurálása
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Adatbázis-kapcsolat létrehozása és az ügyfél- és kiszolgálóprojekt konfigurálása
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="run-the-xamarinandroid-app"></a>A Xamarin. Android-alkalmazás futtatása
-1. Nyissa meg a Xamarin. Android projektet.
+## <a name="run-the-xamarinandroid-app"></a>A Xamarin.Android alkalmazás futtatása
+1. Nyissa meg a Xamarin.Android projektet.
 
-2. Lépjen a [Azure Portalra](https://portal.azure.com/) , és navigáljon a létrehozott mobil alkalmazáshoz. A `Overview` panelen keresse meg azt az URL-címet, amely a Mobile App nyilvános végpontja. Példa – az sitename "test123" neve https://test123.azurewebsites.netlesz.
+2. Nyissa meg az [Azure Portalon,](https://portal.azure.com/) és keresse meg a létrehozott mobilalkalmazást. A `Overview` panelen keresse meg a mobilalkalmazás nyilvános végpontját képező URL-címet. Példa - a sitename az én app neve https://test123.azurewebsites.net"test123" lesz .
 
-3. Nyissa meg a fájlt `ToDoActivity.cs` ebben a mappában – xamarin. Android/ZUMOAPPNAME/ToDoActivity. cs. Az alkalmazás neve `ZUMOAPPNAME`.
+3. Nyissa meg `ToDoActivity.cs` a fájlt ebben a mappában - xamarin.android/ZUMOAPPNAME/ToDoActivity.cs. Az alkalmazás `ZUMOAPPNAME`neve .
 
-4. `ToDoActivity` osztályban cserélje le az `ZUMOAPPURL` változót a fenti nyilvános végpontra.
+4. Az `ToDoActivity` osztályban `ZUMOAPPURL` cserélje le a változót a fenti nyilvános végpontra.
 
     `const string applicationURL = @"ZUMOAPPURL";`
 
-    válik
+    Lesz
     
     `const string applicationURL = @"https://test123.azurewebsites.net";`
     
-5. Az alkalmazás üzembe helyezéséhez és futtatásához nyomja le az F5 billentyűt.
+5. Nyomja le az F5 billentyűt az alkalmazás üzembe helyezéséhez és futtatásához.
 
-6. Az alkalmazásban írjon be egy értelmes szöveget, például *Az oktatóanyag befejezése*, majd kattintson a **Hozzáadás** gombra.
+6. Az alkalmazásban írjon be értelmes szöveget, például *fejezze be az oktatóanyagot,* majd kattintson a **Hozzáadás** gombra.
 
     ![][10]
 
-    A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A táblázatban tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
+    A rendszer beilleszti kérés adatait a TodoItem táblába. A táblázatban tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
 
    > [!NOTE]
    > A mobil-háttéralkalmazás számára az adatok lekérdezéséhez és beszúrásához hozzáférést biztosító kódot a ToDoActivity.cs C# fájlban tekintheti meg.
    
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 Ha a megoldás elkészítése során problémákat tapasztal, futtassa a NuGet csomagkezelőt, és frissítse a `Xamarin.Android` támogatási csomagokat. Előfordulhat, hogy a gyorsindítási projektek nem tartalmazzák a legújabb verziót.
 
-Vegye figyelembe, hogy a projektjében hivatkozott összes támogatási csomagnak azonos verziójúnak kell lennie. Az [Azure Mobile Apps NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
+Vegye figyelembe, hogy a projektjében hivatkozott összes támogatási csomagnak azonos verziójúnak kell lennie. Az [Azure Mobile Apps NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
 
 <!-- Images. -->
 [0]: ./media/app-service-mobile-xamarin-android-get-started/mobile-quickstart-completed-android.png

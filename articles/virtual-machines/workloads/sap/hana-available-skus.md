@@ -1,6 +1,6 @@
 ---
-title: SKU-SAP HANA az Azure-ban (nagyméretű példányok) | Microsoft Docs
-description: SKU-SAP HANA az Azure-ban (nagyméretű példányok).
+title: SAP HANA-s skin az Azure-ban (nagy példányok) | Microsoft dokumentumok
+description: SAP HANA skin az Azure-ban (nagy példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,15 +14,15 @@ ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: aad4e3ff3df8b4aeecbbbee7883ba383b9fd0d9c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617265"
 ---
 # <a name="available-skus-for-hli"></a>HLI-hez elérhető termékváltozatok
 
-Az Azure (nagyméretű példányok) szolgáltatás 3. változatán alapuló SAP HANA a következő Azure-régiók számos konfigurációjában érhető el:
+AZ SAP HANA az Azure -on (Nagy példányok) szolgáltatás 3-as verziós bélyegzők alapján érhető el több konfigurációban az Azure régióiban:
 
 - USA nyugati régiója
 - USA keleti régiója
@@ -33,7 +33,7 @@ Az Azure (nagyméretű példányok) szolgáltatás 3. változatán alapuló SAP 
 - Kelet-Japán
 - Nyugat-Japán
 
-Az Azure (nagyméretű példányok) szolgáltatás 4. változatán alapuló SAP HANA a következő Azure-régiók számos konfigurációjában érhető el:
+AZ SAP HANA az Azure-ban (nagy példányok) 4-es verzióbélyegzők alapján érhető el több konfigurációban az Azure régióiban:
 
 - USA nyugati régiója, 2.
 - USA keleti régiója
@@ -43,74 +43,74 @@ Az Azure (nagyméretű példányok) szolgáltatás 4. változatán alapuló SAP 
 
 
 
-[SAP HANA a HANA Large instances listához tartozó hitelesített SKU](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) -ket, például:
+[SAP HANA tanúsítvánnyal rendelkező, a HANA nagy példányok listájának suk-jai,](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) például:
 
-| SAP-megoldás | CPU | Memory (Memória) | Tárterület | Rendelkezésre állás |
+| SAP-megoldás | CPU | Memory (Memória) | Storage | Rendelkezésre állás |
 | --- | --- | --- | --- | --- |
-| OLAP-hoz optimalizált: SAP BW, BW/4HANA<br /> vagy SAP HANA általános OLAP számítási feladatokhoz | SAP HANA az Azure S72<br /> – 2 x Intel® Xeon® Processor E7-8890 v3<br /> 36 CPU-magok és 72 CPU-szálak |  768 GB |  3 TB | Többé nem ajánlott |
-| --- | SAP HANA az Azure S144<br /> – 4 x Intel® Xeon® Processor E7-8890 v3<br /> 72 CPU-magok és 144 CPU-szálak |  1,5 TB |  6 TB | Többé nem ajánlott |
-| --- | SAP HANA az Azure S192<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 CPU-magok és 192 CPU-szálak |  2,0 TB |  8 TB | Többé nem ajánlott |
-| --- | SAP HANA az Azure S224<br /> – 4 x Intel® Xeon® Platinum 8276 processzor (más néven Cascade Lake)<br /> 112 CPU-magok és 224 CPU-szálak |  3,0 TB |  6,3 TB | Elérhető a Revision3-és Revision4-bélyegekben  |
-| --- | SAP HANA az Azure S384<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 CPU-magok és 384 CPU-szálak |  4,0 TB |  16 TB | Elérhető a Revision4 Stamps szolgáltatásban |
-| OLTP-re optimalizált: SAP Business Suite<br /> SAP HANA vagy S/4HANA (OLTP) esetén<br /> általános OLTP | SAP HANA az Azure S72m<br /> – 2 x Intel® Xeon® Processor E7-8890 v3<br /> 36 CPU-magok és 72 CPU-szálak |  1,5 TB |  6 TB | Többé nem ajánlott |
-|---| SAP HANA az Azure S144m<br /> – 4 x Intel® Xeon® Processor E7-8890 v3<br /> 72 CPU-magok és 144 CPU-szálak |  3,0 TB |  12 TB | Többé nem ajánlott |
-|---| SAP HANA az Azure S192m<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 CPU-magok és 192 CPU-szálak  |  4,0 TB |  16 TB | Többé nem ajánlott |
-| --- | SAP HANA az Azure S224m<br /> – 4 x Intel® Xeon® Platinum 8276 processzor (más néven Cascade Lake)<br /> 112 CPU-magok és 224 CPU-szálak |  6,0 TB |  10,5 TB | Elérhető a Revision3-és Revision4-bélyegekben  |
-|---| SAP HANA az Azure S384m<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 CPU-magok és 384 CPU-szálak |  6,0 TB |  18 TB | Elérhető a Revision4 Stamps szolgáltatásban|
-|---| SAP HANA az Azure S384xm<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 CPU-magok és 384 CPU-szálak |  8,0 TB |  22 TB |  Elérhető a Revision4 Stamps szolgáltatásban |
-|---| SAP HANA az Azure S576m<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 CPU-magok és 576 CPU-szálak |  12,0 TB |  28 TB | Elérhető a Revision4 Stamps szolgáltatásban|
-|---| SAP HANA az Azure S768m<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> 384 CPU-magok és 768 CPU-szálak |  16,0 TB |  36 TB | Elérhető a Revision4 Stamps szolgáltatásban|
-|---| SAP HANA az Azure S960m<br /> – 20 x Intel® Xeon® Processor E7-8890 v4<br /> 480 CPU-magok és 960 CPU-szálak |  20,0 TB |  46 TB | Elérhető a Revision4 Stamps szolgáltatásban|
+| OLAP-ra optimalizálva: SAP BW, BW/4HANA<br /> vagy SAP HANA általános OLAP munkaterheléshez | SAP HANA az Azure S72-ben<br /> – 2 x Intel® Xeon® E7-8890 v3 processzor<br /> 36 CPU-mag és 72 CPU-szál |  768 GB |  3 TB | Már nem ajánlják fel. |
+| --- | SAP HANA az Azure S144-en<br /> – 4 x Intel® Xeon® E7-8890 v3 processzor<br /> 72 CPU-mag és 144 CPU-szál |  1,5 TB |  6 TB | Már nem ajánlják fel. |
+| --- | SAP HANA az Azure S192-ben<br /> – 4 x Intel® Xeon® E7-8890 v4 processzor<br /> 96 CPU-mag és 192 CPU-szál |  2,0 TB |  8 TB | Már nem ajánlják fel. |
+| --- | SAP HANA az Azure S224-en<br /> – 4 x Intel® Xeon® Platinum 8276 processzor (más néven Cascade-tó)<br /> 112 CPU-mag és 224 CPU-szál |  3,0 TB |  6,3 TB | Elérhető revision3 és revision4 bélyegek  |
+| --- | SAP HANA az Azure S384-en<br /> – 8 x Intel® Xeon® E7-8890 v4 processzor<br /> 192 CPU-mag és 384 CPU-szál |  4,0 TB |  16 TB | Elérhető Revision4 bélyegek |
+| OLTP-ra optimalizálva: SAP Business Suite<br /> az SAP HANA vagy S/4HANA (OLTP)<br /> általános OLTP | SAP HANA az Azure S72m-en<br /> – 2 x Intel® Xeon® E7-8890 v3 processzor<br /> 36 CPU-mag és 72 CPU-szál |  1,5 TB |  6 TB | Már nem ajánlják fel. |
+|---| SAP HANA az Azure S144m<br /> – 4 x Intel® Xeon® E7-8890 v3 processzor<br /> 72 CPU-mag és 144 CPU-szál |  3,0 TB |  12 TB | Már nem ajánlják fel. |
+|---| SAP HANA az Azure S192m<br /> – 4 x Intel® Xeon® E7-8890 v4 processzor<br /> 96 CPU-mag és 192 CPU-szál  |  4,0 TB |  16 TB | Már nem ajánlják fel. |
+| --- | SAP HANA az Azure S224m-en<br /> – 4 x Intel® Xeon® Platinum 8276 processzor (más néven Cascade-tó)<br /> 112 CPU-mag és 224 CPU-szál |  6,0 TB |  10,5 TB | Elérhető revision3 és revision4 bélyegek  |
+|---| SAP HANA az Azure S384m<br /> – 8 x Intel® Xeon® E7-8890 v4 processzor<br /> 192 CPU-mag és 384 CPU-szál |  6,0 TB |  18 TB | Elérhető Revision4 bélyegek|
+|---| SAP HANA az Azure S384xm-en<br /> – 8 x Intel® Xeon® E7-8890 v4 processzor<br /> 192 CPU-mag és 384 CPU-szál |  8,0 TB |  22 TB |  Elérhető Revision4 bélyegek |
+|---| SAP HANA az Azure S576m-on<br /> – 12 x Intel® Xeon® E7-8890 v4 processzor<br /> 288 CPU-mag és 576 CPU-szál |  12,0 TB |  28 TB | Elérhető Revision4 bélyegek|
+|---| SAP HANA az Azure S768m<br /> – 16 x Intel® Xeon® E7-8890 v4 processzor<br /> 384 CPU-mag és 768 CPU-szál |  16,0 TB |  36 TB | Elérhető Revision4 bélyegek|
+|---| SAP HANA az Azure S960m-en<br /> – 20 x Intel® Xeon® Processzor E7-8890 v4<br /> 480 CPU-mag és 960 CPU-szál |  20,0 TB |  46 TB | Elérhető Revision4 bélyegek|
 
 
-SAP HANA TDIv5 az SAP lehetővé teszi az ügyfél-specifikus méretezést és az ügyfél-specifikus projekteket, amelyek olyan kiszolgálói konfigurációkhoz vezethetnek, amelyek nem szerepelnek a minősítéssel a ben:
+Az SAP HANA TDIv5 alatt az SAP lehetővé teszi az ügyfélspecifikus méretezést és az ügyfélspecifikus projekteket, amelyek kiszolgálókonfigurációkhoz vezethetnek, amelyek nem szerepelnek a következő ben tanúsítottként:
 
-- [SAP HANA Certified készülékek](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/appliances.html)
-- [SAP HANA Certified IaaS platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
+- [SAP HANA tanúsítvánnyal rendelkező készülékek](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/appliances.html)
+- [SAP HANA tanúsítvánnyal rendelkező IaaS-platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 
-Sok esetben ezek az ügyfél-specifikus kiszolgálói konfigurációk több memóriát hordoznak, mint az SAP-tanúsítvánnyal rendelkező kiszolgálói egységek. Az SAP használata során az ügyfeleknek lehetősége van SAP-támogatást kapni, és hitelesíteni az ügyfél-specifikus méretű kiszolgálói konfigurációkat. Az Azure-ban a következő HANA nagyméretű példányok standard SKU-ra van lehetőség, valamint a Microsoft árlista az ilyen TDIv5 ügyfél-specifikus méretezési projektekhez.
+Sok esetben ezek az ügyfélspecifikus kiszolgálókonfigurációk több memóriát hordoznak, mint az SAP-val hitelesített kiszolgálóegységek. Az SAP-val való munka közben az ügyfeleknek lehetőségük van sap-támogatást kérni, és igazolni az ügyfélspecifikus méretű kiszolgálókonfigurációkat. Az Azure-ban a következő HANA nagypéldány szabványos termékkészletállmák érhetők el, és az ilyen TDIv5 ügyfélspecifikus méretezési projektek Microsoft árlistájában.
 
-| SKU|CPU | Memory (Memória) | Tárterület | Rendelkezésre állás |
+| SKU|CPU | Memory (Memória) | Storage | Rendelkezésre állás |
 | ---| --- | --- | --- | --- |
-| S96 | SAP HANA az Azure S96<br /> – 2 x Intel® Xeon® Processor E7-8890 v4<br /> 48 CPU-magok és 96 CPU-szálak |  768 GB |  3 TB | Elérhető a Revision3-és Revision4-bélyegekben|
+| S96 között | SAP HANA az Azure S96-on<br /> – 2 x Intel® Xeon® Processzor E7-8890 v4<br /> 48 CPU-mag és 96 CPU-szál |  768 GB |  3 TB | Elérhető revision3 és revision4 bélyegek|
 
 
-| Eredeti SKU, amely lehet <br /> kiterjesztve a memóriában | CPU | Memory (Memória) | Tárterület | Rendelkezésre állás |
+| Eredeti termékváltozat, amely <br /> bővítve a memóriában | CPU | Memory (Memória) | Storage | Rendelkezésre állás |
 | --- | --- | --- | --- | --- |
-| A S192m bővíthető | SAP HANA az Azure S192xm<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 CPU-magok és 192 CPU-szálak |  6,0 TB |  16 TB | Többé nem ajánlott |
-| A S384xm bővíthető | SAP HANA az Azure S384xxm<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 CPU-magok és 384 CPU-szálak |  12,0 TB |  28 TB | Elérhető a Revision4 Stamps szolgáltatásban |
-| A S576m bővíthető | SAP HANA az Azure S576xm<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 CPU-magok és 576 CPU-szálak |  18,0 TB |  41 TB | Elérhető a Revision4 Stamps szolgáltatásban|
-| A S768m bővíthető | SAP HANA az Azure S768xm<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> 384 CPU-magok és 768 CPU-szálak |  24,0 TB |  56 TB | Elérhető a Revision4 Stamps szolgáltatásban |
+| Az S192m kiterjeszthető | SAP HANA az Azure S192xm-en<br /> – 4 x Intel® Xeon® E7-8890 v4 processzor<br /> 96 CPU-mag és 192 CPU-szál |  6,0 TB |  16 TB | Már nem ajánlják fel. |
+| Az S384xm kiterjeszthető | SAP HANA az Azure S384xxm<br /> – 8 x Intel® Xeon® E7-8890 v4 processzor<br /> 192 CPU-mag és 384 CPU-szál |  12,0 TB |  28 TB | Elérhető Revision4 bélyegek |
+| Az S576m kiterjeszthető | SAP HANA az Azure S576xm-on<br /> – 12 x Intel® Xeon® E7-8890 v4 processzor<br /> 288 CPU-mag és 576 CPU-szál |  18,0 TB |  41 TB | Elérhető Revision4 bélyegek|
+| Az S768m kiterjeszthető | SAP HANA az Azure S768xm-en<br /> – 16 x Intel® Xeon® E7-8890 v4 processzor<br /> 384 CPU-mag és 768 CPU-szál |  24,0 TB |  56 TB | Elérhető Revision4 bélyegek |
 
-- CPU-magok = a kiszolgálói egység processzorai összegének nem Hyper-threaded CPU-magok összessége.
-- CPU-szálak = a kiszolgálói egység processzorai összegének a Hyper-threaded CPU-magok által megadott számítási szálak összessége. A legtöbb egység alapértelmezés szerint a Hyper-Threading technológia használatára van konfigurálva.
-- A szállítói javaslatok alapján a S768m, a S768xm és a S960m nem úgy vannak konfigurálva, hogy a Hyper-Threading szolgáltatást használják SAP HANA futtatásához.
-
-
-A kiválasztott konfigurációk a munkaterhelés, a CPU-erőforrások és a kívánt memória függenek. A OLTP számítási feladatnak az OLAP számítási feladathoz optimalizált SKU-k használatára van lehetősége. 
-
-Az ajánlatok hardveres alapja, az ügyfél-specifikus méretezési projektekhez tartozó egységek kivételével SAP HANA TDI-tanúsítvánnyal rendelkezik. A hardver két különböző osztálya osztható fel a SKU-ba:
-
-- A S72, a S72m, a S96, a S144, a S144m, a S192, a S192m, a S192xm, a S224 és a S224m, amelyeket az SKU típusú "I osztálynak" nevezünk.
-- A S384, a S384m, a S384xm, a S384xxm, a S576m, a S576xm S768m, a S768xm és a S960m, amelyek az SKU Type II osztályának nevezzük.
-- Ha a 4.5 TB-tól eltérő S224 SKU-ajánlat érdekli a Optane-mel való 9TB, további információért forduljon a Microsoft-fiók csapatához. 
+- CPU magok = a kiszolgálóegység processzorainak összegének nem hiperszálas CPU-magok összege.
+- CPU-szálak = a kiszolgálóegység processzorainak összegének hiperszálas CPU-magok által biztosított számítási szálak összege. A legtöbb egység alapértelmezés szerint a Hyper-Threading technológiát használja.
+- A beszállítói ajánlások alapján az S768m, az S768xm és az S960m nincs beállítva az SAP HANA futtatásához használt hyper-threading használatára.
 
 
-Egy teljes HANA nagyméretű példány bélyegzője nem kizárólag egyetlen ügyfél&#39;általi használatra van lefoglalva. Ez a tény az Azure-ban üzembe helyezett hálózati hálón keresztül csatlakoztatott számítási és tárolási erőforrások állványára vonatkozik. A HANA nagyméretű példány-infrastruktúrája, például az Azure, a következő három szinten helyezi üzembe a különböző ügyfél-&quot;bérlőket&quot; amelyek egymástól elszigeteltek:
+A kiválasztott konfigurációk a munkaterheléstől, a PROCESSZOR-erőforrásoktól és a kívánt memóriától függenek. Az OLTP-számítási feladat az OLAP-számítási feladatokra optimalizált su-kat is használhatja. 
 
-- **Hálózat**: a HANA nagyméretű példány bélyegzőn belüli virtuális hálózatok elkülönítése.
-- **Tárterület**: elkülönítés a tároló virtuális gépei között, amelyekhez tárolási kötetek vannak rendelve, és elkülönítik a tárolási köteteket a bérlők között.
-- **Számítás**: kiszolgálói egységek dedikált hozzárendelése egyetlen bérlőhöz. A kiszolgálói egységek nem rendelkeznek kemény vagy lágy particionálással. Egyetlen kiszolgáló vagy gazda egység megosztása a bérlők között. 
+Az ajánlatok hardveralapja, kivéve az ügyfélspecifikus méretezési projektek egységeit, SAP HANA TDI-tanúsítvánnyal rendelkezik. A hardverkét különböző osztálya osztja fel a terméktájékoztatót:
 
-A HANA nagyméretű példány-egységek különböző bérlők közötti központi telepítései nem láthatók egymás számára. A különböző bérlők által üzembe helyezett HANA nagyméretű példányok nem tudnak közvetlenül kommunikálni egymással a HANA nagyméretű példány-bélyegző szintjén. Az egyik bérlőn belüli HANA Large instances egységek csak a HANA nagyméretű példány-bélyegző szintjén tudnak kommunikálni egymással.
+- S72, S72m, S96, S144, S144m, S192, S192m, S192xm, S224 és S224m, amelyeket a skus-ok "I. típusú osztályának" neveznek.
+- S384, S384m, S384xm, S384xxm, S576m, S576xm S768m, S768xm és S960m, amelyeket a kkv-k "II.
+- Ha érdeklik a 4,5 TB-tól 9TB-ig kínált egyéb S224 terméktájékoztatók az Optane-nál, további információkért lépjen kapcsolatba a Microsoft-fiók csapatával. 
 
-A nagyméretű példányok bélyegzőn üzembe helyezett bérlők egy Azure-előfizetéshez vannak rendelve számlázási célokra. A hálózatok esetében az adott Azure-regisztráción belül más Azure-előfizetések virtuális hálózatáról is elérhető. Ha ugyanabban az Azure-régióban egy másik Azure-előfizetéssel telepíti a üzembe helyezést, dönthet úgy is, hogy egy különálló HANA nagyméretű példány bérlőt kér.
 
-Jelentős különbségek vannak a HANA nagyméretű példányon futó SAP HANA és az Azure-ban üzembe helyezett virtuális gépeken futó SAP HANA között:
+A teljes HANA nagy példány bélyegzője nem kizárólag egyetlen ügyfél számára van kiosztva,&#39;s használata. Ez a tény az Azure-ban üzembe helyezett hálózati hálón keresztül csatlakoztatott számítási és tárolási erőforrások állványaira is vonatkozik. A HANA nagypéldány-infrastruktúra, például &quot;az&quot; Azure, különböző ügyfél-bérlőket telepít, amelyek a következő három szinten vannak elkülönítve egymástól:
 
-- Az Azure-ban nincs SAP HANA virtualizációs réteg (nagyméretű példányok). Az alapul szolgáló operációs rendszer nélküli hardverek teljesítményét kapja meg.
-- Az Azure-tól eltérően az Azure-beli (nagyméretű példányok) kiszolgáló SAP HANA egy adott ügyfélhez van hozzárendelve. Nincs lehetőség arra, hogy a kiszolgáló egysége vagy gazdagépe kemény vagy puha particionálású legyen. Ennek eredményeképpen a HANA nagyméretű példányok egysége a bérlőhöz és az Önhöz hozzárendelt teljes egészében van kiosztva. A kiszolgáló újraindítása vagy leállítása nem vezet automatikusan az operációs rendszerhez, és SAP HANA egy másik kiszolgálóra. (Az I osztályba tartozó SKU típus esetében az egyetlen kivétel az, ha egy kiszolgáló problémákba ütközik, és egy másik kiszolgálón kell végrehajtani az újratelepítést.)
-- Az Azure-tól eltérően, ahol a gazdagép processzor-típusai a legjobb ár/teljesítmény arányhoz vannak kiválasztva, az Azure-ban (nagyméretű példányok) SAP HANA számára kiválasztott processzor-típusok az Intel E7v3 és a E7v4 processzor legmagasabb teljesítménye.
+- **Hálózat**: A HANA nagy példány bélyegzőn belüli virtuális hálózatokon keresztüli elkülönítés.
+- **Tárolás:** Elkülönítés tárolóvirtuális gépeken keresztül, amelyek tárolási kötetek hozzárendelt és elkülöníteni tárolókötetek bérlők között.
+- **Számítási**: A kiszolgálóegységek dedikált hozzárendelése egyetlen bérlőhöz. Nincs kemény vagy puha particionálás a kiszolgálóegységekben. Egyetlen kiszolgáló vagy állomásegység nem oszd meg a bérlők között. 
 
-**Következő lépések**
-- [HLI méretezése](hana-sizing.md)
+A hana nagy példány egységek különböző bérlők közötti telepítések nem láthatók egymás számára. A különböző bérlőkben üzembe helyezett HANA nagy példányegységek nem kommunikálhatnak közvetlenül egymással a HANA nagy példány bélyegzőszintjén. Csak hana nagy példány egységek egy bérlőn belül kommunikálhatnak egymással a HANA nagy példány bélyegző szintjén.
+
+A nagy példány bélyegzőjében üzembe helyezett bérlő számlázási célokra egy Azure-előfizetéshez van hozzárendelve. A hálózat érhető el a virtuális hálózatok más Azure-előfizetések ugyanazon az Azure-regisztráción belül érhető el. Ha egy másik Azure-előfizetéssel telepíti ugyanabban az Azure-régióban, dönthet úgy is, hogy egy külön HANA nagy példány bérlőjét kér.
+
+Jelentős különbségek vannak az SAP HANA hana hana-n és az Azure-ban üzembe helyezett virtuális gépeken futó SAP HANA futtatása között:
+
+- Nincs virtualizációs réteg az SAP HANA az Azure-ban (nagy példányok). Ön kap a teljesítmény a mögöttes csupasz fém hardver.
+- Az Azure-ral ellentétben az SAP HANA az Azure-beli (nagy példányok) kiszolgáló dedikált egy adott ügyfél. Nincs lehetőség arra, hogy a kiszolgálóegység vagy a gazdagép erősen vagy lágyan particionált. Ennek eredményeképpen a HANA nagy példány egység a bérlő höz rendelt egészként, és ezzel együtt. A kiszolgáló újraindítása vagy leállítása nem vezet automatikusan az operációs rendszerhez, és az SAP HANA egy másik kiszolgálón van telepítve. (Az I. típusú osztály példányai esetében az egyetlen kivétel az, ha egy kiszolgáló problémákba ütközik, és az újratelepítést egy másik kiszolgálón kell végrehajtani.)
+- Az Azure-ral ellentétben, ahol a gazdaprocesszor-típusok a legjobb ár/teljesítmény arányhoz vannak kiválasztva, az Azure-beli SAP HANA -hoz választott processzortípusok (nagy példányok) az Intel E7v3 és E7v4 processzorcsalád legnagyobb teljesítményűek.
+
+**További lépések**
+- HLI [méretezésének ajánlása](hana-sizing.md)

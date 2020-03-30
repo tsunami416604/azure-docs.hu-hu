@@ -5,131 +5,131 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
 ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77608740"
 ---
-Hozzon létre, és kezeli az Azure-beli virtuális gépek (VM) egységes módon végrehajtott, ipari méretekben, valamilyen automatizált általában van szükség. Nincsenek számos eszközöket és megoldásokat, amelyek lehetővé teszik a teljes Azure-infrastruktúra üzembe helyezés és felügyelet életciklusának automatizálásához. Ez a cikk egy részét az infrastruktúra automatizálási eszközöket, amelyek is használhatja az Azure-ban mutatja be. Ezek az eszközök általában pontosan a következő módszerek egyikét:
+Az Azure virtuális gépek (VM-ek) létrehozása és kezelése egységes módon, nagy méretekben, valamilyen automatizálási forma általában kívánatos. Számos olyan eszköz és megoldás létezik, amelyek lehetővé teszik az Azure-infrastruktúra teljes üzembe helyezésének és felügyeleti életciklusának automatizálását. Ez a cikk bemutatja az Azure-ban használható infrastruktúra-automatizálási eszközöket. Ezek az eszközök általában illeszkednek az alábbi megközelítések egyikébe:
 
-- A virtuális gépek konfigurálásának automatizálása
-    - Az eszközök közé tartozik a [Ansible](#ansible), a [Chef](#chef)és a [Puppet](#puppet).
-    - A virtuális gépek testreszabására szolgáló eszközök közé tartozik a [Cloud-init](#cloud-init) a linuxos virtuális gépekhez, a [PowerShell kívánt állapotának konfigurálása (DSC)](#powershell-dsc)és az [Egyéni Azure-szkriptek bővítménye](#azure-custom-script-extension) az összes Azure-beli virtuális géphez.
+- Virtuális gépek konfigurációjának automatizálása
+    - Az eszközök közé tartozik [az Ansible](#ansible), [a Chef](#chef)és a [Puppet](#puppet).
+    - A virtuális gépek testreszabására jellemző eszközök közé tartozik a linuxos virtuális [gépekfelhő-init,](#cloud-init) a [PowerShell kívánt állapotkonfigurációja (DSC)](#powershell-dsc)és az [Azure Custom Script Extension](#azure-custom-script-extension) az összes Azure virtuális géphez.
  
 - Infrastruktúra-kezelés automatizálása
-    - Az eszközök tartalmazzák a [csomagolót](#packer) az egyéni virtuálisgép-rendszerkép-buildek automatizálására és az infrastruktúra- [Terraform](#terraform) automatizálására.
-    - A [Azure Automation](#azure-automation) az Azure-ban és a helyszíni infrastruktúrában is végezhet műveleteket.
+    - Az eszközök közé tartozik a [Packer](#packer) az egyéni virtuálisgép-lemezképek automatizálásához, valamint a [Terraform](#terraform) az infrastruktúra-létrehozási folyamat automatizálásához.
+    - [Az Azure Automation](#azure-automation) műveleteket hajthat végre az Azure-ban és a helyszíni infrastruktúrában.
 
-- Alkalmazás központi telepítése és a továbbítás automatizálása
-    - Ilyenek például az [Azure DevOps Services](#azure-devops-services) és a [Jenkins](#jenkins).
+- Az alkalmazások telepítésének és kézbesítésének automatizálása
+    - Ilyen például az [Azure DevOps Services](#azure-devops-services) és a [Jenkins.](#jenkins)
 
 ## <a name="ansible"></a>Ansible
-A [Ansible](https://www.ansible.com/) egy automatizálási motor a konfiguráció felügyeletéhez, a virtuális gépek létrehozásához vagy az alkalmazások telepítéséhez. Az Ansible ügynök nélküli modellt alkalmaz, általában az SSH-kulcsokkal hitelesítheti és kezelheti a célgéphez való. Forgatókönyvek, az Ansible modulok meghatározott feladatok végrehajtásához rendelkezésre álló számos konfigurációs feladatok vannak definiálva. További információ: [how Ansible Works](https://www.ansible.com/how-ansible-works).
+[Az Ansible](https://www.ansible.com/) egy automatizálási motor a konfigurációkezeléshez, a virtuális gép létrehozásához vagy az alkalmazások üzembe helyezéséhez. Az Ansible egy ügynök nélküli modellt használ, általában SSH-kulcsokkal a célgépek hitelesítéséhez és kezeléséhez. A konfigurációs feladatok a forgatókönyvekben vannak definiálva, és számos Ansible modul áll rendelkezésre bizonyos feladatok elvégzéséhez. További információ: [Hogyan működik az Ansible.](https://www.ansible.com/how-ansible-works)
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- A [Ansible telepítése és konfigurálása Linux rendszeren az Azure](../articles/ansible/ansible-install-configure.md)-hoz való használatra.
-- [Hozzon létre egy linuxos virtuális gépet](../articles/ansible/ansible-create-vm.md).
-- [Linux rendszerű virtuális gép kezelése](../articles/ansible/ansible-manage-linux-vm.md).
+- [Telepítse és konfigurálja az Ansible-t Linuxon az Azure-ral való használatra.](../articles/ansible/ansible-install-configure.md)
+- [Hozzon létre egy Linux virtuális gép](../articles/ansible/ansible-create-vm.md).
+- [Linuxos virtuális gép kezelése](../articles/ansible/ansible-manage-linux-vm.md).
 
 
 ## <a name="chef"></a>Chef
-A [Chef](https://www.chef.io/) egy automatizálási platform, amely segít meghatározni az infrastruktúra konfigurálását, üzembe helyezését és kezelését. További összetevőket tartalmaz a Chef Habitat az infrastruktúra helyett az alkalmazás életciklusának menedzsment, és a Chef InSpec, amelynek segítségével automatizálhatja biztonsági és a házirend követelményeinek való megfelelés. Chef az ügyfelek egy vagy több központi Chef-kiszolgálókkal, tárolhatja és kezelheti a konfigurációkat a célszámítógépekre telepíti. További információ: [Chef áttekintése](https://docs.chef.io/chef_overview.html).
+[A Chef](https://www.chef.io/) egy automatizálási platform, amely segít meghatározni, hogyan van konfigurálva, üzembe helyezve és kezelve az infrastruktúra. További összetevők közé tartozott a Chef Habitat az alkalmazások életciklusának automatizálásához az infrastruktúra helyett, valamint a Chef InSpec, amely segít a biztonsági és házirend-követelményeknek való megfelelés automatizálásában. A chef-ügyfelek a célgépekre vannak telepítve, egy vagy több központi chef-kiszolgálóval, amelyek a konfigurációkat tárolják és kezelik. További információt a Chef áttekintése című [témakörben talál.](https://docs.chef.io/chef_overview.html)
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [A Chef automatizálásának üzembe helyezése az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview).
-- [Telepítse a cheft Windows rendszeren, és hozzon létre Azure virtuális gépeket](../articles/chef/chef-automation.md).
+- [A Chef Automate üzembe helyezése az Azure Piactérről.](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview)
+- [Telepítse a Chef alkalmazást Windowsra, és hozzon létre Azure-virtuális gépeket.](../articles/chef/chef-automation.md)
 
 
 ## <a name="puppet"></a>Puppet
-A [Puppet](https://www.puppet.com) egy nagyvállalati használatra kész Automation platform, amely kezeli az alkalmazások kézbesítési és telepítési folyamatát. Ügynök telepítve van a célszámítógépen futtatni, amelyek meghatározzák a kívánt konfigurációk az Azure-infrastruktúra jegyzékek Puppet Master és a virtuális gépek. Puppet integrálható más megoldásokkal, például a Jenkins és a GitHub nagyobb fejlesztési és üzemeltetési munkafolyamathoz. További információkért lásd: a [Puppet működése](https://puppet.com/products/how-puppet-works).
+[A Puppet](https://www.puppet.com) egy nagyvállalati automatizálási platform, amely kezeli az alkalmazások kézbesítési és telepítési folyamatát. Az ügynökök a célgépeken vannak telepítve, hogy a Puppet Master olyan jegyzékeket futtathasson, amelyek meghatározzák az Azure-infrastruktúra és a virtuális gépek kívánt konfigurációját. A Puppet más megoldásokkal, például a Jenkinsszel és a GitHubbal is integrálható a továbbfejlesztett devops-munkafolyamat érdekében. További információ: [How Puppet works](https://puppet.com/products/how-puppet-works).
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [A báb üzembe helyezése az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Puppet.puppet-agent-windows-asm?tab=Overview).
+- [A Puppet üzembe helyezése az Azure Piactérről.](https://azuremarketplace.microsoft.com/marketplace/apps/Puppet.puppet-agent-windows-asm?tab=Overview)
 
 
 ## <a name="cloud-init"></a>Cloud-init
-A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. A cloud-init nevezzük az első rendszerindítás során, mert nincsenek további lépéseket vagy szükséges ügynökök a alkalmazni a konfigurációt.  A `#cloud-config` fájlok megfelelő formázásáról a [Cloud-init dokumentációs webhelyén](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)talál további információt.  `#cloud-config` a fájlok Base64 kódolású szövegfájlok.
+A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Mivel a cloud-init a kezdeti rendszerindítási folyamat során van meghívva, nincsenek további lépések vagy szükséges ügynökök a konfiguráció alkalmazásához.  A `#cloud-config` fájlok megfelelő formázásáról a [cloud-init dokumentációs webhelyén olvashat bővebben.](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)  `#cloud-config`fájlok szöveges fájlok kódolt base64.
 
 A cloud-init különböző disztribúciókon is működik. Például nem kell az **apt-get install** vagy a **yum install** használatával telepítenie a csomagokat. Ehelyett megadhatja a telepítendő csomagok listáját. A cloud-init automatikusan a natív csomagkezelő eszközt használja a kiválasztott disztribúcióhoz.
 
-Aktívan dolgozunk a támogatott Linux disztribúció partnereink ahhoz, hogy engedélyezve van a cloud-init lemezkép érhető el az Azure Marketplace-en. Ezek a lemezképek, győződjön meg a cloud-init-környezetekben, és konfigurációkat és a virtuális gépek és a virtual machine scale sets zökkenőmentesen működjön. Ismerje meg, az Azure cloud-Init használatával kapcsolatos további részletek:
+Aktívan együttműködünk a jóváhagyott Linux disztribúciós partnereinkkel annak érdekében, hogy felhőalapú init-kompatibilis lemezképek álljanak rendelkezésre az Azure piactéren. Ezek a lemezképek teszik a felhő-init központi telepítések és konfigurációk zökkenőmentesen működnek a virtuális gépek és a virtuális gép méretezési készletek. További részletek az Azure-beli felhőalapú szolgáltatásokról:
 
-- [Cloud-init támogatás az Azure-beli linuxos virtuális gépekhez](../articles/virtual-machines/linux/using-cloud-init.md)
-- [Próbálja ki a Cloud-init használatával történő automatizált virtuálisgép-konfigurációval kapcsolatos oktatóanyagot](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
+- [Az Azure-ban található Linux-virtuális gépek felhőalapú init támogatása](../articles/virtual-machines/linux/using-cloud-init.md)
+- [Próbálkozzon egy oktatóanyaggal az automatikus virtuális gép konfigurációjával a cloud-init használatával.](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md)
 
 
 ## <a name="powershell-dsc"></a>PowerShell DSC
-A [PowerShell desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) egy felügyeleti platform, amely meghatározza a célszámítógépek konfigurációját. A DSC-t Linuxon is használhatja a [nyílt kezelési infrastruktúra (a (z) (a)-kiszolgáló](https://collaboration.opengroup.org/omi/)használatával.
+[PowerShell kívánt állapotkonfiguráció (DSC)](/powershell/scripting/dsc/overview/overview) egy felügyeleti platform a célgépek konfigurációjának meghatározásához. A DSC Linuxon is használható az [Open Management Infrastructure (OMI) kiszolgálón](https://collaboration.opengroup.org/omi/)keresztül.
 
-DSC-konfigurációk határozza meg, mi a telepíti egy számítógépre, és a gazdagép konfigurálása. A helyi Configuration Manager (LCM) Konfigurálása motor dolgozza fel a kért műveletek leküldött beállításai minden célként megadott csomóponton fut. Egy lekéréses kiszolgálót egy webszolgáltatás, amelyet a DSC-konfigurációk és a kapcsolódó erőforrások tárolására egy központi gazdagépen futtatja. A lekéréses kiszolgálón kommunikál a LCM motor minden cél gazdagépre, adja meg a szükséges konfigurációk és megfelelőségi jelentést.
+A DSC-konfigurációk határozzák meg, hogy mit telepítsenek a számítógépre, és hogyan konfigurálják az állomást. A helyi configuration manager (LCM) motor fut minden célcsomóponton, amely a kért műveleteket a leadott konfigurációk alapján dolgozza fel. A lekéréses kiszolgáló olyan webszolgáltatás, amely egy központi állomáson fut a DSC-konfigurációk és a kapcsolódó erőforrások tárolására. A lekéréses kiszolgáló minden célállomáslcm-motorjával kommunikál, hogy biztosítsa a szükséges konfigurációkat, és jelentést nyújtson a megfelelőségről.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [Hozzon létre egy alapszintű DSC-konfigurációt](/powershell/scripting/dsc/quickstarts/website-quickstart).
+- [Hozzon létre egy egyszerű DSC-konfigurációt.](/powershell/scripting/dsc/quickstarts/website-quickstart)
 - [DSC lekéréses kiszolgáló konfigurálása](/powershell/scripting/dsc/pull-server/pullserver).
-- [A Linux rendszerhez készült DSC használata](/powershell/scripting/dsc/getting-started/lnxgettingstarted).
+- [Használja a DSC-t Linuxra.](/powershell/scripting/dsc/getting-started/lnxgettingstarted)
 
 
-## <a name="azure-custom-script-extension"></a>Az Azure egyéni szkriptek futtatására szolgáló bővítmény
-A [Linux](../articles/virtual-machines/linux/extensions-customscript.md) vagy a [Windows rendszerhez](../articles/virtual-machines/windows/extensions-customscript.md) készült egyéni parancsfájl-bővítmény letölti és végrehajtja az Azure-beli virtuális gépeken futó parancsfájlokat. A bővítmény is használhatja, ha létrehoz egy virtuális Gépet, vagy a virtuális gép után bármikor használatban van. 
+## <a name="azure-custom-script-extension"></a>Azure egyéni szkriptek futtatására szolgáló bővítmény
+Az Azure Custom Script Extension for [Linux](../articles/virtual-machines/linux/extensions-customscript.md) vagy [Windows](../articles/virtual-machines/windows/extensions-customscript.md) letölti és végrehajtja a parancsfájlokat az Azure virtuális gépeken. Használhatja a bővítményt, amikor virtuális gép létrehozása, vagy bármikor a virtuális gép használata után. 
 
-Parancsfájlok letölthető az Azure storage vagy bármely nyilvános helyre, például egy GitHub-adattárból. Az egyéni Szkriptbővítménnyel és parancsfájlokat írhat bármilyen nyelven, amely a forrás virtuális Gépet futtat. Ezek a parancsfájlok segítségével telepíthet alkalmazásokat, és konfigurálja a virtuális Gépet igény szerint. Hitelesítő adatok biztonságos, bizalmas adatokat, például jelszavak védett konfigurációban is tárolhatók. Ezek a hitelesítő adatok csak a virtuális gép lesznek visszafejtve.
+A parancsfájlok letölthetők az Azure storage-ból vagy bármely nyilvános helyről, például egy GitHub-tárházból. Az egyéni parancsfájl-bővítmény, parancsfájlok bármilyen nyelven, amely fut a forrás virtuális gépen. Ezek a parancsfájlok alkalmazások telepítésére vagy a virtuális gép igény szerint konfigurálására használhatók. A hitelesítő adatok védelme érdekében a bizalmas adatok, például a jelszavak védett konfigurációban tárolhatók. Ezeket a hitelesítő adatokat csak a virtuális gépen belül fejti vissza.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [Hozzon létre egy linuxos virtuális gépet az Azure CLI-vel, és használja az egyéni szkriptek bővítményét](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
-- [Hozzon létre egy Windows rendszerű virtuális gépet Azure PowerShell, és használja az egyéni szkriptek bővítményét](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+- [Hozzon létre egy Linux virtuális gép az Azure CLI és használja az egyéni parancsfájl-bővítményt.](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json)
+- [Hozzon létre egy Windows virtuális gép az Azure PowerShell és használja az egyéni parancsfájl-bővítményt.](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
 
 ## <a name="packer"></a>Csomagoló
-A [csomagoló](https://www.packer.io) automatizálja a létrehozási folyamatot, amikor létrehoz egy egyéni virtuálisgép-rendszerképet az Azure-ban. Packer használatával határozza meg az operációs rendszer, és futtassa a konfiguráció utáni parancsfájlok, amelyek testre szabhatja a virtuális gép saját igényeinek. A beállítása után a virtuális gép, egy felügyelt lemez rendszerképének majd rögzített. Csomagolói automatizálja a folyamatot a forrás virtuális gép, hálózati és tárolási erőforrások létrehozása, és konfigurációs parancsfájlok futtatása, majd hozza létre a Virtuálisgép-lemezkép.
+[A Packer](https://www.packer.io) automatizálja a létrehozási folyamatot, amikor egyéni virtuálisgép-lemezképet hoz létre az Azure-ban. Packer segítségével határozza meg az operációs rendszer és a konfiguráció utáni parancsfájlok, amelyek testre szabják a virtuális gép az önspecifikus igényeknek. Konfigurálás után a virtuális gép ezután felügyelt lemezlemez-lemezlemezként lesz rögzítve. Packer automatizálja a folyamatot, hogy a forrás virtuális gép, a hálózati és tárolási erőforrások, konfigurációs parancsfájlok futtatása, majd létrehozza a virtuális gép lemezképet.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [Linuxos virtuálisgép-rendszerkép létrehozása az Azure-ban a csomagoló használatával](../articles/virtual-machines/linux/build-image-with-packer.md).
-- [Hozzon létre egy Windows rendszerű virtuálisgép-rendszerképet az Azure-ban a csomagoló használatával](../articles/virtual-machines/windows/build-image-with-packer.md).
+- [A Packer segítségével linuxos virtuálisgép-lemezképet hozhat létre az Azure-ban.](../articles/virtual-machines/linux/build-image-with-packer.md)
+- [A Packer segítségével hozzon létre egy Windows virtuálisgép-lemezképet az Azure-ban.](../articles/virtual-machines/windows/build-image-with-packer.md)
 
 
 ## <a name="terraform"></a>Terraform
-A [Terraform](https://www.terraform.io) egy automatizálási eszköz, amely lehetővé teszi egy teljes Azure-infrastruktúra definiálását és létrehozását egyetlen sablon formátumának nyelvével – a HashiCorp konfigurációs nyelvét (HCL). A terraform használatával hálózati, tárolási és a egy adott megoldás a Virtuálisgép-erőforrások létrehozásának folyamata automatizáló sablonok határozza meg. Használhatja a meglévő Terraform-sablonok az Azure-ral más platformok biztosítani a konzisztenciát és az infrastruktúra üzembe helyezés egyszerűsítéséhez anélkül, hogy az Azure Resource Manager-sablon konvertálása.
+[A Terraform](https://www.terraform.io) egy automatizálási eszköz, amely lehetővé teszi egy teljes Azure-infrastruktúra definiálását és létrehozását egyetlen sablonformátum-nyelvvel – a HashiCorp konfigurációs nyelvvel (HCL). A Terraform segítségével olyan sablonokat határozhat meg, amelyek automatizálják a hálózati, tárolási és virtuálisgép-erőforrások létrehozásának folyamatát egy adott alkalmazásmegoldáshoz. Használhatja a meglévő Terraform sablonok más platformokon az Azure-ral a konzisztencia biztosításához és egyszerűsítheti az infrastruktúra üzembe helyezését anélkül, hogy egy Azure Resource Manager sablont kell konvertálni.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [Terraform telepítése és konfigurálása az Azure-](../articles/terraform/terraform-install-configure.md)ban.
-- [Hozzon létre egy Azure-infrastruktúrát a Terraform](../articles/terraform/terraform-create-complete-vm.md).
+- [Telepítse és konfigurálja a Terraformot az Azure-ral.](../articles/terraform/terraform-install-configure.md)
+- [Hozzon létre egy Azure-infrastruktúrát a Terraform segítségével.](../articles/terraform/terraform-create-complete-vm.md)
 
 
 ## <a name="azure-automation"></a>Azure Automation
-[Azure Automation](https://azure.microsoft.com/services/automation/) a runbookok használatával dolgozza fel a célként megadott virtuális gépeken található feladatokat. Az Azure Automation a meglévő virtuális gépek kezelése helyett infrastruktúrák kialakítására szolgáló szolgál. Az Azure Automation is Linux és Windows virtuális gépek, valamint a helyi virtuális vagy fizikai gépeken a hibrid runbook-feldolgozók között futtatható. Runbookok verziókövetési adattár, például a GitHub is tárolható. Ezek a runbookok majd futtathatja manuálisan vagy egy meghatározott ütemezés szerint.
+[Az Azure Automation](https://azure.microsoft.com/services/automation/) runbookok használatával dolgozza fel a megcélzott virtuális gépeken lévő feladatokat. Az Azure Automation a meglévő virtuális gépek kezelésére szolgál, nem pedig egy infrastruktúra létrehozására. Az Azure Automation linuxos és Windows-alapú virtuális gépeken, valamint a helyszíni virtuális vagy fizikai gépeken is futtatható egy hibrid runbook-feldolgozóval. A Runbookok tárolhatók egy forrásvezérlő tárházban, például a GitHubon. Ezek a runbookok ezután manuálisan vagy egy meghatározott ütemezés szerint futtathatók.
 
-Az Azure Automation Desired State Configuration (DSC) szolgáltatás lehetővé teszi, hogy hogyan kell konfigurálni a virtuális gépek adott halmazát az-meghatározások létrehozása emellett. DSC majd biztosítja, hogy a alkalmazni a szükséges konfigurációval, és a virtuális gép konzisztens marad. Az Azure Automation DSC Windows- és Linux gép futtat.
+Az Azure Automation egy kívánt állapotkonfigurációs (DSC) szolgáltatást is biztosít, amely lehetővé teszi, hogy definíciókat hozzon létre egy adott virtuális gépkészlet konfigurálásának módjára. A DSC ezután biztosítja, hogy a szükséges konfiguráció alkalmazása és a virtuális gép konzisztens maradjon. Az Azure Automation DSC Windows és Linux gépeken is fut.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [Hozzon létre egy PowerShell-runbook](../articles/automation/automation-first-runbook-textual-powershell.md).
-- [Hibrid Runbook-feldolgozók használata helyszíni erőforrások kezeléséhez](../articles/automation/automation-hybrid-runbook-worker.md).
-- [Azure Automation DSC használata](../articles/automation/automation-dsc-getting-started.md).
+- [Hozzon létre egy PowerShell-runbookot.](../articles/automation/automation-first-runbook-textual-powershell.md)
+- [A hibrid Runbook-feldolgozó segítségével kezelheti a helyszíni erőforrásokat.](../articles/automation/automation-hybrid-runbook-worker.md)
+- [Használja az Azure Automation DSC](../articles/automation/automation-dsc-getting-started.md)szolgáltatást.
 
 
 ## <a name="azure-devops-services"></a>Azure DevOps Services
-Az [Azure DevOps Services](https://www.visualstudio.com/team-services/) olyan eszközkészlet, amely segítséget nyújt a kódok megosztásában és nyomon követésében, az automatizált buildek létrehozásában, valamint egy teljes folyamatos integrációs és fejlesztési (CI/CD) folyamat létrehozásában. Az Azure DevOps-szolgáltatásokkal integrálja a Visual Studio és az egyéb szerkesztők használatának leegyszerűsítése érdekében. Az Azure DevOps-szolgáltatásokkal is létrehozhat és Azure virtuális gépek konfigurálása és őket, majd kód üzembe helyezése.
+[Az Azure DevOps-szolgáltatások](https://www.visualstudio.com/team-services/) olyan eszközök gyűjteménye, amelyek segítségével megoszthatja és nyomon követheti a kódot, automatikus buildeket használhat, és teljes körű folyamatos integrációs és fejlesztési (CI/CD) folyamatot hozhat létre. Az Azure DevOps Services integrálható a Visual Studio és más szerkesztők, hogy egyszerűsítse a használatot. Az Azure DevOps Services azure-beli virtuális gépeket is létrehozhat és konfigurálhat, majd kódot helyezhet üzembe rájuk.
 
 További információk:
 
-- [Azure DevOps-szolgáltatások](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
+- [Az Azure DevOps-szolgáltatások](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
 
 
 ## <a name="jenkins"></a>Jenkins
-A [Jenkins](https://www.jenkins.io) egy folyamatos integrációs kiszolgáló, amely megkönnyíti az alkalmazások üzembe helyezését és tesztelését, valamint automatizált folyamatokat hozhat létre a kód kézbesítéséhez. Beépülő modulok, a core Jenkins platform bővítése érdekében több száz, és számos más termékek és megoldások webhookok használatával is integrálhatja. Manuálisan telepítse a Jenkins-beli virtuális gépen, futtassa a Jenkins Docker-tárolókon belül vagy előregyártott Azure Marketplace-rendszerkép használata.
+A [Jenkins](https://www.jenkins.io) egy folyamatos integrációs kiszolgáló, amely segít az alkalmazások telepítésében és tesztelésében, valamint automatikus folyamatok létrehozásában a kódkézbesítéshez. Több száz dugó kiterjeszteni az alapvető Jenkins platform, és akkor is integrálható sok más termékek és megoldások révén webhooks. Manuálisan telepítheti a Jenkinst egy Azure-beli virtuális gépre, futtathatja a Jenkinst egy Docker-tárolóból, vagy használhat egy előre elkészített Azure Marketplace-rendszerképet.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [Fejlesztési infrastruktúra létrehozása Linux rendszerű virtuális gépen az Azure-ban a Jenkins, a GitHub és a Docker](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md).
+- [Hozzon létre egy fejlesztési infrastruktúrát egy Linux virtuális gépen az Azure-ban a Jenkins, a GitHub és a Docker segítségével.](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md)
 
 
-## <a name="next-steps"></a>Következő lépések
-Az infrastruktúra automatizálási eszközök használata az Azure-ban számos különböző lehetőség van. A megoldás, amely legjobban megfelel az igényeinek megfelelően, és a környezet végezheti rendelkezik. A kezdéshez és az Azure-ba beépített eszközök kipróbálásához lásd: [Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) vagy [Windows rendszerű](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) virtuális gép testreszabásának automatizálása.
+## <a name="next-steps"></a>További lépések
+Az Azure-ban számos különböző lehetőség van az infrastruktúra-automatizálási eszközök használatára. Szabadon használhatja az igényeinek és környezetének leginkább megfelelő megoldást. Első lépések, és próbálja meg az Azure-ba beépített eszközök némelyikét, olvassa el, hogyan automatizálhatja a [Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) vagy a [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) virtuális gép testreszabását.

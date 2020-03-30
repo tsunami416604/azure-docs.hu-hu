@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Defender ATP-adatkapcsolatok összekapcsolhatók az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan kapcsolódhat a Microsoft Defender komplex veszélyforrások elleni védelemhez az Azure Sentinel szolgáltatáshoz.
+title: A Microsoft Defender ATP-adatainak csatlakoztatása az Azure Sentinelhez| Microsoft dokumentumok
+description: Ismerje meg, hogyan kapcsolhatja össze a Microsoft Defender komplex veszélyforrások elleni védelem adatait az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,42 +15,42 @@ ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
 ms.openlocfilehash: ee2c917d02a442ebabc0e1b40bc245982af794f8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588212"
 ---
-# <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>Riasztások összekapcsolása a Microsoft Defender komplex veszélyforrások elleni védelemmel 
+# <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>A Microsoft Defender komplex veszélyforrások elleni védelemriasztásai 
 
 
 > [!IMPORTANT]
-> A Microsoft Defender komplex veszélyforrások elleni védelem naplófájljainak betöltése jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A Microsoft Defender komplex veszélyforrások elleni védelem naplóinak betöltése jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatásszint-szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
+> További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
  
 
-A [Microsoft Defender komplex veszélyforrások elleni védelemről](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) érkező riasztásokat egyetlen kattintással továbbíthatja az Azure sentinelbe. Ez a kapcsolat lehetővé teszi, hogy a riasztásokat a Microsoft Defender komplex veszélyforrások elleni védelemből továbbítsa az Azure Sentinel szolgáltatásba. 
+Egyetlen kattintással streamelheti a [Microsoft Defender komplex veszélyforrások elleni védelemből](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) származó riasztásokat az Azure Sentinelbe. Ez a kapcsolat lehetővé teszi, hogy a Microsoft Defender komplex veszélyforrások elleni védelemből érkező riasztásokat az Azure Sentinelbe továbbítsa. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Érvényes licenc a Microsoft Defender komplex veszélyforrások elleni védelemhez, amely a következő témakörben leírtak szerint engedélyezhető: a [Licencelés kiépítés ellenőrzése és a Microsoft Defender összetett veszélyforrások elleni védelem beállítása](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing). 
+- Érvényes licenc a Microsoft Defender komplex veszélyforrások elleni védelemhez, amely a [Licencelés idotartamának ellenőrzése és a Microsoft Defender komplex veszélyforrások elleni védelemhez való teljes beállítása](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)című témakörben leírtak szerint van engedélyezve. 
 - Az Azure Sentinel-bérlő rendszergazdájának vagy biztonsági rendszergazdájának kell lennie.
 
 
-## <a name="connect-to-microsoft-defender-advanced-threat-protection"></a>Kapcsolódás a Microsoft Defender komplex veszélyforrások elleni védelemhez
+## <a name="connect-to-microsoft-defender-advanced-threat-protection"></a>Csatlakozás a Microsoft Defender komplex veszélyforrások elleni védelméhez
 
-Ha a Microsoft Defender komplex veszélyforrások elleni védelem üzembe helyezését és betöltését végzi, a riasztások könnyen továbbíthatók az Azure Sentinel szolgáltatásba.
+Ha a Microsoft Defender komplex veszélyforrások elleni védelem telepítve van, és az adatok betöltése, a riasztások könnyen streamelhető az Azure Sentinel.
 
 
-1. Az Azure Sentinelben válassza az **adatösszekötők**lehetőséget, majd kattintson a **Microsoft Defender komplex veszélyforrások elleni védelem** csempére, és válassza az **összekötő megnyitása lapot**.
+1. Az Azure Sentinelben válassza **az Adatösszekötők**lehetőséget, kattintson a **Microsoft Defender komplex veszélyforrások elleni védelmének** csempéjére, és válassza az **Összekötő megnyitása lapot.**
 1. Kattintson a **Csatlakozás** gombra. 
-1. Ha a Defender ATP-riasztások esetében a Log Analytics megfelelő sémáját szeretné használni, keresse meg a **SecurityAlert** , és a **szolgáltató neve** **MDATP**.
+1. Ha a Defender ATP-riasztások naplóanalytics megfelelő sémáját szeretné használni, keresse meg a **SecurityAlert** kifejezést, és a **szolgáltató neve** **MDATP.**
 
 
 
 
-## <a name="next-steps"></a>Következő lépések
-Ebből a dokumentumból megtanulta, hogyan csatlakoztatható a Microsoft Defender ATP az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
-- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+## <a name="next-steps"></a>További lépések
+Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja a Microsoft Defender ATP-t az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
+- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
+- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats.md)

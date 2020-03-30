@@ -1,5 +1,5 @@
 ---
-title: Tudnivalók az Azure VPN Gateway
+title: Az Azure VPN Gateway-ről
 description: Ebben a cikkben megismerkedhet a VPN-átjárókkal, és megtudhatja, hogyan csatlakozhat VPN-átjáró segítségével az Azure virtuális hálózatokhoz. Beleértve az IPsec/IKE helyek közötti, létesítmények közötti és VNet–VNet megoldásokat, valamint a pont–hely típusú VPN-t.
 services: vpn-gateway
 author: cherylmc
@@ -9,60 +9,60 @@ ms.topic: overview
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: c4a406961444845fef783c47942924b01b7aa646
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241457"
 ---
 # <a name="what-is-vpn-gateway"></a>Mi az a VPN-átjáró?
 
 A VPN-átjáró a virtuális hálózati átjárók egy olyan típusa, amely titkosított adatforgalmat továbbít a nyilvános interneten keresztül egy Azure virtuális hálózat és egy helyszíni hely között. A VPN-átjáróval továbbá titkosított adatforgalmat továbbíthat az Azure-alapú virtuális hálózatok között a Microsoft hálózatán keresztül. Minden egyes virtuális hálózat kizárólag egy VPN-átjáróval rendelkezhet. Egy VPN-átjáróhoz azonban létrehozhat több kapcsolatot is. Amikor többhelyes csatlakozást hoz létre egyetlen VPN-átjáróhoz, az összes VPN-alagút az elérhető sávszélességen osztozkodik.
 
-## <a name="whatis"></a>Mi az a virtuális hálózati átjáró?
+## <a name="what-is-a-virtual-network-gateway"></a><a name="whatis"></a>Mi az a virtuális hálózati átjáró?
 
-A virtuális hálózati átjárók két vagy több, az *átjáró alhálózatának*nevezett alhálózatra telepített VM-ből állnak. A virtuális hálózati átjáró virtuális gépei útválasztási táblákat tartalmaznak, és adott átjáró szolgáltatásokat futtatnak. Ezek a virtuális gépek a virtuális hálózati átjáró létrehozásakor jönnek létre. A virtuális hálózati átjáró részét képező virtuális gépeket nem lehet közvetlenül konfigurálni.
+A virtuális hálózati átjáró két vagy több virtuális gépből áll, amelyek egy átjáró *alhálózatának*nevezett adott alhálózatba vannak telepítve. A virtuális hálózati átjáró virtuális gépei útválasztási táblákat tartalmaznak, és meghatározott átjárószolgáltatásokat futtatnak. Ezek a virtuális gépek jönnek létre, amikor létrehozza a virtuális hálózati átjáró. Közvetlenül nem konfigurálhatja a virtuális hálózati átjáró részét használó virtuális gépeket.
 
-A virtuális hálózati átjáróhoz konfigurált egyik beállítás az átjáró típusa. Az átjáró típusa határozza meg a virtuális hálózati átjáró használatának módját, valamint az átjáró által végrehajtott műveleteket. A "VPN" átjáró azt adja meg, hogy a létrehozott virtuális hálózati átjáró típusa "VPN Gateway", nem pedig ExpressRoute-átjáró. A virtuális hálózatok két virtuális hálózati átjáróval rendelkezhetnek; egy VPN-átjárót és egy ExpressRoute-átjárót, mint a [meglévő](#coexisting) kapcsolati konfigurációk esetében. További információért lásd: [Átjárótípusok](vpn-gateway-about-vpn-gateway-settings.md#gwtype).
+A virtuális hálózati átjáróhoz konfigurált egyik beállítás az átjáró típusa. Az átjárótípus határozza meg a virtuális hálózati átjáró használatának módját és az átjáró által végrehajtott műveleteket. A "Vpn" átjárótípus azt adja meg, hogy a létrehozott virtuális hálózati átjáró típusa "VPN-átjáró", nem pedig ExpressRoute-átjáró. A virtuális hálózat két virtuális hálózati átjáróval rendelkezhet; egy VPN-átjáró és egy ExpressRoute átjáró - mint [ahogy](#coexisting) az egymás mellett létező kapcsolatkonfigurációk esetében is. További információért lásd: [Átjárótípusok](vpn-gateway-about-vpn-gateway-settings.md#gwtype).
 
-A VPN-átjárók üzembe helyezhetők Azure Availability Zonesban. Ez rugalmasságot, méretezhetőséget és magasabb rendelkezésre állást biztosít a virtuális hálózati átjárók számára. Az átjárók üzembe helyezése Azure Availability Zones fizikailag és logikailag elkülöníti az átjárókat a régión belül, miközben a helyszíni hálózati kapcsolatot az Azure-hoz a zóna szintű hibákkal védi. További információ: [a zóna redundáns virtuális hálózati átjárói Azure Availability Zones](about-zone-redundant-vnet-gateways.md)
+Vpn-átjárók telepíthetők az Azure rendelkezésre állási zónákban. Ez rugalmasságot, méretezhetőséget és magasabb szintű rendelkezésre állást biztosít a virtuális hálózati átjárók számára. Az átjárók Azure-beli rendelkezésre állási zónákban történő üzembe helyezésével fizikailag és logikailag is elválaszthatók a régióban található átjárók, miközben az Azure-ral létesített helyszíni hálózati kapcsolat megvédhető a zónaszintű hibáktól. lásd [zónaredundáns virtuális hálózati átjárók az Azure rendelkezésre állási zónáiban](about-zone-redundant-vnet-gateways.md)
 
-Egy virtuális hálózati átjáró létrehozása akár 45 percet is igénybe vehet. Virtuális hálózati átjáró létrehozásakor a rendszer telepíti az átjáró virtuális gépeit az átjáróalhálózatra, és konfigurálja őket az Ön által megadott beállításokkal. Miután létrehozott egy VPN-átjárót, létrehozhat egy IPsec/IKE VPN-alagútkapcsolatot az adott VPN-átjáró és egy másik VPN-átjáró (VNet–VNet) között, vagy létrehozhat egy létesítmények közötti IPsec/IKE VPN-alagútkapcsolatot a VPN-átjáró és egy helyszíni VPN-eszköz között (helyek között). Létrehozhat egy pont – hely típusú VPN-kapcsolatot (az OpenVPN, a IKEv2 vagy az SSTP protokollon keresztül), amely lehetővé teszi, hogy távoli helyről, például egy konferenciáról vagy otthonról csatlakozhasson a virtuális hálózathoz.
+Egy virtuális hálózati átjáró létrehozása akár 45 percet is igénybe vehet. Virtuális hálózati átjáró létrehozásakor a rendszer telepíti az átjáró virtuális gépeit az átjáróalhálózatra, és konfigurálja őket az Ön által megadott beállításokkal. Miután létrehozott egy VPN-átjárót, létrehozhat egy IPsec/IKE VPN-alagútkapcsolatot az adott VPN-átjáró és egy másik VPN-átjáró (VNet–VNet) között, vagy létrehozhat egy létesítmények közötti IPsec/IKE VPN-alagútkapcsolatot a VPN-átjáró és egy helyszíni VPN-eszköz között (helyek között). Létrehozhat egy pont-hely VPN-kapcsolatot is (VPN OpenVPN, IKEv2 vagy SSTP-n keresztül), amely lehetővé teszi, hogy távoli helyről, például konferenciáról vagy otthonról csatlakozzon a virtuális hálózathoz.
 
-## <a name="configuring"></a>VPN Gateway-átjáró konfigurálása
+## <a name="configuring-a-vpn-gateway"></a><a name="configuring"></a>VPN Gateway átjáró konfigurálása
 
 A VPN-átjárós kapcsolatok több erőforrást használnak, amelyek speciális beállításokkal konfigurálhatók. Az erőforrások többsége külön konfigurálható, néhány erőforrást azonban egy bizonyos sorrendben kell konfigurálni.
 
-### <a name="settings"></a>Beállítások
+### <a name="settings"></a><a name="settings"></a>Beállítások
 
 Az egyes erőforrások megfelelő beállítása kritikus fontosságú a sikeres kapcsolat létrehozásához. További információ a VPN Gateway önálló erőforrásairól és beállításairól: [About VPN Gateway settings](vpn-gateway-about-vpn-gateway-settings.md) (Információk a VPN Gateway beállításairól). A cikk az átjáró-, a VPN- és a kapcsolattípusokkal, az átjáró-alhálózatokkal, a helyi hálózati átjárókkal, az átjáró-termékváltozatokkal, valamint a különböző erőforrások beállításaival kapcsolatos további hasznos információkat tartalmaz.
 
-### <a name="tools"></a>Üzembehelyezési eszközök
+### <a name="deployment-tools"></a><a name="tools"></a>Üzembehelyezési eszközök
 
 Az erőforrások létrehozásának és konfigurálásának megkezdéséhez használjon egy konfigurációs eszközt, például az Azure Portalt. A további erőforrások konfigurálásához, vagy adott esetekben a létező erőforrások módosításához később átválthat egy másik eszközre, például a PowerShellre. Jelenleg nem lehet a minden erőforrást és erőforrás-beállítást az Azure Portalon konfigurálni. Az egyes kapcsolati topológiákhoz tartozó cikkekben lévő utasítások egyértelműsítik, hogy mikor van szükség egy speciális konfigurációs eszközre. 
 
-### <a name="models"></a>Üzemi modell
+### <a name="deployment-model"></a><a name="models"></a>Üzemi modell
 
 Jelenleg két üzemi modell van az Azure-ban. A VPN Gateway konfigurálásakor a követendő lépések a virtuális hálózat létrehozásához használt üzemi modelltől függenek. Ha például a virtuális hálózatot a klasszikus üzembe helyezési modellel hozta létre, a VPN-átjáró beállításinak létrehozására és konfigurálására a klasszikus üzembe helyezési modell irányelvei és utasításai vonatkoznak. További információk az üzembe helyezési modellekről: [Az erőforrás-kezelői és a klasszikus üzembe helyezési modellek ismertetése](../azure-resource-manager/management/deployment-models.md).
 
-### <a name="planningtable"></a>Tervezési táblázat
+### <a name="planning-table"></a><a name="planningtable"></a>Tervezési táblázat
 
 Az alábbi táblázat segíthet eldönteni, melyik az Ön megoldásához legmegfelelőbb kapcsolat.
 
 [!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
-## <a name="gwsku"></a>Átjáró-termékváltozatok
+## <a name="gateway-skus"></a><a name="gwsku"></a>Átjáró-termékváltozatok
 
 Egy virtuális hálózati átjáró létrehozásakor meg kell adnia a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, az átviteli sebesség, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatot.
 
-* További információ az átjárók SKU-ról, beleértve a támogatott szolgáltatásokat, a termelési és fejlesztési-tesztelési és konfigurációs lépéseket a [VPN Gateway Settings-Gateway SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) -ról szóló cikkben talál.
-* Örökölt SKU-információk: az [örökölt SKU-használat használata](vpn-gateway-about-skus-legacy.md).
+* Az átjáró termékfelhasználóiról, beleértve a támogatott funkciókat, az éles és fejlesztési tesztelést és a konfigurációs lépéseket, további információt a [VPN-átjáró beállításai – átjáró termékkészletről](vpn-gateway-about-vpn-gateway-settings.md#gwsku) szóló cikkben talál.
+* Az örökölt termékváltozatokkal kapcsolatos információkat a [Legacy Termékváltozatok munka című témakörben talál.](vpn-gateway-about-skus-legacy.md)
 
-### <a name="benchmark"></a>Átjáró-termékváltozatok alagút, kapcsolat és átviteli sebesség szerint
+### <a name="gateway-skus-by-tunnel-connection-and-throughput"></a><a name="benchmark"></a>Átjáró-termékváltozatok alagút, kapcsolat és átviteli sebesség szerint
 
 [!INCLUDE [Aggregated throughput by SKU](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
-## <a name="diagrams"></a>Kapcsolati topológia-diagramok
+## <a name="connection-topology-diagrams"></a><a name="diagrams"></a>Kapcsolati topológia-diagramok
 
 Fontos szem előtt tartani, hogy a VPN-átjárós kapcsolatokhoz különböző konfigurációk érhetők el. Önnek kell eldöntenie, melyik konfiguráció felel meg a legjobban az igényeinek. Az alábbi szakaszokban a következő VPN-átjárós kapcsolatokról találhat információt és topológia-diagramokat: Az alábbi szakaszokban található táblázatok a következőket tartalmazzák:
 
@@ -72,15 +72,15 @@ Fontos szem előtt tartani, hogy a VPN-átjárós kapcsolatokhoz különböző k
 
 Az ábrák és a leírások segítségével kiválaszthatja az igényeinek megfelelő kapcsolati topológiát. Az ábrák bemutatják a fő alapvető topológiákat, az ábrákat útmutatásként használva azonban lehetséges összetettebb konfigurációk létrehozása is.
 
-## <a name="s2smulti"></a>Helyek közötti és többhelyes (IPsec/IKE VPN-alagút)
+## <a name="site-to-site-and-multi-site-ipsecike-vpn-tunnel"></a><a name="s2smulti"></a>Helyek közötti és többhelyes (IPsec/IKE VPN-alagút)
 
-### <a name="S2S"></a>Helyek közötti kapcsolat
+### <a name="site-to-site"></a><a name="S2S"></a>Helyek közötti kapcsolat
 
-A helyek közötti (Site-to-Site, S2S) VPN Gateway-kapcsolat egy IPsec/IKE (IKEv1 vagy IKEv2) VPN-alagúton keresztüli kapcsolat. A helyek közötti kapcsolatok létesítmények közötti és hibrid konfigurációk esetében is alkalmazhatók. A S2S-kapcsolathoz olyan helyi VPN-eszközre van szükség, amely a hozzá tartozó nyilvános IP-címmel rendelkezik. A VPN-eszköz kiválasztásával kapcsolatos információkért lásd [a VPN Gateway gyakori kérdései közül a VPN-eszközökkel foglalkozókat](vpn-gateway-vpn-faq.md#s2s).
+A helyek közötti (Site-to-Site, S2S) VPN Gateway-kapcsolat egy IPsec/IKE (IKEv1 vagy IKEv2) VPN-alagúton keresztüli kapcsolat. A helyek közötti kapcsolatok létesítmények közötti és hibrid konfigurációk esetében is alkalmazhatók. Az S2S-kapcsolathoz olyan helyszíni VPN-eszköz szükséges, amelyhez nyilvános IP-cím van rendelve. A VPN-eszköz kiválasztásával kapcsolatos információkért lásd [a VPN Gateway gyakori kérdései közül a VPN-eszközökkel foglalkozókat](vpn-gateway-vpn-faq.md#s2s).
 
 ![Azure VPN Gateway helyek közti kapcsolat – példa](./media/vpn-gateway-about-vpngateways/vpngateway-site-to-site-connection-diagram.png)
 
-### <a name="Multi"></a>Többhelyes kapcsolat
+### <a name="multi-site"></a><a name="Multi"></a>Többhelyes kapcsolat
 
 Ez a típusú kapcsolat a helyek közötti kapcsolat egy változata. A virtuális hálózati átjáróról több VPN-kapcsolatot hoz létre, amelyek általában több helyszíni helyhez csatlakoznak. Ha több kapcsolatot használ, RouteBased (útvonalalapú) VPN-típust kell alkalmaznia (klasszikus virtuális hálózatok használatakor ezt dinamikus átjárónak nevezik). Mivel minden virtuális hálózat csak egy VPN-átjáróval rendelkezhet, az átjárón keresztüli összes kapcsolat osztozik a rendelkezésre álló sávszélességen. Ezt a kapcsolattípust gyakran „többhelyes” kapcsolatnak nevezik.
 
@@ -90,7 +90,7 @@ Ez a típusú kapcsolat a helyek közötti kapcsolat egy változata. A virtuáli
 
 [!INCLUDE [site-to-site and multi-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-## <a name="P2S"></a>Pont – hely típusú VPN
+## <a name="point-to-site-vpn"></a><a name="P2S"></a>Pont–hely VPN
 
 A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat létesítéséhez a kapcsolatot az ügyfélszámítógépről kell elindítani. Ez a megoldás főleg távmunkások számára hasznos, akik egy távoli helyről szeretnének csatlakozni egy Azure virtuális hálózatokhoz, például otthonról vagy konferenciáról. A pont–hely VPN emellett akkor is hasznos megoldás lehet a helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni.
 
@@ -102,7 +102,7 @@ A helyek közötti kapcsolatoktól eltérően a pont–hely kapcsolatok nem igé
 
 [!INCLUDE [vpn-gateway-table-site-to-site](../../includes/vpn-gateway-table-point-to-site-include.md)]
 
-## <a name="V2V"></a>Virtuális hálózatok közötti kapcsolatok (IPsec/IKE VPN-alagút)
+## <a name="vnet-to-vnet-connections-ipsecike-vpn-tunnel"></a><a name="V2V"></a>Virtuális hálózatok közötti kapcsolatok (IPsec/IKE VPN-alagút)
 
 Egy virtuális hálózat egy másikkal való összekapcsolása (a virtuális hálózatok közötti kapcsolat) nagyon hasonlít egy virtuális hálózat egy helyszíni helyhez való csatlakoztatásához. Mindkét kapcsolattípus egy VPN-átjárót használ a biztonságos alagút IPsec/IKE használatával való kialakításához. A virtuális hálózatok közötti kommunikációt kombinálhatja többhelyes kapcsolati konfigurációkkal is. Így létrehozhat olyan hálózati topológiákat, amelyek a létesítmények közötti kapcsolatokat a virtuális hálózatok közötti kapcsolatokkal kombinálják.
 
@@ -118,7 +118,7 @@ Az összekapcsolt virtuális hálózatok lehetnek:
 
 Az Azure jelenleg kétféle üzemi modellt kínál: a klasszikust és a Resource Managert. Ha már egy ideje használja az Azure-t, valószínűleg futtat Azure virtuális gépeket és példányszerepköröket egy klasszikus virtuális hálózaton. Lehetséges, hogy az újabb virtuális gépek és szerepkörpéldányok egy Resource Managerben létrehozott virtuális hálózatban futnak. Létrehozhat egy kapcsolatot a virtuális hálózatok között, így lehetővé teheti, hogy az egyik virtuális hálózatban lévő erőforrások közvetlenül kommunikáljanak a másikban lévő erőforrásokkal.
 
-### <a name="vnet-peering"></a>Társviszony létesítése virtuális hálózatok között
+### <a name="vnet-peering"></a>Virtuális hálózatok közötti társviszony
 
 A kapcsolat létrehozására használhat virtuális hálózatok közötti társviszonyt, ha a virtuális hálózat megfelel bizonyos követelményeknek. A virtuális hálózatok közötti társviszony nem használ virtuális hálózati átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
 
@@ -126,7 +126,7 @@ A kapcsolat létrehozására használhat virtuális hálózatok közötti társv
 
 [!INCLUDE [vpn-gateway-table-vnet-to-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
-## <a name="ExpressRoute"></a>ExpressRoute (privát kapcsolat)
+## <a name="expressroute-private-connection"></a><a name="ExpressRoute"></a>ExpressRoute (privát kapcsolat)
 
 Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet a Microsoft-felhőszolgáltatásokkal, például a Microsoft Azure-ral, az Office 365-tel és a CRM Online-nal. A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben.
 
@@ -134,7 +134,7 @@ Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Így az Ex
 
 Az ExpressRoute-kapcsolatok virtuális hálózati átjárót használnak a szükséges konfiguráció részeként. Az ExpressRoute-kapcsolatokban a virtuális hálózati átjáró a „VPN” helyett az „ExpressRoute” átjárótípussal van konfigurálva. Bár az ExpressRoute-kapcsolatcsoporton keresztül haladó forgalom alapértelmezés szerint nincs titkosítva, lehetséges olyan megoldást létrehozni, amely lehetővé teszi a titkosított forgalom küldését ExpressRoute-kapcsolatcsoporton. További információ az ExpressRoute-tal kapcsolatban: [Az ExpressRoute technikai áttekintése](../expressroute/expressroute-introduction.md).
 
-## <a name="coexisting"></a>Egyidejű helyek közötti és ExpressRoute-kapcsolatok
+## <a name="site-to-site-and-expressroute-coexisting-connections"></a><a name="coexisting"></a>Egyidejű helyek közötti és ExpressRoute-kapcsolatok
 
 Az ExpressRoute egy, a Microsoft-szolgáltatásokkal (köztük az Azure-ral) a WAN-on, és nem a nyilvános interneten keresztül kialakított közvetlen, privát kapcsolat. A helyek közötti VPN-adatforgalom titkosítva, a nyilvános interneten halad át. A helyek közötti VPN- és az ExpressRoute-kapcsolatok azonos virtuális hálózathoz való konfigurálásának lehetősége több előnnyel jár.
 
@@ -152,11 +152,11 @@ A helyek közötti VPN-t konfigurálhatja biztonságos feladatátvételi útvona
 
 További információ a VPN Gateway átjáró-termékváltozatokról: [Gateway SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku) (Átjáró-termékváltozatok).
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a><a name="faq"></a>GYIK
 
 A VPN Gateway-re vonatkozó gyakori kérdésekért lásd a [VPN Gateway gyakori kérdéseit](vpn-gateway-vpn-faq.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információkért tekintse meg [A VPN Gatewayjel kapcsolatos gyakori kérdések](vpn-gateway-vpn-faq.md) című szakaszt.
 - Tekintse meg az [Előfizetés- és szolgáltatáskorlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) című szakaszt.

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub a felhőből az eszközre lehetőségek | Microsoft Docs
-description: Fejlesztői útmutató – útmutató a közvetlen módszerek használatához, az eszköz Twin kívánt tulajdonságainak vagy a felhőből az eszközre irányuló kommunikációhoz.
+title: Az Azure IoT Hub felhőből az eszközökre beállítási lehetőségei | Microsoft dokumentumok
+description: Fejlesztői útmutató – útmutatás a közvetlen módszerek, az ikereszköz kívánt tulajdonságaivagy a felhőből az eszközre irányuló üzenetek használatához a felhőből az eszközre történő kommunikációhoz.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,38 +9,38 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: a2ca9a167d50619ed2963b13515c0a772d712570
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77591268"
 ---
-# <a name="cloud-to-device-communications-guidance"></a>A felhőből az eszközre irányuló kommunikációs útmutató
+# <a name="cloud-to-device-communications-guidance"></a>Felhőből az eszközre irányuló kommunikációra vonatkozó útmutatás
 
-A IoT Hub három lehetőséget biztosít az eszközök alkalmazásai számára a háttérbeli alkalmazások működésének biztosítására:
+Az IoT Hub három lehetőséget kínál az eszközalkalmazások számára, hogy a funkciókat elérhetővé tegyezzenek egy háttéralkalmazás számára:
 
-* [Közvetlen metódusok](iot-hub-devguide-direct-methods.md) az eredmény azonnali megerősítését igénylő kommunikációhoz. A közvetlen metódusokat gyakran használják az eszközök interaktív vezérlésére, például ventilátor bekapcsolására.
+* [Közvetlen kommunikációs módszerek,](iot-hub-devguide-direct-methods.md) amelyek az eredmény azonnali megerősítését igénylik. A közvetlen módszereket gyakran használják az eszközök interaktív vezérlésére, például egy ventilátor bekapcsolásához.
 
-* Az eszköz kívánt állapotba helyezéséhez szükséges, a hosszú ideig futó parancsok számára a [Twin tulajdonság](iot-hub-devguide-device-twins.md) . Állítsa be például a telemetria küldési időközét 30 percre.
+* [Twin kívánt tulajdonságait](iot-hub-devguide-device-twins.md) a hosszú ideig futó parancsok célja, hogy az eszköz egy bizonyos kívánt állapotban. Állítsa be például a telemetriai adatok küldési időközét 30 percre.
 
-* A [felhőből az eszközre](iot-hub-devguide-messages-c2d.md) irányuló üzenetek az eszköz alkalmazására vonatkozó egyirányú értesítésekhez.
+* [Felhőből az eszközre irányuló üzenetek](iot-hub-devguide-messages-c2d.md) az eszközalkalmazás egyirányú értesítéseihez.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Itt látható a felhőből az eszközre irányuló különböző kommunikációs lehetőségek részletes összevetése.
+Itt van egy részletes összehasonlítása a különböző felhő-készülék kommunikációs lehetőségeket.
 
-|  | Közvetlen metódusok | A Twin kívánt tulajdonságai | Felhőből az eszközre irányuló üzenetek |
+|  | Közvetlen metódusok | Iker kívánt tulajdonságai | Felhőből eszközre irányuló üzenetek |
 | ---- | ------- | ---------- | ---- |
-| Forgatókönyv | Azonnali megerősítést igénylő parancsok, például ventilátor bekapcsolása. | Hosszú ideig futó parancsok, amelyek célja, hogy az eszköz egy bizonyos kívánt állapotba kerüljön. Állítsa be például a telemetria küldési időközét 30 percre. | Egyirányú értesítések az eszköz alkalmazásához. |
-| Az adatfolyam | Kétirányú. Az eszköz azonnal válaszolhat a metódusra. A megoldás háttérbe kerül a kérelem kontextusa. | Egyirányú. Az alkalmazás értesítést kap a tulajdonság változásáról. | Egyirányú. Az eszköz megkapja az üzenetet
-| Tartósság | A leválasztott eszközök nincsenek kapcsolatba. A megoldás háttér-végpontja értesítést kap arról, hogy az eszköz nincs csatlakoztatva. | A tulajdonság értékei megmaradnak az eszköz Twin-ben. Az eszköz a következő újracsatlakoztatáskor fogja olvasni. A tulajdonságértékek a [IoT hub lekérdezési nyelvvel](iot-hub-devguide-query-language.md)olvashatók be. | Az üzenetek IoT Hub akár 48 óráig is megmaradnak. |
-| Célok | Egy eszköz, amely **deviceId**-t vagy több eszközt használ a [feladatok](iot-hub-devguide-jobs.md)használatával. | Egy eszköz, amely **deviceId**-t vagy több eszközt használ a [feladatok](iot-hub-devguide-jobs.md)használatával. | Egyetlen eszköz az **deviceId**alapján. |
-| Méret | A közvetlen metódusok maximális hasznos mérete 128 KB. | A kívánt tulajdonságok maximális mérete 32 KB. | Akár 64 KB-os üzenet. |
-| Frequency | Magas. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). | Közepes. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). | Alacsony. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). |
-| Protokoll | A MQTT vagy a AMQP használatával érhető el. | A MQTT vagy a AMQP használatával érhető el. | Minden protokollon elérhető. Az eszköznek a HTTPS használatakor kell lekérdezni. |
+| Forgatókönyv | Azonnali megerősítést igénylő parancsok, például ventilátor bekapcsolása. | Hosszú ideig futó parancsok célja, hogy az eszköz egy bizonyos kívánt állapotban. Állítsa be például a telemetriai adatok küldési időközét 30 percre. | Egyirányú értesítések az eszközalkalmazáshoz. |
+| Adatfolyam | Kétirányú. Az eszközalkalmazás azonnal válaszolaa módszerre. A megoldás háttér-vég ének a kérelemhez az eredményt kapja. | Egyirányú. Az eszközalkalmazás értesítést kap a tulajdonság változásával kapcsolatban. | Egyirányú. Az eszközalkalmazás fogadja az üzenetet
+| Tartósság | A kapcsolat bontása nem történt meg. A megoldás háttértartaléka értesítést kap arról, hogy az eszköz nincs csatlakoztatva. | A tulajdonságértékek megmaradnak az ikereszközben. Az eszköz a következő újracsatlakozáskor leolvassa. A tulajdonságértékek az [IoT Hub lekérdezési nyelvével visszakereshetőek.](iot-hub-devguide-query-language.md) | Az Üzenetek et az IoT Hub legfeljebb 48 órán keresztül őrizheti meg. |
+| Célokat | Egyetlen eszköz eszköz segítségével **deviceId**, vagy több eszköz segítségével [feladatok](iot-hub-devguide-jobs.md). | Egyetlen eszköz eszköz segítségével **deviceId**, vagy több eszköz segítségével [feladatok](iot-hub-devguide-jobs.md). | Egyetlen eszköz **deviceId**. |
+| Méret | A közvetlen metódus maximális hasznos adatmérete 128 KB. | A kívánt tulajdonságok maximális mérete 32 KB. | Akár 64 KB-os üzenet. |
+| Frequency | Magas. További információ: [IoT Hub-korlátozások.](iot-hub-devguide-quotas-throttling.md) | Közepes. További információ: [IoT Hub-korlátozások.](iot-hub-devguide-quotas-throttling.md) | Alacsony. További információ: [IoT Hub-korlátozások.](iot-hub-devguide-quotas-throttling.md) |
+| Protocol (Protokoll) | MQTT vagy AMQP használatával érhető el. | MQTT vagy AMQP használatával érhető el. | Minden protokollon elérhető. Az eszköznek le kell szavazással rendelkeznie a HTTPS használatakor. |
 
-Ismerje meg, hogyan használhatók a közvetlen metódusok, a kívánt tulajdonságok és a felhőből az eszközre irányuló üzenetek a következő oktatóanyagokban:
+A következő oktatóanyagokban megtudhatja, hogyan használhatja a közvetlen módszereket, a kívánt tulajdonságokat és a felhőből az eszközre irányuló üzeneteket:
 
 * [Közvetlen metódusok használata](quickstart-control-device-node.md)
-* [A kívánt tulajdonságok használata az eszközök konfigurálásához](tutorial-device-twins.md) 
-* [Felhőből az eszközre irányuló üzenetek küldése](iot-hub-node-node-c2d.md)
+* [Eszközök konfigurálása a kívánt tulajdonságokkal](tutorial-device-twins.md) 
+* [Üzenetküldés a felhőből az eszközökre](iot-hub-node-node-c2d.md)

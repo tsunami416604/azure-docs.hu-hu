@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: spelluru
 ms.openlocfilehash: 5e3c4622131528fc2c40a1510aeea3092018d182
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77474287"
 ---
-### <a name="install-via-composer"></a>Telepítés a Zeneszerzőn keresztül
-1. Hozzon létre egy **zeneszerző. JSON** nevű fájlt a projekt gyökérkönyvtárában, és adja hozzá a következő kódot:
+### <a name="install-via-composer"></a>Telepítés zeneszerzőn keresztül
+1. Hozzon létre egy **composer.json** nevű fájlt a projekt gyökerében, és adja hozzá a következő kódot:
    
     ```json
     {
@@ -21,14 +21,14 @@ ms.locfileid: "77474287"
       }
     }
     ```
-2. A **[zeneszerző. farmakovigilancia][composer-phar]** letöltése a projekt gyökerében.
-3. Nyisson meg egy parancssort, és hajtsa végre a következő parancsot a projekt gyökerében
+2. Töltse le **[a composer.phar fájlt][composer-phar]** a projekt gyökérfájljában.
+3. Nyisson meg egy parancssort, és hajtsa végre a következő parancsot a projekt gyökér
    
     ```
     php composer.phar install
     ```
 
-Alternatív megoldásként nyissa meg az [Azure Storage php ügyféloldali kódtár][php-sdk-github] a githubon a forráskód klónozásához.
+Másik lehetőségként nyissa meg az [Azure Storage PHP ügyfélkönyvtárát][php-sdk-github] a GitHubon a forráskód klónozásához.
 
 [php-sdk-github]: https://github.com/Azure/azure-storage-php
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git

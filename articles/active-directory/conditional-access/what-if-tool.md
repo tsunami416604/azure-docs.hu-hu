@@ -1,6 +1,6 @@
 ---
-title: A feltételes hozzáférés What If eszköz – Azure Active Directory
-description: Ismerje meg, hogy a feltételes hozzáférési szabályzatok milyen hatással lehetnek a környezetre.
+title: A feltételes hozzáférés mi van ha eszköz – Azure Active Directory
+description: Ismerje meg, hogyan ismerheti meg a feltételes hozzáférési szabályzatok környezetre gyakorolt hatását.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,98 +12,98 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77620687"
 ---
-# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Hibakeresés a What If eszköz használatával a feltételes hozzáférésben
+# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>A Feltételes hozzáférés eszköz Mi lenne, ha eszközével kapcsolatos hibaelhárítás
 
-A [feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) Azure Active Directory (Azure ad) egyik funkciója, amely lehetővé teszi, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz. Honnan tudhatja, mire számíthat a környezet feltételes hozzáférési házirendjeiből? A kérdés megválaszolásához használhatja a **feltételes hozzáférési What if eszközt**.
+[A feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) az Azure Active Directory (Azure AD) egyik képessége, amely lehetővé teszi annak szabályozását, hogy a jogosult felhasználók hogyan férnek hozzá a felhőalapú alkalmazásokhoz. Honnan tudja, hogy mire számíthat a feltételes hozzáférési házirendek től a környezetben? A kérdés megválaszolásához használhatja a **Feltételes hozzáférés mi után eszköz ét.**
 
-Ez a cikk bemutatja, hogyan használható az eszköz a feltételes hozzáférési szabályzatok teszteléséhez.
+Ebből a cikkből megtudhatja, hogyan használhatja ezt az eszközt a feltételes hozzáférési házirendek teszteléséhez.
 
 ## <a name="what-it-is"></a>Mi ez?
 
-A **feltételes hozzáférés What if házirend eszköz** lehetővé teszi a feltételes hozzáférési szabályzatok környezetre gyakorolt hatásának megismerését. Ahelyett, hogy tesztelje a szabályzatokat több bejelentkezés manuális elvégzésével, ez az eszköz lehetővé teszi egy felhasználó szimulált bejelentkezésének kiértékelését. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést. A jelentés nem csak az alkalmazott feltételes hozzáférési szabályzatokat sorolja fel, hanem a [klasszikus szabályzatokat](policy-migration.md#classic-policies) is, ha vannak ilyenek.    
+A **feltételes hozzáférés, ha a házirend eszköz** lehetővé teszi a feltételes hozzáférési házirendek környezetre gyakorolt hatásának megismerése. Ahelyett, hogy tesztelené a szabályzatok manuális végrehajtásával több bejelentkezést, ez az eszköz lehetővé teszi egy felhasználó szimulált bejelentkezésének kiértékelését. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést. A jelentés nem csak az alkalmazott feltételes hozzáférési házirendeket sorolja fel, hanem [a klasszikus házirendeket](policy-migration.md#classic-policies) is, ha léteznek.    
 
-Az **What if** eszköz segítségével gyorsan meghatározhatja az adott felhasználóra vonatkozó házirendeket. Az információkat például akkor használhatja, ha problémát kell elhárítani.    
+A **Mi után** eszköz segítségével gyorsan meghatározhatja az adott felhasználóra vonatkozó házirendeket. Az információkat használhatja, például ha el kell hárítania egy problémát.    
 
 ## <a name="how-it-works"></a>Működés
 
-A **feltételes hozzáférés What if eszközben**először konfigurálnia kell a szimulálni kívánt bejelentkezési forgatókönyv beállításait. Ezek a beállítások többek között a következők:
+A **Feltételes hozzáférés , ha eszközelőször**meg kell konfigurálnia a szimulálni kívánt bejelentkezési forgatókönyv beállításait. Ezek a beállítások többek között:
 
 - A tesztelni kívánt felhasználó 
-- Azok a felhőalapú alkalmazások, amelyeket a felhasználó megkísérel elérni
-- A felhőalapú alkalmazások konfigurálásának feltételei
+- A felhőalkalmazások, amelyekhez a felhasználó megpróbálna hozzáférni
+- A konfigurált felhőalkalmazásokhoz való hozzáférés elvégzésének feltételei
      
-A következő lépésként elindíthat egy szimulációs futtatást, amely kiértékeli a beállításokat. Csak az engedélyezett szabályzatok tartoznak egy próbaverziós futtatásba.
+Következő lépésként kezdeményezhet egy szimulációs futtatást, amely kiértékeli a beállításokat. Csak az engedélyezett házirendek képezik a kiértékelési futtatás részét.
 
-Ha a kiértékelés befejeződött, az eszköz létrehoz egy jelentést az érintett házirendekről.
+Az értékelés befejezése után az eszköz jelentést készít az érintett házirendekről.
 
 ## <a name="running-the-tool"></a>Az eszköz futtatása
 
-Az **What if** eszközt a Azure Portal **[feltételes hozzáférési szabályzatok](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** oldalán találja.
+Az Azure Portalon megtalálja a **Mi a ha** eszközt a Feltételes hozzáférés – **[szabályzatok](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** lapon.
 
-Az eszköz elindításához a házirendek listájának tetején található eszköztáron kattintson a **What if**elemre.
+Az eszköz elindításához a házirendek listájának tetején lévő eszköztáron kattintson a **Mi lenne, ha**gombra.
 
-![WhatIf](./media/what-if-tool/01.png)
+![What If](./media/what-if-tool/01.png)
 
-A próbaverzió futtatása előtt konfigurálnia kell a beállításokat.
+A kiértékelés futtatása előtt konfigurálnia kell a beállításokat.
 
 ## <a name="settings"></a>Beállítások
 
-Ez a szakasz a szimulációs futtatási beállításokkal kapcsolatos információkat tartalmaz.
+Ez a rész a szimulációfuttatásának beállításaival kapcsolatos információkat tartalmazza.
 
-![WhatIf](./media/what-if-tool/02.png)
+![What If](./media/what-if-tool/02.png)
 
 ### <a name="user"></a>Felhasználó
 
-Csak egy felhasználót választhat ki. Ez az egyetlen kötelező mező.
+Csak egy felhasználót jelölhet ki. Ez az egyetlen kötelező mező.
 
 ### <a name="cloud-apps"></a>Felhőalapú alkalmazások
 
-A beállítás alapértelmezett értéke **minden felhőalapú alkalmazás**. Az alapértelmezett beállítás az összes elérhető házirend kiértékelését végzi a környezetben. A hatókört leszűkítheti bizonyos felhőalapú alkalmazásokat érintő szabályzatokra.
+A beállítás alapértelmezett beállítása Az **Összes felhőalapú alkalmazás.** Az alapértelmezett beállítás a környezetben elérhető összes szabályzat kiértékelését végzi. Leszűkítheti a hatókört az adott felhőalapú alkalmazásokat érintő szabályzatokra.
 
 ### <a name="ip-address"></a>IP-cím
 
-Az IP-cím egyetlen IPv4-cím, amely a [hely feltételét](location-condition.md)utánozza. A címe a felhasználó által a bejelentkezéshez használt eszköz internet felé irányuló címe. Az eszközök IP-címét ellenőrizheti például, hogy [Mi az az IP-cím](https://whatismyipaddress.com).    
+Az IP-cím egyetlen IPv4-cím, amely a [helyfeltételt](location-condition.md)utánozza. A cím a felhasználó által a bejelentkezéshez használt eszköz internetes címét jelöli. Az eszköz IP-címét például a [Mi az ÉN IP-címem](https://whatismyipaddress.com)elemre navigálva ellenőrizheti.    
 
-### <a name="device-platforms"></a>Eszköz platformok
+### <a name="device-platforms"></a>Eszközplatformok
 
-Ez a beállítás az [eszköz platformjának feltételeit](concept-conditional-access-conditions.md#device-platforms) utánozza, és az **összes platform (beleértve a nem támogatott)** megfelelőjét jelöli. 
+Ez a beállítás az [eszköz platformok állapotának](concept-conditional-access-conditions.md#device-platforms) utánzatát utánozza, és az összes platform megfelelőjét képviseli (beleértve a **nem támogatottakat is).** 
 
 ### <a name="client-apps"></a>Ügyfélalkalmazások
 
-Ez a beállítás a [Client apps-feltételt](concept-conditional-access-conditions.md#client-apps-preview)utánozza.
-Alapértelmezés szerint ez a beállítás az összes olyan házirend kiértékelését okozza, amelyeken a **böngésző** vagy a **Mobile apps, illetve az asztali ügyfelek** egyenként vagy mindkettőben vannak kiválasztva. Emellett észleli azokat a házirendeket, amelyek kikényszerítik az **Exchange ActiveSync (EAS)** szolgáltatást. Ezt a beállítást a következő lehetőség kiválasztásával szűkítheti le:
+Ez a beállítás az [ügyfélalkalmazások állapotát](concept-conditional-access-conditions.md#client-apps-preview)utánozza.
+Alapértelmezés szerint ez a beállítás az összes olyan házirend kiértékelését eredményezi, amelynek **böngésző-** vagy **mobilalkalmazásai és asztali ügyfelei** egyenként vagy mindkettő be van jelölve. Észleli az Exchange **ActiveSync (EAS)** rendszerére vonatkozó házirendeket is. Ezt a beállítást a következők kiválasztásával szűkítheti:
 
-- **Böngésző** az összes olyan házirend kiértékeléséhez, amelynél legalább **böngésző** van kiválasztva. 
-- **Mobile apps és asztali ügyfelek** az összes olyan házirend kiértékeléséhez, amelyeken legalább **Mobile apps és asztali ügyfél** van kiválasztva. 
+- **Böngésző,** hogy értékelje az összes politika, amelynek legalább **böngésző** kiválasztva. 
+- **Mobilalkalmazások és asztali ügyfelek,** hogy értékelje az összes olyan szabályzatot, amelylegalább **mobilalkalmazások at és asztali ügyfeleket** jelölt ki. 
 
 ### <a name="sign-in-risk"></a>Bejelentkezési kockázat
 
-Ez a beállítás a [bejelentkezési kockázat feltételét](concept-conditional-access-conditions.md#sign-in-risk)utánozza.   
+Ez a beállítás a [bejelentkezési kockázati feltételt](concept-conditional-access-conditions.md#sign-in-risk)utánozza.   
 
-## <a name="evaluation"></a>Értékelési 
+## <a name="evaluation"></a>Értékelés 
 
-A kiértékelés elindításához kattintson a **What if**gombra. A kiértékelés eredménye a következőkből álló jelentést tartalmazza: 
+A kiértékelést a **Mi**lenne, ha gombra kattintva kezdi meg. Az értékelés eredménye egy jelentést ad, amely a következőkből áll: 
 
-![WhatIf](./media/what-if-tool/03.png)
+![What If](./media/what-if-tool/03.png)
 
-- Annak jelzése, hogy a klasszikus szabályzatok léteznek-e a környezetben
-- A felhasználóra érvényes házirendek
-- Azok a házirendek, amelyek nem érvényesek a felhasználóra
+- Annak jelzése, hogy léteznek-e klasszikus házirendek a környezetben
+- A felhasználóra vonatkozó irányelvek
+- A felhasználóra nem érvényes irányelvek
 
-Ha a kiválasztott felhőalapú alkalmazásokhoz [klasszikus szabályzatok](policy-migration.md#classic-policies) vannak megadva, a rendszer megjelenít egy kijelzőt. A kijelzőre kattintva a rendszer átirányítja a klasszikus házirendek lapra. A klasszikus szabályzatok oldalon áttelepítheti a klasszikus házirendeket, vagy letilthatja azt. Az oldal bezárásával visszatérhet a kiértékelési eredményhez.
+Ha [klasszikus szabályzatok](policy-migration.md#classic-policies) léteznek a kiválasztott felhőalapú alkalmazásokhoz, egy jelző jelenik meg. A kijelzőre kattintva a klasszikus házirendek oldalra lesz átirányítva. A klasszikus szabályzatok lapon áttelepítheti a klasszikus házirendet, vagy egyszerűen letilthatja azt. Az oldal bezárásával visszatérhet a kiértékelési eredményhez.
 
-A kiválasztott felhasználóra vonatkozó szabályzatok listáján megtalálhatja az [engedélyezési vezérlők](concept-conditional-access-grant.md) és [munkamenet-vezérlők](concept-conditional-access-session.md) listáját, amelyet a felhasználónak teljesítenie kell.
+A kiválasztott felhasználóra vonatkozó házirendek listájában megtalálhatja a [támogatási vezérlők](concept-conditional-access-grant.md) és a [munkamenet-vezérlők](concept-conditional-access-session.md) listáját is, amelyeket a felhasználónak teljesítenie kell.
 
-Azon házirendek listáján, amelyek nem érvényesek a felhasználóra, megtalálhatja azokat az okokat is, amelyek miatt ezek a szabályzatok nem érvényesek. Az egyes felsorolt szabályzatok esetében az ok az első olyan feltételt jelenti, amely nem teljesült. Egy nem alkalmazott házirend lehetséges oka a letiltott házirend, mivel azokat a rendszer nem értékeli ki.   
+A felhasználóra nem vonatkozó szabályzatok listájában megtalálhatja és megtalálhatja azokat az okokat is, amelyek miatt ezek a szabályzatok nem érvényesek. Minden felsorolt házirend esetében az ok az első olyan feltételt jelöli, amely nem teljesült. A szabályzat nem alkalmazott egyik lehetséges oka a letiltott házirend, mert nem értékeli kitévtovább.   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ha tudni szeretné, hogyan konfigurálhat egy feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című témakört.
-- Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md). 
-- Ha klasszikus szabályzatokat kíván áttelepíteni, tekintse [meg a klasszikus szabályzatok áttelepítését a Azure Portal](policy-migration.md)  
+- Ha tudni szeretné, hogyan konfigurálhat feltételes hozzáférési szabályzatot, olvassa [el az MFA megkövetelése bizonyos alkalmazásokhoz az Azure Active Directory feltételes hozzáféréssel című témakört.](app-based-mfa.md)
+- Ha készen áll a feltételes hozzáférési szabályzatok konfigurálására a környezetéhez, olvassa el az Azure Active Directory feltételes hozzáféréssel kapcsolatos [gyakorlati tanácsait.](best-practices.md) 
+- ha klasszikus szabályzatokat szeretne áttelepíteni, olvassa el [a Klasszikus szabályzatok áttelepítése az Azure Portalon című témakört.](policy-migration.md)  

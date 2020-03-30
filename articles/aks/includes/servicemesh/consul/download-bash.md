@@ -4,13 +4,13 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: a6b915e2735b45ac876ca98d279a15e4a371fbfd
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594256"
 ---
-A Linuxon futó bash-alapú rendszerhéjban [Linux][install-wsl] vagy MacOS rendszeren a `curl` a konzuli Helm chart kiadásának letöltéséhez használja a következőt:
+Linux, [Windows alrendszer Linux][install-wsl] vagy MacOS `curl` rendszeren egy bash-alapú rendszerhéjban a következőképpen töltheti le a Consul Helm diagram kiadását:
 
 ```bash
 # Specify the Consul Helm chart version that will be leveraged throughout these instructions
