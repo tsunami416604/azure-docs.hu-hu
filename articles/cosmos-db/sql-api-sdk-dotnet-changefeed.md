@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB .NET Change feed Processor API, SDK kibocsátási megjegyzései
-description: Ismerkedjen meg a Change feed Processor API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat, valamint a .NET Change feed Processor SDK egyes verzióiban végrehajtott módosításokat.
+title: Az Azure Cosmos DB .NET változáscsatorna processzor API, SDK kiadási megjegyzések
+description: Tudjon meg mindent a Change Feed Processor API-ról és az SDK-ról, beleértve a kiadási dátumokat, a megszüntetési dátumokat és a .NET Change Feed Processor SDK egyes verziói között végrehajtott módosításokat.
 author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,199 +9,199 @@ ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
 ms.openlocfilehash: 9252e3e41d0c639231a2abe20202499c6b3ee32a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444855"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change feed Processor SDK: letöltési és kibocsátási megjegyzések
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processzor SDK: Megjegyzések letöltése és kiadása
 
 > [!div class="op_single_selector"]
 >
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Aszinkron Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [Többi](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
+> * [Tömeges végrehajtó - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó - Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
-|**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
-|**API-dokumentáció**|[A hírcsatorna-feldolgozó függvénytár API-referenciájának módosítása – dokumentáció](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**Első lépések**|[Ismerkedés a Change feed Processor .NET SDK-val](change-feed.md)|
-|**Jelenleg támogatott keretrendszer**| [Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET mag](https://www.microsoft.com/net/download/core) |
+|**SDK letöltés**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
+|**API-dokumentáció**|[A Hírcsatorna-processzorkönyvtár API-jának hivatkozási dokumentációjának módosítása](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
+|**Első lépések**|[A hírcsatorna-feldolgozó módosítása .NET SDK – első lépések](change-feed.md)|
+|**Jelenlegi támogatott keretrendszer**| [Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
-> Ha a módosítási hírcsatorna-processzort használja, tekintse meg a [.net SDK](change-feed-processor.md)legújabb 3. x verzióját, amely az SDK-ba beépített hírcsatornát módosítja. 
+> Ha változáscsatorna-processzort használ, olvassa el a [.NET SDK](change-feed-processor.md)legújabb 3.x verzióját, amely az SDK-ba beépített változáscsatornát is beépített. 
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-### <a name="v2-builds"></a>v2 – buildek
+### <a name="v2-builds"></a>v2 épít
 
-### <a name="a-name228228"></a><a name="2.2.8"/>2.2.8
-* A stabilitás és a diagnosztizálás fejlesztése:
-  * Az olvasási változási csatorna hosszú idő alatt történő észlelésének támogatása. Ha a `ChangeFeedProcessorOptions.ChangeFeedTimeout` tulajdonságban megadott értéknél hosszabb időt vesz igénybe, a következő lépéseket kell elvégeznie:
-    * Megszakadt a módosítási hírcsatorna olvasási művelete a problémás partíción.
-    * A hírcsatorna-feldolgozó példány módosítása elveszíti a problémás bérlet tulajdonjogát. Az eldobott bérlet a következő címbérleti beolvasási lépés során lesz felhasználva, amelyet az azonos vagy eltérő módosítási hírcsatorna-feldolgozó példány hajt végre. Így a változási hírcsatorna olvasása megkezdődik.
-    * Probléma jelent meg az állapotfigyelő szolgáltatásban. Az alapértelmezett egészségügyi figyelő az összes jelentett problémát a nyomkövetési naplóba küldi.
-  * Új nyilvános tulajdonság hozzáadva: `ChangeFeedProcessorOptions.ChangeFeedTimeout`. Ennek a tulajdonságnak az alapértelmezett értéke 10 perc.
-  * Új nyilvános enumerálási érték lett hozzáadva: `Monitoring.MonitoredOperation.ReadChangeFeed`. Ha a `HealthMonitoringRecord.Operation` értéke `Monitoring.MonitoredOperation.ReadChangeFeed`, az azt jelzi, hogy az állapot probléma a változási csatorna olvasásával kapcsolatos.
+### <a name="228"></a><a name="2.2.8"/>2.2.8
+* Stabilitás és diagnosztizálhatóság javítása:
+  * Támogatás sal bővült az olvasási módosítási hírcsatorna hosszú ideig tartó észlelése. Ha a tulajdonság által megadott értéknél tovább tart, a `ChangeFeedProcessorOptions.ChangeFeedTimeout` következő lépéseket kell tenni:
+    * A problémás partíción a módosítási hírcsatorna olvasására irányuló művelet megszakad.
+    * A változáscsatorna-processzor példány a problémás bérlet tulajdonjogát csökkenti. Az eldobott bérlet et a következő bérletbeszerzési lépés során veszi késedeljük meg, amelyet ugyanaz vagy a különböző változáscsatorna-feldolgozó példány fog elvégezni. Ily módon, olvasás változás feed kezdődik újra.
+    * Egy probléma az állapotfigyelőnek jelentve. Az alapértelmezett heath monitor elküldi az összes jelentett problémát a nyomkövetési naplóba.
+  * Hozzáadott egy új `ChangeFeedProcessorOptions.ChangeFeedTimeout`köztulajdon: . A tulajdonság alapértelmezett értéke 10 min.
+  * Hozzáadott egy új nyilvános `Monitoring.MonitoredOperation.ReadChangeFeed`felsoracska érték: . Ha az `HealthMonitoringRecord.Operation` értéke a `Monitoring.MonitoredOperation.ReadChangeFeed`, azt jelzi, hogy az állapotprobléma a változáscsatorna olvasásával kapcsolatos.
 
-### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
-* Jobb terheléselosztási stratégia, ha az összes bérlet beolvasása hosszabb időt vesz igénybe, mint a bérlet lejárati időtartama, például hálózati problémák miatt:
-  * Ebben a forgatókönyvben olyan terheléselosztási algoritmust használ, amely hamisan megfontolni a bérletek lejártként való megadását, ami az aktív tulajdonosoktól érkező bérletek lopását Ez a sok bérlet szükségtelen újrakiegyensúlyozását eredményezheti.
-  * Ez a probléma ebben a kiadásban kerül megjavításra azáltal, hogy az újrapróbálkozások elkerülésével megtörténik a lejárt bérlet beszerzése, amely nem változott, és posponing a lejárt bérlet beszerzését a következő terheléselosztási iterációra.
+### <a name="227"></a><a name="2.2.7"/>2.2.7
+* Továbbfejlesztett terheléselosztási stratégia forgatókönyvesetén, ha az összes címbérlet lejárati időköznél hosszabb időt vesz igénybe, például hálózati problémák miatt:
+  * Ebben a forgatókönyvben a terheléselosztási algoritmus tévesen tekinti a bérletek lejártnak való, ami az aktív tulajdonosok tól származó bérletek ellopását okozza. Ez számos bérleti szerződés szükségtelen újraegyensúlyozását idézheti elő.
+  * Ez a probléma megoldódott ebben a kiadásban azáltal, hogy elkerüli az ütközések újrapróbálkozását, miközben lejárt bérletet szerez be, amelyet a tulajdonos nem módosított, és a lejárt bérlet megszerzését a következő terheléselosztási iterációra állítja.
 
-### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
+### <a name="226"></a><a name="2.2.6"/>2.2.6
 * A megfigyelői kivételek jobb kezelése.
 * Gazdagabb információk a megfigyelői hibákról:
-  * Ha egy megfigyelőt a megfigyelő ProcessChangesAsync által kiváltott kivétel miatt lezártak, a CloseAsync a ChangeFeedObserverCloseReason. ObserverError értékre állítja az OK paramétert.
-  * Nyomkövetéseket adott meg a megfigyelő felhasználói kódjában található hibák azonosításához.
+  * Amikor egy megfigyelő takarásban van az Observer ProcessChangesAsync által okozott kivétel miatt, a CloseAsync megkapja a ChangeFeedObserverCloseReason.ObserverError paramétert.
+  * Nyomkövetések a megfigyelő felhasználói kódján belüli hibák azonosítására.
 
-### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
-* A megosztott adatbázis átviteli sebességét használó gyűjtemények felosztásának támogatása.
-  * Ez a kiadás javít egy problémát, amely akkor fordulhat elő, ha a gyűjtemények felosztása a megosztott adatbázis átviteli sebességével történik, ha a felosztás a partíció újrakiegyensúlyozását eredményezi, és nem kettőt. Ha ez bekövetkezik, akkor a csatorna módosítása megakadhat, ha törli a régi partíciós kulcs tartományának bérletét, és nem hoz létre új bérleteket. A probléma ebben a kiadásban van kijavítva.
+### <a name="225"></a><a name="2.2.5"/>2.2.5
+* A megosztott adatbázis-átviteli erőket használó gyűjtemények felosztásának támogatása hozzáadva.
+  * Ez a kiadás kijavítja azt a problémát, amely a megosztott adatbázis-átviteli terhelést használó gyűjtemények felosztása során fordulhat elő, amikor az eredményeket partíció-újraegyensúlyozásra osztja, és kettő helyett csak egy gyermek partíciókulcs-tartomány jön létre. Ha ez történik, a Change Feed Processzor elakadanak a régi partíciókulcs-tartomány bérletének törlésében, és nem hoznak létre új címbérleteket. A probléma ebben a kiadásban kivan javítva.
 
-### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
-* Új ChangeFeedProcessorOptions. StartContinuation tulajdonság hozzáadva, amely támogatja a változási hírcsatorna megkezdését a kérelem folytatási jogkivonata alapján. Ezt csak akkor használja a rendszer, ha a címbérleti gyűjtemény üres, vagy a bérlet nem rendelkezik Continuationtoken argumentumot használja-készlettel. A Continuationtoken argumentumot használja készlettel rendelkező bérlet gyűjteményben lévő bérletek esetében a rendszer a Continuationtoken argumentumot használja használja, és a ChangeFeedProcessorOptions. StartContinuation figyelmen kívül hagyja.
+### <a name="224"></a><a name="2.2.4"/>2.2.4
+* Hozzáadott új tulajdonság ChangeFeedProcessorOptions.StartContinuation, hogy támogassa a kezdő változás hírcsatorna kérelem folytatási token. Ez csak akkor használatos, ha a címbérlet-gyűjtemény üres, vagy a bérlet nem rendelkezik ContinuationToken készlettel. A lease Collection, amelyek ContinuationToken készlet, a continuationtoken használatos, és ChangeFeedProcessorOptions.StartContinuation figyelmen kívül hagyja.
 
-### <a name="a-name223223"></a>2\.2.3 <a name="2.2.3"/>
-* További támogatás az egyéni tároló használatával a folytatási tokenek partíción való megőrzéséhez.
-  * Egy egyéni címbérleti tároló például lehet Azure Cosmos DB bármely egyéni módon particionált bérlet gyűjteménye.
-  * Az egyéni címbérleti tárolók a ChangeFeedProcessorBuilder. WithLeaseStoreManager (ILeaseStoreManager) és a ILeaseStoreManager Public Interface új bővíthetőségi ponttal rendelkezhetnek.
-  * A ILeaseManager felületet több szerepkör-interfészre is átalakítja.
-* Másodlagos feltörési változás: eltávolította a ChangeFeedProcessorBuilder. WithLeaseManager (ILeaseManager) bővíthetőségi pontot, használja helyette a ChangeFeedProcessorBuilder. WithLeaseStoreManager (ILeaseStoreManager) metódust.
+### <a name="223"></a><a name="2.2.3"/>2.2.3
+* Hozzáadott támogatás az egyéni tároló használatával a folytatási jogkivonatok partíciónkénti megőrzéséhez.
+  * Például egy egyéni bérlettároló lehet Az Azure Cosmos DB-címbérlet-gyűjtemény bármilyen egyéni módon particionált.
+  * Az egyéni címbérlet-tárolók új bővíthetőségi pontot használhatnak ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) és ILeaseStoreManager nyilvános felületet.
+  * Az ILeaseManager felületet több szerepkör-illesztővé vette át.
+* Kisebb törésmódosítás: eltávolított changeFeedProcessorBuilder.WithLeaseManager(ILeaseManager) eltávolítási pont, használja a ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) kifejezést.
 
-### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
-* Ez a kiadás javít egy olyan problémát, amely a megfigyelt gyűjtemények és a particionált bérletek gyűjteményének feldolgozása során következik be. A felosztott partíciók bérletének feldolgozásakor előfordulhat, hogy a partíciónak megfelelő bérlet nem törölhető. A probléma ebben a kiadásban van kijavítva.
+### <a name="222"></a><a name="2.2.2"/>2.2.2
+* Ez a kiadás kijavítja azt a problémát, amely a figyelt gyűjtemény felosztásának feldolgozása és a particionált címbérlet-gyűjtemény használata során jelentkezik. Osztott partíció bérletének feldolgozásakor előfordulhat, hogy az adott partíciónak megfelelő bérlet nem törlődik. A probléma ebben a kiadásban kivan javítva.
 
-### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
-* A több főkiszolgálós fiókok és az új munkamenet-jogkivonat formátumának rögzített Kalkulátoros kiszámítása.
+### <a name="221"></a><a name="2.2.1"/>2.2.1
+* Rögzített Estimator számítás több főkiszolgálós fiókokhoz és új munkamenettoken formátumhoz.
 
-### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
-* A particionált címbérleti gyűjtemények támogatása megnövelve. A partíciós kulcsot/id. kell definiálni.
-* Kisebb megszakítási változás: a IChangeFeedDocumentClient felület és a ChangeFeedDocumentClient osztály metódusai úgy lettek módosítva, hogy tartalmazzák a RequestOptions és a CancellationToken paramétereket. A IChangeFeedDocumentClient egy fejlett bővíthetőségi pont, amely lehetővé teszi, hogy a dokumentum-ügyfél egyéni implementációját a Change feed processzorral használja, például díszítse a DocumentClient, és feltartóztatja az összes hívást, hogy elvégezzen további nyomkövetést, hibakezelés stb. Ezzel a frissítéssel a IChangeFeedDocumentClient megvalósító kódot úgy kell módosítani, hogy új paramétereket tartalmazzon a megvalósításban.
-* Kisebb diagnosztika fejlesztése.
+### <a name="220"></a><a name="2.2.0"/>2.2.0
+* A particionált címbérlet-gyűjtemények támogatása hozzáadva. A partíciókulcsot /id néven kell definiálni.
+* Kisebb megszakítási módosítás: az IChangeFeedDocumentClient felület és a ChangeFeedDocumentClient osztály metódusai a RequestOptions és a CancellationToken paraméterekkel módosították. Az IChangeFeedDocumentClient egy speciális bővíthetőségi pont, amely lehetővé teszi a dokumentumügyfél egyéni implementációját a Change Feed processzorral való használatra, pl. díszíteni A DocumentClient-t, és elfoghatja az összes hívást, hogy extra nyomon követést, hibakezelést végezzen Stb. Ezzel a frissítéssel az IChangeFeedDocumentClient programot megvalósító kódot módosítani kell, hogy új paramétereket tartalmazzon a megvalósításba.
+* Kisebb diagnosztikai fejlesztések.
 
-### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
-* Új API hozzáadása, feladat&lt;IReadOnlyList&lt;RemainingPartitionWork&gt;&gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). Ez az egyes partíciók becsült munkájának lekérésére használható.
-* A támogatja a Microsoft. Azure. DocumentDB SDK 2,0-es verziója. A Microsoft. Azure. DocumentDB 2,0-es vagy újabb verziójára van szükség.
+### <a name="210"></a><a name="2.1.0"/>2.1.0
+* Hozzáadott új&lt;API, Task&lt;IReadOnlyList RemainingPartitionWork&gt; &gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync(). Ezt fel lehet használni, hogy a becsült munka minden partícióra.
+* Támogatja a Microsoft.Azure.DocumentDB SDK 2.0-s verziót. Microsoft.Azure.DocumentDB 2.0 vagy újabb szükséges.
 
-### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
-* A ChangeFeedEventHost. HostName nyilvános tulajdonsága a v1-vel való kompatibilitáshoz lett hozzáadva.
+### <a name="206"></a><a name="2.0.6"/>clickstream
+* Hozzáadott ChangeFeedEventHost.HostName public property for compatibility with v1.
 
-### <a name="a-name205205"></a><a name="2.0.5"/>2.0.5
-* Rögzített egy versenyhelyzet, amely a partíció felosztása során következik be. A versenyhelyzet feltétele a bérlet megszerzését és a felosztáskor azonnal elveszítheti azt. A versenyhelyzet problémája ebben a kiadásban van kijavítva.
+### <a name="205"></a><a name="2.0.5"/>2.0.5
+* Javítottunk egy versenyállapotot, amely a partíció felosztása során jelentkezik. A versenyviszonyok a bérlet megszerzéséhez és azonnali elvesztéséhez vezethetnek a partíció felosztása során, és viszálykodást okozhatnak. A versenyhelyzettel kapcsolatos probléma ezzel a kiadással lett kijavítva.
 
-### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
+### <a name="204"></a><a name="2.0.4"/>2.0.4
 * GA SDK
 
-### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3 – előzetes verzió
+### <a name="203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-előzetes kiadás
 * Az alábbi problémákat javítja:
-  * A felosztott partíciók megkettőzése esetén előfordulhat, hogy a felosztás előtt módosított dokumentumok többször is feldolgozva lettek.
-  * A GetEstimatedRemainingWork API 0 értéket adott vissza, ha nem találhatók bérletek a címbérleti gyűjteményben.
+  * Partíciófelosztás esetén a felosztás előtt módosított dokumentumok duplikált feldolgozása történhet.
+  * A GetEstimatedRemainingWork API 0-t adott vissza, ha nem voltak bérletek a címbérlet-gyűjteményben.
 
-* A következő kivételek nyilvánosak. A IPartitionProcessor megvalósító bővítmények kihasználhatják ezeket a kivételeket.
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. LeaseLostException. 
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. PartitionException. 
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. PartitionNotFoundException.
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. PartitionSplitException. 
+* A következő kivételek nyilvánosak. Az IPartitionProcessor processzort megvalósító bővítmények elhajthatják ezeket a kivételeket.
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException. 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException. 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException. 
 
-### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2 – előzetes verzió
-* Másodlagos API-változások:
-  * A rendszer eltávolította az elavultként megjelölt ChangeFeedProcessorOptions. IsAutoCheckpointEnabled.
+### <a name="202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-előzetes kiadás
+* Kisebb API-módosítások:
+  * Eltávolította a ChangeFeedProcessorOptions.IsAutoCheckpointEnabled-t, amely elavultként volt megjelölve.
 
-### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1 – előzetes verzió
-* A stabilitás fejlesztése:
-  * A bérleti tároló inicializálásának jobb kezelését. Ha a címbérlet-tároló üres, akkor a processzornak csak egy példánya inicializálható, a többi pedig megvárja.
-  * Stabilabb/hatékony bérlet megújítása/kiadása. Egy adott bérlet megújítása és felszabadítása független a mások megújításával. A v1-ben, amely az összes partíció esetében szekvenciálisan lett végrehajtva.
+### <a name="201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-előzetes kiadás
+* Stabilitási fejlesztések:
+  * A lízingáruház inicializálásának jobb kezelése. Ha a bérlettároló üres, a processzornak csak egy példánya inicializálhatja, a többiek várni fognak.
+  * Stabilabb/hatékonyabb bérleti megújítás/kiadás. Egy partíció megújítása és felszabadítása egy partíció független a mások megújításától. A v1, hogy történt egymás után az összes partíciót.
 * Új v2 API:
-  * A processzor rugalmas felépítésének építő mintája: a ChangeFeedProcessorBuilder osztály.
-    * A paraméterek tetszőleges kombinációját elvégezheti.
-    * DocumentClient-példányt is igénybe vehet a figyelési és/vagy bérleti gyűjteményekhez (a v1-ben nem érhető el).
-  * A IChangeFeedObserver. ProcessChangesAsync most a CancellationToken-t veszi igénybe.
-  * IRemainingWorkEstimator – a fennmaradó munkahelyi kalkulátor külön is felhasználható a processzortól.
+  * Építőminta a processzor rugalmas felépítéséhez: a ChangeFeedProcessorBuilder osztály.
+    * A paraméterek bármilyen kombinációját eltudja venni.
+    * A DocumentClient-példányt figyelheti és/vagy címbérlet-gyűjteményként (a v1-ben nem érhető el).
+  * Az IChangeFeedObserver.ProcessChangesAsync mostantól törlési tokenre kerül.
+  * IRemainingWorkEstimator - a fennmaradó munkabecslő a processzortól elkülönítve használható.
   * Új bővíthetőségi pontok:
-    * IPartitionLoadBalancingStrategy – a partíciók a processzor példányai közötti egyéni terheléselosztása.
-    * ILease, ILeaseManager – egyéni bérletek kezeléséhez.
-    * IPartitionProcessor – a partíciók egyéni feldolgozásának módosítása.
-* Naplózás – a [LibLog](https://github.com/damianh/LibLog) könyvtárat használja.
-* 100% visszamenőlegesen kompatibilis a v1 API-val.
-* Új kód alapja.
-* Kompatibilis az [SQL .net SDK](sql-api-sdk-dotnet.md) 1.21.1 és újabb verzióival.
+    * IPartitionLoadBalancingStrategy - a partíciók egyéni terheléselosztása a processzor példányai között.
+    * ILease, ILeaseManager - egyéni címbérlet-kezeléshez.
+    * IPartitionProcessor - egyéni feldolgozási módosítások at a partíción.
+* Naplózás – [liblog](https://github.com/damianh/LibLog) könyvtárat használ.
+* 100%-kal visszafelé kompatibilis a v1 API-val.
+* Új kódbázis.
+* Kompatibilis az [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21.1-es és újabb verzióival.
 
-### <a name="v1-builds"></a>v1-buildek
+### <a name="v1-builds"></a>v1 épít
 
-### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
-* További naplózás lett hozzáadva.
-* Rögzített DocumentClient-szivárgás a függőben lévő munkahelyi becslés többszöri meghívásakor.
+### <a name="133"></a><a name="1.3.3"/>1.3.3
+* További naplózás hozzáadva.
+* Javítottunk egy DocumentClient-szivárgást, amikor többször is meghívta a függőben lévő munka becslését.
 
-### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+### <a name="132"></a><a name="1.3.2"/>1.3.2
 * Javítások a függőben lévő munka becslésében.
 
-### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
-* Stabilitási változások.
-  * Javítsa a megszakított feladatok kezelésére vonatkozó problémát, amely a figyelők egyes partíciókban való leállítását eredményezheti.
-* A manuális ellenőrzőpontok támogatása.
-* Kompatibilis az [SQL .net SDK](sql-api-sdk-dotnet.md) 1,21-es vagy újabb verziójával.
+### <a name="131"></a><a name="1.3.1"/>1.3.1
+* Stabilitási fejlesztések.
+  * Javítsa ki a megszakított feladatok kezelését, amely egyes partíciókon leállított megfigyelőkhöz vezethet.
+* Kézi ellenőrzőpontok támogatása.
+* Kompatibilis az [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21-es és újabb verzióival.
 
-### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* A .NET Standard 2,0 támogatásának támogatása. A csomag mostantól támogatja a `netstandard2.0` és a `net451` keretrendszer monikereit.
-* Kompatibilis az [SQL .net SDK](sql-api-sdk-dotnet.md) 1.17.0 és újabb verzióival.
-* Kompatibilis az [SQL .net Core SDK](sql-api-sdk-dotnet-core.md) 1.5.1-es és újabb verzióival.
+### <a name="120"></a><a name="1.2.0"/>1.2.0
+* Támogatja a .NET Standard 2.0-s szabványt. A csomag most `netstandard2.0` `net451` már támogatja és keret monikers.
+* Kompatibilis az [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.17.0-s és újabb verzióival.
+* Kompatibilis az [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) 1.5.1-es és újabb verzióival.
 
-### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
-* Kijavít egy problémát a hátralévő munka becslésének kiszámításával, ha a változási csatorna üres volt, vagy nem volt függőben a munka.
-* Kompatibilis az [SQL .net SDK](sql-api-sdk-dotnet.md) 1.13.2 és újabb verzióival.
+### <a name="111"></a><a name="1.1.1"/>1.1.1
+* Kijavít egy problémát a hátralévő munka becsült összegének kiszámításával kapcsolatban, amikor a hírcsatorna módosítása üres volt, vagy nem volt függőben munka.
+* Kompatibilis az [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.13.2-es és újabb verzióival.
 
-### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Hozzáadott egy metódust a változási hírcsatornában feldolgozandó hátralévő munka becsült értékének beszerzéséhez.
-* Kompatibilis az [SQL .net SDK](sql-api-sdk-dotnet.md) 1.13.2 és újabb verzióival.
+### <a name="110"></a><a name="1.1.0"/>1.1.0
+* Hozzáadott egy módszert a módosító hírfolyamban feldolgozandó hátralévő munka becslésének megszerzésére.
+* Kompatibilis az [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.13.2-es és újabb verzióival.
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"/>1.0.0
 * GA SDK
-* Kompatibilis az [SQL .net SDK](sql-api-sdk-dotnet.md) 1.14.1 és újabb verzióival.
+* Kompatibilis az [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.14.1-es és újabb verzióival.
 
 ## <a name="release--retirement-dates"></a>Kiadási & nyugdíjazási dátumok
 
-A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
+A Microsoft legalább **12 hónappal** az SDK kicsomagolása előtt értesítést küld az újabb/támogatott verzióra való áttérés zökkenőmentessé.
 
-Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
+Az új funkciók és funkciók és optimalizálások csak az aktuális SDK-hoz kerülnek hozzáadásra, ezért ajánlott mindig a lehető leghamarabb frissíteni a legújabb SDK-verzióra. 
 
-A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket.
+A Cosmos DB-nek a rendszer egy kivisszavonult SDK-t használó kérését a szolgáltatás elutasítja.
 
 <br/>
 
-| Verzió | Megjelenés dátuma | Nyugdíjazás dátuma |
+| Verzió | Megjelenési dátum | Nyugdíjazás dátuma |
 | --- | --- | --- |
-| [2.2.8](#2.2.8) |Október 28., 2019 |--- |
-| [2.2.7](#2.2.7) |2019. május 14. |--- |
-| [2.2.6](#2.2.6) |2019. január 29. |--- |
-| [2.2.5](#2.2.5) |December 13., 2018 |--- |
-| [2.2.4](#2.2.4) |November 29., 2018 |--- |
-| [2.2.3](#2.2.3) |November 19., 2018 |--- |
+| [2.2.8](#2.2.8) |2019. október 28.October 28, 2019 |--- |
+| [2.2.7](#2.2.7) |2019. május 14.May 14, 2019 |--- |
+| [2.2.6](#2.2.6) |2019. január 29., 2019. január 29. |--- |
+| [2.2.5](#2.2.5) |2018. december 13., |--- |
+| [2.2.4](#2.2.4) |2018. november 29., 29., 2018. |--- |
+| [2.2.3](#2.2.3) |2018. november 19., 2018. |--- |
 | [2.2.2](#2.2.2) |2018. október 31. |--- |
-| [2.2.1](#2.2.1) |Október 24., 2018 |--- |
-| [1.3.3](#1.3.3) |08. május 2018 |--- |
-| [1.3.2](#1.3.2) |2018. április 18. |--- |
+| [2.2.1](#2.2.1) |2018. október 24.October 24, 2018 |--- |
+| [1.3.3](#1.3.3) |2018. május 08.May 08, 2018 |--- |
+| [1.3.2](#1.3.2) |2018. április 18.April 18, 2018 |--- |
 | [1.3.1](#1.3.1) |2018. március 13. |--- |
 | [1.2.0](#1.2.0) |2017. október 31. |--- |
-| [1.1.1](#1.1.1) |Augusztus 29., 2017 |--- |
-| [1.1.0](#1.1.0) |Augusztus 13., 2017 |--- |
-| [1.0.0](#1.0.0) |2017. július 7. |--- |
+| [1.1.1](#1.1.1) |2017. augusztus 29.August 29, 2017 |--- |
+| [1.1.0](#1.1.0) |2017. augusztus 13.August 13, 2017 |--- |
+| [1.0.0](#1.0.0) |2017. július 07.July 07, 2017 |--- |
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.
+A Cosmos DB szolgáltatásról a [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatáslapján olvashat bővebben.

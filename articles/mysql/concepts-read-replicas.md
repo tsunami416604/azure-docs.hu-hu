@@ -1,162 +1,162 @@
 ---
 title: Replikák olvasása – Azure Database for MySQL.
-description: 'Ismerkedjen meg a Azure Database for MySQL olvasási replikákkal: régiók kiválasztása, replikák létrehozása, replikák csatlakoztatása, replikáció figyelése és replikáció leállítása.'
+description: 'Ismerje meg a replikák olvasását az Azure Database for MySQL-ben: régiók kiválasztása, replikák létrehozása, replikákhoz való csatlakozás, replikáció figyelése és a replikáció leállítása.'
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: 98461928e465a103f73761afce5270234224fbae
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76167349"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
 
-Az olvasási replikával adatokat replikálhat egy Azure Database for MySQL-kiszolgálóról egy csak olvasható kiszolgálóra. A főkiszolgálóról legfeljebb öt replikára másolhatja az adatokat. A replikák aszinkron módon frissülnek a MySQL-motor natív bináris naplójának (binlog) fájlpozíció-alapú replikációs technológiájával. A BinLog-replikációval kapcsolatos további tudnivalókért tekintse meg a [MySQL BinLog-replikáció áttekintése](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)című témakört.
+Az olvasási replikával adatokat replikálhat egy Azure Database for MySQL-kiszolgálóról egy csak olvasható kiszolgálóra. A főkiszolgálóról legfeljebb öt replikára másolhatja az adatokat. A replikák aszinkron módon frissülnek a MySQL-motor natív bináris naplójának (binlog) fájlpozíció-alapú replikációs technológiájával. A binlog replikációról a [MySQL-adatok replikációjának áttekintése](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)című témakörben olvashat bővebben.
 
-A replikák olyan új kiszolgálók, amelyeket a rendszeres Azure Database for MySQL-kiszolgálókhoz hasonló módon kezel. Az egyes olvasási replikák esetében a virtuális mag és a Storage szolgáltatásban a kiépített számítási kapacitást a GB/hó értékben számítjuk fel.
+A replikák olyan új kiszolgálók, amelyeket a MySQL-kiszolgálók hoz való rendszeres Azure Database-hez hasonlóan kezel. Minden egyes olvasási replika, a kiosztott számítási virtuális magok és a tárolás GB/ hó.
 
-Ha többet szeretne megtudni a MySQL-replikációs funkciókról és problémákról, tekintse meg a [MySQL-replikáció dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
+Ha többet szeretne megtudni a MySQL replikációs szolgáltatásairól és problémáiról, olvassa el a [MySQL replikációs dokumentációját.](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)
 
-## <a name="when-to-use-a-read-replica"></a>Mikor használjon olvasási replikát
+## <a name="when-to-use-a-read-replica"></a>Mikor kell olvasni a kópiát használni?
 
-Az olvasási replika funkcióval javítható a nagy olvasási igényű számítási feladatok teljesítménye és méretezése. Az olvasási munkaterhelések elkülöníthetők a replikákkal, míg az írási munkaterhelések a főkiszolgálóhoz irányíthatók.
+Az olvasási replika szolgáltatás segít az olvasási igényű munkaterhelések teljesítményének és méretezésének javításában. Olvasási számítási feladatok elkülöníthetők a replikák, míg az írási számítási feladatok a főkiszolgálóra irányítható.
 
-Gyakori forgatókönyv, hogy a BI-és analitikai munkaterhelések az olvasási replikát használják adatforrásként a jelentéskészítéshez.
+Gyakori forgatókönyv, hogy az üzleti intelligencia és az analitikus számítási feladatok az olvasási replika, mint a jelentési forrás.
 
-Mivel a replikák csak olvashatók, nem csökkentik közvetlenül az írási kapacitás terheit a főkiszolgálón. Ez a funkció nem a nagy írási igényű munkaterhelésekre irányul.
+Mivel a replikák írásvédettek, nem csökkentik közvetlenül a főkiszolgáló írási kapacitásterheit. Ez a funkció nem az írásigényes számítási feladatok.
 
-Az olvasási replika funkció MySQL aszinkron replikálást használ. A funkció nem a szinkron replikációs forgatókönyvek esetében jelent meg. A főkiszolgáló és a replika között mérhető késés lesz. A replikán lévő adatok végül konzisztensek maradnak a főkiszolgálón lévő adatokkal. Használja ezt a szolgáltatást olyan számítási feladatokhoz, amelyek alkalmasak erre a késésre.
+Az olvasási replika szolgáltatás a MySQL aszinkron replikációt használja. A szolgáltatás nem szinkron replikációs forgatókönyvekhez való. Mérhető késleltetés lesz a mester és a replika között. A kópia adatai végül konzisztensek lesznek a főkiszolgálón lévő adatokkal. Ezt a szolgáltatást olyan számítási feladatokhoz használja, amelyek képesek ezt a késleltetést kezelni.
 
 ## <a name="cross-region-replication"></a>Régiók közötti replikáció
-Az olvasási replikát a főkiszolgálótól eltérő régióban is létrehozhatja. A régiók közötti replikáció hasznos lehet olyan forgatókönyvek esetén, mint például a vész-helyreállítási tervezés vagy az adatok közelebb hozása a felhasználókhoz.
+A főkiszolgálótól eltérő régióban hozhat létre olvasási kópiát. A régiók közötti replikáció hasznos lehet olyan esetekben, mint a vész-helyreállítási tervezés vagy az adatok közelebb hozása a felhasználókhoz.
 
-A főkiszolgáló bármely [Azure Database for MySQL régióban](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)elérhető.  A főkiszolgáló rendelkezhet replikával a párosított régiójában vagy az univerzális replika régiókban. Az alábbi képen látható, hogy mely replika régiók érhetők el a fő régiótól függően.
+A master kiszolgáló bármely [Azure Database for MySQL régióban](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)használható.  A főkiszolgáló rendelkezhet egy replika a párosított régióban vagy az univerzális replika régiókban. Az alábbi képen látható, hogy mely replikarégiók érhetők el a fő régiótól függően.
 
-[![olvasási replika régiói](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[![Replikaterületek olvasása](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
-### <a name="universal-replica-regions"></a>Univerzális replika-régiók
-A következő régiók bármelyikében létrehozhat egy olvasási replikát, függetlenül attól, hogy hol található a főkiszolgáló. A támogatott univerzális replika-régiók a következők:
+### <a name="universal-replica-regions"></a>Univerzális replikaterületek
+Az alábbi régiók bármelyikében létrehozhat olvasási kópiát, függetlenül attól, hogy a főkiszolgáló hol található. A támogatott univerzális replikarégiók a következők:
 
-Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Közép-Korea, Dél-Brazília, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, USA nyugati régiója.
+Kelet-Ausztrália, Ausztrália Délkelet, USA középső része, Kelet-Ázsia, USA keleti régiója 2, Japán kelet, Nyugat-Japán, Korea Közép-Korea, Korea South, Észak-Közép-USA, Észak-Európa, Usa középső középső régiója, Délkelet-Ázsia, Egyesült Királyság déli, egyesült királyságbeli nyugati, nyugat-európai, usa nyugati régiója.
 
-\* Az USA 2. nyugati régiója átmenetileg nem érhető el a régiók közötti replika helyeként.
+*Az USA nyugati régiója 2 átmenetileg nem érhető el régióközi replikahelyként.
 
 
 ### <a name="paired-regions"></a>Párosított régiók
-Az univerzális replika régión kívül egy olvasási replikát is létrehozhat a főkiszolgáló Azure párosított régiójában. Ha nem ismeri a régió pár elemét, többet is megtudhat az [Azure párosított régiókról szóló cikkből](../best-practices-availability-paired-regions.md).
+Az univerzális replikarégiók mellett létrehozhat egy olvasási replikát a főkiszolgáló Azure-ban párosított régióban. Ha nem ismeri a régió párját, további információaz [Azure Paired Regions cikkből.](../best-practices-availability-paired-regions.md)
 
-Ha régiók közötti replikákat használ a vész-helyreállítási tervezéshez, javasoljuk, hogy a többi régió helyett a párosított régióban hozza létre a replikát. A párosított régiók elkerülik az egyidejű frissítéseket, és rangsorolják a fizikai elkülönítést és az adattárolást.  
+Ha régióközi replikákat használ a vész-helyreállítási tervezéshez, javasoljuk, hogy a más régiók helyett a párosított régióban hozza létre a replikát. A párosított régiók elkerülik az egyidejű frissítéseket, és rangsorolják a fizikai elkülönítést és az adatok rezidensségét.  
 
-Azonban a következő szempontokat kell figyelembe venni: 
+Vannak azonban olyan korlátozások, amelyeket figyelembe kell venni: 
 
-* Regionális elérhetőség: Azure Database for MySQL az USA 2. nyugati régiójában, Közép-Franciaország, Észak-Európa és Németország középső régiójában érhető el. A párosított régiói azonban nem érhetők el.
+* Regionális elérhetőség: Az Azure Database for MySQL az USA nyugati részén 2, Franciaország középső részén, az Egyesült Arab Emírségek északi részén és Németország központi részén érhető el. A párosított régiók azonban nem érhetők el.
     
-* Egyirányú párok: egyes Azure-régiók csak egyetlen irányban vannak párosítva. Ezek a régiók közé tartoznak a Nyugat-India, Dél-Brazília és US Gov Virginia. 
-   Ez azt jelenti, hogy a Nyugat-Indiai főkiszolgáló létrehozhat egy replikát Dél-Indiában. A dél-indiai főkiszolgálók azonban nem hozhatnak létre replikát Nyugat-Indiában. Ennek az az oka, hogy Nyugat-India másodlagos régiója Dél-India, de Dél-India másodlagos régiója nem Nyugat-India.
+* Egyirányú párok: Egyes Azure-régiók csak egy irányban vannak párosítva. Ezek a régiók közé tartozik Nyugat-India, Brazília déli, és az Egyesült Államok gov Virginia. 
+   Ez azt jelenti, hogy a nyugat-indiai főkiszolgáló replikát hozhat létre Dél-Indiában. A dél-indiai főkiszolgáló azonban nem hozhat létre kópiát Nyugat-Indiában. Ez azért van, mert Nyugat-India másodlagos régió Dél-India, de Dél-India másodlagos régió nem Nyugat-India.
 
 
 ## <a name="create-a-replica"></a>Replika létrehozása
 
-Ha a főkiszolgáló nem rendelkezik meglévő replika-kiszolgálókkal, a főkiszolgáló először újraindul a replikálás előkészítéséhez.
+Ha a főkiszolgáló nem rendelkezik meglévő replikakiszolgálókkal, a főkiszolgáló először újraindul, hogy felkészüljön a replikációra.
 
-A replika létrehozása munkafolyamat indításakor létrejön egy üres Azure Database for MySQL-kiszolgáló. Az új kiszolgáló a főkiszolgálón található adatokkal van feltöltve. A létrehozási idő a főkiszolgálón tárolt adatok mennyiségétől és az utolsó heti teljes biztonsági mentés óta eltelt idővel függ. Az idő néhány perctől akár több órára is terjedhet.
+A replika-munkafolyamat létrehozásakor létrejön egy üres Azure-adatbázis a MySQL-kiszolgálóhoz. Az új kiszolgáló tele van a főkiszolgálón lévő adatokkal. A létrehozási idő a főkiszolgálón lévő adatok mennyiségétől és az utolsó heti teljes biztonsági mentés óta eltelt időtől függ. Az idő néhány perctől több óráig terjedhet.
 
-Minden replika engedélyezve van a tárterület [automatikus növelésére](concepts-pricing-tiers.md#storage-auto-grow). Az automatikus növekedés funkció lehetővé teszi, hogy a replika megőrizze az általa replikált adatmennyiséget, és megakadályozza a tárolási hibák miatti megszakítást a replikálásban.
+Minden replika engedélyezve van a tároló [automatikus növekedéséhez.](concepts-pricing-tiers.md#storage-auto-grow) Az automatikus növekedés funkció lehetővé teszi, hogy a replika lépést tartson a replikált adatokkal, és megakadályozza a replikáció megszakítását a tárolón kívüli hibák miatt.
 
-Megtudhatja, hogyan [hozhat létre olvasási replikát a Azure Portalban](howto-read-replicas-portal.md).
+Ismerje meg, hogyan [hozhat létre olvasási replikát az Azure Portalon.](howto-read-replicas-portal.md)
 
-## <a name="connect-to-a-replica"></a>Kapcsolódás replikához
+## <a name="connect-to-a-replica"></a>Csatlakozás kópiához
 
-A létrehozáskor a replika örökli a főkiszolgáló tűzfalszabályok vagy VNet szolgáltatási végpontját. Ezt követően ezek a szabályok függetlenek a főkiszolgálótól.
+Létrehozáskor a replika örökli a főkiszolgáló tűzfalszabályait vagy virtuális hálózati szolgáltatásvégpontját. Ezt követően ezek a szabályok függetlenek a főkiszolgálótól.
 
-A replika örökli a rendszergazdai fiókot a főkiszolgálóról. A főkiszolgáló összes felhasználói fiókja replikálódik az olvasási replikára. Csak olvasási replikához csatlakozhat a főkiszolgálón elérhető felhasználói fiókok használatával.
+A replika örökli a rendszergazdai fiókot a főkiszolgálótól. A főkiszolgáló összes felhasználói fiókja replikálása az olvasási replikákra történik. Az olvasási kópiához csak a főkiszolgálón elérhető felhasználói fiókok használatával lehet csatlakozni.
 
-A replikához a hostname és egy érvényes felhasználói fiók használatával kapcsolódhat, ahogy azt egy normál Azure Database for MySQL-kiszolgálón tenné. Ahhoz, hogy egy **myreplica** nevű kiszolgáló rendszergazdai felhasználónevét **myadmin**, a MySQL CLI használatával kapcsolódhat a replikához:
+Csatlakozhat a replikához a gazdagépnevével és egy érvényes felhasználói fiókkal, ugyanúgy, mint egy normál Azure-adatbázis a MySQL-kiszolgálóhoz. A **myreplica** nevű kiszolgáló esetében a **myadmin**admin felhasználónévvel csatlakozhat a replikához a mysql CLI használatával:
 
 ```bash
 mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 ```
 
-A parancssorba írja be a felhasználói fiókhoz tartozó jelszót.
+A kérdésben adja meg a felhasználói fiók jelszavát.
 
 ## <a name="monitor-replication"></a>Replikáció monitorozása
 
-A Azure Database for MySQL a **replikáció késését a Azure monitor másodpercben** mért metrikája biztosítja. Ez a metrika csak replikák esetében érhető el.
+Az Azure Database for MySQL biztosítja a **replikációs késés másodpercben** metrika az Azure Monitorban. Ez a metrika csak replikák hoz érhető el.
 
-Ezt a metrikát a MySQL `SHOW SLAVE STATUS` parancsában elérhető `seconds_behind_master` metrika használatával számítjuk ki.
+Ezt a metrikát a `seconds_behind_master` MySQL `SHOW SLAVE STATUS` parancsában elérhető metrika alapján számítjuk ki.
 
-Állítson be egy riasztást, amely tájékoztatja arról, ha a replikációs késés olyan értéket ér el, amely nem fogadható el a munkaterhelés számára.
+Állítson be egy riasztást, amely tájékoztatja, ha a replikációs késés eléri a számítási feladatok hoz nem elfogadható értéket.
 
 ## <a name="stop-replication"></a>Replikáció leállítása
 
-Leállíthatja a replikációt egy főkiszolgáló és egy replika között. Miután leállította a replikálást egy főkiszolgáló és egy olvasási replika között, a replika önálló kiszolgáló lesz. Az önálló kiszolgálóban található, a replikálás leállítása parancs elindításának időpontjában a replikán elérhető adatértékek. Az önálló kiszolgáló nem fog felzárkózni a főkiszolgálóval.
+A főkiszolgáló és a kópia közötti replikáció leállíthatja. A főkiszolgáló és az olvasási kópia közötti replikáció leállítása után a replika önálló kiszolgálóvá válik. Az önálló kiszolgálón lévő adatok azok az adatok, amelyek a replikáció leállításakor a replikán rendelkezésre állnak. Az önálló kiszolgáló nem éri el a főkiszolgálót.
 
-Ha úgy dönt, hogy leállítja a replikálást egy replikára, az elveszíti az előző főkiszolgálóra és más replikára mutató összes hivatkozást. A főkiszolgáló és a replikája között nincs automatikus feladatátvétel.
+Ha úgy dönt, hogy leállítja a replikák replikációját, az elveszíti az összes csatolást az előző kópiához és más kópiákhoz. A főkiszolgáló és a kópia között nincs automatikus feladatátvétel.
 
 > [!IMPORTANT]
-> Az önálló kiszolgáló nem hozható létre újra replikába.
-> Mielőtt leállítja a replikálást egy olvasási replikán, győződjön meg arról, hogy a replika rendelkezik a szükséges összes adattal.
+> Az önálló kiszolgáló nem alakítható újra kópiává.
+> Mielőtt leállítja a replikációt egy olvasási kópián, győződjön meg arról, hogy a replika rendelkezik az összes szükséges adatkal.
 
-Megtudhatja, hogyan [állíthatja le a replikálást egy replikára](howto-read-replicas-portal.md).
+További információ a [kópia replikációjának leállításáról.](howto-read-replicas-portal.md)
 
-## <a name="considerations-and-limitations"></a>Megfontolások és korlátozások
+## <a name="considerations-and-limitations"></a>Szempontok és korlátozások
 
 ### <a name="pricing-tiers"></a>Árképzési szintek
 
-Az olvasási replikák jelenleg csak a általános célú és a memória optimalizált díjszabási szintjein érhetők el.
+Az olvasási replikák jelenleg csak az általános cél és a memória optimalizált tarifacsomagok érhetők el.
 
 ### <a name="master-server-restart"></a>Főkiszolgáló újraindítása
 
-Ha olyan mesteralakzathoz hoz létre replikát, amely nem rendelkezik meglévő replikákkal, a főkiszolgáló először újraindul, hogy felkészüljön a replikálásra. Ezt vegye figyelembe, és hajtsa végre ezeket a műveleteket egy leállási időszakon belül.
+Ha olyan mesterkópiához hoz létre kópiát, amelynem rendelkezik meglévő kópiákkal, a főkiszolgáló először újraindul, hogy felkészüljön a replikációra. Ezt vegye figyelembe, és végezze el ezeket a műveleteket csúcsidőn kívüli időszakban.
 
-### <a name="new-replicas"></a>Új replikák
+### <a name="new-replicas"></a>Új kópiák
 
-Az olvasási replika új Azure Database for MySQL-kiszolgálóként jön létre. Egy meglévő kiszolgálót nem lehet replikába készíteni. Egy másik olvasási replika replikája nem hozható létre.
+Az olvasási replika új Azure-adatbázisként jön létre a MySQL-kiszolgálóhoz. Meglévő kiszolgáló nem alakítható át kópiává. Nem hozhat létre más olvasott kópiát.
 
 ### <a name="replica-configuration"></a>Replika konfigurációja
 
-A replikát ugyanazzal a kiszolgáló-konfigurációval hozza létre a rendszer, mint a főkiszolgálót. A replika létrehozása után több beállítás is módosítható a főkiszolgálótól függetlenül: számítási generáció, virtuális mag, tárterület és biztonsági mentés megőrzési ideje. Az árképzési szint külön is módosítható, kivéve az alapszintű csomagból vagy abból.
+A kópia a főkiszolgálóval azonos kiszolgálókonfigurációhasználatával jön létre. A replika létrehozása után számos beállítás módosítható a fő kiszolgálótól függetlenül: számítási generálás, virtuális magok, tárolás és biztonsági mentés megőrzési időszaka. A tarifacsomag is lehet változtatni egymástól függetlenül, kivéve, hogy vagy az alapszintű szintről.
 
 > [!IMPORTANT]
 > Mielőtt a főkiszolgálói konfigurációt új értékekre frissítené, frissítse a replika konfigurációját az értékekkel egyenlő vagy nagyobb értékekre. Ez a művelet biztosítja, hogy a replika összhangban lehessen a főkiszolgálón végrehajtott módosításokkal.
 
-A tűzfalszabályok, a virtuális hálózati szabályok és a paraméterek beállításai a főkiszolgálóról a replikára öröklődnek a replika létrehozásakor. Ezt követően a replika szabályai függetlenek.
+A tűzfalszabályok, a virtuális hálózati szabályok és a paraméterbeállítások a kópia létrehozásakor a főkiszolgálótól a kópiához öröklődnek. Ezt követően a replika szabályai függetlenek.
 
 ### <a name="stopped-replicas"></a>Leállított replikák
 
-Ha leállítja a replikálást egy főkiszolgáló és egy olvasási replika között, a leállított replika önálló kiszolgáló lesz, amely fogadja az olvasásokat és az írásokat is. Az önálló kiszolgáló nem hozható létre újra replikába.
+Ha leállítja a replikációt a főkiszolgáló és az olvasási kópia között, a leállított replika önálló kiszolgálóvá válik, amely elfogadja az olvasást és az írást is. Az önálló kiszolgáló nem alakítható újra kópiává.
 
-### <a name="deleted-master-and-standalone-servers"></a>Törölt fő-és önálló kiszolgálók
+### <a name="deleted-master-and-standalone-servers"></a>Törölt fő- és önálló kiszolgálók
 
-Főkiszolgáló törlésekor a replikáció minden olvasási replikára leállt. Ezek a replikák automatikusan önálló kiszolgálókra válnak, és elfogadhatják az olvasási és írási műveleteket is. Maga a főkiszolgáló törölve lett.
+A főkiszolgáló törlésekor a replikáció leáll az összes olvasási replikára. Ezek a replikák automatikusan önálló kiszolgálókká válnak, és olvasási és írási műveleteket is fogadnak. Maga a főkiszolgáló törlődik.
 
 ### <a name="user-accounts"></a>Felhasználói fiókok
 
-A főkiszolgálón lévő felhasználókat a rendszer replikálja az olvasási replikára. Csak olvasási replikához csatlakozhat a főkiszolgálón elérhető felhasználói fiókok használatával.
+A főkiszolgáló felhasználói replikálódnak az olvasási replikákra. Az olvasási kópiához csak a főkiszolgálón elérhető felhasználói fiókok használatával lehet csatlakozni.
 
-### <a name="server-parameters"></a>Kiszolgálói paraméterek
+### <a name="server-parameters"></a>Kiszolgálóparaméterek
 
 Az adatszinkronizálás biztosítása és az esetleges adatvesztés vagy -sérülés elkerülése érdekében bizonyos kiszolgálóparaméterek zárolva vannak, hogy ne lehessen őket módosítani olvasási replikák használata során.
 
-A következő kiszolgálói paraméterek a fő-és a replika-kiszolgálókon is zárolva vannak:
+A következő kiszolgálóparaméterek a fő- és a replikakiszolgálókon is zárolva vannak:
 - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) 
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
-A [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) paraméter zárolva van a replika-kiszolgálókon. 
+A [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) paraméter zárolva van a replikakiszolgálókon. 
 
 ### <a name="other"></a>Egyéb
 
-- A globális tranzakciós azonosítók (GTID-EK) nem támogatottak.
-- Replika replikájának létrehozása nem támogatott.
-- A memóriában tárolt táblázatok miatt a replikák nem lesznek szinkronban. Ez a MySQL-replikációs technológia korlátozása. További információt a [MySQL dokumentációjában talál](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .
-- Győződjön meg arról, hogy a fő kiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a fő és a replikák között.
-- A MySQL- [dokumentációban](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) található MySQL-replikálási korlátozások teljes listájának áttekintése
+- A globális tranzakcióazonosítók (GTID) nem támogatottak.
+- A kópia kópiájának létrehozása nem támogatott.
+- A memóriában lévő táblák miatt a kópiák nem lesznek szinkronban. Ez a MySQL replikációs technológia korlátozása. További információt a [MySQL referenciadokumentációjában](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) talál.
+- Győződjön meg arról, hogy a főkiszolgálói táblák rendelkeznek elsődleges kulcsokkal. Az elsődleges kulcsok hiánya replikációs késést okozhat a főkiszolgáló és a replikák között.
+- Tekintse át a MySQL replikációs korlátozások teljes listáját a [MySQL dokumentációjában](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)
-- Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI és a REST API használatával](howto-read-replicas-cli.md)
+- Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure Portalhasználatával](howto-read-replicas-portal.md)
+- Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI és REST API használatával](howto-read-replicas-cli.md)

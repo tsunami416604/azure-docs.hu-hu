@@ -1,6 +1,6 @@
 ---
-title: Tároló munkaterhelések – Azure Batch
-description: Megtudhatja, hogyan futtathatja és méretezheti az alkalmazásokat a Azure Batch tároló lemezképei között. Hozzon létre egy olyan számítási csomópontok készletét, amelyek támogatják a futó tárolók feladatait.
+title: Tároló-munkaterhelések – Azure Batch
+description: Ismerje meg, hogyan futtathat és skálázhat alkalmazásokat az Azure Batch tárolólemezképekről. Hozzon létre egy számítási csomópontokkészletét, amelyek támogatják a tárolófeladatok futtatását.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -11,98 +11,98 @@ ms.date: 03/02/2020
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 81f4e753ffbaaefd5761c9396a6533bac9f212c1
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78254842"
 ---
-# <a name="run-container-applications-on-azure-batch"></a>Tároló-alkalmazások futtatása Azure Batch
+# <a name="run-container-applications-on-azure-batch"></a>Tárolóalkalmazások futtatása az Azure Batch-en
 
-Azure Batch lehetővé teszi nagy mennyiségű kötegelt számítási feladat futtatását és méretezését az Azure-ban. A Batch-feladatok közvetlenül futtathatók a Batch-készletben lévő virtuális gépeken (csomópontokon), de beállíthat egy batch-készletet is a feladatok Docker-kompatibilis tárolókban való futtatásához a csomópontokon. Ebből a cikkből megtudhatja, hogyan hozhat létre egy olyan számítási csomópontok készletét, amelyek támogatják a futó tárolók feladatait, majd a készleten futtatott tárolók feladatait.
+Az Azure Batch lehetővé teszi, hogy nagyszámú kötegelt számítástechnikai feladatot futtasson és méretezz az Azure-ban. A kötegelt feladatok közvetlenül futtathatók a kötegkészletben lévő virtuális gépeken (csomópontokon), de beállíthat egy batch készletet a Feladatok futtatásához a Docker-kompatibilis tárolókban a csomópontokon. Ez a cikk bemutatja, hogyan hozhat létre egy számítási csomópontok készletét, amelyek támogatják a tárolófeladatok futtatását, majd futtathat tárolófeladatokat a készleten.
 
-Ismernie kell a tárolók fogalmait, valamint a Batch-készlet és-feladatok létrehozását. A kód példák a Batch .NET és a Python SDK-kat használják. Más batch SDK-kat és eszközöket is használhat, beleértve a Azure Portal, a tárolók számára engedélyezett batch-készletek létrehozását és a tárolók feladatainak futtatását is.
+Ismernie kell a tároló fogalmait, és hogyan hozhat létre kötegkészletet és feladatot. A kódpéldák a Batch .NET és a Python SDK-k használata. Más Batch SDK-k és eszközök, köztük az Azure Portal használatával is létrehozhat tárolóalapú batch készleteket, és futtathat tárolófeladatokat.
 
-## <a name="why-use-containers"></a>Miért érdemes tárolókat használni?
+## <a name="why-use-containers"></a>Miért érdemes konténereket használni?
 
-A tárolók használata egyszerű módszert kínál a Batch-feladatok futtatására anélkül, hogy a környezetet és a függőségeket az alkalmazások futtatására kellene kezelnie. A tárolók a különböző környezetekben futtatható, könnyű, hordozható és önmagukban álló egységekként telepítik az alkalmazásokat. Például helyileg hozhat létre és tesztelheti a tárolókat, majd feltöltheti a tároló rendszerképét egy Azure-ban vagy máshol található beállításjegyzékbe. A tároló üzembe helyezési modellje biztosítja, hogy az alkalmazás futtatási környezete mindig megfelelően legyen telepítve és konfigurálva az alkalmazás futtatásához. A Batch tároló-alapú feladatai kihasználhatják a nem tároló jellegű feladatok funkcióit is, beleértve az alkalmazások csomagjait és az erőforrás-fájlok és a kimeneti fájlok kezelését.
+A tárolók használatával egyszerűen futtathatja a Batch-feladatokat anélkül, hogy egy környezetet és függőségeket kellene kezelnie az alkalmazások futtatásához. A tárolók könnyű, hordozható, önellátó egységekként telepítik az alkalmazásokat, amelyek több különböző környezetben is futtathatók. Például hozzon létre és teszteljen egy tárolót helyileg, majd töltse fel a tárolólemezképet egy beállításjegyzékbe az Azure-ban vagy máshol. A tároló központi telepítési modellje biztosítja, hogy az alkalmazás futásidejű környezete mindig megfelelően legyen telepítve és konfigurálva, bárhol is tárolja az alkalmazást. A Batch tárolóalapú feladatai a nem tárolófeladatok funkcióit is kihasználhatják, beleértve az alkalmazáscsomagokat, valamint az erőforrásfájlok és kimeneti fájlok kezelését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **SDK-verziók**: a Batch SDK-k támogatják a tároló lemezképeit a következő verziók szerint:
-    * Batch REST API 2017-es verzió -09-01.6.0
-    * Batch .NET SDK-verzió 8.0.0
-    * Batch Python SDK 4,0-es verzió
-    * Batch Java SDK 3,0-es verzió
-    * Batch Node. js SDK 3,0-es verzió
+* **SDK-verziók:** A Batch SDK-k a következő verzióktól támogatják a tárolórendszerképeket:
+    * Batch REST API 2017-09-01.6.0-s verziója
+    * Batch .NET SDK 8.0.0-s verzió
+    * Batch Python SDK 4.0-s verzió
+    * Batch Java SDK 3.0-s verzió
+    * Batch Node.js SDK 3.0-s verzió
 
-* **Fiókok**: az Azure-előfizetésében létre kell hoznia egy batch-fiókot és opcionálisan egy Azure Storage-fiókot.
+* **Fiókok:** Az Azure-előfizetésben létre kell hoznia egy Batch-fiókot és szükség esetén egy Azure Storage-fiókot.
 
-* **Egy támogatott**virtuálisgép-rendszerkép: a tárolók csak a virtuálisgép-konfigurációval létrehozott készletek esetében támogatottak, a következő, "támogatott virtuális gépek lemezképei" című részben leírtak szerint. Ha egyéni lemezképet ad meg, tekintse meg a következő szakaszban található szempontokat, valamint a [felügyelt egyéni lemezkép használata a virtuális gépek készletének létrehozásához](batch-custom-images.md)című témakör követelményeit.
+* **Támogatott virtuálisgép-lemezkép:** A tárolók csak a virtuális gép konfigurációjával létrehozott készletekben támogatottak a következő szakaszban részletezett " Támogatott virtuálisgép-lemezképek" című képekből. Ha egyéni lemezképet ad meg, olvassa el a következő szakaszban található szempontokat és a [Felügyelt egyéni lemezkép használata a virtuális gépek készletének létrehozásához](batch-custom-images.md)című témakör követelményeit.
 
 ### <a name="limitations"></a>Korlátozások
 
-* A Batch csak a Linux-készleteken futó tárolók esetében biztosít RDMA támogatást
+* A Batch csak linuxos készleteken futó tárolók rdma-támogatást nyújt
 
-* A Windows-tárolók számítási feladataihoz javasolt a készlethez tartozó többmagos virtuálisgép-méret kiválasztása
+* A Windows tárolók számítási feladataihoz ajánlott többmagos virtuális gépméretet választani a készlethez
 
-## <a name="supported-virtual-machine-images"></a>Támogatott virtuálisgép-rendszerképek
+## <a name="supported-virtual-machine-images"></a>Támogatott virtuálisgép-lemezképek
 
-A következő támogatott Windows-vagy Linux-rendszerképek egyikével hozzon létre egy virtuálisgép-számítási csomópontok készletét a tároló munkaterhelések számára. A Batch-kompatibilis Piactéri rendszerképekkel kapcsolatos további információkért lásd: [virtuálisgép-lemezképek listája](batch-linux-nodes.md#list-of-virtual-machine-images).
+Az alábbi támogatott Windows- vagy Linux-lemezképek egyikével hozzon létre virtuálisgép-számítási csomópontok készletét a tároló-számítási feladatokhoz. A Batch-el kompatibilis Marketplace-lemezképekről a [virtuálisgép-lemezképek listájában](batch-linux-nodes.md#list-of-virtual-machine-images)talál további információt.
 
 ### <a name="windows-support"></a>Windows-támogatás
 
-A Batch támogatja a tárolókat támogató Windows Server-lemezképeket. Általában ezek a rendszerkép-SKU-nevek `-with-containers` vagy `-with-containers-smalldisk`utótaggal rendelkeznek. Emellett [az API a Batch összes támogatott lemezképének listázásához](batch-linux-nodes.md#list-of-virtual-machine-images) `DockerCompatible` képességet jelez, ha a lemezkép támogatja a Docker-tárolókat.
+A Batch támogatja a tárolótámogatási kijelöléssel rendelkező Windows-kiszolgálólemezképeket. Ezek a képskunevek általában a `-with-containers` `-with-containers-smalldisk`vagy a segítségével vannak utófixálva. Emellett [az API-t az összes támogatott lemezképek batch](batch-linux-nodes.md#list-of-virtual-machine-images) jelöli a `DockerCompatible` képesség, ha a rendszerkép támogatja a Docker-tárolók.
 
-Létrehozhat egyéni lemezképeket is a Docker-t futtató virtuális gépekről Windows rendszeren.
+A Windows docker-t futtató virtuális gépekről is létrehozhat egyéni lemezképeket.
 
 ### <a name="linux-support"></a>Linux-támogatás
 
-A Linux-tárolók számítási feladataihoz a Batch jelenleg a Microsoft Azure Batch által az Azure piactéren közzétett alábbi Linux-rendszerképeket támogatja anélkül, hogy egyéni lemezképre lenne szükség.
+Linux-tároló-számítási feladatok esetén a Batch jelenleg a Microsoft Azure Batch által az Azure Piactéren közzétett linuxos lemezképeket támogatja anélkül, hogy egyéni lemezképre lenne szükség.
 
-#### <a name="vm-sizes-without-rdma"></a>VM-méretek RDMA nélkül
+#### <a name="vm-sizes-without-rdma"></a>Virtuális gép méreterdma nélkül
 
-- Közzétevő: `microsoft-azure-batch`
-  - Ajánlat: `centos-container`
-  - Ajánlat: `ubuntu-server-container`
+- Publisher:`microsoft-azure-batch`
+  - Ajánlat:`centos-container`
+  - Ajánlat:`ubuntu-server-container`
 
-#### <a name="vm-sizes-with-rdma"></a>VM-méretek a RDMA
+#### <a name="vm-sizes-with-rdma"></a>Virtuális gép méreterdma-val
 
-- Közzétevő: `microsoft-azure-batch`
-  - Ajánlat: `centos-container-rdma`
-  - Ajánlat: `ubuntu-server-container-rdma`
+- Publisher:`microsoft-azure-batch`
+  - Ajánlat:`centos-container-rdma`
+  - Ajánlat:`ubuntu-server-container-rdma`
 
-Ezek a lemezképek csak Azure Batch készletekben használhatók, és a Docker-tárolók futtatására szolgálnak. Ezek a szolgáltatások:
+Ezek a rendszerképek csak az Azure Batch-készletekben való használatra támogatottak, és a Docker-tároló konsisza végrehajtására vannak igazítva. Ezek jellemzője:
 
-* Egy előre telepített Docker-kompatibilis [Moby](https://github.com/moby/moby) Container Runtime
+* Előre telepített Docker-kompatibilis [Moby-tároló](https://github.com/moby/moby) futásidejű
 
-* Előre telepített NVIDIA GPU-illesztőprogramok és NVIDIA Container Runtime, az Azure N sorozatú virtuális gépek üzembe helyezésének egyszerűsítése
+* Előre telepített NVIDIA GPU-illesztőprogramok és NVIDIA tárolófutási idő az Azure N sorozatú virtuális gépeken való üzembe helyezés egyszerűsítése érdekében
 
-* Előre telepített/előre konfigurált lemezkép, amely támogatja a InfiniBand RDMA virtuálisgép-méreteket a rendszerképekhez a `-rdma`utótagjának megfelelően. Ezek a lemezképek jelenleg nem támogatják az SR-IOV IB/RDMA VM-méreteket.
+* Előre telepített/előre konfigurált lemezkép, amely támogatja az Infiniband RDMA virtuális `-rdma`gép méreteket a . Jelenleg ezek a képek nem támogatják az SR-IOV IB/RDMA virtuális gép méretét.
 
-Létrehozhat egyéni lemezképeket is a Docker-t futtató virtuális gépekről a Batch szolgáltatással kompatibilis Linux-disztribúciók egyikén. Ha úgy dönt, hogy saját linuxos rendszerképet ad meg, tekintse meg a [felügyelt egyéni rendszerkép használata a virtuális gépek készletének létrehozásához](batch-custom-images.md)című témakör utasításait.
+Egyéni rendszerképeket is létrehozhat a Dockert futtató virtuális gépekről a Batch-el kompatibilis Linux-disztribúciók egyikén. Ha úgy dönt, hogy saját egyéni Linux-lemezképet biztosít, olvassa el a [Felügyelt egyéni lemezkép használata a virtuális gépek készletének létrehozásához](batch-custom-images.md)című témakör utasításait.
 
-Egyéni rendszerképek Docker-támogatásához telepítse a [Docker Community Edition (CE)](https://www.docker.com/community-edition) vagy a [Docker Enterprise Edition (EE)](https://www.docker.com/enterprise-edition)szolgáltatást.
+Egyéni lemezkép Docker-támogatásához telepítse a [Docker Community Edition (CE)](https://www.docker.com/community-edition) vagy [a Docker Enterprise Edition (EE) rendszert.](https://www.docker.com/enterprise-edition)
 
-Az egyéni Linux-lemezképek használatának további szempontjai:
+Az egyéni Linux-lemezképek használatával kapcsolatos további szempontok:
 
-* Ha egyéni rendszerkép használata esetén szeretné kihasználni az Azure N-sorozatok GPU-teljesítményét, telepítse az NVIDIA-illesztőprogramokat. Emellett telepítenie kell az NVIDIA GPU-ra, az [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker)-ra.
+* Az Azure N sorozatú méretek GPU-teljesítményének egyéni lemezképek használata esetén történő kihasználása érdekében telepítse elő az NVIDIA illesztőprogramokat. Emellett telepítenie kell a Docker Engine Segédprogramot az NVIDIA GPU-khoz, [az NVIDIA Docker-t.](https://github.com/NVIDIA/nvidia-docker)
 
-* Az Azure RDMA-hálózat eléréséhez használjon RDMA-kompatibilis VM-méretet. A szükséges RDMA-illesztőprogramok a Batch által támogatott CentOS HPC-és Ubuntu-lemezképekben vannak telepítve. Az MPI-munkaterhelések futtatásához további konfigurálásra lehet szükség. Lásd: [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata a Batch-készletben](batch-pool-compute-intensive-sizes.md).
-
-
-## <a name="container-configuration-for-batch-pool"></a>A Batch-készlet tároló-konfigurációja
-
-Ha engedélyezni szeretné a Batch-készlet számára a tároló-munkaterhelések futtatását, meg kell adnia a [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) beállításait a készlet [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) objektumában. (Ez a cikk a Batch .NET API-referenciára mutató hivatkozásokat tartalmaz. A megfelelő beállítások a [Batch Python](/python/api/overview/azure/batch) API-ban találhatók.)
-
-A következő példákban látható módon létrehozhat egy tárolóval rendelkező készletet, amely előre beolvasott tároló-rendszerképekkel vagy anélkül is létrehozható. A lekérési (vagy a prefektusi) folyamat lehetővé teszi a tároló lemezképek előzetes betöltését a Docker hub-ból vagy egy másik, az interneten található tároló-beállításjegyzékből. A legjobb teljesítmény érdekében a Batch-fiókkal megegyező régióban használjon [Azure Container registryt](../container-registry/container-registry-intro.md) .
-
-A tároló lemezképek előzetes beolvasásának előnye, hogy amikor a feladatok először futnak, nem kell megvárniuk a tároló lemezképének letöltését. A tároló konfigurációja lekéri a tároló lemezképeit a virtuális gépekre a készlet létrehozásakor. A készleten futó feladatok ezután hivatkozhatnak a tároló lemezképek és a tároló-futtatási beállítások listájára.
+* Az Azure RDMA-hálózat eléréséhez használjon RDMA-kompatibilis virtuális gép mérete. A szükséges RDMA-illesztőprogramok a Batch által támogatott CentOS HPC és Ubuntu lemezképeken vannak telepítve. Az MPI-munkaterhelések futtatásához további konfigurációra lehet szükség. Lásd: [RDMA-képes vagy GPU-képes példányok használata a batch készletben](batch-pool-compute-intensive-sizes.md).
 
 
-### <a name="pool-without-prefetched-container-images"></a>Készlet rendszerképének előhívása nélkül
+## <a name="container-configuration-for-batch-pool"></a>Tárolókonfiguráció a kötegkészlethez
 
-Ha egy tárolót használó készletet szeretne előre beolvasni a tároló lemezképei nélkül, definiálja `ContainerConfiguration` és `VirtualMachineConfiguration` objektumokat a következő Python-példában látható módon. Ez a példa az Ubuntu Servert használja Azure Batch Container pools rendszerképhez a piactéren.
+Ahhoz, hogy egy batch készlet futtathassa a tároló-munkaterheléseket, meg kell adnia a [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) beállításait a készlet [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) objektumában. (Ez a cikk a Batch .NET API hivatkozására mutató hivatkozásokat tartalmaz. A megfelelő beállítások a [Batch Python](/python/api/overview/azure/batch) API-ban találhatók.)
+
+Létrehozhat egy tároló-kompatibilis készletet előre bekért tárolólemezképekkel vagy anélkül, ahogy az alábbi példákban látható. A lekéréses (vagy előzetes betöltési) folyamat lehetővé teszi a tárolórendszerképek előzetes betöltését a Docker Hubról vagy egy másik tároló beállításjegyzékéből az interneten. A legjobb teljesítmény érdekében használjon [egy Azure-tároló beállításjegyzékugyanabban](../container-registry/container-registry-intro.md) a régióban, mint a Batch-fiók.
+
+A tárolórendszerképek előzetes betöltésének előnye, hogy amikor a feladatok először futnak, nem kell megvárniuk a tárolórendszerkép letöltését. A tárolókonfiguráció lekéri a tárolórendszerképeket a virtuális gépekre a készlet létrehozásakor. A készleten futó feladatok ezután hivatkozhatnak a tárolórendszerképek és a tárolófuttatási beállítások listájára.
+
+
+### <a name="pool-without-prefetched-container-images"></a>Készlet előre bekért tárolólemezképek nélkül
+
+Egy tároló-kompatibilis készlet konfigurálása előre letöltött `ContainerConfiguration` `VirtualMachineConfiguration` tárolólemezképek nélkül, határozza meg és objektumok, ahogy az a következő Python-példában látható. Ez a példa az Ubuntu Server for Azure Batch tárolókészletek a Marketplace-ről.
 
 
 ```python
@@ -130,11 +130,11 @@ new_pool = batch.models.PoolAddParameter(
 ```
 
 
-### <a name="prefetch-images-for-container-configuration"></a>A tárolók konfigurációjának rendszerképei
+### <a name="prefetch-images-for-container-configuration"></a>Előhívási lemezképek a tároló konfigurációjához
 
-A tároló lemezképének a készleten való kivonásához adja hozzá a tároló rendszerképeinek (`container_image_names`, Pythonban) listáját a `ContainerConfiguration`hoz.
+A tárolórendszerképek előhívásához adja hozzá a`container_image_names`tárolórendszerképek listáját `ContainerConfiguration`( Pythonban) a hoz.
 
-A következő alapszintű Python-példa bemutatja, hogyan lehet megtekinteni a szabványos Ubuntu Container-rendszerképet a [Docker hub](https://hub.docker.com)-ból.
+A következő alapvető Python-példa bemutatja, hogyan lehet előre beolvasni egy szabványos Ubuntu-tárolórendszerképet a [Docker Hubból.](https://hub.docker.com)
 
 ```python
 image_ref_to_use = batch.models.ImageReference(
@@ -162,7 +162,7 @@ new_pool = batch.models.PoolAddParameter(
 ```
 
 
-Az alábbi C# példa feltételezi, hogy egy TensorFlow-rendszerképet szeretne kiállítani a [Docker hub](https://hub.docker.com)-ból. Ez a példa egy indítási feladatot tartalmaz, amely a virtuális gépen fut a készlet csomópontjain. Előfordulhat, hogy egy indítási feladatot futtat a gazdagépen, például egy olyan fájlkiszolgáló csatlakoztatásához, amely elérhető a tárolóból.
+A következő C# példa feltételezi, hogy elő szeretne tölteni egy TensorFlow-rendszerképet a [Docker Hubból.](https://hub.docker.com) Ebben a példában egy indítási feladat, amely a készlet csomópontok on a virtuális gép gazdagép. Futtathat egy indítási feladatot a gazdagépen, például egy fájlkiszolgáló csatlakoztatásához, amely elérhető a tárolókból.
 
 ```csharp
 
@@ -195,9 +195,9 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 ```
 
 
-### <a name="prefetch-images-from-a-private-container-registry"></a>Rendszerképek a privát tároló beállításjegyzékből
+### <a name="prefetch-images-from-a-private-container-registry"></a>Lemezképek előzetes betöltése egy privát tároló rendszerleíró adatbázisából
 
-A tároló rendszerképeit is megtekintheti a privát tárolók beállításjegyzék-kiszolgálójának hitelesítésével. A következő példában a `ContainerConfiguration` és `VirtualMachineConfiguration` objektumok privát TensorFlow-rendszerképet mutatnak be egy privát Azure Container registryből. A Képhivatkozás ugyanaz, mint az előző példában.
+A tárolórendszerképeket úgy is előre behívhatja, hogy hitelesíti őket egy privát tároló beállításjegyzék-kiszolgálójára. A következő példában `ContainerConfiguration` `VirtualMachineConfiguration` a és az objektumok előzetesen egy privát TensorFlow-rendszerképet egy privát Azure-tároló beállításjegyzékből. A képhivatkozás megegyezik az előző példában láthatóval.
 
 ```csharp
 // Specify a container registry
@@ -227,53 +227,53 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 ...
 ```
 
-## <a name="container-settings-for-the-task"></a>A feladat tárolójának beállításai
+## <a name="container-settings-for-the-task"></a>A feladat tárolóbeállításai
 
-Ha tároló-feladatot szeretne futtatni egy tárolót használó készleten, adja meg a tárolóra vonatkozó beállításokat. A beállítások közé tartozik a használni kívánt rendszerkép, a beállításjegyzék és a tároló futtatási beállításai.
+Ha tárolófeladatot szeretne futtatni egy tárolókompatibilis készleten, adja meg a tárolóspecifikus beállításokat. A beállítások közé tartoznak a használandó lemezkép, a beállításjegyzék és a tárolófuttatási beállítások.
 
-* A feladathoz tartozó osztályok `ContainerSettings` tulajdonságával konfigurálhatja a tárolóra vonatkozó beállításokat. Ezeket a beállításokat a [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) osztály határozza meg. Vegye figyelembe, hogy az `--rm`-tároló lehetőséghez nincs szükség további `--runtime` lehetőségre, mert a Batch által gondoskodik.
+* A `ContainerSettings` feladatosztályok tulajdonságával konfigurálhatja a tárolóspecifikus beállításokat. Ezeket a beállításokat a [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) osztály határozza meg. Vegye figyelembe, hogy a `--rm` tároló `--runtime` beállítás nem igényel további lehetőséget, mivel a Batch gondoskodik róla.
 
-* Ha tároló lemezképeken futtat feladatokat, a [Cloud Task](/dotnet/api/microsoft.azure.batch.cloudtask) és a Feladatkezelő [feladat](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) tároló-beállításokat igényel. Azonban a [Start tevékenység](/dotnet/api/microsoft.azure.batch.starttask), a [feladat-előkészítési feladat](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)és a [feladat kiadása feladat](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) nem igényli a tárolók beállításait (azaz a tároló környezetben vagy közvetlenül a csomóponton futhatnak).
+* Ha a feladatokat tárolólemezképeken futtatja, a [felhőbeli feladat](/dotnet/api/microsoft.azure.batch.cloudtask) és a [feladatkezelő feladat](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) tárolóbeállításokat igényel. A [kezdési feladat](/dotnet/api/microsoft.azure.batch.starttask), a [feladat-előkészítési feladat](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)és a [feladatkiadási feladat](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) azonban nem igényel tárolóbeállításokat (azaz futtathatók egy tárolókörnyezetben vagy közvetlenül a csomóponton).
 
-### <a name="container-task-command-line"></a>Tároló feladat parancssora
+### <a name="container-task-command-line"></a>Konténerfeladat parancssora
 
-Egy tároló feladatának futtatásakor a Batch automatikusan a [Docker Create](https://docs.docker.com/engine/reference/commandline/create/) paranccsal hoz létre egy tárolót a feladatban megadott rendszerkép használatával. A Batch ezután a tárolóban ellenőrzi a feladat végrehajtását.
+Tárolófeladat futtatásakor a Batch automatikusan a [docker create](https://docs.docker.com/engine/reference/commandline/create/) parancsot használja egy tároló létrehozásához a feladatban megadott lemezkép használatával. A Batch ezután szabályozza a feladat végrehajtását a tárolóban.
 
-Akárcsak a nem tároló batch-feladatokhoz, beállíthatja a parancssort egy tároló feladathoz. Mivel a Batch automatikusan létrehozza a tárolót, a parancssor csak azt a parancsot vagy parancsokat határozza meg, amelyek a tárolóban fognak futni.
+A nem tárolóköteg-feladatokhoz is parancssort kell beállítani egy tárolófeladathoz. Mivel a Batch automatikusan létrehozza a tárolót, a parancssor csak a tárolóban futó parancsot vagy parancsokat adja meg.
 
-Ha egy batch-feladat tároló-képe [BelépésiPont](https://docs.docker.com/engine/reference/builder/#exec-form-entrypoint-example) -parancsfájllal van konfigurálva, beállíthatja, hogy a parancssor az alapértelmezett BelépésiPont használja, vagy felülbírálja:
+Ha egy Batch feladat tárolólemezképe [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#exec-form-entrypoint-example) parancsfájllal van konfigurálva, beállíthatja, hogy a parancssor az alapértelmezett ENTRYPOINT-ot használja, vagy felülbírálja azt:
 
-* A tároló rendszerképének alapértelmezett BELÉPÉSIPONT használatához állítsa a feladat parancssorát az üres sztringre `""`.
+* A tárolólemezkép alapértelmezett ENTRYPOINT parancsának használatához állítsa a `""`feladat parancssorát az üres karakterláncra .
 
-* Az alapértelmezett BELÉPÉSIPONT felülbírálásához, vagy ha a rendszerkép nem rendelkezik BELÉPÉSIPONT, állítson be egy megfelelő parancssort a tárolóhoz, például `/app/myapp` vagy `/bin/sh -c python myscript.py`.
+* Az alapértelmezett ENTRYPOINT felülbírálásához, vagy ha a képen nincs ENTRYPOINT, állítson be egy, `/app/myapp` `/bin/sh -c python myscript.py`a tárolónak megfelelő parancssort, például vagy .
 
-A választható [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) további argumentumok, amelyeket a Batch a tároló létrehozásához és futtatásához használt `docker create` parancshoz biztosít. Ha például a tároló munkakönyvtárát szeretné beállítani, állítsa be a `--workdir <directory>` beállítást. További lehetőségekért tekintse meg a [Docker-létrehozási](https://docs.docker.com/engine/reference/commandline/create/) referenciát.
+A választható [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) további argumentumok, amelyeket a Batch a `docker create` tároló létrehozásához és futtatásához használ. Ha például a tároló munkakönyvtárát szeretné `--workdir <directory>` beállítani, állítsa be a beállítást. Tekintse meg a [docker hozzon létre](https://docs.docker.com/engine/reference/commandline/create/) hivatkozást a további lehetőségeket.
 
-### <a name="container-task-working-directory"></a>Tároló-feladat munkakönyvtára
+### <a name="container-task-working-directory"></a>Tárolófeladat munkakönyvtára
 
-A Batch-tároló feladat a tároló egyik munkakönyvtárában fut, amely nagyon hasonlít a címtár batch-készletéhez a normál (nem tárolós) feladathoz. Vegye figyelembe, hogy ez a munkakönyvtár különbözik a [WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) , ha a rendszerképben van konfigurálva, vagy az alapértelmezett tároló munkakönyvtára (`C:\` egy Windows-tárolón, vagy egy Linux-tárolón `/`).
+A Batch tárolófeladat végrehajtása a tároló ban lévő munkakönyvtárban történik, amely nagyon hasonlít a batch-alapú könyvtárhoz egy normál (nem tároló) feladathoz. Vegye figyelembe, hogy ez a munkakönyvtár eltér a [WORKDIR-től,](https://docs.docker.com/engine/reference/builder/#workdir) `C:\` ha a lemezképben van konfigurálva, vagy az alapértelmezett tároló munkakönyvtárától (Windows-tárolón vagy `/` Linux-tárolón).
 
-Batch-tároló feladathoz:
+Kötegelt tárolófeladat esetén:
 
-* Az összes könyvtár rekurzív módon a gazdagép csomópontján lévő `AZ_BATCH_NODE_ROOT_DIR` alatt (Azure Batch könyvtárak gyökerében) van leképezve a tárolóba.
-* Az összes feladat környezeti változó le van képezve a tárolóba
-* A csomóponton `AZ_BATCH_TASK_WORKING_DIR` feladat munkakönyvtára ugyanúgy van beállítva, mint a normál feladatokhoz, és a tárolóba van rendelve.
+* Az összes könyvtár rekurzív `AZ_BATCH_NODE_ROOT_DIR` alatt a gazdagép csomópont (a gyökere az Azure Batch-könyvtárak) vannak leképezve a tárolóba
+* Az összes feladatkörnyezeti változó le van képezve a tárolóba
+* A csomóponton `AZ_BATCH_TASK_WORKING_DIR` lévő feladatmunkakönyvtár ugyanaz, mint egy normál feladathoz, és a tárolóba van leképezve.
 
-Ezek a leképezések lehetővé teszik, hogy a tárolókkal kapcsolatos feladatok ugyanúgy működjenek, mint a nem tároló jellegű feladatok. Például alkalmazásokat telepíthet az alkalmazáscsomag használatával, hozzáférhet az Azure Storage-ból származó erőforrás-fájlokhoz, a feladat környezeti beállításaival, a tároló leállása után pedig megőrzi a feladat kimeneti fájljait.
+Ezek a leképezések lehetővé teszik, hogy a tárolófeladatok at ugyanúgy dolgozzon, mint a nem tárolófeladatokat. Például alkalmazásokat telepíthet alkalmazáscsomagok használatával, erőforrásfájlokat érhet el az Azure Storage-ból, feladatkörnyezet-beállításokat használhat, és a tároló leállítása után megőrizheti a feladatkimeneti fájlokat.
 
-### <a name="troubleshoot-container-tasks"></a>Tároló-feladatok hibakeresése
+### <a name="troubleshoot-container-tasks"></a>Konténerfeladatok – problémamegoldás
 
-Ha a tároló feladata nem a várt módon fut, előfordulhat, hogy le kell kérnie a WORKDIR vagy a BELÉPÉSIPONT konfigurációjának adatait. A konfiguráció megtekintéséhez futtassa a [Docker-rendszerkép vizsgálata](https://docs.docker.com/engine/reference/commandline/image_inspect/) parancsot.
+Ha a tárolófeladat nem a várt módon fut, előfordulhat, hogy a tárolórendszerkép WORKDIR- vagy ENTRYPOINT-konfigurációjával kapcsolatos információkat kell beszereznie. A konfiguráció megtekintéséhez futtassa a [docker-rendszerkép-vizsgálat](https://docs.docker.com/engine/reference/commandline/image_inspect/) parancsot.
 
-Ha szükséges, módosítsa a tároló feladat beállításait a rendszerkép alapján:
+Szükség esetén módosítsa a tárolófeladat beállításait a lemezkép alapján:
 
-* Abszolút elérési utat ad meg a feladat parancssorában. Ha a feladat parancssorában a rendszerkép alapértelmezett BELÉPÉSIPONT van használatban, győződjön meg arról, hogy az abszolút elérési út be van állítva.
+* Abszolút elérési út megadása a feladat parancssorában. Ha a kép alapértelmezett ENTRYPOINT-ját használja a feladat parancssorához, győződjön meg arról, hogy abszolút elérési út van beállítva.
 
-* A feladat tároló-futtatási beállításaiban módosítsa a munkakönyvtárat úgy, hogy az megfeleljen a rendszerkép WORKDIR. Adja meg például a következőt: `--workdir /app`.
+* A feladat tárolófuttatási beállításaiban módosítsa a munkakönyvtárat úgy, hogy az megfeleljen a lemezképWORKDIR-jének. Például állítsa `--workdir /app`be a .
 
-## <a name="container-task-examples"></a>Példák a tárolók feladatára
+## <a name="container-task-examples"></a>Példák a tárolófeladatra
 
-A következő Python-kódrészlet egy alapszintű parancssort mutat be, amely egy, a Docker hub-ból húzott fiktív rendszerképből létrehozott tárolóban fut. Itt a `--rm` tároló lehetőség eltávolítja a tárolót a feladat befejezése után, és a `--workdir` beállítás egy munkakönyvtárat állít be. A parancssor felülbírálja a tároló BELÉPÉSIPONT egy egyszerű rendszerhéj-paranccsal, amely egy kisméretű fájlt ír a gazdagépen található feladat-munkakönyvtárba.
+A következő Python-kódrészlet egy alapparancs-sort jelenít meg egy, a Docker Hubból leállított fiktív rendszerképből létrehozott tárolóban futó tárolóban. Itt a `--rm` tároló beállítás eltávolítja a tárolót a `--workdir` feladat befejezése után, és a beállítás beállítja a munkakönyvtárat. A parancssor felülbírálja a tároló ENTRYPOINT-ot egy egyszerű parancsértelmezővel, amely egy kis fájlt ír az állomás feladatmunkakönyvtárába.
 
 ```python
 task_id = 'sampletask'
@@ -287,7 +287,7 @@ task = batch.models.TaskAddParameter(
 )
 ```
 
-A következő C# példa egy felhőalapú feladat alapszintű tároló-beállításait mutatja be:
+A következő C# példa egy felhőalapú feladat alapvető tárolóbeállításait mutatja be:
 
 ```csharp
 // Simple container task command
@@ -306,12 +306,12 @@ CloudTask containerTask = new CloudTask (
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Lásd még: a [Batch hajógyár](https://github.com/Azure/batch-shipyard) eszközkészlete a tárolók számítási feladatainak egyszerű üzembe helyezését a [hajógyári receptek](https://github.com/Azure/batch-shipyard/tree/master/recipes)alapján Azure Batch.
+* Tekintse meg a [Batch Hajógyár](https://github.com/Azure/batch-shipyard) eszközkészletet a tárolószámítási feladatok egyszerű üzembe helyezéséhez az Azure Batch-en a [Hajógyár receptjein](https://github.com/Azure/batch-shipyard/tree/master/recipes)keresztül.
 
-* A Docker CE Linux rendszeren való telepítésével és használatával kapcsolatos további információkért tekintse meg a [Docker](https://docs.docker.com/engine/installation/) dokumentációját.
+* A Docker CE Linuxon történő telepítéséről és használatáról a [Docker](https://docs.docker.com/engine/installation/) dokumentációjában olvashat bővebben.
 
-* További információ az egyéni lemezképek használatáról: [felügyelt egyéni lemezkép használata virtuális gépek készletének létrehozásához](batch-custom-images.md).
+* Az egyéni lemezképek használatáról a [Felügyelt egyéni lemezkép használata virtuális gépkészlet létrehozásához](batch-custom-images.md)című témakörben talál további információt.
 
-* További információ a [Moby-projektről](https://mobyproject.org/), a tároló-alapú rendszerek létrehozási keretrendszeréről.
+* Tudjon meg többet a [Moby projektről,](https://mobyproject.org/)amely a tárolóalapú rendszerek létrehozásának keretrendszere.

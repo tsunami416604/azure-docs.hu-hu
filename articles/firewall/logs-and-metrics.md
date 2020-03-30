@@ -1,5 +1,5 @@
 ---
-title: Azure Firewall naplók és mérőszámok áttekintése
+title: Az Azure Tűzfal naplóinak és mutatóinak áttekintése
 description: Az Azure Firewall tűzfalnaplókkal monitorozható. Az Azure Firewall-erőforrásokon végzett műveletek tevékenységnaplókkal is naplózhatók.
 services: firewall
 author: vhorne
@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 01/22/2020
 ms.author: victorh
 ms.openlocfilehash: 89c6700d5df3bcef1332121c3cf7d8f720fe054c
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76315031"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Az Azure Firewall naplói és metrikái
 
 Az Azure Firewall tűzfalnaplókkal monitorozható. Az Azure Firewall-erőforrásokon végzett műveletek tevékenységnaplókkal is naplózhatók.
 
-Ezen naplók egy része a portálról érhető el. A naplók elküldhetők [Azure monitor naplókba](../azure-monitor/insights/azure-networking-analytics.md), tárhelyre és Event Hubsre, és Azure monitor naplókban vagy különböző eszközök, például az Excel és a Power bi használatával is elemezhetők.
+Ezen naplók egy része a portálról érhető el. A naplók elküldhetők az [Azure Monitor naplóiba](../azure-monitor/insights/azure-networking-analytics.md), a Storage-ba és az Event Hubs-ba, és elemezhetők az Azure Monitor naplóiban vagy különböző eszközökkel, például az Excelés a Power BI segítségével.
 
-A metrikák egyszerűek, és a közel valós idejű forgatókönyvek révén hasznosak lehetnek a riasztások és a gyors problémák észlelése érdekében.
+A metrikák könnyűek, és közel valós idejű forgatókönyveket támogatnak, így hasznosak a riasztáshoz és a gyors problémaészleléshez.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
@@ -28,7 +28,7 @@ A metrikák egyszerűek, és a közel valós idejű forgatókönyvek révén has
 
 * **Alkalmazásszabályok naplója**
 
-   Az alkalmazási szabály naplóját a rendszer a Storage-fiókba, az esemény-hubokba továbbítja, és/vagy csak akkor továbbítja Azure Monitor naplókba, ha minden egyes Azure Firewall engedélyezte. Minden új kapcsolat, amely megegyezik egy konfigurált alkalmazásszabállyal, az elfogadott/letiltott kapcsolatra vonatkozó naplóbejegyzést eredményez. Az adatokat a rendszer JSON formátumban naplózza, az alábbi példához látható módon:
+   Az alkalmazásszabály-napló egy tárfiókba kerül, az Eseményközpontokba streamelt és/vagy az Azure Monitor naplóiba csak akkor kerül elküldésre, ha engedélyezte azt az egyes Azure-tűzfalakhoz. Minden új kapcsolat, amely megegyezik egy konfigurált alkalmazásszabállyal, az elfogadott/letiltott kapcsolatra vonatkozó naplóbejegyzést eredményez. Az adatokat a rendszer JSON formátumban naplózza, az alábbi példához látható módon:
 
    ```
    Category: application rule logs.
@@ -51,7 +51,7 @@ A metrikák egyszerűek, és a közel valós idejű forgatókönyvek révén has
 
 * **Hálózati szabályok naplója**
 
-   A hálózati szabály naplóját a rendszer a Storage-fiókba, az Event hubokba továbbítja, és/vagy csak akkor továbbítja Azure Monitor naplókba, ha minden egyes Azure Firewall engedélyezte. Minden új kapcsolat, amely megegyezik egy konfigurált hálózati szabállyal, az elfogadott/letiltott kapcsolatra vonatkozó naplót eredményez. Az adatokat a rendszer JSON formátumban naplózza, az alábbi példához látható módon:
+   A hálózati szabály naplója egy tárfiókba kerül, az Eseményközpontokba streamelt és/vagy az Azure Monitor naplóiba csak akkor kerül elküldésre, ha engedélyezte azt az egyes Azure-tűzfalakhoz. Minden új kapcsolat, amely megegyezik egy konfigurált hálózati szabállyal, az elfogadott/letiltott kapcsolatra vonatkozó naplót eredményez. Az adatokat a rendszer JSON formátumban naplózza, az alábbi példához látható módon:
 
    ```
    Category: network rule logs.
@@ -77,55 +77,55 @@ A naplók tárolásához három lehetőség közül választhat:
 
 * **Storage-fiók**: A Storage-fiókok akkor a legmegfelelőbbek a naplók tárolására, ha a naplókat hosszabb ideig tárolják, és szükség esetén áttekintik őket.
 * **Event Hubs-eseményközpont**: Az eseményközpontok ideális megoldások egyéb biztonsági információkkal és eseménykezelési (SEIM) eszközökkel való integrációhoz, amelyekkel az erőforrásokra vonatkozó riasztásokat kaphat.
-* **Azure monitor naplók**: a rendszer a Azure monitor naplókat az alkalmazás általános valós idejű figyelésére, vagy trendek keresésére használja.
+* **Azure Monitor naplók:** Az Azure Monitor naplók a legjobb általános valós idejű figyelése az alkalmazás, vagy a trendek.
 
 ## <a name="activity-logs"></a>Tevékenységnaplók
 
    A tevékenységnaplók bejegyzéseit alapértelmezés szerint gyűjti a rendszer, ezeket az Azure Portalon tekintheti meg.
 
-   Az Azure- [tevékenység naplóinak](../azure-resource-manager/management/view-activity-logs.md) (korábbi nevén operatív naplók és naplók) használatával megtekintheti az Azure-előfizetéséhez benyújtott összes műveletet.
+   [Az Azure-tevékenységnaplók](../azure-resource-manager/management/view-activity-logs.md) (korábbi nevén működési naplók és naplónaplók) segítségével megtekintheti az Azure-előfizetésbe küldött összes műveletet.
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 
-A Azure Monitor mérőszámai olyan numerikus értékek, amelyek egy adott rendszer bizonyos aspektusait írják le egy adott időpontban. A metrikák gyűjtése percenként történik, és a rendszer a riasztásokhoz is hasznos, mivel azok gyakran mintavételezésre kerülnek. A riasztások gyorsan és viszonylag egyszerű logikával is elindíthatók.
+Metrikák az Azure Monitor numerikus értékek, amelyek leírják a rendszer egy adott időpontban néhány szempontból. Metrikák percenként gyűjti, és hasznos riasztási, mert gyakran mintavételezhetők. A riasztás tviszonylag egyszerű logikával gyorsan ellehet tüzelni.
 
-A Azure Firewall a következő metrikák érhetők el:
+Az Azure Firewall számára a következő metrikák érhetők el:
 
-- **Alkalmazási szabályok – találatok** száma – az alkalmazás szabályának megtalálása.
-
-    Egység: darabszám
-
-- **Hálózati szabályok találatok** száma – az a szám, amikor egy hálózati szabály találatot észlelt.
+- **Alkalmazásszabályok találati száma** – Az alkalmazásszabály találatának száma.
 
     Egység: darabszám
 
-- **Feldolgozott adatforgalom** – a tűzfalon áthaladó adatmennyiség.
+- **Hálózati szabályok találati száma** – A hálózati szabályok találatának száma.
 
-    Egység: bájtok
+    Egység: darabszám
 
-- **Tűzfal** állapota – a tűzfal állapotát jelzi a SNAT-port rendelkezésre állása alapján.
+- **Feldolgozott adatok** – a tűzfalon áthaladó adatok mennyisége.
 
-    Egység: százalék
+    Egység: bájt
 
-   Ez a metrika két dimenzióval rendelkezik:
-  - Állapot: a lehetséges értékek állapota *kifogástalan*, *csökkentett teljesítményű*, *sérült*.
-  - Ok: a tűzfal megfelelő állapotának okát jelzi. 
-
-     Ha SNAT-portokat használ > 95%-ot, akkor a rendszer kimeríti őket, és az állapota 50%, állapot =**csökkentett teljesítményű** , ok =**SNAT-port**. A tűzfal megtartja a forgalom feldolgozását, és a meglévő kapcsolatokat nem érinti. Előfordulhat azonban, hogy az új kapcsolatokat nem lehet időnként létrehozni.
-
-     Ha SNAT-portokat használ < 95%-ot, akkor a tűzfal kifogástalannak minősül, és a rendszer 100%-ként jeleníti meg az állapotot.
-
-     Ha nem jelentettek SNAT-portok használatát, az állapot 0%-ként jelenik meg. 
-
-- **SNAT-port kihasználtsága** – a tűzfal által használt SNAT-portok százalékos aránya.
+- **Tűzfal állapota** – A tűzfal állapotát jelzi az SNAT-port rendelkezésre állása alapján.
 
     Egység: százalék
 
-   Ha több nyilvános IP-címet ad hozzá a tűzfalhoz, további SNAT portok érhetők el, ami csökkenti a SNAT-portok kihasználtságát. Emellett, ha a tűzfal a különböző okokból (például CPU vagy átviteli sebesség) is kibővíthető, további SNAT-portok is elérhetővé válnak. Így gyakorlatilag a SNAT-portok kihasználtságának adott százaléka lemerülhet anélkül, hogy nyilvános IP-címeket adna hozzá, csak azért, mert a szolgáltatás ki van bővítve. A tűzfalon elérhető portok növeléséhez a rendelkezésre álló nyilvános IP-címek számát közvetlenül is szabályozhatja. Azonban nem vezérelheti közvetlenül a tűzfal skálázását. A SNAT-portok jelenleg csak az első öt nyilvános IP-címhez lesznek hozzáadva.   
+   Ennek a mutatónak két dimenziója van:
+  - Állapot: A lehetséges értékek: *Kifogástalan,* *Degraded*, *UnHealthy*.
+  - Ok: A tűzfal megfelelő állapotának okát jelzi. 
+
+     Ha az SNAT-portokat 95%-> használja, akkor azok kimerültek, és az állapot 50% állapot =**Degradálva** és ok=**SNAT port**. A tűzfal folyamatosan dolgozza fel a forgalmat, és a meglévő kapcsolatokat ez nem érinti. Előfordulhat azonban, hogy az új kapcsolatok nem jönnek létre szakaszosan.
+
+     Ha az SNAT-portokat 95%-< használja, akkor a tűzfal kifogástalannak minősül, és az állapot 100%.
+
+     Ha a rendszer nem jelent SNAT-portok használatát, az állapot 0% lesz. 
+
+- **SNAT-port kihasználtsága** – A tűzfal által használt SNAT-portok százalékos aránya.
+
+    Egység: százalék
+
+   Ha több nyilvános IP-címet ad hozzá a tűzfalhoz, több SNAT-port érhető el, csökkentve ezzel az SNAT-portok kihasználtságát. Továbbá, ha a tűzfal különböző okok miatt (például CPU vagy átviteli kapacitás) horizontális felskáláz, további SNAT-portok is elérhetővé válnak. Így hatékonyan, egy adott százaléka SNAT portok kihasználtsága leállhat anélkül, hogy nyilvános IP-címek hozzáadása, csak azért, mert a szolgáltatás horizontálisan. Közvetlenül szabályozhatja a rendelkezésre álló nyilvános IP-címek számát a tűzfalon elérhető portok számának növeléséhez. De nem tudja közvetlenül ellenőrizni a tűzfal méretezését. Jelenleg az SNAT-portok csak az első öt nyilvános IP-címhez kerülnek hozzáadásra.   
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A Azure Firewall naplók és mérőszámok figyelésének megismeréséhez tekintse meg az [oktatóanyag: Azure Firewall naplók figyelése](tutorial-diagnostics.md)című témakört.
+- Az Azure Firewall-naplók és -metrikák figyelése az [Oktatóanyag: Az Azure tűzfal naplóinak figyelése.Learn](tutorial-diagnostics.md)how to monitor by Azure Firewall logs and metrics, see Tutorial: Monitor Azure Firewall logs.
 
-- Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse meg a [Azure monitor mérőszámait](../azure-monitor/platform/data-platform-metrics.md).
+- Ha többet szeretne megtudni az Azure Monitor metrikákról, olvassa [el a Metrikák az Azure Monitorban.](../azure-monitor/platform/data-platform-metrics.md)

@@ -1,7 +1,7 @@
 ---
-title: Egyéni házirendek kezelése a PowerShell-lel
+title: Egyéni házirendek kezelése a PowerShell használatával
 titleSuffix: Azure AD B2C
-description: Használja az Azure Active Directory (Azure AD) PowerShell-parancsmagot a Azure AD B2C egyéni szabályzatok programozott felügyeletéhez. Egyéni szabályzatok létrehozása, olvasása, frissítése és törlése a PowerShell-lel.
+description: Használja az Azure Active Directory (Azure AD) PowerShell-parancsmag az Azure AD B2C egyéni szabályzatok programozott felügyeletét. Hozzon létre, olvasson, frissítsen és töröljön egyéni szabályzatokat a PowerShell használatával.
 author: msmimart
 manager: celestedg
 ms.service: active-directory
@@ -11,39 +11,39 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ebf0cfffa410d8dfe2f0e0b42a0fee0c16106fde
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187406"
 ---
-# <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure AD B2C egyéni házirendek kezelése a Azure PowerShell
+# <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Az Azure AD B2C egyéni szabályzatainak kezelése az Azure PowerShell használatával
 
-A Azure PowerShell számos parancsmagot biztosít a parancssori és parancsfájl-alapú egyéni házirendek kezeléséhez a Azure AD B2C-bérlőben. Ismerje meg, hogyan használhatja az Azure AD PowerShell-modult a következőhöz:
+Az Azure PowerShell számos parancsmalapot biztosít a parancssori és parancsfájlalapú egyéni házirend-kezeléshez az Azure AD B2C-bérlőben. Ismerje meg, hogyan használhatja az Azure AD PowerShell-modult a következőkhöz:
 
-* Egyéni szabályzatok listázása egy Azure AD B2C-bérlőben
-* Szabályzat letöltése a bérlőről
-* Meglévő szabályzat frissítése a tartalom felülírásával
-* Új szabályzat feltöltése a Azure AD B2C-bérlőbe
-* Egyéni szabályzat törlése a bérlőből
+* Az egyéni szabályzatok listázása egy Azure AD B2C-bérlőben
+* Házirend letöltése bérlőből
+* Meglévő házirend frissítése a tartalom felülírásával
+* Új szabályzat feltöltése az Azure AD B2C-bérlőbe
+* Egyéni házirend törlése a bérlőből
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Azure ad B2C bérlő](tutorial-create-tenant.md)és a címtárbeli felhasználó hitelesítő adatai a [B2C IEF házirend-rendszergazdai](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) szerepkörrel
-* A bérlőre feltöltött [Egyéni szabályzatok](custom-policy-get-started.md)
-* [Azure AD PowerShell a Graph **Preview modulhoz**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+* [Az Azure AD B2C-bérlő](tutorial-create-tenant.md)és a [b2C IEF-házirend-rendszergazdaszerepkörrel](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) rendelkező felhasználó hitelesítő adatai
+* A bérlőbe feltöltött [egyéni házirendek](custom-policy-get-started.md)
+* [Azure AD PowerShell a Graph **előzetes moduljához**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
 
-## <a name="connect-powershell-session-to-b2c-tenant"></a>PowerShell-munkamenet összekötése a B2C-Bérlővel
+## <a name="connect-powershell-session-to-b2c-tenant"></a>PowerShell-munkamenet csatlakoztatása B2C-bérlőhöz
 
-Ha egyéni szabályzatokkal szeretne dolgozni a Azure AD B2C-bérlőben, először össze kell kapcsolni a PowerShell-munkamenetet a bérlőhöz a [AzureAD][Connect-AzureAD] parancs használatával.
+Az Azure AD B2C-bérlőegyéni szabályzataival való munkához először csatlakoztatnia kell a PowerShell-munkamenetet a bérlőhöz a [Connect-AzureAD][Connect-AzureAD] parancs használatával.
 
-Hajtsa végre a következő parancsot, és a `{b2c-tenant-name}` behelyettesítésével adja meg Azure AD B2C bérlője nevét. Jelentkezzen be egy olyan fiókkal, amely a [B2C IEF házirend-rendszergazdai](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) szerepkörhöz van rendelve a címtárban.
+Hajtsa végre a következő `{b2c-tenant-name}` parancsot, az Azure AD B2C-bérlő nevével helyettesítve. Jelentkezzen be egy olyan fiókkal, amely a [B2C IEF házirend-rendszergazdaszerepkörrel](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) van elrendelve a címtárban.
 
 ```PowerShell
 Connect-AzureAD -Tenant "{b2c-tenant-name}.onmicrosoft.com"
 ```
 
-Példa a sikeres bejelentkezést bemutató parancs kimenetére:
+Példa sikeres bejelentkezést megjelenítő parancskimenetre:
 
 ```Console
 PS C:\> Connect-AzureAD -Tenant "contosob2c.onmicrosoft.com"
@@ -53,15 +53,15 @@ Account               Environment TenantId                             TenantDom
 azureuser@contoso.com AzureCloud  00000000-0000-0000-0000-000000000000 contosob2c.onmicrosoft.com   User
 ```
 
-## <a name="list-all-custom-policies-in-the-tenant"></a>A bérlő összes egyéni szabályzatának listázása
+## <a name="list-all-custom-policies-in-the-tenant"></a>Az összes egyéni házirend listázása a bérlőben
 
-Az egyéni házirendek felfedése lehetővé teszi, hogy egy Azure AD B2C rendszergazda áttekintse, kezelje és adja hozzá az üzleti logikát a műveleteik végrehajtásához. A [Get-AzureADMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy] parancs használatával visszaállíthatja egy Azure ad B2C-bérlőben lévő egyéni házirendek azonosítóinak listáját.
+Az egyéni szabályzatok felfedezése lehetővé teszi, hogy az Azure AD B2C-rendszergazda áttekintse, kezelje és adja hozzá az üzleti logikát a műveleteihez. A [Get-AzureADMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy] paranccsal adja vissza az Egyéni szabályzatok azonosítóinak listáját egy Azure AD B2C-bérlőben.
 
 ```PowerShell
 Get-AzureADMSTrustFrameworkPolicy
 ```
 
-Példa a parancs kimenetére:
+Példa parancskimenetére:
 
 ```Console
 PS C:\> Get-AzureADMSTrustFrameworkPolicy
@@ -75,15 +75,15 @@ B2C_1A_ProfileEdit
 B2C_1A_PasswordReset
 ```
 
-## <a name="download-a-policy"></a>Szabályzat letöltése
+## <a name="download-a-policy"></a>Házirend letöltése
 
-A szabályzat-azonosítók listájának áttekintése után megcélozhat egy adott szabályzatot a [Get-AzureADMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy] használatával a tartalom letöltéséhez.
+A házirend-azonosítók listájának áttekintése után a [Get-AzureADMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy] használatával megcélozhat egy adott szabályzatot a tartalom letöltéséhez.
 
 ```PowerShell
 Get-AzureADMSTrustFrameworkPolicy [-Id <policyId>]
 ```
 
-Ebben a példában a *B2C_1A_SIGNUP_SIGNIN* azonosítójú házirend le van töltve:
+Ebben a példában a *B2C_1A_signup_signin* azonosítóval rendelkező házirend letöltődik:
 
 ```Console
 PS C:\> Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
@@ -112,73 +112,73 @@ PS C:\> Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
 </TrustFrameworkPolicy>
 ```
 
-A szabályzat tartalmának helyi szerkesztéséhez a parancs kimenetét egy fájlba írja a `-OutputFilePath` argumentummal, majd nyissa meg a fájlt a kedvenc szerkesztőjében.
+A házirend tartalmának helyi szerkesztéséhez irányítsa a `-OutputFilePath` parancskimenetet egy fájlba az argumentummal, majd nyissa meg a fájlt a kedvenc szerkesztőjében.
 
-Példa a kimenet fájlba küldésére:
+Példa kimenet fájlba küldésére:
 
 ```PowerShell
 # Download and send policy output to a file
 Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin -OutputFilePath C:\RPPolicy.xml
 ```
 
-## <a name="update-an-existing-policy"></a>Meglévő szabályzat frissítése
+## <a name="update-an-existing-policy"></a>Meglévő házirend frissítése
 
-A létrehozott vagy letöltött házirendfájl szerkesztése után a [set-AzureADMSTrustFrameworkPolicy][Set-AzureADMSTrustFrameworkPolicy] parancs használatával közzéteheti a frissített szabályzatot a Azure ad B2C.
+A létrehozott vagy letöltött házirendfájl szerkesztése után közzéteheti a frissített szabályzatot az Azure AD B2C-ben a [Set-AzureADMSTrustFrameworkPolicy][Set-AzureADMSTrustFrameworkPolicy] parancs használatával.
 
-Ha kiadja a `Set-AzureADMSTrustFrameworkPolicy` parancsot egy olyan házirend azonosítójával, amely már szerepel a Azure AD B2C bérlőben, a rendszer felülírja a házirend tartalmát.
+Ha kiadja `Set-AzureADMSTrustFrameworkPolicy` a parancsot az Azure AD B2C-bérlőben már létező szabályzat azonosítójával, a házirend tartalma felülíródik.
 
 ```PowerShell
 Set-AzureADMSTrustFrameworkPolicy [-Id <policyId>] -InputFilePath <inputpolicyfilePath> [-OutputFilePath <outputFilePath>]
 ```
 
-A példában szereplő parancs:
+Példa parancs:
 
 ```PowerShell
 # Update an existing policy from file
 Set-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin -InputFilePath C:\B2C_1A_signup_signin.xml
 ```
 
-További példákat a [set-AzureADMSTrustFrameworkPolicy][Set-AzureADMSTrustFrameworkPolicy] parancs hivatkozása tartalmaz.
+További példákat a [Set-AzureADMSTrustFrameworkPolicy][Set-AzureADMSTrustFrameworkPolicy] parancshivatkozás.
 
-## <a name="upload-a-new-policy"></a>Új szabályzat feltöltése
+## <a name="upload-a-new-policy"></a>Új házirend feltöltése
 
-Ha olyan egyéni házirendet módosít, amely éles környezetben fut, előfordulhat, hogy a szabályzat több verzióját is közzé szeretné tenni tartalék vagy A/B tesztelési helyzetekben. Vagy előfordulhat, hogy másolatot szeretne készíteni egy meglévő szabályzatról, néhány kis módosítással módosítja azt, majd feltölti egy másik alkalmazás által használt új szabályzatként.
+Ha módosítja az éles környezetben futó egyéni szabályzatot, érdemes lehet közzétenni a szabályzat több verzióját tartalék vagy A/B tesztelési forgatókönyvekhez. Vagy előfordulhat, hogy szeretne másolatot készíteni egy meglévő házirendről, módosítani néhány kisebb módosítással, majd töltse fel új házirendként egy másik alkalmazás számára.
 
-Új szabályzat feltöltéséhez használja a [New-AzureADMSTrustFrameworkPolicy][New-AzureADMSTrustFrameworkPolicy] parancsot:
+Új szabályzat feltöltéséhez használja az [Új AzureADMSTrustFrameworkPolicy][New-AzureADMSTrustFrameworkPolicy] parancsot:
 
 ```PowerShell
 New-AzureADMSTrustFrameworkPolicy -InputFilePath <inputpolicyfilePath> [-OutputFilePath <outputFilePath>]
 ```
 
-A példában szereplő parancs:
+Példa parancs:
 
 ```PowerShell
 # Add new policy from file
 New-AzureADMSTrustFrameworkPolicy -InputFilePath C:\SignUpOrSignInv2.xml
 ```
 
-## <a name="delete-a-custom-policy"></a>Egyéni szabályzat törlése
+## <a name="delete-a-custom-policy"></a>Egyéni házirend törlése
 
-A tiszta működés életciklusának fenntartása érdekében javasoljuk, hogy rendszeresen távolítsa el a nem használt egyéni házirendeket. Előfordulhat például, hogy el szeretné távolítani a régi házirend-verziókat, miután elvégezte az áttelepítést a házirendek új készletére, és ellenőrzi az új szabályzatok funkcióit. Emellett, ha egyéni szabályzatok készletének közzétételét kísérli meg, és hibaüzenetet kap, érdemes lehet eltávolítani a sikertelen kiadás részeként létrehozott házirendeket.
+A tiszta műveletek életciklusának fenntartása érdekében azt javasoljuk, hogy rendszeresen távolítsa el a nem használt egyéni házirendeket. Előfordulhat például, hogy el szeretné távolítani a régi házirend-verziókat, miután áttelepítést hajtott végre egy új szabályzatkészletre, és ellenőrizni szeretné az új házirendek működését. Továbbá, ha egyéni házirendeket próbál közzétenni, és hibaüzenetet kap, célszerű lehet eltávolítani a sikertelen kiadás részeként létrehozott házirendeket.
 
-A [Remove-AzureADMSTrustFrameworkPolicy][Remove-AzureADMSTrustFrameworkPolicy] paranccsal törölhet egy szabályzatot a bérlőből.
+Az [Eltávolítás-AzureADMSTrustFrameworkPolicy][Remove-AzureADMSTrustFrameworkPolicy] paranccsal törölheti a házirendet a bérlőből.
 
 ```PowerShell
 Remove-AzureADMSTrustFrameworkPolicy -Id <policyId>
 ```
 
-A példában szereplő parancs:
+Példa parancs:
 
 ```PowerShell
 # Delete an existing policy
 Remove-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
 ```
 
-## <a name="troubleshoot-policy-upload"></a>Házirend feltöltésével kapcsolatos hibák
+## <a name="troubleshoot-policy-upload"></a>Házirendek feltöltésének hibaelhárítása
 
-Amikor új egyéni házirendet próbál közzétenni, vagy egy meglévő házirendet frissít, a szabályzatok öröklődési láncában nem megfelelő XML-formázás és hibák érvényesítési hibákat okozhatnak.
+Amikor új egyéni házirendet próbál közzétenni, vagy egy meglévő házirendet frissít, a házirendfájl öröklési láncának helytelen XML-formázása és hibái érvényesítési hibákat okozhatnak.
 
-Például egy olyan szabályzat frissítésére történt kísérlet, amely helytelen formátumú XML-fájlt tartalmaz (a kimenet rövidítve van):
+Az alábbiakban például egy olyan házirend frissítésére tett kísérletet, amely hibás XML-t tartalmazó tartalommal rendelkezik (a kimenet rövidségből csonkolva jelenik meg):
 
 ```Console
 PS C:\> Set-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin -InputFilePath C:\B2C_1A_signup_signin.xml
@@ -191,11 +191,11 @@ Message: Validation failed: 1 validation error(s) found in policy "B2C_1A_SIGNUP
 ...
 ```
 
-További információ az egyéni házirendek hibaelhárításáról: [Azure ad B2C egyéni szabályzatok és az identitások felhasználói felületének](active-directory-b2c-guide-troubleshooting-custom.md)hibaelhárítása.
+Az egyéni szabályzatok hibaelhárításáról az [Azure AD B2C egyéni szabályzatok és az identitáskezelési keretrendszer hibaelhárítása című témakörben](active-directory-b2c-guide-troubleshooting-custom.md)talál.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ arról, hogyan használható a PowerShell az egyéni házirendek folyamatos integrációs/folyamatos teljesítési (CI/CD) folyamat részeként történő telepítéséhez: [Egyéni szabályzatok telepítése Azure DevOps-folyamatból](deploy-custom-policies-devops.md).
+Ha tudni szeretné, hogy miként telepíti az egyéni szabályzatokat egy folyamatos integrációs/folyamatos kézbesítési (CI/CD) folyamat részeként, a PowerShell használatával kapcsolatban az [Egyéni szabályzatok üzembe helyezése az Azure DevOps-folyamatból](deploy-custom-policies-devops.md)című témakörben talál tájékoztatást.
 
 <!-- LINKS - External -->
 [Connect-AzureAD]: https://docs.microsoft.com/powershell/module/azuread/get-azureadmstrustframeworkpolicy

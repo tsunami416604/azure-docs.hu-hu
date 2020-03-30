@@ -5,17 +5,17 @@ ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
 ms.openlocfilehash: b6ab3e80c7a27263039de3d371adea3d49ddfcc9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75436992"
 ---
-|  | **Privát társak** | **Microsoft-partnerek** |  **Nyilvános peering** (új áramköröknél elavult) |
+|  | **Magánhálózati társviszony-létesítés** | **Microsoft társviszony-létesítés** |  **Nyilvános társviszony-létesítés** (új áramkörök elavultak) |
 | --- | --- | --- | --- |
-| **Max. támogatott # előtagok száma** |4000 alapértelmezés szerint 10 000 a ExpressRoute Premiummal |200 |200 |
-| **Támogatott IP-címtartományok** |Bármely érvényes IP-cím a WAN-on belül. |Az Ön vagy a kapcsolat szolgáltatója által birtokolt nyilvános IP-címek. |Az Ön vagy a kapcsolat szolgáltatója által birtokolt nyilvános IP-címek. |
-| **Számokra vonatkozó követelmények** |Magán-és nyilvános számként. Ha az egyiket választja, a nyilvános értéket kell használnia. |Magán-és nyilvános számként. A nyilvános IP-címek tulajdonjogát azonban bizonyítania kell. |Magán-és nyilvános számként. A nyilvános IP-címek tulajdonjogát azonban bizonyítania kell. |
+| **Max. # társviszony-létesítésenként támogatott előtagok** |Alapértelmezés szerint 4000, 10 000 expressroute premium |200 |200 |
+| **Támogatott IP-címtartományok** |Bármely érvényes IP-cím a WAN-on belül. |Az Ön vagy a kapcsolatszolgáltató tulajdonában lévő nyilvános IP-címek. |Az Ön vagy a kapcsolatszolgáltató tulajdonában lévő nyilvános IP-címek. |
+| **AS-számkövetelmények** |Magán- és állami AS-számok. A nyilvános AS-számnak kell tulajdonítania, ha úgy dönt, hogy használ egyet. |Magán- és állami AS-számok. A nyilvános IP-címek tulajdonjogát azonban igazolnia kell. |Magán- és állami AS-számok. A nyilvános IP-címek tulajdonjogát azonban igazolnia kell. |
 | **Támogatott IP-protokollok**| IPv4 |  IPv4, IPv6 | IPv4 |
-| **Útválasztási csatoló IP-címei** |RFC1918 és nyilvános IP-címek |Az útválasztási nyilvántartásokban regisztrált nyilvános IP-címek. |Az útválasztási nyilvántartásokban regisztrált nyilvános IP-címek. |
-| **MD5-kivonatok támogatása** |Igen |Igen |Igen |
+| **Útválasztási kapcsolat IP-címei** |RFC1918 és nyilvános IP-címek |Az útválasztási nyilvántartásokban regisztrált nyilvános IP-címek. |Az útválasztási nyilvántartásokban regisztrált nyilvános IP-címek. |
+| **MD5 kivonattámogatás** |Igen |Igen |Igen |

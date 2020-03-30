@@ -1,6 +1,6 @@
 ---
-title: Korlátok és kvóták IoT Plug and Play előzetes verzió | Microsoft Docs
-description: Ismerje meg a IoT Plug and Play előzetes verziójának használatakor alkalmazandó korlátokat, kvótákat és szabályozásokat.
+title: Korlátozások és kvóták IoT Plug and Play Preview | Microsoft dokumentumok
+description: Ismerje meg az IoT Plug and Play előzetes verzió használatakor érvényes korlátokat, kvótákat és szabályozást.
 author: miagdp
 ms.author: miag
 ms.date: 12/26/2019
@@ -8,55 +8,55 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 48ecaaba6d956efd9da75d0582fa06d231cb3f80
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75531377"
 ---
-# <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT Plug and Play előzetes verziójának korlátai, kvótái és szabályozásai
+# <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT Plug and Play előzetes korlátozások, kvóták és szabályozások
 
-Ez a cikk ismerteti a nyilvános előzetes verzióban alkalmazandó, Plug and Play-specifikus korlátokat, kvótákat és IoT. Meglévő [IoT hub kvóták és szabályozás](../iot-hub/iot-hub-devguide-quotas-throttling.md) is érvényes.
+Ez a cikk ismerteti az IoT Plug-és Play-specifikus korlátok, kvóták és a szabályozás, amelyek a nyilvános előzetes verzióban alkalmazandó. Vannak meglévő [IoT Hub-kvóták és szabályozás,](../iot-hub/iot-hub-devguide-quotas-throttling.md) amelyek szintén érvényesek.
 
 ## <a name="iot-hub"></a>IoT Hub
 
-A nyilvános előzetes verzió esetében a következő korlátozások és kvóták érvényesek egy IoT hub-ra:
+A nyilvános előzetes verzióhoz a következő korlátok és kvóták vonatkoznak egy IoT-központra:
 
-| Korlátok, korlátozások és szabályozások | Value (Díj) | Megjegyzések |
+| Korlátok, korlátozások és fojtószelepek | Érték | Megjegyzések |
 |-----|-----|-----|
-| Az eszköz kapacitási modelljeinek (DCMs) vagy a központ által regisztrálható felületek száma | 1500 ||
-| Az Eszközönként regisztrálható felületek maximális száma | 40 ||
-| Az Eszközönként regisztrálható DCMs maximális száma | 1 ||
-| Illesztőfelület/DCM-fájl maximális mérete | 512 karakter ||
-| Illesztőfelület nevének maximális mérete | 256 karakter ||
-| Tulajdonságnév maximális mérete  | 64 bájt, 7 szint mélységben (és az első szint a `$iotin`számára van fenntartva) | Engedélyezett karakterek: a-z, A-Z, 0-9 (nem az első karakter) és az aláhúzás. |
-| Tulajdonság értékének maximális mérete | 512 bájt ||
-| Parancs nevének maximális mérete | 100 bájt ||
-| Eszköz kettős mérete | Ugyanaz, mint a [IoT hub korlátok](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) ||
-| API-hívások feloldása az SKU-ban (az egységektől függetlenül) | 100 kérelem/másodperc ||
+| A hubonként regisztrálható eszközképességi modellek (DCM-ek) vagy interfészek száma | 1500 ||
+| Eszközönként regisztrálható összeköttetések maximális száma | 40 ||
+| Eszközönként regisztrálható tartományvezérlők maximális száma | 1 ||
+| Az összeköttetés/DCM fájl maximális mérete | 512 karakter ||
+| Az összeköttetés nevének maximális mérete | 256 karakter ||
+| Tulajdonságnév maximális mérete  | 64 bájt, 7 mélységi szint (és az `$iotin`első szint fenntartva) | Megengedett karakterek: a-z, A-Z, 0-9 (nem az első karakter), és aláhúzás. |
+| Egy tulajdonságérték maximális mérete | 512 bájt ||
+| A parancsnév maximális mérete | 100 bájt ||
+| Az ikereszköz mérete | Ugyanaz, mint az [IoT Hub-korlátok](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) ||
+| Feloldási API-hívások a termékváltozaton keresztül (az egységektől függetlenül) | 100 kérelem/másodperc ||
 
-## <a name="model-repository"></a>Modell tárháza
+## <a name="model-repository"></a>Modelltárház
 
-A nyilvános előzetes verzió esetében a következő korlátozások és kvóták érvényesek a modell adattárára:
+A nyilvános előzetes verzióban a következő korlátok és kvóták vonatkoznak a modelltárházra:
 
-| Korlátok, korlátozások és szabályozások| Value (Díj) |
+| Korlátok, korlátozások és fojtószelepek| Érték |
 |-----|-----|
-| A vállalati modell adattárainak száma Azure Active Directory bérlőn | 1 |
-| Engedélyezési kulcsok száma egy modell adattárában | 10  |
-| Modellek száma (DCMs vagy Interface) a vállalati modell adattárában| 1500  |
-| Modellek száma (DCMs vagy Interface) a nyilvános modell adattárában Azure Active Directory bérlő| 1500  |
-| A vállalati modell adattárában törölt DCMs vagy felületek száma | másodpercenként 10 lekérdezés (QPS)|
-| A bérlő által létrehozott/frissített modell-Tárházak száma| 1 QPS |
-| A modell adattárában létrehozott/frissített/törölt engedélyezési kulcsok száma | 1 QPS|
-| A vállalati modell adattárában létrehozott DCMs száma | 10 QPS |
-| A vállalati modell adattárában létrehozott felületek száma | 10 QPS|
-| A nyilvános modell adattárában létrehozott DCMs száma | 10 QPS|
-| A nyilvános modell adattárában létrehozott felületek száma | 10 QPS|
+| Vállalati modelltárolók száma Az Azure Active Directory-bérlőnként | 1 |
+| Engedélyezési kulcsok száma modelltárházonként | 10  |
+| Modellek (DCM-ek vagy interfészek) száma vállalati modelltárházonként| 1500  |
+| Modellek (DcM-ek vagy összeköttetések) száma a nyilvános modelltárházban Azure Active Directory-bérlőnként| 1500  |
+| A vállalati modelltárházban törölt tartományvezérlők vagy összeköttetések száma | 10 lekérdezés másodpercenként (QPS)|
+| A bérlő által létrehozott/frissített modelladattárak száma| 1 QPS |
+| A modelltárházban létrehozott/frissített/törölt engedélyezési kulcsok száma | 1 QPS|
+| A vállalati modelltárházban létrehozott dcm-ek száma | 10 QPS |
+| A vállalati modelltárházban létrehozott felületek száma | 10 QPS|
+| A nyilvános modelltárházban létrehozott közös tartományvezérlők száma | 10 QPS|
+| A nyilvános modelltárházban létrehozott összeköttetések száma | 10 QPS|
 
 ## <a name="parser-library"></a>Elemző könyvtár
 
-Az elemző könyvtár a [digitális kettős definíciós nyelvre](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)érvényes korlátokat követi.
+Az elemzőkönyvtár a [digitális ikerdefiníciós nyelvre](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)vonatkozó korlátokat követi.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A következő lépés az, hogy megtudja, hogyan [csatlakozhat egy IoT Plug and Play-eszközhöz, és hogyan dolgozhat velük](./howto-develop-solution.md).
+A javasolt következő lépés az [IoT Plug and Play eszközökcsatlakoztatásának és az azzal való együttműködésnek](./howto-develop-solution.md)a megismerése.

@@ -1,6 +1,6 @@
 ---
-title: Adatátalakítás az Hadoop Pig-tevékenységgel
-description: Megtudhatja, hogyan használhatja a Pig-tevékenységet egy Azure-beli adatgyárban a Pig-parancsfájlok igény szerinti vagy saját HDInsight-fürtön való futtatásához.
+title: Adatok átalakítása a Hadoop Pig tevékenységgel
+description: Megtudhatja, hogyan használhatja a Pig-tevékenységet egy Azure-beli adatgyárban a Pig-parancsfájlok igény szerinti/saját HDInsight-fürtön való futtatásához.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,21 +12,21 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/16/2018
 ms.openlocfilehash: 4064d62a6dc826b23ff1f51e9f61e48d362ae695
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74912930"
 ---
-# <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Az adatátalakítás Hadoop Pig-tevékenységgel Azure Data Factory
+# <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Adatok átalakítása a Hadoop Pig-tevékenység használatával az Azure Data Factoryban
 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-pig-activity.md)
 > * [Aktuális verzió](transform-data-using-hadoop-pig.md)
 
-A HDInsight Pig tevékenység egy Data Factory- [folyamatban](concepts-pipelines-activities.md) a [saját](compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight-fürtön végzett Pig-lekérdezéseket hajt végre. Ez a cikk az Adatátalakítási [tevékenységekről](transform-data.md) szóló cikket ismerteti, amely általános áttekintést nyújt az adatátalakításról és a támogatott átalakítási tevékenységekről.
+A Data [Factory-folyamat](concepts-pipelines-activities.md) HDInsight Pig-tevékenysége saját vagy igény szerinti HDInsight-fürtön hajtja végre [a](compute-linked-services.md#azure-hdinsight-linked-service) [Pig-lekérdezéseket.](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Ez a cikk az [adatátalakítási tevékenységek](transform-data.md) cikkre épül, amely általános áttekintést nyújt az adatok átalakításáról és a támogatott átalakítási tevékenységekről.
 
-Ha még nem ismeri a Azure Data Factoryt, olvassa el a [Azure Data Factory bevezetését](introduction.md) , és végezze el az [oktatóanyagot: az adatátalakítást](tutorial-transform-data-spark-powershell.md) a cikk elolvasása előtt. 
+Ha most jön az Azure Data Factory, olvassa el a Bevezetés az [Azure Data Factory,](introduction.md) és nem az [oktatóanyag: az adatok átalakítása](tutorial-transform-data-spark-powershell.md) a cikk elolvasása előtt. 
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -57,26 +57,26 @@ Ha még nem ismeri a Azure Data Factoryt, olvassa el a [Azure Data Factory bevez
 ```
 ## <a name="syntax-details"></a>Szintaxis részletei
 
-| Tulajdonság            | Leírás                              | Szükséges |
+| Tulajdonság            | Leírás                              | Kötelező |
 | ------------------- | ---------------------------------------- | -------- |
 | név                | A tevékenység neve                     | Igen      |
-| leírás         | A tevékenység által használt szöveg leírása | Nem       |
-| type                | A kaptár tevékenység esetén a tevékenység típusa HDinsightPig. | Igen      |
-| linkedServiceName   | Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Igen      |
-| Scriptlinkedservice szolgáltatás | Hivatkozás egy olyan Azure Storage társított szolgáltatásra, amely a végrehajtandó Pig-szkript tárolására szolgál. Ha nem megadja ezt a társított szolgáltatást, a rendszer a HDInsight társított szolgáltatásban definiált Azure Storage társított szolgáltatást használja. | Nem       |
-| scriptPath          | Adja meg a Scriptlinkedservice szolgáltatás által hivatkozott Azure Storage-ban tárolt parancsfájl elérési útját. A fájl neve megkülönbözteti a kis-és nagybetűket. | Nem       |
-| getDebugInfo        | Megadja, hogy a rendszer mikor másolja a naplófájlokat a Scriptlinkedservice szolgáltatás által meghatározott HDInsight-fürt (vagy) által használt Azure-tárolóba. Megengedett értékek: nincs, mindig vagy sikertelen. Alapértelmezett érték: nincs. | Nem       |
-| argumentumok           | Argumentumok tömbjét adja meg egy Hadoop feladatokhoz. Az argumentumok parancssori argumentumként lesznek átadva az egyes feladatokhoz. | Nem       |
-| meghatározza             | Adja meg a paramétereket kulcs/érték párokként a Pig-szkripten belüli hivatkozáshoz. | Nem       |
+| leírás         | A tevékenységet leíró szöveg | Nem       |
+| type                | Hive-tevékenység esetén a tevékenység típusa HDinsightPig | Igen      |
+| linkedServiceName   | Hivatkozás a Data Factory csatolt szolgáltatásként regisztrált HDInsight-fürtre. A csatolt szolgáltatásról a [Csatolt szolgáltatások számítási cikkében](compute-linked-services.md) olvashat. | Igen      |
+| parancsfájlLinkedService | Hivatkozás egy Azure Storage-alapú szolgáltatás tárolására használt Pig parancsfájl t. Ha nem adja meg ezt a csatolt szolgáltatást, a HDInsight csatolt szolgáltatásban definiált Azure Storage Csatolt szolgáltatás lesz használva. | Nem       |
+| scriptPath          | Adja meg a script file tárolt parancsfájl a scriptLinkedService által hivatkozott parancsfájl elérési útját. A fájlnév nem imitáta a kis- és nagybetűk között. | Nem       |
+| getDebugInfo        | Itt adható meg, hogy a naplófájlok at a HDInsight-fürt (vagy) által a scriptLinkedService által megadott által használt Azure Storage-ba másolja-e a rendszer. Engedélyezett értékek: Nincs, Mindig vagy Sikertelen. Alapértelmezett érték: Nincs. | Nem       |
+| Érvek           | Egy Hadoop-feladat argumentumainak tömbjét adja meg. Az argumentumok parancssori argumentumként kerülnek átadásra az egyes tevékenységekhez. | Nem       |
+| Meghatározza             | Adja meg a paramétereket kulcs/érték párként a Pig parancsfájlon belüli hivatkozáshoz. | Nem       |
 
-## <a name="next-steps"></a>Következő lépések
-A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást: 
+## <a name="next-steps"></a>További lépések
+Az alábbi cikkekben elmagyarázhatja, hogyan alakíthatja át más módon az adatokat: 
 
-* [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)
-* [Struktúra tevékenysége](transform-data-using-hadoop-hive.md)
+* [U-SQL tevékenység](transform-data-using-data-lake-analytics.md)
+* [Hive-tevékenység](transform-data-using-hadoop-hive.md)
 * [MapReduce tevékenység](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop streaming-tevékenység](transform-data-using-hadoop-streaming.md)
-* [Spark-tevékenység](transform-data-using-spark.md)
+* [Hadoop streaming tevékenység](transform-data-using-hadoop-streaming.md)
+* [Szikraaktivitás](transform-data-using-spark.md)
 * [.NET egyéni tevékenység](transform-data-using-dotnet-custom-activity.md)
-* [Batch-végrehajtási tevékenység Machine Learning](transform-data-using-machine-learning.md)
+* [Gépi tanulási kötegelt végrehajtási tevékenység](transform-data-using-machine-learning.md)
 * [Tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)

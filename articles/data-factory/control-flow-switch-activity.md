@@ -1,6 +1,6 @@
 ---
-title: Váltás a Azure Data Factoryban
-description: A kapcsoló tevékenység lehetővé teszi, hogy egy feltétel alapján vezérelje a feldolgozási folyamatot.
+title: Tevékenység váltása az Azure Data Factoryban
+description: A Switch tevékenység lehetővé teszi a feldolgozási folyamat egy feltétel alapján történő szabályozását.
 services: data-factory
 author: djpmsft
 ms.author: daperlov
@@ -10,15 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440385"
 ---
-# <a name="switch-activity-in-azure-data-factory"></a>Váltás a Azure Data Factoryban
+# <a name="switch-activity-in-azure-data-factory"></a>Tevékenység váltása az Azure Data Factoryban
 
-A kapcsoló tevékenység ugyanazokat a funkciókat biztosítja, mint a Switch utasítások a programozási nyelveken. Kiértékeli a feltételnek megfelelő esetet, amely megfelel a feltétel kiértékelésének.
+A Switch tevékenység ugyanazokat a funkciókat biztosítja, mint a switch utasítás a programozási nyelvekben. Kiértékeli a feltétel kiértékelésének megfelelő esetnek megfelelő tevékenységek készletét.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -65,22 +65,22 @@ A kapcsoló tevékenység ugyanazokat a funkciókat biztosítja, mint a Switch u
 
 ## <a name="type-properties"></a>Típus tulajdonságai
 
-Tulajdonság | Leírás | Megengedett értékek | Szükséges
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | A kapcsoló tevékenység neve. | Sztring | Igen
-type | *Kapcsolót* kell beállítani* | Sztring | Igen
-kifejezés | Az a kifejezés, amelynek ki kell értékelnie a karakterlánc értékét | Kifejezés eredmény típusú karakterláncmal | Igen
-esetekben | Olyan esetek összessége, amelyek értékkel és tevékenységekből álló készletet tartalmaznak, ha az érték megegyezik a kifejezés kiértékelésével. Legalább egy esetet meg kell adni. A maximális korlát 25 eset. | Case Objects tömb | Igen
-defaultActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége. | Tevékenységek tömbje | Igen
+név | A kapcsolótevékenység neve. | Sztring | Igen
+type | Kapcsolóra kell *állítani.** | Sztring | Igen
+kifejezés | Karakterlánc-értékre kiértékelt kifejezés | Kifejezés eredménytípus-karakterlánccal | Igen
+Esetekben | Olyan esetek halmaza, amelyek egy értéket és egy tevékenységkészletet tartalmaznak, amelyeket akkor kell végrehajtani, ha az érték megfelel a kifejezés kiértékelésének. Legalább egy esetet meg kell adnia. Maximum 25 eset van. | Kis- és nagybetűk objektumainak tömbje | Igen
+defaultActivities | A kifejezés kiértékelése nem teljesülése esetén végrehajtott tevékenységek készlete. | Tevékenységek tömbje | Igen
 
 ## <a name="example"></a>Példa
 
-Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából a kimeneti mappába. A kimeneti mappát a (z) routeSelection folyamat paraméterének értéke határozza meg.
+Ebben a példában a folyamat egy bemeneti mappából egy kimeneti mappába másolja az adatokat. A kimeneti mappát a csővezeték paraméter értéke határozza meg: routeSelection.
 
 > [!NOTE]
-> Ez a szakasz JSON-definíciókat és PowerShell-parancsokat tartalmaz a folyamat futtatásához. A Data Factory-adatfolyamatok Azure PowerShell és JSON-definíciók használatával történő létrehozásával kapcsolatos részletes útmutatásért lásd [: oktatóanyag: az adatfeldolgozó létrehozása a Azure PowerShell használatával](quickstart-create-data-factory-powershell.md).
+> Ez a szakasz JSON-definíciókat és minta PowerShell-parancsokat biztosít a folyamat futtatásához. A Data Factory-folyamat Azure PowerShell- és JSON-definíciók használatával történő létrehozásához részletes útmutatót az oktatóanyag ban [talál: adatgyár létrehozása az Azure PowerShell használatával](quickstart-create-data-factory-powershell.md)című témakörben.
 
-### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Folyamat kapcsoló tevékenységgel (Adfv2QuickStartPipeline. JSON)
+### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Folyamat switch-tevékenységgel (Adfv2QuickStartPipeline.json)
 
 ```json
 {
@@ -228,7 +228,7 @@ Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából
 
 ```
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage társított szolgáltatás (AzureStorageLinkedService. JSON)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage-kapcsolt szolgáltatás (AzureStorageLinkedService.json)
 
 ```json
 {
@@ -242,9 +242,9 @@ Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Paraméteres Azure Blob-adatkészlet (BlobDataset. JSON)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Paraméterezett Azure Blob-adatkészlet (BlobDataset.json)
 
-A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **outputPath2** paraméterének értékére. 
+A folyamat a **folderPath-ot** a folyamat **outputPath1** vagy **outputPath2** paraméterének értékére állítja be. 
 
 ```json
 {
@@ -270,7 +270,7 @@ A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **output
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Adatcsatorna-paraméter JSON (PipelineParameters. JSON)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON csővezeték-paraméter (PipelineParameters.json)
 
 ```json
 {
@@ -286,7 +286,7 @@ A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **output
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ezek a parancsok feltételezik, hogy mentette a JSON-fájlokat a következő mappába: C:\ADF. 
+Ezek a parancsok feltételezik, hogy a JSON-fájlokat a C:\ADF mappába mentette. 
 
 ```powershell
 Connect-AzAccount
@@ -327,13 +327,13 @@ Write-Host "\nActivity 'Error' section:" -foregroundcolor "Yellow"
 $result.Error -join "`r`n"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
+Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamattevékenységeket: 
 
 - [If Condition tevékenység](control-flow-if-condition-activity.md)
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)
-- [Minden tevékenységhez](control-flow-for-each-activity.md)
+- [Minden egyes tevékenységhez](control-flow-for-each-activity.md)
 - [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keresstevékenységet](control-flow-lookup-activity.md)
 - [Webes tevékenység](control-flow-web-activity.md)

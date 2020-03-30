@@ -1,29 +1,29 @@
 ---
-title: Virtuális gépek rendelkezésre állási csoportjának módosítása
-description: Megtudhatja, hogyan módosíthatja a virtuális gép rendelkezésre állási csoportját Azure PowerShell használatával.
+title: Virtuális gépek rendelkezésre állási készletének módosítása
+description: Ismerje meg, hogyan módosíthatja a virtuális gép rendelkezésre állási készletét az Azure PowerShell használatával.
 ms.service: virtual-machines
 author: cynthn
 ms.topic: article
 ms.date: 01/31/2020
 ms.author: cynthn
 ms.openlocfilehash: 092dafff6622d3402322eb96d0fe4215e52e16b5
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964923"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>Virtuális gép rendelkezésre állási csoportjának módosítása
-A következő lépések azt ismertetik, hogyan módosítható a virtuális gépek rendelkezésre állási csoportja a Azure PowerShell használatával. A virtuális gépeket csak akkor lehet felvenni a rendelkezésre állási csoportba, ha az létrejött. A rendelkezésre állási csoport módosításához törölnie kell, majd újra létre kell hoznia a virtuális gépet. 
+Az alábbi lépések ismertetik, hogyan módosíthatja a rendelkezésre állási készlet egy virtuális gép az Azure PowerShell használatával. Virtuális gép csak akkor adható hozzá egy rendelkezésre állási csoport hozlétre. A rendelkezésre állási csoport módosításához törölnie kell, majd újra létre kell hoznia a virtuális gépet. 
 
-Ez a cikk a Linux és a Windows rendszerű virtuális gépekre is vonatkozik.
+Ez a cikk linuxos és windowsos virtuális gépekre egyaránt vonatkozik.
 
-Ez a cikk [Azure Cloud Shell](https://shell.azure.com/powershell) a 2/12/2019-es és az az [PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps) 1.2.0.
+Ezt a cikket utoljára 2019.02.12-én teszteltük az [Azure Cloud Shell](https://shell.azure.com/powershell) és az Az [PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps) 1.2.0-s verziójával.
 
 
-## <a name="change-the-availability-set"></a>A rendelkezésre állási csoport módosítása 
+## <a name="change-the-availability-set"></a>Az elérhetőségi készlet módosítása 
 
-Az alábbi parancsfájl egy példát mutat be a szükséges információk összegyűjtésére, az eredeti virtuális gép törlésére, majd egy új rendelkezésre állási csoportba való újbóli létrehozására.
+A következő parancsfájl egy példa a szükséges információk összegyűjtésére, az eredeti virtuális gép törlésére, majd egy új rendelkezésre állási csoportban való újbóli létrehozására.
 
 ```powershell
 # Set variables
@@ -102,7 +102,7 @@ Az alábbi parancsfájl egy példát mutat be a szükséges információk össze
        -DisableBginfoExtension
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Adjon hozzá további tárhelyet a virtuális géphez egy további [adatlemez](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)hozzáadásával.
+További tárhely hozzáadása a virtuális géphez egy további [adatlemez](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)hozzáadásával.
 

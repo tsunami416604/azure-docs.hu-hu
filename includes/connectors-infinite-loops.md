@@ -5,11 +5,11 @@ author: ecfan
 ms.author: estfan
 ms.date: 09/18/2019
 ms.openlocfilehash: 805bf1d4dab9883c049d4d33c7d0e9633db315f6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789399"
 ---
 > [!IMPORTANT]
-> Körültekintően járjon el, ha olyan triggert és műveletet választ ki, amely azonos összekötő-típussal rendelkezik, és ugyanazt az entitást használja, mint például az üzenetküldési várólista vagy a témakör előfizetése. Ez a kombináció végtelen hurkot hozhat létre, ami egy olyan logikai alkalmazást eredményez, amely soha nem ér véget.
+> Legyen óvatos, ha kiválaszt egy eseményindítót és az azonos összekötőtípusú műveletet, és használja őket ugyanazzal az entitással, például egy üzenetvárólistával vagy témakör-előfizetéssel való együttműködésre. Ez a kombináció végtelen ciklust hozhat létre, amely soha nem végződik logikai alkalmazást eredményez.

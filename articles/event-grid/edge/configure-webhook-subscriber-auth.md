@@ -1,5 +1,5 @@
 ---
-title: Webhook-előfizető hitelesítésének konfigurálása – Azure Event Grid IoT Edge | Microsoft Docs
+title: Webhook-előfizetői hitelesítés konfigurálása – Azure Event Grid IoT Edge | Microsoft dokumentumok
 description: Webhook-előfizetők hitelesítésének konfigurálása
 author: VidyaKukke
 manager: rajarv
@@ -10,15 +10,15 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 101dcae5870322878cec48098f2efae32cc68c14
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841730"
 ---
 # <a name="configure-webhook-subscriber-authentication"></a>Webhook-előfizetők hitelesítésének konfigurálása
 
-Ez az útmutató példákat mutat be egy Event Grid modul lehetséges webhook-előfizetői konfigurációjában. Alapértelmezés szerint csak HTTPS-végpontok fogadhatók el a webhook-előfizetők számára. A Event Grid modul elutasítja, ha az előfizető önaláírt tanúsítványt ad meg.
+Ez az útmutató példákat ad egy Event Grid-modul lehetséges webhook-előfizetői konfigurációira. Alapértelmezés szerint csak HTTPS-végpontok fogadhatók el a webhook-előfizetők számára. Az Event Grid modul elutasítja, ha az előfizető önaláírt tanúsítványt mutat be.
 
 ## <a name="allow-only-https-subscriber"></a>Csak HTTPS-előfizető engedélyezése
 
@@ -32,7 +32,7 @@ Ez az útmutató példákat mutat be egy Event Grid modul lehetséges webhook-el
 }
  ```
 
-## <a name="allow-https-subscriber-with-self-signed-certificate"></a>Saját aláírású tanúsítvánnyal rendelkező HTTPS-előfizető engedélyezése
+## <a name="allow-https-subscriber-with-self-signed-certificate"></a>HTTPS-előfizető engedélyezése önaláírt tanúsítvánnyal
 
 ```json
  {
@@ -45,9 +45,9 @@ Ez az útmutató példákat mutat be egy Event Grid modul lehetséges webhook-el
  ```
 
 >[!NOTE]
->Állítsa be úgy a `outbound__webhook__allowUnknownCA` tulajdonságot, hogy csak tesztelési környezetben `true`, mivel általában önaláírt tanúsítványokat használ. Éles számítási feladatokhoz azt javasoljuk, hogy **hamis**értékre állítsa őket.
+>Állítsa a `outbound__webhook__allowUnknownCA` `true` tulajdonságot csak tesztkörnyezetekben, mert általában önaláírt tanúsítványokat használhat. Éles számítási feladatok esetén azt javasoljuk, hogy állítsa be **a hamis.**
 
-## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>HTTPS-előfizető engedélyezése, de tanúsítvány-ellenőrzés kihagyása
+## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>HTTPS-előfizető engedélyezése, de a tanúsítványellenőrzés kihagyása
 
 ```json
  {
@@ -60,7 +60,7 @@ Ez az útmutató példákat mutat be egy Event Grid modul lehetséges webhook-el
  ```
 
 >[!NOTE]
->Állítsa a `outbound__webhook__skipServerCertValidation` tulajdonságot úgy, hogy csak tesztelési környezetekben `true`, mivel előfordulhat, hogy nem fog hitelesíteni egy tanúsítványt. Éles számítási feladatokhoz ajánlott **Hamis értéket** beállítani
+>Állítsa a `outbound__webhook__skipServerCertValidation` `true` tulajdonságot csak tesztkörnyezetekben, mert lehet, hogy nem mutat be olyan tanúsítványt, amelyet hitelesíteni kell. Éles számítási feladatokhoz azt javasoljuk, hogy állítsa be **a hamis**
 
 ## <a name="allow-both-http-and-https-with-self-signed-certificates"></a>HTTP és HTTPS engedélyezése önaláírt tanúsítványokkal
 
@@ -75,4 +75,4 @@ Ez az útmutató példákat mutat be egy Event Grid modul lehetséges webhook-el
  ```
 
 >[!NOTE]
->Állítsa be úgy a `outbound__webhook__httpsOnly` tulajdonságot, hogy csak tesztelési környezetekben `false`, mert előbb létre kell hoznia egy HTTP-előfizetőt. Éles számítási feladatokhoz ajánlott **igaz** értéket beállítani
+>Állítsa be `outbound__webhook__httpsOnly` `false` a tulajdonságot csak tesztkörnyezetekben, mert érdemes először http-előfizetőt létrehoznia. Az éles számítási feladatokhoz azt javasoljuk, hogy állítsa be **a true**

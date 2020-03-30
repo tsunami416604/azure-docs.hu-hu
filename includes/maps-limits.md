@@ -9,23 +9,23 @@ ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
 ms.openlocfilehash: 2bf9f75442ccf57aa28e6a12f415fb6e4ede78ec
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179513"
 ---
-A következő táblázat a Azure Maps S0 díjszabási szintjére vonatkozó használati korlátot mutatja be. A használati korlát az árképzési szinttől függ. 
+Az alábbi táblázat az Azure Maps S0 tarifacsomag használati korlátját mutatja be. A használati korlát a tarifacsomagtól függ. 
 
-| Resource                              | S0 díjszabása |
+| Erőforrás                              | S0 tarifacsomag-korlát |
 |---------------------------------------|:---------------------:|
 | Maximális kérelemszám előfizetésenként |   50 kérelem másodpercenként  |
 
 
-A következő táblázat a Azure Maps adatméretre vonatkozó korlátját mutatja. A Azure Maps adatszolgáltatás csak az S1 díjszabási szinten érhető el.
+Az alábbi táblázat az Azure Maps adatméretkorlátját mutatja be. Az Azure Maps adatszolgáltatás csak az S1 tarifacsomagban érhető el.
 
-| Resource                              | Korlát |
+| Erőforrás                              | Korlát |
 |---------------------------------------|:---------------------:|
-| Az adatmennyiség maximális mérete |   50 MB  |
+| Az adatok maximális mérete |   50 MB  |
 
-További információ a Azure Maps díjszabási szintjeiről: [Azure Maps díjszabása](https://azure.microsoft.com/pricing/details/azure-maps/).
+Az Azure Maps díjszabási rétegeiről az [Azure Maps díjszabási témakörben](https://azure.microsoft.com/pricing/details/azure-maps/)talál további információt.

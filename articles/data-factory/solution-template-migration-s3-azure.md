@@ -1,6 +1,6 @@
 ---
-title: Adatok migrálása az Amazon S3-ból Azure Data Lake Storage Gen2ba
-description: Megtudhatja, hogyan használhatja a megoldás sablonnal az Amazon S3-ból származó adatok áttelepítését egy külső vezérlési táblázat használatával, amely az AWS S3 és a Azure Data Factory segítségével tárolja a partíciós listákat.
+title: Adatok áttelepítése az Amazon S3-ról az Azure Data Lake Storage Gen2 szolgáltatásba
+description: Ismerje meg, hogyan használhat megoldássablont az Amazon S3-ból származó adatok áttelepítéséhez egy külső vezérlőtábla használatával az AWS S3 és az Azure Data Factory partíciólistájának tárolására.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -12,67 +12,67 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
 ms.openlocfilehash: e918fe01426202746f0225d25304b9c1b26cb74b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927329"
 ---
-# <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Adatok migrálása az Amazon S3-ból Azure Data Lake Storage Gen2ba
+# <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Adatok áttelepítése az Amazon S3-ról az Azure Data Lake Storage Gen2 szolgáltatásba
 
-A sablonok segítségével áttelepítheti az Amazon S3-ból Azure Data Lake Storage Gen2 több száz millió fájlból álló petabájt. 
+A sablonok segítségével több száz millió fájlt tartalmazó petabájtnyi adatot telepíthet át az Amazon S3-ról az Azure Data Lake Storage Gen2-re. 
 
  > [!NOTE]
- > Ha a kis adatmennyiséget az AWS S3-ból az Azure-ba kívánja másolni (például 10 TB-nál kevesebb), akkor a [Azure Data Factory adatok másolása eszköz](copy-data-tool.md)hatékonyabb és könnyen használható. A cikkben leírt sablon több, mint amire szüksége van.
+ > Ha kis adatmennyiséget szeretne másolni az AWS S3-ból az Azure-ba (például kevesebb, mint 10 TB), hatékonyabb és egyszerűbb az [Azure Data Factory Copy Data eszköz](copy-data-tool.md)használata. A cikkben ismertetett sablon több, mint amire szüksége van.
 
-## <a name="about-the-solution-templates"></a>Tudnivalók a megoldási sablonokról
+## <a name="about-the-solution-templates"></a>A megoldássablonok – beamelyek
 
-Az adatpartíció különösen akkor ajánlott, ha 10 TB-nál több adat áttelepítését végzi. Az adatok particionálásához használja az "előtag" beállítást a mappák és fájlok szűréséhez az Amazon S3-ban név szerint, majd minden egyes ADF-másolási feladatsor egyszerre egy partíciót tud másolni. Több ADF-másolási feladatot is futtathat párhuzamosan a jobb teljesítmény érdekében.
+Az adatpartíció különösen 10 TB-nál több adat áttelepítésekor ajánlott. Az adatok particionálásához használja ki az "előtag" beállítást az Amazon S3 mappáinak és fájljainak név szerinti szűréséhez, majd minden ADF másolási feladat egyszerre egy partíciót másolhat. A jobb átviteli rendszer érdekében egyidejűleg több ADF-másolási feladatot is futtathat.
 
-Az adatáttelepítés általában egy egyszeri, korábbi adatok áttelepítését igényli, és rendszeres időközönként szinkronizálja az AWS S3 és az Azure közötti változásokat. Az alábbi két sablon létezik, ahol az egyik sablon az egyszeri korábbi adatáttelepítést fedi le, és egy másik sablon az AWS S3 és az Azure közötti változások szinkronizálását is magában foglalja.
+Az adatáttelepítéshez általában egyszeri előzményadat-áttelepítésre van szükség, valamint rendszeres időközönként szinkronizálni kell az AWS S3-ról az Azure-ra történő módosításokat. Az alábbiakban két sablon található, ahol az egyik sablon az egyszeri előzményadatok áttelepítését, a másik pedig az AWS S3-ról az Azure-ra történő módosítások szinkronizálását ismerteti.
 
-### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Ahhoz, hogy a sablon áttelepítse az Amazon S3 korábbi adatait Azure Data Lake Storage Gen2
+### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>A sablon áttelepíti a korábbi adatokat az Amazon S3-ról az Azure Data Lake Storage Gen2-re
 
-Ez a sablon (*sablon neve: a korábbi adatok áttelepítése az AWS S3-ból a Azure Data Lake Storage Gen2ba*) feltételezi, hogy a Azure SQL Database egy külső vezérlő táblájába írt egy partíciós listát. Így egy *keresési* tevékenység fogja lekérni a partíciós listát a külső vezérlő táblából, megismételni az egyes partíciókat, és minden egyes ADF-másolási feladatot egyszerre másol egy partícióra. A másolási feladatok befejezése után a *tárolt eljárási* tevékenységgel frissíti az egyes partíciók másolásának állapotát a vezérlési táblában.
+Ez a sablon (*sablon neve: áttelepíteni a korábbi adatokat AWS S3 az Azure Data Lake Storage Gen2*) feltételezi, hogy írt egy partíciólistát egy külső vezérlőtábla az Azure SQL Database.This template ( template name: migrate historical data from AWS S3 to Azure Data Lake Storage Gen2 ) assumes that you have written a partition list in an external control table in Azure SQL Database. Így *keresési* tevékenységet fog használni a partíciólista lekéréséhez a külső vezérlőtáblából, minden partíció felett iterálni, és minden Egyes ADF másolási feladat másolása partícióval egyszerre. Miután minden másolási feladat befejeződött, *a Tárolt eljárás* tevékenység et használ a vezérlőtábla egyes partíciói másolási állapotának frissítéséhez.
 
 A sablon öt tevékenységet tartalmaz:
-- A **Keresés** lekéri azokat a partíciókat, amelyek nem lettek átmásolva egy külső vezérlő táblából Azure Data Lake Storage Gen2ba. A tábla neve *s3_partition_control_table* , és az adatok a táblából való betöltésére szolgáló lekérdezés: *"SELECT PARTITIONPREFIX from s3_partition_control_table where SuccessOrFailure = 0"* .
-- A **foreach** beolvassa a *keresési* tevékenységből a partíciók listáját, és megismétli az egyes partíciókat a *TriggerCopy* tevékenységhez. A *batchCount* beállíthatja úgy, hogy egyidejűleg több ADF-másolási feladatot futtasson. Ebben a sablonban 2 van beállítva.
-- A **ExecutePipeline** végrehajtja a *CopyFolderPartitionFromS3* folyamatát. Ennek az az oka, hogy az egyes másolási feladatok elvégzéséhez egy másik folyamatot hozunk létre, mert így egyszerűen újrafuttathatja a sikertelen másolási feladatot, hogy az adott partíciót újra újra lehessen tölteni az AWS S3-ból. Az egyéb partíciókat betöltő többi másolási feladatot nem érinti a rendszer.
-- **Másolja** az egyes partíciókat az AWS S3-ról a Azure Data Lake Storage Gen2ra.
-- A **SqlServerStoredProcedure** frissíti az egyes partíciók másolásának állapotát a vezérlési táblában.
+- **A keresés** lekéri azokat a partíciókat, amelyek nem lettek átmásolva az Azure Data Lake Storage Gen2-be egy külső vezérlőtáblából. A tábla neve *s3_partition_control_table,* és a táblából adatokat betöltő lekérdezés *"SELECT PartitionPrefix FROM s3_partition_control_table WHERE SuccessOrFailure = 0"*.
+- **ForEach** lekéri a partíciólistát a *lookup* tevékenységből, és minden partíciót az *TriggerCopy tevékenységhez.* Beállíthatja, hogy a *batchCount* egyszerre több ADF másolási feladatot futtasson. Van meg 2 ebben a sablonban.
+- **Az ExecutePipeline** végrehajtja a *CopyFolderPartitionFromS3* folyamatot. Az ok, amiért létrehozunk egy másik folyamatot, hogy minden másolási feladat egy partíciót, mert ez megkönnyíti a sikertelen másolási feladat újratöltése, hogy az adott partíció t a AWS S3 újra. Az összes többi más partíciót betöltő másolási feladatoknem érinti.
+- **Másolja** az egyes partíciókat az AWS S3-ról az Azure Data Lake Storage Gen2 szolgáltatásba.
+- **Az SqlServerStoredProcedure** frissíti a vezérlőtábla egyes partícióinak másolásának állapotát.
 
 A sablon két paramétert tartalmaz:
-- **AWS_S3_bucketName** a gyűjtő neve az AWS S3-ban, ahová át kívánja telepíteni az adatait. Ha az AWS S3-on több gyűjtőből kívánja áttelepíteni az adatait, a külső vezérlő táblában még egy oszlopot is hozzáadhat, hogy tárolja a gyűjtő nevét az egyes partíciók számára, valamint a folyamat frissítésével az adott oszlopból származó adatok lekérdezését.
-- **Azure_Storage_fileSystem** a fájlrendszer neve azon a Azure Data Lake Storage Gen2n, amelyen át kívánja telepíteni az adatait.
+- **AWS_S3_bucketName** a gyűjtőneve az AWS S3-on, ahonnan adatokat szeretne áttelepíteni. Ha az AWS S3 több gyűjtőjéből szeretne adatokat áttelepíteni, hozzáadhat még egy oszlopot a külső vezérlőtáblához az egyes partíciók gyűjtőnevének tárolásához, és frissítheti a folyamatot, hogy ennek megfelelően adatokat olvasson le az oszlopból.
+- **Azure_Storage_fileSystem** a fileSystem neve az Azure Data Lake Storage Gen2, ahol adatokat szeretne áttelepíteni.
 
-### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Ahhoz, hogy a sablon csak az Amazon S3-ból Azure Data Lake Storage Gen2ba másolja a módosított fájlokat
+### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Ahhoz, hogy a sablon csak az Amazon S3-ról az Azure Data Lake Storage Gen2-re másolja a módosított fájlokat
 
-Ez a sablon (*sablon neve: az AWS S3 és a Azure Data Lake Storage Gen2 közötti különbözeti adatok másolása*) az egyes fájlok LastModifiedTime használatával másolja az új vagy frissített fájlokat csak az AWS S3-ből az Azure-ba. Vegye figyelembe, hogy ha a fájlok vagy mappák már időben particionálva vannak a timeslice-adatokkal az AWS S3 fájl-vagy mappanév (például/yyyy/MM/DD/file.csv) részeként, akkor a jelen [oktatóanyagban](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) az új fájlok növekményes betöltésének nagyobb teljesítményű megközelítését érheti el. Ez a sablon feltételezi, hogy egy Azure SQL Database külső vezérlő táblájában írt egy partíciós listát. Így egy *keresési* tevékenység fogja lekérni a partíciós listát a külső vezérlő táblából, megismételni az egyes partíciókat, és minden egyes ADF-másolási feladatot egyszerre másol egy partícióra. Amikor az egyes másolási feladatok megkezdik a fájlok másolását az AWS S3-ból, a LastModifiedTime tulajdonságra támaszkodik az új vagy frissített fájlok azonosítására és másolására. A másolási feladatok befejezése után a *tárolt eljárási* tevékenységgel frissíti az egyes partíciók másolásának állapotát a vezérlési táblában.
+Ez a sablon (*sablon neve: másolás különbözeti adatok At AWS S3 az Azure Data Lake Storage Gen2*) használja LastModifiedTime minden fájl másolni az új vagy frissített fájlokat csak AWS S3 az Azure-ba. Ne feledje, ha a fájlokat vagy mappákat már időszeleteléssel particionálták az AWS S3 fájl- vagy mappanevének részeként (például /yyyy/mm/dd/file.csv), akkor az [oktatóanyagba](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) az új fájlok növekményes betöltésének hatékonyabb megközelítését kaphatja meg. Ez a sablon feltételezi, hogy az Azure SQL Database egy külső vezérlőtáblájában írt egy partíciólistát. Így *keresési* tevékenységet fog használni a partíciólista lekéréséhez a külső vezérlőtáblából, minden partíció felett iterálni, és minden Egyes ADF másolási feladat másolása partícióval egyszerre. Amikor minden másolási feladat elkezdi másolni a fájlokat az AWS S3-ból, a LastModifiedTime tulajdonságra támaszkodik, hogy csak az új vagy frissített fájlokat azonosítsa és másolja. Miután minden másolási feladat befejeződött, *a Tárolt eljárás* tevékenység et használ a vezérlőtábla egyes partíciói másolási állapotának frissítéséhez.
 
 A sablon hét tevékenységet tartalmaz:
-- A **lookup** egy külső vezérlő táblából kéri le a partíciókat. A tábla neve *s3_partition_delta_control_table* , és a tábla adatainak betöltésére szolgáló lekérdezés a *"DISTINCT PartitionPrefix kiválasztása a*következőből: s3_partition_delta_control_table".
-- A **foreach** beolvassa a *keresési* tevékenységből a partíciók listáját, és megismétli az egyes partíciókat a *TriggerDeltaCopy* tevékenységhez. A *batchCount* beállíthatja úgy, hogy egyidejűleg több ADF-másolási feladatot futtasson. Ebben a sablonban 2 van beállítva.
-- A **ExecutePipeline** végrehajtja a *DeltaCopyFolderPartitionFromS3* folyamatát. Ennek az az oka, hogy az egyes másolási feladatok elvégzéséhez egy másik folyamatot hozunk létre, mert így egyszerűen újrafuttathatja a sikertelen másolási feladatot, hogy az adott partíciót újra újra lehessen tölteni az AWS S3-ból. Az egyéb partíciókat betöltő többi másolási feladatot nem érinti a rendszer.
-- A **lookup** lekéri a legutóbbi másolási feladatot a külső vezérlő táblából, hogy az új vagy frissített fájlok azonosíthatók legyenek a LastModifiedTime-on keresztül. A tábla neve *s3_partition_delta_control_table* , és az adatok a táblából való betöltésére szolgáló lekérdezés *"Select Max (JobRunTime) as LastModifiedTime from s3_partition_delta_control_table where PartitionPrefix = ' @ {pipeline (). Parameters. prefixStr}" és SuccessOrFailure = 1 "* .
-- A **Másolás** új vagy módosított fájlokat másol az AWS S3-ból Azure Data Lake Storage Gen2. A *modifiedDatetimeStart* tulajdonsága az utolsó másolási feladatokra van állítva. A *modifiedDatetimeEnd* tulajdonsága az aktuális másolási feladatokra van állítva. Vegye figyelembe, hogy az idő az UTC időzónára vonatkozik.
-- A **SqlServerStoredProcedure** frissíti az egyes partíciók másolásának állapotát, és a vezérlési időt a vezérlési táblában másolja, ha az sikeres. A SuccessOrFailure oszlopa 1 értékre van állítva.
-- A **SqlServerStoredProcedure** frissíti az egyes partíciók másolásának állapotát, és lemásolja a futási időt a vezérlési táblába, ha az sikertelen. A SuccessOrFailure oszlopa 0 értékre van állítva.
+- **A keresés** lekéri a partíciókat egy külső vezérlőtáblából. A tábla neve *s3_partition_delta_control_table,* és a táblából adatokat betöltő lekérdezés *"select distinct PartitionPrefix from s3_partition_delta_control_table"*.
+- **ForEach** lekéri a partíciólistát a *lookup* tevékenységből, és minden partíciót a *TriggerDeltaCopy tevékenységhez.* Beállíthatja, hogy a *batchCount* egyszerre több ADF másolási feladatot futtasson. Van meg 2 ebben a sablonban.
+- **Az ExecutePipeline** végrehajtja a *DeltaCopyFolderPartitionFromS3* folyamatot. Az ok, amiért létrehozunk egy másik folyamatot, hogy minden másolási feladat egy partíciót, mert ez megkönnyíti a sikertelen másolási feladat újratöltése, hogy az adott partíció t a AWS S3 újra. Az összes többi más partíciót betöltő másolási feladatoknem érinti.
+- **A keresés** lekéri az utolsó másolási feladat futási idejét a külső vezérlőtáblából, így az új vagy frissített fájlok azonosíthatók a LastModifiedTime segítségével. A tábla neve *s3_partition_delta_control_table,* és a táblából adatokat betöltő lekérdezés *"select max(JobRunTime) as LastModifiedTime s3_partition_delta_control_table ahol PartitionPrefix = "@{pipeline().parameters.prefixStr}" és SuccessOrFailure = 1"*.
+- **Másolja** az új vagy módosított fájlokat csak az egyes partíciók AWS S3 az Azure Data Lake Storage Gen2. A *modifiedDatetimeStart* tulajdonsága az utolsó másolási feladat futási idejére van beállítva. A *modifiedDatetimeEnd* tulajdonsága az aktuális másolási feladat futási idejére van beállítva. Ne feledje, hogy az idő az UTC időzónára vonatkozik.
+- **Az SqlServerStoredProcedure** frissíti az egyes partíciók másolásának és a vezérlőtáblában a futási idő másolásának állapotát, ha az sikeres. A SuccessOrFailure oszlopa 1-re van állítva.
+- **Az SqlServerStoredProcedure** frissíti az egyes partíciók másolásának és a vezérlőtáblában a futási idő másolásának állapotát, ha az sikertelen. A SuccessOrFailure oszlopa 0-ra van állítva.
 
 A sablon két paramétert tartalmaz:
-- **AWS_S3_bucketName** a gyűjtő neve az AWS S3-ban, ahová át kívánja telepíteni az adatait. Ha az AWS S3-on több gyűjtőből kívánja áttelepíteni az adatait, a külső vezérlő táblában még egy oszlopot is hozzáadhat, hogy tárolja a gyűjtő nevét az egyes partíciók számára, valamint a folyamat frissítésével az adott oszlopból származó adatok lekérdezését.
-- **Azure_Storage_fileSystem** a fájlrendszer neve azon a Azure Data Lake Storage Gen2n, amelyen át kívánja telepíteni az adatait.
+- **AWS_S3_bucketName** a gyűjtőneve az AWS S3-on, ahonnan adatokat szeretne áttelepíteni. Ha az AWS S3 több gyűjtőjéből szeretne adatokat áttelepíteni, hozzáadhat még egy oszlopot a külső vezérlőtáblához az egyes partíciók gyűjtőnevének tárolásához, és frissítheti a folyamatot, hogy ennek megfelelően adatokat olvasson le az oszlopból.
+- **Azure_Storage_fileSystem** a fileSystem neve az Azure Data Lake Storage Gen2, ahol adatokat szeretne áttelepíteni.
 
-## <a name="how-to-use-these-two-solution-templates"></a>A két megoldási sablon használata
+## <a name="how-to-use-these-two-solution-templates"></a>A két megoldássablon használata
 
-### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Ahhoz, hogy a sablon áttelepítse az Amazon S3 korábbi adatait Azure Data Lake Storage Gen2 
+### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>A sablon áttelepíti a korábbi adatokat az Amazon S3-ról az Azure Data Lake Storage Gen2-re 
 
-1. Hozzon létre egy vezérlőelem-táblázatot a Azure SQL Databaseban az AWS S3 partíciós listájának tárolásához. 
+1. Hozzon létre egy vezérlőtáblát az Azure SQL Database-ben az AWS S3 partíciólistájának tárolásához. 
 
     > [!NOTE]
     > A tábla neve s3_partition_control_table.
-    > A vezérlő tábla sémája PartitionPrefix és SuccessOrFailure, ahol a PartitionPrefix az S3 előtag-beállítás, amely a mappák és a fájlok név szerinti szűrésére szolgál az Amazon S3-ban, a SuccessOrFailure pedig az egyes partíciók másolásának állapota: 0 azt jelenti, hogy ez a partíció nem lett átmásolva az Azure-ba, és 1 azt jelenti, hogy ez a partíció sikeresen át lett másolva az Azure-ba.
-    > A vezérlő táblában 5 partíció van definiálva, és az egyes partíciók másolásának alapértelmezett állapota 0.
+    > A vezérlőtábla sémája PartitionPrefix és SuccessOrFailure, ahol a PartitionPrefix az S3 előtagja az Amazon S3 mappáinak és fájljainak név szerinti szűrésére, és a SuccessOrFailure az egyes partíciók másolásának állapota: 0 azt jelenti, hogy ez a partíció nem másolt az Azure-ba, és 1 azt jelenti, hogy ez a partíció sikeresen átmásolt az Azure-ba.
+    > A vezérlőtáblában 5 partíció van definiálva, és az egyes partíciók másolásának alapértelmezett állapota 0.
 
     ```sql
     CREATE TABLE [dbo].[s3_partition_control_table](
@@ -89,10 +89,10 @@ A sablon két paramétert tartalmaz:
     ('e', 0);
     ```
 
-2. Hozzon létre egy tárolt eljárást ugyanarra a Azure SQL Database a vezérlő táblához. 
+2. Hozzon létre egy tárolt eljárást ugyanazon az Azure SQL-adatbázison a vezérlőtáblához. 
 
     > [!NOTE]
-    > A tárolt eljárás neve sp_update_partition_success. Az ADF-folyamat SqlServerStoredProcedure tevékenysége fogja meghívni.
+    > A tárolt eljárás neve sp_update_partition_success. Az SqlServerStoredProcedure tevékenység hívja meg az ADF-folyamatban.
 
     ```sql
     CREATE PROCEDURE [dbo].[sp_update_partition_success] @PartPrefix varchar(255)
@@ -105,35 +105,35 @@ A sablon két paramétert tartalmaz:
     GO
     ```
 
-3. Ugrás a **korábbi adatok migrálása az AWS S3-ból Azure Data Lake Storage Gen2** sablonba. Adja meg a külső vezérlő táblával létesített kapcsolatokat, az AWS S3-t, mint az adatforrás-tárolót, és Azure Data Lake Storage Gen2 a célként megadott tárolóként. Vegye figyelembe, hogy a külső vezérlő tábla és a tárolt eljárás ugyanarra a kapcsolódásra hivatkozik.
+3. Nyissa meg a Korábbi adatok áttelepítése az **AWS S3-ból az Azure Data Lake Storage Gen2** sablonba. Adja meg a kapcsolatokat a külső vezérlőtáblába, az AWS S3 adatforrás-tárolóba és az Azure Data Lake Storage Gen2-t a céltárolóba. Ne feledje, hogy a külső vezérlőtábla és a tárolt eljárás ugyanarra a kapcsolatra hivatkozik.
 
     ![Új kapcsolat létrehozása](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
-4. Kattintson a **Sablon használata** lehetőségre.
+4. Válassza **a Sablon használata lehetőséget.**
 
-    ![A sablon használata](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
+    ![Sablon használata](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
-5. Ekkor megjelenik a két folyamat és 3 adatkészlet, ahogy az a következő példában is látható:
+5. A következő példában látható módon a 2 folyamat és 3 adatkészlet jött létre:
 
     ![A folyamat áttekintése](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
-6. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
+6. Válassza **a Hibakeresés**lehetőséget, írja be a **Paraméterek**, majd a **Befejezés**lehetőséget.
 
-    ![Kattintson * * hibakeresés * *](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
+    ![Kattintson a **Debug**](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
 7. A következő példához hasonló eredmények jelennek meg:
 
     ![Az eredmény áttekintése](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
 
 
-### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Ahhoz, hogy a sablon csak az Amazon S3-ból Azure Data Lake Storage Gen2ba másolja a módosított fájlokat
+### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Ahhoz, hogy a sablon csak az Amazon S3-ról az Azure Data Lake Storage Gen2-re másolja a módosított fájlokat
 
-1. Hozzon létre egy vezérlőelem-táblázatot a Azure SQL Databaseban az AWS S3 partíciós listájának tárolásához. 
+1. Hozzon létre egy vezérlőtáblát az Azure SQL Database-ben az AWS S3 partíciólistájának tárolásához. 
 
     > [!NOTE]
     > A tábla neve s3_partition_delta_control_table.
-    > A vezérlő tábla sémája a PartitionPrefix, a JobRunTime és a SuccessOrFailure, ahol a PartitionPrefix az S3 előtag-beállítása az Amazon S3-beli mappák és fájlok szűréséhez név szerint, a JobRunTime a DateTime érték a feladatok futtatásakor, a SuccessOrFailure pedig az egyes partíciók másolásának állapota: 0 azt jelenti, hogy ez a partíció nem lett átmásolva az Azure-ba, 1 pedig azt jelenti, hogy ez a partíció az Azure-ba lett másolva.
-    > A vezérlő táblában 5 partíció van definiálva. A JobRunTime alapértelmezett értéke lehet az az idő, amikor az egyszeri korábbi adatáttelepítés elindul. Az ADF másolási tevékenysége átmásolja a fájlokat az AWS S3-ra, amelyet a rendszer a legutóbbi módosítás után módosított. Az egyes partíciók másolásának alapértelmezett állapota 1.
+    > A vezérlőtábla sémája partitionprefix, JobRunTime és SuccessOrFailure, ahol a PartitionPrefix az S3 előtag beállítása az Amazon S3 mappáinak és fájljainak név szerinti szűrésére, a JobRunTime a datetime érték a feladatok másolásakor, a SuccessOrFailure pedig az egyes partíciók másolásának állapota: 0 azt jelenti, hogy ez a partíció nem lett átmásolva az Azure-ba, és 1 azt jelenti, hogy ez a partíció sikeresen átlett másolva az Azure-ba.
+    > A vezérlőtáblában 5 partíció van definiálva. A JobRunTime alapértelmezett értéke lehet az egyszeri előzményadat-áttelepítés indítása. Az ADF másolási tevékenysége az AWS S3-on lévő azon fájlokat másolja, amelyeket utoljára módosítottak ezen időpont után. Az egyes partíciók másolásának alapértelmezett állapota 1.
 
     ```sql
     CREATE TABLE [dbo].[s3_partition_delta_control_table](
@@ -151,10 +151,10 @@ A sablon két paramétert tartalmaz:
     ('e','1/1/2019 12:00:00 AM',1);
     ```
 
-2. Hozzon létre egy tárolt eljárást ugyanarra a Azure SQL Database a vezérlő táblához. 
+2. Hozzon létre egy tárolt eljárást ugyanazon az Azure SQL-adatbázison a vezérlőtáblához. 
 
     > [!NOTE]
-    > A tárolt eljárás neve sp_insert_partition_JobRunTime_success. Az ADF-folyamat SqlServerStoredProcedure tevékenysége fogja meghívni.
+    > A tárolt eljárás neve sp_insert_partition_JobRunTime_success. Az SqlServerStoredProcedure tevékenység hívja meg az ADF-folyamatban.
 
     ```sql
         CREATE PROCEDURE [dbo].[sp_insert_partition_JobRunTime_success] @PartPrefix varchar(255), @JobRunTime datetime, @SuccessOrFailure bit
@@ -168,31 +168,31 @@ A sablon két paramétert tartalmaz:
     ```
 
 
-3. Ugrás a **különbözeti adatok másolása az AWS S3-ból Azure Data Lake Storage Gen2** sablonra. Adja meg a külső vezérlő táblával létesített kapcsolatokat, az AWS S3-t, mint az adatforrás-tárolót, és Azure Data Lake Storage Gen2 a célként megadott tárolóként. Vegye figyelembe, hogy a külső vezérlő tábla és a tárolt eljárás ugyanarra a kapcsolódásra hivatkozik.
+3. Nyissa meg a **különbözeti adatok másolása az AWS S3-ból az Azure Data Lake Storage Gen2** sablonba. Adja meg a kapcsolatokat a külső vezérlőtáblába, az AWS S3 adatforrás-tárolóba és az Azure Data Lake Storage Gen2-t a céltárolóba. Ne feledje, hogy a külső vezérlőtábla és a tárolt eljárás ugyanarra a kapcsolatra hivatkozik.
 
     ![Új kapcsolat létrehozása](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
 
-4. Kattintson a **Sablon használata** lehetőségre.
+4. Válassza **a Sablon használata lehetőséget.**
 
-    ![A sablon használata](media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png)
+    ![Sablon használata](media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png)
     
-5. Ekkor megjelenik a két folyamat és 3 adatkészlet, ahogy az a következő példában is látható:
+5. A következő példában látható módon a 2 folyamat és 3 adatkészlet jött létre:
 
     ![A folyamat áttekintése](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
 
-6. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
+6. Válassza **a Hibakeresés**lehetőséget, írja be a **Paraméterek**, majd a **Befejezés**lehetőséget.
 
-    ![Kattintson * * hibakeresés * *](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
+    ![Kattintson a **Debug**](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
 
 7. A következő példához hasonló eredmények jelennek meg:
 
     ![Az eredmény áttekintése](media/solution-template-migration-s3-azure/delta-migration-s3-azure5.png)
 
-8. A vezérlő tábla eredményeit a *"select * from s3_partition_delta_control_table"* lekérdezéssel is ellenőrizheti, így az alábbi példához hasonló kimenet jelenik meg:
+8. A vezérlőtábla eredményeit a *"select * from s3_partition_delta_control_table"* lekérdezéssel is ellenőrizheti, a kimenet a következő példához hasonló:
 
     ![Az eredmény áttekintése](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Fájlok másolása több tárolóból](solution-template-copy-files-multiple-containers.md)
 - [Fájlok áthelyezése](solution-template-move-files.md)

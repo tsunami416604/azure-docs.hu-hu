@@ -1,6 +1,6 @@
 ---
-title: A Azure Key Vault biztonsági javaslatai
-description: Azure Key Vault biztonsági javaslatai. Az útmutató megvalósítása a megosztott felelősségi modellben leírtak szerint biztosítja a biztonsági kötelezettségek teljesítését
+title: Biztonsági javaslatok az Azure Key Vaulthoz
+description: Az Azure Key Vault biztonsági javaslatai. Ezen útmutató végrehajtása segít önnek a közös felelősségi modellünkben leírt biztonsági kötelezettségek teljesítésében
 services: key-vault
 author: barclayn
 manager: rkarlin
@@ -11,47 +11,47 @@ ms.date: 09/30/2019
 ms.author: barclayn
 ms.custom: security-recommendations
 ms.openlocfilehash: 9fd41ae9b61a9c74fd5d99dd71199cfde06f5cb2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78192370"
 ---
-# <a name="security-recommendations-for-azure-key-vault"></a>A Azure Key Vault biztonsági javaslatai
+# <a name="security-recommendations-for-azure-key-vault"></a>Biztonsági javaslatok az Azure Key Vaulthoz
 
-Ez a cikk a Azure Key Vault biztonsági javaslatait tartalmazza. A javaslatok megvalósítása a közös felelősségi modellben leírtaknak megfelelően segíti a biztonsági kötelezettségek teljesítését. Ha többet szeretne megtudni arról, hogy a Microsoft hogyan teljesíti a szolgáltatói feladatokat, olvassa el a [megosztott felelősségek a felhőalapú számítástechnika](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)terén című témakört.
+Ez a cikk az Azure Key Vault biztonsági javaslatait tartalmazza. Ezeknek az ajánlásoknak a végrehajtása segít a közös felelősségi modellünkben leírt biztonsági kötelezettségek teljesítésében. Ha többet szeretne tudni arról, hogy a Microsoft mit tesz a szolgáltatói feladatok teljesítése érdekében, olvassa el [a Megosztott felelősségi körök a felhőalapú számítástechnikával](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)kapcsolatos című információt.
 
-A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikusan nyomon követheti. A Azure Security Center az Azure-beli erőforrások védelmének első védelmi vonala. Rendszeresen elemzi az Azure-erőforrások biztonsági állapotát az esetleges biztonsági rések azonosítása érdekében. Ezután javaslatokat tesz a megoldására.
+A cikkben szereplő javaslatok közül néhányat az Azure Security Center automatikusan figyelhet. Az Azure Security Center az első védelmi vonal az erőforrások védelmében az Azure-ban. Rendszeresen elemzi az Azure-erőforrások biztonsági állapotát a potenciális biztonsági rések azonosításához. Ezután ajánlásokat ad arra vonatkozóan, hogyan kell kezelni őket.
 
-- Azure Security Center javaslatokkal kapcsolatos további információkért lásd: [biztonsági javaslatok a Azure Security Centerban](../security-center/security-center-recommendations.md).
-- További információ az Azure Security Centerről: [What is Azure Security Center?](../security-center/security-center-intro.md)
+- Az Azure Security Center-javaslatokról az [Azure Security Center biztonsági javaslatai](../security-center/security-center-recommendations.md)című témakörben talál további információt.
+- Az Azure Security Centerről a [Mi az Azure Security Center?](../security-center/security-center-intro.md)
 
 ## <a name="data-protection"></a>Adatvédelem
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
-|Soft delete engedélyezése | A [Soft delete](key-vault-ovw-soft-delete.md) lehetővé teszi a törölt tárolók és tároló objektumok helyreállítását |  - |
-| A tár adatelérésének korlátozása  | Kövesse a legalacsonyabb jogosultsági szint elvét, és korlátozza, hogy a szervezet tagjai hozzáférhessenek a tár adataihoz |  - |
+|Helyreállítható törlés engedélyezése | [A helyreállítható törlés](key-vault-ovw-soft-delete.md) lehetővé teszi a törölt tárolók és tárolóobjektumok helyreállítását |  - |
+| A tárolóadatokhoz való hozzáférés korlátozása  | Kövesse a minimális jogosultság elvét, és korlátozza, hogy a szervezet tagjai mely tárolóadatokhoz férhetnek hozzá |  - |
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
-| A közreműködői hozzáféréssel rendelkező felhasználók számának korlátozása | Ha a felhasználó közreműködői engedélyekkel rendelkezik egy kulcstartó felügyeleti síkon, akkor a felhasználó egy Key Vault hozzáférési szabályzat beállításával hozzáférést biztosíthat az adatsíkon. Szigorúan meg kell határoznia, hogy kinek van közreműködői szerepköre a kulcstartóhoz való hozzáféréshez. Győződjön meg arról, hogy csak azok férhetnek hozzá és kezelhetik a tárolókat, akiknek szükségük van a hozzáférésre jogosult személyek számára. [A Key vaulthoz való biztonságos hozzáférést](key-vault-secure-your-key-vault.md) is elolvashatja | - |
+| Közreműködői hozzáféréssel rendelkező felhasználók számának korlátozása | Ha egy felhasználó közreműködői engedélyekkel rendelkezik egy key vault felügyeleti síkhoz, a felhasználó hozzáférést biztosíthat magának az adatsíkhoz a Key Vault hozzáférési szabályzat beállításával. Szorosan szabályozhatja, hogy ki rendelkezik közreműködői szerepkör-hozzáféréssel a kulcstartókhoz. Győződjön meg arról, hogy csak azok férhetnek hozzá és kezelhetik a tárolókat, akiknek hozzáférésre van szükségük. A [biztonságos hozzáférés a key vaulthoz](key-vault-secure-your-key-vault.md) | - |
 
 ## <a name="monitoring"></a>Figyelés
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
- A Key Vault diagnosztikai naplóit engedélyezni kell | Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. | [Igen](../security-center/security-center-identity-access.md) |
-| Annak korlátozása, hogy ki férhet hozzá az Azure Key Vault naplóihoz | [Key Vault naplók](key-vault-logging.md) a tárolón végrehajtott tevékenységekről, például a tárolók, kulcsok és titkos kódok létrehozásáról vagy törléséről, valamint a vizsgálat során felhasználható adatokról |  - |
+ A Key Vaultban engedélyezni kell a diagnosztikai naplókat | Engedélyezze a naplókat, és őrizze meg őket egy évig. Ez lehetővé teszi, hogy újra tevékenységnyomvonalak at vizsgálati célokra, ha egy biztonsági incidens, vagy a hálózat veszélybe kerül. | [Igen](../security-center/security-center-identity-access.md) |
+| Annak korlátozása, hogy ki férhet hozzá az Azure Key Vault-naplókhoz | [A Key Vault naplói](key-vault-logging.md) információkat mentenek a tárolón végrehajtott tevékenységekről, például a tárolók, kulcsok, titkos kulcsok létrehozásáról vagy törléséről, és a vizsgálat során használhatók |  - |
 
 ## <a name="networking"></a>Hálózat
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
-|Hálózati expozíció korlátozása | A hálózati hozzáférést a tár elérését igénylő megoldások által használt virtuális hálózatokra kell korlátozni. Tekintse át a [Azure Key Vault virtuális hálózati szolgáltatás végpontjának](key-vault-overview-vnet-service-endpoints.md) információit | - |
+|Hálózati expozíció korlátozása | A hálózati hozzáférést a tárolóhoz való hozzáférést igénylő megoldások által használt virtuális hálózatokra kell korlátozni. Az [Azure Key Vault virtuális hálózati szolgáltatásának végpontjaira](key-vault-overview-vnet-service-endpoints.md) vonatkozó információk áttekintése | - |
 
 ## <a name="next-steps"></a>További lépések
 
-Érdeklődjön az alkalmazás szolgáltatójánál, hogy vannak-e további biztonsági követelmények. A biztonságos alkalmazások fejlesztésével kapcsolatos további információkért lásd a [biztonságos fejlesztési dokumentációt](../security/fundamentals/abstract-develop-secure-apps.md).
+Érdeklődjön az alkalmazás szolgáltatójánál, hogy vannak-e további biztonsági követelmények. A biztonságos alkalmazások fejlesztéséről a Biztonságos fejlesztési dokumentáció című témakörben olvashat [bővebben.](../security/fundamentals/abstract-develop-secure-apps.md)

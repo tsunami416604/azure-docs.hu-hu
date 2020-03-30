@@ -1,7 +1,7 @@
 ---
-title: Azure API Management-szolgáltatások üzembe helyezése több Azure-régióban
+title: Azure API-kezelési szolgáltatások üzembe helyezése több Azure-régióban
 titleSuffix: Azure API Management
-description: Ismerje meg, hogyan helyezhet üzembe egy Azure API Management Service-példányt több Azure-régióban.
+description: Ismerje meg, hogyan helyezhet üzembe egy Azure API Management szolgáltatáspéldányt több Azure-régióban.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -14,69 +14,69 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
 ms.openlocfilehash: 5c71f37741de06b8633e7eafaae2f29823214f74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442663"
 ---
-# <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Azure API Management Service-példány üzembe helyezése több Azure-régióban
+# <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban
 
-Az Azure API Management támogatja a többrégiós telepítést, amely lehetővé teszi az API-közzétevők számára, hogy egyetlen Azure API Management-szolgáltatást terjesszen az összes támogatott Azure-régió között. A többrégiós szolgáltatás lehetővé teszi a földrajzilag elosztott API-fogyasztók által észlelt kérelmek késésének csökkentését és a szolgáltatás rendelkezésre állásának javítását, ha az egyik régió offline állapotú
+Az Azure API Management támogatja a több régióra kiterjedő telepítést, amely lehetővé teszi az API-közzétevők számára, hogy egyetlen Azure API-felügyeleti szolgáltatást osszanak ki tetszőleges számú támogatott Azure-régióban. A több régióból álló szolgáltatás segít csökkenteni a földrajzilag elosztott API-felhasználók által érzékelt kérelemkésést, és javítja a szolgáltatás rendelkezésre állását, ha egy régió offline állapotba kerül.
 
-Az új Azure API Management szolgáltatás kezdetben csak egyetlen [egységet][unit] tartalmaz egyetlen Azure-régióban, az elsődleges régióban. További régiók is hozzáadhatók az elsődleges vagy másodlagos régióhoz. A rendszer minden kiválasztott elsődleges és másodlagos régióban üzembe helyez egy API Management átjáró összetevőt. A bejövő API-kérelmek automatikusan a legközelebbi régióba lesznek irányítva. Ha egy régió offline állapotba kerül, az API-kérelmeket a rendszer automatikusan átirányítja a meghibásodott régió köré a következő legközelebbi átjáróra.
+Egy új Azure API Management szolgáltatás kezdetben csak egy [egységet][unit] tartalmaz egyetlen Azure-régióban, az elsődleges régióban. További régiók adhatók hozzá az Elsődleges vagy másodlagos régiókhoz. Az API Management átjáró-összetevő minden kiválasztott elsődleges és másodlagos régióban üzembe kerül. A bejövő API-kérelmek automatikusan a legközelebbi régióba lesznek irányítva. Ha egy régió offline állapotba kerül, az API-kérelmek automatikusan a sikertelen régió körül a következő legközelebbi átjáróra lesz irányítva.
 
 > [!NOTE]
-> A rendszer csak a API Management átjáró összetevőjét telepíti minden régióra. A Service Management összetevőt és a fejlesztői portált csak az elsődleges régió tárolja. Ezért az elsődleges régió meghibásodása esetén a fejlesztői portálhoz való hozzáférés és a konfiguráció módosításának lehetősége (például az API-k hozzáadása, a házirendek alkalmazása) nem fog megjelenni, amíg az elsődleges régió újra online állapotba nem kerül. Míg az elsődleges régió offline állapotban elérhető másodlagos régiók, az API-forgalmat továbbra is az elérhető legújabb konfigurációval fogja kiszolgálni.
+> Csak az API Management átjáró-összetevője van telepítve az összes régióban. A szolgáltatáskezelési összetevő és a fejlesztői portál csak az Elsődleges régióban található. Ezért az elsődleges régió kimaradása esetén a fejlesztői portálhoz való hozzáférés és a konfiguráció módosításának képessége (pl. API-k hozzáadása, szabályzatok alkalmazása) károsodik, amíg az elsődleges régió újra online állapotba nem kerül. Amíg az elsődleges régió offline elérhető, a másodlagos régiók továbbra is a számukra elérhető legújabb konfiguráció használatával szolgálják ki az API-forgalmat.
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="add-region"> </a>API Management szolgáltatási példány üzembe helyezése egy új régióban
+## <a name="deploy-an-api-management-service-instance-to-a-new-region"></a><a name="add-region"> </a>API-felügyeleti szolgáltatáspéldány központi telepítése új régióba
 
 > [!NOTE]
-> Ha még nem hozott létre API Management Service-példányt, tekintse meg [a API Management-szolgáltatás példányának létrehozása][create an api management service instance]című témakört.
+> Ha még nem hozott létre API Management szolgáltatáspéldányt, olvassa el az API Management szolgáltatáspéldány létrehozása című [témakört.][create an api management service instance]
 
-A Azure Portal navigáljon az API Management Service-példány **méretezési és díjszabási** lapjához.
-
-![Méretezés lap][api-management-scale-service]
-
-Egy új régióban való üzembe helyezéshez kattintson a **+ régió hozzáadása** lehetőségre az eszköztáron.
-
-![Régió hozzáadása][api-management-add-region]
-
-Válassza ki a helyet a legördülő listából, és állítsa be az egységek számát a csúszkával.
-
-![Egységek meghatározása][api-management-select-location-units]
-
-Kattintson a **Hozzáadás** gombra a kijelölés a helyszínek táblában való elhelyezéséhez.
-
-Ismételje meg a folyamatot, amíg nincs konfigurálva minden hely, majd kattintson a **Save (Mentés** ) gombra az eszköztárból a telepítési folyamat elindításához.
-
-## <a name="remove-region"> </a>API Management szolgáltatás példányának törlése egy helyről
-
-A Azure Portal navigáljon az API Management Service-példány **méretezési és díjszabási** lapjához.
+Az Azure Portalon keresse meg az API Management szolgáltatáspéldány **méretezési és díjszabási** lapját.
 
 ![Méretezés lap][api-management-scale-service]
 
-Az eltávolítandó helyhez nyissa meg a helyi menüt a tábla jobb oldalán található **..** . gomb használatával. Válassza a **Törlés** lehetőséget.
+Ha új régióra szeretne telepíteni, kattintson az eszköztár **+ Régió hozzáadása** gombjára.
+
+![Terület hozzáadása][api-management-add-region]
+
+Válassza ki a helyet a legördülő listából, és adja meg a csúszkával rendelkező egységek számát.
+
+![Egységek megadása][api-management-select-location-units]
+
+A **Hozzáadás** gombra kattintva helyezze el a kijelölést a Helyek táblában.
+
+Ismételje ezt a folyamatot addig, amíg az összes hely nincs konfigurálva, és kattintson a **Mentés gombra** az eszköztárról a telepítési folyamat elindításához.
+
+## <a name="delete-an-api-management-service-instance-from-a-location"></a><a name="remove-region"> </a>API-felügyeleti szolgáltatáspéldány törlése egy helyről
+
+Az Azure Portalon keresse meg az API Management szolgáltatáspéldány **méretezési és díjszabási** lapját.
+
+![Méretezés lap][api-management-scale-service]
+
+Az eltávolítani kívánt hely hez nyissa meg a helyi menüt a táblázat jobb végén található **...** gombbal. Válassza a **Törlés** lehetőséget.
 
 Erősítse meg a törlést, és kattintson a **Mentés** gombra a módosítások alkalmazásához.
 
-## <a name="route-backend"> </a>API-hívások átirányítása a regionális háttérbeli szolgáltatásokhoz
+## <a name="route-api-calls-to-regional-backend-services"></a><a name="route-backend"> </a>API-hívások irányítása a regionális háttérszolgáltatásokhoz
 
-Az Azure API Management csak egyetlen háttérbeli szolgáltatás URL-címét tartalmazza. Bár vannak Azure API Management-példányok különböző régiókban, az API-átjáró továbbra is továbbítja a kéréseket ugyanarra a háttér-szolgáltatásba, amely csak egy régióban van üzembe helyezve. Ebben az esetben a teljesítmény nyeresége csak az Azure-API Management gyorsítótárba helyezett válaszokból származik, a kéréshez tartozó régióban, de a háttérben való kapcsolatfelvétel továbbra is nagy késést okozhat.
+Az Azure API Management csak egy háttérszolgáltatás URL-címét tartalmazza. Annak ellenére, hogy vannak Azure API Management-példányok a különböző régiókban, az API-átjáró továbbra is továbbítja a kérelmeket ugyanahhoz a háttérszolgáltatáshoz, amely csak egy régióban van telepítve. Ebben az esetben a teljesítménynyereség csak az Azure API Management ben gyorsítótárazott válaszokból származik a kérésre jellemző régióban, de a háttérrendszerrel való kapcsolatfelvétel a világ minden tájáról továbbra is nagy késést okozhat.
 
-A rendszer földrajzi eloszlásának teljes kihasználásához az Azure API Management-példányokkal megegyező régiókban kell telepíteni a háttér-szolgáltatásokat. Ezt követően a házirendek és a `@(context.Deployment.Region)` tulajdonság használatával átirányíthatja a forgalmat a háttér helyi példányaira.
+A rendszer földrajzi eloszlásának teljes kihasználásához az Azure API Management-példányokkal azonos régiókban üzembe helyezett háttérszolgáltatásokkal kell rendelkeznie. Ezután a `@(context.Deployment.Region)` szabályzatok és a tulajdon használatával a forgalmat a háttérterület helyi példányaihoz irányíthatja.
 
-1. Navigáljon az Azure API Management-példányhoz, és kattintson a bal oldali menü **API** -k elemére.
+1. Keresse meg az Azure API Management-példányt, és kattintson a bal oldali menü **API-kra.**
 2. Válassza ki a kívánt API-t.
-3. Kattintson a **Kódszerkesztő** gombra a **bejövő feldolgozás**nyíl legördülő menüjéből.
+3. Kattintson a **Bejövő feldolgozás**nyíl legördülő **menüKódszerkesztő** elemére.
 
-    ![API-kód szerkesztője](./media/api-management-howto-deploy-multi-region/api-management-api-code-editor.png)
+    ![API-kódszerkesztő](./media/api-management-howto-deploy-multi-region/api-management-api-code-editor.png)
 
-4. A `set-backend` és a feltételes `choose` házirendek együttes használatával megfelelő útválasztási házirendet hozhat létre a fájl `<inbound> </inbound>` szakaszában.
+4. A `set-backend` feltételes `choose` házirendekkel kombinálva megfelelő útválasztási `<inbound> </inbound>` házirendet hozhat létre a fájl szakaszában.
 
-    Az alábbi XML-fájl például az USA nyugati régiójában és Kelet-Ázsia régióban fog működni:
+    Az alábbi XML-fájl például nyugat-amerikai és kelet-ázsiai régiókban működik:
 
     ```xml
     <policies>
@@ -107,17 +107,17 @@ A rendszer földrajzi eloszlásának teljes kihasználásához az Azure API Mana
     ```
 
 > [!TIP]
-> A háttér-szolgáltatásokat az [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)is megteheti, az API-hívásokat átirányítja a Traffic Managerra, és lehetővé teszi az Útválasztás automatikus feloldását.
+> A háttérszolgáltatások az Azure [Traffic Manager,](https://azure.microsoft.com/services/traffic-manager/)irányítsa az API-hívásokat a Traffic Manager, és hagyja, hogy az útválasztás automatikusan oldja meg.
 
-## <a name="custom-routing"> </a>Egyéni útválasztás használata API Management regionális átjárók számára
+## <a name="use-custom-routing-to-api-management-regional-gateways"></a><a name="custom-routing"> </a>Egyéni útválasztás használata az API Management regionális átjáróihoz
 
-API Management a [legalacsonyabb késés](../traffic-manager/traffic-manager-routing-methods.md#performance)alapján átirányítja a kéréseket egy regionális _átjáróra_ . Bár ez a beállítás nem bírálható felül a API Managementban, saját Traffic Manager is használhat egyéni útválasztási szabályokkal.
+Az API Management a kérelmeket a [legalacsonyabb késés](../traffic-manager/traffic-manager-routing-methods.md#performance)alapján egy regionális _átjáróhoz_ irányítja. Bár az API Management ben nem lehet felülbírálni ezt a beállítást, a saját Traffic Manager egyéni útválasztási szabályokkal is használható.
 
-1. Saját Azure- [Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)létrehozása.
-1. Ha egyéni tartományt használ, a API Management szolgáltatás helyett [használja a Traffic Manager](../traffic-manager/traffic-manager-point-internet-domain.md) .
-1. [Konfigurálja a API Management regionális végpontokat a Traffic Managerban](../traffic-manager/traffic-manager-manage-endpoints.md). A regionális végpontok a `https://<service-name>-<region>-01.regional.azure-api.net`URL-mintáját követik, például `https://contoso-westus2-01.regional.azure-api.net`.
-1. [Konfigurálja a API Management regionális állapotjelző végpontokat a Traffic Managerban](../traffic-manager/traffic-manager-monitoring.md). A regionális állapotjelző végpontok a `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef`URL-mintáját követik, például `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`.
-1. A Traffic Manager [útválasztási módszerének](../traffic-manager/traffic-manager-routing-methods.md) meghatározása.
+1. Saját [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)létrehozása.
+1. Ha egyéni tartományt használ, [használja azt a Traffic Manager](../traffic-manager/traffic-manager-point-internet-domain.md) helyett az API Management szolgáltatás.
+1. [Konfigurálja az API Management területi végpontjait a Traffic Manager programban.](../traffic-manager/traffic-manager-manage-endpoints.md) A regionális végpontok például `https://<service-name>-<region>-01.regional.azure-api.net` `https://contoso-westus2-01.regional.azure-api.net`az URL-mintát követik.
+1. [Konfigurálja az API Management regionális állapotvégpontjait a Traffic Manager alkalmazásban.](../traffic-manager/traffic-manager-monitoring.md) A regionális állapotvégpontok például `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef` `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`az URL-mintát követik.
+1. Adja meg a Traffic Manager [útválasztási módját.](../traffic-manager/traffic-manager-routing-methods.md)
 
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
 [api-management-scale-service]: ./media/api-management-howto-deploy-multi-region/api-management-scale-service.png

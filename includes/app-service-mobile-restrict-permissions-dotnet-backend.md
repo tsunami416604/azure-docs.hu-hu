@@ -5,28 +5,28 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: b609a708a987194398c53bdf83f0d6e1f281808d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179612"
 ---
-Alapértelmezés szerint a Mobile Apps háttérbeli API-k névtelenül hívhatók meg. Ezután korlátoznia kell a hozzáférést csak a hitelesített ügyfelekre.  
+Alapértelmezés szerint a mobilalkalmazások háttérrendszerében lévő API-k névtelenül hívhatók meg. Ezután csak a hitelesített ügyfelekre kell korlátoznia a hozzáférést.  
 
-* **Node. js-háttér (a Azure Portalon keresztül)** :  
+* **Node.js háttérrendszeren keresztül (az Azure Portalon keresztül)** :  
 
-    A Mobile Apps beállításaiban kattintson az **egyszerű táblák** elemre, és válassza ki a táblát. Kattintson az **engedélyek módosítása**elemre, válassza a **hitelesített hozzáférés csak** az összes engedélyhez lehetőséget, majd kattintson a **Mentés**gombra.
-* **.Net-háttér (C#)** :  
+    A Mobilalkalmazások beállításaiközött kattintson a **Táblázatok egyszerű** lehetőségre, és válassza ki a táblázatot. Kattintson **az Engedélyek módosítása**gombra, válassza a Csak hitelesített **hozzáférés** lehetőséget az összes engedélyhez, majd kattintson a **Mentés gombra.**
+* **.NET háttér-tartalék (C#)**:  
 
-    A kiszolgáló projektben navigáljon a **vezérlők** > **TodoItemController.cs**. Adja hozzá `[Authorize]` az attribútumot a **TodoItemController** osztályhoz az alábbiak szerint. Ha csak bizonyos módszerekre szeretné korlátozni a hozzáférést, ezt az attribútumot csak az osztály helyett a metódusokra is alkalmazhatja. A kiszolgálói projekt ismételt közzététele.
+    A kiszolgálóprojektben keresse meg a **Vezérlők** > **TodoItemController.cs.** Adja `[Authorize]` hozzá az attribútumot a **TodoItemController** osztályhoz az alábbiak szerint. Ha csak bizonyos metódusokra szeretné korlátozni a hozzáférést, ezt az attribútumot csak ezekre a metódusokra is alkalmazhatja az osztály helyett. Tegye közzé újra a kiszolgálóprojektet.
 
         [Authorize]
         public class TodoItemController : TableController<TodoItem>
 
-* **Node. js-háttér (node. js-kód használatával)** :  
+* **Node.js háttér (via Node.js kód)** :  
 
-    A Table Access hitelesítésének megköveteléséhez adja hozzá a következő sort a Node. js-kiszolgáló parancsfájlhoz:
+    A táblahozzáférés hitelesítésének megköveteléséhez adja hozzá a következő sort a Node.js kiszolgáló parancsfájljához:
 
         table.access = 'authenticated';
 
-    További részleteket a következő témakörben talál [: Hitelesítés megkövetelése a táblákhoz](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth)való hozzáféréshez. Ha szeretné megtudni, hogyan töltheti le a gyors üzembe helyezési kód projektet [a webhelyről, olvassa el a következő témakört: Töltse le a Node. js-háttérbeli Gyorsindítás kódot](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)a git használatával.
+    További részletek: [Hogyan: Hitelesítés megkövetelése a táblákhoz való hozzáféréshez.](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth) A rövid útmutató kódprojektjének a webhelyről való letöltéséről a [Hogyan töltheti le a Node.js háttérkódprojektet a Git használatával című témakörben.](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)

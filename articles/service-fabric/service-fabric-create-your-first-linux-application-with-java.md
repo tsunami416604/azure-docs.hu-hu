@@ -1,13 +1,13 @@
 ---
-title: Azure Service Fabric megbízható Actors Java-alkalmazás létrehozása Linux rendszeren
+title: Hozzon létre egy Azure Service Fabric megbízható szereplők Java alkalmazás Linux
 description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe egy Java Service Fabric Reliable Actors-alkalmazást öt perc alatt.
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458164"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Az első Java Service Fabric Reliable Actors-alkalmazás létrehozása Linuxon
@@ -208,18 +208,18 @@ Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel 
 Bontsa ki az **Alkalmazások** csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazás típusához, és egy másik a típus első példányához.
 
 > [!IMPORTANT]
-> Ha az alkalmazást egy biztonságos Linux-fürtön szeretné üzembe helyezni az Azure-ban, konfigurálnia kell egy tanúsítványt, hogy érvényesítse az alkalmazást a Service Fabric futtatókörnyezettel. Ezzel lehetővé teszi, hogy a Reliable Actors szolgáltatásai kommunikáljanak a mögöttes Service Fabric Runtime API-kkal. További információ: [Reliable Services alkalmazás konfigurálása Linux-fürtökön való futtatásra](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Az alkalmazás üzembe helyezéséhez egy biztonságos Linux-fürt az Azure-ban, konfigurálnia kell egy tanúsítványt, hogy érvényesítse az alkalmazást a Service Fabric futásidejű. Ezzel lehetővé teszi, hogy a Reliable Actors-szolgáltatások kommunikálni az alapul szolgáló Service Fabric futásidejű API-k. További információ: [Reliable Services alkalmazás konfigurálása Linux-fürtökön való futtatáshoz.](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Tesztügyfél elindítása és feladatátvétel végrehajtása
 Egy aktor semmit sem tesz önmagában. Egy másik szolgáltatást vagy alkalmazást igényel, amely üzeneteket küld a számára. Az aktorsablon egy egyszerű tesztszkriptet tartalmaz, amelyet az aktorszolgáltatással való kommunikációra használhat.
 
 > [!Note]
-> A tesztelési ügyfél a ActorProxy osztályt használja a szereplőkkel folytatott kommunikációhoz, amelyeknek a Actor szolgáltatással megegyező fürtön kell futniuk, vagy meg kell osztaniuk ugyanazt az IP-címtartományt.  A tesztelési ügyfelet futtathatja ugyanazon a számítógépen is, mint a helyi fejlesztési fürtön.  Egy távoli fürtben lévő szereplőkkel való kommunikációhoz azonban olyan átjárót kell üzembe helyeznie a fürtön, amely a szereplőkkel folytatott külső kommunikációt kezeli.
+> A tesztügyfél az ActorProxy osztályt használja az szereplőkkel való kommunikációhoz, amelyeknek ugyanazon a fürtön belül kell futniuk, mint az aktor szolgáltatásnak, vagy ugyanazt az IP-címterületet kell megosztaniuk.  A tesztügyfelet ugyanazon a számítógépen futtathatja, mint a helyi fejlesztési fürtöt.  A távoli fürt szereplőivel való kommunikációhoz azonban telepítenie kell egy átjárót a fürtön, amely kezeli a külső kommunikációt az szereplőkkel.
 
 1. Futtassa a szkriptet a figyelési segédprogram használatával az aktorszolgáltatás kimenetének megtekintéséhez.  A teszt-szkript a(z) `setCountAsync()` metódust hívja meg az aktorhoz a számláló léptetéséhez és a(z) `getCountAsync()` metódust a számláló új értékének beolvasásához, majd megjeleníti ezt az értéket a konzolon.
 
-   MAC OS X esetén a következő további parancsok futtatásával át kell másolnia a HelloWorldTestClient mappát a tárolóban lévő néhány helyre.    
+   MAC OS X esetén a HelloWorldTestClient mappát a következő további parancsok futtatásával kell átmásolnia a tárolón belüli bizonyos helyre.    
     
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
@@ -232,7 +232,7 @@ Egy aktor semmit sem tesz önmagában. Egy másik szolgáltatást vagy alkalmaz�
     watch -n 1 ./testclient.sh
     ```
 
-2. Keresse meg az aktorszolgáltatás elsődleges replikáját futtató csomópontot a Service Fabric Explorerben. Az alábbi képernyőképen ez a 3. csomópont. A szolgáltatás elsődleges replikája kezeli az olvasási és írási műveleteket.  A szolgáltatás állapotának módosításait ezután a rendszer replikálja a másodlagos replikák között, az alábbi képernyőképen a 0. és az 1. csomóponton fut.
+2. Keresse meg az aktorszolgáltatás elsődleges replikáját futtató csomópontot a Service Fabric Explorerben. Az alábbi képernyőképen ez a 3. csomópont. A szolgáltatás elsődleges replikája kezeli az olvasási és írási műveleteket.  A szolgáltatásállapot változásait ezután replikálja a másodlagos replikákra, és az alábbi képernyőképen a 0 és az 1 csomóponton fut.
 
     ![Az elsődleges replika megkeresése a Service Fabric Explorerben][sfx-primary]
 
@@ -292,8 +292,8 @@ A Service Fabric Reliable Services támogatása az alkalmazáshoz.
   }
   ```
 
-### <a name="others"></a>Egyebek
-#### <a name="transport"></a>Közlekedés
+### <a name="others"></a>Egyéb
+#### <a name="transport"></a>Átvitel
 
 Az átviteli réteg támogatása a Service Fabric Java-alkalmazáshoz. Ezt a függőséget nem kell kifejezetten hozzáadnia a Reliable Actor- vagy Service-alkalmazásaihoz, hacsak a programozást nem az átviteli réteg szintjén végzi.
 
@@ -335,7 +335,7 @@ A natív Service Fabric-futtatókörnyezettel kommunikáló Service Fabric rends
   }
   ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az első Service Fabric Java-alkalmazás létrehozása Linuxra Eclipse használatával](service-fabric-get-started-eclipse.md)
 * [További tudnivalók a Reliable Actorsről](service-fabric-reliable-actors-introduction.md)

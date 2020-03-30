@@ -1,6 +1,6 @@
 ---
-title: Availability Zonest használó Azure-méretezési csoport létrehozása
-description: Ismerje meg, hogyan hozhat létre olyan Azure-beli virtuálisgép-méretezési csoportokat, amelyek a Availability Zonest használják az kimaradások nagyobb mértékű redundancia érdekében
+title: Rendelkezésre állási zónákat használó Azure-méretezési csoport létrehozása
+description: Megtudhatja, hogyan hozhat létre azure-beli virtuálisgép-méretezési csoportokat, amelyek rendelkezésre állási zónákat használnak a kimaradások elleni megnövekedett redundancia érdekében
 author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -10,72 +10,72 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: cynthn
 ms.openlocfilehash: 11695eb889a10dc689b00399a37382a3b9772eae
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76274414"
 ---
-# <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Availability Zonest használó virtuálisgép-méretezési csoport létrehozása
+# <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Rendelkezésre állási zónákat használó virtuálisgép-méretezési csoport létrehozása
 
-A virtuálisgép-méretezési csoportok adatközpont-szintű meghibásodások elleni ellátásához létrehozhat egy méretezési csoportot Availability Zones között. A Availability Zones támogató Azure-régiók legalább három különálló zónával rendelkeznek, amelyek mindegyike saját független áramforrással, hálózattal és hűtéssel rendelkezik. További információ: [Availability Zones áttekintése](../availability-zones/az-overview.md).
+A virtuálisgép-méretezési csoportok adatközpont-szintű hibák elleni védelme érdekében létrehozhat egy méretezési csoportot a rendelkezésre állási zónák között. A rendelkezésre állási zónákat támogató Azure-régiók legalább három külön zónával rendelkeznek, amelyek mindegyike saját független áramforrással, hálózattal és hűtéssel rendelkezik. További információt [a Rendelkezésre állási zónák áttekintése című témakörben talál.](../availability-zones/az-overview.md)
 
 ## <a name="availability-considerations"></a>Rendelkezésre állási szempontok
 
-Ha egy méretezési csoport üzembe helyezését egy vagy több, a *2017-12-01*-es API-verzióval ellátott zónába telepíti, lehetősége van az üzembe helyezésre a "Max spread" vagy a "statikus 5 tartalék tartomány terjesztése" lehetőséggel. A maximális terjesztéssel a méretezési csoport a lehető legtöbb tartalék tartományba terjeszti a virtuális gépeket az egyes zónákon belül. Ez a terjesztés több vagy kevesebb, mint öt tartalék tartományba kerülhet. A "statikus 5 tartalék tartomány elterjedése" esetén a méretezési csoport minden zónájában pontosan öt tartalék tartományba helyezi át a virtuális gépeket. Ha a méretezési csoport nem talál öt különálló tartalék tartományt egy zónában a foglalási kérelem kielégítése érdekében, a kérelem meghiúsul.
+Ha a *2017-12-01-es API-verziónak*köszönhetően egy méretezési csoportba egy vagy több zónába telepíti a méretezést, lehetősége van a "maximális szétosztás" vagy a "statikus 5 tartaléktartomány szétválasztása" segítségével. A maximális terjedés, a méretezési készlet osztja a virtuális gépek között a lehető legtöbb tartalék tartományok az egyes zónákon belül. Ez a terjedés zónanként ötnél több vagy kevesebb tartalék tartományban is lehet. A "statikus 5 tartalék tartomány szétterítése", a méretezési csoport osztja a virtuális gépek között pontosan öt tartalék tartományok zónánként. Ha a méretezési csoport nem talál öt különálló tartalék tartományt zónánként a foglalási kérelem teljesítéséhez, a kérés sikertelen lesz.
 
-Javasoljuk, hogy a legtöbb számítási feladathoz a **maximális terjesztéssel végezze el a telepítést**, mivel ez a módszer a lehető legjobb terjesztést biztosítja a legtöbb esetben. Ha a replikák különböző hardveres elkülönítési egységekben való elosztására van szükség, javasoljuk, hogy az egész Availability Zones, és az egyes zónákon belüli maximális eloszlást használja.
+**Azt javasoljuk, üzembe helyezése maximális terjedésa a legtöbb számítási feladatok,** mivel ez a megközelítés biztosítja a legjobb terjedését a legtöbb esetben. Ha replikák kell elosztani a különböző hardverelkülönítési egységek, javasoljuk, hogy a rendelkezésre állási zónák között, és használja a maximális terjedési belül minden zónában.
 
-A maximális terjesztéssel csak egy tartalék tartomány jelenik meg a méretezési csoport virtuálisgép-példányának nézetében és a példány metaadataiban, függetlenül attól, hogy a virtuális gépek hány tartalék tartomány között oszlanak meg. Az egyes zónákon belüli terjesztés implicit.
+A maximális terjedés, csak egy tartalék tartomány a méretezési csoport virtuálisgép-példány nézetben, és a példány metaadatok, függetlenül attól, hogy hány tartalék tartományok a virtuális gépek között elosztva. Az egyes zónákon belüli terjedés implicit.
 
-A maximális terjesztés használatához állítsa a *platformFaultDomainCount* *1*értékre. A statikus öt tartalék tartomány kiterjedésének használatához állítsa a *platformFaultDomainCount* *5*értékre. Az API *2017-12-01*-es verziójában az *platformFaultDomainCount* alapértelmezett értéke *1* az egyzónás és a több zónás méretezési csoport esetében. Jelenleg csak a statikus öt tartalék tartomány-elosztás támogatott a regionális (nem zóna) méretezési csoportok esetében.
+A maximális szórás használatához állítsa *a platformFaultDomainCount* értéket *1-re.* A statikus öt tartaléktartomány terjedésének használatához állítsa *a platformFaultDomainCount-ot* *5-re*. A *2017-12-01*API-verzióban a *platformFaultDomainCount* alapértelmezés szerint *1* az egyzónás és a zónaközi méretezési csoportok esetében. Jelenleg csak a statikus öt tartalék tartomány terjedése támogatott regionális (nem zónaszintű) méretezési csoportok.
 
 ### <a name="placement-groups"></a>Elhelyezési csoportok
 
-Méretezési csoport központi telepítésekor lehetősége van arra is, hogy rendelkezésre állási zónaként vagy több zónán kívül egyetlen [elhelyezési csoportot](./virtual-machine-scale-sets-placement-groups.md) telepítsen. A regionális (nem zónákra épülő) méretezési csoportok esetében a választás az, hogy egyetlen elhelyezési csoport legyen a régióban, vagy több a régióban. A legtöbb számítási feladathoz több elhelyezési csoportot is ajánlunk, ami nagyobb skálázást tesz lehetővé. Az API *2017-12-01*-es verziójában a méretezés beállítja az alapértelmezett értéket több elhelyezési csoport számára az egyzónás és a többzónás méretezési csoportokhoz, de alapértelmezés szerint az egyhelyes csoportok számára a regionális (nem zónákra kiterjedő) méretezési csoportok esetében.
+Méretezési csoport telepítésekor is lehetősége van arra, hogy egyetlen [elhelyezési csoporttal](./virtual-machine-scale-sets-placement-groups.md) üzembe helyezze rendelkezésre állási zónánként vagy zónánként több beállítással. A regionális (nem zónaszintű) méretezési csoportok esetében a választás az, hogy egyetlen elhelyezési csoport a régióban, vagy több a régióban. A legtöbb számítási feladatok hoz, azt javasoljuk, több elhelyezési csoportok, amely lehetővé teszi a nagyobb léptékű. A *2017-12-01-es API-verzióban*a méretezés alapértelmezés szerint több elhelyezési csoportra van beállítva az egyzónás és a zónaközi méretezési csoportokhoz, de alapértelmezés szerint a regionális (nem zónaszintű) méretezési csoportok egyetlen elhelyezési csoportjára vannak beállítva.
 
 > [!NOTE]
-> Ha a maximális terjesztést használja, több elhelyezési csoportot kell használnia.
+> Ha maximális szórást használ, több elhelyezési csoportot kell használnia.
 
-### <a name="zone-balancing"></a>Zónák terheléselosztása
+### <a name="zone-balancing"></a>Zóna kiegyensúlyozása
 
-Végül a több zónában üzembe helyezett méretezési csoportok esetében lehetősége van arra is, hogy a "legjobb erőkifejtési zóna egyenlege" vagy a "szigorú zónák egyenlege" lehetőséget választja. A méretezési csoport "kiegyensúlyozottnak" minősül, ha minden zónában azonos számú virtuális gép vagy +\\-1 virtuális gép található a méretezési csoport minden más zónájában. Példa:
+Végül a több zónában üzembe helyezett méretezési csoportok esetében lehetősége van a "legjobb erőkifejtési zóna egyensúlya" vagy a "szigorú zónaegyensúly" kiválasztására is. A méretezési készlet akkor minősül "kiegyensúlyozottnak", ha minden\\zónában azonos számú virtuális gép vagy + - 1 virtuális gép van az összes többi zónában a méretezési készlethez. Példa:
 
-- Egy 2 virtuális géppel rendelkező méretezési csoport az 1. zónában, 3 virtuális gép a 2. zónában, a 3. zónában 3 virtuális gép pedig kiegyensúlyozottnak számít. Csak egy, eltérő virtuálisgép-számmal rendelkező zóna van, és csak 1 kisebb, mint a többi zóna. 
-- Egy 1 virtuális géppel rendelkező méretezési csoport az 1. zónában, 3 virtuális gép a 2. zónában és 3 virtuális gép a 3. zónában kiegyensúlyozatlan számít. 1\. zóna a 2. és 3. zónánál kevesebb virtuális gépet tartalmaz.
+- Az 1., 3-as zónában lévő 2 virtuális gépből és a 3-as zónában lévő 3 virtuális gépekből álló méretezési készlet kiegyensúlyozottnak minősül. Csak egy zóna egy másik virtuális gép száma, és ez csak 1 kevesebb, mint a többi zónában. 
+- Az 1., a 2. Az 1-es zónában 2-vel kevesebb virtuális gép található, mint a 2.
 
-Lehetséges, hogy a méretezési csoportba tartozó virtuális gépek létrehozása sikeresen megtörtént, de az ezeken a virtuális gépeken lévő bővítmények nem lesznek telepítve. Ezek a virtuális gépek a bővítmények meghibásodása esetén is megmaradnak, ha meghatározza, hogy a méretezési csoport kiegyensúlyozott-e. Ilyen például az 1. zónában 3 virtuális géppel rendelkező méretezési csoport, a 2. zónában 3 virtuális gép és 3 virtuális gép a 3. zónában akkor is, ha az összes bővítmény meghiúsult az 1. zónában, és az összes bővítmény sikeres volt a 2. és 3. zónában.
+Lehetséges, hogy a méretezési készletben lévő virtuális gépek sikeresen létrejöttek, de a virtuális gépek bővítményei nem telepíthetők. Ezek a bővítményhibákkal rendelkező virtuális gépek továbbra is számítanak, amikor meghatározzák, hogy egy méretezési készlet kiegyensúlyozott-e. Például egy méretezési csoport 3 virtuális géptel az 1., 3 virtuális gépek a 2.
 
-A méretezési csoport a legjobb megoldás, ha az egyensúly fenntartása mellett megkísérli a skálázást és a méretezést. Ha azonban valamilyen okból ez nem lehetséges (például ha az egyik zóna leáll, a méretezési csoport nem tud új virtuális gépet létrehozni az adott zónában), a méretezési csoport lehetővé teszi, hogy az ideiglenes egyensúlyhiány sikeresen be-vagy kiskálázásra kerüljön. A további kibővített kísérletek esetén a méretezési csoport olyan virtuális gépeket hoz létre a zónákhoz, amelyeknek több virtuális gépre van szükségük a méretezési csoport kiegyensúlyozásához. Hasonlóképpen, a próbálkozások későbbi skálázásakor a méretezési csoport eltávolítja a virtuális gépeket olyan zónákból, amelyeknek kevesebb virtuális gépre van szükségük a méretezési csoport kiegyensúlyozásához. A "szigorú zónák egyenlege" esetén a méretezési csoport nem tesz elérhetővé vagy kicsinyíti a méretezési kísérleteket, ha ezzel kiegyensúlyozatlanságot okozna.
+A legjobb hancöttetési zónaegyensúly mellett a méretezési készlet megkísérli a be- és kiskálázást az egyensúly fenntartása mellett. Azonban ha valamilyen oknál fogva ez nem lehetséges (például ha egy zóna leáll, a méretezési csoport nem hozhat létre új virtuális gép ebben a zónában), a méretezési készlet lehetővé teszi az ideiglenes egyensúlyhiány sikeresen skálázható be- vagy ki. Későbbi horizontális felskálázási kísérletek esetén a méretezési készlet virtuális gépeket ad hozzá azokhoz a zónákhoz, amelyeknek több virtuális gépre van szükségük a méretezési készlet kiegyenlítéséhez. Hasonlóképpen a későbbi skálázási kísérletek, a méretezési készlet eltávolítja a virtuális gépeket a zónákból, amelyek kevesebb virtuális gépet igényelnek a méretezési készlet kiegyenlítendő. A "szigorú zónaegyensúly", a méretezési csoport nem minden olyan kísérletet, hogy a skála, vagy ki, ha ezzel okoz egyensúlytalanság.
 
-A legjobb erőfeszítést használó zónák egyenlegének használatához állítsa a zoneBalance *hamis*értékre. Ez a beállítás az API *2017-12-01*-es verziójának alapértelmezett értéke. A zónák szigorú elosztásához állítsa a *zoneBalance* *igaz*értékre.
+A zóna legjobb egyensúlyának használatához állítsa *a zoneBalance* értéket *hamis*ra. Ez a beállítás az alapértelmezett az API *2017-12-01-es verziójában.* A szigorú zónaegyenleg használatához állítsa *a zoneBalance* értéket *true*értékre.
 
-## <a name="single-zone-and-zone-redundant-scale-sets"></a>Egyetlen zónából és zónából – redundáns méretezési csoportok
+## <a name="single-zone-and-zone-redundant-scale-sets"></a>Egyzónás és zónaredundáns léptékkészletek
 
-Virtuálisgép-méretezési csoport telepítésekor dönthet úgy, hogy egyetlen rendelkezésre állási zónát használ egy régióban vagy több zónában.
+Virtuálisgép-méretezési csoport telepítésekor választhat, hogy egy adott régióban egyetlen rendelkezésre állási zónát vagy több zónát használ.When you deploy a virtual machine scale set, you can choose to use a single availability Zone in a region, or multiple zones.
 
-Ha egyetlen zónában hoz létre méretezési készletet, akkor szabályozhatja, hogy az összes virtuálisgép-példány melyik zónában fusson, és a méretezési csoport felügyelt, és csak az adott zónán belüli autoskálázást hajtja végre. Egy zóna – redundáns méretezési csoport lehetővé teszi, hogy egyetlen méretezési készletet hozzon létre, amely több zónára terjed ki. A virtuálisgép-példányok létrehozásakor alapértelmezés szerint egyenlőek a zónák között. Ha az egyik zónában megszakítás történik, a méretezési csoport nem lesz automatikusan felskálázás a kapacitás növelésére. Az ajánlott eljárás az, ha az autoskálázási szabályokat CPU vagy memóriahasználat alapján konfigurálja. Az automatikus skálázási szabályok lehetővé teszik, hogy a méretezési csoport az adott zónában lévő virtuálisgép-példányok elvesztésére reagáljon azáltal, hogy az új példányokat a többi működési zónában fel kell méretezni.
+Amikor egy méretezési csoportot hoz létre egy zónában, szabályozhatja, hogy melyik zóna minden virtuálisgép-példány fut, és a méretezési csoport kezelése és automatikus skálázása csak az adott zónán belül. A zónaredundáns méretezési csoport lehetővé teszi, hogy hozzon létre egy méretezési csoport, amely több zónára terjed ki. Virtuálisgép-példányok létrehozásakor alapértelmezés szerint egyenletesen vannak egyensúlyban a zónák között. Ha valamelyik zónában megszakítás történik, a méretezési készlet nem méretezhető ki automatikusan a kapacitás növelése érdekében. Ajánlott eljárás lenne az automatikus skálázási szabályok konfigurálása a PROCESSZOR vagy a memória használat alapján. Az automatikus skálázási szabályok lehetővé tenné, hogy a méretezési csoport reagáljon a virtuálisgép-példányok elvesztését az adott zónában a fennmaradó működési zónákúj példányok horizontális felskálázása.
 
-Availability Zones használatához a méretezési csoportnak egy [támogatott Azure-régióban](../availability-zones/az-overview.md#services-support-by-region)kell létrehoznia. Availability Zonest használó méretezési csoport létrehozása az alábbi módszerek egyikével végezhető el:
+A rendelkezésre állási zónák használatához a méretezési csoport hozlétre kell egy [támogatott Azure-régióban.](../availability-zones/az-overview.md#services-support-by-region) Létrehozhat egy méretezési csoportot, amely a rendelkezésre állási zónákat használja az alábbi módszerek egyikével:
 
-- [Azure Portal](#use-the-azure-portal)
-- Azure parancssori felület (CLI)
+- [Azure-portál](#use-the-azure-portal)
+- Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
-- [Azure Resource Manager sablonok](#use-azure-resource-manager-templates)
+- [Azure Resource Manager-sablonok](#use-azure-resource-manager-templates)
 
-## <a name="use-the-azure-portal"></a>Az Azure-portál használata
+## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-A rendelkezésre állási zónát használó méretezési csoport létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-portal.md)részletezett eljárással. Egy támogatott Azure-régió kiválasztásakor létrehozhat egy méretezési készletet egy vagy több elérhető zónában, ahogy az alábbi példában is látható:
+Az elérhetőségi zónát használó méretezési csoport létrehozásának folyamata megegyezik az [első lépések ről szóló cikkben részletezett eljárással.](quick-create-portal.md) Ha kiválaszt egy támogatott Azure-régiót, létrehozhat egy méretezési csoportot egy vagy több elérhető zónában, ahogy az a következő példában látható:
 
 ![Méretezési csoport létrehozása egyetlen rendelkezésre állási zónában](media/virtual-machine-scale-sets-use-availability-zones/vmss-az-portal.png)
 
-A méretezési csoport és a támogató erőforrások, például az Azure Load Balancer és a nyilvános IP-cím, az Ön által megadott egyetlen zónában jönnek létre.
+A méretezési és támogató erőforrások, például az Azure terheléselosztó és a nyilvános IP-cím, a megadott egyetlen zónában jönnek létre.
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
-A rendelkezésre állási zónát használó méretezési csoport létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-cli.md)részletezett eljárással. A Availability Zones használatához létre kell hoznia a méretezési csoportját egy támogatott Azure-régióban.
+Az elérhetőségi zónát használó méretezési csoport létrehozásának folyamata megegyezik az [első lépések ről szóló cikkben részletezett eljárással.](quick-create-cli.md) A rendelkezésre állási zónák használatához létre kell hoznia a méretezési csoportot egy támogatott Azure-régióban.
 
-Adja hozzá a `--zones` paramétert az az [vmss Create](/cli/azure/vmss) parancshoz, és adja meg a használni kívánt zónát (például *1*., *2*. vagy *3*. zóna). Az alábbi példa egy *myScaleSet* nevű egyzónás méretezési csoport létrehozását hozza létre az *1*. zónában:
+Adja `--zones` hozzá a paramétert az [az vmss create](/cli/azure/vmss) parancshoz, és adja meg, hogy melyik zónát használja (például *1,* *2*vagy *3*zóna). A következő példa létrehoz egy egyzónás méretezési készlet nevű *myScaleSet* az *1-* es zónában:
 
 ```azurecli
 az vmss create \
@@ -88,13 +88,13 @@ az vmss create \
     --zones 1
 ```
 
-Az egyzónás méretezési csoport és a hálózati erőforrások teljes példáját ebben a [CLI-parancsfájlban](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.sh) találhatja.
+Az egyzónás méretezési és hálózati erőforrások teljes példáját ebben a [mintában található CLI-parancsfájl](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.sh)
 
-### <a name="zone-redundant-scale-set"></a>Zóna – redundáns méretezési csoport
+### <a name="zone-redundant-scale-set"></a>Zónaredundáns méretezési készlet
 
-Zóna – redundáns méretezési csoport létrehozásához *szabványos* SKU nyilvános IP-címet és terheléselosztó-t kell használnia. A bővített redundancia érdekében a *standard* SKU zóna-redundáns hálózati erőforrásokat hoz létre. További információ: [Azure Load Balancer standard áttekintés](../load-balancer/load-balancer-standard-overview.md) és [standard Load Balancer és Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md).
+Zónaredundáns méretezési csoport létrehozásához használjon *szabványos* termékváltozat nyilvános IP-címet és terheléselosztót. A fokozott redundancia érdekében a *standard* termékváltozat zónaredundáns hálózati erőforrásokat hoz létre. További információ: [Azure Load Balancer Standard overview](../load-balancer/load-balancer-standard-overview.md) and [Standard Load Balancer and Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md).
 
-Zóna – redundáns méretezési csoport létrehozásához több zónát kell megadnia a `--zones` paraméterrel. A következő példa létrehoz egy *myScaleSet* nevű zóna-redundáns méretezési készletet az *1., 2. és 3*. zónában:
+Zónaredundáns méretezési csoport létrehozásához adjon `--zones` meg több zónát a paraméterrel. A következő példa létrehoz egy *myScaleSet* nevű zónaredundáns méretezési készletet *az 1,2,3*zónák között:
 
 ```azurecli
 az vmss create \
@@ -107,13 +107,13 @@ az vmss create \
     --zones 1 2 3
 ```
 
-A rendszer néhány percet vesz igénybe a méretezési csoport erőforrásainak és virtuális gépei létrehozásához és konfigurálásához a megadott zóná (k) ban. A zóna-redundáns méretezési csoport és a hálózati erőforrások teljes példáját ebben a [CLI-parancsfájlban](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-zone-redundant-scale-set/create-zone-redundant-scale-set.sh) találhatja.
+Néhány percet vesz igénybe az összes méretezési készlet erőforrás és virtuális gép létrehozása és konfigurálása a megadott zónában(s) . A zónaredundáns méretezési készlet és a hálózati erőforrások teljes példáját ebben a [mintában található CLI-parancsfájl](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-zone-redundant-scale-set/create-zone-redundant-scale-set.sh)
 
-## <a name="use-azure-powershell"></a>Az Azure PowerShell használata
+## <a name="use-azure-powershell"></a>Azure PowerShell használatával
 
-A Availability Zones használatához létre kell hoznia a méretezési csoportját egy támogatott Azure-régióban. Adja hozzá a `-Zone` paramétert a [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) parancshoz, és adja meg a használni kívánt zónát (például *1*., *2*. vagy *3*. zóna).
+A rendelkezésre állási zónák használatához létre kell hoznia a méretezési csoportot egy támogatott Azure-régióban. Adja `-Zone` hozzá a paramétert a [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) parancshoz, és adja meg, hogy melyik zónát használja (például *1,* *2*vagy *3*zóna ).
 
-A következő példa egy *myScaleSet* nevű egyzónás méretezési csoport létrehozását hozza létre az *USA 2. keleti* régiójában *1*. A rendszer automatikusan létrehozza az Azure-beli hálózati erőforrásokat a virtuális hálózathoz, a nyilvános IP-címhez és a terheléselosztóhoz. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
+A következő példa létrehoz egy egyzónás méretezési készlet nevű *myScaleSet* *az USA keleti részén 2* zóna *1*. A rendszer automatikusan létrehozza az Azure-beli hálózati erőforrásokat a virtuális hálózathoz, a nyilvános IP-címhez és a terheléselosztóhoz. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
 
 ```powershell
 New-AzVmss `
@@ -128,9 +128,9 @@ New-AzVmss `
   -Zone "1"
 ```
 
-### <a name="zone-redundant-scale-set"></a>Zóna – redundáns méretezési csoport
+### <a name="zone-redundant-scale-set"></a>Zónaredundáns méretezési készlet
 
-Zóna – redundáns méretezési csoport létrehozásához több zónát kell megadnia a `-Zone` paraméterrel. A következő példa létrehoz egy *myScaleSet* nevű zóna-redundáns méretezési készletet az *USA 2. keleti* régiójában, *1, 2 és 3*zónában. A zóna – a virtuális hálózat, a nyilvános IP-cím és a terheléselosztó redundáns Azure hálózati erőforrásai automatikusan létrejönnek. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
+Zónaredundáns méretezési csoport létrehozásához adjon `-Zone` meg több zónát a paraméterrel. A következő példa létrehoz egy *myScaleSet* nevű zónaredundáns méretezési készletet *az USA keleti részén 2* zóna *1, 2, 3*. A zónaredundáns Azure hálózati erőforrások virtuális hálózat, nyilvános IP-cím és terheléselosztó automatikusan létrejön. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
 
 ```powershell
 New-AzVmss `
@@ -147,9 +147,9 @@ New-AzVmss `
 
 ## <a name="use-azure-resource-manager-templates"></a>Használjon Azure Resource Manager-sablonokat
 
-A rendelkezésre állási zónát használó méretezési csoport létrehozásának folyamata megegyezik a [Linux](quick-create-template-linux.md) vagy [Windows rendszerhez](quick-create-template-windows.md)készült első lépések című cikkben ismertetett eljárással. A Availability Zones használatához létre kell hoznia a méretezési csoportját egy támogatott Azure-régióban. Adja hozzá a `zones` tulajdonságot a sablon *Microsoft. számítási/virtualMachineScaleSets* erőforrás-típusához, és adja meg a használni kívánt zónát (például *1*., *2*. vagy *3*. zóna).
+Az elérhetőségi zónát használó méretezési csoport létrehozásának folyamata megegyezik a [Linux](quick-create-template-linux.md) vagy [Windows](quick-create-template-windows.md)első lépésekről szóló cikkében részletezett részletes. A rendelkezésre állási zónák használatához létre kell hoznia a méretezési csoportot egy támogatott Azure-régióban. Adja `zones` hozzá a tulajdonságot a sablonBan lévő *Microsoft.Compute/virtualMachineScaleSets* erőforrástípushoz, és adja meg, hogy melyik zónát használja (például *az 1.* zónát, *a 2-* vagy 3-as *zónát).*
 
-A következő példa létrehoz egy *myScaleSet* nevű Linux-alapú egyzónás méretezési készletet az *USA 2. keleti* régiójában *1*. zónában:
+A következő példa létrehoz egy Linux egyzónás méretezési készlet nevű *myScaleSet* *az USA keleti részén 2* zóna *1:*
 
 ```json
 {
@@ -189,11 +189,11 @@ A következő példa létrehoz egy *myScaleSet* nevű Linux-alapú egyzónás m�
 }
 ```
 
-Az egyzónás méretezési csoportra és a hálózati erőforrásokra vonatkozó teljes példa: [Ez a példa Resource Manager-sablon](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/singlezone.json)
+Az egyzónás méretezési csoport és a hálózati erőforrások teljes példáját ebben a mintában az [Erőforrás-kezelő sablonban lehet megtekinteni.](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/singlezone.json)
 
-### <a name="zone-redundant-scale-set"></a>Zóna – redundáns méretezési csoport
+### <a name="zone-redundant-scale-set"></a>Zónaredundáns méretezési készlet
 
-Zóna – redundáns méretezési csoport létrehozásához adjon meg több értéket a *Microsoft. számítási/virtualMachineScaleSets* erőforrástípus `zones` tulajdonságában. A következő példa létrehoz egy *myScaleSet* nevű zóna-redundáns méretezési készletet az *USA 2. keleti* régiójában, *1, 2, 3*:
+Zónaredundáns méretezési csoport létrehozásához adjon `zones` meg több értéket a *Microsoft.Compute/virtualMachineScaleSets* erőforrástípus tulajdonságában. A következő példa létrehoz egy *myScaleSet* nevű zónaredundáns méretezési készletet *az USA keleti részén 2* zóna *1,2,3:*
 
 ```json
 {
@@ -209,10 +209,10 @@ Zóna – redundáns méretezési csoport létrehozásához adjon meg több ért
 }
 ```
 
-Ha létrehoz egy nyilvános IP-címet vagy egy terheléselosztó-t, adja meg a *"SKU": {"Name": "standard"} "* tulajdonságot a zóna redundáns hálózati erőforrásainak létrehozásához. A forgalom engedélyezéséhez létre kell hoznia egy hálózati biztonsági csoportot és szabályokat is. További információ: [Azure Load Balancer standard áttekintés](../load-balancer/load-balancer-standard-overview.md) és [standard Load Balancer és Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md).
+Ha nyilvános IP-címet vagy terheléselosztót hoz létre, adja meg az *"sku": { "name": "Standard" }"* tulajdonságot zónaredundáns hálózati erőforrások létrehozásához. Emellett létre kell hoznia egy hálózati biztonsági csoportot és szabályokat a forgalom engedélyezéséhez. További információ: [Azure Load Balancer Standard overview](../load-balancer/load-balancer-standard-overview.md) and [Standard Load Balancer and Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md).
 
-A zóna-redundáns méretezési csoport és a hálózati erőforrások teljes példája: [Ez a példa Resource Manager-sablon](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
+A zónaredundáns méretezési csoport és a hálózati erőforrások teljes példáját ebben a mintában található [erőforrás-kezelő sablonban](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy létrehozta a méretezési csoportot egy rendelkezésre állási zónában, megtudhatja, hogyan [telepíthet alkalmazásokat virtuálisgép-méretezési](tutorial-install-apps-cli.md) csoportokon, illetve hogyan [használhatja az autoscalet a virtuálisgép-méretezési csoportokkal](tutorial-autoscale-cli.md).
+Most, hogy létrehozott egy méretezési készletet egy rendelkezésre állási zónában, [megtudhatja, hogyan telepíthet alkalmazásokat virtuálisgép-méretezési csoportokra,](tutorial-install-apps-cli.md) vagy [használhatja az automatikus skálázást a virtuálisgép-méretezési készletekkel.](tutorial-autoscale-cli.md)

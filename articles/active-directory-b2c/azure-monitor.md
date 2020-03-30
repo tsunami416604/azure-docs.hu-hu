@@ -1,7 +1,7 @@
 ---
-title: Azure AD B2C figyelése Azure Monitor
+title: Az Azure AD B2C figyelése az Azure Monitorsegítségével
 titleSuffix: Azure AD B2C
-description: Megtudhatja, hogyan naplózhatja Azure AD B2C eseményeit Azure Monitorekkel a delegált erőforrás-kezelés használatával.
+description: Megtudhatja, hogyan naplózhatja az Azure AD B2C-eseményeket az Azure Monitor használatával delegált erőforrás-kezelés használatával.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,82 +12,82 @@ ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
 ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78190058"
 ---
-# <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C figyelése Azure Monitor
+# <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Az Azure AD B2C figyelése az Azure Monitorsegítségével
 
-A Azure Monitor használatával átirányíthatja Azure Active Directory B2C (Azure AD B2C) bejelentkezési és [naplózási](view-audit-logs.md) naplókat különböző figyelési megoldásokhoz. Megtarthatja a naplókat a hosszú távú használatra, vagy integrálhatja a külső felek biztonsági információit és esemény-felügyeleti (SIEM) eszközöket, hogy betekintést nyerjen a környezetbe.
+Az Azure Monitor használatával az Azure Active Directory B2C (Azure AD B2C) bejelentkezési és [naplózási](view-audit-logs.md) naplókat különböző figyelési megoldásokra irányítsa. A naplók at hosszú távú használatra, vagy integrálni harmadik fél biztonsági információk és eseménykezelő (SIEM) eszközök betekintést nyerhet a környezetbe.
 
-A naplózási eseményeket a következő módon irányíthatja át:
+A naplóeseményeket a következő kretálhatja:
 
-* Egy Azure [Storage-fiók](../storage/blobs/storage-blobs-introduction.md).
-* Egy Azure [Event hub](../event-hubs/event-hubs-about.md) (és integrálható a splunk és a szumó logikai példányokkal).
-* Egy [log Analytics munkaterület](../azure-monitor/platform/resource-logs-collect-workspace.md) (az adatelemzéshez, az irányítópultok létrehozásához és a riasztáshoz adott eseményeken).
+* Egy [Azure-tárfiók.](../storage/blobs/storage-blobs-introduction.md)
+* Egy [Azure-eseményközpont](../event-hubs/event-hubs-about.md) (és integrálja a Splunk és a Sumo Logic példányok).
+* [A Log Analytics munkaterület](../azure-monitor/platform/resource-logs-collect-workspace.md) (adatok elemzéséhez, irányítópultok létrehozásához és adott eseményekriasztáshoz).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben ismertetett lépések végrehajtásához a Azure PowerShell modul használatával helyezzen üzembe egy Azure Resource Manager-sablont.
+A cikkben leírt lépések végrehajtásához üzembe helyez egy Azure Resource Manager-sablont az Azure PowerShell-modul használatával.
 
-* [Azure PowerShell modul](https://docs.microsoft.com/powershell/azure/install-az-ps) 6.13.1 vagy újabb verziója
+* [Az Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 6.13.1-es vagy újabb verziója
 
-Használhatja a [Azure Cloud Shell](https://shell.azure.com)is, amely tartalmazza a Azure PowerShell modul legújabb verzióját.
+Használhatja az [Azure Cloud Shellt](https://shell.azure.com)is, amely az Azure PowerShell-modul legújabb verzióját tartalmazza.
 
 ## <a name="delegated-resource-management"></a>Delegált erőforrás-kezelés
 
-A Azure AD B2C [Azure Active Directory monitorozást](../active-directory/reports-monitoring/overview-monitoring.md)használ. Az Azure AD B2C-bérlőn belüli Azure Active Directory *diagnosztikai beállításainak* engedélyezéséhez [delegált erőforrás-kezelést](../lighthouse/concepts/azure-delegated-resource-management.md)használ.
+Az Azure AD B2C az [Azure Active Directory figyelését](../active-directory/reports-monitoring/overview-monitoring.md)használja. Ha engedélyezni szeretné *a diagnosztikai beállításokat* az Azure Active Directoryban az Azure AD B2C bérlőn belül, [delegált erőforrás-kezelést kell használnia.](../lighthouse/concepts/azure-delegated-resource-management.md)
 
-Az Azure-előfizetést (az **ügyfelet**) tartalmazó bérlőn belül a Azure ad B2C könyvtárban (a **szolgáltatóban**) engedélyezheti a Azure monitor példány konfigurálását. Az engedélyezés létrehozásához üzembe kell helyeznie egy [Azure Resource Manager](../azure-resource-manager/index.yml) sablont az előfizetést tartalmazó Azure ad-bérlőn. A következő szakasz végigvezeti a folyamaton.
+Ön felhatalmazza az Azure AD B2C címtárban (a **szolgáltatóban)** lévő felhasználót vagy csoportot az Azure Monitor-példány konfigurálásához az Azure-előfizetést (az **ügyfelet)** tartalmazó bérlőn belül. Az engedélyezés létrehozásához üzembe helyez egy [Azure Resource Manager-sablont](../azure-resource-manager/index.yml) az előfizetést tartalmazó Azure AD-bérlőben. A következő szakaszok végigvezetik a folyamaton.
 
 ## <a name="create-or-choose-resource-group"></a>Erőforráscsoport létrehozása vagy kiválasztása
 
-Ez az az erőforráscsoport, amely a cél Azure Storage-fiókot, az Event hub-t vagy Log Analytics munkaterületet tartalmazza az adatok Azure Monitorból való fogadásához. Az erőforráscsoport nevét a Azure Resource Manager sablonjának telepítésekor kell megadnia.
+Ez az az erőforráscsoport, amely a cél Azure storage-fiókot, eseményközpontot vagy Log Analytics-munkaterületet tartalmaz az Azure Monitortól történő adatok fogadásához. Az Azure Resource Manager-sablon telepítésekor adja meg az erőforráscsoport nevét.
 
-[Hozzon létre egy erőforráscsoportot](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) , vagy válasszon ki egy meglévőt az Azure-előfizetését tartalmazó Azure Active Directory (Azure ad) bérlőn, *ne* pedig a Azure ad B2C bérlőt tartalmazó könyvtárat.
+[Hozzon létre egy erőforráscsoportot,](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) vagy válasszon egy meglévőt az Azure Active Directory (Azure AD) bérlőben, amely az Azure-előfizetést tartalmazza, *nem* pedig az Azure AD B2C-bérlőt tartalmazó könyvtárat.
 
-Ez a példa egy *Azure-ad-B2C-monitor* nevű erőforráscsoportot használ az *USA középső* régiójában.
+Ez a példa egy *azure-ad-b2c-monitor* nevű erőforráscsoportot használ az *USA középső* régiójában.
 
 ## <a name="delegate-resource-management"></a>Erőforrás-kezelés delegálása
 
-Ezután Gyűjtse össze a következő információkat:
+Ezután gyűjtse össze a következő információkat:
 
-A Azure AD B2C könyvtárának (más néven bérlői azonosító) **címtár-azonosítója** .
+Az Azure AD B2C könyvtár (más néven a bérlői azonosító) **címtárazonosítója.**
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) felhasználóként a *felhasználói rendszergazda* szerepkörrel (vagy újabb).
-1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. Válassza a **Azure Active Directory**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget.
-1. Jegyezze fel a **könyvtár azonosítóját**.
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/) a *felhasználó rendszergazdai* szerepkörrel (vagy újabb) felhasználóként.
+1. Válassza ki a **Könyvtár + Előfizetés** ikont a portál eszköztárán, majd válassza ki az Azure AD B2C-bérlőt tartalmazó könyvtárat.
+1. Válassza az **Azure Active Directory**lehetőséget, válassza a **Tulajdonságok**lehetőséget.
+1. Rögzítse a **címtárazonosítót**.
 
-Annak a Azure AD B2C csoportnak vagy felhasználónak a **azonosítója** , amelyhez *közreműködői* engedélyt kíván adni az előfizetést tartalmazó könyvtárban korábban létrehozott erőforráscsoporthoz.
+Az Azure AD B2C-csoport vagy a felhasználó **objektumazonosítóját** szeretné megadni *a közreműködői* engedélyt az előfizetést tartalmazó címtárban korábban létrehozott erőforráscsoportnak.
 
-A felügyelet egyszerűbbé tételéhez ajánlott az Azure AD felhasználói *csoportok* használata az egyes szerepkörökhöz, ami lehetővé teszi az egyes felhasználók hozzáadását vagy eltávolítását, nem pedig közvetlenül az adott felhasználóhoz rendel hozzá engedélyeket. Ebben az útmutatóban egy felhasználót ad hozzá.
+A felügyelet megkönnyítése érdekében azt javasoljuk, hogy az Azure AD felhasználói *csoportok* minden szerepkör, amely lehetővé teszi, hogy adjunk hozzá, vagy távolítsa el az egyes felhasználók a csoporthoz ahelyett, hogy engedélyeket közvetlenül az adott felhasználóhoz. Ebben a forgatókönyvben hozzáad egy felhasználót.
 
-1. Ha a **Azure Active Directory** továbbra is ki van választva a Azure Portal, válassza a **felhasználók**lehetőséget, majd válasszon ki egy felhasználót.
-1. Jegyezze fel a felhasználó **objektum-azonosítóját**.
+1. Ha az **Azure Active Directory** továbbra is ki van jelölve az Azure Portalon, válassza a **Felhasználók**lehetőséget, majd válasszon ki egy felhasználót.
+1. Rögzítse a felhasználó **objektumazonosítóját**.
 
-### <a name="create-an-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon létrehozása
+### <a name="create-an-azure-resource-manager-template"></a>Azure Resource Manager-sablon létrehozása
 
-Az Azure AD-bérlő (az **ügyfél**) beléptetéséhez hozzon létre egy [Azure Resource Manager sablont](../lighthouse/how-to/onboard-customer.md) az ajánlatához a következő információkkal. A `mspOfferName` és a `mspOfferDescription` értékek láthatók, ha az ajánlat részleteit a Azure Portal [szolgáltatók lapján](../lighthouse/how-to/view-manage-service-providers.md) tekinti meg.
+Az Azure AD-bérlő (az **ügyfél)** fedélzetre vételéhez hozzon létre egy [Azure Resource Manager-sablont](../lighthouse/how-to/onboard-customer.md) az ajánlathoz a következő információkkal. A `mspOfferName` `mspOfferDescription` és az értékek akkor láthatók, ha az Ajánlat részleteit az Azure Portal [Szolgáltatói lapján](../lighthouse/how-to/view-manage-service-providers.md) tekinti meg.
 
 | Mező   | Meghatározás |
 |---------|------------|
-| `mspOfferName`                     | A definíciót leíró név. Például *Azure ad B2C felügyelt szolgáltatásokat*. Ez az érték jelenik meg az ügyfél számára az ajánlat címeként. |
-| `mspOfferDescription`              | Az ajánlat rövid leírása. Például *engedélyezi a Azure AD B2C Azure monitorét*.|
-| `rgName`                           | Az Azure AD-bérlőben korábban létrehozott erőforráscsoport neve. Például: *Azure-ad-B2C-monitor*. |
-| `managedByTenantId`                | A Azure AD B2C bérlő (más néven bérlői azonosító) **címtár-azonosítója** . |
-| `authorizations.value.principalId` | Az Azure-előfizetés erőforrásaihoz hozzáférő B2C-csoport vagy-felhasználó **objektumazonosító** . Ebben a bemutatóban a korábban feljegyzett felhasználó objektumazonosítót kell megadnia. |
+| `mspOfferName`                     | A definíciót leíró név. Például az *Azure AD B2C felügyelt szolgáltatások*. Ez az érték jelenik meg az ügyfél számára az ajánlat címeként. |
+| `mspOfferDescription`              | Az ajánlat rövid leírása. Például *engedélyezi az Azure Monitort az Azure AD B2C-ben.*|
+| `rgName`                           | Az Azure AD-bérlőben korábban létrehozott erőforráscsoport neve. Például *az azure-ad-b2c-monitor*. |
+| `managedByTenantId`                | Az Azure AD B2C-bérlő (más néven a bérlőazonosító) **címtárazonosítója.** |
+| `authorizations.value.principalId` | A B2C-csoport vagy -felhasználó **objektumazonosítója,** amely hozzáférést biztosít az Azure-előfizetés erőforrásaihoz. Ebben a forgatókönyvben adja meg a felhasználó korábban rögzített objektumazonosítóját. |
 
-Töltse le a Azure Resource Manager sablon és paraméter fájljait:
+Töltse le az Azure Resource Manager sablont és paraméterfájlokat:
 
-- [rgDelegatedResourceManagement. JSON](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegatedResourceManagement. Parameters. JSON](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegatedResourceManagement.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegatedResourceManagement.parameters.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
-Ezután frissítse a paramétereket tartalmazó fájlt a korábban feljegyzett értékekkel. A következő JSON-kódrészlet példát mutat be Azure Resource Manager sablon paramétereinek fájljára. `authorizations.value.roleDefinitionId`esetén használja a *közreműködő szerepkör* [beépített szerepkörének](../role-based-access-control/built-in-roles.md) értékét `b24988ac-6180-42a0-ab88-20f7382dd24c`.
+Ezután frissítse a paraméterfájlt a korábban rögzített értékekkel. A következő JSON-kódrészlet egy Azure Resource Manager-sablon paraméterfájlpéldáját mutatja be. A `authorizations.value.roleDefinitionId`esetén használja a *közreműködői szerepkör* `b24988ac-6180-42a0-ab88-20f7382dd24c` [beépített szerepkörértékét](../role-based-access-control/built-in-roles.md) .
 
 ```JSON
 {
@@ -119,29 +119,29 @@ Ezután frissítse a paramétereket tartalmazó fájlt a korábban feljegyzett �
 }
 ```
 
-### <a name="deploy-the-azure-resource-manager-templates"></a>A Azure Resource Manager-sablonok üzembe helyezése
+### <a name="deploy-the-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok üzembe helyezése
 
-Miután frissítette a paramétereket tartalmazó fájlt, telepítse az Azure Resource Manager sablont az Azure-bérlőbe előfizetési szintű telepítésként. Mivel ez egy előfizetési szintű telepítés, nem indítható el a Azure Portalban. A Azure PowerShell modullal vagy az Azure CLI-vel is üzembe helyezhető. Az Azure PowerShell metódus alább látható.
+Miután frissítette a paraméterfájlt, üzembe helyezheti az Azure Resource Manager sablont az Azure-bérlőbe előfizetési szintű telepítésként. Mivel ez egy előfizetési szintű központi telepítés, nem indítható az Azure Portalon. Az Azure PowerShell-modul vagy az Azure CLI használatával üzembe helyezheti. Az Azure PowerShell-módszer alább látható.
 
-Jelentkezzen be az előfizetést tartalmazó könyvtárba a [AzAccount](/powershell/azure/authenticate-azureps)használatával. A `-tenant` jelző használatával kényszerítheti a hitelesítést a megfelelő könyvtárba.
+Jelentkezzen be az előfizetést tartalmazó könyvtárba a [Connect-AzAccount](/powershell/azure/authenticate-azureps)segítségével. A `-tenant` jelző vel kényszerítheti a hitelesítést a megfelelő könyvtárra.
 
 ```PowerShell
 Connect-AzAccount -tenant contoso.onmicrosoft.com
 ```
 
-A [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) parancsmaggal listázhatja azokat az előfizetéseket, amelyekhez az aktuális fiók hozzáfér az Azure ad-bérlőben. Jegyezze fel a projektbe felvenni kívánt előfizetés AZONOSÍTÓját a Azure AD B2C bérlőbe.
+A [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) parancsmag használatával sorolja fel azokat az előfizetéseket, amelyeket az aktuális fiók az Azure AD-bérlő alatt érhet el. Rögzítse az Azure AD B2C-bérlőbe kivetíteni kívánt előfizetés azonosítóját.
 
 ```PowerShell
 Get-AzSubscription
 ```
 
-Ezután váltson arra az előfizetésre, amelyet szeretne projektbe venni a Azure AD B2C bérlőbe:
+Ezután váltson át az Azure AD B2C-bérlőbe kivetíteni kívánt előfizetésre:
 
 ``` PowerShell
 Select-AzSubscription <subscription ID>
 ```
 
-Végül telepítse a korábban letöltött és frissített Azure Resource Manager sablon és paraméter fájljait. Ennek megfelelően cserélje le a `Location`, `TemplateFile`és `TemplateParameterFile` értékeket.
+Végül telepítse az Azure Resource Manager-sablont és a korábban letöltött és frissített paraméterfájlokat. Ennek `Location`megfelelően cserélje ki a és `TemplateFile`az `TemplateParameterFile` értékeket.
 
 ```PowerShell
 New-AzDeployment -Name "AzureADB2C" `
@@ -151,7 +151,7 @@ New-AzDeployment -Name "AzureADB2C" `
                  -Verbose
 ```
 
-A sablon sikeres üzembe helyezése a következőhöz hasonló kimenetet eredményez (rövidített kimenet):
+A sablon sikeres telepítése a következőhöz hasonló kimenetet eredményez (a kimenet rövidségből csonkolva):
 
 ```Console
 PS /usr/csuser/clouddrive> New-AzDeployment -Name "AzureADB2C" `
@@ -191,60 +191,60 @@ Parameters              :
 ...
 ```
 
-A sablon üzembe helyezése után néhány percet is igénybe vehet, amíg az erőforrás-leképezés befejeződik. Előfordulhat, hogy néhány percet várnia kell (általában legfeljebb öt), mielőtt továbblép a következő szakaszra az előfizetés kiválasztásához.
+A sablon üzembe helyezése után eltarthat néhány percig az erőforrás-kivetítés befejezése. Előfordulhat, hogy várnia kell néhány percet (általában legfeljebb öt percet), mielőtt továbblépne a következő szakaszra az előfizetés kiválasztásához.
 
 ## <a name="select-your-subscription"></a>Válassza ki előfizetését.
 
-Miután telepítette a sablont, és néhány percet várt az erőforrás-kivetítés befejezéséhez, társítsa az előfizetést a Azure AD B2C-címtárhoz a következő lépésekkel.
+Miután üzembe helyezte a sablont, és várt néhány percet az erőforrás-vetület befejezésére, társítsa az előfizetést az Azure AD B2C könyvtárhoz a következő lépésekkel.
 
-1. **Jelentkezzen ki** a Azure Portal, ha éppen be van jelentkezve. A következő lépés a hitelesítő adatok frissítése a portál munkamenetében.
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) a Azure ad B2C rendszergazdai fiókjával.
-1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán.
+1. **Jelentkezzen ki** az Azure Portalon, ha jelenleg be van jelentkezve. Ez és a következő lépés a hitelesítő adatok frissítése a portálmunkamenetben történik.
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) az Azure AD B2C felügyeleti fiókjával.
+1. A portál eszköztárán válassza a **Könyvtár + Előfizetés** ikont.
 1. Válassza ki az előfizetést tartalmazó könyvtárat.
 
-    ![Könyvtár váltása](./media/azure-monitor/azure-monitor-portal-03-select-subscription.png)
-1. Ellenőrizze, hogy a megfelelő könyvtárat és előfizetést jelölte-e ki. Ebben a példában az összes könyvtárat és előfizetést kiválasztjuk.
+    ![Címtár váltása](./media/azure-monitor/azure-monitor-portal-03-select-subscription.png)
+1. Ellenőrizze, hogy a megfelelő könyvtárat és előfizetést választotta-e. Ebben a példában az összes könyvtár és előfizetés van kiválasztva.
 
-    ![A címtár & előfizetés-szűrőben kiválasztott összes könyvtár](./media/azure-monitor/azure-monitor-portal-04-subscriptions-selected.png)
+    ![A Címtár & Előfizetés szűrőben kijelölt összes könyvtár](./media/azure-monitor/azure-monitor-portal-04-subscriptions-selected.png)
 
 ## <a name="configure-diagnostic-settings"></a>Diagnosztikai beállítások konfigurálása
 
-A diagnosztikai beállítások határozzák meg, hogy az erőforráshoz tartozó naplókat és mérőszámokat kell-e elküldeni. A lehetséges célpontok:
+A diagnosztikai beállítások határozzák meg, hogy egy erőforrás naplóit és metrikáit hol kell elküldeni. A lehetséges úti célok a következők:
 
-- [Azure Storage-fiók](../azure-monitor/platform/resource-logs-collect-storage.md)
-- [Event hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md) -megoldások.
+- [Azure tárfiók](../azure-monitor/platform/resource-logs-collect-storage.md)
+- [Eseményközpontok megoldásai.](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 - [Log Analytics-munkaterület](../azure-monitor/platform/resource-logs-collect-workspace.md)
 
-Ha még nem tette meg, hozzon létre egy példányt a kiválasztott rendeltetési helyhez a [Azure Resource Manager sablonban](#create-an-azure-resource-manager-template)megadott erőforráscsoporthoz.
+Ha még nem tette meg, hozzon létre egy példányt a kiválasztott céltípusból az [Azure Resource Manager sablonban](#create-an-azure-resource-manager-template)megadott erőforráscsoportban.
 
 ### <a name="create-diagnostic-settings"></a>Diagnosztikai beállítások létrehozása
 
-Készen áll a Azure Portal [diagnosztikai beállításainak létrehozására](../active-directory/reports-monitoring/overview-monitoring.md) .
+Készen áll a [diagnosztikai beállítások létrehozása](../active-directory/reports-monitoring/overview-monitoring.md) az Azure Portalon.
 
-Azure AD B2C tevékenység naplóinak figyelési beállításainak konfigurálása:
+Az Azure AD B2C tevékenységnaplók figyelési beállításainak konfigurálása:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
-1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. **Azure Active Directory** kiválasztása
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Válassza ki a **Könyvtár + Előfizetés** ikont a portál eszköztárán, majd válassza ki az Azure AD B2C-bérlőt tartalmazó könyvtárat.
+1. **Az Azure Active Directory** kiválasztása
 1. A **Monitorozás** területen kattintson a **Diagnosztikai beállítások** elemre.
-1. Ha vannak meglévő beállítások az erőforráson, látni fogja a már konfigurált beállítások listáját. Válassza a **diagnosztikai beállítás hozzáadása** lehetőséget egy új beállítás hozzáadásához, vagy a beállítás **szerkesztéséhez** egy meglévőt. Az egyes beállítások nem lehetnek többek között a célhelyek közül.
+1. Ha az erőforráson vannak beállítások, megjelenik a már konfigurált beállítások listája. Új beállítás hozzáadásához válassza **a Diagnosztikai beállítás hozzáadása** lehetőséget, vagy a **Szerkesztés** beállítást egy meglévő szerkesztéséhez. Minden beállítás hoz egy-egy a céltípusok közül..
 
-    ![Diagnosztikai beállítások ablaktábla Azure Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
+    ![Diagnosztikai beállítások ablaktábla az Azure Portalon](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
 
-1. Adja meg a beállítás nevét, ha még nem rendelkezik ilyennel.
-1. Jelölje be az egyes célhelyek jelölőnégyzetét a naplók elküldéséhez. Válassza a **Konfigurálás** lehetőséget a beállítások megadásához az alábbi táblázatban leírtak szerint.
+1. Adjon nevet a beállításnak, ha még nem rendelkezik ilyensel.
+1. A naplók elküldéséhez jelölje be az egyes célhelyek jelölőnégyzetét. A **Konfigurálás gombra** a következő táblázatban ismertetett beállítások megadásához válassza a beállításokat.
 
     | Beállítás | Leírás |
     |:---|:---|
-    | Archiválás egy Storage-fiókba | A Storage-fiók neve. |
-    | Stream az Event hub-ba | Az a névtér, amelyben az Event hub létre lett hozva (ha ez az első adatfolyam-naplók), vagy adatfolyamként továbbítja a (ha már van olyan erőforrás, amely ezen a névtéren keresztül továbbítja a naplózási kategóriát).
+    | Archiválás tárfiókba | A tárfiók neve. |
+    | Streamelés eseményközpontba | Az a névtér, ahol az eseményközpontot létrehozták (ha ez az első alkalommal streamelési naplók) vagy streamelt (ha már vannak olyan erőforrások, amelyek streamelés, hogy a napló kategóriában erre a névtérbe).
     | Küldés a Log Analyticsnek | Munkaterület neve. |
 
-1. Válassza a **AuditLogs** és a **SignInLogs**lehetőséget.
+1. Válassza **az AuditLogs** and **SignInLogs lehetőséget.**
 1. Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-A Azure Monitor diagnosztikai beállításainak hozzáadásával és konfigurálásával kapcsolatos további információkért lásd [: oktatóanyag: erőforrás-naplók összegyűjtése és elemzése az Azure-erőforrásokból](../azure-monitor/insights/monitor-azure-resource.md).
+A diagnosztikai beállítások Azure Monitorban való hozzáadásáról és konfigurálásáról az [Oktatóanyag: Erőforrásnaplók gyűjtése és elemzése Azure-erőforrásból](../azure-monitor/insights/monitor-azure-resource.md)című témakörben olvashat bővebben.
 
-További információ az Azure AD-naplók esemény-központba való továbbításáról [: oktatóanyag: Stream Azure Active Directory-naplók az Azure Event hub](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)-ba.
+Az Azure AD-naplók eseményközpontba való streameléséről az [Oktatóanyag: Stream Azure Active Directory-naplók egy Azure-eseményközpontba](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)című témakörben talál további információt.

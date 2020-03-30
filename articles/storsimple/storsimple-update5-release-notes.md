@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 sorozat Update 5 kibocsátási megjegyzések
-description: A StorSimple 8000 Series Update 5 új funkcióit, problémáit és megkerülő megoldásait ismerteti.
+title: StorSimple 8000 sorozat 5.
+description: A cikk a StorSimple 8000 series 5.
 author: alkohli
 ms.assetid: ''
 ms.service: storsimple
@@ -8,63 +8,63 @@ ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275173"
 ---
-# <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 sorozat Update 5 kibocsátási megjegyzések
+# <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 sorozat 5.
 
 ## <a name="overview"></a>Áttekintés
 
-A következő kibocsátási megjegyzések ismertetik az új funkciókat, és azonosítják a StorSimple 8000 Series Update 5-ös verziójának kritikus megnyitási problémáit. Emellett tartalmazzák az ebben a kiadásban található StorSimple szoftverfrissítések listáját is.
+A következő kibocsátási megjegyzések ismertetik az új funkciókat, és azonosítják a StorSimple 8000 sorozat 5. Tartalmaznak továbbá egy listát a StorSimple szoftverfrissítések szerepelnek ebben a kiadásban.
 
-Az 5. frissítés bármely, a 0,1-es frissítést futtató StorSimple-eszközre alkalmazható a 4. frissítéssel. Az 5. frissítéshez társított 6.3.9600.17845.
+Az 5-ös frissítés bármely StorSimple eszközre alkalmazható, amely a 0.1-es frissítést a 4-es frissítésen keresztül futtatja. Az 5.frissítéshez tartozó eszközverzió a 6.3.9600.17845.
 
-Mielőtt telepítené a frissítést a StorSimple-megoldásban, tekintse át a kibocsátási megjegyzésekben található információkat.
+Tekintse át a kiadási megjegyzésekben található információkat, mielőtt telepítené a frissítést a StorSimple-megoldásban.
 
 > [!IMPORTANT]
-> * Az 5. frissítés egy kötelező frissítés, amelyet azonnal telepíteni kell. További információ: az [5. frissítés alkalmazása](storsimple-8000-install-update-5.md).
-> * Az 5. frissítés az eszköz szoftverét, a lemez belső vezérlőprogramot, az operációs rendszer biztonságát és az egyéb operációsrendszer-frissítéseket tartalmaz. A frissítés telepítése körülbelül 4 órát vesz igénybe. A lemezes belső vezérlőprogram frissítése zavaró frissítés, és az eszköz állásidőjét eredményezi. Javasoljuk, hogy az 5. frissítést alkalmazza az eszköz naprakészen tartásához.
-> * Az új kiadások esetében előfordulhat, hogy a frissítések nem jelennek meg azonnal, mert a frissítések fokozatos bevezetését hajtjuk végre. Várjon néhány napot, és ismételje meg a frissítések keresését, mivel ezek a frissítések hamarosan elérhetővé válnak.
+> * Az 5-ös frissítés kötelező frissítés, amelyet azonnal telepíteni kell. További információt az [5.](storsimple-8000-install-update-5.md)
+> * Az 5-ös frissítés eszközszoftverrel, lemezes firmware-rel, operációs rendszer biztonságával és egyéb operációs rendszer-frissítésekkel rendelkezik. A frissítés telepítése körülbelül 4 órát vesz igénybe. A lemez belső vezérlőprogramjának frissítése zavaró frissítés, amely az eszköz leállását eredményezi. Javasoljuk, hogy az 5.frissítés telepítésével tartsa naprakészen az eszközt.
+> * Az új kiadások esetében előfordulhat, hogy nem jelennek meg azonnal a frissítések, mert a frissítések fokozatos bevezetését tesszük. Várjon néhány napot, majd keresse meg újra a frissítéseket, mivel ezek a frissítések hamarosan elérhetővé válnak.
 
-## <a name="whats-new-in-update-5"></a>Az 5. frissítés újdonságai
+## <a name="whats-new-in-update-5"></a>Az 5.
 
-Az 5. frissítés az alábbi főbb javításokat és hibajavításokat tartalmazza.
+Az 5-ös frissítésben a következő kulcsfontosságú fejlesztések és hibajavítások történtek.
 
-* **Azure Active Directory (HRE) használata a StorSimple Eszközkezelő Service** -ben való hitelesítéshez – az 5. frissítéstől kezdve Azure Active Directory a rendszer a StorSimple Eszközkezelő szolgáltatással történő hitelesítésre szolgál. A régi hitelesítési mechanizmus elavulttá válik a 2017 decemberében. Az összes felhasználónak tartalmaznia kell az új hitelesítési URL-címeket a tűzfalszabályok szabályaiban. További információ: [a StorSimple-eszköz hálózati követelményeiben felsorolt hitelesítési URL-címek](storsimple-8000-system-requirements.md#url-patterns-for-azure-portal).
+* **Az Azure Active Directory (AAD) használata a StorSimple Eszközkezelő szolgáltatással való hitelesítéshez** – az 5.frissítéstől kezdve az Azure Active Directory a StorSimple Eszközkezelő szolgáltatással való hitelesítéshez használható. A régi hitelesítési mechanizmus 2017 decemberére elavult. Minden felhasználónak tartalmaznia kell az új hitelesítési URL-eket a tűzfalszabályokban. További információért látogasson el [a StorSimple-eszköz hálózati követelményeiben felsorolt hitelesítési URL-címekre.](storsimple-8000-system-requirements.md#url-patterns-for-azure-portal)
 
-    Ha a tűzfalszabályok nem tartalmazzák a hitelesítési URL-címet, a felhasználók kritikus riasztást kapnak arról, hogy a StorSimple-eszköz nem tudta hitelesíteni a szolgáltatást. Ha a felhasználók ezt a riasztást látják, fel kell venniük az új hitelesítési URL-címet. További információkért keresse fel a [StorSimple hálózati riasztások](storsimple-8000-manage-alerts.md#networking-alerts)című témakört.
+    Ha a hitelesítési URL nem szerepel a tűzfalszabályokban, a felhasználók egy kritikus riasztást fognak látni, amely szerint a StorSimple-eszközük nem tudta hitelesíteni magát a szolgáltatással. Ha a felhasználók látják ezt a riasztást, meg kell adniuk az új hitelesítési URL-címet. További információ: [StorSimple hálózati riasztások](storsimple-8000-manage-alerts.md#networking-alerts).
 
-* A **StorSimple új verziója Snapshot Manager** – a StorSimple Snapshot Manager új verziója jelenik meg az 5. frissítéssel, és kompatibilis a 4-es vagy újabb frissítést futtató összes StorSimple-eszközzel. Javasoljuk, hogy frissítsen erre a verzióra. A StorSimple Snapshot Manager előző verziója a 3. frissítést vagy a korábbi verziót futtató StorSimple-eszközökön használható. [Töltse le a StorSimple Snapshot Manager megfelelő verzióját](https://www.microsoft.com/en-us/download/details.aspx?id=44220) , és tekintse meg a [StorSimple Snapshot Manager üzembe helyezése című témakört](storsimple-snapshot-manager-deployment.md).
+* **A StorSimple Snapshot Manager új verziója** – A StorSimple Snapshot Manager új verziója az 5- es frissítéssel érhető el, és kompatibilis a 4. Javasoljuk, hogy frissítsen erre a verzióra. A StorSimple Snapshot Manager korábbi verziója a 3. [Töltse le a StorSimple Snapshot Manager megfelelő verzióját,](https://www.microsoft.com/en-us/download/details.aspx?id=44220) és olvassa el a [StorSimple Snapshot Manager telepítését.](storsimple-snapshot-manager-deployment.md)
 
 
-## <a name="issues-fixed-in-update-5"></a>Az 5. frissítésben rögzített problémák
+## <a name="issues-fixed-in-update-5"></a>Az 5.
 
-Az alábbi táblázat az 5. frissítésben rögzített problémák összegzését tartalmazza.
+Az alábbi táblázat az 5.
 
-| Nem | Szolgáltatás | Probléma | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
+| Nem | Szolgáltatás | Probléma | Fizikai eszközre vonatkozik | Virtuális eszközre vonatkozik |
 | --- | --- | --- | --- | --- |
-| 1 |Windows PowerShell távoli eljáráshívás |Az előző kiadásban a felhasználó hibaüzenetet kap, amikor távoli kapcsolatot próbál létesíteni a StorSimple Cloud Appliance a Windows PowerShell használatával. Ezt a problémát a jelen kiadásban a gyökér okozta és javítottuk. |Nem |Igen |
-| 2 |Sávszélesség-sablonok |A korábbi kiadásokban probléma merült fel olyan sávszélesség-sablonokkal, amelyek alacsonyabb sávszélességet eredményeztek, mint amit az eszközhöz konfiguráltak. Ez a probléma ebben a kiadásban van feloldva. |Igen |Igen |
-| 3 |Feladatátvétel |Ha a korábbi kiadásban nagy mennyiségű kötettel rendelkező eszközt hajtottak végre a 4. frissítést futtató másik eszközre, a folyamat sikertelen lesz, amikor megpróbálja alkalmazni a hozzáférés-vezérlési rekordokat. Ez a probléma ebben a kiadásban van kijavítva. |Igen |Igen |
+| 1 |Windows PowerShell-távszolgáltatás |Az előző kiadásban a felhasználó hibaüzenetet kap, miközben távoli kapcsolatot próbál létrehozni a StorSimple felhőalapú berendezéssel a Windows PowerShellen keresztül. A probléma ebben a kiadásban gyökér okozta és kijavított. |Nem |Igen |
+| 2 |Sávszélesség-sablonok |A korábbi kiadásban probléma volt a sávszélesség-sablonokkal, amelyek alacsonyabb sávszélességet eredményeztek, mint amire az eszközt konfigurálták. Ez a probléma ebben a kiadásban megoldódott. |Igen |Igen |
+| 3 |Feladatátvétel |Az előző kiadásban, amikor egy nagy számú kötetet tartalmazó eszközt átadott a 4. Ez a probléma ebben a kiadásban kivan javítva. |Igen |Igen |
 
 
 
-## <a name="known-issues-in-update-5-from-previous-releases"></a>A korábbi kiadások 5. frissítésének ismert problémái
+## <a name="known-issues-in-update-5-from-previous-releases"></a>Ismert problémák az 5.
 
-Nincsenek új ismert problémák az 5. frissítésben. A korábbi kiadásokban az 5. frissítés során végrehajtott problémák listáját a [3. frissítéssel kapcsolatos megjegyzésekben](storsimple-update3-release-notes.md#known-issues-in-update-3)keresse meg.
+Nincsenek új ismert problémák az 5. A korábbi kiadások ból az 5. [Update 3 release notes](storsimple-update3-release-notes.md#known-issues-in-update-3)
 
-## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-5"></a>Sorosan csatlakoztatott SCSI (SAS) vezérlő és belső vezérlőprogram frissítései az 5. frissítésben
+## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-5"></a>Sorosscsi-vezérlő (SAS) vezérlő és belső vezérlőprogram-frissítések az 5.
 
-Ez a kiadás SAS-vezérlővel és LSI-illesztőprogrammal és belső vezérlőprogram-frissítésekkel rendelkezik. A frissítések telepítésével kapcsolatos további információkért lásd: az [5. frissítés telepítése](storsimple-8000-install-update-5.md) a StorSimple-eszközön.
+Ez a kiadás SAS-vezérlővel, lsi illesztőprogram- és belsővezérlő-frissítésekkel rendelkezik. A frissítések telepítéséről az [5.](storsimple-8000-install-update-5.md)
 
-## <a name="storsimple-cloud-appliance-updates-in-update-5"></a>Az 5. frissítés StorSimple Cloud Appliance frissítései
+## <a name="storsimple-cloud-appliance-updates-in-update-5"></a>A StorSimple Cloud Appliance frissítései az 5.
 
-Ez a frissítés nem alkalmazható a StorSimple Cloud Appliancera (más néven virtuális eszközre). Az új felhőalapú berendezéseket az 5. frissítés rendszerkép használatával kell létrehozni. StorSimple Cloud Appliance létrehozásával kapcsolatos információkért lépjen a [StorSimple Cloud Appliance üzembe helyezése és kezelése](storsimple-8000-cloud-appliance-u2.md)című témakörben.
+Ez a frissítés nem alkalmazható a StorSimple cloud appliance (más néven a virtuális eszköz). Új felhőalapú készülékeket kell létrehozni az 5-ös frissítés i. A StorSimple felhőalapú berendezés létrehozásáról a [StorSimple felhőalapú berendezés telepítése és kezelése](storsimple-8000-cloud-appliance-u2.md)című oldalon talál.
 
 ## <a name="next-step"></a>Következő lépés
 
-Ismerje meg, hogyan [telepítheti az 5. frissítést](storsimple-8000-install-update-5.md) a StorSimple-eszközön.
+További információ az [5.](storsimple-8000-install-update-5.md)
 

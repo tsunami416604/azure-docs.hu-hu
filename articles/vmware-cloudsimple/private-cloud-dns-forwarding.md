@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás – DNS-továbbítás a privát felhőből a helyi környezetbe
-description: Ismerteti, hogyan engedélyezheti a CloudSimple saját felhőalapú DNS-kiszolgálójának a helyszíni erőforrások keresésének továbbítását
+title: Azure VMware-megoldás – DNS továbbítás magánfelhőből a helyszíni adatokra
+description: Ez a témakör azt ismerteti, hogy miként engedélyezheti a CloudSimple private cloud DNS-kiszolgálószámára a helyszíni erőforrások keresési adatait
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 02/29/2020
@@ -9,49 +9,49 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: aa2af4302613aad23bfd78b4883bbb46c5e5ddbb
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76961126"
 ---
-# <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>A CloudSimple-alapú privát Felhőbeli DNS-kiszolgálók engedélyezése a helyszíni erőforrások DNS-keresésének továbbítására a DNS-kiszolgálókra
+# <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>A CloudSimple magánfelhő-alapú DNS-kiszolgálóinak engedélyezése a helyszíni erőforrások DNS-keresési adatainak továbbítására a DNS-kiszolgálók számára
 
-A saját felhőalapú DNS-kiszolgálók továbbítják a DNS-keresést bármely helyszíni erőforráshoz a DNS-kiszolgálókra.  A keresés engedélyezése lehetővé teszi, hogy a saját felhőalapú vSphere összetevői bármilyen, a helyszíni környezetben futó szolgáltatást keressenek, és teljes tartománynevek (FQDN) használatával kommunikáljanak velük.
+A magánfelhő-DNS-kiszolgálók a DNS-kiszolgálóknak továbbíthatják a DNS-erőforrások DNS-kereséseit.  A névkérés engedélyezése lehetővé teszi, hogy a Private Cloud vSphere-összetevők a helyszíni környezetben futó szolgáltatásokat megkeressék, és teljesen minősített tartománynevek (FQDN) használatával kommunikáljanak velük.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek 
+## <a name="scenarios"></a>Forgatókönyvek 
 
-A helyi DNS-kiszolgáló DNS-keresésének továbbítása lehetővé teszi a saját felhő használatát a következő esetekben:
+A helyszíni DNS-kiszolgáló DNS-keresése lehetővé teszi a magánfelhő használatát a következő esetekben:
 
-* A saját felhő használata vész-helyreállítási beállításként a helyszíni VMware-megoldáshoz
-* Helyszíni Active Directory használata identitás forrásaként a saját felhőalapú vSphere
-* A HCX használata a virtuális gépek helyszíniről saját felhőbe való áttelepítéséhez
+* A Magánfelhő használata vész-helyreállítási beállításként a helyszíni VMware-megoldáshoz
+* A helyszíni Active Directory használata a magánfelhő vSphere identitásforrásaként
+* A HCX használata virtuális gépek helyszíni és magánfelhőbe való áttelepítéséhez
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-A DNS-továbbítás működéséhez egy hálózati kapcsolatban kell lennie a saját felhőalapú hálózatáról a helyszíni hálózatra.  A hálózati kapcsolatok a használatával állíthatók be:
+A DNS-továbbítás működéséhez a magánfelhő-hálózatról a helyszíni hálózatra hálózati kapcsolatnak kell lennie.  A hálózati kapcsolatot a következő konkra állíthatja be:
 
-* [Kapcsolódás a helyszínről a CloudSimple a ExpressRoute használatával](on-premises-connection.md)
+* [Csatlakozás a helyszíni és a CloudSimple szolgáltatáshoz az ExpressRoute használatával](on-premises-connection.md)
 * [Helyek közötti VPN-átjáró beállítása](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway#set-up-a-site-to-site-vpn-gateway)
 
-A DNS-továbbítás működéséhez a tűzfal portjait meg kell nyitni a kapcsolódáskor.  A használt portok a 53-as TCP-port vagy az 53-es UDP-port.
+A DNS-továbbítás működéséhez tűzfalportokat kell megnyitni ezen a kapcsolaton.  A használt portok az 53-as TCP-port vagy az 53-as UDP-port.
 
 > [!NOTE]
 > Ha helyek közötti VPN-t használ, a helyszíni DNS-kiszolgáló alhálózatát a helyszíni előtagok részeként kell hozzáadni.
 
-## <a name="request-dns-forwarding-from-private-cloud-to-on-premises"></a>DNS-továbbítás kérése a privát felhőből a helyszíni rendszerbe
+## <a name="request-dns-forwarding-from-private-cloud-to-on-premises"></a>DNS-továbbítás kérése a magánfelhőből a helyszíni környezetbe
 
-Ha engedélyezni szeretné a DNS-továbbítást a privát felhőből a helyszíni környezetbe, küldjön egy [támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), amely a következő információkat biztosítja.
+A DNS-továbbítás engedélyezéséhez a magánfelhőből a helyszíni környezetbe, nyújtson be [támogatási kérelmet,](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)amely a következő információkat tartalmazza.
 
-* Probléma típusa: **technikai**
-* Előfizetés: **előfizetés, ahol a CloudSimple szolgáltatás telepítve van**
-* Szolgáltatás: **VMware-megoldás CloudSimple szerint**
-* Probléma típusa: **tanácsadó vagy hogyan...**
-* Probléma altípusa: **segítségre van szüksége az NW-vel**
+* Probléma típusa: **Műszaki**
+* Előfizetés: **Előfizetés, ahol a CloudSimple szolgáltatás telepítve van**
+* Szolgáltatás: **VMware megoldás a CloudSimple-től**
+* Probléma típusa: **Tanácsadó vagy Hogyan ...**
+* Probléma altípus: **Segítségre van szüksége az NW-vel kapcsolatban**
 * Adja meg a helyszíni tartomány tartománynevét a részletek ablaktáblán.
-* Adja meg azoknak a helyszíni DNS-kiszolgálóknak a listáját, amelyekhez a rendszer továbbítja a keresést a privát felhőből a részleteket tartalmazó ablaktáblán.
+* Adja meg azoknak a helyszíni DNS-kiszolgálóknak a listáját, amelyekre a rendszer a privát felhőből továbbítja a keresési adatokat a részletek ablaktáblán.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [További információ a helyszíni tűzfal konfigurálásáról](on-premises-firewall-configuration.md)
+* [További információ a helyszíni tűzfal-konfigurációról](on-premises-firewall-configuration.md)
 * [Helyszíni DNS-kiszolgáló konfigurációja](on-premises-dns-setup.md)

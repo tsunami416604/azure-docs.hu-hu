@@ -1,6 +1,6 @@
 ---
-title: Az Azure-ba való betöltéshez használjon egykattintásos betöltést Adatkezelő
-description: Ismerje meg, hogyan tölthetők be (betöltési) adatai az Azure-ba Adatkezelő egyszerűen csak egy kattintással történő betöltéssel.
+title: Az azure Data Explorer betöltéséhez egykattintásos betöltéssel
+description: Ismerje meg, hogyan töltheti be (töltheti be) az adatokat az Azure Data Explorerbe egy kattintással történő betöltéssel.
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
@@ -8,86 +8,86 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.openlocfilehash: 4a53f7e68501ce7f9b19dea0822d3896ec241fb8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444557"
 ---
-# <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>Az Azure-ba való betöltéshez használjon egykattintásos betöltést Adatkezelő
+# <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>Az azure Data Explorer betöltéséhez egykattintásos betöltéssel
 
-Ebből a cikkből megtudhatja, hogyan használhatja a betöltést egy új tábla gyors betöltéséhez JSON-vagy CSV-formátumban. Az adatok menthetők a tárterületről vagy egy helyi fájlból egy meglévő táblába vagy egy új táblába. Használja az intuitív egykattintásos varázslót, és néhány percen belül betölti az adatait. Ezután szerkesztheti a táblázatot, és futtathatja a lekérdezéseket az Azure Adatkezelő webes felhasználói felületének használatával.
+Ez a cikk bemutatja, hogyan használhatja az egykattintásos betöltést egy új tábla JSON- vagy CSV-formátumban történő gyors betöltéséhez. Az adatok a tárolóból vagy egy helyi fájlból egy meglévő táblába vagy egy új táblába is bevihetők. Használja az intuitív egykattintásos varázslót, és néhány percen belül betöltése az adatokat. Ezután szerkesztheti a táblát, és lekérdezéseket futtathat az Azure Data Explorer webfelhasználói felületének használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* Jelentkezzen be az [alkalmazásba](https://dataexplorer.azure.com/).
-* Hozzon létre [egy Azure adatkezelő-fürtöt és-adatbázist](create-cluster-database-portal.md).
-* Jelentkezzen be a [webes kezelőfelületre](https://dataexplorer.azure.com/) , és [vegyen fel egy kapcsolódást a fürthöz](/azure/data-explorer/web-query-data#add-clusters).
+* Jelentkezzen be [az alkalmazásba.](https://dataexplorer.azure.com/)
+* Hozzon létre [egy Azure Data Explorer-fürtöt és -adatbázist.](create-cluster-database-portal.md)
+* Jelentkezzen be a [webes felhasználói felületre,](https://dataexplorer.azure.com/) és [adjon hozzá egy kapcsolatot a fürthöz.](/azure/data-explorer/web-query-data#add-clusters)
 
-## <a name="ingest-new-data"></a>Új adatfeldolgozás
+## <a name="ingest-new-data"></a>Új adatok betöltése
 
-1. Kattintson a jobb gombbal a webes felhasználói felület bal oldali menüjében található *adatbázis* vagy *táblázat* sorra, és válassza az **új adatmennyiség (előzetes verzió)** lehetőséget.
+1. Kattintson a jobb gombbal a webes felhasználói felület bal oldali menüjében lévő *adatbázisra* vagy táblasorra, és válassza **az Új adatok betöltése (előnézet) parancsot.** *table*
 
-    ![Válassza az egykattintásos betöltés lehetőséget a webes felhasználói felületen](media/ingest-data-one-click/one-click-ingestion-in-webui.png)   
+    ![Egyetlen kattintásos betöltés kijelölése a webes felhasználói felületen](media/ingest-data-one-click/one-click-ingestion-in-webui.png)   
  
-1. Az új adatok beolvasása **(előzetes verzió)** ablakban válassza ki a **forrás** fület, és fejezze be a **projekt részleteit**:
+1. Az **Új adatok betöltése (előnézet)** ablakban válassza a **Forrás** lapot, és fejezze be a **Projekt részletei :**
 
-    * A **tábla**mezőben válasszon ki egy meglévő táblanév-nevet a legördülő menüből, vagy válassza az új létrehozása lehetőséget az új tábla **létrehozásához** .
-    * A betöltés **típusa**beállításnál válassza **a tárolóból** vagy **a fájlból**lehetőséget.
-      * Ha a **tárterület**lehetőséget választotta, válassza az URL-cím hozzáadásához a **tárolóhoz való csatolás** lehetőséget. A [blob sas URL-cím](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) használata a privát Storage-fiókokhoz. 
-      * Ha a **fájlból**lehetőséget választotta, válassza a **Tallózás** lehetőséget, majd húzza a fájlt a mezőbe.
-    * Válassza a **séma szerkesztése** lehetőséget a tábla oszlopai konfigurációjának megtekintéséhez és szerkesztéséhez.
+    * A **Táblázat csoportban**válasszon ki egy meglévő táblanevet a legördülő menüből, vagy válassza az **Új létrehozása lehetőséget** új tábla létrehozásához.
+    * A **Betöltés típusa esetén**válassza a **raktárból** vagy **a fájlból lehetőséget.**
+      * Ha a **tárolóból**lehetőséget választotta, válassza **a Hivatkozás a tárolóhoz** lehetőséget az URL-cím hozzáadásához. Blob [SAS URL-címe](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) magántárfiókokhoz. 
+      * Ha **a fájlból**kijelölte a Lehetőséget, válassza a **Tallózás** lehetőséget, és húzza a fájlt a mezőbe.
+    * A **séma szerkesztése** lehetőséget a táblázatoszlop konfigurációjának megtekintéséhez és szerkesztéséhez válassza.
  
-    ![Egy kattintással történő betöltési forrás részletei](media/ingest-data-one-click/one-click-ingestion-source.png) 
+    ![Egykattintásos betöltési forrás részletei](media/ingest-data-one-click/one-click-ingestion-source.png) 
 
     > [!TIP]
-    > Ha az új adatok beolvasása **(előzetes verzió)** lehetőséget választja egy *táblázat* soraiban, a kiválasztott tábla neve megjelenik a **projekt részletei**között.
+    > Ha egy *táblázatsorban* az **Új adatok betöltése (előnézet)** lehetőséget választja, a kijelölt táblanév megjelenik a **Projekt részletei képernyőn.**
 
-1. Ha kiválasztott egy meglévő táblázatot, megnyílik a **Térkép oszlopok** ablak, amely a forrás adatoszlopokat a céltábla oszlopaihoz rendeli. 
-    * A **kihagyás oszlop** használatával távolíthatja el a kívánt oszlopot a táblából.
-    * Új **oszlop** hozzáadása új oszlophoz a táblához.
+1. Ha meglévő táblát jelölt ki, megnyílik az **Oszlopok leképezése** ablak, amely a forrásadatoszlopokat céltábla-oszlopokhoz képezi. 
+    * A Céloszlop eltávolítása a táblázatból a **Kihagyás oszlopmal.**
+    * **Az Új oszlop mal** új oszlopot vehet fel a táblába.
 
     ![Oszlopok leképezése ablak](media/ingest-data-one-click/one-click-map-columns-window.png)
 
-1. A **séma** lapon:
+1. A **Séma** lapon:
 
-    * Válassza a **tömörítési típus** lehetőséget a legördülő menüből, majd válassza a **kitömörítve** vagy a **gzip**lehetőséget.
-    * Válassza az **adatformátum** lehetőséget a legördülő menüből, majd válassza a **JSON**, **a CSV**, a **TSV**, a **SCSV**, a **SOHSV**, a **TSVE**vagy a **PSV**lehetőséget. 
-        * A **JSON** formátum kiválasztásakor a **JSON-szintet**is ki kell választania 1 és 10 között. A szintek hatással vannak a táblázat oszlop adatábrázolására. 
-        * Ha a JSON formátumtól eltérő formátumot választ, jelölje be a jelölőnégyzetet **is** , hogy a rendszer figyelmen kívül hagyja a fájl fejlécét.
-    * A **leképezés neve** automatikusan be van állítva, de szerkeszthető is lehet.
-    * Ha kiválasztott egy meglévő táblázatot, az **oszlopok leképezése** lehetőség kiválasztásával megnyithatja a **Térkép oszlopok** ablakot.
+    * Válassza a Legördülő menü **Tömörítés típusa parancsát,** majd válassza a **Tömörítetlen** vagy a **GZip lehetőséget.**
+    * Válassza az **Adatformátum lehetőséget** a legördülő menüből, majd válassza a **JSON,** **CSV,** **TSV**, **SCSV**, **SOHSV**, **TSVE**vagy **PSV**lehetőséget. 
+        * A **JSON** formátum kiválasztásakor a **JSON-szinteket**is ki kell választania 1 és 10 között. A szintek hatással vannak a táblaoszlop adatainak ábrázolására. 
+        * Ha a JSON formátumtól eltérő formátumot választ, a fájl címsorsorának figyelmen kívül hagyásához jelölje be az **Oszlopnevek belefoglalása** jelölőnégyzetet.
+    * **A leképezési név** beállítása automatikusan megtörténik, de szerkeszthető.
+    * Ha meglévő táblázatot választott, az **Oszlopok leképezése** lehetőséget választva megnyithatja az **Oszlopok leképezése** ablakot.
 
-    ![Egykattintásos betöltési CSV-formátum sémája](media/ingest-data-one-click/one-click-csv-format.png)
+    ![Egykattintásos csv formátumú séma](media/ingest-data-one-click/one-click-csv-format.png)
 
-1. **A szerkesztő ablaktábla felett** kattintson a **v** gombra a szerkesztő megnyitásához. A szerkesztőben megtekintheti és átmásolhatja a bemenetek által generált automatikus lekérdezéseket. 
+1. A **Szerkesztő** ablaktábla felett válassza a **v** gombot a szerkesztő megnyitásához. A szerkesztőben megtekintheti és másolhatja a bemenetekből generált automatikus lekérdezéseket. 
 
 1. A táblázatban: 
-    * Kattintson a jobb gombbal az új oszlopfejlécek lehetőségre az **adattípus módosításához**, **oszlop átnevezéséhez**, **oszlop törléséhez**, **növekvő rendezéshez**vagy **Rendezés csökkenő**sorrendbe. A meglévő oszlopokban csak az Adatrendezés érhető el. 
-    * Kattintson duplán az új oszlop nevére a szerkesztéshez.
+    * Kattintson a jobb gombbal az új oszlopfejlécek elemre az **Adattípus módosítása**, **Az Oszlop átnevezése,** **az Oszlop törlése,** **a Növekvő rendezés**vagy a Csökkenő rendezés **elemre.** A meglévő oszlopokon csak az adatok rendezése érhető el. 
+    * Kattintson duplán a szerkesztéshez az új oszlopnévre.
 
-1. Válassza a betöltés **indítása** lehetőséget a tábla és a leképezés létrehozásához, valamint az adatfeldolgozás megkezdéséhez.
+1. A tábla és a leképezés létrehozásához, valamint az adatok betöltésének megkezdéséhez válassza a **Betöltés megkezdése** lehetőséget.
 
-    ![Egykattintásos betöltési JSON formátum sémája](media/ingest-data-one-click/one-click-json-format.png) 
+    ![Egykattintásos betöltésI JSON formátumú séma](media/ingest-data-one-click/one-click-json-format.png) 
  
 ## <a name="query-data"></a>Adatok lekérdezése
 
-1. Az **adatfeldolgozás befejezve** ablakban mindhárom lépést zöld pipa jelöli, ha az adatfeldolgozás sikeresen befejeződik.
+1. Az **Adatbetöltés befejeződött** ablakban mindhárom lépés zöld pipával lesz megjelölve, ha az adatok betöltése sikeresen befejeződik.
  
-    ![Egy kattintással elvégezhető az adatfeldolgozás](media/ingest-data-one-click/one-click-data-ingestion-complete.png)
+    ![Egykattintásos adatbetöltés kész](media/ingest-data-one-click/one-click-data-ingestion-complete.png)
 
-1. A lekérdezés megnyitásához kattintson a **v** gombra. Másolás a webes KEZELŐFELÜLETre a lekérdezés szerkesztéséhez.
+1. A lekérdezés megnyitásához kattintson a **v** gombra. Másolás a webes felhasználói felületre a lekérdezés szerkesztéséhez.
 
-1. A jobb oldali menüben a **gyors lekérdezések** és az **eszközök** beállításai láthatók. 
+1. A jobb oldali menü **gyorslekérdezéseket** és **eszközök** beállításait tartalmazza. 
 
-    * A **gyors lekérdezések** a webes kezelőfelületre mutató hivatkozásokat tartalmaznak, például lekérdezésekkel.
-    * Az **eszközök** tartalmaz egy hivatkozást a webes felhasználói felületen a **parancsok eldobására** , ami lehetővé teszi a problémák megoldását a megfelelő `.drop` parancsok futtatásával.
+    * **A gyorslekérdezések** a webes felhasználói felületre mutató lekérdezésekkel rendelkező hivatkozásokat tartalmaznak.
+    * **Az eszközök** a webes felhasználói felületen található **Drop parancsokra** mutató hivatkozást tartalmaznak, amely lehetővé teszi a problémák elhárítását a megfelelő `.drop` parancsok futtatásával.
 
     > [!TIP]
-    > `.drop` parancsok használatakor elveszhetnek az adatvesztés. Gondosan használja őket.
+    > Parancsok használatakor `.drop` adatok veszhetnek el. Óvatosan használja őket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Az Azure Adatkezelő webes felhasználói felületének lekérdezése](web-query-data.md)
-* [Írási lekérdezések az Azure Adatkezelő Kusto lekérdezési nyelv használatával](write-queries.md)
+* [Adatok lekérdezése az Azure Data Explorer webes felhasználói felületén](web-query-data.md)
+* [Lekérdezések írása az Azure Data Explorer hez a Kusto lekérdezési nyelv használatával](write-queries.md)

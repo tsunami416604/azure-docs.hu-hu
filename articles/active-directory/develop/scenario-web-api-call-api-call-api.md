@@ -1,6 +1,6 @@
 ---
-title: Webes API-k meghívása webes API-k – Microsoft Identity platform | Azure
-description: Megtudhatja, hogyan hozhat létre webes API-kat meghívó webes API-t.
+title: Webes API, amely webes API-kat hív meg - Microsoft identity platform | Azure
+description: Ismerje meg, hogyan hozhat létre webes API-t, amely webes API-kat hív meg.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,23 +15,23 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d66a08d4e84a3771d6c3fa46b96c975869435452
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76833379"
 ---
-# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Webes API-kat meghívó webes API: az API meghívása
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Webes API-kat meghívó webes API:API hívása
 
-A jogkivonat meghívása után meghívhat egy védett webes API-t. Ezt a webes API vezérlője hajtja végre.
+Miután rendelkezik egy jogkivonatot, meghívhat egy védett webes API-t. Ezt a webes API vezérlőjétől kell megtennie.
 
 ## <a name="controller-code"></a>Vezérlő kódja
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-A következő kód folytatja a webes API-kat meghívó webes API-kon megjelenő példa kódját [: az alkalmazás jogkivonatának beszerzése](scenario-web-api-call-api-acquire-token.md). A kódot az API-vezérlők műveleteiben hívják meg. Egy *ToDoList*nevű alsóbb RÉTEGbeli API-t hív meg.
+A következő kód folytatja a [webes API-kat meghívjaó webes API-kban megjelenő példakódot: Az alkalmazás jogkivonatának beszerzése.](scenario-web-api-call-api-acquire-token.md) A kód neve az API-vezérlők műveleteket. Meghívja a todolista nevű alsóbb rétegbeli *API-t.*
 
-Miután megszerezte a tokent, használja tulajdonosi jogkivonatként az alsóbb rétegbeli API meghívásához.
+Miután megszerezte a jogkivonatot, használja azt tulajdonosi jogkivonatként az alsóbb rétegbeli API-hoz.
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -59,11 +59,11 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-A következő kód folytatja a webes API-kat meghívó webes API-kon megjelenő példa kódját [: az alkalmazás jogkivonatának beszerzése](scenario-web-api-call-api-acquire-token.md). A kódot az API-vezérlők műveleteiben hívják meg. Meghívja az alsóbb rétegbeli API MS Graphot.
+A következő kód folytatja a [webes API-kat meghívjaó webes API-kban megjelenő példakódot: Az alkalmazás jogkivonatának beszerzése.](scenario-web-api-call-api-acquire-token.md) A kód neve az API-vezérlők műveleteket. Meghívja az alsóbb rétegbeli API MS Graph.It calls the downstream API MS Graph.
 
-Miután megszerezte a tokent, használja tulajdonosi jogkivonatként az alsóbb rétegbeli API meghívásához.
+Miután megszerezte a jogkivonatot, használja azt tulajdonosi jogkivonatként az alsóbb rétegbeli API-hoz.
 
 ```Java
 private String callMicrosoftGraphMeEndpoint(String accessToken){
@@ -83,12 +83,12 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
-A folyamatot bemutató minta a MSAL Python szolgáltatással még nem érhető el.
+# <a name="python"></a>[Python](#tab/python)
+A folyamatot az MSAL Python-nal bemutató minta még nem érhető el.
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Webes API-kat meghívó webes API: áthelyezés éles környezetbe](scenario-web-api-call-api-production.md)
+> [Webes API-kat meghívó webes API:Ugrás éles környezetbe](scenario-web-api-call-api-production.md)

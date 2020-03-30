@@ -1,6 +1,6 @@
 ---
-title: A Storage Emulator konfigurálása és használata a Visual Studióval | Microsoft Docs
-description: A Storage Emulator konfigurálása és használata, amely szimulálja az Azure-ban elérhető blob-, üzenetsor-és Table Storage-szolgáltatásokat a helyi fejlesztési gépen.
+title: A Tároló emulátor konfigurálása és használata a Visual Studio segítségével | Microsoft dokumentumok
+description: Konfigurálása és használata a tárolási emulátor, egy segédprogram, amely szimulálja a Blob, várólista és table tárolási szolgáltatások elérhető az Azure-ban a helyi fejlesztői gépen.
 services: visual-studio-online
 author: ghogen
 manager: jillfra
@@ -13,35 +13,35 @@ ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
 ms.openlocfilehash: a6f853924416cce2440ca15767044029b20e651f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75450725"
 ---
-# <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>A Storage Emulator konfigurálása és használata a Visual Studióval
+# <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>A tárolóemulátor konfigurálása és használata a Visual Studio segítségével
 
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure SDK fejlesztői környezet magában foglalja a Storage emulatort, amely az Azure-ban elérhető blob-, üzenetsor-és Table Storage-szolgáltatásokat szimulálja a helyi fejlesztői gépen. Ha olyan felhőalapú szolgáltatást fejleszt, amely az Azure Storage szolgáltatásokat alkalmazza, vagy bármilyen külső alkalmazást ír, amely meghívja a tárolási szolgáltatásokat, akkor a kódot helyileg tesztelheti a Storage emulatorban. A Microsoft Visual studióhoz készült Azure-eszközök integrálják a Storage emulatort a Visual studióba. Az Azure-eszközök az első használat során inicializálják a Storage Emulator-adatbázist, elindítja a Storage Emulator szolgáltatást a kód a Visual studióból való futtatásakor vagy hibakeresése során, valamint csak olvasási hozzáférést biztosít a Storage Emulator-adatokhoz a Azure Storage Explorer használatával.
+Az Azure SDK-fejlesztési környezet tartalmazza a tárolási emulátort, egy segédprogramot, amely szimulálja a blob, várólista és table tárolási szolgáltatások elérhető az Azure-ban a helyi fejlesztői gépen. Ha olyan felhőszolgáltatást hoz fel, amely az Azure storage-szolgáltatásokat használja, vagy bármilyen külső alkalmazást ír, amely meghívja a tárolási szolgáltatásokat, helyileg tesztelheti a kódot a tároló emulátorával szemben. Az Azure Tools for Microsoft Visual Studio integrálja a storage-emulátor kezelését a Visual Studióba. Az Azure Tools első használatkor inicializálja a tároló-emulátor-adatbázist, elindítja a storage-emulátor-szolgáltatást, amikor futtatja vagy hibakeresésa a kódot a Visual Studióból, és csak olvasható hozzáférést biztosít a tárolóemulátor adataihoz az Azure Storage Exploreren keresztül.
 
-A Storage Emulator részletes ismertetését, beleértve a rendszerkövetelményeket és az egyéni konfigurációs utasításokat lásd: [Az Azure Storage Emulator használata fejlesztéshez és teszteléshez](storage/common/storage-use-emulator.md).
-
-> [!NOTE]
-> A Storage Emulator-szimuláció és az Azure Storage-szolgáltatások között számos különböző funkció létezik. A konkrét különbségekről a [Storage Emulator és az Azure Storage szolgáltatások közötti különbségek](storage/common/storage-use-emulator.md) az Azure SDK dokumentációjában olvashatók.
-
-## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>A Storage emulatorhoz tartozó kapcsolatok karakterláncának konfigurálása
-
-Ha egy szerepkörön belül szeretné elérni a Storage-emulátort, konfigurálnia kell egy olyan kapcsolati karakterláncot, amely a Storage emulatorra mutat, és később egy Azure Storage-fiókra mutat. A kapcsolati karakterlánc olyan konfigurációs beállítás, amelyet a szerepkör a futtatókörnyezetben tud olvasni a Storage-fiókhoz való kapcsolódáshoz. A kapcsolódási karakterláncok létrehozásával kapcsolatos további információkért lásd: az [Azure Storage kapcsolódási karakterláncok konfigurálása](/azure/storage/common/storage-configure-connection-string).
+A tárolóemulátorról, beleértve a rendszerkövetelményeket és az egyéni konfigurációs utasításokat, [az Azure Storage-emulátor használata fejlesztési és tesztelési célokra](storage/common/storage-use-emulator.md)című témakörben talál részletes információt.
 
 > [!NOTE]
-> A **DevelopmentStorageAccount** tulajdonság használatával a kód alapján a Storage Emulator-fiókra mutató hivatkozást adhat vissza. Ez a megközelítés megfelelően működik, ha a kód alapján szeretné elérni a Storage emulatort, de ha azt tervezi, hogy közzéteszi az alkalmazást az Azure-ban, létre kell hoznia egy kapcsolati karakterláncot az Azure Storage-fiók eléréséhez, és módosítania kell a kódot a kapcsolat használatára a karakterláncot a közzététel előtt. Ha a Storage Emulator-fiók és az Azure Storage-fiók közötti váltás gyakran történik, a kapcsolati karakterlánc leegyszerűsíti ezt a folyamatot.
+> A storage-emulátor-szimuláció és az Azure storage-szolgáltatások között bizonyos funkciók vannak. Az Azure SDK-dokumentációban [a storage-emulátor és az Azure Storage Services közötti különbségek](storage/common/storage-use-emulator.md) című témakörben tájékozódhat a konkrét különbségekről.
 
-## <a name="initializing-and-running-the-storage-emulator"></a>A Storage Emulator inicializálása és futtatása
+## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>Kapcsolati karakterlánc konfigurálása a tárolóemulátorhoz
 
-Megadhatja, hogy a Visual Studióban a szolgáltatás futtatásakor vagy hibakereséskor a Visual Studio automatikusan elindítja a Storage emulatort. A Megoldáskezelőban nyissa meg az **Azure** -projekt helyi menüjét, és válassza a **Tulajdonságok**lehetőséget. A **fejlesztés** lap **Azure Storage-emulátor elindítása** listájában válassza az **igaz** lehetőséget (ha még nincs beállítva erre az értékre).  Néhány projekttípus nem rendelkezik a **fejlesztés** lappal. Ebben az esetben engedélyezheti vagy letilthatja a Storage Emulator indítását a projektfájl `StartDevelopmentStorage` elemének beállításával. Állítsa **igaz** értékre a beállítás engedélyezéséhez, vagy **false (hamis** ) értékre a letiltásához.  Például egy Azure Functions projektben nyissa meg a projektfájlt szerkesztésre, és módosítsa az XML-kódot a következőképpen:
+A storage emulátor elérése egy szerepkörön belüli kód, érdemes konfigurálni a kapcsolati karakterlánc, amely rámutat a storage-emulátor, és amely később módosítható, hogy pont egy Azure storage-fiók. A kapcsolati karakterlánc olyan konfigurációs beállítás, amelyet a szerepkör futásidőben olvashat egy tárfiókhoz való csatlakozáshoz. A kapcsolati karakterláncok létrehozásáról az [Azure Storage-kapcsolati karakterláncok konfigurálása](/azure/storage/common/storage-configure-connection-string)című témakörben talál további információt.
+
+> [!NOTE]
+> A **DevelopmentStorageAccount** tulajdonság használatával visszaadhat egy hivatkozást a tárterület-emulátorfiókra a kódból. Ez a megközelítés megfelelően működik, ha a kódból szeretné elérni a táremulátort, de ha azt tervezi, hogy közzéteszi az alkalmazást az Azure-ban, létre kell hoznia egy kapcsolati karakterláncot az Azure storage-fiók eléréséhez, és módosítania kell a kódot a kapcsolat használatához karakterláncot, mielőtt közzétenél. Ha gyakran vált a storage-emulátorfiók és az Azure storage-fiók között, a kapcsolati karakterlánc leegyszerűsíti ezt a folyamatot.
+
+## <a name="initializing-and-running-the-storage-emulator"></a>A tárolóemulátor inicializálása és futtatása
+
+Megadhatja, hogy amikor futtatja vagy hibakeresés a szolgáltatás a Visual Studio, A Visual Studio automatikusan elindítja a tároló emulátor. A Megoldáskezelőben nyissa meg az **Azure-projekt** helyi menüjét, és válassza a **Tulajdonságok lehetőséget.** A **Fejlesztés** lapon az **Azure Storage-emulátor indítása** listában válassza az **Igaz** lehetőséget (ha még nincs beállítva erre az értékre).  Egyes projekttípusoknem rendelkeznek a **Fejlesztés** lapval. Ebben az esetben engedélyezheti vagy letilthatja a tárolóemulátor `StartDevelopmentStorage` indítását a projektfájl elemének beállításával. Állítsa **igaz** értékre az engedélyezéséhez, vagy **hamis** értékre a letiltásához.  Egy Azure Functions projektben például nyissa meg a projektfájlt szerkesztésre, és módosítsa az XML-kódot az alábbiak szerint:
 
 ```xml
   <PropertyGroup>
@@ -51,14 +51,14 @@ Megadhatja, hogy a Visual Studióban a szolgáltatás futtatásakor vagy hibaker
   </PropertyGroup>
 ```
 
-Amikor először futtatja vagy végzi a szolgáltatást a Visual studióból, a Storage-emulátor inicializálási folyamatot indít el. Ez a folyamat fenntartja a Storage Emulator helyi portjait, és létrehozza a Storage Emulator-adatbázist. Ha elkészült, a folyamatnak nem kell újra futnia, hacsak nem törli a Storage Emulator-adatbázist.
+Amikor először futtatja vagy hibakeresés közben futtatja a szolgáltatást a Visual Studióból, a tárolóemulátor inicializálási folyamatot indít el. Ez a folyamat helyi portokat foglal le a tárolóemulátor számára, és létrehozza a tárolóemulátor-adatbázist. A folyamat befejezését követően a folyamatnak csak akkor kell újra futnia, ha a tárolóemulátor-adatbázis törlődik.
 
 > [!NOTE]
-> Az Azure-eszközök június 2012-os kiadásával kezdődően a Storage Emulator alapértelmezés szerint az SQL Express LocalDB fut. Az Azure-eszközök korábbi kiadásaiban a Storage Emulator az SQL Express 2005 vagy a 2008 alapértelmezett példányán fut, amelyet az Azure SDK telepítése előtt telepítenie kell. A Storage emulatort futtathatja az SQL Express megnevezett példányán vagy a Microsoft SQL Server elnevezett vagy alapértelmezett példányán is. Ha a Storage emulatort úgy kell konfigurálni, hogy az az alapértelmezett példánytól eltérő példányon fusson, tekintse meg [a fejlesztés és tesztelés az Azure Storage Emulator használatával](storage/common/storage-use-emulator.md)című témakört.
+> Az Azure Tools 2012. Az Azure Tools korábbi kiadásaiban a storage-emulátor az SQL Express 2005 vagy 2008 alapértelmezett példányán fut, amelyet telepítenie kell az Azure SDK telepítése előtt. A tárolóemulátort az SQL Express elnevezett példányán vagy a Microsoft SQL Server megnevezett vagy alapértelmezett példányán is futtathatja. Ha konfigurálnia kell a tárolóemulátort, hogy az alapértelmezett példánytól eltérő példányellen fusson, olvassa [el az Azure Storage-emulátor használata fejlesztési és tesztelési célokra](storage/common/storage-use-emulator.md)című témakört.
 
-A Storage Emulator felhasználói felületet biztosít a helyi tárolási szolgáltatások állapotának megtekintéséhez, valamint az elindításához, leállításához és alaphelyzetbe állításához. A Storage Emulator szolgáltatás elindítása után megtekintheti a felhasználói felületet, vagy elindíthatja vagy leállíthatja a szolgáltatást. ehhez kattintson a jobb gombbal az értesítési területen látható ikonra a Windows tálcán a Microsoft Azure emulátorhoz.
+A tárolóemulátor felhasználói felületet biztosít a helyi tárolási szolgáltatások állapotának megtekintéséhez, valamint indításához, leállításához és alaphelyzetbe állításához. A tárolóemulátor szolgáltatás elindítását követően megjelenítheti a felhasználói felületet, vagy elindíthatja vagy leállíthatja a szolgáltatást, ha a jobb gombbal a Windows tálcán a Microsoft Azure emulátor értesítési terület ikonjára kattint.
 
-## <a name="viewing-storage-emulator-data-in-server-explorer"></a>A Storage Emulator-információinak megtekintése a Server Explorerben
+## <a name="viewing-storage-emulator-data-in-server-explorer"></a>Tárolóemulátor adatok megtekintése a Kiszolgálókezelőben
 
-A Server Explorer Azure Storage csomópontja lehetővé teszi, hogy megtekintse a Storage-fiókokban lévő blob-és Table-adat adatait, és módosítsa a beállításokat, beleértve a Storage emulatort is. További információ: az [Azure Blob Storage-erőforrások kezelése Storage Explorerokkal](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs) .
+Az Azure Storage-csomópont a Kiszolgáló-kezelőben lehetővé teszi a blob- és táblaadatok beállításainak megtekintését és módosítását a tárfiókokban, beleértve a storage-emulátort is. További [információ: Az Azure Blob Storage-erőforrások kezelése a Storage Explorer rel](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs) című témakörben található.
 

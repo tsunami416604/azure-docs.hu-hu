@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics-feladatok programozott figyelése és kezelése
-description: Ez a cikk a REST API-k, az Azure SDK vagy a PowerShell használatával létrehozott Stream Analytics feladatok programozott figyelését ismerteti.
+title: Az Azure Stream Analytics-feladatok programozási programozási figyelése és kezelése
+description: Ez a cikk ismerteti, hogyan programozott módon figyelheti a REST API-kon, az Azure SDK-n vagy a PowerShellen keresztül létrehozott Stream Analytics-feladatokat.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
@@ -8,35 +8,35 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75431669"
 ---
-# <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Stream Analytics-feladatokhoz tartozó figyelő programozott létrehozása
+# <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programozott módon létrehoz egy Stream Analytics-feladatfigyelőt
 
-Ez a cikk bemutatja, hogyan engedélyezhető a Stream Analytics feladatok figyelése. A REST API-kkal, az Azure SDK-val vagy a PowerShell-lel létrehozott feladatokhoz alapértelmezés szerint nincs engedélyezve a figyelés. Stream Analytics Manuálisan engedélyezheti azt a Azure Portal a feladatok figyelése lapra, és az Engedélyezés gombra kattintva vagy automatizálhatja ezt a folyamatot a jelen cikkben ismertetett lépéseket követve. A figyelési adatok a Stream Analytics feladathoz tartozó Azure Portal mérőszámok területén jelennek meg.
+Ez a cikk bemutatja, hogyan engedélyezheti a figyelést egy Stream Analytics-feladathoz. A REST API-kon, az Azure SDK-n vagy a PowerShellen keresztül létrehozott Stream Analytics-feladatok alapértelmezés szerint nincs engedélyezve a figyelés. Manuálisan engedélyezheti az Azure Portalon a feladat figyelője lapon, és kattintson az Engedélyezés gombra, vagy automatizálhatja ezt a folyamatot a jelen cikkben leírt lépések végrehajtásával. A figyelési adatok megjelennek az Azure Portal Metrika területén a Stream Analytics-feladathoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A folyamat megkezdése előtt a következő előfeltételeknek kell megfelelnie:
+A folyamat megkezdése előtt a következő előfeltételekkel kell rendelkeznie:
 
 * Visual Studio 2019 vagy 2015
-* Az [Azure .net SDK](https://azure.microsoft.com/downloads/) letöltése és telepítése megtörtént
-* Meglévő Stream Analytics-feladatot, amelynek figyelését engedélyezni kell
+* [Az Azure .NET SDK](https://azure.microsoft.com/downloads/) letöltve és telepítve
+* Meglévő Stream Analytics-feladat, amelynek engedélyeznie kell a figyelést
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
-1. Hozzon létre egy C# Visual Studio .net-konzol alkalmazást.
-2. A Package Manager konzolon futtassa a következő parancsokat a NuGet-csomagok telepítéséhez. Az első a Azure Stream Analytics Management .NET SDK. A második az a Azure Monitor SDK, amelyet a rendszer a figyelés engedélyezéséhez fog használni. Az utolsó az a Azure Active Directory-ügyfél, amelyet a rendszer a hitelesítéshez használ.
+1. Hozzon létre egy Visual Studio C# .NET konzolalkalmazást.
+2. A Package Manager konzolon futtassa a következő parancsokat a NuGet csomagok telepítéséhez. Az első az Azure Stream Analytics Management .NET SDK. A második az Azure Monitor SDK, amely a figyelés engedélyezéséhez lesz használva. Az utolsó az Azure Active Directory-ügyfél, amely hitelesítéshez lesz használva.
    
    ```powershell
    Install-Package Microsoft.Azure.Management.StreamAnalytics
    Install-Package Microsoft.Azure.Insights -Pre
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    ```
-3. Adja hozzá a következő appSettings szakaszt az app. config fájlhoz.
+3. Adja hozzá a következő appBeállítások szakaszt az App.config fájlhoz.
    
    ```csharp
    <appSettings>
@@ -53,12 +53,12 @@ A folyamat megkezdése előtt a következő előfeltételeknek kell megfelelnie:
      <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
    </appSettings>
    ```
-   Cserélje le az *SubscriptionId* és a *ActiveDirectoryTenantId* értékeit az Azure-előfizetéssel és a bérlői azonosítókkal. Ezeket az értékeket a következő PowerShell-parancsmag futtatásával érheti el:
+   A *SubscriptionId* és az *ActiveDirectoryTenantId* értékeit az Azure-előfizetésés a bérlői azonosítók helyére cserélheti. Ezeket az értékeket a következő PowerShell-parancsmag futtatásával szerezheti be:
    
    ```powershell
    Get-AzureAccount
    ```
-4. Adja hozzá a következő using utasításokat a forrásfájlban (Program.cs) a projektben.
+4. Adja hozzá az alábbi using utasításokat a projekt forrásfájljához (Program.cs).
    
    ```csharp
      using System;
@@ -111,7 +111,7 @@ A folyamat megkezdése előtt a következő előfeltételeknek kell megfelelnie:
 
 ## <a name="create-management-clients"></a>Felügyeleti ügyfelek létrehozása
 
-A következő kód beállítja a szükséges változókat és a felügyeleti ügyfeleket.
+A következő kód beállítja a szükséges változókat és felügyeleti ügyfeleket.
 
    ```csharp
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
@@ -133,18 +133,18 @@ A következő kód beállítja a szükséges változókat és a felügyeleti üg
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
    ```
 
-## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Meglévő Stream Analytics feladatok figyelésének engedélyezése
+## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Figyelés engedélyezése meglévő Stream Analytics-feladathoz
 
-A következő kód lehetővé teszi egy **meglévő** stream Analytics feladatok figyelését. A kód első része egy GET kérelmet küld a Stream Analytics szolgáltatásnak az adott Stream Analytics feladattal kapcsolatos információk lekéréséhez. Az *azonosító* tulajdonságot (a Get kérelemből lekért) paraméterként használja a kód második felében a Put metódushoz, amely egy Put-kérelmet küld az ininsights szolgáltatásnak a stream Analytics feladatok figyelésének engedélyezéséhez.
+A következő kód lehetővé teszi egy **meglévő** Stream Analytics-feladat figyelését. A kód első része GET-kérést hajt végre a Stream Analytics szolgáltatással szemben az adott Stream Analytics-feladattal kapcsolatos információk lekéréséhez. Az *azonosító* tulajdonságot (a GET-kérelemből lekért) használja a kód második felében a Put metódus paramétereként, amely put-kérést küld az Insights szolgáltatásnak a Stream Analytics-feladat figyelésének engedélyezéséhez.
 
 > [!WARNING]
-> Ha korábban már engedélyezte a figyelést egy másik Stream Analytics feladatokhoz, akár a Azure Portal, akár programozott módon, az alábbi kód segítségével, akkor azt **javasoljuk, hogy ugyanazt a Storage-fióknevet adja meg, amelyet korábban engedélyezett a figyeléshez.**
+> Ha korábban engedélyezte a figyelést egy másik Stream Analytics-feladathoz, akár az Azure Portalon keresztül, akár programozott módon az alábbi kódon keresztül, **azt javasoljuk, hogy adja meg ugyanazt a tárfiók nevet, amelyet korábban a figyelés engedélyezésekor használt.**
 > 
-> A Storage-fiók ahhoz a régióhoz van csatolva, amelyhez a Stream Analytics-feladatot létrehozta, nem kifejezetten a feladatokhoz.
+> A tárfiók ahhoz a régióhoz kapcsolódik, amelyben létrehozta a Stream Analytics-feladatot, nem pedig magához a feladathoz.
 > 
-> Az ugyanabban a régióban található összes Stream Analytics feladat (és az összes többi Azure-erőforrás) megosztja ezt a Storage-fiókot a figyelési adatok tárolásához. Ha más Storage-fiókot ad meg, az nem szándékolt mellékhatást eredményezhet más Stream Analytics feladatok vagy más Azure-erőforrások figyelése során.
+> Az ugyanabban a régióban található összes Stream Analytics-feladat (és minden más Azure-erőforrás) megosztja ezt a tárfiókot a figyelési adatok tárolásához. Ha egy másik tárfiókot ad meg, előfordulhat, hogy nem kívánt mellékhatásokat okozhat a többi Stream Analytics-feladat vagy más Azure-erőforrások figyelése során.
 > 
-> Az alábbi kódban `<YOUR STORAGE ACCOUNT NAME>` lecseréléséhez használt Storage-fióknak olyan Storage-fióknak kell lennie, amely ugyanabban az előfizetésben található, mint a figyelést engedélyező Stream Analytics feladatokkal.
+> A tárfiók nevét, amelyet a következő kódban cserélni `<YOUR STORAGE ACCOUNT NAME>` kell egy tárfiók, amely ugyanabban az előfizetésben van, mint a Stream Analytics-feladat, amely lefigyelje a figyelést.
 > 
 > 
 >    ```csharp
@@ -169,12 +169,12 @@ A következő kód lehetővé teszi egy **meglévő** stream Analytics feladatok
 
 ## <a name="get-support"></a>Támogatás kérése
 
-További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+További segítségért próbálja ki [az Azure Stream Analytics fórumunkat.](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
+* [Bevezetés az Azure Stream Analytics szolgáltatásba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
-* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

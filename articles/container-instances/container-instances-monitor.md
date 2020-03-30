@@ -1,54 +1,54 @@
 ---
-title: Tároló-példányok figyelése
-description: A számítási erőforrások (például a processzor és a memória) használatának figyelése a tárolók Azure Container Instancesban.
+title: Tárolópéldányok figyelése
+description: Hogyan figyelheti a számítási erőforrások, például a PROCESSZOR és a memória felhasználását az Azure Container Instances tárolókban.
 ms.topic: article
 ms.date: 04/24/2019
 ms.openlocfilehash: b4a66254c18d7e01b6d56e64e6b62721b620d499
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250032"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Tároló-erőforrások figyelése az Azure Container Instances-ben
 
-[Azure monitor][azure-monitoring] betekintést nyújt a tárolók példányai által használt számítási erőforrásokra. Az erőforrás-használati adatok segítségével meghatározhatja a tároló csoportok legjobb erőforrás-beállításait. A Azure Monitor olyan metrikákat is biztosít, amelyek nyomon követik a hálózati tevékenységeket a tároló példányaiban.
+[Az Azure Monitor][azure-monitoring] betekintést nyújt a tárolópéldányok által használt számítási erőforrásokba. Ez az erőforrás-használati adatok segítenek meghatározni a legjobb erőforrás-beállításokat a tárolócsoportok számára. Az Azure Monitor olyan metrikákat is biztosít, amelyek nyomon követik a hálózati tevékenységeket a tárolópéldányokban.
 
-Ez a dokumentum a Azure Portal és az Azure CLI használatával a Container instances Azure Monitor metrikáinak összegyűjtését ismerteti.
+Ez a dokumentum részletezi az Azure Monitor metrikák összegyűjtését az Azure Portalon és az Azure CLI használatával a tárolópéldányok számára.
 
 > [!IMPORTANT]
-> A Azure Container Instances Azure Monitor metrikái jelenleg előzetes verzióban érhetők el, és bizonyos [korlátozások érvényesek](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Az Azure Monitor metrikák az Azure Container-példányok jelenleg előzetes verzióban, és bizonyos [korlátozások vonatkoznak.](#preview-limitations) Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
-## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
+## <a name="preview-limitations"></a>Előnézeti korlátozások
 
-Jelenleg Azure Monitor mérőszámok csak Linux-tárolók esetén érhetők el.
+Ebben az időben az Azure Monitor metrikák csak Linux-tárolók érhetők el.
 
 ## <a name="available-metrics"></a>Rendelkezésre álló metrikák
 
-A Azure Monitor a következő [metrikákat biztosítja a Azure Container Instanceshoz][supported-metrics]. Ezek a metrikák a tárolók és az egyes tárolók számára érhetők el.
+Az Azure Monitor a következő [metrikákat biztosítja az Azure Container-példányok számára.][supported-metrics] Ezek a metrikák egy tárolócsoporthoz és az egyes tárolókhoz érhetők el.
 
-* **CPU-használat** – a **millicores**-ben mérve. Az egyik millicore egy CPU-mag 1/1000th, így a 500 millicores (vagy 500 m) a CPU-mag 50%-os használatát jelenti. Az összes mag **átlagos kihasználtsága** szerint összesítve.
+* **CPU-használat** - **millimagban mérve.** Egy millimag a CPU mag 1/1000-ed része, így az 500 millimag (vagy 500 m) a CPU mag 50%-os használatát jelenti. **Összesítve az összes** mag átlagos használataként.
 
-* **Memóriahasználat** – **átlagos bájtként**összesítve.
+* **Memóriahasználat** – **átlagos bájtként összesítve.**
 
-* A másodpercenként **fogadott hálózati bájtok** és a másodpercenként **továbbított hálózati bájtok** **másodpercenkénti száma összesen.** 
+* **Másodpercenként fogadott hálózati bájtok** és **másodpercenként küldött hálózati bájtok** – **másodpercenként átlagos bájtként**összesítve . 
 
 ## <a name="get-metrics---azure-portal"></a>Metrika beolvasása – Azure Portal
 
-Tárolócsoport létrehozásakor az Azure Monitor adatai elérhetők az Azure Portalon. Egy tároló-csoport metrikáinak megjelenítéséhez nyissa meg a tároló csoport **Áttekintés** lapját. Itt láthatja az összes elérhető metrikához tartozó előre létrehozott diagramokat.
+Tárolócsoport létrehozásakor az Azure Monitor adatai elérhetők az Azure Portalon. Egy tárolócsoport metrikáit tekintse meg, nyissa meg a tárolócsoport **áttekintése** lapot. Itt láthatja az egyes elérhető mutatók hoz előre létrehozott diagramokat.
 
 ![kettős diagram][dual-chart]
 
-Egy több tárolót tartalmazó tároló csoportban használjon [dimenziót][monitor-dimension] a mérőszámok tároló alapján történő megjelenítéséhez. Az egyes tárolómetrikák diagramjának létrehozásához hajtsa végre az alábbi lépéseket:
+Több tárolót tartalmazó tárolócsoportban használjon [dimenziót][monitor-dimension] a metrikák tárolószerint történő bemutatásához. Az egyes tárolómetrikák diagramjának létrehozásához hajtsa végre az alábbi lépéseket:
 
-1. Az **Áttekintés** oldalon válassza ki az egyik mérőszám-diagramot, például a **processzort**. 
-1. Válassza a **felosztás alkalmazása** gombot, és válassza a **tároló neve**lehetőséget.
+1. Az **Áttekintés** lapon válasszon ki egy metrikadiagramot, például a **CPU-t.** 
+1. Jelölje ki a **Felosztás alkalmazása** gombot, majd a Tároló **neve parancsot.**
 
 ![dimenzió][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>Metrika beolvasása – Azure CLI
 
-A Container instances mérőszámai az Azure CLI használatával is összegyűjthetők. Első lépésként olvassa be a csoport azonosítóját az alábbi paranccsal. Cserélje le a `<resource-group>` kifejezést az erőforráscsoport-nevével, a `<container-group>` kifejezést pedig a tárolócsoport nevével.
+A tárolópéldányok metrikák is gyűjthető az Azure CLI használatával. Első lépésként olvassa be a csoport azonosítóját az alábbi paranccsal. Cserélje le a `<resource-group>` kifejezést az erőforráscsoport-nevével, a `<container-group>` kifejezést pedig a tárolócsoport nevével.
 
 
 ```console
@@ -78,7 +78,7 @@ Timestamp            Name       Average
 2019-04-23 23:10:00  CPU Usage  0.5
 ```
 
-Módosítsa a parancs `--metric` paraméterének értékét a többi [támogatott metrika][supported-metrics]beszerzéséhez. Használja például a következő parancsot a **memóriahasználat** metrikáinak beolvasásához. 
+Módosítsa a `--metric` paraméter értékét a parancsban, hogy más [támogatott mutatókat kapjon.][supported-metrics] Például használja a következő parancsot **a memóriahasználati** metrikák lekérni. 
 
 ```azurecli
 az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
@@ -101,7 +101,7 @@ Timestamp            Name          Average
 2019-04-23 23:10:00  Memory Usage  8093696.0
 ```
 
-A többtárolós csoportok esetében a `containerName` dimenzió hozzáadható egy tárolóban lévő metrikák visszaküldéséhez.
+Többtárolós csoport esetén `containerName` a dimenzió hozzáadható a tárolónkénti metrikák visszaadásához.
 
 ```azurecli
 az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table
@@ -136,11 +136,11 @@ Timestamp            Name          Containername             Average
 2019-04-23 23:10:00  Memory Usage  aci-tutorial-sidecar  847872.0
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure monitoring szolgáltatásról az [Azure monitoring áttekintése című][azure-monitoring]témakörben.
+Az Azure-alapú figyelésről további információt az [Azure-alapú figyelés áttekintése][azure-monitoring] szakaszban talál.
 
-Megtudhatja, hogyan hozhat létre [metrikus riasztásokat][metric-alert] , hogy értesítést kapjon, ha Azure Container instances mérőszáma egy küszöbértéket keresztez.
+Megtudhatja, hogyan hozhat létre [metrikariasztásokat,][metric-alert] hogy értesítést kapjon, ha az Azure Container Instances metrikája átlép egy küszöbértéket.
 
 <!-- IMAGES -->
 [cpu-chart]: ./media/container-instances-monitor/cpu-multi.png

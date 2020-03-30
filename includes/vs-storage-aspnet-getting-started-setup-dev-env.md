@@ -9,45 +9,45 @@ ms.date: 09/15/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: a7c696870e22e1692ca5ed778e47f8e4cc00615a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179020"
 ---
 ## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
 
-Ez a szakasz végigvezeti a fejlesztési környezet beállítása. Ez magában foglalja az ASP.NET MVC alkalmazás létrehozása, csatlakoztatott szolgáltatások-kapcsolat hozzáadása, olyan vezérlő hozzáadását és a szükséges névtér irányelvek megadása.
+Ez a szakasz végigvezeti a fejlesztői környezet beállítását. Ez magában foglalja egy ASP.NET MVC alkalmazás létrehozását, csatlakoztatott szolgáltatások kapcsolatának hozzáadását, vezérlő hozzáadását és a szükséges névtér-irányelvek megadását.
 
-### <a name="create-an-aspnet-mvc-app-project"></a>Egy ASP.NET MVC-alkalmazás projekt létrehozása
+### <a name="create-an-aspnet-mvc-app-project"></a>ASP.NET MVC alkalmazásprojekt létrehozása
 
 1. Nyissa meg a Visual Studiót.
 
-1. Válassza ki a főmenü **fájl** > **új** > **projekt**.
+1. A főmenüben válassza az**Új** > projekt **fájlja** > **parancsot.**
 
-1. Az a **új projekt** párbeszédpanelen jelölje ki **webes** > **ASP.NET Web Application (.NET Framework)** . Az a **neve** mezőben adja meg **StorageAspNet**. Kattintson az **OK** gombra.
+1. Az **Új projekt** párbeszédpanelen válassza a **Web** > **ASP.NET Web Application (.NET Framework)** lehetőséget. A **Név** mezőben adja meg a **StorageAspNet**értéket. Válassza **az OK gombot.**
 
     ![Képernyőkép az Új projekt párbeszédpanelről](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-1.png)
 
-1. Az a **új ASP.NET-webalkalmazás** párbeszédpanelen jelölje ki **MVC**, majd válassza ki **OK**.
+1. Az **Új ASP.NET webalkalmazás** párbeszédpanelen válassza az **MVC**elemet, majd az **OK**gombot.
 
-    ![Képernyőfelvétel az új ASP.NET-webalkalmazás párbeszédpanel](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-2.png)
+    ![Képernyőkép: Új ASP.NET webalkalmazás párbeszédpanel](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-2.png)
 
-### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>Csatlakoztatott szolgáltatások használatával csatlakozni egy Azure storage-fiók
+### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>Kapcsolatban álló szolgáltatások használata azure-tárfiókhoz való csatlakozáshoz
 
-1. A **Megoldáskezelőben**, kattintson a jobb gombbal a projektre.
+1. A **Megoldáskezelőben**kattintson a jobb gombbal a projektre.
 
-1. A helyi menüből válassza ki a **Hozzáadás** > **csatlakoztatott szolgáltatás**.
+1. A helyi menüben válassza a Csatlakoztatott szolgáltatás **hozzáadása** > **parancsot.**
 
-1. Az a **csatlakoztatott szolgáltatás** párbeszédpanelen jelölje ki **felhőalapú tárolás az Azure Storage**.
+1. A **Csatlakoztatott szolgáltatások** párbeszédpanelen válassza a **Cloud Storage with Azure Storage lehetőséget.**
 
-    ![A csatlakoztatott szolgáltatások képernyőfelvételen párbeszédpanel](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
+    ![Képernyőkép: Csatlakoztatott szolgáltatások párbeszédpanel](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 
-1. Az a **Azure Storage** párbeszédpanelen jelölje be az Azure storage-fiók ebben az oktatóanyagban használható. Egy új Azure-tárfiók létrehozásához válassza **hozzon létre egy új Tárfiókot**, és töltse ki az űrlapot. Vagy egy meglévő tárfiókot, vagy új létrehozása után válassza ki a **Hozzáadás**. A Visual Studio telepíti a NuGet-csomagot az Azure Storage és a egy tárolási kapcsolati karakterlánccal, **Web.config**.
+1. Az **Azure Storage** párbeszédpanelen válassza ki az ehhez az oktatóanyaghoz használandó Azure storage-fiókot. Új Azure-tárfiók létrehozásához válassza **az Új tárfiók létrehozása**lehetőséget, és töltse ki az űrlapot. Miután kiválasztottegy meglévő tárfiókot, vagy létrehozott egy újat, válassza **a Hozzáadás**lehetőséget. A Visual Studio telepíti az Azure Storage NuGet csomagját és a **Web.config**tárolókapcsolati karakterláncát.
 
-1. A **Megoldáskezelőben**, kattintson a jobb gombbal a **függőségek**, válassza a **NuGet-csomagok kezelése**, és a legújabb verzióra a NuGet csomag hivatkozás hozzáadása Microsoft.Azure.ConfigurationManager.
+1. A **Solution Explorer**ben kattintson a jobb gombbal a **Függőségek**elemre, válassza **a NuGet-csomagok kezelése parancsot,** és adjon hozzá egy NuGet-csomaghivatkozást a Microsoft.Azure.ConfigurationManager legújabb verziójához.
 
 > [!TIP]
-> Megtudhatja, hogyan hozhat létre egy tárfiókot a [az Azure portal](https://portal.azure.com), lásd: [hozzon létre egy tárfiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+> Ha tudni szeretné, hogyan hozhat létre tárfiókot az [Azure Portalon,](https://portal.azure.com)olvassa el a Tárfiók létrehozása című [témakört.](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 >
-> Storage-fiók használatával is létrehozhat [Azure PowerShell-lel](../articles/storage/common/storage-powershell-guide-full.md), [Azure CLI-vel](../articles/storage/common/storage-azure-cli.md), vagy [Azure Cloud Shell](../articles/cloud-shell/overview.md).
+> [Az Azure PowerShell,](../articles/storage/common/storage-powershell-guide-full.md) [az Azure CLI](../articles/storage/common/storage-azure-cli.md)vagy az [Azure Cloud Shell](../articles/cloud-shell/overview.md)használatával is létrehozhat tárfiókot.

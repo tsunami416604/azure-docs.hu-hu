@@ -1,51 +1,51 @@
 ---
-title: HTTPS-bejövő forgalom létrehozása az Azure Kubernetes Service (ak) fürttel
-description: Megtudhatja, hogyan telepíthet és konfigurálhat egy olyan NGINX beáramlási vezérlőt, amely egy Azure Kubernetes-szolgáltatási (ak-) fürtön használja az automatikus TLS-tanúsítvány létrehozását.
+title: HTTPS-be- és beszállítás létrehozása az Azure Kubernetes-szolgáltatás (AKS) fürtjével
+description: Megtudhatja, hogyan telepíthet és konfigurálhat egy NGINX bejövő forgalom vezérlőt, amely a Let's Encrypt for automatic TLS tanúsítványgenerálást használja egy Azure Kubernetes-szolgáltatás (AKS) fürtben.
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
 ms.openlocfilehash: 6f497ee3edd5ee831c091a5a50629df81673acea
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78191316"
 ---
-# <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>HTTPS bejövő adatkezelő létrehozása az Azure Kubernetes szolgáltatásban (ak)
+# <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>HTTPS-es adatforgalom-vezérlő létrehozása az Azure Kubernetes szolgáltatáson (AKS)
 
-A bejövő vezérlő egy olyan szoftver, amely fordított proxyt, konfigurálható forgalmi útválasztást és TLS-megszakítást biztosít a Kubernetes-szolgáltatásokhoz. A Kubernetes bejövő erőforrásai az egyes Kubernetes-szolgáltatások bejövő szabályainak és útvonalának konfigurálására szolgálnak. A bejövő és a bejövő forgalomra vonatkozó szabályok használatával egyetlen IP-cím segítségével átirányíthatja a forgalmat több szolgáltatásba egy Kubernetes-fürtben.
+A be- ésvisszaszolgáltatás vezérlője egy szoftver, amely fordított proxyt, konfigurálható forgalom-útválasztást és TLS-végződtetést biztosít a Kubernetes-szolgáltatásokszámára. Kubernetes inress erőforrások konfigurálására használják a be- és telepítési szabályok és útvonalak az egyes Kubernetes-szolgáltatások. A bejövő forgalom vezérlő és a bejövő forgalom szabályok használatával egyetlen IP-cím használható a forgalom irányításához több szolgáltatás egy Kubernetes-fürtben.
 
-Ez a cikk bemutatja, hogyan helyezheti üzembe az NGINX beléptetési [vezérlőt][nginx-ingress] egy Azure Kubernetes-szolgáltatási (ak-) fürtben. A Certificate [-Manager][cert-manager] projekttel automatikusan hozhatja meg és állíthatja be a tanúsítványok [titkosítását][lets-encrypt] . Végül két alkalmazás fut az AK-fürtben, amelyek mindegyike egyetlen IP-címen érhető el.
+Ez a cikk bemutatja, hogyan telepítheti az [NGINX bejövő forgalom vezérlőegy][nginx-ingress] Azure Kubernetes-fürt (AKS) fürtben. A [cert-manager][cert-manager] projekt segítségével automatikusan generálja és [konfigurálja A tanúsítványok titkosítása.][lets-encrypt] Végül két alkalmazás fut az AKS-fürtben, amelyek mindegyike egyetlen IP-címen érhető el.
 
 További lehetőségek:
 
-- [Alapszintű bejövő adatvezérlő létrehozása külső hálózati kapcsolattal][aks-ingress-basic]
-- [A HTTP-alkalmazás útválasztási bővítményének engedélyezése][aks-http-app-routing]
-- [Belső, privát hálózatot és IP-címet használó bejövő adatforgalom-vezérlő létrehozása][aks-ingress-internal]
-- [Saját TLS-tanúsítványokat használó bejövő adatkezelő létrehozása][aks-ingress-own-tls]
-- [Hozzon létre egy olyan bejövő adatkezelőt, amely a let titkosítást használja a statikus nyilvános IP-címmel rendelkező TLS-tanúsítványok automatikus létrehozásához][aks-ingress-static-tls]
+- [Egyszerű be- és átszivárgási vezérlő létrehozása külső hálózati kapcsolattal][aks-ingress-basic]
+- [A HTTP-alkalmazásútválasztási bővítmény engedélyezése][aks-http-app-routing]
+- [Belső, magánhálózati és IP-címet használó be- és áthálózaton belüli adatélmény-vezérlő létrehozása][aks-ingress-internal]
+- [Saját TLS-tanúsítványokat használó be- és hanghálózati vezérlő létrehozása][aks-ingress-own-tls]
+- [Bejövő forgalom vezérlő létrehozása, amely a Let's Encrypt segítségével automatikusan létrehozza a TLS-tanúsítványokat statikus nyilvános IP-címmel][aks-ingress-static-tls]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AKS-fürttel. Ha AKS-fürtre van szüksége, tekintse meg az AKS [gyorsútmutatót az Azure CLI használatával][aks-quickstart-cli] vagy az Azure Portal [használatával.][aks-quickstart-portal]
 
-Ez a cikk azt is feltételezi, hogy van [egy egyéni tartománya][custom-domain] egy olyan [DNS-zónával][dns-zone] , amely ugyanabban az erőforráscsoporthoz tartozik, mint az AK-fürt.
+Ez a cikk azt is feltételezi, hogy van [egy egyéni tartománya,][custom-domain] amelynek [DNS-zónája][dns-zone] ugyanabban az erőforráscsoportban található, mint az AKS-fürt.
 
-Ez a cikk a Helm használatával telepíti az NGINX beáramló vezérlőt, a tanúsítvány-kezelőt és egy minta webalkalmazást. Győződjön meg arról, hogy a Helm legújabb kiadását használja. A frissítési utasításokért tekintse meg a [Helm install docs][helm-install]című témakört. A Helm konfigurálásával és használatával kapcsolatos további információkért lásd: [alkalmazások telepítése az Azure Kubernetes szolgáltatásban (ak)][use-helm].
+Ez a cikk a Helm segítségével telepíti az NGINX bejövő adatkezelőt, a cert-kezelőt és egy mintawebalkalmazást. Győződjön meg arról, hogy a Helm legújabb kiadását használja. A frissítéssel kapcsolatos tudnivalókat a [Helm telepítési dokumentumokban találja.][helm-install] A Helm konfigurálásáról és használatáról további információt az [Alkalmazások telepítése helmtel az Azure Kubernetes szolgáltatásban (AKS) című témakörben][use-helm]talál.
 
-Ehhez a cikkhez az Azure CLI 2.0.64 vagy újabb verzióját is futtatnia kell. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ez a cikk azt is megköveteli, hogy az Azure CLI 2.0.64-es vagy újabb verzióját futtassa. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
-## <a name="create-an-ingress-controller"></a>Bejövő adatkezelő létrehozása
+## <a name="create-an-ingress-controller"></a>Be- és be- és átakat meghatározó vezérlő létrehozása
 
-A bejövő adatkezelő létrehozásához használja az `helm` parancsot az *Nginx-behatolások*telepítéséhez. A hozzáadott redundancia érdekében az NGINX bejövő vezérlő két replikája van telepítve a `--set controller.replicaCount` paraméterrel. Ahhoz, hogy teljes mértékben élvezhesse a bejövő vezérlő replikáit, győződjön meg arról, hogy az AK-fürt több csomópontja van.
+A bejövő kapcsolat vezérlőjének létrehozásához használja a parancsot a `helm` *nginx-inress telepítéséhez.* A magasabb szintű redundancia érdekében az NGINX bejövő forgalmi vezérlő két replikája van telepítve a `--set controller.replicaCount` paraméterrel. A bejövő adatkezelő replikáinak teljes körű kihasználása érdekében győződjön meg arról, hogy az AKS-fürtben egynél több csomópont található.
 
-A bejövő vezérlőt egy Linux-csomóponton is ütemezni kell. A Windows Server-csomópontok (az AK-ban jelenleg előzetes verzióban) nem futtathatják a bejövő vezérlőt. A csomópont-választó a `--set nodeSelector` paraméterrel adható meg, hogy a Kubernetes ütemező az NGINX bejövő adatkezelőt Linux-alapú csomóponton futtassa.
-
-> [!TIP]
-> A következő példa egy Kubernetes névteret hoz létre a bejövő erőforrások *– alapszintű*forgalomhoz. Szükség szerint adja meg a saját környezetének névterét.
+A bejövő forgalmi vezérlőt egy Linux-csomóponton is ütemezni kell. A Windows Server-csomópontok (jelenleg előzetes verzióban az AKS) nem futtatható a bejövő adatbeviteli vezérlő. A csomópont-választó `--set nodeSelector` paraméterrel történő meghatározása arra utasítja a Kubernetes ütemezőt, hogy az NGINX bejövő vezérlőt Linux-alapú csomóponton futtassa.
 
 > [!TIP]
-> Ha engedélyezni szeretné az ügyfél- [forrás IP-megőrzését][client-source-ip] a fürtön lévő tárolók kéréseire, adja hozzá `--set controller.service.externalTrafficPolicy=Local` a Helm install parancshoz. Az ügyfél forrásának IP-címét a kérelem fejlécében tárolja a rendszer az *X által továbbított – esetében*. Ha olyan bejövő adatkezelőt használ, amelyen engedélyezve van az ügyfél forrásának IP-címe, az SSL-továbbítás nem fog működni.
+> A következő példa létrehoz egy Kubernetes névteret a *be- és alapvető*nevű be- és erőforráshoz. Szükség szerint adjon meg egy névteret a saját környezetéhez.
+
+> [!TIP]
+> Ha engedélyezni szeretné [az ügyfélforrás IP-címének megőrzését][client-source-ip] `--set controller.service.externalTrafficPolicy=Local` a fürtben lévő tárolókra vonatkozó kérelmekhez, adja hozzá a Helm telepítési parancshoz. Az ügyfélforrás *IP-címe az X-Forwarded-For*csoportban található kérelemfejlécben található. Ha egy olyan be- ésfeleltetót használ, amelyen az ügyfélforrás IP-megőrzése engedélyezve van, az SSL-áthaladás nem fog működni.
 
 ```console
 # Create a namespace for your ingress resources
@@ -62,9 +62,9 @@ helm install nginx stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-A telepítés során létrejön egy Azure nyilvános IP-cím a beléptetési vezérlőhöz. Ez a nyilvános IP-cím statikus a bejövő vezérlő élettartama szempontjából. Ha törli a beáramló vezérlőt, a nyilvános IP-cím hozzárendelés elvész. Ha ezután létrehoz egy további bejövő vezérlőt, a rendszer egy új nyilvános IP-címet rendel hozzá. Ha meg szeretné őrizni a nyilvános IP-cím használatát, helyette [létrehozhat egy statikus nyilvános IP-címmel rendelkező bejövő vezérlőt][aks-ingress-static-tls]is.
+A telepítés során egy Azure nyilvános IP-cím jön létre a be- és a be- és a di. Ez a nyilvános IP-cím statikus a be- és a be- ésaszvezérlő élettartama. Ha törli a be- éséjegyvezérlőt, a nyilvános IP-címhozzárendelés elvész. Ha ezután létrehoz egy további be- éséi vezérlőt, egy új nyilvános IP-cím lesz hozzárendelve. Ha meg szeretné őrizni a nyilvános IP-cím használatát, létrehozhat [egy statikus nyilvános IP-címmel rendelkező be- és visszafértő-vezérlőt.][aks-ingress-static-tls]
 
-A nyilvános IP-cím lekéréséhez használja a `kubectl get service` parancsot. Néhány percet vesz igénybe, hogy az IP-cím hozzá legyen rendelve a szolgáltatáshoz.
+A nyilvános IP-cím leéséhez használja a `kubectl get service` parancsot. Az IP-cím hozzárendelése néhány percet vesz igénybe.
 
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
@@ -74,11 +74,11 @@ nginx-ingress-controller                         LoadBalancer   10.0.182.160   M
 nginx-ingress-default-backend                    ClusterIP      10.0.255.77    <none>          80/TCP                       20m
 ```
 
-Még nem jöttek létre Bejövő szabályok. Ha megkeresi a nyilvános IP-címet, megjelenik az NGINX bejövő vezérlő alapértelmezett 404 lapja.
+Még nem hoztak létre be- és be- és bejárási szabályokat. Ha a nyilvános IP-címet keresi, megjelenik az NGINX bejövő adatvezérlő alapértelmezett 404-es oldala.
 
-## <a name="add-an-a-record-to-your-dns-zone"></a>Rekord hozzáadása a DNS-zónához
+## <a name="add-an-a-record-to-your-dns-zone"></a>A rekord hozzáadása a DNS-zónához
 
-Adjon hozzá *egy* rekordot a DNS-zónához az NGINX szolgáltatás külső IP-címével az [az Network DNS Record-set A Add-Record][az-network-dns-record-set-a-add-record]paranccsal.
+Adjon hozzá egy *A* rekordot a DNS-zónához az NGINX szolgáltatás külső IP-címével az [hálózati dns rekord-készlet-készlet-rekord][az-network-dns-record-set-a-add-record]használatával.
 
 ```console
 az network dns record-set a add-record \
@@ -89,7 +89,7 @@ az network dns record-set a add-record \
 ```
 
 > [!NOTE]
-> Az egyéni tartomány helyett a bejövő vezérlő IP-címéhez is beállíthat teljes tartománynevet. Vegye figyelembe, hogy ez a minta egy bash-rendszerhéjhoz készült.
+> Szükség esetén egyéni tartomány helyett beállíthatja a be- éségy/egy ip-cím teljes tartománynév-tartományt. Vegye figyelembe, hogy ez a minta egy Bash shell.
 > 
 > ```azurecli-interactive
 > # Public IP address of your ingress controller
@@ -108,11 +108,11 @@ az network dns record-set a add-record \
 > az network public-ip show --ids $PUBLICIPID --query "[dnsSettings.fqdn]" --output tsv
 > ```
 
-## <a name="install-cert-manager"></a>Tanúsítvány telepítése – kezelő
+## <a name="install-cert-manager"></a>Tanúsítványkezelő telepítése
 
-Az NGINX bejövő adatkezelője támogatja a TLS-megszakítást. A HTTPS-tanúsítványok lekérésének és konfigurálásának számos módja van. Ez a cikk a [CERT-Manager][cert-manager]használatát mutatja be, amely lehetővé teszi az automatikus titkosítást a tanúsítvány-létrehozási és-kezelési funkciók [titkosításához][lets-encrypt] .
+Az NGINX bejövőforgalom-vezérlő támogatja a TLS-megszakítást. A HTTPS-tanúsítványok lekérésének és konfigurálásának számos módja van. Ez a cikk bemutatja a [cert-manager][cert-manager], amely automatikus Lehetővé teszi a tanúsítványok [konfigurálása][lets-encrypt] és felügyeleti funkciók titkosítását.
 
-A tanúsítvány-kezelő vezérlő telepítése:
+A cert-manager vezérlő telepítése:
 
 ```console
 # Install the CustomResourceDefinition resources separately
@@ -135,13 +135,13 @@ helm install \
   jetstack/cert-manager
 ```
 
-A tanúsítvány-kezelő konfigurálásával kapcsolatos további információkért tekintse meg a [CERT-Manager projektet][cert-manager].
+A cert-manager konfigurációjáról a [cert-manager projektben][cert-manager]talál további információt.
 
-## <a name="create-a-ca-cluster-issuer"></a>HITELESÍTÉSSZOLGÁLTATÓI fürt kiállítójának létrehozása
+## <a name="create-a-ca-cluster-issuer"></a>Hitelesítéshálózat-fürt kibocsátójának létrehozása
 
-A tanúsítványok kiállítása előtt a tanúsítvány-kezelőnek [kiállítói][cert-manager-issuer] vagy [ClusterIssuer][cert-manager-cluster-issuer] erőforrásra van szüksége. Ezek a Kubernetes-erőforrások azonosak a funkcionalitással, azonban `Issuer` egyetlen névtérben működnek, és `ClusterIssuer` az összes névtérben működik. További információt a [tanúsítvány-kezelő kiállítói][cert-manager-issuer] dokumentációjában talál.
+A tanúsítványok kiállítása előtt a tanúsítványkezelőnek [kiállítói][cert-manager-issuer] vagy [fürtkiállítói erőforrásra][cert-manager-cluster-issuer] van szüksége. Ezek a Kubernetes-erőforrások azonosak a funkcionalitásban, `Issuer` `ClusterIssuer` azonban egyetlen névtérben működnek, és minden névterületen működnek. További információt a [cert-manager kibocsátó][cert-manager-issuer] dokumentációjában talál.
 
-Hozzon létre egy fürt kiállítóját, például `cluster-issuer.yaml`a következő példa jegyzékfájl használatával. Frissítse az e-mail-címet a szervezete érvényes címével:
+Hozzon létre egy fürtkibocsátót, például `cluster-issuer.yaml`a következő példajegyzéket használja. Frissítse az e-mail címet a szervezet től érvényes címmel:
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -160,29 +160,29 @@ spec:
           class: nginx
 ```
 
-A kibocsátó létrehozásához használja a `kubectl apply` parancsot.
+A kibocsátó létrehozásához használja `kubectl apply` a parancsot.
 
 ```console
 kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
 ```
 
-## <a name="run-demo-applications"></a>Bemutató alkalmazások futtatása
+## <a name="run-demo-applications"></a>Bemutatóalkalmazások futtatása
 
-Be van állítva egy bejövő vezérlő és egy tanúsítványkezelő megoldás. Most futtasson két bemutató alkalmazást az AK-fürtben. Ebben a példában a Helm egy egyszerű *Hello World* -alkalmazás két példányának üzembe helyezésére szolgál.
+Egy be- és éresvezérlő és egy tanúsítványkezelési megoldás lett konfigurálva. Most futtasson két bemutató alkalmazást az AKS-fürtben. Ebben a példában a Helm egy egyszerű *Hello world* alkalmazás két példányának üzembe helyezésére szolgál.
 
-A minta Helm-diagramok telepítése előtt adja hozzá az Azure Samples-tárházat a Helm-környezethez.
+A minta Helm-diagramok telepítése előtt adja hozzá az Azure-minták tárház a Helm környezetben.
 
 ```console
 helm repo add azure-samples https://azure-samples.github.io/helm-charts/
 ```
 
-Hozzon létre egy *Kaba-HelloWorld* nevű bemutató alkalmazást az *Azure-Samples/AK-HelloWorld* Helm diagram használatával.
+Hozzon létre egy *aks-helloworld* nevű bemutatóalkalmazást az *azure-samples/aks-helloworld* Helm diagram használatával.
 
 ```console
 helm install aks-helloworld azure-samples/aks-helloworld --namespace ingress-basic
 ```
 
-Hozzon létre egy második példányt az *HelloWorld-Two*nevű bemutató alkalmazáshoz. Adjon meg egy új címet és egy egyedi szolgáltatásnevet, hogy a két alkalmazás vizuálisan megkülönböztethető legyen a *--set*paranccsal.
+Hozzon létre egy második példányt az *aks-helloworld-two*nevű bemutatóalkalmazásból. Adjon meg egy új címet és egyedi szolgáltatásnevet, hogy a két alkalmazás vizuálisan elkülönüljön a *--set*használatával.
 
 ```console
 helm install aks-helloworld-two azure-samples/aks-helloworld \
@@ -191,13 +191,13 @@ helm install aks-helloworld-two azure-samples/aks-helloworld \
     --set serviceName="aks-helloworld-two"
 ```
 
-## <a name="create-an-ingress-route"></a>Bejövő forgalom útvonalának létrehozása
+## <a name="create-an-ingress-route"></a>Be- és befelé vezető útvonal létrehozása
 
-Mindkét alkalmazás már fut a Kubernetes-fürtön. Azonban `ClusterIP` típusú szolgáltatással vannak konfigurálva, és nem érhetők el az internetről. A nyilvánosan elérhetővé tételéhez hozzon létre egy Kubernetes-bejövő erőforrást. A bejövő erőforrás konfigurálja azokat a szabályokat, amelyek átirányítják a forgalmat a két alkalmazás egyikére.
+Mindkét alkalmazás most fut a Kubernetes-fürtön. Azonban ők konfigurálva egy típusú `ClusterIP` szolgáltatás, és nem érhető el az internetről. Ha nyilvánosan elérhetővé szeretné tenni őket, hozzon létre egy Kubernetes-be- és erőforrást. A be- és elő-visszaforrása konfigurálja azokat a szabályokat, amelyek a forgalmat a két alkalmazás egyikéhez irányítják.
 
-A következő példában a *Hello-World-beáramló címekre irányuló forgalom. MY_CUSTOM_DOMAIN* az *AK-HelloWorld* szolgáltatáshoz van irányítva. A *Hello-World-beáramló címekre irányuló forgalom. MY_CUSTOM_DOMAIN/Hello-World-Two* átirányítva az *AK-HelloWorld-Two* szolgáltatáshoz. Forgalom a *Hello-World-inbehatolással. MY_CUSTOM_DOMAIN/statikus* a rendszer a (z) *HelloWorld* nevű szolgáltatáshoz irányítja a statikus eszközökhöz.
+A következő példában a címre irányuló forgalom *hello-world-ingress. MY_CUSTOM_DOMAIN* az *aks-helloworld* szolgáltatáshoz van irányítva. Forgalom a *címre hello-world-ingress. MY_CUSTOM_DOMAIN/hello-world-two* az *aks-helloworld-2* szolgáltatáshoz van irányítva. Forgalom *a világ-be-be-ress. MY_CUSTOM_DOMAIN/static* a statikus eszközök *aks-helloworld* nevű szolgáltatáshoz van irányítva.
 
-Hozzon létre egy `hello-world-ingress.yaml` nevű fájlt az alábbi példa YAML használatával. Frissítse a *gazdagépeket és a* *gazdagépet* az előző lépésben létrehozott DNS-névre.
+Hozzon létre `hello-world-ingress.yaml` egy nevető fájlt az alábbi Példa YAML használatával. Frissítse az *állomásokat* és az *állomást* az előző lépésben létrehozott DNS-névre.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -249,17 +249,17 @@ spec:
         path: /static(/|$)(.*)
 ```
 
-Hozza létre a bejövő erőforrásokat a `kubectl apply` parancs használatával.
+Hozza létre a be- `kubectl apply` éséidézőerőforrást a paranccsal.
 
 ```console
 kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 ```
 
-## <a name="verify-a-certificate-object-has-been-created"></a>Tanúsítvány-objektum létrehozásának ellenőrzése
+## <a name="verify-a-certificate-object-has-been-created"></a>Tanúsítványobjektum létrehozásának ellenőrzése
 
-Ezután létre kell hozni egy tanúsítvány-erőforrást. A tanúsítvány erőforrása határozza meg a kívánt X. 509 tanúsítványt. További információ: [CERT-Manager-tanúsítványok][cert-manager-certificates]. A CERT-Manager automatikusan létrehozott egy tanúsítvány-objektumot a bejövő forgalom használatával, amelyet a rendszer automatikusan üzembe helyez a CERT-Managerrel a v 0.2.2 óta. További információkért lásd a bejövő adatokról szóló [dokumentációt][ingress-shim].
+Ezután létre kell hozni egy tanúsítvány-erőforrást. A tanúsítvány-erőforrás határozza meg a kívánt X.509 tanúsítványt. További információt a [tanúsítványkezelő tanúsítványai című témakörben talál.][cert-manager-certificates] A Cert-manager automatikusan létrehozott egy tanúsítványobjektumot a bejövő shim használatával, amely automatikusan üzembe kerül a cert-managerrel a v0.2.2 óta. További információt a [be- és achimdokumentációban][ingress-shim]talál.
 
-A tanúsítvány sikeres létrehozásának ellenőrzéséhez használja a `kubectl get certificate --namespace ingress-basic` parancsot, és ellenőrizze, hogy a *kész* érték *teljesül*-e, ami több percet is igénybe vehet.
+A tanúsítvány sikeres létrehozásának ellenőrzéséhez `kubectl get certificate --namespace ingress-basic` használja a parancsot, és ellenőrizze, hogy *a READY* *igaz parancs több*percig is eltarthat.
 
 ```
 $ kubectl get certificate --namespace ingress-basic
@@ -268,37 +268,37 @@ NAME         READY   SECRET       AGE
 tls-secret   True    tls-secret   11m
 ```
 
-## <a name="test-the-ingress-configuration"></a>A behatolási konfiguráció tesztelése
+## <a name="test-the-ingress-configuration"></a>A be- és visszaszolgáltatás konfigurációjának tesztelése
 
-Nyisson meg egy webböngészőt a *Hello-World-inbehatolás szolgáltatásban. MY_CUSTOM_DOMAIN* a Kubernetes bejövő adatkezelője. Figyelje meg, hogy a HTTPS használatára van átirányítva, és a tanúsítvány megbízható, és a bemutató alkalmazás megjelenik a böngészőben. Adja hozzá a */Hello-World-Two* elérési útját, és figyelje meg, hogy a második bemutató alkalmazás az egyéni címmel jelenik meg.
+Nyisson meg egy webböngészőt a *hello-world-inress számára. MY_CUSTOM_DOMAIN* a Kubernetes be- és visszahálózaton. Figyelje meg, hogy átirányítja a HTTPS használatára, és a tanúsítvány megbízható, és a bemutató alkalmazás megjelenik a webböngészőben. Adja hozzá a */hello-world-two* elérési utat, és figyelje meg a második demó alkalmazást az egyéni címmel.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ez a cikk a beáramlási összetevők, a tanúsítványok és a minta alkalmazások telepítéséhez használható. Amikor központilag telepít egy Helm-diagramot, a rendszer számos Kubernetes-erőforrást hoz létre. Ezek az erőforrások a hüvelyek, a központi telepítések és a szolgáltatások részét képezik. Ezen erőforrások törléséhez törölheti a teljes minta névteret vagy az egyes erőforrásokat.
+Ez a cikk a Helm segítségével telepítse a be- és telepítési összetevőket, tanúsítványokat és mintaalkalmazásokat. Helm-diagram telepítésekor számos Kubernetes-erőforrás jön létre. Ezek az erőforrások podokat, üzemelő példányokat és szolgáltatásokat tartalmaznak. Az erőforrások törléséhez törölheti a teljes mintanévteret vagy az egyes erőforrásokat.
 
-### <a name="delete-the-sample-namespace-and-all-resources"></a>A minta névtér és az összes erőforrás törlése
+### <a name="delete-the-sample-namespace-and-all-resources"></a>A mintanévtér és az összes erőforrás törlése
 
-A teljes minta névtér törléséhez használja a `kubectl delete` parancsot, és adja meg a névtér nevét. A rendszer törli a névtérben lévő összes erőforrást.
+A teljes mintanévtér törléséhez használja a `kubectl delete` parancsot, és adja meg a névtér nevét. A névtérben lévő összes erőforrás törlődik.
 
 ```console
 kubectl delete namespace ingress-basic
 ```
 
-Ezután távolítsa el a Helm-tárházat az AK Hello World alkalmazáshoz:
+Ezután távolítsa el az AKS hello world alkalmazás Helm repo-ját:
 
 ```console
 helm repo remove azure-samples
 ```
 
-### <a name="delete-resources-individually"></a>Erőforrások egyenkénti törlése
+### <a name="delete-resources-individually"></a>Erőforrások törlése egyenként
 
-Azt is megteheti, hogy egy részletesebb megközelítéssel törli a létrehozott egyéni erőforrásokat. Először távolítsa el a fürt kiállítói erőforrásait:
+Másik lehetőségként egy részletesebb megközelítés az egyes létrehozott erőforrások törlése. Először távolítsa el a fürtkiállító erőforrásait:
 
 ```console
 kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 ```
 
-Sorolja fel a Helm kiadásait az `helm list` paranccsal. Keresse meg az *Nginx-beáramló* és az *AK-HelloWorld*nevű diagramot az alábbi példában látható módon:
+Sorolja fel a `helm list` Helm-kiadásokat a paranccsal. Keresse meg a *nginx-inress* és *aks-helloworld*nevű diagramokat, ahogy az a következő példa kimenetben látható:
 
 ```
 $ helm list --namespace ingress-basic
@@ -310,7 +310,7 @@ cert-manager            ingress-basic   1               2020-01-15 10:23:36.5155
 nginx                   ingress-basic   1               2020-01-15 10:09:45.982693 -0600 CST    deployed        nginx-ingress-1.29.1    0.27.0  
 ```
 
-Törölje a kiadásokat a `helm delete` paranccsal. A következő példa törli az NGINX beáramló üzembe helyezését, valamint a két mintául szolgáló Hello World alkalmazást.
+Törölje a kiadásokat `helm delete` a paranccsal. A következő példa törli az NGINX bejövő környezet, és a két minta AKS hello world alkalmazások.
 
 ```
 $ helm uninstall aks-helloworld aks-helloworld-two cert-manager nginx --namespace ingress-basic
@@ -321,19 +321,19 @@ release "cert-manager" uninstalled
 release "nginx" uninstalled
 ```
 
-Ezt követően távolítsa el a Helm-tárházat az AK Hello World alkalmazáshoz:
+Ezután távolítsa el az AKS hello world alkalmazás Helm repo-ját:
 
 ```console
 helm repo remove azure-samples
 ```
 
-Távolítsa el a bejövő forgalom útvonalát, amely irányítja a forgalmat a mintául szolgáló alkalmazásokba:
+Távolítsa el a mintaalkalmazásokba irányuló forgalmat irányító be- és áttérési útvonalat:
 
 ```console
 kubectl delete -f hello-world-ingress.yaml --namespace ingress-basic
 ```
 
-Végezetül törölheti saját maga is a névteret. Használja a `kubectl delete` parancsot, és adja meg a névtér nevét:
+Végül törölheti magát a névteret. Használja `kubectl delete` a parancsot, és adja meg a névtér nevét:
 
 ```console
 kubectl delete namespace ingress-basic
@@ -341,19 +341,19 @@ kubectl delete namespace ingress-basic
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk néhány külső összetevőt tartalmaz az ak-nak. Ha többet szeretne megtudni ezekről az összetevőkről, tekintse meg a következő Project-lapokat:
+Ez a cikk az AKS néhány külső összetevőjét is tartalmazta. Ezekről az összetevőkről a következő projektlapokon olvashat bővebben:
 
-- [Helm parancssori felület][helm-cli]
-- [NGINX bejövő adatkezelő][nginx-ingress]
-- [tanúsítvány-kezelő][cert-manager]
+- [Kormányrúd CLI][helm-cli]
+- [NGINX bejövő adatvezérlő][nginx-ingress]
+- [cert-menedzser][cert-manager]
 
 További lehetőségek:
 
-- [Alapszintű bejövő adatvezérlő létrehozása külső hálózati kapcsolattal][aks-ingress-basic]
-- [A HTTP-alkalmazás útválasztási bővítményének engedélyezése][aks-http-app-routing]
-- [Belső, privát hálózatot és IP-címet használó bejövő adatforgalom-vezérlő létrehozása][aks-ingress-internal]
-- [Saját TLS-tanúsítványokat használó bejövő adatkezelő létrehozása][aks-ingress-own-tls]
-- [Hozzon létre egy olyan bejövő adatkezelőt, amely a let titkosítást használja a statikus nyilvános IP-címmel rendelkező TLS-tanúsítványok automatikus létrehozásához][aks-ingress-static-tls]
+- [Egyszerű be- és átszivárgási vezérlő létrehozása külső hálózati kapcsolattal][aks-ingress-basic]
+- [A HTTP-alkalmazásútválasztási bővítmény engedélyezése][aks-http-app-routing]
+- [Belső, magánhálózati és IP-címet használó be- és áthálózaton belüli adatélmény-vezérlő létrehozása][aks-ingress-internal]
+- [Saját TLS-tanúsítványokat használó be- és hanghálózati vezérlő létrehozása][aks-ingress-own-tls]
+- [Bejövő forgalom vezérlő létrehozása, amely a Let's Encrypt segítségével automatikusan létrehozza a TLS-tanúsítványokat statikus nyilvános IP-címmel][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
 [az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record

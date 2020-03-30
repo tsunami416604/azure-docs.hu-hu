@@ -1,6 +1,6 @@
 ---
-title: A Azure Cosmos DB Gremlin API-ban található lekérdezések kiértékeléséhez használja a végrehajtási profilt
-description: Ismerje meg, hogyan oldhatja meg és javíthatja a Gremlin-lekérdezéseket a végrehajtási profil lépésével.
+title: A végrehajtási profil használatával kiértékelheti a lekérdezéseket az Azure Cosmos DB Gremlin API-ban
+description: Ismerje meg, hogyan háríthatja el a hibákat, és javíthatja a Gremlin-lekérdezéseket a végrehajtási profil lépés használatával.
 services: cosmos-db
 author: luisbosquez
 manager: kfile
@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: lbosq
 ms.openlocfilehash: 5705ef4fb6aa895009d554617c968543cc3fcd63
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441857"
 ---
-# <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>A Gremlin-lekérdezések kiértékelésének lépései a végrehajtási profil használatával
+# <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gremlin-lekérdezések kiértékelése a végrehajtási profil lépés segítségével
 
-Ez a cikk áttekintést nyújt a Azure Cosmos DB Gremlin API Graph-adatbázisok végrehajtási profiljával kapcsolatos lépésének használatáról. Ez a lépés a hibaelhárításhoz és a lekérdezés optimalizálásához nyújt releváns információkat, és kompatibilis minden olyan Gremlin-lekérdezéssel, amelyet egy Cosmos DB Gremlin API-fiókkal lehet végrehajtani.
+Ez a cikk áttekinti, hogyan használható a végrehajtási profil lépés az Azure Cosmos DB Gremlin API gráfadatbázisokkal. Ez a lépés a hibaelhárításhoz és a lekérdezés optimalizálásához nyújt releváns információkat, és kompatibilis minden olyan Gremlin-lekérdezéssel, amelyet egy Cosmos DB Gremlin API-fiókon lehet végrehajtani.
 
-Ennek a lépésnek a használatához egyszerűen fűzze hozzá a `executionProfile()` függvény hívását a Gremlin-lekérdezés végén. **A rendszer végrehajtja a Gremlin-lekérdezést** , és a művelet eredménye egy JSON-válasz objektumot ad vissza a lekérdezés végrehajtási profiljával.
+A lépés használatához egyszerűen fűzze hozzá a `executionProfile()` függvényhívás végén a Gremlin lekérdezés. **A Gremlin-lekérdezés végrehajtása megtörténik,** és a művelet eredménye egy JSON-válaszobjektumot ad vissza a lekérdezés végrehajtási profillal.
 
 Példa:
 
@@ -32,18 +32,18 @@ Példa:
     g.V('mary').out().executionProfile()
 ```
 
-A `executionProfile()` lépés meghívása után a válasz egy JSON-objektum lesz, amely tartalmazza a végrehajtott Gremlin lépést, a teljes időt, valamint a Cosmos DB futásidejű operátorok tömbjét, amelyet az utasítás eredményezett.
+A lépés `executionProfile()` meghívása után a válasz egy JSON-objektum lesz, amely tartalmazza a végrehajtott Gremlin lépést, a teljes időt, és a Cosmos DB futásidejű operátorok egy tömbjét, amelyet a utasítás eredményezett.
 
 > [!NOTE]
-> A végrehajtási profilhoz tartozó implementáció nincs definiálva az Apache Tinkerpop-specifikációban. Azure Cosmos DB Gremlin API implementációja.
+> Ez a végrehajtási profil megvalósítása nincs definiálva az Apache Tinkerpop specifikációban. Az Azure Cosmos DB Gremlin API implementációja egyedi.
 
 
 ## <a name="response-example"></a>Példa válaszra
 
-Az alábbi példa a visszaadott kimenetre mutat be egy megjegyzést:
+A következő egy megjegyzésvel ellátható példa a visszaadandó kimenetre:
 
 > [!NOTE]
-> Ez a példa megjegyzésekkel van ellátva, amelyek ismertetik a válasz általános szerkezetét. A tényleges executionProfile-válasz nem tartalmaz megjegyzéseket.
+> Ez a példa megjegyzésekkel van elmagyarázva, amelyek a válasz általános szerkezetét magyarázzák. A tényleges executionProfile válasz nem tartalmaz megjegyzéseket.
 
 ```json
 [
@@ -134,50 +134,50 @@ Az alábbi példa a visszaadott kimenetre mutat be egy megjegyzést:
 ```
 
 > [!NOTE]
-> A executionProfile lépés végrehajtja a Gremlin-lekérdezést. Ez magában foglalja a `addV` vagy `addE`lépéseket, amelyek eredményeképpen a létrehozás és a lekérdezésben megadott módosítások véglegesítve lesznek. Ennek eredményeképpen a Gremlin-lekérdezés által generált kérések egységei is felszámítva lesznek.
+> A executionProfile lépés végrehajtja a Gremlin lekérdezést. Ez magában `addV` `addE`foglalja a vagy lépéseket, amelyek a létrehozást eredményezik, és véglegesítik a lekérdezésben megadott módosításokat. Ennek eredményeképpen a Gremlin lekérdezés által létrehozott kérelem egységek is felszámolásra kerül.
 
-## <a name="execution-profile-response-objects"></a>Végrehajtási profil válaszának objektumai
+## <a name="execution-profile-response-objects"></a>Végrehajtási profilválasz-objektumok
 
-A executionProfile () függvény válasza a JSON-objektumok hierarchiáját fogja eredményezni a következő szerkezettel:
-  - **Gremlin műveleti objektum**: a teljes Gremlin műveletet jelöli. A következő tulajdonságokat tartalmazza.
-    - `gremlin`: a végrehajtott explicit Gremlin utasítás.
-    - `totalTime`: az az idő (ezredmásodpercben), amelyet a lépés végrehajtása során felmerült. 
-    - `metrics`: egy tömb, amely a lekérdezés teljesítése érdekében végrehajtott Cosmos DB futtatókörnyezeti operátorokat tartalmazza. Ezt a listát a rendszer a végrehajtás sorrendjében rendezi.
+A executionProfile() függvény válasza a JSON-objektumok hierarchiáját eredményezi a következő struktúrával:
+  - **Gremlin műveleti objektum**: A teljes Gremlin műveletet jelképezi, amelyet végrehajtottak. A következő tulajdonságokat tartalmazza.
+    - `gremlin`: A végrehajtott explicit Gremlin utasítás.
+    - `totalTime`: Az az idő, ezredmásodpercben, amikor a lépés végrehajtása bekövetkező. 
+    - `metrics`: A rendszer, amely tartalmazza az egyes Cosmos DB futásidejű operátorok, amelyek végrehajtása a lekérdezés teljesítéséhez. Ez a lista a végrehajtás sorrendjében van rendezve.
     
-  - **Cosmos db futásidejű operátorok**: a teljes Gremlin művelet összes összetevőjét képviseli. Ezt a listát a rendszer a végrehajtás sorrendjében rendezi. Minden objektum a következő tulajdonságokat tartalmazza:
-    - `name`: az operátor neve. A kiértékelt és végrehajtott lépés típusa. További tudnivalókat az alábbi táblázatban talál.
-    - `time`: az adott operátor által tartott időtartam ezredmásodpercben.
-    - `annotations`: a végrehajtás alatt álló operátorra vonatkozó további információkat tartalmaz.
-    - `annotations.percentTime`: az adott operátor végrehajtásához szükséges teljes idő százalékos aránya.
-    - `counts`: a tárolási réteg által az adott operátor által visszaadott objektumok száma. Ezt a `counts.resultCount` skaláris értéke tárolja.
-    - `storeOps`: olyan tárolási műveletet jelöl, amely egy vagy több partícióra terjedhet ki.
-    - `storeOps.fanoutFactor`: az adott tárolási művelet által elért partíciók számát jelöli.
-    - `storeOps.count`: a tárolási művelet által visszaadott eredmények számát jelöli.
-    - `storeOps.size`: egy adott tárolási művelet eredményének mérete bájtban kifejezve.
+  - **Cosmos DB futásidejű operátorok:** A teljes Gremlin-művelet egyes összetevőit jelöli. Ez a lista a végrehajtás sorrendjében van rendezve. Minden objektum a következő tulajdonságokat tartalmazza:
+    - `name`: Az üzemeltető neve. Ez a kiértékelt és végrehajtott lépés típusa. Bővebben az alábbi táblázatban.
+    - `time`: Az az idő, ezredmásodpercben, amelyet egy adott operátor vett igénybe.
+    - `annotations`: A végrehajtott operátorra vonatkozó további információkat tartalmaz.
+    - `annotations.percentTime`: Az adott operátor végrehajtásához szükséges teljes idő százaléka.
+    - `counts`: Azon objektumok száma, amelyeket ez az operátor visszaadott a tárolórétegről. Ez a skaláris értékben `counts.resultCount` található.
+    - `storeOps`: Egy olyan tárolási műveletet jelöl, amely egy vagy több partícióra is kiterjedhet.
+    - `storeOps.fanoutFactor`: Az adott tárolási művelet által elért partíciók számát jelöli.
+    - `storeOps.count`: A tárolási művelet által visszaadott eredmények számát jelöli.
+    - `storeOps.size`: Egy adott tárolási művelet eredményének méretét bájtban adja meg.
 
-Cosmos DB Gremlin Runtime operátor|Leírás
+Cosmos DB Gremlin futásidejű operátor|Leírás
 ---|---
-`GetVertices`| Ez a lépés egy predikátum-készletet szerez be az adatmegőrzési rétegből. 
-`GetEdges`| Ez a lépés a csúcspontok egy halmazához szomszédos éleket szerzi be. Ez a lépés egy vagy több tárolási művelethez vezethet.
-`GetNeighborVertices`| Ez a lépés a széleihez csatlakozó csúcspontokat szerzi be. Az élek tartalmazzák a forrás-és a cél csúcspontok partíciós kulcsait és AZONOSÍTÓját.
-`Coalesce`| Ez a lépés két művelet kiértékelését végzi el, amikor a `coalesce()` Gremlin lépés végrehajtása történik.
-`CartesianProductOperator`| Ez a lépés egy Descartes-féle terméket számít ki két adatkészlet között. Általában akkor történik meg, amikor a predikátumok `to()` vagy `from()` van használatban.
-`ConstantSourceOperator`| Ez a lépés kiszámít egy kifejezést, hogy eredményként konstans értéket hozzon létre.
-`ProjectOperator`| Ez a lépés a korábbi műveletek eredményének használatával készít elő és szerializál egy választ.
-`ProjectAggregation`| Ez a lépés egy összesítési műveletre vonatkozó választ készít elő és szerializál.
+`GetVertices`| Ez a lépés az objektumok predikátus készletét a perzisztenciarétegből szerzi be. 
+`GetEdges`| Ez a lépés a csúcsok készletével szomszédos éleket kapja meg. Ez a lépés egy vagy több tárolási műveletet eredményezhet.
+`GetNeighborVertices`| Ez a lépés a szélekhez csatlakoztatott csúcspontokat szerzi be. Az élek tartalmazzák a partíciókulcsokat és a forrás- és célcsúcsok azonosítóit.
+`Coalesce`| Ez a lépés két művelet kiértékelését `coalesce()` számlálja a Gremlin lépés végrehajtásakor.
+`CartesianProductOperator`| Ez a lépés egy descartes-i terméket számít ki két adatkészlet között. Általában végre, amikor a `to()` `from()` predikátumok vagy használják.
+`ConstantSourceOperator`| Ez a lépés kiszámítja a kifejezést, hogy ennek eredményeképpen állandó értéket eredményez.
+`ProjectOperator`| Ez a lépés előkészíti és szerializálja a választ az előző műveletek eredményének használatával.
+`ProjectAggregation`| Ez a lépés előkészíti és szerializálja az összesítő műveletekre adott választ.
 
 > [!NOTE]
-> A lista továbbra is frissülni fog, mivel új operátorok lettek hozzáadva.
+> Ez a lista az új operátorok hozzáadásakor is frissülni fog.
 
-## <a name="examples-on-how-to-analyze-an-execution-profile-response"></a>Példák a végrehajtási profilok válaszának elemzésére
+## <a name="examples-on-how-to-analyze-an-execution-profile-response"></a>Példák a végrehajtási profilválasz elemzésére
 
-A következő példák olyan gyakori optimalizációkat mutatnak be, amelyeket a végrehajtási profil válasza alapján lehet kitalálni:
-  - Vak kipróbálható lekérdezés.
+Az alábbiakban példákat mutatunk be a Végrehajtási profil válaszával kiszúrt gyakori optimalizálásokra:
+  - Vak fan-out lekérdezés.
   - Szűretlen lekérdezés.
 
-### <a name="blind-fan-out-query-patterns"></a>Blind fan-out lekérdezési minták
+### <a name="blind-fan-out-query-patterns"></a>Vak, fan-out lekérdezési minták
 
-Tegyük fel, hogy a következő végrehajtási profilt választ egy **particionált gráfból**:
+Tegyük fel, hogy a következő végrehajtási profilválaszt egy **particionált grafikon**:
 
 ```json
 [
@@ -218,18 +218,18 @@ Tegyük fel, hogy a következő végrehajtási profilt választ egy **particion�
 ]
 ```
 
-A következő következtetések hozhatók létre belőle:
-- A lekérdezés egyetlen AZONOSÍTÓval való keresés, mivel a Gremlin utasítás a következő mintát követi: `g.V('id')`.
-- A `time` metrika megítélése szerint a lekérdezés késése úgy tűnik, hogy magas, mert [több mint 10ms egyetlen pont – olvasási művelethez](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide).
-- Ha megnézzük a `storeOps` objektumot, láthatjuk, hogy a `fanoutFactor` `5`, ami azt jelenti, hogy ez a művelet [5 partíciót](https://docs.microsoft.com/azure/cosmos-db/partition-data) használt.
+Ebből a következő következtetéseket lehet levonni:
+- A lekérdezés egyetlen azonosító-lekérdezés, mivel a Gremlin utasítás `g.V('id')`követi a mintát.
+- A mérőszám `time` alapján a lekérdezés késése magasnak tűnik, mivel [több mint 10 ms egyetlen pontolvasási művelethez.](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide)
+- Ha megnézzük `storeOps` az objektumot, láthatjuk, hogy az `fanoutFactor` is `5`, ami azt jelenti, hogy 5 [partíciót](https://docs.microsoft.com/azure/cosmos-db/partition-data) is elérhető ez a művelet.
 
-Az elemzés befejezésekor meghatározhatjuk, hogy az első lekérdezés a szükségesnél több partíciót is elér. Ez a következő lehet: a lekérdezésben szereplő particionáló kulcs megadásával predikátumként. Ez kevesebb késést és lekéréses költségeket eredményez. További információ a [Graph particionálásról](graph-partitioning.md). Az optimális lekérdezés `g.V('tt0093640').has('partitionKey', 't1001')`.
+Ennek az elemzésnek a következtetéseként megállapíthatjuk, hogy az első lekérdezés a szükségesnél több partícióhoz fér hozzá. Ez a lekérdezésben a particionálási kulcs predikátumként történő megadásával orvosható. Ez kevesebb késést és lekérdezésenkénti költséghez vezet. További információ a [gráfparticionálásról.](graph-partitioning.md) Egy optimálisabb lekérdezés `g.V('tt0093640').has('partitionKey', 't1001')`lenne .
 
 ### <a name="unfiltered-query-patterns"></a>Szűretlen lekérdezési minták
 
-Hasonlítsa össze a következő két végrehajtási profilra adott válaszokat. Az egyszerűség kedvéért ezek a példák egyetlen particionált gráfot használnak.
+Hasonlítsa össze a következő két végrehajtási profil válaszok. Az egyszerűség kedvéért ezek a példák egyetlen particionált grafikont használnak.
 
-Ez az első lekérdezés lekéri az összes csúcspontot a címkével `tweet`, majd beolvassa a szomszédos csúcspontokat:
+Ez az első lekérdezés lekéri az `tweet` összes csúcsot a címkével, majd beszerzi a szomszédos csúcspontokat:
 
 ```json
 [
@@ -306,7 +306,7 @@ Ez az első lekérdezés lekéri az összes csúcspontot a címkével `tweet`, m
 ]
 ```
 
-Figyelje meg ugyanazt a lekérdezést, de most egy további szűrővel, `has('lang', 'en')`a szomszédos csúcspontok feltárása előtt:
+Figyelje meg ugyanannak a lekérdezésnek a `has('lang', 'en')`profilját, de most egy további szűrővel, mielőtt felfedezné a szomszédos csúcspontokat:
 
 ```json
 [
@@ -383,10 +383,10 @@ Figyelje meg ugyanazt a lekérdezést, de most egy további szűrővel, `has('la
 ]
 ```
 
-Ez a két lekérdezés ugyanahhoz az eredményhez vezetett, azonban az elsőnek több kérési egységre van szüksége, mivel ez szükséges egy nagyobb kezdeti adatkészlet megismétléséhez a szomszédos elemek lekérdezése előtt. A viselkedés mutatói láthatók a következő paraméterek mindkét válaszból való összevetése esetén:
-- A `metrics[0].time` értéke magasabb az első válaszban, ami azt jelzi, hogy ez az egyetlen lépés hosszabb időt vett igénybe.
-- Az `metrics[0].counts.resultsCount` érték nagyobb, mint az első válasznál is, amely azt jelzi, hogy a kezdeti munkakészlet nagyobb volt.
+Ez a két lekérdezés ugyanazt az eredményt érte el, azonban az első több kérelemegységet igényel, mivel a szomszédos elemek lekérdezése előtt nagyobb kezdeti adatkészletet kellett itegálnia. Láthatjuk mutatók ezt a viselkedést, ha összehasonlítjuk a következő paramétereket mindkét válasz:
+- Az `metrics[0].time` érték magasabb az első válaszban, ami azt jelzi, hogy ez az egyetlen lépés feloldása hosszabb időt vett igénybe.
+- Az `metrics[0].counts.resultsCount` érték az első válaszban is magasabb, ami azt jelzi, hogy a kezdeti munkaadatkészlet nagyobb volt.
 
-## <a name="next-steps"></a>Következő lépések
-* A Azure Cosmos DB [támogatott Gremlin szolgáltatásainak](gremlin-support.md) megismerése. 
-* További információ a [Azure Cosmos db GREMLIN API-](graph-introduction.md)ról.
+## <a name="next-steps"></a>További lépések
+* Ismerje meg az Azure Cosmos DB [támogatott Gremlin-funkcióit.](gremlin-support.md) 
+* Tudjon meg többet a [Gremlin API-ról az Azure Cosmos DB-ben.](graph-introduction.md)

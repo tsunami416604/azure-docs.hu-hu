@@ -1,6 +1,6 @@
 ---
-title: Fürthöz tartozó rendszerbiztonsági tag hozzáadása az Azure Adatkezelőhoz a használatávalC#
-description: Ebből a cikkből megtudhatja, hogyan adhat hozzá fürtöket az Azure Adatkezelőhoz C#a használatával.
+title: 'Fürtrendszeri tagok hozzáadása az Azure Data Explorer hez a C használatával #'
+description: Ebben a cikkben megtudhatja, hogyan adhat hozzá fürtrendszeri tagokat az Azure Data Explorer c#használatával.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,37 +8,37 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: e6c3970890dfe2c669dee1acf631e9dd45ab1085
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965059"
 ---
-# <a name="add-cluster-principals-for-azure-data-explorer-by-using-c"></a>Fürthöz tartozó rendszerbiztonsági tag hozzáadása az Azure Adatkezelőhoz a használatávalC#
+# <a name="add-cluster-principals-for-azure-data-explorer-by-using-c"></a>Fürtrendszeri tagok hozzáadása az Azure Data Explorer hez a C használatával #
 
 > [!div class="op_single_selector"]
-> * [C#](cluster-principal-csharp.md)
+> * [C #](cluster-principal-csharp.md)
 > * [Python](cluster-principal-python.md)
 > * [Azure Resource Manager-sablon](cluster-principal-resource-manager.md)
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Ebben a cikkben a használatával C#adja hozzá a fürtöket az Azure Adatkezelőhoz.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Ebben a cikkben a C# használatával adja hozzá az Azure Data Explorer fürtrendszeri tagokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nincs telepítve a Visual Studio 2019, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+* Ha nincs telepítve a Visual Studio 2019, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition alkalmazást.](https://www.visualstudio.com/downloads/) Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* [Hozzon létre egy fürtöt](create-cluster-database-csharp.md).
+* [Fürt létrehozása](create-cluster-database-csharp.md).
 
-## <a name="install-c-nuget"></a>A C# NuGet telepítése
+## <a name="install-c-nuget"></a>C# NuGet telepítése
 
-* Telepítse a [Microsoft. Azure. Management. kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Telepítse a [Microsoft. Rest. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) hitelesítést a hitelesítéshez.
+* Telepítse a [Microsoft.Azure.Management.kusto alkalmazást.](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)
+* Telepítse a [Microsoft.Rest.ClientRuntime.Azure.Authentication hitelesítést](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) a hitelesítéshez.
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-## <a name="add-a-cluster-principal"></a>Fürthöz tartozó rendszerbiztonsági tag hozzáadása
+## <a name="add-a-cluster-principal"></a>Egyszerű fürt hozzáadása
 
-Az alábbi példa azt szemlélteti, hogyan adhat hozzá programozott módon egy fürtöt.
+A következő példa bemutatja, hogyan adhat hozzá egy fürtfőt programozott módon.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -67,18 +67,18 @@ await kustoManagementClient.ClusterPrincipalAssignments.CreateOrUpdateAsync(reso
 
 |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
 |---|---|---|
-| tenantId | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | A bérlő azonosítója. Más néven címtár-azonosító.|
-| subscriptionId | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | Az erőforrás-létrehozáshoz használt előfizetés-azonosító.|
-| clientId | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | Annak az alkalmazásnak az ügyfél-azonosítója, amely hozzáférhet a bérlő erőforrásaihoz.|
-| clientSecret | *XXXXXXXXXXXXXX* | Az alkalmazás ügyfél-titka, amely hozzáférhet a bérlő erőforrásaihoz. |
+| tenantId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | A bérlőazonosítója. Más néven könyvtárazonosító.|
+| subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Az erőforrás-létrehozáshoz használt előfizetés-azonosító.|
+| ügyfél-azonosító | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Az alkalmazás ügyfélazonosítója, amely hozzáférhet a bérlő erőforrásaihoz.|
+| ügyféltitkos | *xxxxxxxxxxxxxx* | Az alkalmazás ügyféltka-tka, amely hozzáférhet a bérlő erőforrásaihoz. |
 | resourceGroupName | *testrg* | A fürtöt tartalmazó erőforráscsoport neve.|
 | clusterName | *mykustocluster* | A fürt neve.|
-| principalAssignmentName | *clusterPrincipalAssignment1* | A fürt elsődleges erőforrásának neve.|
-| principalId | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | A résztvevő azonosítója, amely lehet felhasználói e-mail-cím, alkalmazás-azonosító vagy biztonsági csoport neve.|
-| szerepkör | *AllDatabasesAdmin* | A fürt elsődleges szerepköre, amely lehet "AllDatabasesAdmin' vagy" AllDatabasesViewer ".|
-| tenantIdForPrincipal | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | A rendszerbiztonsági tag bérlői azonosítója.|
-| principalType | *Alkalmazás* | A rendszerbiztonsági tag típusa, amely lehet "user", "app" vagy "Group"|
+| igazgatóhelyettesassignmentname | *clusterPrincipalAssignment1* | A fürt fő erőforrásának neve.|
+| principalId között | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | A fő azonosító, amely lehet felhasználói e-mail, alkalmazásazonosító vagy biztonsági csoport neve.|
+| Szerepet | *Mindenadatbázis-kezelő* | A fürtfőnév szerepköre, amely lehet "AllDatabasesAdmin" vagy "AllDatabasesViewer".|
+| tenantIdForPrincipal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | A főnév bérlői azonosítója.|
+| principalType típus | *Alkalmazás* | A megbízó típusa, amely lehet "Felhasználó", "Alkalmazás" vagy "Csoport"|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Adatbázis-rendszerbiztonsági tag hozzáadása](database-principal-csharp.md)
+* [Adatbázis-biztonsági tagok hozzáadása](database-principal-csharp.md)

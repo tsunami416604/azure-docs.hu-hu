@@ -1,6 +1,6 @@
 ---
-title: Biztonságos webhook-kézbesítés az Azure AD-vel Azure Event Grid
-description: Ismerteti, hogyan lehet eseményeket kézbesíteni a Azure Active Directory által védett HTTPS-végpontoknak Azure Event Grid használatával
+title: Biztonságos WebHook-kézbesítés az Azure AD-vel az Azure Event Gridben
+description: Ez a témakör azt ismerteti, hogy miként lehet eseményeket kézbesíteni az Azure Active Directory által az Azure Event Grid használatával védett HTTPS-végpontokra
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,34 +8,34 @@ ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
 ms.openlocfilehash: 074378668b0516936e11968ea8c800d3daa667bb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931544"
 ---
-# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Események közzététele Azure Active Directory védett végpontok számára
+# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Események közzététele az Azure Active Directory által védett végpontokon
 
-Ez a cikk azt ismerteti, hogyan használhatja a Azure Active Directory az esemény-előfizetés és a webhook-végpont közötti kapcsolat biztonságossá tételéhez. Az Azure AD-alkalmazások és-szolgáltatások áttekintését lásd: [Microsoft Identity platform (v 2.0) – áttekintés](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
+Ez a cikk ismerteti, hogyan azure Active Directory az esemény-előfizetés és a webhook-végpont közötti kapcsolat biztonságossá tétele. Az Azure AD-alkalmazások és egyszerű szolgáltatásért tekintse meg a [Microsoft identity platform (2.0-s verzió) áttekintését.](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
 
-Ez a cikk a bemutató Azure Portal használja, de a funkció a CLI, a PowerShell vagy az SDK-k használatával is engedélyezhető.
+Ez a cikk az Azure Portalon a bemutató, azonban a funkció is engedélyezhető cli, PowerShell vagy az SDK-k használatával.
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="create-an-azure-ad-application"></a>Azure AD-alkalmazás létrehozása
 
-Először hozzon létre egy Azure AD-alkalmazást a védett végpont számára. Lásd: https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
-    - Beállíthatja, hogy a védett API-t egy Daemon-alkalmazás hívja meg.
+Kezdje azzal, hogy létrehoz egy Azure AD-alkalmazást a védett végponthoz. Lásd: https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
+    - Konfigurálja a védett API-t egy démonalkalmazás által hívandó.
     
-## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Az Azure AD-alkalmazás használatának engedélyezése Event Grid
+## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Az Event Grid engedélyezése az Azure AD-alkalmazás használatához
 
-Az alábbi PowerShell-szkripttel hozzon létre egy szerepkört és egy szolgáltatási elvet az Azure AD-alkalmazásban. Az Azure AD-alkalmazásban szüksége lesz a bérlői AZONOSÍTÓra és az objektum-AZONOSÍTÓra:
+Használja az alábbi PowerShell-parancsfájlt egy szerepkör- és szolgáltatáselv létrehozásához az Azure AD-alkalmazásban. Szüksége lesz a bérlői azonosítóra és az objektumazonosítóra az Azure AD-alkalmazásból:
 
     > [!NOTE]
     > You must be a member of the [Azure AD Application Administrator role](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) to execute this script.
     
-1. Módosítsa a PowerShell-parancsfájl $myTenantIdét az Azure AD-bérlő AZONOSÍTÓjának használatára.
-1. A PowerShell-parancsfájl $myAzureADApplicationObjectId módosítása az Azure AD-alkalmazás objektumazonosítójának használatára
+1. Módosítsa a PowerShell-parancsfájl $myTenantId az Azure AD-bérlői azonosító használatához.
+1. A PowerShell-parancsfájl $myAzureADApplicationObjectId módosítása az Azure AD-alkalmazás objektumazonosítójának használatához
 1. Futtassa a módosított parancsfájlt.
 
 ```PowerShell
@@ -112,19 +112,19 @@ Write-Host $myApp.AppRoles
     
 ## <a name="configure-the-event-subscription"></a>Az esemény-előfizetés konfigurálása
 
-Az esemény-előfizetés létrehozási folyamatában válassza a "web Hook" típusú végpontot. Miután megadta a végponti URI-t, kattintson az esemény-előfizetések létrehozása panel tetején található további szolgáltatások fülre.
+Az esemény-előfizetés létrehozási folyamatában válassza a "Web Hook" végponttípust. Miután megadta a végpont URI-ját, kattintson a további funkciók fülre az esemény-előfizetések létrehozása panel tetején.
 
-![Válassza ki a végpont típusát webhook](./media/secure-webhook-delivery/select-webhook.png)
+![Végponttípusú webhook kiválasztása](./media/secure-webhook-delivery/select-webhook.png)
 
-A további szolgáltatások lapon jelölje be a "HRE-hitelesítés használata" jelölőnégyzetet, és konfigurálja a bérlői azonosítót és az alkalmazás AZONOSÍTÓját:
+A további szolgáltatások lapon jelölje be az "AAD-hitelesítés használata" jelölőnégyzetet, és konfigurálja a bérlői azonosítót és az alkalmazásazonosítót:
 
-* Másolja az Azure AD-bérlő AZONOSÍTÓját a parancsfájl kimenetéről, és adja meg a HRE-bérlő azonosítója mezőben.
-* Másolja az Azure AD-alkalmazás AZONOSÍTÓját a parancsfájl kimenetéről, majd adja meg a HRE alkalmazás-azonosító mezőjében.
+* Másolja az Azure AD-bérlői azonosítót a parancsfájl kimenetéről, és adja meg azt az AAD-bérlői azonosító mezőbe.
+* Másolja az Azure AD-alkalmazás azonosítóját a parancsfájl kimenetéről, és írja be az AAD-alkalmazásazonosító mezőbe.
 
-    ![Biztonságos webhook művelet](./media/secure-webhook-delivery/aad-configuration.png)
+    ![Biztonságos Webhook művelet](./media/secure-webhook-delivery/aad-configuration.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
-* További információ a hitelesítési kulcsról: [Event Grid biztonság és hitelesítés](security-authentication.md).
-* Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).
+* Az eseménykézbesítésfigyelésről az [Eseményrács üzenetkézbesítésének figyelése](monitor-event-delivery.md)című témakörben talál további információt.
+* A hitelesítési kulcsról további információt az [Event Grid biztonsága és hitelesítése](security-authentication.md)című témakörben talál.
+* Az Azure Event Grid-előfizetés ek létrehozásáról az [Event Grid-előfizetésséma](subscription-creation-schema.md)című témakörben talál további információt.

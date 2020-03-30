@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: acf1195616d45b155445604ef0204528e5f7ca03
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179756"
 ---
-A továbbított adatok:
+Repülés közbeni adatok esetén:
 
-- Az eszköz és az Azure között átvitt adatok szabványos TLS 1.2 használható. A TLS 1.1-es és korábbi nincs tartalék van. Ügynök kommunikációja blokkolva lesznek, ha a TLS 1.2-es nem támogatott. A TLS 1.2 is portál és az SDK felügyeleti szükség.
-- Amikor az ügyfelek számára az eszköz helyi webes felületén, a böngésző keresztül hozzáfér, a szabványos TLS 1.2-es biztonságos alapértelmezett protokollként szolgál.
+- Standard TLS 1.2 az eszköz és az Azure között futó adatok. A TLS 1.1 és korábbi ad tartalékot. Az ügynökkommunikáció le lesz tiltva, ha a TLS 1.2 nem támogatott. TLS 1.2 is szükséges a portál- és SDK-kezeléshez.
+- Amikor az ügyfelek egy böngésző helyi webes felhasználói felületén keresztül férnek hozzá az eszközhöz, a szabványos TLS 1.2 lesz az alapértelmezett biztonságos protokoll.
 
-    - Az ajánlott eljárás, hogy a böngészőben a TLS 1.2 használatára.
-    - Ha a böngésző nem támogatja a TLS 1.2, TLS 1.1-es vagy a TLS 1.0-t is használhatja.
-- Azt javasoljuk, hogy használjon SMB 3.0-s titkosítással adatok védelme, ha a data-kiszolgálókról másolja.
+    - Az ajánlott eljárás az, hogy konfigurálja a böngészőt a TLS 1.2 használatára.
+    - Ha a böngésző nem támogatja a TLS 1.2-t, használhatja a TLS 1.1-es vagy tls 1.0-s.
+- Azt javasoljuk, hogy az SMB 3.0-s titkosítást használja az adatok védelmére, amikor az adatkiszolgálókról másolja őket.

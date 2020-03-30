@@ -1,6 +1,6 @@
 ---
 title: Az Azure Event Hubs biztonsági vezérlői
-description: Ez a cikk az Azure-Event Hubs (hálózat, identitás, adatvédelem stb.) kiértékelésére szolgáló biztonsági ellenőrzésekkel kapcsolatos feladatlistát tartalmaz.
+description: Ez a cikk az Azure Event Hubs (hálózat, identitás, adatvédelem stb.) kiértékelésére szolgáló biztonsági vezérlők ellenőrzőlistáját tartalmazza.
 services: event-hubs
 ms.service: event-hubs
 author: spelluru
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
 ms.openlocfilehash: 0769e88eb72b5b347dd9ebf4b1634501ca54098e
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76309506"
 ---
 # <a name="security-controls-for-azure-event-hubs"></a>Az Azure Event Hubs biztonsági vezérlői
@@ -24,42 +24,42 @@ Ez a cikk az Azure Event Hubs beépített biztonsági vezérlőket dokumentálja
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések | Dokumentáció |
 |---|---|--|--|
-| Szolgáltatás végpontjának támogatása| Igen |  |  |
-| VNet-befecskendezés támogatása| Nem | |  |
-| Hálózati elkülönítés és tűzfalak támogatása| Igen |  |  |
-| Kényszerített bújtatás támogatása| Nem |  |  |
+| A szolgáltatás végpontjának támogatása| Igen |  |  |
+| A VNet injekciózás támogatása| Nem | |  |
+| Hálózati elkülönítés és tűzfaltámogatás| Igen |  |  |
+| Kényszerített bújtatástámogatása| Nem |  |  |
 
-## <a name="monitoring--logging"></a>& Naplózás figyelése
-
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések| Dokumentáció |
-|---|---|--|--|
-| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | |  |
-| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen |  |  |
-| Adatsíkok naplózása és naplózása| Igen |   |  |
-
-## <a name="identity"></a>Identitáskezelés
+## <a name="monitoring--logging"></a>Naplózás & figyelése
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések| Dokumentáció |
 |---|---|--|--|
-| Hitelesítés| Igen | | [Hozzáférés engedélyezése az Azure Event Hubshoz](authorize-access-event-hubs.md), hozzáférés [engedélyezése Event Hubs erőforrásokhoz Azure Active Directory használatával](authorize-access-azure-active-directory.md), hozzáférés [engedélyezése Event Hubs erőforrásokhoz a közös hozzáférési aláírások használatával](authorize-access-shared-access-signature.md) |
-| Engedélyezés|  Igen | | [Felügyelt identitások hitelesítése Azure Active Directoryekkel a Event Hubs erőforrások eléréséhez](authenticate-managed-identity.md), [egy alkalmazás hitelesítése Azure Active Directory használatával a Event Hubs erőforrások eléréséhez](authenticate-application.md), a [megosztott hozzáférési aláírások (SAS) használatával Event Hubs erőforrásokhoz való hozzáférés hitelesítése](authenticate-shared-access-signature.md) |
+| Azure figyelési támogatás (Naplóelemzés, Alkalmazáselemzések stb.)| Igen | |  |
+| Vezérlő és felügyeleti sík naplózása és naplózása| Igen |  |  |
+| Adatsík naplózása és naplózása| Igen |   |  |
+
+## <a name="identity"></a>Identitás
+
+| Biztonsági ellenőrzés | Igen/nem | Megjegyzések| Dokumentáció |
+|---|---|--|--|
+| Hitelesítés| Igen | | [Hozzáférés engedélyezése az Azure Event Hubs hoz,](authorize-access-event-hubs.md) [Hozzáférés engedélyezése az Event Hubs-erőforrásokhoz az Azure Active Directory használatával,](authorize-access-azure-active-directory.md)Hozzáférés engedélyezése az Event [Hubs-erőforrásokhoz megosztott hozzáférés-aláírásokkal](authorize-access-shared-access-signature.md) |
+| Engedélyezés|  Igen | | [Felügyelt identitás hitelesítése az Azure Active Directoryval az Event Hubs Resources eléréséhez,](authenticate-managed-identity.md)alkalmazás hitelesítése az [Azure Active Directoryval az Event Hubs-erőforrások eléréséhez,](authenticate-application.md) [Hozzáférés hitelesítése az Event Hubs-erőforrásokhoz megosztott hozzáférés-aláírásokkal (SAS)](authenticate-shared-access-signature.md) |
 
 ## <a name="data-protection"></a>Adatvédelem
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések | Dokumentáció |
 |---|---|--|--|
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok |  Igen | |  |
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen. Dedikált fürtökhöz érhető el. | Az Azure kulcstartóban lévő ügyfél által felügyelt kulcs használatával titkosíthatja az adatok egy nyugalmi állapotban lévő alközpontban. | [Ügyfél által felügyelt kulcsok konfigurálása az Azure Event Hubs-adatok inaktív titkosításához a Azure Portal használatával](configure-customer-managed-key.md) |
-| Oszlop szintű titkosítás (Azure Data Services)| – | |  |
-| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | |  |
-| Titkosított API-hívások| Igen |  |  |
+| Kiszolgálóoldali titkosítás inaktív állapotban: Microsoft által felügyelt kulcsok |  Igen | |  |
+| Kiszolgálóoldali titkosítás inaktív állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen. Dedikált fürtökhöz érhető el. | Az Azure KeyVault ügyfél által felügyelt kulcs segítségével titkosíthatja az adatokat egy inaktív eseményközpontban. | [Ügyfél által felügyelt kulcsok konfigurálása az Azure Event Hubs inaktív adatainak titkosításához az Azure Portal használatával](configure-customer-managed-key.md) |
+| Oszlopszintű titkosítás (Azure Data Services)| N/A | |  |
+| Titkosítás átvitel közben (például ExpressRoute-titkosítás, virtuális hálózat-titkosítás és Virtuálishálózati titkosítás)| Igen | |  |
+| TITKOSÍTOTT API-hívások| Igen |  |  |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések| Dokumentáció |
 |---|---|--|--|
-| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | |  |
+| Konfigurációkezelés támogatása (a konfiguráció verziószámozása stb.)| Igen | |  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../security/fundamentals/security-controls.md).
+- További információ az [Azure-szolgáltatások beépített biztonsági vezérlőiről.](../security/fundamentals/security-controls.md)

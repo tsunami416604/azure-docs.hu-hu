@@ -1,38 +1,38 @@
 ---
-title: Az MongoDB Azure Cosmos DB API-MongoDB való kezeléséhez szükséges bővítmény-parancsok
-description: Ez a cikk azt ismerteti, hogyan használhatók a MongoDB-bővítmény parancsai a Azure Cosmos DB API-MongoDB tárolt adatkezelési szolgáltatásokhoz.
+title: A MongoDB-bővítmény parancsok az Azure Cosmos DB MongoDB-hoz való API-jában történő kezeléséhez
+description: Ez a cikk ismerteti, hogyan mongoDB bővítmény parancsok at az Azure Cosmos DB API-m on MongoDB tárolt adatok kezelésére.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
 ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445221"
 ---
-# <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-bővítményi parancsok használata a Azure Cosmos DB API-MongoDB tárolt adatkezeléshez 
+# <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>A MongoDB-bővítmény parancsaival kezelheti az Azure Cosmos DB MongoDB-hoz való API-jában tárolt adatokat 
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A MongoDB Azure Cosmos DB API-jával a nyílt forráskódú [MongoDB-ügyfelek](https://docs.mongodb.org/ecosystem/drivers)bármelyikének használatával kommunikálhat. A MongoDB Azure Cosmos DB API-je lehetővé teszi a meglévő ügyféloldali illesztőprogramok használatát az [MongoDB Wire protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)betartásával.
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB MongoDB-hoz való API-jával kommunikálhat a nyílt forráskódú [MongoDB ügyfél-illesztőprogramok](https://docs.mongodb.org/ecosystem/drivers)bármelyikével. Az Azure Cosmos DB MongoDB-hoz való API-ja lehetővé teszi a meglévő ügyfél-illesztőprogramok használatát a [MongoDB vezetékes protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)betakarásával.
 
-A MongoDB-hez készült Azure Cosmos DB API-val élvezheti a globális elosztást, az automatikus horizontális skálázást, a magas rendelkezésre állást, Cosmos DB a késési garanciákat, az automatikus titkosítást, a nyugalmi állapotot, a biztonsági mentéseket és sok más más, a beruházások megőrzése mellett. a MongoDB alkalmazásban.
+Az Azure Cosmos DB MongoDB API-jának használatával élvezheti a Cosmos DB előnyeit, például a globális disztribúciót, az automatikus horizontális feldolgozást, a magas rendelkezésre állást, a késésgaranciát, az automatikus, az inaktív titkosítást, a biztonsági mentéseket és még sok mást, miközben megőrzi a befektetéseit a MongoDB alkalmazásban.
 
-## <a name="mongodb-protocol-support"></a>MongoDB protokoll támogatása
+## <a name="mongodb-protocol-support"></a>A MongoDB protokoll támogatása
 
-Alapértelmezés szerint a MongoDB Azure Cosmos DB API-je kompatibilis a MongoDB Server 3,2-es verziójával, további részletekért lásd a [támogatott szolgáltatások és szintaxis](mongodb-feature-support.md)című témakört. A MongoDB 3,4-es verziójában hozzáadott funkciók vagy lekérdezési operátorok jelenleg előzetes verzióként érhetők el a Azure Cosmos DB API-MongoDB. A következő bővítmény-parancsok a Azure Cosmos DB API-MongoDB tárolt adatokon végzett szifilisz-műveletek végrehajtásakor Azure Cosmos DB speciális funkciókat támogatják:
+Alapértelmezés szerint az Azure Cosmos DB MongoDB-hoz való API-ja kompatibilis a MongoDB 3.2-es verziójával, további részletekért olvassa el a [támogatott funkciókat és a szintaxist.](mongodb-feature-support.md) A MongoDB 3.4-es verziójában hozzáadott funkciók vagy lekérdezés-operátorok jelenleg előzetes verzióként érhetők el az Azure Cosmos DB MongoDB API-jában. A következő bővítményparancsok támogatják az Azure Cosmos DB-specifikus funkciókat, amikor CRUD-műveleteket hajtanak végre az Azure Cosmos DB MongoDB API-jában tárolt adatokon:
 
 * [Adatbázis létrehozása](#create-database)
 * [Adatbázis frissítése](#update-database)
-* [Adatbázis beolvasása](#get-database)
+* [Adatbázis bekéselése](#get-database)
 * [Gyűjtemény létrehozása](#create-collection)
-* [Gyűjtemény frissítése](#update-collection)
-* [Gyűjtemény beolvasása](#get-collection)
+* [Frissítési gyűjtemény](#update-collection)
+* [Gyűjtemény begyűjtése](#get-collection)
 
-## <a id="create-database"></a>Adatbázis létrehozása
+## <a name="create-database"></a><a id="create-database"></a>Adatbázis létrehozása
 
-Az adatbázis-bővítmény létrehozása parancs létrehoz egy új MongoDB-adatbázist. Az adatbázis neve azon adatbázisok környezetében használatos, amelyeken a parancs végrehajtása történik. A CreateDatabase parancs formátuma a következő:
+Az adatbázis-kiterjesztés létrehozása parancs új MongoDB adatbázist hoz létre. Az adatbázis neve az adatbázis-környezetből származik, amelyen a parancsot végrehajtják. Az Adatbázis létrehozása parancs formátuma a következő:
 
 ```
 {
@@ -41,40 +41,40 @@ Az adatbázis-bővítmény létrehozása parancs létrehoz egy új MongoDB-adatb
 }
 ```
 
-A következő táblázat a parancson belüli paramétereket ismerteti:
+Az alábbi táblázat a parancs paramétereit ismerteti:
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-| customAction   |  sztring  |   Az egyéni parancs neve csak "CreateDatabase" lehet.      |
-| offerThroughput | int  | Az adatbázison beállított kiépített átviteli sebesség. Ezt a paramétert nem kötelező megadni. |
+| customAction   |  sztring  |   Az egyéni parancs neve, "CreateDatabase" legyen.      |
+| ajánlatThroughput | int  | Az adatbázisban beállított kiépített átviteli. Ezt a paramétert nem kötelező megadni. |
 
 ### <a name="output"></a>Kimenet
 
-Egy alapértelmezett egyéni parancs-választ ad vissza. Tekintse meg az egyéni parancs [alapértelmezett kimenetét](#default-output) a kimenetben található paraméterekhez.
+Alapértelmezett egyéni parancsválaszt ad vissza. Tekintse meg az egyéni parancs [alapértelmezett kimenetét](#default-output) a kimeneti paraméterekhez.
 
 ### <a name="examples"></a>Példák
 
 **Adatbázis létrehozása**
 
-A "test" nevű adatbázis létrehozásához használja a következő parancsot:
+"Teszt" nevű adatbázis létrehozásához használja a következő parancsot:
 
 ```shell
 use test
 db.runCommand({customAction: "CreateDatabase"});
 ```
 
-**Adatátviteli sebességű adatbázis létrehozása**
+**Adatbázis létrehozása átviteli hatrással**
 
-A "test" nevű és a 1000 RUs kiépített átviteli sebességű adatbázis létrehozásához használja a következő parancsot:
+A "teszt" nevű és 1000 főkiszolgálókra vonatkozó kiépített átviteli hang létrehozásához használja a következő parancsot:
 
 ```shell
 use test
 db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 ```
 
-## <a id="update-database"></a>Adatbázis frissítése
+## <a name="update-database"></a><a id="update-database"></a>Adatbázis frissítése
 
-Az adatbázis-kiterjesztés frissítése parancs frissíti a megadott adatbázishoz társított tulajdonságokat. Jelenleg csak a "offerThroughput" tulajdonságot lehet frissíteni.
+A frissítési adatbázis-kiterjesztés parancs frissíti a megadott adatbázishoz tartozó tulajdonságokat. Jelenleg csak az "offerThroughput" tulajdonságot frissítheti.
 
 ```
 {
@@ -83,31 +83,31 @@ Az adatbázis-kiterjesztés frissítése parancs frissíti a megadott adatbázis
 }
 ```
 
-A következő táblázat a parancson belüli paramétereket ismerteti:
+Az alábbi táblázat a parancs paramétereit ismerteti:
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-| customAction    |    sztring     |   Az egyéni parancs neve. A következőnek kell lennie: "UpdateDatabase".      |
-|  offerThroughput   |  int       |     Az adatbázison beállítani kívánt új, kiépített átviteli sebesség.    |
+| customAction    |    sztring     |   Az egyéni parancs neve. Az "UpdateDatabase" rendszernek kell lennie.      |
+|  ajánlatThroughput   |  int       |     Az adatbázisban beállítani kívánt új kiépített átviteli.    |
 
 ### <a name="output"></a>Kimenet
 
-Egy alapértelmezett egyéni parancs-választ ad vissza. Tekintse meg az egyéni parancs [alapértelmezett kimenetét](#default-output) a kimenetben található paraméterekhez.
+Alapértelmezett egyéni parancsválaszt ad vissza. Tekintse meg az egyéni parancs [alapértelmezett kimenetét](#default-output) a kimeneti paraméterekhez.
 
 ### <a name="examples"></a>Példák
 
-**Adatbázishoz társított kiépített átviteli sebesség frissítése**
+**Az adatbázishoz társított kiosztott átviteli rendszer frissítése**
 
-A "teszt 1200" nevű adatbázis kiépített átviteli sebességének frissítéséhez használja a következő parancsot:
+A "teszt" nevű adatbázis kiosztott átviteli átaputáinak 1200 darab kre-re való frissítéséhez használja a következő parancsot:
 
 ```shell
 use test
 db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 ```
 
-## <a id="get-database"></a>Adatbázis beolvasása
+## <a name="get-database"></a><a id="get-database"></a>Adatbázis bekéselése
 
-Az adatbázis-kiterjesztés beolvasása parancs visszaadja az adatbázis-objektumot. Az adatbázis neve a parancs végrehajtásához használt adatbázis-környezetből származik.
+Az adatbáziskiterjesztés bekésése parancs az adatbázis-objektumot adja vissza. Az adatbázis neve abból az adatbázis-környezetből származik, amelyen a parancs végrehajtásra kerül.
 
 ```
 {
@@ -115,12 +115,12 @@ Az adatbázis-kiterjesztés beolvasása parancs visszaadja az adatbázis-objektu
 }
 ```
 
-A következő táblázat a parancson belüli paramétereket ismerteti:
+Az alábbi táblázat a parancs paramétereit ismerteti:
 
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-|  customAction   |   sztring      |   Az egyéni parancs neve. "GetDatabase" értéknek kell lennie|
+|  customAction   |   sztring      |   Az egyéni parancs neve. A "GetDatabase" legyen az ."|
         
 ### <a name="output"></a>Kimenet
 
@@ -128,26 +128,26 @@ Ha a parancs sikeres, a válasz a következő mezőket tartalmazó dokumentumot 
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-|  `ok`   |   `int`     |   A válasz állapota. 1 = = sikeres. 0 = = hiba.      |
+|  `ok`   |   `int`     |   A válasz állapota. 1 == siker. 0 == hiba.      |
 | `database`    |    `string`        |   Az adatbázis neve.      |
-|   `provisionedThroughput`  |    `int`      |    Az adatbázison beállított kiépített átviteli sebesség. Ez egy opcionális válasz paraméter.     |
+|   `provisionedThroughput`  |    `int`      |    Az adatbázisban beállított kiépített átviteli. Ez egy választható válaszparaméter.     |
 
-Ha a parancs végrehajtása sikertelen, a rendszer egy alapértelmezett egyéni parancs-választ ad vissza. Tekintse meg az egyéni parancs [alapértelmezett kimenetét](#default-output) a kimenetben található paraméterekhez.
+Ha a parancs sikertelen, a rendszer egy alapértelmezett egyéni parancsválaszt ad vissza. Tekintse meg az egyéni parancs [alapértelmezett kimenetét](#default-output) a kimeneti paraméterekhez.
 
 ### <a name="examples"></a>Példák
 
-**Adatbázis beolvasása**
+**Az adatbázis beszereznie**
 
-A "test" nevű adatbázis adatbázis-objektumának beszerzéséhez használja a következő parancsot:
+A "teszt" nevű adatbázis adatbázis-objektumának lekérnie a következő parancsot:
 
 ```shell
 use test
 db.runCommand({customAction: "GetDatabase"});
 ```
 
-## <a id="create-collection"></a>Gyűjtemény létrehozása
+## <a name="create-collection"></a><a id="create-collection"></a>Gyűjtemény létrehozása
 
-A gyűjtemény létrehozása bővítmény parancs egy új MongoDB-gyűjteményt hoz létre. Az adatbázis neve azon adatbázisok környezetében használatos, amelyeken a parancs végrehajtása történik. A CreateCollection parancs formátuma a következő:
+A gyűjteménybővítmény létrehozása parancs létrehoz egy új MongoDB-gyűjteményt. Az adatbázis neve az adatbázis-környezetből származik, amelyen a parancsot végrehajtják. A CreateCollection parancs formátuma a következő:
 
 ```
 {
@@ -158,42 +158,42 @@ A gyűjtemény létrehozása bővítmény parancs egy új MongoDB-gyűjteményt 
 }
 ```
 
-A következő táblázat a parancson belüli paramétereket ismerteti:
+Az alábbi táblázat a parancs paramétereit ismerteti:
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-| customAction    | sztring | Az egyéni parancs neve. "CreateCollection" értéknek kell lennie     |
-| gyűjtemény      | sztring | A gyűjtemény neve                                   |
-| offerThroughput | int    | Az adatbázison beállított kiépített átviteli sebesség. Ez egy opcionális paraméter |
-| shardKey        | sztring | A szegmens kulcs elérési útja a szilánkokra bontott gyűjtemény létrehozásához. Ez egy opcionális paraméter |
+| customAction    | sztring | Az egyéni parancs neve. "CreateCollection" legyen.     |
+| Gyűjtemény      | sztring | A gyűjtemény neve                                   |
+| ajánlatThroughput | int    | Az adatbázisra beállított átviteli átbocsátás. Ez egy választható paraméter. |
+| shardkey        | sztring | Shard Key elérési út egy szilánkos gyűjtemény létrehozásához. Ez egy választható paraméter. |
 
 ### <a name="output"></a>Kimenet
 
-Egy alapértelmezett egyéni parancs-választ ad vissza. Tekintse meg az egyéni parancs [alapértelmezett kimenetét](#default-output) a kimenetben található paraméterekhez.
+Alapértelmezett egyéni parancsválaszt ad vissza. Tekintse meg az egyéni parancs [alapértelmezett kimenetét](#default-output) a kimeneti paraméterekhez.
 
 ### <a name="examples"></a>Példák
 
-**Nem szilánkos gyűjtemény létrehozása**
+**Hardtalan gyűjtemény létrehozása**
 
-A "testCollection" névvel és a 1000 RUs kiépített átviteli sebességgel rendelkező, nem szétosztott gyűjtemény létrehozásához használja a következő parancsot: 
+A "testCollection" nevű és 1000 főtartalékos kiépített átviteli hatos ú sharded gyűjtemény létrehozásához használja a következő parancsot: 
 
 ```shell
 use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection", offerThroughput: 1000});
 ``` 
 
-**Szilánkokra osztott gyűjtemény létrehozása**
+**Szilánkos gyűjtemény létrehozása**
 
-Az alábbi paranccsal hozhat létre egy "testCollection" nevű és 1000 RUs kiépített adatátviteli sebességű, többrészes gyűjteményt:
+A "testCollection" nevű és 1000 több mint 1000 több mint akódusok kiosztott átviteli közegeinek létrehozásához használja a következő parancsot:
 
 ```shell
 use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection", offerThroughput: 1000, shardKey: "a.b" });
 ```
 
-## <a id="update-collection"></a>Gyűjtemény frissítése
+## <a name="update-collection"></a><a id="update-collection"></a>Frissítési gyűjtemény
 
-Az Update Collection Extension parancs frissíti a megadott gyűjteményhez társított tulajdonságokat.
+A frissítési gyűjteménybővítmény parancs frissíti a megadott gyűjteményhez társított tulajdonságokat.
 
 ```
 {
@@ -203,32 +203,32 @@ Az Update Collection Extension parancs frissíti a megadott gyűjteményhez tár
 }
 ```
 
-A következő táblázat a parancson belüli paramétereket ismerteti:
+Az alábbi táblázat a parancs paramétereit ismerteti:
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-|  customAction   |   sztring      |   Az egyéni parancs neve. A következőnek kell lennie: "UpdateCollection".      |
-|  gyűjtemény   |   sztring      |   A gyűjtemény neve.       |
-| offerThroughput   |int|   Kiosztott átviteli sebesség a gyűjteményre való beállításhoz.|
+|  customAction   |   sztring      |   Az egyéni parancs neve. Az "UpdateCollection" rendszernek kell lennie.      |
+|  Gyűjtemény   |   sztring      |   A gyűjtemény neve.       |
+| ajánlatThroughput   |int|   A gyűjteményhez beállított átviteli átbocsátás.|
 
 ## <a name="output"></a>Kimenet
 
-Egy alapértelmezett egyéni parancs-választ ad vissza. Tekintse meg az egyéni parancs [alapértelmezett kimenetét](#default-output) a kimenetben található paraméterekhez.
+Alapértelmezett egyéni parancsválaszt ad vissza. Tekintse meg az egyéni parancs [alapértelmezett kimenetét](#default-output) a kimeneti paraméterekhez.
 
 ### <a name="examples"></a>Példák
 
-**Egy gyűjteményhez társított kiosztott teljesítmény frissítése**
+**A gyűjteményhez társított kiosztott átviteli-erról**
 
-A "testCollection 1200" nevű gyűjtemény kiépített átviteli sebességének frissítéséhez használja a következő parancsot:
+A "testCollection" nevű gyűjtemény kiosztott átviteli takarásának 1200 több mint kódra történő frissítéséhez használja a következő parancsot:
 
 ```shell
 use test
 db.runCommand({customAction: "UpdateCollection", collection: "testCollection", offerThroughput: 1200 });
 ```
 
-## <a id="get-collection"></a>Gyűjtemény beolvasása
+## <a name="get-collection"></a><a id="get-collection"></a>Gyűjtemény begyűjtése
 
-A gyűjtemény egyéni beolvasása parancs a gyűjtemény objektumot adja vissza.
+A get collection egyéni parancs a gyűjteményobjektumot adja vissza.
 
 ```
 {
@@ -237,53 +237,53 @@ A gyűjtemény egyéni beolvasása parancs a gyűjtemény objektumot adja vissza
 }
 ```
 
-A következő táblázat a parancson belüli paramétereket ismerteti:
+Az alábbi táblázat a parancs paramétereit ismerteti:
 
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-| customAction    |   sztring      |   Az egyéni parancs neve. A következőnek kell lennie: "GetCollection".      |
-| gyűjtemény    |    sztring     |    A gyűjtemény neve.     |
+| customAction    |   sztring      |   Az egyéni parancs neve. A "GetCollection" lesz.      |
+| Gyűjtemény    |    sztring     |    A gyűjtemény neve.     |
 
 ### <a name="output"></a>Kimenet
 
-Ha a parancs sikeres, a válasz a következő mezőket tartalmazó dokumentumot tartalmazza
+Ha a parancs sikeres, a válasz a következő mezőket tartalmazó dokumentumot tartalmaz
 
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-|  `ok`   |    `int`     |   A válasz állapota. 1 = = sikeres. 0 = = hiba.      |
+|  `ok`   |    `int`     |   A válasz állapota. 1 == siker. 0 == hiba.      |
 | `database`    |    `string`     |   Az adatbázis neve.      |
 | `collection`    |    `string`     |    A gyűjtemény neve.     |
-|  `shardKeyDefinition`   |   `document`      |  A kiosztott kulcsként használt index-specifikációs dokumentum. Ez egy opcionális válasz paraméter.       |
-|  `provisionedThroughput`   |   `int`      |    Kiosztott átviteli sebesség a gyűjteményre való beállításhoz. Ez egy opcionális válasz paraméter.     |
+|  `shardKeyDefinition`   |   `document`      |  A szegmenskulcsként használt indexspecifikációs dokumentum. Ez egy választható válaszparaméter.       |
+|  `provisionedThroughput`   |   `int`      |    Kiépített átviteli a gyűjtemény beállítása. Ez egy választható válaszparaméter.     |
 
-Ha a parancs végrehajtása sikertelen, a rendszer egy alapértelmezett egyéni parancs-választ ad vissza. Tekintse meg az egyéni parancs [alapértelmezett kimenetét](#default-output) a kimenetben található paraméterekhez.
+Ha a parancs sikertelen, a rendszer egy alapértelmezett egyéni parancsválaszt ad vissza. Tekintse meg az egyéni parancs [alapértelmezett kimenetét](#default-output) a kimeneti paraméterekhez.
 
 ### <a name="examples"></a>Példák
 
-**A gyűjtemény beolvasása**
+**Szerezd meg a gyűjteményt**
 
-A "testCollection" nevű gyűjteményhez tartozó gyűjtemény objektum beszerzéséhez használja a következő parancsot:
+A "testCollection" nevű gyűjtemény gyűjteményének gyűjteményének lekérnie a következő parancsot:
 
 ```shell
 use test
 db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 ```
 
-## <a id="default-output"></a>Egyéni parancs alapértelmezett kimenete
+## <a name="default-output-of-a-custom-command"></a><a id="default-output"></a>Egyéni parancs alapértelmezett kimenete
 
 Ha nincs megadva, az egyéni válasz a következő mezőket tartalmazó dokumentumot tartalmazza:
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-|  `ok`   |    `int`     |   A válasz állapota. 1 = = sikeres. 0 = = hiba.      |
-| `code`    |   `int`      |   Csak akkor tér vissza, ha a parancs végrehajtása sikertelen volt (például ok = = 0). A MongoDB hibakódot tartalmazza. Ez egy opcionális válasz paraméter.      |
-|  `errMsg`   |  `string`      |    Csak akkor tér vissza, ha a parancs végrehajtása sikertelen volt (például ok = = 0). Felhasználóbarát hibaüzenetet tartalmaz. Ez egy opcionális válasz paraméter.      |
+|  `ok`   |    `int`     |   A válasz állapota. 1 == siker. 0 == hiba.      |
+| `code`    |   `int`      |   Csak akkor adott vissza, ha a parancs nem sikerült (azaz ok == 0). A MongoDB hibakódot tartalmazza. Ez egy választható válaszparaméter.      |
+|  `errMsg`   |  `string`      |    Csak akkor adott vissza, ha a parancs nem sikerült (azaz ok == 0). Felhasználóbarát hibaüzenetet tartalmaz. Ez egy választható válaszparaméter.      |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ezután folytassa a következő Azure Cosmos DB fogalmak megismerésével: 
+Ezután megismerheti az Alábbi Azure Cosmos DB-fogalmakat: 
 
-* [Indexelés Azure Cosmos DB](../cosmos-db/index-policy.md)
-* [Az Azure Cosmos DB automatikusan lejár az idő az élettartammal](../cosmos-db/time-to-live.md)
+* [Indexelés az Azure Cosmos DB-ben](../cosmos-db/index-policy.md)
+* [Adatok lejárata az Azure Cosmos DB-ben automatikusan az élő idővel](../cosmos-db/time-to-live.md)

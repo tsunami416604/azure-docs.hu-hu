@@ -1,6 +1,6 @@
 ---
-title: Pillanatképek kezelése Azure NetApp Files használatával | Microsoft Docs
-description: Ismerteti, hogyan lehet pillanatképeket létrehozni egy kötethez, vagy egy pillanatképből egy új kötetre visszaállítani a Azure NetApp Files használatával.
+title: Pillanatképek kezelése az Azure NetApp-fájlok használatával | Microsoft dokumentumok
+description: Bemutatja, hogyan hozhat létre pillanatképeket egy kötethez, vagy hogyan állítható kontorát egy új kötetre az Azure NetApp Files használatával.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,29 +15,29 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: b-juche
 ms.openlocfilehash: 48055a774808aea86452e8410b7e717f5019d172
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78267899"
 ---
-# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése Azure NetApp Files használatával
+# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure NetApp-fájlok használatával
 
-A Azure NetApp Files használatával manuálisan hozhat létre egy kötetre vonatkozó igény szerinti pillanatképet, vagy visszaállíthat egy pillanatképből egy új kötetre. A Azure NetApp Files szolgáltatás nem hoz létre automatikusan kötet-pillanatképeket.  
+Az Azure NetApp-fájlok segítségével manuálisan hozhat létre egy kötet igény szerinti pillanatképét, vagy visszaállíthatja a pillanatképről egy új kötetre. Az Azure NetApp Files szolgáltatás nem hoz létre automatikusan kötetpillanatképeket.  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Igény szerinti pillanatkép létrehozása kötethez
 
-Pillanatképeket csak igény szerint hozhat létre. A pillanatkép-szabályzatok jelenleg nem támogatottak.
+Csak igény szerint hozhat létre pillanatképeket. A pillanatkép-házirendek jelenleg nem támogatottak.
 
-1.  A kötet panelen kattintson a **Pillanatképek**elemre.
+1.  A Kötet panelen kattintson a **Pillanatképek gombra.**
 
-    ![Pillanatképek navigálása](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
+    ![Navigálás a pillanatképekre](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
 
-2.  Kattintson a **+ Pillanatkép hozzáadása** lehetőségre egy kötethez igény szerinti pillanatkép létrehozásához.
+2.  Kattintson **a + Pillanatkép hozzáadása** elemre egy kötet igény szerinti pillanatképének létrehozásához.
 
     ![Pillanatkép hozzáadása](../media/azure-netapp-files/azure-netapp-files-add-snapshot.png)
 
-3.  Az új pillanatkép ablakban adja meg a létrehozandó új pillanatkép nevét.   
+3.  Az Új pillanatkép ablakban adja meg a létrehozandó új pillanatkép nevét.   
 
     ![Új pillanatkép](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
@@ -46,14 +46,14 @@ Pillanatképeket csak igény szerint hozhat létre. A pillanatkép-szabályzatok
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>Pillanatkép visszaállítása új kötetre
 
 Jelenleg csak egy új kötetre állíthatja vissza a pillanatképet. 
-1. A pillanatképek listájának megjelenítéséhez nyissa meg a kötetek panelen a **Pillanatképek kezelése** panelt. 
+1. Lépjen a **Pillanatképek kezelése** panelre a Kötet panelről a pillanatképlista megjelenítéséhez. 
 2. Válassza ki a visszaállítani kívánt pillanatképet.  
-3. Kattintson a jobb gombbal a pillanatkép nevére, és válassza a **Visszaállítás az új kötetre** lehetőséget a menüpontban.  
+3. Kattintson a jobb gombbal a pillanatkép nevére, és válassza a **menüpont Visszaállítás új kötetére** parancsát.  
 
     ![Pillanatkép visszaállítása új kötetre](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
-4. Az új kötet ablakban adja meg az új kötet adatait:  
-    * **Név**   
+4. Az Új kötet ablakban adja meg az új kötet adatait:  
+    * **név**   
         Adja meg a létrehozni kívánt kötet nevét.  
         
         A névnek egyedinek kell lennie az erőforráscsoporton belül. Legalább három karakter hosszúnak kell lennie.  Bármilyen alfanumerikus karakter használható.
@@ -72,18 +72,18 @@ Jelenleg csak egy új kötetre állíthatja vissza a pillanatképet.
 
     *   **Virtuális hálózat**  
         Adja meg azt az Azure-beli virtuális hálózatot (VNet), amelyről el szeretné érni a kötetet.  
-        A megadott vnet rendelkeznie kell egy Azure NetApp Files delegált alhálózattal. Azure NetApp Files csak ugyanarról a vnet vagy egy olyan vnet férhet hozzá, amely ugyanabban a régióban található, mint a vnet-társításon keresztül. A kötetet a helyszíni hálózatról Express Route használatával érheti el. 
+        A megadott virtuális hálózatnak rendelkeznie kell az Azure NetApp-fájlok delegált alhálózatával. Az Azure NetApp-fájlok csak ugyanabból a virtuális hálózatból vagy egy virtuális hálózat, amely ugyanabban a régióban, mint a kötet a virtuális hálózat társviszony-létesítés. A kötetet a helyszíni hálózatról az Expressz útvonalon keresztül érheti el. 
 
     * **Alhálózat**  
-        Itt adhatja meg a kötethez használni kívánt alhálózatot.  
-        A megadott alhálózatot delegálni kell a Azure NetApp Files szolgáltatásnak. Létrehozhat egy új alhálózatot az alhálózat **létrehozása** lehetőség kiválasztásával.  
+        Adja meg a kötethez használni kívánt alhálózatot.  
+        A megadott alhálózatot delegálni kell az Azure NetApp Files szolgáltatásban. Új alhálózatot úgy hozhat létre, hogy az Alhálózat mezőben az Új létrehozása lehetőséget **választja.**  
    <!--
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
    -->
 
 5. Kattintson az **OK** gombra.   
-    Az új kötet, amelybe a pillanatkép vissza lett állítva, megjelenik a kötetek panelen.
+    Az új kötet, amelyre a pillanatkép vissza áll, megjelenik a Kötetek panelen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[A Azure NetApp Files tárolási hierarchiájának megismerése](azure-netapp-files-understand-storage-hierarchy.md)
+[Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md)

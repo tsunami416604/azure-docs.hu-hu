@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: magoedte
 ms.openlocfilehash: 6890c71ac7c265d46cc77751786fea4d0b228588
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179512"
 ---
 ### <a name="troubleshoot-azure-diagnostics"></a>Az Azure Diagnostics hibaelhárítása
@@ -30,8 +30,8 @@ Az erőforrás-szolgáltató regisztrálásához hajtsa végre a következő lé
 A *Microsoft.insights* erőforrás-szolgáltató regisztrálása után próbálja meg ismét konfigurálni a diagnosztikát.
 
 
-A PowerShell a következő hibaüzenet jelenik meg, ha frissíteni szeretné a PowerShell-verzió:
+A PowerShellben, ha a következő hibaüzenet jelenik meg, frissítenie kell a PowerShell verzióját:
 
 `Set-AzDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
 
-Az Azure PowerShell-verzió frissítése, kövesse az utasításokat a [Azure PowerShell telepítése](/powershell/azure/install-az-ps) cikk.
+Frissítse az Azure PowerShell verzióját, kövesse az [Azure PowerShell telepítése](/powershell/azure/install-az-ps) című cikkben található utasításokat.

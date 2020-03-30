@@ -1,6 +1,6 @@
 ---
-title: TrustFrameworkPolicy – Azure Active Directory B2C | Microsoft Docs
-description: A Azure Active Directory B2C egyéni házirendjének TrustFrameworkPolicy elemének megadásához.
+title: TrustFrameworkPolicy – Azure Active Directory B2C | Microsoft dokumentumok
+description: Adja meg az egyéni szabályzat TrustFrameworkPolicy elemét az Azure Active Directory B2C-ben.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,17 +11,17 @@ ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c964a7bde0b7db9357c73fc79d2df3170075fcc1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186386"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az egyéni szabályzatok egy vagy több XML-formátumú fájlként jelennek meg, amelyek egy hierarchikus láncban egymásra hivatkoznak. Az XML-elemek határozzák meg a szabályzat elemeit, például a jogcímek sémáját, a jogcímek átalakítását, a tartalmi definíciókat, a jogcím-szolgáltatókat, a technikai profilokat, a felhasználói útvonalakat, valamint a Minden házirendfájl a házirendfájl legfelső szintű **TrustFrameworkPolicy** elemében van definiálva.
+Az egyéni házirend egy vagy több XML-formátumú fájlként jelenik meg, amelyek hierarchikus láncban hivatkoznak egymásra. Az XML-elemek határozzák meg a házirend elemeit, például a jogcímséma, a jogcímátalakítások, a tartalomdefiníciók, a jogcímek szolgáltatói, a technikai profilok, a felhasználói utazás és a vezénylési lépések elemeit. Minden házirendfájl egy házirendfájl legfelső szintű **TrustFrameworkPolicy** elemében van definiálva.
 
 ```XML
 <TrustFrameworkPolicy
@@ -38,18 +38,18 @@ Az egyéni szabályzatok egy vagy több XML-formátumú fájlként jelennek meg,
 
 A **TrustFrameworkPolicy** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Igen | A szabályzat végrehajtásához használandó séma verziója. Az értéknek `0.3.0.0`nak kell lennie |
-| TenantObjectId | Nem | A Azure Active Directory B2C (Azure AD B2C) bérlő egyedi objektumazonosító. |
-| TenantId | Igen | Annak a bérlőnek az egyedi azonosítója, amelyhez ez a szabályzat tartozik. |
-| PolicyId | Igen | A házirend egyedi azonosítója. Ezt az azonosítót *B2C_1A_* kell előállítani |
-| PublicPolicyUri | Igen | A házirend URI-ja, amely a bérlői azonosító és a házirend-azonosító kombinációja. |
-| Deploymentmode beállítása | Nem | Lehetséges értékek: `Production`vagy `Development`. A `Production` az alapértelmezett formátum. Ezt a tulajdonságot használhatja a szabályzat hibakereséséhez. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
-| UserJourneyRecorderEndpoint | Nem | Az a végpont, amelyet a rendszer a **deploymentmode beállítása** `Development`értékre való beállításakor használ. Az értéknek `urn:journeyrecorder:applicationinsights`nak kell lennie. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
+| PolicySchemaVersion | Igen | A sémaverziója, amelyet a házirend végrehajtásához kell használni. Az értéket`0.3.0.0` |
+| TenantObjectId azonosító | Nem | Az Azure Active Directory B2C (Azure AD B2C) bérlő egyedi objektumazonosítója. |
+| TenantId | Igen | Annak a bérlőnek az egyedi azonosítója, amelyhez ez a házirend tartozik. |
+| PolicyId | Igen | A házirend egyedi azonosítója. Ezt az azonosítót *B2C_1A_* előtaggal kell |
+| PublicPolicyUri (PublicPolicyUri) | Igen | A házirend URI-ja, amely a bérlőazonosító és a házirend-azonosító kombinációja. |
+| Telepítési mód | Nem | Lehetséges értékek: `Production` `Development`vagy . A `Production` az alapértelmezett formátum. Ezzel a tulajdonsággal hibakeresésre használhatja a házirendet. További információt a Naplók gyűjtése című [témakörben](troubleshoot-with-application-insights.md)talál. |
+| UserJourneyRecorderVégpont | Nem | A **deploymentmode** beállításakor használt `Development`végpont. Az értéknek `urn:journeyrecorder:applicationinsights`. További információt a Naplók gyűjtése című [témakörben](troubleshoot-with-application-insights.md)talál. |
 
 
-Az alábbi példa bemutatja, hogyan adhatja meg a **TrustFrameworkPolicy** elemet:
+A következő példa bemutatja, hogyan adható meg a **TrustFrameworkPolicy** elem:
 
 ``` XML
 <TrustFrameworkPolicy
@@ -64,37 +64,37 @@ Az alábbi példa bemutatja, hogyan adhatja meg a **TrustFrameworkPolicy** eleme
 
 ## <a name="inheritance-model"></a>Öröklési modell
 
-Az ilyen típusú házirend-fájlokat általában a felhasználói úton használják:
+Az ilyen típusú házirendfájlokat általában egy felhasználói út során használják:
 
-- A definíciók többségét tartalmazó **alapfájl.** Ha segítségre van szüksége a házirendek hibaelhárításához és hosszú távú karbantartásához, akkor azt javasoljuk, hogy módosítsa a fájl minimális számát.
-- Egy **kiterjesztési** fájl, amely a bérlő egyedi konfigurációs módosításait tárolja. Ez a házirend-fájl az alapfájlból származik. Ezzel a fájllal új funkciókat adhat hozzá, vagy felülbírálhatja a meglévő funkciókat. Használja például ezt a fájlt, hogy összevonása az új identitás-szolgáltatókkal.
-- Egy **függő entitást (RP)** tartalmazó fájl, amely egy, a függő entitás alkalmazás által közvetlenül meghívott, egyetlen feladat által irányított fájl, például a web-, mobil-vagy asztali alkalmazások. Az egyes egyedi feladatok, például a regisztrálás vagy a bejelentkezés, a jelszó-visszaállítás vagy a profil szerkesztése a saját RP-házirend fájlját igénylik. Ez a házirendfájl a kiterjesztések fájljából származik.
+- **Alapfájl,** amely a legtöbb definíciót tartalmazza. A hibaelhárítás és a házirendek hosszú távú karbantartása érdekében ajánlott a fájl minimális számú módosítását végrehajtani.
+- Egy **extensions** fájl, amely tartalmazza a bérlő egyedi konfigurációs módosításait. Ez a házirendfájl az alapfájlból származik. Ezzel a fájllal új funkciókat adhat hozzá, vagy felülbírálhatja a meglévő funkciókat. Ezzel a fájllal például új identitásszolgáltatókkal lehet összeegyeztetni.
+- A **függő entitás (RP)** fájl, amely az egyetlen feladat-központú fájl, amelyet közvetlenül a függő entitás alkalmazás, például a webes, mobil- vagy asztali alkalmazások hívnak meg. Minden egyedi feladathoz, például a regisztrációhoz vagy a bejelentkezéshez, a jelszó alaphelyzetbe állításához vagy a profilszerkesztéshez saját RP-házirendfájl szükséges. Ez a házirendfájl a Bővítmények fájlból származik.
 
-Egy függő entitás alkalmazás meghívja az RP-házirend fájlját egy adott feladat végrehajtásához. Például a bejelentkezési folyamat elindításához. A Azure AD B2C identitás-keretrendszerének keretrendszere hozzáadja az összes elemet az alapfájlból, majd a kiterjesztések fájlból, végül pedig az RP-házirend fájlból az aktuális szabályzat összeállításához. Az RP-fájl azonos típusú és nevű elemei felülbírálják a bővítmények ezen elemeit, és a bővítmények felülbírálási alapjait. Az alábbi ábrán a házirend-fájlok és a függő entitások alkalmazásai közötti kapcsolat látható.
+Egy függő entitás alkalmazás meghívja az RP-házirendfájlt egy adott feladat végrehajtásához. Például a bejelentkezési folyamat elindításához. Az Azure AD B2C identitáskezelési keretrendszere hozzáadja az összes elemet először az alapfájlból, majd a Extensions fájlból, végül pedig az RP-házirendfájlból az aktuális szabályzat összeállításához. Az RP-fájlban azonos típusú és nevű elemek felülbírálják a Bővítmények elemeit, a Bővítmények pedig felülbírálják az Alapelemet. Az alábbi ábra a házirendfájlok és a függő entitás alkalmazások közötti kapcsolatot mutatja be.
 
-![A megbízhatósági keretrendszer házirendjének öröklési modelljét bemutató ábra](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
+![A megbízhatósági keretrendszer házirendjének öröklődési modelljét bemutató diagram](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
 
 Az öröklési modell a következő:
 
-- A szülő házirend és a gyermek házirend ugyanahhoz a sémához tartozik.
-- A gyermek házirend bármilyen szinten örökölhető a szülő házirendtől, és új elemek hozzáadásával bővíthető.
+- A szülő- és a gyermekházirend ugyanabból a sémából származik.
+- A gyermekházirend bármely szinten örökölhet a szülőházirendből, és új elemek hozzáadásával kiterjesztheti azt.
 - A szintek száma nincs korlátozva.
 
-További információ: Ismerkedés [az egyéni szabályzatokkal](custom-policy-get-started.md).
+További információt az [Egyéni házirendek – Első lépések](custom-policy-get-started.md)című témakörben talál.
 
 ## <a name="base-policy"></a>Alapházirend
 
-Ha egy házirendet egy másik házirendből kíván örökölni, egy **BasePolicy** elemet kell deklarálnia a **TrustFrameworkPolicy** elem alatt. A **BasePolicy** elem azon alapházirendre hivatkozik, amelyből ez a házirend származik.
+Ha egy házirendet egy másik házirendtől szeretne örökölni, a házirendfájl **TrustFrameworkPolicy** eleme alatt egy **BasePolicy** elemet kell deklarálni. A **BasePolicy** elem arra az alapházirendre mutató hivatkozás, amelyből ez a házirend származik.
 
 A **BasePolicy** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | --------|
-| TenantId | 1:1 | A Azure AD B2C bérlő azonosítója. |
-| PolicyId | 1:1 | A szülő házirend azonosítója. |
+| TenantId | 1:1 | Az Azure AD B2C-bérlő azonosítója. |
+| PolicyId | 1:1 | A szülőházirend azonosítója. |
 
 
-Az alábbi példa azt szemlélteti, hogyan lehet alapszintű szabályzatot megadni. Ez a **B2C_1A_TrustFrameworkExtensions** házirend a **B2C_1A_TrustFrameworkBase** házirendből származik.
+A következő példa bemutatja, hogyan adhat meg egy alapházirendet. Ez **a B2C_1A_TrustFrameworkExtensions** házirend a **B2C_1A_TrustFrameworkBase** házirendből származik.
 
 ``` XML
 <TrustFrameworkPolicy
@@ -114,13 +114,13 @@ Az alábbi példa azt szemlélteti, hogyan lehet alapszintű szabályzatot megad
 </TrustFrameworkPolicy>
 ```
 
-## <a name="policy-execution"></a>Szabályzat-végrehajtás
+## <a name="policy-execution"></a>Házirend végrehajtása
 
-A függő entitások, például a web-, mobil-vagy asztali alkalmazások meghívja a [függő entitás (RP) házirendjét](relyingparty.md). Az RP-házirend fájl egy adott feladatot hajt végre, például bejelentkezik, jelszó alaphelyzetbe állítása vagy profil szerkesztése. Az RP-szabályzat konfigurálja azon jogcímek listáját, amelyeket a függő entitás alkalmazás a kiállított jogkivonat részeként kap. Több alkalmazás is használhatja ugyanazt a házirendet. Minden alkalmazás ugyanazt a jogkivonatot fogadja a jogcímekkel, és a felhasználó ugyanazon a felhasználói úton halad. Egyetlen alkalmazás több szabályzatot is használhat.
+A függő entitás alkalmazása, például egy webes, mobil- vagy asztali alkalmazás meghívja a [függő entitásra (RP) vonatkozó házirendet.](relyingparty.md) Az RP házirendfájl egy adott feladatot hajt végre, például bejelentkezik, alaphelyzetbe állít egy jelszót vagy szerkeszt egy profilt. Az RP-házirend konfigurálja a függő entitás alkalmazás által kapott jogcímek listáját a kiadott jogkivonat részeként. Több alkalmazás is használhatja ugyanazt a házirendet. Minden alkalmazás ugyanazt a jogkivonatot kapja a jogcímekkel, és a felhasználó ugyanazon a felhasználói úton halad keresztül. Egyetlen alkalmazás több szabályzatot is használhat.
 
-Az RP-szabályzat fájljában meg kell adnia a **DefaultUserJourney** elemet, amely a [UserJourney](userjourneys.md)mutat. A felhasználói út általában az alap-vagy a kiterjesztési szabályzatban van definiálva.
+Az RP házirendfájlban megadhatja a **DefaultUserJourney** elemet, amely a [UserJourney elemre](userjourneys.md)mutat. A felhasználói út általában a Bázis vagy a Bővítmények házirendben van meghatározva.
 
-B2C_1A_signup_signin házirend:
+B2C_1A_signup_signin politika:
 
 ```XML
 <RelyingParty>
@@ -136,23 +136,23 @@ B2C_1A_TrustFrameWorkBase vagy B2C_1A_TrustFrameworkExtensionPolicy:
   ...
 ```
 
-A felhasználói út határozza meg, hogy a felhasználó milyen üzleti logikát mutat be. Minden felhasználói út olyan előkészítési lépések összessége, amelyek számos műveletet hajtanak végre a hitelesítés és az adatgyűjtés szempontjából.
+A felhasználói út határozza meg a felhasználó által keresztülmegy üzleti logikát. Minden felhasználói út vezénylési lépések készlete, amely műveletek sorozatát hajtja végre a hitelesítés és az információgyűjtés tekintetében.
 
-Az [alapszintű csomagban](custom-policy-get-started.md#custom-policy-starter-pack) található **SocialAndLocalAccounts** házirend-fájl tartalmazza a SignUpOrSignIn, a ProfileEdit, a PasswordReset felhasználói útvonalakat. További felhasználói útvonalakat is hozzáadhat más forgatókönyvekhez, például egy e-mail-cím módosításához vagy egy közösségi fiók összekapcsolásához.
+Az [induló](custom-policy-get-started.md#custom-policy-starter-pack) **csomagSocialAndLocalAccounts** házirendfájlja tartalmazza a SignUpOrSignIn, ProfileEdit, PasswordReset felhasználói utakat. Más esetekhez további felhasználói utakat adhat hozzá, például egy e-mail cím módosításához vagy a közösségi fiók összekapcsolásához és leválasztását.
 
-A előkészítési lépések egy [technikai profilt](technicalprofiles.md)hívhatnak meg. A technikai profil olyan keretrendszert biztosít, amely beépített mechanizmussal rendelkezik a különböző típusú felekkel való kommunikációhoz. A technikai profil például elvégezheti ezeket a műveleteket többek között:
+A vezénylési lépések [technikai profilt](technicalprofiles.md)hívhatnak. A technikai profil keretet biztosít a különböző típusú felekkel való kommunikációhoz. Egy technikai profil például többek között a következő műveleteket hajthatja végre:
 
-- Felhasználói élmény megjelenítése.
-- Lehetővé teszi a felhasználók számára a közösségi vagy vállalati fiókkal való bejelentkezést, például a Facebook, a Microsoft-fiók, a Google, a Salesforce vagy más identitás-szolgáltató használatával.
-- Az MFA telefonos ellenőrzésének beállítása.
-- Adatok olvasása és írása egy Azure AD B2C Identity Store-ból és-ból.
-- Egy egyéni REST API-szolgáltatás meghívása.
+- Felhasználói élmény renderelése.
+- Lehetővé teszi a felhasználók számára, hogy közösségi vagy vállalati fiókkal, például Facebookkal, Microsoft-fiókkal, Google-lal, Salesforce-szal vagy bármely más identitásszolgáltatóval jelentkezzenek be.
+- Telefonos ellenőrzés beállítása az MFA-hoz.
+- Adatok olvasása és írása egy Azure AD B2C identitástárolóba és onnan.
+- Hívjon meg egy egyéni restful API-szolgáltatást.
 
-![A házirend végrehajtási folyamatát ábrázoló diagram](./media/trustframeworkpolicy/custom-policy-execution.png)
+![A házirend végrehajtási folyamatát bemutató diagram](./media/trustframeworkpolicy/custom-policy-execution.png)
 
  A **TrustFrameworkPolicy** elem a következő elemeket tartalmazza:
 
-- A fent megadott BasePolicy
+- BasePolicy a fent meghatározottak szerint
 - [BuildingBlocks](buildingblocks.md)
 - [ClaimsProviders](claimsproviders.md)
 - [UserJourneys](userjourneys.md)

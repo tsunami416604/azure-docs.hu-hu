@@ -1,6 +1,6 @@
 ---
-title: Az Azure HDInsight-fürtök lemezes titkosítása elveszti Key Vault hozzáférését
-description: Hibaelhárítási lépések és lehetséges megoldások az Azure HDInsight-fürtökkel való interakció során felmerülő problémákhoz.
+title: A lemeztitkosítással rendelkező Azure HDInsight-fürtök elveszítik a Key Vault-hozzáférést
+description: Az Azure HDInsight-fürtökkel való kommunikáció során felmerülő problémák lépéseinek és lehetséges megoldásai elhárítása.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,84 +8,84 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.openlocfilehash: 2ae389be25cd8633a53a49cf000796c1510733a1
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965163"
 ---
-# <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Forgatókönyv: a lemez titkosításával rendelkező Azure HDInsight-fürtök elvesztik Key Vault hozzáférését
+# <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Eset: A lemeztitkosítással rendelkező Azure HDInsight-fürtök elveszítik a Key Vault-hozzáférést
 
-Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
+Ez a cikk az Azure HDInsight-fürtökkel való kommunikáció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
 ## <a name="issue"></a>Probléma
 
-A Resource Health Center (RHC) riasztás, `The HDInsight cluster is unable to access the key for BYOK encryption at rest`, Bring Your Own Key (BYOK) fürtök esetében látható, ahol a fürtcsomópontok nem férnek hozzá az ügyfelekhez Key Vault (KV). Hasonló riasztások is megtekinthetők az Apache Ambari felhasználói felületén.
+Az Erőforrás-állapotfigyelő központ (RHC) riasztása `The HDInsight cluster is unable to access the key for BYOK encryption at rest`, a Saját kulcs (BYOK) fürtök hozása, ahol a fürtcsomópontok elvesztették a hozzáférést az ügyfelek Key Vault (KV) számára. Hasonló riasztások is láthatók az Apache Ambari felhasználói felületén.
 
 ## <a name="cause"></a>Ok
 
-A riasztás biztosítja, hogy a KV elérhető legyen a fürtcsomópontok között, így biztosítva a hálózati kapcsolat, a KV Health és a hozzáférési szabályzatot a felhasználóhoz rendelt felügyelt identitáshoz. Ez a riasztás csak a közelgő, a csomópontok újraindítására vonatkozó figyelmeztetést jeleníti meg, a fürt továbbra is működni fog, amíg a csomópontok újraindulnak.
+A riasztás biztosítja, hogy a KV elérhető a fürtcsomópontok, ezáltal biztosítva a hálózati kapcsolat, KV állapota és hozzáférési szabályzat a felhasználó által hozzárendelt felügyelt identitás. Ez a riasztás csak egy figyelmeztetés a közelgő közvetítő leállítása a következő csomópont újraindítása, a fürt továbbra is működik, amíg csomópontok újraindítása.
 
-Keresse meg az Apache Ambari felhasználói felületét, ahol további információkat talál a **lemezes titkosítási Key Vault állapotáról**. Ez a riasztás részletesen ismerteti az ellenőrzési hibák okát.
+Az Apache Ambari felhasználói felületére talál további információt a **lemeztitkosítási kulcstároló állapota**riasztásról. Ez a riasztás az ellenőrzési hiba okának részleteit tartalmazza.
 
-## <a name="resolution"></a>Felbontás
+## <a name="resolution"></a>Megoldás:
 
-### <a name="kvaad-outage"></a>KV/HRE leállás
+### <a name="kvaad-outage"></a>KV/AAD kimaradás
 
-További részletekért tekintse meg a [Azure Key Vault rendelkezésre állási és redundancia](../../key-vault/key-vault-disaster-recovery-guidance.md) és az Azure status oldalát https://status.azure.com/
+További részletekért tekintse meg az [Azure Key Vault elérhetőségét és redundanciát,](../../key-vault/key-vault-disaster-recovery-guidance.md) valamint az Azure-állapotlapothttps://status.azure.com/
 
 ### <a name="kv-accidental-deletion"></a>KV véletlen törlés
 
-* Állítsa vissza a Deleted Key on KV-ot az automatikus helyreállításhoz. További információ: [Recover Deleted Key](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey).
-* Érje el a KV-csapatot a véletlen törlésből való helyreállításhoz.
+* Állítsa vissza a törölt kulcsot a KV-n az automatikus helyreállításhoz. További információ: [Recover Deleted Key](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey).
+* Érje el a KV csapat, hogy felépüljön a véletlen törlések.
 
-### <a name="kv-access-policy-changed"></a>A KV hozzáférési szabályzat megváltozott
+### <a name="kv-access-policy-changed"></a>KV hozzáférési házirend megváltozott
 
-Állítsa vissza a hozzáférési házirendeket a felhasználóhoz rendelt felügyelt identitáshoz, amely a KV-hoz való hozzáféréshez van rendelve a HDI-fürthöz.
+Állítsa vissza a hdi-fürthöz rendelt felügyelt identitáshoz rendelt felhasználó hozzáférési szabályzatait a KV eléréséhez.
 
-### <a name="key-permitted-operations"></a>Kulcs engedélyezett műveletei
+### <a name="key-permitted-operations"></a>Kulcsfontosságú engedélyezett műveletek
 
-A KV-ban minden egyes kulcs esetében kiválaszthatja az engedélyezett műveletek készletét. Győződjön meg arról, hogy a BYOK kulcshoz engedélyezve vannak a becsomagolási és kicsomagolási műveletek.
+A KV-ben minden egyes kulcshoz kiválaszthatja az engedélyezett műveletek készletét. Győződjön meg arról, hogy a BYOK kulcshoz engedélyezve van a wrap és a kicsomagolásművelet
 
 ### <a name="expired-key"></a>Lejárt kulcs
 
-Ha a lejárati idő betelt, és a kulcs nem forog el, állítsa vissza a kulcsot a Backup HSM-ből, vagy forduljon a KV csapathoz, és törölje a lejárati dátumot.
+Ha a lejárati idő lejárt, és a kulcs nem forgatni, visszaállítja a kulcsot a biztonsági mentés HSM vagy lépjen kapcsolatba a KV csapat törölje a lejárati dátumot.
 
-### <a name="kv-firewall-blocking-access"></a>A KV tűzfal blokkolja a hozzáférést
+### <a name="kv-firewall-blocking-access"></a>KV tűzfal blokkolja a hozzáférést
 
-Javítsa ki a KV-os tűzfal beállításait, hogy a BYOK-fürtcsomópontok hozzáférhessenek a KV-hoz.
+Javítsa ki a KV tűzfal beállításait, hogy a BYOK fürtcsomópontok hozzáférhessenek a KV-hoz.
 
-### <a name="nsg-rules-on-virtual-network-blocking-access"></a>NSG szabályok a virtuális hálózat blokkolja a hozzáférést
+### <a name="nsg-rules-on-virtual-network-blocking-access"></a>A virtuális hálózathoz való hozzáférés blokkolására vonatkozó NSG-szabályok
 
-Keresse meg a fürthöz csatolt virtuális hálózathoz társított NSG-szabályokat.
+Ellenőrizze a fürthöz csatlakoztatott virtuális hálózathoz társított NSG-szabályokat.
 
-## <a name="mitigation-and-prevention-steps"></a>Enyhítő és megelőzési lépések
+## <a name="mitigation-and-prevention-steps"></a>Kockázatcsökkentési és megelőzési lépések
 
 ### <a name="kv-accidental-deletion"></a>KV véletlen törlés
 
-* Key Vault konfigurálása [erőforrás-zárolási készlettel](../../azure-resource-manager/management/lock-resources.md).
-* Biztonsági mentést készíthet a hardveres biztonsági modul kulcsaira.
+* Konfigurálja a Key Vaultot [erőforrászárolási készlettel.](../../azure-resource-manager/management/lock-resources.md)
+* Biztonsági másolatot a hardverbiztonsági modul kulcsairól.
 
 ### <a name="key-deletion"></a>Kulcs törlése
 
-A kulcs törlése előtt törölni kell a fürtöt.
+A fürtöt a kulcs törlése előtt törölni kell.
 
-### <a name="kv-access-policy-changed"></a>A KV hozzáférési szabályzat megváltozott
+### <a name="kv-access-policy-changed"></a>KV hozzáférési házirend megváltozott
 
-A hozzáférési szabályzatok rendszeres naplózása és tesztelése.
+Rendszeresen naplózza és tesztelje a hozzáférési házirendeket.
 
 ### <a name="expired-key"></a>Lejárt kulcs
 
-* A kulcsok biztonsági mentése a HSM-be.
-* Lejárati készlet nélküli kulcsot használjon.
-* Ha a lejáratot be kell állítani, a kulcsokat a lejárati dátum előtt kell elforgatni.
+* Biztonsági másolatot készíteni a HSM kulcsairól.
+* Használjon kulcsot lejárati készlet nélkül.
+* Ha be kell állítani a lejárati időt, forgassa el a kulcsokat a lejárati dátum előtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
+Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
 
-* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
+* Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
 
-* Kapcsolódjon a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiókot a felhasználói élmény javításához. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében. Az Azure-közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+* Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse [át az Azure-támogatási kérelem létrehozása című áttekintést.](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.

@@ -1,6 +1,6 @@
 ---
-title: Partnerkapcsolat a Azure DDoS Protection standard csomaggal
-description: A Azure DDoS Protection standard által engedélyezett partneri lehetőségek ismertetése.
+title: Együttműködés az Azure DDoS Protection Standardtal
+description: Ismerje meg az Azure DDoS Protection Standard által engedélyezett partneri lehetőségeket.
 ms.service: virtual-network
 documentationcenter: na
 author: anupamvi
@@ -9,89 +9,89 @@ ms.topic: article
 ms.date: 01/28/2020
 ms.author: kumud
 ms.openlocfilehash: 39cb2f90b49725c78746df69505fad7160e1db92
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76849681"
 ---
-# <a name="partnering-with-azure-ddos-protection-standard"></a>Partnerkapcsolat a Azure DDoS Protection standard csomaggal
-Ez a cikk a Azure DDoS Protection szabvány által engedélyezett partneri lehetőségeket ismerteti. Ez a cikk úgy lett kialakítva, hogy segítse a termék-kezelőket és az üzleti fejlesztési szerepköröket a befektetési útvonalak megismerésében, és betekintést nyújt a partneri értékek kiosztására.
+# <a name="partnering-with-azure-ddos-protection-standard"></a>Együttműködés az Azure DDoS Protection Standardtal
+Ez a cikk ismerteti az Azure DDoS Protection Standard által engedélyezett partneri lehetőségeket. Ez a cikk célja, hogy segítse a termékmenedzserek és az üzletfejlesztési szerepek megértsék a befektetési útvonalakat, és betekintést nyújtsanak a partneri értékajánlatokba.
 
 ## <a name="background"></a>Háttér
-Az elosztott szolgáltatásmegtagadási (DDoS) támadások egyike a legfontosabb rendelkezésre állási és biztonsági szempontnak, amelyet az ügyfelek az alkalmazásaikat a felhőbe mozgatnak. A zsarolás és a hacktivista a DDoS-támadások mögötti gyakori motivációja, mivel ezek az esetek viszonylag könnyen és egyszerűen elindíthatók.
+Elosztott szolgáltatásmegtagadási (DDoS) támadások az egyik legjobb rendelkezésre állási és biztonsági aggályok at az ügyfelek áthelyezése az alkalmazások a felhőbe. A zsarolás és a hacktivizmus, hogy a közös motivációk mögött DDoS támadások, ők már folyamatosan növekszik a típus, a skála, és az előfordulás gyakorisága, mivel viszonylag könnyű és olcsó indítani.
 
-A Azure DDoS Protection a legkifinomultabb DDoS-fenyegetések elleni védelmet nyújt, és az Azure hálózatkezelésének globális skáláját hasznosítja. A szolgáltatás a virtuális hálózatokban üzembe helyezett alkalmazásokhoz és erőforrásokhoz nyújt továbbfejlesztett DDoS-elhárítási képességeket.
+Az Azure DDoS Protection ellenintézkedéseket biztosít a legkifinomultabb DDoS-fenyegetések ellen, kihasználva az Azure-hálózatok globális skáláját. A szolgáltatás továbbfejlesztett DDoS-kockázatcsökkentési lehetőségeket biztosít a virtuális hálózatokban telepített alkalmazások és erőforrások számára.
 
-A technológiai partnerek natív módon védik az ügyfelek erőforrásait Azure DDoS Protection szabványokkal a DDoS-támadások miatti rendelkezésre állási és megbízhatósági probléma megoldásához.
+A technológiai partnerek az Azure DDoS Protection Standard segítségével natív módon védhetik meg ügyfeleik erőforrásait a DDoS-támadások miatti rendelkezésre állási és megbízhatósági problémák kezelése érdekében.
 
-## <a name="introduction-to-azure-ddos-protection-standard"></a>A Azure DDoS Protection standard bemutatása
-A Azure DDoS Protection standard a 3. réteg és a 4. réteg DDoS-támadások elleni fejlett DDoS-elhárítási képességeket biztosít. A DDoS Protection standard szolgáltatás legfontosabb funkciói a következők:
+## <a name="introduction-to-azure-ddos-protection-standard"></a>Bevezetés az Azure DDoS protection standardba
+Az Azure DDoS Protection Standard továbbfejlesztett DDoS-kockázatcsökkentési képességekkel rendelkezik a Layer 3 és a Layer 4 DDoS-támadások ellen. A DDoS Protection Standard szolgáltatás főbb funkciói az alábbiakban találhatók.
 
-### <a name="adaptive-real-time-tuning"></a>Adaptív valós idejű hangolás
-Az Azure DDoS Protection standard minden védett alkalmazás esetében automatikusan behangolja a DDoS-mérséklési házirend küszöbértékeit az alkalmazás forgalmi profiljának mintái alapján. A szolgáltatás két bepillantással hajtja végre ezt a testreszabást:
+### <a name="adaptive-real-time-tuning"></a>Adaptív, valós idejű hangolás
+Minden védett alkalmazás, az Azure DDoS Protection Standard automatikusan beállítja a DDoS-kockázatcsökkentési szabályzat küszöbértékek alapján az alkalmazás forgalmi profil minták. A szolgáltatás ezt a testreszabást két elemzési információ használatával valósítja meg:
 
-- A 3. és a 4. rétegbeli ügyfélen belüli (/IP-) forgalom automatikus megtanulása.
-- A téves pozitív érték minimalizálása, figyelembe véve, hogy az Azure mérete lehetővé teszi, hogy jelentős mennyiségű forgalmat vegyen fel.
+- Az ügyfélenkénti (IP-alapú) forgalmi minták automatikus tanulása a 3.
+- A hamis pozitív értékek minimalizálása, figyelembe véve, hogy az Azure-skála lehetővé teszi, hogy jelentős mennyiségű forgalmat.
 
-![Adaptív valós idejű hangolás](./media/ddos-protection-partner-onboarding/real-time-tuning.png)
+![Adaptív, valós idejű hangolás](./media/ddos-protection-partner-onboarding/real-time-tuning.png)
 
-### <a name="attack-analytics-telemetry-monitoring-and-alerting"></a>Támadási elemzések, telemetria, monitorozás és riasztások
-Azure DDoS Protection a DDoS-támadások azonosítását és enyhítését felhasználói beavatkozás nélkül.
+### <a name="attack-analytics-telemetry-monitoring-and-alerting"></a>Támadáselemzés, telemetria, figyelés és riasztás
+Az Azure DDoS-védelem azonosítja és csökkenti a DDoS-támadások felhasználói beavatkozás nélkül.
 
-- Ha a védett erőforrás a Azure Security Center alatt lévő előfizetésben található, DDoS Protection a standard automatikusan riasztást küld a Security Center, amikor DDoS-támadás észlelhető, és a védett alkalmazással szembeni enyhítése történik.
-- Azt is megteheti, hogy értesítést kap, ha a védett nyilvános IP-címek esetében aktív megoldás van érvényben, a metrikát a DDoS-támadás alatt is [konfigurálhatja](manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics) .
-- Emellett dönthet úgy is, hogy riasztásokat hoz létre a többi DDoS mérőszámhoz, és [konfigurálja a támadási elemzéseket](manage-ddos-protection.md#configure-ddos-attack-analytics) a támadás skálázása, a forgalom eldobása, a támadási vektorok, a legfontosabb közreműködők és egyéb részletek megismerése érdekében.
+- Ha a védett erőforrás az Azure Security Center hatálya alá tartozó előfizetésben található, a DDoS Protection Standard automatikusan riasztást küld a Security Centernek, ha DDoS-támadást észlel és mérsékel a védett alkalmazással szemben.
+- Azt is megteheti, ha értesítést kap, ha van egy aktív kockázatcsökkentés egy védett nyilvános IP-cím, konfigurálhatja a [riasztást](manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics) a metrika ddos támadás alatt, vagy sem.
+- Emellett dönthet úgy, hogy riasztásokat hoz létre a többi DDoS-metrikákhoz, és konfigurálja a [támadási elemzést](manage-ddos-protection.md#configure-ddos-attack-analytics) a támadás méretének, a forgalom eldobásának, a támadási vektoroknak, a fő közreműködőknek és egyéb részleteknek a megértéséhez.
 
-![DDoS-metrikák](./media/ddos-protection-partner-onboarding/ddos-metrics.png)
+![DDoS-mérőszámok](./media/ddos-protection-partner-onboarding/ddos-metrics.png)
 
-### <a name="ddos-rapid-response-drr"></a>DDoS gyors válasz (DRR)
-DDoS Protection a standard szintű ügyfelek hozzáférhetnek a [gyors reagálású csapathoz](https://azure.microsoft.com/blog/ddos-protection-attack-analytics-rapid-response/) egy aktív támadás során. A DRR a támadásokat és a támadás utáni elemzést is segíti a támadásokkal szemben.
+### <a name="ddos-rapid-response-drr"></a>DDoS gyorsválasz (DRR)
+A DDoS Protection Standard ügyfelei aktív támadás során hozzáférhetnek a [gyorsreagálású csapathoz.](https://azure.microsoft.com/blog/ddos-protection-attack-analytics-rapid-response/) A DRR segíthet a támadások kivizsgálásában, a támadás során az egyéni megoldásokban és a támadás utáni elemzésben.
 
-### <a name="sla-guarantee-and-cost-protection"></a>SLA-garancia és Cost Protection
-DDoS Protection standard szintű szolgáltatást a 99,99%-os SLA garantálja, a Cost Protection pedig erőforrás-krediteket biztosít a dokumentált támadás során felskálázáshoz. További információ: [Azure DDoS Protection SLA](https://azure.microsoft.com/support/legal/sla/ddos-protection/v1_0/)-ja.
+### <a name="sla-guarantee-and-cost-protection"></a>SLA garancia és költségvédelem
+A DDoS Protection Standard szolgáltatást 99,99%-os SLA fedezi, és a költségvédelem erőforrás-jóváírásokat biztosít a dokumentált támadások során a horizontális felskálázáshoz. További információ: [SLA for Azure DDoS Protection](https://azure.microsoft.com/support/legal/sla/ddos-protection/v1_0/).
 
 ## <a name="featured-partner-scenarios"></a>Kiemelt partneri forgatókönyvek
-Az alábbi főbb előnyök a Azure DDoS Protection standard integrálásával származhatnak:
+Az Azure DDoS Protection Standard integrálásával az alábbi kulcsfontosságú előnyöket élvezheti:
 
-- A partnerek által kínált szolgáltatások (terheléselosztó, webalkalmazási tűzfal, tűzfal stb.) automatikusan védettek (fehér címkével) a háttérbeli Azure DDoS Protection szabvány szerint.
-- A partnerek hozzáférhetnek Azure DDoS Protection standard szintű támadási elemzésekhez és telemetria, amelyeket a saját termékeik integrálására használhatnak, és egységes felhasználói élményt nyújtanak.  
-- A-partnerek a DDoS-támogatással kapcsolatos problémák esetén még az Azure gyors reagálás hiányában is hozzáférhetnek a DDoS gyors reagáláshoz.
-- A partnerek által védett alkalmazásokat a DDoS SLA-garanciával és a DDoS-támadások esetén a költséghatékonysággal támogatja.
+- A partnerek által kínált szolgáltatásokat (terheléselosztó, webalkalmazás tűzfal, tűzfal stb.) az Azure DDoS Protection Standard automatikusan védi (fehér címkével ellátott) a háttérben.
+- A partnerek hozzáférhetnek az Azure DDoS Protection Standard támadáselemzéshez és telemetriai adatokhoz, amelyeket integrálhatnak a saját termékeikkel, és egységes felhasználói élményt nyújtanak.  
+- A partnerek még az Azure gyorsválaszának hiányában is hozzáférhetnek a DDoS gyorsreagáláshoz a DDoS-sal kapcsolatos problémák esetén.
+- A partnerek védett alkalmazásait DDoS SLA garancia és költségvédelem támogatja DDoS-támadások esetén.
 
-## <a name="technical-integration-overview"></a>Technikai integráció – áttekintés
-Azure DDoS Protection a szabványos partneri lehetőségeket Azure Portal, API-k és CLI/PS használatával lehet elérhetővé tenni.
+## <a name="technical-integration-overview"></a>Műszaki integráció – áttekintés
+Az Azure DDoS Protection Standard partneri lehetőségek az Azure Portalon, az API-kon és a CLI/PS-en keresztül érhetők el.
 
-### <a name="integrate-with-ddos-protection-standard"></a>Integrálás a DDoS Protection Standardmal
-A következő lépések szükségesek ahhoz, hogy a partnerek a Azure DDoS Protection standard szintű integrációt konfigurálja:
-1. Hozzon létre egy DDoS Protection csomagot a kívánt (partneri) előfizetésben. Részletes útmutatásért lásd: [a DDoS standard Protection-csomag létrehozása](manage-ddos-protection.md#create-a-ddos-protection-plan).
+### <a name="integrate-with-ddos-protection-standard"></a>Integrálás a DDoS védelmi szabványba
+A következő lépések szükségesek a partnerek számára az Azure DDoS Protection Standard dal való integráció konfigurálásához:
+1. Hozzon létre egy DDoS-védelmi tervet a kívánt (partneri) előfizetésben. A részletes útmutatásról a [DDoS szabványos védelmi terv létrehozása](manage-ddos-protection.md#create-a-ddos-protection-plan)című témakörben talál.
    > [!NOTE]
-   > Egy adott bérlőhöz csak 1 DDoS Protection tervet kell létrehozni. 
-2. Helyezzen üzembe egy szolgáltatást nyilvános végponttal (partner) előfizetésekben, például terheléselosztó, tűzfalak és webalkalmazási tűzfal. 
-3. Engedélyezze a Azure DDoS Protection standard szolgáltatást azon szolgáltatás virtuális hálózatán, amely nyilvános végpontokkal rendelkezik az első lépésben létrehozott DDoS Protection terv használatával. A stpe részletes ismertetését lásd: a [DDoS standard Protection-csomag engedélyezése](manage-ddos-protection.md#enable-ddos-for-an-existing-virtual-network)
+   > Csak 1 DDoS védelmi tervet kell létrehozni egy adott bérlőhöz. 
+2. Nyilvános végponttal rendelkező szolgáltatást telepíthet a (partneri) előfizetésekben, például a terheléselosztóban, a tűzfalakban és a webalkalmazás tűzfalában. 
+3. Engedélyezze az Azure DDoS Protection Standard a szolgáltatás virtuális hálózatán, amely nyilvános végpontok használatával DDoS Protection Plan az első lépésben létrehozott. A stpe-by-step utasításokat lásd: [DDoS standard védelmi terv engedélyezése](manage-ddos-protection.md#enable-ddos-for-an-existing-virtual-network)
    > [!IMPORTANT] 
-   > Miután a Azure DDoS Protection standard engedélyezve van egy virtuális hálózaton, a virtuális hálózaton belüli összes nyilvános IP-cím automatikusan védett lesz. Ezeknek a nyilvános IP-címeknek a forrása lehet az Azure-ban (ügyfél-előfizetés) vagy az Azure-on kívül is. 
-4. Ha szeretné, integrálja Azure DDoS Protection standard telemetria és a támadási elemzést az alkalmazásra vonatkozó, az ügyfél felé irányuló irányítópulton. További információ a telemetria használatáról: [DDoS Protection telemetria használata](manage-ddos-protection.md#use-ddos-protection-telemetry). A támadási elemzések konfigurálásával kapcsolatos további információkért lásd: a [DDoS Attack Analytics konfigurálása](manage-ddos-protection.md#configure-ddos-attack-analytics)
+   > Miután az Azure DDoS Protection Standard engedélyezve van egy virtuális hálózaton, a virtuális hálózaton belüli összes nyilvános IP-szolgáltató automatikusan védett lesz. Ezeknek a nyilvános IP-knek az eredete lehet az Azure-on (ügyfél-előfizetésen) belül vagy az Azure-on kívül. 
+4. Szükség esetén integrálhatja az Azure DDoS Protection Standard telemetriai adatait és a támadáselemzéseket az alkalmazásspecifikus ügyfélközpontú irányítópultba. A telemetriai adatok használatáról a [DDoS-védelem telemetriája használata című](manage-ddos-protection.md#use-ddos-protection-telemetry)témakörben talál további információt. A támadáselemzés konfigurálásáról a [DDoS-támadáselemzés konfigurálása című](manage-ddos-protection.md#configure-ddos-attack-analytics) témakörben talál további információt.
 
-### <a name="onboarding-guides-and-technical-documentation"></a>Előkészítési útmutatók és műszaki dokumentáció
+### <a name="onboarding-guides-and-technical-documentation"></a>Bevezetési útmutatók és műszaki dokumentáció
 
-- [Azure DDoS Protection termék lapja](https://azure.microsoft.com/services/ddos-protection/)
-- [Azure DDoS Protection dokumentáció](ddos-protection-overview.md)
-- [Azure DDoS Protection API-hivatkozás](https://docs.microsoft.com/rest/api/virtualnetwork/ddosprotectionplans)
-- [Azure Virtual Network API-dokumentáció](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks)
+- [Az Azure DDoS Protection termékoldala](https://azure.microsoft.com/services/ddos-protection/)
+- [Az Azure DDoS Protection dokumentációja](ddos-protection-overview.md)
+- [Az Azure DDoS Protection API hivatkozása](https://docs.microsoft.com/rest/api/virtualnetwork/ddosprotectionplans)
+- [Az Azure virtuális hálózati API-hivatkozása](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks)
 
-### <a name="get-help"></a>Segítség
+### <a name="get-help"></a>Segítségkérés
 
-- Ha kérdése van az alkalmazással, a szolgáltatással vagy a termék-integrációval kapcsolatban Azure DDoS Protection standard rendszerrel, akkor az [Azure biztonsági közössége](https://techcommunity.microsoft.com/t5/security-identity/bd-p/Azure-Security)is elérhető.
-- [Stack overflow](https://stackoverflow.com/tags/azure-ddos/)-beszélgetések követése.
+- Ha kérdése van az Azure DDoS Protection Standard alkalmazás-, szolgáltatás- vagy termékintegrációival kapcsolatban, forduljon az [Azure biztonsági közösségéhez.](https://techcommunity.microsoft.com/t5/security-identity/bd-p/Azure-Security)
+- Kövesse a [Veremtúlcsordulás](https://stackoverflow.com/tags/azure-ddos/)ról szóló beszélgetéseket.
 
 ### <a name="get-to-market"></a>Piacra jutás
 
-- A Microsofttal való partneri kapcsolat elsődleges programja a [Microsoft Partner Network](https://partner.microsoft.com/). – Microsoft Graph biztonsági integrációk az [MPN független szoftvergyártó (ISV)](https://partner.microsoft.com/saas-solution-guide) nyomon követéséhez tartoznak.
-- A Microsoft [intelligens biztonsági társítás](https://www.microsoft.com/security/business/intelligent-security-association?rtc=1) a program kifejezetten a Microsoft biztonsági partnerei számára a biztonsági termékek gazdagítása és a Microsoft biztonsági termékeibe való integrációjuk javítása érdekében.
+- A Microsofttal való partneri kapcsolat elsődleges programja a [Microsoft Partner Network](https://partner.microsoft.com/). – A Microsoft Graph Security integrációi az [MPN független szoftverszállító (ISV)](https://partner.microsoft.com/saas-solution-guide) sávba esnek.
+- [A Microsoft Intelligent Security Association](https://www.microsoft.com/security/business/intelligent-security-association?rtc=1) egy kifejezetten a Microsoft biztonsági partnerek számára elérhető program, amely nek köszönhetően gazdagíthatja a biztonsági termékeket, és javíthatja az ügyfelek számára a Microsoft Security termékekbe való integrációk felderíthetőségét.
 
-## <a name="next-steps"></a>Következő lépések
-Meglévő partner-integrációk megtekintése:
+## <a name="next-steps"></a>További lépések
+Meglévő partnerintegrációk megtekintése:
 
-- [Barracuda WAF-szolgáltatás](https://www.barracuda.com/waf-as-a-service)
-- [Azure Cloud WAF a Radware-ből](https://www.radware.com/resources/microsoft-azure/)
+- [Barracuda WAF szolgáltatásként](https://www.barracuda.com/waf-as-a-service)
+- [Azure Cloud WAF a Radware-től](https://www.radware.com/resources/microsoft-azure/)

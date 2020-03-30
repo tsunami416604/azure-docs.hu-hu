@@ -1,25 +1,25 @@
 ---
-title: Alias a Azure Cosmos DBban
-description: Megtudhatja, hogyan használhatja az aliasokat Azure Cosmos DB SQL-lekérdezésekben, hogy megkülönböztesse a két tulajdonságot ugyanazzal a névvel
+title: Aliasing az Azure Cosmos DB-ben
+description: Megtudhatja, hogy miként használhat aliast az Azure Cosmos DB SQL-lekérdezésekben két azonos nevű tulajdonság megkülönböztetésére
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 74849eec4c5808a584894321269c49c41f0b8a5c
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873471"
 ---
-# <a name="aliasing-in-azure-cosmos-db"></a>Alias a Azure Cosmos DBban
+# <a name="aliasing-in-azure-cosmos-db"></a>Aliasing az Azure Cosmos DB-ben
 
-Explicit módon alias értékeket a lekérdezésekben. Ha egy lekérdezésnek két azonos nevű tulajdonsága van, az alias használatával nevezze át az egyik vagy mindkét tulajdonságot, hogy disambiguated a tervezett eredményben.
+A lekérdezésekben explicit módon is eladhat értékeket. Ha egy lekérdezés nek két azonos nevű tulajdonsága van, az aliasok segítségével nevezze át az egyik vagy mindkét tulajdonságot, hogy a tervezett eredmény ne kerülhessen egyértelműre.
 
 ## <a name="examples"></a>Példák
 
-Az aliasként használt AS kulcsszó nem kötelező, ahogy az az alábbi példában is látható, amikor a második értéket `NameInfo`:
+Az aliasoláshoz használt AS-kulcsszó nem kötelező, amint az a `NameInfo`következő példában is látható a második érték kivetítésekénél:
 
 ```sql
     SELECT 
@@ -43,8 +43,8 @@ Az eredmény a következő:
     }]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Az Azure Cosmos DB .NET-mintái](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [SELECT záradék](sql-query-select.md)
 - [FROM záradék](sql-query-from.md)

@@ -1,6 +1,6 @@
 ---
 title: Adatok betöltése az SAP Business Warehouse-ból
-description: Adatok másolása Azure Data Factory használatával az SAP Business Warehouse-ból (BW)
+description: Adatok másolása az SAP Business Warehouse (BW) rendszerből az Azure Data Factory használatával
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -12,171 +12,171 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
 ms.openlocfilehash: 971871c28bd1b38b134c04b0334fbe99d1d655c1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440152"
 ---
-# <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból Azure Data Factory használatával
+# <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból az Azure Data Factory használatával
 
-Ez a cikk azt mutatja be, hogyan használhatók a Azure Data Factory az adatok az SAP Business Warehouse-ból (BW) az Open hub-on keresztül történő másolásához Azure Data Lake Storage Gen2. Az adatmásoláshoz hasonló eljárás használható más [támogatott fogadó adattárakba](copy-activity-overview.md#supported-data-stores-and-formats).
+Ez a cikk bemutatja, hogyan használhatja az Azure Data Factory segítségével adatok másolása az SAP Business Warehouse (BW) open hub on keresztül az Azure Data Lake Storage Gen2. Hasonló folyamattal más támogatott fogadó [adattárakba](copy-activity-overview.md#supported-data-stores-and-formats)másolhat adatokat.
 
 > [!TIP]
-> Az adatok SAP BWból történő másolásával kapcsolatos általános információkért, SAP BW beleértve a nyitott hub-integrációt és a különbözeti folyamatokat, lásd: [adatok másolása az SAP Business Warehouse-ból az Open hub használatával a Azure Data Factory segítségével](connector-sap-business-warehouse-open-hub.md).
+> Az SAP BW-ből történő adatok másolásáról, beleértve az SAP BW Open Hub integrációt és a különbözeti kinyerési folyamatot, az Adatok másolása az [SAP Business Warehouse-ból az Open Hub használatával az Azure Data Factory használatával](connector-sap-business-warehouse-open-hub.md)című témakörben talál általános információt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Azure Data Factory**: Ha még nem rendelkezik ilyennel, kövesse az [adatelőállító létrehozásához](quickstart-create-data-factory-portal.md#create-a-data-factory)szükséges lépéseket.
+- **Azure Data Factory:** Ha nem rendelkezik ilyen, kövesse a lépéseket, hogy [hozzon létre egy adat-előállító.](quickstart-create-data-factory-portal.md#create-a-data-factory)
 
-- **SAP BW nyitott hub-célhely (OHD) az "adatbázis-tábla" típussal**: hozzon létre egy OHD, vagy annak ellenőrzéséhez, hogy a OHD megfelelően van-e konfigurálva Data Factory-integrációhoz, tekintse meg a jelen cikk [SAP BW Open hub Destination](#sap-bw-open-hub-destination-configurations) configurations című szakaszát.
+- **SAP BW Open Hub Destination (OHD) "Adatbázistábla" céltípussal:** OhD létrehozása vagy annak ellenőrzéséhez, hogy az OHD megfelelően van-e konfigurálva a Data Factory-integrációhoz, tekintse meg a cikk [SAP BW Open Hub Destination konfigurációi](#sap-bw-open-hub-destination-configurations) című részét.
 
-- **A SAP BW felhasználónak a következő engedélyekkel kell rendelkeznie**:
+- **Az SAP BW felhasználónak a következő engedélyekre van szüksége:**
 
-  - A Remote Function calls (RFC) és a SAP BW engedélyezése.
-  - A **S_SDSAUTH** engedélyezési objektum "végrehajtás" tevékenységének engedélyei.
+  - Távoli függvényhívások (RFC) és SAP BW engedélyezése.
+  - A **S_SDSAUTH** engedélyezési objektum "Végrehajtás" tevékenységéhez szükséges engedélyek.
 
-- **Egy [saját üzemeltetésű integrációs modul (IR)](concepts-integration-runtime.md#self-hosted-integration-runtime) a 3,0-es SAP .net-összekötővel**. Kövesse ezeket a telepítési lépéseket:
+- **Saját [üzemeltetésű integrációs futásidő (IR)](concepts-integration-runtime.md#self-hosted-integration-runtime) az SAP .NET 3.0-s összekötővel.** Kövesse az alábbi telepítési lépéseket:
 
-  1. Telepítse és regisztrálja a saját üzemeltetésű Integration Runtime 3,13-es vagy újabb verzióját. (Ezt a folyamatot a cikk későbbi részében ismertetjük.)
+  1. Telepítse és regisztrálja az önkiszolgáló integrációs futásidejű, 3.13-as vagy újabb verziót. (Ezt a folyamatot a cikk későbbi részében ismertetjük.)
 
-  2. Töltse le a [64 bites SAP-összekötőt Microsoft .NET 3,0-](https://support.sap.com/en/product/connectors/msnet.html) es verzióra az SAP webhelyéről, és telepítse ugyanarra a számítógépre, mint a saját üzemeltetésű IR-t. A telepítés során győződjön meg arról, hogy a telepítési **lépések választhatók** párbeszédpanelen a **szerelvények telepítése a GAC** -ba lehetőséget választotta, ahogy az alábbi képen látható:
+  2. Töltse le a [64 bites SAP Connector for Microsoft .NET 3.0-t](https://support.sap.com/en/product/connectors/msnet.html) az SAP webhelyéről, és telepítse ugyanarra a számítógépre, mint a saját üzemeltetésű infravörös kapcsolat. A telepítés során győződjön meg arról, hogy a **Választható beállítási lépések** párbeszédpanelen a **Szerelések telepítése a GAC-ra lehetőséget választja,** ahogy az alábbi képen látható:
 
-     ![Az SAP .NET-összekötő beállítása párbeszédpanel](media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
+     ![Az SAP .NET-összekötő párbeszédpanel beállítása](media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
-## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>Teljes másolat készítése SAP BW Open hub-ból
+## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>Teljes másolatot készíteni az SAP BW Open Hub-ról
 
-Lépjen az Azure Portalon az adat-előállítóra. Válassza a **létrehozás & a figyelő** lehetőséget a Data Factory felhasználói felület külön lapon való megnyitásához.
+Az Azure Portalon lépjen az adat-előállítóra. Válassza **a Szerzői & figyelő** lehetőséget a Data Factory felhasználói felületének külön lapon való megnyitásához.
 
-1. Az **első lépések** lapon válassza a **Adatok másolása** lehetőséget a adatok másolása eszköz megnyitásához.
+1. A **Let's get started** (Az adatok másolása) lapon válassza az **Adatok másolása** eszközt.
 
-2. A **Tulajdonságok** lapon adja meg a **feladat nevét**, majd kattintson a **tovább**gombra.
+2. A **Tulajdonságok** lapon adja meg **a Tevékenység nevét**, majd kattintson a **Tovább**gombra.
 
-3. A **forrás adattár** lapon válassza az **+ új kapcsolatok létrehozása**lehetőséget. Válassza ki **SAP BW az Open hub** elemet az összekötő-katalógusból, majd válassza a **Folytatás**lehetőséget. Az összekötők szűréséhez beírhatja az **SAP** kifejezést a keresőmezőbe.
+3. A **Forrásadattár** lapon válassza az **+Új kapcsolat létrehozása**lehetőséget. Válassza az **SAP BW Open Hub** elemet az összekötőgyűjteményből, majd kattintson a Folytatás **gombra.** Az összekötők szűréséhez írja be az **SAP-t** a keresőmezőbe.
 
-4. Az **SAP BW megnyitása a hub-kapcsolatban** lapon kövesse az alábbi lépéseket az új kapcsolatok létrehozásához.
+4. Az **SAP BW Open Hub kapcsolat megadása** lapon az alábbi lépésekkel hozhat létre új kapcsolatot.
 
-   ![SAP BW Open hub-társított szolgáltatás oldalának létrehozása](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
+   ![SAP BW Open Hub-hoz csatolt szolgáltatáslap létrehozása](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
 
-   1. A **Csatlakozás integrációs modul használatával** listában válasszon ki egy meglévő, saját üzemeltetésű IR-t. Vagy ha még nem rendelkezik ilyennel, hozzon létre egyet.
+   1. A **Connect via integrációs futásidejű** lista, válasszon ki egy meglévő saját üzemeltetésű ir. Vagy válassza az egyik létrehozását, ha még nem rendelkezik ilyen.
 
-      Új, saját üzemeltetésű IR létrehozásához válassza az **+ új**lehetőséget, majd válassza a **saját**üzemeltetésű lehetőséget. Adjon meg egy **nevet**, majd kattintson a **tovább**gombra. Válassza az **expressz telepítés** lehetőséget az aktuális számítógépen való telepítéshez, vagy kövesse a megadott **manuális telepítési** lépéseket.
+      Új, saját üzemeltetésű infravörös kapcsolat létrehozásához válassza a **+Új**, majd az **Önkiszolgáló**lehetőséget. Írjon be egy **nevet**, majd válassza a **Tovább**gombot. Válassza az **Express telepítőt** az aktuális számítógépre való telepítéshez, vagy kövesse a **manuális beállítási** lépéseket.
 
-      Az [Előfeltételek](#prerequisites)között említettek szerint győződjön meg arról, hogy a Microsoft .net 3,0-hez készült SAP-összekötő ugyanarra a számítógépre van telepítve, amelyen a saját üzemeltetésű IR fut.
+      Az Előfeltételek című részben [említettek](#prerequisites)szerint győződjön meg arról, hogy az SAP Connector for Microsoft .NET 3.0 ugyanazon a számítógépen van telepítve, ahol a saját üzemeltetésű infravörös kapcsolat fut.
 
-   2. Töltse ki a SAP BW **kiszolgáló nevét**, **a rendszer számát**, az **ügyfél-azonosítót,** a **nyelvet** (ha nem az **en**), a **felhasználónevet**és a **jelszót**.
+   2. Töltse ki az SAP BW **kiszolgáló nevét**, **a rendszerszámot,** **az ügyfélazonosítót,** **a nyelvet** (ha nem **az EN),** **a felhasználónevet**és **a jelszót.**
 
-   3. Válassza a **Kapcsolódás tesztelése** lehetőséget a beállítások ellenőrzéséhez, majd válassza a **Befejezés**lehetőséget.
+   3. A beállítások érvényesítéséhez válassza a **Kapcsolat tesztelése** lehetőséget, majd a **Befejezés**gombot.
 
-   4. Létrejön egy új kapcsolatok. Kattintson a **Tovább** gombra.
+   4. Új kapcsolat jön létre. Válassza a **Tovább lehetőséget.**
 
-5. A **hub-célhelyek kiválasztása** lapon tallózzon a SAP BWban elérhető nyitott hub-célhelyek között. Válassza ki a OHD az adatok másolásához, majd kattintson a **tovább**gombra.
+5. A **Hub megnyitása célok kiválasztása** lapon keresse meg az SAP BW-ben elérhető nyitott központi célokat. Jelölje ki az adatok másolásához kívánt OHD-t, majd kattintson a **Tovább**gombra.
 
-   ![Válassza ki SAP BW hub-céltábla megnyitása](media/load-sap-bw-data/select-sap-bw-open-hub-table.png)
+   ![Válassza az SAP BW Open Hub Destination tábla](media/load-sap-bw-data/select-sap-bw-open-hub-table.png)
 
-6. Ha szüksége van rá, válasszon szűrőt. Ha a OHD csak egyetlen adatátviteli folyamatból (DTP) származó, egyetlen kérelem-AZONOSÍTÓval rendelkező adatokból áll, vagy biztos abban, hogy a DTP elkészült, és az adatok másolását szeretné végrehajtani, törölje a jelet a **legutóbbi kérelem kizárása** jelölőnégyzetből.
+6. Ha szüksége van rá, adjon meg egy szűrőt. Ha az OHD csak egyetlen adatátviteli folyamat (DTP) egyetlen kérelemazonosítóval történő végrehajtását tartalmazza, vagy biztos benne, hogy a DTP befejeződött, és másolni szeretné az adatokat, törölje az **utolsó kérelem kizárása** jelölőnégyzetet.
 
-   További információ ezekről a beállításokról a jelen cikk [SAP BW Open hub-cél konfigurációk](#sap-bw-open-hub-destination-configurations) című szakaszában olvasható. Válassza a **validate (ellenőrzés** ) lehetőséget, hogy duplán ellenőrizze, milyen adatforrások lesznek visszaadva. Ezután kattintson a **Tovább** gombra.
+   Ezekről a beállításokról a cikk [SAP BW Open Hub Destination konfigurációi](#sap-bw-open-hub-destination-configurations) című részében olvashat bővebben. Az **Ellenőrzés** lehetőséget választva ellenőrizze, hogy milyen adatokat ad vissza. Ezután válassza a **Tovább**gombot.
 
-   ![SAP BW nyitott hub-szűrő konfigurálása](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
+   ![SAP BW Open Hub szűrő konfigurálása](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
-7. A **cél adattár** lapon válassza az **+ új kapcsolatok létrehozása** > **Azure Data Lake Storage Gen2** > **Folytatás**lehetőséget.
+7. A **Céladattár** lapon válassza az **+Új kapcsolat** > létrehozása**az Azure Data Lake Storage Gen2** > **Continue lehetőséget.**
 
-8. Az **Azure Data Lake Storage kapcsolódásának meghatározása** lapon kövesse az alábbi lépéseket a kapcsolatok létrehozásához.
+8. Az **Azure Data Lake Storage-tároló megadása kapcsolat** lapon az alábbi lépésekkel hozhat létre kapcsolatot.
 
-   ![ADLS Gen2 társított szolgáltatás oldalának létrehozása](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
+   ![ADLS Gen2 csatolt szolgáltatáslap létrehozása](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
-   1. Válassza ki a Data Lake Storage Gen2-kompatibilis fiókot a **név** legördülő listából.
-   2. Kattintson a **Befejezés** gombra a kapcsolat létrehozásához. Ezután kattintson a **Tovább** gombra.
+   1. Válassza ki a Data Lake Storage Gen2-kompatibilis fiókját a **Név** legördülő listából.
+   2. Kattintson a **Befejezés** gombra a kapcsolat létrehozásához. Ezután válassza a **Tovább**gombot.
 
-9. A **kimeneti fájl vagy mappa kiválasztása** lapon adja meg a **copyfromopenhub** a kimeneti mappa neveként. Ezután kattintson a **Tovább** gombra.
+9. A **Kimeneti fájl vagy mappa kiválasztása** lapon adja meg a **copyfromopenhub** parancsot kimeneti mappa névként. Ezután válassza a **Tovább**gombot.
 
-   ![Kimeneti mappa kiválasztása lap](media/load-sap-bw-data/choose-output-folder.png)
+   ![Kimeneti mappa lap kiválasztása](media/load-sap-bw-data/choose-output-folder.png)
 
-10. A **fájlformátum beállítása** lapon kattintson a **tovább** gombra az alapértelmezett beállítások használatához.
+10. A **Fájlformátum beállítási** lapján válassza a **Tovább** gombot az alapértelmezett beállítások használatához.
 
-    ![Fogadó formátum oldalának meghatározása](media/load-sap-bw-data/specify-sink-format.png)
+    ![A kezdőtárformátum lap megadása](media/load-sap-bw-data/specify-sink-format.png)
 
-11. A **Beállítások** lapon bontsa ki a **teljesítmény beállításai**elemet. Adjon meg egy értéket a **másolási párhuzamosság mértékének** (például 5) a párhuzamos SAP BW betöltéséhez. Ezután kattintson a **Tovább** gombra.
+11. A **Beállítások** lapon bontsa ki a **Teljesítménybeállítások lehetőséget.** Adjon meg egy értéket **a másolási párhuzamosság foka,** például 5 az SAP BW-ből párhuzamosan történő betöltéshez. Ezután válassza a **Tovább**gombot.
 
     ![Másolási beállítások konfigurálása](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. Az **Összefoglalás** lapon tekintse át a beállításokat. Ezután kattintson a **Tovább** gombra.
+12. Az **Összegzés** lapon tekintse át a beállításokat. Ezután válassza a **Tovább**gombot.
 
-13. A folyamat figyeléséhez az **üzembe helyezés** lapon válassza a **figyelő** lehetőséget.
+13. A **Központi telepítés** lapon válassza **a Figyelő** lehetőséget a folyamat figyeléséhez.
 
     ![Üzembe helyezés lap](media/load-sap-bw-data/deployment.png)
 
-14. Figyelje meg, hogy a lap bal oldalán található **figyelés** lap automatikusan ki van választva. A **műveletek** oszlop hivatkozásokat tartalmaz a tevékenység-futtatási részletek megtekintéséhez és a folyamat újrafuttatásához.
+14. Figyelje meg, hogy a lap bal oldalán lévő **Monitor** fül automatikusan ki van jelölve. A **Műveletek** oszlop hivatkozásokat tartalmaz a tevékenység futtatásának részleteinek megtekintéséhez és a folyamat újbóli futtatásához.
 
-    ![Folyamat figyelési nézete](media/load-sap-bw-data/pipeline-monitoring.png)
+    ![Csővezeték figyelési nézete](media/load-sap-bw-data/pipeline-monitoring.png)
 
-15. A folyamat futtatásához társított tevékenység-futtatások megtekintéséhez válassza a **műveletek** oszlop **Megtekintés tevékenység** futtatása elemét. Csak egy (másolási) tevékenység található a folyamatban, ezért csak egy bejegyzést lát. Ha vissza szeretne váltani a folyamat – Futtatás nézetre, válassza a felül található **folyamatok** hivatkozást. A lista frissítéséhez kattintson a **Frissítés** gombra.
+15. A folyamatfuttatáshoz társított tevékenységfuttatások megtekintéséhez válassza a **Műveletek** oszlop **tevékenységfuttatásainak megtekintése** lehetőséget. Csak egy (másolási) tevékenység található a folyamatban, ezért csak egy bejegyzést lát. Ha vissza szeretne váltani a folyamatfuttatások nézetre, válassza a **folyamatkapcsolatok** közötti kapcsolatot a tetején. A lista frissítéséhez kattintson a **Frissítés** gombra.
 
-    ![Tevékenység-figyelési képernyő](media/load-sap-bw-data/activity-monitoring.png)
+    ![Tevékenységfigyelő képernyő](media/load-sap-bw-data/activity-monitoring.png)
 
-16. Az egyes másolási tevékenységek végrehajtási részleteinek figyeléséhez válassza a **részletek** hivatkozást, amely a tevékenység-figyelés nézetben a **műveletek** alá tartozó szemüveg ikon. A rendelkezésre álló részletek közé tartozik a forrásról a fogadóba másolt adatmennyiség, az adatok átviteli sebessége, a végrehajtási lépések és időtartam és a felhasznált konfigurációk.
+16. Az egyes másolási tevékenységek végrehajtási részleteinek figyeléséhez válassza a **Részletek** hivatkozást, amely a tevékenységek figyelése nézetben a **Műveletek** csoport alatt található. A rendelkezésre álló részletek közé tartozik a forrásból a fogadóba másolt adatkötet, az adatátviteli, végrehajtási lépések és időtartam, valamint a használt konfigurációk.
 
-    ![Tevékenységek figyelésének részletei](media/load-sap-bw-data/activity-monitoring-details.png)
+    ![Tevékenységfigyelés részletei](media/load-sap-bw-data/activity-monitoring-details.png)
 
-17. A **kérelmek maximális azonosítójának**megtekintéséhez lépjen vissza a tevékenység-figyelés nézetre, és válassza a **kimenet** lehetőséget a **műveletek**területen.
+17. A **maximális kérelemazonosító**megtekintéséhez lépjen vissza a tevékenységfigyelési nézetbe, és válassza **a Kimenet lehetőséget** a Műveletek **csoportban.**
 
     ![Tevékenység kimeneti képernyője](media/load-sap-bw-data/activity-output.png)
 
-    ![Tevékenység kimenetének részletei nézet](media/load-sap-bw-data/activity-output-details.png)
+    ![Tevékenység kimeneti részleteinek nézete](media/load-sap-bw-data/activity-output-details.png)
 
-## <a name="incremental-copy-from-sap-bw-open-hub"></a>Növekményes másolás SAP BW Open hub-ból
+## <a name="incremental-copy-from-sap-bw-open-hub"></a>Növekményes másolás az SAP BW Open Hub-ról
 
 > [!TIP]
-> Tekintse meg a [SAP BW nyitott hub-összekötő különbözeti folyamatát](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow) , amelyből megtudhatja, hogyan másolja a SAP BW Open hub-összekötőt a Data Factory a növekményes adatok SAP BW Ez a cikk az alapszintű összekötő konfigurációjának megismeréséhez is segítséget nyújt.
+> Tekintse meg [az SAP BW Open Hub-összekötő különbözeti kibontási folyamatát,](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow) amelyből megtudhatja, hogy az SAP BW Open Hub-összekötő a Data Factory-ban hogyan másolja át az SAP BW növekményes adatait. Ez a cikk is segít megérteni az alapvető összekötő konfigurációját.
 
-Most folytassa a növekményes másolás konfigurálását SAP BW Open hub-ból.
+Most továbbra is konfigurálja a növekményes másolást az SAP BW Open Hubról.
 
-A növekményes másolás a **kérelem azonosítója**alapján "nagy vízjel" mechanizmust használ. Ez az azonosító automatikusan jön létre SAP BW Open hub-célhelyen a DTP használatával. A következő ábra a munkafolyamatot mutatja be:
+A növekményes példány "magas vízjel" mechanizmust használ, amely a **kérelemazonosítón**alapul. Ezt az azonosítót a DTP automatikusan létrehozza az SAP BW Open Hub Destination alkalmazásban. Az alábbi ábra ezt a munkafolyamatot mutatja:
 
-![Növekményes másolás munkafolyamat-folyamatábrája](media/load-sap-bw-data/incremental-copy-workflow.png)
+![Növekményes másolási munkafolyamat-folyamatábra](media/load-sap-bw-data/incremental-copy-workflow.png)
 
-Az adatok előállítójának első **lépései** oldalon válassza a **folyamat létrehozása sablonból** lehetőséget a beépített sablon használatához.
+Az adatgyárban **Az első lépések** lapon válassza a Folyamat létrehozása **sablonból** lehetőséget a beépített sablon használatához.
 
-1. A **SAP BW** megkeresésével megkeresheti és kiválaszthatja a **növekményes másolást SAP BWról Azure Data Lake Storage Gen2** sablonra. Ez a sablon az Azure Data Lake Storage Gen2ba másolja az adatfájlokat. Hasonló munkafolyamatot is használhat más fogadó típusokba való másoláshoz.
+1. Keresse meg az **SAP BW-t** az **SAP BW növekményes példányának** az Azure Data Lake Storage Gen2 sablonjának megkereséséhez. Ez a sablon adatokat másol az Azure Data Lake Storage Gen2-be. Hasonló munkafolyamattal más fogadótípusokba másolhat.
 
-2. A sablon főoldalán válassza ki vagy hozza létre a következő három kapcsolatot, majd válassza a **sablon használata** lehetőséget az ablak jobb alsó sarkában.
+2. A sablon főlapján jelölje ki vagy hozza létre a következő három kapcsolatot, majd válassza a **Sablon használata lehetőséget** az ablak jobb alsó sarkában.
 
-   - **Azure Blob Storage**: ebben az útmutatóban az Azure Blob Storage-t használjuk a felső vízjel tárolására, amely a *maximálisan másolt kérelmek azonosítója*.
-   - **SAP BW Open hub**: Ez a forrás az adatok másolásához. A részletes konfigurációról az előző teljes másolási útmutatóban olvashat.
-   - **Azure Data Lake Storage Gen2**: ez az a fogadó, amelybe az Adatmásolás történik. A részletes konfigurációról az előző teljes másolási útmutatóban olvashat.
+   - **Azure Blob storage:** Ebben a forgatókönyvben az Azure Blob storage-ot használjuk a magas vízjel tárolására, amely a *maximálisan másolt kérelemazonosító.*
+   - **SAP BW Open Hub**: Ez az a forrás, amelyből adatokat lehet másolni. A részletes konfigurációt az előző teljes másolási forgatókönyvben tájékozhatja.
+   - **Azure Data Lake Storage Gen2:** Ez a fogadó adatok másolása. A részletes konfigurációt az előző teljes másolási forgatókönyvben tájékozhatja.
 
-   ![Növekményes másolás SAP BW sablonból](media/load-sap-bw-data/incremental-copy-from-sap-bw-template.png)
+   ![Növekményes másolás az SAP BW sablonból](media/load-sap-bw-data/incremental-copy-from-sap-bw-template.png)
 
-3. Ez a sablon létrehoz egy folyamatot a következő három tevékenységgel, és sikerrel járt: *lookup*, *adatok másolása*és *web*.
+3. Ez a sablon a következő három tevékenységet kínáló folyamatot hoz létre, és sikeressé teszi őket: *Keres,* *Adatok másolása*és *web*.
 
-   Lépjen a folyamat **paramétereinek** lapra. Megjelenik az összes szükséges konfiguráció.
+   Nyissa meg a folyamat **paraméterei** lapot. Az összes szükséges konfigurációt láthatja.
 
-   ![Növekményes másolás SAP BW konfigurációból](media/load-sap-bw-data/incremental-copy-from-sap-bw-pipeline-config.png)
+   ![Növekményes másolás az SAP BW konfigurációjából](media/load-sap-bw-data/incremental-copy-from-sap-bw-pipeline-config.png)
 
-   - **SAPOpenHubDestinationName**: Itt adhatja meg, hogy az adatok honnan másolhatók.
+   - **SAPOpenHubDestinationName**: Adja meg az Open Hub tábla nevét, amelyből adatokat szeretne másolni.
 
-   - **Data_Destination_Container**: az Adatmásolás céljának Azure Data Lake Storage Gen2 tárolójának megadásához. Ha a tároló nem létezik, az Data Factory másolási tevékenység a végrehajtás során létrehoz egyet.
+   - **Data_Destination_Container:** Adja meg a cél Azure Data Lake Storage Gen2 tároló adatok másolása. Ha a tároló nem létezik, a Data Factory másolási tevékenység létrehoz egyet a végrehajtás során.
   
-   - **Data_Destination_Directory**: Itt adhatja meg a mappa elérési útját a Azure Data Lake Storage Gen2 tárolóban az adatmásoláshoz. Ha az elérési út nem létezik, az Data Factory másolási tevékenység létrehoz egy elérési utat a végrehajtás során.
+   - **Data_Destination_Directory:** Adja meg a mappa elérési útját az Azure Data Lake Storage Gen2 tároló ban adatok másolásához. Ha az elérési út nem létezik, a Data Factory másolási tevékenység létrehoz egy elérési utat a végrehajtás során.
   
-   - **HighWatermarkBlobContainer**: határozza meg a tárolót, amely a nagy-vízjel értéket tárolja.
+   - **HighWatermarkBlobContainer**: Adja meg a tárolót a magas vízjel értékének tárolásához.
 
-   - **HighWatermarkBlobDirectory**: Itt adhatja meg a mappa elérési útját a tárolóban a magas vízjel értékének tárolásához.
+   - **HighWatermarkBlobDirectory**: Adja meg a mappa elérési útját a tároló alatt a magas vízjel érték ének tárolásához.
 
-   - **HighWatermarkBlobName**: adja meg a blob nevét a felső küszöbérték (például `requestIdCache.txt`) tárolására. A blob Storage-ban lépjen a HighWatermarkBlobContainer + HighWatermarkBlobDirectory + HighWatermarkBlobName, például a *Container/Path/requestIdCache. txt*fájl megfelelő elérési útjára. Hozzon létre egy blobot 0 tartalommal.
+   - **HighWatermarkBlobName**: Adja meg a blob nevét a `requestIdCache.txt`magas vízjel értékének tárolásához, például . A Blob storage-ban lépjen a HighWatermarkBlobContainer+HighWatermarkBlobDirectory+HighWatermarkBlobName megfelelő elérési útjára, például *a container/path/requestIdCache.txt fájlra.* Hozzon létre egy blobot 0 tartalommal.
 
-      ![BLOB tartalma](media/load-sap-bw-data/blob.png)
+      ![Blob tartalma](media/load-sap-bw-data/blob.png)
 
-   - **LogicAppURL**: ebben a sablonban a webtevékenység használatával hívja meg a Azure Logic Appst, hogy a blob Storage-ban állítsa be a nagy vízjel értékét. Vagy a Azure SQL Database használatával is tárolhatja. A tárolt eljárási tevékenység használatával frissítse az értéket.
+   - **LogicAppURL:** Ebben a sablonban a WebActivity használatával hívjuk meg az Azure Logic Apps-t a blobstorage magas vízjelértékének beállításához. Vagy használhatja az Azure SQL Database-t a tárolásához. Az érték frissítéséhez használjon tárolt eljárási tevékenységet.
 
-      Először létre kell hoznia egy logikai alkalmazást, ahogy az alábbi képen látható. Ezután illessze be a **http post URL-címét**.
+      Először létre kell hoznia egy logikai alkalmazást, ahogy az alábbi képen látható. Ezután illessze be a **HTTP POST URL-címét**.
 
-      ![Logic app-konfiguráció](media/load-sap-bw-data/logic-app-config.png)
+      ![Logikai alkalmazás konfigurációja](media/load-sap-bw-data/logic-app-config.png)
 
-      1. Nyissa meg az Azure Portalt. Válasszon ki egy új **Logic apps** szolgáltatást. Válassza a **+ üres logikai alkalmazás** lehetőséget, hogy megnyissa **Logic apps Designer**alkalmazást.
+      1. Nyissa meg az Azure Portalt. Válasszon ki egy új **Logic Apps** szolgáltatást. Válassza a **+Blank Logic App lehetőséget** a **Logic Apps Designer**elemre való ugráshoz.
 
-      2. Hozzon létre egy triggert, **Ha HTTP-kérés érkezik**. A HTTP-kérés törzsét a következőképpen adhatja meg:
+      2. **Http-kérelem érkezésekori**eseményindító létrehozása. Adja meg a HTTP-kérelem törzsét az alábbiak szerint:
 
          ```json
          {
@@ -189,90 +189,90 @@ Az adatok előállítójának első **lépései** oldalon válassza a **folyamat
          }
          ```
 
-      3. Adja hozzá a **blob létrehozása** műveletet. A **mappa elérési útja** és a **blob neve mezőben**adja meg a korábban a *HighWatermarkBlobContainer + HighWatermarkBlobDirectory* és a *HighWatermarkBlobName*szolgáltatásban konfigurált értékeket.
+      3. Blob **létrehozása** művelet hozzáadása. **A Mappa elérési útja** és a Blob **neve**esetén ugyanazokat az értékeket használja, mint amelyeket korábban a *HighWatermarkBlobContainer+HighWatermarkBlobDirectory* és *a HighWatermarkBlobName mappában*konfigurált.
 
-      4. Kattintson a **Mentés** gombra. Ezután másolja át a **http post URL-cím** értékét, amelyet a Data Factory-folyamatban használni szeretne.
+      4. Kattintson a **Mentés** gombra. Ezután másolja a **HTTP POST URL-cím** értékét a Data Factory-folyamatban való használatra.
 
-4. Miután megadta a Data Factory folyamat paramétereit, válassza a **hibakeresés** > **Befejezés** lehetőséget a Futtatás meghívásához a konfiguráció ellenőrzéséhez. Vagy válassza a **Közzététel** lehetőséget az összes módosítás közzétételéhez, majd válassza az **trigger hozzáadása** parancsot a Futtatás végrehajtásához.
+4. Miután megadt a Data Factory folyamat paramétereit, válassza **a Debug** > **Befejezés** lehetőséget a futtatás meghívásához a konfiguráció érvényesítéséhez. Vagy válassza **a Közzététel** lehetőséget az összes módosítás közzétételéhez, majd a Futtatás **isztikai eseményindító hozzáadása** parancsra.
 
-## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW nyitott hub-cél konfigurációi
+## <a name="sap-bw-open-hub-destination-configurations"></a>AZ SAP BW Open Hub Destination konfigurációi
 
-Ez a szakasz a SAP BW oldal konfigurációját mutatja be, hogy az SAP BW Open hub-összekötőt használja Data Factory az adatmásoláshoz.
+Ez a szakasz bemutatja az SAP BW-oldal konfigurációját az SAP BW Open Hub-összekötő data factory használatával.
 
-### <a name="configure-delta-extraction-in-sap-bw"></a>A különbözet kinyerésének konfigurálása SAP BW
+### <a name="configure-delta-extraction-in-sap-bw"></a>Különbözeti kinyerés konfigurálása SAP BW-ben
 
-Ha a korábbi másolási és növekményes másolási, vagy csak növekményes másolásra van szüksége, állítsa be SAP BW a különbözeti kinyerést.
+Ha szüksége van mind a korábbi másolásés növekményes másolás, vagy csak növekményes másolás, konfigurálja a különbözeti kinyerés az SAP BW.If you need both historical copy and incremental copy or only incremental copy, configure delta extraction in SAP BW.
 
-1. Hozza létre az Open hub célhelyét. A OHD az SAP Transaction RSA1 hozhatja létre, amely automatikusan létrehozza a szükséges átalakítási és adatátviteli folyamatot. Használja a következő beállításokat:
+1. Hozza létre az Open Hub Destination(Open Hub Destination) című állomást. Az OHD az SAP-tranzakció RSA1, amely automatikusan létrehozza a szükséges átalakítási és adatátviteli folyamat. Használja a következő beállításokat:
 
-   - **Objektumtípus**: bármilyen objektumtípust használhat. Itt a **InfoCube** -t használjuk példaként.
-   - **Cél típusa**: válassza az **adatbázis tábla**lehetőséget.
-   - **A tábla kulcsa**: válassza a **technikai kulcs**lehetőséget.
-   - **Kinyerés**: válassza **az adatok megőrzése és rekordok beszúrása táblázatba**lehetőséget.
+   - **ObjectType**: Bármilyen objektumtípust használhat. Itt az **InfoCube-ot** használjuk példaként.
+   - **Céltípusa**: Válassza **az Adatbázistábla lehetőséget**.
+   - **A táblázat kulcsa:** Válassza a **technical key**lehetőséget.
+   - **Kibontás**: Válassza **az Adatok megtartása és rekordok beszúrása a táblába**lehetőséget.
 
-   ![SAP BW OHD-különbözet kinyerése párbeszédpanel létrehozása](media/load-sap-bw-data/create-sap-bw-ohd-delta.png)
+   ![SAP BW OHD különbözeti kihúzásának létrehozása párbeszédpanel](media/load-sap-bw-data/create-sap-bw-ohd-delta.png)
 
-   ![SAP BW OHD delta2 kibontása párbeszédpanel](media/load-sap-bw-data/create-sap-bw-ohd-delta2.png)
+   ![SAP BW OHD delta2 kihúzásának létrehozása párbeszédpanel](media/load-sap-bw-data/create-sap-bw-ohd-delta2.png)
 
-   Növelheti a párhuzamosan futó SAP-munkafolyamatok számát a DTP esetében:
+   Növelheti a Párhuzamosan futó SAP-munkafolyamatok számát a DTP-hez:
 
-   ![a-SAP-BW-OHD-delta3 létrehozása](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
+   ![create-sap-bw-ohd-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
-2. Ütemezze a DTP-t a feldolgozási láncokban.
+2. Ütemezze a DTP-t folyamatláncokban.
 
-   Egy adatkockához tartozó Delta DTP csak akkor működik, ha a szükséges sorok nincsenek tömörítve. Győződjön meg arról, hogy a BW-kocka tömörítése nem fut, mielőtt a DTP az Open hub-táblára kerül. Ennek a legegyszerűbb módja, ha integrálni szeretné a DTP-t a meglévő folyamat-láncokba. A következő példában a DTP (a OHD) be van helyezve a folyamat láncba az *Igazítás* (Összesítés kumulatív) és az *összeomlás* (kocka tömörítése) lépések között.
+   A kocka különbözeti DTP-je csak akkor működik, ha a szükséges sorok nincsenek tömörítve. Győződjön meg arról, hogy a BW-kocka tömörítése nem fut az Open Hub tábla DTP-je előtt. Ennek legegyszerűbb módja a DTP integrálása a meglévő folyamatláncokba. A következő példában a DTP (az OHD-hez) bekerül a folyamatláncba az *Igazítás* (összesítés) és az *Összecsukás* (kockatömörítés) lépések között.
 
-   ![SAP BW folyamat folyamatábrájának létrehozása](media/load-sap-bw-data/create-sap-bw-process-chain.png)
+   ![SAP BW folyamatábra létrehozása](media/load-sap-bw-data/create-sap-bw-process-chain.png)
 
-### <a name="configure-full-extraction-in-sap-bw"></a>Teljes kivonás konfigurálása SAP BW
+### <a name="configure-full-extraction-in-sap-bw"></a>Teljes kinyerés konfigurálása SAP BW-ben
 
-A különbözeti adatok kinyerése mellett érdemes lehet azonos SAP BW InfoProvider teljes kibontását is használni. Ez általában akkor érvényes, ha teljes másolást szeretne végezni, de nem növekményes, vagy ha újra szeretné [szinkronizálni a különbözeti kinyerést](#resync-delta-extraction).
+A különbözeti kinyerés mellett előfordulhat, hogy ugyanazt az SAP BW InfoProvider-t szeretné teljes mértékben kidolgozni. Ez általában akkor érvényes, ha teljes másolatot szeretne készíteni, de nem növekményes, vagy újra szinkronizálni szeretné a [különbözeti kibontást.](#resync-delta-extraction)
 
-Ugyanahhoz a OHD nem tartozhat egynél több DTP. Ezért létre kell hoznia egy további OHD a különbözet kinyerése előtt.
+Nem lehet egynél több DTP ugyanazért az OHD-hez. Tehát létre kell hoznia egy további OHD-t a delta kinyerés előtt.
 
-![SAP BW OHD teljes létrehozása](media/load-sap-bw-data/create-sap-bw-ohd-full.png)
+![Sap BW OHD teljes létrehozása](media/load-sap-bw-data/create-sap-bw-ohd-full.png)
 
-A teljes terhelés OHD válassza a különböző beállítások lehetőséget, mint a különbözeti kinyeréshez:
+A teljes terhelés OHD, válasszon más lehetőségeket, mint a delta kitermelés:
 
-- A OHD-ben: állítsa be az **adatok törlésére és a rekordok beszúrására**szolgáló **kibontási** beállítást. Ellenkező esetben a rendszer többször is kinyeri az adatmennyiséget, amikor egy BW-feldolgozási láncban megismétli a DTP-t.
+- Az OHD: Állítsa be a **Kibontás** beállítást **az Adatok törlésére és a Rekordok beszúrására.** Ellenkező esetben az adatok kinyerése sokszor, amikor megismétli a DTP egy BW folyamatlánc.
 
-- A DTP: **kibontási mód** beállítása **teljes**értékre. Az automatikusan létrehozott DTP- **t az OHD** létrehozása után azonnal **teljes** értékre kell módosítani, ahogy az a következő képen látható:
+- A DTP: Állítsa **kinyerési mód** **teljes**. Az automatikusan létrehozott DTP-t az OHD létrehozása után azonnal meg kell **változtatnia Deltáról** **teljesre,** ahogy ez a kép a következőket mutatja:
 
-   ![A "teljes" kinyeréshez konfigurált SAP BW OHD-párbeszédpanel létrehozása](media/load-sap-bw-data/create-sap-bw-ohd-full2.png)
+   ![Sap BW OHD párbeszédpanel létrehozása a "Teljes" kinyeréshez konfigurálva](media/load-sap-bw-data/create-sap-bw-ohd-full2.png)
 
-- A Data Factory BW Open hub-összekötőben: kapcsolja ki a **legutóbbi kérelem kizárása**beállítást. Ellenkező esetben semmi nem lesz kibontva.
+- A Data Factory BW Open Hub összekötőjében: Kapcsolja ki **az Utolsó kérelem kizárása .** Ellenkező esetben semmi sem lesz kivonva.
 
-A teljes DTP-t általában manuálisan futtathatja. Vagy létrehozhat egy folyamat láncot a teljes DTP számára. Ez általában egy különálló lánc, amely független a meglévő folyamat-láncoktól. Mindkét esetben *Győződjön meg arról, hogy a DTP a Data Factory másolással való elindítását megelőzően elvégezte a kinyerést*. Ellenkező esetben a rendszer csak a részleges adatfájlokat másolja.
+A teljes DTP-t általában manuálisan futtatja. Vagy létrehozhat egy folyamatláncot a teljes DTP-hez. Ez általában egy külön lánc, amely független a meglévő folyamatláncoktól. Mindkét esetben *győződjön meg arról, hogy a DTP befejeződött, mielőtt elkezdené a kibontást a Data Factory copy használatával.* Ellenkező esetben csak részleges adatok lesznek másolva.
 
-### <a name="run-delta-extraction-the-first-time"></a>A Delta kinyerésének első futtatása
+### <a name="run-delta-extraction-the-first-time"></a>A különbözeti kivonás futtatása az első alkalommal
 
-Az első Delta kinyerése technikailag *teljes kinyerés*. Alapértelmezés szerint a SAP BW Open hub-összekötő kizárja az utolsó kérést, amikor az Adatmásolást végzi. Az első különbözeti kinyeréshez az Data Factory másolási tevékenység nem nyer ki adatgyűjtést, amíg egy későbbi DTP nem hoz létre különbözeti adatkérési azonosítót a táblában. Ezt a forgatókönyvet kétféleképpen lehet elkerülni:
+Az első delta extrakció technikailag *teljes extrakció.* Alapértelmezés szerint az SAP BW Open Hub összekötő kizárja az utolsó kérelmet, amikor adatokat másol. Az első különbözeti kinyeréshez a Data Factory másolási tevékenység nem nyer ki adatokat, amíg egy későbbi DTP nem hoz létre különbözeti adatokat a táblában egy külön kérelemazonosítóval. Ezt a forgatókönyvet kétféleképpen kerülheti el:
 
-- Kapcsolja ki a **legutóbbi kérelem kizárása** beállítást az első különbözet kinyeréséhez. Győződjön meg arról, hogy az első Delta DTP elkészült, mielőtt első alkalommal elindítja a különbözeti kinyerést.
--  A különbözeti kinyerés újraszinkronizálására szolgáló eljárást a következő szakaszban leírtak szerint hajtsa végre.
+- Kapcsolja ki az **Utolsó kérelem kizárása** beállítást az első különbözeti kibontáshoz. Győződjön meg arról, hogy az első delta DTP befejeződött, mielőtt először elindítané a delta kinyerést.
+-  Használja az eljárást a különbözeti kihúzás újraszinkronizálásához, a következő szakaszban leírtak szerint.
 
-### <a name="resync-delta-extraction"></a>Különbözet kibontásának újraszinkronizálása
+### <a name="resync-delta-extraction"></a>Különbözeti kihúzás újraszinkronizálása
 
-Az alábbi forgatókönyvek SAP BW kockákban lévő adatok módosítását végzik, de a különbözeti DTP nem veszi figyelembe a következőket:
+A következő forgatókönyvek módosítják az SAP BW-kockák adatait, de a különbözeti DTP nem veszi figyelembe őket:
 
-- Szelektív törlés SAP BW (a sorok bármely szűrési feltétel használatával)
-- SAP BW kérelmek törlése (hibás kérelmek)
+- SAP BW szelektív törlés (sorok bármilyen szűrőfeltétel használatával)
+- SAP BW kérelem törlése (hibás kérések)
 
-Az SAP Open hub rendeltetése nem egy adatmart által vezérelt adattároló (az összes SAP BW támogatási csomag 2015 óta). Így a OHD lévő adatok módosítása nélkül törölheti az adatait egy adatkockából. Ezután újra kell szinkronizálnia a kocka Data Factory:
+Az SAP Open Hub Destination nem egy data-mart által vezérelt adatcél (2015 óta az összes SAP BW támogatási csomagban). Így törölheti az adatokat egy kockából az OHD adatainak módosítása nélkül. Ezután újra kell szinkronizálnia a kocka adatait a Data Factory-val:
 
-1. Teljes kivonást futtathat Data Factoryban (az SAP-ban teljes DTP használatával).
-2. Törölje az Open hub tábla összes sorát a Delta DTP-hez.
-3. Állítsa be a Delta DTP állapotát a **beolvasáshoz**.
+1. Teljes kinyerés futtatása a Data Factory ban (egy teljes DTP használatával az SAP-ban).
+2. Törölje a különbözeti DTP Open Hub táblájának összes sorát.
+3. Állítsa a különbözeti DTP állapotát **Lehívásra.**
 
-Ezt követően az összes további Delta DTPs és a Data Factory különbözeti kinyerése a várt módon működik.
+Ezt követően az összes ezt követő különbözeti DTP és a Data Factory különbözeti kinyerések a várt módon működik.
 
-A Delta DTP állapotának **beolvasásához**a következő lehetőség használatával manuálisan futtathatja a KÜLÖNBÖZETi DTP-t:
+A különbözeti DTP állapotának **lehívása**beállításához a következő beállítással futtathatja a különbözeti DTP-t manuálisan:
 
     *No Data Transfer; Delta Status in Source: Fetched*
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerkedjen meg SAP BW Open hub-összekötő támogatásával:
+További információ az SAP BW Open Hub összekötő támogatásáról:
 
 > [!div class="nextstepaction"]
->[SAP Business Warehouse – nyitott hub-összekötő](connector-sap-business-warehouse-open-hub.md)
+>[SAP Business Warehouse Open Hub összekötő](connector-sap-business-warehouse-open-hub.md)

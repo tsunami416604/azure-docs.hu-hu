@@ -1,6 +1,6 @@
 ---
-title: Adatbázis-rendszerbiztonsági tag hozzáadása az Azure Adatkezelőhoz a használatávalC#
-description: Ebből a cikkből megtudhatja, hogyan adhat hozzá adatbázis-rendszerbiztonsági tagokat C#az Azure Adatkezelőhoz a használatával.
+title: 'Az Azure Data Explorer adatbázis-biztonsági tagok hozzáadása a C használatával #'
+description: Ebben a cikkben megtudhatja, hogyan adhat hozzá adatbázis-tagokat az Azure Data Explorer c#használatával.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,37 +8,37 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 797d1253d44739f2026563e3df72bc85a8ef382e
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965033"
 ---
-# <a name="add-database-principals-for-azure-data-explorer-by-using-c"></a>Adatbázis-rendszerbiztonsági tag hozzáadása az Azure Adatkezelőhoz a használatávalC#
+# <a name="add-database-principals-for-azure-data-explorer-by-using-c"></a>Az Azure Data Explorer adatbázis-biztonsági tagok hozzáadása a C használatával #
 
 > [!div class="op_single_selector"]
-> * [C#](database-principal-csharp.md)
+> * [C #](database-principal-csharp.md)
 > * [Python](database-principal-python.md)
 > * [Azure Resource Manager-sablon](database-principal-resource-manager.md)
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Ebben a cikkben a használatával C#adja hozzá az Azure adatkezelő adatbázis-rendszerbiztonsági tagait.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Ebben a cikkben a C# használatával adja hozzá az Azure Data Explorer adatbázis-biztonsági tagokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nincs telepítve a Visual Studio 2019, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+* Ha nincs telepítve a Visual Studio 2019, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition alkalmazást.](https://www.visualstudio.com/downloads/) Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* [Hozzon létre egy fürtöt és egy adatbázist](create-cluster-database-csharp.md).
+* [Hozzon létre egy fürtöt és adatbázist](create-cluster-database-csharp.md).
 
-## <a name="install-c-nuget"></a>A C# NuGet telepítése
+## <a name="install-c-nuget"></a>C# NuGet telepítése
 
-* Telepítse a [Microsoft. Azure. Management. kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Telepítse a [Microsoft. Rest. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) hitelesítést a hitelesítéshez.
+* Telepítse a [Microsoft.Azure.Management.kusto alkalmazást.](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)
+* Telepítse a [Microsoft.Rest.ClientRuntime.Azure.Authentication hitelesítést](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) a hitelesítéshez.
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-## <a name="add-a-database-principal"></a>Adatbázis-tag hozzáadása
+## <a name="add-a-database-principal"></a>Egyszerű adatbázis hozzáadása
 
-Az alábbi példa bemutatja, hogyan adhat hozzá programozott módon egy adatbázis-rendszerbiztonsági tag.
+A következő példa bemutatja, hogyan adhat hozzá egy egyszerű adatbázist programozott módon.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -68,19 +68,19 @@ await kustoManagementClient.DatabasePrincipalAssignments.CreateOrUpdateAsync(res
 
 |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
 |---|---|---|
-| tenantId | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | A bérlő azonosítója. Más néven címtár-azonosító.|
-| subscriptionId | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | Az erőforrás-létrehozáshoz használt előfizetés-azonosító.|
-| clientId | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | Annak az alkalmazásnak az ügyfél-azonosítója, amely hozzáférhet a bérlő erőforrásaihoz.|
-| clientSecret | *XXXXXXXXXXXXXX* | Az alkalmazás ügyfél-titka, amely hozzáférhet a bérlő erőforrásaihoz. |
+| tenantId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | A bérlőazonosítója. Más néven könyvtárazonosító.|
+| subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Az erőforrás-létrehozáshoz használt előfizetés-azonosító.|
+| ügyfél-azonosító | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Az alkalmazás ügyfélazonosítója, amely hozzáférhet a bérlő erőforrásaihoz.|
+| ügyféltitkos | *xxxxxxxxxxxxxx* | Az alkalmazás ügyféltka-tka, amely hozzáférhet a bérlő erőforrásaihoz. |
 | resourceGroupName | *testrg* | A fürtöt tartalmazó erőforráscsoport neve.|
 | clusterName | *mykustocluster* | A fürt neve.|
-| databaseName | *mykustodatabase* | Az adatbázis neve.|
-| principalAssignmentName | *databasePrincipalAssignment1* | Az adatbázis-résztvevő erőforrás neve.|
-| principalId | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | A résztvevő azonosítója, amely lehet felhasználói e-mail-cím, alkalmazás-azonosító vagy biztonsági csoport neve.|
-| szerepkör | *Felügyeleti* | Az adatbázis-tag szerepe, amely "Admin'", "betöltés", "monitor", "user", "UnrestrictedViewers", "Viewer" lehet.|
-| tenantIdForPrincipal | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | A rendszerbiztonsági tag bérlői azonosítója.|
-| principalType | *Alkalmazás* | A rendszerbiztonsági tag típusa, amely lehet "user", "app" vagy "Group"|
+| adatbázisneve | *mykustoadatbázis* | Az adatbázis neve.|
+| igazgatóhelyettesassignmentname | *databasePrincipalAssignment1* | Az elsődleges adatbázis-erőforrás neve.|
+| principalId között | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | A fő azonosító, amely lehet felhasználói e-mail, alkalmazásazonosító vagy biztonsági csoport neve.|
+| Szerepet | *Felügyelet* | Az adatbázis fő kiszolgálójának szerepköre, amely lehet "Admin", "Ingestor", "Monitor", "Felhasználó", "UnrestrictedViewers", "Viewer".|
+| tenantIdForPrincipal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | A főnév bérlői azonosítója.|
+| principalType típus | *Alkalmazás* | A megbízó típusa, amely lehet "Felhasználó", "Alkalmazás" vagy "Csoport"|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Adatbevitel az Azure Adatkezelő Node Library használatával](node-ingest-data.md)
+* [Adatok betöltése az Azure Data Explorer csomópontkönyvtárával](node-ingest-data.md)

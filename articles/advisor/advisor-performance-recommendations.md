@@ -1,123 +1,123 @@
 ---
-title: Az Azure-alkalmazások teljesítményének javítása Azure Advisor
-description: Az Advisor használatával optimalizálja az Azure-beli üzemelő példányok teljesítményét.
+title: Az Azure Advisorsegítségével javíthatja az Azure-alkalmazások teljesítményét
+description: Az Advisor használatával optimalizálhatja az Azure-telepítések teljesítményét.
 ms.topic: article
 ms.date: 01/29/2019
 ms.openlocfilehash: 405ec395feeb33b8511b9b915151b2ed9503c371
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443060"
 ---
-# <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Az Azure-alkalmazások teljesítményének javítása Azure Advisor
+# <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Az Azure Advisorsegítségével javíthatja az Azure-alkalmazások teljesítményét
 
-Azure Advisor teljesítményre vonatkozó javaslatok segítenek az üzleti szempontból kritikus fontosságú alkalmazások sebességének és reagálásának javításában. Az Advisor teljesítményére vonatkozó javaslatokat az Advisor irányítópult **teljesítmény** lapján érheti el.
+Az Azure Advisor teljesítményre vonatkozó javaslatai segítenek az üzleti legkritikusabb alkalmazások sebességének és válaszképességének javításában. Teljesítményjavaslatokat kaphat az Advisor-irányítópult Teljesítmény lapján az Advisor-irányítópult **teljesítményéről.**
 
-## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>Csökkentse a DNS-időt a Traffic Manager-profilban való működésre, hogy gyorsabban átadja a feladatokat a megfelelő állapotú végpontoknak
+## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>Csökkentse a TRAFFIC Manager-profilon való élő DNS-idő csökkentését, hogy gyorsabban átváltson az egészséges végpontokra
 
-Az Traffic Manager profil élettartama [(TTL) beállításai](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-performance-considerations) lehetővé teszik annak megadását, hogy a végpontok milyen gyorsan legyenek átváltva, ha egy adott végpont nem válaszol a lekérdezésekre. A TTL-értékek csökkentése azt jelenti, hogy az ügyfelek gyorsabban lesznek átirányítva a működő végpontok működéséhez.
+A Traffic Manager-profil [Live (TTL) beállításai](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-performance-considerations) lehetővé teszik annak megadását, hogy milyen gyorsan váltson végpontok között, ha egy adott végpont nem válaszol a lekérdezésekre. A TTL-értékek csökkentése azt jelenti, hogy az ügyfelek gyorsabban lesznek irányítva a működő végpontokhoz.
 
-Azure Advisor azonosítja a hosszabb ÉLETTARTAMú Traffic Manager profilokat, és azt javasolja, hogy az ÉLETTARTAMot 20 másodpercre vagy 60 másodpercre konfigurálja, attól függően, hogy a profil konfigurálva van-e [Fast Failoverhoz](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/).
+Az Azure Advisor azonosítja a Traffic Manager-profilokat hosszabb TTL-beállítással, és azt javasolja, hogy a TTL-t 20 másodpercre vagy 60 másodpercre konfigurálja attól függően, hogy a profil [gyors feladatátvételhez](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/)van-e konfigurálva.
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>Az adatbázis teljesítményének növelése az SQL DB Advisorral
 
-Az Advisor egységes, összevont áttekintést nyújt az összes Azure-erőforrásra vonatkozó javaslatokról. A SQL Database Advisor a SQL Azure-adatbázis teljesítményének javítására vonatkozó javaslatok bevonásával integrálható. SQL Database Advisor a használati előzmények elemzésével értékeli a SQL Azure adatbázisok teljesítményét. Ezután ajánlásokat nyújt az adatbázis tipikus számítási feladatainak futtatásához.
+Az Advisor egységes, összevont nézetet biztosít az összes Azure-erőforrással kapcsolatos javaslatokról. Az SQL Database Advisor használatával integrálható, hogy javaslatokat tegyen az SQL Azure-adatbázis teljesítményének javítására.Az SQL Database Advisor a használati előzmények elemzésével értékeli az SQL Azure-adatbázisok teljesítményét. Ezután javaslatokat, amelyek a legalkalmasabbak az adatbázis tipikus számítási feladatának futtatásához.
 
 > [!NOTE]
-> A javaslatok beszerzéséhez egy adatbázisnak körülbelül egy hétig kell lennie, és ezen a héten belül bizonyos konzisztens tevékenységnek kell lennie. A SQL Database Advisor könnyebben optimalizálható a konzisztens lekérdezési mintáknál, mint a tevékenységek véletlenszerű kitörése esetén.
+> Javaslatok beszerezéséhez egy adatbázisnak körülbelül egy héthasználattal kell rendelkeznie, és ezen a héten belül konzisztens tevékenységnek kell lennie. Az SQL Database Advisor könnyebben optimalizálhat konzisztens lekérdezési mintákhoz, mint a véletlenszerű tevékenységsorozatokhoz.
 
-További információ a SQL Database Advisorről: [SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
+Az SQL Database Advisor ról további információt az [SQL Database Advisor című témakörben talál.](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)
 
-## <a name="improve-app-service-performance-and-reliability"></a>A App Service teljesítményének és megbízhatóságának javítása
+## <a name="improve-app-service-performance-and-reliability"></a>Az App Service teljesítményének és megbízhatóságának javítása
 
-A Azure Advisor az ajánlott eljárásokat ajánlja a App Services-élmény javításához és a megfelelő platform-képességek felfedezéséhez. Példák App Services javaslatokra:
-* Azon példányok észlelése, amelyekben a memória-vagy a CPU-erőforrások kimerülnek a kockázatcsökkentő beállításokkal rendelkező app Runtimes használatával.
-* Olyan példányok észlelése, amelyekben a collocating-erőforrások, például a webalkalmazások és az adatbázisok javítják a teljesítményt és az alacsonyabb költségeket.
+Az Azure Advisor integrálja az ajánlott eljárásokat az App Services felhasználói élményének javítására és a megfelelő platformképességek felfedezésére vonatkozó javaslatokban. Példák az App Services-javaslatokra:
+* Olyan példányok észlelése, ahol a memória- vagy cpu-erőforrások kimerültek az alkalmazás futási lehetőségei által, kockázatcsökkentési beállításokkal.
+* Olyan példányok észlelése, ahol az erőforrások, például a webalkalmazások és adatbázisok lefoglalása javíthatja a teljesítményt és csökkentheti a költségeket.
 
-App Services javaslatokkal kapcsolatos további információkért tekintse [meg a Azure app Service ajánlott eljárásai](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)című témakört.
+Az App Services-javaslatokról az [Azure App Service gyakorlati tanácsok](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)című témakörben talál további információt.
 
-## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>A lemez I/O-szabályozásának megakadályozása a Managed Disks használatával
+## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>A felügyelt lemezek használata a lemez I/O-szabályozásának megakadályozására
 
-Az Advisor azonosítja azokat a virtuális gépeket, amelyek egy olyan Storage-fiókhoz tartoznak, amely eléri a méretezhetőségi célját. Ez az állapot az I/O-szabályozásra fogékony virtuális gépeket tesz elérhetővé. Az Advisor azt javasolja, hogy Managed Disks használjanak a teljesítmény romlásának megelőzése érdekében.
+Az Advisor azonosítja azokat a virtuális gépeket, amelyek egy olyan tárfiókhoz tartoznak, amely eléri a méretezhetőségi célt. Ez az állapot a virtuális gépeket i/o-szabályozásra érzékenysé teszi. Az Advisor azt javasolja, hogy a teljesítményromlás megelőzése érdekében használjon felügyelt lemezeket.
 
-## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>A virtuális gépek lemezeinek teljesítményének és megbízhatóságának javítása Premium Storage használatával
+## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>A virtuálisgép-lemezek teljesítményének és megbízhatóságának javítása a Premium Storage használatával
 
-Az Advisor a Storage-fiókban nagy mennyiségű tranzakcióval rendelkező, standard lemezekkel rendelkező virtuális gépeket azonosít, és a prémium szintű lemezekre történő frissítést javasolja. 
+Az Advisor azonosítja azokat a szabványos lemezekkel rendelkező virtuális gépeket, amelyek nagy mennyiségű tranzakcióval rendelkeznek a tárfiókban, és prémium szintű lemezekre való frissítést javasol. 
 
-Az Azure Premium Storage nagy teljesítményű, kis késleltetésű lemezes támogatást biztosít az I/O-igényű számítási feladatokat futtató virtuális gépekhez. A Premium Storage-fiókokat használó virtuális gépek lemezei SSD-meghajtókon tárolják az adattárolást. Az alkalmazás legjobb teljesítményének érdekében javasoljuk, hogy a Premium Storage-hoz magas IOPS igénylő virtuálisgép-lemezeket telepítse át.
+Az Azure Premium Storage nagy teljesítményű, alacsony késleltetésű lemeztámogatást nyújt az I/O-igényes számítási feladatokat futtató virtuális gépekszámára. A prémium szintű tárfiókokat használó virtuálisgép-lemezek adatokat tárolnak ssd-meghajtókon. Az alkalmazás legjobb teljesítménye érdekében azt javasoljuk, hogy telepítse át a magas IOPS-t igénylő virtuálisgép-lemezeket a prémium szintű tárhelyre.
 
-## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>A lekérdezési teljesítmény növeléséhez távolítsa el az SQL-adattárház-táblázat adatait
+## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Adatdöntés eltávolítása az SQL adattárház tábláján a lekérdezési teljesítmény növelése érdekében
 
-Az adatok eldöntése szükségtelen adatáthelyezést vagy erőforrás-szűk keresztmetszetet okozhat a számítási feladatok futtatásakor. Az Advisor a 15%-nál nagyobb eloszlási adattorzítást deríti fel, és azt javasolja, hogy terjessze újra az adatait, és újra keresse meg a tábla terjesztési kulcsának beállításait. Ha többet szeretne megtudni a ferdeség azonosításáról és eltávolításáról, tekintse meg a következő témakört: [Hibaelhárítás](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
+Az adatdöntés szükségtelen adatmozgást vagy erőforrás-szűk keresztmetszeteket okozhat a munkaterhelés futtatásakor. Az Advisor észleli a 15%-nál nagyobb terjesztési adatok at, és javasolja az adatok újraterjesztését, majd a táblaterjesztési kulcs kiválasztásának újbóli átgondolását. A döntés azonosításáról és eltávolításáról a [Hibaelhárítás című](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice)témakörben olvashat bővebben.
 
-## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>A lekérdezési teljesítmény növeléséhez hozzon létre vagy frissítsen elavult tábla statisztikáit az SQL-adattárház táblában
+## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Elavult táblastatisztikák létrehozása vagy frissítése az SQL adattárház táblában a lekérdezési teljesítmény növelése érdekében
 
-Az Advisor olyan táblákat azonosít, amelyek nem rendelkeznek naprakész [táblázat statisztikával](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) , és a tábla statisztikáinak létrehozását és frissítését javasolja. Az SQL-adattárház-lekérdezés-optimalizáló a lekérdezési eredményben a naprakész statika értékkel becsüli meg, hogy a lekérdezés-optimalizáló magas színvonalú lekérdezési tervet hozzon létre a leggyorsabb teljesítmény érdekében.
+Az Advisor azonosítja azokat a táblákat, amelyek nem rendelkeznek naprakész [táblastatisztikákkal,](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) és javasolja a táblastatisztikák létrehozását vagy frissítését. Az SQL adattárház-lekérdezés-optimalizáló naprakész statikáksegítségével becsüli meg a lekérdezés eredményében lévő számosságot vagy sorok számát, amely lehetővé teszi, hogy a lekérdezésoptimalizáló kiváló minőségű lekérdezési tervet hozzon létre a leggyorsabb teljesítmény érdekében.
 
-## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Vertikális felskálázás a gyorsítótár kihasználtságának optimalizálásához a SQL Data Warehouse táblákon a lekérdezési teljesítmény növeléséhez
+## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Skálázás az SQL Data Warehouse-táblák gyorsítótár-kihasználtságának optimalizálásához a lekérdezési teljesítmény növelése érdekében
 
-A Azure Advisor észleli, ha a SQL Data Warehouse nagy gyorsítótár-használatú, és alacsony találati aránya van. Ez az állapot nagy gyorsítótár-kizárást jelez, ami hatással lehet a SQL Data Warehouse teljesítményére. Az Advisor azt javasolja, hogy a SQL Data Warehouse vertikális felskálázásával gondoskodjon arról, hogy elegendő gyorsítótár-kapacitást foglaljon le a munkaterhelés számára.
+Az Azure Advisor észleli, ha az SQL Data Warehouse magas gyorsítótár-használt százalékos és alacsony találati százalék. Ez a feltétel magas gyorsítótár-kilakoltatást jelez, ami hatással lehet az SQL Data Warehouse teljesítményére. Az Advisor azt javasolja, hogy skálázza fel az SQL Data Warehouse-t, hogy elegendő gyorsítótár-kapacitást biztosítson a számítási feladatokhoz.
 
-## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>A lekérdezési teljesítmény növeléséhez alakítsa át SQL Data Warehouse táblákat a replikált táblákba
+## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>SQL Data Warehouse-táblák átalakítása replikált táblákká a lekérdezési teljesítmény növelése érdekében
 
-Az Advisor azokat a táblákat azonosítja, amelyek nem replikált táblák, de a konvertálás előnyeit kihasználva kihasználhatják ezeket a táblákat. A javaslatok a replikált tábla méretétől, az oszlopok számának, a táblázat eloszlási típusának és a SQL Data Warehouse tábla partícióinak számától függenek. További heurisztikus információk is megadhatók a környezethez tartozó javaslatban. További információ a javaslat meghatározásáról: [SQL Data Warehouse javaslatok](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables). 
+Az Advisor azonosítja azokat a táblákat, amelyek nem replikált táblák, de előnyös lenne a konvertálás, és javasolja a táblák konvertálását. A javaslatok a replikált tábla méretén, az oszlopok számán, a táblaterjesztési típusán és az SQL Data Warehouse tábla partícióinak számán alapulnak. A kontextusra vonatkozó ajánlásban további heurisztikák is rendelkezésre állhatnak. Ha többet szeretne tudni arról, hogyan határozza meg ezt a javaslatot, olvassa el az SQL Data Warehouse javaslatok című [témakört.](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables) 
 
-## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>Telepítse át a Storage-fiókját a Azure Resource Managerra az összes legújabb Azure-funkció beszerzéséhez
+## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>A tárfiók áttelepítése az Azure Resource Managerbe az Azure legújabb Azure-funkcióinak beszerezéséhez
 
-Telepítse át a Storage-fiók telepítési modelljét Azure Resource Managerra (Resource Manager), hogy kihasználhassa a sablonok központi telepítését, a további biztonsági beállításokat, valamint az Azure Storage legújabb funkcióinak kihasználásához szükséges GPv2-fiókra való frissítést. Az Advisor azonosítja a klasszikus üzemi modellt használó önálló tárolási fiókokat, és javasolja a Resource Manager-alapú üzemi modellbe való áttelepítést.
+Telepítse át a tárfiók üzembe helyezési modelljét az Azure Resource Managerbe (Resource Manager) a sablontelepítések, a további biztonsági beállítások és a GPv2-fiókra való frissítés előnyeinek kihasználásához az Azure Storage legújabb funkcióinak kihasználásához. Az Advisor azonosítja a klasszikus üzembe helyezési modellt használó önálló tárfiókokat, és javasolja az Erőforrás-kezelő telepítési modelljére való áttelepítést.
 
 > [!NOTE]
-> A Azure Monitor klasszikus riasztásai a 2019 augusztusában lettek kivonva. Javasoljuk, hogy frissítse a klasszikus Storage-fiókját a Resource Manager használatára, hogy megőrizze a riasztási funkciókat az új platformmal. További információ: [klasszikus riasztások nyugdíjazása](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform).
+> Az Azure Monitor klasszikus riasztásai 2019 augusztusában kilettek vonva. Azt javasoljuk, hogy frissítse a klasszikus tárfiókot, hogy az Erőforrás-kezelő használatával megőrizze a riasztási funkciót az új platformmal. További információ: [Classic Alerts Retirement](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform).
 
-## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Tervezze meg a Storage-fiókokat, hogy megakadályozza a maximális előfizetési korlátot
+## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Tervezze meg tárfiókjait, hogy ne üsse meg a maximális előfizetési korlátot
 
-Egy Azure-régió legfeljebb 250 Storage-fiókot tud támogatni előfizetésre. Ha elérte a korlátot, nem fog tudni további Storage-fiókokat létrehozni az adott régióban/előfizetések kombinációjában. Az Advisor megkeresi az előfizetéseket és a felületre vonatkozó javaslatokat, hogy kevesebb Storage-fiókot tervezzen meg, amelyek közel állnak a maximális korlát eléréséhez.
+Egy Azure-régió előfizetésenként legfeljebb 250 tárfiókot támogathat. A korlát elérése után nem hozhat létre további tárfiókokat az adott régióban/előfizetési kombinációban. Az Advisor ellenőrzi az előfizetéseket és a felületi javaslatokat, hogy kevesebb tárfiókot tervezhessen olyan fiókokhoz, amelyek közel vannak a maximális korlát eléréséhez.
 
-## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>Az Azure MySQL, az Azure PostgreSQL és az Azure MariaDB-kiszolgálók teljesítményének optimalizálása 
+## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>Optimalizálja az Azure MySQL, az Azure PostgreSQL és az Azure MariaDB-kiszolgálók teljesítményét 
 
-### <a name="fix-the-cpu-pressure-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-with-cpu-bottlenecks"></a>Javítsa ki az Azure MySQL, az Azure PostgreSQL és az Azure MariaDB-kiszolgálók CPU-terhelését a CPU szűk keresztmetszetével
-A CPU nagy kihasználtsága hosszabb időn keresztül lassú lekérdezési teljesítményt eredményezhet a munkaterhelés számára. A CPU méretének növelése segít az adatbázis-lekérdezések futtatókörnyezetének optimalizálásában és az általános teljesítmény növelésében. Azure Advisor a nagy CPU-kihasználtsággal rendelkező kiszolgálók azonosítására, amelyek valószínűleg a CPU által korlátozott munkaterheléseket futtatnak, és a számítási feladatok méretezését javasolják.
+### <a name="fix-the-cpu-pressure-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-with-cpu-bottlenecks"></a>Javítsa ki az Azure MySQL, az Azure PostgreSQL és az Azure MariaDB-kiszolgálók CPU-terhelését a CPU-szűk keresztmetszetekkel
+A processzor hosszú időn keresztül inagyon magas kihasználtsága lassú lekérdezési teljesítményt okozhat a számítási feladatokhoz. A processzor méretének növelése segít az adatbázis-lekérdezések futásidejének optimalizálásában és az általános teljesítmény javításában. Az Azure Advisor azonosítja a magas CPU-kihasználtsítással rendelkező kiszolgálókat, amelyek valószínűleg cpu-korlátozott számítási feladatokat futtatnak, és a számítási feladatok méretezését javasolja.
 
-### <a name="reduce-memory-constraints-on-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Csökkentheti az Azure MySQL, az Azure PostgreSQL és az Azure MariaDB-kiszolgálók memóriabeli korlátozásait, vagy áthelyezheti a memóriát optimalizált SKU-ra.
-Az alacsony gyorsítótár-találatok aránya lassabb lekérdezési teljesítményt és nagyobb IOPS eredményezhet. Ennek oka lehet egy hibás lekérdezési csomag vagy a memória-igényes munkaterhelés futtatása. A lekérdezési terv vagy az Azure Database for PostgreSQL adatbázis-kiszolgáló, az Azure MySQL adatbázis-kiszolgáló vagy az Azure MariaDB-kiszolgáló [memóriájának](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) javítása segít optimalizálni az adatbázis-számítási feladatok végrehajtását. Azure Advisor azonosítja a nagy pufferméret miatt érintett kiszolgálókat, és a lekérdezési terv kijavítását, a több memóriával rendelkező magasabb SKU-ra való áttérést, vagy a tárterület méretének növelését javasolja, hogy további IOPS legyenek.
+### <a name="reduce-memory-constraints-on-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Csökkentse a memóriakorlátokat az Azure MySQL, az Azure PostgreSQL és az Azure MariaDB kiszolgálókon, vagy helyezze át a memóriára optimalizált termékváltozatra
+Az alacsony gyorsítótár-leolvasási arány lassabb lekérdezési teljesítményt és megnövekedett IOPS-t eredményezhet. Ennek oka lehet egy rossz lekérdezési terv, vagy egy memóriaigényes munkaterhelés futtatása. A lekérdezési terv javítása vagy az Azure Database for PostgreSQL adatbázis-kiszolgáló, az Azure MySQL adatbázis-kiszolgáló vagy az Azure MariaDB-kiszolgáló [memóriájának növelése](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) segít optimalizálni az adatbázis-munkaterhelés végrehajtását. Az Azure Advisor azonosítja a magas pufferkészlet-lemorzsolódás miatt érintett kiszolgálókat, és azt javasolja, hogy javítsa ki a lekérdezési tervet, és egy nagyobb memóriával rendelkező termékváltozatra kerüljön, vagy növelje a tárhely méretét, hogy több IOPS-t kapjon.
 
-### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Az Azure MySQL vagy az Azure PostgreSQL olvasási replikájának használata az olvasási igényű számítási feladatokhoz
-Azure Advisor kihasználja a munkaterhelés-alapú heurisztikus műveleteket, például az olvasások arányát a kiszolgálón az elmúlt hét napban, az olvasási igényű számítási feladatok azonosítása érdekében. Az Azure Database for PostgreSQL-erőforrás vagy az Azure Database for MySQL-erőforrás nagyon magas olvasási/írási aránnyal eredményezheti a CPU-és/vagy memória-tartalmakat, ami lelassítja a lekérdezési teljesítményt. A [replika](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) hozzáadásával a rendszer kibővíti az olvasási adatokat a replika-kiszolgálóra, megakadályozva a processzor és/vagy a memória korlátozásait az elsődleges kiszolgálón. Az Advisor olyan kiszolgálókat azonosít, amelyek ilyen nagy olvasási igényű számítási feladatokkal rendelkeznek, és javasolt egy [olvasási replika](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) hozzáadását a beolvasott számítási feladatok kiszervezéséhez.
+### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Azure MySQL vagy Azure PostgreSQL olvasási replika használata az olvasási igényű munkaterhelések horizontális felskálázásához
+Az Azure Advisor kihasználja a számítási feladatokon alapuló heurisztikát, például az olvasások és a kiszolgálón az írások arányát az elmúlt hét napban az olvasásigényes számítási feladatok azonosításához. Az Azure-adatbázis PostgreSQL-erőforrás vagy Azure-adatbázis MySQL-erőforrás nagyon magas olvasási/írási arány vezethet CPU és/vagy memória versengések, ami lassú lekérdezési teljesítmény. Egy [replika](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) hozzáadása segít a replikakiszolgáló olvasásainak horizontális felskálázásában, megakadályozva a PROCESSZOR és/vagy a memória megszorítását az elsődleges kiszolgálón. Az Advisor azonosítja az ilyen nagy olvasási igényű számítási feladatokat tartalmazó kiszolgálókat, és javasolja egy [olvasási replika](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) hozzáadását az olvasási számítási feladatok egy részének kiszervezéséhez.
 
 
-### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Az Azure MySQL, az Azure PostgreSQL vagy az Azure MariaDB-kiszolgáló méretezése magasabb SKU-ra a kapcsolatok megkötésének megakadályozása érdekében
-Az adatbázis-kiszolgáló minden új kapcsolódása memóriát foglal le. Az adatbázis-kiszolgáló teljesítménye romlik, ha a kiszolgálóhoz való kapcsolódás a memória [felső korlátja](https://docs.microsoft.com/azure/postgresql/concepts-limits) miatt meghiúsul. A Azure Advisor számos kapcsolódási hibával rendelkező kiszolgálókat azonosít, és javasolja, hogy frissítse a kiszolgáló kapcsolatainak korlátait, hogy több memóriát biztosítson a kiszolgálónak a számítási vagy a memóriára optimalizált SKU-k használatával, amelyek több számítási kapacitással rendelkeznek.
+### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Az Azure MySQL, az Azure PostgreSQL vagy az Azure MariaDB kiszolgáló méretezése magasabb termékváltozatra a kapcsolatkorlátozások megelőzése érdekében
+Az adatbázis-kiszolgálóval létesített minden új kapcsolat helyet foglal el. Az adatbázis-kiszolgáló teljesítménye romlik, ha a kiszolgálóval létesített kapcsolatok a memória [felső határa](https://docs.microsoft.com/azure/postgresql/concepts-limits) miatt megszakadnak. Az Azure Advisor azonosítja a számos csatlakozási hibával működő kiszolgálókat, és javasolja a kiszolgáló kapcsolati korlátainak frissítését, hogy több memóriát biztosítson a kiszolgálónak a számítási kapacitás skálázásával vagy a memóriaoptimalizált sk-ek használatával, amelyek magonként több számítással rendelkeznek.
 
-## <a name="scale-your-cache-to-a-different-size-or-sku-to-improve-cache-and-application-performance"></a>A gyorsítótár és az alkalmazások teljesítményének növelése érdekében méretezheti a gyorsítótárat egy másik méretre vagy SKU-ra.
+## <a name="scale-your-cache-to-a-different-size-or-sku-to-improve-cache-and-application-performance"></a>A gyorsítótár méretezése más méretre vagy termékváltozatra a gyorsítótár és az alkalmazások teljesítményének javítása érdekében
 
-A gyorsítótár-példányok akkor működnek a legjobban, ha nem a nagy mennyiségű, a kiszolgáló terhelése vagy a nagy hálózati sávszélesség alatt futnak, ami azt okozhatja, hogy nem válaszol, az adatvesztés vagy elérhetetlenné válik. Az Advisor azonosítja a gyorsítótár-példányokat ezekben a feltételekben, és javaslatot tesz az ajánlott eljárások alkalmazására, hogy csökkentse a memória terhelését, a kiszolgáló terhelését vagy a hálózati sávszélességet, vagy méretezést egy másik méretre vagy SKU-ra nagyobb kapacitással.
+A gyorsítótár-példányok akkor teljesítenek a legjobban, ha nem futnak nagy memórianyomás, nagy kiszolgálóterhelés vagy nagy hálózati sávszélesség alatt, ami miatt nem válaszolnak, adatvesztést tapasztalnak, vagy elérhetetlenné válnak. Az Advisor ezekben a feltételekben azonosítja a gyorsítótár-példányokat, és ajánlott eljárásokat javasol a memórianyomás, a kiszolgáló terhelésének vagy a hálózati sávszélesség csökkentéséhez vagy más méretűre vagy nagyobb kapacitású termékváltozatra történő méretezése érdekében.
 
-## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>Régiókat adhat hozzá a Azure Cosmos DB-fiókjához tartozó adatforgalomhoz
+## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>Régiók hozzáadása az Azure Cosmos DB-fiókjához forgalommal
 
-Az Advisor felismeri Azure Cosmos DB olyan fiókokat, amelyek egy jelenleg nem konfigurált régióból származó forgalommal rendelkeznek, és a régió hozzáadását javasolja. Ez növeli a régióból érkező kérelmek késését, és a régió leállása esetén biztosítja a rendelkezésre állást. [További információ a globális adatterjesztésről Azure Cosmos DB](https://aka.ms/cosmos/globaldistribution)
+Az Advisor észleli az Azure Cosmos DB-fiókokat, amelyek forgalma t egy régióból, amely jelenleg nincs konfigurálva, és azt javasolja, hogy adja hozzá a régióban. Ez javítja az adott régióból érkező kérelmek késését, és biztosítja a rendelkezésre állást a régió kimaradása esetén. [További információ az Azure Cosmos DB globális adatterjesztéséről](https://aka.ms/cosmos/globaldistribution)
 
-## <a name="configure-your-azure-cosmos-db-indexing-policy-with-customer-included-or-excluded-paths"></a>Az Azure Cosmos DB indexelési házirend konfigurálása az ügyfelek által tartalmazott vagy kizárt elérési utakkal
+## <a name="configure-your-azure-cosmos-db-indexing-policy-with-customer-included-or-excluded-paths"></a>Konfigurálja az Azure Cosmos DB indexelési szabályzatát az ügyfél által biztosított vagy kizárt elérési utakkal
 
-Azure Advisor azonosítja Cosmos DB tárolókat, amelyek az alapértelmezett indexelési házirendet használják, de a munkaterhelés-minta alapján kihasználhatják az egyéni indexelési szabályzatot. Az alapértelmezett indexelési házirend indexeli az összes tulajdonságot, de a lekérdezési szűrőben használt explicit vagy kizárt elérési úttal rendelkező egyéni indexelési házirend használatával csökkentheti az indexeléshez felhasznált RUs-t és tárterületet. [További információ az index-házirendek módosításáról](https://aka.ms/cosmosdb/modify-index-policy)
+Az Azure Advisor azonosítja a Cosmos DB-tárolókat, amelyek az alapértelmezett indexelési szabályzatot használják, de a számítási feladatok minta alapján egyéni indexelési szabályzat előnyeit élvezhetik. Az alapértelmezett indexelési házirend indexeli az összes tulajdonságot, de egy egyéni indexelési házirend használatával explicit foglalt vagy kizárt elérési utak használt lekérdezési szűrők csökkentheti a R.Us és a tárolás használt indexelés. [További információ az indexházirendek módosításáról](https://aka.ms/cosmosdb/modify-index-policy)
 
 ## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Az Azure Cosmos DB lekérdezési lapméretének (MaxItemCount) beállítása -1 értékre 
 
-A Azure Advisor azonosítja Azure Cosmos DB tárolókat, amelyek a 100-es lekérdezési oldal méretét használják, és a gyorsabb keresés érdekében javasolt az oldal mérete (1). [További információ az elemek maximális számáról](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+Az Azure Advisor azonosítja az Azure Cosmos DB-tárolókat, amelyek a 100-as lekérdezési oldalméretet használják, és a gyorsabb vizsgálatok érdekében -1 oldalméretet fog használni. [További információ a maximális cikkszámról](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
 
-## <a name="how-to-access-performance-recommendations-in-advisor"></a>Teljesítménnyel kapcsolatos javaslatok elérése az Advisorban
+## <a name="how-to-access-performance-recommendations-in-advisor"></a>A teljesítményre vonatkozó ajánlások elérése az Advisorban
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd nyissa meg az [Advisor alkalmazást](https://aka.ms/azureadvisordashboard).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), majd nyissa meg [az Advisor](https://aka.ms/azureadvisordashboard)t.
 
-2.  Az Advisor Irányítópultján kattintson a **teljesítmény** fülre.
+2.  Az Advisor irányítópultján kattintson a **Teljesítmény** fülre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
+Ha többet szeretne megtudni az Advisor-ajánlásokról, olvassa el a következő témakört:
 
-* [Az Advisor bemutatása](advisor-overview.md)
+* [Bevezetés a tanácsadó](advisor-overview.md)
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
-* [Advisor – Cost-javaslatok](advisor-cost-recommendations.md)
-* [Advisor – magas rendelkezésre állási javaslatok](advisor-high-availability-recommendations.md)
-* [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
-* [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)
+* [Tanácsadói költségajánlások](advisor-cost-recommendations.md)
+* [Tanácsadó magas rendelkezésre állásra vonatkozó ajánlásai](advisor-high-availability-recommendations.md)
+* [Tanácsadó biztonsági ajánlásai](advisor-security-recommendations.md)
+* [Az Advisor Operational Excellence ajánlásai](advisor-operational-excellence-recommendations.md)

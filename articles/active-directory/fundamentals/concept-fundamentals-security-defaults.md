@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory biztonsági alapértelmezett beállítások
-description: Biztonsági alapértelmezett házirendek, amelyek segítenek a szervezetek számára a gyakori támadások elleni védelemben
+title: Az Azure Active Directory biztonsági beállításai
+description: Biztonsági alapértelmezett házirendek, amelyek segítenek megvédeni a szervezeteket a gyakori támadásoktól
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,151 +12,151 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3139d39797c3bc576bb39f1438b7e6d3f37e3c5c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78248844"
 ---
-# <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
+# <a name="what-are-security-defaults"></a>Mik a biztonsági alapértékek?
 
-A biztonság kezelése nehéz lehet, ha a közös identitással kapcsolatos támadások egyre népszerűbbek. A támadások közé tartozik a jelszó-és a visszajátszás, valamint az adathalászat.
+A biztonság kezelése nehéz lehet, ha a közös identitással kapcsolatos támadások egyre népszerűbbek. Ezek a támadások közé tartozik a jelszó spray, visszajátszás, és az adathalászat.
 
-A Azure Active Directory (Azure AD) biztonsági alapértékei megkönnyítik a biztonságos biztonságot, és segítenek a szervezet védelmében. A biztonsági alapértékek előre konfigurált biztonsági beállításokat tartalmaznak a gyakori támadásokhoz. 
+Az Azure Active Directory (Azure AD) biztonsági beállításai megkönnyítik a biztonságot és a szervezet védelmét. A biztonsági alapértelmezések előre konfigurált biztonsági beállításokat tartalmaznak a gyakori támadásokhoz. 
 
-A Microsoft mindenki számára elérhetővé teszi a biztonsági beállításokat. A cél annak biztosítása, hogy az összes szervezet külön díj nélkül engedélyezze az alapszintű biztonsági szintet. A biztonsági alapértelmezéseket be kell kapcsolni a Azure Portal.
+A Microsoft mindenki számára elérhetővé teszi a biztonsági beállításokat. A cél annak biztosítása, hogy minden szervezet rendelkezik egy alapszintű biztonsági engedélyezve extra költség nélkül. Az Azure Portalon bekapcsolja a biztonsági alapértékeket.
 
-![Képernyőkép a Azure Portalról a biztonsági Alapértelmezések engedélyezésére szolgáló váltógomb használatával](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
+![Képernyőkép az Azure Portalról a kapcsolóval a biztonsági alapértelmezések engedélyezéséhez](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
  
 > [!TIP]
-> Ha a bérlőt 2019 október 22-én vagy azt követően hozták létre, lehetséges, hogy az új, biztonsági beállításokkal kapcsolatos alapértelmezett viselkedés tapasztalható, és a bérlőben már engedélyezve vannak a biztonsági alapértékek. Az összes felhasználó védelme érdekében a biztonsági alapértelmezéseket a rendszer az összes létrehozott új bérlőre bevezeti.
+> Ha a bérlő2019. október 22-én vagy azt követően jött létre, lehetséges, hogy az új biztonságos alapértelmezett viselkedést tapasztalja, és már engedélyezve van a bérlőben a biztonsági alapértelmezések. Annak érdekében, hogy megvédje az összes felhasználó, biztonsági alapértelmezett a rendszer gördült ki az összes új bérlő létrehozott.
 
-A biztonsági alapbeállítások elérhetővé tételéről további részleteket az Alex Weinert blogbejegyzésében talál, amely a [biztonsági beállítások](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414)megadását ismerteti.
+További részletek arról, hogy miért biztonsági alapértelmezett állnak rendelkezésre megtalálható Alex Weinert blogbejegyzést, [Bemutatkozik a biztonsági alapértelmezett](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414).
 
-## <a name="unified-multi-factor-authentication-registration"></a>Egységesített Multi-Factor Authentication regisztráció
+## <a name="unified-multi-factor-authentication-registration"></a>Egységes többtényezős hitelesítési regisztráció
 
-A bérlő összes felhasználójának regisztrálnia kell a többtényezős hitelesítést (MFA) az Azure Multi-Factor Authentication szolgáltatás formájában. A felhasználók 14 napon belül regisztrálhatnak Multi-Factor Authenticationre a Microsoft Authenticator alkalmazás használatával. A 14 nap eltelte után a felhasználó nem fog tudni bejelentkezni, amíg Multi-Factor Authentication regisztráció be nem fejeződik.
+A bérlő minden felhasználójának regisztrálnia kell a többtényezős hitelesítéshez (MFA) az Azure többtényezős hitelesítési szolgáltatás formájában. A felhasználóknak 14 nap áll a többtényezős hitelesítésre való regisztrációra a Microsoft Authenticator alkalmazás használatával. A 14 nap eltelte után a felhasználó nem tud bejelentkezni, amíg a többtényezős hitelesítés regisztrációbefejeződött.
 
-Tisztában vagyunk azzal, hogy előfordulhat, hogy egyes felhasználók házon kívül vannak, vagy nem jelentkeznek be a biztonsági beállítások engedélyezése után 14 napon belül. Annak biztosítása érdekében, hogy minden felhasználó számára elegendő idő legyen a Multi-Factor Authentication regisztrálására, a 14 napos időszak minden felhasználó esetében egyedi. A felhasználók 14 napos időszaka az első sikeres interaktív bejelentkezés után kezdődik, miután engedélyezte a biztonsági beállításokat.
+Tisztában vagyunk azzal, hogy egyes felhasználók előfordulhat, hogy nem a hivatalból, vagy nem jelentkezik be a 14 nap alatt közvetlenül a biztonsági alapértelmezések engedélyezése után. Annak érdekében, hogy minden felhasználónak elegendő ideje legyen a többtényezős hitelesítésre való regisztrációra, a 14 napos időszak minden felhasználó számára egyedi. A felhasználó 14 napos időszaka az első sikeres interaktív bejelentkezés után kezdődik, miután engedélyezte a biztonsági beállításokat.
 
-## <a name="multi-factor-authentication-enforcement"></a>Multi-Factor Authentication kényszerítés
+## <a name="multi-factor-authentication-enforcement"></a>Többtényezős hitelesítés kényszerítése
 
 ### <a name="protecting-administrators"></a>A rendszergazdák védelme
 
-A Kiemelt fiókokhoz hozzáféréssel rendelkező felhasználók nagyobb hozzáférést biztosítanak a környezethez. Ezeknek a fiókoknak a kihasználása miatt speciális gondossággal kell kezelnie őket. A rendszerjogosultságú fiókok védelmének egyik gyakori módszere a fiók-ellenőrzés erősebb formájának megkövetelése a bejelentkezéshez. Az Azure AD-ben a Multi-Factor Authentication megkövetelésével erősebb fiókokat lehet ellenőrizni.
+A kiemelt jogosultságú fiókokhoz hozzáféréssel rendelkező felhasználók nagyobb hozzáféréssel rendelkeznek a környezethez. Mivel a hatalom ezek a számlák, meg kell kezelni őket különös gonddal. A kiemelt jogosultságú fiókok védelmének javításának egyik gyakori módja a fiókellenőrzés erősebb formájának megkövetelése a bejelentkezéshez. Az Azure AD-ben a többtényezős hitelesítés megkövetelésével erősebb fiókellenőrzést kaphat.
 
-A Multi-Factor Authentication való regisztráció után a következő kilenc Azure AD-rendszergazdai szerepkör szükséges további hitelesítés végrehajtásához minden alkalommal, amikor bejelentkeznek:
+A többtényezős hitelesítéssel történő regisztráció befejezése után a következő kilenc Azure AD-rendszergazdai szerepkörszükséges további hitelesítést kell végrehajtania minden bejelentkezéskor:
 
 - Globális rendszergazda
 - SharePoint-rendszergazda
 - Exchange-rendszergazda
-- Feltételes hozzáférésű rendszergazda
+- Feltételes hozzáférés rendszergazdája
 - Biztonsági rendszergazda
-- Segélyszolgálat rendszergazdája vagy jelszavas rendszergazdája
+- Helpdesk-rendszergazda vagy jelszó-rendszergazda
 - Számlázási rendszergazda
-- Felhasználói rendszergazda
-- Hitelesítés rendszergazdája
+- Rendszergazda
+- Hitelesítési rendszergazda
 
 ### <a name="protecting-all-users"></a>Az összes felhasználó védelme
 
-Általában úgy gondoljuk, hogy a rendszergazdai fiókok az egyetlen olyan fiókok, amelyeknek további hitelesítési rétegre van szükségük. A rendszergazdák széles körű hozzáféréssel rendelkeznek a bizalmas adatokhoz, és módosíthatják az előfizetési szintű beállításokat. A támadók azonban általában a végfelhasználók számára célozzák meg. 
+Hajlamosak vagyunk azt gondolni, hogy a rendszergazdai fiókok az egyetlen olyan fiókok, amelyek további hitelesítési rétegeket igényelnek. A rendszergazdák széles körű hozzáféréssel rendelkeznek a bizalmas adatokhoz, és módosíthatják az előfizetések egészének beállításait. De a támadók hajlamosak a végfelhasználókat megcélozni. 
 
-Miután ezek a támadók hozzáférnek, az eredeti fiók tulajdonosának nevében kérhetnek hozzáférést az emelt szintű információhoz. Akár le is tölthetik a teljes könyvtárat, hogy elvégezzenek egy adathalászat elleni támadást a teljes szervezetben. 
+Miután ezek a támadók hozzáférhetnek, az eredeti fióktulajdonos nevében hozzáférést kérhetnek a kiemelt adatokhoz. Akár a teljes könyvtárat is letölthetik, hogy adathalász támadást hajtsanak végre az egész szervezet ellen. 
 
-Az egyik gyakori módszer az, hogy javítsa az összes felhasználó védelmét, hogy mindenki számára a fiókok ellenőrzésének erősebb formáját kell megkövetelni, például Multi-Factor Authentication. Miután a felhasználók beMulti-Factor Authenticationák a regisztrációt, a rendszer szükség esetén további hitelesítésre kéri.
+Az egyik gyakori módszer a védelem javítására minden felhasználó számára, hogy mindenki számára erősebb fiókellenőrzést, például többtényezős hitelesítést igényeljen. Miután a felhasználók befejezték a többtényezős hitelesítés regisztrációját, szükség esetén további hitelesítést kérnek.
 
 ### <a name="blocking-legacy-authentication"></a>Örökölt hitelesítés blokkolása
 
-Ahhoz, hogy a felhasználók könnyen hozzáférjenek a felhőalapú alkalmazásokhoz, az Azure AD számos hitelesítési protokollt támogat, beleértve az örökölt hitelesítést is. Az *örökölt hitelesítés* olyan kifejezés, amely a által végzett hitelesítési kérelemre hivatkozik:
+Annak érdekében, hogy a felhasználók könnyen hozzáférhessenek a felhőalapú alkalmazásokhoz, az Azure AD számos hitelesítési protokollt támogat, beleértve az örökölt hitelesítést is. *Az örökölt hitelesítés* olyan kifejezés, amely a következő hitelesítési kérelemre hivatkozik:
 
-- A modern hitelesítést nem használó ügyfelek (például az Office 2010-ügyfél).
-- Minden olyan ügyfél, amely régebbi levelezési protokollokat használ, mint például az IMAP, az SMTP vagy a POP3.
+- Modern hitelesítést nem használó ügyfelek (például Office 2010-ügyfél).
+- Minden olyan ügyfél, amely régebbi levelezőprotokollokat használ, például IMAP, SMTP vagy POP3.
 
-Napjainkban a kiegyezéses bejelentkezési kísérletek többsége örökölt hitelesítésből származik. Az örökölt hitelesítés nem támogatja a Multi-Factor Authentication. Ha a címtárban engedélyezve van a Multi-Factor Authentication szabályzat, a támadó egy régebbi protokoll használatával is hitelesítheti magát, és megkerülheti a Multi-Factor Authentication. 
+Ma a kompromittáló bejelentkezési kísérletek többsége örökölt hitelesítésből származik. Az örökölt hitelesítés nem támogatja a többtényezős hitelesítést. Még ha a címtárban engedélyezve is van a többtényezős hitelesítési házirend, a támadó egy régebbi protokoll használatával hitelesítheti magát, és megkerülheti a többtényezős hitelesítést. 
 
-Ha a biztonsági alapértékek engedélyezve vannak a bérlőben, a régebbi protokoll által végrehajtott összes hitelesítési kérelem le lesz tiltva. A biztonsági alapértékek blokkolja Exchange Active Sync egyszerű hitelesítést.
+Miután a biztonsági alapértelmezések engedélyezve vannak a bérlőben, a rendszer blokkolja a régebbi protokoll által benyújtott összes hitelesítési kérelmet. A biztonsági alapértelmezések szerint blokkolja az Exchange Active Sync alapfokú hitelesítést.
 
 > [!WARNING]
-> A biztonsági beállítások engedélyezése előtt győződjön meg arról, hogy a rendszergazdák nem használnak régebbi hitelesítési protokollokat. További információkért lásd: [a korábbi hitelesítéstől való elmozdulás](concept-fundamentals-block-legacy-authentication.md).
+> A biztonsági alapértelmezések engedélyezése előtt győződjön meg arról, hogy a rendszergazdák nem használnak régebbi hitelesítési protokollokat. További információ: [Hogyan lehet elmozdulni az örökölt hitelesítéstől.](concept-fundamentals-block-legacy-authentication.md)
 
-### <a name="protecting-privileged-actions"></a>A Kiemelt műveletek védelme
+### <a name="protecting-privileged-actions"></a>Kiemelt műveletek védelme
 
-A szervezetek a Azure Resource Manager API-n keresztül felügyelt különböző Azure-szolgáltatásokat használják, beleértve a következőket:
+A szervezetek az Azure Resource Manager API-n keresztül kezelt számos Azure-szolgáltatást használnak, többek között a következőket:
 
-- Azure Portal 
+- Azure portál 
 - Azure PowerShell 
 - Azure CLI
 
-A Azure Resource Manager használata a szolgáltatások kezeléséhez magas jogosultsági szintű művelet. Azure Resource Manager megváltoztathatja a bérlői szintű konfigurációkat, például a szolgáltatás beállításait és az előfizetés számlázását. Az egytényezős hitelesítés számos különböző támadáshoz, például az adathalászathoz és a jelszó-permetezéshez van kitéve. 
+Az Azure Resource Manager használatával a szolgáltatások kezelése rendkívül magas szintű művelet. Az Azure Resource Manager módosíthatja a bérlői szintű konfigurációkat, például a szolgáltatás beállításait és az előfizetési számlázást. Az egylépéses hitelesítés számos támadással, például adathalászattal és jelszóspray-vel szemben érhető el. 
 
-Fontos ellenőrizni azon felhasználók identitását, akik szeretnének hozzáférni Azure Resource Manager és frissíteni a konfigurációkat. A hozzáférés engedélyezése előtt ellenőrizze az identitását további hitelesítés megkövetelésével.
+Fontos, hogy ellenőrizze a felhasználók identitását, akik szeretnék elérni az Azure Resource Manager és a konfigurációk frissítése. A hozzáférés engedélyezése előtt további hitelesítést igényel.
 
-Miután engedélyezte a biztonsági alapértelmezett beállításokat a bérlőben, a Azure Portalt, Azure PowerShellt vagy az Azure CLI-t elérő bármely felhasználónak további hitelesítést kell végeznie. Ez a szabályzat minden olyan felhasználóra vonatkozik, aki Azure Resource Managerhoz fér hozzá, függetlenül attól, hogy rendszergazda vagy felhasználó. 
+Miután engedélyezte a biztonsági alapértékeket a bérlőben, minden olyan felhasználónak, aki hozzáfér az Azure Portalhoz, az Azure PowerShellhez vagy az Azure CLI-hez, további hitelesítést kell végrehajtania. Ez a szabályzat minden olyan felhasználóra vonatkozik, aki az Azure Resource Manager hez fér hozzá, függetlenül attól, hogy rendszergazda vagy felhasználó. 
 
-Ha a felhasználó nincs regisztrálva a Multi-Factor Authenticationhoz, a folytatáshoz a Microsoft Authenticator alkalmazás használatával kell regisztrálnia a felhasználót. A rendszer nem biztosít 14 napos Multi-Factor Authentication regisztrációs időszakot.
-
-> [!NOTE]
-> Az előzetes 2017 Exchange Online-bérlők alapértelmezés szerint le vannak tiltva modern hitelesítéssel. Ha nem szeretné, hogy a bejelentkezési hurok a fenti bérlők hitelesítése közben ne legyen engedélyezve, engedélyeznie kell a [modern hitelesítést](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+Ha a felhasználó nincs regisztrálva a többtényezős hitelesítéshez, a folytatáshoz regisztrálnia kell a Microsoft Authenticator alkalmazással. Nem 14 napos többtényezős hitelesítésregisztrációs időszak kerül rendelkezésre.
 
 > [!NOTE]
-> A Azure AD Connect szinkronizálási fiók ki van zárva a biztonsági alapbeállításokból, és a rendszer nem kéri a többtényezős hitelesítés regisztrálását vagy elvégzését. A szervezetek más célokra nem szabad ezt a fiókot használni.
+> A 2017 előtti Exchange Online-bérlők korszerű hitelesítése alapértelmezés szerint le van tiltva. Annak érdekében, hogy elkerülje a bejelentkezési hurok lehetőségét a bérlőkhitelesítés során, engedélyeznie kell a [modern hitelesítést.](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)
+
+> [!NOTE]
+> Az Azure AD Connect szinkronizálási fiók ki van zárva a biztonsági alapértelmezett, és nem lesz rákérdezés, hogy regisztráljon, vagy többtényezős hitelesítést. A szervezetek nem szabad ezt a fiókot más célokra használniuk.
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 
-A következő további szempontok a bérlő biztonsági alapértékeinek üzembe helyezésével kapcsolatosak.
+A következő további szempontok a bérlő biztonsági alapbeállításainak telepítésével kapcsolatosak.
 
 ### <a name="authentication-methods"></a>Hitelesítési módszerek
 
-A biztonsági alapértékek lehetővé teszik az Azure Multi-Factor Authentication regisztrációját és használatát, és **csak az Microsoft Authenticator alkalmazást használják az értesítések használatával**. A feltételes hozzáférés lehetővé teszi bármely hitelesítési módszer használatát, amelyet a rendszergazda az engedélyezéshez választ.
+A biztonsági alapértelmezések lehetővé teszik az Azure többtényezős hitelesítésének regisztrációját és **használatát, csak a Microsoft Authenticator alkalmazás használatával, értesítések használatával.** A feltételes hozzáférés lehetővé teszi a rendszergazda által engedélyezni kívánt hitelesítési módszer használatát.
 
 |   | Alapértelmezett biztonsági szabályok | Feltételes hozzáférés |
 | --- | --- | --- |
-| Értesítés a Mobile App használatával | X | X |
-| Ellenőrző kód a Mobile App vagy a Hardware tokenből |   | X |
-| SMS-üzenet a telefonra |   | X |
-| Telefonos hívás |   | X |
-| Alkalmazás jelszavai |   | X * * |
+| Értesítés mobilalkalmazáson keresztül | X | X |
+| Ellenőrző kód mobilalkalmazásból vagy hardvertokenből |   | X |
+| Sms-ben telefonon |   | X |
+| Telefonhívás |   | X |
+| Alkalmazásjelszavak. |   | X** |
 
-\* * Az alkalmazások jelszavai csak akkor érhetők el felhasználónkénti MFA-ban, ha az örökölt hitelesítési forgatókönyvek csak a rendszergazdák által engedélyezettek.
+** Az alkalmazásjelszavak csak felhasználónkénti többfunkciós hitelesítési környezetben érhetők el, csak akkor, ha a rendszergazdák engedélyezik.
 
 ### <a name="conditional-access"></a>Feltételes hozzáférés
 
-A feltételes hozzáférés használatával a biztonsági alapértékekhez hasonló házirendeket konfigurálhat, de részletesebben is megadhatja a felhasználói kivételeket, amelyek nem érhetők el a biztonsági alapbeállításokban. Ha feltételes hozzáférést használ, és a környezetében engedélyezve vannak feltételes hozzáférési szabályzatok, a biztonsági beállítások nem lesznek elérhetők az Ön számára. Ha olyan licenccel rendelkezik, amely feltételes hozzáférést biztosít, de nem rendelkezik a környezetben engedélyezett feltételes hozzáférési szabályzatokkal, akkor a feltételes hozzáférési szabályzatok engedélyezése előtt üdvözli a biztonsági beállítások használatát. Az Azure AD-licenceléssel kapcsolatos további információkért tekintse meg az [Azure ad díjszabási oldalát](https://azure.microsoft.com/pricing/details/active-directory/).
+A Feltételes hozzáférés segítségével a biztonsági alapértékekhez hasonló házirendeket konfigurálhat, de részletesebben, beleértve a felhasználói kizárásokat is, amelyek a biztonsági alapértékekben nem érhetők el. Ha feltételes hozzáférést használ, és a környezetében engedélyezve van a feltételes hozzáférési házirendek, a biztonsági beállítások nem lesznek elérhetők. Ha feltételes hozzáférést biztosít, de nincs engedélyezve feltételes hozzáférési házirend a környezetében, a feltételes hozzáférési házirendek engedélyezése ig használhatja a biztonsági alapértelmezett beállításokat. Az Azure AD-licencelésről az [Azure AD díjszabási oldalán](https://azure.microsoft.com/pricing/details/active-directory/)talál további információt.
 
-![Figyelmeztető üzenet arról, hogy a biztonsági alapértelmezett beállítások vagy a feltételes hozzáférés nem mindkét esetben](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
+![Figyelmeztető üzenet, hogy lehet, hogy a biztonsági alapértelmezések vagy a feltételes hozzáférés nem mindkettő](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 
-Az alábbi lépések részletesen ismertetik, hogyan használható a feltételes hozzáférés az egyenértékű szabályzatok konfigurálásához:
+Az alábbiakban részletes útmutatókat olvashat arról, hogyan konfigurálhatja a feltételes hozzáférést az egyenértékű házirendek konfigurálásához:
 
-- [MFA megkövetelése rendszergazdák számára](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
-- [MFA megkövetelése az Azure-felügyelethez](../conditional-access/howto-conditional-access-policy-azure-management.md)
-- [Örökölt hitelesítés tiltása](../conditional-access/howto-conditional-access-policy-block-legacy.md)
-- [MFA megkövetelése minden felhasználó számára](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
-- [Azure MFA-regisztráció megkövetelése](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – Azure ad Identity Protection szükséges
+- [MFA megkövetelése a rendszergazdáktól](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
+- [MFA megkövetelése az Azure-beli felügyelethez](../conditional-access/howto-conditional-access-policy-azure-management.md)
+- [Régi hitelesítési folyamat letiltása](../conditional-access/howto-conditional-access-policy-block-legacy.md)
+- [MFA megkövetelése minden felhasználótól](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
+- [Azure MFA-regisztráció megkövetelése](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – Azure AD-identitásvédelem szükséges
 
-## <a name="enabling-security-defaults"></a>Biztonsági alapértékek engedélyezése
+## <a name="enabling-security-defaults"></a>Biztonsági alapértelmezések engedélyezése
 
-A biztonsági alapértelmezett beállítások engedélyezése a címtárban:
+A címtár biztonsági alapértelmezéseinek engedélyezése:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) biztonsági rendszergazdaként, feltételes hozzáférésű rendszergazdaként vagy globális rendszergazdaként.
-1. Tallózással keresse meg **Azure Active Directory** > **tulajdonságokat**.
-1. Válassza a **biztonsági beállítások kezelése**lehetőséget.
-1. Állítsa a **biztonsági Alapértelmezések engedélyezése** kapcsolót **Igen**értékre.
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) biztonsági rendszergazdaként, feltételes hozzáférés-rendszergazdaként vagy globális rendszergazdaként.
+1. Tallózással keresse meg az **Azure Active Directory** > **tulajdonságai .**
+1. Válassza **a Biztonsági beállítások kezelése**lehetőséget.
+1. Állítsa a **Biztonsági beállítások engedélyezése** beállítást **Igen**értékre.
 1. Kattintson a **Mentés** gombra.
 
-## <a name="disabling-security-defaults"></a>Biztonsági alapértékek letiltása
+## <a name="disabling-security-defaults"></a>Biztonsági alapértelmezések letiltása
 
-Azok a szervezetek, amelyek a biztonsági alapértékeket lecserélő feltételes hozzáférési házirendek megvalósítását választják, le kell tiltaniuk a biztonsági alapértékeket. 
+Azoknak a szervezeteknek, amelyek úgy döntenek, hogy olyan feltételes hozzáférési házirendeket valósítanak meg, amelyek helyettesítik a biztonsági alapértelmezett beállításokat, le kell tiltaniuk a biztonsági alapértelmezett értékeket. 
 
-![Figyelmeztető üzenet a feltételes hozzáférés engedélyezéséhez tiltsa le a biztonsági alapértelmezéseket](./media/concept-fundamentals-security-defaults/security-defaults-disable-before-conditional-access.png)
+![Figyelmeztetési üzenet a feltételes hozzáférés engedélyezéséhez letiltja a biztonsági alapértelmezett értékeket](./media/concept-fundamentals-security-defaults/security-defaults-disable-before-conditional-access.png)
 
-A biztonsági alapértelmezett beállítások letiltása a címtárban:
+A házirend-ellenőrzés biztonsági beállításainak letiltása:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) biztonsági rendszergazdaként, feltételes hozzáférésű rendszergazdaként vagy globális rendszergazdaként.
-1. Tallózással keresse meg **Azure Active Directory** > **tulajdonságokat**.
-1. Válassza a **biztonsági beállítások kezelése**lehetőséget.
-1. Állítsa be a **biztonsági beállítások engedélyezése** beállítást a **nem**értékre.
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) biztonsági rendszergazdaként, feltételes hozzáférés-rendszergazdaként vagy globális rendszergazdaként.
+1. Tallózással keresse meg az **Azure Active Directory** > **tulajdonságai .**
+1. Válassza **a Biztonsági beállítások kezelése**lehetőséget.
+1. Állítsa a **Biztonsági beállítások engedélyezése** beállítást, és állítsa **nem**értékre.
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Általános feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)
+[Gyakori feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)

@@ -1,6 +1,6 @@
 ---
-title: Adja hozzá a szervezete adatvédelmi adatait – Azure Active Directory | Microsoft Docs
-description: Útmutató a szervezet adatvédelmi adatainak a Azure Active Directory tulajdonságok részhez való hozzáadásához.
+title: A szervezet adatvédelmi adatainak hozzáadása – Azure Active Directory | Microsoft dokumentumok
+description: Útmutató a szervezet adatvédelmi adatainak az Azure Active Directory tulajdonságai területhez való hozzáadásáról.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,47 +14,47 @@ ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f1877ae630919ba7da5a851b5f8291ade2d165
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897585"
 ---
-# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>A szervezet adatvédelmi adatainak hozzáadása a Azure Active Directory használatával
-Ez a cikk azt ismerteti, hogyan adhat hozzá egy bérlői rendszergazda az adatvédelemmel kapcsolatos adatokat egy szervezet Azure Active Directory (Azure AD) bérlőhöz a Azure Portal keresztül.
+# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>A szervezet adatvédelmi adatainak hozzáadása az Azure Active Directory használatával
+Ez a cikk bemutatja, hogyan adhat hozzá egy bérlői rendszergazda adatvédelmi adatokat a szervezet Azure Active Directory (Azure AD) bérlőjéhez az Azure Portalon keresztül.
 
-Javasoljuk, hogy vegye fel mind a globális adatvédelmi kapcsolattartót, mind a szervezete adatvédelmi nyilatkozatát, így a belső alkalmazottak és a külső vendégek is áttekinthetik a szabályzatokat. Mivel az adatvédelmi nyilatkozatok egyedi módon hozhatók létre és testreszabhatók az egyes vállalkozások számára, javasoljuk, hogy kérjen segítséget az ügyvédi segítségért.
+Javasoljuk, hogy adja meg a globális adatvédelmi kapcsolattartót és a szervezet adatvédelmi nyilatkozatát is, hogy a belső alkalmazottak és a külső vendégek áttekinthessék az irányelveket. Mivel az adatvédelmi nyilatkozatok egyedileg jönnek létre, és minden vállalkozáshoz testre szabottak, javasoljuk, hogy segítségért forduljon ügyvédhez.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="add-your-privacy-info-on-azure-ad"></a>Adatvédelmi információk hozzáadása az Azure AD-ben
-A szervezet adatvédelmi információit az Azure AD **Tulajdonságok** területén adhatja hozzá.
+## <a name="add-your-privacy-info-on-azure-ad"></a>Az azure-beli ad-n tárolt adatvédelmi adatok hozzáadása
+A szervezet adatvédelmi adatait az Azure AD **Tulajdonságok** területén adja hozzá.
 
-### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>A tulajdonságok részhez való hozzáféréshez és az adatvédelmi adatok hozzáadásához
+### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>A Tulajdonságok terület elérése és az adatvédelmi adatok hozzáadása
 
-1.  Jelentkezzen be a Azure Portal bérlői rendszergazdaként.
+1.  Jelentkezzen be az Azure Portalon bérlői rendszergazdaként.
 
-2.  A bal oldali navigációs sávon válassza a **Azure Active Directory**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget.
+2.  A bal oldali navigációs sávon válassza az **Azure Active Directory**lehetőséget, majd a **Tulajdonságok**lehetőséget.
 
-    Megjelenik a **Tulajdonságok** rész.
+    Megjelenik **a Tulajdonságok** terület.
 
-    ![Az Azure AD-tulajdonságok az adatvédelmi információs területeket kiemelve](media/active-directory-properties-area/properties-area.png)
+    ![Az Azure AD tulajdonságai terület, kiemelve az adatvédelmi információs területet](media/active-directory-properties-area/properties-area.png)
 
 3.  Adja meg az alkalmazottak adatvédelmi adatait:
 
-    - **Technikai kapcsolattartó.** Írja be annak a személynek az e-mail-címét, akit a szervezeten belüli technikai támogatáshoz szeretne felvenni.
+    - **Technikai kapcsolat.** Írja be annak az e-mail címét, akivel a szervezeten belül technikai támogatásért kapcsolatba szeretne lépni.
     
-    - **Globális adatvédelmi kapcsolattartó.** Írja be annak a személynek az e-mail-címét, aki a személyes adatok védelmével kapcsolatos lekérdezésekhez szeretne csatlakozni. Ez a személy akkor is, ha a Microsoft kapcsolattartási adatvesztéssel jár. Ha itt nem szerepel személy, a Microsoft kapcsolatba lép a globális rendszergazdával.
+    - **Globális adatvédelmi kapcsolattartó.** Írja be annak az e-mail címét, akivel kapcsolatba szeretne lépni a személyes adatok védelmével kapcsolatos kérdéseiért. Ez a személy is, aki a Microsoft kapcsolatot, ha van egy adatszivárgás. Ha itt nem szerepel személy, a Microsoft felveszi a kapcsolatot a globális rendszergazdákkal.
 
-    - **Adatvédelmi nyilatkozat URL-címe.** Írja be a szervezet dokumentumára mutató hivatkozást, amely leírja, hogyan kezeli a szervezet a belső és a külső vendég adatvédelmét.
+    - **Adatvédelmi nyilatkozat URL-címe.** Írja be a szervezet dokumentumára mutató hivatkozást, amely leírja, hogy a szervezet hogyan kezeli a belső és a külső vendég adatvédelmét.
 
         >[!Important]
-        >Ha nem tartalmazza a saját adatvédelmi nyilatkozatát vagy az Ön adatvédelmi kapcsolattartóját, a külső vendégek a **felülvizsgálati engedélyek** mezőben megjelenő szöveget is láthatják, **<_a szervezete neve_> nem adott meg hivatkozásokat a saját feltételeinek áttekintéséhez**. A vendég felhasználó például akkor látja ezt az üzenetet, amikor meghívót kap egy szervezetnek a B2B-együttműködésen keresztüli elérésére.
+        >Ha nem adja meg sem a saját adatvédelmi nyilatkozatát, sem az adatvédelmi kapcsolattartóját, akkor a külső vendégek az **Engedélyek áttekintése** mezőben olyan szöveget fognak látni, ** <amely szerint _a szervezet neve_> nem adott meg hivatkozásokat a kifejezéseikre, hogy áttekintsék.** Például egy vendég felhasználó fogja látni ezt az üzenetet, amikor meghívást kap nak egy szervezet elérésére a B2B együttműködésen keresztül.
 
-        ![B2B Collaboration felülvizsgálati engedélyek Box üzenettel](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
+        ![B2B Együttműködési ellenőrzési engedélyek mező üzenettel](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
 4.  Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
-- [Azure Active Directory B2B együttműködés meghívásának beváltása](https://aka.ms/b2bredemption)
-- [Felhasználói profil adatainak hozzáadása vagy módosítása Azure Active Directory](active-directory-users-profile-azure-portal.md)
+## <a name="next-steps"></a>További lépések
+- [Az Azure Active Directory B2B együttműködési meghívók beváltása](https://aka.ms/b2bredemption)
+- [Felhasználó profiladatainak hozzáadása vagy módosítása az Azure Active Directoryban](active-directory-users-profile-azure-portal.md)

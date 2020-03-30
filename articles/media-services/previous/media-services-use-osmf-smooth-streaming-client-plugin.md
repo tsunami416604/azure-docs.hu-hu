@@ -1,6 +1,6 @@
 ---
-title: Smooth Streaming beépülő modul a nyílt forráskódú adathordozó-keretrendszerhez
-description: Ismerje meg, hogyan használhatja a Azure Media Services Smooth Streaming beépülő modult az Adobe nyílt forráskódú adathordozó-keretrendszerhez.
+title: Sima streaming plugin a nyílt forráskódú média keretrendszerhez
+description: Ismerje meg, hogyan használhatja az Azure Media Services Smooth Streaming beépülő modult az Adobe open source media framework számára.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,50 +15,50 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 45a2829411ea4713df898c90be73792718160cd2
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255112"
 ---
-# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>A Microsoft Smooth Streaming beépülő modul használata az Adobe nyílt forráskódú adathordozó-keretrendszerhez  
+# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>A Microsoft Smooth Streaming beépülő modul használata az Adobe open source media framework-hez  
 ## <a name="overview"></a>Áttekintés
-A nyílt forráskódú adathordozó-keretrendszer 2,0-es (OSMF)-es Microsoft Smooth Streaming beépülő modulja kibővíti a OSMF alapértelmezett képességeit, és hozzáadja a Microsoft Smooth Streaming a tartalom lejátszását az új és a meglévő OSMF-játékosokhoz. A beépülő modul emellett Smooth Streaming lejátszási képességeket is biztosít a Strobe Media lejátszásához (SMP).
+A Microsoft Smooth Streaming beépülő modul a Nyílt forráskódú Media Framework 2.0 (SS for OSMF) számára kiterjeszti az OSMF alapértelmezett képességeit, és hozzáadja a Microsoft Smooth Streaming tartalom lejátszását az új és meglévő OSMF lejátszókhoz. A plugin is hozzáteszi, Smooth Streaming lejátszási képességek Strobe Media Lejátszás (SMP).
 
-A OSMF SS a beépülő modul két verzióját tartalmazza:
+SS for OSMF tartalmaz két változata plugin:
 
-* Statikus Smooth Streaming beépülő modul a OSMF (. SWC)
-* Dinamikus Smooth Streaming beépülő modul a OSMF (. swf)
+* Statikus Smooth Streaming plugin OSMF (.swc)
+* Dinamikus Smooth Streaming plugin OSMF (.swf)
 
-Ez a dokumentum azt feltételezi, hogy az olvasó a OSMF és a OSMF beépülő modulokkal kapcsolatos általános ismeretekkel rendelkezik. A OSMF kapcsolatos további információkért tekintse meg a [hivatalos OSMF webhelyen](http://osmf.org/)található dokumentációt.
+Ez a dokumentum feltételezi, hogy az olvasó általános munkaismeretekkel rendelkezik az OSMF és az OSMF beépülő modulokkal kapcsolatban. Az OSMF-ről további információt az [OSMF hivatalos webhelyén](http://osmf.org/)található dokumentációban talál.
 
-### <a name="smooth-streaming-plugin-for-osmf-20"></a>Smooth Streaming beépülő modul a OSMF 2,0-hez
-A beépülő modul az igény szerinti Smooth Streaming tartalmak betöltését és lejátszását támogatja a következő funkciókkal:
+### <a name="smooth-streaming-plugin-for-osmf-20"></a>Smooth Streaming plugin az OSMF 2.0-hoz
+A plugin támogatja az igény szerinti Smooth Streaming tartalom betöltését és lejátszását a következő funkciókkal:
 
-* Igény szerinti Smooth Streaming lejátszás (lejátszás, szüneteltetés, keresés, leállítás)
-* Élő Smooth Streaming lejátszás (lejátszás)
-* Élő DVR-függvények (szüneteltetés, keresés, DVR lejátszás, élő indítás)
-* Videós kodekek támogatása – H. 264
-* Audio codec-támogatás – AAC
-* Több hangos nyelvi váltás a OSMF beépített API-kkal
-* Maximális lejátszási minőség kiválasztása a OSMF beépített API-kkal
-* Oldalkocsis kódolt feliratok a OSMF Captions beépülő modullal
-* Adobe&reg; Flash&reg; Player 11,4 vagy újabb verzió.
-* Ez a verzió csak a 2,0-es OSMF támogatja.
+* Igény szerinti zökkenőmentes streamelési lejátszás (lejátszás, szünet, keresés, leállítás)
+* Élő, sima streamelés (lejátszás)
+* Élő DVR funkciók (Szünet, Keresés, DVR lejátszás, Go-to-Live)
+* Videokodekek támogatása - H.264
+* Audio kodekek támogatása - AAC
+* Több hangnyelv váltás osmf beépített API-kkal
+* Maximális lejátszási minőség választás osmf beépített API-kkal
+* Oldalkocsis feliratok OSMF feliratokkal plugin
+* Adobe&reg; &reg; Flash Player 11.4 vagy újabb.
+* Ez a verzió csak az OSMF 2.0-s verzióját támogatja.
 
 ## <a name="supported-features-and-known-issues"></a>Támogatott funkciók és ismert problémák
-A támogatott szolgáltatások, a nem támogatott funkciók és az ismert problémák teljes listáját [ebben a dokumentumban](https://azure.microsoft.com/blog/microsoft-adaptive-streaming-plugin-for-osmf-update/)tekintheti meg.
+A támogatott szolgáltatások, a nem támogatott szolgáltatások és az ismert problémák teljes listáját ebben a [dokumentumban](https://azure.microsoft.com/blog/microsoft-adaptive-streaming-plugin-for-osmf-update/)tájékozatja.
 
 ## <a name="loading-the-plugin"></a>A beépülő modul betöltése
-A OSMF beépülő modulok statikusan tölthetők be (fordítási időben) vagy dinamikusan (futásidőben). A OSMF letöltésére szolgáló Smooth Streaming beépülő modul dinamikus és statikus verziókat is tartalmaz.
+Az OSMF-bővítmények statikusan (fordításkor) vagy dinamikusan (futásidőben) tölthetők be. A Smooth Streaming plugin OSMF letöltés tartalmazza mind a dinamikus és statikus változatban.
 
-* Statikus betöltés: a statikus betöltéshez statikus függvénytár-(SWC-) fájl szükséges. A statikus beépülő modulok a projektekre mutató hivatkozásként lesznek hozzáadva, és a végső kimeneti fájlban egyesítve kerülnek a fordítási idő alá.
-* Dinamikus betöltés: Ha dinamikusan szeretné betölteni a terhelést, szükség van egy előfordított (SWF) fájlra. A dinamikus beépülő modulok a futtatókörnyezetben vannak betöltve, és nem szerepelnek a projekt kimenetében. (Lefordított kimenet) A dinamikus beépülő modulok a HTTP és a FILE protokollok használatával tölthetők be.
+* Statikus betöltés: Statikus betöltéshez statikus könyvtárfájlra (SWC) van szükség. Statikus beépülő modulok kerülnek hivatkozásként a projektek és egyesíteni belül a végső kimeneti fájlt a fordítás kor.
+* Dinamikus betöltés: A dinamikus betöltéshez előre lefordított (SWF) fájlszükséges. A dinamikus bővítmények betöltődnek a futásidőben, és nem szerepelnek a projekt kimenetében. (Lefordított kimenet) A dinamikus bővítmények HTTP és FILE protokollok használatával tölthetők be.
 
-A statikus és a dinamikus betöltéssel kapcsolatos további információkért tekintse meg a hivatalos [OSMF beépülő modul oldalát](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf).
+További információ a statikus és dinamikus betöltése, lásd a hivatalos [OSMF plugin oldalon](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf).
 
-### <a name="ss-for-osmf-static-loading"></a>SS OSMF statikus betöltéshez
-Az alábbi kódrészlet azt mutatja be, hogyan tölthetők be a OSMF SS beépülő modulja statikusan, és hogyan játszhat egy alapszintű videót a OSMF MediaFactory osztály használatával. Mielőtt belefoglalja az SS-t a OSMF-kódra, győződjön meg arról, hogy a projekt referenciája tartalmazza a "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC" statikus beépülő modult.
+### <a name="ss-for-osmf-static-loading"></a>SS osmf statikus betöltéshez
+Az alábbi kódrészlet bemutatja, hogyan töltheti be statikusan az OSMF SS beépülő modulját, és hogyan játszhat le egy alapvető videót az OSMF MediaFactory osztály használatával. Az SS for OSMF kód befoglalása előtt győződjön meg arról, hogy a projekthivatkozás tartalmazza az "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" statikus bővítményt.
 
 ```
 package 
@@ -193,10 +193,10 @@ package
 ```
 
 
-### <a name="ss-for-osmf-dynamic-loading"></a>SS a OSMF dinamikus betöltéséhez
-Az alábbi kódrészlet bemutatja, hogyan tölthető be dinamikusan a OSMF SS beépülő modulja, és hogyan játszhat alapszintű videót a OSMF MediaFactory osztály használatával. Mielőtt belefoglalja az SS-t a OSMF-kódra, másolja a "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" dinamikus beépülő modult a Project mappába, ha a fájlt a FILE Protocol használatával szeretné betölteni, vagy egy webkiszolgálón keresztül másolja a HTTP-terheléshez. A projekt hivatkozásaiban nincs szükség a "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC" kifejezésre.
+### <a name="ss-for-osmf-dynamic-loading"></a>SS az OSMF dinamikus betöltése esetén
+Az alábbi kódrészlet bemutatja, hogyan töltheti be dinamikusan az OSMF SS beépülő modulját, és hogyan játszhat le egy alapvideót az OSMF MediaFactory osztályhasználatával. Mielőtt az SS for OSMF kódot, másolja a "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" dinamikus plugin a projekt mappába, ha azt szeretné, hogy töltse be a FILE protokoll, vagy másolja a webszerver http-terhelés. Nincs szükség az "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" felvételére a projekthivatkozásokban.
 
-csomag
+csomag {
 
     import flash.display.*;
     import org.osmf.media.*;
@@ -327,15 +327,15 @@ csomag
     }
 }
 
-## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Strobe Media lejátszás az SS ODMF dinamikus beépülő modullal
-A OSMF dinamikus beépülő moduljának Smooth Streaming kompatibilis a [Strobe Media lejátszással (SMP)](http://osmf.org/strobe_mediaplayback.html). Az SS for OSMF beépülő modullal felveheti Smooth Streaming tartalom lejátszását az SMP-be. Ehhez másolja a "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" nevű webkiszolgálót a HTTP-terheléshez a következő lépésekkel:
+## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Strobe Media lejátszás az SS ODMF dinamikus plugin
+A Smooth Streaming for OSMF dinamikus plugin kompatibilis [a Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html)segítségével. Az SS for OSMF beépülő modul segítségével smooth streaming tartalom lejátszást adhat az SMP-hez. Ehhez másolja az "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" parancsot egy webkiszolgáló alatt HTTP-betöltéshez a következő lépésekkel:
 
-1. Tallózással keresse meg a [Strobe Media visszajátszás beállítása lapot](http://osmf.org/dev/2.0gm/setup.html). 
-2. Az src beállítása Smooth Streaming forrásra (például http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
-3. Végezze el a kívánt konfigurációs módosításokat, és kattintson az előnézet és frissítés elemre.
+1. Böngésszen a [Strobe Media Lejátszás beállítási lapján.](http://osmf.org/dev/2.0gm/setup.html) 
+2. Állítsa az src-t egy sima streamelési forrásra (pl.http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
+3. Hajtsa végre a kívánt konfigurációs módosításokat, és kattintson az Előnézet és frissítés gombra.
    
-   **Megjegyzés** A tartalom webkiszolgálójának érvényes crossdomain. XML fájlra van szüksége. 
-4. Másolja és illessze be a kódot egy egyszerű HTML-lapra a kedvenc szövegszerkesztő használatával, például a következő példában:
+   **Megjegyzés:** A tartalomwebkiszolgálónak érvényes crossdomain.xml fájlra van szüksége. 
+4. Másolja és illessze be a kódot egy egyszerű HTML-lapra kedvenc szövegszerkesztőjével, például a következő példában:
 
         <html>
         <body>
@@ -360,7 +360,7 @@ A OSMF dinamikus beépülő moduljának Smooth Streaming kompatibilis a [Strobe 
 
 
 
-1. Adja hozzá Smooth Streaming OSMF beépülő modult a beágyazási kódhoz, és mentse.
+1. Add Smooth Streaming OSMF plugin a beágyazási kódot, és mentse.
    
         <html>
         <object width="920" height="640"> 
@@ -380,17 +380,17 @@ A OSMF dinamikus beépülő moduljának Smooth Streaming kompatibilis a [Strobe 
         </embed>
         </object>
         </html>
-2. Mentse a HTML-oldalt, és tegye közzé a webkiszolgálón. Tallózással keresse meg a közzétett weblapot a kedvenc Flash&reg; Player-kompatibilis böngésző használatával (Internet Explorer, Chrome, Firefox stb.).
-3. Az Adobe&reg; Flash&reg; Player Smooth Streaming tartalmait használhatja.
+2. Mentse a HTML-lapot, és tegye közzé egy webkiszolgálón. Tallózással keresse meg a&reg; közzétett weboldalt a kedvenc Flash Player-kompatibilis internetböngészőjével (Internet Explorer, Chrome, Firefox, így tovább).
+3. Élvezze a Smooth&reg; Streaming&reg; tartalmakat az Adobe Flash Player ben.
 
-Az általános OSMF-fejlesztéssel kapcsolatos további információkért tekintse meg a hivatalos [OSMF-fejlesztési oldalt](http://osmf.org/resources.html).
+Az OSMF általános fejlesztésével kapcsolatos további információkért tekintse meg az [OSMF](http://osmf.org/resources.html)hivatalos fejlesztési oldalát .
 
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még:
-[Microsoft adaptív streaming beépülő modul a OSMF frissítéséhez](https://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/) 
+[Microsoft Adaptive Streaming beépülő modul az OSMF frissítéséhez](https://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/) 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure CDN gyorsítótárazási szabályzat kezelése Azure Media Servicesban | Microsoft Docs
-description: Ez a cikk a Azure Media Services Azure CDN gyorsítótárazási szabályzatának kezelését ismerteti.
+title: Az Azure CDN gyorsítótárazási házirendjének kezelése az Azure Media Servicesszolgáltatásban | Microsoft dokumentumok
+description: Ez a cikk bemutatja, hogyan kezelheti az Azure CDN-gyorsítótárazási szabályzatot az Azure Media Servicesben.
 services: media-services,cdn
 documentationcenter: .NET
 author: juliako
@@ -15,35 +15,35 @@ ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
 ms.openlocfilehash: dc0482fbcbb1c9d1618ec18e1f48b03f686a6573
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74892579"
 ---
-# <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Azure CDN gyorsítótárazási házirend kezelése Azure Media Services
-A Azure Media Services HTTP-alapú adaptív streaming és progresszív letöltést biztosít. A HTTP-alapú folyamatos átvitel a proxy-és CDN-rétegek gyorsítótárazásának előnyei, valamint az ügyféloldali gyorsítótárazás előnyeit kínálja. A folyamatos átviteli végpontok általános átviteli képességeket biztosítanak, valamint a HTTP-gyorsítótár fejléceit is konfigurálják. A folyamatos átviteli végpontok beállítja a HTTP Cache-Control: Max-Age és a fejlécek elévülését. További információt a HTTP-gyorsítótár fejlécek a [w3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)-ből című témakörben kaphat.
+# <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Azure CDN-gyorsítótárazási házirend kezelése az Azure Media Servicesben
+Az Azure Media Services HTTP-alapú adaptív streamelést és progresszív letöltést biztosít. A HTTP-alapú streamelés nagymértékben méretezhető a proxy- és CDN-rétegekben való gyorsítótárazás, valamint az ügyféloldali gyorsítótárazás előnyeivel. A streamelési végpontok általános streamelési lehetőségeket és http-gyorsítótár-fejlécek konfigurációját biztosítják. A streamelési végpontok http-gyorsítótár-vezérlést állítanak be: max-age és expires fejlécek. A HTTP-gyorsítótárfejlécekkel kapcsolatos további információkat [a W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)kaphat.
 
 ## <a name="default-caching-headers"></a>Alapértelmezett gyorsítótárazási fejlécek
-Alapértelmezés szerint a streaming-végpontok 3 napos gyorsítótár-fejlécet alkalmaznak az igény szerinti folyamatos átvitelű adatokhoz (tényleges adathordozó-töredékek/tömbök) és a jegyzékfájlhoz (Playlist). Élő közvetítés esetén a streaming-végpontok 3 napos gyorsítótár-fejlécet alkalmaznak az adatokhoz (tényleges adathordozó-töredékek/adattömbök) és 2 másodperces gyorsítótár-fejlécet a jegyzékfájl (Playlist) kérelmekhez. Ha az élő program igény szerint (élő Archívum) vált, az igény szerinti streaming cache-fejlécek is érvényesek lesznek.
+Alapértelmezés szerint a streamelési-végpontok 3 napos gyorsítótár-fejléceket alkalmaznak az igény szerinti streamelési adatokra (tényleges médiatöredékek/adattömbök) és a jegyzékfájlra(playlist). Az élő streameléshez a streamelési végpontok 3 napos gyorsítótár-fejléceket alkalmaznak az adatokhoz (tényleges adathordozó-töredékek/adattömbök) és 2 másodpercnyi gyorsítótárfejlécet a manifest(playlist) kérelmekhez. Amikor az élő program igény szerint (élő archívum) fordul, akkor az igény szerinti streamelési gyorsítótárfejlécek érvényesek.
 
-## <a name="azure-cdn-integration"></a>Azure CDN integráció
-A Azure Media Services [integrált CDN](https://azure.microsoft.com/updates/azure-media-services-now-fully-integrated-with-azure-cdn/) -t biztosít a streaming-végpontokhoz. A Cache-Control fejlécek ugyanúgy érvényesek, mint a streaming-végpontok és a CDN-kompatibilis streaming-végpontok. A Azure CDN a streaming Endpoint konfigurált gyorsítótár-értékeit használja a belső gyorsítótárban lévő objektumok élettartamának meghatározásához, és ezt az értéket használja a kézbesítési gyorsítótár fejlécének beállításához is. CDN-kompatibilis adatfolyam-végpontok használata esetén nem ajánlott kis gyorsítótár-értékeket beállítani. A kis értékek beállítása csökkenti a teljesítményt, és csökkenti a CDN előnyeit. A CDN-kompatibilis streaming-végpontok esetében nem engedélyezett a 600 másodpercnél kisebb gyorsítótár-fejlécek beállítása.
+## <a name="azure-cdn-integration"></a>Azure CDN-integráció
+Az Azure Media Services [integrált CDN-t](https://azure.microsoft.com/updates/azure-media-services-now-fully-integrated-with-azure-cdn/) biztosít a streamelési végpontokhoz. A gyorsítótár-vezérlő fejlécek ugyanúgy érvényesek, mint a CDN-kompatibilis streamelési végpontok streamelési végpontjai. Az Azure CDN streamelési végpontkonfigurált gyorsítótár-értékeket használ a belső gyorsítótárazott objektumok élettartamának meghatározásához, és ezt az értéket használja a kézbesítési gyorsítótár fejléceinek beállításához. CdN-kompatibilis streamelési végpontok használata esetén nem ajánlott kis gyorsítótár-értékeket beállítani. A kis értékek beállítása csökkenti a teljesítményt és csökkenti a CDN előnyeit. A CDN-kompatibilis streamelési végpontok esetében nem állítható 600 másodpercnél kisebb gyorsítótár-fejlécek.
 
 > [!IMPORTANT]
->A Azure Media Services Azure CDNsal való integrációt végez. Egyetlen kattintással integrálhatja az összes rendelkezésre álló Azure CDN-szolgáltatót a streaming-végpontba, beleértve a standard és a prémium termékeket is. További információkért tekintse meg ezt a [bejelentést](https://azure.microsoft.com/blog/standardstreamingendpoint/).
+>Az Azure Media Services teljes integrációt kínál az Azure CDN-nel. Egyetlen kattintással integrálhatja az összes rendelkezésre álló Azure CDN-szolgáltatót a streamelési végpontba, beleértve a standard és prémium termékeket is. További információt ebben a [közleményben](https://azure.microsoft.com/blog/standardstreamingendpoint/)talál.
 > 
-> A streaming végpontról a CDN-re irányuló adatforgalmi díj le lesz tiltva, ha a CDN engedélyezve van a streaming Endpoint API-kon vagy a Azure Portal streaming Endpoint szakaszának használatával. A manuális integráció vagy egy CDN-végpontnak a CDN API-k vagy a portál szakasz használatával történő közvetlen létrehozása nem tiltja le az adatforgalmi díjakat.
+> A streamelési végpontról a CDN-re vonatkozó adatforgalmi díjak csak akkor lesz letiltva, ha a CDN engedélyezve van a végponti API-k streamelésén vagy az Azure Portal streamelési végpontszakaszának használatával. Manuális integráció vagy cdn-végpont közvetlen létrehozása CDN API-k vagy portálszakasz használatával nem tiltja le az adatforgalmi díjakat.
 
-## <a name="configuring-cache-headers-with-azure-media-services"></a>Gyorsítótár-fejlécek konfigurálása Azure Media Services
-A gyorsítótár-fejléc értékeinek konfigurálásához Azure Portal vagy Azure Media Services API-kat használhat.
+## <a name="configuring-cache-headers-with-azure-media-services"></a>Gyorsítótárfejlécek konfigurálása az Azure Media Services szolgáltatással
+Az Azure Portal vagy az Azure Media Services API-k segítségével konfigurálhatja a gyorsítótár fejlécértékeit.
 
-1. Ha Azure Portal használatával szeretné konfigurálni a gyorsítótár-fejléceket, tekintse meg a folyamatos átviteli végpontok [kezelése](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) című szakaszt a streaming Endpoint konfigurálása című részben.
-2. Azure Media Services REST API, [streamvégpontok](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl).
-3. Azure Media Services .NET SDK, [StreamingEndpointCacheControl tulajdonságok](https://go.microsoft.com/fwlink/?LinkId=615302).
+1. A gyorsítótár-fejlécek konfigurálásához az Azure Portal használatával, olvassa el a [Streamelési végpontok kezelése](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) szakasz konfigurálása a streamelési végpont.
+2. Azure Media Services REST API, [StreamingEndpoint](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl).
+3. Az Azure Media Services .NET SDK, [StreamingEndpointCacheControl tulajdonságai](https://go.microsoft.com/fwlink/?LinkId=615302).
 
-## <a name="cache-configuration-precedence-order"></a>Gyorsítótár-konfiguráció sorrendjének sorrendje
-1. Azure Media Services konfigurált gyorsítótár-érték felülbírálja az alapértelmezett értéket.
-2. Ha nincs manuális konfiguráció, a rendszer az alapértelmezett értékeket alkalmazza.
-3. Alapértelmezés szerint a 2 másodperces gyorsítótár-fejlécek az élő streaming jegyzékfájlra (Playlist) vonatkoznak, függetlenül az Azure adathordozótól vagy az Azure Storage-konfigurációtól, és ennek az értéknek a felülbírálása nem érhető el.
+## <a name="cache-configuration-precedence-order"></a>Gyorsítótár-konfiguráció prioritási sorrendje
+1. Az Azure Media Services konfigurált gyorsítótár-értéke felülbírálja az alapértelmezett értéket.
+2. Ha nincs manuális konfiguráció, az alapértelmezett értékek érvényesek.
+3. Alapértelmezés szerint 2 másodperces gyorsítótár-fejlécek vonatkozik az élő streamelési jegyzékfájl(playlist), függetlenül az Azure Media vagy az Azure Storage konfigurációját, és ennek az értéknek az felülbírálása nem érhető el.
 

@@ -1,6 +1,6 @@
 ---
-title: Teljes körű blob betöltés az Azure Adatkezelő a Python használatával
-description: Ebből a cikkből megtudhatja, hogyan végezheti el a Blobok betöltését az Azure Adatkezelőba egy olyan végpontok közötti példával, amely a Pythont használja.
+title: Végpontok között blobbetöltés az Azure Data Explorerbe a Pythonon keresztül
+description: Ebben a cikkben megtudhatja, hogyan kell bedolgozni a blobokat az Azure Data Explorer be egy teljes körű példa, amely a Python thasználja.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,22 +8,22 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 61864c51c2ab99e5266e39f2c9a7344aaf7413c1
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964300"
 ---
-# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>Teljes körű blob betöltés az Azure Adatkezelő a Python használatával
+# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>Végpontok között blobbetöltés az Azure Data Explorerbe a Pythonon keresztül
 
 > [!div class="op_single_selector"]
-> * [C#](end-to-end-csharp.md)
+> * [C #](end-to-end-csharp.md)
 > * [Python](end-to-end-python.md)
 >
 
-Az Azure Adatkezelő egy gyors és méretezhető adatelemzési szolgáltatás a napló-és telemetria. Ebből a cikkből megtudhatja, hogyan végezheti el az Azure Blob Storage-ból származó adatok Azure-Adatkezelőba való betöltését. 
+Az Azure Data Explorer egy gyors és skálázható adatfeltárási szolgáltatás a napló- és telemetriai adatokhoz. Ez a cikk egy teljes körű példát ad arra, hogyan lehet adatokat beadni az Azure Blob storage-ból az Azure Data Explorerbe. 
 
-Megtudhatja, hogyan hozhat létre programozott módon egy erőforráscsoportot, egy Storage-fiókot és egy tárolót, egy Event hubot és egy Azure Adatkezelő-fürtöt és-adatbázist. Azt is megtudhatja, hogyan állíthatja be programozott módon az Azure Adatkezelőt az adatok az új Storage-fiókból való betöltéséhez.
+Megtudhatja, hogyan hozhat létre programozott módon egy erőforráscsoportot, egy tárfiókot és egy tárolót, egy eseményközpontot, valamint egy Azure Data Explorer-fürtöt és-adatbázist. Azt is megtudhatja, hogyan konfigurálhatja az Azure Data Explorerprogramot az új tárfiókból származó adatok betöltéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="install-the-python-package"></a>Python-csomag telepítése
 
-Az Azure Adatkezelő (Kusto) Python-csomagjának telepítéséhez nyisson meg egy parancssort, amely a Python elérési útját is tartalmazni fogja. Futtassa a következő parancsokat:
+A Python-csomag azure Data Explorer (Kusto) telepítéséhez nyisson meg egy parancssort, amely a Python az útjába. Futtassa a következő parancsokat:
 
 ```
 pip install azure-common
@@ -47,9 +47,9 @@ pip install azure-storage-blob
 
 ## <a name="code-example"></a>Mintakód 
 
-A következő mintakód olyan lépésenkénti folyamatot biztosít, amely az Azure Adatkezelőba való adatfeldolgozást eredményez. 
+A következő kód példa egy lépésről-lépésre folyamat, amely az Azure Data Explorer adatbetöltését eredményezi. 
 
-Először létre kell hoznia egy erőforráscsoportot. Emellett Azure-erőforrásokat is létrehozhat, például egy Storage-fiókot és egy tárolót, egy Event hub-t és egy Azure Adatkezelő-fürtöt és-adatbázist, és hozzáadhat rendszerbiztonsági tagokat. Ezután létrehoz egy Azure Event Grid-előfizetést, valamint egy tábla-és oszlop-hozzárendelést az Azure Adatkezelő-adatbázisban. Végezetül hozza létre az adatkapcsolódást az Azure Adatkezelő konfigurálásához az új Storage-fiók adatainak betöltéséhez.
+Először hozzon létre egy erőforráscsoportot. Azure-erőforrásokat is létrehozhat, például egy tárfiókot és egy tárolót, egy eseményközpontot és egy Azure Data Explorer-fürtöt és-adatbázist, és hozzáadja a rendszerbiztonsági tagokat. Ezután hozzon létre egy Azure Event Grid-előfizetést, valamint egy tábla- és oszlopleképezést az Azure Data Explorer-adatbázisban. Végül hozza létre az adatkapcsolatot az Azure Data Explorer konfigurálásához az új tárfiókból származó adatok betöltéséhez.
 
 ```python
 from azure.common.credentials import ServicePrincipalCredentials
@@ -192,14 +192,14 @@ poller.wait()
 ```
 |**Beállítás** | **Mező leírása**|
 |---|---|---|
-| tenant_id | A bérlő azonosítója. Más néven címtár-azonosító.|
+| tenant_id | A bérlőazonosítója. Könyvtárazonosítónak is nevezik.|
 | subscription_id | Az erőforrás-létrehozáshoz használt előfizetés-azonosító.|
-| client_id | Annak az alkalmazásnak az ügyfél-azonosítója, amely hozzáférhet a bérlő erőforrásaihoz.|
-| client_secret | Az alkalmazás ügyfél-titka, amely hozzáférhet a bérlő erőforrásaihoz. |
+| client_id | Az alkalmazás ügyfélazonosítója, amely hozzáférhet a bérlő erőforrásaihoz.|
+| client_secret | Az alkalmazás ügyféltka-tka, amely hozzáférhet a bérlő erőforrásaihoz. |
 
-## <a name="test-the-code-example"></a>Példa a kód tesztelésére
+## <a name="test-the-code-example"></a>A példakód tesztelése
 
-1. Töltsön fel egy fájlt a Storage-fiókba.
+1. Töltsön fel egy fájlt a tárfiókba.
 
     ```python
     account_key = "xxxxxxxxxxxxxx"
@@ -211,9 +211,9 @@ poller.wait()
     ```
     |**Beállítás** | **Mező leírása**|
     |---|---|---|
-    | account_key | A programozott módon létrehozott Storage-fiók hozzáférési kulcsa.|
+    | account_key | A programozottan létrehozott tárfiók hozzáférési kulcsa.|
 
-2. Futtasson tesztelési lekérdezést az Azure Adatkezelőban.
+2. Futtasson egy tesztlekérdezést az Azure Data Explorerben.
 
     ```python
     kusto_uri = "https://{}.{}.kusto.windows.net".format(kusto_cluster_name, location_small_case)
@@ -226,7 +226,7 @@ poller.wait()
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az erőforráscsoport törléséhez és az erőforrások tisztításához használja az alábbi parancsot:
+Az erőforráscsoport törléséhez és az erőforrások törléséhez használja a következő parancsot:
 
 ```python
 #Returns an instance of LROPoller; see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
@@ -234,9 +234,9 @@ poller = resource_client.resource_groups.delete(resource_group_name=resource_gro
 poller.wait()
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-*  A fürtök és adatbázisok létrehozásának egyéb módjaival kapcsolatos további tudnivalókért lásd: [Azure adatkezelő-fürt és-adatbázis létrehozása](create-cluster-database-python.md).
-* A betöltési módszerekkel kapcsolatos további információkért lásd: [Azure adatkezelő adatfeldolgozás](ingest-data-overview.md).
-* A webalkalmazással kapcsolatos további tudnivalókért lásd: gyors üzembe helyezési információk az [Azure adatkezelő webes felhasználói felületén](web-query-data.md).
-* [Lekérdezések írása](write-queries.md) Kusto-lekérdezési nyelvvel.
+*  A fürt és az adatbázis létrehozásának egyéb módjairól az [Azure Data Explorer-fürt és -adatbázis létrehozása](create-cluster-database-python.md)című témakörben olvashat.
+* A betöltési módszerekről az [Azure Data Explorer adatbetöltése](ingest-data-overview.md)című témakörben olvashat bővebben.
+* A webalkalmazásról a [Rövid útmutató: Lekérdezési adatok az Azure Data Explorer webes felhasználói felületén](web-query-data.md)című témakörben olvashat.
+* [Lekérdezések írása](write-queries.md) a Kusto lekérdezési nyelvével.

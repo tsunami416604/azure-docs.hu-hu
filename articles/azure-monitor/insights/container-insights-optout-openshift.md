@@ -1,28 +1,28 @@
 ---
-title: Az Azure Red Hat OpenShift-fürt figyelésének leállítása | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan állíthatja le a Azure Monitor for containers szolgáltatással az Azure Red Hat OpenShift-fürt figyelését.
+title: Az Azure Red Hat OpenShift fürt figyelésének leállítása | Microsoft dokumentumok
+description: Ez a cikk ismerteti, hogyan állíthatja le az Azure Red Hat OpenShift fürt figyelését az Azure Monitor tárolókhoz.
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: eff5203aeedd3c7ad283b55ba12f0e45a556460d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250733"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift-fürt figyelésének leállítása a Azure Monitor tárolókkal
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift fürt figyelésének leállítása az Azure Monitor tárolókhoz szolgáltatásával
 
-Miután engedélyezte az Azure Red Hat OpenShift-fürt figyelését, leállíthatja a fürt figyelését, ha úgy dönt, hogy már nem szeretné figyelni. Ez a cikk bemutatja, hogyan hajthatja végre ezt a megadott Azure Resource Manager-sablonok használatával.  
+Miután engedélyezte az Azure Red Hat OpenShift fürt figyelését, leállíthatja a fürt figyelését, ha úgy dönt, hogy már nem szeretné figyelni. Ez a cikk bemutatja, hogyan valósíthatom meg ezt a megadott Azure Resource Manager-sablonok használatával.  
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
-Megadott van két Azure Resource Manager-sablon eltávolítása az erőforráscsoportban a megoldásokkal kapcsolatos forrásanyagok konzisztens és ismétlődő támogatásához. Az egyik egy JSON-sablon, amely meghatározza, hogy a rendszer hogyan állítsa le a figyelést, a másik pedig olyan paramétereket tartalmaz, amelyeket úgy konfigurál, hogy megadja a fürt üzembe helyezett OpenShift-erőforrás-AZONOSÍTÓját és az Azure-régiót.
+Két Azure Resource Manager-sablon nal támogatja a megoldás-erőforrások konzisztens és ismételt eltávolítását az erőforráscsoportban. Az egyik egy JSON-sablon, amely meghatározza a figyelés leállításához szükséges konfigurációt, a másik pedig olyan paraméterértékeket tartalmaz, amelyeket konfigurál az OpenShift fürt erőforrásazonosítójának és az Azure-régiónak a megadásához, amelyben a fürt telepítve van.
 
-Ha még nem ismeri a sablon segítségével üzembe helyezni erőforrásokat fogalma, lásd:
+Ha nem ismeri az erőforrások sablon használatával történő üzembe helyezésének fogalmát, olvassa el az:
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/templates/deploy-powershell.md)
-* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
+* [Erőforrások üzembe helyezése erőforrás-kezelői sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
 
-Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+Ha úgy dönt, hogy az Azure CLI, először telepítenie kell, és a CLI helyileg kell használni. Az Azure CLI 2.0.65-ös vagy újabb verzióját kell futtatnia. A verzió azonosításához `az --version`futtassa a futtassa a futtassa a futtassa a futtassa Ha telepítenie vagy frissítenie kell az Azure CLI-t, [olvassa el az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli)című témakört.
 
 ### <a name="create-template"></a>Sablon létrehozása
 
@@ -65,9 +65,9 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
     }
     ```
 
-2. Mentse ezt a fájlt **OptOutTemplate. JSON** néven egy helyi mappába.
+2. Mentse ezt a fájlt **OptOutTemplate.json néven** egy helyi mappába.
 
-3. A következő JSON-szintaxist illessze be a fájlba:
+3. Illessze be a következő JSON-szintaxist a fájlba:
 
     ```json
     {
@@ -84,17 +84,17 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
     }
     ```
 
-4. Szerkessze a **aroResourceId** és a **aroResourceLocation** értékeit a OpenShift-fürt értékeivel, amelyet a kiválasztott fürt **Tulajdonságok** lapján talál.
+4. Az **aroResourceId** és az **aroResourceLocation** értékeit az OpenShift fürt értékei alapján szerkesztheti, amely a kijelölt fürt **Tulajdonságok** lapján található.
 
     ![Tároló tulajdonságai lap](media/container-insights-optout-openshift/cluster-properties-page.png)
 
-5. Mentse ezt a fájlt **OptOutParam. JSON** néven egy helyi mappába.
+5. Mentse ezt a fájlt **OptOutParam.json néven** egy helyi mappába.
 
 6. Készen áll a sablon üzembe helyezésére.
 
-### <a name="remove-the-solution-using-azure-cli"></a>Távolítsa el a megoldás az Azure CLI használatával
+### <a name="remove-the-solution-using-azure-cli"></a>A megoldás eltávolítása az Azure CLI használatával
 
-Futtassa a következő parancsot az Azure CLI-vel Linuxon a megoldás eltávolításához és a fürt konfigurációjának tisztításához.
+Hajtsa végre a következő parancsot az Azure CLI Linuxon a megoldás eltávolításához és a fürt konfigurációjának karbantartásához.
 
 ```azurecli
 az login   
@@ -102,17 +102,17 @@ az account set --subscription "Subscription Name"
 az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
-A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Ha elkészült, egy üzenet, amely tartalmazza az eredmény az alábbihoz hasonló adja vissza:
+A konfiguráció módosítása néhány percet is igénybe vehet. Ha befejeződött, az alábbihoz hasonló üzenetet ad vissza a rendszer, amely tartalmazza az eredményt:
 
 ```output
 ProvisioningState       : Succeeded
 ```
 
-### <a name="remove-the-solution-using-powershell"></a>Távolítsa el a megoldás a PowerShell használatával
+### <a name="remove-the-solution-using-powershell"></a>A megoldás eltávolítása a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Hajtsa végre a következő PowerShell-parancsokat a sablont tartalmazó mappában, hogy eltávolítsa a megoldást, és törölje a konfigurációt a fürtből.    
+Hajtsa végre a következő PowerShell-parancsokat a sablont tartalmazó mappában a megoldás eltávolításához és a konfiguráció fürtökből való eltávolításához.    
 
 ```powershell
 Connect-AzAccount
@@ -120,12 +120,12 @@ Select-AzSubscription -SubscriptionName <yourSubscriptionName>
 New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupName> -TemplateFile .\OptOutTemplate.json -TemplateParameterFile .\OptOutParam.json
 ```
 
-A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Ha elkészült, egy üzenet, amely tartalmazza az eredmény az alábbihoz hasonló adja vissza:
+A konfiguráció módosítása néhány percet is igénybe vehet. Ha befejeződött, az alábbihoz hasonló üzenetet ad vissza a rendszer, amely tartalmazza az eredményt:
 
 ```output
 ProvisioningState       : Succeeded
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha a munkaterület létrejött, csak a fürt figyelésére is alkalmas, és már nincs rá szükség, akkor törölje kézzel. Ha nem ismeri a munkaterület törlésének módját, tekintse meg [Az Azure log Analytics munkaterület törlése](../../log-analytics/log-analytics-manage-del-workspace.md)című témakört.
+Ha a munkaterület csak a fürt figyelésének támogatására jött létre, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterület törlésének módját, olvassa el [az Azure Log Analytics-munkaterület törlése című témakört.](../../log-analytics/log-analytics-manage-del-workspace.md)

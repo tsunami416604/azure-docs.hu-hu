@@ -1,6 +1,6 @@
 ---
-title: Azure-API Management használata az Azure Kubernetes Service-ben üzembe helyezett Service-szolgáltatásokkal | Microsoft Docs
-description: Ez a cikk a API Management az AK-val való üzembe helyezésének lehetőségeit ismerteti
+title: Az Azure API-kezelés használata az Azure Kubernetes szolgáltatásban üzembe helyezett mikroszolgáltatásokkal | Microsoft dokumentumok
+description: Ez a cikk az API Management AKS-sel történő üzembe helyezésének lehetőségeit ismerteti
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -13,115 +13,115 @@ ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
 ms.openlocfilehash: 1d6773b4daac256234c33bf50fb3736d585ac505
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75480995"
 ---
-# <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Az Azure API Management használata az Azure Kubernetes Service-ben üzembe helyezett Service-szolgáltatásokkal
+# <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Az Azure API Management használata az Azure Kubernetes szolgáltatásban üzembe helyezett mikroszolgáltatásokkal
 
-A szolgáltatás ideális az API-k létrehozásához. Az [Azure Kubernetes szolgáltatással](https://azure.microsoft.com/services/kubernetes-service/) (ak) gyorsan üzembe helyezheti és üzemeltetheti a felhőben a [Service-alapú architektúrát](https://docs.microsoft.com/azure/architecture/guide/architecture-styles/microservices) . Ezután kihasználhatja az [Azure API Management](https://aka.ms/apimrocks) (API Management) szolgáltatást belső és külső felhasználásra szolgáló API-kként való közzétételhez. Ez a cikk a API Management az AK-val való üzembe helyezésének lehetőségeit ismerteti. A Kubernetes, a API Management és az Azure hálózatkezelésének alapszintű ismeretét feltételezi. 
+A mikroszolgáltatások tökéletesek API-k létrehozásához. Az [Azure Kubernetes-szolgáltatás](https://azure.microsoft.com/services/kubernetes-service/) (AKS) segítségével gyorsan üzembe helyezhet és működtethet [mikroszolgáltatásokon alapuló architektúrát](https://docs.microsoft.com/azure/architecture/guide/architecture-styles/microservices) a felhőben. Ezután az [Azure API Management](https://aka.ms/apimrocks) (API Management) segítségével közzéteheti a mikroszolgáltatásokat API-kként belső és külső felhasználáshoz. Ez a cikk az API Management AKS-sel való üzembe helyezésének lehetőségeit ismerteti. A Kubernetes, az API Management és az Azure-hálózat alapvető ismereteit feltételezi. 
 
 ## <a name="background"></a>Háttér
 
-Ha a Service-t API-ként teszi közzé a használat során, akkor kihívást jelenthet a szolgáltatások és az azokat használó ügyfelek közötti kommunikáció kezelése. Számos különböző, többek között a hitelesítést, az engedélyezést, a szabályozást, a gyorsítótárazást, az átalakítást és a figyelést érintő probléma áll fenn. Ezek az érintettek attól függetlenül érvényesek, hogy a rendszer belső vagy külső ügyfelek számára teszi elérhetővé a szolgáltatást. 
+Mikroszolgáltatások api-kként való közzétételekor a felhasználás érdekében, kihívást jelenthet a mikroszolgáltatások és az azokat használó ügyfelek közötti kommunikáció kezelése. Számos több területet érintő aggályok, mint például a hitelesítés, engedélyezés, szabályozás, gyorsítótárazás, átalakítás és figyelés. Ezek az aggályok érvényesek, függetlenül attól, hogy a mikroszolgáltatások vannak kitéve a belső vagy külső ügyfelek. 
 
-Az [API-átjáró](https://docs.microsoft.com/dotnet/architecture/microservices/architect-microservice-container-applications/direct-client-to-microservice-communication-versus-the-api-gateway-pattern) mintája ezeket a problémákat tárgyalja. Az API-átjárók a szolgáltatásba bevezető ajtóként szolgálnak, leválasztják az ügyfeleket a szolgáltatásokból, felvesz egy további biztonsági réteget, és csökkenti a szolgáltatások összetettségét azáltal, hogy megszünteti a több területet érintő szempontok kezelésére vonatkozó terheket. 
+Az [API-átjáró](https://docs.microsoft.com/dotnet/architecture/microservices/architect-microservice-container-applications/direct-client-to-microservice-communication-versus-the-api-gateway-pattern) minta ezeket az aggályokat. Az API-átjáró a mikroszolgáltatások bejárati ajtaját szolgálja, leválasztja az ügyfeleket a mikroszolgáltatásokról, további biztonsági réteget ad hozzá, és csökkenti a mikroszolgáltatások összetettségét azáltal, hogy eltávolítja a több vágással kapcsolatos problémák kezelésének terhét. 
 
-Az [Azure API Management](https://aka.ms/apimrocks) egy kulcsrakész megoldás az API-átjárók igényeinek megoldásához. Gyorsan létrehozhat egy konzisztens és modern átjárót a szolgáltatásokhoz, és API-ként teheti közzé őket. A teljes életciklusú API Management megoldásként további képességeket is biztosít, beleértve az API-felderítéshez, az API-életciklus-felügyelethez és az API-elemzésekhez használható önkiszolgáló fejlesztői portált is.
+[Az Azure API Management](https://aka.ms/apimrocks) egy kulcsrakész megoldás az API-átjáró igényeinek kielégítésére. Gyorsan létrehozhat egy konzisztens és modern átjárót a mikroszolgáltatásokhoz, és api-ként közzéteheti őket. Teljes életciklusú API-felügyeleti megoldásként további képességeket is biztosít, beleértve az API-felderítéshez, az API életciklus-kezeléséhez és az API-elemzéshez való önkiszolgáló fejlesztői portált.
 
-Együttes használatakor az AK és a API Management platformot biztosít a Service-alapú API-k üzembe helyezéséhez, közzétételéhez, biztonságossá tételéhez, figyeléséhez és kezeléséhez. Ebben a cikkben áthaladunk néhány lehetőséget az ak-nak a API Managementsal együtt történő üzembe helyezésére. 
+Ha együtt használják, az AKS és az API Management platformot biztosít a mikroszolgáltatásokon alapuló API-k üzembe helyezéséhez, közzétételéhez, védelméhez, figyeléséhez és kezeléséhez. Ebben a cikkben az AKS API Managementtel együtt történő üzembe helyezésének néhány lehetőségén fogunk átmenni. 
 
-## <a name="kubernetes-services-and-apis"></a>Kubernetes Services és API-k
+## <a name="kubernetes-services-and-apis"></a>Kubernetes szolgáltatások és API-k
 
-Egy Kubernetes-fürtben a tárolók olyan [hüvelyekben](https://kubernetes.io/docs/concepts/workloads/pods/pod/)vannak üzembe helyezhetők, amelyek elmúlóak, és életciklussal rendelkeznek. A munkavégző csomópont elpusztulása esetén a csomóponton futó hüvely elveszik. Ezért a pod IP-címe bármikor megváltoztatható. Nem hivatkozhatunk arra, hogy kommunikáljon a pod-mel. 
+A Kubernetes-fürtben a tárolók [podok,](https://kubernetes.io/docs/concepts/workloads/pods/pod/)amelyek rövid élettartamúak és életciklussal rendelkeznek. Ha egy feldolgozó csomópont meghal, a csomóponton futó podok elvesznek. Ezért a pod IP-címe bármikor megváltozhat. Nem támaszkodhatunk rá, hogy kommunikáljon a kabinnal. 
 
-A probléma megoldásához a Kubernetes bevezette a [szolgáltatások](https://kubernetes.io/docs/concepts/services-networking/service/)fogalmát. A Kubernetes szolgáltatás egy absztrakt réteg, amely a hüvelyek logikai csoportját határozza meg, és lehetővé teszi a külső adatforgalom, a terheléselosztás és a szolgáltatások felderítését a hüvelyek számára. 
+A probléma megoldásához a Kubernetes bevezette a [Szolgáltatások](https://kubernetes.io/docs/concepts/services-networking/service/)fogalmát. A Kubernetes-szolgáltatás egy absztrakciós réteg, amely meghatározza a podok logikai csoportját, és lehetővé teszi a külső forgalom kielégesését, a terheléselosztást és a szolgáltatásfelderítést a podok számára. 
 
-Ha készen áll arra, hogy a API Management API-jai segítségével elérhetővé tegye a szolgáltatásait API-kkal, a API Management-ban található API-kra Kubernetes kell. Nincsenek beállított szabályok. Ez attól függ, hogy az üzleti képességek vagy tartományok hogyan lettek kialakítva és particionálva a szolgáltatás elején. Ha például egy szolgáltatás mögötti hüvely felelős az adott erőforráson (például az ügyfélen) lévő összes műveletért, akkor a szolgáltatás egy API-ra képezhető le. Ha egy erőforráson végrehajtott műveletek több szolgáltatásba vannak particionálva (pl. GetOrder, PlaceOrder), akkor több szolgáltatás is logikailag összesíthető egyetlen API-ban az API managementben (lásd az 1. ábrát). 
+Amikor készen állunk arra, hogy közzétegyék mikroszolgáltatásainkat API-ként az API Managementen keresztül, át kell gondolnunk, hogyan képezzük le a Kubernetes-ben lévő szolgáltatásainkat az API Management API-k API-kAPI-khoz való hozzárendelésére. Nincsenek meghatározott szabályok. Attól függ, hogyan tervezte meg és particionálta az üzleti képességeket vagy tartományokat mikroszolgáltatásokba az elején. Például ha a podok mögött egy szolgáltatás felelős az összes művelet egy adott erőforrás (például, Ügyfél), a szolgáltatás lehet leképezve egy API-t. Ha egy erőforrás-műveletek particionált több mikroszolgáltatások (például GetOrder, PlaceOrder), majd több szolgáltatás logikailag összesíthető egyetlen API-t API-kezelés (lásd: 1. ábra). 
 
-A leképezések is fejlődnek. Mivel a API Management létrehoz egy homlokzatot a-szolgáltatások előtt, lehetővé teszi, hogy az idő múlásával újraértékelje a szolgáltatásait és a megfelelő méretet. 
+A leképezések is fejlődhetnek. Mivel az API Management egy homlokzatot hoz létre a mikroszolgáltatások előtt, lehetővé teszi számunkra, hogy újraés megfelelő méretű mikroszolgáltatásaink idővel. 
 
-![Szolgáltatások leképezése API-kra](./media/api-management-aks/service-api-mapping.png)
+![Szolgáltatások hozzárendelése API-khoz](./media/api-management-aks/service-api-mapping.png)
 
-## <a name="deploy-api-management-in-front-of-aks"></a>API Management üzembe helyezése az AK előtt
+## <a name="deploy-api-management-in-front-of-aks"></a>Az API Management telepítése az AKS előtt
 
-A API Management egy AK-fürt előtt történő üzembe helyezésének néhány lehetősége van. 
+Az API Management telepítése az AKS-fürt előtt néhány lehetőség közül választhat. 
 
-Amíg egy AK-fürtöt mindig telepítenek egy virtuális hálózaton (VNet), nem szükséges API Management példányt telepíteni a VNet. Ha API Management nem a fürt VNet belül található, az AK-fürtnek közzé kell tennie a API Management nyilvános végpontját, hogy csatlakozhasson a szolgáltatáshoz. Ebben az esetben szükség van a API Management és az AK közötti kapcsolat védelmére. Más szóval biztosítani kell, hogy a fürt kizárólag API Managementon keresztül legyen elérhető. Nézzük végig a beállításokat. 
+Míg egy AKS-fürt mindig egy virtuális hálózatban (VNet) van telepítve, az API Management-példány nem szükséges virtuális hálózatban üzembe helyezése. Ha az API Management nem a fürt virtuális hálózatán belül található, az AKS-fürtnek nyilvános végpontokat kell közzétennie az API Management számára, hogy csatlakozzon. Ebben az esetben szükség van az API Management és az AKS közötti kapcsolat védelmére. Más szóval biztosítanunk kell, hogy a fürt csak az API Managementen keresztül érhető el. Vegyük át a lehetőségeket. 
 
-### <a name="option-1-expose-services-publicly"></a>1\. lehetőség: a szolgáltatások nyilvánosan elérhetővé tétele
+### <a name="option-1-expose-services-publicly"></a>1. lehetőség: Szolgáltatások nyilvános felfedése
 
-Az AK-fürtökben lévő szolgáltatások nyilvánosan elérhetők a NodePort, a terheléselosztó vagy a ExternalName [szolgáltatás típusaival](https://docs.microsoft.com/azure/aks/concepts-network) . Ebben az esetben a szolgáltatások közvetlenül a nyilvános internetről érhetők el. A API Management a fürt előtt történő üzembe helyezése után biztosítani kell, hogy az összes bejövő forgalom a API Managementon haladjon át a szolgáltatáson keresztüli hitelesítés alkalmazásával. Például a API Management tartalmazhatnak egy hozzáférési jogkivonatot a fürtre irányuló minden kérelemben. Az egyes szolgáltatások feladata a jogkivonat ellenőrzése a kérelem feldolgozása előtt. 
+Az AKS-fürt szolgáltatásai nyilvánosan elérhetővé tehetők a NodePort, LoadBalancer vagy ExternalName [szolgáltatástípusokkal.](https://docs.microsoft.com/azure/aks/concepts-network) Ebben az esetben a Szolgáltatások közvetlenül a nyilvános internetről érhetők el. Miután üzembe helyezte az API Managementet a fürt előtt, biztosítanunk kell, hogy az összes bejövő forgalom az API Managementen keresztül történjen a mikroszolgáltatásokhitelesítés alkalmazásával. Például az API Management tartalmazhat egy hozzáférési jogkivonatot a fürthöz benyújtott minden egyes kérelemben. Minden mikroszolgáltatás felelős a jogkivonat érvényesítéséért a kérelem feldolgozása előtt. 
 
 
-Lehet, hogy ez a legegyszerűbb lehetőség a API Management az AK-ban való üzembe helyezésére, különösen akkor, ha már van megvalósítva hitelesítési logika a Service-szolgáltatásokban. 
+Ez lehet a legegyszerűbb lehetőség az API Management telepítése az AKS előtt, különösen akkor, ha már rendelkezik hitelesítési logikával a mikroszolgáltatásokban. 
 
 ![Szolgáltatások közvetlen közzététele](./media/api-management-aks/direct.png)
 
-Szakemberek
-* Egyszerű konfiguráció a API Management oldalon, mert nem kell befecskendezni a fürt VNet
-* Nincs változás az AK oldalán, ha a szolgáltatások már nyilvánosan elérhetők, és a hitelesítési logika már létezik a Service-ben.
+Profik:
+* Egyszerű konfiguráció az API Management oldalon, mert nem kell beadni a fürt virtuális hálózatába
+* Nincs változás az AKS-oldalon, ha a szolgáltatások már nyilvánosan vannak elérhetővé téve, és a hitelesítési logika már létezik a mikroszolgáltatásokban
 
-Hátránya
-* Lehetséges biztonsági kockázat a szolgáltatási végpontok nyilvános láthatósága miatt
-* Nincs egyszeri belépési pont a bejövő fürt forgalmához
-* Ismétlődő hitelesítési logikával bonyolítja a szolgáltatásait
+Hátránya:
+* A szolgáltatási végpontok nyilvános láthatóságából eredő potenciális biztonsági kockázat
+* Nincs egybelépésű pont a bejövő fürtforgalomhoz
+* Megnehezíti a mikroszolgáltatásokat duplikált hitelesítési logikával
 
-### <a name="option-2-install-an-ingress-controller"></a>2\. lehetőség: bejövő forgalomú vezérlő telepítése
+### <a name="option-2-install-an-ingress-controller"></a>2. lehetőség: Be- és betolatási vezérlő telepítése
 
-Bár az 1. lehetőség egyszerűbb lehet, a fentiekben említett jelentős hátrányok vannak. Ha egy API Management-példány nem a fürt VNet található, a kölcsönös TLS-hitelesítés (mTLS) robusztus módja annak, hogy a forgalom biztonságos és megbízható legyen a API Management-példány és az AK-fürt közötti mindkét irányban. 
+Bár az 1- es lehetőség könnyebb lehet, figyelemre méltó hátrányai vannak, mint a fent említett. Ha egy API Management-példány nem található a fürt virtuális hálózatában, a kölcsönös TLS-hitelesítés (mTLS) robusztus módja annak, hogy a forgalom biztonságos és megbízható legyen mindkét irányban egy API Management-példány és egy AKS-fürt között. 
 
-A kölcsönös TLS-hitelesítést a API Management [natív módon támogatja](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates) , és a Kubernetes-ben engedélyezhető a bejövő vezérlő (3. ábra) [telepítésével](https://docs.microsoft.com/azure/aks/ingress-own-tls) . Ennek eredményeképpen a hitelesítés a beáramló vezérlőben történik, ami leegyszerűsíti a szolgáltatásait. Emellett a API Management IP-címeit is hozzáadhatja az engedélyezett listához a bejövő forgalom lehetőséggel, így biztosíthatja, hogy csak API Management férhessen hozzá a fürthöz.  
+A kölcsönös TLS-hitelesítést az API Management [natív módon támogatja,](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates) és a Kubernetes-ben [egy bejövő vezérlő telepítésével](https://docs.microsoft.com/azure/aks/ingress-own-tls) engedélyezhető (3. ábra). Ennek eredményeképpen a hitelesítés a bejövő adatkezelőben történik, ami leegyszerűsíti a mikroszolgáltatásokat. Emellett hozzáadhatja az API Management IP-címeit a bejárás itiltott listájához, hogy csak az API Management férhessen hozzá a fürthöz.  
 
  
-![Közzététel bejövő vezérlőn keresztül](./media/api-management-aks/ingress-controller.png)
+![Közzététel be- és visszahálózaton keresztül](./media/api-management-aks/ingress-controller.png)
 
 
-Szakemberek
-* Egyszerű konfiguráció a API Management oldalon, mert nem kell befecskendezni a fürt VNet, és a mTLS natív módon támogatott
-* Központosítja a bejövő fürt forgalmának védelmét a beáramló vezérlő rétegében
-* Csökkenti a biztonsági kockázatokat a nyilvánosan látható fürt végpontok minimalizálásával
+Profik:
+* Egyszerű konfiguráció az API Management oldalon, mert nem kell beadni a fürt virtuális hálózatába, és az mTLS natívan támogatott
+* Központosítja a bejövő fürtforgalom védelmét a bejövő vezérlő rétegben
+* Csökkenti a biztonsági kockázatot a nyilvánosan látható fürtvégpontok minimalizálásával
 
-Hátránya
-* A fürt konfigurációjának összetettségét növeli a bejövő vezérlő telepítése, konfigurálása és karbantartása, valamint a mTLS használt tanúsítványok kezelése miatt.
-* Biztonsági kockázat a bejövő hozzáférés-vezérlési végpont (ok) nyilvános láthatósága miatt
+Hátránya:
+* Növeli a fürtkonfiguráció összetettségét az mTLS-hez használt tanúsítványok telepítéséhez, konfigurálásához és karbantartásához szükséges többletmunka miatt
+* A befektvezérlő végpontjainak nyilvános láthatóságából eredő biztonsági kockázat
 
 
-Ha API Managementon keresztül tesz közzé API-kat, egyszerűen és közösen biztosíthatja az API-k elérését az előfizetési kulcsok használatával. A közzétett API-kat használó fejlesztőknek érvényes előfizetési kulcsot kell tartalmazniuk a HTTP-kérelmekben, amikor hívásokat kezdeményeznek az API-khoz. Ellenkező esetben a rendszer azonnal visszautasítja a hívásokat a API Management átjáró. Nincsenek továbbítva a háttér-szolgáltatásoknak.
+Ha API-n keresztül teszi közzé az API-kat, az előfizetési kulcsok használatával egyszerűen és általánosan biztosíthatja az API-khoz való hozzáférést. Azoknak a fejlesztőknek, akiknek fel kell használniuk a közzétett API-kat, érvényes előfizetési kulcsot kell tartalmazniuk a HTTP-kérelmekben, amikor hívásokat kezdeményeznek ezekhez az API-khoz. Ellenkező esetben a hívásokat az API Management átjáró azonnal elutasítja. Nem továbbítják őket a háttérszolgáltatásoknak.
 
-Az API-k eléréséhez szükséges előfizetési kulcs beszerzéséhez előfizetésre van szükség. Az előfizetések lényegében egy megnevezett tárolók egy pár előfizetési kulcshoz. A közzétett API-kat használó fejlesztők előfizetéseket kaphatnak. És nincs szükségük az API-közzétevők jóváhagyására. Az API-közzétevők közvetlenül az API-felhasználók számára is létrehozhatnak előfizetéseket.
+Az API-k eléréséhez előfizetési kulcs lekérni, előfizetés szükséges. Az előfizetés lényegében egy elnevezett tároló egy pár előfizetési kulcsok. Azok a fejlesztők, akiknek fel kell használniuk a közzétett API-kat, előfizetéseket kaphatnak. És nem kell jóváhagyást API-közzétevők. Az API-közzétevők közvetlenül is létrehozhatnak előfizetéseket az API-fogyasztók számára.
 
-### <a name="option-3-deploy-apim-inside-the-cluster-vnet"></a>3\. lehetőség: a APIM üzembe helyezése a fürt VNet belül
+### <a name="option-3-deploy-apim-inside-the-cluster-vnet"></a>3. lehetőség: APIM telepítése a fürt virtuális hálózatán belül
 
-Bizonyos esetekben a jogszabályi korlátozásokkal vagy szigorú biztonsági követelményekkel rendelkező ügyfelek az 1. és a 2. lehetőséget a nyilvánosan elérhető végpontok miatt nem életképes megoldásoknak tekinthetik meg. Másokban előfordulhat, hogy az AK-fürt és a-szolgáltatásokat használó alkalmazások ugyanabban a VNet belül vannak, ezért nincs ok arra, hogy nyilvánosan elérhetővé tegye a fürtöt, mivel az összes API-forgalom a VNet belül marad. Ezekben a forgatókönyvekben a API Management üzembe helyezését a fürt VNet végezheti el. A [prémium szintű API Management](https://aka.ms/apimpricing) támogatja a VNet-telepítést. 
+Bizonyos esetekben a szabályozási korlátozásokkal vagy szigorú biztonsági követelményekkel rendelkező ügyfelek az 1. Másokban az AKS-fürt és a mikroszolgáltatásokat használó alkalmazások előfordulhat, hogy ugyanazon a virtuális hálózaton belül, ezért nincs ok arra, hogy a fürt nyilvánosan elérhető, mivel az összes API-forgalom a virtuális hálózaton belül marad. Ezekben a forgatókönyvekben az API Management a fürt virtuális hálózatába. [Az API Management Premium tier](https://aka.ms/apimpricing) támogatja a virtuális hálózat telepítését. 
 
-A [API Management kétféleképpen helyezhetők üzembe VNet](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet) – külső és belső. 
+Az API Management [virtuális hálózatra való üzembe helyezésének](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet) két módja van – külső és belső. 
 
-Ha az API-felhasználók nem a fürt VNet találhatók, akkor a külső üzemmódot (4. ábra) kell használni. Ebben a módban a API Management átjáró bekerül a fürt VNet, de a nyilvános internetről elérhető külső terheléselosztó használatával. Segít a fürt teljes elrejtésében, miközben továbbra is lehetővé teszi, hogy a külső ügyfelek használják a szolgáltatásait. Emellett az Azure hálózati funkcióit, például a hálózati biztonsági csoportokat (NSG) is használhatja a hálózati forgalom korlátozására.
+Ha az API-felhasználók nem tartózkodnak a fürt virtuális hálózatában, a külső módot (4. ábra) kell használni. Ebben a módban az API Management átjáró a fürt virtuális hálózatába kerül, de egy külső terheléselosztón keresztül érhető el a nyilvános internetről. Segít teljesen elrejteni a fürtöt, miközben továbbra is engedélyezi a külső ügyfelek számára a mikroszolgáltatások felhasználását. Emellett használhatja az Azure hálózati képességek, például a hálózati biztonsági csoportok (NSG) a hálózati forgalom korlátozásához.
 
-![Külső VNet mód](./media/api-management-aks/vnet-external.png)
+![Külső virtuális hálózat mód](./media/api-management-aks/vnet-external.png)
 
-Ha az összes API-felhasználó a fürt VNet belül található, akkor a belső mód (5. ábra) használható. Ebben a módban a API Management átjáró bekerül a fürt VNET, és a belső terheléselosztó használatával csak ezen a VNet belülről érhető el. A API Management átjáró vagy az AK-fürt nem érhető el a nyilvános internetről. 
+Ha az összes API-fogyasztó a fürt virtuális hálózatán belül található, akkor a belső mód (5. ábra) használható. Ebben a módban az API Management átjáró a fürt virtuális hálózatába kerül, és csak a virtuális hálózaton belül érhető el egy belső terheléselosztón keresztül. Az API Management átjáróvagy az AKS-fürt nem érhető el nyilvános internetről. 
 
-![Belső VNet mód](./media/api-management-aks/vnet-internal.png)
+![Belső virtuális hálózat mód](./media/api-management-aks/vnet-internal.png)
 
- Az AK-fürt mindkét esetben nyilvánosan nem látható. A 2. lehetőséghez képest előfordulhat, hogy a bejövő adatkezelő nem szükséges. A forgatókönyvtől és a konfigurációtól függően előfordulhat, hogy a hitelesítés API Management és a szolgáltatások között továbbra is szükséges. Ha például egy szolgáltatás hálóját fogadja el, az mindig kölcsönös TLS-hitelesítést igényel. 
+ Az AKS-fürt mindkét esetben nem látható nyilvánosan. Lehetőséghez képest előfordulhat, hogy a be- és a be- és a tőzsdevezérlőre nincs szükség. A forgatókönyvtől és a konfigurációtól függően továbbra is szükség lehet a hitelesítésre az API Management és a mikroszolgáltatások között. Ha például egy szolgáltatáshálót alkalmaznak, mindig kölcsönös TLS-hitelesítést igényel. 
 
-Szakemberek
-* A legbiztonságosabb lehetőség, mert az AK-fürt nem rendelkezik nyilvános végponttal
-* Leegyszerűsíti a fürtkonfiguráció konfigurálását, mivel nem rendelkezik nyilvános végponttal
-* A VNet belüli API Management és ak-nak a belső mód használatával való elrejtésének képessége
-* A hálózati forgalom szabályozása az Azure hálózati képességei, például a hálózati biztonsági csoportok (NSG-EK) használatával
+Profik:
+* A legbiztonságosabb beállítás, mivel az AKS-fürt nek nincs nyilvános végpontja
+* Leegyszerűsíti a fürtkonfigurációt, mivel nincs nyilvános végpontja
+* Az API Management és az AKS elrejtésének lehetősége a virtuális hálózaton belül a Belső mód használatával
+* A hálózati forgalom vezérlésének lehetősége az Azure hálózati képességei, például a hálózati biztonsági csoportok (NSG) használatával
 
-Hátránya
-* A VNet-ben való munkavégzéshez szükséges API Management üzembe helyezésének és konfigurálásának bonyolultsága
+Hátránya:
+* Növeli az API Management üzembe helyezésének és konfigurálásának összetettségét a virtuális hálózaton belüli munka érdekében
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ a [hálózati fogalmakról az AK-beli alkalmazásokhoz](https://docs.microsoft.com/azure/aks/concepts-network)
-* További információ a [API Management virtuális hálózatokkal való használatáról](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
+* További információ az [AKS-ben található alkalmazások hálózati fogalmairól](https://docs.microsoft.com/azure/aks/concepts-network)
+* További információ [az API Management virtuális hálózatokkal való használatáról](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
 
 
 

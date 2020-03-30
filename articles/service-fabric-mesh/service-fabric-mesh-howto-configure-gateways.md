@@ -1,38 +1,38 @@
 ---
-title: Átjáró konfigurálása a kérelmek továbbításához
-description: Megtudhatja, hogyan konfigurálhatja az átjárót, amely a Service Fabric rácsvonalon futó alkalmazás (ok) bejövő forgalmát kezeli.
+title: Átjáró konfigurálása útvonalkérésekhez
+description: Ismerje meg, hogyan konfigurálhatja az átjárót, amely kezeli a Service Fabric Mesh-en futó alkalmazás(ok) bejövő forgalmát.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461950"
 ---
-# <a name="configure-a-gateway-resource-to-route-requests"></a>Átjáró erőforrásának konfigurálása a kérelmek továbbításához
+# <a name="configure-a-gateway-resource-to-route-requests"></a>Átjáró-erőforrás konfigurálása útvonalkérelmekhez
 
-Az átjáró erőforrás a bejövő forgalom útválasztására szolgál az alkalmazást tároló hálózatra. Konfigurálja úgy, hogy meghatározza azokat a szabályokat, amelyeken keresztül a kérelmeket a kérés szerkezete alapján adott szolgáltatásokhoz vagy végpontokhoz irányítja a rendszer. A Mesh hálózatokkal és átjárókkal kapcsolatos további információkért lásd: a [Service Fabric Mesh hálózatkezelésének bemutatása](service-fabric-mesh-networks-and-gateways.md) . 
+Az átjáró-erőforrás a bejövő forgalom az alkalmazásnak otthont ad otthont tartalmazó hálózatra történő irányítására szolgál. Konfigurálja úgy, hogy olyan szabályokat adjon meg, amelyeken keresztül a kérelmek adott szolgáltatásokhoz vagy végpontokhoz irányulnak a kérelem szerkezete alapján. [A hálózatokról](service-fabric-mesh-networks-and-gateways.md) és átjárókról a Mesh hálózatában című témakörben talál további információt a hálózat- és átjárókról. 
 
-Az átjáró erőforrásait a központi telepítési sablon (JSON vagy YAML) részeként kell deklarálni, és a hálózati erőforrástól függ. Ez a dokumentum az átjáróhoz beállítható különböző tulajdonságokat, valamint a minta-átjáró konfigurációját ismerteti.
+Az átjáró-erőforrásokat a központi telepítési sablon (JSON vagy yaml) részeként kell deklarálni, és egy hálózati erőforrástól függenek. Ez a dokumentum ismerteti a különböző tulajdonságokat, amelyek beállíthatók az átjáró, és kiterjed a minta átjáró konfiguráció.
 
-## <a name="options-for-configuring-your-gateway-resource"></a>Az átjáró erőforrásának konfigurálási lehetőségei
+## <a name="options-for-configuring-your-gateway-resource"></a>Az átjáró erőforrás konfigurálásának lehetőségei
 
-Mivel az átjáró-erőforrás hídként szolgál az alkalmazás hálózata és a mögöttes infrastruktúra hálózata (a `open` hálózat) között. Csak az egyiket kell konfigurálnia (a rácsvonalak előnézetében az alkalmazás legfeljebb egy átjárót tartalmazhat). Az erőforrás deklarációja két fő részből áll: az erőforrás-metaadatokból és a tulajdonságokból. 
+Mivel az átjáró erőforrás hídként szolgál az alkalmazás hálózata és az `open` alapul szolgáló infrastruktúra hálózata (a hálózat) között. Csak egy beállítást kell konfigurálnia (a Mesh előzetes verzióban alkalmazásonként legfeljebb egy átjáró van). Az erőforrás deklarációja két fő részből áll: az erőforrás metaadataiból és a tulajdonságokból. 
 
-### <a name="gateway-resource-metadata"></a>Átjáró erőforrás-metaadatai
+### <a name="gateway-resource-metadata"></a>Átjáróerőforrás metaadatai
 
-Az átjáró a következő metaadatokkal van deklarálva:
-* `apiVersion` – "2018-09-01-Preview" (vagy újabb, későbbi) értékre kell állítani
-* `name` – az átjáró karakterláncának neve
-* `type` – "Microsoft. ServiceFabricMesh/Gateways"
-* `location` – az alkalmazás/hálózat helyét kell beállítani; általában az üzemelő példányban található Location paraméterre mutató hivatkozás lesz.
-* `dependsOn` – a hálózat, amelyhez ez az átjáró a bejövő forgalom pontként fog szolgálni
+Az átjáró deklarálva a következő metaadatokkal történik:
+* `apiVersion`- kell állítani a "2018-09-01-preview" (vagy később, a jövőben)
+* `name`- az átjáró karakterláncának neve
+* `type`- "Microsoft.ServiceFabricMesh/átjárók"
+* `location`- be kell állítani, hogy a helyét az alkalmazás / hálózat; általában a telepítési környezetben lévő helyparaméterre való hivatkozás
+* `dependsOn`- az a hálózat, amelynek ez az átjáró a
 
-A következőképpen néz ki egy Azure Resource Manager (JSON) telepítési sablon: 
+Az Azure Resource Manager (JSON) telepítési sablonban a következőképpen jelenik meg: 
 
 ```json
 {
@@ -51,11 +51,11 @@ A következőképpen néz ki egy Azure Resource Manager (JSON) telepítési sabl
 
 ### <a name="gateway-properties"></a>Átjáró tulajdonságai
 
-A Properties (Tulajdonságok) szakasz azokat a hálózatokat határozza meg, amelyek között az átjáró található, valamint az útválasztási kérelmek szabályait. 
+A tulajdonságok szakasz azátjáró t anamandórendszerének hálózatait és az útválasztási kérelmekre vonatkozó szabályokat határozza meg. 
 
-#### <a name="source-and-destination-network"></a>Forrás és cél hálózat 
+#### <a name="source-and-destination-network"></a>Forrás- és célhálózat 
 
-Minden átjáróhoz `sourceNetwork` és `destinationNetwork`szükséges. A forrásoldali hálózat azt a hálózatot határozza meg, amelyről az alkalmazás fogadja a bejövő kérelmeket. A name tulajdonságot mindig "Open" értékre kell beállítani. A célként megadott hálózat a kérelmek célcsoportját képező hálózat. Ennek a név értékét az alkalmazás helyi hálózatának erőforrás-nevére kell beállítani (tartalmaznia kell az erőforrás teljes hivatkozását). Tekintse meg az alábbi, a "myNetwork" nevű hálózaton üzemelő példányhoz hasonló minta konfigurációját.
+Minden átjáróhoz `sourceNetwork` `destinationNetwork`szükség van egy és . A forráshálózat az a hálózat, amelyről az alkalmazás bejövő kéréseket fog fogadni. A name tulajdonságának mindig "Open" (Nyitott) beállításra kell állítva. A célhálózat az a hálózat, amelyet a kérelmek céloznak. Ennek a névértékét az alkalmazás helyi hálózatának erőforrásnevére kell beállítani (teljes hivatkozást kell tartalmaznia az erőforrásra). Lásd alább a minta konfiguráció, hogy ez hogyan néz ki a központi telepítés a hálózat úgynevezett "myNetwork".
 
 ```json 
 "properties": {
@@ -72,18 +72,18 @@ Minden átjáróhoz `sourceNetwork` és `destinationNetwork`szükséges. A forr�
 
 #### <a name="rules"></a>Szabályok 
 
-Az átjárók több útválasztási szabállyal is rendelkezhetnek, amelyek megadják a bejövő forgalom kezelésének módját. Az útválasztási szabályok határozzák meg a figyelési port és a célként megadott végpont közötti kapcsolatot egy adott alkalmazás esetében. A TCP-útválasztási szabályok esetében 1:1 a port: végpont közötti leképezés. A HTTP-útválasztási szabályok esetében olyan összetettebb útválasztási szabályokat állíthat be, amelyek megvizsgálják a kérelem elérési útját, és opcionálisan fejléceket is, hogy eldöntsék, hogyan irányítja a rendszer a kérést. 
+Egy átjáró több útválasztási szabóval is rendelkezhet, amelyek meghatározzák a bejövő forgalom kezelésének módját. Az útválasztási szabály határozza meg a figyelőport és egy adott alkalmazás célvégpontja közötti kapcsolatot. A TCP útválasztási szabályok esetében 1:1 hozzárendelés van a Port:Endpoint között. Http útválasztási szabályok esetén összetettebb útválasztási szabályokat állíthat be, amelyek a kérelem elérési útját és adott esetben fejléceket vizsgálnak a kérelem átirányításának eldöntéséhez. 
 
-Az útválasztási szabályok a portszám alapján vannak megadva. Az egyes bejövő portok az átjáró konfigurációjának tulajdonságok szakaszában találhatók a szabályok saját tömbje. 
+Az útválasztási szabályok portonként vannak megadva. Minden egyes be- éselődési port saját szabálytömböt biztosít az átjáró konfigurációs tulajdonságszakaszában. 
 
-#### <a name="tcp-routing-rules"></a>TCP-útválasztási szabályok 
+#### <a name="tcp-routing-rules"></a>TCP útválasztási szabályok 
 
-A TCP-útválasztási szabályok a következő tulajdonságokből állnak: 
-* `name` – a szabályra mutató hivatkozás, amely bármilyen tetszőleges sztring lehet 
-* `port` – a bejövő kérelmek figyelésére szolgáló port 
-* `destination` – a végpontok specifikációja, amely tartalmazza `applicationName`, `serviceName`és `endpointName`t, ahol a kérelmeket át kell irányítani a következőre:
+A TCP útválasztási szabály a következő tulajdonságokból áll: 
+* `name`- hivatkozás a szabályra, amely tetszőleges karakterlánc lehet 
+* `port`- port figyelni a bejövő kérelmek 
+* `destination`- végpontspecifikáció, `applicationName`amely `serviceName`tartalmazza, és `endpointName`ahol a kérelmeket a
 
-Íme egy példa a TCP-útválasztási szabályra:
+Íme egy példa a TCP útválasztási szabályra:
 
 ```json
 "properties": {
@@ -103,21 +103,21 @@ A TCP-útválasztási szabályok a következő tulajdonságokből állnak:
 ```
 
 
-#### <a name="http-routing-rules"></a>HTTP-útválasztási szabályok 
+#### <a name="http-routing-rules"></a>HTTP útválasztási szabályok 
 
-A HTTP-útválasztási szabályok a következő tulajdonságokből állnak: 
-* `name` – a szabályra mutató hivatkozás, amely bármilyen tetszőleges sztring lehet 
-* `port` – a bejövő kérelmek figyelésére szolgáló port 
-* `hosts` – a fent megadott porton a különböző "gazdagépekhez" érkező kérelmekre vonatkozó szabályzatok tömbje. A gazdagépek azon alkalmazások és szolgáltatások összessége, amelyek futhatnak a hálózaton, és képesek a bejövő kérések, például egy webalkalmazás kiszolgálására. A gazdagép-házirendeket a rendszer sorrendben értelmezi, ezért a következőt kell létrehoznia a specificitás csökkenő szintjein.
-    * `name` – annak a gazdagépnek a DNS-neve, amelyre a következő útválasztási szabályok vannak megadva. A "*" használata itt az összes gazdagép útválasztási szabályait hozza létre.
-    * `routes` – szabályzatok tömbje ehhez az adott gazdagéphez
-        * `match` – a szabály által alkalmazandó bejövő kérelmek szerkezetének meghatározása egy `path` alapján
-            * `path` – tartalmaz egy `value` (bejövő URI), `rewrite` (hogyan kívánja továbbítani a kérést) és egy `type` (jelenleg csak "előtag" lehet)
-            * `header` – a fejlécek azon értékeinek opcionális tömbje, amelyek megfelelnek a kérelem fejlécében szereplő feltételeknek, ha a kérelem megfelel az elérésiút-specifikációnak (fenti).
-              * Minden bejegyzés `name` tartalmaz (a találatok fejlécének karakterlánc-neve), `value` (a kérelem fejlécének karakterlánc-értéke) és egy `type` (jelenleg csak "pontos" lehet)
-        * `destination` – ha a kérelem megfelel, a rendszer átirányítja a célhelyre, amely `applicationName`, `serviceName`és `endpointName` használatával van megadva.
+A HTTP útválasztási szabály a következő tulajdonságokból áll: 
+* `name`- hivatkozás a szabályra, amely tetszőleges karakterlánc lehet 
+* `port`- port figyelni a bejövő kérelmek 
+* `hosts`- a fent megadott porton található különböző "állomásokra" érkező kérésekre vonatkozó szabályzatok sora. A gazdagépek olyan alkalmazások és szolgáltatások, amelyek a hálózaton futnak, és bejövő kéréseket, azaz egy webalkalmazást is kiszolgálhatnak. A gazdaházirendek értelmezése sorrendben van értelmezve, ezért a következőket kell létrehoznia csökkenő specificitási szinteken
+    * `name`- annak az állomásnak a DNS-neve, amelyre a következő útválasztási szabályok vannak megadva. A "*" használata itt útválasztási szabályokat hozna létre az összes állomás számára.
+    * `routes`- egy sor politika erre a konkrét fogadó
+        * `match`- a szabály alkalmazásához beérkező kérelemstruktúra meghatározása, amely a`path`
+            * `path`- tartalmaz `value` egy (bejövő `rewrite` URI), (hogyan szeretné a kérelmet `type` továbbítani), és egy (jelenleg csak "Előtag")
+            * `header`- egy választható tömb fejlécek értékek egyeznek a kérelem fejlécében, hogy ha a kérelem megfelel az elérési út specifikációja (fent).
+              * minden bejegyzés `name` tartalmazza (a megegyezendő fejléc karakterláncneve), `value` (a fejléc `type` karakterláncértéke a kérelemben), és egy (jelenleg csak "Pontos" lehet)
+        * `destination`- ha a kérelem megegyezik, akkor a kérés erre a `applicationName` `serviceName`célállomásra lesz irányítva, amelyet egy , , és`endpointName`
 
-Íme egy példa a HTTP-útválasztási szabályra, amely az 80-es portra érkező kérésekre vonatkozik az ezen a hálózaton lévő alkalmazások által szolgáltatott összes gazdagépre. Ha a kérelem URL-címe olyan szerkezettel rendelkezik, amely megfelel az elérésiút-specifikációnak, azaz `<IPAddress>:80/pickme/<requestContent>`, akkor a rendszer átirányítja a `myListener` végpontra.  
+Íme egy példa http-útválasztási szabály, amely a 80-as porton érkező kérelmekre vonatkozna a hálózat ban lévő alkalmazások által kiszolgált összes állomásra. Ha a kérelem URL-címe olyan struktúrával rendelkezik, `<IPAddress>:80/pickme/<requestContent>`amely megfelel az elérési `myListener` út specifikációjának, azaz , akkor a végpontra lesz irányítva.  
 
 ```json
 "properties": {
@@ -152,9 +152,9 @@ A HTTP-útválasztási szabályok a következő tulajdonságokből állnak:
 }
 ```
 
-## <a name="sample-config-for-a-gateway-resource"></a>Egy átjáró erőforrásának mintája 
+## <a name="sample-config-for-a-gateway-resource"></a>Példa konfigurációs átjáró-erőforráshoz 
 
-Az átjárók teljes erőforrás-konfigurációját a következőképpen tekintheti meg: (ez a [háló minták](https://github.com/Azure-Samples/service-fabric-mesh/blob/2018-09-01-preview/templates/ingress/meshingress.linux.json)tárházában elérhető bejövő minta alapján módosítható):
+Itt van, amit a teljes Gateway erőforrás konfigurációs néz ki (ez igazodik a bejövő adatok minta elérhető a [háló minták tártára):](https://github.com/Azure-Samples/service-fabric-mesh/blob/2018-09-01-preview/templates/ingress/meshingress.linux.json)
 
 ```json
 {
@@ -218,9 +218,9 @@ Az átjárók teljes erőforrás-konfigurációját a következőképpen tekinth
 }
 ```
 
-Ez az átjáró egy "meshAppLinux" nevű Linux-alkalmazáshoz van konfigurálva, amely legalább két szolgáltatásból áll: "helloWorldService" és "counterService", amely a 80-es portot figyeli. A bejövő kérelem URL-struktúrájától függően a rendszer továbbítja a kérést ezen szolgáltatások egyikére. 
-* "\<IP-cím >: 80/helloWorld/\<kérelem\>" egy kérést eredményez a helloWorldService "helloWorldListener". 
-* "\<IP-cím >: 80/Counter/\<kérelem\>" a counterService "counterListener" irányuló kérést eredményez. 
+Ez az átjáró egy Linux-alkalmazáshoz, a "meshAppLinux"-hoz van konfigurálva, amely legalább két szolgáltatásból áll, a "helloWorldService" és a "counterService", amelyek a 80-as porton figyelnek. A bejövő kérelem URL-struktúrájától függően a kérést a szolgáltatások egyikéhez irányítja. 
+* "\<IPAddress>:80/helloWorld/\<request\>" azt eredményezné, hogy a kérés a helloWorldListener "helloWorldListener" címére irányulna a helloWorldService szolgáltatásban. 
+* Az\<" IPAddress>:80/counter/\<request\>" azt eredményezné, hogy a kérés a counterService "counterListener" címére irányulna. 
 
-## <a name="next-steps"></a>Következő lépések
-* A [bejövő minták](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) üzembe helyezése az átjárók működés közbeni megtekintéséhez
+## <a name="next-steps"></a>További lépések
+* A [bejövő támadások minta](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) telepítése az átjárók működés közbeni megtekintéséhez

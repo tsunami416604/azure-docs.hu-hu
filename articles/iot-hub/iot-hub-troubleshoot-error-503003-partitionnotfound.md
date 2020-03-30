@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub hibáinak elhárítása 503003 PartitionNotFound
-description: Ismerje meg, hogyan javíthatja a 503003-es hibát a PartitionNotFound
+title: Az Azure IoT Hub 503003-as partitionnotfound hibaelhárítása
+description: Ismerje meg, hogyan kell kijavítani hiba 503003 PartitionNotFound
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -9,24 +9,24 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 438476171597c44dcc54d85bf1140f0a52bb2e58
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76960658"
 ---
 # <a name="503003-partitionnotfound"></a>503003 PartitionNotFound
 
-Ez a cikk a **503003 PartitionNotFound** -hibák okait és megoldásait ismerteti.
+Ez a cikk az **503003 PartitionNotFound** hibák okait és megoldásait ismerteti.
 
 ## <a name="symptoms"></a>Probléma
 
-A IoT Hub kérelmek sikertelenek, a **503003**-es PartitionNotFound hiba miatt.
+Az IoT Hubra irányuló kérelmek sikertelenek az **503003 PartitionNotFound**hibával.
 
 ## <a name="cause"></a>Ok
 
-Ez a hiba a IoT Hub belső és valószínűleg átmeneti. Lásd: [IoT hub belső kiszolgálóhiba oka](iot-hub-troubleshoot-error-500xxx-internal-errors.md#cause).
+Ez a hiba az IoT Hub belső, és valószínűleg átmeneti. Lásd: [IoT Hub belső kiszolgálóhiba oka.](iot-hub-troubleshoot-error-500xxx-internal-errors.md#cause)
 
 ## <a name="solution"></a>Megoldás
 
-Tekintse [meg IoT hub belső kiszolgálói hibák megoldásait](iot-hub-troubleshoot-error-500xxx-internal-errors.md#solution).
+Tekintse [meg az IoT Hub belső kiszolgálóhibáinak megoldásait.](iot-hub-troubleshoot-error-500xxx-internal-errors.md#solution)

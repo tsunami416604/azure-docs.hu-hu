@@ -1,6 +1,6 @@
 ---
-title: Az Azure Key Vault szabályozási útmutatója
-description: Key Vault-szabályozás korlátozza, hogy az erőforrások túlzott párhuzamos hívások száma.
+title: Az Azure Key Vault szabályozására vonatkozó útmutatás
+description: A Key Vault szabályozása korlátozza az egyidejű hívások számát az erőforrások túlzott használatának megelőzése érdekében.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,60 +10,60 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 6c4923e86f8678458d6301503043413fb8a5629b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78197368"
 ---
-# <a name="azure-key-vault-throttling-guidance"></a>Az Azure Key Vault szabályozási útmutatója
+# <a name="azure-key-vault-throttling-guidance"></a>Az Azure Key Vault szabályozására vonatkozó útmutatás
 
-Szabályozás az kezdeményez, amely korlátozza az erőforrások túlzott elkerülése érdekében az Azure-szolgáltatás egyidejű beérkező hívásainak számát. Az Azure Key Vault (AKV) célja nagy mennyiségű kérelmet kezelni. Ha túlságosan sok kérelem történik, az ügyfél kérelmek szabályozása segítségével optimális teljesítményének és megbízhatóságának az AKV szolgáltatás karbantartása.
+Szabályozás egy olyan folyamat, amely korlátozza az Azure-szolgáltatás egyidejű hívásainak számát az erőforrások túlzott használatának megakadályozása érdekében. Az Azure Key Vault (AKV) nagy mennyiségű kérelem kezelésére lett kialakítva. Ha túlnyomó számú kérelem történik, az ügyfél kéréseinek szabályozása segít fenntartani az AKV szolgáltatás optimális teljesítményét és megbízhatóságát.
 
-A forgatókönyv szabályozási korlátok függ. Például akkor, ha nagy mennyiségű írást, a szabályozás lehetősége magasabb, mint ha csak végez olvasási.
+A sávszélesség-szabályozási korlátok a forgatókönyvtől függően változnak. Ha például nagy mennyiségű írást hajt végre, a szabályozás lehetősége nagyobb, mint ha csak olvasásokat hajt végre.
 
-## <a name="how-does-key-vault-handle-its-limits"></a>Hogyan kezeli a Key Vault a teljesítménye korlátait?
+## <a name="how-does-key-vault-handle-its-limits"></a>Hogyan kezeli a Key Vault a korlátait?
 
-A szolgáltatás korlátai a Key Vault meggátolják az erőforrások felhasználását, és biztosítják az összes Key Vault ügyfelének minőségi szolgáltatását. Ha túllépi a szolgáltatás küszöbértékét, Key Vault korlátozza az ügyféltől érkező további kérelmeket egy adott időtartamra, a 429-as HTTP-állapotkódot (túl sok kérés) adja vissza, és a kérés meghiúsul. Sikertelen kérelmek, amelyek a 429-es számú korlátozást adnak vissza a Key Vault által követett szabályozási korlátok felé. 
+A Key Vault szolgáltatáskorlátai megakadályozzák az erőforrásokkal való visszaélést, és biztosítják a szolgáltatás minőségét a Key Vault összes ügyfele számára. A szolgáltatás küszöbértékének túllépése esetén a Key Vault egy adott időszakra korlátozza az adott ügyféltől érkező további kérelmeket, a 429-es HTTP-állapotkódot (túl sok kérést) adja vissza, és a kérés sikertelen lesz. Sikertelen kérelmek, amelyek 429-es számlálót akey vault által nyomon követett szabályozási korlátok között adnak vissza. 
 
-A Key Vault eredetileg a titkok tárolására és lekérésére szolgáltak a központi telepítés ideje alatt.  A világ fejlődött, és a Key Vault futtatáskor használatban van a titkok tárolására és beolvasására, és gyakran az alkalmazások és a szolgáltatások használni szeretnék a Key Vaultt, például az adatbázist.  Az aktuális határértékek nem támogatják a nagy átviteli sebességet.
+A Key Vault eredetileg úgy lett kialakítva, hogy a titkos kulcsok tárolására és lekérésére szolgáljon az üzembe helyezés időpontjában.  A világ fejlődött, és a Key Vault használatos futásidőben tárolására és lekérésre titkos kulcsokat, és gyakran alkalmazások és szolgáltatások szeretné használni Key Vault, mint egy adatbázis.  A jelenlegi korlátok nem támogatják a magas átviteli sebességet.
 
-A Key Vault eredetileg a [Azure Key Vault szolgáltatás korlátaiban](key-vault-service-limits.md)megadott korlátozásokkal lett létrehozva.  Ahhoz, hogy a lehető leghatékonyabban Key Vault a saját átviteli sebességét, az alábbi ajánlott irányelvek és ajánlott eljárások a teljesítmény maximalizálása érdekében:
-1. Győződjön meg arról, hogy a szabályozás érvényben van.  Az ügyfélnek meg kell felelnie a 429-re vonatkozó exponenciális visszatartási szabályzatoknak, és gondoskodnia kell arról, hogy az alábbi útmutatás szerint próbálkozzon újra.
-1. Ossza meg Key Vault forgalmát több tároló és különböző régió között.   Használjon külön tárolót minden egyes biztonsági/rendelkezésre állási tartományhoz.   Ha öt alkalmazással rendelkezik, amelyek mindegyike két régióban található, javasoljuk, hogy az alkalmazás és a régió számára egyedi titkokat tartalmazó 10 tárolót.  Az összes tranzakciótípus esetében az előfizetésre vonatkozó korlát ötszöröse az egyes kulcstartók maximális száma. Például HSM – az egyes előfizetésekhez tartozó egyéb tranzakciók 10 másodpercen belül 5 000 tranzakcióra korlátozódnak. Érdemes lehet gyorsítótárba venni a titkos kulcsot a szolgáltatáson vagy az alkalmazáson belül, hogy közvetlenül a Key vaultra csökkentse az RPS-t és/vagy a burst-alapú forgalmat.  A forgalmat a különböző régiók között is feloszthatja, hogy csökkentse a késést, és használjon egy másik előfizetést/tárat.  Ne küldjön egynél több előfizetési korlátot a Key Vault szolgáltatásnak egyetlen Azure-régióban.
-1. Gyorsítótárazza a Azure Key Vault memóriából beolvasott titkokat, és amikor csak lehetséges, a memóriából újra felhasználhatja őket.  Azure Key Vault csak akkor olvassa újra a rendszer, ha a gyorsítótárazott másolat leáll (például azért, mert az a forrásnál van elforgatva). 
-1. Key Vault a saját szolgáltatásainak titkára lett tervezve.   Ha az ügyfelek titkos kulcsait (különösen a nagy átviteli sebességű kulcsok tárolási forgatókönyvei esetében) tárolja, fontolja meg a kulcsok egy adatbázisban vagy a Storage-fiókban való elhelyezését titkosítással, és csak a főkulcsot tárolja Azure Key Vaultban.
-1. A nyilvános kulcsú műveletek titkosítása, becsomagolása és ellenőrzése a Key Vaulthoz való hozzáférés nélkül végezhető el, ami nemcsak csökkenti a szabályozás kockázatát, hanem javítja a megbízhatóságot is (feltéve, hogy a nyilvános kulcsú anyagokat megfelelően gyorsítótárazza).
-1. Ha a Key Vault segítségével tárolja a szolgáltatás hitelesítő adatait, ellenőrizze, hogy a szolgáltatás támogatja-e a HRE hitelesítést közvetlenül a hitelesítéshez. Ez csökkenti a Key Vault terhelését, javítja a megbízhatóságot, és leegyszerűsíti a kódot, mivel Key Vault mostantól az HRE tokent is használhatja.  Számos szolgáltatás átkerült a HRE-hitelesítés használatára.  Tekintse [meg az Azure-erőforrások felügyelt identitásait támogató szolgáltatások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)aktuális listáját.
-1. Ügyeljen arra, hogy a terhelést/üzembe helyezést hosszabb idő alatt, a jelenlegi RPS-korlátokon belül is el lehessen osztani.
-1. Ha az alkalmazás több olyan csomópontot tartalmaz, amelyeknek ugyanazokat a titkos kulcsokat kell beolvasniuk, akkor érdemes kipróbálni a mintázatot, ahol az egyik entitás beolvassa a titkos kulcsot a Key Vaultból, és kiveszi a rajongókat az összes csomópontra.   Csak a memóriában gyorsítótárazza a beolvasott titkokat.
-Ha úgy látja, hogy a fentiek továbbra sem felelnek meg az igényeinek, töltse ki az alábbi táblázatot, és vegye fel velünk a kapcsolatot, és határozza meg, hogy milyen további kapacitás vehető fel (példa csak szemléltető célokra).
+A Key Vault eredetileg az [Azure Key Vault szolgáltatáskorlátaiban](key-vault-service-limits.md)megadott korlátokkal jött létre.  A Key Vault beátviteli díjakon keresztüli maximalizálásához az alábbi ajánlott irányelvek és ajánlott eljárások az átviteli sebesség maximalizálására:
+1. Győződjön meg róla, hogy a szabályozás a helyén van.  Az ügyfélnek tiszteletben kell tartania a 429-es évek exponenciális visszalépési irányelveit, és biztosítania kell, hogy az alábbi útmutatásnak megfelelően újrapróbálkozásokat végez.
+1. Ossza fel a Key Vault-forgalmat több tároló és különböző régiók között.   Minden biztonsági/rendelkezésre állási tartományhoz használjon külön tárolót.   Ha öt alkalmazással rendelkezik, amelyek mindegyike két régióban található, akkor 10-et ajánlunk, amelyek mindegyike az alkalmazás és a régió egyedi titkos titkait tartalmazza.  Az összes tranzakciótípusra vonatkozó előfizetési szintű korlát az egyes kulcstartó-korlát ötszöröse. Például hsm-egyéb tranzakciók előfizetésenként legfeljebb 5000 tranzakció 10 másodperc előfizetésenként. Fontolja meg a titkos kulcsot a szolgáltatáson vagy az alkalmazáson belül, hogy az RPS-t közvetlenül a key vaultba csökkentse, és/vagy kezelje a burst alapú forgalmat.  A forgalom felosztása a különböző régiók között a késés minimalizálása érdekében, és egy másik előfizetés/tároló használata.  Ne küldjön több, mint az előfizetési korlátot a Key Vault szolgáltatás egyetlen Azure-régióban.
+1. Gyorsítótárazhatja az Azure Key Vaultból beolvasott titkos kulcsokat a memóriában, és amikor csak lehetséges, újra felhasználhatja a memóriából.  Csak akkor olvassa be újra az Azure Key Vaultból, ha a gyorsítótárazott másolat nem működik (például azért, mert ellett forgatva a forrásnál). 
+1. A Key Vault a saját szolgáltatási titkos kulcsokhoz készült.   Ha az ügyfelek titkos adatait tárolja (különösen a nagy átviteli sebességű kulcstárolási forgatókönyvek esetében), fontolja meg a kulcsok titkosítással való elhelyezését egy adatbázisban vagy tárfiókban, és csak a főkulcsot tárolja az Azure Key Vaultban.
+1. Titkosítsa, csomagolja, és ellenőrizze a nyilvános kulcsú műveleteket lehet végrehajtani, nem férnek hozzá a Key Vault, amely nem csak csökkenti a szabályozás kockázatát, hanem javítja a megbízhatóságot (mindaddig, amíg megfelelően cache a nyilvános kulcsú anyag).
+1. Ha a Key Vault segítségével tárolja a hitelesítő adatokat egy szolgáltatás, ellenőrizze, hogy a szolgáltatás támogatja-e az AAD-hitelesítés közvetlen hitelesítéséhez. Ez csökkenti a Key Vault terhelését, javítja a megbízhatóságot és leegyszerűsíti a kódot, mivel a Key Vault most már használhatja az AAD-jogkivonatot.  Számos szolgáltatás költözött az AAD Auth használatára.  Tekintse meg az [Azure-erőforrások felügyelt identitásait támogató szolgáltatások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)aktuális listáját.
+1. Fontolja meg a terhelés/üzembe helyezés hosszabb ideig történő megtorpantását, hogy a jelenlegi RPS-korlátok alatt maradjon.
+1. Ha az alkalmazás több csomópontot tartalmaz, amelyeknek ugyanazt a titkos kulcsot kell olvasniuk, akkor fontolja meg egy ventilátor-kiválasztó minta használatát, ahol az egyik entitás beolvassa a titkos kulcsot a Key Vaultból, és a rajongók at az összes csomópontnak.   A beolvasott titkokat csak a memóriában gyorsítótárazza.
+Ha úgy találja, hogy a fenti még mindig nem felel meg az Ön igényeinek, kérjük, töltse ki az alábbi táblázatot, és lépjen kapcsolatba velünk, hogy meghatározzák, milyen további kapacitást lehet hozzáadni (például az alábbi szemléltető célokra csak).
 
-| Tár neve | Tár régiója | Objektumtípus (titok, kulcs vagy tanúsítvány) | Művelet (ek) * | Kulcs típusa | Kulcs hossza vagy görbéje | HSM-kulcs?| Stabil állapot RPS szükséges | Az RPS-csúcs szükséges |
+| A trezor neve | Páncélterem régiója | Objektumtípusa (titkos kulcs, kulcs vagy tanúsítvány) | Művelet(ek)* | Kulcs típusa | Kulcs hossza vagy íve | HSM kulcs?| Állandósult állapotú RPS szükséges | Csúcs RPS szükséges |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Kulcs | Jel | EC | P-256 | Nem | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | Kulcs | Előjel | EC | P-256 | Nem | 200 | 1000 |
 
-\* a lehetséges értékek teljes listáját lásd: [Azure Key Vault műveletek](/rest/api/keyvault/key-operations).
+\*A lehetséges értékek teljes listáját az [Azure Key Vault-műveletek ben.](/rest/api/keyvault/key-operations)
 
-Ha további kapacitást hagy jóvá, vegye figyelembe a következőket a kapacitás növekedésének eredményeképpen:
-1. Az adatkonzisztencia-modell módosul. Miután a tár engedélyezve van a további adatátviteli kapacitással, a Key Vault szolgáltatás adatkonzisztencia-garanciája módosul (a nagyobb mennyiségű RPS-vel való megfeleléshez szükséges, mivel a mögöttes Azure Storage szolgáltatás nem tud lépést tartani).  Dióhéjban:
-  1. Az **engedélyezési lista nélkül**: a Key Vault szolgáltatás egy írási művelet eredményét fogja tükrözni (például SecretSet, CreateKey) azonnal a következő hívásokban (például: SecretGet, előjel).
-  1. Az **engedélyezési listával**: a Key Vault szolgáltatás egy írási művelet eredményét fogja tükrözni (például SecretSet, CreateKey) a következő hívásokban (például:) 60 másodpercen belül. SecretGet, előjel).
-1. Az ügyfél kódjának vissza kell térnie a 429-re vonatkozó újrapróbálkozási szabályzatra. A Key Vault szolgáltatást hívó ügyfélalkalmazás nem tudja azonnal újrapróbálkozni Key Vault kérések esetén, amikor 429-as kódú választ kap.  Az itt közzétett Azure Key Vault-szabályozási útmutató az exponenciális leállítási alkalmazását javasolja a 429 http-válasz kódjának fogadásakor.
+Ha további kapacitást hagynak jóvá, kérjük, vegye figyelembe a kapacitásnövekedés eredményeként a következőket:
+1. Az adatkonzisztenciamodell módosul. Miután egy tároló további átviteli kapacitással szerepel, a Key Vault-szolgáltatás adatkonzisztencia-garancia módosításai (nagyobb mennyiségű RPS teljesítéséhez szükséges, mivel az alapul szolgáló Azure Storage-szolgáltatás nem tud lépést tartani).  Dióhéjban:
+  1. **Engedélyezése nélkül lista**: A Key Vault szolgáltatás tükrözi az eredményeket egy írási művelet (pl. SecretSet, CreateKey) azonnal a későbbi hívások (pl. SecretGet, KeySign).
+  1. **Az engedélyezési lista:** A Key Vault szolgáltatás tükrözi az eredményeket egy írási művelet (pl. SecretSet, CreateKey) 60 másodpercen belül a későbbi hívások (pl. SecretGet, KeySign).
+1. Az ügyfélkódnak 429 újrapróbálkozás esetén tiszteletben kell tartania a visszamaradási házirendet. A Key Vault szolgáltatást hívó ügyfélkód nem próbálkozhat azonnal újra a Key Vault-kérelmekkel, amikor 429-es válaszkódot kap.  Az Azure Key Vault szabályozására vonatkozó itt közzétett útmutatást azt javasolja, hogy exponenciális visszalépés alkalmazása esetén egy 429 Http-válaszkód.
 
-Ha rendelkezik egy újabb szabályozási korlátairól üzleti esetet, lépjen kapcsolatba velünk a következő címen.
+Ha van egy érvényes üzleti esetében a magasabb fojtószelep korlátok, kérjük lépjen kapcsolatba velünk.
 
-## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Az alkalmazás szolgáltatásokra vonatkozó korlátozások válaszul szabályozásának megtervezéséhez
+## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Az alkalmazás szabályozása a szolgáltatási korlátokra reagálva
 
-A szolgáltatás szabályozásakor a következő **ajánlott eljárásokat** kell megvalósítani:
-- Műveletek kérelmenkénti számának csökkentése.
-- Csökkentse a kérelmek gyakoriságát.
-- Azonnali újrapróbálkozás elkerülése érdekében. 
-    - Összes kérelem lépheti túl a használati korlátok alapján.
+A szolgáltatás szabályozása esetén az alábbi **ajánlott eljárásokat** kell végrehajtania:
+- A kérelmekre jutó műveletek számának csökkentése.
+- Csökkentse a kérések gyakoriságát.
+- Kerülje az azonnali újrapróbálkozásokat. 
+    - Minden kérelem a használati korlátokkal szemben halmozódik fel.
 
-Az alkalmazás hibakezelési megvalósításának, a 429-es HTTP-hibakód használatával észleli a ügyféloldali szabályozás. A kérelem újra HTTP 429-es hibaüzenettel meghiúsul, ha csökkenti az Azure-szolgáltatás továbbra is merültek fel. Továbbra is használhatja az ajánlott ügyféloldali metódus szabályozás, amíg be nem fejeződik, a kérelem újbóli megkísérlése.
+Az alkalmazás hibakezelésének megvalósításakor használja a 429-es HTTP-hibakódot az ügyféloldali szabályozás szükségességének észleléséhez. Ha a kérelem ismét sikertelen egy HTTP 429-es hibakóddal, továbbra is egy Azure-szolgáltatáskorláttal találkozik. Továbbra is használja az ajánlott ügyféloldali szabályozási módszert, és próbálja meg újra a kérelmet, amíg sikeres nem lesz.
 
-Exponenciális visszatartással megvalósító kódot alább látható. 
+Az exponenciális visszamaradást megvalósító kód az alábbiakban látható. 
 ```
 SecretClientOptions options = new SecretClientOptions()
     {
@@ -82,21 +82,21 @@ SecretClientOptions options = new SecretClientOptions()
 ```
 
 
-A kód használata egy ügyfélalkalmazás C# esetében egyszerű. 
+Ez a kód használata egy ügyfél C# alkalmazás egyszerű. 
 
-### <a name="recommended-client-side-throttling-method"></a>Ajánlott az ügyféloldali szabályozási módszer
+### <a name="recommended-client-side-throttling-method"></a>Ajánlott ügyféloldali szabályozási módszer
 
-HTTP 429-es hibakód, a szabályozás, az ügyfél egy exponenciális visszatartással megközelítéssel kezdete:
+A 429-es HTTP-hibakódesetén kezdje el az ügyfél szabályozását egy exponenciális visszautasítási megközelítés sel:
 
-1. Várjon 1 másodperc, próbálkozzon újra a kérelmet
-2. Ha továbbra is szabályozott várjon 2 másodperc, ismételje meg a kérelmet
-3. Ha továbbra is szabályozott várakozási 4 másodperc, ismételje meg a kérelmet
-4. Ha továbbra is szabályozott várakozási 8 másodperc, ismételje meg a kérelmet
-5. Ha továbbra is szabályozott várakozási 16 másodperc, ismételje meg a kérelmet
+1. Várjon 1 másodpercet, próbálkozzon újra kéréssel
+2. Ha még mindig 2 másodpercig van szabályozva, próbálkozzon újra a kéréssel
+3. Ha még mindig 4 másodpercig van szabályozva, próbálkozzon újra a kéréssel
+4. Ha továbbra is szabályozta, várjon 8 másodpercet, próbálkozzon újra a kéréssel
+5. Ha továbbra is 16 másodpercig van szabályozva, próbálkozzon újra a kéréssel
 
-Ezen a ponton meg kell nem lehet kezdeti HTTP 429-es válaszkódot.
+Ezen a ponton nem kell http 429 válaszkódokat kapnia.
 
 ## <a name="see-also"></a>Lásd még
 
-A Microsoft Cloud szabályozásának mélyebb tájolását lásd: [szabályozási minta](https://docs.microsoft.com/azure/architecture/patterns/throttling).
+A szabályozás mélyebb tájolását a Microsoft Cloud ban a Szabályozási minta című témakörben [tetszési témakörben tájékozódhat.](https://docs.microsoft.com/azure/architecture/patterns/throttling)
 

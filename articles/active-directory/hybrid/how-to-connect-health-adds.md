@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e27287a414a2a4edef3e9090b7d91beb1c70f554
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897317"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Az Azure AD Connect Health használata az AD DS szolgáltatással
@@ -49,10 +49,10 @@ Ez az irányítópult a megfigyelt tartományvezérlők replikációs állapotá
 
 ![Replikáció állapota](./media/how-to-connect-health-adds/aadconnect-health-adds-replication.png)
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 Ez a funkció különböző teljesítményszámlálók grafikus trendjeit jeleníti meg, amelyeket a rendszer folyamatosan gyűjt az egyes megfigyelt tartományvezérlőkről. Egy tartományvezérlő teljesítménye könnyen összehasonlítható más megfigyelt tartományvezérlőkkel az erdőben. Ezenfelül különböző teljesítményszámlálókat láthat egymás mellett, amely a környezetében történő hibaelhárítás során lehet hasznos.
 
-![Monitoring](./media/how-to-connect-health-adds/aadconnect-health-adds-monitoring.png)
+![Figyelés](./media/how-to-connect-health-adds/aadconnect-health-adds-monitoring.png)
 
 Alapértelmezés szerint négy teljesítményszámláló van kiválasztva, de belefoglalhat továbbiakat is úgy, hogy a szűrő parancsra kattint, és kijelöli a kívánt teljesítményszámlálót, vagy törli annak jelölését. Továbbá, egy teljesítményszámláló diagramjára duplán kattintva megnyílik egy új panel, amely az egyes megfigyelt tartományvezérlőkhöz tartozó adatpontokat tartalmazza.
 
@@ -61,7 +61,7 @@ Alapértelmezés szerint négy teljesítményszámláló van kiválasztva, de be
 * [Az Azure AD Connect Health-ügynök telepítése](how-to-connect-health-agent-install.md)
 * [Az Azure AD Connect Health műveletei](how-to-connect-health-operations.md)
 * [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md)
-* [Az Azure AD Connect Health szinkronizálási szolgáltatás használata](how-to-connect-health-sync.md)
+* [Az Azure AD Connect Health használata szinkronizáláshoz](how-to-connect-health-sync.md)
 * [Azure AD Connect Health – gyakori kérdések](reference-connect-health-faq.md)
-* [Az Azure AD Connect Health verzióelőzményei](reference-connect-health-version-history.md)
+* [Az Azure AD Connect állapotverzióinak előzményei](reference-connect-health-version-history.md)
 

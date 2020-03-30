@@ -1,6 +1,6 @@
 ---
-title: Az Azure soros konzol engedélyezése és letiltása | Microsoft Docs
-description: Az Azure soros konzol szolgáltatás engedélyezése és letiltása
+title: Az Azure Serial Console engedélyezése és letiltása | Microsoft dokumentumok
+description: Az Azure Serial Console szolgáltatás engedélyezése és letiltása
 services: virtual-machines
 documentationcenter: ''
 author: asinn826
@@ -15,46 +15,46 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451302"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>Az Azure soros konzol engedélyezése és letiltása
 
-A többi erőforráshoz hasonlóan az Azure soros konzol is engedélyezhető és letiltható. A soros konzol alapértelmezés szerint engedélyezve van az összes előfizetéshez a globális Azure-ban. Jelenleg a soros konzol letiltása letiltja a szolgáltatást a teljes előfizetéshez. Az előfizetéshez tartozó soros konzol letiltásához vagy újbóli engedélyezéséhez közreműködő vagy magasabb szintű hozzáférés szükséges az előfizetéshez.
+Csakúgy, mint bármely más erőforrás, az Azure Serial Console is engedélyezhető és letiltható. A Serial Console alapértelmezés szerint engedélyezve van a globális Azure összes előfizetéséhez. A Soros konzol letiltása jelenleg letiltja a szolgáltatást a teljes előfizetéshez. A Soros konzol letiltása vagy újbóli engedélyezése egy előfizetéshez közreműködői szintű vagy annál magasabb szintű hozzáférést igényel az előfizetésben.
 
-A rendszerindítási diagnosztika letiltásával letilthatja a soros konzolt egy adott virtuális gép vagy virtuálisgép-méretezési csoport példányai esetében is. A virtuális gép/virtuálisgép-méretezési csoport és a rendszerindítási diagnosztika Storage-fiókja esetében a közreműködői szintű hozzáférés vagy annál újabb rendszer szükséges.
+A rendszerindítási diagnosztika letiltásával letilthatja a soros konzolt egy virtuális gép vagy a virtuálisgép-méretezési példány számára. A virtuális gép/virtuálisgép-méretezési csoport és a rendszerindító diagnosztikai tárfiók közreműködői szintű vagy annál magasabb szintű hozzáférést igényel.
 
-## <a name="vm-level-disable"></a>VM-szintű letiltás
-A soros konzol le lehet tiltani egy adott virtuális gép vagy virtuálisgép-méretezési csoport számára a rendszerindítási diagnosztika beállítás letiltásával. Kapcsolja ki a rendszerindítási diagnosztikát a Azure Portal a virtuális gép vagy a virtuálisgép-méretezési csoport soros konzoljának letiltásához. Ha a soros konzolt egy virtuálisgép-méretezési csoporton használja, a virtuálisgép-méretezési csoport példányait a legújabb modellre kell frissítenie.
+## <a name="vm-level-disable"></a>Virtuálisgép-szintű letiltás
+A soros konzol letiltható egy adott virtuális gép vagy virtuálisgép-méretezési készlethez a rendszerindítási diagnosztikai beállítás letiltásával. Kapcsolja ki a rendszerindítási diagnosztikát az Azure Portalon a virtuális gép vagy a virtuálisgép-méretezési készlet soros konzoljának letiltásához. Ha a soros konzol t használja a virtuális gép méretezési készlet, győződjön meg arról, hogy frissítse a virtuális gép méretezési készlet példányait a legújabb modellre.
 
 
-## <a name="subscription-level-enabledisable"></a>Előfizetés szintű engedélyezés/letiltás
+## <a name="subscription-level-enabledisable"></a>Előfizetés-szintű engedélyezés/letiltás
 
 > [!NOTE]
-> A parancs futtatása előtt győződjön meg arról, hogy a megfelelő felhőben (Azure Public Cloud, Azure USA Government Cloud) van. A `az cloud list` és a felhőt `az cloud set -n <Name of cloud>`segítségével állíthatja be.
+> A parancs futtatása előtt győződjön meg arról, hogy a megfelelő felhőben (Azure Public Cloud, Azure US Government Cloud) található. A segítségével `az cloud list` ellenőrizheti és `az cloud set -n <Name of cloud>`beállíthatja a felhőt.
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
-Serial console letiltható és újraengedélyezhető a teljes előfizetéshez az Azure CLI következő parancsaival (a "kipróbálás" gombra kattintva elindíthatja a Azure Cloud Shell azon példányát, amelyben futtathatja a parancsokat):
+A soros konzol letiltható és újra engedélyezhető egy teljes előfizetéshez az Azure CLI következő parancsaival (a "Try it" gombbal elindíthatja az Azure Cloud Shell egy példányát, amelyben futtathatja a parancsokat):
 
-Az előfizetéshez tartozó soros konzol letiltásához használja a következő parancsokat:
+Ha le szeretné tiltani egy előfizetés soros konzolját, használja a következő parancsokat:
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
 az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
-Az előfizetéshez tartozó soros konzol engedélyezéséhez használja a következő parancsokat:
+Ha engedélyezni szeretné a soros konzolt egy előfizetéshez, használja a következő parancsokat:
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
 az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
-A soros konzol aktuálisan engedélyezett/letiltott állapotának lekéréséhez használja az alábbi parancsokat:
+A soros konzol aktuális engedélyezett/letiltott állapotának leminősítéséhez használja a következő parancsokat:
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
@@ -63,23 +63,23 @@ az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.Seria
 
 ### <a name="powershell"></a>PowerShell
 
-A Serial console a PowerShell használatával is engedélyezhető és letiltható.
+Soros konzol is engedélyezhető és letiltható a PowerShell használatával.
 
-Az előfizetéshez tartozó soros konzol letiltásához használja a következő parancsokat:
+Ha le szeretné tiltani egy előfizetés soros konzolját, használja a következő parancsokat:
 ```azurepowershell-interactive
 $subscription=(Get-AzContext).Subscription.Id
 
 Invoke-AzResourceAction -Action disableConsole -ResourceId /subscriptions/$subscription/providers/Microsoft.SerialConsole/consoleServices/default -ApiVersion 2018-05-01
 ```
 
-Az előfizetéshez tartozó soros konzol engedélyezéséhez használja a következő parancsokat:
+Ha engedélyezni szeretné a soros konzolt egy előfizetéshez, használja a következő parancsokat:
 ```azurepowershell-interactive
 $subscription=(Get-AzContext).Subscription.Id
 
 Invoke-AzResourceAction -Action enableConsole -ResourceId /subscriptions/$subscription/providers/Microsoft.SerialConsole/consoleServices/default -ApiVersion 2018-05-01
 ```
 
-## <a name="next-steps"></a>Következő lépések
-* További információ a [Linux rendszerű virtuális gépekhez készült Azure soros konzolról](./serial-console-linux.md)
-* További információ a [Windows rendszerű virtuális gépekhez készült Azure soros konzolról](./serial-console-windows.md)
-* [Az energiagazdálkodási lehetőségek megismerése az Azure soros konzolján](./serial-console-power-options.md)
+## <a name="next-steps"></a>További lépések
+* További információ az [Azure Serial Console for Linux virtuális gépekről](./serial-console-linux.md)
+* További információ az [Azure Serial Console for Windows virtuális gépekről](./serial-console-windows.md)
+* További információ [az Azure soros konzolenergia-kezelési lehetőségekről](./serial-console-power-options.md)

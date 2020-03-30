@@ -1,7 +1,7 @@
 ---
-title: API-k monitorozása az Azure API Management, a Event Hubs és a Moesif segítségével
+title: API-k figyelése az Azure API-kezeléssel, az Event Hubs-szal és a Moesif-fel
 titleSuffix: Azure API Management
-description: A eventhub házirendet bemutató példa az Azure API Management, az Azure Event Hubs és a Moesif HTTP-naplózáshoz és-figyeléshez való csatlakoztatásával
+description: Mintaalkalmazás, amely bemutatja a log-to-eventhub házirendet az Azure API Management, az Azure Event Hubs és a Moesif HTTP-naplózáshoz és figyeléshez való csatlakoztatásával
 services: api-management
 documentationcenter: ''
 author: darrelmiller
@@ -16,39 +16,39 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442526"
 ---
-# <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Az API-k monitorozása az Azure API Management, a Event Hubs és a Moesif segítségével
-A [API Management szolgáltatás](api-management-key-concepts.md) számos lehetőséget kínál a http API-nak küldött HTTP-kérések feldolgozásának javítására. Azonban a kérések és válaszok megléte átmeneti jellegű. A rendszer elvégzi a kérést, és a API Management szolgáltatáson keresztül áramlik a háttérbeli API-ra. Az API feldolgozza a kérést, és a válasz visszaáramlik az API-fogyasztó felé. A API Management szolgáltatás megtart néhány fontos statisztikát az API-król a Azure Portal irányítópulton való megjelenítéshez, de ezen túlmenően a részletek eltűnnek.
+# <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Api-k figyelése az Azure API-kezelés, az Event Hubs és a Moesif segítségével
+Az [API Management szolgáltatás](api-management-key-concepts.md) számos lehetőséget biztosít a HTTP API-ba küldött HTTP-kérelmek feldolgozásának fokozására. A kérelmek és válaszok létezése azonban átmeneti. A kérelem történik, és az API Management szolgáltatáson keresztül a háttér-API-t. Az API feldolgozza a kérelmet, és a válasz az API-fogyasztóhoz kerül vissza. Az API Management szolgáltatás néhány fontos statisztikát vezet az API-k megjelenítéséhez az Azure Portal irányítópultján, de azon túl, a részletek eltűntek.
 
-Ha a API Management szolgáltatásban a eventhub szabályzatot használja, az adatokat a kérelemből és válaszból is elküldheti egy [Azure Event hub](../event-hubs/event-hubs-what-is-event-hubs.md)-ra. Számos oka lehet annak, hogy az API-khoz küldött HTTP-üzenetekről szeretne eseményeket előállítani. Néhány példa a frissítések naplózási nyomvonalára, a használati elemzésekre, a kivételek riasztására és a harmadik féltől származó integrációra.
+Az API Management szolgáltatás ban a log-to-eventhub-szabályzat használatával a kérelemből és a válaszból bármilyen adatot elküldhet egy [Azure Event Hub-nak.](../event-hubs/event-hubs-what-is-event-hubs.md) Számos oka lehet annak, hogy miért érdemes eseményeket generálni az API-knak küldött HTTP-üzenetekből. Néhány példa a frissítések naplózási nyomvonala, a használati elemzések, a kivételriasztás és a külső integrációk.
 
-Ez a cikk bemutatja, hogyan rögzítheti a teljes HTTP-kérést és válaszüzenetet, elküldheti azt egy Event hub-nak, majd továbbíthatja az üzenetet egy olyan külső szolgáltatásnak, amely HTTP-naplózási és figyelési szolgáltatásokat biztosít.
+Ez a cikk bemutatja, hogyan rögzítsék a teljes HTTP-kérelem- és válaszüzenetet, hogyan küldhetik el egy eseményközpontba, majd továbbítsák az üzenetet egy külső szolgáltatásnak, amely HTTP naplózási és figyelési szolgáltatásokat biztosít.
 
-## <a name="why-send-from-api-management-service"></a>Miért érdemes elküldeni a API Management szolgáltatást?
-Http-alapú middleware-t is írhat, amely a HTTP-kérelmek és válaszok rögzítésére és a naplózási és figyelési rendszerbe való felvételére képes a HTTP API-keretrendszerekbe való csatlakoztatásra. Ennek a megközelítésnek a hátránya a HTTP middleware integrálása a háttér-API-ba, és meg kell egyeznie az API platformjának. Ha több API van, akkor mindegyiknek telepítenie kell a middleware-t. Gyakran előfordul, hogy miért nem lehet frissíteni a háttérbeli API-kat.
+## <a name="why-send-from-api-management-service"></a>Miért érdemes az API Management szolgáltatásból küldeni?
+Lehetséges, hogy írjon HTTP middleware, amely csatlakoztatható a HTTP API-keretrendszerek rögzítésére HTTP-kérelmek és válaszok, és betáplálni őket a naplózási és felügyeleti rendszerek. A hátránya ennek a megközelítésnek a HTTP middleware integrálni kell a háttér-API-t, és meg kell egyeznie az API platformjának. Ha több API van, akkor mindegyiknek telepítenie kell a köztes szoftvert. Gyakran vannak oka annak, hogy a háttér-API-k nem frissíthetők.
 
-Az Azure API Management szolgáltatás a naplózási infrastruktúrával való integrálásához központosított és platform-független megoldást biztosít. A részben az Azure API Management [geo-replikációs](api-management-howto-deploy-multi-region.md) képességei miatt is méretezhető.
+Az Azure API Management szolgáltatás használatával integrálható a naplózási infrastruktúrával, központosított és platformfüggetlen megoldást biztosít. Emellett méretezhető, részben az Azure API [Management georeplikációs](api-management-howto-deploy-multi-region.md) képességei nek köszönhetően.
 
-## <a name="why-send-to-an-azure-event-hub"></a>Miért érdemes elküldeni egy Azure Event hub-nak?
-Érdemes megkérdezni, miért hozzon létre egy, az Azure Event Hubs-ra vonatkozó szabályzatot? A kérések naplózása számos különböző helyen lehetséges. Miért nem csak közvetlenül a végső célra küldje el a kéréseket?  Ez egy lehetőség. Ha azonban egy API Management szolgáltatásból naplózza a kérelmeket, meg kell fontolnia, hogy az üzenetek naplózása milyen hatással van az API teljesítményére. A terhelés fokozatos növekedése a rendszerösszetevők rendelkezésre álló példányainak vagy a földrajzi replikálás kihasználása révén kezelhető. A forgalomban lévő rövid tüskék azonban késleltetik a kérések késleltetését, ha az infrastruktúra naplózására irányuló kérelmek lassan megkezdik a terhelést.
+## <a name="why-send-to-an-azure-event-hub"></a>Miért érdemes az Azure Event Hubra küldeni?
+Ésszerű megkérdezni, hogy miért hozzon létre egy szabályzatot, amely kifejezetten az Azure Event Hubs? Sok különböző helyen, ahol érdemes naplózni a kéréseket. Miért nem küldi el a kéréseket közvetlenül a végső célállomásra?  Ez is egy lehetőség. Azonban egy API-felügyeleti szolgáltatás naplózási kérelmek teljesítésekor figyelembe kell venni, hogy a naplózási üzenetek hogyan befolyásolják az API teljesítményét. A terhelés fokozatos növekedése a rendszerösszetevők rendelkezésre álló példányainak növelésével vagy a georeplikáció kihasználásával kezelhető. A forgalom rövid kiugrásai azonban a kérelmek késleltetését okozhatják, ha az infrastruktúra naplózására irányuló kérelmek terhelés alatt lelassulnak.
 
-Az Azure Event Hubs a nagy mennyiségű adatforgalom beáramlására szolgál, amelynek kapacitása sokkal nagyobb számú eseményt igényel, mint a legtöbb API-t használó HTTP-kérelmek száma. Az Event hub az API Management szolgáltatás és az üzeneteket tároló és feldolgozó infrastruktúra között kifinomult pufferként működik. Ez biztosítja, hogy az API teljesítménye a naplózási infrastruktúra miatt nem fog szenvedni.
+Az Azure Event Hubs úgy van kialakítva, hogy hatalmas mennyiségű adatot küld, és sokkal több eseményt képes kezelni, mint a legtöbb API-folyamat HTTP-kérések száma. Az Event Hub egyfajta kifinomult pufferként működik az API-felügyeleti szolgáltatás és az üzeneteket tároló és feldolgozó infrastruktúra között. Ez biztosítja, hogy az API teljesítménye nem szenved a naplózási infrastruktúra miatt.
 
-Ha az adott esemény központjának átadása megtörtént, a rendszer megőrzi, és megvárja, amíg az Event hub-felhasználók feldolgozzák azt. Az Event hub nem érdekli a feldolgozás folyamatát, csak arról gondoskodik, hogy az üzenet sikeres kézbesítése megtörténjen.
+Miután az adatok átlettek adva egy Eseményközpontnak, megmarad, és megvárja, amíg az Event Hub-felhasználók feldolgozzák azokat. Az Event Hub nem törődik a feldolgozás módjával, csak az üzenet sikeres kézbesítésének biztosítása.
 
-A Event Hubs képes több fogyasztói csoportba továbbítani az eseményeket. Ez lehetővé teszi az események különböző rendszerek általi feldolgozását. Ez lehetővé teszi számos integrációs forgatókönyv támogatását anélkül, hogy a API Management szolgáltatáson belüli API-kérelem feldolgozására további késleltetést kellene bevezetni, mivel csak egyetlen eseményt kell létrehoznia.
+Az Event Hubs képes eseményeket streamelni több fogyasztói csoportba. Ez lehetővé teszi, hogy az eseményeket különböző rendszerek dolgozzák fel. Ez lehetővé teszi számos integrációs forgatókönyvek támogatása anélkül, hogy az API-kérelem feldolgozásának az API Management szolgáltatáson belül, mivel csak egy eseményt kell létrehozni.
 
-## <a name="a-policy-to-send-applicationhttp-messages"></a>Alkalmazás-/http-üzenetek küldésére szolgáló szabályzat
-Az Event hub egyszerű sztringként fogadja el az eseményeket. Ennek a karakterláncnak a tartalma. A HTTP-kérések becsomagolásához és a Event Hubsre való elküldéséhez a karakterláncot a kérelem vagy válasz adataival kell formázni. Ilyen helyzetekben, ha van egy meglévő formátum, amelyet felhasználhatunk, előfordulhat, hogy nem kell saját elemzési kódot írnia. Kezdetben úgy tekintem, hogy a [har](http://www.softwareishard.com/blog/har-12-spec/) -t használja a HTTP-kérések és válaszok küldéséhez. Ez a formátum azonban a HTTP-kérelmek egy sorozatának a JSON-alapú formátumban történő tárolására van optimalizálva. Számos olyan kötelező elemet foglalt magukban, amelyek szükségtelen bonyolultságot adnak a HTTP-üzenet hálózaton keresztüli átadásának forgatókönyvéhez.
+## <a name="a-policy-to-send-applicationhttp-messages"></a>Alkalmazás/http üzenetek küldésére vonatkozó házirend
+Az Event Hub az eseményadatokat egyszerű karakterláncként fogadja el. A madzag tartalma csak önön múlik. Ahhoz, hogy http-kérelmet csomagolhat, és elküldhesse az Event Hubs-nak, a karakterláncot a kérés- vagy válaszadatokkal kell formáznia. Az ilyen helyzetekben, ha van egy meglévő formátumot tudjuk újra, akkor lehet, hogy nem kell írni a saját elemzési kódot. Kezdetben úgy vélte, a [HAR](http://www.softwareishard.com/blog/har-12-spec/) küldésére HTTP kérések és válaszok. Ez a formátum azonban úgy van optimalizálva, hogy A HTTP-kérések sorozatát JSON-alapú formátumban tárolja. Számos kötelező elemet tartalmazott, amelyek szükségtelen bonyolultságot adtak hozzá a HTTP-üzenet vezetékes továbbításának forgatókönyvéhez.
 
-Alternatív lehetőség volt a `application/http` adathordozó típusának használata a HTTP-specifikáció [RFC 7230-es](https://tools.ietf.org/html/rfc7230)verziójában leírtak szerint. Ez az adathordozó-típus ugyanazt a formátumot használja, mint amellyel ténylegesen HTTP-üzeneteket küld a hálózaton keresztül, de a teljes üzenet egy másik HTTP-kérelem törzsében is elhelyezhető. Ebben az esetben a törzset fogjuk használni az üzenetünk Event Hubs való elküldéséhez. Kényelmesen, a [Microsoft ASP.net web API 2,2 ügyféloldali](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) kódtárai olyan elemzőt tartalmaz, amely elemezni tudja ezt a formátumot, és átalakítja a natív `HttpRequestMessage` és `HttpResponseMessage` objektumokra.
+Egy másik lehetőség az `application/http` volt, hogy az adathordozó-típust az [RFC 7230](https://tools.ietf.org/html/rfc7230)HTTP-specifikációban leírtak szerint használják. Ez az adathordozó-típus pontosan ugyanazt a formátumot használja, mint amely et használnak a HTTP-üzenetek hálózaton keresztüli tényleges küldéséhez, de a teljes üzenet egy másik HTTP-kérelem törzsében helyezhető el. A mi esetünkben csak a testet fogjuk használni üzenetként az Event Hubs-nak. Kényelmesen létezik egy elemző a [Microsoft ASP.NET Web API 2.2 ügyféltárakban,](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) amelyek elemzik `HttpRequestMessage` `HttpResponseMessage` ezt a formátumot, és natív vá és objektumokká alakítják.
 
-Ahhoz, hogy létre tudja hozni ezt az üzenetet, ki kell használnia C# az Azure API Managementon alapuló [házirend-kifejezések](/azure/api-management/api-management-policy-expressions) előnyeit. Itt látható a szabályzat, amely HTTP-kérést küld az Azure Event Hubsnak.
+Ahhoz, hogy ezt az üzenetet létre tudja hozni, ki kell használnunk a C# alapú [szabályzatkifejezések et](/azure/api-management/api-management-policy-expressions) az Azure API Managementben. Itt van a szabályzat, amely http-kérelem üzenetet küld az Azure Event Hubs.
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -76,28 +76,28 @@ Ahhoz, hogy létre tudja hozni ezt az üzenetet, ki kell használnia C# az Azure
 </log-to-eventhub>
 ```
 
-### <a name="policy-declaration"></a>Szabályzat deklarációja
-Ebben a házirend-kifejezésben néhány konkrét dolgot érdemes megemlíteni. A eventhub-szabályzat egy Logger-ID nevű attribútummal rendelkezik, amely a API Management szolgáltatáson belül létrehozott naplózó nevére hivatkozik. Az Event hub-naplózó API Management szolgáltatásban való beállításának részletei a következő dokumentumban találhatók: [események naplózása az azure Event Hubsba az azure API Managementban](api-management-howto-log-event-hubs.md). A második attribútum egy opcionális paraméter, amely arra utasítja Event Hubs, hogy melyik partíció tárolja az üzenetet a alkalmazásban. Event Hubs partíciókat használ a méretezhetőség engedélyezéséhez, és legalább kettőt igényel. Az üzenetek rendezett kézbesítése csak egy partíción belül garantált. Ha nem utasítja el az Event hub-t, amelyben az üzenetet helyezi el, egy ciklikusan elválasztó algoritmust használ a terhelés elosztásához. Azonban előfordulhat, hogy az üzenetek bizonyos részét feldolgozzuk a rendelésből.
+### <a name="policy-declaration"></a>Politikai nyilatkozat
+Van néhány különleges dolog, amit érdemes megemlíteni erről a politikai kifejezésről. A log-to-eventhub házirend rendelkezik egy attribútum nevű logger-id, amely az API Management szolgáltatáson belül létrehozott naplózó nevét. Az Event Hub-naplózó API-felügyeleti szolgáltatásban való beállításának részletei a dokumentumban [találhatók: Események naplózása az Azure API-kezelés ben.](api-management-howto-log-event-hubs.md) A második attribútum egy nem kötelező paraméter, amely utasítja az Event Hubs, amely partíciótárolja az üzenetet. Az Event Hubs partíciókat használ a méretezhetőség engedélyezéséhez, és legalább két szükséges. Az üzenetek megrendelt kézbesítése csak egy partíción belül garantált. Ha nem utasítja az Event Hub, amely partíciót az üzenet elhelyezéséhez, ciklikus multiplexelési algoritmust használ a terhelés elosztásához. Ez azonban azt eredményezheti, hogy egyes üzeneteinket nem sorrendben dolgozzák fel.
 
 ### <a name="partitions"></a>Partíciók
-Annak biztosítása érdekében, hogy az üzenetek a felhasználók számára legyenek elérhetők, és kihasználják a partíciók terheléselosztási funkcióját, úgy döntöttem, hogy HTTP-kérési üzeneteket küldek egy partícióra és HTTP-válaszüzeneteket egy második partíciónak. Ez biztosítja még a terheléselosztást is, és garantáljuk, hogy az összes kérelem használatban van, és a rendszer az összes választ sorrendben felhasználja. A válasz a megfelelő kérelem előtt is felhasználható, de ez nem jelent problémát, mivel a válaszokra vonatkozó kérések egymáshoz való megfeleltetése nem probléma, és tudjuk, hogy a kérések mindig a válaszok előtt jönnek létre.
+Annak érdekében, hogy üzeneteinket a fogyasztók nak a partíciók terheléselosztási képességének megfelelően kézbesítsék, és kihasználhassam a partíciók terheléselosztási képességét, úgy döntöttem, hogy HTTP-kérésüzeneteket küldök egy partícióra, és HTTP válaszüzeneteket egy második partícióra. Ez biztosítja az egyenletes terheléselosztást, és garantáljuk, hogy minden kérés sorrendben kerül felhasználásra, és minden válasz sorrendben kerül felhasználásra. Lehetséges, hogy a választ a megfelelő kérelem előtt kell felhasználni, de mivel ez nem jelent problémát, mivel más mechanizmusunk van a kérelmek és a válaszok összevetésére, és tudjuk, hogy a kérelmek mindig a válaszok előtt érkeznek.
 
-### <a name="http-payloads"></a>HTTP-adattartalom
-A `requestLine`felépítése után ellenőrizze, hogy a kérés törzse csonkítva van-e. A kérés törzse csak 1024-ra van csonkítva. Ez megnövelhető, azonban az egyes Event hub-üzenetek 256 KB-ra korlátozódnak, így valószínű, hogy egyes HTTP-üzenetek nem férnek hozzá egyetlen üzenetben sem. A naplózás és az elemzés során jelentős mennyiségű információt lehet a HTTP-kérelmek sorából és fejlécből származtatni. Emellett sok API-kérés csak kisméretű törzseket ad vissza, így az adatértékek elvesztése a nagyméretű szervezetek csonkítása révén meglehetősen minimális az átvitel, a feldolgozás és a tárolási költségek csökkentése érdekében az összes törzs tartalmának megőrzéséhez képest. Egy utolsó megjegyzés a törzs feldolgozásával kapcsolatban, hogy `true` kell átadni a `As<string>()` metódusnak, mert a szövegtörzs tartalmát olvasjuk, de a háttér-API-t is el kellett volna olvasni a törzsön. Ennek a módszernek az igaz értékre való átadásával a törzs pufferbe kerül, hogy egy második alkalommal is olvasható legyen. Fontos megjegyezni, hogy ha olyan API-val rendelkezik, amely nagyméretű fájlokat tölt fel, vagy hosszú lekérdezést használ. Ezekben az esetekben érdemes elkerülni a törzs olvasását.
+### <a name="http-payloads"></a>HTTP-hasznos teher
+A létrehozása `requestLine`után a , ellenőrizzük, hogy a kérelem törzse kell csonkolni. A kérelem törzse csak 1024-re van csonkolva. Ez növelhető, azonban az egyes Event Hub-üzenetek legfeljebb 256 KB, így valószínű, hogy egyes HTTP-üzenettörzsek nem fér el egyetlen üzenetben. Naplózás és elemzés során jelentős mennyiségű információ származtatható csak a HTTP-kérelem sorából és fejléceiből. Emellett sok API-k csak kis testeket adnak vissza, így a nagy testek csonkolásával az információérték elvesztése meglehetősen minimális az átviteli, feldolgozási és tárolási költségek csökkenéséhez képest, hogy az összes testtartalmat megtartsa. Egy utolsó megjegyzés a szervezet feldolgozásáról `true` az, `As<string>()` hogy át kell adnunk a módszert, mert a test tartalmát olvassuk, de azt is akarta, hogy a háttér API képes legyen olvasni a testet. Azáltal, hogy igaz, hogy ezt a módszert, azt eredményezjük, hogy a szervezet pufferelt, hogy el lehet olvasni a második alkalommal. Ez fontos, hogy tudatában legyünk, ha van egy API, amely nem nagy fájlok feltöltése, vagy használja a hosszú lekérdezést. Ezekben az esetekben, az lenne a legjobb, hogy ne olvassa el a test egyáltalán.
 
 ### <a name="http-headers"></a>HTTP-fejlécek
-A HTTP-fejlécek átvihetők az üzenet formátumára egyszerű kulcs/érték párok formájában. Úgy döntöttünk, hogy a hitelesítő adatok szükségtelen kiszivárgásának elkerülése érdekében kiszűrjük bizonyos biztonsági szempontból bizalmas mezőket. Nem valószínű, hogy az API-kulcsokat és az egyéb hitelesítő adatokat használja az elemzési célokra. Ha a felhasználóra és az általa használt konkrét termékre vonatkozó elemzést szeretnénk végezni, akkor a `context` objektumból lekérhetjük, hogy az üzenethez hozzáadjuk azt.
+A HTTP-fejlécek egyszerű kulcs/értékpár formátumban vihetők át az üzenetformátumba. Úgy döntöttünk, hogy bizonyos biztonsági szempontból érzékeny mezőket kivonunk, hogy elkerüljük a hitelesítő adatok szükségtelen kiszivárogtatását. Nem valószínű, hogy az API-kulcsok at és más hitelesítő adatokat elemzési célokra használná. Ha azt szeretnénk, hogy nem elemzést a felhasználó és az adott `context` termék általuk használt, akkor lehet kapni, hogy az objektum, és adjunk hozzá, hogy az üzenetet.
 
 ### <a name="message-metadata"></a>Üzenet metaadatai
-Az Event hub számára küldendő teljes üzenet létrehozásakor az első sor valójában nem része a `application/http` üzenetnek. Az első sor további metaadatokat tartalmaz, amelyekből az üzenet egy kérelem vagy válaszüzenet, valamint egy üzenet azonosítója, amely a válaszok összekapcsolására szolgál. Az üzenet azonosítója egy másik, a következőhöz hasonló házirend használatával jön létre:
+Az eseményközpontba küldő teljes üzenet létrehozásakor az első sor `application/http` valójában nem része az üzenetnek. Az első sor további metaadatok, amelyek abból állnak, hogy az üzenet kérés vagy válaszüzenet, valamint egy üzenetazonosító, amely a kérelmek válaszokkal való korrelációjára szolgál. Az üzenetazonosító egy másik, a következőképpen megjelenő házirend del jön létre:
 
 ```xml
 <set-variable name="message-id" value="@(Guid.NewGuid())" />
 ```
 
-Létrehozhatjuk a kérelem üzenetét, amely egy változóban volt tárolva, amíg a válasz vissza nem tért, majd elküldte a kérést és a választ egyetlen üzenetként. Ha azonban a kérést és a választ egymástól függetlenül küldi el, és egy üzenet-azonosítót használ a kettő összekapcsolásához, akkor egy kicsit nagyobb rugalmasságot biztosítunk az üzenetek méretében, így több partíció előnyeit is kihasználhatja, miközben az üzenetek sorrendjét is megőrzi, és a kérés megjelenik. a naplózási irányítópulton hamarabb. Bizonyos esetekben előfordulhat, hogy az Event hub számára soha nem érkezik érvényes válasz, valószínűleg végzetes hiba történt a API Management szolgáltatásban, de továbbra is van egy rekordja a kérésnek.
+Létrehozhattuk volna a kérési üzenetet, tárolhattuk volna egy változóban, amíg a válasz vissza nem érkezett, majd egyetlen üzenetben elküldtük a kérést és a választ. Azonban a kérés és a válasz egymástól függetlenül történő elküldésével és egy üzenetazonosító használatával a kettő korrelációjára, egy kicsit nagyobb rugalmasságot kapunk az üzenet méretében, a több partíció előnyeinek kihasználására, miközben fenntartjuk az üzenet sorrendet, és a kérés megjelenik a mi naplózási műszerfal hamarabb. Előfordulhatnak olyan esetek is, amikor egy érvényes válasz soha nem küldi el az eseményközpontba, valószínűleg az API Management szolgáltatás végzetes kérési hibája miatt, de továbbra is rendelkezünk a kérelem rekordjával.
 
-A válasz HTTP-üzenet elküldésére vonatkozó házirend a kérelemhez hasonlóan néz ki, így a teljes házirend-konfiguráció a következőképpen néz ki:
+A válasz HTTP-üzenetének elküldésére vonatkozó házirend hasonlónak tűnik a kéréshez, így a teljes házirend-konfiguráció így néz ki:
 
 ```xml
 <policies>
@@ -157,16 +157,16 @@ A válasz HTTP-üzenet elküldésére vonatkozó házirend a kérelemhez hasonl�
 </policies>
 ```
 
-A `set-variable` házirend olyan értéket hoz létre, amely a `<inbound>` szakaszban és a `<outbound>` szakaszban is elérhető a `log-to-eventhub` házirendben.
+A `set-variable` házirend olyan értéket hoz létre, amely `<inbound>` a `<outbound>` szakaszban lévő `log-to-eventhub` házirend és a szakasz által is elérhető.
 
-## <a name="receiving-events-from-event-hubs"></a>Események fogadása Event Hubs
-Az Azure Event hub eseményei a [AMQP protokoll](https://www.amqp.org/)használatával érkeznek. A Microsoft Service Bus csapata elérhetővé tette az ügyfél-kódtárakat, hogy megkönnyítsék a megrendelői eseményeket. Két különböző megközelítés támogatott, az egyik a *közvetlen fogyasztó* , a másik pedig a `EventProcessorHost` osztályt használja. A két megközelítés példái a [Event Hubs programozási útmutatóban](../event-hubs/event-hubs-programming-guide.md)találhatók. A különbségek rövid változata, `Direct Consumer` lehetővé teszi, hogy teljes körű irányítást biztosítson, és a `EventProcessorHost` a különböző vízmennyiségeket is felhasználja, de bizonyos feltételezéseket tesz az események feldolgozásával kapcsolatban.
+## <a name="receiving-events-from-event-hubs"></a>Események fogadása az Eseményközpontokból
+Az Azure Event Hub eseményei az [AMQP protokoll](https://www.amqp.org/)használatával érkeznek. A Microsoft Service Bus csapata elérhetővé tette az ügyfélkönyvtárakat a felhasználói események megkönnyítése érdekében. Két különböző megközelítések támogatott, az egyik az, hogy a `EventProcessorHost` *közvetlen fogyasztó,* a másik pedig használja az osztályt. E két megközelítés például az [Eseményközpontok programozási útmutatójában található.](../event-hubs/event-hubs-programming-guide.md) A rövid változata a `Direct Consumer` különbségek, ad `EventProcessorHost` teljes ellenőrzést, és nem néhány vízvezeték munka az Ön számára, de teszi bizonyos feltételezéseket arról, hogyan dolgozza fel ezeket az eseményeket.
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
-Ebben a példában az egyszerűség kedvéért a `EventProcessorHost` használjuk, de ez nem a legmegfelelőbb választás ehhez az adott forgatókönyvhöz. `EventProcessorHost` a nehezen működik, hogy nem kell aggódnia, hogy az adott Event Processor osztályban milyen problémákba ütközik. Ebben az esetben azonban egyszerűen konvertáljuk az üzenetet egy másik formátumba, és egy aszinkron módszerrel átadják egy másik szolgáltatásnak. Nincs szükség a megosztott állapot frissítésére, ezért nem áll fenn a szálakkal kapcsolatos problémák kockázata. A legtöbb esetben `EventProcessorHost` valószínűleg a legjobb választás, és ez természetesen a könnyebb megoldás.
+Ebben a példában `EventProcessorHost` az egyszerűség kedvéért használjuk, de nem biztos, hogy ez a legjobb választás erre a konkrét forgatókönyvre. `EventProcessorHost`nem a kemény munka, hogy megbizonyosodjon arról, hogy nem kell aggódnia threading kérdések egy adott esemény processzor osztály. A mi forgatókönyvünkben azonban egyszerűen konvertáljuk az üzenetet egy másik formátumra, és egy másik szolgáltatásnak adjuk át egy aszinkron módszerrel. Nincs szükség a megosztott állapot frissítésére, és ezért nem áll fenn a szálkal kapcsolatos problémák kockázata. A legtöbb forgatókönyv, talán a legjobb választás, `EventProcessorHost` és ez minden bizonnyal a könnyebb megoldás.
 
 ### <a name="ieventprocessor"></a>IEventProcessor
-A `EventProcessorHost` használatakor a központi fogalom a `IEventProcessor` felület implementációjának létrehozása, amely a `ProcessEventAsync`metódust tartalmazza. A metódus lényege itt látható:
+A központi fogalom `EventProcessorHost` használata során az `IEventProcessor` interfész implementációjának `ProcessEventAsync`létrehozása, amely tartalmazza a módszert . Ennek a módszernek a lényege itt látható:
 
 ```csharp
 async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
@@ -190,7 +190,7 @@ async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumera
 }
 ```
 
-A rendszer átadja a metódusnak a EventData objektumok listáját, és ezt a listát megismétli. Az egyes metódusok bájtjait egy HttpMessage-objektumba elemezzük, és a rendszer átadja az objektumot egy IHttpMessageProcessor-példánynak.
+Az EventData objektumok listáját a rendszer átad a metódusnak, és átteroljuk a listát. Az egyes metódusok bájtjai egy HttpMessage-objektumba kerülnek, és az objektum átkerül az IHttpMessageProcessor egy példányába.
 
 ### <a name="httpmessage"></a>HttpMessage
 A `HttpMessage` példány három adatot tartalmaz:
@@ -208,15 +208,15 @@ public class HttpMessage
 }
 ```
 
-A `HttpMessage`-példány tartalmaz egy `MessageId` GUID azonosítót, amely lehetővé teszi, hogy a HTTP-kérést a megfelelő HTTP-válaszhoz és egy logikai értékhez kapcsolódjon, amely meghatározza, hogy az objektum tartalmaz-e egy HttpRequestMessage és egy HttpResponseMessage-példányt. A `System.Net.Http`beépített HTTP-osztályainak használatával Kihasználhatom a `System.Net.Http.Formatting`részét képező `application/http` elemzési kód előnyeit.  
+A `HttpMessage` példány `MessageId` tartalmaz egy GUID, amely lehetővé teszi számunkra, hogy csatlakoztassa a HTTP-kérelmet a megfelelő HTTP-válasz és a logikai érték, amely azonosítja, ha az objektum tartalmaz egy példányt a HttpRequestMessage és HttpResponseMessage. A beépített HTTP-osztályok használatával `System.Net.Http`a alkalmazásban ki tudtam `application/http` használni a rendszerben `System.Net.Http.Formatting`található elemzési kódot.  
 
-### <a name="ihttpmessageprocessor"></a>IHttpMessageProcessor
-A rendszer ezután továbbítja a `HttpMessage` példányt a `IHttpMessageProcessor`megvalósításához, amely egy, az Azure Event hub-ból érkező esemény fogadásának és értelmezésének elválasztására, illetve a tényleges feldolgozására létrehozott felület.
+### <a name="ihttpmessageprocessor"></a>IHttpMessageProcesszor
+A `HttpMessage` példány ezután továbbítja `IHttpMessageProcessor`a végrehajtását, amely egy felület, amit azért hoztam létre, hogy leválasztsa az esemény fogadását és értelmezését az Azure Event Hubés a tényleges feldolgozása.
 
 ## <a name="forwarding-the-http-message"></a>A HTTP-üzenet továbbítása
-Ebben a példában úgy döntöttem, hogy érdekes lenne a HTTP-kérelem továbbítása a [MOESIF API Analytics szolgáltatáshoz](https://www.moesif.com). A Moesif egy felhőalapú szolgáltatás, amely a HTTP-elemzéshez és a hibakereséshez használható. Ingyenes szinttel rendelkeznek, így könnyen kipróbálható, és lehetővé teszi, hogy a HTTP-kérelmeket valós időben lássuk a API Management szolgáltatáson keresztül.
+Ehhez a mintához úgy döntöttem, hogy érdekes lenne a HTTP-kérést átnyomni a [Moesif API Analytics-be.](https://www.moesif.com) A Moesif egy felhőalapú szolgáltatás, amely http-elemzésre és hibakeresésre specializálódott. Ingyenes szinttel rendelkeznek, így könnyen megpróbálhatjuk, és lehetővé teszi számunkra, hogy valós időben lássuk a HTTP-kérelmeket az API Management szolgáltatásunkon keresztül.
 
-A `IHttpMessageProcessor` implementáció így néz ki:
+A `IHttpMessageProcessor` megvalósítás így néz ki:
 
 ```csharp
 public class MoesifHttpMessageProcessor : IHttpMessageProcessor
@@ -294,26 +294,26 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-A `MoesifHttpMessageProcessor` egy [ C# API-függvénytárat](https://www.moesif.com/docs/api?csharp#events) használ a Moesif, amely megkönnyíti a http-események adatküldését a szolgáltatásba. Ahhoz, hogy HTTP-alapú adatküldést küldhessen a Moesif Collector API-nak, szüksége lesz egy fiókra és egy alkalmazás-azonosítóra. Egy Moesif-alkalmazás azonosítójának létrehozásához hozzon létre egy fiókot a [Moesif webhelyén](https://www.moesif.com) , és lépjen a _jobb felső menüben_ -> az _alkalmazás telepítése_lehetőségre.
+A `MoesifHttpMessageProcessor` kihasználja a [C# API-kódtár Moesif,](https://www.moesif.com/docs/api?csharp#events) amely megkönnyíti a HTTP-eseményadatok leküldése a szolgáltatásba. Ahhoz, hogy HTTP-adatokat küldjön a Moesif Collector API-nak, szüksége van egy fiókra és egy alkalmazásazonosítóra. Kapsz egy Moesif alkalmazásazonosító t, ha létrehoz egy fiókot [a Moesif webhelyén,](https://www.moesif.com) majd lépjen a _jobb felső menü_ -> _alkalmazásbeállítása ._
 
 ## <a name="complete-sample"></a>Teljes minta
-A mintához tartozó [forráskód](https://github.com/dgilling/ApimEventProcessor) és tesztek a githubon találhatók. A minta futtatásához szüksége van egy [API Management szolgáltatásra](get-started-create-service-instance.md), [egy csatlakoztatott esemény-hubhoz](api-management-howto-log-event-hubs.md)és egy [Storage-fiókra](../storage/common/storage-create-storage-account.md) .   
+A [minta forráskódja](https://github.com/dgilling/ApimEventProcessor) és tesztjei a GitHubon találhatók. A minta futtatásához szüksége van egy [API-felügyeleti szolgáltatásra,](get-started-create-service-instance.md) [egy csatlakoztatott eseményközpontra](api-management-howto-log-event-hubs.md)és egy [tárfiókra.](../storage/common/storage-create-storage-account.md)   
 
-A minta csak egy egyszerű konzolos alkalmazás, amely az Event hub-ból érkező eseményeket figyeli, átalakítja őket egy Moesif-`EventRequestModel` és `EventResponseModel` objektumokat, majd továbbítja őket a Moesif Collector API-hoz.
+A minta csak egy egyszerű konzolalkalmazás, amely figyeli az Event Hubról `EventRequestModel` érkező `EventResponseModel` eseményeket, moesifté és objektumokká alakítja őket, majd továbbítja őket a Moesif Collector API-ra.
 
-A következő animált ábrán megtekintheti a fejlesztői portálon egy API-ra irányuló kérést, amely megjeleníti az üzenet fogadását, feldolgozását és továbbítását, majd a kérést és választ, amely az esemény-adatfolyamban jelenik meg.
+A következő animált képen láthatja a fejlesztői portálon egy API-ra irányuló kérelmet, a konzolalkalmazást, amely az üzenetet fogad, dolgozza fel és továbbítja, majd az eseménystreamben megjelenik a kérés és a válasz.
 
-![A kérelem Runscope való továbbításának bemutatása](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
+![A Runscope-nak továbbítandó kérelem bemutatása](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
 ## <a name="summary"></a>Összefoglalás
-Az Azure API Management szolgáltatás ideális helyet biztosít az API-khoz érkező és onnan érkező HTTP-forgalom rögzítéséhez. Az Azure Event Hubs egy rugalmasan méretezhető, alacsony díjszabású megoldás a forgalom rögzítésére és a másodlagos feldolgozási rendszerekbe való etetésére a naplózás, figyelés és más kifinomult elemzések céljából. A harmadik féltől származó forgalom figyelési rendszereihez (például a Moesif) való csatlakozás néhány tucat sornyi kód.
+Az Azure API Management szolgáltatás ideális hely az API-kba érkező és onnan érkező HTTP-forgalom rögzítésére. Az Azure Event Hubs egy jól méretezhető, alacsony költségű megoldás a forgalom rögzítésére és másodlagos feldolgozó rendszerekbe való betáplálására naplózás, figyelés és más kifinomult elemzések esetén. A moesifhez hasonló külső forgalomfigyelő rendszerekhez való csatlakozás olyan egyszerű, mint néhány tucat sornyi kód.
 
-## <a name="next-steps"></a>Következő lépések
-* További információ az Azure Event Hubs
-  * [Ismerkedés az Azure Event Hubs](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [Üzenetek fogadása a EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+## <a name="next-steps"></a>További lépések
+* További információ az Azure Event Hubs-ról
+  * [Ismerkedés az Azure Event Hubs-szal](../event-hubs/event-hubs-c-getstarted-send.md)
+  * [Üzenetek fogadása az EventProcessorHost szolgáltatással](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [Event Hubs programozási útmutató](../event-hubs/event-hubs-programming-guide.md)
-* További információ a API Management és a Event Hubs integrációról
-  * [Események naplózása az Azure Event Hubsba az Azure-ban API Management](api-management-howto-log-event-hubs.md)
-  * [Naplózó entitás referenciája](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [eventhub házirend-hivatkozás](/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+* További információ az API-kezelés és az Eseményközpontok integrációjáról
+  * [Események naplózása az Azure Event Hubs szolgáltatásba az Azure API Management szolgáltatásban](api-management-howto-log-event-hubs.md)
+  * [Naplózó entitás hivatkozása](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
+  * [log-to-eventhub házirend-hivatkozás](/azure/api-management/api-management-advanced-policies#log-to-eventhub)

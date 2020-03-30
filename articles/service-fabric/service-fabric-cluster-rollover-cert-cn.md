@@ -1,21 +1,21 @@
 ---
-title: Azure Service Fabric-fürt tanúsítványának átadása
-description: Ismerje meg, hogyan lehet áttekinteni a tanúsítvány köznapi nevével azonosított Service Fabric-fürt tanúsítványát.
+title: Az Azure Service Fabric-fürttanúsítvány átütemezése
+description: Ismerje meg, hogyan kell átgörgetni a Service Fabric fürttanúsítványt, amelyet a tanúsítvány köznapi neve azonosít.
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 94cc6841886b1b0eb4271ac0f727a2e3561e0081
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451962"
 ---
-# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Service Fabric-fürt tanúsítványának manuális átadása
-Ha egy Service Fabric-fürt tanúsítványa le van zárva, frissítenie kell a tanúsítványt.  A tanúsítvány-átváltási egyszerű, ha a fürtöt [úgy állították be, hogy a tanúsítványokat köznapi név](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (ujjlenyomat helyett) alapján használja.  Új tanúsítvány beszerzése egy új lejárati dátummal rendelkező hitelesítésszolgáltatótól.  Az önaláírt tanúsítványok nem támogatják az éles Service Fabric fürtöket, így Azure Portal fürt létrehozásakor létrehozott tanúsítványokat is tartalmazhatnak. Az új tanúsítványnak ugyanazzal a köznapi névvel kell rendelkeznie, mint a régebbi tanúsítványnak. 
+# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Service Fabric-fürttanúsítvány manuális görgetése
+Ha egy Service Fabric-fürttanúsítvány közel jár le, frissítenie kell a tanúsítványt.  A tanúsítványváltás egyszerű, ha a fürt [köznapi néven alapuló tanúsítványok használatára](service-fabric-cluster-change-cert-thumbprint-to-cn.md) lett beállítva (ujjlenyomat helyett).  Új tanúsítvány beszereznie egy új lejárati dátummal rendelkező hitelesítésszolgáltatótól.  Önaláírt tanúsítványok nem támogatják az éles Service Fabric-fürtök, az Azure portal fürt létrehozásának munkafolyamata során létrehozott tanúsítványokat. Az új tanúsítványnak a régebbi tanúsítvány nevével megegyező névvel kell rendelkeznie. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Service Fabric fürt automatikusan a deklarált tanúsítványt fogja használni a jövőbeli lejárati dátummal együtt. Ha egynél több érvényesítő tanúsítvány van telepítve a gazdagépen. Az ajánlott eljárás egy Resource Manager-sablon használata az Azure-erőforrások kiépítéséhez. Nem éles környezet esetén a következő parancsfájl használatával tölthet fel egy új tanúsítványt egy kulcstartóba, majd telepítheti a tanúsítványt a virtuálisgép-méretezési csoportba: 
+A Service Fabric-fürt automatikusan a deklarált tanúsítványt használja a jövőbeli lejárati dátummal; ha egynél több érvényesítési tanúsítvány van telepítve az állomásra. Ajánlott eljárás, hogy egy Erőforrás-kezelő sablon azure-erőforrások kiépítése. Nem éles környezetben a következő parancsfájl segítségével tölthet fel egy új tanúsítványt egy key vaultba, majd telepíti a tanúsítványt a virtuálisgép-méretezési csoportra: 
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -71,9 +71,9 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Virtual
 ```
 
 >[!NOTE]
-> A számítási műveletek virtuálisgép-méretezési csoportjának titkai nem támogatják ugyanazt az erőforrás-azonosítót két külön titok esetében, mivel minden egyes titok egy verzióval ellátott egyedi erőforrás. 
+> Számítási virtuálisgép-méretezési készlet titkos titkait nem támogatja ugyanazt az erőforrás-azonosítót két külön titkos kulcsok, mivel minden titkos kulcsot egy verzióval ellátott egyedi erőforrás. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a [fürt biztonságáról](service-fabric-cluster-security.md).
-* [Fürt tanúsítványainak frissítése és kezelése](service-fabric-cluster-security-update-certs-azure.md)
+* További információ a [fürtbiztonságról](service-fabric-cluster-security.md).
+* [Fürttanúsítványok frissítése és kezelése](service-fabric-cluster-security-update-certs-azure.md)
