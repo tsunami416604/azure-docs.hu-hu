@@ -1,6 +1,6 @@
 ---
 title: Azure Hybrid Benefit
-description: Meglévő SQL Server licencek használata SQL Database kedvezményekhez.
+description: Az SQL Database-engedményekhez használja a meglévő SQL Server licenceket.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,57 +10,57 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
 ms.openlocfilehash: d1a59e7ad86191bcc30b7d898d00f327c20fbc5e
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75945620"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
-A virtuális mag-alapú vásárlási modell kiépített számítási szintjein a meglévő licenceket a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával SQL Database kedvezményes díjszabásra cserélheti fel. Ez az Azure-kedvezmény lehetővé teszi, hogy a helyszíni SQL Server-licencek frissítési garanciával való használatával akár 30%-ot vagy akár magasabbat is megtakarítson Azure SQL Database. A megfelelő értékek megadásához használja a Azure Hybrid Benefit számológépet. 
+A virtuálismag-alapú vásárlási modell kiépített számítási rétegében az Azure Hybrid Benefit for SQL Server használatával kicserélheti a meglévő licenceket az SQL Database kedvezményes [díjaira.](https://azure.microsoft.com/pricing/hybrid-benefit/) Ez az Azure-előny lehetővé teszi, hogy akár 30 százalékkal vagy még magasabbra mentsen az Azure SQL Database-ben a helyszíni SQL Server-licencek frissítési garanciával történő használatával. Kérjük, használja az Azure Hybrid Benefit Kalkulátor a fent említett hivatkozás használatával a helyes értékeket. 
 
 > [!NOTE]
-> A Azure Hybrid Benefitra való váltás nem igényel állásidőt.
+> Az Azure Hybrid Benefit szolgáltatásra való váltáshoz nincs szükség állásidőre.
 
-![árképzési](./media/sql-database-service-tiers/pricing.png)
+![Árképzés](./media/sql-database-service-tiers/pricing.png)
 
-## <a name="choose-a-license-model"></a>Licencelési modell kiválasztása
+## <a name="choose-a-license-model"></a>Licencmodell kiválasztása
 
-A Azure Hybrid Benefit segítségével csak az alapul szolgáló Azure-infrastruktúráért kell fizetnie, ha az SQL-adatbázis motorjának meglévő SQL Server licencét használja (alapszintű számítási díjszabás), vagy a mögöttes infrastruktúráért és a SQL Serverért is fizethet. licenc (licencbe foglalt díjszabás).
+Az Azure Hybrid Benefit segítségével dönthet úgy, hogy csak az alapul szolgáló Azure-infrastruktúráért fizet magának az SQL-adatbázismotornak a meglévő SQL Server licencével (Base Compute díjszabás), vagy fizethet az alapul szolgáló infrastruktúráért és az SQL Serverért is. licenc (licenccel együtt adott árképzés).
 
-A licencelési modellt a Azure Portal használatával vagy a következő API-k egyikével választhatja ki vagy módosíthatja:
+Az Azure Portalon vagy az alábbi API-k egyikén választhatja ki vagy módosíthatja a licencelési modellt:
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-A licenc típusának beállítása vagy frissítése a PowerShell használatával:
+A licenctípus beállítása vagy frissítése a PowerShell használatával:
 
-- [Új – AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)
-- [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)
-- [Új – AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance)
+- [Új-AzsqlDatabase](/powershell/module/az.sql/new-azsqldatabase)
+- [Set-AzSqlDatabase Adatbázis](/powershell/module/az.sql/set-azsqldatabase)
+- [Új-Azsqlinstance](/powershell/module/az.sql/new-azsqlinstance)
 - [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A licenc típusának beállítása vagy frissítése az Azure CLI használatával:
+A licenctípus beállítása vagy frissítése az Azure CLI használatával:
 
 - [az sql db create](/cli/azure/sql/db#az-sql-db-create)
 - [az sql db update](/cli/azure/sql/db#az-sql-db-update)
-- [az SQL mi Create](/cli/azure/sql/mi#az-sql-mi-create)
-- [az SQL mi Update](/cli/azure/sql/mi#az-sql-mi-update)
+- [az sql mi létrehozása](/cli/azure/sql/mi#az-sql-mi-create)
+- [az sql mi frissítés](/cli/azure/sql/mi#az-sql-mi-update)
 
-# <a name="rest-apitabrest"></a>[REST API](#tab/rest)
+# <a name="rest-api"></a>[REST API](#tab/rest)
 
-A licenc típusának beállítása vagy frissítése a REST API használatával:
+A licenctípus beállítása vagy frissítése a REST API használatával:
 
 - [Adatbázisok – létrehozás vagy frissítés](/rest/api/sql/databases/createorupdate)
-- [Adatbázisok – frissítés](/rest/api/sql/databases/update)
+- [Adatbázisok - Frissítés](/rest/api/sql/databases/update)
 - [Felügyelt példányok – létrehozás vagy frissítés](/rest/api/sql/managedinstances/createorupdate)
 - [Felügyelt példányok – frissítés](/rest/api/sql/managedinstances/update)
 
 * * *
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A SQL Database központi telepítési lehetőségek [közül választhat: válassza a megfelelő központi telepítési lehetőséget az Azure SQL-ben](sql-database-paas-vs-sql-server-iaas.md).
-- SQL Database funkciók összehasonlítását lásd: [Azure SQL Database szolgáltatások](sql-database-features.md).
+- Az SQL Database telepítési beállításai közül a [Megfelelő telepítési lehetőség kiválasztása az Azure SQL-ben című témakörben](sql-database-paas-vs-sql-server-iaas.md)talál.
+- Az SQL Database szolgáltatásainak összehasonlítását az [Azure SQL Database Features című témakörben található.](sql-database-features.md)

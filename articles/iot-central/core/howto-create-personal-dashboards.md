@@ -1,73 +1,73 @@
 ---
-title: Azure-IoT Central személyes irányítópultok létrehozása | Microsoft Docs
+title: Azure IoT Központi személyes irányítópultok létrehozása | Microsoft dokumentumok
 description: Felhasználóként megtudhatja, hogyan hozhat létre és kezelhet személyes irányítópultokat.
 author: mavoge
 ms.author: mavoge
 ms.date: 10/17/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9da7efad816a466eb9d2902e36a95c5ae0fa626b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: db886006ff5b9adf3de0932951f6cce4958e8ebd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950664"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158129"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Több irányítópult létrehozása és kezelése
 
-Az **irányítópult** az az oldal, amely az alkalmazás első megnyitásakor betöltődik. Az alkalmazás egyik **szerkesztője** határozza meg az alapértelmezett alkalmazás-irányítópultot az összes felhasználó számára. Ezt az alapértelmezett irányítópultot lecserélheti saját, személyre szabott alkalmazás-irányítópultra. Több irányítópultot is beállíthat, amelyek különböző adathalmazokat jelenítenek meg, és válthatnak egymás között. 
+Az **irányítópult** az a lap, amely az alkalmazáshoz való első navigáláskor töltődik be. Az alkalmazás **egyik szerkesztője** határozza meg az összes felhasználó alapértelmezett alkalmazás-irányítópultját. Ezt az alapértelmezett irányítópultot lecserélheti a saját, személyre szabott alkalmazás-irányítópultjára. Több irányítópultja is lehet, amelyek különböző adatokat jelenítenek meg, és váltanak közöttük. 
 
-Ha Ön az alkalmazás **rendszergazdája** , létrehozhat akár 10 alkalmazás szintű irányítópultot is, amelyekkel megoszthatja az alkalmazás más felhasználóit. Csak **rendszergazdák** hozhatnak létre, szerkeszthetnek és törölhetnek alkalmazás szintű irányítópultokat. 
+Ha Ön az alkalmazás **rendszergazdája,** legfeljebb 10 alkalmazásszintű irányítópultot is létrehozhat, amelyeket megoszthat az alkalmazás többi felhasználójával. Csak **a rendszergazdák** hozhatnak létre, szerkeszthetik és törölhetik az alkalmazásszintű irányítópultokat. 
 
 ## <a name="create-dashboard"></a>Irányítópult létrehozása
 
-Az alábbi képernyőfelvételen az **egyéni alkalmazás** sablonjában létrehozott alkalmazás irányítópultja látható. Lecserélheti az alapértelmezett alkalmazás-irányítópultot egy személyes irányítópultra, vagy ha Ön rendszergazda, akkor egy másik alkalmazás szintű irányítópult. Ehhez az oldal bal felső részén válassza az **+ új** lehetőséget.
+A következő képernyőképen az **egyéni alkalmazássablonból** létrehozott alkalmazás irányítópultja látható. Az alapértelmezett alkalmazás-irányítópultot lecserélheti egy személyes irányítópultra, vagy ha ön rendszergazda, egy másik alkalmazásszintű irányítópultra. Ehhez válassza a lap bal felső részén található **+ Új** lehetőséget.
  
 > [!div class="mx-imgBorder"]
-> az alkalmazások ![irányítópultja az "egyéni alkalmazás" sablon alapján](media/howto-create-personal-dashboards/dashboard-custom-app.png)
+> ![Az "Egyéni alkalmazás" sablonon alapuló alkalmazások irányítópultja](media/howto-create-personal-dashboards/dashboard-custom-app.png)
 
-Az **+ új** lehetőség kiválasztásával megnyílik az irányítópult-szerkesztő. A szerkesztőben megadhatja az irányítópult nevét, és a könyvtárból is választhat elemeket. A függvénytár tartalmazza az irányítópult testreszabásához használható csempéket és irányítópult-primitíveket.
-
-> [!div class="mx-imgBorder"]
-> ![irányítópult-függvénytár](media/howto-create-personal-dashboards/dashboard-library.png)
-
-Ha Ön az alkalmazás **rendszergazdája** , akkor lehetősége lesz váltani, ha személyes szintű irányítópultot vagy alkalmazás szintű irányítópultot szeretne létrehozni. Ha létrehoz egy személyes szintű irányítópultot, csak látni fogja. Ha létrehoz egy alkalmazás szintű irányítópultot, akkor az alkalmazás minden felhasználója láthatja. Miután megadta a címet, és kiválasztja a létrehozni kívánt irányítópult típusát, később is mentheti és hozzáadhatja a csempéket. Ha már készen áll, és hozzáadta az eszköz sablonját és az eszköz példányát, akkor az első csempe is létrehozható. 
+A **+ Új** lehetőség kiválasztásával megnyílik a dashboard szerkesztő. A szerkesztőben nevet adhat az irányítópultnak, és a tárból kiválasztott elemeket választhat. A könyvtár tartalmazza az irányítópult testreszabásához használható csempéket és irányítópult-primitíveket.
 
 > [!div class="mx-imgBorder"]
-> az eszköz részleteinek ![konfigurálása a hőmérsékleti adatokhoz](media/howto-create-personal-dashboards/device-details.png)
+> ![Irányítópult-könyvtár](media/howto-create-personal-dashboards/dashboard-library.png)
 
-Hozzáadhat például egy **telemetria** csempét az eszköz aktuális hőmérsékletéhez. Ehhez tegye a következőket:
-1. Válassza ki az **eszköz sablonját**
-1. Válasszon ki egy, az irányítópult csempén megjeleníteni kívánt eszköz **példányát** . Ezután megjelenik az eszköz azon tulajdonságainak listája, amelyeket a csempén lehet használni.
-1. Ha a csempét az irányítópulton szeretné létrehozni, kattintson a **hőmérséklet** elemre, és húzza azt az irányítópult-területen. Kattintson a **hőmérséklet** elem melletti jelölőnégyzetre, majd kattintson az **összekapcsolás**elemre. Az alábbi képernyőfelvételen egy eszköz sablonjának és az eszköz példányának kiválasztását, majd az irányítópulton egy hőmérséklet-telemetria-csempét kell létrehoznia.
-1. A bal felső sarokban található **Mentés** elemre kattintva mentheti a csempét az irányítópulton.
+Ha Ön az alkalmazás **rendszergazdája,** akkor lehetősége van a váltásra, ha személyes szintű irányítópultot vagy alkalmazásszintű irányítópultot szeretne létrehozni. Ha személyes szintű irányítópultot hoz létre, csak Ön láthatja azt. Ha létrehoz egy alkalmazásszintű irányítópultot, az alkalmazás minden felhasználója láthatja azt. Miután megadta a címet, és kiválasztotta a létrehozni kívánt irányítópult típusát, később mentheti és hozzáadhatja a csempéket. Vagy ha most már készen áll, és hozzáadott egy eszközsablont és egy eszközpéldányt, akkor előre és létrehozhatja az első csempét. 
 
 > [!div class="mx-imgBorder"]
-> ![irányítópult "lap a hőmérséklet csempe részleteivel](media/howto-create-personal-dashboards/temperature-tile-edit.png)
+> ![Eszközrészletek konfigurálása" űrlap a Hőmérséklet részleteivel](media/howto-create-personal-dashboards/device-details.png)
 
-Most, hogy megtekinti a személyes irányítópultot, megjelenik az új csempe az eszköz **hőmérséklet** -beállításával:
+Hozzáadhat például egy **telemetriai** csempét az eszköz aktuális hőmérsékletéhez. Ehhez tegye a következőket:
+1. **Eszközsablon** kiválasztása
+1. Jelöljön ki egy **eszközpéldányt** az irányítópult csempéjén megtekinteni kívánt eszközhöz. Ezután megjelenik az eszköz csempén használható tulajdonságainak listája.
+1. Ha létre szeretné hozni a csempét az irányítópulton, kattintson a **Hőmérséklet** gombra, és húzza az irányítópult területre. A **Hőmérséklet** gomb melletti jelölőnégyzetre, majd az **Egyesítés**gombra kattinthat. A következő képernyőképen egy eszközsablon és egy eszközpéldány kiválasztása látható, majd egy hőmérséklet-telemetriai csempe létrehozása az irányítópulton.
+1. Válassza a **Mentés** gombot a bal felső sarokban, ha a csempét az irányítópultra szeretné menteni.
 
 > [!div class="mx-imgBorder"]
-> ![irányítópult "lap a hőmérséklet csempe részleteivel](media/howto-create-personal-dashboards/temperature-tile-complete.png)
+> ![Irányítópult" lap a Hőmérséklet csempe részleteivel](media/howto-create-personal-dashboards/temperature-tile-edit.png)
 
-A könyvtárban található egyéb csempe-típusok megismerésével megtudhatja, hogyan szabhatja testre a személyes irányítópultok testreszabását.
+Most, amikor megtekinti a személyes irányítópultot, megjelenik az új csempe az eszköz **Hőmérséklet** beállításával:
 
-Ha többet szeretne megtudni a csempék használatáról az Azure IoT Centralban, tekintse meg a [csempék hozzáadása az irányítópulthoz](howto-add-tiles-to-your-dashboard.md)című témakört.
+> [!div class="mx-imgBorder"]
+> ![Irányítópult" lap a Hőmérséklet csempe részleteivel](media/howto-create-personal-dashboards/temperature-tile-complete.png)
+
+A tárban található más csempetípusokat is felfedezheti, így derítheti ki, hogyan szabhatja testre a személyes irányítópultokat.
+
+Ha többet szeretne tudni arról, hogyan használhatja a csempéket az Azure IoT Centralban, olvassa el a [Csempék hozzáadása az irányítópulthoz](howto-add-tiles-to-your-dashboard.md).
 
 ## <a name="manage-dashboards"></a>Irányítópultok kezelése
 
-Több személyes irányítópultot is használhat, és válthat egymás között, vagy választhat az alapértelmezett alkalmazás-irányítópultok közül:
+Több személyes irányítópultja is lehet, és válthat közöttük, vagy választhat az alapértelmezett alkalmazás-irányítópultok közül:
 
 > [!div class="mx-imgBorder"]
-> ![váltás az irányítópultok között](media/howto-create-personal-dashboards/switch-dashboards.png)
+> ![Váltás az irányítópultok között](media/howto-create-personal-dashboards/switch-dashboards.png)
 
-Szerkesztheti a személyes irányítópultokat, és törölheti azokat az irányítópultokat, amelyekre már nincs szüksége. Ha Ön **rendszergazda**, lehetősége van az alkalmazás szintű irányítópultok szerkesztésére és törlésére is.
+Szerkesztheti személyes irányítópultjait, és törölheti azokat az irányítópultokat, amelyekre már nincs szüksége. Ha Ön **rendszergazda**, akkor is képes arra, hogy szerkesztse vagy törölje az alkalmazásszintű irányítópultokat is.
 
 > [!div class="mx-imgBorder"]
-> irányítópultok ![törlése](media/howto-create-personal-dashboards/delete-dashboards.png)
+> ![Irányítópultok törlése](media/howto-create-personal-dashboards/delete-dashboards.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan hozhat létre és kezelhet személyes irányítópultokat, [megtudhatja, hogyan kezelheti az alkalmazás beállításait](howto-manage-preferences.md)
+Most, hogy megtanulta, hogyan hozhat létre és kezelhet személyes irányítópultokat, [megtudhatja, hogyan kezelheti az alkalmazásbeállításait](howto-manage-preferences.md)

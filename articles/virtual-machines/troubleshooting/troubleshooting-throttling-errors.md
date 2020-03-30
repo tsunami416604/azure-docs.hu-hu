@@ -1,6 +1,6 @@
 ---
-title: Hibák elhárítása az Azure-ban | Microsoft Docs
-description: Szabályozási hibák, újrapróbálkozások és leállítási az Azure-beli számítási feladatokban.
+title: Szabályozási hibák elhárítása az Azure-ban | Microsoft dokumentumok
+description: Szabályozási hibák, újrapróbálkozások és visszalépés az Azure Compute-ban.
 services: virtual-machines
 documentationcenter: ''
 author: changov
@@ -14,33 +14,33 @@ ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045360"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API-szabályozási hibák elhárítása 
 
-Az Azure-beli számítási kérelmeket előfizetésben és régiónként is szabályozhatja, hogy segítse a szolgáltatás általános teljesítményét. Biztosítjuk az Azure számítási erőforrás-szolgáltató (CRP) összes hívását, amely a Microsofthoz tartozó erőforrásokat kezeli. a számítási névtér nem lépi túl a maximálisan engedélyezett API-kérelmek sebességét. Ez a dokumentum leírja az API-szabályozást, részletesen ismerteti a szabályozással kapcsolatos problémákat, valamint a szabályozás elkerülésének ajánlott eljárásait.  
+Az Azure Compute-kérelmek et előfizetéssel és régiónként szabályozhatja a szolgáltatás általános teljesítményének elősegítése érdekében. Biztosítjuk, hogy az Azure Compute Resource Provider (CRP) összes hívása, amely a Microsoft.Compute névtér ben kezeli az erőforrásokat, ne haladja meg a maximálisan engedélyezett API-kérelmek arányát. Ez a dokumentum ismerteti az API-szabályozás, a szabályozással kapcsolatos problémák elhárításának részleteit, valamint a szabályozás elkerülésére ajánlott eljárásokat.  
 
-## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Szabályozás Azure Resource Manager vs erőforrás-szolgáltatók által  
+## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Szabályozás az Azure Resource Manager és az erőforrás-szolgáltatók szerint  
 
-Az Azure-ba való bejárati ajtó Azure Resource Manager az összes bejövő API-kérelem hitelesítését és megrendelésének ellenőrzését és szabályozását végzi. Az Azure Resource Manager hívási sebességre vonatkozó korlátozások és a kapcsolódó diagnosztikai válaszok HTTP-fejlécek [itt](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)olvashatók.
+Az Azure Resource Manager az Azure Resource Manager az Azure Resource Manager az összes bejövő API-kérelem hitelesítését és első rendelési érvényesítését és szabályozását végzi. Az Azure Resource Manager hívássebesség-korlátozási és a kapcsolódó diagnosztikai válasz HTTP-fejlécei [itt](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)találhatók.
  
-Ha egy Azure API-ügyfél szabályozási hibát észlel, akkor a HTTP-állapot 429 túl sok kérés. Ha meg szeretné tudni, hogy a kérelmek szabályozása Azure Resource Manager vagy egy mögöttes erőforrás-szolgáltató, például a CRP, vizsgálja meg `x-ms-ratelimit-remaining-subscription-reads` a GET kérések és a `x-ms-ratelimit-remaining-subscription-writes` válasz fejléceit a nem GET kérelmek esetében. Ha a fennmaradó hívások száma eléri a 0 értéket, a rendszer elérte az előfizetés Azure Resource Manager által meghatározott általános hívási korlátját. Az összes előfizetési ügyfél által végzett tevékenységek együtt számítanak. Ellenkező esetben a szabályozás a cél erőforrás-szolgáltatótól (a kérelem URL-címének `/providers/<RP>` szegmense által tárgyalt) származik. 
+Ha egy Azure API-ügyfél szabályozási hibát kap, a HTTP állapota 429 Túl sok kérelem. Ha tudni szeretné, hogy a kérelem szabályozását az Azure Resource Manager vagy `x-ms-ratelimit-remaining-subscription-reads` egy mögöttes `x-ms-ratelimit-remaining-subscription-writes` erőforrás-szolgáltató, például a CRP végzi-e, ellenőrizze a GET-kérelmek és válaszfejlécek nem GET-kérelmeket. Ha a fennmaradó hívásszám megközelíti a 0-t, az előfizetés általános híváskorlátja az Azure Resource Manager által meghatározott elérte. Az összes előfizetési ügyfél tevékenységei tössze számítanak. Ellenkező esetben a szabályozás a célerőforrás-szolgáltatótól érkezik (a `/providers/<RP>` kérelem URL-címének szegmense által címzett). 
 
-## <a name="call-rate-informational-response-headers"></a>Hívási sebesség – tájékoztató válasz fejlécei 
+## <a name="call-rate-informational-response-headers"></a>Hívásdíj-információs válaszfejlécek 
 
-| Fejléc                            | Érték formátuma                           | Példa                               | Leírás                                                                                                                                                                                               |
+| Fejléc                            | Értékformátum                           | Példa                               | Leírás                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| x-MS-ratelimit – fennmaradó erőforrás |```<source RP>/<policy or bucket>;<count>```| Microsoft. számítás/HighCostGet3Min; 159 | A fennmaradó API-hívások száma az erőforrás-gyűjtőre vagy a műveleti csoportra kiterjedő szabályozási házirendhez, beleértve a kérelem célját                                                                   |
-| x-MS-Request-Charge               | ```<count>```                             | 1                                     | A "felszámított hívások száma" a HTTP-kérelemhez a vonatkozó szabályzat korlátja felé. Ez általában 1. A Batch-kérések, például a virtuálisgép-méretezési csoport skálázása több számlálást is igénybe vehet. |
+| x-ms-ratelimit-remaining-erőforrás |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | Az erőforrásgyűjtőt vagy műveletcsoportot lefedő szabályozási szabályzat fennmaradó API-hívásszáma, beleértve a kérelem célját is                                                                   |
+| x-ms-request-charge               | ```<count>```                             | 1                                     | A HTTP-kérelemért a vonatkozó szabályzat korlátjára vonatkozó hívásszámok száma "felszámítva". Ez a legjellemzőbb 1. A kötegelt kérelmek, például a virtuálisgép-méretezési csoport méretezése több számot is felszámíthatnak. |
 
 
-Vegye figyelembe, hogy az API-kérelmek több szabályozási házirendnek is kivonhatók. Az egyes szabályzatok külön `x-ms-ratelimit-remaining-resource` fejlécet kapnak. 
+Vegye figyelembe, hogy egy API-kérelem több sávszélesség-szabályozási szabályzatok. Minden házirendhez `x-ms-ratelimit-remaining-resource` külön fejléc lesz. 
 
-Íme egy példa a virtuálisgép-méretezési csoport törlésére vonatkozó kérelemre.
+Itt van egy minta válasz a virtuálisgép-méretezési csoport kérésének törlésére.
 
 ```
 x-ms-ratelimit-remaining-resource: Microsoft.Compute/DeleteVMScaleSet3Min;107 
@@ -51,7 +51,7 @@ x-ms-ratelimit-remaining-resource: Microsoft.Compute/VmssQueuedVMOperations;4720
 
 ## <a name="throttling-error-details"></a>Szabályozási hiba részletei
 
-A 429 HTTP-állapotot általában a rendszer a kérelmek elutasítására használja, mert elérte a hívási sebességre vonatkozó korlátot. A számítási erőforrás-szolgáltató jellemző sávszélesség-szabályozásra adott válasza az alábbi példához hasonlóan fog kinézni (csak a megfelelő fejlécek jelennek meg):
+A 429-es HTTP-állapotot általában a kérés elutasítására használják, mert elérte a hívássebesség-korlátot. A számítási erőforrás-szolgáltató tipikus szabályozási hibaválasza az alábbi példához hasonlóan fog kinézni (csak a releváns fejlécek jelennek meg):
 
 ```
 HTTP/1.1 429 Too Many Requests
@@ -73,31 +73,31 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Az a házirend, amelynek a maradék hívási száma 0, az az egyik oka, hogy a rendszer visszaadja a sávszélesség-szabályozási hibát. Ebben az esetben `HighCostGet30Min`. A válasz törzsének teljes formátuma az általános Azure Resource Manager API-hiba formátuma (OData). A fő hibakód, `OperationNotAllowed`, az egy számítási erőforrás-szolgáltató, amely a szabályozási hibák jelentését használja (többek között az ügyfél hibái között). A belső hiba (ok) `message` tulajdonsága szerializált JSON-struktúrát tartalmaz a szabályozás megsértésének részleteivel.
+A házirend fennmaradó hívásszáma 0 az, amely miatt a szabályozáshiba ad vissza. Ebben az esetben `HighCostGet30Min`ez a . A választörzs általános formátuma az általános Azure Resource Manager API-hibaformátum (amely megfelel az OData-nak). A fő hibakód , `OperationNotAllowed`az egyik számítási erőforrás-szolgáltató használja a szabályozási hibák (többek között az ügyfél hibák) jelentésére. A `message` belső hiba(ok) tulajdonsága egy szerializált JSON-struktúrát tartalmaz a szabályozásmegsértése részleteivel.
 
-Ahogy az a fenti ábrán látható, minden szabályozási hiba magában foglalja a `Retry-After` fejlécet, amely megadja, hogy hány másodpercig várjon az ügyfél a kérés újrapróbálkozása előtt. 
+Amint azt a fentiekben is `Retry-After` látható, minden szabályozási hiba tartalmazza a fejlécet, amely megadja azt a minimális számú másodpercet, amelyet az ügyfélnek várnia kell a kérelem újbóli megkísérlése előtt. 
 
-## <a name="api-call-rate-and-throttling-error-analyzer"></a>API-hívások sebessége és a szabályozási hibák analizátora
-A hibaelhárítási funkció előzetes verziója érhető el a számítási erőforrás-szolgáltató API-hoz. Ezek a PowerShell-parancsmagok az API-kérelmek sebességének és a műveleti csoportonként történő szabályozásának (szabályzata) alapján adják meg a statisztikát.
--   [Exportálás – AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [Exportálás – AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
+## <a name="api-call-rate-and-throttling-error-analyzer"></a>API-hívási sebesség és szabályozási hibaelemző
+A hibaelhárítási szolgáltatás előzetes verziója érhető el a számítási erőforrás-szolgáltató API-jához. Ezek a PowerShell-parancsmagok az API-kérelmek sebességére vonatkozó statisztikákat biztosítanak műveletenkénti időintervallumonként és a szabályzatonkénti szabályozásmegsértésekről:
+-   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
+-   [Export-AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
-Az API-hívási statisztika nagyszerű betekintést nyújt az előfizetés ügyfeleinek viselkedésére, és lehetővé teszi a szabályozást okozó hívási minták egyszerű azonosítását.
+Az API-hívási statisztikák nagyszerű betekintést nyújtanak az előfizetés ügyfél(ek) viselkedésébe, és lehetővé teszik a szabályozást okozó hívásminták egyszerű azonosítását.
 
-Az elemzőnek az az időkorlátja, hogy nem számítja fel a lemezes és a pillanatkép-erőforrástípusok kéréseit (a felügyelt lemezek támogatásával). Mivel adatokat gyűjt a CRP telemetria, nem tud segítséget nyújtani az ARM-hibák szabályozásához. Ezek azonban könnyen azonosíthatók a megkülönböztető ARM-válasz fejlécei alapján, amint azt korábban már említettük.
+Az analizátor egyelőre korlátozza, hogy nem számolja a lemez- és pillanatkép-erőforrástípusokra vonatkozó kérelmeket (a felügyelt lemezek támogatása érdekében). Mivel adatokat gyűjt a CRP telemetriai adataiból, nem tud segíteni az ARM szabályozási hibáinak azonosításában is. De ezek könnyen azonosíthatók a megkülönböztető ARM válasz fejlécek alapján, amint azt korábban tárgyaltuk.
 
-A PowerShell-parancsmagok REST Service API-t használnak, amelyet közvetlenül az ügyfelek hívhatnak meg (bár még formális támogatás nélkül). A HTTP-kérelmek formátumának megtekintéséhez futtassa a-Debug kapcsolóval vagy a Snoop-parancsmaggal való végrehajtást a Hegedűs használatával.
+A PowerShell-parancsmagok egy REST-szolgáltatás API-t használnak, amelyet az ügyfelek könnyen meghívhatnak (bár hivatalos támogatás nélkül). A HTTP-kérelem formátumának megtekintéséhez futtassa a parancsmagokat a -Debug kapcsolóval, vagy olvassa le a végrehajtásukat a Fiddler segítségével.
 
 
 ## <a name="best-practices"></a>Ajánlott eljárások 
 
-- Ne próbálja megismételni az Azure Service API-hibákat feltétel nélkül és/vagy azonnal. Gyakori esemény, hogy az ügyfél kódja gyors újrapróbálkozási hurokba kerül, amikor olyan hibát tapasztal, amely nem próbálkozik újra. Az újrapróbálkozások végül kimerítik a megcélzott művelet csoportjának engedélyezett hívási korlátját, és az előfizetés más ügyfeleire is hatással vannak. 
-- A nagy mennyiségű API-automatizálási esetekben érdemes lehet a proaktív ügyféloldali önszabályozást megvalósítani, ha a cél műveleti csoport számára elérhető hívások száma az alacsonyabb küszöbérték alá esik. 
-- Az aszinkron műveletek nyomon követése esetén vegye figyelembe az újrapróbálkozások utáni fejléc-emlékeztetőket. 
-- Ha az ügyfél kódjának egy adott virtuális gépre vonatkozó információra van szüksége, a virtuális gép közvetlen lekérdezése ahelyett, hogy a megjelenő erőforráscsoporthoz tartozó összes virtuális gépet, vagy a teljes előfizetést fel kell vennie, majd ki kell vennie a szükséges virtuális gépet az ügyféloldali 
-- Ha az ügyfél kódjában virtuális gépek, lemezek és Pillanatképek szükségesek egy adott Azure-helyről, az összes előfizetési virtuális gép lekérdezése helyett használja a lekérdezés hely alapú formáját: `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` lekérdezés az erőforrás-szolgáltató regionális végpontjai kiszámításához. 
--   A virtuális gépek és a virtuálisgép-méretezési csoportok API-erőforrásainak létrehozásakor vagy frissítésekor sokkal hatékonyabbá válik a visszaadott aszinkron művelet végrehajtása, mint az erőforrás URL-címére irányuló lekérdezés (a `provisioningState`alapján).
+- Ne próbálkozzon újra az Azure Service API-hibáival feltétel nélkül és/vagy azonnal. Gyakori előfordulása az ügyfélkód bekerülni egy gyors újrapróbálkozási ciklus, ha olyan hibába ütközik, amely nem újrapróbálkozásra képes. Az újrapróbálkozások végül kimerítik a célművelet csoportjának engedélyezett híváskorlátját, és hatással vannak az előfizetés többi ügyfeleire. 
+- A nagy mennyiségű API-automatizálási esetekben fontolja meg a proaktív ügyféloldali önszabályozás t, ha a célműveletcsoport rendelkezésre álló hívásszáma egy alacsony küszöbérték alá csökken. 
+- Az aszinkron műveletek nyomon követésekor tartsa tiszteletben az Újrapróbálkozás utáni fejléc-tippeket. 
+- Ha az ügyfélkódnak információra van szüksége egy adott virtuális gépről, a virtuális gépet közvetlenül kérdezze le ahelyett, hogy az összes virtuális gépet felsorolná az erőforráscsoportot tartalmazó erőforráscsoportban vagy a teljes előfizetésben, majd kiválasztaná a szükséges virtuális gépet az ügyféloldalon. 
+- Ha az ügyfélkódnak virtuális gépekre, lemezekre és pillanatképekre van szüksége egy adott Azure-helyről, használja a lekérdezés helyalapú `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` űrlapját az összes előfizetéses virtuális gép lekérdezése helyett, majd az ügyféloldalon lévő hely szerinti szűrést: lekérdezés a számítási erőforrás-szolgáltató regionális végpontjaira. 
+-   Különösen az API-erőforrások, különösen a virtuális gépek és a virtuálisgép-méretezési készletek létrehozásakor vagy frissítésekor sokkal hatékonyabb a `provisioningState`visszaadott aszinkron művelet befejezése, mint maga az erőforrás URL-je lekérdezése (a).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure egyéb szolgáltatásaira vonatkozó újrapróbálkozási útmutatóról: [adott szolgáltatások újrapróbálkozási útmutatója](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)
+Az Azure-beli egyéb szolgáltatások újrapróbálkozási útmutatójával kapcsolatos további információkért olvassa [el az Újrapróbálkozási útmutató t adott szolgáltatásokhoz című témakört.](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)

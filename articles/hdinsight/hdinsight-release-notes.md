@@ -1,67 +1,79 @@
 ---
-title: Az Azure HDInsight kibocsátási megjegyzései
-description: Az Azure HDInsight legújabb kibocsátási megjegyzései. A Hadoop, a Spark, a R Server, a kaptár és sok más fejlesztéssel kapcsolatos tippeket és információkat kaphat.
+title: Az Azure HDInsight kiadási megjegyzései
+description: Az Azure HDInsight legújabb kiadási feljegyzései. Fejlesztési tippeket és részleteket kaphat a Hadoophoz, a Sparkhoz, az R Serverhez, a Hive-hoz és egyebekhez.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/13/2020
-ms.openlocfilehash: b83828c3c78913598c103730e11222969fe1fddb
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.date: 03/20/2020
+ms.openlocfilehash: e5a96d2eb67937ce4eeaa1999d8168e7f5d3d926
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370168"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80130187"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
-Ez a cikk az Azure HDInsight **legújabb** kiadási frissítéseivel kapcsolatos információkat tartalmaz. A korábbi kiadásokkal kapcsolatos információkért lásd: [HDInsight kibocsátási megjegyzések archívuma](hdinsight-release-notes-archive.md).
+Ez a cikk az Azure HDInsight **legújabb** kiadásfrissítéseivel kapcsolatos információkat tartalmazza. A korábbi kiadásokról a [HDInsight Release Notes Archive című témakörben](hdinsight-release-notes-archive.md)talál további információt.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében az Azure-beli nyílt forráskódú elemzésekhez.
 
-## <a name="release-date-01092020"></a>Kiadás dátuma: 01/09/2020
+## <a name="release-date-01092020"></a>Megjelenési dátum: 01/09/2020
 
-Ez a kiadás a 3,6-es és a 4,0-es HDInsight is érvényes. A HDInsight-kiadás több napon keresztül elérhetővé válik minden régióban. A kiadás dátuma itt jelzi az első régió kiadásának dátumát. Ha nem látja az alábbi módosításokat, várjon, amíg a kiadás több napon belül élő marad a régióban.
+Ez a kiadás a HDInsight 3.6-os és a 4.0-s felbontásra egyaránt vonatkozik. A HDInsight-kiadás több napon keresztül minden régió számára elérhetővé válik. A kiadás dátuma itt az első régió kiadási dátumát jelzi. Ha az alábbi módosításoknem láthatók, kérjük, várjon, amíg a kiadás néhány napon belül megjelenik a régióban.
 
 > [!IMPORTANT]  
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információ: [HDInsight verziószámozási cikk](hdinsight-component-versioning.md).
+> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információt a [HDInsight verziószámozási cikkében talál.](hdinsight-component-versioning.md)
 
 ## <a name="new-features"></a>Új funkciók
 ### <a name="tls-12-enforcement"></a>A TLS 1.2 kényszerítése
-A Transport Layer Security (TLS) és a SSL (SSL) olyan titkosítási protokollok, amelyek kommunikációs biztonságot biztosítanak a számítógép hálózatán. További információ a [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)-ről. A HDInsight TLS 1,2-t használ a nyilvános HTTPs-végpontokon, de a TLS 1,1 továbbra is támogatott a visszamenőleges kompatibilitás érdekében. 
+A Transport Layer Security (TLS) és a Secure Sockets Layer (SSL) olyan kriptográfiai protokollok, amelyek számítógépes hálózaton keresztül biztosítják a kommunikáció biztonságát. További információ a [TLS-ről.](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0) A HDInsight a TLS 1.2-t használja nyilvános HTTPs-végpontokon, de a TLS 1.1 továbbra is támogatott a visszamenőleges kompatibilitás érdekében. 
 
-Ebben a kiadásban az ügyfelek csak a nyilvános fürt végpontján keresztül csatlakozhatnak a TLS 1,2-es kapcsolatokhoz. Ennek támogatásához a **minSupportedTlsVersion** új tulajdonsága be van vezetve, és a fürt létrehozása során megadható. Ha a tulajdonság nincs beállítva, a fürt továbbra is támogatja a TLS 1,0, 1,1 és 1,2 protokollt, amely megegyezik a mai viselkedésével. Az ügyfelek a tulajdonság értékét "1,2" értékre állíthatja, ami azt jelenti, hogy a fürt csak a TLS 1,2-es vagy újabb verzióját támogatja. További információ: [virtuális hálózat megtervezése – Transport Layer Security](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#transport-layer-security).
+Ezzel a kiadással az ügyfelek csak a nyilvános fürtvégponton keresztül i kapcsolatot engedélyezhetik a TLS 1.2-es szintre. Ennek támogatása érdekében az új tulajdonság **minSupportedTlsVersion** kerül bevezetésre, és meg adható a fürt létrehozása során. Ha a tulajdonság nincs beállítva, a fürt továbbra is támogatja a TLS 1.0, 1.1 és 1.2, amely megegyezik a mai viselkedését. Az ügyfelek beállíthatják a tulajdonság értékét "1.2", ami azt jelenti, hogy a fürt csak támogatja a TLS 1.2 és újabb. További információ: [Virtuális hálózat tervezése - Transport Layer Security](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#transport-layer-security).
 
-### <a name="bring-your-own-key-for-disk-encryption"></a>Saját kulcs használata a lemezes titkosításhoz
-A HDInsight összes felügyelt lemeze az Azure Storage Service Encryption (SSE) védelemmel van ellátva. A lemezeken tárolt adatforgalom alapértelmezés szerint a Microsoft által felügyelt kulcsokkal van titkosítva. Ettől a kiadástól kezdve a lemezes titkosításhoz Bring Your Own Key (BYOK) és a Azure Key Vault használatával felügyelheti. A BYOK-titkosítás egy egylépéses konfiguráció a fürt létrehozása során, többletköltség nélkül. Csak regisztrálja a HDInsight felügyelt identitásként Azure Key Vault és adja hozzá a titkosítási kulcsot a fürt létrehozásakor. További információ: [ügyfél által felügyelt kulcs lemezének titkosítása](https://docs.microsoft.com/azure/hdinsight/disk-encryption).
+### <a name="bring-your-own-key-for-disk-encryption"></a>Saját kulcs hozása a lemeztitkosításhoz
+A HDInsight összes felügyelt lemeze az Azure Storage Service Encryption (SSE) szolgáltatással védett. Az ezeken a lemezeken lévő adatokat alapértelmezés szerint a Microsoft által kezelt kulcsok titkosítják. Ebből a kiadásból kiindulva saját kulcsot (BYOK) hozhat létre a lemeztitkosításhoz, és kezelheti azt az Azure Key Vault használatával. A BYOK-titkosítás egy egylépéses konfiguráció a fürt létrehozása során, további költségek nélkül. Csak regisztrálja a HDInsight-ot felügyelt identitásként az Azure Key Vaultban, és adja hozzá a titkosítási kulcsot a fürt létrehozásakor. További információt az [Ügyfél által kezelt kulcslemez-titkosítás](https://docs.microsoft.com/azure/hdinsight/disk-encryption)című témakörben talál.
 
 ## <a name="deprecation"></a>Elavulás
-Nincs elavultság ehhez a kiadáshoz. A közelgő elavulás elkezdéséhez tekintse meg a [közelgő változásokat](#upcoming-changes).
+Ehhez a kiadáshoz nincsek eedek. A közelgő eprekationokra való felkészülésről a [Közelgő módosítások (Közelgő módosítások) témakörben kaphatunk felkészülést.](#upcoming-changes)
 
-## <a name="behavior-changes"></a>Viselkedési változások
-Ebben a kiadásban nem változik a viselkedés. A közelgő változásokról a [közelgő változások](#upcoming-changes)című szakaszban olvashat.
+## <a name="behavior-changes"></a>Viselkedésbeli változások
+Ebben a kiadásban nincs változás a viselkedésben. A közelgő változásokra való felkészülésről a Közelgő módosítások (Közelgő módosítások) témakörben [kaphatunk felkészülést.](#upcoming-changes)
 
 ## <a name="upcoming-changes"></a>Közelgő változások
-A következő módosítások a közelgő kiadásokban fognak történni. 
+A következő módosítások a következő kiadásokban fognak bekövetkezni. 
 
-### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>A fő csomóponthoz legalább 4 magos virtuális gépnek kell tartoznia 
-A HDInsight-fürtök magas rendelkezésre állásának és megbízhatóságának biztosítása érdekében legalább 4 magos virtuális gépnek kell lennie a fő csomópont számára. A 2020. április 1-től kezdődően az ügyfelek csak 4 magos vagy magasabb szintű virtuális gépet választhatnak az új HDInsight-fürtök fő csomópontja. A meglévő fürtök továbbra is a várt módon fognak futni. 
+### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>A head node-hoz legalább 4 magos virtuális gép szükséges 
+A head-node-hoz a HDInsight-fürtök magas rendelkezésre állásának és megbízhatóságának biztosításához legalább 4 magos virtuális gép szükséges. 2020. április 6-tól kezdődően az ügyfelek csak 4 magos vagy annál magasabb virtuális gép et választhatnak az új HDInsight-fürtök főcsomópontjaként. A meglévő fürtök továbbra is a várt módon futnak. 
 
-### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark-fürt csomópontjának méretének változása 
-A következő kiadásban az ESP Spark-fürt minimálisan megengedett csomópontjának mérete Standard_D13_V2re változik. Az A sorozatú virtuális gépek az ESP-fürtöket a viszonylag alacsony CPU-és memória-kapacitás miatt okozhatják. Az "a" sorozatú virtuális gépek elavulttá válik az új ESP-fürtök létrehozásához.
+### <a name="esp-spark-cluster-node-size-change"></a>AZ ESP Spark-fürtcsomópont méretének változása 
+A következő kiadásban az ESP Spark-fürt minimálisan engedélyezett csomópontmérete Standard_D13_V2. Az A sorozatú virtuális gépek a viszonylag alacsony processzor- és memóriakapacitás miatt esp-fürtproblémákat okozhatnak. Az A sorozatú virtuális gépek elavultak lesznek az új ESP-fürtök létrehozásához.
 
-### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Áttérés Azure-beli virtuálisgép-méretezési csoportokra
-A HDInsight mostantól Azure-beli virtuális gépeket használ a fürt kiépítéséhez. A következő kiadásban a HDInsight az Azure virtuálisgép-méretezési csoportokat fogja használni helyette. További információ az Azure-beli virtuálisgép-méretezési csoportokról.
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Áttérés az Azure virtuálisgép-méretezési csoportjaira
+A HDInsight mostantól azure-beli virtuális gépeket használ a fürt kiépítéséhez. A következő kiadásban a HDInsight az Azure virtuálisgép-méretezési készleteket fogja használni. További információk az Azure virtuálisgép-méretezési csoportjairól.
 
-### <a name="hbase-20-to-21"></a>HBase 2,0 – 2,1
-A közelgő HDInsight 4,0-es kiadásban a HBase verziója a 2,0-es verzióról 2,1-ra lesz frissítve.
+### <a name="hbase-20-to-21"></a>HBase 2.0-2.1
+A hdinsight 4.0-s verziójában a HBase verziója a 2.0-s verzióról a 2.1-es verzióra frissül.
 
 ## <a name="bug-fixes"></a>Hibajavítások
-A HDInsight továbbra is a fürt megbízhatóságának és teljesítményének növelését teszi elérhetővé. 
+A HDInsight továbbra is javítja a fürt megbízhatóságát és teljesítményét. 
 
-## <a name="component-version-change"></a>Összetevő verziójának módosítása
-Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 ad HDInsight 3,6 aktuális összetevő-verzióit itt találja.
+## <a name="component-version-change"></a>Az összetevő verziómódosítása
+Ehhez a kiadáshoz nincs összetevőverzió-változás. A HDInsight 4.0-s hdinsight 3.6-os verziójának jelenlegi összetevő-verzióit itt találja.
+
+## <a name="known-issues"></a>Ismert problémák
+
+2020. március 18-tól néhány Nyugat-Európában vagy Észak-Európában lévő Azure HDInsight-ügyfél hibaüzenetet kapott a HDInsight-fürtök létrehozásakor vagy méretezésekor ezekben a régiókban. A problémával kapcsolatos hibák a következők:
+
+- Belső kiszolgálóhiba történt a kérelem feldolgozása közben. Próbálkozzon újra a kéréssel, vagy forduljon az ügyfélszolgálathoz.
+- Legalább egy erőforrás-telepítési művelet sikertelen volt. A részleteket a központi telepítési műveletek listája tartalmazza. Kérjük, olvassa el https://aka.ms/DeployOperations a használati adatokat
+- A User SubscriptionId\<\>' Subscription ID ' nem\<rendelkezik a "fürtnév>" erőforrás létrehozásához megmaradt magokkal. Kötelező: \<\>X , Elérhető: 0.
+
+A mérnökök tisztában vannak ezzel a problémával, és aktívan vizsgálják.
+
+További segítségért hozzon létre [egy támogatási kérelmet.](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)

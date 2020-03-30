@@ -1,64 +1,64 @@
 ---
-title: Logikai alkalmazás-sablonok létrehozása az üzembe helyezéshez
-description: Megtudhatja, hogyan hozhat létre Azure Resource Manager-sablonokat az üzembe helyezés automatizálásához Azure Logic Apps
+title: Logikai alkalmazássablonok létrehozása központi telepítéshez
+description: Megtudhatja, hogy miként hozhat létre Azure Resource Manager-sablonokat az Azure Logic Apps-alkalmazásokban való üzembe helyezés automatizálásához
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
 ms.openlocfilehash: 1fdee9a5d90fc065e198d880f9d0dea10804b881
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972634"
 ---
-# <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Resource Manager-sablonok létrehozása a Azure Logic Apps üzembe helyezésének automatizálásához
+# <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Resource Manager-sablonok létrehozása az Azure Logic Apps üzembe helyezésének automatizálásához
 
-A logikai alkalmazás létrehozásának és üzembe helyezésének automatizálása érdekében ez a cikk bemutatja, hogyan hozhat létre [Azure Resource Manager sablont](../azure-resource-manager/management/overview.md) a logikai alkalmazáshoz. A munkafolyamat-definíciót és az üzembe helyezéshez szükséges egyéb erőforrásokat tartalmazó sablon szerkezetének és szintaxisának áttekintését lásd [: Áttekintés: az üzembe helyezés automatizálása a Logic apps alkalmazásokhoz Azure Resource Manager sablonokkal](logic-apps-azure-resource-manager-templates-overview.md).
+A logikai alkalmazás létrehozásának és üzembe helyezésének automatizálása érdekében ez a cikk ismerteti, hogyan hozhat létre [egy Azure Resource Manager-sablont](../azure-resource-manager/management/overview.md) a logikai alkalmazáshoz. A munkafolyamat-definíciót és a telepítéshez szükséges egyéb erőforrásokat tartalmazó sablonok szerkezetének és szintaxisának áttekintését [az Áttekintés: A logikai alkalmazások üzembe helyezésének automatizálása az Azure Resource Manager-sablonokkal című](logic-apps-azure-resource-manager-templates-overview.md)témakörben találja.
 
-A Azure Logic Apps egy [előre elkészített Logic app-Azure Resource Manager sablont](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) biztosít, amely nem csak a Logic apps létrehozásához használható, hanem az üzembe helyezéshez használt erőforrások és paraméterek meghatározására is. Ezt a sablont használhatja saját üzleti céljaihoz, vagy testreszabhatja a sablont az igényeinek megfelelően.
+Az Azure Logic Apps egy [előre összeállított logikai alkalmazást biztosít az Azure Resource Manager-sablonhoz,](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) amelyet nem csak logikai alkalmazások létrehozásához használhat fel, hanem a központi telepítéshez használandó erőforrások és paraméterek meghatározásához is. Ezt a sablont használhatja saját üzleti forgatókönyveihez, vagy testreszabhatja a sablont, hogy megfeleljen az igényeinek.
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy a sablonban lévő kapcsolatok ugyanazt az Azure-erőforráscsoportot és-helyet használják, mint a logikai alkalmazás.
+> Győződjön meg arról, hogy a sablonban lévő kapcsolatok ugyanazt az Azure-erőforráscsoportot és -helyet használják, mint a logikai alkalmazás.
 
-A Azure Resource Manager-sablonokkal kapcsolatos további információkért tekintse meg a következő témaköröket:
+Az Azure Resource Manager-sablonokról az alábbi témakörökben olvashat bővebben:
 
-* [Azure Resource Manager sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md)
-* [Azure Resource Manager sablonok szerzője](../azure-resource-manager/templates/template-syntax.md)
+* [Az Azure Resource Manager sablonszerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md)
+* [Az Azure Resource Manager sablonjainak szerzője](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager-sablonok fejlesztése felhőkonzisztenciához](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
 <a name="visual-studio"></a>
 
-## <a name="create-templates-with-visual-studio"></a>Sablonok létrehozása a Visual Studióval
+## <a name="create-templates-with-visual-studio"></a>Sablonok létrehozása a Visual Studio segítségével
 
-A legegyszerűbben az üzembe helyezésre kész, a Visual Studio (ingyenes Community Edition vagy újabb verzió) és a Visual studióhoz készült Azure Logic Apps Tools segítségével hozhatja létre az érvényes paraméteres logikai alkalmazások sablonját. Ezután [létrehozhatja a logikai alkalmazást a Visual Studióban](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) , vagy [megkeresheti és letöltheti a Azure Portal meglévő logikai alkalmazást a Visual studióba](../logic-apps/manage-logic-apps-with-visual-studio.md).
+A legegyszerűbb módja annak, hogy érvényes paraméteres logikai alkalmazássablonokat hozzon létre, amelyek többnyire készen állnak a telepítésre, használja a Visual Studio (ingyenes közösségi kiadás vagy újabb) és az Azure Logic Apps Tools for Visual Studio. Ezután [létrehozhatja a logikai alkalmazást a Visual Studióban,](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) vagy [megkeresheti és letöltheti a meglévő logikai alkalmazást az Azure Portalról a Visual Studióba.](../logic-apps/manage-logic-apps-with-visual-studio.md)
 
-A logikai alkalmazás letöltésével olyan sablont kap, amely tartalmazza a logikai alkalmazás és más erőforrások, például a kapcsolatok definícióit. A sablon emellett *felparaméterezi*vagy paramétereket is definiál, a logikai alkalmazás és az egyéb erőforrások üzembe helyezéséhez használt értékeket. A paraméterek értékeit egy külön Parameters fájlban adhatja meg. Így könnyebben módosíthatja ezeket az értékeket a telepítési igények alapján. További információt az alábbi témakörökben talál:
+A logikai alkalmazás letöltésével kap egy sablont, amely tartalmazza a logikai alkalmazás és más erőforrások, például a kapcsolatok definícióit. A sablon *paraméterezi*a , vagy meghatározza a logikai alkalmazás és más erőforrások üzembe helyezéséhez használt értékek paraméterezi, vagy paramétereket határoz meg. Ezeknek a paramétereknek az értékeit külön paraméterfájlban adja meg. Így könnyebben módosíthatja ezeket az értékeket a központi telepítési igények alapján. További információt az alábbi témakörökben talál:
 
 * [Logikai alkalmazások létrehozása a Visual Studióval](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Logikai alkalmazások kezelése a Visual Studióval](../logic-apps/manage-logic-apps-with-visual-studio.md)
 
 <a name="azure-powershell"></a>
 
-## <a name="create-templates-with-azure-powershell"></a>Sablonok létrehozása Azure PowerShell
+## <a name="create-templates-with-azure-powershell"></a>Sablonok létrehozása az Azure PowerShell használatával
 
-A Resource Manager-sablonokat a [LogicAppTemplate modullal](https://github.com/jeffhollan/LogicAppTemplateCreator)Azure PowerShell használatával is létrehozhatja. Ez a nyílt forráskódú modul először kiértékeli a logikai alkalmazást és a logikai alkalmazás által használt kapcsolatokat. A modul ezután létrehozza a sablon erőforrásait az üzembe helyezéshez szükséges paraméterekkel.
+Erőforrás-kezelő sablonokat hozhat létre az Azure PowerShell használatával a [LogicAppTemplate modullal.](https://github.com/jeffhollan/LogicAppTemplateCreator) Ez a nyílt forráskódú modul először kiértékeli a logikai alkalmazást és a logikai alkalmazás által használt kapcsolatokat. A modul ezután sablonerőforrásokat hoz létre a telepítéshez szükséges paraméterekkel.
 
-Tegyük fel például, hogy van egy logikai alkalmazás, amely egy Azure Service Bus üzenetsor üzenetét fogadja, és feltölti az adatait egy Azure SQL Database-adatbázisba. A modul megőrzi az összes összehangoló logikát, és felparaméterezi az SQL és Service Bus kapcsolódási karakterláncokat, így a telepítési igények alapján megadhatja és módosíthatja ezeket az értékeket.
+Tegyük fel például, hogy rendelkezik egy logikai alkalmazás, amely üzenetet kap egy Azure Service Bus-várólistából, és adatokat tölt fel egy Azure SQL-adatbázisba. A modul megőrzi az összes vezénylési logikát, és paraméterezi az SQL és a Service Bus kapcsolati karakterláncokat, így a telepítési igények alapján biztosíthatja és módosíthatja ezeket az értékeket.
 
-Ezek a minták azt mutatják be, hogyan hozhat létre és helyezhet üzembe logikai alkalmazásokat Azure Resource Manager sablonok, Azure-folyamatok Azure DevOps és Azure PowerShell használatával:
+Ezek a minták bemutatják, hogyan hozhat létre és helyezhet üzembe logikai alkalmazásokat az Azure Resource Manager-sablonok, az Azure DevOps Azure DevOps-beli Azure-folyamatok és az Azure PowerShell használatával:
 
-* [Minta: Kapcsolódás Azure Service Bus várólistákhoz Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Minta: Kapcsolódás Azure Storage-fiókokhoz Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Minta: Function app-művelet beállítása Azure Logic Appshoz](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Minta: csatlakozás egy integrációs fiókhoz Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [Példa: Csatlakozás az Azure Service Bus várólistáihoz az Azure Logic Apps alkalmazásból](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Példa: Csatlakozás Azure Storage-fiókokhoz az Azure Logic Apps alkalmazásból](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Példa: Függvényalkalmazás-művelet beállítása az Azure Logic Apps alkalmazáshoz](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Minta: Csatlakozás integrációs fiókhoz az Azure Logic Apps alkalmazásból](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ### <a name="install-powershell-modules"></a>PowerShell-modulok telepítése
 
-1. Ha még nem tette meg, telepítse a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+1. Ha még nem tette meg, telepítse az [Azure PowerShellt.](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
-1. A LogicAppTemplate modul [PowerShell-galériaból](https://www.powershellgallery.com/packages/LogicAppTemplate)történő telepítésének legegyszerűbb módja a következő parancs futtatása:
+1. A LogicAppTemplate modul [PowerShell-galériából](https://www.powershellgallery.com/packages/LogicAppTemplate)történő telepítésének legegyszerűbb módja a következő parancs futtatásához:
 
    ```text
    PS> Install-Module -Name LogicAppTemplate
@@ -70,47 +70,47 @@ Ezek a minták azt mutatják be, hogyan hozhat létre és helyezhet üzembe logi
    PS> Update-Module -Name LogicAppTemplate
    ```
 
-A manuális telepítéshez kövesse a következő témakör lépéseit: GitHub for [Logic app template Creator](https://github.com/jeffhollan/LogicAppTemplateCreator).
+Manuális telepítéshez kövesse a GitHub for [Logic App Template Creator](https://github.com/jeffhollan/LogicAppTemplateCreator)című témakör lépéseit.
 
-### <a name="install-azure-resource-manager-client"></a>Azure Resource Manager-ügyfél telepítése
+### <a name="install-azure-resource-manager-client"></a>Az Azure Resource Manager-ügyfél telepítése
 
-Ahhoz, hogy a LogicAppTemplate modul bármilyen Azure-Bérlővel és előfizetési hozzáférési jogkivonattal működjön, telepítse az [Azure Resource Manager-ügyfél eszközt](https://github.com/projectkudu/ARMClient), amely egy egyszerű parancssori eszköz, amely meghívja a Azure Resource Manager API-t.
+A LogicAppTemplate modul bármely Azure-bérlői és előfizetés-hozzáférési jogkivonattal való együttműködésre telepítse az [Azure Resource Manager ügyféleszközt,](https://github.com/projectkudu/ARMClient)amely egy egyszerű parancssori eszköz, amely meghívja az Azure Resource Manager API-t.
 
-Ha ezzel az eszközzel futtatja a `Get-LogicAppTemplate` parancsot, a parancs először egy hozzáférési jogkivonatot kap a ARMClient eszközön keresztül, a tokent a PowerShell-parancsfájlba, majd a sablont JSON-fájlként hozza létre. Az eszközzel kapcsolatos további információkért tekintse meg ezt [a cikket a Azure Resource Manager-ügyfél eszközről](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html).
+Amikor ezzel `Get-LogicAppTemplate` az eszközzel futtatja a parancsot, a parancs először kap egy hozzáférési jogkivonatot az ARMClient eszközön keresztül, lecsövezi a jogkivonatot a PowerShell-parancsfájlba, és a sablont JSON-fájlként hozza létre. Az eszközről az Azure [Resource Manager ügyféleszközről szóló cikkben olvashat bővebben.](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)
 
-### <a name="generate-template-with-powershell"></a>Sablon készítése a PowerShell-lel
+### <a name="generate-template-with-powershell"></a>Sablon létrehozása a PowerShell használatával
 
-Futtassa ezt a PowerShell-parancsot a sablon létrehozásához a LogicAppTemplate modul és az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)telepítése után:
+A sablon létrehozásához a LogicAppTemplate modul és az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)telepítése után futtassa ezt a PowerShell-parancsot:
 
 ```text
 PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
 ```
 
-Ha követni szeretné a [Azure Resource Manager-ügyfél eszközén](https://github.com/projectkudu/ARMClient)található adatcsövekre vonatkozó javaslatot, futtassa ezt a parancsot ahelyett, hogy `$SubscriptionId` az Azure-előfizetés azonosítója:
+Az [Azure Resource Manager ügyféleszközből](https://github.com/projectkudu/ARMClient)származó jogkivonatban történő pipálásra vonatkozó javaslat követéséhez futtassa ezt a parancsot, hanem azt, hogy hol `$SubscriptionId` található az Azure-előfizetésazonosítója:
 
 ```text
 PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
 ```
 
-A kinyerés után a következő parancs futtatásával létrehozhat egy paramétereket tartalmazó fájlt a sablonból:
+A kivonás után a következő paranccsal hozhat létre paraméterfájlt a sablonból:
 
 ```text
 PS> Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
 ```
 
-Azure Key Vault hivatkozásokkal történő kinyeréshez (csak statikus) futtassa ezt a parancsot:
+Az Azure Key Vault-hivatkozásokkal való kinyeréshez (csak statikus) futtassa ezt a parancsot:
 
 ```text
 PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
-| Paraméterek | Szükséges | Leírás |
+| Paraméterek | Kötelező | Leírás |
 |------------|----------|-------------|
-| TemplateFile | Igen | A sablon fájljának elérési útja |
-| KeyVault | Nem | Egy felsorolás, amely leírja, hogyan kell kezelni a lehetséges kulcstároló-értékeket. A mező alapértelmezett értéke: `None`. |
+| Sablonfájl | Igen | A sablonfájl elérési útja |
+| KeyVault | Nem | Egy felsorítás, amely leírja, hogyan kell kezelni a lehetséges key vault értékeket. A mező alapértelmezett értéke: `None`. |
 ||||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Logic app-sablonok üzembe helyezése](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
+> [Logikaialkalmazás-sablonok üzembe helyezése](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)

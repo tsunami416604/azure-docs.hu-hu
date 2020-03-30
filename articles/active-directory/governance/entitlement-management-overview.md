@@ -1,9 +1,9 @@
 ---
-title: Mi az a jogosultságkezelés? – Azure AD
-description: Áttekintés a Azure Active Directory jogosultságok kezeléséről, valamint arról, hogy miként kezelheti a csoportokhoz, alkalmazásokhoz és SharePoint Online-webhelyekhez való hozzáférést a belső és külső felhasználók számára.
+title: Mi az a jogosultságkezelés? - Az Azure Hirdetés
+description: Áttekintést kaphat az Azure Active Directory jogosultságkezeléséről, és arról, hogyan kezelheti a csoportokhoz, alkalmazásokhoz és SharePoint Online-webhelyekhez való hozzáférést belső és külső felhasználók számára.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,156 +12,156 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/10/2020
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d1faf501aff8960a4b1961b34164be07b1d685d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 3deb87fec8241ad6126314f3f6ce5fb9600ad1fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79261761"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128562"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
-A Azure Active Directory (Azure AD) jogosultságok kezelése egy olyan [identitás-irányítási](identity-governance-overview.md) szolgáltatás, amely lehetővé teszi a szervezetek számára, hogy a hozzáférési kérelmek munkafolyamatainak automatizálásával, a hozzáférési hozzárendelésekkel, a felülvizsgálatokkal és a lejárattal együtt kezeljék az identitásokat és a hozzáférés életciklusát
+Az Azure Active Directory (Azure AD) jogosultságkezelési szolgáltatás egy [identitás-irányítási](identity-governance-overview.md) funkció, amely lehetővé teszi a szervezetek számára, hogy az identitásés a hozzáférési életciklus okán, a hozzáférés-kérelem munkafolyamatok automatizálásával, a hozzáférési hozzárendelések, az ellenőrzések és a lejárati rendszer rel.
 
-A szervezet alkalmazottainak a feladatuk elvégzéséhez különböző csoportokhoz, alkalmazásokhoz és webhelyekhez kell hozzáférnie. A hozzáférés kezelése kihívást jelent, mivel a követelmények változnak – új alkalmazások hozzáadása vagy a felhasználóknak további hozzáférési jogosultságok szükségesek.  Ez a forgatókönyv bonyolultabb lehet a külső szervezetekkel való együttműködés során – előfordulhat, hogy nem tudja, hogy a másik szervezetnél kik is hozzáférjenek a szervezet erőforrásaihoz, és nem tudják, hogy a szervezet által használt alkalmazások, csoportok vagy webhelyek milyen alkalmazásokat használnak.
+A szervezetek alkalmazottainak különböző csoportokhoz, alkalmazásokhoz és webhelyekhez kell hozzáférniük a munkájuk elvégzéséhez. A hozzáférés kezelése kihívást jelent, mivel a követelmények változnak – új alkalmazások at adnak hozzá, vagy a felhasználóknak további hozzáférési jogokra van szükségük.  Ez a forgatókönyv bonyolultabbá válik, ha külső szervezetekkel dolgozik együtt – előfordulhat, hogy nem tudja, hogy a másik szervezetben kinek van szüksége a szervezet erőforrásaihoz való hozzáférésre, és nem fogják tudni, hogy a szervezet milyen alkalmazásokat, csoportokat vagy webhelyeket használ.
 
-Az Azure AD-jogosultságok kezelésével hatékonyabban kezelheti a csoportokhoz, alkalmazásokhoz és SharePoint Online-webhelyekhez való hozzáférést a belső felhasználók számára, valamint a szervezeten kívüli felhasználók számára is, akiknek szükségük van az erőforrásokhoz való hozzáférésre.
+Az Azure AD jogosultságkezelés segítségével hatékonyabban kezelheti a csoportokhoz, alkalmazásokhoz és SharePoint Online-webhelyekhez való hozzáférést a belső felhasználók, valamint a szervezeten kívüli felhasználók számára, akiknek szükségük van ezekhez az erőforrásokhoz.
 
-## <a name="why-use-entitlement-management"></a>Miért érdemes használni a jogosultság-kezelést?
+## <a name="why-use-entitlement-management"></a>Miért érdemes a jogosultságkezelést használni?
 
-A nagyvállalati szervezetek gyakran szembesülnek kihívásokkal az alkalmazottaknak az erőforrásokhoz való hozzáférésének kezelésekor, például:
+A vállalati szervezetek gyakran szembesülnek kihívásokkal az alkalmazottak erőforrásokhoz való hozzáférésének kezelése során, például:
 
-- Előfordulhat, hogy a felhasználók nem tudják, hogy milyen hozzáférésre van szükségük, és még ha igen, nehéz lehet megtalálni a megfelelő személyeket a hozzáférésük jóváhagyására
-- Miután a felhasználók megkeresik és megkapják a hozzáférést egy erőforráshoz, előfordulhat, hogy a hozzáférésük hosszabb ideig tart, mint az üzleti célra szükséges
+- Előfordulhat, hogy a felhasználók nem tudják, milyen hozzáféréssel kell rendelkezniük, és még ha így is tesznek, nehézséget okozhat a megfelelő személyek felkutatása a hozzáférés jóváhagyásához
+- Amint a felhasználók megtalálják és megkapják az erőforráshoz való hozzáférést, az üzleti célokhoz szükségesnél hosszabb ideig tarthatnak a hozzáféréshez.
 
-Ezek a problémák olyan felhasználók számára készültek, akiknek más szervezettől, például az ellátási lánc szervezeteitől vagy más üzleti partnereinktől származó külső felhasználókhoz kell hozzáférni. Például:
+Ezek a problémák csak azok a felhasználók számára merülnek fel, akiknek más szervezettől kell hozzáférniük, például az ellátási láncszervezeteitől vagy más üzleti partnerektől származó külső felhasználók számára. Példa:
 
-- Előfordulhat, hogy egyetlen személy sem tudja, hogy a többi szervezet könyvtáraiban lévő összes adott személy meghívja őket
-- Még ha ezek a felhasználók is meghívhatják ezeket a felhasználókat, a szervezetben senki sem emlékszik arra, hogy az összes felhasználó hozzáférését következetesen kezelje
+- Senki sem ismerheti meg a szervezet könyvtárainak összes konkrét személyét, hogy meghívhatja őket
+- Még ha meg is tudták hívni ezeket a felhasználókat, a szervezetben senki sem emlékszik arra, hogy következetesen kezelje a felhasználó összes hozzáférését.
 
-Az Azure AD-jogosultságok kezelése segíthet a problémák megoldásában.  Ha többet szeretne megtudni arról, hogy az ügyfelek hogyan használják az Azure AD-jogosultságok kezelését, olvassa el a [Avanade-esettanulmányt](https://aka.ms/AvanadeELMCase) és a [központú esettanulmányt](https://aka.ms/CentricaELMCase).  Ez a videó áttekintést nyújt a jogosultságok kezeléséről és annak értékéről:
+Az Azure AD jogosultságkezelés segíthet kezelni ezeket a kihívásokat.  Ha többet szeretne megtudni arról, hogy az ügyfelek hogyan használják az Azure AD jogosultságkezelést, olvassa el az [Avanade esettanulmányát](https://aka.ms/AvanadeELMCase) és a [Centrica esettanulmányt.](https://aka.ms/CentricaELMCase)  Ez a videó áttekintést nyújt a jogosultságok kezeléséről és értékéről:
 
 >[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 
-## <a name="what-can-i-do-with-entitlement-management"></a>Mire használhatom a jogosultságok felügyeletét?
+## <a name="what-can-i-do-with-entitlement-management"></a>Mit tehetek a jogosultságkezeléssel?
 
-Íme néhány lehetőség a jogosultságok kezeléséhez:
+Íme néhány jogosultságkezelési képesség:
 
-- A nem rendszergazdák számára delegált hozzáférési csomagok létrehozásának lehetősége. Ezek a hozzáférési csomagok tartalmazzák azokat az erőforrásokat, amelyeket a felhasználók igényelhetnek, és a delegált hozzáférési csomag kezelői olyan szabályzatokat határoznak meg, amelyekkel a felhasználók igényelhetnek, és akiknek jóvá kell hagyniuk a hozzáférést, és amikor a hozzáférés lejár.
-- Válassza ki azokat a csatlakoztatott szervezeteket, amelyekhez a felhasználók igényelhetnek hozzáférést.  Ha egy olyan felhasználó, aki még nem szerepel a címtárban, a hozzáférését jóváhagyja, a rendszer automatikusan meghívja őket a címtárba, és hozzárendeli a hozzáférést.  Ha a hozzáférésük lejár, ha nincs más hozzáférési csomag-hozzárendelésük, a címtárban lévő B2B-fiókja automatikusan eltávolítható.
+- Nem rendszergazdáknak ruházhatja át a hozzáférési csomagok létrehozásának lehetőségét. Ezek a hozzáférési csomagok olyan erőforrásokat tartalmaznak, amelyeket a felhasználók kérhetnek, és a delegált hozzáférési csomagkezelők olyan szabályokat határozhatnak meg, amelyekhez a felhasználók kérhetik, akiknek jóvá kell hagyniuk a hozzáférésüket, és amikor a hozzáférés lejár.
+- Válassza ki azokat a csatlakoztatott szervezeteket, amelyek felhasználói hozzáférést kérhetnek.  Ha egy felhasználó, aki még nem szerepel a címtárban, hozzáférést kér, és jóváhagyásra kerül, a rendszer automatikusan meghívást kap a címtárba, és hozzáférést kap.  Ha a hozzáférésük lejár, ha nincs más hozzáférési csomag-hozzárendelésük, a címtárban lévő B2B-fiókjuk automatikusan eltávolítható.
 
-Az [első hozzáférési csomag létrehozásához](entitlement-management-access-package-first.md)megkezdheti az oktatóanyagot. Elolvashatja a [gyakori forgatókönyveket](entitlement-management-scenarios.md), vagy megtekintheti a videókat, beleértve a következőket is
+Az első hozzáférési csomag létrehozásához az első [hozzáférési csomag létrehozásához.](entitlement-management-access-package-first.md) Elolvashatja a [gyakori forgatókönyveket](entitlement-management-scenarios.md)is, vagy videókat nézhet, beleértve a
 
-- [Az Azure AD-jogosultságok felügyeletének üzembe helyezése a szervezetben](https://www.youtube.com/watch?v=zaaKvaaYwI4)
-- [Az Azure AD-jogosultságok felügyeletének monitorozása és méretezése](https://www.youtube.com/watch?v=omtNJ7ySjS0)
-- [Delegálás a jogosultságok kezelésében](https://www.youtube.com/watch?v=Fmp1eBxzrqw)
+- [Az Azure AD-jogosultságok kezelésének telepítése a szervezetben](https://www.youtube.com/watch?v=zaaKvaaYwI4)
+- [Az Azure AD-jogosultságok kezelésének figyelése és méretezése](https://www.youtube.com/watch?v=omtNJ7ySjS0)
+- [A jogosultságkezelés ben való delegálása](https://www.youtube.com/watch?v=Fmp1eBxzrqw)
 
 ## <a name="what-are-access-packages-and-what-resources-can-i-manage-with-them"></a>Mik azok a hozzáférési csomagok, és milyen erőforrásokat kezelhetek velük?
 
-A jogosultságok kezelése az Azure AD-be egy *hozzáférési csomag*fogalmát mutatja be. A hozzáférési csomag az összes olyan erőforrás kötegét képezi, amelynek hozzáférését a felhasználónak egy projekten kell dolgoznia, vagy a feladat elvégzéséhez. A hozzáférési csomagok a belső alkalmazottak és a szervezeten kívüli felhasználók hozzáférésének szabályozására szolgálnak.
+A jogosultságkezelés bemutatja az Azure AD-nek a *hozzáférési csomag*fogalmát. A hozzáférési csomag az összes erőforrás csomagja, amelyhez a felhasználónak szüksége van a projekten való munkához vagy a feladat végrehajtásához szükséges hozzáféréssel. A hozzáférési csomagok a belső alkalmazottak, valamint a szervezeten kívüli felhasználók hozzáférésének szabályozására szolgálnak.
 
- A felhasználók a jogosultsági felügyelethez való hozzáférését a következő típusú erőforrásokkal kezelheti:
+ A jogosultságkezeléssel az alábbiakban láthatja azokat az erőforrásokat, amelyekhez a felhasználók hozzáférését kezelheti:
 
-- Azure AD-beli biztonsági csoportok tagsága
-- Office 365-csoportok és-csapatok tagsága
-- Hozzárendelés az Azure AD vállalati alkalmazásokhoz, beleértve az SaaS-alkalmazásokat, valamint az összevonás/egyszeri bejelentkezést és/vagy üzembe helyezést támogató egyéni integrált alkalmazásokat
+- Az Azure AD biztonsági csoportjainak tagsága
+- Tagság az Office 365 Csoportok és csoportok tagságában
+- Hozzárendelés az Azure AD nagyvállalati alkalmazásokhoz, beleértve az SaaS-alkalmazásokat és az egyéni integrált alkalmazásokat, amelyek támogatják az összevonást/egyszeri bejelentkezést és/vagy kiépítést
 - SharePoint Online-webhelyek tagsága
 
-Az Azure AD biztonsági csoportjaira vagy az Office 365-csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Például:
+Az Azure AD biztonsági csoportjaitól vagy az Office 365-csoportoktól függő egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Példa:
 
-- A Microsoft Office 365-es verzióra vonatkozó licenccel rendelkező felhasználók számára engedélyezheti az Azure AD biztonsági csoportját egy hozzáférési csomagban, és konfigurálhatja az adott csoportra vonatkozó [csoport alapú licencelést](../users-groups-roles/licensing-groups-assign.md) .
-- Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD biztonsági csoport használatával és az adott csoport [Azure-beli szerepkör-hozzárendelésének](../../role-based-access-control/role-assignments-portal.md) létrehozásával
+- A Microsoft Office 365 felhasználói licenceket úgy adhat a felhasználóknak, hogy egy hozzáférési csomagban egy Azure AD biztonsági csoportot használ, és [csoportalapú licencelést](../users-groups-roles/licensing-groups-assign.md) konfigurál az adott csoporthoz.
+- Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban lévő Azure AD biztonsági csoport használatával, és létrehozhat egy [Azure-szerepkör-hozzárendelést](../../role-based-access-control/role-assignments-portal.md) az adott csoporthoz.
 
-## <a name="how-do-i-control-who-gets-access"></a>Hogyan a hozzáférés-vezérlést?
+## <a name="how-do-i-control-who-gets-access"></a>Hogyan szabályozhatom, hogy ki férhet hozzá?
 
-Egy hozzáférési csomaggal a rendszergazda vagy a delegált hozzáférés-kezelő csomag felsorolja az erőforrásokat (csoportokat, alkalmazásokat és helyeket), valamint azokat a szerepköröket, amelyekre a felhasználóknak szüksége van az adott erőforrásokhoz.
+Egy hozzáférési csomag esetén a rendszergazda vagy a delegált hozzáféréscsomag-kezelő felsorolja az erőforrásokat (csoportokat, alkalmazásokat és webhelyeket), valamint azokat a szerepköröket, amelyekre a felhasználóknak szükségük van ezekhez az erőforrásokhoz.
 
-A hozzáférési csomagok egy vagy több *szabályzatot*is tartalmaznak. A szabályzatok a hozzáférési csomaghoz való hozzárendelés szabályait vagy guardrails határozzák meg. Az egyes szabályzatok segítségével biztosítható, hogy csak a megfelelő felhasználók férhessenek hozzá a hozzáféréshez, hogy a kérelmük jóváhagyók legyenek, valamint hogy az erőforrásokhoz való hozzáférésük időkorlátos legyen, és ha nincs megújítva, lejár.
+Az Access csomagok egy vagy több *házirendet*is tartalmaznak. A házirend határozza meg a szabályokat vagy a korlátokat a csomaghoz való hozzárendeléshez. Minden házirend használható annak biztosítására, hogy csak a megfelelő felhasználók kérhetnek hozzáférést, hogy vannak jóváhagyók a kéréshez, és hogy az erőforrásokhoz való hozzáférésük időben korlátozott, és lejár, ha nem újítják meg.
 
-![Hozzáférési csomag és szabályzatok](./media/entitlement-management-overview/elm-overview-access-package.png)
+![Hozzáférési csomag és házirendek](./media/entitlement-management-overview/elm-overview-access-package.png)
 
-Az egyes házirendeken belül a rendszergazda vagy a hozzáférési csomag kezelője határozza meg
+A rendszergazda vagy a hozzáférés-csomagkezelő minden házirenden belül
 
-- Vagy a már meglévő felhasználók (jellemzően alkalmazottak vagy már meghívott vendégek) vagy a külső felhasználók partner szervezetei, amelyek jogosultak a hozzáférés kérésére
-- A jóváhagyási folyamat és a hozzáférést engedélyező vagy megtagadó felhasználók
-- A felhasználó hozzáférési hozzárendelésének időtartama a jóváhagyás után, a hozzárendelés lejárta előtt
+- Vagy a már meglévő felhasználók (jellemzően alkalmazottak vagy már meghívott vendégek), vagy a külső felhasználók partnerszervezetei, akik jogosultak a hozzáférés kérelmezésére
+- A jóváhagyási folyamat és a hozzáférést jóváhagyó vagy megtagadó felhasználók
+- A felhasználó hozzáférési hozzárendelésének időtartama a jóváhagyást követően, a hozzárendelés lejárta előtt
 
-Az alábbi ábrán egy példa látható a jogosultságok kezelésének különböző elemeire. Egy katalógust mutat be két példa hozzáférési csomaggal.
+Az alábbi ábra egy példát mutat be a jogosultságkezelés különböző elemeire. Ez azt mutatja, egy katalógus két példa hozzáférési csomagok.
 
-- Az **1. csomag elérési csomagja** egyetlen csoportot tartalmaz erőforrásként. A hozzáférés egy olyan házirenddel van meghatározva, amely lehetővé teszi, hogy a címtárban lévő felhasználók egy csoportja hozzáférjen a hozzáféréshez.
-- A **2-es hozzáférési csomag** egy csoportot, egy alkalmazást és egy SharePoint Online-webhelyet tartalmaz erőforrásként. A hozzáférés két különböző házirenddel van definiálva. Az első házirend lehetővé teszi, hogy a címtárban a felhasználók egy csoportja hozzáférjen a hozzáféréshez. A második házirend lehetővé teszi a külső címtárban lévő felhasználók számára a hozzáférés kérését.
+- **Az 1-es hozzáférési csomag** egyetlen csoportot tartalmaz erőforrásként. Az Access olyan házirenddel van definiálva, amely lehetővé teszi, hogy a címtárban lévő felhasználók egy része hozzáférést kérjen.
+- **A 2-es access csomag** egy csoportot, egy alkalmazást és egy SharePoint Online-webhelyet tartalmaz erőforrásként. Az Access két különböző házirenddel van definiálva. Az első házirend lehetővé teszi, hogy a címtárban lévő felhasználók egy készlete hozzáférést kérjen. A második házirend lehetővé teszi a külső címtárfelhasználói számára a hozzáférést.
 
-![A jogosultságok kezelésének áttekintése](./media/entitlement-management-overview/elm-overview.png)
+![Jogosultságkezelés – áttekintés](./media/entitlement-management-overview/elm-overview.png)
 
-## <a name="when-should-i-use-access-packages"></a>Mikor érdemes használni a hozzáférési csomagokat?
+## <a name="when-should-i-use-access-packages"></a>Mikor kell használni a hozzáférési csomagokat?
 
-A hozzáférési csomagok nem helyettesítik más mechanizmusokat a hozzáférési hozzárendeléshez.  Ezek a legmegfelelőbbek olyan helyzetekben, mint például a következők:
+A hozzáférési csomagok nem helyettesítik a hozzáférés-hozzárendelés más mechanizmusait.  Ezek a legmegfelelőbb helyzetekben, mint például a következő:
 
-- Az alkalmazottaknak időre korlátozott hozzáférésre van szükségük egy adott feladathoz.  Használhat például egy csoportos licencelést és egy dinamikus csoportot annak biztosítására, hogy az alkalmazottak rendelkezzenek Exchange Online-postaládával, majd a hozzáférési csomagok használatával olyan helyzetekben, amikor az alkalmazottaknak további hozzáférésre van szükségük, például a részleg erőforrásainak olvasására egy másikból részleg.
-- A hozzáférést egy alkalmazott felettesének vagy más kijelölt személynek kell jóváhagynia.
-- A részlegek saját hozzáférési szabályzatokat kívánnak kezelni az erőforrásaik bevonása nélkül.  
-- Két vagy több szervezet együttműködik egy projekttel, és ennek eredményeképpen az egyik szervezet több felhasználóját az Azure AD B2B-be kell vinni egy másik szervezet erőforrásaihoz való hozzáféréshez.
+- Az alkalmazottaknak korlátozott időre van szükségük egy adott feladathoz.  Használhat például csoportalapú licencelést és egy dinamikus csoportot annak biztosítására, hogy minden alkalmazott rendelkezik Exchange Online-postaládával, majd hozzáférési csomagokat használhat olyan helyzetekben, amikor az alkalmazottaknak további hozzáférésre van szükségük, például egy másik részleg erőforrásainak olvasásához. Osztály.
+- A hozzáférést az alkalmazott vezetőjének vagy más kijelölt személynek jóvá kell hagynia.
+- A részlegek informatikai közreműködés nélkül kívánják kezelni saját hozzáférési házirendjeiket az erőforrásaikhoz.  
+- Két vagy több szervezet dolgozik együtt egy projekten, és ennek eredményeképpen egy szervezet több felhasználóját kell behozni az Azure AD B2B-n keresztül egy másik szervezet erőforrásainak eléréséhez.
 
-## <a name="how-do-i-delegate-access"></a>Hogyan delegálja a hozzáférést?
+## <a name="how-do-i-delegate-access"></a>Hogyan delegálhatok hozzáférést?
 
- A hozzáférési csomagok a *katalógusok*nevű tárolókban vannak meghatározva.  Egyetlen katalógussal is rendelkezhet az összes hozzáférési csomaghoz, vagy kijelölhet egyéni személyeket saját katalógusok létrehozásához. A rendszergazdák bármilyen katalógusba hozzáadhatnak erőforrásokat, de a nem rendszergazdai jogosultsággal rendelkezők csak a saját erőforrásaikat használhatják katalógusba. A katalógus tulajdonosa más felhasználókat is hozzáadhat a katalógus-tulajdonosként, vagy a hozzáférési csomag kezelői.  Ezeket a forgatókönyveket az [Azure ad-jogosultságok felügyeletének delegálása és szerepkörei](entitlement-management-delegate.md)című cikk ismerteti.
+ Az access csomagok *katalógusok*nevű tárolókban vannak definiálva.  Az összes hozzáférési csomaghoz egyetlen katalógust is létrehozhat, vagy kijelölhet személyeket saját katalógusok létrehozására és saját tulajdonába. A rendszergazda erőforrásokat adhat bármely katalógushoz, de a nem rendszergazda csak a saját erőforrásait veheti fel a katalógusba. A katalógus tulajdonosa más felhasználókat is hozzáadhat katalógustárstulajdonosként vagy hozzáférés-csomagkezelőként.  Ezeket a forgatókönyveket a cikk [delegálása és szerepkörei ismertetik az Azure AD-jogosultságok kezelésében.](entitlement-management-delegate.md)
 
-## <a name="summary-of-terminology"></a>Terminológia összefoglalása
+## <a name="summary-of-terminology"></a>A terminológia összefoglalása
 
-A jogosultságok kezelésének és dokumentációjának jobb megismeréséhez tekintse át a következő feltételek listáját.
+A jogosultságkezelés és a dokumentáció jobb megértéséhez tekintse vissza a kifejezések alábbi listáját.
 
-| Időszak | Leírás |
+| Időtartam | Leírás |
 | --- | --- |
-| hozzáférési csomag | Egy csoport vagy projekt által igényelt erőforrás-csomag, amely szabályzatokkal van szabályozva. Egy hozzáférési csomag mindig szerepel a katalógusban. Hozzon létre egy új hozzáférési csomagot egy olyan forgatókönyvhöz, amelyben a felhasználóknak hozzáférést kell kérniük.  |
-| hozzáférési kérelem | Egy hozzáférési csomag erőforrásaihoz való hozzáférésre vonatkozó kérelem. A kérések általában egy jóváhagyási munkafolyamaton keresztül mennek keresztül.  Ha jóváhagyják, a kérelmező felhasználó hozzáférési csomagbeli hozzárendelést kap. |
-| hozzárendelés | Egy hozzáférési csomag felhasználónak való hozzárendelése biztosítja, hogy a felhasználó rendelkezik az adott hozzáférési csomag összes erőforrás-szerepkörével.  Az Access Package-hozzárendelések esetében általában időkorlát van a lejárat előtt. |
-| catalog | Kapcsolódó erőforrások és hozzáférési csomagok tárolója.  A rendszer katalógusokat használ a delegáláshoz, így a nem rendszergazdák létrehozhatják saját hozzáférési csomagjaikat. A katalógus tulajdonosai erőforrásokat adhatnak hozzá a katalógushoz. |
-| Katalógus létrehozója | Olyan felhasználók gyűjteménye, akik jogosultak új katalógusok létrehozására.  Ha egy olyan nem rendszergazda felhasználó, aki jogosult katalógus létrehozására, új katalógust hoz létre, automatikusan a katalógus tulajdonosa lesz. |
-| csatlakoztatott szervezet | Egy külső Azure AD-címtár vagy-tartomány, amelyhez kapcsolata van. Egy csatlakoztatott szervezet felhasználóit megadhatja egy szabályzatban, mivel a hozzáférés kérése engedélyezett. |
-| szabályzat | Olyan szabályok összessége, amelyek meghatározzák a hozzáférési életciklust, például azt, hogy a felhasználók hogyan férhetnek hozzá, ki hagyhatják jóvá, és hogy mennyi ideig férhetnek hozzá a felhasználók a hozzárendeléseken keresztül. Egy házirend egy hozzáférési csomaghoz van csatolva. Egy hozzáférési csomag például rendelkezhet két házirenddel – az egyik az alkalmazottak számára, hogy hozzáférést igényeljen, és egy másikat a külső felhasználók számára a hozzáférés kéréséhez. |
-| resource | Egy eszköz, például egy Office-csoport, egy biztonsági csoport, egy alkalmazás vagy egy SharePoint Online-webhely, egy olyan szerepkörrel, amellyel a felhasználók engedélyt kaphatnak. |
-| erőforrás könyvtára | Egy vagy több megosztani kívánt erőforrással rendelkező könyvtár. |
-| erőforrás-szerepkör | Egy erőforrás által társított és meghatározott engedélyek gyűjteménye. Egy csoportnak két szerepköre van – a tag és a tulajdonos. A SharePoint-webhelyek általában 3 szerepkörrel rendelkeznek, de lehetnek további egyéni szerepkörök. Az alkalmazásokhoz egyéni szerepkörök tartozhatnak. |
+| hozzáférési csomag | Egy csapatnak vagy projektnek szüksége van egy erőforrás-kötegre, amelyet házirendek szabályoznak. A hozzáférési csomag mindig katalógusban található. Hozzon létre egy új hozzáférési csomagot egy olyan forgatókönyvhöz, amelyben a felhasználóknak hozzáférést kell kérni.  |
+| hozzáférési kérelem | Hozzáférési csomag erőforrásainak elérésére irányuló kérelem. A kérelem általában jóváhagyási munkafolyamaton megy keresztül.  Ha jóváhagyják, a kérelmező felhasználó hozzáférési csomag-hozzárendelést kap. |
+| Hozzárendelés | Egy hozzáférési csomag felhasználóhoz rendelése biztosítja, hogy a felhasználó rendelkezik a hozzáférési csomag összes erőforrásszerepkörével.  Az Access csomag-hozzárendelések általában rendelkeznek időkorláttal a lejáratuk előtt. |
+| Katalógus | Kapcsolódó erőforrások és hozzáférési csomagok tárolója.  A katalógusok delegálásra szolgálnak, így a nem rendszergazdák létrehozhatják saját hozzáférési csomagjaikat. A katalógustulajdonosok hozzáadhatják a tulajdonukban álló erőforrásokat a katalógushoz. |
+| katalógus létrehozója | Új katalógusok létrehozására jogosult felhasználók gyűjteménye.  Amikor egy katalóguslétrehozóként jogosult nem rendszergazdai felhasználó új katalógust hoz létre, automatikusan a katalógus tulajdonosává válik. |
+| összekapcsolt szervezet | Egy külső Azure AD-címtár vagy tartomány, amely kapcsolatban áll. A csatlakoztatott szervezet felhasználói megadhatók egy házirendben, hogy hozzáférést kérhetnek. |
+| szabályzat | A hozzáférési életciklust meghatározó szabálykészlet, például az, hogy a felhasználók hogyan férhetnek hozzá, ki hagyhatja jóvá, és mennyi ideig férhetnek hozzá a felhasználók egy hozzárendelésen keresztül. A házirend egy hozzáférési csomaghoz van csatolva. Egy hozzáférési csomag például két házirendet használhat: az egyik az alkalmazottak számára hozzáférést kérhet, a másik pedig a külső felhasználók számára a hozzáférést. |
+| Erőforrás | Olyan eszköz, például office-csoport, biztonsági csoport, alkalmazás vagy SharePoint Online-webhely, amelynek szerepköre a felhasználószámára engedélyeket kaphat. |
+| erőforráskönyvtár | Egy vagy több megosztásra képes erőforrással rendelkező könyvtár. |
+| erőforrás szerepkör | Egy erőforráshoz társított és definiált engedélyek gyűjteménye. Egy csoportnak két szerepköre van : tag és tulajdonos. A SharePoint-webhelyek általában 3 szerepkörrel rendelkeznek, de további egyéni szerepköröket is tartalmazhatnak. Az alkalmazások egyéni szerepköröket is használhatnak. |
 
 
 ## <a name="license-requirements"></a>Licenckövetelmények
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-A speciális felhők, például a Azure Government, az Azure Germany és az Azure China 21Vianet jelenleg nem használhatók.
+Speciális felhők, például az Azure Government, az Azure Germany és az Azure China 21Vianet jelenleg nem érhetők el.
 
-### <a name="how-many-licenses-must-you-have"></a>Hány licencre van szükség?
+### <a name="how-many-licenses-must-you-have"></a>Hány licenccel kell rendelkeznie?
 
-Győződjön meg arról, hogy a címtár legalább annyi prémium szintű Azure AD P2-licenccel rendelkezik, mint a következő feladatokat végző alkalmazottakkal:
+Győződjön meg arról, hogy a címtár legalább annyi Azure AD Premium P2 licenccel rendelkezik, mint ahány alkalmazottal rendelkezik, akik a következő feladatokat fogják ellátni:
 
-- Azok a felhasználók **, akik hozzáférési csomagot igényelhetnek** .
-- Egy hozzáférési csomagot kérő tag és vendég felhasználók.
-- Egy hozzáférési csomagra vonatkozó kérelmeket jóváhagyó tagok és vendég felhasználók.
+- Azok a tagfelhasználók, akik hozzáférési csomagot **kérhetnek.**
+- Hozzáférési csomagot kérő tag- és vendégfelhasználók.
+- A hozzáférési csomagra vonatkozó kérelmeket jóváhagyó tag- és vendégfelhasználók.
 
-Prémium szintű Azure AD P2-licencek **nem** szükségesek a következő feladatokhoz:
+Az Azure AD Premium P2 licencek **nem** szükségesek a következő feladatokhoz:
 
-- A globális rendszergazdai szerepkörrel rendelkező felhasználók számára nem szükséges licencek a kezdeti katalógusok, a hozzáférési csomagok és a házirendek beállítására, valamint a felügyeleti feladatok más felhasználóknak való delegálására.
-- Nem szükségesek licencek olyan felhasználók számára, akik delegáltak felügyeleti feladatokat, például a katalógus létrehozóját, a katalógus tulajdonosát és a hozzáférés csomagkezelő kezelőjét.
-- Nincs szükség licencre azon vendégek számára **, akik hozzáférési csomagokat igényelhetnek** , de **nem** igényelnek hozzáférési csomagot.
+- Nincs szükség licencre a globális rendszergazdai szerepkörrel rendelkező felhasználók számára, akik beállítják a kezdeti katalógusokat, a hozzáférési csomagokat és a házirendeket, és felügyeleti feladatokat delegálnak más felhasználóknak.
+- Nincs szükség licencre olyan felhasználók számára, akik delegáltak felügyeleti feladatokat, például a katalógus létrehozóját, a katalógus tulajdonosát és a hozzáférés-csomagkezelőt.
+- Azoknak a vendégeknek, akik hozzáférést **kérhetnek,** nem kérnek licencet, de **nem** kérnek hozzáférési csomagot.
 
-Az Azure AD B2B szolgáltatással legfeljebb 5 vendéget hívhat meg, ha minden fizetős prémium szintű Azure AD P2-licenccel rendelkezik, amelyet a felhasználó (alkalmazottai) számára vásárolt. Ezek a vendég felhasználók prémium szintű Azure AD P2 funkciókat is használhatják. További információ: [Azure ad B2B együttműködés licencelési útmutatója](../b2b/licensing-guidance.md).
+A tagfelhasználók (alkalmazottak) számára vásárolt minden egyes fizetett Azure AD Premium P2 licenchez az Azure AD B2B segítségével legfeljebb 5 vendégfelhasználót hívhat meg. Ezek a vendégfelhasználók azure AD Premium P2 funkciókat is használhatnak. További információ: [Azure AD B2B együttműködési licencelési útmutató.](../b2b/licensing-guidance.md)
 
-További információ a licencekről: [licencek kiosztása vagy eltávolítása a Azure Active Directory portál használatával](../fundamentals/license-users-groups.md).
+A licencekről további információt [a Licencek hozzárendelése vagy eltávolítása az Azure Active Directory portálon című témakörben talál.](../fundamentals/license-users-groups.md)
 
-### <a name="example-license-scenarios"></a>Példa licencelési forgatókönyvekre
+### <a name="example-license-scenarios"></a>Példa licencforgatókönyvekre
 
-Íme néhány példa a licencekre, amelyek segítségével meghatározhatja a szükséges licencek számát.
+Íme néhány példa licencforgatókönyv, amely segít meghatározni a licencek számát.
 
 | Forgatókönyv | Számítás | Licencek száma |
 | --- | --- | --- |
-| A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. 150 az alkalmazottak a hozzáférési csomagokat kérik. | 2 000 **olyan** alkalmazottak, akik igényelhetik a hozzáférési csomagokat | 2,000 |
-| A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. Egy másik házirend azt határozza meg, hogy a partner contoso (vendég) **felhasználóinak** néhány felhasználója a jóváhagyás alá eső hozzáférési csomagokat is kérheti. A contoso 30 000 felhasználóval rendelkezik. 150 az alkalmazottak a contoso-kérések hozzáférési csomagjait és 10 500 felhasználóit kérik. | 2 000 Employees + 500 vendég a Contosotól, amely meghaladja a 1:5 arányt (10 500-(2 000 * 5)) | 2,500 |
+| A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és felügyeleti feladatokat delegál hat másik felhasználónak. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2000 alkalmazott) hozzáférési csomagok egy adott készletét kérheti. 150 alkalmazott kéri a hozzáférési csomagokat. | 2000 alkalmazott, akik **kérhetik** a hozzáférési csomagokat | 2000 |
+| A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és felügyeleti feladatokat delegál hat másik felhasználónak. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2000 alkalmazott) hozzáférési csomagok egy adott készletét kérheti. Egy másik szabályzat azt határozza meg, hogy a **Contoso partner (vendégek) felhasználók egyes** felhasználói ugyanazokat a hozzáférési csomagokat kérhetik jóváhagyáshoz. A Contoso 30 000 felhasználóval rendelkezik. 150 alkalmazott kéri a hozzáférési csomagokat, és 10 500 felhasználó a Contoso-tól hozzáférést kér. | 2000 alkalmazott + 500 vendégfelhasználó a Contoso-tól, akik meghaladják az 1:5 arányt (10 500 - (2000 * 5)) | 2500 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: az első hozzáférési csomag létrehozása](entitlement-management-access-package-first.md)
+- [Oktatóanyag: Az első hozzáférési csomag létrehozása](entitlement-management-access-package-first.md)
 - [Gyakori forgatókönyvek](entitlement-management-scenarios.md)

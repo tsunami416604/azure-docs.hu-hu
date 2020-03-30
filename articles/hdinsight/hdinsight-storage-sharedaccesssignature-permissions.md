@@ -1,6 +1,6 @@
 ---
-title: Hozzáférés korlátozása közös hozzáférési aláírások használatával – Azure HDInsight
-description: Megtudhatja, hogyan használhatja a közös hozzáférési aláírásokat az Azure Storage-blobokban tárolt HDInsight való hozzáférés korlátozására.
+title: Hozzáférés korlátozása megosztott hozzáférésű aláírások használatával – Azure HDInsight
+description: Megtudhatja, hogy miként korlátozhatja a HDInsight-hozzáférést az Azure storage-blobokban tárolt adatokhoz a megosztott hozzáférés-hozzáférés használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,81 +8,81 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 725bdfd4efe3be600c993e568f1a5c7edccc6952
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 1a4ae0701174278203023c156a86aad8feb1ca4c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74148223"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240622"
 ---
-# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Az Azure Storage közös hozzáférésű aláírásainak használata a HDInsight tárolt adathozzáférések korlátozására
+# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Az Azure Storage közös hozzáférésű jogosultságkódok használata az adathozzáférés korlátozásához a HDInsightban
 
-A HDInsight teljes hozzáféréssel rendelkezik a fürthöz társított Azure Storage-fiókokban lévő összes adathoz. A blob-tárolón a közös hozzáférési aláírások használatával korlátozhatja az adathozzáférést. A közös hozzáférésű aláírások (SAS) az Azure Storage-fiókok egyik funkciója, amely lehetővé teszi az adathozzáférés korlátozását. Például csak olvasási hozzáférést biztosít az adateléréshez.
+A HDInsight teljes hozzáféréssel rendelkezik a fürthöz társított Azure Storage-fiókok adataihoz. A blob tárolómegosztott hozzáférésű aláírások használatával korlátozhatja az adatokhoz való hozzáférést. A megosztott hozzáférésű aláírások (SAS) az Azure storage-fiókok olyan szolgáltatása, amely lehetővé teszi az adatokhoz való hozzáférés korlátozását. Például írásvédett hozzáférés biztosítása az adatokhoz.
 
 > [!IMPORTANT]  
-> Az Apache Rangert használó megoldások esetében érdemes lehet tartományhoz csatlakoztatott HDInsight használni. További információ: [tartományhoz csatlakoztatott HDInsight](./domain-joined/apache-domain-joined-configure.md) -dokumentum konfigurálása.
+> Az Apache Ranger t használó megoldások esetén fontolja meg a tartományhoz csatlakozott HDInsight használatát. További információt a [Tartományhoz csatlakozott HDInsight-dokumentum konfigurálása](./domain-joined/apache-domain-joined-configure.md) című dokumentumban talál.
 
 > [!WARNING]  
-> A HDInsight teljes hozzáféréssel kell rendelkeznie a fürt alapértelmezett tárolóhoz.
+> A HDInsight nak teljes hozzáféréssel kell rendelkeznie a fürt alapértelmezett tárolójához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés.
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](./hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információ: [Csatlakozás a HDInsighthoz (Apache Hadoop) az SSH használatával.](./hdinsight-hadoop-linux-use-ssh-unix.md)
 
-* Egy meglévő [Storage-tároló](../storage/blobs/storage-quickstart-blobs-portal.md).  
+* Meglévő [tárolótároló](../storage/blobs/storage-quickstart-blobs-portal.md).  
 
-* Ha a PowerShellt használja, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/overview).
+* A PowerShell használata esetén szüksége lesz az [Az modulra.](https://docs.microsoft.com/powershell/azure/overview)
 
-* Ha az Azure CLI-t szeretné használni, és még nem telepítette, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+* Ha használni szeretné az Azure CLI-t, és még nem telepítette, olvassa el [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli)című témakört.
 
-* [Python](https://www.python.org/downloads/), 2,7 vagy újabb verzió használata esetén.
+* [Python](https://www.python.org/downloads/)használata esetén a 2.7-es vagy újabb verzió.
 
-* A használata C#esetén a Visual Studio 2013-es vagy újabb verziójának kell lennie.
+* Ha C#-ot használ, a Visual Studio-nak 2013-as vagy újabb verziónak kell lennie.
 
-* A Storage-fiók [URI-sémája](./hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez `wasb://` az Azure Storage-hoz, `abfs://` Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1 számára. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI `wasbs://`lesz. Lásd még: [biztonságos átvitel](../storage/common/storage-require-secure-transfer.md).
+* A tárfiók [URI-séma.](./hdinsight-hadoop-linux-information.md#URI-and-scheme) Ez az `wasb://` Azure Storage, `abfs://` az Azure Data `adl://` Lake Storage Gen2 vagy az Azure Data Lake Storage Gen1 esetében lesz. Ha a biztonságos átvitel engedélyezve van `wasbs://`az Azure Storage számára, az URI lesz. Lásd még: [biztonságos átvitel](../storage/common/storage-require-secure-transfer.md).
 
-* Egy meglévő HDInsight-fürt megosztott hozzáférési aláírás hozzáadásához a következőhöz:. Ha nem, akkor a Azure PowerShell használatával létrehozhat egy fürtöt, és hozzáadhat egy közös hozzáférési aláírást a fürt létrehozása során.
+* Meglévő HDInsight-fürt, amelyhez megosztott hozzáférésű aláírást szeretne hozzáadni. Ha nem, az Azure PowerShell segítségével hozhat létre egy fürtöt, és hozzáadhat egy megosztott hozzáférésű aláírást a fürt létrehozása során.
 
-* A példában szereplő fájlok [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). Ez a tárház a következő elemeket tartalmazza:
+* A példa [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature)fájlokat . Ez a tárház a következő elemeket tartalmazza:
 
-  * Egy Visual Studio-projekt, amely létrehoz egy Storage-tárolót, tárolt házirendet és SAS-t a HDInsight-mel való használatra
-  * Egy Python-szkript, amely létrehoz egy Storage-tárolót, tárolt házirendet és SAS-t a HDInsight-hez való használatra
-  * Egy PowerShell-parancsfájl, amely létrehozhat egy HDInsight-fürtöt, és konfigurálhatja az SAS használatára. A frissített verziók alább láthatók.
-  * Egy minta fájl: `hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
+  * Visual Studio-projekt, amely tárolótárolót, tárolt házirendet és SAS-t hozhat létre a HDInsight használatához
+  * Python-parancsfájl, amely tárolót, tárolt szabályzatot és SAS-t hozhat létre a HDInsight használatához
+  * Egy PowerShell-parancsfájl, amely hdinsight-fürtöt hozhat létre, és konfigurálhatja a SAS használatára. A frissített verziót az alábbiakban használjuk.
+  * Mintafájl:`hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
 
 ## <a name="shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok
 
-A közös hozzáférésű aláírások két formája létezik:
+A közös hozzáférésű aláírásoknak két formája van:
 
-* Ad hoc: az SAS URI-ja a kezdési időt, a lejárati időt és a SAS-engedélyeket is megadja.
+* Ad hoc: A SAS kezdési ideje, lejárati ideje és engedélyei mind meg vannak adva a SAS URI-n.
 
-* Tárolt hozzáférési szabályzat: egy tárolt hozzáférési házirend van definiálva egy erőforrás-tárolón, például egy blob-tárolón. Egy házirend használható egy vagy több megosztott hozzáférési aláírás korlátozásának kezelésére. Ha a SAS-t egy tárolt hozzáférési házirenddel társítja, az SAS örökli a megkötéseket – a kezdési időt, a lejárati időt és az engedélyeket a tárolt hozzáférési házirendhez.
+* Tárolt hozzáférési szabályzat: A tárolt hozzáférési szabályzat egy erőforrás-tárolón, például egy blob-tárolón van definiálva. Egy házirend egy vagy több megosztott hozzáférési aláírás megkötéseinek kezelésére használható. Amikor egy SAS-t társít egy tárolt hozzáférési szabályzathoz, a SAS örökli a tárolt hozzáférési szabályzathoz meghatározott megkötéseket – a kezdési időt, a lejárati időt és az engedélyeket.
 
-A két űrlap közötti különbség fontos az egyik kulcsfontosságú forgatókönyv esetén: visszavonás. Az SAS egy URL-cím, így bárki, aki beolvassa az SAS-t, használhatja azt, függetlenül attól, hogy ki kérte a kezdését. Ha egy SAS közzé van téve nyilvánosan, a világ bármely tagja használhatja. Egy elosztott SAS-alkalmazás a négy dolog egyike esetén érvényes:
+A két űrlap közötti különbség egy kulcsfontosságú forgatókönyv esetében fontos: visszavonás. A SAS egy URL-cím, így bárki, aki beszerzi a SAS-t, használhatja, függetlenül attól, hogy ki kérte. Ha egy SAS-t nyilvánosan közzétesznek, azt a világon bárki használhatja. A kiosztott SAS addig érvényes, amíg a négy dolog valamelyike meg nem történik:
 
-1. A rendszer elérte az SAS-ben megadott lejárati időt.
+1. A SAS-ban megadott lejárati idő elérése.
 
-2. A rendszer elérte az SAS által hivatkozott tárolt hozzáférési házirendben megadott lejárati időt. A lejárati időt a következő esetekben lehet elérni:
+2. A SAS által hivatkozott tárolt hozzáférési házirendben megadott lejárati idő elérése. A következő esetekben a lejárati idő elérése érdekében:
 
-    * Az időtartam eltelt.
-    * A tárolt hozzáférési szabályzat úgy módosul, hogy a múltban lejárjon a lejárati idő. A lejárati idő módosítása az SAS visszavonásának egyik módja.
+    * Az időintervallum eltelt.
+    * A tárolt hozzáférési szabályzat úgy módosul, hogy a múltban lejárati idő legyen. A lejárati idő módosítása az egyik módja a SAS visszavonásának.
 
-3. A SAS által hivatkozott tárolt hozzáférési szabályzat törölve lett, ami egy másik módszer az SAS visszavonására. Ha a tárolt hozzáférési szabályzatot ugyanazzal a névvel hozza létre, az előző szabályzathoz tartozó SAS-jogkivonatok érvényesek (ha az SAS lejárati ideje nem lett átadva). Ha vissza kívánja vonni az SAS-t, ne felejtsen el másik nevet használni, ha később újra létrehozza a hozzáférési szabályzatot.
+3. A SAS által hivatkozott tárolt hozzáférési szabályzat törlődik, ami egy másik módja a SAS visszavonásának. Ha újra létrehozza a tárolt hozzáférési szabályzatot ugyanazzal a névvel, az előző szabályzat összes SAS-jogkivonata érvényes (ha a SAS lejárati ideje még nem telt el). Ha vissza kívánja vonni a SAS-t, ügyeljen arra, hogy más nevet használjon, ha a hozzáférési szabályzatot a jövőben lejárati idővel hozza létre újra.
 
-4. Az SAS létrehozásához használt fiók kulcsa újra lett létrehozva. A kulcs újragenerálása azt eredményezi, hogy az előző kulcsot használó alkalmazások nem tudják hitelesíteni a hitelesítést. Frissítse az összes összetevőt az új kulcsra.
+4. A SAS létrehozásához használt fiókkulcs újragenerálódik. A kulcs újragenerálása miatt az előző kulcsot használó összes alkalmazás hitelesítése sikertelen lesz. Frissítse az összes összetevőt az új kulcsra.
 
 > [!IMPORTANT]  
-> A közös hozzáférésű aláírás URI-ja társítva van az aláírás létrehozásához használt fiók kulcsával és a hozzá tartozó tárolt hozzáférési szabályzattal (ha van ilyen). Ha nincs megadva tárolt hozzáférési házirend, a közös hozzáférésű aláírás visszavonásának egyetlen módja a fiók kulcsának módosítása.
+> A megosztott hozzáférés-aláírás URI van társítva a fiókkulcs létrehozásához használt aláírás, és a kapcsolódó tárolt hozzáférési szabályzat (ha van ilyen). Ha nincs megadva tárolt hozzáférési házirend, a megosztott hozzáférésű aláírás visszavonásának egyetlen módja a fiókkulcs módosítása.
 
-Javasoljuk, hogy mindig használjon tárolt hozzáférési házirendeket. Tárolt házirendek használatakor visszavonhatja az aláírásokat, vagy igény szerint kiterjesztheti a lejárati dátumot. A jelen dokumentumban szereplő lépések a tárolt hozzáférési szabályzatokat használják a SAS létrehozásához.
+Azt javasoljuk, hogy mindig a tárolt hozzáférési szabályzatokat használja. Tárolt házirendek használata esetén visszavonhatja az aláírásokat, vagy szükség szerint meghosszabbíthatja a lejárati dátumot. A jelen dokumentum lépései tárolt hozzáférési házirendek használatával generálják a SAS-t.
 
-A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd [az SAS-modell megismerése](../storage/common/storage-dotnet-shared-access-signature-part-1.md)című témakört.
+A megosztott hozzáférésű aláírásokról a [SAS-modell ismertetése című](../storage/common/storage-dotnet-shared-access-signature-part-1.md)témakörben talál további információt.
 
-## <a name="create-a-stored-policy-and-sas"></a>Tárolt szabályzat és SAS létrehozása
+## <a name="create-a-stored-policy-and-sas"></a>Tárolt házirend és SAS létrehozása
 
-Mentse az egyes módszerek végén létrehozott SAS-jogkivonatot. A jogkivonat a következőhöz hasonlóan fog kinézni:
+Mentse az egyes módszerek végén előállított SAS-jogkivonatot. A token a következőhöz hasonlóan fog kinézni:
 
 ```output
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
@@ -90,9 +90,9 @@ Mentse az egyes módszerek végén létrehozott SAS-jogkivonatot. A jogkivonat a
 
 ### <a name="using-powershell"></a>A PowerShell használata
 
-Cserélje le a `RESOURCEGROUP`, `STORAGEACCOUNT`és `STORAGECONTAINER` értéket a meglévő tároló megfelelő értékeivel. Módosítsa a könyvtárat úgy, hogy `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` vagy módosítsa a `-File` paramétert, hogy tartalmazza a `Set-AzStorageblobcontent`abszolút elérési útját. Adja meg a következő PowerShell-parancsot:
+Cserélje `RESOURCEGROUP` `STORAGEACCOUNT`le `STORAGECONTAINER` a , és a meglévő tárolótárolómegfelelő értékeivel. Módosítsa a `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` könyvtárat `-File` a paraméterre, `Set-AzStorageblobcontent`vagy módosítsa azt, hogy az tartalmazza a abszolút elérési útját. Írja be a következő PowerShell-parancsot:
 
-```PowerShell
+```powershell
 $resourceGroupName = "RESOURCEGROUP"
 $storageAccountName = "STORAGEACCOUNT"
 $containerName = "STORAGECONTAINER"
@@ -154,9 +154,9 @@ Set-AzStorageblobcontent `
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
-Az ebben a szakaszban szereplő változók használata egy Windows-környezetben alapul. A bash vagy más környezetek esetében kisebb eltérésekre lesz szükség.
+A változók ebben a szakaszban a Windows-környezeten alapul. Kisebb eltérések lesz szükség a bash vagy más környezetben.
 
-1. Cserélje le a `STORAGEACCOUNT`t, és `STORAGECONTAINER` a meglévő Storage-tároló megfelelő értékeivel.
+1. Cserélje `STORAGEACCOUNT`le `STORAGECONTAINER` a megfelelő értékeket a meglévő tárolótárolóhoz.
 
     ```azurecli
     # set variables
@@ -173,14 +173,14 @@ Az ebben a szakaszban szereplő változók használata egy Windows-környezetben
     az storage account keys list --account-name %AZURE_STORAGE_ACCOUNT% --query "[0].{PrimaryKey:value}" --output table
     ```
 
-2. A beolvasott elsődleges kulcs beállítása egy változóra későbbi használatra. Cserélje le a `PRIMARYKEY`t az előző lépésben lekért értékre, majd írja be az alábbi parancsot:
+2. Állítsa a beolvasott elsődleges kulcsot egy változóra későbbi használatra. Cserélje `PRIMARYKEY` le az előző lépésben beolvasott értékre, majd írja be az alábbi parancsot:
 
-    ```azurecli
+    ```console
     #set variable for primary key
     set AZURE_STORAGE_KEY=PRIMARYKEY
     ```
 
-3. Módosítsa a könyvtárat úgy, hogy `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` vagy módosítsa a `--file` paramétert, hogy tartalmazza a `az storage blob upload`abszolút elérési útját. Hajtsa végre a többi parancsot:
+3. Módosítsa a `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` könyvtárat `--file` a paraméterre, `az storage blob upload`vagy módosítsa azt, hogy az tartalmazza a abszolút elérési útját. A fennmaradó parancsok végrehajtása:
 
     ```azurecli
     # Create stored access policy on the containing object
@@ -201,37 +201,37 @@ Az ebben a szakaszban szereplő változók használata egy Windows-környezetben
 
 ### <a name="using-python"></a>A Python használata
 
-Nyissa meg a `SASToken.py` fájlt, és cserélje le a `storage_account_name`, `storage_account_key`és `storage_container_name` értéket a meglévő tároló megfelelő értékeire, majd futtassa a parancsfájlt.
+Nyissa `SASToken.py` meg a `storage_account_name` `storage_account_key`fájlt, `storage_container_name` és cserélje le a , és a megfelelő értékeket a meglévő tároló, majd futtassa a parancsfájlt.
 
-Előfordulhat, hogy végre kell hajtania `pip install --upgrade azure-storage`, ha `ImportError: No module named azure.storage`hibaüzenetet kap.
+Előfordulhat, hogy `pip install --upgrade azure-storage` végre kell hajtania, ha megjelenik a hibaüzenet. `ImportError: No module named azure.storage`
 
 ### <a name="using-c"></a>A C# használata
 
 1. Nyissa meg a megoldást a Visual Studióban.
 
-2. Megoldáskezelő kattintson a jobb gombbal a **SASExample** projektre, és válassza a **Tulajdonságok**lehetőséget.
+2. A Megoldáskezelőben kattintson a jobb gombbal a **SASExample** projektre, és válassza a **Tulajdonságok parancsot.**
 
-3. Válassza a **Beállítások** lehetőséget, és adjon hozzá értékeket a következő bejegyzésekhez:
+3. Válassza a **Beállítások** lehetőséget, és adja hozzá az értékeket a következő bejegyzésekhez:
 
-   * StorageConnectionString: a Storage-fiókhoz tartozó, tárolt házirendet és SAS-t létrehozni kívánó kapcsolódási karakterlánc. A formátumnak `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` kell lennie, ahol a `myaccount` a Storage-fiók neve, a `mykey` pedig a Storage-fiók kulcsa.
+   * StorageConnectionString: A tárolófiók kapcsolati karakterlánca, amelyhez tárolt szabályzatot és SAS-t szeretne létrehozni. A formátumnak `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` `myaccount` ott kell lennie, ahol `mykey` a tárfiók neve, és a tárfiók kulcsa.
 
-   * ContainerName: a Storage-fiók azon tárolója, amelyhez korlátozni kívánja a hozzáférést.
+   * ContainerName: A tároló a tárfiókban, amely korlátozni szeretné a hozzáférést.
 
-   * SASPolicyName: az a név, amelyet a tárolt házirend létrehozásához használni kell.
+   * SASPolicyName: A tárolt házirend létrehozásához használandó név.
 
-   * FileToUpload: a tárolóba feltöltött fájl elérési útja.
+   * FileToUpload: A tárolóba feltöltött fájl elérési útja.
 
-4. Futtassa a projektet. Mentse a SAS-szabályzat tokenjét, a Storage-fiók nevét és a tároló nevét. Ezeket az értékeket használja a rendszer a HDInsight-fürthöz tartozó Storage-fiók társításához.
+4. Futtassa a projektet. Mentse a SAS-házirend-jogkivonatot, a tárfiók nevét és a tároló nevét. Ezek az értékek a tárfiók és a HDInsight-fürt társításához használatosak.
 
-## <a name="use-the-sas-with-hdinsight"></a>Az SAS használata a HDInsight
+## <a name="use-the-sas-with-hdinsight"></a>A SAS használata a HDInsight segítségével
 
-HDInsight-fürt létrehozásakor meg kell adnia egy elsődleges Storage-fiókot, és opcionálisan további tárolási fiókokat is megadhat. A tárterület hozzáadásának mindkét módszere teljes hozzáférést igényel a használt Storage-fiókokhoz és tárolóhoz.
+HDInsight-fürt létrehozásakor meg kell adnia egy elsődleges tárfiókot, és szükség esetén további tárfiókokat is megadhat. A tár hozzáadása mindkét módszer teljes hozzáférést igényel a tárfiókokhoz és a használt tárolókhoz.
 
-Ha közös hozzáférésű aláírást szeretne használni a tárolóhoz való hozzáférés korlátozásához, adjon hozzá egy egyéni bejegyzést a fürt **alapvető hely** konfigurációjához. A bejegyzést felveheti a fürt létrehozása során a PowerShell használatával, vagy a fürt létrehozása után a Ambari használatával.
+Ha megosztott hozzáférésű aláírással szeretné korlátozni a tárolóhoz való hozzáférést, adjon hozzá egy egyéni bejegyzést a fürt **központi helykonfigurációjához.** A bejegyzést hozzáadhatja a fürt létrehozása során a PowerShell használatával vagy a fürt létrehozása után az Ambari használatával.
 
-### <a name="create-a-cluster-that-uses-the-sas"></a>SAS-t használó fürt létrehozása
+### <a name="create-a-cluster-that-uses-the-sas"></a>A SAS-t használó fürt létrehozása
 
-Cserélje le a `CLUSTERNAME`, `RESOURCEGROUP`, `DEFAULTSTORAGEACCOUNT`, `STORAGECONTAINER`, `STORAGEACCOUNT`és `TOKEN` értékeket a megfelelő értékekre. Adja meg a PowerShell-parancsokat:
+Cserélje `CLUSTERNAME` `RESOURCEGROUP`ki `DEFAULTSTORAGEACCOUNT` `STORAGECONTAINER`, `STORAGEACCOUNT`, `TOKEN` , , és a megfelelő értékeket. Adja meg a PowerShell-parancsokat:
 
 ```powershell
 $clusterName = 'CLUSTERNAME'
@@ -341,50 +341,50 @@ Remove-AzResourceGroup `
 ```
 
 > [!IMPORTANT]  
-> Ha a rendszer kéri a HTTP/s vagy SSH-Felhasználónév és-jelszó megadását, meg kell adnia egy jelszót, amely megfelel a következő feltételeknek:
+> Amikor a rendszer a HTTP/s vagy SSH felhasználónevet és -jelszót kéri, meg kell adnia egy jelszót, amely megfelel az alábbi feltételeknek:
 >
 > * Legalább 10 karakter hosszúnak kell lennie.
-> * Legalább egy számjegyet tartalmaznia kell.
+> * Legalább egy számjegyet kell tartalmaznia.
 > * Legalább egy nem alfanumerikus karaktert kell tartalmaznia.
-> * Legalább egy kis-és nagybetűt tartalmaznia kell.
+> * Legalább egy kis- vagy nagybetűt tartalmaznia kell.
 
-Eltarthat egy ideig, amíg ez a szkript befejeződik, általában körülbelül 15 percet vesz igénybe. Ha a parancsfájl hibák nélkül fejeződik be, a fürt létrejött.
+Eltart egy ideig, amíg ez a szkript befejeződik, általában körülbelül 15 perc. Ha a parancsfájl hiba nélkül befejeződik, a fürt létrejött.
 
-### <a name="use-the-sas-with-an-existing-cluster"></a>Az SAS használata meglévő fürttel
+### <a name="use-the-sas-with-an-existing-cluster"></a>A SAS használata meglévő fürttel
 
-Ha meglévő fürttel rendelkezik, a következő lépésekkel adhatja hozzá az SAS **-t a Core-site** konfigurációhoz:
+Ha már rendelkezik fürttel, a **sas-t** hozzáadhatja a központi hely konfigurációjához az alábbi lépésekkel:
 
-1. Nyissa meg a Ambari webes felhasználói felületét a fürthöz. A lap címe `https://YOURCLUSTERNAME.azurehdinsight.net`. Ha a rendszer kéri, végezzen hitelesítést a fürtön a fürt létrehozásakor használt rendszergazdai név (rendszergazda) és jelszó használatával.
+1. Nyissa meg a fürt Ambari webes felhasználói felületét. A lap címe `https://YOURCLUSTERNAME.azurehdinsight.net`. Amikor a rendszer kéri, hitelesítse magát a fürtben a fürt létrehozásakor használt rendszergazdai névvel (rendszergazda) és jelszóval.
 
-1. Navigáljon a **HDFS** > **konfigurációk** > **Advanced** > **Egyéni Core-site**.
+1. Nyissa meg a **HDFS** > **Configs** > **Advanced** > Custom**core-site webhelyet.**
 
-1. Bontsa ki az **Egyéni Core-site** szakaszt, görgessen a végéhez, majd válassza a **tulajdonság hozzáadása..** . lehetőséget. Használja a következő értékeket a **kulcshoz** és az **értékhez**:
+1. Bontsa ki az **Egyéni maghely** szakaszt, görgessen a végére, és válassza a **Tulajdonság hozzáadása lehetőséget...**. Használja a következő értékeket a **Kulcs** és **érték:**
 
-    * **Kulcs**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-    * **Érték**: a korábban végrehajtott metódusok egyike által visszaadott sas.
+    * **Kulcs**:`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Érték**: A korábban végrehajtott metódusok egyike által visszaadott SAS.
 
-    Cserélje le a `CONTAINERNAME`t a C# vagy sas-alkalmazással használt tároló nevére. Cserélje le a `STORAGEACCOUNTNAME`t a használt Storage-fiók nevére.
+    Cserélje `CONTAINERNAME` le a C# vagy SAS alkalmazással használt tárolónévre. Cserélje `STORAGEACCOUNTNAME` le a használt tárfiók nevére.
 
     A kulcs és az érték mentéséhez válassza a **Hozzáadás** lehetőséget.
 
-1. A konfigurációs módosítások mentéséhez kattintson a **Save (Mentés** ) gombra. Ha a rendszer kéri, adja meg a módosítás leírását (például "SAS-tároló elérésének hozzáadása"), majd válassza a **Mentés**lehetőséget.
+1. A **konfigurációs** módosítások mentéséhez kattintson a Mentés gombra. Amikor a rendszer kéri, adja meg a módosítás leírását (például SAS-tároló-hozzáférés hozzáadása), majd válassza a **Mentés gombot.**
 
-    A módosítások befejeződése után kattintson **az OK gombra** .
+    Válassza az **OK gombot,** ha a módosítások befejeződtek.
 
    > [!IMPORTANT]  
-   > A módosítás érvénybe léptetéséhez több szolgáltatást is újra kell indítania.
+   > A módosítás életbe lépése előtt több szolgáltatást újra kell indítani.
 
-1. Ekkor megjelenik egy **Újraindítási** legördülő lista. Válassza az **összes érintett újraindítása** elemet a legördülő listából, majd __erősítse meg az összes újraindítását__.
+1. Megjelenik **az Újraindítás** legördülő lista. Válassza az **Összes érintett újraindítása lehetőséget** a legördülő listából, majd erősítse meg az Összes __újraindítását.__
 
-    Ismételje meg ezt a folyamatot a **MapReduce2** és a **fonal**esetében.
+    Ismételje meg ezt a folyamatot a **MapReduce2** és **a YARN esetében.**
 
-1. A szolgáltatások újraindítása után válassza ki mindegyiket, és tiltsa le a karbantartási módot a **szolgáltatási műveletek** legördülő listából.
+1. Miután a szolgáltatások újraindultak, jelölje ki mindegyiket, és tiltsa le a karbantartási módot a **Szolgáltatási műveletek** legördülő menüből.
 
 ## <a name="test-restricted-access"></a>Korlátozott hozzáférés tesztelése
 
-Az alábbi lépések végrehajtásával ellenőrizheti, hogy csak az SAS-Storage-fiókban lévő elemeket tudja-e olvasni és listázni.
+Az alábbi lépésekkel ellenőrizze, hogy csak a SAS-tárfiók elemeit tudja-e olvasni és listázni.
 
-1. Kapcsolódjon a fürthöz. Cserélje le a `CLUSTERNAME`t a fürt nevére, és írja be a következő parancsot:
+1. Csatlakozzon a fürthöz. Cserélje `CLUSTERNAME` le a fürt nevét, és írja be a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -396,11 +396,11 @@ Az alábbi lépések végrehajtásával ellenőrizheti, hogy csak az SAS-Storage
     hdfs dfs -ls wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
     ```
 
-    Cserélje le a `SASCONTAINER`t az SAS Storage-fiókhoz létrehozott tároló nevére. Cserélje le a `SASACCOUNTNAME`t a SAS-hez használt Storage-fiók nevére.
+    Cserélje `SASCONTAINER` le a SAS-tárfiókhoz létrehozott tároló nevére. Cserélje `SASACCOUNTNAME` le a SAS-hez használt tárfiók nevét.
 
-    A lista tartalmazza a tároló és SAS létrehozásakor feltöltött fájlt.
+    A lista tartalmazza a tároló és a SAS létrehozásakor feltöltött fájlt.
 
-3. A következő parancs használatával ellenőrizheti, hogy el tudja-e olvasni a fájl tartalmát. Cserélje le a `SASCONTAINER`t, és `SASACCOUNTNAME` az előző lépésben. Cserélje le a `sample.log`t az előző parancsban megjelenő fájl nevére:
+3. A következő paranccsal ellenőrizheti, hogy el tudja-e olvasni a fájl tartalmát. Cserélje `SASCONTAINER` ki `SASACCOUNTNAME` a és az előző lépéshez. Cserélje `sample.log` le az előző parancsban megjelenített fájl nevére:
 
     ```bash
     hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
@@ -408,35 +408,35 @@ Az alábbi lépések végrehajtásával ellenőrizheti, hogy csak az SAS-Storage
 
     Ez a parancs felsorolja a fájl tartalmát.
 
-4. A következő parancs használatával töltse le a fájlt a helyi fájlrendszerbe:
+4. A fájl helyi fájlrendszerre való letöltéséhez használja a következő parancsot:
 
     ```bash
     hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log testfile.txt
     ```
 
-    Ez a parancs letölti a fájlt egy **TESTFILE. txt**nevű helyi fájlba.
+    Ez a parancs letölti a fájlt egy **testfile.txt**nevű helyi fájlba.
 
-5. A következő parancs használatával töltse fel a helyi fájlt egy **testupload. txt** nevű új fájlba az SAS-tárolóban:
+5. A következő paranccsal feltöltheti a helyi fájlt egy **testupload.txt** nevű új fájlba a SAS-tárolón:
 
     ```bash
     hdfs dfs -put testfile.txt wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
     ```
 
-    A következő szöveghez hasonló üzenet jelenik meg:
+    A következő höz hasonló üzenet jelenik meg:
 
         put: java.io.IOException
 
-    Ez a hiba azért fordul elő, mert a tárolási hely csak olvasható + lista. A következő paranccsal helyezheti el a fürt alapértelmezett tárolójában lévő adattárolást, amely írható:
+    Ez a hiba azért fordul elő, mert a tárolóhely csak olvasás+lista. A következő paranccsal az adatokat a fürt alapértelmezett tárolójára helyezheti, amely írható:
 
     ```bash
     hdfs dfs -put testfile.txt wasbs:///testupload.txt
     ```
 
-    Ezúttal a művelet végrehajtása sikeresen befejeződött.
+    Ez úttal a művelet nek sikeresen kell befejeződnie.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan adhat hozzá korlátozott hozzáférésű tárolót a HDInsight-fürthöz, megismerheti a fürtön tárolt adatkezelés egyéb módjait:
+Most, hogy megtanulta, hogyan adhat hozzá korlátozott hozzáférésű tárhelyet a HDInsight-fürthöz, ismerje meg, hogyan dolgozhat a fürtön lévő adatokkal:
 
-* [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
-* [A MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Az Apache Hive használata a HDInsight segítségével](hadoop/hdinsight-use-hive.md)
+* [A MapReduce használata a HDInsightsegítségével](hadoop/hdinsight-use-mapreduce.md)

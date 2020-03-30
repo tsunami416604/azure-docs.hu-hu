@@ -1,7 +1,7 @@
 ---
-title: Élő események és élő kimenetek – fogalmak a Azure Media Services v3-ban
+title: Élő események és élő kimenetek fogalmak az Azure Media Services v3-ban
 titleSuffix: Azure Media Services
-description: Ez a témakör áttekintést nyújt az élő eseményekről és a Azure Media Services v3 élő kimenetéről.
+description: Ez a témakör áttekintést nyújt az Azure Media Services v3 élő eseményeiről és élő kimeneteiről.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,126 +12,126 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: 96b3e602011f4d3f237f29ce9b2fcad8bd0b8300
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e6f2ad2c5c30e3c75e8d3588e386ea14e8e3350b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251387"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065949"
 ---
-# <a name="live-events-and-live-outputs-in-media-services"></a>Élő események és élő kimenetek Media Services
+# <a name="live-events-and-live-outputs-in-media-services"></a>Élő események és élő kimenetek a Médiaszolgáltatásokban
 
-Azure Media Services lehetővé teszi, hogy élő eseményeket nyújtson az ügyfeleknek az Azure-felhőben. Az élő adatfolyam-továbbítási események Media Services v3-ban való beállításához ismernie kell a cikkben tárgyalt fogalmakat.
+Az Azure Media Services lehetővé teszi, hogy élő eseményeket közvetítsen ügyfeleinek az Azure-felhőben. Az élő streamelési események beállítása a Media Services v3-ban, meg kell értenie a jelen cikkben tárgyalt fogalmakat.
 
 > [!TIP]
-> Media Services v2 API-kból áttelepítést igénylő ügyfelek esetében az **élő esemény** entitás a v2-es **csatornát** váltja fel, és az **élő kimenet** lecseréli a **programot**.
+> A Media Services v2 API-król átkelő ügyfelek esetében a **Live Event** entitás váltja fel a **csatornát** a v2-ben, az **Élő kimenet pedig** a **Programot.**
 
 ## <a name="live-events"></a>Élő események
 
-Az [élő események](https://docs.microsoft.com/rest/api/media/liveevents) az élő videóadatok betöltését és feldolgozását végzik. Élő esemény létrehozásakor létrejön egy elsődleges és egy másodlagos bemeneti végpont, amelynek használatával élő jeleket küldhet egy távoli kódolóból. A távoli élő kódoló az [RTMP](https://www.adobe.com/devnet/rtmp.html) vagy a [Smooth streaming](https://msdn.microsoft.com/library/ff469518.aspx) (darabolt MP4) bemeneti protokoll használatával küldi el a hozzájárulási csatornát az adott bemeneti végpontnak. Az RTMP betöltési protokoll esetében a tartalom a (z) Clear (`rtmp://`) vagy a Wire (`rtmps://`) biztonságos titkosításával is elvégezhető. A Smooth Streaming betöltési protokoll esetében a támogatott URL-sémák `http://` vagy `https://`.  
+Az [élő események](https://docs.microsoft.com/rest/api/media/liveevents) az élő videóadatok betöltését és feldolgozását végzik. Élő esemény létrehozásakor létrejön egy elsődleges és másodlagos bemeneti végpont, amely segítségével élő jelet küldhet egy távoli kódolótól. A távoli élő kódoló az [RTMP](https://www.adobe.com/devnet/rtmp.html) vagy a Smooth [Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (fragmented-MP4) bemeneti protokoll használatával küldi el a bemeneti végpontra a hozzájárulási hírcsatornát. Az RTMP betöltési protokoll esetében a tartalom`rtmp://`elküldhető a tiszta (`rtmps://`) vagy biztonságosan titkosítható a vezetéken( ). A smooth streaming betöltési protokoll esetében `http://` `https://`a támogatott URL-sémák vagy .  
 
-## <a name="live-event-types"></a>Élő események típusai
+## <a name="live-event-types"></a>Élő eseménytípusok
 
-Egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) lehet egy *átmenő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). A típusok beállítása a [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)használatával történik a létrehozás során:
+Az [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) beállítható *áthaladásra* (egy helyszíni élő kódoló több bitráta-adatfolyamot küld) vagy élő *kódolásra* (a helyszíni élő kódoló egyetlen bitráta-adatfolyamot küld). A típusok a [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)használatával történő létrehozás során vannak beállítva:
 
-* **LiveEventEncodingType. None**: a helyszíni élő kódoló több bitrátás streamet küld. A betöltött adatfolyam további feldolgozás nélkül halad át az élő eseményen. Más néven áteresztő üzemmód.
-* **LiveEventEncodingType. Standard**: a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás adatfolyamot hoz létre. Ha a hozzájárulási hírcsatorna 720p vagy magasabb felbontású, a **Default720p** -készlet 6 feloldási/bitrátás párokat fog kódolni.
-* **LiveEventEncodingType. Premium1080p**: a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás adatfolyamot hoz létre. A Default1080p-készlet meghatározza a feloldási/bitráta párok kimeneti készletét.
+* **LiveEventEncodingType.None**: A helyszíni élő kódoló több átviteli sebességű adatfolyamot küld. A bevitt adatfolyam további feldolgozás nélkül halad át az élő eseményen. Más néven áthaladási mód.
+* **LiveEventEncodingType.Standard**: A helyszíni élő kódoló egyetlen bitráta-adatfolyamot küld az élő eseménynek, és a Media Services több bitráta-adatfolyamot hoz létre. Ha a hozzájárulási hírcsatorna 720p vagy nagyobb felbontású, a **Default720p** készlet 6 felbontás/bitrátapárkészletet fog kódolni.
+* **LiveEventEncodingType.Premium1080p**: A helyszíni élő kódoló egyetlen bitráta-adatfolyamot küld az Élő eseménynek, és a Media Services több bitráta-adatfolyamot hoz létre. A Default1080p készlet a felbontás/bitráták párosítási párjainak kimeneti készletét adja meg.
 
 ### <a name="pass-through"></a>Továbbítás
 
-![áteresztő élő esemény Media Services példa diagrammal](./media/live-streaming/pass-through.svg)
+![átadó élő esemény a Media Services példadiagramjával](./media/live-streaming/pass-through.svg)
 
-A továbbított **élő esemény** használatakor a helyszíni élő kódoló használatával létrehoz egy többféle sávszélességű videóstreamet, amelyet elküld az élő eseménynek bemeneti adatként (RTMP vagy darabolt MP4 protokollal). Az élő esemény ezután további feldolgozás nélkül továbbítja a bejövő videóstreameket. Egy ilyen átmenő élő esemény a hosszan futó élő eseményekre vagy 24x365 lineáris élő közvetítésre van optimalizálva. Az ilyen típusú élő események létrehozásakor adja meg a None (LiveEventEncodingType.None) kódolási típust.
+A továbbított **élő esemény** használatakor a helyszíni élő kódoló használatával létrehoz egy többféle sávszélességű videóstreamet, amelyet elküld az élő eseménynek bemeneti adatként (RTMP vagy darabolt MP4 protokollal). Az élő esemény ezután további feldolgozás nélkül továbbítja a bejövő videóstreameket. Az ilyen átmenő élő esemény hosszú ideig futó élő eseményekre vagy 24x365 lineáris élő közvetítésre van optimalizálva. Az ilyen típusú élő események létrehozásakor adja meg a None (LiveEventEncodingType.None) kódolási típust.
 
-A bemeneti adatokat legfeljebb 4K felbontással és 60 képkocka/másodperc képkockasebességgel továbbíthatja, H.264/AVC vagy H.265/HEVC videokodekkel és AAC (AAC-LC, HE-AACv1 vagy HE-AACv2) hangkodekkel. További információ: [élő események típusai összehasonlítás](live-event-types-comparison.md).
+A bemeneti adatokat legfeljebb 4K felbontással és 60 képkocka/másodperc képkockasebességgel továbbíthatja, H.264/AVC vagy H.265/HEVC videokodekkel és AAC (AAC-LC, HE-AACv1 vagy HE-AACv2) hangkodekkel. További információ: [Élő eseménytípusok összehasonlítása](live-event-types-comparison.md).
 
 > [!NOTE]
-> A továbbítási módszer használata a leggazdaságosabb módja az élő közvetítésnek, ha hosszú időn keresztül végez több eseményt, és már befektetett a helyszíni kódolóba. További információt a [díjszabás](https://azure.microsoft.com/pricing/details/media-services/) nyújt.
+> Az áteresztő módszer használata a leggazdaságosabb módja az élő streamelésnek, ha hosszú időn keresztül több eseményt hajt végre, és már befektetett a helyszíni kódolókba. További információt a [díjszabás](https://azure.microsoft.com/pricing/details/media-services/) nyújt.
 >
 
-Tekintse meg a .NET-kód példáját a [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126)-ben.
+Lásd a .NET kód példa [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
 ### <a name="live-encoding"></a>Live Encoding  
 
-![élő kódolás Media Services példa diagrammal](./media/live-streaming/live-encoding.svg)
+![élő kódolás a Media Services példadiagramjával](./media/live-streaming/live-encoding.svg)
 
-Ha a Media Services élő kódolást használ, a helyszíni élő kódolót úgy konfigurálja, hogy egyetlen bitráta-videót küldjön az élő eseménynek (RTMP vagy darabolt MP4 protokollt használó) hozzájárulási csatornának. Ezután beállíthat egy élő eseményt úgy, hogy az a bejövő egyszeri sávszélességű adatfolyamot [több bitrátás videó streambe](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)kódolja, és elérhetővé teszi a kimenetet a továbbításhoz az eszközökön, például az MPEG-Dash, a HLS és a Smooth streaming protokollok használatával.
+Ha élő kódolást használ a Media Services szolgáltatással, úgy konfigurálja a helyszíni élő kódolót, hogy egyetlen bitráta-videót küldjön az élő eseményhez való hozzájárulási hírcsatornaként (RTMP vagy Fragmented-Mp4 protokoll használatával). Ezután bekell állítania egy élő eseményt, hogy az egybitrátfolyamot [több bitráta-videóadat-adatfolyamba](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)kódolja, és elérhetővé teszi a kimenetet az eszközök lejátszására olyan protokollokon keresztül, mint az MPEG-DASH, a HLS és a Smooth Streaming.
 
-Ha élő kódolást használ, a hozzájárulási csatornát csak a 30 képkocka/másodperces képkocka sebességű felbontásban, a H. 264/AVC Video Codec és az AAC (AAC-LC, it-AACv1 vagy AACv2) hangkodek használatával küldheti el. Vegye figyelembe, hogy az áteresztő élő események a 60-es képkockán/másodpercen belüli 4K-os felbontást támogatják. További információ: [élő események típusai összehasonlítás](live-event-types-comparison.md).
+Élő kódolás használata esetén a hozzájárulási hírcsatornát csak 1080p felbontásban, 30 képkocka/másodperc képkocka sebességgel, H.264/AVC videokodek és AAC (AAC-LC, HE-AACv1 vagy HE-AACv2) hangkodekmal küldheti el. Vegye figyelembe, hogy az átmenő élő események 60 képkocka/másodperc felbontással legfeljebb 4K felbontást támogatnak. További információ: [Élő eseménytípusok összehasonlítása](live-event-types-comparison.md).
 
-Az élő kódoló kimenetében található felbontásokat és bitrátákat az előre beállított érték határozza meg. Ha **standard** Live Encodert (LiveEventEncodingType. Standard) használ, akkor a *Default720p* előre definiált hat felbontási/átviteli sebesség párokat határoz meg, amely a 720P-on 3,5 Mbps-ig, a 192p-on 200 kbps. Ellenkező esetben, ha **Premium1080p** élő kódolót (LiveEventEncodingType. Premium1080p) használ, akkor a *Default1080p* -készlet hat felbontási/bitsűrűségi párokat határoz meg, amely az 1080p 3,5 Mbps-ról 200 kbps-ra van állítva. További információkat a [rendszerbeállítás-készletekkel](live-event-types-comparison.md#system-presets) kapcsolatos szakaszban talál.
+Az élő kódoló kimenetében található felbontásokat és bitrátákat az előre beállított beállítás határozza meg. **Ha egy szabványos** élő kódolót (LiveEventEncodingType.Standard) használ, akkor a *Default720p* készlet hat felbontás/átviteli sebességpárkészletet ad meg, amely 720p-ről 3,5 Mbps-ről 192p-re, 200 kbps-re megy. Ellenkező esetben, ha egy **Premium1080p** élő kódoló (LiveEventEncodingType.Premium1080p), majd a *Default1080p* előre meghatározott készlet hat felbontás / átviteli sebesség pár, megy 1080p a 3,5 Mbps le 180p 200 kbps. További információkat a [rendszerbeállítás-készletekkel](live-event-types-comparison.md#system-presets) kapcsolatos szakaszban talál.
 
 > [!NOTE]
-> Ha testre kell szabnia az élő kódolási beállításkészletet, nyisson meg egy támogatási jegyet Azure Portalon keresztül. Határozza meg a kívánt felbontást és bitrátát. Győződjön meg arról, hogy a 720p-ban csak egy réteg található (ha a standard Live Encoder esetében egy beállításkészletet igényel) vagy 1080p (ha egy Premium1080p élő kódolóhoz van beállítva), és legfeljebb 6 réteget.
+> Ha testre kell szabnia az élő kódolási készletet, nyisson meg egy támogatási jegyet az Azure Portalon keresztül. Adja meg a kívánt felbontási és bitráták táblázatot. Ellenőrizze, hogy csak egy réteg van-e 720p-nél (ha egy készletet kér egy standard élő kódolóhoz) vagy 1080p-t (ha premium1080p élő kódolóhoz előre beállított), és legtöbb 6 réteget.
 
 ## <a name="creating-live-events"></a>Élő események létrehozása
 
 ### <a name="options"></a>Beállítások
 
-Élő események létrehozásakor a következő beállításokat adhatja meg:
+Élő esemény létrehozásakor a következő beállításokat adhatja meg:
 
-* Az élő esemény folyamatos átviteli protokollja (jelenleg az RTMP és a Smooth Streaming protokollok támogatottak).<br/>A protokoll beállítás nem módosítható, amíg az élő esemény vagy a hozzá tartozó élő kimenet fut. Ha eltérő protokollokra van szüksége, hozzon létre egy külön élő eseményt az egyes streaming protokollokhoz.  
-* Az esemény létrehozásakor megadhatja az automatikus indítást. <br/>Ha az autostart értéke TRUE (igaz), a rendszer az élő eseményt a létrehozás után indítja el. A számlázás azonnal elindul, amint az élő esemény elindul. A további számlázás leállításához explicit módon hívnia kell az élő esemény erőforrásának leállítását. Azt is megteheti, hogy elindíthatja az eseményt, amikor készen áll a folyamatos átvitelre.
+* Az élő esemény streamelési protokollja (jelenleg az RTMP és a Smooth Streaming protokollok támogatottak).<br/>A protokollbeállítás nem módosítható, amíg az élő esemény vagy a hozzá tartozó Élő kimenetek futnak. Ha különböző protokollokra van szüksége, hozzon létre egy külön élő eseményt minden egyes streamelési protokollhoz.  
+* Az esemény létrehozásakor megadhatja az automatikus indítást. <br/>Ha az automatikus indítás értéke igaz, az élő esemény a létrehozás után indul el. A számlázás akkor kezdődik, amikor az élő esemény elindul. A további számlázás leállításához kifejezetten meg kell hívnia a Stop on the Live Event erőforrást. Azt is megteheti, hogy elindítja az eseményt, amikor készen áll a streamelés megkezdésére.
 
-    További információ: [élő események állapota és számlázása](live-event-states-billing.md).
+    További információt az [Élő esemény állapotaés a számlázás](live-event-states-billing.md)című témakörben talál.
 
-* IP-korlátozások a betöltési és az előnézeti címen. Megadhatja azokat az IP-címeket, amelyek számára engedélyezett az élő esemény Videójának beolvasása. Az engedélyezett IP-címek köre tartalmazhat egyetlen IP-címet (például „10.0.0.1”), vagy egy IP-tartományt, amelyet egy IP-cím és egy CIDR alhálózati maszk (például„10.0.0.1/22”) vagy egy IP-cím és egy pontozott decimális alhálózati maszk (például „10.0.0.1(255.255.252.0)”) segítségével lehet megadni.<br/>Ha nincs megadva IP-cím, és nincs szabály definíciója, akkor a rendszer nem engedélyezi az IP-címet. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.<br/>Az IP-címnek a következő formátumok egyikében kell lennie: IpV4-cím, amely négy számot vagy CIDR-címtartományt tartalmaz.
+* IP-korlátozások a betöltési és az előnézeti címen. Megadhatja azokat az IP-címeket, amelyek lehetővé teszik egy videó betöltését ebbe az élő eseménybe. Az engedélyezett IP-címek köre tartalmazhat egyetlen IP-címet (például „10.0.0.1”), vagy egy IP-tartományt, amelyet egy IP-cím és egy CIDR alhálózati maszk (például„10.0.0.1/22”) vagy egy IP-cím és egy pontozott decimális alhálózati maszk (például „10.0.0.1(255.255.252.0)”) segítségével lehet megadni.<br/>Ha nincs megadva IP-cím, és nincs szabálydefiníció, akkor nem lesz engedélyezett AZ IP-cím. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.<br/>Az IP-címeknek a következő formátumok egyikében kell lenniük: IpV4-cím négy számmal vagy CIDR-címtartományban.
 
-    Ha bizonyos IP-címeket szeretne engedélyezni a saját tűzfalakon, vagy szeretné korlátozni az élő eseményekre vonatkozó adatokat az Azure-beli IP-címekre, töltsön le egy JSON-fájlt az [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653)közül. A fájllal kapcsolatos részletekért válassza a lap **részletek** szakaszát.
+    Ha engedélyezni szeretne bizonyos IP-címeket a saját tűzfalain, vagy az élő eseményekbemeneteket Azure-IP-címekre szeretné korlátozni, töltsön le egy JSON-fájlt az [Azure Datacenter IP-címtartományaiból.](https://www.microsoft.com/download/details.aspx?id=41653) A fájllal kapcsolatos részletekért válassza a **lap Részletek** szakaszát.
     
-* Az esemény létrehozásakor dönthet úgy, hogy bekapcsolja az élő átírásokat. <br/> Alapértelmezés szerint az élő átírás le van tiltva. Ez a tulajdonság nem módosítható, amíg az élő esemény vagy a hozzá tartozó élő kimenetek futnak. 
+* Az esemény létrehozásakor bekapcsolhatod az élő átiratokat. <br/> Alapértelmezés szerint az élő átírás le van tiltva. Ez a tulajdonság nem módosítható, amíg az élő esemény vagy a hozzá tartozó Élő kimenetek futnak. 
 
 ### <a name="naming-rules"></a>Elnevezési szabályok
 
 * Az élő esemény maximális neve 32 karakter.
-* A névnek ezt a [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) -mintát kell követnie: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+* A névnek ezt a `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`regex mintát kell [követnie:](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) .
 
-Lásd még: [adatfolyam-végpontok elnevezési konvenciói](streaming-endpoint-concept.md#naming-convention).
+Lásd még: [Végpontok elnevezési konvenciók streamelése.](streaming-endpoint-concept.md#naming-convention)
 
 > [!TIP]
-> Az élő esemény nevének egyediségének biztosításához létrehozhat egy GUID azonosítót, és eltávolíthatja az összes kötőjelet és kapcsos zárójelet (ha van ilyen). A karakterlánc az összes élő eseménynél egyedi lesz, és a hossza garantált, hogy 32.
+> Az élő esemény nevének egyediségének biztosítása érdekében létrehozhat egy GUID azonosítót, majd eltávolíthatja az összes kötőjelet és göndör zárójelet (ha van ilyen). A karakterlánc egyedi lesz az összes élő eseményben, és hossza garantáltan 32 lesz.
 
-## <a name="live-event-ingest-urls"></a>Élő esemény betöltésének URL-címei
+## <a name="live-event-ingest-urls"></a>Élő események betöltési URL-címei
 
-Az élő esemény létrejötte után betöltheti az élő helyszíni kódolóhoz megadható betöltési URL-címeket. Az élő kódoló ezekre az URL-címekre küldi a bemeneti élő streamet. További információ: [ajánlott helyszíni élő kódolók](recommended-on-premises-live-encoders.md).
+Az élő esemény létrehozása után lekaphatja az élő helyszíni kódoló számára biztosított betöltési URL-címeket. Az élő kódoló ezekre az URL-címekre küldi a bemeneti élő streamet. További információ: [Ajánlott helyszíni élő kódolók](recommended-on-premises-live-encoders.md).
 
 Kreatív vagy nem kreatív URL-címeket is használhat.
 
 > [!NOTE] 
-> Ahhoz, hogy a betöltési URL-cím prediktív, állítsa a "Vanity" módot.
+> Ahhoz, hogy egy betöltési URL-t prediktív, állítsa be a "hiúság" mód.
 
-* Nem hiúság URL-címe
+* Nem hiúságurl-je
 
-    A nem hiúságos URL-cím az alapértelmezett mód a Media Services v3-ban. Az élő eseményt gyorsan megkaphatja, de a bemeneti URL-cím csak az élő esemény kezdetekor válik ismertté. Az URL-cím megváltozik, ha leállítja/elindítja az élő eseményt. <br/>A nem hiúság olyan helyzetekben hasznos, amikor a végfelhasználó egy olyan alkalmazással szeretne adatfolyamot használni, ahol az alkalmazás egy élő eseményt szeretne kapni, és a dinamikus betöltési URL-cím nem jelent problémát.
+    A Nem hiúsági URL az alapértelmezett mód a Media Services v3-ban. Az élő eseményt gyorsan megkaphatja, de a bemeneti URL-cím csak az élő esemény kezdetekor válik ismertté. Az URL-cím megváltozik, ha leállítja/elindítja az élő eseményt. <br/>A nem hiúság akkor hasznos, ha a végfelhasználó olyan alkalmazás használatával szeretne streamelni, amelyben az alkalmazás aSAP-ban élő eseményt szeretne kapni, és dinamikus betöltési URL-címmel rendelkezik, nem jelent problémát.
 
-    Ha egy ügyfélalkalmazás nem kell előkészítenie a betöltési URL-címet az élő esemény létrehozása előtt, Media Services automatikusan hozza létre az élő esemény hozzáférési jogkivonatát.
+    Ha egy ügyfélalkalmazásnak nem kell előre létrehoznia egy betöltő URL-t az élő esemény létrehozása előtt, hagyja, hogy a Media Services automatikusan generálja az élő esemény hozzáférési jogkivonatát.
 
-* A hiúság URL-címe
+* Hiúság URL-címe
 
-    A hiúság üzemmódot a hardveres szórásos kódolókat használó nagyméretű média-műsorszolgáltatók használják, és nem szeretnék újrakonfigurálni a kódolókat az élő esemény indításakor. A prediktív betöltési URL-címet szeretnék használni, ami idővel nem változik.
+    A hiúsági módot a hardveres műsorszórási kódolókat használó nagy médiaműsorszolgáltatók előnyben részesítik, és nem akarják újrakonfigurálni kódolóikat az élő esemény indításakor. Prediktív betöltési URL-t szeretnének, amely nem változik az idő múlásával.
 
-    Ennek a módnak a megadásához beállíthatja, hogy a `vanityUrl` `true` a létrehozás időpontjában (az alapértelmezett érték a `false`). A létrehozáskor is át kell adnia a saját hozzáférési jogkivonatát (`LiveEventInput.accessToken`). Megadhatja a jogkivonat értékét, hogy elkerülje a véletlenszerű tokent az URL-címben. A hozzáférési jogkivonatnak érvényes GUID-karakterláncnak kell lennie (kötőjelekkel vagy anélkül). A mód beállítása után nem frissíthető.
+    A mód megadásához `vanityUrl` `true` a létrehozás időpontjában `false`kell megadni (az alapértelmezett érték ). Azt is meg kell adnia`LiveEventInput.accessToken`a saját hozzáférési jogkivonat ( ) létrehozása kor. Adja meg a token értékét, hogy elkerülje a véletlenszerű jogkivonatot az URL-ben. A hozzáférési jogkivonatnak érvényes GUID karakterláncnak kell lennie (kötőjellel vagy anélkül). A mód beállítása után nem frissíthető.
 
-    A hozzáférési tokennek egyedinek kell lennie az adatközpontban. Ha az alkalmazásnak a Vanity URL-címet kell használnia, akkor azt javasoljuk, hogy mindig hozzon létre egy új GUID-példányt a hozzáférési jogkivonathoz (a meglévő GUID-azonosítók újbóli használata helyett).
+    A hozzáférési jogkivonatnak egyedinek kell lennie az adatközpontban. Ha az alkalmazásnak hiúsági URL-címet kell használnia, javasoljuk, hogy mindig hozzon létre egy új GUID-példányt a hozzáférési jogkivonathoz (a meglévő GUID újrafelhasználása helyett).
 
-    A következő API-k használatával engedélyezheti a Vanity URL-címet, és beállíthatja a hozzáférési tokent egy érvényes GUID azonosítóra (például `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`).  
+    A következő API-k segítségével engedélyezze a Hiúság URL-címét, `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`és állítsa a hozzáférési jogkivonatot érvényes GUID azonosítóra (például).  
 
-    |Nyelv|A hiúság URL-címének engedélyezése|Hozzáférési jogkivonat beállítása|
+    |Nyelv|Hiúság url-címének engedélyezése|Hozzáférési jogkivonat beállítása|
     |---|---|---|
-    |REST|[Properties. vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
-    |parancssori felület|[--Vanity-URL](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--Access-Token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
+    |parancssori felület|[--hiúság-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--hozzáférés-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
     
-### <a name="live-ingest-url-naming-rules"></a>Élő betöltési URL-címek elnevezési szabályai
+### <a name="live-ingest-url-naming-rules"></a>Élő bemeneti URL-címek elnevezési szabályai
 
 * Az alábbi *véletlenszerű* sztring egy 128 bites hexadecimális szám (amely 32 karakterből áll 0-9-ig és a-f-ig).
-* *hozzáférési jogkivonat*: a Vanity mód használatakor beállított érvényes GUID-karakterlánc. Például: `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
-* *stream neve*: megadja az adott kapcsolatok adatfolyamának nevét. Az adatfolyam-név értékét általában a használt élő kódoló adja hozzá. Az élő kódoló úgy is beállítható, hogy bármilyen nevet használjon a kapcsolódás leírásához, például: "video1_audio1", "video2_audio1", "Stream".
+* *a hozzáférési jogkivonat:* A hiúsági mód használatakor beállított érvényes GUID karakterlánc. Például: `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *adatfolyam neve*: Egy adott kapcsolat adatfolyamának nevét jelzi. Az adatfolyam névértékét általában a használt élő kódoló adja hozzá. Az élő kódoló bármilyen nevet használhat a kapcsolat leírására, például: "video1_audio1", "video2_audio1", "stream".
 
-#### <a name="non-vanity-url"></a>Nem hiúság URL-címe
+#### <a name="non-vanity-url"></a>Nem hiúságurl-je
 
 ##### <a name="rtmp"></a>RTMP
 
@@ -145,7 +145,7 @@ Kreatív vagy nem kreatív URL-címeket is használhat.
 `http://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 `https://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 
-#### <a name="vanity-url"></a>A hiúság URL-címe
+#### <a name="vanity-url"></a>Hiúság URL-címe
 
 ##### <a name="rtmp"></a>RTMP
 
@@ -161,25 +161,29 @@ Kreatív vagy nem kreatív URL-címeket is használhat.
 
 ## <a name="live-event-preview-url"></a>Élő esemény előnézetének URL-címe
 
-Miután az élő esemény megkezdi a hozzájárulási hírcsatorna fogadását, az előzetes verziójú végponton megtekintheti és ellenőrizheti, hogy a további közzététel előtt megkapja-e az élő streamet. Miután ellenőrizte, hogy az előnézeti adatfolyam megfelelő-e, a Live Event használatával elérhetővé teheti az élő streamet egy vagy több (előre létrehozott) streaming végponton keresztül. Ennek elvégzéséhez hozzon létre egy új [élő kimenetet](https://docs.microsoft.com/rest/api/media/liveoutputs) az élő eseményen.
+Miután az élő esemény megkezdi a hozzájárulási hírcsatorna fogadását, az előnézeti végpont segítségével megtekintheti és ellenőrizheti, hogy az élő közvetítést megkapja-e a további közzététel előtt. Miután ellenőrizte, hogy az előnézeti adatfolyam jó-e, az élő esemény segítségével elérhetővé teheti az élő közvetítést egy vagy több (előre létrehozott) streamelési végponton keresztül. Ehhez hozzon létre egy új [élő kimenetet](https://docs.microsoft.com/rest/api/media/liveoutputs) az élő eseményen.
 
 > [!IMPORTANT]
-> A folytatás előtt győződjön meg arról, hogy a videó az előzetes verzió URL-címére áramlik.
+> A folytatás előtt győződjön meg arról, hogy a videó az előnézeti URL-címhez áramlik!
 
-## <a name="live-event-long-running-operations"></a>Élő esemény hosszan futó műveletei
+## <a name="live-event-long-running-operations"></a>Élő esemény hosszú ideig futó műveletek
 
-Részletekért lásd: [hosszan futó műveletek](media-services-apis-overview.md#long-running-operations).
+További információt a [hosszú ideig futó műveletekben](media-services-apis-overview.md#long-running-operations)talál.
 
 ## <a name="live-outputs"></a>Élő kimenetek
 
-Ha a stream az élő eseménybe áramlik, megkezdheti a folyamatos átviteli eseményt egy [eszköz](https://docs.microsoft.com/rest/api/media/assets), egy [élő kimenet](https://docs.microsoft.com/rest/api/media/liveoutputs)és a [folyamatos átviteli lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators)létrehozásával. Az élő kimenet archiválja a streamet, és elérhetővé teszi a nézők számára a [folyamatos átviteli végponton](https://docs.microsoft.com/rest/api/media/streamingendpoints)keresztül.  
+Miután az adatfolyam beáramlott az élő eseménybe, megkezdheti a streamelési eseményt egy [eszköz,](https://docs.microsoft.com/rest/api/media/assets) [az élő kimenet](https://docs.microsoft.com/rest/api/media/liveoutputs)és a [streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators)létrehozásával. Az Élő kimenet archiválja az adatfolyamot, és elérhetővé teszi a megtekintők számára a [Streaming Végponton](https://docs.microsoft.com/rest/api/media/streamingendpoints)keresztül.  
 
-Az élő kimenetekkel kapcsolatos részletes információkért lásd: [FELHŐALAPÚ DVR használata](live-event-cloud-dvr.md).
+Az élő kimenetekről a [Felhőalapú dvr használata című](live-event-cloud-dvr.md)témakörben talál részletes információt.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
+## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
+Tekintse meg a [gyakran ismételt kérdésekről szóló](frequently-asked-questions.md#live-streaming) cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="ask-questions-and-get-updates"></a>Kérdések et tehet fel, és frissítéseket kaphat
 
-[Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)
+Tekintse meg az [Azure Media Services közösségi](media-services-community.md) cikket, ahol különböző módokon tehet fel kérdéseket, küldhet visszajelzést, és kaphat frissítéseket a Media Services szolgáltatásról.
+
+## <a name="next-steps"></a>További lépések
+
+[Élő közvetítésoktató anyaga](stream-live-tutorial-with-api.md)

@@ -1,7 +1,7 @@
 ---
-title: A márkák modelljeinek testreszabása a Video Indexer webhelyen – Azure
+title: Márkák modell testreszabása a Video Indexer webhelyével
 titleSuffix: Azure Media Services
-description: Ez a cikk bemutatja, hogyan szabhatja testre a márkák modelljét a Video Indexer webhelyén.
+description: Ismerje meg, hogyan szabhatja testre a Brands modellt a Video Indexer webhelyével.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,85 +10,97 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 956ca7af055768398392045ecf9b383d2eb1060f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 81df3897dff13823e4b97e10bc91d3a22b0e1b0f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513898"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128043"
 ---
-# <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Márkák modell testreszabása a Video Indexer webhellyel
+# <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Márkák modell testreszabása a Video Indexer webhelyével
 
-A Video Indexer támogatja a beszédfelismerés és a vizualizáció szövegének felderítését a videó-és hangtartalom indexelése és újraindexelése során. A márka észlelési funkciója a Bing márkák adatbázisa által javasolt termékek, szolgáltatások és vállalatok megemlítését azonosítja. Ha például a Microsoft a videóban vagy a hangtartalomban szerepel, vagy ha a videó vizualizációs szövegben jelenik meg, akkor Video Indexer a tartalmat a tartalomban márkaként észleli. Az egyéni márkák modell segítségével kiválaszthatja, hogy Video Indexer észleli-e a Bing Brands-adatbázisból származó márkákat, kizár bizonyos márkákat a felderítésből (lényegében a márkák fekete listáját hozza létre), és tartalmazza a modell részét képező márkákat. Előfordulhat, hogy nem a Bing Brands (márkák) adatbázisában található (lényegében a márkák fehér listáját hozza létre).
+A Video Indexer támogatja a beszéd- és vizuális szövegből származó márkaészlelést a video- és hangtartalmak indexelése és újraindexelése során. A márkaészlelési funkció azonosítja a Bing márkaadatbázisa által javasolt termékek, szolgáltatások és vállalatok említését. Ha például a Microsoftot megemlítik a video- vagy hangtartalomban, vagy ha vizuális szövegben jelenik meg egy videóban, a Video Indexer márkaként észleli azt a tartalomban.
 
-Részletes áttekintést az [Áttekintés](customize-brands-model-overview.md)című témakörben talál.
+Az egyéni Márkák modell lehetővé teszi, hogy:
 
-A jelen témakörben leírtak szerint a Video Indexer weblapon létrehozhat, használhat és szerkeszthet egyéni márkákat tartalmazó modelleket a videóban. Használhatja az API-t is, a [Brands Model API](customize-brands-model-with-api.md)-k használatával történő testreszabása című témakörben leírtak szerint.
+- akkor válassza a lehetőséget, ha azt szeretné, hogy a Video Indexer észlelje a márkákat a Bing márkák adatbázisából.
+- jelölje be, ha azt szeretné, hogy a Video Indexer bizonyos márkákat kizárjon az észlelésből (lényegében a márkák megtagadási listájának létrehozása).
+- akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a Video Indexer olyan márkákat vegyen fel, amelyek nem szerepelnek a Modell ben a Bing márkaadatbázisában (lényegében a márkák elfogadható listájának létrehozása).
 
-## <a name="edit-the-settings-of-the-brands-model"></a>A Brands modell beállításainak szerkesztése  
+A részletes áttekintést ebben az [áttekintésben](customize-brands-model-overview.md)találja.
 
-Lehetősége van beállítani, hogy szeretné-e a márkákat a Bing Brands adatbázisából észlelni. Ehhez módosítania kell a Brands modell beállításait.
+A Video Indexer webhely segítségével létrehozhat, használhat és szerkeszthet egy videóban észlelt egyéni Márkák modelleket, a hogy az ebben a témakörben is szerepel. Az API-t is használhatja, amárkák [testreszabása modell API-k használatával](customize-brands-model-with-api.md)című modellben leírtak szerint.
+
+## <a name="edit-brands-model-settings"></a>Márkák modellbeállításainak szerkesztése
+
+Beállíthatja, hogy a Bing márkák adatbázisából származó márkákat észlelje-e vagy sem. A beállítás beállításához a Márkák modell beállításait kell szerkesztenie. Kövesse az alábbi lépéseket:
 
 1. Nyissa meg a [Video Indexer](https://www.videoindexer.ai/) webhelyét, és jelentkezzen be.
-2. A fiókban található modellek testreszabásához kattintson a lap jobb felső sarkában található **tartalmi modell testreszabása** gombra.
- 
-   ![Tartalmi modell testreszabása](./media/content-model-customization/content-model-customization.png) 
-3. A márkák szerkesztéséhez válassza a **márkák** lapot.
+2. A fiókban lévő modell testreszabásához kattintson a lap jobb felső sarkában található **Tartalommodell testreszabása** gombra.
 
-    ![Márkák modell testreszabása](./media/customize-brand-model/customize-brand-model.png)
-4. Ellenőrizze a **Bing által javasolt márkák megjelenítése** lehetőséget, ha azt szeretné, hogy a video Indexer a Bing által javasolt márkákat tartalmazzon. Ha nem Video Indexer szeretné, hogy a tartalomban a Bing által javasolt márkák észlelhetők, ne törölje a jelet a jelölőnégyzetből. 
+   ![Tartalommodell testreszabása a Video Indexelőben](./media/content-model-customization/content-model-customization.png)
 
-## <a name="include-brands-in-the-model"></a>Márkák belefoglalása a modellbe
+3. A márkák szerkesztéséhez válassza a **Márkák** lapot.
 
-A **márkák belefoglalása** szakasz azokat az egyéni márkákat jelöli, amelyeket a video Indexer szeretne felderíteni, még akkor is, ha azokat a Bing nem javasolja.  
+    ![Márkák modell testreszabása a Video Indexerben](./media/customize-brand-model/customize-brand-model.png)
 
-### <a name="add-a-brand"></a>Márka hozzáadása
+4. Ha azt szeretné, hogy a Video Indexer észlelje a Bing által javasolt márkákat, jelölje be a **Bing által javasolt márkák** megjelenítése jelölőnégyzetet, ha nem jelöli be.
 
-1. Kattintson a "+ márka hozzáadása" elemre.
+## <a name="include-brands-in-the-model"></a>Márkák felvétele a modellbe
 
-    ![Márkák modell testreszabása](./media/customize-brand-model/add-brand.png)
+A **Márkák belefoglalása** szakasz olyan egyéni márkákat jelöl, amelyeket a Video Indexer észlelni szeretne, még akkor is, ha a Bing nem javasolta őket.  
 
-    Adja meg a nevet (kötelező), a kategóriát (nem kötelező), a leírást (nem kötelező) és a hivatkozási URL-címet (opcionális).
-    A Kategória mező célja, hogy segítsen a márkák címkézésében. Ez a mező a video Indexer API-k használatakor a márka *címkéi* jelenik meg. Például az "Azure" márka címkézhető vagy kategorizálható "Cloud"-ként.
+### <a name="add-a-brand-to-include-list"></a>Márka hozzáadása a lista felvételéhez
 
-    A hivatkozás URL-címe mező a márka bármely olyan hivatkozási webhelye lehet, mint például a wikipedia oldalára mutató hivatkozás.
-2. Kattintson a "márka hozzáadása" lehetőségre, és látni fogja, hogy a márka hozzá lett adva a **include Brands** listához.
+1. Válassza **a + Márka hozzáadása**lehetőséget.
 
-### <a name="edit-a-brand"></a>Márka szerkesztése
+    ![Márkák modell testreszabása a Video Indexerben](./media/customize-brand-model/add-brand.png)
 
-1. Kattintson a szerkeszteni kívánt márka melletti ceruza ikonra.
+    Adjon meg egy nevet (kötelező), kategória (nem kötelező), leírás (nem kötelező) és hivatkozási URL-t (nem kötelező).
+    A kategóriamező célja, hogy segítsen megjelölni a márkákat. Ez a mező a márka *címkéiként* jelenik meg a Video Indexer API-k használatakor. Például az "Azure" márka címkézhető vagy "Felhő" kategóriába sorolható.
 
-    A márka kategóriájának, leírásának vagy hivatkozási URL-címének frissítését végezheti el. A márka neve nem módosítható, mert a márkák nevei egyediek. Ha módosítania kell a márka nevét, törölje a teljes márkát (lásd a következő szakaszt), és hozzon létre egy új márkát az új névvel.
-2. Kattintson a **frissítés** gombra a Brand új információval való frissítéséhez.
+    A referencia URL-mező lehet a márka bármely referenciaweboldala (például a Wikipédia oldalára mutató hivatkozás).
 
-### <a name="delete-a-brand"></a>Márka törlése
+2. Válassza **a Márka hozzáadása lehetőséget,** és látni fogja, hogy a márka fel került a Márkák **felvétele** listára.
 
-1. Kattintson a törölni kívánt márka melletti Kuka ikonra.
-2. Kattintson a "Törlés" gombra, és a márka többé nem jelenik meg a *belefoglalási márkák* listájában.
+### <a name="edit-a-brand-on-the-include-list"></a>Márka szerkesztése a include listán
+
+1. Jelölje ki a szerkesztni kívánt márka melletti ceruza ikont.
+
+    Frissítheti egy márka kategóriáját, leírását vagy hivatkozási URL-címét. Nem változtathatja meg egy márka nevét, mert a márkák neve egyedi. Ha meg kell változtatnia a márkanevet, törölje a teljes márkát (lásd a következő szakaszt), és hozzon létre egy új márkát az új névvel.
+
+2. A **Frissítés gombra** kattintva frissítheti a márkát az új információkkal.
+
+### <a name="delete-a-brand-on-the-include-list"></a>Márka törlése a belefoglalási listáról
+
+1. Válassza a törölni kívánt márka melletti kuka ikont.
+2. Válassza a **Törlés** lehetőséget, és a márka a továbbiakban nem jelenik meg a *Márkák kalkuláltak* listában.
 
 ## <a name="exclude-brands-from-the-model"></a>Márkák kizárása a modellből
 
-A **márkák kizárása** szakasz azokat a márkákat jelenti, amelyeket a video Indexer nem észlelhető.
+A **Márkák kizárása** szakasz azokat a márkákat jelöli, amelyeket nem szeretne, hogy a Video Indexer észleljen.
 
-### <a name="add-a-brand"></a>Márka hozzáadása
+### <a name="add-a-brand-to-exclude-list"></a>Márka hozzáadása a lista kizárásához
 
-1. Kattintson a "+ márka hozzáadása" elemre.
+1. Válassza a **+ Márka hozzáadása lehetőséget.**
 
-    Adjon meg egy nevet (kötelező), kategória (nem kötelező).
-2. Kattintson a "márka hozzáadása" elemre, és látni fogja, hogy a márka hozzá lett adva a *kizárási márkák* listához.
+    Adjon meg egy nevet (kötelező), kategóriát (nem kötelező).
 
-### <a name="edit-a-brand"></a>Márka szerkesztése
+2. Válaszd a **Márka hozzáadása lehetőséget,** és látni fogod, hogy a márka felkerült a *Márkák kizárása* listára.
 
-1. Kattintson a szerkeszteni kívánt márka melletti ceruza ikonra.
+### <a name="edit-a-brand-on-the-exclude-list"></a>Márka szerkesztése a kizárási listán
 
-    A márka kategóriáját csak frissíteni lehet. A márka neve nem módosítható, mert a márkák nevei egyediek. Ha módosítania kell a márka nevét, törölje a teljes márkát (lásd a következő szakaszt), és hozzon létre egy új márkát az új névvel.
-2. Kattintson a **frissítés** gombra a Brand új információval való frissítéséhez.
+1. Jelölje ki a szerkesztni kívánt márka melletti ceruza ikont.
 
-### <a name="delete-a-brand"></a>Márka törlése
+    Csak egy márka kategóriáját frissítheti. Nem változtathatja meg egy márka nevét, mert a márkák neve egyedi. Ha meg kell változtatnia a márkanevet, törölje a teljes márkát (lásd a következő szakaszt), és hozzon létre egy új márkát az új névvel.
 
-1. Kattintson a törölni kívánt márka melletti Kuka ikonra.
-2. Kattintson a "Törlés" gombra, és a márka többé nem jelenik meg a *kizárási márkák* listájában.
+2. A **Frissítés gombra** kattintva frissítheti a márkát az új információkkal.
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="delete-a-brand-on-the-exclude-list"></a>Márka törlése a kizárási listáról
 
-[A Brands modell testreszabása API-k használatával](customize-brands-model-with-api.md)
+1. Válassza a törölni kívánt márka melletti kuka ikont.
+2. Válassza a **Törlés** lehetőséget, és a márka a továbbiakban nem jelenik meg a *Márkák kizárása* listában.
+
+## <a name="next-steps"></a>További lépések
+
+[Márkák modell testreszabása API-k használatával](customize-brands-model-with-api.md)

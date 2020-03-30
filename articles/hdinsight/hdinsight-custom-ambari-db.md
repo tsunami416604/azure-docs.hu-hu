@@ -1,6 +1,6 @@
 ---
-title: Egyéni Apache Ambari-adatbázis az Azure HDInsight
-description: Ismerje meg, hogyan hozhat létre HDInsight-fürtöket a saját egyéni Apache Ambari-adatbázisával.
+title: Egyéni Apache Ambari-adatbázis az Azure HDInsightban
+description: Ismerje meg, hogyan hozhat létre HDInsight-fürtöket saját egyéni Apache Ambari adatbázisával.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,62 +8,62 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 8064fd5369e55ea223a697d30d7643ff5407cf76
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: e7351e2f39c7e4eed84f4a47e3eeb2214a062a94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73066002"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240156"
 ---
-# <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>HDInsight-fürtök beállítása egyéni Ambari-ADATBÁZISsal
+# <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>HDInsight-fürtök beállítása egyéni Ambari DB-vel
 
-Az Apache Ambari leegyszerűsíti egy Apache Hadoop-fürt felügyeletét és figyelését. A Ambari egy könnyen használható webes felhasználói felületet és REST API biztosít. A Ambari a HDInsight-fürtökben található, és a fürt figyelésére és a konfiguráció módosítására szolgál.
+Az Apache Ambari leegyszerűsíti az Apache Hadoop-fürt felügyeletét és felügyeletét. Az Ambari egy könnyen használható webes felhasználói felületet és REST API-t biztosít. Az Ambari a HDInsight-fürtökben található, és a fürt figyelésére és a konfiguráció módosítására szolgál.
 
-A fürt normál létrehozásakor az egyéb cikkek, például a [fürtök beállítása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md)-ben című témakörben leírtak szerint a Ambari a HDInsight által felügyelt, [S0 Azure SQL Database-adatbázisba](../sql-database/sql-database-dtu-resource-limits-single-databases.md#standard-service-tier) kerül üzembe, és a felhasználók számára nem érhető el.
+A normál fürtlétrehozása, ahogy azt más cikkekben, például [a fürtök beállítása a HDInsightban,](hdinsight-hadoop-provision-linux-clusters.md)Ambari egy [S0 Azure SQL-adatbázis,](../sql-database/sql-database-dtu-resource-limits-single-databases.md#standard-service-tier) amely hdinsight által felügyelt, és nem érhető el a felhasználók számára.
 
-Az egyéni Ambari adatbázis-szolgáltatás lehetővé teszi, hogy új fürtöt helyezzen üzembe, és beállítsa a Ambari egy olyan külső adatbázisban, amelyet Ön felügyel. Az üzembe helyezés egy Azure Resource Manager sablonnal történik. Ez a funkció a következő előnyöket nyújtja:
+Az egyéni Ambari DB szolgáltatás lehetővé teszi egy új fürt telepítését és az Ambari telepítését egy külső adatbázisban, amelyet Ön kezel. A központi telepítés egy Azure Resource Manager-sablonnal történik. Ez a funkció a következő előnyökkel jár:
 
-- Testreszabás – kiválaszthatja az adatbázis méretét és feldolgozási kapacitását. Ha nagy méretű fürtökkel dolgoz fel intenzív számítási feladatokat, az alacsonyabb specifikációkkal rendelkező Ambari-adatbázisok szűk keresztmetszetet jelenthetnek a felügyeleti műveletek esetében.
-- Rugalmasság – szükség szerint méretezheti az adatbázist az igényeinek megfelelően.
-- Vezérlés – az adatbázis biztonsági mentéseit és biztonságát úgy kezelheti, hogy azok megfeleljenek a szervezet követelményeinek.
+- Testreszabás - kiválaszthatja az adatbázis méretét és feldolgozási kapacitását. Ha nagy fürtök feldolgozása intenzív számítási feladatok, egy Ambari adatbázis alacsonyabb specifikációk válhat szűk keresztmetszetet a felügyeleti műveletek.
+- Rugalmasság – szükség szerint méretezheti az adatbázist, hogy megfeleljen az igényeinek.
+- Control – az adatbázis biztonsági mentéseit és biztonságát a szervezeti követelményeknek megfelelőmódon kezelheti.
 
-A cikk hátralévő része a következő szempontokat ismerteti:
+A cikk további része a következő pontokat tárgyalja:
 
-- az egyéni Ambari adatbázis-szolgáltatás használatára vonatkozó követelmények
-- a HDInsight-fürtök saját külső adatbázissal való kiépítéséhez szükséges lépések az Apache Ambari
+- az egyéni Ambari DB funkció használatához
+- a HDInsight-fürtök kiépítéséhez szükséges lépések az Apache Ambari saját külső adatbázisának használatával
 
-## <a name="custom-ambari-db-requirements"></a>Egyéni Ambari-ADATBÁZISra vonatkozó követelmények
+## <a name="custom-ambari-db-requirements"></a>Egyéni Ambari DB követelmények
 
-Az egyéni Ambari-ADATBÁZISokat a fürt összes típusával és verziójával is üzembe helyezheti. Több fürt nem használhatja ugyanazt a Ambari-adatbázist.
+Egyéni Ambari DB-t telepíthet az összes fürttípussal és verzióval. Több fürt nem használhatja ugyanazt az Ambari DB-t.
 
-Az egyéni Ambari-adatbázis a következő egyéb követelményekkel rendelkezik:
+Az egyéni Ambari DB a következő egyéb követelményekkel rendelkezik:
 
-- Rendelkeznie kell egy meglévő Azure SQL DB-kiszolgálóval és-adatbázissal.
-- A Ambari-telepítéshez megadott adatbázisnak üresnek kell lennie. Az alapértelmezett dbo-sémában nem szerepelhetnek táblák.
-- Az adatbázishoz való kapcsolódáshoz használt felhasználónak SELECT, CREATE TABLE és INSERT engedélyekkel kell rendelkeznie az adatbázishoz.
-- Kapcsolja be a lehetőséget, hogy engedélyezze az Azure- [szolgáltatásokhoz való hozzáférést](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#azure-portal-steps) azon az Azure SQL Serveren, ahol a Ambari fogja üzemeltetni.
-- A HDInsight szolgáltatásból származó felügyeleti IP-címeket engedélyezni kell a SQL Serverban. Tekintse meg az SQL Server-tűzfalhoz hozzáadni kívánt IP-címek listáját a [HDInsight-felügyeleti IP-címek](hdinsight-management-ip-addresses.md) listájában.
+- Rendelkeznie kell egy meglévő Azure SQL DB-kiszolgálóval és -adatbázissal.
+- Az Ambari telepítéséhez megadott adatbázisnak üresnek kell lennie. Az alapértelmezett dbo sémában nem lehetnek táblák.
+- Az adatbázishoz való csatlakozáshoz használt felhasználónak SELECT, CREATE TABLE és INSERT engedélyekkel kell rendelkeznie az adatbázishoz.
+- Kapcsolja be az [Azure-szolgáltatások hoz való hozzáférés engedélyezése](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#azure-portal-steps) az Azure SQL-kiszolgálón, ahol az Ambari lesz.
+- A HDInsight szolgáltatás felügyeleti IP-címeit engedélyezni kell az SQL Server ben. Az SQL-kiszolgáló tűzfalához hozzáadandó IP-címek listáját a [HDInsight-kezelési IP-címek](hdinsight-management-ip-addresses.md) című témakörben található.
 
-Ha egy külső adatbázisban üzemelteti az Apache Ambari-adatbázist, jegyezze fel a következő szempontokat:
+Amikor az Apache Ambari DB-t egy külső adatbázisban üzemelteti, ne feledje a következő pontokat:
 
-- Ön felelős az Azure SQL DB Ambari-t tartalmazó további költségeiért.
-- Rendszeresen készítse elő az egyéni Ambari-adatbázis biztonsági mentését. Azure SQL Database automatikusan készít biztonsági másolatokat, de a biztonsági mentés megőrzési ideje változó. További információ: az [automatikus SQL Database biztonsági mentések](../sql-database/sql-database-automated-backups.md)ismertetése.
+- Ön felelős az Ambari-t tartalmazó Azure SQL DB további költségeiért.
+- Rendszeresen biztonsági másolatot kell ad az egyéni Ambari DB-ről. Az Azure SQL Database automatikusan létrehozza a biztonsági mentéseket, de a biztonsági mentés megőrzési időkerete változó. További információt az [SQL Database automatikus biztonsági mentései című témakörben talál.](../sql-database/sql-database-automated-backups.md)
 
-## <a name="deploy-clusters-with-a-custom-ambari-db"></a>Fürtök üzembe helyezése egyéni Ambari-ADATBÁZISsal
+## <a name="deploy-clusters-with-a-custom-ambari-db"></a>Fürtök telepítése egyéni Ambari DB-vel
 
-Saját külső Ambari-adatbázist használó HDInsight-fürt létrehozásához használja az [Egyéni AMBARI db](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-custom-ambari-db)gyors üzembe helyezési sablont.
+Ha saját külső Ambari-adatbázist használó HDInsight-fürtöt szeretne létrehozni, használja az [egyéni Ambari DB gyorsútmutató sablont.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-custom-ambari-db)
 
-Szerkessze a `azuredeploy.parameters.json` paramétereit, és adja meg az új fürtre és a Ambari tároló adatbázisra vonatkozó információkat.
+Az új fürtés `azuredeploy.parameters.json` az Ambari tárolására képes adatbázis adatainak megadásához szerkesztheti a paramétereket.
 
-Az üzembe helyezést az Azure CLI használatával kezdheti el. Cserélje le a `<RESOURCEGROUPNAME>`t arra az erőforráscsoporthoz, amelyben a fürtöt telepíteni kívánja.
+Megkezdheti a központi telepítést az Azure CLI használatával. Cserélje `<RESOURCEGROUPNAME>` le azt az erőforráscsoportot, amelyben a fürtöt telepíteni szeretné.
 
-```azure-cli
+```azurecli
 az group deployment create --name HDInsightAmbariDBDeployment \
     --resource-group <RESOURCEGROUPNAME> \
     --template-file azuredeploy.json \
     --parameters azuredeploy.parameters.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Külső metaadattárak használata az Azure HDInsightban](hdinsight-use-external-metadata-stores.md)

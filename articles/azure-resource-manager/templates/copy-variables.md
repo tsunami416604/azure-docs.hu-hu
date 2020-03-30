@@ -1,24 +1,24 @@
 ---
-title: Változó több példányának meghatározása
-description: A másolási művelettel Azure Resource Manager sablonban több alkalommal is megismételheti a változókat.
+title: Változó több példányának definiálása
+description: Az Azure Resource Manager-sablonban használt másolási műveletet többször idotere, amikor változót hoz létre.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: ea4caf3553b3cd14eec194b8cef0db59499a4f4c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: ed0c2d87c48a18b0a065f6c76e1e69142a9df048
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622884"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153301"
 ---
-# <a name="variable-iteration-in-azure-resource-manager-templates"></a>Változó iteráció Azure Resource Manager-sablonokban
+# <a name="variable-iteration-in-arm-templates"></a>Változó iteráció arm sablonokban
 
-Ez a cikk bemutatja, hogyan hozhat létre egynél több értéket egy változóhoz a Azure Resource Manager-sablonban. Ha hozzáadja a **Másolás** elemet a sablon változók szakaszához, az üzembe helyezés során dinamikusan beállíthatja egy változó elemeinek számát. Emellett ne kelljen megismételni a sablon szintaxisát.
+Ez a cikk bemutatja, hogyan hozhat létre egynél több értéket egy változóhoz az Azure Resource Manager (ARM) sablonban. Ha hozzáadja a **másolási** elemet a sablon változók szakaszához, dinamikusan beállíthatja egy változó elemeinek számát a telepítés során. Azt is elkerülheti, hogy meg kell ismételnie a sablon szintaxisát.
 
-A másolást [erőforrásokkal](copy-resources.md), [erőforrásokkal](copy-properties.md)és [kimenetekkel](copy-outputs.md)is elvégezheti.
+A [másolást erőforrásokkal](copy-resources.md), [erőforrások tulajdonságaival](copy-properties.md)és kimenetekkel is [használhatja.](copy-outputs.md)
 
 ## <a name="variable-iteration"></a>Változó iteráció
 
-A másolási elem a következő általános formátumú:
+A másolási elem általános formátuma a következő:
 
 ```json
 "copy": [
@@ -30,11 +30,11 @@ A másolási elem a következő általános formátumú:
 ]
 ```
 
-A **Name** tulajdonság bármely olyan érték, amely a hurok azonosítására szolgál. A **Count** tulajdonság határozza meg a változóhoz használni kívánt iterációk számát.
+A **name** tulajdonság bármely olyan érték, amely azonosítja a hurkot. A **count** tulajdonság a változóhoz kívánt ismétlések számát adja meg.
 
-A **bemeneti** tulajdonság határozza meg a megismételni kívánt tulajdonságokat. A **bemeneti** tulajdonság értékével létrehozott elemek tömbjét hozza létre. Ez lehet egy tulajdonság (például egy karakterlánc) vagy egy olyan objektum, amely több tulajdonsággal rendelkezik.
+A **bemeneti** tulajdonság határozza meg az ismétlődő tulajdonságokat. A **bemeneti** tulajdonság értékéből létrehozott elemek tömbjét hozza létre. Ez lehet egyetlen tulajdonság (például egy karakterlánc), vagy egy több tulajdonsággal rendelkező objektum.
 
-Az alábbi példa azt szemlélteti, hogyan hozható létre karakterlánc-értékek tömbje:
+A következő példa bemutatja, hogyan hozhat létre karakterlánc-értékektömbjét:
 
 ```json
 {
@@ -65,7 +65,7 @@ Az alábbi példa azt szemlélteti, hogyan hozható létre karakterlánc-érték
 }
 ```
 
-Az előző sablon egy tömböt ad vissza a következő értékekkel:
+Az előző sablon a következő értékekkel rendelkező tömböt ad vissza:
 
 ```json
 [
@@ -77,7 +77,7 @@ Az előző sablon egy tömböt ad vissza a következő értékekkel:
 ]
 ```
 
-A következő példa bemutatja, hogyan hozhat létre olyan objektumok tömbjét, amelyeknek három tulajdonsága van: Name, diskSizeGB és diskIndex.
+A következő példa bemutatja, hogyan hozhat létre három tulajdonsággal rendelkező objektumok tömbjét – név, diskSizeGB és diskIndex.
 
 ```json
 {
@@ -112,7 +112,7 @@ A következő példa bemutatja, hogyan hozhat létre olyan objektumok tömbjét,
 }
 ```
 
-Az előző példa egy tömböt ad vissza a következő értékekkel:
+Az előző példa a következő értékekkel rendelkező tömböt ad vissza:
 
 ```json
 [
@@ -145,10 +145,10 @@ Az előző példa egy tömböt ad vissza a következő értékekkel:
 ```
 
 > [!NOTE]
-> A változó iteráció egy eltolási argumentumot támogat. Az eltolásnak az iteráció neve után kell érkeznie, például copyIndex (' diskNames ', 1). Ha nem ad meg eltolási értéket, az alapértelmezett érték 0 az első példánynál.
+> A változó iteráció támogatja az eltolási argumentumot. Az eltolásnak az iteráció neve után kell származnia, például copyIndex('diskNames', 1). Ha nem ad meg eltolási értéket, akkor az első példány esetében alapértelmezés szerint 0 lesz.
 >
 
-A másolás elemet egy változón belül is használhatja. A következő példa egy olyan objektumot hoz létre, amely egy tömböt tartalmaz egy értékként.
+A másolási elemet egy változón belül is használhatja. A következő példa létrehoz egy olyan objektumot, amelynek egyik értéke tömb.
 
 ```json
 {
@@ -186,7 +186,7 @@ A másolás elemet egy változón belül is használhatja. A következő példa 
 }
 ```
 
-Az előző példa egy objektumot ad vissza a következő értékekkel:
+Az előző példa a következő értékekkel rendelkező objektumot adja vissza:
 
 ```json
 {
@@ -221,7 +221,7 @@ Az előző példa egy objektumot ad vissza a következő értékekkel:
 }
 ```
 
-A következő példa bemutatja a másolás változókkal való használatának különböző módszereit.
+A következő példa bemutatja, hogy a változókkal együtt milyen különböző módokon használható a másolás.
 
 ```json
 {
@@ -297,26 +297,26 @@ A következő példa bemutatja a másolás változókkal való használatának k
 
 ## <a name="copy-limits"></a>Másolási korlátok
 
-A szám nem lehet nagyobb, mint 800.
+A szám nem haladhatja meg a 800-at.
 
-A darabszám nem lehet negatív szám. Ha Azure PowerShell 2,6-as vagy újabb, Azure CLI-2.0.74 vagy újabb verzióval, REST API vagy a **2019-05-10** -es vagy újabb verziójával rendelkező sablont telepít, akkor a Count értéket nullára állíthatja. A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nulla értéket a darabszámhoz.
+A szám nem lehet negatív szám. Ha az Azure PowerShell 2.6-os vagy újabb, az Azure CLI 2.0.74-es vagy újabb, illetve a REST API **2019-05-10-es** vagy újabb verziójával telepít egy sablont, beállíthatja a számlálót nullára. A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nullát a számláláshoz.
 
 ## <a name="example-templates"></a>Példa sablonok
 
-Az alábbi példák egy változó több értékének létrehozására vonatkozó gyakori forgatókönyveket mutatnak be.
+Az alábbi példák egy változóhoz egynél több érték létrehozásának gyakori forgatókönyveit mutatják be.
 
 |Sablon  |Leírás  |
 |---------|---------|
-|[Változók másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Bemutatja a változók megismétlésének különböző módszereit. |
-|[Több biztonsági szabály](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Több biztonsági szabályt telepít egy hálózati biztonsági csoportra. A biztonsági szabályokat egy paraméter alapján hozza létre. A paraméternél tekintse meg a [több NSG-paramétert tartalmazó fájlt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
+|[Változók másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Bemutatja a változók eltérő iterálási módjait. |
+|[Több biztonsági szabály](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Több biztonsági szabályt telepít egy hálózati biztonsági csoportra. A biztonsági szabályokat egy paraméterből építi fel. A paramétert több [NSG paraméterfájlban láthatja.](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Az oktatóanyag lépéseinek megismeréséhez lásd [: oktatóanyag: több erőforrás-példány létrehozása Resource Manager-sablonok használatával](template-tutorial-create-multiple-instances.md).
-* A másolási elem egyéb felhasználási módjaiért lásd:
-  * [Erőforrás-iteráció Azure Resource Manager-sablonokban](copy-resources.md)
-  * [Tulajdonság-iteráció Azure Resource Manager-sablonokban](copy-properties.md)
-  * [Kimeneti iteráció Azure Resource Manager-sablonokban](copy-outputs.md)
-* Ha szeretné megismerni a sablonok egyes részeit, olvassa el a [Azure Resource Manager sablonok készítése](template-syntax.md)című szakaszt.
-* A sablon üzembe helyezésével kapcsolatos további információkért lásd: [alkalmazások központi telepítése Azure Resource Manager sablonnal](deploy-powershell.md).
+* Ha egy oktatóanyagon szeretne átmenni, olvassa el [az Oktatóanyag: Több erőforráspéldány létrehozása ARM-sablonokkal című témakört.](template-tutorial-create-multiple-instances.md)
+* A másolási elem egyéb felhasználási ideje:
+  * [Erőforrás-ismétlés ARM-sablonokban](copy-resources.md)
+  * [Tulajdonság ismétlése ARM sablonokban](copy-properties.md)
+  * [Kimeneti ismétlés ARM sablonokban](copy-outputs.md)
+* Ha a sablonok szakaszairól szeretne többet megtudni, olvassa el [az ARM-sablonok készítése című témakört.](template-syntax.md)
+* A sablon üzembe helyezéséről az [Alkalmazás telepítése ARM sablonnal (Alkalmazás telepítése ARM sablonnal) témakörben](deploy-powershell.md)olvashat.
 

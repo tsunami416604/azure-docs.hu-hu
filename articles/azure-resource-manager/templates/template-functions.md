@@ -1,22 +1,22 @@
 ---
 title: Sablonfüggvények
-description: A Azure Resource Manager-sablonban az értékek beolvasására, a karakterláncok és a numerikus karakterek használatára, valamint az üzembe helyezési adatok lekérésére használt függvények leírását ismerteti.
+description: Ismerteti az Azure Resource Manager-sablonban az értékek lekéréséhez, a karakterláncok és numerikus értékek használatához, valamint a központi telepítési adatok beolvasásához használandó függvényeket.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: a9d10ad4899f35acd45069cb3d351a60632fed3a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207042"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156259"
 ---
-# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager sablon függvények
+# <a name="arm-template-functions"></a>ARM sablonfüggvények
 
-Ez a cikk a Azure Resource Manager-sablonokban használható összes funkciót ismerteti. További információ a függvények használatáról a sablonban: [sablon szintaxisa](template-expressions.md).
+Ez a cikk ismerteti az Azure Resource Manager (ARM) sablonban használható összes funkciót. A függvények sablonban való használatáról a [sablon szintaxisában](template-expressions.md)olvashat.
 
-Saját függvények létrehozásához tekintse meg a [felhasználó által definiált függvények](template-syntax.md#functions)című témakört.
+Saját függvények létrehozásáról a [Felhasználó által definiált függvények című témakörben látható.](template-syntax.md#functions)
 
-A legtöbb függvény ugyanúgy működik, amikor az erőforráscsoportot, az előfizetést, a felügyeleti csoportot vagy a bérlőt telepíti. Néhány függvény nem használható minden hatókörben. Ezeket az alábbi listán fel kell tüntetni.
+A legtöbb függvény ugyanúgy működik, ha egy erőforráscsoport, előfizetés, felügyeleti csoport vagy bérlő üzembe helyezésekor. Néhány függvény nem használható minden hatókörben. Az alábbi listákon szerepelnek.
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -38,25 +38,25 @@ A legtöbb függvény ugyanúgy működik, amikor az erőforráscsoportot, az el
 
 ## <a name="array-and-object-functions"></a>Tömb- és objektumfüggvények
 
-A Resource Manager számos funkciót biztosít a tömbök és objektumok használatához.
+Az Erőforrás-kezelő számos függvényt biztosít a tömbök és objektumok számára.
 
 * [tömb](template-functions-array.md#array)
-* [összefonódik](template-functions-array.md#coalesce)
-* [concat](template-functions-array.md#concat)
-* [tartalmaz](template-functions-array.md#contains)
+* [összeolvad](template-functions-array.md#coalesce)
+* [Concat](template-functions-array.md#concat)
+* [Tartalmaz](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
-* [üres](template-functions-array.md#empty)
-* [első](template-functions-array.md#first)
-* [kereszteződés](template-functions-array.md#intersection)
-* [JSON](template-functions-array.md#json)
-* [utolsó](template-functions-array.md#last)
-* [hossza](template-functions-array.md#length)
-* [min](template-functions-array.md#min)
+* [Üres](template-functions-array.md#empty)
+* [Első](template-functions-array.md#first)
+* [Kereszteződés](template-functions-array.md#intersection)
+* [Json](template-functions-array.md#json)
+* [Utolsó](template-functions-array.md#last)
+* [Hossza](template-functions-array.md#length)
+* [Min](template-functions-array.md#min)
 * [Max](template-functions-array.md#max)
-* [tartomány](template-functions-array.md#range)
-* [kihagyása](template-functions-array.md#skip)
-* [eltarthat](template-functions-array.md#take)
-* [Union](template-functions-array.md#union)
+* [Tartomány](template-functions-array.md#range)
+* [Ugrál](template-functions-array.md#skip)
+* [venni](template-functions-array.md#take)
+* [Unió](template-functions-array.md#union)
 
 <a id="equals" aria-hidden="true" />
 <a id="less" aria-hidden="true" />
@@ -66,26 +66,26 @@ A Resource Manager számos funkciót biztosít a tömbök és objektumok haszná
 
 ## <a name="comparison-functions"></a>Összehasonlító függvények
 
-A Resource Manager számos funkciót biztosít a sablonokban való összehasonlításhoz.
+Az Erőforrás-kezelő számos funkciót biztosít a sablonok összehasonlításához.
 
 * [egyenlő](template-functions-comparison.md#equals)
-* [kisebb](template-functions-comparison.md#less)
+* [less](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
-* [nagyobb](template-functions-comparison.md#greater)
+* [greater](template-functions-comparison.md#greater)
 * [greaterOrEquals](template-functions-comparison.md#greaterorequals)
 
 <a id="deployment" aria-hidden="true" />
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
 
-## <a name="deployment-value-functions"></a>Központi telepítési érték függvények
+## <a name="deployment-value-functions"></a>Telepítési érték függvények
 
-A Resource Manager a következő függvényeket biztosítja a sablon és a telepítéshez kapcsolódó értékek beolvasásához:
+Az Erőforrás-kezelő a következő függvényeket biztosítja a sablon szakaszaiból és a központi telepítéshez kapcsolódó értékek beszerzéséhez:
 
-* [telepítési](template-functions-deployment.md#deployment)
-* [környezet](template-functions-deployment.md#environment)
-* [paraméterek](template-functions-deployment.md#parameters)
-* [változók](template-functions-deployment.md#variables)
+* [Telepítési](template-functions-deployment.md#deployment)
+* [Környezet](template-functions-deployment.md#environment)
+* [Paraméterek](template-functions-deployment.md#parameters)
+* [Változók](template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
 <a id="bool" aria-hidden="true" />
@@ -95,13 +95,13 @@ A Resource Manager a következő függvényeket biztosítja a sablon és a telep
 
 ## <a name="logical-functions"></a>Logikai függvények
 
-A Resource Manager a következő funkciókat biztosítja a logikai feltételekkel való együttműködéshez:
+Az Erőforrás-kezelő a következő funkciókat biztosítja a logikai feltételekkel való munkához:
 
 * [és](template-functions-logical.md#and)
-* [bool](template-functions-logical.md#bool)
+* [Bool](template-functions-logical.md#bool)
 * [Ha](template-functions-logical.md#if)
-* [nem](template-functions-logical.md#not)
-* [vagy](template-functions-logical.md#or)
+* [Nem](template-functions-logical.md#not)
+* [Vagy](template-functions-logical.md#or)
 
 <a id="add" aria-hidden="true" />
 <a id="copyindex" aria-hidden="true" />
@@ -116,18 +116,18 @@ A Resource Manager a következő funkciókat biztosítja a logikai feltételekke
 
 ## <a name="numeric-functions"></a>Numerikus függvények
 
-A Resource Manager a következő függvényeket biztosítja az egész számokkal való használathoz:
+Az Erőforrás-kezelő a következő funkciókat biztosítja az egész számokkal való munkához:
 
-* [hozzáadása](template-functions-numeric.md#add)
+* [Hozzáadása](template-functions-numeric.md#add)
 * [copyIndex](template-functions-numeric.md#copyindex)
 * [div](template-functions-numeric.md#div)
-* [float](template-functions-numeric.md#float)
-* [int](template-functions-numeric.md#int)
-* [min](template-functions-numeric.md#min)
+* [lebegőpontos](template-functions-numeric.md#float)
+* [Int](template-functions-numeric.md#int)
+* [Min](template-functions-numeric.md#min)
 * [Max](template-functions-numeric.md#max)
-* [mod](template-functions-numeric.md#mod)
-* [mul](template-functions-numeric.md#mul)
-* [Sub](template-functions-numeric.md#sub)
+* [Mod](template-functions-numeric.md#mod)
+* [Mul](template-functions-numeric.md#mul)
+* [Al](template-functions-numeric.md#sub)
 
 <a id="extensionResourceId" aria-hidden="true" />
 <a id="listkeys" aria-hidden="true" />
@@ -142,19 +142,19 @@ A Resource Manager a következő függvényeket biztosítja az egész számokkal
 
 ## <a name="resource-functions"></a>Erőforrásfüggvények
 
-Resource Manager az alábbi funkciókat biztosít erőforrás-értékeinek beolvasása:
+Az Erőforrás-kezelő a következő függvényeket biztosítja az erőforrásértékek beszerzéséhez:
 
 * [extensionResourceId](template-functions-resource.md#extensionresourceid)
 * [listAccountSas](template-functions-resource.md#list)
-* [Listkeys műveletének beolvasása](template-functions-resource.md#listkeys)
-* [listSecrets](template-functions-resource.md#list)
-* [listáját](template-functions-resource.md#list)
-* [szolgáltatók](template-functions-resource.md#providers)
-* [referencia](template-functions-resource.md#reference)
-* [resourceGroup](template-functions-resource.md#resourcegroup) – csak az erőforráscsoporthoz történő központi telepítések esetén használható.
-* [resourceId](template-functions-resource.md#resourceid) – bármely hatókörben használható, de az érvényes paraméterek a hatókörtől függően változnak.
-* [előfizetés](template-functions-resource.md#subscription) – csak erőforráscsoporthoz vagy előfizetéshez használható központi telepítések esetén.
-* [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
+* [listabillentyűk](template-functions-resource.md#listkeys)
+* [listSecrets (Titkok listika)](template-functions-resource.md#list)
+* [lista*](template-functions-resource.md#list)
+* [Szolgáltatók](template-functions-resource.md#providers)
+* [Hivatkozás](template-functions-resource.md#reference)
+* [resourceGroup](template-functions-resource.md#resourcegroup) – csak egy erőforráscsoportban történő központi telepítésben használható.
+* [resourceId](template-functions-resource.md#resourceid) - bármely hatókörben használható, de az érvényes paraméterek a hatókörtől függően változnak.
+* [előfizetés](template-functions-resource.md#subscription) – csak erőforráscsoportvagy előfizetés központi telepítéseiben használható.
+* [előfizetésResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
 <a id="base64" aria-hidden="true" />
@@ -190,45 +190,45 @@ Resource Manager az alábbi funkciókat biztosít erőforrás-értékeinek beolv
 
 ## <a name="string-functions"></a>Sztringfüggvények
 
-A Resource Manager a következő függvényeket biztosítja a karakterláncok használatához:
+Az Erőforrás-kezelő a következő funkciókat biztosítja a karakterláncok közös működéséhez:
 
-* [Base64](template-functions-string.md#base64)
+* [base64](template-functions-string.md#base64)
 * [base64ToJson](template-functions-string.md#base64tojson)
 * [base64ToString](template-functions-string.md#base64tostring)
-* [concat](template-functions-string.md#concat)
-* [tartalmaz](template-functions-string.md#contains)
+* [Concat](template-functions-string.md#concat)
+* [Tartalmaz](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
-* [üres](template-functions-string.md#empty)
-* [endsWith](template-functions-string.md#endswith)
-* [első](template-functions-string.md#first)
-* [formátumban](template-functions-string.md#format)
-* [GUID](template-functions-string.md#guid)
+* [Üres](template-functions-string.md#empty)
+* [végződikWith](template-functions-string.md#endswith)
+* [Első](template-functions-string.md#first)
+* [Formátum](template-functions-string.md#format)
+* [Guid](template-functions-string.md#guid)
 * [indexOf](template-functions-string.md#indexof)
-* [utolsó](template-functions-string.md#last)
+* [Utolsó](template-functions-string.md#last)
 * [lastIndexOf](template-functions-string.md#lastindexof)
-* [hossza](template-functions-string.md#length)
-* [newGuid](template-functions-string.md#newguid)
-* [padLeft](template-functions-string.md#padleft)
-* [csere](template-functions-string.md#replace)
-* [kihagyása](template-functions-string.md#skip)
+* [Hossza](template-functions-string.md#length)
+* [newGuid között](template-functions-string.md#newguid)
+* [padBalra](template-functions-string.md#padleft)
+* [Helyettesít](template-functions-string.md#replace)
+* [Ugrál](template-functions-string.md#skip)
 * [felosztás](template-functions-string.md#split)
-* [startsWith](template-functions-string.md#startswith)
-* [karakterlánc](template-functions-string.md#string)
-* [substring](template-functions-string.md#substring)
-* [eltarthat](template-functions-string.md#take)
-* [toLower](template-functions-string.md#tolower)
-* [toUpper](template-functions-string.md#toupper)
-* [Trim](template-functions-string.md#trim)
+* [kezdődik](template-functions-string.md#startswith)
+* [sztring](template-functions-string.md#string)
+* [Substring](template-functions-string.md#substring)
+* [venni](template-functions-string.md#take)
+* [lassabbra](template-functions-string.md#tolower)
+* [toUpper (felső](template-functions-string.md#toupper)
+* [Berendezés](template-functions-string.md#trim)
 * [uniqueString](template-functions-string.md#uniquestring)
-* [URI](template-functions-string.md#uri)
-* [uriComponent](template-functions-string.md#uricomponent)
+* [Uri](template-functions-string.md#uri)
+* [uriKomponens](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
-* [utcNow](template-functions-string.md#utcnow)
+* [utcNow között](template-functions-string.md#utcnow)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Azure Resource Manager sablonban található részekről a következő témakörben talál leírást: [Azure Resource Manager sablonok készítése](template-syntax.md)
-* Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md) című témakört.
-* Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](copy-resources.md)című témakört.
-* A létrehozott sablon üzembe helyezéséről lásd: [alkalmazás központi telepítése Azure Resource Manager sablonnal](deploy-powershell.md)
+* Az ARM-sablonok szakaszainak leírását az [ARM-sablonok készítése című témakörben találja.](template-syntax.md)
+* Több sablon egyesítéséhez olvassa el a [Csatolt sablonok használata az Azure Resource Managerrel](linked-templates.md)
+* Ha egy erőforrástípus létrehozásakor meghatározott számú alkalommal szeretne meghaladni, olvassa [el az Erőforrások több példányának létrehozása az Azure Resource Manager ben című témakört.](copy-resources.md)
+* A létrehozott sablon központi telepítéséről az [Alkalmazás telepítése ARM-sablonokkal című](deploy-powershell.md) témakörben olvashat.

@@ -1,7 +1,7 @@
 ---
-title: Az Azure Video Indexer használata a Brands modell testreszabásához
+title: Márkák modell testreszabása a Video Indexer API-val
 titleSuffix: Azure Media Services
-description: Ez a cikk bemutatja, hogyan használható az Azure Video Indexer a Brands modell testreszabásához.
+description: Ismerje meg, hogyan szabhatja testre a Brands modellt a Video Indexer API-val.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,36 +10,36 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: 81ba4cc7be5f9361d21aaea2ba78d0fd6f0f8c95
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 79c3a7934e9152a4908f895c20ee6fbdc0f360cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289917"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127997"
 ---
-# <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Brands-modell testreszabása a Video Indexer API-val
+# <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Márkák modell testreszabása a Video Indexer API-val
 
-A Video Indexer támogatja a beszédfelismerés és a vizualizáció szövegének felderítését a videó-és hangtartalom indexelése és újraindexelése során. A márka észlelési funkciója a Bing márkák adatbázisa által javasolt termékek, szolgáltatások és vállalatok megemlítését azonosítja. Ha például a Microsoft a videóban vagy a hangtartalomban szerepel, vagy ha a videó vizualizációs szövegben jelenik meg, akkor Video Indexer a tartalmat a tartalomban márkaként észleli. Az egyéni márkák modell lehetővé teszi, hogy kizárjon bizonyos márkákat a rendszerből, és olyan márkákat tartalmazzon, amelyek nem feltétlenül a Bing márkák adatbázisában találhatók.
+A Video Indexer támogatja a beszéd- és vizuális szövegből származó márkaészlelést a video- és hangtartalmak indexelése és újraindexelése során. A márkaészlelési funkció azonosítja a Bing márkaadatbázisa által javasolt termékek, szolgáltatások és vállalatok említését. Ha például a Microsoftot megemlítik a video- vagy hangtartalomban, vagy ha vizuális szövegben jelenik meg egy videóban, a Video Indexer márkaként észleli azt a tartalomban. Az egyéni Márkák modell lehetővé teszi, hogy bizonyos márkákat kizárjon az észlelésből, és olyan márkákat vegyen fel, amelyek nem szerepelnek a modellben, és amelyek nem szerepelnek a Bing márkaadatbázisában.
 
-Részletes áttekintést az [Áttekintés](customize-brands-model-overview.md)című témakörben talál.
+A részletes áttekintést az Áttekintés című [témakörben találja.](customize-brands-model-overview.md)
 
-A jelen témakörben leírtak szerint a Video Indexer API-k használatával hozhat létre, használhat és szerkeszthet egyéni márkákat tartalmazó modelleket a videóban. A Video Indexer webhelyét a [Brands Model testreszabása a video Indexer webhelyről](customize-brands-model-with-api.md)című témakörben leírtak szerint is használhatja.
+A Videóindexelő API-k segítségével egyéni Márkák modelleket hozhat létre, használhat és szerkeszthet egy videóban, ahogy az ebben a témakörben is szerepel. A Video Indexer webhelyet is használhatja a [Márkák testreszabása modellben leírtak szerint a Video Indexer webhely használatával.](customize-brands-model-with-api.md)
 
 ## <a name="create-a-brand"></a>Márka létrehozása
 
-A [Brand API létrehozása](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand) létrehoz egy új egyéni márkát, és hozzáadja azt a megadott fiók egyéni márkák modelljéhez. 
+A [márka](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand) létrehozása API létrehoz egy új egyéni márka, és hozzáadja azt az egyéni Márkák modell a megadott fiókhoz.
 
 > [!NOTE]
-> Ha a beállítás **engedélyezve van** (a törzsben), a True értékre állítja a márka értékét a *belefoglalási* listán a video Indexer az észleléshez. Ha a beállítás **engedélyezve van** , a False (hamis) értékre állítja a márka értékét a *kizárási* listán, így video Indexer nem fogja felderíteni.
+> Ha `enabled` (a törzsben) igazra állítja, a márka szerepel a Video Indexer felderítéséhez listába. *Include* Ha `enabled` hamisra állítja a *márkát* a Kizárás listában, így a Video Indexer nem észleli azt.
 
-A törzsben beállítható egyéb paraméterek:
+Néhány más paraméterek, amelyek et a szervezetben beállíthatja:
 
-* A **referenceUrl** értéke a márka bármely olyan hivatkozási webhelye lehet, mint például a wikipedia oldalára mutató hivatkozás.
-* A **címkék** érték a márka címkéit sorolja fel. Ez a Video Indexer webhely márka *Kategória* mezőjében jelenik meg. Például az "Azure" márka címkézhető vagy kategorizálható "Cloud"-ként.
+* Az `referenceUrl` érték lehet bármilyen referencia weboldalak a márka, mint például egy linket a Wikipedia oldalon.
+* Az `tags` érték a márka címkéinek listája. Ez a címke megjelenik a márka *Kategória* mezőjében a Video Indexer webhelyén. Például az "Azure" márka címkézhető vagy "Felhő" kategóriába sorolható.
 
 ### <a name="response"></a>Válasz
 
-A válasz információt nyújt az imént létrehozott márkáról az alábbi példa formátuma alapján.
+A válasz az alábbi példa formátumát követve létrehozott márkáról nyújt információt.
 
 ```json
 {
@@ -61,19 +61,19 @@ A válasz információt nyújt az imént létrehozott márkáról az alábbi pé
 
 ## <a name="delete-a-brand"></a>Márka törlése
 
-A [márka törlése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) API eltávolítja a megadott fiók egyéni márkák modelljéből származó márkát. A fiók a **accountId** paraméterben van megadva. A sikeres hívás után a márka már nem *szerepel a* Brands *(márkák)* listában.
+A márka API [törlése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) eltávolítja a márkát a megadott fiók egyéni Brands modelljéből. A fiók meg van `accountId` adva a paraméterben. A sikeres elnevezés után a márka a továbbiakban nem szerepel a *Márkák belefoglalása* vagy *kizárása* listában.
 
 ### <a name="response"></a>Válasz
 
-A márka törlését követően a rendszer nem adott vissza tartalmat.
+A márka sikeres törlésekor nincs visszaküldött tartalom.
 
-## <a name="get-a-specific-brand"></a>Adott márka beszerzése
+## <a name="get-a-specific-brand"></a>Szerezzen be egy adott márkát
 
-A [Brand API beolvasása](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?) lehetővé teszi, hogy a márka azonosítójának használatával megkeresse az egyéni márkák modellben található márka részleteit.
+A [márka api beszerezése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?) lehetővé teszi, hogy a márka azonosítójának használatával keresse meg egy márka adatait a megadott fiók egyéni Brands modelljében.
 
 ### <a name="response"></a>Válasz
 
-A válasz az alábbi példa formátumát követve információt nyújt a keresett márkáról (a márka AZONOSÍTÓjának használatával).
+A válasz információt nyújt a keresett márkáról (márkaazonosító használatával) az alábbi példa formátumát követve.
 
 ```json
 {
@@ -94,15 +94,15 @@ A válasz az alábbi példa formátumát követve információt nyújt a kereset
 ```
 
 > [!NOTE]
-> Ha az értéke **true (igaz** ) értékre van állítva, az azt jelenti, hogy a márka szerepel a *befoglalási* listán a video Indexer észleléséhez, és a hamis értékre való **engedélyezése** azt jelzi, hogy a márka szerepel a *kizárási* listán, így video Indexer nem fogja felderíteni.
+> `enabled`ha úgy `true` van beállítva, hogy a márka szerepel a Video `enabled` Indexer *alkalmazási* listájában, és hamis, ami azt jelzi, hogy a márka szerepel a *Kizárás* listában, így a Video Indexer nem észleli azt.
 
 ## <a name="update-a-specific-brand"></a>Adott márka frissítése
 
-A [Brand API frissítése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?) lehetővé teszi, hogy a márka azonosítójának használatával megkeresse az egyéni márkák modellben található márka részleteit.
+A [frissítés egy márka](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?) API lehetővé teszi, hogy keressen a részleteket a márka az egyéni Márkák modell a megadott fiók a márka azonosítóját.
 
 ### <a name="response"></a>Válasz
 
-A válasz az alábbi példa formátumát követve frissített információt nyújt a frissített adatokról.
+A válasz az alábbi példa formátumát követve frissített információkat tartalmaz a márkáról.
 
 ```json
 {
@@ -122,13 +122,13 @@ A válasz az alábbi példa formátumát követve frissített információt nyú
 }
 ```
 
-## <a name="get-all-of-the-brands"></a>Az összes márka beszerzése
+## <a name="get-all-of-the-brands"></a>Szerezd meg az összes márka
 
-A [minden márka beolvasása](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?) API az egyéni márkák modellben lévő összes márkát visszaadja a megadott fiókhoz, függetlenül attól, hogy a márka a *befoglalási* vagy *kizárási* márkák listájában szerepel-e.
+A get all brands API visszaadja az összes márkát az egyéni Márkák modellben a megadott fiókhoz, függetlenül attól, hogy a márka a *Márkák belefoglalása* vagy *kizárása* listában szerepel.The [get all brands](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?) API returns all the brands in the custom Brands model for the specified account regardless whether the brand is meant to be in the Include or Exclude brands list.
 
 ### <a name="response"></a>Válasz
 
-A válasz tartalmazza a fiókban lévő összes márka listáját, és az alábbi példa formátumát követve mindegyik részletet.
+A válasz tartalmazza a fiókjában található összes márka listáját és azok adatait az alábbi példa formátumát követve.
 
 ```json
 [
@@ -160,15 +160,15 @@ A válasz tartalmazza a fiókban lévő összes márka listáját, és az alább
 ```
 
 > [!NOTE]
-> A *példaként* megadott márka a *befoglalások* listájában szerepel a video Indexer észleléséhez, és a *pelda2* nevű márka a *kizárási* listán szerepel, így video Indexer nem fogja felderíteni.
+> A *Példa* nevű márka szerepel a Video Indexer észleléséhez szükséges *Belefoglalás* listában, és a *Example2* nevű márka szerepel a *Kizárás* listában, így a Video Indexer nem észleli azt.
 
-## <a name="get-brands-model-settings"></a>A Brands modell beállításainak beolvasása
+## <a name="get-brands-model-settings"></a>A Márkák modellbeállításainak beszereznie
 
-A [Brands beállítások beolvasása](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands) API a megadott fiók márkák modell beállításait adja vissza. A márkák modell beállításai azt jelzik, hogy engedélyezve van-e a Bing Brands adatbázisának észlelése. Ha a Bing-márkák nincsenek engedélyezve, a Video Indexer csak a megadott fiók egyéni márkák modelljéből származó márkákat fogja felderíteni.
+A [get brands settings](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands) API a Brands modell beállításait adja vissza a megadott fiókban. A Márkák modell beállításai azt jelzik, hogy engedélyezve van-e a Bing márkák adatbázisából történő észlelés. Ha a Bing-márkák nincsenek engedélyezve, a Video Indexer csak a megadott fiók egyéni Márkák modelljéből észleli a márkákat.
 
 ### <a name="response"></a>Válasz
 
-A válasz azt jelzi, hogy a Bing márkák engedélyezve vannak-e az alábbi példa formátuma szerint.
+A válasz azt mutatja, hogy a Bing márkák engedélyezve vannak-e az alábbi példa formátumában.
 
 ```json
 {
@@ -178,18 +178,18 @@ A válasz azt jelzi, hogy a Bing márkák engedélyezve vannak-e az alábbi pél
 ```
 
 > [!NOTE]
-> a **useBuiltIn** értéke TRUE (igaz) értékre van állítva, hogy a Bing-márkák engedélyezve vannak. Ha a *useBuiltin* hamis, a Bing-márkák le vannak tiltva. Az **állapot** értéke figyelmen kívül hagyható, mert elavult.
+> `useBuiltIn`igaz értékre van állítva, ami azt jelenti, hogy a Bing márkák engedélyezve vannak. Ha `useBuiltin` hamis, a Bing-márkák le vannak tiltva. Az `state` érték figyelmen kívül hagyható, mert elavult.
 
-## <a name="update-brands-model-settings"></a>A Brands modell beállításainak frissítése
+## <a name="update-brands-model-settings"></a>Márkák modellbeállításainak frissítése
 
-A [frissítési márkák](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?) frissítik a márkák modell beállításait a megadott fiókban. A márkák modell beállításai azt jelzik, hogy engedélyezve van-e a Bing Brands adatbázisának észlelése. Ha a Bing-márkák nincsenek engedélyezve, a Video Indexer csak a megadott fiók egyéni márkák modelljéből származó márkákat fogja felderíteni.
+A [frissítés i.](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?) A Márkák modell beállításai azt jelzik, hogy engedélyezve van-e a Bing márkák adatbázisából történő észlelés. Ha a Bing-márkák nincsenek engedélyezve, a Video Indexer csak a megadott fiók egyéni Márkák modelljéből észleli a márkákat.
 
-A **useBuiltIn** jelző értéke TRUE (igaz) értékre van állítva, hogy a Bing-márkák engedélyezve vannak. Ha a *useBuiltin* hamis, a Bing-márkák le vannak tiltva.
+A `useBuiltIn` jelző értéke igaz azt jelenti, hogy a Bing márkák engedélyezve vannak. Ha `useBuiltin` hamis, a Bing-márkák le vannak tiltva.
 
 ### <a name="response"></a>Válasz
 
-A Brands modell beállításának frissítése nem történt meg a visszaadott tartalomban.
+Nincs visszaküldött tartalom, ha a Brands modell beállítás sikeresen frissül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[A Brands modell testreszabása webhely használatával](customize-brands-model-with-website.md)
+[Márkák modell testreszabása a webhely használatával](customize-brands-model-with-website.md)

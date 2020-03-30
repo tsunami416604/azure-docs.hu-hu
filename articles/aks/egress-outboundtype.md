@@ -1,35 +1,35 @@
 ---
-title: Felhasználó által megadott útvonalak (UDR-EK) testreszabása az Azure Kubernetes szolgáltatásban (ak)
-description: Ismerje meg, hogyan határozhat meg egyéni kimenő útvonalakat az Azure Kubernetes szolgáltatásban (ak)
+title: Felhasználó által definiált útvonalak (UDR) testreszabása az Azure Kubernetes szolgáltatásban (AKS)
+description: Ismerje meg, hogyan definiálhat egyéni kimenő útvonalat az Azure Kubernetes-szolgáltatásban (AKS)
 services: container-service
 ms.topic: article
-ms.date: 01/31/2020
-ms.openlocfilehash: d108c6f49a8f483dc489fd644db6b480fc0e74fc
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/16/2020
+ms.openlocfilehash: fa64294939ea487b3123d1db5ef6c8a5f30fcf72
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595807"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80129391"
 ---
-# <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Fürt kilépésének testreszabása felhasználó által megadott útvonallal (előzetes verzió)
+# <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Fürtforgalom testreszabása felhasználó által definiált útvonallal (előzetes verzió)
 
-Az AK-fürtökből való kilépések testreszabhatók az adott forgatókönyvek kihasználása érdekében. Alapértelmezés szerint az AK kiépít egy szabványos SKU-Load Balancer a kimenő forgalomhoz. Előfordulhat azonban, hogy az alapértelmezett beállítás nem teljesíti az összes forgatókönyv követelményeit, ha a nyilvános IP-címek nem megengedettek, vagy további ugrásokra van szükség a kimenő forgalomhoz.
+Az AKS-fürtből való kijutás testreszabható adott forgatókönyvek nek megfelelően. Alapértelmezés szerint az AKS kiépít egy szabványos termékváltozat-terheléselosztót, amelyet be kell állítani, és a kimenő forgalomhoz kell használni. Előfordulhat azonban, hogy az alapértelmezett beállítás nem felel meg az összes forgatókönyv követelményeinek, ha nyilvános IP-cím nem engedélyezett, vagy további ugrásokra van szükség a kimenő forgalomhoz.
 
-Ez a cikk bemutatja, hogyan szabhatja testre a fürt kimenő útvonalát az egyéni hálózati forgatókönyvek támogatásához, például a nyilvános IP-címek használatát, és a fürtnek a hálózati virtuális berendezés (NVA) mögött kell lennie.
+Ez a cikk bemutatja, hogyan szabhatja testre a fürt kimenő útvonalegyéni hálózati forgatókönyvek, például azok, amelyek nem engedélyezik a nyilvános IP-címeket, és megköveteli, hogy a fürt egy hálózati virtuális berendezés (NVA) mögött üljön.
 
 > [!IMPORTANT]
-> Az AK előzetes verziójának funkciói önkiszolgáló szolgáltatás, és a rendszer opt-alapon is elérhető. Az előzetes verziók az elérhető *módon* és a *rendelkezésre álló módon érhetők el* , és ki vannak zárva a szolgáltatói szerződéssel (SLA) és a korlátozott jótállással. A kétrészes előzetes verziókat az ügyfélszolgálat a *lehető legalkalmasabb* módon kezeli. A funkciók ezért nem használhatók éles környezetben. További információkért lásd a következő támogatási cikkeket:
+> Az AKS előzetes verzió funkciói önkiszolgálóak, és opt-in alapon vehetők igénybe. Az előzetes verziók a *rendelkezésre* állás szerint és *a rendelkezésre állás* szerint érhetők el, és nem tartoznak a szolgáltatásiszint-szerződés (SLA) és a korlátozott jótállás hatálya alól. Az AKS-előnézeteket részben az ügyfélszolgálat fedezi a *legjobb erőfeszítés* alapján. Ezért a funkciók nem éles használatra szántak. További információt az alábbi támogatási cikkekben talál:
 >
-> * [AK-támogatási szabályzatok](support-policies.md)
+> * [Az AKS támogatási irányelvei](support-policies.md)
 > * [Azure-támogatás – gyakori kérdések](faq.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Az Azure CLI verziója 2.0.81 vagy újabb
-* Azure CLI előzetes verziójú bővítmény 0.4.28 vagy újabb verziója
-* `2020-01-01` vagy annál nagyobb API-verzió
+* Az Azure CLI 2.0.81-es vagy újabb verziója
+* Az Azure CLI Preview 0.4.28-as vagy újabb verziója
+* API-verzió `2020-01-01` vagy nagyobb
 
-## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>Az Azure CLI legújabb előzetes verziójának telepítése
-A fürt kimenő típusának megadásához az Azure CLI-bővítmény 0.4.18 vagy újabb verziójára van szükség. Telepítse az Azure CLI AK előzetes verzióját az az Extension Add paranccsal, majd a következő az Extension Update paranccsal keresse meg a rendelkezésre álló frissítéseket:
+## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>A legújabb Azure CLI AKS előzetes verzióbővítmény telepítése
+A fürt kimenő típusának beállításához az Azure CLI AKS preview-bővítmény 0.4.18-as vagy újabb verziójára van szükség. Telepítse az Azure CLI AKS preview bővítményt az az bővítmény hozzáadása paranccsal, majd ellenőrizze az elérhető frissítéseket a következő az extension update paranccsal:
 
 ```azure-cli
 # Install the aks-preview extension
@@ -40,59 +40,59 @@ az extension update --name aks-preview
 ```
 
 ## <a name="limitations"></a>Korlátozások
-* Az előzetes verzió ideje alatt a `outboundType` csak a fürt létrehozásakor definiálható, és később nem frissíthető.
-* Az előzetes verzióban `outboundType` AK-fürtöknek az Azure CNI-t kell használniuk. A Kubenet konfigurálható, a használathoz az útválasztási táblázat manuális társítására van szükség az AK-alhálózathoz.
-* A `outboundType` beállításához AK-fürtökre van szükség a `VirtualMachineScaleSets` `vm-set-type` és a `Standard``load-balancer-sku`.
-* A `outboundType` `UDR` értékre való beállításához a fürthöz érvényes kimenő kapcsolattal rendelkező felhasználó által megadott útvonal szükséges.
-* Ha a `outboundType` értéket `UDR` értékre állítja be, akkor előfordulhat, hogy a terheléselosztó felé irányított bejövő forrás IP-cím **nem egyezik** a fürt kimenő kilépési céljának címével.
+* Az előzetes `outboundType` verzió során csak fürtlétrehozási időpontban adható meg, és később nem frissíthető.
+* Az előzetes `outboundType` verzió során az AKS-fürtöknek az Azure CNI-t kell használniuk. Kubenet konfigurálható, használati szükséges manuális társítások az útvonaltábla az AKS-alhálózathoz.
+* A `outboundType` beállításhoz `vm-set-type` a. `VirtualMachineScaleSets` `load-balancer-sku` `Standard`
+* A `outboundType` beállításhoz `UDR` a fürt höz érvényes kimenő kapcsolattal rendelkező, felhasználó által definiált útvonalszükséges.
+* A `outboundType` beállítás azt `UDR` jelenti, hogy a terheléselosztóhoz irányított kimenő kimenő forrás IP-cím **nem egyezik** meg a fürt kimenő kimenő célcímével.
 
-## <a name="overview-of-outbound-types-in-aks"></a>A kimenő típusok áttekintése az AK-ban
+## <a name="overview-of-outbound-types-in-aks"></a>Kimenő típusok áttekintése az AKS-ben
 
-Az AK-fürtök testreszabhatók egyedi `outboundType` Load Balancer vagy felhasználó által definiált útválasztás használatával.
+Az AKS-fürtök egyedi `outboundType` típusú terheléselosztóval vagy felhasználó által definiált útválasztással testreszabhatók.
 
 > [!IMPORTANT]
-> A kimenő típus csak a fürt kimenő forgalmára van hatással. További információkért lásd: [beáramló vezérlők beállítása](ingress-basic.md) .
+> A kimenő típus csak a fürt kimenő forgalomra van hatással. További információt a [be- és nagyadat-szabályozók beállítása](ingress-basic.md) című témakörben talál.
 
-### <a name="outbound-type-of-loadbalancer"></a>A terheléselosztó kimenő típusa
+### <a name="outbound-type-of-loadbalancer"></a>A terheléselosztás kimenő típusa
 
-Ha a `loadBalancer` be van állítva, az AK automatikusan végrehajtja a következő telepítést. A terheléselosztó egy AK-beli hozzárendelt nyilvános IP-címen keresztüli kimenő forgalomhoz használatos. A `loadBalancer` kimenő típusa `loadBalancer`típusú Kubernetes-szolgáltatásokat támogat, amelyek várhatóan kikerülnek az AK erőforrás-szolgáltató által létrehozott terheléselosztó felé.
+Ha `loadBalancer` be van állítva, az AKS automatikusan befejezi a következő beállítást. A terheléselosztó az AKS-hez rendelt nyilvános IP-című en keresztül történő kilépéshez használatos. Egy kimenő típusú `loadBalancer` támogatja a Kubernetes `loadBalancer`típusú szolgáltatások, amelyek várhatóan kiesnek az AKS-erőforrás-szolgáltató által létrehozott terheléselosztó.
 
-A következő telepítést az AK hajtja végre.
-   * Nyilvános IP-cím van kiépítve a fürt kimenő forgalmához.
-   * A rendszer a terheléselosztó erőforráshoz rendeli a nyilvános IP-címet.
-   * A terheléselosztó backend-készletei a fürtben található ügynök-csomópontok számára lettek beállítva.
+A következő beállítást az AKS végzi.
+   * Nyilvános IP-cím van kiépítve a fürt kimenő.
+   * A nyilvános IP-cím hozzá van rendelve a terheléselosztó erőforráshoz.
+   * A terheléselosztó háttérkészletei a fürt ügynökcsomópontjaihoz vannak beállítva.
 
-Az alábbiakban egy olyan hálózati topológia található, amely Alapértelmezésben az AK-fürtökben van üzembe helyezve, amely `loadBalancer``outboundType`t használ.
+Az alábbiakban az AKS-fürtökben alapértelmezés szerint üzembe `outboundType` helyezett `loadBalancer`hálózati topológiát talál, amely a .
 
-![outboundtype – LB](media/egress-outboundtype/outboundtype-lb.png)
+![kimenő típus-lb](media/egress-outboundtype/outboundtype-lb.png)
 
-### <a name="outbound-type-of-userdefinedrouting"></a>A userDefinedRouting kimenő típusa
+### <a name="outbound-type-of-userdefinedrouting"></a>Kimenő felhasználóDefinedRouting típusa
 
 > [!NOTE]
-> A kimenő típus használata fejlett hálózati forgatókönyv, és megfelelő hálózati konfigurációt igényel.
+> A kimenő típus használata speciális hálózati forgatókönyv, amely megfelelő hálózati konfigurációt igényel.
 
-Ha a `userDefinedRouting` be van állítva, az AK nem konfigurálja automatikusan a kimenő útvonalakat. A **felhasználónak**a következőket kell elvégeznie.
+Ha `userDefinedRouting` be van állítva, az AKS nem konfigurálja automatikusan a kimenő útvonalakat. A felhasználó várhatóan **a**következőt végzi el.
 
-A fürtöt egy meglévő, konfigurált alhálózattal rendelkező virtuális hálózatra kell telepíteni. A kimenő kapcsolattal rendelkező alhálózaton léteznie kell egy érvényes, felhasználó által megadott útvonalnak (UDR).
+A fürtöt egy konfigurált alhálózattal rendelkező meglévő virtuális hálózatba kell telepíteni. Érvényes, felhasználó által definiált útvonalnak (UDR) kell léteznie a kimenő kapcsolattal rendelkező alhálózaton.
 
-Az AK erőforrás-szolgáltató telepíti a standard Load balancert (SLB). A terheléselosztó nincs konfigurálva semmilyen szabállyal, és nem [számít fel díjat, amíg meg nem történik a szabály elhelyezése](https://azure.microsoft.com/pricing/details/load-balancer/). Az AK **nem** hoz létre automatikusan nyilvános IP-címet a SLB előtérbeli felületéhez. Az AK **nem** konfigurálja automatikusan a terheléselosztó háttér-készletét.
+Az AKS-erőforrás-szolgáltató egy szabványos terheléselosztót (SLB) telepít. A terheléselosztó nincs beállítva semmilyen szabállyal, és [nem számít fel díjat, amíg egy szabályt el nem helyeznek.](https://azure.microsoft.com/pricing/details/load-balancer/) Az AKS **nem** hoz ki automatikusan nyilvános IP-címet az SLB előtérhez. Az AKS **nem** konfigurálja automatikusan a terheléselosztó háttérkészletét.
 
-## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>Fürt üzembe helyezése kimenő UDR-típussal és Azure Firewall
+## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>Fürt központi telepítése kimenő típusú UDR-t és Azure tűzfalat használva
 
-Egy felhasználó által megadott útvonal használatával a kimenő típusú fürt alkalmazásának szemléltetéséhez egy fürt konfigurálható egy Azure Firewall rendelkező virtuális hálózaton.
+A felhasználó által definiált útvonal használatával kimenő típusú fürt alkalmazásának szemléltetése érdekében a fürt konfigurálható egy Azure-tűzfallal társviszonyba helyezett virtuális hálózaton.
 
 ![Zárolt topológia](media/egress-outboundtype/outboundtype-udr.png)
 
-* A bejövő forgalom a tűzfalon keresztüli szűrésre kényszerül
-   * Egy elkülönített alhálózat belső terheléselosztó-készletet tart az ügynök csomópontjaiba való útválasztáshoz
-   * Az ügynökök csomópontjai elkülönített alhálózatban vannak elkülönítve
-* A kimenő kérelmek ügynök-csomópontokból a Azure Firewall belső IP-címekre indulnak egy felhasználó által megadott útvonal használatával
-   * Az AK-ügynök csomópontjaitól érkező kérések követnek egy olyan UDR, amely az AK-fürt üzembe helyezésére szolgáló alhálózaton van elhelyezve.
-   * Azure Firewall egresses a virtuális hálózatról a nyilvános IP-címről
-   * Az AK vezérlő síkjával való hozzáférést egy NSG védi, amely lehetővé tette a tűzfal előtér-IP-címét.
-   * A nyilvános internethez vagy más Azure-szolgáltatásokhoz való hozzáférés a tűzfal előtér-IP-címére irányuló és onnan áramlik.
+* A behatolás kénytelen átfolyni a tűzfalszűrőkön
+   * Egy elkülönített alhálózat belső terheléselosztót tart az ügynökcsomópontokba történő útválasztáshoz
+   * Az ügynökcsomópontok egy dedikált alhálózatban vannak elkülönítve
+* A kimenő kérelmek az ügynökcsomópontokból indulnak az Azure tűzfal belső IP-címére egy felhasználó által definiált útvonal használatával
+   * Az AKS-ügynökcsomópontok tól érkező kérelmek egy UDR-t követnek, amely az AKS-fürt által üzembe helyezett alhálózaton van elhelyezve.
+   * Az Azure Firewall kikerül a virtuális hálózatból egy nyilvános IP-előtérből
+   * Az AKS vezérlősíkhoz való hozzáférést egy NSG védi, amely engedélyezte a tűzfal előtér IP-címét
+   * A nyilvános internethez vagy más Azure-szolgáltatásokhoz való hozzáférés a tűzfal előtérének IP-címére és onnan
 
-### <a name="set-configuration-via-environment-variables"></a>Konfiguráció beállítása környezeti változók használatával
+### <a name="set-configuration-via-environment-variables"></a>Konfiguráció beállítása környezeti változókon keresztül
 
 Adja meg az erőforrás-létrehozásokban használandó környezeti változók készletét.
 
@@ -135,11 +135,11 @@ SUBID=$(az account show -s '<SUBSCRIPTION_NAME_GOES_HERE>' -o tsv --query 'id')
 
 ## <a name="create-a-virtual-network-with-multiple-subnets"></a>Több alhálózattal rendelkező virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot három különálló alhálózattal, egyet a fürthöz, egyet a tűzfalhoz, egyet pedig a szolgáltatás bejövő beállításaihoz.
+Üzembe létesíteni egy virtuális hálózat három különálló alhálózat, egy a fürt, egy a tűzfal, és egy szolgáltatás be- és be- és be- és szolgáltatás be- és ress.
 
 ![Üres hálózati topológia](media/egress-outboundtype/empty-network.png)
 
-Hozzon létre egy erőforráscsoportot az összes erőforrás tárolásához.
+Hozzon létre egy erőforráscsoportot az összes erőforrás tárolására.
 
 ```azure-cli
 # Create Resource Group
@@ -147,7 +147,7 @@ Hozzon létre egy erőforráscsoportot az összes erőforrás tárolásához.
 az group create --name $RG --location $LOC
 ```
 
-Hozzon létre két virtuális hálózatot az AK-fürt és a Azure Firewall üzemeltetéséhez. Mindegyiknek saját alhálózata lesz. Kezdjük az AK-hálózattal.
+Hozzon létre egy két virtuális hálózatot az AKS-fürt és az Azure tűzfal üzemeltetéséhez. Mindegyiknek saját alhálózata lesz. Kezdjük az AKS hálózattal.
 
 ```
 # Dedicated virtual network with AKS subnet
@@ -176,19 +176,19 @@ az network vnet subnet create \
     --address-prefix 100.64.3.0/24
 ```
 
-## <a name="create-and-setup-an-azure-firewall-with-a-udr"></a>Azure Firewall létrehozása és beállítása UDR
+## <a name="create-and-setup-an-azure-firewall-with-a-udr"></a>Azure-tűzfal létrehozása és beállítása UDR-rel
 
-Azure Firewall be kell állítani a bejövő és a kimenő szabályokat. A tűzfal fő célja, hogy lehetővé tegye a szervezetek számára a szemcsés bejövő és kimenő forgalmi szabályok bevezetését az AK-fürtbe.
+Az Azure Firewall bejövő és kimenő szabályokat kell konfigurálni. A tűzfal fő célja, hogy lehetővé tegye a szervezetek számára a részletes be- és kilépési forgalmi szabályok beállítását az AKS-fürtbe és az AKS-fürtből.
 
-![Tűzfal-és UDR](media/egress-outboundtype/firewall-udr.png)
+![Tűzfal és UDR](media/egress-outboundtype/firewall-udr.png)
 
-Hozzon létre egy szabványos SKU nyilvános IP-erőforrást, amelyet a rendszer Azure Firewall előtér-címként fog használni.
+Hozzon létre egy szabványos termékváltozat nyilvános IP-erőforrást, amely az Azure Firewall előtér-címként lesz használva.
 
 ```azure-cli
 az network public-ip create -g $RG -n $FWPUBLICIP_NAME -l $LOC --sku "Standard"
 ```
 
-Regisztrálja az előnézeti CLI-bővítményt Azure Firewall létrehozásához.
+Regisztrálja az előzetes cli-bővítményt az Azure tűzfal létrehozásához.
 ```azure-cli
 # Install Azure Firewall preview CLI extension
 
@@ -199,11 +199,11 @@ az extension add --name azure-firewall
 az network firewall create -g $RG -n $FWNAME -l $LOC
 ```
 
-A korábban létrehozott IP-cím most már hozzá lehet rendelni a tűzfal előtérbeli felületéhez.
+A korábban létrehozott IP-cím mostmár hozzárendelhető a tűzfal előtéréhez.
 > [!NOTE]
-> A nyilvános IP-cím Azure Firewall beállítása néhány percet igénybe vehet.
+> A nyilvános IP-cím beállítása az Azure tűzfalra eltarthat néhány percet.
 > 
-> Ha az alábbi parancsban többször is érkeznek hibák, törölje a meglévő tűzfalat és a nyilvános IP-címet, és helyezze üzembe a nyilvános IP-címet, és Azure Firewall a portálon keresztül egy időben.
+> Ha az alábbi parancs ismételten hibákat kap, törölje a meglévő tűzfalat és a nyilvános IP-címet, és egyidejűleg hozza létre a nyilvános IP-címet és az Azure tűzfalat a portálon keresztül.
 
 ```azure-cli
 # Configure Firewall IP Config
@@ -211,7 +211,7 @@ A korábban létrehozott IP-cím most már hozzá lehet rendelni a tűzfal előt
 az network firewall ip-config create -g $RG -f $FWNAME -n $FWIPCONFIG_NAME --public-ip-address $FWPUBLICIP_NAME --vnet-name $VNET_NAME
 ```
 
-Az előző parancs sikeres végrehajtása után mentse a tűzfal előtér-IP-címét később a konfigurációhoz.
+Ha az előző parancs sikeres volt, mentse a tűzfal előtér IP-címét későbbi konfigurációra.
 
 ```bash
 # Capture Firewall IP Address for Later Use
@@ -220,11 +220,11 @@ FWPUBLIC_IP=$(az network public-ip show -g $RG -n $FWPUBLICIP_NAME --query "ipAd
 FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurations[0].privateIpAddress" -o tsv)
 ```
 
-### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>UDR létrehozása ugrással Azure Firewall
+### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>UDR létrehozása ugrással az Azure tűzfalra
 
-Az Azure automatikusan irányítja a forgalmat az Azure-alhálózatok, a virtuális hálózatok és a helyszíni hálózatok között. Ha módosítani szeretné az Azure alapértelmezett útválasztását, hozzon létre egy útválasztási táblázatot.
+Az Azure automatikusan irányítja az Azure-alhálózatok, a virtuális hálózatok és a helyszíni hálózatok közötti forgalmat. Ha módosítani szeretné az Azure bármelyik alapértelmezett útválasztását, akkor hozzon létre egy útvonaltáblát.
 
-Hozzon létre egy üres útválasztási táblázatot, amely egy adott alhálózathoz lesz társítva. Az útválasztási táblázat a következő ugrást fogja meghatározni a fent létrehozott Azure Firewall. Mindegyik alhálózattal nulla vagy egy útvonaltábla társítható.
+Hozzon létre egy üres útvonaltáblát egy adott alhálózathoz társítva. Az útvonaltábla határozza meg a következő ugrás, mint az Azure Firewall fent létrehozott. Mindegyik alhálózattal nulla vagy egy útvonaltábla társítható.
 
 ```azure-cli
 # Create UDR and add a route for Azure Firewall
@@ -234,16 +234,16 @@ az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-na
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
 
-A [virtuális hálózati útválasztási táblázat dokumentációjában](../virtual-network/virtual-networks-udr-overview.md#user-defined) tájékozódhat arról, hogyan bírálhatja felül az Azure alapértelmezett rendszerútvonalait, vagy további útvonalakat adhat hozzá az alhálózat útválasztási táblájához.
+Tekintse meg [a virtuális hálózati útvonaltábla dokumentációját](../virtual-network/virtual-networks-udr-overview.md#user-defined) arról, hogyan bírálhatja felül az Azure alapértelmezett rendszerútvonalait, és hogyan adhat hozzá további útvonalakat az alhálózat útvonaltáblájához.
 
 ## <a name="adding-network-firewall-rules"></a>Hálózati tűzfalszabályok hozzáadása
 
 > [!WARNING]
-> Az alábbi példa egy tűzfalszabály hozzáadását mutatja be. A [szükséges kimenő végpontokon](egress.md) definiált összes kimenő végpontot engedélyezve kell lennie az Application Firewall-szabályoknak az AK-fürtök működéséhez. Ha ezek a végpontok nem engedélyezettek, a fürt nem működhet.
+> Az alábbi példa egy tűzfalszabály hozzáadására. A [szükséges kimenő végpontokban](egress.md) definiált összes kimenő végpontot az AKS-fürtök működéséhez alkalmazástűzfal-szabályoknak kell engedélyezniük. Ha ezek a végpontok engedélyezve vannak, a fürt nem tud működni.
 
-Az alábbi példa egy hálózati és egy alkalmazási szabályt mutat be. Olyan hálózati szabályt adunk hozzá, amely bármilyen protokollt, forráscím, célcím és célport használatát teszi lehetővé. Egy alkalmazás-szabályt is hozzáadunk az AK által igényelt **egyes** végpontokhoz.
+Az alábbiakban egy példa a hálózati és alkalmazásszabály. Hozzáadunk egy hálózati szabályt, amely lehetővé teszi a protokollt, a forráscímet, a célcímet és a célportokat. Az AKS által igényelt végpontok **hoz** unk hozzá egy alkalmazásszabályt is.
 
-Éles környezetben csak a szükséges végpontokhoz való hozzáférést kell engedélyeznie az alkalmazáshoz, és az AK-ban meghatározott [kimenő](egress.md)forgalomban definiált.
+Éles környezetben csak az alkalmazás és az [AKS szükséges kimenő forgalomban](egress.md)meghatározott végpontokhoz való hozzáférést kell engedélyeznie.
 
 ```
 # Add Network FW Rules
@@ -273,11 +273,11 @@ az network firewall application-rule create -g $RG -f $FWNAME \
         'acs-mirror.azureedge.net'
 ```
 
-A Azure Firewall szolgáltatással kapcsolatos további információkért tekintse meg [Azure Firewall dokumentációját](https://docs.microsoft.com/azure/firewall/overview) .
+Tekintse meg [az Azure Firewall dokumentációját](https://docs.microsoft.com/azure/firewall/overview) az Azure Firewall szolgáltatásról.
 
-## <a name="associate-the-route-table-to-aks"></a>Az útválasztási táblázat hozzárendelése AK-hoz
+## <a name="associate-the-route-table-to-aks"></a>Az útvonaltábla társítása az AKS-hez
 
-Ha a fürtöt a tűzfalhoz szeretné rendelni, a fürt alhálózatához tartozó dedikált alhálózatnak a fent létrehozott útválasztási táblára kell hivatkoznia. A társítást úgy teheti meg, hogy a fürtöt és a tűzfalat tároló virtuális hálózatra vonatkozó parancs kiadásával frissíti a fürt alhálózatának útválasztási táblázatát.
+A fürt nek a tűzfalhoz való társításához a fürt alhálózatának dedikált alhálózatának hivatkoznia kell a fent létrehozott útvonaltáblára. A társítás a fürt és a tűzfal számára egy olyan virtuális hálózatnak ad ki parancsot, amely a fürt alhálózatának útvonaltábláját is frissíti.
 
 ```azure-cli
 # Associate route table with next hop to Firewall to the AKS subnet
@@ -285,15 +285,15 @@ Ha a fürtöt a tűzfalhoz szeretné rendelni, a fürt alhálózatához tartozó
 az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NAME --route-table $FWROUTE_TABLE_NAME
 ```
 
-## <a name="deploy-aks-with-outbound-type-of-udr-to-the-existing-network"></a>Az AK üzembe helyezése a kimenő UDR-típussal a meglévő hálózatra
+## <a name="deploy-aks-with-outbound-type-of-udr-to-the-existing-network"></a>Az AKS telepítése kimenő típusú UDR-rel a meglévő hálózatra
 
-Most már van egy AK-fürt üzembe helyezése a meglévő virtuális hálózat telepítésekor. Ahhoz, hogy a fürt kimenő típusát felhasználó által megadott útválasztásra állítsa, egy meglévő alhálózatot kell megadni az ak-nak.
+Most egy AKS-fürt telepíthető a meglévő virtuális hálózati beállításba. Ahhoz, hogy egy fürt kimenő típusát felhasználó által definiált útválasztásra állítsa, egy meglévő alhálózatot kell biztosítani az AKS számára.
 
-![AK – üzembe helyezés](media/egress-outboundtype/outboundtype-udr.png)
+![aks-telepítés](media/egress-outboundtype/outboundtype-udr.png)
 
-### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>Egyszerű szolgáltatásnév létrehozása a meglévő virtuális hálózatban való üzembe helyezéshez
+### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>Szolgáltatásnév létrehozása a meglévő virtuális hálózaton belüli kiépítéshez való hozzáféréssel
 
-Az AK egy egyszerű szolgáltatásnevet használ a fürterőforrások létrehozásához. A létrehozáskor átadott egyszerű szolgáltatás a mögöttes AK-erőforrások, például virtuális gépek, tárolók és terheléselosztóok létrehozásához használatos. Ha túl kevés engedélyt adott meg, nem fog tudni kiépíteni egy AK-fürtöt.
+Az AKS egyszerű szolgáltatást használ fürterőforrások létrehozásához. A létrehozási időben átadott szolgáltatás alapjául szolgáló AKS-erőforrások, például az AKS által használt virtuális gépek, storage és terheléselosztók létrehozására szolgál. Ha túl kevés engedélyt kap, nem tud aKS-fürt ötözővé tenni.
 
 ```azure-cli
 # Create SP and Assign Permission to Virtual Network
@@ -301,7 +301,7 @@ Az AK egy egyszerű szolgáltatásnevet használ a fürterőforrások létrehoz�
 az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
 ```
 
-Most cserélje le a `APPID`t, és `PASSWORD` az előző parancs kimenetében automatikusan generált egyszerű szolgáltatásnév-AppID és egyszerű szolgáltatás jelszava. A VNET erőforrás-AZONOSÍTÓra hivatkozunk, hogy megadja az engedélyeket az egyszerű szolgáltatásnév számára, hogy az AK-ban üzembe helyezhet erőforrásokat.
+Most cserélje `APPID` `PASSWORD` le a és az alábbi a szolgáltatás egyszerű appid és a szolgáltatás egyszerű jelszó automatikusan generált az előző parancs kimenet. A vnet-erőforrás-azonosítóra hivatkozunk, hogy megadja az engedélyeket az egyszerű szolgáltatásnak, hogy az AKS erőforrásokat telepíthessen bele.
 
 ```azure-cli
 APPID="<SERVICE_PRINCIPAL_APPID_GOES_HERE>"
@@ -316,16 +316,20 @@ az role assignment create --assignee $APPID --scope $VNETID --role Contributor
 az role assignment list --assignee $APPID --all -o table
 ```
 
-### <a name="deploy-aks"></a>AK üzembe helyezése
+### <a name="deploy-aks"></a>AKS telepítése
 
-Végezetül az AK-fürt üzembe helyezhető a fürthöz dedikált meglévő alhálózaton. A rendszerbe telepítendő célként megadott alhálózat a környezeti változóval van definiálva, `$SUBNETID`.
+Végül az AKS-fürt telepíthető a fürthöz dedikált meglévő alhálózatba. A telepítendő célalhálózat a környezeti változóval van `$SUBNETID`definiálva. Az előző lépésekben `$SUBNETID` nem határoztuk meg a változót. Az alhálózati azonosító értékének beállításához használja a következő parancsot:
 
-A kimenő típust úgy adjuk meg, hogy kövessük az alhálózaton található UDR, amely lehetővé teszi az AK számára a beállítás és az IP-kiépítés kihagyása a terheléselosztó számára, amely mostantól szigorúan belső lehet.
+```azurecli
+SUBNETID="/subscriptions/$SUBID/resourceGroups/$RG/providers/Microsoft.Network/virtualNetworks/$VNET_NAME/subnets/$AKSSUBNET_NAME"
+```
 
-Az [API-kiszolgáló által engedélyezett IP-tartományokhoz](api-server-authorized-ip-ranges.md) tartozó AK funkció hozzáadható az API-kiszolgáló hozzáférésének korlátozásához csak a tűzfal nyilvános végpontja számára. A hitelesítő IP-címtartományok szolgáltatás a diagramon a NSG, amelyet át kell adni a vezérlő síkja eléréséhez. Ha engedélyezi a jogosult IP-címtartomány használatát az API-kiszolgáló elérésének korlátozására, a fejlesztői eszközöknek Jumpbox kell használniuk a tűzfal virtuális hálózatáról, vagy az összes fejlesztői végpontot fel kell vennie az engedélyezett IP-tartományba.
+Meghatározzuk a kimenő típust, hogy kövesse az alhálózaton található UDR-t, lehetővé téve az AKS számára, hogy kihagyja a terheléselosztó beállítását és IP-kiépítést, amely most már szigorúan belső.
+
+Az [API-kiszolgáló engedélyezett IP-tartományaiak](api-server-authorized-ip-ranges.md) AKS-szolgáltatása hozzáadható, hogy az API-kiszolgálók hozzáférését csak a tűzfal nyilvános végpontjára korlátozza. Az engedélyezett IP-tartományok funkciót az ábrán NSG-ként jelölik, amelyet át kell adni a vezérlősík eléréséhez. Ha engedélyezi az engedélyezett IP-tartományszolgáltatásnak az API-kiszolgálók elérésének korlátozását, a fejlesztői eszközöknek a tűzfal virtuális hálózatáról egy ugródobozt kell használniuk, vagy hozzá kell adniuk az összes fejlesztői végpontot az engedélyezett IP-tartományhoz.
 
 > [!TIP]
-> További funkciók is hozzáadhatók a fürt üzembe helyezéséhez, például (privát fürt) []. Ha engedélyezve van az IP-címtartományok használata, egy Jumpbox lesz szükség a fürtön belül az API-kiszolgáló eléréséhez.
+> A fürt központi telepítéséhez további szolgáltatások adhatók hozzá, például (privát fürt)[]. Engedélyezett IP-tartományok használata esetén az API-kiszolgáló eléréséhez a fürthálózaton belül egy ugródobozra lesz szükség.
 
 ```azure-cli
 az aks create -g $RG -n $AKS_NAME -l $LOC \
@@ -344,7 +348,7 @@ az aks create -g $RG -n $AKS_NAME -l $LOC \
 
 ### <a name="enable-developer-access-to-the-api-server"></a>Fejlesztői hozzáférés engedélyezése az API-kiszolgálóhoz
 
-A fürt engedélyezett IP-címtartományok beállítása miatt a fejlesztői eszközök IP-címeit hozzá kell adnia a jóváhagyott IP-címtartományok AK-fürt listájához az API-kiszolgáló eléréséhez. Egy másik lehetőség, hogy a tűzfal virtuális hálózatán belül egy külön alhálózaton belüli Jumpbox konfigurálja a szükséges eszközökkel.
+A fürt engedélyezett IP-tartomány-beállítása miatt az API-kiszolgáló eléréséhez hozzá kell adnia a fejlesztői eszközeszközök IP-címeit a jóváhagyott IP-tartományok AKS-fürtlistájához. Egy másik lehetőség, hogy konfigurálja a jumpbox a szükséges eszközegy külön alhálózat a tűzfal virtuális hálózat.
 
 Adjon hozzá egy másik IP-címet a jóváhagyott tartományokhoz a következő paranccsal
 
@@ -359,9 +363,9 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
 
 ### <a name="setup-the-internal-load-balancer"></a>A belső terheléselosztó beállítása
 
-Az AK üzembe helyezett egy terheléselosztó-t a fürttel, amely [belső terheléselosztóként](internal-lb.md)állítható be.
+Az AKS terheléselosztót telepített a fürttel, amely [belső terheléselosztóként](internal-lb.md)állítható be.
 
-Belső terheléselosztó létrehozásához hozzon létre egy Internal-LB. YAML nevű szolgáltatási jegyzékfájlt a terheléselosztó és az Azure-Load-Balancer-belső megjegyzéssel az alábbi példában látható módon:
+Belső terheléselosztó létrehozásához hozzon létre egy belső-lb.yaml nevű szolgáltatásjegyzéket a LoadBalancer szolgáltatástípussal és az azure-load-balancer-internal megjegyzéssel, ahogy az a következő példában látható:
 
 ```yaml
 apiVersion: v1
@@ -379,17 +383,17 @@ spec:
     app: internal-app
 ```
 
-Helyezze üzembe a belső terheléselosztó-t a kubectl alkalmazásával, és adja meg a YAML-jegyzék nevét:
+Telepítse a belső terheléselosztót a kubectl alkalmazásával, és adja meg a YAML-jegyzékfájl nevét:
 
 ```bash
 kubectl apply -f internal-lb.yaml
 ```
 
-## <a name="deploy-a-kubernetes-service"></a>Kubernetes szolgáltatás üzembe helyezése
+## <a name="deploy-a-kubernetes-service"></a>Kubernetes-szolgáltatás telepítése
 
-Mivel a fürt kimenő típusa UDR értékre van beállítva, az ügynökök csomópontjainak társítása, mivel a terheléselosztó háttér-készlete nem fejeződött be automatikusan az AK által a fürt létrehozási idejénél. A háttérbeli készlet társítását azonban a Kubernetes Azure Cloud Provider kezeli a Kubernetes szolgáltatás telepítésekor.
+Mivel a fürt kimenő típusa UDR-ként van beállítva, az ügynökcsomópontok nak a terheléselosztó háttérkészleteként való társítását az AKS nem fejezi be automatikusan a fürt létrehozási idején. A háttérkészlet-társítást azonban a Kubernetes Azure-felhőszolgáltató kezeli, amikor a Kubernetes szolgáltatás telepítve van.
 
-Telepítse az Azure szavazó app alkalmazást úgy, hogy az alábbi YAML másolja `example.yaml`nevű fájlba.
+Telepítse az Azure szavazási alkalmazás alkalmazását az alábbi yaml másolásával egy fájlba. `example.yaml`
 
 ```yaml
 apiVersion: apps/v1
@@ -479,25 +483,25 @@ spec:
     app: azure-vote-front
 ```
 
-A szolgáltatás üzembe helyezése a futtatásával:
+A szolgáltatás üzembe helyezése a következő futtatásával:
 
 ```bash
 kubectl apply -f example.yaml
 ```
 
-## <a name="add-a-dnat-rule-to-azure-firewall"></a>DNAT-szabály hozzáadása a Azure Firewall
+## <a name="add-a-dnat-rule-to-azure-firewall"></a>DNST-szabály hozzáadása az Azure tűzfalhoz
 
-A bejövő kapcsolat konfigurálásához egy DNAT szabályt kell írni a Azure Firewallba. A fürthöz való csatlakozás teszteléséhez egy szabály van definiálva a tűzfal előtér nyilvános IP-címéhez, hogy a belső szolgáltatás által közzétett belső IP-címhez irányítsa a rendszer.
+A bejövő kapcsolat konfigurálásához dnst-szabályt kell írni az Azure tűzfalra. A fürthöz való kapcsolódás teszteléséhez egy szabály van definiálva a tűzfal előtér nyilvános IP-címére a belső szolgáltatás által elérhetővé tett belső IP-címhez való átirányításhoz.
 
-A cél címe testreszabható, mert a tűzfal portja elérhető. A lefordított címnek a belső Load Balancer IP-címének kell lennie. A lefordított portnak a Kubernetes szolgáltatás számára elérhető portnak kell lennie.
+A célcím testreszabható, mivel ez a tűzfal elérhető portja. A lefordított címnek a belső terheléselosztó IP-címének kell lennie. A lefordított portnak a Kubernetes szolgáltatás elérhető portjának kell lennie.
 
-Meg kell adnia a Kubernetes szolgáltatás által létrehozott terheléselosztó számára hozzárendelt belső IP-címet. A címek lekérése a futtatásával:
+Meg kell adnia a Kubernetes szolgáltatás által létrehozott terheléselosztóhoz rendelt belső IP-címet. A cím lekérése a következő futtatásával:
 
 ```bash
 kubectl get services
 ```
 
-A szükséges IP-cím a külső IP-oszlopban jelenik meg, a következőhöz hasonlóan.
+A szükséges IP-cím az EX-IP oszlopban jelenik meg, hasonlóan a következőkhöz.
 
 ```bash
 NAME               TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
@@ -513,9 +517,9 @@ az network firewall nat-rule create --collection-name exampleset --destination-a
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 > [!NOTE]
-> Ha a Kubernetes belső szolgáltatását törli, ha a belső terheléselosztó már nem használja egyetlen szolgáltatás sem, az Azure Cloud Provider törli a belső Load balancert. A következő szolgáltatás központi telepítése esetén a terheléselosztó akkor lesz telepítve, ha nem található a kért konfigurációval.
+> A Kubernetes belső szolgáltatás törlésekor, ha a belső terheléselosztó már nem használja semmilyen szolgáltatás, az Azure-felhőszolgáltató törli a belső terheléselosztót. A következő szolgáltatás üzembe helyezésekor egy terheléselosztó lesz telepítve, ha nem található a kért konfigurációval.
 
-Az Azure-erőforrások tisztításához törölje az AK-erőforráscsoport törlését.
+Az Azure-erőforrások törléséhez törölje az AKS-erőforráscsoportot.
 
 ```azure-cli
 az group delete -g $RG
@@ -523,12 +527,12 @@ az group delete -g $RG
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
 
-A kapcsolat ellenőrzéséhez navigáljon a böngészőben a Azure Firewall előtér IP-címére.
+Keresse meg az Azure Firewall előtér-IP-címét egy böngészőben a kapcsolat érvényesítéséhez.
 
-Ekkor meg kell jelennie az Azure-beli szavazási alkalmazás rendszerképének.
+Az Azure szavazási alkalmazás egy képjelenik meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Lásd: [Azure Networking UDR – áttekintés](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
+Tekintse meg [az Azure hálózati UDR áttekintését.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)
 
-Lásd: [útválasztási táblázat létrehozása, módosítása vagy törlése](https://docs.microsoft.com/azure/virtual-network/manage-route-table).
+Útvonaltábla [létrehozása, módosítása és törlése.](https://docs.microsoft.com/azure/virtual-network/manage-route-table)

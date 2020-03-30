@@ -1,6 +1,6 @@
 ---
-title: Azure Security Control – adatvédelem
-description: Biztonság-vezérlés – adatvédelem
+title: Azure Security Control – Adatvédelem
+description: Biztonsági ellenőrzés adatvédelme
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -9,41 +9,41 @@ ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 5482495f87e87e5d05d8adca6b053810a62dcb4e
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934524"
 ---
-# <a name="security-control-data-protection"></a>Biztonság-ellenőrzés: Adatvédelem
+# <a name="security-control-data-protection"></a>Biztonsági ellenőrzés: Adatvédelem
 
-Az adatvédelmi javaslatok a titkosítással, a hozzáférés-vezérlési listával, az identitás-alapú hozzáférés-vezérléssel és az adathozzáférés naplózási naplózásával kapcsolatos problémák kezelésére összpontosítanak.
+Az adatvédelmi ajánlások a titkosítással, a hozzáférés-vezérlési listákkal, az identitásalapú hozzáférés-vezérléssel és az adathozzáférés naplózásával kapcsolatos problémák kezelésére összpontosítanak.
 
-## <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
+## <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Az érzékeny információk leltárának karbantartása
 
-| Azure-azonosító | CIS-azonosítók | Feladatkörök |
+| Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
-| 4.1 | 13,1 | Ügyfél |
+| 4.1 | 13.1 | Ügyfél |
 
-A címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követését.
+A Címkék segítségével nyomon követheti a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrásokat.
 
 Címkék létrehozása és használata:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-## <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
+## <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Érzékeny információkat tároló vagy feldolgozó rendszerek elkülönítése
 
-| Azure-azonosító | CIS-azonosítók | Feladatkörök |
+| Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
 | 4.2 | 13.2 | Ügyfél |
 
-Különböző előfizetések és/vagy felügyeleti csoportok implementálása fejlesztési, tesztelési és éles környezetekben. Az erőforrásokat VNet/alhálózattal kell elválasztani, és megfelelő címkével kell ellátni, és egy NSG vagy Azure Firewall által védettnek kell lennie. A bizalmas adatok tárolására vagy feldolgozására szolgáló erőforrásoknak elég elszigeteltnek kell lenniük. A bizalmas adatok tárolására és feldolgozására Virtual Machines a házirend és eljárás (ok) bekapcsolásával kikapcsolhatja azokat, ha nincsenek használatban.
+Külön előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztéshez, teszteléshez és éles környezethez. Az erőforrásokat virtuális hálózatnak/alhálózatnak kell elválasztani, megfelelően címkézni kell, és NSG-vel vagy Azure tűzfallal kell biztosítani. A bizalmas adatokat tároló vagy feldolgozó erőforrásokat megfelelően el kell különíteni. A bizalmas adatokat tároló vagy feldolgozó virtuális gépek esetében valósítsa meg a szabályzatot és az eljárás(oka)t, hogy kikapcsolja őket, ha nincs használatban.
 
 További Azure-előfizetések létrehozása:
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Management Groups létrehozása:
+Felügyeleti csoportok létrehozása:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
@@ -51,116 +51,116 @@ Címkék létrehozása és használata:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-Virtual Network létrehozása:
+Hogyan hozzunk létre egy virtuális hálózat:
 
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
-NSG létrehozása biztonsági konfigurációval:
+Hogyan hozzunk létre egy NSG egy biztonsági config:
 
 https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
-Azure Firewall üzembe helyezése:
+Az Azure Tűzfal telepítése:
 
 https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
-Riasztások vagy riasztások konfigurálása és a Azure Firewall elutasítása:
+A riasztás vagy riasztás és a megtagadás konfigurálása az Azure Tűzfallal:
 
 https://docs.microsoft.com/azure/firewall/threat-intel
 
-## <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: a bizalmas adatok jogosulatlan átvitelének figyelése és letiltása
+## <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: A bizalmas adatok jogosulatlan továbbításának figyelése és blokkolása
 
-| Azure-azonosító | CIS-azonosítók | Feladatkörök |
+| Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
-| 4.3 | 13,3 | Ügyfél |
+| 4.3 | 13.3 | Ügyfél |
 
-Helyezzen üzembe egy automatizált eszközt olyan hálózati peremhálózati eszközökön, amelyek figyelik a bizalmas adatok jogosulatlan átvitelét, és blokkolja az ilyen átviteleket az információs biztonsági szakemberek értesítése közben.
+Automatikus eszköz telepítése a hálózat peremén, amely figyeli a bizalmas adatok jogosulatlan továbbítását, és blokkolja az ilyen átviteleket, miközben figyelmezteti az információbiztonsági szakembereket.
 
-## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
+## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Az összes bizalmas információ titkosítása szállítás közben
 
-| Azure-azonosító | CIS-azonosítók | Feladatkörök |
+| Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
-| 4.4 | 14,4 | Közös |
+| 4.4 | 14.4 | Megosztott |
 
-Titkosítsa az összes bizalmas információt az átvitel során. Győződjön meg arról, hogy az Azure-erőforrásokhoz csatlakozó ügyfelek képesek a TLS 1,2 vagy újabb egyeztetésére.
+Titkosítsa az összes bizalmas információt az átvitel során. Győződjön meg arról, hogy az Azure-erőforrásokhoz csatlakozó ügyfelek képesek egyeztetni a TLS 1.2-es vagy annál nagyobb összeegyeztetését.
 
-Kövesse Azure Security Center a inaktív adatok titkosítására és az átvitel közbeni titkosításra vonatkozó ajánlásokat, ahol lehetséges.
+Kövesse az Azure Security Center javaslatokat az inaktív titkosításhoz és a titkosításhoz az átvitel során, adott esetben.
 
-A titkosítás ismertetése az Azure-ban:
+Az Azure-ral való átvitel során a titkosítás megismerése:
 
 https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit
 
-## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: aktív felderítési eszköz használata a bizalmas adatok azonosítására
+## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Aktív felderítési eszköz használata a bizalmas adatok azonosítására
 
-| Azure-azonosító | CIS-azonosítók | Feladatkörök |
+| Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
-| 4,5 | 14,5 | Ügyfél |
+| 4.5 | 14.5 | Ügyfél |
 
-Ha az Azure-ban egyetlen szolgáltatás sem érhető el, egy külső gyártótól származó aktív felderítési eszköz használatával azonosíthatja a szervezet technológiai rendszerei által tárolt, feldolgozott vagy továbbított bizalmas adatokat, beleértve a helyszínen vagy a távoli szolgáltató, és frissítse a szervezet bizalmas információinak leltárát.
+Ha az Azure-ban nem érhető el funkció az adott szolgáltatáshoz, használjon egy külső gyártótól származó aktív felderítési eszközt a szervezet technológiai rendszerei által tárolt, feldolgozott vagy továbbított összes bizalmas információ azonosítására, beleértve a helyszínen vagy egy távoli szolgáltatót, és frissítse a szervezet bizalmas információkészletét.
 
-Az Office 365-dokumentumokban lévő bizalmas adatok azonosításához használja a Azure Information Protection.
+Az Azure Information Protection használatával azonosíthatja a bizalmas adatokat az Office 365-dokumentumokban.
 
-Az Azure SQL Information Protection használatával segítséget nyújthat az Azure SQL Database-adatbázisokban tárolt adatok besorolásában és címkézésében.
+Az Azure SQL Information Protection használatával segítséget nyújthat az Azure SQL-adatbázisokban tárolt információk besorolásában és címkézésében.
 
-Az Azure SQL-adatfelderítés megvalósítása:
+Az Azure SQL Data Discovery implementálja:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification
 
-A Azure Information Protection megvalósítása:
+Az Azure Information Protection megvalósítása:
 
 https://docs.microsoft.com/azure/information-protection/deployment-roadmap
 
-## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
+## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Az Azure RBAC használatával szabályozhatja az erőforrásokhoz való hozzáférést
 
-| Azure-azonosító | CIS-azonosítók | Feladatkörök |
+| Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
-| 4.6 | 14,6 | Ügyfél |
+| 4.6 | 14.6 | Ügyfél |
 
-Az Azure AD RBAC használatával szabályozhatja az adatelérést és az erőforrásokat, máskülönben a szolgáltatás-specifikus hozzáférés-vezérlési módszereket is használhatja.
+Az Azure AD RBAC használatával szabályozhatja az adatokhoz és erőforrásokhoz való hozzáférést, más különben szolgáltatásspecifikus hozzáférés-vezérlési módszereket használhat.
 
-Az Azure RBAC ismertetése:
+Az Azure RBAC megismerése:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-A RBAC konfigurálása az Azure-ban:
+Az RBAC konfigurálása az Azure-ban:
 
 https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
-## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: a gazdagép-alapú adatvesztés-megelőzés használata a hozzáférés-vezérlés kikényszeríthető
+## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: A hozzáférés-vezérlés kényszerítése gazdagépalapú adatveszteség-megelőzéssel
 
-| Azure-azonosító | CIS-azonosítók | Feladatkörök |
+| Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
-| 4.7 | 14,7 | Ügyfél |
+| 4.7 | 14.7 | Ügyfél |
 
-Egy külső gyártótól származó eszköz, például egy automatizált gazdagép-alapú adatvesztés-megelőzési megoldás implementálása az adathozzáférés-vezérlés kikényszerített állapotára akkor is, ha az Adatmásolás egy rendszerből történik.
+Harmadik féltől származó eszközt, például automatizált adatveszteség-megelőzési megoldást valósíthat meg az adatokhoz való hozzáférés-szabályozás kényszerítéséhez még akkor is, ha az adatokat a rendszerből másolja át.
 
-## <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: bizalmas adatok titkosítása a nyugalmi állapotban
+## <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Bizalmas információk titkosítása nyugalmi
 
-| Azure-azonosító | CIS-azonosítók | Feladatkörök |
+| Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
-| 4,8 | 14,8 | Ügyfél |
+| 4.8 | 14.8 | Ügyfél |
 
-Az összes Azure-erőforráson használja a titkosítást. A Microsoft azt javasolja, hogy az Azure kezelje a titkosítási kulcsokat, azonban lehetőség van arra, hogy a saját kulcsait bizonyos példányokban kezelje. 
+Használja a titkosítást inaktívként az összes Azure-erőforrást. A Microsoft azt javasolja, hogy az Azure kezelje a titkosítási kulcsokat, azonban van lehetőség a saját kulcsok kezelésére bizonyos esetekben. 
 
-A inaktív adatok titkosításának megismerése az Azure-ban:
+Az Azure-ban inaktív titkosítás ismertetése:
 
 https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest
 
-Az ügyfél által felügyelt titkosítási kulcsok konfigurálása:
+Az ügyfél által kezelt titkosítási kulcsok konfigurálása:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
-## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
+## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Naplózza és figyelmeztesse a kritikus Azure-erőforrások változásait
 
-| Azure-azonosító | CIS-azonosítók | Feladatkörök |
+| Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
-| 4,9 | 14,9 | Ügyfél |
+| 4.9 | 14.9 | Ügyfél |
 
-A Azure Monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amikor a módosítások a kritikus Azure-erőforrásokra vonatkoznak.
+Az Azure Monitor és az Azure-tevékenységnapló használatával riasztásokat hozhat létre a kritikus Azure-erőforrások módosításaihoz.
 
-Riasztások létrehozása az Azure Activity log-eseményekhez:
+Értesítések létrehozása az Azure-tevékenységnapló eseményeihez:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse meg a következő biztonsági szabályozást: [sebezhetőségek kezelése](security-control-vulnerability-management.md)
+Lásd a következő biztonsági vezérlőt: [Biztonsági rés kezelése](security-control-vulnerability-management.md)

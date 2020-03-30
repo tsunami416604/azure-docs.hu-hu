@@ -1,169 +1,169 @@
 ---
-title: HTTP-fejlécek újraírása az Azure Application Gateway-vel | Microsoft Docs
-description: Ez a cikk áttekintést nyújt a HTTP-fejlécek újraírásáról az Azure-ban Application Gateway
+title: HTTP-fejlécek újraírása az Azure Application Gateway alkalmazással | Microsoft dokumentumok
+description: Ez a cikk áttekintést nyújt a HTTP-fejlécek átírásáról az Azure Application Gateway alkalmazásban
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: absha
-ms.openlocfilehash: b6f26eca0592017306eaefd3f5fecb544dc6fb36
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d0b28770940f0e1adeec16aa89cd087299bd4abc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932195"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132997"
 ---
-# <a name="rewrite-http-headers-with-application-gateway"></a>HTTP-fejlécek újraírása Application Gateway
+# <a name="rewrite-http-headers-with-application-gateway"></a>HTTP-fejlécek újraírása alkalmazásátjáróval
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A HTTP-fejlécek lehetővé teszik, hogy az ügyfél és a kiszolgáló további adatokat adjon át egy kérésnek vagy válasznak. A fejlécek újraírásával fontos feladatokat hajthat végre, például a biztonsággal kapcsolatos fejléc-mezőket (például HSTS/X-XSS-Protection), és eltávolíthatja a bizalmas adatokat felderítő válasz fejléceket, és eltávolíthatja a port információit X – továbbítva – fejlécekhez.
+A HTTP-fejlécek lehetővé teszik, hogy az ügyfél és a kiszolgáló további információkat adjon át kéréssel vagy válaszokkal. A fejlécek újraírásával fontos feladatokat végezhet el, például a biztonsággal kapcsolatos fejlécmezőket, például a HSTS/ X-XSS-Protection-t, a válaszfejlécmezőket, amelyek bizalmas információkat fedhetnek fel, valamint a portadatok eltávolítását az X-Forwarded-For fejlécekből.
 
 Az Application Gateway lehetővé teszi HTTP-kérelmek és -válaszok fejlécének hozzáadását, eltávolítását vagy frissítését, miközben a kérelem- és válaszcsomagok az ügyfél és a háttérkészlet között mozognak. Ezenkívül lehetővé teszi feltételek megadását, hogy a megadott fejlécek átírására csak ezen feltételek teljesülése esetén legyen lehetőség.
 
-A Application Gateway számos [kiszolgálói változót](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) is támogat, amelyek segítenek a kérelmekkel és a válaszokkal kapcsolatos további információk tárolásában. Így könnyebben hozhat létre hatékony Újraírási szabályokat.
+Az Application Gateway számos [kiszolgálóváltozót](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) is támogat, amelyek segítenek a kérésekkel és a válaszokkal kapcsolatos további információk tárolásában. Ez megkönnyíti a hatékony újraírási szabályok létrehozását.
 
 > [!NOTE]
 >
-> A HTTP-fejléc újraírásának támogatása csak a [Standard_V2 és a WAF_V2 SKU](application-gateway-autoscaling-zone-redundant.md)esetében érhető el.
+> A HTTP-fejléc újraírási támogatása csak a [Standard_V2 és WAF_v2 termékváltozathoz](application-gateway-autoscaling-zone-redundant.md)érhető el.
 
 ![Fejlécek újraírása](media/rewrite-http-headers/rewrite-headers.png)
 
 ## <a name="supported-headers"></a>Támogatott fejlécek
 
-A kérések és válaszok összes fejlécét újraírhatja, kivéve a gazdagép, a kapcsolatok és a frissítés fejléceit. Az Application Gateway használatával egyéni fejléceket is létrehozhat, és hozzáadhatja azokat az átirányított kérésekhez és válaszokhoz.
+A kérelmekben és válaszokban lévő összes fejlécet átírhatja, kivéve a Gazdagép, a Kapcsolat és a Frissítés fejléceket. Az alkalmazásátjáró segítségével egyéni fejléceket is létrehozhat, és hozzáadhatja őket a rajta keresztül irányított kérésekhez és válaszokhoz.
 
 ## <a name="rewrite-conditions"></a>Újraírási feltételek
 
-Az Újraírási feltételek használatával kiértékelheti a HTTP (S) kérelmek és válaszok tartalmát, és csak akkor hajthat végre újraírást, ha egy vagy több feltétel teljesül. Az Application Gateway ezeket a típusú változókat használja a HTTP (S) kérelmek és válaszok tartalmának kiértékeléséhez:
+Az újraírási feltételek segítségével kiértékelheti a HTTP(S) kérések és -válaszok tartalmát, és csak akkor hajthat végre fejléc-újraírást, ha egy vagy több feltétel teljesül. Az alkalmazásátjáró az alábbi típusú változók at használja a HTTP(S) kérések és válaszok tartalmának kiértékelésére:
 
-- A kérelemben szereplő HTTP-fejlécek.
-- A válaszban szereplő HTTP-fejlécek.
-- Application Gateway kiszolgálói változók.
+- HTTP-fejlécek a kérelemben.
+- HTTP-fejlécek a válaszban.
+- Alkalmazásátjáró-kiszolgáló változók.
 
-Feltételt használhat egy adott változó jelenlétének kiértékeléséhez, hogy egy adott változó megfelel-e egy adott értéknek, vagy hogy egy adott változó megfelel-e egy adott mintának. A Perl- [kompatibilis reguláris kifejezések (PCRE) függvénytárával](https://www.pcre.org/) állíthatja be a reguláris kifejezési mintákat a feltételek szerint. A reguláris kifejezés szintaxisáról a [Perl reguláris kifejezések](https://perldoc.perl.org/perlre.html)főoldala című témakörben olvashat bővebben.
+Egy feltétellel kiértékelheti, hogy egy adott változó jelen van-e, hogy egy adott változó megfelel-e egy adott értéknek, vagy hogy egy adott változó megfelel-e egy adott mintának. A [Perl-kompatibilis reguláris kifejezések (PCRE) könyvtár](https://www.pcre.org/) segítségével beállíthatja a reguláris kifejezésminta egyezést a feltételekben. A reguláris kifejezések szintaxisáról a [Perl reguláris kifejezések főoldalán](https://perldoc.perl.org/perlre.html)olvashat.
 
-## <a name="rewrite-actions"></a>Újraírási műveletek
+## <a name="rewrite-actions"></a>Műveletek újraírása
 
-Az Újraírási műveletek segítségével megadhatja az újraírni kívánt kérelem és válasz fejléceit, valamint a fejlécek új értékét. Létrehozhat egy új fejlécet, módosíthatja egy meglévő fejléc értékét, vagy törölhet egy meglévő fejlécet is. Az új fejléc vagy egy meglévő fejléc értéke az alábbi típusú értékekre állítható be:
+Az újraírási műveletek segítségével megadhatja az újraírni kívánt kérés- és válaszfejléceket, valamint a fejlécek új értékét. Létrehozhat új fejlécet, módosíthatja egy meglévő fejléc értékét, vagy törölhet egy meglévő t. Egy új fejléc vagy egy meglévő fejléc értéke az alábbi típusú értékekre állítható be:
 
 - Szöveg.
-- Kérelem fejléce A kérelem fejlécének megadásához a következő szintaxist kell használnia: {http_req_*headerName*}.
-- Válaszfejléc. A válasz fejlécének megadásához a következő szintaxist kell használnia: {http_resp_*headerName*}.
-- Kiszolgálói változó. A kiszolgálói változó megadásához a következő szintaxist kell használnia: {var_*serverVariable*}.
-- A szöveg, a kérelem fejléce, a válasz fejléce és a kiszolgálói változó kombinációja.
+- Kérelem fejléce. A kérelemfejléc megadásához a(z) {http_req_ headerName } szintaxist kell*használnia.*
+- Válaszfejléc. Válaszfejléc megadásához a(z) {http_resp_ headerName } szintaxist kell*használnia.*
+- Kiszolgáló változó. Kiszolgálóváltozó megadásához a(z) {var_*serverVariable*} szintaxist kell használnia.
+- Szöveg, kérésfejléc, válaszfejléc és kiszolgálóváltozó kombinációja.
 
 ## <a name="server-variables"></a>Kiszolgálói változók
 
-A Application Gateway kiszolgálói változók használatával tárolja a kiszolgálóval kapcsolatos hasznos információkat, az ügyféllel létesített kapcsolatokat és a jelenlegi kérést a kapcsolatban. A tárolt információk közé tartoznak például az ügyfél IP-címe és a webböngésző típusa. A kiszolgálói változók dinamikusan változnak, például új lap betöltésekor vagy űrlap közzétételekor. Ezeket a változókat használhatja az Újraírási feltételek kiértékeléséhez és a fejlécek újraírásához.
+Az Application Gateway kiszolgálóváltozók segítségével tárolja a kiszolgálóval, az ügyféllel való kapcsolattal és a kapcsolataktuális kérésével kapcsolatos hasznos információkat. A tárolt adatok közé tartozik például az ügyfél IP-címe és a webböngésző típusa. A kiszolgálóváltozók dinamikusan változnak, például új oldal betöltésekor vagy űrlap feladásakor. Ezekkel a változókkal kiértékelheti az újraírási feltételeket, és átírhatja a fejléceket.
 
-Az Application Gateway a következő kiszolgálói változókat támogatja:
+Az alkalmazásátjáró a következő kiszolgálóváltozókat támogatja:
 
 | Változó neve | Leírás                                                  |
 | -------------------------- | :----------------------------------------------------------- |
-| add_x_forwarded_for_proxy  | Az X-Forwarded-For Client Request fejléc mező a `client_ip` (z) változóval (lásd a táblázat későbbi részében) az IP1, a IP2, a IP3 stb. formátumban. Ha az X-forwardd-for mező nem szerepel az ügyfél-igénylési fejlécben, akkor a `add_x_forwarded_for_proxy` változó egyenlő a `$client_ip` változóval. Ez a változó különösen akkor hasznos, ha újra szeretné írni az X által továbbított fejlécet a Application Gateway, hogy a fejléc csak az IP-címet tartalmazza a port adatai nélkül. |
+| add_x_forwarded_for_proxy  | Az X-Forwarded-For client request `client_ip` fejlécmezője a változóval (lásd a táblázat későbbi részében található magyarázatot) IP1, IP2, IP3 és így tovább formátumban fűzte hozzá. Ha az X-Forwarded-For mező nem szerepel az `add_x_forwarded_for_proxy` ügyfélkérelem fejlécében, a változó megegyezik a `$client_ip` változóval. Ez a változó különösen akkor hasznos, ha az Application Gateway által beállított X-Forwarded-For fejlécet úgy szeretné újraírni, hogy a fejléc csak a portadatok nélküli IP-címet tartalmazza. |
 | ciphers_supported          | Az ügyfél által támogatott titkosítások listája.          |
-| ciphers_used               | Egy létesített SSL-kapcsolathoz használt titkosítási karakterlánc. |
-| client_ip                  | Annak az ügyfélnek az IP-címe, amelyről az Application Gateway fogadta a kérelmet. Ha van fordított proxy az Application Gateway és a kezdeményező ügyfél előtt, a *client_ip* a fordított proxy IP-címét fogja visszaadni. |
-| client_port                | Az ügyfél portja.                                                  |
-| client_tcp_rtt             | Az ügyfél TCP-kapcsolataival kapcsolatos információk. Az TCP_INFO socket lehetőséget támogató rendszereken érhető el. |
-| client_user                | A HTTP-hitelesítés használatakor a rendszer a hitelesítéshez megadott felhasználónevet adja meg. |
-| host                       | A sorrend sorrendjében: az állomásnév a kérelem sorából, az állomásnév a gazdagép-kérelem fejléce mezőből, vagy egy kérelemnek megfelelő kiszolgálónév. |
-| cookie_*neve*              | A *név* cookie.                                            |
-| http_method                | Az URL-kérelem elvégzéséhez használt metódus. Például: GET vagy POST. |
-| http_status                | A munkamenet állapota. Például: 200, 400 vagy 403.                       |
-| http_version               | A kérelem protokollja. Általában HTTP/1.0, HTTP/1.1 vagy HTTP/2.0. |
-| query_string               | A kért URL-cím "?" értékét követő változó/érték párok listája. |
-| received_bytes             | A kérelem hossza (beleértve a kérelmek sorát, a fejlécet és a kérelem törzsét). |
-| request_query              | A kérés sorában szereplő argumentumok                                |
-| request_scheme             | A kérési séma: http vagy HTTPS.                            |
-| request_uri                | A teljes eredeti kérelem URI-ja (argumentumokkal).                   |
-| sent_bytes                 | Az ügyfélnek eljuttatott bájtok száma.                             |
-| server_port                | A kérelmet fogadó kiszolgáló portja.                 |
-| ssl_connection_protocol    | Egy létesített SSL-kapcsolat protokollja.        |
-| ssl_enabled                | "On", ha a kapcsolat SSL módban működik. Ellenkező esetben üres karakterláncot kell megadni. |
+| ciphers_used               | A létrehozott TLS-kapcsolathoz használt titkosítási karakterlánc. |
+| client_ip                  | Annak az ügyfélnek az IP-címe, amelytől az alkalmazásátjáró megkapta a kérést. Ha az alkalmazásátjáró és az eredeti ügyfél előtt fordított proxy van, *client_ip* a fordított proxy IP-címét adja vissza. |
+| client_port                | Az ügyfélport.                                                  |
+| client_tcp_rtt             | Információ az ügyfél TCP-kapcsolatáról. Olyan rendszereken érhető el, amelyek támogatják a TCP_INFO foglalatopciót. |
+| client_user                | HTTP-hitelesítés használata esetén a hitelesítéshez megadott felhasználónév. |
+| gazda                       | Ebben a sorrendben: az állomásnév a kérelemsorból, az állomásnév az Állomáskérelem fejlécmezőjéből, vagy a kérésnek megfelelő kiszolgálónév. |
+| cookie_*név*              | A *süti neve.*                                            |
+| http_method                | Az URL-kérelem benyújtásához használt módszer. Például GET vagy POST. |
+| http_status                | A munkamenet állapota. Például 200, 400 vagy 403.                       |
+| http_version               | A kérelem protokoll. Általában HTTP/1.0, HTTP/1.1 vagy HTTP/2.0. |
+| query_string               | A kért URL-ben a "?" értéket követő változó/értékpárok listája. |
+| received_bytes             | A kérelem hossza (beleértve a kérelemsort, a fejlécet és a kérelemtörzset). |
+| request_query              | A kérelemsor argumentumai.                                |
+| request_scheme             | A kérelemséma: http vagy https.                            |
+| request_uri                | A teljes eredeti kérelem URI (argumentumokkal).                   |
+| sent_bytes                 | Az ügyfélnek küldött bájtok száma.                             |
+| server_port                | A kérést fogadó kiszolgáló portja.                 |
+| ssl_connection_protocol    | A létrehozott TLS-kapcsolat protokollja.        |
+| ssl_enabled                | "Be" ha a kapcsolat TLS módban működik. Ellenkező esetben egy üres karakterlánc. |
 
 ## <a name="rewrite-configuration"></a>Konfiguráció újraírása
 
-A HTTP-fejléc újraírásának konfigurálásához el kell végeznie ezeket a lépéseket.
+A HTTP-fejléc újraírásának konfigurálásához végre kell hajtsa végre ezeket a lépéseket.
 
 1. Hozza létre a HTTP-fejléc újraírásához szükséges objektumokat:
 
-   - **Újraírási művelet**: Megadhatja a kérelem és a kérelem fejlécének azon mezőit, amelyeket át szeretne írni, valamint a fejlécek új értékét. Egy vagy több Újraírási feltétel is társítható egy Újraírási művelettel.
+   - **Újraírási művelet:** Az újraírni kívánt kérés- és kérésfejléc-mezők és a fejlécek új értékének megadására szolgál. Egy vagy több újraírási feltételt újraírási művelethez társíthat.
 
-   - **Újraírási feltétel**: Egy opcionális konfiguráció. Az Újraírási feltételek kiértékelik a HTTP (S) kérelmek és válaszok tartalmát. Az újraírás művelet akkor fordul elő, ha a HTTP (S) kérelem vagy válasz megfelel az Újraírási feltételnek.
+   - **Újraírási feltétel**: Választható konfiguráció. Az újraírási feltételek kiértékelik a HTTP(S) kérések és válaszok tartalmát. Az újraírási művelet akkor történik meg, ha a HTTP(S) kérés vagy válasz megfelel az újraírási feltételnek.
 
-     Ha egynél több feltételt társít egy művelethez, a művelet csak akkor lép fel, ha az összes feltétel teljesül. Más szóval a művelet logikai és művelet.
+     Ha egynél több feltételt társít egy művelethez, a művelet csak akkor történik meg, ha az összes feltétel teljesül. Más szóval a művelet logikai ÉS művelet.
 
-   - **Újraírási szabály**: Több Újraírási művelet/Újraírási feltétel kombinációt tartalmaz.
+   - **Újraírási szabály**: Több újraírási műveletet /újraírásfeltétel-kombinációt tartalmaz.
 
-   - **Szabály sorszáma**: Segít meghatározni az Újraírási szabályok végrehajtásának sorrendjét. Ez a konfiguráció akkor hasznos, ha több Újraírási szabály található egy Újraírási készletben. Az alacsonyabb szabálykészlet-értékkel rendelkező Újraírási szabály először fut. Ha ugyanezt a szabályt két Újraírási szabályhoz rendeli hozzá, a végrehajtás sorrendje nem determinisztikus.
+   - **Szabálysorozat**: Segít meghatározni az újraírási szabályok végrehajtásának sorrendjét. Ez a konfiguráció akkor hasznos, ha egy újraírási készletben több újraírási szabály is szerepel. Először egy alacsonyabb szabálysorozat-értékkel rendelkező újraírási szabály fut. Ha ugyanazt a szabálysorozatot két újraírási szabályhoz rendeli, a végrehajtás sorrendje nem determinisztikus.
 
-   - **Újraírási készlet**: Több Újraírási szabályt tartalmaz, amelyek egy kérelem-útválasztási szabállyal lesznek társítva.
+   - **Újraírási készlet**: Több újraírási szabályt tartalmaz, amelyek egy kérelem-útválasztási szabályhoz lesznek társítva.
 
-2. Csatolja az Újraírási készletet (*rewriteRuleSet*) egy útválasztási szabályhoz. Az Újraírási konfiguráció a forrás figyelőhöz van csatolva az útválasztási szabály segítségével. Alapszintű útválasztási szabály használata esetén a fejléc-Újraírási konfiguráció egy forrás-figyelőhöz van társítva, és a globális fejléc újraírása. Elérésiút-alapú útválasztási szabály használata esetén a fejléc-Újraírási konfiguráció az URL-cím elérési útja alapján van definiálva. Ebben az esetben csak a hely adott elérési útja területére vonatkozik.
+2. Csatlakoztassa az újraíró készletet (*átírási szabálykészletet)* egy útválasztási szabályhoz. Az újraírási konfiguráció az útválasztási szabályon keresztül csatlakozik a forrásfigyelőhöz. Ha alapútválasztási szabályt használ, a fejléc újraírási konfigurációja egy forrásfigyelőhöz van társítva, és globális fejléc-újraírás. Útalapú útválasztási szabály használata esetén a fejléc újraírási konfigurációja az URL-elérési út térképén lesz definiálva. Ebben az esetben csak a webhely adott elérési útterületén érvényes.
    > [!NOTE]
-   > URL-újraírás módosítja a fejléceket; nem változtatja meg az elérési út URL-címét.
+   > Az URL újraírása módosítja a fejléceket; nem módosítja az elérési út URL-címét.
 
-Több, a HTTP-fejléc Újraírási készletét is létrehozhatja, és az egyes újraírásokat több figyelőre alkalmazhatja. De csak egy Újraírási készletet alkalmazhat egy adott figyelőre.
+Több HTTP-fejléc újraírási készletet hozhat létre, és minden újraírási készletet több figyelőre alkalmazhat. De csak egy újraírási készletet alkalmazhat egy adott figyelőhöz.
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
-Íme néhány gyakori forgatókönyv a fejléc újraírásának használatához.
+Íme néhány gyakori forgatókönyv a fejlécújraírás használatára.
 
-### <a name="remove-port-information-from-the-x-forwarded-for-header"></a>A port adatainak eltávolítása az X által továbbított fejlécből
+### <a name="remove-port-information-from-the-x-forwarded-for-header"></a>Portadatok eltávolítása az X-Forwarded-For fejlécből
 
-Application Gateway beszúr egy X-vel továbbított-fejlécet az összes kérelembe, mielőtt továbbítja a kéréseket a háttérbe. Ez a fejléc az IP-portok vesszővel tagolt listája. Előfordulhatnak olyan helyzetek, amikor a háttér-kiszolgálóknak csak az IP-címeket tartalmazó fejlécekre van szükségük. A fejléc újraírásával eltávolíthatja a port információit az X által továbbított-for fejlécből. Ennek egyik módja, ha a fejlécet a add_x_forwarded_for_proxy-kiszolgáló változóra állítja be:
+Az Application Gateway beszúr egy X-Forwarded-For fejlécet az összes kérelembe, mielőtt továbbítané a kérelmeket a háttérrendszernek. Ez a fejléc az IP-portok vesszővel tagolt listája. Előfordulhatnak olyan esetek, amikor a háttérkiszolgálóknak csak a fejléceknek kell IP-címeket tartalmazniuk. A fejléc újraírásával eltávolíthatja a portadatokat az X-Forwarded-For fejlécből. Ennek egyik módja a fejléc beállítása a add_x_forwarded_for_proxy kiszolgálóváltozóra:
 
 ![Port eltávolítása](media/rewrite-http-headers/remove-port.png)
 
 ### <a name="modify-a-redirection-url"></a>Átirányítási URL-cím módosítása
 
-Ha egy háttérbeli alkalmazás átirányítási választ küld, előfordulhat, hogy át szeretné irányítani az ügyfelet egy másik URL-címre, mint amelyet a háttérbeli alkalmazás adott meg. Tegyük fel például, hogy ezt akkor érdemes megtenni, ha egy app Service-t egy Application Gateway mögött futtat, és azt igényli, hogy az ügyfél átirányítsa a relatív elérési útra. (Például egy átirányítás a contoso.azurewebsites.net/path1 a contoso.azurewebsites.net/path2-be.)
+Amikor egy háttéralkalmazás átirányítási választ küld, érdemes lehet átirányítani az ügyfelet egy másik URL-címre, mint a háttéralkalmazás által megadott. Ezt például akkor érdemes megtennie, ha egy alkalmazásszolgáltatás egy alkalmazásátjáró mögött található, és az ügyfélnek át kell haladnia a relatív elérési útjára. (Például egy átirányítás contoso.azurewebsites.net/path1-ról contoso.azurewebsites.net/path2.)
 
-Mivel a App Service egy több-bérlős szolgáltatás, a kérelemben szereplő állomásfejléc használatával irányítja át a kérést a megfelelő végpontra. Az App Services alapértelmezett tartományneve *. azurewebsites.net (Say contoso.azurewebsites.net), amely eltér az Application Gateway tartománynevétől (mondjuk contoso.com). Mivel az ügyfél eredeti kérelme az Application Gateway tartománynevét (contoso.com) adja meg állomásnévként, az Application Gateway megváltoztatja az állomásnevet a contoso.azurewebsites.net. Ez a módosítás lehetővé teszi, hogy az App Service átirányítsa a kérést a megfelelő végpontra.
+Mivel az App Service egy több-bérlős szolgáltatás, a kérelemben lévő gazdagépfejlécet használja a kérelem megfelelő végpontra való továbbításához. Az alkalmazásszolgáltatások alapértelmezett tartományneve *.azurewebsites.net (mondjuk contoso.azurewebsites.net), amely eltér az alkalmazásátjáró tartománynevétől (például contoso.com). Mivel az ügyfél eredeti kérése az alkalmazásátjáró tartományneve (contoso.com) az állomásnév, az alkalmazásátjáró az állomásnevet contoso.azurewebsites.net módosítja. Ez a módosítás, hogy az alkalmazásszolgáltatás a kérést a megfelelő végpontra irányíthassa.
 
-Amikor az App Service átirányítási választ küld, ugyanazt a gazdagépet használja a válaszának Location fejlécében, mint az Application gatewaytől kapott kérelemben szereplőnek. Így az ügyfél közvetlenül a contoso.azurewebsites.net/path2 küldi a kérést az Application Gateway (contoso.com/path2) helyett. Az Application Gateway megkerülése nem kívánatos.
+Amikor az alkalmazásszolgáltatás átirányítási választ küld, ugyanazt az állomásnevet használja a válasz helyfejlécében, mint az alkalmazásátjárótól kapott kérelemben. Így az ügyfél közvetlenül a contoso.azurewebsites.net/path2, ahelyett, hogy az alkalmazásátjárón (contoso.com/path2) keresztül. Az alkalmazásátjáró megkerülése nem kívánatos.
 
-A probléma megoldásához állítsa be a hostname értéket a Location (hely) fejlécben az Application Gateway tartománynevére.
+A probléma úgy oldható meg, hogy a helyfejlécben lévő állomásnevet az alkalmazásátjáró tartománynevére állítja be.
 
-Az állomásnév lecserélésének lépései a következők:
+Az állomásnév cseréjének lépései:
 
-1. Hozzon létre egy Újraírási szabályt egy feltétellel, amely kiértékeli, hogy a válaszban található azurewebsites.net tartalmaz-e. Adja meg a `(https?):\/\/.*azurewebsites\.net(.*)$`mintát.
-1. Hajtson végre egy műveletet a hely fejlécének újraírásához, hogy az Application Gateway állomásneve legyen. Ezt a fejléc értékének megadásával `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` teheti meg.
+1. Hozzon létre egy újraírási szabályt egy feltétellel, amely kiértékeli, hogy a válasz helyfejléce tartalmaz-e azurewebsites.net. Adja meg `(https?):\/\/.*azurewebsites\.net(.*)$`a mintát .
+1. Hajtson végre egy műveletet a helyfejléc újraírásához, hogy az az alkalmazásátjáró állomásnevét tartalmazza. Ehhez adja `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` meg a fejléc értékét.
 
-![Hely fejlécének módosítása](media/rewrite-http-headers/app-service-redirection.png)
+![Helyfejléc módosítása](media/rewrite-http-headers/app-service-redirection.png)
 
-### <a name="implement-security-http-headers-to-prevent-vulnerabilities"></a>Biztonsági HTTP-fejlécek implementálása a sebezhetőségek megelőzése érdekében
+### <a name="implement-security-http-headers-to-prevent-vulnerabilities"></a>Biztonsági HTTP-fejlécek megvalósítása a biztonsági rések megelőzése érdekében
 
-Számos biztonsági rést kijavíthat, ha a szükséges fejléceket az alkalmazás válaszában hajtja végre. Ezek a biztonsági fejlécek a következők: X-XSS-Protection, Strict Transport-Security és Content-Security-Policy. Az összes válaszhoz a Application Gateway használatával állíthatja be ezeket a fejléceket.
+Számos biztonsági rést úgy oldhat meg, hogy a szükséges fejléceket alkalmazza az alkalmazásválaszban. Ezek a biztonsági fejlécek közé tartozik az X-XSS-Protection, a Strict-Transport-Security és a Content-Security-Policy. Az Application Gateway segítségével beállíthatja ezeket a fejléceket az összes válaszhoz.
 
 ![Biztonsági fejléc](media/rewrite-http-headers/security-header.png)
 
-### <a name="delete-unwanted-headers"></a>Nemkívánatos fejlécek törlése
+### <a name="delete-unwanted-headers"></a>Nem kívánt fejlécek törlése
 
-Előfordulhat, hogy el szeretné távolítani azokat a fejléceket, amelyek bizalmas adatokat tárnak fel egy HTTP-válasz alapján. Előfordulhat például, hogy el szeretné távolítani az adatokat, például a háttér-kiszolgáló nevét, az operációs rendszert vagy a könyvtár részleteit. Az Application Gateway használatával eltávolíthatja ezeket a fejléceket:
+Előfordulhat, hogy el szeretné távolítani azokat a fejléceket, amelyek bizalmas információkat tárnak fel egy HTTP-válaszból. Előfordulhat például, hogy el szeretné távolítani az olyan információkat, mint a háttérkiszolgáló neve, az operációs rendszer vagy a tár adatai. Az alkalmazásátjáró segítségével eltávolíthatja ezeket a fejléceket:
 
 ![Fejléc törlése](media/rewrite-http-headers/remove-headers.png)
 
-### <a name="check-for-the-presence-of-a-header"></a>Fejléc jelenlétének keresése
+### <a name="check-for-the-presence-of-a-header"></a>Fejléc jelenlétének ellenőrzése
 
-Kiértékelheti a HTTP-kérések vagy a válasz fejléceit egy fejléc vagy kiszolgálói változó jelenlétéhez. Ez a kiértékelés akkor lehet hasznos, ha a fejlécet csak akkor szeretné elvégezni, ha egy adott fejléc szerepel.
+Kiértékelheti a HTTP-kérelmek et vagy válaszfejléceket fejléc vagy kiszolgálóváltozó jelenlétére vonatkozóan. Ez a kiértékelés akkor hasznos, ha csak akkor szeretne fejlécújraírást végezni, ha egy bizonyos fejléc van jelen.
 
-![Fejléc meglétének ellenőrzése](media/rewrite-http-headers/check-presence.png)
+![Fejléc jelenlétének ellenőrzése](media/rewrite-http-headers/check-presence.png)
 
 ## <a name="limitations"></a>Korlátozások
 
-- Ha egy válasznak több fejléce is van ugyanazzal a névvel, akkor az egyik fejléc értékének átírása miatt a rendszer eldobja a válasz többi fejlécét. Ez általában a Set-Cookie fejléctel fordulhat elő, mert a válaszban több Set-Cookie fejléc is lehet. Az egyik ilyen eset az, amikor app Service-t használ egy Application Gateway-vel, és konfigurálta a cookie-alapú munkamenet-affinitást az Application gatewayben. Ebben az esetben a válasz két set-cookie-fejlécet tartalmaz: az egyiket az App Service használja, például `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` : és egy másik az Application Gateway-affinitáshoz, `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`például:. Ebben a forgatókönyvben a Set-Cookie fejlécek egyikének újraírásával a másik set-cookie fejlécet is eltávolíthatja a válaszból.
+- Ha egy válasznak egynél több azonos nevű fejléce van, akkor az egyik fejléc értékének újraírása a többi fejléc eldobását eredményezi a válaszban. Ez általában a Set-Cookie fejlécével fordulhat elő, mivel egy válaszban több Set-Cookie fejléc is lehet. Az egyik ilyen forgatókönyv az, ha egy alkalmazásszolgáltatást egy alkalmazásátjáróval használ, és cookie-alapú munkamenet-affinitást konfigurált az alkalmazásátjárón. Ebben az esetben a válasz két Set-Cookie fejlécet fog tartalmazni: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` az egyiket például az alkalmazásszolgáltatás `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`használja: és egy másikat az alkalmazásátjáró-affinitással, például . Ebben a forgatókönyvben a Set-Cookie fejlécek egyikének újraírása azt eredményezheti, hogy eltávolítja a másik Set-Cookie fejlécet a válaszból.
 
-- A kapcsolatok, a verziófrissítés és a gazdagép-fejlécek újraírása jelenleg nem támogatott.
+- A Kapcsolat, frissítés és állomásfejlécek újraírása jelenleg nem támogatott.
 
-- A fejlécek nevei a 7230-as [számú RFC-dokumentumban](https://tools.ietf.org/html/rfc7230#page-27)meghatározott alfanumerikus karaktereket és egyedi szimbólumokat tartalmazhatnak. Jelenleg nem támogatjuk az aláhúzásjel (\_) speciális karaktert a fejlécek neveiben.
+- A fejlécnevek az [RFC 7230-ban](https://tools.ietf.org/html/rfc7230#page-27)meghatározott alfanumerikus karaktereket és szimbólumokat tartalmazhatnak. Jelenleg nem támogatjuk az\_aláhúzás ( ) speciális karaktert a fejlécnevekben.
 
 ## <a name="next-steps"></a>További lépések
 
-A HTTP-fejlécek újraírásának megismeréséhez tekintse meg a következő témakört:
+A HTTP-fejlécek átírásáról a következő témakörökben olvashat:
 
-- [HTTP-fejlécek újraírása Azure Portal használatával](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
-- [HTTP-fejlécek újraírása Azure PowerShell használatával](add-http-header-rewrite-rule-powershell.md)
+- [HTTP-fejlécek újraírása az Azure Portal használatával](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+- [HTTP-fejlécek újraírása az Azure PowerShell használatával](add-http-header-rewrite-rule-powershell.md)

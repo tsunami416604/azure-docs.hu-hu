@@ -1,6 +1,6 @@
 ---
-title: A Mongo adatbázis Azure Cosmos DB API-jával kapcsolatos gyakori hibák elhárítása
-description: Ez a dokumentum a Azure Cosmos DB API-MongoDB kapcsolatos gyakori problémák elhárításának módszereit tárgyalja.
+title: Gyakori hibák elhárítása az Azure Cosmos DB Mongo DB API-jában
+description: Ez a dokumentum ismerteti, hogyan hárítsa el az Azure Cosmos DB MongoDB API-jában észlelt gyakori problémák elhárításának módjait.
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,31 +8,31 @@ ms.topic: troubleshooting
 ms.date: 06/05/2019
 ms.author: lbosq
 ms.openlocfilehash: d9a4e336f582e866fd057f6c281f892ce07b34fc
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75941849"
 ---
-# <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Az Azure Cosmos DB API-MongoDB kapcsolatos gyakori problémák elhárítása
+# <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Gyakori problémák elhárítása az Azure Cosmos DB MongoDB API-jában
 
-Azure Cosmos DB a Common NoSQL-adatbázisok (például a MongoDB) átviteli protokolljait implementálja. A huzal protokoll implementációja miatt transzparens módon használhatja a Azure Cosmos DBeket a NoSQL-adatbázisokkal működő meglévő ügyféloldali SDK-k, illesztőprogramok és eszközök használatával. A Azure Cosmos DB nem használja az adatbázisok egyik forráskódját sem a NoSQL-adatbázisok vezeték nélküli API-jai biztosításához. Minden olyan MongoDB-ügyfél-illesztőprogram, amely megérti, hogy a hálózati protokollok verziója csatlakozni tud a Azure Cosmos DBhoz.
+Az Azure Cosmos DB megvalósítja a közös NoSQL-adatbázisok, köztük a MongoDB vezetékes protokolljait. A vezetékprotokoll-implementáció nak köszönhetően a NoSQL-adatbázisokkal dolgozó meglévő ügyfél-SDK-k, illesztőprogramok és eszközök használatával átlátható módon kommunikálhat az Azure Cosmos DB-vel. Az Azure Cosmos DB nem használja az adatbázisok forráskódját a NoSQL-adatbázisok bármelyikéhez vezetékes kompatibilis API-k biztosításához. Bármely MongoDB ügyfél-illesztőprogram, amely ismeri a vezetékes protokoll verziók csatlakozhat nak az Azure Cosmos DB.
 
-Habár Azure Cosmos DB API-MongoDB kompatibilis a MongoDB átviteli protokolljának 3,2-es verziójával (az 3,4-es verzióban hozzáadott lekérdezési operátorok és szolgáltatások jelenleg előzetes verzióként érhetők el), vannak olyan egyéni hibakódok, amelyek megfelelnek Azure Cosmos DB adott hibák. Ez a cikk különböző hibákat, hibakódokat és a hibák elhárításának lépéseit ismerteti.
+Bár az Azure Cosmos DB MongoDB-hoz készült API-ja kompatibilis a MongoDB vezetékes protokolljának 3.2-es verziójával (a 3.4-es verzióban hozzáadott lekérdezés-operátorok és funkciók jelenleg előzetes verzióként érhetők el), vannak olyan egyéni hibakódok, amelyek megfelelnek az Azure Cosmos DB-nek konkrét hibákat. Ez a cikk ismerteti a különböző hibákat, hibakódokat és a hibák elhárításának lépéseit.
 
 ## <a name="common-errors-and-solutions"></a>Gyakori hibák és megoldások
 
 | Hiba               | Kód  | Leírás  | Megoldás  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | A felhasználható kérelmek teljes száma nagyobb, mint a gyűjteményre kiépített kérelem-egység aránya, és a szabályozás megtörtént. | Érdemes lehet egy tárolóhoz vagy tárolóhoz rendelt átviteli sebességet méretezni a Azure Portal, vagy megismételni a műveletet. |
-| ExceededMemoryLimit | 16501 | Több-bérlős szolgáltatásként a művelet túllépte az ügyfél memóriájának kiosztását. | Csökkentse a művelet hatókörét szigorúbb lekérdezési feltételekkel, vagy forduljon a [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)támogatási szolgálatához. Például: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
-| A megadott Order-by elemnek megfelelő index elérési útja ki van zárva/a lekérdezési sorrend nem rendelkezik a megfelelő összetett indexszel, amelyből a szolgáltatás kiszolgálható. | 2 | A lekérdezés nem indexelt mezőre vonatkozó rendezést kér. | Hozzon létre egy egyező indexet (vagy kompozit indexet) a megkísérelt rendezési lekérdezéshez. |
-| MongoDB kapcsolatos problémák | - | A MongoDB-illesztőprogramok régebbi verziói nem tudják felderíteni az Azure Cosmos-fiók nevét a kapcsolódási karakterláncokban. | Fűzze hozzá a *appName = @**accountName**@* a Cosmos db API-ját a MongoDB-kapcsolatok karakterláncához, ahol a ***accountName*** a Cosmos db fióknév. |
+| TooManyKéri     | 16500 | A felhasznált kérelemegységek teljes száma meghaladja a gyűjtemény kiépített kérelemegység-díját, és a csomagban szabályozták. | Fontolja meg a tárolóhoz vagy tárolók készletéhez rendelt átviteli kábel méretezését az Azure Portalról, vagy próbálkozzon újra a művelettel. |
+| ExceededMemoryLimit | 16501 | Több-bérlős szolgáltatásként a művelet átment az ügyfél memóriaallokációja felett. | Csökkentse a művelet hatókörét szigorúbb lekérdezési feltételekkel vagy az [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)támogatási szolgálatával. Például: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
+| A megadott rendelési elemnek megfelelő indexelérési út kizárt / A lekérdezés i sorrendje nem rendelkezik megfelelő összetett indexszel, amelyből kiszolgálható. | 2 | A lekérdezés nem indexelt mezőre kér rendezést. | Hozzon létre egy megfelelő indexet (vagy összetett indexet) a megkísérelt rendezési lekérdezéshez. |
+| MongoDB vonalprotokoll-verzióval kapcsolatos problémák | - | A MongoDB-illesztőprogramok régebbi verziói nem észlelik az Azure Cosmos-fiók nevét a kapcsolati karakterláncokban. | Hozzáfűzés *appName=@**accountName** @ * a Cosmos DB API-jának végén a MongoDB kapcsolati karakterlánchoz, ahol az ***accountName*** a Cosmos DB-fiók neve. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
-- Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.
-- Ismerkedjen meg a MongoDB- [mintákkal](mongodb-samples.md) Azure Cosmos db API-val a MongoDB.
+- Ismerje meg, hogyan használhatja a [Studio 3T-t](mongodb-mongochef.md) az Azure Cosmos DB MongoDB-hoz való API-jával.
+- Ismerje meg, hogyan használhatja a [Robo 3T-t](mongodb-robomongo.md) az Azure Cosmos DB MongoDB-hoz való API-jával.
+- Fedezze fel a [MongoDB-mintákat](mongodb-samples.md) az Azure Cosmos DB MongoDB-hoz kapcsolódó API-jával.
 

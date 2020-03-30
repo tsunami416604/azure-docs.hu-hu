@@ -1,93 +1,101 @@
 ---
-title: Azure Migrate Server Migration – gyakori kérdések
-description: Választ kaphat a Azure Migrate kiszolgáló áttelepítésének a gépek áttelepítésére való használatával kapcsolatos gyakori kérdésekre.
+title: – gyakori kérdések az Azure Áttelepítési kiszolgáló áttelepítésével kapcsolatos gyakori kérdések
+description: Válaszok az Azure Migrate Server Migration használatával a gépek áttelepítésével kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 4d3638e930b4e12a29df4ab189ffb24ab248582b
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 507cc8088bf54b1a4f4483673ec5332efcdd36c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78939202"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127804"
 ---
-# <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate kiszolgáló áttelepítése: gyakori kérdések
+# <a name="azure-migrate-server-migration-common-questions"></a>Azure Áttelepítési kiszolgáló: Gyakori kérdések
 
-Ez a cikk a Azure Migrate: Server áttelepítési eszközzel kapcsolatos gyakori kérdésekre ad választ. Ha további kérdései vannak, tekintse meg a következő erőforrásokat:
+Ez a cikk az Azure Áttelepítés: Kiszolgálóáttelepítés imátló eszközzel kapcsolatos gyakori kérdésekre ad választ. Ha egyéb kérdése van, ellenőrizze az alábbi forrásokat:
 
-- [Általános kérdések](resources-faq.md) a Azure Migrate
-- Az [Azure Migrate berendezéssel](common-questions-appliance.md) kapcsolatos kérdések
-- A [felderítéssel, az értékeléssel és a függőségi vizualizációval](common-questions-discovery-assessment.md) kapcsolatos kérdések
-- A [Azure Migrate fórumban](https://aka.ms/AzureMigrateForum) választ kaphat kérdéseire
+- [Általános kérdések az](resources-faq.md) Azure Áttelepítésével kapcsolatban
+- Kérdések az [Azure Migrate készülékkel kapcsolatban](common-questions-appliance.md)
+- Kérdések [a felderítéssel, értékeléssel és függőségi megjelenítéssel kapcsolatban](common-questions-discovery-assessment.md)
+- Kérdések megválaszolása az [Azure Áttelepítésfórumában](https://aka.ms/AzureMigrateForum)
 
-## <a name="how-does-agentless-vmware-replication-work"></a>Hogyan működik az ügynök nélküli VMware-replikáció?
+## <a name="how-does-agentless-vmware-replication-work"></a>Hogyan működik az ügynök nélküli VMware replikáció?
 
-A VMware ügynök nélküli replikációs módszere a VMware-Pillanatképek és a VMware changed Block Tracking (CBT) használatával működik.
+A VMware ügynök nélküli replikációs módszere VMware pillanatképeket és VMware módosított blokkkövetést (CBT) használ.
 
-A folyamat a következő:
+Ennek folyamata a következő:
 
-1. A replikálás megkezdése után a kezdeti replikálási ciklus ütemezve lesz. A kezdeti ciklusban a virtuális gép pillanatképe készül. A pillanatkép a virtuális gépek VMDK (lemezek) replikálására szolgál. 
-2. A kezdeti replikálási ciklus befejeződése után a különbözeti replikálási ciklusok ütemezése rendszeres időközönként történik.
-    - A különbözeti replikáció során pillanatkép készül, és az előző replikálási ciklus óta módosult adatblokkok replikálódnak.
-    - A VMware CBT a legutóbbi ciklus óta megváltoztatott blokkok meghatározására szolgál.
-    - Az időszakos replikálási ciklusok gyakoriságát a Azure Migrate automatikusan kezeli, és attól függ, hogy hány másik virtuális gép és lemez párhuzamosan replikálódik ugyanabból az adattárból. Az ideális körülmények között a replikáció minden virtuális gép esetében óránként egy ciklusba konvergál.
+1. A replikáció indításakor egy kezdeti replikációs ciklus lesz ütemezve. A kezdeti ciklusban a virtuális gép pillanatképe készül. A pillanatkép a virtuális gépek VMDK-k (lemezek) replikálására szolgál. 
+2. A kezdeti replikációs ciklus befejezése után a rendszer rendszeres időközönként ütemezi a különbözeti replikációs ciklusokat.
+    - A különbözeti replikáció során pillanatkép készül, és az előző replikációs ciklus óta megváltozott adatblokkok replikálódnak.
+    - A VMware CBT az utolsó ciklus óta megváltozott blokkok meghatározására szolgál.
+    - Az időszakos replikációs ciklusok gyakoriságát automatikusan kezeli az Azure Migrate, és attól függ, hogy hány más virtuális gépek és lemezek egyidejűleg replikálja az azonos adattárból. Ideális körülmények között a replikáció végül minden virtuális gép óránként egy ciklushoz közelít.
 
-A Migrálás során egy igény szerinti replikációs ciklus ütemezve van a gép számára, hogy rögzítse a fennmaradó adatmennyiséget. A nulla adatvesztés és az alkalmazások konzisztenciájának biztosítása érdekében dönthet úgy, hogy leállítja a gépet az áttelepítés során.
+Az áttelepítéskor igény szerinti replikációs ciklus van ütemezve a számítógép számára a fennmaradó adatok rögzítésére. A nulla adatvesztés és az alkalmazás konzisztenciájának biztosítása érdekében dönthet úgy, hogy az áttelepítés során leállítja a számítógépet.
 
-## <a name="why-isnt-resynchronization-exposed"></a>Miért nem teszi elérhetővé az újraszinkronizálást?
+## <a name="why-isnt-resynchronization-exposed"></a>Miért nem elérhető az újraszinkronizálás?
 
-Az ügynök nélküli áttelepítés során a rendszer minden változási ciklusban megírja az aktuális pillanatkép és a korábban végrehajtott pillanatkép közötti különbséget. Mindig a pillanatképek és a behajtott adategységek közötti különbség. Ha egy adott szektor a pillanatképek között *N* alkalommal íródott, csak az utolsó írási időt kell átadni, mert csak az utolsó szinkronizáláskor érdeklik. A folyamat különbözik az ügynök-alapú replikációtól, amely alatt nyomon követjük és alkalmazzuk az összes írást. Ebben a folyamatban minden különbözeti ciklus újraszinkronizálást eredményez. Tehát nincs elérhető újraszinkronizálási beállítás. Ha a lemezek egy hiba miatt nem szinkronizálhatók, azt a következő ciklusban rögzíti a rendszer. 
+Ügynök nélküli áttelepítés során, minden különbözeti ciklusban, az aktuális pillanatkép és a korábban készített pillanatkép közötti különbség van írva. Mindig ez a különbség a pillanatképek és az adatok összecsukása között. Ha egy adott szektor van írva *N* alkalommal pillanatképek között, csak az utolsó írási kell átvinni, mert mi csak az utolsó szinkronizálás érdekel. A folyamat eltér az ügynökalapú replikációtól, amelynek során minden írást nyomon követünk és alkalmazunk. Ebben a folyamatban minden különbözeti ciklus egy reszinkronizáció. Tehát nincs resynchronization lehetőség kitéve. Ha a lemezek hiba miatt nem szinkronizálódnak, a következő ciklusban lesz rögzítve. 
 
-## <a name="how-does-churn-rate-affect-agentless-replication"></a>Hogyan befolyásolja az adatforgalom aránya az ügynök nélküli replikációt?
+## <a name="how-does-churn-rate-affect-agentless-replication"></a>Hogyan befolyásolja a lemorzsolódási arány az ügynök nélküli replikációt?
 
-Mivel az ügynök nélküli replikáció az adatforgalomban található, az *adatváltozási minta* fontosabb, mint a változási *arány*. Ha egy fájl újra és újra íródik, a ráta nem befolyásolja a nagy hatást. A következő ciklusban azonban egy minta, amelyben minden más ágazat írásos, magas adatváltozást okoz. Mivel minimálisra csökkentjük az általunk átvitt adatok mennyiségét, a lehető legnagyobb mértékben engedélyezzük, hogy az adatok minél hamarabb bekerüljön a következő ciklusba.  
+Mivel az ügynök nélküli replikáció összecsukódik az adatokban, a *lemorzsolódási minta* fontosabb, mint a *lemorzsolódási arány.* Amikor egy fájl van írva újra és újra, az arány nem sok hatása. Azonban egy minta, amelyben minden más szektor van írva okoz nagy lemorzsolódás a következő ciklusban. Mivel minimálisra csökkentjük az általunk átadott adatok mennyiségét, a következő ciklus ütemezése előtt lehetővé tesszük az adatok lehető legnagyobb mértékű összecsukását.  
 
-## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>Milyen gyakran ütemezik a replikálási ciklust?
+## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>Milyen gyakran van ütemezve a replikációs ciklus?
 
-A következő replikálási ciklust ütemezni kívánt képlet (a korábbi ciklus ideje/2) vagy egy óra, attól függően, hogy melyik a magasabb.
+A következő replikációs ciklus ütemezésére képlet (előző ciklusidő / 2) vagy egy óra, attól függően, hogy melyik a magasabb.
 
-Ha például egy virtuális gép négy órát vesz igénybe egy különbözeti ciklus esetében, a következő ciklus két órán belül ütemezve van, és nem a következő órában. A folyamat azonnal eltér a kezdeti replikáció után, amikor az első különbözeti ciklust azonnal ütemezi.
+Például ha egy virtuális gép négy órát vesz igénybe egy különbözeti ciklus, a következő ciklus két óra, és nem a következő órában. A folyamat a kezdeti replikáció után azonnal más, amikor az első különbözeti ciklus t azonnal ütemezi.
 
-## <a name="how-does-agentless-replication-affect-vmware-servers"></a>Hogyan befolyásolja az ügynök nélküli replikáció a VMware-kiszolgálókat?
+## <a name="how-does-agentless-replication-affect-vmware-servers"></a>Milyen hatással van az ügynök nélküli replikáció a VMware-kiszolgálókra?
 
-Az ügynök nélküli replikáció a VMware vCenter Server és VMware ESXi gazdagépek teljesítményére gyakorolt hatásukat eredményez. Mivel az ügynök nélküli replikáció pillanatképeket használ, a IOPS-t használja a tárterületen, ezért bizonyos IOPS-sávszélességre van szükség. Nem ajánlott ügynök nélküli replikálást használni, ha a környezetében korlátozásokkal rendelkezik a tároló-vagy IOPs.
+Az ügynök nélküli replikáció némi teljesítményhatást eredményez a VMware vCenter Server és a VMware ESXi gazdagépeken. Mivel az ügynök nélküli replikáció pillanatképeket használ, iops-t használ a tárolón, ezért bizonyos IOPS-tárolási sávszélességre van szükség. Nem javasoljuk az ügynök nélküli replikáció használatát, ha korlátozások vannak a tárolási vagy ipp-kre a környezetben.
 
-## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>Az UEFI virtuális gépek ügynök nélkül áttelepíthetők az Azure Gen 2-be?
+## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>Eltudom végezni az UEFI-virtuális gépek ügynök nélküli migrálását az Azure Gen 2-re?
 
-Nem. A Azure Site Recovery használatával telepítse át ezeket a virtuális gépeket a 2. generációs Azure-beli virtuális gépekre. 
+Nem. Az Azure Site Recovery használatával migrálhat ezek a virtuális gépek gen 2 Azure-beli virtuális gépekre. 
 
-## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>Rögzíthetek Azure Availability Zones a virtuális gépeket a Migrálás során?
+## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>Rögzíthetek virtuális gépeket az Azure rendelkezésre állási zónáiba az áttelepítéskor?
 
-Nem. A Azure Availability Zones Azure Migrate Migrálás nem támogatott.
+Nem. Az Azure rendelkezésre állási zónái nem támogatottak az Azure Áttelepítés áttelepítése esetén.
 
-## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Milyen átviteli protokollt Azure Migrate használni a replikáció során?
+## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Milyen átviteli protokollt használ az Azure Migrate a replikáció során?
 
-Azure Migrate a hálózati blokk-eszköz (NBD) protokollt használja SSL-titkosítással.
+Az Azure Migrate a hálózati blokkeszköz (NBD) protokollt használja SSL titkosítással.
 
-## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Milyen minimális vCenter Server verzió szükséges az áttelepítéshez?
+## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Mi az áttelepítéshez szükséges minimális vCenter Server-verzió?
 
-Legalább vCenter Server 5,5 és vSphere ESXi-gazdagép 5,5-es verziójának kell lennie.
+Legalább vCenter Server 5.5 és vSphere ESXi host version 5.5-tel kell rendelkeznie.
 
-## <a name="can-customers-migrate-their-vms-to-unmanaged-disks"></a>Az ügyfelek áttelepíthetik a virtuális gépeket a nem felügyelt lemezekre?
+## <a name="can-customers-migrate-their-vms-to-unmanaged-disks"></a>Az ügyfelek áttelepíthetik a virtuális gépeket nem felügyelt lemezekre?
 
-Nem. A Azure Migrate csak felügyelt lemezekre (standard HDD, prémium SSD) támogatja az áttelepítést.
+Nem. Az Azure Migrate csak felügyelt lemezekre való áttelepítést támogat (Standard HDD, Prémium szintű SSD).
 
-## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Hány virtuális gépet lehet egyszerre replikálni az ügynök nélküli áttelepítés használatával?
+## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Hány virtuális gépet replikálhatok egyszerre ügynök nélküli áttelepítés használatával?
 
-Jelenleg a 100-es virtuális gépeket a vCenter Server egy példányán egyszerre telepítheti át. Migrálás 10 virtuális gép kötegei között.
+Jelenleg a vCenter-kiszolgáló példányonkénti 100 virtuális gépet telepíthet át egyszerre. 10 virtuális gép kötegeinek áttelepítése.
 
-## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Mikor telepíthetem a gépeket fizikai kiszolgálóként?
+## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Hogyan szabályozhatom a replikációt az Azure Migrate appliance ügynök nélküli VMware-replikációhoz való használatában?  
 
-A gépek áttelepítése a fizikai kiszolgálóként való kezeléssel számos esetben hasznos:
+A NetQosPolicy használatával szabályozást is használhat. Példa:
 
-- Helyszíni fizikai kiszolgálók áttelepítésekor.
-- Ha olyan virtuális gépeket telepít át, amelyek platformokon, például a Xen-ban, a KVM-ban vannak virtualizálva.
-- A Hyper-V vagy a VMware virtuális gépek áttelepítéséhez, ha valamilyen okból kifolyólag nem tudja használni a [Hyper-v](tutorial-migrate-hyper-v.md)normál áttelepítési folyamatát, vagy a [VMware](server-migrate-overview.md) áttelepítését. Ha például nem futtat VMware-vCenter, és csak ESXi-gazdagépeket használ.
-- Saját felhőben futó virtuális gépek migrálása az Azure-ba
-- Ha nyilvános felhőben (például Amazon Web Services (AWS) vagy Google Cloud Platform (GCP)) futó virtuális gépeket szeretne áttelepíteni az Azure-ba.
+A NetQosPolicy alkalmazásban használandó AppNamePrefix a "GatewayWindowsService.exe". Létrehozhat egy szabályzatot az Azure Migrate appliance-on a replikációs forgalom szabályozására a készülékről egy ilyen házirend létrehozásával, például:
+ 
+New-NetQosPolicy -"ThrottleReplication" név -AppPathNameMatchCondition "GatewayWindowsService.exe" -ThrottleRateActionBitsPerSecond 1MB
 
-## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>A VMWare virtuális gépek áttelepítéséhez VMware vCenter szükséges?
-[VMWare virtuális gépek](server-migrate-overview.md) áttelepítéséhez VMware ügynök-alapú vagy ügynök nélküli Migrálás esetén az ESXi-gazdagépeket, amelyeken a virtuális gépek találhatók, vCenter Server kell felügyelni. Ha nem rendelkezik vCenter Serverekkel, áttelepítheti a VMware virtuális gépeket fizikai kiszolgálóként való áttelepítéssel. [További információk](migrate-support-matrix-physical-migration.md).
+## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Mikor telepíthetek át gépeket fizikai kiszolgálóként?
+
+A gépek fizikai kiszolgálóként való áttelepítése számos esetben hasznos:
+
+- Amikor a helyszíni fizikai kiszolgálók áttelepítése.
+- Ha olyan platformok által virtualizált virtuális gépeket telepít át, mint az Xen, a KVM.
+- Hyper-V vagy VMware virtuális gépek áttelepítéséhez, ha valamilyen okból nem tudja használni a normál áttelepítési folyamatot a [Hyper-V](tutorial-migrate-hyper-v.md)vagy a [VMware](server-migrate-overview.md) áttelepítéshez. Ha például nem a VMware vCenter t futtatja, és csak ESXi-állomásokat használ.
+- Privát felhőkben futó virtuális gépek áttelepítése az Azure-ba
+- Ha nyilvános felhőkben, például az Amazon Web Services (AWS) vagy a Google Cloud Platform (GCP) szolgáltatásban futó virtuális gépeket szeretne áttelepíteni az Azure-ba.
+
+## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Szükségem van vMware vCenter-re a VMware virtuális gépek áttelepítéséhez?
+A [VMware virtuális gépek](server-migrate-overview.md) VMware-ügynökalapú vagy ügynök nélküli áttelepítéssel történő áttelepítéséhez a vCenter Server által kezelt ESXi-állomásokat, amelyeken a virtuális gépek találhatók, kezelniük kell. Ha nem rendelkezik vCenter Server, telepítheti vmware virtuális gépek áttelepítésével őket fizikai kiszolgálók. [További információ](migrate-support-matrix-physical-migration.md).
  
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).
+Olvassa el az [Azure Migrate áttekintését.](migrate-services-overview.md)
