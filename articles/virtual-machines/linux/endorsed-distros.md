@@ -1,9 +1,9 @@
 ---
-title: Az Azure-ban támogatott Linux-disztribúciók
-description: Ismerje meg az Azure által támogatott disztribúciók Linuxját, beleértve az Ubuntu, a CentOS, az Oracle és a SUSE útmutatásait.
+title: Linux-disztribúciók az Azure-ban
+description: Ismerje meg az Azure által támogatott disztribúciók Linux szolgáltatását, beleértve az Ubuntu, a CentOS, az Oracle és a SUSE irányelveit.
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
+author: gbowerman
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -13,55 +13,55 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: mimckitt
-ms.openlocfilehash: 7318095dce77856087ad7dd949e91e0eb7936294
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.author: guybo
+ms.openlocfilehash: cc2fedcd4816b55aaed3573ce2593919770a4152
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251644"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062645"
 ---
-# <a name="endorsed-linux-distributions-on-azure"></a>Támogatott Linux-disztribúciók az Azure-ban
-A partnerek linuxos rendszerképeket biztosítanak az Azure piactéren. Számos Linux-Közösséggel dolgozunk, hogy még több ízeket adjanak hozzá a támogatott terjesztési listához. Addig is, amíg a piactéren nem érhető el a disztribúció, a [Linux operációs rendszert tartalmazó virtuális merevlemez létrehozása és feltöltése](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)című rész útmutatását követve mindig saját Linux-t hozhat létre.
+# <a name="endorsed-linux-distributions-on-azure"></a>Jóváhagyott Linux-disztribúciók az Azure-ban
+A partnerek Linux-rendszerképeket biztosítanak az Azure Piactéren. Dolgozunk a különböző Linux közösségek hozzá még több ízek a támogatott distribution listán. Addig is, a disztribúciók, amelyek nem állnak rendelkezésre a Marketplace-en, akkor mindig hozza a saját Linux követve az iránymutatások [létrehozása és feltöltegy virtuális merevlemez, amely tartalmazza a Linux operációs rendszer](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
 
 ## <a name="supported-distributions-and-versions"></a>Támogatott disztribúciók és verziók
-A következő táblázat felsorolja az Azure-ban támogatott Linux-disztribúciókat és-verziókat. A Linux és a nyílt forráskódú technológiák Azure-beli támogatásával kapcsolatos részletesebb információkért tekintse meg a [Linux-rendszerképek támogatását Microsoft Azureban](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) .
+Az alábbi táblázat felsorolja az Azure-ban támogatott Linux-disztribúciókat és -verziókat. A Linux és a nyílt forráskódú technológiák Azure-beli támogatásáról a [Microsoft Azure-ban a Linux-lemezképek támogatása](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) című témakörben talál részletesebb információt.
 
-A Hyper-V és az Azure-hoz készült Linux Integration Services (LIS) illesztőprogramok a Microsoft által közvetlenül a felsőbb rétegbeli linuxos kernelhez hozzájáruló kernel-modulok.  Egyes LIS-illesztőprogramok alapértelmezés szerint a terjesztés rendszermagba vannak építve. A Red Hat Enterprise (RHEL)/CentOS alapuló régebbi disztribúciók külön letöltésként érhetők el a [Linux Integration Services 4,2-es verziójában a Hyper-V és az Azure számára](https://www.microsoft.com/download/details.aspx?id=55106). Az LIS-illesztőprogramokkal kapcsolatos további információkért tekintse meg a [Linux kernelre vonatkozó követelményeket](create-upload-generic.md#linux-kernel-requirements) .
+A Hyper-V és az Azure Linux integration services (LIS) illesztőprogramjai olyan kernelmodulok, amelyeket a Microsoft közvetlenül a upstream Linux kernelhez ad.  Egyes LIS-illesztőprogramok alapértelmezés szerint be vannak építve a disztribúció kernelébe. A Red Hat Enterprise (RHEL)/CentOS szolgáltatáson alapuló régebbi disztribúciók külön letöltésként érhetők el a [Linux Integration Services 4.2-es verziójában a Hyper-V és az Azure számára.](https://www.microsoft.com/download/details.aspx?id=55106) A [LIS-illesztőprogramokkal](create-upload-generic.md#linux-kernel-requirements) kapcsolatos további információkért tekintse meg a Linux kernel követelményeit.
 
-Az Azure Linux-ügynök már előre telepítve van az Azure Marketplace-lemezképeken, és általában a terjesztési csomag adattárában érhető el. A forráskód megtalálható a [githubon](https://github.com/azure/walinuxagent).
+Az Azure Linux-ügynök már előre telepítve van az Azure Marketplace-rendszerképeken, és általában elérhető a disztribúció csomagtárház. A forráskód megtalálható a [GitHubon.](https://github.com/azure/walinuxagent)
 
 
 | Disztribúció | Verzió | Illesztőprogramok | Ügynök |
 | --- | --- | --- | --- |
-| CentOS |CentOS 6.3 +, 7.0 +, 8.0 + |CentOS 6,3: [lis Letöltés](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: a kernelben |Csomag [: a tárházban a "](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| CentOS |CentOS 6.3+, 7.0+, 8.0+ |CentOS 6.3: [LIS letöltés](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+: A kernelben |Csomag: [Repo](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) alatt "WALinuxAgent" <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |A kernelben |Forráskód: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
-| Debian |Debian 7.9 +, 8.2 +, 9, 10 |A kernelben |Csomag: a tárházban a "waagent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Oracle Linux |6.4+, 7.0+ |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat Enterprise Linux |RHEL 6.7 +, 7.1 +, 8.0 + |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES/SLES az SAP-hoz<br>11 SP4<br>12 SP1 +<br>15|A kernelben |Csomag:<p> 11 a [felhőben: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárháza<br>a "nyilvános felhő" modulban a "Python-Azure-Agent" alatt található 12.<br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| openSUSE |openSUSE LEAP 42.2 + |A kernelben |Csomag: a [felhőben: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárháza a "Python-Azure-Agent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Ubuntu |Ubuntu 12.04 +  **<sup>1</sup>** |A kernelben |Csomag: a tárházban a "walinuxagent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Debian |Debian 7.9+, 8.2+, 9, 10 |A kernelben |Csomag: A repo alatt "waagent" <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Oracle Linux |6.4+, 7.0+ |A kernelben |Csomag: Repo alatt "WALinuxAgent" <br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| Red Hat Enterprise Linux |RHEL 6.7+, 7.1+, 8.0+ |A kernelben |Csomag: Repo alatt "WALinuxAgent" <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| SUSE Linux Enterprise |SLES/SLES SAP-hoz<br>11 SP4<br>12 SP1+<br>15|A kernelben |Csomag:<p> 11-hez a [felhőben:Eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tártárja<br>a "Nyilvános felhő" modulban a "python-azure-agent" alatt található 12-hez<br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| openSUSE |openSUSE Leap 42.2+ |A kernelben |Csomag: A [felhőben:Eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tártára a "python-azure-agent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Ubuntu |Ubuntu 12.04+ ** <sup>1</sup>** |A kernelben |Csomag: Repo alatt "walinuxagent" <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
-  - **<sup>1</sup>** az Ubuntu 12,04 és 14,04 kiterjesztett támogatásával kapcsolatos információk itt találhatók: [Ubuntu Extended Security karbantartás](https://www.ubuntu.com/esm).
+  - **<sup>1</sup>** Az Ubuntu 12.04 és 14.04 kiterjesztett támogatásáról itt olvashat: [Ubuntu Extended Security Maintenance](https://www.ubuntu.com/esm).
 
 
-## <a name="image-update-cadence"></a>Rendszerkép frissítésének ritmusa
-Az Azure-nak szüksége van arra, hogy a támogatott Linux-disztribúciók közzétevői rendszeresen frissítse lemezképeit az Azure Marketplace-en a legújabb javításokkal és biztonsági javításokkal, negyedévente vagy gyorsabb ütemben. Az Azure Marketplace-en frissített lemezképek automatikusan elérhetők az ügyfelek számára a lemezkép SKU új verzióiként. További információ a Linux-rendszerképek megkereséséről: Linux rendszerű [virtuális gépek rendszerképeinek megkeresése az Azure piactéren](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
+## <a name="image-update-cadence"></a>Képfrissítési lépésszám
+Az Azure megköveteli, hogy a jóváhagyott Linux-disztribúciók közzétevői rendszeresen frissítsék a lemezképeiket az Azure Piactéren a legújabb javításokkal és biztonsági javításokkal, negyedévente vagy gyorsabb ütemben. Az Azure Piactéren frissített lemezképek automatikusan elérhetők az ügyfelek számára egy lemezkép termékváltozatának új verziójaként. További információ a Linux-lemezképek megkereséséről: [Linuxos virtuálisgép-lemezképek keresése az Azure Marketplace-en.](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage)
 
 ### <a name="additional-links"></a>További hivatkozások
- - [SUSE nyilvános Felhőbeli rendszerképek életciklusa](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
+ - [SUSE nyilvános felhőkép életciklusa](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
 
-## <a name="azure-tuned-kernels"></a>Azure által hangolt kernelek
+## <a name="azure-tuned-kernels"></a>Azure-ra hangolt kernelek
 
-Az Azure szorosan együttműködik a különböző támogatott Linux-disztribúciókkal az Azure piactéren közzétett lemezképek optimalizálásához. Ezen együttműködés egyik aspektusa az Azure platformra optimalizált, "hangolt" Linux-kernelek fejlesztése, amely a Linux-disztribúció teljes mértékben támogatott összetevőiként érhető el. Az Azure által hangolt kernelek új funkciókkal és teljesítménnyel kapcsolatos újdonságokkal rendelkeznek, és gyorsabb (általában negyedéves) ritmust tartalmaznak a terjesztésből elérhető alapértelmezett vagy általános kernelekhez képest.
+Az Azure szorosan együttműködik a különböző jóváhagyott Linux-disztribúciókkal az Azure Marketplace-en közzétett lemezképek optimalizálása érdekében. Ennek az együttműködésnek az egyik aspektusa a "hangolt" Linux kernelek fejlesztése, amelyek az Azure platformra vannak optimalizálva, és a Linux-disztribúció teljes mértékben támogatott összetevőiként szolgálnak. Az Azure-tuned kernelek új funkciókat és teljesítménybeli fejlesztéseket tartalmaznak, és gyorsabb (általában negyedéves) ütemben, mint a disztribúcióból elérhető alapértelmezett vagy általános kernelek.
 
-A legtöbb esetben az Azure Marketplace-en az alapértelmezett lemezképekre előre telepített kerneleket talál, így az Azure-ügyfelek azonnal kihasználhatják ezeket az optimalizált kerneleket. Az Azure-ban hangolt kernelekről további információt az alábbi hivatkozásokon talál:
+A legtöbb esetben ezeket a kerneleket előre telepítve fogja az Azure Piactéren, így az Azure-ügyfelek azonnal élvezhetik az optimalizált kernelek előnyeit. Ezekről az Azure-tunes kernelekről az alábbi hivatkozásokon talál további információt:
 
- - CentOS Azure-ra hangolt kernel – a CentOS virtualizációs SIG- [more info](https://wiki.centos.org/SpecialInterestGroup/Virtualization) használatával érhető el
- - Debian Cloud kernel – elérhető a Debian 10 és a Debian 9 "backports" rendszerképpel az Azure-ban – [További információ](https://wiki.debian.org/Cloud/MicrosoftAzure)
- - SLES Azure-ra hangolt kernel – [További információ](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
- - Ubuntu Azure-ra hangolt kernel – [További információ](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+ - CentOS Azure-tuned Kernel - Elérhető a CentOS Virtualization SIG - [További információ](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+ - Debian Cloud Kernel - Elérhető a Debian 10 és a Debian 9 "backports" képpel az Azure-ban - [További információ](https://wiki.debian.org/Cloud/MicrosoftAzure)
+ - SLES Azure-hangolt kernel - [További információ](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+ - Ubuntu Azure-hangolt kernel - [További információ](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 
 ## <a name="partners"></a>Partnerek
@@ -69,33 +69,33 @@ A legtöbb esetben az Azure Marketplace-en az alapértelmezett lemezképekre el�
 ### <a name="coreos"></a>CoreOS
 [https://coreos.com/docs/running-coreos/cloud-providers/azure/](https://coreos.com/docs/running-coreos/cloud-providers/azure/)
 
-A CoreOS webhelyén:
+A CoreOS webhelyéről:
 
-*A CoreOS a biztonság, a konzisztencia és a megbízhatóság érdekében készült. A csomagok yum vagy apt használatával történő telepítése helyett a CoreOS Linux-tárolókat használ a szolgáltatások kezeléséhez magasabb szintű absztrakciós szinten. Egyetlen szolgáltatás kódja és minden függősége egy tárolón belül van csomagolva, amely egy vagy több CoreOS-gépen futtatható.*
+*A CoreOS-t biztonságra, konzisztenciára és megbízhatóságra tervezték. Ahelyett, hogy yum vagy apt segítségével telepítene csomagokat, a CoreOS Linux-tárolókat használ a szolgáltatások magasabb szintű absztrakciós kezeléséhez. Egyetlen szolgáltatás kódja és az összes függőség egy tárolóba van csomagolva, amely egy vagy több CoreOS-gépen futtatható.*
 
-### <a name="credativ"></a>credativ
+### <a name="credativ"></a>Credativ között
 [https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
-A Credativ egy független tanácsadói és szolgáltatási cég, amely a professzionális megoldások fejlesztésére és megvalósítására specializálódott ingyenes szoftverek használatával. A vezető nyílt forráskódú szakemberek a Credativ nemzetközi elismeréssel rendelkeznek, és számos informatikai részleggel rendelkeznek, amelyek támogatják a támogatást. A Microsofttal együtt a Credativ jelenleg a megfelelő Debian-rendszerképeket készíti elő a Debian 8 (Jessie) és a Debian 7-es verziójában (zihálás). Mindkét rendszerkép kifejezetten az Azure-ban való futtatásra készült, és könnyen kezelhető a platformon keresztül. A Credativ az Azure-hoz készült Debian-rendszerképek hosszú távú karbantartását és frissítését is támogatja a nyílt forráskódú támogatási központjain keresztül.
+A Credativ egy független tanácsadó és szolgáltató vállalat, amely a professzionális megoldások fejlesztésére és végrehajtására specializálódott a szabad szoftver használatával. Vezető nyílt forráskódú szakemberként a Credativ nemzetközi elismeréssel rendelkezik számos informatikai részleggel, amelyek a támogatásukat használják. A Microsofttal együtt a Credativ jelenleg készíti elő a megfelelő Debian képeket a Debian 8 (Jessie) és a Debian számára 7 előtt (Wheezy). Mindkét lemezképek kifejezetten az Azure-ban való futtatásra tervezték, és könnyen kezelhetők a platformon keresztül. A Credativ a nyílt forráskódú támogatási központjain keresztül támogatja az Azure-hoz készült Debian-képek hosszú távú karbantartását és frissítését is.
 
 ### <a name="oracle"></a>Oracle
 [https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
 
-Az Oracle stratégiája a nyilvános és privát felhőkre vonatkozó megoldások széles körét kínálja. A stratégia lehetővé teszi az ügyfelek számára, hogy megválasszák és rugalmasan használják Oracle-szoftvereket az Oracle-felhőkben és más felhőkben. Az Oracle a Microsofttal való együttműködése lehetővé teszi az ügyfeleknek, hogy Oracle-szoftvereket telepítsenek a Microsoft nyilvános és privát felhőkbe az Oracle minősítésének és támogatásának megbízhatóságával.  Az Oracle a nyilvános és a privát felhőalapú megoldások iránti elkötelezettsége és befektetése változatlan marad.
+Az Oracle stratégiája az, hogy széles körű megoldásokat kínál a köz- és magánfelhők számára. A stratégia választási lehetőséget és rugalmasságot biztosít az ügyfelek számára az Oracle-szoftverek Oracle-felhőkben és más felhőkben történő üzembe helyezésében. Az Oracle és a Microsoft együttműködése lehetővé teszi az ügyfelek számára, hogy oracle-szoftvereket telepítsenek a Microsoft nyilvános és privát felhőibe, az Oracle minősítésének és támogatásának megbízhatóságával.  Az Oracle elkötelezettsége és befektetése az Oracle nyilvános és magánfelhő-megoldásokba változatlan.
 
 ### <a name="red-hat"></a>Red Hat
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)
 
-A világ legjelentősebb nyílt forráskódú megoldásai, a Red Hat több mint 90%-a Fortune 500-vállalatok üzleti problémák megoldásához, az informatikai és üzleti stratégiák összehangolásához, valamint a technológia jövőjéhez való felkészüléshez nyújt segítséget. A Red Hat ezt egy nyitott üzleti modellen és egy megfizethető, kiszámítható előfizetési modellen keresztül biztosít biztonságos megoldásokkal.
+A világ vezető nyílt forráskódú megoldásokat kínáló cége, a Red Hat a Fortune 500-as vállalatok több mint 90%-ának segít megoldani az üzleti kihívásokat, összehangolja informatikai és üzleti stratégiáját, és felkészül a technológia jövőjére. A Red Hat ezt úgy éri el, hogy biztonságos megoldásokat kínál egy nyitott üzleti modellen és egy megfizethető, kiszámítható előfizetési modellen keresztül.
 
 ### <a name="suse"></a>SUSE
 [https://www.suse.com/suse-linux-enterprise-server-on-azure](https://www.suse.com/suse-linux-enterprise-server-on-azure)
 
-A SUSE Linux Enterprise Server az Azure-ban bevált platform, amely kiváló megbízhatóságot és biztonságot nyújt a felhőalapú számítástechnika számára. A SUSE sokoldalú linuxos platformja zökkenőmentesen integrálható az Azure Cloud Services szolgáltatással, hogy könnyen kezelhető felhőalapú környezetet nyújtson. Ha több mint 9 200 tanúsított alkalmazást használ több mint 1 800 független szoftvergyártótól a SUSE Linux Enterprise Server számára, a SUSE biztosítja, hogy az adatközpontban támogatott munkaterhelések biztonságosan üzembe helyezhetők az Azure-ban.
+A SUSE Linux Enterprise Server az Azure-ban egy bevált platform, amely kiváló megbízhatóságot és biztonságot nyújt a felhőalapú számítástechnikához. A SUSE sokoldalú Linux platformja zökkenőmentesen integrálható az Azure felhőszolgáltatásaival, így könnyen kezelhető felhőalapú környezetet biztosít. Több mint 9200, a SUSE Linux Enterprise Server hez készült független szoftverszállító több mint 9200 tanúsított alkalmazásával a SUSE biztosítja, hogy az adatközpontban támogatott számítási feladatok magabiztosan telepíthetők legyenek az Azure-ban.
 
 ### <a name="canonical"></a>Canonical
 [https://www.ubuntu.com/cloud/azure](https://www.ubuntu.com/cloud/azure)
 
-A Canonical Engineering és a nyílt közösségi irányítási meghajtó Ubuntu sikere az ügyfél, a kiszolgáló és a felhőalapú számítástechnika terén, amely magában foglalja a személyes Cloud Services szolgáltatást a felhasználók számára. A Canonical víziója egy egységes, ingyenes, az Ubuntuban, a telefonról a felhőbe irányuló platform, amely koherens felületet biztosít a telefonhoz, a Tablethez, a TV-hez és az asztalhoz. Ez a jövőkép lehetővé teszi, hogy az Ubuntu a nyilvános felhőalapú szolgáltatók különböző intézményeinek, a fogyasztói elektronikai szakemberek és az egyéni technikusok körében a kedvenceket is megválasszák.
+A kanonikus tervezés és a nyílt közösségi irányítás az Ubuntu sikerét az ügyfél-, szerver- és felhőalapú számítástechnika terén, amely magában foglalja a személyes felhőszolgáltatásokat a fogyasztók számára. A Canonical elképzelése egy egységes, ingyenes platformról az Ubuntuban, a telefontól a felhőig, koherens interfészeket biztosít a telefonhoz, táblagéphez, TV-hez és asztali számítógéphez. Ez a jövőkép teszi ubuntu az első választás a különböző intézmények nyilvános felhő szolgáltatók a döntéshozók a fogyasztói elektronika és a kedvenc az egyes technológusok.
 
-A világ fejlesztői és mérnöki központjai révén a Canonical egyedi pozíciót biztosít a hardvergyártók, a tartalomszolgáltatók és a szoftverfejlesztők számára, hogy Ubuntu-megoldásokat lehessen forgalmazni a számítógépek, kiszolgálók és kézi eszközök számára.
+A fejlesztők és mérnöki központok a világ minden tájáról, A Canonical egyedülálló helyzetben van, hogy partnere a hardver döntéshozók, tartalomszolgáltatók, és a szoftverfejlesztők, hogy Ubuntu megoldások piacra PC-k, szerverek, és kézi eszközök.

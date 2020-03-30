@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67178794"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -16,18 +16,18 @@ ms.locfileid: "67178794"
 
 ## <a name="managing-table-entities"></a>Táblaentitások kezelése
 
-Most, hogy rendelkezik egy táblával, nézzük meg entitások, vagy a tábla sorainak kezelése. 
+Most, hogy rendelkezik egy táblával, nézzük meg, hogyan kezelheti az entitásokat vagy sorokat a táblában. 
 
-Entitások legfeljebb 255 tulajdonságokat, beleértve a három rendszertulajdonsággal veheti fel: **PartitionKey**, **rowkey tulajdonságok esetén**, és **időbélyeg**. Beszúráskor és frissítéskor értékeit felelős Ön **PartitionKey** és **RowKey**. A kiszolgáló kezeli értékét **időbélyeg**, amely nem módosítható. Együtt a **PartitionKey** és **RowKey** egy táblán belül minden entitás egyedi azonosításához.
+Az entitások legfeljebb 255 tulajdonsággal rendelkezhetnek, köztük három rendszertulajdonsággal: **PartitionKey**, **RowKey**és **Timestamp**. Ön a felelős a PartitionKey és a **RowKey** értékek beszúrásáért és **frissítéséért.** A kiszolgáló kezeli az **időbélyeg**értékét, amely nem módosítható. A **PartitionKey** és a **RowKey** együtt egyedileg azonosít minden entitást egy táblában.
 
-* **PartitionKey**: Meghatározza a partíció, amely az entitás van tárolva.
-* **RowKey**: Egyedi módon azonosítja az entitást a partíción belül.
+* **PartitionKey**: Azt a partíciót határozza meg, amelyben az entitás tárolódik.
+* **RowKey**: Egyedileg azonosítja az entitást a partíción belül.
 
-Egy entitás legfeljebb 252 egyéni tulajdonságokat adhat meg. 
+Egy entitáshoz legfeljebb 252 egyéni tulajdonságdefiniálható. 
 
-### <a name="add-table-entities"></a>Tábla entitások hozzáadása
+### <a name="add-table-entities"></a>Táblaentitások hozzáadása
 
-Entitások hozzáadása egy táblát a **Add-AzTableRow**. Ezek a példák a partíciókulcsok értékekkel `partition1` és `partition2`, és a sorkulcsok egyenlő állam rövidítése. Minden entitás tulajdonságai `username` és `userid`. 
+Entitások hozzáadása táblához az **Add-AzTableRow**segítségével. Ezek a példák `partition1` olyan `partition2`partíciókulcsokat használnak, amelyek értékei és a , és az állapotrövidítésekkel egyenlő sorkulcsok. Az egyes entitások `username` `userid`tulajdonságai és a. 
 
 ```powershell
 $partitionKey1 = "partition1"
@@ -55,42 +55,42 @@ Add-AzTableRow `
     -rowKey ("TX") -property @{"username"="Steven";"userid"=4}
 ```
 
-### <a name="query-the-table-entities"></a>A tábla entitások lekérdezése
+### <a name="query-the-table-entities"></a>Táblaentitások lekérdezése
 
-Egy tábla az entitások használatával lekérdezheti a **Get-AzTableRow** parancsot.
+A **Get-AzTableRow** paranccsal lekérdezheti a táblában lévő entitásokat.
 
 > [!NOTE]
-> A parancsmagok **Get-AzureStorageTableRowAll**, **Get-AzureStorageTableRowByPartitionKey**, **Get-AzureStorageTableRowByColumnName**, és  **Get-AzureStorageTableRowByCustomFilter** elavultak, és a egy frissítés a jövőbeli verziójában meg fog szűnni.
+> A **Get-AzureStorageTableRowAll**, **get-azurestoragetablebypartitionkey**, **get-azurestoragetablerowoszlop-név**és **get-azurestoragetablerow-customfilter** parancsmagok elavultak, és egy későbbi verziófrissítésben eltávolításra kerülnek.
 
-#### <a name="retrieve-all-entities"></a>Összes entitásának lekérése
+#### <a name="retrieve-all-entities"></a>Az összes entitás beolvasása
 
 ```powershell
 Get-AzTableRow -table $cloudTable | ft
 ```
 
-Ez a parancs az alábbi táblázat hasonló eredményeket eredményez:
+Ez a parancs az alábbitáblázathoz hasonló eredményt ad:
 
-| userid | username | partíció | rowkey tulajdonságok esetén |
+| Userid | felhasználónév | Partíció | sorkulcs |
 |----|---------|---------------|----|
-| 1 | Chris | partition1 | CA |
-| 3 | Christine | partition1 | WA |
-| 2 | Jessie | partition2 | NM |
-| 4 | Steven | partition2 | TX |
+| 1 | Chris | partíció1 | CA |
+| 3 | Christine | partíció1 | WA |
+| 2 | Jessie | partíció2 | NM |
+| 4 | Steven | partíció2 | TX |
 
-#### <a name="retrieve-entities-for-a-specific-partition"></a>Kérje le az entitásokat egy adott partícióra vonatkozóan
+#### <a name="retrieve-entities-for-a-specific-partition"></a>Adott partíció entitásainak lekérése
 
 ```powershell
 Get-AzTableRow -table $cloudTable -partitionKey $partitionKey1 | ft
 ```
 
-Az alábbi táblázat az eredmények kinéznie:
+Az eredmények az alábbi táblázathoz hasonlóan néznek ki:
 
-| userid | username | partíció | rowkey tulajdonságok esetén |
+| Userid | felhasználónév | Partíció | sorkulcs |
 |----|---------|---------------|----|
-| 1 | Chris | partition1 | CA |
-| 3 | Christine | partition1 | WA |
+| 1 | Chris | partíció1 | CA |
+| 3 | Christine | partíció1 | WA |
 
-#### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>Kérje le az entitásokat egy megadott értéket egy adott oszlopban
+#### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>Adott oszlop adott értékének entitásai lekérése
 
 ```powershell
 Get-AzTableRow -table $cloudTable `
@@ -99,16 +99,16 @@ Get-AzTableRow -table $cloudTable `
     -operator Equal
 ```
 
-Ez a lekérdezés lekéri egy rekord.
+Ez a lekérdezés egy rekordot olvas be.
 
-|A mező|value|
+|mező|érték|
 |----|----|
-| userid | 1 |
-| username | Chris |
-| PartitionKey | partition1 |
+| Userid | 1 |
+| felhasználónév | Chris |
+| PartitionKey | partíció1 |
 | RowKey      | CA |
 
-#### <a name="retrieve-entities-using-a-custom-filter"></a>Kérje le az entitásokat, egyéni szűrő használatával 
+#### <a name="retrieve-entities-using-a-custom-filter"></a>Entitások beolvasása egyéni szűrővel 
 
 ```powershell
 Get-AzTableRow `
@@ -116,20 +116,20 @@ Get-AzTableRow `
     -customFilter "(userid eq 1)"
 ```
 
-Ez a lekérdezés lekéri egy rekord.
+Ez a lekérdezés egy rekordot olvas be.
 
-|A mező|value|
+|mező|érték|
 |----|----|
-| userid | 1 |
-| username | Chris |
-| PartitionKey | partition1 |
+| Userid | 1 |
+| felhasználónév | Chris |
+| PartitionKey | partíció1 |
 | RowKey      | CA |
 
 ### <a name="updating-entities"></a>Entitások frissítése 
 
-Az entitások frissítése három lépésből áll. Először kérje le az entitást, módosíthatja. Ezután ellenőrizze a módosítást. Harmadik, véglegesíti a módosítás használatával **Update-AzTableRow**.
+Az entitások frissítéséhez három lépés ből áll. Először olvassa be a módosításhoz tartozó entitást. Másodszor, változtassa meg. Harmadszor, véglegesítse a módosítást az **Update-AzTableRow**segítségével.
 
-Az entitás módosítására a username = "Jessie" szeretné, hogy a felhasználónév = "Jessie2". Ebben a példában is létrehozható egy egyéni szűrő használata a .NET-típusok jeleníti meg.
+Frissítse az entitást a felhasználónév = "Jessie" felhasználónévvel = "Jessie2". Ez a példa azt is bemutatja, hogy egy másik módja annak, hogy hozzon létre egy egyéni szűrőt a .NET típusok használatával.
 
 ```powershell
 # Create a filter and get the entity to be updated.
@@ -151,22 +151,22 @@ Get-AzTableRow -table $cloudTable `
     -customFilter "(username eq 'Jessie2')"
 ```
 
-Az eredmények megjelenítése a Jessie2 rekord.
+Az eredmények a Jessie2 rekordot mutatják.
 
-|A mező|value|
+|mező|érték|
 |----|----|
-| userid | 2 |
-| username | Jessie2 |
-| PartitionKey | partition2 |
+| Userid | 2 |
+| felhasználónév | Jessie2 (1988) |
+| PartitionKey | partíció2 |
 | RowKey      | NM |
 
-### <a name="deleting-table-entities"></a>Tábla entitások törlése
+### <a name="deleting-table-entities"></a>Táblaentitások törlése
 
-Több entitást vagy a táblázatban lévő összes entitáshoz törölheti.
+Törölhet egy entitást vagy a tábla összes entitását.
 
 #### <a name="deleting-one-entity"></a>Egy entitás törlése
 
-Egyetlen entitás törléséhez lekérdezni egy adott entitás hivatkozását, és átadhatja azt be **Remove-AzTableRow**.
+Egyetlen entitás törléséhez kapjon hivatkozást az adott entitásra, és az **Remove-AzTableRow**sorba.
 
 ```powershell
 # Set filter.
@@ -184,9 +184,9 @@ $userToDelete | Remove-AzTableRow -table $cloudTable
 Get-AzTableRow -table $cloudTable | ft
 ```
 
-#### <a name="delete-all-entities-in-the-table"></a>A tábla összes entitások törlése
+#### <a name="delete-all-entities-in-the-table"></a>A tábla összes entitásának törlése
 
-A tábla összes entitás törléséhez kérheti le azokat, és az eredmények kanálu a remove-parancsmagba. 
+A tábla összes entitásának törléséhez kérje be őket, és az eredményeket az eltávolítási parancsmagba adja. 
 
 ```powershell
 # Get all rows and pipe the result into the remove cmdlet.

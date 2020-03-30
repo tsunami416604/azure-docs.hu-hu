@@ -1,45 +1,45 @@
 ---
-title: Útválasztási lefedettség | Microsoft Azure térképek
-description: Ebben a cikkben megismerheti a Microsoft Azure térképek útválasztási lefedettséggel rendelkező régióit.
-author: jingjing-z
+title: Útvonal-lefedettség | Microsoft Azure Maps
+description: Ebben a cikkben a Microsoft Azure Maps útválasztási lefedettséggel rendelkező régiókról olvashat.
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: b8b3dbf515aa3bcc9075a748b9d717cfa36b6ab0
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: b59816abf0cd03450c9fc4ebb8417c62df7e3288
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648921"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529391"
 ---
-# <a name="azure-maps-routing-coverage"></a>Útválasztási lefedettség Azure Maps
+# <a name="azure-maps-routing-coverage"></a>Az Azure Maps útválasztási lefedettsége
 
-Ez a cikk a Azure Maps útválasztásának lefedettségi információit tartalmazza. Keresési lekérdezés esetén a Azure Maps egy optimális útvonalat ad vissza az A helyről a B helyre. A pontos utazási idő, az utazási információk élő frissítései és az útvonalra vonatkozó utasítások is elérhetők. További keresési paramétereket is hozzáadhat, például az aktuális forgalmat, a jármű típusát és a kerülendő feltételeket. Az útvonal optimalizálása a régiótól függ. Ennek oka, hogy Azure Maps különböző szintű információkkal és pontossággal rendelkezik a különböző régiókban. A következő táblázat felsorolja a régiókat és a rájuk vonatkozó információkat.
+Ez a cikk az Azure Maps útválasztáslefedettségi információkat tartalmaz. Keresési lekérdezés esetén az Azure Maps egy optimális útvonalat ad vissza Az A helyről a B helyre. Pontos utazási időt, az utazási információk élő frissítéseit és az útvonalutasításokat biztosítjuk. További keresési paramétereket is hozzáadhat, például az aktuális forgalmat, a járműtípusát és a elkerülendő feltételeket. Az útvonal optimalizálása a régiótól függ. Ennek az az oka, hogy az Azure Maps különböző szintű információkkal és pontossággal rendelkezik a különböző régiókban. Az alábbi táblázat felsorolja a régiókat és azt, hogy milyen típusú információkat kérhet tőlük.
  
-Tekintse meg a [**helymeghatározáshoz**](geocoding-coverage.md)lefedettségét.       
-Tekintse meg a [**forgalom**](traffic-coverage.md)lefedettségét.  
-Tekintse meg a [**rendering**](render-coverage.md)lefedettségét.
+Nézze meg lefedettség [**geokódolás**](geocoding-coverage.md).       
+Nézze meg lefedettség [**Forgalom**](traffic-coverage.md).  
+Nézze meg lefedettség [**Render**](render-coverage.md).
 <br>  
-**Jelmagyarázat**
+**Legenda**
 
 | Szimbólum             | Jelentés                                |
 |--------------------|----------------------------------------|
-| ✓                  | Részletes információkkal ellátott ország/régió.   |
-| Ø                  | Egyszerűsített adattal rendelkező ország/régió. |
-| Hiányzik az ország | Nincs megadva az ország/régió információ.          |
+| ✓                  | Ország/régió részletes adatokkal ellátva.   |
+| Ø                  | Egyszerűsített adatokkal ellátott ország/régió. |
+| Az ország hiányzik | Ország-/régióadatok nem állnak rendelkezésre.          |
 
 <br>  
 
-A következő táblázat a Azure Maps útválasztásának lefedettségi információit tartalmazza.
+Az alábbi táblázat az Azure Maps útválasztásának lefedettségi adatait tartalmazza.
 <br>  
 
 
 ## <a name="africa"></a>Afrika
 
-| Ország/régió                 | Útválasztás         | Útválasztás forgalommal | Tehergépkocsi-Útválasztás |
+| Ország/régió                 | Útválasztás         | Útválasztás forgalommal | Teherautó-útvonal |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Algéria                        |        ✓       |                       |             |
 | Angola                         |        ✓       |                       |             |
@@ -49,9 +49,9 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | Burundi                        |        ✓       |                       |             |
 | Kamerun                       |        ✓       |                       |             |
 | Cabo Verde                     |        ✓       |                       |             |
-| Kongói Demokratikus Köztársaság – Brazzaville Kinshasa    |        ✓       |                       |             |
-| Kongói Köztársaság – Kinshasa                |        ✓       |                       |             |
-| côte d’ivoire                  |        ✓       |                       |             |
+| Kongó- Brazzaville Kinshasa    |        ✓       |                       |             |
+| Kongó- Kinshasa                |        ✓       |                       |             |
+| elefántcsontpart                  |        ✓       |                       |             |
 | Egyiptom                          |        ✓       |         ✓            |             |
 | Gabon                          |        ✓       |                       |             |
 | Gambia                         |        ✓       |                       |             |
@@ -69,7 +69,7 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | Nigéria                        |        ✓       |         ✓            |             |
 | Ruanda                         |        ✓       |                       |             |
 | Szenegál                        |        ✓       |                       |             |
-| Seychelle                     |        ✓       |                       |             |
+| Seychelle-szigetek                     |        ✓       |                       |             |
 | Dél-afrikai Köztársaság                   |        ✓       ||         ✓            |             |
 | Szváziföld                      |        ✓       |                       |             |
 | Tanzánia                       |        ✓       |                       |             |
@@ -82,7 +82,7 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 
 ## <a name="americas"></a>Amerika
 
-| Ország/régió                 | Útválasztás         | Útválasztás forgalommal | Tehergépkocsi-Útválasztás |
+| Ország/régió                 | Útválasztás         | Útválasztás forgalommal | Teherautó-útvonal |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Argentína                      |        ✓       |         ✓            |     ✓       |
 | Antigua és Barbuda            |        ✓       |                      |             |
@@ -111,26 +111,26 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | Panama                         |        ✓       |                      |             |
 | Paraguay                       |        ✓       |                      |             |
 | Peru                           |        ✓       |         ✓            |             |
-| Saint Kitts és Nevis            |        ✓       |                      |             |
-| St. Lucia                      |        ✓       |                      |             |
-| Saint Vincent & Grenadine-szigetek       |        ✓       |                      |             |
+| St. Kitts és Nevis            |        ✓       |                      |             |
+| Szent Lucia                      |        ✓       |                      |             |
+| Szent Vincent & Grenadine-szigetek       |        ✓       |                      |             |
 | Suriname                       |        ✓       |                      |             |
-| Trinidad & Tobago              |        ✓       |                      |             |
+| Trinidad & Tobagó              |        ✓       |                      |             |
 | Egyesült Államok                  |        ✓       |         ✓            |     ✓      | 
-| \+ Amerikai Szamoa                |        ✓       |                      |             |
-| \+ Északi Mariana-szigetek      |        ✓       |                      |             |
+| +Amerikai Szamoa                |        ✓       |                      |             |
+| +Északi Mariana-szigetek      |        ✓       |                      |             |
 | +Puerto Rico                   |        ✓       |                      |             |
-| \+ Amerikai Virgin-szigetek           |        ✓       |                      |             |
+| +Amerikai Virgin-szigetek           |        ✓       |                      |             |
 | Uruguay                        |        ✓       |         ✓            |     ✓      | 
 | Venezuela                      |        ✓       |                      |             |
 
 
 ## <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség
 
-| Ország/régió                 | Útválasztás         | Útválasztás forgalommal | Tehergépkocsi-Útválasztás |
+| Ország/régió                 | Útválasztás         | Útválasztás forgalommal | Teherautó-útvonal |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Ausztrália                      |        ✓       |         ✓            |     ✓       |
-| \+ Karácsony-sziget              |        ✓       |                      |             |
+| +Karácsony-sziget              |        ✓       |                      |             |
 | Brunei                         |        ✓       |         ✓            |             |
 | Kambodzsa                       |        ✓       |                      |             |
 | Fidzsi                           |        ✓       |                      |             |
@@ -141,7 +141,7 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | Kazahsztán                |        ✓       |                     |             |
 | Dél-Korea                          |        Ø       |                      |             |
 | Laosz                           |        ✓       |                      |             |
-| Makaó KKT                      |        ✓       |         ✓            |             |
+| Makaó (KKT)                      |        ✓       |         ✓            |             |
 | Malajzia                       |        ✓       |         ✓            |             |
 | Mianmar                        |        ✓       |                      |             |
 | Új-Zéland                    |        ✓       |         ✓            |     ✓       | 
@@ -154,7 +154,7 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 
 ## <a name="europe"></a>Európa
 
-| Ország/régió                 | Útválasztás         | Útválasztás forgalommal | Tehergépkocsi-Útválasztás |
+| Ország/régió                 | Útválasztás         | Útválasztás forgalommal | Teherautó-útvonal |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Albánia                        |        ✓       |                      |             |
 | Andorra                        |        ✓       |         ✓            |             |
@@ -162,21 +162,21 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | Belarusz                        |        ✓       |                      |             |
 | Belgium                        |        ✓       |         ✓            |     ✓      | 
 | Bolívia                        |        ✓       |                      |             |
-| Bosnia-Herzegovina             |        ✓       |                      |             |
+| Bosznia-Hercegovina             |        ✓       |                      |             |
 | Bulgária                       |        ✓       |         ✓            |     ✓      | 
 | Horvátország                        |        ✓       |         ✓            |     ✓      |
 | Ciprus                         |        ✓       |                      |             |
 | Cseh Köztársaság                 |        ✓       |         ✓            |     ✓      |
 | Dánia                        |        ✓       |         ✓            |     ✓      |
-| \+ Feröer-szigetek                 |        ✓       |                      |             |
+| +Feröer-szigetek                 |        ✓       |                      |             |
 | Észtország                        |        ✓       |         ✓            |     ✓      |
 | Finnország                        |        ✓       |         ✓            |     ✓      |
 | Franciaország                         |        ✓       |         ✓            |     ✓      | 
 | +Guadeloupe                    |        ✓       |                      |             |
-| \+ Martinique                    |        ✓       |                      |             |
-| \+ St. Barthélemy                |        ✓       |                      |             |
-| \+ St. Martin                    |        ✓       |                      |             |
-| \+ St. Pierre & Miquelon         |        ✓       |                      |             |
+| +Martinique                    |        ✓       |                      |             |
+| +Szent Barthélemy                |        ✓       |                      |             |
+| +Szent Márton                    |        ✓       |                      |             |
+| +St. Pierre & Miquelon         |        ✓       |                      |             |
 | Grúzia                        |        ✓       |                      |             |
 | Németország                        |        ✓       |         ✓            |     ✓      | 
 | Görögország                         |        ✓       |         ✓            |     ✓      |  
@@ -197,9 +197,9 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | Montenegró                     |        ✓       |                      |     ✓      | 
 | Hollandia                    |        ✓       |         ✓            |     ✓      | 
 | +Aruba                         |        ✓       |                      |             | 
-| \+ Caribbean holland         |        ✓       |                      |             |
+| +Karib-térség Hollandia         |        ✓       |                      |             |
 | +Curaçao                       |        ✓       |                      |             |
-| \+ Sint Maarten                  |        ✓       |                      |             |
+| +Sint Maarten                  |        ✓       |                      |             |
 | Norvégia                         |        ✓       |         ✓            |     ✓      | 
 | Lengyelország                         |        ✓       |         ✓            |     ✓      | 
 | Portugália                       |        ✓       |         ✓            |     ✓      |  
@@ -216,19 +216,19 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | Ukrajna                        |        ✓       |         ✓            |             | 
 | Egyesült Királyság                 |        ✓       |         ✓            |     ✓      | 
 | +Anguilla                      |        ✓       |                      |             |
-| +Bermuda                       |        ✓       |                      |             |
-| \+ Brit Virgin-szigetek        |        ✓       |                      |             |
-| \+ Kajmán-szigetek                |        ✓       |                      |             |
-| \+ Gibraltár                     |        ✓       |         ✓            |             | 
-| \+ Montserrat                    |        ✓       |                      |             |
-| \+ Turks-és Caicos-szigetek      |        ✓       |                      |             |
-| Vatikáni Városállam                   |        ✓       |         ✓            |             |
+| +Bermudák                       |        ✓       |                      |             |
+| +Brit Virgin-szigetek        |        ✓       |                      |             |
+| +Kajmán-szigetek                |        ✓       |                      |             |
+| +Gibraltár                     |        ✓       |         ✓            |             | 
+| +Montserrat                    |        ✓       |                      |             |
+| +Turks- és Caicos-szigetek      |        ✓       |                      |             |
+| Vatikán                   |        ✓       |         ✓            |             |
 | Man-sziget                    |        ✓       |                      |             |
 
 
 ## <a name="middle-east"></a>Közel-Kelet
 
-| Ország/régió                 | Útválasztás         | Útválasztás forgalommal | Tehergépkocsi-Útválasztás |
+| Ország/régió                 | Útválasztás         | Útválasztás forgalommal | Teherautó-útvonal |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Bahrein                        |        ✓       |         ✓            |             |
 | Irak                           |        ✓       |                      |             |
@@ -243,6 +243,6 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | Jemen                          |        ✓       |                      |             |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Azure Maps útválasztással kapcsolatos további információkért tekintse meg az [útválasztási](https://docs.microsoft.com/rest/api/maps/route) hivatkozási lapokat.
+Az Azure Maps útválasztásról további információt az [Útválasztási](https://docs.microsoft.com/rest/api/maps/route) referencialapok című témakörben talál.

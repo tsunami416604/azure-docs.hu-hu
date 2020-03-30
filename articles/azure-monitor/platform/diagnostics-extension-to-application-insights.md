@@ -1,27 +1,27 @@
 ---
-title: Azure Diagnostics-adatküldés Application Insights
-description: A Azure Diagnostics nyilvános konfigurációjának frissítése az adatApplication Insightsba való adatküldéshez.
+title: Az Azure diagnosztikai adatainak küldése az Application Insightsnak
+description: Frissítse az Azure Diagnostics nyilvános konfigurációját, hogy adatokat küldjön az Application Insightsnak.
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
 ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672327"
 ---
-# <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>A felhőalapú szolgáltatás, a virtuális gép vagy a Service Fabric diagnosztikai adatbázis küldése Application Insights
-A Cloud Services, a Virtual Machines, a Virtual Machine Scale Sets és a Service Fabric mind a Azure Diagnostics bővítményt használja az adatok gyűjtéséhez.  Az Azure Diagnostics adatokat küld az Azure Storage-táblákba.  Az Azure Diagnostics Extension 1,5-es vagy újabb verziójának használatával azonban az összes vagy egy részhalmazát is áthelyezheti más helyszínekre.
+# <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Felhőszolgáltatás, virtuális gép vagy a Service Fabric diagnosztikai adatainak küldése az Application Insightsba
+A felhőszolgáltatások, a virtuális gépek, a virtuálisgép-méretezési készletek és a Service Fabric mind az Azure Diagnostics bővítményt használják az adatok gyűjtésére.  Az Azure-diagnosztika adatokat küld az Azure Storage-táblák.  Azonban az Azure Diagnostics 1.5-ös vagy újabb bővítményével az adatok egészét vagy egy részhalmazát is átviheti más helyekre.
 
-Ez a cikk azt ismerteti, hogyan lehet adatok küldését a Azure Diagnostics bővítményből a Application Insightsba.
+Ez a cikk ismerteti, hogyan küldhet adatokat az Azure Diagnostics bővítményből az Application Insights.
 
-## <a name="diagnostics-configuration-explained"></a>Diagnosztika konfigurációjának ismertetése
-Az Azure Diagnostics bővítmény 1,5 bevezette a mosogatókat, amelyek olyan további helyekre mutatnak, ahol diagnosztikai adatait küldhet.
+## <a name="diagnostics-configuration-explained"></a>A diagnosztika konfigurációja magyarázata
+Az Azure 1.5-ös diagnosztikai bővítménye bevezette a fogadókat, amelyek további helyek, ahol diagnosztikai adatokat küldhet.
 
-Példa a fogadó Application Insightsra való konfigurálására:
+Példa egy fogadó az Application Insights:
 
 ```XML
 <SinksConfig>
@@ -56,35 +56,35 @@ Példa a fogadó Application Insightsra való konfigurálására:
     ]
 }
 ```
-- A **fogadó** *neve* attribútum egy karakterlánc-érték, amely egyedileg azonosítja a fogadót.
+- A **Fogadó** *név* attribútum egy karakterlánc-érték, amely egyedileg azonosítja a fogadó.
 
-- A **ApplicationInsights** elem határozza meg az Application ininsight-erőforrás rendszerállapot-kulcsát, ahol az Azure Diagnostics-adatait küldik.
-    - Ha nem rendelkezik meglévő Application Insights erőforrással, az erőforrások létrehozásával és a kialakítási kulcs beszerzésével kapcsolatos további információkért tekintse meg az [új Application Insights-erőforrás létrehozása](../../azure-monitor/app/create-new-resource.md ) című témakört.
-    - Ha felhőalapú szolgáltatást fejleszt az Azure SDK 2,8-as és újabb verzióival, a rendszer automatikusan kitölti ezt a kialakítási kulcsot. Az érték a Cloud Service-projekt csomagolásakor a **APPINSIGHTS_INSTRUMENTATIONKEY** szolgáltatás konfigurációs beállításán alapul. Lásd: [a Application Insights használata a Cloud Services](../../azure-monitor/app/cloudservices.md).
+- Az **ApplicationInsights** elem meghatározza az Application Insights erőforrás instrumentációs kulcsát, ahol az Azure diagnosztikai adatokat küldi.
+    - Ha nem rendelkezik egy meglévő Application Insights-erőforrással, olvassa [el az Új Application Insights-erőforrás létrehozása](../../azure-monitor/app/create-new-resource.md ) című témakört, amely további információt tartalmaz az erőforrás létrehozásáról és a műszerezési kulcs beszerzése című témakörről.
+    - Ha az Azure SDK 2.8-as és újabb verzióival felhőszolgáltatást fejleszt, ez a műszerezési kulcs automatikusan kitöltődik. Az érték a **APPINSIGHTS_INSTRUMENTATIONKEY** szolgáltatás konfigurációs beállításán alapul a Cloud Service projekt csomagolásakor. Lásd: [Az Alkalmazáselemzési adatok használata a felhőszolgáltatásokkal.](../../azure-monitor/app/cloudservices.md)
 
-- A **channels** elem egy vagy több csatorna **elemet tartalmaz** .
-    - A *Name* attribútum egyedi módon hivatkozik erre a csatornára.
-    - A *naplózási szint* attribútum lehetővé teszi a csatorna által engedélyezett naplózási szint megadását. A rendelkezésre álló naplózási szintek a legkevesebb információt a következő sorrendben használják:
+- A **Csatornák** elem egy vagy több **csatornaelemet** tartalmaz.
+    - A *name* attribútum egyedileg az adott csatornára hivatkozik.
+    - A *loglevel* attribútum lehetővé teszi a csatorna által lehetővé tesz naplószint megadását. A rendelkezésre álló naplószintek a legtöbb és a legkisebb információ sorrendjében a következők:
         - Részletes
         - Információ
         - Figyelmeztetés
         - Hiba
         - Kritikus
 
-Egy csatorna úgy viselkedik, mint egy szűrő, és lehetővé teszi, hogy kiválassza a megadott naplózási szinteket, amelyeket el szeretne küldeni a célhelyre. Például összegyűjthet részletes naplókat, és elküldheti őket a tárolóba, de csak hibákat küldhet a fogadónak.
+A csatorna szűrőként működik, és lehetővé teszi a célfogadónak küldő adott naplószintek kiválasztását. Például részletes naplókat gyűjthet, és elküldheti őket a tárolóba, de csak hibákat küldhet a fogadónak.
 
 A következő ábra ezt a kapcsolatot mutatja be.
 
-![Diagnosztika – nyilvános konfiguráció](media/diagnostics-extension-to-application-insights/AzDiag_Channels_App_Insights.png)
+![Diagnosztika nyilvános konfigurációja](media/diagnostics-extension-to-application-insights/AzDiag_Channels_App_Insights.png)
 
-A következő ábra összefoglalja a konfigurációs értékeket és azok működését. A konfigurációban több mosogató is szerepelhet a hierarchia különböző szintjein. A legfelső szinten lévő fogadó globális beállításként működik, az egyes elemekben megadott érték pedig felülbírálja a globális beállítást.
+A következő ábra összefoglalja a konfigurációs értékeket és azok működését. A hierarchia különböző szintjein több fogadót is felvehet a konfigurációba. A legfelső szintű fogadó globális beállításként működik, és az egyes elemekben megadott beállítás felülírja az adott globális beállítást.
 
-![Diagnosztikai adatnyelők konfigurációja Application Insights](media/diagnostics-extension-to-application-insights/Azure_Diagnostics_Sinks.png)
+![A diagnosztika elsüllyeszti a konfigurációt az Application Insights segítségével](media/diagnostics-extension-to-application-insights/Azure_Diagnostics_Sinks.png)
 
-## <a name="complete-sink-configuration-example"></a>Példa teljes fogadó konfigurációra
-Íme egy teljes példa arra a nyilvános konfigurációs fájlra, amely
-1. az összes hibát elküldi a Application Insightsnak (a **DiagnosticMonitorConfiguration** csomópontban van megadva)
-2. Emellett a részletes szintű naplókat is elküldi az alkalmazás naplóihoz (a **naplók** csomópontban van megadva).
+## <a name="complete-sink-configuration-example"></a>Példa a teljes fogadókonfigurációra
+Íme egy teljes példa a nyilvános konfigurációs fájlra, amely
+1. az összes hibát elküldi az Application Insights szolgáltatásnak (a **DiagnosticMonitorConfiguration** csomóponton van megadva)
+2. részletes szintű naplókat is küld az alkalmazásnaplókhoz (a **Naplók** csomóponton megadva).
 
 ```XML
 <WadCfg>
@@ -168,9 +168,9 @@ A következő ábra összefoglalja a konfigurációs értékeket és azok műkö
     }
 }
 ```
-Az előző konfigurációban a következő sorok a következő jelentésekkel rendelkeznek:
+Az előző konfigurációban a következő sorok jelentése a következő:
 
-### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Az Azure Diagnostics által összegyűjtött összes adatok elküldése
+### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Az Azure diagnosztika által gyűjtött összes adat elküldése
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights">
@@ -182,7 +182,7 @@ Az előző konfigurációban a következő sorok a következő jelentésekkel re
 }
 ```
 
-### <a name="send-only-error-logs-to-the-application-insights-sink"></a>Csak a hiba naplóinak küldése a Application Insights fogadónak
+### <a name="send-only-error-logs-to-the-application-insights-sink"></a>Csak hibanaplók küldése az Application Insights-fogadóba
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights.MyTopDiagdata">
@@ -194,7 +194,7 @@ Az előző konfigurációban a következő sorok a következő jelentésekkel re
 }
 ```
 
-### <a name="send-verbose-application-logs-to-application-insights"></a>Részletes alkalmazási naplók küldése Application Insights
+### <a name="send-verbose-application-logs-to-application-insights"></a>Részletes alkalmazásnaplók küldése az Application Insightsba
 
 ```XML
 <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose" sinks="ApplicationInsights.MyLogData"/>
@@ -208,12 +208,12 @@ Az előző konfigurációban a következő sorok a következő jelentésekkel re
 
 ## <a name="limitations"></a>Korlátozások
 
-- **A csatornák csak a napló típusát és a teljesítményszámlálókat nem.** Ha megad egy csatornát a teljesítményszámláló elemmel, azt a rendszer figyelmen kívül hagyja.
-- **Egy csatorna naplózási szintje nem haladhatja meg az Azure Diagnostics által összegyűjtött naplózási szintet.** Nem gyűjthet például az alkalmazásnapló-hibákat a naplók elemben, és megpróbálhatja részletes naplókat küldeni az alkalmazás Insight fogadójának. A *scheduledTransferLogLevelFilter* attribútumnak mindig egyenlő vagy annál több naplót kell összegyűjtenie, mint amennyit a fogadónak elküldeni próbált naplók.
-- **Az Azure Diagnostics bővítmény által gyűjtött blob-adatok nem küldhetők Application Insights.** Például a *címtárak* csomópontban megadott minden adat. Az összeomlási memóriaképek esetében a rendszer a tényleges összeomlási memóriaképet küldi el a blob Storage-nak, és csak egy értesítést küld a rendszer az összeomlási memóriakép létrejöttéről Application Insights.
+- **A csatornák csak naplótípust naplóznak, a teljesítményszámlálókat nem.** Ha teljesítményszámláló-elemmel rendelkező csatornát ad meg, a rendszer figyelmen kívül hagyja.
+- **A csatorna naplószintje nem haladhatja meg az Azure-diagnosztika által gyűjtött naplószintet.** Például nem gyűjthet alkalmazásnapló hibákat a Naplók elemben, és megpróbálhat részletes naplókat küldeni az Application Insight fogadójába. Az *scheduledTransferLogLevelFilter* attribútumnak mindig egyenlő vagy több naplót kell gyűjtenie, mint a fogadónak küldeni kívánt naplóknak.
+- **Az Azure diagnosztikai bővítmény által gyűjtött blobadatok nem küldhető el az Application Insightsnak.** Például bármi, amit a *Könyvtárak* csomópont ban határoz meg. Összeomlási memóriaképek esetén a tényleges összeomlási memóriakép a blob storage-ba kerül, és csak egy értesítést, hogy az összeomlási memóriakép jött létre az Application Insights.
 
-## <a name="next-steps"></a>További lépések
-* Megtudhatja, hogyan [tekintheti meg az Azure diagnosztikai adatait](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) Application Insightsban.
-* A [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) használatával engedélyezze az Azure Diagnostics bővítményt az alkalmazáshoz.
-* A [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) használata az Azure Diagnostics bővítmény engedélyezéséhez az alkalmazáshoz
+## <a name="next-steps"></a>Következő lépések
+* Ismerje meg, hogyan [tekintheti](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) meg az Azure diagnosztikai adatait az Application Insightsban.
+* A [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) használatával engedélyezze az Azure diagnosztikai bővítményt az alkalmazáshoz.
+* A [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) segítségével engedélyezze az alkalmazás Azure diagnosztikai bővítményét
 

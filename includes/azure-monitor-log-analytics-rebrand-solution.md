@@ -5,11 +5,11 @@ ms.service: azure-monitor
 ms.topic: include
 ms.date: 01/19/2019
 ms.openlocfilehash: 9ea81665de45dafed2ef062af4350f35de8fcb1d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179721"
 ---
 >[!NOTE]
->Ez a cikk korábbi verzióiban a Log Analytics néven saját szolgáltatása. A funkció nem változott, de a naplózási funkcióhoz Azure monitor lett átnevezése. Az Átnevezés, az a cikk ismerteti az Azure Monitor egy Log Analytics-munkaterületen tárolja az adatokat. További információkért lásd: [márkanév-változások az Azure Monitor](../articles/azure-monitor/azure-monitor-rebrand.md).
+>A cikk korábbi verziói a Log Analytics-et saját szolgáltatásként említették. A funkció nem változott, de átnevezték az Azure Monitor naplófunkciójára. Ezzel az átnevezéssel ez a cikk ismerteti az adatok at az Azure Monitor egy Log Analytics-munkaterülettárolja. További információt az [Azure Monitor márkajelzési módosításai című](../articles/azure-monitor/azure-monitor-rebrand.md)témakörben talál.

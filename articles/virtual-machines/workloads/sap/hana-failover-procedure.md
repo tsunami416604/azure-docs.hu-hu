@@ -1,6 +1,6 @@
 ---
-title: HANA feladatátvételi eljárás a SAP HANA Azure-ban (nagyméretű példányok) lévő vészhelyzeti helyre | Microsoft Docs
-description: Feladatátvétel végrehajtása vész-helyreállítási webhelyeken az Azure-beli SAP HANA esetén (nagyméretű példányok)
+title: HANA feladatátvételi eljárás az SAP HANA vészelőhelyéhez az Azure-ban (nagy példányok) | Microsoft dokumentumok
+description: Feladatátvétel végrehajtása az SAP HANA vész-helyreállítási helyén az Azure-ban (nagy példányok)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -14,111 +14,111 @@ ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3fe3ee79318ab9fdc9f2c0e9585051439b76b5cf
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617139"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Vészhelyreállítási feladatátvételi eljárás
 
 
 >[!IMPORTANT]
->Ez a cikk nem helyettesíti a SAP HANA adminisztrációs dokumentációt vagy az SAP-megjegyzéseket. Reméljük, hogy alapos ismeretekkel rendelkezik a SAP HANA adminisztrációval és műveletekkel kapcsolatban, különösen a biztonsági mentés, a visszaállítás, a magas rendelkezésre állás és a vész-helyreállítás (DR) terén. Ebben a cikkben a SAP HANA studióból származó képernyőképek jelennek meg. A tartalom, a struktúra és az SAP felügyeleti eszközeinek és az eszközöknek a tulajdonságai megváltozhatnak SAP HANA kiadásról a kiadásra.
+>Ez a cikk nem helyettesíti az SAP HANA felügyeleti dokumentációt vagy az SAP Notes. Azt várjuk, hogy az SAP HANA felügyeletének és műveleteinek alapos megértése és szakértelme, különösen a biztonsági mentés, visszaállítás, a magas rendelkezésre állás és a vészhelyreállítás (DR) esetében. Ebben a cikkben az SAP HANA Studio képernyőképei jelennek meg. Tartalom, struktúra, és az SAP felügyeleti eszközök képernyőinek és maguk az eszközök jellege is változhat az SAP HANA kiadás kiadására.
 
-A DR-helyre történő feladatátvétel során két esetet érdemes figyelembe venni:
+Két esetet kell figyelembe venni, amikor egy VÉSZ-helyre átad:
 
-- A SAP HANA-adatbázisnak vissza kell térnie az adatmennyiség legújabb állapotára. Ebben az esetben létezik egy önkiszolgáló parancsfájl, amellyel elvégezheti a feladatátvételt anélkül, hogy kapcsolatba kell lépnie a Microsofttal. A feladat-visszavételhez a Microsofttal kell dolgoznia.
-- Olyan tárolási pillanatképre kíván visszaállítani, amely nem a legújabb replikált pillanatkép. Ebben az esetben a Microsofttal kell dolgoznia. 
+- Az SAP HANA-adatbázisnak vissza kell lépnie az adatok legújabb állapotához. Ebben az esetben van egy önkiszolgáló parancsfájl, amellyel a feladatátvételt anélkül hajthatja végre, hogy kapcsolatba kellene lépnie a Microsofttal. A feladat-visszavételhez a Microsofttal kell együttműködnie.
+- Vissza szeretné állítani egy tárolási pillanatképet, amely nem a legújabb replikált pillanatkép. Ebben az esetben a Microsofttal kell együttműködnie. 
 
 >[!NOTE]
->A következő lépéseket kell elvégezni a HANA nagyméretű példány egységen, amely a DR egységre vonatkozik. 
+>A következő lépéseket kell elvégezni a HANA nagy példány egység, amely a VÉSZ-egység. 
  
-A legújabb replikált tárolási Pillanatképek visszaállításához kövesse a "teljes DR feladatátvétel – azure_hana_dr_failover végrehajtása" című részt az [Azure-beli SAP HANA Microsoft Snapshot Tools eszközében](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf). 
+A legújabb replikált tárolási pillanatképek visszaállításához kövesse a "Teljes VÉSZ-feladatátvétel végrehajtása – azure_hana_dr_failover" című, az [Azure-beli SAP HANA Microsoft pillanatkép-eszközeinek](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)lépéseit. 
 
-Ha több SAP HANA példány feladatátvételét szeretné végrehajtani, futtassa többször a azure_hana_dr_failover parancsot. Ha szükséges, adja meg a feladatátvételhez és visszaállításhoz használni kívánt SAP HANA SID-t. 
+Ha azt szeretné, hogy több SAP HANA-példányok feladatátvételt, futtassa a azure_hana_dr_failover parancsot többször. Ha kérik, adja meg az SAP HANA SID átvenni és visszaállítani. 
 
 
-A DR feladatátvételt is tesztelheti a tényleges replikációs kapcsolat befolyásolása nélkül. A feladatátvételi teszt végrehajtásához kövesse az Azure-beli [SAP HANA Microsoft Snapshot-eszközök](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)"teszt elvégzése azure_hana_test_dr_failover" című szakaszának lépéseit. 
+A VÉSZ-feladatátvételt a tényleges replikációs kapcsolat befolyásolása nélkül is tesztelheti. A tesztfeladat-átvétel végrehajtásához kövesse a "Teszt VÉSZ-feladatátvétel végrehajtása – azure_hana_test_dr_failover" című, az [Azure-beli SAP HANA Microsoft-pillanatkép-eszközeiben](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)leírt lépéseket. 
 
 >[!IMPORTANT]
->Ne *futtasson* üzemi tranzakciókat a Dr-helyen a **feladatátvétel tesztelésének**folyamatán keresztül létrehozott példányon. A parancs azure_hana_test_dr_failover olyan kötetek készletét hozza létre, amelyek nem rendelkeznek kapcsolattal az elsődleges hellyel. Ennek eredményeképpen az elsődleges helyhez való szinkronizálás *nem* lehetséges. 
+>*Ne* futtasson éles tranzakciókat a vész-vész-fejlesztési helyen létrehozott példányon a **feladatátvétel tesztelése**során. A azure_hana_test_dr_failover parancs olyan köteteket hoz létre, amelyek nem állnak kapcsolatban az elsődleges helyével. Ennek eredményeképpen az elsődleges helyhez való visszaszinkronizálás *nem* lehetséges. 
 
-Ha több SAP HANA-példányt szeretne tesztelni, futtassa többször a parancsfájlt. Ha a rendszer kéri, adja meg a feladatátvételi teszthez használni kívánt példány SAP HANA SID-azonosítóját. 
+Ha azt szeretné, hogy több SAP HANA-példányok teszteléséhez, futtassa a parancsfájlt többször. Ha kérik, adja meg az SAP HANA-sid a feladatátvételt tesztelni kívánt példány. 
 
 >[!NOTE]
->Ha feladatátvételt szeretne végezni a DR-webhelyre, hogy megmentsen néhány órával korábban törölt adat, és hogy a DR kötetek korábbi pillanatképre legyenek beállítva, akkor ez az eljárás érvényes. 
+>Ha át kell adnia a vészhelyre a vészhelyre, hogy megmentsen néhány, órákkal ezelőtt törölt adatot, és a VÉSZ-köteteket egy korábbi pillanatképre kell állítania, ez az eljárás érvényes. 
 
-1. Állítsa le a HANA nem termékre vonatkozó példányát a futtatott HANA nagyméretű példányok vész-helyreállítási egységén. Előre telepítve van egy alvó HANA üzemi példány.
-1. Győződjön meg arról, hogy nem fut SAP HANA folyamat. Használja az alábbi parancsot a vizsgálathoz:
+1. Állítsa le a hana nem éles példányát a hana nagy példányok vész-helyreállítási egységén, amely fut. Egy alvó HANA éles példány előre telepítve van.
+1. Győződjön meg arról, hogy nem futnak SAP HANA-folyamatok. Az ellenőrzéshez használja a következő parancsot:
 
       `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`.
 
-      A kimenetnek le kell mutatnia a **hdbdaemon** folyamatot leállított állapotban, és más HANA-folyamatokat sem futó, sem elindított állapotban kell lennie.
-1. Határozza meg, hogy mely pillanatkép-vagy SAP HANA biztonsági mentési AZONOSÍTÓhoz szeretné visszaállítani a vész-helyreállítási helyet. A valós katasztrófa-helyreállítási esetekben ez a pillanatkép általában a legújabb pillanatkép. Ha vissza kell állítania az elveszett adatokat, válasszon egy korábbi pillanatképet.
-1. Magas prioritású támogatási kéréssel forduljon az Azure ügyfélszolgálatához. Kérje meg a pillanatkép visszaállítását, valamint a DR helyen található HANA Backup-azonosító nevét és dátumát. Az alapértelmezett érték az, hogy a műveleti oldal csak a/Hana/Data kötetet állítja vissza. Ha azt szeretné, hogy a/Hana/logbackups-kötetek is legyenek, kifejezetten azt kell megadnia. *Ne állítsa vissza a/Hana/Shared kötetet.* Ehelyett a/Hana/Shared kötet PRD való újracsatlakoztatása után válassza ki az adott fájlokat, például a Global. ini fájlt a **. Snapshot** könyvtárból és annak alkönyvtáraiból. 
+      A kimenet nek meg kell mutatnia a **hdbdaemon** folyamat leállított állapotban, és nincs más HANA folyamatok futó vagy elindított állapotban.
+1. Határozza meg, hogy melyik pillanatkép nevét vagy AZ SAP HANA biztonsági mentési azonosítót szeretné, hogy a vész-helyreállítási hely helyreáll. Valós vész-helyreállítási esetekben ez a pillanatkép általában a legújabb pillanatkép. Ha helyre kell állítania az elveszett adatokat, válasszon egy korábbi pillanatképet.
+1. Lépjen kapcsolatba az Azure-támogatással egy magas prioritású támogatási kérelemen keresztül. Kérje meg a pillanatkép visszaállítását a pillanatkép nevével és dátumával, vagy a HANA biztonsági másolat azonosítójával a VÉSZ-webhelyen. Az alapértelmezett beállítás az, hogy a műveleti oldal csak a /hana/data kötetet állítja vissza. Ha azt szeretné, hogy a /hana/logbackups kötetek is, meg kell, hogy kifejezetten azt. *Ne állítsa vissza a /hana/shared kötetet.* Ehelyett válassza ki a .snapshot könyvtárból és annak alkönyvtáraiból a /hana/shared volume for PRD /hana/shared volume fájl újracsatlakoztatása után a **.snapshot** könyvtárból és annak alkönyvtáraiból a global.ini fájlt. 
 
-   A műveleti oldalon a következő lépések történnek:
+   A műveletek oldalán a következő lépések történnek:
 
-   a. A pillanatképek az éles kötetről a vész-helyreállítási kötetekre való replikálása leállt. Előfordulhat, hogy ez a megszakítás már megtörtént, ha az üzemi helyen áramkimaradás történik, ezért a vész-helyreállítási eljárást kell végrehajtania.
+   a. A pillanatképek replikációja a termelési kötetről a vész-helyreállítási kötetek leáll. Ez a megszakítás már előfordulhat, hogy már megtörtént, ha az éles helyen egy kimaradás az oka a vész-helyreállítási eljárás végrehajtásához.
    
-   b. A rendszer visszaállítja a tárolási pillanatkép nevét vagy pillanatképét a kiválasztott biztonsági mentési AZONOSÍTÓval a vész-helyreállítási köteteken.
+   b. A tárolási pillanatkép nevét vagy pillanatképet a biztonsági azonosítót választott visszaállításra kerül a vész-helyreállítási köteteken.
    
-   c. A visszaállítást követően a vész-helyreállítási kötetek elérhetők lesznek a vész-helyreállítási régióban lévő HANA nagyméretű példány-egységekhez való csatlakoztatáshoz.
+   c. A visszaállítás után a vész-helyreállítási kötetek érhetők el a HANA nagy példány egységek a vész-helyreállítási régióban.
       
-1. Csatlakoztassa a vész-helyreállítási köteteket a HANA nagyméretű példány egységéhez a vész-helyreállítási helyen. 
-1. Indítsa el az alvó SAP HANA éles példányát.
-1. Ha úgy dönt, hogy a tranzakciós napló biztonsági mentési naplóit a RPO idő csökkentése érdekében másolja, egyesítse a tranzakciónaplók biztonsági másolatait az újonnan csatlakoztatott DR/Hana/logbackups könyvtárba. Ne írja felül a meglévő biztonsági mentéseket. Olyan újabb biztonsági másolatok másolása, amelyek nem voltak replikálva a tárolási Pillanatképek legutóbbi replikálásával.
-1. Az egyetlen fájlt is visszaállíthatja azon Pillanatképek közül, amelyek nem replikálódtak a DR Azure-régióban található/hana/shared/PRD-kötetre.
+1. Csatlakoztassa a vész-helyreállítási kötetek a HANA nagy példány egység a vész-helyreállítási hely. 
+1. Indítsa el a nyugvó SAP HANA termelési példány.
+1. Ha úgy döntött, hogy a tranzakciónapló biztonsági mentési naplóit másolja az RPO-idő csökkentése érdekében, egyesítse a tranzakciónapló biztonsági másolatait az újonnan csatlakoztatott DR /hana/logbackups könyvtárba. Ne írja felül a meglévő biztonsági mentéseket. Másolja az újabb biztonsági másolatokat, amelyek nem replikáltak a tárolási pillanatkép legutóbbi replikációjával.
+1. A DR Azure-régióban a /hana/shared/PRD-kötetre nem replikált pillanatképekből egyetlen fájlt is visszaállíthat.
 
-A következő lépések bemutatják, hogyan állíthatja helyre a SAP HANA üzemi példányt a visszaállított tárolási pillanatkép és a rendelkezésre álló tranzakciónaplók biztonsági másolatai alapján.
+A következő lépések bemutatják, hogyan állíthatja helyre az SAP HANA éles példány a visszaállított tárolási pillanatkép és a tranzakciónapló biztonsági mentések, amelyek rendelkezésre állnak.
 
-1. A SAP HANA Studio használatával módosítsa a biztonsági mentési helyet a **/Hana/logbackups** .
+1. Módosítsa a biztonsági mentés helyét **/hana/logbackups** az SAP HANA Studio használatával.
 
-   ![A DR helyreállítás biztonsági mentési helyének módosítása](./media/hana-overview-high-availability-disaster-recovery/change_backup_location_dr1.png)
+   ![A vészhelyreállítás biztonsági mentési helyének módosítása](./media/hana-overview-high-availability-disaster-recovery/change_backup_location_dr1.png)
 
-1. SAP HANA átvizsgálja a biztonságimásolat-fájl helyét, és a legutóbbi tranzakciónapló biztonsági mentését javasolja a visszaállításhoz. A vizsgálat eltarthat néhány percig, amíg a következőhöz hasonló képernyő jelenik meg:
+1. Az SAP HANA átvizsgálja a biztonsági másolat fájl helyeit, és javasolja a legutóbbi tranzakciónapló biztonsági mentését a visszaállításhoz. A vizsgálat eltarthat néhány percig, amíg a képernyő, mint a következő jelenik meg:
 
-   ![A DR helyreállításhoz szükséges tranzakciónaplók listája](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
+   ![A vészhelyreállítás tranzakciós naplójának biztonsági másolatainak listája](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
 
-1. Módosítsa az alapértelmezett beállítások némelyikét:
+1. Az alapértelmezett beállítások némelyikének módosítása:
 
-      - Törölje a **különbözeti biztonsági mentések használata**jelölőnégyzet jelölését.
-      - Válassza a **naplózási körzet inicializálása**elemet.
+      - Delta **biztonsági mentések használatának törlése**.
+      - Válassza **a Naplóterület inicializálása**lehetőséget.
 
-   ![A napló inicializálási körzetének beállítása](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
+   ![A naplóterület inicializálása](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
 
 1. Válassza a **Finish** (Befejezés) elemet.
 
-   ![A DR visszaállítás befejezése](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
+   ![A VÉSZ-visszaállítás befejezése](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
 
-Ekkor megjelenik egy folyamatjelző ablak, például az itt látható. Ne feledje, hogy a példa egy három csomópontos kibővíthető SAP HANA konfiguráció vész-helyreállítási visszaállítására szolgál.
+Meg kell jelennie egy folyamatjelző ablaknak, mint az itt látható. Ne feledje, hogy a példa egy háromcsomópontos kibővített SAP HANA-konfiguráció vész-helyreállítási visszaállítása.
 
-![Visszaállítási folyamat](./media/hana-overview-high-availability-disaster-recovery/restore_progress_dr5.PNG)
+![A folyamat visszaállítása](./media/hana-overview-high-availability-disaster-recovery/restore_progress_dr5.PNG)
 
-Ha a visszaállítás nem válaszol a **befejezési** képernyőn, és nem jeleníti meg a folyamatjelzőt, győződjön meg arról, hogy a munkavégző csomópontokon lévő összes SAP HANA példány fut. Ha szükséges, indítsa el manuálisan a SAP HANA példányokat.
+Ha a visszaállítás nem válaszol a **Befejezés** képernyőn, és nem jeleníti meg a folyamatjelző képernyőt, ellenőrizze, hogy a munkavégző csomópontokon lévő összes SAP HANA-példány fut-e. Ha szükséges, indítsa el az SAP HANA-példányok manuálisan.
 
 
-## <a name="failback-from-a-dr-to-a-production-site"></a>Feladat-visszavétel DR-ről üzemi helyre
-A DR-ről egy üzemi helyre végezhető el a feladat-visszavétel. Nézzük meg azt a forgatókönyvet, amelyben a vész-helyreállítási helyre irányuló feladatátvételt az éles környezetbeli Azure-régióban felmerülő problémák okozták, nem pedig az elveszett adatok helyreállításához szükséges. 
+## <a name="failback-from-a-dr-to-a-production-site"></a>Feladat-visszavétel a DR-ről egy éles helyre
+A vész-visszavétel egy éles környezetben. Nézzük meg a forgatókönyvet, amelyben a feladatátvétela a vész-helyreállítási hely okozta problémák az éles Azure-régióban, és nem az elveszett adatok helyreállításának szükségességét. 
 
-Az SAP éles számítási feladatait egy ideig futtatta a vész-helyreállítási helyen. Ahogy az üzemi helyen felmerülő problémák megoldhatók, az éles helyre vissza kíván térni. Mivel nem veszítheti el az adatvesztést, az üzemi helyre történő visszalépés több lépést is magában foglal, és szoros együttműködést folytat az Azure Operations csapat SAP HANAával. Az operatív csapatot úgy indíthatja el, hogy a problémák megoldása után ismét szinkronizálja az üzemi helyre.
+Már fut az SAP éles számítási feladatok egy ideig a vész-helyreállítási helyen. Az éles hely problémáinak megoldása esetén vissza szeretne adni a termelési helynek. Mivel nem veszíti el az adatokat, az éles környezetbe való visszalépés több lépést foglal magában, és szoros együttműködést az SAP HANA-val az Azure műveleti csapatában. Az Ön önön múlik, hogy az operatív csapat a problémák megoldása után elindítsa a szinkronizálást az éles helyszínre.
 
 Kövesse az alábbi lépéseket:
 
-1. Az Azure Operations csapatának SAP HANA beolvassa az indítást, hogy szinkronizálja az üzemi tárolási köteteket a vész-helyreállítási tárolási kötetektől, amelyek mostantól a termelési állapotot jelölik. Ebben az állapotban az üzemi helyen lévő HANA nagyméretű példány egység leáll.
-1. Az Azure Operations csapatának SAP HANA figyeli a replikálást, és gondoskodik róla, hogy a rendszer a tájékoztatása előtt megtekintse.
-1. Leállíthatja azokat az alkalmazásokat, amelyek a vész-helyreállítási helyen a termelési HANA-példányt használják. Ezután elvégezheti a HANA-tranzakciónapló biztonsági mentését. Ezután állítsa le a Hana-példányt, amely a vész-helyreállítási helyen lévő HANA nagyméretű példányokon fut.
-1. Ha a vész-helyreállítási helyen található HANA nagyméretű példány egységben futó HANA-példány leáll, az operatív csapat manuálisan szinkronizálja a lemez köteteit.
-1. Az Azure Operations csapata SAP HANA újra megkezdi a HANA nagyméretű példány egységét az üzemi helyen. Átadják Önnek. Győződjön meg arról, hogy az SAP HANA-példány leállítási állapotban van a HANA nagyméretű példány-egység indítási ideje alatt.
-1. Ugyanazokat az adatbázis-visszaállítási lépéseket hajtja végre, amelyeket korábban a feladatátvételi helyreállítási helyhez adott át.
+1. Az SAP HANA az Azure-műveletek csapat leváltja az eseményindító szinkronizálni az éles tárolási kötetek a vész-helyreállítási tárolási kötetek, amelyek most képviselik az éles állapot. Ebben az állapotban a HANA nagy példány egység a termelési helyen le van állítva.
+1. Az SAP HANA az Azure-műveletek csapat figyeli a replikációt, és győződjön meg arról, hogy az utolérte, mielőtt tájékoztatja Önt.
+1. Állítsa le az éles HANA-példányt használó alkalmazásokat a vész-helyreállítási helyen. Ezután végre egy HANA tranzakciónapló biztonsági mentést. Ezután állítsa le a HANA-példány, amely a vész-helyreállítási helyen a HANA nagy példány egységek fut.
+1. Miután a HANA-példány, amely fut a HANA nagy példány egység a vész-helyreállítási hely leáll, az operatív csapat manuálisan szinkronizálja a lemezkötetek újra.
+1. Az SAP HANA az Azure-műveletek csapat elindítja a HANA nagy példány egységét az éles helyen újra. Átadják neked. Győződjön meg arról, hogy az SAP HANA-példány leállítási állapotban van a HANA nagy példány egység indítási időpontjában.
+1. Ugyanazokat az adatbázis-visszaállítási lépéseket hajtja végre, mint amikor korábban átadott feladatátvételt a vész-helyreállítási helyre.
 
-## <a name="monitor-disaster-recovery-replication"></a>Vész-helyreállítási replikáció figyelése
+## <a name="monitor-disaster-recovery-replication"></a>Vészhelyreállítás replikációjának figyelése
 
-A tárolási replikálási folyamat állapotának figyeléséhez futtassa a parancsfájlt `azure_hana_replication_status`. Ezt a parancsot a vész-helyreállítási helyen futó egységből kell futtatni, hogy az a várt módon működjön. A parancs működése függetlenül attól, hogy aktív-e a replikáció. A parancs a bérlő minden HANA nagyméretű példánya esetében futtatható a vész-helyreállítási helyen. Nem használható a rendszerindító kötet részleteinek beszerzéséhez. 
+A tárolóreplikáció állapotának figyeléséhez futtassa a parancsfájlt. `azure_hana_replication_status` Ezt a parancsot a vész-helyreállítási helyen futó egységről kell futtatni, hogy a várt módon működjön. A parancs működik, függetlenül attól, hogy a replikáció aktív. A parancs futtatható a bérlő minden HANA nagy példányegysége a vész-helyreállítási helyen. Nem használható a rendszerindító kötet részleteinek megszerzésére. 
 
-A paranccsal és a kimenetével kapcsolatos további információkért tekintse meg a "DR replikáció állapotának beolvasása – azure_hana_replication_status" című részt a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)-ban.
+A parancsról és annak kimenetéről további információt az [Azure-beli SAP HANA Microsoft-pillanatkép-eszközeinek](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)"Vészbiztonsági szolgáltatás állapotának beazure_hana_replication_status" című témakörében talál.
 
 
-## <a name="next-steps"></a>Következő lépések
-- Lásd: [a HANA oldal figyelése és hibáinak megoldása](hana-monitor-troubleshoot.md).
+## <a name="next-steps"></a>További lépések
+- Lásd: [A HANA oldalának figyelése és hibaelhárítása.](hana-monitor-troubleshoot.md)

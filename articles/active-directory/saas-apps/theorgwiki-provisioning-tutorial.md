@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a TheOrgWiki konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a TheOrgWiki.
+title: 'Oktatóanyag: A TheOrgWiki konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az Azure Active Directoryt a Felhasználói fiókok automatikus kiépítésére és a TheOrgWiki-re való kiépítésének kiépítésével.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,174 +16,174 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 2b0b11ae89e1f0d150b84f49b04a8badcb44e82c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063143"
 ---
-# <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés TheOrgWiki konfigurálása
+# <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>Oktatóanyag: A TheOrgWiki konfigurálása automatikus felhasználói kiépítéshez
 
-Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a TheOrgWiki és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a TheOrgWiki.
+Ez az oktatóanyag célja, hogy bemutassa a TheOrgWiki és az Azure Active Directory (Azure AD) által végrehajtandó lépéseket az Azure AD konfigurálásához, hogy automatikusan kiépítse és deknaktssel kiszolgálják a felhasználókat és/vagy csoportokat a TheOrgWiki-re.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD felhasználói létesítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../app-provisioning/user-provisioning.md)
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg nyilvános előzetes verzióban van. Az előzetes verziójú funkciók általános Microsoft Azure-használati feltételeiről a [Kiegészítő használati feltételek a Microsoft Azure előzetes verzióihoz](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)című témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * Egy Azure AD-bérlő.
-* [Egy OrgWiki-bérlő](https://www.theorgwiki.com/welcome/).
-* Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a TheOrgWiki-ben.
+* [Egy OrgWiki bérlő](https://www.theorgwiki.com/welcome/).
+* A TheOrgWiki rendszergazdai engedélyekkel rendelkező felhasználói fiókja.
 
-## <a name="assign-users-to-theorgwiki"></a>Felhasználók TheOrgWiki rendelése
+## <a name="assign-users-to-theorgwiki"></a>Felhasználók hozzárendelése a TheOrgWiki-hez
 
-Azure Active Directory a hozzárendelések nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
+Az Azure Active Directory egy hozzárendelések nevű koncepciót használ annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak az Azure AD-ben egy alkalmazáshoz rendelt felhasználók és/vagy csoportok vannak szinkronizálva.
 
-A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak és/vagy csoportjai számára szükséges a TheOrgWiki való hozzáférés. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a TheOrgWiki az alábbi utasításokat követve:
+Az automatikus felhasználói kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoportjainak kell hozzáférniük a TheOrgWiki-hez. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat a TheOrgWiki-hez rendelheti az alábbi utasítások követésével:
 
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-theorgwiki"></a>Fontos Tippek a felhasználók TheOrgWiki való hozzárendeléséhez
+## <a name="important-tips-for-assigning-users-to-theorgwiki"></a>Fontos tippek a felhasználók TheOrgWiki-hez való hozzárendeléséhez
 
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a TheOrgWiki-hoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
+* Javasoljuk, hogy egyetlen Azure AD-felhasználó van hozzárendelve a TheOrgWiki az automatikus felhasználói kiépítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
 
-* Amikor TheOrgWiki rendel hozzá egy felhasználóhoz, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
+* Amikor egy felhasználót a TheOrgWiki-hez rendel, ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha van ilyen) a hozzárendelési párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
 
-## <a name="set-up-theorgwiki-for-provisioning"></a>TheOrgWiki beállítása a kiépítés számára
+## <a name="set-up-theorgwiki-for-provisioning"></a>A TheOrgWiki beállítása kiépítésre
 
-Az Azure AD-vel való automatikus TheOrgWiki konfigurálása előtt engedélyeznie kell a SCIM-létesítést a TheOrgWiki-on.
+A TheOrgWiki konfigurálása az Azure AD automatikus felhasználói kiépítéséhez engedélyeznie kell az SCIM-kiépítést a TheOrgWiki-n.
 
-1. Jelentkezzen be a [TheOrgWiki felügyeleti konzolra](https://www.theorgwiki.com/login/). Kattintson a **felügyeleti konzol**elemre.
+1. Jelentkezzen be a [TheOrgWiki Admin Konzolba.](https://www.theorgwiki.com/login/) Kattintson a **Felügyeleti konzolgombra.**
 
-    ![TheOrgWiki-SCIM hozzáadása](media/theorgwiki-provisioning-tutorial/login.png)
+    ![TheorgWiki scim hozzáadása](media/theorgwiki-provisioning-tutorial/login.png)
 
-2. A felügyeleti konzolon kattintson a **Beállítások fülre**. 
+2. A Felügyeleti konzolban kattintson a **Beállítások fülre**. 
 
-    ![TheOrgWiki-SCIM hozzáadása](media/theorgwiki-provisioning-tutorial/settings.png)
+    ![TheorgWiki scim hozzáadása](media/theorgwiki-provisioning-tutorial/settings.png)
     
-3. Navigáljon a **szolgáltatásfiókok**elemre.
+3. Nyissa meg a **Szolgáltatásfiókok .**
 
-    ![TheOrgWiki-SCIM hozzáadása](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
+    ![TheorgWiki scim hozzáadása](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
 
-4. Kattintson a **+ szolgáltatás fiók**lehetőségre. A **szolgáltatásfiók típusa**területen válassza a **jogkivonat-alapú**lehetőséget. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **+Szolgáltatás fiók gombra.** A **Szolgáltatásfiók típusa csoportban**válassza a **Token based (Token Based**) lehetőséget. Kattintson a **Mentés** gombra.
 
-    ![TheOrgWiki-SCIM hozzáadása](media/theorgwiki-provisioning-tutorial/auth.png)
+    ![TheorgWiki scim hozzáadása](media/theorgwiki-provisioning-tutorial/auth.png)
 
-5.  Másolja az **aktív jogkivonatokat**. Ez az érték a TheOrgWiki alkalmazás üzembe helyezés lapjának titkos jogkivonat mezőjében jelenik meg a Azure Portal.
+5.  Másolja az **aktív tokeneket**. Ezt az értéket a Titkos jogkivonat mezőben adja meg a TheOrgWiki-alkalmazás kiépítés lapján az Azure Portalon.
      
-    ![TheOrgWiki-SCIM hozzáadása](media/theorgwiki-provisioning-tutorial/token.png)
+    ![TheorgWiki scim hozzáadása](media/theorgwiki-provisioning-tutorial/token.png)
 
-## <a name="add-theorgwiki-from-the-gallery"></a>TheOrgWiki hozzáadása a gyűjteményből
+## <a name="add-theorgwiki-from-the-gallery"></a>TheOrgWiki hozzáadása a galériából
 
-Az Azure AD-vel való automatikus TheOrgWiki konfigurálásához hozzá kell adnia a TheOrgWiki az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
+A TheOrgWiki konfigurálásához az Azure AD automatikus felhasználói kiépítéséhez hozzá kell adnia a TheOrgWiki-t az Azure AD alkalmazásgyűjteményből a felügyelt SaaS-alkalmazások listájához.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen válassza az **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a **Minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **ablaktábla** tetején található Új alkalmazás gombra.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **TheOrgWiki**kifejezést, majd az eredmények panelen kattintson a **TheOrgWiki** elemre. 
+4. A keresőmezőbe írja be a **TheOrgWiki**elemet , és válassza a **TheOrgWiki** lehetőséget az eredménypanelen. 
 
-    ![TheOrgWiki az eredmények listájában](common/search-new-app.png)
+    ![TheOrgWiki az eredménylistában](common/search-new-app.png)
 
-5. Válassza ki a **TheOrgWiki (regisztráció)** gombot, amely átirányítja Önt a TheOrgWiki bejelentkezési oldalára. 
+5. Válaszd ki a **Regisztráció a TheOrgWiki-re** gombot, amely átirányít a TheOrgWiki bejelentkezési oldalára. 
 
-    ![TheOrgWiki-SCIM hozzáadása](media/theorgwiki-provisioning-tutorial/image00.png)
+    ![TheorgWiki scim hozzáadása](media/theorgwiki-provisioning-tutorial/image00.png)
 
 6.  A jobb felső sarokban válassza a **Bejelentkezés**lehetőséget.
 
-    ![TheOrgWiki-SCIM hozzáadása](media/theorgwiki-provisioning-tutorial/image02.png)
+    ![TheorgWiki scim hozzáadása](media/theorgwiki-provisioning-tutorial/image02.png)
 
-7. Mivel a TheOrgWiki egy OpenIDConnect-alkalmazás, a Microsoft munkahelyi fiókjával való bejelentkezéshez válassza a OrgWiki lehetőséget.
+7. Mivel a TheOrgWiki egy OpenIDConnect alkalmazás, a Microsoft munkahelyi fiókjával jelentkezz be az OrgWiki-be.
 
-    ![TheOrgWiki-SCIM hozzáadása](media/theorgwiki-provisioning-tutorial/image03.png)
+    ![TheorgWiki scim hozzáadása](media/theorgwiki-provisioning-tutorial/image03.png)
     
-8. Sikeres hitelesítés után a rendszer automatikusan hozzáadja az alkalmazást a bérlőhöz, és a rendszer átirányítja a TheOrgWiki-fiókjába.
+8. A sikeres hitelesítés tkövetően az alkalmazás automatikusan hozzáadódik a bérlőhöz, és a rendszer átirányítja a TheOrgWiki-fiókjába.
 
-    ![OrgWiki-SCIM hozzáadása](media/theorgwiki-provisioning-tutorial/image04.png)
+    ![OrgWiki SCIM hozzáadása](media/theorgwiki-provisioning-tutorial/image04.png)
 
-## <a name="configure-automatic-user-provisioning-to-theorgwiki"></a>Automatikus felhasználó-kiépítés beállítása a TheOrgWiki 
+## <a name="configure-automatic-user-provisioning-to-theorgwiki"></a>Automatikus felhasználói kiépítés konfigurálása a TheOrgWiki szolgáltatásba 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TheOrgWiki alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le a TheOrgWikiben az Azure AD felhasználói és/vagy csoport-hozzárendelései alapján.
 
 
-### <a name="to-configure-automatic-user-provisioning-for-theorgwiki-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a TheOrgWiki az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-theorgwiki-in-azure-ad"></a>A TheOrgWiki automatikus felhasználói kiépítésének konfigurálása az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza **a Vállalati alkalmazások**lehetőséget, majd a Minden **alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **TheOrgWiki**lehetőséget.
+2. Az alkalmazások listájában válassza a **TheOrgWiki**lehetőséget.
 
-    ![Az OrgWiki hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![Az OrgWiki hivatkozás az Alkalmazások listában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **létesítési módot** **Automatikus**ra.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a `https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` a **bérlői URL-címben**. 
+5. A **Rendszergazdai hitelesítő** adatok `https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` csoportban adja meg a **bérlői URL-címet.** 
 
     Például: `https://test1.theorgwiki.com/api/v2/scim/v2/`
 
 > [!NOTE]
-> Az **altartomány értéke** csak a TheOrgWiki kezdeti regisztrálási folyamata során állítható be.
+> Az **altartomány értéke** csak a TheOrgWiki kezdeti regisztrációs folyamata során állítható be.
  
-6. Adja meg a jogkivonat értékét a **titkos jogkivonat** mezőben, amelyet korábban a TheOrgWiki-ből adott vissza. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a TheOrgWiki. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a TheOrgWiki-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+6. Adja meg a token értékét a **Titkos token** mezőben, amelyet korábban a TheOrgWiki-ből kért be. Kattintson **a Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD csatlakozni tud a TheOrgWiki-hez. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy TheOrgWiki-fiókja rendelkezik rendszergazdai engedélyekkel, majd próbálkozzon újra.
 
-    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
-7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+7. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be a jelölőnégyzetet – **E-mail értesítés küldése hiba esetén.**
 
-    ![Értesítő E-mail](common/provisioning-notification-email.png)
+    ![Értesítési e-mail](common/provisioning-notification-email.png)
 
-8. Kattintson a **Save** (Mentés) gombra.
+8. Kattintson a **Mentés** gombra.
 
-9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a TheOrgWiki**lehetőséget.
+9. A **Leképezések** csoportban válassza **az Azure Active Directory-felhasználók szinkronizálása a TheOrgWiki szolgáltatással**lehetőséget.
 
     ![TheOrgWiki felhasználói leképezések](media/theorgwiki-provisioning-tutorial/usermapping.png)
 
-10. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő TheOrgWiki. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a TheOrgWiki felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+10. Tekintse át az Azure AD és a TheOrgWiki között szinkronizált felhasználói attribútumokat az **Attribútum- leképezés** szakaszban. Az **Egyező** tulajdonságokként kijelölt attribútumok a TheOrgWiki felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
 
-    ![TheOrgWiki felhasználói attribútumai](media/theorgwiki-provisioning-tutorial/userattribute.png).
+    ![TheorgWiki felhasználói attribútumai](media/theorgwiki-provisioning-tutorial/userattribute.png).
 
-11. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+11. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
 
-12. Az Azure AD-kiépítési szolgáltatás TheOrgWiki való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
+12. Az Azure AD-kiépítési szolgáltatás engedélyezéséhez a TheOrgWiki, módosítsa a **kiépítés állapota** **be a** **Beállítások** szakaszban.
 
-    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítési állapot bevan kapcsolva](common/provisioning-toggle-on.png)
 
-13. Adja meg a OrgWiki kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+13. Határozza meg azokat a felhasználókat és/vagy csoportokat, amelyeket ki szeretne építeni az OrgWiki-be, ha kiválasztja a kívánt értékeket a **Hatókör** területen a **Beállítások** szakaszban.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-14. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+14. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások. További információ arról, hogy mennyi ideig tart a felhasználók és/vagy csoportok kiépítése, hogy [mennyi ideig tart a felhasználók kiépítése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
+Ez a művelet elindítja a Beállítások szakasz **hatókörében** definiált összes felhasználó és/vagy csoport kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások. Ha többet szeretne tudni arról, hogy mennyi ideig tart a felhasználók és/vagy csoportok kiépítése, lásd: [Mennyi ideig tart a felhasználók kiépítése.](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)
 
-A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a TheOrgWiki-on végrehajtott összes műveletet ismertetik. További információ: [a felhasználó kiépítési állapotának ellenõrzése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Az Azure AD-létesítési naplók olvasásához lásd: [jelentéskészítés az automatikus felhasználói fiók kiépítés](../app-provisioning/check-status-user-account-provisioning.md)során.
+Az Aktuális **állapot** szakasz segítségével figyelheti az előrehaladást, és kövesse a kiépítési tevékenységjelentésre mutató hivatkozásokat, amely ismerteti az Azure AD-kiépítési szolgáltatás által a TheOrgWiki-n végrehajtott összes műveletet. További információ: [A felhasználói kiépítés állapotának ellenőrzése.](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) Az Azure AD kiépítési naplók olvasásához olvassa el [az Automatikus felhasználói fiók kiépítésről szóló jelentéskészítés című témakört.](../app-provisioning/check-status-user-account-provisioning.md)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-* [A vállalati alkalmazások felhasználói fiókok üzembe](../app-provisioning/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
+* [A vállalati alkalmazások felhasználói fiókkiépítési kezelésének kezelése.](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md).
+* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések becsatornázásáról.](../app-provisioning/check-status-user-account-provisioning.md)

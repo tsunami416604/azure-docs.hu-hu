@@ -9,17 +9,17 @@ ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179332"
 ---
 ## <a name="deleting-personal-information"></a>Személyes adatok törlése
 
 [!INCLUDE [gdpr-intro-sentence.md](gdpr-intro-sentence.md)]
 
-Személyes adatokat, az importálási/exportálási fontos az importálás során (keresztül a portál és API-t) szolgáltatást, és exportálási műveletet. Ezek a folyamatok során használt adatok a következők:
+A személyes adatok az importálási/exportálási szolgáltatás szempontjából relevánsak (a portálon és api-n keresztül) az importálási és exportálási műveletek során. Az ilyen folyamatok során felhasznált adatok a következők:
 
 - Kapcsolattartó neve
 - Telefonszám
@@ -33,16 +33,16 @@ Személyes adatokat, az importálási/exportálási fontos az importálás sorá
 - Szállítmányozó fiókszáma
 - Szállítmány nyomkövetési száma
 
-Importálási/exportálási feladat létrehozásakor a felhasználók adja meg a kapcsolattartási adatokat és a szállítási cím. Akár két különböző helyeken tárolt személyes adatokat: a feladat és igény szerint a portál beállításaiban. Személyes adatokat csak tárolódik a portál beállításaiban, ha bejelöli a jelölőnégyzetet, **az alapértelmezett szolgáltatója, és lépjen vissza cím mentése** során a *szállítási adatok visszaadása* az exportálási folyamat szakaszában.
+Az importálási/exportálási feladat létrehozásakor a felhasználók megadják a kapcsolattartási adatokat és a szállítási címet. A személyes adatok at legfeljebb két különböző helyen tároljuk: a feladatban és opcionálisan a portál beállításaiban. A személyes adatok csak akkor tárolódnak a portál beállításaiban, ha az exportálási folyamat *Szállítási adatok visszaküldése* szakaszában alapértelmezés szerint bejelöli a szállító és a **visszaküldési cím jelölőnégyzetet.**
 
-Személyes adatait a következőképpen törölheti:
+A személyes kapcsolattartási adatok a következőképpen törölhetők:
 
-- A feladat a mentett adatok törlődik a feldolgozás. A felhasználók törölhetik feladatok manuálisan, és a befejezett feladatok automatikusan 90 nap után törlődnek. Manuálisan törölheti a feladatokat a REST API-t vagy az Azure Portalon keresztül. Az Azure Portalon a feladat törléséhez nyissa meg az importálási/exportálási feladat, és kattintson a *törlése* a parancssávon. REST API-n keresztül az importálási/exportálási feladat törlése. a részletekért tekintse meg a [az importálási/exportálási feladat törlése](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md).
+- A feladattal együtt mentett adatok törlődnek a feladattal együtt. A felhasználók manuálisan törölhetik a feladatokat, és a befejezett feladatok 90 nap elteltével automatikusan törlődnek. Manuálisan törölheti a feladatokat a REST API-n vagy az Azure Portalon keresztül. Ha törölni szeretné a feladatot az Azure Portalon, nyissa meg az importálási/exportálási feladatot, és kattintson a *Törlés gombra* a parancssávról. Az importálási/exportálási feladat REST API-n keresztüli törléséről az [Importálási/exportálási feladat törlése](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md)című rész ből tájékot talál.
 
-- Kapcsolattartási adatait a portál beállításaiban mentett el kell távolítani a portálbeállítások törlésével. Portálbeállítások törölheti az alábbi lépéseket:
-  - Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-  - Kattintson a *beállítások* ikon ![Azure beállítások ikon](media/storage-import-export-delete-personal-info/azure-settings-icon.png)
-  - Kattintson a *az összes beállítás exportálása* (a jelenlegi beállítások mentésére szolgáló egy `.json` fájlt).
-  - Kattintson a *törli az összes beállítás és saját irányítópult* törli az összes beállítást, beleértve a mentett kapcsolattartási adatokat.
+- A portál beállításaiban mentett kapcsolattartási adatok a portál beállításainak törlésével távolíthatók el. A portál beállításait az alábbi lépésekkel törölheti:
+  - Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+  - Kattintson *Settings* a ![Beállítások ikonra Az Azure Beállítások ikonjára](media/storage-import-export-delete-personal-info/azure-settings-icon.png)
+  - Kattintson *az Összes beállítás exportálása gombra* (az aktuális beállítások `.json` fájlba mentéséhez).
+  - Kattintson *az Összes beállítás és privát irányítópult törlésére* az összes beállítás törléséhez, beleértve a mentett kapcsolattartási adatokat is.
 
-További információkért tekintse át a Microsoft Privacy szabályzatokban [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter)
+További információt a Microsoft adatvédelmi irányelvei az [Adatvédelmi központban talál.](https://www.microsoft.com/trustcenter)

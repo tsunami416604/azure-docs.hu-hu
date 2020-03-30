@@ -1,41 +1,40 @@
 ---
-title: Azure-alkalmazások ajánlatának beállításai | Azure piactér
-description: Egy Azure-alkalmazás ajánlati beállításainak konfigurálása.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Az Azure alkalmazásajánlat beállításai | Azure Piactér
+description: Konfigurálja az Azure-alkalmazásajánlat ajánlatbeállításait.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: c5e00f77ffeec61fb4fee4b4e8eb72b7c7ed1077
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: d111471e909a091d8c887f13ad89d1da50cf72b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827538"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280116"
 ---
-# <a name="azure-application-offer-settings-tab"></a>Azure-alkalmazás ajánlat beállításai lap
+# <a name="azure-application-offer-settings-tab"></a>Az Azure alkalmazás ajánlatának beállításai lap
 
-Ez a cikk az Azure-alkalmazások ajánlati beállításainak konfigurálását ismerteti.
+Ez a cikk ismerteti, hogyan konfigurálhatja az ajánlat beállításait egy Azure-alkalmazás.
 
-Megnyílik az **Azure-alkalmazások > új ajánlat** oldal, amely a fókuszt az **ajánlat beállításai** lapon jelenik meg. A mezőhöz hozzáfűzni kívánt csillag (*) azt jelzi, hogy a név megadása kötelező.
+Megnyílik **az Azure Applications > Új ajánlat** lap, amely az Ajánlat **beállításai** lapon jelenik meg. A mezőnévhez csatolt csillag (*) azt jelzi, hogy szükség van rá.
 
-![Ajánlat identitásának űrlapja](./media/azureapp-offer-settings-tab.png)
+![Ajánlat azonosító űrlapja](./media/azureapp-offer-settings-tab.png)
 
-## <a name="offer-identity-settings"></a>Az ajánlat identitásának beállításai
+## <a name="offer-identity-settings"></a>Identitás-beállítások ajánlata
 
-Az **ajánlat identitása**területen meg kell adnia az alábbi táblázatban ismertetett mezőkre vonatkozó információkat.  
+Az **Ajánlat identitása**csoportban meg kell adnia az alábbi táblázatban leírt mezők adatait.  
 
 |    Mező         |       Leírás                                                            |
 |  ---------       |     ---------------                                                          |
-| **Ajánlat azonosítója\***       | Az ajánlathoz tartozó egyedi azonosító (közzétevői profilon belül). Ez az azonosító a termék URL-címeiben és az információkat tartalmazó jelentésekben jelenik meg. Legfeljebb 50 karakterből állhat, és használhat kisbetűket alfanumerikus karaktereket és kötőjeleket (-). (Az azonosító nem végződhet kötőjeltel.) **Megjegyzés:** Ez a mező nem módosítható, miután egy ajánlat élőben üzemel. <br> Ha például a contoso ajánlat-azonosító **minta-tárolóval**tesz közzé ajánlatot, az Azure Marketplace URL-címét `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-container?tab=Overview`rendeli hozzá. |
-| **Közzétevő azonosítója\***     | A szervezet egyedi azonosítója az Azure piactéren. Az összes ajánlathoz társítva kell lennie a közzétevő AZONOSÍTÓjának. Ez az érték nem módosítható az ajánlat mentése után. |
-| **Név\***          | Az ajánlat megjelenítendő neve. Ez a név jelenik meg az Azure Marketplace-en és a Cloud Partner Portal. Legfeljebb 50 karakterből állhat. Javasoljuk, hogy a termék felismerhető márkáját használja. Ne adja meg a szervezet nevét, kivéve, ha ez a termék forgalmazása. Ha más webhelyeken és kiadványokban is ezt az ajánlatot látja, ügyeljen arra, hogy a név pontosan ugyanaz legyen az összes kiadványban. |
+| **Ajánlat azonosítója\***       | Az ajánlat egyedi azonosítója (közzétevői profilon belül). Ez az azonosító látható lesz a termék URL-címeiben és elemzési jelentésekben. Legfeljebb 50 karakter hosszú, és kisméretű alfanumerikus karaktereket és kötőjeleket (-) használhat. (Az azonosító nem végződhet kötőjellel.) **Megjegyzés:** Ez a mező nem módosítható, miután az ajánlat éles. <br> Ha például a Contoso közzétesz egy ajánlatot ajánlatazonosító-mintatárolóval, `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-container?tab=Overview`hozzá van rendelve az Azure Marketplace **URL-címe.** |
+| **Közzétevő azonosítója\***     | A szervezet egyedi azonosítója az Azure Marketplace-en. Minden ajánlatának a közzétevő azonosítójához kell kapcsolódnia. Ez az érték nem módosítható az ajánlat mentése után. |
+| **név\***          | Az ajánlat megjelenítendő neve. Ez a név jelenik meg az Azure Marketplace-en és a Cloud Partner Portal. Legfeljebb 50 karakterből állhat. Javasoljuk, hogy felismerhető márkanevet használjon a termékéhez. Ne adja meg a szervezet nevét, kivéve, ha a termék forgalomba kerül. Ha ezt az ajánlatot más webhelyeken és kiadványokban forgalmazza, győződjön meg arról, hogy a név pontosan ugyanaz az összes kiadványban. |
 |  |  |
 
-Válassza a **Mentés** lehetőséget az ajánlat beállításainak mentéséhez.
+Válassza a **Mentés** lehetőséget az ajánlatbeállítások mentéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-Az [SKUs](./cpp-skus-tab.md) lapon konfigurálhatja az ajánlathoz tartozó SKU-ket.
+Az [SK-k](./cpp-skus-tab.md) lapon konfigurálhatja az ajánlat sk-jeit.

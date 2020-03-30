@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub frissítése |} A Microsoft Docs
-description: Módosítsa a tarifacsomagot és méretet tarifacsomag IoT hubot, hogy további üzenetküldési és eszközfelügyeleti felügyeleti képességek beolvasása.
+title: Az Azure IoT Hub frissítése | Microsoft dokumentumok
+description: Módosítsa az IoT Hub díjszabási és méretezési szintjét, hogy több üzenetkezelési és eszközkezelési képesség hez jusson hozzá.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,50 +9,50 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 96c3a7b2cfda23f173f4caeff4fb7a92b1ddc438
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61440233"
 ---
-# <a name="how-to-upgrade-your-iot-hub"></a>Az IoT hub frissítése
+# <a name="how-to-upgrade-your-iot-hub"></a>Az IoT Hub frissítése
 
-Az IoT-megoldás növekedésével Azure IoT Hub készen áll a vertikális felskálázás nyújt segítséget. Az Azure IoT Hub két szintet kínál, (B) alapszintű és a standard (S), befogadásához kívánó ügyfelek különböző funkciók használata. Az egyes szinteken belül vannak három méretben (1., 2, 3), amely naponta elküldött üzenetek számának meghatározásához.
+Az IoT-megoldás növekedésével az Azure IoT Hub készen áll a felskálázáselősegítésére. Az Azure IoT Hub két réteget kínál, alapszintű (B) és standard (S) a különböző funkciókat használni kívánó ügyfelek befogadására. Az egyes rétegeken belül három méret (1, 2 és 3), amelyek meghatározzák a naponta elküldhető üzenetek számát.
 
-Ha több eszközt rendelkezik, és további funkciókat, három módja van az IoT hub igény szerint módosíthatja:
+Ha több eszközzel rendelkezik, és további képességekre van szüksége, háromféleképpen állíthatja be az IoT hubot az igényeinek megfelelően:
 
-* Adja hozzá az egységeket az IoT hub-ban. Például minden további egység egy B1 IoT hub lehetővé teszi, hogy egy további napi 400 000 üzenet.
+* Egységek hozzáadása az IoT-központon belül. Például egy B1 IoT hub minden további egysége további 400 000 üzenetet tesz lehetővé naponta.
 
-* Az IoT hub méretének módosítása. Ha például át az B1 szint minden egység / nap által támogatott üzenetek számának növelése a B2 szintre.
+* Módosítsa az IoT hub méretét. Például migráljon a B1 szintről a B2 szintre az egyes egységek által naponta támogatott üzenetek számának növelése érdekében.
 
-* Váltson magasabb szintre. A speciális funkciókat biztosít az üzenetkezelési kapacitáson az S1 szintre, például frissítse a az B1 szint.
+* Frissítsen magasabb szintre. Például frissítsen a B1 szintről az S1 szintre az azonos üzenetküldési kapacitással rendelkező speciális funkciók eléréséhez.
 
-Ezek a változások meglévő műveletek megzavarása nélkül fordulhat.
+Ezek a módosítások a meglévő műveletek megszakítása nélkül is előfordulhatnak.
 
-Ha alacsonyabb szolgáltatásszintre váltásához az IoT hub szeretné, eltávolíthatja az egységeket, és az IoT hub méretének csökkentése azonban nem válthat alacsonyabb szintre. Például átválthat az S2 szint az S1 szintre, azonban nem az B1 szint, az S2 szint. Csak egyféle típusú [az Iot Hub edition](https://azure.microsoft.com/pricing/details/iot-hub/) szinten belüli választható ki az IoT Hub száma. Létrehozhat például egy IoT hubot, több S1-egységet, de nem különböző kiadásait, például az S1 és B3, vagy S1 és S2 egységek vegyesen.
+Ha azt szeretné, hogy az IoT hub, eltávolíthatja az egységeket, és csökkenti az IoT hub méretét, de nem lehet leminősítés alacsonyabb szintre. Például az S2 szintről az S1 szintre léphet, de az S2 szintről a B1 szintre nem. IoT Hub-on ként csak egy [iot Hub-kiadás](https://azure.microsoft.com/pricing/details/iot-hub/) típus választható ki egy rétegen belül. Létrehozhat például egy IoT Hubot több S1 egységgel, de nem különböző kiadásokból származó egységek kombinációjával, például S1 és B3, vagy S1 és S2.
 
-Ezek a példák segítségével megismerheti, hogyan állíthatja be az IoT hub, a megoldás módosítások hivatottak. Részletes információ az egyes szolgáltatásszintek lehetőségei, mindig hivatkozzon [Azure IoT Hub díjszabás](https://azure.microsoft.com/pricing/details/iot-hub/).
+Ezek a példák célja, hogy segítsen megérteni, hogyan módosíthatja az IoT hub, mint a megoldás változásait. Az egyes rétegek képességeivel kapcsolatos konkrét információkért mindig olvassa el az [Azure IoT Hub díjszabását.](https://azure.microsoft.com/pricing/details/iot-hub/)
 
-## <a name="upgrade-your-existing-iot-hub"></a>A meglévő IoT hub frissítése
+## <a name="upgrade-your-existing-iot-hub"></a>A meglévő IoT-központ frissítése
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) , és keresse meg az IoT hubot.
+1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com/) és keresse meg az IoT-központot.
 
-2. Válassza ki **díjszabással**.
+2. Válassza **a Díjszabás és méretezés**lehetőséget.
 
    ![Díjszabás és méretezés](./media/iot-hub-upgrade/pricing-scale.png)
 
-3. A réteg a hub módosításához válassza **díjszabással**. Válassza ki az új szintet, majd kattintson a **kiválasztása**.
+3. A központi réteg módosításához válassza **a Díjszabási és méretezési szint lehetőséget.** Válassza ki az új réteget, majd kattintson **a gombra.**
 
    ![Tarifacsomag és méret](./media/iot-hub-upgrade/select-tier.png)
 
-4. Ha módosítani szeretné az hub egységek számát, adja meg egy új értéket a **IoT Hub-egységek**.
+4. A hubegységeinek számának módosításához adjon meg egy új értéket az **IoT Hub-egységek**csoportban.
 
-5. Válassza ki **mentése** a módosítások mentéséhez.
+5. A módosítások mentéséhez válassza a **Mentés** gombot.
 
-Az IoT hub most módosul, és a beállítások nem változnak.
+Az IoT hub most módosult, és a konfigurációk változatlanok maradnak.
 
-A partíciók maximális korlátot, az alapszintű csomag az IoT Hub és az IoT Hub standard szintű 32. A legtöbb IoT-központok csak 4 partíciók van szükség. A partíciós korlát akkor kell kiválasztani, amikor az IoT Hub jön létre, és az eszköz – felhő üzeneteket vonatkozik, az ezeket az üzeneteket az egyidejű olvasók. Ez az érték az alapszintű csomag a standard szintű csomag áttelepítésekor változatlan marad.
+Az alapszintű IoT Hub és a standard szintű IoT Hub maximális partíciókori korlátja 32. A legtöbb IoT Hubs csak 4 partíciót kell. A partíciókorlát az IoT Hub létrehozásakor kerül kiválasztásra, és az eszközről a felhőbe irányuló üzeneteket az üzenetek egyidejű olvasóinak számához kapcsolja. Ez az érték változatlan marad, amikor áttelepíti az alapszintű szintről a standard szintre.
 
 ## <a name="next-steps"></a>További lépések
 
-További részletek [a megfelelő IoT Hub-csomag kiválasztása](iot-hub-scaling.md).
+További részletek a [megfelelő IoT Hub-szint kiválasztásáról.](iot-hub-scaling.md)

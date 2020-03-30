@@ -1,24 +1,24 @@
 ---
 title: Változók a sablonokban
-description: Leírja, hogyan határozhat meg változókat egy Azure Resource Manager sablonban.
+description: Bemutatja, hogyan definiálhatók változók egy Azure Resource Manager-sablonban.
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75483816"
 ---
-# <a name="variables-in-azure-resource-manager-template"></a>Változók Azure Resource Manager sablonban
+# <a name="variables-in-azure-resource-manager-template"></a>Változók az Azure Resource Manager-sablonban
 
-Ez a cikk bemutatja, hogyan definiálhat és használhat változókat a Azure Resource Manager-sablonban. Változók használatával egyszerűsítheti a sablont. Ahelyett, hogy a sablonban megismételje a bonyolult kifejezéseket, Definiáljon egy változót, amely tartalmazza a bonyolult kifejezést. Ezután a sablonban szükség szerint hivatkozhat erre a változóra.
+Ez a cikk ismerteti, hogyan definiálhatja és használhatja a változókat az Azure Resource Manager-sablonban. Változókkal egyszerűsítheti a sablont. Ahelyett, hogy bonyolult kifejezéseket ismételne meg a sablonban, definiáljon egy változót, amely tartalmazza a bonyolult kifejezést. Ezután szükség szerint hivatkozik erre a változóra a sablonban.
 
-A Resource Manager a telepítési műveletek megkezdése előtt feloldja a változókat. Ha a változót használja a sablonban, a Resource Manager lecseréli azt a megoldott értékre.
+Az Erőforrás-kezelő a telepítési műveletek megkezdése előtt feloldja a változókat. Ahol a változót használja a sablonban, az Erőforrás-kezelő lecseréli azt a feloldott értékre.
 
-## <a name="define-variable"></a>Változó meghatározása
+## <a name="define-variable"></a>Változó definiálása
 
-Az alábbi példa egy változó definícióját mutatja be. Létrehoz egy karakterlánc-értéket a Storage-fiók nevéhez. Számos sablon függvényt használ a paraméterérték beolvasásához, és összefűzi azt egy egyedi karakterlánchoz.
+A következő példa egy változódefiníciót mutat be. Karakterlánc-értéket hoz létre egy tárfiók nevéhez. Számos sablonfüggvényt használ egy paraméterérték leválasztásához, és egy egyedi karakterláncba fűzi.
 
 ```json
 "variables": {
@@ -26,11 +26,11 @@ Az alábbi példa egy változó definícióját mutatja be. Létrehoz egy karakt
 },
 ```
 
-A változók szakaszban nem használható a [Reference](template-functions-resource.md#reference) függvény vagy a [List](template-functions-resource.md#list) függvények egyike sem. Ezek a függvények egy erőforrás futásidejű állapotát kapják meg, és a változók feloldása előtt nem hajthatók végre.
+A [referencia](template-functions-resource.md#reference) függvény vagy a változók szakaszban lévő [listafüggvények](template-functions-resource.md#list) nem használhatók. Ezek a függvények egy erőforrás futásidejű állapotát kapják, és nem hajthatók végre az üzembe helyezés előtt, ha a változók felvannak oldva.
 
 ## <a name="use-variable"></a>Változó használata
 
-A sablonban a [változók](template-functions-deployment.md#variables) függvény használatával hivatkozhat a paraméter értékére. Az alábbi példa bemutatja, hogyan használható a változó egy erőforrás-tulajdonsághoz.
+A sablonban a [változók](template-functions-deployment.md#variables) függvény használatával hivatkozik a paraméter értékére. A következő példa bemutatja, hogyan használható a változó egy erőforrás tulajdonsághoz.
 
 ```json
 "resources": [
@@ -44,7 +44,7 @@ A sablonban a [változók](template-functions-deployment.md#variables) függvén
 
 ## <a name="configuration-variables"></a>Konfigurációs változók
 
-Meghatározhatja a környezet konfigurálásához kapcsolódó értékeket tároló változókat. A változót az értékekkel rendelkező objektumként definiálhatja. A következő példa egy olyan objektumot mutat be, amely két környezet, a **test** és a **Prod**értékeit tárolja.
+A környezet konfigurálásakor olyan változókat határozhat meg, amelyek kapcsolódó értékeket tartalmaznak. A változót az értékekkel rendelkező objektumként definiálhatja. A következő példa egy olyan objektumot mutat be, amely két környezet - **teszt** és **prod**értékeit tartalmazza.
 
 ```json
 "variables": {
@@ -61,7 +61,7 @@ Meghatározhatja a környezet konfigurálásához kapcsolódó értékeket táro
 },
 ```
 
-A paraméterek területen létrehoz egy értéket, amely jelzi, hogy mely konfigurációs értékeket kell használni.
+A paraméterekben olyan értéket hoz létre, amely jelzi, hogy mely konfigurációs értékeket kell használni.
 
 ```json
 "parameters": {
@@ -81,17 +81,17 @@ A megadott környezet beállításainak beolvasásához használja együtt a vá
 "[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
 ```
 
-## <a name="example-templates"></a>Példák sablonokra
+## <a name="example-templates"></a>Példa sablonok
 
-Az alábbi példák a változók használatára vonatkozó forgatókönyveket szemléltetik.
+Az alábbi példák bemutatják a változók használatára vonatkozó forgatókönyveket.
 
 |Sablon  |Leírás  |
 |---------|---------|
-| [változók definíciói](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Bemutatja a különböző típusú változókat. A sablon nem telepít semmilyen erőforrást. Változó értékeket hoz létre, és visszaadja ezeket az értékeket. |
-| [konfigurációs változó](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | A konfigurációs értékeket meghatározó változó használatát mutatja be. A sablon nem telepít semmilyen erőforrást. Változó értékeket hoz létre, és visszaadja ezeket az értékeket. |
-| [hálózati biztonsági szabályok](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) és [paraméter fájl](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | A megfelelő formátumú tömböt hoz létre a biztonsági szabályok hálózati biztonsági csoporthoz való hozzárendeléséhez. |
+| [változó definíciók](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Bemutatja a különböző típusú változók. A sablon nem telepít erőforrásokat. Változó értékeket hoz létre, és ezeket az értékeket adja vissza. |
+| [konfigurációs változó](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | A konfigurációs értékeket meghatározó változó használatát mutatja be. A sablon nem telepít erőforrásokat. Változó értékeket hoz létre, és ezeket az értékeket adja vissza. |
+| [hálózati biztonsági szabályok](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) és [paraméterfájl](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | A megfelelő formátumú tömböt hoz létre a biztonsági szabályok hálózati biztonsági csoporthoz való hozzárendeléséhez. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A változók elérhető tulajdonságainak megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md)című témakört.
-* A változók létrehozásával kapcsolatos javaslatokért lásd: [ajánlott eljárások – változók](template-best-practices.md#variables).
+* A változók elérhető tulajdonságairól [az Azure Resource Manager-sablonok szerkezetének és szintaxisának megismerése című témakörben olvashat.](template-syntax.md)
+* A változók létrehozásával kapcsolatos javaslatokról az [Ajánlott eljárások – változók](template-best-practices.md#variables)című témakörben van.

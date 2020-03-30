@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: aeccd604a4dae3b2ca83f5b599d9a6857acee34a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c3ca37fd47b6551a95f9a491053ec7863acd1eeb
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037201"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389392"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Oktatóanyag: Gépi tanulási modell üzembe helyezése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -57,6 +57,8 @@ A folyamat üzembe helyezéséhez először át kell alakítania a betanítási 
     >
 
 1. Válassza **a Küldés**lehetőséget, és használja ugyanazt a számítási célt és kísérletet, amelyet az első részben használt.
+
+    Ha az első futtatás, akár 20 percet is igénybe vehet, amíg a folyamat futása befejeződik. Az alapértelmezett számítási beállítások minimális csomópontmérete 0, ami azt jelenti, hogy a tervező nek erőforrásokat kell lefoglalnia, miután tétlen. Az ismétlődő folyamatfuttatások kevesebb időt vesznek igénybe, mivel a számítási erőforrások már le vannak foglalva. Emellett a tervező az egyes modulok gyorsítótárazott eredményeit használja a hatékonyság további növelése érdekében.
 
 1. Válassza az **Üzembe helyezés** lehetőséget.
 

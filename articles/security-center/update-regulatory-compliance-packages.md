@@ -1,6 +1,6 @@
 ---
-title: A dinamikus szabályozási megfelelőség monitorozásának frissítése a Azure Security Center szabályozási megfelelőségi irányítópulton | Microsoft Docs
-description: A szabályozási megfelelőségi csomagok frissítése (előzetes verzió)
+title: Frissítés dinamikus szabályozási megfelelőségfigyelésre az Azure Security Center szabályozási megfelelőségi irányítópultján | Microsoft dokumentumok
+description: A jogszabályi megfelelőségi csomagok frissítése (előzetes verzió)
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,67 +13,70 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: cfa39799e44cee0a2d36efccd454ccf8ca15157f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 4080825bbb1f6c274f5b5aafd28e8c672148b98f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603228"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159285"
 ---
 # <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard-preview"></a>Frissítés dinamikus megfelelőségi csomagokra a szabályozási megfelelőségi irányítópulton (előzetes verzió)
 
-Azure Security Center folyamatosan összehasonlítja az erőforrások konfigurációját az iparági szabványok, rendeletek és referenciaértékek követelményeivel. A **szabályozási megfelelőségi irányítópult** a megfelelőségi ellenőrzés és a követelmények teljesítése alapján nyújt betekintést a megfelelőségi helyzetbe.
+Az Azure Security Center folyamatosan összehasonlítja az erőforrások konfigurációját az iparági szabványok, szabályozások és referenciaértékek követelményeivel. A **jogszabályi megfelelőségi irányítópult** betekintést nyújt a megfelelőségi állapotba annak alapján, hogy ön hogyan felel meg az adott megfelelőségi vezérlőknek és követelményeknek.
 
-Egy standard, amely nyomon követheti a megfelelőségi testtartást az [Azure CIS 1.1.0](https://www.cisecurity.org/benchmark/azure/) (a "CIS Microsoft Azure founds benchmark Version 1.1.0"). 
+Az egyik szabvány, amelynyomon követheti a megfelelőségi állapotot, az [Azure CIS 1.1.0](https://www.cisecurity.org/benchmark/azure/) (hivatalosabban a "CIS Microsoft Azure Foundations Benchmark 1.1.0- s verziója"). 
 
-A megfelelőségi irányítópulton eredetileg megjelenő Azure CIS-beli ábrázolás a Security Centerban található szabályok statikus halmazán alapul.
+Az Azure CIS, amely eredetileg megjelenik a megfelelőségi irányítópulton, a Security Center ben található szabályok statikus készletén alapul.
 
-A **dinamikus megfelelőségi csomagok (előzetes verzió)** szolgáltatással a Security Center automatikusan javítja az iparági szabványok lefedettségét az idő múlásával. A megfelelőségi csomagok lényegében a Azure Policyban meghatározott kezdeményezések. Ezek hozzárendelhetők a kiválasztott hatókörhöz (előfizetés, felügyeleti csoport stb.). Ha szeretné megtekinteni a megfelelőségi adatok hozzárendelését az irányítópulton, vegyen fel egy megfelelőségi csomagot a felügyeleti csoportba vagy előfizetésbe a biztonsági szabályzatból. A megfelelőségi csomag hozzáadásával hatékonyan hozzárendelheti a szabályozási megfelelőségi kezdeményezést a kiválasztott hatókörhöz. Így nyomon követheti az újonnan közzétett szabályozási kezdeményezéseket megfelelőségi szabványként az irányítópulton. Ha a Microsoft új tartalmat szabadít fel a kezdeményezéshez (új szabályzatok, amelyek a standardban több vezérlőhöz képezhetők le), a további tartalom automatikusan megjelenik az irányítópulton.
+A **dinamikus megfelelőségi csomagok (előzetes verzió)** funkcióval a Security Center automatikusan javítja az iparági szabványok lefedettségét az idő múlásával. A megfelelőségi csomagok lényegében az Azure Policyben meghatározott kezdeményezések. Ezek hozzárendelhetők a kiválasztott hatókörhöz (előfizetés, felügyeleti csoport és így tovább). Ha az irányítópulton leképezett megfelelőségi adatokat szeretne értékelésként leképezve, adjon hozzá egy megfelelőségi csomagot a felügyeleti csoporthoz vagy az előfizetéshez a Biztonsági szabályzatból. A megfelelőségi csomag hozzáadása hatékonyan hozzárendeli a szabályozási megfelelőségi kezdeményezést a kiválasztott hatókörhöz. Ily módon nyomon követheti az irányítópulton az újonnan közzétett szabályozási kezdeményezéseket megfelelőségi szabványként. Amikor a Microsoft új tartalmat ad ki a kezdeményezéshez (új házirendek, amelyek a szabvány több vezérlőjéhez vannak leképezve), a további tartalom automatikusan megjelenik az irányítópulton.
 
-Az Azure CIS benchmark, az **Azure CIS 1.1.0 (új)** dinamikus megfelelőségi csomagja az eredeti *statikus* verziót javítja:
+Az Azure CIS benchmark, az **Azure CIS 1.1.0 (új)** dinamikus megfelelőségi csomagja a következővel javítja az eredeti *statikus* verziót:
 
-* Több szabályzatot is beleértve
-* Automatikus frissítés új lefedettséggel, ahogy hozzá van adva 
+* További irányelveket is bevonva
+* Automatikus frissítés az új lefedettséggel, ahogy hozzáadódik 
 
-Frissítsen az új dinamikus csomagra az alább leírtak szerint.
+Frissítsen az új dinamikus csomagra az alábbiakszerint.
 
 ## <a name="adding-a-dynamic-compliance-package"></a>Dinamikus megfelelőségi csomag hozzáadása
 
-A következő lépések azt ismertetik, hogyan adható hozzá a dinamikus csomag az Azure CIS benchmark v 1.1.0 megfelelőségének figyeléséhez.   
+Az alábbi lépések bemutatják, hogyan adhat hozzá a dinamikus csomagot az Azure CIS benchmark v1.1.0-s megfelelőségét figyelheti.   
 
 ### <a name="update-to-the-azure-cis-110-new-dynamic-compliance-package"></a>Frissítés az Azure CIS 1.1.0 (új) dinamikus megfelelőségi csomagra 
 
-1. Nyissa meg a **biztonsági házirend** lapot. Ez az oldal a felügyeleti csoportok, előfizetések, munkaterületek és a felügyeleti csoport struktúrájának számát jeleníti meg.
+1. Nyissa meg a **Biztonsági házirend** lapot. Ez a lap a felügyeleti csoportok, előfizetések, munkaterületek és a felügyeleti csoport struktúrájának számát mutatja.
 
-1. Válassza ki azt az előfizetést vagy felügyeleti csoportot, amelyhez felügyelni kívánja a szabályozási megfelelőségi állapotot. Azt javasoljuk, hogy válassza ki a legmagasabb hatókört, amelyre a standard érvényes, hogy a megfelelőségi adatokat összesítsék és nyomon kövessék az összes beágyazott erőforrás esetében. 
+1. Válassza ki azt az előfizetést vagy felügyeleti csoportot, amelynek a jogszabályi megfelelőségi állapotát kezelni szeretné. Azt javasoljuk, hogy válassza ki a legmagasabb hatókört, amelyre a szabvány vonatkozik, hogy a megfelelőségi adatok összesítése és nyomon követése az összes beágyazott erőforrások. 
 
-1. Az iparági & szabályozási szabványok (előzetes verzió) szakaszban láthatja, hogy az Azure CIS 1.1.0 új tartalomhoz is frissíthető. Kattintson a **Frissítés most**elemre. 
+1. Az Iparági & szabályozási szabványok (előzetes verzió) szakaszban láthatja, hogy az Azure CIS 1.1.0 frissíthető az új tartalomhoz. Kattintson **a Frissítés gombra.** 
 
-1. Ha szeretné, kattintson a **további szabványok hozzáadása** lehetőségre a **jogszabályi megfelelőségi szabványok hozzáadása** lap megnyitásához. Itt megkeresheti az **Azure CIS 1.1.0 (új)** és a dinamikus csomagokat az egyéb megfelelőségi szabványokhoz, mint például a **NIST SP 800-53 R4**, a **Swift CSP CSCF-v2020**, a **UKO és az Egyesült királyságbeli NHS**és a **Canada PBMM**.
+1. Szükség esetén kattintson a **További szabványok hozzáadása** elemre a Szabályozási **megfelelőségi szabványok hozzáadása** lap megnyitásához. Itt manuálisan kereshet **az Azure CIS 1.1.0 (Új)** és a dinamikus csomagok között más megfelelőségi szabványokhoz, például **a NIST SP 800-53 R4,** **a SWIFT CSP CSCF-v2020**, **az UKO és az Egyesült Királyság NHS**, valamint a Canada **PBMM szabványhoz.**
     
-    ![Szabályozási csomagok hozzáadása Azure Security Center szabályozási megfelelőségi irányítópulthoz](./media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-additional-standards.png)
+    > [!TIP]
+    > Csak a tulajdonos vagy a házirend-közreműködők rendelkeznek a megfelelőségi szabványok hozzáadásához szükséges engedélyekkel. 
+
+    ![Szabályozási csomagok hozzáadása az Azure Security Center szabályozási megfelelőségi irányítópultjához](./media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-additional-standards.png)
 
 
-1. A Security Center oldalsávján válassza a **jogszabályi megfelelőség** lehetőséget a megfelelőségi irányítópult megnyitásához. 
-    * Az Azure CIS 1.1.0 (új) mostantól megjelenik az iparági & szabályozási szabványainak listáján. 
-    * Az Azure CIS 1.1.0 megfelelőségének eredeti *statikus* nézete is továbbra is fennáll. Előfordulhat, hogy a későbbiekben automatikusan el lesz távolítva.
+1. A Security Center oldalsávján válassza **a Szabályozási megfelelőség** lehetőséget a jogszabályi megfelelőségirányítópult megnyitásához. 
+    * Az Azure CIS 1.1.0 (Új) mostantól megjelenik az Ipari & szabályozási szabványok listájában. 
+    * Az Azure CIS 1.1.0-s megfelelőség eredeti *statikus* nézete is mellette marad. Előfordulhat, hogy a jövőben automatikusan eltávolítják.
 
     > [!NOTE]
-    > A megfelelőségi irányítópulton néhány órát is igénybe vehet, hogy egy újonnan hozzáadott szabvány megjelenjen.
+    > Néhány órát is igénybe vehet, amíg egy újonnan hozzáadott szabvány megjelenik a megfelelőségi irányítópulton.
 
 
-    [![szabályozási megfelelőségi irányítópult a régi és az új Azure CIS-t ábrázolva](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png)](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png#lightbox)
+    [![A régi és az új Azure CIS-t megjelenítő szabályozási megfelelőségi irányítópult](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png)](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png#lightbox)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta a következőket:
+Ebben a cikkben a következőket tanulta meg:
 
-* A szabályozási megfelelőségi irányítópulton látható **szabványok frissítése** az új *dinamikus* csomagokra
-* **Megfelelőségi csomagok hozzáadása** a további szabványoknak való megfelelőség monitorozásához. 
+* A jogszabályi megfelelőségi irányítópulton látható **szabványok frissítése** az új *dinamikus* csomagokra
+* Megfelelőségi **csomagok hozzáadása** a további szabványoknak való megfelelés figyeléséhez. 
 
-Más kapcsolódó anyagok esetében tekintse meg a következő cikkeket: 
+Egyéb kapcsolódó anyagokról lásd a következő cikkeket: 
 
-- [A Security Center szabályozási megfelelőségi irányítópultja](security-center-compliance-dashboard.md)
+- [A Biztonsági központ szabályozási megfelelőségi irányítópultja](security-center-compliance-dashboard.md)
 - [Biztonsági szabályzatok használata](tutorial-security-policy.md)
-- [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan használhatók a javaslatok a Azure Security Centerban az Azure-erőforrások védelme érdekében.
+- [Biztonsági javaslatok kezelése az Azure Security Centerben](security-center-recommendations.md) – Ismerje meg, hogyan használhatja az Azure Security Center javaslatait az Azure-erőforrások védelme érdekében.

@@ -1,134 +1,134 @@
 ---
-title: Azure Functions megbízható események feldolgozása
-description: Kerülje az Event hub-üzenetek hiányzó Azure Functions
+title: Az Azure Functions megbízható eseményfeldolgozása
+description: Az Azure Functions ben hiányzó Eseményközpont-üzenetek elkerülése
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
 ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75561867"
 ---
-# <a name="azure-functions-reliable-event-processing"></a>Azure Functions megbízható események feldolgozása
+# <a name="azure-functions-reliable-event-processing"></a>Az Azure Functions megbízható eseményfeldolgozása
 
-Az események feldolgozása a kiszolgáló nélküli architektúrához társított leggyakoribb forgatókönyvek egyike. Ez a cikk azt ismerteti, hogyan lehet az üzenetek elvesztésének elkerüléséhez Azure Functions használatával megbízható üzenetet létrehozni.
+Az eseményfeldolgozás a kiszolgáló nélküli architektúrával kapcsolatos leggyakoribb forgatókönyvek egyike. Ez a cikk ismerteti, hogyan hozhat létre egy megbízható üzenetprocesszor t, az Azure Functions az üzenetek elvesztésének elkerülése érdekében.
 
-## <a name="challenges-of-event-streams-in-distributed-systems"></a>Az esemény-adatfolyamok kihívásai az elosztott rendszerekben
+## <a name="challenges-of-event-streams-in-distributed-systems"></a>Az elosztott rendszerekben az eseményfolyamok kihívásai
 
-Vegyünk egy olyan rendszernek, amely másodpercenként 100 eseményt küld az eseményeknek. Ezen a sebességgel néhány percen belül több párhuzamos functions-példány képes a bejövő 100-események másodpercenkénti felhasználására.
+Vegyünk egy olyan rendszert, amely másodpercenként 100 esemény állandó sebességgel küld eseményeket. Ilyen ütemben, perceken belül több párhuzamos függvénypéldányok is fogyasztanak a bejövő 100 események másodpercenként.
 
 Azonban a következő kevésbé optimális feltételek bármelyike lehetséges:
 
-- Mi a teendő, ha az esemény kiadója sérült eseményt küld?
-- Mi a teendő, ha a függvények példánya nem kezelt kivételeket észlel?
-- Mi a teendő, ha egy alsóbb rétegbeli rendszer offline állapotba kerül?
+- Mi történik, ha az esemény közzétevője sérült eseményt küld?
+- Mi a teendő, ha a Functions-példány nem kezelt kivételekkel találkozik?
+- Mi történik, ha egy downstream rendszer offline állapotba kerül?
 
-Hogyan kezelheti ezeket a helyzeteket, miközben megőrizheti az alkalmazás átviteli sebességét?
+Hogyan kezeli ezeket a helyzeteket, miközben megőrzi az alkalmazás átviteli?
 
-A várólistákkal a megbízható üzenetküldés természetesen magától értetődő. Functions triggerrel párosítva a függvény zárolást hoz létre az üzenetsor-üzenetben. Ha a feldolgozás sikertelen, a zárolás felszabadítva lesz, hogy egy másik példány újra feldolgozza a feldolgozást. A feldolgozás ezután folytatódik, amíg meg nem történik az üzenet sikeres kiértékelése, vagy hozzá van adva egy méreg-várólistához.
+A várólisták kal a megbízható üzenetküldés természetesen jön. Ha egy Functions eseményindítóval párosítja, a függvény zárolást hoz létre a várólistaüzenetben. Ha a feldolgozás sikertelen, a zárolás felszabadul, hogy egy másik példány újra megpróbálja a feldolgozást. A feldolgozás addig folytatódik, amíg az üzenet kiértékelése sikeres nem lesz, vagy hozzá nem adódik egy méregvárólistához.
 
-Még ha egy üzenetsor-üzenet is maradhat egy újrapróbálkozási ciklusban, a többi párhuzamos végrehajtás továbbra is továbbra is megmarad a fennmaradó üzenetek várólistára helyezése során. Ennek az az oka, hogy a teljes átviteli sebesség nagy mértékben nem lesz hatással egy hibás üzenetre. A tárolási várólisták azonban nem garantálják a sorrendet, és nem a Event Hubs által igényelt nagy átviteli sebességre vannak optimalizálva.
+Még akkor is, ha egyetlen üzenet üzenet marad egy újrapróbálkozási ciklusban, más párhuzamos végrehajtások továbbra is a fennmaradó üzenetek várólistába állításának törlését. Az eredmény az, hogy a teljes átviteli nem befolyásolja egy rossz üzenet. A tárolási várólisták azonban nem garantálják a rendezést, és nincsenek optimalizálva az Event Hubs által igényelt nagy átviteli igényekre.
 
-Ezzel szemben az Azure Event Hubs nem tartalmaz zárolási koncepciót. A nagy átviteli sebességű, több fogyasztói csoport és az újrajátszás képességgel rendelkező funkciók engedélyezéséhez Event Hubs az események többek között egy videolejátszóként viselkednek. Az eseményeket a rendszer az adatfolyamban lévő egy pontról olvassa be. A mutatóból az adott helyről továbbíthatja a továbbításokat vagy visszafelé, de a mutatót úgy kell áthelyeznie, hogy feldolgozza az eseményeket.
+Ezzel szemben az Azure Event Hubs nem tartalmaz zárolási koncepciót. Annak érdekében, hogy a funkciók, például a nagy átviteli sebességű, több fogyasztói csoportok és a visszajátszás-képesség, Event Hubs események viselkednek, mint egy videó lejátszó. Az események et partíciónként az adatfolyam egyetlen pontjáról olvassa be a rendszer. A mutatóból előre vagy hátra olvashatunk arról a helyről, de az események feldolgozásához át kell helyeznie a mutatót.
 
-Ha hiba lép fel egy adatfolyamban, ha úgy dönt, hogy ugyanazon a helyen tartja a mutatót, a rendszer letiltja az események feldolgozását, amíg a mutató nem lesz speciális. Más szóval, ha a mutató le van állítva egy adott esemény feldolgozásával kapcsolatos problémák kezelésére, a feldolgozatlan események megkezdik a felhalmozás folyamatát.
+Ha hibák lépnek fel egy adatfolyamban, ha úgy dönt, hogy a mutatót ugyanazon a helyen tartja, az eseményfeldolgozás blokkolva lesz, amíg a mutató nem lesz előre. Más szóval, ha a mutató leáll az egyetlen esemény feldolgozásával kapcsolatos problémák kezelésére, a feldolgozatlan események felhalmozódnak.
 
-A Azure Functions elkerüli a holtpontokat azáltal, hogy az adatfolyam mutatóját a sikertől vagy a meghibásodástól függetlenül meghaladják. Mivel a mutató folyamatosan halad, a függvényeknek megfelelően kell foglalkoznia a hibákkal.
+Az Azure Functions elkerüli a holtpontokat azáltal, hogy az adatfolyam mutatóját a sikeres vagy sikertelen től függetlenül előreviszi. Mivel a mutató folyamatosan halad, a funkcióknak megfelelően kell kezelnie a hibákat.
 
-## <a name="how-azure-functions-consumes-event-hubs-events"></a>Hogyan használják a Azure Functions Event Hubs eseményeket
+## <a name="how-azure-functions-consumes-event-hubs-events"></a>Hogyan használja fel az Azure Functions az Event Hubs-eseményeket?
 
-A Azure Functions az Event hub-eseményeket az alábbi lépések során használja:
+Az Azure Functions az Event Hub-eseményeket használja fel a következő lépések en való kerékpározás közben:
 
-1. A rendszer létrehoz egy mutatót, és megőrzi az Azure Storage-ban az Event hub minden partíciója számára.
-2. Amikor új üzenet érkezik (alapértelmezés szerint egy kötegben), a gazdagép megpróbálja elindítani a függvényt az üzenetek kötegében.
-3. Ha a függvény befejezi a végrehajtást (kivétel nélkül vagy anélkül), a mutató továbblép, és egy ellenőrzőpontot ment a Storage-fiókba.
-4. Ha a feltételek megakadályozzák, hogy a függvény végrehajtása befejeződik, a gazdagép nem tudja végrehajtani a mutatót. Ha a mutató nem speciális, akkor a későbbi ellenőrzések során ugyanazok az üzenetek kerülnek feldolgozásra.
-5. Ismételje meg a 2 – 4. lépést
+1. A mutató jön létre, és megmarad az Azure Storage-ban az eseményközpont minden egyes partíciójára.
+2. Amikor új üzenetek érkeznek (alapértelmezés szerint kötegben), az állomás megpróbálja elindítani a függvényt az üzenetek kötegével.
+3. Ha a függvény befejezi a végrehajtást (kivétellel vagy kivétel nélkül), a mutató előrelép, és egy ellenőrzőpont kerül mentésre a tárfiókba.
+4. Ha a feltételek megakadályozzák a függvény végrehajtásának befejezését, az állomás nem tudja továbbhaladni a mutatót. Ha a mutató nem speciális, majd később ellenőrzi a végén feldolgozása ugyanazokat az üzeneteket.
+5. 2–4.
 
-Ez a viselkedés a következő fontos pontokat mutatja be:
+Ez a viselkedés néhány fontos pontot tár fel:
 
-- *A nem kezelt kivételek miatt elveszítheti az üzeneteket.* A kivételt okozó végrehajtások továbbra is a mutató előrehaladását eredményezik.
-- *A függvények legalább egyszeri kézbesítést garantálnak.* Előfordulhat, hogy a kódnak és a függő rendszereknek is [figyelembe kell venniük azt a tényt, hogy ugyanazt az üzenetet kétszer is el lehet fogadni](./functions-idempotent.md).
+- *A nem kezelt kivételek az üzenetek elvesztését okozhatják.* A kivételt eredményező végrehajtások továbbra is a mutató előrehaladását eredményezik.
+- *A funkciók legalább egyszeri szállítást garantálnak.* Előfordulhat, hogy a kódnak és a függő rendszereknek figyelembe kell [venniük azt a tényt, hogy ugyanaz az üzenet kétszer is érkezhet.](./functions-idempotent.md)
 
 ## <a name="handling-exceptions"></a>Kivételek kezelése
 
-Általános szabályként minden függvénynek tartalmaznia kell egy [try/catch blokkot](./functions-bindings-error-pages.md) a legmagasabb szintű kóddal. Pontosabban, az Event Hubs eseményeket használó összes függvénynek rendelkeznie kell egy `catch` blokkmal. Így ha kivétel keletkezik, a Catch blokk kezeli a hibát a mutató előrehaladása előtt.
+Általános szabály, hogy minden függvénynek tartalmaznia kell egy [try/catch blokkot](./functions-bindings-error-pages.md) a legmagasabb szintű kódon. Pontosabban az Event Hubs eseményeket használó `catch` összes függvénynek rendelkeznie kell egy blokkkal. Így egy kivétel esetén a catch blokk kezeli a hibát, mielőtt a mutató haladna.
 
-### <a name="retry-mechanisms-and-policies"></a>Újrapróbálkozási mechanizmusok és szabályzatok
+### <a name="retry-mechanisms-and-policies"></a>Újrapróbálkozási mechanizmusok és házirendek
 
-Bizonyos kivételek átmeneti jellegűek, és nem jelennek meg újra, amikor egy művelet később próbálkozik újra. Ezért az első lépés az, hogy mindig újra kell próbálkoznia a művelettel. Megismételheti az újrapróbálkozási szabályok feldolgozását, de olyan általános, hogy számos eszköz áll rendelkezésre. Ezen könyvtárak használatával robusztus újrapróbálkozási házirendeket határozhat meg, amelyek segítenek megőrizni a feldolgozási sorrendet is.
+Néhány kivétel átmeneti jellegű, és nem jelenik meg újra, ha egy műveletet próbál nak újra pillanatokkal később. Ez az oka annak, hogy az első lépés mindig a művelet újrapróbálkozása. Írhatna újrafeldolgozási szabályokat saját maga, de annyira általánosak, hogy számos eszköz áll rendelkezésre. Ezek a könyvtárak használatával robusztus újrapróbálkozási házirendek definiálhatók, amelyek szintén segíthetnek a feldolgozási sorrend megőrzésében.
 
-A hibák kezelésére szolgáló kódtárak bevezetése a függvények számára lehetővé teszi az alapszintű és a speciális újrapróbálkozási házirendek definiálását is. Létrehozhat például egy olyan szabályzatot, amely a következő szabályok által illusztrált munkafolyamatot követi:
+A hibakezelési kódtárak bevezetése a függvényekben lehetővé teszi az alapvető és a speciális újrapróbálkozási házirendek meghatározását. Például megvalósíthat egy olyan házirendet, amely a következő szabályokkal illusztrált munkafolyamatot követi:
 
-- Próbáljon meg háromszor beszúrni egy üzenetet (esetleg az újrapróbálkozások közötti késleltetéssel).
-- Ha az újrapróbálkozások végeredménye hibát jelez, adjon hozzá egy üzenetet egy várólistához, hogy a feldolgozás folytatható legyen az adatfolyamban.
-- A rendszer később kezeli a sérült vagy feldolgozatlan üzeneteket.
+- Próbáljon meg háromszor beszúrni egy üzenetet (potenciálisan az újrapróbálkozások közötti késleltetéssel).
+- Ha az összes újrapróbálkozás oka egy hiba, majd adjon hozzá egy üzenetet egy várólistába, így a feldolgozás folytatódhat az adatfolyamon.
+- A sérült vagy feldolgozatlan üzeneteket később kezeli a program.
 
 > [!NOTE]
-> A [Polly](https://github.com/App-vNext/Polly) egy példa a rugalmasságra és az átmeneti hibák kezelésére szolgáló függvénytárra az C# alkalmazások számára.
+> [Polly](https://github.com/App-vNext/Polly) egy példa a rugalmasság és az átmeneti hibakezelési könyvtár C# alkalmazások.
 
-Ha előzetesen teljesített C# osztály-kódtárakkal dolgozik, a [kivételt](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) képező szűrők lehetővé teszik a kód futtatását, amikor kezeletlen kivétel történik.
+Ha előre megfelelt C# osztálytárak, [kivételszűrők](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) lehetővé teszik, hogy kódot futtatni, ha nem kezelt kivétel fordul elő.
 
-A kivételi szűrők használatát bemutató példák a [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) -tárházban érhetők el.
+A kivételszűrők használatát szemléltető minták az [Azure WebJobs SDK-tárházban](https://github.com/Azure/azure-webjobs-sdk/wiki) érhetők el.
 
-## <a name="non-exception-errors"></a>Kivételt nem okozó hibák
+## <a name="non-exception-errors"></a>Nem kivételhibák
 
-Bizonyos problémák akkor is felmerülhetnek, ha nem jelennek meg hiba. Vegyünk például egy olyan hibát, amely egy végrehajtás közepén fordul elő. Ebben az esetben, ha egy függvény nem hajtja végre a végrehajtást, az eltolási mutató soha nem halad előre. Ha a mutató nem halad előre, akkor a sikertelen végrehajtást követően futó példányok továbbra is ugyanazokat az üzeneteket olvassák. Ez a helyzet "legalább egyszeri" garanciát biztosít.
+Egyes problémák akkor is felmerülnek, ha nincs jelen hiba. Vegyünk például egy olyan hibát, amely egy végrehajtás közepén fordul elő. Ebben az esetben, ha egy függvény végrehajtása nem fejeződik be, az eltolási mutató soha nem halad előre. Ha a mutató nem halad előre, akkor a sikertelen végrehajtás után futó példányok továbbra is ugyanazokat az üzeneteket olvassák. Ez a helyzet "legalább egyszer" garanciát jelent.
 
-Arról, hogy minden üzenet feldolgozása legalább egyszer megtörténik, azt feltételezi, hogy néhány üzenet többször is feldolgozható. A Function apps-alkalmazásoknak ismerniük kell ezt a lehetőséget, és a [idempotencia alapelvei](./functions-idempotent.md)köré kell felépíteni őket.
+Annak biztosítéka, hogy minden üzenet feldolgozása legalább egyszer azt jelenti, hogy egyes üzenetek egynél többször is feldolgozhatók. A funkcióalkalmazásoknak tisztában kell lenniük ezzel a lehetőséggel, és az [idempotencia elveire kell épülniük.](./functions-idempotent.md)
 
 ## <a name="stop-and-restart-execution"></a>Végrehajtás leállítása és újraindítása
 
-Néhány hiba is elfogadható lehet, mi a teendő, ha az alkalmazás jelentős hibákat tapasztal? Előfordulhat, hogy az események aktiválását le szeretné állítani, amíg a rendszer Kifogástalan állapotba nem ér. A feldolgozás szüneteltetésének lehetősége gyakran egy áramkör-megszakító mintával érhető el. Az áramkör-megszakító minta lehetővé teszi, hogy az alkalmazás "megtörje" az esemény folyamatát, és később folytassa a műveletet.
+Bár néhány hiba elfogadható, mi van, ha az alkalmazás jelentős hibákat tapasztal? Előfordulhat, hogy le szeretné állítani az események indítását, amíg a rendszer el nem éri a kifogástalan állapotot. Miután a lehetőséget, hogy szünet elad feldolgozás gyakran érhető el egy megszakító minta. Az áramkör-megszakító minta lehetővé teszi, hogy az alkalmazás "megtörje az eseményfolyamat áramkörét", és egy későbbi időpontban folytatódjon.
 
-Az áramkör-megszakítót egy eseményvezérelt folyamat megvalósításához két darab szükséges:
+Egy eseményfolyamatban az áramkör-megszakító megvalósításához két darabszükséges:
 
-- Minden példány közös állapota az áramkör állapotának nyomon követéséhez és figyeléséhez
-- Az áramköri állapot kezelésére képes fő folyamat (nyitott vagy lezárt)
+- Megosztott állapot az összes példányban az áramkör állapotának nyomon követéséhez és figyeléséhez
+- Fő folyamat, amely képes kezelni a kapcsolati állapotot (nyitott vagy zárt)
 
-A megvalósítás részletei eltérőek lehetnek, de a példányok közötti megosztáshoz szükség van egy tárolási mechanizmusra. Dönthet úgy, hogy az állapotot az Azure Storage-ban, egy Redis-gyorsítótárban vagy bármely más, a függvények gyűjteménye által elérhető fiókban tárolja.
+A megvalósítás részletei eltérőek lehetnek, de az állapot megosztásához szükség van egy tárolómechanizmusra. Dönthet úgy, hogy az Azure Storage-ban, a Redis-gyorsítótárban vagy bármely más, a függvények gyűjteménye által elérhető fiókban tárolja az állapotot.
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) vagy [tartós entitások](./durable/durable-functions-overview.md) természetes illeszkedést biztosítanak a munkafolyamatok és az áramköri állapot kezeléséhez. Más szolgáltatások is ugyanúgy működhetnek, de ehhez a példához a Logic apps is használható. A Logic Apps használatával szüneteltetheti és újraindíthatja a függvények végrehajtását, így az áramkör-megszakító minta megvalósításához szükséges vezérlőt is megadhatja.
+[Az Azure Logic Apps](../logic-apps/logic-apps-overview.md) vagy [a tartós entitások](./durable/durable-functions-overview.md) természetes illeszkedést biztosítanak a munkafolyamat és a körállapot kezeléséhez. Más szolgáltatások is működhetnek, de ebben a példában logikai alkalmazásokat használnak. A logikai alkalmazások használatával szüneteltetheti és újraindíthatja a függvény végrehajtását, így az áramkör-megszakító minta megvalósításához szükséges vezérlő.
 
-### <a name="define-a-failure-threshold-across-instances"></a>Hiba küszöbértékének meghatározása példányok között
+### <a name="define-a-failure-threshold-across-instances"></a>Hibaküszöbérték definiálása példányok között
 
-Az események egyidejű feldolgozásához egyszerre több példányban kell megőrizni az áramkör állapotának figyeléséhez szükséges megosztott külső állapotot.
+Több példány egyidejű feldolgozása események egyidejű figyelembevétele érdekében a megosztott külső állapot megőrzése szükséges az áramkör állapotának figyeléséhez.
 
-A megvalósítani kívánt szabály a következő esetekben kényszeríthető:
+Egy olyan szabály, amelyet esetleg alkalmaz, a következőket kényszerítheti ki:
 
-- Ha több mint 100, az összes példányon 30 másodpercnél több lehetséges hiba történik, akkor szüntesse meg az áramkört, és állítsa le az indítást az új üzeneteken.
+- Ha 30 másodpercen belül több mint 100 esetleges hiba történik az összes példányban, akkor szakítsa meg az áramkört, és állítsa le az új üzenetek indítását.
 
-A megvalósítás részletei az Ön igényeinek megfelelően változhatnak, de általánosságban létrehozhat egy olyan rendszerrendszer, amely a következőket teszi:
+A megvalósítás részletei az igényeinek megfelelően változnak, de általában létrehozhat egy olyan rendszert, amely:
 
-1. Hibák naplózása egy Storage-fiókba (Azure Storage, Redis stb.)
-1. Ha új hiba van naplózva, ellenőrizze a működés közbeni korlátot, és ellenőrizze, hogy teljesülnek-e a küszöbérték (például több mint 100 az elmúlt 30 másodpercben).
-1. Ha a küszöbérték teljesül, kibocsát egy eseményt, hogy Azure Event Grid mondja el, hogy a rendszer megszakítja az áramkört.
+1. A tárfiók (Azure Storage, Redis stb.) naplózási hibáinak naplózása
+1. Új hiba naplózásakor ellenőrizze a gördülőszám, hogy a küszöbérték teljesül-e (például több mint 100 az elmúlt 30 másodpercben).
+1. Ha a küszöbérték teljesül, akkor egy eseményt az Azure Event Grid értesíti a rendszer a kapcsolatbontást.
 
-### <a name="managing-circuit-state-with-azure-logic-apps"></a>Áramkör állapotának kezelése Azure Logic Apps
+### <a name="managing-circuit-state-with-azure-logic-apps"></a>A körállapot kezelése az Azure Logic-alkalmazásokkal
 
-Az alábbi leírás kiemeli, hogyan hozhat létre egy Azure Logic apps-alkalmazást a függvények feldolgozásának leállításához.
+A következő leírás kiemeli az egyik módja, hogy hozzon létre egy Azure Logic App a Functions alkalmazás feldolgozásának leállításához.
 
-Azure Logic Apps a különböző szolgáltatásokhoz beépített összekötőket tartalmaz, a funkciók állapot-nyilvántartó felépítését, és természetes választás az áramköri állapot kezeléséhez. Miután észlelte, hogy az áramkörnek meg kell szakítania a folyamatot, létrehozhat egy logikai alkalmazást a következő munkafolyamat megvalósításához:
+Az Azure Logic Apps beépített összekötőkkel rendelkezik a különböző szolgáltatásokhoz, állapotalapú vezénylési funkciókkal rendelkezik, és természetes választás a körállapot kezeléséhez. Észlelése után a kapcsolatmegszakad, hozhat létre egy logikai alkalmazást a következő munkafolyamat megvalósításához:
 
-1. Event Grid munkafolyamat elindítása és az Azure-függvény leállítása (az Azure Resource connectorral)
-1. Értesítési e-mail küldése, amely tartalmaz egy lehetőséget a munkafolyamat újraindítására.
+1. Eseményrács-munkafolyamat aktiválása és az Azure-függvény leállítása (az Azure Resource-összekötővel)
+1. Értesítési e-mail küldése, amely lehetőséget tartalmaz a munkafolyamat újraindítására
 
-Az e-mail-címzett megvizsgálhatja az áramkör állapotát, és ha szükséges, újraindíthatja az áramkört az értesítő e-mailben található hivatkozás használatával. Ahogy a munkafolyamat újraindítja a függvényt, az üzenetek a legutóbbi Event hub ellenőrzőpontról lesznek feldolgozva.
+Az e-mail címzettje megvizsgálhatja az áramkör állapotát, és adott esetben az értesítési e-mailben található hivatkozáson keresztül újraindíthatja az áramkört. Ahogy a munkafolyamat újraindítja a függvényt, az üzenetek feldolgozása az utolsó Event Hub ellenőrzőpontról történik.
 
-Ennek a módszernek a használatával egyetlen üzenet sem vész el, az összes üzenet feldolgozása sorrendben történik, és szükség esetén az áramkört is megszüntetheti.
+Ezzel a megközelítéssel nem vesznek el üzenetek, az összes üzenet feldolgozása sorrendben, és megszakíthatja az áramkört, amíg szükséges.
 
-## <a name="resources"></a>Segédanyagok és eszközök
+## <a name="resources"></a>Források
 
-- [Megbízható esemény-feldolgozási minták](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Azure Durable Functions áramkör-megszakító](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Megbízható eseményfeldolgozási minták](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
+- [Azure Durable Functions megszakító](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért lásd a következőket:
 
-- [Azure Functions hibakezelés](./functions-bindings-error-pages.md)
+- [Az Azure Functions hibakezelése](./functions-bindings-error-pages.md)
 - [Feltöltött képek átméretezésének automatizálása az Event Grid használatával](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)
 - [Az Azure Logic Apps szolgáltatással integrálható függvények létrehozása](./functions-twitter-email.md)

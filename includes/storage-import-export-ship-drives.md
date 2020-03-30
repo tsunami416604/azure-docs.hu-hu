@@ -8,19 +8,18 @@ ms.topic: include
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 5972f5745a2a01cbb7f23cc0523b2aef75e08a61
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 7ecc36218df23d81c4646612b5474a1465f428eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673367"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282477"
 ---
-Az Azure-adatközpontba csomag tehetnek FedEx, UPS vagy DHL használható. Ha szeretne egy szolgáltató eltérő FedEx/DHL használja, forduljon a az Azure Data Box műveletek csapatának `adbops@microsoft.com`
+A FedEx, a UPS vagy a DHL segítségével a csomagot az Azure adatközpontba szállíthatja. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, lépjen kapcsolatba az Azure Data Box Operations csapatával a`adbops@microsoft.com`
 
-- Adjon meg egy érvényes FedEx, UPS vagy DHL szolgáltató fiók száma, hogy a Microsoft tehetnek vissza a meghajtókat használja. 
-    
-    - Egy FedEx, UPS vagy DHL szám megadása kötelező a meghajtók szállítási vissza helyekről az Egyesült Államok és Európa 
-    - Egy DHL szám részesíti előnyben a meghajtók szállítási Ázsia és Ausztrália helyekről vissza. 
-    - Ha nincs egy fiók száma, hozzon létre egy [FedEx](https://www.fedex.com/us/oadr/) vagy [DHL](http://www.dhl.com/) Szállítmányozói fiókjára.
-- A csomagok szállítási, amikor Ön köteles betartani a [a Microsoft Azure szolgáltatási feltételek](https://azure.microsoft.com/support/legal/services-terms/).
-- Csomag megfelelően Öné lemezek potenciális károknak és a feldolgozási késedelmeket elkerülése érdekében.
+* Adja meg a FedEx, a UPS vagy a DHL szolgáltatói számlaszámát, amelyet a Microsoft a meghajtók visszaküldéséhez használ.
+  * FedEx, UPS vagy DHL számlaszám szükséges ahhoz, hogy a szállítás visszavezetjön az Egyesült Államok és Európa helyszíneiről.
+    * A DHL-számlaszámot az Ázsiai és Ausztráliai helyekről visszafelé történő szállításhoz részesíti előnyben.
+    * Ha nem rendelkezik számlaszámmal, hozzon létre [FedEx](https://www.fedex.com/us/oadr/) vagy [DHL](http://www.dhl.com/) szolgáltatói fiókot.
+* A csomagok szállításakor be kell tartania a [Microsoft Azure szolgáltatási feltételeit.](https://azure.microsoft.com/support/legal/services-terms/)
+* Megfelelően csomagolja be a lemezeket, hogy elkerülje az esetleges károkat és a feldolgozás késését.

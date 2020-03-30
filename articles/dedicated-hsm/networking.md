@@ -1,6 +1,6 @@
 ---
-title: Hálózati megfontolások – Azure dedikált HSM-be |} A Microsoft Docs
-description: Hálózati Azure dedikált HSM központi telepítésekre vonatkozó szempontok áttekintése
+title: Hálózati szempontok - Azure dedikált HSM | Microsoft dokumentumok
+description: Az Azure dedikált HSM-telepítéseivel kapcsolatos hálózati szempontok áttekintése
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,77 +13,77 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70881283"
 ---
-# <a name="azure-dedicated-hsm-networking"></a>Az Azure dedikált HSM-hálózatok
+# <a name="azure-dedicated-hsm-networking"></a>Az Azure dedikált HSM-hálózata
 
-Az Azure, a dedikált HSM rendkívül biztonságos hálózati környezet szükséges. Ez igaz legyen az az Azure felhőalapú vissza az ügyfél az IT-környezet (helyszíni), az elosztott alkalmazások vagy a magas rendelkezésre állási forgatókönyvek esetén. Azure-hálózatok biztosítják ezt és vonhat négy különböző területen.
+Az Azure dedikált HSM rendkívül biztonságos hálózati környezetet igényel. Ez igaz, függetlenül attól, hogy az Azure-felhővissza az ügyfél informatikai környezet (helyszíni), elosztott alkalmazások használatával vagy a magas rendelkezésre állású forgatókönyvek. Az Azure Networking biztosítja ezt, és négy különböző területeket kell kezelni.
 
-- A virtuális hálózaton (VNet) belüli hardveres biztonsági modulokhoz létrehozása az Azure-ban
-- Helyszíni kapcsolódás felhőalapú erőforrásokhoz a konfigurációs és a HSM-eszközök kezelése
-- Létrehozása és csatlakozás a virtuális hálózatok közötti csatlakozó alkalmazás-erőforrások és a hardveres biztonsági modulokhoz
-- Helyek közötti kommunikációra és magas rendelkezésre állású forgatókönyvek megvalósítását teszik lehetővé a régiók közötti virtuális hálózatok összekapcsolása
+- HSM-eszközök létrehozása a virtuális hálózaton (VNet) belül az Azure-ban
+- A helyszíni csatlakoztatás felhőalapú erőforrásokhoz a HSM-eszközök konfigurálásához és kezeléséhez
+- Virtuális hálózatok létrehozása és csatlakoztatása az összekapcsolt alkalmazás-erőforrásokhoz és HSM-eszközökhöz
+- Virtuális hálózatok összekapcsolása régiók között a kommunikáció közötti kommunikáció hoz, valamint a magas rendelkezésre állású forgatókönyvek lehetővé tétele
 
-## <a name="virtual-network-for-your-dedicated-hsms"></a>A dedikált HSM-EK a virtuális hálózat
+## <a name="virtual-network-for-your-dedicated-hsms"></a>Virtuális hálózat a dedikált HSM-ekhez
 
-Dedikált HSM-EK integrálva a virtuális hálózat és az ügyfelek saját privát hálózat az Azure-ban helyezi el. Ez lehetővé teszi hozzáférési az eszközökön a virtuális gépek vagy a számítási erőforrások a virtuális hálózatban.  
-A virtuális hálózat és a képességeket biztosít az Azure-szolgáltatások integrálásával kapcsolatos további információkért lásd: [virtuális hálózatok az Azure-szolgáltatások](../virtual-network/virtual-network-for-azure-services.md) dokumentációját.
+A dedikált HSM-ek integrálva vannak egy virtuális hálózatba, és az ügyfelek saját magánhálózatába kerülnek az Azure-ban. Ez lehetővé teszi a virtuális gépekről vagy a virtuális hálózat számítási erőforrásaiból származó eszközök elérését.  
+Az Azure-szolgáltatások virtuális hálózatba való integrálásáról és az általa nyújtott képességekről további információt az [Azure-szolgáltatások virtuális hálózatdokumentációjában](../virtual-network/virtual-network-for-azure-services.md) talál.
 
 ### <a name="virtual-networks"></a>Virtuális hálózatok
 
-A dedikált HSM-eszköz kiépítése, mielőtt ügyfelek először egy virtuális hálózat létrehozása az Azure-ban, vagy használjon egy meglévőt az ügyfél-előfizetés. A virtuális hálózat határozza meg a biztonsági határt, a dedikált HSM-eszközhöz. Virtuális hálózatok létrehozásával kapcsolatos további információkért lásd: [virtual network dokumentációja](../virtual-network/virtual-networks-overview.md).
+Egy dedikált HSM-eszköz kiépítése előtt az ügyfeleknek először létre kell hozniuk egy virtuális hálózatot az Azure-ban, vagy olyan hálózatot kell használniuk, amely már létezik az ügyfelek előfizetésében. A virtuális hálózat határozza meg a dedikált HSM-eszköz biztonsági peremét. A virtuális hálózatok létrehozásával kapcsolatos további információkért lásd a [virtuális hálózati dokumentációt.](../virtual-network/virtual-networks-overview.md)
 
 ### <a name="subnets"></a>Alhálózatok
 
-Alhálózatok, külön címterek használható a virtuális hálózat szegmentáljon az Azure-erőforrások bennük. Dedikált HSM-EK a rendszer üzembe helyezi a virtuális hálózat egyik alhálózata. Minden egyes dedikált HSM eszközt, amely az ügyfél alhálózaton van üzembe helyezve a magánhálózati IP-cím érkezik ezt az alhálózatot. Az alhálózatot, amelyben a HSM-eszközt telepítették, explicit módon delegálni kell a szolgáltatásnak: Microsoft.HardwareSecurityModules/dedicatedHSMs. Ez bizonyos engedélyt a HSM szolgáltatást üzembe helyezését az alhálózathoz. Dedikált HSM delegálás bizonyos házirend-korlátozások az alhálózaton ír elő. Hálózati biztonsági csoportok (NSG-k) és a felhasználó által megadott útvonalakkal (Udr) jelenleg nem támogatottak a delegált alhálózatokon. Ennek eredményeképpen egy alhálózat delegált dedikált HSM-EK, miután csak használat a HSM-erőforrások üzembe helyezése. Az alhálózatban egyéb ügyfél-erőforrások üzembe helyezés sikertelen lesz.
+Az alhálózatok a virtuális hálózatot külön címterekre bontják, amelyeket az Azure-erőforrások hoznak létre. A dedikált HSM-ek a virtuális hálózat alhálózatába vannak telepítve. Minden dedikált HSM-eszköz, amely az ügyfél alhálózatában van telepítve, egy privát IP-címet kap erről az alhálózatról. Az alhálózatot, amelyben a HSM-eszközt telepítették, explicit módon delegálni kell a szolgáltatásnak: Microsoft.HardwareSecurityModules/dedicatedHSMs. Ez bizonyos engedélyeket ad a HSM-szolgáltatásnak az alhálózatba való telepítéshez. A dedikált HSM-ek delegálása bizonyos házirendkorlátozásokat ír elő az alhálózaton. A delegált alhálózatokon jelenleg nem támogatottak a hálózati biztonsági csoportok (NSG-k) és a felhasználó által definiált útvonalak (UDRs). Ennek eredményeképpen, ha egy alhálózat delegálása dedikált HSM-ek, csak hsm-erőforrások üzembe helyezésére használható. Bármely más ügyfélerőforrás üzembe helyezése az alhálózatba sikertelen lesz.
 
 
 ### <a name="expressroute-gateway"></a>ExpressRoute-átjáró
 
-Az aktuális architektúra követelményt a konfiguráció-ER-átjáró az ügyfelek alhálózat, ahol egy HSM-eszközre kell elhelyezni a HSM eszközt az Azure-bA integrációjának engedélyezése. Az ER-átjáró nem használhatók fel a helyszínek az Azure-ban, az ügyfelek hardveres biztonsági modulokhoz való kapcsolódáshoz.
+Az aktuális architektúra követelménye az ügyfelek alhálózatában lévő ER-átjáró konfigurációja, ahol egy HSM-eszközt kell elhelyezni a HSM-eszköz Azure-ba való integrálásának lehetővé tétele érdekében. Ez az ER-átjáró nem használható a helyszíni helyek csatlakoztatására az azure-beli HSM-eszközökhöz.
 
-## <a name="connecting-your-on-premises-it-to-azure"></a>Csatlakozás a helyi IT az Azure-bA
+## <a name="connecting-your-on-premises-it-to-azure"></a>A helyszíni informatikai környezet és az Azure csatlakoztatása
 
-Felhőalapú erőforrások létrehozásakor, egy tipikus egy privát kapcsolaton keresztül érik el a helyszíni informatikai erőforrásra lenne szükség. Dedikált HSM esetén ez túlnyomórészt lesz a HSM-ügyfélszoftver a HSM-eszközök konfigurálása és tevékenységek, például a biztonsági másolatokat és naplókat jogosultak-e a HSM-EK elemzés céljából. A legfontosabb itt, hogy a kapcsolat természetét, lehetőség van.  A legrugalmasabb lehetőség, a Site-to-Site VPN, a rendszer valószínűleg több helyszíni erőforrásokhoz, amelyek biztonságos kommunikációt igényelnek az erőforrások (beleértve a HSM-EK) az Azure-felhőben. Ezt a beállítást egy ügyfél a szervezet rendelkezik egy VPN-eszköz kapcsolat megkönnyítése érdekében. Pont – hely VPN-kapcsolat használható, ha például egyetlen felügyeleti munkaállomások helyszíni csak egyetlen végpontja van.
-A csatlakozási lehetőségek további információkért lásd: [tervezésénél VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable).
+Felhőalapú erőforrások létrehozásakor ez egy tipikus követelmény a helyszíni informatikai erőforrásokhoz való privát kapcsolathoz. Dedikált HSM esetében ez elsősorban a HSM-ügyfélszoftver számára lesz a HSM-eszközök konfigurálása, valamint olyan tevékenységek esetében, mint a biztonsági mentések és a naplók lehívása a HSM-ekből elemzéscéljából. A legfontosabb döntési pont itt a kapcsolat jellege, mivel vannak lehetőségek.  A legrugalmasabb megoldás a helyek közötti VPN, mivel valószínűleg több helyszíni erőforrás lesz, amelyek biztonságos kommunikációt igényelnek az Azure-felhőben az erőforrásokkal (beleértve a HSM-eket is). Ehhez az ügyfélszervezetnek rendelkeznie kell VPN-eszközzel a kapcsolat megkönnyítése érdekében. A pont-hely VPN-kapcsolat akkor használható, ha csak egyetlen végpont van a helyszínen, például egyetlen felügyeleti munkaállomás.
+A kapcsolódási lehetőségekről a [VPN-átjáró tervezési beállításai](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable)című témakörben talál további információt.
 
 > [!NOTE]
-> Jelenleg az ExpressRoute lehetőség nem a helyszíni erőforrásokhoz való csatlakozáshoz. Megjegyzendő, hogy az ExpressRoute-átjárót használja a fent leírtak szerint, nem a helyszíni infrastruktúra-kapcsolatok is.
+> Jelenleg az ExpressRoute nem lehetséges a helyszíni erőforrásokhoz való csatlakozáshoz. Azt is meg kell jegyezni, hogy a fent leírt ExpressRoute-átjáró nem a helyszíni infrastruktúrához való csatlakozáshoz használható.
 
-### <a name="point-to-site-vpn"></a>Pont – hely VPN
+### <a name="point-to-site-vpn"></a>Pont–hely VPN
 
-A pont – hely virtuális magánhálózati legegyszerűbb formája a biztonságos kapcsolatot létesíthet egy végpontot a helyszínen. Erre akkor lehet megfelelő, ha azt tervezi, hogy csak egyetlen felügyeleti munkaállomás rendelkezik Azure-alapú dedikált HSM-EK.
+A pont-hely virtuális magánhálózat a legegyszerűbb formája a biztonságos kapcsolat egyetlen végpont helyszíni. Ez akkor lehet fontos, ha csak egyetlen felügyeleti munkaállomást kíván rendelkezni az Azure-alapú dedikált HSM-ekhez.
 
-### <a name="site-to-site-vpn"></a>Site-to-Site VPN
+### <a name="site-to-site-vpn"></a>Helyek közötti VPN
 
-Egy helyek közötti virtuális magánhálózat lehetővé teszi, hogy az Azure-alapú dedikált HSM-ekről és a helyszíni közötti biztonságos kommunikációhoz informatikai. Ennek oka, hogy a HSM helyszíni biztonsági mentési lehetőséggel rendelkezik, és a biztonsági mentés futtatásához kapcsolatra van szükség a kettő között.
+A helyek közötti virtuális magánhálózat biztonságos kommunikációt tesz lehetővé az Azure-alapú dedikált HSM-ek és a helyszíni informatikai környezet között. Ennek egyik oka, hogy rendelkezik egy biztonsági mentési lehetőség a HSM helyszíni és szüksége van egy kapcsolat a kettő között a biztonsági mentés futtatásához.
 
-## <a name="connecting-virtual-networks"></a>Virtuális hálózatok összekapcsolása
+## <a name="connecting-virtual-networks"></a>Virtuális hálózatok csatlakoztatása
 
-Egy tipikus telepítési dedikált HSM-architektúrát egy egyetlen virtuális hálózatot és a megfelelő alhálózatot, amelyben a hardveres biztonsági modulokhoz létrehozása és üzembe helyezett indul. Belül ugyanabban a régióban is lehetnek további virtuális hálózatok és alhálózatok alkalmazás-összetevők, amely biztosítja, a dedikált HSM használata. Ezek a hálózatok közötti kommunikáció engedélyezése, hogy használjuk, virtuális hálózatok közötti Társviszony.
+A dedikált HSM tipikus telepítési architektúrája egyetlen virtuális hálózattal és a megfelelő alhálózattal kezdődik, amelyben a HSM-eszközök létrejönnek és kivannak építve. Ugyanebben a régióban lehet, hogy további virtuális hálózatok és alhálózatok az alkalmazás-összetevők, amelyek a dedikált HSM. A kommunikáció engedélyezéséhez ezeken a hálózatokon keresztül virtuális hálózati társviszony-létesítést használunk.
 
 ### <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
-Ha több virtuális hálózat ugyanabban a régióban, amely a többi összes erőforrásokhoz kell hozzáférniük, virtuális hálózatok közötti Társviszony segítségével közöttük biztonságos kommunikációs csatornákat hozhat létre.  Virtuális hálózatok közötti társviszony nem csak a biztonságos kommunikációt biztosít, de egy kis késleltetésű, nagy sávszélességű kapcsolatok között az Azure-erőforrások is biztosítja.
+Ha egy régióban több virtuális hálózat van, amelyeknek el kell érniük egymás erőforrásait, a virtuális hálózati társviszony-létesítés segítségével biztonságos kommunikációs csatornákat hozhat létre közöttük.  A virtuális hálózati társviszony-létesítés nem csak biztonságos kommunikációt biztosít, hanem alacsony késleltetést és nagy sávszélességű kapcsolatokat biztosít az Azure-beli erőforrások között.
 
-![Hálózatok közötti társviszony](media/networking/peering.png)
+![hálózati társviszony-létesítés](media/networking/peering.png)
 
-## <a name="connecting-across-azure-regions"></a>Csatlakozás Azure-régiók között
+## <a name="connecting-across-azure-regions"></a>Csatlakozás az Azure-régiók között
 
-A hardveres biztonsági modulokhoz is képes, keresztül szoftverek tárak, a forgalom átirányítása egy másik HSM-be. Forgalom átirányítása akkor hasznos, ha eszközök nem tudnak, vagy egy eszköz való hozzáférés elvész. Regionális szintű hibaesetet enyhíthetők üzembe helyezése a HSM-EK más régiókban, és régiók közötti virtuális hálózatok közötti kommunikáció engedélyezése.
+A HSM-eszközök szoftverkönyvtárakon keresztül képesek átirányítani a forgalmat egy másik HSM-re. A forgalom átirányítása akkor hasznos, ha az eszközök meghibásodnak, vagy az eszközhöz való hozzáférés megszakad. A regionális szintű meghibásodási forgatókönyvek csökkenthetők a HSM-ek más régiókban történő telepítésével és a virtuális hálózatok közötti kommunikáció lehetővé tévő lehetővé teszi a régiók közötti kommunikációt.
 
-### <a name="cross-region-ha-using-vpn-gateway"></a>Magas rendelkezésre ÁLLÁSÚ régiók közötti VPN-átjáró használatával
+### <a name="cross-region-ha-using-vpn-gateway"></a>Régióközi HA VPN-átjáró használatával
 
-Globálisan elosztott alkalmazások vagy a magas rendelkezésre állású regionális feladatátvételi funkciók esetén szükség van a virtuális hálózatok összekapcsolása a régiók között elosztva. Az Azure dedikált HSM érhető el magas rendelkezésre állást biztosít egy biztonságos alagúton, a virtuális hálózatok közötti VPN-átjáró használatával. VPN-átjáró használatával további információk a virtuális hálózatok közötti kapcsolatok című cikkben: [Mi az a VPN-átjáró?](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)
+Globálisan elosztott alkalmazások vagy magas rendelkezésre állású regionális feladatátvételi forgatókönyvek esetén a régiók közötti virtuális hálózatok összekapcsolásához szükséges. Az Azure dedikált HSM-mel a magas rendelkezésre állás egy VPN-átjáró használatával érhető el, amely biztonságos alagutat biztosít a két virtuális hálózat között. A VPN-átjárót használó vnet-vnet-kapcsolatokról a [Mi a VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V) című cikkben olvashat bővebben?
 
 > [!NOTE]
-> Globális virtuális társhálózatok létesítése nem áll rendelkezésre a régiók közötti kapcsolat a időben és a VPN-átjáró dedikált HSM-EK az forgatókönyvek helyette kell használni. 
+> A globális virtuális kapcsolatlétesítés nem érhető el a régiók közötti kapcsolatforgatókönyvek dedikált HSMs ebben az időben, és a VPN-átjáró kell használni helyette. 
 
-![globális virtuális](media/networking/global-vnet.png)
+![globális-vnet](media/networking/global-vnet.png)
 
 ## <a name="next-steps"></a>További lépések
 
@@ -91,5 +91,5 @@ Globálisan elosztott alkalmazások vagy a magas rendelkezésre állású region
 - [Támogatási lehetőségek](supportability.md)
 - [Magas rendelkezésre állás](high-availability.md)
 - [Fizikai biztonság](physical-security.md)
-- [Monitorozás](monitoring.md)
-- [Üzembe helyezési architektúrája](deployment-architecture.md)
+- [Megfigyelő](monitoring.md)
+- [Telepítési architektúra](deployment-architecture.md)

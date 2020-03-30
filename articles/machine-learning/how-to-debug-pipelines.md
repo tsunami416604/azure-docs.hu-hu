@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 578e935ee742ad476aeafb53670f0a92035249e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064077"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388984"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Hibakeresés és hibaelhárítás a gépi tanulási folyamatokban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "80064077"
 Ebben a cikkben megtudhatja, hogyan hibakeresés és hibaelhárítás [gépi tanulási folyamatok](concept-ml-pipelines.md) az [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) és az [Azure Machine Learning designer (előzetes verzió)](https://docs.microsoft.com/azure/machine-learning/concept-designer). Tájékoztatás akövetkezőkről:
 
 * Hibakeresés az Azure Machine Learning SDK használatával
-* Hibakeresés az Azure Machine Learning Designer használatával
+* Hibakeresés az Azure Machine Learning-tervező használatával
 * Hibakeresés az Application Insights használatával
 * A Visual Studio Code (VS Code) és a Python Tools for Visual Studio (PTVSD) segítségével interaktív hibakeresés
 
@@ -91,7 +91,7 @@ Az alábbi táblázat a folyamatok különböző hibakeresési lehetőségeiről
 | Erőforrástár                    | Típus   | Példa                                                          | Cél                                  | Források                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK | Metrika | `run.log(name, val)`                                             | Az Azure Machine Learning Portal felhasználói felülete             | [A kísérletek nyomon követése](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml.core.Run osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
-| Python nyomtatás/naplózás    | Napló    | `print(val)`<br>`logging.info(message)`                          | Illesztőprogram-naplók, Azure Machine Learning Designer | [A kísérletek nyomon követése](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python naplózás](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| Python nyomtatás/naplózás    | Napló    | `print(val)`<br>`logging.info(message)`                          | Illesztőprogram-naplók, Azure Machine Learning-tervező | [A kísérletek nyomon követése](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python naplózás](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | OpenCensus Python          | Napló    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights - nyomkövetések                | [Folyamatok hibakeresése az Application Insightsban](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor-exportálók](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python naplózási szakácskönyv](https://docs.python.org/3/howto/logging-cookbook.html) |
 
 #### <a name="logging-options-example"></a>Példa naplózási beállításokra
@@ -136,8 +136,8 @@ A tervezőben létrehozott folyamatok esetében a **naplófájlokat** a szerzői
 Amikor elküldi a folyamat futtatását, és a szerzői oldalon marad, megtalálhatja az egyes modulokhoz létrehozott naplófájlokat.
 
 1. Jelöljön ki bármelyik modult a szerzői vásznon.
-1. A modul jobb oldali ablaktáblájában lépjen a **Kimenet+ogs** lapra.
-1. A naplófájl kijelölése`70_driver_log.txt`
+1. A modul jobb oldali ablaktáblájában lépjen a **Kimenetek + naplók** lapra.
+1. Jelölje ki `70_driver_log.txt`a naplófájlt .
 
     ![Naplózási lap modulnaplói](./media/how-to-debug-pipelines/pipelinerun-05.png)
 
@@ -148,8 +148,8 @@ Az adott futtatások naplófájljait a folyamatok futtatási részletei lapon, a
 1. Válassza ki a tervezőben létrehozott folyamatfuttatást.
     ![A folyamat futtatása lap](./media/how-to-debug-pipelines/pipelinerun-04.png)
 1. Jelöljön ki bármelyik modult a betekintő ablaktáblán.
-1. A modul jobb oldali ablaktáblájában lépjen a **Kimenet+ogs** lapra.
-1. A naplófájl kijelölése`70_driver_log.txt`
+1. A modul jobb oldali ablaktáblájában lépjen a **Kimenetek + naplók** lapra.
+1. Jelölje ki `70_driver_log.txt`a naplófájlt .
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Hibakeresés és hibaelhárítás az Application Insightsban
 Az OpenCensus Python-kódtár ily módon történő használatáról az útmutatóban talál további információt: [A gépi tanulási folyamatok hibakeresése és hibaelhárítása az Application Insightsban](how-to-debug-pipelines-application-insights.md)

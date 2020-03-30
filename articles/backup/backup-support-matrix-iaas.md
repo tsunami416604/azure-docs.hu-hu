@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentésének támogatási mátri
 description: A támogatási beállítások és korlátozások összefoglalása az Azure-beli virtuális gépek nek az Azure Backup szolgáltatással való biztonsági mentésekor.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: c30a1d1b30fcc7a12449b44d35704b3b43daa385
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d86ce94c62ec9f25b364e9fdc963e3043b274722
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247903"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389290"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -115,7 +115,6 @@ Helyreállítási pontok A DPM/MABS lemezen | 64 fájlkiszolgálók esetén, 448
 **Visszaállítás** | **Támogatott**
 --- | ---
 Fájlok visszaállítása operációs rendszerek között | A fájlok at bármely olyan gépen, amely rendelkezik az azonos (vagy kompatibilis) operációs rendszerrel, mint a biztonsági másolatot készített virtuális gép. Lásd a [Kompatibilis operációs rendszer táblázatot](backup-azure-restore-files-from-vm.md#system-requirements).
-Fájlok visszaállítása klasszikus virtuális gépeken | Nem támogatott.
 Fájlok visszaállítása titkosított virtuális gépekről | Nem támogatott.
 Fájlok visszaállítása a korlátozott hálózati tárfiókokból | Nem támogatott.
 Fájlok visszaállítása virtuális gépeken a Windows tárolóhelyek használatával | Visszaállítás nem támogatott ugyanazon a virtuális gépen.<br/><br/> Ehelyett állítsa vissza a fájlokat egy kompatibilis virtuális gépen.

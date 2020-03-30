@@ -1,6 +1,6 @@
 ---
-title: Végpontok konfigurálása | Microsoft Docs
-description: Az Azure AD-vel fejlesztett vagy regisztrált egyéni alkalmazás hitelesítési végpontjának megkeresése.
+title: Végpontok konfigurálása | Microsoft dokumentumok
+description: Az Azure AD-vel fejlesztett vagy az Azure AD-vel regisztrálandó egyéni alkalmazások hitelesítési végpontjainak megkeresése.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -16,25 +16,25 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: 5dbe9d6eed6c546af0ed2cb35a0a62e9943503a9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76702793"
 ---
 # <a name="how-to-configure-endpoints"></a>Végpontok konfigurálása
 
-Az alkalmazáshoz tartozó hitelesítési végpontokat a [Azure Portalban](https://portal.azure.com)találja.
+Az alkalmazás hitelesítési végpontjait az [Azure Portalon](https://portal.azure.com)találhatja meg.
 
--   Lépjen az [Azure Portalra](https://portal.azure.com).
+-   Nyissa meg az [Azure Portalt.](https://portal.azure.com)
 
--   A bal oldali navigációs panelen kattintson a **Azure Active Directory**elemre.
+-   A bal oldali navigációs ablakban kattintson az **Azure Active Directory**elemre.
 
--   Kattintson az **alkalmazás-regisztrációk** elemre, és válassza a **végpontok**lehetőséget.
+-   Kattintson **az Alkalmazásregisztrációk gombra,** és válassza **a Végpontok**lehetőséget.
 
--   Ekkor megnyílik a **végpontok** lap, amely felsorolja a bérlő összes hitelesítési végpontját.
+-   Ez nyissa meg a **Végpontok** lapot, amely felsorolja a bérlő összes hitelesítési végpontját.
 
--   Használja az Ön által használt hitelesítési protokollhoz tartozó végpontot, az alkalmazás-AZONOSÍTÓval együtt az alkalmazásra vonatkozó hitelesítési kérelem kiépítéséhez.
+-   Használja a végpont ot a használt hitelesítési protokoll, együtt az alkalmazás azonosítóját, hogy a hitelesítési kérelem az alkalmazásra jellemző.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)

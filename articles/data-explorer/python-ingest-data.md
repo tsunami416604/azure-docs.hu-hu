@@ -1,34 +1,34 @@
 ---
-title: Adatbevitel az Azure Adatkezelő Python Library használatával
-description: Ebből a cikkből megtudhatja, hogyan végezheti el az adatterhelést az Azure Adatkezelőba a Python használatával.
+title: Adatok betöltése az Azure Data Explorer Python-tár használatával
+description: Ebben a cikkben megtudhatja, hogyan töltheti be (töltheti be) az adatokat az Azure Data Explorer python használatával.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 91401031945d0ec3ac22fc8cbcea8ba73580ee50
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 28151476ce96fabc92e04078396119d0eb8c2f17
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251725"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389358"
 ---
-# <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Adatbevitel az Azure Adatkezelő Python Library használatával
+# <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Adatok betöltése az Azure Data Explorer Python-tár használatával
 
-Ebben a cikkben az Azure Adatkezelő Python Library használatával végezheti el az adatfeldolgozást. Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer két ügyfélkódtárat biztosít a Python számára: egy [betöltési kódtárat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) és [egy adatkódtárat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ezek a kódtárak lehetővé teszik az adatok betöltését vagy betöltését egy fürtbe, illetve a kód adatainak lekérdezését.
+Ebben a cikkben az Azure Data Explorer Python-kódtár használatával adatokat kell betöltése. Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer két ügyfélkódtárat biztosít a Python számára: egy [betöltési kódtárat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) és [egy adatkódtárat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ezek a tárak lehetővé teszik az adatok fürtbe történő betöltését vagy betöltését, és lekérdezheti a kódot.
 
-Először hozzon létre egy táblát és egy adatleképezést a fürtben. Ezután sorba helyezi a fürtbe való betöltést, és ellenőrzi az eredményeket.
+Először hozzon létre egy táblát és adatleképezést egy fürtben. Ezután sorba helyezi a fürtbe való betöltést, és ellenőrzi az eredményeket.
 
 Ez a cikk [Azure-jegyzetfüzetként](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb)is elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Python 3.4 +](https://www.python.org/downloads/).
+* [Python 3.4+](https://www.python.org/downloads/).
 
-* [Egy fürt és egy adatbázis](create-cluster-database-portal.md).
+* [Fürt és adatbázis](create-cluster-database-portal.md).
 
 ## <a name="install-the-data-and-ingest-libraries"></a>Az adatok telepítése és a kódtárak betöltése
 
@@ -41,7 +41,7 @@ pip install azure-kusto-ingest
 
 ## <a name="add-import-statements-and-constants"></a>Importálási utasítások és állandók hozzáadása
 
-Osztályok importálása az Azure-kusto-adatokból.
+Osztályok importálása az azure-kusto-data-ból.
 
 ```python
 from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
@@ -70,7 +70,7 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/
 KUSTO_DATABASE = "<DatabaseName>"
 ```
 
-Most hozza létre a kapcsolati sztringet. Ez a példa eszközhitelesítést használ a fürt eléréséhez. Használhatja a HRE- [alkalmazás tanúsítványát](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), a [HRE](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), valamint a [HRE-felhasználót és-jelszót](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)is.
+Most hozza létre a kapcsolati sztringet. Ez a példa eszközhitelesítést használ a fürt eléréséhez. Használhatja [az AAD alkalmazástanúsítványt](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [az AAD alkalmazáskulcsot](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), valamint az [AAD felhasználót és a jelszót](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)is.
 
 Egy későbbi lépésben fogja létrehozni a céltáblát és a leképezést.
 
@@ -103,7 +103,7 @@ BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + \
     CONTAINER + "/" + FILE_PATH + SAS_TOKEN
 ```
 
-## <a name="create-a-table-on-your-cluster"></a>Tábla létrehozása a fürtön
+## <a name="create-a-table-on-your-cluster"></a>Táblázat létrehozása a fürtön
 
 Hozzon létre egy táblát, amely megfelel a StormEvents.csv fájlban szereplő adatok sémájának. Amikor ez a kód fut, a következőhöz hasonló üzenetet ad vissza: *A bejelentkezéshez webböngészőben nyissa meg a https://microsoft.com/devicelogin oldalt, és írja be az F3W4VWZDM kódot a hitelesítéshez*. Kövesse a bejelentkezési lépéseket, majd térjen vissza a következő kódblokk futtatásához. A kapcsolatot létrehozó későbbi kódblokkokhoz ismét be kell jelentkeznie.
 
@@ -118,7 +118,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 
 ## <a name="define-ingestion-mapping"></a>Adatbetöltési leképezés meghatározása
 
-Leképezheti a bejövő CSV-adatokat a tábla létrehozásakor használt oszlopnevekre és adattípusokra. A forrásadatok mezőinek leképezése a cél tábla oszlopaira
+Leképezheti a bejövő CSV-adatokat a tábla létrehozásakor használt oszlopnevekre és adattípusokra. Ez a forrásadatmezőket a céltábla oszlopaihoz rendeli
 
 ```python
 CREATE_MAPPING_COMMAND = """.create table StormEvents ingestion csv mapping 'StormEvents_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EpisodeId","datatype":"int","Ordinal":2},{"Name":"EventId","datatype":"int","Ordinal":3},{"Name":"State","datatype":"string","Ordinal":4},{"Name":"EventType","datatype":"string","Ordinal":5},{"Name":"InjuriesDirect","datatype":"int","Ordinal":6},{"Name":"InjuriesIndirect","datatype":"int","Ordinal":7},{"Name":"DeathsDirect","datatype":"int","Ordinal":8},{"Name":"DeathsIndirect","datatype":"int","Ordinal":9},{"Name":"DamageProperty","datatype":"int","Ordinal":10},{"Name":"DamageCrops","datatype":"int","Ordinal":11},{"Name":"Source","datatype":"string","Ordinal":12},{"Name":"BeginLocation","datatype":"string","Ordinal":13},{"Name":"EndLocation","datatype":"string","Ordinal":14},{"Name":"BeginLat","datatype":"real","Ordinal":16},{"Name":"BeginLon","datatype":"real","Ordinal":17},{"Name":"EndLat","datatype":"real","Ordinal":18},{"Name":"EndLon","datatype":"real","Ordinal":19},{"Name":"EpisodeNarrative","datatype":"string","Ordinal":20},{"Name":"EventNarrative","datatype":"string","Ordinal":21},{"Name":"StormSummary","datatype":"dynamic","Ordinal":22}]'"""
@@ -136,7 +136,7 @@ Az üzeneteket várólistába helyezheti az adatokat a Blob Storage-ból való l
 INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
 
 # All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
-INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.csv,
+INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.CSV,
                                            mappingReference=DESTINATION_TABLE_COLUMN_MAPPING, additionalProperties={'ignoreFirstRecord': 'true'})
 # FILE_SIZE is the raw size of the data in bytes
 BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
@@ -146,7 +146,7 @@ INGESTION_CLIENT.ingest_from_blob(
 print('Done queuing up ingestion with Azure Data Explorer')
 ```
 
-## <a name="query-data-that-was-ingested-into-the-table"></a>A táblába betöltött Adatlekérdezési adatgyűjtés
+## <a name="query-data-that-was-ingested-into-the-table"></a>A táblába bevitt adatok lekérdezése
 
 Várjon öt-tíz percet, amíg a várólistában lévő betöltés ütemezi a betöltést és betölti az adatokat az Azure Data Explorerbe. Ezután futtassa a következő kódot a StormEvents-táblában lévő rekordok számának lekérdezéséhez.
 
@@ -160,7 +160,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 
 ## <a name="run-troubleshooting-queries"></a>Hibaelhárítási lekérdezések futtatása
 
-Jelentkezzen be a [https://dataexplorer.azure.com](https://dataexplorer.azure.com) oldalon, és csatlakozzon a fürthöz. Futtassa a következő parancsot az adatbázisban annak ellenőrzéséhez, hogy voltak-e betöltési hibák az elmúlt négy órában. A futtatás előtt cserélje le az adatbázis nevét.
+Jelentkezzen be, [https://dataexplorer.azure.com](https://dataexplorer.azure.com) és csatlakozzon a fürthöz. Futtassa a következő parancsot az adatbázisban annak ellenőrzéséhez, hogy voltak-e betöltési hibák az elmúlt négy órában. A futtatás előtt cserélje le az adatbázis nevét.
 
 ```Kusto
 .show ingestion failures
@@ -183,6 +183,6 @@ Ha azt tervezi, hogy követi a többi cikket, tartsa meg a létrehozott erőforr
 .drop table StormEvents
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Az adatlekérdezés a Python használatával](python-query-data.md)
+* [Adatok lekérdezése python használatával](python-query-data.md)

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 4d92bd3709c5f56db0095ca1be2caa0e9c78b42f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e475c1bc1878c6b5a0efbbe41f2a3a0fe86bcff2
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336818"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389375"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Videoindexelő widgetek beágyazása az alkalmazásokba
 
@@ -48,7 +48,7 @@ A Lejátszó widget segítségével adaptív átviteli sebesség használatával
 |`showCaptions` | Logikai érték | Beállítja, hogy a lejátszó betöltésekor a feliratok megjelenítése már engedélyezve legyen.<br/> Példa: `showCaptions=true`. |
 |`type`| | Aktiválja az audiolejátszó bőrét (a videorészt eltávolítjuk).<br/> Példa: `type=audio`. |
 |`autoplay` | Logikai érték | Azt jelzi, hogy a lejátszónak betöltéskor el kell-e kezdenie a videó lejátszását. Az alapértelmezett érték `true`.<br/> Példa: `autoplay=false`. |
-|`language` | Nyelvkód | A lejátszó nyelvét szabályozza. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`.|
+|`language`/`locale` | Nyelvkód | A lejátszó nyelvét szabályozza. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`.|
 
 ### <a name="editor-widget"></a>Szerkesztő widget
 
@@ -233,14 +233,14 @@ Ha a saját [Azure Media Player-alkalmazásával](https://aka.ms/azuremediaplaye
 
 Kiválaszthatja a kívánt elemzési típusokat. Ehhez adja meg őket a következő URL-paraméter értékeként, amely hozzáadódik a beágyazási kódhoz `&widgets=<list of wanted widgets>`(az API-ból vagy a webalkalmazásból): .
 
-A lehetséges értékek a következők: **emberek**, **kulcsszavak,** **érzelmek**, **átirat**, és **a keresés.**
+A lehetséges értékek `people` `animatedCharacters` a `keywords` `labels`következők: `emotions` `topics`, `keyframes` `transcript`, `ocr` `sentiments` `speakers`, , , , , , `scenes`, és `namedEntities`.
 
-Ha például olyan widgetet szeretne beágyazni, amely csak személyeket és keresési elemzéseket tartalmaz, az iframe beágyazási URL-címe a következőképpen fog kinézni:
+Ha például olyan widgetet szeretne beágyazni, amely csak személyeket és kulcsszavakat tartalmazó elemzéseket tartalmaz, az iframe-beágyazási URL-címe a következőképpen fog kinézni:
 
-`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
+`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-Az iframe ablak címe az iframe URL-cím megadásával `&title=<YourTitle>` is testreszabható. (Ez testre \<szabja a HTML-cím> érték).
-
+Az iframe ablak címe az iframe URL-cím megadásával `&title=<YourTitle>` is testreszabható. (Ez testre <title> szabja a HTML érték).
+   
 Ha például azt szeretné, hogy az iframe-ablak "MyInsights" címet adjon, az URL így fog kinézni:
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights`
@@ -257,15 +257,14 @@ Példa:
 
 Alapértelmezés szerint a Video Indexer player automatikusan létrehozott feliratokat, amelyek alapján a videó átirata. Az átirat a videóból a videó feltöltésekén kiválasztott forrásnyelvvel kerül kinyerésre.
 
-Ha más nyelvvel szeretne beágyazni, `&captions=< Language | "all" | "false" >` hozzáadhatja a beágyazólejátszó URL-címét. Ha az összes elérhető nyelven szeretne feliratokat kapni, használja az értéket. `all` Ha azt szeretné, hogy a feliratok alapértelmezés `&showCaptions=true`szerint megjelenjenek, átadhatja a programot.
+Ha más nyelvvel szeretne beágyazni, hozzáadhat &captions=< Language Code >-t a beágyazólejátszó URL-címéhez. Ha azt szeretné, hogy a feliratok alapértelmezés szerint megjelenjenek, akkor átadhatja &showCaptions=true.If you want the captions to be displayed by default default, you can pass &showCaptions=true.
 
 A beágyazási URL így fog kinézni:
 
-`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
-
-Ha le szeretné tiltani a feliratokat, `captions` a `false`paraméter értékét a .
+`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=en-us`
 
 #### <a name="autoplay"></a>Robotpilota
+
 Alapértelmezés szerint a lejátszó elkezdi lejátszani a videót. úgy is dönthet, `&autoplay=false` hogy nem, ha átadja az előző beágyazási URL-címet.
 
 ## <a name="code-samples"></a>Kódminták

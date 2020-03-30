@@ -1,25 +1,24 @@
 ---
-title: Azure SaaS-alkalmazás ajánlata | Azure piactér
-description: Az Azure SaaS-alkalmazások Azure Marketplace-en való közzétételének folyamatának áttekintése.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Azure SaaS alkalmazásajánlat | Azure Piactér
+description: Az Azure SaaS-alkalmazásajánlat azure-beli marketplace-en való közzétételének folyamatának áttekintése.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: pabutler
-ms.openlocfilehash: afe1debbe7176a690500b4fe2cc8d5dcdd134298
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 83ed386b9f84a535850bd148920e945c049a46aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817466"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279878"
 ---
-# <a name="azure-saas-application-offer"></a>Azure SaaS-alkalmazás ajánlata
+# <a name="azure-saas-application-offer"></a>Az Azure SaaS alkalmazásajánlata
 
-A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja az SaaS-alkalmazások létrehozását és felügyeletét.  Ehelyett ez a funkció át lett helyezve a Microsoft [partner Center portálra](https://partner.microsoft.com/pcv/).  További információkért lásd: [új SaaS-ajánlat létrehozása](../../partner-center-portal/create-new-saas-offer.md). 
+A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja a SaaS-alkalmazásajánlatok létrehozását és kezelését.  Ehelyett ezt a funkciót áthelyezték a Microsoft [Partner Center portálra.](https://partner.microsoft.com/pcv/)  További információ: [Új SaaS-ajánlat létrehozása.](../../partner-center-portal/create-new-saas-offer.md) 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Új SaaS-alkalmazás létrehozása előtt olvassa el az [SaaS-alkalmazások ajánlat közzétételi útmutatóját](../../marketplace-saas-applications-technical-publishing-guide.md) , és tekintse át az [ajánlat-létrehozási ellenőrzőlistán](../../partner-center-portal/offer-creation-checklist.md)felsorolt, a partneri központ portál lépéseit. 
+Mielőtt új SaaS-alkalmazásajánlatot hozna létre, olvassa el a [SaaS-alkalmazások ajánlatközzétételi útmutatóját,](../../marketplace-saas-applications-technical-publishing-guide.md) és tekintse át az [Ajánlat létrehozása ellenőrzőlistában](../../partner-center-portal/offer-creation-checklist.md)felsorolt Partnerközpont-portál lépéseit. 

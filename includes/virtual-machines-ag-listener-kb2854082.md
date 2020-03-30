@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 28aab15dc67e051190e8d4e35e92240a56fe54a6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179067"
 ---
-Ezután, ha olyan kiszolgálót sem a fürtön futnak, a Windows Server 2008 R2 vagy Windows Server 2012, ellenőriznie kell, hogy a gyorsjavítási [KB2854082](https://support.microsoft.com/kb/2854082) telepítve van a helyszíni kiszolgálók és az Azure virtuális gépek a fürt részét képező. Bármely kiszolgáló vagy a virtuális Gépet, amely a fürt, de nem a rendelkezésre állási csoport is kell rendelkeznie a gyorsjavítás telepítve van.
+Ezután, ha a fürt bármelyik kiszolgálóján Windows Server 2008 R2 vagy Windows Server 2012 fut, ellenőriznie kell, hogy a [KB2854082](https://support.microsoft.com/kb/2854082) gyorsjavítás telepítve van-e a fürt höz tartozó minden helyszíni kiszolgálóra vagy Azure-szolgáltatásra. A fürtben található, de a rendelkezésre állási csoportban nem szereplő kiszolgálóknak vagy virtuális gépeknek is telepítve kell lennie ennek a gyorsjavításnak.
 
-Töltse le a távoli asztali munkamenetet az egyes fürtcsomópontok [KB2854082](https://support.microsoft.com/kb/2854082) egy helyi könyvtárba. Ezután telepítse a gyorsjavítást a fürt minden csomópontján egymás után. Ha a fürtcsomópont jelenleg fut a fürtszolgáltatás, a kiszolgáló újraindítása a gyorsjavítás telepítése végén.
+Az egyes fürtcsomópontok távoli asztali munkamenetében töltse le a [KB2854082 kb.](https://support.microsoft.com/kb/2854082) Ezután telepítse a gyorsjavítást minden fürtcsomópontra egymás után. Ha a fürtszolgáltatás jelenleg fut a fürtcsomóponton, a kiszolgáló a gyorsjavítás telepítésének végén újraindul.
 
 > [!WARNING]
-> A fürtszolgáltatás leállítása, vagy a kiszolgáló újraindítása hatással van a kvórum a fürt és a rendelkezésre állási csoport állapotát, és előfordulhat, hogy a fürt offline állapotba. A magas rendelkezésre állás, a fürt fenntartása a telepítés során, ellenőrizze, hogy:
+> A fürtszolgáltatás leállítása vagy a kiszolgáló újraindítása hatással van a fürt és a rendelkezésre állási csoport kvórumállapotára, és a fürt offline állapotba hozó állapotát okozhatja. A fürt magas rendelkezésre állásának fenntartása érdekében a telepítés során győződjön meg arról, hogy:
 > 
-> * A fürt kvórum optimális egészségügyi szerepel. 
-> * A gyorsjavítás telepítése bármely csomópontján, mielőtt a fürt összes csomópontján online üzemmódban.
-> * A gyorsjavítás a fürt többi csomópontjára telepíti, mielőtt lehetővé teszik a gyorsjavítás telepítése műveleteinek végrehajtása egy csomóponton, beleértve a teljes mértékben a kiszolgáló újraindítása.
+> * A fürt optimális kvórumállapotban van. 
+> * Mielőtt bármelyik csomópontra telepítené a gyorsjavítást, az összes fürtcsomópont online állapotban van.
+> * Mielőtt a gyorsjavítást a fürt bármely más csomópontjára telepítené, engedélyezze, hogy a gyorsjavítás telepítése egy csomóponton befejeződjen, beleértve a kiszolgáló teljes újraindítását is.
 > 
 > 
 

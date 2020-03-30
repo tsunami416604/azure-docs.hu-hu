@@ -1,32 +1,32 @@
 ---
-title: Azure Blockchain Workbench – hibaelhárítás
-description: Azure Blockchain Workbench előzetes verziójú alkalmazások hibáinak megoldása.
+title: Az Azure Blockchain Workbench hibaelhárítása
+description: Azure Blockchain Workbench Preview-alkalmazások hibaelhárítása.
 ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74324303"
 ---
-# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Az Azure Blockchain Workbench előzetes verziójának hibaelhárítása
+# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Az Azure Blockchain Workbench előzetes verzió – hibaelhárítás
 
-A fejlesztői hibakeresést és támogatást segítő PowerShell-szkriptek is elérhetők. A szkript összefoglalást hoz létre, és részletes naplókat gyűjt a hibaelhárításhoz. Az összegyűjtött naplók a következők:
+Egy PowerShell-parancsfájl érhető el a fejlesztői hibakeresés vagy támogatás segítésére. A parancsfájl összegzést hoz létre, és részletes naplókat gyűjt a hibaelhárításhoz. Az összegyűjtött naplók a következők:
 
-* Blockchain-hálózat, például Ethereum
-* Blockchain Workbench-szolgáltatások
+* Blockchain hálózat, mint például az Ethereum
+* Blockchain Workbench mikroszolgáltatások
 * Application Insights
-* Azure monitoring (Azure Monitor naplók)
+* Azure Monitoring (Azure Monitor naplók)
 
-Az információ segítségével meghatározhatja a következő lépéseket, és meghatározhatja a problémák kiváltó okát.
+Az információk segítségével meghatározhatja a következő lépéseket, és meghatározhatja a problémák kiváltó okait.
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-## <a name="troubleshooting-script"></a>Hibaelhárítási parancsfájl
+## <a name="troubleshooting-script"></a>Parancsfájl – hibaelhárítás
 
-A PowerShell hibaelhárítási szkriptje elérhető a GitHubon. [Töltse le a zip-fájlt](https://github.com/Azure-Samples/blockchain/archive/master.zip), vagy a klónozza a GitHubon található mintát.
+A PowerShell hibaelhárítási parancsfájl érhető el a GitHubon. [Töltse le a zip-fájlt](https://github.com/Azure-Samples/blockchain/archive/master.zip), vagy a klónozza a GitHubon található mintát.
 
 ```
 git clone https://github.com/Azure-Samples/blockchain.git
@@ -35,7 +35,7 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>A szkript futtatása
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-Futtassa a `collectBlockchainWorkbenchTroubleshooting.ps1` szkriptet a naplók összegyűjtéséhez, és hozzon létre egy ZIP-fájlt, amely egy hibaelhárítási információt tartalmazó mappát tartalmaz. Például:
+Futtassa a parancsfájlt a `collectBlockchainWorkbenchTroubleshooting.ps1` naplók gyűjtéséhez, és hozzon létre egy hibaelhárítási információkat tartalmazó zip-fájlt. Példa:
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
@@ -44,31 +44,31 @@ A parancsfájl a következő paramétereket fogadja el:
 
 | Paraméter  | Leírás | Kötelező |
 |---------|---------|----|
-| SubscriptionID | SubscriptionID az összes erőforrás létrehozásához vagy megkereséséhez. | Igen |
-| ResourceGroupName | Azon Azure-erőforráscsoport neve, ahol a Blockchain Workbench telepítve van. | Igen |
-| Outputdirectory paraméterben | A kimenet létrehozásának elérési útja. ZIP-fájl. Ha nincs megadva, az alapértelmezett érték az aktuális könyvtár. | Nem |
-| LookbackHours | A telemetria húzásakor használandó órák száma. Az alapértelmezett érték 24 óra. A maximális érték 90 óra | Nem |
-| OmsSubscriptionId | Az előfizetés-azonosító, amelyben a Azure Monitor naplók telepítve vannak. Csak akkor adja meg ezt a paramétert, ha a blockchain-hálózat Azure Monitor naplói a Blockchain Workbench erőforráscsoportén kívül vannak telepítve.| Nem |
-| OmsResourceGroup |Az az erőforráscsoport, amelyben a Azure Monitor naplók telepítve vannak. Csak akkor adja meg ezt a paramétert, ha a blockchain-hálózat Azure Monitor naplói a Blockchain Workbench erőforráscsoportén kívül vannak telepítve.| Nem |
-| OmsWorkspaceName | A Log Analytics munkaterület neve. Csak akkor adja meg ezt a paramétert, ha a blockchain-hálózat Azure Monitor naplói a Blockchain Workbench erőforráscsoportén kívül vannak telepítve. | Nem |
+| Előfizetésazonosító | SubscriptionID az összes erőforrás létrehozásához vagy megkereséséhez. | Igen |
+| ResourceGroupName | Annak az Azure Resource Groupnak a neve, ahol a Blokklánc-munkaterület telepítve van. | Igen |
+| Kimenetkönyvtár | A kimenet létrehozásának elérési útja . ZIP-fájl. Ha nincs megadva, az aktuális könyvtár alapértelmezés e. | Nem |
+| Visszatekintési órák | A telemetriai adatok lehúzásakor használandó órák száma. Az alapértelmezett érték 24 óra. A maximális érték 90 óra | Nem |
+| OmsSubscriptionId | Az előfizetés-azonosító, ahol az Azure Monitor naplók telepítve van. Csak adja át ezt a paramétert, ha az Azure Monitor naplók a blockchain hálózat telepítve van a Blockchain Workbench erőforráscsoporton kívül.| Nem |
+| OmsResourceGroup |Az az erőforráscsoport, ahol az Azure Monitor-naplók telepítve vannak. Csak adja át ezt a paramétert, ha az Azure Monitor naplók a blockchain hálózat telepítve van a Blockchain Workbench erőforráscsoporton kívül.| Nem |
+| OmsWorkspaceName | A Log Analytics munkaterület neve. Csak akkor adja át ezt a paramétert, ha a blokklánc-hálózat Azure Monitor-naplói a Blockchain Workbench erőforráscsoportján kívül vannak telepítve. | Nem |
 
-## <a name="what-is-collected"></a>Mit gyűjt?
+## <a name="what-is-collected"></a>Mit gyűjtenek?
 
 A kimeneti ZIP-fájl a következő mappastruktúrát tartalmazza:
 
 | Mappa vagy fájl | Leírás  |
 |---------|---------|
-| \Summary.txt | A System összefoglalása |
-| \Metrics\blockchain | Metrikák a blockchain |
-| \Metrics\Workbench | A Workbench mérőszámai |
-| \Details\Blockchain | Részletes naplók a blockchain |
-| \Details\Workbench | A Workbench részletes naplói |
+| \Summary.txt | A rendszer összefoglalása |
+| \Metrics\blockchain | A blokkláncra vonatkozó mérőszámok |
+| \Metrics\Munkaterület | A munkaterületre vonatkozó mérőszámok |
+| \Részletek\Blokklánc | Részletes naplók a blockchain |
+| \Részletek\Munkaterület | Részletes naplók a munkaterületről |
 
-Az összegző fájl pillanatképet készít az alkalmazás általános állapotáról és állapotáról. Az összefoglalás ajánlott műveleteket, Kiemelt hibákat és metaadatokat biztosít a futó szolgáltatásokról.
+Az összefoglaló fájl pillanatképet ad az alkalmazás általános állapotáról és az alkalmazás állapotáról. Az összefoglaló ajánlott műveleteket tartalmaz, kiemeli a legfontosabb hibákat és a szolgáltatások futtatásával kapcsolatos metaadatokat.
 
-A **metrikák** mappa a különböző rendszerösszetevők metrikáit tartalmazza az idő múlásával. Például a kimeneti fájl `\Details\Workbench\apiMetrics.txt` tartalmazza a különböző hibakódok összegzését, valamint a begyűjtési időszakon belüli válaszidőt. A **részletek** mappa részletes naplókat tartalmaz a Workbench vagy a mögöttes blockchain-hálózat konkrét problémáinak elhárításához. A `\Details\Workbench\Exceptions.csv` például a rendszeren bekövetkezett legutóbbi kivételek listáját tartalmazza, ami hasznos lehet az intelligens szerződésekkel vagy a blockchain folytatott interakciókkal kapcsolatos hibák elhárításához. 
+A **Metrikák** mappa az idő múlásával különböző rendszerösszetevők mutatóit tartalmazza. A kimeneti fájl `\Details\Workbench\apiMetrics.txt` például a különböző válaszkódok és a válaszidők összegzését tartalmazza a gyűjtési időszak során. A **Részletek** mappa részletes naplókat tartalmaz a Workbench vagy az alapul szolgáló blokklánc-hálózattal kapcsolatos problémák elhárításához. Például `\Details\Workbench\Exceptions.csv` a rendszerben előforduló legutóbbi kivételek listáját tartalmazza, amely hasznos az intelligens szerződésekkel kapcsolatos hibák vagy a blokklánccal való interakciók hibáinak elhárításához. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Azure Blockchain Workbench Application Insights hibaelhárítási útmutató](https://aka.ms/workbenchtroubleshooting)
+> [Az Azure Blockchain Workbench Application Insights hibaelhárítási útmutatója](https://aka.ms/workbenchtroubleshooting)

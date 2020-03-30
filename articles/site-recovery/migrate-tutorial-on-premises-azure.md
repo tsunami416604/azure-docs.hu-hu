@@ -7,18 +7,20 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: 24015810a295ef88b7d3e63bfc464ddddef6b55f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b978190776aee3c89d3beadde76d20c4327b012f
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73939621"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388916"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
 
-Ez a cikk ismerteti, hogyan telepítheti át a helyszíni gépeket az Azure-ba az [Azure Site Recovery](site-recovery-overview.md)használatával. A Site Recovery általában a helyszíni gépek és az Azure-virtuális gépek vész-helyreállítási kezelésére és vezénylésére szolgál. Azonban a migrációhoz is használható. Az áttelepítés ugyanazokat a lépéseket használja, mint a vészhelyreállítás, egy kivétellel. Áttelepítési, a nem adott gépek a helyszíni helyről az utolsó lépés. A vész-helyreállítási, nem lehet feladat-vissza a helyszíni áttelepítési forgatókönyv.
+Ez a cikk ismerteti, hogyan telepítheti át a helyszíni gépeket az Azure-ba az [Azure Site Recovery](site-recovery-overview.md)használatával. 
+
+> [!TIP]
+> Most már használja az Azure Migrate-t a helyszíni gépek azure-ba való áttelepítéséhez az Azure Site Recovery szolgáltatás helyett. [További információ](../migrate/migrate-services-overview.md).
 
 
 Az oktatóanyag bemutatja, hogyan migrálhatja a helyszíni virtuális gépeket és a fizikai kiszolgálókat az Azure-ba. Az alábbiak végrehajtásának módját ismerheti meg:
@@ -36,7 +38,7 @@ Az oktatóanyag bemutatja, hogyan migrálhatja a helyszíni virtuális gépeket 
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Vegye figyelembe, hogy a paravirtualizált illesztőprogramok által exportált eszközök nem támogatottak.
+A paravirtualizált illesztőprogramok által exportált eszközök nem támogatottak.
 
 
 ## <a name="prepare-azure-and-on-premises"></a>Az Azure és a helyszíni létesítmények előkészítése
@@ -132,8 +134,8 @@ Egyes lépések automatikusan is végrehajthatók az áttelepítési folyamat r�
 - Végezze el a végső alkalmazás- és áttelepítés-elfogadás teszteket az Azure-on jelenleg futó alkalmazásoknál.
 - Az [Azure virtuálisgép-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) kezeli a virtuális gépek kommunikációját az Azure-hálóvezérlővel. Erre egyes Azure-szolgáltatások, például az Azure Backup, a Site Recovery és az Azure Security esetében van szükség.
     - VMware-alapú gépek és fizikai kiszolgálók áttelepítése esetében a mobilitási szolgáltatástelepítő telepíti az elérhető Azure virtuálisgép-ügynököt a Windows-rendszerű gépekre. Linux-rendszerű virtuális gépek esetében azt javasoljuk, hogy feladatátvétel után telepítse az ügynököt.
-    - Azure virtuális gépek másodlagos régióba való áttelepítésekor még az áttelepítés előtt ki kell építeni az Azure virtuálisgép-ügynököt a virtuális gépen.
-    - Hyper-V-alapú virtuális gépek Azure-ba való áttelepítése esetén az Azure virtuálisgép-ügynököt az áttelepítés után telepítse az Azure virtuális gépen.
+    - Ha az Azure virtuális gépek egy másodlagos régióba, az Azure virtuálisgép-ügynök ki kell építeni a virtuális gép az áttelepítés előtt.
+    - Ha a Hyper-V virtuális gépek et az Azure-ba, telepítse az Azure virtuálisgép-ügynök az Azure virtuális gép az áttelepítés után.
 - Manuálisan távolítson el minden Site Recovery-szolgáltatót/ügynököt a virtuális gépről. VMware virtuális gépek vagy fizikai kiszolgálók áttelepítése esetén távolítsa el a Mobilitás szolgáltatást a virtuális gépről.
 - A nagyobb rugalmasság érdekében:
     - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információ]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).

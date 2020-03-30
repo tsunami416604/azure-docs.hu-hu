@@ -1,6 +1,6 @@
 ---
-title: Azure Maps Szószedet | Microsoft Docs
-description: A Azure Maps, a hely-alapú szolgáltatásokhoz és a GIS-hez kapcsolódó általánosan használt kifejezések glosszáriuma.
+title: Azure Maps szószedet | Microsoft dokumentumok
+description: Az Azure Maps, a Helyalapú szolgáltatások és a GIS általánosan használt kifejezések szószedete.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/18/2018
@@ -9,404 +9,404 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: c9d5c2efc14dec5beee0eaf81a4f628421ef3d49
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657044"
 ---
 # <a name="glossary"></a>Szószedet
 
-Az alábbi lista a Azure Maps-szolgáltatásokhoz használt általános szavakat ismerteti.
+Az alábbi lista az Azure Maps-szolgáltatásokkal használt gyakori szavakat ismerteti.
 
 ## <a name="a"></a>A
 
-<a name="address-validation"></a>**Címek ellenőrzése**: a címek létezésének ellenőrzésének folyamata.
+<a name="address-validation"></a>**Címérvényesítés**: A cím létezésének ellenőrzésére szolgáló folyamat.
 
-<a name="advanced-routing"></a>**Speciális útválasztás**: olyan szolgáltatások gyűjteménye, amelyek a közúti útválasztási adatok használatával végzik az előzetes műveleteket. például a elérhető tartományok (izokrón), a távolsági mátrixok és a kötegelt útválasztási kérelmek kiszámítása.
+<a name="advanced-routing"></a>**Speciális útválasztás**: Olyan szolgáltatások gyűjteménye, amelyek előrehaladnak útválasztási adatok használatával; például az elérhető tartományok (iochronok), a távolságmátrixok és a kötegelt útvonalkérelmek kiszámítása.
 
-<a name="aerial-imagery"></a>**Légi képképek**: lásd a [műholdképeket](#satellite-imagery). 
+<a name="aerial-imagery"></a>**Légi felvételek:** lásd [a műholdas képeket.](#satellite-imagery) 
 
-<a name="along-a-route-search"></a>**Útvonal-keresés**: egy térbeli lekérdezés, amely egy megadott leadási idő vagy távolság alapján keresi az adatok útvonalon belüli elérését.
+<a name="along-a-route-search"></a>**Útvonalkeresés mentén:** Olyan térbeli lekérdezés, amely egy megadott kerülőúton vagy az útvonalútvonaltól való távolságon belül keresi az adatokat.
 
-<a name="altitude"></a>**Magasság**: egy pont magassága vagy függőleges megemelése egy hivatkozási felület fölé. A magassági mérések egy adott hivatkozási adaton alapulnak, például az átlagos tengeri szinten. Lásd még: Jogosultságszint-emelés.
+<a name="altitude"></a>**Magasság**: Egy pont magassága vagy függőleges magassága a referenciafelület felett. A magasságmérések egy adott referenciaadaton alapulnak, például az átlagos tengerszinten. Lásd még: magasság.
 
-<a name="ambiguous"></a>Nem **egyértelmű**: az adatbesorolásban olyan bizonytalansági állapot áll fenn, amely akkor fordulhat elő, ha egy adott attribútumhoz legalább két érték van hozzárendelve. Ha például a "CA" helymeghatározáshoz, a rendszer két kétértelmű eredményt ad vissza: "Kanada" és "Kalifornia". A "CA" egy ország és egy állapotkód a "Kanada" és "Kalifornia" esetében. 
+<a name="ambiguous"></a>**Nem egyértelmű**: Az adatbesorolás bizonytalansági állapota, amely akkor áll fenn, ha egy objektumhoz egy adott attribútumhoz két vagy több érték is hozzárendelhető. Például a "CA" geokódoláskor két kétértelmű eredményt ad vissza: "Kanada" és "Kalifornia". A "CA" egy ország és egy állami kód a "Kanada" és a "Kalifornia" esetében. 
 
-<a name="annotation"></a>**Jegyzet**: a térképen megjelenített szöveg vagy grafika, amely információkat biztosít a felhasználónak. A jegyzet azonosíthatja vagy leírhatja egy adott Térkép entitást, általános információkat adhat meg a Térkép egy területéről, vagy magáról a térképről szolgáltathat információkat.
+<a name="annotation"></a>**Jegyzet**: A térképen megjelenő szöveg vagy grafika, amely a felhasználó tájékoztatására szolgál. A jegyzet elazonosíthat vagy leírhat egy adott térképentitást, általános információkat adhat meg a térképen lévő területről, vagy információkat adhat meg magáról a térképről.
 
-<a name="antimeridian"></a>**Antimeridian**: az 180<sup>th</sup> meridián néven is ismert. Ez az a pont, ahol az-180 fok és a 180 fok hosszúsága megfelel. Ez a Prime Meridian ellentéte a világon.
+<a name="antimeridian"></a>**Antimeridian**: Más néven a 180<sup>th</sup> Meridian. Ez az a pont, ahol -180 fok és 180 fok hosszúságtalálkozik. Ami a világ első számú meridiánjának ellentéte.
 
-<a name="application-programming-interface-api"></a>Alkalmazásprogramozási **felület (API)** : olyan specifikáció, amely lehetővé teszi, hogy a fejlesztők alkalmazásokat hozzanak létre.
+<a name="application-programming-interface-api"></a>**Alkalmazásprogramozási felület (API)**: Olyan specifikáció, amely lehetővé teszi a fejlesztők számára, hogy alkalmazásokat hozzanak létre.
 
-<a name="api-key"></a>**API-kulcs**: Tekintse meg a [megosztott kulcsos hitelesítést](#shared-key-authentication).
+<a name="api-key"></a>**API-kulcs**: Lásd: [Megosztott kulcshitelesítés.](#shared-key-authentication)
 
-<a name="area-of-interest-aoi"></a>**Érdeklődési terület (AOI)** : a Térkép vagy az adatbázis-termelés fókusz területének meghatározásához használt mérték.
+<a name="area-of-interest-aoi"></a>**Érdeklődési terület (AOI)**: A térkép vagy adatbázis-előállítás fókuszterületének meghatározásához használt mérték.
 
-<a name="asset-tracking"></a>**Eszköz nyomon követése**: egy eszköz helyének (például személy, jármű vagy más objektum) nyomon követésének folyamata.
+<a name="asset-tracking"></a>**Eszközkövetés**: Egy eszköz, például egy személy, jármű vagy más objektum helyének nyomon követésének folyamata.
 
-<a name="asynchronous-request"></a>**Aszinkron kérelem**: egy olyan HTTP-kérelem, amely megnyit egy kapcsolódást, és kérést küld a kiszolgálónak, amely visszaadja az aszinkron kérelem azonosítóját, majd bezárja a kapcsolódást. A kiszolgáló továbbra is feldolgozza a kérést, és a felhasználó az azonosítót használva megtekintheti az állapotot. A kérelem feldolgozása után a felhasználó letöltheti a választ. Ez a típusú kérelem hosszú ideig futó folyamatokhoz használható.
+<a name="asynchronous-request"></a>**Aszinkron kérés**: Olyan HTTP-kérelem, amely kapcsolatot nyit meg, és olyan kérést küld a kiszolgálónak, amely az aszinkron kérés azonosítóját adja vissza, majd bezárja a kapcsolatot. A kiszolgáló folytatja a kérelem feldolgozását, és a felhasználó ellenőrizheti az állapotot az azonosító használatával. Amikor a kérelem feldolgozása befejeződött, a felhasználó letöltheti a választ. Ez a kérelemtípus hosszú ideig futó folyamatokhoz használatos.
 
-<a name="autocomplete"></a>**Automatikus kiegészítés**: az alkalmazás egy funkciója, amely egy felhasználó begépelését jelzi. 
+<a name="autocomplete"></a>**Automatikus kiegészítés**: Az alkalmazás olyan szolgáltatása, amely előre jelzi a felhasználó által beírt szó többi részét. 
 
-<a name="autosuggest"></a>Automatikus **kiegészítés: az**alkalmazás egyik funkciója, amely a felhasználó begépelésének logikai lehetőségeit Jósolja meg.
+<a name="autosuggest"></a>**Automatikus javaslat**: Az alkalmazás olyan szolgáltatása, amely előre jelzi a felhasználó által beírt logikai lehetőségeket.
 
-<a name="azure-location-based-services-lbs"></a>**Azure Location based Services (LBS)** : a Azure Maps korábbi neve, amikor az előzetes verzióban volt.
+<a name="azure-location-based-services-lbs"></a>**Azure helyalapú szolgáltatások (LBS)**: Az Azure Maps korábbi neve, amikor előzetes verzióban volt.
 
-<a name="azure-active-directory"></a>**Azure Active Directory (Azure ad)** : az Azure ad a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatása. Azure Maps Azure AD-integráció jelenleg előzetes verzióban érhető el az összes Azure Maps API-hoz. Az Azure AD támogatja a szerepköralapú hozzáférés-vezérlést (RBAC) a Azure Maps erőforrásainak részletes hozzáférésének lehetővé tételéhez. Az Azure Maps Azure AD-integrációval kapcsolatos további tudnivalókért tekintse meg a [Azure Maps és az Azure ad](azure-maps-authentication.md) és [a hitelesítés kezelése a Azure Maps-ben](how-to-manage-authentication.md)című témakört.
+<a name="azure-active-directory"></a>**Azure Active Directory (Azure AD)**: Az Azure AD a Microsoft felhőalapú identitás- és hozzáférés-kezelési szolgáltatása. Az Azure Maps Azure AD-integráció jelenleg előzetes verzióban érhető el az összes Azure Maps API-hoz. Az Azure AD támogatja a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure Maps-erőforrások részletes elérésének engedélyezéséhez. Ha többet szeretne megtudni az Azure Maps Azure AD-integrációról, olvassa el az [Azure Maps és az Azure AD](azure-maps-authentication.md) és a Hitelesítés kezelése című [témakört az Azure Maps ben.](how-to-manage-authentication.md)
 
-<a name="azure-maps-key"></a>**Azure Maps kulcs**: Tekintse meg a [megosztott kulcsos hitelesítést](#shared-key-authentication).
+<a name="azure-maps-key"></a>**Azure Maps kulcs:** Lásd: [Megosztott kulcshitelesítés.](#shared-key-authentication)
 
 ## <a name="b"></a>B
 
-<a name="base-map"></a>**Alaptérkép**: a térképes alkalmazás azon része, amely a háttér-hivatkozási információkat, például az utakat, a tereptárgyait és a politikai határokat jeleníti meg.
+<a name="base-map"></a>**Alaptérkép**: A térképalkalmazás azon része, amely háttér-referenciainformációkat jelenít meg, például utakat, tereptárgyakat és politikai határokat.
 
-<a name="batch-request"></a>**Batch-kérelem**: több kérelem egyetlen kérelembe való egyesítésének folyamata.
+<a name="batch-request"></a>**Kötegelt kérelem:** Több kérelem egyetlen kérelembe történő egyesítésének folyamata.
 
-<a name="bearing"></a>**Csapágy**: egy pont vízszintes iránya egy másik ponthoz képest. Ezt az értéket az északi értékhez viszonyítva, 0 és 360 fok közötti szögben, az óramutató járásával megegyező irányban fejezzük ki. 
+<a name="bearing"></a>**Irány**: Egy pont vízszintes iránya egy másik ponthoz képest. Ezt az északi szöghez viszonyított szögként fejezik ki, 0 foktól 360 fokig az óramutató járásával megegyező irányban. 
 
-<a name="boundary"></a>**Határ**: A szomszédos politikai entitásokat (például országokat/régiókat, körzeteket és tulajdonságokat) elválasztó vonal vagy sokszög. A határ egy olyan vonal, amely a fizikai funkciók, például a Rivers, a hegyek vagy a falak esetében nem követhető.
+<a name="boundary"></a>**Határ**: A szomszédos politikai entitásokat, például országokat/régiókat, körzeteket és tulajdonságokat elválasztó vonal vagy sokszög. A határ olyan vonal, amely lehet, hogy nem követi a fizikai jellemzőket, például folyókat, hegyeket vagy falakat.
 
-<a name="bounds"></a>**Korlátok**: lásd a [határolókeret mezőt](#bounding-box).
+<a name="bounds"></a>**Határok:** Lásd: [Határoló keret](#bounding-box).
 
-<a name="bounding-box"></a>**Határolókeret**: a térképen egy téglalap alakú terület ábrázolására szolgáló koordináták halmaza. 
+<a name="bounding-box"></a>**Határolókeret**: A térképen egy téglalap alakú területet ábrázoló koordináták. 
 
-## <a name="c"></a>C
+## <a name="c"></a>C#
 
-<a name="cadastre"></a>**Kataszter**: a regisztrált földterületek és tulajdonságok nyilvántartása. Lásd még: [parcella](#parcel).
+<a name="cadastre"></a>**Kataszter**: Bejegyzett földterület és ingatlanok nyilvántartása. Lásd [még: Parcel](#parcel).
 
-<a name="camera"></a>**Kamera**: egy interaktív térkép vezérlőelem kontextusában a kamera a térképek mezőt határozza meg. A kamera nézetablaka több térképi paraméter alapján van meghatározva: középpont, nagyítási szint, pitch, csapágy. 
+<a name="camera"></a>**Kamera**: Interaktív térképvezérlő környezetében a kamera határozza meg a térképlátómezőt. A kamera nézetablakát több térképparaméter alapján határozzák meg: középpont, nagyítási szint, hangmagasság, csapágy. 
 
-<a name="centroid"></a>**Középpontját**: egy szolgáltatás geometriai középpontja. A vonal középpontját a középpont, miközben a sokszög középpontját a terület középpontja lenne.
+<a name="centroid"></a>**Centroid**: A geometriai központja a funkció. A vonal centroidja lenne a középpont, míg a sokszög centroidja lenne a terület középpontja.
 
-<a name="choropleth-map"></a>**Choropleth Térkép**: egy tematikus Térkép, amelyben a területek árnyékolva vannak egy statisztikai változó mértékének arányában. Ez a statisztikai változó megjelenik a térképen. Például az egyes államokbeli állapotok határait az összes többi államra vonatkozó relatív populációjuk alapján színezheti.
+<a name="choropleth-map"></a>**Choropleth térkép**: Tematikus térkép, amelyen a területek a statisztikai változó mérésével arányosan árnyékoltak. Ez a statisztikai változó megjelenik a térképen. Például az egyes amerikai államok határvonalának színezése az összes többi állam relatív népessége alapján.
 
-<a name="concave-hull"></a>**Konkáv hajótest**: egy olyan alakzat, amely egy lehetséges homorú geometriát jelöl, amely a megadott adatkészletben lévő összes alakzatot befedi. A generált alakzat hasonló az adatcsomagoláshoz a műanyag becsomagolással, majd a fűtéssel, így nagy mértékben átível a pontok közötti, és az egyéb adatpontok felé irányuló kapcsolat.
+<a name="concave-hull"></a>**Homorú hajótest**: Olyan alakzat, amely egy lehetséges homorú geometriát jelöl, amely körülveszi a megadott adatkészlet összes alakzatát. A generált alakzat hasonló ahhoz, mintha az adatokat műanyag fóliával csomagolnák, majd felmelegítnék, így a pontok közötti nagy átívelés más adatpontok felé vezetne.
 
-<a name="consumption-model"></a>**Fogyasztási modell**: az a sebesség, amely meghatározza, hogy a jármű milyen sebességgel használja az üzemanyagot vagy a villamos energiát. Tekintse meg a használati [modell dokumentációját](consumption-model.md)is.
+<a name="consumption-model"></a>**Fogyasztási modell**: Olyan információ, amely meghatározza, hogy a jármű milyen sebességgel fogyaszt üzemanyagot vagy villamos energiát. Lásd még a [fogyasztási modell dokumentációját](consumption-model.md).
 
-<a name="control"></a>**Vezérlő**: egy olyan önálló vagy újrafelhasználható összetevő, amely egy grafikus felhasználói felületből áll, amely az illesztőfelület viselkedési készletét határozza meg. A Térkép vezérlőelem például általában a felhasználói felület azon része, amely egy interaktív térképet tölt be.
+<a name="control"></a>**Control**: Egy grafikus felhasználói felületből álló önálló vagy újrafelhasználható összetevő, amely a felület viselkedési készletét határozza meg. Például egy térképvezérlő általában a felhasználói felület azon része, amely interaktív térképet tölt be.
 
-<a name="convex-hull"></a>**Domború hajótest**: a domború hajótest olyan alakzat, amely a megadott adatkészletben lévő összes alakzatot magában foglaló, minimális domború geometriát jelöli. A generált alakzat hasonló az adathalmaz körüli rugalmas sáv becsomagolásához.
+<a name="convex-hull"></a>**Konvex hajótest**: A konvex hajótest olyan alakzat, amely a megadott adatkészlet összes alakzatát körülölelő minimális konvex geometriát jelöli. A létrehozott alakzat hasonló az adatkészlet körül egy rugalmas sáv burkoló.
 
-<a name="coordinate"></a>**Koordináta**: a Térkép helyének ábrázolásához használt hosszúsági és szélességi értékekből áll.
+<a name="coordinate"></a>**Koordináta**: A térképen egy hely ábrázolására használt hosszúsági és szélességi értékeket jelöli.
 
-<a name="coordinate-system"></a>**Koordináta-rendszer**: egy hivatkozási keretrendszer, amely két vagy három dimenzióban határozza meg a pontok helyét.
+<a name="coordinate-system"></a>**Koordináta-rendszer**: Referenciakeretrendszer, amely két vagy három dimenzióban határozza meg a pontok helyzetét a térben.
 
-<a name="country-code"></a>**Országkód**: egy ország/régió egyedi azonosítója az ISO-szabvány alapján. A ISO2 egy ország (például USA) kétkarakteres kódja, amely ISO3 a három karakterből álló kódot jelöli (például az USA-ban).
+<a name="country-code"></a>**Országkód**: Egy ország/régió egyedi azonosítója az ISO-szabvány alapján. Az ISO2 egy kétkarakteres kód egy országhoz (például US), amely az ISO3 egy háromkarakterű kódot (például USA-t) jelöl.
 
-<a name="country-subdivision"></a>**Ország alcsoportja**: egy ország/régió, más néven állam vagy megye első szintű alosztálya.
+<a name="country-subdivision"></a>**Országfelosztás**: Egy ország/régió első szintű albontása, közismert nevén állam vagy tartomány.
 
-<a name="country-secondary-subdivision"></a>**Ország másodlagos alosztálya**: egy ország/régió második szintű felosztása, amely gyakran más néven megye.
+<a name="country-secondary-subdivision"></a>**Ország másodlagos alkörzete**: Egy ország/régió másodfokú albontása, közismert nevén megye.
 
-<a name="country-tertiary-subdivision"></a>**Ország felsőfokú alosztálya**: egy ország/régió, jellemzően egy elnevezett terület, például egy osztály harmadik szintű alcsoportja.
+<a name="country-tertiary-subdivision"></a>**Ország felsőfokú alosztálya**: Egy ország/régió harmadik szintű albontása, jellemzően egy megnevezett terület, például egy egyházközség.
 
-<a name="cross-street"></a>**Cross Street**: egy pont, ahol két vagy több utca metszi egymást.
+<a name="cross-street"></a>**Kereszt utca**: Az a pont, ahol két vagy több utca metszi.
 
-<a name="cylindrical-projection"></a>**Hengeres kivetítés**: egy gömb vagy gömb pontjait egy tangens vagy szekáns hengerre átalakító kivetítés. A henger ekkor felülről lefelé van darabolva, és egy síkban van lelapulva.
+<a name="cylindrical-projection"></a>**Hengeres vetület**: Olyan vetület, amely a szferoidból vagy gömbből egy érintő- vagy szeánhengerre alakítja át a pontokat. A hengert ezután felülről lefelé szeleteljük, és síkba lapítják.
 
 ## <a name="d"></a>D
 
-<a name="datum"></a>**Datum**: egy mérési rendszer, egy adott felületen (horizontális Datum) vagy magasságon (függőlegesen) belüli vagy alá tartozó magasságú koordinátarendszer hivatkozási előírásai.
+<a name="datum"></a>**Datum**: A mérési rendszer referencia-specifikációi, egy felületen lévő koordináta-pozíciórendszer (vízszintes adat) vagy a felület feletti vagy alatti magasságok (függőleges adat).
 
-<a name="dbf-file"></a>**DBF-fájl**: a ALAKZATFÁJLOK (SHP)-sel együtt használt adatbázis-fájlformátum.
+<a name="dbf-file"></a>**DBF fájl**: Az adatbázis fájlformátum, amely együtt használják Shapefiles (SHP).
 
-<a name="degree-minutes-seconds-dms"></a>**Fok perc másodperc (DMS)** : a szélesség és a hosszúság leírására szolgáló mértékegység. A fok egy kör<sup>1/360.</sup> A fok további 60 percre oszlik, és egy perc 60 másodpercre van osztva.
+<a name="degree-minutes-seconds-dms"></a>**Fok perc másodperc (DMS):** A szélesség és a hosszúság leírására szolgáló mértékegység. A fokozat egy kör<sup>th</sup> 1/360-a. A fokozat tovább oszlik 60 perc, és egy perc van osztva 60 másodperc.
 
-<a name="delaunay-triangulation"></a>**Delaunay-háromszögárfolyam**: egy olyan technika, amely összefüggő, egymást nem fedő háromszögeket hoz létre a pontok adatkészletből. Az egyes háromszögek circumscribing-köre nem tartalmaz a belső adatkészletből származó pontokat.
+<a name="delaunay-triangulation"></a>**Delaunay háromszögelés**: Összefüggő, egymást nem átfedő háromszögek ből álló háló létrehozásának technikája egy ponthalmazból. Minden háromszög körülírási köre nem tartalmaz pontokat az adatkészletbelsejéből.
 
-<a name="demographics"></a>**Demográfiai**adatok: az emberi populáció statisztikai jellemzői (például az életkor, a születési arány és a jövedelem).
+<a name="demographics"></a>**Demográfiai**adatok : Az emberi populáció statisztikai jellemzői (például életkor, születési arány és jövedelem).
 
-<a name="destination"></a>**Cél**: egy végpont vagy hely, ahol valaki utazik.
+<a name="destination"></a>**Úti cél:** Az a végpont vagy hely, ahová valaki utazik.
 
-<a name="digital-elevation-model-dem"></a>**Digitális jogosultságszint-emelési modell (DEM)** : egy felülethez kapcsolódó jogosultságszint-emelési értékek adatkészlete, amely egy adott területen rendszeres időközönként rögzített, közös adatmennyiség használatával. A DEMs jellemzően a terepi segítség ábrázolására szolgálnak.
+<a name="digital-elevation-model-dem"></a>**Digitális magasságmodell (DEM):** Egy felülethez kapcsolódó magasságértékek adatkészlete, amelyet egy adott területen rendszeres időközönként, közös adat használatával rögzítenek. A DEM-eket általában a terepdomborulék ábrázolására használják.
 
-<a name="dijkstra's-algorithm"></a>**Dijkstra algoritmusa**: egy olyan algoritmus, amely megvizsgálja a hálózat kapcsolatát, és megkeresi a lehető legrövidebb útvonalat két pont között.
+<a name="dijkstra's-algorithm"></a>**Dijkstra algoritmusa**: Egy algoritmus, amely megvizsgálja a hálózat kapcsolatát, hogy megtalálja a legrövidebb utat két pont között.
 
-<a name="distance-matrix"></a>**Távolsági mátrix**: egy olyan mátrix, amely az utazási időt és a távolsági információt tartalmazza az eredetek és a célhelyek között. 
+<a name="distance-matrix"></a>**Távolságmátrix**: Olyan mátrix, amely az eredeti és az úti célok között tartalmazza az utazási idő és a távolság adatait. 
 
 ## <a name="e"></a>E
 
-<a name="elevation"></a>**Jogosultságszint-emelés**: egy pont vagy egy objektum függőleges távolsága a hivatkozási felület vagy az adat alatt. A hivatkozási felület általában a tengerszint szintjének minősül. A Jogosultságszint-emelés általában a föld függőleges magasságára utal.
+<a name="elevation"></a>**Magasság**: Egy pont vagy egy objektum függőleges távolsága a referenciafelület vagy adat felett vagy alatt. A referenciafelület általában az átlagos tengerszint. A magasság általában a föld függőleges magasságára utal.
 
-<a name="envelope"></a>**Boríték**: lásd a [határolókeret mezőt](#bounding-box).
+<a name="envelope"></a>**Boríték**: Lásd: [Határolókeret](#bounding-box).
 
-<a name="extended-postal-code"></a>**Kiterjesztett irányítószám**: olyan postai kód, amely további információkat tartalmazhat. Az USA-ban például a zip-kódok öt számjegyből állnak. A zip + 4 néven ismert kiterjesztett zip-kód azonban négy további számjegyet tartalmaz. Ezek a további számjegyek a földrajzi szegmensek azonosítására szolgálnak az öt számjegyből álló kézbesítési területen, például a város blokkjában, az apartmanok csoportjain vagy egy posta mezőben. Annak ismerete, hogy a földrajzi szegmensek hogyan segítik a hatékony levelezés rendezését és kézbesítését.
+<a name="extended-postal-code"></a>**Kiterjesztett irányítószám**: Olyan irányítószám, amely további információkat tartalmazhat. Az USA-ban például az irányítószámok öt számjegyből állnak. De a kiterjesztett irányítószám, az úgynevezett zip+4, négy további számjegyet tartalmaz. Ezek a további számjegyek az ötjegyű megjelenítési területen belüli földrajzi szegmensek azonosítására szolgálnak, például egy városblokk, egy apartmancsoport vagy egy postafiók. A földrajzi szegmens ismerete segíti a hatékony levélrendezést és kézbesítést.
 
-<a name="extent"></a>**Mérték**: lásd a [határolókeret mezőt](#bounding-box).
+<a name="extent"></a>**Terjedelem**: Lásd: [Határoló keret](#bounding-box).
 
 ## <a name="f"></a>F
 
-<a name="federated-authentication"></a>**Összevont hitelesítés**: olyan hitelesítési módszer, amely lehetővé teszi egy egyszeri bejelentkezési/hitelesítési mechanizmus használatát több webes és mobil alkalmazás között. 
+<a name="federated-authentication"></a>**Összevont hitelesítés:** Olyan hitelesítési módszer, amely lehetővé teszi egyetlen bejelentkezési/hitelesítési mechanizmus alkalmazását több webes és mobilalkalmazásban. 
 
-<a name="feature"></a>**Szolgáltatás**: egy olyan objektum, amely a geometriát egy további metaadat-információval kombinálja. 
+<a name="feature"></a>**Funkció**: Olyan objektum, amely a geometriát további metaadat-adatokkal kombinálja. 
 
-<a name="feature-collection"></a>**Szolgáltatás gyűjteménye**: szolgáltatás-objektumok gyűjteménye.
+<a name="feature-collection"></a>**Funkciógyűjtemény**: Jellemzőobjektumok gyűjteménye.
 
-<a name="find-along-route"></a>**Keresés az útvonalon**: olyan térbeli lekérdezés, amely egy megadott lefoglalási időponton vagy távolságon belül található adatokra keres.
+<a name="find-along-route"></a>**Útvonal menti keresés**: Olyan térbeli lekérdezés, amely egy megadott kerülőút-időn vagy az útvonalútvonaltól számított távolságon belüli adatokat keres.
 
-<a name="find-nearby"></a>A **közelben található**: olyan térbeli lekérdezés, amely egy pontról rögzített egyenes távolságú (például a varjú legyek).
+<a name="find-nearby"></a>**Közeli keresése**: Olyan térbeli lekérdezés, amely egy ponttól rögzített egyenes vonalbeli távolságot keres (légvonalban).
 
-<a name="fleet-management"></a>**Flotta-felügyelet**: a kereskedelmi járművek, például az autók, teherautók, hajók és repülőgépek felügyeletét. A flotta-felügyelet számos függvényt tartalmazhat, például a járművek finanszírozását, karbantartását, telematikai (követési és diagnosztikai), valamint az illesztőprogramok, a sebesség, az üzemanyag, valamint az állapot-és biztonsági felügyeletet. A flotta-felügyelet a vállalatok által a vállalaton belüli szállításra támaszkodó folyamat. A vállalatok minimalizálni szeretnék a kockázatokat, és csökkentik a teljes szállítási és személyzeti költségeket, miközben biztosítják a kormányzati jogszabályoknak való megfelelést.
+<a name="fleet-management"></a>**Flottamenedzsment**: Haszongépjárművek, például autók, teherautók, hajók és repülőgépek kezelése. A flottakezelés számos funkciót tartalmazhat, például a járműfinanszírozást, a karbantartást, a telematikai (nyomon követés és diagnosztika), valamint a vezető, a sebesség, az üzemanyag, valamint az egészségügyi és biztonsági menedzsmentet. A Fleet Management egy olyan folyamat, amelyet olyan vállalatok használnak, amelyek a szállításra támaszkodnak az üzletükben. A vállalatok minimalizálni kívánják a kockázatokat, és csökkenteni kívánják a teljes szállítási és személyzeti költségeiket, miközben biztosítják a kormányzati jogszabályoknak való megfelelést.
 
-<a name="free-flow-speed"></a>**Szabad áramlási sebesség**: az ideális körülmények között a szabad áramlási sebesség várható. Általában a sebességkorlátozás.
+<a name="free-flow-speed"></a>**Szabad áramlási sebesség**: Ideális körülmények között várható szabad áramlási sebesség. Általában a sebességkorlátozás.
 
-<a name="free-form-address"></a>**Ingyenes űrlap címe**: teljes, egyetlen szövegsorként jelölt címnek.
+<a name="free-form-address"></a>**Szabadűrlap címe**: Egy szövegsorként ábrázolt teljes cím.
 
-<a name="fuzzy-search"></a>**Fuzzy keresés**: olyan keresés, amely egy ingyenes formátumú szöveges karakterláncot vesz igénybe, amely lehet egy adott címnek vagy érdekesnek. 
+<a name="fuzzy-search"></a>**Fuzzy keresés**: Olyan keresés, amely szabad formátumú szövegsorozatot vesz fel, amely lehet cím vagy érdekes pont. 
 
 ## <a name="g"></a>G
 
-<a name="geocode"></a>**Geocode**: olyan címek vagy helyek, amelyek egy olyan koordináta-ba lettek átalakítva, amely a hely térképen való megjelenítésére szolgál. 
+<a name="geocode"></a>**Geokód**: Olyan cím vagy hely, amelyet koordinátává alakítottak át, és amely az adott hely térképen való megjelenítésére használható. 
 
-<a name="geocoding"></a>**Helymeghatározáshoz**: más néven továbbítási helymeghatározáshoz, az a folyamat, amellyel a helyadatok címe koordinátákba kerül. 
+<a name="geocoding"></a>**Geokódolás**: Más néven forward geocoding, a helyadatok címének koordinátákká történő átalakításának folyamata. 
 
-<a name="geodesic-path"></a>**Geodéziai elérési út**: a legrövidebb útvonal egy görbe felületen két pont között. Azure Maps megjelenítéskor ez az elérési út a Mercator-vetítés miatt ívelt vonalként jelenik meg.
+<a name="geodesic-path"></a>**Geodéziai útvonal:** Az ívelt felület két pontja közötti legrövidebb útvonal. Az Azure Maps ben való renderelés kor ez az elérési út a Mercator-vetület miatt ívelt vonalként jelenik meg.
 
-<a name="geofence"></a>**Geokerítésen**: egy meghatározott földrajzi régió, amely az események aktiválására használható, amikor egy eszköz belép vagy létezik a régióba.
+<a name="geofence"></a>**Geokerítés**: Olyan meghatározott földrajzi régió, amely események indítására használható, amikor egy eszköz belép a régióba, vagy létezik.
 
-<a name="geojson"></a>**GeoJSON**: a földrajzi vektoros adatelemek, például pontok, vonalak és sokszögek tárolására használt gyakori JSON-alapú fájlformátum. **Megjegyzés**: Azure Maps a GeoJSON kiterjesztett verzióját használja az [itt dokumentált](extend-geojson.md)módon.
+<a name="geojson"></a>**GeoJSON**: Egy közös JSON-alapú fájlformátum, amely földrajzi vektoradatok, például pontok, vonalak és sokszögek tárolására szolgál. **Megjegyzés:** Az Azure Maps a GeoJSON bővített verzióját használja [az itt dokumentáltan.](extend-geojson.md)
 
-<a name="geometry"></a>**Geometria**: térbeli objektumot, például pontot, vonalat vagy sokszöget jelöl.
+<a name="geometry"></a>**Geometria**: Térbeli objektumot jelöl, például pontot, vonalat vagy sokszöget.
 
-<a name="geometrycollection"></a>**GeometryCollection**: geometriai objektumok gyűjteménye.
+<a name="geometrycollection"></a>**GeometryCollection**: Geometriaobjektumok gyűjteménye.
 
-<a name="geopol"></a>**GeoPol**: a geopolitikai szempontból bizalmas adatokra, például a vitatott szegélyekre és a nevekre hivatkozik.
+<a name="geopol"></a>**GeoPol**: Geopolitikailag érzékeny adatokra utal, például vitatott határokra és helynevekre.
 
-<a name="georeference"></a>**Georeference**: a földrajzi adatok vagy képek egy ismert koordináta-rendszerbe való igazításának folyamata. Ez a folyamat az adat eltolását, elforgatását, méretezését vagy eldöntését is magában foglalhatja.
+<a name="georeference"></a>**Georeferencia**: A földrajzi adatok vagy képek ismert koordináta-rendszerhez való igazításának folyamata. Ez a folyamat az adatok eltolásával, elforgatásával, méretezésével vagy ferdítésével állhat.
 
-<a name="georss"></a>**GeoRSS**: XML-bővítmény a térbeli adatainak RSS-hírcsatornába való felvételéhez.
+<a name="georss"></a>**GeoRSS**: AZ RSS-hírcsatornákhoz térbeli adatok hozzáadására szolgáló XML-bővítmény.
 
-<a name="gis"></a>**GIS**: a "földrajzi információs rendszer" rövidítése. A leképezési iparág leírására használt általános kifejezés.
+<a name="gis"></a>**GIS**: A "Földrajzi információs rendszer" rövidítése. A leképezési iparág leírására használt általános kifejezés.
 
-<a name="gml"></a>**GML**: földrajzi Markup Language néven is ismert. XML-fájlkiterjesztés a térbeli adatainak tárolásához.
+<a name="gml"></a>**GML**: Földrajz jelölőnyelv néven is ismert. XML-fájlkiterjesztése térbeli adatok tárolására.
 
-<a name="gps"></a>**GPS**: más néven globális helymeghatározási rendszer, amely az eszközöknek a földön való elhelyezésére használt műholdak rendszerét határozza meg. A keringő műholdak olyan jeleket továbbítanak, amelyek lehetővé teszik, hogy a GPS-vevőkészülék bárhol a földön kiszámítsa a saját helyét a trilateration-on keresztül.
+<a name="gps"></a>**GPS**: Más néven global positioning system, egy olyan rendszer, műholdak meghatározására használt eszközök helyzetét a földön. A keringő műholdak olyan jeleket továbbítanak, amelyek lehetővé teszik a GPS-vevő számára, hogy a föld bármely pontján kiszámítsa a saját helyét a trilateráción keresztül.
 
-<a name="gpx"></a>**GPX**: más néven GPS Exchange-formátum, amely egy, a GPS-eszközökről gyakran létrehozott XML-fájlformátum.  
+<a name="gpx"></a>**GPX**: Más néven GPS eXchange formátum, egy XML fájlformátum, amelyet általában GPS-eszközökből hoznak létre.  
 
-<a name="great-circle-distance"></a>**Nagy**hatótávolságú távolság: a legrövidebb távolság a gömb felületén található két pont között.
+<a name="great-circle-distance"></a>**Nagy körtávolság:** A gömb felszínén lévő két pont közötti legrövidebb távolság.
 
-<a name="greenwich-mean-time-gmt"></a>**Greenwichi középidő (GMT)** : a Prime meridián időszaka, amely a Royal Observatory-n keresztül fut Angliában.
+<a name="greenwich-mean-time-gmt"></a>**Greenwichi középidő (GMT):** Az idő az elsődleges meridián, amely végigfut a Royal Observatory Greenwich, Anglia.
 
-<a name="guid"></a>**GUID**: globálisan egyedi azonosító. Egy felület, osztály, típustár, összetevő kategória vagy rekord egyedi azonosítására szolgáló sztring.
+<a name="guid"></a>**GUID**: Globálisan egyedi azonosító. Kapcsolat, osztály, típustár, összetevőkategória vagy rekord egyedi azonosítására szolgáló karakterlánc.
 
 ## <a name="h"></a>H
 
-<a name="haversine-formula"></a>**Haversine Formula**: a gömb két pontja közötti nagy távolság kiszámításához használt közös egyenlet.
+<a name="haversine-formula"></a>**Haversine formula**: Egy gömb két pontja közötti nagy körtávolság kiszámításának gyakori egyenlete.
 
-<a name="hd-maps"></a>**HD Maps**: a High Definition Maps néven is ismert, magas szintű hűségű közúti hálózati információk, például sáv-megjelölések, aláírások és irányjelző fények szükségesek az autonóm vezetéshez.
+<a name="hd-maps"></a>**HD térképek**: Más néven Nagy felbontású térképek, áll a nagy hűség úthálózat információk, mint például a sávjelzések, jelzések, és irányjelző fények szükséges autonóm vezetés.
 
-<a name="heading"></a>**Fejléc**: az a irány, ami mutat vagy szembesül. Lásd még: [csapágy](#heading).
+<a name="heading"></a>**Irány**: Az az irány, amerre valami mutat vagy felé néz. Lásd [még: Csapágy](#heading).
 
-<a name="heatmap"></a>**Hő**: egy adatvizualizáció, amelyben a különböző színek egy adott terület pontjainak sűrűségét jelölik. Lásd még: tematikus Térkép.
+<a name="heatmap"></a>**Hőtérkép**: Olyan adatvizualizáció, amelyben egy színtartomány egy adott terület pontjainak sűrűségét jelöli. Lásd még: Tematikus térkép.
 
-<a name="hybrid-imagery"></a>**Hibrid képek**: olyan műhold-vagy légi rendszerképek, amelyeken a közúti adatok és a címkék bekerülnek.
+<a name="hybrid-imagery"></a>**Hibrid képek:** Olyan műholdas vagy légi felvételek, amelyek felett útadatok és címkék vannak eltitkezve.
 
 ## <a name="i"></a>I
 
-<a name="iana"></a>**IANA**: az internethez rendelt számok szolgáltatójának betűszója. Egy nonprofit csoport, amely felügyeli a globális IP-címek kiosztását.
+<a name="iana"></a>**IANA**: Az Internet Assigned Numbers Authority rövidítése. A globális IP-címfoglalást felügyelő nonprofit csoport.
 
-<a name="isochrone"></a>**Isochrone**: a Isochrone határozza meg azt a körzetet, amelyben valaki egy adott időpontra vonatkozóan egy adott időpontban utazhat egy adott időtartamon belül. Lásd még: [elérhető tartomány](#reachable-range).
+<a name="isochrone"></a>**Isochrone**: Az izochrone határozza meg azt a területet, ahol valaki egy adott időpontban utazhat egy adott helyről bármilyen irányban. Lásd [még: Elérhető tartomány](#reachable-range).
 
-<a name="isodistance"></a>**Isodistance**: adott helyen a isochrone határozza meg azt a területét, ahol valaki egy megadott távolságon belül utazhat bármely irányban. Lásd még: [elérhető tartomány](#reachable-range).
+<a name="isodistance"></a>**Izotávolság**: Adott hely esetén az izochrone határozza meg azt a területet, ahol valaki egy meghatározott távolságon belül bármely irányban utazhat. Lásd [még: Elérhető tartomány](#reachable-range).
 
 ## <a name="k"></a>K
 
-<a name="kml"></a>**KML**: a "kulcslyuk Markup Language" néven is ismert formátum a földrajzi vektoros adatfájlok, például pontok, vonalak és sokszögek tárolására szolgáló közös XML-fájlformátum. 
+<a name="kml"></a>**KML**: Kulcslyuk-jelölőnyelv néven is ismert fájlfájl a földrajzi vektoradatok, például pontok, vonalak és sokszögek tárolására. 
 
 ## <a name="l"></a>L
 
-<a name="landsat"></a>**Landsat**: többspektrumos, a NASA által fejlesztett, a föld képének begyűjtését biztosító műholdak. Ez a képek számos iparágban, például a mezőgazdaságban, az erdészetben és a térképészeti szolgáltatásokban használatosak.
+<a name="landsat"></a>**Landsat**: Multispektrális, föld körüli műholdak által kifejlesztett NASA, hogy összegyűjti képek a föld. Ezt a képet számos iparágban használják, például a mezőgazdaságban, az erdészetben és a térképészetben.
 
-<a name="latitude"></a>**Szélesség**: a szögletes távolság az Egyenlítőtől az Észak-vagy Dél irányában mérve.
+<a name="latitude"></a>**Szélesség:** Az egyenlítőtől fokban mért szögtávolság északon vagy délen.
 
-<a name="level-of-detail"></a>**Részletességi szint**: lásd a nagyítási szintet.
+<a name="level-of-detail"></a>**Részletességi szint**: Lásd a nagyítási szintet.
 
-<a name="lidar"></a>**Sümeg**: betűszó a könnyű észleléshez és a sokrétű használathoz. Olyan távoli érzékelési módszer, amely lézerek használatával méri a távolságokat a tükröző felületektől.
+<a name="lidar"></a>**Lidar**: Betűszó a fény érzékelésére és távolságmérésére. Távérzékelési technika, amely lézerrel méri a fényvisszaverő felületektől való távolságokat.
 
-<a name="linear-interpolation"></a>**Lineáris interpoláció**: ismeretlen érték becslése az ismert értékek közötti lineáris távolság használatával.
+<a name="linear-interpolation"></a>**Lineáris interpoláció**: Ismeretlen érték becslése az ismert értékek közötti lineáris távolság alapján.
 
-<a name="linestring"></a>**LineString**: egy vonal ábrázolására szolgáló geometria. Más néven vonallánc. 
+<a name="linestring"></a>**LineString**: Egy vonal at jelölő geometria. Más néven vonallánc. 
 
-<a name="localization"></a>**Honosítás**: a különböző nyelvek és kultúrák támogatása.
+<a name="localization"></a>**Lokalizáció**: A különböző nyelvek és kultúrák támogatása.
 
-<a name="logistics"></a>**Logisztika**: a személyek, a járművek, a készletek vagy az eszközök koordinált módon történő áthelyezésének folyamata.
+<a name="logistics"></a>**Logisztika**: Az emberek, járművek, készletek vagy eszközök összehangolt mozgatásának folyamata.
 
-<a name="longitude"></a>**Hosszúság**: a szög távolsága a Prime Meridian-től egy keleti vagy nyugati irányban.
+<a name="longitude"></a>**Hosszúság:** Az elsődleges meridiántól fokban mért szögtávolság keleti vagy nyugati irányban.
 
 ## <a name="m"></a>M
 
-<a name="map-tile"></a>**Térkép csempe**: egy Térkép vászon partícióját jelképező téglalap alakú ábra. További információkért lásd a [nagyítási szintek és a csempe rácsa dokumentációját](zoom-levels-and-tile-grid.md).
+<a name="map-tile"></a>**Térképcsempe**: Egy térképvászon partícióját jelölő téglalap alakú kép. További információt a [Nagyítási szintek és a mozaikrács dokumentációjában talál.](zoom-levels-and-tile-grid.md)
 
-<a name="marker"></a>**Marker**: PIN-ként vagy gombostű is ismert, egy ikon, amely egy Térkép pont helyét jelöli.
+<a name="marker"></a>**Jelölő**: Más néven tű vagy nyomótű egy olyan ikon, amely egy ponthelyet jelöl a térképen.
 
-<a name="mercator-projection"></a>**Mercator-vetítés**: egy hengeres leképezési vetület, amely a szokásos leképezési leképezést a hajózási célokra képezi, mert az állandó tanfolyam sorait, vagyis a loxodroma vonalakat jelöli, egyenes szegmensként, amely a szélességi köröket őrzi meg. Az összes strukturált térképes vetítés a Föld felszínének valódi elrendezéséhez képest torzítja a Térkép alakzatait vagy méretét. A Mercator-vetítés eltúlozza az Egyenlítőtől távol eső területeket, például úgy, hogy a kisebb területek nagyobbak lesznek a térképen a pólusok megközelítése során. 
+<a name="mercator-projection"></a>**Mercator-vetület**: Hengeres térképvetület, amely a szabványos térképvetületké vált hajózási célokra, mivel képes állandó pálya vonalait, az úgynevezett rhumb vonalakat egyenes szegmensként ábrázolni, amelyek a meridiánokkal való szögeket megóznak. Minden sík térkép vetület torzítja a térkép formai vagy méreteit a Föld felszínének valódi elrendezéséhez képest. A Mercator vetülete eltúlozza az Egyenlítőtől távol lévő területeket, így a kisebb területek nagyobbak a térképen, ahogy közeledik a pólusokhoz. 
 
-<a name="multilinestring"></a>**MultiLineString**: a LineString objektumok gyűjteményét jelképező geometria. 
+<a name="multilinestring"></a>**MultiLineString**: LineString objektumok gyűjteményét képviselő geometria. 
 
-<a name="multipoint"></a>**Multipoint**: a pont objektumok gyűjteményét jelképező geometria.
+<a name="multipoint"></a>**MultiPoint**: Pontobjektumok gyűjteményét reprezentatot képviselő geometria.
 
-<a name="multipolygon"></a>**Többsokszögű**: a sokszög objektumok gyűjteményét jelképező geometria. Ha például a Hawaii határát szeretné megjeleníteni, az egyes szigeteket sokszögtel kell megrajzolni. Így a Hawaii határa egy többsokszögű.
+<a name="multipolygon"></a>**MultiPoligon**: Sokszögobjektumok gyűjteményét képviselő geometria. Például Hawaii határának megjelenítéséhez minden szigetet sokszög körvonalaz. Így a határ a Hawaii lenne így egy MultiPolygon.
 
-<a name="municipality"></a>**Település**: város vagy város. 
+<a name="municipality"></a>**Község**: Város vagy város. 
 
-<a name="municipality-subdivision"></a>**Önkormányzat alosztálya**: egy önkormányzat, például egy környék vagy egy helyi név (például "Downtown") alosztálya.
+<a name="municipality-subdivision"></a>**Községalbontás**: Egy település alkörzete, például egy szomszédság vagy a helyi terület neve, például "belváros".
 
 ## <a name="n"></a>N
 
-<a name="navigation-bar"></a>**Navigációs sáv**: a nagyítási szint, a szurok, a forgás és az alapszintű Térkép váltásához használt Térkép vezérlőelem-készlete.
+<a name="navigation-bar"></a>**Navigációs sáv**: A térképen a nagyítási szint, a hangmagasság, az elforgatás és az alaptérképréteg beállítására szolgáló vezérlőkészlet.
 
-<a name="nearby-search"></a>**Közeli keresés**: olyan térbeli lekérdezés, amely egy pontról rögzített egyenes távolságú (például a varjú legyek) távolságra keres.
+<a name="nearby-search"></a>**Közeli keresés**: Olyan térbeli lekérdezés, amely egy ponttól rögzített egyenes vonalbeli távolságot keres (légvonalban).
 
-<a name="neutral-ground-truth"></a>**Semleges alapigazság**: egy Térkép, amely a címkét az általa képviselt régió hivatalos nyelvén jeleníti meg, és ha elérhető, helyi parancsfájlokban.
+<a name="neutral-ground-truth"></a>**Semleges földi igazság:** Olyan térkép, amely a címkéket az általa képviselt régió hivatalos nyelvén és a helyi parancsfájlokban jeleníti meg, ha rendelkezésre állnak.
 
 ## <a name="o"></a>O
 
-<a name="origin"></a>**Forrás**: egy kezdőpont vagy hely, ahol a felhasználó.
+<a name="origin"></a>**Origin**: Az a kezdőpont vagy hely, ahol a felhasználó van.
 
 ## <a name="p"></a>P
 
-<a name="panning"></a>**Pásztázás**: a Térkép bármilyen irányban történő mozgatásának folyamata, miközben állandó nagyítási szintet tart fenn.
+<a name="panning"></a>**Pásztázás**: A térkép bármely irányba történő mozgatásának folyamata, miközben állandó nagyítási szintet tart fenn.
 
-<a name="parcel"></a>**Parcella**: terület vagy tulajdonság határa.
+<a name="parcel"></a>**Parcella**: Földterület vagy ingatlan határa.
 
-<a name="pitch"></a>**Pitch**: a Térkép dőlésének értéke a függőlegesen, ahol a 0 a térképen egyenesen lefelé keres.
+<a name="pitch"></a>**Pitch**: A térkép dőlésének mértéke ahhoz a függőlegeshez viszonyítva, ahol a 0 egyenesen lefelé néz a térképen.
 
-<a name="point"></a>**Pont**: a térképen egyetlen pozíciót jelölő geometria. 
+<a name="point"></a>**Pont**: Olyan geometria, amely egyetlen pozíciót jelöl a térképen. 
 
-<a name="points-of-interest-poi"></a>**Érdekes helyek (POI)** : egy üzleti, mérföldkő vagy közös érdekű hely.
+<a name="points-of-interest-poi"></a>**Érdekes helyek (POI):** Üzleti vállalkozás, tájékozódási pont vagy közös nevező.
 
-<a name="polygon"></a>**Sokszög**: egy Térkép területét jelképező szilárd geometria. 
+<a name="polygon"></a>**Sokszög**: A térkép egy területének jelölő szilárdtest-geometria. 
 
-<a name="polyline"></a>**Vonallánc**: vonal ábrázolására szolgáló geometria. Más néven LineString. 
+<a name="polyline"></a>**Vonallánc: Vonallánc:** Vonalat ábrázoló geometria. LineString néven is ismert. 
 
-<a name="position"></a>**Pozíció**: egy pont hosszúsági, szélességi és magassági (x, y, z koordinátái).
+<a name="position"></a>**Pozíció:** Egy pont hosszúsági, szélességi és magassági (x,y,z koordinátái) száma.
 
-<a name="post-code"></a>**Irányítószám: lásd**a [postai irányítószámot](#postal-code).
+<a name="post-code"></a>**Irányítószám**: [Lásd: Irányítószám](#postal-code).
 
-<a name="postal-code"></a>**Irányítószám**: több betű vagy szám, vagy mindkettő egy adott formátumban. A postai irányítószámot egy ország/régió postai szolgáltatása használja a földrajzi területek zónákra osztására a levelezés leegyszerűsítése érdekében.
+<a name="postal-code"></a>**Irányítószám:** Betűk vagy számok sorozata, vagy mindkettő, meghatározott formátumban. Az irányítószámot egy ország/régió postai szolgáltatása használja a földrajzi területek zónákra osztására a postai küldemények kézbesítésének egyszerűsítése érdekében.
 
-<a name="primary-key"></a>**Elsődleges kulcs**: a Azure Maps megosztott kulcsú hitelesítéshez megadott két előfizetési kulcs első része. Lásd: [megosztott kulcsos hitelesítés](#shared-key-authentication).
+<a name="primary-key"></a>**Elsődleges kulcs:** Az Azure Maps megosztott kulcshitelesítéshez biztosított két előfizetési kulcs közül az első. Lásd: [Megosztott kulcshitelesítés](#shared-key-authentication).
 
-<a name="prime-meridian"></a>**Prime meridián**: a hosszúság 0 fokos hosszúságú vonalát jelöli. A hosszúsági értékek általában akkor csökkennek, ha a nyugati irányba utaznak, amíg 180 fok, és a keleti irányban a-180-fokban való utazás megnövekszik. 
+<a name="prime-meridian"></a>**Prime meridián**: A hosszúsági vonal, amely 0 fokos hosszúsági fokot jelent. Általában a hosszúsági értékek csökkennek, ha nyugatfelé haladva 180 fokig, és növeli, ha keleti irányban utazik - 180 fokra. 
 
-<a name="prj"></a>**PRJ**: egy szövegfájl, amely gyakran tartalmaz egy alakzatfájl-fájlt, amely az adathalmazban található, előre jelzett koordináta-rendszerrel kapcsolatos információkat tartalmazza.
+<a name="prj"></a>**PRJ**: Olyan szövegfájl, amely gyakran egy Shapefile fájlt kísér, amely az adatkészlet tervezett koordináta-rendszerére vonatkozó információkat tartalmazza.
 
-<a name="projection"></a>**Kivetítés**: egy térképes kivetítésen alapuló tervezett koordináta-rendszer, például a transzverzális Mercator, a Albers egyenlő terület és a Robinson. Ezek lehetővé teszik a Föld gömb alakú felületének leképezését egy kétdimenziós Descartes koordináta-síkra. A tervezett koordináta-rendszereket időnként Térkép-kivetítésnek is nevezzük.
+<a name="projection"></a>**Vetítés**: Térképvetületen alapuló tervezett koordináta-rendszer, például keresztirányú Mercator, Albers egyenlő terület és Robinson. Ezek lehetővé teszik a Föld gömbfelszínének térképeit egy kétdimenziós descartes-i koordinátasíkra. A tervezett koordináta-rendszereket néha térkép-vetületnek is nevezik.
 
 ## <a name="q"></a>Q
 
-<a name="quadkey"></a>**Quadkey**: egy quadtree-elrendezési rendszeren belüli csempéhez tartozó Base-4 cím index. További információt a [nagyítási szintek és a csempe rácsa](zoom-levels-and-tile-grid.md) dokumentációjában talál.
+<a name="quadkey"></a>**Négykulcsos**: Négyfa-csempén belüli csempe 4-es címindexe. További információt a [Szintek nagyítása és a mozaikrács](zoom-levels-and-tile-grid.md) dokumentációja című témakörben talál.
 
-<a name="quadtree"></a>**Quadtree**: olyan adatstruktúra, amelyben az egyes csomópontok pontosan négy gyermeket foglalnak magukban. A Azure Mapsben használt csemperendszer olyan quadtree-struktúrát használ, mint a felhasználó egy szinten nagyítja fel az egyes Térkép csempéket négy alcsempére.  További információt a [nagyítási szintek és a csempe rácsa](zoom-levels-and-tile-grid.md) dokumentációjában talál.
+<a name="quadtree"></a>**Négyfa:** Olyan adatstruktúra, amelyben minden csomópontnak pontosan négy gyermeke van. Az Azure Mapsben használt mozaikrendszer egy négyfa-struktúrát használ, amely a felhasználó egy szintre nagyításával minden egyes térképcsempe négy alajtóra oszlik.  További információt a [Szintek nagyítása és a mozaikrács](zoom-levels-and-tile-grid.md) dokumentációja című témakörben talál.
 
-<a name="queries-per-second-qps"></a>**Lekérdezések másodpercenként (QPS)** : egy adott szolgáltatás vagy platform számára elérhető lekérdezések és kérések száma egy másodpercen belül. 
+<a name="queries-per-second-qps"></a>**Másodpercenkénti lekérdezések (QPS)**: A szolgáltatásra vagy platformra egy másodpercen belül benyújtható lekérdezések vagy kérelmek száma. 
 
 ## <a name="r"></a>R
 
-<a name="radial-search"></a>**Sugárirányú keresés**: olyan térbeli lekérdezés, amely egy pontról rögzített egyenes távolságú (például a varjú legyek) távolságra keres. 
+<a name="radial-search"></a>**Sugaras keresés**: Olyan térbeli lekérdezés, amely egy ponttól rögzített egyenes vonalbeli távolságot keres (légvonalban). 
 
-<a name="raster-data"></a>**Raszteres adatok**: olyan cellák (vagy képpontok) mátrixa, amely sorokba és oszlopokba (vagy rácsba) van rendezve, ahol minden cella olyan értéket tartalmaz, amely információkat jelképez, például a hőmérsékletet. A raszterek közé tartoznak a digitális légi fényképek, a szatellitekről, a digitális képekről és a beolvasott térképekről származó képek.
+<a name="raster-data"></a>**Raszteradatok**: Olyan cellák (vagy képpontok) mátrixa, amelyek sorokba és oszlopokba (vagy rácsba) vannak rendezve, ahol minden cella olyan értéket tartalmaz, amely az adatokat, például a hőmérsékletet jelöli. Raster's közé digitális légi fényképek, képek műholdak, digitális képek, és a beolvasott térképeket.
 
-<a name="raster-layer"></a>**Raszteres réteg**: raszteres képekből álló csempe réteg.
+<a name="raster-layer"></a>**Raszterréteg**: Raszterképekből álló mozaikréteg.
 
-<a name="reachable-range"></a>**Elérhető tartomány**: egy elérhető tartomány határozza meg azt a területét, ahol valaki utazhat egy adott időtartamon vagy távolságon belül, egy adott hely bármely irányában. Lásd még: [Isochrone](#isochrone) és [Isodistance](#isodistance).
+<a name="reachable-range"></a>**Elérhető tartomány**: Az elérhető tartomány határozza meg azt a területet, ahol valaki egy adott időn vagy távolságon belül utazhat, a szállítási mód hoz, bármely irányban egy helyről. Lásd még: [Isochrone](#isochrone) és [Isodistance](#isodistance).
 
-<a name="remote-sensing"></a>**Távoli érzékelés**: az érzékelő adatainak távolságból való összegyűjtésének és értelmezésének folyamata.
+<a name="remote-sensing"></a>**Távérzékelés**: Az érzékelőadatok távolról történő gyűjtésének és értelmezésének folyamata.
 
-<a name="rest-service"></a>**Rest-szolgáltatás**: a betűszó Rest áll a reprezentációs állapot átviteléhez. A REST-szolgáltatás egy URL-alapú webszolgáltatás, amely az alapszintű webes technológiára támaszkodik, a leggyakoribb módszerek a HTTP GET és a POST kérések. Az ilyen típusú szolgáltatások sokkal gyorsabbak és kisebbek, mint a hagyományos SOAP-alapú szolgáltatások.
+<a name="rest-service"></a>**REST szolgáltatás**: A REST betűszó a reprezentációs állapotátvitelrövidítés. A REST-szolgáltatás egy URL-alapú webszolgáltatás, amely az alapvető webes technológiára támaszkodik a kommunikációhoz, a leggyakoribb módszer a HTTP GET és a POST kérelmek. Az ilyen típusú szolgáltatások általában nekem sokkal gyorsabb és kisebb, mint a hagyományos SOAP-alapú szolgáltatások.
 
-<a name="reverse-geocode"></a>**Fordított geocode**: az a folyamat, amelynek során egy koordinátákat kell megállapítani, és meg kell határozni, hogy mely címekre vonatkozik a Térkép.
+<a name="reverse-geocode"></a>**Fordított geokód**: A koordináta átvételének és annak a címnek a meghatározásának folyamata, amely a térképen van.
 
-<a name="reproject"></a>**Újratervezés**: lásd az [átalakítást](#transformation).
+<a name="reproject"></a>**Reproject**: [Lásd: Átalakítás](#transformation).
 
-<a name="rest-service"></a>**Rest-szolgáltatás**: betűszó a reprezentációs állapot átviteléhez. Architektúra egy decentralizált, elosztott környezetben található társak közötti információcseréhez. A REST lehetővé teszi, hogy a különböző számítógépeken lévő programok az operációs rendszertől vagy a platformtól függetlenül kommunikáljanak egymással. A szolgáltatások küldhetnek Hypertext Transfer Protocol (HTTP) kérelmet egy egységes erőforrás-lokátornak (URL), és visszakérhetik az adatforrást.
+<a name="rest-service"></a>**REST szolgáltatás**: A képviseleti állapot átvitelének rövidítése. Egy decentralizált, elosztott környezetben lévő társak közötti információcsere architektúrája. A REST lehetővé teszi, hogy a különböző számítógépeken futó programok az operációs rendszertől vagy platformtól függetlenül kommunikáljanak. A szolgáltatás http-kérelmet küldhet egy egységes erőforrás-lokátornak (URL), és visszaszerezheti az adatokat.
 
-<a name="route"></a>**Route**: két vagy több helyszín közötti elérési út, amely további információkat is tartalmazhat, például a fordulópontokra vonatkozó utasításokat az útvonal mentén.
+<a name="route"></a>**Útvonal**: Két vagy több hely közötti útvonal, amely további információkat is tartalmazhat, például az útvonal mentén lévő útpontokra vonatkozó utasításokat.
 
-<a name="requests-per-second-rps"></a>**Kérelmek/másodperc (RPS)** : [lekérdezések másodpercenkénti száma (QPS)](#queries-per-second-qps). 
+<a name="requests-per-second-rps"></a>**Kérelmek másodpercenként (RPS)**: [Lásd: Lekérdezések másodpercenként (QPS)](#queries-per-second-qps). 
 
-<a name="rss"></a>**RSS**: betűszó a Really Simple Syndication, Resource Description FRAMEWORK (RDF) webhelyek összefoglalásához vagy a részletes hely összegzéséhez a forrástól függően. Egy egyszerű, strukturált XML-formátum a tartalmak különböző webhelyek közötti megosztásához. Az RSS-dokumentumok olyan kulcsfontosságú metaadatokat tartalmaznak, mint például a szerző, a dátum, a cím, a rövid leírás és a Hypertext-hivatkozás. Ez az információ segít a felhasználónak (vagy egy RSS-közzétevő szolgáltatásnak) eldönteni, hogy milyen anyagokat érdemes további vizsgálatra.
+<a name="rss"></a>**RSS**: A forrástól függően az igazán egyszerű szindikálás rövidítése, az Erőforrás-leírás keretrendszerének (RDF) webhelyösszegzése vagy a bővített webhely összegzése. Egyszerű, strukturált XML-formátum a tartalom különböző webhelyek közötti megosztásához. Az RSS-dokumentumok olyan kulcsfontosságú metaadat-elemeket tartalmaznak, mint a szerző, a dátum, a cím, a rövid leírás és a hiperszöveges hivatkozás. Ez az információ segít a felhasználónak (vagy egy RSS-megjelenítői szolgáltatásnak) eldönteni, hogy mely anyagokat érdemes további vizsgálatra.
 
 ## <a name="s"></a>S
 
-<a name="satellite-imagery"></a>**Műholdképek**: a sík és a műholdak által rögzített, lefelé mutató képek.
+<a name="satellite-imagery"></a>**Műholdas képek:** Olyan képek, amelyeket a repülőgépek és a műholdak rögzítettek, amelyek egyenesen lefelé mutatnak.
 
-<a name="secondary-key"></a>**Másodlagos kulcs**: a Azure Maps megosztott kulcsú hitelesítéshez megadott két előfizetési kulcs második másodperce. Lásd: [megosztott kulcsos hitelesítés](#shared-key-authentication).
+<a name="secondary-key"></a>**Másodlagos kulcs:** Az Azure Maps megosztott kulcshitelesítéshez biztosított két előfizetési kulcs közül a második. Lásd: [Megosztott kulcshitelesítés](#shared-key-authentication).
 
-<a name="shapefile-shp"></a>**Alakzatfájl (SHP)** : más néven ESRI-alakzatfájl, egy vektoros adattárolási formátum, amely a földrajzi funkciók helyét, alakját és attribútumait tárolja. A alakzatfájl a rendszer a kapcsolódó fájlok készletében tárolja.
+<a name="shapefile-shp"></a>**Shapefile (SHP)**: Esri shapefile néven is ismert vektoradat-tárolási formátum a földrajzi jellemzők helyének, alakjának és attribútumainak tárolására. Az alakzatfájl kapcsolódó fájlok készletében van tárolva.
 
-<a name="shared-key-authentication"></a>**Megosztott kulcsos hitelesítés**: a megosztott kulcsos hitelesítés a Azure Maps fiók által generált kulcsok átadását adja meg minden egyes Azure Mapsre vonatkozó kéréssel. Ezeket a kulcsokat gyakran előfizetési kulcsoknak nevezzük. Javasoljuk, hogy a kulcsokat rendszeresen újragenerálja a biztonsághoz. Két kulcs van megadva, így a kapcsolatok egy kulccsal kezelhetők, miközben újragenerálja a másikat. A kulcsok újragenerálása után frissítenie kell minden olyan alkalmazást, amely hozzáfér ehhez a fiókhoz az új kulcsok használatához. A Azure Maps hitelesítéssel kapcsolatos további tudnivalókért tekintse meg a [Azure Maps és az Azure ad](azure-maps-authentication.md) és [a hitelesítés kezelése a Azure Maps-ben](how-to-manage-authentication.md)című témakört.
+<a name="shared-key-authentication"></a>**Megosztott kulcsú hitelesítés:** A megosztott kulcsú hitelesítés az Azure Maps-fiók által generált kulcsok átadásán alapul, minden egyes kérelemnél az Azure Maps számára. Ezeket a kulcsokat gyakran előfizetési kulcsoknak nevezik. A kulcsok biztonsága érdekében ajánlott rendszeresen újragenerálni a kulcsokat. Két kulcs áll rendelkezésre, így az egyik kulcs használatával karbantarthatja a kapcsolatokat a másik újragenerálása közben. A kulcsok újragenerálásakor frissítenie kell a fiókot elérő alkalmazásokat az új kulcsok használatához. Ha többet szeretne megtudni az Azure Maps-hitelesítésről, olvassa el az Azure Maps és az [Azure AD](azure-maps-authentication.md) és [a Hitelesítés kezelése című témakört az Azure Mapsben.](how-to-manage-authentication.md)
 
-<a name="software-development-kit-sdk"></a>**Szoftverfejlesztői készlet (SDK)** : dokumentáció, mintakód és minta alkalmazások gyűjteménye, amelyek segítségével a fejlesztők API-t használhatnak alkalmazások készítéséhez.
+<a name="software-development-kit-sdk"></a>**Szoftverfejlesztői készlet (SDK):** Dokumentációk, mintakódok és mintaalkalmazások gyűjteménye, amelyek segítségével a fejlesztők API-t használhatnak alkalmazások készítéséhez.
 
-<a name="spherical-mercator-projection"></a>**Gömb Mercator-vetítés**: lásd a [web Mercator](#web-mercator)-t. 
+<a name="spherical-mercator-projection"></a>**Gömb mercator vetítés**: [Lásd: Web Mercator](#web-mercator). 
 
-<a name="spatial-query"></a>**Térbeli lekérdezés**: egy olyan szolgáltatásra irányuló kérelem, amely térbeli műveletet hajt végre. Például egy kör alakú keresés vagy egy útvonalon történő keresés.
+<a name="spatial-query"></a>**Térbeli lekérdezés**: Térbeli műveletet végző szolgáltatáskérés. Például radiális keresés, vagy útvonalkeresés.
 
-<a name="spatial-reference"></a>**Térbeli hivatkozás**: a földrajzi entitások pontos megtalálásához használt koordináta-alapú helyi, regionális vagy globális rendszer. Meghatározza azt a koordináta-rendszert, amely a Térkép-koordinátákat a valós világ helyeihez rendeli. A térbeli hivatkozások biztosítják a különböző rétegekből vagy forrásokból származó térbeli adatok integrálását a pontos megtekintéshez vagy elemzéshez. A Azure Maps a következő [EPSG használja: 3857](https://epsg.io/3857) koordináta-hivatkozási rendszer és WGS 84 a bemeneti geometriai adatokhoz.
+<a name="spatial-reference"></a>**Térbeli hivatkozás**: A földrajzi entitások pontos megkeresésére használt koordináta-alapú helyi, regionális vagy globális rendszer. Ez határozza meg a koordináta-rendszert, amely a térképkoordinátákat a valós világ helyeihez kapcsolja. A térbeli hivatkozások biztosítják, hogy a különböző rétegekből vagy forrásokból származó térbeli adatok integrálhatók legyenek a pontos megtekintéshez vagy elemzéshez. Az Azure Maps az [EPSG:3857](https://epsg.io/3857) koordináta-referenciarendszert és a WGS 84-et használja a bemeneti geometriai adatokhoz.
 
-<a name="sql-spatial"></a>**SQL térbeli**: az SQL Azureba és SQL Server 2008-es vagy újabb verzióba épített térbeli funkciókra hivatkozik. Ez a térbeli funkció olyan .NET-függvénytárként is elérhető, amely a SQL Servertól függetlenül is használható. További információt a [térbeli adatok (SQL Server) dokumentációjában](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) talál.
+<a name="sql-spatial"></a>**SQL spatial**: Az SQL Azure-ba és az SQL Server 2008-ba és újabb abból épített térbeli funkciókra utal. Ez a térbeli funkció .NET-kódtárként is elérhető, amely az SQL Server kiszolgálótól függetlenül használható. További információt a [Spatial Data (SQL Server) dokumentációjában](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) talál további információkért.
 
-<a name="subscription-key"></a>**Előfizetési kulcs**: lásd a [megosztott kulcsos hitelesítést](#shared-key-authentication).
+<a name="subscription-key"></a>**Előfizetési kulcs**: Lásd: [Megosztott kulcshitelesítés](#shared-key-authentication).
 
-<a name="synchronous-request"></a>**Szinkron kérés**: egy HTTP-kérelem megnyitja a kapcsolatokat, és megvárja a választ. A böngészők korlátozzák az oldalon elérhető egyidejű HTTP-kérelmek számát. Ha egyszerre több hosszú ideig futó szinkron kérést hajt végre, akkor ez a korlát elérhető. A rendszer késlelteti a kérelmeket, amíg az egyik másik kérelem nem fejeződött be.
+<a name="synchronous-request"></a>**Szinkron kérés:** Egy HTTP-kérelem megnyit egy kapcsolatot, és várja a választ. A böngészők korlátozzák az egy lapról létrehozható egyidejű HTTP-kérelmek számát. Ha egyszerre több hosszú ideig futó szinkron kérés történik, akkor ez a korlát elérhető. A kérelmek et a többi kérés teljesítéséig elhalasztjuk.
 
 ## <a name="t"></a>T
 
-<a name="telematics"></a>**Telematika**: információk küldése, fogadása és tárolása a telekommunikációs eszközökön keresztül a távoli objektumok vezérlésének hatásával együtt. 
+<a name="telematics"></a>**Telematika:** Információk küldése, fogadása és tárolása távközlési eszközökön keresztül, valamint a távoli tárgyak vezérlésének megvalósítása. 
 
-<a name="temporal-data"></a>**Időbeli adatok**: az adatok, amelyek kifejezetten az időpontokra vagy dátumokra utalnak. Az időbeli adatkezelés diszkrét eseményekre, például villámokra is utalhat; objektumok, például vonatok mozgatása; vagy ismétlődő megfigyelések, például a forgalmi érzékelők száma.
+<a name="temporal-data"></a>**Időbeli adatok**: Olyan adatok, amelyek kifejezetten az időpontokra vagy dátumokra vonatkoznak. Az időbeli adatok különálló eseményekre, például villámcsapásokra utalhatnak; mozgó tárgyak, például vonatok; vagy ismételt megfigyelések, mint például a forgalmi érzékelők számai.
 
-<a name="terrain"></a>**Terep**: egy olyan terület, amely egy adott jellemzővel rendelkezik, például a homokos terepen vagy a hegyvidéki terepen.
+<a name="terrain"></a>**Terep**: Olyan földterület, amelynek különleges jellemzője, mint például a homokos vagy a hegyvidéki terep.
 
-<a name="thematic-maps"></a>**Tematikus térképek**: egy tematikus Térkép egy egyszerű Térkép, amely egy földrajzi területtel kapcsolatos témát tükröz. Az ilyen típusú leképezések gyakori forgatókönyve, hogy bizonyos mérőszámok alapján a felügyeleti régiókat, például az országokat/régiókat kell megszínezni.
+<a name="thematic-maps"></a>**Tematikus térképek**: A tematikus térkép egy egyszerű térkép készült, hogy tükrözze a témát egy földrajzi területen. Az ilyen típusú leképezések gyakori forgatókönyve a felügyeleti régiók, például az országok/régiók színezése bizonyos adatmutatók alapján.
 
-<a name="tile-layer"></a>**Csempe rétege**: a Térkép csempéi (téglalap alakú szakasz) egy folytonos rétegbe való összeállításával megjelenített réteg. A csempék raszteres képcsempék vagy vektoros csempék. A raszteres csempék rétegei általában az idő előtt jelennek meg, és képként tárolódnak a kiszolgálón. A raszteres csempék rétegei nagy tárterületet használhatnak. A vektoros csempe rétegei az ügyfélalkalmazás közelében valós időben jelennek meg. Így a kiszolgálóoldali tárolási követelmények kisebbek a vektoros csempék rétegeinél.
+<a name="tile-layer"></a>**Mozaikréteg**: Olyan réteg, amely úgy jelenik meg, hogy térképcsempéket (téglalap alakú szakaszokat) folyamatos rétegbe szerel össze. A csempék raszteres képmozaikok vagy vektormozaikok. A rasztermozaik-rétegek általában előre jelennek meg, és a rendszer képekként tárolja őket a kiszolgálón. A raszteres mozaikrétegek nagy tárhelyet használhatnak. A vektormozaik-rétegek közel valós időben jelennek meg az ügyfélalkalmazáson belül. Így a kiszolgálóoldali tárolási követelmények kisebbek a vektormozaik-rétegek esetében.
 
-<a name="time-zone"></a>**Időzóna**: a világ egyik régiója, amely a jogi, kereskedelmi és közösségi célokra egységes, általános időt vesz figyelembe. Az időzónák általában követik az országok/régiók és az albontások határait.
+<a name="time-zone"></a>**Időzóna**: A világ azon régiója, amely jogi, kereskedelmi és társadalmi célokra egységes standard időt tart be. Az időzónák általában az országok/régiók és azok alkörzeteinek határait követik.
 
-<a name="transaction"></a>**Tranzakció**: a Azure Maps tranzakciós licencelési modellt használ, ahol;
+<a name="transaction"></a>**Tranzakció**: Az Azure Maps tranzakciós licencelési modellt használ, ahol;
 
-- Egy tranzakció jön létre minden 15 térképhez vagy a kért forgalmi csempéhez.
-- Egy tranzakció jön létre minden API-híváshoz Azure Maps egyik szolgáltatásához. A keresés és az Útválasztás Azure Maps szolgáltatásra mutat példát.
+- Minden 15 kért térkép- vagy forgalmi csempéhez egy tranzakció jön létre.
+- Minden API-híváshoz egy tranzakció jön létre az Azure Maps egyik szolgáltatásához. A keresés és az útválasztás példák az Azure Maps szolgáltatásra.
 
-<a name="transformation"></a>**Átalakítás**: az Adatátalakítási folyamat különböző földrajzi koordináta-rendszerek között. Előfordulhat például, hogy van néhány, az Egyesült Királyságban rögzített és a OSGB 1936 földrajzi koordináta-rendszeren alapuló információ. A Azure Maps a [EPSG: 3857](https://epsg.io/3857) koordináta hivatkozási rendszer WGS84-változatát használja. Az adatok megfelelő megjelenítéséhez az szükséges, hogy a koordinátáit az egyik rendszerről a másikra alakítsa át.
+<a name="transformation"></a>**Átalakítás**: Az adatok különböző földrajzi koordináta-rendszerek közötti átalakításának folyamata. Előfordulhat például, hogy az Egyesült Királyságban rögzített adatok az OSGB 1936 földrajzi koordináta-rendszerén alapulnak. Az Azure Maps a WGS84 [EPSG:3857](https://epsg.io/3857) koordináta-referenciarendszer-változatát használja. Az adatok helyes megjelenítéséhez a koordinátákat egyik rendszerről a másikra kell átalakítani.
 
-<a name="traveling-salesmen-problem-tsp"></a>**Utazási ügynökökkel kapcsolatos probléma (TK)** : egy Hamilton áramköri probléma, amelyben az üzletkötőnek meg kell találnia a leghatékonyabb módot a leállások sorozatának megkeresésére, majd vissza kell térnie a kiindulási helyhez.  
+<a name="traveling-salesmen-problem-tsp"></a>**Utazó salesmen probléma (TSP)**: A Hamilton-áramkör probléma, amelyben egy eladó meg kell találni a leghatékonyabb módja annak, hogy látogassa meg egy sor megáll, majd térjen vissza a kiindulási helyre.  
 
-<a name="trilateration"></a>**Trilateration**: egy pont pozíciójának meghatározása a Föld felszínén, két további pontra vonatkozóan, a három pont közötti távolság mérésével.
+<a name="trilateration"></a>**Trilateráció**: A földfelszínen lévő pont helyzetének két másik ponthoz viszonyítva történő meghatározásának folyamata, mindhárom pont közötti távolság mérésével.
 
-<a name="turn-by-turn-navigation"></a>**Kapcsolja be a navigációt**: egy olyan alkalmazás, amely útvonalat ad meg az útvonal egyes lépéseihez, mivel a felhasználók a következő manővert közelítik meg.
+<a name="turn-by-turn-navigation"></a>**Turn-by-turn navigáció**: Olyan alkalmazás, amely útvonalutasításokat biztosít az útvonal minden egyes lépéséhez, ahogy a felhasználók közelednek a következő manőverhez.
 
 ## <a name="v"></a>V
 
-<a name="vector-data"></a>**Vektoros**adatértékek: a pontokkal, vonalakkal vagy sokszögekkel jelölt adathalmazok koordinálása.
+<a name="vector-data"></a>**Vektoradatok:** Pontok, vonalak vagy sokszögekként ábrázolt koordináta alapú adatok.
 
-<a name="vector-tile"></a>**Vector csempe**: egy nyílt adatspecifikáció a térinformatikai vektoros adatok tárolásához ugyanazzal a csempe-rendszerrel, mint a Térkép vezérlőelem. Lásd még: [csempe réteg](#tile-layer).
+<a name="vector-tile"></a>**Vektorcsempe**: Nyílt adatspecifikáció a térinformatikai vektoradatok tárolására, ugyanazt a mozaikrendszert használva, mint a térképvezérlő. Lásd még: [Mozaikréteg](#tile-layer).
 
-<a name="vehicle-routing-problem-vrp"></a>**Jármű-útválasztási probléma (VRP)** : a problémák olyan csoportja, amely során a rendszer kiszámítja a járműpark megrendelt útvonalait a megkötések készletének figyelembevételével. Ezek a korlátozások magukban foglalhatják a kézbesítési időt, a több útvonal-kapacitást és az utazási időtartamra vonatkozó korlátozásokat.
+<a name="vehicle-routing-problem-vrp"></a>**Járműút-probléma (VRP):** Olyan problémaosztály, amelyben egy járműpark rendezett útvonalait úgy számítják ki, hogy a korlátozások at figyelembe véve figyelembe veszik. Ezek a korlátok magukban foglalhatják a kézbesítési időablakokat, a több útvonalkapacitást és az utazás időtartamának korlátozását.
 
-<a name="voronoi-diagram"></a>**Voronoi ábra**: a területekre vagy cellákra mutató, a geometriai objektumokat tartalmazó partíciók, amelyek általában a pontok funkciói. Ezeknek a celláknak vagy sokszögeknek meg kell felelniük a Delaunay-háromszögek feltételeinek. Egy adott helyen belüli összes hely közelebb van az objektumhoz, mint a készletben lévő többi objektumhoz. A Voronoi-diagramok gyakran használják a földrajzi funkciók körét befolyásoló területeket. 
+<a name="voronoi-diagram"></a>**Voronoi diagram**: A tér felosztása területekre, vagy sejtekre, amelyek geometriai objektumokat, általában pontjellemzőket foglalnak körül. Ezeknek a sejteknek vagy sokszögeknek meg kell felelniük a Delaunay háromszögek kritériumainak. Egy területen belül minden hely közelebb van a körülvett objektumhoz, mint a készlet bármely más objektumához. Voronoi diagramok gyakran használják körülhatotják területek befolyása körül földrajzi jellemzők. 
 
 ## <a name="w"></a>W
 
-<a name="waypoint"></a>**Útpont**: az útpont egy meghatározott földrajzi hely, amelyet a hosszúság és a szélesség a navigációs célokra használ. Gyakran használják arra a pontra, amelyben valaki navigál az útvonalon.
+<a name="waypoint"></a>**Útpont**: Az útpont egy meghatározott földrajzi hely, amelyet a hosszúság és a szélesség határoz meg, és amelyet navigációs célokra használnak. Gyakran egy olyan pontot jelölnek, ahol valaki végignavigál egy útvonalon.
 
-<a name="waypoint-optimization"></a>**Útpont optimalizálás**: az útpontok egy halmazának átrendezésének folyamata az összes megadott útpont eléréséhez szükséges utazási idő vagy távolság minimálisra csökkentése érdekében. Az optimalizálás összetettségétől függően ez az optimalizálás gyakran az [Utazási ügynökök problémája](#traveling-salesmen-problem-tsp) vagy a [jármű-útválasztási probléma](#vehicle-routing-problem-vrp).
+<a name="waypoint-optimization"></a>**Útpont optimalizálása**: Az útpontok halmazának átrendezése az összes megadott útponton való áthaladáshoz szükséges utazási idő vagy távolság minimalizálása érdekében. Az optimalizálás összetettségétől függően ezt az optimalizálást gyakran [utazási üzletemberek problémájának](#traveling-salesmen-problem-tsp) vagy [járműútválasztási problémának nevezik.](#vehicle-routing-problem-vrp)
 
-<a name="web-map-service-wms"></a>**Web Map szolgáltatás (WMS)** : a WMS egy nyílt földrajzi konzorcium (OGC) szabvány, amely a képalapú térképi szolgáltatásokat határozza meg. A WMS szolgáltatások a térképen igény szerint meghatározott területekhez biztosítanak leképezési képeket. A képek tartalmazhatnak előre megjelenített jelképeket, és a szolgáltatás által definiált különböző elnevezett stílusok egyikében is megjeleníthető.
+<a name="web-map-service-wms"></a>**Webmap-szolgáltatás (WMS):** A WMS egy nyílt földrajzi konzorciumi (OGC) szabvány, amely képalapú térképszolgáltatásokat határoz meg. A WMS-szolgáltatások igény szerint térképképeket biztosítanak a térkép bizonyos területeihez. A képek előre renderelt szimbólumokat tartalmaznak, és a szolgáltatás által meghatározott számos elnevezett stílus egyikében jelenhetnek meg.
 
-<a name="web-mercator"></a>**Web Mercator**: más néven gömb-Mercator kivetítés. Ez a Mercator-vetítés enyhe változata, amely elsősorban a webes leképezési programokban használatos. Ugyanazokat a képleteket használja, mint a szabványos Mercator-leképezés, amelyet a kisméretű térképekhez használtak. A web Mercator azonban a gömb képleteit minden skálán használja, de a nagyméretű Mercator-térképek általában a kivetítés ellipsoidal formáját használják. Az eltérés a globális méretekben nem észlelhető, de a helyi területek térképeit kiváltva kis mértékben eltér a valódi ellipsoidal Mercator-térképektől, ugyanazon a skálán.
+<a name="web-mercator"></a>**Web Mercator**: Más néven gömb mercator vetítés. Ez egy kis változata a Mercator vetítés, az egyik elsősorban a web-alapú térképészeti programok. Ugyanazokat a képleteket használja, mint a szabványos Mercator vetület, mint a kis léptékű térképekhez. A Web Mercator azonban a gömb alakú képleteket használja minden léptékben, de a nagyméretű Mercator térképek általában a vetület ellipszoid formáját használják. Az eltérés globális szinten észrevehetetlen, de a helyi területek térképei kissé eltérnek a valódi ellipszis Mercator térképektől, azonos léptékben.
 
-<a name="wgs84"></a>**WGS84**: a Térkép felszínén található térbeli koordinátákat használó állandók halmaza. A WGS84 Datum a legtöbb online leképezési szolgáltató és a GPS-eszköz által használt standard. A Azure Maps a [EPSG: 3857](https://epsg.io/3857) koordináta hivatkozási rendszer WGS84-változatát használja.
+<a name="wgs84"></a>**WGS84**: A térbeli koordinátáknak a térkép felszínén lévő helyekkel való kapcsolatára használt állandók halmaza. A WGS84 adat a legtöbb online térképszolgáltató és GPS-eszköz által használt szabvány. Az Azure Maps a WGS84 [EPSG:3857](https://epsg.io/3857) koordináta-referenciarendszer-változatát használja.
 
 ## <a name="z"></a>Z
 
-<a name="z-coordinate"></a>**Z-koordináta**: lásd a [magasságot](#altitude). 
+<a name="z-coordinate"></a>**Z koordináta:** Lásd [magasság](#altitude). 
 
-<a name="zip-code"></a>**Zip-kód**: lásd az [irányítószámot](#postal-code).
+<a name="zip-code"></a>**Irányítószám**: [Lásd: Irányítószám](#postal-code).
 
-<a name="Zoom level"></a>**Nagyítási szint**: meghatározza a részletes részletességi szintet, valamint azt, hogy a Térkép mekkora legyen látható. Ha a 0. szintre nagyítva van, a teljes globális Térkép gyakran láthatóvá válik. A Térkép azonban a korlátozott részleteket jeleníti meg, például az ország/régió nevét, a szegélyeket és az óceán nevét. A 17. szinthez közelebbi nagyítás esetén a Térkép néhány város területét jeleníti meg, részletes információkkal. Az Azure Maps-ben a legmagasabb nagyítási szint 22. További információkért lásd a [nagyítási szintek és a csempe rácsa](zoom-levels-and-tile-grid.md) dokumentációját.
+<a name="Zoom level"></a>**Nagyítási szint**: Megadja a részletesség szintjét és azt, hogy a térkép mekkora része látható. Ha a nagyított egészen a szint 0, a teljes világtérkép gyakran látható. De a térkép korlátozott részleteket jelenít meg, például az ország-/régióneveket, a határokat és az óceánneveket. Ha a 17-es szinthez közelít, a térkép néhány városblokk ot jelenít meg részletes útinformációkkal. Az azure térképekben a legmagasabb nagyítási szint 22. További információt a [Nagyítási szintek és](zoom-levels-and-tile-grid.md) a mozaikrács dokumentációjában talál.
 

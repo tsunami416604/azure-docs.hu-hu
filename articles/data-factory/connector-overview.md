@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory-összekötő áttekintése
-description: Ismerje meg Data Factory támogatott összekötőit.
+title: Azure Data Factory-összekötő – áttekintés
+description: Ismerje meg a támogatott összekötők a Data Factory.
 services: data-factory
 author: linda33wj
 ms.service: data-factory
@@ -10,15 +10,15 @@ ms.date: 12/10/2019
 ms.author: jingwang
 ms.reviewer: craigg
 ms.openlocfilehash: 7b01e9936189a40fcf1400d3e6ee948032786d3a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444174"
 ---
-# <a name="azure-data-factory-connector-overview"></a>Azure Data Factory-összekötő áttekintése
+# <a name="azure-data-factory-connector-overview"></a>Azure Data Factory-összekötő – áttekintés
 
-Azure Data Factory a következő adattárakat és formátumokat másolja a másolás, az adatfolyam, a keresés, a metaadatok beolvasása és a törlés tevékenységek használatával. Az egyes adattárokra kattintva megtudhatja a támogatott funkciókat és a megfelelő konfigurációkat a részletek között.
+Az Azure Data Factory a másolási, adatfolyam-, a look-up, a metaadatok bemásolása és a törlési tevékenységek révén támogatja a következő adattárakat és formátumokat. Kattintson az egyes adattáraira a támogatott képességek és a megfelelő konfigurációk részletes megismeréséhez.
 
 ## <a name="supported-data-stores"></a>Támogatott adattárak
 
@@ -28,10 +28,10 @@ Azure Data Factory a következő adattárakat és formátumokat másolja a máso
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Másolási tevékenység](copy-activity-overview.md)
-- [Adatfolyam hozzárendelése](concepts-data-flow-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Tevékenység másolása](copy-activity-overview.md)
+- [Leképezési adatfolyam](concepts-data-flow-overview.md)
+- [Keresstevékenységet](control-flow-lookup-activity.md)
 - [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)
 - [Tevékenység törlése](delete-activity.md)

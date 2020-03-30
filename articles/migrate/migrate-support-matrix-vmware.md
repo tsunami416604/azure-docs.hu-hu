@@ -2,25 +2,25 @@
 title: A VMware-felmérés támogatása az Azure Migrate ben
 description: Ismerje meg a VMware VM-felmérés támogatását az Azure Áttelepítési kiszolgáló felmérésével.
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: 03d07adb6f19346901286bdae148f95e68290e4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/29/2020
+ms.openlocfilehash: e0172656d06075f89a7c3a06e8d4e9be94e6f5d0
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336878"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389307"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware értékelésének támogatási mátrixa 
 
-Ez a cikk összegzi a VMware virtuális gépek értékelésének előfeltételeit és támogatási követelményeit az Azure-ba való migrálás előkészítéseként. Ha a VMware virtuális gépeket az Azure-ba szeretné áttelepíteni, tekintse át az [áttelepítéstámogatási mátrixot.](migrate-support-matrix-vmware-migration.md)
+Ez a cikk összegzi az előfeltételeket és a támogatási követelményeket, amikor az Azure Áttelepítése:Kiszolgálóértékelés] (áttelepítés-szolgáltatások áttekintése.md#azure-migrate-server-assessment-tool) használatával értékeli a VMware virtuális gépek az Azure-ba való áttelepítéshez szükséges felmérését. Ha a VMware virtuális gépeket az Azure-ba szeretné áttelepíteni, tekintse át az [áttelepítéstámogatási mátrixot.](migrate-support-matrix-vmware-migration.md)
 
-A fizikai kiszolgálókat az [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) eszközzel mérheti fel. Hozzon létre egy Azure Migrate projektet, majd adja hozzá az eszközt a projekthez. Az eszköz hozzáadása után telepíti az [Azure Migrate készüléket.](migrate-appliance.md) A készülék folyamatosan felderíti a helyszíni gépeket, és elküldi a gép metaadatait és teljesítményadatait az Azure-ba. A gépfelderítés után a felderített gépeket csoportokba gyűjti, és egy csoport ra vonatkozó értékelést futtat.
+VMware virtuális gépek értékeléséhez hozzon létre egy Azure Áttelepítési projektet, majd adja hozzá a kiszolgálóértékelés eszközt a projekthez. Az eszköz hozzáadása után telepíti az [Azure Migrate készüléket.](migrate-appliance.md) A készülék folyamatosan felderíti a helyszíni gépeket, és elküldi a gép metaadatait és teljesítményadatait az Azure-ba. A felderítés befejezése után a felderített gépeket csoportokba gyűjti, és egy csoport ra vonatkozó értékelést futtat.
 
 ## <a name="limitations"></a>Korlátozások
 
 **Támogatás** | **Részletek**
 --- | ---
-**Projektkorlátok** | Azure-előfizetésben több projektet is létrehozhat.<br/><br/> Egyetlen [projektben](migrate-support-matrix.md#azure-migrate-projects)akár 35 000 VMware virtuális gépet is felfedezhet és értékelhet. A projekt tartalmazhat VMware virtuális gépek, fizikai kiszolgálók és a Hyper-V virtuális gépek, az egyes értékelési korlátokig.
+**Projektkorlátok** | Azure-előfizetésben több projektet is létrehozhat.<br/><br/> Egyetlen [projektben](migrate-support-matrix.md#azure-migrate-projects)akár 35 000 VMware virtuális gépet is felfedezhet és értékelhet. A projekt fizikai kiszolgálókat és Hyper-V virtuális gépeket is tartalmazhat, az egyes értékelési korlátokig.
 **Felfedezés** | Az Azure Migrate készülék legfeljebb 10 000 vmware virtuális gépet fedezhet fel egy vCenter-kiszolgálón.
 **Értékelés** | Egy csoportban legfeljebb 35 000 gépet adhat hozzá.<br/><br/> Egyetlen értékelés ben legfeljebb 35 000 virtuális gépet értékelhet.
 
@@ -29,11 +29,11 @@ A fizikai kiszolgálókat az [Azure Migrate:Server Assessment](migrate-services-
 
 ## <a name="application-discovery"></a>Alkalmazásfelderítés
 
-A gépek felderítése mellett az Azure Migrate: Server Assessment is felfedezheti a gépeken futó alkalmazásokat, szerepköröket és funkciókat. Az alkalmazáskészlet felderítése lehetővé teszi a helyszíni számítási feladatokhoz igazított áttelepítési útvonal azonosítását és megtervezését. 
+A gépek felderítése mellett a Server Assessment a gépeken futó alkalmazásokat, szerepköröket és funkciókat is felderíthet. Az alkalmazáskészlet felderítése lehetővé teszi a helyszíni számítási feladatokhoz igazított áttelepítési útvonal azonosítását és megtervezését. 
 
 **Támogatás** | **Részletek**
 --- | ---
-**Támogatott gépek** | Az alkalmazásfelderítés jelenleg csak a helyszíni VMware virtuális gépek en támogatott.
+**Támogatott gépek** | Az alkalmazásfelderítés jelenleg csak vmware virtuális gépek esetén támogatott.
 **Felfedezés** | Az alkalmazásfelderítés ügynök nélküli. A számítógép vendéghitelesítő adatait használja, és távolról éri el a wmi- és SSH-hívásokat használó gépeket.
 **Virtuális gép támogatása** | Az alkalmazásfelderítés minden Windows- és Linux-verzióesetében támogatott.
 **vCenter hitelesítő adatok** | Az alkalmazásfelderítéshez írásvédett hozzáféréssel rendelkező vCenter Server-fiókra van szükség, és a virtuális gépek hez engedélyezett jogosultságok > vendégműveletek.
@@ -58,7 +58,7 @@ A gépek felderítése mellett az Azure Migrate: Server Assessment is felfedezhe
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-berendezés követelményei
 
-Az Azure Migrate az [Azure Migrate készüléket](migrate-appliance.md) használja felderítéshez és értékeléshez. A VMware-készülék egy OVA sablon használatával van telepítve, amelyet a vCenter Server alkalmazásba importálnak. 
+Az Azure Migrate az [Azure Migrate készüléket](migrate-appliance.md) használja felderítéshez és értékeléshez. A készüléket vmware virtuális gépként telepítheti ovasablon nal, vCenter Server kiszolgálóra importálva vagy [PowerShell-parancsfájl](deploy-appliance-script.md)használatával.
 
 - További információ a VMware [készülékkövetelményeiről.](migrate-appliance.md#appliance---vmware)
 - Ismerje meg azokat az [URL-címeket, amelyekhez](migrate-appliance.md#url-access) a készüléknek szüksége van.
@@ -77,7 +77,7 @@ ESXi-gazdagépek (alkalmazásfelderítés/ügynök nélküli függőségelemzés
 
 **Követelmény** | **Részletek**
 --- | --- 
-**Telepítés előtt** | Rendelkeznie kell egy Azure Migrate projekt a helyén, az Azure Migrate: Server Assessment eszköz hozzá a projekthez.<br/><br/>  Függőségi vizualizációüzembe helyezése után egy Azure Migrate berendezés a helyszíni VMWare-gépek felderítéséhez.<br/><br/> [Ismerje meg, hogyan](create-manage-projects.md) hozhat létre első alkalommal projektet.<br/> [További információ arról, hogyan](how-to-assess.md) adhat hozzá értékelési eszközt egy meglévő projekthez.<br/> [Ismerje meg, hogyan](how-to-set-up-appliance-vmware.md) állíthatja be az Azure Migrate-készüléket a VMware virtuális gépek értékeléséhez.
+**Telepítés előtt** | Rendelkeznie kell egy Azure Áttelepítési projekt a helyén, a kiszolgálóértékelése eszköz hozzá a projekthez.<br/><br/>  Függőségi vizualizációüzembe helyezése után egy Azure Migrate berendezés a helyszíni VMWare-gépek felderítéséhez.<br/><br/> [Ismerje meg, hogyan](create-manage-projects.md) hozhat létre első alkalommal projektet.<br/> [További információ arról, hogyan](how-to-assess.md) adhat hozzá értékelési eszközt egy meglévő projekthez.<br/> [Ismerje meg, hogyan](how-to-set-up-appliance-vmware.md) állíthatja be az Azure Migrate-készüléket a VMware virtuális gépek értékeléséhez.
 **Virtuális gép támogatása** | Jelenleg csak a VMware virtuális gépek támogatottak.
 **Windows rendszerű virtuális gépek** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bites).
 **Windows-fiók** |  A függőségi elemzéshez az Azure Migrate berendezésnek helyi vagy tartományi rendszergazdai fiókra van szüksége a Windows virtuális gépek eléréséhez.

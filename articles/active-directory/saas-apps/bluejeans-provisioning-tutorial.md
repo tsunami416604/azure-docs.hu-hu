@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a BlueJeans konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a BlueJeans.
+title: 'Oktatóanyag: A BlueJeans konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
+description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryt a felhasználói fiókok bluejeans-i automatikus kiépítésére és kiépítésének kiépítésével.
 services: active-directory
 documentationcenter: ''
 author: zhchia
@@ -17,145 +17,145 @@ ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fcb3fe009a6482c8e512899a952694beaed361a7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77059012"
 ---
-# <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés BlueJeans konfigurálása
+# <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Oktatóanyag: A BlueJeans konfigurálása automatikus felhasználói kiépítéshez
 
-Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a BlueJeans és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a BlueJeans.
+Ez az oktatóanyag célja, hogy bemutassa a BlueJeans és az Azure Active Directory (Azure AD) által végrehajtandó lépéseket az Azure AD konfigurálásához a felhasználók és/vagy csoportok bluejeans-i automatikus kiépítéséhez és kiépítésének kiteljesítéséhez.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD felhasználói létesítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../app-provisioning/user-provisioning.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következőkkel:
 
-* Azure AD-bérlő
-* BlueJeans-bérlő a [saját céges](https://www.BlueJeans.com/pricing) csomaggal vagy jobb engedélyezéssel
-* Rendszergazdai jogosultságokkal rendelkező BlueJeans felhasználói fiók
+* Egy Azure AD-bérlő
+* BlueJeans-bérlő a [Saját vállalat](https://www.BlueJeans.com/pricing) csomaggal vagy jobban engedélyezve
+* Rendszergazdai engedélyekkel rendelkező felhasználói fiók a BlueJeans-ben
 
 > [!NOTE]
-> Az Azure AD-kiépítés integrációja a [BLUEJEANS API](https://BlueJeans.github.io/developer)-ra támaszkodik, amely a standard csomagon vagy annál jobb BlueJeans csapatoknak érhető el.
+> Az Azure AD-kiépítési integráció a [BlueJeans API-ra](https://BlueJeans.github.io/developer)támaszkodik, amely a Standard csomaggal vagy annál jobb csomaggal érhető el a BlueJeans csapatok számára.
 
-## <a name="adding-bluejeans-from-the-gallery"></a>BlueJeans hozzáadása a gyűjteményből
+## <a name="adding-bluejeans-from-the-gallery"></a>BlueJeans hozzáadása a galériából
 
-Az Azure AD-vel való automatikus BlueJeans konfigurálása előtt hozzá kell adnia a BlueJeans az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
+Mielőtt konfigurálja a BlueJeans automatikus felhasználói kiépítés az Azure AD-vel, hozzá kell adnia a BlueJeans az Azure AD alkalmazáskatalógusa a felügyelt SaaS-alkalmazások listájához.
 
-**Ha BlueJeans szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
+**Ha hozzá szeretné adni a BlueJeans-t az Azure AD alkalmazásgyűjteményből, hajtsa végre az alábbi lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen válassza az **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a **Minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **ablaktábla** tetején található Új alkalmazás gombra.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **BlueJeans**kifejezést, válassza az **BlueJeans** elemet az eredmények panelen, majd válassza a **Hozzáadás** gombot az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **BlueJeans**kifejezést, válassza a **BlueJeans** elemet az eredménypanelen, majd a **Hozzáadás** gombra kattintva adja hozzá az alkalmazást.
 
-    ![BlueJeans az eredmények listájában](common/search-new-app.png)
+    ![BlueJeans az eredménylistában](common/search-new-app.png)
 
-## <a name="assigning-users-to-bluejeans"></a>Felhasználók kiosztása a BlueJeans
+## <a name="assigning-users-to-bluejeans"></a>Felhasználók hozzárendelése a BlueJeans-hez
 
-Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában a rendszer csak azokat a felhasználókat és/vagy csoportokat szinkronizálja, akik az Azure AD-alkalmazáshoz lettek rendelve.
+Az Azure Active Directory a "hozzárendelések" nevű koncepciót használja annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak a felhasználók és/vagy csoportok, amelyek "hozzárendelt" egy alkalmazás az Azure AD-ben szinkronizálva vannak.
 
-A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak és/vagy csoportjai számára szükséges a BlueJeans való hozzáférés. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a BlueJeans az alábbi utasításokat követve:
+Az automatikus felhasználói kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoportjainak kell hozzáférniük a BlueJeans-hez. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat a BlueJeans-hez rendelheti az alábbi utasításokat követve:
 
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-bluejeans"></a>Fontos Tippek a felhasználók BlueJeans való hozzárendeléséhez
+### <a name="important-tips-for-assigning-users-to-bluejeans"></a>Fontos tippek a felhasználók BlueJeans-hez való hozzárendeléséhez
 
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a BlueJeans-hoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
+* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve BlueJeans az automatikus felhasználói kiépítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
 
-* Amikor BlueJeans rendel hozzá egy felhasználóhoz, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
+* Amikor egy felhasználót a BlueJeans-hez rendel, a hozzárendelési párbeszédpanelen ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
 
-## <a name="configuring-automatic-user-provisioning-to-bluejeans"></a>Automatikus felhasználó-kiépítés beállítása a BlueJeans
+## <a name="configuring-automatic-user-provisioning-to-bluejeans"></a>Automatikus felhasználói kiépítés konfigurálása a BlueJeans szolgáltatásba
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy BlueJeans alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le a BlueJeans-ben az Azure AD felhasználói és/vagy csoport-hozzárendelései alapján.
 
 > [!TIP]
-> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a BlueJeans számára, az [BlueJeans egyszeri bejelentkezés oktatóanyagában](bluejeans-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+> Azt is választhatja, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a BlueJeans számára, a [BlueJeans egyszeri bejelentkezési oktatóanyagutasításait](bluejeans-tutorial.md)követve. Egyszeri bejelentkezés konfigurálható az automatikus felhasználói kiépítéstől függetlenül, bár ez a két funkció kiegészíti egymást.
 
-### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a BlueJeans az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>A BlueJeans automatikus felhasználói kiépítésének konfigurálása az Azure AD-ben:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **BlueJeans**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra,](https://portal.azure.com) és válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza a **BlueJeans**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **BlueJeans**lehetőséget.
+2. Az alkalmazások listájában válassza a **BlueJeans**lehetőséget.
 
-    ![Az BlueJeans hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![A BlueJeans hivatkozás az Alkalmazások listában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
+    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **létesítési módot** **Automatikus**ra.
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
+    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a BlueJeans-fiókjának **rendszergazdai felhasználónevét**és **rendszergazdai jelszavát** . Ilyen értékek például a következők:
+5. A **Rendszergazdai hitelesítő adatok** csoportban adja meg a BlueJeans-fiók **rendszergazdai felhasználónevét**és **rendszergazdai jelszavát.** Ilyen értékek például a következők:
 
-   * A **rendszergazdai Felhasználónév** mezőben töltse ki a rendszergazdai fiók felhasználónevét a BlueJeans-bérlőn. Példa: admin@contoso.com.
+   * A **Rendszergazdai felhasználónév** mezőben feltöltsd a bluejeans-i bérlő felügyeleti fiókjának felhasználónevét. Példa: admin@contoso.com.
 
-   * A **rendszergazdai jelszó** mezőben töltse ki a rendszergazdai felhasználónévhez tartozó jelszót.
+   * A **Rendszergazdai jelszó** mezőben adja meg a rendszergazdai felhasználónévnek megfelelő jelszót.
 
-6. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad képes legyen csatlakozni a BlueJeans. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a BlueJeans-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+6. Az 5. **Test Connection** Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a BlueJeans-fiók rendszergazdai engedélyekkel rendelkezik, majd próbálkozzon újra.
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
+    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
 
-7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+7. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be a jelölőnégyzetet – **E-mail értesítés küldése hiba esetén.**
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
+    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
-8. Kattintson a **Save** (Mentés) gombra.
+8. Kattintson a **Mentés** gombra.
 
-9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a BlueJeans**lehetőséget.
+9. A **Leképezések** csoportban válassza **az Azure Active Directory felhasználóinak szinkronizálása a BlueJeans szolgáltatással**lehetőséget.
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
+    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
 
-10. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található BlueJeans. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a BlueJeans felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+10. Tekintse át az Azure AD és a BlueJeans között szinkronizált felhasználói attribútumokat az **Attribútumleképezés** szakaszban. Az **egyező** tulajdonságokként kijelölt attribútumok a BlueJeans felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
+    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
 
-11. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+11. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
 
-12. Az Azure AD-kiépítési szolgáltatás BlueJeans való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
+12. Az Azure AD-kiépítési szolgáltatás engedélyezéséhez a BlueJeans, módosítsa a **kiépítési állapot** **be van kapcsolva** a **Beállítások** szakaszban.
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
+    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
 
-13. Adja meg a BlueJeans kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+13. Határozza meg azokat a felhasználókat és/vagy csoportokat, amelyeket ki szeretne építeni a BlueJeans-ba a kívánt értékek kiválasztásával a **Beállítások** szakasz **hatókörében.**
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
+    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
 
-14. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+14. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
+    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a BlueJeans-on végrehajtott összes műveletet ismertetik.
+Ez a művelet elindítja a Beállítások szakasz **hatókörében** definiált összes felhasználó és/vagy csoport kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. A Szinkronizálás **részletei** szakasz segítségével figyelheti az előrehaladást, és kövesse a kiépítési tevékenység jelentésre mutató hivatkozásokat, amely ismerteti az Azure AD-kiépítési szolgáltatás által a BlueJeans-en végrehajtott összes műveletet.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
+Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat bővebben.
 
-## <a name="connector-limitations"></a>Összekötő korlátozásai
+## <a name="connector-limitations"></a>Összekötő korlátai
 
 * A Bluejeans nem engedélyezi a 30 karakternél hosszabb felhasználóneveket.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 

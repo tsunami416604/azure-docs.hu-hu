@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: sample
 author: peterclu
 ms.author: peterlu
-ms.date: 03/10/2020
-ms.openlocfilehash: 82476b9cc8d92c815df602496ed3dcb33014a4fd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/29/2020
+ms.openlocfilehash: f9a8b0a4c51024d91e517db2f6ae10a4dba62384
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037401"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389341"
 ---
 # <a name="designer-sample-pipelines"></a>Tervezői mintafolyamatok
 
@@ -30,6 +30,8 @@ Az Azure Machine Learning-tervező beépített példáival gyorsan elkezdheti sa
 
 A tervező a mintafolyamatok egy példányát menti a stúdió munkaterületére. A folyamat ot szerkesztheti, hogy az igényeihez igazítsa, és mentse a sajátjaként. Használja őket kiindulási pontként a projektek indításához.
 
+### <a name="open-a-sample-pipeline"></a>Mintafolyamat megnyitása
+
 1. Jelentkezzen be <a href="https://ml.azure.com?tabs=jre" target="_blank">a ml.azure.com,</a>és válassza ki azt a munkaterületet, amelyen dolgozni szeretne.
 
 1. Válassza **a Tervező**lehetőséget.
@@ -37,6 +39,31 @@ A tervező a mintafolyamatok egy példányát menti a stúdió munkaterületére
 1. Jelöljön ki egy mintafolyamatot az **Új csővezeték** szakasz alatt.
 
     Válassza a **További minták megjelenítése** lehetőséget a minták teljes listájához.
+
+### <a name="submit-a-pipeline-run"></a>Folyamatfuttatás beküldése
+
+Egy folyamat futtatásához először be kell állítania az alapértelmezett számítási célt a folyamat futtatásához.
+
+1. A **Beállítások** ablaktáblán, a vászon tól jobbra válassza a **Számítási cél kiválasztása lehetőséget.**
+
+1. A megjelenő párbeszédpanelen jelöljön ki egy meglévő számítási célt, vagy hozzon létre egy újat. Kattintson a **Mentés** gombra.
+
+1. Válassza a **Küldés** lehetőséget a vászon tetején a folyamatfuttatás elküldéséhez.
+
+A mintafolyamattól és a számítási beállításoktól függően a futtatások befejezéséhez eltarthat egy ideig. Az alapértelmezett számítási beállítások minimális csomópontmérete 0, ami azt jelenti, hogy a tervező nek erőforrásokat kell lefoglalnia, miután tétlen. Az ismétlődő folyamatfuttatások kevesebb időt vesznek igénybe, mivel a számítási erőforrások már le vannak foglalva. Emellett a tervező az egyes modulok gyorsítótárazott eredményeit használja a hatékonyság további növelése érdekében.
+
+
+### <a name="review-the-results"></a>Az eredmények áttekintése
+
+Miután a folyamat futása befejeződik, áttekintheti a folyamatot, és megtekintheti az egyes modulok kimenetét, hogy további információval rendelkezhet.
+
+A modulkimenetek megtekintéséhez kövesse az alábbi lépéseket:
+
+1. Jelöljön ki egy modult a vásznon.
+
+1. A modul részletei ablaktáblában a vászon jobb oldalán válassza a **Kimenetek + naplók**lehetőséget. Az egyes ![modulok eredményének megjelenítéséhez válassza a diagram ikont.](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) 
+
+Használja a mintákat kiindulási pontként néhány, a leggyakoribb gépi tanulási forgatókönyvek.
 
 ## <a name="regression-samples"></a>Regressziós minták
 

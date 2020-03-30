@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/12/2020
-ms.openlocfilehash: 8b471dd509dca02ab2a66d70dbc7fac9988f1afe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0488002352d222abb0166737f9a042060b1a1bb1
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472237"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389426"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Bemutató: Megjósolni autó ára a tervező (előnézet)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -103,7 +103,7 @@ Az adatok megjelenítésével megismerheti a használni kívánt adatkészletet.
 
 1. Válassza ki az **Automobile áradat-adatok (nyers)** modult.
 
-1. A modul részletei ablaktáblában a vászon jobb oldalán válassza a **Kimenetek**lehetőséget.
+1. A modul részletei ablaktáblában a vászon jobb oldalán válassza a **Kimenetek + napló**lehetőséget.
 
 1. Az adatok megjelenítéséhez kattintson a diagram ikonra.
 
@@ -269,7 +269,7 @@ A **Modell kiértékelése** modul segítségével kiértékelheti, hogy a model
 
 ## <a name="submit-the-pipeline"></a>A folyamat beküldése
 
-Most, hogy a folyamat minden beállítás, beküldhet egy folyamat fut a gépi tanulási modell betanításához. A folyamatfuttatást bármikor elküldheti, miközben folyamatokat épít a tervezőben. Ezt megteheti, hogy ellenőrizze a munkát menet emiközben ellenőrizze a folyamat működik a várt módon.
+Most, hogy a folyamat minden beállítás, beküldhet egy folyamat fut a gépi tanulási modell betanításához. A folyamat bármikor elküldhet egy érvényes folyamatfuttatást, amellyel a fejlesztés során áttekintheti a folyamat módosításait.
 
 1. A vászon tetején válassza a **Küldés lehetőséget.**
 
@@ -283,6 +283,8 @@ Most, hogy a folyamat minden beállítás, beküldhet egy folyamat fut a gépi t
     1. Válassza a **Küldés** lehetőséget.
     
     A futtatási állapotot és a részleteket a vászon jobb felső részén tekintheti meg.
+    
+    Ha az első futtatás, akár 20 percet is igénybe vehet, amíg a folyamat futása befejeződik. Az alapértelmezett számítási beállítások minimális csomópontmérete 0, ami azt jelenti, hogy a tervező nek erőforrásokat kell lefoglalnia, miután tétlen. Az ismétlődő folyamatfuttatások kevesebb időt vesznek igénybe, mivel a számítási erőforrások már le vannak foglalva. Emellett a tervező az egyes modulok gyorsítótárazott eredményeit használja a hatékonyság további növelése érdekében.
 
 ### <a name="view-scored-labels"></a>Pontozott címkék megtekintése
 
@@ -290,7 +292,7 @@ A futtatás befejezése után megtekintheti a folyamat futtatásának eredménye
 
 1. Válassza ki a **Score Model** modult a kimenet megtekintéséhez.
 
-1. A modul részletei ablaktáblában a vászon jobb oldalán ![válassza a](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) **Kimenetek** > grafikon ikon megjelenítéséhez ikont az eredmények megtekintéséhez.
+1. A modul részletei ablaktáblában a vászon jobb oldalán válassza a ![ **Kimenetek + naplók** lehetőséget > grafikon ikon láthatóvá tétele ikont](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) az eredmények megtekintéséhez.
 
     Itt láthatja az előre jelzett árakat és a tényleges árakat a tesztelési adatokból.
 
@@ -302,7 +304,7 @@ A **Kiértékelés modell segítségével** megtekintheti, hogy a betanított mo
 
 1. Válassza ki a **Modell kiértékelése** modult a kimenet megtekintéséhez.
 
-1. A modul részletei ablaktáblában a vászon jobb oldalán ![válassza](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) a **Kimenet >** grafikon ikon megjelenítéséhez ikont az eredmények megtekintéséhez.
+1. A modul részletei ablaktáblában a vászon jobb oldalán válassza a ![ **Kimenetek + naplók** lehetőséget > grafikon ikon láthatóvá tétele ikont](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) az eredmények megtekintéséhez.
 
 A modellhez a következő statisztikák jelennek meg:
 

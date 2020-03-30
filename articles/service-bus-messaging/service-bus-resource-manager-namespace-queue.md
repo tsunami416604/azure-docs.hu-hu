@@ -1,6 +1,6 @@
 ---
-title: Névtér és üzenetsor létrehozása Azure Service Bus Azure-sablon használatával
-description: 'Gyors útmutató: Service Bus névtér és üzenetsor létrehozása Azure Resource Manager sablon használatával'
+title: Az Azure Service Bus névtere és várólistájának létrehozása az Azure-sablon használatával
+description: 'Rövid útmutató: Hozzon létre egy Service Bus-névteret és egy várólistát az Azure Resource Manager-sablonnal'
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -10,141 +10,73 @@ ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 978111596330d7d6b324c1ecc07fd424c7fd47b7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8605dae05b7f5270513b645367248090006c04a8
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427005"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384908"
 ---
-# <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Gyors útmutató: Service Bus névtér és üzenetsor létrehozása Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Rövid útmutató: Hozzon létre egy Service Bus-névteret és egy várólistát egy Azure Resource Manager-sablon használatával
 
-Ez a cikk bemutatja, hogyan használható egy Azure Resource Manager-sablon, amely létrehoz egy Service Bus névteret és egy, az adott névtéren belüli várólistát. A cikk azt ismerteti, hogyan határozható meg, hogy mely erőforrások legyenek telepítve, és Hogyan határozható meg a központi telepítés végrehajtásakor megadott paraméterek. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
+Ez a cikk bemutatja, hogyan használhatja az Azure Resource Manager sablont, amely létrehoz egy Service Bus névtér és egy várólista a névtérben. A cikk bemutatja, hogyan adja meg, hogy mely erőforrások vannak telepítve, és hogyan határozhatja meg a központi telepítés végrehajtásakor megadott paramétereket. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
-További információ a sablonok létrehozásáról: Azure Resource Manager- [sablonok készítése][Authoring Azure Resource Manager templates].
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-A teljes sablonhoz tekintse meg a [Service Bus névtér és várólista sablonját][Service Bus namespace and queue template] a githubon.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+None
+
+## <a name="create-a-service-bus-namespace-and-a-queue"></a>Service Bus-névtér és várólista létrehozása
+
+### <a name="review-the-template"></a>A sablon áttekintése
+
+A rövid útmutatóban használt sablon az [Azure rövid útmutató sablonjaiból származik.](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue)
+
+:::code language="json" source="~/quickstart-templates/201-servicebus-create-queue/azuredeploy.json" range="1-75" highlight="31-63":::
+
+A sablonban meghatározott erőforrások a következők:
+
+- [**Microsoft.ServiceBus/névterek**](/azure/templates/microsoft.servicebus/namespaces)
+- [**Microsoft.ServiceBus/névterek/várólisták**](/azure/templates/microsoft.servicebus/namespaces/queues)
 
 > [!NOTE]
-> A következő Azure Resource Manager sablonok tölthetők le és üzemelő példányban.
-> 
-> * [Service Bus névtér létrehozása a várólista-és engedélyezési szabállyal](service-bus-resource-manager-namespace-auth-rule.md)
-> * [Service Bus névtér létrehozása témakörrel és előfizetéssel](service-bus-resource-manager-namespace-topic.md)
-> * [Service Bus névtér létrehozása](service-bus-resource-manager-namespace.md)
-> * [Service Bus névtér létrehozása témakörrel, előfizetéssel és szabállyal](service-bus-resource-manager-namespace-topic-with-rule.md)
-> 
-> A legújabb sablonok kereséséhez látogasson el az [Azure Gyorsindítás sablonok][Azure Quickstart Templates] galériába, és keressen rá **Service Bus**.
+> A következő Azure Resource Manager-sablonok tölthetők le és telepíthetik.
+>
+> * [Service Bus-névtér létrehozása várólista- és engedélyezési szabállyal](service-bus-resource-manager-namespace-auth-rule.md)
+> * [Service Bus-névtér létrehozása témakörrel és előfizetéssel](service-bus-resource-manager-namespace-topic.md)
+> * [Service Bus-névtér létrehozása](service-bus-resource-manager-namespace.md)
+> * [Service Bus-névtér létrehozása témakörrel, előfizetéssel és szabállyal](service-bus-resource-manager-namespace-topic-with-rule.md)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+További sablonokat az [Azure gyorsindítási sablonjaiból](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular) talál.
 
-## <a name="what-will-you-deploy"></a>Mit fog üzembe helyezni?
+### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Ezzel a sablonnal egy Service Bus névteret helyez üzembe egy várólistával.
+Ezzel a sablonnal üzembe helyezhet egy Service Bus-névteret várólistával.
 
-[Service Bus Queues](service-bus-queues-topics-subscriptions.md#queues) először a, az első kimenő (FIFO) üzenet kézbesítését kínálja egy vagy több versenytárs fogyasztónak.
+[A Service Bus-várólisták](service-bus-queues-topics-subscriptions.md#queues) első be, első ki (FIFO) üzenetkézbesítést kínálnak egy vagy több versenytárs fogyasztónak.
 
 Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
 [![Üzembe helyezés az Azure-ban](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
 
-## <a name="parameters"></a>Paraméterek
+## <a name="next-steps"></a>További lépések
 
-Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz egy `Parameters` nevű szakaszt, amely az összes paraméter értékét tartalmazza. Meg kell határoznia a paramétert azokhoz az értékekhez, amelyek a telepített projekttől függően változnak, vagy amely az Ön által telepített környezet alapján változik. Ne definiáljon paramétereket olyan értékekhez, amelyek mindig azonosak maradnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
+A névtérhez/várólista-hoz engedélyezési szabály létrehozásáról az alábbi témakörben olvashat:
 
-A sablon a következő paramétereket adja meg.
+[Service Bus engedélyezési szabály létrehozása névtérhez és várólistához egy Azure Resource Manager-sablon használatával](service-bus-resource-manager-namespace-auth-rule.md)
 
-### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-A létrehozandó Service Bus névtér neve.
-
-```json
-"serviceBusNamespaceName": {
-"type": "string",
-"metadata": { 
-    "description": "Name of the Service Bus namespace" 
-    }
-}
-```
-
-### <a name="servicebusqueuename"></a>serviceBusQueueName
-A Service Bus névtérben létrehozott üzenetsor neve.
-
-```json
-"serviceBusQueueName": {
-"type": "string"
-}
-```
-
-### <a name="servicebusapiversion"></a>serviceBusApiVersion
-A sablon Service Bus API-verziója.
-
-```json
-"serviceBusApiVersion": { 
-       "type": "string", 
-       "defaultValue": "2017-04-01", 
-       "metadata": { 
-           "description": "Service Bus ApiVersion used by the template" 
-       }
-```
-
-## <a name="resources-to-deploy"></a>Üzembe helyezendő erőforrások
-Egy **üzenetküldési**típusú szabványos Service Bus névteret hoz létre egy üzenetsor használatával.
-
-```json
-{
-    "resources": [{
-        "apiVersion": "2017-04-01",
-        "name": "[parameters('serviceBusNamespaceName')]",
-        "type": "Microsoft.ServiceBus/namespaces",
-        "location": "[parameters('location')]",
-        "sku": {
-            "name": "Standard"
-        },
-        "properties": {},
-        "resources": [{
-            "apiVersion": "[variables('sbVersion')]",
-            "name": "[parameters('serviceBusQueueName')]",
-            "type": "Queues",
-            "dependsOn": [
-                "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
-            ],
-            "properties": {
-                "path": "[parameters('serviceBusQueueName')]"
-            }
-        }]
-    }]
-}
-```
-
-A JSON szintaxis és tulajdonságok esetében lásd: [névterek](/azure/templates/microsoft.servicebus/namespaces) és [várólisták](/azure/templates/microsoft.servicebus/namespaces/queues).
-
-## <a name="commands-to-run-deployment"></a>Az üzembe helyezést futtató parancsok
-[!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
-
-## <a name="powershell"></a>PowerShell
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
-```
-
-## <a name="azure-cli"></a>Azure parancssori felület (CLI)
-
-```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
-```
-
-## <a name="next-steps"></a>Következő lépések
-Tekintse meg a következő témakört, amely bemutatja, hogyan hozhat létre egy engedélyezési szabályt a névtérhez vagy a várólistához: [Service Bus engedélyezési szabály létrehozása a névtérhez és a várólistához egy Azure Resource Manager sablon használatával](service-bus-resource-manager-namespace-auth-rule.md)
-
-Ismerje meg, hogyan kezelheti ezeket az erőforrásokat a következő cikkek megtekintésével:
+Ebből a cikkből megtudhatja, hogyan kezelheti ezeket az erőforrásokat:
 
 * [A Service Bus kezelése a PowerShell használatával](service-bus-manage-with-ps.md)
-* [Service Bus erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [A Service Bus-erőforrások kezelése a Service Bus Intézővel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Service Bus namespace and queue template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/

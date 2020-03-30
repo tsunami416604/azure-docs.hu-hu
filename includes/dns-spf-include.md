@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 9cc650cea17acb8d89933c819c4ca60e2c459d1c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179750"
 ---
-Küldő házirend-keretrendszer (SPF) rekordok segítségével adja meg, melyik e-mail-kiszolgálók küldhet e-mailt nevében egy tartomány nevét. SPF-rekordokat konfigurációját fontos, hogy megakadályozza, hogy a címzettek megjelölés levélszemétként az e-maileket.
+A feladói házirendkeret-rekordok (SPF) rekordjai határozzák meg, hogy mely e-mail kiszolgálók küldhetnek e-mailt a tartománynév nevében. Az SPF-rekordok helyes konfigurálása fontos annak megakadályozása érdekében, hogy a címzettek levélszemétként jelöljék meg az e-maileket.
 
-A DNS RFC-ket bevezetett lomtárszolgáltatás SPF új rekordtípus a forgatókönyv támogatása érdekében. Támogatja a régebbi névkiszolgálók, azokat is engedélyezni a txt típusú rekord típusát adja meg az SPF-rekordokat használatát. Ez zavart, ami által feloldva vezetett [RFC 7208](http://tools.ietf.org/html/rfc7208#section-3.1). Megállapítja, hogy az SPF-rekordokat TXT típusú rekordok használatával kell létrehozni. Is meghatározza, hogy az SPF-rekordtípus elavult.
+A DNS RFC-k eredetileg egy új SPF-rekordtípust vezettek be, amely támogatja ezt a forgatókönyvet. A régebbi névkiszolgálók támogatásához lehetővé tették a TXT rekordtípus használatát is az SPF rekordok megadásához. Ez a kétértelműség zavart okozott, amelyet [az RFC 7208](http://tools.ietf.org/html/rfc7208#section-3.1)oldott meg. Azt írja, hogy az SPF-rekordokat a TXT rekordtípus használatával kell létrehozni. Azt is kimondja, hogy az SPF rekordtípus elavult.
 
-**SPF-rekordokat Azure DNS támogatja, és a TXT típusú rekordok használatával kell létrehozni.** Az SPF elavult rekordtípus nem támogatott. Ha Ön [DNS-zónafájl importálása](../articles/dns/dns-import-export.md), bármely SPF-rekordokat, amelyek használják az SPF-rekordtípus TXT típusú rekordok alakítja.
+**Az SPF-rekordokat az Azure DNS támogatja, és a TXT rekordtípus használatával kell létrehozni.** Az elavult SPF rekordtípus nem támogatott. [DNS-zónafájl importálásakor](../articles/dns/dns-import-export.md)az SPF-rekordtípust használó SPF-rekordok AtTXT rekordtípussá alakulnak át.

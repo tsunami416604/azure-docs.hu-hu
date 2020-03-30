@@ -1,64 +1,64 @@
 ---
-title: Az SSL engedélyezése az oldalkocsi-tárolóval
-description: Hozzon létre egy SSL-vagy TLS-végpontot egy Azure Container Instanceson futó Container Group számára egy oldalkocsi-tárolóban való futtatásával
+title: SSL engedélyezése oldalkocsis tárolóval
+description: Hozzon létre egy SSL- vagy TLS-végpontot az Azure Container-példányokban futó tárolócsoporthoz a Nginx oldalkocsis tárolóban futtatásával
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 524e997cf6c7c464cc352048b1abf4be119d2f37
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 43b39c7c13d6d5e52aae2ce1706e4880ab27d225
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460552"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294944"
 ---
-# <a name="enable-an-ssl-endpoint-in-a-sidecar-container"></a>SSL-végpont engedélyezése oldalkocsi-tárolóban
+# <a name="enable-an-ssl-endpoint-in-a-sidecar-container"></a>Ssl-végpont engedélyezése oldalkocsitárolóban
 
-Ez a cikk bemutatja, hogyan hozhat létre egy [tároló csoportot](container-instances-container-groups.md) egy alkalmazás-tárolóval és egy SSL-szolgáltatót futtató oldalkocsi-tárolóval. Egy különálló SSL-végponttal rendelkező tároló csoport beállításával az alkalmazás kódjának módosítása nélkül engedélyezheti az SSL-kapcsolatokat az alkalmazáshoz.
+Ez a cikk bemutatja, hogyan hozhat létre egy [tárolócsoportot](container-instances-container-groups.md) egy alkalmazástárolóval és egy SSL-szolgáltatót futtató oldalkocsitárolóval. Ha egy tárolócsoportot külön SSL-végponttal állít be, az alkalmazáskód módosítása nélkül engedélyezheti az SSL-kapcsolatokat az alkalmazásszámára.
 
-Létrehozhat egy két tárolóból álló példa típusú tároló csoportot:
-* Egy alkalmazás-tároló, amely egy egyszerű webalkalmazást futtat a nyilvános Microsoft [ACI-HelloWorld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) rendszerkép használatával. 
-* A nyilvános [Nginx](https://hub.docker.com/_/nginx) -rendszerképet futtató oldalkocsi-tároló, amely SSL használatára van konfigurálva. 
+Egy két tárolóból álló példatárolócsoportot állít be:
+* Egy alkalmazástároló, amely egy egyszerű webalkalmazást futtat a nyilvános Microsoft [aci-helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) lemezkép használatával. 
+* A nyilvános [Nginx-lemezképet](https://hub.docker.com/_/nginx) futtató oldalkocsis tároló, amely SSL használatára van konfigurálva. 
 
-Ebben a példában a Container Group csak a 443-es portot teszi elérhetővé az Nginx nyilvános IP-címével. Az Nginx a HTTPS-kérelmeket a Companion-webalkalmazáshoz irányítja, amely belsőleg figyeli a 80-es porton. A példát a más portokat figyelő tároló-alkalmazások esetében is módosíthatja. 
+Ebben a példában a tárolócsoport csak a nginx 443-as portját teszi elérhetővé nyilvános IP-címmel. A Nginx a HTTPS-kérelmeket a társwebalkalmazáshoz irányítja, amely a 80-as porton belül figyel. Módosíthatja a példát a más portokon figyelő tárolóalkalmazásokhoz. 
 
-A [következő lépésekben](#next-steps) talál további lépéseket az SSL egy tároló csoportban való engedélyezéséhez.
+Lásd: [További lépések](#next-steps) az SSL tárolócsoportban való engedélyezésének további lépéseiért.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-A cikk végrehajtásához használhatja az Azure CLI Azure Cloud Shell vagy helyi telepítését is. Ha helyileg szeretné használni, a 2.0.55 vagy újabb verzió használata javasolt. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Használhatja az Azure Cloud Shell vagy az Azure CLI helyi telepítését a cikk befejezéséhez. Ha helyileg szeretné használni, a 2.0.55-ös vagy újabb verzió használata ajánlott. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-Az Nginx SSL-szolgáltatóként való beállításához SSL-tanúsítványra van szükség. Ez a cikk bemutatja, hogyan hozhat létre és állíthat be egy önaláírt SSL-tanúsítványt. Termelési forgatókönyvek esetén tanúsítványt kell beszereznie a hitelesítésszolgáltatótól.
+A Nginx SSL-szolgáltatóként való beállításához SSL-tanúsítványra van szükség. Ez a cikk bemutatja, hogyan hozhat létre és állíthat be önaláírt SSL-tanúsítványt. Éles környezetben tanúsítványt kell beszereznie egy hitelesítésszolgáltatótól.
 
-Önaláírt SSL-tanúsítvány létrehozásához használja a Azure Cloud Shell és számos Linux-disztribúcióban elérhető [OpenSSL](https://www.openssl.org/) eszközt, vagy használjon egy hasonló ügyfélprogramot az operációs rendszerben.
+Önaláírt SSL-tanúsítvány létrehozásához használja az Azure Cloud Shellben elérhető [OpenSSL](https://www.openssl.org/) eszközt és számos Linux-disztribúciót, vagy használjon hasonló ügyféleszközt az operációs rendszerben.
 
-Először hozzon létre egy tanúsítványkérelmet (. CSR fájlt) egy helyi munkakönyvtárban:
+Először hozzon létre egy tanúsítványkérelmet (.csr fájlt) a helyi munkakönyvtárban:
 
 ```console
 openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 ```
 
-Az azonosítási adatok hozzáadásához kövesse az utasításokat. A köznapi név mezőben adja meg a tanúsítványhoz társított állomásnevet. Ha a rendszer jelszót kér, nyomja le az ENTER billentyűt gépelés nélkül, ha ki szeretné hagyni a jelszó hozzáadását.
+Az azonosító adatok hozzáadásához kövesse az utasításokat. A Köznapi név mezőbe írja be a tanúsítványhoz társított állomásnevet. Amikor a rendszer jelszót kér, a jelszó hozzáadásának kihagyása érdekében nyomja le az Enter billentyűt gépelés nélkül.
 
-A következő parancs futtatásával hozza létre az önaláírt tanúsítványt (. CRT-fájlt) a tanúsítványkérelem alapján. Például:
+Futtassa a következő parancsot az önaláírt tanúsítvány (.crt fájl) létrehozásához a tanúsítványkérelemből. Példa:
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 ```
 
-Ekkor három fájlnak kell megjelennie a könyvtárban: a tanúsítványkérelem (`ssl.csr`), a titkos kulcs (`ssl.key`) és az önaláírt tanúsítvány (`ssl.crt`). A későbbi lépésekben `ssl.key` és `ssl.crt`eket használ.
+Most három fájlt kell látnia a címtárban: a tanúsítványkérelmet (`ssl.csr`), a személyes kulcsot (`ssl.key`), és az önaláírt tanúsítványt (`ssl.crt`). Használja, `ssl.key` `ssl.crt` és a későbbi lépésekben.
 
-## <a name="configure-nginx-to-use-ssl"></a>Az Nginx konfigurálása SSL használatára
+## <a name="configure-nginx-to-use-ssl"></a>A Nginx beállítása az SSL használatára
 
 ### <a name="create-nginx-configuration-file"></a>Nginx konfigurációs fájl létrehozása
 
-Ebben a szakaszban egy konfigurációs fájlt hoz létre az Nginx használatára az SSL használatához. Először másolja az alábbi szöveget egy `nginx.conf`nevű új fájlba. A Azure Cloud Shell a Visual Studio Code használatával hozhatja létre a fájlt a munkakönyvtárában:
+Ebben a szakaszban hozzon létre egy konfigurációs fájlt nginx ssl használatára. Először másolja a következő szöveget `nginx.conf`egy új fájlba, melynek neve . Az Azure Cloud Shellben a Visual Studio-kód segítségével hozhatja létre a fájlt a munkakönyvtárában:
 
 ```console
 code nginx.conf
 ```
 
-A `location`ban ügyeljen arra, hogy a megfelelő portot adja meg az alkalmazáshoz `proxy_pass`. Ebben a példában az 80-es portot a `aci-helloworld` tárolóhoz állítjuk be.
+A `location`alkalmazásban ügyeljen `proxy_pass` arra, hogy az alkalmazásnak megfelelő porttal állítsa be. Ebben a példában a 80-as portot állítottuk be a `aci-helloworld` tárolóhoz.
 
 ```console
 # nginx Configuration File
@@ -122,9 +122,9 @@ http {
 }
 ```
 
-### <a name="base64-encode-secrets-and-configuration-file"></a>Base64 – titkos kódok és konfigurációs fájl kódolása
+### <a name="base64-encode-secrets-and-configuration-file"></a>Base64-kódolja a titkos kulcsokat és a konfigurációs fájlt
 
-Base64 – kódolja az Nginx konfigurációs fájlját, az SSL-tanúsítványt és az SSL-kulcsot. A következő szakaszban megadhatja a kódolt tartalmakat egy YAML-fájlban, amelyet a tároló csoport telepítéséhez használ.
+Base64-kódolja a Nginx konfigurációs fájlt, az SSL tanúsítványt és az SSL-kulcsot. A következő szakaszban adja meg a kódolt tartalom egy YAML-fájlban a tárolócsoport üzembe helyezéséhez használt.
 
 ```console
 cat nginx.conf | base64 > base64-nginx.conf
@@ -132,19 +132,19 @@ cat ssl.crt | base64 > base64-ssl.crt
 cat ssl.key | base64 > base64-ssl.key
 ```
 
-## <a name="deploy-container-group"></a>Tároló csoportjának üzembe helyezése
+## <a name="deploy-container-group"></a>Tárolócsoport telepítése
 
-Most telepítse a tároló csoportot egy [YAML-fájlban](container-instances-multi-container-yaml.md)lévő tároló-konfigurációk megadásával.
+Most telepítse a tárolócsoportot a Tárolókonfigurációk megadásával egy [YAML-fájlban.](container-instances-multi-container-yaml.md)
 
 ### <a name="create-yaml-file"></a>YAML-fájl létrehozása
 
-Másolja az alábbi YAML egy `deploy-aci.yaml`nevű új fájlba. A Azure Cloud Shell a Visual Studio Code használatával hozhatja létre a fájlt a munkakönyvtárában:
+Másolja a következő YAML-fájlt `deploy-aci.yaml`egy új fájlba, melynek neve . Az Azure Cloud Shellben a Visual Studio-kód segítségével hozhatja létre a fájlt a munkakönyvtárában:
 
 ```console
 code deploy-aci.yaml
 ```
 
-Adja meg az `secret`alatt jelzett Base64 kódolású fájlok tartalmát. Például `cat` minden Base64 kódolású fájlt, hogy megtekintse a tartalmát. Az üzembe helyezés során ezeket a fájlokat a rendszer hozzáadja a tároló csoportban található [titkos kötethez](container-instances-volume-secret.md) . Ebben a példában a titkos kötet az Nginx-tárolóhoz van csatlakoztatva.
+Adja meg a base64 kódolású fájlok tartalmát `secret`a . Például `cat` minden egyes base64-kódolt fájlokat, hogy annak tartalmát. A telepítés során ezek a fájlok hozzáadódnak egy [titkos kötethez](container-instances-volume-secret.md) a tárolócsoportban. Ebben a példában a titkos kötet a Nginx-tárolóhoz van csatlakoztatva.
 
 ```YAML
 api-version: 2018-10-01
@@ -191,29 +191,29 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-### <a name="deploy-the-container-group"></a>A tároló csoport üzembe helyezése
+### <a name="deploy-the-container-group"></a>A tárolócsoport telepítése
 
-Hozzon létre egy erőforráscsoportot az az [Group Create](/cli/azure/group#az-group-create) paranccsal:
+Erőforráscsoport létrehozása az [az csoport létrehozása](/cli/azure/group#az-group-create) paranccsal:
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create --name myResourceGroup --location westus
 ```
 
-Telepítse a tároló csoportot az az [Container Create](/cli/azure/container#az-container-create) paranccsal, és adja át a YAML-fájlt argumentumként.
+Telepítse a tárolócsoportot az [az container create](/cli/azure/container#az-container-create) paranccsal, és adja át a YAML-fájlt argumentumként.
 
 ```azurecli
 az container create --resource-group <myResourceGroup> --file deploy-aci.yaml
 ```
 
-### <a name="view-deployment-state"></a>Központi telepítési állapot megtekintése
+### <a name="view-deployment-state"></a>Telepítési állapot megtekintése
 
-A központi telepítés állapotának megtekintéséhez használja a következőt az [Container show](/cli/azure/container#az-container-show) paranccsal:
+A központi telepítés állapotának megtekintéséhez használja a következő [az container show](/cli/azure/container#az-container-show) parancsot:
 
 ```azurecli
 az container show --resource-group <myResourceGroup> --name app-with-ssl --output table
 ```
 
-Sikeres telepítés esetén a kimenet a következőhöz hasonló:
+A sikeres telepítés hez a kimenet hasonló a következőhöz:
 
 ```console
 Name          ResourceGroup    Status    Image                                                    IP:ports             Network    CPU/Memory       OsType    Location
@@ -223,23 +223,23 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 ## <a name="verify-ssl-connection"></a>SSL-kapcsolat ellenőrzése
 
-A böngésző segítségével navigáljon a Container Group nyilvános IP-címére. Az ebben a példában látható IP-cím `52.157.22.76`, így az URL-cím **https://52.157.22.76** . Az Nginx-kiszolgáló konfigurációja miatt a futó alkalmazás megtekintéséhez a HTTPS protokollt kell használnia. HTTP-kapcsolaton keresztüli sikertelen kapcsolódási kísérlet.
+A böngészősegítségével a tárolócsoport nyilvános IP-címére navigálhat. A példában látható IP-cím `52.157.22.76`a **https://52.157.22.76**, így az URL- cím a. A nginx-kiszolgáló konfigurációja miatt https-t kell használnia a futó alkalmazás megtekintéséhez. A HTTP-n keresztüli csatlakozásra tett kísérletek sikertelenek.
 
 ![Képernyőkép a böngészőről, ahol egy Azure-tárolópéldányban futó alkalmazás látható](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 
 > [!NOTE]
-> Mivel ez a példa önaláírt tanúsítványt használ, és nem egy hitelesítésszolgáltatótól, a böngésző biztonsági figyelmeztetést jelenít meg, amikor HTTPS-kapcsolaton keresztül csatlakozik a webhelyhez. Előfordulhat, hogy el kell fogadnia a figyelmeztetést, vagy módosítania kell a böngésző vagy a tanúsítvány beállításait a lapra való továbblépéshez. Ez várt működés.
+> Mivel ez a példa önaláírt tanúsítványt használ, és nem egy hitelesítésszolgáltatótól, a böngésző biztonsági figyelmeztetést jelenít meg, amikor HTTPS-kapcsolaton keresztül csatlakozik a helyhez. Előfordulhat, hogy el kell fogadnia a figyelmeztetést, vagy módosítania kell a böngésző vagy a tanúsítvány beállításait a lapra való továbblépéshez. Ez várt működés.
 
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez a cikk bemutatja, hogyan állíthat be egy Nginx-tárolót, amely lehetővé teszi az SSL-kapcsolatok használatát a Container csoportban futó webalkalmazások számára. Ezt a példát olyan alkalmazásokhoz igazíthatja, amelyek a 80-es porton kívül is figyelik a portokat. Az Nginx konfigurációs fájlját úgy is frissítheti, hogy automatikusan átirányítsa a kiszolgálói kapcsolatokat a 80-as porton (HTTP) a HTTPS használatára.
+Ez a cikk bemutatja, hogyan állíthat be egy Nginx-tárolót az SSL-kapcsolatok engedélyezéséhez a tárolócsoportban futó webalkalmazáshoz. Ezt a példát olyan alkalmazásokhoz igazíthatja, amelyek a 80-as porttól eltérő porton figyelnek. A Nginx konfigurációs fájl jattot is frissítheti úgy, hogy a 80-as (HTTP) porton lévő kiszolgálókapcsolatokat automatikusan átirányítsa a HTTPS használatára.
 
-Habár ez a cikk a Nginx-et használja az oldalkocsiban, használhat egy másik SSL-szolgáltatót, például a [Caddy](https://caddyserver.com/)-t.
+Bár ez a cikk nginx-et használ az oldalkocsiban, használhat egy másik SSL-szolgáltatót, például [a Caddyt.](https://caddyserver.com/)
 
-Ha egy Azure-beli [virtuális hálózatban](container-instances-vnet.md)helyezi üzembe a tároló csoportot, megtekintheti azokat a beállításokat, amelyek lehetővé teszik az SSL-végpontok használatát a háttérbeli tárolók példányaihoz, beleértve a következőket:
+Ha a tárolócsoportot egy [Azure virtuális hálózatban](container-instances-vnet.md)telepíti, más lehetőségeket is megfontolhat egy SSL-végpont engedélyezéséhez egy háttértároló-példányhoz, beleértve a következőket:
 
-* [Azure Functions-proxyk](../azure-functions/functions-proxies.md)
+* [Azure Functions proxyk](../azure-functions/functions-proxies.md)
 * [Azure API Management](../api-management/api-management-key-concepts.md)
-* [Azure Application Gateway](../application-gateway/overview.md) – tekintse meg a minta- [telepítési sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet).
+* [Azure Application Gateway](../application-gateway/overview.md) – tekintse meg a mintatelepítési [sablont.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)

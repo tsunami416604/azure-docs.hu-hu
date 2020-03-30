@@ -1,5 +1,5 @@
 ---
-title: DC sorozat – Azure Virtual Machines
+title: DC-sorozat - Azure virtuális gépek
 description: A DC sorozatú virtuális gépek specifikációi.
 services: virtual-machines
 author: susaxen
@@ -7,43 +7,43 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: fd8f01f0fc7180d271404ffee4496ff9cbac7222
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 7834c8a32d4d85fc354bac209e13f19f3b8315fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205925"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80256929"
 ---
-# <a name="preview-dcv2-series"></a>Előzetes verzió: DCv2 sorozat
+# <a name="preview-dcsv2-series"></a>Előzetes: DCsv2 sorozat
 
 
-A DCv2 sorozat a nyilvános felhőben feldolgozott adatok és kódok titkosságának és integritásának védelmét is lehetővé teszi. Ezeket a gépeket a SGX ENKLÁVÉHOZ technológiával rendelkező Intel XEON E-2288G processzor legújabb generációja támogatja. Az Intel Turbo Boost technológiával ezek a gépek akár 5,0 GHz-re is felmehetnek. A DCv2 sorozat példányai lehetővé teszik, hogy az ügyfelek biztonságos enklávé-alapú alkalmazásokat hozzanak létre a kódok és az adataik használat közbeni védelméhez.
+A DCsv2 sorozat segít megvédeni az adatok és a kód titkosságát és integritását, miközben a nyilvános felhőben van feldolgozva. Ezeket a gépeket az Intel XEON E-2288G processzor legújabb generációja támogatja SGX technológiával. Az Intel Turbo Boost technológiával ezek a gépek akár 5,0 GHz-re is felmehetnek. A DCsv2 sorozatpéldányok lehetővé teszik az ügyfelek számára, hogy biztonságos enklávé alapú alkalmazásokat építsenek a kódjuk és az adataik védelme érdekében, miközben használatban vannak.
 
-Példa használati esetekre: bizalmas többrésztvevős adatmegosztás, csalások észlelése, pénzmosás elleni védelem, blockchain, bizalmas használati elemzés, intelligencia-elemzés és bizalmas gépi tanulás.
+A használati esetek közé tartozik például a bizalmas többrésztvevős adatmegosztás, a csalások felderítése, a pénzmosás elleni küzdelem, a blokklánc, a bizalmas használatelemzés, a hírszerzési elemzés és a bizalmas gépi tanulás.
 
-Premium Storage: támogatott *
+Prémium szintű tárhely: Támogatott*
 
-Premium Storage gyorsítótárazás: támogatott *
+Prémium szintű tárolási gyorsítótárazás: Támogatott*
 
-Élő áttelepítés: nem támogatott
+Élő áttelepítés: Nem támogatott
 
-Memória-megőrzési frissítések: nem támogatott
+Memóriamegőrzési frissítések: Nem támogatott
 
-\* A Standard_DC8_v2 kivételével
+*Kivéve Standard_DC8_v2
 
 
 
-| Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (MBps) |
+| Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Maximális hálózati adapterek / várható hálózati sávszélesség (MBps) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
 | Standard_DC1s_v2 | 1    | 4           | 50                     | 1              | 2000/16 (21)                                                            | 1600/24                                   | 2                                            |
 | Standard_DC2s_v2 | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                            | 3200/48                                   | 2                                            |
 | Standard_DC4s_v2 | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                            | 6400/96                                   | 2                                            |
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
-- A DCv2 sorozatú virtuális gépek [2. generációs virtuális gépek](./linux/generation-2.md#creating-a-generation-2-vm) , és csak `Gen2` lemezképeket támogatják.
-- Jelenleg csak Egyesült Királyság déli régiója érhető el.
+- A DCsv2 sorozatú virtuális gépek 2 `Gen2` generációs virtuális gépek, és csak a lemezképeket [támogatják.](./linux/generation-2.md#creating-a-generation-2-vm)
+- Jelenleg csak az Egyesült Királyságdéli és Kanada Középső Részén érhető el.
 - A bizalmas számítási virtuális gépek előző generációja: [DC sorozat](sizes-previous-gen.md)
-- DCv2 virtuális gépek létrehozása az Azure Portal [virtuális gép létrehozása – portál](./linux/quick-create-portal.md)
+- DCsv2 virtuális gépek létrehozása az Azure Portal [létrehozása virtuális gép használatával - Portál](./linux/quick-create-portal.md)
 
 
 
@@ -56,6 +56,6 @@ Memória-megőrzési frissítések: nem támogatott
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
+További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.

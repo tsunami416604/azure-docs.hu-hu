@@ -1,84 +1,84 @@
 ---
-title: Adatok megjelenítése az Azure Adatkezelő Kibana használatával
-description: Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure Adatkezelőt a Kibana adatforrásaként
+title: Adatok megjelenítése az Azure Data Explorerből a Kibana használatával
+description: Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure Data Explorert a Kibana adatforrásaként.
 author: orspod
 ms.author: orspodek
 ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 30d74f36c6462d1fba039595d2ed6fe722b742e8
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: fac9c78607e50dca384670bf4cc08b50f723312b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79164812"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065614"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-kibana-with-the-k2bridge-open-source-connector"></a>Adatok megjelenítése az Azure Adatkezelő a Kibana-ben a K2Bridge nyílt forráskódú összekötővel
+# <a name="visualize-data-from-azure-data-explorer-in-kibana-with-the-k2bridge-open-source-connector"></a>Az Azure Data Explorer adatainak megjelenítése Kibanában a K2Bridge nyílt forráskódú összekötővel
 
-A K2Bridge (Kibana-Kusto Bridge) lehetővé teszi az Azure-Adatkezelő adatforrásként való használatát, valamint a Kibana-ben tárolt adatmegjelenítést. A K2Bridge egy [nyílt forráskódú](https://github.com/microsoft/K2Bridge) tároló alkalmazás, amely proxyként funkcionál egy Kibana-példány és egy Azure adatkezelő-fürt között. Ez a cikk azt ismerteti, hogyan lehet a K2Bridge használatával létrehozni a kapcsolódást.
+A K2Bridge (Kibana-Kusto Bridge) lehetővé teszi az Azure Data Explorer adatforrásként való használatát, valamint az adatok megjelenítését kibana. A K2Bridge egy [nyílt forráskódú](https://github.com/microsoft/K2Bridge) tárolós alkalmazás, amely proxyként működik egy Kibana példány és egy Azure Data Explorer-fürt között. Ez a cikk azt ismerteti, hogyan hozhat létre a K2Bridge a kapcsolat létrehozásához.
 
-A K2Bridge lefordítja a Kibana-lekérdezéseket a Kusto-lekérdezési nyelvre (KQL), és elküldi az Azure Adatkezelő eredményeit vissza Kibana. 
+A K2Bridge lefordítja a Kibana-lekérdezéseket Kusto lekérdezési nyelvre (KQL), és visszaküldi az Azure Data Explorer eredményeit Kibanának. 
 
    ![diagram](media/k2bridge/k2bridge-chart.png)
 
-A K2Bridge támogatja a Kibana felderítése lapot, ahol a következőket teheti:
-* Keresés és az adatgyűjtés
+A K2Bridge támogatja a Kibana Discover lapját, ahol teheti:
+* Az adatok keresése és feltárása
 * Szűrés eredményei
-* Mezők hozzáadása vagy eltávolítása az eredmények rácsában
-* Rekord tartalmának megtekintése
+* Mezők hozzáadása vagy eltávolítása az eredményrácsban
+* Rekordtartalom megtekintése
 * Keresések mentése és megosztása
 
-Az alábbi képen látható egy Kibana-példány, amely az Azure Adatkezelőhoz van kötve K2Bridge szerint. A Kibana felhasználói felülete változatlan marad.
+Az alábbi képen egy Kibana-példány látható, amely et a K2Bridge kötött az Azure Data Explorerhez. A kibanai felhasználói élmény változatlan.
 
-   [![Kibana lap](media/k2bridge/k2bridge-kibana-page.png)](media/k2bridge/k2bridge-kibana-page.png#lightbox)
+   [![Kibana oldal](media/k2bridge/k2bridge-kibana-page.png)](media/k2bridge/k2bridge-kibana-page.png#lightbox)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy az Azure Adatkezelő Kibana-ban lévő adatait láthatóvá tudja megjeleníteni, a következők állnak készen:
+Mielőtt megjelenítheti az Azure Data Explorer adatait Kibanában, készítse elő a következőket:
 
-* [Helm v3](https://github.com/helm/helm#install), a Kubernetes csomagkezelő
-* Az Azure Kubernetes Service (ak) fürtöt vagy bármely más Kubernetes-fürtöt (1,14-es verzió a 1,16-es verzióra) tesztelték és ellenőrizték. Ha AK-fürtre van szüksége, tekintse meg az AK-fürtök üzembe helyezése [Az Azure CLI használatával](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough) vagy [a Azure Portal használatával](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal) című témakört.
-* [Azure adatkezelő-fürt](create-cluster-database-portal.md), beleértve a következőket:
-    * Az Azure Adatkezelő-fürt URL-címe 
+* [Helm V3](https://github.com/helm/helm#install), a Kubernetes csomagkezelő
+* Az Azure Kubernetes Service (AKS) fürt, vagy bármely más Kubernetes-fürt (1.14-es verzió az 1.16-os verzióra tesztelt és ellenőrzött). Ha AKS-fürtre van szüksége, olvassa el az AKS-fürt üzembe helyezése [az Azure CLI használatával](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough) vagy az Azure Portal használatával című [témakört.](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal)
+* [Egy Azure Data Explorer-fürt,](create-cluster-database-portal.md)amely a következőket tartalmazza:
+    * Az Azure Data Explorer fürt URL-címe 
     * Az adatbázis neve
     
-* Egy Azure AD-szolgáltatás, amely az Azure Adatkezelőban tárolt adatmegjelenítésre engedélyt kapott, beleértve a következőket:
-    * Az ügyfél azonosítója 
-    * Az ügyfél titka
+* Az Azure Data Explorer ben az adatok megtekintésére jogosult Egyszerű Azure AD szolgáltatás, többek között a következők:
+    * Az ügyfélazonosító 
+    * Az ügyfél titkos
 
-    A "Viewer" engedéllyel rendelkező egyszerű szolgáltatásnév használata ajánlott. A magasabb szintű engedélyek használata nem ajánlott.
+    A "Viewer" engedéllyel rendelkező szolgáltatásnév használata ajánlott. Nem ajánlott magasabb engedélyeket használni.
 
-    * [Állítsa be a fürt nézetének engedélyeit az Azure ad egyszerű szolgáltatásnév számára](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
+    * [Állítsa be a fürt nézetengedélyeit az Azure AD egyszerű szolgáltatásához.](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal)
 
-    Az Azure AD egyszerű szolgáltatásával kapcsolatos további információkért lásd: [Azure ad-szolgáltatásnév létrehozása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
+    Az Azure AD egyszerű szolgáltatásról további információt az [Egyszerű Azure-szolgáltatásnév létrehozása című témakörben talál.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
 
-## <a name="run-k2bridge-on-azure-kubernetes-service-aks"></a>K2Bridge futtatása az Azure Kubernetes szolgáltatásban (ak)
+## <a name="run-k2bridge-on-azure-kubernetes-service-aks"></a>A K2Bridge futtatása az Azure Kubernetes szolgáltatáson (AKS)
 
-Alapértelmezés szerint a K2Bridges's Helm diagram a Microsoft Container Registry (MCR) webhelyen található nyilvánosan elérhető rendszerképre hivatkozik. A MCR nem igényel hitelesítő adatokat, és nem működik.
+Alapértelmezés szerint a K2Bridges Helm-diagramja a Microsoft tárolóbeállítás-jegyzékében (MCR) található, nyilvánosan elérhető lemezképre hivatkozik. Az MCR nem igényel hitelesítő adatokat, és beépített munkákat végez.
 
-1. Töltse le a szükséges Helm-diagramokat.
+1. Töltse le a szükséges Helm listákat.
 
-1. Adja hozzá a Elasticsearch függőséget a Helmhoz. 
-    A Elasticsearch függőség oka az, hogy a K2Bridge egy belső, kisméretű Elasticsearch-példányt használ a metaadatokkal kapcsolatos kérések szolgáltatásához (például index-minták és mentett lekérdezések). Ebben a belső példányban nem menti az üzleti adatokat, és a megvalósítás részleteit is figyelembe veheti. 
+1. Adja hozzá az Elasticsearch-függőséget a Helmhez. 
+    Az Elasticsearch-függőség oka az, hogy a K2Bridge egy belső kis Elasticsearch-példányt használ a metaadatokkal kapcsolatos kérelmek (például az indexminták és a mentett lekérdezések) kiszolgálásához. Ebben a belső példányban nem kerül mentésüzleti adatok, és implementációs részletnek tekinthetők. 
 
-    1. A Elasticsearch függőség hozzáadása a Helmhoz:
+    1. Az Elasticsearch-függőség hozzáadása a Helmhez:
 
         ```bash
         helm repo add elastic https://helm.elastic.co
         helm repo update
         ```
 
-    1. A K2Bridge diagram beszerzése a GitHub-adattár diagramok könyvtára:
-        1. A tárház klónozása a [githubról](https://github.com/microsoft/K2Bridge).
-        1. Nyissa meg a K2Bridges gyökérszintű tárház könyvtárát.
+    1. A K2Bridge-diagram lefektusa a GitHub-tárház diagramkönyvtára alól:
+        1. Klónozza a tárházat a [GitHubról.](https://github.com/microsoft/K2Bridge)
+        1. Nyissa meg a K2Bridges gyökértárkönyvtárát.
         1. Futtassa a következőt:
 
             ```bash
             helm dependency update charts/k2bridge
             ```
 
-1. K2Bridge üzembe helyezése:
+1. K2Bridge telepítése:
 
     1. Állítsa be a változókat a környezetének megfelelő értékekkel:
 
@@ -90,15 +90,15 @@ Alapértelmezés szerint a K2Bridges's Helm diagram a Microsoft Container Regist
         ADX_TENANT_ID=[SERVICE_PRINCIPAL_TENANT_ID]
         ```
 
-    1. Választható Engedélyezze az Azure Application Insights telemetria. 
-        Ha első alkalommal használja az Azure Application Insights-t, először [létre kell hoznia egy Application Insights-erőforrást](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource). A kialakítási kulcsot át kell [másolnia](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) egy változóba: 
+    1. (Nem kötelező) Engedélyezze az Azure Application Insights telemetriai adatait. 
+        Ha első alkalommal használja az Azure Application Insightsot, először [hozzon létre egy Application Insights-erőforrást.](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) A [műszerezési kulcsot át kell másolnia](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) egy változóba: 
 
         ```bash
         APPLICATION_INSIGHTS_KEY=[INSTRUMENTATION_KEY]
         COLLECT_TELEMETRY=true
         ```
 
-    1. <a name="install-k2bridge-chart"></a>A K2Bridge diagram telepítése:
+    1. <a name="install-k2bridge-chart"></a>A K2Bridge-diagram telepítése:
 
         ```bash
         helm install k2bridge charts/k2bridge -n k2bridge --set image.repository=$REPOSITORY_NAME/$CONTAINER_NAME --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set settings.aadClientId="$ADX_CLIENT_ID" --set settings.aadClientSecret="$ADX_CLIENT_SECRET" --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=latest] [--set privateRegistry="$IMAGE_PULL_SECRET_NAME"] [--set settings.collectTelemetry=$COLLECT_TELEMETRY]
@@ -106,102 +106,104 @@ Alapértelmezés szerint a K2Bridges's Helm diagram a Microsoft Container Regist
 
         A [konfigurációban](https://github.com/microsoft/K2Bridge/blob/master/docs/configuration.md) megtalálhatja a konfigurációs beállítások teljes készletét.
 
-    1. A parancs kimenete a következő Helm-parancs futtatását javasolja a Kibana telepítéséhez. Szükség esetén futtassa a következőket:
+    1. A parancs kimenete azt javasolja, hogy a következő Helm parancs futtassa a Kibana telepítéséhez. Opcionálisan futtassa:
 
         ```bash
         helm install kibana elastic/kibana -n k2bridge --set image=docker.elastic.co/kibana/kibana-oss --set imageTag=6.8.5 --set elasticsearchHosts=http://k2bridge:8080
         ```
-    1. Port továbbításának használata a Kibana eléréséhez a localhost-on: 
+        
+    1. Portforwarding használatával elérheti kibana a localhost: 
 
         ```bash
         kubectl port-forward service/kibana-kibana 5601 --namespace k2bridge
         ```
-    1. Kapcsolódjon a Kibana a http://127.0.0.1:5601tallózásával.
+        
+    1. Csatlakozzon Kibanához a http://127.0.0.1:5601talasszon.
 
-    1. Tegye elérhetővé a Kibana a végfelhasználók számára. Ehhez több módszer is van. A használt módszer nagy mértékben a használati esettől függ.
+    1. Tegye ki Kibanát a végfelhasználóknak. Erre több módszer is létezik. A használt módszer nagymértékben függ a használati esettől.
 
-        Például:
+        Példa:
 
-        Tegye elérhetővé a szolgáltatást terheléselosztó szolgáltatásként. Ehhez adja hozzá a következő paramétert a K2Bridge Helm install parancshoz ([fenti](#install-k2bridge-chart)):
-
-        `--set service.type=LoadBalancer`
+        Tegye elérhetővé a szolgáltatást LoadBalancer szolgáltatásként. Ehhez adja hozzá `--set service.type=LoadBalancer` a paramétert a K2Bridge Helm telepítési parancshoz ([fent](#install-k2bridge-chart)).        
     
         Majd futtassa ezt:
-
-           ```bash
-           kubectl get service -w -n k2bridge
-           ```   
-        A kimenetnek az alábbihoz hasonlóan kell kinéznie: 
+        
+        ```bash
+        kubectl get service -w -n k2bridge
+        ```
+        
+        A kimenetnek így kell kinéznie: 
 
         ```bash
         NAME            TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
         kibana-kibana   LoadBalancer   xx.xx.xx.xx   <pending>      5601:30128/TCP   4m24s
         ```
-        Ezután használhatja a megjelenő generált külső IP-címet, és használhatja a Kibana eléréséhez egy böngésző megnyitásával: `\<EXTERNAL-IP>:5601`.
+ 
+        Ezután használhatja a létrehozott EXTERNAL-IP jelenik meg, és használja a `<EXTERNAL-IP>:5601`hozzáférést Kibana megnyitásával a böngésző .
 
-1. Adja meg az index-mintákat az adatai eléréséhez:  
-Egy új Kibana-példányban:
-     1. Nyissa meg a Kibana.
-     1. Navigáljon a felügyelet elemre.
-     1. Válassza az **index mintázatok**lehetőséget. 
-     1. Hozzon létre egy index mintát.
-Az index nevének pontosan egyeznie kell a táblázat nevével vagy a függvény nevével, csillag nélkül. A megfelelő sort a listából is másolhatja.
+1. Indexminták konfigurálása az adatok eléréséhez:  
+Egy új Kibana például:
+     1. Nyisd ki Kibanát.
+     1. Keresse meg a Vezetőség et.
+     1. Válassza az **Indexminták lehetőséget.** 
+     1. Indexminta létrehozása.
+Az index nevének pontosan meg kell egyeznie a tábla nevével vagy a függvény nevével, csillag nélkül. A megfelelő sort átmásolhatja a listából.
 
 > [!Note]
-> Más Kubernetes-szolgáltatókon való futtatáshoz módosítsa a `values.yaml` Elasticsearch storageClassName a szolgáltató által javasoltnak megfelelően.
+> Más Kubernetes-szolgáltatókon való futtatáshoz módosítsa az `values.yaml` Elasticsearch storageClassName-t úgy, hogy illeszkedjen a szolgáltató által javasolthoz.
 
 ## <a name="visualize-data"></a>Adatok vizualizációja
 
-Ha az Azure Adatkezelő a Kibana adatforrásaként van konfigurálva, a Kibana használatával megvizsgálhatja az adatforrásokat. 
+Ha az Azure Data Explorer a Kibana adatforrásaként van konfigurálva, a Kibana segítségével megismerheti az adatokat. 
 
-1. A Kibana bal oldali menüjében válassza a **felderítés** fület.
+1. A Kibana bal oldali menüjében válassza a **Felfedezés** lapot.
 
-1. A bal oldali legördülő listából válasszon ki egy index mintát (ebben az esetben egy Azure Adatkezelő táblázatot), amely meghatározza a felderíteni kívánt adatforrást.
+1. A bal oldali legördülő listából válasszon egy indexmintát (ebben az esetben egy Azure Data Explorer-táblát), amely meghatározza a feltárni kívánt adatforrást.
     
-   ![Válasszon ki egy index mintát](media/k2bridge/k2bridge-select-an-index-pattern.png)
+   ![Tárgymutató-minta kijelölése](media/k2bridge/k2bridge-select-an-index-pattern.png)
 
-1. Ha az adatai Időszűrő mezővel rendelkeznek, megadhatja az időtartományt. Az oldal jobb felső részén állítsa be az időszűrőt. Alapértelmezés szerint a felderítés az elmúlt 15 percben jeleníti meg az adatértékeket.
+1. Ha az adatok rendelkeznek időszűrő mezővel, megadhatja az időtartományt. Az oldal jobb felső részén állítson be egy időszűrőt. Alapértelmezés szerint a Discover az elmúlt 15 perc adatait jeleníti meg.
 
    ![Időszűrő](media/k2bridge/k2bridge-time-filter.png)
     
-1. Az eredmények táblázat az első 500 rekordot jeleníti meg. A dokumentumok kibontásával megvizsgálhatja a mezőkben tárolt adattartalmakat a JSON-vagy a Table formats szolgáltatásban.
+1. Az eredménytábla az első 500 rekordot mutatja. A dokumentum kibontásával json- vagy táblaformátumban vizsgálhatja meg a mezőadatokat.
 
    ![Rekord kibontása](media/k2bridge/k2bridge-expand-record.png)
 
-1. Alapértelmezés szerint a Results (eredmények) tábla a dokumentum _source és az időmező (ha létezik) oszlopait tartalmazza. A bal oldali oldalsávon a mező neve melletti **Hozzáadás** gombra kattintva kiválaszthatja az eredmények táblába felvenni kívánt oszlopokat.
+1. Alapértelmezés szerint az eredménytábla oszlopokat tartalmaz a dokumentum _source és az időmezőhöz (ha van ilyen). Az eredménytáblához a hozzáadás gombra kattintva választhatja ki az eredménytáblához a **hozzáadás** lehetőséget a bal oldalsávon.
 
-   ![Adott oszlopok](media/k2bridge/k2bridge-specific-columns.png)
+   ![Konkrét oszlopok](media/k2bridge/k2bridge-specific-columns.png)
     
-1. A lekérdezési sávon az alábbiak szerint kereshet:
-    * Keresési kifejezés beírása
-    * A Lucene lekérdezési szintaxis használata. 
-    Például:
-        * A "hiba" kifejezésre kattintva megkeresheti az összes olyan rekordot, amely tartalmazza ezt az értéket. 
-        * Keressen a "Status: 200" kifejezésre, hogy az összes rekordot lekérje a 200 állapot értékével. 
-    * Logikai operátorok használata (és, vagy nem)
-    * Helyettesítő karakterek használata (csillag "\*" vagy kérdőjel "?") Például:
-        * A lekérdezési `"destination_city: L*"` megfelel a rekordoknak, amelyekben a célként megadott város értéke "l" karakterrel kezdődik (a K2Bridge nem megkülönbözteti a kis-és nagybetűket).
+1. A lekérdezési sávon a következő konkretinálhat:
+    * Keresési kifejezés megadása
+    * A Lucene lekérdezés szintaxisának használata. 
+    Példa:
+        * Keresés "hiba", hogy megtalálja az összes rekordot, amely tartalmazza ezt az értéket. 
+        * Az "állapot: 200" kifejezésre keress, és az összes 200-as állapotértékű rekordot leszeretné. 
+    * Logikai operátorok használata (ÉS, VAGY, NEM)
+    * Helyettesítő karakterek (csillag " \* vagy kérdőjel használata "?") Például:
+        * A `"destination_city: L*"` lekérdezés olyan rekordoknak felel meg, ahol a célvárosi érték "l" betűvel kezdődik (a K2Bridge nem felel meg a kis- és nagybetűk megkülönböztetésének).
 
     ![A lekérdezés futtatása](media/k2bridge/k2bridge-run-query.png)
     
     > [!Tip]
-    > A keresésben további keresési szabályok és [logika található.](https://github.com/microsoft/K2Bridge/blob/master/docs/searching.md)
+    > A [Keresés alkalmazásban](https://github.com/microsoft/K2Bridge/blob/master/docs/searching.md)további keresési szabályokat és logikát találhat.
 
-1. A keresési eredmények szűréséhez használja a lap jobb oldali oldalsávján található **mezőlista** . 
-    A mezőlista itt látható:
+1. A keresési eredmények szűréséhez használja az oldal jobb oldali oldalsávján található **mezőlistát.** 
+    A mezőlista a következő hely:
     * A mező első öt értéke
     * A mezőt tartalmazó rekordok száma
     * Az egyes értékeket tartalmazó rekordok százalékos aránya. 
     
     >[!Tip]
-    > A (+) nagyító ikon használatával megkeresheti az összes olyan rekordot, amely egy adott értékkel rendelkezik.
+    > A (+) nagyító ikonnal megkeresheti az adott értékkel tartozó összes rekordot.
     
     ![Mezőlista](media/k2bridge/k2bridge-field-list.png)
    
-    Az eredményeket a (+) nagyító ikon használatával is szűrheti az eredmények táblázatának eredmény tábla formátum nézetében.
+    Az eredményeket az eredmények táblázategyes rekordainak eredménytáblázat-formátumnézetében lévő (+) nagyító ikonnal is szűrheti.
     
-     ![Táblák listája](media/k2bridge/k2bridge-table-list.png)
+     ![Táblázatlista](media/k2bridge/k2bridge-table-list.png)
     
-1. A keresés **mentéséhez** vagy **megosztásához** válassza a lehetőséget.
+1. Válassza a **keresés mentéséhez** vagy **megosztásához** lehetőséget.
 
      ![Keresés mentése](media/k2bridge/k2bridge-save-search.png)

@@ -1,6 +1,6 @@
 ---
-title: Távoli figyelési C – az Azure Windows-eszköz kiépítése |} A Microsoft Docs
-description: Ismerteti, hogyan lehet egy eszköz csatlakoztatása a távoli figyelési megoldásgyorsító futó Windows C nyelven írt alkalmazás használatával.
+title: Windows-eszközök kiépítése távfelügyeletre C - Azure | Microsoft dokumentumok
+description: Ez a témakör azt ismerteti, hogy miként csatlakoztatható eszköz a távfigyelési megoldás gyorsítójához a Windows rendszeren futó C nyelven írt alkalmazás használatával.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,55 +9,55 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 2a8a0bf1e63f06bbe6b6a073af6b3da8904dcaeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61450218"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>Az eszköz csatlakoztatása a távoli figyelési megoldásgyorsító (Windows)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>Az eszköz csatlakoztatása a Távfigyelési megoldás gyorsítójával (Windows)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan lehet csatlakozni a távoli figyelési megoldásgyorsító valós eszköz.
+Ez az oktatóanyag bemutatja, hogyan csatlakoztathat egy valódi eszközt a távoli figyelési megoldás gyorsítóhoz.
 
-Csakúgy, mint legnagyobb beágyazott korlátozott eszközökön futó alkalmazásokhoz, az Ügyfélkód az eszköz alkalmazás írt c-hez Ebben az oktatóanyagban létrehozhat egy Windows rendszert futtató gépen az eszközügyfél-alkalmazáshoz.
+A legtöbb korlátozott eszközön futó beágyazott alkalmazáshoz ugyanúgy, mint az eszközalkalmazás ügyfélkódja C-ben íródik. Ebben az oktatóanyagban az eszközügyfél-alkalmazást egy Windows rendszert futtató gépen építi fel.
 
-Ha egy eszköz szimulálása szeretne használni, tekintse meg [létrehozása és a egy új szimulált eszköz teszt](iot-accelerators-remote-monitoring-create-simulated-device.md).
+Ha egy eszközt szeretne szimulálni, olvassa el az [Új szimulált eszköz létrehozása és tesztelése című témakört.](iot-accelerators-remote-monitoring-create-simulated-device.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Végezze el ez az Útmutató lépéseit kövesse a [a Windows fejlesztési környezet beállítása](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment) a szükséges fejlesztői eszközök és kódtárak hozzáadása a Windows-gépen.
+Az útmutató ban leírt lépések végrehajtásához kövesse a [Windows fejlesztői környezet beállításának](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment) lépéseit a szükséges fejlesztői eszközök és tárak Windows-géphez való hozzáadásához.
 
-## <a name="view-the-code"></a>A kód megtekintéséhez
+## <a name="view-the-code"></a>A kód megtekintése
 
-A [mintakód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) használja a jelen útmutató az Azure IoT C SDK-k GitHub-tárházban érhető el.
+Az ebben az útmutatóban használt [mintakód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) az Azure IoT C SDKs GitHub-tárházban érhető el.
 
-### <a name="download-the-source-code-and-prepare-the-project"></a>Letöltheti a forráskódot, és készítse elő a projekt
+### <a name="download-the-source-code-and-prepare-the-project"></a>A forráskód letöltése és a projekt előkészítése
 
-A projekt előkészítése [az Azure IoT C SDK-k tárház klónozásához](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment) a Githubról.
+A projekt előkészítése, [klónozza az Azure IoT C SDKtár a](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment) GitHubról.
 
-A mintában található a **samples/megoldások/remote_monitoring_client** mappát.
+A minta a **minták/megoldások/remote_monitoring_client** mappában található.
 
-Nyissa meg a **remote_monitoring.c** fájlt a **samples/megoldások/remote_monitoring_client** mappát egy szövegszerkesztőben.
+Nyissa meg a **remote_monitoring.c** fájlt a **minta/megoldások/remote_monitoring_client** mappában egy szövegszerkesztőben.
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-1. Szerkessze a **remote_monitoring.c** fájlban cserélje le `<connectionstring>` az eszköz kapcsolati karakterlánccal feljegyzett elején. Ez az útmutató egy eszközt a megoldásgyorsító való felvételekor.
+1. Az útmutató elején észlelt eszközkapcsolati karakterláncra cserélheti `<connectionstring>` a **remote_monitoring.c** fájlt, amikor eszközt adott a megoldásgyorsítóhoz.
 
-1. Kövesse a [hozhat létre az C SDK-t Windows](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#build-the-c-sdk-in-windows) hozhat létre az SDK-t és a távoli figyelési ügyfélalkalmazás.
+1. Kövesse a [C SDK létrehozása a Windows rendszerben](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#build-the-c-sdk-in-windows) az SDK és a távoli figyelési ügyfélalkalmazás létrehozásához című lépéseit.
 
-1. A parancssor a megoldás felépítéséhez használt futtassa a következő:
+1. A megoldás létrehozásához használt parancssorban futtassa a következő parancsot:
 
     ```cmd
     samples\solutions\remote_monitoring_client\Release\remote_monitoring_client.exe
     ```
 
-    A konzolon, üzeneteket jelenít meg:
+    A konzol az üzeneteket a következőképpen jeleníti meg:
 
-    - Az alkalmazás minta telemetriai adatokat küld a megoldásgyorsító.
-    - A megoldás irányítópultjáról indított metódusokra válaszol.
+    - Az alkalmazás minta telemetriát küld a megoldásgyorsító.
+    - A megoldás irányítópultjáról meghívott metódusokra válaszol.
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]

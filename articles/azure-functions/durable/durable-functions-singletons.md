@@ -1,26 +1,26 @@
 ---
-title: Durable Functions – Azure
-description: Az Durable Functions bővítmény használata Azure Functionshoz.
+title: Singletons tartós funkciókhoz - Azure
+description: Singletons használata az Azure Functions durable functions bővítményében.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4eff7c4c91ed664fcf1f4fc7a8be2d43d24e5c6b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76262809"
 ---
-# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions)
+# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Singleton orchestrators tartós függvényekben (Azure Functions)
 
-A háttérben felmerülő feladatok esetében gyakran biztosítania kell, hogy egy adott Orchestrator csak egy példánya fusson egyszerre. Ezt a fajta egyedi viselkedést [Durable functions](durable-functions-overview.md) úgy is biztosíthatja, hogy egy adott Orchestrator rendel hozzá egy adott példányhoz, amikor létrehozza azt.
+A háttérfeladatok hoz, gyakran kell biztosítania, hogy csak egy példánya egy adott orchestrator fut egy időben. Biztosíthatja az ilyen típusú singleton viselkedés [tartós függvények](durable-functions-overview.md) hozzárendelésével egy adott példányazonosítót egy orchestrator létrehozásakor.
 
-## <a name="singleton-example"></a>Egyszeres példa
+## <a name="singleton-example"></a>Singleton példa
 
-Az alábbi példa egy olyan HTTP-trigger függvényt mutat be, amely létrehoz egy egypéldányos háttér-előkészítési feladatot. A kód biztosítja, hogy csak egy példány létezik egy adott példány-AZONOSÍTÓhoz.
+A következő példa egy HTTP-trigger függvényt mutat be, amely egy singleton háttérfeladat vezénylési. A kód biztosítja, hogy csak egy példány létezik egy adott példányazonosítóhoz.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -52,11 +52,11 @@ public static async Task<HttpResponseMessage> RunSingle(
 ```
 
 > [!NOTE]
-> Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `DurableClient` attribútum helyett `OrchestrationClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia `IDurableOrchestrationClient`helyett. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző C# kód a Durable Functions 2.x. A Durable Functions 1.x `OrchestrationClient` esetén az `DurableClient` attribútum helyett attribútumot kell `DurableOrchestrationClient` használni, és `IDurableOrchestrationClient`a paramétertípusát kell használnia a helyett. A verziók közötti különbségekről a [Durable Functions verziók ról](durable-functions-versions.md) szóló cikkben olvashat bővebben.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-**function. JSON**
+**function.json**
 
 ```json
 {
@@ -83,7 +83,7 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-**index. js**
+**index.js**
 
 ```javascript
 const df = require("durable-functions");
@@ -114,14 +114,14 @@ module.exports = async function(context, req) {
 
 ---
 
-Alapértelmezés szerint a példány-azonosítók véletlenszerűen generált GUID azonosítók. Az előző példában azonban a példány AZONOSÍTÓját átadja a rendszer az URL-ből származó útvonal-adatok között. A kód `GetStatusAsync`(C#) vagy `getStatus` (JavaScript) meghívásával ellenőrizze, hogy a megadott azonosítójú példány már fut-e. Ha nem fut ilyen példány, a rendszer létrehoz egy új példányt az AZONOSÍTÓval.
+Alapértelmezés szerint a példányazonosítók véletlenszerűen generált GUID azonosítók. Az előző példában azonban a példányazonosító átkerül az URL-címről származó útvonaladatokban. A kód `GetStatusAsync`meghívja (C#) vagy `getStatus` (JavaScript) annak ellenőrzésére, hogy a megadott azonosítóval rendelkező példány már fut-e. Ha ilyen példány nem fut, egy új példány jön létre ezzel az azonosítóval.
 
 > [!NOTE]
-> Ebben a példában a verseny feltétele lehetséges. Ha a **HttpStartSingle** két példánya egyidejű végrehajtást hajt végre, mindkét függvényhívás sikeres lesz, de a rendszer csak egy hanghívási példányt fog elindulni. A követelményektől függően előfordulhat, hogy ez nem lenne lehetséges mellékhatása. Ezért fontos annak biztosítása, hogy ne lehessen egyszerre két kérelmet végrehajtani az trigger-függvényt.
+> Van egy lehetséges faji helyzet ebben a mintában. Ha a **HttpStartSingle** két példánya egyidejűleg hajt végre, mindkét függvényhívás sikeresnek fog jelenteni, de csak egy vezénylési példány indul el. Attól függően, hogy a követelmények, Ez lehet nemkívánatos mellékhatások. Ezért fontos annak biztosítása, hogy egyetlen két kérelem ne hajthassa végre egyidejűleg ezt az eseményindító függvényt.
 
-A Orchestrator függvény implementációjának részletei valójában nem számítanak. Ez lehet egy normál Orchestrator-függvény, amely megkezdi és befejeződik, vagy az is lehet, hogy örökre fut (azaz egy [örök](durable-functions-eternal-orchestrations.md)kialakítás). A lényeg az, hogy egyszerre csak egy példány fut egyszerre.
+Az orchestrator függvény megvalósítási részletei valójában nem számítanak. Ez lehet egy rendszeres orchestrator funkció, amely elindul és befejeződik, vagy lehet az egyik, hogy fut örökre (azaz egy [örök vezénylés](durable-functions-eternal-orchestrations.md)). A lényeg az, hogy egyszerre csak egy példány fut.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg a rendszerelőkészítések natív HTTP-funkcióit](durable-functions-http-features.md)
+> [További információ a vezénylések natív HTTP-funkcióiról](durable-functions-http-features.md)

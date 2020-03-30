@@ -1,6 +1,6 @@
 ---
-title: Analitika a HDInsight Sparkban a PySpark, a Scala-Team adatelemzési folyamattal
-description: Példák a csoportos adatelemzési folyamatra, amely végigvezeti a PySpark és a Scala egy Azure HDInsight Sparkon való használatával.
+title: Elemzés a HDInsight Sparkon pyspark, scala – csapatadat-elemzési folyamat
+description: Példák a Team Data Science Process, amely végigvezeti a PySpark és a Scala egy Azure HDInsight Spark használatával.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,40 +12,40 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 91aac279a264d64ace5988d147c4caf8c52e9656
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864145"
 ---
-# <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>HDInsight Spark-adatelemzési útmutató a PySpark és a Scala használatával az Azure-ban
+# <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>A HDInsight Spark adatelemzési forgatókönyvei a PySpark és a Scala használatával az Azure-ban
 
-Ezek a forgatókönyvek a PySpark és a Scala használatával egy Azure Spark-fürtön végzik a prediktív elemzést. Ezek követik a csoportos adatelemzési folyamat lépéseit. A csoportos adatelemzési folyamat áttekintését lásd: [adatelemzési folyamat](overview.md). A Spark on HDInsight áttekintését lásd: a [Spark on HDInsight bemutatása](../../hdinsight/spark/apache-spark-overview.md).
+Ezek a forgatókönyvek a PySpark és a Scala egy Azure Spark-fürtön prediktív elemzéseket használ. A csapatadat-elemzési folyamatban ismertetett lépéseket követik. A csapatadat-elemzési folyamat áttekintését az [Adatelemzési folyamat című](overview.md)témakörben találja. A Spark HDInsight-on című [témakörben olvashat: Bevezetés a Spark a HDInsight-on című témakörbe.](../../hdinsight/spark/apache-spark-overview.md)
 
-A csoportos adatelemzési folyamatokat végrehajtó további adatelemzési útmutatókat az általuk használt **platform** szerint csoportosítjuk. A példák részletezés tekintse meg [a csoportos adatelemzési folyamat végrehajtásához szükséges útmutatókat](walkthroughs.md) .
+További adatelemzési forgatókönyvek, amelyek végrehajtják a csapat adatelemzési folyamat az általuk használt **platform** szerint vannak csoportosítva. Lásd: [A csapatadat-elemzési folyamatot végrehajtó forgatókönyvek](walkthroughs.md) a példák részletezéséhez.
 
-## <a name="predict-taxi-tips-using-pyspark-on-azure-spark"></a>A taxi tippek előrejelzése az Azure Spark PySpark használatával
+## <a name="predict-taxi-tips-using-pyspark-on-azure-spark"></a>Taxitippek előrejelzése a PySpark használatával az Azure Sparkon
 
-A New York-i taxi-adatforgalom használatával a [Spark on Azure HDInsight](spark-overview.md) útmutatóban megjósolható, hogy a tipp fizetős-e, és hogy a várt mennyiségek milyen tartományban vannak. Ez a példa a csapat adatelemzési folyamatát használja egy [Azure HDInsight Spark-fürtöt](https://azure.microsoft.com/services/hdinsight/) használó forgatókönyvben a nyilvánosan elérhető NYC taxi Trip és fare adatkészletből származó mérnöki adatok tárolására, feltárására és szolgáltatására. Ez az áttekintő témakör egy HDInsight Spark-fürtöt és Jupyter PySpark-jegyzetfüzeteket használ. Ezek a jegyzetfüzetek megmutatják, hogyan vizsgálhatja meg az adatait, és hogyan hozhat létre és használhat modelleket. A speciális adatfeltárási és-modellezési jegyzetfüzet azt mutatja be, hogyan lehet a több érvényesítést, a Hyper-paraméter-eltakarítást és a modell kiértékelését.
+A New York-i taxiadatok használatával a [Spark használata az Azure HDInsight-forgatókönyv](spark-overview.md) előre jelzi, hogy egy tipp kifizetésre kerül-e, és a várható összegek tartománya. Ez a példa a team data science folyamat egy forgatókönyv egy [Azure HDInsight Spark-fürt](https://azure.microsoft.com/services/hdinsight/) használatával tárolja, fedezze fel és szolgáltatás mérnök adatokat a nyilvánosan elérhető NYC taxi út és a viteldíj adatkészlet. Ez az áttekintő témakör egy HDInsight Spark-fürtöt és jupyter PySpark-jegyzetfüzeteket használ. Ezek a jegyzetfüzetek bemutatják, hogyan fedezheti fel az adatokat, majd hogyan hozhat létre és használható fel modelleket. A speciális adatfeltárási és modellezési jegyzetfüzet bemutatja, hogyan lehet keresztérvényesítést, hiperparaméter-söprést és modellértékelést.
 
-### <a name="data-exploration-and-modeling-with-spark"></a>Adatelemzés és-modellezés a Sparktal 
-Fedezze fel az adatkészletet, és hozza létre, szerzi és értékelje ki a gépi tanulási modelleket a Spark MLlib Toolkit című témakörben található [bináris besorolási és regressziós modellek létrehozásával](spark-data-exploration-modeling.md) .
+### <a name="data-exploration-and-modeling-with-spark"></a>Adatfeltárás és modellezés a Sparkkal 
+Fedezze fel az adatkészletet, és hozza létre, pontozás, és értékelje ki a gépi tanulási modellek segítségével a [bináris osztályozási és regressziós modellek létrehozása az adatok a Spark MLlib eszközkészlet témakör.](spark-data-exploration-modeling.md)
 
-### <a name="model-consumption"></a>Modell felhasználása
-A jelen témakörben létrehozott besorolási és regressziós modellek kiértékelésével kapcsolatban lásd a [Spark által készített gépi tanulási modellek pontszámát és értékelését](spark-model-consumption.md)ismertető témakört.
+### <a name="model-consumption"></a>Modellfelhasználás
+A témakörben létrehozott besorolási és regressziós modellek pontozásáról a [Pontszám és a Spark által készített gépi tanulási modellek kiértékelése](spark-model-consumption.md)című témakörben olvashat.
 
-### <a name="cross-validation-and-hyperparameter-sweeping"></a>Több ellenőrzés és hiperparaméter elsöprő
-Tekintse meg a [fejlett adatfeltárást és-modellezést a sparktal](spark-advanced-data-exploration-modeling.md) , hogy a modelleket hogyan lehet betanítani a több ellenőrzési és a Hyper-paraméteres söpörte használatával.
-
-
-## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Taxi tippek előrejelzése a Scala használatával az Azure Sparkban
-
-A [Scala és a Spark on Azure bemutató használata](scala-walkthrough.md) azt jelzi, hogy a tipp fizetős-e, és a várhatóan fizetendő összegek köre. Azt mutatja be, hogyan használható a Scala a felügyelt gépi tanulási feladatokhoz a Spark Machine learning Library (MLlib) és a SparkML-csomagok használatával egy Azure HDInsight Spark-fürtön. Végigvezeti az [adatelemzési folyamatot](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)alkotó feladatokon: az adatok betöltését és feltárását, a vizualizációt, a szolgáltatások mérnöki használatát, a modellezést és a modell felhasználását. A modellek a következők: logisztikai és lineáris regresszió, véletlenszerű erdők és átmenetes kiemeléses fák.
+### <a name="cross-validation-and-hyperparameter-sweeping"></a>Kereszt-ellenőrzés és hiperparaméter söprés
+Lásd: [Speciális adatok feltárása és modellezése a Spark segítségével,](spark-advanced-data-exploration-modeling.md) hogyan modellek betanítása kereszt-ellenőrzés és a hyper-paraméter seprés.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Taxitippek előrejelzése a Scala használatával az Azure Sparkon
 
-A csoportos adatelemzési folyamat áttekintését lásd: a [csoportos adatelemzési folyamat áttekintése](overview.md).
+A [Scala használata a Spark az Azure-ban](scala-walkthrough.md) forgatókönyv előre jelzi, hogy egy tipp fizetett, és a várhatóan fizetendő összegek tartománya. Bemutatja, hogyan használhatja a Scala felügyelt gépi tanulási feladatok a Spark machine learning-kódtár (MLlib) és sparkML-csomagok egy Azure HDInsight Spark-fürtön. Végigvezeti az [adatelemzési folyamatot](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)alkotó feladatokon: adatbetöltés és feltárás, vizualizáció, szolgáltatástervezés, modellezés és modellfelhasználás. A modellek közé tartozik a logisztikai és lineáris regresszió, véletlenszerű erdők, és a gradiens kiemelt fák.
 
-A csoportos adatelemzési folyamat életciklusának megvitatására a [csoportos adatelemzési folyamat életciklusa](lifecycle.md)című témakörben olvashat. Ez az életciklus az elejétől a végéig terjedő lépéseket ismerteti, amelyeket a projektek általában a végrehajtásuk után követnek. 
+
+## <a name="next-steps"></a>További lépések
+
+A csapatadat-elemzési folyamat áttekintését a [Csapat adatelemzési folyamatának áttekintése című témakörben találja.](overview.md)
+
+A csapatadat-elemzési folyamat életciklusának témakörét a [Csapatadat-elemzési folyamat életciklusa című témakörben közöld.](lifecycle.md) Ez az életciklus ismerteti azokat a lépéseket, az elejétől a végéig, amelyeket a projektek általában a végrehajtáskor követnek. 
 

@@ -1,26 +1,26 @@
 ---
-title: Azure-beli autoskálázási napló eseményeinek sémája
+title: Azure automatikus skálázású naplóesemények sémája
 description: Naplók formátuma az automatikus skálázási műveletek figyeléséhez és hibaelhárításához
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.subservice: autoscale
 ms.openlocfilehash: 3c32f15208a8e692054ee6c1f7effc6b7c89de3d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75395946"
 ---
-# <a name="azure-monitor-autoscale-actions-resource-log-schema"></a>Azure Monitor az autoskálázási műveletek erőforrás-naplózási sémája
+# <a name="azure-monitor-autoscale-actions-resource-log-schema"></a>Az Azure Monitor automatikus skálázási műveletek erőforrásnapló-sémája
 
-Az alábbi általános formátumok tartalmazzák az erőforrás-naplókat, például a tartalmazott adatmennyiséget. Az alábbi példák nem mindegyike megfelelően formázott JSON, mert több olyan értéket is tartalmazhatnak, amelyek egy adott mező esetében érvényesek lehetnek. 
+Az alábbiakban az automatikus skálázási erőforrásnaplók általános formátumait, példát is tartalmaz. Az alábbi példák közül nem mindegyik megfelelően formázott JSON, mert több olyan értéket is tartalmazhatnak, amelyek egy adott mezőre érvényesek lehetnek. 
 
-Az ilyen típusú események használatával elháríthatja az olyan problémákat, amelyek az autoskálázással rendelkezhetnek. További információ: az [autoskálázási problémák elhárítása](autoscale-troubleshoot.md).
+Az ilyen típusú események segítségével elháríthatja az automatikus skálázással kapcsolatos problémákat. További információt az [Automatikus skálázási problémák elhárítása című témakörben talál.](autoscale-troubleshoot.md)
 
 
 ## <a name="profile-evaluation"></a>Profil kiértékelése
 
-A rendszer akkor rögzíti, ha az autoscale először egy autoscale-profilt keres
+Automatikus skálázási profil első megtekintésekor rögzített
 
 ```json
 {
@@ -37,9 +37,9 @@ A rendszer akkor rögzíti, ha az autoscale először egy autoscale-profilt kere
 }
 ```
 
-## <a name="profile-cooldown-evaluation"></a>Profil cooldown kiértékelése
+## <a name="profile-cooldown-evaluation"></a>Profil újratöltődési idő értékelése
 
-Akkor van rögzítve, ha az autoscale kiértékeli, hogy a lehűtési időszak miatt nem kell-e méretezést végezni. 
+Automatikus skálázás kiértékeli, ha nem kell csinálni a skálát, mert a lehűlési időszak. 
 
 ```json
 {
@@ -60,9 +60,9 @@ Akkor van rögzítve, ha az autoscale kiértékeli, hogy a lehűtési időszak m
 }
 ```
 
-## <a name="rule-evaluation"></a>Szabály kiértékelése
+## <a name="rule-evaluation"></a>Szabály értékelése
 
-Akkor van rögzítve, ha az autoscale első indításakor egy adott méretezési szabály van kiértékelve. 
+Akkor kerül rögzítésre, amikor az automatikus skálázás először elkezdi kiértékelni egy adott léptékszabályt. 
 
 ```json
 {
@@ -89,7 +89,7 @@ Akkor van rögzítve, ha az autoscale első indításakor egy adott méretezési
 
 ## <a name="metric-evaluation"></a>Metrika kiértékelése
 
-A skálázási művelet elindításához használt metrika kiértékelése során rögzített. 
+Automatikus skálázás kiértékelése során a metrika használt egy méretezési művelet aktiválásához. 
 
 ```json
 {
@@ -113,7 +113,7 @@ A skálázási művelet elindításához használt metrika kiértékelése sorá
 
 ## <a name="instance-count-evaluation"></a>Példányszám kiértékelése
 
-Akkor rögzítve, ha az automatikus skálázás kiértékeli a már folyamatban lévő példányok számát, hogy eldöntse, van-e még több, állítson le néhányat, vagy hajtson végre semmit. 
+Akkor rögzített, amikor az automatikus skálázás kiértékeli a már futó példányok számát annak eldöntésére, hogy többet kell-e kezdenie, le kell-e állítania néhányat, vagy ne tegyen semmit. 
 
 ```json
 {
@@ -132,9 +132,9 @@ Akkor rögzítve, ha az automatikus skálázás kiértékeli a már folyamatban 
 }
 ```
 
-## <a name="scale-action-evaluation"></a>Méretezési műveletek kiértékelése
+## <a name="scale-action-evaluation"></a>Méretarányos műveletek értékelése
 
-Akkor van rögzítve, ha az autoskálázás megkezdi a kiértékelést, ha méretezési műveletet kell végezni. 
+Amikor az automatikus skálázás elindul a kiértékelés, ha egy skálázási műveletet kell végrehajtani. 
 
 ```json
 {
@@ -152,9 +152,9 @@ Akkor van rögzítve, ha az autoskálázás megkezdi a kiértékelést, ha mére
 }
 ```
 
-## <a name="instance-update-evaluation"></a>Példány frissítésének kiértékelése
+## <a name="instance-update-evaluation"></a>Példányfrissítés kiértékelése
 
-Akkor van rögzítve, ha az autoskálázás frissíti a futó számítási példányok számát, akár felfelé, akár lefelé.
+Automatikus skálázás frissítésekfrissítések a számítási példányok száma fut, akár fel, akár le.
 
 ```json
 {
@@ -173,9 +173,9 @@ Akkor van rögzítve, ha az autoskálázás frissíti a futó számítási péld
 }
 ```
 
-## <a name="scale-action"></a>Skálázási művelet
+## <a name="scale-action"></a>Méretezési művelet
 
-Akkor van rögzítve, ha az autoskálázás elindít egy méretezési műveletet, akár feljebb, akár lejjebb. 
+Akkor rögzítve, amikor az automatikus skálázás léptékezési műveletet kezdeményez fel- vagy leskálázási műveletben. 
 ```json
 {
   "time": "2018-09-10 18:12:00.6132593",
@@ -196,9 +196,9 @@ Akkor van rögzítve, ha az autoskálázás elindít egy méretezési műveletet
 }
 ```
 
-## <a name="scale-action-tracking"></a>Méretezési műveletek követése
+## <a name="scale-action-tracking"></a>Műveletkövetés méretezése
 
-Egy példány skálázási műveletének különböző intervallumait rögzíti.
+Egy példányméretezési művelet különböző időközönként rögzítve.
 
 ```json
 {
@@ -216,5 +216,5 @@ Egy példány skálázási műveletének különböző intervallumait rögzíti.
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
-Az [autoscale](autoscale-overview.md) ismertetése
+## <a name="next-steps"></a>További lépések
+További információ az [automatikus skálázásról](autoscale-overview.md)

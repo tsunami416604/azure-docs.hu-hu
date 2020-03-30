@@ -1,6 +1,6 @@
 ---
-title: Zscaler-adatbázis összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan csatlakozhat a Zscaler-adatbázisokhoz az Azure Sentinel szolgáltatáshoz.
+title: Zscaler-adatok csatlakoztatása az Azure Sentinelhez| Microsoft dokumentumok
+description: Ismerje meg, hogyan csatlakoztathatja a Zscaler-adatokat az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,42 +15,42 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: cc784afe5db64ccc4aad13fae7a2fa748e4befa3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77587991"
 ---
-# <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>Az Zscaler internet-hozzáférésének összekötése az Azure Sentinel használatával
+# <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>A Zscaler internet-hozzáférés csatlakoztatása az Azure Sentinelhez
 
 > [!IMPORTANT]
-> Az Azure Sentinel Zscaler-adatösszekötője jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A Zscaler adatösszekötő az Azure Sentinel jelenleg nyilvános előzetes verzióban.
+> Ez a szolgáltatás szolgáltatásszint-szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-Ez a cikk azt ismerteti, hogyan csatlakoztatható a Zscaler Internet-hozzáférési berendezés az Azure Sentinelhez. A Zscaler adatösszekötővel egyszerűen csatlakoztathatja a Zscaler internet-hozzáférés (ZIA) naplóit az Azure Sentinel használatával, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. A Zscaler használata az Azure Sentinelben részletesebb információkat biztosít a szervezet internetes használatáról, és fokozza a biztonsági üzemeltetési képességeit. 
+Ez a cikk bemutatja, hogyan csatlakoztathatja a Zscaler Internet Access készüléket az Azure Sentinelhez. A Zscaler adatösszekötő lehetővé teszi, hogy könnyedén csatlakoztassa a Zscaler Internet Access (ZIA) naplók at Azure Sentinel, irányítópultok megtekintéséhez, egyéni riasztások létrehozása, és a vizsgálat javítása. A Zscaler azure Sentinel használatával további betekintést nyújt a szervezet internethasználatába, és javítja a biztonsági üzemeltetési képességeit. 
 
 
-## <a name="configure-your-zscaler-to-send-cef-messages"></a>A Zscaler konfigurálása CEF üzenetek küldésére
+## <a name="configure-your-zscaler-to-send-cef-messages"></a>A Zscaler beállítása CEF-üzenetek küldésére
 
-1. A Zscaler készüléken ezeket az értékeket úgy kell beállítania, hogy a berendezés a szükséges formátumú naplókat a szükséges formátumban küldje el az Azure Sentinel syslog-ügynöknek a Log Analytics ügynök alapján. Ezeket a paramétereket módosíthatja a berendezésben, ha az Azure Sentinel-ügynök syslog démonán is módosítja őket.
+1. A Zscaler-berendezésen be kell állítania ezeket az értékeket, hogy a készülék elküldi a szükséges naplókat a szükséges formátumban az Azure Sentinel Syslog ügynök, a Log Analytics-ügynök alapján. Ezeket a paramétereket a készülékben, mindaddig, amíg azokat is módosíthatja a Syslog démon az Azure Sentinel ügynök.
     - Protokoll = TCP
     - Port = 514
-    - Format = CEF
-    - IP-cím – ügyeljen arra, hogy a CEF üzeneteket az erre a célra kijelölt virtuális gép IP-címére küldje el.
- További információ: a [Zscaler és az Azure Sentinel üzembe helyezési útmutatója](https://aka.ms/ZscalerCEFInstructions).
+    - Formátum = CEF
+    - IP-cím - győződjön meg róla, hogy a CEF üzeneteket az erre a célra kijelölt virtuális gép IP-címére küldje.
+ További információt a [Zscaler és az Azure Sentinel telepítési útmutatójában talál.](https://aka.ms/ZscalerCEFInstructions)
  
    > [!NOTE]
-   > Ez a megoldás a syslog RFC 3164 vagy az RFC 5424 szolgáltatást támogatja.
+   > Ez a megoldás támogatja a Syslog RFC 3164 vagy RFC 5424-et.
 
 
-1. A CEF-események Log Analytics vonatkozó sémájának használatához keresse meg a `CommonSecurityLog`kifejezést.
-1. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
+1. Ha a megfelelő sémát szeretné használni a Log `CommonSecurityLog`Analytics szolgáltatásban a CEF-eseményekhez, keresse meg a keresett főt.
+1. Folytassa a [3.](connect-cef-verify.md)
 
 
-## <a name="next-steps"></a>Következő lépések
-Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Zscaler internet-hozzáférés az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
-- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
-- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
+## <a name="next-steps"></a>További lépések
+Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja a Zscaler Internet Access-t az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
+- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
+- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats.md)
+- Az adatok figyeléséhez [használjon munkafüzeteket.](tutorial-monitor-your-data.md)
 
 

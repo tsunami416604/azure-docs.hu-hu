@@ -1,71 +1,71 @@
 ---
-title: Mi az Azure AD Connect Cloud kiépítés. | Microsoft Docs
-description: Ismerteti Azure AD Connect felhő üzembe helyezését.
+title: Mi az Azure AD Connect felhőkiépítés. | Microsoft Docs
+description: Az Azure AD Connect felhőalapú kiépítést ismerteti.
 services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69b8cbdba018b9d03dca67573b1f4fe6efa546b6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a86d34fca9a88b0df601533a0f3de1cc97ad1a2f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024041"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80050603"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?
-Azure AD Connect a felhő-kiépítés egy új Microsoft-ügynök, amely a hibrid identitási célok teljesítésére és a felhasználók, csoportok és névjegyek Azure AD-be való szinkronizálására szolgál.  Azure AD Connect szinkronizálás mellett is használható, és a következő előnyöket biztosítja:
+Az Azure AD Connect felhőalapú kiépítése egy új Microsoft-ügynök, amelynek célja a felhasználók, csoportok és kapcsolattartók Azure AD-vel való szinkronizálása érdekében a hibrid identitásra vonatkozó célok elérése és megvalósítása.  Az Azure AD Connect szinkronizálása mellett használható, és a következő előnyöket biztosítja:
     
-- Azure AD-bérlőre való szinkronizálás támogatása többerdős kapcsolattal Active Directory erdő-környezettel: a gyakori forgatókönyvek közé tartozik az egyesítés & a beszerzés, ahol a beszerzett vállalat AD-erdők el vannak különítve a szülő vállalat AD-től. a történelmileg több AD-erdővel rendelkező erdők és vállalatok.
-- Egyszerűsített telepítés kis teljesítményű kiépítési ügynökökkel: az ügynökök az AD-ből az Azure AD-ből származó hidakként működnek, és a felhőben kezelt összes szinkronizálási konfigurációval rendelkeznek. 
-- Több kiépítési ügynök használható a magas rendelkezésre állású üzemelő példányok leegyszerűsítéséhez, különösen kritikus fontosságú az AD és az Azure AD közötti jelszó-kivonatolási szinkronizálást használó szervezetek számára.
+- Az Azure AD-bérlőkkel való szinkronizálás támogatása egy többerdős leválasztott Active Directory-erdőkörnyezetből: A gyakori forgatókönyvek közé tartozik az egyesülés i & felvásárlás, ahol a beszerzett vállalat AD-erdői el vannak különítve az anyavállalat AD-erdőitől és a korábban több AD-erdővel rendelkező vállalatoktól.
+- Egyszerűsített telepítés a könnyű kiépítési ügynökök: Az ügynökök egy hídként az AD az Azure AD, az összes szinkronizálási konfiguráció a felhőben kezelt. 
+- Több kiépítési ügynökök segítségével egyszerűsítheti a magas rendelkezésre állású központi telepítések, különösen fontos a szervezetek támaszkodó jelszókivonat-szinkronizálás az AD az Azure AD.
 
 
 ![Mi az az Azure AD Connect?](media/what-is-cloud-provisioning/architecture.png)
 
-## <a name="how-is-azure-ad-connect-cloud-provisioning-different-from-azure-ad-connect-sync"></a>Miben különbözik Azure AD Connect felhőalapú kiépítés Azure AD Connect szinkronizálástól?
-Azure AD Connect felhőalapú kiépítés révén az AD-ből az Azure AD-be való kiépítés a Microsoft Online Services szolgáltatásban történik. Egy szervezetnek csak a helyszíni és a IaaS üzemeltetett környezetében kell üzembe helyeznie egy egyszerű ügynököt, amely az Azure AD és az AD közötti hidat képez. A létesítési konfiguráció az Azure AD-ben tárolódik, és a szolgáltatás részeként van kezelve.
+## <a name="how-is-azure-ad-connect-cloud-provisioning-different-from-azure-ad-connect-sync"></a>Miben különbözik az Azure AD Connect felhőalapú kiépítése az Azure AD Connect szinkronizálásától?
+Az Azure AD Connect felhőalapú kiépítésével az AD-ből az Azure AD-be történő kiépítés a Microsoft Online Services-ben van vezénylve. Egy szervezetnek csak a helyszíni és az IaaS-üzemeltetésű környezetben kell telepítenie egy könnyű ügynök, amely hídként működik az Azure AD és az AD között. A létesítési konfiguráció az Azure AD-ben tárolódik, és a szolgáltatás részeként kezeli.
 
-Az alábbi táblázat összehasonlítja a Azure AD Connect és a Azure AD Connect Cloud kiépítés között:
+Az alábbi táblázat az Azure AD Connect és az Azure AD Connect felhőalapú kiépítésének összehasonlítását tartalmazza:
 
-| Szolgáltatás | Azure Active Directory Connect szinkronizálása| Felhőalapú kiépítés Azure Active Directory Connect |
+| Szolgáltatás | Az Azure Active Directory Connect szinkronizálása| Az Azure Active Directory Connect felhőalapú kiépítése |
 |:--- |:---:|:---:|
 |Csatlakozás egyetlen helyszíni AD-erdőhöz|● |● |
 | Csatlakozás több helyszíni AD-erdőhöz |● |● |
-| Kapcsolódás több leválasztott helyszíni AD-erdőhöz | |● |
-| Egyszerűsített ügynök telepítési modellje | |● |
+| Csatlakozás több leválasztott helyszíni AD-erdőhöz | |● |
+| Könnyű ügynök telepítési modell | |● |
 | Több aktív ügynök a magas rendelkezésre állás érdekében | |● |
-| Kapcsolódás LDAP-címtárakhoz|●| | 
+| Csatlakozás LDAP-könyvtárakhoz|●| | 
 | Felhasználói objektumok támogatása |● |● |
-| Csoport objektumainak támogatása |● |● |
-| Kapcsolattartási objektumok támogatása |● |● |
-| Eszközök objektumainak támogatása |● | |
-| Alapvető Testreszabás engedélyezése az attribútumok folyamataihoz |● |● |
-| Sychronize Exchange Online-attribútumok |● |● |
-| A bővítmény attribútumainak szinkronizálása 1-15 |● |● |
-| Ügyfél által definiált AD-attribútumok (címtárszolgáltatás-bővítmények) szinkronizálása |● | |
-| Jelszó-kivonat szinkronizálásának támogatása |●|●|
-| Az átmenő hitelesítés támogatása |●||
+| Csoportobjektumok támogatása |● |● |
+| Kapcsolatobjektumok támogatása |● |● |
+| Eszközobjektumok támogatása |● | |
+| Attribútumfolyamatok alapvető testreszabásának engedélyezése |● |● |
+| Az Exchange online attribútumai |● |● |
+| Kiterjesztési attribútumok szinkronizálása 1-15 |● |● |
+| Ügyfél által definiált AD-attribútumok szinkronizálása (címtárbővítmények) |● | |
+| A jelszókivonat-szinkronizálás támogatása |●|●|
+| Átmenő hitelesítés támogatása |●||
 | Összevonás támogatása |●|●|
 | Közvetlen egyszeri bejelentkezés|● |●|
 | Támogatja a tartományvezérlőre történő telepítést |● |● |
 | A Windows Server 2012 és a Windows Server 2012 R2 támogatása |● |● |
-| Szűrés tartományokon/szervezeti egységeken/csoportokon |● |● |
-| Szűrés az objektumok attribútumértékein |● | |
+| Szűrés tartományokon/ous-okon/csoportokon |● |● |
+| Objektumok attribútumértékeinek szűrése |● | |
 | A minimális attribútumkészletek szinkronizálásának engedélyezése (MinSync) |● |● |
 | A folyamból az attribútumok eltávolításának engedélyezése az AD-ből az Azure AD-ba |● |● |
 | Az attribútumfolyamok speciális testreszabásának engedélyezése |● | |
-| Visszaírási-támogatás (jelszavak, eszközök, csoportok) |● | |
-| Azure AD Domain Services támogatás|● | |
-| [Hibrid Exchange-visszaírási](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
-| Több mint 50 000 objektum támogatása AD-tartományban |● | |
+| A visszaírás támogatása (jelszavak, eszközök, csoportok) |● | |
+| Az Azure AD tartományi szolgáltatások támogatása|● | |
+| [Az Exchange hibrid visszaírása](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
+| Több mint 50 000 objektum támogatása AD-tartományonként |● | |
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
-- [Mi a kiépítés?](what-is-provisioning.md)
-- [A felhő kiépítés telepítése](how-to-install.md)
+- [Mi az az üzembe helyezés?](what-is-provisioning.md)
+- [Felhőkiépítés telepítése](how-to-install.md)

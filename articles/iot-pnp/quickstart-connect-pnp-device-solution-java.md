@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play előzetes verziójú eszköz használata | Microsoft Docs
-description: A Java használatával csatlakozhat egy IoT Plug and Play előnézeti eszközhöz, amely az Azure IoT-megoldáshoz csatlakozik.
+title: Az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play előzetes verziójú eszközzel való együttműködés | Microsoft dokumentumok
+description: A Java segítségével csatlakozhat az Azure IoT-megoldásához csatlakoztatott IoT Plug and Play előzetes verzióhoz, és kommunikálhat vele.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/27/2019
@@ -9,98 +9,98 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 53812e68fe397b81f29869565e0e4a0640a9ef23
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76964634"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-java"></a>Gyors útmutató: interakció egy IoT Plug and Play a megoldáshoz csatlakoztatott előnézeti eszközzel (Java)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-java"></a>Rövid útmutató: A megoldáshoz csatlakoztatott IoT Plug and Play előzetes verziójú eszközzel (Java)
 
 [!INCLUDE [iot-pnp-quickstarts-3-selector.md](../../includes/iot-pnp-quickstarts-3-selector.md)]
 
-A IoT Plug and Play Preview leegyszerűsíti a IoT azáltal, hogy lehetővé teszi, hogy a mögöttes eszköz megvalósításának ismerete nélkül kommunikáljon az eszköz képességeivel. Ez a rövid útmutató bemutatja, hogyan használható a Java a megoldáshoz csatlakoztatott IoT Plug and Play-eszköz csatlakoztatásához és vezérléséhez.
+Az IoT Plug and Play Preview leegyszerűsíti az IoT-t azáltal, hogy lehetővé teszi az eszköz képességeinek kommunikálását az eszköz megvalósításának ismerete nélkül. Ez a rövid útmutató bemutatja, hogyan csatlakozhat a Java segítségével a megoldáshoz csatlakoztatott IoT Plug and Play-eszközökhöz, és hogyan vezérelheti azt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez a fejlesztői gépen a Java SE 8 rendszerre van szükség. Telepítenie kell a Maven 3 programot is.
+A rövid útmutató végrehajtásához java SE 8-ra van szüksége a fejlesztői gépen. Azt is telepítenie kell Maven 3.
 
-Az ezekkel való beállításával kapcsolatos további információkért lásd: [a fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-java/blob/preview/doc/java-devbox-setup.md) a javához készült Microsoft Azure IOT Device SDK-ban.
+A rról, hogy miként állíthatja be ezeket, [olvassa el a fejlesztői környezet előkészítése](https://github.com/Azure/azure-iot-sdk-java/blob/preview/doc/java-devbox-setup.md) a Microsoft Azure IoT-eszköz Java-hoz sdk-ban című témakört.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-Futtassa a következő parancsot a hub _IoT hub-beli kapcsolódási karakterláncának_ lekéréséhez (jegyezze fel később a használatra):
+Futtassa a következő parancsot az _IoT hub kapcsolati karakterláncának_ lekérnia a hubhoz (megjegyzés későbbi használatra):
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 ```
 
-## <a name="run-the-sample-device"></a>A minta eszköz futtatása
+## <a name="run-the-sample-device"></a>A mintaeszköz futtatása
 
-Ebben a rövid útmutatóban egy olyan minta környezeti érzékelőt használ, amelyet Java-ban írt IoT Plug and Play eszközként. Az alábbi utasítások bemutatják, hogyan telepítheti és futtathatja az eszközt:
+Ebben a rövid útmutatóban egy Java-ban írt környezetérzékelőt használ IoT Plug and Play eszközként. Az alábbi utasítások bemutatják, hogyan telepítheti és futtathatja az eszközt:
 
-1. Nyisson meg egy terminált az Ön által választott könyvtárban. Futtassa a következő parancsot a Java GitHub-tárházhoz [tartozó Azure IoT-minták](https://github.com/Azure-Samples/azure-iot-samples-java) ezen a helyen történő klónozásához:
+1. Nyisson meg egy terminálablakot az Ön által választott könyvtárban. A következő parancs végrehajtása a Java GitHub-tárház [Azure IoT-mintáinak](https://github.com/Azure-Samples/azure-iot-samples-java) ezen a helyre történő klónozásához:
 
     ```cmd/sh
     git clone https://github.com/Azure-Samples/azure-iot-samples-java
     ```
 
-1. A rendszer most ezt a terminált fogja használni az _eszköz_ -terminálként. Lépjen a klónozott adattár mappájába, és lépjen a **/Azure-IOT-Samples-Java/Digital-Twin/Samples/Device/JdkSample** mappára. Telepítse a szükséges kódtárakat, és hozza létre a szimulált eszköz alkalmazást a következő parancs futtatásával:
+1. Ez a terminálablak lesz az _eszköz_ terminálja. Nyissa meg a klónozott tárház mappáját, és keresse meg az **/azure-iot-samples-java/digital-twin/Samples/device/JdkSample** mappát. Telepítse a szükséges könyvtárakat, és építse fel a szimulált eszközalkalmazást a következő parancs futtatásával:
 
     ```cmd/sh
     mvn clean install -DskipTests
     ```
 
-1. Az _eszköz-kapcsolatok karakterláncának_konfigurálása:
+1. Az _eszköz kapcsolati karakterláncának konfigurálása_:
 
     ```cmd/sh
     set DIGITAL_TWIN_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
     ```
 
-1. Futtassa a következő parancsot a minta az eszköz mappájából való futtatásához.
+1. Futtassa a következő parancsot a minta eszközmappából történő futtatásához.
 
     ```cmd/sh
     java -jar environmental-sensor-sample\target\environmental-sensor-sample-with-deps.jar
     ```
 
-1. Láthatja, hogy az eszköz csatlakoztatva van, különböző telepítési lépéseket hajt végre, és várakozás a szolgáltatás frissítéseire, majd a telemetria-naplók elemre. Ez azt jelzi, hogy az eszköz most már készen áll a parancsok és a tulajdonságok frissítéseinek fogadására, és megkezdte a telemetria adatok küldését a központba. A következő lépések elvégzése közben tartsa a mintát. Ne zárjuk be ezt a terminált, ezért később meg kell győződnie arról, hogy a szolgáltatási minták is működőképesek.
+1. Megjelenik az üzenetek, amelyek arról szólnak, hogy az eszköz csatlakoztatva van, különböző telepítési lépéseket hajt végre, és várja a szolgáltatás frissítéseit, majd telemetriai naplók. Ez azt jelzi, hogy az eszköz most már készen áll a parancsok és a tulajdonságfrissítések fogadására, és megkezdte a telemetriai adatok küldését a hubra. A következő lépések végrehajtásával tartsa a mintát. Ne zárja be ezt a terminált, később szüksége lesz rá, hogy ellenőrizze, hogy a szolgáltatásminták is működtek.Don't close this terminal, you'll need it later to confirm the service samples also worked.
 
-## <a name="run-the-sample-solution"></a>A minta megoldás futtatása
+## <a name="run-the-sample-solution"></a>A mintamegoldás futtatása
 
-Ebben a rövid útmutatóban egy példaként szolgáló IoT-megoldást használ a Javaban, hogy együttműködjön a minta eszközzel.
+Ebben a rövid útmutatóban egy minta IoT-megoldás Java-ban a mintaeszközzel való együttműködéshez.
 
-1. Nyisson meg egy másik Terminálablak (ez lesz a _szolgáltatás_ terminálja). Lépjen a klónozott adattár mappájába, és lépjen a **/Azure-IOT-Samples-java\digital-twin\Samples\service\JdkSample** mappára.
+1. Nyisson meg egy másik _service_ terminálablakot (ez lesz a szervizterminálja). Nyissa meg a klónozott tárház mappáját, és keresse meg az **/azure-iot-samples-java\digital-twin\Samples\service\JdkSample** mappát.
 
-1. Telepítse a szükséges kódtárakat, és hozza létre a szolgáltatási mintát a következő parancs futtatásával:
+1. Telepítse a szükséges könyvtárakat, és a következő parancs futtatásával készítse el a szolgáltatásmintát:
 
     ```cmd/sh
     mvn clean install -DskipTests
     ```
 
-1. Konfigurálja az _IoT hub kapcsolati karakterláncát_ és az _eszköz azonosítóját_ , hogy a szolgáltatás a következőhöz kapcsolódjon:
+1. Konfigurálja az _IoT hub kapcsolati karakterláncát_ és _az eszközazonosítót_ úgy, hogy a szolgáltatás mindkét félhez csatlakozhasson:
 
     ```cmd/sh
     set IOTHUB_CONNECTION_STRING=<YourIoTHubConnectionString>
     set DEVICE_ID=<YourDeviceID>
     ```
 
-### <a name="read-a-property"></a>Tulajdonság beolvasása
+### <a name="read-a-property"></a>Ingatlan olvasása
 
-1. Amikor csatlakoztatta az _eszközt_ a termináljában, az egyik kimeneti üzenet a következő üzenet volt, amely jelzi az online állapotát. A `state` tulajdonság, amely azt jelzi, hogy az eszköz online állapotban van-e, _igaz_:
+1. Amikor csatlakoztatta az _eszközt_ a terminálján, az egyik kimeneti üzenet a következő üzenet volt, amely jelzi az online állapotát. A `state` tulajdonság, amely annak jelzésére szolgál, hogy az eszköz online állapotban van-e, _igaz:_
 
     ```cmd/sh
     State of environmental sensor was set to true
     ```
 
-1. Nyissa meg a _szolgáltatás_ terminálját, és a következő paranccsal futtassa az eszköz adatainak olvasásához használt szolgáltatási mintát:
+1. Lépjen a _service_ szervizterminálra, és a következő paranccsal futtassa a szolgáltatásmintát az eszközadatok olvasásához:
 
     ```cmd/sh
     java -jar get-digital-twin/target/get-digital-twin-with-deps.jar
     ```
 
-1. A _szolgáltatás_ -terminál kimenetében görgessen a `environmentalSensor` összetevőhöz. Láthatja, hogy a `state` tulajdonság _értéke TRUE (igaz_):
+1. A _szervizterminál_ kimenetében görgessen az `environmentalSensor` összetevőhöz. Láthatja, `state` hogy a tulajdonság _ot igazként_jelentették:
     ```JSON
     "environmentalSensor" : {
       "name" : "environmentalSensor",
@@ -118,20 +118,20 @@ Ebben a rövid útmutatóban egy példaként szolgáló IoT-megoldást használ 
 
 ### <a name="update-a-writable-property"></a>Írható tulajdonság frissítése
 
-1. Nyissa meg a _szolgáltatás_ -terminált, és állítsa be a következő változókat a frissíteni kívánt tulajdonság megadásához:
+1. Lépjen a _service_ szervizterminálra, és állítsa be a következő változókat a frissítandó tulajdonság meghatározásához:
     ```cmd/sh
     set INTERFACE_INSTANCE_NAME=environmentalSensor
     set PROPERTY_NAME=brightness
     set PROPERTY_VALUE=42
     ```
 
-1. A következő parancs futtatásával futtathatja a tulajdonság frissítéséhez használandó szolgáltatási mintát:
+1. A következő paranccsal futtatja a szolgáltatásmintát a tulajdonság frissítéséhez:
 
     ```cmd/sh
     java -jar update-digital-twin/target/update-digital-twin-with-deps.jar
     ```
 
-1. A _szolgáltatás_ -terminál kimenete a frissített eszköz információit jeleníti meg. Görgessen a `environmentalSensor` összetevőhöz, és tekintse meg az új fényerő 42-es értékét.
+1. A _szolgáltatásterminál_ kimenete a frissített eszközadatokat jeleníti meg. Görgessen `environmentalSensor` az összetevőhöz az új 42-es fényerőérték megtekintéséhez.
 
     ```json
     "environmentalSensor": {
@@ -151,12 +151,12 @@ Ebben a rövid útmutatóban egy példaként szolgáló IoT-megoldást használ 
     OnPropertyUpdate called: propertyName=brightness, reportedValue=null, desiredVersion=2, desiredValue={"value":"42"}
     Report property: propertyName=brightness, reportedValue={"value":"42"}, desiredVersion=2 was DIGITALTWIN_CLIENT_OK
     ```
-2. Lépjen vissza a _szolgáltatás_ -terminálhoz, és futtassa az alábbi parancsot az eszköz adatainak újbóli beszerzéséhez, hogy megbizonyosodjon róla, hogy a tulajdonság frissítve lett.
+2. Lépjen vissza _service_ a szervizterminálhoz, és futtassa az alábbi parancsot az eszközadatok újbóli levezetéséhez, hogy ellenőrizze a tulajdonság frissítésének megerősítését.
     
     ```cmd/sh
     java -jar get-digital-twin/target/get-digital-twin-with-deps.jar
     ```
-3. A _szolgáltatás_ -terminál kimenetében, a `environmentalSensor` összetevő alatt megjelenik a frissített fényerő értékének jelentése. Megjegyzés: eltarthat egy ideig, amíg az eszköz befejezi a frissítést. Ezt a lépést csak akkor ismételheti meg, ha az eszköz ténylegesen feldolgozta a tulajdonság frissítését.
+3. A _szolgáltatásterminál_ kimenetében `environmentalSensor` az összetevő alatt láthatja a frissített fényerő-értéket. Megjegyzés: eltarthat egy ideig, amíg az eszköz befejezi a frissítést. Ezt a lépést addig ismételheti, amíg az eszköz ténylegesen fel nem dolgozta a tulajdonságfrissítést.
     
     ```json
     "environmentalSensor" : {
@@ -190,20 +190,20 @@ Ebben a rövid útmutatóban egy példaként szolgáló IoT-megoldást használ 
 
 ### <a name="invoke-a-command"></a>Parancs meghívása
 
-1. Nyissa meg a _szolgáltatás_ -terminált, és állítsa be a következő változókat a meghívni kívánt parancs megadásához:
+1. Lépjen a _service_ szolgáltatásterminálra, és állítsa be a következő változókat a meghívni a parancs meghatározásához:
     ```cmd/sh
     set INTERFACE_INSTANCE_NAME=environmentalSensor
     set COMMAND_NAME=blink
     set PAYLOAD=10
     ```
 
-1. A következő parancs használatával futtassa a szolgáltatási mintát a parancs meghívásához:
+1. A parancs meghívásához a következő paranccsal futtatja a szolgáltatásmintát:
 
     ```cmd/sh
     java -jar invoke-digital-twin-command/target/invoke-digital-twin-command-with-deps.jar
     ```
 
-1. A _szolgáltatás_ -terminál kimenetében a következő megerősítésnek kell megjelennie:
+1. A _szolgáltatásterminál_ kimenetének a következő visszaigazolást kell mutatnia:
 
     ```cmd/sh
     Invoking blink on device <YourDeviceID> with interface instance name environmentalSensor
@@ -211,7 +211,7 @@ Ebben a rövid útmutatóban egy példaként szolgáló IoT-megoldást használ 
     The returned PAYLOAD was
     ```
 
-1. Nyissa meg az _eszköz_ terminálját, és láthatja, hogy a parancs meg lett ismerve:
+1. Menj az _eszköz_ terminál, látod a parancsot elismerte:
 
     ```cmd/sh
     OnCommandReceived called: commandName=blink, requestId=<some ID value>, commandPayload="10"
@@ -220,9 +220,9 @@ Ebben a rövid útmutatóban egy példaként szolgáló IoT-megoldást használ 
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztatható egy IoT Plug and Play-eszköz egy IoT-megoldáshoz. Ha többet szeretne megtudni arról, hogyan hozhat létre olyan megoldást, amely együttműködik a IoT Plug and Play eszközökkel, tekintse meg a következőt:
+Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play eszközt egy IoT-megoldáshoz. Ha többet szeretne tudni arról, hogyan hozhat létre olyan megoldást, amely kölcsönhatásba lép az IoT Plug and Play eszközeivel, olvassa el a következő témaköröket:
 
 > [!div class="nextstepaction"]
-> [Útmutató: Kapcsolódás az eszközhöz](howto-develop-solution.md)
+> [Útmutató: Eszközhöz való csatlakozás és az eszközzel való interakció](howto-develop-solution.md)

@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.date: 03/08/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c24be648e4ca1433c7c2af3d659bf4520a7a188c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 53036a43cbb0fe3c3a1e61f7124fe7dcbef228f3
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79457287"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388933"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>A Key Vault integrálása az Azure Private Linkkel
 
@@ -57,7 +57,7 @@ A kulcstartó alapjainak konfigurálása után válassza a Hálózat lapot, és 
 1. Hagyja változatlanul a "Integrálás a privát zóna DNS-ével" lehetőséget.  
 1. Válassza az "Ok" lehetőséget.
 
-    ![Kép](./media/private-link-service-2.png)
+    ![Kép](./media/private-link-service-8.png)
  
 Most már láthatja a konfigurált privát végpontot. Most már törölheti és szerkesztheti ezt a privát végpontot. Válassza a "Véleményezés + Létrehozás" gombot, és hozza létre a key vaultot. A telepítés 5-10 percet vesz igénybe. 
 

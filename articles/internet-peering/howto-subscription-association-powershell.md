@@ -1,7 +1,7 @@
 ---
-title: Társközi ASN társítása az Azure-előfizetéshez a PowerShell használatával
+title: TársASN-társ-ASN-társítása az Azure-előfizetéshez a PowerShell használatával
 titleSuffix: Azure
-description: Társközi ASN társítása az Azure-előfizetéshez a PowerShell használatával
+description: TársASN-társ-ASN-társítása az Azure-előfizetéshez a PowerShell használatával
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,44 +9,44 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 77cc4732e017d95cbae19578cf26b1111b08fdde
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75908992"
 ---
-# <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Társközi ASN társítása az Azure-előfizetéshez a PowerShell használatával
+# <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>TársASN-társ-ASN-társítása az Azure-előfizetéshez a PowerShell használatával
 
-A kérések elküldése előtt először társítsa az ASN-t az Azure-előfizetéshez az alábbi lépések segítségével.
+Mielőtt társviszony-létesítési kérelmet küld, először társítsa az ASN-t az Azure-előfizetéssel az alábbi lépések végrehajtásával.
 
-Ha szeretné, ezt az útmutatót a [portálon](howto-subscription-association-portal.md)végezheti el.
+Ha szeretné, ezt az útmutatót a portál segítségével is [elvégezheti.](howto-subscription-association-portal.md)
 
-### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
+### <a name="working-with-azure-powershell"></a>Az Azure PowerShell együttműködése
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>PeerASN létrehozása az ASN-nek az Azure-előfizetéshez való hozzárendeléséhez
+## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>PeerASN létrehozása az ASN azure-előfizetéssel való társításához
 
-### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Jelentkezzen be az Azure-fiókjába, és válassza ki az előfizetését
+### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Jelentkezzen be Azure-fiókjába, és válassza ki az előfizetést
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name="register-for-peering-resource-provider"></a>Regisztrálás a társ erőforrás-szolgáltatónál
-Regisztráljon az előfizetésben az alábbi parancs használatával a társ erőforrás-szolgáltatóhoz. Ha nem hajtja végre ezt, akkor a társítás beállításához szükséges Azure-erőforrások nem érhetők el.
+### <a name="register-for-peering-resource-provider"></a>Regisztráció társviszony-létesítési erőforrás-szolgáltatóhoz
+Regisztráljon társviszony-létesítési erőforrás-szolgáltatóra az előfizetésében az alábbi paranccsal. Ha ezt nem hajtja végre, akkor a társviszony-létesítés beállításához szükséges Azure-erőforrások nem érhetők el.
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Peering
 ```
 
-A regisztrációs állapotot az alábbi parancsokkal tekintheti meg:
+A regisztrációs állapotot az alábbi parancsokkal ellenőrizheti:
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.Peering
 ```
 
 > [!IMPORTANT]
-> Várjon, amíg a *RegistrationState* bekapcsolja a "regisztráció" kifejezést a folytatás előtt. A parancs végrehajtása után 5 – 30 percet is igénybe vehet.
+> Várjon, amíg *a RegistrationState* bekapcsolja a "Regisztrált" bekapcsolást a folytatás előtt. A parancs végrehajtása után 5–30 percig is eltarthat.
 
-### <a name="update-the-peer-information-associated-with-this-subscription"></a>Az előfizetéshez társított társ-információ frissítése
+### <a name="update-the-peer-information-associated-with-this-subscription"></a>Az előfizetéshez társított társadatok frissítése
 
-Az alábbi példa a társ-információk frissítésére szolgál.
+Az alábbi példa a társadatok frissítésére szolgál.
 
 ```powershell
 New-AzPeerAsn `
@@ -58,23 +58,23 @@ New-AzPeerAsn `
 ```
 
 > [!NOTE]
-> -A név az erőforrás neve, és tetszőlegesen választhatja ki. A-peerName azonban megfelel a vállalat nevének, és a lehető legpontosabban kell megfelelnie a PeeringDB-profilnak. Vegye figyelembe, hogy a-peerName értéke csak a-z, A-Z és A szóköz karaktereket támogatja.
+> -A név megfelel az erőforrás nevének, és bármi lehet, amit csak választhat. A -peerName azonban megfelel a vállalat nevének, és a lehető legközelebb kell lennie a PeeringDB-profilhoz. Ne feledje, hogy a -peerName érték csak az a-z, az A-Z és a szóköz karaktereket támogatja.
 
-Egy előfizetés több ASN is rendelkezhet. Frissítse az összes ASN-hez tartozó egyenrangú információt. Győződjön meg arról, hogy a "Name" egyedi minden ASN-hez.
+Egy előfizetés több ASN-t is rendelkezhet. Frissítse az egyes ASN-ek társviszony-létesítési adatait. Győződjön meg arról, hogy a "név" egyedi minden ASN.Ensure that "name" is unique for each ASN.
 
-A társak számára a [PeeringDB](https://www.peeringdb.com)teljes és naprakész profilja szükséges. Ezeket az információkat a regisztráció során használjuk, hogy érvényesítse a partner adatait, például a NOC információit, a technikai kapcsolattartási adatokat és azok jelenlétét a társas létesítményekben stb.
+A peeringdb-n a társaknak teljes [PeeringDB](https://www.peeringdb.com)és naprakész profillal kell rendelkezniük. Ezeket az információkat a regisztráció során arra használjuk, hogy érvényesítsük a partner adatait, például a NOC adatait, a műszaki elérhetőségi adatokat és jelenlétüket a társviszony-létesítő létesítményekben stb.
 
-Vegye figyelembe, hogy a fenti kimenetben lévő **{subscriptionId}** helyett a tényleges előfizetés-azonosító fog megjelenni.
+Vegye figyelembe, hogy a fenti kimenetben a **{subscriptionId}** helyett a tényleges előfizetés-azonosító jelenik meg.
 
-## <a name="view-status-of-a-peerasn"></a>PeerASN állapotának megtekintése
+## <a name="view-status-of-a-peerasn"></a>Társtársiasn állapotának megtekintése
 
-Az alábbi parancs használatával keresse meg az ASN-érvényesítési állapotot:
+Ellenőrizze az ASN-érvényesítés állapotát az alábbi paranccsal:
 
 ```powershell
 Get-AzPeerAsn
 ```
 
-Az alábbiakban egy példa erre a válaszra:
+Az alábbiakban egy példa válasz:
 ```powershell
 PeerContactInfo : Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo
 PeerName        : Contoso
@@ -86,27 +86,27 @@ Type            : Microsoft.Peering/peerAsns
 ```
 
 > [!IMPORTANT]
-> Várjon, amíg a ValidationState bekapcsolja a "jóváhagyva" beállítást, mielőtt elküldené a kérést. Ez a jóváhagyás akár 12 órát is igénybe vehet.
+> Várakozás, amíg a ValidationState bekapcsolja a "Jóváhagyva" a társviszony-létesítési kérelem elküldése előtt. A jóváhagyás akár 12 órát is igénybe vehet.
 
-## <a name="modify-peerasn"></a>PeerAsn módosítása
-Bármikor módosíthatja a NOC kapcsolattartási adatait.
+## <a name="modify-peerasn"></a>Társtárs-asszn módosítása
+A NOC kapcsolattartási adatait bármikor módosíthatja.
 
-Az alábbiakban egy példa látható:
+Az alábbiakban egy példa:
 
 ```powershell
 Set-PeerAsn -Name Contoso_1234 -Email "newemail@test.com" -Phone "1800-000-0000"
 ```
 
-## <a name="delete-peerasn"></a>PeerAsn törlése
-A PeerASN törlése jelenleg nem támogatott. Ha törölnie kell a PeerASN, forduljon a [Microsoft-partneri](mailto:peering@microsoft.com)kapcsolathoz.
+## <a name="delete-peerasn"></a>Társtárs-társítás törlése
+A Társtársiasn törlése jelenleg nem támogatott. Ha törölnie kell a Társtársi kapcsolatot, forduljon a [Microsoft társviszony-létesítési](mailto:peering@microsoft.com).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Közvetlen társ létrehozása vagy módosítása](howto-direct-powershell.md)
-* [Örökölt közvetlen társítás átalakítása Azure-erőforrásra](howto-legacy-direct-powershell.md)
-* [Exchange-társ létrehozása vagy módosítása](howto-exchange-powershell.md)
-* [Örökölt Exchange-társ átalakítása az Azure-erőforrásra](howto-legacy-exchange-powershell.md)
+* [Közvetlen társviszony létesítése vagy módosítása](howto-direct-powershell.md)
+* [Örökölt közvetlen társviszony konvertálása Azure-erőforrássá](howto-legacy-direct-powershell.md)
+* [Exchange-társviszony-létesítés létrehozása vagy módosítása](howto-exchange-powershell.md)
+* [Örökölt Exchange-társviszony konvertálása Azure-erőforrássá](howto-legacy-exchange-powershell.md)
 
 ## <a name="additional-resources"></a>További források
 
-További információért látogasson el az internetes kereséssel kapcsolatos [Gyakori kérdések](faqs.md) oldalra.
+További információkért látogasson el [az internetes társviszony-létesítési GYIK-be](faqs.md)

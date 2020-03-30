@@ -1,6 +1,6 @@
 ---
-title: Áttelepítés Windows Azure Media Encoderról Media Encoder Standardra | Microsoft Docs
-description: Ez a témakör azt ismerteti, hogyan lehet áttelepíteni a Azure Media Encoderról a Media Encoder Standard Media Processor szolgáltatásba.
+title: Áttelepítés a Windows Azure Media Kódolóról a Media Encoder Standard szolgáltatásra | Microsoft dokumentumok
+description: Ez a témakör bemutatja, hogyan lehet áttelepíteni az Azure Media Kódolóa a Media Encoder Standard médiaprocesszor.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.openlocfilehash: e75e3f3eecf6c34050aeaa7fe387fffb0de58a74
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513201"
 ---
-# <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Áttelepítés Windows Azure Media Encoderról Media Encoder Standardre
+# <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Áttelepítés a Windows Azure Media Kódolóról a Media Encoder Standard szolgáltatásra
 
-Ez a cikk azt ismerteti, hogyan lehet áttelepíteni a régi Windows Azure Media Encoder (Tamás) adathordozó-processzorról (amely kivonásra kerül) a Media Encoder Standard Media Processor szolgáltatásba. A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört.
+Ez a cikk az örökölt (kivonandó) (WAME) médiaprocesszorról a Media Encoder Standard médiaprocesszorra való áttelepítés lépéseit ismerteti. A nyugdíjazási dátumokat lásd az [örökölt összetevők](legacy-components.md) témakörben.
 
-A Tamás-val rendelkező fájlok kódolásakor az ügyfelek általában egy megnevezett előre definiált karakterláncot (például `H264 Adaptive Bitrate MP4 Set 1080p`) használnak. A Migrálás érdekében a kódot frissíteni kell, hogy a Tamás helyett a **Media Encoder standard** Media processzort használja, és az egyik egyenértékű rendszer- [beállításkészlet](media-services-mes-presets-overview.md) , például a `H264 Multiple Bitrate 1080p`. 
+A FÁJLOK WAME-mel történő kódolásakor az ügyfelek `H264 Adaptive Bitrate MP4 Set 1080p`általában egy elnevezett előre beállított karakterláncot használtak, például . Az áttelepítéshez a kódot frissíteni kell, hogy a **MEDIA Encoder Standard** médiaprocesszort használhassa a `H264 Multiple Bitrate 1080p`WAME helyett, és az egyik egyenértékű [rendszerkészletet,](media-services-mes-presets-overview.md) például a . 
 
-## <a name="migrating-to-media-encoder-standard"></a>Áttelepítés Media Encoder Standardre
+## <a name="migrating-to-media-encoder-standard"></a>Áttelepítés a Media Encoder Standard alkalmazásba
 
-Az alábbi példa egy C# tipikus mintakód, amely az örökölt összetevőt használja. 
+Itt van egy tipikus C# kód minta, amely az örökölt összetevőt használja. 
 
 ```csharp
 // Declare a new job. 
@@ -45,7 +45,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
     TaskOptions.None); 
 ```
 
-A Media Encoder Standardt használó frissített verzió.
+Itt van a frissített verzió, amely a Media Encoder Standard.Here is the updated version that uses Media Encoder Standard.
 
 ```csharp
 // Declare a new job. 
@@ -64,21 +64,21 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>Speciális forgatókönyvek 
 
-Ha a Tamás a saját sémája alapján hozta létre a saját kódolási beállításkészletét, akkor a [Media Encoder standard egyenértékű sémával](media-services-mes-schema.md)rendelkezik.
+Ha saját kódolási készletet hozott létre a WAME számára a sémával, akkor a [Media Encoder Standard megfelelő séma](media-services-mes-schema.md)jelenik meg.
 
 ## <a name="known-differences"></a>Ismert különbségek 
 
-Media Encoder Standard robusztusabb, megbízhatóbb, jobb teljesítményű, és jobb minőségű kimenetet hoz létre, mint az örökölt Tamás kódoló. ráadásul: 
+A Media Encoder Standard robusztusabb, megbízhatóbb, jobb teljesítményt nyújt, és jobb minőségű kimenetet eredményez, mint a régebbi WAME kódoló. ráadásul: 
 
-* Media Encoder Standard a Tamás eltérő elnevezési konvencióval rendelkező kimeneti fájlokat hoz létre.
-* A Media Encoder Standard összetevőket, például a [bemeneti fájl metaadatait](media-services-input-metadata-schema.md) és a [kimeneti fájl (oka) metaadatokat](media-services-output-metadata-schema.md)tartalmazó fájlokat hoz létre.
-* A [díjszabási oldalon](https://azure.microsoft.com/pricing/details/media-services/#encoding) (különösen a gyakori kérdések szakaszban) a videók Media Encoder standard használatával történő kódolásakor a rendszer a kimenetként létrehozott fájlok időtartamán alapul. A Tamás a bemeneti videó fájl (ok) és a kimeneti videofájl mérete alapján számítjuk fel a díjat.
+* A Media Encoder Standard a WAME-tól eltérő elnevezési konvencióval rendelkező kimeneti fájlokat hoz létre.
+* A Media Encoder Standard olyan összetevőket hoz létre, mint például a [bemeneti fájl metaadatait](media-services-input-metadata-schema.md) és a [kimeneti fájl metaadatait](media-services-output-metadata-schema.md)tartalmazó fájlok.
+* Ahogy az a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/media-services/#encoding) is szerepel (különösen a GYIK részben), amikor a Media Encoder Standard használatával kódolja a videókat, a számlázás a kimenetként előállított fájlok időtartama alapján kerül számlázásra. A WAME-nál a bemeneti videofájl(ok) és a kimeneti videofájl(ok) mérete alapján kell fizetnie.
 
-## <a name="need-help"></a>Segítség
+## <a name="need-help"></a>Segítségre van szüksége?
 
-A támogatási jegy megnyitásához lépjen az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
+Támogatási jegyet úgy nyithat meg, hogy az [Új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Örökölt összetevők](legacy-components.md)
-* [Díjszabási oldal](https://azure.microsoft.com/pricing/details/media-services/#encoding)
+* [Díjszabás lap](https://azure.microsoft.com/pricing/details/media-services/#encoding)

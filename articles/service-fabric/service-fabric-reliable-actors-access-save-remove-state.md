@@ -1,34 +1,34 @@
 ---
 title: Az Azure Service Fabric állapotának kezelése
-description: Ismerje meg, hogyan érheti el, mentheti és távolíthatja el az Azure Service Fabric megbízható színész állapotát, valamint az alkalmazások tervezésekor megfontolandó szempontokat.
+description: Ismerje meg az Azure Service Fabric megbízható szereplő állapotának elérését, mentését és eltávolítását, valamint az alkalmazások tervezésekor figyelembe vett szempontokat.
 author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645633"
 ---
-# <a name="access-save-and-remove-reliable-actors-state"></a>Reliable Actors állapotának elérése, mentése és eltávolítása
-A [Reliable Actors](service-fabric-reliable-actors-introduction.md) olyan egyszálas objektumok, amelyek képesek a logika és az állapot beágyazására, valamint megbízható állapot fenntartására. Minden színészi példány saját [State Managerrel](service-fabric-reliable-actors-state-management.md)rendelkezik: egy olyan szótárhoz hasonló adatstruktúra, amely megbízhatóan tárolja a kulcs/érték párokat. A State Manager egy állami szolgáltató körüli burkoló. Az [adatmegőrzési beállítástól](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) függetlenül is tárolhatja az adattárolást.
+# <a name="access-save-and-remove-reliable-actors-state"></a>Megbízható szereplők állapot elérése, mentése és eltávolítása
+[A Reliable Actors](service-fabric-reliable-actors-introduction.md) egyszálas objektumok, amelyek logikai és állapotalapú és megbízható állapot-fenntartási képest beágyaznak. Minden aktorpéldánysaját [állapotkezelővel](service-fabric-reliable-actors-state-management.md)rendelkezik: egy szótárszerű adatstruktúra, amely megbízhatóan tárolja a kulcs-/értékpárokat. Az állapotkezelő egy állami szolgáltató körül van. Használhatja az adatok tárolására, függetlenül attól, hogy melyik [adatmegőrzési beállítást](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) használja.
 
-Az állapot-kezelő kulcsai csak karakterláncok lehetnek. Az értékek általánosak, és bármilyen típus lehet, beleértve az egyéni típusokat is. Az állapot-kezelőben tárolt értékeknek szerializálható adategyezménynek kell lenniük, mert előfordulhat, hogy a hálózaton keresztül továbbítják őket más csomópontoknak a replikálás során, és előfordulhat, hogy a szereplő állapotának megőrzési beállításától függően lemezre íródnak.
+Az állapotkezelő kulcsoknak karakterláncoknak kell lenniük. Az értékek általánosak, és bármilyen típusúak lehetnek, beleértve az egyéni típusokat is. Az állapotkezelőben tárolt értékeknek szerializálhatónak kell lenniük, mert a replikáció során a hálózaton keresztül más csomópontokra továbbíthatók, és az aktor állapotmegőrzési beállításától függően lemezre írhatók.
 
-A State Manager a megbízható szótárban találhatóhoz hasonló általános szótári módszereket tesz elérhetővé az állapot kezeléséhez.
+Az állapotkezelő a Megbízható szótárban találhatóhoz hasonló általános szótári módszereket tár fel az állapot kezeléséhez.
 
-További információ: [ajánlott eljárások a színészi állapot kezelésében](service-fabric-reliable-actors-state-management.md#best-practices).
+További információt az [aktorállapot kezelésével kapcsolatos gyakorlati tanácsok](service-fabric-reliable-actors-state-management.md#best-practices)című témakörben talál.
 
 ## <a name="access-state"></a>Hozzáférési állapot
-Az állapot a Key Manageren keresztül érhető el. Az állami kezelői módszerek mindegyike aszinkron módon történik, mivel előfordulhat, hogy lemezes I/O-műveletek szükségesek, ha a szereplők megőrzött állapotban vannak. Az első hozzáféréskor az állapotjelző objektumok a memóriában vannak gyorsítótárazva. Megismételheti a hozzáférési műveleteket közvetlenül a memóriából, és szinkron módon visszatérhet a lemez I/O-vagy aszinkron környezet-váltási terhelése nélkül. Az állapot objektum a következő esetekben törlődik a gyorsítótárból:
+Az állapot kulcson keresztül érhető el az állapotkezelőn keresztül. Állapotkezelő metódusok mind aszinkron, mert szükség lehet a lemez I/O, ha a szereplők megmaradnak állapot. Az első hozzáféréskor az állapotobjektumok a memóriában gyorsítótárazódnak. Az ismételt hozzáférési műveletek közvetlenül a memóriából érik el az objektumokat, és szinkron módon adják vissza anélkül, hogy lemezI/O-t vagy aszinkron környezetváltást eredményezne. Egy állapotobjektum a következő esetekben törlődik a gyorsítótárból:
 
-* A Actors metódus kezeletlen kivételt jelez, miután lekért egy objektumot az állapot-kezelőből.
-* A rendszer újraaktiválja a szereplőt, vagy az inaktiválás vagy a meghibásodás után.
-* Az állapot-szolgáltató lapok állapota lemezre. Ez a viselkedés az állami szolgáltató implementációtól függ. A `Persisted` beállítás alapértelmezett állapot-szolgáltatója ezt a viselkedést adja meg.
+* Az aktormetódus egy nem kezelt kivételt okoz, miután lekér egy objektumot az állapotkezelőtől.
+* Az aktor újraaktiválódik, vagy inaktiválás után, vagy hiba után.
+* Az állapotszolgáltató lapjai lemezre vannak állítva. Ez a viselkedés az állapotszolgáltató implementációjátől függ. A beállítás alapértelmezett `Persisted` állapotszolgáltatója rendelkezik ezzel a viselkedéssel.
 
-Lekérheti az állapotot egy szabványos *Get* művelettel, amely `KeyNotFoundException`(C#) vagy `NoSuchElementException`(Java), ha nem létezik bejegyzés a kulcshoz:
+Az állapotlekérés egy szabványos *Get* művelettel érhető el, amely (C#) vagy `KeyNotFoundException` `NoSuchElementException`(Java) szór, ha a kulcshoz nem létezik bejegyzés:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -61,7 +61,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Lekérheti az állapotot olyan *TryGet* metódus használatával is, amely nem dobja el, ha nem létezik bejegyzés a kulcshoz:
+Az állapotot olyan *TryGet* metódussal is lekérheti, amely nem jelenik meg, ha egy kulcshoz nem létezik bejegyzés:
 
 ```csharp
 class MyActor : Actor, IMyActor
@@ -104,9 +104,9 @@ class MyActorImpl extends FabricActor implements  MyActor
 ```
 
 ## <a name="save-state"></a>Állapot mentése
-A State Manager lekérési metódusok egy helyi memóriában lévő objektumra mutató hivatkozást adnak vissza. Ha csak a helyi memóriában módosítja ezt az objektumot, a rendszer nem okoz tartósan mentést. Ha egy objektum beolvasása a State managerből történik, és módosul, akkor azt újra be kell szúrni a tartósan.
+Az állapotkezelő lekérési metódusai a helyi memóriában lévő objektumra mutató hivatkozást adnak vissza. Ha csak a helyi memóriában módosítja az objektumot, az nem eredményezi tartós mentését. Amikor egy objektumot beolvas az állapotkezelőből, és módosítja, azt újra be kell szúrni az állapotkezelőbe, hogy tartósan menthető legyen.
 
-Az állapotot feltétel nélküli *készlettel*is beszúrhatja, amely a `dictionary["key"] = value` szintaxisának megfelelő.
+Az állapotot feltétel nélküli *készlet*használatával szúrhatja be, amely a `dictionary["key"] = value` szintaxisnak felel meg:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -139,7 +139,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Az állapotot hozzáadhatja egy *Add* metódus használatával. Ez a módszer `InvalidOperationException`(C#) vagy `IllegalStateException`(Java) metódust mutat be, amikor olyan kulcsot próbál hozzáadni, amely már létezik.
+Az állapot ot hozzáadási módszerrel is *hozzáadhatja.* Ez a `InvalidOperationException`módszer (C#) vagy `IllegalStateException`(Java) értéket ad, amikor olyan kulcsot próbál hozzáadni, amely már létezik.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -172,7 +172,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-*TryAdd* metódus használatával is hozzáadhat állapotot. Ez a metódus nem dobja el, ha olyan kulcsot próbál hozzáadni, amely már létezik.
+Az állapotot *TryAdd* metódussal is hozzáadhatja. Ez a módszer nem dobja, amikor megpróbál hozzáadni egy kulcsot, amely már létezik.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -215,9 +215,9 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-A Actors metódus végén a State Manager automatikusan menti az INSERT vagy a Update művelet által hozzáadott vagy módosított értékeket. A "Mentés" a használt beállításoktól függően a lemezre és a replikálásra is kiterjedhet. A nem módosított értékek nem maradnak meg és nem replikálódnak. Ha nincs módosítva érték, a mentési művelet nem tesz semmit. Ha a Mentés meghiúsul, a rendszer elveti a módosított állapotot, és újratölti az eredeti állapotot.
+Az aktor metódus végén az állapotkezelő automatikusan menti a beszúrási vagy frissítési művelet által hozzáadott vagy módosított értékeket. A "mentés" magában foglalhatja a lemezre való megőrzést és a replikációt, a használt beállításoktól függően. A nem módosított értékek nem maradnak meg és nem replikálódnak. Ha egyetlen érték sem módosult, a mentési művelet nem tesz semmit. Ha a mentés sikertelen, a módosított állapot elvetésre kerül, és az eredeti állapot újratöltődik.
 
-Az állapotot manuálisan is mentheti, ha meghívja a `SaveStateAsync` metódust a Actor Base-ben:
+Az állapotot manuálisan is `SaveStateAsync` mentheti, ha meghívja a metódust az aktor alapon:
 
 ```csharp
 async Task IMyActor.SetCountAsync(int count)
@@ -239,7 +239,7 @@ interface MyActor {
 ```
 
 ## <a name="remove-state"></a>Állapot eltávolítása
-A *Remove* metódus meghívásával véglegesen eltávolíthatja az állapotot egy Actors State managerből. Ez a metódus `KeyNotFoundException`(C#) vagy `NoSuchElementException`(Java) módszert dob, ha nem létező kulcsot próbál meg eltávolítani.
+Az állapot ot véglegesen eltávolíthatja az aktor állapotkezelőjéből az Eltávolítás metódus *meghívásával.* Ez a `KeyNotFoundException`módszer (C#) vagy `NoSuchElementException`(Java) parancsot ad, amikor megpróbál eltávolítani egy nem létező kulcsot.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -272,7 +272,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Az állapotot véglegesen is eltávolíthatja a *TryRemove* metódus használatával. Ez a metódus nem dobja el, ha nem létező kulcsot próbál meg eltávolítani.
+Az állapotot a *TryRemove* metódussal is véglegesen eltávolíthatja. Ez a módszer nem dobja, amikor megpróbálja eltávolítani a kulcsot, amely nem létezik.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -315,8 +315,8 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A Reliable Actorsban tárolt állapotot szerializálni kell a lemezre írás előtt, és a magas rendelkezésre állás érdekében replikálni kell őket. További információ a [Actor típusú szerializálásról](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
+A Reliable Actors-ben tárolt állapotot szerializálni kell a lemezre írt és a magas rendelkezésre állás érdekében replikálódó állapotot. További információ az [Aktor típusszerializálásáról.](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 
-Következő lépésként Ismerkedjen meg a [Actor Diagnostics szolgáltatással és a teljesítmény monitorozásával](service-fabric-reliable-actors-diagnostics.md).
+Ezután tudjon meg többet [a szereplő diagnosztikáról és a teljesítményfigyelésről.](service-fabric-reliable-actors-diagnostics.md)

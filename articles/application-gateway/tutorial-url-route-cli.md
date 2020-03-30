@@ -1,6 +1,6 @@
 ---
-title: Webes forgalom irányítása az URL-cím alapján – Azure CLI
-description: Ebből a cikkből megtudhatja, hogyan irányíthatja át a webes forgalmat az URL-cím alapján az Azure CLI-vel megadott méretezhető kiszolgálókon.
+title: Az URL-cím alapján irányított webes forgalmat – Azure CLI
+description: Ebben a cikkben megtudhatja, hogyan irányíthat webforgalmat az URL-cím alapján az Azure CLI használatával a kiszolgálók adott méretezhető készleteihez.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,15 +9,15 @@ ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68688182"
 ---
-# <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Webes forgalom irányítása az URL-cím alapján az Azure CLI használatával
+# <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Az Azure CLI használatával az URL-cím alapján útvonala a webes forgalom
 
-A webes forgalmat felügyelő rendszergazdaként a feladatai közé tartozik annak a biztosítása, hogy az ügyfelek és a felhasználók minél gyorsabban érhessék el a szükséges információkat. Ennek az egyik módja, ha a különböző típusú webes forgalmakat különböző kiszolgáló-erőforrásokra irányítja. Ez a cikk bemutatja, hogyan állíthatja be és konfigurálhatja az Azure CLI-vel Application Gateway útválasztást az alkalmazás különböző típusú adatforgalmához. Az útválasztás ezután URL-cím alapján különböző kiszolgálókészletekre irányítja a forgalmat.
+A webes forgalmat felügyelő rendszergazdaként a feladatai közé tartozik annak a biztosítása, hogy az ügyfelek és a felhasználók minél gyorsabban érhessék el a szükséges információkat. Ennek az egyik módja, ha a különböző típusú webes forgalmakat különböző kiszolgáló-erőforrásokra irányítja. Ez a cikk bemutatja, hogyan használhatja az Azure CLI-t az Alkalmazásátjáró-útválasztás beállításához és konfigurálásához az alkalmazásból származó különböző típusú forgalomhoz. Az útválasztás ezután URL-cím alapján különböző kiszolgálókészletekre irányítja a forgalmat.
 
 ![URL-útválasztási példa](./media/tutorial-url-route-cli/scenario.png)
 
@@ -31,15 +31,15 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Méretezési csoport létrehozása az egyes készletekhez azok automatikus méretezésének megvalósításához
 > * Teszt futtatása annak ellenőrzéséhez, hogy a forgalom különféle típusai a megfelelő készletekre irányulnak-e
 
-Ha szeretné, ezt az eljárást [Azure PowerShell](tutorial-url-route-powershell.md) vagy a [Azure Portal](create-url-route-portal.md)használatával végezheti el.
+Ha szeretné, ezt az eljárást az [Azure PowerShell](tutorial-url-route-powershell.md) vagy az Azure Portal használatával is elvégezheti. [Azure portal](create-url-route-portal.md)
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha úgy dönt, hogy helyileg telepíti és használja a CLI-t, ez a cikk megköveteli az Azure CLI 2.0.4-es vagy újabb verziójának futtatását. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot az `az group create` paranccsal.
 
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-the-app-gateway-with-a-url-map"></a>Az alkalmazásátjáró létrehozása URL-címleképezéssel
 
-Az `az network application-gateway create` paranccsal hozzon létre egy alkalmazásátjárót *myAppGateway* néven. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az Application Gateway hozzá van rendelve a *myAGSubnet* és a *myAGPublicIPAddress*.
+Az `az network application-gateway create` paranccsal hozzon létre egy alkalmazásátjárót *myAppGateway* néven. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az alkalmazásátjáró a *myAGSubnet* és *a myAGPublicIPAddress címhez*van rendelve.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -98,7 +98,7 @@ az network application-gateway create \
  Az alkalmazásátjáró létrehozása több percig is eltarthat. Az alkalmazásátjáró létrehozását követően a következő új funkciók láthatóak:
 
 
-|Funkció  |Leírás  |
+|Szolgáltatás  |Leírás  |
 |---------|---------|
 |appGatewayBackendPool     |Az alkalmazásátjáróknak rendelkezniük kell legalább egy háttércímkészlettel.|
 |appGatewayBackendHttpSettings     |Megszabja, hogy a kommunikációhoz a rendszer egy HTTP-protokollt és a 80-as portot használja.|
@@ -184,7 +184,7 @@ az network application-gateway rule create \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok létrehozása
 
-Ebben a cikkben három virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a létrehozott három háttér-készletet. A *myvmss1*, *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyeken az NGINX-et telepíti.
+Ebben a cikkben hozzon létre három virtuálisgép-méretezési készletek, amelyek támogatják a három háttérkészletek létrehozott. A *myvmss1*, *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyeken az NGINX-et telepíti.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -236,7 +236,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használja az az network public-ip show parancsot. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például:, `http://40.121.222.19` `http://40.121.222.19:8080/images/test.htm`,, vagy `http://40.121.222.19:8080/video/test.htm`.
+Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használja az az network public-ip show parancsot. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például, `http://40.121.222.19` `http://40.121.222.19:8080/images/test.htm`, `http://40.121.222.19:8080/video/test.htm`, vagy .
 
 ```azurecli-interactive
 az network public-ip show \
@@ -248,13 +248,13 @@ az network public-ip show \
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-Módosítsa az URL-címet&lt;a http://IP&gt;-cím: 8080/images/test.html értékre, és &lt;cserélje le az&gt;IP-cím IP-címét, és az alábbi példához hasonlóan kell megjelennie:
+Módosítsa az&lt;URL-címet&gt;http:// ip-címre:8080/images/test.html, &lt;cserélje&gt;le az IP-címét az IP-címre , és a következő példához hasonló példát kell látnia:
 
-![Képek URL-címének tesztelése az alkalmazásátjáróban](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
+![Tesztképek URL-címe az alkalmazásátjáróban](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-Módosítsa az URL-címet&lt;a http://IP&gt;-cím: 8080/video/test.html értékre, és &lt;cserélje le az&gt;IP-cím IP-címét, és az alábbi példához hasonlóan kell megjelennie.
+Módosítsa az&lt;URL-t&gt;http:// ip-cím :8080/video/test.html, az&gt;IP-cím ip-cím helyett, &lt;és a következő példához hasonló tetszőnek kell lennie.
 
-![Videók URL-címének tesztelése az alkalmazásátjáróban](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
+![Tesztvideó URL-címe az alkalmazásátjáróban](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

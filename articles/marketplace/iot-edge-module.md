@@ -1,91 +1,89 @@
 ---
-title: Azure IoT Edge modulok
-description: Az IoT Edge modul az Azure Marketplace-en kínálja az alkalmazások és szolgáltatások közzétevőit.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, IoT Edge module offer
+title: Azure IoT peremhálózati modulok
+description: Az IoT Edge-modul ajánlat az Azure Piactéren az alkalmazás- és szolgáltatáskiadók számára.
 author: qianw211
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/22/2018
-ms.author: pabutler
-ms.openlocfilehash: db501c34a4418bc7b08b19105a9b28585288f877
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: aadbf33914f919e393a5ec88cf6fc0a6103911b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823069"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286149"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modulok
 
-Az Azure Cloud a [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) platformot támogatja.  Ez a platform lehetővé teszi a felhasználók számára, hogy közvetlenül a IoT-eszközökön futtassák a Felhőbeli számítási feladatokat.  Az IoT Edge-modulok offline számítási feladatokat futtathatnak, és helyileg is végezhetik az adatelemzést. Ez az ajánlat típusa segít a sávszélesség megtakarításában, a helyi és bizalmas adatok védelmében, és alacsony késésű válaszidőt biztosít.  Ezzel a lehetőséggel kihasználhatja ezeket az előre elkészített számítási feladatokat. Eddig csak néhány, a Microsofttól származó, első féltől származó megoldás érhető el.  Az időt és az erőforrásokat a saját egyéni IoT-megoldásainak kiépítése során kellett befektetni.
+Az [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) platform ot az Azure Cloud támogatja.  Ez a platform lehetővé teszi a felhasználók számára, hogy a felhőbeli számítási feladatok közvetlenül az IoT-eszközökön fussanak.  Az IoT Edge-modul offline számítási feladatok futtatásához, és az adatok elemzése helyileg. Ez az ajánlattípus segít a sávszélesség megtakarításában, a helyi és bizalmas adatok védelmében, valamint alacsony késleltetésű válaszidőt biztosít.  Most már rendelkezik az előre elkészített számítási feladatok előnyeit. Mostanáig csak néhány belső megoldás állt rendelkezésre a Microsofttól.  Időt és erőforrásokat kellett befektetnie saját egyéni IoT-megoldásai létrehozásába.
 
-Az [Azure Marketplace IoT Edge moduljainak](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)bevezetésével most már egyetlen célhelyünk van a kiadók számára, hogy elérhetővé tegye és eladják megoldásait a IoT-közönség számára. A IoT-fejlesztők végső soron megtalálhatják és megvásárolhatják a megoldás-fejlesztés felgyorsításához szükséges képességeket.  
+Az [IoT Edge-modulok](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)azure piactéren való bevezetésével mostantól egyetlen céllal rendelkezünk a kiadók számára, hogy elérhetővé tévék és értékesítsék megoldásaikat az IoT-közönség nek. Az IoT-fejlesztők végső soron megtalálhatják és megvásárolhatják a megoldásfejlesztés felgyorsítása érdekében szükséges képességeket.  
 
-## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>A IoT Edge-modulok főbb előnyei az Azure Marketplace-en:
+## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>Az IoT Edge-modulok legfontosabb előnyei az Azure Marketplace-en:
 
-| **Közzétevők számára**    | **Ügyfelek számára (IoT-fejlesztők)**  |
+| **Kiadók nak**    | **Ügyfeleknek (IoT-fejlesztőknek)**  |
 | :------------------- | :-------------------|
-| Több millió fejlesztőt érhet el IoT Edge megoldások létrehozásához és üzembe helyezéséhez.  | Hozzon létre egy IoT Edge megoldást a biztonságos és tesztelt összetevők használatának megbízhatóságával. |
-| Tegye közzé egyszer, és futtassa az összes olyan IoT Edge hardvert, amely támogatja a tárolókat. | Csökkentse a piacra kerülési időt azáltal, hogy megkeresi és üzembe helyezi az 1. és a harmadik féltől származó IoT Edge-modulokat. |
-| Pénzbevétel rugalmas számlázási lehetőségekkel <ul> <li> Ingyenes és saját licenc használata (BYOL). </li> </ul> | A vásárlásokat a választott számlázási modellekkel teheti meg. <ul> <li> Ingyenes és saját licenc használata (BYOL). </li> </ul> |
+| Az IoT Edge-megoldások at fejlesztőinek millióihoz juthat el.  | Az IoT Edge-megoldásokat biztonságos és tesztelt összetevők használatával komponálja. |
+| Egyszer tegye közzé, és futtassa az ioT Edge-hardverek, amely támogatja a tárolók. | Csökkentse a piacra jutási időt az első és harmadik féltől származó IoT Edge-modulok keresésével és üzembe helyezésével az egyedi igényekhez. |
+| Pénzt keresni a rugalmas számlázási lehetőségekkel <ul> <li> Ingyenes és hozd a saját licenc (BYOL). </li> </ul> | Vásároljon a kiválasztott számlázási modellekkel. <ul> <li> Ingyenes és hozd a saját licenc (BYOL). </li> </ul> |
 
-## <a name="what-is-an-iot-edge-module"></a>Mi az IoT Edge modul?
+## <a name="what-is-an-iot-edge-module"></a>Mi az IoT Edge-modul?
 
-Azure IoT Edge lehetővé teszi az üzleti logikák üzembe helyezését és kezelését modulok formájában. A Azure IoT Edge modulok a IoT Edge által kezelt legkisebb számítási egységek, és tartalmazhatnak Microsoft-szolgáltatásokat (például Azure Stream Analytics), harmadik féltől származó szolgáltatásokat vagy a saját megoldásokra vonatkozó kódokat. IoT Edge modulokról további információt a [Azure IoT Edge modulok ismertetése](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)című témakörben talál.
+Az Azure IoT Edge lehetővé teszi az üzleti logika üzembe helyezését és kezelését a peremhálózaton modulok formájában. Az Azure IoT Edge-modulok az IoT Edge által kezelt legkisebb számítási egységek, és tartalmazhatnak Microsoft-szolgáltatásokat (például Az Azure Stream Analytics), a harmadik féltől származó szolgáltatásokat vagy a saját megoldásspecifikus kódot. Ha többet szeretne megtudni az IoT Edge-modulokról, [olvassa el az Azure IoT Edge-modulok megismerése.](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)
 
-**Mi a különbség a Container ajánlat típusa és az IoT Edge modul típusú ajánlat között?**
+**Mi a különbség a tárolóajánlat típusa és az IoT Edge-modul ajánlattípusa között?**
 
-A IoT Edge modul ajánlat típusa egy IoT Edge eszközön futó adott típusú tároló. A szolgáltatás az alapértelmezett konfigurációs beállításokat használja a IoT Edge környezetben való futtatáshoz, és opcionálisan a IoT Edge modul SDK-val is integrálható a IoT Edge futtatókörnyezettel.
+Az IoT Edge-modul ajánlattípusa egy adott típusú tároló fut egy IoT Edge-eszközön. Az IoT Edge-környezetben futtatható alapértelmezett konfigurációs beállításokkal rendelkezik, és opcionálisan az IoT Edge-modul SDK-ját használja az IoT Edge futásidőbe való integráláshoz.
 
-## <a name="publishing-your-iot-edge-module"></a>A IoT Edge-modul közzététele
+## <a name="publishing-your-iot-edge-module"></a>Az IoT Edge-modul közzététele
 
 **A megfelelő kirakat kiválasztása**
 
-IoT Edge modulokat csak az Azure Marketplace-en tesszük közzé, a AppSource nem alkalmazható.  További információ a kirakatok közötti különbségekről és célközönségről: [a megoldás közzétételi lehetőségének meghatározása](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
+Az IoT Edge-modulok csak az Azure Marketplace-en vannak közzétéve, az AppSource nem vonatkozik.  A kirakatokban fennálló különbségekről és célközönségről a [megoldás közzétételi lehetőségének meghatározása](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)című témakörben talál további információt.
  
-**Számlázási beállítások**
+**Számlázási lehetőségek**
 
-A piactér jelenleg **ingyenes** , és **saját licenc (BYOL)** számlázási lehetőségeket biztosít IoT Edge modulokhoz.
+A piactér jelenleg támogatja az **ingyenes** és **hozza el a saját licenc (BYOL)** számlázási lehetőségek IoT Edge modulok.
  
 **Közzétételi beállítások**
 
-IoT Edge moduloknak minden esetben ki kell választaniuk a **Transact** Publishing beállítást.  A közzétételi beállításokkal kapcsolatos további részletekért tekintse meg [a közzétételi lehetőség kiválasztása](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) című témakört.  
+Minden esetben az IoT Edge-moduloknak ki kell választaniuk a **Transact** közzétételi lehetőséget.  A közzétételi beállításokkal kapcsolatos további részletekért [válasszon közzétételi lehetőséget.](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)  
 
 ## <a name="eligibility-criteria"></a>Jogosultsági feltételek
 
-A Microsoft Azure Marketplace-szerződések és-szabályzatok minden feltétele IoT Edge modul-ajánlatok esetében érvényes.  Emellett a IoT Edge modulokra vonatkozó előfeltételeket és műszaki követelményeket is megkövetelnek.  
+A Microsoft Azure Piactér-szerződések és -szabályzatok összes feltétele az IoT Edge modulajánlatokra vonatkozik.  Emellett az IoT Edge-modulok előfeltételei és műszaki követelményei is vannak.  
 
 **Előfeltételek**
 
-IoT Edge modul Azure Marketplace-en való közzétételéhez meg kell felelnie a következő előfeltételeknek:
+IoT Edge-modul közzététele az Azure Marketplace-en, meg kell felelnie az alábbi előfeltételeknek:
 
-- Hozzáférés a Cloud Partner Portalhoz (CPP). További információ: az [Azure Marketplace és a AppSource közzétételi útmutatója](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
-- IoT Edge moduljának üzemeltetése egy Azure Container Registry. 
-- A IoT Edge modul metaadatainak készen állnak, például (nem teljes lista): 
-    - Egy cím
+- Hozzáférés a felhőpartneri portálhoz (CPP). További információ: [Azure Marketplace és AppSource közzétételi útmutató.](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)
+- Az IoT Edge-modul tanusködése egy Azure Container Registry. 
+- Az IoT Edge-modul metaadatai készen állnak, például (nem teljes lista): 
+    - A cím
     - Leírás (HTML formátumban)
-    - Egy embléma képe (PNG-formátum és rögzített képméret, beleértve az 40x40px, a 90x90px, a 115x115px, a 255x115px)
-    - Használati feltételek és adatvédelmi szabályzat
-    - Alapértelmezett modul konfigurációja (Route, Twin kívánt tulajdonságok, createOptions, környezeti változók)
+    - Emblémakép (PNG formátum és rögzített képméretek, beleértve a 40x40px, 90x90px, 115x115px, 255x115px)
+    - A használati idő és az adatvédelmi politika
+    - Alapértelmezett modulkonfiguráció (útvonal, iker kívánt tulajdonságok, createOptions, környezeti változók)
     - Dokumentáció
     - Támogatási kapcsolattartók
 
-**Technikai követelmények**
+**Műszaki követelmények**
 
-Az IoT Edge modul elsődleges műszaki követelményei, hogy az informatikai támogatás és közzététel az Azure Marketplace-en, részletesen megtalálhatók a [IoT Edge modul előkészítésének technikai eszközein](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets).  
+Az IoT Edge-modul elsődleges technikai követelményeit, hogy minősítést kapjon és közzétehessen az Azure Marketplace-en, az [IoT Edge modul technikai eszközeinek előkészítése](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)című ismerteti részletesen ismerteti.  
 
-## <a name="documentation-and-resources"></a>Dokumentáció és erőforrások
+## <a name="documentation-and-resources"></a>Dokumentáció és források
 
-[Hozzon létre egy IoT Edge modul-ajánlatot](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) – az új IoT Edge modul közzétételének lépései a Cloud Publishing Portalon.
+[Hozzon létre egy IoT Edge-modul ajánlat](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) – Az új IoT Edge-modul ajánlat a felhőbeli közzétételi portál on közzétételi lépéseket.
 
 ## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg,
 
-- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a piactéren.
+- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a piacon.
 
-Ha regisztrálva van, és új ajánlatot hoz létre, vagy dolgozik egy meglévőn,
+Ha regisztrált, és új ajánlatot hoz létre, vagy egy meglévőn dolgozik,
 
-- Az ajánlat létrehozásához vagy befejezéséhez jelentkezzen be [Cloud Partner Portalba](https://cloudpartner.azure.com/) .
-- A IoT Edge modul ajánlatának közzétételével kapcsolatos információkért tekintse meg [IoT Edge modul ajánlat közzétételének áttekintése](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts) című témakört.
+- Jelentkezzen be a [Cloud Partner Portalszolgáltatásba](https://cloudpartner.azure.com/) az ajánlat létrehozásához vagy befejezéséhez.
+- Tekintse meg [az IoT Edge-modul közzétételi áttekintését](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts) az IoT Edge-modulajánlat közzétételéről.

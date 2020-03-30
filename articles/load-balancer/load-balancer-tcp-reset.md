@@ -1,7 +1,7 @@
 ---
-title: Load Balancer TCP alaphelyzetbe állítása üresjáratban az Azure-ban
+title: Az Azure-beli adatle-szolgáltatás tcp-alaphelyzetbe állítása
 titleSuffix: Azure Load Balancer
-description: Ebből a cikkből megtudhatja, hogyan Azure Load Balancer a kétirányú TCP első csomagok üresjárati időkorláton.
+description: Ebből a cikkből megtudhatja, hogy az Azure Load Balancer kétirányú TCP RST-csomagokkal rendelkezik az írásbeli időtúloldalon.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,32 +13,32 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
 ms.author: allensu
-ms.openlocfilehash: eac7dc3b7188131685ef630c0dc01d248e1d6a6a
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: d3d836ddea8d07a25ad09e6f19d9f17a680decd6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134782"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294404"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle"></a>Load Balancer a TCP alaphelyzetbe állítása üresjárat esetén
+# <a name="load-balancer-with-tcp-reset-on-idle"></a>Terheléselosztó TCP alaphelyzetbe állítással az idle-n
 
-A [standard Load Balancer](load-balancer-standard-overview.md) használatával kiszámítható alkalmazás-viselkedést hozhat létre a forgatókönyvek esetében, ha engedélyezi a TCP alaphelyzetbe állítását egy adott szabály esetében. Load Balancer alapértelmezett viselkedése a folyamatok csendes eldobása, amikor a folyamat üresjárati időkorlátja eléri a folyamatot.  Ha engedélyezi ezt a funkciót, a Load Balancer a kétirányú TCP-alaphelyzetbe (TCP első csomag) küldi az üresjárati időkorlátot.  Ez tájékoztatni fogja az alkalmazás-végpontokat arról, hogy a kapcsolatok túllépték az időkorlátot, és már nem használható.  Ha szükséges, a végpontok azonnal létrehozhatnak egy új kapcsolatot.
+[A Standard Load Balancer](load-balancer-standard-overview.md) segítségével kiszámíthatóbb alkalmazásviselkedést hozhat létre a forgatókönyvekhez, ha engedélyezi a TCP reset-et az idle-ben egy adott szabályhoz. A terheléselosztó alapértelmezett viselkedése az, hogy csendben eldobja a folyamatokat, amikor eléri a folyamat tétlen időtúltartományát.  Ha engedélyezi ezt a szolgáltatást, a terheléselosztó kétirányú TCP-alaphelyzetbe állítást (TCP RST-csomagot) küld az alapjárati időtúloldalon.  Ez tájékoztatja az alkalmazás végpontjait, hogy a kapcsolat túllépte az időtúllépés, és már nem használható.  A végpontok szükség esetén azonnal létrehozhatnak egy új kapcsolatot.
 
-![Load Balancer TCP alaphelyzetbe állítása](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
+![Terheléselosztó TCP alaphelyzetbe állítása](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
  
-Ezt az alapértelmezett viselkedést kell módosítania, és engedélyezni kell a TCP alaphelyzetbe állítását a bejövő NAT-szabályok, a terheléselosztási szabályok és a [Kimenő szabályok](https://aka.ms/lboutboundrules)üresjárati időkorlátján.  Ha engedélyezve van a szabály, a Load Balancer a kétirányú TCP-visszaállítást (TCP első csomagokat) küldi az ügyfél-és a kiszolgálói végpontoknak az összes egyező folyamat üresjárati időkorlátjának időpontjában.
+Módosítja ezt az alapértelmezett viselkedést, és engedélyezi a TCP-alapbeállítások küldését a bejövő nat-szabályokon, terheléselosztási szabályokon és [kimenő szabályokon.](https://aka.ms/lboutboundrules)  Ha szabályonként engedélyezve van, a terheléselosztó kétirányú TCP reset (TCP RST-csomagok) küld az ügyfél- és a kiszolgálóvégpontoknak az összes egyező folyamat tétlen időtúlterhelésének időpontjában.
 
-Az első TCP-csomagokat fogadó végpontok azonnal lezárták a megfelelő szoftvercsatornát. Ez azonnali értesítést küld a végpontokról, amelyeken a kapcsolat megjelent, és az azonos TCP-kapcsolaton folytatott jövőbeli kommunikáció meghiúsul.  Az alkalmazások kitörölhetik a kapcsolatokat, amikor a szoftvercsatorna lezárult, és szükség esetén újra létrehozza a kapcsolatokat, anélkül, hogy a TCP-kapcsolatra kellene várnia.
+A TCP RST-csomagokat fogadó végpontok azonnal lezárják a megfelelő szoftvercsatornát. Ez azonnali értesítést küld a végpontok számára arról, hogy a kapcsolat kiadása megtörtént, és az ugyanazon a TCP-kapcsolaton lévő jövőbeli kommunikáció sikertelen lesz.  Az alkalmazások kiüríthetik a kapcsolatokat, amikor a szoftvercsatorna bezárul, és szükség szerint újra létre tudják hozni a kapcsolatokat anélkül, hogy megvárnák a TCP-kapcsolat időtúllépési idejét.
 
-Számos esetben előfordulhat, hogy a TCP (vagy az alkalmazási réteg) Keepalives egy folyamat üresjárati időkorlátjának frissítéséhez szükséges. 
+Számos esetben ez csökkentheti a TCP (vagy alkalmazásréteg) keepalives küldésének szükségességét a folyamat tétlen időhaigényének frissítéséhez. 
 
-Ha az üresjárati időtartama meghaladja a konfiguráció által engedélyezett beállításokat, vagy az alkalmazás nem kívánt viselkedést jelenít meg a TCP-visszaállítások engedélyezésével, akkor továbbra is a TCP-Keepalives (vagy az alkalmazás rétegének Keepalives) kell használnia a TCP-kapcsolatok élő állapotának figyeléséhez.  Emellett a Keepalives is hasznos lehet, ha a Kapcsolódás az elérési útban van, különösen az alkalmazás rétegbeli Keepalives.  
+Ha az alapjárati időtartamok meghaladják a konfiguráció által engedélyezett időtartamokat, vagy az alkalmazás nemkívánatos viselkedést mutat, ha a TCP-alapbeállítások engedélyezve vannak, előfordulhat, hogy továbbra is tcp keepalives (vagy alkalmazásréteg keepalives) kell használnia a TCP-kapcsolatok élésének figyeléséhez.  Továbbá, keepalives is hasznos marad, ha a kapcsolat proxied valahol az utat, különösen az alkalmazás réteg keepalives.  
 
-Alaposan vizsgálja meg a teljes végpontok közötti forgatókönyvet, és döntse el, hogy kihasználja-e a TCP alaphelyzetbe állítását, az üresjárat időkorlátjának módosítását, és ha további lépések szükségesek a kívánt alkalmazás működésének biztosításához.
+Gondosan vizsgálja meg a teljes végpontok közötti forgatókönyvet annak eldöntéséhez, hogy a TCP-beállítások engedélyezése, az alapjárati idő-szám módosítása és további lépések szükségesek-e az alkalmazás kívánt viselkedésének biztosításához.
 
-## <a name="enabling-tcp-reset-on-idle-timeout"></a>A TCP alaphelyzetbe állításának engedélyezése üresjárati időkorláton
+## <a name="enabling-tcp-reset-on-idle-timeout"></a>A TCP alaphelyzetbe állításának engedélyezése tétlen időkitöltéskor
 
-Az API 2018-07-01-es verziójának használatával engedélyezheti a kétirányú TCP-visszaállítások küldését a következő üresjárati időkorláton:
+A 2018-07-01 API-verzió használatával szabályonként engedélyezheti a kétirányú TCP-alapbeállítások küldését tétlen időszinten:
 
 ```json
       "loadBalancingRules": [
@@ -64,15 +64,16 @@ Az API 2018-07-01-es verziójának használatával engedélyezheti a kétirány�
       ]
 ```
 
-## <a name="regions"></a>Régió elérhetősége
+## <a name="region-availability"></a><a name="regions"></a>A régió elérhetősége
 
 Minden régióban elérhető.
 
 ## <a name="limitations"></a>Korlátozások
 
-- Az első TCP-t a rendszer csak a TCP-kapcsolatok során, a létesített állapotban küldik el.
+- A TCP RST-t csak a TCP-kapcsolat során, ESTABLISHED állapotban küldve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A [standard Load Balancer](load-balancer-standard-overview.md)megismerése.
-- További információ a [kimenő szabályokról](load-balancer-outbound-rules-overview.md).
+- További információ a [Standard Load Balancer](load-balancer-standard-overview.md)- összegről.
+- További információ a [kimenő szabályokról.](load-balancer-outbound-rules-overview.md)
+- [TCP RST konfigurálása tétlen időkitöltéskor](load-balancer-tcp-idle-timeout.md)

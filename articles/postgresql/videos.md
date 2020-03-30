@@ -1,40 +1,40 @@
 ---
-title: Azure Database for PostgreSQL-videók
-description: Ezen a lapon tanulási Azure Database for postgresql-hez kapcsolódó videó tartalmat sorolja fel.
+title: Azure-adatbázis postgreSQL-videókhoz
+description: Ez az oldal az Azure Database for PostgreSQL megismeréséhez szükséges videotartalmat sorolja fel.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: de4194671f09bde65bee0a1d0d86ffacdcedfbf3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61091605"
 ---
-# <a name="azure-database-for-postgresql-videos"></a>Azure Database for PostgreSQL-videók
+# <a name="azure-database-for-postgresql-videos"></a>Azure Database for PostgreSQL videókhoz
 
-[Áttekintés: Azure Database for PostgreSQL és MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
+[Áttekintés: Azure-adatbázis a PostgreSQL-hez és a MySQL-hez](https://channel9.msdn.com/Events/Connect/2017/T147)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player]
 
-Azure Database for postgresql-hez és az Azure Database for MySQL egyesítik community edition adatbázismotorokat és a egy teljes körűen felügyelt szolgáltatás képességeit – így az alkalmazások helyett egy adatbázis kellene összpontosíthat. Hallgassa meg a szolgáltatás használatának előnyei a gyors áttekintést, és tekintse meg a művelet funkciói.
+A PostgreSQL és az Azure Database for MySQL közösségi kiadású adatbázis-motorjait és egy teljes körűen felügyelt szolgáltatás képességeit egyesíti, így az alkalmazásokra összpontosíthat, ahelyett, hogy egy adatbázist kellene kezelnie. Hangoljon rá, hogy gyors áttekintést kapjon a szolgáltatás használatának előnyeiről, és tekintse meg a működés közbeni képességek et.
 
-[A MySQL és a PostgreSQL felügyelt szolgáltatásképességek részletes bemutatása](https://channel9.msdn.com/Events/Connect/2017/T148)
+[Mély merülés a MySQL és a PostgreSQL felügyelt szolgáltatási képességeiről](https://channel9.msdn.com/Events/Connect/2017/T148)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T148/player]
 
-Azure Database for PostgreSQL és MySQL-hez készült Azure Database egyesítik community edition adatbázismotorokat és a egy teljes körűen felügyelt szolgáltatás képességeit. Hallgassa meg lekérni az ezek a szolgáltatások működését egy részletes bemutatása – hogyan azt magas rendelkezésre állás biztosítása érdekében, és gyors, méretezésre (másodperc), így teljesítheti az ügyfelek igényeinek megfelelően. Is elsajátíthatja az alapul szolgáló befektetések némelyike a biztonsági és globális rendelkezésre állását.
+A PostgreSQL és az Azure Database for MySQL a közösségi kiadásadatbázis-motorokat és a teljes körűen felügyelt szolgáltatás képességeit egyesíti. Hangoljon rá, hogy részletesen megismerhesse, hogyan működnek ezek a szolgáltatások – hogyan biztosítjuk a magas rendelkezésre állást és a gyors skálázást (másodperceken belül), hogy ön megfeleljen ügyfelei igényeinek. A biztonságés a világ szintű rendelkezésre állás néhány mögöttes befektetéséről is megismerheti.
 
-[PostgreSQL intelligens analitika alkalmazások fejlesztése](https://channel9.msdn.com/Events/Connect/2017/T149)
+[Intelligens elemzőalkalmazás fejlesztése a PostgreSQL-rel](https://channel9.msdn.com/Events/Connect/2017/T149)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T149/player]
 
-Azure Database for PostgreSQL egyesíti community edition adatbázismotoron és a egy teljes körűen felügyelt szolgáltatás képességeit – így az alkalmazások helyett egy adatbázis kellene összpontosíthat. Hallgassa meg, megtekintheti a művelet, mennyire egyszerű is, például a Cognitive Services hozzáadásával az alkalmazásokat az Azure-ban tartozóként innovatív megoldásokat hozhat létre.
+Az Azure Database for PostgreSQL egyesíti a közösségi kiadás adatbázis-motorját és egy teljes körűen felügyelt szolgáltatás képességeit, így az alkalmazásokra összpontosíthat ahelyett, hogy egy adatbázist kellene kezelnie. Hangoljon rá, hogy működés közben milyen egyszerű új élményeket létrehozni, például kognitív szolgáltatásokat hozzáadni az alkalmazásokhoz az Azure-beli ség miatt.
 
-[Első lépések az új, Azure Database for PostgreSQL szolgáltatás](https://channel9.msdn.com/events/Build/2017/B8046)
+[Az új Azure Database for PostgreSQL szolgáltatás ismerkedése](https://channel9.msdn.com/events/Build/2017/B8046)
 
 >[!VIDEO https://channel9.msdn.com/Events/Build/2017/B8046/player]
 
-Ebben a videóban a 2017 Microsoft //Build konferencián a tanuljon két korai világossá ügyfél hogyan már használják, Azure Database for PostgreSQL szolgáltatás, így gyorsabban végezhet innovációt. Ismerje meg, hogyan ezek át a szolgáltatásnak, és az alkalmazásfejlesztés a következő lépéseket ismertetjük. A videó végigvezeti a szolgáltatás legfontosabb funkcióit, valamint ismerteti, hogyan fejlesztői is, hogy a meglévő alkalmazások áttelepítéséhez, vagy hozhat létre új alkalmazásokat, amelyek a felügyelt PostgreSQL szolgáltatás használata az Azure-ban.
+A 2017-es Microsoft //Build konferencia ezen videójában két korai fogadó ügyféltől megtudhatja, hogyan használták az Azure Database for PostgreSQL szolgáltatást a gyorsabb innovációhoz. Ismerje meg, hogyan telepedtek át a szolgáltatásra, és vitassák meg az alkalmazásfejlesztés következő lépéseit. A videó bemutatja a legfontosabb szolgáltatásfunkciókat, és bemutatja, hogyan telepítheti át fejlesztőként a meglévő alkalmazásokat, vagy fejleszthet új alkalmazásokat, amelyek ezt a felügyelt PostgreSQL-szolgáltatást használják az Azure-ban.

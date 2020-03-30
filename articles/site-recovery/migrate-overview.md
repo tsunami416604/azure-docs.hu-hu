@@ -8,16 +8,20 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7107eae5c798deb78d4d35eccdf4adcf5273335
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257939"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388899"
 ---
 # <a name="about-migration"></a>A migrálás ismertetése
 
 Ebből a cikkből gyors áttekintést kaphat arról, hogy az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás hogyan segíti a gépek áttelepítését. 
+
+> [!TIP]
+> Most már használja az Azure Áttelepítés i szolgáltatás virtuális gépek és kiszolgálók áttelepítése az Azure Site Recovery szolgáltatás helyett. [További információ](../migrate/migrate-services-overview.md).
+
 
 A Site Recovery használatával az alábbiakat telepítheti át:
 
