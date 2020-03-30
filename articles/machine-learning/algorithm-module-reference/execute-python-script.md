@@ -1,7 +1,7 @@
 ---
-title: 'Python-szkript végrehajtása: modul-hivatkozás'
+title: 'Python-parancsfájl végrehajtása: modulhivatkozás'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Python-kód futtatásához a Azure Machine Learning Python-szkriptek modulját.
+description: Ismerje meg, hogyan használhatja a Python-parancsfájl-modult az Azure Machine Learningben a Python-kód futtatásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,66 +9,142 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 3370c7ebb8e0253543e6b9cb6ce7614811fb5bd0
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: 0f86d1ad03062797764af6a0d49beacaa3458a8f
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79140790"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365548"
 ---
-# <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
+# <a name="execute-python-script-module"></a>Python-parancsfájl-modul végrehajtása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
 
-Ez a modul a Python-kód futtatására használható. A Python architektúrával és tervezési alapelveivel kapcsolatos további információkért tekintse meg [a következő cikket](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
+Ezzel a modullal futtatja a Python-kódot. A Python architektúrájáról és tervezési elveiről az alábbi cikkben olvashat [bővebben.](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)
 
-A Python használatával olyan feladatokat hajthat végre, amelyeket jelenleg nem támogat a meglévő modulok, például a következők:
+A Python nal olyan feladatokat hajthat végre, amelyeket jelenleg nem támogatnak a meglévő modulok, például:
 
-+ Az adatmegjelenítés `matplotlib` használatával
-+ A Python-kódtárak használata a munkaterületen található adatkészletek és modellek számbavételéhez
-+ Az adatok [importálása](./import-data.md) modul által nem támogatott forrásokból származó adatok olvasása, betöltése és módosítása
-+ Saját mély tanulási kód futtatása 
++ Adatok megjelenítése a használatával`matplotlib`
++ Python-kódtárak használata adatkészletek és modellek számbavételére a munkaterületen
++ [Adatok importálása](./import-data.md) modul által nem támogatott forrásokból származó adatok olvasása, betöltése és kezelése
++ Futtassa saját mélytanulási kódját 
 
 
-A Azure Machine Learning a Python anaconda-eloszlását használja, amely számos gyakori segédprogramot tartalmaz az adatfeldolgozáshoz. Az anaconda verzióját automatikusan frissíteni fogjuk. A jelenlegi verzió:
- -  Anaconda 4.5 + Distribution for Python 3,6 
+Az Azure Machine Learning a Python Anaconda disztribúcióját használja, amely számos gyakori segédprogramot tartalmaz az adatfeldolgozáshoz. Az Anaconda verzióját automatikusan frissítjük. A jelenlegi verzió:
+ -  Anaconda 4.5+ disztribúció Python 3.6-hoz 
 
 Az előre telepített csomagok a következők:
--  asn1crypto==0.24.0
-- attrs==19.1.0
-- azure-common==1.1.18
-- azure-storage-blob==1.5.0
-- azure-storage-common==1.4.0
-- 2019.3.9 = =
-- cffi==1.12.2
-- chardet==3.0.4
-- titkosítás = = 2.6.1
-- disztribúció = = 1.4.0
-- idna==2.8
-- jsonschema==3.0.1
-- lightgbm = = 2.2.3
-- more-itertools==6.0.0
-- numpy==1.16.2
-- pandas==0.24.2
-- Pillow==6.0.0
-- pip==19.0.3
-- pyarrow = = 0.12.1
-- pycparser==2.19
-- pycryptodomex==3.7.3
-- pyrsistent==0.14.11
-- Python-dateutil = = 2.8.0
-- pytz==2018.9
-- requests==2.21.0
-- scikit – Learn = = 0.20.3
-- SciPy = = 1.2.1
-- setuptools = = 40.8.0
-- six==1.12.0
-- torch==1.0.1.post2
-- torchvision = = 0.2.2. post3
-- urllib3==1.24.1
-- wheel==0.33.1 
+-    adal==1.2.2
+-    applicationinsights==0.11.9
+-    attrs==19.3.0
+-    az úraz úrközös==1.1.25
+-    azure-core==1.3.0
+-    azúr-graphrbac==0.61.1
+-    azure-identity==1.3.0
+-    azure-mgmt-authorization==0.60.0
+-    azure-mgmt-containerregistry==2.8.0
+-    azure-mgmt-keyvault==2.2.0
+-    azure-mgmt-resource==8.0.1
+-    azure-mgmt-storage==8.0.0
+-    azure-storage-blob==1.5.0
+-    azure-storage-common==1.4.2
+-    azureml-core==1.1.5.5
+-    azureml-dataprep-native==14.1.0
+-    azureml-dataprep==1.3.5
+-    azureml-defaults==1.1.5.1
+-    azureml-designer-classic-modules==0.0.118
+-    azureml-designer-core==0.0.31
+-    azureml-designer-internal==0.0.18
+-    azureml-model-management-sdk==1.0.1b6.post1
+-    azureml-pipeline-core==1.1.5
+-    azureml-telemetria==1.1.5.3
+-    backports.tempfile==1.0
+-    backports.weakref==1.0.post1
+-    boto3==1.12.29
+-    botocore==1.15.29
+-    cachetools==4.0.0
+-    certifi==2019.11.28
+-    cffi==1.12.3
+-    chardet==3.0.4
+-    kattintás==7.1.1
+-    cloudpickle==1.3.0
+-    configparser==3.7.4
+-    contextlib2==0.6.0.post1
+-    kriptográfia==2,8
+-    cycler==0,10,0
+-    kapor==0.3.1.1
+-    distro==1.4.0
+-    docker==4.2.0
+-    docutils==0.15.2
+-    dotnetcore2==2.1.13
+-    lombik==1.0.3
+-    flausepy==3.0.1
+-    gensim==3.8.1
+-    google-api-core==1.16.0
+-    google-auth==1.12.0
+-    google-cloud-core==1.3.0
+-    google-cloud-storage==1.26.0
+-    google-folytatás-média==0.5.0
+-    googleapis-common-protos==1.51.0
+-    gunicorn==19.9.0
+-    idna==2,9
+-    kiegyensúlyozatlan-tanulni==0,4,3
+-    izodát==0.6.0
+-    itsdangerous==1.1.0
+-    jeepney==0.4.3
+-    jinja2==2.11.1
+-    jmespath==0,9,5
+-    joblib==0.14.0
+-    json-fakitermelés-py==0,2
+-    jsonpickle==1,3
+-    jsonschema==3.0.1
+-    kiwisolver==1.1.0
+-    liac-arff==2.4.0
+-    lightgbm==2.2.3
+-    markupsafe==1.1.1
+-    matplotlib==3.1.3
+-    több-itertools==6.0.0
+-    msal-hosszabbítók==0.1.3
+-    msal==1.1.0
+-    msrest==0.6.11
+-    msrestazure==0.6.3
+-    ndg-httpsclient==0.5.1
+-    nimbusml==1.6.1
+-    numpy==1,18,2
+-    oauthlib==3.1.0
+-    pandák==0,25,3
+-    pathspec==0,7,0
+-    pip==20.0.2
+-    portalocker==1.6.0
+-    protobuf==3.11.3
+-    pyarrow==0,16,0
+-    pyasn1-modulok==0,2,8
+-    pyasn1==0,4,8
+-    pycparser==2,20
+-    pycryptodomex==3.7.3
+-    pyjwt==1.7.1
+-    pyopenssl==19.1.0
+-    pyparsing==2.4.6
+-    pyrsistent==0,16,0
+-    python-dateutil==2.8.1
+-    pytz==2019.3
+-    kérés-oauthlib==1.3.0
+-    requests==2.23.0
+-    rsa==4,0
+-    ruamel.yaml==0.15.89
+-    s3transfer==0.3.3
+-    scikit-learn==0.22.2
+-    scipy==1.4.1
+-    secretstorage==3.1.2
+-    setuptools==46.1.1.post20200323
+-    hat==1.14.0
+-    smart-open==1.10.0
+-    urllib3==1.25.8
+-    websocket-client==0.57.0
+-    werkzeug==0.16.1
+-    kerék==0,34,2
 
- Ha az előre telepített listában nem szereplő egyéb csomagokat szeretne telepíteni, például *scikit-misc*, adja hozzá a következő kódot a szkripthez: 
+ Az előre telepített listán nem szereplő egyéb csomagok, például *a scikit-misc*telepítéséhez adja hozzá a következő kódot a parancsfájlhoz: 
 
  ```python
 import os
@@ -76,9 +152,9 @@ os.system(f"pip install scikit-misc")
 ```
 
 ## <a name="upload-files"></a>Fájlok feltöltése
-A **Python-szkript végrehajtása** támogatja a fájlok feltöltését [Azure Machine learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-)használatával.
+A **Python-parancsfájl végrehajtása** támogatja a fájlok feltöltését az [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-)használatával.
 
-Az alábbi példa bemutatja, hogyan tölthet fel egy képfájlt a **Python parancsfájl végrehajtása** modulban:
+A következő példa bemutatja, hogyan tölthet fel egy képfájlt a **Python-parancsfájl végrehajtása** modulban:
 
 ```Python
 
@@ -114,58 +190,58 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 }
 ```
 
-A folyamat sikeres elküldését követően a rendszerképet a modul jobb oldali paneljén tekintheti meg
+A folyamat futtatása után megtekintheti a kép előnézetét a modul jobb oldali paneljén
 
-[!div class="mx-imgBorder"]
-![feltöltve – rendszerkép](media/module/upload-image-in-python-script.png)
+> [!div class="mx-imgBorder"]
+> ![Feltöltött kép](media/module/upload-image-in-python-script.png)
 
-## <a name="how-to-configure-execute-python-script"></a>A Python-szkript végrehajtásának konfigurálása
+## <a name="how-to-configure-execute-python-script"></a>A Python-parancsfájl végrehajtása parancskonfigurálása
 
-A **Python-szkript végrehajtása** modul olyan minta Python-kódot tartalmaz, amelyet kiindulási pontként használhat. A **Python parancsfájl-végrehajtási** moduljának konfigurálásához adja meg az Inputs és a Python-kód futtatására szolgáló bemeneteket és a Python- **szkriptek** szövegmezőjét.
+A **Python-parancsfájl végrehajtása** modul tartalmaz minta Python-kódot, amely kiindulási pontként használható. A **Python-parancsfájl végrehajtása** modul konfigurálásához adja meg a bemenetek és a Python-kód végrehajtásához a **Python script** szövegmezőben futtatható egy készletét.
 
-1. Adja hozzá a **Python-szkript végrehajtása** modult a folyamathoz.
+1. Adja hozzá a **Python-parancsfájl végrehajtása** modult a folyamathoz.
 
-2. Adja hozzá a (z) elemet a **DataSet1 elemet** bármely olyan adatkészlethez, amelyet a bemenethez szeretne használni. Hivatkozzon erre az adatkészletre a Python-szkriptben **DataFrame1**néven.
+2. Adja hozzá és csatlakoztassa a **Dataset1-en** a bevitelhez használni kívánt adatkészleteket a tervezőtől. Hivatkozzon erre az adatkészletre a Python-parancsfájlban **DataFrame1**néven.
 
-    Az adatkészletek használata nem kötelező, ha a Python használatával szeretne adatokat előállítani, vagy Python-kód használatával importálja az adatokat közvetlenül a modulba.
+    Az adatkészlet használata nem kötelező, ha python használatával szeretne adatokat generálni, vagy python-kód használatával szeretné importálni az adatokat közvetlenül a modulba.
 
-    Ez a modul a **Dataset2**-on található második adatkészlet hozzáadását támogatja. Hivatkozzon a Python-szkript második adatkészletére DataFrame2.
+    Ez a modul támogatja egy második adatkészlet hozzáadását a **Dataset2-en.** Hivatkozzon a Python-parancsfájl második adatkészletére DataFrame2 néven.
 
-    Az Azure Machine Learningban tárolt adatkészletek automatikusan a **pandák** adatba lesznek konvertálva. a rendszer az ezzel a modullal tölti be a kereteket.
+    Az Azure Machine Learningben tárolt adatkészletek automatikusan **pandadata.frames-é** alakulnak át, ha ezzel a modullal töltik be.
 
-    ![Python bemeneti térképének végrehajtása](media/module/python-module.png)
+    ![Python-bemeneti térkép végrehajtása](media/module/python-module.png)
 
-4. Új Python-csomagok vagy-kódok felvételéhez adja hozzá az egyéni erőforrásokat tartalmazó tömörített fájlt a **parancsfájl-csomagban**. A **parancsfájlba** való bevitelnek a munkaterületre fájltípus-adatkészletként feltöltött tömörített fájlnak kell lennie. Feltöltheti az adatkészletet az **adatkészletek** eszköz lapján, és az adatkészletek modulját áthelyezheti **a bal** oldali modul konzolfáján a tervező szerzői műveletek lapján. 
+4. Új Python-csomagok vagy -kódok hozzáadásához adja hozzá az ezeket az egyéni erőforrásokat tartalmazó tömörített fájlt a **Parancsfájl csomagban.** A **Parancsfájl-köteg** bemenetének fájltípusú adatkészletként a munkaterületre feltöltött tömörített fájlnak kell lennie. Az adatkészletet feltöltheti az **Adatkészletek** eszközlapra, és az adatkészletmodult a tervezőszerzői lap bal oldali modulfájának **Saját adatkészletek** listájából húzhatja és elhúzhatja. 
 
-    A feltöltött tömörített archívumban található összes fájl használható a folyamat végrehajtása során. Ha az Archívum tartalmaz egy címtár-struktúrát, a rendszer megőrzi a struktúrát, de egy **src** nevű könyvtárat kell megadnia az elérési útra.
+    A feltöltött tömörítési archívumban található bármely fájl használható a folyamat végrehajtása során. Ha az archívum tartalmaz egy könyvtárstruktúrát, a struktúra megmarad, de elő kell készítenie egy **src** nevű könyvtárat az elérési útra.
 
-5. A **Python-szkript** szövegmezőbe írja be vagy illessze be az érvényes Python-szkriptet.
+5. A **Python-parancsfájl** szövegmezőjébe írja be vagy illessze be az érvényes Python-parancsfájlt.
 
-    A **Python-szkript** szövegmezője előre ki van töltve a megjegyzésekben található utasításokkal, és az adathozzáféréshez és a kimenethez tartozó mintakód. Szerkesztenie vagy cserélnie kell ezt a kódot. Ügyeljen arra, hogy kövesse a behúzással és a burkolattal kapcsolatos Python-konvenciókat.
+    A **Python-parancsfájl** szövegmezője előre ki van töltve néhány megjegyzésben szereplő utasítással, valamint az adathozzáféréshez és a kimenethez szükséges mintakóddal. Ezt a kódot kell szerkesztenie vagy cserélnie. Ügyeljen arra, hogy kövesse a Python-konvenciókat a behúzásról és a házról.
 
-    + A szkriptnek tartalmaznia kell egy `azureml_main` nevű függvényt, amely a modul belépési pontja.
-    + A belépési pont függvény legfeljebb két bemeneti argumentumot tartalmazhat: `Param<dataframe1>` és `Param<dataframe2>`
-    + A harmadik bemeneti porthoz csatlakoztatott tömörített fájlok kibontása és tárolása a könyvtárban történik, `.\Script Bundle`, amely a Python-`sys.path`is hozzá van adva. 
+    + A parancsfájlnak tartalmaznia `azureml_main` kell egy, a modul belépési pontjaként megnevezett függvényt.
+    + A belépési pont függvény legfeljebb két `Param<dataframe1>` bemeneti argumentumot tartalmazhat: és`Param<dataframe2>`
+    + A harmadik bemeneti porthoz csatlakoztatott tömörített fájlok kivannak `.\Script Bundle`csomagolva és a könyvtárban tárolódnak, amely szintén hozzáadódik a Pythonhoz. `sys.path` 
 
-    Ezért ha a zip-fájl `mymodule.py`tartalmaz, importálja azt `import mymodule`használatával.
+    Ezért ha a zip `mymodule.py`fájl tartalmazza, importálja a használatával. `import mymodule`
 
-    + Két adatkészlet adható vissza a tervezőnek, amelynek egy `pandas.DataFrame`típusú sorozatot kell tartalmaznia. A Python-kódban más kimeneteket is létrehozhat, amelyeket közvetlenül az Azure Storage-ba írhat.
+    + Két adatkészlet et lehet visszaadni a tervezőnek, `pandas.DataFrame`amelynek típusnak kell lennie. A Python-kódban létrehozhat más kimeneteket is, és közvetlenül az Azure storage-ba írhatja őket.
 
-6. Futtassa a folyamatot, vagy válassza ki a modult, és kattintson a **kijelölt futtatása** lehetőségre, hogy csak a Python-szkriptet futtassa.
+6. Küldje el a folyamatot, vagy válassza ki a modult, és kattintson a **Futtatás lehetőségre,** ha csak a Python-parancsfájlt szeretné futtatni.
 
-    Az összes adattal és kóddal betöltődik egy virtuális gépre, és a megadott Python-környezet használatával fut.
+    Az összes adat és kód betöltődik egy virtuális gépbe, és a megadott Python-környezetben fut.
 
 ## <a name="results"></a>Results (Eredmények)
 
-A beágyazott Python-kód által végrehajtott számítások eredményét pandákként kell megadni. A DataFrame, amelyet a rendszer automatikusan a Azure Machine Learning adatkészlet formátumára konvertál, így az eredményeket a folyamat más moduljaival is használhatja.
+A beágyazott Python-kód által végrehajtott számítások eredményeit pandákként kell megadni. DataFrame, amely automatikusan konvertálja az Azure Machine Learning adatkészlet formátumban, így az eredményeket a folyamat más modulokkal.
 
 A modul két adatkészletet ad vissza:  
   
-+ **Eredmények adatkészlet 1**, a Python-szkriptben az első visszaadott pandák dataframe által definiált
++ **Results Dataset 1**, amelyet az első visszaadott panda dataframe definiált Python-parancsfájlban
 
-+ A **2. eredmény adatkészlete**, amelyet a második visszaadott Panda Dataframe a Python-parancsfájlban definiált
++ **2. eredményadatkészlet**, amelyet a második visszaadott panda dataframe határoz meg Python-parancsfájlban
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

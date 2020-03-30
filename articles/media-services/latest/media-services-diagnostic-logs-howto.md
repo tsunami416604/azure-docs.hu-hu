@@ -1,6 +1,6 @@
 ---
-title: Media Services diagnosztikai naplók figyelése Azure Monitor használatával | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan irányíthatja át és tekintheti meg a diagnosztikai naplókat Azure Monitor használatával.
+title: Media Services diagnosztikai naplók figyelése az Azure Monitoron keresztül | Microsoft dokumentumok
+description: Ez a cikk bemutatja, hogyan irányítható és tekintse meg a diagnosztikai naplók at az Azure Monitoron keresztül.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,38 +13,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: bf83c87c71c8e05dc74d7754c82c76489de1bd85
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4d4587c701a054828fc34785e2ae680fef47625d
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750896"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382919"
 ---
-# <a name="monitor-media-services-diagnostic-logs"></a>Media Services diagnosztikai naplók figyelése
+# <a name="monitor-media-services-diagnostic-logs"></a>Media Services diagnosztikai naplóinak figyelése
 
-[Azure monitor](../../azure-monitor/overview.md) lehetővé teszi a metrikák és diagnosztikai naplók figyelését, amelyek segítenek megérteni az alkalmazások teljesítményét. A funkció részletes ismertetését és a Azure Media Services metrikák és diagnosztikai naplók használatának okát lásd: [Media Services metrikák és diagnosztikai naplók figyelése](media-services-metrics-diagnostic-logs.md).
+[Az Azure Monitor](../../azure-monitor/overview.md) lehetővé teszi, hogy a metrikák és diagnosztikai naplók, amelyek segítenek megérteni, hogyan teljesítenek az alkalmazások. A szolgáltatás részletes leírását és azt, hogy miért szeretné használni az Azure Media Services metrikák és diagnosztikai naplók, [lásd: Media Services-metrikák és diagnosztikai naplók figyelése.](media-services-metrics-diagnostic-logs.md)
 
-Ebből a cikkből megtudhatja, hogyan irányíthatja az adatútvonalat a Storage-fiókba, majd megtekintheti azokat. 
+Ez a cikk bemutatja, hogyan továbbíthatja az adatokat a tárfiókba, majd tekintse meg az adatokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
-- Tekintse át [a figyelő Media Services mérőszámait és a diagnosztikai naplókat](media-services-metrics-diagnostic-logs.md).
+- [Hozzon létre egy Media Services-fiókot](create-account-cli-how-to.md).
+- Tekintse át [a Media Services-adatok figyelésének mutatóit és diagnosztikai naplóit.](media-services-metrics-diagnostic-logs.md)
 
-## <a name="route-data-to-the-storage-account-using-the-portal"></a>Az adatirányítás a Storage-fiókba a portál használatával
+## <a name="route-data-to-the-storage-account-using-the-portal"></a>Adatok átirányítása a tárfiókba a portál használatával
 
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
-1. Navigáljon a Media Services fiókjához, és kattintson a **figyelés**lehetőségre a **diagnosztikai beállítások** elemre. Itt láthatja az előfizetésben lévő összes olyan erőforrást, amely monitorozási adatokat készít az Azure Monitoron keresztül. 
+1. Nyissa meg a Media Services-fiókot, és kattintson **a Diagnosztikai beállítások elemre** a Figyelő **csoportban.** Itt láthatja az előfizetésben lévő összes olyan erőforrást, amely monitorozási adatokat készít az Azure Monitoron keresztül.
 
     ![Diagnosztikai beállítások szakasz](media/media-services-diagnostic-logs/logs01.png)
 
-1. Kattintson a **diagnosztikai beállítás hozzáadása**elemre.
+1. Kattintson **a Diagnosztikai beállítás hozzáadása gombra.**
 
    Az erőforrások diagnosztikai beállítása annak definíciója, hogy *milyen* monitorozási adatokat kell átirányítani egy adott erőforrásból, és *hová* kell kerülniük ezeknek a monitorozási adatoknak.
 
 1. A megjelenő szakaszban adjon egy **nevet** a beállításnak, és jelölje be az **Archiválás tárfiókba** jelölőnégyzetet.
 
-    Válassza ki azt a Storage-fiókot, amelyhez naplókat szeretne küldeni, majd nyomja meg **az OK**gombot.
+    Jelölje ki azt a tárfiókot, amelyre naplókat szeretne küldeni, és nyomja **le az OK gombot.**
 1. Jelölje be a **Napló** és a **Metrika** alatti jelölőnégyzeteket. Az erőforrás típusától függően előfordulhat, hogy csak az egyik lehetőség jelenik meg. Ezek a jelölőnégyzetek szabályozzák, hogy a napló- és metrikaadatok milyen, az erőforrástípushoz elérhető kategóriái kerülnek a kiválasztott célra, amely ebben az esetben a tárfiók.
 
    ![Diagnosztikai beállítások szakasz](media/media-services-diagnostic-logs/logs02.png)
@@ -53,11 +53,11 @@ Ebből a cikkből megtudhatja, hogyan irányíthatja az adatútvonalat a Storage
 
 Az erőforrás monitorozási adatai mostantól a tárfiókba kerülnek.
 
-## <a name="route-data-to-the-storage-account-using-the-cli"></a>Az adatútvonal továbbítása a Storage-fiókhoz a parancssori felület használatával
+## <a name="route-data-to-the-storage-account-using-the-azure-cli"></a>Adatok átirányítása a tárfiókba az Azure CLI használatával
 
-A diagnosztikai naplók tárolási fiókban való tárolásának engedélyezéséhez futtassa a következő `az monitor diagnostic-settings` CLI-parancsot: 
+A diagnosztikai naplók tárfiókban való tárolásának engedélyezéséhez `az monitor diagnostic-settings` futtassa a következő Azure CLI parancsot:
 
-```cli
+```azurecli-interactive
 az monitor diagnostic-settings create --name <diagnostic name> \
     --storage-account <name or ID of storage account> \
     --resource <target resource object ID> \
@@ -75,7 +75,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 Példa:
 
-```cli
+```azurecli-interactive
 az monitor diagnostic-settings create --name amsv3diagnostic \
     --storage-account storageaccountforams  \
     --resource "/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount" \
@@ -83,7 +83,7 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
     --logs '[{"category": "KeyDeliveryRequests",  "enabled": true, "retentionPolicy": {"days": 3, "enabled": true }}]'
 ```
 
-## <a name="view-data-in-the-storage-account-using-the-portal"></a>A Storage-fiókban tárolt adatmegjelenítés a portál használatával
+## <a name="view-data-in-the-storage-account-using-the-portal"></a>Adatok megtekintése a tárfiókban a portál használatával
 
 Ha követte az előző lépéseket, az adatok elkezdtek a tárfiókba érkezni.
 
@@ -91,14 +91,14 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 
 1. A portálban navigáljon a bal oldali navigációs sávon található **Tárfiókok** szakaszhoz.
 1. Azonosítsa az előző szakaszban létrehozott tárfiókot, és kattintson rá.
-1. Kattintson a **Blobok**elemre, majd a tároló címkézett elemzések **– naplók – keydeliveryrequests**elemre. Ez az a tároló, amelyben a naplók szerepelnek. A figyelési adatok az erőforrás-azonosító alapján, majd dátum és idő szerint vannak kiosztva a tárolókban.
+1. Kattintson a **Blobs**, majd a tároló címkével ellátott **insights-logs-keydeliveryrequests**. Ez az a tároló, amelyben a naplók benne. A figyelési adatok tárolókra vannak bontva erőforrás-azonosító, majd dátum és idő szerint.
 1. Az erőforrás-azonosító, dátum és idő tárolóiba kattintva keresse meg a PT1H.json fájlt. Kattintson a PT1H.json fájlra, majd a **Letöltés** gombra.
 
  Most megtekintheti a tárfiókban tárolt JSON-eseményt.
 
-### <a name="examples-of-pt1hjson"></a>Példák a PT1H. JSON fájlra
+### <a name="examples-of-pt1hjson"></a>Példák a PT1H.json
 
-#### <a name="clear-key-delivery-log"></a>Kulcs kézbesítési naplójának törlése
+#### <a name="clear-key-delivery-log"></a>Kulcskézbesítési napló törlése
 
 ```json
 {
@@ -136,7 +136,7 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 }
 ```
 
-#### <a name="widevine-encrypted-key-delivery-log"></a>Widevine titkosított kulcs kézbesítési naplója
+#### <a name="widevine-encrypted-key-delivery-log"></a>Widevine titkosított kulcs kézbesítési napló
 
 ```json
 {
@@ -176,14 +176,14 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 
 ## <a name="additional-notes"></a>További megjegyzések
 
-* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
+* A Widevine a Google Inc. által nyújtott szolgáltatás, amely a Google, Inc. szolgáltatási feltételei és adatvédelmi irányelvei szerint működik.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-* [Azure Monitor metrikák](../../azure-monitor/platform/data-platform.md)
-* [Diagnosztikai naplók Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)
-* [Az Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../azure-monitor/platform/platform-logs-overview.md)
+* [Az Azure Monitor metrikák](../../azure-monitor/platform/data-platform.md)
+* [Az Azure Monitor diagnosztikai naplói](../../azure-monitor/platform/platform-logs-overview.md)
+* [Naplóadatok gyűjtése és felhasználása az Azure-erőforrásokból](../../azure-monitor/platform/platform-logs-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Metrikák figyelése](media-services-metrics-howto.md)
+[Megfigyelési mérőszámok](media-services-metrics-howto.md)

@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: eb4e7907c3dcffed035307c2084160ce6051be13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98b21969ce86f84b20fbe78dbdf3002769ef65f5
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409949"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387869"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Az Azure SQL Database és az Azure Synapse Analytics adatfelderítési besorolása &
 
@@ -89,17 +89,11 @@ Miután a bérlői szintű szabályzat definiálva lett, folytathatja az egyes a
 
 4. Ha Excel formátumban szeretne jelentést letölteni, kattintson az ablak felső menüjének **Exportálás** parancsára.
 
-   ![Exportálás Excelbe](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
-
 5. <a id="step-5"></a>Az adatok besorolásának megkezdéséhez kattintson az ablak tetején lévő **Besorolás fülre.**
-
-    ![Adatok osztályozása](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
 
 6. Az osztályozási motor megvizsgálja az adatbázisban a potenciálisan bizalmas adatokat tartalmazó oszlopokat, és tartalmazza az **ajánlott oszlopbesorolások**listáját. Osztályozási javaslatok megtekintése és alkalmazása:
 
-   - Az ajánlott oszlopbesorolások listájának megtekintéséhez kattintson az ablak alján található ajánlások panelre:
-
-      ![Az adatok besorolása](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
+   - Az ajánlott oszlopbesorolások listájának megtekintéséhez kattintson az ablak alján található ajánlások panelre
 
    - Tekintse át a javaslatok listáját – egy adott oszlopra vonatkozó javaslat elfogadásához jelölje be a jelölőnégyzetet a megfelelő sor bal oldali oszlopában. Az összes *javaslatot* elfogadottként is megjelölheti, ha bejelöli a javaslatok táblázat fejlécében lévő jelölőnégyzetet.
 
@@ -107,21 +101,15 @@ Miután a bérlői szintű szabályzat definiálva lett, folytathatja az egyes a
 
    - A kiválasztott javaslatok alkalmazásához kattintson a kék **A kiválasztott javaslatok elfogadása** gombra.
 
-      ![Ajánlások alkalmazása](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
-
 7. Az oszlopokat manuálisan is **osztályozhatja** alternatívaként, vagy a javaslatalapú besoroláshoz képest:
 
    - Kattintson a **Besorolás hozzáadása** gombra az ablak felső menüjében.
-
-      ![Besorolás manuális hozzáadása](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
    - A megnyíló környezeti ablakban jelölje ki a sémát, > a minősíteni kívánt táblát > oszlopot, valamint az információtípust és az érzékenységi címkét. Ezután kattintson a kék **Besorolás hozzáadása** gombra a környezet ablakának alján.
 
       ![Jelölje ki az osztályozandó oszlopot](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
 8. A besorolás befejezéséhez és az adatbázis-oszlopok új osztályozási metaadatokkal való tartós címkéjéhez kattintson a **Mentés** gombra az ablak felső menüjében.
-
-   ![Mentés](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
 ## <a name="auditing-access-to-sensitive-data"></a><a id="subheading-3"></a>Bizalmas adatokhoz való hozzáférés naplózása
 

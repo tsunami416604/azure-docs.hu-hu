@@ -1,6 +1,6 @@
 ---
-title: Adaptív hálózati megerősítés a Azure Security Centerban | Microsoft Docs
-description: Megtudhatja, hogyan használhatja a tényleges forgalmi mintákat a hálózati biztonsági csoportok (NSG) szabályainak megerősítéséhez és a biztonsági helyzet javításához.
+title: Adaptív hálózati edzés az Azure Security Centerben | Microsoft dokumentumok
+description: Ismerje meg, hogyan használhatja a tényleges forgalmi mintákat a hálózati biztonsági csoportok (NSG) szabályainak megkeményítésére és a biztonsági állapot további javítására.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,200 +13,130 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: bc610fa1d7a5fa1a10db3298164404b92d5d9f85
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: a75be23e2e8215d86aebcfd7f4317f2f597d3c5b
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79139589"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385078"
 ---
-# <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptív hálózati megerősítés Azure Security Center
-Ismerje meg, hogyan konfigurálhatja az adaptív hálózatok megerősítését Azure Security Centerban.
+# <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptív hálózati edzés az Azure Security Centerben
+Ismerje meg, hogyan konfigurálhatja az Adaptive Network Hardening (Adaptív hálózatedzés) szolgáltatást az Azure Security Centerben.
 
-## <a name="what-is-adaptive-network-hardening"></a>Mi az adaptív hálózat megerősítése?
-[Hálózati biztonsági csoportok (NSG-EK)](https://docs.microsoft.com/azure/virtual-network/security-overview) alkalmazása az erőforrások felé irányuló és onnan érkező forgalom szűrésére, javítja a hálózat biztonsági helyzetét. Azonban továbbra is előfordulhatnak olyan esetek, amikor a NSG keresztül áramló tényleges forgalom a definiált NSG-szabályok részhalmaza. Ezekben az esetekben a NSG-szabályoknak a tényleges forgalmi minták alapján történő megerősítése révén a biztonsági helyzet további javítása is megvalósítható.
+## <a name="what-is-adaptive-network-hardening"></a>Mi az adaptive network edzés?
+A [hálózati biztonsági csoportok (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) alkalmazása az erőforrásokba és erőforrásokból érkező forgalom szűréséhez javítja a hálózat biztonsági állapotát. Azonban még mindig lehetnek olyan esetek, amikor az NSG-n keresztül áramló tényleges forgalom a meghatározott NSG-szabályok egy részhalmaza. Ezekben az esetekben a biztonsági helyzet további javítása az NSG-szabályok nak a tényleges forgalmi minták alapján történő megerősítésével érhető el.
 
-Az adaptív hálózat megerősítése ajánlásokat biztosít a NSG-szabályok további megerősítéséhez. Egy gépi tanulási algoritmust használ, amely a tényleges forgalom, az ismert megbízható konfiguráció, a veszélyforrások felderítése és más, a biztonsággal kapcsolatos mutatók szempontjából tényezőket tartalmaz, és javaslatokat tesz arra, hogy csak adott IP-/port-rekordok származó forgalmat engedélyezzen.
+Az Adaptive Network Hardening javaslatokat nyújt az NSG-szabályok további megerősítésére. Egy gépi tanulási algoritmust használ, amely a tényleges forgalom, az ismert megbízható konfiguráció, a fenyegetésfelderítés és más kompromisszumos mutatók tényezőit, majd javaslatokat tesz, hogy csak adott IP/port tuples forgalom engedélyezése.
 
-Tegyük fel például, hogy a meglévő NSG-szabály a 22-es porton engedélyezi a 140.20.30.10/24 forgalmat. Az adaptív hálózat megerősítő javaslata az elemzés alapján szűkíti a tartományt, és engedélyezi a forgalmat a 140.23.30.10/29 – amely egy szűkebb IP-címtartomány, és letiltja az adott portra irányuló összes más forgalmat.
+Tegyük fel például, hogy a meglévő NSG-szabály a 22-es porton a 140.20.30.10/24-es forgalom engedélyezése. Az Adaptive Network Hardening ajánlása az elemzés alapján az lenne, hogy szűkítse a tartományt, és lehetővé tegye a forgalmat 140.23.30.10/29 -től – ami egy szűkebb IP-tartomány, és megtagadja az összes többi forgalmat a portra.
 
 >[!TIP]
-> Az adaptív hálózati korlátozási javaslatok csak bizonyos portokon támogatottak. A teljes listát lásd: [mely portok támogatottak?](#which-ports-are-supported) alább. 
+> Az adaptive network edzésre vonatkozó javaslatok csak a következő portokon támogatottak (udp és TCP esetén egyaránt): 13, 17, 19, 22, 23, 53, 69, 81, 111, 119, 123, 135, 137, 138, 139, 161, 162, 389, 445, 512, 514, 593, 636, 873, 1433, 1434, 1900, 2049, 2301 , 2323, 2381, 3268, 3306, 3389, 4333, 5353, 5432, 5555, 5800, 5900, 5900, 5985, 5986, 6379, 6379, 7000, 7001, 7199, 8081, 8089, 8545, 9042, 9160, 9300, 11211, 16379, 26379, 27017, 37215
 
 
-![Hálózati megerősítő nézet](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+![Hálózatedzésnézet](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
 
-## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Adaptív hálózat megerősítő riasztások és szabályok megtekintése
+## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Adaptív hálózati edzésriasztások és szabályok megtekintése
 
-1. Security Center válassza a **hálózatkezelés** -> **adaptív hálózat megerősítése**lehetőséget. A hálózati virtuális gépek három külön lapon vannak felsorolva:
-   * Nem megfelelő **erőforrások**: azok a virtuális gépek, amelyeken jelenleg az adaptív hálózat megerősítő algoritmusának futtatásával aktiválva vannak javaslatok és riasztások. 
-   * **Kifogástalan erőforrások**: riasztások nélküli virtuális gépek és javaslatok.
-   * Nem **vizsgált erőforrások**: a következő okok egyike miatt nem futtathatók az adaptív hálózati kötési algoritmust használó virtuális gépek:
-      * **A virtuális gépek klasszikus virtuális gépek**: csak Azure Resource Manager virtuális gépek támogatottak.
-      * **Nem áll rendelkezésre elegendő mennyiségű adatok**: a pontos forgalom-megerősítési javaslatok létrehozásához Security Center legalább 30 napos forgalmi adatokat igényel.
-      * A **virtuális gépet az ASC standard nem védi**: csak az Security Center Standard díjszabási szintjére beállított virtuális gépek jogosultak erre a szolgáltatásra.
+1. A Security Center ben válassza **a Hálózati** -> **adaptív hálózat edzése**lehetőséget. A hálózati virtuális gépek három külön lapon vannak felsorolva:
+   * **Nem megfelelő állapotú erőforrások:** Olyan virtuális gépek, amelyek jelenleg az Adaptive Network Hardening algoritmus futtatásával aktivált javaslatokkal és riasztásokkal rendelkeznek. 
+   * **Kifogástalan erőforrások:** virtuális gépek riasztások és javaslatok nélkül.
+   * **Be nem vizsgált erőforrások:** Az Adaptív hálózati edzésalgoritmus által nem futtatható virtuális gépek a következő okok valamelyike miatt:
+      * **A virtuális gépek klasszikus virtuális gépek:** Csak az Azure Resource Manager virtuális gépek támogatottak.
+      * **Nem áll rendelkezésre elegendő adat:** A forgalom megerősítésére vonatkozó javaslatok létrehozásához a Security Center legalább 30 napos forgalmi adatokat igényel.
+      * **A virtuális gép nem védett asc szabvány:** Csak a Security Center standard tarifacsomagra beállított virtuális gépek jogosultak erre a funkcióra.
 
-     ![sérült erőforrások](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
+     ![nem megfelelő állapotú erőforrások](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
-2. A nem megfelelő **állapotú erőforrások** lapon válasszon ki egy virtuális gépet a riasztások megtekintéséhez, és a javasolt korlátozási szabályokat alkalmazza.
+2. A **nem megfelelő állapotú erőforrások** lapon válasszon egy virtuális gép a riasztások megtekintéséhez, és az ajánlott edzési szabályok at alkalmazni.
 
-    ![riasztások megerősítése](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
+    ![megerősítési riasztások](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
 
 
-## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>Adaptív hálózatra vonatkozó, javasolt szabályok áttekintése és alkalmazása
+## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>Az Adaptív hálózatedzés ajánlott szabályainak áttekintése és alkalmazása
 
-1. A nem kifogástalan **erőforrások** lapon válasszon ki egy virtuális gépet. A riasztások és az ajánlott megerősítő szabályok szerepelnek a felsorolásban.
+1. A **nem megfelelő állapotú erőforrások** lapon válasszon egy virtuális gép. A riasztások és az ajánlott edzési szabályok fel vannak sorolva.
 
-     ![szabályok megerősítése](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
+     ![megerősítési szabályok](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
 
    > [!NOTE]
-   > A **szabályok** lap felsorolja azokat a szabályokat, amelyekkel az adaptív hálózat megerősítő javasolja a hozzáadását. A **riasztások** lapon láthatók azok a riasztások, amelyek a forgalom miatt keletkeztek, az erőforrás felé áramlanak, amely nem az ajánlott szabályokban engedélyezett IP-tartományon belül van.
+   > A **Szabályok** lapon azok a szabályok jelennek meg, amelyeket az Adaptive Network Hardening javasol hozzáadni. A **Riasztások** lap felsorolja azokat a riasztásokat, amelyek a forgalom miatt keletkeztek, és az erőforrásba áramlottak, ami nem tartozik az ajánlott szabályokban engedélyezett IP-tartományon belül.
 
-2. Ha módosítani szeretné egy szabály egyes paramétereit, módosíthatja azt a [szabály módosítása](#modify-rule)című részben leírtak szerint.
+2. Ha módosítani szeretné egy szabály egyes paramétereit, módosíthatja azt a Szabály módosítása című részben [leírtak](#modify-rule)szerint.
    > [!NOTE]
-   > [Törölhet](#delete-rule) vagy [hozzáadhat](#add-rule) egy szabályt is.
+   > Szabály [is törölhető](#delete-rule) vagy [hozzáadhat.](#add-rule)
 
-3. Válassza ki a NSG alkalmazni kívánt szabályokat, majd kattintson a **kikényszerítés**gombra.
+3. Válassza ki az NSG-re alkalmazni kívánt szabályokat, és kattintson a **Kényszerítés gombra.**
 
       > [!NOTE]
-      > A kényszerített szabályok hozzáadódnak a virtuális gépet védő NSG (ok) hoz. (A virtuális gépet egy hálózati adapterhez társított NSG, vagy a virtuális gépet tartalmazó alhálózattal, vagy mindkettővel védeni lehet.)
+      > A kényszerített szabályok hozzáadódnak az NSG(k) a virtuális gép védelme. (A virtuális gép lehet védeni egy NSG, amely a hálózati adapter, vagy az alhálózat, amelyben a virtuális gép található, vagy mindkettő)
 
-    ![szabályok betartatása](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
+    ![szabályok érvényesítése](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
 
 
-### Szabály <a name ="modify-rule"> </a> módosítása
+### <a name="modify-a-rule"></a>Szabály <a name ="modify-rule"> </a> módosítása
 
-Érdemes lehet módosítani egy javasolt szabály paramétereit. Előfordulhat például, hogy módosítani szeretné az ajánlott IP-tartományokat.
+Előfordulhat, hogy módosítani szeretné egy ajánlott szabály paramétereit. Előfordulhat például, hogy módosítani szeretné az ajánlott IP-tartományokat.
 
-Néhány fontos útmutató az adaptív hálózat megerősítési szabályának módosításához:
+Néhány fontos irányelv az adaptív hálózati edzési szabályok módosításához:
 
-* Az "engedélyezés" szabályok paramétereinek módosítása csak. 
-* Az "engedélyezés" szabályok nem módosíthatók "megtagadás" szabályokként. 
+* Csak az "engedélyezés" szabály paramétereit módosíthatja. 
+* Az "engedélyezés" szabály nem változtatható meg úgy, hogy "megtagadási" szabályokká váljon. 
 
   > [!NOTE]
-  > A "megtagadás" szabályok létrehozása és módosítása közvetlenül a NSG történik. További információ: [hálózati biztonsági csoport létrehozása, módosítása vagy törlése](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+  > A "megtagadási" szabályok létrehozása és módosítása közvetlenül az NSG-n történik. További információt a [Hálózati biztonsági csoport létrehozása, módosítása vagy törlése](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)című témakörben talál.
 
-* A **minden forgalmi szabály megtagadása** az egyetlen "megtagadás" szabály, amely itt is szerepel, és nem módosítható. Azonban törölheti is (lásd: [szabály törlése](#delete-rule)).
+* A **Minden forgalom megtagadása** szabály az egyetlen olyan típusú "megtagadás" szabály, amely itt szerepel, és nem módosítható. Törölheti azonban (lásd: [Szabály törlése](#delete-rule)).
   > [!NOTE]
-  > A **minden forgalmi szabály megtagadása** ajánlott, ha az algoritmus futtatásának eredményeképpen a Security Center nem azonosítja az engedélyezett forgalmat a meglévő NSG-konfiguráció alapján. Ezért az ajánlott szabály az, hogy megtagadja a megadott portra irányuló összes forgalmat. Az ilyen típusú szabály neve "*rendszer által generált*" néven jelenik meg. A szabály érvénybe léptetése után annak tényleges neve a NSG lesz, amely a protokoll, a forgalom iránya, a "MEGTAGADÁS" és a véletlenszerű szám.
+  > A **Minden forgalom megtagadása** szabály akkor ajánlott, ha az algoritmus futtatása miatt a Security Center nem azonosítja az engedélyezett forgalmat a meglévő NSG-konfiguráció alapján. Ezért az ajánlott szabály a megadott portra irányuló összes forgalom megtagadása. Az ilyen típusú szabály neve "*Rendszer által létrehozva*" néven jelenik meg. A szabály érvényesítése után az NSG-ben a tényleges neve a protokollból, a forgalom irányából, a "DENY"-ből és egy véletlen számból álló karakterlánc lesz.
 
-*Adaptív hálózati kötési szabály módosítása:*
+*Adaptív hálózati edzésszabály módosítása:*
 
-1. Egy szabály egyes paramétereinek módosításához a **szabályok** lapon kattintson a három pontra (...) a szabály sorának végén, majd kattintson a **Szerkesztés**gombra.
+1. Egy szabály néhány paraméterének módosításához a **Szabályok** lapon kattintson a szabály sorának végén lévő három pontra (...), majd kattintson a **Szerkesztés**gombra.
 
    ![szabály szerkesztése](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
-1. A **szabály szerkesztése** ablakban frissítse a módosítani kívánt adatokat, majd kattintson a **Mentés**gombra.
+1. A **Szabály szerkesztése** ablakban frissítse a módosítani kívánt részleteket, majd kattintson a **Mentés gombra.**
 
    > [!NOTE]
-   > A **Mentés**gombra kattintva sikeresen módosította a szabályt. *Azonban nem alkalmazta azt a NSG.* Az alkalmazásához ki kell választania a szabályt a listában, majd a **kikényszerítés** gombra kell kattintania (a következő lépésben leírtak szerint).
+   > A **Mentés**gombra kattintás után sikeresen módosította a szabályt. *Azonban nem alkalmazta az NSG-nél.* Az alkalmazáshoz ki kell jelölnie a szabályt a listában, és kattintson a **Kényszerítés gombra** (a következő lépésben leírtak szerint).
 
    ![szabály szerkesztése](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
-3. A frissített szabály alkalmazásához a listából válassza ki a frissített szabályt, majd kattintson a **kikényszerítés**gombra.
+3. A frissített szabály alkalmazásához a listából jelölje ki a frissített szabályt, és kattintson a **Kényszerítés gombra.**
 
-    ![szabály betartatása](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
+    ![szabály érvényesítése](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
-### Új szabály <a name ="add-rule"> </a> hozzáadása
+### <a name="add-a-new-rule"></a>Új szabály <a name ="add-rule"> </a> hozzáadása
 
-Hozzáadhat egy "Allow" szabályt, amelyet a Security Center nem ajánlott.
+Hozzáadhat egy "engedélyezés" szabályt, amelyet a Security Center nem ajánlott.
 
 > [!NOTE]
-> Itt csak az "engedélyezés" szabályok adhatók hozzá. Ha meg szeretné adni a "megtagadás" szabályokat, ezt közvetlenül a NSG teheti meg. További információ: [hálózati biztonsági csoport létrehozása, módosítása vagy törlése](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+> Itt csak "allow" szabályok adhatók hozzá. Ha hozzá szeretné adni a "megtagadás" szabályokat, ezt közvetlenül az NSG-n teheti meg. További információt a [Hálózati biztonsági csoport létrehozása, módosítása vagy törlése](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)című témakörben talál.
 
-*Adaptív hálózati kötési szabály hozzáadása:*
+*Adaptív hálózati edzésszabály hozzáadása:*
 
-1. Kattintson a **szabály hozzáadása** elemre (a bal felső sarokban található).
+1. Kattintson **a Szabály hozzáadása** gombra (a bal felső sarokban található).
 
-   ![szabály hozzáadása](./media/security-center-adaptive-network-hardening/add-hard-rule.png)
+   ![hozzáadás, szabály](./media/security-center-adaptive-network-hardening/add-hard-rule.png)
 
-1. Az **új szabály** ablakban adja meg a részleteket, és kattintson a **Hozzáadás**gombra.
+1. Az **Új szabály** ablakban adja meg a részleteket, és kattintson a **Hozzáadás**gombra.
 
    > [!NOTE]
-   > A **Hozzáadás**gombra kattintva sikeresen felvette a szabályt, és az szerepel a többi javasolt szabályban. Azonban nem alkalmazta azt a NSG. Az aktiváláshoz ki kell választania a szabályt a listában, majd a **kényszerítés** gombra kell kattintania (a következő lépésben leírtak szerint).
+   > A **Hozzáadás**gombra kattintás után sikeresen felvette a szabályt, és az a többi ajánlott szabállyal együtt szerepel. Azonban nem alkalmazta az NSG-n. Az aktiváláshoz ki kell jelölnie a szabályt a listában, és kattintson a **Kényszerítés gombra** (a következő lépésben leírtak szerint).
 
-3. Az új szabály alkalmazásához a listából válassza ki az új szabályt, majd kattintson a **kikényszerítés**gombra.
+3. Az új szabály alkalmazásához a listából jelölje ki az új szabályt, és kattintson a **Kényszerítés gombra.**
 
-    ![szabály betartatása](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
+    ![szabály érvényesítése](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
-### Szabály <a name ="delete-rule"> </a> törlése
+### <a name="delete-a-rule"></a>Szabály <a name ="delete-rule"> </a> törlése
 
-Ha szükséges, törölheti az aktuális munkamenet javasolt szabályát. Meghatározhatja például, hogy egy javasolt szabály alkalmazása blokkolhatja a legitim forgalmat.
+Szükség esetén törölheti az aktuális munkamenethez ajánlott szabályt. Például meghatározhatja, hogy egy javasolt szabály alkalmazása blokkolhatja a jogszerű forgalmat.
 
-*Adaptív hálózati kötési szabály törlése az aktuális munkamenethez:*
+*Adaptív hálózati edzésszabály törlése az aktuális munkamenethez:*
 
-1. A **szabályok** lapon kattintson a három pontra (...) a szabály sor végén, majd kattintson a **Törlés**gombra.  
+1. A **Szabályok** lapon kattintson a szabály sorának végén lévő három pontra (...), majd kattintson a **Törlés gombra.**  
 
-    ![szabályok megerősítése](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
-
- 
-
-## <a name="which-ports-are-supported"></a>Mely portok támogatottak?
-
-Az adaptív hálózati korlátozási javaslatok csak bizonyos portokon támogatottak. Ez a táblázat a teljes listát tartalmazza:
-
-|Port|Protokoll|Társított szolgáltatás|
-|:---:|:----:|:----|
-|13|UDP|Nappali szolgáltatás|
-|17|UDP|QOTD protokoll|
-|19|UDP|CHARGEN protokoll|
-|22|TCP|SSH|
-|23|TCP|Telnet|
-|53|UDP|DNS|
-|69|UDP|TFTP|
-|81|TCP|Potenciálisan rosszindulatú (TOR-kilépési csomópont)|
-|111|TCP/UDP|RPC|
-|119|TCP|NNTP|
-|123|UDP|NTP|
-|135|TCP/UDP|Endpoint Mapper; RPC DCE|
-|137|TCP/UDP|NetBIOS-név szolgáltatás|
-|138|TCP/UDP|NetBIOS datagram szolgáltatás|
-|139|TCP|NetBIOS munkamenet-szolgáltatás|
-|161|TCP/UDP|SNMP|
-|162|TCP/UDP|SNMP|
-|389|TCP|LDAP|
-|445|TCP|SMB|
-|512|TCP|Rexec|
-|514|TCP|Távoli rendszerhéj|
-|593|TCP/UDP|HTTP RPC|
-|636|TCP|LDAP|
-|873|TCP|Rsync|
-|1433|TCP|MS SQL|
-|1434|UDP|MS SQL|
-|1900|UDP|SSDP|
-|1900|UDP|SSDP|
-|2049|TCP/UDP|NFS|
-|2301|TCP|Compaq felügyeleti szolgáltatás|
-|2323|TCP|3D – nfsd|
-|2381|TCP|Compaq felügyeleti szolgáltatás|
-|3268|TCP|LDAP|
-|3306|TCP|MySQL|
-|3389|TCP|RDP|
-|4333|TCP|mSQL|
-|5353|UDP|mDNS|
-|5432|TCP|PostgreSQL|
-|5555|TCP|Személyes ügynök; HP OmniBack|
-|5800|TCP|VNC|
-|5900|TCP|Távoli framebuffer; VNC|
-|5900|TCP|VNC|
-|5985|TCP|Windows PowerShell|
-|5986|TCP|Windows PowerShell|
-|6379|TCP|Redis|
-|6379|TCP|Redis|
-|7000|TCP|Cassandra|
-|7001|TCP|Cassandra|
-|7199|TCP|Cassandra|
-|8081|TCP|CosmosDB Sun proxy rendszergazdája|
-|8089|TCP|Splunk|
-|8545|TCP|Potenciálisan rosszindulatú (Cryptominer)|
-|9042|TCP|Cassandra|
-|9160|TCP|Cassandra|
-|9300|TCP|Elasticsearch|
-|11211|UDP|Memcached|
-|16379|TCP|Redis|
-|26379|TCP|Redis|
-|27017|TCP|MongoDB|
-|37215|TCP|Potenciálisan rosszindulatú|
-||||
+    ![megerősítési szabályok](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)

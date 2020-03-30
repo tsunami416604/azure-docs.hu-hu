@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/13/2019
+ms.date: 03/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 785242a2cf51571a6d13b2b4691d33e46369bf94
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7400c8288d8901460e462ce43b69815e178a718c
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977913"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384007"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési integrációja a Citrix NetScaler -rel (Kerberos-alapú hitelesítés)
 
@@ -31,7 +30,7 @@ Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Citrix NetScaler-t
 * Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkeznek a Citrix NetScaler-be az Azure AD-fiókjukkal.
 * Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
 
-Ha többet szeretne megtudni a szoftverszolgáltatásként (SaaS) alkalmazásintegrációról az Azure AD-vel, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha többet szeretne megtudni a szoftverszolgáltatásként (SaaS) alkalmazásintegrációról az Azure AD-vel, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,6 +50,8 @@ Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztk
 * [Kerberos-alapú hitelesítés a Citrix NetScaler-hez](#publish-the-web-server)
 
 * [Fejlécalapú hitelesítés a Citrix NetScaler számára](header-citrix-netscaler-tutorial.md#publish-the-web-server)
+
+* A Citrix NetScaler konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből terjed. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
 
 ## <a name="add-citrix-netscaler-from-the-gallery"></a>Citrix NetScaler hozzáadása a galériából
 
@@ -102,7 +103,7 @@ Az Azure AD SSO engedélyezéséhez az Azure Portal használatával hajtsa végr
 
     1. Az **Azonosító** mezőbe írjon be egy URL-címet, amely a következő mintát tartalmazza:`https://<Your FQDN>`
 
-    1. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet, amely a következő mintát követi:`https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
+    1. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet, amely a következő mintát követi:`http(s)://<Your FQDN>.of.vserver/cgi/samlauth`
 
 1. Az alkalmazás SP által kezdeményezett módban **történő** konfigurálásához válassza **a További URL-ek beállítása** lehetőséget, és hajtsa végre a következő lépést:
 
@@ -456,10 +457,14 @@ Amikor a Citrix NetScaler csempét választja a hozzáférési panelen, automati
 
 - [Az SaaS-alkalmazások Azure Active Directoryval való integrálásáról szóló oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Próbálja ki a Citrix NetScaler-t az Azure AD-vel](https://aad.portal.azure.com/)
 
 - [A Citrix NetScaler egyszeri bejelentkezésének konfigurálása fejlécalapú hitelesítéshez](header-citrix-netscaler-tutorial.md)
+
+- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [A Citrix NetScaler védelme fejlett láthatósággal és vezérléssel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

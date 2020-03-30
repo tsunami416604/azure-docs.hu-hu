@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center gyakori kérdések – adatgyűjtés és ügynökök
-description: Az adatgyűjtéssel,-ügynökökkel és-munkaterületekkel kapcsolatos gyakori kérdések Azure Security Center, egy olyan termék, amely segít a fenyegetések megelőzésében, észlelésében és megválaszolásában.
+title: Az Azure Security Center – gyakori kérdések – adatgyűjtés és ügynökök
+description: Gyakori kérdések az Azure Security Center adatgyűjtésével, ügynökeivel és munkaterületeivel kapcsolatban, amely egy olyan termék, amely segít a fenyegetések megelőzésében, észlelésében és az azokra való reagálásban
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,212 +14,212 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 8317a13b9ef87679836f55627268deefa4500dce
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245472"
 ---
-# <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Gyakori kérdések – az adatgyűjtés, az ügynökök és a munkaterületek kérdései
+# <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>GYAKRAN FELTETT KÉRDÉSEK – Az adatgyűjtésre, az ügynökökre és a munkaterületekre vonatkozó kérdések
 
-A Security Center adatokat gyűjt az Azure-beli virtuális gépekről (VM), a virtuálisgép-méretezési csoportokról, a IaaS-tárolók és a nem Azure-beli számítógépekről (beleértve a helyszíni gépeket is) a biztonsági rések és fenyegetések figyelésére. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére.
+A Security Center adatokat gyűjt az Azure virtuális gépekről (VM-ek), a virtuálisgép-méretezési csoportokból, az IaaS-tárolókból és a nem Azure-beli számítógépekről (beleértve a helyszíni gépeket is) a biztonsági rések és fenyegetések figyeléséhez. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére.
 
 
-## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Fizetnem kell Azure Monitor naplókat a Security Center által létrehozott munkaterületeken?
+## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Kiszámláztam az Azure Monitor-naplókat a Security Center által létrehozott munkaterületeken?
 
-Nem. A Security Center által létrehozott munkaterületek, miközben a csomópontok számlázása Azure Monitor naplókhoz van konfigurálva, nem számítunk fel Azure Monitor naplók díját. A Security Center minden esetben elszámolt díj attól a Security Center biztonsági házirend és a megoldások a munkaterülethez telepítve:
+Nem. A Security Center által létrehozott munkaterületek, miközben konfigurálva vannak az Azure Monitor-naplók csomópontonkénti számlázáshoz, nem merülnek fel az Azure Monitor naplóinak díjai. A Security Center számlázása mindig a Security Center biztonsági házirendje és a munkaterületre telepített megoldásokon alapul:
 
-- **Ingyenes szintű** – Security Center engedélyezi az "SecurityCenterFree" megoldást az alapértelmezett munkaterületen. Az ingyenes szintet nem számoljuk fel.
+- **Ingyenes szint** – A Security Center engedélyezi a "SecurityCenterFree" megoldást az alapértelmezett munkaterületen. Az ingyenes szintért nem kell fizetnie.
 
-- **Standard szintű** – a Security Center engedélyezi a "biztonsági" megoldást az alapértelmezett munkaterületen.
+- **Standard szint** – A Security Center engedélyezi a "Biztonság" megoldást az alapértelmezett munkaterületen.
 
-További információ a díjszabásról: [Security Center díjszabása](https://azure.microsoft.com/pricing/details/security-center/).
+Az árképzésről a [Security Center díjszabása](https://azure.microsoft.com/pricing/details/security-center/)című témakörben talál további információt.
 
 > [!NOTE]
-> A Security Center által létrehozott munkaterületek log Analytics árképzési szintje nem befolyásolja Security Center számlázást.
+> A Security Center által létrehozott munkaterületek naplóelemzési tarifaszintje nincs hatással a Security Center számlázására.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 
-## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-microsoft-monitoring-agent-installation"></a>A Microsoft Monitoring Agent telepítése automatikus kiépítése milyen jogosult egy virtuális Gépet?
+## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-microsoft-monitoring-agent-installation"></a>Mi minősíti a virtuális gép automatikus kiépítése a Microsoft Monitoring Agent telepítése?
 
-Windows vagy Linux rendszerű IaaS virtuális gépek jogosultak, ha:
+A Windows vagy Linux iaaS virtuális gépek akkor jogosultak, ha:
 
-- A Microsoft Monitoring Agent bővítményt jelenleg nem települ a virtuális gépen.
+- A Microsoft Monitoring Agent bővítmény jelenleg nincs telepítve a virtuális gépre.
 - A virtuális gép futó állapotban van.
-- A Windows vagy Linux rendszerű Azure-beli [virtuális gép ügynöke](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) telepítve van.
-- A virtuális gép nem használatos, például a webalkalmazási tűzfal vagy új generációs tűzfal telepíthetőek.
+- A Windows vagy Linux [Azure virtuálisgép-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) telepítve van.
+- A virtuális gép nem használható olyan eszközként, mint például a webalkalmazás tűzfala vagy a következő generációs tűzfal.
 
 
-## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>A Security Center által létrehozott alapértelmezett munkaterületet is törli?
+## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Törölhetem a Security Center által létrehozott alapértelmezett munkaterületeket?
 
-**Az alapértelmezett munkaterület törlése nem ajánlott.** A Security Center az alapértelmezett munkaterület használ a virtuális gépek biztonsági adatainak tárolásához. Ha töröl egy munkaterületet, a Security Center nem tudja gyűjteni az adatokat, és egyes biztonsági javaslatok és riasztások nem érhetők el.
+**Az alapértelmezett munkaterület törlése nem ajánlott.** A Security Center az alapértelmezett munkaterületeket használja a virtuális gépek biztonsági adatainak tárolására. Ha töröl egy munkaterületet, a Security Center nem tudja összegyűjteni ezeket az adatokat, és néhány biztonsági javaslat és riasztás nem érhető el.
 
-Szeretné használni, távolítsa el a Microsoft Monitoring Agentet a virtuális gépeken, a törölt munkaterülethez csatlakozik. A Security Center újra telepíti az ügynököt, és létrehozza az új alapértelmezett munkaterületek.
+A helyreállításhoz távolítsa el a Microsoft Monitoring Agent a törölt munkaterülethez csatlakoztatott virtuális gépeken. A Security Center újratelepíti az ügynököt, és új alapértelmezett munkaterületeket hoz létre.
 
 ## <a name="how-can-i-use-my-existing-log-analytics-workspace"></a>Hogyan használhatom a meglévő Log Analytics-munkaterületet?
 
-Kiválaszthat egy meglévő Log Analytics-munkaterületet a Security Center által gyűjtött adatok tárolásához. A meglévő Log Analytics-munkaterület használata:
+Kiválaszthat egy meglévő Log Analytics-munkaterületet a Security Center által gyűjtött adatok tárolására. A meglévő Log Analytics-munkaterület használata:
 
-- A munkaterület a kiválasztott Azure-előfizetése társítva kell lennie.
-- Minimális rendelkeznie kell olvasási engedéllyel a munkaterület eléréséhez.
+- A munkaterületet a kiválasztott Azure-előfizetéshez kell társtársosan kezelni.
+- Legalább olvasási engedéllyel kell rendelkeznie a munkaterület eléréséhez.
 
-Egy meglévő Log Analytics-munkaterület kiválasztása:
+Meglévő Log Analytics-munkaterület kiválasztása:
 
-1. A **biztonsági házirend – adatgyűjtés**területen válassza a **másik munkaterület használata**lehetőséget.
+1. A **Biztonsági házirend – Adatgyűjtés**csoportban válassza a Másik munkaterület **használata**lehetőséget.
 
     ![Másik munkaterület használata][4]
 
-1. A legördülő menüből válassza ki a munkaterületet a gyűjtött adatok tárolásához.
+1. A legördülő menüben válassza ki az összegyűjtött adatok tárolására kívánt munkaterületet.
 
     > [!NOTE]
-    > A lekéréses menüre, az csak azok a munkaterületek, amely hozzáféréssel rendelkezik, és az Azure-előfizetésében vannak jelennek meg.
+    > A legördülő menüben csak azok a munkaterületek jelennek meg, amelyekhez hozzáférése van, és amelyek az Azure-előfizetésben találhatók.
 
 1. Kattintson a **Mentés** gombra. A rendszer megkérdezi, hogy szeretné-e újrakonfigurálni a figyelt virtuális gépeket.
 
-    - Válassza a **nem** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások **csak az új virtuális gépeken legyenek érvényesek**. Az új munkaterület csak vonatkoznak új ügynökök telepítése; az újonnan felderített virtuális gépek, amelyeken nincs telepítve a Microsoft Monitoring Agent telepítve van.
-    - Válassza az **Igen** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások **minden virtuális gépen érvényesek**legyenek. Emellett egy munkaterület létrehozása a Security Center minden virtuális Gépről az új cél munkaterületet újra csatlakoztatni.
+    - Válassza a **Nem** lehetőséget, ha azt szeretné, hogy az új munkaterületi beállítások **csak az új virtuális gépekre vonatkozzanak.** Az új munkaterület-beállítások csak az új ügynöktelepítésekre vonatkoznak; újonnan felfedezett virtuális gépek, amelyek nem rendelkeznek a Microsoft Monitoring Agent telepítve.
+    - Válassza az **Igen** lehetőséget, ha azt szeretné, hogy az új munkaterületi beállítások **az összes virtuális gépre érvényesek legyenek.** Emellett minden virtuális gép csatlakozik a Security Center létrehozott munkaterület újracsatlakozik az új cél munkaterületre.
 
     > [!NOTE]
-    > Ha az **Igen**lehetőséget választja, ne törölje a Security Center által létrehozott munkaterületeket, amíg az összes virtuális gép újra nem csatlakozik az új cél munkaterülethez. Ez a művelet sikertelen lesz, ha a munkaterület túl korán törlődik.
+    > Ha az **Igen**lehetőséget választja, ne törölje a Security Center által létrehozott munkaterületeket, amíg az összes virtuális gépet újra nem csatlakoztatta az új célmunkaterülethez. Ez a művelet sikertelen, ha egy munkaterületet túl korán törölnek.
 
-    - A művelet megszakításához válassza a **Mégse**lehetőséget.
+    - A művelet megszakításához válassza a **Mégse gombot.**
 
-## Mi a teendő, ha a Microsoft monitoring Agent már telepítve van a virtuális gépen?<a name="mmaextensioninstalled"></a>
+## <a name="what-if-the-microsoft-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>Mi a teendő, ha a Microsoft Monitoring Agent már telepítve van bővítményként a virtuális gépen?<a name="mmaextensioninstalled"></a>
 
-Ha a figyelési ügynök bővítményként van telepítve, a bővítmény konfigurációja lehetővé teszi, hogy a jelentéskészítés csak egyetlen munkaterületre legyen elérhető. A Security Center nem bírálja felül a meglévő kapcsolatok felhasználó munkaterületeket. Security Center a biztonsági adatok egy már csatlakoztatott munkaterületen lévő virtuális gépről lesznek tárolva, ha a "biztonság" vagy a "SecurityCenterFree" megoldás telepítve van rajta. Security Center a folyamat legújabb verziójára frissítheti a bővítmény verzióját.
+Ha a figyelőügynök bővítményként van telepítve, a bővítmény konfigurációja lehetővé teszi, hogy csak egyetlen munkaterületre jelentsen. A Security Center nem bírálja felül a felhasználói munkaterületekkel létesített meglévő kapcsolatokat. A Security Center a virtuális gép biztonsági adatait egy már csatlakoztatott munkaterületen tárolja, feltéve, hogy a "Security" vagy a "SecurityCenterFree" megoldás telepítve van. A Security Center a bővítményverziót a folyamat legújabb verziójára frissítheti.
 
-További információ: [az automatikus kiépítés egy korábban létező ügynök telepítése esetén](security-center-enable-data-collection.md#preexisting).
-
-
-
-## Mi a teendő, ha a Microsoft monitoring Agent közvetlenül telepítve van a gépen, de nem bővítményként (közvetlen ügynökként)?<a name="directagentinstalled"></a>
-
-Ha a Microsoft monitoring Agent közvetlenül a virtuális gépre van telepítve (nem Azure-bővítményként), Security Center telepíti a Microsoft monitoring Agent bővítményt, és a legújabb verzióra frissítheti a Microsoft monitoring agentet.
-
-A telepített ügynök továbbra is a már konfigurált munkaterülete (ke) t jelenti, és a jelentés a Security Center konfigurált munkaterületre fog jelentést adni (a többsoros vezérlés támogatott a Windows rendszerű gépeken).
-
-Ha a konfigurált munkaterület egy felhasználói munkaterület (nem Security Center alapértelmezett munkaterülete), telepítenie kell a "Security/" SecurityCenterFree "megoldást arra, hogy Security Center a munkaterületre irányuló virtuális gépekről és számítógépekről származó események feldolgozásának megkezdéséhez.
-
-Linux rendszerű gépek esetén az ügynök többsoros vezérlése még nem támogatott – ezért ha egy meglévő ügynök telepítését észleli, az automatikus kiépítés nem történik meg, és a gép konfigurációja nem módosul.
-
-A Security Center március 17 2019 előtt előfizetett előfizetések meglévő gépei esetében, ha a rendszer egy meglévő ügynököt észlel, a Microsoft monitoring Agent bővítmény nem lesz telepítve, és a gép nem lesz hatással. Ezen gépek esetében tekintse meg a "figyelési ügynök állapotával kapcsolatos problémák megoldása a gépeken" című javaslatot az ügynök telepítési problémáinak megoldásához ezeken a gépeken
-
-További információ: [Mi történik, ha egy System Center Operations Manager vagy OMS közvetlen ügynök már telepítve van a virtuális gépre?](#scomomsinstalled)
-
-## Mi a teendő, ha egy System Center Operations Manager ügynök már telepítve van a virtuális gépre?<a name="scomomsinstalled"></a>
-
-A Security Center a Microsoft monitoring Agent bővítményt a meglévő System Center Operations Manager ügynöknek kell telepítenie. A meglévő ügynök a szokásos módon továbbra is jelentést küld a System Center Operations Manager-kiszolgálónak. Vegye figyelembe, hogy a Operations Manager ügynök és a Microsoft monitoring Agent közös futásidejű kódtárakat használ, amelyeket a rendszer a folyamat során a legújabb verzióra frissít. Megjegyzés: Ha a Operations Manager ügynök 2012-es verziója van telepítve, ne kapcsolja be az automatikus kiépítés funkciót (a kezelhetőségi képességek elvesznek, ha a Operations Manager-kiszolgáló a 2012-es verzióban is megtalálható).
+További információ: [Automatikus kiépítés meglévő ügynöktelepítés esetén.](security-center-enable-data-collection.md#preexisting)
 
 
-## <a name="what-is-the-impact-of-removing-these-extensions"></a>Mit jelent az ilyen bővítmények eltávolításának következményei?
 
-Ha eltávolítja a Microsoft Monitoring bővítményt, a Security Center nem tud a biztonsági adatok gyűjtésére a virtuális gép és az egyes biztonsági javaslatok és riasztások nem érhetők el. 24 órán belül a Security Center meghatározza, hogy a virtuális gép a bővítmény hiányzik, és újratelepíti a bővítményt.
+## <a name="what-if-a-microsoft-monitoring-agent-is-directly-installed-on-the-machine-but-not-as-an-extension-direct-agent"></a>Mi a teendő, ha a Microsoft Monitoring Agent közvetlenül telepítve van a számítógépen, de nem bővítményként (direct ügynökként)?<a name="directagentinstalled"></a>
+
+Ha a Microsoft Monitoring Agent közvetlenül a virtuális gépre van telepítve (nem Azure-bővítményként), a Security Center telepíti a Microsoft Monitoring Agent bővítményt, és frissítheti a Microsoft Monitoring agent-et a legújabb verzióra.
+
+A telepített ügynök továbbra is jelentést tesz a már konfigurált munkaterület(ek)nek, továbbá a Security Centerben konfigurált munkaterületnek is jelentést tesz (a Több-homing szolgáltatás windowsos gépeken támogatott).
+
+Ha a konfigurált munkaterület egy felhasználói munkaterület (nem a Security Center alapértelmezett munkaterülete), telepítenie kell a "Security/"SecurityCenterFree" megoldást a Security Center számára, hogy megkezdhesse az események feldolgozását a virtuális gépekről és az adott munkaterületre jelentést tevő számítógépekről.
+
+Linux-gépek esetében az ügynök több-homing még nem támogatott - ezért ha egy meglévő ügynök telepítése észlelhető, automatikus kiépítés nem történik meg, és a gép konfigurációja nem módosul.
+
+2019. március 17-e előtt a Security Centerbe beszállt meglévő gépek esetében, amikor egy meglévő ügynököt észlel, a Microsoft Monitoring Agent bővítmény nem lesz telepítve, és a gép nem lesz hatással. Ezekről a gépekről tekintse meg a "Monitoring agent health issues on your machines" című javaslat az ügynök telepítési problémáinak megoldásához ezeken a gépeken
+
+További információ: A következő [szakasz: Mi történik, ha a System Center Operations Manager vagy az OMS közvetlen ügynök már telepítve van a virtuális gépen?](#scomomsinstalled)
+
+## <a name="what-if-a-system-center-operations-manager-agent-is-already-installed-on-my-vm"></a>Mi a teendő, ha egy System Center Operations Manager-ügynök már telepítve van a virtuális gépre?<a name="scomomsinstalled"></a>
+
+A Security Center a Microsoft Monitoring Agent bővítményt a meglévő System Center Operations Manager-ügynök mellé telepíti. A meglévő ügynök továbbra is a rendszerközpont Operations Manager kiszolgálójának a szokásos módon jelent. Vegye figyelembe, hogy az Operations Manager-ügynök és a Microsoft Monitoring Agent közös futásidejű kódtárak, amelyek a folyamat során a legújabb verzióra frissülnek. Megjegyzés – Ha az Operations Manager-ügynök 2012-es verziója telepítve van, ne kapcsolja be az automatikus kiépítést (a felügyeleti képességek elveszhetnek, ha az Operations Manager-kiszolgáló is 2012-es verziójú).
 
 
-## <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>Hogyan akadályozható meg az ügynök automatikus telepítés és a munkaterület létrehozását?
+## <a name="what-is-the-impact-of-removing-these-extensions"></a>Milyen hatással van a kiterjesztések eltávolítása?
 
-Automatikus üzembe helyezés a biztonsági szabályzat az előfizetések ki is kapcsolhatja, de ez nem ajánlott. Automatikus üzembe helyezési korlátozások Security Center javaslatait és riasztások kikapcsolásával. Az Automatikus kiépítés letiltása:
+Ha eltávolítja a Microsoft Figyelési bővítményt, a Security Center nem tud biztonsági adatokat gyűjteni a virtuális gépről, és néhány biztonsági javaslat és riasztás nem érhető el. 24 órán belül a Security Center megállapítja, hogy a virtuális gép hiányzik a bővítmény, és újratelepíti a bővítményt.
 
-1. Ha az előfizetése konfigurálva van a standard csomagra, nyissa meg az előfizetéshez tartozó biztonsági házirendet, és válassza az **ingyenes** szintet.
+
+## <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>Hogyan állíthatom le az automatikus ügynöktelepítést és a munkaterület létrehozását?
+
+Kikapcsolhatja az előfizetések automatikus kiépítését a biztonsági házirendben, de ez nem ajánlott. Az automatikus kiépítés kikapcsolása korlátozza a Biztonsági központ ajánlásait és riasztásait. Az automatikus kiépítés letiltása:
+
+1. Ha az előfizetés a standard szinthez van konfigurálva, nyissa meg az adott előfizetés biztonsági szabályzatát, és válassza ki az **ingyenes** szintet.
 
    ![Tarifacsomag][1]
 
-1. Ezt követően kapcsolja ki az automatikus kiépítés szolgáltatást a **biztonsági házirend – adatgyűjtési** lapon a **kikapcsolás** lehetőség kiválasztásával.
+1. Ezután kapcsolja ki az automatikus kiépítést a **Biztonsági házirend – Adatgyűjtés** lapon a **Ki** lehetőség kiválasztásával.
    ![Adatgyűjtés][2]
 
 
-## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>Meg tudom tilthatják le az automatikus ügynöktelepítés és munkaterület létrehozása?
+## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>Lekell iratkoznom az automatikus ügynöktelepítésről és a munkaterület létrehozásáról?
 
 > [!NOTE]
-> Ügyeljen arra, hogy tekintse át a [kilépések](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning) [következményeit?](#what-are-the-implications-of-opting-out-of-automatic-provisioning) és az ajánlott lépések szakaszt, ha az automatikus kiépítés lehetőséget választja.
+> Győződjön meg arról, hogy tekintse át a szakaszok [Milyen következményekkel jár a leiratkozás?](#what-are-the-implications-of-opting-out-of-automatic-provisioning) és [az ajánlott lépéseket, ha leiratkozik,](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning) ha úgy dönt, hogy leiratkozik az automatikus kiépítés.
 
-Előfordulhat, hogy szeretné tilthatják le az automatikus kiépítést, ha Ön számára az alábbiak érvényesek:
+Ha az alábbiak vonatkoznak Önre, érdemes leiratkoznia az automatikus kiépítésről:
 
-- A teljes előfizetés a Security Center által automatikus ügynöktelepítés vonatkozik. Virtuális gépek egy része nem alkalmazhat automatikus telepítését. Ha nincsenek kritikus fontosságú virtuális gépek, amelyek a Microsoft Monitoring Agent nem telepíthető, majd kell kikapcsolja az Automatikus kiépítés.
-- A Microsoft monitoring Agent (MMA) bővítmény telepítése frissíti az ügynök verzióját. Ez egy közvetlen ügynökre és egy System Center Operations Manager ügynökre vonatkozik (az utóbbi esetben a Operations Manager és az MMA közös futásidejű kódtárakat használ – ez a folyamat frissülni fog). Ha a telepített Operations Manager ügynök az 2012-es verzió, és frissül, akkor a kezelhetőségi képességek elvesznek, ha a Operations Manager-kiszolgáló a 2012-es verzióval is rendelkezik. Ha a telepített Operations Manager ügynök 2012-es verzióval rendelkezik, érdemes megfontolni az automatikus kiépítés kiválasztását.
-- Ha az előfizetéshez (egy központi munkaterülethez) kívüli egyéni munkaterülettel rendelkezik, akkor az automatikus kiépítés után le kell választania. Manuálisan telepítse a Microsoft Monitoring Agent bővítményt, és csatlakoztathatja azt a munkaterületet anélkül, hogy a Security Center a kapcsolat felülírása.
-- Ha el szeretné kerülni előfizetésenként több munkaterülettel létrehozását, és az előfizetésen belül a saját egyéni munkaterületet, majd, két lehetősége van:
+- A Security Center által imitátus automatikus telepítése a teljes előfizetésre vonatkozik. Az automatikus telepítés nem alkalmazható a virtuális gépek egy részhalmazára. Ha vannak olyan kritikus virtuális gépek, amelyek nem telepíthetők a Microsoft Monitoring Agent, majd le kell tiltania az automatikus kiépítés.
+- A Microsoft Monitoring Agent (MMA) bővítmény telepítése frissíti az ügynök verzióját. Ez egy közvetlen ügynökre és egy System Center Operations Manager-ügynökre vonatkozik (az utóbbiban az Operations Manager és az MMA közös futásidejű kódtárakon osztozik , amelyek a folyamat során frissülnek). Ha a telepített Operations Manager-ügynök 2012-es verziójú és frissített, a kezelhetőségi képességek elveszhetnek, ha az Operations Manager-kiszolgáló is 2012-es verziójú. Fontolja meg az automatikus kiépítés letiltását, ha a telepített Operations Manager-ügynök 2012-es verziójú.
+- Ha az előfizetésen kívüli egyéni munkaterülettel (egy központi munkaterülettel) rendelkezik, akkor le kell tiltania az automatikus kiépítést. Manuálisan telepítheti a Microsoft Monitoring Agent bővítményt, és csatlakoztathatja a munkaterületet anélkül, hogy a Security Center felülbírálta volna a kapcsolatot.
+- Ha el szeretné kerülni több munkaterület létrehozását előfizetésenként, és saját egyéni munkaterülettel rendelkezik az előfizetésen belül, akkor két lehetősége van:
 
-   1. Az Automatikus kiépítés kívül kérheti. Az áttelepítés után állítsa be a munkaterület alapértelmezett beállításait a [Hogyan használhatom a meglévő log Analytics munkaterületet?](#how-can-i-use-my-existing-log-analytics-workspace) című témakörben leírtak szerint?
+   1. Leiratkozhat az automatikus kiépítésről. Az áttelepítés után állítsa be az alapértelmezett munkaterületi beállításokat a [Hogyan használhatom a meglévő Log Analytics-munkaterületet?](#how-can-i-use-my-existing-log-analytics-workspace)
 
-   1. Vagy engedélyezheti, hogy az áttelepítés befejezéséhez, a Microsoft Monitoring Agentet a virtuális gépeket kell telepíteni, és a létrehozott munkaterülethez csatlakozik a virtuális gépeket. Ezután válassza ki a saját egyéni munkaterület, ha az alapértelmezett munkaterület beállítása a kiválasztott újrakonfigurálása a már telepített ügynökök. További információ: [Hogyan használhatom a meglévő log Analytics munkaterületet?](#how-can-i-use-my-existing-log-analytics-workspace)
-
-
-## <a name="what-are-the-implications-of-opting-out-of-automatic-provisioning"></a>Mik azok az Automatikus kiépítés megtagadja következményei?
-
-Az áttelepítés befejezésekor Security Center nem tud biztonsági adatokat gyűjteni a virtuális gépről, és bizonyos biztonsági javaslatok és riasztások nem érhetők el. Ha letiltják, manuálisan telepítse a Microsoft monitoring agentet. A [kilépéskor tekintse meg a javasolt lépéseket](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning).
+   1. Vagy engedélyezheti az áttelepítés befejezését, a Microsoft Monitoring Agent a virtuális gépekre való telepítését, valamint a létrehozott munkaterülethez csatlakoztatott virtuális gépeket. Ezután válassza ki a saját egyéni munkaterületet az alapértelmezett munkaterületi beállítás beállításával, és engedélyezve a már telepített ügynökök újrakonfigurálása. További információ: [Hogyan használhatom a meglévő Log Analytics-munkaterületet?](#how-can-i-use-my-existing-log-analytics-workspace)
 
 
-## <a name="what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning"></a>Mik azok a javasolt lépéseket, amikor az Automatikus kiépítés megtagadja?
+## <a name="what-are-the-implications-of-opting-out-of-automatic-provisioning"></a>Milyen következményekkel jár az automatikus kiépítésből való leiratkozás?
 
-Manuálisan telepítse a Microsoft monitoring Agent bővítményt, hogy Security Center biztonsági adatokat gyűjtsön a virtuális gépekről, és javaslatokat és riasztásokat nyújtson. A telepítéssel kapcsolatos útmutatásért tekintse meg a [Windows rendszerű virtuális gép](../virtual-machines/extensions/oms-windows.md) vagy az ügynök telepítése a [linuxos virtuális géphez](../virtual-machines/extensions/oms-linux.md) című témakört.
+Az áttelepítés befejeződése után a Security Center nem tud biztonsági adatokat gyűjteni a virtuális gépről, és néhány biztonsági javaslat és riasztás nem érhető el. Ha leiratkozik, telepítse manuálisan a Microsoft Monitoring Agent alkalmazást. A [leiratkozáskor](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning)tekintse meg az ajánlott lépéseket.
 
-Az ügynök csatlakozhat bármely meglévő egyéni munkaterületet, vagy a Security Center munkaterület létrehozása. Ha egy egyéni munkaterület nincs engedélyezve van, a "Security" vagy "SecurityCenterFree" megoldások, és a egy megoldást a alkalmazni kell. Az alkalmazáshoz válassza ki az egyéni munkaterületet vagy előfizetést, és alkalmazza a díjszabási szintet a **biztonsági házirend – díjszabási** csomag lapon.
+
+## <a name="what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning"></a>Melyek az ajánlott lépések az automatikus kiépítés letiltásakor?
+
+Manuálisan telepítse a Microsoft Monitoring Agent bővítményt, hogy a Security Center biztonsági adatokat gyűjthessen a virtuális gépekről, és javaslatokat és riasztásokat nyújthasson. A telepítéssel kapcsolatos útmutatásért tekintse meg [a Windows virtuális gép ügynöktelepítését](../virtual-machines/extensions/oms-windows.md) vagy [linuxos virtuális gép ügynöktelepítését.](../virtual-machines/extensions/oms-linux.md)
+
+Az ügynököt bármely meglévő egyéni munkaterülethez vagy a Security Center által létrehozott munkaterülethez csatlakoztathatja. Ha egy egyéni munkaterületen nincs engedélyezve a "Security" vagy a "SecurityCenterFree" megoldás, akkor megoldást kell alkalmaznia. Az alkalmazáshoz válassza ki az egyéni munkaterületet vagy előfizetést, és alkalmazzon egy tarifacsomagot a **Biztonsági házirend – Tarifacsomag** lapon keresztül.
 
    ![Tarifacsomag][1]
 
-A Security Center lehetővé teszi a munkaterületen a kijelölt tarifacsomag alapján a megfelelő megoldást.
+A Security Center a kiválasztott tarifacsomag alapján engedélyezi a megfelelő megoldást a munkaterületen.
 
 
-## Hogyan eltávolítja a Security Center által telepített OMS-bővítményeket?<a name="remove-oms"></a>
+## <a name="how-do-i-remove-oms-extensions-installed-by-security-center"></a>Hogyan távolíthatom el a Security Center által telepített OMS-bővítményeket?<a name="remove-oms"></a>
 
-Manuálisan távolítsa el a Microsoft Monitoring Agent. Ez nem ajánlott, mivel a Security Center javaslatait és riasztások korlátozza.
+Manuálisan eltávolíthatja a Microsoft Monitoring Agent-et. Ez nem ajánlott, mivel korlátozza a Security Center ajánlásait és riasztásait.
 
 > [!NOTE]
-> Ha az adatgyűjtés engedélyezve van, a Security Center újratelepíti az ügynök után távolítsa el azt.  Le kell tiltania az adatgyűjtés az ügynök manuális eltávolítása előtt. Lásd: Hogyan az ügynök automatikus telepítésének leállítása és a munkaterület létrehozása? az adatgyűjtés letiltására vonatkozó utasítások.
+> Ha az adatgyűjtés engedélyezve van, a Security Center az eltávolítás után újratelepíti az ügynököt.  Az ügynök manuális eltávolítása előtt le kell tiltania az adatgyűjtést. Lásd: Hogyan állíthatom le az automatikus ügynöktelepítést és a munkaterület létrehozását? az adatgyűjtés letiltására vonatkozó utasításokért.
 
-Az ügynök manuális eltávolításához:
+Az ügynök manuális eltávolítása:
 
-1.  A portálon nyissa meg **log Analytics**.
+1.  A portálon nyissa meg a **Log Analytics**szolgáltatást.
 
 1.  A Log Analytics lapon válasszon ki egy munkaterületet:
 
-1.  Válassza ki azokat a virtuális gépeket, amelyeket nem szeretne figyelni, és válassza a **Leválasztás**lehetőséget.
+1.  Jelölje ki azokat a virtuális gépeket, amelyeket nem szeretne figyelni, és válassza a **Kapcsolat bontása**lehetőséget.
 
    ![Az ügynök eltávolítása][3]
 
 > [!NOTE]
-> Ha egy Linux rendszerű virtuális gép már rendelkezik egy nem kiterjesztésű OMS-ügynökkel, a bővítmény eltávolítása eltávolítja az ügynököt is, és újra kell telepítenie.
+> Ha egy Linux virtuális gép már rendelkezik egy nem bővítmény OMS-ügynök, eltávolítja a bővítmény eltávolítja az ügynök is, és akkor újra kell telepítenie.
 
 
 ## <a name="how-do-i-disable-data-collection"></a>Hogyan tilthatom le az adatgyűjtést?
 
-Alapértelmezés szerint az Automatikus kiépítés le van. Letilthatja az Automatikus kiépítés erőforrásokból bármikor ezt a beállítást, a biztonsági szabályzatban kikapcsolásával. Az automatikus kiépítés kifejezetten ajánlott ahhoz, hogy biztonsági riasztásokat és javaslatokat kapjon a rendszerfrissítésekkel, az operációs rendszer sebezhetőségével és az Endpoint Protection szolgáltatással kapcsolatban.
+Az automatikus kiépítés alapértelmezés szerint ki van kapcsolva. Az erőforrásokból való automatikus kiépítést bármikor letilthatja, ha a biztonsági házirendben kikapcsolja ezt a beállítást. Automatikus kiépítése erősen ajánlott annak érdekében, hogy a biztonsági riasztások és javaslatok a rendszerfrissítések, operációs rendszer biztonsági rések, és a végpont védelem.
 
-Az adatgyűjtés letiltásához [Jelentkezzen be a Azure Portalba](https://portal.azure.com), válassza a **Tallózás**lehetőséget, válassza a **Security Center**lehetőséget, majd válassza a **házirend kiválasztása**lehetőséget. Válassza ki azt az előfizetést, amelynél le szeretné tiltani az automatikus kiépítést. Amikor kiválaszt egy előfizetési **biztonsági házirendet** , megnyílik az adatgyűjtés. Az **automatikus kiépítés**alatt válassza ki a **ki**lehetőséget.
-
-
-## <a name="how-do-i-enable-data-collection"></a>Hogyan engedélyezhetem az adatgyűjtés?
-
-Engedélyezheti az adatgyűjtést az Azure-előfizetés biztonsági szabályzatában. Az adatgyűjtés engedélyezéséhez. [Jelentkezzen be a Azure Portalba](https://portal.azure.com), válassza a **Tallózás**lehetőséget, válassza a **Security Center**lehetőséget, és válassza a **biztonsági szabályzat**lehetőséget. Automatikus kiépítés engedélyezése kívánt előfizetés kiválasztásához. Amikor kiválaszt egy előfizetési **biztonsági házirendet** , megnyílik az adatgyűjtés. Az **automatikus kiépítés**területen válassza **a**be lehetőséget.
+Az adatgyűjtés letiltásához [jelentkezzen be az Azure Portalra,](https://portal.azure.com)válassza a **Tallózás**gombot, a **Security Center**lehetőséget, és válassza a **Házirend kiválasztása**lehetőséget. Válassza ki azt az előfizetést, amelynél le szeretné tiltani az automatikus kiépítést. Amikor kiválaszt egy előfizetést **Biztonsági házirend – Megnyílik az adatgyűjtés.** Az **Automatikus kiépítés**csoportban válassza **a Ki**lehetőséget.
 
 
-## <a name="what-happens-when-data-collection-is-enabled"></a>Mi történik, ha az adatgyűjtés engedélyezve van?
+## <a name="how-do-i-enable-data-collection"></a>Hogyan engedélyezhetem az adatgyűjtést?
 
-Ha az Automatikus kiépítés engedélyezve van, a Security Center létrehozza a Microsoft Monitoring Agentet az összes támogatott Azure-beli és újonnan létrehozott. Az automatikus kiépítés ajánlott, de a manuális ügynök telepítése is elérhető. [Tudnivalók a Microsoft Monitoring Agent bővítmény telepítéséről](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
-
-Az ügynök engedélyezi a 4688-es folyamat-létrehozási eseményt és a 4688-es eseményen belüli *parancssori* mezőt. A virtuális gépen új folyamatok EventLog által rögzített és a Security Center észlelési szolgáltatások által figyelt. Az egyes új folyamatokra vonatkozóan rögzített részletekkel kapcsolatos további információkért lásd: [a Leírás mezői a 4688-ben](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Az ügynök is a virtuális gépen 4688 eseményeit, és tárolja a keresés.
-
-Az ügynök az [adaptív alkalmazások vezérlőinek](security-center-adaptive-application.md)adatgyűjtését is lehetővé teszi, Security Center a helyi AppLocker-házirendet naplózási módban konfigurálja az összes alkalmazás engedélyezéséhez. Ez a szabályzat az AppLockert az események előállítására fogja használni, amelyeket a Security Center gyűjt és használ. Fontos megjegyezni, hogy ez a szabályzat minden olyan gépeken, amelyeken már van egy konfigurált AppLocker-házirendek nem lesznek konfigurálva. 
-
-Ha a Security Center gyanús tevékenységet észlel a virtuális gépen, a rendszer e-mailben értesíti az ügyfelet, ha a [biztonsági kapcsolattartási adatokat](security-center-provide-security-contact-details.md) megadták. Egy riasztás akkor is a Security Center biztonsági riasztások irányítópult látható.
+Engedélyezheti az Azure-előfizetés adatgyűjtését a Biztonsági szabályzatban. Az adatgyűjtés engedélyezése. [Jelentkezzen be az Azure Portalra,](https://portal.azure.com)válassza a **Tallózás**gombot, válassza a **Biztonsági központ**lehetőséget, és válassza a **Biztonsági házirend**lehetőséget. Válassza ki az automatikus kiépítést engedélyezni kívánt előfizetést. Amikor kiválaszt egy előfizetést **Biztonsági házirend – Megnyílik az adatgyűjtés.** Az **Automatikus kiépítés**csoportban válassza **a Be**lehetőséget.
 
 
-## <a name="will-security-center-work-using-an-oms-gateway"></a>A Security Center OMS-átjáró használatával fog működni?
+## <a name="what-happens-when-data-collection-is-enabled"></a>Mi történik, ha engedélyezve van az adatgyűjtés?
 
-Igen. Azure Security Center kihasználja a Azure Monitor az Azure-beli virtuális gépekről és kiszolgálókról származó adatok gyűjtésére a Microsoft monitoring Agent használatával.
-Az adatok gyűjtéséhez az egyes virtuális gépeknek és kiszolgálóknak HTTPS használatával kell csatlakozniuk az internethez. A csatlakozás lehet közvetlen, proxy használatával vagy a [OMS-átjárón](../azure-monitor/platform/gateway.md)keresztül.
+Ha az automatikus kiépítés engedélyezve van, a Security Center a Microsoft Monitoring Agent-et az összes támogatott Azure virtuális gépre és a létrehozott újgépekre vonatkozóan lehetővé tesz. Automatikus kiépítés ajánlott, de kézi ügynök telepítése is rendelkezésre áll. [Tudnivalók a Microsoft Monitoring Agent bővítmény telepítéséről](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
+
+Az ügynök engedélyezi a folyamat létrehozási esemény 4688 és a *CommandLine* mező belül esemény 4688. A virtuális gépen létrehozott új folyamatokat az EventLog rögzíti, és a Security Center észlelési szolgáltatásai figyelik. Az egyes új folyamatokhoz rögzített részletekről a [4688 leírásámezőben](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)talál további információt. Az ügynök is gyűjti a virtuális gépen létrehozott 4688-as eseményeket, és tárolja őket a keresésben.
+
+Az ügynök lehetővé teszi az [adaptív alkalmazásvezérlők](security-center-adaptive-application.md)adatgyűjtését is, a Security Center egy helyi AppLocker-házirendet konfigurál naplózási módban, hogy minden alkalmazás lehetővé tegye. Ez a szabályzat hatására az AppLocker eseményeket hoz létre, amelyeket a Security Center gyűjt és használ fel. Fontos megjegyezni, hogy ez a házirend nem lesz konfigurálva olyan gépeken, amelyeken már van konfigurált AppLocker-házirend. 
+
+Ha a Security Center gyanús tevékenységet észlel a virtuális gépen, az ügyfél e-mailben értesítést kap, ha [biztonsági kapcsolattartási adatokat](security-center-provide-security-contact-details.md) adtak meg. A biztonsági központ biztonsági riasztások irányítópultján is látható egy riasztás.
 
 
-## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>A Monitoring Agent befolyásolja a kiszolgáló teljesítményét?
+## <a name="will-security-center-work-using-an-oms-gateway"></a>Működik a Security Center oms átjáró használatával?
 
-Az ügynök egy névleges mennyiségű rendszer-erőforrásokat használ fel, és teljesítményére gyakorolt minimális hatás kell rendelkeznie. A teljesítményre gyakorolt hatásra, valamint az ügynökre és a bővítményre vonatkozó további információkért tekintse meg a [tervezési és üzemeltetési útmutatót](security-center-planning-and-operations-guide.md#data-collection-and-storage).
+Igen. Az Azure Security Center az Azure Monitor segítségével gyűjt adatokat az Azure virtuális gépekről és kiszolgálókról a Microsoft Monitoring Agent használatával.
+Az adatok gyűjtéséhez minden virtuális gépnek és kiszolgálónak https használatával kell csatlakoznia az internethez. A kapcsolat lehet közvetlen, proxy használatával vagy az [OMS átjárón](../azure-monitor/platform/gateway.md)keresztül.
 
 
-## <a name="where-is-my-data-stored"></a>Hol tárolják az adataimat?
+## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>A figyelőügynök hatással van a kiszolgálóim teljesítményére?
 
-Ettől az ügynöktől gyűjtött adatok tárolva van vagy egy meglévő Log Analytics-munkaterületet az Ön előfizetéséhez rendelve, vagy egy új munkaterületet. További információkért lásd az [adatbiztonságot](security-center-data-security.md)ismertető témakört.
+Az ügynök névleges mennyiségű rendszererőforrást használ fel, és kevés hatással lehet a teljesítményre. A teljesítményre gyakorolt hatásról, valamint az ügynökről és a bővítményről a [tervezési és üzemeltetési útmutatóban](security-center-planning-and-operations-guide.md#data-collection-and-storage)talál további információt.
+
+
+## <a name="where-is-my-data-stored"></a>Hol vannak tárolva az adataim?
+
+Az ügynöktől gyűjtött adatokat az előfizetéshez társított meglévő Log Analytics-munkaterület vagy egy új munkaterület tárolja. További információ: [Data Security](security-center-data-security.md).
 
 
 <!--Image references-->

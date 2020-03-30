@@ -1,30 +1,29 @@
 ---
-title: Technikai eszközök létrehozása Power BI alkalmazás ajánlatához | Azure piactér
-description: Azoknak a technikai eszközöknek a felsorolása, amelyek szükségesek egy Power BI app-ajánlat közzétételéhez a Microsoft AppSource piactéren.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+title: Technikai eszközök létrehozása Power BI alkalmazásajánlathoz | Azure Piactér
+description: Sorolja fel a Power BI alkalmazásajánlat microsoft appsource piactéren való közzétételéhez szükséges technikai eszközöket.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: pabutler
-ms.openlocfilehash: 2d0ae48b7314b63f2863e238fd38d0351546502d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: df0708ff964595181d00d8402f1162e0832c70eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817912"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286370"
 ---
-# <a name="create-power-bi-app-offer-technical-assets"></a>Power BI app-ajánlat technikai eszközeinek létrehozása
+# <a name="create-power-bi-app-offer-technical-assets"></a>Power BI App ajánlat technikai eszközök létrehozása
 
-Az ajánlat típusához szükséges elsődleges technikai eszköz egy Power BI alkalmazás. A Power BI-alkalmazások elsődleges adatkészletek, jelentések vagy irányítópultok, valamint opcionálisan csatlakoztatott szolgáltatások és beágyazott adatkészletek gyűjteményei. Egy korábbi adattípusból lett kifejlesztve, mint a [Content Pack csomag](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction). További információ az ilyen típusú alkalmazások fejlesztéséről: [Mi a Power bi template apps?](https://go.microsoft.com/fwlink/?linkid=2028636).
+Az ajánlattípushoz elsődlegesen egy Power BI-alkalmazásra van szüksége. A Power BI-alkalmazások elsődleges adatkészletek, jelentések vagy irányítópultok, valamint választható csatlakoztatott szolgáltatások és beágyazott adatkészletek gyűjteménye. A korábban [tartalomcsomagként](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction)ismert eszköztípusból fejlődött ki. Az ilyen típusú alkalmazások fejlesztéséről a Mik azok a [Power BI-sablonalkalmazások?](https://go.microsoft.com/fwlink/?linkid=2028636)
 
 
 ## <a name="obtain-an-installation-url"></a>Telepítési URL-cím beszerzése
 
-Power BI alkalmazást csak a [Power bi szolgáltatás](https://powerbi.microsoft.com/)hozhat létre. A kezdéshez [Power bi Pro licenccel](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)kell bejelentkeznie. A szolgáltatásalkalmazás Power BIban való létrehozása és tesztelése után mentse a Power BI által generált alkalmazás-telepítési URL-címet. Végül adja meg az URL-címet a Cloud Partner Portal Beküldési űrlap [technikai információk](./cpp-technical-info-tab.md) lapján.
+Power BI-alkalmazást csak a [Power BI szolgáltatásban](https://powerbi.microsoft.com/)hozhat létre. Először [Power BI Pro-licenccel](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)jelentkezhet be. Miután létrehozta és tesztelte a szolgáltatási alkalmazást a Power BI-ban, mentse a Power BI által létrehozott alkalmazástelepítési URL-címet. Végül adja meg az URL-címet a Cloud Partner Portal beküldési űrlap [műszaki információ](./cpp-technical-info-tab.md) lapján.
  
 
 ## <a name="next-steps"></a>További lépések
 
-Miután létrehozta és tesztelte a Power BI alkalmazást, és létrehozta a kapcsolódó ajánlatot, [közzéteheti a Power bi alkalmazás ajánlatát](./cpp-publish-offer.md). 
+Miután létrehozta és tesztelte a Power BI alkalmazást, és létrehozta a társított ajánlatot, [közzéteheti a Power BI Alkalmazásajánlatát.](./cpp-publish-offer.md) 

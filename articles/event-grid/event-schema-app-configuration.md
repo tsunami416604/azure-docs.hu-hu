@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Grid Azure Alkalmazáskonfiguráció eseménysémája
-description: Alkalmazások konfigurálása az Azure-események az Azure Event GRID használatával biztosított tulajdonságokat ismerteti
+title: Azure Event Grid Azure App Konfigurációs eseménysémája
+description: Az Azure Event Grid del az Azure App Configuration events hez megadott tulajdonságok ismertetése
 services: event-grid
 author: jimmyca
 ms.service: event-grid
@@ -8,30 +8,30 @@ ms.topic: reference
 ms.date: 05/30/2019
 ms.author: jimmyca
 ms.openlocfilehash: fe0274f723692eea3cfd25cc0e9e146b35dce2ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66735781"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Az Azure-alkalmazások konfigurálása az Azure Event Grid eseménysémája
+# <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Azure Event Grid eseménysémája az Azure Alkalmazás konfigurációjához
 
-Ez a cikk a tulajdonságok és a séma az Azure App-konfigurációs események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
+Ez a cikk az Azure App Configuration események tulajdonságait és sémáját tartalmazza. Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
 
-Mintaszkriptek és oktatóanyagok listáját lásd: [Azure Alkalmazáskonfiguráció eseményforrás](event-sources.md#app-configuration).
+A mintaparancsfájlok és oktatóanyagok listáját az [Azure App konfigurációs eseményforrásában](event-sources.md#app-configuration)található.
 
-## <a name="available-event-types"></a>Rendelkezésre álló események típusai
+## <a name="available-event-types"></a>Elérhető eseménytípusok
 
-Az Azure App konfigurálása a következő esemény típusú bocsát ki:
+Az Azure App Konfigurációja a következő eseménytípusokat bocsátja ki:
 
-| Esemény típusa | Leírás |
+| Eseménytípus | Leírás |
 | ---------- | ----------- |
-| Microsoft.AppConfiguration.KeyValueModified | Jelenik meg, ha a kulcs-érték jön létre vagy cseréje. |
-| Microsoft.AppConfiguration.KeyValueDeleted | Jön létre, ha törölnek egy kulcs-érték. |
+| Microsoft.AppConfiguration.KeyValueModified | Kulcsérték létrehozásakor vagy cseréjekor keletkezik. |
+| Microsoft.AppConfiguration.KeyValueTörölve | Kulcsérték törlésekor előad. |
 
 ## <a name="example-event"></a>Példa esemény
 
-Az alábbi példa bemutatja egy kulcs-érték módosított esemény sémája: 
+A következő példa egy kulcsérték-módosított esemény sémáját mutatja be: 
 
 ```json
 [{
@@ -50,7 +50,7 @@ Az alábbi példa bemutatja egy kulcs-érték módosított esemény sémája:
 }]
 ```
 
-Egy kulcs-érték törölt esemény sémája hasonlít: 
+A törölt kulcsérték-esemény sémája hasonló: 
 
 ```json
 [{
@@ -71,29 +71,29 @@ Egy kulcs-érték törölt esemény sémája hasonlít:
  
 ## <a name="event-properties"></a>Esemény tulajdonságai
 
-Egy esemény a következő legfelső szintű adatokat tartalmaz:
+Egy esemény legfelső szintű adatokat rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
-| eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
-| eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| id | string | Az esemény egyedi azonosítója. |
-| data | objektum | Alkalmazás-konfigurációs eseményadatokat. |
-| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| témakör | sztring | Az eseményforrás teljes erőforráselérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| Tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
+| eventTime | sztring | Az esemény létrehozásának időpontja a szolgáltató UTC-ideje alapján. |
+| id | sztring | Az esemény egyedi azonosítója |
+| data | objektum | Alkalmazáskonfigurációs eseményadatok. |
+| dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
+| metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
-Az objektum a következő tulajdonságokkal rendelkezik:
+Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| key | string | A kulcs-érték módosított vagy törölt kulcsa. |
-| label | string | A címke, ha bármely, a kulcs-érték, amely módosították vagy törölték. |
-| etag | string | A `KeyValueModified` etag címkéje az új kulcs-érték. A `KeyValueDeleted` etag címkéje a kulcs-érték, amely törölve lett. |
+| kulcs | sztring | A módosított vagy törölt kulcsérték kulcsa. |
+| label | sztring | A módosított vagy törölt kulcsérték címkéje(ha van). |
+| Etag | sztring | Az `KeyValueModified` új kulcs-érték e-címkéje esetén. A `KeyValueDeleted` törölt kulcsérték e-címkéje esetén. |
  
 ## <a name="next-steps"></a>További lépések
 
-* Azure Event Grid bemutatása, lásd: [Mi az Event Grid?](overview.md)
-* Az Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid-előfizetés séma](subscription-creation-schema.md).
-* Az Azure App-konfigurációs események működő bemutatását lásd: [útvonal az Azure App konfigurációs események – Azure CLI-vel](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json). 
+* Az Azure Event Grid bemutatása a [Mi az eseményrács?](overview.md)
+* Az Azure Event Grid-előfizetés ek létrehozásáról az [Event Grid-előfizetésséma](subscription-creation-schema.md)című témakörben talál további információt.
+* Az Azure App Configuration eseményekkel való együttműködés bemutatása az [Azure App Konfigurációs események – Azure CLI útvonala](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json)című témakörben található. 

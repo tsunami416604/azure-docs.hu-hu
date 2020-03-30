@@ -1,18 +1,18 @@
 ---
 title: Az AppSource és az Azure Piactér összehasonlítása | Azure
 description: Ez a cikk ismerteti a microsoft appsource és az Azure Marketplace-en a kirakatokat.
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
-ms.openlocfilehash: c07bba7340a1934fc422598c798022602e7c046a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd6c375231facc3d7afb35df74210d26b5f50ba8
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281612"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387784"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>Az AppSource és az Azure Marketplace összehasonlítása
 Az [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és a [Microsoft AppSource-ban](https://appsource.microsoft.com) található kirakatok egyedi ügyféligényeket szolgálnak ki. A kirakatok használatával szerepkör szerint célozhatja meg az ügyfeleket. Az ügyféltől függően a megfelelő megoldást vagy szolgáltatást kínálhatja.

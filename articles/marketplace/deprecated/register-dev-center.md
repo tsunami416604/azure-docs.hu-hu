@@ -1,18 +1,18 @@
 ---
 title: Regisztráció a fejlesztői központban | Azure
 description: Regisztráció a Fejlesztői központban (fejlesztői központban).
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: dsindona
-ms.openlocfilehash: 9f3dc149c74864878209a59fc5d10f62912902c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62e25a252d6a4981bddd50361d01110ec10a6e2c
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281476"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387665"
 ---
 # <a name="register-in-dev-center"></a>Regisztrálás a fejlesztői központban  
 Annak ellenőrzéséhez, hogy nincs-e bejelentkezve személyes böngészőfiókba, nyisson meg egy új Internet Explorer InKognitó-böngészési munkamenetet.  

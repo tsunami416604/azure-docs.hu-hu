@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Explorer csomópontja library használata az adatok betöltése
-description: Ebből a cikkből megismerheti, hogyan (betöltés) adatok betöltését az Azure Data Explorer Node.js használatával.
+title: Adatok betöltése az Azure Data Explorer csomópontkönyvtárával
+description: Ebben a cikkben megtudhatja, hogyan töltheti be (töltheti be) az adatokat az Azure Data Explorer be node.js használatával.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,23 +8,23 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 19da42437cfe1d7b63dfed4bd2b30716d691a0e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66494484"
 ---
-# <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>Az Azure Data Explorer csomópontja library használata az adatok betöltése
+# <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>Adatok betöltése az Azure Data Explorer csomópontkönyvtárával
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer két ügyfélkódtárat biztosít a Node számára: egy [betöltési kódtárat](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) és [egy adatkódtárat](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). Ezekkel a kódtárakkal adatokat tölthet be egy fürtbe, illetve adatokat kérdezhet le a kódból. Ebben a cikkben, először hozzon létre egy tábla és a egy teszt fürtben megfeleltetése. Ezután sorba helyezi a fürtbe való betöltést, és ellenőrzi az eredményeket.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer két ügyfélkódtárat biztosít a Node számára: egy [betöltési kódtárat](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) és [egy adatkódtárat](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). Ezekkel a kódtárakkal adatokat tölthet be egy fürtbe, illetve adatokat kérdezhet le a kódból. Ebben a cikkben először hozzon létre egy táblát és adatleképezést egy tesztfürtben. Ezután sorba helyezi a fürtbe való betöltést, és ellenőrzi az eredményeket.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mellett az Azure-előfizetéssel szüksége van ez a cikk a következőkre:
+Az Azure-előfizetésen kívül a cikk kitöltéséhez az alábbiakra is szüksége van:
 
-* [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
+* [Egy tesztfürt és egy adatbázis](create-cluster-database-portal.md)
 
 * A fejlesztői számítógépen telepített [Node.js](https://nodejs.org/en/download/)
 
@@ -88,7 +88,7 @@ const blobPath = `https://${account}.blob.core.windows.net/${container}/${filePa
 
 ## <a name="create-a-table-on-your-test-cluster"></a>Tábla létrehozása a tesztfürtön
 
-Hozzon létre egy táblát, amely megfelel a `StormEvents.csv` fájlban szereplő adatok sémájának. Ez a kód futtatásakor a következőhöz hasonló üzenetet adja vissza: *Jelentkezzen be, használja egy webböngészőben nyissa meg a https://microsoft.com/devicelogin , és írja be a kódot a hitelesítéshez XXXXXXXXX*. Kövesse a bejelentkezési lépéseket, majd térjen vissza a következő kódblokk futtatásához. A kapcsolatot létrehozó későbbi kódblokkokhoz ismét be kell jelentkeznie.
+Hozzon létre egy táblát, amely megfelel a `StormEvents.csv` fájlban szereplő adatok sémájának. Amikor ez a kód fut, a következőhöz hasonló üzenetet ad vissza: *A bejelentkezéshez webböngészőben nyissa meg a https://microsoft.com/devicelogin oldalt, és írja be az XXXXXXXXX kódot a hitelesítéshez*. Kövesse a bejelentkezési lépéseket, majd térjen vissza a következő kódblokk futtatásához. A kapcsolatot létrehozó későbbi kódblokkokhoz ismét be kell jelentkeznie.
 
 ```javascript
 const kustoClient = new KustoClient(kcsbData);
@@ -141,7 +141,7 @@ kustoClient.execute(kustoDatabase, query, (err, results) => {
 
 ## <a name="run-troubleshooting-queries"></a>Hibaelhárítási lekérdezések futtatása
 
-Jelentkezzen be a [https://dataexplorer.azure.com](https://dataexplorer.azure.com) oldalon, és csatlakozzon a fürthöz. Futtassa a következő parancsot az adatbázisban annak ellenőrzéséhez, hogy voltak-e betöltési hibák az elmúlt négy órában. A futtatás előtt cserélje le az adatbázis nevét.
+Jelentkezzen be, [https://dataexplorer.azure.com](https://dataexplorer.azure.com) és csatlakozzon a fürthöz. Futtassa a következő parancsot az adatbázisban annak ellenőrzéséhez, hogy voltak-e betöltési hibák az elmúlt négy órában. A futtatás előtt cserélje le az adatbázis nevét.
     
 ```Kusto
 .show ingestion failures
@@ -158,7 +158,7 @@ Futtassa a következő parancsot az elmúlt négy órában végzett összes bet�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, hajtsa végre a más cikkeket, megtarthatja a létrehozott erőforrásokat. Ha nem szeretné, futtassa a következő parancsot az adatbázisban a `StormEvents`-tábla felesleges elemeinek eltávolításához.
+Ha azt tervezi, hogy követi a többi cikket, tartsa meg a létrehozott erőforrásokat. Ha nem szeretné, futtassa a következő parancsot az adatbázisban a `StormEvents`-tábla felesleges elemeinek eltávolításához.
 
 ```Kusto
 .drop table StormEvents

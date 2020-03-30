@@ -1,88 +1,86 @@
 ---
-title: Biztonsági mentés és visszaállítás – Azure Database for MariaDB
-description: Ismerje meg a Azure Database for MariaDB-kiszolgáló automatikus biztonsági mentését és visszaállítását.
+title: Biztonsági mentés és visszaállítás – Azure-adatbázis a MariaDB-hez
+description: Ismerje meg az automatikus biztonsági mentéseket és az Azure Database visszaállítása MariaDB-kiszolgálóhoz.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 3e10c23aaaef6315e072348d879d5f077e16382a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.date: 3/27/2020
+ms.openlocfilehash: c4d5a9ca85237bde1277904a478a0b8828fc2b08
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623660"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369244"
 ---
-# <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Biztonsági mentés és visszaállítás Azure Database for MariaDB
+# <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Biztonsági mentés és visszaállítás a MariaDB Azure Database szolgáltatásában
 
-Azure Database for MariaDB automatikusan létrehozza a kiszolgáló biztonsági másolatait, és a helyileg redundáns vagy földrajzilag redundáns tárolóban tárolja azokat. A biztonsági másolatokkal a kiszolgáló adott időpontnak megfelelő állapotra állítható vissza. A biztonsági mentés és a visszaállítás fontos részét képezi az üzletmenet folytonossági stratégiájának, mivel ezek az adatok a véletlen sérüléstől vagy törléstől védve vannak.
+A MariaDB Azure Database automatikusan létrehozza a kiszolgáló biztonsági másolatait, és tárolja azokat a felhasználó által konfigurált helyileg redundáns vagy georedundáns tárolóban. A biztonsági másolatokkal a kiszolgáló adott időpontnak megfelelő állapotra állítható vissza. A biztonsági mentés és visszaállítás minden üzletmenet-folytonossági stratégia alapvető részét képezi, mivel megvédi az adatokat a véletlen sérüléstől vagy törléstől.
 
 ## <a name="backups"></a>Biztonsági másolatok
 
-A Azure Database for MariaDB teljes, differenciális és tranzakciós naplóbeli biztonsági másolatokat készít. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is beállíthatja. Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik.
+A MariaDB Azure Database teljes, különbözeti és tranzakciós naplóbiztonsági mentést készít. Ezek a biztonsági mentések lehetővé teszik, hogy a konfigurált biztonsági mentési megőrzési időszakon belül bármikor visszaállítsa a kiszolgálót a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Igény szerint legfeljebb 35 napig konfigurálhatja. Minden biztonsági mentés a 256 bites AES titkosítással van titkosítva.
 
-Ezeket a biztonságimásolat-fájlokat nem lehet exportálni. A biztonsági másolatok csak Azure Database for MariaDB visszaállítási műveleteihez használhatók. A [mysqldump](howto-migrate-dump-restore.md) használatával másolhat egy adatbázist.
+Ezek a biztonságimásolat-fájlok nem felhasználói expozíciónak vannak kitéve, és nem exportálhatók. Ezek a biztonsági mentések csak a MariaDB Azure Database-ben végzett visszaállítási műveletekhez használhatók. A [mysqldump](howto-migrate-dump-restore.md) segítségével másolhat egy adatbázist.
 
 ### <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
 
-A teljes biztonsági mentés általában hetente, a különbözeti biztonsági mentés naponta kétszer, a tranzakciós naplók biztonsági mentése pedig ötpercenként történik. Az első teljes biztonsági mentést a rendszer a kiszolgáló létrehozása után azonnal ütemezi. A kezdeti biztonsági mentés hosszabb időt vehet igénybe egy nagy visszaállított kiszolgálón. Az a legkorábbi időpont, ameddig egy új kiszolgáló visszaállítható a kezdeti teljes biztonsági mentés befejezésének időpontjára.
+A teljes biztonsági mentés általában hetente, a különbözeti biztonsági mentés naponta kétszer, a tranzakciós naplók biztonsági mentése pedig ötpercenként történik. Az első teljes biztonsági mentés ütemezése a kiszolgáló létrehozása után azonnal megtörténik. A kezdeti biztonsági mentés hosszabb időt vehet igénybe egy nagy méretű, visszaállított kiszolgálón. Az új kiszolgáló legkorábbi visszaállítási időpontja az az időpont, amikor a kezdeti teljes biztonsági mentés befejeződött.
 
-### <a name="backup-redundancy-options"></a>A Backup redundancia beállításai
+### <a name="backup-redundancy-options"></a>Biztonsági mentésredundanci adlehetőségek
 
-Azure Database for MariaDB rugalmasságot biztosít a helyileg redundáns vagy geo-redundáns biztonsági mentési tárolók közötti választáshoz a általános célú és a memóriára optimalizált rétegekben. Ha a biztonsági mentések a földrajzilag redundáns biztonsági mentési tárolóban tárolódnak, azok nem csak abban a régióban vannak tárolva, amelyben a kiszolgáló üzemeltetve van, de egy [párosított adatközpontba](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)is replikálódnak. Ez jobb védelmet nyújt, és lehetővé teszi a kiszolgáló egy másik régióban való visszaállítását vészhelyzet esetén. Az alapszintű csomag csak a helyileg redundáns biztonsági mentési tárhelyet kínálja.
+A MariaDB Azure Database rugalmasságot biztosít a helyiredundáns vagy georedundáns biztonsági mentési tárolás közötti választáshoz az általános cél és a memóriaoptimalizált szinteken. Ha a biztonsági másolatokat georedundáns biztonsági mentési tárolóban tárolják, azok nem csak abban a régióban tárolódnak, ahol a kiszolgáló található, hanem egy [párosított adatközpontba](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)is replikálódnak. Ez jobb védelmet és lehetővé teszi a kiszolgáló visszaállítását egy másik régióban katasztrófa esetén. Az alapszintű szint csak helyileg redundáns biztonsági mentési tárolást kínál.
 
 > [!IMPORTANT]
-> A helyileg redundáns vagy geo-redundáns tárterület a biztonsági mentéshez való konfigurálása csak a kiszolgáló létrehozásakor engedélyezett. A kiszolgáló üzembe helyezését követően nem módosítható a biztonsági mentési tár redundáns beállítása.
+> A helyileg redundáns vagy georedundáns tárolás biztonsági mentéshez történő konfigurálása csak a kiszolgáló létrehozása során engedélyezett. A kiszolgáló kiépítése után nem módosíthatja a biztonsági mentési tároló redundancia beállítását.
 
-### <a name="backup-storage-cost"></a>Biztonsági mentési tárolási díj
+### <a name="backup-storage-cost"></a>Biztonsági mentési tárolási költség
 
-A Azure Database for MariaDB a kiépített kiszolgáló tárterületének akár 100%-át is elérhetővé teszi a biztonsági mentési tárolóként, többletköltség nélkül. Ez általában alkalmas a biztonsági másolatok megtartására, amely hét nap. A további felhasznált biztonsági mentési tárhelyeket GB-onként számítjuk fel.
+A MariaDB Azure Database a kiosztott kiszolgálói tárhely akár 100%-át is biztosítja biztonsági mentési tárhelyként, további költségek nélkül. Ez általában hét napos biztonsági mentési megőrzésre alkalmas. Minden további biztonsági mentési tárterület gb-hónapban kerül felszámolásra.
 
-Ha például létrehozta a 250 GB-ot tartalmazó kiszolgálót, a biztonsági mentési tárterület 250 GB-nyi tartalék tárhelye díjmentes. A 250 GB-nál nagyobb tárterületért díjat számítunk fel.
+Ha például 250 GB-os kiszolgálót létesített, 250 GB biztonsági mentési tárhellyel rendelkezik, további díj nélkül. A 250 GB-ot meghaladó tárhely felszámításra kerül.
 
-A biztonsági mentési tárolási költséggel kapcsolatos további információkért tekintse meg a [MariaDB díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/mariadb/).
+A biztonsági mentés tárolási költségével kapcsolatos további információkért látogasson el a [MariaDB árképzési oldalára.](https://azure.microsoft.com/pricing/details/mariadb/)
 
 ## <a name="restore"></a>Visszaállítás
 
-Azure Database for MariaDB a Restore művelet elvégzésével létrehoz egy új kiszolgálót az eredeti kiszolgáló biztonsági másolatai közül.
+A MariaDB Azure Database-ben a visszaállítás új kiszolgálót hoz létre az eredeti kiszolgáló biztonsági másolataiból, és visszaállítja a kiszolgálón található összes adatbázist.
 
-Két típusú visszaállítás érhető el:
+Kétféle visszaállítás érhető el:
 
-- Az **időponthoz való visszaállítás** a Backup redundancia beállítással érhető el, és egy új kiszolgálót hoz létre ugyanabban a régióban, ahol az eredeti kiszolgáló található.
-- A **geo-visszaállítás** csak akkor érhető el, ha a kiszolgálót a földrajzilag redundáns tároláshoz konfigurálta, és lehetővé teszi a kiszolgáló másik régióba való visszaállítását.
+- **Az időponthoz való hozzáférés** a biztonsági mentésredundanci beállításával érhető el, és a teljes és a tranzakciós napló biztonsági másolatainak kombinációját használó eredeti kiszolgálóval azonos régióban hoz létre új kiszolgálót.
+- **A geo-visszaállítás** csak akkor érhető el, ha a kiszolgálót georedundáns tárolásra konfigurálta, és lehetővé teszi, hogy a legutóbbi biztonsági mentést kihasználva visszaállítsa a kiszolgálót egy másik régióba.
 
-A helyreállítás becsült ideje több tényezőtől függ, többek között az adatbázisok méretétől, a tranzakciós napló méretétől, a hálózati sávszélességtől és az azonos régióban lévő adatbázisok teljes számától. A helyreállítási idő általában kevesebb, mint 12 óra.
+A helyreállítás becsült ideje több tényezőtől függ, többek között az adatbázis méretétől, a tranzakciós napló méretétől, a hálózati sávszélességtől és az ugyanabban a régióban egyidejűleg helyreállító adatbázisok teljes számától. A helyreállítási idő általában kevesebb, mint 12 óra.
 
 > [!IMPORTANT]
-> A törölt kiszolgálók **nem** állíthatók vissza. Ha törli a kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. A kiszolgálói erőforrások, a telepítés után a véletlen törlés vagy a váratlan módosítások elleni védelem érdekében a rendszergazdák kihasználhatják a [felügyeleti zárolásokat](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
+> A törölt kiszolgálók **nem** állíthatók vissza. Ha törli a kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. A kiszolgáló erőforrásainak, a telepítés utáni állapotnak a véletlen törléstől vagy a váratlan változásoktól való védelme érdekében a rendszergazdák kihasználhatják [a felügyeleti zárolásokat.](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)
 
 ### <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
 
-A biztonsági mentési redundancia-beállítástól függetlenül a biztonsági másolatok megőrzési időszakán belül bármikor elvégezheti a visszaállítást. A rendszer létrehoz egy új kiszolgálót ugyanabban az Azure-régióban, mint az eredeti kiszolgálót. A rendszer az eredeti kiszolgáló konfigurációját hozza létre a díjszabási csomag, a számítási generáció, a virtuális mag száma, a tárterület mérete, a biztonsági másolatok megőrzési időtartama és a biztonsági mentési redundancia beállítás esetében.
+A biztonsági mentési redundancia beállítástól függetlenül a biztonsági mentés megőrzési időszakán belül bármikor végrehajthatja a visszaállítást. Egy új kiszolgáló jön létre ugyanabban az Azure-régióban, mint az eredeti kiszolgáló. Az eredeti kiszolgáló konfigurációjával jön létre a tarifacsomaghoz, a számítási kapacitáshoz, a virtuális magok számához, a tárhely méretéhez, a biztonsági mentés idorolási időszakához és a biztonsági mentés redundancia beállításához.
 
-Az időponthoz való visszaállítás több esetben is hasznos lehet. Ha például egy felhasználó véletlenül törli az adatvesztést, elveszít egy fontos táblát vagy adatbázist, vagy ha egy alkalmazás hibája miatt véletlenül rossz adatmennyiséggel felülírja a megfelelő adatmennyiséget.
+Az időponthoz való időpont visszaállítása több esetben is hasznos. Ha például egy felhasználó véletlenül adatokat töröl, eldob egy fontos táblát vagy adatbázist, vagy ha egy alkalmazás alkalmazáshiba miatt véletlenül felülírja a jó adatokat rossz adatokkal.
 
-Előfordulhat, hogy meg kell várnia a következő tranzakciónapló biztonsági mentését, mielőtt az utolsó öt percen belül helyre tudja állítani az adott időpontot.
+Előfordulhat, hogy meg kell várnia a következő tranzakciónapló biztonsági mentését, mielőtt az utolsó öt percben visszaállíthatja az időpontot.
 
 ### <a name="geo-restore"></a>Georedundáns helyreállítás
 
-A kiszolgálót visszaállíthatja egy másik Azure-régióba, ahol a szolgáltatás elérhető, ha konfigurálta a kiszolgálót a Geo-redundáns biztonsági mentésekhez. A Geo-visszaállítás az alapértelmezett helyreállítási lehetőség, ha a kiszolgáló nem érhető el, mert a kiszolgálót futtató régióban incidens található. Ha egy adott régióban a nagyméretű incidensek nem állnak rendelkezésre az adatbázis-alkalmazás számára, visszaállíthat egy kiszolgálót a Geo-redundáns biztonsági másolatokból egy másik régióban található kiszolgálóra. A biztonsági másolat készítése és más régióba való replikálása között késés történt. Ez a késleltetés akár egy óráig is eltarthat, így ha egy katasztrófa következik be, akár egy órányi adatvesztés is lehet.
+Visszaállíthatja a kiszolgálót egy másik Azure-régióba, ahol a szolgáltatás elérhető, ha konfigurálta a kiszolgálót a georedundáns biztonsági mentések. Geo-visszaállítás az alapértelmezett helyreállítási lehetőség, ha a kiszolgáló nem érhető el egy incidens miatt a régióban, ahol a kiszolgáló található. Ha egy adott régióban egy nagyméretű incidens az adatbázis-alkalmazás elérhetetlenségét eredményezi, visszaállíthatja a kiszolgálót a georedundáns biztonsági mentések ből egy másik régió kiszolgálójára. A geo-visszaállítás a kiszolgáló legutóbbi biztonsági másolatát használja. A biztonsági mentés készítése és a más régióba replikált replikálása között késleltetés van. Ez a késleltetés akár egy órát is elérhet, így ha katasztrófa történik, akár egy órás adatvesztés is bekövetkezhet.
 
-A Geo-visszaállítás során a megváltoztatható kiszolgálói konfigurációk közé tartoznak a számítási generáció, a virtuális mag, a biztonsági másolatok megőrzési időtartama és a biztonsági mentési redundancia beállításai. Az árképzési szint (alapszintű, általános célú vagy memória optimalizálása) vagy a tárolási méret módosítása a Geo-visszaállítás során nem támogatott.
+A geo-visszaállítás során a módosítható kiszolgálókonfigurációk közé tartozik a számítási generálás, a virtuális mag, a biztonsági mentés megőrzési időszaka és a biztonsági mentés redundancia beállításai. A földrajzi visszaállítás során nem támogatott a tarifacsomag (Alapszintű, általános célú vagy memóriaoptimalizált) vagy a tárhely méretének módosítása.
 
 ### <a name="perform-post-restore-tasks"></a>Visszaállítás utáni feladatok végrehajtása
 
-A helyreállítási mechanizmusból való visszaállítás után a következő feladatokat kell elvégeznie a felhasználók és alkalmazások biztonsági mentésének és futtatásának visszaszerzéséhez:
+A helyreállítási mechanizmusból történő visszaállítás után a következő feladatokat kell végrehajtania a felhasználók és alkalmazások biztonsági mentéséhez és futtatásához:
 
-- Ha az új kiszolgáló lecseréli az eredeti kiszolgálót, átirányítja az ügyfeleket és az ügyfélalkalmazások az új kiszolgálóra
-- Gondoskodjon arról, hogy a felhasználók a megfelelő kiszolgálói szintű tűzfalszabályok legyenek a kapcsolódáshoz
-- Győződjön meg arról, hogy a megfelelő bejelentkezések és az adatbázis-szintű engedélyek vannak érvényben
+- Ha az új kiszolgáló az eredeti kiszolgáló takarására szolgál, irányítsa át az ügyfeleket és az ügyfélalkalmazásokat az új kiszolgálóra
+- Győződjön meg arról, hogy a felhasználók csatlakozhatnak a megfelelő virtuális hálózati szabályokhoz. Ezeket a szabályokat a rendszer nem másolja át az eredeti kiszolgálóról.
+- Győződjön meg arról, hogy megfelelő bejelentkezési és adatbázisszintű engedélyek vannak érvényben
 - Konfigurálja a riasztásokat, ha szükséges.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Az üzletmenet folytonosságával kapcsolatos további tudnivalókért tekintse meg az [üzletmenet folytonosságának áttekintése](concepts-business-continuity.md)című témakört.
-- Ha a Azure Portal használatával szeretne visszaállítani egy adott időpontra, tekintse meg [az adatbázis visszaállítása egy időpontra a Azure Portal használatával](howto-restore-server-portal.md)című témakört.
- 
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md).-->
+- Ha többet szeretne megtudni az üzletmenet folytonosságáról, olvassa el az [üzletmenet folytonosságának áttekintését.](concepts-business-continuity.md)
+- Ha vissza szeretne állítani egy időpontra az Azure Portal használatával, olvassa el a [kiszolgáló visszaállítása egy adott időpontra](howto-restore-server-portal.md)az Azure Portal használatával című témakört.
+- Ha vissza szeretne állítani egy időpontra az Azure CLI használatával, olvassa [el a kiszolgáló visszaállítása időponthoz való visszaállítása a CLI használatával.](howto-restore-server-cli.md)

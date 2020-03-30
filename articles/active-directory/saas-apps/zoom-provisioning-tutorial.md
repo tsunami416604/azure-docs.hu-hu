@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: az automatikus felhasználó-kiépítés automatikus méretezésének konfigurálása Azure Active Directory | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a nagyításhoz.
+title: 'Oktatóanyag: A nagyítás konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
+description: Ismerje meg, hogyan lehet automatikusan kiépíteni és kiépíteni a felhasználói fiókokat az Azure AD-ről a nagyításra.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -14,159 +14,151 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
-ms.author: jeedes
-ms.openlocfilehash: cd832a9dfec4680222d2c985f49aba499a56aaac
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.author: Zhchia
+ms.openlocfilehash: 94c261da0c935cb7a41dde768069099b4e5ed251
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062770"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384075"
 ---
-# <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Oktatóanyag: nagyítás konfigurálása automatikus felhasználó-kiépítési művelethez
+# <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Oktatóanyag: A nagyítás konfigurálása automatikus felhasználói kiépítéshez
 
-Ennek az oktatóanyagnak a célja, hogy bemutassa a nagyítás és Azure Active Directory (Azure AD) végrehajtásának lépéseit az Azure AD konfigurálásához, hogy automatikusan kiépítse és kiépítse a felhasználókat és/vagy csoportokat a nagyításhoz.
+Ez az oktatóanyag ismerteti azokat a lépéseket, amelyeket a Nagyítás és az Azure Active Directoryban (Azure AD) kell végrehajtani az automatikus felhasználói kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan rendelkezik, és de-rendelkezések a felhasználók és csoportok [nagyításához](https://zoom.us/pricing/) az Azure AD-kiépítési szolgáltatás használatával. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../manage-apps/user-provisioning.md) 
 
-> [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
->
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="capabilities-supported"></a>Támogatott képességek
+> [!div class="checklist"]
+> * Felhasználók létrehozása nagyítással
+> * Felhasználók eltávolítása nagyítással, ha már nincs szükségük hozzáférésre
+> * Felhasználói attribútumok szinkronizálása az Azure AD és a Nagyítás között
+> * [Egyszeri bejelentkezés a](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial) nagyításba (ajánlott)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Azure AD-bérlő
-* [Nagyítási bérlő](https://zoom.us/pricing)
-* Felhasználói fiók a nagyításban rendszergazdai engedélyekkel
+* [Egy Azure AD-bérlő.](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
+* Az Azure AD-ben a kiépítés konfigurálására [vonatkozó engedéllyel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) rendelkező felhasználói fiók (pl. alkalmazásrendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda). 
+* [A Zoom bérlő](https://zoom.us/pricing).
+* Felhasználói fiók a Nagyítás ban rendszergazdai engedélyekkel.
 
-## <a name="add-zoom-from-the-gallery"></a>Nagyítás hozzáadása a katalógusból
+## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés A kiépítési telepítés megtervezése
+1. További információ [a kiépítési szolgáltatás működéséről.](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)
+2. Határozza meg, hogy ki lesz a [kiépítés hatóköre.](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)
+3. Határozza meg, hogy milyen adatokat szeretne leképezni az [Azure AD és a Zoom között.](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) 
 
-Az Azure AD-vel való automatikus kiépítés konfigurálása előtt hozzá kell adnia a nagyítást az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájára.
+## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>2. lépés Nagyítás konfigurálása az Azure AD-vel való kiépítés támogatásához
 
-**Ha az Azure AD-alkalmazás-katalógusból szeretne nagyítani, hajtsa végre a következő lépéseket:**
+1. Jelentkezzen be a [Nagyítási felügyeleti konzolba.](https://zoom.us/signin) Nyissa meg a **Speciális > Nagyítás fejlesztőknek** lehetőséget a bal oldali navigációs ablakban.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+    ![Integrációk nagyítása](media/zoom-provisioning-tutorial/zoom01.png)
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
-
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
-
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
-
-    ![Az új alkalmazás gomb](common/add-new-app.png)
-
-4. A keresőmezőbe írja be a **Nagyítás**kifejezést, válassza a **Nagyítás** lehetőséget az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
-
-    ![Nagyítás az eredmények listájában](common/search-new-app.png)
-
-## <a name="assign-users-to-zoom"></a>Felhasználók kiosztása a nagyításhoz
-
-Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
-
-A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD-ban mely felhasználók és/vagy csoportok férhetnek hozzá a nagyításhoz. Miután eldöntötte, a következő utasításokat követve rendelheti hozzá ezeket a felhasználókat és/vagy csoportokat a nagyításhoz:
-
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
-
-### <a name="important-tips-for-assigning-users-to-zoom"></a>Fontos Tippek a felhasználók nagyításhoz való hozzárendeléséhez
-
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen kiosztva a nagyításhoz a felhasználó automatikus kiépítési konfigurációjának teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
-
-* Amikor a felhasználó számára a nagyítást rendeli hozzá, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
-
-## <a name="configure-automatic-user-provisioning-to-zoom"></a>Automatikus felhasználó-kiépítés beállítása a nagyításhoz 
-
-Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálásának lépésein, hogy a felhasználók és/vagy a csoportok hozzárendelései az Azure AD-ben való létrehozásához, frissítéséhez és letiltásához.
-
-> [!TIP]
-> Dönthet úgy is, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a nagyításhoz, a [nagyítási egyszeri bejelentkezés oktatóanyagában](zoom-tutorial.md)szereplő utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
-
-### <a name="configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>Automatikus felhasználó-kiépítés beállítása a nagyításhoz az Azure AD-ben
-
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
-
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
-
-2. Az alkalmazások listában válassza a **Nagyítás**lehetőséget.
-
-    ![A nagyítási hivatkozás az alkalmazások listájában](common/all-applications.png)
-
-3. Válassza ki a **kiépítés** lapot.
-
-    ![Kiépítés lap](common/provisioning.png)
-
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
-
-    ![Kiépítés lap](common/provisioning-automatic.png)
-
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a `https://api.zoom.us/scim` a **bérlői URL-címben**. A nagyítási fiók **titkos jogkivonatának** lekéréséhez kövesse a 6. lépésben leírt útmutatót.
-
-6. Jelentkezzen be a [nagyítási felügyeleti konzolba](https://zoom.us/signin). A bal oldali navigációs panelen navigáljon a **fejlesztők speciális > nagyításához** .
-
-    ![Nagyítási integrációk](media/zoom-provisioning-tutorial/zoom01.png)
-
-    Navigáljon a **kezelés** elemre a lap jobb felső sarkában. 
+2. Keresse meg a **Kezelés** lapot a lap jobb felső sarkában. 
 
     ![Nagyítás telepítése](media/zoom-provisioning-tutorial/zoom02.png)
 
-    Navigáljon a létrehozott Azure AD-alkalmazáshoz. 
+3. Keresse meg a létrehozott Azure AD-alkalmazást. 
     
     ![Alkalmazás nagyítása](media/zoom-provisioning-tutorial/zoom03.png)
 
-    Válassza ki az **alkalmazás hitelesítő adatait** a bal oldali navigációs ablaktáblán.
+4. A bal oldali navigációs ablakban válassza az **Alkalmazáshitelesítő adatok** lehetőséget.
 
     ![Alkalmazás nagyítása](media/zoom-provisioning-tutorial/zoom04.png)
 
-    Kérje le az alább látható JWT-jogkivonat értékét, és írja be ezt az Azure AD **titkos jogkivonat** mezőjébe. Ha új, nem lejáró tokenre van szüksége, akkor újra kell konfigurálnia a lejárati időt, amely automatikusan létrehoz egy új tokent. 
+5. Másolja és mentse a **JWT-tokent.** Ez az érték a **Titkos jogkivonat** mezőben lesz megadva a Nagyítási alkalmazás kiépítés lapján az Azure Portalon. Ha egy új, nem lejáró jogkivonatra van szüksége, újra kell konfigurálnia a lejárati időt, amely automatikusan létrehoz egy új jogkivonatot. 
 
     ![Nagyítás telepítése](media/zoom-provisioning-tutorial/zoom05.png)
 
-7. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tud a nagyításhoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a nagyítási fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>3. lépés Nagyítás hozzáadása az Azure AD alkalmazásgyűjteményéből
 
-    ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
+Nagyítás hozzáadása az Azure AD alkalmazáskatalógusból a kiépítés nagyításhoz való kezeléséhez. Ha korábban már beállította a Nagyítás beállítást az SSO-hoz, használhatja ugyanazt az alkalmazást. Azonban ajánlott, hogy hozzon létre egy külön alkalmazást, amikor az integráció tesztelése kezdetben. További információ az alkalmazások hozzáadásáról a galériából [itt.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
 
-8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés Annak meghatározása, hogy ki lesz a kiépítés hatóköre 
 
-    ![Értesítő E-mail](common/provisioning-notification-email.png)
+Az Azure AD-létesítési szolgáltatás lehetővé teszi, hogy a hatókör, aki ki lesz építve az alkalmazáshoz való hozzárendelés és vagy a felhasználó /csoport attribútumai alapján. Ha úgy dönt, hogy hatókör, aki ki lesz építve az alkalmazás hozzárendelés alapján, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) felhasználókat és csoportokat rendelhet az alkalmazáshoz. Ha úgy dönt, hogy a hatókört, aki kilesz építve alapján kizárólag attribútumok a felhasználó vagy csoport, akkor egy hatókörszűrő az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)leírtak szerint . 
 
-9. Kattintson a **Save** (Mentés) gombra.
+* Ha felhasználókat és csoportokat rendel a nagyításhoz, az Alapértelmezett hozzáférés funkciótól eltérő szerepkört kell **kijelölnie.** Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből, és a kiépítési naplókban nem megfelelőként lesznek megjelölve. Ha az alkalmazáson elérhető egyetlen szerepkör az alapértelmezett hozzáférési szerepkör, [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) további szerepkörök hozzáadásához. 
 
-10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók nagyításhoz**lehetőséget.
+* Kezdjük kicsiben. Tesztelje a felhasználók és csoportok egy kis csoportját, mielőtt mindenki számára kivezetne. Ha a kiépítési hatókör hozzárendelt felhasználókra és csoportokra van beállítva, ezt szabályozhatja egy vagy két felhasználó vagy csoport hozzárendelésével az alkalmazáshoz. Ha a hatókör az összes felhasználóra és csoportra van beállítva, megadhat egy [attribútumalapú hatókörszűrőt.](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) 
 
-    ![Felhasználói leképezések nagyítása](media/zoom-provisioning-tutorial/zoom-user-mapping.png)
 
-11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútumok leképezése** szakasz nagyításához. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez használt nagyítási műveletek felhasználói fiókjainak egyeztetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
-    
-     ![Felhasználói leképezések nagyítása](media/zoom-provisioning-tutorial/zoom-user-attributes.png)
+## <a name="step-5-configure-automatic-user-provisioning-to-zoom"></a>5. lépés Automatikus felhasználói kiépítés konfigurálása nagyításra 
 
-12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le a TestApp-ben az Azure AD felhasználói és/vagy csoport-hozzárendelései alapján.
 
-13. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a nagyításhoz, módosítsa a **kiépítési állapotot** **a következőre** a **Beállítások** szakaszban.
-    
-    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
+### <a name="to-configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>Az automatikus felhasználói kiépítés konfigurálása az Azure AD nagyításához:
 
-14. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket szeretne kiépíteni a nagyításhoz, és válassza ki a kívánt értékeket a **hatókör** területen a **Beállítások** szakaszban.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza **a Vállalati alkalmazások**lehetőséget, majd a Minden **alkalmazás**lehetőséget.
+
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+
+2. Az alkalmazások listájában válassza a **Nagyítás**lehetőséget.
+
+    ![Az Alkalmazások listában található Nagyítás hivatkozás](common/all-applications.png)
+
+3. Válassza a **Kiépítés** lapot.
+
+    ![Kiépítés lap](common/provisioning.png)
+
+4. Állítsa a **létesítési módot** **Automatikus**ra.
+
+    ![Kiépítés lap](common/provisioning-automatic.png)
+
+5. A **Rendszergazdai hitelesítő** adatok `https://api.zoom.us/scim` csoportban írja be a **bérlői URL-címet.** Adja meg a **Titkos jogkivonat**korábbi, beolvasott **JWT-token** értékét. Kattintson **a Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD nagyításhoz kapcsolódjon. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a nagyítási fiók rendszergazdai engedélyekkel rendelkezik, majd próbálkozzon újra.
+
+    ![Kiépítés nagyítása](./media/zoom-provisioning-tutorial/provisioning.png)
+
+6. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be az **E-mail értesítés küldése hiba esetén jelölőnégyzetet.**
+
+    ![Értesítési e-mail](common/provisioning-notification-email.png)
+
+7. Kattintson a **Mentés** gombra.
+
+8. A **Leképezések** csoportban válassza az **Azure Active Directory felhasználóinak szinkronizálása nagyításhoz**lehetőséget.
+
+9. Tekintse át az Azure AD-ből az **Attribútum-leképezés** szakasz nagyításához szinkronizált felhasználói attribútumokat. Az **Egyező** tulajdonságokként kijelölt attribútumok a frissítési műveletek nagyítási funkcióinak megfelelő felhasználói fiókokat jelölik. Ha úgy dönt, hogy módosítja az [egyező célattribútumot,](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)gondoskodnia kell arról, hogy a Nagyítás i. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
+
+   |Attribútum|Típus|
+   |---|---|
+   |userName (Felhasználónév)|Sztring|
+   |Aktív|Logikai|
+   |name.givenName|Sztring|
+   |name.familyName|Sztring|
+   |e-mailek[típus eq "munka"]|Sztring|
+   |urn:ietf:params:scim:sémák:kiterjesztés:enterprise:2.0:Felhasználó:részleg|Sztring|
+
+10. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
+
+11. Az Azure AD-kiépítési szolgáltatás nagyításengedélyezéséhez módosítsa a **Kiépítési állapot** ot **bekapcsolva** állapotra a **Beállítások** szakaszban.
+
+    ![Kiépítési állapot bevan kapcsolva](common/provisioning-toggle-on.png)
+
+12. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket nagyításra szeretne kiépíteni, ha a **Beállítások** szakasz **Hatókör területén** kiválasztja a kívánt értékeket.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+13. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a nagyításkor végrehajtott összes műveletet ismertetik.
+Ez a művelet elindítja a Beállítások szakasz **Hatókör szakaszában** definiált összes felhasználó és csoport kezdeti szinkronizálási **ciklusát.** A kezdeti ciklus végrehajtása hosszabb időt vesz igénybe, mint a későbbi ciklusok, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. 
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
+## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
+Miután konfigurálta a kiépítést, a következő erőforrásoksegítségével figyelheti a központi telepítést:
 
-## <a name="connector-limitations"></a>Összekötő korlátozásai
+1. A [létesítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen vagy sikertelenül kiépítve
+2. Ellenőrizze a [folyamatjelzőt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) a kiépítési ciklus állapotának és a befejezéshez szükséges közelségnek a megtekintéséhez.
+3. Ha a létesítési konfiguráció úgy tűnik, hogy sérült állapotban van, az alkalmazás karanténba kerül. A karanténállapotokról itt olvashat [bővebben.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)  
 
-* A nagyítás nem támogatja a csoportok üzembe helyezését.
+## <a name="connector-limitations"></a>Összekötő korlátai
+* Nagyítás csak lehetővé teszi, hogy legfeljebb 9999 alapvető felhasználók ma.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../manage-apps/check-status-user-account-provisioning.md)

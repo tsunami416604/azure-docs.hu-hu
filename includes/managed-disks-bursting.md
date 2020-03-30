@@ -5,49 +5,49 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/28/2020
+ms.date: 03/29/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a04df7ed283a17ddad6af87cf8215ff8d39a5079
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 871a3edf70690a09d3747703e8bc999dfcce967c
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78202518"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385180"
 ---
-A Disk burst szolgáltatás jelenleg a prémium SSD-k előzetes verziójú funkciója. A burst bármely prémium szintű SSD-lemez mérete < = 512 GiB (P20 vagy lent). Ezeknek a lemezeknek a mérete támogatja a legjobb erőfeszítést, és egy kreditrendszer használatával kezeli a kitörést. A kreditek felhalmozódnak egy burst gyűjtőben, amikor a lemezes forgalom a lemez méretéhez tartozó kiépített teljesítmény alatt van, és kreditet használ, ha a forgalom a célponton túl van. A lemezes forgalom a kiépített cél IOPS és sávszélességével is nyomon követhető. A lemezek kitörése nem fogja megkerülni a virtuális gép (VM) méretének korlátozásait a IOPS vagy az átviteli sebesség tekintetében.
+A lemezfelszakítás prémium szintű SSD-k esetében támogatott. A bursting minden prémium szintű SSD lemezméreten támogatott, <= 512 GiB (P20 vagy az alatt). Ezek a lemezméretek támogatják a felszakítást a legjobb erőfeszítés alapján, és egy kreditrendszert használnak a felszakítás kezeléséhez. A kreditek egy burst-gyűjtőben halmozódnak fel, ha a lemezforgalom a lemezméretük kiosztott teljesítménycél alatt van, és krediteket használnak fel, amikor a forgalom a célon túl tör. A lemezforgalom nyomon követhető az IOPS és a sávszélesség a kiépített cél. A lemezfelszakítás nem kerüli meg a virtuális gép (VM) méretkorlátait az IOPS vagy az átviteli rendszer esetében.
 
-A lemez kitörése alapértelmezés szerint engedélyezve van az azt támogató lemezek új központi telepítésen. A meglévő lemezek mérete, ha támogatják a lemezek kitörését, a következő módszerek egyikével engedélyezheti a kitörést:
+A lemezfelszakítás alapértelmezés szerint engedélyezve van az azt támogató lemezméretek új központi telepítésein. A meglévő lemezméretek, ha támogatják a lemezfelszakítást, az alábbi módszerek bármelyikén keresztül engedélyezhetik a felszakítást:
 
-- Válassza le és csatlakoztassa újra a lemezt.
-- Állítsa le és indítsa el a virtuális gépet.
+- Válassza le, majd csatlakoztassa újra a lemezt.
+- Állítsa le és indítsa el a virtuális gép.
 
 ## <a name="burst-states"></a>Burst állapotok
 
-Az összes érintett lemez mérete a teljes burst kredit gyűjtővel kezdődik, amikor a lemez csatlakoztatva van egy virtuális géphez. A kitörés maximális időtartamát a burst kredit gyűjtő mérete határozza meg. A fel nem használt kreditek csak a kredit gyűjtő méretére gyűjthetők fel. A lemez burst kreditje a következő három állapot egyikében lehet: 
+Az összes sorozattal rendelkező lemezméret egy teljes burst jóváírási gyűjtővel kezdődik, amikor a lemez egy virtuális géphez van csatlakoztatva. A felszakítás maximális időtartamát a burst hitelgyűjtő mérete határozza meg. A fel nem használt krediteket csak a kreditgyűjtő méretéig halmozhatja fel. A lemezsorozat-sorozathitel-gyűjtő bármikor a következő három állapot valamelyikében lehet: 
 
-- Ha a lemez forgalma kevesebb, mint a kiépített teljesítmény. Kreditet gyűjthet, ha a lemezes forgalom a IOPS vagy a sávszélességre, vagy mindkettőre esik. Az i/o-kreditek továbbra is felhalmozható, ha teljes lemezes sávszélességet használ, fordítva.  
+- Felhalmozódó, ha a lemezforgalom kevesebb, mint a kiosztott teljesítménycél. Kreditet halmozhat fel, ha a lemezforgalom meghaladja az IOPS- vagy sávszélesség-célokat vagy mindkettőt. Az IO-krediteket akkor is felhalmozhatja, ha teljes lemezsávszélességet fogyaszt, fordítva.  
 
-- Csökken, ha a lemez forgalma több, mint a kiosztott teljesítményű célpontot használja. A burst forgalom egymástól függetlenül fogja felhasználni a IOPS vagy a sávszélességtől kapott krediteket. 
+- Csökkenő, ha a lemezforgalom a kiosztott teljesítménycélnál többet használ. A burst forgalom önállóan fogyaszt krediteket IOPS vagy sávszélesség. 
 
-- Hátralévő állandó, ha a lemez forgalma pontosan a kiépített teljesítmény célpontja. 
+- Változatlan ult, ha a lemezforgalom pontosan a kiosztott teljesítménycél. 
 
-A burst-támogatást biztosító lemez méretét az alábbi táblázat foglalja össze.
+A felszakítási támogatást nyújtó lemezméretek, valamint a burst specifikációk az alábbi táblázatban kerülnek összegzésre.
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-Jelenleg a lemezes használat csak az USA nyugati középső régiójában érhető el.
+A lemezfelszakítás a nyilvános felhő minden régiójában elérhető.
 
-## <a name="disk-sizes"></a>Lemezek mérete
+## <a name="disk-sizes"></a>Lemezméretek
 
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 ## <a name="example-scenarios"></a>Példaforgatókönyvek
 
-A működésének jobb megismeréséhez tekintse meg az alábbi példákat:
+Annak érdekében, hogy jobb képet kapjaarról, hogyan működik ez, az alábbi példa:
 
-- Egy gyakori forgatókönyv, amely kihasználhatja a lemezek betöltését, gyorsabb virtuálisgép-rendszerindítást és alkalmazások indítását teszi lehetővé operációsrendszer-lemezeken. Egy Linux rendszerű virtuális gépet egy 8 GiB operációsrendszer-képpel is használhat példaként. Ha P2-lemezt használ operációsrendszer-lemezként, a kiépített cél 120 IOPS és 25 MBps. A virtuális gép indításakor a rendszerindító fájlok betöltésére szolgáló olvasási tüske jelenik meg az operációsrendszer-lemezen. A burst bevezetésével elolvashatja a 3500 IOPS és 170 MBps maximális burst sebességét, így a betöltési időt legalább 6x-ra felgyorsíthatja. A virtuális gép rendszerindítását követően az operációsrendszer-lemezen lévő forgalmi szint általában alacsony, mivel az alkalmazás legtöbb adatművelete a csatlakoztatott adatlemezekre fog esni. Ha a forgalom a kiépített cél alá esik, akkor a kreditek felhalmozódnak.
+- Az egyik gyakori forgatókönyv, amely előnyös lehet a lemezfelszakítás gyorsabb virtuális gép indítása és az alkalmazás indítása az operációs rendszer lemezein. Vegyünk egy Linux virtuális gép egy 8 GiB os rendszerkép példaként. Ha egy P2-lemezt használunk operációsrendszer-lemezként, a kiosztott cél 120 IOPS és 25 Mb/s. Amikor a virtuális gép elindul, lesz egy olvasási tüske az operációs rendszer lemeze betöltése a rendszerindító fájlokat. A felszakadás bevezetésével 3500 IOPS és 170 Mb/s maximális lökéssebességgel olvashat, ami legalább 6-kal gyorsítja a betöltési időt. Virtuális gép indítása után az operációs rendszer lemezének forgalmi szintje általában alacsony, mivel az alkalmazás által végzett legtöbb adatművelet a csatolt adatlemezekellen lesz. Ha a forgalom a kiosztott cél alatt van, krediteket halmoz fel.
 
-- Ha távoli virtuális asztali környezetet üzemeltet, amikor egy aktív felhasználó olyan alkalmazást indít el, mint az AutoCAD, az operációsrendszer-lemezre irányuló forgalom jelentős mértékben megnő. Ebben az esetben a burst forgalom felhasználja a felhalmozódott krediteket, így a kiépített célponton túl is haladhat, és sokkal gyorsabban elindíthatja az alkalmazást.
+- Ha távoli virtuális asztali környezetet üzemeltet, amikor egy aktív felhasználó elindítja az AutoCAD-hez hasonló alkalmazást, jelentősen megnő az operációs rendszer lemezére irányuló forgalom olvasása. Ebben az esetben a burst forgalom felgyülemlett krediteket fog használni, lehetővé téve, hogy túllépjön a kiosztott célon, és sokkal gyorsabban indítja el az alkalmazást.
 
-- A P1 lemez 120 IOPS és 25 MBps kiépített céllal rendelkezik. Ha a lemez tényleges forgalma 100 IOPS és 20 MBps volt az elmúlt 1 másodpercben, akkor a nem használt 20 IOs és 5 MB a lemez burst-gyűjtője számára van jóváírva. A burst-gyűjtőben lévő kreditek később is használhatók, ha a forgalom meghaladja a kiépített célt, a maximális burst korlátig. A maximális burst korlát határozza meg a lemez forgalmának felső határát, még akkor is, ha a rendszer felhasználja a forgalmat. Ebben az esetben még akkor is, ha a kredit gyűjtőben már van 10 000 IOs, a P1 lemez nem tud több, mint a 3 500 IO maximális száma másodpercenként.  
+- A P1-lemez kiosztott cél120 IOPS és 25 Mb/s. Ha a lemez tényleges forgalma 100 IOPS és 20 Mb/s volt az elmúlt 1 másodpercben, akkor a fel nem használt 20 IOs és 5 MB jóváírásra kerül a lemez burst gyűjtője. A burst vödrében lévő kreditek később használhatók, ha a forgalom meghaladja a kiosztott célt, a maximális burst limitig. A maximális burst limit határozza meg a lemezforgalom felső határát, még akkor is, ha burst krediteket használ. Ebben az esetben, még akkor is, ha 10 000 IOs van a hitelgyűjtőben, a P1 lemez nem adhat ki többet, mint a másodpercenként 3500 i/o maximális sorozat.  

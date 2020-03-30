@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: virtuálisgép-hálózati forgalom szűrési hibáinak diagnosztizálása – Azure CLI'
+title: 'Rövid útmutató: Virtuálisgép hálózati forgalomszűrőjének diagnosztizálása – Azure CLI'
 titleSuffix: Azure Network Watcher
 description: Ebből a rövid útmutatóból megtudhatja, hogyan diagnosztizálhatja a virtuális gépek hálózati forgalmi szűrőproblémáit az Azure Network Watcher IP-folyamat ellenőrzése funkciójával.
 services: network-watcher
@@ -18,32 +18,32 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 251f72ab4f4d53fc2c836f06c78a1faa291b3a8a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b3919a016613da2470c14995663acc9c5415e483
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276076"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382851"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Rövid útmutató: Virtuális gép hálózati forgalmi szűrőhibájának diagnosztizálása – Azure CLI
 
 Ennek a rövid útmutatónak a követésével egy virtuális gépet fog üzembe helyezni, majd ellenőriz egy IP-címre és URL-címre irányuló és egy IP-címről érkező kommunikációt. Meghatározza a kommunikációs hiba okát és feloldásának módját.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. A CLI-verzió ellenőrzése után futtassa az `az login` parancsot az Azure-hoz való kapcsolódáshoz. Ebben a rövid útmutatóban a CLI-parancsok Bash felületen való futtatáshoz vannak formázva.
+Ha úgy dönt, hogy telepíti és használja az Azure CLI helyileg, ez a rövid útmutató megköveteli, hogy az Azure CLI 2.0.28-as vagy újabb verzióját. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Miután ellenőrizte az Azure CLI-verziót, futtassa `az login` a kapcsolatot az Azure-ral. Az Azure CLI-parancsok ebben a rövid útmutatóban vannak formázva, hogy egy Bash shell futtatásához.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Mielőtt virtuális gépet hozhatna létre, létre kell hoznia egy erőforráscsoportot, amely majd tartalmazza a virtuális gépet. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Mielőtt virtuális gépet hozhatna létre, létre kell hoznia egy erőforráscsoportot, amely majd tartalmazza a virtuális gépet. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. Az alábbi példában egy *myVmM* nevű virtuális gépet hozunk létre:
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A következő példa létrehoz egy *myVm*nevű virtuális gép:
 
 ```azurecli-interactive
 az vm create \
@@ -53,7 +53,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa a további lépések megtételét, amíg létre nem jön a virtuális gép, és a parancssori felület vissza nem adja a kimenetet.
+A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa a fennmaradó lépéseket, amíg a virtuális gép létre nem jön, és az Azure CLI kimenetet ad vissza.
 
 ## <a name="test-network-communication"></a>Hálózati kommunikáció tesztelése
 
@@ -134,7 +134,7 @@ az network nic list-effective-nsg \
 
 A visszaadott kimenet tartalmazza a következő szöveget az **AllowInternetOutbound** szabályhoz, amely engedélyezte a www.bing.com címre kimenő forgalmat az előző, [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) lépésben:
 
-```azurecli
+```
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -173,9 +173,9 @@ A visszaadott kimenet tartalmazza a következő szöveget az **AllowInternetOutb
 
 Az előző kimenetben látható, hogy a **destinationAddressPrefix** értéke **Internet**. Nem egyértelmű azonban, hogyan vonatkozik a 13.107.21.200 az **Internet** értékre. Több címelőtagot is láthat az **expandedDestinationAddressPrefix** alatti listában. A listában lévő előtagok egyike a **12.0.0.0/6**, amely magában foglalja a 12.0.0.1–15.255.255.254 tartományba tartozó IP-címeket. Mivel a 13.107.21.200 ebbe a címtartományba esik, az **AllowInternetOutBound** szabály engedélyezi a kimenő forgalmat. Emellett nincsenek magasabb prioritású (alacsonyabb számú) szabályok listázva az előző kimenetben, amelyek felülbírálnák ezt a szabályt. Ha szeretne letiltani egy IP-címre kimenő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely letiltja az IP-címre kimenő forgalmat a 80-as porton.
 
-Amikor futtatta a `az network watcher test-ip-flow` parancsot, hogy tesztelje a 172.131.0.100 címre kimenő kommunikációt az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) lépésben, a kimenetből megtudta, hogy a **DefaultOutboundDenyAll** szabály megtagadta a kommunikációt. A **DefaultOutboundDenyAll** szabály megfelel a **DenyAllOutBound** szabálynak, amely a `az network nic list-effective-nsg` parancs következő kimenetében szerepel:
+Amikor futtatta az `az network watcher test-ip-flow` parancsot, hogy tesztelje a 172.131.0.100 címre kimenő kommunikációt az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) lépésben, a kimenetből megtudta, hogy a **DefaultOutboundDenyAll** szabály megtagadta a kommunikációt. A **DefaultOutboundDenyAll** szabály megfelel a **DenyAllOutBound** szabálynak, amely az `az network nic list-effective-nsg` parancs következő kimenetében szerepel:
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -204,11 +204,11 @@ Amikor futtatta a `az network watcher test-ip-flow` parancsot, hogy tesztelje a 
 }
 ```
 
-A szabály a **0.0.0.0/0** címet listázza, mint **destinationAddressPrefix**. A szabály megtagadja a 172.131.0.100 címre kimenő kommunikációt, mert a cím nincs az **parancs egyetlen más kimeneti szabályának**destinationAddressPrefix`az network nic list-effective-nsg` előtagján belül sem. Ha szeretné engedélyezni a kimenő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely engedélyezi az 172.131.0.100 IP-címre kimenő forgalmat a 80-as porton.
+A szabály a **0.0.0.0/0** címet listázza, mint **destinationAddressPrefix**. A szabály megtagadja a 172.131.0.100 címre kimenő kommunikációt, mert a cím nincs az `az network nic list-effective-nsg` parancs egyetlen más kimeneti szabályának **destinationAddressPrefix** előtagján belül sem. Ha szeretné engedélyezni a kimenő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely engedélyezi az 172.131.0.100 IP-címre kimenő forgalmat a 80-as porton.
 
-Amikor futtatta az `az network watcher test-ip-flow` parancsot, hogy tesztelje a 172.131.0.100 címről bejövő kommunikációt az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) lépésben, a kimenetből megtudta, hogy a **DefaultInboundDenyAll** szabály megtagadta a kommunikációt. A **DefaultOutboundDenyAll** szabály megfelel a **DenyAllOutBound** szabálynak, amely a `az network nic list-effective-nsg` parancs következő kimenetében szerepel:
+Amikor futtatta az `az network watcher test-ip-flow` parancsot, hogy tesztelje a 172.131.0.100 címről bejövő kommunikációt az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) lépésben, a kimenetből megtudta, hogy a **DefaultInboundDenyAll** szabály megtagadta a kommunikációt. A **DefaultOutboundDenyAll** szabály megfelel a **DenyAllInBound** szabálynak, amely az `az network nic list-effective-nsg` parancs következő kimenetében szerepel:
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},

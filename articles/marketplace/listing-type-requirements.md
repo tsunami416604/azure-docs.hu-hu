@@ -1,82 +1,80 @@
 ---
-title: Követelmények listázási típus szerint | Azure
-description: Ez a cikk ismerteti a támogathatósági feltételeket és a közzétételi követelményekkel foglalkozó partnereket, amelyekkel megismerheti, hogyan tehet közzé alkalmazásokat az Azure piactéren.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
+title: Követelmények a jegyzék típusa szerint | Azure
+description: Ez a cikk ismerteti a jogosultsági feltételek et és a közzétételi követelményeket, amelyek partnerei megpróbálják megérteni, hogyan tehetik közzé az alkalmazásokat az Azure Piactéren.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/19/2018
-ms.author: ellacroi
-ms.openlocfilehash: b9a2e8b37f746eb86b2e0fe6a7304cd888a293e1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 1ff6e34936234d6636fabc6c5e17dd32416b4ac2
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823034"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387852"
 ---
-# <a name="requirements-by-listing-type"></a>Követelmények listázási típus szerint  
-A technikai és a marketing tartalomra vonatkozó követelmények a kirakat, az ajánlat típusa és a listaelem típusa szerint változnak. A megfelelőség ellenőrzéséhez tekintse át az alábbi specifikációkat.  
+# <a name="requirements-by-listing-type"></a>Az egyes termékoldal-típusok követelményei  
+A technikai és marketingtartalomra vonatkozó követelmények a kirakattól, az ajánlat típusától és a hirdetés típusától függően változnak. Tekintse át az alábbi specifikációkat a megfelelőség ellenőrzéséhez.  
 1. Kirakati követelmények:  
     *   [AppSource](#storefront-requirements-appsource)  
     *   [Azure Marketplace](#storefront-requirements-azure-marketplace)  
-2. A lista típusa és az ajánlat típusára vonatkozó követelmények:  
-    *   A típusokról és az ajánlati típusokról további információt a [docs.microsoft.com/Azure/Marketplace/Determine-Your-Listing-Type](./determine-your-listing-type.md)címen található megoldáshoz tartozó listaelem meghatározása című oldalon találhat.  
+2. A listatípusra és az ajánlattípusra vonatkozó követelmények:  
+    *   A listaelemtípusokról és az ajánlattípusokról a megoldás listatípusának meghatározása lapon talál további információt [a docs.microsoft.com/azure/marketplace/determine-your-listing-type](./determine-your-listing-type.md).  
 
 ## <a name="storefront-requirements-appsource"></a>Kirakati követelmények: AppSource  
-A következő táblázat ismerteti a AppSource való közzététel előfeltételeinek követelményeit.  
+Az alábbi táblázat az AppSource-on való közzététel előfeltételeit ismerteti.  
 
 | Követelmény | Részletek | Kötelező vagy ajánlott |  
 |:--- |:--- |:--- |  
-| ***Azure Active Directory (Azure AD)*** | Az alkalmazásnak engedélyeznie kell Azure Active Directory összevont egyszeri bejelentkezést (Azure AD összevont SSO) a beleegyezett engedéllyel.<ul> <li>Az Azure AD összevont egyszeri bejelentkezés engedélyezésével kapcsolatos további információkért tekintse meg az egyszeri bejelentkezés konfigurálása olyan alkalmazásokhoz, amelyek nem szerepelnek a Azure Active Directory [docs.microsoft.com/Azure/Active-Directory/Active-Directory-SaaS-Custom-apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)címen található alkalmazás-katalógus lapon.</li> </ul> | Kötelező |   
-| ***Integráció Microsoft Cloud szolgáltatásokkal*** | Az alkalmazásnak integrálnia kell más Microsoft Cloud szolgáltatásokkal, például a Microsoft Power BIokkal, a Cortana Intelligenceekkel vagy a Microsoft Azure szolgáltatásokkal.<ul> <li>Microsoft Cloud szolgáltatás például eszközök internetes hálózata.</li> </ul> | Ajánlott |  
-| ***Célközönség*** | Az alkalmazásnak az üzletági felhasználók és a vállalkozások tulajdonosainak kell lennie. | Kötelező | 
-| ***Szoftveres szolgáltatás (SaaS) alkalmazás vállalatoknak*** | Az alkalmazásnak az alábbi követelményeknek kell megfelelnie.<ul> <li>Üzletági SaaS-alkalmazás</li> <li>Üzleti folyamatok – fókuszált</li> <li>Üzleti ügyfeleknek</li> <li>Annak engedélyezése, hogy a felhasználók a munkahelyi hitelesítő adataikat használják a bejelentkezéshez, például a felhasználónevet és a jelszót</li> </ul> | Kötelező |  
-| ***Ingyenes próbaidőszak és próbaidőszak*** | Az alkalmazásnak tartalmaznia kell egyet az alábbi lehetőségek közül, hogy az ügyfél korlátozott ideig ingyenesen használhassa az alkalmazást.<ul> <li>Adjon meg egy `try` metódust, így az ügyfelek a AppSource-n belül elindíthatják az alkalmazás próbaverzióját</li> <li>Adjon meg egy `request trial` lehetőséget a AppSource, így az ügyfelek az alkalmazás próbaverzióját kérhetik</li> </ul>Az Ön által megadott ingyenes próbaverziónak előre meghatározott időtartamot kell biztosítania az ügyfél számára, hogy további költség nélkül kipróbálja az alkalmazást. | Kötelező |  
-| ***Könnyen konfigurálható, használatra kész megoldás*** | Az alkalmazásnak könnyen és gyorsan be kell állítania és be kell állítania a testreszabást, és nem kell beállítania. | Kötelező |  
-| ***Érdeklődők kezelése*** | Engedélyezze a CRM-nek, hogy fogadja az érdeklődői adatait, mielőtt a kirakattól kapott érdeklődőket kapja.<ul> <li>CRM például a Marketo, a Microsoft Dynamics vagy a Salesforce</li> </ul> | Kötelező |  
-| ***Adatvédelmi szabályzat és használati feltételek*** | Az alkalmazásnak egy nyilvános URL-cím használatával meg kell adnia egy hivatkozást az adatvédelmi szabályzat oldalára. Az Ön használati feltételeit szövegként való közzététel során kell megadni. | Kötelező |  
-| ***Támogatás*** | Az alkalmazásnak egy nyilvános URL-cím használatával kell megadnia az ügyfélszolgálati oldal hivatkozását. Ha az alkalmazás próbaverziós, akkor a próbaidőszak alatt további költség nélkül kell támogatást biztosítania. | Kötelező |  
+| ***Azure Active Directory (Azure AD)*** | Az alkalmazásnak engedélyeznie kell az Azure Active Directory összevont egyszeri bejelentkezést (Azure AD összevont egyszeri egyszeri egyszeri sso) a hozzájárulás engedélyezve van.<ul> <li>Az Azure AD összevont egyszeri egyszeri bejelentkezés engedélyezéséről az egyszeri bejelentkezés konfigurálása az azure Active Directory alkalmazásgalériájában [található, docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)</li> </ul> | Kötelező |   
+| ***Integráció a Microsoft Cloud Services szolgáltatással*** | Az alkalmazásnak integrálnia kell más Microsoft Cloud-szolgáltatásokkal, például a Microsoft Power BI-val, a Cortana Intelligence-szel vagy a Microsoft Azure-szolgáltatásokkal.<ul> <li>A Microsoft Cloud szolgáltatás egyik példája a tárgyak internete.</li> </ul> | Ajánlott |  
+| ***Célközönség*** | Az alkalmazásnak üzletviteli felhasználók és cégtulajdonosok számára kell lennie. | Kötelező | 
+| ***Szoftver szolgáltatásként (SaaS) alkalmazás üzleti célokra*** | Az alkalmazásnak meg kell felelnie az alábbi követelményeknek.<ul> <li>Üzletági SaaS-alkalmazás</li> <li>Üzleti folyamatokra összpontosítva</li> <li>Üzleti ügyfeleknek célzott</li> <li>Annak engedélyezése, hogy a felhasználók munkahelyi hitelesítő adataikkal jelentkezzenek be, például a felhasználónév és a jelszó</li> </ul> | Kötelező |  
+| ***Ingyenes próbaidőszak és próbaverzió*** | Az alkalmazásnak tartalmaznia kell az alábbi lehetőségeket annak érdekében, hogy az ügyfél korlátozott ideig ingyenesen használhassa az alkalmazást.<ul> <li>Adjon `try` meg egy módszert, hogy az ügyfelek megkezdhessék az alkalmazás kipróbálását az AppSource-on belül</li> <li>Adjon `request trial` meg egy lehetőséget az AppSource-ban, hogy az ügyfelek az alkalmazás próbaverzióját kérhessék</li> </ul>Az Ön által megadott ingyenes próbaverziónak előre meghatározott időt kell biztosítania az ügyfél számára, hogy további költségek nélkül kipróbálja az alkalmazást. | Kötelező |  
+| ***Könnyen konfigurálható, használatra kész megoldás*** | Az alkalmazásnak könnyen és gyorsan konfigurálhatónak és konfigurálhatónak kell lennie testreszabás nélkül. | Kötelező |  
+| ***Érdeklődők kezelése*** | Engedélyezze, hogy a CRM elfogadja az érdeklődőadatokat, mielőtt érdeklődőket kapna a kirakatból.<ul> <li>Crm-ek például a Marketo, a Microsoft Dynamics vagy a Salesforce</li> </ul> | Kötelező |  
+| ***Adatvédelmi szabályzat és használati feltételek*** | Az alkalmazásnak nyilvános URL-cím használatával meg kell adnia egy hivatkozást az adatvédelmi irányelvoldalhoz. A használati feltételeket meg kell adni a szövegként történő közzététel során. | Kötelező |  
+| ***Támogatás*** | Az alkalmazásnak nyilvános URL-cím használatával meg kell adnia egy hivatkozást az ügyfélszolgálati oldalra. Ha az alkalmazás próbaverzió, akkor a próbaidőszak alatt további költségek nélkül kell támogatnia. | Kötelező |  
 
-## <a name="storefront-requirements-azure-marketplace"></a>A kirakatra vonatkozó követelmények: Azure Marketplace  
-Az Azure Marketplace-en az alábbi előfeltételekre vonatkozó követelmények vonatkoznak a típusok listázására.  
+## <a name="storefront-requirements-azure-marketplace"></a>Kirakati követelmények: Azure Piactér  
+Az alábbiakban az Azure Marketplace-en a hirdetéstípusok hoz a következő előfeltételeket.  
 
-| Követelmény | Részletek | Listaelem típusa |  
+| Követelmény | Részletek | Hirdetés típusa |  
 |:--- |:--- |:--- |  
-| ***Részvételi szabályzatok*** | Az alkalmazásnak követnie kell az Azure Marketplace részvételi szabályzatait.<ul> <li>A részvételi szabályzatokkal kapcsolatos további információkért tekintse meg az Azure Marketplace részvételi szabályzatait ismertető oldalt, amely a következő címen található: [Azure.microsoft.com/support/Legal/Marketplace/Participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).</li></ul> | lista<br />Transact<br />trial |  
-| ***Integráció a Microsofttal*** | Ajánlatának olyan Microsoft Azure-szolgáltatásokat kell használnia vagy kiterjesztenie, mint a számítás, a hálózatkezelés vagy a tárterület. Ajánlatának egy meglévő Azure Marketplace-kategóriához kell igazodnia, például adatbázisokhoz, biztonsághoz vagy hálózatkezeléshez.<ul> <li>A Piactéri ajánlatokkal kapcsolatos további információkért látogasson el a piactér alkalmazások oldalára, amely a következő címen található: [azuremarketplace.microsoft.com/Marketplace/apps](https://azuremarketplace.microsoft.com/marketplace/apps).</li> </ul> | lista<br />Transact<br />trial |  
-| ***Célközönség*** | Ajánlatának informatikai szakembereknek, felhőalapú fejlesztőknek vagy más technikai felhasználói szerepköröknek kell lennie. | lista<br />Transact<br />trial |  
-| ***Érdeklődők kezelése*** | Lehetővé teheti a CRM (Marketo, Microsoft Dynamics vagy Salesforce) számára, hogy fogadja az érdeklődőket, mielőtt az érdeklődőket megkapja a kirakatból. | lista<br />Transact<br />trial |  
-| ***Adatvédelmi szabályzat és használati feltételek*** | Az alkalmazásnak egy nyilvános URL-cím használatával meg kell adnia egy hivatkozást az adatvédelmi szabályzat oldalára. Az Ön használati feltételeit szövegként való közzététel során kell megadni. | lista<br />Transact<br />trial |  
-| ***Támogatás*** | Az ajánlatnak egy nyilvános URL-cím használatával meg kell adnia egy hivatkozást az ügyfélszolgálati oldalára. Ha az ajánlat próbaverziós, akkor a próbaidőszak alatt díjmentesen kell támogatást nyújtania. | Transact<br />trial |    
+| ***Részvételi politikák*** | Az alkalmazásnak követnie kell az Azure Marketplace részvételi szabályzatait.<ul> <li>A részvételi szabályzatokkal kapcsolatos további információkért látogasson el az Azure Marketplace részvételi szabályzatai oldalra, amely [azure.microsoft.com/support/legal/marketplace/participation-policies.](https://azure.microsoft.com/support/legal/marketplace/participation-policies)</li></ul> | lista<br />Transact<br />trial |  
+| ***Integráció a Microsofttal*** | Az ajánlatnak a Microsoft Azure-szolgáltatástípusokat, például a számítást, a hálózatépítést vagy a tárhelyet kell használnia vagy kiterjesztenie. Az ajánlatnak igazodnia kell egy meglévő Azure Marketplace-kategóriához, például adatbázisokhoz, biztonsághoz vagy hálózatkezeléshez.<ul> <li>A Marketplace-ajánlatokról a Marketplace-alkalmazások oldalon, [azuremarketplace.microsoft.com/marketplace/apps.](https://azuremarketplace.microsoft.com/marketplace/apps)</li> </ul> | lista<br />Transact<br />trial |  
+| ***Célközönség*** | Az ajánlatnak informatikai szakembereknek, felhőfejlesztőknek vagy más technikai ügyfélszerepköröknek kell lennie. | lista<br />Transact<br />trial |  
+| ***Érdeklődők kezelése*** | Engedélyezze, hogy crm-je (Marketo, Microsoft Dynamics vagy Salesforce) fogadja az érdeklődőadatokat, mielőtt érdeklődőket kapna a kirakatból. | lista<br />Transact<br />trial |  
+| ***Adatvédelmi szabályzat és használati feltételek*** | Az alkalmazásnak nyilvános URL-cím használatával meg kell adnia egy hivatkozást az adatvédelmi irányelvoldalhoz. A használati feltételeket meg kell adni a szövegként történő közzététel során. | lista<br />Transact<br />trial |  
+| ***Támogatás*** | Az ajánlatnak nyilvános URL-cím használatával meg kell adnia az ügyfélszolgálati oldalra mutató hivatkozást. Ha ajánlata próbaverzió, akkor a próbaidőszak alatt további költségek nélkül kell támogatnia. | Transact<br />trial |    
 
-## <a name="non-transact-listings"></a>Nem Transact-listák  
-Ez a szakasz azokat az ajánlatokat ismerteti, amelyek nem használják a Transact listaelem típusát. 
+## <a name="non-transact-listings"></a>Nem tranzakciós listák  
+Ez a szakasz az összes olyan ajánlattípust ismerteti, amely nem használja a Transact listatípusát. 
 
 ### <a name="list"></a>Lista  
-A lista listázási típusa a piactéren található kirakatok következő ajánlati típusait tartalmazza.  
+A Listalista típusa a következő ajánlattípusokat tartalmazza a piactéren lévő kirakatokban.  
 
-| Csomag típusa | Storefront | Részletek |  
+| Csomag típusa | Kirakat | Részletek |  
 |:---        |:---        |:---     |  
-| Tanácsadási szolgáltatások | AppSource | Követelmények: AppSource: List: tanácsadási szolgáltatások |  
-| Tanácsadási szolgáltatások | Azure Piactér | Követelmények: Azure Marketplace: List: tanácsadási szolgáltatások |  
-| Kapcsolatfelvétel | AppSource | [](#) |  
-| Kapcsolatfelvétel | Azure Piactér | Követelmények: AppSource: List: Kapcsolatfelvétel |  
+| Tanácsadási szolgáltatások | AppSource | Követelmények: AppSource: Lista: Tanácsadási szolgáltatások |  
+| Tanácsadási szolgáltatások | Azure Piactér | Követelmények: Azure Marketplace: Lista: Tanácsadási szolgáltatások |  
+| Kapcsolat | AppSource | [](#) |  
+| Kapcsolat | Azure Piactér | Követelmények: AppForrás: Lista: Kapcsolat |  
 
-#### <a name="requirements-appsource-list-consulting-service"></a>Követelmények: AppSource: List: tanácsadási szolgáltatás  
-
-| Követelmények | Részletek |  
-|:--- |:--- |  
-| A szolgáltatás ajánlatának jellemzői | A tanácsadási szolgáltatásnak az alábbi feltételeknek kell megfelelnie.<ul> <li>Rögzített hatókörű, rögzített időtartamú, rögzített árú (vagy ingyenes) engagement.</li> <li>Elsősorban az értékesítés előtti tájolás.</li> <li>Egyetlen ügyfélre korlátozható.</li> <li>Viselkedés a webhelyen.</li> </ul> |  
-| Partneri követelmények a tanácsadási szolgáltatásokhoz | Megfelel a szolgáltatáshoz kapcsolódó területeken feltételnek.<table><tr><th>Megoldási térség</th><th>Feltételek</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>Ezüst vagy arany Felhőbeli ügyfélkapcsolat-kezelési kompetenciával rendelkezik.</td></tr><tr><td>Dynamics 365 for Finance and Operations, Enterprise Edition</td><td>Az ezüst vagy arany vállalati erőforrás-tervezési kompetenciával és a Felhőbeli műveletekből származó bevételsel akár 12 hónapig $25 000 vagy még többet is nyerhet.</td></tr><tr><td>Dynamics 365 for Finance and Operations, Business Edition</td><td>Egy vagy több ügyfélhez Cloud Services szolgáltatóként (CSP) vagy a Record (DPOR) digitális partnereként szolgál.</td></tr><tr><td>Power BI</td><td>Ismerje meg a megoldás partneri feltételeit.</td></tr><tr><td>PowerApps</td><td>A partner Showcase-megoldással rendelkezik.</td></tr></table><ul> <li>Az Ügyfélkapcsolat-kezeléssel kapcsolatos további információkért látogasson el a felhőalapú ügyfélkapcsolat-kezelési oldalra, amely a [partner.microsoft.com/Membership/Cloud-Customer-Relationship-Management-Competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency)címen található.</li> <li>Az erőforrás-tervezéssel kapcsolatos további információkért látogasson el a vállalati erőforrás-tervezési lapra, amely a következő címen található: [partner.microsoft.com/Membership/Enterprise-Resource-Planning-Competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency).</li> <li>A CSP-vel kapcsolatos további információkért látogasson el a Cloud Services Provider oldalára, amely a következő címen található: [partner.microsoft.com/Cloud-Solution-Provider](https://partner.microsoft.com/cloud-solution-provider).</li> <li>A DPOR kapcsolatos további információkért tekintse meg a rekord-és partneri társítások digitális partnerét a [partner.microsoft.com/Membership/Digital-Partner-of-Record](https://partner.microsoft.com/membership/digital-partner-of-record)címen.</li> <li>A megoldási partneri feltételekkel kapcsolatos további információkért tekintse meg a megoldás partner áttekintése és a [www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf)címen található ösztönzők című dokumentumot.</li> <li>A partner Showcase szolgáltatással kapcsolatos további információkért látogasson el a [powerapps.microsoft.com/partner-Showcase](https://powerapps.microsoft.com/partner-showcase)címen található partner Showcase-oldalra.</li> </ul> |  
-
-#### <a name="requirements-azure-marketplace-list-consulting-service"></a>Követelmények: Azure Marketplace: List: tanácsadási szolgáltatás  
+#### <a name="requirements-appsource-list-consulting-service"></a>Követelmények: AppForrás: Lista: Tanácsadási szolgáltatás  
 
 | Követelmények | Részletek |  
 |:--- |:--- |  
-| A szolgáltatás ajánlatának jellemzői | A tanácsadási szolgáltatásnak az alábbi feltételeknek kell megfelelnie.<ul> <li>Rögzített hatókörű, rögzített időtartamú, rögzített árú (vagy ingyenes) engagement.</li> <li>Elsősorban az értékesítés előtti tájolás.</li> <li>Egyetlen ügyfélre korlátozható.</li> <li>Viselkedés a webhelyen.</li> </ul> |  
-| Partneri követelmények a tanácsadási szolgáltatásokhoz | A szolgáltatáshoz tartozó érintett területeken a következő kompetenciák egyikében Silver vagy Gold típusúnak kell lennie: <table><tr><th>Megoldási térség</th><th>Kompetencia</th></tr><td>Felhőalapú platform és infrastruktúra</td><td>Felhőalapú platform<br />Adatközpont</td><tr><td>Alkalmazásfejlesztés és ISV</td><td>Alkalmazásfejlesztés<br />Alkalmazásintegrálás<br />DevOps</td></tr><tr><td>adatkezelés és elemzés</td><td>Adatelemzés<br />Data Platform</td></tr></table><ul> <li>A kompetenciákkal kapcsolatos további információkért tekintse meg Microsoft Partner Network oldalon található kompetenciákat a következő címen: [partner.microsoft.com/Membership/Competencies](https://partner.microsoft.com/membership/competencies).</li> <li>A listával kapcsolatos további információkért tekintse meg az Azure Marketplace-tanácsadói szolgáltatások oldalt, amely a következő címen található: [docs.microsoft.com/Azure/Marketplace/Consulting-Services](https://docs.microsoft.com/azure/marketplace/consulting-services).</li></ul> |  
+| A szolgáltatási ajánlat jellemzői | A tanácsadó szolgálatnak meg kell felelnie az alábbi feltételeknek.<ul> <li>Fix hatókörű, rögzített időtartamú, fix árú (vagy ingyenes) elköteleződést biztosíthat.</li> <li>Orient elsősorban a pre-sales.</li> <li>Korlát egyetlen ügyfélre.</li> <li>Magatartás a helyszínen.</li> </ul> |  
+| A tanácsadási szolgáltatásokra vonatkozó partneri követelmények | Ön megfelel a szolgáltatás megfelelő területén megadott feltételeknek.<table><tr><th>Megoldási terület</th><th>Feltételek</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>Silver vagy Gold Cloud ügyfélkapcsolat-kezelési kompetenciával rendelkezik.</td></tr><tr><td>Dynamics 365 for Finance and Operations, Enterprise kiadás</td><td>Rendelkezik a Silver vagy Gold Enterprise Resource Planning kompetenciával és a felhőműveletekből származó bevételeket a követő 12 hónap 25 000 usd vagy annál nagyobb területen.</td></tr><tr><td>Dynamics 365 for Finance and Operations, Üzleti kiadás</td><td>Felhőszolgáltatóként (CSP) vagy digitális rekordpartnerként (DPOR) szolgál egy vagy több ügyfél számára.</td></tr><tr><td>Power BI</td><td>Feleljen meg a Megoldáspartner kritériumainak.</td></tr><tr><td>PowerApps</td><td>Van egy Partner Showcase megoldás.</td></tr></table><ul> <li>Az ügyfélkapcsolat-kezeléssel kapcsolatos további információkért látogasson el a [felhőalapú](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency)ügyfélkapcsolat-kezelés oldalára, amely a partner.microsoft.com/membership/cloud-customer-relationship-management-competency .</li> <li>Az erőforrás-tervezésről a vállalati erőforrás-tervezés lapon talál [partner.microsoft.com/membership/enterprise-resource-planning-competency.](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)</li> <li>A kriptap-szolgáltatással kapcsolatos további információkért látogasson el a [felhőszolgáltató partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider).</li> <li>A DPOR-ról további információt a Digitális Nyilvántartási partner és partnerszövetség oldalon talál, amely [a partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record).</li> <li>A megoldáspartneri feltételekkel kapcsolatos további információkért látogasson el a Megoldáspartner áttekintése és az ösztönzők dokumentumba, amely [a www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf).</li> <li>A partnerbemutatóval kapcsolatos további információkért látogasson el a Partner Showcase oldalra, amely [a powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase).</li> </ul> |  
+
+#### <a name="requirements-azure-marketplace-list-consulting-service"></a>Követelmények: Azure Marketplace: Lista: Consulting service  
+
+| Követelmények | Részletek |  
+|:--- |:--- |  
+| A szolgáltatási ajánlat jellemzői | A tanácsadó szolgálatnak meg kell felelnie az alábbi feltételeknek.<ul> <li>Fix hatókörű, rögzített időtartamú, fix árú (vagy ingyenes) elköteleződést biztosíthat.</li> <li>Orient elsősorban a pre-sales.</li> <li>Korlát egyetlen ügyfélre.</li> <li>Magatartás a helyszínen.</li> </ul> |  
+| A tanácsadási szolgáltatásokra vonatkozó partneri követelmények | A szolgáltatáshoz ezüsttel vagy arannyal kell rendelkeznie az alábbi kompetenciák egyikében az adott területen. <table><tr><th>Megoldási terület</th><th>Kompetencia</th></tr><td>Felhőplatform és infrastruktúra</td><td>Felhőplatform<br />Adatközpont</td><tr><td>Alkalmazásfejlesztés és ISV</td><td>Alkalmazásfejlesztés<br />Alkalmazásintegráció<br />DevOps</td></tr><tr><td>Adatkezelés és elemzés</td><td>Adatelemzés<br />Adatplatform</td></tr></table><ul> <li>A kompetenciákról a Kompetenciák a Microsoft Partner Network lapon talál, amely [a partner.microsoft.com/membership/competencies.](https://partner.microsoft.com/membership/competencies)</li> <li>A listázásról további információt az Azure Marketplace Consulting Services [docs.microsoft.com/azure/marketplace/consulting-services](https://docs.microsoft.com/azure/marketplace/consulting-services).</li></ul> |  
 
 <!-- #### Requirements: Azure Marketplace: List: Contact Me -->
 
@@ -84,55 +82,55 @@ A lista listázási típusa a piactéren található kirakatok következő aján
 
 ### <a name="trial"></a>Próbaverzió  
 
-| Csomag típusa | Storefront | Részletek |  
+| Csomag típusa | Kirakat | Részletek |  
 |:---        |:---        |:---     |  
-| Ingyenes/SaaS-próbaverzió | AppSource | Listázási típusra vonatkozó követelmények: próbaverzió |  
-| Ingyenes/SaaS-próbaverzió | Azure Piactér | Követelmények: Azure Marketplace: próbaverzió: ingyenes próbaverzió/SaaS próbaverzió |  
-| Interaktív bemutató | AppSource | Listázási típusra vonatkozó követelmények: próbaverzió |  
-| Interaktív bemutató | Azure Piactér | [Követelmények: Azure Marketplace: próbaverzió: Interaktív bemutató](#requirements-azure-marketplace-trial-interactive-demo) |  
-| Próbaüzem | AppSource | Listázási típusra vonatkozó követelmények: próbaverzió |  
-| Próbaüzem | Azure Piactér | [Követelmények: Azure Marketplace: próbaverzió: Test Drive](#requirements-azure-marketplace-trial-test-drive) |  
+| Ingyenes / SaaS próba | AppSource | Listatípusra vonatkozó követelmények: Próbaverzió |  
+| Ingyenes / SaaS próba | Azure Piactér | Követelmények: Azure Marketplace: Próbaverzió: Ingyenes próbaverzió / SaaS-próbaverzió |  
+| Interaktív bemutató | AppSource | Listatípusra vonatkozó követelmények: Próbaverzió |  
+| Interaktív bemutató | Azure Piactér | [Követelmények: Azure Marketplace: Próbaverzió: Interaktív bemutató](#requirements-azure-marketplace-trial-interactive-demo) |  
+| Tesztvezetés | AppSource | Listatípusra vonatkozó követelmények: Próbaverzió |  
+| Tesztvezetés | Azure Piactér | [Követelmények: Azure Marketplace: Próba: Tesztmeghajtó](#requirements-azure-marketplace-trial-test-drive) |  
 
-#### <a name="requirements-azure-marketplace-trial"></a>Követelmények: Azure Marketplace: próbaverzió  
+#### <a name="requirements-azure-marketplace-trial"></a>Követelmények: Azure Piactér: Próbaverzió  
 
 | Követelmény | Részletek |  
 |:--- |:--- |  
-| Ingyenes próbaidőszak és próbaidőszak | Az ügyfél korlátozott ideig ingyenesen használhatja az alkalmazást.<br /><br />Az ügyfélnek nem kell fizetnie az ajánlathoz vagy alkalmazáshoz tartozó licenc-vagy előfizetési díjakért. Az ügyfelet nem kell fizetnie az alapul szolgáló Microsoft-termék vagy-szolgáltatásért. Az Azure-előfizetéshez minden próbaverziós beállítás telepítve van. A költség optimalizálása és a felügyelet egyetlen vezérléssel rendelkezik.<br /><br />Dönthet úgy, hogy ingyenes próbaverziót, interaktív bemutatót vagy tesztelési meghajtót választ. Függetlenül attól, hogy mit választ, az ingyenes próbaverziónak előre meghatározott időt kell biztosítania az ügyfélnek az alkalmazás további költség nélkül történő kipróbálásához.<ul> <li>A tesztvezetés létrehozási folyamatának megkezdéséhez küldjön egy e-mailt a [amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com).</li> </ul>Megjegyzés: az Azure Marketplace SaaS próbaverzióinak lehetővé kell tenniük, hogy az ügyfelek munkahelyi hitelesítő adatokat használjanak a bejelentkezéshez.<ul> <li>További információért látogasson el a AppSource Trial experiences szakaszra, amely a következő címen található: [docs.microsoft.com/Azure/Active-Directory/Develop/Active-Directory-devhowto-appsource-Certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences).</li> </ul> |  
-| Könnyen konfigurálható, használatra kész megoldás | Az alkalmazásnak egyszerűen és gyorsan kell konfigurálnia és beállítania. |  
-| Rendelkezésre állás/üzemidő | Az SaaS-alkalmazásnak vagy-platformnak legalább 99,9%-os üzemidővel kell rendelkeznie. |  
-| Azure Active Directory | Az ajánlatnak engedélyeznie kell a Azure Active Directory (Azure AD) összevont egyszeri bejelentkezést (SSO) (Azure AD összevont SSO) a beleegyezett engedéllyel. |  
+| Ingyenes próbaidőszak és próbaverzió | Az ügyfél korlátozott ideig ingyenesen használhatja az alkalmazást.<br /><br />Az ügyfélnek nem kell licenc- vagy előfizetési díjat fizetnie az ajánlatáért vagy alkalmazásáért. Az ügyfélnek nem kell fizetnie az alapul szolgáló Microsoft-termékért vagy -szolgáltatásért. Az összes próbaverziós lehetőség telepítve van az Azure-előfizetésében. Ön kizárólagos ellenőrzése próba a költségoptimalizálás és -kezelés.<br /><br />Választhat egy ingyenes próbaverziót, interaktív demót vagy tesztvezetést. Nem számít, hogy mit választ, az ingyenes próbaverziónak előre meghatározott időt kell kínálnia az ügyfélnek, hogy további költségek nélkül kipróbálja az alkalmazást.<ul> <li>A tesztvezetés létrehozásának megkezdéséhez küldjön [amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com)egy e-mailt a rendszernek.</li> </ul>Megjegyzés: Az Azure Marketplace SaaS próbaverziós élményének lehetővé kell tennie az ügyfelek számára, hogy munkahelyi hitelesítő adatokat használjanak a bejelentkezéshez.<ul> <li>További információkért látogasson el az AppSource próbaélmények szakaszára, amely [a docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences).</li> </ul> |  
+| Könnyen konfigurálható, használatra kész megoldás | Az alkalmazásnak könnyen és gyorsan konfigurálhatónak és konfigurálhatónak kell lennie. |  
+| Elérhetőség / üzemidő | A SaaS-alkalmazásnak vagy platformnak legalább 99,9%-os uptime-mal kell rendelkeznie. |  
+| Azure Active Directory | Az ajánlatnak engedélyeznie kell az Azure Active Directory (Azure AD) összevont egyszeri bejelentkezés (SSO) (Azure AD összevont egyszeri egyszeri bejelentkezés) beleegyezésével. |  
 
-#### <a name="requirements-azure-marketplace-trial-free-trial--saas-trial"></a>Követelmények: Azure Marketplace: próbaverzió: ingyenes próbaverzió/SaaS próbaverzió  
-
-| Előny | Követelmény |  
-|:--- |:--- |  
-| Lehetővé teszi az ügyfél számára, hogy kipróbálja a terméket, mielőtt automatikus módszerrel szeretne vásárolni a fizetős használatra való áttéréshez. Emellett lehetővé teszi az ügyfél és a Microsoft értékesítési csapatával való közös részvétel koncepciójának igazolását. | A megoldás egy virtuális gép vagy megoldás sablonja.<br /><br />A megoldás egy SaaS-ajánlat, és több-bérlős SaaS-terméket is kínál.<br /><br />A rendszer első alkalommal futtatja az ügyfelek gyors üzembe helyezését.<br /><br />Egyetlen Bérlővel rendelkezik, de az ügyfeleket vendég felhasználóként adja hozzá. |  
-
-#### <a name="requirements-azure-marketplace-trial-interactive-demo"></a>Követelmények: Azure Marketplace: próbaverzió: Interaktív bemutató  
+#### <a name="requirements-azure-marketplace-trial-free-trial--saas-trial"></a>Követelmények: Azure Marketplace: Próbaverzió: Ingyenes próbaverzió / SaaS-próbaverzió  
 
 | Előny | Követelmény |  
 |:--- |:--- |  
-| Lehetővé teszi az ügyfelek számára, hogy a beállítás bonyolultsága nélkül lássák a megoldást működés közben. | A megoldáshoz olyan összetett beállítások szükségesek, amelyeket a próbaidőszak alatt nehéz lenne elérni. |  
+| Lehetővé teszi az ügyfél számára, hogy kipróbálja a terméket, mielőtt automatikus módszerrel vásárolna a fizetett használatra való áttéréshez. Lehetővé teszi az ügyfél koncepciójának igazolását és a Microsoft értékesítési csapataival való közös elköteleződést is. | A megoldás egy virtuális gép vagy megoldás sablon.<br /><br />A megoldás egy SaaS-ajánlat, és több-bérlős SaaS-terméket kínál.<br /><br />Van egy első futás tapasztalat, hogy egy ügyfél, és gyorsan fut.<br /><br />Egyetlen bérlővel rendelkezik, de ügyfeleket ad hozzá vendégfelhasználóként. |  
 
-#### <a name="requirements-azure-marketplace-trial-test-drive"></a>Követelmények: Azure Marketplace: próbaverzió: Test Drive  
+#### <a name="requirements-azure-marketplace-trial-interactive-demo"></a>Követelmények: Azure Marketplace: Próbaverzió: Interaktív bemutató  
 
 | Előny | Követelmény |  
 |:--- |:--- |  
-| Lehetővé teszi, hogy az ügyfél a vásárlás előtt próbálja ki a terméket.<br /><br />Előre konfigurált beállításokkal biztosítja a megoldás interaktív élményét.<br /><br />A tesztelési meghajtó használatakor a következő további előnyökkel jár.<ul> <li>a felhasználók a piactéren végzett keresések 27%-át úgy finomítják, hogy csak tesztelési meghajtókat tartalmazó ajánlatokat jelenítenek meg.</li> <li>Az ajánlatok tesztelési meghajtókon 38%-kal nagyobb számú érdeklődőt hoznak, mint az ajánlatok nélkül.</li> <li>a piactéren az új ügyfelek beszerzésének 36%-a a test Drive-t használó ügyfelektől származik.</li> <li>A tesztelési meghajtók lehetővé teszik a Microsoft mező-értékesítők számára, hogy jobban megértsék a terméket a közös értékesítéssel kapcsolatos erőfeszítésekhez.</li> </ul> | A megoldás egy olyan virtuális gép, megoldás-sablon vagy SaaS-alkalmazás, amely egyetlen Bérlővel rendelkezik, vagy bonyolult a kiépítés. <br /><br />Nem rendelkezik olyan módszerrel, amellyel a próbaverziót fizetős ajánlatra alakíthatja át. |  
+| Lehetővé teszi az ügyfelek számára, hogy a megoldás működés közben, a beállítás bonyolultsága nélkül. | A megoldás összetett beállításokat igényel, amelyeket a próbaidőszakon belül nehéz lenne elérni. |  
+
+#### <a name="requirements-azure-marketplace-trial-test-drive"></a>Követelmények: Azure Marketplace: Próba: Tesztmeghajtó  
+
+| Előny | Követelmény |  
+|:--- |:--- |  
+| Lehetővé teszi, hogy az ügyfél kipróbálja a terméket, mielőtt megvásárolná.<br /><br />A megoldás irányított használatát biztosítja az előre konfigurált beállítások használatával.<br /><br />A tesztvezetés használata további előnyökkel jár.<ul> <li>A piacon végzett felhasználói keresések 27%-át a felhasználók finomítják, hogy csak tesztmeghajtókkal rendelkező ajánlatokat jelenítsenek meg.</li> <li>A tesztvezetésekkel rendelkező ajánlatok 38%-kal több érdeklődőt generálnak, mint az ajánlatok nélkül.</li> <li>A piacon az új ügyfélszerzések 36%-a olyan ügyfelektől származik, akik tesztvezetést hajtottak végre.</li> <li>A tesztmeghajtók lehetővé teszik a Microsoft helyszíni eladói számára, hogy jobban megértsék a terméket a közös értékesítési erőfeszítésekhez.</li> </ul> | A megoldás egy virtuális gép, megoldássablon vagy SaaS-alkalmazás egyetlen bérlővel, vagy bonyolult kiépítése. <br /><br />Nincs olyan módszere, amivel a próbaidőszakot fizetős ajánlattá alakíthatja át. |  
 
 ---
 
-## <a name="transact-specific-listings"></a>Transact-specifikus Listázás
+## <a name="transact-specific-listings"></a>Tranzakció-specifikus listák
 
-### <a name="transact"></a>Tranzakció  
+### <a name="transact"></a>Transact  
 
-| Csomag típusa | Storefront | Részletek |   
+| Csomag típusa | Kirakat | Részletek |   
 |:---        |:---        | :--- |  
-| Azure-alkalmazások: felügyelt alkalmazás | Azure Piactér | Követelmények: Azure Marketplace: Transact: Azure apps: felügyelt alkalmazás |  
-| Azure-alkalmazások: megoldás sablonja | Azure Piactér | Követelmények: Azure Marketplace: Transact: Azure apps: megoldás sablonja |  
-| Tárolók | Azure Piactér | [Követelmények: Azure Marketplace: Transact: Container](#requirements-azure-marketplace-transact-container) |  
-| SaaS-alkalmazás  | Azure Piactér | [Követelmények: Azure Marketplace: Transact: SaaS-alkalmazás](#requirements-azure-marketplace-transact-saas-app) |  
-| Virtuális gép | Azure Piactér | [Követelmények: Azure Marketplace: Transact: virtuális gép](#requirements-azure-marketplace-transact-virtual-machine) |  
+| Azure-alkalmazások: Felügyelt alkalmazás | Azure Piactér | Követelmények: Azure Marketplace: Transact: Azure-alkalmazások: Felügyelt alkalmazás |  
+| Azure-alkalmazások: Megoldássablon | Azure Piactér | Követelmények: Azure Marketplace: Transact: Azure-alkalmazások: Megoldássablon |  
+| Containers | Azure Piactér | [Követelmények: Azure Marketplace: Transact: Container](#requirements-azure-marketplace-transact-container) |  
+| SaaS alkalmazás  | Azure Piactér | [Követelmények: Azure Marketplace: Transact: SaaS-alkalmazás](#requirements-azure-marketplace-transact-saas-app) |  
+| Virtuális gép | Azure Piactér | [Követelmények: Azure Marketplace: Transact: Virtuális gép](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 <!-- #### Requirements: Azure Marketplace: Transact: Azure apps: Managed app  
 
@@ -142,25 +140,25 @@ A lista listázási típusa a piactéren található kirakatok következő aján
 
 | Követelmény | Részletek |  
 |:--- |:--- |  
-| Számlázás és mérés | Az ingyenes vagy a BYOL számlázási modellt is támogatja. |  
-| Docker-alapú rendszerkép | A tároló rendszerképének a Docker-rendszerkép formátumán kell alapulnia, és az Azure Container-nyilvántartásokból kell kihúzni. |  
+| Számlázás és mérés | Támogassa az ingyenes vagy byol számlázási modellt. |  
+| Docker-alapú lemezkép | A tárolórendszerképnek a Docker-lemezkép formátumán kell alapulnia, és le kell állítani az Azure Container Registarendszerből. |  
 
 #### <a name="requirements-azure-marketplace-transact-saas-app"></a>Követelmények: Azure Marketplace: Transact: SaaS-alkalmazás  
 
 | Követelmény | Részletek |  
 |:--- |:--- |  
-| Számlázás és mérés | Ajánlatunk havi átalánydíjas díjszabással érhető el. A használaton alapuló díjszabás és a használaton alapuló *valós* idejű beállítások jelenleg nem támogatottak. |  
-| Lemondás | Ajánlatát bármikor megszakíthatja az ügyfél. |  
-| Tranzakció kezdőlapja | Azure-beli közösen márkás tranzakció kezdőlapjának üzemeltetése. A Kezdőlap lehetővé teszi, hogy ügyfelei az SaaS-szolgáltatásfiókot hozzanak létre és kezeljenek. |  
-| SaaS-előfizetés API | Adjon meg egy olyan szolgáltatást, amely együttműködik az SaaS-előfizetéssel egy felhasználói fiók és egy szolgáltatási csomag létrehozásához, frissítéséhez és törléséhez. A kritikus API-módosításokat 24 órán belül támogatni kell. A nem kritikus API-változások rendszeresen frissülnek. |  
+| Számlázás és mérés | Az ajánlat ára havi átalánydíjas. A használatalapú árképzési és használati alapú *true-up* beállítások jelenleg nem támogatottak. |  
+| Lemondás | Ajánlatát az ügyfél bármikor lemondhatja. |  
+| Tranzakció céloldala | Az Azure társmárkás tranzakciós céloldalának üzemeltetése. A céloldal lehetővé teszi az ügyfelek számára, hogy létrehozzák és kezeljék saas-szolgáltatási fiókját. |  
+| SaaS-előfizetéses API | Olyan szolgáltatást nyújt, amely együttműködik az SaaS-előfizetéssel egy felhasználói fiók és szolgáltatáscsomag létrehozásához, frissítéséhez és törléséhez. Minden kritikus API-módosítást 24 órán belül támogatni kell. A nem kritikus API-módosítások rendszeres időközönként frissülnek. |  
 
-#### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>Követelmények: Azure Marketplace: Transact: virtuális gép  
+#### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>Követelmények: Azure Marketplace: Transact: Virtuális gép  
 
 | Követelmény | Részletek |  
 |:--- |:--- | 
-| Számlázás és mérés | A virtuális gépnek BYOL vagy utólagos elszámolású havi számlázást kell támogatnia. |  
-| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeket Windows vagy Linux rendszerre kell építeni.<ul> <li>A linuxos virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: [Az Azure-ban támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>A Windows virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: [Azure-kompatibilis virtuális merevlemez létrehozása](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |  
+| Számlázás és mérés | A virtuális gépnek támogatnia kell a BYOL vagy a pay-as-you-go havi számlázást. |  
+| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeknek Windows vagy Linux rendszerre kell épülniük.<ul> <li>A Linux virtuális merevlemez ek létrehozásáról további információt az [Azure-ban jóváhagyott Linux-disztribúciók című](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)témakörben talál.</li> <li>A Windows virtuális merevlemez ek létrehozásáról további információt az [Azure-kompatibilis virtuális merevlemez létrehozása](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)című témakörben talál.</li> </ul> |  
 
 ## <a name="next-steps"></a>További lépések
-*   Látogasson el az [Azure Marketplace és a AppSource kiadói útmutató](./marketplace-publishers-guide.md) oldalára.  
+*   Keresse fel az Azure Piactér és az [AppSource Publisher Guide](./marketplace-publishers-guide.md) lapot.  
 
