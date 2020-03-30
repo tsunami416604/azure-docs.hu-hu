@@ -1,7 +1,7 @@
 ---
-title: Azure CLI-parancsfájl mintája – IPv6-előtér konfigurálása
+title: Azure CLI-parancsfájl-minta – Az IPv6 előtér konfigurálása
 titlesuffix: Azure Virtual Network
-description: IPv6-végpontok engedélyezése az Azure CLI használatával az Azure-ban Virtual Network
+description: IPv6-végpontok engedélyezése az Azure CLI használatával az Azure virtuális hálózatban
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,37 +12,39 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: 0661c5231e2fce4d6a675c07be6b0ae914c99997
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1ef8742bc4f8de2d08d9bb4fc98b3df6f9420737
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201361"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235031"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>IPv6-végpontok konfigurálása a Virtual Network script Sample (előzetes verzió) szolgáltatásban
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>IPv6-végpontok konfigurálása virtuális hálózati parancsfájlmintában (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy kettős stack-alhálózattal rendelkező kettős verem-(IPv4-és IPv6-) alkalmazást az Azure-ban, amely kettős (IPv4 + IPv6-alapú) előtér-konfigurációkat, valamint kettős IP-konfigurációval rendelkező virtuális gépeket tartalmaz. kettős hálózati biztonsági csoportra vonatkozó szabályok és kettős nyilvános IP-címek.
+Ez a cikk bemutatja, hogyan telepíthet kétverécses (IPv4 + IPv6) alkalmazást az Azure-ban, amely kettős IP-konfigurációval rendelkező kétverű virtuális hálózatot, kettős IP-konfigurációval rendelkező terheléselosztót, kettős IP-konfigurációval rendelkező hálózati adaptereket, kettős hálózati biztonsági csoport szabályok , és a kettős nyilvános IP.dual network security group rules ,and dual public IP.
 
 A szkriptet az Azure [Cloud Shellben](https://shell.azure.com/bash) vagy egy helyi Azure CLI-telepítésből futtathatja. Ha a parancssori felületet helyileg használja, akkor ehhez a szkripthez az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Ha helyileg futtatja a parancssori felületet, akkor emellett a `az login` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az IPv6 az Azure Virtual Network szolgáltatáshoz való használatához az előfizetést csak egyszer kell konfigurálnia az alábbiak szerint:
+Az IPv6 azure-beli virtuális hálózati szolgáltatás használatához csak egyszer kell konfigurálnia az előfizetést az alábbiak szerint:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igénybe vehet. A regisztrációs állapotát a következő Azure CLI-parancs futtatásával tekintheti meg:
 
-```azurelci
+A funkcióregisztráció befejezéséhez akár 30 perc is igénybe vesszen. A regisztrációs állapot ot a következő Azure CLI-parancs futtatásával ellenőrizheti:
+
+```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-A regisztráció befejeződése után futtassa a következő parancsot:
 
-```azurelci
+A regisztráció befejezése után futtassa a következő parancsot:
+
+```azurecli
 az provider register --namespace Microsoft.Network
 ```
 
@@ -261,6 +263,7 @@ az vm create \
 --image MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest
 
 ```
+
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás:
@@ -289,7 +292,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az vm create](/cli/azure/vm#az-vm-create) | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

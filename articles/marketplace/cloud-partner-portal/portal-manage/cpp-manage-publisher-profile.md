@@ -1,21 +1,19 @@
 ---
-title: Az Azure Marketplace és a AppSource kiadói profil kezelése | Azure piactér
-description: Elavult CPP-cikk, a PC-cikkhez kapcsolva. "az Azure Marketplace és a AppSource-közzétevői profilok kezelése" című témakörben található
-services: Azure, Marketplace, AppSource, Cloud Partner Portal, Partner Center
-author: ChJenk
-manager: pbutlerm
+title: Az Azure Marketplace és az AppSource közzétevői profiljának kezelése | Azure Piactér
+description: Elavult CPP-cikk, amely a PC-cikkhez kapcsolódik; "Az Azure Marketplace és az AppSource közzétevői profilok kezelésének elmagyarázása"
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.author: v-chjen
-ms.openlocfilehash: e2fdbd8720fe80a7d647f908a78614123202c657
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.author: dsindona
+ms.openlocfilehash: bc75ebbba807aa981e8de29c40947516fea6638d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666443"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288495"
 ---
-# <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Az Azure Marketplace és a AppSource kiadói profil kezelése
+# <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Az Azure Marketplace és az AppSource közzétevői profiljának kezelése
 
-Ez a funkció át lett helyezve a Microsoft [partner Center portálra](https://partner.microsoft.com/). További információ: [a kereskedelmi piactér fiókjának kezelése a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+Ezt a funkciót átváltottuk a Microsoft [Partner Center portálra.](https://partner.microsoft.com/) További információt a [Kereskedelmi piactér-fiók kezelése a Partnerközpontban című témakörben talál.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)

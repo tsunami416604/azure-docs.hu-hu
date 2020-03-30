@@ -1,74 +1,68 @@
 ---
-title: Szoftverek vásárlása a AppSource-on | Azure piactér
-description: A szoftver megvásárlásának lépései a AppSource-on | Az Azure Marketplace-en.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Hogyan vásároljunk szoftvert appsource | Azure Piactér
+description: Lépéseket az egyik, hogy megvásárolja a szoftverappsource | Azure Piactér.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 70e51d7c05e93e7d5f4451fa383023605a02af99
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.date: 03/20/2020
+ms.openlocfilehash: bc19246354bebd1ba2a827e7718cbad95b896e14
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933497"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284976"
 ---
-# <a name="how-to-purchase-software-on-microsoft-appsource"></a>Szoftverek vásárlása Microsoft AppSource
+# <a name="how-to-purchase-software-on-microsoft-appsource"></a>Szoftver vásárlása a Microsoft AppSource alkalmazásban
 
-A Microsoft [AppSource](https://appsource.microsoft.com/) mostantól lehetővé teszi az ügyfeleknek a Microsoft-partnerek által kínált SaaS-alkalmazásokra való előfizetést. Az ügyfelek az áruházban minősített webalkalmazásokat kereshetnek, és egyetlen helyen kezelhetik a díjakat, a frissítéseket, a visszalépéseket és a lemondásokat a Microsoft felügyeleti központjának használatával. Ez a cikk azt ismerteti, hogyan vásárolhat alkalmazást az áruházból.
+A Microsoft [AppSource](https://appsource.microsoft.com/) mostantól lehetővé teszi az ügyfelek számára, hogy előiratkozzanak a Microsoft-partnerek által kínált SaaS-alkalmazásokra. Az ügyfelek minősített webalkalmazásokat találhatnak az áruházban, és a Microsoft Felügyeleti központ segítségével egyetlen helyen kezelhetik a díjakat, frissítéseket, visszalépéseket és lemondásokat. Ez a cikk azt ismerteti, hogyan vásárolhat alkalmazást az áruházból.
+
+Az AppSource számos alkalmazás közül választhat, beleértve az ingyenes, próbaverziókat és a fizetős előfizetéseket. Ez a cikk azt ismerteti, hogy a fizetős előfizetések hogyan vásárolhatók meg az AppSource-on keresztül.
 
 ## <a name="requirements"></a>Követelmények
 
-Az SaaS-ajánlatok megvásárlásához a következőkre van szüksége:
+SaaS-ajánlatok vásárlásához a következőkre van szükség:
 
-- Munkahelyi vagy iskolai fiók.
+- Munkahelyi vagy iskolai fiók. Ha nem rendelkezik munkahelyi vagy iskolai fiókkal, kövesse a "Regisztráció ingyenes fiókra" linkre a vásárlási folyamat során.
 
-    > [!Note]
-    > Ha nem rendelkezik munkahelyi vagy iskolai fiókkal, létre kell hoznia egy Azure Active Directory bérlőt, amelyhez hozzá lehet adni egy munkahelyi vagy iskolai fiókot. További információ: rövid útmutató [: új bérlő létrehozása Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
-
-- Érvényes hitelkártya.
+- Érvényes hitelkártya abban az országban/régióban, ahol az ajánlatot megvásárolja.
 
     > [!Note]
-    > A hitelkártyának ahhoz az országhoz/régióhoz kell tartoznia, amelyben az ügyfél megvásárolja az ajánlatot. Egy másik ország kiválasztásához válassza a lap alján található "számlázási ország/régió módosítása" lehetőséget.
+    > Előfordulhat, hogy a hitelkártya-számlázási ország zárolva van az Azure Active Directory-példány helyére.
 
-## <a name="steps-for-making-purchases-on-appsource"></a>A AppSource vásárlásának lépései
+## <a name="steps-for-making-purchases-on-appsource"></a>A vásárlások lépései az AppSource-on
 
-1. Válassza ki a számlázási/országos régiót a [AppSource](https://appsource.microsoft.com/)-on.
+1. Válassza ki a számlázási/országrégiót az [AppSource-on.](https://appsource.microsoft.com/)
 1. Keresse meg a megvásárolni kívánt alkalmazást.
+1. Válassza **a Get it now**lehetőséget.
+1. Válassza ki a tervet:
 
-    > [!Note]
-    > A AppSource a választható alkalmazások közül választhat, beleértve az ingyenes, a próbaverziókat és a fizetős előfizetéseket. Ez a cikk azt ismerteti, hogyan vásárolhatók meg a fizetős előfizetések a AppSource használatával.
-
-1. Válassza a **Letöltés most** lehetőséget.
-1. Válassza ki a csomagot:
-
-    1. Ülőhelyek számának beállítása
-    1. Adja meg a számlázási időszakot.
+    1. Az ülések számának beállítása
+    1. Állítsa be a számlázási kifejezést.
     
-1. Adja meg a számlázási címedet.
+1. Adja meg számlázási címét.
 1. Adja meg a fizetési módot:
-    * Támogatott bankkártyák: Visa, Master Card, American Express, Discover.
+    * Támogatott hitelkártyák: Visa, Master Card, American Express, Discover.
     
-1. Válassza a **megrendelés**lehetőséget.
+1. Válassza a **Megrendelés lehetőséget.**
 
-## <a name="how-to-configure-software-post-purchase"></a>A szoftverek vásárlás utáni konfigurálása
+## <a name="how-to-configure-software-post-purchase"></a>A szoftver vásárlás utáni beállítása
 
-A megrendelés kézhezvételét követően több másodpercig is eltarthat, amíg a rendszer megerősíti a kérést. Megjelenik egy hivatkozás, amely az SaaS-előfizetés konfigurálását végzi az oldalon, valamint egy e-mailt, amely megerősíti a vásárlást, és a konfiguráció befejezésére szolgáló hivatkozást.
+A megrendelés beérkezése után több másodpercig is eltarthat, amíg megerősítést nyer. Kap egy hivatkozást a SaaS-előfizetés konfigurálásához az oldalon, valamint egy e-mailt, amely megerősíti a vásárlást és a konfiguráció befejezéséhez szükséges hivatkozást.
 
-1. A **megrendelés megerősítése** lapon válassza a **Konfigurálás**lehetőséget. Azt is megteheti, hogy a megerősítő e-mailben elküldött konfigurációs hivatkozást használja.
-1. Fejezze be az üzembe helyezést, és állítsa be a szoftver szolgáltatójának webhelyén.
+1. A **Rendelés visszaigazolása** lapon válassza a **Konfigurálás**lehetőséget. Másik lehetőségként használhatja a konfigurációs hivatkozást, amelyet a visszaigazoló e-mailben küld.
+1. Végezze el a kiépítést, és állítsa be a szoftverszolgáltató webhelyén.
 
     > [!Note]
     > Ez a lépés kötelező, és bármikor elvégezhető.
 
-## <a name="contact-support"></a>Kapcsolatfelvétel az ügyfélszolgálattal
+## <a name="contact-support"></a>Kapcsolatfelvétel a támogatási szolgáltatással
 
-Egy támogatási jegyet a Microsoft 365 felügyeleti központon keresztül [küldhet be](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/homepage) .
+A Microsoft 365 Felügyeleti központon keresztül támogatási jegyet lehet [beküldeni.](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/homepage)
 
-Üzleti termékek esetén [forduljon az ügyfélszolgálathoz](https://docs.microsoft.com/office365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=phone).
+Üzleti termékekkel [kapcsolatban itt fordulhat segítségért.](https://docs.microsoft.com/office365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=phone)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információért tekintse meg a [kereskedelmi piactér dokumentációját](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) .
+- További információt a [Kereskedelmi piactér dokumentációjában](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) talál.

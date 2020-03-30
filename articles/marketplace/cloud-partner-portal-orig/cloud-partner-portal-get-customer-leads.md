@@ -1,119 +1,118 @@
 ---
-title: Ügyfél-érdeklődők konfigurálása | Azure piactér
-description: Az ügyfél-érdeklődők konfigurálása a Cloud Partner Portalban.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Vevőérdeklődők konfigurálása | Azure Piactér
+description: Konfigurálja az ügyfélérdeklődőket a Cloud Partner Portalon.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: 312e172321c25248f1b0801bdbccf71762319989
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 56012fb2a907a6db6f87554660ee36b99a3dcbf9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818815"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280320"
 ---
 <a name="get-customer-leads"></a>Ügyfélérdeklődések lekérése
 ==================
 
-Ez a cikk azt ismerteti, hogyan hozhatók létre az ügyfelek a Cloud Partner Portal használatával. Ezeket az érdeklődőket összekapcsolhatja a CRM-rendszerrel, és integrálhatja őket az értékesítési folyamatba.
+Ez a cikk bemutatja, hogyan hozhat létre ügyfélérdeklődőket a Cloud Partner Portal használatával. Ezeket az érdeklődőket csatlakoztathatja a CRM-rendszerhez, és integrálhatja őket az értékesítési folyamatba.
 
-## <a name="leads"></a>Vezet
+## <a name="leads"></a>Érdeklődők
 
-Az érdeklődők olyan ügyfelek, akik érdeklik, vagy üzembe helyezik termékeiket az [Azure piactéren](https://azuremarketplace.microsoft.com/) vagy a [AppSource](https://appsource.microsoft.com).
+Az érdeklődők olyan ügyfelek, akik érdeklődnek az [Azure Piactérről](https://azuremarketplace.microsoft.com/) vagy az [AppSource-ból,](https://appsource.microsoft.com)vagy üzembe helyezik termékeit.
 
 ### <a name="azure-marketplace"></a>Azure Piactér
 
-1.  Az ügyfél a saját ajánlatának "tesztelési meghajtóját" veszi igénybe. A test Drives egy gyorsított lehetőség, amellyel azonnal megoszthatja vállalatát a potenciális ügyfelekkel anélkül, hogy a belépést akadályozni kellene. Az összes tesztvezetés egy olyan ügyfelet hoz, aki szeretne többet megtudni a termék kipróbálásáról. További információ a tesztelési meghajtókról az [Azure Marketplace Test Drive](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf)-on.
+1.  Az ügyfél "Test Drive"-ot hajt az ajánlatából. A tesztmeghajtók felgyorsított lehetőséget kínálnak arra, hogy vállalkozását azonnal megossza a potenciális ügyfelekkel, a belépés akadályai nélkül. Minden tesztmeghajtó olyan érdeklődőt hoz létre, amely szeretne többet megtudni a termék kipróbálásában. További információ az [Azure Marketplace-en](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf)vezetett tesztmeghajtókról.
 
-    ![Példák a Marketplace test drivere](./media/cloud-partner-portal-get-customer-leads/test-drive-offer.png)
+    ![Példák a Marketplace tesztmeghajtóira](./media/cloud-partner-portal-get-customer-leads/test-drive-offer.png)
  
 
 <!-- -->
 
-1. Az ügyfél beleegyezik, hogy megosztják az adataikat a "Letöltés most" lehetőség kiválasztása után. Ez az érdeklődő egy **kezdeti érdeklődési** vezető, ahol megosztjuk a termék beszerzésével kapcsolatos érdeklődéssel bíró ügyfelet. Az érdeklődő a beszerzési tölcsér felső része.
+1. Az Ügyfél beleegyezik abba, hogy megossza az adatait, miután kiválasztotta a "Get it now" lehetőséget. Ez az érdeklődő egy **kezdeti érdeklődési** kör, ahol megosztjuk az információkat azokról az ügyfelekről, akik érdeklődést mutattak a termék megszerzése iránt. Az érdeklődő az akvizíciós tölcsér teteje.
 
-   ![Letöltés lehetőség](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
+   ![Szerezd meg most lehetőség](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
 
-1. Az ügyfél a "vásárlás" lehetőséget választja az [Azure Portalon](https://portal.azure.com/) a termék beszerzéséhez. Ez az érdeklődő egy **aktív** érdeklődő, ahol megosztjuk a termék üzembe helyezését megkezdő ügyféllel kapcsolatos információkat.
+1. Az ügyfél a "Vásárlás" lehetőséget választja az [Azure Portalon](https://portal.azure.com/) a termék beszerzéséhez. Ez az érdeklődő egy **aktív** érdeklődő, ahol információkat osztunk meg egy olyan ügyfélről, aki megkezdte a termék üzembe helyezését.
 
    ![Vásárlási lehetőség](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
 
 
 ### <a name="appsource"></a>AppSource
 
-1.  Az ügyfél az ajánlathoz tartozó "tesztelési meghajtót" vett igénybe. A test Drives egy gyorsított lehetőség, amellyel azonnal megoszthatja vállalatát a potenciális ügyfelekkel anélkül, hogy a belépést akadályozni kellene. Az összes tesztvezetés olyan ügyfelet fog eredményezni, aki szeretne többet megtudni a termék kipróbálásáról. További információ a [AppSource-tesztelési meghajtón](https://appsource.microsoft.com/blogs/want-to-try-an-app-take-a-test-drive)található tesztelési meghajtókról.
+1.  Az ügyfél "Test Drive"-ot vett fel az ajánlatához. A tesztmeghajtók felgyorsított lehetőséget kínálnak arra, hogy vállalkozását azonnal megossza a potenciális ügyfelekkel, a belépés akadályai nélkül. Minden tesztmeghajtó olyan érdeklődőt hoz létre, amely érdeklődik a termék kipróbálása iránt, hogy többet tudjon meg. További információ az [AppSource Test Drive](https://appsource.microsoft.com/blogs/want-to-try-an-app-take-a-test-drive)tesztmeghajtójának tesztmeghajtóiról.
 
-    ![Példa tesztelési meghajtóra](./media/cloud-partner-portal-get-customer-leads/test-drive-offer-2.png)
+    ![Példa a tesztvezetésre](./media/cloud-partner-portal-get-customer-leads/test-drive-offer-2.png)
 
-2.  Az ügyfél beleegyezik, hogy megosztják az adataikat a "Letöltés most" lehetőség kiválasztása után. Ez az érdeklődő egy **kezdeti érdeklődést** eredményez, ahol megosztjuk az ügyfélre vonatkozó információkat, akik érdeklődést mutatnak a termék beszerzéséhez. Az érdeklődő a beszerzési tölcsér felső része.
+2.  Az Ügyfél beleegyezik abba, hogy megossza az adatait, miután kiválasztotta a "Get it now" lehetőséget. Ez az érdeklődő egy **kezdeti érdeklődési** kör, ahol megosztjuk az ügyfelekkel kapcsolatos információkat, akik érdeklődést mutatnak a termék megszerzése iránt. Az érdeklődő az akvizíciós tölcsér teteje.
 
-      ![Letöltés lehetőség](./media/cloud-partner-portal-get-customer-leads/get-it-now-button-2.png)
+      ![Szerezd meg most lehetőség](./media/cloud-partner-portal-get-customer-leads/get-it-now-button-2.png)
 
 
-3.  Az ügyfél a "Kapcsolatfelvétel" lehetőséget választja az ajánlaton. Ez az érdeklődő egy **aktív** érdeklődő, ahol megosztjuk az ügyféllel kapcsolatos információkat, akik azt kérik, hogy kövessék a terméket.
+3.  Az ügyfél az ajánlatában a "Kapcsolatfelvétel" lehetőséget választja. Ez az érdeklődő egy **aktív** érdeklődő, ahol információkat osztunk meg egy olyan ügyfélről, aki azt kéri, hogy kövessék nyomon a termékével kapcsolatban.
 
-    ![Kapcsolatfelvételi lehetőség](./media/cloud-partner-portal-get-customer-leads/contact-me-image.png)
+    ![Kapcsolat felvétel opció](./media/cloud-partner-portal-get-customer-leads/contact-me-image.png)
 
-<a name="lead-data"></a>Érdeklődői adatkészletek
+<a name="lead-data"></a>Érdeklődőadatai
 ---------
 
-Az ügyfél beszerzési folyamata során kapott összes érdeklődő meghatározott mezőkben lévő adattal rendelkezik. Mivel több lépésből is nyer, az érdeklődők kezelésének legjobb módja az, hogy a rendszer duplikálja és testreszabja a követést. Így minden ügyfél megfelelő üzenetet kap, és egyedi kapcsolatot hoz létre.
+Az ügyfélszerzési folyamat során kapott minden érdeklődő adott mezőkben található adatokkal rendelkezik. Mivel több lépésből kapsz érdeklődőket, az érdeklődők kezelésének legjobb módja az, ha leiheted és személyre szabod a nyomon követéseket. Így minden ügyfél megkapja a megfelelő üzenetet, és ön egyedi kapcsolatot hoz létre.
 
-### <a name="lead-source"></a>Ólom forrása
+### <a name="lead-source"></a>Érdeklődő forrása
 
-A vezető forrás formátuma a **forrás**-**művelet** |  **ajánlat**
+Az érdeklődőforrás formátuma-**forrásművelet-ajánlat** |  **Offer** **Source**
 
-**Források**: "AzureMarketplace", "AzurePortal", "testdrive" és "APPSOURCE (SPZA)"
+**Források**: "AzureMarketplace", "AzurePortal", "TestDrive" és "AppSource (SPZA)"
 
-**Műveletek**:
-- "INS" – telepítés. Ez a művelet az Azure Marketplace-en vagy a AppSource, amikor az ügyfél megvásárolja a terméket.
-- "PLT" – a partner által vezetett próbaverziót jelenti. Ez a művelet a AppSource, ha az ügyfél a kapcsolatfelvételi lehetőséget használja.
-- "DNC –" – ne lépjen kapcsolatba. Ez a művelet a AppSource, ha az alkalmazás oldalán megjelenő partnert kérik a kapcsolatfelvételre. Megosztjuk a vezetőket, hogy az ügyfél az alkalmazáson keresztül szerepel, de nem kell kapcsolatba lépnie.
-- "Létrehozás" – Ez a művelet csak az Azure Portalon belül történik, és akkor jön létre, amikor az ügyfél megvásárolja az ajánlatát a fiókjához.
-- "StartTestDrive" – Ez a művelet csak tesztelési meghajtók esetében használható, és akkor jön létre, amikor egy ügyfél elindítja a tesztelési meghajtót.
+**Intézkedések**:
+- "INS" - telepítés. Ez a művelet az Azure Marketplace-en vagy az AppSource-on történik, amikor egy ügyfél megvásárolja a terméket.
+- "PLT" - A Partner Led trial rövidítése. Ez a művelet az AppSource-on történik, ha az ügyfél a Kapcsolatfelvétel lehetőséget használja.
+- "DNC" -- Ne érintkezz. Ez a művelet az AppSource-on történik, amikor egy partner, aki keresztlistára került az alkalmazás oldalán, felkérést kap a kapcsolatfelvételre. Megosztjuk a figyelmeztetést arról, hogy ez az ügyfél keresztlistára került az alkalmazásban, de nem kell velük kapcsolatba lépni.
+- "Létrehozás" – Ez a művelet csak az Azure Portalon belül érhető el, és akkor jön létre, amikor egy ügyfél megvásárolja az ajánlatot a fiókjába.
+- "StartTestDrive" – Ez a művelet csak tesztmeghajtókra szolgál, és akkor jön létre, amikor egy ügyfél elindítja a tesztvezetést.
 
 **Ajánlatok**
 
-Az alábbi példák a közzétevőhöz és egy adott ajánlathoz rendelt egyedi azonosítókat mutatják be: ellenőrzőpont. ellenőrzés-pont-r77-10sg-byol, bitnami. openedxcypress és docusign. 3701c77e-1cfa-4c56-91e6-3ed0b622145a.
+A következő példák egy közzétevőhöz és egy adott ajánlathoz rendelt egyedi azonosítókat mutatnak be: checkpoint.check-point-r77-10sg-byol, bitnami.openedxcypress és docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a.
 
 
-### <a name="customer-info"></a>Vásárlói adatok
+### <a name="customer-info"></a>Ügyféladatok
 
-A következő példában szereplő mezőkben láthatók a érdeklődők által megadott ügyfél-információk.
-- FirstName: John
-- LastName: Smith
-- E-mail: jsmith\@microsoft.com
+Az alábbi példában szereplő mezők az érdeklődőben található vevői adatokat mutatják.
+- Keresztnév: János
+- Vezetéknév: Smith
+- E-mail:\@jsmith microsoft.com
 - Telefon: 1234567890
-- Ország: Egyesült Államok
+- Ország: USA
 - Vállalat: Microsoft
-- Cím: műszaki igazgató
+- Cím: CTO
 
 >[!Note]
->Az előző példában szereplő összes érték mindig elérhető az egyes érdeklődők számára.
+>Az előző példában nem minden adat érhető el mindig az egyes érdeklődőkhöz.
 
-Aktívan dolgozunk az érdeklődők fejlesztésén, tehát ha van olyan adatmező, amelyet itt nem lát, de szeretné, [küldje el nekünk visszajelzését](mailto:AzureMarketOnboard@microsoft.com).
+Aktívan dolgozunk az érdeklődők javításán, így ha van egy adatmező, amelyet itt nem lát, de szeretne, kérjük, [küldje el nekünk visszajelzését.](mailto:AzureMarketOnboard@microsoft.com)
 
-<a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>A CRM rendszer összekötése a Cloud Partner Portal
+<a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>A CRM-rendszer csatlakoztatása a Cloud Partner Portal portállal
 ------------------------------------------------------------
 
-Az érdeklődők beszerzésének megkezdéséhez építettük a Cloud Partner Portal vezető felügyeleti összekötőjét, így könnyedén csatlakoztathatja a CRM-adatokat, és elvégezheti a kapcsolódást. Mostantól könnyedén kihasználhatja a piactér által generált érdeklődőket, és nem kell egy külső rendszerrel integrálni a jelentős mérnöki erőfeszítéseket.
+Az érdeklődők megszerzéséhez a Felhőpartner-portálon építettük fel az Érdeklődőkezelés-összekötőt, hogy könnyedén csatlakoztathassa CRM-adatait, és mi megkötjük önnek a kapcsolatot. Mostantól könnyedén kihasználhatja a piactér által generált érdeklődőket anélkül, hogy jelentős mérnöki erőfeszítéseket tene egy külső rendszerrel való integrációérdekében.
 
-![Vezető felügyeleti összekötő](./media/cloud-partner-portal-get-customer-leads/lead-management-connector.png)
+![Érdeklődőkezelési összekötő](./media/cloud-partner-portal-get-customer-leads/lead-management-connector.png)
 
-Számos CRM-rendszerbe, vagy közvetlenül egy Azure Storage-táblába is írhatunk, ahol Ön is kezelheti az érdeklődőket. A következő hivatkozások mindegyike útmutatást nyújt a lehetséges érdeklődői célokhoz való csatlakozáshoz:
+Az érdeklődőket különböző CRM-rendszerekbe vagy közvetlenül egy Azure Storage Table-be írhatjuk, ahol tetszés szerint kezelheti az érdeklődőket. Az alábbi hivatkozások mindegyike útmutatást nyújt a lehetséges érdeklődői helyekhez való csatlakozáshoz:
 
--   A [Dynamics CRM Online](./cloud-partner-portal-lead-management-instructions-dynamics.md) segítségével megtudhatja, hogyan konfigurálhatja a Dynamics CRM Online-t az érdeklődők beszerzéséhez.
--   A Marketo- [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md) beállításához szükséges utasítások beszerzése az érdeklődők beolvasásához.
--    [Salesforce](./cloud-partner-portal-lead-management-instructions-salesforce.md) a Salesforce-példány beállításához az érdeklődők beszerzéséhez.
--    Az Azure- [táblázat](./cloud-partner-portal-lead-management-instructions-azure-table.md) segítségével megtudhatja, hogyan állíthatja be Azure Storage-fiókját az érdeklődők Azure-táblázatba való beszerzéséhez.
--   [Https-végpont](./cloud-partner-portal-lead-management-instructions-https.md) , amely útmutatást nyújt a https-végpont beállításához az érdeklődők beszerzéséhez.
+-   [A Dynamics CRM Online](./cloud-partner-portal-lead-management-instructions-dynamics.md) az érdeklődők leéséhez való konfigurálásának módjára vonatkozó útmutatásért.
+-   [Marketo,](./cloud-partner-portal-lead-management-instructions-marketo.md) hogy az utasításokat a forgalomba Marketo vezető konfiguráció, hogy vezet.
+-    [Salesforce,](./cloud-partner-portal-lead-management-instructions-salesforce.md) hogy utasításokat kapjon a Salesforce példány beállításához az érdeklődők lekérni.
+-    [Az Azure Table](./cloud-partner-portal-lead-management-instructions-azure-table.md) az Azure storage-fiók beállítására vonatkozó utasításokat az Azure-táblában való érdeklődők leéséhez.
+-   [Https Endpoint](./cloud-partner-portal-lead-management-instructions-https.md) a Https-végpont beállítására vonatkozó utasítások lekérni.
 
-Miután konfigurálta az érdeklődő célját, és közzéteszi az ajánlatát, érvényesítjük a kapcsolatokat, és elküldjük Önnek a tesztelési érdeklődőt. Ha az ajánlat megtekintése előtt megtekinti az ajánlatot, akkor tesztelheti az érdeklődői kapcsolatokat is, ha az előnézeti környezetben próbálja meg saját maga is beszerezni az ajánlatot. Fontos, hogy az érdeklődői beállítások naprakészek maradjanak, hogy ne veszítse el az érdeklődőket, ezért ügyeljen arra, hogy frissítse ezeket a kapcsolatokat, ha valami módosult a végén.
+Miután konfigurálta az érdeklődő célhelyét és közzétette az ajánlatot, érvényesítjük a kapcsolatot, és elküldjük Önnek a tesztérdeklődőt. Amikor az ajánlat megtekintése előtt éles, akkor is tesztelheti a vezető kapcsolat, ha megpróbálja megszerezni az ajánlatot magad az előnézeti környezetben. Fontos, hogy az érdeklődőbeállítások naprakészek maradjanak, hogy ne veszítsd el az érdeklődőket, ezért mindenképpen frissítsd ezeket a kapcsolatokat, ha valami megváltozott a végén.
 
-<a name="what-next"></a>Mi a következő lépés?
+<a name="what-next"></a>Mi lesz a következő?
 ----------
 
-Ha a technikai beállítás be van állítva, ezeket az érdeklődőket be kell építenie a jelenlegi értékesítési & Marketing stratégiába és működési folyamataiba. Nagyon fontos, hogy jobban megértsük a teljes értékesítési folyamatokat, és szeretne szorosan együttműködni Önnel, hogy kiváló minőségű érdeklődőket és elegendő adatmennyiséget biztosítson a siker érdekében. Örömmel vesszük visszajelzését arról, hogy miként optimalizálható és növelhető az érdeklődők számára elérhető további információk, amelyek segítenek az ügyfelek sikerességében. Kérjük, tudassa velünk, ha szeretne [visszajelzést](mailto:AzureMarketOnboard@microsoft.com) küldeni, és javaslatokat tesz arra, hogy az értékesítési csapata még eredményesebb legyen a piactéren.
+Miután a technikai beállítás megtörtént, ezeket az érdeklődőket be kell építenie a jelenlegi értékesítési & marketingstratégiájába és működési folyamataiba. Nagyon szeretnénk jobban megérteni a teljes értékesítési folyamatot, és szorosan együtt kívánunk működni Önnel a kiváló minőségű érdeklődők és elegendő adat biztosításában ahhoz, hogy sikeres legyen. Örömmel fogadjuk visszajelzését arról, hogyan optimalizálhatjuk és javíthatjuk az általunk küldött érdeklődőket további adatokkal, hogy ezek az ügyfelek sikeresek legyenek. Kérjük, tudasd velünk, ha visszajelzést és javaslatokat szeretnél [adni,](mailto:AzureMarketOnboard@microsoft.com) hogy az értékesítési csapatod sikeresebb legyen a Marketplace-érdeklődőkkel.

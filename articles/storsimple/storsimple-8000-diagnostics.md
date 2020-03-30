@@ -1,6 +1,6 @@
 ---
-title: Diagnosztikai eszközt a StorSimple 8000-es eszköz hibáinak elhárítása |} A Microsoft Docs
-description: A StorSimple eszköz módok és ismerteti a storsimple-höz készült Windows PowerShell használata az eszköz üzemmódjának módosítása.
+title: Diagnosztikai eszköz a StorSimple 8000 eszköz hibaelhárításához | Microsoft dokumentumok
+description: A StorSimple eszközmódok ismertetése, és bemutatja, hogyan használhatja a Windows PowerShell for StorSimple eszközmód módosítása.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,87 +14,87 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5cce4337e3ef95c6407d46d9b8b6401fe4f6600b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48bd909eefbaea15cf6ca2427e106ad9bc0ffbb4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576186"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298747"
 ---
-# <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>A StorSimple diagnosztikai eszközt használhatja a 8000-es sorozatú eszköz hibáinak elhárítása
+# <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>A StorSimple diagnosztikai eszközzel hárítsa el a 8000-es sorozatú eszközproblémákat
 
 ## <a name="overview"></a>Áttekintés
 
-A StorSimple diagnosztikai eszköz diagnosztizálja a rendszer, a teljesítmény, a hálózati és a hardver összetevő állapotát a StorSimple-eszköz kapcsolatos problémákat. A diagnosztikai eszköz használható a különböző forgatókönyvekben. Ilyen például, amikor munkaterhelés tervezési, a StorSimple eszköz üzembe helyezésének, a hálózati környezet felmérése és a egy működési eszköz teljesítményének meghatározására. Ez a cikk áttekintést a diagnosztikai eszköz, és ismerteti, hogyan használható az eszközt a StorSimple eszköz.
+A StorSimple Diagnosztika eszköz diagnosztizálja a rendszer, a teljesítmény, a hálózat és a hardverösszetevők állapotával kapcsolatos problémákat egy StorSimple-eszköz esetében. A diagnosztikai eszköz különböző esetekben használható. Ezek a forgatókönyvek közé tartozik a számítási feladatok tervezése, egy StorSimple-eszköz üzembe helyezése, a hálózati környezet felmérése és egy működő eszköz teljesítményének meghatározása. Ez a cikk áttekintést nyújt a diagnosztikai eszközről, és ismerteti, hogyan használható az eszköz egy StorSimple eszközzel.
 
-A diagnosztikai eszköz elsősorban a StorSimple 8000 sorozat a helyszíni eszközök (8100-as és 8600-as).
+A diagnosztikai eszköz elsősorban a StorSimple 8000 sorozatú helyszíni eszközökhöz (8100 és 8600) készült.
 
 ## <a name="run-diagnostics-tool"></a>Diagnosztikai eszköz futtatása
 
-Ezt az eszközt a StorSimple eszköz a Windows PowerShell felületéről is futtathatók. Az eszköz helyi adapterének eléréséhez két módja van:
+Ez az eszköz a StorSimple-eszköz Windows PowerShell felületén keresztül futtatható. Az eszköz helyi felületét kétféleképpen érheti el:
 
-* [A PuTTY használata az eszköz soros konzoljához való kapcsolódáshoz](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-* [Távoli elérése az eszköz a Windows PowerShell storsimple-höz készült](storsimple-8000-remote-connect.md).
+* [A PuTTY segítségével csatlakozzon a készülék soros konzoljához](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+* [Az eszköz távolról elérhető a Windows PowerShell for StorSimple rendszeren keresztül.](storsimple-8000-remote-connect.md)
 
-Ez a cikk feltételezzük, hogy az eszköz soros konzoljához a PuTTY-n keresztül csatlakoztatta.
+Ebben a cikkben feltételezzük, hogy a PuTTY-n keresztül csatlakozott az eszköz soros konzoljához.
 
 #### <a name="to-run-the-diagnostics-tool"></a>A diagnosztikai eszköz futtatása
 
-Az eszköz a Windows PowerShell felületéről való csatlakozás után a következő lépésekkel futtassa a parancsmagot.
-1. Jelentkezzen be a lépéseket követve az eszköz soros konzoljához [a PuTTY használata az eszköz soros konzoljához való kapcsolódáshoz](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+Miután csatlakozott az eszköz Windows PowerShell-felületéhez, hajtsa végre a parancsmag futtatásához szükséges alábbi lépéseket.
+1. Jelentkezzen be az eszköz soros konzoljára a [PuTTY használata az eszköz soros konzoljához való csatlakozáslépései](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)vel.
 
 2. Írja be a következő parancsot:
 
     `Invoke-HcsDiagnostics`
 
-    Ha a hatókör-paraméter nincs megadva, a parancsmag végrehajtja a diagnosztikai tesztek. Ezek a tesztek közé tartozik a rendszer, a hardver összetevő állapotát, a hálózati és a teljesítmény. 
+    Ha a hatókör paraméter nincs megadva, a parancsmag végrehajtja az összes diagnosztikai tesztet. Ezek a tesztek magukban foglalják a rendszer, a hardverösszetevők állapotát, a hálózatot és a teljesítményt. 
     
-    Csak egy adott teszt futtatásához adja meg a hatókör-paramétert. Csak a hálózati tesztek futtatásához például írja be a
+    Ha csak egy adott tesztet szeretne futtatni, adja meg a hatókör paramétert. Ha például csak a hálózati tesztet szeretné futtatni, írja be a
 
     `Invoke-HcsDiagnostics -Scope Network`
 
-3. Válassza ki, és másolja ki a kimenetet egy szövegfájlba további elemzés céljából a PuTTY ablakból.
+3. További elemzés céljából jelölje ki és másolja a Kimenetet a PuTTY ablakból egy szöveges fájlba.
 
-## <a name="scenarios-to-use-the-diagnostics-tool"></a>Forgatókönyvek a diagnosztikai eszközt használhatja
+## <a name="scenarios-to-use-the-diagnostics-tool"></a>A diagnosztikai eszköz használatának forgatókönyvei
 
-Hálózat, a teljesítmény, a rendszer és a hardver állapotát, a rendszer a diagnosztikai eszközt használhatja. Az alábbiakban néhány lehetséges forgatókönyvek:
+A diagnosztikai eszközzel elháríthatja a rendszer hálózati, teljesítmény-, rendszer- és hardverállapotának elhárítását. Íme néhány lehetséges forgatókönyv:
 
-* **Az eszköz offline** – a StorSimple 8000 sorozatú eszköz offline állapotban. Azonban a Windows PowerShell interfészről úgy tűnik, hogy mindkét vezérlő rendszer üzembe helyezéséig.
-    * Használhatja ezt az eszközt, majd vizsgálja meg a hálózati állapotot.
+* **Eszköz offline –** A StorSimple 8000 sorozatú eszköz offline állapotban van. Azonban a Windows PowerShell felület, úgy tűnik, hogy mindkét vezérlő működik.
+    * Ezzel az eszközzel meghatározhatja a hálózati állapotot.
          
          > [!NOTE]
-         > A teljesítmény- és hálózati beállításokat az eszközön a regisztráció (vagy a telepítő varázsló használatával történő konfigurációval) előtt mérje fel az eszköz nem használható. Egy érvényes IP-cím hozzá van rendelve az eszköz beállítása varázsló és a regisztráció során. Ezt a parancsmagot futtathatja egy eszközön, amely nincs regisztrálva, a hardver és a rendszer. Használja például a hatókör-paramétert:
+         > Ne használja ezt az eszközt az eszköz teljesítményének és hálózati beállításainak felmérésére a regisztráció előtt (vagy a beállítási varázslón keresztüli konfigurálás) előtt. A telepítővarázsló és a regisztráció során érvényes IP-cím van hozzárendelve az eszközhöz. Ezt a parancsmatot futtathatja egy nem regisztrált eszközön a hardver állapotés a rendszer. Használja a hatókör paramétert, például:
          >
          > `Invoke-HcsDiagnostics -Scope Hardware`
          >
          > `Invoke-HcsDiagnostics -Scope System`
 
-* **Állandó eszközzel kapcsolatos problémák** -eszközökkel kapcsolatos problémákat, amelyek úgy tűnik, hogy fennállnak tapasztal. Például a regisztráció sikertelen. Sikerült is lehet tapasztal eszközzel kapcsolatos problémák után az eszköz sikeresen regisztrált és működési egy ideig.
-    * Ebben az esetben előzetes hibaelhárítási előtt Support jelentkezzen egy szolgáltatási kérelmet az eszköz használható. Azt javasoljuk, hogy futtassa ezt az eszközt, és ez az eszköz kimenete rögzítése. Majd számára a hibaelhárítás támogatásához adja meg a kimenetet.
-    * Ha bármely összetevő vagy a fürt hardverhibák, meg kell jelentkezzen be egy támogatási kérést.
+* **Állandó eszközproblémák** – Olyan eszközproblémákat tapasztal, amelyek látszólag továbbra is fennállnak. Például a regisztráció sikertelen. Előfordulhat, hogy az eszköz sikeres regisztrálása és működése után is előfordulhat, hogy eszközproblémákat tapasztal.
+    * Ebben az esetben használja ezt az eszközt az előzetes hibaelhárításhoz, mielőtt a Microsoft támogatási szolgálatával naplózna egy szolgáltatási kérelmet. Javasoljuk, hogy futtassa ezt az eszközt, és rögzítse az eszköz kimenetét. Ezután ezt a kimenetet a támogatás a hibaelhárítás felgyorsítása érdekében.
+    * Ha hardverösszetevő vagy fürthiba történt, jelentkezzen be egy támogatási kérelmet.
 
-* **Eszköz teljesítménye alacsony** – a StorSimple eszköz lassú.
-    * Ebben az esetben futtassa ezt a parancsmagot a hatókör-paramétert állítsa be a teljesítmény. A kimenet elemzése. A felhőalapú olvasási és írási késése beolvasása. Használja a jelentett késési maximális elérhető célként, némi többletterhelést okoz, a belső adatfeldolgozási figyelembe vennie, és a számítási feladatok, a rendszer telepíteni. További információért ugorjon [használata a hálózati tesztek a eszközteljesítmény](#network-test).
+* **Alacsony eszközteljesítmény** – A StorSimple eszköz lassú.
+    * Ebben az esetben futtassa ezt a parancsmamot a teljesítményre beállított hatókörparaméterrel. Elemezze a kimenetet. A felhő olvasási és írási késése. Használja a jelentett késések maximális elérhető célként, tényező a belső adatfeldolgozás némi többletterhelést, majd telepítse a számítási feladatokat a rendszeren. További információt az [Eszköz teljesítményével kapcsolatos hibaelhárításhoz a hálózati teszt használata című](#network-test)témakörben talál.
 
 
-## <a name="diagnostics-test-and-sample-outputs"></a>Diagnosztikai teszt- és minta kimenetek
+## <a name="diagnostics-test-and-sample-outputs"></a>Diagnosztikai vizsgálat és mintakimenetek
 
-### <a name="hardware-test"></a>Hardver ellenőrzése
+### <a name="hardware-test"></a>Hardverteszt
 
-Ez a vizsgálat meghatározza, hogy a hardverösszetevők, a USM belső vezérlőprogramot és a lemezfirmware a rendszeren futó állapotát.
+Ez a teszt határozza meg a hardverösszetevők, az USM belső vezérlőprogramja és a rendszeren futó lemez belső vezérlőprogramja állapotát.
 
-* A hardverösszetevők jelentett olyan összetevőket, amelyek a teszt sikertelen, vagy nem találhatók a rendszerben.
-* USM lemez és a belső vezérlőprogram belsővezérlőprogram-verziói a vezérlő 0, 1. vezérlő, jelentett, és a rendszerben a megosztott összetevőit. A hardverösszetevők teljes listáját Ugrás:
+* A jelentett hardverösszetevők azok az összetevők, amelyek nem feleltmeg a teszten, vagy nem szerepelnek a rendszerben.
+* Az USM belső vezérlőprogramjának és lemezbelső vezérlőprogramjának verziói a 0 vezérlő, az 1 vezérlő és a rendszer megosztott összetevőinek jelentése. A hardverösszetevők teljes listáját a következő lapban lehet megkeresni:
 
-    * [Az elsődleges lemezház összetevői](storsimple-8000-monitor-hardware-status.md#component-list-for-primary-enclosure-of-storsimple-device)
-    * [Az EBOD lemezház összetevői](storsimple-8000-monitor-hardware-status.md#component-list-for-ebod-enclosure-of-storsimple-device)
+    * [Alkatrészek az elsődleges burkolatban](storsimple-8000-monitor-hardware-status.md#component-list-for-primary-enclosure-of-storsimple-device)
+    * [Összetevők az EBOD házban](storsimple-8000-monitor-hardware-status.md#component-list-for-ebod-enclosure-of-storsimple-device)
 
 > [!NOTE]
-> Ha a hardver ellenőrzése sikertelen összetevők jelentéseket [jelentkezzen be egy szolgáltatási kérelmet a Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+> Ha a hardverteszt sikertelen összetevőket jelent, [jelentkezzen be egy szolgáltatáskérelmet a Microsoft támogatási szolgálatával.](storsimple-8000-contact-microsoft-support.md)
 
-#### <a name="sample-output-of-hardware-test-run-on-an-8100-device"></a>Hardver vizsgálat futtatása egy 8100-as eszközön mintakimenete
+#### <a name="sample-output-of-hardware-test-run-on-an-8100-device"></a>A hardveres teszt mintakimenete 8100-as eszközön
 
-Íme egy StorSimple 8100 sorozatú eszköz egy mintakimenete. A 8100-as modell eszközön a EBOD ház nem szerepel. Ezért az EBOD-vezérlő összetevői nem jelennek meg.
+Itt egy storSimple 8100-as eszköz mintakimenete látható. A 8100-as modelleszközben az EBOD-ház nincs jelen. Ezért az EBOD vezérlő összetevői nem jelentik.
 
 ```
 Controller0>Invoke-HcsDiagnostics -Scope Hardware
@@ -204,19 +204,19 @@ DisksFirmware       : SmrtStor:TXA2D20400GA6XYR:KZ50
 --------------------------------------------------
 ```
 
-### <a name="system-test"></a>Rendszer-teszt
+### <a name="system-test"></a>Rendszervizsgálat
 
-Ez a teszt jelenti a rendszer-információkat, a frissítések érhetők el, a fürt információkat és a adatait az eszköz.
+Ez a teszt jelenti a rendszeradatokat, a rendelkezésre álló frissítéseket, a fürtinformációkat és az eszköz szolgáltatásadatait.
 
-* A rendszer-információkat tartalmazza a modellt, sorozatszámát, időzóna, tartományvezérlő állapotát és a részletes szoftververzió a rendszeren futó. A kimeneteként jelentett különböző rendszer paraméterek megértéséhez, lépjen a [értelmezése során a rendszer-információkat](#appendix-interpreting-system-information).
+* A rendszerinformáció tartalmazza a modellt, az eszköz sorozatszámát, az időzónát, a vezérlő állapotát és a rendszeren futó részletes szoftververziót. A kimenetként jelentett különböző rendszerparaméterek megértéséhez nyissa meg a Rendszeradatok értelmezése című [lapot.](#appendix-interpreting-system-information)
 
-* A frissítés rendelkezésre állási jelentések elérhetők-e a normál és a karbantartás mód és a csomaghoz kapcsolódó nevét. Ha `RegularUpdates` és `MaintenanceModeUpdates` vannak `false`, akkor ez azt jelenti, hogy a frissítések nem érhetők el. Az eszköz nem naprakész.
-* Fürtinformációkat ismerteti a különböző logikai összetevőit a HCS fürtcsoportot és azok megfelelő állapotát. Ha egy kapcsolat nélküli fürtcsoport ebben a szakaszban a jelentés [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md).
-* A szolgáltatás információk közé tartozik a nevét és az eszközön futó összes HCS és a CIS szükségességét szolgáltatás állapota. Ez az információ hasznos lehet a a Microsoft Support az eszköz a probléma elhárításához.
+* A frissítés rendelkezésre állási jelentések, hogy a rendszeres és karbantartási módok állnak rendelkezésre, és a hozzájuk tartozó csomag nevét. Ha `RegularUpdates` `MaintenanceModeUpdates` és `false`vannak is, ez azt jelzi, hogy a frissítések nem érhetők el. A készülék naprakész.
+* A fürtinformációk az összes HCS-fürtcsoport különböző logikai összetevőire és azok állapotára vonatkozó információkat tartalmazzák. Ha a jelentés nek ebben a szakaszában offline fürtcsoport jelenik meg, forduljon a [Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md)
+* A szolgáltatás adatai tartalmazzák az eszközön futó összes HCS- és CiS-szolgáltatás nevét és állapotát. Ez az információ hasznos a Microsoft támogatási szolgálata számára az eszközprobléma elhárításában.
 
-#### <a name="sample-output-of-system-test-run-on-an-8100-device"></a>A rendszer vizsgálat futtatása egy 8100-as eszközön kimeneti példa
+#### <a name="sample-output-of-system-test-run-on-an-8100-device"></a>A rendszer tesztfutásának mintakimenete 8100-as eszközön
 
-Itt látható egy mintakimenet, a rendszer vizsgálat futtatása egy 8100-as eszközön.
+Itt van egy minta kimeneta a rendszer teszt fut egy 8100 eszköz.
 
 ```
 Controller0>Invoke-HcsDiagnostics -Scope System
@@ -321,24 +321,24 @@ hcs_startup                                   Stopped hcs_startup
 --------------------------------------------------
 ```
 
-### <a name="network-test"></a>Hálózati tesztek
+### <a name="network-test"></a>Hálózati teszt
 
-A hálózati adapterek, portok, DNS és NTP kapcsolat a kiszolgálóval, SSL tanúsítvány, tárfiók hitelesítő adatait, az Update-kiszolgálók elérhetőségének és webes proxy kapcsolat a StorSimple eszköz állapotát ellenőrzi.
+Ez a teszt ellenőrzi a hálózati adapterek, portok, DNS- és NTP-kiszolgáló-kapcsolat, TLS/SSL-tanúsítvány, tárfiók hitelesítő adatai, a frissítési kiszolgálókhoz való kapcsolódás és a Webproxy-kapcsolat állapotát a StorSimple eszközön.
 
-#### <a name="sample-output-of-network-test-when-only-data0-is-enabled"></a>Hálózati mintakimenete tesztelése, ha csak DATA0 engedélyezve van
+#### <a name="sample-output-of-network-test-when-only-data0-is-enabled"></a>A hálózati teszt mintakimenete, ha csak a DATA0 van engedélyezve
 
-Itt látható egy mintakimenet a 8100-as eszköz. A kimenetben láthatja, hogy:
-* Csak a DATA 0 és adatok 1 hálózati adapter engedélyezve és konfigurálva.
-* 2 – 5 adatok nem engedélyezettek a portálon.
-* A DNS-kiszolgáló konfigurációjának érvényes, és az eszközök csatlakozhatnak a DNS-kiszolgálón keresztül.
-* Az NTP-kiszolgáló csatlakozási emellett nem okoz gondot.
-* 80-as és 443-as port meg nyitva. Azonban 9354-es port le van tiltva. Alapján a [hálózati rendszerkövetelmények](storsimple-system-requirements.md), meg kell nyitnia a portot, a service bus-kommunikációhoz.
-* Az SSL-tanúsítvány érvényességét.
+Itt van egy minta kimenet a 8100 eszköz. Láthatjuk a kimenet, hogy:
+* Csak a DATA 0 és a DATA 1 hálózati csatolók vannak engedélyezve és konfigurálva.
+* Data 2 - 5 nincs engedélyezve a portálon.
+* A DNS-kiszolgáló konfigurációja érvényes, és az eszköz a DNS-kiszolgálón keresztül is csatlakozhat.
+* Az NTP-kiszolgáló kapcsolata is rendben van.
+* A 80-as és a 443-as port nyitva van. A 9354-es port azonban le van zárva. A [rendszerhálózati követelmények](storsimple-system-requirements.md)alapján meg kell nyitnia ezt a portot a szolgáltatásbusz-kommunikációhoz.
+* A TLS/SSL tanúsítvány érvényes.
 * Az eszköz csatlakozhat a tárfiókhoz: _myss8000storageacct_.
-* Az Update-kiszolgálók elérhetőségének érvényességét.
-* A webalkalmazás-proxy nincs konfigurálva ezen az eszközön.
+* A frissítési kiszolgálókkal való kapcsolat érvényes.
+* A webproxy nincs konfigurálva ezen az eszközön.
 
-#### <a name="sample-output-of-network-test-when-data0-and-data1-are-enabled"></a>Hálózati teszt DATA0 és adat1 engedélyezésekor. kimeneti példa
+#### <a name="sample-output-of-network-test-when-data0-and-data1-are-enabled"></a>A hálózati teszt mintakimenete, ha a DATA0 és a DATA1 engedélyezve van
 
 ```
 Controller0>Invoke-HcsDiagnostics -Scope Network
@@ -368,31 +368,31 @@ Web proxy                               Not enabled         Web proxy is not...
 
 ### <a name="performance-test"></a>Teljesítményteszt
 
-Ez a vizsgálat a felhő teljesítmény keresztül az eszköz a felhőalapú olvasási és írási késése jelentések. Ezzel az eszközzel használható, amely akkor érhető el a StorSimple felhőalapú teljesítményének az alapértékeket. Az eszköz jelenti a legjobb teljesítményt (legkedvezőbb eset az olvasási és írási késés érdekében), kérheti, hogy a kapcsolat.
+Ez a teszt a felhő teljesítményét jelenti a felhőolvasási és -írási késéseken keresztül az eszközre. Ez az eszköz a StorSimple-szel elérhető felhőteljesítmény alapkonfigurációjának létrehozásához használható. Az eszköz a kapcsolathoz beszerezhető maximális teljesítményt (az olvasási és írási késések legjobb esetét) jelenti.
 
-Az eszköz jelenti a legnagyobb elérhető teljesítmény, mivel használhatjuk a jelentett olvasási és írási késése célként a számítási feladatok üzembe helyezésekor.
+Az eszköz jelenti a maximális elérhető teljesítményt, használhatjuk a jelentett írási és írási késések a számítási feladatok üzembe helyezésekor.
 
-A teszt szimulálja az eszközön a különböző kötettípusok társított méretű blobok. Normál rétegzett, és a gyors helyi kötetek biztonsági másolatait használhatja egy 64 KB-os blob mérete. Archív lehetőség be van jelölve a rétegzett kötetek használata blob mérete 512 KB. Ha az eszközön rétegzett és a helyileg rögzített kötetek konfigurálni, csak a teszt futtatása az adatok mérete 64 KB-os blobot megfelelő.
+A teszt szimulálja a blob méretek társított különböző kötettípusok az eszközön. A helyileg rögzített kötetek rendszeres rétegzett és biztonsági mentései 64 KB-os blobméretet használnak. Rétegzett kötetek archiválási beállítással bevan jelölve 512 KB blob adatméretet használ. Ha az eszköz rétegzett és helyileg rögzített kötetek konfigurálva, csak a 64 KB blob adatméretnek megfelelő teszt fut.
 
 Az eszköz használatához hajtsa végre az alábbi lépéseket:
 
-1.  Először is hozzon létre egy rétegzett kötetek és a rétegzett kötetek kombinációját archivált lehetőség be van jelölve. Ez a művelet biztosítja, hogy az eszközt futtatja a teszteket 64 KB-os és 512 KB méretű blobok.
+1.  Először hozzon létre egy vegyes rétegzett kötetek és rétegzett kötetek archivált beállítás be van jelölve. Ez a művelet biztosítja, hogy az eszköz fut a tesztek mind a 64 KB és 512 KB blob méretek.
 
-2. Miután létrehozott és a kötetek konfigurálni, futtassa a parancsmagot. Típus:
+2. Futtassa a parancsmast a kötetek létrehozása és konfigurálása után. Típus:
 
     `Invoke-HcsDiagnostics -Scope Performance`
 
-3. Jegyezze fel az olvasási és írási késése, az eszköz által jelentett. Ez a teszt azt jelenti, hogy az eredmények végrehajtása több percig is eltarthat.
+3. Jegyezze fel az eszköz által jelentett írási és írási késéseket. Ez a teszt több percig is eltarthat, mielőtt jelenti az eredményeket.
 
-4. Ha a kapcsolat késési minden a várt tartományba alatt, majd az eszköz által jelentett az késleltetések használható maximális elérhető célként a számítási feladatok üzembe helyezésekor. Némi többletterhelést okoz, az adatfeldolgozás belső figyelembe vennie.
+4. Ha a kapcsolat késése imények vannak a várt tartományban, majd az eszköz által jelentett késések maximálisan elérhető célként használható a számítási feladatok üzembe helyezésekor. A belső adatfeldolgozás némi többletterhelése.
 
-    Ha az olvasási és írási késése, a diagnosztikai eszköz által jelentett magas:
+    Ha a diagnosztikai eszköz által jelentett olvasási/írási késések magasak:
 
-    1. A Storage Analytics konfigurálása a blob serviceshez, és elemezheti a kimenet az Azure storage-fiók az késleltetések megértéséhez. Részletes útmutatásért lépjen [engedélyezheti és konfigurálhatja a Storage Analytics](../storage/common/storage-enable-and-view-metrics.md). Ha ezeket a késésük is magas és a StorSimple diagnosztikai eszköz kapott számok hasonló, majd meg kell bejelentkeznie szolgáltatáskérés és az Azure storage.
+    1. Konfigurálja a Storage Analytics blobszolgáltatásokhoz, és elemezze a kimenetet az Azure storage-fiók késéseinek megismeréséhez. A részletes útmutatásért nyissa meg a [Storage Analytics engedélyezését és konfigurálását.](../storage/common/storage-enable-and-view-metrics.md) Ha ezek a késések is magas, és összehasonlítható a StorSimple Diagnosztika eszköz től kapott számokkal, majd naplóznia kell egy szolgáltatáskérelmet az Azure Storage-szal.
 
-    2. Ha alacsony a storage-fiók késéseket, a hálózati rendszergazdától a hálózaton lévő bármely késési problémák kivizsgálásában.
+    2. Ha a tárfiók késése alacsony, forduljon a hálózati rendszergazdához a hálózat esetleges késési problémáinak kivizsgálásához.
 
-#### <a name="sample-output-of-performance-test-run-on-an-8100-device"></a>Vizsgálat futtatása egy 8100-as eszközön mintakimenete
+#### <a name="sample-output-of-performance-test-run-on-an-8100-device"></a>A teljesítményteszt mintakimenete 8100-as eszközön
 
 ```
 Controller0>Invoke-HcsDiagnostics -Scope Performance
@@ -410,36 +410,36 @@ Cloud read latency: 4924 ms using credential 'myss8000storageacct', blob size '5
 Controller0>
 ```
 
-## <a name="appendix-interpreting-system-information"></a>A függelék: rendszeradatok értelmezése
+## <a name="appendix-interpreting-system-information"></a>Függelék: a rendszerinformációk értelmezése
 
-Íme egy táblázat a különböző Windows PowerShell paraméterek a rendszer információkat leképezés. 
+Az alábbiakban egy táblázat ismerteti, hogy a rendszerinformációs térképben a különböző Windows PowerShell-paraméterek mire szolgálnak. 
 
 | PowerShell-paraméter    | Leírás  |
 |-------------------------|------------------|
-| Instance ID (Példányazonosító)             | Minden tartományvezérlő egy egyedi azonosítóval rendelkezik, vagy egy GUID Azonosítót társítva.|
-| Name (Név)                    | Az eszköz üzembe helyezése során az Azure Portalon konfigurált eszköz rövid neve. Az alapértelmezett rövid név az eszköz sorozatszámát. |
-| Modell                   | A StorSimple 8000 sorozatú eszköz modelljét. A modell a 8100-as vagy 8600-as lehet.|
-| a sorozatszám            | Az eszköz sorozatszáma gyári van rendelve, és 15 karakter hosszú. Például 8600-SHX0991003G44HT jelöli:<br> 8600 – az eszköz modellje.<br>SHX – a gyártási hely.<br> 0991003 – egy bizonyos termékben van. <br> G44HT-hozhat létre egyedi sorozatszáma eggyel növeli az utolsó 5 számjegy. Ez egy szekvenciális beállítása nem lehet.|
-| Időzóna                | Az eszköz időzónáját eszköz üzembe helyezése során konfigurált az Azure Portalon.|
-| CurrentController       | A vezérlő, amely a Windows PowerShell felületét a StorSimple eszköz keresztül csatlakozik.|
-| ActiveController        | A tartományvezérlővel, amely aktív az eszközön, és vezérli a hálózati és lemezkonfigurációját műveleteket. Ez lehet 0. vezérlő vagy a vezérlő 1.  |
-| Controller0Status       | 0\. vezérlő az eszköz állapotát. A vezérlő állapota lehet normál, helyreállítási módban, vagy nem érhető el.|
-| Controller1Status       | Vezérlő 1 állapota az eszközön.  A vezérlő állapota lehet normál, helyreállítási módban, vagy nem érhető el.|
-| SystemMode              | A StorSimple-eszközök általános állapotát. Az eszköz állapota lehet normál, karbantartási, vagy a leszerelt (felel meg az Azure Portalon inaktiválva).|
-| FriendlySoftwareVersion | A rövid karakterlánc, amely megfelel az eszköz szoftververzióján. A rendszer a 4-es frissítést futtatja a rövid szoftververzió lenne a StorSimple 8000 Series Update 4.0-s.|
-| HcsSoftwareVersion      | A HCS szoftver verziója fut az eszközön. Például az a StorSimple 8000 Series Update 4.0-s megfelelő HCS szoftververzió 6.3.9600.17820. |
-| ApiVersion              | A Windows PowerShell API-ját a HCS eszköz szoftverének verziójával.|
-| VhdVersion              | A gyári lemezképről, az eszköz a teljesített szoftverének verziójával. Az eszköz gyári alaphelyzetbe, majd futtatja a szoftververzió.|
-| OSVersion               | A Windows Server operációs rendszer az eszközön futó szoftverének verziójával. A StorSimple-eszközön a Windows Server 2012 R2 megfelelő 6.3.9600 alapul.|
-| CisAgentVersion         | A Cis-ügynök a StorSimple eszközön futó verzió. Ez az ügynök segít az Azure-ban futó StorSimple Manager szolgáltatással folytatott kommunikációhoz.|
-| MdsAgentVersion         | Az a StorSimple eszközön futó Mds-ügynök megfelelő verziója. Ezt az ügynököt helyez át adatokat a megfigyelési és diagnosztikai szolgáltatás (MDS).|
-| Lsisas2Version          | A megfelelő a LSI-illesztőprogramokat, a StorSimple eszköz verziója.|
-| Kapacitás                | A teljes kapacitás (bájt) az eszköz.|
-| RemoteManagementMode    | Azt jelzi, hogy az eszköz távolról felügyelhetik a Windows PowerShell felületéről. |
-| FipsMode                | Azt jelzi, hogy engedélyezve van-e az Amerikai Egyesült Államok Szövetségi információk feldolgozása Standard (FIPS) mód az eszközön. A FIPS 140 szabvány határozza meg, bizalmas adatok védelme az USA szövetségi kormányzati számítógépes rendszerek által jóváhagyott titkosítási algoritmusokat. A 4-es vagy újabb frissítést futtató eszközök esetében FIPS-módban alapértelmezés szerint engedélyezve van. |
+| Instance ID (Példányazonosító)             | Minden vezérlőhöz tartozik egy egyedi azonosító vagy egy GUID.|
+| Név                    | Az eszköz rövid neve az Azure Portalon keresztül konfigurálva az eszköz üzembe helyezése során. Az alapértelmezett rövid név az eszköz sorozatszáma. |
+| Modell                   | A StorSimple 8000 sorozatú eszköz modellje. A modell lehet 8100 vagy 8600.|
+| Sorozatszám            | Az eszköz sorozatszáma a gyárban van hozzárendelve, és 15 karakter hosszú. Például a 8600-SHX0991003G44HT a következőket jelzi:<br> 8600 – Ez az eszköz modell.<br>SHX - A gyártási helyén.<br> 0991003 - Egy adott termék. <br> G44HT- az utolsó 5 számjegy növekszik, hogy egyedi sorozatszámokat hozzon létre. Lehet, hogy ez nem egymást követő készlet.|
+| TimeZone                | Az eszköz időzónája az Azure Portalon konfigurálva az eszköz üzembe helyezése során.|
+| CurrentController       | A storSimple-eszköz Windows PowerShell-felületén keresztül csatlakoztatott vezérlő.|
+| ActiveController        | Az eszközön aktív vezérlő, amely az összes hálózati és lemezműveletet vezérel. Ez lehet a Controller 0 vagy a Controller 1.  |
+| Controller0Status       | A Controller 0 állapota az eszközön. A vezérlő állapota lehet normális, helyreállítási módban, vagy elérhetetlen.|
+| Controller1Status       | Az eszköz Controller 1 állapotának állapota.  A vezérlő állapota lehet normális, helyreállítási módban, vagy elérhetetlen.|
+| SystemMode mód              | A StorSimple-eszköz általános állapota. Az eszköz állapota lehet normál, karbantartási vagy leszerelt (megfelel az Azure Portalin inaktivált).|
+| FriendlySoftwareVersion | Az eszköz szoftververziójának megfelelő barátságos karakterlánc. A 4-es frissítést futtató rendszer esetén a barátságos szoftververzió a StorSimple 8000 Series 4.0-s frissítése lenne.|
+| HcsSoftwareVersion      | A HCS szoftver verziója fut a készüléken. A StorSimple 8000 Series 4.0-s verziójának megfelelő HCS szoftververzió például 6.3.9600.17820. |
+| ApiVersion              | A HCS-eszköz Windows PowerShell API-jának szoftververziója.|
+| VhdVersion (VhdVersion)              | A gyári lemezkép szoftververziója, amelyhez az eszközt szállították. Ha visszaállítja az eszközt a gyári alapértékekre, akkor ez a szoftververzió fut.|
+| OSVersion               | Az eszközön futó Windows Server operációs rendszer szoftververziója. A StorSimple eszköz a 6.3.9600-nak megfelelő Windows Server 2012 R2 rendszeren alapul.|
+| CisAgentVersion         | A StorSimple-eszközön futó CIS-ügynök verziója. Ez az ügynök segít kommunikálni az Azure-ban futó StorSimple Manager szolgáltatással.|
+| MdsAgentVersion         | A StorSimple-eszközön futó Mds-ügynöknek megfelelő verzió. Ez az ügynök adatokat helyezi át a figyelési és diagnosztikai szolgáltatás (MDS).|
+| Lsisas2Verzió          | A StorSimple-eszközön lévő LSI-illesztőprogramok megfelelő verzió.|
+| Kapacitás                | Az eszköz teljes kapacitása bájtban.|
+| RemoteManagementMode mód    | Azt jelzi, hogy az eszköz távolról kezelhető-e a Windows PowerShell-felületén keresztül. |
+| FipsMode (FipsMode)                | Azt jelzi, hogy az Egyesült Államok Szövetségi Információfeldolgozási Szabvány (FIPS) üzemmódja engedélyezve van-e az eszközön. A FIPS 140 szabvány az Egyesült Államok szövetségi szövetségi számítógépes rendszerei által a bizalmas adatok védelmére jóváhagyott kriptográfiai algoritmusokat határozza meg. A 4- es vagy újabb frissítést futtató eszközök esetében a FIPS mód alapértelmezés szerint engedélyezve van. |
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg a [az Invoke-HcsDiagnostics parancsmag szintaxisát](https://technet.microsoft.com/library/mt795371.aspx).
+* Ismerje meg [az Invoke-HcsDiagnostics parancsmag szintaxisát.](https://technet.microsoft.com/library/mt795371.aspx)
 
-* Ismerje meg, hogyan [üzembe helyezés hibáinak elhárítása](storsimple-troubleshoot-deployment.md) a StorSimple eszközön.
+* További információ a StorSimple-eszközön felmerülő [telepítési problémák elhárításáról.](storsimple-troubleshoot-deployment.md)

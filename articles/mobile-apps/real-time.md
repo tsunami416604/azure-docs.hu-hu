@@ -1,29 +1,29 @@
 ---
-title: Valós idejű mobil alkalmazások egyszerű létrehozása az Azure Signaler szolgáltatással
-description: Ismerkedjen meg a szolgáltatással, amely lehetővé teszi, hogy valós idejű alkalmazásokat hozzon létre az Azure Signaler szolgáltatás használatával.
-author: elamalani
+title: Egyszerűen hozhat létre valós idejű mobilalkalmazásokat az Azure SignalR szolgáltatással
+description: Ismerje meg azt a szolgáltatást, amely lehetővé teszi a valós idejű alkalmazások készítését az Azure SignalR-szolgáltatás használatával.
+author: codemillmatt
 ms.assetid: 34a8a070-0123-4678-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 988d5f9a66baeae46661ae363029aed0f521c8e4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 242a929e4a4ebe00dd0a2101b27ab8a8bef3fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454404"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240827"
 ---
-# <a name="build-real-time-applications-with-azure-signalr-service"></a>Valós idejű alkalmazások létrehozása az Azure Signaler szolgáltatással
+# <a name="build-real-time-applications-with-azure-signalr-service"></a>Valós idejű alkalmazásokat hozhat létre az Azure SignalR szolgáltatással
 
-Az [Azure signaler szolgáltatással](https://azure.microsoft.com/services/signalr-service/)könnyedén hozzáadhat valós idejű funkciókat az alkalmazásokhoz. Ez a valós idejű funkció lehetővé teszi, hogy a szolgáltatás a tartalom frissítéseit leküldse a csatlakoztatott mobil alkalmazásokba. Ennek eredményeképpen az alkalmazások frissítése nem szükséges a kiszolgáló lekérdezése vagy új HTTP-kérések elküldése a frissítésekhez.
+Az [Azure SignalR szolgáltatással](https://azure.microsoft.com/services/signalr-service/)egyszerűen hozzáadhat valós idejű funkciókat az alkalmazásokhoz. Ez a valós idejű funkció lehetővé teszi, hogy a szolgáltatás tartalomfrissítéseket jelenítsen meg a csatlakoztatott mobilalkalmazásokba. Ennek eredményeképpen az alkalmazások frissítése anélkül történik, hogy le kellene kérniük a kiszolgálót, vagy új HTTP-kérelmeket kellene benyújtaniuk a frissítésekhez.
 
-## <a name="azure-signalr-service-features"></a>Az Azure Signaler szolgáltatás funkciói
-- Széles körű ügyféltámogatást biztosít az ügyfelek széles köre, például a web-és mobil böngészők, az asztali alkalmazások, a kiszolgálói folyamat, a IoT-eszközök és a játékkonzolok számára.
-- Lehetővé teszi, hogy több példány működjön együtt több millió mobileszköz-kapcsolatra. Emellett több globális régiót is támogat a horizontális felskálázáshoz, a magas rendelkezésre álláshoz vagy a vész-helyreállítási célokra.
-- A széles körű API-kat biztosít különböző üzenetkezelési minták számára, hogy üzeneteket küldjön egy adott kapcsolatra, minden kapcsolatra vagy egy adott felhasználóhoz tartozó kapcsolatok egy részhalmazára, vagy egy tetszőleges csoportba helyezték őket.
+## <a name="azure-signalr-service-features"></a>Az Azure SignalR szolgáltatás szolgáltatásai
+- Széles körű ügyféltámogatást nyújt az ügyfelek széles köréhez, például a webes és mobil böngészőkhöz, asztali alkalmazásokhoz, kiszolgálói folyamatokhoz, IoT-eszközökhöz és játékkonzolokhoz.
+- Lehetővé teszi, hogy több példány együtt skálázható több millió mobilalkalmazás-kapcsolatra. Emellett támogatja a több globális régióban a szilánkok, magas rendelkezésre állású, vagy vész-helyreállítási célokra.
+- Gazdag API-kat kínál a különböző üzenetkezelési mintákhoz, hogy üzeneteket küldjön egy adott kapcsolatra, az összes kapcsolatra vagy egy adott felhasználóhoz tartozó vagy tetszőleges csoportba helyezett kapcsolatok egy részhalmazára.
 
-## <a name="references"></a>Tudástár
-   - [Azure Portal](https://portal.azure.com)
+## <a name="references"></a>Referencia
+   - [Azure-portál](https://portal.azure.com)
    - [Az Azure SignalR Service dokumentációja](/azure/azure-signalr/signalr-overview)
-   - [oktatóanyagokat](/azure/azure-signalr/signalr-tutorial-authenticate-azure-functions)
+   - [Oktatóanyagok](/azure/azure-signalr/signalr-tutorial-authenticate-azure-functions)

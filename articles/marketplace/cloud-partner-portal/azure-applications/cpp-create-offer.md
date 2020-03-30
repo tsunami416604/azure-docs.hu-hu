@@ -1,35 +1,34 @@
 ---
-title: Azure-alkalmazás ajánlatának létrehozása | Azure piactér
-description: Új Azure-alkalmazási ajánlat közzététele az Azure piactéren.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Azure-alkalmazásajánlat létrehozása | Azure Piactér
+description: Új Azure-alkalmazásajánlat közzététele az Azure Piactéren.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/14/2018
-ms.author: pabutler
-ms.openlocfilehash: 173e371c97ed2ab281bd7badae29f253e1e3e1f8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 823c9cbe8c850fbc4170a5734305f9cc5e45be83
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827645"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285282"
 ---
-# <a name="create-an-azure-application-offer"></a>Azure-alkalmazás ajánlatának létrehozása
+# <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
-Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Azure-beli alkalmazás-ajánlatokat az Azure piactéren. Minden ajánlat saját entitásként jelenik meg az Azure Marketplace-en, és az eszközök és a támogató szolgáltatások következő csoportjaiból áll: az ajánlat részletei, a SKU, a marketing-összetevők és a támogatási információk.
+Ez a cikk ismerteti, hogyan hozhat létre és tehet közzé egy Azure-alkalmazás ajánlatbejegyzést az Azure Marketplace-en. Minden ajánlat saját entitásként jelenik meg az Azure Marketplace-en, és a következő eszközcsoportokból és támogató szolgáltatásokból áll: ajánlatrészletei, termékprogramok, marketingösszetevők és támogatási információk.
 
-## <a name="new-offer-form"></a>Új ajánlat űrlapja
+## <a name="new-offer-form"></a>Új ajánlat űrlap
 
-Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/), majd a bal oldali menüsoron válassza az **+ új ajánlat** lehetőséget. Az új ajánlat menüben válassza az **Azure-alkalmazások** lehetőséget az **új ajánlat** űrlapjának megjelenítéséhez, és az új ajánlathoz tartozó eszközök definiálási folyamatának megkezdéséhez.
+Jelentkezzen be a [Cloud Partner Portal ba](https://cloudpartner.azure.com/), és válassza a + Új **ajánlat** lehetőséget a bal oldali menüsorban. Az Új ajánlat menüben válassza az **Azure Applications lehetőséget** az Új **ajánlat** űrlap megjelenítéséhez, és indítsa el az új ajánlat eszközeinek meghatározását.
 
-![Új ajánlat űrlapja](./media/azure-new-managedapp-offer.png)
+![Új ajánlati űrlap](./media/azure-new-managedapp-offer.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Az új ajánlat oldalon az új ajánlat létrehozásához használt lapok és űrlapmezők szerepelnek. Az alábbi cikkek azt ismertetik, hogyan határozható meg az eszközcsoport és a támogató szolgáltatások az új ajánlathoz.
+Az Új ajánlat lap lapok és űrlapmezők készletét tartalmazza, amelyek segítségével új ajánlatot hozhat létre. Az alábbi cikkek ismertetik, hogyan határozhatja meg az eszközcsoportokat és a támogató szolgáltatásokat az új ajánlathoz.
 
-* [Ajánlatbeállítási lap](./cpp-offer-settings-tab.md)
+* [Ajánlat beállításai lap](./cpp-offer-settings-tab.md)
 * [Termékváltozatok lap](./cpp-skus-tab.md)
 * [Tesztverzió lap](./cpp-testdrive-tab.md)
 * [Marketplace lap](./cpp-marketplace-tab.md)

@@ -1,5 +1,5 @@
 ---
-title: Internetes tartomány Traffic Manager – Azure Traffic Manager
+title: Internetes tartomány rámutatása a Traffic Managerre – Azure Traffic Manager
 description: Ez a cikk segít átirányítani a vállalata tartománynevét egy Traffic Manager szolgáltatásbeli tartománynevére.
 services: traffic-manager
 author: rohinkoul
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: rohink
-ms.openlocfilehash: d56e3fe759d2c9dbee9a8f19a6f1a030565c8e4e
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 6c5c5c185063caf8ca258ad70a70903c9b583e07
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938496"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294844"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Vállalati internetes tartomány átirányítása Azure Traffic Manager-tartományra
 
@@ -23,15 +23,15 @@ Amikor Traffic Manager-profilt hoz létre, az Azure automatikusan hozzárendel e
 
 Ha például a `www.contoso.com` nevet szeretné a Traffic Manager `contoso.trafficmanager.net` DNS-neve felé irányítani, az alábbi DNS-erőforrásrekordot kell létrehoznia:
 
-    www.contoso.com IN CNAME contoso.trafficmanager.net
+    `www.contoso.com IN CNAME contoso.trafficmanager.net`
 
-A *www\.contoso.com* érkező összes forgalmi kérelem a *contoso.trafficmanager.net*-re irányul.
+A *www\.contoso.com* minden forgalmi kérést *a contoso.trafficmanager.net*irányítanak.
 
 > [!IMPORTANT]
 > A második szintű tartomány, például a *contoso.com*, nem irányítható á Traffic Manager-tartományra. A DNS-protokollszabványok nem engedélyezik a CNAME-rekordokat a másodlagos szintű tartománynevek esetében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Traffic Manager útválasztási módszerei](traffic-manager-routing-methods.md)
-* [Traffic Manager – Profil letiltása, engedélyezése vagy törlése](disable-enable-or-delete-a-profile.md)
+* [Traffic Manager - Profil letiltása, engedélyezése vagy törlése](disable-enable-or-delete-a-profile.md)
 * [Traffic Manager – Végpont letiltása vagy engedélyezése](disable-or-enable-an-endpoint.md)

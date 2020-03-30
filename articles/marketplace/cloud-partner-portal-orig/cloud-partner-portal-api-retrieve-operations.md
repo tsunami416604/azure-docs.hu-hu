@@ -1,24 +1,23 @@
 ---
-title: Operations API beolvasása | Azure piactér
-description: Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasása a megadott operationId.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Műveletek beolvasása API | Azure Piactér
+description: Lekéri az összes műveletet az ajánlatban, vagy egy adott művelet et a megadott operationId lekéri.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: c3eb77744d61322ca0aed20bb2b3f486cc02ac70
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4fc77407ae1c5854d3fe977da5a81f4226bf5305
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819599"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280473"
 ---
 <a name="retrieve-operations"></a>Műveletek lekérése
 ===================
 
-Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasása a megadott operationId. Előfordulhat, hogy az ügyfél lekérdezési paramétereket használ a futó műveletek szűréséhez.
+Lekéri az összes műveletet az ajánlatban, vagy egy adott művelet et a megadott operationId lekéri. Az ügyfél lekérdezési paramétereket használhat a futó műveletek szűréséhez.
 
 ``` https
 
@@ -32,32 +31,32 @@ Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasás
 <a name="uri-parameters"></a>URI-paraméterek
 --------------
 
-|  **Name (Név)**          |      **Leírás**                                                                                           | **Adattípus** |
+|  **Név**          |      **Leírás**                                                                                           | **Adattípus** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  Közzétevő azonosítója, például `Contoso`                                                                   |  Sztring       |
-|  OfferId           |  Ajánlat azonosítója                                                                                              |  Sztring       |
-|  operationId       |  GUID, amely egyedileg azonosítja a műveletet az ajánlaton. Lehetséges, hogy a operationId ezt az API-t használja, és a válasz HTTP-fejlécében is visszakerül a hosszú ideig futó műveletre, például a [közzétételi ajánlat](./cloud-partner-portal-api-publish-offer.md) API-ra.  |   GUID   |
-|  filteredStatus    | Az API által visszaadott gyűjtemény állapot alapján történő szűrésére szolgáló opcionális lekérdezési paraméter (például `running`).  |   Sztring |
-|  API-Version       | Az API legújabb verziója                                                                                           |    Dátum      |
+|  publisherId       |  Közzétevő azonosítója, például`Contoso`                                                                   |  Sztring       |
+|  offerId           |  Ajánlat azonosítója                                                                                              |  Sztring       |
+|  operationId       |  GUID, amely egyedileg azonosítja a műveletet az ajánlatban. A operationId lehet beolvasni ezzel az API-val, és a válasz HTTP-fejlécében is megjelenik bármely hosszú ideig futó művelet, például a [közzétételi ajánlat](./cloud-partner-portal-api-publish-offer.md) API-t.  |   Guid   |
+|  filteredStatus    | Nem kötelező lekérdezési paraméter, amely `running`az API által visszaadott gyűjtemény állapot (például ) szerinti szűréshez használható.  |   Sztring |
+|  api-verzió       | Az API legújabb verziója                                                                                           |    Dátum      |
 |  |  |  |
 
 
 <a name="header"></a>Fejléc
 ------
 
-|  **Name (Név)**          |  **Érték**           |
+|  **Név**          |  **Érték**           |
 |  ---------------   | -------------------- |
 |  Content-Type      | `application/json`   |
 |  Engedélyezés     | `Bearer YOUR_TOKEN`  |
 |  |  |
 
 
-<a name="body-example"></a>Példa szövegtörzsre
+<a name="body-example"></a>Példa törzsre
 ------------
 
 ### <a name="response"></a>Válasz
 
-#### <a name="get-operations"></a>Műveletek beolvasása
+#### <a name="get-operations"></a>GET műveletek
 
 ``` json
     [
@@ -82,7 +81,7 @@ Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasás
     ]
 ```
 
-#### <a name="get-operation"></a>Művelet beolvasása
+#### <a name="get-operation"></a>GET művelet
 
 ``` json
     [
@@ -175,25 +174,25 @@ Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasás
 ```
 
 
-### <a name="response-body-properties"></a>Válasz törzsének tulajdonságai
+### <a name="response-body-properties"></a>Választörzs tulajdonságai
 
-|  **Name (Név)**                    |  **Leírás**                                                                                  |
+|  **Név**                    |  **Leírás**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | A műveletet egyedileg azonosító GUID                                                       |
-|  submissionType              | Meghatározza az ajánlathoz jelentett művelet típusát, például `Publish/GGoLive`      |
-|  createdDateTime             | UTC datetime a művelet létrehozásakor                                                       |
-|  lastActionDateTime          | UTC dátum és idő, amikor a legutóbbi frissítés befejeződött a műveletnél                                       |
-|  status                      | A művelet állapota vagy `not started` \| `running` \| `failed` \| `completed`. Egyszerre csak egy művelet rendelkezhet `running` állapottal. |
-|  error                       | Sikertelen műveletek hibaüzenete                                                               |
+|  benyújtástípusa              | Azonosítja az ajánlathoz jelentett művelet típusát, például`Publish/GGoLive`      |
+|  createdDateTime             | A művelet létrehozásának utc-dátuma                                                       |
+|  lastActionDateTime          | UTC dátumidő, amikor az utolsó frissítés történt a művelet                                       |
+|  status                      | A művelet állapota `not started` \| `running` \| `failed` \| `completed`vagy . Egyszerre csak egy `running` művelet nek lehet állapota. |
+|  error                       | Sikertelen műveletekre vonatkozó hibaüzenet                                                               |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Válasz-állapotkódok
+### <a name="response-status-codes"></a>Válasz állapotkódjai
 
 | **Kód**  |   **Leírás**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
-|  200      | `OK` – a kérés feldolgozása sikeres volt, és a kért művelet (ek) vissza lettek küldve.        |
-|  400      | `Bad/Malformed request` – a hiba-válasz törzse több információt is tartalmazhat.                    |
-|  403      | `Forbidden` – az ügyfél nem fér hozzá a megadott névtérhez.                          |
-|  404      | `Not found` – a megadott entitás nem létezik.                                                 |
+|  200      | `OK`- A kérés feldolgozása sikeresen megtörtént, és a kért művelet(ek) visszalett küldve.        |
+|  400      | `Bad/Malformed request`- A hibaválasz törzse további információkat tartalmazhat.                    |
+|  403      | `Forbidden`- Az ügyfél nem fér hozzá a megadott névtérhez.                          |
+|  404      | `Not found`- A megadott entitás nem létezik.                                                 |
 |  |  |

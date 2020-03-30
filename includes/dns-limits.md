@@ -4,31 +4,31 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 2/14/2020
 ms.author: rohink
-ms.openlocfilehash: b674f8e31eb61328f60bb24866f73d02653b655f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 3fbbb9d491eef202309c9e64f9a5a839a5d4516d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495093"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334594"
 ---
 **Nyilvános DNS-zónák**
 
-| Erőforrás | Alapértelmezett korlát |
+| Erőforrás | Korlát |
 | --- | --- |
-| Nyilvános DNS-zónák/előfizetés |250 <sup>1</sup> |
-| Rekordhalmazok nyilvános DNS-zónában |10 000 <sup>1</sup> |
-| Rekord/rekordhalmaz a nyilvános DNS-zónában |20 |
-| Egyetlen Azure-erőforráshoz tartozó alias-rekordok száma |20|
-| saját DNS zónák/előfizetés |1000|
-| Rekordhalmazok egy saját DNS-zónában |25000|
-| Rekord/rekordhalmaz a magánhálózati DNS-zónákhoz |20|
-| Privát DNS-zóna Virtual Network hivatkozásai |1000|
-| A virtuális hálózatok privát DNS-zónákon keresztül, automatikus regisztráció engedélyezve |100|
-| Azon privát DNS-zónák száma, amelyekhez a virtuális hálózat elérhetővé válik, és engedélyezve van az automatikus regisztráció |1|
-| Saját DNS-zónák száma, amelyekhez a virtuális hálózat kapcsolódhat |1000|
-| A virtuális gép által elküldhető DNS-lekérdezések száma másodpercenként Azure DNS feloldó számára |500 <sup>2</sup> |
-| A várólistára helyezett DNS-lekérdezések maximális száma (Válasz függőben) virtuális gépenként |200 <sup>2</sup> |
+| Nyilvános DNS-zónák előfizetésenként |250 <sup>1</sup> |
+| Rekordhalmazok nyilvános DNS-zónánként |10 000 <sup>1</sup> |
+| Rekordok rekordkészletenként a nyilvános DNS-zónában |20 |
+| Egyetlen Azure-erőforrás aliasrekordjainak száma |20|
+| Privát DNS-zónák előfizetésenként |1000|
+| Rekordhalmazok magánDNS-zónánként |25000|
+| Rekordok rekordkészletenként a magán DNS-zónákhoz |20|
+| Virtuális hálózati kapcsolatok magán DNS-zónánként |1000|
+| Virtuális hálózatok Kapcsolatok magánDNS-zónákonként, ha az automatikus regisztráció engedélyezve van |100|
+| Azon magánhálózati DNS-zónák száma, amelyekhez a virtuális hálózat automatikus regisztrációval kapcsolható be |1|
+| A virtuális hálózat által összekapcsolható magánDNS-zónák száma |1000|
+| A virtuális gép által az Azure DNS-feloldónak küldhető DNS-lekérdezések száma másodpercenként |500 <sup>2</sup> |
+| A várólistára helyezett DNS-lekérdezések maximális száma (függőben lévő válasz) virtuális gépenként |200 <sup>22.</sup> |
 
-<sup>1</sup> Ha meg kell emelnie ezeket a korlátokat, forduljon az Azure ügyfélszolgálatához.
+<sup>1 1</sup> Ha növelnie kell ezeket a korlátokat, forduljon az Azure-támogatáshoz.
 
-<sup>2</sup> Ezeket a korlátokat minden egyes virtuális gépre alkalmazza a rendszer, nem pedig a virtuális hálózat szintjén. A határértékeket meghaladó DNS-lekérdezések el lettek dobva.
+<sup>2.</sup> Ezek a korlátok minden egyes virtuális gépre vonatkoznak, és nem a virtuális hálózat szintjén. Az e korlátokat meghaladó DNS-lekérdezéseket a rendszer elejti.

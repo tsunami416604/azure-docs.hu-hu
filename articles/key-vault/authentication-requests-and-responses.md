@@ -1,6 +1,6 @@
 ---
 title: Hitelesítés, kérelmek és válaszok
-description: Hitelesítés az AD-ben a Key Vault használatával
+description: Hitelesítés a AD-ben a Key Vault használatával
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,68 +10,68 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b84084dafe79a8caa9cdb70bc201f68834079845
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 8cb68b1a5363889e6ea7c49cf0cdda6ed5f0e027
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196076"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294556"
 ---
 # <a name="authentication-requests-and-responses"></a>Hitelesítés, kérelmek és válaszok
 
-Azure Key Vault támogatja a JSON formátumú kérelmeket és válaszokat. A Azure Key Vaultra irányuló kérelmeket egy érvényes Azure Key Vault URL-címre irányítja a HTTPS protokollal, néhány URL-paraméterrel és JSON-kódolású kérelem és válasz Törzsével.
+Az Azure Key Vault támogatja a JSON formátumú kérelmeket és válaszokat. Az Azure Key Vault-ba irányuló kérelmek egy érvényes Azure Key Vault URL-címre irányulnak, https használatával, néhány URL-paraméterrel és JSON-kódolású kérés- és válaszszervekkel.
 
-Ez a témakör a Azure Key Vault szolgáltatásra vonatkozó jellemzőket ismerteti. Az Azure REST-felületek (például hitelesítés/engedélyezés és hozzáférési token beszerzése) használatával kapcsolatos általános információkért tekintse meg az [azure REST API referenciát](https://docs.microsoft.com/rest/api/azure).
+Ez a témakör az Azure Key Vault szolgáltatás sajátosságait ismerteti. Az Azure REST-felületek használatával kapcsolatos általános tudnivalókat, beleértve a hitelesítést/engedélyezést és a hozzáférési jogkivonat beszerzésének módját, az [Azure REST API-referencia című témakörben talál.](https://docs.microsoft.com/rest/api/azure)
 
 ## <a name="request-url"></a>Kérés URL-címe  
- A kulcskezelő műveletek a HTTP POST használatával végeznek HTTP-TÖRLÉSt, beolvasást, javítást, PUT és HTTP POST és titkosítási műveleteket a meglévő kulcsfontosságú objektumokon. Azok az ügyfelek, amelyek nem támogatják az adott HTTP-műveleteket, a HTTP-BEJEGYZÉST is használhatják az X-HTTP-Request fejléc használatával a kívánt művelet megadásához. azok a kérelmek, amelyek általában nem igénylik a törzset, üres törzset is tartalmazhatnak a HTTP POST használatakor, például ha a POST törlés helyett a POST parancsot használják.  
+ A kulcskezelési műveletek http delete, GET, PATCH, PUT és HTTP POST és kriptográfiai műveleteket használnak a meglévő kulcsobjektumokon, amelyek a HTTP POST protokollt használják. Azok az ügyfelek, amelyek nem támogatnak bizonyos HTTP-műveleteket, az X-HTTP-REQUEST fejléc használatával is használhatják a HTTP POST-ot a tervezett művelet megadásához; azoknak a kéréseknek, amelyek általában nem igényelnek törzset, üres törzset kell tartalmazniuk a HTTP POST használatakor, például a POST használatakor a DELETE helyett.  
 
- A Azure Key Vault objektumainak működéséhez az alábbi URL-címek használhatók:  
+ Az Azure Key Vault objektumaival való munkához a következő példa URL-címek találhatók:  
 
-- TESTKEY nevű kulcs létrehozása Key Vault use-`PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
+- TESTKEY nevű kulcs létrehozása key vault-használatban -`PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
 
-- IMPORTEDKEY nevű kulcs importálása Key Vault use-`POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
+- IMPORTÁLTKEY nevű kulcs importálása key vault-használatba -`POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
 
-- KERESÉSI KIFEJEZÉSKÉNT nevű titkos kód beszerzése egy Key Vault use-`GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
+- Ahhoz, hogy egy titkos nevű MYSECRET egy Key Vault használata -`GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
 
-- Kivonat aláírása egy TESTKEY nevű kulccsal Key Vault use-`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
+- Kivonatírás írása egy TESTKEY nevű kulcs használatával key vault-használatesetén -`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  A Key Vaultra irányuló kérések szolgáltatója mindig a következő, `https://{keyvault-name}.vault.azure.net/`  
+  A Key Vaultba irányuló kérelem reklamációja mindig a következő:`https://{keyvault-name}.vault.azure.net/`  
 
-  A kulcsok mindig a/Keys útvonalon tárolódnak, a titkokat a rendszer mindig a/Secrets elérési út alatt tárolja.  
+  A kulcsok mindig a /keys elérési út alatt tárolódnak, a titkos kulcsok mindig a /secrets elérési út alatt tárolódnak.  
 
 ## <a name="api-version"></a>API-verzió  
- A Azure Key Vault szolgáltatás támogatja a protokollok verziószámozását a régebbi verziójú ügyfelekkel való kompatibilitás biztosításához, de az ügyfelek számára nem minden képesség lesz elérhető. Az ügyfeleknek a `api-version` lekérdezési karakterlánc paraméterrel kell megadniuk az általa támogatott protokoll verziószámát, mivel nincs alapértelmezett érték.  
+ Az Azure Key Vault Service támogatja a protokoll verziószámozás, hogy kompatibilitást biztosítson az eltérő szintű ügyfelekkel, bár nem minden képesség lesz elérhető az ügyfelek számára. Az ügyfeleknek `api-version` a lekérdezési karakterlánc paramétert kell használniuk az általuk támogatott protokoll verziójának megadásához, mivel nincs alapértelmezett.  
 
- A Azure Key Vault protokoll verziói a Date számozási sémát egy {éééé} használatával követik. {MM}. {DD} formátum.  
+ Az Azure Key Vault protokollverziói egy {YYYY} használatával dátumszámozási sémát követnek. {MM}. {DD} formátumban.  
 
 ## <a name="request-body"></a>A kérelem törzse  
- A HTTP-specifikációnak megfelelően a GET műveletekhez nem tartozhatnak kérelem törzse, és a POST és PUT műveleteknek kérelem törzstel kell rendelkezniük. A TÖRLÉSi műveletek törzse nem kötelező a HTTP-ben.  
+ A HTTP-specifikáció szerint a GET-műveleteknek NEM lehet kéréstörzsük, a POST és a PUT műveleteknek pedig kéréstörzsnek kell rendelkezniük. A DELETE műveletek törzse nem kötelező http-ben.  
 
- Hacsak a művelet leírása másként nincs jelezve, a kérelem törzsének tartalomtípusa csak Application/JSON lehet, és tartalmaznia kell egy szerializált JSON-objektumot, amely a tartalomtípusnak felel meg.  
+ Ha a művelet leírása másként nem rendelkezik, a kérelemtörzs-tartalomtípusnak alkalmazás/json nak kell lennie, és tartalmaznia kell egy tartalomtípusnak megfelelő szerializált JSON-objektumot.  
 
- Hacsak a művelet leírása másként nincs jelezve, az Accept kérelem fejlécének tartalmaznia kell az Application/JSON adathordozó típusát.  
+ Ha a művelet leírása másként nem rendelkezik, az Elfogadáskérelem fejlécének tartalmaznia kell az alkalmazás/json adathordozó típusát.  
 
-## <a name="response-body"></a>Választörzs  
- Hacsak a művelet leírása másként nincs megadva, a sikeres és a sikertelen műveletek válasz törzsének tartalomtípusa az Application/JSON lesz, és részletes információkat tartalmaz.  
+## <a name="response-body"></a>Válasz törzse  
+ Ha csak a művelet leírása másként nem rendelkezik, a sikeres és a sikertelen műveletek választörzs-tartalomtípusa alkalmazás/json lesz, és részletes hibainformációkat tartalmaz.  
 
-## <a name="using-http-post"></a>HTTP POST használata  
- Előfordulhat, hogy egyes ügyfelek nem tudják használni bizonyos HTTP-műveleteket, például a javítást vagy a TÖRLÉSt. Azure Key Vault támogatja a HTTP POST alternatívát ezen ügyfelek esetében, feltéve, hogy az ügyfél az "X-HTTP-METHOD" fejlécet is tartalmazza az eredeti HTTP-művelethez. A HTTP POST támogatását a jelen dokumentumban meghatározott API-k esetében is fel kell tüntetni.  
+## <a name="using-http-post"></a>A HTTP POST használata  
+ Előfordulhat, hogy egyes ügyfelek nem tudnak bizonyos HTTP-műveleteket használni, például a PATCH vagy a DELETE. Az Azure Key Vault támogatja a HTTP POST-ot alternatívaként ezen ügyfelek számára, feltéve, hogy az ügyfél tartalmazza az "X-HTTP-METHOD" fejlécet az eredeti HTTP-művelethez. A HTTP POST támogatása a dokumentumban definiált api-k mindegyikéhez ismert.  
 
-## <a name="error-responses"></a>Hibaüzenetek  
- A hibakezelés a HTTP-állapotkódok használatát fogja használni. A tipikus eredmények a következők:  
+## <a name="error-responses"></a>Hibaválaszok  
+ A hibakezelés HTTP-állapotkódokat fog használni. A tipikus eredmények a következők:  
 
-- 2xx – sikeres: normál működéshez használatos. A válasz törzse a várt eredményt fogja tartalmazni.  
+- 2xx – Siker: Normál működéshez használható. A válaszszerv a várt eredményt fogja tartalmazni  
 
-- 3xx – átirányítás: a "nincs módosítva" értékkel rendelkező 304 visszatérhet a feltételes lekérések teljesítéséhez. A jövőben más 3xx-kódokat is használhat a DNS-és elérésiút-változások jelzésére.  
+- 3xx - Átirányítás: A 304 "Nem módosított" lehet vissza teljesíteni a feltételes GET. A jövőben más 3xx kódok is használhatók a DNS és az elérési út változásainak jelzésére.  
 
-- 4xx – ügyfélalkalmazás: helytelen kérések, hiányzó kulcsok, szintaktikai hibák, érvénytelen paraméterek, hitelesítési hibák stb. használata. A válasz törzse részletes hibaüzenetet fog tartalmazni.  
+- 4xx - Ügyfélhiba: Hibás kérésekhez, hiányzó kulcsokhoz, szintaktikai hibákhoz, érvénytelen paraméterekhez, hitelesítési hibákhoz stb. A választörzs részletes hibamagyarázatot fog tartalmazni.  
 
-- 5xx – kiszolgálóhiba: belső kiszolgálóhiba esetén használatos. A válasz törzse az összegzett hibaüzeneteket fogja tartalmazni.  
+- 5xx – Kiszolgálóhiba: Belső kiszolgálóhibákhoz használható. A választörzs összegzett hibainformációkat fog tartalmazni.  
 
-  A rendszer úgy van kialakítva, hogy proxy vagy tűzfal mögött működjön. Ezért előfordulhat, hogy egy ügyfél más hibakódokat kap.  
+  A rendszer úgy van kialakítva, hogy proxy vagy tűzfal mögött működjön. Ezért előfordulhat, hogy az ügyfél más hibakódokat is kap.  
 
-  Ha probléma merül fel, a Azure Key Vault a válasz törzsében is visszaadja a hibaüzeneteket. A válasz törzse JSON formátumú, és a következőket veszi át:  
+  Az Azure Key Vault is a választörzsben hibaüzenetet ad vissza, ha probléma merül fel. A választörzs JSON formátumú, és a következő formában érhető el:  
 
 ```  
 
@@ -89,9 +89,9 @@ Ez a témakör a Azure Key Vault szolgáltatásra vonatkozó jellemzőket ismert
 ```  
 
 ## <a name="authentication"></a>Hitelesítés  
- A Azure Key Vault összes kérését hitelesíteni kell. Azure Key Vault támogatja Azure Active Directory hozzáférési jogkivonatokat, amelyek a OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)] használatával szerezhetők be. 
+ Az Azure Key Vault minden kérelmet hitelesíteni kell. Az Azure Key Vault támogatja az Azure Active Directory hozzáférési jogkivonatokat, amelyek az OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)] használatával szerezhetők be. 
  
- Az alkalmazás regisztrálásával és a Azure Key Vault használatának hitelesítésével kapcsolatos további információkért lásd: [az ügyfélalkalmazás regisztrálása az Azure ad](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad)-ben.
+ Az alkalmazás regisztrálásáról és az Azure Key Vault használatának hitelesítéséről az [Ügyfélalkalmazás regisztrálása az Azure AD-vel című](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad)témakörben talál további információt.
  
  A hozzáférési jogkivonatokat a HTTP-engedélyezési fejléc használatával kell elküldeni a szolgáltatásnak:  
 
@@ -101,7 +101,7 @@ Authorization: Bearer <access_token>
 
 ```  
 
- Ha nincs megadva hozzáférési jogkivonat, vagy ha a szolgáltatás nem fogadja el a jogkivonatot, a rendszer HTTP 401-es hibát ad vissza az ügyfélnek, és tartalmazza a WWW-Authenticate fejlécet, például:  
+ Ha nem ad meg hozzáférési jogkivonatot, vagy ha a szolgáltatás nem fogad el jogkivonatot, a rendszer http 401-es hibát ad vissza az ügyfélnek, és tartalmazza a WWW-Authenticate fejlécet, például:  
 
 ```  
 401 Not Authorized  
@@ -109,11 +109,11 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 ```  
 
- A WWW-Authenticate fejléc paramétereinek a következők:  
+ A WWW-Authenticate fejléc paraméterei a következők:  
 
--   engedélyezés: a OAuth2-engedélyezési szolgáltatás címe, amely a kérelem hozzáférési jogkivonatának beszerzésére használható.  
+-   engedélyezés: Az OAuth2 engedélyezési szolgáltatás címe, amely a kérelem hez szükséges hozzáférési jogkivonat megszerzéséhez használható.  
 
--   erőforrás: az engedélyezési kérelemben használandó erőforrás neve (https://vault.azure.net).  
+-   erőforrás: Az engedélyezési kérelemben használandó erőforrás (`https://vault.azure.net`) neve.  
 
 ## <a name="see-also"></a>Lásd még:  
  [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-and-certificates.md)

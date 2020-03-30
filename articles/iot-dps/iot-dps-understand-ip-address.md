@@ -1,6 +1,6 @@
 ---
-title: A IoT Device kiépítési szolgáltatás (DPS) példányának IP-címének megértése | Microsoft Docs
-description: Ismerje meg, hogyan kérdezheti le a IoT-eszköz kiépítési szolgáltatásának (DPS) címeit és tulajdonságait. A DPS-példány IP-címe változhat bizonyos esetekben, például a vész-helyreállítási vagy a regionális feladatátvétel során.
+title: Az IoT-eszközlétesítési szolgáltatás (DPS) példányának IP-címének ismertetése | Microsoft dokumentumok
+description: Ismerje meg, hogyan lehet lekérdezni az IoT-eszköz létesítési szolgáltatás (DPS) címét és tulajdonságait. A DPS-példány IP-címe bizonyos forgatókönyvek, például a vész-helyreállítási vagy regionális feladatátvétel során változhat.
 author: wesmc7777
 ms.author: wesmc
 ms.service: iot-dps
@@ -8,47 +8,47 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: f6afd5c4cc5aa0215f943979ae91389b39d449f6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284927"
 ---
-# <a name="iot-hub-dps-ip-addresses"></a>IoT Hub DPS IP-címei
+# <a name="iot-hub-dps-ip-addresses"></a>IoT Hub DPS IP-címek
 
-Egy IoT Hub Device Provisioning Service (DPS) nyilvános végpontjának IP-címének előtagjait rendszeresen közzéteszi a _AzureIoTHub_ [szolgáltatás címkéjén](../virtual-network/service-tags-overview.md). Ezeket az IP-cím előtagokat használhatja a IoT DPS-példányok és eszközök vagy hálózati eszközök közötti kapcsolat vezérléséhez a különböző hálózati elkülönítési célok megvalósítása érdekében:
+Az IoT Hub-eszközlétesítési szolgáltatás (DPS) nyilvános végpontjainak IP-címelőegyesei rendszeres időközönként közzé vannak téve az _AzureIoTHub_ [szolgáltatáscímke](../virtual-network/service-tags-overview.md)alatt. Ezekkel az IP-címelőtagokkal szabályozhatja az IoT DPS-példányok és az eszközök vagy hálózati eszközök közötti kapcsolatot a különböző hálózati elkülönítési célok megvalósítása érdekében:
 
-| Cél | A módszer |
+| Cél | Módszer |
 |------|----------|
-| Gondoskodjon arról, hogy az eszközök és szolgáltatások csak IoT Hub DPS-végpontokkal kommunikáljanak | IoT Hub DPS-példányok felderítéséhez használja a _AzureIoTHub_ szolgáltatás címkéjét. Konfigurálja az eszközök és szolgáltatások tűzfalának engedélyezési szabályait az IP-címek előtagjainak megfelelően. Konfigurálja a szabályokat úgy, hogy eldobják a forgalmat más célként megadott IP-címekre, és nem szeretné, hogy az eszközök és szolgáltatások kommunikáljanak a szolgáltatással. |
-| Győződjön meg róla, hogy IoT Hub DPS-végpontja csak az eszközökről és a hálózati eszközökről kap kapcsolatokat | A IoT DPS [IP-szűrő funkció](iot-dps-ip-filtering.md) használatával hozzon létre szűrési szabályokat az eszközhöz és a DPS szolgáltatás API-khoz. Ezekkel a szűrési szabályokkal engedélyezheti a kapcsolódást csak az eszközökről és a hálózati eszközök IP-címeiről (lásd: [korlátozások](#limitations-and-workarounds) szakasz). | 
+| Győződjön meg arról, hogy az eszközök és szolgáltatások csak az IoT Hub DPS-végpontokkal kommunikálnak | Az _AzureIoTHub_ szolgáltatáscímke segítségével fedezze fel az IoT Hub DPS-példányokat. Konfigurálja az ALLOW-szabályokat az eszközök és a szolgáltatások tűzfal-beállításán az IP-címelőtagokhoz. Állítsa be a szabályokat úgy, hogy a forgalmat más cél IP-címekre bonyolítsa, amelyekkel nem szeretné, hogy az eszközök vagy szolgáltatások kommunikáljanak. |
+| Győződjön meg arról, hogy az IoT Hub DPS-végpontja csak az eszközökről és a hálózati eszközökről kap kapcsolatokat | Az IoT DPS [IP-szűrő szolgáltatás használatával](iot-dps-ip-filtering.md) szűrőszabályokat hozhat létre az eszközhöz és a DPS-szolgáltatás API-ihoz. Ezek a szűrőszabályok csak az eszközökről és a hálózati eszköz IP-címeiről engedélyezik a kapcsolatokat (lásd a [korlátozásokat).](#limitations-and-workarounds) | 
 
 
 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-* Az eszközök tűzfal-konfigurációjának engedélyezési szabályok hozzáadásakor a legmegfelelőbb a [megfelelő protokollok által használt portok](../iot-hub/iot-hub-devguide-protocols.md#port-numbers)biztosításához.
+* Ha allow szabályokat ad hozzá az eszközök tűzfalának konfigurációjában, a legjobb, ha a [megfelelő protokollok által használt portokat](../iot-hub/iot-hub-devguide-protocols.md#port-numbers)biztosít.
 
-* A IoT DPS-példányok IP-címének előtagjainak módosítása változhat. A módosításokat a rendszer rendszeresen közzéteszi a szolgáltatáson keresztül, mielőtt érvénybe lépnek. Ezért fontos, hogy folyamatokat fejlesszen ki a legújabb szolgáltatási címkék rendszeres beolvasására és használatára. Ez a folyamat automatizálható a [Service Tags Discovery API](../virtual-network/service-tags-overview.md#service-tags-on-premises)használatával. A szolgáltatás címkék felderítésének API-je még előzetes verzióban érhető el, és bizonyos esetekben előfordulhat, hogy nem hozza létre a címkék és az IP-címek teljes listáját. Amíg a felderítési API általánosan elérhetővé válik, érdemes lehet a [szolgáltatás címkéit letölthető JSON formátumban](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)használni. 
+* Az IoT DPS-példányok IP-címelőbiztosei változhatnak. Ezeket a módosításokat a rendszer a hatálybalépés előtt rendszeresen közzéteszi a szolgáltatáscímkéken keresztül. Ezért fontos, hogy olyan folyamatokat dolgozzon ki, amelyek rendszeresen lekérik és használják a legújabb szolgáltatáscímkéket. Ez a folyamat automatizálható a [szolgáltatáscímkék felderítési API-n](../virtual-network/service-tags-overview.md#service-tags-on-premises)keresztül. A Szolgáltatás címkék felderítési API továbbra is előzetes verzióban, és bizonyos esetekben előfordulhat, hogy nem hozza létre a címkék és IP-címek teljes listáját. Amíg a felderítési API általánosan elérhető, fontolja meg a [szolgáltatáscímkék letölthető JSON formátumban](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). 
 
-* Használja a *AzureIoTHub. [ régió neve]* címke egy adott régióban a DPS-végpontok által használt IP-előtagok azonosításához. Ha az adatközpont vész-helyreállítási vagy [regionális feladatátvételi](../iot-hub/iot-hub-ha-dr.md)szolgáltatását szeretné használni, győződjön meg arról, hogy a DPS-példány földrajzi párja RÉGIÓJÁNAK IP-előtagjaihoz való kapcsolódás is engedélyezve van.
+* Használja az *AzureIoTHub.[ régió név]* címke a DPS-végpontok által egy adott régióban használt IP-előtagok azonosítására. Az adatközpontvész-helyreállítási vagy [regionális feladatátvételi](../iot-hub/iot-hub-ha-dr.md)figyelembe vétele érdekében győződjön meg arról, hogy a DPS-példány földrajzi párrégiójának IP-előtagokkal való kapcsolata is engedélyezve van.
 
-* Egy DPS-példány tűzfalszabályok beállítása letilthatja az Azure CLI és a PowerShell-parancsok futtatásához szükséges kapcsolatokat. A kapcsolódási problémák elkerülése érdekében hozzáadhat engedélyezési szabályokat az ügyfelek IP-címeihez, hogy engedélyezze újra a parancssori felületet vagy a PowerShell-ügyfelet a DPS-példánnyal való kommunikációhoz.  
+* A DPS-példány okai között tűzfalszabályok beállítása megakadályozhatja az Azure CLI és a PowerShell-parancsok futtatásához szükséges kapcsolatot. Ezek a kapcsolódási problémák elkerülése érdekében az ügyfelek IP-címelőtagaival engedélyezheti az ALLOW-szabályokat, hogy újra engedélyezze a CLI- vagy PowerShell-ügyfelek számára a DPS-példányokkal való kommunikációt.  
 
 
-## <a name="limitations-and-workarounds"></a>Korlátozások és megkerülő megoldások
+## <a name="limitations-and-workarounds"></a>Korlátozások és kerülő megoldások
 
-* A DPS IP-szűrő funkció 100-as korláttal rendelkezik. Ezt a korlátot és az Azure-ügyfélszolgálaton keresztüli kérésekkel lehet kiemelni. 
+* A DPS IP-szűrő szolgáltatás a legfeljebb 100 szabályt. Ez a korlát az Azure ügyfélszolgálatán keresztül kérésekkel emelhető ki. 
 
-* A konfigurált [IP-szűrési szabályok](iot-dps-ip-filtering.md) csak a DPS-végpontokon érvényesek, nem a csatolt IoT hub-végpontokon. A csatolt IoT hubok IP-szűrését külön kell konfigurálni. További információ: [IoT hub IP-szűrési szabályok](../iot-hub/iot-hub-ip-filtering.md).
+* A konfigurált [IP-szűrési szabályok](iot-dps-ip-filtering.md) csak a DPS-végpontokon vannak alkalmazva, a csatolt IoT Hub-végpontokon nem. A csatolt IoT-központok IP-szűrését külön kell konfigurálni. További információ: [IoT Hub IP-szűrési szabályok.](../iot-hub/iot-hub-ip-filtering.md)
 
-## <a name="support-for-ipv6"></a>IPv6-támogatás 
+## <a name="support-for-ipv6"></a>Az IPv6 támogatása 
 
-Az IPv6 jelenleg IoT Hub vagy DPS rendszeren nem támogatott.
+Az IoT Hub vagy a DPS jelenleg nem támogatott Az IPv6 jelenleg nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az IP-címekről a DPS használatával kapcsolatban, tekintse meg a következőt:
+Ha többet szeretne tudni a DPS protokollal kapcsolatos IP-címkonfigurációkról, olvassa el a következő témaköröket:
 
 * [IP-szűrés konfigurálása](iot-dps-ip-filtering.md)

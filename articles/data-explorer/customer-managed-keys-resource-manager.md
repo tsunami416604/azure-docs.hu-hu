@@ -1,32 +1,35 @@
 ---
-title: Az ügyfél által felügyelt kulcsok konfigurálása az Azure-ban Adatkezelő a Azure Resource Manager sablon használatával
-description: Ez a cikk azt ismerteti, hogyan konfigurálhatja az ügyfél által felügyelt kulcsok titkosítását az Azure-Adatkezelőban tárolt adataihoz a Azure Resource Manager sablon használatával.
+title: Ügyfél által kezelt kulcsok konfigurálása az Azure Data Explorerben az Azure Resource Manager sablon használatával
+description: Ez a cikk ismerteti, hogyan konfigurálhatja az ügyfél által felügyelt kulcsok titkosítását az adatok az Azure Data Explorer az Azure Resource Manager sablon használatával.
 author: saguiitay
 ms.author: itsagui
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: d0f7085342f972f227fc549c423672296697d7de
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 454a80089b5f74d4a70015ffcd03d0212e8c08a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281257"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297906"
 ---
-# <a name="configure-customer-managed-keys-using-the-azure-resource-manager-template"></a>Az ügyfél által felügyelt kulcsok konfigurálása a Azure Resource Manager sablon használatával
+# <a name="configure-customer-managed-keys-using-the-azure-resource-manager-template"></a>Ügyfél által kezelt kulcsok konfigurálása az Azure Resource Manager sablon használatával
 
 > [!div class="op_single_selector"]
-> * [C#](customer-managed-keys-csharp.md)
+> * [Portál](customer-managed-keys-portal.md)
+> * [C #](customer-managed-keys-csharp.md)
 > * [Azure Resource Manager-sablon](customer-managed-keys-resource-manager.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
 
-## <a name="configure-encryption-with-customer-managed-keys"></a>Titkosítás konfigurálása az ügyfél által felügyelt kulcsokkal
+[!INCLUDE [data-explorer-configure-customer-managed-keys part 2](../../includes/data-explorer-configure-customer-managed-keys-b.md)]
 
-Ebben a szakaszban Azure Resource Manager-sablonok használatával konfigurálja az ügyfél által felügyelt kulcsokat. Alapértelmezés szerint az Azure Adatkezelő encryption a Microsoft által felügyelt kulcsokat használja. Ebben a lépésben konfigurálja az Azure Adatkezelő-fürtöt az ügyfél által felügyelt kulcsok használatára, és adja meg a fürthöz társítandó kulcsot.
+## <a name="configure-encryption-with-customer-managed-keys"></a>Titkosítás konfigurálása ügyfél által kezelt kulcsokkal
 
-A Azure Resource Manager sablont a Azure Portal vagy a PowerShell használatával is telepítheti.
+Ebben a szakaszban konfigurálhatja az ügyfelek által felügyelt kulcsokat az Azure Resource Manager-sablonok használatával. Alapértelmezés szerint az Azure Data Explorer titkosítás a Microsoft által felügyelt kulcsokat használja. Ebben a lépésben konfigurálja az Azure Data Explorer-fürtaz ügyfél által felügyelt kulcsok at, és adja meg a fürthöz társítani kívánt kulcsot.
+
+Az Azure Resource Manager-sablont az Azure Portalon vagy a PowerShell használatával telepítheti.
 
 ```json
 {
@@ -72,14 +75,14 @@ A Azure Resource Manager sablont a Azure Portal vagy a PowerShell használatáva
 }
 ```
 
-## <a name="update-the-key-version"></a>A kulcs verziójának frissítése
+## <a name="update-the-key-version"></a>A kulcsverzió frissítése
 
-A kulcsok új verziójának létrehozásakor frissítenie kell a fürtöt az új verzió használatára. Először hívja meg `Get-AzKeyVaultKey` a kulcs legújabb verziójának beszerzéséhez. Ezután frissítse a fürt kulcstartójának tulajdonságait úgy, hogy az a kulcs új verzióját használja, ahogy azt a [titkosítás konfigurálása az ügyfél által felügyelt kulcsokkal](#configure-encryption-with-customer-managed-keys)című rész mutatja.
+Amikor egy kulcs új verzióját hozza létre, frissítenie kell a fürtöt az új verzió használatához. Először `Get-AzKeyVaultKey` hívja a kulcs legújabb verzióját. Ezután frissítse a fürt kulcstartójának tulajdonságait a kulcs új verziójának használatához, ahogy az [a Titkosítás konfigurálása ügyfél által kezelt kulcsokkal](#configure-encryption-with-customer-managed-keys)című részben látható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Azure Adatkezelő-fürtök védelme az Azure-ban](security.md)
-* [Felügyelt identitások konfigurálása az Azure Adatkezelő-fürthöz](managed-identities.md)
-* [A fürt biztonságossá tétele az Azure adatkezelő-Azure Portalban](manage-cluster-security.md) a titkosítás nyugalmi állapotban való engedélyezésével.
-* [Ügyfél által felügyelt kulcsok konfigurálása a használatávalC#](customer-managed-keys-csharp.md)
+* [Biztonságos Azure Data Explorer-fürtök az Azure-ban](security.md)
+* [Felügyelt identitások konfigurálása az Azure Data Explorer-fürthöz](managed-identities.md)
+* [Biztonságossá a fürt az Azure Data Explorer – Azure Portal](manage-cluster-security.md) in in-in titkosítás engedélyezésével.
+* [Ügyfél által kezelt kulcsok konfigurálása C használatával #](customer-managed-keys-csharp.md)
 

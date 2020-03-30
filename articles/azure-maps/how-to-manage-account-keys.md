@@ -1,56 +1,56 @@
 ---
-title: Azure Maps fiók kezelése a Azure Portalban | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan kezelheti a Microsoft Azure Maps-fiókját a Azure Portal használatával.
-author: farah-alyasari
-ms.author: v-faalya
+title: Azure Maps-fiókjának kezelése az Azure Portalon | Microsoft Azure Maps
+description: Ebből a cikkből megtudhatja, hogyan kezelheti microsoft Azure Maps-fiókját az Azure Portalhasználatával.
+author: philmea
+ms.author: philmea
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1186c3ab0fc333896f3be4db5d103bcd6d12abf9
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 42247cc576e55c7c504e9832017af336439b11b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209970"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335555"
 ---
-# <a name="manage-your-azure-maps-account"></a>Azure Maps fiók kezelése
+# <a name="manage-your-azure-maps-account"></a>Az Azure Maps-fiók kezelése
 
-A Azure Maps fiókját a Azure Portal segítségével kezelheti. A fiók létrehozása után az API-kat a webhelyén vagy a mobil alkalmazásban is megvalósíthatja.
+Az Azure Maps-fiók az Azure Portalon keresztül kezelhető. Miután rendelkezik fiókkal, megvalósíthatja az API-kat a webhelyén vagy mobilalkalmazásában.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="create-a-new-account"></a>Új fiók létrehozása
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-2. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában.
+2. Válassza az Azure Portal bal felső sarkában található **Erőforrás létrehozása** lehetőséget.
 
-3. Keresse meg és válassza ki a **Maps**elemet. Ezután kattintson a **Létrehozás** elemre.
+3. Keresse meg a Térképek elemet, és válassza a **Térképek**lehetőséget. Ezután válassza **a Létrehozás lehetőséget.**
 
 4. Adja meg az új fiók adatait.
 
-[![adja meg Azure Maps fiók adatait a Azure Portal](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
+[![Az Azure Maps-fiókadatainak megadása az Azure Portalon](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
 
 ## <a name="delete-an-account"></a>Fiók eltávolítása
 
-A Azure Portal törölheti a fiókot. Navigáljon a fiók áttekintése lapra, és válassza a **Törlés**lehetőséget.
+Törölhetegy fiókot az Azure Portalról. Nyissa meg a fiók áttekintése lapot, és válassza **a Törlés**lehetőséget.
 
-[![törölje a Azure Maps-fiókját a Azure Portal](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
+[![Az Azure Maps-fiók törlése az Azure Portalon](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
 
-Ekkor megjelenik egy megerősítő oldal. A fiók törlését úgy ellenőrizheti, hogy beírja a nevét.
+Ekkor megjelenik egy megerősítő oldal. A fiók törlését a fiók nevének beírásával erősítheti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A hitelesítés beállítása a Azure Maps és a Azure Maps előfizetési kulcs beszerzésének megismerése:
+Állítson be hitelesítést az Azure Maps segítségével, és ismerje meg, hogyan szerezhetbe be egy Azure Maps-előfizetési kulcsot:
 > [!div class="nextstepaction"]
 > [Hitelesítés kezelése](how-to-manage-authentication.md)
 
-Megtudhatja, hogyan kezelheti Azure Maps fiók díjszabási szintjét:
+Ismerje meg, hogyan kezelheti az Azure Maps-fiók díjszabási szintjét:
 > [!div class="nextstepaction"] 
-> [Árképzési szintek kezelése](how-to-manage-pricing-tier.md)
+> [Tarifacsomag kezelése](how-to-manage-pricing-tier.md)
 
-Ismerje meg, hogyan tekintheti meg Azure Maps fiókjának API-használati metrikáit:
+Ismerje meg, hogyan láthatja az Azure Maps-fiók API-használati mutatóit:
 > [!div class="nextstepaction"] 
 > [Használati metrikák megtekintése](how-to-view-api-usage.md)

@@ -1,68 +1,69 @@
 ---
-title: Olyan függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
-description: Ismerje meg, hogyan hozhat létre függvényt a parancssorból, majd hogyan teheti közzé a helyi projektet a Azure Functions kiszolgáló nélküli üzemeltetéséhez.
+title: Hozzon létre egy függvényt az Azure-ban, amely válaszol a HTTP-kérésekre
+description: Ismerje meg, hogyan hozhat létre egy függvényt a parancssorból, majd tegye közzé a helyi projektet kiszolgáló nélküli üzemeltetésre az Azure Functionsben.
 ms.date: 01/28/2020
 ms.topic: quickstart
-ms.openlocfilehash: f2ec642a477348923e8f587879d4804c07fff5a0
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 89b6a9f31414cbaa9cc92c1a0d881a1354180990
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096265"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282732"
 ---
-# <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: olyan függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
+# <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Rövid útmutató: Hozzon létre egy függvényt az Azure-ban, amely válaszol a HTTP-kérésekre
 
-Ebben a cikkben parancssori eszközöket használ a HTTP-kérelmekre válaszoló függvények létrehozásához. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
+Ebben a cikkben parancssori eszközökkel hozhat létre olyan függvényt, amely válaszol a HTTP-kérésekre. Miután helyileg tesztelte a kódot, üzembe helyezi azt az Azure Functions kiszolgáló nélküli környezetében. A rövid útmutató végrehajtása néhány USD centvagy annál kevesebb költséget jelent az Azure-fiókjában.
 
-A cikk [Visual Studio Code-alapú verziója](functions-create-first-function-vs-code.md) is létezik.
+A cikknek van egy [Visual Studio kódalapú változata](functions-create-first-function-vs-code.md) is.
 
 ## <a name="configure-your-local-environment"></a>A helyi környezet konfigurálása
 
-Mielőtt elkezdené, a következőkkel kell rendelkeznie:
+Mielőtt elkezdené, rendelkeznie kell a következőkkel:
 
-+ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
++ Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell"  
-+ A [Azure functions Core Tools](./functions-run-local.md#v2) verziója 2.7.1846 vagy újabb 2. x verzió.
++ Az [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846-os vagy egy későbbi 2.x-es verziója.
 ::: zone-end  
 ::: zone pivot="programming-language-python"
-+ A Python 3,6-es és 3,7-es verziójának [Azure functions Core Tools](./functions-run-local.md#v2) 2.7.1846 vagy újabb 2. x verziójúnak kell lennie. A Python 3,8-es verziójának a Core Tools [3. x verzióját](./functions-run-local.md#v2) kell megadnia.
++ A Python 3.6-os és 3.7-es verziójához az [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846-os vagy egy későbbi 2.x-es verziója szükséges. A Python 3.8 használatához a Core Tools [3.x verziója](./functions-run-local.md#v2) szükséges.
 ::: zone-end
 
-+ Az [Azure CLI](/cli/azure/install-azure-cli) verziója 2.0.76 vagy újabb. 
++ Az [Azure CLI](/cli/azure/install-azure-cli) 2.0.76-os vagy újabb verziója. 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
-+ [Node. js](https://nodejs.org/), aktív LTS és karbantartási LTS-verziók (8.11.1 és 10.14.1 ajánlott).
++ [Node.js](https://nodejs.org/), Aktív LTS és karbantartási LTS verziók (8.11.1 és 10.14.1 ajánlott).
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-+ [Python 3,8](https://www.python.org/downloads/release/python-382/), [Python 3,7](https://www.python.org/downloads/release/python-375/), [python 3,6](https://www.python.org/downloads/release/python-368/), amelyet a Azure functions támogat. 
++ [Python 3.8](https://www.python.org/downloads/release/python-382/), [Python 3.7](https://www.python.org/downloads/release/python-375/), [Python 3.6](https://www.python.org/downloads/release/python-368/), amelyek et az Azure Functions (x64) támogat.
 ::: zone-end
 ::: zone pivot="programming-language-powershell"
-+ [PowerShell-mag](/powershell/scripting/install/installing-powershell-core-on-windows)
++ [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-+ A [.net Core SDK 2.2 +](https://www.microsoft.com/net/download)
++ A [.NET Core SDK 2.2+](https://www.microsoft.com/net/download)
 ::: zone-end
 
-### <a name="check-your-environment"></a>A környezet ellenõrzése
+### <a name="check-your-environment"></a>A környezet ellenőrzése
 
-+ A terminál vagy a parancssorablakban futtassa `func --version` parancsot, hogy meggyőződjön arról, hogy a Azure Functions Core Tools verziója 2.7.1846 vagy újabb 2. x verziójú.
++ Egy terminál- vagy parancsablakban futtassa `func --version` annak ellenőrzéséhez, hogy az Azure Functions Core Tools 2.7.1846-os vagy egy későbbi 2.x-es verziót tartalmaz-e.
 
-+ `az --version` futtatásával győződjön meg arról, hogy az Azure CLI verziója 2.0.76 vagy újabb.
++ Futtassa `az --version` annak ellenőrzéséhez, hogy az Azure CLI-verzió 2.0.76-os vagy újabb.
 
-+ `az login` futtatásával jelentkezzen be az Azure-ba, és ellenőrizze az aktív előfizetést.
++ Futtassa `az login` a bejelentkezést az Azure-ba, és ellenőrizze az aktív előfizetést.
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
-+ Futtassa `node --version` a Node. js-verziók 8. x vagy 10. x verziójának vizsgálatához.
++ Futtassa `node --version` a Node.js 8.x vagy 10.x verziójelentések ellenőrzéséhez.
 ::: zone-end
 ::: zone pivot="programming-language-python"
-+ Futtassa `python --version` (Linux/MacOS) vagy `py --version` (Windows) rendszert a Python-verziók 3,8. x, 3.7. x vagy 3.6. x verziójának vizsgálatához.
++ Futtassa `python --version` (Linux/MacOS) vagy `py --version` (Windows) a Python 3.8.x, 3.7.x vagy 3.6.x verziójelentések ellenőrzéséhez.
 
-## <a name="create-venv"></a>Virtuális környezet létrehozása és aktiválása
+## <a name="create-and-activate-a-virtual-environment"></a><a name="create-venv"></a>Virtuális környezet létrehozása és aktiválása
 
-Egy megfelelő mappában futtassa a következő parancsokat egy `.venv`nevű virtuális környezet létrehozásához és aktiválásához. Ügyeljen arra, hogy a Azure Functions által támogatott Python 3,8, 3,7 vagy 3,6-ot használja.
+A megfelelő mappában futtassa a következő parancsokat `.venv`a nevű virtuális környezet létrehozásához és aktiválásához. Ügyeljen arra, hogy a Python 3.8, 3.7 vagy 3.6, amelyek az Azure Functions által támogatott.
 
 
-# <a name="bash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 python -m venv .venv
@@ -72,13 +73,13 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-Ha a Python nem telepítette a venv csomagot a Linux-disztribúcióban, futtassa a következő parancsot:
+Ha a Python nem telepítette a venv csomagot a Linux disztribúcióra, futtassa a következő parancsot:
 
 ```bash
 sudo apt-get install python3-venv
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[Powershell](#tab/powershell)
 
 ```powershell
 py -m venv .venv
@@ -100,15 +101,15 @@ py -m venv .venv
 
 ---
 
-Az összes további parancsot futtatja ebben az aktivált virtuális környezetben. (A virtuális környezetből való kilépéshez futtassa `deactivate`.)
+Az összes további parancsot ebben az aktivált virtuális környezetben futtatja. (A virtuális környezetből `deactivate`való kilépéshez futtassa a .)
 
 ::: zone-end
 
-## <a name="create-a-local-function-project"></a>Helyi függvény projekt létrehozása
+## <a name="create-a-local-function-project"></a>Helyi függvényprojekt létrehozása
 
-Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény tárolója, amely mindegyik reagál egy adott triggerre. Egy projekt összes funkciója ugyanazokat a helyi és üzemeltetési konfigurációkat használja. Ebben a szakaszban egy függvény-projektet hoz létre, amely egyetlen függvényt tartalmaz.
+Az Azure Functions egy függvényprojekt egy tároló egy vagy több egyedi függvények, amelyek mindegyike reagál egy adott eseményindító. A projekt összes függvénye azonos helyi és üzemeltetési konfigurációval rendelkezik. Ebben a szakaszban olyan függvényprojektet hoz létre, amely egyetlen függvényt tartalmaz.
 
-1. A virtuális környezetben futtassa a `func init` parancsot egy functions-projekt létrehozásához egy *LocalFunctionProj* nevű mappában a megadott futtatókörnyezettel:
+1. A virtuális környezetben `func init` futtassa a parancsot, hogy hozzon létre egy függvényprojektet egy *LocalFunctionProj* nevű mappában a megadott futásidővel:
 
     ::: zone pivot="programming-language-python"
     ```
@@ -137,89 +138,89 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
     ::: zone-end
 
 
-    Ez a mappa a projekt különböző fájljait tartalmazza, beleértve a Configuration Files [Local. Settings. JSON](functions-run-local.md#local-settings-file) és a [Host. JSON](functions-host-json.md)nevű fájlokat. Mivel a *Local. Settings. JSON* az Azure-ból letöltött titkos kulcsokat tartalmazhat, a fájl a *. gitignore* fájlban alapértelmezés szerint ki van zárva a forrás-vezérlőelemből.
+    Ez a mappa különböző fájlokat tartalmaz a projekthez, beleértve a [local.settings.json](functions-run-local.md#local-settings-file) és [host.json](functions-host-json.md)nevű konfigurációkat. Mivel *a local.settings.json* tartalmazhat az Azure-ból letöltött titkokat, a fájl alapértelmezés szerint ki van zárva a forrásvezérlésből a *.gitignore* fájlban.
 
-1. Navigáljon a projekt mappájába:
+1. Navigálás a projekt mappájába:
 
     ```
     cd LocalFunctionProj
     ```
     
-1. Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol a `--name` argumentum a függvény egyedi neve, a `--template` argumentum pedig megadja a függvény triggerét. 
+1. Adjon hozzá egy függvényt a projekthez `--name` a következő paranccsal, ahol `--template` az argumentum a függvény egyedi neve, és az argumentum megadja a függvény eseményindítóját. 
 
     ```
     func new --name HttpExample --template "HTTP trigger"
     ```
 
     ::: zone pivot="programming-language-csharp"
-    `func new` létrehoz egy HttpExample.cs.
+    `func new`HttpExample.cs kódfájlt hoz létre.
     ::: zone-end
     ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
-    `func new` létrehoz egy almappát, amely megfelel a projekt választott nyelvének és a *function. JSON*nevű konfigurációs fájlnak, amely tartalmazza a függvény nevét.
+    `func new`létrehoz egy, a függvény nevének megfelelő almappát, amely a projekt választott nyelvének megfelelő kódfájlt és *function.json*nevű konfigurációs fájlt tartalmaz.
     ::: zone-end
 
-### <a name="optional-examine-the-file-contents"></a>Választható A fájl tartalmának vizsgálata
+### <a name="optional-examine-the-file-contents"></a>(Nem kötelező) A fájl tartalmának vizsgálata
 
-Ha szeretné, kihagyhatja [a függvény helyi futtatását](#run-the-function-locally) , és később is megvizsgálhatja a fájl tartalmát.
+Ha szükséges, ugorjon [a Funkció helyi futtatása](#run-the-function-locally) lehetőségre, és később megvizsgálhatja a fájl tartalmát.
 
 ::: zone pivot="programming-language-csharp"
 #### <a name="httpexamplecs"></a>HttpExample.cs
 
-A *HttpExample.cs* olyan `Run` metódust tartalmaz, amely a `req` változóban fogadja a kérelmeket, amely a **HttpTriggerAttribute**díszített [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , amely meghatározza az trigger viselkedését. 
+*HttpExample.cs* tartalmaz `Run` egy metódust, amely `req` megkapja a kérelem adatait a változó egy [HttpRequest,](/dotnet/api/microsoft.aspnetcore.http.httprequest) amely díszített a **HttpTriggerAttribute**, amely meghatározza az eseményindító viselkedését. 
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
-A Return objektum egy [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) , amely egy válaszüzenetet ad vissza [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) vagy [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](/azure/azure-functions/functions-bindings-http-webhook?tabs=csharp).
+A visszatérési objektum egy [ActionResult,](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) amely válaszüzenetet ad vissza [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) vagy [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400) értékben. További információ: [Azure Functions HTTP triggerek és kötések](/azure/azure-functions/functions-bindings-http-webhook?tabs=csharp).
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-#### <a name="__init__py"></a>\_\_init\_\_.
+#### <a name="__init__py"></a>\_\_init\_\_.py
 
-*\_\_init\_\_. a. `main()` a. a...* *..*
+*\_\_Az\_\_init .py* egy `main()` Python függvényt tartalmaz, amely a *function.json*konfigurációjának megfelelően aktiválódik.
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-HTTP-trigger esetén a függvény a *function. JSON*fájlban meghatározott `req` változóban fogadja a kérelmeket. `req` az [Azure. functions. HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest)egy példánya. A *function. JSON*fájlban `$return`ként definiált visszatérési objektum az [Azure. functions. HttpResponse osztály](/python/api/azure-functions/azure.functions.httpresponse)egy példánya. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](/azure/azure-functions/functions-bindings-http-webhook?tabs=python).
+HTTP-eseményindító esetén a függvény kérésadatokat `req` kap a *function.json*ban meghatározott változóban. `req`az [azure.functions.HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest)egy példánya. A `$return` *függvény.json*ban definiált visszatérési objektum az [azure.functions.HttpResponse osztály](/python/api/azure-functions/azure.functions.httpresponse)egy példánya. További információ: [Azure Functions HTTP triggerek és kötések](/azure/azure-functions/functions-bindings-http-webhook?tabs=python).
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
-#### <a name="indexjs"></a>index. js
+#### <a name="indexjs"></a>index.js
 
-az *index. js* olyan függvényt exportál, amely a *function. JSON*fájlban megadott konfiguráció alapján aktiválódik.
+*Az index.js* olyan függvényt exportál, amely a *function.json*konfigurációjának megfelelően aktiválódik.
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-HTTP-trigger esetén a függvény a *function. JSON*fájlban meghatározott `req` változóban fogadja a kérelmeket. A *függvény. JSON*fájlban `$return`ként definiált visszatérési objektum a válasz. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript).
+HTTP-eseményindító esetén a függvény kérésadatokat `req` kap a *function.json*ban meghatározott változóban. A `$return` *függvény.json*néven definiált visszatérési objektum a válasz. További információ: [Azure Functions HTTP triggerek és kötések](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript).
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"
-#### <a name="indexts"></a>index. TS
+#### <a name="indexts"></a>index.ts
 
-az *index. TS* olyan függvényt exportál, amely a *function. JSON*fájlban megadott konfiguráció alapján aktiválódik.
+*Az index.ts* olyan függvényt exportál, amely a *function.json*konfigurációjának megfelelően aktiválódik.
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-HTTP-trigger esetén a függvény a *function. JSON*fájlban meghatározott **HttpRequest** típusú `req` változóban fogadja a kérelmeket. A *függvény. JSON*fájlban `$return`ként definiált visszatérési objektum a válasz. 
+HTTP-eseményindító esetén a függvény a `req` *function.json*ban meghatározott **HttpRequest** változóban kapja a kérelemadatokat. A `$return` *függvény.json*néven definiált visszatérési objektum a válasz. 
 ::: zone-end
 
 ::: zone pivot="programming-language-powershell"
-#### <a name="runps1"></a>a. ps1 futtatása
+#### <a name="runps1"></a>futtatás.ps1
 
-a *Run. ps1* definiál egy, a *function. JSON*fájlban megadott konfigurációnak megfelelő függvény-parancsfájlt.
+*A run.ps1* egy függvényparancsfájlt határoz meg, amely a *function.json*konfigurációjának megfelelően aktiválódik.
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-HTTP-trigger esetén a függvény fogadja a *function. JSON*fájlban definiált `$Request` paraméternek átadott kérelmeket. A *function. JSON*fájlban `Response`ként definiált visszatérési objektum válaszként a `Push-OutputBinding` parancsmagnak lesz átadva. 
+HTTP-eseményindító esetén a függvény a `$Request` *function.json*ban definiált param-nak átadott kérelemadatokat kap. A `Response` *függvény.json*néven definiált visszatérési objektum `Push-OutputBinding` válaszként a parancsmagba kerül. 
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 #### <a name="functionjson"></a>function.json
 
-a *function. JSON* egy olyan konfigurációs fájl, amely meghatározza a függvény bemeneti és kimeneti `bindings`ét, beleértve az trigger típusát is. 
+*A function.json* egy konfigurációs fájl, `bindings` amely meghatározza a függvény bemenetét és kimenetét, beleértve az eseményindító típusát is. 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-Ha kívánja, megváltoztathatja a `scriptFile`t, ha szükséges, más Python-fájlt is meghívhat.
+Módosíthatja `scriptFile` egy másik Python-fájl meghívásához, ha szükséges.
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 ::: zone-end
@@ -233,51 +234,51 @@ Ha kívánja, megváltoztathatja a `scriptFile`t, ha szükséges, más Python-f�
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"  
-Minden kötéshez meg kell adni egy irányt, egy típust és egy egyedi nevet. A HTTP-trigger [`httpTrigger`](functions-bindings-http-webhook-trigger.md) típusú, [`http`](functions-bindings-http-webhook-output.md)típusú kimeneti kötést tartalmaz.
+Minden kötéshez irány, típus és egyedi név szükséges. A HTTP-eseményindító típus- [`httpTrigger`](functions-bindings-http-webhook-trigger.md) és kimeneti [`http`](functions-bindings-http-webhook-output.md)kötésének bemeneti kötése típusú.
 ::: zone-end  
 
 [!INCLUDE [functions-run-function-test-local-cli](../../includes/functions-run-function-test-local-cli.md)]
 
-## <a name="create-supporting-azure-resources-for-your-function"></a>A függvényhez kapcsolódó Azure-erőforrások létrehozása
+## <a name="create-supporting-azure-resources-for-your-function"></a>Támogató Azure-erőforrások létrehozása a funkcióhoz
 
-Mielőtt üzembe helyezi a függvény kódját az Azure-ban, három erőforrást kell létrehoznia:
+A függvénykód Azure-ba való üzembe helyezése előtt három erőforrást kell létrehoznia:
 
-- Egy erőforráscsoport, amely a kapcsolódó erőforrások logikai tárolója.
-- Egy Storage-fiók, amely fenntartja az állapotot és a projektekkel kapcsolatos egyéb információkat.
-- Egy Function alkalmazás, amely biztosítja a környezetet a függvény kódjának végrehajtásához. A Function alkalmazás a helyi function projekthez kapcsolódik, és lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése és megosztása érdekében.
+- Erőforráscsoport, amely a kapcsolódó erőforrások logikai tárolója.
+- Egy tárfiók, amely állapot- és egyéb információkat tart fenn a projektekkel kapcsolatban.
+- Egy függvényalkalmazás, amely biztosítja a függvénykód végrehajtásának környezetét. A függvényalkalmazás leképezi a helyi függvényprojektet, és lehetővé teszi a függvények logikai egységként történő csoportosítását az erőforrások egyszerűbb kezelése, üzembe helyezése és megosztása érdekében.
 
-Ezen elemek létrehozásához használja az alábbi Azure CLI-parancsokat. Az egyes parancsok a JSON-kimenetet biztosítják a befejezés után.
+Az alábbi Azure CLI-parancsok használatával hozza létre ezeket az elemeket. Minden parancs a teljesítésután biztosítja a JSON-kimenetet.
 
-1. Ha még nem tette meg, jelentkezzen be az Azure-ba az az [login](/cli/azure/reference-index#az-login) paranccsal:
+1. Ha még nem tette meg, jelentkezzen be az Azure-ba az [az bejelentkezési](/cli/azure/reference-index#az-login) paranccsal:
 
     ```azurecli
     az login
     ```
     
-1. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. A következő példában létrehozunk egy `AzureFunctionsQuickstart-rg` nevű erőforráscsoportot a `westeurope` régióban. (Az erőforráscsoport és az erőforrások általában az Ön közelében lévő régióban hozhatók létre a `az account list-locations` parancsból elérhető régió használatával.)
+1. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. A következő példa létrehoz `AzureFunctionsQuickstart-rg` egy `westeurope` erőforráscsoportot a régióban. (Az erőforráscsoportot és az erőforrásokat általában egy Ön közelében `az account list-locations` lévő régióban hozza létre, a parancsból elérhető terület használatával.)
 
     ```azurecli
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
     ::: zone pivot="programming-language-python"  
     > [!NOTE]
-    > Nem futtathat Linux-és Windows-alkalmazásokat ugyanabban az erőforráscsoporthoz. Ha van egy `AzureFunctionsQuickstart-rg` nevű meglévő erőforráscsoport egy Windows-függvény alkalmazással vagy webalkalmazással, egy másik erőforráscsoportot kell használnia.
+    > Nem üzemeltethet Linux- és Windows-alkalmazásokat ugyanabban az erőforráscsoportban. Ha egy Windows-függvényalkalmazással vagy webalkalmazással elnevezett `AzureFunctionsQuickstart-rg` meglévő erőforráscsoporttal rendelkezik, másik erőforráscsoportot kell használnia.
     ::: zone-end  
     
-1. Hozzon létre egy általános célú Storage-fiókot az erőforráscsoport és a régió területén az az [Storage Account Create](/cli/azure/storage/account#az-storage-account-create) paranccsal. Az alábbi példában cserélje le a `<STORAGE_NAME>`t a megfelelő globálisan egyedi névre. A névnek három – 24 karakterből kell állnia, és csak kisbetűket tartalmazhat. `Standard_LRS` a [függvények által támogatott](storage-considerations.md#storage-account-requirements)általános célú fiókot határozza meg.
+1. Hozzon létre egy általános célú tárfiókot az erőforráscsoportban és a régióban az [az storage fiók létrehozása](/cli/azure/storage/account#az-storage-account-create) paranccsal. A következő példában `<STORAGE_NAME>` cserélje le az Ön számára megfelelő globálisan egyedi nevet. A nevek csak 3–24 karakterből és kisbetűkből állhatnak. `Standard_LRS`általános célú fiókot határoz meg, amelyet a [Functions támogat.](storage-considerations.md#storage-account-requirements)
 
     ```azurecli
     az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
     ```
     
-    A Storage-fiók ebben a rövid útmutatóban csak néhány cent (USD) értékkel rendelkezik.
+    A tárfiók csak néhány cent (USD) a rövid útmutató.
     
-1. Hozza létre a Function alkalmazást az az [functionapp Create](/cli/azure/functionapp#az-functionapp-create) parancs használatával. Az alábbi példában cserélje le a `<STORAGE_NAME>` az előző lépésben használt fiók nevére, és cserélje le a `<APP_NAME>`t az Önnek megfelelő globálisan egyedi névre. Az `<APP_NAME>` egyben a függvényalkalmazás alapértelmezett DNS-tartományaként is szolgál, 
+1. Hozza létre a függvényalkalmazást az [az functionapp create](/cli/azure/functionapp#az-functionapp-create) paranccsal. A következő példában `<STORAGE_NAME>` cserélje le az előző lépésben használt fiók `<APP_NAME>` nevét, és cserélje le az Ön számára megfelelő globálisan egyedi nevet. Az `<APP_NAME>` egyben a függvényalkalmazás alapértelmezett DNS-tartományaként is szolgál, 
 
     ::: zone pivot="programming-language-python"  
-    Ha a Python 3,8-et használja, a `--runtime-version` módosításával `3.8` és `--functions_version` `3`.
+    Ha Python 3.8-as `--runtime-version` t `3.8` `--functions_version` használ, váltson a-ra, és a. `3`
     
-    Ha a Python 3,6-et használja, módosítsa `--runtime-version` `3.6`re.
+    Ha Python 3.6-ot `--runtime-version` használ, módosítsa a ikonra. `3.6`
 
     ```azurecli
     az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
@@ -285,7 +286,7 @@ Ezen elemek létrehozásához használja az alábbi Azure CLI-parancsokat. Az eg
     ::: zone-end  
 
     ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-    Ha a Node. js 8-at használja, akkor a `--runtime-version`t is módosítsa `8`re.
+    Ha a Node.js 8-at `--runtime-version` `8`használja, módosítsa a -
 
     
     ```azurecli
@@ -305,29 +306,29 @@ Ezen elemek létrehozásához használja az alábbi Azure CLI-parancsokat. Az eg
     ```
     ::: zone-end  
 
-    Ez a parancs létrehoz egy, a megadott nyelvi futtatókörnyezetben futó Function alkalmazást a [Azure functions használati terv](functions-scale.md#consumption-plan)alatt, amely ingyenesen használható az itt felmerülő felhasználási mennyiséghez. A parancs egy kapcsolódó Azure Application Insights-példányt is kiépít ugyanabban az erőforráscsoporthoz, amellyel nyomon követheti a Function alkalmazást, és megtekintheti a naplókat. További információ: [Azure functions figyelése](functions-monitoring.md). A példány nem jár költséggel, amíg be nem aktiválja.
+    Ez a parancs létrehoz egy függvényalkalmazást, amely a megadott nyelvi futtatónivalóban fut az [Azure Functions Consumption Plan](functions-scale.md#consumption-plan)alatt, amely ingyenes az itt felmerülő használat mennyisége esetén. A parancs is rendelkezik egy társított Azure Application Insights-példány ugyanabban az erőforráscsoportban, amellyel figyelheti a függvényalkalmazást, és megtekintheti a naplókat. További információ: [Monitor Azure Functions](functions-monitoring.md). A példány nem jár költségekkel, amíg nem aktiválja.
     
-## <a name="deploy-the-function-project-to-azure"></a>A Function projekt üzembe helyezése az Azure-ban
+## <a name="deploy-the-function-project-to-azure"></a>A függvényprojekt üzembe helyezése az Azure-ban
 
 ::: zone pivot="programming-language-typescript"  
-Mielőtt a Core Tools használatával üzembe helyezi a projektet az Azure-ban, létrehoz egy éles környezetben felépíthető JavaScript-fájlokat a géppel előállított forrásfájlok közül.
+Mielőtt a Core Tools segítségével telepítené a projektet az Azure-ba, hozzon létre egy éles használatra kész JavaScript-fájlokat a TypeScript forrásfájlokból.
 
-A következő parancs előkészíti a géppel készített projektet az üzembe helyezéshez:
+A következő parancs előkészíti a TypeScript-projektet a telepítésre:
 
 ```
 npm run build:production 
 ```
 ::: zone-end  
 
-A szükséges erőforrásokkal most már készen áll a helyi functions-projekt üzembe helyezésére az Azure-beli Function alkalmazásban az functions [Azure functionapp publish](functions-run-local.md#project-file-deployment) parancs használatával. Az alábbi példában cserélje le az `<APP_NAME>` az alkalmazás nevére.
+A szükséges erőforrásokkal a helyén, most már készen áll a helyi függvények projekt üzembe helyezésére a függvényalkalmazás az Azure-ban a [func azure functionapp közzétételi](functions-run-local.md#project-file-deployment) parancs használatával. A következő példában `<APP_NAME>` cserélje le az alkalmazás nevét.
 
 ```
 func azure functionapp publish <APP_NAME>
 ```
 
-Ha a következő hibaüzenet jelenik meg: "nem található az alkalmazás neve...", várjon néhány másodpercet, és próbálkozzon újra, mivel az Azure nem tudja teljesen inicializálni az alkalmazást az előző `az functionapp create` parancs után.
+Ha a "Nem található alkalmazás neve ..." hibaüzenet jelenik meg, várjon néhány másodpercet, majd próbálkozzon `az functionapp create` újra, mert előfordulhat, hogy az Azure nem inicializálta teljesen az alkalmazást az előző parancs után.
 
-A közzétételi parancs a következő kimenethez hasonló eredményeket jelenít meg (egyszerűség kedvéért csonkítva):
+A közzétételi parancs a következő kimenethez hasonló eredményeket jelenít meg (az egyszerűség kedvéért csonkolva):
 
 <pre>
 ...
@@ -348,37 +349,37 @@ Functions in msdocs-azurefunctions-qs:
 
 ## <a name="invoke-the-function-on-azure"></a>A függvény meghívása az Azure-ban
 
-Mivel a függvény HTTP-eseményindítót használ, meghívja azt úgy, hogy HTTP-kérést küld az URL-címére a böngészőben, vagy egy olyan eszközzel, mint például a curl. Mindkét példányban a `code` URL-cím paraméter az egyedi [funkcióbillentyű](functions-bindings-http-webhook-trigger.md#authorization-keys) , amely engedélyezi a függvény végpontjának meghívását.
+Mivel a függvény HTTP-eseményindítót használ, azzal hívja meg, hogy http-kérést küld az URL-címére a böngészőben vagy egy olyan eszközzel, mint a curl. Mindkét esetben az `code` URL-paraméter az egyedi [függvénykulcs,](functions-bindings-http-webhook-trigger.md#authorization-keys) amely engedélyezi a függvényvégpont meghívását.
 
 # <a name="browser"></a>[Böngésző](#tab/browser)
 
-Másolja a publish (közzététel) parancs kimenetében megjelenő teljes **Meghívási URL-** címet egy böngésző címsorába, és illessze be a lekérdezési paramétert `&name=Functions`. A böngészőnek hasonló kimenetet kell megjelenítenie, mint amikor a funkciót helyileg futtatta.
+Másolja a közzétételi parancs kimenetében látható teljes **Invoke URL-címet** a `&name=Functions`böngésző címsorába, hozzáfűzve a lekérdezési paramétert . A böngészőnek hasonló kimenetet kell megjelenítenie, mint amikor a funkciót helyileg futtatta.
 
-![A függvény kimenete az Azure-ban egy böngészőben fut](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-browser.png)
+![A függvény kimenete az Azure-on fut egy böngészőben](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-browser.png)
 
 
 # <a name="curl"></a>[Curl](#tab/curl)
 
-Futtassa [`curl`](https://curl.haxx.se/) a **MEGhívási URL-címmel**, és illessze be a paramétert `&name=Functions`. A parancs kimenetének a "Hello functions" szövegnek kell lennie.
+Futtassa [`curl`](https://curl.haxx.se/) az **Invoke URL-címmel,** hozzáfűzve a paramétert. `&name=Functions` A parancs kimenetének a "Hello Functions" szövegnek kell lennie.
 
-![A függvény kimenete az Azure-on a curl használatával fut](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-curl.png)
+![A függvény kimenete az Azure-on fut a curl használatával](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-curl.png)
 
 ---
 
 > [!TIP]
-> A közzétett functions-alkalmazások közel valós idejű naplófájljainak megtekintéséhez használja a [Application Insights élő metrikastream](functions-monitoring.md#streaming-logs).
+> Egy közzétett függvényalkalmazás közel valós idejű naplóinak megtekintéséhez használja az [Application Insights Live Metrics Stream .To](functions-monitoring.md#streaming-logs)view near real-time logs for a published function app, use the Application Insights Live Metrics Stream .
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha folytatja a következő lépéssel, [vegyen fel egy Azure Storage-üzenetsor kimeneti kötését](functions-add-output-binding-storage-queue-cli.md), tartsa meg az összes erőforrását, mivel a már elkészült dolgokra épít.
+Ha folytatja a következő lépést, [adja hozzá az Azure Storage-várólista kimeneti kötését,](functions-add-output-binding-storage-queue-cli.md)tartsa az összes erőforrást a helyén, ahogy épít, amit már megtett.
 
-Ellenkező esetben a következő paranccsal törölheti az erőforráscsoportot és az összes benne lévő erőforrást, hogy elkerülje a további költségek felmerülését.
+Ellenkező esetben a következő paranccsal törölje az erőforráscsoportot és az összes tartalmazott erőforrást a további költségek elkerülése érdekében.
 
 ```azurecli
 az group delete --name AzureFunctionsQuickstart-rg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Kapcsolódás Azure Storage-várólistához](functions-add-output-binding-storage-queue-cli.md)
+> [Csatlakozás Azure Storage-várólistához](functions-add-output-binding-storage-queue-cli.md)

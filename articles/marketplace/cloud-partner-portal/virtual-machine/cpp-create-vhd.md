@@ -1,78 +1,77 @@
 ---
-title: Azure-kompatibilis virtuális merevlemez létrehozása az Azure Marketplace-en
-description: A cikk azt ismerteti, hogyan hozhat létre virtuális MEREVLEMEZt egy virtuálisgép-ajánlathoz az Azure piactéren.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+title: Azure-kompatibilis virtuális merevlemez létrehozása az Azure Piactérhez
+description: Bemutatja, hogyan hozhat létre virtuális merevlemezt egy virtuálisgép-ajánlathoz az Azure Piactéren.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/27/2018
-ms.author: pabutler
-ms.openlocfilehash: 37fecb8100ec40ace02960a4f3390420a8bfc735
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2014a775edd4e24f5d302d863d0b69d83009b8a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816801"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277990"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Azure-kompatibilis virtuális merevlemez létrehozása
 
-Ez a cikk részletesen ismerteti a virtuális merevlemezek (VHD-k) létrehozásához szükséges lépéseket az Azure piactéren.  Emellett bevált eljárásokat is tartalmaz a különböző szempontokkal kapcsolatban, például a RDP protokoll (RDP) használatát, a virtuális gép méretének kiválasztását, a legújabb Windows-frissítések telepítését és a VHD-lemezkép általánosítását.  A következő fejezetek elsősorban a Windows-alapú virtuális merevlemezekre összpontosítanak; a Linux-alapú virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: az [Azure által támogatott disztribúciók Linux](../../../virtual-machines/linux/endorsed-distros.md). 
+Ez a cikk ismerteti a virtuális merevlemez (VHD) létrehozásához szükséges lépéseket egy virtuális gép (VM) ajánlat az Azure Marketplace-en.  Emellett gyakorlati tanácsokat is tartalmaz különböző szempontokra vonatkozóan, például a Távoli asztali protokoll (RDP) használatával, a virtuális gép méretének kiválasztásával, a legújabb Windows-frissítések telepítésével és a Virtuális merevlemez-lemezkép általánosításával.  A következő szakaszok elsősorban a windows-alapú virtuális gépekre összpontosítanak; A Linux-alapú Virtuális hálózatok létrehozásáról további információt az [Azure által jóváhagyott Linux-disztribúciókcímű](../../../virtual-machines/linux/endorsed-distros.md)témakörben talál. 
 
 > [!WARNING]
-> Erősen ajánlott, hogy kövesse az ebben a témakörben ismertetett útmutatást, hogy az Azure-t használva hozzon létre egy virtuális gépet, amely egy előre konfigurált, támogatott operációs rendszert tartalmaz.  Ha ez nem kompatibilis a megoldással, akkor lehetséges, hogy a helyszíni virtuális gépet egy jóváhagyott operációs rendszer használatával lehet létrehozni és konfigurálni.  Ezután beállíthatja és felkészítheti a feltöltéshez a [Windows VHD vagy a VHDX előkészítése az Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)-ba való feltöltéshez című témakörben leírtak szerint.
+> Erősen ajánlott, hogy kövesse az ebben a témakörben található útmutatást az Azure-t egy előre konfigurált, jóváhagyott operációs rendszert tartalmazó virtuális gép létrehozásához.  Ha ez nem kompatibilis a megoldással, akkor lehetőség van egy helyszíni virtuális gép létrehozására és konfigurálására egy jóváhagyott operációs rendszer használatával.  Ezután konfigurálhatja és előkészítheti a feltöltésre a [Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)című részben leírtak szerint.
 
 
 ## <a name="select-an-approved-base"></a>Jóváhagyott alap kiválasztása
-A virtuálisgép-rendszerkép operációs rendszerének VHD-jét egy olyan, az Azure által jóváhagyott alaprendszerképen kell alapulnia, amely Windows Servert vagy SQL Server tartalmaz.
-A kezdéshez hozzon létre egy virtuális gépet az alábbi rendszerképek egyikéről, amely a Microsoft Azure Portal található:
+A virtuális gép lemezképének operációs rendszer virtuális merevlemezének egy Azure által jóváhagyott alaplemezképen kell alapulnia, amely Windows Server vagy SQL Server rendszert tartalmaz.
+Először hozzon létre egy virtuális gép az alábbi képek egyike, a Microsoft Azure portalon található:
 
--   Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 r2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
--   [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, standard, web)
--   [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, standard, web)
+-   Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
+-   [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (nagyvállalati, normál, webes)
+-   [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (nagyvállalati, normál, webes)
 
 > [!TIP]
-> Ha a jelenlegi Azure Portal vagy PowerShellt használja, akkor a 2014-es és újabb verziókon közzétett Windows Server-lemezképek jóváhagyása megtörténik.
+> Ha a jelenlegi Azure Portalon vagy a PowerShellen használja, a 2014.
 
-Az Azure számos jóváhagyott Linux-disztribúciót kínál.  Az aktuális listán tekintse [meg az Azure által támogatott disztribúciókkal](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)foglalkozó Linux című témakört.
+Az Azure a jóváhagyott Linux-disztribúciók széles skáláját kínálja.  Az aktuális listát az [Azure által jóváhagyott Linux-disztribúciókról](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)szóló témakörben található.
 
 
-## <a name="create-vm-in-the-azure-portal"></a>Virtuális gép létrehozása a Azure Portalban 
+## <a name="create-vm-in-the-azure-portal"></a>Virtuális gép létrehozása az Azure Portalon 
 
-A Microsoft [Azure Portalban](https://ms.portal.azure.com/)hozza létre az alaprendszerképet a következő lépésekkel.
+A Microsoft [Azure portalon](https://ms.portal.azure.com/)hozza létre az alaplemezképet a következő lépésekkel.
 
-1. Jelentkezzen be a portálra annak az Azure-előfizetésnek a Microsoft-fiókával, amelyhez közzé szeretné tenni a virtuálisgép-ajánlatát.
-2. Hozzon létre egy új erőforráscsoportot, és adja meg az **erőforráscsoport nevét**, az **előfizetést**és az **erőforráscsoport helyét**.  További útmutatást az [erőforráscsoportok kezelése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)című témakörben talál.
-3. A virtuális gépek részletei lap megjelenítéséhez kattintson a bal oldali menüsorban található **virtuális gépek** elemre. 
-4. Az új lapon kattintson a **+ Hozzáadás** elemre a **számítási** panel megjelenítéséhez.  Ha nem látja a virtuálisgép-típust a kezdeti képernyőn, megkeresheti az alapszintű virtuális gép nevét, például:
+1. Jelentkezzen be a portálra a Microsoft-fiókkal a virtuális gép ajánlat közzétenni kívánt Azure-előfizetés.
+2. Hozzon létre egy új erőforráscsoportot, és adja meg az **Erőforráscsoport nevét**, **Az Előfizetés**és **az Erőforráscsoport helyét.**  További útmutatásért [lásd: Erőforráscsoportok kezelése.](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)
+3. Kattintson a **virtuális gépek** a bal menüsorban, hogy megjelenjen a virtuális gépek részleteit oldalon. 
+4. Ezen az új oldalon kattintson a **+Hozzáadás** **gombra** a Számítási panel megjelenítéséhez.  Ha nem látja a virtuális gép típusát a kezdeti képernyőn, megkeresheti az alap virtuális gép nevét, például:
 
-    ![Új virtuális gép számítási panelje](./media/publishvm_014.png)
+    ![Az új virtuális gép számítási panelje](./media/publishvm_014.png)
 
-5. A megfelelő virtuális rendszerkép kiválasztása után adja meg a következő értékeket:
-   * Az **alapvető beállítások** panelen adja meg a virtuális gép **nevét** , amely 1-15 alfanumerikus karakterből áll. (Ez a példa `DemoVm009`t használ.)
-   * Adjon meg egy **felhasználónevet** és egy erős **jelszót**, amelynek használatával helyi fiókot hozhat létre a virtuális gépen.  (Itt `adminUser` van használatban.)  A jelszónak 8-123 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi követelménynek: egy kisbetű, egy nagybetű, egy szám és egy speciális karakter. További információ: [username és Password követelmények](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm).
-   * Válassza ki a létrehozott erőforráscsoportot (itt `DemoResourceGroup`).
-   * Válasszon ki egy Azure-adatközpont- **helyet** (itt `West US`).
-   * Az értékek mentéséhez kattintson **az OK** gombra. 
+5. A megfelelő virtuális lemezkép kiválasztása után adja meg a következő értékeket:
+   * Az **Alapok** panelen adjon meg egy **nevet** a virtuális gépnek 1-15 alfanumerikus karakter között. (Ez a `DemoVm009`példa a .)
+   * Adjon meg egy **felhasználónevet** és egy erős **jelszót,** amely a helyi fiók létrehozásához használatos a virtuális számítógépen.  (Itt `adminUser` használatban van.)  A jelszónak 8-123 karakter hosszúnak kell lennie, és a következő négy összetettségi követelmény közül háromnak kell megfelelnie: egy kisbetűs, egy nagybetűs karakter, egy szám és egy speciális karakter. További információt a [Felhasználónév és jelszó követelmények című](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm)témakörben talál.
+   * Válassza ki a létrehozott `DemoResourceGroup`erőforráscsoportot (itt).
+   * Válasszon ki egy Azure `West US`Datacenter-helyet (itt). **Location**
+   * Az értékek mentéséhez kattintson az **OK** gombra. 
 
-6. Válassza ki az alábbi javaslatok alapján telepítendő virtuális gép méretét:
-   * Ha a helyszíni virtuális merevlemez fejlesztését tervezi, a méret nem számít. Érdemes egy kisebb méretű virtuális gépet használni.
-   * Amennyiben az Azure-ban kívánja fejleszteni a lemezképet, érdemes a kiválasztott lemezképhez javasolt virtuálisgép-méretek valamelyikét használni.
-   * A díjszabással kapcsolatos információkért tekintse meg a portálon megjelenő **ajánlott árképzési szintek** kiválasztása című témakört. Ekkor megjelenik a kiadó által megadott három ajánlott méret. (Itt a közzétevő a Microsoft.)
+6. Válassza ki a virtuális gép méretét az alábbi javaslatok használatával:
+   * Ha azt tervezi, hogy a virtuális merevlemez helyszíni fejlesztése, a méret nem számít. Fontolja meg a kisebb virtuális gépek használatát.
+   * Ha azt tervezi, hogy a rendszerkép az Azure-ban, fontolja meg a kiválasztott rendszerkép ajánlott virtuálisgép-méretek egyikének használata.
+   * A díjszabási információkért tekintse meg a portálon megjelenő **ajánlott tarifacsomagok** választóját. Megjeleníti a kiadó által biztosított három ajánlott méretet. (Itt a kiadó a Microsoft.)
 
-   ![Új virtuális gép méretének panelje](./media/publishvm_015.png)
+   ![Az új virtuális gép mérete](./media/publishvm_015.png)
 
-7. A **Beállítások** panelen állítsa a **felügyelt lemez használata** lehetőséget a **nem**értékre.  Ez lehetővé teszi az új virtuális merevlemez manuális kezelését. (A **Settings (beállítások** ) panel lehetővé teszi a tárolási és hálózati beállítások egyéb módosításának módosítását, például a **prémium (SSD)** **lemez típusának**kiválasztását.)  A folytatáshoz kattintson **az OK** gombra.
+7. A **Beállítások** panelen állítsa a **Felügyelt lemez használata** beállítást Nem **(Nem)** beállításra.  Ez lehetővé teszi az új virtuális merevlemez manuális kezelését. (A **Beállítások** panel lehetővé teszi a tárolási és hálózati beállítások egyéb módosítását is, például a **Prémium (SSD)** lehetőséget **a Lemez típusban.)**  A folytatáshoz kattintson az **OK** gombra.
 
-    ![Új virtuális gép beállításainak panelje](./media/publishvm_016.png)
+    ![Az új virtuális gép beállítási panelje](./media/publishvm_016.png)
 
 8. A választott beállítások áttekintéséhez kattintson az **Összefoglalás** elemre. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, kattintson az **OK** gombra.
 
-    ![Új virtuális gép összefoglaló panelje](./media/publishvm_017.png)
+    ![Az új virtuális gép összefoglaló panelje](./media/publishvm_017.png)
 
-Az Azure megkezdi a megadott virtuális gép üzembe helyezését.  Az előrehaladás nyomon követéséhez kattintson a bal oldalon található **Virtual Machines** fülre.  A létrehozást követően az állapot **fut**értékre változik.  Ezen a ponton [csatlakozhat a virtuális géphez](./cpp-connect-vm.md).
+Az Azure megkezdi a megadott virtuális gép kiépítését.  Nyomon követheti a haladást, ha a bal oldalon a **Virtuális gépek** fülre kattint.  Létrehozása után az állapot **Futás**állapotra változik.  Ezen a ponton [csatlakozhat a virtuális géphez.](./cpp-connect-vm.md)
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nehézségekbe ütközött az új Azure-alapú virtuális merevlemez létrehozása során, tekintse meg a [gyakori problémák a VHD létrehozása során](./cpp-common-vhd-creation-issues.md)című témakört.  Ellenkező esetben a következő lépésekhez csatlakoznia kell az Azure-ban létrehozott [virtuális gépekhez](./cpp-connect-vm.md) . 
+Ha nehézségekbe ütközött az új Azure-alapú virtuális merevlemez létrehozása, lásd: [Gyakori problémák a virtuális merevlemez létrehozása során.](./cpp-common-vhd-creation-issues.md)  Ellenkező esetben tovább kell csatlakoznia az Azure-ban létrehozott [virtuális gépekhez.](./cpp-connect-vm.md) 

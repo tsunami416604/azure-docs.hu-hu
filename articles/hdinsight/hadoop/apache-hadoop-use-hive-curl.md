@@ -1,6 +1,6 @@
 ---
-title: Apache Hadoop kaptár használata a HDInsight-Azure-beli curl használatával
-description: Ismerje meg, hogyan küldhet távolról az Apache Pig-feladatokat az Azure HDInsight a curl használatával.
+title: Az Apache Hadoop Hive használata a Curl segítségével a HDInsightban – Azure
+description: Ismerje meg, hogyan küldhet távoli apache pig feladatokat az Azure HDInsight ba a Curl használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,56 +9,56 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
 ms.openlocfilehash: 10a2f413142124db7547e68280a0d5e9abac9b98
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79298750"
 ---
-# <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Apache Hive-lekérdezések futtatása a HDInsight Apache Hadoop a REST használatával
+# <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Apache Hive-lekérdezések futtatása az Apache Hadoop segítségével a HDInsightban a REST használatával
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Megtudhatja, hogyan futtathat Apache Hive-lekérdezéseket az Azure HDInsight-fürtön lévő Apache Hadoopokkal a Webhcaten REST API használatával.
+Ismerje meg, hogyan futtathat Apache Hive-lekérdezéseket az Apache Hadoop segítségével a WebHCat REST API használatával az Azure HDInsight-fürtön.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Apache Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
+* Apache Hadoop-fürt a HDInsighton. Lásd: [Első lépések a HDInsight linuxos alkalmazásával.](./apache-hadoop-linux-tutorial-get-started.md)
 
-* REST-ügyfél. Ez a dokumentum a Windows PowerShellben [és a](https://curl.haxx.se/) [bash](https://docs.microsoft.com/windows/wsl/install-win10)-on futó [-webkérést](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) használja.
+* REST-ügyfél. Ez a dokumentum [az Invoke-WebRequest alkalmazást](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) használja a Windows PowerShell és a [Curl](https://curl.haxx.se/) a [Bash](https://docs.microsoft.com/windows/wsl/install-win10)rendszeren.
 
-* Ha bash-et használ, a parancssori JSON-processzort is jQ kell.  Lásd: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* Bash használata esetén a jq-ra, egy parancssori JSON processzorra is szüksége lesz.  Lásd: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
-## <a name="base-uri-for-rest-api"></a>Alapszintű URI a REST API-hoz
+## <a name="base-uri-for-rest-api"></a>Rest API alap URI-ja
 
-A HDInsight REST API alapszintű Uniform Resource Identifier (URI) `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, ahol a `CLUSTERNAME` a fürt neve.  Az URI-k fürtjének nevei **megkülönböztetik a kis-és nagybetűket**.  Míg a fürt neve az URI (`CLUSTERNAME.azurehdinsight.net`) teljes tartományneve (FQDN) része, a kis-és nagybetűk megkülönböztetése, az URI-n belüli más előfordulások megkülönböztetik a kis-és nagybetűket.
+A HDInsight REST API-jának alap egységes `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`erőforrás-azonosítója (URI) a , hol `CLUSTERNAME` található a fürt neve.  Az URI-kban a fürtnevek **ben a kis- és nagybetűket nem lehet figyelembe.**  Míg a fürt neve a teljesen minősített tartománynév (FQDN) része az URI (`CLUSTERNAME.azurehdinsight.net`) a kis- és nagybetűk megkülönböztetése, más előfordulások az URI-ban a kis- és nagybetűk megkülönböztetése.
 
 ## <a name="authentication"></a>Hitelesítés
 
-Ha cURL vagy bármilyen más REST-kommunikációt használ a Webhcaten-mel, a kérelmeket a HDInsight-fürt rendszergazdájához tartozó Felhasználónév és jelszó megadásával kell hitelesítenie. A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Annak érdekében, hogy a hitelesítő adatok biztonságosan legyenek továbbítva a kiszolgálónak, mindig a biztonságos HTTP (HTTPS) protokoll használatával végezze el a kérelmeket.
+A cURL vagy a WebHCat teli rest-kommunikációjának használatakor hitelesítenie kell a kérelmeket a HDInsight-fürt rendszergazdájának felhasználónevének és jelszavának megadásával. A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Annak érdekében, hogy a hitelesítő adatok biztonságosan legyenek elküldve a kiszolgálónak, mindig biztonságos HTTP (HTTPS) használatával kérjen kéréseket.
 
-### <a name="setup-preserve-credentials"></a>Beállítás (hitelesítő adatok megőrzése)
+### <a name="setup-preserve-credentials"></a>Telepítés (hitelesítő adatok megőrzése)
 
-Őrizze meg a hitelesítő adatait, hogy elkerülje az egyes példák újbóli beírását.  A fürt nevét külön lépésben megőrzi a rendszer.
+Őrizze meg hitelesítő adatait, hogy ne adja meg újra őket az egyes példákban.  A fürt neve egy külön lépésben marad meg.
 
-**A. bash**  
-Szerkessze az alábbi szkriptet úgy, hogy lecseréli `PASSWORD`t a tényleges jelszavával.  Ezután adja meg a parancsot.
+**A. Bash**  
+Az alábbi parancsfájlt `PASSWORD` a tényleges jelszóval való helyettesítéssel szerkesztheti.  Ezután adja meg a parancsot.
 
 ```bash
 export password='PASSWORD'
 ```  
 
-**B. a PowerShell** végrehajtja az alábbi kódot, és az előugró ablakban adja meg a hitelesítő adatait:
+**B. PowerShell** Az alábbi kód végrehajtása és a hitelesítő adatok megadása az előugró ablakban:
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
-### <a name="identify-correctly-cased-cluster-name"></a>A megfelelő tokozású fürt nevének azonosítása
+### <a name="identify-correctly-cased-cluster-name"></a>Megfelelően kis- és nagybetűk alapján a fürt nevének azonosítása
 
-A fürt nevének tényleges burkolata különbözhet attól függően, hogy a fürt hogyan lett létrehozva.  Az itt látható lépések megjelenítik a tényleges burkolatot, majd egy változóban tárolják az összes későbbi példát.
+A fürtnév tényleges burkolata a fürt létrehozásának módjától függően eltérhet a várttól.  Az itt leírt lépések a tényleges burkolatot jelenítik meg, majd egy változóban tárolják az összes későbbi példához.
 
-Az alábbi szkriptek szerkesztésével cserélje le a `CLUSTERNAME`t a fürt nevére. Ezután adja meg a parancsot. (Az FQDN fürt neve nem megkülönbözteti a kis-és nagybetűket.)
+Az alábbi parancsfájlok szerkesztésével cserélje le `CLUSTERNAME` a fürt nevét. Ezután adja meg a parancsot. (A teljes tartománynév fürtneve nem tartalmazza a kis- és nagybetűk et.)
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -77,7 +77,7 @@ $clusterName
 
 ## <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
 
-1. Annak ellenőrzéséhez, hogy tud-e csatlakozni a HDInsight-fürthöz, használja a következő parancsok egyikét:
+1. Annak ellenőrzéséhez, hogy tud-e csatlakozni a HDInsight-fürthöz, használja az alábbi parancsok egyikét:
 
     ```bash
     curl -u admin:$password -G https://$clusterName.azurehdinsight.net/templeton/v1/status
@@ -90,7 +90,7 @@ $clusterName
     $resp.Content
     ```
 
-    Az alábbi szöveghez hasonló válasz érkezik:
+    A következő höz hasonló választ kap:
 
     ```json
     {"status":"ok","version":"v1"}
@@ -98,10 +98,10 @@ $clusterName
 
     Ezen parancs paraméterei a következők:
 
-    * `-u` – a kérelem hitelesítéséhez használt Felhasználónév és jelszó.
-    * `-G` – azt jelzi, hogy ez a kérelem lekéréses művelet.
+    * `-u`- A kérelem hitelesítéséhez használt felhasználónév és jelszó.
+    * `-G`- Azt jelzi, hogy ez a kérés get művelet.
 
-1. Az URL-cím (`https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`) kezdete minden kérelem esetében azonos. Az elérési út (`/status`) azt jelzi, hogy a kérés a kiszolgáló Webhcaten (más néven Templeton) állapotának visszaküldésére szolgál. A kaptár verzióját a következő parancs használatával is kérheti:
+1. Az URL-cím `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`eleje minden kérésnél megegyezik. Az elérési `/status`út , azt jelzi, hogy a kérelem a kiszolgáló WebHCat (más néven Templeton) állapotának visszaadása. A Hive verzióját a következő paranccsal is kérheti:
 
     ```bash
     curl -u admin:$password -G https://$clusterName.azurehdinsight.net/templeton/v1/version/hive
@@ -114,13 +114,13 @@ $clusterName
     $resp.Content
     ```
 
-    Ez a kérelem az alábbi szöveghez hasonló választ ad vissza:
+    Ez a kérés a következő höz hasonló választ ad vissza:
 
     ```json
     {"module":"hive","version":"1.2.1000.2.6.5.3008-11"}
     ```
 
-1. A **log4jLogs**nevű tábla létrehozásához használja a következőt:
+1. A **log4jLogs**nevű tábla az alábbiakban a következőkben hozhat létre:
 
     ```bash
     jobid=$(curl -s -u admin:$password -d user.name=admin -d execute="DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/rest" https://$clusterName.azurehdinsight.net/templeton/v1/hive | jq -r .id)
@@ -138,32 +138,32 @@ $clusterName
     $jobID
     ```
 
-    Ez a kérelem a POST metódust használja, amely az adatokat a kérelem részeként küldi el a REST API. A kérelem a következő adatértékeket küldi el:
+    Ez a kérés a POST metódust használja, amely a kérelem részeként adatokat küld a REST API-nak. A rendszer a következő adatértékeket küldi el a kéréssel együtt:
 
-     * `user.name` – a parancsot futtató felhasználó.
-     * `execute` – a végrehajtandó HiveQL-utasítások.
-     * `statusdir` – a feladatokhoz tartozó állapotot tartalmazó könyvtár.
+     * `user.name`- A parancsot futtató felhasználó.
+     * `execute`- A HiveQL kijelentések végrehajtása.
+     * `statusdir`- Az a könyvtár, ahhoz a könyvtárhoz, amelybe a feladat állapota van írva.
 
    Ezek az utasítások a következő műveleteket hajtják végre:
 
-   * `DROP TABLE` – ha a tábla már létezik, törölve lett.
-   * `CREATE EXTERNAL TABLE` – új "külső" táblát hoz létre a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen marad.
+   * `DROP TABLE`- Ha a tábla már létezik, akkor törlődik.
+   * `CREATE EXTERNAL TABLE`- Létrehoz egy új "külső" táblát a Hive-ban. A külső táblák csak a tábladefiníciót tárolják a Hive-ban. Az adatok az eredeti helyen maradnak.
 
      > [!NOTE]  
-     > Külső táblákat kell használni, ha várható, hogy a mögöttes adatokat külső forrás frissíti. Például egy automatizált adatfeltöltési folyamat vagy egy másik MapReduce művelet.
+     > Külső táblákat kell használni, amikor azt várja, hogy az alapul szolgáló adatokat egy külső forrás frissíti. Például egy automatikus adatfeltöltési folyamat vagy egy másik MapReduce művelet.
      >
-     > Egy külső tábla eldobása **nem** törli az adatforrást, csak a tábla definícióját.
+     > A külső tábla eldobása **nem** törli az adatokat, csak a tábladefiníciót.
 
-   * `ROW FORMAT` – az adat formázása. Az egyes naplók mezői szóközzel vannak elválasztva.
-   * `STORED AS TEXTFILE LOCATION` – az adattárolási hely (a példa/az adatkönyvtár) és a szövegként tárolt tárolása.
-   * `SELECT` – kiválasztja az összes olyan sor számát, ahol a **T4** oszlop tartalmazza a **[hiba]** értéket. Ez az utasítás **3** értéket ad vissza, mert három sor tartalmazza ezt az értéket.
+   * `ROW FORMAT`- Hogyan formázzák az adatokat. Az egyes naplók mezőit szóköz választja el egymástól.
+   * `STORED AS TEXTFILE LOCATION`- Ahol az adatok at tárolják (a példa/adatkönyvtár), és hogy szövegként tárolják.
+   * `SELECT`- A **t4** oszlopban a **[HIBA]** értéket tartalmazó sorok számát jelöli ki. Ez az utasítás **3** értéket ad vissza, mivel három sor van, amelyek tartalmazzák ezt az értéket.
 
      > [!NOTE]  
-     > Figyelje meg, hogy a HiveQL utasítások közötti szóközöket a `+` karakter váltja fel a curl használatakor. A szóközt, például az elválasztó karaktert tartalmazó idézőjeles értékeket nem szabad lecserélni `+`.
+     > Figyelje meg, hogy a HiveQL utasítások `+` közötti szóközöket a Curl karakterrel való használat esetén a karakter helyettesíti. A szóközt tartalmazó idézett értékeket, például a határolószert nem szabad a következővel `+`helyettesíteni.
 
-      Ez a parancs egy olyan AZONOSÍTÓJÚ feladatot ad vissza, amely a feladatok állapotának vizsgálatára használható.
+      Ez a parancs egy feladatazonosítót ad vissza, amely a feladat állapotának ellenőrzésére használható.
 
-1. A feladatok állapotának megtekintéséhez használja a következő parancsot:
+1. A feladat állapotának ellenőrzéséhez használja a következő parancsot:
 
     ```bash
     curl -u admin:$password -d user.name=admin -G https://$clusterName.azurehdinsight.net/templeton/v1/jobs/$jobid | jq .status.state
@@ -181,17 +181,17 @@ $clusterName
     (ConvertFrom-Json $fixDup).status.state
     ```
 
-    Ha a feladatot befejezte, az állapot **sikeres**lesz.
+    Ha a feladat befejeződött, az állapot **sikeres.**
 
-1. Ha a művelet állapota **sikeresen**módosult, az Azure Blob Storage-ból kérheti le a feladatok eredményeit. A lekérdezéssel átadott `statusdir` paraméter tartalmazza a kimeneti fájl helyét; Ebben az esetben `/example/rest`. Ez a címe tárolja a kimenetet a fürtök alapértelmezett tárolójában lévő `example/curl` könyvtárban.
+1. Miután a feladat állapota **sikeresre**változott, lekérheti a feladat eredményeit az Azure Blob storage-ból. A `statusdir` lekérdezéssel átadott paraméter tartalmazza a kimeneti fájl helyét; ebben az `/example/rest`esetben. Ez a cím tárolja `example/curl` a kimenetet a könyvtárban a fürtök alapértelmezett tárolójában.
 
-    Ezeket a fájlokat az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)használatával listázhatja és letöltheti. Az Azure CLI és az Azure Storage használatával kapcsolatos további információkért lásd az Azure [CLI használata](https://docs.microsoft.com/azure/storage/storage-azure-cli) az Azure Storage-ban című dokumentumot.
+    Ezeket a fájlokat az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)segítségével listázhatja és töltheti le. Az Azure CLI azure storage-tal való használatáról az [Azure CLI használata az Azure Storage-szal](https://docs.microsoft.com/azure/storage/storage-azure-cli) című dokumentumban talál további információt.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a HDInsight-beli Hadoop használható egyéb módszerekről:
+A Hadoop hdinsight-on való egyéb működéséről további információt talál:
 
-* [Apache Hive használata a HDInsight Apache Hadoop használatával](hdinsight-use-hive.md)
-* [A MapReduce használata a HDInsight Apache Hadoop használatával](hdinsight-use-mapreduce.md)
+* [Az Apache Hive használata az Apache Hadoop segítségével a HDInsighton](hdinsight-use-hive.md)
+* [A MapReduce használata az Apache Hadoop segítségével a HDInsighton](hdinsight-use-mapreduce.md)
 
-A dokumentumban használt REST API kapcsolatos további információkért tekintse meg a [webhcaten dokumentációját](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) .
+A jelen dokumentumban használt REST API-ról a [WebHCat referenciadokumentumban](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) talál további információt.

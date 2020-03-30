@@ -1,41 +1,41 @@
 ---
-title: AK-hüvelyek autoskálázása Azure Application Gateway metrikákkal
-description: Ez a cikk útmutatást nyújt az AK háttérbeli hüvelyek Application Gateway mérőszámok és az Azure Kubernetes metrikus adapter használatával történő méretezéséhez
+title: Automatikus skálázású AKS-podok az Azure Application Gateway-metrikákkal
+description: Ez a cikk az AKS-háttérpodok méretezésével kapcsolatos útmutatást nyújt az Application Gateway-metrikák és az Azure Kubernetes metrikaadapter használatával
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: b98ab8d3c4d03115ea689b4dfd3d8dee753f019d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1169ed0e9a2b970ee0e30d73ea20c87001b62786
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715077"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239448"
 ---
-# <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>AK-hüvelyek autoskálázása Application Gateway metrikák (bétaverzió) használatával
+# <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Az AKS-podok automatikus skálázása az Application Gateway metrikáival (béta)
 
-Ahogy a bejövő forgalom megnövekszik, elengedhetetlen az alkalmazások vertikális felskálázása az igények alapján.
+A bejövő forgalom növekedésével elengedhetetlen, hogy az alkalmazások igény alapján felskálázható.
 
-Az alábbi oktatóanyagban azt ismertetjük, hogyan használható a Application Gateway `AvgRequestCountPerHealthyHost` metrikája az alkalmazás vertikális felskálázásához. `AvgRequestCountPerHealthyHost` az adott háttérrendszer-készletre és a háttérbeli HTTP-beállítási kombinációra küldött kérelmek átlagos kérelmét méri.
+A következő oktatóanyagban bemutatjuk, hogyan használhatja az Application Gateway metrikáját `AvgRequestCountPerHealthyHost` az alkalmazás méretezéséhez. `AvgRequestCountPerHealthyHost`egy adott háttérkészletbe és háttér-HTTP-beállításkombinációba küldött átlagos kérelmeket méri.
 
 A következő két összetevőt fogjuk használni:
 
-* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) – a metrikai adapter használatával tesz elérhetővé Application Gateway metrikákat a metrika-kiszolgálón. Az Azure Kubernetes metrika-adapter egy nyílt forráskódú projekt az Azure-ban, amely a Application Gateway beáramló vezérlőhöz hasonlóan működik. 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) – a HPA használatával Application Gateway metrikákat használhat, és megcélozhatja a skálázási üzembe helyezést.
+* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter)- A metrikaadaptert az Application Gateway metrikák nak a metrikakiszolgálón keresztül történő elérhetővé tjük. Az Azure Kubernetes metric adapter egy nyílt forráskódú projekt az Azure-ban, hasonló az Application Gateway ingress controller. 
+* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler)- HpA használatával fogjuk használni az Application Gateway metrikákat, és a méretezésközponti telepítést.
 
-## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Az Azure Kubernetes metrikus adapter beállítása
+## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Az Azure Kubernetes mérőszámadapterének beállítása
 
-1. Először létre kell hozni egy Azure HRE egyszerű szolgáltatásnevet, és hozzá kell rendelnie `Monitoring Reader` hozzáférést Application Gateway erőforráscsoporthoz. 
+1. Először létrehozunk egy Azure AAD `Monitoring Reader` egyszerű szolgáltatást, és hozzárendeljük a hozzáférést az Application Gateway erőforráscsoportján keresztül. 
 
-    ```bash
+    ```azurecli
         applicationGatewayGroupName="<application-gateway-group-id>"
         applicationGatewayGroupId=$(az group show -g $applicationGatewayGroupName -o tsv --query "id")
         az ad sp create-for-rbac -n "azure-k8s-metric-adapter-sp" --role "Monitoring Reader" --scopes applicationGatewayGroupId
     ```
 
-1. Most a fent létrehozott HRE egyszerű szolgáltatásnév használatával telepítjük a [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) .
+1. Most telepítjük a [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) fent létrehozott AAD szolgáltatásnév használatával.
 
     ```bash
     kubectl create namespace custom-metrics
@@ -47,7 +47,7 @@ A következő két összetevőt fogjuk használni:
     kubectl apply -f kubectl apply -f https://raw.githubusercontent.com/Azure/azure-k8s-metrics-adapter/master/deploy/adapter.yaml -n custom-metrics
     ```
 
-1. Létre fogunk hozni egy `appgw-request-count-metric`nevű `ExternalMetric`-erőforrást. Ez az erőforrás utasítja a metrikai adaptert, hogy `myResourceGroup` erőforráscsoport `myApplicationGateway` erőforrásának `AvgRequestCountPerHealthyHost` metrikáját elérhetővé tegye. A `filter` mező használatával megcélozhat egy adott háttérbeli készletet és a háttérbeli HTTP-beállítást a Application Gateway.
+1. Létrehozunk egy `ExternalMetric` erőforrást `appgw-request-count-metric`a nevével. Ez az erőforrás arra utasítja a metrika adaptert, hogy tegye elérhetővé `AvgRequestCountPerHealthyHost` az erőforráscsoportban lévő `myApplicationGateway` `myResourceGroup` erőforrás metrikáját. A `filter` mező segítségével egy adott háttérkészletet és háttérHTTP-beállítást célozhat meg az Application Gateway-ben.
 
     ```yaml
     apiVersion: azure.com/v1alpha2
@@ -67,7 +67,7 @@ A következő két összetevőt fogjuk használni:
             filter: BackendSettingsPool eq '<backend-pool-name>~<backend-http-setting-name>' # optional
     ```
 
-Mostantól kérheti a metrika-kiszolgálónak, hogy ellenőrizze, hogy az új metrika elérhető-e:
+Most már kérhet egy kérést a metrikakiszolgálón, hogy lássa, az új metrika elérhetővé tesz-e:
 ```bash
 kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appgw-request-count-metric"
 # Sample Output
@@ -90,13 +90,13 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 # }
 ```
 
-## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Az új metrika használata az üzemelő példány vertikális felskálázásához
+## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Az új metrika használata a központi telepítés méretezéséhez
 
-Ha a metrika-kiszolgálón keresztül elérhetővé `appgw-request-count-metric`, készen állunk a [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) használatára a cél üzembe helyezésének vertikális felskálázásához.
+Amint képesek vagyunk a metrikakiszolgálón keresztül elérhetővé `appgw-request-count-metric` tenni, készen állunk a [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) céltelepítés felskálázására.
 
-A következő példában egy minta üzembe helyezési `aspnet`fogunk megcélozni. A hüvelyek felskálázása akkor történik, amikor a `appgw-request-count-metric` > 200/Pod akár Max `10` Hüvelyig.
+A következő példában egy mintatelepítést fogunk megcélozni. `aspnet` Mi lesz bővíteni podok, amikor `appgw-request-count-metric` > 200 `10` podonként legfeljebb egy podok.
 
-Cserélje le a cél központi telepítési nevét, és alkalmazza a következő automatikus méretezési konfigurációt:
+Cserélje le a céltelepítési nevet, és alkalmazza a következő automatikus méretezési konfigurációt:
 ```yaml
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
@@ -116,10 +116,10 @@ spec:
       targetAverageValue: 200
 ```
 
-Tesztelje a telepítőt egy terhelési teszt eszközzel, például az Apache pad használatával:
+Tesztelje a beállításokat egy terhelésteszt-eszközzel, például apache paddal:
 ```bash
 ab -n10000 http://<applicaiton-gateway-ip-address>/
 ```
 
-## <a name="next-steps"></a>Következő lépések
-- A [**beáramló vezérlővel kapcsolatos problémák elhárítása**](ingress-controller-troubleshoot.md): a bejövő adatkezelővel kapcsolatos problémák elhárítása.
+## <a name="next-steps"></a>További lépések
+- [**A be- és ac.**](ingress-controller-troubleshoot.md)

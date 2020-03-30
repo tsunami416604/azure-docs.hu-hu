@@ -1,37 +1,36 @@
 ---
-title: Partneri szerepvállalások közös értékesítése | Azure piactér
-description: A Microsoft a partnereknek szóló közös értékesítési program segítségével jelentős ügyfélkört érhet el, és új értékesítéseket hozhat.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Társértékesítési partneri szerepvállalás | Azure Piactér
+description: A Microsoft partneri társértékesítési programja segítségével hatalmas ügyfélbázist érhet el, és új értékesítéseket hozhat létre.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 389e6f512f05c7bd1a6e9963e60afbcf27067fb3
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 00ddfa9e7cc6805c39e149d9c7c9a163297c6c71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934677"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279844"
 ---
 # <a name="co-sell-partner-engagement"></a>Együttes értékesítési partnerek bevonása
 
-A Microsoft közös értékesítési programja lehetővé teszi, hogy a partnerek közvetlenül a Microsofttal működjenek együtt a közös értékesítés lehetőségein. Elérheti az ügyfelek hatalmas közösségét, és új értékesítési lehetőségeket hozhat létre, amelyek segíthetik az üzleti növekedés felgyorsítását.
+A Microsoft közös értékesítési programja lehetővé teszi a partnerek számára, hogy közvetlenül együttműködjenek a Microsofttal a közös értékesítési lehetőségeken. Az ügyfelek hatalmas közösségét érheti el, és új értékesítési lehetőségeket hozhat létre, amelyek felgyorsíthatják az üzleti növekedést.
 
-## <a name="partner-selling-motions"></a>Partner-értékesítési mozgások
+## <a name="partner-selling-motions"></a>Mozgást értékesítő partner
 
-Három partner értékesítési indítványa van:
+Három partner értékesítési indítványok:
 
-* *Értékesítés partneren*keresztül: a Microsoft-technológiákat a saját értékesítők használatával értékesítheti.
-* *Szolgáltatások közös értékesítése*: az értékesítők és a partnerek együttműködve értékesítik a projektjét vagy a felügyelt szolgáltatásokat a Microsoft Technology Embedded szolgáltatással.
-* *IP-közös értékesítés*: az értékesítők/partnerek együttműködve értékesítik az ismételhető, csomagolt IP-megoldást *.
+* *Értékesítsen partneren keresztül*: A Microsoft technológiáját saját eladóin keresztül értékesítheti.
+* *A szolgáltatások közösen értékesítődnek:* Az eladók és a partnerek együttműködnek a projekt vagy a felügyelt szolgáltatások értékesítésében a beágyazott Microsoft technológiával.
+* *IP-társértékesítés:* Az eladók/partnerek együttműködnek az ismételhető, csomagolt IP-megoldás* értékesítésében.
 
-\* ezen IP-címek közös értékesítésének megoldásai további ösztönzőket kaphatnak a Microsoft Field Sales csapatának sikeres értékesítése és üzembe helyezése során.
+\*Ezen IP-társértékesítési megoldások némelyike további ösztönzőket kaphat, ha sikeresen értékesíti kitárulkodik a Microsoft helyszíni értékesítési csapataival.
 
-![Közös értékesítés történik](./media/marketplace-publishers-guide/marketplace-co-sell.png)
+![Co-sell történik](./media/marketplace-publishers-guide/marketplace-co-sell.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a [Microsofttal való értékesítésről](https://partner.microsoft.com/membership/sell-with-microsoft).
-- További információ a [partneri központ közös értékesítéssel kapcsolatos lehetőségéről](./partner-center-portal/commercial-marketplace-co-sell.md) .
+- További információ a [Microsoftnál történő értékesítésről.](https://partner.microsoft.com/membership/sell-with-microsoft)
+- További információ a [Társértékesítés lehetőségről a Partnerközpontban.](./partner-center-portal/commercial-marketplace-co-sell.md)

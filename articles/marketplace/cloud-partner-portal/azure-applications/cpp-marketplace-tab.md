@@ -1,96 +1,95 @@
 ---
-title: Azure-alkalmazás ajánlata – piactér lap
-description: A piactér lapon azonosíthatók az Azure-alkalmazások értékesítési eszközei.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Az Azure-alkalmazás ajánlata a Piactér lap
+description: A Piactér lapon azonosíthatja az Azure-alkalmazásajánlat marketingeszközeit.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: 967b66a67d51b3a79bcf930ce977af48acc3dd63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 94bbfb16a967a97b1ee6f6d51a5f55bc8ba13227
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827566"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281765"
 ---
-# <a name="azure-application-marketplace-tab"></a>Az Azure Application Marketplace lapja
+# <a name="azure-application-marketplace-tab"></a>Az Azure alkalmazás piactere lapja
 
-A piactér lapon ismertetheti az Azure-alkalmazást, és biztosíthatja a marketing-eszközök használatát. Ezen a lapon a következő formák találhatók: áttekintés, marketing-összetevők, érdeklődői felügyelet és jogi.
+A Piactér lapon leírhatja az Azure-alkalmazást, és marketingeszközöket biztosít. Ez a lap a következő űrlapokat tartalmazza: Áttekintés, Marketingösszetevők, Érdeklődőkezelés és Jogi.
 
 ## <a name="overview-form"></a>Áttekintő űrlap
 
-Az áttekintő űrlapon a kötelező és választható mezők láthatók a következő képernyőfelvételen. A kötelező mezőket csillag (*) alapján vádoljuk.
+Az Áttekintő űrlapon a szükséges és választható mezők láthatók a következő képernyőfelvételen. A kötelező mezőket csillag (*) vádolja.
 
 ![Áttekintő űrlap](./media/azureapp-marketplace-overview.png)
 
-Az alábbi táblázat az ajánlat kirakatának létrehozásához használt beállításokat ismerteti.   A csillaggal hozzáfűzött mezők megadása kötelező.
+Az alábbi táblázat az ajánlat kirakatának létrehozásához használt beállításokat ismerteti.   A csillaggal hozzáfűzött mezők szükségesek.
 
 |      Mező         |    Leírás    |
 |  ---------------   |  ---------------  |
-| **Cím\***        | Az ajánlat címe. Ez kiemelten jelenik meg a piactéren. A maximális hossz 50 karakter. |
-| **Összefoglalás\***      | Az ajánlat rövid összefoglalása. A maximális hossz 100 karakter.           |
-| **Hosszú összefoglalás\*** | Az ajánlat összefoglalása (bár lehet, hogy megegyezik az összegzéssel). A maximális hossz 256 karakter.           |
-| **Leírás\***  | Az ajánlat leírása. A maximális hossz 3000 karakter. Az egyszerű HTML-formázás megengedett, beleértve a &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;Li&gt;, &lt;ol&gt; és a fejléc címkéit.  |
-| **Marketing-azonosító\*** | Az ajánlathoz társítandó egyedi URL-cím, amely jellemzően a szervezet és a megoldás nevét, a maximális hossz 50 karaktert tartalmazza. Válasszon egy rövid, felhasználóbarát marketing-azonosítót a szolgáltatáshoz. Ezt az ajánlatot a piactér URL-címeiben fogjuk használni. Ha például a közzétevő azonosítója "contoso", a marketing azonosítója pedig "PéldaAlkalmazás", akkor az Azure Marketplace-en elérhető ajánlatának URL-címe https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
-| **Előfizetési azonosítók\*** | Adja hozzá az előnézetek egy-100 előfizetés-azonosítóját. Ezek a felsorolt előfizetések hozzáférhetnek az ajánlathoz, miközben elérhetők az előzetes verzióban a közzététel után.          |
-| **Hasznos hivatkozások**    | Igény szerint különféle forrásokra mutató hivatkozásokat is megadhat az ajánlat felhasználói számára, például a támogatást, a dokumentációt, a fórumokat stb.  Javasoljuk, hogy adjon hozzá legalább egy hivatkozást a dokumentációhoz.            |
-| **Javasolt kategóriák (max. 5)\*** | Válasszon egy-öt kategóriát. A kiválasztott kategóriák az ajánlatnak az Azure Marketplace-en és az Azure Portalon elérhető termékkategóriák szerinti leképezésére szolgálnak. Ezek a böngészési lapokon és a termék részletei lapon jelennek meg. |
+| **Cím\***        | Az ajánlat címe. Ez lesz látható jól látható a piacon. A maximális hossz 50 karakter. |
+| **Összefoglaló\***      | Az ajánlat rövid összefoglalása. A maximális hossz 100 karakter.           |
+| **Hosszú összegzés\*** | Hosszabb összefoglaló az ajánlat (bár lehet ugyanaz, mint az összefoglaló). A maximális hossz 256 karakter.           |
+| **Leírás\***  | Az ajánlat leírása. A maximális hossz 3000 karakter. Egyszerű HTML formázás megengedett, beleértve &lt;a&gt; &lt;p&gt;&gt; &lt;,&gt; &lt;em&gt;, ul , &lt;li , ol és fejléc címkéket.  |
+| **Marketing azonosító\*** | Az ajánlathoz társítani rakandó egyedi URL-cím általában tartalmazza a szervezet és a megoldás nevét, legfeljebb 50 karakter hosszú. Válasszon egy rövid, rövid, rövid marketingazonosítót a szolgáltatásához. Ezt fogja használni a piactéri URL-címek ebben az ajánlatban. Ha például a közzétevő azonosítója "contoso", és a marketingazonosítója "sampleApp", az Azure Marketplace-en az ajánlat URL-címehttps://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
+| **Előfizetés-azonosítók előzetes verzió\*** | Adja hozzá egy-100 előfizetés-azonosítók előnézetek. Ezek a fehérlistán szereplő előfizetések hozzáférhetnek az ajánlathoz, amíg az előzetes verzióban érhető el a közzététel után, mielőtt élesben lépne.          |
+| **Hasznos linkek**    | Opcionálisan különböző erőforrásokra mutató hivatkozásokat is megadhat az ajánlat felhasználóinak, például támogatást, dokumentációt, fórumokat stb.  Javasoljuk, hogy legalább egy hivatkozást adjon a dokumentációhoz.            |
+| **Javasolt kategóriák (max. 5)\*** | Válasszon egy-öt kategóriát. A kiválasztott kategóriák segítségével az azure-piactéren és az Azure Portalon elérhető termékkategóriákhoz rendelheti az ajánlatot. Ezek a böngészési oldalakon és a termékadatok oldalon jelennek meg. |
 |  |  |
 
 
-## <a name="marketing-artifacts"></a>Marketing-összetevők
+## <a name="marketing-artifacts"></a>Marketing összetevők
 
-A marketing-összetevők űrlapján a szükséges és választható mezők láthatók a következő képernyőfelvételen. A kötelező mezőket csillag (*) alapján vádoljuk.
+A Marketingösszetevők képernyőn a szükséges és választható mezők a következő képernyőfelvételen láthatók. A kötelező mezőket csillag (*) vádolja.
 
-![Marketing-összetevők űrlapja](./media/azureapp-marketplace-artifacts.png)
+![Marketingösszetevők képernyő](./media/azureapp-marketplace-artifacts.png)
 
-A következő táblázat ismerteti a marketing összetevőit.
+Az alábbi táblázat a marketingösszetevőket ismerteti.
 
 |      Mező         |    Leírás    |
 |  ---------------   |  ---------------  |
-| **Kis\***        | Kis embléma: 40x40cm képpontok PNG formátumban     |
-| **Közepes\***       | Közepes embléma: 90x90 képpontok PNG formátumban    |
-| **Nagyméretű\***        | Nagyméretű embléma: 115x115 képpontok PNG formátumban   |
-| **Széles\***         | Széles embléma: 255x115 képpontok PNG formátumban    |
-| **Hero**           | Opcionális hős emblémája: 815x290 képpontok PNG formátumban. **Megjegyzés:** A Hero ikon nem törölhető a feltöltés után. |
-| **Képernyőképek (max. 5)** |        A Képernyőképek a termék részletei lapon jelennek meg. Jól szemléltetik, hogy milyen módon kommunikálnak az alkalmazással, és hogyan működik. Megjelenítheti például az architektúra-diagramokat, vagy használhat esettanulmányokat. A képernyőképek nem kötelezőek, és az SKU-ra legfeljebb 5. Képernyőkép hozzáadása:<ul><li>A képernyőfelvétel ablak megnyitásához válassza a **+ képernyőfelvétel hozzáadása** elemet.</li><li>**Név** – adjon meg egy nevet és egy címet (legfeljebb 100 karakter hosszúságú lehet.)</li><li>**Feltöltés** – feltöltheti a rendszerképet. A méretnek PNG formátumban kell lennie, a mérete pedig 533 x 324 képpont.</li></ul>           |
-| **Videó hozzáadása**      | Nem kötelező, a videók a termék részletei lapon jelennek meg. Jól szemléltetik, hogy milyen módon kommunikálnak az alkalmazással, és hogyan működik. Videó hozzáadása: <ul><li>Válassza a **+ videó hozzáadása** elemet a videó ablak megnyitásához</li><li>**Név** – adjon meg egy nevet és egy címet (legfeljebb 100 karakter hosszúságú lehet.)</li><li>**Hivatkozás** – adja meg a videót üzemeltető webhely URL-címét (YouTube vagy Vimeo)</li><li>**Miniatűr** – miniatűrt tölthet fel. A méretnek PNG formátumban kell lennie, a mérete pedig 533 x 324 képpont.</li></ul>          |
+| **Kicsi\***        | Kis embléma: 40x40 pixel PNG formátumban     |
+| **Közepes\***       | Közepes embléma: 90x90 képpont PNG formátumban    |
+| **Nagy\***        | Nagy logó: 115x115 képpont PNG formátumban   |
+| **Széles\***         | Széles embléma: 255x115 pixel PNG formátumban    |
+| **Hős**           | Választható hősembléma: 815x290 pixel PNG formátumban. **Megjegyzés:** A hős ikon nem törölhető a feltöltés után. |
+| **Képernyőképek (max. 5)** |        A képernyőképek a termék adatai lapon jelennek meg. Ezek jó módot jelentenek arra, hogy vizuálisan kommunikálja, mit csinál az alkalmazása, és hogyan működik. Megjeleníthetpéldáj például architektúradiagramokat, vagy használhat esetillusztrációkat. A képernyőképek nem kötelezőek, és termékváltozatonként legfeljebb 5 lehet. Képernyőkép hozzáadása:<ul><li>A Képernyőkép ablak megnyitásához válassza **a + Képernyőkép hozzáadása lehetőséget**</li><li>**Név** – Név/cím megadása (legfeljebb 100 karakter hosszú.)</li><li>**Feltöltés** - Töltse fel a képet. Meg kell PNG formátumban, és a méret 533 x 324 pixel.</li></ul>           |
+| **Videó hozzáadása**      | Nem kötelező, a videók megjelennek a termék adatai oldalon. Ők egy jó módja annak, hogy vizuálisan kommunikálni, amit az alkalmazás nem, és hogyan működik. Videó hozzáadása: <ul><li>A Videó ablak megnyitásához válassza **a + Videó hozzáadása** lehetőséget</li><li>**Név** – Név/cím megadása (legfeljebb 100 karakter hosszú.)</li><li>**Link** - Adja meg a videót üzemeltető webhely URL-címét (YouTube vagy Vimeo)</li><li>**Miniatűr** – Miniatűr feltöltése. Meg kell PNG formátumban, és a méret 533 x 324 pixel.</li></ul>          |
 |  |  |
 
 
-### <a name="artifact-examples-in-azure-marketplace"></a>Példa az Azure Marketplace-en
+### <a name="artifact-examples-in-azure-marketplace"></a>Műtermék-példák az Azure Piactéren
 
-A következő képernyőfelvételen egy példa látható a piactér keresési eredményeire.
+A következő képernyőfelvétel egy Marketplace-keresési eredmény példáját mutatja be.
 
-![Marketplace-ajánlat keresési eredménye](./media/azureapp-marketplace-example-browse.png)
+![Marketplace ajánlat keresési eredmény](./media/azureapp-marketplace-example-browse.png)
 
-Az alábbi képen látható, hogy az ajánlat hogyan jelenik meg a piactéren, miután az ügyfél az ajánlat csempére kattint a keresési eredményben.
+Az alábbi képen látható, hogyan jelenik meg az ajánlat a Marketplace-en, miután az ügyfél rákattint az ajánlat csempéjére a keresési eredményben.
 
-![Marketplace-ajánlat keresési eredményének részletei](./media/azureapp-marketplace-example-details.png)
+![Marketplace ajánlat keresési eredmény részletei](./media/azureapp-marketplace-example-details.png)
 
 
-### <a name="artifact-examples-in-azure-portal"></a>Összetevő-példák az Azure Portalon
+### <a name="artifact-examples-in-azure-portal"></a>Műtermékek– példák az Azure Portalon
 
-Az alábbi képernyőfelvételek azt mutatják be, hogyan jelennek meg az ajánlatok az Azure Portalon. Ebben a példában az alkalmazás ajánlata a Marketplace-en **> minden > dev + Test > Jenkins**használatával érhető el. A Jenkins-ajánlat emblémát, címet és kiadói megjelenítendő nevet jelenít meg.
+A következő képernyő-felvétel bemutatja, hogyan jelenik meg egy ajánlat az Azure Portalon. Az ebben a példában szereplő alkalmazásajánlat a Marketplace>Mindent>**Fejlesztési + Teszt>Jenkins**oldalon találja. A Jenkins-ajánlat egy emblémát, címet és közzétevő megjelenítendő nevét jeleníti meg.
 
-![Ajánlatok tallózása Azure Portal](./media/azureapp-portalbrowse-artifacts-jenkins.png)
+![Ajánlatok böngészése az Azure Portalon](./media/azureapp-portalbrowse-artifacts-jenkins.png)
 
-A következő képernyőfelvétel részletes információkat jelenít meg az alkalmazásról, amikor a felhasználó kiválasztja a Jenkinst.
+A következő képernyőfelvétel részletes információkat jelenít meg az alkalmazásról, amikor a felhasználó a Jenkins t választja.
 
-![Ajánlat részletei Azure Portal](./media/azureapp-portal-artifacts-jenkins-details.png)
+![Ajánlat részletei az Azure Portalon](./media/azureapp-portal-artifacts-jenkins-details.png)
 
 
 ### <a name="logo-guidelines"></a>Emblémával kapcsolatos irányelvek
 
-A Cloud Partner Portal feltöltött összes emblémának a következő irányelveket kell követnie:
+A Cloud Partner Portálra feltöltött összes emblémának követnie kell az alábbi irányelveket:
 
-- Az Azure arculata egyszerű színpalettát használ. Tartsa meg az elsődleges és a másodlagos színek számát a logón.
-- Az Azure Portal téma színei fehérek és feketeok. Ne használja ezeket a színeket a logók háttérszínéhez. Használjon olyan színt, amely a Azure Portalban Kiemelt emblémát tesz elérhetővé. Javasoljuk az egyszerű alapszínek használatát. Ha transzparens hátteret használ, ügyeljen arra, hogy a logók/szöveg ne legyen fehér, fekete vagy kék.
+- Az Azure arculata egyszerű színpalettát használ. Alacsonyan tartsa az embléma elsődleges és másodlagos színeinek számát.
+- Az Azure Portal színszínei fehérek és feketék. Ne használja ezeket a színeket az emblémák háttérszíneként. Használjon olyan színt, amely az emblémákat kiemelkedővé teszi az Azure Portalon. Javasoljuk az egyszerű alapszínek használatát. Ha átlátszó hátteret használ, győződjön meg arról, hogy az emblémák/szövegek nem fehérek, feketék vagy kékek.
 - Ne használjon színátmenetes hátteret az emblémán.
-- A logón ne helyezzen el szöveget, még a vállalat vagy a márka nevét is. Az embléma megjelenésének és működésének "Flat" típusúnak kell lennie, és el kell kerülnie a színátmeneteket.
-- Ne nyújtsa be az emblémát.
+- Kerülje a szöveg, még a cég vagy a márkanév, az embléma. A logó megjelenésének és érzetének "laposnak" kell lennie, és kerülnie kell a színátmeneteket.
+- Ne nyújtsd ki a logót.
 
 
 #### <a name="hero-logo"></a>Főképembléma
@@ -98,36 +97,36 @@ A Cloud Partner Portal feltöltött összes emblémának a következő irányelv
 A Hero embléma nem kötelező.
 
 >[!IMPORTANT]
->A Hero embléma a feltöltés után nem törölhető.
+>A Hős embléma nem törölhető a feltöltés után.
 
-Kövesse az alábbi irányelveket a Hero emblémához:
+A Hero embléma alábbi irányelveit használja:
 
-- A fekete, fehér és transzparens hátterek nem engedélyezettek.
-- Ne használjon világos színt az embléma háttereként. A közzétevő megjelenítendő neve, a terv címe és az ajánlat hosszú összegzése fehér színű betűtípussal jelenik meg, és a háttérben kell állnia.
-- Ne használja a legtöbb szöveget a logó tervezésekor. A közzétevő neve, a csomag címe, az ajánlat hosszú összegzése és a létrehozás gomb programozott módon van beágyazva az emblémán belül, ha az ajánlat fel van sorolva.
-- Vegyen fel egy nem használt téglalap alakú helyet a hős emblémájának jobb oldalán. Ez az üres terület 415x100 képpont, a bal oldali eltolás pedig 370 képpont.
+- Fekete, fehér és átlátszó hátterek nem engedélyezettek.
+- Ne használjon semmilyen világos színt az embléma háttereként. A közzétevő megjelenítendő neve, a terv címe és az ajánlat hosszú összegzése fehér betűszínnel jelenik meg, és a háttérben kell kitűnnie.
+- Ne használja a legtöbb szöveget az embléma tervezésekor. A közzétevő neve, a terv címe, az ajánlat hosszú összegzése és a létrehozás gomb programozott módon vannak beágyazva az emblémába, amikor az ajánlat szerepel.
+- A hősembléma jobb oldalán egy nem használt téglalap alakú szóközt is fel kell tüntetni. Ez az üres terület 415x100 képpont, balról 370 képponttal eltolva.
 
 
-## <a name="lead-management"></a>Érdeklődők kezelése
+## <a name="lead-management"></a>Érdeklődőkezelés
 
-Az érdeklődő felügyeletének konfigurálásához a vezető felügyeleti űrlap nem kötelező mezőt tartalmaz. Az érdeklődők felügyeletének konfigurálásához a legördülő listából válassza ki az érdeklődő célhelyét. A következő képernyőfelvételen az elérhető célhelyek láthatók.
+Az Érdeklődőkezelés űrlapon van egy választható mező az érdeklődőkezelés konfigurálásához. Az érdeklődőkezelés konfigurálásához válassza ki az Érdeklődő célt a legördülő listából. A következő képernyőfelvétel en láthatók a rendelkezésre álló úti célok.
 
-![Érdeklődői felügyelet célhelyének kiválasztása](./media/azureapp-marketplace-leadmgmt.png)
+![Érdeklődőkezelési cél kiválasztása](./media/azureapp-marketplace-leadmgmt.png)
 
 >[!TIP]
->Az üzenet megjelenítéséhez válassza ki az információs ikont: "válassza ki a rendszer helyét, ahol az érdeklődőket tárolni fogja. Ismerje meg, hogyan csatlakozhat a [CRM rendszerhez](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) . "
+>Az üzenet megtekintéséhez válassza az információs ikont: "Válassza ki azt a rendszert, amelyben az érdeklődőket tárolni fogja. Itt megtudhatja, hogyan csatlakozhat [here](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) a CRM-rendszerhez."
 
-További információ: az [ügyfél-érdeklődők konfigurálása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads).
+További információt az [Ügyfélérdeklődők konfigurálása című témakörben talál.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)
 
 
 ## <a name="legal"></a>Jogi tudnivalók
 
-A jogi űrlap használatával megadhatja az összes ajánlathoz szükséges jogi dokumentációt.
+Használja a Jogi űrlapot, hogy a jogi dokumentáció szükséges minden ajánlatot.
 
 Adja meg az alábbi információkat:
 
-- **Adatvédelmi szabályzat URL-címe\*** – adja meg az alkalmazás adatvédelmi szabályzatára mutató hivatkozást.
-- **Használati feltételek\*** – adja meg az alkalmazás használati feltételeit. Az ügyfeleknek el kell fogadniuk ezeket a feltételeket az alkalmazás kipróbálása előtt.
+- **Adatvédelmi\* irányelvek URL-címe** – Adjon meg egy hivatkozást az alkalmazás adatvédelmi irányelveire.
+- Használati feltételek – Adja meg az alkalmazás használati feltételeit. **\* ** Az ügyfeleknek el kell fogadniuk ezeket a feltételeket, mielőtt kipróbálhatják az alkalmazást.
 
 ![Jogi forma](./media/azureapp-marketplace-legal.png)
 

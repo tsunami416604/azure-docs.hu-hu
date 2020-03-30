@@ -1,49 +1,49 @@
 ---
-title: Azure webalkalmazási tűzfal figyelése és naplózása
-description: A webalkalmazási tűzfal (WAF) megismerése FrontDoor-figyeléssel és-naplózással
+title: Az Azure Web Application Firewall figyelése és naplózása
+description: Ismerje meg a Web Application Firewall (WAF) frontajtó figyelésése és naplózása
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: 3446df6effd85a07beb463c1caa40c5826a9e019
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 4488fadf5db3b32049b5dce4bbee1fa76c320e96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934697"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284143"
 ---
-# <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure webalkalmazási tűzfal figyelése és naplózása 
+# <a name="azure-web-application-firewall-monitoring-and-logging"></a>Az Azure Web Application Firewall figyelése és naplózása 
 
-Az Azure webalkalmazási tűzfal (WAF) figyelése és naplózása a Azure Monitor-és Azure Monitor-naplókkal való naplózással és integrációval történik.
+Az Azure Web Application Firewall (WAF) figyelése és naplózása az Azure Monitor és az Azure Monitor naplóival való naplózás és integráció révén biztosított.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-A FrontDoor naplóval rendelkező WAF integrálva van a [Azure monitor](../../azure-monitor/overview.md). Azure Monitor lehetővé teszi a diagnosztikai információk nyomon követését, beleértve a WAF-riasztásokat és-naplókat. A WAF-figyelést a portálon belül, a **diagnosztika** lapon vagy közvetlenül a Azure monitor szolgáltatáson keresztül konfigurálhatja.
+A WAF frontajtónaplóval integrálva van az [Azure Monitorral.](../../azure-monitor/overview.md) Az Azure Monitor lehetővé teszi a diagnosztikai információk, beleértve a WAF-riasztások és naplók nyomon követését. Konfigurálhatja a WAF-figyelést a bejárati ajtó erőforráson belül a portálon a **Diagnosztika** lapon vagy közvetlenül az Azure Monitor szolgáltatáson keresztül.
 
-Azure Portal válassza a bejárati erőforrás típusa lehetőséget. A bal oldali **figyelés**/**metrikák** lapon hozzáadhat **WebApplicationFirewallRequestCount** a WAF-szabályoknak megfelelő kérelmek számának nyomon követéséhez. Az egyéni szűrők a műveleti típusok és a szabályok nevei alapján hozhatók létre.
+Az Azure Portalon nyissa meg a Bejárati ajtó erőforrástípusát. A bal oldali/**Monitormetrikák** lapon hozzáadhatja a **WebApplicationFirewallRequestCount** alkalmazást a WAF-szabályoknak megfelelő kérelmek számának nyomon követéséhez. **Monitoring** Egyéni szűrők hozhatók létre művelettípusok és szabálynevek alapján.
 
 ![WAFMetrics](../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png)
 
 ## <a name="logs-and-diagnostics"></a>Naplók és diagnosztika
 
-A WAF az észlelt fenyegetésekkel kapcsolatos részletes jelentéseket biztosít. A naplózás integrálva van az Azure Diagnostics naplóival, a riasztások pedig JSON formátumban vannak rögzítve. Ezek a naplók [Azure monitor naplókkal](../../azure-monitor/insights/azure-networking-analytics.md)integrálhatók.
+A WAF a Bejárati ajtóval részletes jelentést nyújt az észlelt minden egyes fenyegetésről. A naplózás integrálva van az Azure Diagnostics naplóival, a riasztások pedig JSON formátumban vannak rögzítve. Ezek a naplók integrálhatók az [Azure Monitor naplóiba.](../../azure-monitor/insights/azure-networking-analytics.md)
 
-![WAFDiag](../media/waf-frontdoor-monitor/waf-frontdoor-diagnostics.png)
+![WAFDiag között](../media/waf-frontdoor-monitor/waf-frontdoor-diagnostics.png)
 
-A FrontdoorAccessLog az ügyfélnek visszaküldött összes kérelmet naplózza. A FrontdoorWebApplicationFirewallLog minden olyan kérést naplóz, amely megfelel egy WAF-szabálynak.
+A FrontdoorAccessLog naplózza az ügyfél háttérrendszerébe továbbított összes kérelmet. A FrontdoorWebApplicationFirewallLog naplózza a WAF-szabálynak megfelelő kérelmeket.
 
-A következő példában szereplő lekérdezés a WAF-naplókat szerzi be a blokkolt kérelmeknél:
+A következő példalekérdezés WAF-naplókat kér be a blokkolt kérelmeken:
 
 ``` WAFlogQuery
 AzureDiagnostics
 | where ResourceType == "FRONTDOORS" and Category == "FrontdoorWebApplicationFirewallLog"
-| where action_s == "Block"
+| where action_name_s == "Block"
 
 ```
 
-Íme egy példa egy naplózott kérelemre a WAF-naplóban:
+Íme egy példa a WAF-naplóban naplózott kérelemre:
 
 ``` WAFlogQuerySample
 {
@@ -66,7 +66,7 @@ AzureDiagnostics
 
 ``` 
 
-A következő példában szereplő lekérdezés beolvassa a AccessLogs-bejegyzéseket:
+A következő példalekérdezés AccessLogs bejegyzéseket kap:
 
 ``` AccessLogQuery
 AzureDiagnostics
@@ -74,7 +74,7 @@ AzureDiagnostics
 
 ```
 
-Íme egy példa egy naplózott kérelemre a hozzáférési naplóban:
+Íme egy példa az Access-naplóban naplózott kérelemre:
 
 ``` AccessLogSample
 {
@@ -103,6 +103,6 @@ AzureDiagnostics
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a [bejárati ajtóról](../../frontdoor/front-door-overview.md).
+- További információ a [Bejárati ajtóról.](../../frontdoor/front-door-overview.md)

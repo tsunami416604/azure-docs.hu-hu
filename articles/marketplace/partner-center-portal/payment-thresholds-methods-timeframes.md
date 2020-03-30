@@ -1,46 +1,45 @@
 ---
-Description: A kifizetések, valamint a fizetési küszöbértékek és a Microsoft piactérek a fizetések elfogadásának várható ideje az ország/régió és a kifizetési fiók típusától függően változhat.
-title: Fizetési küszöbértékek, módszerek és időkeretek a kereskedelmi piactéren | Azure piactér
+Description: A fizetések átutalásának becsült ideje, a vonatkozó fizetési küszöbértékek és a Microsoft piacterei, ahonnan kifizetéseket kaphat, az országtól/régiótól és a kifizetési fiók típusától függően változhat.
+title: Fizetési küszöbértékek, módszerek és időkeretek a kereskedelmi piacon | Azure Piactér
 ms.date: 12/10/2019
-ms.topic: article
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+ms.topic: conceptual
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 6bb05513d59870b7fa0d997eb31510494a9938e0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fe18fab4a2ea61f41e017704105e37f28c20e456
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931884"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279725"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Fizetési küszöbértékek, módszerek és időkeretek
 
-A kifizetések átutalásának becsült időpontja és a Microsoft piactér, amelyből a fizetések fogadhatók, az országtól/régiótól és a kifizetési fiók típusától függően változhatnak. Ez a témakör az egyes országokban/régiókban támogatott fizetési módszereket ismerteti.
+A fizetések átutalásának becsült ideje és a Microsoft piacterei, ahonnan kifizetéseket kaphat, az országtól/régiótól és a kifizetési fiók típusától függően változhat. Ez a témakör az egyes országokban/régiókban támogatott fizetési módokat ismerteti.
 
-Az adott ország/régió esetében a befizetések teljesítéséhez a ACH/SEPA vagy a vezetékes adatátvitel is használható. Emellett egyes országok/régiók is támogatják a PayPal fizetési módot.
+Bármely adott országban/régióban az ACH/SEPA vagy az átutalást használjuk a kifizetések teljesítéséhez. Emellett egyes országok/régiók fizetési módként támogatják a PayPalt.
 
-## <a name="number-of-days-for-payments-to-reach-payout-account"></a>A kifizetési fiókhoz való kifizetéshez szükséges napok száma
+## <a name="number-of-days-for-payments-to-reach-payout-account"></a>Napok száma a kifizetési számla eléréséhez
 
-Általában a hónap 15. napján egy adott hónapban esedékes fizetést küldünk, de a fizetéshez további időt is igénybe kell venni. A napok mennyisége attól függően változik, hogy milyen fizetési módot használunk a fiókjához az alább leírtak szerint.
+Az adott hónap 15-ig általában az adott hónapban esedékes befizetést küldjük el, de a kifizetés hez további idő kell, hogy eljusson a fiókjába. A napok száma a ttól függ, hogy milyen fizetési módot használunk a fiókjához, az alábbiakszerint.
 
 > [!NOTE]
-> Az alább látható napok a következők: közelítő; az adott kifizetés hosszabb vagy rövidebb időt is igénybe vehet.
+> Az alábbi napok hozzávetőlegesek; egy adott kifizetés hosszabb vagy rövidebb időt vehet igénybe.
 
-| Payment Method (Fizetési mód)     | A kifizetési fiók eléréséhez szükséges napok száma     |
+| Payment Method (Fizetési mód)     | A kifizetési számla eléréséhez eltelt napok száma     |
 |--------------------|--------------------------------------------|
 | PayPal             | 1 munkanap                             |
 | ACH/SEPA           | 2-3 munkanap                          |
 | Átutalás      | 7-10 munkanap                         |
 
-Az alábbi táblázatokban megtekintheti azokat az országokat/régiókat, amelyekben ezeket a fizetési módszereket használják a piactéren.
+Az alábbi táblázatokból megtekintheti azokat az országokat/régiókat, amelyekben ezeket a fizetési módokat használják az egyes piactereken.
 
 ## <a name="payment-methods-in-countriesregions"></a>Fizetési módok országokban/régiókban
 
 > [!NOTE]
-> A fizetési küszöbértékek minden régióban $50 USD értékűek.
+> A kifizetési küszöbértékek minden régióban $50 USD.
 
-| Ország/régió                          | Azure Piactér | Áruház, reklám, keverő és Minecraft | Office | PayPal-kifizetések |
+| Ország                          | Azure Piactér | Áruház, reklám, keverő és Minecraft | Office | PayPal kifizetések |
 |----------------------------------|-------------------|------------------------------------------|--------|-----------------|
 | Afganisztán                      | Igen               | Igen                                      | Nem     | Nem              |
 | Albánia                          | Igen               | Igen                                      | Igen    | Igen             |
@@ -75,12 +74,12 @@ Az alábbi táblázatokban megtekintheti azokat az országokat/régiókat, amely
 | Kolumbia                         | Igen               | Igen                                      | Igen    | Igen             |
 | Comore-szigetek                          | Igen               | Igen                                      | Nem     | Nem              |
 | Kongó (KDK)                      | Igen               | Igen                                      | Igen    | Nem              |
-| Kongói Köztársaság               | Igen               | Igen                                      | Igen    | Nem              |
+| Kongó, Köztársaság               | Igen               | Igen                                      | Igen    | Nem              |
 | Costa Rica                       | Igen               | Igen                                      | Igen    | Igen             |
-| Elefántcsontpart                    | Igen               | Igen                                      | Igen    | Nem              |
+| Cote D'Elefántcsontpart                    | Igen               | Igen                                      | Igen    | Nem              |
 | Horvátország                          | Igen               | Igen                                      | Igen    | Nem              |
 | Ciprus                           | Igen               | Igen                                      | Igen    | Igen             |
-| Csehország                   | Igen               | Igen                                      | Igen    | Igen             |
+| Cseh Köztársaság                   | Igen               | Igen                                      | Igen    | Igen             |
 | Dánia                          | Igen               | Igen                                      | Igen    | Igen             |
 | Dominika                         | Igen               | Igen                                      | Nem     | Igen             |
 | Dominikai Köztársaság               | Igen               | Igen                                      | Igen    | Igen             |
@@ -101,7 +100,7 @@ Az alábbi táblázatokban megtekintheti azokat az országokat/régiókat, amely
 | Guinea                           | Igen               | Igen                                      | Igen    | Nem              |
 | Haiti                            | Igen               | Igen                                      | Igen    | Nem              |
 | Honduras                         | Igen               | Igen                                      | Igen    | Igen             |
-| Hongkong (KKT)                        | Igen               | Igen                                      | Igen    | Igen             |
+| Hongkong                        | Igen               | Igen                                      | Igen    | Igen             |
 | Magyarország                          | Igen               | Igen                                      | Igen    | Igen             |
 | Izland                          | Igen               | Igen                                      | Igen    | Nem              |
 | India                            | Igen               | Igen                                      | Igen    | Igen             |
@@ -115,7 +114,7 @@ Az alábbi táblázatokban megtekintheti azokat az országokat/régiókat, amely
 | Jordánia                           | Igen               | Igen                                      | Igen    | Igen             |
 | Kazahsztán                       | Igen               | Igen                                      | Igen    | Igen             |
 | Kenya                            | Igen               | Igen                                      | Igen    | Igen             |
-| Dél-Korea                    | Igen               | Igen                                      | Igen    | Nem              |
+| Korea (dél)                    | Igen               | Igen                                      | Igen    | Nem              |
 | Kuvait                           | Igen               | Igen                                      | Igen    | Igen             |
 | Kirgizisztán                       | Nem                | Nem                                       | Igen    | Nem              |
 | Laosz                             | Igen               | Igen                                      | Igen    | Nem              |
@@ -125,7 +124,7 @@ Az alábbi táblázatokban megtekintheti azokat az országokat/régiókat, amely
 | Liechtenstein                    | Igen               | Igen                                      | Igen    | Igen             |
 | Litvánia                        | Igen               | Igen                                      | Igen    | Nem              |
 | Luxemburg                       | Igen               | Igen                                      | Igen    | Igen             |
-| Észak-Macedónia                        | Nem                | Igen                                      | Igen    | Nem              |
+| Macedónia                        | Nem                | Igen                                      | Igen    | Nem              |
 | Madagaszkár                       | Igen               | Igen                                      | Igen    | Nem              |
 | Malawi                           | Igen               | Igen                                      | Igen    | Igen             |
 | Malajzia                         | Igen               | Igen                                      | Igen    | Igen             |
@@ -139,7 +138,7 @@ Az alábbi táblázatokban megtekintheti azokat az országokat/régiókat, amely
 | Marokkó                          | Igen               | Igen                                      | Igen    | Nem              |
 | Mozambik                       | Igen               | Igen                                      | Igen    | Igen             |
 | Nepál                            | Igen               | Igen                                      | Igen    | Nem              |
-| Hollandia                 | Igen               | Igen                                      | Igen    | Igen             |
+| Hollandia, A                 | Igen               | Igen                                      | Igen    | Igen             |
 | Új-Zéland                      | Igen               | Igen                                      | Igen    | Igen             |
 | Nicaragua                        | Igen               | Igen                                      | Igen    | Igen             |
 | Niger                            | Igen               | Igen                                      | Igen    | Nem              |
