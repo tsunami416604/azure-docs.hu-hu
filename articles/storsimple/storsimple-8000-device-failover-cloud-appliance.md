@@ -1,6 +1,6 @@
 ---
-title: Feladatátvételi és vész-helyreállítási StorSimple Cloud Appliance
-description: Megtudhatja, hogyan hajthat végre feladatátvételt a StorSimple 8000 sorozatú fizikai eszközön egy felhőalapú berendezésen.
+title: Feladatátvétel és vészhelyreállítás egy StorSimple felhőalapú berendezésbe
+description: Ismerje meg, hogyan kell feladatátvételt a StorSimple 8000 sorozatú fizikai eszköz egy felhőalapú berendezés.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,84 +15,84 @@ ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 347b899608d4322a7873b9f80f38ca1c767194d7
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77468745"
 ---
-# <a name="fail-over-to-your-storsimple-cloud-appliance"></a>Feladatátvétel a StorSimple Cloud Appliance
+# <a name="fail-over-to-your-storsimple-cloud-appliance"></a>Feladatátvétel a StorSimple felhőalapú berendezésnek
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az oktatóanyag ismerteti azokat a lépéseket, amelyek szükségesek ahhoz, hogy StorSimple 8000 sorozatú fizikai eszközt lehessen felvenni egy StorSimple Cloud Appliance, ha van katasztrófa. A StorSimple az eszköz feladatátvételi funkciójával áttelepítheti az adatközpontban lévő forrás fizikai eszköz adatait az Azure-ban futó felhőalapú készülékre. Az oktatóanyagban szereplő útmutatás a StorSimple 8000 sorozatú fizikai eszközökre és a 3. frissítést és újabb verziókat futtató felhőalapú készülékekre vonatkozik.
+Ez az oktatóanyag ismerteti a StorSimple 8000 sorozatú fizikai eszköz storSimple felhőalapú berendezésre való feladatátvételhez szükséges lépéseket, ha katasztrófa történik. A StorSimple az eszköz feladatátvételi szolgáltatásával telepíti át az adatokat az adatközpontban lévő fizikai forráseszközről egy Azure-ban futó felhőberendezésre. Az oktatóanyagban található útmutató a StorSimple 8000 sorozatú fizikai eszközökre és a szoftververziókat futtató 3- as és újabb verziót futtató felhőberendezésekre vonatkozik.
 
-Ha többet szeretne megtudni az eszközök feladatátvételéről, valamint arról, hogy miként használható a katasztrófa elleni felépülésre, ugorjon a feladatátvétel és a vész- [helyreállítás a StorSimple 8000 Series-eszközökre](storsimple-8000-device-failover-disaster-recovery.md)című témakörben.
+Ha többet szeretne megtudni az eszközfeladat-átvételről és arról, hogyan használja a katasztrófa utáni helyreállítást, nyissa meg [a Feladatátvételés vészhelyreállítást a StorSimple 8000 sorozatú eszközökszámára.](storsimple-8000-device-failover-disaster-recovery.md)
 
-Ha feladatátvételt szeretne átadni egy StorSimple fizikai eszközről egy másik fizikai eszközre, ugorjon [át a feladatátvétel StorSimple fizikai eszközre](storsimple-8000-device-failover-physical-device.md)elemre. Ha az eszközt saját magára szeretné átadni, folytassa [a feladatátvételt ugyanarra a StorSimple fizikai eszközre](storsimple-8000-device-failover-same-device.md).
+Ha egy StorSimple fizikai eszközt egy másik fizikai eszközre szeretne átadni, nyissa [meg a Feladatátvétel t a StorSimple fizikai eszközre.](storsimple-8000-device-failover-physical-device.md) Ha saját magának szeretne átadni egy eszközt, nyissa [meg a Feladatátvétel lehetőséget ugyanarra a StorSimple fizikai eszközre.](storsimple-8000-device-failover-same-device.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Győződjön meg arról, hogy áttekintette az eszköz feladatátvételével kapcsolatos szempontokat. További információért látogasson el az [eszközök feladatátvételének gyakori szempontjaira](storsimple-8000-device-failover-disaster-recovery.md).
+- Győződjön meg arról, hogy áttekintette az eszköz feladatátvételi szempontokat. További információt az [eszközfeladat-átvétel általános szempontjai](storsimple-8000-device-failover-disaster-recovery.md)című területen talál.
 
-- Az eljárás futtatása előtt létre kell hoznia és konfigurálnia kell egy StorSimple Cloud Appliance. Ha a 3. frissítés szoftverét vagy újabb verzióját futtatja, érdemes lehet egy 8020 felhőalapú készüléket használni a DR. Az 8020-es modell 64 TB-os, és Premium Storage használ. További információért látogasson el a [StorSimple Cloud Appliance üzembe helyezéséhez és kezeléséhez](storsimple-8000-cloud-appliance-u2.md).
+- Az eljárás futtatása előtt létre kell hoznia és konfigurálnia kell egy StorSimple felhőberendezést. A 3. A 8020 modell 64 TB-os, és prémium szintű storage-ot használ. További információ: [StorSimple cloud appliance telepítése és kezelése.](storsimple-8000-cloud-appliance-u2.md)
 
-## <a name="steps-to-fail-over-to-a-cloud-appliance"></a>A felhőalapú berendezés feladatátvételének lépései
+## <a name="steps-to-fail-over-to-a-cloud-appliance"></a>A felhőalapú berendezés feladatátvétellépései
 
-A következő lépések végrehajtásával állítsa vissza az eszközt egy célként StorSimple Cloud Appliance.
+Hajtsa végre a következő lépéseket az eszköz visszaállításához a cél StorSimple Cloud Appliance.
 
-1.  Ellenőrizze, hogy a felvenni kívánt kötet-tároló hozzá van-e rendelve Felhőbeli pillanatképekhez. További információért látogasson el a [StorSimple Eszközkezelő szolgáltatás használata a biztonsági másolatok létrehozásához](storsimple-8000-manage-backup-policies-u2.md).
-2. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. A **Devices (eszközök** ) panelen lépjen a szolgáltatáshoz csatlakoztatott eszközök listájára.
-    ![eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev1.png)
-3. Válassza ki a forrás eszközt, majd kattintson rá. A forrásoldali eszközön szerepelnek a felvenni kívánt mennyiségi tárolók. Válassza a **beállítások > kötetek tárolók lehetőséget**.
+1.  Ellenőrizze, hogy a feladatátvételre kívánt kötettároló rendelkezik-e társított felhőbeli pillanatképekkel. További információt a [StorSimple Eszközkezelő szolgáltatás használata biztonsági másolatok létrehozásához](storsimple-8000-manage-backup-policies-u2.md)című területen talál.
+2. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az **Eszközök** panelen nyissa meg a szolgáltatáshoz csatlakoztatott eszközök listáját.
+    ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev1.png)
+3. Jelölje ki és kattintson a forráseszközre. A forráseszköz rendelkezik a feladatátvételhez kívánt kötettárolókkal. Nyissa meg **a Beállítások > kötettárolók lapot.**
 
     ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
     
-4. Válasszon ki egy olyan mennyiségi tárolót, amelyet át szeretne adni egy másik eszközre. Kattintson a kötet tárolóra a tárolóban található kötetek listájának megjelenítéséhez. Válasszon ki egy kötetet, kattintson rá a jobb gombbal, majd kattintson az **Offline** állapotba állítás lehetőségre a kötet offline állapotba helyezéséhez.
+4. Válassza ki azt a kötettárolót, amelyet át szeretne adni egy másik eszköznek. Kattintson a kötettárolóra a tárolón belüli kötetek listájának megjelenítéséhez. Jelöljön ki egy kötetet, kattintson a jobb gombbal, és válassza a **Kapcsolat nélküli módra váltáshoz** a kötetet.
 
     ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
 
-5. Ismételje meg a folyamatot a mennyiségi tároló összes kötetén.
+5. Ismételje meg ezt a folyamatot a kötettároló összes kötetén.
 
      ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
 
-6. Ismételje meg az előző lépést az összes olyan mennyiségi tárolónál, amelyet át szeretne adni egy másik eszközre.
+6. Ismételje meg az előző lépést az összes kötettárolóesetében, amelyet át szeretne adni egy másik eszköznek.
 
-7. Lépjen vissza az **eszközök** panelre. A parancssorban kattintson a **feladatátvétel**elemre.
+7. Menj vissza az **Eszközök** panelhez. A parancssávon kattintson a **Feladatátvétel gombra.**
 
-    ![Kattintson a feladatátvétel lehetőségre](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev8.png)
-8. A **feladatátvétel** panelen hajtsa végre a következő lépéseket:
+    ![Kattintson a feladatátvételre](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev8.png)
+8. A **Feladatátvétel** panelen hajtsa végre a következő lépéseket:
    
-    1. Kattintson a **forrás**lehetőségre. Válassza ki a feladatátvételhez használandó mennyiségi tárolókat. **Csak a társított Felhőbeli pillanatképekkel és kapcsolat nélküli kötetekkel rendelkező tárolók jelennek meg.**
+    1. Kattintson **a Forrás gombra.** Válassza ki a feladatátvételhez a kötettárolókat. **Csak a társított felhőbeli pillanatképekkel és offline kötetekkel rendelkező kötettárolók jelennek meg.**
         ![Forrás kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev11.png)
-    2. Kattintson a **cél**elemre. Válasszon ki egy cél felhőalapú készüléket az elérhető eszközök legördülő listájából. **A listában csak azok az eszközök jelennek meg, amelyek elegendő kapacitással rendelkeznek a forrásként szolgáló tárolók befogadásához.**
+    2. Kattintson **a Cél gombra.** Válasszon ki egy célfelhő-berendezést az elérhető eszközök legördülő listájából. **Csak azok az eszközök jelennek meg a listában, amelyek elegendő kapacitással rendelkeznek a forráskötet-tárolók befogadásához.**
 
         ![Cél kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev12.png)
 
-    3. Tekintse át a feladatátvételi beállításokat az **Összefoglalás** területen, és jelölje be a jelölőnégyzetet, amely azt jelzi, hogy a kiválasztott mennyiségi tárolók kötetei offline állapotban vannak. 
+    3. Tekintse át a feladatátvételi beállításokat az **Összegzés** csoportban, és jelölje be azt a jelölőnégyzetet, amely jelzi, hogy a kijelölt kötettárolókban lévő kötetek offline állapotban vannak. 
 
         ![Feladatátvételi beállítások áttekintése](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev13.png)
 
-9. A rendszer létrehoz egy feladatátvételi feladatot. A feladatátvételi feladatok figyeléséhez kattintson a feladatok értesítésére.
+9. Létrejön egy feladatátvételi feladat. A feladatátvételi feladat figyeléséhez kattintson a feladat értesítésére.
 
-    ![Feladatátvételi feladatok figyelése](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev13.png)
+    ![Feladatátvételi feladat figyelése](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev13.png)
 
-10. A feladatátvétel befejezése után lépjen vissza az **eszközök** panelre.
+10. A feladatátvétel befejezése után lépjen vissza az **Eszközök** panelre.
 
-    1. Válassza ki azt az eszközt, amelyet a feladatátvétel céljaként használt.
+    1. Válassza ki a feladatátvétel célként használt eszközt.
 
        ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
-    2. Kattintson a **kötetek tárolók**elemre. Az összes kötet-tárolót, valamint a régi eszköz köteteit is fel kell listázni.
+    2. Kattintson **a Kötettárolók gombra.** Az összes kötettárolót, valamint a régi eszköz köteteit fel kell sorolni.
 
-       Ha a feladatátvétel alatt álló kötet helyileg rögzített kötetekkel rendelkezik, akkor ezek a kötetek a lépcsőzetes kötetek felett lesznek felmentve. A helyileg rögzített kötetek nem támogatottak StorSimple Cloud Applianceon.
+       Ha a feladatátvételi rendszer által megadott kötettároló helyileg rögzített köteteket tartalmaz, ezek a kötetek felzett kötetként lesznek megdöntve. A helyileg rögzített kötetek nem támogatottak a StorSimple felhőalapú berendezésen.
 
-       ![Cél mennyiségi tárolók megtekintése](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev17.png)
+       ![Célkötet-tárolók megtekintése](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev17.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A feladatátvétel elvégzése után szükség lehet [a StorSimple-eszköz inaktiválására vagy törlésére](storsimple-8000-deactivate-and-delete-device.md).
+* Miután végrehajtotta a feladatátvételt, előfordulhat, hogy [inaktiválnia vagy törölnie kell a StorSimple eszközt.](storsimple-8000-deactivate-and-delete-device.md)
 
-* További információ a StorSimple Eszközkezelő szolgáltatás használatáról: [a StorSimple-eszköz felügyeletéhez használja a StorSimple Eszközkezelő szolgáltatást](storsimple-8000-manager-service-administration.md).
+* A StorSimple Eszközkezelő szolgáltatás használatáról a [StorSimple Eszközkezelő szolgáltatás használata a StorSimple-eszköz felügyeletéhez című oldalon](storsimple-8000-manager-service-administration.md)talál.
 

@@ -1,76 +1,76 @@
 ---
 title: Üzembe helyezés az Azure-ban gomb
-description: Azure Resource Manager-sablonok GitHub-tárházból való üzembe helyezéséhez használja a gombot.
+description: Az Azure Resource Manager-sablonok github-tárházból történő üzembe helyezéséhez gomb használatával.
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 88436eac970b252d7b0bc7bccee4131e06e9e0cf
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77109050"
 ---
-# <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Sablonok üzembe helyezése a GitHub-tárházból a központi telepítés gomb használatával
+# <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>A GitHub-tárházból származó sablonok üzembe helyezéséhez egy központi telepítési gomb használata
 
-Ez a cikk bemutatja, hogyan helyezhetők üzembe sablonok egy GitHub-tárházból a **telepítés az Azure** -ban gomb használatával. A gombot közvetlenül a GitHub-adattárban található README.md-fájlhoz, vagy egy olyan weboldalhoz is hozzáadhatja, amely hivatkozik a tárházra.
+Ez a cikk ismerteti, hogyan használhatja a Központi telepítés az **Azure-ba** gombot a github-tárházból sablonok üzembe helyezéséhez. A gombot közvetlenül hozzáadhatja a GitHub-tárházban lévő README.md fájlhoz vagy egy olyan weboldalhoz, amely a tárházra hivatkozik.
 
-## <a name="use-common-image"></a>Közös rendszerkép használata
+## <a name="use-common-image"></a>Közös kép használata
 
-A gombnak a weboldalához vagy adattárhoz való hozzáadásához használja az alábbi képet:
+Ha hozzá szeretné adni a gombot a weboldalhoz vagy a tárházhoz, használja az alábbi képet:
 
 ```html
 <img src="https://aka.ms/deploytoazurebutton"/>
 ```
 
-A rendszerkép a következőképpen jelenik meg:
+A kép a következőképpen jelenik meg:
 
 ![Üzembe helyezés az Azure-ban gomb](https://aka.ms/deploytoazurebutton)
 
-## <a name="create-url-for-deploying-template"></a>URL-cím létrehozása sablon üzembe helyezéséhez
+## <a name="create-url-for-deploying-template"></a>URL létrehozása sablon telepítéséhez
 
-A sablon URL-címének létrehozásához a tárházban található sablon nyers URL-címével Kezdje a következőket:
+A sablon URL-címének létrehozásához kezdje a tárházban lévő sablon nyers URL-jével:
 
 ```html
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Ezt követően az URL-cím kódolja. Használhat online kódolót, vagy futtathat egy parancsot. A következő PowerShell-példa azt szemlélteti, hogyan kódolhat egy értéket az URL-cím.
+Ezután url kódolni. Használhat online kódolót vagy futtathat egy parancsot. A következő PowerShell-példa bemutatja, hogyan URL-cím kódolása egy értéket.
 
 ```powershell
 [uri]::EscapeDataString($url)
 ```
 
-Az URL-cím kódolásakor a példában szereplő URL-cím értéke a következő.
+A példa URL-címe a következő értékkel rendelkezik, ha URL-t kódolt.
 
 ```html
 https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json
 ```
 
-Az egyes hivatkozások ugyanazzal az alap URL-címmel kezdődnek:
+Minden hivatkozás ugyanazzal az alap URL-címmel kezdődik:
 
 ```html
 https://portal.azure.com/#create/Microsoft.Template/uri/
 ```
 
-Adja hozzá az URL-kódolású sablon hivatkozását az alap URL-cím végéhez.
+Adja hozzá az URL-kódolású sablonhivatkozást az alap URL-cím végéhez.
 
 ```html
 https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json
 ```
 
-A hivatkozás teljes URL-címe.
+Megvan a teljes URL-cím a linkhez.
 
 ## <a name="create-deploy-to-azure-button"></a>Üzembe helyezés létrehozása az Azure-ban gomb
 
-Végül helyezze össze a hivatkozást és a képet.
+Végül, tedd a linket és a képet együtt.
 
-Ha a Markdown-t a GitHub-tárházban vagy egy weblapon szeretné hozzáadni a README.md-fájlhoz, használja a következőt:
+Ha hozzá szeretné adni a gombot a Markdown-nal a GitHub-tárházban vagy egy weblapon lévő README.md fájlban, használja a következőt:
 
 ```markdown
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
 ```
 
-HTML esetén használja a következőt:
+HTML-kód esetén használja a következőket:
 
 ```html
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json" target="_blank">
@@ -84,10 +84,10 @@ A teljes megoldás teszteléséhez válassza a következő gombot:
 
 [![Üzembe helyezés az Azure-ban](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
 
-A portálon egy ablaktábla jelenik meg, amely lehetővé teszi a paraméterek értékének egyszerű megadását. A paraméterek előre ki vannak töltve a sablon alapértelmezett értékeivel.
+A portál egy ablaktáblát jelenít meg, amely lehetővé teszi a paraméterértékek egyszerű megadását. A paraméterek előre ki vannak töltve a sablon alapértelmezett értékeivel.
 
-![A portál használata az üzembe helyezéshez](./media/deploy-to-azure-button/portal.png)
+![Üzembe helyezés a portál használatával](./media/deploy-to-azure-button/portal.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a sablonokról: [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md).
+- A sablonokról az [Azure Resource Manager-sablonok szerkezetének és szintaxisának megismerése című témakörben olvashat bővebben.](template-syntax.md)

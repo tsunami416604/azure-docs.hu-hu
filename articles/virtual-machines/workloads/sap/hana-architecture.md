@@ -1,6 +1,6 @@
 ---
-title: Az Azure-beli SAP HANA architektúrája (nagyméretű példányok) | Microsoft Docs
-description: A SAP HANA üzembe helyezésének architektúrája az Azure-ban (nagyméretű példányok).
+title: Az SAP HANA architektúrája az Azure-on (nagy példányok) | Microsoft dokumentumok
+description: SAP HANA üzembe helyezése az Azure-ban (nagy példányok) architektúrájának architektúrája.
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,51 +14,51 @@ ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 041da4198b0bdd040a4916008a1135aa2e2a5f7d
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77614522"
 ---
-# <a name="sap-hana-large-instances-architecture-on-azure"></a>SAP HANA (nagyméretű példányok) architektúrája az Azure-ban
+# <a name="sap-hana-large-instances-architecture-on-azure"></a>SAP HANA (nagy példányok) architektúrája az Azure-ban
 
-Magas szinten a SAP HANA az Azure-ban (nagyméretű példányok) megoldás rendelkezik a virtuális gépeken található SAP-alkalmazás réteggel. Az adatbázis-réteg az SAP TDI-konfigurált hardveren található, amely ugyanabban az Azure-régióban, amely az Azure IaaS csatlakozik, egy nagyméretű példány-bélyegzőn helyezkedik el.
+Magas szinten az SAP HANA az Azure -on (nagy példányok) megoldás rendelkezik az SAP-alkalmazásréteg virtuális gépekben található. Az adatbázisréteg az SAP TDI által konfigurált hardveren található, amely ugyanabban az Azure-régióban található, amely az Azure IaaS-hez csatlakozik.
 
 > [!NOTE]
-> Telepítse az SAP-alkalmazás réteget ugyanabban az Azure-régióban, mint az SAP adatbázis-kezelő rétegét. Ez a szabály jól dokumentálva van az Azure-beli SAP-munkaterhelésekről szóló közzétett információkban. 
+> Telepítse az SAP-alkalmazásréteget ugyanabban az Azure-régióban, mint az SAP DBMS-réteg. Ez a szabály jól dokumentált közzétett információk az Sap-számítási feladatok az Azure-ban. 
 
-Az Azure-beli SAP HANA általános architektúrája (nagyméretű példányok) egy SAP TDI-tanúsítvánnyal rendelkező hardver-konfigurációt biztosít, amely egy nem virtualizált, operációs rendszer nélküli, nagy teljesítményű kiszolgáló a SAP HANA-adatbázis számára. Emellett lehetővé teszi az Azure számára az erőforrások méretezését az SAP-alkalmazás rétegéhez, hogy megfeleljen az igényeinek.
+Az SAP HANA általános architektúrája az Azure-ban (nagy példányok) egy SAP TDI-tanúsítvánnyal rendelkező hardverkonfigurációt biztosít, amely egy nem virtualizált, csupasz fém, nagy teljesítményű kiszolgáló az SAP HANA-adatbázishoz. Emellett az Azure-ban lehetővé és rugalmasan skálázhatja az SAP alkalmazásréteg erőforrásait az igényeinek megfelelően.
 
-![Az Azure-beli SAP HANA építészeti áttekintése (nagyméretű példányok)](./media/hana-overview-architecture/image1-architecture.png)
+![Az SAP HANA architekturális áttekintése az Azure-ban (nagy példányok)](./media/hana-overview-architecture/image1-architecture.png)
 
-A bemutatott architektúra három szakaszra oszlik:
+A bemutatott architektúra három részből áll:
 
-- **Right**: olyan helyszíni infrastruktúrát mutat be, amely különböző alkalmazásokat futtat az adatközpontokban, így a végfelhasználók hozzáférhetnek az üzletági alkalmazásokhoz, például az SAP-hoz. Ideális esetben ez a helyszíni infrastruktúra a [ExpressRoute](https://azure.microsoft.com/services/expressroute/)-mel csatlakozik az Azure-hoz.
+- **Jobbra:** Egy helyszíni infrastruktúrát jelenít meg, amely különböző alkalmazásokat futtat az adatközpontokban, hogy a végfelhasználók hozzáférhessenek a LOB-alkalmazásokhoz, például az SAP-hoz. Ideális esetben ez a helyszíni infrastruktúra az [ExpressRoute](https://azure.microsoft.com/services/expressroute/)segítségével csatlakozik az Azure-hoz.
 
-- **Központ**: megjeleníti az Azure IaaS, és ebben az esetben a virtuális gépeket az olyan SAP-vagy más alkalmazások üzemeltetésére használja, amelyek a SAP HANA adatbázis-kezelő rendszerként használják. Kisebb HANA-példányok, amelyek a virtuális gépek által biztosított memóriával működnek, az alkalmazás rétegével együtt. További információ a virtuális gépekről: [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/).
+- **Központ:** Az Azure IaaS megjelenítése, és ebben az esetben a virtuális gépek használata sap vagy más alkalmazások üzemeltetéséhez, amelyek az SAP HANA-t DBMS-rendszerként használják. Kisebb HANA-példányok, amelyek a virtuális gépek által biztosított memóriával függvényt, az alkalmazásréteggel együtt vannak telepítve a virtuális gépeken. A virtuális gépekről további információt a Virtuális gépek című [témakörben talál.](https://azure.microsoft.com/services/virtual-machines/)
 
-   Az Azure hálózati szolgáltatásai az SAP-rendszerek és más alkalmazások virtuális hálózatokra való csoportosítására szolgálnak. Ezek a virtuális hálózatok a helyszíni rendszerekhez kapcsolódnak, valamint az Azure-ban (nagyméretű példányokon) SAP HANA.
+   Az Azure hálózati szolgáltatásai az SAP-rendszerek más alkalmazásokkal való csoportosítására szolgálnak virtuális hálózatokba. Ezek a virtuális hálózatok a helyszíni rendszerekhez, valamint az Azure-beli SAP HANA-hoz (nagy példányok) csatlakoznak.
 
-   Az Azure-ban futtatott SAP NetWeaver-alkalmazások és-adatbázisok esetében lásd: [SAP-támogatás megjegyzés #1928533 – SAP-alkalmazások az Azure-ban: támogatott termékek és Azure VM-típusok](https://launchpad.support.sap.com/#/notes/1928533). Az SAP-megoldások Azure-beli üzembe helyezésével kapcsolatos dokumentációért lásd:
+   Az Azure-ban futtatható SAP NetWeaver-alkalmazások és adatbázisok esetében olvassa el az [SAP-támogatási megjegyzés #1928533 – SAP-alkalmazások az Azure-ban: Támogatott termékek és Az Azure virtuálisgép-típusok](https://launchpad.support.sap.com/#/notes/1928533)című témakört. Az SAP-megoldások Azure-beli üzembe helyezéséről a következő témakörben olvashat dokumentációt:
 
   -  [Az SAP használata Windows rendszerű virtuális gépeken](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   -  [SAP-megoldások használata Azure-beli virtuális gépeken](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-- **Left**: a SAP HANA TDI-tanúsítvánnyal rendelkező hardvert jeleníti meg az Azure nagyméretű példányának bélyegében. A HANA nagyméretű példányok egységei az Azure-előfizetéshez tartozó virtuális hálózatokhoz kapcsolódnak, és ugyanazt a technológiát használják, mint a helyszíni kapcsolat az Azure-ba. A május 2019-es verziójától kezdve egy optimalizálás lett bevezetve, amely lehetővé teszi a HANA nagyméretű példány-egységek és az Azure-beli virtuális gépek közötti kommunikációt a ExpressRoute-átjáró bevonása nélkül. Ebben az architektúrában az ExpressRoute Fast Path nevű optimalizálás jelenik meg (piros vonal). 
+- **Balra**: Az SAP HANA TDI-tanúsítvánnyal rendelkező hardver megjelenítése az Azure nagy példány bélyegzőjében. A HANA nagypéldány-egységek az Azure-előfizetés virtuális hálózataihoz kapcsolódnak, ugyanazt a technológiát használva, mint a helyszíni és az Azure közötti kapcsolat. 2019 májusátantól egy optimalizálás tanévben vezetett be egy optimalizálást, amely lehetővé teszi a HANA nagypéldány-egységek és az Azure-beli virtuális gépek közötti kommunikációt az ExpressRoute-átjáró bevonása nélkül. Ez az ExpressRoute gyorselérési út nevű optimalizálás ebben az architektúrában (piros vonalak) jelenik meg. 
 
-Az Azure nagyméretű példányának bélyegzője maga ötvözi a következő összetevőket:
+Maga az Azure Large Instance bélyegző je a következő összetevőket egyesíti:
 
-- **Számítástechnika**: azok a kiszolgálók, amelyek a szükséges számítástechnikai képességet biztosító Intel Xeon processzorok különböző generációján alapulnak, és SAP HANA minősítéssel rendelkeznek.
-- **Hálózat**: egységes, nagy sebességű hálózati háló, amely összekapcsolódik a számítástechnikai, tárolási és LAN-összetevőkkel.
-- **Storage**: egy egységes hálózati hálón keresztül elérhető tárolási infrastruktúra. A megadott tárolási kapacitás az Azure (nagyméretű példányok) telepített konfigurációjának adott SAP HANA függ. A tárterület további kapacitása további havi díj ellenében vehető igénybe.
+- **Számítástechnika:** Olyan kiszolgálók, amelyek az Intel Xeon processzorok különböző generációján alapulnak, amelyek biztosítják a szükséges számítási képességet, és SAP HANA tanúsítvánnyal rendelkeznek.
+- **Hálózat**: Egységes, nagy sebességű hálózati háló, amely összeköti a számítástechnikai, tárolási és LAN-összetevőket.
+- **Tárolás**: Egységes hálózati hálón keresztül elérhető tárolási infrastruktúra. A megadott tárolási kapacitás az Azure (Nagy példányok) konfigurációján üzembe helyezett adott SAP HANA-tól függ. Több tárolókapacitás áll rendelkezésre felár ellenében.
 
-A nagyméretű példányok Stamp több-bérlős infrastruktúráján belül az ügyfelek elkülönített bérlőként települnek. A bérlő üzembe helyezése során egy Azure-előfizetést kell megkeresnie az Azure-regisztráción belül. Ezt az Azure-előfizetést a HANA nagyméretű példány számlázása képezi. Ezek a bérlők 1:1 kapcsolattal rendelkeznek az Azure-előfizetéssel. A hálózat esetében lehetséges, hogy egy, a különböző Azure-előfizetésekhez tartozó különböző virtuális hálózatokból egy adott bérlőn üzembe helyezett HANA nagyméretű példány-egységhez fér hozzá. Ezeknek az Azure-előfizetéseknek ugyanahhoz az Azure-regisztrációhoz kell tartozniuk. 
+A nagy példány bélyegző több-bérlős infrastruktúráján belül az ügyfelek elszigetelt bérlőkként vannak üzembe helyezve. A bérlő üzembe helyezésekor elnevezhet egy Azure-előfizetést az Azure-regisztráción belül. Ez az Azure-előfizetés az, amely a HANA nagy példány számlázása. Ezek a bérlők 1:1 kapcsolattal rendelkeznek az Azure-előfizetéssel. Egy hálózat esetében egy hana nagy példány egység egy Azure-régió egyik bérlőjében üzembe helyezhető különböző virtuális hálózatok, amelyek különböző Azure-előfizetések. Ezeknek az Azure-előfizetéseknek ugyanahhoz az Azure-regisztrációhoz kell tartozniuk. 
 
-A virtuális gépekhez hasonlóan a SAP HANA az Azure-ban (nagyméretű példányok) több Azure-régióban is elérhető. A vész-helyreállítási képességek biztosításához dönthet úgy, hogy bekapcsolja. Egy geo-politikai régió különböző nagyméretű példányai egymáshoz kapcsolódnak. Például az USA nyugati régiójában és az USA keleti régiójában lévő HANA Large instance Stamps egy dedikált hálózati kapcsolaton keresztül csatlakozik a vész-helyreállítási replikáláshoz. 
+A virtuális gépekhez csakúgy, mint a virtuális gépek, az SAP HANA az Azure-ban (nagy példányok) több Azure-régióban érhető el. A vész-helyreállítási képességek, választhat, hogy engedélyezés. Egy geopolitikai régión belül különböző nagypéldány-bélyegzők kapcsolódnak egymáshoz. Például hana nagy példány bélyegzők az USA nyugati és az USA keleti csatlakozik egy dedikált hálózati kapcsolat on vész-helyreállítási replikáció. 
 
-Ugyanúgy, ahogy a különböző virtuálisgép-típusok közül választhat az Azure Virtual Machines segítségével, különböző, a SAP HANA különböző számítási feladatokhoz igazított SKU-ból választhat. Az SAP a memória és a processzor közötti arányt alkalmazza a különböző számítási feladatokhoz az Intel processzor generációi alapján. A következő táblázat a rendelkezésre álló SKU-típusokat tartalmazza.
+Csakúgy, mint az Azure virtuális gépek különböző virtuális géptípusok közül választhat, a HANA nagy példány különböző SAP HANA-típusokhoz szabott termékkészletek közül választhat. Az SAP memória-processzor-szoftvercsatorna-arányokat alkalmaz az Intel processzorgenerációkon alapuló különböző munkaterhelések esetén. Az alábbi táblázat a felajánlott termékváltozat-típusokat mutatja be.
 
-[A HLI](hana-available-skus.md)számára elérhető SKU-ket találhat.
+A [HLI-hez elérhető, rendelkezésre álló ska-k](hana-available-skus.md)at talál.
 
-**Következő lépések**
-- [SAP HANA (nagyméretű példányok) hálózati architektúrájának](hana-network-architecture.md) átirányítása
+**További lépések**
+- SAP [HANA (nagy példányok) hálózati architektúrájának hivatkozása](hana-network-architecture.md)

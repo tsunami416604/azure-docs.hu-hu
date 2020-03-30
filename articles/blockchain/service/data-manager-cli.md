@@ -1,46 +1,46 @@
 ---
-title: Blockchain-Data Manager konfigurálása az Azure CLI-vel – Azure Blockchain Service
-description: Azure Blockchain Service-hez készült Blockchain-Data Manager létrehozása és kezelése az Azure CLI-vel
+title: A Blockchain Data Manager konfigurálása az Azure CLI - Azure Blockchain szolgáltatás használatával
+description: Blockchain Data Manager azure blockchain szolgáltatás létrehozása és kezelése az Azure CLI használatával
 ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
 ms.openlocfilehash: a8061aad6d6a1513de70e7c2bc57aa109c666611
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74455942"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>A Blockchain Data Manager konfigurálása az Azure CLI-vel
 
-Az Azure Blockchain Service-hez készült Blockchain-Data Manager konfigurálása a Blockchain-adatrögzítés Azure Event Grid témakörbe való elküldéséhez.
+Konfigurálja a Blockchain Data Manager for Azure Blockchain Service-t, hogy rögzítse a blokklánc-adatokat egy Azure Event Grid topic-nak.
 
-A Blockchain Data Manager példányának konfigurálásához a következőket kell tennie:
+A Blockchain Data Manager-példány konfigurálásához:
 
 * Blockchain Manager-példány létrehozása
-* Bemenet létrehozása Azure Blockchain szolgáltatásbeli tranzakciós csomópontba
-* Kimenet létrehozása Azure Event Grid témakörhöz
-* Blockchain-alkalmazás hozzáadása
-* Példány elindítása
+* Bevitel létrehozása egy Azure Blockchain Szolgáltatás tranzakciócsomóponthoz
+* Kimenet létrehozása Azure Event Grid-témakörhöz
+* Blockchain alkalmazás hozzáadása
+* Példány indítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse a legújabb [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -t, és jelentkezzen be `az login`használatával.
-* Gyors útmutató [: a Visual Studio Code használata Azure Blockchain Service Consortium-hálózathoz való kapcsolódáshoz](connect-vscode.md)
-* [Event Grid témakör](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) létrehozása
-* További információ a [Azure Event Grid-beli eseménykezelőről](../../event-grid/event-handlers.md)
+* Telepítse a legújabb [Azure CLI-t,](https://docs.microsoft.com/cli/azure/install-azure-cli) és a használatával jelentkezett `az login`be.
+* Teljes [rövid útmutató: A Visual Studio-kód használatával csatlakozhat az Azure Blockchain Service konzorciumi hálózatához](connect-vscode.md)
+* [Eseményrács témakörének](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) létrehozása
+* Információ [az Eseménykezelőkről az Azure Event Gridben](../../event-grid/event-handlers.md)
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/bash](https://shell.azure.com/bash) cím megnyitásával. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon [https://shell.azure.com/bash](https://shell.azure.com/bash)is elindíthatja a segítségével. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.51 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+Ha a CLI helyi telepítését és használatát szeretné használni, ez a rövid útmutató az Azure CLI 2.0.51-es vagy újabb verzióját igényli. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni kell, olvassa el [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli)című témakört.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
 
 ```azurecli-interactive
 az group create --name myRG --location eastus
@@ -48,7 +48,7 @@ az group create --name myRG --location eastus
 
 ## <a name="create-instance"></a>Példány létrehozása
 
-Egy Blockchain Data Manager-példány figyeli az Azure Blockchain szolgáltatás tranzakciós csomópontját. Egy példány az összes nyers blokk és nyers tranzakció adatait rögzíti a tranzakciós csomópontról.
+A Blockchain Data Manager-példány egy Azure Blockchain Service tranzakciós csomópontot figyel. Egy példány rögzíti az összes nyers blokk és nyers tranzakciós adatokat a tranzakciócsomópont.
 
 ``` azurecli
 az resource create \
@@ -61,15 +61,15 @@ az resource create \
 
 | Paraméter | Leírás |
 |-----------|-------------|
-| resource-group | Az erőforráscsoport neve, ahol a Blockchain Data Manager példányt hozza létre. |
-| név | A Blockchain Data Manager példányának neve. |
-| Erőforrás típusa | A Blockchain Data Manager példányának erőforrástípus a **Microsoft. Blockchain/figyelők**. |
-| is-full-object | Azt jelzi, hogy a tulajdonságok tartalmazzák-e a figyelők erőforrásának beállításait. |
-| properties | A figyelő erőforráshoz tartozó tulajdonságokat tartalmazó JSON-formázott karakterlánc. Karakterláncként vagy fájlként adható át.  |
+| resource-group | Erőforráscsoport neve, ahol létre kell hozni a Blockchain Data Manager példányt. |
+| név | A Blockchain Data Manager-példány neve. |
+| erőforrás-típus | A Blockchain Data Manager-példány erőforrástípusa a **Microsoft.blockchain/watchers.** |
+| teljes objektum | Azt jelzi, hogy a tulajdonságok a figyelő erőforrás beállításait tartalmazzák. |
+| properties | JSON-formátumú karakterlánc, amely a figyelő erőforrás tulajdonságait tartalmazza. Karakterláncként vagy fájlként is átadható.  |
 
-### <a name="create-instance-examples"></a>Példányok létrehozása – példák
+### <a name="create-instance-examples"></a>Példák létrehozása
 
-JSON-konfiguráció – példa Blockchain Manager-példány létrehozására az **USA keleti** régiójában.
+JSON konfigurációs példa egy Blockchain Manager-példány létrehozásához az **USA keleti régiójában.**
 
 ``` json
 {
@@ -81,10 +81,10 @@ JSON-konfiguráció – példa Blockchain Manager-példány létrehozására az 
 
 | Elem | Leírás |
 |---------|-------------|
-| location | Az a régió, ahol a figyelő erőforrást létre kell hozni |
-| properties | A figyelők erőforrásának létrehozásakor beállítani kívánt tulajdonságok |
+| location | Az a régió, ahol létre kell hozni a figyelő erőforrást |
+| properties | A figyelő erőforrás létrehozásakor beállítandó tulajdonságok |
 
-Hozzon létre egy *mywatcher* nevű Data Manager Blockchain-példányt egy JSON-karakterlánc használatával a konfigurációhoz.
+Hozzon létre egy *mywatcher* nevű Blockchain Data Manager-példányt egy JSON-karakterlánc használatával a konfigurációhoz.
 
 ``` azurecli-interactive
 az resource create \
@@ -95,7 +95,7 @@ az resource create \
                      --properties '{"location":"eastus"}'
 ```
 
-Hozzon létre egy *mywatcher* nevű Data Manager Blockchain-példányt egy JSON-konfigurációs fájl használatával.
+Hozzon létre egy *MyWatcher* nevű Blockchain Data Manager-példányt JSON konfigurációs fájl használatával.
 
 ``` azurecli
 az resource create \
@@ -106,9 +106,9 @@ az resource create \
                     --properties @watcher.json
 ```
 
-## <a name="create-input"></a>Hozzon létre bemeneti
+## <a name="create-input"></a>Bemenet létrehozása
 
-Egy bemenet összekapcsolja az Blockchain Data Manager egy Azure Blockchain szolgáltatás-tranzakciós csomóponttal. Csak a tranzakciós csomóponthoz hozzáféréssel rendelkező felhasználók hozhatnak létre kapcsolatot.
+A bemeneti adatok a Blockchain Data Managert egy Azure Blockchain Service tranzakciós csomóponthoz kapcsolják. Csak a tranzakciócsomóponthoz hozzáféréssel rendelkező felhasználók hozhatnak létre kapcsolatot.
 
 ``` azurecli
 az resource create \
@@ -123,17 +123,17 @@ az resource create \
 
 | Paraméter | Leírás |
 |-----------|-------------|
-| resource-group | Az erőforráscsoport neve, ahol a bemeneti erőforrást létre kell hozni. |
+| resource-group | Erőforráscsoport neve, ahol létre kell hozni a bemeneti erőforrást. |
 | név | A bemenet neve. |
-| névtér | Használja a **Microsoft. Blockchain** szolgáltatói névteret. |
-| Erőforrás típusa | A bemenetek Blockchain Data Manager input **típusú.** |
-| szülő | Azon figyelő elérési útja, amelyhez a bemenet hozzá van rendelve. Például: **figyelők/mywatcher**. |
-| is-full-object | Azt jelzi, hogy a tulajdonságok tartalmazzák-e a bemeneti erőforrás beállításait. |
-| properties | A bemeneti erőforrás tulajdonságait tartalmazó JSON-formázott karakterlánc. Karakterláncként vagy fájlként adható át. |
+| névtér | Használja a **Microsoft.Blockchain** szolgáltató névterét. |
+| erőforrás-típus | A Blockchain Data Manager bemeneterőforrás-típusa **bemenet.** |
+| Szülő | Annak a figyelőnek az elérési útja, amelyhez a bemenet társítva van. Például **a figyelők / mywatcher**. |
+| teljes objektum | Azt jelzi, hogy a tulajdonságok a bemeneti erőforrás beállításait tartalmazzák. |
+| properties | JSON-formátumú karakterlánc, amely a bemeneti erőforrás tulajdonságait tartalmazza. Karakterláncként vagy fájlként is átadható. |
 
-### <a name="input-examples"></a>Bemeneti példák
+### <a name="input-examples"></a>Példák beviteli példák
 
-Konfiguráció JSON-példa egy bemeneti erőforrás létrehozásához az *USA keleti* régiójában, amely \<Blockchain-tag\>hoz csatlakozik.
+Konfigurációs JSON példa egy bemeneti erőforrás létrehozásához \<az\>USA *keleti régiójában,* amely a Blockchain taghoz kapcsolódik.
 
 ``` json
 {
@@ -149,11 +149,11 @@ Konfiguráció JSON-példa egy bemeneti erőforrás létrehozásához az *USA ke
 
 | Elem | Leírás |
 |---------|-------------|
-| location | Az a régió, ahol a bemeneti erőforrást létre kell hozni. |
-| inputType | Az Azure Blockchain-szolgáltatás tagjának főkönyvi típusa. Jelenleg a **Ethereum** támogatott. |
-| resourceId | A tranzakciós csomópont, amelyhez a bemenet csatlakozik. Cserélje le \<előfizetés-azonosító\>, \<erőforráscsoport\>és \<Blockchain-tag\> a tranzakciós csomópont erőforrásának értékeire. A bemenet az Azure Blockchain Service-tag alapértelmezett tranzakciós csomópontjára csatlakozik. |
+| location | Az a régió, ahol létre kell hozni a bemeneti erőforrást. |
+| inputType (beviteli típus) | Az Azure Blockchain service tag főkönyvi típusa. Jelenleg **az Ethereum** támogatott. |
+| resourceId | Az a tranzakciós csomópont, amelyhez a bemenet csatlakozik. Cserélje \<le\>az \<Előfizetés-azonosítót , az Erőforráscsoportot\>és \<a Blokklánc-tagot\> a tranzakciócsomópont-erőforrás értékeire. A bemeneti adatok az Azure Blockchain service-tag alapértelmezett tranzakciócsomópontjához csatlakoznak. |
 
-Hozzon létre egy *myInput* for *mywatcher* nevű bemenetet egy JSON-karakterlánc használatával a konfiguráláshoz.
+Hozzon létre egy *myInput* nevű bemenetet a *mywatcher* számára egy JSON-karakterlánc használatával a konfigurációhoz.
 
 ``` azurecli-interactive
 az resource create \
@@ -166,7 +166,7 @@ az resource create \
                    --properties '{"location":"eastus", "properties":{"inputType":"Ethereum","dataSource":{"resourceId":"/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/BlockchainMembers/<Blockchain member>/transactionNodes/transaction-node"}}}'
 ```
 
-Hozzon létre egy *myInput* nevű bemenetet a *mywatcher* egy JSON-konfigurációs fájl használatával.
+Hozzon létre egy *myWatcher* nevű *bemenetet* egy JSON konfigurációs fájl használatával.
 
 ``` azurecli
 az resource create \
@@ -180,7 +180,7 @@ az resource create \
 
 ## <a name="create-output"></a>Kimenet létrehozása
 
-A kimenő kapcsolatok a blockchain adatokat küldenek Azure Event Grid. Blockchain-adatküldést egyetlen célhelyre is küldhet, vagy több célhelyre is küldhet blockchain-fájlokat. A Blockchain Data Manager több Event Grid témakör kimenő kapcsolatait is támogatja bármely adott Blockchain Data Manager-példány esetében.
+A kimenő kapcsolat blockchain adatokat küld az Azure Event Grid. Blockchain adatokat küldhet egyetlen célhelyre, vagy küldhet blokklánc-adatokat több célhelyre. A Blockchain Data Manager több Eseményrács-témakör kimenő kapcsolatot támogat bármely adott Blockchain Data Manager-példányhoz.
 
 ``` azurecli
 az resource create \
@@ -195,17 +195,17 @@ az resource create \
 
 | Paraméter | Leírás |
 |-----------|-------------|
-| resource-group | Az erőforráscsoport neve, ahol a kimeneti erőforrást létre kell hozni. |
+| resource-group | Erőforráscsoport neve, ahol létre kell hozni a kimeneti erőforrást. |
 | név | A kimenet neve. |
-| névtér | Használja a **Microsoft. Blockchain** szolgáltatói névteret. |
-| Erőforrás típusa | Egy Blockchain erőforrás-típusa Data Manager **kimenet.** |
-| szülő | Azon figyelő elérési útja, amelyhez a kimenet társítva van. Például: **figyelők/mywatcher**. |
-| is-full-object | Azt jelzi, hogy a tulajdonságok tartalmaznak-e beállításokat a kimeneti erőforráshoz. |
-| properties | A kimeneti erőforrás tulajdonságait tartalmazó JSON formátumú karakterlánc. Karakterláncként vagy fájlként adható át. |
+| névtér | Használja a **Microsoft.Blockchain** szolgáltató névterét. |
+| erőforrás-típus | A Blockchain Data Manager kimeneterőforrás-típusa **kimenet.** |
+| Szülő | Annak a figyelőnek az elérési útja, amelyhez a kimenet társítva van. Például **a figyelők / mywatcher**. |
+| teljes objektum | Azt jelzi, hogy a tulajdonságok a kimeneti erőforrás beállításait tartalmazzák. |
+| properties | JSON-formátumú karakterlánc, amely a kimeneti erőforrás tulajdonságait tartalmazza. Karakterláncként vagy fájlként is átadható. |
 
 ### <a name="output-examples"></a>Kimeneti példák
 
-Konfigurációs JSON-példa egy kimeneti erőforrás létrehozásához az *USA keleti* régiójában, amely egy \<Event grid témakör\>nevű Event Grid-témakörhöz csatlakozik.
+Konfigurációs JSON példa egy kimeneti erőforrás létrehozásához az *USA keleti régiójában,* amely egy eseményrács-témakör nevű \<eseményrács-témakörhöz\>kapcsolódik.
 
 ``` json
 {
@@ -221,11 +221,11 @@ Konfigurációs JSON-példa egy kimeneti erőforrás létrehozásához az *USA k
 
 | Elem | Leírás |
 |---------|-------------|
-| location | Az a régió, ahol a kimeneti erőforrást létre kívánja hozni. |
-| outputType | A kimenet típusa. Jelenleg a **EventGrid** támogatott. |
-| resourceId | Az erőforrás, amelyhez a kimenet csatlakozik. Cserélje le \<előfizetés-azonosító\>, \<erőforráscsoport\>és \<Blockchain-tag\> az Event Grid-erőforrás értékeit. |
+| location | Az a régió, ahol létre kell hozni a kimeneti erőforrást. |
+| kimenettípusa | A kimenet típusa. Jelenleg az **EventGrid** támogatott. |
+| resourceId | Az az erőforrás, amelyhez a kimenet csatlakozik. Cserélje \<le\>az \<Előfizetés-azonosítót , az Erőforráscsoportot\>és \<a Blokklánc-tagot\> az eseményrács-erőforrás értékeire. |
 
-Hozzon létre egy *myoutput* nevű kimenetet a *mywatcher* , amely egy JSON-konfigurációs karakterlánc használatával csatlakozik egy Event Grid-témakörhöz.
+Hozzon létre egy myoutput nevű *kimenetet* a *mywatcher* számára, amely egy JSON konfigurációs karakterlánc használatával kapcsolódik egy eseményrács-témakörhöz.
 
 ``` azurecli-interactive
 az resource create \
@@ -238,7 +238,7 @@ az resource create \
                    --properties '{"location":"eastus","properties":{"outputType":"EventGrid","dataSource":{"resourceId":"/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"}}}'
 ```
 
-Hozzon létre egy *myoutput* nevű kimenetet a *mywatcher* , amely egy JSON-konfigurációs fájl használatával csatlakozik egy Event Grid-témakörhöz.
+*Hozzon* létre egy *mywatcher* nevű kimenetet, amely JSON konfigurációs fájl használatával kapcsolódik egy eseményrács-témakörhöz.
 
 ``` azurecli
 az resource create \
@@ -251,13 +251,13 @@ az resource create \
                    --properties @output.json
 ```
 
-## <a name="add-blockchain-application"></a>Blockchain-alkalmazás hozzáadása
+## <a name="add-blockchain-application"></a>Blockchain alkalmazás hozzáadása
 
-Blockchain-alkalmazás hozzáadásakor a Blockchain Data Manager dekódolja az alkalmazás esemény-és tulajdonsági állapotát. Ellenkező esetben a rendszer csak a nyers blokkot és a nyers tranzakciós adatkészletet küldi el. A Blockchain Data Manager a szerződések központi telepítésekor is felfedi a szerződések címét. Több blockchain-alkalmazást is hozzáadhat egy Blockchain Data Manager-példányhoz.
+Ha hozzáad egy blockchain alkalmazást, a Blockchain Data Manager dekódolja az alkalmazás esemény- és tulajdonságállapotát. Ellenkező esetben csak a nyers blokk és a nyers tranzakciós adatok küldése. A Blockchain Data Manager a szerződéscímek üzembe helyezésekor is felderíti a szerződéscímeket. Több blockchain alkalmazást is hozzáadhat egy Blockchain Data Manager-példányhoz.
 
 
 > [!IMPORTANT]
-> Jelenleg a [blockchain vagy a](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) [leképezési típusokat](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) deklaráló alkalmazások nem teljes mértékben támogatottak. A tömbként vagy leképezési típusként deklarált tulajdonságokat a rendszer nem dekódolja a *ContractPropertiesMsg* vagy a *DecodedContractEventsMsg* üzenetekben.
+> Jelenleg a Solidity [tömbtípusokat](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) [mapping types](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) deklaráló blokklánc-alkalmazások nem támogatottak teljes mértékben. A tömb- vagy leképezéstípusként deklarált tulajdonságok nem lesznek dekódolva *a ContractPropertiesMsg* vagy *a DecodedContractEventsMsg* üzenetekben.
 
 ``` azurecli
 az resource create \
@@ -272,17 +272,17 @@ az resource create \
 
 | Paraméter | Leírás |
 |-----------|-------------|
-| resource-group | Az erőforráscsoport neve, ahol létre kell hozni az alkalmazás erőforrását. |
+| resource-group | Erőforráscsoport neve, ahol létre kell hozni a kiegyenlítési erőforrást. |
 | név | Az alkalmazás neve. |
-| névtér | Használja a **Microsoft. Blockchain** szolgáltatói névteret. |
-| Erőforrás típusa | Egy Blockchain Data Manager alkalmazás erőforrás-típusa **összetevők.** |
-| szülő | Azon figyelő elérési útja, amelyhez az alkalmazás társítva van. Például: **figyelők/mywatcher**. |
-| is-full-object | Azt jelzi, hogy a tulajdonságok tartalmazzák-e az alkalmazás erőforrásának beállításait. |
-| properties | A JSON-formátumú karakterlánc, amely az alkalmazás erőforrásának tulajdonságait tartalmazza. Karakterláncként vagy fájlként adható át. |
+| névtér | Használja a **Microsoft.Blockchain** szolgáltató névterét. |
+| erőforrás-típus | A Blockchain Data Manager alkalmazás erőforrástípusa **műtermékek.** |
+| Szülő | Annak a figyelőnek az elérési útja, amelyhez az alkalmazás társítva van. Például **a figyelők / mywatcher**. |
+| teljes objektum | Azt jelzi, hogy a tulajdonságok az alkalmazás-erőforrás beállításait tartalmazzák. |
+| properties | JSON-formátumú karakterlánc, amely az alkalmazáserőforrás tulajdonságait tartalmazza. Karakterláncként vagy fájlként is átadható. |
 
 ### <a name="blockchain-application-examples"></a>Példák a Blockchain alkalmazásra
 
-Konfigurációs JSON-példa egy alkalmazás-erőforrás létrehozására az *USA keleti* régiójában, amely FIGYELI az ABI és a bytecode egyezmény által meghatározott intelligens szerződést.
+Konfigurációs JSON példa egy alkalmazás-erőforrás létrehozásához az *USA keleti régiójában,* amely figyeli a szerződés ABI és bytecode által meghatározott intelligens szerződést.
 
 ``` json
 {
@@ -303,13 +303,13 @@ Konfigurációs JSON-példa egy alkalmazás-erőforrás létrehozására az *USA
 
 | Elem | Leírás |
 |---------|-------------|
-| location | A régió, ahol az alkalmazás-erőforrást létre kell hozni. |
-| artifactType | Az alkalmazás típusa. Jelenleg a **EthereumSmartContract** támogatott. |
-| abiFileUrl | Az intelligens szerződések ABI JSON-fájljának URL-címe. A szerződéses ABI beszerzésével és az URL-cím létrehozásával kapcsolatos további információkért lásd: az [ABI és a bytecode szerződés lekérése](data-manager-portal.md#get-contract-abi-and-bytecode) és a [szerződési ABI és bytecode URL-cím létrehozása](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
-| bytecodeFileUrl | Az intelligens szerződés üzembe helyezett bytecode JSON-fájljának URL-címe. Az intelligens szerződések üzembe helyezett bytecode és URL-cím létrehozásával kapcsolatos további információkért lásd: az [ABI és a bytecode szerződés](data-manager-portal.md#get-contract-abi-and-bytecode) beszerzése és a [szerződési ABI és bytecode URL-cím létrehozása](data-manager-portal.md#create-contract-abi-and-bytecode-url). Megjegyzés: a Blockchain Data Manager igényli a **telepített bytecode**. |
-| queryTargetTypes | Közzétett üzenetek típusai. A **ContractProperties** megadásával közzéteheti a *ContractPropertiesMsg* üzenet típusát. A **ContractEvents** megadásával közzéteheti a *DecodedContractEventsMsg* üzenet típusát. Megjegyzés: a *RawBlockAndTransactionMsg* és a *RawTransactionContractCreationMsg* típusú üzenetek mindig közzé lesznek téve. |
+| location | Az a régió, ahol létre kell hoznia az alkalmazás-erőforrást. |
+| artifactType típus | Az alkalmazás típusa. Jelenleg **az EthereumSmartContract** támogatott. |
+| abiFileUrl | Az intelligens szerződés ABI JSON-fájl URL-címe. A szerződéses ABI beszerzéséről és az URL-cím létrehozásáról a [Szerződés ABI és bytecode beszerzése,](data-manager-portal.md#get-contract-abi-and-bytecode) valamint [ABI- és bytecode URL-cím létrehozása című témakörben](data-manager-portal.md#create-contract-abi-and-bytecode-url)talál további információt. |
+| bytecodeFileUrl | Url az intelligens szerződés üzembe helyezett bytecode JSON fájlt. Az intelligens szerződés üzembe helyezett bytecode beszerzéséről és az URL-cím létrehozásáról a [Szerződés ABI és bytecode beszerzése,](data-manager-portal.md#get-contract-abi-and-bytecode) valamint [Szerződés létrehozása ABI és bytecode URL című témakörben](data-manager-portal.md#create-contract-abi-and-bytecode-url)talál további információt. Megjegyzés: A Blockchain Data Manager megköveteli a **telepített bytecode-ot.** |
+| queryTargetTypes | Közzétett üzenettípusok. A **ContractProperties** megadása közzéteszi *a ContractPropertiesMsg üzenettípust.* A **ContractEvents** megadása közzéteszi a *DecodedContractEventsMsg* üzenettípusát. Megjegyzés: *A RawBlockAndTransactionMsg* és *a RawTransactionContractCreationMsg* üzenettípusok mindig közzé vannak téve. |
 
-Hozzon létre egy *myApplication* for *mywatcher* nevű alkalmazást, amely figyeli egy JSON-karakterlánc által definiált intelligens szerződést.
+Hozzon létre egy *myApplication* nevű alkalmazást a *mywatcher* számára, amely egy JSON-karakterlánc által definiált intelligens egyezményt figyel.
 
 ``` azurecli-interactive
 az resource create \
@@ -322,7 +322,7 @@ az resource create \
                    --properties '{"location":"eastus","properties":{"artifactType":"EthereumSmartContract","content":{"abiFileUrl":"<ABI URL>","bytecodeFileUrl":"<Bytecode URL>","queryTargetTypes":["ContractProperties","ContractEvents"]}}}'
 ```
 
-Hozzon létre egy *myApplication* for *mywatcher* nevű alkalmazást, amely egy JSON-konfigurációs fájllal definiált intelligens szerződést figyel.
+Hozzon létre egy *myApplication* nevű alkalmazást a *mywatcher* számára, amely egy JSON konfigurációs fájl használatával definiált intelligens egyezményt figyel meg.
 
 ``` azurecli
 az resource create \
@@ -335,9 +335,9 @@ az resource create \
                    --properties @artifact.json
 ```
 
-## <a name="start-instance"></a>Példány indítása
+## <a name="start-instance"></a>Kezdő példány
 
-A futtatásakor a Blockchain Manager-példány figyeli a megadott bemenetek Blockchain eseményeit, és adatokat küld a megadott kimeneteknek.
+Futtatásakor a Blockchain Manager-példány figyeli a blokklánc-eseményeket a megadott bemenetekből, és adatokat küld a megadott kimenetek.
 
 ``` azurecli
 az resource invoke-action \
@@ -347,12 +347,12 @@ az resource invoke-action \
 
 | Paraméter | Leírás |
 |-----------|-------------|
-| action | A figyelő futtatásához használja a **Start** parancsot. |
-| azonosítók | Figyelő erőforrás-azonosítója. Cserélje le \<előfizetés-azonosító\>, \<erőforráscsoport\>, és \<figyelő nevét\> a megfigyelő erőforrás értékeit.|
+| action | Használja **az indítást** a figyelő futtatásához. |
+| Azonosítók | Figyelő erőforrás-azonosítója. Cserélje \<le\>az \<Előfizetés-azonosítót , az Erőforrás csoportot\>és \<a Figyelő nevét\> a figyelő erőforrás értékeire.|
 
-### <a name="start-instance-example"></a>Példány indítása példa
+### <a name="start-instance-example"></a>Példa a kezdőpéldányra
 
-Indítsa el a *mywatcher*nevű Data Manager Blockchain-példányt.
+Indítsa el a *MyWatcher*nevű Blockchain Data Manager-példányt.
 
 ``` azurecli-interactive
 az resource invoke-action \
@@ -360,9 +360,9 @@ az resource invoke-action \
                           --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/mywatcher
 ```
 
-## <a name="stop-instance"></a>Példány leállítása
+## <a name="stop-instance"></a>Leállítási példány
 
-Blockchain Data Manager példány leállítása.
+Blockchain Data Manager-példány leállítása.
 
 ``` azurecli
 az resource invoke-action \
@@ -372,12 +372,12 @@ az resource invoke-action \
 
 | Paraméter | Leírás |
 |-----------|-------------|
-| action | A figyelő leállításához használja a **Leállítás** lehetőséget. |
-| azonosítók | A figyelő neve. Cserélje le \<előfizetés-azonosító\>, \<erőforráscsoport\>, és \<figyelő nevét\> a megfigyelő erőforrás értékeit. |
+| action | Használja **stop** megállítani a figyelőt. |
+| Azonosítók | A figyelő neve. Cserélje \<le\>az \<Előfizetés-azonosítót , az Erőforrás csoportot\>és \<a Figyelő nevét\> a figyelő erőforrás értékeire. |
 
-### <a name="stop-watcher-example"></a>Figyelő leállítása – példa
+### <a name="stop-watcher-example"></a>Példa a stopfigyelőre
 
-Állítson le egy *mywatcher*nevű példányt.
+A *mywatcher*nevű példány leállítása.
 
 ``` azurecli-interactive
 az resource invoke-action \
@@ -387,7 +387,7 @@ az resource invoke-action \
 
 ## <a name="delete-instance"></a>Példány törlése
 
-Blockchain Data Manager példány törlése.
+Blockchain Data Manager-példány törlése.
 
 ``` azurecli
 az resource delete \
@@ -398,13 +398,13 @@ az resource delete \
 
 | Paraméter | Leírás |
 |-----------|-------------|
-| resource-group | A törlendő figyelő erőforráscsoport-neve. |
+| resource-group | A törlendő figyelő erőforráscsoport neve. |
 | név | A törlendő figyelő neve. |
-| Erőforrás típusa | Egy Blockchain Data Manager figyelő erőforrás **-típusa Microsoft. Blockchain/figyelők**. |
+| erőforrás-típus | A Blockchain Data Manager figyelőjének erőforrástípusa a **Microsoft.blockchain/watchers.** |
 
-### <a name="delete-instance-example"></a>Példány törlése példa
+### <a name="delete-instance-example"></a>Példa a példány törlése
 
-Törölje a *mywatcher* nevű példányt a *myRG* erőforráscsoporthoz.
+Töröljön egy *mywatcher* nevű példányt a *myRG* erőforráscsoportból.
 
 ``` azurecli-interactive
 az resource delete \
@@ -413,9 +413,9 @@ az resource delete \
                    --resource-type Microsoft.blockchain/watchers
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Próbálja ki a következő oktatóanyagot, amely egy blockchain-tranzakciós Blockchain-kezelőt hoz létre a Data Manager és Azure Cosmos DB használatával.
+Próbálja ki a következő oktatóanyag létrehozása blockchain tranzakció üzenetkezelő segítségével Blockchain Data Manager és az Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Az Blockchain Data Manager használata az adatAzure Cosmos DBba való adatküldéshez](data-manager-cosmosdb.md)
+> [Adatok küldése az Azure Cosmos DB-be a Blockchain Data Managerrel](data-manager-cosmosdb.md)

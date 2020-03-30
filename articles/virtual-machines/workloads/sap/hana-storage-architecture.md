@@ -1,6 +1,6 @@
 ---
-title: A SAP HANA tárolási architektúrája az Azure-ban (nagyméretű példányok) | Microsoft Docs
-description: Tárolási architektúrája SAP HANA üzembe helyezése az Azure-ban (nagyméretű példányok).
+title: Az SAP HANA tárolási architektúrája az Azure-ban (nagy példányok) | Microsoft dokumentumok
+description: Az SAP HANA azure-beli (nagy példányok) üzembe helyezésének tárolási architektúrájának tárolási architektúrája.
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,100 +14,100 @@ ms.date: 02/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a12c454906d6c6ff702b7f635a91361bbe3994c1
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616888"
 ---
-# <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (nagyméretű példányok) tárolási architektúrája
+# <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (nagy példányok) tárolási architektúrája
 
-Az Azure-beli SAP HANA (nagyméretű példányok) tárolási elrendezését SAP HANA a klasszikus üzemi modellen, az SAP által ajánlott irányelvek szerint konfigurálja. Az irányelvek dokumentációját a [SAP HANA Storage-követelmények](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) című tanulmány ismerteti.
+Az SAP HANA az Azure-ban (nagy példányok) tárolási elrendezését az SAP HANA konfigurálja a klasszikus üzembe helyezési modell sap ajánlott irányelvek szerint. Az irányelvek az [SAP HANA tárolási követelmények](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) tanulmányban vannak dokumentálva.
 
-Az I. típusú HANA nagy példánya a memória kötetét a tárolási kötetként négyszer adja meg. A HANA Large instances-egységek II. típusú osztálya esetében a tárterület nem sokkal többször van. Az egységek olyan kötettel rendelkeznek, amely a HANA-tranzakciós naplók biztonsági másolatainak tárolására szolgál. További információ: [SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-ban.
+Az I. típusú osztály HANA nagy példánya a memóriakötet négyszeresét származtatja tárolókötetként. A HANA nagy példány egységek II típusú osztálya esetében a tároló nem négyszer több. Az egységek egy olyan kötettel érkeznek, amely a HANA tranzakciós napló biztonsági másolatainak tárolására szolgál. További információ: [SAP HANA (Large Instances) telepítése és konfigurálása az Azure-ban.](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Tekintse meg az alábbi táblázatot a tárolók kiosztása szempontjából. A táblázat felsorolja a különböző HANA nagyméretű példány-egységekhez biztosított különböző kötetek durva kapacitását.
+Lásd az alábbi táblázatot a tárhelyelosztás szempontjából. A táblázat a különböző HANA nagy példányegységekhez biztosított különböző kötetek durva kapacitását sorolja fel.
 
-| HANA nagyméretű példány SKU | Hana/adatvédelem | Hana/log | Hana/Shared | Hana/logbackups |
+| HANA nagypéldány termékváltozat | hana/adatok | hana/log | hana/megosztott | hana/logbackups |
 | --- | --- | --- | --- | --- |
 | S72 | 1 280 GB | 512 GB | 768 GB | 512 GB |
-| S72m | 3 328 GB | 768 GB |1 280 GB | 768 GB |
-| S96 | 1 280 GB | 512 GB | 768 GB | 512 GB |
-| S192 | 4,608 GB | 1 024 GB | 1 536 GB | 1 024 GB |
-| S192m | 11 520 GB | 1 536 GB | 1 792 GB | 1 536 GB |
+| S72m között | 3 328 GB | 768 GB |1 280 GB | 768 GB |
+| S96 között | 1 280 GB | 512 GB | 768 GB | 512 GB |
+| S192 | 4 608 GB | 1024 GB | 1 536 GB | 1024 GB |
+| S192m között | 11 520 GB | 1 536 GB | 1 792 GB | 1 536 GB |
 | S192xm |  11 520 GB |  1 536 GB |  1 792 GB |  1 536 GB |
-| S224 |  4 224 GB |  512 GB |  1 024 GB |  512 GB |
-| S224m |  8 448 GB |  512 GB |  1 024 GB |  512 GB |
-| S384 | 11 520 GB | 1 536 GB | 1 792 GB | 1 536 GB |
-| S384m | 12 000 GB | 2 050 GB | 2 050 GB | 2 040 GB |
-| S384xm | 16 000 GB | 2 050 GB | 2 050 GB | 2 040 GB |
-| S384xxm |  20 000 GB | 3 100 GB | 2 050 GB | 3 100 GB |
-| S576m | 20 000 GB | 3 100 GB | 2 050 GB | 3 100 GB |
-| S576xm | 31 744 GB | 4,096 GB | 2 048 GB | 4,096 GB |
-| S768m | 28 000 GB | 3 100 GB | 2 050 GB | 3 100 GB |
-| S768xm | 40 960 GB | 6 144 GB | 4,096 GB | 6 144 GB |
-| S960m | 36 000 GB | 4 100 GB | 2 050 GB | 4 100 GB |
+| S224 |  4 224 GB |  512 GB |  1024 GB |  512 GB |
+| S224m között |  8 448 GB |  512 GB |  1024 GB |  512 GB |
+| S384 között | 11 520 GB | 1 536 GB | 1 792 GB | 1 536 GB |
+| S384m között | 12 000 GB | 2050 GB | 2050 GB | 2040 GB |
+| S384xm | 16 000 GB | 2050 GB | 2050 GB | 2040 GB |
+| S384xxm között |  20 000 GB | 3100 GB | 2050 GB | 3100 GB |
+| S576m között | 20 000 GB | 3100 GB | 2050 GB | 3100 GB |
+| S576xm | 31 744 GB | 4096 GB | 2048 GB | 4096 GB |
+| S768m között | 28 000 GB | 3100 GB | 2050 GB | 3100 GB |
+| S768xm | 40 960 GB | 6 144 GB | 4096 GB | 6 144 GB |
+| S960m között | 36 000 GB | 4100 GB | 2050 GB | 4100 GB |
 
 
-A tényleges üzembe helyezett kötetek a telepítés és a kötetek méretének megjelenítéséhez használt eszköz alapján változhatnak.
+A ténylegesen üzembe helyezett kötetek a központi telepítéstől és a kötetméretek megjelenítéséhez használt eszköztől függően változhatnak.
 
-Ha egy HANA nagyméretű példány SKU-t oszt ki, néhány példa a lehetséges osztási darabokra:
+Ha egy HANA nagypéldány termékváltozatot oszt fel, néhány példa a lehetséges felosztási darabokra a következőkre tűnhet:
 
-| Memória partíciója GB-ban | Hana/adatvédelem | Hana/log | Hana/Shared | Hana/log/Backup |
+| Memóriapartíció GB-ban | hana/adatok | hana/log | hana/megosztott | hana/log/backup |
 | --- | --- | --- | --- | --- |
 | 256 | 400 GB | 160 GB | 304 GB | 160 GB |
 | 512 | 768 GB | 384 GB | 512 GB | 384 GB |
 | 768 | 1 280 GB | 512 GB | 768 GB | 512 GB |
-| 1,024 | 1 792 GB | 640 GB | 1 024 GB | 640 GB |
+| 1,024 | 1 792 GB | 640 GB | 1024 GB | 640 GB |
 | 1,536 | 3 328 GB | 768 GB | 1 280 GB | 768 GB |
 
 
-Ezek a méretek olyan durva kötetek, amelyek az üzembe helyezés és a kötetek megkereséséhez használt eszközök alapján némileg változhatnak. Más partíciós méretek is megtalálhatók, például 2,5 TB. A tárolási méretek kiszámítása az előző partíciókhoz használthoz hasonló képlettel történik. A "Partitions" kifejezés nem azt jelenti, hogy az operációs rendszer, a memória vagy a CPU-erőforrás semmilyen módon particionálva van. Azt jelzi, hogy a különböző HANA-példányokhoz tartozó tárolási partíciók egyetlen HANA nagyméretű példány-egységen is üzembe helyezhetők. 
+Ezek a méretek durva kötetszámok, amelyek a központi telepítéstől és a kötetek vizsgálatához használt eszközöktől függően kis mértékben eltérhetnek. Vannak más partícióméretek is, mint például a 2.5 TB. Ezeket a tárolási méreteket a rendszer az előző partíciókhoz hasonló képlettel számítja ki. A "partíciók" kifejezés nem jelenti azt, hogy az operációs rendszer, a memória vagy a CPU-erőforrások bármilyen módon particionáltak. Azt jelzi, hogy a különböző HANA-példányok tárolási partíciókat érdemes üzembe helyezni egyetlen HANA nagy példány egység. 
 
-Lehet, hogy több tárterületre van szüksége. Az 1 TB-os egységek további tárterületének megvásárlásával adhat hozzá tárhelyet. Ez a további tárterület további kötetként is felvehető. A meglévő kötetek közül egy vagy több kibővítésére is felhasználható. Nem lehetséges a kötetek méretének csökkentése az eredetileg üzembe helyezett és többnyire az előző táblázatokban dokumentált módon. Emellett nem lehet módosítani a kötetek vagy a csatlakoztatási nevek nevét. A korábban leírt tárolási kötetek a HANA nagyméretű példány-egységekhez vannak csatolva NFS4-kötetként.
+Lehet, hogy több tárhelyre lesz szüksége. A tárhelyet további tárhely 1 TB-os egységekben történő megvásárlásával adhat hozzá. Ez a további tároló további kötetként is hozzáadható. A meglévő kötetek közül egy vagy több kibővítésére is használható. Az eredetileg üzembe helyezett és többnyire az előző táblák által dokumentált kötetek mérete nem csökkenthető. A kötetek nevét és a csatlakoztatási neveket sem lehet módosítani. A korábban leírt tárolókötetek NFS4-kötetként vannak csatolva a HANA nagy példányegységeihez.
 
-A biztonsági mentéshez és helyreállításhoz, valamint a vész-helyreállítási célokra használható tárolási Pillanatképek. További információ: [SAP HANA (nagyméretű példányok) magas rendelkezésre állása és vész-helyreállítás az Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-ban.
+A tárolási pillanatképek biztonsági mentési és visszaállítási és vész-helyreállítási célokra használható. További információ: [SAP HANA (Large Instances) magas rendelkezésre állású és vész-helyreállítási az Azure-ban.](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Tekintse át a [HLI által támogatott forgatókönyveket](hana-supported-scenario.md) a tárolási elrendezés részleteihez.
+Tekintse át [a HLI által támogatott forgatókönyveket](hana-supported-scenario.md) a forgatókönyv tárolási elrendezésének részleteihez.
 
-## <a name="run-multiple-sap-hana-instances-on-one-hana-large-instance-unit"></a>Több SAP HANA példány futtatása egy HANA nagyméretű példány-egységen
+## <a name="run-multiple-sap-hana-instances-on-one-hana-large-instance-unit"></a>Több SAP HANA-példány futtatása egy HANA nagy példányegységen
 
-Több aktív SAP HANA példány is üzemeltethető HANA nagyméretű példány-egységeken. A tárolási Pillanatképek és a vész-helyreállítási funkciók biztosításához a konfigurációhoz egy példány szükséges. A HANA nagyméretű példányai jelenleg a következőképpen oszthatók fel:
+Lehetséges, hogy egynél több aktív SAP HANA-példány hana nagy példány egységek üzemeltetése. A tárolási pillanatképek és a vész-helyreállítási képességek biztosításához az ilyen konfiguráció példányonként kötetkészletet igényel. Jelenleg a HANA nagy példányegységek a következőképpen oszthatók fel:
 
-- **S72, S72m, S96, S144, S192**: 256 GB-onként, 256 GB a legkisebb kezdő egységgel. A különböző növekmények (például 256 GB és 512 GB) kombinálhatók az egység memóriájának maximális értékével.
-- **S144m és S192m**: 256 GB-onként, 512 GB a legkisebb egységgel. A különböző növekmények (például 512 GB és 768 GB) kombinálhatók az egység memóriájának maximális értékével.
-- **II. típus**: 512 GB-onként, a legkisebb kezdő egységgel 2 TB. A különböző növekmények (például 512 GB, 1 TB és 1,5 TB) kombinálhatók az egység memóriájának maximális értékével.
+- **S72, S72m, S96, S144, S192**: 256 GB-os lépésekben, 256 GB-os legkisebb indítóegységgel. A különböző lépésekben, például 256 GB és 512 GB kombinálható a készülék memóriájának maximális értékével.
+- **S144m és S192m**: 256 GB-os lépésekben, 512 GB-mal a legkisebb egység. A különböző lépésekben, például 512 GB és 768 GB kombinálható a készülék memóriájának maximális értékével.
+- **típus:** 512 GB lépésekben, a legkisebb 2 TB indítóegységgel. A különböző lépésekben, például 512 GB, 1 TB és 1,5 TB kombinálható a készülék memóriájának maximális értékével.
 
-Néhány példa több SAP HANA-példány futtatására a következőhöz hasonló lehet.
+Néhány példa több SAP HANA-példány oka a következőkre néz ki.
 
-| SKU | Memória mérete | Tárterület mérete | Méretek több adatbázissal |
+| SKU | Memória mérete | Tárhely mérete | Több adatbázissal rendelkező méretek |
 | --- | --- | --- | --- |
-| S72 | 768 GB | 3 TB | 1x768 – GB HANA-példány<br /> vagy 1x512-GB példány + 1x256-GB példány<br /> vagy 3x256-GB példányok | 
-| S72m | 1,5 TB | 6 TB | 3x512GB HANA-példányok<br />vagy 1x512-GB példány + 1x1-TB példány<br />vagy 6x256-GB példányok<br />vagy 1x 1.5 TB-példány | 
-| S192m | 4 TB | 16 TB | 8x512 – GB-példányok<br />vagy 4x1-TB példányok<br />vagy 4x512-GB instances + 2x1-TB példányok<br />vagy 4x768-GB-példányok + 2x512-GB példányok<br />vagy 1x4-TB-példány |
-| S384xm | 8 TB | 22 TB | 4x2 – TB-példányok<br />vagy 2x4-TB példányok<br />vagy 2x3-TB-példányok + 1x2-TB-példányok<br />vagy 2x 2,5 – TB példányok + 1x3-TB példányok<br />vagy 1x8-TB-példány |
+| S72 | 768 GB | 3 TB | 1x768 GB-os HANA-példány<br /> vagy 1x512 GB-os példány + 1x256-GB példány<br /> vagy 3x256 GB-os példányok | 
+| S72m között | 1,5 TB | 6 TB | 3x512 GB-os HANA-példányok<br />vagy 1x512 GB-os példány + 1x1-TB példány<br />vagy 6x256 GB-os példányok<br />vagy 1x1,5 TB-os példány | 
+| S192m között | 4 TB | 16 TB | 8x512 GB-os példányok<br />vagy 4x1-TB-os példányok<br />vagy 4x512 GB-os példányok + 2x1 TB-os példányok<br />vagy 4x768 GB-os példányok + 2x512-GB példányok<br />vagy 1x4-TB példány |
+| S384xm | 8 TB | 22 TB | 4x2 TB-os példányok<br />vagy 2x4-TB példányok<br />vagy 2x3-TB-os példányok + 1x2-TB példányok<br />vagy 2x2,5 TB-os példányok + 1x3-TB példányok<br />vagy 1x8-TB példány |
 
 
-Más változatok is vannak. 
+Vannak más változatok is. 
 
-## <a name="encryption-of-data-at-rest"></a>Inaktív adatok titkosítása
-A HANA nagyméretű példányhoz használt tárterület transzparens titkosítást használ az adatlemezeken, mivel az a 2018-as év vége óta a lemezen tárolódik. A korábbi telepítések esetében a kötetek titkosítását is választhatja. Ha ezt a lehetőséget választja, kérheti a kötetek online titkosítását. A nem titkosítottról titkosított kötetekre való áthelyezés átlátható, és nem igényel állásidőt. 
+## <a name="encryption-of-data-at-rest"></a>Az inaktív adatok titkosítása
+A HANA Large Instance használt tároló átlátszó titkosítást használ az adatokhoz, mivel azok a lemezeken vannak tárolva 2018 vége óta. A korábbi központi telepítések, dönthet úgy, hogy a kötetek titkosítását. Ha ezt a lehetőséget választotta, kérheti a kötetek online titkosítását. A nem titkosított kötetekről a titkosított kötetekre való áttérés átlátható, és nem igényel állásidőt. 
 
-Az I. típusú SKU-I osztály használata esetén a rendszer titkosítja a rendszerindító LUN-t tároló kötetet. A 3. változat HANA nagyméretű példányú bélyegek, a HANA nagyméretű példányának II. típusának használatával a rendszerindító LUN-t az operációs rendszer módszereivel kell titkosítani. 4\. változat HANA nagy példányszámú bélyegzők, a II. típusú adategységek használatával a rendszerindító LUN tárolja a kötetet, és alapértelmezés szerint titkosítva van a nyugalmi állapotban. 
+A ski-k I. típusú osztályával a rendszerindító titkosítatlan szöveget tároló kötet titkosítva van. A 3-as verzióhana nagy példány bélyegzők, a HANA nagy példány SUK Type II osztályhasználatával, a rendszerindító lun operációs rendszer metódusokkal kell titkosítani. A 4-es verzióhana nagy példány bélyegzőinek használata iI.type a kötet a rendszerindító lun tárolja, és alapértelmezés szerint titkosítva van. 
 
-## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>Nagyobb HANA-példányok kötelező beállításai a HANA nagyméretű példányain
-A HANA nagyméretű példányaiban használt tárterület fájlméret-korlátozást tartalmaz. A [méretre vonatkozó korlátozás 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) /fájl. Az EXT3 fájlrendszerbeli korlátozásokkal ellentétben a HANA nem ismeri implicit módon a HANA Large instances Storage által kényszerített tárolási korlátozást. Ennek eredményeképpen a HANA nem hoz létre automatikusan új adatfájlt, ha a 16TB elérte a fájlméretet. Mivel a HANA a 16 TB-nál nagyobb mennyiségű fájlt próbál növelni, a HANA hibát jelez, és az index-kiszolgáló összeomlik a végén.
+## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>A hana nagy példányok nagyobb HANA-példányainak szükséges beállításai
+A HANA nagy példányokban használt tároló fájlméret-korlátozással rendelkezik. A méretkorlátozás fájlonként [16 TB.](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) Az EXT3 fájlrendszerek fájlméret-korlátozásaival ellentétben a HANA nem ismeri hallgatólagosan a HANA nagy példányok tároló által kikényszerített tárolási korlátozást. Ennek eredményeképpen a HANA nem hoz létre automatikusan új adatfájlt, amikor eléri a 16 TB-os fájlméretkorlátot. Ahana megpróbálja növelni a fájlt túl 16 TB, HANA hibákat jelent, és az index szerver összeomlik a végén.
 
 > [!IMPORTANT]
-> Annak megakadályozása érdekében, hogy a HANA a Hana nagyméretű példányok tárterületének 16 TB-os fájlméretén kívüli adatfájlokat próbáljon növelni, a következő paramétereket kell megadnia a HANA globális. ini konfigurációs fájljához.
+> Annak megakadályozása érdekében, hogy a HANA megpróbálja növelni az adatfájlokat a HANA nagypéldány-tároló 16 TB-os fájlméret-korláton túl, a hana global.ini konfigurációs fájljában a következő paramétereket kell beállítania
 > 
-> - datavolume_striping=true
+> - datavolume_striping=igaz
 > - datavolume_striping_size_gb = 15000
-> - Lásd még: SAP-Megjegyzés [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
-> - Vegye figyelembe az SAP-Megjegyzés [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
+> - Lásd még: [SAP-#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+> - Vegye figyelembe az [SAP-#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 
 
-**Következő lépések**
-- Tekintse át [a HANA nagyméretű példányainak támogatott forgatókönyveit](hana-supported-scenario.md)
+**További lépések**
+- [A HANA nagy példányainak támogatott forgatókönyvei](hana-supported-scenario.md)

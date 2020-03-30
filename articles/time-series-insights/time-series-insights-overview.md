@@ -1,5 +1,5 @@
 ---
-title: 'Áttekintés: Mi az Azure Time Series Insights? – Azure Time Series Insights | Microsoft Docs'
+title: 'Áttekintés: Mi az Azure Time Series Insights? - Azure Time Series Insights | Microsoft dokumentumok'
 description: Bevezetés az idősorozat-adatok elemzéséhez és IoT-megoldásokhoz készült új Azure Time Series Insights szolgáltatás használatába.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,89 +11,89 @@ ms.topic: overview
 ms.date: 02/04/2020
 ms.custom: seodec18
 ms.openlocfilehash: a938dc69b2b0401a062b1db314d71100b4fbbc4f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77024381"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Mi az Azure Time Series Insights?
 
-Azure Time Series Insights a nagy mennyiségű idősoros adatsorozat-információ tárolására, megjelenítésére és lekérdezésére szolgál, például a IoT-eszközök által generált. Ha idősorozat-adatokat szeretne a felhőben tárolni, kezelni, lekérdezni vagy vizualizálni, a Time Series Insights valószínűleg jó választás.
+Az Azure Time Series Insights nagy mennyiségű idősorozat-adat tárolására, megjelenítésére és lekérdezésére készült, például az IoT-eszközök által létrehozott adatok tárolására, megjelenítésére és lekérdezésére. Ha idősorozat-adatokat szeretne a felhőben tárolni, kezelni, lekérdezni vagy vizualizálni, a Time Series Insights valószínűleg jó választás.
 
-[![Time Series Insights folyamatábrája](media/overview/time-series-insights-flowchart.png)](media/overview/time-series-insights-flowchart.png#lightbox)
+[![Time Series Insights folyamatábra](media/overview/time-series-insights-flowchart.png)](media/overview/time-series-insights-flowchart.png#lightbox)
 
 A Time Series Insights négy fő feladata:
 
-- A Felhőbeli átjárók teljes mértékben integrálva vannak, például az Azure IoT Hub és az Azure Event Hubs. Könnyedén csatlakozik ezekhez az eseményforrásokhoz, és elemzi az adatokat egyszerű sorokban és oszlopokban tároló üzenetekből és struktúrákból származó JSON-t. A metaadatokat összeköti a telemetriával, és egy oszlopos tárban indexálja az adatait.
-- Time Series Insights kezeli az adatai tárolását. Annak biztosítása érdekében, hogy az adatai mindig könnyen elérhetők legyenek, a memóriában és SSD-ben tárolja az adatait, akár 400 napig. A másodpercek alatt interaktív módon lekérdezheti az események milliárdjait – igény szerint.
-- A Time Series Insights a Time Series Insights Explorerben elérhetővé teszi a beépített vizualizációkat.
-- A Time Series Insights egy lekérdezési szolgáltatást is biztosít, amely a Time Series Insights Explorerben és a könnyen integrálható API-kkal is használható az idősorozat-adathalmazok egyéni alkalmazásokba való beágyazásához.
+- Teljes mértékben integrálva van a felhőbeli átjárókkal, például az Azure IoT Hub-mal és az Azure Event Hubs-szal. Könnyedén csatlakozik ezekhez az eseményforrásokhoz, és elemzi az adatokat egyszerű sorokban és oszlopokban tároló üzenetekből és struktúrákból származó JSON-t. A metaadatokat összeköti a telemetriával, és egy oszlopos tárban indexálja az adatait.
+- A Time Series Insights kezeli az adatok tárolását. Annak érdekében, hogy az adatok mindig könnyen hozzáférhetők legyenek, akár 400 napig tárolja az adatokat a memóriában és az SSD-kben. Az események milliárdjait interaktívan lekérdezheti másodpercben – igény szerint.
+- A Time Series Insights beépített megjelenítést biztosít a Time Series Insights kezelőn keresztül.
+- A Time Series Insights lekérdezési szolgáltatást biztosít mind a Time Series Insights-kezelőben, mind pedig olyan API-k használatával, amelyek könnyen integrálhatók az idősorozat-adatok egyéni alkalmazásokba való beágyazásához.
 
-Ha belső felhasználásra vagy külső ügyfelek használatára vonatkozó alkalmazást hoz létre, használhatja a Time Series Insightst háttérként. Használhatja az idősorozat-adatokat indexelni, tárolni és összesíteni. Az egyéni vizualizációk és felhasználói élmények létrehozásához használja az [ügyfél-SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)-t. A Time Series Insights több [lekérdezési API](how-to-shape-query-json.md) -val is rendelkezik a testreszabott forgatókönyvek engedélyezéséhez.
+Ha belső felhasználásra vagy külső ügyfelek számára hoz létre alkalmazást, a Time Series Insights háttérrendszerként is használható. Az idősorozat-adatok indexelésére, tárolására és összesítésére használható. Egyéni vizualizáció és felhasználói élmény létrehozásához használja az [Ügyfél SDK-t.](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) A Time Series Insights számos [lekérdezési API-val](how-to-shape-query-json.md) is rendelkezik, amelyek lehetővé teszik ezeket a testreszabott forgatókönyveket.
 
-Az idősorozat-adatok mutatják be, hogy hogyan változik az idők során egy adategység vagy folyamat. Az idősorozat-adatsorok az időbélyegzők szerint vannak indexelve, és az idő az a legértelmesebb tengely, amely az ilyen jellegű adatrendezést végzi. Az idősorozat-adatsorok általában szekvenciális sorrendben érkeznek, ezért a rendszer az adatbázis frissítése helyett beszúrásként kezeli.
+Az idősorozat-adatok mutatják be, hogy hogyan változik az idők során egy adategység vagy folyamat. Az idősorozat-adatokat időbélyegek indexelik, és az idő a legértelmesebb tengely, amely mentén az ilyen adatok vannak rendszerezve. Az idősorozat-adatok általában sorrendben érkeznek, így a rendszer beszúrásként kezeli őket, nem pedig az adatbázis frissítését.
 
-Nagy mennyiségű idősoros adat tárolására, indexelésére, lekérdezésére, elemzésére és megjelenítésére is kihívást jelenthet.
-Azure Time Series Insights rögzíti és tárolja az összes új eseményt sorra, és a változás hatékonyan mérhető az idő múlásával. Ennek eredményeképpen visszafelé is megtekintheti a múltbeli eredményeket a jövőbeli változások előrejelzéséhez.
+Az idősorozat-adatok nagy kötetekben való tárolása, indexelése, lekérdezése, elemzése és megjelenítése kihívást jelent.
+Az Azure Time Series Insights minden új eseményt egy sorként rögzít és tárol, és a változásokat az idő múlásával hatékonyan mérik. Ennek eredményeképpen hátrafelé tekintve betekintést nyerhet a múltból, hogy segítsen megjósolni a jövőbeli változásokat.
 
 ## <a name="video"></a>Videó
 
-### <a name="learn-more-about-azure-time-series-insights-the-cloud-based-iot-analytics-platformbr"></a>További információ a felhőalapú IoT elemzési platformról: Azure Time Series Insights.</br>
+### <a name="learn-more-about-azure-time-series-insights-the-cloud-based-iot-analytics-platformbr"></a>További információ az Azure Time Series Insights felhőalapú IoT-elemzési platformról.</br>
 
-[![videó](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
+[![Videóinak](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
 
 ## <a name="primary-scenarios"></a>Elsődleges forgatókönyvek
 
-- Az idősorozat-adathalmazokat méretezhető módon tárolja.
+- Az idősorozat-adatokat méretezhető módon tárolhatja.
 
-   A Time Series Insights lényegében egy idősorozat-adatokra tervezett adatbázis. Mivel méretezhető és teljes mértékben felügyelt, Time Series Insights kezeli az események tárolásának és kezelésének munkáját.
+   A Time Series Insights lényegében egy idősorozat-adatokra tervezett adatbázis. Mivel méretezhető és teljes körűen felügyelt, a Time Series Insights kezeli az események tárolásának és kezelésének munkáját.
 
-- A közel valós időben tárja fel az adatelemzést.
+- Közel valós időben fedezheti fel az adatokat.
 
-   A Time Series Insights egy olyan tallózót biztosít, amely megjeleníti a környezetbe továbbított összes adatforgalmat. Röviddel azután, hogy kapcsolódott egy eseményforrás, megtekintheti, megtekintheti és lekérdezheti az eseményeket az Time Series Insightson belül. Az adatai segítségével ellenőrizheti, hogy az eszköz az elvárt módon bocsát-e ki adatmennyiséget, valamint hogy a IoT-eszközt az állapot, a termelékenység és az általános hatékonyság érdekében figyeli-e.
+   A Time Series Insights egy olyan felfedezőt biztosít, amely megjeleníti a környezetbe adatfolyamként továbbító összes adatot. Röviddel azután, hogy csatlakozik egy eseményforráshoz, megtekintheti, felfedezheti és lekérdezheti az eseményadatokat a Time Series Insights alkalmazásban. Az adatok segítségével ellenőrizheti, hogy egy eszköz a várt módon bocsát-e ki adatokat, és figyelheti az IoT-eszközt az állapot, a termelékenység és az általános hatékonyság szempontjából.
 
-- Hajtsa végre a kiváltó okok elemzését és a rendellenességek észlelését.
+- Gyökér-ok elemzés végrehajtása és anomáliák észlelése.
 
-   Time Series Insights rendelkezik olyan eszközökkel, mint például a mintázatok és perspektívák nézetei, és így több lépésből álló kiváltó okok elemzését végezheti el. A Time Series Insights olyan riasztási szolgáltatásokat is használhat, mint például a Azure Stream Analytics, így a Time Series Insights Explorerben közel valós időben megtekintheti a riasztásokat és az észlelt rendellenességeket.
+   A Time Series Insights olyan eszközökkel rendelkezik, mint a minták és a perspektívanézetek a többlépéses kiváltó ok elemzésének elvégzéséhez és mentéséhez. A Time Series Insights olyan riasztási szolgáltatásokkal is együttműködik, mint az Azure Stream Analytics, így közel valós időben megtekintheti a riasztásokat és észlelt rendellenességeket a Time Series Insights felfedezőjében.
 
-- Globális áttekintést kaphat az idősoros adatokról, amelyek különböző helyekről streameket biztosítanak a több eszköz vagy a hely összehasonlításához.
+- Az idősorozat-adatok globális nézetét tekintheti meg, amelyek különböző helyekről továbbítanak a többeszközből vagy webhelyösszehasonlításhoz.
 
-   Egy Time Series Insights környezethez több eseményforrás is csatlakoztatható. Így megtekintheti a több, különböző helyekről származó adatfolyamokat közel valós időben. A felhasználók kihasználhatják ezt a láthatóságot az üzleti vezetőkkel való adatmegosztáshoz. Hatékonyabban dolgozhatnak olyan tartományi szakértőkkel, akik szakértelmet alkalmazhatnak a problémák megoldásához, az ajánlott eljárások alkalmazásához és a tanulás megosztásához.
+   Egy Time Series Insights környezethez több eseményforrás is csatlakoztatható. Így közel valós időben tekintheti meg a több különböző helyről beérkező adatokat. A felhasználók kihasználhatják ezt a láthatóságot, hogy megosszák az adatokat az üzleti vezetőkkel. Jobban együttműködhetnek a tartományszakértőkkel, akik szakértelmüket a problémák megoldásához, a bevált gyakorlatok alkalmazásához és a tanulás megosztásához alkalmazhatják.
 
-- Hozzon létre egy Customer-alkalmazást Time Series Insightson.
+- Hozzon létre egy ügyfélalkalmazást a Time Series Insights-on felül.
 
-   A Time Series Insights REST lekérdezési API-kat tesz elérhetővé, amelyekkel idősorozat-adatokkal rendelkező alkalmazásokat hozhat létre.
+   A Time Series Insights megjeleníti a REST-lekérdezési API-kat, amelyek segítségével idősorozat-adatokat használó alkalmazásokat hozhat létre.
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
-- **Gyors kezdés**: Azure Time Series Insights nem igényel előzetes adatelőkészítést, így gyorsan csatlakozhat több millió eseményhez az IoT hub vagy az Event hub szolgáltatásban. A kapcsolódást követően megjelenítheti és kezelheti az érzékelők adatait, hogy gyorsan érvényesítse IoT-megoldásait. Kód írása nélkül is dolgozhat az adataival, és nem kell új nyelvet tanulnia. A Time Series Insights egy részletes, szabadszöveges lekérdezési felületet biztosít a speciális felhasználók számára, és a pont-és kattintásos feltárást is lehetővé teszi.
+- **Gyors kezdés:** Az Azure Time Series Insights nem igényel előzetes adatelőkészítést, így gyorsan csatlakozhat az IoT-központ vagy az eseményközpont több millió eseményéhez. A csatlakozás után vizualizálhatja és kezelheti az érzékelőadatokat az IoT-megoldások gyors érvényesítéséhez. Az adatokat kód írása nélkül is kezelheti, és nem kell új nyelvet tanulnia. A Time Series Insights részletes, szabadszöveges lekérdezési felületet biztosít a tapasztalt felhasználók számára, és rámutatásos feltárást.
 
-- **Közel valós idejű**adatmennyiség: Time Series Insights naponta több millió szenzoros eseményt képes befogadni, egy perces késéssel. Time Series Insights segít betekintést nyerni az érzékelők adataiba. A trendek és rendellenességek észlelésére, a kiváltó okok elemzésére és a költséges állásidő elkerülésére használható. A valós idejű és a korábbi adatkapcsolatok közötti összefüggések révén a rejtett trendek is megtalálhatók az adathalmazban.
+- **Közel valós idejű elemzések:** A Time Series Insights naponta több millió érzékelőeseményt tud bekezelni, egyperces késleltetéssel. A Time Series Insights segítségével betekintést nyerhet az érzékelőadataiba. Segítségével észlelheti a trendeket és anomáliákat, kiváltó okokat elemezhet, és elkerülheti a költséges állásidőt. A valós idejű és az előzményadatok közötti keresztkorreláció segít megtalálni az adatok rejtett trendjeit.
 
-- **Egyéni megoldások készítése**: Azure Time Series Insights-adatait beágyazhatja meglévő alkalmazásaiba. Létrehozhat új egyéni megoldásokat is a Time Series Insights REST API-kkal. Személyre szabott nézeteket hozhat létre, hogy mások is megtekinthessék a felfedezett összefüggéseket.
+- **Egyéni megoldások at hozhat létre:** Az Azure Time Series Insights-adatok beágyazása a meglévő alkalmazásokba. A Time Series Insights REST API-kkal új egyéni megoldásokat is létrehozhat. Személyre szabott nézeteket hozhat létre, hogy mások is megtekinthessék a felfedezett összefüggéseket.
 
-- **Méretezhetőség**: A Time Series Insights támogatja a nagy mennyiségű IoT-adat kezelését. Napi 1–100 millió bejövő eseményt képes kezelni, és alapértelmezés szerint 31 napig őrzi meg ezeket. Közel valós időben jeleníthet meg és elemezheti az élő adatfolyamokat a korábbi adatelemzések mellett.
+- **Méretezhetőség:** A Time Series Insights az IoT nagy méretekben való támogatására lett tervezve. Napi 1–100 millió bejövő eseményt képes kezelni, és alapértelmezés szerint 31 napig őrzi meg ezeket. Az élő adatfolyamokat közel valós időben jelenítheti meg és elemezheti az előzményadatok mellett.
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Bevezetés
 
-Az első lépésekhez kövesse az alábbi lépéseket.
+Első lépésként kövesse az alábbi lépéseket.
 
-1. Time Series Insights környezet kiépítése a Azure Portal.
-1. Kapcsolódjon egy olyan eseményforrás, mint egy IoT hub vagy egy Event hub.
-1. Hivatkozási adatok feltöltése. Ez nem egy kiegészítő szolgáltatás.
-1. Tekintse át és jelenítse meg az adatait percek alatt a Time Series Insights Explorerben.
+1. Egy Time Series Insights-környezet kiépítése az Azure Portalon.
+1. Csatlakozzon egy eseményforráshoz, például egy IoT-központhoz vagy egy eseményközponthoz.
+1. Referenciaadatok feltöltése. Ez nem egy kiegészítő szolgáltatás.
+1. Tekintse át és jelenítse meg adatait percek alatt a Time Series Insights felfedezővel.
 
 ## <a name="explorer"></a>Explorer
 
-A Azure Time Series Insights Explorer használatával megtekintheti, elemezheti és feltárhatja az adataiban mutatkozó trendeket.
+Az Azure Time Series Insights explorer használatával megtekintheti, elemezheti és felfedezheti az adatok trendjeit.
 
 ![Time Series Insights Explorer](media/overview/time-series-insights-explorer-panel.png)
 
-Megtudhatja, hogyan használhatja a [Azure Time Series Insights Explorert](time-series-insights-explorer.md) , és hogyan rajzolhatja meg az adatokból származó információkat.
+Ismerje meg, hogyan használhatja az [Azure Time Series Insights explorert,](time-series-insights-explorer.md) és hogyan nyerhet elemzéseket az adatokból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ismerkedjen meg a Azure Time Series Insights általánosan elérhető [ingyenes bemutató környezettel](./time-series-quickstart.md).
+- Fedezze fel az Azure Time Series Insights általános rendelkezésre [állásingyenes bemutatókörnyezetét.](./time-series-quickstart.md)
 
-- További információ a Time Series Insights környezet [megtervezéséről](time-series-insights-environment-planning.md) .
+- További információ [a Time Series Insights-környezet megtervezéséről.](time-series-insights-environment-planning.md)

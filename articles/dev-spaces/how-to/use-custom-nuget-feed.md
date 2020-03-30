@@ -5,23 +5,23 @@ author: zr-msft
 ms.author: zarhoads
 ms.date: 07/17/2019
 ms.topic: conceptual
-description: Egyéni NuGet-hírcsatorna használata NuGet-csomagok eléréséhez és használatához az Azure fejlesztői tárhelyén.
-keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
+description: Egyéni NuGet-hírcsatornát használhat a NuGet-csomagok eléréséhez és használatához az Azure dev space-ben.
+keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, tárolók
 manager: gwallace
 ms.openlocfilehash: 39984a3b3a1be64a497fb8088559ccfcdee4f1c6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74325721"
 ---
-# <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Egyéni NuGet-hírcsatorna használata az Azure dev Spaces használatával
+# <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Egyéni NuGet-hírcsatorna használata az Azure dev spaces-szel
 
-A NuGet-hírcsatornák kényelmes módszert biztosítanak a projektek csomagjainak belefoglalására. Az Azure dev Spaces szolgáltatásnak el kell érnie ezt a hírcsatornát ahhoz, hogy a függőségeket megfelelően lehessen telepíteni a Docker-tárolóba.
+A NuGet feed kényelmes módot kínál a csomagforrások projektbe való felvételére. Az Azure Dev Spaces-nek hozzá kell férnie ehhez a hírcsatornához ahhoz, hogy a függőségek megfelelően legyenek telepítve a Docker-tárolóban.
 
 ## <a name="set-up-a-nuget-feed"></a>NuGet-hírcsatorna beállítása
 
-Vegyen fel egy [csomag-referenciát](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) a függőséghez a `PackageReference` csomópont alatt található `*.csproj` fájlban. Például:
+Adjon hozzá [egy csomaghivatkozást](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) `*.csproj` a függőséghez a csomópont alatti `PackageReference` fájlban. Példa:
 
 ```xml
 <ItemGroup>
@@ -31,7 +31,7 @@ Vegyen fel egy [csomag-referenciát](https://docs.microsoft.com/nuget/consume-pa
 </ItemGroup>
 ```
 
-Hozzon létre egy [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) fájlt a Project mappában, és állítsa be a NuGet-csatornához tartozó `packageSources` és `packageSourceCredentials` szakaszt. Az `packageSources` szakasz tartalmazza a hírcsatorna URL-címét, amelynek elérhetőnek kell lennie az AK-fürtből. A `packageSourceCredentials` a hírcsatorna eléréséhez szükséges hitelesítő adatok. Például:
+Hozzon létre egy [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) fájlt `packageSources` a `packageSourceCredentials` projekt mappában, és állítsa be a NuGet feed szakaszait és szakaszait. A `packageSources` szakasz tartalmazza a hírcsatorna URL-címét, amelynek elérhetőnek kell lennie az AKS-fürtből. A `packageSourceCredentials` a hozzáférési adatok a hírcsatorna eléréséhez. Példa:
 
 ```xml
 <packageSources>
@@ -46,17 +46,17 @@ Hozzon létre egy [NuGet. config](https://docs.microsoft.com/nuget/reference/nug
 </packageSourceCredentials>
 ```
 
-Frissítse a Dockerfiles, és másolja a `NuGet.Config` fájlt a rendszerképbe. Például:
+Frissítse a Docker-fájlokat a `NuGet.Config` fájl lemezképbe másolásához. Példa:
 
 ```console
 COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]
 ```
 
 > [!TIP]
-> Windows, `NuGet.Config`, `Nuget.Config`és `nuget.config` minden ugyanúgy működik, mint az érvényes fájlnevek. Linux rendszeren csak a fájl `NuGet.Config` érvényes fájlnév. Mivel az Azure dev Spaces a Docker és a Linux szolgáltatást használja, a fájlnak `NuGet.Config`nevűnek kell lennie. Az elnevezést manuálisan vagy a `dotnet restore --configfile nuget.config`futtatásával is kijavíthatja.
+> Windows rendszerben `NuGet.Config` `Nuget.Config`, `nuget.config` és minden érvényes fájlnévként működik. Linux on, `NuGet.Config` csak egy érvényes fájlnevet a fájlhoz. Mivel az Azure Dev Spaces Dockert és `NuGet.Config`Linuxot használ, ezt a fájlt el kell nevezni. Az elnevezést manuálisan vagy `dotnet restore --configfile nuget.config`a futva javíthatja.
 
 
-Ha a git-t használja, nem kell a NuGet-csatornához tartozó hitelesítő adatokkal rendelkeznie. Adja hozzá a `NuGet.Config`t a projekt `.gitignore`hoz, hogy a `NuGet.Config`-fájl ne legyen hozzáadva a verziókövetés számára. Az Azure dev Spaces-nek szüksége lesz erre a fájlra a tároló képfordítási folyamata során, de alapértelmezés szerint tiszteletben tartja a szinkronizálás során `.gitignore` és `.dockerignore`ban meghatározott szabályokat. Ha módosítani szeretné az alapértelmezett értéket, és engedélyezi az Azure dev Spaces számára a `NuGet.Config` fájl szinkronizálását, frissítse a `azds.yaml` fájlt:
+Ha Git-et használ, nem kell a NuGet-hírcsatornához szükséges hitelesítő adatokat használnia a verziókövetésben. Adja `NuGet.Config` hozzá `.gitignore` a projekthez, `NuGet.Config` hogy a fájl ne kerüljön be a verziókövetésbe. Az Azure dev spaces szüksége lesz erre a fájlra a tárolólemezkép-létrehozási folyamat során, de alapértelmezés szerint tiszteletben tartja a szinkronizálásban `.gitignore` és `.dockerignore` a szinkronizálás során meghatározott szabályokat. Az alapértelmezett beállítás módosításához és az `NuGet.Config` Azure Dev `azds.yaml` Spaces fájl szinkronizálásának engedélyezéséhez frissítse a fájlt:
 
 ```yaml
 build:
@@ -65,10 +65,10 @@ ignore:
 - "!NuGet.Config"
 ```
 
-Ha nem a git-t használja, kihagyhatja ezt a lépést.
+Ha nem használja a Gitet, kihagyhatja ezt a lépést.
 
-Amikor legközelebb futtatja `azds up` vagy megüt `F5` a Visual Studio Code-ban vagy a Visual Studióban, az Azure dev Spaces szinkronizálja a `NuGet.Config` fájlt a csomagok függőségeinek telepítéséhez.
+A Visual Studio-kód vagy a Visual Studio következő futtatásakor `azds up` vagy találatkor `F5` az Azure Dev Spaces szinkronizálja a `NuGet.Config` csomagfüggőségek telepítéséhez használt fájlt.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [NuGet és működéséről](https://docs.microsoft.com/nuget/what-is-nuget).
+További információ a [NuGetről és annak működéséről.](https://docs.microsoft.com/nuget/what-is-nuget)

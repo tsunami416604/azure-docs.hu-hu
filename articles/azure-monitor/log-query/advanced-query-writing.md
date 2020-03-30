@@ -1,27 +1,27 @@
 ---
-title: Speciális lekérdezések a Azure Monitorban | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan használható az elemzési portál a Azure Monitor lekérdezések írásához.
+title: Speciális lekérdezések az Azure Monitorban | Microsoft dokumentumok
+description: Ez a cikk egy oktatóanyagot tartalmaz az Analytics-portál használatával lekérdezések írásához az Azure Monitorban.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
 ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670287"
 ---
-# <a name="writing-advanced-queries-in-azure-monitor"></a>Speciális lekérdezések írása a Azure Monitorban
+# <a name="writing-advanced-queries-in-azure-monitor"></a>Speciális lekérdezések írása az Azure Monitorban
 
 > [!NOTE]
-> A lecke elvégzése előtt fejezze be [a Azure Monitor log Analytics](get-started-portal.md) és [a lekérdezések első](get-started-queries.md) lépéseit.
+> A lecke befejezése előtt el kell [végeznie az Azure Monitor loganalytics szolgáltatásának](get-started-portal.md) első lépéseit és [a lekérdezések](get-started-queries.md) első lépéseit.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-## <a name="reusing-code-with-let"></a>Kód újrafelhasználása a Let
-Az eredmények egy változóhoz való hozzárendeléséhez használja a `let`t, és a lekérdezés későbbi részében tekintse meg a következőt:
+## <a name="reusing-code-with-let"></a>Kód újrafelhasználása a let segítségével
+Segítségével `let` eredményeket rendelhet egy változóhoz, és később hivatkozhat rá a lekérdezésben:
 
 ```Kusto
 // get all events that have level 2 (indicates warning level)
@@ -33,7 +33,7 @@ warning_events
 | summarize count() by Computer 
 ```
 
-A változókhoz állandó értékeket is hozzárendelhet. Ez a módszer lehetővé teszi, hogy beállítsa a paramétereket a lekérdezés minden egyes futtatásakor módosítani kívánt mezőkhöz. Szükség szerint módosítsa a paramétereket. Például a szabad lemezterület és a szabad memória (százalékban) kiszámításához egy adott időablakban:
+Állandó értékeket is rendelhet a változókhoz. Ez egy olyan módszert támogat, amely a lekérdezés minden egyes végrehajtásakor módosítani kívánt mezők paramétereit határozza meg. Szükség szerint módosítsa ezeket a paramétereket. Például a szabad lemezterület és a szabad memória kiszámításához (percentilisekben) egy adott időablakban:
 
 ```Kusto
 let startDate = datetime(2018-08-01T12:55:02);
@@ -51,10 +51,10 @@ Perf
 union FreeDiskSpace, FreeMemory
 ```
 
-Így egyszerűen megváltoztathatja a befejezési idő kezdetét a lekérdezés következő futtatásakor.
+Ez megkönnyíti a lekérdezés következő futtatásakor a befejezési időpont kezdetének módosítását.
 
 ### <a name="local-functions-and-parameters"></a>Helyi függvények és paraméterek
-`let` utasítások használatával létrehozhat olyan függvényeket, amelyek ugyanabban a lekérdezésben használhatók. Definiáljon például egy olyan függvényt, amely egy datetime típusú mezőt (UTC formátumban) fogad, és átalakítja a standard US formátumra. 
+Az `let` utasítások segítségével olyan függvényeket hozhat létre, amelyek ugyanabban a lekérdezésben használhatók. Definiáljon például egy olyan függvényt, amely egy datetime mezőt (UTC formátumban) vesz fel, és azt szabványos amerikai formátumra konvertálja. 
 
 ```Kusto
 let utc_to_us_date_format = (t:datetime)
@@ -69,15 +69,15 @@ Event
 ```
 
 ## <a name="print"></a>Nyomtatás
-a `print` egy olyan táblát ad vissza, amely egyetlen oszlopból és egy sorból áll, amely a számítás eredményét jeleníti meg. Ezt gyakran használják olyan esetekben, amikor egyszerű számításra van szükség. Ha például az aktuális időt szeretné megkeresni a PST-ben, és hozzá szeretne adni egy oszlopot az EST használatával:
+`print`egy oszlopot és egy sort tartalmazó táblázatot ad vissza, amely egy számítás eredményét mutatja. Ezt gyakran használják olyan esetekben, amikor egyszerű számításra van szükség. Például az aktuális idő keresése pst-ben, és egy oszlop hozzáadása EST-vel:
 
 ```Kusto
 print nowPst = now()-8h
 | extend nowEst = nowPst+3h
 ```
 
-## <a name="datatable"></a>DataTable
-`datatable` lehetővé teszi az adathalmazok meghatározását. Adjon meg egy sémát és egy értéket, majd a táblázatot a többi lekérdezési elembe. Például a RAM-használati táblázat létrehozásához és az átlagos érték óránkénti kiszámításához:
+## <a name="datatable"></a>Datatable
+`datatable`lehetővé teszi egy adathalmaz definiálását. Megad egy sémát és egy értékkészletet, majd a táblát bármely más lekérdezési elembe. Például a RAM-használat táblázatának létrehozásához és az óránkénti átlagos érték kiszámításához:
 
 ```Kusto
 datatable (TimeGenerated: datetime, usage_percent: double)
@@ -94,7 +94,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 | summarize avg(usage_percent) by bin(TimeGenerated, 1h)
 ```
 
-A DataTable-szerkezetek a keresési tábla létrehozásakor is hasznosak. Ha például a _SecurityEvent_ táblából származó táblázatos adatok (például eseményazonosító) leképezése a máshol felsorolt események típusaira, akkor hozzon létre egy keresési táblázatot az SecurityEvent `datatable` használatával, és csatlakozzon ehhez a DataTable adattáblához a -adatokkal:
+Az adattábla-konstrukciók is nagyon hasznosak a kerestitábla létrehozásakor. Ha például táblaadatokat, például eseményazonosítókat szeretne leképezni a _SecurityEvent_ táblából, a máshol `datatable` felsorolt eseménytípusokhoz, hozzon létre egy olyan keresmet, amelynek használata az eseménytípusokat használja, és csatlakozzon ehhez az adattáblához a _SecurityEvent_ adataival:
 
 ```Kusto
 let eventCodes = datatable (EventID: int, EventType:string)
@@ -122,13 +122,13 @@ SecurityEvent
 | project TimeGenerated, Account, AccountType, Computer, EventType
 ```
 
-## <a name="next-steps"></a>Következő lépések
-Tekintse meg a [Kusto lekérdezési nyelv](/azure/kusto/query/) használatát ismertető további leckéket a Azure monitor naplózási adataival:
+## <a name="next-steps"></a>További lépések
+Tekintse meg a [Kusto lekérdezési nyelv](/azure/kusto/query/) ének használatát az Azure Monitor naplóadataival:
 
-- [Karakterlánc-műveletek](string-operations.md)
-- [Dátum-és időműveletek](datetime-operations.md)
-- [Összesítési függvények](aggregations.md)
-- [Speciális összesítések](advanced-aggregations.md)
-- [JSON-és adatstruktúrák](json-data-structures.md)
-- [Csatlakozik](joins.md)
+- [Sztringműveletek](string-operations.md)
+- [Dátum és idő típusú adatokkal végzett műveletek](datetime-operations.md)
+- [Aggregátumfüggvények](aggregations.md)
+- [Speciális aggregátumok](advanced-aggregations.md)
+- [JSON és adatstruktúrák](json-data-structures.md)
+- [Illesztések](joins.md)
 - [Diagramok](charts.md)

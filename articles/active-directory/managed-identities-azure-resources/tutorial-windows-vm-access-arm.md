@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag`:` felügyelt identitás használata a Azure Resource Manager eléréséhez – Windows-Azure AD
+title: Oktatóanyag`:` Felügyelt identitás használata az Azure Resource Manager eléréséhez – Windows – Azure AD
 description: Az oktatóanyag azt ismerteti, hogyan férhet hozzá az Azure Resource Managerhez egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4431031e5e96c71c6488b57cc570271d763bb764
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240477"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Hozzáférés a Resource Managerhez egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
@@ -42,7 +42,7 @@ Az Azure-erőforrások felügyelt identitásainak segítségével a kód hozzáf
 1.  Navigáljon az **Erőforráscsoportok** lapra. 
 2.  Válassza ki a **Windows VM** számára létrehozott **erőforráscsoportot**. 
 3.  Lépjen a **Hozzáférés-vezérlés (IAM)** részre a bal oldali panelen. 
-4.  Ezután **adja hozzá a szerepkör-hozzárendelést** a **Windows rendszerű virtuális géphez**tartozó új szerepkör-hozzárendeléshez.  A **Szerepkör** beállításhoz válassza ki az **Olvasó** értéket. 
+4.  Ezután **adjon hozzá szerepkör-hozzárendelést** egy új szerepkör-hozzárendelést a **Windows virtuális géphez.**  A **Szerepkör** beállításhoz válassza ki az **Olvasó** értéket. 
 5.  A következő legördülő menüben a **Hozzáférés hozzárendelése** beállítás számára válassza ki a **Virtuális gép** értéket. 
 6.  Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben. Az **Erőforráscsoport** esetében válassza a **Minden erőforráscsoport** lehetőséget. 
 7.  Végül a **Kiválasztás** mezőben válassza ki a Windows VM-et a legördülő menüben, majd kattintson a **Mentés** gombra.
@@ -56,7 +56,7 @@ Ebben a részben a **PowerShellt** kell használnia.  Ha a **PowerShell** nincs 
 1.  A portálon lépjen a **Virtuális gépek** lapra, lépjen a Windows VM-hez, és az **Áttekintés** területen kattintson a **Csatlakozás** elemre. 
 2.  A **Felhasználónév** és a **Jelszó** mezőbe azt a felhasználónevet és jelszót írja be, amelyet a Windows VM létrehozásakor adott meg. 
 3.  Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a **PowerShellt** a távoli munkamenetben. 
-4.  A meghívó-webkérés parancsmag használatával kérje meg az Azure-erőforrások végpontjának helyi felügyelt identitását, hogy Azure Resource Manager hozzáférési jogkivonatot kapjon.
+4.  Az Invoke-WebRequest parancsmag használatával kérjen kérést az Azure-erőforrások végponthelyi felügyelt identitásához, hogy szerezzen be egy hozzáférési jogkivonatot az Azure Resource Manager számára.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
@@ -76,7 +76,7 @@ Ebben a részben a **PowerShellt** kell használnia.  Ha a **PowerShell** nincs 
     $ArmToken = $content.access_token
     ```
     
-    Végül hívja meg az Azure Resource Managert a hozzáférési jogkivonattal. Ebben a példában a meghívó-webkérés parancsmagot használjuk a Azure Resource Manager meghívásához, és a hozzáférési token belefoglalásához is az engedélyezési fejlécben.
+    Végül hívja meg az Azure Resource Managert a hozzáférési jogkivonattal. Ebben a példában az Invoke-WebRequest parancsmag használatával is kezdeményezzük az Azure Resource Manager hívását, és vegyük fel a hozzáférési jogkivonatot az engedélyezési fejlécbe.
     
     ```powershell
     (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-06-01 -Method GET -ContentType "application/json" -Headers @{ Authorization ="Bearer $ArmToken"}).content

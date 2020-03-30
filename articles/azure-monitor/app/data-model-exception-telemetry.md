@@ -1,33 +1,33 @@
 ---
-title: Azure Application Insights kivétel telemetria adatmodell
-description: Application Insights adatmodell a kivételek telemetria
+title: Azure Application Insights-kivételtelemetriai adatmodell
+description: Application Insights-adatmodell a kivételtelemetriai adatokhoz
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: fa9bc4efd9549cbcb1d50439989c5dea79d9d60c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671936"
 ---
-# <a name="exception-telemetry-application-insights-data-model"></a>Kivétel telemetria: Application Insights adatmodell
+# <a name="exception-telemetry-application-insights-data-model"></a>Kivételtelemetria: Application Insights-adatmodell
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md)a kivétel egy példánya egy kezelt vagy nem kezelt kivételt jelöl, amely a figyelt alkalmazás végrehajtása során fordult elő.
+Az [Application Insights](../../azure-monitor/app/app-insights-overview.md)ban egy kivétel példánya egy felügyelt vagy nem kezelt kivételt jelöl, amely a figyelt alkalmazás végrehajtása során történt.
 
 ## <a name="problem-id"></a>Problémaazonosító
 
-A kivétel kódjában való kidobásának azonosítója. A kivételek csoportosításához használatos. Jellemzően a kivétel típusának és a függvénynek a hívási veremből való kombinációja.
+Annak azonosítója, hogy a kivétel hol lett feldobva a kódban. Kivételcsoportosításhoz használatos. Általában a kivételtípus és a hívási verem függvényének kombinációja.
 
 Maximális hossz: 1024 karakter
 
 ## <a name="severity-level"></a>Súlyossági szint
 
-Nyomkövetés súlyossági szintje Az érték lehet `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
+A súlyossági szint nyomon követése. Az érték `Verbose` `Information`lehet `Warning` `Error`, `Critical`, , , .
 
 ## <a name="exception-details"></a>Kivétel részletei
 
-(Kiterjeszthető)
+(Kikell terjeszteni)
 
 ## <a name="custom-properties"></a>Egyéni tulajdonságok
 
@@ -37,8 +37,8 @@ Nyomkövetés súlyossági szintje Az érték lehet `Verbose`, `Information`, `W
 
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.
-- Ismerje meg, hogyan [diagnosztizálhatja a webalkalmazások kivételeit Application Insights](../../azure-monitor/app/asp-net-exceptions.md)használatával.
-- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .
+- Tekintse meg az Application Insights-típusok és adatmodell [adatmodelljét.](data-model.md)
+- Megtudhatja, hogyan diagnosztizálhatja a [kivételeket a webalkalmazásokban az Application Insights segítségével.](../../azure-monitor/app/asp-net-exceptions.md)
+- Tekintse meg az Application Insights által támogatott [platformokat.](../../azure-monitor/app/platforms.md)

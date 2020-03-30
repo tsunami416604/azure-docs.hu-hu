@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Azure Cosmos DB erőforrások létrehozása a Azure Portal
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Cosmos-adatbázist,-tárolót és-elemeket a Azure Portal használatával.
+title: Rövid útmutató – Azure Cosmos DB-erőforrások létrehozása az Azure Portalról
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Cosmos-adatbázist, -tárolót és -elemeket az Azure Portal használatával.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
 ms.openlocfilehash: bc7e77cc498958b2f8f0c5b2d5ab2d59db97a235
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240407"
 ---
-# <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Gyors útmutató: Azure Cosmos-fiók,-adatbázis,-tároló és-elemek létrehozása a Azure Portal
+# <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Rövid útmutató: Hozzon létre egy Azure Cosmos-fiókot, adatbázist, tárolót és elemeket az Azure Portalról
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](create-cosmosdb-resources-portal.md)
+> * [Azure-portál](create-cosmosdb-resources-portal.md)
 > * [.NET](create-sql-api-dotnet.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
@@ -26,13 +26,13 @@ ms.locfileid: "79240407"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. A Azure Cosmos DB segítségével gyorsan létrehozhat és lekérdezheti a kulcs/érték adatbázisait, a dokumentum-adatbázisokat és a Graph-adatbázisokat, amelyek mindegyike kihasználja a globális elosztási és horizontális méretezési képességeket Azure Cosmos DB középpontjában. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB segítségével gyorsan létrehozhat és lekérdezhet kulcs-érték adatbázisokat, dokumentum-adatbázisokat és gráf-adatbázisokat, amelyek mindegyike kihasználja az Azure Cosmos DB magjában található globális terjesztési és horizontális méretezési képességek előnyeit. 
 
-Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal egy Azure Cosmos DB [SQL API](sql-api-introduction.md) -fiók létrehozásához, egy dokumentum-adatbázis és-tároló létrehozásához, valamint az adattárolóhoz való hozzáadásához. 
+Ez a rövid útmutató bemutatja, hogyan használhatja az Azure Portalon egy Azure Cosmos DB [SQL API-fiók](sql-api-introduction.md) létrehozásához, hozzon létre egy dokumentum-adatbázist és -tárolót, és adjon hozzá adatokat a tárolóhoz. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azure-előfizetés vagy ingyenes Azure Cosmos DB próbaverziós fiók
+Azure-előfizetés vagy ingyenes Azure Cosmos DB próbafiók
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
@@ -45,37 +45,37 @@ Azure-előfizetés vagy ingyenes Azure Cosmos DB próbaverziós fiók
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>Adatbázis és tároló hozzáadása 
 
-Adatbázis és tároló létrehozásához használhatja a Azure Portal Adatkezelő is. 
+Az Azure Portalon az Adatkezelő segítségével létrehozhat egy adatbázist és egy tárolót. 
 
-1.  Válassza ki a **adatkezelő** elemet a Azure Cosmos db fiók lapjának bal oldali navigációs sávjában, majd válassza az **új tároló**elemet. 
+1.  Válassza a **Data Explorer elemet** az Azure Cosmos DB-fióklapján a bal oldali navigációs sávon, majd válassza az Új **tároló**lehetőséget. 
     
-    Előfordulhat, hogy a **tároló hozzáadása** ablak megjelenítéséhez jobbra kell görgetni.
+    Előfordulhat, hogy jobbra kell görgetnie a **Tároló hozzáadása** ablak megtekintéséhez.
     
-    ![A Azure Portal Adatkezelő, tároló hozzáadása panel](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+    ![Az Azure Portal Adatkezelője a Tároló hozzáadása panellel](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
-1.  A **tároló hozzáadása** panelen adja meg az új tároló beállításait.
+1.  A **Tároló hozzáadása** ablaktáblán adja meg az új tároló beállításait.
     
     |Beállítás|Ajánlott érték|Leírás
     |---|---|---|
-    |**Adatbázis-azonosító**|Teendők|Adja meg a *ToDoList* nevet az új adatbázis neveként. Az adatbázis nevének 1 és 255 karakter közöttinek kell lennie, és nem tartalmazhat `/, \\, #, ?`vagy záró szóközt. Tekintse meg az **adatbázis átviteli sebességének** kiosztása lehetőséget, amellyel megoszthatja az adatbázison belül kiosztott átviteli sebességet az adatbázis összes tárolóján. Ez a lehetőség a költségmegtakarítást is segíti. |
-    |**Átviteli sebesség**|400|Az átviteli sebesség 400 adategység/másodperc (RU/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.| 
-    |**Tároló azonosítója**|Elemek|Adja meg az *elemeket* az új tároló neveként. A tároló-azonosítók ugyanazokkal a karakterekkel rendelkeznek, mint az adatbázis neve.|
-    |**Partíciós kulcs**| /kategória| A cikkben ismertetett minta a */category* használja a partíciós kulcsként.|
+    |**Adatbázis azonosítója**|Teendők|Írja be a *ToDoList* nevet az új adatbázis neveként. Az adatbázisneveknek 1 és 255 karakter `/, \\, #, ?`között kell lennie, és nem tartalmazhatnak , illetve záró szóközt. Ellenőrizze a **létesítési adatbázis átviteli beállítás,** lehetővé teszi, hogy megosszák az adatbázis számára kiosztott átviteli átmenő az adatbázis összes tárolója között. Ez az opció is segít a költségmegtakarítást. |
+    |**Teljesítmény**|400|Hagyja az átviteli értéket 400 kérelemegység/másodperc (RU/s) értéken. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.| 
+    |**Tároló azonosítója**|Elemek|Írja be *az elemeket* az új tároló neveként. A tárolóazonosítók nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázisnevekre.|
+    |**Partíciókulcs**| /kategória| A cikkben ismertetett minta a */category* kapcsolót használja partíciókulcsként.|
 
     
-    Ne adjon **egyedi kulcsokat** ehhez a példához. Az egyedi kulcsok lehetővé teszik adatintegritási réteg hozzáadását az adatbázishoz, ha a partíciós kulcs egy vagy több értékének egyediségét biztosítja. További információ: [Azure Cosmos DBban található egyedi kulcsok](unique-keys.md).
+    Ehhez a példához ne adjon hozzá **egyedi kulcsokat.** Az egyedi kulcsok lehetővé teszik, hogy egy adatintegritási réteget adjon az adatbázishoz azáltal, hogy biztosítja egy vagy több érték egyediségét partíciókulcsonként. További információ: [Unique keys in Azure Cosmos DB.](unique-keys.md)
     
-1.  Kattintson az **OK** gombra. A Adatkezelő megjeleníti az új adatbázist és a létrehozott tárolót.
+1.  Válassza **az OK gombot.** Az Adatkezelő megjeleníti az új adatbázist és a létrehozott tárolót.
 
-## <a name="add-data-to-your-database"></a>Adatbevitel az adatbázisba
+## <a name="add-data-to-your-database"></a>Adatok hozzáadása az adatbázishoz
 
-Adja hozzá az új adatbázis adatait az Adatkezelő használatával.
+Adatok hozzáadása az új adatbázishoz az Adatkezelő segítségével.
 
-1. A **adatkezelő**bontsa ki a **ToDoList** -adatbázist, és bontsa ki az **elemek** tárolót. Ezután válassza az **elemek elemet**, majd válassza az **új elem elemet**. 
+1. Az **Adatkezelőben**bontsa ki a **ToDoList** adatbázist, és bontsa ki az **Elemek** tárolót. Ezután válassza **az Elemek**lehetőséget, majd az **Új elem**lehetőséget. 
    
-   ![Új dokumentumok létrehozása az Adatkezelővel az Azure Portalon](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
+   ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
-1. Adja hozzá a következő struktúrát a dokumentumhoz a **dokumentumok** ablaktábla jobb oldalán:
+1. Adja hozzá a következő struktúrát a **dokumentumokhoz** a Dokumentumok ablaktábla jobb oldalán:
 
      ```json
      {
@@ -89,9 +89,9 @@ Adja hozzá az új adatbázis adatait az Adatkezelő használatával.
 
 1. Kattintson a **Mentés** gombra.
    
-   ![Másolja a JSON-adatfájlt, és válassza a Mentés Adatkezelő a Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
+   ![Másolás jsonadatokközött, és az Azure Portalon válassza a Mentés adatkezelőben lehetőséget](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
    
-1. Válassza újra az **új dokumentumot** , és hozzon létre és mentsen egy másik dokumentumot egyedi `id`val, és minden más tulajdonságot és értéket. A dokumentumok bármilyen struktúrával rendelkezhetnek, mivel Azure Cosmos DB nem ró sémát az adataira.
+1. Ismét válassza **az Új dokumentum lehetőséget,** majd `id`hozzon létre és mentsen egy másik dokumentumot egyedi , valamint bármely más tulajdonsággal és értékkel. A dokumentumok bármilyen struktúrával rendelkezhetnek, mivel az Azure Cosmos DB nem ír elő sémát az adatokra.
 
 ## <a name="query-your-data"></a>Adatok lekérdezése
 
@@ -101,15 +101,15 @@ Adja hozzá az új adatbázis adatait az Adatkezelő használatával.
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-Ha csak az adatbázist szeretné törölni, és a jövőben az Azure Cosmos-fiókot kívánja használni, akkor az alábbi lépésekkel törölheti az adatbázist:
+Ha csak az adatbázist szeretné törölni, és a jövőben az Azure Cosmos-fiókot szeretné használni, a következő lépésekkel törölheti az adatbázist:
 
-* Megkapta az Azure Cosmos-fiókját.
-* Nyissa meg **adatkezelő**, kattintson a jobb gombbal a törölni kívánt adatbázisra, majd válassza az **adatbázis törlése**lehetőséget.
-* Adja meg az adatbázis-azonosító/adatbázis nevét a törlési művelet megerősítéséhez. 
+* Az Azure Cosmos-fiókhoz.
+* Nyissa meg **az Adatkezelőt**, kattintson a jobb gombbal a törölni kívánt adatbázisra, és válassza **az Adatbázis törlése parancsot.**
+* A törlési művelet megerősítéséhez adja meg az adatbázis-azonosító/adatbázis nevét. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre adatbázist és tárolót a Adatkezelő használatával. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB-fiókot, hozzon létre egy adatbázist és egy tárolót az Adatkezelő használatával. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be](import-data.md)

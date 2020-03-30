@@ -1,6 +1,6 @@
 ---
-title: A NFSv 4.1 alapértelmezett tartományának konfigurálása a Azure NetApp Fileshoz | Microsoft Docs
-description: Ismerteti, hogyan konfigurálható az NFS-ügyfél a NFSv 4.1 és a Azure NetApp Files használatával.
+title: Az NFSv4.1 alapértelmezett tartományának konfigurálása az Azure NetApp-fájlokhoz | Microsoft dokumentumok
+description: Ez a témakör azt ismerteti, hogy miként konfigurálható az NFSv4.1 és az Azure NetApp Files használatával az NFSclient-ügyfél.
 documentationcenter: ''
 author: b-juche
 manager: ''
@@ -14,63 +14,63 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: b-juche
 ms.openlocfilehash: 77178a23206eadae941794c92b8dd99fe2ca1e05
-ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73906285"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>A NFSv 4.1 alapértelmezett tartományának konfigurálása a Azure NetApp Fileshoz
 
-A Nfsv4 névleképezője bevezeti a hitelesítési tartomány fogalmát. Azure NetApp Files jelenleg a szolgáltatásból az NFS-ügyfél felé irányuló, csak a legfelső szintű felhasználó-hozzárendelést támogatja. Ha a NFSv 4.1 funkciót Azure NetApp Files használatával szeretné használni, frissítenie kell az NFS-ügyfelet.
+Az NFSv4 bevezeti a hitelesítési tartomány fogalmát. Az Azure NetApp Files jelenleg támogatja a csak gyökér szintű felhasználók leképezését a szolgáltatásból az NFS-ügyfélhez. Az NFSv4.1 funkció azure NetApp-fájlokkal való használatához frissítenie kell az NFS-ügyfelet.
 
-## <a name="default-behavior-of-usergroup-mapping"></a>A felhasználó/csoport leképezésének alapértelmezett viselkedése
+## <a name="default-behavior-of-usergroup-mapping"></a>A felhasználó/csoport hozzárendelésének alapértelmezett viselkedése
 
-A legfelső szintű leképezés alapértelmezett értéke a `nobody` felhasználó, mert a Nfsv4 névleképezője tartomány értéke `localdomain`. Ha a Azure NetApp Files NFSv 4.1-es kötetet root-ként csatlakoztatja, a fájlok engedélyei a következőképpen jelennek meg:  
+A gyökérleképezés `nobody` alapértelmezés szerint a felhasználó számára történik, mert az NFSv4 tartomány `localdomain`beállítása . Ha egy Azure NetApp Files NFSv4.1 kötetet csatlakoztat gyökérként, a fájlengedélyek a következőképpen jelennek meg:  
 
-![A felhasználó/csoport leképezésének alapértelmezett viselkedése a NFSv 4.1 esetében](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
+![Az NFSv4.1-hez való felhasználói/csoportleképezés alapértelmezett viselkedése](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 
-Ahogy a fenti példában is látható, az `file1` felhasználójának `root`kell lennie, de alapértelmezés szerint `nobody`re van leképezve.  Ez a cikk bemutatja, hogyan állíthatja be a `file1` felhasználót `root`re.  
+Ahogy a fenti példa `file1` is `root`mutatja, a `nobody` felhasználónak kell lennie, de alapértelmezés szerint le képezi.  Ebből a cikkből `file1` megtudhatja, hogyan állíthatja be a felhasználót a beállítására. `root`  
 
 ## <a name="steps"></a>Lépések 
 
-1. Szerkessze az `/etc/idmapd.conf` fájlt az NFS-ügyfélen.   
-    Törölje a sor `#Domain`ét (azaz távolítsa el az `#` a sorból), és módosítsa `defaultv4iddomain.com`értékre a `localdomain` értéket. 
+1. A `/etc/idmapd.conf` fájl szerkesztése az NFS-ügyfélen.   
+    Szüntesse meg `#Domain` a sor megjegyzését (azaz távolítsa el a `#` sort a sorból), és módosítsa az értéket `localdomain` a értékre. `defaultv4iddomain.com` 
 
     Kezdeti konfiguráció: 
     
-    ![A NFSv 4.1 kezdeti konfigurációja](../media/azure-netapp-files/azure-netapp-files-nfsv41-initial-config.png)
+    ![Az NFSv4.1 kezdeti konfigurációja](../media/azure-netapp-files/azure-netapp-files-nfsv41-initial-config.png)
 
     Frissített konfiguráció:
     
-    ![Frissített konfiguráció a NFSv 4.1-es verziójához](../media/azure-netapp-files/azure-netapp-files-nfsv41-updated-config.png)
+    ![Az NFSv4.1 frissített konfigurációja](../media/azure-netapp-files/azure-netapp-files-nfsv41-updated-config.png)
 
-2. Válassza le a jelenleg csatlakoztatott NFS-köteteket.
-3. Frissítse a `/etc/idmapd.conf` fájlt.
-4. Indítsa újra a `rpcbind` szolgáltatást a gazdagépen (`service rpcbind restart`), vagy egyszerűen indítsa újra a gazdagépet.
-5. Csatlakoztassa az NFS-köteteket igény szerint.   
+2. Lekell választani a jelenleg csatlakoztatott NFS-köteteket.
+3. Frissítse `/etc/idmapd.conf` a fájlt.
+4. Indítsa `rpcbind` újra a szolgáltatást`service rpcbind restart`a gazdagépen ( ), vagy egyszerűen indítsa újra a gazdagépet.
+5. Csatlakoztassa az NFS-köteteket szükség szerint.   
 
-    Lásd: [kötetek csatlakoztatása vagy leválasztása Windows vagy Linux rendszerű virtuális gépekhez](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md). 
+    Lásd: [Kötet csatlakoztatása vagy leválasztása Windows vagy Linux rendszerű virtuális gépekhez.](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) 
 
-Az alábbi példa az eredményül kapott felhasználó/csoport módosítását mutatja be: 
+A következő példa az eredményül kapott felhasználói/csoportváltozást mutatja be: 
 
-![Eredményül kapott konfiguráció a NFSv 4.1 számára](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
+![Az NFSv4.1 eredményül kapott konfigurációja](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
 
-A példa azt mutatja, hogy a felhasználó/csoport mostantól `nobody`ról `root`ra módosult.
+Ahogy a példa is mutatja, a `nobody` felhasználó/csoport mostantól `root`a-ra változott.
 
-## <a name="behavior-of-other-non-root-users-and-groups"></a>Más (nem gyökérszintű) felhasználók és csoportok viselkedése
+## <a name="behavior-of-other-non-root-users-and-groups"></a>Más (nem legfelső szintű) felhasználók és csoportok viselkedése
 
-Azure NetApp Files támogatja a helyi felhasználókat (a gazdagépen helyileg létrehozott felhasználókat), akik NFSv 4.1-köteteken található fájlokhoz vagy mappákhoz vannak társítva. A szolgáltatás azonban jelenleg nem támogatja a felhasználók/csoportok több csomóponton történő leképezését. Ezért az egyik gazdagépen létrehozott felhasználók nem képezhetők le alapértelmezés szerint a másik gazdagépen létrehozott felhasználók számára. 
+Az Azure NetApp Files támogatja azokat a helyi felhasználókat (a gazdagépen helyileg létrehozott felhasználókat), akik nfsv4.1-kötetekben lévő fájlokhoz vagy mappákhoz társított engedélyekkel rendelkeznek. A szolgáltatás azonban jelenleg nem támogatja a felhasználók/csoportok leképezését több csomópont között. Ezért az egyik állomáson létrehozott felhasználók alapértelmezés szerint nem felelnek meg egy másik állomáson létrehozott felhasználóknak. 
 
-A következő példában a `Host1` három meglévő tesztelési felhasználói fiókkal rendelkezik (`testuser01`, `testuser02`, `testuser03`): 
+A következő `Host1` példában három meglévő tesztfelhasználói fiókkal (`testuser01`, `testuser02`, , `testuser03`): 
 
-![Eredményül kapott konfiguráció a NFSv 4.1 számára](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
+![Az NFSv4.1 eredményül kapott konfigurációja](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
 
-`Host2`ne feledje, hogy a felhasználói fiókok nem lettek létrehozva, de a kötet mindkét gazdagépre csatlakoztatva van:
+A `Host2`alkalmazásban vegye figyelembe, hogy a tesztfelhasználói fiókok nem lettek létrehozva, de ugyanaz a kötet mindkét állomásra csatlakoztatva van:
 
-![Eredményül kapott konfiguráció a NFSv 4.1 számára](../media/azure-netapp-files/azure-netapp-files-nfsv41-host2-users.png)
+![Az NFSv4.1 eredményül kapott konfigurációja](../media/azure-netapp-files/azure-netapp-files-nfsv41-host2-users.png)
 
 ## <a name="next-step"></a>Következő lépés 
 
-[Kötetek csatlakoztatása vagy leválasztása Windows vagy Linux rendszerű virtuális gépekhez](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+[Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 

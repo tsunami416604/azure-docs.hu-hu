@@ -1,6 +1,6 @@
 ---
-title: Elosztott adatforgalom – nagy kapacitású (Citus) – Azure Database for PostgreSQL
-description: Ismerje meg az elosztott táblákat, a táblákat, a helyi táblákat és a szegmenseket Azure Database for PostgreSQLban.
+title: Elosztott adatok – Nagykapacitású (Citus) – Azure-adatbázis a PostgreSQL-hez
+description: Ismerje meg az elosztott táblák, referenciatáblák, helyi táblák és szilánkok az Azure Database for PostgreSQL.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,50 +8,50 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: ade7632dc042741a07bdb59e34e30b3fb464e0e9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243652"
 ---
-# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Elosztott adatforgalom Azure Database for PostgreSQLban – nagy kapacitású (Citus)
+# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Elosztott adatok az Azure Database for PostgreSQL -For PostgreSQL - Hyperscale (Citus)
 
-Ez a cikk a Azure Database for PostgreSQL – nagy kapacitású (Citus) három típusú táblázatát ismerteti.
-Azt mutatja be, hogyan tárolódnak az elosztott táblák a szegmensek között, és hogy a szegmensek hogyan legyenek elhelyezve a csomópontokon.
+Ez a cikk ismerteti a három táblatípus az Azure Database for PostgreSQL – Hyperscale (Citus).
+Azt mutatja be, hogyan osztott táblák szegmensekként tárolja, és a módját, hogy a szilánkok kerülnek a csomópontokon.
 
-## <a name="table-types"></a>Táblák típusai
+## <a name="table-types"></a>Táblázattípusok
 
-A nagy kapacitású-(Citus-) kiszolgálócsoport három típusa van, amelyek mindegyike különböző célokra szolgál.
+Egy nagy méretű (Citus) kiszolgálócsoportban háromféle tábla létezik, amelyek mindegyike különböző célokra használatos.
 
-### <a name="type-1-distributed-tables"></a>1\. típus: elosztott táblák
+### <a name="type-1-distributed-tables"></a>1. típus: Elosztott táblák
 
-Az első típus és a leggyakoribb érték az elosztott táblák. Úgy tűnik, hogy az SQL-utasításoknak normális táblák, de horizontálisan particionálva vannak a munkavégző csomópontok között. Ez azt jelenti, hogy a tábla sorait különböző csomópontok tárolják, a szilánkok nevű töredék táblákban.
+Az első típus és a leggyakoribb az elosztott táblák. Úgy tűnik, hogy az SQL-utasítások normál táblái, de vízszintesen vannak felosztva a feldolgozócsomópontok között. Ez azt jelenti, hogy a tábla sorai különböző csomópontokon, a szilánkok nevű töredéktáblákban tárolódnak.
 
-A nagy kapacitású (Citus) nem csak az SQL-, hanem a DDL-utasításokat futtatja a fürtben.
-Az elosztott táblák sémájának módosítása a tábla összes munkaterületének a feldolgozók közötti frissítéséhez.
+A nagy kapacitású (Citus) nem csak SQL, hanem DDL-utasítások fut a fürtön.
+Az elosztott tábla sémájának módosítása a tábla összes szegmensének frissítéséhez a dolgozók között.
 
-#### <a name="distribution-column"></a>Terjesztési oszlop
+#### <a name="distribution-column"></a>Elosztás oszlop
 
-A nagy kapacitású (Citus) algoritmusos horizontális skálázást használ a sorok szegmensekhez rendeléséhez. A hozzárendelés determinisztikus módon a Distribution oszlop nevű Table oszlop értéke alapján történik. A fürt rendszergazdájának meg kell jelölnie ezt az oszlopot egy tábla terjesztésekor.
-A megfelelő választás a teljesítmény és a funkcionalitás szempontjából fontos.
+A nagyméretű (Citus) algoritmikus horizontális skálázást használ a sorok szegmensekhez rendeléséhez. A hozzárendelés determinisztikusan történik a terjesztési oszlopnak nevezett táblaoszlop értéke alapján. A fürtrendszergazdának ezt az oszlopot kell kijelölnie a tábla terjesztésekor.
+A helyes választás fontos a teljesítmény és a funkcionalitás érdekében.
 
-### <a name="type-2-reference-tables"></a>2\. típus: hivatkozási táblák
+### <a name="type-2-reference-tables"></a>2. típus: Referenciatáblák
 
-A hivatkozási tábla olyan elosztott tábla, amelynek teljes tartalma egyetlen szegmensbe van koncentrálva. A szegmens minden feldolgozón replikálódik. A munkavégzők lekérdezései helyileg is hozzáférhetnek a hivatkozási információkhoz anélkül, hogy egy másik csomóponttól származó sorokat kellene megkérniük. A hivatkozási táblák nem rendelkeznek terjesztési oszlopokkal, mert nem kell Megkülönböztetniük a különálló szegmenseket egymás után.
+A referenciatábla olyan elosztott tábla, amelynek teljes tartalma egyetlen szegmensbe van koncentrálva. A szegmens replikálódik minden dolgozón. Lekérdezések bármely feldolgozó elérheti a referencia-információkat helyileg, anélkül, hogy a hálózati terhelést kér sorokat egy másik csomóponttól. A referenciatáblák nak nincs eloszlásoszlopa, mert nem szükséges különbséget tenni a soronkénti külön szegmensek között.
 
-A hivatkozási táblák általában kicsik, és a rendszer a munkavégző csomóponton futó lekérdezésekhez kapcsolódó adatokat tárolja. Ilyen például az enumerált értékek, például a megrendelés állapota vagy a termékkategóriák.
+A referenciatáblák általában kicsik, és olyan adatok tárolására szolgálnak, amelyek bármely munkavégző csomóponton futó lekérdezésekhez relevánsak. Egy példa a számba vett értékek, például a rendelési állapotok vagy a termékkategóriák.
 
-### <a name="type-3-local-tables"></a>3\. típus: helyi táblák
+### <a name="type-3-local-tables"></a>3. típus: Helyi asztalok
 
-Ha a nagy kapacitású (Citus) használja, a csatlakozáshoz használt koordinátori csomópont egy normál PostgreSQL-adatbázis. Létrehozhat hagyományos táblákat a koordinátoron, és megadhatja, hogy ne legyenek szétválasztva.
+A Hyperscale (Citus) használataesetén a koordinátori csomópont, amelyhez csatlakozik, egy rendszeres PostgreSQL-adatbázis. Létrehozhat rendes táblákat a koordinátoron, és dönthet úgy, hogy nem mántikálja őket.
 
-A helyi táblák jó jelöltje olyan kis adminisztrációs táblák, amelyek nem vesznek részt a csatlakoztatási lekérdezésekben. Ilyen például az alkalmazások bejelentkezésének és hitelesítésének felhasználói táblázata.
+A helyi táblák jó jelöltje kis felügyeleti táblák lennének, amelyek nem vesznek részt illesztési lekérdezésekben. Erre példa az alkalmazásbejelentkezés és -hitelesítés felhasználói táblája.
 
 ## <a name="shards"></a>Szilánkok
 
-Az előző szakasz azt ismerteti, hogy az elosztott táblák hogyan tárolódnak a munkavégző csomópontokon. Ez a szakasz a technikai részleteket ismerteti.
+Az előző szakasz ismerteti, hogyan osztott táblák tárolódnak szegmensek feldolgozó csomópontokon. Ez a rész további technikai részleteket tárgyal.
 
-A koordinátor `pg_dist_shard` metaadat-táblázata tartalmaz egy sort a rendszer minden egyes elosztott táblájához. A sor egy egész számmal rendelkező szegmens-AZONOSÍTÓra illeszkedik egy kivonatoló térben (shardminvalue, shardmaxvalue).
+A `pg_dist_shard` koordinátor metaadat-táblája a rendszer minden egyes elosztott táblájának minden szegmenséhez tartalmaz egy sort. A sor egy shard-azonosítót egy kivonattérben lévő egész számokkal (shardminvalue, shardmaxvalue) egyezik.
 
 ```sql
 SELECT * from pg_dist_shard;
@@ -64,13 +64,13 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Ha a koordinátor-csomópont szeretné meghatározni, hogy melyik szegmens tartalmaz egy `github_events`sort, akkor az a sorban lévő eloszlás oszlop értékét kivonata. Ezután a csomópont ellenőrzi, hogy a szegmens\'s tartománya tartalmazza-e a kivonatos értéket. A tartományok úgy vannak meghatározva, hogy a kivonatoló függvény képe a különálló Unió legyen.
+Ha a koordinátor csomópont meg szeretné `github_events`határozni, hogy melyik shard rendelkezik egy sorával, akkor kiírja a terjesztési oszlop értékét a sorban. Ezután a csomópont ellenőrzi, hogy melyik szegmenstartomány\'tartalmazza a kivonatolt értéket. A tartományok úgy vannak definiálva, hogy a kivonatoló függvény képe a különálló egységük.
 
-### <a name="shard-placements"></a>Szilánkok
+### <a name="shard-placements"></a>Shard elhelyezések
 
-Tegyük fel, hogy a szegmens 102027 a kérdéses sorhoz van társítva. A sor olvasása vagy írása egy `github_events_102027` nevű táblában történik az egyik feldolgozóban. Melyik feldolgozót? Ezt teljes mértékben a metaadat-táblázatok határozzák meg. A szegmensek feldolgozóra való hozzárendelését nevezzük a szilánkok elhelyezésének.
+Tegyük fel, hogy az 102027-es shard a kérdéses sorhoz van társítva. A sor olvasása vagy írása az egyik dolgozó által hívott `github_events_102027` táblában történik. Melyik munkás? Ezt teljes egészében a metaadattáblák határozzák meg. A szegmens leképezése a feldolgozó a shard elhelyezése.
 
-A koordinátor csomópontja olyan töredékekre írja a lekérdezéseket, amelyek az adott táblákra hivatkoznak, például az `github_events_102027`ra, és futtatja ezeket a töredékeket a megfelelő munkatársain. Íme egy példa arra, hogy egy lekérdezés a háttérben fusson, hogy megtalálja a csomópontot, amely a 102027-es szegmens AZONOSÍTÓját tárolja.
+A koordinátor idrét a lekérdezéseket olyan töredékekbe írja át, amelyek az adott táblákhoz hasonlóan `github_events_102027` hivatkoznak, és ezeket a töredékeket a megfelelő dolgozókon futtatja. Íme egy példa egy lekérdezés fut a színfalak mögött, hogy megtalálja a csomópont, amely 102027-es shard-azonosítót.
 
 ```sql
 SELECT
@@ -90,5 +90,5 @@ WHERE shardid = 102027;
     │  102027 │ localhost │     5433 │
     └─────────┴───────────┴──────────┘
 
-## <a name="next-steps"></a>Következő lépések
-- Megtudhatja, hogyan [választhat terjesztési oszlopot](concepts-hyperscale-choose-distribution-column.md) az elosztott táblákhoz.
+## <a name="next-steps"></a>További lépések
+- További információ az elosztott táblák [terjesztési oszlopának kiválasztásáról.](concepts-hyperscale-choose-distribution-column.md)

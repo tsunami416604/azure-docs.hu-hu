@@ -1,6 +1,6 @@
 ---
-title: B2B együttműködés felhasználói jogcímek leképezése – Azure Active Directory
-description: Szabja testre az SAML-jogkivonatban kiállított felhasználói jogcímeket Azure Active Directory (Azure AD) B2B-felhasználók számára.
+title: B2B együttműködési felhasználói jogcím-hozzárendelés – Azure Active Directory
+description: Az Azure Active Directory (Azure AD) B2B-felhasználók SAML-jogkivonatában kiadott felhasználói jogcímek testreszabása.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,32 +12,32 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3508865d9f89501cf70e09087c6a609beb6662b2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74273187"
 ---
-# <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>VÁLLALATKÖZI együttműködés felhasználói jogcímek leképezése Azure Active Directory
+# <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>B2B együttműködési felhasználói jogcím-hozzárendelés az Azure Active Directoryban
 
-Azure Active Directory (Azure AD) támogatja az SAML-jogkivonatban kiadott jogcímek testreszabását a B2B együttműködési felhasználók számára. Amikor egy felhasználó hitelesíti az alkalmazást, az Azure AD egy SAML-jogkivonatot bocsát ki az alkalmazásnak, amely az egyedileg azonosított felhasználóval kapcsolatos információkat (vagy jogcímeket) tartalmaz. Alapértelmezés szerint ez magában foglalja a felhasználó felhasználónevét, e-mail-címét, utónevét és vezetéknevét.
+Az Azure Active Directory (Azure AD) támogatja a B2B együttműködési felhasználók SAML-jogkivonatában kiadott jogcímek testreszabását. Amikor egy felhasználó hitelesíti magát az alkalmazás, az Azure AD kiad egy SAML-jogkivonatot az alkalmazásnak, amely információkat (vagy jogcímeket) tartalmaz az egyedileg azonosító felhasználóról. Alapértelmezés szerint ez magában foglalja a felhasználó felhasználónevét, e-mail címét, utónevét és vezetéknevét.
 
-A [Azure Portal](https://portal.azure.com)megtekintheti vagy szerkesztheti az SAML-jogkivonatban eljuttatott jogcímeket az alkalmazásnak. A beállítások eléréséhez válassza **Azure Active Directory** > **vállalati alkalmazások** > az egyszeri bejelentkezésre konfigurált alkalmazást, > **egyszeri bejelentkezést**. Tekintse meg az SAML-jogkivonat beállításait a **felhasználói attribútumok** szakaszban.
+Az [Azure Portalon](https://portal.azure.com)megtekintheti vagy szerkesztheti az alkalmazássaml-tokenben küldött jogcímeket. A beállítások eléréséhez válassza az **Azure Active Directory** > **Enterprise alkalmazások** > az egyszeri bejelentkezéshez konfigurált alkalmazást > **egyszeri bejelentkezést.** Tekintse meg az SAML token beállításait a **Felhasználói attribútumok** szakaszban.
 
-![Megjeleníti az SAML-jogkivonat attribútumait a felhasználói felületen](media/claims-mapping/view-claims-in-saml-token.png)
+![Az SAML token attribútumok megjelenítése a felhasználói felületen](media/claims-mapping/view-claims-in-saml-token.png)
 
-Az SAML-jogkivonatban kiadott jogcímek szerkesztésének két lehetséges oka lehet:
+Két oka lehet annak, hogy miért kell az SAML-jogkivonatban kiadott jogcímeket szerkesztenie:
 
-1. Az alkalmazáshoz különböző jogcím-URI-k vagy jogcím-értékek szükségesek.
+1. Az alkalmazás igényel egy másik jogcím URI-k vagy jogcímértékek.
 
-2. Az alkalmazás megköveteli, hogy a NameIdentifier jogcím az Azure AD-ben tárolt egyszerű felhasználónév (UPN) helyett legyen.
+2. Az alkalmazás megköveteli, hogy a NameIdentifier jogcím, hogy valami más, mint a felhasználó egyszerű neve (UPN), amely az Azure AD-ben tárolt.
 
-A jogcímek hozzáadásával és szerkesztésével kapcsolatos további információkért lásd: [az SAML-jogkivonatban kiadott jogcímek testreszabása a Azure Active Directory-ben nagyvállalati alkalmazásokhoz](../develop/active-directory-saml-claims-customization.md).
+A jogcímek hozzáadásáról és szerkesztéséről az [Azure Active Directoryban nagyvállalati alkalmazások SAML-jogkivonatában kiadott jogcímek testreszabása](../develop/active-directory-saml-claims-customization.md)című témakörben talál további információt.
 
-A B2B-együttműködés felhasználói számára a NameID és az UPN-t használó több-bérlős felhasználók biztonsági okokból nem érhetők el.
+A B2B együttműködési felhasználók számára a NameID és az UPN cross-tenant leképezése biztonsági okokból megakadályozható.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a B2B együttműködés felhasználói tulajdonságairól: [Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai](user-properties.md).
-- A B2B-együttműködés felhasználói jogkivonatával kapcsolatos információkért lásd: [felhasználói jogkivonatok megismerése az Azure ad B2B együttműködésben](user-token.md).
+- A B2B együttműködési felhasználói tulajdonságairól az [Azure Active Directory B2B együttműködési felhasználóinak tulajdonságai című](user-properties.md)témakörben talál további információt.
+- A B2B-együttműködési felhasználók felhasználói jogkivonatairól az [Azure AD B2B együttműködés felhasználói jogkivonata című témakörben](user-token.md)talál további információt.
 

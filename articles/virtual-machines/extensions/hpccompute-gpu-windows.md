@@ -1,6 +1,6 @@
 ---
-title: NVIDIA GPU illesztőprogram-bővítmény – Azure Windows rendszerű virtuális gépek
-description: Microsoft Azure bővítmény az NVIDIA GPU-illesztőprogramok telepítéséhez az N sorozatú, Windows rendszerű számítási virtuális gépeken.
+title: NVIDIA GPU illesztőprogram-bővítmény – Azure Windows virtuális gépek
+description: Microsoft Azure-bővítmény az NVIDIA GPU-illesztőprogramok Telepítéséhez Windows rendszerű N sorozatú számítási virtuális gépeken.
 services: virtual-machines-windows
 documentationcenter: ''
 author: vermagit
@@ -14,26 +14,26 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
 ms.openlocfilehash: c388f433327b5328483f10fbef637a6fdfd08832
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250542"
 ---
-# <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA GPU illesztőprogram-bővítmény a Windowshoz
+# <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA GPU illesztőprogram-bővítmény Windowshoz
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a bővítmény az NVIDIA GPU-illesztőprogramokat telepíti a Windows N sorozatú virtuális gépeken. A virtuálisgép-családtól függően a bővítmény a CUDA vagy a GRID-illesztőprogramokat telepíti. Ha ezt a bővítményt használó NVIDIA-illesztőprogramokat telepít, elfogadja és elfogadja az [NVIDIA végfelhasználói licencszerződés](https://go.microsoft.com/fwlink/?linkid=874330)feltételeit. A telepítési folyamat során a virtuális gép újraindulhat az illesztőprogram telepítésének befejezéséhez.
+Ez a bővítmény az NVIDIA GPU-illesztőprogramokat windows N sorozatú virtuális gépekre telepíti. A virtuálisgép-családtól függően a bővítmény cuda- vagy GRID-illesztőprogramokat telepít. Ha ezzel a kiterjesztéssel telepíti az NVIDIA illesztőprogramokat, elfogadja és elfogadja az [NVIDIA végfelhasználói licencszerződés](https://go.microsoft.com/fwlink/?linkid=874330)feltételeit. A telepítési folyamat során a virtuális gép újraindulhat az illesztőprogram telepítésének befejezéséhez.
 
-Az illesztőprogramok manuális telepítésére és az aktuálisan támogatott verziókra vonatkozó utasítások [itt](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup)érhetők el.
-A bővítmény az NVIDIA GPU [-illesztőprogramok Linux N sorozatú virtuális gépeken](hpccompute-gpu-linux.md)történő telepítéséhez is elérhető.
+Az illesztőprogramok kézi telepítésére és a jelenlegi támogatott verziókra vonatkozó utasítások [itt](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup)találhatók.
+Az NVIDIA [GPU-illesztőprogramok Linux N sorozatú virtuális gépekre](hpccompute-gpu-linux.md)történő telepítéséhez is elérhető egy kiterjesztés.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Ez a bővítmény a következő OSs-t támogatja:
+Ez a bővítmény a következő ok-műveleteket támogatja:
 
 | Disztribúció | Verzió |
 |---|---|
@@ -43,11 +43,11 @@ Ez a bővítmény a következő OSs-t támogatja:
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-Az NVIDIA GPU-illesztőprogramok Microsoft Azure kiterjesztése megköveteli, hogy a célként megadott virtuális gép csatlakoztatva legyen az internethez, és hozzáférhessen.
+A Microsoft Azure-bővítmény NVIDIA GPU-illesztőprogramok megköveteli, hogy a cél virtuális gép csatlakozik az internethez, és hozzáféréssel rendelkezik.
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON a bővítmény sémáját jeleníti meg.
+A következő JSON a bővítmény sémáját mutatja.
 
 ```json
 {
@@ -71,10 +71,10 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Name (Név) | Érték és példa | Adattípus |
+| Név | Érték / Példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
-| publisher | Microsoft.HpcCompute | sztring |
+| közzétevő | Microsoft.HpcCompute | sztring |
 | type | NvidiaGpuDriverWindows | sztring |
 | typeHandlerVersion | 1.2 | int |
 
@@ -83,11 +83,11 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon 
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. A sablonok ideálisak egy vagy több olyan virtuális gép üzembe helyezéséhez, amelyek a telepítés utáni konfigurációt igénylik.
+Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonokkal telepíthetők. A sablonok ideálisak egy vagy több olyan virtuális gép üzembe helyezéséhez, amelyek üzembe helyezés után konfigurációt igényelnek.
 
-Virtuálisgép-bővítmények JSON konfigurációjának a virtuális gép típusú erőforrást belülre, vagy elhelyezve, a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON konfigurációs elhelyezését hatással van az erőforrás nevét, és írja be az értékét. További információ: [a gyermek erőforrások nevének és típusának beállítása](../../azure-resource-manager/resource-manager-template-child-resource.md). 
+A virtuálisgép-bővítmény JSON-konfigurációja beágyazható a virtuálisgép-erőforrásba, vagy elhelyezhető egy Erőforrás-kezelő JSON-sablon gyökér- vagy legfelső szintjén. A JSON-konfiguráció elhelyezése hatással van az erőforrás nevének és típusának értékére. További információt a [Név és a gyermekerőforrások típusának beállítása](../../azure-resource-manager/resource-manager-template-child-resource.md)című témakörben talál. 
 
-Az alábbi példa azt feltételezi, hogy a bővítmény a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a rendszer a JSON-t a virtuális gép `"resources": []` objektumára helyezi.
+A következő példa feltételezi, hogy a bővítmény a virtuális gép erőforrásba van ágyazva. A bővítmény erőforrás beágyazásakor a `"resources": []` JSON a virtuális gép objektumába kerül.
 
 ```json
 {
@@ -141,7 +141,7 @@ az vm extension set `
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-A bővítmények állapotával kapcsolatos adatok beolvashatók a Azure Portalból, valamint a Azure PowerShell és az Azure CLI használatával. Egy adott virtuális gép bővítményeinek központi telepítési állapotának megtekintéséhez futtassa a következő parancsot.
+A bővítmény-üzembe helyezések állapotára vonatkozó adatok az Azure Portalról, valamint az Azure PowerShell és az Azure CLI használatával is lekérdezhetők. Egy adott virtuális gép bővítményeinek telepítési állapotának megtekintéséhez futtassa a következő parancsot.
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
@@ -151,7 +151,7 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-A bővítmény végrehajtásának kimenete a következő könyvtárba van naplózva:
+A bővítmény-végrehajtási kimenet a következő könyvtárba kerül:
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
@@ -159,21 +159,21 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 ### <a name="error-codes"></a>Hibakódok
 
-| Hibakód | Jelentés | A művelet lehetséges |
+| Hibakód | Jelentés | Lehetséges művelet |
 | :---: | --- | --- |
-| 0 | Sikeres művelet |
-| 1 | A művelet sikeresen befejeződött. Újraindítás szükséges. |
-| 100 | A művelet nem támogatott, vagy nem hajtható végre. | Lehetséges okok: a PowerShell verziója nem támogatott, a virtuális gép mérete nem N sorozatú virtuális gép, az adatletöltés meghiúsul. A hibák okának megállapításához ellenőrizze a naplófájlokat. |
-| 240, 840 | Művelet időtúllépése. | Újrapróbálkozás művelet. |
-| -1 | Kivétel történt. | Ellenőrizze a naplófájlokat a kivétel okának meghatározásához. |
-| -5x | A művelet a függőben lévő újraindítás miatt megszakadt. | Indítsa újra a virtuális gépet. A telepítés az újraindítás után is folytatódni fog. Az eltávolítást manuálisan kell meghívni. |
+| 0 | A művelet sikeres |
+| 1 | A művelet sikeres. Újraindítás szükséges. |
+| 100 | A művelet nem támogatott vagy nem hajtható végre. | Lehetséges okok: PowerShell-verzió nem támogatott, a virtuális gép mérete nem N-sorozatú virtuális gép, az adatok letöltésének sikertelen. A hiba okának megállapításához ellenőrizze a naplófájlokat. |
+| 240, 840 | A művelet időeltelése. | Próbálkozzon újra a művelettel. |
+| -1 | Kivétel történt. | A kivétel okának meghatározásához ellenőrizze a naplófájlokat. |
+| -5x | A művelet egy folyamatban lévő újraindítás miatt megszakadt. | Indítsa újra a virtuális gépet. A telepítés újraindítás után folytatódik. Az eltávolítást manuálisan kell meghívni. |
 
 
 ### <a name="support"></a>Támogatás
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/community/)is. Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha további segítségre van szüksége a cikk bármely pontján, felveheti a kapcsolatot az Azure szakértőivel az [MSDN Azure és a Stack Overflow fórumokon.](https://azure.microsoft.com/support/community/) Másik lehetőségként benyújthat egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza a Támogatás beszerezni lehetőséget. Az Azure-támogatás használatáról a [Microsoft Azure támogatási gyIK](https://azure.microsoft.com/support/faq/)című területén olvashat.
 
-## <a name="next-steps"></a>Következő lépések
-További információ a bővítményekről: [virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez](features-windows.md).
+## <a name="next-steps"></a>További lépések
+A bővítményekről a [Virtuálisgép-bővítmények és -szolgáltatások windowsos](features-windows.md)című témakörben talál további információt.
 
-Az N sorozatú virtuális gépekkel kapcsolatos további információkért lásd: GPU-ra [optimalizált virtuálisgép-méretek](../windows/sizes-gpu.md).
+Az N sorozatú virtuális gépekről a [GPU-ra optimalizált virtuális gépméretek](../windows/sizes-gpu.md)című témakörben talál további információt.

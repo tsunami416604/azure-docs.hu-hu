@@ -1,6 +1,6 @@
 ---
-title: Azure Diagnostics bővítmény a Windowshoz
-description: Azure-beli Windows rendszerű virtuális gépek figyelése az Azure Diagnostics bővítmény használatával
+title: Azure Diagnosztikai bővítmény windowsos használatra
+description: Az Azure Windows virtuális gépek figyelése az Azure Diagnosztikai bővítmény használatával
 services: virtual-machines-windows
 documentationcenter: ''
 author: johnkemnetz
@@ -13,39 +13,39 @@ ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
 ms.openlocfilehash: d4ba3e8bbdad72f10c630a056f988ec83e9b1a68
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471618"
 ---
-# <a name="azure-diagnostics-extension-for-windows-vms"></a>Azure Diagnostics bővítmény a Windows rendszerű virtuális gépekhez
+# <a name="azure-diagnostics-extension-for-windows-vms"></a>Azure diagnosztikai bővítmény Windows virtuális gépekhez
 
 ## <a name="overview"></a>Áttekintés
 
-A Azure Diagnostics virtuálisgép-bővítmény lehetővé teszi a figyelési adatok, például a teljesítményszámlálók és az eseménynaplók összegyűjtését a Windows rendszerű virtuális gépről. Részletesen megadhatja, hogy milyen adatokat szeretne összegyűjteni, illetve hogy hová szeretné tenni az adatokat, például egy Azure Storage-fiók vagy egy Azure Event hub számára. Ezen adatok használatával diagramokat építhet ki a Azure Portal, vagy metrikai riasztásokat hozhat létre.
+Az Azure Diagnostics virtuálisgép-bővítmény lehetővé teszi, hogy figyelési adatokat, például teljesítményszámlálókat és eseménynaplókat gyűjtsön a Windows virtuális gépről. Részletesen megadhatja, hogy milyen adatokat szeretne gyűjteni, és hová szeretné látni az adatokat, például egy Azure Storage-fiók vagy egy Azure Event Hub. Ezeket az adatokat is használhatja diagramok létrehozásához az Azure Portalon, vagy metrikariasztások at hozhat létre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A Azure Diagnostics bővítmény a Windows 10-ügyfél, a Windows Server 2008 R2, a 2012, az 2012 R2 és az 2016 használatával futtatható.
+Az Azure Diagnosztikai bővítmény futtatható windows 10-es, Windows Server 2008 R2, 2012, 2012 R2 és 2016 rendszeren.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A Azure Diagnostics bővítmény megköveteli, hogy a célként megadott virtuális gép csatlakozik az internethez. 
+Az Azure Diagnostics Extension megköveteli, hogy a cél virtuális gép csatlakozik az internethez. 
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-[A jelen dokumentum a Azure Diagnostics-bővítmény sémáját és a tulajdonság értékeit írja le.](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+[Az Azure Diagnostics Extension séma és a tulajdonság értékek ismertetik ebben a dokumentumban.](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletezett JSON-séma Azure Resource Manager sablonban használható a Azure Diagnostics bővítmény futtatásához Azure Resource Manager sablon központi telepítésekor. Lásd: [figyelés és diagnosztika használata Windows rendszerű virtuális gépekkel és Azure Resource Manager-sablonokkal](extensions-diagnostics-template.md).
+Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonokkal telepíthetők. Az előző szakaszban részletezett JSON-séma egy Azure Resource Manager-sablonban használható az Azure Diagnostics bővítmény futtatásához az Azure Resource Manager-sablon üzembe helyezése során. Lásd: [Figyelés és diagnosztika használata Windows vm és Azure Resource Manager-sablonokkal.](extensions-diagnostics-template.md)
 
-## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
+## <a name="azure-cli-deployment"></a>Az Azure CLI üzembe helyezése
 
-Az Azure CLI használatával telepítheti az Azure Diagnostics-bővítményt egy meglévő virtuális gépre. Cserélje le a védett beállítások és beállítások tulajdonságokat érvényes JSON-ra a fenti kiterjesztési sémából. 
+Az Azure CLI használható az Azure Diagnostics bővítmény üzembe helyezéséhez egy meglévő virtuális gépen. Cserélje le a védett beállításokat és beállítások tulajdonságait érvényes JSON-ra a fenti bővítménysémából. 
 
 ```azurecli
 az vm extension set \
@@ -59,7 +59,7 @@ az vm extension set \
 
 ## <a name="powershell-deployment"></a>PowerShell-telepítés
 
-A `Set-AzVMDiagnosticsExtension` parancs használatával adhatja hozzá a Azure Diagnostics bővítményt egy meglévő virtuális géphez. Lásd még: a [PowerShell használata a Azure Diagnostics Windows rendszerű virtuális gépeken való engedélyezéséhez](ps-extensions-diagnostics.md).
+A `Set-AzVMDiagnosticsExtension` parancs segítségével hozzáadhatja az Azure Diagnostics bővítményt egy meglévő virtuális géphez. Lásd: [A PowerShell használata az Azure Diagnosztika engedélyezéséhez Windows rendszert futtató virtuális gépeken.](ps-extensions-diagnostics.md)
 
  
 
@@ -78,18 +78,18 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure parancssori felület használatával. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure CLI használatával.
+A bővítmény-üzembe helyezések állapotára vonatkozó adatok az Azure Portalról és az Azure CLI használatával is lekérdezhetők. Egy adott virtuális gép bővítményeinek telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure CLI használatával.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-[Tekintse meg ezt a cikket](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md) a Azure Diagnostics bővítmény részletes hibaelhárítási útmutatójában.
+[Tekintse meg ezt](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md) a cikket egy átfogóbb hibaelhárítási útmutató az Azure Diagnostics bővítmény.
 
 ### <a name="support"></a>Támogatás
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha további segítségre van szüksége a cikk bármely pontján, felveheti a kapcsolatot az Azure szakértőivel az [MSDN Azure és a Stack Overflow fórumokon.](https://azure.microsoft.com/support/forums/) Másik lehetőségként benyújthat egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza a Támogatás beszerezni lehetőséget. Az Azure-támogatás használatáról a [Microsoft Azure támogatási gyIK](https://azure.microsoft.com/support/faq/)című területén olvashat.
 
-## <a name="next-steps"></a>További lépések
-* [További információ a Azure Diagnostics bővítménnyel kapcsolatban](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [A bővítmény sémájának és verzióinak áttekintése](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+## <a name="next-steps"></a>Következő lépések
+* [További információ az Azure diagnosztikai bővítményről](../../azure-monitor/platform/diagnostics-extension-overview.md)
+* [A bővítményséma és -verziók áttekintése](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)

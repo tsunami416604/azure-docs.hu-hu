@@ -1,75 +1,75 @@
 ---
-title: Tartós Orchestrator-kódokra vonatkozó korlátozások – Azure Functions
-description: A koordináló függvény újrajátszása és a kód megkötései az Azure Durable Functions számára.
+title: Tartós orchestrator kódmegkötések - Azure Functions
+description: Vezénylési függvény visszajátszása és kódmegkötések az Azure durable functions.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4ed604302ca187ad4953e865d68dc73030a37c02
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77562139"
 ---
-# <a name="orchestrator-function-code-constraints"></a>Orchestrator megkötések
+# <a name="orchestrator-function-code-constraints"></a>Orchestrator függvénykód-megkötések
 
-Durable Functions a [Azure functions](../functions-overview.md) kiterjesztése, amely lehetővé teszi az állapot-nyilvántartó alkalmazások kiépítését. A [Orchestrator függvénnyel](durable-functions-orchestrations.md) más tartós függvények végrehajtását is elvégezheti a Function alkalmazásban. A Orchestrator-függvények állapot-, megbízható és potenciálisan hosszú ideig futók.
+A Durable Functions az [Azure Functions](../functions-overview.md) bővítménye, amely lehetővé teszi az állapotalapú alkalmazások készítését. Egy [orchestrator függvény](durable-functions-orchestrations.md) taszthat ja vezénylheti a függvényalkalmazáson belüli egyéb tartós függvények végrehajtását. Az Orchestrator-függvények állapotalapúak, megbízhatóak és potenciálisan hosszú ideig futnak.
 
 ## <a name="orchestrator-code-constraints"></a>Vezénylői kódkorlátozások
 
-A Orchestrator függvények az [események beszerzését](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) használják a megbízható végrehajtás és a helyi változó állapotának fenntartása érdekében. A Orchestrator kód [újrajátszása](durable-functions-orchestrations.md#reliability) a Orchestrator függvényben írható kód típusára vonatkozó korlátozásokat hoz létre. A Orchestrator functions-nek például *determinisztikus*kell lennie: egy Orchestrator függvény többször is le lesz játszva, és minden alkalommal ugyanazt az eredményt kell létrehoznia.
+Az Orchestrator függvények [eseményforrást](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) használnak a megbízható végrehajtás és a helyi változó állapotának fenntartása érdekében. Az orchestrator kód [visszajátszási viselkedése](durable-functions-orchestrations.md#reliability) megkötéseket hoz létre az orchestrator függvényben írható kód típusára. Például az orchestrator függvényeknek *determinisztikusnak*kell lenniük: az orchestrator függvénytöbbszöri visszajátszásra kerül, és minden alkalommal ugyanazt az eredményt kell produkálnia.
 
 ### <a name="using-deterministic-apis"></a>Determinisztikus API-k használata
 
-Ez a szakasz néhány egyszerű útmutatót tartalmaz, amelyek segítségével biztosíthatja a kód determinisztikus.
+Ez a szakasz néhány egyszerű útmutatást tartalmaz, amelyek biztosítják, hogy a kód determinisztikus legyen.
 
-A Orchestrator függvények bármilyen API-t hívhatnak meg a cél nyelvein. Fontos azonban, hogy a Orchestrator functions csak a determinisztikus API-kat hívja meg. A *DETERMINISZTIKUS API* egy olyan API, amely mindig ugyanazokat az értékeket adja vissza, mint az azonos bemenet, függetlenül attól, hogy mikor vagy milyen gyakran hívják.
+Az Orchestrator függvények bármely API-t meghívhatnak a célnyelveken. Fontos azonban, hogy az orchestrator függvények csak determinisztikus API-kat hívjanak meg. A *determinisztikus API* egy API, amely mindig ugyanazt az értéket adja vissza, ha ugyanazt a bemenetet kapja, függetlenül attól, hogy mikor és milyen gyakran hívják meg.
 
-A következő táblázat példákat mutat be olyan API-kra, amelyeket el kell kerülnie, mert *nem* determinisztikus. Ezek a korlátozások csak a Orchestrator függvényekre érvényesek. Más függvények típusai nem rendelkeznek ilyen korlátozásokkal.
+Az alábbi táblázat példákat mutat be olyan API-kra, amelyeket el kell kerülnie, mert *nem* determinisztikusak. Ezek a korlátozások csak az orchestrator függvényekre vonatkoznak. Más függvénytípusok nem rendelkeznek ilyen korlátozásokkal.
 
 | API-kategória | Ok | Áthidaló megoldás |
 | ------------ | ------ | ---------- |
-| Dátumok és időpontok  | Az aktuális dátumot vagy időpontot visszaadó API-k determinált, mert a visszaadott érték eltér az egyes visszajátszás esetén. | Használja a`CurrentUtcDateTime` API-t a .NET-ben vagy a `currentUtcDateTime` API-ban a JavaScriptben, amely biztonságos a Replay számára. |
-| GUID azonosítók és UUID-ket  | A véletlenszerű GUID vagy UUID értéket visszaadó API-k determinált, mert a generált érték különbözik az egyes visszajátszás esetén. | Használjon `NewGuid` a .NET-ben, vagy a JavaScriptben `newGuid` a véletlenszerű GUID azonosítók biztonságos létrehozásához. |
-| Véletlenszerű számok | A véletlenszerű számokat visszaadó API-k determinált, mert a generált érték különbözik az egyes ismétlésekhez. | Egy tevékenység függvénnyel véletlenszerű számokat adhat vissza egy előkészítési művelethez. A tevékenység-függvények visszatérési értékei mindig biztonságosak a visszajátszás esetén. |
-| Kötések | A bemeneti és kimeneti kötések általában I/O-műveletek, és determinált. A Orchestrator függvénynek nem szabad közvetlenül használnia még a koordináló [ügyfelet](durable-functions-bindings.md#orchestration-client) és az [entitás-ügyfél](durable-functions-bindings.md#entity-client) kötéseit. | Bemeneti és kimeneti kötések használata az ügyfélen vagy a tevékenységi függvényeken belül. |
-| Network (Hálózat) | A hálózati hívások külső rendszereket érintenek, és determinált. | Hálózati hívások létrehozásához használja a Activity functions funkciót. Ha HTTP-hívást kell létrehoznia a Orchestrator függvényből, használhatja a [tartós http API-kat](durable-functions-http-features.md#consuming-http-apis)is. |
-| API-k blokkolása | Az olyan API-k blokkolása, mint a .NET és a hasonló API-k `Thread.Sleep`, a Orchestrator függvények teljesítmény-és skálázási problémáit okozhatják, és kerülendő A Azure Functions fogyasztási tervben a szükségtelen futtatókörnyezeti díjakat is eredményezhetnek. | A rendelkezésre álló API-k blokkolására alternatívákat használhat. Például a `CreateTimer` használatával késleltetheti a hangelőkészítési végrehajtást. A [tartós időzítő](durable-functions-timers.md) késései nem számítanak bele egy Orchestrator függvény végrehajtási idejébe. |
-| Aszinkron API-k | A Orchestrator-kódnak soha nem kell elindítania az aszinkron műveleteket, kivéve a `IDurableOrchestrationContext` API vagy a `context.df` objektum API-ját használva. Nem használhatja például `Task.Run`, `Task.Delay`és `HttpClient.SendAsync` a .NET-ben, illetve a `setTimeout` és a `setInterval` JavaScriptben. Az állandó feladatok keretrendszere egyetlen szálon futtatja a Orchestrator-kódot. Más aszinkron API-k által hívható más szálakkal nem tud működni. | A Orchestrator függvény csak tartós aszinkron hívásokat hajt végre. A Activity functions szolgáltatásnak más aszinkron API-hívásokat kell végeznie. |
-| Aszinkron JavaScript-függvények | A JavaScript Orchestrator függvények nem deklarálható `async`ként, mert a Node. js futtatókörnyezet nem garantálja, hogy az aszinkron függvények determinisztikus. | A JavaScript-Orchestrator funkcióinak deklarálása szinkron létrehozó függvényekként. |
-| Többszálú API-k | Az állandó feladat-keretrendszer egyetlen szálon futtatja az Orchestrator-kódot, és nem tud más szálakkal kommunikálni. Az új szálaknak egy előkészítési folyamatba való bevezetéséhez determinált végrehajtás vagy holtpont is vezethet. | A Orchestrator függvények szinte soha nem használhatnak többszálú API-kat. A .NET-ben például ne használja a `ConfigureAwait(continueOnCapturedContext: false)`; Ez biztosítja a feladat folytatását a Orchestrator függvény eredeti `SynchronizationContext`ján. Ha ilyen API-k szükségesek, csak a tevékenységi funkciókra korlátozzák a használatukat. |
-| Statikus változók | Kerülje a nem állandó statikus változók használatát a Orchestrator függvények esetében, mert az értékek idővel változhatnak, ami a determinált futásidejű viselkedését eredményezi. | Használjon állandókat, vagy korlátozza a statikus változók használatát a tevékenység funkcióihoz. |
-| Környezeti változók | Ne használjon környezeti változókat a Orchestrator functions szolgáltatásban. Az értékek idővel változhatnak, ami a determinált futásidejű viselkedését eredményezi. | A környezeti változókat csak az ügyfél-vagy a tevékenységi függvényekből kell hivatkozni. |
-| Végtelen hurkok | Kerülje a végtelen hurkokat a Orchestrator functions szolgáltatásban. Mivel a tartós feladatok keretrendszere a folyamat előrehaladásának előrehaladtával menti a végrehajtási előzményeket, egy végtelen hurok miatt előfordulhat, hogy egy Orchestrator-példány elfogyott a memóriából. | Végtelen hurkos forgatókönyvek esetén használjon olyan API-kat, mint például a .NET vagy a `continueAsNew` a JavaScriptben a függvény végrehajtásának újraindításához és a korábbi végrehajtási előzmények elvetéséhez `ContinueAsNew`. |
+| Dátumok és időpontok  | Az aktuális dátumot vagy időpontot visszaadó API-k nem determinisztikusak, mivel a visszaadott érték minden visszajátszásnál eltérő. | Használja`CurrentUtcDateTime` az API-t `currentUtcDateTime` a .NET vagy az API JavaScript, amelyek biztonságos a visszajátszás. |
+| GUID-k és UUID-k  | A véletlenszerű GUID-ot vagy UUID-t visszaadó API-k nem determinisztikusak, mivel a generált érték minden visszajátszásnál eltérő. | Használja `NewGuid` a .NET vagy a JavaScript biztonságosan véletlenszerű GUID.Use in .NET or `newGuid` in JavaScript to safely generate random GUIDs. |
+| Véletlen számok | A véletlen számokat visszaadó API-k nem determinisztikusak, mivel a generált érték minden visszajátszásnál eltérő. | Egy tevékenységfüggvény segítségével adja vissza a véletlenszerű számokat egy vezénylési. A tevékenységfüggvények visszatérési értékei mindig biztonságosak a visszajátszáshoz. |
+| Kötések | A bemeneti és kimeneti kötések általában i/o-t tesznek ki, és nem determinisztikusak. Az orchestrator függvény nem használhatja közvetlenül még a [vezénylési ügyfél-](durable-functions-bindings.md#orchestration-client) és [entitásügyfél-kötéseket](durable-functions-bindings.md#entity-client) sem. | Az ügyfél- vagy tevékenységfüggvényeken belüli bemeneti és kimeneti kötések használata. |
+| Network (Hálózat) | A hálózati hívások külső rendszereket érintenek, és nem determinisztikusak. | Tevékenységfüggvények használatával kezdeményezzen hálózati hívásokat. Ha HTTP-hívást kell kezdeményeznie az orchestrator függvényből, használhatja a [tartós HTTP API-kat](durable-functions-http-features.md#consuming-http-apis)is. |
+| API-k blokkolása | Blokkoló API-k, mint `Thread.Sleep` a .NET és hasonló API-k teljesítmény- és méretezési problémákat okozhat az orchestrator függvények, és el kell kerülni. Az Azure Functions consumptioni csomagban akár szükségtelen futásidejű díjakat is eredményezhetnek. | Használjon alternatívákat az API-k letiltására, ha azok elérhetők. Például a `CreateTimer` vezénylési végrehajtás késleltetésének bevezetéséhez használható. [A tartós időzítő](durable-functions-timers.md) késések nem számítanak bele az orchestrator függvény végrehajtási idejébe. |
+| Aszinkron API-k | Az Orchestrator-kód soha nem indíthat el `IDurableOrchestrationContext` aszinkron `context.df` műveletet, kivéve az API vagy az objektum API-jának használatával. Például `Task.Run`nem használhatja a `Task.Delay`, `HttpClient.SendAsync` és a `setTimeout` `setInterval` . A tartós feladatkeretrendszer egyetlen szálon futtatja az orchestrator-kódot. Nem tud más szálakkal együttműködni, amelyeket más aszinkron API-k hívhatnak meg. | Az orchestrator függvénycsak tartós aszinkron hívásokat kell kezdeményeznie. A tevékenységfüggvényeknek minden más aszinkron API-hívást kell kezdeményezniük. |
+| JavaScript-függvények aszinkron | A JavaScript orchestrator függvények `async` nem deklarálhatók, mert a node.js futásidejű nem garantálja, hogy az aszinkron függvények determinisztikusak. | JavaScript orchestrator függvények deklarálása szinkron generátor függvényként. |
+| Szálas API-k | A tartós feladatkeretrendszer egyetlen szálon futtatja az orchestrator-kódot, és nem tud más szálakkal együttműködni. Új szálak bevezetése a vezénylési végrehajtás vezethet nem determinisztikus végrehajtás vagy holtpontra jutott. | Orchestrator függvények szinte soha nem használja threading API-kat. A .NET-ben például `ConfigureAwait(continueOnCapturedContext: false)`ne használja a; ez biztosítja, hogy a feladatok folytatása az `SynchronizationContext`orchestrator függvény eredeti énjein fusson. Ha ilyen API-k szükségesek, korlátozza azok használatát csak tevékenységfunkciókra. |
+| Statikus változók | Ne használjon nem állandó statikus változókat az orchestrator függvényekben, mert értékeik idővel változhatnak, ami nem determinisztikus futásidejű viselkedést eredményez. | Használjon állandókat, vagy korlátozza a statikus változók használatát a tevékenységfüggvényekre. |
+| Környezeti változók | Ne használjon környezeti változókat az orchestrator függvényekben. Értékeik idővel változhatnak, ami nem determinisztikus futásidejű viselkedést eredményez. | A környezeti változókra csak az ügyfélfüggvényekvagy tevékenységfüggvények ből lehet hivatkozni. |
+| Végtelen hurkok | Kerülje a végtelen hurkok orchestrator függvények. Mivel a tartós feladatkeretrendszer a vezénylési függvény előrehaladtával menti a végrehajtási előzményeket, a végtelen ciklus miatt az orchestrator példány ból kifogy a memória. | Végtelen ciklusforgatókönyvek esetén a `ContinueAsNew` .NET vagy `continueAsNew` a JavaScript hez hasonló API-k használatával indítsa újra a függvény-végrehajtást, és vesse el a korábbi végrehajtási előzményeket. |
 
-Habár a megkötések alkalmazása megnehezíti az első lépéseket, a gyakorlatban könnyen követhető.
+Bár ezek a korlátok alkalmazása elsőre nehéznek tűnhet, a gyakorlatban könnyen követhetőek.
 
-A tartós feladat-keretrendszer megkísérli az előző szabályok megsértésének észlelését. Ha jogsértést talál, a keretrendszer **NonDeterministicOrchestrationException** kivételt jelez. Ez az észlelési viselkedés azonban nem fogja tudni felfogni az összes megsértést, és nem függ tőle.
+A tartós feladatkeretrendszer megpróbálja észlelni az előző szabályok megsértését. Ha megsérül, a keretrendszer egy **NonDeterministicOrchestrationException** kivételt okoz. Ez az észlelési viselkedés azonban nem fogja elkapni az összes jogsértést, és nem függhet tőle.
 
 ## <a name="versioning"></a>Verziókezelés
 
-A tartós előkészítést a napok, hónapok, évek vagy akár [örökké](durable-functions-eternal-orchestrations.md)is futtathatja. A nem befejezetlen rendszerfolyamatokat befolyásoló Durable Functions alkalmazások által végrehajtott minden kód megszakadhat, ha megszakítja az újrajátszás viselkedését. Ezért fontos, hogy körültekintően tervezze meg a kód frissítését. A kód verziószámozásának részletes ismertetését a [verziószámozást ismertető cikkben](durable-functions-versioning.md)találja.
+A tartós vezénylési lehet futtatni folyamatosan napokig, hónapokig, évekig, vagy akár [örökké](durable-functions-eternal-orchestrations.md). A Tartós függvények alkalmazások, amelyek befolyásolják a befejezetlen vezénylési hatással lehet megtörni a vezénylések visszajátszási viselkedését. Ezért fontos, hogy gondosan tervezze meg a kód frissítéseket. A kód verziószámozásának részletesebb leírását a [verziószámozásról szóló cikkben](durable-functions-versioning.md)olvashatja.
 
 ## <a name="durable-tasks"></a>Tartós feladatok
 
 > [!NOTE]
-> Ez a szakasz a tartós feladatok keretrendszerének belső megvalósítási részleteit ismerteti. Ezen információk ismerete nélkül is használhat tartós függvényeket. Ez csak az újrajátszás viselkedésének megismerésére szolgál.
+> Ez a szakasz a tartós feladatkeret belső megvalósítási részleteit ismerteti. A tartós függvényeket az adatok ismerete nélkül is használhatja. Ez csak az, hogy segítsen megérteni a visszajátszás viselkedését.
 
-A Orchestrator függvények biztonságos várakozási feladatait időnként *tartós feladatoknak*nevezzük. A tartós feladatok keretrendszere létrehozza és kezeli ezeket a feladatokat. Ilyenek például a **CallActivityAsync**, a **WaitForExternalEvent**és a **CreateTimer** által visszaadott feladatok a .net Orchestrator függvényekben.
+Az orchestrator függvényekben biztonságosan várakozó feladatokat esetenként tartós feladatoknak is *nevezik.* A tartós feladatkeretrendszer létrehozza és kezeli ezeket a feladatokat. Ilyenek például a **CallActivityAsync**, **a WaitForExternalEvent**és a **CreateTimer** által a .NET orchestrator függvényekben visszaadott feladatok.
 
-Ezek a tartós feladatok belsőleg kezelhetők a .NET-ben lévő `TaskCompletionSource` objektumok listájával. Az újrajátszás során ezek a feladatok a Orchestrator-kód végrehajtásának részeként jönnek létre. Készen állnak, mert a diszpécser enumerálja a megfelelő előzményi eseményeket.
+Ezeket a tartós feladatokat belsőleg kezeli a .NET objektumainak `TaskCompletionSource` listája. A visszajátszás során ezek a feladatok az orchestrator kódvégrehajtásának részeként jönnek létre. A diszpécser a megfelelő előzményesemények et sorolja fel.
 
-A feladatokat a rendszer szinkron módon hajtja végre egyetlen szál használatával, amíg az összes előzmény újra nem lett játszva. Az előzmények végének újrajátszása által nem befejezett tartós feladatok megfelelő műveleteket hajtanak végre. Előfordulhat például, hogy egy várólistán lévő hívni egy üzenetet.
+A feladatok végrehajtása szinkron módon egyetlen szál használatával történik, amíg az összes előzményt vissza nem játssza. Az előzményismétlés végéig be nem fejezett tartós feladatok megfelelő műveleteket hajtanak végre. Előfordulhat például, hogy egy üzenet várólistára kerül egy tevékenységfüggvény hívásához.
 
-Ez a szakasz a futásidejű viselkedés leírásában segít megérteni, hogy miért nem használható a Orchestrator függvény `await` vagy `yield` nem tartós feladatban. Két ok van: a diszpécser szál nem várja meg, amíg a feladat befejeződik, és a feladat visszahívása valószínűleg megsértheti a Orchestrator függvény nyomkövetési állapotát. A rendszer bizonyos futásidejű ellenőrzéseket végez a fenti szabálysértések észlelése érdekében.
+Ez a szakasz leírása a futásidejű viselkedés segít megérteni, hogy miért `await` `yield` egy orchestrator függvény nem használható, vagy egy nem tartós feladat. Ennek két oka van: a diszpécser szál nem tud várni a feladat befejezéséhez, és minden visszahívás, hogy a feladat potenciálisan sérült a követési állapotát az orchestrator függvény. Néhány futásidejű ellenőrzés van érvényben, hogy segítsen felismerni ezeket a jogsértéseket.
 
-Ha többet szeretne megtudni arról, hogy a tartós feladat-keretrendszer hogyan hajtja végre a Orchestrator functions szolgáltatást, tekintse [meg a tartós feladat forráskódját a githubon](https://github.com/Azure/durabletask). Különösen lásd: [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) és [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
+Ha többet szeretne megtudni arról, hogy a tartós feladatkeretrendszer hogyan hajtja végre az orchestrator-függvényeket, olvassa el a [Tartós feladat forráskódját a GitHubon.](https://github.com/Azure/durabletask) Lásd különösen [a TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) és [TaskOrchestrationContext.cs.](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Megtudhatja, hogyan hívhat meg alfolyamatokat](durable-functions-sub-orchestrations.md)
+> [További információ az alvezőműveletek meghívásáról](durable-functions-sub-orchestrations.md)
 
 > [!div class="nextstepaction"]
-> [Útmutató a verziószámozás kezeléséhez](durable-functions-versioning.md)
+> [További információ a verziószámozás kezeléséről](durable-functions-versioning.md)

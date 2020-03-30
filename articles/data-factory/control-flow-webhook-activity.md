@@ -1,6 +1,6 @@
 ---
-title: Webhook-tevékenység Azure Data Factory
-description: A webhook tevékenység nem folytatja a folyamat végrehajtását mindaddig, amíg a felhasználó által megadott feltételekkel ellenőrzi a csatolt adatkészletet.
+title: Webhook-tevékenység az Azure Data Factoryban
+description: A webhook-tevékenység nem folytatja a folyamat végrehajtását, amíg a felhasználó által megadott bizonyos feltételekkel nem ellenőrzi a csatolt adatkészletet.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: ced2279878ee2eb361ec7338647418658e411513
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79212998"
 ---
-# <a name="webhook-activity-in-azure-data-factory"></a>Webhook-tevékenység Azure Data Factory
+# <a name="webhook-activity-in-azure-data-factory"></a>Webhook-tevékenység az Azure Data Factoryban
 
-A webhook-tevékenységek az Egyéni kódban vezérelhetik a folyamatok végrehajtását. A webhook tevékenységgel az ügyfelek kódja hívhat meg egy végpontot, és átadhatja a visszahívási URL-címet. A folyamat futása megvárja a visszahívás meghívását, mielőtt továbblép a következő tevékenységre.
+A webhook-tevékenység vezérelheti a folyamatok végrehajtását az egyéni kódon keresztül. A webhook-tevékenység, az ügyfelek kódja hívhat meg egy végpontot, és adja át a visszahívási URL-t. A folyamat futtatása megvárja a visszahívásmeghívást, mielőtt a következő tevékenységre lépne.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -53,27 +53,27 @@ A webhook-tevékenységek az Egyéni kódban vezérelhetik a folyamatok végreha
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-**név** | A webhook tevékenység neve. | Sztring | Igen |
-**type** | "Webhook" értékre kell beállítani. | Sztring | Igen |
-**metódus** | A célként megadott végpont REST API metódusa. | sztring elemet. A támogatott típus a "POST". | Igen |
-**URL** | A célként megadott végpont és elérési út. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Igen |
-**fejlécek** | A kérelembe küldendő fejlécek. Az alábbi példa egy kérelem nyelvét és típusát állítja be: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Igen. `Content-Type` fejléc, például `"headers":{ "Content-Type":"application/json"}` szükséges. |
-**törzse** | A végpontnak elküldhető adattartalmat jelöli. | Érvényes JSON vagy kifejezés a JSON **resultType** -értékkel. Lásd a kérelem hasznos adatainak sémájának [kérése adattartalom-sémáját](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) . | Igen |
-**hitelesítés** | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű" és a "ClientCertificate". További információért lásd: [Hitelesítés](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication). Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Nem |
-**időtúllépés** | Mennyi ideig várakozik a tevékenység a **callBackUri** által meghatározott visszahívás meghívásához. Az alapértelmezett érték 10 perc ("00:10:00"). Az értékek a *d*TimeSpan formátumban jelennek meg. *óó*:*PP*:*ss*mm. | Sztring | Nem |
-**Jelentés állapota a visszahívás során** | Lehetővé teszi, hogy a felhasználó jelentést készítsen egy webhook-tevékenység sikertelen állapotáról. | Logikai | Nem |
+**név** | A webhook-tevékenység neve. | Sztring | Igen |
+**Típus** | "WebHook" lesz. | Sztring | Igen |
+**Módszer** | A CÉLvégpont REST API-metódusa. | Sztring. A támogatott típus a "POST". | Igen |
+**Url** | A célvégpont és az elérési út. | Karakterlánc vagy kifejezés egy karakterlánc **resultType** értékével. | Igen |
+**Fejlécek** | A kérésnek küldött fejlécek. Íme egy példa, amely beállítja a `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`nyelvet és a beírt kéréshez: . | Karakterlánc vagy kifejezés egy karakterlánc **resultType** értékével. | Igen. Egy `Content-Type` ilyen `"headers":{ "Content-Type":"application/json"}` fejléc szükséges. |
+**Szervezet** | A végpontra küldött hasznos adat. | Érvényes JSON vagy egy kifejezés, amelynek **resultType** értéke JSON. Lásd: [Hasznos séma kérése](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) a kérelem hasznos adatának sémájához. | Igen |
+**Hitelesítés** | A végpont hívásához használt hitelesítési módszer. A támogatott típusok az "Alapszintű" és a "ClientCertificate". További információért lásd: [Hitelesítés](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication). Ha nincs szükséges hitelesítés, zárja ki ezt a tulajdonságot. | Karakterlánc vagy kifejezés egy karakterlánc **resultType** értékével. | Nem |
+**timeout** | Mennyi ideig vár a tevékenység a **callBackUri** által megadott visszahívás meghívására. Az alapértelmezett érték 10 perc ("00:10:00"). Az értékek TimeSpan *formátumúak d*. *ó*:*mm*:*ss*. | Sztring | Nem |
+**Jelentés állapota visszahívásközben** | Lehetővé teszi, hogy egy felhasználó jelentse a webhook-tevékenység sikertelen állapotát. | Logikai | Nem |
 
 ## <a name="authentication"></a>Hitelesítés
 
 A webhook-tevékenység a következő hitelesítési típusokat támogatja.
 
-### <a name="none"></a>Nincsenek
+### <a name="none"></a>None
 
-Ha nincs szükség hitelesítésre, ne adja meg a **hitelesítési** tulajdonságot.
+Ha nincs szükséges hitelesítés, ne adja meg a **hitelesítési** tulajdonságot.
 
-### <a name="basic"></a>Alapszintű
+### <a name="basic"></a>Basic
 
-Az alapszintű hitelesítéshez használandó Felhasználónév és jelszó megadása.
+Adja meg az alapfokú hitelesítéshez használandó felhasználónevet és jelszót.
 
 ```json
 "authentication":{
@@ -85,7 +85,7 @@ Az alapszintű hitelesítéshez használandó Felhasználónév és jelszó mega
 
 ### <a name="client-certificate"></a>Ügyféltanúsítvány
 
-Itt adhatja meg a PFX-fájl és a jelszó Base64 kódolású tartalmát.
+Adja meg a PFX-fájl és a jelszó Base64 kódolású tartalmát.
 
 ```json
 "authentication":{
@@ -97,7 +97,7 @@ Itt adhatja meg a PFX-fájl és a jelszó Base64 kódolású tartalmát.
 
 ### <a name="managed-identity"></a>Felügyelt identitás
 
-Az adatok gyárának felügyelt identitásával adhatja meg azt az erőforrás-URI-t, amelyhez a hozzáférési jogkivonatot kéri. Az Azure Resource Management API meghívásához használja a `https://management.azure.com/`. További információ a felügyelt identitások működéséről: [felügyelt identitások az Azure-erőforrások áttekintéséhez](/azure/active-directory/managed-identities-azure-resources/overview).
+Az adat-előállító felügyelt identitása segítségével adja meg azt az erőforrás URI-t, amelyhez a hozzáférési jogkivonatot kéri. Az Azure Resource Management API `https://management.azure.com/`hívásához használja a használatát. A felügyelt identitások működéséről az [Azure-erőforrások felügyelt identitások áttekintése című témakörben olvashat bővebben.](/azure/active-directory/managed-identities-azure-resources/overview)
 
 ```json
 "authentication": {
@@ -107,21 +107,21 @@ Az adatok gyárának felügyelt identitásával adhatja meg azt az erőforrás-U
 ```
 
 > [!NOTE]
-> Ha az adat-előállító git-tárházral van konfigurálva, az alapszintű vagy az ügyféltanúsítvány-alapú hitelesítés használatához a hitelesítő adatait Azure Key Vault kell tárolnia. A Azure Data Factory nem tárol jelszavakat a git-ben.
+> Ha az adatgyár git-tárházzal van konfigurálva, az alapszintű vagy ügyféltanúsítvány-hitelesítés használatához az Azure Key Vaultban kell tárolnia a hitelesítő adatait. Az Azure Data Factory nem tárolja a jelszavakat a Gitben.
 
 ## <a name="additional-notes"></a>További megjegyzések
 
-Data Factory átadja az URL-végpontnak elküldett törzs további tulajdonságának **callBackUri** . A Data Factory a megadott időtúllépési érték előtt meghívja ezt az URI-t. Ha nem hívja meg az URI-t, a tevékenység a "időtúllépés" állapottal meghiúsul.
+A Data Factory továbbítja a további **tulajdonság callBackUri** a szervezetben küldött az URL-végpontra. A Data Factory azt várja, hogy ezt az URI-t a megadott időtúlérték előtt kell meghívni. Ha az URI nem hívható meg, a tevékenység sikertelen állapotú "TimedOut".
 
-A webhook tevékenység meghiúsul, ha az egyéni végpontra irányuló hívás sikertelen. Bármely hibaüzenet felvehető a visszahívási törzsbe, és egy későbbi tevékenységben is felhasználható.
+A webhook-tevékenység sikertelen, ha az egyéni végpont hívása sikertelen. Bármilyen hibaüzenet hozzáadható a visszahívási szervezethez, és felhasználható egy későbbi tevékenységben.
 
-Minden REST API hívás esetén az ügyfél időtúllépést mutat, ha a végpont egy percen belül nem válaszol. Ez a szabványos HTTP ajánlott eljárás. A probléma megoldásához hozzon létre egy 202 mintát. Az aktuális esetben a végpont 202 (elfogadva) és az ügyfél-lekérdezéseket adja vissza.
+Minden REST API-hívás esetén az ügyfél időtúlmúlása, ha a végpont nem válaszol egy percen belül. Ez a viselkedés a http-vel kapcsolatos szokásos ajánlott eljárás. A probléma megoldásához valósítson meg egy 202-es mintát. Az aktuális esetben a végpont 202 (Elfogadva) értéket ad vissza, és az ügyfél lekérdezi.
 
-A kérelemben szereplő egyperces időkorlát semmi köze a tevékenység időtúllépéséhez. Az utóbbi a **callbackUri**által meghatározott visszahívás megvárni.
+A kérelem egyperces időhahívásának semmi köze a tevékenység időhöz. Ez utóbbi a **callbackUri**által megadott visszahívásra vár.
 
-A visszahívási URI-nak visszaadott törzsnek érvényes JSON-nek kell lennie. Állítsa a `Content-Type` fejlécet `application/json`re.
+A visszahívási URI-nak visszaadott törzsnek érvényes JSON-nak kell lennie. Állítsa `Content-Type` a `application/json`fejlécet a beállításra.
 
-Ha a **jelentés állapotát visszahívási** tulajdonságot használja, a visszahíváshoz a következő kódot kell felvennie a törzsbe:
+Ha a **Visszahívás i állapotát** használja, a visszahívás során a következő kódot kell hozzáadnia a törzshöz:
 
 ```json
 {
@@ -140,12 +140,12 @@ Ha a **jelentés állapotát visszahívási** tulajdonságot használja, a vissz
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a következő, a Data Factory által támogatott irányítási folyamatokat:
+Tekintse meg a Data Factory által támogatott következő vezérlési folyamattevékenységeket:
 
 - [If Condition tevékenység](control-flow-if-condition-activity.md)
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)
-- [Minden tevékenységhez](control-flow-for-each-activity.md)
+- [Minden egyes tevékenységhez](control-flow-for-each-activity.md)
 - [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keresstevékenységet](control-flow-lookup-activity.md)
 - [Webes tevékenység](control-flow-web-activity.md)
 - [Until tevékenység](control-flow-until-activity.md)

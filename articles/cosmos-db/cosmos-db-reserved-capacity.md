@@ -1,6 +1,6 @@
 ---
-title: Fenntartott kapacitás a Azure Cosmos DB a Cost optimalizálásához
-description: Megtudhatja, hogyan vásárolhat Azure Cosmos DB fenntartott kapacitást a számítási költségek mentéséhez.
+title: Fenntartott kapacitás az Azure Cosmos DB-ben a költségek optimalizálásához
+description: Ismerje meg, hogyan vásárolhat Azure Cosmos DB fenntartott kapacitást a számítási költségek megtakarításához.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,97 +8,97 @@ ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 16e8f770445218e10ab7e7645a81325d11be55da
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77505963"
 ---
-# <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>A Cost és a fenntartott kapacitás optimalizálása Azure Cosmos DB
+# <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Költségek optimalizálása lefoglalt kapacitással az Azure Cosmos DB-ben
 
 A fenntartott Azure Cosmos DB-kapacitással pénzt takaríthat meg, ha Azure Cosmos DB-erőforrásokat foglal le egy vagy három évre. Ha rendelkezik fenntartott Azure Cosmos DB-kapacitással, kedvezményt kaphat az Azure Cosmos DB-erőforrások teljes kiépítésére. Példák erőforrásokra, amelyek adatbázisok és tárolók (táblák, gyűjtemények és gráfok).
 
-Azure Cosmos DB fenntartott kapacitás jelentős mértékben csökkentheti Cosmos DB költségeit,&mdash;akár 65%-ot is igénybe vehet, egy vagy három éves előzetes kötelezettségvállalással. A fenntartott kapacitás számlázási kedvezményt biztosít, és nem befolyásolja a Azure Cosmos DB erőforrások futtatókörnyezeti állapotát.
+Az Azure Cosmos DB fenntartott kapacitása jelentősen&mdash;csökkentheti a Cosmos DB költségeit akár 65 százalékkal a rendszeres árak on egy éves vagy hároméves előzetes kötelezettségvállalás. A fenntartott kapacitás számlázási engedményt biztosít, és nincs hatással az Azure Cosmos DB-erőforrások futásidejű állapotára.
 
-Azure Cosmos DB fenntartott kapacitás az erőforrások számára kiépített átviteli sebességre vonatkozik. Nem fedezi azonban a tárolás és a hálózatkezelés költségeit. A foglalások megvásárlása után a foglalási attribútumoknak megfelelő átviteli sebességért nem számolunk fel díjakat az utólagos elszámolású díjakért. A foglalásokkal kapcsolatos további információkért tekintse meg az [Azure foglalásait](../cost-management-billing/reservations/save-compute-costs-reservations.md) ismertető cikket.
+Az Azure Cosmos DB fenntartott kapacitása az erőforrások számára kiosztott átviteli kapacitást fedezi. Nem fedezi azonban a tárolás és a hálózatkezelés költségeit. Amint megvásárol egy foglalást, a foglalási attribútumokkal megegyező átviteli díjakat a továbbiakban nem számítjuk fel a felosztó-kiosztó díjszabás szerint. A foglalásokról további információt az [Azure-foglalások](../cost-management-billing/reservations/save-compute-costs-reservations.md) ról szóló cikkben talál.
 
-A [Azure Portal](https://portal.azure.com)Azure Cosmos db fenntartott kapacitást is vásárolhat. A foglalásért fizethet [előre vagy havi részletekben](../cost-management-billing/reservations/monthly-payments-reservations.md). Fenntartott kapacitás vásárlása:
+Az Azure Cosmos DB fenntartott kapacitását az [Azure Portalon](https://portal.azure.com)vásárolhatja meg. A foglalásért fizethet [előre vagy havi részletekben](../cost-management-billing/reservations/monthly-payments-reservations.md). Fenntartott kapacitás vásárlása:
 
-* Legalább egy Nagyvállalati vagy egyéni előfizetéshez tulajdonosi szerepkörrel kell rendelkeznie, utólagos elszámolású díjszabással.  
-* Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com). Ha ez a beállítás le van tiltva, akkor az előfizetés egyik nagyvállalati rendszergazdájának kell lennie.
-* A Cloud Solution Provider (CSP) program esetében csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatják meg Azure Cosmos DB fenntartott kapacitást.
+* Legalább egy vállalati vagy egyéni előfizetéstulajdonosi szerepkörben kell lennie, ha felosztó-ki-felárak vannak.  
+* Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com). Ha ez a beállítás le van tiltva, akkor az előfizetésben eA-rendszergazdának kell lennie.
+* A Felhőszolgáltató (CSP) program esetében csak a rendszergazdai ügynökök vagy az értékesítési ügynökök vásárolhatnak Azure Cosmos DB fenntartott kapacitást.
 
-## <a name="determine-the-required-throughput-before-purchase"></a>A szükséges átviteli sebesség meghatározása a vásárlás előtt
+## <a name="determine-the-required-throughput-before-purchase"></a>A vásárlás előtti szükséges átviteli szint meghatározása
 
-A fenntartott kapacitások megvásárlásának mérete a meglévő vagy hamarosan üzembe helyezett Azure Cosmos DB erőforrások óránkénti teljes átviteli sebességén alapulni fog. Például: vásárolja meg a 30 000 RU/s fenntartott kapacitást, ha az a konzisztens óradíjas használati minta. Ebben a példában a 30 000 RU/s feletti kiépített átviteli sebesség az utólagos elszámolású díjszabás alapján lesz kiszámlázva. Ha a kiépített átviteli sebesség egy órán belül 30 000 RU/s alatt van, akkor az adott órának külön fenntartott kapacitása kárba vész.
+A lefoglalt kapacitásvásárlás méretének a meglévő vagy a hamarosan üzembe helyezendő Azure Cosmos DB-erőforrások óránkénti által használandó átviteli mennyiségén kell alapulnia. Például: Vásároljon 30 000 RU/s fenntartott kapacitást, ha ez a konzisztens óránkénti használati minta. Ebben a példában a 30 000 RU/s feletti kiosztott átviteli sebességet a használatalapú fizetésdíj használatával számlázunk. Ha a kiosztott átviteli kapacitás egy óra alatt 30 000 RU/s alatt van, akkor az adott órára fenntartott extra kapacitás kárba vész.
 
-Az óránkénti használati minta alapján számítjuk ki a vásárlási javaslatokat. Az elmúlt 7, 30 és 60 napos használatot elemezzük, és a lefoglalt kapacitás megvásárlása ajánlott. A Azure Portal javasolt foglalási méretek a következő lépésekkel tekinthetők meg:
+A vásárlási javaslatokat az óránkénti használati minta alapján számítjuk ki. Az elmúlt 7, 30 és 60 nap használatelemzése történik, és ajánlott a megtakarítást maximalizáló fenntartott kapacitásvásárlás. Az ajánlott foglalási méreteket az Azure Portalon az alábbi lépések segítségével tekintheti meg:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).  
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)  
 
-2. Válassza **a minden szolgáltatás** > **fenntartások** > **Hozzáadás**lehetőséget.
+2. Válassza az **Összes szolgáltatás** > **foglalásának** > **hozzáadása lehetőséget.**
 
-3. A **vásárlási foglalások** ablaktáblán válassza a **Azure Cosmos db**lehetőséget.
+3. A **Vásárlások foglalások** ablaktáblán válassza az **Azure Cosmos DB**lehetőséget.
 
-4. Az ajánlott foglalások megtekintéséhez válassza az **ajánlott** lapot:
+4. Az ajánlott foglalások megtekintéséhez válassza az **Ajánlott** lapot:
 
-A következő attribútumok alapján szűrheti a javaslatokat:
+A javaslatokat a következő attribútumok alapján szűrheti:
 
 - **Időtartam** (1 év vagy 3 év)
 - **Számlázási gyakoriság** (havi vagy előzetes)
-- **Átviteli sebesség típusa** (ru vs multi-Master ru)
+- **Átviteli adattípus** (VT és többfős VT)Throughput Type (RU's vs Multi-master RU's)
 
-Emellett a hatókörre vonatkozó javaslatok egyetlen erőforráscsoport, egy előfizetés vagy a teljes Azure-regisztráción belül lehetnek. 
+Emellett a javaslatok at egyetlen erőforráscsoporton, egyetlen előfizetésen vagy a teljes Azure-regisztráción belül lehet. 
 
-Példa erre a javaslatra:
+Íme egy példa javaslat:
 
-![Fenntartott kapacitásra vonatkozó javaslatok](./media/cosmos-db-reserved-capacity/reserved-capacity-recommendation.png)
+![Fenntartott kapacitásra vonatkozó ajánlások](./media/cosmos-db-reserved-capacity/reserved-capacity-recommendation.png)
 
-Az 30 000 RU/s foglalás megvásárlására vonatkozó javaslat azt jelzi, hogy a 3 éves foglalások között a 30 000 RU/s foglalás mérete maximalizálja a megtakarítás mértékét. Ebben az esetben a javaslat kiszámítása a Azure Cosmos DB használat elmúlt 30 napja alapján történik. Ha ez az ügyfél azt várja, hogy az elmúlt 30 nap Azure Cosmos DB használat a jövőbeli használatra jellemző, a megtakarítás a 30 000 RU/s foglalás megvásárlásával maximalizálható.
+Ez az ajánlás egy 30 000 RU/s foglalás megvásárlására azt jelzi, hogy a 3 éves foglalások között a 30 000 RU/s foglalási méret maximalizálja a megtakarítást. Ebben az esetben a javaslat az Azure Cosmos DB-használat elmúlt 30 napja alapján kerül kiszámításra. Ha az ügyfél azt várja, hogy az Azure Cosmos DB használatának elmúlt 30 napja reprezentatív a jövőbeli használatra nézve, akkor a 30 000 RU/s-os foglalás megvásárlásával maximalizálják a megtakarításokat.
 
-## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB fenntartott kapacitás vásárlása
+## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB lefoglalt kapacitás vásárlása
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).  
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)  
 
-2. Válassza **a minden szolgáltatás** > **fenntartások** > **Hozzáadás**lehetőséget.  
+2. Válassza az **Összes szolgáltatás** > **foglalásának** > **hozzáadása lehetőséget.**  
 
-3. Az új foglalás megvásárlásához a **foglalások** ablaktáblán válassza a **Azure Cosmos db** lehetőséget.  
+3. A **Vásárlások foglalások** ablaktáblán válassza az **Azure Cosmos DB** lehetőséget egy új foglalás megvásárlásához.  
 
-4. Töltse ki a kötelező mezőket az alábbi táblázatban leírtak szerint:
+4. Töltse ki a szükséges mezőket az alábbi táblázatban leírtak szerint:
 
-   ![A fenntartott kapacitás űrlap kitöltése](./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png)
+   ![Töltse ki a lefoglalt kapacitás űrlapot](./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png)
 
    |Mező  |Leírás  |
    |---------|---------|
-   |Hatókör   |   Ez a beállítás azt szabályozza, hogy hány előfizetés használhatja a foglaláshoz kapcsolódó számlázási kedvezményt. Azt is meghatározza, hogy a foglalás hogyan legyen alkalmazva az adott előfizetésekre. <br/><br/>  Ha a **megosztott**lehetőséget választja, a foglalási kedvezményt a rendszer a számlázási környezetben található bármely előfizetésben futtató Azure Cosmos db példányokra alkalmazza. A számlázási környezet az Azure-ra való feliratkozáson alapul. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. Az utólagos elszámolású ügyfelek esetében a közös hatókör az összes olyan előfizetés, amely a fiók rendszergazdája által létrehozott utólagos elszámolású díjszabással rendelkezik.  <br/><br/>  Ha az **egyszeri előfizetést**választja, a foglalási kedvezmény a kijelölt előfizetésben Azure Cosmos db példányokra lesz alkalmazva. <br/><br/> Ha **egyetlen erőforráscsoportot**választ, a foglalási kedvezményt a rendszer a kijelölt előfizetésben lévő Azure Cosmos db példányokra alkalmazza, és az adott előfizetésen belül a kiválasztott erőforráscsoportot. <br/><br/> A foglalás hatókörét a fenntartott kapacitás megvásárlása után módosíthatja.  |
-   |Előfizetést  |   Az Azure Cosmos DB fenntartott kapacitás kifizetéséhez használt előfizetés. A kiválasztott előfizetéshez tartozó fizetési mód a költségek kitöltésére szolgál. Az előfizetésnek a következő típusok egyikének kell lennie: <br/><br/>  Nagyvállalati Szerződés (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P): nagyvállalati előfizetések esetén a díjakat a beléptetés pénzügyi kötelezettségvállalásának egyenlegére, vagy felszámított összegként kell levonni. <br/><br/> Egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P): egyéni előfizetés utólagos elszámolású díjszabással, a díjak számlázása a hitelkártyára vagy a számla fizetési módjára történik az előfizetésben.    |
-   | Erőforráscsoport | Az erőforráscsoport, amelyhez a fenntartott kapacitási kedvezmény érvényes. |
-   |Időszak  |   Egy vagy három év.   |
-   |Átviteli sebesség típusa   |  Az átviteli sebesség kérési egységként van kiépítve. Megvásárolhatja a kiépített átviteli sebességre vonatkozó foglalást mindkét beállítás esetében – az egyrégiós írások és a több régióba írt írások esetében is. Az átviteli sebesség típusának két értéke van: 100 RU/s/óra és 100 multi-Master RU/s/óra.|
-   | Fenntartott kapacitási egységek| A lefoglalni kívánt átviteli sebesség mennyisége. Ezt az értéket kiszámíthatja az összes Cosmos DB erőforráshoz (például adatbázisokhoz vagy tárolóhoz) szükséges átviteli sebesség meghatározásával régiónként. Ezután szorozzuk meg a Cosmos-adatbázishoz társítandó régiók számával. Például: Ha minden régióban 5, 1 000 000 RU/s-vel rendelkező régió található, akkor a foglalási kapacitás megvásárlásához válassza a 5 000 000 RU/mp lehetőséget. |
+   |Hatókör   |   Az a beállítás, amely azt szabályozza, hogy hány előfizetés használhatja a foglaláshoz kapcsolódó számlázási előnyt. Azt is szabályozza, hogy a foglalás hogyan vonatkozik az adott előfizetésekre. <br/><br/>  Ha a Megosztott lehetőséget **választja,** a foglalási kedvezmény az Azure Cosmos DB-példányokra vonatkozik, amelyek a számlázási környezetben bármely előfizetésben futnak. A számlázási környezet az Azure-ra való feliratkozás módjától függ. A vállalati ügyfelek számára a megosztott hatókör a regisztráció, és a regisztráción belüli összes előfizetést tartalmazza. A használatalapú ügyfelek számára a megosztott hatókör az összes egyéni előfizetés, amely a fiókrendszergazdája által létrehozott használatalapú díjszabást támogatja.  <br/><br/>  Ha **az egyetlen előfizetés**t választja, a foglalási kedvezmény az Azure Cosmos DB-példányokra vonatkozik a kiválasztott előfizetésben. <br/><br/> Ha **az Egyetlen erőforráscsoport**lehetőséget választja, a foglalási kedvezmény a kiválasztott előfizetésben és az adott előfizetésen belül az Azure Cosmos DB-példányokra lesz alkalmazva. <br/><br/> A lefoglalt kapacitás megvásárlása után módosíthatja a foglalási hatókört.  |
+   |Előfizetés  |   Az Azure Cosmos DB fenntartott kapacitásának kifizetésére használt előfizetés. A kiválasztott előfizetés fizetési módja a költségek felszámítására szolgál. Az előfizetésnek a következő típusok egyikének kell lennie: <br/><br/>  Nagyvállalati szerződés (ajánlatszámok: MS-AZR-0017P vagy MS-AZR-0148P): Nagyvállalati előfizetés esetén a díjakat levonják a beléptetés pénzügyi kötelezettségvállalási egyenlegéből, vagy túllépésként számítanak fel. <br/><br/> Egyéni előfizetés felosztó-kiosztó díjszabással (ajánlatszámok: MS-AZR-0003P vagy MS-AZR-0023P): A felosztó-kiosztó díjak at az előfizetés hitelkártyájára vagy számlafizetési módjára számláznak.    |
+   | Erőforráscsoport | Az az erőforráscsoport, amelyre a lefoglalt kapacitásengedmény vonatkozik. |
+   |Időtartam  |   Egy vagy három éve.   |
+   |Átviteli típus   |  Átviteli átviteli igény igény egységekként van kiépítve. A kiépített átviteli sebességű mindkét beállításhoz vásárolhat egy foglalást – egyrégiós írások, valamint több régió írási műveletek. Az átviteli típus két érték közül választhat: 100 RU/s/s óránként és 100 többfős RU/s óránként.|
+   | Fenntartott kapacitásegységek| A lefoglalni kívánt átviteli kapacitás mennyisége. Ezt az értéket úgy számíthatja ki, hogy régiónként határozza meg az összes Cosmos DB-erőforráshoz (például adatbázisokhoz vagy tárolókhoz) szükséges átviteli értéket. Ezután szorozza meg a Cosmos-adatbázishoz társítani kívánt régiók számával. Például: Ha öt régióval rendelkezik, ahol minden régióban 1 millió RU/s van, válassza ki az 5 millió RU/s-ot a foglalási kapacitás megvásárlásához. |
 
 
-5. Az űrlap kitöltése után a lefoglalt kapacitás megvásárlásához szükséges árat számítjuk ki. A kimenet a kiválasztott beállításokkal kapott kedvezmény százalékos arányát is megjeleníti. Kattintson a **kiválasztás** elemre.
+5. Az űrlap kitöltése után kiszámítja a lefoglalt kapacitás megvásárlásához szükséges árat. A kimenet azt is mutatja, hogy a kiválasztott opciókkal a kedvezmény százalékos arányát kapja. Következő kattintás **a Kijelölés gombra**
 
-6. **A foglalások ablaktáblán** tekintse át a foglalás kedvezményét és árát. A foglalási díj az összes régióban kiépített átviteli sebességű Azure Cosmos DB erőforrásokra vonatkozik.  
+6. A **Vásárlás foglalások** ablaktáblán tekintse át az engedményt és a foglalás árát. Ez a foglalási ár az Azure Cosmos DB-erőforrásokra vonatkozik, amelyek átviteli hatóát az összes régióban kikell építeni.  
 
-   ![Fenntartott kapacitás összefoglalása](./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png)
+   ![Fenntartott kapacitás összegzése](./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png)
 
-7. Válassza a **felülvizsgálat + vásárlás** lehetőséget, majd **Vásároljon most**. A vásárlás sikerességét a következő oldal látja:
+7. Válassza **a Véleményezés + vásárlás,** majd a vásárlás **most**lehetőséget. Ha a vásárlás sikeres, a következő oldal jelenik meg:
 
-A foglalás megvásárlása után azonnal alkalmazni kell a foglalás feltételeinek megfelelő meglévő Azure Cosmos DB-erőforrásokra. Ha nem rendelkezik meglévő Azure Cosmos DB erőforrásokkal, a foglalás akkor érvényes, ha új Cosmos DB-példányt telepít, amely megfelel a foglalás feltételeinek. A foglalás időtartama mindkét esetben a sikeres vásárlás után azonnal elindul.
+Foglalás megvásárlása után azonnal alkalmazza a meglévő Azure Cosmos DB-erőforrásokat, amelyek megfelelnek a foglalás feltételeinek. Ha nem rendelkezik meglévő Azure Cosmos DB-erőforrásokkal, a foglalás akkor lesz érvényes, ha egy új Cosmos DB-példányt telepít, amely megfelel a foglalás feltételeinek. Mindkét esetben a foglalás időtartama közvetlenül a sikeres vásárlás után kezdődik.
 
-A foglalás lejáratakor a Azure Cosmos DB példányok továbbra is futnak, és az utólagos elszámolású díjszabás szerint számolunk fel díjat.
+Amikor a foglalás lejár, az Azure Cosmos DB-példányok továbbra is futnak, és a rendszeres felosztó-kirovó díjszabás szerint kerülnek számlázásra.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
 Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A foglalási kedvezményt a rendszer automatikusan alkalmazza a foglalási hatókörnek és attribútumoknak megfelelő Azure Cosmos DB erőforrásokra. A foglalás hatókörét a Azure Portal, a PowerShell, az Azure CLI vagy az API segítségével frissítheti.
+A foglalási kedvezmény automatikusan az Azure Cosmos DB-erőforrások, amelyek megfelelnek a foglalási hatókör és attribútumok automatikusan. Frissítheti a foglalás hatókörét az Azure Portalon, a PowerShellen, az Azure CLI-n vagy az API-n keresztül.
 
-*  Ha szeretné megtudni, hogyan alkalmazza a fenntartott kapacitás kedvezményeit Azure Cosmos DBre, tekintse meg [Az Azure foglalási kedvezmény ismertetése](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md)című témakört.
+*  Ha meg szeretné tudni, hogy a fenntartott kapacitásengedmények hogyan vonatkoznak az Azure Cosmos [DB-re, olvassa el az Azure-foglalási kedvezmény ismertetése című témakört.](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md)
 
 * Az Azure Reservationsszel kapcsolatos további információért tekintse meg a következő cikkeket:
 
@@ -106,7 +106,7 @@ A foglalási kedvezményt a rendszer automatikusan alkalmazza a foglalási ható
    * [Az Azure Reservations kezelése](../cost-management-billing/reservations/manage-reserved-vm-instance.md)  
    * [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)  
    * [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
-   * [Azure-foglalások a partner Center CSP programban](https://docs.microsoft.com/partner-center/azure-reservations)
+   * [Azure-foglalások a Partnerközpont CSP-programjában](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 

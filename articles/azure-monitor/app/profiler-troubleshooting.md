@@ -1,148 +1,148 @@
 ---
-title: Az Azure Application Insights Profiler kapcsolatos problémák elhárítása
-description: Ez a cikk hibaelhárítási lépéseket és információkat tartalmaz a Application Insights Profiler engedélyezésével vagy használatával kapcsolatos problémákat okozó fejlesztők számára.
+title: Az Azure Application Insights Profiler használatával kapcsolatos problémák elhárítása
+description: Ez a cikk hibaelhárítási lépéseket és információkat tartalmaz, amelyek segítséget nyújtanak az Application Insights Profiler engedélyezésével vagy használatával kapcsolatos problémák kal.
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: f284d4dfbe550c357f81c01fa0a66aa9878b6c1e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671562"
 ---
-# <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Az Application Insights Profiler engedélyezésével vagy megtekintésével kapcsolatos problémák elhárítása
+# <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Az Application Insights Profiler engedélyezésével és megtekintésével kapcsolatos problémák elhárítása
 
 ## <a name="active-issues"></a>Aktív problémák
 
-* ASP.NET Core 3. x alkalmazás profilkészítése még nem támogatott.
-  * Ha meg kell adnia a Profilert, megkerülő megoldásként használja a [ASP.NET Core Application Insights Profiler](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore). A Profiler Linux rendszerhez van felcímkézve, de a .NET Core 3.0 + alkalmazásokkal is működik Windows rendszeren. Részletekért lásd: [támogatott verziók](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore#supported-versions).
+* A ASP.NET Core 3.x alkalmazások profilalkotása még nem támogatott.
+  * Ha a Profiler-rel kell rendelkeznie, a megoldás az Application Insights Profiler használata [ASP.NET Core számára.](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore) A profiler linuxos címkével van ellátva, de a Windows .NET Core 3.0+ alkalmazásaival is működik. További információt a [Támogatott verziók című témakörben](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore#supported-versions)talál.
 
-## <a id="troubleshooting"></a>Általános hibaelhárítás
+## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Általános hibaelhárítás
 
-### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>A profilok csak akkor lesznek feltöltve, ha a Profiler futtatása közben kérések vannak az alkalmazáshoz
+### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>A profilok feltöltése csak akkor történik meg, ha a Profiler futása közben az alkalmazáshoz érkező kérések
 
-Az Azure Application Insights Profiler óránként két percig gyűjti a profilkészítési adatokat. Emellett adatokat gyűjt, amikor kiválasztja a **profil most** gombot a **Application Insights Profiler konfigurálása** panelen. A profilkészítési adatgyűjtés azonban csak akkor történik meg, ha csatolható egy, a Profiler futása során megjelenő kérelemhez. 
+Az Azure Application Insights Profiler óránként két percig gyűjti a profilkészítési adatokat. Adatokat is gyűjt, ha kiválasztja a **Profil most** gombot az Application **Insights Profiler konfigurálása** ablaktáblában. De a profilkészítési adatok feltöltése csak akkor, ha csatolható egy kérelemhez, amely akkor történt, miközben Profiler futott. 
 
-A Profiler nyomkövetési üzeneteket és egyéni eseményeket ír a Application Insights erőforrásba. Ezen események használatával megtekintheti, hogyan fut a Profiler. Ha úgy gondolja, hogy a Profilernek futnia kell, és el kell látnia a nyomkövetéseket, de nem jelennek meg a **teljesítmény** ablaktáblán, megtekintheti, hogyan fut a Profiler:
+A Profiler nyomkövetési üzeneteket és egyéni eseményeket ír az Application Insights-erőforrásba. Ezekkel az eseményekkel megtekintheti, hogyan működik a Profiler. Ha úgy gondolja, hogy a Profiler-nek futtatnia és rögzítenie kell a nyomkövetéseket, de azok nem jelennek meg a **Teljesítmény** ablaktáblán, ellenőrizheti, hogyan fut a Profiler:
 
-1. Keressen nyomkövetési üzeneteket és a Profiler által a Application Insights-erőforrásnak küldött egyéni eseményeket. Ezt a keresési karakterláncot használhatja a releváns adatokat megkeresni:
+1. Keresse meg a profilozó által az Application Insights-erőforrásba küldött nyomkövetési üzeneteket és egyéni eseményeket. Ezzel a keresési karakterlánccal megtalálhatja a megfelelő adatokat:
 
     ```
     stopprofiler OR startprofiler OR upload OR ServiceProfilerSample
     ```
-    Az alábbi ábrán két AI-erőforrásból származó keresések jelennek meg: 
+    Az alábbi képen két példa látható két AI-erőforrásból származó keresésre: 
     
-   * A bal oldalon az alkalmazás nem kap kéréseket, amíg a Profiler fut. Az üzenet azt mutatja be, hogy a feltöltést nem a tevékenység miatt szakították meg. 
+   * A bal oldalon az alkalmazás nem fogad kéréseket, amíg a Profiler fut. Az üzenet ismerteti, hogy a feltöltés tanusította, mert nem történt tevékenység. 
 
-   * A jobb oldalon a Profiler megkezdte és elküldötte az egyéni eseményeket, amikor a Profiler futtatása közben történt kérelmeket észlelt. Ha a ServiceProfilerSample egyéni esemény jelenik meg, az azt jelenti, hogy a Profiler nyomkövetést csatolt egy kérelemhez, és megtekintheti a nyomkövetést a **Application Insights teljesítmény** ablaktáblán.
+   * A jobb oldalon a Profiler elindította és elküldte az egyéni eseményeket, amikor észlelte a Profiler futása közben történt kérelmeket. Ha a ServiceProfilerSample egyéni esemény jelenik meg, az azt jelenti, hogy a Profiler egy kérelemhez csatolt egy nyomkövetést, és megtekintheti a nyomkövetést az **Application Insights teljesítményablakában.**
 
-     Ha nem jelenik meg telemetria, a Profiler nem fut. A hibaelhárításhoz tekintse meg a jelen cikk későbbi, az adott alkalmazásra vonatkozó hibaelhárítási részeit.  
+     Ha nem jelenik meg telemetriai elem, a Profiler nem fut. A hibaelhárításról a cikk későbbi, adott alkalmazástípushoz tartozó hibaelhárítási szakaszokban olvashat.  
 
-     ![A Profiler telemetria keresése][profiler-search-telemetry]
+     ![Profilozó telemetria keresése][profiler-search-telemetry]
 
-1. Ha a Profiler futtatása közben kérések történtek, győződjön meg arról, hogy a kérelmeket az alkalmazás azon része kezeli, amelyen engedélyezve van a Profiler. Habár az alkalmazások esetenként több összetevőből állnak, a Profiler csak néhány összetevő esetében engedélyezett. A **Application Insights Profiler konfigurálása** panelen megjelennek a feltöltött nyomkövetéseket tartalmazó összetevők.
+1. Ha voltak kérelmek, míg Profiler futott, győződjön meg arról, hogy a kérelmek et az alkalmazás azon része, amelyprofiler engedélyezve van. Bár az alkalmazások néha több összetevőből állnak, a Profiler csak néhány összetevőesetében engedélyezett. Az **Application Insights Profiler konfigurálása** ablaktábla megjeleníti a nyomkövetéseket feltöltött összetevőket.
 
-### <a name="other-things-to-check"></a>További ellenőrzési dolgok
-* Győződjön meg arról, hogy az alkalmazás a .NET-keretrendszer 4,6-es verzióját futtatja.
-* Ha a webalkalmazás egy ASP.NET Core alkalmazás, legalább ASP.NET Core 2,0-at kell futtatnia.
-* Ha a megtekinteni kívánt adatmennyiség régebbi, mint néhány hétig, próbálja meg korlátozni az időszűrőt, és próbálkozzon újra. A Nyomkövetések hét nap után törlődnek.
-* Győződjön meg arról, hogy a proxyk vagy a tűzfal nem tiltotta le a https://gateway.azureserviceprofiler.netelérését.
-* A Profiler ingyenes vagy megosztott app Service-csomagok esetén nem támogatott. Ha ezen csomagok valamelyikét használja, próbálja meg az alapszintű csomagok és a Profiler használatának megkezdését.
+### <a name="other-things-to-check"></a>Egyéb ellenőrizleg eljelölőnégyzetek
+* Győződjön meg arról, hogy az alkalmazás a .
+* Ha a webalkalmazás egy ASP.NET Core alkalmazás, legalább ASP.NET Core 2.0-s futtatásának kell lennie.
+* Ha a megtekinteni kívánt adatok néhány hétnél régebbiek, próbálja meg korlátozni az időszűrőt, majd próbálkozzon újra. A nyomkövetések hét nap után törlődnek.
+* Győződjön meg arról, hogy a proxyk vagy a tűzfal nem tiltotta le a hozzáférést a alkalmazáshoz. https://gateway.azureserviceprofiler.net
+* A Profiler nem támogatott az ingyenes vagy megosztott alkalmazásszolgáltatási csomagokban. Ha az egyik ilyen csomagok, próbálja felskálázás az egyik az alapvető tervek és Profiler meg kell kezdeni e munkát.
 
-### <a id="double-counting"></a>Dupla számlálás párhuzamos szálakban
+### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>Kétszeres beszámítás párhuzamos menetekben
 
-Bizonyos esetekben a verem-megjelenítőben lévő teljes időmetrika meghaladja a kérelem időtartamát.
+Bizonyos esetekben a teljes időmérő a veremmegjelenítőben több, mint a kérelem időtartama.
 
-Ez a helyzet akkor fordulhat elő, ha két vagy több szál van társítva egy kérelemhez, és párhuzamosan működik. Ebben az esetben a szál teljes ideje meghaladja az eltelt időt. Lehet, hogy egy szál várakozik a másikra. A megjelenítő megpróbálja felderíteni ezt a helyzetet, és kihagyja a nem érdekes várakozást. Ennek során a téved túl sok információt jelenít meg, nem pedig kihagyhatja, hogy mi lehet a kritikus információ.
+Ez a helyzet akkor fordulhat elő, ha két vagy több szál van társítva egy kéréshez, és párhuzamosan működnek. Ebben az esetben a teljes menetidő több, mint az eltelt idő. Lehet, hogy az egyik szál a másikon várakozik a teljesítendő szálra. A néző megpróbálja felismerni ezt a helyzetet, és kihagyja az érdektelen várakozást. Ennek során a túl sok információ megjelenítésének oldalán hibásodik, ahelyett, hogy kihagyna a kritikus információkat.
 
-Ha a nyomkövetésekben párhuzamos szálak láthatók, határozza meg, hogy mely szálak várnak, hogy megtudja a kérés kritikus elérési útját. Általában az a szál, amely gyorsan befejeződik a várakozási állapotba, egyszerűen a többi szálra vár. Koncentráljon a többi szálra, és hagyja figyelmen kívül a várakozási szálak időpontját.
+Amikor párhuzamos szálakat lát a nyomkövetésekben, határozza meg, hogy mely szálak várakoznak, hogy megállapíthassa a kérelem kritikus elérési útját. Általában a szál, amely gyorsan várakozik, egyszerűen csak a többi szálra vár. Koncentráljon a többi szálra, és hagyja figyelmen kívül a várakozó szálak idejét.
 
-### <a name="error-report-in-the-profile-viewer"></a>Hibajelentés a profil megjelenítőben
-Támogatási jegy küldése a portálon. Ügyeljen arra, hogy a hibaüzenetben szerepeljen a korrelációs azonosító.
+### <a name="error-report-in-the-profile-viewer"></a>Hibajelentés a profilmegjelenítőben
+Küldjön be egy támogatási jegyet a portálon. Ügyeljen arra, hogy tartalmazza a korrelációs azonosítót a hibaüzenetből.
 
-## <a name="troubleshoot-profiler-on-azure-app-service"></a>A Azure App Service Profiler hibáinak megoldása
+## <a name="troubleshoot-profiler-on-azure-app-service"></a>Profilozó hibaelhárítása az Azure App Service szolgáltatásban
 A Profiler megfelelő működéséhez:
-* A Web App Service-csomagnak alapszintű vagy magasabb szintűnek kell lennie.
-* A webalkalmazásnak Application Insights engedélyezve kell lennie.
-* A webalkalmazásnak a következő alkalmazás-beállításokkal kell rendelkeznie:
+* A webalkalmazás-szolgáltatáscsomag nak alapszintű vagy magasabb szintűnek kell lennie.
+* A webalkalmazásnak engedélyeznie kell az Application Insights szolgáltatást.
+* A webalkalmazásnak a következő alkalmazásbeállításokkal kell rendelkeznie:
 
     |Alkalmazásbeállítás    | Érték    |
     |---------------|----------|
-    |ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY         | a Application Insights-erőforrás Rendszerállapotkulcsot    |
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | iKey az Application Insights-erőforráshoz    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
-    |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 
-* A **ApplicationInsightsProfiler3** -webjobs futnia kell. A webjobs megkeresése:
-   1. Nyissa meg a [kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/).
-   1. Az **eszközök** menüben válassza a **webjobs irányítópult**elemet.  
-      Megnyílik a **webjobs** panel. 
+* Az **ApplicationInsightsProfiler3** webfeladatnak futnia kell. A webjob ellenőrzése:
+   1. Tovább a [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/).
+   1. Az **Eszközök menüben** válassza a **WebJobs irányítópult lehetőséget.**  
+      Megnyílik **a WebJobs** ablaktábla. 
    
-      ![Profiler – webjobs]   
+      ![profiler-webjob]   
    
-   1. A webjobs részleteinek megtekintéséhez, beleértve a naplót, válassza a **ApplicationInsightsProfiler3** hivatkozást.  
-     Megnyílik a **folyamatos Webjobs részletei** ablaktábla.
+   1. A webfeladat részleteinek megtekintéséhez, beleértve a naplót, válassza az **ApplicationInsightsProfiler3** hivatkozást.  
+     Megnyílik **a Folyamatos webfeladat részletei** ablaktábla.
 
-      ![Profiler-webjobs-log]
+      ![profiler-webjob-log]
 
-Ha nem tudja kideríteni, hogy a Profiler miért nem működik Önnek, letöltheti a naplót, és elküldheti a csapatnak segítségért, serviceprofilerhelp@microsoft.com. 
+Ha nem tudja kideríteni, hogy a Profiler miért nem működik önnek, letöltheti a naplót, és elküldheti a csapatunknak segítségért, serviceprofilerhelp@microsoft.com. 
     
 ### <a name="manual-installation"></a>Manuális telepítés
 
-A Profiler konfigurálásakor a rendszer frissíti a webalkalmazás beállításait. Ha a környezete megköveteli, manuálisan is alkalmazhatja a frissítéseket. Lehetséges például, hogy az alkalmazás a PowerApps Web Apps-környezetében fut. Frissítések manuális alkalmazása:
+A Profiler konfigurálásakor a webalkalmazás beállításai frissülnek. Ha a környezet megköveteli, manuálisan is alkalmazhatja a frissítéseket. Egy példa lehet, hogy az alkalmazás fut a Web Apps környezetben powerapps. A frissítések manuális alkalmazása:
 
-1. A **webalkalmazás-vezérlő** ablaktáblán nyissa meg a **Beállítások**lapot.
+1. A **Webalkalmazás vezérlőpanelén** nyissa meg a **Beállítások lehetőséget.**
 
-1. A **.NET-keretrendszer verziójának** beállítása: **v 4.6**.
+1. Állítsa a **.NET Framework verziót** **a 4.6-os verzióra.**
 
-1. A **mindig** be értékre állítása **.**
-1. Az Alkalmazásbeállítások létrehozása:
+1. Állítsa **be mindig** be **.**
+1. Hozza létre a következő alkalmazásbeállításokat:
 
     |Alkalmazásbeállítás    | Érték    |
     |---------------|----------|
-    |ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY         | a Application Insights-erőforrás Rendszerállapotkulcsot    |
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | iKey az Application Insights-erőforráshoz    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
-    |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 ### <a name="too-many-active-profiling-sessions"></a>Túl sok aktív profilkészítési munkamenet
 
-Jelenleg a Profilert legfeljebb négy Azure Web Apps és üzembe helyezési pont használatával engedélyezheti, amelyek ugyanabban a szolgáltatáscsomag futnak. Ha több mint négy, egy app Service-csomagban futó webalkalmazása van, a Profiler a *Microsoft. ServiceProfiler. kivétellistájára. TooManyETWSessionException*. A Profiler külön fut az egyes webalkalmazásokhoz, és megkísérli az egyes alkalmazások Windows esemény-nyomkövetés (ETW) munkamenetének indítását. Egyszerre azonban csak korlátozott számú ETW-munkamenet lehet aktív. Ha a Profiler webjobs túl sok aktív profilkészítési munkamenetet jelez, helyezzen át néhány webalkalmazást egy másik szolgáltatáscsomag.
+Jelenleg legfeljebb négy Azure-webalkalmazáson és üzembe helyezési tárolóhelyen engedélyezheti a Profiler-t, amelyek ugyanabban a szolgáltatási csomagban futnak. Ha egy alkalmazásszolgáltatási csomagban négynél több webalkalmazás fut, előfordulhat, hogy a Profiler egy *Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException programot*hajt le. A Profiler minden webalkalmazáshoz külön fut, és megkísérli elindítani az event tracing for Windows (ETW) munkamenetet az egyes alkalmazásokhoz. De korlátozott számú ETW ülés lehet aktív egy időben. Ha a Profiler webjoba túl sok aktív profilkészítési munkamenetet jelent, helyezzen át néhány webalkalmazást egy másik szolgáltatási csomagba.
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Telepítési hiba: a könyvtár nem üres:\\Home\\site\\wwwroot\\App_Data\\feladatok "
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Telepítési hiba: A könyvtár\\nem\\\\üres\\'D: otthoni webhely wwwroot App_Data\\feladatok"
 
-Ha a webalkalmazást egy olyan Web Apps erőforrásra telepíti újra, amelyen a Profiler engedélyezve van, akkor a következő üzenet jelenhet meg:
+Ha a webalkalmazást olyan Web Apps-erőforrásra helyezi üzembe, amelyen engedélyezve van a Profiler, a következő üzenet jelenhet meg:
 
-*A könyvtár nem üres:\\Home\\site\\wwwroot\\App_Data\\feladatok "*
+*Directory Not Empty\\'D:\\home\\\\site\\wwwroot App_Data jobs"*
 
-Ez a hiba akkor fordul elő, ha a web Deploy szkriptből vagy az Azure DevOps üzembe helyezési folyamatból futtatja. A megoldás a következő további központi telepítési paramétereket adja hozzá a web Deploy feladathoz:
+Ez a hiba akkor fordul elő, ha a webtelepítőt parancsfájlokból vagy az Azure DevOps központi telepítési folyamatából futtatja. A megoldás a következő további telepítési paraméterek hozzáadása a webes központi telepítési feladathoz:
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'
 ```
 
-Ezek a paraméterek törlik a Application Insights Profiler által használt mappát, és feloldják az újratelepítési folyamatot. Nincsenek hatással a jelenleg futó Profiler-példányra.
+Ezek a paraméterek törlik az Application Insights Profiler által használt mappát, és feloldják az újraüzembe helyezési folyamat blokkolását. Nincsenek hatással a Profiler-példány, amely jelenleg fut.
 
-### <a name="how-do-i-determine-whether-application-insights-profiler-is-running"></a>Hogyan határozza meg, hogy a Application Insights Profiler fut-e?
+### <a name="how-do-i-determine-whether-application-insights-profiler-is-running"></a>Hogyan állapíthatom meg, hogy az Application Insights Profiler fut-e?
 
-A Profiler folyamatos webjobs fut a webalkalmazásban. A webalkalmazás-erőforrást a [Azure Portalban](https://portal.azure.com)nyithatja meg. A **webjobs** ablaktáblán tekintse meg a **ApplicationInsightsProfiler**állapotát. Ha nem fut, nyissa meg a **naplókat** , hogy további információkat kapjon.
+A Profiler folyamatos webfeladatként fut a webalkalmazásban. Megnyithatja a webalkalmazás-erőforrást az [Azure Portalon.](https://portal.azure.com) A **WebJobs** ablaktáblán ellenőrizze az **ApplicationInsightsProfiler**állapotát. Ha nem fut, nyissa **meg a Naplók at,** hogy további információkat kapjon.
 
-## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>A Profiler és a Azure Diagnostics problémáinak elhárítása
+## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>A Profilozó és az Azure Diagnosztika hibáinak elhárítása
 
->**A Profilerben szereplő hiba, amely a Cloud Services WAD-ban található.** A Cloud Services WAD (1.12.2.0) legújabb verziója az App ininsights SDK legújabb verzióival működik. A Cloud Service-gazdagépek automatikusan frissítik a WAD-t, de nem azonnal. A frissítés kényszerítéséhez újra üzembe helyezheti a szolgáltatást, vagy újraindíthatja a csomópontot.
+>**A hiba a profiler, hogy a hajók a WAD a Cloud Services ki lett javítva.** A WAD (1.12.2.0) felhőszolgáltatásokhoz készült legújabb verziója az App Insights SDK összes legújabb verziójával működik. A Cloud Service-üzemeltetés gazdagépei automatikusan frissítik a WAD-t, de az nem azonnali. A frissítés kényszerítéséhez újratelepítheti a szolgáltatást, vagy újraindíthatja a csomópontot.
 
-Ha szeretné megtekinteni, hogy a Profiler megfelelően van-e konfigurálva a Azure Diagnostics, tegye a következő három dolgot: 
-1. Először is ellenőrizze, hogy az üzembe helyezett Azure Diagnostics konfiguráció tartalma várható-e. 
+Ha meg szeretné tudni, hogy a Profiler megfelelően van-e konfigurálva az Azure Diagnostics által, tegye a következő három dolgot: 
+1. Először ellenőrizze, hogy az Azure Diagnostics konfiguráció, amely telepítve van, amit vár. 
 
-1. Másodszor, győződjön meg arról, hogy Azure Diagnostics átadja a megfelelő Rendszerállapotkulcsot a Profiler parancssorban. 
+1. Másodszor győződjön meg arról, hogy az Azure Diagnostics átadja a megfelelő iKey a Profiler parancssorban. 
 
-1. Harmadszor, a Profiler naplófájljában ellenőrizze, hogy a Profiler futott-e, de hibát adott vissza. 
+1. Harmadszor, ellenőrizze a Profiler naplófájl, hogy a Profiler futott, de visszaadott egy hiba. 
 
-A Azure Diagnostics konfigurálásához használt beállítások ellenőrzését:
+Az Azure Diagnostics konfigurálásához használt beállítások ellenőrzése:
 
-1. Jelentkezzen be a virtuális gépre (VM), majd nyissa meg a naplófájlt ezen a helyen. (A meghajtó lehet a c: vagy a d:, és a beépülő modul verziója eltérő lehet.)
+1. Jelentkezzen be a virtuális gépre (VM), majd nyissa meg a naplófájlt ezen a helyen. (A meghajtó lehet c: vagy d: és a plugin verzió eltérő lehet.)
 
     ```
     c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
@@ -152,31 +152,31 @@ A Azure Diagnostics konfigurálásához használt beállítások ellenőrzését
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
     ```
 
-1. A fájlban megkeresheti a **WadCfg** karakterláncot, hogy megkeresse a virtuális gép számára átadott beállításokat a Azure Diagnostics konfigurálásához. Megtekintheti, hogy helyes-e a Profiler-fogadó által használt Rendszerállapotkulcsot.
+1. A fájlban megkeresheti a **WadCfg** karakterláncot a virtuális gépnek átadott beállítások megkereséséhez az Azure Diagnostics konfigurálásához. Ellenőrizheti, hogy a Profiler-mosogató által használt iKey helyes-e.
 
-1. A Profiler elindításához használt parancssorban keresse meg a következőt:. A Profiler elindításához használt argumentumok a következő fájlban találhatók. (A meghajtó lehet c: vagy d:)
+1. Ellenőrizze a Profiler indításához használt parancssort. A Profiler indításához használt argumentumok a következő fájlban találhatók. (A meghajtó lehet c: vagy d:)
 
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json
     ```
 
-1. Ellenőrizze, hogy helyes-e a Rendszerállapotkulcsot a Profiler parancssorban. 
+1. Ellenőrizze, hogy a Profiler parancssorban az iKey helyes-e. 
 
-1. Az előző *config. JSON* fájlban található elérési út használatával keresse meg a Profiler naplófájlját. Megjeleníti a Profiler által használt beállításokat jelző hibakeresési információkat. Megjeleníti a Profiler állapot-és hibaüzeneteit is.  
+1. Az előző *config.json* fájlban található elérési utat használva ellenőrizze a Profiler naplófájlt. Megjeleníti a hibakeresési információkat, amelyek jelzik a Profiler által használt beállításokat. Azt is megjeleníti állapotát és hibaüzeneteket Profiler.  
 
-    Ha a Profiler fut, miközben az alkalmazás fogadja a kérelmeket, a következő üzenet jelenik meg: a *rendszerállapotkulcsot által észlelt tevékenység*. 
+    Ha a Profiler az alkalmazás kérései fogadása közben fut, a következő üzenet jelenik meg: *Az iKey-ből észlelt tevékenység*. 
 
-    A nyomkövetés feltöltésekor a következő üzenet jelenik meg: a *nyomkövetés feltöltésének megkezdése*. 
+    A nyomkövetés feltöltésekor a következő üzenet jelenik meg: *A nyomkövetés feltöltésének megkezdése*. 
 
 
-## <a name="edit-network-proxy-or-firewall-rules"></a>Hálózati proxy vagy tűzfal-szabályok szerkesztése
+## <a name="edit-network-proxy-or-firewall-rules"></a>Hálózati proxy- vagy tűzfalszabályok szerkesztése
 
-Ha az alkalmazás proxyn vagy tűzfalon keresztül csatlakozik az internethez, előfordulhat, hogy a szabályokat úgy kell módosítania, hogy az alkalmazás kommunikáljon a Application Insights Profiler szolgáltatással. Az Application Insights Profiler által használt IP-címek szerepelnek a Azure Monitor szolgáltatás címkéjén.
+Ha az alkalmazás proxyn vagy tűzfalon keresztül csatlakozik az internethez, előfordulhat, hogy szükség lehet a szabályok szerkesztésére, hogy az alkalmazás kommunikáljon az Application Insights Profiler szolgáltatással. Az Application Insights Profiler által használt IP-címeket az Azure Monitor szolgáltatáscímke tartalmazza.
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
-[Profiler – webjobs]:./media/profiler-troubleshooting/Profiler-webjob.png
-[Profiler-webjobs-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
+[profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
+[profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
 
 
 

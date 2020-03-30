@@ -1,6 +1,6 @@
 ---
-title: Az Azure spot virtuális gépek üzembe helyezése a portál használatával
-description: Megtudhatja, hogyan helyezhet üzembe helyszíni virtuális gépeket a költségek csökkentése érdekében a Azure PowerShell használatával.
+title: A portál használata azure spot virtuális gépek üzembe helyezéséhez
+description: Ismerje meg, hogyan használhatja az Azure PowerShellt a direkt virtuális gépek üzembe helyezéséhez a költségek csökkentése érdekében.
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -10,40 +10,40 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: cynthn
 ms.openlocfilehash: 8845d0f9277384c1cc32b31b5ea5151cd0668c79
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77158978"
 ---
-# <a name="preview-deploy-spot-vms-using-the-azure-portal"></a>Előzetes verzió: helyszíni virtuális gépek üzembe helyezése a Azure Portal használatával
+# <a name="preview-deploy-spot-vms-using-the-azure-portal"></a>Előzetes verzió: Azonnali virtuális gépek üzembe helyezése az Azure Portalon
 
-A [helyszíni virtuális gépek](spot-vms.md) használata lehetővé teszi, hogy a kihasználatlan kapacitást jelentős költségmegtakarítással használja. Az Azure-infrastruktúra minden olyan időpontban kizárja a helyszíni virtuális gépeket, amikor az Azure-nak szüksége van a kapacitásra. Ezért a helyszíni virtuális gépek kiválóan alkalmasak olyan munkaterhelések kezelésére, amelyek kezelhetik a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási feladatokat és egyebeket.
+A [spot virtuális gépek](spot-vms.md) használatával jelentős költségmegtakarítást eredményezhet a kihasználatlan kapacitás kihasználása. Bármikor, amikor az Azure-nak szüksége van a kapacitás vissza, az Azure-infrastruktúra kilakoltatja spot virtuális gépek. Ezért a direkt virtuális gépek kiválóan szolgálnak olyan számítási feladatokhoz, amelyek kezelni tudják a megszakításokat, például a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási számítási feladatokat és egyebeket.
 
-A helyszíni virtuális gépek díjszabása a régió és az SKU alapján változó. További információ: virtuális gépek díjszabása [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windows rendszerekhez](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). A maximális ár beállításával kapcsolatos további információkért lásd: [virtuális gépek – díjszabás](spot-vms.md#pricing).
+A direkt virtuális gépek díjszabása változó, a régió és a termékváltozat alapján. További információ: VM-díjszabás [Linuxra](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windowsra.](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) A maximális ár beállításáról további információt a Azonnali virtuális gépek – árképzés című témakörben [talál.](spot-vms.md#pricing)
 
-Lehetősége van arra, hogy a virtuális gép számára óránként fizetendő maximális árat adja meg. A helyszíni virtuális gépek maximális díja az USA dollárban (USD) állítható be, akár 5 tizedesjegyet is igénybe vehet. A `0.05701`érték például egy óránként $0,05701 USD maximális díj. Ha a maximális árat `-1`értékre állítja, a virtuális gép ára nem lesz kizárva. A virtuális gép ára a jelenlegi díj vagy a standard virtuális gép díjszabása, amely soha nem kevesebb, amíg rendelkezésre áll a kapacitás és a kvóta.
+Lehetősége van arra, hogy állítsa be a maximális árat, amelyet hajlandó fizetni, óránként, a virtuális gép. A direktvirtuális gép maximális ára usa dollárban (USD) állítható be, legfeljebb 5 tizedesjegy használatával. Az érték `0.05701`például óránként $0,05701 USD max ár. Ha a maximális árat `-1`állítja be, a virtuális gép nem lesz kizárva az ár alapján. A virtuális gép ára az azonnali aktuális ár vagy egy szabványos virtuális gép ára lesz, amely valaha is kevesebb, mindaddig, amíg van kapacitás és kvóta áll rendelkezésre.
 
 > [!IMPORTANT]
-> A helyszíni példányok jelenleg nyilvános előzetes verzióban érhetők el.
-> Ez az előzetes verzió nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A direktpéldányok jelenleg nyilvános előzetes verzióban vannak.
+> Ez az előzetes verzió éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 >
 
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
 
-A helyszíni virtuális gépeket használó virtuális gépek létrehozásának folyamata [megegyezik a rövid](quick-create-portal.md)útmutatóban részletezett eljárással. A virtuális gépek üzembe helyezésekor dönthet úgy, hogy egy Azure spot-példányt használ.
+A virtuális gépeket használó virtuális gépek létrehozásának folyamata megegyezik a [rövid útmutatóban részletezett eljárással.](quick-create-portal.md) Virtuális gép telepítésekor választhat, hogy egy Azure-direktpéldány.
 
 
-Az alapbeállítások lap **példány részletei** **szakaszában a** **nem** érték az Azure spot-példányok használatának alapértelmezett értéke.
+Az **alapok** lapon a **példány részletei** szakaszban a **Nem** az azure-beli direktpéldányok alapértelmezett használata.
 
-![Képernyőfelvétel a nem lehetőség kiválasztásához, ne használjon Azure spot-példányt](media/spot-portal/no.png)
+![Képernyőfelvétel a nem et, az Azure-direktpéldány használatát nem használva](media/spot-portal/no.png)
 
-Válassza az **Igen**, a szakasz kibontása lehetőséget, és kiválaszthatja a [kizárási típusát és a kizárási szabályzatot](spot-vms.md#eviction-policy). 
+Válassza az **Igen**lehetőséget , a szakasz kibővül, és kiválaszthatja a [kilakoltatás típusát és a kilakoltatási házirendet.](spot-vms.md#eviction-policy) 
 
-![Képernyőfelvétel az igen lehetőség kiválasztásához, Azure spot-példány használata](media/spot-portal/yes.png)
+![Képernyőfelvétel az igen kiválasztásához, azure-spotpéldány használata](media/spot-portal/yes.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A [PowerShell](spot-powershell.md)használatával helyszíni virtuális gépeket is létrehozhat.
+Direkt virtuális gépeket is létrehozhat a [PowerShell](spot-powershell.md)használatával.

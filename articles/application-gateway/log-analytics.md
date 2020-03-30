@@ -1,7 +1,7 @@
 ---
-title: WAF-naplók vizsgálata az Azure Log Analytics
+title: WAF-naplók vizsgálata az Azure Log Analytics használatával
 titleSuffix: Azure Application Gateway
-description: Ez a cikk bemutatja, hogyan használható az Azure Log Analytics a webalkalmazási tűzfal naplófájljainak Application Gateway vizsgálatához
+description: Ez a cikk bemutatja, hogyan használhatja az Azure Log Analytics segítségével az Application Gateway webalkalmazás-tűzfal naplóinak vizsgálatát
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,23 +9,23 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 9fe4462a71852e5f66268f798f6f0418f2dd39c4
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048100"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>A Log Analytics használata az Application Gateway webalkalmazási tűzfal naplóinak vizsgálatához
 
-Ha a Application Gateway WAF működőképes, engedélyezheti a naplók számára, hogy megvizsgálják, mi történik az egyes kérelmekkel. A tűzfal naplói betekintést nyújtanak a WAF értékelésére, egyeztetésére és blokkolására. A Log Analytics segítségével megvizsgálhatja a tűzfalakon belüli adatnaplókat, hogy még több elemzést nyújtson. Log Analytics munkaterület létrehozásával kapcsolatos további információkért lásd: [log Analytics munkaterület létrehozása a Azure Portal](../azure-monitor/learn/quick-create-workspace.md). További információ a naplózási lekérdezésekről: [a Azure monitorban található lekérdezések áttekintése](../azure-monitor/log-query/log-query-overview.md).
+Miután az Application Gateway WAF működőképessé vált, engedélyezheti a naplókat az egyes kérelmekkel kapcsolatban zajló események vizsgálatához. A tűzfalnaplók betekintést nyújtanak abba, hogy a WAF mit értékel, egyezik és blokkol. A Log Analytics segítségével megvizsgálhatja a tűzfalnaplókban lévő adatokat, hogy még több betekintést nyújtson. A Log Analytics-munkaterület létrehozásáról további információt [a Log Analytics-munkaterület létrehozása az Azure Portalon című témakörben talál.](../azure-monitor/learn/quick-create-workspace.md) A naplólekérdezésekről az [Azure Monitor naplólekérdezéseinek áttekintése](../azure-monitor/log-query/log-query-overview.md)című témakörben olvashat bővebben.
 
 ## <a name="import-waf-logs"></a>WAF-naplók importálása
 
-A tűzfal naplóinak Log Analyticsba való importálásához tekintse meg [a háttér állapota, a diagnosztikai naplók és a metrikák Application Gateway](application-gateway-diagnostics.md#diagnostic-logging). Ha a tűzfal naplókat tartalmaz a Log Analytics munkaterületen, megtekintheti az adatait, lekérdezéseket írhat, vizualizációkat hozhat létre, és hozzáadhatja őket a portál irányítópultján.
+A tűzfalnaplók loganalytics-be importálásához olvassa el a [háttérrendszer állapotát, a diagnosztikai naplókat és az Application Gateway metrikáit.](application-gateway-diagnostics.md#diagnostic-logging) Ha a tűzfal naplók a Log Analytics-munkaterület, megtekintheti az adatokat, lekérdezéseket írhat, vizualizációkat hozhat létre, és adja hozzá őket a portál irányítópultján.
 
-## <a name="explore-data-with-examples"></a>Az adatelemzés példákkal
+## <a name="explore-data-with-examples"></a>Adatok feltárása példákkal
 
-A következő lekérdezés futtatásával tekintheti meg a tűzfal naplójában lévő nyers adatfájlokat:
+A tűzfalnaplóban lévő nyers adatok megtekintéséhez futtassa a következő lekérdezést:
 
 ```
 AzureDiagnostics 
@@ -34,11 +34,11 @@ AzureDiagnostics
 
 Ez a következő lekérdezéshez hasonlóan fog kinézni:
 
-![Log Analytics lekérdezés](media/log-analytics/log-query.png)
+![Log Analytics-lekérdezés](media/log-analytics/log-query.png)
 
-Megtekintheti az adatok részletezését, és diagramokat rajzolhat, vagy létrehozhat vizualizációkat. Kiindulási pontként tekintse meg a következő lekérdezéseket:
+Leáshat az adatokba, grafikonokat rajzolhat, vagy vizualizációkat hozhat létre innen. Kiindulópontként tekintse meg a következő lekérdezéseket:
 
-### <a name="matchedblocked-requests-by-ip"></a>Egyeztetett/letiltott kérések IP alapján
+### <a name="matchedblocked-requests-by-ip"></a>IP-címegyeztetéses/blokkolt kérések
 
 ```
 AzureDiagnostics
@@ -47,7 +47,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="matchedblocked-requests-by-uri"></a>Egyeztetett/letiltott kérések URI szerint
+### <a name="matchedblocked-requests-by-uri"></a>Uri egyező/blokkolt kérései
 
 ```
 AzureDiagnostics
@@ -56,7 +56,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="top-matched-rules"></a>Leggyakoribb egyezési szabályok
+### <a name="top-matched-rules"></a>Top egyező szabályok
 
 ```
 AzureDiagnostics
@@ -66,7 +66,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="top-five-matched-rule-groups"></a>Az első öt megfeleltetett szabály csoportja
+### <a name="top-five-matched-rule-groups"></a>Az öt egyező szabálycsoport első számú csoportja
 
 ```
 AzureDiagnostics
@@ -78,10 +78,10 @@ AzureDiagnostics
 
 ## <a name="add-to-your-dashboard"></a>Hozzáadás az irányítópulthoz
 
-A lekérdezés létrehozása után felveheti azt az irányítópultra.  A log Analytics-munkaterület jobb felső sarkában válassza a **rögzítés az irányítópulton** lehetőséget. Egy példa irányítópultra rögzített előző négy lekérdezéssel az alábbi információk láthatók:
+Miután létrehozott egy lekérdezést, hozzáadhatja azt az irányítópulthoz.  A naplóelemzési munkaterület jobb felső részén válassza ki az **irányítópulthoz való rögzítést.** Az előző négy lekérdezés egy példairányítópultra rögzítve ezeket az adatokat láthatja egy pillantással:
 
 ![Irányítópult](media/log-analytics/dashboard.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Háttérbeli állapot, diagnosztikai naplók és metrikák a Application Gateway](application-gateway-diagnostics.md)
+[Háttérrendszer állapota, diagnosztikai naplók és metrikák az Application Gateway-hez](application-gateway-diagnostics.md)

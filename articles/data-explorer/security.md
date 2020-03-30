@@ -1,6 +1,6 @@
 ---
-title: Azure Adatkezelő-fürtök védelme az Azure-ban
-description: Ismerje meg, hogyan védheti meg a fürtöket az Azure Adatkezelőban.
+title: Biztonságos Azure Data Explorer-fürtök az Azure-ban
+description: Ismerje meg, hogyan biztosíthat fürtöket az Azure Data Explorerben.
 author: saguiitay
 ms.author: itsagui
 ms.reviewer: orspodek
@@ -8,60 +8,60 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: 786950011f10e25d6bcb72061212c1878e79d45a
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77373350"
 ---
-# <a name="secure-azure-data-explorer-clusters-in-azure"></a>Azure Adatkezelő-fürtök védelme az Azure-ban
+# <a name="secure-azure-data-explorer-clusters-in-azure"></a>Biztonságos Azure Data Explorer-fürtök az Azure-ban
 
-Ez a cikk az Azure Adatkezelő biztonságának bevezetését ismerteti, amely segít a felhőben tárolt adatainak és erőforrásainak védelmében, és megfelel a vállalat biztonsági igényeinek. Fontos, hogy a fürtök biztonságban maradjanak. A fürtök biztonságossá tétele egy vagy több olyan Azure-szolgáltatást foglal magában, amely biztonságos hozzáférést és tárterületet tartalmaz. Ez a cikk a fürt biztonságának megőrzéséhez nyújt segítséget.
+Ez a cikk bemutatja az Azure Data Explorer biztonságának használatát, amely segítséget nyújt az adatok és az erőforrások felhőbeli védelméhez és a vállalkozás biztonsági igényeinek kielégítéséhez. Fontos, hogy a fürtök biztonságos. A fürtök biztonságossá tétele magában foglal egy vagy több Azure-funkciót, amelyek magukban foglalják a biztonságos hozzáférést és a tárolást. Ez a cikk a fürt biztonságának megőrzéséhez nyújt tájékoztatást.
 
 ## <a name="managed-identities-for-azure-resources"></a>Azure-erőforrások felügyelt identitásai
 
-A felhőalapú alkalmazások kiépítésekor a hitelesítő adatok kezelése a Felhőbeli szolgáltatásokban való hitelesítés során gyakori kihívás. A hitelesítő adatok biztonságának megőrzése fontos feladat. A hitelesítő adatokat nem lehet a fejlesztői munkaállomásokban tárolni, vagy be kell jelölni a verziókövetésba. Az Azure Key Vault módot kínál a hitelesítő adatok, titkos kódok és egyéb kulcsok biztonságos tárolására, azonban a kódnak hitelesítenie kell magát a Key Vaultban az adatok lekéréséhez.
+A felhőalapú alkalmazások létrehozásakor gyakori kihívás a felhőszolgáltatásokhitelesítéshez használt kód hitelesítő adatok kezelése. A hitelesítő adatok biztonságának megőrzése fontos feladat. A hitelesítő adatokat nem szabad fejlesztői munkaállomásokon tárolni, és nem kell ellenőrizni a forrásvezérlőbe. Az Azure Key Vault módot kínál a hitelesítő adatok, titkos kódok és egyéb kulcsok biztonságos tárolására, azonban a kódnak hitelesítenie kell magát a Key Vaultban az adatok lekéréséhez.
 
-A probléma megoldásához a Azure Active Directory (Azure AD) felügyelt identitások az Azure-erőforrások szolgáltatásban. A szolgáltatás automatikusan felügyelt identitást biztosít az Azure-szolgáltatások számára az Azure AD-ben. Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatok a kódban szerepelnének. További információ erről a szolgáltatásról: [felügyelt identitások az Azure-erőforrásokhoz](/azure/active-directory/managed-identities-azure-resources/overview) – Áttekintés lap.
+Az Azure Active Directory (Azure AD) felügyelt identitások az Azure-erőforrások funkció megoldja ezt a problémát. A szolgáltatás automatikusan felügyelt identitást biztosít az Azure-szolgáltatások számára az Azure AD-ben. Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatok a kódban szerepelnének. A szolgáltatásról további információt az [Azure-erőforrások felügyelt identitások](/azure/active-directory/managed-identities-azure-resources/overview) – áttekintés i. lap című témakörben talál.
 
 ## <a name="data-encryption"></a>Adattitkosítás
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-[Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) segíti az adatai védelmét és védelmét a szervezeti biztonsági és megfelelőségi kötelezettségvállalások teljesítése érdekében. Mennyiségi titkosítást biztosít a fürt virtuális gépei operációsrendszer-és adatlemezei számára. A Azure Disk Encryption a [Azure Key Vault](/azure/key-vault/)is integrálható, ami lehetővé teszi a lemezes titkosítási kulcsok és titkos kódok vezérlését és kezelését, valamint gondoskodik arról, hogy a virtuálisgép-lemezeken lévő összes adatok titkosítva legyenek. 
+[Az Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) segít megvédeni és megvédeni az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalásoknak. Kötettitkosítást biztosít a fürt virtuális gépeinek operációs rendszeréhez és adatlemezeihez. Az Azure Disk Encryption is integrálható [az Azure Key Vault,](/azure/key-vault/)amely lehetővé teszi számunkra, hogy ellenőrizzék és kezeljék a lemez titkosítási kulcsok és titkos kulcsok, és győződjön meg arról, hogy a virtuális gép lemezeken lévő összes adat titkosítva van. 
 
-### <a name="customer-managed-keys-with-azure-key-vault"></a>Ügyfél által felügyelt kulcsok Azure Key Vault
+### <a name="customer-managed-keys-with-azure-key-vault"></a>Ügyfél által felügyelt kulcsok az Azure Key Vault segítségével
 
-Alapértelmezés szerint az adattitkosítás a Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további szabályozásához megadhatja az ügyfél által felügyelt kulcsokat, amelyeket az adattitkosításhoz használhat. A tárolási szinten kezelheti az adatai titkosítását a saját kulcsaival. Az ügyfél által felügyelt kulcs használatával biztosítható a legfelső szintű titkosítási kulcshoz való hozzáférés, amely az összes információ titkosítására és visszafejtésére szolgál. Az ügyfél által felügyelt kulcsok nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Az adatai védelme érdekében használt titkosítási kulcsokat is naplózhatja.
+Alapértelmezés szerint az adatok microsoftáltal kezelt kulccsal vannak titkosítva. A titkosítási kulcsok további szabályozásához megadhat ügyfél által felügyelt kulcsokat az adattitkosításhoz. Az adatok titkosítását a tárolási szinten kezelheti a saját kulcsaival. Az ügyfél által felügyelt kulcs a gyökértitkosítási kulcshoz való hozzáférés védelmére és szabályozására szolgál, amely az összes adat titkosítására és visszafejtésére szolgál. Az ügyfél által felügyelt kulcsok nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlők létrehozásához, elforgatásához, letiltásához és visszavonásához. Az adatok védelmére használt titkosítási kulcsokat is naplózhatja.
 
-Az ügyfél által felügyelt kulcsok tárolásához használja a Azure Key Vault. Létrehozhat saját kulcsokat, és tárolhatja őket egy kulcstartóban, vagy használhat egy Azure Key Vault API-t kulcsok létrehozásához. Az Azure Adatkezelő-fürtnek és a Azure Key Vaultnak ugyanabban a régióban kell lennie, de különböző előfizetésekben lehet. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](/azure/key-vault/key-vault-overview) Az ügyfél által felügyelt kulcsok részletes ismertetését lásd: [ügyfél által felügyelt kulcsok Azure Key Vault](/azure/storage/common/storage-service-encryption). Az ügyfél által felügyelt kulcsok konfigurálása az Azure Adatkezelő- [C#](/azure/data-explorer/customer-managed-keys-csharp) fürtön a vagy a [Azure Resource Manager sablon](/azure/data-explorer/customer-managed-keys-resource-manager) használatával
-
-> [!Note]
-> Az ügyfél által felügyelt kulcsok az Azure-erőforrások felügyelt identitásait, Azure Active Directory (Azure AD) funkcióját használják. Az ügyfél által felügyelt kulcsok Azure Portal való konfigurálásához konfigurálnia kell egy **SystemAssigned** által felügyelt identitást a fürthöz a [felügyelt identitások konfigurálása az Azure adatkezelő-fürthöz](/azure/data-explorer/managed-identities)című részletesen.
-
-#### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Ügyfél által felügyelt kulcsok tárolása Azure Key Vault
-
-Az ügyfél által felügyelt kulcsok fürtön való engedélyezéséhez használjon egy Azure Key Vault a kulcsok tárolásához. Engedélyeznie kell a **Soft delete** és a No **Purge** tulajdonságot a Key vaulton. A Key vaultnak a fürttel megegyező előfizetésben kell lennie. Az Azure Adatkezelő felügyelt identitásokat használ az Azure-erőforrások számára a titkosítási és visszafejtési műveletek Key vaultba való hitelesítéséhez. A felügyelt identitások nem támogatják a könyvtárak közötti forgatókönyveket.
-
-#### <a name="rotate-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok elforgatása
-
-A megfelelőségi szabályzatok alapján Azure Key Vault elforgathatja az ügyfél által felügyelt kulcsot. A kulcs elforgatásakor a fürtöt úgy kell frissíteni, hogy az új kulcs URI-JÁT használja. A kulcs elforgatása nem aktiválja újra a fürtben lévő adattitkosítást. 
-
-#### <a name="revoke-access-to-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok hozzáférésének visszavonása
-
-Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához használja a PowerShellt vagy az Azure CLI-t. További információ: [Azure Key Vault PowerShell](/powershell/module/az.keyvault/) vagy [Azure Key Vault parancssori](/cli/azure/keyvault)felület. A hozzáférési blokkok visszavonása a fürt tárolási szintjén lévő összes adattal elérhetővé válik, mivel a titkosítási kulcs ezért nem érhető el az Azure Adatkezelő.
+Az Azure Key Vault használatával tárolhatja az ügyfél által felügyelt kulcsokat. Létrehozhatja saját kulcsait, és tárolhatja őket egy key vaultban, vagy használhatja az Azure Key Vault API-t a kulcsok létrehozásához. Az Azure Data Explorer-fürt és az Azure Key Vault kell ugyanabban a régióban, de lehet nek iktatott különböző előfizetések. Az Azure Key Vaultról a [Mi az Azure Key Vault?](/azure/key-vault/key-vault-overview) Az ügyfelek által felügyelt kulcsok részletes magyarázatát az [Azure Key Vault ügyfél által felügyelt kulcsok című témakörben tetszetős ekben.](/azure/storage/common/storage-service-encryption) Ügyfél által kezelt kulcsok konfigurálása az Azure Data Explorer-fürtben a [C#](/azure/data-explorer/customer-managed-keys-csharp) vagy az [Azure Resource Manager sablon](/azure/data-explorer/customer-managed-keys-resource-manager) használatával
 
 > [!Note]
-> Amikor az Azure Adatkezelő megállapítja, hogy az ügyfél által felügyelt kulcshoz való hozzáférés visszavonásra kerül, automatikusan felfüggeszti a fürtöt a gyorsítótárazott adat törléséhez. A kulcshoz való hozzáférés után a fürtöt manuálisan kell újraindítani.
+> Az ügyfél által felügyelt kulcsok az Azure Active Directory (Azure AD) egyik szolgáltatásának felügyelt identitásaira támaszkodnak. Az ügyfél által felügyelt kulcsok konfigurálásához az Azure Portalon konfigurálnia kell egy **SystemAssigned** felügyelt identitást a fürthöz az [Azure Data Explorer-fürt felügyelt identitásainak konfigurálása](/azure/data-explorer/managed-identities)című részben.
+
+#### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Ügyfél által felügyelt kulcsok tárolása az Azure Key Vaultban
+
+Az ügyfél által felügyelt kulcsok fürtön való engedélyezéséhez használja az Azure Key Vault a kulcsok tárolására. Engedélyeznie kell mind a **soft delete,** mind a **Ne ürítse** ki a kulcstartót. A key vault kell lennie ugyanabban az előfizetésben, mint a fürt. Az Azure Data Explorer felügyelt identitások használatával hitelesíti magát a kulcstárolóban a titkosítási és visszafejtési műveletekhez. A felügyelt identitások nem támogatják a címtárközi forgatókönyveket.
+
+#### <a name="rotate-customer-managed-keys"></a>Ügyfél által kezelt kulcsok elforgatása
+
+Az azure-key vaultban az ügyfél által felügyelt kulcsot a megfelelőségi szabályzatok szerint forgathatja. A kulcs elforgatása után frissítenie kell a fürtöt az új kulcs URI-jának használatához. A kulcs elforgatása nem indítja el a fürtben lévő adatok újratitkosítását. 
+
+#### <a name="revoke-access-to-customer-managed-keys"></a>Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonása
+
+Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához használja a PowerShell vagy az Azure CLI használatát. További információ: [Azure Key Vault PowerShell](/powershell/module/az.keyvault/) vagy [Azure Key Vault CLI.](/cli/azure/keyvault) A hozzáférés visszavonása blokkolja a fürt tárolási szintjén lévő összes adathoz való hozzáférést, mivel a titkosítási kulcsot ezért az Azure Data Explorer nem éri el.
+
+> [!Note]
+> Amikor az Azure Data Explorer azonosítja, hogy az ügyfél által kezelt kulcshoz való hozzáférés visszavonásra kerül, automatikusan felfüggeszti a fürtöt a gyorsítótárazott adatok törléséhez. A kulcshoz való hozzáférés visszaadása után a fürtöt manuálisan kell folytatni.
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/overview)használatával elkülönítheti a feladatait a csapaton belül, és csak a szükséges hozzáférést biztosíthat a fürt felhasználói számára. Ahelyett, hogy mindenki számára nem korlátozott engedélyeket adna a fürthöz, csak bizonyos műveleteket engedélyezhet. A [Azure Portalban](/azure/role-based-access-control/role-assignments-portal)lévő [adatbázisok hozzáférés-vezérlését](/azure/data-explorer/manage-database-permissions) az [Azure CLI](/azure/role-based-access-control/role-assignments-cli)vagy a [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)használatával konfigurálhatja.
+Szerepköralapú [hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/overview)használatával elkülönítheti a feladatokat a csapaton belül, és csak a szükséges hozzáférést adja meg a fürtfelhasználóknak. Ahelyett, hogy mindenkinek korlátlan engedélyeket adna a fürthöz, csak bizonyos műveleteket engedélyezhet. Az Azure CLI vagy az [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)használatával konfigurálhatja [az adatbázisok hozzáférés-vezérlését](/azure/data-explorer/manage-database-permissions) az [Azure Portalon.](/azure/role-based-access-control/role-assignments-portal) [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [A fürt biztonságossá tétele az Azure adatkezelő-Portalon](manage-cluster-security.md) a titkosítás nyugalmi állapotban való engedélyezésével.
-* [Felügyelt identitások konfigurálása az Azure Adatkezelő-fürthöz](managed-identities.md)
-* [Az ügyfél által felügyelt kulcsok konfigurálása a Azure Resource Manager sablon használatával](customer-managed-keys-resource-manager.md)
-* [Ügyfél által felügyelt kulcsok konfigurálása a használatávalC#](customer-managed-keys-csharp.md)
+* [Biztonságossá a fürt az Azure Data Explorer – Portal](manage-cluster-security.md) titkosítás engedélyezése inaktív módon.
+* [Felügyelt identitások konfigurálása az Azure Data Explorer-fürthöz](managed-identities.md)
+* [Ügyfél által kezelt kulcsok konfigurálása az Azure Resource Manager sablon használatával](customer-managed-keys-resource-manager.md)
+* [Ügyfél által kezelt kulcsok konfigurálása C használatával #](customer-managed-keys-csharp.md)
 

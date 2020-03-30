@@ -1,7 +1,7 @@
 ---
 title: Webszolgáltatás felhasználása
 titleSuffix: ML Studio (classic) - Azure
-description: Ha a gépi tanulási szolgáltatás központi telepítése Azure Machine Learning Studio (klasszikus), a REST-alapú webszolgáltatás akár valós idejű kérelem-válasz szolgáltatásként, akár batch-végrehajtási szolgáltatásként is felhasználható.
+description: Miután egy gépi tanulási szolgáltatás üzembe helyezése az Azure Machine Learning Studio (klasszikus), a RESTFul webszolgáltatás lehet használni akár valós idejű kérelem-válasz szolgáltatás, vagy egy kötegelt végrehajtási szolgáltatás.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,104 +11,104 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 06/02/2017
 ms.openlocfilehash: de395f7167f0ab7d7c6429c14d5efce46831b576
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218236"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás felhasználása
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Miután telepített egy Azure Machine Learning Studio (klasszikus) prediktív modellt webszolgáltatásként, használhat egy REST API az adatküldés és az előrejelzések beszerzése érdekében. Elküldheti az adatok valós idejű és kötegelt módban.
+Miután egy Azure Machine Learning Studio (klasszikus) prediktív modell webszolgáltatásként üzembe helyezése, egy REST API-t használhat az adatok küldéséhez és az előrejelzések betekintéséhez. Az adatokat valós időben vagy kötegelt módban is elküldheti.
 
-A Machine Learning webszolgáltatások Machine Learning Studio (klasszikus) használatával történő létrehozásáról és üzembe helyezéséről további információt itt talál:
+A Machine Learning Webszolgáltatások Machine Learning Studio (klasszikus) használatával történő létrehozásáról és központi telepítéséről itt olvashat bővebben:
 
-* Az Machine Learning Studio (klasszikus) kísérlet létrehozásával kapcsolatos oktatóanyagért lásd: [az első kísérlet létrehozása](create-experiment.md).
-* A webszolgáltatások üzembe helyezésével kapcsolatos részletekért lásd: [Machine learning webszolgáltatás üzembe](deploy-a-machine-learning-web-service.md)helyezése.
-* Az általános Machine Learning kapcsolatos további információkért látogasson el a [Machine learning dokumentációs központba](https://azure.microsoft.com/documentation/services/machine-learning/).
+* A Machine Learning Studio (klasszikus) programban végzett kísérletek létrehozásáról az [Első kísérlet létrehozása című](create-experiment.md)témakörben található.
+* A webszolgáltatások központi telepítéséről a [Machine Learning webszolgáltatás telepítése (Központi) szolgáltatás telepítése (Központi) témakörben](deploy-a-machine-learning-web-service.md)talál.
+* A Machine Learningről általában a [Machine Learning dokumentációs központjában](https://azure.microsoft.com/documentation/services/machine-learning/)olvashat bővebben.
 
 
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Machine Learning Web Service egy külső alkalmazás a Machine Learning munkafolyamatának pontozási modelljével valós időben kommunikál. A Machine Learning webszolgáltatás-hívások visszaadják az előrejelzés eredményét a külső alkalmazásnak. Ahhoz, hogy egy Machine Learning webszolgáltatás felé irányuló hívások, amikor telepít egy előrejelzési API-kulcs adja át. A Machine Learning webszolgáltatás a webprogramozási projektekben népszerű architektúra választott REST alapul.
+Az Azure Machine Learning webszolgáltatással egy külső alkalmazás valós időben kommunikál a Machine Learning munkafolyamat-pontozási modelljével. A Machine Learning webszolgáltatás-hívás előrejelzési eredményeket ad vissza egy külső alkalmazásnak. Machine Learning webszolgáltatás-hívás, adja át egy API-kulcs, amely akkor jön létre, amikor egy előrejelzés t. A Machine Learning webszolgáltatás a REST-en alapul, amely a webes programozási projektek népszerű architektúrája.
 
-A Azure Machine Learning Studio (klasszikus) két típusú szolgáltatást tartalmaz:
+Az Azure Machine Learning Studio (klasszikus) kétféle szolgáltatást kínál:
 
-* Kérelem-válasz szolgáltatás (RR) – alacsony késésű, rugalmasan méretezhető szolgáltatás, amely felületet biztosít a Machine Learning Studio (klasszikus) által létrehozott és telepített állapot nélküli modellekhez.
-* Kötegelt végrehajtási szolgáltatás (BES) –-aszinkron szolgáltatás, amely adatrekordok pontozza.
+* Kérés-válasz szolgáltatás (RRS) – Alacsony késésű, jól méretezhető szolgáltatás, amely felületet biztosít a Machine Learning Studio (klasszikus) állapot nélküli modellekhez.
+* Batch Execution Service (BES) – egy aszinkron szolgáltatás, amely egy köteget szerez az adatrekordokhoz.
 
-A Machine Learning webszolgáltatásokkal kapcsolatos további információkért lásd: [Machine learning webszolgáltatás üzembe helyezése](deploy-a-machine-learning-web-service.md).
+A Machine Learning webszolgáltatásokról a [Machine Learning webszolgáltatás telepítése](deploy-a-machine-learning-web-service.md)című témakörben talál további információt.
 
-## <a name="get-an-authorization-key"></a>Engedélyezési kulcs beszerzése
-A kísérlet során történő telepítésekor a webszolgáltatás API-kulcsok jönnek létre. A kulcsok több helyről lehet lekérdezni.
+## <a name="get-an-authorization-key"></a>Engedélyezési kulcs beszerezni
+A kísérlet telepítésekor API-kulcsok jönnek létre a webszolgáltatáshoz. A kulcsokat több helyről is lekérheti.
 
-### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>A Microsoft Azure Machine Learning Web Services portálon
-Jelentkezzen be a [Microsoft Azure Machine learning Web Services](https://services.azureml.net) portálra.
+### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>A Microsoft Azure Machine Learning Web Services portálról
+Jelentkezzen be a [Microsoft Azure Machine Learning Web Services](https://services.azureml.net) portálra.
 
-Az új Machine Learning webszolgáltatás API-kulcs lekéréséhez:
+Új Gépi tanulási webszolgáltatás API-kulcsának beolvasása:
 
-1. A Azure Machine Learning webszolgáltatások portálján kattintson a **webszolgáltatások** lehetőségre a felső menüben.
-2. Kattintson a webes szolgáltatás, amelynek meg szeretné lekérni a kulcsot.
-3. A felső **menüben kattintson a**felhasználás elemre.
+1. Az Azure Machine Learning Web Services portálon kattintson a **Webservices** parancsra a felső menüben.
+2. Kattintson arra a webszolgáltatásra, amelynek a kulcsát be szeretné olvasni.
+3. A felső menüben kattintson a **Fogyasztatás gombra.**
 4. Másolja és mentse az **elsődleges kulcsot**.
 
-A klasszikus Machine Learning webszolgáltatás API-kulcs lekéréséhez:
+Klasszikus Machine Learning webszolgáltatás API-kulcsának beolvasása:
 
-1. A Azure Machine Learning webszolgáltatások portálján kattintson a **klasszikus webes szolgáltatások** elemre a felső menüben.
-2. Kattintson a webes szolgáltatás, amellyel dolgozik.
-3. Kattintson a végpontra, amelynek meg szeretné lekérni a kulcsot.
-4. A felső **menüben kattintson a**felhasználás elemre.
+1. Az Azure Machine Learning Web Services portálon kattintson a **klasszikus webszolgáltatások** a felső menüben.
+2. Kattintson arra a webszolgáltatásra, amellyel dolgozik.
+3. Kattintson arra a végpontra, amelynek a kulcsát be szeretné olvasni.
+4. A felső menüben kattintson a **Fogyasztatás gombra.**
 5. Másolja és mentse az **elsődleges kulcsot**.
 
 ### <a name="classic-web-service"></a>Klasszikus webszolgáltatás
- A klasszikus webszolgáltatások kulcsát a Machine Learning Studio (klasszikus) webhelyről is lekérheti.
+ A Klasszikus webszolgáltatás kulcsait a Machine Learning Studio (klasszikus) szolgáltatásból is lekérheti.
 
 #### <a name="machine-learning-studio-classic"></a>Machine Learning Studio (klasszikus)
-1. Machine Learning Studio (klasszikus) területen kattintson a bal oldali **WEBszolgáltatások** elemre.
-2. Kattintson egy webszolgáltatás. Az **API-kulcs** az **irányítópult** lapon található.
+1. A Machine Learning Studio (klasszikus) alkalmazásban kattintson a bal oldali **WEBSERVICES** elemre.
+2. Kattintson egy webszolgáltatásra. Az **API-kulcs** a **DASHBOARD** lapon található.
 
-## <a id="connect"></a>Kapcsolódás Machine Learning webszolgáltatáshoz
-A Machine Learning Web service bármilyen programozási nyelvet, amely támogatja a HTTP-kérés-válasz csatlakozhat. Megtekintheti a szereplő példák C#, Python és az R, Machine Learning Web service Súgó oldal.
+## <a name="connect-to-a-machine-learning-web-service"></a><a id="connect"></a>Csatlakozás Machine Learning webszolgáltatáshoz
+A Machine Learning webszolgáltatásokhoz bármilyen olyan programozási nyelven csatlakozhat, amely támogatja a HTTP-kéréseket és válaszokat. A Példákat C#, Python és R nyelven tekintheti meg a Machine Learning webszolgáltatás súgólapján.
 
-**Machine learning API Súgó** Webszolgáltatások telepítésekor a rendszer Machine Learning API súgóját hozza létre. Lásd [: 3. Oktatóanyag: hitelkockázat-modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md).
-Machine Learning API segítségével előrejelzési webszolgáltatást részleteit tartalmazza.
+**Machine Learning API súgó** A Machine Learning API-súgója egy webszolgáltatás üzembe helyezésekor jön létre. Lásd [3.](tutorial-part3-credit-risk-deploy.md)
+A Machine Learning API-súgó egy előrejelzési webszolgáltatás részleteit tartalmazza.
 
-1. Kattintson a webes szolgáltatás, amellyel dolgozik.
-2. Kattintson a végpontra, amelynek meg szeretné tekinteni az API-súgóoldalon.
-3. A felső **menüben kattintson a**felhasználás elemre.
-4. Az **API-Súgó lapon** kattintson a kérelem-válasz vagy a Batch-végrehajtási végpontok lehetőségre.
+1. Kattintson arra a webszolgáltatásra, amellyel dolgozik.
+2. Kattintson arra a végpontra, amelynek az API súgóoldalát meg szeretné tekinteni.
+3. A felső menüben kattintson a **Fogyasztatás gombra.**
+4. Kattintson az **API súgólapjára** a Kérelem-válasz vagy a Kötegelt végrehajtás végpontok alatt.
 
-**Új webszolgáltatás Machine Learning API-súgójának megtekintése**
+**Machine Learning API-súgó megtekintése egy új webszolgáltatáshoz**
 
-A [Azure Machine learning Web Services portálon](https://services.azureml.net/):
+Az [Azure Machine Learning webszolgáltatási portálon:](https://services.azureml.net/)
 
-1. A felső menüben kattintson a **Web Services** elemre.
-2. Kattintson a webes szolgáltatás, amelynek meg szeretné lekérni a kulcsot.
+1. Kattintson a felső menü **WEB SERVICES** parancsára.
+2. Kattintson arra a webszolgáltatásra, amelynek a kulcsát be szeretné olvasni.
 
-Kattintson a **webszolgáltatások használata** lehetőségre az URI-k beszerzéséhez a kérelem-válasz és a C#batch-végrehajtási szolgáltatások és a mintakód számára a, az R és a Python alkalmazásban.
+Kattintson a **Webszolgáltatás használata** a kérelem-válasz és a kötegelt végrehajtási szolgáltatások URI-k és a mintakód C#, R és Python.
 
-Kattintson a **hencegés API** lehetőségre a megadott URI-k által hívott API-k hencegő dokumentációjának beszerzéséhez.
+Kattintson **a Swagger API-ra** a Swagger-alapú dokumentáció bekéréséhez a megadott URI-kból megnevezett API-khoz.
 
-### <a name="c-sample"></a>C#-minta
-Machine Learning webszolgáltatáshoz való kapcsolódáshoz használjon egy **HttpClient** Passing ScoreData. ScoreData tartalmaz egy FeatureVector egy numerikus funkciók n dimenziós vektor, amely a ScoreData jelöli. A hitelesítést, a Machine Learning szolgáltatás API-kulcs.
+### <a name="c-sample"></a>C# minta
+Ha egy Machine Learning webszolgáltatáshoz szeretne csatlakozni, használjon egy ScoreData-t átadva **http-ügyfélt.** A ScoreData egy FeatureVector-t tartalmaz, egy n-dimenziós numerikus funkciókat tartalmazó vektort, amely a ScoreData-t jelöli. A Machine Learning szolgáltatás api-kulcsával hitelesíti magát.
 
-Machine Learning webszolgáltatáshoz való kapcsolódáshoz telepíteni kell a **Microsoft. AspNet. WebApi. Client** NuGet-csomagot.
+A Machine Learning webszolgáltatáshoz való csatlakozáshoz telepíteni kell a **Microsoft.AspNet.WebApi.Client** NuGet csomagot.
 
-**A Microsoft. AspNet. WebApi. Client NuGet telepítése a Visual Studióban**
+**A Microsoft.AspNet.WebApi.Client NuGet telepítése a Visual Studióban**
 
-1. A UCI letöltési adatkészlet közzététele: felnőtt 2 osztály adatkészlet webszolgáltatáshoz.
-2. Kattintson a **Tools** (Eszközök)  > **NuGet Package Manager** (NuGet-csomagkezelő) > **Package Manager Console** (Csomagkezelő konzol) elemre.
-3. Válassza a **Microsoft. AspNet. WebApi. Client csomag telepítése**lehetőséget.
+1. Tegye közzé az adatbázis letöltése az UCI: Adult 2 osztályú adatkészlet webszolgáltatásból.
+2. Kattintson **az Eszközök** > **NuGet Csomagkezelő** > **konzol ra.**
+3. Válassza **a Microsoft.AspNet.WebApi.Client telepítése**lehetőséget.
 
-**A mintakód futtatása**
+**A kódminta futtatása**
 
-1. Közzététele "1. példa: adatkészlet UCI töltheti le: felnőtt 2 osztály adatkészlet" kísérlet, a Machine Learning minta gyűjtemény része.
-2. Rendelje hozzá a kulccsal apikey tulajdonsággal végzett tesztelése egy webszolgáltatásból. Lásd **a fenti engedélyezési kulcs beszerzése** című témakört.
-3. Rendelje hozzá a kérelem URI-azonosítójú serviceUri.
+1. Tegye közzé a "1. minta: Adatkészlet letöltése az UCI:Adult 2 osztályú adatkészletből" kísérletet, amely a Machine Learning mintagyűjtemény része.
+2. Rendelje hozzá az apiKey kulcsot egy webszolgáltatásból. Lásd: **Engedélyezési kulcs beszerezni** e fenti.
+3. Rendelje hozzá a serviceUri-t a kérelem URI-jával.
 
-**A teljes kérelem így fog kinézni.**
+**Itt van, amit a teljes kérelem fog kinézni.**
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -196,15 +196,15 @@ namespace CallRequestResponseService
 ```
 
 ### <a name="python-sample"></a>Python-minta
-Ha Machine Learning webszolgáltatáshoz szeretne csatlakozni, használja a Python 2. X és a **urllib.** **urllib2** függvénytárát a Python 3. x verzióhoz. Akkor továbbítja a ScoreData, amely tartalmaz egy FeatureVector egy numerikus funkciók n dimenziós vektor, amely a ScoreData jelöli. A hitelesítést, a Machine Learning szolgáltatás API-kulcs.
+A Machine Learning webszolgáltatáshoz való csatlakozáshoz használja a Python 2.X **urllib2 könyvtárát** és a Python 3.X **urllib.request** könyvtárát. Át fogja adni a ScoreData-t, amely egy FeatureVector-t, egy numerikus funkciók n-dimenziós vektorját tartalmazza, amely a ScoreData-t jelöli. A Machine Learning szolgáltatás api-kulcsával hitelesíti magát.
 
-**A mintakód futtatása**
+**A kódminta futtatása**
 
-1. Üzembe helyezése "1. példa: adatkészlet UCI töltheti le: felnőtt 2 osztály adatkészlet" kísérlet, a Machine Learning minta gyűjtemény része.
-2. Rendelje hozzá a kulccsal apikey tulajdonsággal végzett tesztelése egy webszolgáltatásból. Tekintse meg a jelen cikk elején található **engedélyezési kulcs beszerzése** című szakaszt.
-3. Rendelje hozzá a kérelem URI-azonosítójú serviceUri.
+1. Telepítse a "1. minta: Adatkészlet letöltése az UCI:Adult 2 osztályú adatkészletből" kísérlet, amely a Machine Learning-mintagyűjtemény része.
+2. Rendelje hozzá az apiKey kulcsot egy webszolgáltatásból. Tekintse meg az **Engedélyezési kulcs beszereznie** szakaszt a cikk elején.
+3. Rendelje hozzá a serviceUri-t a kérelem URI-jával.
 
-**A teljes kérelem így fog kinézni.**
+**Itt van, amit a teljes kérelem fog kinézni.**
 ```python
 import urllib2 # urllib.request and urllib.error for Python 3.X
 import json
@@ -248,11 +248,11 @@ except urllib2.HTTPError, error:
     print(json.loads(error.read())) 
 ```
 
-### <a name="r-sample"></a>R-minta
+### <a name="r-sample"></a>R minta
 
-Machine Learning webszolgáltatáshoz való kapcsolódáshoz használja a **RCurl** és a **rjson** kódtárat a kérelem és a visszaadott JSON-válasz feldolgozásához. Akkor továbbítja a ScoreData, amely tartalmaz egy FeatureVector egy numerikus funkciók n dimenziós vektor, amely a ScoreData jelöli. A hitelesítést, a Machine Learning szolgáltatás API-kulcs.
+A Machine Learning webszolgáltatáshoz való csatlakozáshoz használja az **RCurl** és **rjson** kódtárakat a kérés hez, és dolgozza fel a visszaadott JSON-választ. Át fogja adni a ScoreData-t, amely egy FeatureVector-t, egy numerikus funkciók n-dimenziós vektorját tartalmazza, amely a ScoreData-t jelöli. A Machine Learning szolgáltatás api-kulcsával hitelesíti magát.
 
-**A teljes kérelem így fog kinézni.**
+**Itt van, amit a teljes kérelem fog kinézni.**
 ```r
 library("RCurl")
 library("rjson")
@@ -306,9 +306,9 @@ print(fromJSON(result))
 
 ### <a name="javascript-sample"></a>JavaScript-minta
 
-Ha Machine Learning webszolgáltatáshoz szeretne csatlakozni, használja a **NPM-csomagot a** projektben. Emellett a `JSON` objektumot is használhatja a bevitel formázásához és az eredmény elemzéséhez. Telepítse a `npm install request --save`használatával, vagy vegyen fel `"request": "*"` a Package. JSON fájlba `dependencies` és futtassa `npm install`.
+Ha egy Machine Learning webszolgáltatáshoz szeretne csatlakozni, használja a **projectnpm** kérelem-csomagot. Az objektumsegítségével `JSON` formázhatja a bevitelt, és elemezheti az eredményt. Telepítse `npm install request --save`a segítségével `"request": "*"` , vagy add hozzá `dependencies` a `npm install`package.json alatt, és fuss.
 
-**A teljes kérelem így fog kinézni.**
+**Itt van, amit a teljes kérelem fog kinézni.**
 ```js
 let req = require("request");
 

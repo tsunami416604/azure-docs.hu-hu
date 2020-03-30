@@ -1,24 +1,24 @@
 ---
-title: Az Azure Application Insights Agent API-referenciája
-description: Application Insights Agent API-referenciája. Set-ApplicationInsightsMonitoringConfig. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
+title: Az Azure Application Insights Ügynök API-hivatkozása
+description: Application Insights Ügynök API-referencia. Set-ApplicationInsightsMonitoringConfig. A webhely teljesítményének figyelése a webhely újratelepítése nélkül. Együttműködik ASP.NET helyszíni, virtuális gépeken vagy az Azure-ban üzemeltetett webalkalmazásokkal.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 1226b3e10adf786ed3335844a5d3f4e530911705
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671239"
 ---
-# <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights ügynök API: set-ApplicationInsightsMonitoringConfig
+# <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights-ügynök API: Set-ApplicationInsightsMonitoringConfig
 
-Ez a dokumentum egy olyan parancsmagot ismertet, amely az az [. ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)tagja.
+Ez a dokumentum az [Az.ApplicationMonitor PowerShell modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)tagjaként készült parancsmalapot ismerteti.
 
 ## <a name="description"></a>Leírás
 
-A konfigurációs fájl teljes újratelepítés nélkül állítható be.
+Beállítja a konfigurációs fájlt anélkül, hogy teljes újratelepítést végezne.
 A módosítások érvénybe léptetéséhez indítsa újra az IIS-t.
 
 > [!IMPORTANT] 
@@ -27,21 +27,21 @@ A módosítások érvénybe léptetéséhez indítsa újra az IIS-t.
 
 ## <a name="examples"></a>Példák
 
-### <a name="example-with-a-single-instrumentation-key"></a>Példa egyetlen kialakítási kulccsal
-Ebben a példában az aktuális számítógépen lévő összes alkalmazás hozzá lesz rendelve egyetlen kialakítási kulcshoz.
+### <a name="example-with-a-single-instrumentation-key"></a>Példa egyetlen műszerezési kulccsal
+Ebben a példában az aktuális számítógépen lévő összes alkalmazáshoz egyetlen instrumentation kulcs lesz rendelve.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-### <a name="example-with-an-instrumentation-key-map"></a>Példa a kialakítási kulcs megfeleltetésére
+### <a name="example-with-an-instrumentation-key-map"></a>Példa műszerezési kulcstérképpel
 Ebben a példában:
-- a `MachineFilter` a `'.*'` helyettesítő karakterrel egyezik meg az aktuális számítógéppel.
-- a `AppFilter='WebAppExclude'` `null` kialakítási kulcsot biztosít. A megadott alkalmazás nem lesz kialakítva.
-- `AppFilter='WebAppOne'` egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
-- `AppFilter='WebAppTwo'` egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
-- Végezetül `AppFilter` a `'.*'` helyettesítő karaktert is használja a korábbi szabályoknak nem megfelelő webalkalmazások és az alapértelmezett kialakítási kulcs hozzárendeléséhez.
-- A szóközök hozzáadódnak az olvashatósághoz.
+- `MachineFilter`a helyettesítő karakter használatával `'.*'` megegyezik az aktuális számítógéppel.
+- `AppFilter='WebAppExclude'``null` műszerezési kulcsot biztosít. A megadott alkalmazás nem lesz instrumented.
+- `AppFilter='WebAppOne'`a megadott alkalmazáshoz egyedi instrumentation kulcsot rendel.
+- `AppFilter='WebAppTwo'`a megadott alkalmazáshoz egyedi instrumentation kulcsot rendel.
+- Végül `AppFilter` is használja `'.*'` a helyettesítő karaktert, hogy megfeleljen az összes olyan webalkalmazást, amely nem felel meg a korábbi szabályok, és rendeljen hozzá egy alapértelmezett instrumentation kulcs.
+- Az olvashatóság érdekében a szóközök kerülnek hozzáadásra.
 
 ```powershell
 Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
@@ -53,38 +53,38 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 
 ## <a name="parameters"></a>Paraméterek
 
-### <a name="-instrumentationkey"></a>– InstrumentationKey
-**Szükséges.** Ezzel a paraméterrel egyetlen rendszerállapot-kulcsot adhat meg a célszámítógépen lévő összes alkalmazás számára.
+### <a name="-instrumentationkey"></a>-InstrumentationKey
+**Szükséges.** Ezzel a paraméterrel egyetlen instrumentation kulcsot biztosíthat a célszámítógépen lévő összes alkalmazás számára.
 
 ### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Szükséges.** Ezzel a paraméterrel több rendszerállapot-kulcs és az egyes alkalmazások által használt rendszerállapot-kulcsok leképezése is megadható.
-A `MachineFilter`beállításával egyetlen telepítési parancsfájlt is létrehozhat több számítógép számára.
+**Szükséges.** Ezzel a paraméterrel több instrumentation kulcsot és az egyes alkalmazások által használt instrumentation kulcsok leképezését biztosítja.
+A beállítással egyetlen telepítési parancsfájlt `MachineFilter`hozhat létre több számítógéphez.
 
 > [!IMPORTANT]
-> Az alkalmazások a szabályok megadásának sorrendjében egyeznek meg a szabályokkal. Ezért a legpontosabb szabályokat kell megadnia az első és a legáltalánosabb szabályok közül.
+> Az alkalmazások a szabályok sorrendjében egyeznek meg a szabályokkal. Ezért először a legkonkrétabb szabályokat kell megadnia, a legáltalánosabb szabályokat pedig utoljára.
 
 #### <a name="schema"></a>Séma
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
 
-- A **MachineFilter** a számítógép C# vagy a virtuális gép nevének kötelező regexje.
-    - a ". *" mindennek megfelel
-    - A "számítógépnév" csak a megadott névvel rendelkező számítógépekhez fog megfelelni.
-- A **AppFilter** a számítógép C# vagy a virtuális gép nevének kötelező regexje.
-    - a ". *" mindennek megfelel
-    - A "ApplicationName" csak a megadott nevű IIS-alkalmazásoknak felel meg.
-- A **InstrumentationKey** az előző két szűrőnek megfelelő alkalmazások figyelésének engedélyezéséhez szükséges.
-    - Ha a figyelés kizárásához szabályokat szeretne meghatározni, hagyja üresen ezt az értéket.
+- **MachineFilter** a számítógép vagy a virtuális gép nevének kötelező C# regex.
+    - '.*' mindennek megfelel
+    - A "Számítógépnév" csak a megadott nevű számítógépeket egyezteti.
+- **AppFilter** a számítógép vagy a virtuális gép nevének kötelező C# regex.
+    - '.*' mindennek megfelel
+    - Az "ApplicationName" csak a megadott nevű IIS-alkalmazásokat egyezteti.
+- **InstrumentationKey** szükséges az előző két szűrőnek megfelelő alkalmazások figyelésének engedélyezéséhez.
+    - Hagyja meg ezt az értéket null értékű, ha szabályokat szeretne definiálni a figyelés kizárásához.
 
 
 ### <a name="-verbose"></a>-Részletes
-**Általános paraméter.** Ezzel a kapcsolóval részletes naplókat jeleníthet meg.
+**Közös paraméter.** Ezzel a kapcsolóval részletes naplókat jeleníthet meg.
 
 
 ## <a name="output"></a>Kimenet
 
 Alapértelmezés szerint nincs kimenet.
 
-#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>Példa részletes kimenetre a konfigurációs fájlnak a-InstrumentationKey használatával történő beállításához
+#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>Példa részletes kimenetre a konfigurációs fájl -InstrumentationKey-en keresztültörténő beállításából
 
 ```
 VERBOSE: Operation: InstallWithIkey
@@ -96,7 +96,7 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>Példa részletes kimenetre a konfigurációs fájlnak a-InstrumentationKeyMap használatával történő beállításához
+#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>Példa részletes kimenet reked a konfigurációs fájl beállításából a -InstrumentationKeyMap
 
 ```
 VERBOSE: Operation: InstallWithIkeyMap
@@ -110,20 +110,20 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
   A telemetriai adatok megtekintése:
- - [Ismerje meg a mérőszámokat](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez.
-- [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md) a problémák diagnosztizálásához.
-- További speciális lekérdezésekhez [használja az elemzést](../../azure-monitor/app/analytics.md) .
+ - [Fedezze fel a teljesítmény](../../azure-monitor/app/metrics-explorer.md) és a használat figyeléséhez.
+- [Keresés események és naplók](../../azure-monitor/app/diagnostic-search.md) diagnosztizálására problémákat.
+- [Az Analytics használata](../../azure-monitor/app/analytics.md) fejlettebb lekérdezésekhez.
 - [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).
  
  További telemetriai funkciók hozzáadása:
- - [Létrehozhat webes teszteket](monitor-web-app-availability.md) annak biztosításához, hogy a hely élőben maradjon.
-- [Vegyen fel webes ügyfél-telemetria](../../azure-monitor/app/javascript.md) a kivételek megjelenítéséhez a weboldali kódból és a nyomkövetési hívások engedélyezéséhez.
-- [Adja hozzá a Application INSIGHTS SDK-t a kódjához](../../azure-monitor/app/asp-net.md) , hogy nyomkövetési és naplózási hívásokat helyezzen el
+ - [Létrehozhat webes teszteket](monitor-web-app-availability.md) annak biztosításához, hogy a hely elérhető maradjon.
+- [Webes ügyfél telemetriai adatok](../../azure-monitor/app/javascript.md) hozzáadásával megtekintheti a weblapkódból származó kivételeket, és engedélyezheti a nyomkövetési hívásokat.
+- [Adja hozzá az Application Insights SDK-t a kódhoz,](../../azure-monitor/app/asp-net.md) így nyomkövetési és naplóhívásokat szúrhat be
  
- Több Application Insights-ügynökkel:
- - Az útmutató segítségével Application Insights-ügynököt lehet [elhárítani](status-monitor-v2-troubleshoot.md) .
- - [A konfiguráció beszerzésével](status-monitor-v2-api-get-config.md) ellenőrizze, hogy a beállítások megfelelően vannak-e rögzítve.
- - A figyelés ellenőrzésének [állapotának beolvasása](status-monitor-v2-api-get-status.md) .
+ További információk az Application Insights-ügynökkel:
+ - Útmutatónk segítségével [elháríthatja](status-monitor-v2-troubleshoot.md) az Application Insights-ügynök hibáit.
+ - A beállítások helyes rögzítésének ellenőrzése a [konfigurációs eszközre.](status-monitor-v2-api-get-config.md)
+ - [Kap az állapot,](status-monitor-v2-api-get-status.md) hogy vizsgálja meg a megfigyelést.

@@ -1,7 +1,7 @@
 ---
-title: Szöveg egyesítése – kognitív képességek
+title: Szövegegyesítés kognitív készség
 titleSuffix: Azure Cognitive Search
-description: Szöveg egyesítése mezők egy összevont mezőjébe Ezt a kognitív képességet az Azure Cognitive Search AI-dúsítási folyamatában használhatja.
+description: Mezők gyűjteményéből származó szöveg egyesítése egyetlen összevont mezőbe. Ezt a kognitív képességeket az Azure Cognitive Search AI-bővítési folyamatában használhatja.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,34 +9,34 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162344"
 ---
-#   <a name="text-merge-cognitive-skill"></a>Szöveg egyesítése – kognitív képességek
+#   <a name="text-merge-cognitive-skill"></a>Szövegegyesítés kognitív készség
 
-A **szöveges egyesítési** képesség a mezők gyűjteményében lévő szöveget egyetlen mezőben összesíti. 
+A **Szövegegyesítés** szakértelem egyetlen mezőbe egyesíti a szöveget. 
 
 > [!NOTE]
-> Ez a képesség nem kötődik Cognitive Services API-hoz, és nem kell fizetnie a használatért. Továbbra is [csatlakoztatnia kell egy Cognitive Services-erőforrást](cognitive-search-attach-cognitive-services.md), hogy felülírja az **ingyenes** erőforrás-beállítást, amely naponta csak kis mennyiségű napi dúsítást korlátozza.
+> Ez a szakértelem nem kötődik a Cognitive Services API-t, és nem kell fizetnie a használata. Továbbra is [csatolja a Cognitive Services-erőforrás,](cognitive-search-attach-cognitive-services.md)azonban az **ingyenes** erőforrás beállítás, amely korlátozza, hogy egy kis számú napi dúsítások naponta.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. Skills. Text. MergeSkill
+Microsoft.Skills.Text.MergeSkill
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
 
-A paraméterek megkülönböztetik a kis-és nagybetűket.
+A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| insertPreTag  | Minden Beszúrás előtt szerepeltetni kívánt karakterlánc. Az alapértelmezett érték `" "`. A szóköz kihagyása érdekében állítsa `""`értékre.  |
-| insertPostTag | Az összes beszúrás után szerepeltetni kívánt karakterlánc. Az alapértelmezett érték `" "`. A szóköz kihagyása érdekében állítsa `""`értékre.  |
+| beszúrás: PreTag  | Minden beszúrás előtt szerepelnie kell a karakterláncnak. Az alapértelmezett érték `" "`. A szóköz kihagyásához `""`állítsa az értéket a értékre.  |
+| insertPostTag | Minden beszúrás után bekell vonni a karakterláncot. Az alapértelmezett érték `" "`. A szóköz kihagyásához `""`állítsa az értéket a értékre.  |
 
 
-##  <a name="sample-input"></a>Minta bemenet
-Az ehhez a képességhez használható, felhasználható bemenetet biztosító JSON-dokumentum a következő lehet:
+##  <a name="sample-input"></a>Mintabevitel
+A JSON-dokumentum, amely használható bemenetet biztosít ehhez a szakértelemhez, a következő lehet:
 
 ```json
 {
@@ -55,7 +55,7 @@ Az ehhez a képességhez használható, felhasználható bemenetet biztosító J
 ```
 
 ##  <a name="sample-output"></a>Példa kimenet
-Ez a példa az előző bemenet kimenetét mutatja be, feltéve, hogy a *insertPreTag* értéke `" "`, és a *insertPostTag* értéke `""`. 
+Ez a példa az előző bemenet kimenetét mutatja, feltételezve, hogy a *insertPreTag* beállítása `" "`a , és a *InsertPostTag* beállítása `""`a. 
 
 ```json
 {
@@ -71,11 +71,11 @@ Ez a példa az előző bemenet kimenetét mutatja be, feltéve, hogy a *insertPr
 }
 ```
 
-## <a name="extended-sample-skillset-definition"></a>Kiterjesztett minta készségkészlet-definíciója
+## <a name="extended-sample-skillset-definition"></a>Kiterjesztett minta-képességek definíciója
 
-A szöveges egyesítés használatának gyakori forgatókönyve, hogy egyesítse a képek szöveges megjelenítését (OCR-képességből származó szöveg vagy kép felirata) egy dokumentum tartalom mezőjébe. 
+A Szövegegyesítés gyakori forgatókönyve a képek szöveges ábrázolása (ocr-szakértelemből származó szöveg vagy kép felirata) egyesítése a dokumentum tartalommezőjébe. 
 
-A következő példában a készségkészlet az OCR-képességet használja a dokumentumba ágyazott képek szövegének kinyeréséhez. Ezután létrehoz egy *merged_text* mezőt, amely az eredeti és a OCRed szöveget is tartalmazza az egyes képekből. Az OCR-képességről [itt](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)olvashat bővebben.
+A következő példa skillset használja az OCR szakértelem kinyerése szöveget a dokumentumba ágyazott képek. Ezután létrehoz egy *merged_text* mezőt, amely az eredeti és az OCRed szöveget is tartalmazza az egyes képekről. Az OCR [készségről](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)itt olvashat bővebben.
 
 ```json
 {
@@ -126,7 +126,7 @@ A következő példában a készségkészlet az OCR-képességet használja a do
   ]
 }
 ```
-A fenti példa azt feltételezi, hogy a normalizált lemezképek mező létezik. A normalizált lemezképek mező beszerzéséhez állítsa a *imageAction* -konfigurációt az indexelő definíciójában a *generateNormalizedImages* értékre, ahogy az alábbi ábrán látható:
+A fenti példa feltételezi, hogy létezik normalizált képmező. Normalizált képek mező bekerüléséhez állítsa be az *imageAction* konfigurációt az indexelő definíciójában a *NormalizedImages generálására* az alábbi módon:
 
 ```json
 {
@@ -142,6 +142,6 @@ A fenti példa azt feltételezi, hogy a normalizált lemezképek mező létezik.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Beépített szaktudás](cognitive-search-predefined-skills.md)
-+ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
++ [Beépített képességek](cognitive-search-predefined-skills.md)
++ [Hogyan definiálni a skillset](cognitive-search-defining-skillset.md)
 + [Indexelő létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

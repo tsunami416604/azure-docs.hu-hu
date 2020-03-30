@@ -1,7 +1,7 @@
 ---
-title: A REST használata az ML-erőforrások kezeléséhez
+title: A REST segítségével kezelheti a pénzmosáselleni erőforrásokat
 titleSuffix: Azure Machine Learning
-description: A REST API-k használata Azure ML-erőforrások létrehozásához, futtatásához és törléséhez
+description: REST API-k használata Azure ML-erőforrások létrehozásához, futtatásához és törléséhez
 author: lobrien
 ms.author: laobri
 services: machine-learning
@@ -10,50 +10,50 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77580628"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-erőforrások létrehozása, futtatása és törlése a REST használatával
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Az Azure ML-erőforrások több módon is kezelhetők. Használhatja a [portált](https://portal.azure.com/), a [parancssori felületet](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)vagy a [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-t. Vagy a REST API is kiválaszthatja. A REST API a HTTP-műveleteket szabványos módon használja az erőforrások létrehozásához, lekéréséhez, frissítéséhez és törléséhez. A REST API bármely olyan nyelven vagy eszközzel működik, amely HTTP-kéréseket tesz elérhetővé. A REST egyszerű szerkezete sokszor jó választás a parancsfájlkezelési környezetekben és a MLOps-automatizálásban. 
+Az Azure ML-erőforrások kezelésére számos módon kezelhetők. Használhatja a [portált](https://portal.azure.com/), [a parancssori felületet](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)vagy a [Python SDK-t.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) Vagy választhatja a REST API-t. A REST API http-műveleteket használ szabványos módon erőforrások létrehozására, beolvasására, frissítésére és törlésére. A REST API minden olyan nyelvvel vagy eszközzel működik, amely HTTP-kérelmeket tud letenni. A REST egyszerű struktúrája gyakran jó választássá teszi a parancsfájlok futtatásához és az MLOps-automatizáláshoz. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Engedélyezési jogkivonat beolvasása
-> * Megfelelően formázott REST-kérelem létrehozása az egyszerű szolgáltatás hitelesítésének használatával
-> * Az Azure ML hierarchikus erőforrásaival kapcsolatos információk lekérése a GET kérelmek használatával
-> * Erőforrások létrehozására és módosítására szolgáló PUT és POST kérelmek használata
-> * TÖRLÉSi kérések használata az erőforrások tisztításához 
-> * Kulcs alapú hitelesítés használata az üzembe helyezett modellek pontozásához
+> * Megfelelően formázott REST-kérelem létrehozása egyszerű szolgáltatáshitelesítéssel
+> * Get-kérelmek használatával az Azure ML hierarchikus erőforrásaival kapcsolatos információk lekérése
+> * Erőforrások létrehozása és módosítása PUT és POST kérelmek használatával
+> * Erőforrások törlése DELETE kérelmek használatával 
+> * Kulcsalapú engedélyezés használata az üzembe helyezett modellek pontozásához
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Azure-előfizetés** , amelyhez rendszergazdai jogosultságokkal rendelkezik. Ha nem rendelkezik ilyen előfizetéssel, próbálja ki az [ingyenes vagy fizetős személyes előfizetést](https://aka.ms/AMLFree)
-- Egy [Azure Machine learning-munkaterület](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
-- A rendszergazdai REST-kérelmek az egyszerű szolgáltatásnév hitelesítését használják. Az egyszerű szolgáltatás munkaterületen való létrehozásához kövesse a [hitelesítés beállítása Azure Machine learning erőforrásokhoz és munkafolyamatokhoz](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) című témakör lépéseit.
-- A **curl** segédprogram. A **curl** program a [Windows alrendszerben Linux](https://aka.ms/wslinstall/) vagy bármely Unix-disztribúció számára elérhető. A PowerShellben a **curl** a **meghívó-webkérések** aliasa, és a `curl -d "key=val" -X POST uri` `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`válik. 
+- Olyan **Azure-előfizetés,** amelyhez rendszergazdai jogokkal rendelkezik. Ha nincs ilyen előfizetése, próbálja ki az [ingyenes vagy fizetős személyes előfizetést](https://aka.ms/AMLFree)
+- [Egy Azure Machine Learning-munkaterület](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
+- A felügyeleti REST-kérelmek egyszerű szolgáltatáshitelesítést használnak. Kövesse az [Azure Machine Learning-erőforrások és -munkafolyamatok hitelesítésének beállítása című lépéseit,](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) és hozzon létre egy egyszerű szolgáltatásszolgáltatást a munkaterületen
+- A **göndör** segédprogram. A **curl** program elérhető a [Windows Alrendszer Linux](https://aka.ms/wslinstall/) vagy bármely UNIX disztribúció. A PowerShellben a **curl** az **Invoke-WebRequest aliasa,** és `curl -d "key=val" -X POST uri` a . `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` 
 
-## <a name="retrieve-a-service-principal-authentication-token"></a>Egyszerű szolgáltatásnév hitelesítési jogkivonatának beolvasása
+## <a name="retrieve-a-service-principal-authentication-token"></a>Egyszerű szolgáltatáshitelesítési jogkivonat beolvasása
 
-A rendszergazdai REST-kérelmek hitelesítése OAuth2 implicit folyamattal történik. Ez a hitelesítési folyamat az előfizetés egyszerű szolgáltatásnév által biztosított jogkivonatot használja. A jogkivonat lekéréséhez a következőkre lesz szüksége:
+A felügyeleti REST-kérelmek hitelesítése OAuth2 implicit folyamattal van hitelesítve. Ez a hitelesítési folyamat az előfizetés egyszerű szolgáltatása által biztosított jogkivonatot használ. A token beolvasásához a következőkre van szükség:
 
-- A bérlő azonosítója (annak a szervezetnek az azonosítása, amelyhez az előfizetés tartozik)
-- Az ügyfél-azonosító (amely a létrehozott jogkivonathoz lesz társítva)
-- Az ügyfél titkos kulcsa (amelyet védenie kell)
+- A bérlőazonosító (annak a szervezetnek az azonosítása, amelyhez az előfizetés tartozik)
+- Az ügyfélazonosító (amely a létrehozott jogkivonathoz lesz társítva)
+- Az ügyfél titkos (amit meg kell védeni)
 
-Ezeket az értékeket a szolgáltatásnak a [Azure Machine learning erőforrások és munkafolyamatok hitelesítésének beállítása](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)című szakaszban ismertetett válasz alapján kell megállapítania. Ha céges előfizetését használja, lehet, hogy nincs engedélye egy egyszerű szolgáltatásnév létrehozásához. Ebben az esetben [ingyenes vagy fizetős személyes előfizetést](https://aka.ms/AMLFree)kell használnia.
+Ezeket az értékeket az egyszerű szolgáltatás létrehozására adott válaszból kell rendelkeznie az [Azure Machine Learning-erőforrások és -munkafolyamatok hitelesítésének beállítása](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)című részében tárgyaltak szerint. Ha a vállalati előfizetés, lehet, hogy nincs engedélye, hogy hozzon létre egy egyszerű szolgáltatás. Ebben az esetben [ingyenes vagy fizetős személyes előfizetést](https://aka.ms/AMLFree)kell használnia.
 
-Token lekérése:
+Token beolvasása:
 
 1. Nyisson meg egy terminálablakot.
-1. Adja meg a következő kódot a parancssorban
-1. Helyettesítse be a saját értékeit `{your-tenant-id}`, `{your-client-id}`és `{your-client-secret}`. Ebben a cikkben a kapcsos zárójelek által körülvett sztringek a saját megfelelő értékeire cserélt változók.
+1. Írja be a következő kódot a parancssorba
+1. Helyettesítse saját `{your-tenant-id}` `{your-client-id}`értékeit `{your-client-secret}`a és a lehetőségre. Ebben a cikkben a göndör zárójelekkel körülvett karakterláncok olyan változók, amelyeket a saját megfelelő értékekkel kell helyettesítenie.
 1. Futtassa a
 
 ```bash
@@ -61,7 +61,7 @@ curl -X POST https://login.microsoftonline.com/{your-tenant-id}/oauth2/token \
 -d "grant_type=client_credentials&resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id={your-client-id}&client_secret={your-client-secret}" \
 ```
 
-A válasznak egy órára jó hozzáférési jogkivonatot kell biztosítania:
+A válasznak egy órán keresztül egy hozzáférési jogkivonatot kell biztosítania:
 
 ```json
 {
@@ -75,15 +75,15 @@ A válasznak egy órára jó hozzáférési jogkivonatot kell biztosítania:
 }
 ```
 
-Jegyezze fel a jogkivonatot, mivel az összes további rendszergazdai kérelem hitelesítéséhez használni fogja. Ezt úgy teheti meg, hogy az összes kérelemben beállítja az engedélyezési fejlécet:
+Jegyezze fel a jogkivonatot, mert az összes további felügyeleti kérelem hitelesítésére fogja használni. Ezt úgy teheti meg, hogy engedélyezési fejlécet állít be az összes kérelemben:
 
 ```bash
 curl -h "Authentication: Bearer {your-access-token}" ...more args...
 ```
 
-Vegye figyelembe, hogy az érték a "tulajdonos" karakterlánccal kezdődik, beleértve a token hozzáadása előtt egy szóközzel.
+Vegye figyelembe, hogy az érték a "Bemutatóra" karakterlánccal kezdődik, amely egyetlen helyet foglal magában a jogkivonat hozzáadása előtt.
 
-## <a name="get-a-list-of-resource-groups-associated-with-your-subscription"></a>Az előfizetéshez társított erőforráscsoportok listájának beolvasása
+## <a name="get-a-list-of-resource-groups-associated-with-your-subscription"></a>Az előfizetéshez társított erőforráscsoportok listájának beszereznie
 
 Az előfizetéshez társított erőforráscsoportok listájának lekéréséhez futtassa a következőt:
 
@@ -91,9 +91,9 @@ Az előfizetéshez társított erőforráscsoportok listájának lekéréséhez 
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups?api-version=2019-11-01 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Az Azure-ban számos REST API van közzétéve. Minden szolgáltató frissíti az API-t a saját ritmusán, de a meglévő programok megszakítása nélkül. A szolgáltató a `api-version` argumentumot használja a kompatibilitás biztosításához. A `api-version` argumentum a szolgáltatásról a szolgáltatásra változik. A Machine Learning szolgáltatás esetében például a jelenlegi API-verzió `2019-11-01`. A Storage-fiókok esetében `2019-06-01`. A Key vaultok esetében `2019-09-01`. Az összes REST-hívásnak a várt értékre kell állítania a `api-version` argumentumot. A megadott verzió szintaxisát és szemantikai lehetőségeit is használhatja, még akkor is, ha az API továbbra is fejlődik. Ha a `api-version` argumentum nélkül küld egy szolgáltatónak kérelmet, a válasz a támogatott értékek egy ember által olvasható listáját fogja tartalmazni. 
+Az Azure-ban számos REST API-k vannak közzétéve. Minden szolgáltató saját ütemben frissíti az API-t, de ezt a meglévő programok feltörése nélkül teszi. A szolgáltató az `api-version` argumentumot használja a kompatibilitás biztosítása érdekében. Az `api-version` argumentum szolgáltatásonként változik. A Machine Learning szolgáltatás esetében például a `2019-11-01`jelenlegi API-verzió a . A tárfiókok esetében `2019-06-01`ez a . A kulcstartók, ez `2019-09-01`. Minden REST-hívásnak `api-version` a várt értékre kell állítania az argumentumot. Támaszkodhat a szintaxis és a szemantika a megadott verzió tisa folyamatosan fejlődik. Ha `api-version` egy kérelmet az argumentum nélkül küld egy szolgáltatónak, a válasz a támogatott értékek ember által olvasható listáját fogja tartalmazni. 
 
-A fenti hívás az űrlap tömörített JSON-válaszát eredményezi: 
+A fenti hívás eredményeként az űrlap tömörített JSON válasza: 
 
 ```json
 {
@@ -121,16 +121,16 @@ A fenti hívás az űrlap tömörített JSON-válaszát eredményezi:
 ```
 
 
-## <a name="drill-down-into-workspaces-and-their-resources"></a>Munkaterületek és erőforrásaik részletezése
+## <a name="drill-down-into-workspaces-and-their-resources"></a>Részletezés a munkaterületekre és erőforrásaikra
 
-Egy erőforráscsoport munkaterületének lekéréséhez futtassa a következő, behelyettesített `{your-subscription-id}`, `{your-resource-group}`és `{your-access-token}`: 
+Az erőforráscsoport munkaterületeinek beolvasásához futtassa a következőt, helyettesítve `{your-subscription-id}`a `{your-resource-group}`és `{your-access-token}`a : 
 
 ```
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/?api-version=2019-11-01 \
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Ekkor megjelenik egy JSON-lista, amely egy listát tartalmaz, amely egy adott munkaterületet részletez:
+Ismét kap egy JSON listát, ezúttal tartalmaz egy listát, amelynek minden eleme részletezi a munkaterületet:
 
 ```json
 {
@@ -166,7 +166,7 @@ Ekkor megjelenik egy JSON-lista, amely egy listát tartalmaz, amely egy adott mu
 }
 ```
 
-A munkaterületen belüli erőforrásokkal való munkavégzéshez az általános **Management.Azure.com** -kiszolgálóról a munkaterület helyére jellemző REST API kiszolgálóra kell váltania. Jegyezze fel a fenti JSON-válasz `discoveryUrl` kulcsának értékét. Ha ezt az URL-címet kapja, a következőhöz hasonló választ kap:
+A munkaterületen belüli erőforrásokkal való munkához az általános **management.azure.com** kiszolgálóról a munkaterület helyére vonatkozó REST API-kiszolgálóra vált. Figyelje meg `discoveryUrl` a kulcs értékét a fenti JSON-válaszban. Ha megkapja ezt az URL-t, a következőválaszt kapja:
 
 ```json
 {
@@ -183,7 +183,7 @@ A munkaterületen belüli erőforrásokkal való munkavégzéshez az általános
 }
 ```
 
-A `api` válasz értéke annak a kiszolgálónak az URL-címe, amelyet a további kérésekhez fog használni. A kísérletek listázásához például küldje el a következő parancsot. Cserélje le a `regional-api-server` értéket a `api` válasz értékére (például `centralus.api.azureml.ms`). A szokásos módon cserélje le `your-subscription-id`, `your-resource-group`, `your-workspace-name`és `your-access-token` is:
+A válasz `api` értéke annak a kiszolgálónak az URL-címe, amelyet további kérésekhez fog használni. A kísérletek listázásához például küldje el a következő parancsot. Cserélje `regional-api-server` le a `api` válasz értékére `centralus.api.azureml.ms`(például ). A `your-subscription-id`, `your-resource-group` `your-workspace-name`, `your-access-token` és a szokásos módon:
 
 ```bash
 curl https://{regional-api-server}/history/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
@@ -191,7 +191,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/exp
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Hasonlóképpen, ha a munkaterületen regisztrált modelleket szeretne beolvasni, küldje el a következőt:
+Hasonlóképpen, a regisztrált modellek beolvasásához a munkaterületen, küldje el:
 
 ```bash
 curl https://{regional-api-server}/modelmanagement/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
@@ -199,35 +199,35 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Figyelje meg, hogy az elérési út `history/v1.0` a modellek listázása közben megjelenő kísérletekkel kezdődik, és az elérési út `modelmanagement/v1.0`. A REST API több operatív csoportba vannak osztva, amelyek mindegyike külön elérési úttal rendelkezik. Az alábbi hivatkozásokon található API-referenciák a különböző műveletekhez tartozó műveletekkel, paraméterekkel és válaszokkal kapcsolatos kódokat felsorolják.
+Figyelje meg, hogy a `history/v1.0` modellek listázása korával `modelmanagement/v1.0`kezdődő kísérletek listázásához az elérési út a . A REST API több operatív csoportra van osztva, mindegyik külön elérési úttal. Az API-referencia-dokumentumok az alábbi linkeken a műveletek, paraméterek és válaszkódok a különböző műveletek.
 
 |Terület|Útvonal|Referencia|
 |-|-|-|
-|Összetevők|összetevő/v 2.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|Adattárak|adattár/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|hiperparaméter finomhangolása|HyperDrive/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|Modellek|modelmanagement/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|Előzmények|végrehajtás/v 1.0/és előzmények/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/runs)|
+|Összetevők|műtárgy/v2.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|Adattárolók|adattár/v1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/datastores)|
+|Hiperparaméterek finomhangolása|hiperhajtómű/v1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
+|Modellek|modellmenedzsment/v1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
+|Előzmények|végrehajtás/v1.0/ és előzmények/1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/runs)|
 
-A REST API a következő általános mintázattal derítheti fel:
+A REST API-t a következők általános mintájával fedezheti fel:
 
 |URL-összetevő|Példa|
 |-|-|
 | https://| |
-| regionális-API-kiszolgáló/ | centralus.api.azureml.ms/ |
-| műveletek – elérési út/ | előzmények/v 1.0/ |
-| előfizetések/{saját előfizetés-azonosító}/ | előfizetések/abcde123-ABAB-ABAB-1234-0123456789abc/ |
-| resourceGroups/{erőforrás-csoport}/ | resourceGroups/MyResourceGroup/ |
-| szolgáltatók/művelet – szolgáltató/ | szolgáltatók/Microsoft. MachineLearningServices/ |
-| Szolgáltató – erőforrás-útvonal/ | munkaterület/MLWorkspace/Sajátmunkaterület/FirstExperiment/Run/1/ |
-| műveletek – végpont/ | összetevők/metaadatok/ |
+| regionális-api-szerver/ | centralus.api.azureml.ms/ |
+| műveleti-útvonal/ | előzmények/1.0/ |
+| előfizetések/{előfizetés-id}/ | előfizetések/abcde123-abab-abab-1234-0123456789abc/ |
+| resourceGroups/{your-resource-group}/ | resourceGroups/SajatResourceGroup/ |
+| szolgáltatók/műveletszolgáltató/ | szolgáltatók/Microsoft.MachineLearningServices/ |
+| szolgáltató-erőforrás-elérési út/ | munkaterületek/MLWorkspace/MyWorkspace/FirstExperiment/runs/1/ |
+| műveleti végpont/ | összetevők/metaadatok/ |
 
 
-## <a name="create-and-modify-resources-using-put-and-post-requests"></a>Erőforrások létrehozása és módosítása PUT és POST kérelmek használatával
+## <a name="create-and-modify-resources-using-put-and-post-requests"></a>Erőforrások létrehozása és módosítása PUT és POST kérésekkel
 
-A GET művelet erőforrás-lekérése mellett a REST API támogatja az összes olyan erőforrás létrehozását, amely a ML-megoldások betanításához, üzembe helyezéséhez és figyeléséhez szükséges. 
+A GET-műveleterőforrás-lekérés mellett a REST API támogatja az ml-megoldások betanításához, üzembe helyezéséhez és figyeléséhez szükséges összes erőforrás létrehozását. 
 
-Az ML-modellek betanítása és futtatása számítási erőforrásokat igényel. A munkaterületek számítási erőforrásait az alábbiak szerint listázhatja: 
+A betanításés és az ML-modellek futtatása számítási erőforrásokat igényel. A munkaterület számítási erőforrásait a következő kkel sorathatja fel: 
 
 ```bash
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
@@ -235,7 +235,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Elnevezett számítási erőforrás létrehozásához vagy felülírásához PUT-kérést kell használni. A következőkben a `your-subscription-id`, a `your-resource-group`, a `your-workspace-name`és a `your-access-token`, a `your-compute-name`és a `location`, `vmSize`, `vmPriority`, `scaleSettings`, `adminUserName`és `adminUserPassword`értékeinek megismerése mellett. A (z) [Machine learning Compute – SDK létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)című hivatkozásban megadott módon a következő parancs létrehoz egy dedikált, egycsomópontos Standard_D1 (egy alapszintű CPU-számítási erőforrást), amely 30 perc után le lesz méretezve:
+Egy elnevezett számítási erőforrás létrehozásához vagy felülírásához put-kérelmet kell használnia. A következőkben a `your-subscription-id`, `your-resource-group`, , `your-workspace-name`, és `your-access-token`a helyettesítő `your-compute-name`, , `location` `vmSize`és `vmPriority` `scaleSettings`az `adminUserName`értékek `adminUserPassword`, , , , és . A [Machine Learning Compute – Create or Update SDK Reference](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)hivatkozásában megadottak szerint a következő parancs létrehoz egy dedikált, egycsomópontos Standard_D1 (egy alapvető CPU számítási erőforrás), amely 30 perc elteltével lecsökken:
 
 ```bash
 curl -X PUT \
@@ -264,13 +264,13 @@ curl -X PUT \
 ```
 
 > [!Note]
-> A Windows-terminálokon a JSON-adatok küldésekor előfordulhat, hogy el kell menekülnie a dupla idézőjeles szimbólumokkal. Ez a szöveg, például a `"location"` `\"location\"`válik. 
+> A Windows-terminálokon előfordulhat, hogy a JSON-adatok küldésekor el kell menekülnie a duplaidéző szimbólumok elől. Ez azt, hogy `"location"` `\"location\"`a szöveg, mint lesz . 
 
-A sikeres kérések `201 Created` választ kapnak, de a válasz egyszerűen azt jelenti, hogy a kiépítési folyamat megkezdődött. A sikeres Befejezés megerősítéséhez le kell kérdezni (vagy a portált kell használnia).
+A sikeres kérelem `201 Created` választ kap, de vegye figyelembe, hogy ez a válasz egyszerűen azt jelenti, hogy a kiépítési folyamat megkezdődött. A sikeres befejezés megerősítéséhez le kell hallgatnia (vagy használnia kell a portált).
 
-### <a name="create-an-experimental-run"></a>Kísérleti Futtatás létrehozása
+### <a name="create-an-experimental-run"></a>Kísérleti futtatás létrehozása
 
-Egy kísérleten belüli Futtatás indításához szüksége van egy zip-mappára, amely tartalmazza a betanítási parancsfájlt és a kapcsolódó fájlokat, valamint egy Run definition JSON-fájlt. A zip-mappának tartalmaznia kell a Python-bejegyzés fájlját a gyökérkönyvtárában. Tegyük fel például, hogy egy triviális Python-programot, például a következőt egy **Train. zip**nevű mappába helyezi.
+A kísérleten belüli futtatás elindításához egy zip mappára van szükség, amely tartalmazza a betanítási parancsfájlt és a kapcsolódó fájlokat, valamint egy futtatási definíciós JSON-fájlra. A zip mappának rendelkeznie kell a Python bejegyzésfájllal a gyökérkönyvtárában. Például zip egy triviális Python program, mint például a következő egy mappába nevű **train.zip**.
 
 ```python
 # hello.py
@@ -278,7 +278,7 @@ Egy kísérleten belüli Futtatás indításához szüksége van egy zip-mappár
 print("Hello, REST!")
 ```
 
-Mentse ezt a következő kódrészletet **definition. JSON**néven. Ellenőrizze, hogy a "script" érték megegyezik-e a csak a tömörített Python-fájl nevével. Ellenőrizze, hogy a "Target" érték megegyezik-e egy elérhető számítási erőforrás nevével. 
+A következő kódrészlet mentése **definition.json**néven. Ellenőrizze, hogy a "Script" érték megegyezik-e az imént becipzározott Python-fájl nevével. Ellenőrizze, hogy a "Cél" érték megegyezik-e egy elérhető számítási erőforrás nevével. 
 
 ```json
 {
@@ -320,7 +320,7 @@ Mentse ezt a következő kódrészletet **definition. JSON**néven. Ellenőrizze
 }
 ```
 
-Tegye közzé ezeket a fájlokat a kiszolgálóra `multipart/form-data` tartalom használatával:
+Tegye közzé ezeket `multipart/form-data` a fájlokat a kiszolgálón a tartalom használatával:
 
 ```bash
 curl https://{regional-api-server}/execution/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/experiments/{your-experiment-name}/startrun?api-version=2019-11-01 \
@@ -331,7 +331,7 @@ curl https://{regional-api-server}/execution/v1.0/subscriptions/{your-subscripti
   -F runDefinitionFile=@runDefinition.json
 ```
 
-A sikeres POST kérelem `200 OK` állapotot hoz létre, amelynek a válasz törzse tartalmazza a létrehozott Futtatás azonosítóját:
+A sikeres POST-kérelem `200 OK` állapotot hoz létre, amelynek a létrehozott futtatás azonosítóját tartalmazó választörzse:
 
 ```json
 {
@@ -339,7 +339,7 @@ A sikeres POST kérelem `200 OK` állapotot hoz létre, amelynek a válasz törz
 }
 ```
 
-A futtatást a REST-ful mintázattal figyelheti, amely most már ismerős lehet:
+A futtatást a REST-ful minta segítségével figyelheti, amelynek most már ismerősnek kell lennie:
 
 ```bash
 curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/experiments/{your-experiment-names}/runs/{your-run-id}?api-version=2019-11-01' \
@@ -348,7 +348,7 @@ curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscriptio
 
 ### <a name="delete-resources-you-no-longer-need"></a>A már nem szükséges erőforrások törlése
 
-Néhány, de nem minden erőforrás támogatja a TÖRLÉSi műveletet. Győződjön meg arról, hogy az [API-hivatkozás](https://docs.microsoft.com/rest/api/azureml/) a törléshez szükséges REST API véglegesítése előtt. Egy modell törléséhez például a következőt használhatja:
+Néhány, de nem az összes erőforrás támogatja a DELETE műveletet. Ellenőrizze az [API-referencia](https://docs.microsoft.com/rest/api/azureml/) véglegesítése előtt a REST API-t a törlési használati esetek. Modell törléséhez például a következőket használhatja:
 
 ```bash
 curl
@@ -357,9 +357,9 @@ curl
   -H 'Authorization:Bearer {your-access-token}' 
 ```
 
-## <a name="use-rest-to-score-a-deployed-model"></a>A REST használata egy üzembe helyezett modell kiértékeléséhez
+## <a name="use-rest-to-score-a-deployed-model"></a>Üzembe helyezett modell pontozása rest használatával
 
-Habár lehetséges a modell üzembe helyezése úgy, hogy az egy egyszerű szolgáltatással legyen hitelesítve, a legtöbb ügyfélre irányuló központi telepítés a kulcs alapú hitelesítést használja. A megfelelő kulcsot az üzembe helyezés lapján találja a Studio **endpoints (végpontok** ) lapján. Ugyanazon a helyen jelenik meg a végpont pontozási URI-ja. A modell bemeneteit `data`nevű JSON-tömbként kell modellezni:
+Bár lehetőség van egy modell központi telepítésére, hogy az egyszerű szolgáltatással hitelesítse magát, a legtöbb ügyfélfelé irányuló központi telepítés kulcsalapú hitelesítést használ. A megfelelő kulcsot a központi telepítés lapján, a Studio **Végpontok** lapján találja. Ugyanez en a hely jelenik meg a végpont pontozási URI.The same location will show your endpoint's scoring URI. A modell bemeneteit JSON-tömbként kell `data`modellezni:
 
 ```bash
 curl 'https://{scoring-uri}' \
@@ -368,11 +368,11 @@ curl 'https://{scoring-uri}' \
   -d '{ "data" : [ {model-specific-data-structure} ] }
 ```
 
-## <a name="create-a-workspace-using-rest"></a>Munkaterület létrehozása REST használatával 
+## <a name="create-a-workspace-using-rest"></a>Munkaterület létrehozása a REST használatával 
 
-Minden Azure ML-munkaterület négy további Azure-erőforrástól függ: egy, a felügyeletet engedélyező tároló-beállításjegyzékkel, egy kulcstartóval, egy Application Insights erőforrással és egy Storage-fiókkal. Nem hozhat létre munkaterületet, amíg ezek az erőforrások nem léteznek. Az egyes erőforrások létrehozásának részleteiért lásd a REST API referenciát.
+Minden Azure ML-munkaterület négy másik Azure-erőforrástól függ: egy tárolóbeállítás-beállításjegyzéktől, amelyen engedélyezve van a felügyelet, egy key vault, egy Application Insights-erőforrás és egy tárfiók. Nem hozhat létre munkaterületet, amíg ezek az erőforrások nem léteznek. Az egyes erőforrások létrehozásának részleteiért tekintse meg a REST API-referencia.
 
-Munkaterület létrehozásához a következőhöz hasonló hívást HELYEZZEN el `management.azure.com`. Habár a híváshoz nagy számú változót kell beállítania, szerkezetileg megegyeznek a cikk által tárgyalt más hívásokkal. 
+Munkaterület létrehozásához a következőhöz hasonló hívást `management.azure.com`helyezzen el. Bár ez a hívás megköveteli, hogy nagy számú változót állítson be, szerkezetileg megegyezik a jelen cikkáltal tárgyalt többi hívással. 
 
 ```bash
 curl -X PUT \
@@ -400,9 +400,9 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 }'
 ```
 
-`202 Accepted` választ kell kapnia, és a visszaadott fejlécekben egy `Location` URI-t kell megadnia. Ezt az URI-t beolvashatja a központi telepítéssel kapcsolatos információkért, beleértve a hasznos hibakeresési információkat is, ha probléma merül fel az egyik függő erőforrással kapcsolatban (például ha elfelejtette a rendszergazdai hozzáférés engedélyezését a tároló beállításjegyzékében). 
+Meg kell `202 Accepted` kapnia a választ, és `Location` a visszaadott fejlécek, uri. Ez az URI a központi telepítéssel kapcsolatos információkért kaphat információt, beleértve a hasznos hibakeresési információkat, ha probléma van az egyik függő erőforrással (például ha elfelejtette engedélyezni a rendszergazdai hozzáférést a tároló beállításjegyzékében). 
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="resource-provider-errors"></a>Erőforrás-szolgáltatói hibák
 
@@ -411,16 +411,16 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 ### <a name="moving-the-workspace"></a>A munkaterület áthelyezése
 
 > [!WARNING]
-> Ha áthelyezi a Azure Machine Learning munkaterületet egy másik előfizetésbe, vagy áthelyezi a tulajdonosi előfizetést egy új bérlőre, nem támogatott. Ez hibákhoz vezethet.
+> Az Azure Machine Learning-munkaterület áthelyezése egy másik előfizetésre, vagy a tulajdonában lévő előfizetés áthelyezése egy új bérlőre, nem támogatott. Ez hibákat okozhat.
 
-### <a name="deleting-the-azure-container-registry"></a>A Azure Container Registry törlése
+### <a name="deleting-the-azure-container-registry"></a>Az Azure Container-beállításjegyzék törlése
 
-A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Registry (ACR) használ. Automatikusan létrehoz egy ACR-példányt, amikor először szüksége lesz rá.
+Az Azure Machine Learning-munkaterület bizonyos műveletekhez az Azure Container Registry (ACR) szolgáltatást használja. Automatikusan létrehoz egy ACR-példányt, amikor először szüksége van rá.
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ismerkedjen meg a teljes [AzureML REST API-referenciával](https://docs.microsoft.com/rest/api/azureml/).
-- Megtudhatja, hogyan használhatja a Studio & designert [az autó árának előrejelzésére a Designerben (előzetes verzió)](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score).
-- Ismerkedjen meg [Azure Machine learning Jupyter notebookokkal](https://docs.microsoft.com/azure//machine-learning/samples-notebooks).
+- Fedezze fel a teljes [AzureML REST API-hivatkozást.](https://docs.microsoft.com/rest/api/azureml/)
+- Ismerje meg, hogyan használhatja a Studio & Designer [segítségével az autó árának előrejelzését a tervezővel (előzetes verzió)](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score).
+- Fedezze fel [az Azure Machine Learninget jupyter-jegyzetfüzetekkel.](https://docs.microsoft.com/azure//machine-learning/samples-notebooks)

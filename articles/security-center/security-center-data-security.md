@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
 ms.openlocfilehash: a25bbd0f14d38a70624dbc58755c0e814753a181
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604178"
 ---
 # <a name="azure-security-center-data-security"></a>Az Azure Security Center által nyújtott adatbiztonság
@@ -43,15 +43,15 @@ Az Azure Security Center az alábbi forrásokból kapott adatok elemzésével bi
 
 ## <a name="data-location"></a>Az adatok helye
 
-**Saját munkaterület(ek)** : Az alábbi geók esetében van meghatározott munkaterület. Az Azure-beli virtuális gépekből összegyűjtött adatokat, beleértve az összeomlási memóriaképeket és bizonyos típusú riasztási adatokat, a legközelebbi munkaterület tárolja.
+**Saját munkaterület(ek)**: Az alábbi geók esetében van meghatározott munkaterület. Az Azure-beli virtuális gépekből összegyűjtött adatokat, beleértve az összeomlási memóriaképeket és bizonyos típusú riasztási adatokat, a legközelebbi munkaterület tárolja.
 
 | Virtuális gép geo                              | Munkaterület geo |
 |-------------------------------------|---------------|
-| Egyesült Államok, Brazília, Dél-Afrika | Egyesült Államok |
+| Egyesült Államok, Brazília, Dél-afrikai Köztársaság | Egyesült Államok |
 | Kanada                              | Kanada        |
-| Európa (kivéve az Egyesült Királyságot)   | Európa        |
+| Európa (az Egyesült Királyság kivételével)   | Európa        |
 | Egyesült Királyság                      | Egyesült Királyság |
-| Ázsia (kivéve India, Japán, Korea, Kína)   | Ázsia és a Csendes-óceáni térség  |
+| Ázsia (India, Japán, Korea, Kína kivételével)   | Ázsia és a Csendes-óceáni térség  |
 | Dél-Korea                              | Ázsia és a Csendes-óceáni térség  |
 | India                               | India         |
 | Japán                               | Japán         |
@@ -80,8 +80,8 @@ Ha az Azure Security Center ingyenes verzióját használja, le is tilthatja a v
 
 Az ügyfelek különböző adatstreamekből származó Security Center-adatokat használhatnak, az alábbiak szerint:
 
-* **Azure-tevékenység**: minden biztonsági riasztás, jóváhagyott [Security Center igény](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) szerinti kérelmek, valamint az [adaptív alkalmazások](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)által létrehozott összes riasztás.
-* **Azure monitor naplók**: minden biztonsági riasztás.
+* **Azure Activity:** az összes biztonsági riasztás, a jóváhagyott Security Center [just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) kérelmek és az [adaptív alkalmazásvezérlők](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)által generált összes riasztás.
+* **Az Azure Monitor naplói:** az összes biztonsági riasztást.
 
 
 > [!NOTE]
@@ -90,8 +90,8 @@ Az ügyfelek különböző adatstreamekből származó Security Center-adatokat 
 ## <a name="see-also"></a>Lásd még
 Ebből a dokumentumból megtudta, hogyan kezeli az Azure Security Center az adatokat, és hogyan gondoskodik azok védelméről. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md) – Az Azure Security Center tervezésével, valamint a bevezetés során fontos elemekkel kapcsolatos útmutató.
-* [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) – Útmutató az Azure-erőforrások állapotának megfigyeléséhez.
-* [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
-* [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) – Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
+* [Azure Security Center tervezési és üzemeltetési útmutató](security-center-planning-and-operations-guide.md) – Ismerje meg, hogyan tervezheti meg és ismerheti meg az Azure Security Center bevezetésének tervezési szempontjait.
+* [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) – Ismerje meg, hogyan figyelheti az Azure-erőforrások állapotát
+* [Biztonsági riasztások kezelése és megválaszolása az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – További információ a biztonsági riasztások kezeléséről és az azokra való válaszadásról
+* [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Ismerje meg, hogyan figyelheti a partnermegoldások állapotát.
 * [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

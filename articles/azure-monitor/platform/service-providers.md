@@ -1,92 +1,92 @@
 ---
-title: A szolgáltatók naplófájljainak Azure Monitor | Microsoft Docs
-description: Azure Monitor naplók segíthetnek a felügyelt szolgáltatók (MSP-k), a nagyvállalatok, a független szoftvergyártók (ISV-k) és az üzemeltetési szolgáltatók számára a kiszolgálók kezelésében és figyelésében az ügyfél helyszíni vagy Felhőbeli infrastruktúrájában.
+title: Azure Monitor naplók a szolgáltatók számára | Microsoft dokumentumok
+description: Az Azure Monitor Logs segítségével felügyelt szolgáltatók (MSP- k), nagyvállalatok, független szoftverszállítók (ISV-k) és tárhelyszolgáltatók kezelhetik és figyelhetik az ügyfél helyszíni vagy felhőalapú infrastruktúrájának kiszolgálóit.
 ms.subservice: logs
 ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
 ms.openlocfilehash: ed398e12ee90f2eef2cfa78e2ed02701e6012517
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658880"
 ---
-# <a name="azure-monitor-logs-for-service-providers"></a>Szolgáltatók Azure Monitor naplófájljai
+# <a name="azure-monitor-logs-for-service-providers"></a>Azure figyelőnaplók szolgáltatókszámára
 
-Log Analytics munkaterületek Azure Monitor segíthetnek a felügyelt szolgáltatók (MSP-k), a nagyvállalatok, a független szoftvergyártók (ISV-k) és az üzemeltetési szolgáltatók számára, hogy az ügyfél helyszíni vagy Felhőbeli infrastruktúrájában kezeljék és felügyeljék a kiszolgálókat.
+Az Azure Monitor Log Analytics-munkaterületei segíthetnek a felügyelt szolgáltatóknak (MSP-k), a nagyvállalatoknak, a független szoftverszállítóknak, valamint a tárhelyszolgáltatóknak az ügyfél helyszíni vagy felhőalapú infrastruktúrájában lévő kiszolgálók kezelésében és figyelésében.
 
-A nagyobb cégeknek is megoszthatja számos Hasonlóságok szolgáltatók, különösen akkor, ha van egy központi informatikai csoportját, amelyek kezeléséért felelős informatikai számos különböző üzleti egységek számára. Az egyszerűség kedvéért ez a dokumentum a *szolgáltató* kifejezést használja, de ugyanez a funkció a vállalatok és más ügyfelek számára is elérhető.
+A nagyvállalatok sok hasonlóságot mutatnak a szolgáltatókkal, különösen akkor, ha van egy központosított informatikai csapat, amely számos különböző üzleti egység informatikai irányításáért felelős. Az egyszerűség kedvéért ez a dokumentum a *szolgáltató* kifejezést használja, de ugyanez a funkció a vállalatok és más ügyfelek számára is elérhető.
 
-A [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) program részét képező partnerek és szolgáltatók esetében a log Analytics Azure monitor az Azure CSP-előfizetésekben elérhető Azure-szolgáltatások egyike.
+A [felhőszolgáltató (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) program részét vevő partnerek és szolgáltatók számára az Azure Monitor log analytics szolgáltatása az Azure CSP-előfizetésekben elérhető Azure-szolgáltatások egyike.
 
-A Azure Monitor Log Analyticst egy, az Azure-beli Azure-beli felügyelt erőforrás-kezelési képességgel rendelkező szolgáltató is használhatja az [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview)-ban.
+Az Azure Monitor Log Analytics szolgáltatását az Azure Lighthouse delegált erőforrás-kezelési képességén keresztül az ügyfélerőforrásokat kezelő szolgáltató is [használhatja.](https://docs.microsoft.com/azure/lighthouse/overview)
 
-## <a name="architectures-for-service-providers"></a>A szolgáltatók számára architektúrák
+## <a name="architectures-for-service-providers"></a>Szolgáltatók architektúrái
 
-Log Analytics munkaterületek lehetővé teszik a rendszergazdák számára a [naplózási](data-platform-logs.md) folyamatok áramlását és elkülönítését, valamint az adott üzleti igényeknek megfelelő architektúra létrehozását. [Ez a cikk](design-logs-deployment.md) a munkaterület tervezési, üzembe helyezési és áttelepítési szempontjait ismerteti, és a [hozzáférés kezelése](manage-access.md) című cikk ismerteti, hogyan kell alkalmazni és kezelni a naplózási engedélyeket. Szolgáltatók további szempontokat kell.
+A Log Analytics-munkaterületek olyan módszert biztosítanak a rendszergazda számára, amely szabályozza a [naplóadatok](data-platform-logs.md) áramlását és elkülönítését, és olyan architektúrát hoz létre, amely az adott üzleti igényeket kielégíti. [Ez](design-logs-deployment.md) a cikk ismerteti a munkaterület tervezési, telepítési és áttelepítési szempontjait, a [hozzáférés kezelése](manage-access.md) című cikk pedig ismerteti, hogyan lehet alkalmazni és kezelni a naplóadatokra vonatkozó engedélyeket. A szolgáltatóknak további szempontokat is figyelembe kell venniük.
 
-Nincsenek három lehetséges architektúrák szolgáltatók Log Analytics-munkaterületek vonatkozásában:
+A szolgáltatók számára három lehetséges architektúra létezik a Log Analytics-munkaterületekkel kapcsolatban:
 
-### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. az elosztott naplók az ügyfél bérlője területén található munkaterületeken tárolódnak
+### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. Elosztott – A naplók az ügyfél bérlőjében található munkaterületeken tárolódnak
 
-Ebben az architektúrában a munkaterület az ügyfél-bérlőben, hogy az ügyfél a naplókhoz használt van telepítve.
+Ebben az architektúrában egy munkaterület van telepítve az ügyfél bérlője, amely az ügyfél összes naplójához használatos.
 
-A szolgáltatói rendszergazdák kétféleképpen férhetnek hozzá egy Log Analytics munkaterülethez az ügyfél bérlője számára:
+A szolgáltatói rendszergazdák kétféleképpen férhetnek hozzá a Log Analytics-munkaterülethez az ügyfél-bérlőben:
 
-- Az ügyfél [Azure Active Directory vendég felhasználóként (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)veheti fel az egyes felhasználókat a szolgáltatótól. A szolgáltató rendszergazdáinak be kell jelentkezniük az egyes ügyfelek könyvtárába a Azure Portal, hogy el tudják érni ezeket a munkaterületeket. Ehhez az is szükséges, hogy az ügyfelek az egyes szolgáltatók rendszergazdáinak egyéni hozzáférését kezeljék.
-- A jobb méretezhetőség és rugalmasság érdekében a szolgáltatók az [Azure világítótorony](https://docs.microsoft.com/azure/lighthouse/overview) Azure-beli [delegált erőforrás-kezelési](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management) funkciójának használatával érhetik el az ügyfél bérlőjét. Ezzel a módszerrel a szolgáltatói rendszergazdák egy Azure AD felhasználói csoportba tartoznak a szolgáltató bérlője számára, és ez a csoport a bevezetési folyamat során kap hozzáférést minden ügyfél számára. Ezek a rendszergazdák ezután hozzáférhetnek az egyes ügyfelek munkaterületeihez a saját szolgáltatói bérlőn belül, és nem kell egyenként bejelentkezniük az egyes ügyfelek bérlői számára. Az ügyfelek Log Analytics munkaterületek erőforrásainak ily módon való elérése csökkenti az ügyfél oldalán szükséges munkát, és megkönnyíti az adatok összegyűjtését és elemzését ugyanazon szolgáltató által felügyelt eszközökön keresztül, például [Azure monitor munkafüzetek](https://docs.microsoft.com/azure//azure-monitor/platform/workbooks-overview)használatával. További információ: az [ügyfelek erőforrásainak figyelése nagy méretekben](https://docs.microsoft.com/azure/lighthouse/how-to/monitor-at-scale).
+- Az ügyfél hozzáadhat egyéni felhasználókat a szolgáltatótól [az Azure Active Directory vendégfelhasználói (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)néven. A szolgáltató rendszergazdáinak be kell jelentkezniük az azure-portál on minden ügyfél címtárába, hogy elérhesd ezeket a munkaterületeket. Ez azt is megköveteli az ügyfelektől, hogy minden egyes szolgáltató rendszergazdája egyéni hozzáférést kezeljenek.
+- A nagyobb méretezhetőség és rugalmasság érdekében a szolgáltatók az [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) [Delegált erőforrás-kezelési](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management) funkciójával érhetik el az ügyfél bérlőjét. Ezzel a módszerrel a szolgáltató rendszergazdák szerepelnek egy Azure AD felhasználói csoport a szolgáltató bérlője, és ez a csoport hozzáférést kap a bevezetési folyamat során az egyes ügyfelek számára. Ezek a rendszergazdák ezután hozzáférhetnek az egyes ügyfelek munkaterületeiasaját szolgáltató bérlő, ahelyett, hogy jelentkezzen be az egyes ügyfelek bérlői külön-külön. Az ügyfelek Log Analytics-munkaterületeinek ily módon történő elérése csökkenti az ügyféloldalon szükséges munkát, és megkönnyíti az adatok gyűjtését és elemzését több ügyfél között, amelyeket ugyanaz a szolgáltató kezel olyan eszközökön keresztül, mint például az [Azure Monitor Munkafüzetek.](https://docs.microsoft.com/azure//azure-monitor/platform/workbooks-overview) További információ: [Az ügyfelek erőforrásainak figyelése nagy méretekben.](https://docs.microsoft.com/azure/lighthouse/how-to/monitor-at-scale)
 
 Az elosztott architektúra előnyei a következők:
 
-* Az ügyfél megerősítheti bizonyos szintű engedélyeket az [Azure-beli delegált erőforrás-kezelési](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)szolgáltatáson keresztül, vagy a saját [szerepköralapú hozzáférésével](https://docs.microsoft.com/azure/role-based-access-control/overview)kezelheti a naplóhoz való hozzáférést.
-* A naplók bármilyen típusú erőforrásból gyűjthetők, nem csak az ügynök-alapú virtuálisgép-adatok. Ha például az Azure vizsgálati naplók.
-* Minden ügyfél saját munkaterület megőrzésére és az adatok kapacitástól különböző beállítással is rendelkezhetnek.
-* Az ügyfelek közötti elkülönítés szabályozási és a megfelelőség érdekében.
-* Minden munkaterülethez a díja az ügyfél-előfizetés be lesz állítva.
+* Az ügyfél megerősítheti az engedélyek meghatározott szintjeit az [Azure delegált erőforrás-kezelésén](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)keresztül, vagy kezelheti a naplókhoz való hozzáférést a saját [szerepköralapú hozzáférésével.](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* Naplók gyűjthetők minden típusú erőforrások, nem csak ügynök-alapú virtuális gép adatok. Például az Azure naplózási naplók.
+* Minden ügyfél különböző beállításokkal rendelkezhet a munkaterülethez, például megőrzésés adatkorlát.
+* Elkülönítés az ügyfelek között a szabályozási és a megfelelőség.
+* Az egyes munkaterületek díja bekerül az ügyfél előfizetésébe.
 
 Az elosztott architektúra hátrányai a következők:
 
-* Az olyan eszközök, mint például a Azure Monitor munkafüzetek, központilag jeleníthető meg és elemezhető az ügyfél-bérlők között, ami lassabb élményt eredményezhet, különösen az adatok több mint 50 + munkaterületen való elemzésekor.
-* Ha az ügyfeleket nem az Azure-beli delegált erőforrás-kezeléshez rendeli, a szolgáltatói rendszergazdákat az ügyfél címtárában kell kiépíteni, és a szolgáltató számára nehezebb a nagyszámú ügyfél-bérlő kezelése egyszerre.
+* Az adatok központi megjelenítése és elemzése az ügyfél-bérlők között olyan eszközökkel, mint például az Azure Monitor Workbooks lassabb felhasználói élményt eredményezhet, különösen akkor, ha több mint 50 munkaterületen elemez adatokat.
+* Ha az ügyfelek nincsenek beszervezve az Azure delegált erőforrás-kezeléséhez, a szolgáltató rendszergazdáit ki kell építeni az ügyfélcímtárban, és a szolgáltató nak nehezebb egyszerre nagyszámú ügyfél-bérlőt kezelnie.
 
-### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2. a központi naplók tárolása a szolgáltatói bérlőben található munkaterületen történik
+### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2. Központi – A naplók a szolgáltató bérlőjében található munkaterületen tárolódnak
 
-Ebben az architektúrában a naplók nem tárolódnak, a vevő bérlők számára, de csak egy központi helyen belül a szolgáltató előfizetések egyike. Az ügyfél virtuális gépeken telepített ügynökök a naplók elküldése a munkaterület Azonosítójára és a titkos kulcs használatával vannak konfigurálva.
+Ebben az architektúrában a naplók nem az ügyfél bérlői, hanem csak egy központi helyen belül a szolgáltató előfizetések. Az ügyfél virtuális gépein telepített ügynökök úgy vannak konfigurálva, hogy a munkaterület-azonosító és a titkos kulcs használatával küldjék el a naplóikat erre a munkaterületre.
 
-A központosított architektúra előnyei a következők:
+A központosított építészet előnyei a következők:
 
-* Az ügyfelek nagy számú kezelhet, és integrálhatja őket különböző háttérrendszerekhez, könnyebbé vált.
-* A szolgáltató rendelkezik teljes körű tulajdonjogát a naplókból és a különböző összetevőket, például a functions és a mentett lekérdezések.
-* A szolgáltató végezhet analytics összes ügyfeleinek.
+* Könnyen kezelhető nagyszámú ügyfél, és integrálja őket a különböző háttérrendszerek.
+* A szolgáltató teljes tulajdonjoggal rendelkezik a naplók és a különböző összetevők, például a függvények és a mentett lekérdezések felett.
+* A szolgáltató elemzéseket végezhet az összes ügyfele számára.
 
 A központosított architektúra hátrányai a következők:
 
-* Ez az architektúra az ügynök-alapú virtuális gép adatai csak az érvényes, nem fedezik, PaaS, SaaS- és az Azure fabric adatforrások.
-* Rögzített adatokat az ügyfelek olyan egységes munkaterületre egyesítésekor között lehet. Ehhez az egyetlen jó módszer, hogy a számítógép teljesen minősített tartománynevét (FQDN) használja, vagy keresztül az Azure-előfizetés azonosítóját. 
-* Minden az ügyfelektől származó összes adatot ugyanabban a régióban, az egyetlen számlán és azonos megőrzési és konfigurációs beállítások tárolódik.
-* Az Azure fabric és a PaaS szolgáltatásokat, mint az Azure Diagnostics és az Azure-Auditnaplók a munkaterületet és az erőforrásnak ugyanabban a bérlőben így ezek nem küldi el a naplókat a központi munkaterület szükséges.
-* Az összes ügyféltől származó összes virtuálisgép-ügynök hitelesítése a központi munkaterületre ugyanazzal a munkaterület-AZONOSÍTÓval és kulccsal történik. Nincs más ügyfelek megszakítása nélkül naplók egy adott ügyfél blokkolása módszer.
+* Ez az architektúra csak ügynökalapú virtuálisgép-adatok, nem terjed ki a PaaS, SaaS és az Azure fabric adatforrások.
+* Előfordulhat, hogy nehéz elkülöníteni az adatokat az ügyfelek között, amikor egyetlen munkaterületre vannak egyesítve. Az egyetlen jó módszer erre a számítógép teljesen minősített tartománynév (FQDN) vagy az Azure-előfizetés-azonosító használatával. 
+* Az összes ügyfél től származó összes adat ugyanabban a régióban lesz tárolva, egyetlen számlával és azonos megőrzési és konfigurációs beállításokkal.
+* Az Azure fabric és a PaaS-szolgáltatások, például az Azure Diagnosztika és az Azure naplózási naplók megköveteli, hogy a munkaterület ugyanabban a bérlőben legyen, mint az erőforrás, így nem küldhetik el a naplókat a központi munkaterületre.
+* Az összes ügyfél összes virtuálisgép-ügynöke ugyanazzal a munkaterület-azonosítóval és kulccsal lesz hitelesítve a központi munkaterületen. Nincs olyan módszer, amely letiltaná egy adott ügyfél naplóit anélkül, hogy más ügyfeleket megzavarna.
 
-### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3. a hibrid naplók az ügyfél bérlője területén található munkaterületen tárolódnak, és némelyikük központi helyre van húzva.
+### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3. Hibrid – A naplók az ügyfél bérlőjében található munkaterületen tárolódnak, és némelyikük egy központi helyre kerül.
 
-A harmadik architektúra vegyesen a két lehetőség között. A naplók esetén az egyes vásárlók helyi első elosztott architektúrája alapján, de néhány mechanizmus segítségével hozhat létre egy központi tárházban a naplók. A naplók egy része egy központi helyre, jelentéskészítési és elemzési kéri le. Ez a rész kis számú adattípusok és a napi statisztika például a tevékenységek összegzésének lehet.
+A harmadik architektúra a két lehetőség között. Ez alapján az első elosztott architektúra, ahol a naplók helyi minden ügyfél számára, de valamilyen mechanizmushasználatával egy központi tárház naplók létrehozása. A naplók egy része bevan húzva egy központi helyre a jelentéskészítés hez és az elemzéshez. Ez a rész lehet kis számú adattípus, vagy a tevékenység összegzése, például a napi statisztika.
 
 A naplók központi helyen történő megvalósításának két lehetősége van:
 
-1. Központi munkaterület: a szolgáltató létrehozhat egy munkaterületet a bérlőben, és olyan parancsfájlt használhat, amely a [lekérdezési API](https://dev.loganalytics.io/) -t használja az [ADATgyűjtési API](../../azure-monitor/platform/data-collector-api.md) -val, hogy az adatok a különböző munkaterületekről a központi helyre kerüljenek. Egy másik lehetőség, amely nem parancsfájl, a [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)használatára szolgál.
+1. Központi munkaterület: A szolgáltató létrehozhat egy munkaterületet a bérlőben, és egy parancsfájlt használhat, amely a [Query API-t](https://dev.loganalytics.io/) használja az [adatgyűjtési API-val,](../../azure-monitor/platform/data-collector-api.md) hogy a különböző munkaterületekből származó adatokat erre a központi helyre hozza. Egy másik lehetőség, nem egy script, az [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)használata.
 
-2. Power BI központi helyként: Power BI a központi helyként működhet, ha a különböző munkaterületek az Log Analytics munkaterület és a [Power bi](../../azure-monitor/platform/powerbi.md)közötti integráció használatával exportálják az adataikat. 
+2. A Power BI mint központi hely: A Power BI központi helyként működhet, amikor a különböző munkaterületek adatokat exportálnak hozzá a Log Analytics munkaterület és a [Power BI](../../azure-monitor/platform/powerbi.md)integrációja segítségével. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Munkaterületek létrehozásának és konfigurálásának automatizálása [Resource Manager-sablonok](template-workspace-configuration.md) használatával
+* A munkaterületek létrehozásának és konfigurálásának automatizálása [az Erőforrás-kezelő sablonjaival](template-workspace-configuration.md)
 
-* Munkaterületek létrehozásának automatizálása a [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) használatával 
+* A munkaterületek létrehozásának automatizálása a [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) használatával 
 
-* [Riasztások](../../azure-monitor/platform/alerts-overview.md) használata a meglévő rendszerekkel való integrációhoz
+* [A riasztások](../../azure-monitor/platform/alerts-overview.md) használata a meglévő rendszerekkel való integrációhoz
 
-* Összegző jelentések előállítása [Power bi](../../azure-monitor/platform/powerbi.md) használatával
+* Összegző jelentések készítése a [Power BI használatával](../../azure-monitor/platform/powerbi.md)
 
-* Ügyfelek bevonása az Azure-beli [delegált erőforrás-felügyeletbe](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
+* Az ügyfelek fedélzeti szolgáltatása az [Azure delegált erőforrás-kezelésére.](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)

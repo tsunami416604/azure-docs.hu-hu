@@ -1,133 +1,133 @@
 ---
-title: Jenkins Build a Container instance
-description: Megtudhatja, hogyan konfigurálhat egy Jenkins-kiszolgálót az igény szerinti Build-feladatok futtatásához Azure Container Instances
+title: A Jenkins tárolópéldányra épül
+description: Megtudhatja, hogyan konfigurálhat egy Jenkins-kiszolgálót igény szerinti buildfeladatok futtatására az Azure Container Instances-ban
 ms.topic: article
 ms.date: 08/31/2018
 ms.openlocfilehash: 8bb84895fb581053248fbad326ea7b2c8d1873a2
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617969"
 ---
-# <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Azure Container Instances használata Jenkins Build-ügynökként
+# <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Azure Container-példányok használata Jenkins buildügynökként
 
-A Azure Container Instances (ACI) igény szerinti, kihasználható és elszigetelt környezetet biztosít a tároló munkaterhelések futtatásához. Ezen attribútumok miatt az ACI nagyszerű platformot biztosít a Jenkins Build-feladatok nagy léptékű futtatásához. Ez a cikk végigvezeti egy olyan Jenkins-kiszolgáló üzembe helyezésén és használatán, amely előre konfigurálva van az ACI-val Build célként.
+Az Azure Container Instances (ACI) egy igény szerinti, burstable és elkülönített környezetet biztosít a tárolóalapú számítási feladatok futtatásához. Ezek nek az attribútumoknak köszönhetően az ACI nagyszerű platformot biztosít a Jenkins-build feladatok széles körű futtatásához. Ez a cikk bemutatja a Jenkins-kiszolgáló üzembe helyezését és használatát, amely előre konfigurálva van az ACI buildcélként.
 
-További információ a Azure Container Instancesről: [About Azure Container instances](../container-instances/container-instances-overview.md).
+Az Azure Container-példányokról az [Azure Container-példányokról című témakörben](../container-instances/container-instances-overview.md)talál további információt.
 
-## <a name="deploy-a-jenkins-server"></a>Jenkins-kiszolgáló üzembe helyezése
+## <a name="deploy-a-jenkins-server"></a>Jenkins-kiszolgáló telepítése
 
-1. A Azure Portal válassza az **erőforrás létrehozása** és a **Jenkins**keresése lehetőséget. Válassza ki a Jenkins-ajánlatot a **Microsoft**közzétevővel, majd válassza a **Létrehozás**lehetőséget.
+1. Az Azure Portalon válassza az **Erőforrás létrehozása lehetőséget,** és keresse meg a Jenkins című **gombot.** Válassza ki a Jenkins-ajánlatot a **Microsoft**egyik közzétevőjével, majd válassza a **Létrehozás lehetőséget.**
 
-2. Adja meg az alábbi adatokat az **alapvető beállítások** űrlapon, majd kattintson az **OK gombra**.
+2. Írja be a következő adatokat az **Alapok** képernyőn, majd kattintson az **OK gombra.**
 
-   - **Név**: adja meg a Jenkins-telepítés nevét.
-   - **Felhasználónév**: adja meg a Jenkins virtuális gép rendszergazda felhasználójának nevét.
-   - **Hitelesítés típusa**: javasoljuk, hogy adjon meg egy nyilvános SSH-kulcsot a hitelesítéshez. Ha ezt a lehetőséget választja, illessze be a Jenkins virtuális gépre való bejelentkezéshez használandó nyilvános SSH-kulcsot.
-   - **Előfizetés**: válasszon ki egy Azure-előfizetést.
+   - **Név**: Adja meg a Jenkins-telepítés nevét.
+   - **Felhasználónév**: Adja meg a Jenkins virtuális gép rendszergazdai felhasználójának nevét.
+   - **Hitelesítés típusa**: SSH nyilvános kulcsot ajánlunk a hitelesítéshez. Ha ezt a beállítást választja, illessze be a Jenkins virtuális gépre való bejelentkezéshez használt SSH nyilvános kulcsot.
+   - **Előfizetés**: Válasszon egy Azure-előfizetést.
    - **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy meglévőt.
-   - **Hely**: válassza ki a Jenkins-kiszolgáló helyét.
+   - **Hely**: Válassza ki a Jenkins-kiszolgáló helyét.
 
-   ![A Jenkins-portál üzembe helyezésének alapszintű beállításai](./media/container-instances-jenkins/jenkins-portal-01.png)
+   ![A Jenkins-portál telepítésének alapbeállításai](./media/container-instances-jenkins/jenkins-portal-01.png)
 
-3. A **További beállítások** űrlapon hajtsa végre a következő elemeket:
+3. A **További beállítások** képernyőn töltse ki a következő elemeket:
 
-   - **Méret**: válassza ki a Jenkins virtuális gép megfelelő méretezési beállítását.
-   - Virtuálisgép- **lemez típusa**: adja meg a Jenkins-kiszolgáló **HDD** -lemezét (merevlemez-meghajtó) vagy **SSD** -meghajtóját.
-   - **Virtuális hálózat**: kattintson a nyílra, ha módosítani szeretné az alapértelmezett beállításokat.
-   - **Alhálózatok**: válassza ki a nyilat, ellenőrizze az adatokat, majd kattintson az **OK gombra**.
-   - **Nyilvános IP-cím**: válassza a nyilat, hogy a nyilvános IP-címet egyéni névvel adja meg, KONFIGURÁLJA az SKU-t, és állítsa be a hozzárendelési módszert.
-   - **Tartománynév címkéje**: adjon meg egy értéket, amely teljesen minősített URL-címet hoz létre a Jenkins virtuális géphez.
-   - **Jenkins-Kiadás típusa**: válassza ki a kívánt kiadás típusát a következő lehetőségek közül: **LTS**, **heti Build**vagy **Azure ellenőrizve**.
+   - **Méret**: Válassza ki a megfelelő méretezési lehetőséget a Jenkins virtuális gép.
+   - **Virtuálisgép-lemez típusa**: Adja meg **hdd** (merevlemez-meghajtó) vagy **SSD (SSD)** a Jenkins-kiszolgáló.
+   - **Virtuális hálózat**: Jelölje ki a nyilat, ha módosítani szeretné az alapértelmezett beállításokat.
+   - **Alhálózatok**: Jelölje ki a nyilat, ellenőrizze az adatokat, és válassza az **OK**gombot.
+   - **Nyilvános IP-cím**: Válassza ki a nyilat, hogy a nyilvános IP-cím egyéni nevet adjon, konfigurálja a termékváltozatot, és állítsa be a hozzárendelési módszert.
+   - **Tartománynév-címke:** Adjon meg egy értéket a Jenkins virtuális gép teljesen minősített URL-címének létrehozásához.
+   - **Jenkins-kiadás típusa**: Válassza ki a kívánt kiadási típust a következő lehetőségek közül: **LTS**, **Weekly build**vagy **Azure Verified**.
 
-   ![A Jenkins-portál üzembe helyezésének további beállításai](./media/container-instances-jenkins/jenkins-portal-02.png)
+   ![További beállítások a Jenkins-portál telepítéséhez](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. Az egyszerű szolgáltatásnév integrálásához válassza az **automatikus (MSI)** lehetőséget, hogy az [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) automatikusan hozzanak létre hitelesítési identitást a Jenkins-példányhoz. Válassza a **manuális** lehetőséget a saját egyszerű szolgáltatásnév hitelesítő adatainak megadásához.
+4. Egyszerű szolgáltatásintegráció esetén válassza **az Automatikus(MSI)** lehetőséget, hogy az [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) automatikusan hozzanak létre egy hitelesítési identitást a Jenkins-példányhoz. Válassza **a Kézi** lehetőséget a saját egyszerű szolgáltatáshitelesítő adatok megadásához.
 
-5. A felhőalapú ügynökök egy felhőalapú platformot állítanak be a Jenkins-Build feladatokhoz. Ennek a cikknek a kedvéért válassza az **ACI**lehetőséget. Az ACI Cloud Agent esetében minden Jenkins-Build-feladatot egy tároló-példányban futtatnak.
+5. A felhőügynökök felhőalapú platformot konfigurálnak a Jenkins-feladatok létrehozásához. A cikk kedvéért válassza az **ACI**lehetőséget. Az ACI felhőalapú ügynök, minden Jenkins build feladat fut egy tárolópéldányban.
 
-   ![A Jenkins-portál üzembe helyezésének felhő-integrációs beállításai](./media/container-instances-jenkins/jenkins-portal-03.png)
+   ![Felhőintegrációs beállítások a Jenkins-portál üzembe helyezéséhez](./media/container-instances-jenkins/jenkins-portal-03.png)
 
-6. Ha elkészült az integrációs beállításokkal, kattintson az **OK gombra**, majd az érvényesítési összegzésben kattintson ismét **az OK gombra** . Válassza a **Létrehozás** lehetőséget a **használati feltételek** összegzésben. A Jenkins-kiszolgáló üzembe helyezése néhány percet vesz igénybe.
+6. Ha végzett az integrációs beállításokkal, válassza az **OK**gombot, majd az érvényesítési összegzésen ismét az **OK** gombot. Válassza a **Létrehozás** lehetőséget a **Használati feltételek** összegzésén. A Jenkins-kiszolgáló üzembe helyezése néhány percet vesz igénybe.
 
 ## <a name="configure-jenkins"></a>A Jenkins konfigurálása
 
-1. A Azure Portal keresse meg a Jenkins erőforráscsoportot, válassza ki a Jenkins virtuális gépet, és jegyezze fel a DNS-nevet.
+1. Az Azure Portalon keresse meg a Jenkins erőforráscsoportot, válassza ki a Jenkins virtuális gépet, és vegye figyelembe a DNS-nevet.
 
-   ![A Jenkins virtuális géphez tartozó DNS-név](./media/container-instances-jenkins/jenkins-portal-fqdn.png)
+   ![DNS-név a Jenkins virtuális gép részleteiben](./media/container-instances-jenkins/jenkins-portal-fqdn.png)
 
-2. Keresse meg a Jenkins virtuális gép DNS-nevét, és másolja a visszaadott SSH-karakterláncot.
+2. Tallózással keresse meg a Jenkins virtuális gép DNS-nevét, és másolja a visszaadott SSH-karakterláncot.
 
-   ![Jenkins bejelentkezési utasítások SSH-karakterlánccal](./media/container-instances-jenkins/jenkins-portal-04.png)
+   ![Jenkins bejelentkezési utasítások SSH karakterlánccal](./media/container-instances-jenkins/jenkins-portal-04.png)
 
-3. Nyisson meg egy terminál-munkamenetet a fejlesztői rendszeren, és illessze be az SSH-karakterláncot az utolsó lépésből. Frissítse `username` a Jenkins-kiszolgáló üzembe helyezésekor megadott felhasználónévre.
+3. Nyisson meg egy terminálmunkamenetet a fejlesztői rendszeren, és illessze be az SSH-karakterláncba az utolsó lépéstől. Frissítsen `username` arra a felhasználónévre, amelyet a Jenkins-kiszolgáló telepítésekor megadott.
 
-4. A munkamenet csatlakoztatása után futtassa a következő parancsot a kezdeti rendszergazdai jelszó lekéréséhez:
+4. A munkamenet csatlakoztatása után futtassa a következő parancsot a kezdeti rendszergazdai jelszó beolvasásához:
 
    ```bash
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    ```
 
-5. Hagyja meg az SSH-munkamenetet és a bújtatást, és lépjen a `http://localhost:8080` egy böngészőben. Illessze be a kezdeti rendszergazdai jelszót a mezőbe, majd kattintson a **Continue (folytatás**) gombra.
+5. Hagyja futni az SSH-munkamenetet `http://localhost:8080` és az alagutat, és lépjen a böngészőben. Illessze be a kezdeti rendszergazdai jelszót a mezőbe, majd válassza a **Folytatás**gombot.
 
-   !["Jenkins zárolásának feloldása" képernyő a rendszergazdai jelszóval](./media/container-instances-jenkins/jenkins-portal-05.png)
+   !["Unlock Jenkins" képernyő a rendszergazdai jelszó dobozával](./media/container-instances-jenkins/jenkins-portal-05.png)
 
-6. Válassza a **javasolt beépülő modulok telepítése** lehetőséget az összes ajánlott Jenkins beépülő modul telepítéséhez.
+6. Válassza **a Javasolt bővítmények telepítése lehetőséget** az összes ajánlott Jenkins-bővítmény telepítéséhez.
 
-   !["Jenkins testreszabása" képernyő "a javasolt beépülő modulok telepítése" lehetőség kijelölve](./media/container-instances-jenkins/jenkins-portal-06.png)
+   !["Customize Jenkins" képernyő a "Javasolt bővítmények telepítése" lehetőséggel](./media/container-instances-jenkins/jenkins-portal-06.png)
 
-7. Hozzon létre egy rendszergazdai felhasználói fiókot. Ez a fiók a Jenkins-példányának beléptetéséhez és használatához való bejelentkezéshez használható.
+7. Hozzon létre egy rendszergazdai felhasználói fiókot. Ez a fiók a Jenkins-példányba való bejelentkezéshez és a vele való munkához használatos.
 
-   !["Az első rendszergazda felhasználó létrehozása" képernyő, a hitelesítő adatokkal kitöltve](./media/container-instances-jenkins/jenkins-portal-07.png)
+   !["Első rendszergazdai felhasználó létrehozása" képernyő, kitöltött hitelesítő adatokkal](./media/container-instances-jenkins/jenkins-portal-07.png)
 
-8. Válassza a **Mentés és Befejezés**lehetőséget, majd válassza a **Start a Jenkins használatával** lehetőséget a konfiguráció befejezéséhez.
+8. Válassza a **Mentés és befejezés**lehetőséget, majd a Konfiguráció befejezéséhez válassza a Jenkins **használatának megkezdése** lehetőséget.
 
-A Jenkins mostantól konfigurálva van, és készen áll a kód kiépítésére és üzembe helyezésére. Ebben a példában egy egyszerű Java-alkalmazás használatával lehet bemutatni egy Jenkins-buildet Azure Container Instanceson.
+A Jenkins most már konfigurálva van, és készen áll a kód összeállítására és telepítésére. Ebben a példában egy egyszerű Java-alkalmazás az Azure Container Instances egy Jenkins-build bemutatására szolgál.
 
-## <a name="create-a-build-job"></a>Build-feladatok létrehozása
+## <a name="create-a-build-job"></a>Buildfeladat létrehozása
 
-Most létrejön egy Jenkins-Build-feladatokkal, amely bemutatja a Jenkins buildet egy Azure Container instance-példányon.
+Most egy Jenkins build feladat jön létre, hogy bemutassa Jenkins egy Azure-tároló példányra épül.
 
-1. Válassza az **új elem**lehetőséget, adja meg a Build projekt nevét, például **ACI-demo**, válassza a **Freestyle projekt**lehetőséget, majd kattintson **az OK gombra**.
+1. Válassza az **Új elem lehetőséget,** adjon a buildprojektnek egy nevet, például **aci-demo**lehetőséget, válassza **a Freestyle projekt**lehetőséget, és válassza az **OK**lehetőséget.
 
-   ![A felépítési feladatokhoz és a projekttípus listájához tartozó mező](./media/container-instances-jenkins/jenkins-new-job.png)
+   ![A buildfeladat nevének és a projekttípusok listájának mezője](./media/container-instances-jenkins/jenkins-new-job.png)
 
-2. Az **általános**területen ellenőrizze, hogy be van-e jelölve **a projekt futtatási helyének korlátozása** . Adja meg a **Linux** kifejezést a Label kifejezéshez. Ez a konfiguráció biztosítja, hogy ez a felépítési feladatok fussanak az ACI-felhőben.
+2. Az **Általános**csoportban jelölje be a **Korlátozás, ahol a projekt futtatható.** Adja meg a **linux** a címke kifejezés. Ez a konfiguráció biztosítja, hogy ez a buildfeladat az ACI-felhőn fut.
 
-   !["Általános" lap konfigurációs részletekkel](./media/container-instances-jenkins/jenkins-job-01.png)
+   !["Általános" lap a konfiguráció részleteivel](./media/container-instances-jenkins/jenkins-job-01.png)
 
-3. A **Létrehozás**területen válassza a **létrehozási lépés hozzáadása** elemet, és válassza a **rendszerhéj végrehajtása**lehetőséget. Adja meg a `echo "aci-demo"` parancsot.
+3. A **Build csoportban**válassza **a Build lépés hozzáadása** lehetőséget, és válassza a **Rendszerhéj végrehajtása**lehetőséget. Írja `echo "aci-demo"` be a parancsot.
 
-   !["Build" (létrehozás) lap a Build lépés kiválasztásával](./media/container-instances-jenkins/jenkins-job-02.png)
+   !["Build" lap a buildlépés hez való kijelöléssel](./media/container-instances-jenkins/jenkins-job-02.png)
 
 5. Kattintson a **Mentés** gombra.
 
-## <a name="run-the-build-job"></a>A felépítési feladatok futtatása
+## <a name="run-the-build-job"></a>A buildelési feladat futtatása
 
-Ha tesztelni szeretné a felépítési feladatot, és megfigyelheti Azure Container Instances a Build platformként, manuálisan indítson el egy buildet.
+A buildfeladat teszteléséhez és az Azure Container-példányok buildplatformként való megfigyeléséhez manuálisan indítsa el a buildet.
 
-1. Válassza a **Build Now** (létrehozás) lehetőséget a létrehozási feladatok elindításához. Eltarthat néhány percig, amíg a feladatok elindulnak. Az alábbi képhez hasonló állapotnak kell megjelennie:
+1. Válassza **a Build Now lehetőséget** egy buildelési feladat elindításához. A feladat elindítása néhány percet vesz igénybe. Az alábbihoz hasonló állapotnak kell lennie:
 
-   !["Előzmények" információ a feladatok állapotáról](./media/container-instances-jenkins/jenkins-job-status.png)
+   !["Létrehozási előzmények" információ a feladat állapotával](./media/container-instances-jenkins/jenkins-job-status.png)
 
-2. Amíg a művelet fut, nyissa meg a Azure Portal, és tekintse meg a Jenkins erőforráscsoportot. Látnia kell, hogy létrejött egy tároló példánya. A Jenkins-feladatok ezen a példányon belül futnak.
+2. Afeladat futása közben nyissa meg az Azure Portalt, és tekintse meg a Jenkins erőforráscsoportot. Látnia kell, hogy egy tárolópéldány jött létre. A Jenkins-feladat ebben a példányban fut.
 
-   ![Az erőforráscsoport tároló-példánya](./media/container-instances-jenkins/jenkins-aci.png)
+   ![Tárolópéldány az erőforráscsoportban](./media/container-instances-jenkins/jenkins-aci.png)
 
-3. Mivel a Jenkins több feladatot futtat, mint a Jenkins-végrehajtók beállított száma (alapértelmezés szerint 2), a rendszer több tároló példányt hoz létre.
+3. Mivel a Jenkins több feladatot futtat, mint a jenkins-végrehajtók konfigurált száma (alapértelmezett 2), több tárolópéldány jön létre.
 
-   ![Újonnan létrehozott Container instances](./media/container-instances-jenkins/jenkins-aci-multi.png)
+   ![Újonnan létrehozott tárolópéldányok](./media/container-instances-jenkins/jenkins-aci-multi.png)
 
-4. Az összes felépítési feladat befejezése után a rendszer eltávolítja a tároló példányait.
+4. Miután az összes build feladatok befejeződött, a tároló példányok törlődnek.
 
-   ![A Container instances erőforráscsoport eltávolítva](./media/container-instances-jenkins/jenkins-aci-none.png)
+   ![Erőforráscsoport eltávolított tárolópéldányokkal](./media/container-instances-jenkins/jenkins-aci-none.png)
 
 ## <a name="troubleshooting-the-jenkins-plugin"></a>A Jenkins beépülő modul hibáinak elhárítása
 
 Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, jelentse be a problémát az adott összetevő [Jenkins JIRA](https://issues.jenkins-ci.org/) felületén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Folyamatos integráció/üzembe helyezés az Azure App Service-be](java-deploy-webapp-tutorial.md)

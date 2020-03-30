@@ -4,10 +4,10 @@ description: A windowsos asztali alkalmazások használatát és teljesítmény�
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670831"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasszikus windowsos asztali alkalmazások használatának és teljesítményének figyelése
@@ -15,22 +15,22 @@ ms.locfileid: "77670831"
 A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is kihasználhatják az Application Insights előnyeit. Az egyetlen korlát, hogy [engedélyezni kell a kommunikációt](../../azure-monitor/app/ip-addresses.md) az Application Insights szolgáltatással. Az univerzális Windows-platformra (UWP) épülő alkalmazásokhoz a [Visual Studio App Center](../../azure-monitor/learn/mobile-center-quickstart.md) használatát javasoljuk.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Klasszikus Windows-alkalmazásból származó telemetriai adatok küldése az Application Insightsba
-1. [Hozzon létre egy Application Insights-erőforrást](https://portal.azure.com) az [Azure Portalon](../../azure-monitor/app/create-new-resource.md ). Az alkalmazás típusánál válassza az ASP.NET alkalmazás lehetőséget.
+1. [Hozzon létre egy Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusánál válassza az ASP.NET-alkalmazás lehetőséget.
 2. Végezze el a kialakítási kulcs másolását. A kulcs az imént létrehozott új erőforrás Alapvető szolgáltatások legördülő menüjében található. 
 3. A Visual Studióban szerkessze az alkalmazási projekt NuGet-csomagjait, és vegye fel a Microsoft.ApplicationInsights.WindowsServer csomagot. (Vagy válassza a Microsoft.ApplicationInsights csomagot, ha csak az API-ra van szüksége a normál telemetriai adatgyűjtő modulok nélkül.)
 4. Állítsa be a kialakítási kulcsot a kódban:
    
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *a kulcsot* `";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "` *az Ön kulcsa* `";`
    
     vagy az ApplicationInsights.config fájlban (ha telepítette valamelyik normál telemetriai csomagot):
    
-    `<InstrumentationKey>`*az Ön kulcsa*`</InstrumentationKey>` 
+    `<InstrumentationKey>`*a kulcs*`</InstrumentationKey>` 
    
     Az ApplicationInsights.config használatakor győződjön meg arról, hogy annak tulajdonságait a következőre állította a Megoldáskezelőben: **Build Action = Content, Copy to Output Directory = Copy**.
 5. [Az API-val](../../azure-monitor/app/api-custom-events-metrics.md) telemetriai adatokat küldhet.
-6. Futtassa az alkalmazást, és tekintse meg a telemetria a Azure Portalban létrehozott erőforrásban.
+6. Futtassa az alkalmazást, és tekintse meg a telemetriai adatokat az Azure Portalon létrehozott erőforrásban.
 
-## <a name="telemetry"></a>Mintakód
+## <a name="example-code"></a><a name="telemetry"></a>Mintakód
 ```csharp
 using Microsoft.ApplicationInsights;
 
@@ -68,11 +68,11 @@ using Microsoft.ApplicationInsights;
 
 ```
 
-## <a name="override-storage-of-computer-name"></a>Számítógépnév tárolójának felülbírálása
+## <a name="override-storage-of-computer-name"></a>A számítógépnév tárolásának felülbírálása
 
-Alapértelmezés szerint ez az SDK összegyűjti és tárolja a rendszer-előállítók telemetria számítógép nevét. A gyűjtemény felülbírálásához telemetria inicializáló használata szükséges:
+Alapértelmezés szerint ez az SDK összegyűjti és tárolja a rendszer telemetriáját kibocsátó rendszer nevét. A gyűjtemény felülbírálásához telemetriai inicializálót kell használnia:
 
-**Az alábbi módon írhat egyéni TelemetryInitializer.**
+**Írjon egyéni TelemettryInitializer az alábbiak szerint.**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -93,7 +93,7 @@ namespace CustomInitializer.Telemetry
     }
 }
 ```
-Hozza létre az inicializálást a `Program.cs` `Main()` metódusban a kialakítási kulcs beállításával:
+Az inicializáló t `Program.cs` `Main()` az alábbi módszerrel hozza létre a műszerezési kulcsot:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -106,7 +106,7 @@ Hozza létre az inicializálást a `Program.cs` `Main()` metódusban a kialakít
         }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Irányítópult létrehozása](../../azure-monitor/app/overview-dashboard.md)
 * [Diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md)
 * [Metrikák böngészése](../../azure-monitor/app/metrics-explorer.md)

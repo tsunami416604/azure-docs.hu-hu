@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure IoT Hub-eszközkezelés (Java) szolgáltatással | Microsoft Docs
-description: Az Azure IoT Hub-eszközök felügyeletének használata távoli eszköz újraindításának elindításához. A Javához készült Azure IoT eszközoldali SDK használatával olyan szimulált eszköz alkalmazást hozhat létre, amely közvetlen metódust és a Javához készült Azure IoT Service SDK-t is tartalmazza a közvetlen metódust meghívó szolgáltatásalkalmazás megvalósításához.
+title: Ismerkedés az Azure IoT Hub eszközfelügyelettel (Java) | Microsoft dokumentumok
+description: Az Azure IoT Hub eszközfelügyeleti használata távoli eszköz újraindításának kezdeményezéséhez. Az Azure IoT-eszköz SDK Java-hoz egy szimulált eszközalkalmazást valósíthat meg, amely közvetlen metódust és az Azure IoT szolgáltatás SDK Java-hoz egy közvetlen metódust meghívó szolgáltatásalkalmazást valósít meg.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -10,94 +10,94 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: f68e25a618f5c6499ccc9d76c510eab8f1650330
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110880"
 ---
-# <a name="get-started-with-device-management-java"></a>Ismerkedés az eszközkezelés (Java) szolgáltatással
+# <a name="get-started-with-device-management-java"></a>Az eszközkezelés első lépései (Java)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* A Azure Portal használatával hozzon létre egy IoT Hub, és hozzon létre egy eszköz-identitást az IoT hub-ban.
+* Az Azure Portalhasználatával hozzon létre egy IoT Hubot, és hozzon létre egy eszközidentitást az IoT-központban.
 
-* Hozzon létre egy szimulált eszköz alkalmazást, amely egy közvetlen módszert valósít meg az eszköz újraindításához. A közvetlen metódusok meghívása a felhőből történik.
+* Hozzon létre egy szimulált eszközalkalmazást, amely közvetlen módszert valósít meg az eszköz újraindításához. A közvetlen metódusok meghívása a felhőből történik.
 
-* Hozzon létre egy alkalmazást, amely elindítja a Direct reboot metódust a szimulált eszköz alkalmazásban az IoT hub használatával. Ez az alkalmazás ezután figyeli a jelentett tulajdonságokat az eszközről, hogy megtekintse az újraindítási művelet befejeződését.
+* Hozzon létre egy alkalmazást, amely meghívja az újraindítás közvetlen metódusa a szimulált eszköz alkalmazás az IoT hubon keresztül. Ez az alkalmazás ezután figyeli a jelentett tulajdonságokat az eszközről, hogy lássa, ha az újraindítási művelet befejeződött.
 
-Az oktatóanyag végén két Java-konzolos alkalmazás található:
+Az oktatóanyag végén két Java konzolalkalmazás található:
 
-**szimulált eszköz**. Ez az alkalmazás:
+**szimulált eszköz.** Ez az alkalmazás:
 
-* Csatlakozik az IoT hubhoz a korábban létrehozott eszköz-identitással.
+* Az IoT hubhoz csatlakozik a korábban létrehozott eszközidentitással.
 
-* A közvetlen újraindítási metódus hívásának fogadása.
+* Újraindítási közvetlen metódushívás fogadása.
 
-* Fizikai újraindítás szimulálása.
+* Fizikai újraindítást szimulál.
 
-* A jelentett tulajdonság utolsó újraindításának időpontját jelenti.
+* A jelentett tulajdonságon keresztül imitolaz utolsó újraindítás időpontja.
 
-**trigger – újraindítás**. Ez az alkalmazás:
+**trigger-reboot**. Ez az alkalmazás:
 
-* Közvetlen metódust hív meg a szimulált eszköz alkalmazásban.
+* Közvetlen metódust hív meg a szimulált eszközalkalmazásban.
 
-* Megjeleníti a szimulált eszköz által küldött közvetlen metódus hívására adott választ.
+* A szimulált eszköz által küldött közvetlen metódushívásra adott választ jeleníti meg.
 
 * Megjeleníti a frissített jelentett tulajdonságokat.
 
 > [!NOTE]
-> Az eszközökön és a megoldás hátterében futó alkalmazások létrehozásához használható SDK-k ismertetése: [Azure IoT SDK](iot-hub-devguide-sdks.md)-k.
+> Az eszközökön és a megoldás háttér-tartalékrendszerein futtatható alkalmazások létrehozásához használható SDK-król az [Azure IoT SDK-k](iot-hub-devguide-sdks.md)című témakörben talál további információt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
+* [Java SE Fejlesztői Készlet 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Győződjön meg róla, hogy a **Java** **8-at** a Hosszú távú támogatás alatt választja, hogy eljusson a JDK 8 letöltéséhez.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
-* Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
+* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) néhány perc alatt.)
 
-* Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Győződjön meg arról, hogy a 8883-as port nyitva van a tűzfalon. A cikkben szereplő eszközminta az MQTT protokollt használja, amely a 8883-as porton keresztül kommunikál. Előfordulhat, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben le van tiltva. A probléma megoldásáról további információt és a probléma megoldásáról a [Csatlakozás az IoT Hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)című témakörben talál.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hub-ban
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hubban
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub kapcsolati karakterláncának beszereznie
 
 [!INCLUDE [iot-hub-howto-device-management-shared-access-policy-text](../../includes/iot-hub-howto-device-management-shared-access-policy-text.md)]
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Távoli újraindítás indítása az eszközön közvetlen módszer használatával
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Távoli újraindítás aktiválása az eszközön közvetlen módszerrel
 
-Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a következőket tartalmazza:
+Ebben a szakaszban olyan Java konzolalkalmazást hoz létre, amely:
 
-1. Elindítja a Direct reboot metódust a szimulált eszköz alkalmazásban.
+1. Elindítja az újraindításközvetlen metódust a szimulált eszközalkalmazásban.
 
 2. Megjeleníti a választ.
 
-3. Az eszközről küldött jelentett tulajdonságok lekérdezése az újraindítás befejezésének megállapításához.
+3. Lekérdezi az eszközről küldött jelentett tulajdonságokat, hogy megállapítsa, mikor fejeződik be az újraindítás.
 
-Ez a konzol-alkalmazás csatlakozik a IoT Hubhoz, hogy meghívja a közvetlen metódust, és beolvassa a jelentett tulajdonságokat.
+Ez a konzolalkalmazás csatlakozik az IoT Hub a közvetlen metódus meghívásához, és olvassa el a jelentett tulajdonságokat.
 
-1. Hozzon létre egy, a **DM-Get-Started**nevű üres mappát.
+1. Hozzon létre egy üres mappát, a **dm-get-started nevű mappát.**
 
-2. A **DM-Get-Started** mappában hozzon létre egy **trigger-újraindítás** nevű Maven-projektet a következő parancs használatával a parancssorban:
+2. A **dm-get-started** mappában hozzon létre egy **Trigger-reboot** nevű Maven projektet a következő parancs segítségével a parancssorból:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=trigger-reboot -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-3. A parancssorban navigáljon a **trigger-reboot** mappára.
+3. A parancssorban keresse meg az **eseményindító-újraindítás** mappát.
 
-4. Egy szövegszerkesztővel nyissa meg a **Pom. XML** fájlt a **trigger-reboot** mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ezzel a függőséggel használhatja az IOT-Service-Client csomagot az alkalmazásban az IoT hub használatával folytatott kommunikációhoz:
+4. Szövegszerkesztő használatával nyissa meg a **pom.xml** fájlt az **eseményindító-újraindítás** mappában, és adja hozzá a következő függőséget a **függőségi** csomóponthoz. Ez a függőség lehetővé teszi, hogy az iot-service-client csomagot használja az alkalmazásban az IoT-központtal való kommunikációhoz:
 
     ```xml
     <dependency>
@@ -109,9 +109,9 @@ Ez a konzol-alkalmazás csatlakozik a IoT Hubhoz, hogy meghívja a közvetlen me
     ```
 
     > [!NOTE]
-    > A **IOT-Service-Client** legújabb verzióját a [Maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)használatával tekintheti meg.
+    > Az **iot-service-client** legújabb verzióját a [Maven keresési funkciójával](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22) tekintheti meg.
 
-5. Adja hozzá a következő **Build** csomópontot a **függőségek** csomópont után. Ez a konfiguráció arra utasítja a Mavent, hogy a Java 1,8-et használja az alkalmazás létrehozásához:
+5. Adja hozzá a következő **buildcsomópontot** a **függőségi** csomópont után. Ez a konfiguráció arra utasítja a Mavent, hogy java 1.8-as verziót használjon az alkalmazás létrehozásához:
 
     ```xml
     <build>
@@ -129,9 +129,9 @@ Ez a konzol-alkalmazás csatlakozik a IoT Hubhoz, hogy meghívja a közvetlen me
     </build>
     ```
 
-6. Mentse és zárjuk be a **Pom. XML** fájlt.
+6. Mentse és zárja be a **pom.xml** fájlt.
 
-7. Egy szövegszerkesztővel nyissa meg a **trigger-reboot\src\main\java\com\mycompany\app\App.Java** forrásfájlt.
+7. Szövegszerkesztő használatával nyissa meg az **eseményindító-reboot\src\main\java\com\mycompany\app\App.java** forrásfájlt.
 
 8. Adja hozzá a következő **importálási** utasításokat a fájlhoz:
 
@@ -148,7 +148,7 @@ Ez a konzol-alkalmazás csatlakozik a IoT Hubhoz, hogy meghívja a közvetlen me
     import java.util.concurrent.ExecutorService;
     ```
 
-9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le a `{youriothubconnectionstring}`t a korábban a [IoT hub-beli kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string)során másolt IoT hub-kapcsolatok karakterláncára:
+9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje `{youriothubconnectionstring}` le az IoT Hub kapcsolati karakterláncát, amelyet korábban másolt [az IoT hub kapcsolati karakterláncának beszerzése című részben:](#get-the-iot-hub-connection-string)
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -159,7 +159,7 @@ Ez a konzol-alkalmazás csatlakozik a IoT Hubhoz, hogy meghívja a közvetlen me
     private static final Long connectTimeout = TimeUnit.SECONDS.toSeconds(5);
     ```
 
-10. Ha olyan szálat szeretne megvalósítani, amely a jelentett tulajdonságokat 10 másodpercenként beolvassa az eszközről, adja hozzá a következő beágyazott osztályt az **app** osztályhoz:
+10. Ha 10 másodpercenként szeretne olyan szálat megvalósítani, amely beolvassa az ikereszköz **App** jelentett tulajdonságait, adja hozzá a következő beágyazott osztályt az alkalmazásosztályhoz:
 
     ```java
     private static class ShowReportedProperties implements Runnable {
@@ -180,13 +180,13 @@ Ez a konzol-alkalmazás csatlakozik a IoT Hubhoz, hogy meghívja a közvetlen me
     }
     ```
 
-11. Módosítsa a **Main** metódus aláírását úgy, hogy kidobja a következő kivételt:
+11. Módosítsa a **fő** módszer aláírását a következő kivétel hez:
 
     ```java
     public static void main(String[] args) throws IOException
     ```
 
-12. A szimulált eszközön a közvetlen újraindítási módszer meghívásához cserélje le a kódot a **Main** metódusba a következő kóddal:
+12. A szimulált eszközön az újraindítási közvetlen metódus meghívásához cserélje le a **fő** metódusban lévő kódot a következő kódra:
 
     ```java
     System.out.println("Starting sample...");
@@ -211,7 +211,7 @@ Ez a konzol-alkalmazás csatlakozik a IoT Hubhoz, hogy meghívja a közvetlen me
     }
     ```
 
-13. Ha szeretné elindítani a szálat a jelentett tulajdonságok lekérdezéséhez a szimulált eszközről, adja hozzá a következő kódot a **Main** metódushoz:
+13. A rendszerlánc elindításához adja hozzá a következő kódot a **fő** metódushoz:
 
     ```java
     ShowReportedProperties showReportedProperties = new ShowReportedProperties();
@@ -219,7 +219,7 @@ Ez a konzol-alkalmazás csatlakozik a IoT Hubhoz, hogy meghívja a közvetlen me
     executor.execute(showReportedProperties);
     ```
 
-14. Az alkalmazás leállításának engedélyezéséhez adja hozzá a következő kódot a **Main** metódushoz:
+14. Az alkalmazás leállításának engedélyezéséhez adja hozzá a következő kódot a **fő** metódushoz:
 
     ```java
     System.out.println("Press ENTER to exit.");
@@ -228,9 +228,9 @@ Ez a konzol-alkalmazás csatlakozik a IoT Hubhoz, hogy meghívja a közvetlen me
     System.out.println("Shutting down sample...");
     ```
 
-15. Mentse és zárjuk be a **trigger-reboot\src\main\java\com\mycompany\app\App.Java** fájlt.
+15. Mentse és zárja be az **eseményindító-reboot\src\main\java\com\mycompany\app\App.java** fájlt.
 
-16. Hozza létre a **triggert – indítsa újra** a háttér-alkalmazást, és javítsa ki az esetleges hibákat. A parancssorban navigáljon a **trigger-reboot** mappára, és futtassa a következő parancsot:
+16. Hozza létre az **eseményindító-újraindítás** háttéralkalmazást, és javítsa ki az esetleges hibákat. A parancssorban keresse meg az **eseményindító-újraindítás** mappát, és futtassa a következő parancsot:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -238,17 +238,17 @@ Ez a konzol-alkalmazás csatlakozik a IoT Hubhoz, hogy meghívja a közvetlen me
 
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 
-Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt szimulál. Az alkalmazás figyeli a közvetlen újraindítási metódus hívását az IoT hub-ból, és azonnal válaszol erre a hívásra. Az alkalmazás ezután alvó állapotba lép, hogy szimulálja az újraindítási folyamatot, mielőtt a jelentett tulajdonságot felhasználva értesíti az újraindítást **indító háttér-újraindítási** alkalmazást.
+Ebben a szakaszban hozzon létre egy Java konzolalkalmazást, amely szimulálja az eszközt. Az alkalmazás figyeli az újraindítás közvetlen metódus hívás az IoT hubról, és azonnal válaszol a hívásra. Az alkalmazás ezután egy ideig alvó állapotba kerül, hogy szimulálja az újraindítási folyamatot, mielőtt egy jelentett tulajdonsággal értesíti az **eseményindító-újraindítás** háttéralkalmazást, hogy az újraindítás befejeződött.
 
-1. A **DM-Get-Started** mappában hozzon létre egy **szimulált eszköz** nevű Maven-projektet a következő parancs parancssorból történő futtatásával:
+1. A **dm-get-started** mappában hozzon létre egy **szimulált eszköz** nevű Maven-projektet a következő parancs használatával a parancssorban:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. A parancssorban navigáljon a **szimulált eszköz** mappájához.
+2. A parancssorban keresse meg a **szimulált eszköz** mappát.
 
-3. Egy szövegszerkesztővel nyissa meg a **Pom. XML** fájlt a **szimulált-Device** mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ezzel a függőséggel használhatja az IOT-Service-Client csomagot az alkalmazásban az IoT hub használatával folytatott kommunikációhoz:
+3. Szövegszerkesztő használatával nyissa meg a **pom.xml** fájlt a **szimulált eszközmappában,** és adja hozzá a következő függőséget a **függőségi** csomóponthoz. Ez a függőség lehetővé teszi, hogy az iot-service-client csomagot használja az alkalmazásban az IoT-központtal való kommunikációhoz:
 
     ```xml
     <dependency>
@@ -259,9 +259,9 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     ```
 
     > [!NOTE]
-    > A **IOT-Device-Client** legújabb verzióját a [Maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)használatával tekintheti meg.
+    > Az **iot-device-client** legújabb verzióját a [Maven keresési funkciójával](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22) tekintheti meg.
 
-4. Adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ez a függőség konfigurálja az Apache [SLF4J](https://www.slf4j.org/) naplózási homlokzatának NOP, amelyet az eszköz ügyféloldali SDK használ a naplózás megvalósításához. Ez a konfiguráció nem kötelező, de ha kihagyja, az alkalmazás futtatásakor figyelmeztetés jelenik meg a konzolon. Az eszköz ügyféloldali SDK-beli naplózásával kapcsolatos további információkért lásd: az *Azure IoT ESZKÖZOLDALI SDK for Java* információs fájlhoz tartozó minták [naplózása](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) .
+4. Adja hozzá a következő függőséget a **függőségi** csomóponthoz. Ez a függőség nop-t konfigurál az Apache [SLF4J](https://www.slf4j.org/) naplózási homlokzatához, amelyet az eszközügyfél SDK a naplózás megvalósításához használ. Ez a konfiguráció nem kötelező, de ha kihagyja, az alkalmazás futtatásakor figyelmeztetés jelenhet meg a konzolon. Az eszközügyfél SDK-ba való naplózásról további információt az *Azure IoT-eszköz Java-alapú SDK-fájlmintáinak* [naplózása](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) című témakörben talál.
 
     ```xml
     <dependency>
@@ -271,7 +271,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     </dependency>
     ```
 
-5. Adja hozzá a következő **Build** csomópontot a **függőségek** csomópont után. Ez a konfiguráció arra utasítja a Mavent, hogy a Java 1,8-et használja az alkalmazás létrehozásához:
+5. Adja hozzá a következő **buildcsomópontot** a **függőségi** csomópont után. Ez a konfiguráció arra utasítja a Mavent, hogy java 1.8-as verziót használjon az alkalmazás létrehozásához:
 
     ```xml
     <build>
@@ -289,9 +289,9 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     </build>
     ```
 
-6. Mentse és zárjuk be a **Pom. XML** fájlt.
+6. Mentse és zárja be a **pom.xml** fájlt.
 
-7. Egy szövegszerkesztővel nyissa meg a **simulated-device\src\main\java\com\mycompany\app\App.Java** forrásfájlt.
+7. Szövegszerkesztő használatával nyissa meg a **szimulált eszköz\src\main\java\com\mycompany\app\App.java** forrásfájlt.
 
 8. Adja hozzá a következő **importálási** utasításokat a fájlhoz:
 
@@ -307,7 +307,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     import java.util.HashSet;
     ```
 
-9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le a `{yourdeviceconnectionstring}`t az [új eszköz regisztrálása az IoT hub-ben](#register-a-new-device-in-the-iot-hub) című szakaszban feljegyzett eszköz-összekapcsolási sztringre:
+9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje `{yourdeviceconnectionstring}` le az [IoT hub szakaszúj eszköz regisztrálása](#register-a-new-device-in-the-iot-hub) című szakaszában megjegyzett eszközkapcsolati karakterláncra:
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -318,7 +318,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     private static DeviceClient client;
     ```
 
-10. Ha egy visszahívási kezelőt szeretne megvalósítani a közvetlen metódusok állapotának eseményeihez, adja hozzá a következő beágyazott osztályt az **app** osztályhoz:
+10. A közvetlen metódusállapot-események visszahívási kezelőjének megvalósításához adja **App** hozzá a következő beágyazott osztályt az alkalmazásosztályhoz:
 
     ```java
     protected static class DirectMethodStatusCallback implements IotHubEventCallback
@@ -330,7 +330,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     }
     ```
 
-11. Ha egy visszahívási kezelőt szeretne megvalósítani az eszközök Twin állapotával kapcsolatos eseményekhez, adja hozzá a következő beágyazott osztályt az **app** osztályhoz:
+11. Az ikereszközök állapoteseményeinek visszahíváskezelőjének megvalósításához adja hozzá **App** a következő beágyazott osztályt az alkalmazásosztályhoz:
 
     ```java
     protected static class DeviceTwinStatusCallback implements IotHubEventCallback
@@ -342,7 +342,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     }
     ```
 
-12. A tulajdonság eseményeinek visszahívási kezelőjének megvalósításához adja hozzá a következő beágyazott osztályt az **app** osztályhoz:
+12. A tulajdonságesemények visszahívási kezelőjének megvalósításához adja hozzá **App** a következő beágyazott osztályt az alkalmazásosztályhoz:
 
     ```java
     protected static class PropertyCallback implements PropertyCallBack<String, String>
@@ -355,7 +355,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     }
     ```
 
-13. Ha egy szálat szeretne megvalósítani az eszköz újraindításának szimulálása érdekében, adja hozzá a következő beágyazott osztályt az **app** osztályhoz. A szál öt másodpercig alvó állapotba kerül, majd beállítja a **lastReboot** jelentett tulajdonságot:
+13. Az eszköz újraindítását szimuláló szál megvalósításához adja hozzá **App** a következő beágyazott osztályt az alkalmazásosztályhoz. A szál öt másodpercig alvó állapotban van, majd beállítja a **lastReboot** jelentett tulajdonságát:
 
     ```java
     protected static class RebootDeviceThread implements Runnable {
@@ -376,7 +376,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     }
     ```
 
-14. Az eszközön a közvetlen metódus megvalósításához adja hozzá a következő beágyazott osztályt az **app** osztályhoz. Amikor a szimulált alkalmazás fogadja a közvetlen **Újraindítási** módszert, visszaigazolja a hívónak, majd elindít egy szálat az újraindítás feldolgozásához:
+14. A közvetlen metódus eszközén való megvalósításhoz adja **App** hozzá a következő beágyazott osztályt az alkalmazásosztályhoz. Amikor a szimulált alkalmazás hívást kap az **újraindításközvetlen** metódushoz, nyugtát ad vissza a hívónak, majd elindítja a szálat az újraindítás feldolgozásához:
 
     ```java
     protected static class DirectMethodCallback implements com.microsoft.azure.sdk.iot.device.DeviceTwin.DeviceMethodCallback
@@ -408,20 +408,20 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     }
     ```
 
-15. Módosítsa a **Main** metódus aláírását úgy, hogy az a következő kivételeket dobja:
+15. Módosítsa a **fő** módszer aláírását a következő kivételek esetén:
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-16. **DeviceClient**létrehozásához cserélje le a **Main** metódus kódját a következő kódra:
+16. **A DeviceClient**rendszerezéséhez cserélje le a **fő** metóduskódját a következő kódra:
 
     ```java
     System.out.println("Starting device client sample...");
     client = new DeviceClient(connString, protocol);
     ```
 
-17. A közvetlen metódusok hívásainak figyelésének megkezdéséhez adja hozzá a következő kódot a **Main** metódushoz:
+17. A közvetlen metódushívások figyeléséhez adja hozzá a következő kódot a **fő** metódushoz:
 
     ```java
     try
@@ -439,7 +439,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     }
     ```
 
-18. Az eszköz-szimulátor leállításához adja hozzá a következő kódot a **Main** metódushoz:
+18. Az eszközszimulátor leállításához adja hozzá a következő kódot a **fő** metódushoz:
 
     ```java
     System.out.println("Press any key to exit...");
@@ -450,9 +450,9 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     System.out.println("Shutting down...");
     ```
 
-19. Mentse és zárjuk be a simulated-device\src\main\java\com\mycompany\app\App.java fájlt.
+19. Mentse és zárja be a szimulált eszköz\src\main\java\com\mycompany\app\App.java fájlt.
 
-20. Hozza létre a **szimulált eszköz** alkalmazást, és javítsa ki az esetleges hibákat. A parancssorban navigáljon a **szimulált-Device** mappára, és futtassa a következő parancsot:
+20. Hozza létre a **szimulált eszközalkalmazást,** és javítsa ki az esetleges hibákat. A parancssorban keresse meg a **szimulált eszköz** mappát, és futtassa a következő parancsot:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -462,24 +462,24 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
 
 Most már készen áll az alkalmazások futtatására.
 
-1. A **szimulált-Device** mappában egy parancssorban futtassa a következő parancsot, amellyel megkezdheti a IoT hub újraindítási metódusának figyelését:
+1. A **szimulált eszköz** mappájában lévő parancssorban futtassa a következő parancsot az IoT hubról érkező újraindítási metódushívások figyeléséhez:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Java IoT Hub szimulált eszköz alkalmazás a közvetlen újraindítási metódusok hívásának figyeléséhez](./media/iot-hub-java-java-device-management-getstarted/launchsimulator.png)
+    ![Java IoT Hub szimulált eszközalkalmazás az újraindításközvetlen metódushívások figyelésére](./media/iot-hub-java-java-device-management-getstarted/launchsimulator.png)
 
-2. A **trigger-reboot** mappában egy parancssorban futtassa a következő parancsot a szimulált eszközön a IoT hub-ról indított újraindítási módszer meghívásához:
+2. Az **eseményindító-újraindítás** mappában lévő parancssorból futtassa a következő parancsot az ioT hubról a szimulált eszközön lévő újraindítási módszer hívásához:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Java IoT Hub szolgáltatásalkalmazás a reboot Direct metódus meghívásához](./media/iot-hub-java-java-device-management-getstarted/triggerreboot.png)
+    ![Java IoT Hub szolgáltatás alkalmazás hívja meg az újraindítás közvetlen metódus](./media/iot-hub-java-java-device-management-getstarted/triggerreboot.png)
 
-3. A szimulált eszköz válaszol a közvetlen újraindítási metódus hívására:
+3. A szimulált eszköz válaszol az újraindítás közvetlen metódus hívás:
 
-    ![A Java IoT Hub szimulált eszköz alkalmazás válaszol a közvetlen metódus hívására](./media/iot-hub-java-java-device-management-getstarted/respondtoreboot.png)
+    ![A Java IoT Hub szimulált eszközalkalmazása válaszol a közvetlen metódushívásra](./media/iot-hub-java-java-device-management-getstarted/respondtoreboot.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

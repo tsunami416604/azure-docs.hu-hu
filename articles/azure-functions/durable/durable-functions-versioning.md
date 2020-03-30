@@ -1,30 +1,30 @@
 ---
-title: Verziószámozás a Durable Functionsban – Azure
-description: Megtudhatja, hogyan implementálhatja a verziószámozást a Azure Functions Durable Functions-bővítményében.
+title: Verziószámozás tartós függvényekben – Azure
+description: Ismerje meg, hogyan valósíthatja meg a verziószámozást az Azure Functions Durable Functions bővítményében.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 87cbb94dbab241630dc7585bdf4314d858d5b4da
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232752"
 ---
-# <a name="versioning-in-durable-functions-azure-functions"></a>Verziószámozás Durable Functions (Azure Functions)
+# <a name="versioning-in-durable-functions-azure-functions"></a>Verziószámozás tartós függvényekben (Azure-függvények)
 
-Elkerülhetetlen, hogy a rendszer felveszi, eltávolítja és megváltoztatja a függvényeket az alkalmazások élettartama során. [Durable functions](durable-functions-overview.md) lehetővé teszi a láncolási függvények összekapcsolását olyan módokon, amelyek korábban nem voltak lehetségesek, és ez a láncolás befolyásolja a verziószámozás kezelését.
+Elkerülhetetlen, hogy a függvények az alkalmazás élettartama alatt hozzáadódnak, törlődjenek és megváltozzon. [A Durable Functions](durable-functions-overview.md) lehetővé teszi a funkciók összeláncolását olyan módon, amely korábban nem volt lehetséges, és ez a láncolás befolyásolja a verziószámozás kezelését.
 
-## <a name="how-to-handle-breaking-changes"></a>A feltörési változások kezelése
+## <a name="how-to-handle-breaking-changes"></a>A törési módosítások kezelése
 
-Több példa is van arra, hogy miként lehet a módosításokat feltörni. Ez a cikk a leggyakoribb kérdéseket tárgyalja. Az összes közülük az egyik fő téma az, hogy az új és a meglévő függvények is hatással vannak a funkció kódjának változásaira.
+Számos példa van arra, hogy a változásokat meg kell szakítani. Ez a cikk ismerteti a leggyakoribbak. A fő téma mögött az összes, hogy mind az új, mind a meglévő függvény vezénylések hatással vannak a függvénykód változásai.
 
-### <a name="changing-activity-or-entity-function-signatures"></a>A tevékenység vagy az entitás függvény aláírásának módosítása
+### <a name="changing-activity-or-entity-function-signatures"></a>Tevékenység- vagy entitásfüggvény-aláírások módosítása
 
-Az aláírás módosítása a függvények nevének, bemenetének vagy kimenetének változására utal. Ha a tevékenység vagy az Entity függvény ilyen típusú változást végez, akkor az a tőle függő bármely Orchestrator-függvényt megszakíthatja. Ha úgy frissíti a Orchestrator függvényt, hogy az megfeleljen ennek a változásnak, megszakíthatja a meglévő, repülés közbeni példányokat.
+Az aláírásmódosítása egy függvény nevének, bemenetének vagy kimenetének változására utal. Ha ilyen típusú módosítás történik egy tevékenység vagy entitás függvény, ez megszakíthatja az orchestrator függvény, amely attól függ. Ha frissíti az orchestrator függvényt a módosítás nak megfelelően, megszakíthatja a meglévő fedélzeti példányokat.
 
-Tegyük fel például, hogy a következő Orchestrator függvényt használjuk.
+Például tegyük fel, hogy a következő orchestrator függvény.
 
 ```csharp
 [FunctionName("FooBar")]
@@ -35,7 +35,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-Ez a leegyszerűsítő függvény a **foo** eredményeit veszi át, és a **sáv**felé továbbítja azt. Tegyük fel, hogy módosítani kell a **foo** visszatérési értékét `bool`ról `int`re, hogy támogassa az eredmények szélesebb választékát. Az eredmény így néz ki:
+Ez a leegyszerűsítő funkció veszi az eredményeket a **Foo** és átadja azt **Bar**. Tegyük fel, hogy meg kell változtatnunk `bool` a `int` **Foo** visszatérési értékét az eredményértékek szélesebb körének támogatása érdekében. Az eredmény így néz ki:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -47,17 +47,17 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> Az előző C# példák célja Durable functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző C# példák a Durable Functions 2.x-et célozzák meg. A tartós függvények 1.x `DurableOrchestrationContext` esetén `IDurableOrchestrationContext`a helyett a ot kell használnia. A verziók közötti különbségekről a [Durable Functions verziók ról](durable-functions-versions.md) szóló cikkben olvashat bővebben.
 
-Ez a változás jól működik a Orchestrator függvény összes új példányán, de a repülés közbeni példányokat is megszakítja. Vegyük például azt az esetet, amikor egy összehangoló példány egy `Foo`nevű függvényt hív meg, és egy logikai értéket kap vissza, majd ellenőrzőpontokat. Ha az aláírás módosítása ezen a ponton történik, az ellenőrzőpontos példány azonnal meghiúsul, amikor folytatja, és visszajátssza a `context.CallActivityAsync<int>("Foo")`hívását. Ez a hiba azért fordul elő, mert az előzmények táblázatának eredménye `bool`, de az új kód megpróbálja deszerializálni `int`ba.
+Ez a módosítás jól működik az orchestrator függvény minden új példányához, de megszakítja a repülés közbeni példányokat. Vegyük például azt az esetet, amikor `Foo`egy vezénylési példány meghívja a függvény nevű függvényt, logikai értéket kap vissza, majd ellenőrzőpontokat. Ha az aláírás módosítása ezen a ponton van telepítve, az ellenőrzőponton lévő példány azonnal `context.CallActivityAsync<int>("Foo")`sikertelen lesz, amikor folytatja, és visszajátssza a hívást. Ez a hiba azért fordul elő, mert az előzménytábla eredménye, de az `bool` új kód megpróbálja deszerializálni a rendszerbe. `int`
 
-Ez a példa az aláírások módosításának számos különböző módja, amely megszakíthatja a meglévő példányokat. Általánosságban elmondható, hogy ha egy Orchestrator módosítania kell egy függvény meghívásának módját, akkor a változás valószínűleg problematikus lesz.
+Ez a példa csak egy a sok különböző módon, hogy egy aláírás változás a meglévő példányok megszakítása. Általában, ha egy orchestrator kell változtatni, ahogy meghívja a függvényt, akkor a változás valószínűleg problémás.
 
-### <a name="changing-orchestrator-logic"></a>Orchestrator-logika módosítása
+### <a name="changing-orchestrator-logic"></a>Az orchestrator logikájának módosítása
 
-A verziószámozási problémák másik osztálya úgy változik, hogy a Orchestrator függvény kódját úgy változtatja meg, hogy megzavarja a fedélzeti példányok újrajátszása logikáját.
+A verziószámozási problémák másik osztálya az orchestrator függvénykódjának oly módon történő módosításából származik, amely összezavarja a repülés közbeni példányok visszajátszási logikáját.
 
-Vegye figyelembe a következő Orchestrator függvényt:
+Vegye figyelembe a következő orchestrator függvényt:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -68,7 +68,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-Most tegyük fel, hogy látszólag ártatlan változást kíván tenni egy másik függvény hívásának hozzáadásához.
+Most tegyük fel, hogy egy látszólag ártatlan változtatást szeretne tenni egy másik függvényhívás hozzáadásához.
 
 ```csharp
 [FunctionName("FooBar")]
@@ -85,42 +85,42 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> Az előző C# példák célja Durable functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző C# példák a Durable Functions 2.x-et célozzák meg. A tartós függvények 1.x `DurableOrchestrationContext` esetén `IDurableOrchestrationContext`a helyett a ot kell használnia. A verziók közötti különbségekről a [Durable Functions verziók ról](durable-functions-versions.md) szóló cikkben olvashat bővebben.
 
-Ez a változás egy új függvény hívását adja hozzá a **SendNotification** a **foo** és a **Bar**között. Nincsenek aláírási változások. A probléma akkor fordul elő, amikor egy meglévő példány folytatja a hívást a **sávra**. Ha a visszajátszáskor a **foo** eredeti hívása `true`lett visszaadva, akkor a Orchestrator visszajátszás a **SendNotification**, amely nem szerepel a végrehajtás előzményeiben. Ennek eredményeképpen az állandó feladathoz tartozó keretrendszer egy `NonDeterministicOrchestrationException` miatt meghiúsul, mert a rendszer a **SendNotification** hívását észlelte, amikor a rendszer a **sáv**hívását várta. Ugyanaz a probléma akkor fordulhat elő, ha a "tartós" API-khoz (például `CreateTimer`, `WaitForExternalEvent`stb.) bármilyen hívást felvesznek.
+Ez a módosítás új függvényhívást ad hozzá a **SendNotification** hez **a Foo** és **a Bar**között. Nincs aláírás-módosítás. A probléma akkor merül fel, amikor egy **Bar**meglévő példány folytatódik a bar hívásról. A visszajátszás során, ha az eredeti `true`hívás **Foo** vissza , majd az orchestrator visszajátszás a **SendNotification**, amely nem szerepel a végrehajtási előzményeket. Ennek eredményeképpen a tartós feladatkeretrendszer sikertelen, `NonDeterministicOrchestrationException` mert a **SendNotification** hívása közben hívást észlelt a Bar **hívásra.** Ugyanez a probléma akkor fordulhat elő, ha bármilyen hívást `CreateTimer`hozzáad a "tartós" API-khoz, beleértve a , `WaitForExternalEvent`stb.
 
-## <a name="mitigation-strategies"></a>Kockázatcsökkentő stratégiák
+## <a name="mitigation-strategies"></a>Kockázatcsökkentési stratégiák
 
-Íme néhány, a verziószámozási kihívásokkal foglalkozó stratégia:
+Íme néhány stratégia a verzióváltási kihívások kezelésére:
 
-* Nincs teendő
-* Az összes fedélzeti példány leállítása
-* Párhuzamos üzembe helyezések
+* Ne tegyen semmit
+* Az összes repülés közbeni példány leállítása
+* Egymás melletti telepítések
 
-### <a name="do-nothing"></a>Nincs teendő
+### <a name="do-nothing"></a>Ne tegyen semmit
 
-A feltörési változások kezelésének legegyszerűbb módja a fedélzeti előkészítési példányok meghibásodása. Az új példányok sikeresen futtatták a módosított kódot.
+A törési módosítás kezelésének legegyszerűbb módja, ha hagyja, hogy a fedélzeti vezénylési példányok meghibásodjanak. Az új példányok sikeresen futtatták a módosított kódot.
 
-Ez a hiba attól függ, hogy az ilyen típusú hibák a repülésen kívüli példányok fontosságán alapulnak-e. Ha aktív fejlesztést végez, és nem érdeklik a fedélzeti példányok, ez elég jó lehet. Azonban a diagnosztika folyamatában a kivételekkel és a hibákkal kell foglalkoznia. Ha el szeretné kerülni ezeket a dolgokat, tekintse át a többi verziószámozási lehetőséget.
+Az, hogy ez a fajta hiba probléma-e, a repülés közbeni példányok fontosságától függ. Ha ön -ban aktivál fejlődés és dont' gond körülbelül -ban- repülés példa, ez erő lenni jó elég. Azonban a diagnosztikai folyamat kivételekkel és hibákkal kell foglalkoznia. Ha el szeretné kerülni ezeket a dolgokat, fontolja meg a többi verziószámozási lehetőséget.
 
-### <a name="stop-all-in-flight-instances"></a>Az összes fedélzeti példány leállítása
+### <a name="stop-all-in-flight-instances"></a>Az összes repülés közbeni példány leállítása
 
-Egy másik lehetőség az összes fedélzeti példány leállítása. Az összes példány leállítása a belső **vezérlő – üzenetsor** és a **Munkatétel-várólista** várólistájának tartalmának törlésével végezhető el. A példányok örökre megakadnak, ahol ezek a felhasználók, de a naplófájlokat nem fogja felhasználni a hibaüzenetekkel. Ez a megközelítés ideális megoldás a gyors prototípus-fejlesztéshez.
+Egy másik lehetőség az összes repülés közbeni példány leállítása. Az összes példány leállítása a belső **vezérlő-várólista** és a **munkatétel-várólista-várólisták** tartalmának törlésével végezhető el. Az esetek örökre megragadt, ahol vannak, de nem rendetlenséget a naplók at hiba üzeneteket. Ez a megközelítés ideális a gyors prototípus fejlesztés.
 
 > [!WARNING]
-> A várólisták részletei idővel változhatnak, ezért ne használja ezt a technikát éles számítási feladatokhoz.
+> Ezek a várólisták részletei idővel változhatnak, ezért ne támaszkodjon erre a technikára az éles számítási feladatokhoz.
 
-### <a name="side-by-side-deployments"></a>Párhuzamos üzembe helyezések
+### <a name="side-by-side-deployments"></a>Egymás melletti telepítések
 
-A legtöbb sikertelen működést biztosító módszer, amellyel biztosítható, hogy a megszakított változások biztonságosan üzembe helyezhetők legyenek, ha a régebbi verziókkal párhuzamosan telepíti őket. Ezt a következő módszerek bármelyikével teheti meg:
+A hibabiztos módja annak, hogy a biztonsági módosítások biztonságosüzembe helyezése a régebbi verziókkal együtt történő üzembe helyezéssel történjen. Ezt az alábbi technikák bármelyikével teheti meg:
 
-* Telepítse az összes frissítést teljes mértékben új függvényként, így a meglévő függvények is megmaradnak. Ez trükkös lehet, mert az új függvények verzióinak hívóit is frissíteni kell Ugyanezen irányelvek követésével.
-* Telepítse az összes frissítést új Function-alkalmazásként egy másik Storage-fiókkal.
-* Telepítse a Function alkalmazás egy új példányát ugyanazzal a Storage-fiókkal, de egy frissített `taskHub`-névvel. Az ajánlott eljárás a párhuzamos üzembe helyezés.
+* Az összes frissítést teljesen új függvényként telepíti, így a meglévő függvények a jelenlegi állapotban maradnak. Ez bonyolult lehet, mert az új függvényverziók hívóit is frissíteni kell, ugyanazokat az irányelveket követve.
+* Telepítse az összes frissítést egy új függvényalkalmazásként egy másik tárfiókkal.
+* Telepítse a függvényalkalmazás új példányát ugyanazzal a `taskHub` tárfiókkal, de frissített névvel. Egymás melletti központi telepítések az ajánlott technika.
 
-### <a name="how-to-change-task-hub-name"></a>A feladat központ nevének módosítása
+### <a name="how-to-change-task-hub-name"></a>A feladatközpont nevének módosítása
 
-A feladat hub a következő módon konfigurálható a *Host. JSON* fájlban:
+A feladatközpont a *host.json* fájlban a következőképpen konfigurálható:
 
 #### <a name="functions-1x"></a>Functions 1.x
 
@@ -132,7 +132,7 @@ A feladat hub a következő módon konfigurálható a *Host. JSON* fájlban:
 }
 ```
 
-#### <a name="functions-20"></a>Függvények 2,0
+#### <a name="functions-20"></a>Funkciók 2.0
 
 ```json
 {
@@ -144,16 +144,16 @@ A feladat hub a következő módon konfigurálható a *Host. JSON* fájlban:
 }
 ```
 
-A Durable Functions v1. x alapértelmezett értéke `DurableFunctionsHub`. A Durable Functions 2.0-s verziótól kezdődően az alapértelmezett Task hub neve ugyanaz, mint a Function app neve az Azure-ban, vagy `TestHubName`, ha az Azure-on kívül fut.
+A Durable Functions v1.x `DurableFunctionsHub`alapértelmezett értéke a . A Durable Functions v2.0-tól kezdve az alapértelmezett feladatközpont neve megegyezik a függvényalkalmazás nevével az Azure-ban, vagy `TestHubName` ha az Azure-on kívül fut.
 
-Az összes Azure Storage-entitás neve a `hubName` konfigurációs érték alapján történik. Ha egy új nevet ad a Task hub számára, akkor az alkalmazás új verziójához külön üzenetsor-és előzmény-táblázatot kell létrehoznia. A Function alkalmazás azonban leállítja az események feldolgozását, illetve az előző feladathoz tartozó hub neve alatt létrehozott entitásokat.
+Az összes Azure Storage-entitás `hubName` neve a konfigurációs érték alapján. Ha új nevet ad a feladatközpontnak, biztosítja, hogy az alkalmazás új verziójához külön várólisták és előzménytábla jön létre. A függvényalkalmazás azonban leállítja az események feldolgozását vezénylések vagy az előző feladatközpont neve alatt létrehozott entitások számára.
 
-Javasoljuk, hogy a Function alkalmazás új verzióját egy új [üzembe helyezési](../functions-deployment-slots.md)pontra telepítse. Az üzembe helyezési pontok lehetővé teszik, hogy a Function alkalmazás több példányát is futtassa, csak az egyiket aktív *üzemi* tárolóhelyként. Ha készen áll arra, hogy elérhetővé tegye az új előkészítési logikát a meglévő infrastruktúrájában, akkor olyan egyszerű lehet, hogy az új verziót az éles tárolóhelyre cseréli.
+Azt javasoljuk, hogy telepítse a függvényalkalmazás új verzióját egy új [központi telepítési helyre.](../functions-deployment-slots.md) A központi telepítési tárolóhelyek lehetővé teszik, hogy a függvényalkalmazás több példányát egymás mellett futtassa, és csak az egyiket az aktív *éles* tárolóhelyként futtassa. Ha készen áll az új vezénylési logika a meglévő infrastruktúra, lehet olyan egyszerű, mint az új verzió cseréje az éles tárolóhelyre.
 
 > [!NOTE]
-> Ez a stratégia akkor működik a legjobban, ha HTTP-és webhook-eseményindítókat használ a Orchestrator functions szolgáltatáshoz. A nem HTTP-alapú eseményindítók, például a várólisták vagy a Event Hubs esetében az eseményindító definíciójának [olyan alkalmazás-beállításból kell származnia](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) , amely a swap művelet részeként frissül.
+> Ez a stratégia akkor működik a legjobban, ha HTTP és webhook-eseményindítókat használ az orchestrator függvényekhez. A nem HTTP-eseményindítók, például a várólisták vagy az eseményközpontok esetében az eseményindító-definíciónak [egy olyan alkalmazásbeállításból kell származnia,](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) amely a csereművelet részeként frissül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan kezelheti a teljesítménnyel és a skálázással kapcsolatos problémákat](durable-functions-perf-and-scale.md)
+> [További információ a teljesítmény- és méretezési problémák kezeléséről](durable-functions-perf-and-scale.md)

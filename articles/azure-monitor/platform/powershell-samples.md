@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor PowerShell-minták | Microsoft Docs
-description: PowerShell-minták Azure Monitor
+title: Azure Monitor PowerShell-minták | Microsoft dokumentumok
+description: Azure Monitor PowerShell-minták
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
@@ -8,19 +8,19 @@ ms.author: bwren
 ms.date: 09/14/2017
 ms.custom: mvc
 ms.openlocfilehash: faa06874bca1bd05edafd22572c000e49e6c76b8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77659178"
 ---
-# <a name="azure-monitor-powershell-samples"></a>PowerShell-minták Azure Monitor
+# <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell-minták
 
-Az alábbi táblázat a PowerShell-szkriptekre mutató hivatkozásokat tartalmaz a Azure Monitor különböző funkcióinak végrehajtásához.
+Az alábbi táblázat a PowerShell-parancsfájlok mintáira mutató hivatkozásokat tartalmaz az Azure Monitor különböző függvények végrehajtásához.
 
 | | |
 |---|---|
 |**Munkaterület létrehozása**||
-| [Log Analytics munkaterület létrehozása](../scripts/powershell-sample-create-workspace.md) | Létrehoz egy Log Analytics munkaterületet a Azure Monitorban.|
+| [A Log Analytics-munkaterület létrehozása](../scripts/powershell-sample-create-workspace.md) | Létrehoz egy Log Analytics-munkaterületet az Azure Monitorban.|
 | | |
 

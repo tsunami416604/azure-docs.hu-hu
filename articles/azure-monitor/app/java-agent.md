@@ -1,51 +1,51 @@
 ---
-title: Java-webalkalmazások teljesítményének monitorozása – Azure Application Insights
-description: A Java-webhely kiterjesztett teljesítmény-és használati figyelése Application Insights.
+title: Java webalkalmazások teljesítményfigyelése – Azure Application Insights
+description: A Java-webhely teljesítményének és használatának figyelése az Application Insights segítségével.
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.openlocfilehash: b29618179d22eac97a07bf41906465aba1fd7929
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657027"
 ---
-# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Függőségek, kifogott kivételek és metódus-végrehajtási idők figyelése Java-webalkalmazásokban
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Függőségek figyelése, kivételek és metódusok végrehajtási idejének figyelése java webalkalmazásokban
 
 
-Ha a [Java-webalkalmazást Application Insights][java]használatával állította be, a Java-ügynökkel mélyebb elemzéseket kaphat, kód módosítása nélkül:
+Ha [a Java webalkalmazást az Application Insights segítségével instrumented,][java]a Java Agent segítségével mélyebb elemzéseket kaphat, kódmódosítások nélkül:
 
-* **Függőségek:** Az alkalmazás által más összetevőkre irányuló hívásokkal kapcsolatos információk, beleértve a következőket:
-  * Az Apache HttpClient, a OkHttp és a `java.net.HttpURLConnection` használatával végrehajtott **kimenő HTTP-hívások** rögzítése megtörtént.
-  * A Jedis ügyféllel készített **Redis-hívások** rögzítése történik.
-  * **JDBC-lekérdezések** – a MySQL és a PostgreSQL esetében, ha a hívás 10 másodpercnél hosszabb időt vesz igénybe, az ügynök jelentést készít a lekérdezési tervről.
+* **Függőségek:** Az alkalmazás által más összetevőknek kezdeményezett hívásokadatai, többek között a következők:
+  * Az Apache HttpClient, OkHttp protokollon `java.net.HttpURLConnection` keresztül kezdeményezett **kimenő HTTP-hívások** rögzítésre kerülnek.
+  * A Jedi kliensen keresztül kezdeményezett **Redis hívásokat** elfogták.
+  * **JDBC-lekérdezések** - A MySQL és a PostgreSQL, ha a hívás több mint 10 másodpercig tart, az ügynök jelenti a lekérdezési terv.
 
-* **Alkalmazás naplózása:** Az alkalmazás naplófájljainak rögzítése és korrelálása HTTP-kérelmekkel és egyéb telemetria
+* **Alkalmazás naplózása:** Az alkalmazásnaplók rögzítése és korrelálása HTTP-kérelmekkel és más telemetriai adatokkal
   * **Log4j 1,2**
   * **Log4j2**
-  * **Logback**
+  * **Visszamaradás**
 
-* **Jobb működés elnevezése:** (a portálon található kérelmek összesítéséhez használják)
-  * **Rugó** – `@RequestMapping`alapján.
-  * **Jax-RS** – `@Path`alapján. 
+* **Jobb műveletelnevezés:** (a kérelmek összesítésére szolgál a portálon)
+  * **Tavasz** - `@RequestMapping`alapján .
+  * **JAX-RS** - `@Path`alapján . 
 
-A Java-ügynök használatához telepítenie kell a-kiszolgálóra. A webalkalmazásokat a [Application Insights Java SDK][java]-val kell kiépíteni. 
+A Java-ügynök használatához telepítse azt a kiszolgálóra. A webalkalmazásokat az [Application Insights Java SDK-val][java]kell elsajátította. 
 
-## <a name="install-the-application-insights-agent-for-java"></a>A Javához készült Application Insights-ügynök telepítése
+## <a name="install-the-application-insights-agent-for-java"></a>Az Application Insights-ügynök Java-hoz történő telepítése
 1. [Töltse le az ügynököt](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) a Java-kiszolgálót futtató számítógépre. Ügyeljen rá, hogy a Java ügynök verziója és az Application Insights Java SDK core és web csomagok verziója azonos legyen.
-2. Szerkessze az alkalmazáskiszolgáló indítási parancsfájlját, és adja hozzá a következő JVM argumentumot:
+2. Az alkalmazáskiszolgáló indítási parancsfájljának szerkesztése és a következő JVM-argumentum hozzáadása:
    
     `-javaagent:<full path to the agent JAR file>`
    
-    Például a Tomcat egy Linux rendszerű gépen:
+    Például a Tomcat egy Linux gépen:
    
     `export JAVA_OPTS="$JAVA_OPTS -javaagent:<full path to agent JAR file>"`
-3. Indítsa újra az alkalmazást.
+3. Indítsa újra az alkalmazáskiszolgálót.
 
 ## <a name="configure-the-agent"></a>Az ügynök konfigurálása
-Hozzon létre egy `AI-Agent.xml` nevű fájlt, és helyezze ugyanabba a mappába, amelyben az ügynök JAR-fájlja található.
+Hozzon létre `AI-Agent.xml` egy nevű fájlt, és helyezze ugyanabba a mappába, mint az ügynök JAR-fájl.
 
-Adja meg az XML-fájl tartalmát. Szerkessze az alábbi példát a kívánt funkciók belefoglalásához vagy kihagyásához.
+Állítsa be az XML-fájl tartalmát. A következő példa szerkesztésével a kívánt szolgáltatásokat is felveheti vagy kihagyhatja.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -75,30 +75,30 @@ Adja meg az XML-fájl tartalmát. Szerkessze az alábbi példát a kívánt funk
 </ApplicationInsightsAgent>
 ```
 
-## <a name="additional-config-spring-boot"></a>További konfiguráció (Spring boot)
+## <a name="additional-config-spring-boot"></a>További konfiguráció (spring boot)
 
 `java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
 
-Az Azure App Services esetében tegye a következőket:
+Az Azure App Services esetén tegye a következőket:
 
 * Válassza a Beállítások > Alkalmazásbeállítások lehetőséget.
 * Az alkalmazásbeállításoknál adjon meg egy új kulcs-érték párt:
 
-Kulcs: `JAVA_OPTS` érték: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+Kulcs: `JAVA_OPTS` Érték:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
-A Java-ügynök legújabb verziójáért tekintse meg a kiadásokat [itt](https://github.com/Microsoft/ApplicationInsights-Java/releases
-). 
+A Java-ügynök legújabb verziójáért tekintse meg a kiadásokat [itt.](https://github.com/Microsoft/ApplicationInsights-Java/releases
+) 
 
-Az ügynököt erőforrásként kell csomagolni a projektben úgy, hogy az a D:/Home/site/wwwroot/könyvtárban végződik. A **fejlesztői eszközök** > **speciális eszközök** > a **hibakeresési konzol** és a webhelycímtár tartalmának vizsgálatával ellenőrizheti, hogy az ügynök a megfelelő app Service könyvtárban van-e.    
+Az ügynököt erőforrásként kell csomagolni a projektben, hogy az a D:/home/site/wwwroot/ könyvtárba kerüljön. Az ügynök helyes App Service-címtárban való beállítását a **Fejlesztőeszközök** > **speciális eszközök** > **hibakeresési konzoljára** és a helykönyvtár tartalmának vizsgálatával ellenőrizheti.    
 
-* Mentse a beállításokat, és indítsa újra az alkalmazást. (Ezek a lépések csak Windows rendszeren futó App Services vonatkoznak.)
+* Mentse a beállításokat, és indítsa újra az alkalmazást. (Ezek a lépések csak a Windows rendszeren futó App Services szolgáltatásra vonatkoznak.)
 
 > [!NOTE]
-> A AI-Agent. XML és az Agent jar-fájlnak ugyanabban a mappában kell lennie. Ezek gyakran együtt kerülnek a projekt `/resources` mappájába.  
+> Az AI-Agent.xml fájlnak és az ügynökjar fájlnak ugyanabban a mappában kell lennie. Gyakran együtt kerülnek a `/resources` projekt mappájába.  
 
 #### <a name="enable-w3c-distributed-tracing"></a>W3C elosztott nyomkövetés engedélyezése
 
-Adja hozzá a következőt a AI-Agent. xml fájlhoz:
+Adja hozzá az alábbiakat az AI-Agent.xml fájlhoz:
 
 ```xml
 <Instrumentation>
@@ -109,18 +109,18 @@ Adja hozzá a következőt a AI-Agent. xml fájlhoz:
 ```
 
 > [!NOTE]
-> A visszafelé kompatibilitási mód alapértelmezés szerint engedélyezve van, és a enableW3CBackCompat paraméter nem kötelező, és csak akkor használható, ha ki szeretné kapcsolni. 
+> A visszamenőleges kompatibilitási mód alapértelmezés szerint engedélyezve van, és az enableW3CBackCompat paraméter nem kötelező, és csak akkor használható, ha ki szeretné kapcsolni. 
 
-Ideális esetben ez az eset, amikor az összes szolgáltatás frissítve lett a W3C protokollt támogató SDK-k újabb verziójára. Javasoljuk, hogy a lehető leghamarabb váltson a W3C-támogatással rendelkező SDK-k újabb verziójára.
+Ideális esetben ez a helyzet akkor fordulna elő, ha az összes szolgáltatás frissítve lett a W3C protokollt támogató SDK-k újabb verziójára. Erősen ajánlott az SDK-k újabb verziójára való mielőbbi W3C-támogatással való áttérés.
 
-Győződjön meg arról, hogy a  **[bejövő](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) és a kimenő (ügynök) konfigurációk** is pontosan azonosak.
+Győződjön meg arról, hogy **mind [a bejövő,](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) mind a kimenő (ügynök) konfigurációk** pontosan megegyeznek.
 
-## <a name="view-the-data"></a>Az adatgyűjtés megtekintése
-A Application Insights erőforrásban [a teljesítmény csempén][metrics]a távoli függőségi és metódus-végrehajtási idők szerepelnek.
+## <a name="view-the-data"></a>Az adatok megtekintése
+Az Application Insights-erőforrásban az összesített távoli függőség és a metódusvégrehajtási idők [a Teljesítmény csempén][metrics]jelennek meg.
 
-A függőség, a kivétel és a metódus-jelentések egyes példányainak kereséséhez nyissa meg a [keresést][diagnostic].
+A függőségi, kivétel- és metódusjelentések egyedi példányainak kereséséhez nyissa meg a [Keresés (Keresés) (Keresés) (Keresés) (Keresés)][diagnostic]és metódusjelentések kereséséhez.
 
-[Függőségi problémák diagnosztizálása – további információ](../../azure-monitor/app/asp-net-dependencies.md#diagnosis).
+[Diagnosztizálása függőségi problémák - többet](../../azure-monitor/app/asp-net-dependencies.md#diagnosis).
 
 ## <a name="questions-problems"></a>Kérdései vannak? Problémákat tapasztal?
 * Nincs adat? [Tűzfal-kivételek beállítása](../../azure-monitor/app/ip-addresses.md)

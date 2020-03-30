@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box/Azure Data Box Heavy felügyelete helyi webes felhasználói felület használatával
-description: Ismerteti, hogyan használható a helyi webes KEZELŐFELÜLET a Data Box és Data Box Heavy eszközök felügyeletéhez
+title: Azure Data Box/Azure Data Box Heavy felügyelete a helyi webes felhasználói felület használatával
+description: A data box és a Data Box Heavy eszközök felügyeletére a helyi webes felhasználói felület használata
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,29 +9,29 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
 ms.openlocfilehash: cf7cf0a7aa2812d7a93c282cbda5f82dd83aac29
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560184"
 ---
-# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>A helyi webes felhasználói felület használata a Data Box és Data Box Heavy felügyeletéhez
+# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>A Data Box és a Data Box Heavy helyi webes felhasználói felületének felügyelete
 
-Ez a cikk a Data Box és Data Box Heavy eszközökön végrehajtható konfigurációs és felügyeleti feladatokat ismerteti. A Data Box és Data Box Heavy eszközöket a Azure Portal felhasználói felületen és az eszköz helyi webes FELÜLETén keresztül kezelheti. A cikk a helyi webes felhasználói felülettel végrehajtható feladatokra összpontosít.
+Ez a cikk a Data Box és a Data Box Heavy eszközökön elvégezhető konfigurációs és felügyeleti feladatok at ismerteti. A Data Box és a Data Box Heavy eszközök az Azure portal felhasználói felületén és az eszköz helyi webes felhasználói felületén keresztül kezelhetők. A cikk a helyi webes felhasználói felülettel végrehajtható feladatokra összpontosít.
 
-A Data Box és Data Box Heavy helyi webes felhasználói felülete az eszköz kezdeti konfigurálására szolgál. A helyi webes felhasználói felület segítségével leállíthatja vagy újraindíthatja az eszközt, diagnosztikai teszteket futtathat, szoftvereket frissíthet, megtekintheti a naplók másolását, és létrehozhat egy naplófájlt Microsoft ügyfélszolgálatahoz. Két független csomóponttal rendelkező Data Box Heavy eszközön két különálló helyi webes felület érhető el, amely az eszköz egyes csomópontjainak felel meg.
+A Data Box és a Data Box Heavy helyi webes felhasználói felülete az eszköz kezdeti konfigurációjához használatos. A helyi webes felhasználói felület segítségével leállíthatja vagy újraindíthatja az eszközt, diagnosztikai teszteket futtathat, szoftvereket frissíthet, megtekinthet másolási naplókat, és naplócsomagot hozhat létre a Microsoft támogatási szolgálata számára. A Data Box Heavy két független csomókkal rendelkező eszközön két különálló helyi webes felhasználói felületet érhet el, amelyek az eszköz minden csomópontjának felelnek meg.
 
 A cikk az alábbi oktatóanyagokat tartalmazza:
 
 - Támogatási csomag létrehozása
 - Az eszköz leállítása és újraindítása
-- ANYAGJEGYZÉK-vagy manifest-fájlok letöltése
+- Anyagjegyzék- vagy jegyzékfájl letöltése
 - Az eszköz rendelkezésre álló kapacitásának megtekintése
 - Ellenőrzőösszeg-érvényesítés kihagyása
 
 ## <a name="generate-support-package"></a>Támogatási csomag létrehozása
 
-Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rendszernaplókból. A Microsoft támogatási szolgálata a csomag segítségével hárítja el a problémát. Támogatási csomag létrehozásához hajtsa végre a következő lépéseket:
+Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rendszernaplókból. A Microsoft támogatási szolgálata a csomag segítségével hárítja el a problémát. Támogatási csomag létrehozásához tegye a következő lépéseket:
 
 1. A helyi webes felhasználói felületen nyissa meg a **Contact Support** (Kapcsolatfelvétel a támogatási szolgálattal) lapot, és kattintson a **Create Support package** (Támogatási csomag létrehozása) elemre.
 
@@ -52,9 +52,9 @@ Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rend
 
 ## <a name="shut-down-or-restart-your-device"></a>Az eszköz leállítása és újraindítása
 
-Az eszközt a helyi webes felhasználói felület használatával állíthatja le vagy indíthatja újra. Az újraindítás előtt ajánlott offline állapotba állítani a gazdagépen található megosztásokat, majd magát az eszközt is. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét. Az eszköz leállításakor ellenőrizze, hogy nincs-e folyamatban adatmásolás.
+A helyi webes felhasználói felület használatával leállíthatja vagy újraindíthatja az eszközt. Az újraindítás előtt ajánlott offline állapotba állítani a gazdagépen található megosztásokat, majd magát az eszközt is. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét. Az eszköz leállításakor ellenőrizze, hogy nincs-e folyamatban adatmásolás.
 
-Az eszköz leállításához hajtsa végre az alábbi lépéseket.
+Az eszköz leállításához tegye a következő lépéseket.
 
 1. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
 2. Kattintson a **Shut down** (Leállítás) elemre.
@@ -78,40 +78,40 @@ A Data Box újraindításához hajtsa végre az alábbi lépéseket.
 
    Az eszköz leáll, majd újraindul.
 
-## <a name="download-bom-or-manifest-files"></a>ANYAGJEGYZÉK-vagy manifest-fájlok letöltése
+## <a name="download-bom-or-manifest-files"></a>Anyagjegyzék- vagy jegyzékfájl letöltése
 
-Az anyagjegyzék (AJ) vagy a manifest-fájlok tartalmazzák a Data Box vagy Data Box Heavyba másolt fájlok listáját. Ezek a fájlok akkor jönnek létre, amikor előkészíti az eszközt a szállításra.
+Az anyagjegyzék-fájlok vagy a jegyzékfájlok tartalmazzák a Data Box vagy a Data Box Heavy mappába másolt fájlok listáját. Ezek a fájlok akkor jönnek létre, amikor előkészíti az eszközt a szállításra.
 
-Mielőtt elkezdené, győződjön meg arról, hogy az eszköz elvégezte **szállításra való előkészítés** lépést. Az ANYAGJEGYZÉK-vagy jegyzékfájl-fájlok letöltéséhez kövesse az alábbi lépéseket:
+Mielőtt elkezdené, győződjön meg arról, hogy az eszköz befejeződött **Felkészülés a szállítási** lépéshez. Az Anyagjegyzék- vagy jegyzékfájl letöltéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg az eszköz helyi webes FELÜLETét. Látni fogja, hogy az eszköz befejezte a felkészülést a szállításra. Az eszköz előkészítésének befejezése után az eszköz állapota a **szállításra kész**állapotban jelenik meg.
+1. Nyissa meg az eszköz helyi webes felhasználói felületét. Látni fogja, hogy az eszköz befejezte a felkészülést a szállításhoz. Amikor az eszköz előkészítése befejeződött, az eszköz állapota **készen áll a szállításra**.
 
-    ![Az eszköz szállításra kész](media/data-box-portal-admin/ready-to-ship.png)
+    ![A szállításra kész eszköz](media/data-box-portal-admin/ready-to-ship.png)
 
-2. A **fájlok** listájának letöltése gombra kattintva letöltheti a Data Box másolt fájlok listáját.
+2. Kattintson **a Fájlok listájának letöltése** gombra az adatmezőre másolt fájlok listájának letöltéséhez.
 
-    ![Kattintson a fájlok listájának letöltése elemre.](media/data-box-portal-admin/download-list-of-files.png)
+    ![Kattintson a Fájlok listájának letöltése gombra](media/data-box-portal-admin/download-list-of-files.png)
 
-3. A Fájlkezelőben láthatja, hogy az eszközhöz való kapcsolódáshoz használt protokolltól és a használt Azure Storage-típustól függően a fájlok külön listája jön létre.
+3. A Fájlkezelőben látni fogja, hogy a fájlok külön listája jön létre az eszközhöz való csatlakozáshoz használt protokolltól és a használt Azure Storage-típustól függően.
 
-    ![Tárolási típus és kapcsolati protokoll fájljai](media/data-box-portal-admin/files-storage-connection-type.png)
+    ![Tárolótípus és kapcsolatprotokoll fájljai](media/data-box-portal-admin/files-storage-connection-type.png)
 
-   Az alábbi táblázat a fájlneveket az Azure Storage-típusra és a használt kapcsolati protokollra képezi le.
+   Az alábbi táblázat a fájlneveket az Azure Storage-típusra és a használt kapcsolatprotokollra rendeli le.
 
-    |Fájlnév  |Azure Storage-típus  |Használt kapcsolati protokoll |
+    |Fájlnév  |Azure Storage típusa  |Használt csatlakozási protokoll |
     |---------|---------|---------|
     |databoxe2etest_BlockBlob.txt     |Blokkblobok         |SMB/NFS         |
     |databoxe2etest_PageBlob.txt     |Lapblobok         |SMB/NFS         |
     |databoxe2etest_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
-    |databoxe2etest_PageBlock_Rest-BOM. txt     |Lapblobok         |REST        |
-    |databoxe2etest_BlockBlock_Rest-BOM. txt    |Blokkblobok         |REST         |
-    |mydbmdrg1_MDisk-BOM.txt    |Managed Disk         |SMB/NFS         |
-    |mydbmdrg2_MDisk-BOM.txt     |Managed Disk         |SMB/NFS         |
+    |databoxe2etest_PageBlock_Rest-BOM.txt     |Lapblobok         |REST        |
+    |databoxe2etest_BlockBlock_Rest-BOM.txt    |Blokkblobok         |REST         |
+    |mydbmdrg1_MDisk-BOM.txt    |Felügyelt lemez         |SMB/NFS         |
+    |mydbmdrg2_MDisk-BOM.txt     |Felügyelt lemez         |SMB/NFS         |
 
-Ezt a listát használhatja az Azure Storage-fiókba feltöltött fájlok ellenőrzéséhez, miután a Data Box visszatér az Azure-adatközpontba. Alább látható egy minta manifest-fájl.
+Ezzel a listával ellenőrizheti az Azure Storage-fiókba feltöltött fájlokat, miután a Data Box visszatér az Azure-adatközpontba. Az alábbiakban egy mintajegyzékfájl látható.
 
 > [!NOTE]
-> Data Box Heavy a fájlok (AJ-fájlok) két csoportja szerepel az eszköz két csomópontjának megfelelően.
+> A Data Box Heavy,két fájlsor (BoM fájlok) vannak jelen, amely megfelel a két csomópont az eszközön.
 
 ```xml
 <file size="52689" crc64="0x95a62e3f2095181e">\databox\media\data-box-deploy-copy-data\prepare-to-ship2.png</file>
@@ -153,7 +153,7 @@ Ezt a listát használhatja az Azure Storage-fiókba feltöltött fájlok ellen�
 <file size="3603" crc64="0x7e34c25d5606693f">\databox\TOC.yml</file>
 ```
 
-Ez a fájl tartalmazza a Data Boxre vagy Data Box Heavyra másolt fájlok listáját. Ebben a fájlban a *crc64* érték a megfelelő fájlhoz generált ellenőrzőösszeggel kapcsolódik.
+Ez a fájl tartalmazza a listát az összes fájlt, hogy másolt a Data Box vagy Data Box Heavy. Ebben a fájlban a *crc64* érték a megfelelő fájlhoz létrehozott ellenőrzőösszegre vonatkozik.
 
 ## <a name="view-available-capacity-of-the-device"></a>Az eszköz rendelkezésre álló kapacitásának megtekintése
 
@@ -166,11 +166,11 @@ Az eszköz irányítópultján tekintheti meg az eszköz rendelkezésre álló �
 
 ## <a name="skip-checksum-validation"></a>Ellenőrzőösszeg-érvényesítés kihagyása
 
-A szállításra való felkészüléskor a rendszer alapértelmezés szerint ellenőrzőösszegeket hoz létre az adataihoz. Bizonyos ritka esetekben az adattípustól (kis fájlmérettől függően) a teljesítmény lassú lehet. Ilyen esetben kihagyhatja az ellenőrzőösszeg létrehozását.
+A program alapértelmezés szerint ellenőrzőösszegeket hoz létre az adatokhoz, amikor a szállításra készül. Bizonyos ritka esetekben az adattípustól (kis fájlméret) függően a teljesítmény lassú lehet. Ilyen esetben kihagyhatja az ellenőrzőösszeg létrehozását.
 
 Határozottan javasoljuk, hogy csak akkor tiltsa le az ellenőrző létrehozását, ha komoly hatással lenne a teljesítményre.
 
-1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások lehetőséget**.
+1. Az eszköz helyi webes felhasználói felületének jobb felső sarkában válassza a **Beállítások lapot.**
 
     ![Ellenőrzőösszeg letiltása](media/data-box-local-web-ui-admin/disable-checksum.png)
 
@@ -179,5 +179,5 @@ Határozottan javasoljuk, hogy csak akkor tiltsa le az ellenőrző létrehozás�
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan [kezelheti a Data Box és Data Box Heavy a Azure Portalon keresztül](data-box-portal-admin.md).
+- Ismerje meg, hogyan [kezelheti a Data Box és a Data Box Heavy az Azure portalon keresztül.](data-box-portal-admin.md)
 

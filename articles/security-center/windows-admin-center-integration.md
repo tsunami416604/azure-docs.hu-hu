@@ -1,6 +1,6 @@
 ---
-title: A Windows felügyeleti központ integrálása a Azure Security Center használatával | Microsoft Docs
-description: Ez a cikk ismerteti, hogyan integrálható a Azure Security Center a Windows felügyeleti központba
+title: A Windows Felügyeleti központ integrálása az Azure Security Centerrel | Microsoft dokumentumok
+description: Ez a cikk bemutatja, hogyan integrálható az Azure Security Center a Windows Felügyeleti központtal
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,66 +9,66 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 5467794bf246fab4ff7ded9c445dbeee0c4093b8
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79139623"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Azure Security Center integrálása a Windows felügyeleti központtal
+# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Az Azure Security Center integrálása a Windows Felügyeleti központtal
 
-A Windows felügyeleti központ egy felügyeleti eszköz a Windows-kiszolgálókhoz. A rendszergazdák egyetlen helyen érhetik el a leggyakrabban használt felügyeleti eszközök többségét. A Windows felügyeleti központban közvetlenül a helyszíni kiszolgálókat Azure Security Centerba helyezheti. Ezután megtekintheti a biztonsági javaslatok és riasztások összefoglalását közvetlenül a Windows felügyeleti központ felületén.
+A Windows Felügyeleti központ a Windows-kiszolgálók felügyeleti eszköze. Ez egy egyetlen hely a rendszergazdák számára, hogy hozzáférjenek a leggyakrabban használt felügyeleti eszközök többségéhez. A Windows Felügyeleti központon belül közvetlenül beviheti a helyszíni kiszolgálókat az Azure Security Centerbe. Ezután közvetlenül a Windows Felügyeleti központ felhasználói felületén tekintheti meg a biztonsági javaslatok és riasztások összegzését.
 
 > [!NOTE]
-> Az Azure-előfizetéshez és a társított Log Analytics munkaterülethez mindkét esetben engedélyezve kell lennie a Security Center standard szintű csomagjának, hogy lehetővé váljon a Windows felügyeleti központ integrációja.
-> Ha korábban még nem használta az előfizetést és a munkaterületet, a standard szint az első 30 napon belül díjmentes. További információkért tekintse meg [a díjszabási információkat ismertető oldalt](security-center-pricing.md).
+> Az Azure-előfizetésnek és a kapcsolódó Log Analytics-munkaterületnek egyaránt engedélyeznie kell a Security Center standard szintjét a Windows Felügyeleti központ integrációjának engedélyezéséhez.
+> A standard szint ingyenes az első 30 napban, ha korábban nem használta az előfizetésés munkaterület. További információt [az árképzési információs oldalon](security-center-pricing.md)talál.
 >
 
-Ha sikeresen felkészített egy kiszolgálót a Windows felügyeleti központból a Azure Security Centerba, a következőket teheti:
+Ha sikeresen beszállt egy kiszolgálóra a Windows Felügyeleti központból az Azure Security Centerbe, a következőket teheti:
 
-* Biztonsági riasztások és javaslatok megtekintése a Windows felügyeleti központ Security Center bővítményében
-* Megtekintheti a biztonsági helyzeteket, és további részletes információkat kérhet le a Windows felügyeleti központ felügyelt kiszolgálóiról Security Center belül a Azure Portal (vagy egy API-n keresztül)
+* Biztonsági riasztások és javaslatok megtekintése a Windows Felügyeleti központ Biztonsági központ bővítményében
+* A Biztonsági központban található Windows Felügyeleti központ felügyelt kiszolgálóinak biztonsági állapotának megtekintése és további részletes információk beolvasása az Azure Portalon (vagy API-n keresztül)
 
-Ennek a két eszköznek a kombinálásával a Security Center lesz az egyetlen üvegtábla, amely az összes biztonsági információt megtekintheti, bármi is legyen az erőforrás: a Windows felügyeleti központ felügyelt helyszíni kiszolgálók, a virtuális gépek és a további Pásti munkaterhelések védelme.
+E két eszköz kombinálásával a Security Center egyetlen ablaktáblává válik, amely az összes biztonsági információt megtekinti, függetlenül az erőforrástól: a Windows Felügyeleti központ által felügyelt, helyszíni kiszolgálók, a virtuális gépek és a további PaaS-munkaterhelések védelme érdekében.
 
-## <a name="onboarding-windows-admin-center-managed-servers-into-security-center"></a>Windows felügyeleti központ által felügyelt kiszolgálók beléptetése Security Centerba
+## <a name="onboarding-windows-admin-center-managed-servers-into-security-center"></a>Bevezetés a Windows Felügyeleti központ felügyelt kiszolgálóinak a Biztonsági központba
 
-1. A Windows felügyeleti központban válassza ki az egyik kiszolgálót, és az **eszközök** ablaktáblán válassza ki a Azure Security Center bővítményt:
+1. A Windows Felügyeleti központban válassza ki az egyik kiszolgálót, és az **Eszközök** ablaktáblán válassza ki az Azure Security Center bővítményt:
 
-    ![Azure Security Center bővítmény a Windows felügyeleti központban](./media/windows-admin-center-integration/onboarding-from-wac.png)
-
-    > [!NOTE]
-    > Ha a kiszolgáló már bekerült a Security Centerba, akkor a beállítás ablak nem jelenik meg.
-
-1. Kattintson **a bejelentkezés az Azure-ba és a beállítás**elemre.
-    ![a Windows felügyeleti központ bővítmény bevezetését Azure Security Center](./media/windows-admin-center-integration/onboarding-from-wac-welcome.png)
-
-1. A kiszolgáló Security Centerhoz való összekapcsolásához kövesse az utasításokat. Miután megadta a szükséges adatokat, és megerősítette, Security Center végrehajtja a szükséges konfigurációs módosításokat, hogy a következők mindegyike igaz legyen:
-    * Egy Azure-átjáró regisztrálva van.
-    * A kiszolgálónak van egy munkaterülete, amelyről jelentést szeretne készíteni, és egy hozzá tartozó előfizetést.
-    * Security Center standard szintű Log Analytics megoldás engedélyezve van a munkaterületen. Ez a megoldás Security Center standard szintű funkcióit biztosítja a munkaterületnek jelentő *összes* kiszolgáló és virtuális gép számára.
-    * Security Center a virtuális gép standard szintű díjszabása engedélyezve van az előfizetésben.
-    * A Microsoft monitoring Agent (MMA) telepítve van a kiszolgálón, és úgy van konfigurálva, hogy a kijelölt munkaterületre jelentsen. Ha a kiszolgáló már jelentést készít egy másik munkaterületre, úgy van konfigurálva, hogy az újonnan kiválasztott munkaterületre is jelentsen.
+    ![Az Azure Security Center bővítmény a Windows Felügyeleti központban](./media/windows-admin-center-integration/onboarding-from-wac.png)
 
     > [!NOTE]
-    > A javaslatok megjelenése után eltarthat egy ideig. Valójában a kiszolgálói tevékenységtől függően előfordulhat, hogy *nem kap* riasztásokat. A riasztások tesztelésére szolgáló tesztelési riasztások létrehozásához kövesse a riasztás- [ellenőrzési eljárás](security-center-alert-validation.md)utasításait.
+    > Ha a kiszolgáló már be van táblázva a Security Center be, a beállítási ablak nem jelenik meg.
+
+1. Kattintson **a Bejelentkezés az Azure-ba gombra, és állítsa be a set (Bejelentkezés az Azure-ba) gombra.**
+    ![A Windows Felügyeleti központ bővítményének bevezetése az Azure Security Center beszállásához](./media/windows-admin-center-integration/onboarding-from-wac-welcome.png)
+
+1. Kövesse az utasításokat a kiszolgáló biztonsági központhoz való csatlakoztatásához. Miután megadta a szükséges részleteket, és megerősítette, a Security Center elköveti a szükséges konfigurációs módosításokat annak érdekében, hogy az alábbiak mindegyike teljesüljön:
+    * Egy Azure Gateway regisztrálva van.
+    * A kiszolgálórendelkezik egy munkaterülettel, amelynek jelentenie kell, és egy társított előfizetés.
+    * A Security Center szabványos szintű Log Analytics-megoldása engedélyezve van a munkaterületen. Ez a megoldás a Security Center standard szintű szolgáltatásait biztosítja *az erre* a munkaterületre jelentést tevő összes kiszolgálóhoz és virtuális géphez.
+    * A Security Center normál szintű díjszabása a virtuális géphez engedélyezve van az előfizetésben.
+    * A Microsoft Monitoring Agent (MMA) telepítve van a kiszolgálón, és úgy van beállítva, hogy jelentsen a kijelölt munkaterületnek. Ha a kiszolgáló már jelentést tesz egy másik munkaterületnek, akkor úgy van beállítva, hogy az újonnan kiválasztott munkaterületnek is jelentsen.
+
+    > [!NOTE]
+    > Az ajánlások megjelenése a bevezetés után eltarthat egy ideig. Valójában a szerver tevékenységétől függően előfordulhat, hogy nem *kap* figyelmeztetést. Ha tesztriasztásokat szeretne létrehozni a riasztások megfelelő működéséhez, kövesse [a riasztásérvényesítési eljárás utasításait.](security-center-alert-validation.md)
 
 
-## <a name="viewing-security-recommendations-and-alerts-in-windows-admin-center"></a>Biztonsági javaslatok és riasztások megtekintése a Windows felügyeleti központban
+## <a name="viewing-security-recommendations-and-alerts-in-windows-admin-center"></a>Biztonsági javaslatok és riasztások megtekintése a Windows Felügyeleti központban
 
-A bevezetést követően közvetlenül a Windows felügyeleti központ Azure Security Center területén tekintheti meg a riasztásokat és a javaslatokat. Egy javaslatra vagy egy riasztásra kattintva megtekintheti őket a Azure Portalban. Itt további információkhoz juthat, és megtudhatja, hogyan javíthatja a problémákat.
+Miután beszállt, megtekintheti a riasztásokat és javaslatokat közvetlenül az Azure Security Center területén a Windows Felügyeleti központ. Kattintson egy javaslatra vagy egy riasztásra az Azure Portalon való megtekintéséhez. Itt további információkat kaphat, és megtudhatja, hogyan orvosolhatja a problémákat.
 
-[![Security Center javaslatok és riasztások a Windows felügyeleti központban látható módon](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png)](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png#lightbox)
+[![A Biztonsági központ javaslatai és figyelmeztetései a Windows Felügyeleti központban láthatómódon](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png)](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png#lightbox)
 
-## <a name="viewing-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>A Windows felügyeleti központ felügyelt kiszolgálóira vonatkozó biztonsági javaslatok és riasztások megtekintése Security Center
-Azure Security Center:
+## <a name="viewing-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>A Biztonsági központ Windows Felügyeleti központ által kezelt kiszolgálóira vonatkozó biztonsági javaslatok és riasztások megtekintése
+Az Azure Security Centerből:
 
-* Ha meg szeretné tekinteni a Windows felügyeleti központ összes kiszolgálójának biztonsági javaslatait, nyissa meg a **számítási & alkalmazásokat** , és kattintson a **virtuális gépek és számítógépek** lapra. a listát a "kiszolgáló" alapján szűrheti az itt látható módon:
+* Az összes Windows Felügyeleti központ kiszolgálóra vonatkozó biztonsági javaslatok megtekintéséhez nyissa meg a **Compute & Apps alkalmazást,** és kattintson a **virtuális gépek és számítógépek** fülre.
 
-    [a Windows felügyeleti központ által felügyelt kiszolgálók biztonsági javaslatainak ![megtekintése](media/windows-admin-center-integration/viewing-recommendations-wac.png)](media/windows-admin-center-integration/viewing-recommendations-wac.png#lightbox)
+    [![A Windows Felügyeleti központ felügyelt kiszolgálóira vonatkozó biztonsági javaslatok megtekintése](media/windows-admin-center-integration/viewing-recommendations-wac.png)](media/windows-admin-center-integration/viewing-recommendations-wac.png#lightbox)
 
-* A Windows felügyeleti központ összes kiszolgálójára vonatkozó biztonsági riasztások megtekintéséhez nyissa meg a **biztonsági riasztásokat**. Kattintson a **szűrő** lehetőségre, és győződjön meg arról, hogy **csak** "nem Azure" van kiválasztva:
+* Az összes Windows Felügyeleti központ kiszolgálóbiztonsági riasztásának megtekintéséhez nyissa meg a **Biztonsági riasztások ablakot.** Kattintson **a Szűrő gombra,** és győződjön meg arról, hogy **csak** a "Nem Azure" van kiválasztva:
 
-    ![Biztonsági riasztások szűrése Windows felügyeleti központ által felügyelt kiszolgálókon](./media/windows-admin-center-integration/filtering-alerts-to-non-azure.png)
+    ![Biztonsági riasztások szűrése a Windows Felügyeleti központ felügyelt kiszolgálóira](./media/windows-admin-center-integration/filtering-alerts-to-non-azure.png)
 
-    [a Windows felügyeleti központ által felügyelt kiszolgálók biztonsági értesítéseinek ![megtekintése](media/windows-admin-center-integration/viewing-alerts-wac.png)](media/windows-admin-center-integration/viewing-alerts-wac.png#lightbox)
+    [![Biztonsági riasztások megtekintése a Windows Felügyeleti központ felügyelt kiszolgálóihoz](media/windows-admin-center-integration/viewing-alerts-wac.png)](media/windows-admin-center-integration/viewing-alerts-wac.png#lightbox)

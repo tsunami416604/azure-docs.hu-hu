@@ -1,6 +1,6 @@
 ---
-title: Azure-infrastruktúra biztonsága | Microsoft Docs
-description: A cikk azt ismerteti, hogyan működik a Microsoft az Azure-adatközpontok védelmére.
+title: Az Azure infrastruktúra biztonsága | Microsoft dokumentumok
+description: A cikk ismerteti, hogyan működik a Microsoft az Azure-adatközpontok védelmében.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,31 +16,31 @@ ms.workload: na
 ms.date: 10/18/2019
 ms.author: terrylan
 ms.openlocfilehash: 10aecff797effb5abebea16a18dd4e02f40de326
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72595410"
 ---
-# <a name="azure-infrastructure-security"></a>Azure-infrastruktúra biztonsága
-A Microsoft Azure a Microsoft által felügyelt és üzemeltetett adatközpontokban fut. Ezek a földrajzilag elosztott adatközpontok megfelelnek a legfontosabb iparági szabványoknak, például az ISO/IEC 27001:2013 és a NIST SP 800-53 számára a biztonság és a megbízhatóság érdekében. Az adatközpontokat a Microsoft Operations munkatársai felügyelik, figyelik és felügyelik. Az operatív munkatársaknak több éve van tapasztalata a világ legnagyobb online szolgáltatásokának 24 x 7 folytonossággal való megvalósításában.
+# <a name="azure-infrastructure-security"></a>Az Azure infrastruktúra biztonsága
+A Microsoft Azure a Microsoft által felügyelt és üzemeltetett adatközpontokban fut. Ezek a földrajzilag szétszórt adatközpontok megfelelnek a legfontosabb iparági szabványoknak, például az ISO/IEC 27001:2013 és a NIST SP 800-53 szabványnak a biztonság és a megbízhatóság érdekében. Az adatközpontok a Microsoft műveleti munkatársai által felügyelt, figyelt és felügyelt. A műveleti személyzet több éves tapasztalattal rendelkezik a világ legnagyobb online szolgáltatásainak 24 x 7 folyamatossága terén.
 
 ## <a name="securing-the-azure-infrastructure"></a>Az Azure-infrastruktúra biztonságossá tétele
-Ez a cikksorozat információt nyújt arról, hogy a Microsoft Hogyan védi az Azure-infrastruktúrát. A cikkek címe:
+Ez a cikksorozat arról nyújt tájékoztatást, hogy a Microsoft mit tesz az Azure-infrastruktúra védelme érdekében. A cikkek címe:
 
 - [Fizikai biztonság](physical-security.md)
 - [Rendelkezésre állás](infrastructure-availability.md)
 - [Összetevők és határok](infrastructure-components.md)
 - [Hálózati architektúra](infrastructure-network.md)
-- [Üzemi hálózat](production-network.md)
+- [Éles hálózat](production-network.md)
 - [SQL Database](infrastructure-sql.md)
 - [Műveletek](infrastructure-operations.md)
-- [Monitorozás](infrastructure-monitoring.md)
-- [Integritását](infrastructure-integrity.md)
+- [Megfigyelő](infrastructure-monitoring.md)
+- [Integritás](infrastructure-integrity.md)
 - [Adatvédelem](protection-customer-data.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ismerje meg a [megosztott felelősségét a felhőben](shared-responsibility.md).
+- Ismerje meg [közös felelősségét a felhőben.](shared-responsibility.md)
 
-- Ismerje meg, hogyan segítheti a [Azure Security Center](https://azure.microsoft.com/services/security-center/) a fenyegetések megelőzését, észlelését és reagálását az Azure-erőforrások jobb láthatóságával és kézben tartásával.
+- Ismerje meg, hogy [az Azure Security Center](https://azure.microsoft.com/services/security-center/) hogyan segíthet a fenyegetések megelőzésében, észlelésében és az azokra való reagálásban az Azure-erőforrások biztonságának fokozott láthatóságával és szabályozásával.

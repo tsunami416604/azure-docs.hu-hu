@@ -1,6 +1,6 @@
 ---
-title: Natív ügyfélalkalmazások – Azure ad-ben közzététele |} A Microsoft Docs
-description: Bemutatja, hogyan kommunikáljon az Azure AD alkalmazásproxy-összekötő a helyszíni alkalmazások biztonságos távoli elérést biztosíthat a natív ügyfélalkalmazások engedélyezéséhez.
+title: Natív ügyfélalkalmazások közzététele – Azure AD | Microsoft dokumentumok
+description: Bemutatja, hogyan engedélyezheti a natív ügyfélalkalmazások számára az Azure AD Alkalmazásproxy-összekötővel való kommunikációt, hogy biztonságos távoli hozzáférést biztosítson a helyszíni alkalmazásokhoz.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,65 +17,65 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d2a2bb9dd543da7455a276075a829ef06032edb
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159284"
 ---
-# <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Natív ügyfélalkalmazások engedélyezése a proxy alkalmazásokkal való kommunikációhoz
+# <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>A natív ügyfélalkalmazások proxyalkalmazásokkal való interakciójának engedélyezése
 
-A webalkalmazások közzétételéhez Azure Active Directory (Azure AD) alkalmazásproxy használható, de az Azure AD Authentication Library (ADAL) szolgáltatással konfigurált natív ügyfélalkalmazások közzétételére is használható. A natív ügyfélalkalmazások eltérnek a webalkalmazások, mert azok egy eszközre vannak telepítve, míg a Web Apps böngészőn keresztül érhető el.
+Az Azure Active Directory (Azure AD) alkalmazásproxy használatával közzéteheti a webalkalmazásokat, de az Azure AD-hitelesítési kódtárral (ADAL) konfigurált natív ügyfélalkalmazások közzétételére is használható. A natív ügyfélalkalmazások különböznek a webalkalmazásoktól, mivel egy eszközre vannak telepítve, míg a webalkalmazások böngészőn keresztül érhetők el.
 
-A natív ügyfélalkalmazások támogatásához az alkalmazásproxy fogadja az Azure AD által kiadott, a fejlécben eljuttatott jogkivonatokat. Az alkalmazásproxy szolgáltatás a felhasználók hitelesítését végzi. Ez a megoldás nem használ alkalmazás-jogkivonatokat a hitelesítéshez.
+Natív ügyfélalkalmazások támogatása érdekében az alkalmazásproxy elfogadja az Azure AD által kiadott jogkivonatokat, amelyek a fejlécben vannak elküldve. Az alkalmazásproxy szolgáltatás végzi el a felhasználók hitelesítését. Ez a megoldás nem használ alkalmazásjogkivonatokat a hitelesítéshez.
 
 ![A végfelhasználók, az Azure AD és a közzétett alkalmazások közötti kapcsolat](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-Natív alkalmazások közzétételéhez használja az Azure AD hitelesítési függvénytárát, amely gondoskodik a hitelesítésről, és számos ügyfél-környezetet támogat. Az alkalmazásproxy illeszkedik a [natív alkalmazáshoz a webes API-forgatókönyvhöz](../azuread-dev/native-app.md).
+Natív alkalmazások közzétételéhez használja az Azure AD hitelesítési könyvtár, amely gondoskodik a hitelesítésés számos ügyfélkörnyezetben támogatja. Az alkalmazásproxy beleillik a [natív alkalmazás-web API-ba.](../azuread-dev/native-app.md)
 
-Ez a cikk végigvezeti az Application Proxy és az Azure AD Authentication Library natív alkalmazás közzététele a négy lépést.
+Ez a cikk bemutatja a négy lépést egy natív alkalmazás közzététele alkalmazásproxyval és az Azure AD hitelesítési könyvtár.
 
-## <a name="step-1-publish-your-proxy-application"></a>1\. lépés: a proxy alkalmazás közzététele
+## <a name="step-1-publish-your-proxy-application"></a>1. lépés: A proxyalkalmazás közzététele
 
-A proxy-alkalmazások közzététele, mint bármely más alkalmazás, és rendelje hozzá a felhasználók elérhetik az alkalmazást. További információ: [alkalmazások közzététele az alkalmazásproxy](application-proxy-add-on-premises-application.md)-ben.
+Tegye közzé a proxyalkalmazást úgy, mint bármely más alkalmazást, és rendelje hozzá a felhasználókat az alkalmazás eléréséhez. További információt az [Alkalmazások közzététele alkalmazásproxyval című témakörben talál.](application-proxy-add-on-premises-application.md)
 
-## <a name="step-2-register-your-native-application"></a>2\. lépés: a natív alkalmazás regisztrálása
+## <a name="step-2-register-your-native-application"></a>2. lépés: Regisztrálja natív alkalmazását
 
-Most regisztrálnia kell az alkalmazást az Azure AD-ben az alábbiak szerint:
+Most regisztrálnia kell az alkalmazást az Azure AD-ben, az alábbiak szerint:
 
-1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com/). Megjelenik a **Azure Active Directory felügyeleti központ** **irányítópultja** .
-1. Az oldalsávon válassza a **Azure Active Directory**lehetőséget. Megjelenik a **Azure Active Directory** áttekintés oldal.
-1. Az Azure AD áttekintő oldalsávján válassza a **Alkalmazásregisztrációk**lehetőséget. Megjelenik az összes alkalmazás-regisztráció listája.
-1. Válassza az **új regisztráció**lehetőséget. Megjelenik az **alkalmazás regisztrálása** lap.
+1. Jelentkezzen be az [Azure Active Directory portálra.](https://aad.portal.azure.com/) Megjelenik az **Azure Active Directory felügyeleti központ** **irányítópultja.**
+1. Az oldalsávon válassza az **Azure Active Directory**lehetőséget. Megjelenik **az Azure Active Directory** áttekintő lapja.
+1. Az Azure AD áttekintése oldalsávon válassza **az Alkalmazásregisztrációk**lehetőséget. Megjelenik az összes alkalmazásregisztráció listája.
+1. Válassza **az Új regisztráció lehetőséget.** Megjelenik **a Jelentkezés regisztrálása** lap.
 
-   ![Új alkalmazás regisztrációjának létrehozása a Azure Portal](./media/application-proxy-configure-native-client-application/create.png)
+   ![Új alkalmazásregisztráció létrehozása az Azure Portalon](./media/application-proxy-configure-native-client-application/create.png)
 
-1. A **név** fejlécben adja meg az alkalmazás felhasználó által megjelenített nevét.
-1. A **támogatott fióktípus** fejléc alatt válassza ki a hozzáférési szintet a következő irányelvek használatával:
+1. A **Név** fejlécben adja meg az alkalmazás felhasználó felé néző megjelenítendő nevét.
+1. A **Támogatott fióktípusok** fejlécalatt válasszon egy hozzáférési szintet az alábbi irányelvek szerint:
 
-   - Ha csak a szervezeten belüli fiókokat kívánja megcélozni, **csak a szervezeti címtárban**válassza a fiókok lehetőséget.
-   - Ha csak üzleti vagy oktatási ügyfeleket szeretne megcélozni, válassza a **fiókok lehetőséget bármely szervezeti címtárban**.
-   - A Microsoft-identitások legszélesebb körének megcélzásához válassza a fiókok lehetőséget a **szervezeti címtárban és a személyes Microsoft-fiókokban**.
+   - Ha csak a szervezeten belüli fiókokat szeretné megcélozni, válassza **a Fiókok lehetőséget ebben a szervezeti címtárban.**
+   - Ha csak üzleti vagy oktatási ügyfeleket szeretne megcélozni, válassza **a Fiókok lehetőséget bármely szervezeti címtárban.**
+   - A Microsoft-identitások legszélesebb körének megcélzásához válassza **a Fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban.**
 
-1. Az **átirányítási URI** fejlécben válassza a **nyilvános ügyfél (mobil & asztal)** lehetőséget, majd írja be az alkalmazás átirányítási URI-ját.
-1. Válassza ki és olvassa el a **Microsoft-Platform házirendjeit**, majd kattintson a **regisztráció**elemre. Létrejön és megjelenik az új alkalmazás regisztrálásának áttekintő lapja.
+1. Az **Átirányítás** URI-fejlécben válassza a **Nyilvános ügyfél (mobil & asztali)** lehetőséget, majd írja be az alkalmazás átirányítási URI-ját.
+1. Jelölje ki és olvassa el a **Microsoft Platform szabályzatait,** majd válassza a **Regisztráció**lehetőséget. Létrejön és megjelenik az új alkalmazásregisztráció áttekintő oldala.
 
-Az új alkalmazás-regisztráció létrehozásával kapcsolatos további információkért lásd: [alkalmazások integrálása a Azure Active Directorysal](../develop/quickstart-register-app.md).
+Az új alkalmazásregisztráció létrehozásáról az [Alkalmazások integrálása](../develop/quickstart-register-app.md)az Azure Active Directoryval című témakörben talál további információt.
 
-## <a name="step-3-grant-access-to-your-proxy-application"></a>3\. lépés: hozzáférés biztosítása a proxy alkalmazáshoz
+## <a name="step-3-grant-access-to-your-proxy-application"></a>3. lépés: Hozzáférés megadása a proxy alkalmazáshoz
 
-Most, hogy regisztrálta a natív alkalmazását, hozzáférést biztosíthat más alkalmazásokhoz a címtárban, ebben az esetben a alkalmazásproxy eléréséhez. Annak engedélyezése, hogy a natív alkalmazás elérhető legyen a proxy alkalmazás számára:
+Most, hogy regisztrálta a natív alkalmazást, hozzáférést adhat a címtárban lévő más alkalmazásokhoz, ebben az esetben a proxyalkalmazás eléréséhez. A natív alkalmazás proxyalkalmazással való kapcsolatának engedélyezése:
 
-1. Az új alkalmazás regisztrálása lap oldalsávján válassza az **API-engedélyek**lehetőséget. Megjelenik az új alkalmazás-regisztráció **API-engedélyek** lapja.
-1. Válassza **az engedély hozzáadása**lehetőséget. Megjelenik a **kérelem API-engedélyek** lap.
-1. Az **API kiválasztása** beállításnál válassza a **szervezetem által használt API**-k elemet. Megjelenik egy lista, amely tartalmazza az API-kat közzétevő címtárban lévő alkalmazásokat.
-1. Írja be a keresőmezőbe, vagy görgessen az [1. lépés: a proxy alkalmazás közzététele](#step-1-publish-your-proxy-application), majd a proxykiszolgáló kiválasztásához közzétett alkalmazásproxy megkereséséhez.
-1. Az **alkalmazás milyen típusú engedélyeket igényel?** fejlécben válassza ki az engedély típusát. Ha a natív alkalmazásnak bejelentkezett felhasználóként kell hozzáférnie a proxy Application API-hoz, válassza a **delegált engedélyek**lehetőséget.
-1. Az **engedélyek kiválasztása** fejlécben válassza ki a kívánt engedélyt, majd válassza az **engedélyek hozzáadása**lehetőséget. A natív alkalmazás **API-engedélyeinek** lapja mostantól megjeleníti a hozzáadott alkalmazásproxy-alkalmazást és az engedélyek API-ját.
+1. Az új alkalmazásregisztrációs lap oldalsávján válassza az **API-engedélyek lehetőséget.** Megjelenik az új alkalmazásregisztráció **API-engedélyeinek** lapja.
+1. Válassza **az Engedély hozzáadása**lehetőséget. Megjelenik **az API-engedélyek kérése** lap.
+1. Az **API kiválasztása** beállítás csoportban válassza a **szervezet által használt API-k lehetőséget.** Megjelenik egy lista, amely az API-kat elérhető alkalmazásokat tartalmazza a címtárban.
+1. Írja be a keresőmezőbe, vagy görgessen, hogy megtalálja a proxy alkalmazás, amely megjelent [az 1.](#step-1-publish-your-proxy-application)
+1. A **Milyen típusú engedélyeket igényel az alkalmazás?** Ha a natív alkalmazásnak a proxyalkalmazás API-ját kell elérnie bejelentkezett felhasználóként, válassza a **Delegált engedélyek lehetőséget.**
+1. Az **Engedélyek kiválasztása** fejlécben jelölje ki a kívánt engedélyt, és válassza az **Engedélyek hozzáadása**lehetőséget. A natív alkalmazás **API-engedélyek** lapja most már a hozzáadott proxyalkalmazást és engedélyAPI-t jeleníti meg.
 
-## <a name="step-4-edit-the-active-directory-authentication-library"></a>4\. lépés: Az Active Directory Authentication Library szerkesztése
+## <a name="step-4-edit-the-active-directory-authentication-library"></a>4. lépés: Az Active Directory hitelesítési tár szerkesztése
 
-A hitelesítési környezetet, az Active Directory Authentication Library (ADAL) az alábbi szöveget a natív alkalmazás kód szerkesztése:
+Szerkessze a natív alkalmazáskódot az Active Directory hitelesítési könyvtár (ADAL) hitelesítési környezetében a következő szöveggel:
 
 ```
 // Acquire Access Token from AAD for Proxy Application
@@ -91,20 +91,20 @@ httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("
 HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >");
 ```
 
-A mintakód szükséges adatai az Azure AD portálon találhatók, a következőképpen:
+A mintakódban szükséges adatok az Azure AD portálon találhatók, az alábbiak szerint:
 
-| Szükséges információk | Az Azure AD-portálon való keresés |
+| Szükséges információ | Hogyan található meg az Azure AD portálon |
 | --- | --- |
-| \<bérlő azonosítója > | **Azure Active Directory** > **Tulajdonságok** > **könyvtár azonosítója** |
-| \<a proxy alkalmazás külső URL-címe > | **Vállalati alkalmazások** > *a alkalmazásproxy* > **alkalmazásproxy** > **külső URL-cím** |
-| \<a natív alkalmazás alkalmazás-AZONOSÍTÓját > | **Vállalati alkalmazások** > *a natív alkalmazás* > **tulajdonságai** > **alkalmazás azonosítója** |
-| \<a natív alkalmazás átirányítási URI-ja > | **Azure Active Directory** > **Alkalmazásregisztrációk** > *natív alkalmazása* > **átirányítási URI** -k |
-| \<proxy app API URL-címe > | **Azure Active Directory** > **Alkalmazásregisztrációk** > *natív alkalmazása* > **API-engedélyek** > **API/engedélyek neve** |
+| \<Bérlői azonosító> | **Az Azure Active Directory** > **tulajdonságainak címtárának** > **azonosítója** |
+| \<A Proxy alkalmazás külső url-címe> | **Vállalati alkalmazások** > *a proxyalkalmazás* > **alkalmazásproxykülső** > **url-címe** |
+| \<A natív alkalmazás> alkalmazásazonosítója | **Vállalati alkalmazások** > *a natív alkalmazás* > tulajdonságai**alkalmazásazonosítója** **Properties** >  |
+| \<A natív alkalmazás> ÁTirányítása | **Az Azure Active Directory** > **alkalmazás regisztrációk** > *a natív alkalmazás* > **átirányítási URI-k** |
+| \<Proxy alkalmazás API-> | **Az Azure Active Directory** > **Alkalmazás regisztrációk** > *a natív alkalmazás* > **API-engedélyek** > API / ENGEDÉLYEK**NAME** |
 
-Miután módosította a ADAL ezekkel a paraméterekkel, a felhasználók akkor is hitelesíthetők a natív ügyfélalkalmazások számára, ha a vállalati hálózaton kívül esnek.
+Miután ezekkel a paraméterekkel szerkesztette az ADAL-t, a felhasználók akkor is hitelesíthetik magukat a natív ügyfélalkalmazások számára, ha azok a vállalati hálózaton kívül vannak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a natív alkalmazás folyamatáról: [natív alkalmazások Azure Active Directoryban](../azuread-dev/native-app.md).
+A natív alkalmazásfolyamatról további információt az [Azure Active Directory natív alkalmazásai című témakörben talál.](../azuread-dev/native-app.md)
 
-Ismerje meg, hogyan állíthat be [egyszeri bejelentkezést az alkalmazásokba Azure Active Directory-ben](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
+Megtudhatja, hogy miként lehet egyszeri bejelentkezést létrehozni [az alkalmazásokra az Azure Active Directoryban.](what-is-single-sign-on.md#choosing-a-single-sign-on-method)

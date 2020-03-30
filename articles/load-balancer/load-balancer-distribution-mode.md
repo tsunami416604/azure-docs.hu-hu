@@ -1,7 +1,7 @@
 ---
-title: Azure Load Balancer terjesztési mód konfigurálása
+title: Az Azure Load Balancer terjesztési módjának konfigurálása
 titleSuffix: Azure Load Balancer
-description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Load Balancer terjesztési módját a forrás IP-affinitás támogatásához.
+description: Ebben a cikkben az Azure Load Balancer telepítési módjának konfigurálása a forrás IP-affinitásának támogatásához.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,69 +14,69 @@ ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
 ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023531"
 ---
-# <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer elosztási módjának konfigurálása
+# <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Az Azure Load Balancer terjesztési módjának konfigurálása
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="hash-based-distribution-mode"></a>Kivonatoló alapú terjesztési mód
+## <a name="hash-based-distribution-mode"></a>Kivonatalapú terjesztési mód
 
-A Azure Load Balancer alapértelmezett terjesztési módja egy öt rekordos kivonat. 
+Az Azure Load Balancer alapértelmezett eloszlási módja az ötrekordos kivonat. 
 
-A rekord a következőkből áll:
+A tuple a következőkből áll:
 * **Forrás IP-címe**
 * **Forrásport**
 * **Cél IP-címe**
 * **Célport**
 * **Protokoll típusa**
 
-A kivonat használatával képezhető le a forgalom az elérhető kiszolgálókra. Az algoritmus csak a szállítási munkameneten belül nyújt stickiet. Az azonos munkamenetben lévő csomagokat ugyanahhoz az adatközponti IP-címhez irányítja a rendszer, amely a terheléselosztási végpont mögött található. Amikor az ügyfél egy új munkamenetet indít el ugyanabból a forrás IP-címről, a forrásport megváltozik, és a forgalom egy másik adatközpont-végpontra lép.
+A kivonat a forgalom leképezésére szolgál a rendelkezésre álló kiszolgálókhoz. Az algoritmus csak az átviteli munkameneten belül biztosítja a ragacsosságot. Az ugyanabban a munkamenetben lévő csomagok a terheléselosztási végpont mögött ugyanarra az adatközpontI IP-re vannak irányítva. Amikor az ügyfél új munkamenetet indít ugyanabból a forrásIP-címből, a forrásport megváltozik, és a forgalom egy másik adatközpont-végpontra kerül.
 
-![Öt rekordos kivonatoló terjesztési mód](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
+![Öthangú kivonatalapú terjesztési mód](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
 
 ## <a name="source-ip-affinity-mode"></a>Forrás IP-affinitási módja
 
-A terheléselosztó a forrás IP-affinitás elosztási módjának használatával is konfigurálható. Ezt a terjesztési módot más néven munkamenet-affinitásnak vagy ügyfél IP-affinitásnak is nevezzük. A mód egy kétrekordos (forrás IP-cím és cél IP-cím) vagy három rekordos (forrás IP-cím, cél IP-cím és protokolltípus) kivonatot használ a forgalom az elérhető kiszolgálókra történő leképezéséhez. A forrás IP-affinitás használatával az azonos ügyfélszámítógépről indított kapcsolatok ugyanarra az adatközpont-végpontra kerülnek.
+A terheléselosztó a forrás IP-affinitás elosztási mód használatával is konfigurálható. Ezt az elosztási módot munkamenet-affinitásnak vagy ügyfél-IP-cím affinitásnak is nevezik. A mód két-törzsből (forrás IP és cél IP) vagy három-tuple (forrás IP, cél IP és protokoll típus) kivonatot használ a forgalom leképezéséhez az elérhető kiszolgálókhoz. A forrás IP-affinitásának használatával az ugyanarról az ügyfélszámítógépről indított kapcsolatok ugyanarra az adatközpont-végpontra kerülnek.
 
-Az alábbi ábrán két rekordos konfiguráció látható. Figyelje meg, hogyan futnak a két rekord a terheléselosztó használatával az 1. virtuális gépen (VM1). A VM1 ezt követően biztonsági mentést készít a VM2 és a VM3.
+Az alábbi ábra egy kétsávos konfigurációt mutat be. Figyelje meg, hogy a két-tuple fut át a terheléselosztó a virtuális gép 1 (VM1). VM1 ezután a VM2 és a VM3 biztonsági másolatot.
 
-![Kétrekordos munkamenet-affinitás terjesztési módja](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
+![Kéthangú munkamenet affinitáselosztási mód](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
-A forrás IP-affinitás mód a Azure Load Balancer és Távoli asztali átjáró (RD-átjáró) közötti inkompatibilitást oldja meg. Ezen mód használatával egyetlen felhőalapú szolgáltatásban hozhat létre RD-átjáró farmokat.
+A forrás IP-affinitási mód megoldja az Azure Load Balancer és a Távoli asztali átjáró (Távoli asztali átjáró) közötti inkompatibilitást. Ezzel a móddal egyetlen felhőszolgáltatásban hozhat létre egy Távoli asztali átjárófarmot.
 
-Egy másik használati eset a média feltöltése. Az adatfeltöltés UDP-n keresztül történik, de a vezérlő síkja a TCP protokollon keresztül érhető el:
+Egy másik használati eset a médiafeltöltés. Az adatok feltöltése UDP-n keresztül történik, de a vezérlősík a TCP-n keresztül érhető el:
 
-* Az ügyfél TCP-munkamenetet indít el a terheléselosztási nyilvános címről, és egy adott DIP-re irányítja. A csatorna aktív marad a kapcsolatok állapotának figyeléséhez.
-* Az azonos ügyfélszámítógépről származó új UDP-munkamenet ugyanarra a terheléselosztásos nyilvános végpontra van elindítva. A kapcsolódás ugyanahhoz a DIP-végponthoz van irányítva, mint a korábbi TCP-kapcsolatok. A médiafájlok feltöltése nagy átviteli sebességgel végezhető, miközben a vezérlési csatornát a TCP protokollon keresztül is megtarthatja.
+* Az ügyfél tcp-munkamenetet indít a terheléselosztásos nyilvános címre, és egy adott DIP-re irányítja. A csatorna aktív marad a kapcsolat állapotának figyeléséhez.
+* Ugyanattól az ügyfélszámítógépről egy új UDP-munkamenet indul ugyanarra a terheléselosztásos nyilvános végpontra. A kapcsolat ugyanarra a DIP-végpontra irányul, mint az előző TCP-kapcsolat. Az adathordozó-feltöltés nagy átviteli sebességgel hajtható végre, miközben a TCP-n keresztül is fenntart egy vezérlőcsatornát.
 
 > [!NOTE]
-> Ha egy elosztott terhelésű készlet egy virtuális gép eltávolításával vagy hozzáadásával változik, a rendszer újraszámítja az ügyfelek kéréseinek eloszlását. A meglévő ügyfelektől érkező új kapcsolatok nem függhet ugyanazon a kiszolgálón. Emellett a forrás IP-affinitás elosztási módja a forgalom egyenlőtlen elosztását is okozhatja. A proxy mögött futó ügyfelek egyetlen egyedi ügyfélalkalmazásként jelenhetnek meg.
+> Ha egy terhelés-kiegyensúlyozott készlet virtuális gép eltávolításával vagy hozzáadásával változik, az ügyfélkérelmek elosztása újraszámításra kerül. Nem függhet a meglévő ügyfelek új kapcsolataitól, hogy ugyanazon a kiszolgálón végezhet. Emellett a forrás IP-affinitás terjesztési mód használata egyenlőtlen forgalmat okozhat. A proxyk mögött futó ügyfelek egy egyedi ügyfélalkalmazásnak tekinthetők.
 
-## <a name="configure-source-ip-affinity-settings"></a>Forrás IP-affinitás beállításainak konfigurálása
+## <a name="configure-source-ip-affinity-settings"></a>Forrás IP-affinitási beállításainak konfigurálása
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
-A terjesztési mód konfigurációját módosíthatja a portál terheléselosztási szabályának módosításával.
+A terjesztési mód konfigurációját a portál terheléselosztási szabályának módosításával módosíthatja.
 
-1. Jelentkezzen be a Azure Portalba, és keresse meg a módosítani kívánt terheléselosztó tartalmazó erőforráscsoportot az **erőforráscsoportok**lehetőségre kattintva.
-2. A terheléselosztó áttekintése képernyőn kattintson a **Beállítások**területen található **terheléselosztási szabályok** elemre.
-3. A terheléselosztási szabályok képernyőn kattintson arra a terheléselosztási szabályra, amelyre módosítani szeretné a terjesztési módot.
-4. A szabály alatt a terjesztési mód módosul a **munkamenet-megőrzés** legördülő lista módosításával.  A következő lehetőségek érhetők el:
+1. Jelentkezzen be az Azure Portalra, és keresse meg a módosítani kívánt terheléselosztót tartalmazó erőforráscsoportot az **Erőforráscsoportok**elemre kattintva.
+2. A terheléselosztó áttekintő képernyőjén kattintson a **Terheléselosztási szabályok** elemre a **Beállítások területen.**
+3. A terheléselosztási szabályok képernyőn kattintson a terjesztési módot módosítani kívánt terheléselosztási szabályra.
+4. A szabály szerint a terjesztési mód a **Munkamenet-megőrzés legördülő** lista módosításával változik.  A következő beállítások érhetők el:
     
-    * **Nincs (kivonat-alapú)** – azt határozza meg, hogy egy adott ügyfél egymást követő kérelmeit bármely virtuális gép kezelheti.
-    * **Ügyfél IP-címe (forrás IP-affinitás 2-rekord)** – azt határozza meg, hogy ugyanazon ügyfél IP-címéről érkező egymást követő kérelmeket ugyanaz a virtuális gép fogja kezelni.
-    * **Ügyfél IP-címe és protokollja (forrás IP-affinitás 3 – rekord)** – azt határozza meg, hogy az azonos ügyfél IP-címe és a protokoll kombinációja egymást követő kérelmeket ugyanazzal a virtuális géppel fogja kezelni.
+    * **Nincs (kivonat-alapú)** – Itt adhatja meg, hogy az ugyanazon ügyféltől érkező egymást követő kéréseket bármely virtuális gép kezelheti.
+    * **Ügyfél IP-címe (forrás IP-affinitás 2-tüz)** – Itt adhatja meg, hogy az azonos ügyfél IP-címéről érkező egymást követő kérelmeket ugyanaz a virtuális gép kezelje.
+    * **Ügyfél IP-címe és protokollja (forrás IP-affinitás 3-tuple)** – Itt adhatja meg, hogy az azonos ügyfél IP-címéről és protokollkombinációjáról érkező egymást követő kérelmeket ugyanaz a virtuális gép kezelje.
 
-5. Válassza ki a terjesztési módot, majd kattintson a **Mentés**gombra.
+5. Válassza a terjesztési módot, majd kattintson a **Mentés gombra.**
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-A Resource Managerrel üzembe helyezett virtuális gépek esetében a PowerShell használatával módosítsa a terheléselosztó terjesztési beállításait egy meglévő terheléselosztási szabályon. A következő parancs frissíti a terjesztési módot: 
+Az Erőforrás-kezelővel telepített virtuális gépek esetén a PowerShell segítségével módosítsa a terheléselosztó terjesztési beállításait egy meglévő terheléselosztási szabályon. A következő parancs frissíti a terjesztési módot: 
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name MyLb -ResourceGroupName MyLbRg
@@ -84,15 +84,15 @@ $lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
 Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
-A klasszikus virtuális gépek esetében a Azure PowerShell használatával módosíthatja a terjesztési beállításokat. Adjon hozzá egy Azure-végpontot egy virtuális géphez, és konfigurálja a terheléselosztó terjesztési módját:
+Klasszikus virtuális gépek esetén az Azure PowerShell segítségével módosíthatja a terjesztési beállításokat. Adjon hozzá egy Azure-végpontot egy virtuális géphez, és konfigurálja a terheléselosztó terjesztési módját:
 
 ```azurepowershell-interactive
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-Állítsa be a `LoadBalancerDistribution` elem értékét a szükséges terheléselosztási mennyiséghez. SourceIP megadása két rekordos (forrás IP-cím és cél IP-cím) terheléselosztáshoz. Adja meg a sourceIPProtocol a három rekordos (forrás IP-cím, cél IP-cím és protokoll típusa) terheléselosztáshoz. Az öt rekordos terheléselosztás alapértelmezett működéséhez válassza a nincs értéket.
+Állítsa be az `LoadBalancerDistribution` elem értékét a szükséges terheléselosztás mennyiségéhez. Adja meg a forrásIP-t a kéthangú (forrás IP és a cél IP) terheléselosztáshoz. Adja meg a sourceIPProtocol protokollt a háromhangú (forrás IP, cél IP és protokolltípus) terheléselosztáshoz. Adjon meg egyet az öthangú terheléselosztás alapértelmezett viselkedéséhez.
 
-A Endpoint Load Balancer terjesztési mód konfigurációjának lekérése a következő beállítások használatával:
+Végpontterhelés-elosztó terjesztési mód konfigurációjának lekérése az alábbi beállításokkal:
 
     PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
 
@@ -114,21 +114,21 @@ A Endpoint Load Balancer terjesztési mód konfigurációjának lekérése a kö
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-Ha a `LoadBalancerDistribution` elem nincs jelen, Azure Load Balancer az alapértelmezett öt rekordos algoritmust használja.
+Ha `LoadBalancerDistribution` az elem nincs jelen, az Azure Load Balancer az alapértelmezett öthangú algoritmust használja.
 
-### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>Elosztási mód konfigurálása elosztott terhelésű végpontok készletén
+### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>Elosztási mód konfigurálása a terheléselosztási végpontkészleten
 
-Ha a végpontok elosztott terhelésű végpontok részét képezik, az elosztási módot a terheléselosztási végpont készletén kell konfigurálni:
+Ha a végpontok egy terheléselosztással egyensúlyozott végpontkészlet részei, az elosztási módot a terheléselosztási végpontkészleten kell konfigurálni:
 
 ```azurepowershell-interactive
 Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
 ```
 
-### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>Terjesztési mód konfigurálása Cloud Services végpontokhoz
+### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>Terjesztési mód konfigurálása a Felhőszolgáltatások végpontjaihoz
 
-A felhőalapú szolgáltatás frissítéséhez használja a .NET 2,5-hez készült Azure SDK-t. A Cloud Services végpontjának beállításait a. csdef fájlban kell elvégezni. Ha frissíteni szeretné a terheléselosztó terjesztési módját egy Cloud Services üzemelő példányhoz, a központi telepítés frissítése szükséges.
+A .NET 2.5-höz tartozó Azure SDK használatával frissítheti a felhőszolgáltatást. A Felhőszolgáltatások végpontbeállításai a .csdef fájlban találhatók. A felhőszolgáltatások központi telepítéséhez a terheléselosztó terjesztési módjának frissítéséhez központi telepítés szükséges.
 
-Íme egy példa a. csdef változásaira az Endpoint Settings szolgáltatásban:
+Íme egy példa a végpontbeállítások .csdef változásaira:
 
 ```xml
 <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
@@ -148,15 +148,15 @@ A felhőalapú szolgáltatás frissítéséhez használja a .NET 2,5-hez készü
 </NetworkConfiguration>
 ```
 
-## <a name="api-example"></a>API-példa
+## <a name="api-example"></a>PÉLDA API-ra
 
-Az alábbi példa azt szemlélteti, hogyan lehet újrakonfigurálni a terheléselosztó elosztási módját egy adott elosztott terhelésű készlethez egy központi telepítésben. 
+A következő példa bemutatja, hogyan konfigurálhatja újra a terheléselosztó terjesztési módját egy adott terheléselosztási készlethez egy központi telepítésben. 
 
-### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Terjesztési mód módosítása üzembe helyezett elosztott terhelésű készlethez
+### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Az üzembe helyezett terheléselosztási halmaz elosztási módjának megváltoztatása
 
-Meglévő központi telepítési konfiguráció módosításához használja a klasszikus Azure-alapú üzemi modellt. Adja hozzá a `x-ms-version` fejlécet, és állítsa az értéket a 2014-09-01-es vagy újabb verzióra.
+Az Azure klasszikus üzembe helyezési modell egy meglévő központi telepítési konfiguráció módosításához használja. Adja `x-ms-version` hozzá a fejlécet, és állítsa az értéket a 2014-09-01-es vagy újabb verzióra.
 
-#### <a name="request"></a>Kérelem
+#### <a name="request"></a>Kérés
 
     POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
     Content-Type: application/xml
@@ -179,7 +179,7 @@ Meglévő központi telepítési konfiguráció módosításához használja a k
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-Az előzőekben leírtak szerint állítsa be a `LoadBalancerDistribution` elemet a kétrekordos affinitás sourceIP, a sourceIPProtocol a három rekordos affinitáshoz, vagy egyiket sem, ha nincs affinitás (öt rekordos affinitás).
+Ahogy korábban `LoadBalancerDistribution` leírtuk, állítsa be az elemet a sourceIP értékre a kéttónusú affinitás, a sourceIPProtocol háromtónusú affinitás, vagy nincs affinitás (öt-tuple affinitás) esetén.
 
 #### <a name="response"></a>Válasz
 
@@ -191,8 +191,8 @@ Az előzőekben leírtak szerint állítsa be a `LoadBalancerDistribution` eleme
     x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
     Date: Thu, 16 Oct 2014 22:49:21 GMT
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Az Azure belső Load Balancer áttekintése](load-balancer-internal-overview.md)
-* [Ismerkedés az internetre irányuló terheléselosztó konfigurálásával](quickstart-create-standard-load-balancer-powershell.md)
+* [Az Azure belső terheléselosztó – áttekintés](load-balancer-internal-overview.md)
+* [Ismerkedés az internetre néző terheléselosztó konfigurálásával](quickstart-create-standard-load-balancer-powershell.md)
 * [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)

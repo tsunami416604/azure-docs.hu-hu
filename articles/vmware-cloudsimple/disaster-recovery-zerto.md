@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (AVS) – az AVS Private Cloud-t használja a helyszíni számítási feladatokhoz
-description: Leírja, hogyan állítható be az AVS Private Cloud vész-helyreállítási webhelyként a helyszíni VMware-alapú számítási feladatokhoz
+title: Azure VMware-megoldás a CloudSimple-től – a magánfelhő használata katasztrófa-helyként helyszíni számítási feladatokhoz
+description: A CloudSimple Private Cloud beállítása a helyszíni VMware-számítási feladatok vész-helyreállítási helyeként
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,91 +8,91 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5ee43af97e79f1e835787d61bd79cfb256ef445
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083132"
 ---
-# <a name="set-up-avs-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Az AVS Private Cloud beállítása vész-helyreállítási webhelyként a helyszíni VMware-alapú számítási feladatokhoz
+# <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>A CloudSimple Private Cloud beállítása vész-helyreállítási helyként a helyszíni VMware-számítási feladatokhoz
 
-Az AVS Private Cloud a helyszíni alkalmazások helyreállítási helyeként állítható be, hogy vészhelyzet esetén is biztosítson üzletmenet-folytonosságot. A helyreállítási megoldás a replikációs és a Zerto virtuális Replikáción alapul. A kritikus infrastruktúrát és az alkalmazás virtuális gépeket folyamatosan replikálhatja a helyszíni vCenter az AVS Private Cloud szolgáltatásba. A feladatátvételi teszthez használhatja a saját AVS-Felhőjét, és biztosíthatja az alkalmazás rendelkezésre állását a katasztrófa során. Hasonló módszer követhető az AVS Private Cloud olyan elsődleges helyként való beállítása, amelyet egy másik helyen található helyreállítási hely véd.
+A CloudSimple private cloud beállítható helyreállítási helyként a helyszíni alkalmazások számára, hogy katasztrófa esetén biztosítsa az üzletmenet folytonosságát. A helyreállítási megoldás a Zerto virtuális replikáción alapul, mint replikációs és vezénylési platformon. A kritikus infrastruktúra és az alkalmazás virtuális gépek folyamatosan replikálhatók a helyszíni vCenterből a privát felhőbe. Használhatja a privát felhő feladatátvételi tesztelés, és az alkalmazás rendelkezésre állásának biztosítása katasztrófa esetén. Hasonló megközelítést lehet követni, hogy állítsa be a magánfelhő elsődleges helyként, amely védi a helyreállítási hely egy másik helyen.
 
 > [!NOTE]
-> Tekintse át a Zerto-dokumentum [méretezési szempontjait a Zerto virtuális replikálásához](https://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) a vész-helyreállítási környezet méretezésére vonatkozó irányelvek alapján.
+> A vész-helyreállítási környezet méretezésére vonatkozó irányelveket a Zerto-dokumentum [méretezési szempontjai a Zerto virtuális replikációhoz](https://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) című dokumentumban olvassa el.
 
-Az AVS-megoldás:
+A CloudSimple megoldás:
 
-* Nem kell külön adatközpontot beállítani a vész-helyreállításhoz (DR).
-* Lehetővé teszi, hogy kihasználja azokat az Azure-telephelyeket, amelyeken az AVS a globális földrajzi rugalmasság érdekében telepítve van.
-* Lehetőséget biztosít a központi telepítési költségek és a DR teljes tulajdonlási költségeinek csökkentésére.
+* Szükségtelenné teszi, hogy egy adatközpontkifejezetten vész-helyreállítási (DR) beállítása.
+* Lehetővé teszi, hogy kihasználja az Azure-helyeket, ahol a CloudSimple telepítve van a globális földrajzi rugalmasság érdekében.
+* Lehetőséget ad a központi telepítési költségek és a teljes tulajdonlási költség csökkentésére a DR számára.
 
-A megoldáshoz a következőket kell tennie:
+A megoldás megköveteli, hogy:
 
-* Zerto telepítése, konfigurálása és kezelése az AVS Private Cloud-ban.
-* Adja meg saját licenceit a Zerto, ha az AVS Private Cloud a védett hely. Az AVS-helyen futó Zerto-ket a helyszíni hellyel is párosíthatja a licenceléshez.
+* Telepítse, konfigurálja és kezelje a Zerto-t a privát felhőben.
+* Adja meg saját licenceit a Zerto számára, ha a magánfelhő a védett webhely. A CloudSimple webhelyen futó Zerto párosítható a helyszíni webhelyével a licenceléshez.
 
 Az alábbi ábra a Zerto-megoldás architektúráját mutatja be.
 
 ![Architektúra](media/cloudsimple-zerto-architecture.png)
 
-## <a name="how-to-deploy-the-solution"></a>A megoldás üzembe helyezése
+## <a name="how-to-deploy-the-solution"></a>A megoldás telepítése
 
-A következő szakaszok azt ismertetik, hogyan helyezhet üzembe egy DR-megoldást a Zerto virtuális replikálás használatával az AVS Private Cloud-ban.
+A következő szakaszok ismertetik, hogyan telepíthet vész-kiszolgáló t a magánfelhőben a Zerto virtuális replikációhasználatával.
 
 1. [Előfeltételek](#prerequisites)
-2. [Opcionális konfiguráció a saját AVS-felhőben](#optional-configuration-on-your-avs-private-cloud)
-3. [A ZVM és a VRA beállítása az AVS Private Cloud-on](#set-up-zvm-and-vra-on-your-avs-private-cloud)
-4. [Zerto virtuális védelmi csoport beállítása](#set-up-zerto-virtual-protection-group)
+2. [Opcionális konfiguráció a CloudSimple magánfelhőn](#optional-configuration-on-your-private-cloud)
+3. [ZVM és VRA beállítása a CloudSimple privát felhőben](#set-up-zvm-and-vra-on-your-private-cloud)
+4. [A Zerto virtuális védelmi csoport beállítása](#set-up-zerto-virtual-protection-group)
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-A következő előfeltételek végrehajtásával engedélyezheti a Zerto virtuális replikálását a helyszíni környezetből az AVS Private-felhőbe.
+A Zerto virtuális replikáció engedélyezéséhez a helyszíni környezetből a magánfelhőbe, hajtsa végre az alábbi előfeltételeket.
 
-1. [Hozzon létre egy helyek közötti VPN-kapcsolatot a helyszíni hálózat és az AVS Private Cloud között](set-up-vpn.md).
-2. [Állítsa be a DNS-lekérdezést úgy, hogy az AVS Private Cloud Management-összetevők továbbítva legyenek az AVS Private Cloud DNS-kiszolgálókra](on-premises-dns-setup.md). A DNS-címkeresés továbbításának engedélyezéséhez hozzon létre egy továbbítási zóna bejegyzést a helyi DNS-kiszolgálón `*.cloudsimple.io` az AVS DNS-kiszolgálókra.
-3. DNS-címkeresés beállítása, hogy a helyszíni vCenter-összetevők továbbítva legyenek a helyszíni DNS-kiszolgálókra. A DNS-kiszolgálóknak elérhetőknek kell lenniük az AVS saját felhőben a helyek közötti VPN-kapcsolaton keresztül. Ha segítségre van, nyújtson be egy [támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), amely a következő információkat biztosítja. 
+1. [Állítson be egy helyek közötti VPN-kapcsolatot a helyszíni hálózat és a CloudSimple magánfelhő között.](set-up-vpn.md)
+2. [Állítsa be a DNS-keresési adatokat úgy, hogy a magánfelhő-kezelési összetevők továbbításra kerülnek a magánfelhő DNS-kiszolgálóira](on-premises-dns-setup.md).  A DNS-alapú keresési továbbítás engedélyezéséhez hozzon létre egy továbbítási zónabejegyzést a helyszíni DNS-kiszolgálón a CloudSimple DNS-kiszolgálókszámára. `*.cloudsimple.io`
+3. Állítsa be a DNS-keresési úgy, hogy a helyszíni vCenter-összetevők továbbítása a helyszíni DNS-kiszolgálók.  A DNS-kiszolgálóknak elérhetőnek kell lenniük a CloudSimple magánfelhőből a helyek közötti VPN-en keresztül. Segítségért nyújtson be [támogatási kérelmet,](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)amely a következő információkat tartalmazza.  
 
     * Helyszíni DNS-tartománynév
     * Helyszíni DNS-kiszolgáló IP-címei
 
-4. Telepítsen egy Windows-kiszolgálót az AVS Private Cloud-ra. A kiszolgáló a Zerto Virtual Manager telepítésére szolgál.
-5. [Az AVS-jogosultságok kiterjesztve](escalate-private-cloud-privileges.md).
-6. Hozzon létre egy új felhasználót az AVS Private Cloud vCenter, és a rendszergazdai szerepkört használja a Zerto Virtual Manager szolgáltatáshoz.
+4. Telepítsen egy Windows-kiszolgálót a magánfelhőbe. A szerver telepítéséhez használt Zerto Virtual Manager.
+5. [A CloudSimple jogosultságai továbbmélyítése.](escalate-private-cloud-privileges.md)
+6. Hozzon létre egy új felhasználót a Private Cloud vCenter a felügyeleti szerepkört használni, mint a szolgáltatás fiók Zerto Virtual Manager.
 
-### <a name="optional-configuration-on-your-avs-private-cloud"></a>Opcionális konfiguráció a saját AVS-felhőben
+### <a name="optional-configuration-on-your-private-cloud"></a>Opcionális konfiguráció a magánfelhőn
 
-1. Hozzon létre egy vagy több erőforráskészletet az AVS Private Cloud vCenter, hogy célként megadott erőforrás-készletekként használja a helyszíni környezetből származó virtuális gépekhez.
-2. Hozzon létre egy vagy több olyan mappát az AVS Private Cloud vCenter, amelyet a helyszíni környezetből származó virtuális gépek számára célként szolgáló mappákként kíván használni.
-3. Hozzon létre VLAN-okat a feladatátvételi hálózathoz, és állítsa be a tűzfalszabályok szabályait. Nyisson meg egy [támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) a segítséghez.
-4. Elosztott porttartomány létrehozása a feladatátvételi hálózathoz és a tesztelési hálózathoz a virtuális gépek feladatátvételének teszteléséhez.
-5. Telepítse a [DHCP-és DNS-kiszolgálókat](dns-dhcp-setup.md) , vagy használjon egy Active Directory tartományvezérlőt az AVS saját felhőalapú környezetében.
+1. Hozzon létre egy vagy több erőforráskészletet a private cloud vCenter-en, hogy a helyszíni környezetből származó virtuális gépek célerőforrás-készleteiként használhassa.
+2. Hozzon létre egy vagy több mappát a Private Cloud vCenter-ben, hogy a helyszíni környezetből a virtuális gépek célmappáiként használhassa.
+3. Hozzon létre VLAN-okat a feladatátvételi hálózathoz, és állítson be tűzfalszabályokat. Nyisson meg egy [támogatási kérelmet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) a segítségért.
+4. Elosztott portcsoportok létrehozása feladatátvételi hálózathoz és teszthálózathoz a virtuális gépek feladatátvételének teszteléséhez.
+5. Telepítse [a DHCP- és DNS-kiszolgálókat,](dns-dhcp-setup.md) vagy használjon Active Directory tartományvezérlőt a magánfelhő-környezetben.
 
-### <a name="set-up-zvm-and-vra-on-your-avs-private-cloud"></a>A ZVM és a VRA beállítása az AVS Private Cloud-on
+### <a name="set-up-zvm-and-vra-on-your-private-cloud"></a>A ZVM és a VRA beállítása a privát felhőben
 
-1. Telepítse a Zerto Virtual Managert (ZVM) a Windows Serverre az AVS Private Cloud-ban.
-2. Jelentkezzen be a ZVM-be az előző lépésekben létrehozott szolgáltatásfiók használatával.
+1. Telepítse a Zerto Virtual Manager (ZVM) alkalmazást a Privát felhőben lévő Windows-kiszolgálóra.
+2. Jelentkezzen be a ZVM-be az előző lépésekben létrehozott szolgáltatásfiókkal.
 3. A Zerto Virtual Manager licencelésének beállítása.
-4. Telepítse a Zerto virtuális replikációs berendezést (VRA) az AVS Private Cloud ESXi-gazdagépekre.
-5. Párosítsa az AVS Private Cloud ZVM a helyszíni ZVM.
+4. Telepítse a Zerto virtuális replikációs készüléket (VRA) a privát felhő ESXi-állomásain.
+5. Párosítsa a privát felhőzat ZVM-jét a helyszíni ZVM-mel.
 
-### <a name="set-up-zerto-virtual-protection-group"></a>Zerto virtuális védelmi csoport beállítása
+### <a name="set-up-zerto-virtual-protection-group"></a>A Zerto virtuális védelmi csoport beállítása
 
-1. Hozzon létre egy új virtuális védelmi csoportot (VPG), és határozza meg a VPG prioritását.
-2. Válassza ki azokat a virtuális gépeket, amelyeknek védelmet kíván biztosítani az üzletmenet folytonossága érdekében, és szükség esetén szabja testre a rendszerindítási sorrendet
-3. Válassza ki a helyreállítási helyet az AVS Private Cloud és az alapértelmezett helyreállítási kiszolgálóként az AVS Private Cloud-fürtként vagy az Ön által létrehozott erőforráscsoportot. Válassza a **vsanDatastore** lehetőséget a helyreállítási adattárhoz az AVS Private Cloud-on.
+1. Hozzon létre egy új virtuális védelmi csoportot (VPG), és adja meg a VPG prioritását.
+2. Válassza ki azokat a virtuális gépeket, amelyek az üzletmenet folytonossága érdekében védelmet igényelnek, és szükség esetén szabja testre a rendszerindítási sorrendet.
+3. Válassza ki a helyreállítási helyet a magánfelhőként és az alapértelmezett helyreállítási kiszolgálót a magánfelhő-fürtként vagy a létrehozott erőforráscsoportként. Válassza ki a **vsanDatastore** a helyreállítási adattár a magánfelhőben.
 
     ![VPG](media/cloudsimple-zerto-vpg.png)
 
     > [!NOTE]
-    > Az egyes virtuális gépek gazdagépének beállítását a virtuálisgép-beállítások lehetőség alatt szabhatja testre.
+    > Testreszabhatja az egyes virtuális gépek gazdagép-beállítását a Virtuálisgép-beállítások beállítás alatt.
 
-4. Szükség szerint szabja testre a tárolási beállításokat.
-5. Határozza meg a feladatátvételi hálózathoz és a feladatátvételi teszthez használt helyreállítási hálózatot a korábban létrehozott elosztott portok csoportjaként, és szükség szerint szabja testre a helyreállítási parancsfájlokat.
-6. Szükség esetén szabja testre az egyes virtuális gépek hálózati beállításait, és hozza létre a VPG.
-7. Feladatátvételi teszt a replikálás befejeződése után.
+4. Igény szerint testreszabhatja a tárolási beállításokat.
+5. Adja meg a feladatátvevő hálózathoz és a feladatátvételi teszthálózathoz használandó helyreállítási hálózatokat a korábban létrehozott elosztott portcsoportokként, és szükség szerint szabja testre a helyreállítási parancsfájlokat.
+6. Szükség esetén testreszabhatja az egyes virtuális gépek hálózati beállításait, és létrehozhatja a VPG-t.
+7. A feladatátvétel tesztelése a replikáció befejezése után.
 
 ## <a name="reference"></a>Referencia
 
-[A Zerto dokumentációja](https://www.zerto.com/myzerto/technical-documentation/)
+[Zerto dokumentáció](https://www.zerto.com/myzerto/technical-documentation/)

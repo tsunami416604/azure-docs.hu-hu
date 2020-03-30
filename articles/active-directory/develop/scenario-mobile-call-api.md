@@ -1,7 +1,7 @@
 ---
-title: Webes API meghívása Mobile-alkalmazásból | Azure
+title: Webes API hívása mobilalkalmazásból | Azure
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogyan hozhat létre webes API-kat meghívó mobil alkalmazást. (Webes API meghívása)
+description: További információ a webes API-kat meghívjaó mobilalkalmazás létrehozásáról. (Webes API-hívás.)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,36 +17,36 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: bd848fa6f74f049f97956ef1736ac2b08f3a6148
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77160151"
 ---
-# <a name="call-a-web-api-from-a-mobile-app"></a>Webes API meghívása Mobile-alkalmazásból
+# <a name="call-a-web-api-from-a-mobile-app"></a>Webes API hívása mobilalkalmazásból
 
-Miután az alkalmazás bejelentkezett egy felhasználónak, és jogkivonatokat kap, a Microsoft Authentication Library (MSAL) a felhasználóval, a felhasználó környezetével és a kiállított jogkivonatokkal kapcsolatos információkat jeleníti meg. Az alkalmazás ezeket az értékeket használhatja a webes API-k meghívásához vagy egy üdvözlő üzenet megjelenítéséhez a felhasználónak.
+Miután az alkalmazás aláírja a felhasználót, és jogkivonatokat kap, a Microsoft Authentication Library (MSAL) információkat tár fel a felhasználóról, a felhasználó környezetéről és a kiadott jogkivonatokról. Az alkalmazás ezekkel az értékekkel hívhat meg egy webes API-t, vagy üdvözlő üzenetet jeleníthet meg a felhasználónak.
 
-Ebben a cikkben a MSAL eredményét fogjuk megtekinteni. Ezután megvizsgáljuk, hogyan használhat hozzáférési tokent `AuthenticationResult` vagy `result` egy védett webes API meghívásához.
+Ebben a cikkben először megnézzük az MSAL eredményét. Ezután megvizsgáljuk, hogyan használhat egy `AuthenticationResult` hozzáférési `result` jogkivonatot, vagy hogyan hívhat meg egy védett webes API-t.
 
-## <a name="msal-result"></a>MSAL eredménye
-A MSAL a következő értékeket biztosítja: 
+## <a name="msal-result"></a>MSAL eredmény
+Az MSAL a következő értékeket adja meg: 
 
-- `AccessToken` egy HTTP-tulajdonosi kérelemben meghívja a védett webes API-kat.
-- `IdToken` a bejelentkezett felhasználóval kapcsolatos hasznos információkat tartalmaz. Ez az információ tartalmazza a felhasználó nevét, a Kezdőlap bérlőjét és a tárhely egyedi azonosítóját.
-- `ExpiresOn` a jogkivonat lejárati ideje. A MSAL kezeli az alkalmazások automatikus frissítését.
-- `TenantId` annak a bérlőnek az azonosítója, amelybe a felhasználó bejelentkezett. Azure Active Directory (Azure AD) B2B-ben lévő vendég felhasználók esetében ez az érték azonosítja azt a bérlőt, ahol a felhasználó bejelentkezett. Az érték nem azonosítja a felhasználó otthoni bérlőjét.  
-- `Scopes` a tokenhez megadott hatóköröket jelzi. A megadott hatókörök lehetnek a kért hatókörök részhalmazai.
+- `AccessToken`http-tulajdonosi kérelemben védett webes API-kat hív meg.
+- `IdToken`hasznos információkat tartalmaz a bejelentkezett felhasználóról. Ez az információ tartalmazza a felhasználó nevét, az otthoni bérlőt és a tárolás egyedi azonosítóját.
+- `ExpiresOn`a jogkivonat lejárati ideje. Az MSAL kezeli az alkalmazás automatikus frissítését.
+- `TenantId`Annak a bérlőnek az azonosítója, ahol a felhasználó bejelentkezett. Az Azure Active Directory (Azure AD) B2B vendégfelhasználói számára ez az érték azonosítja azt a bérlőt, ahol a felhasználó bejelentkezett. Az érték nem azonosítja a felhasználó otthoni bérlőjét.  
+- `Scopes`a jogkivonattal kapott hatóköröket jelzi. A megadott hatókörök a kért hatókörök egy részhalmaza lehet.
 
-A MSAL egy `Account` érték absztrakcióját is biztosítja. Az `Account` érték az aktuális felhasználó bejelentkezett fiókját jelöli:
+Az MSAL egy `Account` érték absztrakciót is biztosít. Az `Account` érték az aktuális felhasználó bejelentkezett fiókját jelöli:
 
-- `HomeAccountIdentifier` azonosítja a felhasználó otthoni bérlőjét.
-- `UserName` a felhasználó elsődleges felhasználóneve. Ez az érték Azure AD B2C felhasználók számára üres lehet.
-- `AccountIdentifier` azonosítja a bejelentkezett felhasználót. A legtöbb esetben ez az érték megegyezik a `HomeAccountIdentifier` értékével, kivéve, ha a felhasználó egy másik bérlőben található vendég.
+- `HomeAccountIdentifier`azonosítja a felhasználó otthoni bérlőjét.
+- `UserName`a felhasználó által előnyben részesített felhasználónév. Ez az érték üres lehet az Azure AD B2C-felhasználók számára.
+- `AccountIdentifier`azonosítja a bejelentkezett felhasználót. A legtöbb esetben ez az érték `HomeAccountIdentifier` megegyezik az értékkel, kivéve, ha a felhasználó egy másik bérlő vendége.
 
-## <a name="call-an-api"></a>API meghívása
+## <a name="call-an-api"></a>API hívása
 
-A hozzáférési jogkivonat meghívása után meghívhat egy webes API-t. Az alkalmazás a token használatával létrehoz egy HTTP-kérelmet, majd futtatja a kérést.
+Miután rendelkezik a hozzáférési jogkivonat, meghívhat egy webes API-t. Az alkalmazás a jogkivonatot fogja használni egy HTTP-kérelem létrehozásához, majd futtatja a kérelmet.
 
 ### <a name="android"></a>Android
 
@@ -90,7 +90,7 @@ A hozzáférési jogkivonat meghívása után meghívhat egy webes API-t. Az alk
 
 ### <a name="msal-for-ios-and-macos"></a>MSAL iOS és macOS rendszerekre
 
-A jogkivonatok beszerzésének módszerei egy `MSALResult` objektumot adnak vissza. a `MSALResult` `accessToken` tulajdonságot tesz elérhetővé. A webes API-k meghívásához a `accessToken`t használhatja. A védett webes API elérésének meghívása előtt adja hozzá ezt a tulajdonságot a HTTP-engedélyezési fejléchez.
+A jogkivonatok beszerzésének `MSALResult` módszerei egy objektumot adnak vissza. `MSALResult`egy `accessToken` ingatlant. Webes API-k hívására is használható. `accessToken` Adja hozzá ezt a tulajdonságot a HTTP-engedélyezési fejléchez, mielőtt meghívja a védett webes API eléréséhez.
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -118,17 +118,17 @@ task.resume()
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
-## <a name="make-several-api-requests"></a>Több API-kérés készítése
+## <a name="make-several-api-requests"></a>Több API-kérelem kérése
 
-Ha többször is meg kell hívnia ugyanazt az API-t, vagy ha több API-t kell meghívnia, akkor az alkalmazás létrehozásakor vegye figyelembe a következő témákat:
+Ha többször is meg kell hívnia ugyanazt az API-t, vagy ha több API-t kell hívnia, vegye figyelembe a következő témákat az alkalmazás létrehozásakor:
 
-- **Növekményes beleegyezett**: a Microsoft Identity platform lehetővé teszi az alkalmazások számára, hogy felhasználói hozzájárulásukat kapjanak, ha nem az összes indításkor szükséges engedélyekkel rendelkeznek. Minden alkalommal, amikor az alkalmazás készen áll egy API meghívására, csak a szükséges hatóköröket kell kérnie.
+- **Növekményes hozzájárulás: A**Microsoft identity platform lehetővé teszi, hogy az alkalmazások engedélyt kapjanak a felhasználótól, ha az engedélyek szükségesek, nem pedig az elején. Minden alkalommal, amikor az alkalmazás készen áll egy API-hívásra, csak a szükséges hatóköröket kell kérnie.
 
-- **Feltételes hozzáférés**: Ha több API-kérést hajt végre, akkor előfordulhat, hogy bizonyos helyzetekben további feltételes hozzáférési követelményeknek kell megfelelnie. A követelmények ily módon növekednek, ha az első kérelem nem rendelkezik feltételes hozzáférési házirendekkel, és az alkalmazás egy feltételes hozzáférést igénylő új API csendes elérését kísérli meg. A probléma kezeléséhez ügyeljen arra, hogy a csendes kérelmekkel kapcsolatos hibákat észlelje, és készüljön fel egy interaktív kérelem elvégzésére.  További információ: [útmutató a feltételes hozzáféréshez](../azuread-dev/conditional-access-dev-guide.md).
+- **Feltételes hozzáférés:** Ha több API-kérelmet, bizonyos esetekben előfordulhat, hogy további feltételes hozzáférési követelményeknek kell megfelelnie. A követelmények ily módon növekedhetnek, ha az első kérelem nem rendelkezik feltételes hozzáférési szabályzatokkal, és az alkalmazás megpróbál csendben hozzáférni egy feltételes hozzáférést igénylő új API-hoz. A probléma megoldásához győződjön meg arról, hogy a néma kérelmekből származó hibákat észleli, és készen áll egy interaktív kérésre.  További információt a [Használati útmutató a feltételes hozzáféréshez](../azuread-dev/conditional-access-dev-guide.md)című témakörben talál.
 
-## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Több API meghívása növekményes beleegyezettés és feltételes hozzáférés használatával
+## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Több API hívása növekményes hozzájárulás és feltételes hozzáférés használatával
 
-Ha ugyanahhoz a felhasználóhoz több API-t kell meghívnia, akkor a felhasználóhoz tartozó jogkivonat beszerzése után elkerülhető, hogy a felhasználó a hitelesítő adatok ismételt megadásával meghívja a `AcquireTokenSilent`t a jogkivonat lekéréséhez:
+Ha ugyanannak a felhasználónak több API-t kell hívnia, miután beszerzett egy jogkivonatot a felhasználó `AcquireTokenSilent` számára, elkerülheti, hogy ismételten hitelesítő adatokat kérjen a felhasználótól, ha ezt követően egy jogkivonatot kér:
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -138,10 +138,10 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-A beavatkozásra akkor van szükség, ha:
+Interakcióra akkor van szükség, ha:
 
-- A felhasználó jóváhagyta az első API-t, de most hozzá kell járulnia további hatókörökhöz. Ebben az esetben növekményes beleegyezett.
-- Az első API-nak nincs szüksége többtényezős hitelesítésre, de a következő API-t használja.
+- A felhasználó hozzájárult az első API-hoz, de most több hatókörhöz is hozzá kell járulnia. Ebben az esetben növekményes hozzájárulást használ.
+- Az első API-hoz nincs szükség többtényezős hitelesítésre, de a következő API igen.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -160,7 +160,7 @@ catch(MsalUiRequiredException ex)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Áthelyezés éles környezetbe](scenario-mobile-production.md)
+> [Átállás éles üzemre](scenario-mobile-production.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center GYIK – általános kérdések
-description: Gyakori kérdések a Azure Security Centerről, a fenyegetések megelőzésére, észlelésére és reagálására szolgáló termékről
+title: Az Azure Security Center – gyakori kérdések – Általános kérdések
+description: Gyakori általános kérdések az Azure Security Centerrel kapcsolatban, amely egy olyan termék, amely segít a fenyegetések megelőzésében, észlelésben és az azokra való reagálásban
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,83 +14,83 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77661839"
 ---
-# <a name="faq---general-questions-about-azure-security-center"></a>GYIK – általános kérdések Azure Security Center
+# <a name="faq---general-questions-about-azure-security-center"></a>GYAKRAN FELTETT KÉRDÉSEK – Általános kérdések az Azure Security Centerhasználatával kapcsolatban
 
-## <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
-Azure Security Center segít megakadályozni, észlelni és reagálni a fenyegetésekre az erőforrások biztonságának jobb láthatóságával és szabályozásával. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
+## <a name="what-is-azure-security-center"></a>Mi az Azure Security Center?
+Az Azure Security Center segítségével megelőzheti, észlelheti és reagálhat a fenyegetésekre, és nagyobb rálátással és az erőforrások biztonságának szabályozására. A biztonsági megoldások átfogó ökoszisztémájának alkalmazásával az összes előfizetésére vonatkozóan integrált biztonságfelügyeletet és szabályzatkezelést biztosít, és segít felderíteni az egyébként nehezen észlelhető fenyegetéseket.
 
-Security Center a Microsoft monitoring Agent használatával gyűjti és tárolja az adatokat. Részletes információk: [adatgyűjtés Azure Security Centerban](security-center-enable-data-collection.md).
-
-
-## <a name="how-do-i-get-azure-security-center"></a>Hogyan szerezhetem be az Azure Security Center?
-A Azure Security Center engedélyezve van a Microsoft Azure-előfizetéssel, és a [Azure Portal](https://azure.microsoft.com/features/azure-portal/)érhető el. A hozzáféréshez [Jelentkezzen be a portálra](https://portal.azure.com), válassza a **Tallózás**lehetőséget, majd görgessen a **Security Center**elemre.
+A Security Center a Microsoft Monitoring Agent segítségével gyűjti és tárolja az adatokat. Részletes információt az Adatgyűjtés az Azure Security Centerben ( [Adatgyűjtés az Azure Security Centerben](security-center-enable-data-collection.md)) területen talál.
 
 
-## <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Melyik Azure-erőforrásokat az Azure Security Center által figyelt?
-Az Azure Security Center figyeli a következő Azure-erőforrások:
+## <a name="how-do-i-get-azure-security-center"></a>Hogyan juthatok be az Azure Security Center?
+Az Azure Security Center engedélyezve van a Microsoft Azure-előfizetéssel, és az [Azure Portalról](https://azure.microsoft.com/features/azure-portal/)érhető el. Eléréséhez [jelentkezzen be a portálra,](https://portal.azure.com)válassza a **Tallózás**gombot, és görgessen a **Biztonsági központhoz.**
 
-* Virtuális gépek (VM-EK) (beleértve a [Cloud Services](../cloud-services/cloud-services-choose-me.md))
+
+## <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Mely Azure-erőforrásokat figyeli az Azure Security Center?
+Az Azure Security Center a következő Azure-erőforrásokat figyeli:
+
+* Virtuális gépek (VM-ek) (beleértve [a felhőszolgáltatásokat is)](../cloud-services/cloud-services-choose-me.md)
 * Virtuálisgép-méretezési csoportok
 * Azure virtuális hálózatok
-* Tárolók
-* Azure SQL service
+* Containers
+* Azure SQL szolgáltatás
 * Azure Storage-fiók
-* Azure Web Apps ( [app Service Environment](../app-service/environment/intro.md))
-* Például a webalkalmazási tűzfal a virtuális gépek és az App Service Environment az Azure-előfizetésében integrált partnermegoldások
+* Azure Web Apps [(App Service-környezetben)](../app-service/environment/intro.md)
+* Az Azure-előfizetéssel integrált partnermegoldások, például webalkalmazás-tűzfal a virtuális gépeken és az App Service-környezetben
 
-Emellett a nem Azure-t (beleértve a helyszíni gépeket is) Azure Security Center is figyelheti. A [Windows rendszerű gépek](./quick-onboard-windows-computer.md) és a Linux rendszerű [gépek](./quick-onboard-linux-computer.md) egyaránt támogatottak.
-
-
-## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Hogyan tekinthetem meg a saját Azure-erőforrások aktuális biztonsági állapotát?
-A **Security Center áttekintő** oldal a környezet általános biztonsági állapotát mutatja számítás, hálózatkezelés, tárterület & adatok és alkalmazások szerint lebontva. Minden erőforrástípus tartalmaz egy mutatót, amely az azonosított biztonsági réseket mutatja be. Minden egyes csempére kattintva azonosítja az erőforrást az előfizetésében leltára együtt a Security Center, biztonsági problémák listáját jeleníti meg.
+Emellett a nem Azure-beli (beleértve a helyszíni) gépeket is figyelheti az Azure Security Center. Mind [a Windows-gépek,](./quick-onboard-windows-computer.md) mind a [Linux-gépek](./quick-onboard-linux-computer.md) támogatottak.
 
 
-
-## <a name="what-is-a-security-policy"></a>Mi az a biztonsági szabályzatot?
-Biztonsági szabályzat határozza meg, az adott előfizetésen belüli erőforrások ajánlott szabályozza. Az Azure Security Centerben szabályzatokat az Azure-előfizetést a vállalat biztonsági elvárásainak és az alkalmazások típusához vagy az egyes előfizetések adatainak érzékenysége tartozó meghatározása.
-
-Az Azure Security Center meghajtó biztonsági javaslatok és a figyelés az engedélyezett biztonsági szabályzatok. A biztonsági házirendekkel kapcsolatos további információkért lásd: [biztonsági állapot figyelése Azure Security Center](security-center-monitoring.md).
+## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Hogyan láthatom az Azure-erőforrások aktuális biztonsági állapotát?
+A **Biztonsági központ áttekintése** lap a környezet általános biztonsági állapotát jeleníti meg számítási, hálózati, tárolási & adatok és alkalmazások szerinti bontásban. Minden erőforrástípusnak van egy jelzője, amely az azonosított biztonsági réseket mutatja. Az egyes csempékre kattintva megjelenik a Biztonsági központ által azonosított biztonsági problémák listája, valamint az előfizetéserőforrásainak leltára.
 
 
-## <a name="who-can-modify-a-security-policy"></a>Ki módosíthatja a biztonsági szabályzatot?
-Biztonsági szabályzat módosításához a rendszergazda vagy a tulajdonosának vagy Közreműködőjének előfizetésben kell lennie.
 
-A biztonsági szabályzatok konfigurálásával kapcsolatos további információkért lásd: [biztonsági házirendek beállítása Azure Security Centerban](tutorial-security-policy.md).
+## <a name="what-is-a-security-policy"></a>Mi az a biztonsági házirend?
+A biztonsági házirend határozza meg a megadott előfizetésen belüli erőforrásokhoz ajánlott vezérlők készletét. Az Azure Security Centerben szabályzatokat határozmeg az Azure-előfizetésekhez a vállalat biztonsági követelményeinek és az egyes előfizetésekben lévő alkalmazások típusának vagy érzékenységének megfelelően.
+
+Az Azure Security Centerben engedélyezett biztonsági szabályzatok biztonsági javaslatokat és figyelést eredményeznek. A biztonsági házirendekről a [Biztonsági állapot figyelése az Azure Security Centerben.](security-center-monitoring.md)
 
 
-## <a name="what-is-a-security-recommendation"></a>Mi az a biztonsági javaslatok?
-Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha az azonosított potenciális biztonsági réseket, javaslatok jönnek létre. A javaslatok végigvezetik a szükséges vezérlőt konfigurálásának folyamatán. Példák:
+## <a name="who-can-modify-a-security-policy"></a>Ki módosíthatja a biztonsági házirendet?
+A biztonsági házirend módosításához biztonsági rendszergazdának vagy az adott előfizetés tulajdonosának vagy közreműködőjének kell lennie.
 
-* Kiépítés kártevőirtó szoftverek azonosításához és kártevő szoftverek eltávolítása
-* [Hálózati biztonsági csoportok](../virtual-network/security-overview.md) és szabályok a virtuális gépek forgalmának vezérléséhez
-* A webalkalmazások célzó támadások elleni segítségével webalkalmazási tűzfal kiépítése
+A biztonsági házirendek konfigurálásáról a [Biztonsági házirendek beállítása az Azure Security Centerben című témakörben](tutorial-security-policy.md)olvashat.
+
+
+## <a name="what-is-a-security-recommendation"></a>Mi az a biztonsági javaslat?
+Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. A lehetséges biztonsági rések azonosításakor javaslatok jönnek létre. A javaslatok végigvezetik a szükséges vezérlő konfigurálásának folyamatán. Példák:
+
+* Kártevőirtó kiépítés a kártékony szoftverek azonosításához és eltávolításához
+* [Hálózati biztonsági csoportok](../virtual-network/security-overview.md) és szabályok a virtuális gépek forgalmának szabályozásához
+* Webalkalmazás-tűzfal kiépítése a webalkalmazásokat célzó támadások elleni védekezés érdekében
 * Hiányzó rendszerfrissítések telepítése
 * Az operációs rendszer azon konfigurációinak kezelése, amelyek nem felelnek meg a javasolt alapkonfigurációknak
 
-Csak azok a javaslatok, amelyek engedélyezve vannak a biztonsági szabályzatok Itt jelennek meg.
+Itt csak a biztonsági házirendekben engedélyezett javaslatok jelennek meg.
 
 
 
-## <a name="what-triggers-a-security-alert"></a>Mi a biztonsági riasztást aktivál?
-Az Azure Security Center automatikusan gyűjti, elemzi és biztosítók az Azure-erőforrások, a hálózati és a partneri megoldások, például kártevőirtó- és tűzfalak naplóadatait. Fenyegetések észlelése esetén a központ biztonsági riasztást hoz létre. Példák fenyegetés észlelésére:
+## <a name="what-triggers-a-security-alert"></a>Mi indítja el a biztonsági riasztást?
+Az Azure Security Center automatikusan gyűjti, elemzi és egyesíti a naplóadatokat az Azure-erőforrásokból, a hálózatból és a partnermegoldásokból, például a kártevőirtó és a tűzfalakból. Fenyegetések észlelése esetén a központ biztonsági riasztást hoz létre. Példák fenyegetés észlelésére:
 
 * Feltört virtuális gépek, amelyek kártékonyként azonosított IP-címekkel kommunikálnak
-* Használatával a Windows hibajelentés észlelt speciális kártevő
+* A Windows hibajelentésével észlelt speciális kártevők
 * Virtuális gépek elleni, a teljes kipróbálás módszerén alapuló támadások
-* Integrált partneri biztonsági megoldások, például a kártevő- vagy webalkalmazás-tűzfalak biztonsági riasztásai
+* Biztonsági riasztások integrált partnerbiztonsági megoldásokból, például kártevőirtó vagy webalkalmazás-tűzfalakból
 
 
-## Miért változnak a biztonsági pontszám értékei? <a name="secure-score-faq"></a>
-Február 2019-én a súlyosságuk jobb illeszkedése érdekében Security Center néhány javaslat pontszámát. Ennek a beállításnak az eredményeképpen előfordulhat, hogy a biztonsági pontszámok teljes értékei módosulnak.  A biztonságos pontszámról további információt a [biztonságos pontszám kiszámítása](security-center-secure-score.md)című témakörben talál.
+## <a name="why-did-secure-score-values-change"></a>Miért változtak a Biztonságos pontszám értékek? <a name="secure-score-faq"></a>
+2019 februárjától a Security Center módosította néhány ajánlás pontszámát, hogy jobban illeszkedjen a súlyosságukhoz. Ennek a korrekciónak az eredményeként változások következhetnek be az általános biztonságos pontszámértékekben.  A biztonságos pontszámról a [Biztonságos pontszám számítása című](security-center-secure-score.md)témakörben talál további információt.
 
 
-## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Mi a különbség a fenyegetéseket észlelt, és kapni a Microsoft Security Response Center és az Azure Security Center által?
-A Microsoft Security Response Center (MSRC) hajt végre, válassza ki a biztonsági figyelése az Azure-hálózat és az infrastruktúra, és harmadik felektől származó threat intelligence és visszaélések panaszok kap. MSRC tudomására jut, hogy vásárlói adatokat egy jogosulatlan vagy illetéktelen fél hozzáfért-e, illetve, hogy az Azure használatát az ügyfél nem felel meg a feltételeket az elfogadható használja, amikor egy biztonsági incidens manager értesíti a. Értesítés általában akkor fordul elő, a biztonsági felelősök kapcsolati adatait meg az Azure Security Center vagy az Azure-előfizetés tulajdonosa, ha nincs megadva a biztonsági kapcsolattartó e-mail elküldésével.
+## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Mi a különbség a Microsoft Security Response Center és az Azure Security Center által észlelt és az Azure Security Center által észlelt és riasztást küldő fenyegetések között?
+A Microsoft Security Response Center (MSRC) az Azure-hálózat és -infrastruktúra kiválasztott biztonsági figyelését végzi, és harmadik felektől fenyegetésfelderítési és visszaélési panaszokat kap. Ha az MSRC tudomására jut, hogy az ügyféladatokhoz egy jogellenes vagy jogosulatlan fél hozzáfért, vagy hogy az Ügyfél által használt Azure nem felel meg az elfogadható használatra vonatkozó feltételeknek, a biztonsági incidenskezelő értesíti az ügyfelet. Értesítés általában akkor történik, ha e-mailt küld az Azure Security Centerben megadott biztonsági kapcsolattartóknak vagy az Azure-előfizetés tulajdonosának, ha nincs megadva biztonsági kapcsolattartó.
 
-A Security Center egy Azure-szolgáltatás, amely folyamatosan figyeli az ügyfél Azure-környezetben, és automatikusan észlelni a potenciálisan kártékony tevékenységek számos elemzési vonatkozik. Ezek az észlelések illesztett biztonsági riasztásai a Security Center irányítópultján.
+A Security Center egy Azure-szolgáltatás, amely folyamatosan figyeli az ügyfél Azure-környezetét, és elemzéseket alkalmaz a potenciálisan rosszindulatú tevékenységek széles körének automatikus észleléséhez. Ezek az észlelések biztonsági riasztásokként jelennek meg a Security Center irányítópultján.

@@ -1,6 +1,6 @@
 ---
-title: Event hub-adatkapcsolat létrehozása az Azure Adatkezelőhoz Azure Resource Manager sablon használatával
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy Event hub-adatkapcsolatot az Azure Adatkezelőhoz Azure Resource Manager sablon használatával.
+title: Event Hub-adatkapcsolat létrehozása az Azure Data Explorer számára az Azure Resource Manager-sablon használatával
+description: Ebben a cikkben megtudhatja, hogyan hozhat létre Event Hub-adatkapcsolatot az Azure Data Explorer az Azure Resource Manager-sablon használatával.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,32 +8,32 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/28/2019
 ms.openlocfilehash: fec8ab7db85eefb1a614511a3f810cc39f69fb68
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74669206"
 ---
-# <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>Event hub-adatkapcsolat létrehozása az Azure Adatkezelőhoz Azure Resource Manager sablon használatával
+# <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>Event Hub-adatkapcsolat létrehozása az Azure Data Explorer számára az Azure Resource Manager-sablon használatával
 
 > [!div class="op_single_selector"]
-> * [Portal](ingest-data-event-hub.md)
-> * [C#](data-connection-event-hub-csharp.md)
+> * [Portál](ingest-data-event-hub.md)
+> * [C #](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager-sablon](data-connection-event-hub-resource-manager.md)
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő a betöltést (az adatok betöltését) Event Hubs, IoT hubokból és blob-tárolóba írt blobokból biztosítja. Ebben a cikkben a Azure Resource Manager sablon használatával hoz létre egy Event hub-adatkapcsolatot az Azure Adatkezelőhoz.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer az Event Hubs, az IoT Hubs és a blobtárolókba írt blobok betöltését (adatbetöltését) kínálja. Ebben a cikkben hozzon létre egy Event Hub-adatkapcsolatot az Azure Data Explorer az Azure Resource Manager sablon használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * [Fürt és adatbázis](create-cluster-database-portal.md) létrehozása
-* [Tábla és oszlop megfeleltetésének](ingest-data-event-hub.md#create-a-target-table-in-azure-data-explorer) létrehozása
-* [Event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) létrehozása
+* [Táblázat és oszlopleképezés](ingest-data-event-hub.md#create-a-target-table-in-azure-data-explorer) létrehozása
+* [Eseményközpont létrehozása](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
 
-## <a name="azure-resource-manager-template-for-adding-an-event-hub-data-connection"></a>Az Event hub-adatkapcsolat hozzáadásához Azure Resource Manager sablon
+## <a name="azure-resource-manager-template-for-adding-an-event-hub-data-connection"></a>Azure Resource Manager-sablon az Event Hub-adatkapcsolat hozzáadásához
 
-Az alábbi példa egy Azure Resource Manager sablont mutat be egy Event hub-adatkapcsolat hozzáadásához.  A [sablont a Azure Portal szerkesztheti és telepítheti](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) az űrlap használatával.
+A következő példa egy Azure Resource Manager-sablont mutat be az Event Hub-adatkapcsolat hozzáadásához.  A [sablon t szerkesztheti és üzembe helyezheti az Azure Portalon](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) az űrlap használatával.
 
 ```json
 {

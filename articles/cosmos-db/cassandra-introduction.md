@@ -1,6 +1,6 @@
 ---
 title: Az Azure Cosmos DB Cassandra API bemutatása
-description: Megtudhatja, hogyan használhatja a Azure Cosmos DBt a meglévő alkalmazások átemeléséhez, valamint új alkalmazások létrehozásához a Cassandra-illesztőprogramok és a CQL használatával
+description: Ismerje meg, hogyan használhatja az Azure Cosmos DB-t meglévő alkalmazások "lift-and-shift" "felemelésére és eltolására", és hogyan hozhat létre új alkalmazásokat a Cassandra-illesztőprogramok és a CQL használatával
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,15 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 05/21/2019
 ms.openlocfilehash: 075b55b5a798924b55ef9d901e4d2e9ecfc9dc1e
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77597575"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API bemutatása
 
-Az Azure Cosmos DB Cassandra API az [Apache Cassandrára](https://cassandra.apache.org) írt alkalmazások adattáraként használható. Ez azt jelenti, hogy a meglévő CQLv4-kompatibilis [Apache-illesztőprogramok](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) segítségével a Cassandrára írt alkalmazások mostantól kommunikálhatnak az Azure Cosmos DB Cassandra API-val. Sok esetben átválthat az Apache Cassandra használatával Azure Cosmos DB Cassandra API használatára, csak a kapcsolódási karakterláncok módosításával. 
+Az Azure Cosmos DB Cassandra API az [Apache Cassandrára](https://cassandra.apache.org) írt alkalmazások adattáraként használható. Ez azt jelenti, hogy a meglévő CQLv4-kompatibilis [Apache-illesztőprogramok](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) segítségével a Cassandrára írt alkalmazások mostantól kommunikálhatnak az Azure Cosmos DB Cassandra API-val. Sok esetben az Apache Cassandra használatával az Azure Cosmos DB Cassandra API-jának használatával válthat a kapcsolati karakterlánc módosításával. 
 
 A Cassandra API segítségével a már ismert Cassandra Query Language (CQL), a Cassandra-alapú eszközök (például a cqlsh) és a Cassandra-ügyfélillesztőprogramok használatával kezelhetőek az Azure Cosmos DB-ben tárolt adatok.
 
@@ -37,14 +37,14 @@ A Cassandra API segítségével a már ismert Cassandra Query Language (CQL), a 
 
 **Nagyvállalati szint**: Az Azure Cosmos DB [megfelelőségi tanúsítványainak](https://www.microsoft.com/trustcenter) köszönhetően a felhasználók biztosak lehetnek benne, hogy a platform használata biztonságos. Az Azure Cosmos DB emellett biztosítja az adatok titkosítását a továbbítás és a tárolás során, valamint egy IP-tűzfalat is tartalmaz, illetve auditnaplókat a vezérlősík tevékenységeinek felügyelete érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A következő nyelvspecifikus alkalmazások összeállításával gyorsan hozzákezdhet a Cassandra API-adatok létrehozásához és kezeléséhez:
   - [Node.js-alkalmazás](create-cassandra-nodejs.md)
   - [.NET-alkalmazás](create-cassandra-dotnet.md)
   - [Python-alkalmazás](create-cassandra-python.md)
 
-* Ismerkedés a [Cassandra API-fiókok, -adatbázisok és -táblák létrehozásával](create-cassandra-api-account-java.md) Java-alkalmazás használatával.
+* Cassandra [API-fiók, adatbázis és tábla javaalkalmazás](create-cassandra-api-account-java.md) használatával történő létrehozásával ismerkedés.
 
 * [Mintaadatokat betöltése a Cassandra API táblába](cassandra-api-load-data.md) Java-alkalmazás használatával.
 

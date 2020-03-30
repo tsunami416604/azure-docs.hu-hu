@@ -1,50 +1,50 @@
 ---
-title: Egyszerű naplók a Azure Monitorban (előzetes verzió) | Microsoft Docs
-description: Az egyszerű naplók felülete lehetővé teszi, hogy alapszintű lekérdezéseket hozzon létre Azure Monitor anélkül, hogy közvetlenül interakciót KQL.
+title: Egyszerű naplók élményaz Azure Monitor (előzetes verzió) | Microsoft dokumentumok
+description: Az egyszerű naplók felület lehetővé teszi, hogy az Azure Monitorban alapvető lekérdezéseket hozzon létre a KQL-lel való közvetlen interakció nélkül.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/12/2019
 ms.openlocfilehash: 59bcb42edaf7d46498a3514b4f1c919c6e8cc0c4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660257"
 ---
-# <a name="simple-logs-experience-in-azure-monitor-preview"></a>Egyszerű naplók a Azure Monitorban (előzetes verzió)
-A Azure Monitor a KQL nyelv használatával [gazdag felhasználói élményt](get-started-portal.md) nyújt a [naplók](log-query-overview.md) létrehozásához. Előfordulhat, hogy nincs szükség a KQL teljes teljesítményére, és az alapszintű lekérdezési követelményekhez inkább egyszerűsített felhasználói élményt szeretne. Az egyszerű naplók felülete lehetővé teszi, hogy alapszintű lekérdezéseket hozzon létre anélkül, hogy közvetlenül interakciót KQL. Az egyszerű naplókat KQL tanulási eszközként is használhatja, mivel kifinomultabb lekérdezésekre van szükség.
+# <a name="simple-logs-experience-in-azure-monitor-preview"></a>Egyszerű naplók élménye az Azure Monitorban (előzetes verzió)
+Az Azure Monitor [gazdag élményt](get-started-portal.md) nyújt a KQL-nyelven létrehozott [naplólekérdezések](log-query-overview.md) létrehozásához. Előfordulhat, hogy nem igényel teljes erejét KQL mégis, és inkább egy egyszerűsített élményt az alapvető lekérdezési követelmények. Az Egyszerű naplók felület lehetővé teszi, hogy alapvető lekérdezéseket hozzon létre anélkül, hogy közvetlenül kommunikálna a KQL-lel. Az egyszerű naplókat a KQL tanulási eszközeként is használhatja, mivel kifinomultabb lekérdezésekre van szüksége.
 
 > [!NOTE]
-> Az egyszerű naplók jelenleg csak Cosmos DB és kulcstartók tesztelésére lettek implementálva. Ossza meg velünk a kapcsolatot a Microsofttal a [felhasználói hangon](https://feedback.azure.com/forums/913690-azure-monitor) keresztül, hogy segítsen megállapítani, hogy kiterjesztjük és Kiszabadítjuk ezt a funkciót.
+> Egyszerű naplók jelenleg csak a Cosmos DB és a Key Vaults tesztként van megvalósítva. Kérjük, ossza meg tapasztalatait a Microsofttal a [User Voice](https://feedback.azure.com/forums/913690-azure-monitor) segítségével, hogy segítsen nekünk eldönteni, hogy bővítjük-e és feladjuk-e ezt a funkciót.
 
 
 ## <a name="scope"></a>Hatókör
-Az egyszerű naplók a kiválasztott erőforráshoz tartozó *AzureDiagnostics*, *AzureMetrics*és *AzureActivity* táblából származó adatok lekérését végzik. 
+Az egyszerű naplók felület lekéri az adatokat az *AzureDiagnostics*, *AzureMetrics*és *AzureActivity* tábla a kiválasztott erőforrás. 
 
 ## <a name="using-simple-logs"></a>Egyszerű naplók használata
-Navigáljon az Azure-előfizetésében található bármely Cosmos DB vagy Key Vaulthoz a [naplók log Analytics munkaterületen való összegyűjtéséhez konfigurált diagnosztikai beállításokkal](../platform/resource-logs-collect-storage.md). Az egyszerű naplók felületének megnyitásához kattintson a **figyelés** menü **naplók** elemére.
+Keresse meg az Azure-előfizetésbármely Cosmos DB-jét vagy Key Vaultját a [Log Analytics-munkaterületen naplók gyűjtésére beállított diagnosztikai beállításokkal.](../platform/resource-logs-collect-storage.md) Kattintson a **Figyelés** menü **Naplók parancsára** az Egyszerű naplók felület megnyitásához.
 
 ![Menü](media/simple-logs/menu.png)
 
-Válasszon ki egy **mezőt** és egy **operátort** , és adjon meg egy **értéket** az összehasonlításhoz. Kattintson a **+** elemre, és adja meg **és/vagy** adjon hozzá további feltételeket.
+Jelöljön ki egy **mezőt** és **operátort,** és adjon meg **egy összehasonlítási értéket.** Kattintson ide, **+** és adja meg **az És/Vagy értéket** további feltételek hozzáadásához.
 
 ![Feltételek](media/simple-logs/criteria.png)
 
-A lekérdezés eredményeinek megtekintéséhez kattintson a **Futtatás** gombra.
+A lekérdezés eredményének megtekintéséhez kattintson a **Futtatás** gombra.
 
 ## <a name="view-and-edit-kql"></a>KQL megtekintése és szerkesztése
-Válassza a **lekérdezéstervező** lehetőséget az egyszerű naplók lekérdezés által generált KQL megnyitásához a teljes log Analytics felületén. 
+Válassza **a Lekérdezésszerkesztőt** az Egyszerű naplók lekérdezés által létrehozott KQL megnyitásához a teljes Log Analytics-élményben. 
 
-![Lekérdezés-szerkesztő](media/simple-logs/query-editor.png)
+![Lekérdezésszerkesztő](media/simple-logs/query-editor.png)
 
-Közvetlenül szerkesztheti a KQL, és más funkciókat is használhat Log Analytics például szűrőket az eredmények pontosításához.
+Közvetlenül szerkesztheti a KQL-t, és a Log Analytics egyéb funkcióit, például a szűrőket is használhatja az eredmények további finomításához.
 
 ![KQL szerkesztése](media/simple-logs/edit-kql.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Végezzen el egy oktatóanyagot a [Azure Portal log Analytics használatáról](get-started-portal.md).
-- Végezzen el egy oktatóanyagot a [naplók írásához](get-started-portal.md).
+- Töltse ki az [Azure Portalon a Log Analytics használatával](get-started-portal.md)kapcsolatos oktatóanyagot.
+- A [naplólekérdezések írásával](get-started-portal.md)kapcsolatos oktatóanyag befejezése .

@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (AVS) – vCenter beállítása egy AVS privát felhőben a vRealize Automation szolgáltatáshoz
-description: Leírja, hogyan állíthat be VMware vCenter-kiszolgálót az AVS Private-felhőben a VMware vRealize Automation-végpontként
+title: Azure VMware-megoldás a CloudSimple-től – VCenter beállítása a magánfelhőben a vRealize automatizáláshoz
+description: Ez a témakör azt ismerteti, hogy miként állítható be egy VMware vCenter-kiszolgáló a CloudSimple private cloud szolgáltatásban a VMware vRealize Automation végpontjaként
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,89 +8,89 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 41106498594ac05b944323e5f5e63de739aedf37
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024840"
 ---
-# <a name="set-up-vcenter-on-your-avs-private-cloud-for-vmware-vrealize-automation"></a>VCenter beállítása az AVS Private Cloud-on a VMware vRealize Automation szolgáltatáshoz
+# <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>VCenter beállítása a VMware-hez való privát felhőben vMware vRealize Automation
 
-A VMware vCenter-kiszolgálót beállíthatja az AVS Private-felhőben a VMware vRealize Automation végpontjának.
+VMware vCenter-kiszolgálót a CloudSimple Private Cloud szolgáltatásban a VMware vRealize Automation végpontjaként állíthat be.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-Végezze el ezeket a feladatokat a vCenter-kiszolgáló konfigurálása előtt:
+A vCenter-kiszolgáló konfigurálása előtt végezze el az alábbi feladatokat:
 
-* Konfiguráljon egy [helyek közötti VPN-kapcsolatot](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) a helyszíni környezet és az AVS Private Cloud között.
-* [Konfigurálja a helyi DNS-kérések DNS-továbbítását](on-premises-dns-setup.md) az AVS Private Cloud DNS-kiszolgálóira.
-* A következő táblázatban felsorolt engedélyek készletével hozzon létre egy [támogatási kérelmet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) a vRealize Automation-IaaS létrehozásához.
+* Konfiguráljon [egy helyek közötti VPN-kapcsolatot](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) a helyszíni környezet és a magánfelhő között.
+* [Konfigurálja a helyszíni DNS-kérelmek DNS-továbbítását](on-premises-dns-setup.md) a magánfelhő DNS-kiszolgálóinak.
+* Nyújtson be egy [támogatási kérelmet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) egy vRealize Automation IaaS felügyeleti felhasználó létrehozásához az alábbi táblázatban felsorolt engedélykészlettel.
 
 | Attribútum értéke | Engedély |
 ------------ | ------------- |  
-| Datastore |  Tárterület foglalása <br> Adattár tallózása |
-| Adattár-fürt | Adattár-fürt konfigurálása |
+| Adattár |  Hely felszabadítása <br> Adattár tallózása |
+| Adattár-fürt | Adattárfürt konfigurálása |
 | Mappa | Mappa létrehozása <br>Mappa törlése |
 | Globális |  Egyéni attribútumok kezelése<br>Egyéni attribútum beállítása |
-| Network (Hálózat) | Hálózat kiosztása |
+| Network (Hálózat) | Hálózat hozzárendelése |
 | Engedélyek | Engedélyek módosítása |
-| Erőforrás | Virtuális gép erőforrás-készlethez rendelése<br>Virtuális gép migrálása<br>Migrálás virtuális gépen |
-| Virtuális gépek leltározása |  Létrehozás meglévőből<br>Új létrehozása<br>Áthelyezés<br>Eltávolítás | 
-| Virtuális gép interakciója |  CD-adathordozó konfigurálása<br>Konzol interakciója<br>Eszköz csatlakoztatása<br>Kikapcsolás<br>Bekapcsolás<br>Alaphelyzetbe állítás<br>Felfüggesztheti<br>Eszközök telepítése | 
-| Virtuális gép konfigurációja |  Meglévő lemez hozzáadása<br>Új lemez hozzáadása<br>Hozzáadás vagy eltávolítás<br>Lemez eltávolítása<br>Extra szintű<br>CPU-szám módosítása<br>Erőforrás módosítása<br>Virtuális lemez kiterjesztése<br>Lemez Change Tracking<br>Memória<br>Eszközbeállítások módosítása<br>Átnevezés<br>Jegyzet beállítása (5,0-es és újabb verziók)<br>Beállítások<br>Swapfile elhelyezése |
-| Kiépítés |  Testreszabás<br>Sablon klónozása<br>Virtuális gép klónozása<br>Sablon üzembe helyezése<br>Testreszabási specifikációk olvasása |
-| Virtuális gép állapota | Pillanatkép létrehozása<br>Pillanatkép eltávolítása<br>Helyreállítás pillanatképre |
+| Erőforrás | Virtuális gép hozzárendelése erőforráskészlethez<br>Kikapcsolt virtuális gép áttelepítése<br>Powered áttelepítése virtuális gépen |
+| Virtuális gép leltára |  Létrehozás meglévő<br>Új létrehozása<br>Áthelyezés<br>Eltávolítás | 
+| Virtuális gép interakciója |  CD-adathordozó konfigurálása<br>Konzollal való interakció<br>Eszközkapcsolat<br>Kikapcsolás<br>Bekapcsolás<br>Alaphelyzetbe állítás<br>Felfüggesztés<br>Eszközök telepítése | 
+| Virtuális gép konfigurációja |  Meglévő lemez hozzáadása<br>Új lemez hozzáadása<br>Hozzáadás vagy eltávolítás<br>Lemez eltávolítása<br>Speciális<br>Processzorok számának módosítása<br>Erőforrás módosítása<br>Virtuális lemez bővítése<br>Lemezváltozások nyomon követése<br>Memory (Memória)<br>Eszközbeállítások módosítása<br>Átnevezés<br>A Jegyzet beállítása (5.0-s és újabb verzió)<br>Beállítások<br>Felcserélő fájl elhelyezése |
+| Kiépítés |  Testreszabás<br>Klónozó sablon<br>Virtuális gép klónozása<br>Sablon üzembe helyezése<br>Testreszabási specifikációk olvasása |
+| Virtuális gép állapota | Pillanatkép létrehozása<br>Pillanatkép eltávolítása<br>Visszaállítás a pillanatképhez |
 
-## <a name="install-vrealize-automation-in-your-on-premises-environment"></a>A vRealize Automation telepítése a helyszíni környezetben
+## <a name="install-vrealize-automation-in-your-on-premises-environment"></a>Telepítse a vRealize Automation alkalmazást a helyszíni környezetben
 
-1. Jelentkezzen be a vRealize Automation IaaS-kiszolgáló berendezésbe az AVS-támogatást létrehozó IaaS-rendszergazdaként.
-2. Telepítsen egy vSphere-ügynököt a vRealize Automation-végponthoz.
-    1. Nyissa meg a https://*VRA-URL*: 5480/Installer címet, ahol a *VRA-URL-* cím az a URL-cím, amelyet a vRealize Automation felügyeleti felhasználói felületének eléréséhez használ.
-    2. A telepítő letöltéséhez kattintson a **IaaS-telepítőre** .<br>
-    A telepítési fájl elnevezési konvenciója setup_*VRA-URL-* @5480.exe.
-    3. Futtassa a telepítőt. Az üdvözlő képernyőn kattintson a **tovább**gombra.
-    4. Fogadja el a LICENCSZERZŐDÉSt, és kattintson a **tovább**gombra.
-    5. Adja meg a bejelentkezési adatokat, kattintson a **tanúsítvány elfogadása**elemre, majd kattintson a **tovább**gombra.
-    ![vRA hitelesítő adatai](media/configure-vra-endpoint-login.png)
-    6. Válassza az **egyéni telepítési** és **proxy ügynökök** lehetőséget, majd kattintson a **tovább**gombra.
-    ![vRA telepítési típusa](media/configure-vra-endpoint-install-type.png)
-    7. Adja meg a IaaS-kiszolgáló bejelentkezési adatait, és kattintson a **tovább**gombra. Ha Active Directory használ, írja be a felhasználónevet **tartomány \ felhasználó** formátumban. Ellenkező esetben használja **user@domain** formátumot.
-    ![vRA bejelentkezési adatai](media/configure-vra-endpoint-account.png)
-    8. A proxybeállítások esetében adja meg a **vSphere** értéket az **ügynök típusaként**. Adja meg az ügynök nevét.
-    9. Adja meg a IaaS-kiszolgáló teljes tartománynevét a **Manager Service Host** és a **Model Manager webszolgáltatás gazdagép** mezőiben. Kattintson a **test (tesztelés** ) elemre a minden FQDN-értékhez tartozó kapcsolatok teszteléséhez. Ha a teszt sikertelen, módosítsa a DNS-beállításokat úgy, hogy az IaaS-kiszolgáló állomásneve fel legyen oldva.
-    10. Adja meg a vCenter-kiszolgáló végpontjának nevét az AVS Private Cloud számára. Jegyezze fel a nevet a konfigurációs folyamat későbbi részében való használatra.
+1. Jelentkezzen be a vRealize Automation IaaS kiszolgálói készülékbe a CloudSimple-támogatás által az Ön számára létrehozott IaaS-rendszergazdaként.
+2. Telepítsen egy vSphere-ügynököt a vRealize Automation végponthoz.
+    1. Nyissa meg https://*vra-url*:5480/installer, ahol a *vra-url* az az URL- cím, amelyet a vRealize Automation felügyeleti felhasználói felületének eléréséhez használ.
+    2. A telepítő letöltéséhez kattintson az **IaaS telepítőre.**<br>
+    A telepítőfájl elnevezési konvenciója setup_*vra-url*@5480.exe.
+    3. Indítsa el a telepítőt. Az üdvözlőképernyőn kattintson a **Tovább** gombra.
+    4. Fogadja el a eula-t, és kattintson a **Tovább**gombra.
+    5. Adja meg a bejelentkezési adatokat, kattintson **a Tanúsítvány elfogadása**gombra, majd a **Tovább**gombra.
+    ![vRA hitelesítő adatok](media/configure-vra-endpoint-login.png)
+    6. Válassza **az Egyéni telepítés** és **proxyügynökök lehetőséget,** majd kattintson a **Tovább**gombra.
+    ![vRA telepítési típus](media/configure-vra-endpoint-install-type.png)
+    7. Adja meg az IaaS-kiszolgáló bejelentkezési adatait, és kattintson a **Tovább**gombra. Active Directory használata esetén adja meg a felhasználónevet **tartomány\felhasználó** formátumban. Ellenkező esetben **user@domain** használja a formátumot.
+    ![vRA bejelentkezési adatok](media/configure-vra-endpoint-account.png)
+    8. A proxybeállításokhoz írja be a **vSphere** for **Agent type parancsot.** Adja meg az ügynök nevét.
+    9. Írja be az IaaS-kiszolgáló teljes tartománynát a **Manager-szolgáltatásgazda** és a **Model Manager webszolgáltatás-állomás** mezőkbe. Kattintson a **Teszt** gombra az egyes teljes qdn-értékek kapcsolatának teszteléséhez. Ha a teszt sikertelen, módosítsa a DNS-beállításokat úgy, hogy az IaaS-kiszolgáló állomásneve feloldódjon.
+    10. Adja meg a virtuális központ kiszolgálóvégpontjának nevét a magánfelhőhöz. Rögzítse a nevet a konfigurációs folyamat későbbi részében történő használatra.
 
-        ![vRA-telepítési proxy](media/configure-vra-endpoint-proxy.png)
+        ![vRA telepítési proxy](media/configure-vra-endpoint-proxy.png)
 
     11. Kattintson a **Tovább** gombra.
-    12. Kattintson az **Install** (Telepítés) gombra.
+    12. Kattintson a **Telepítés gombra.**
 
 ## <a name="configure-the-vsphere-agent"></a>A vSphere-ügynök konfigurálása
 
-1. Nyissa meg a https://*VRA-URL*/vcac, és jelentkezzen be **ConfigurationAdmin**néven.
-2. Válassza az **infrastruktúra** > **végpontok** > **végpontok**lehetőséget.
-3. Válassza az **új** > **virtuális** > **vSphere**lehetőséget.
-4. Adja meg az előző eljárásban megadott vSphere-végpont nevét.
-5. A **cím**mezőbe írja be az AVS Private Cloud vCenter Server URL-címét a https://*vCenter-FQDN*/SDK formátumban, ahol a *vCenter-FQDN* a vCenter-kiszolgáló neve.
-6. Adja meg a vRealize Automation IaaS rendszergazda felhasználójának hitelesítő adatait, amelyet az AVS-támogatás hozott létre.
-7. A felhasználói hitelesítő adatok ellenőrzéséhez kattintson a **Kapcsolódás tesztelése** gombra. Ha a teszt sikertelen, ellenőrizze az URL-címet, a fiók adatait és a [végpont nevét](#verify-the-endpoint-name) , majd a tesztet.
-8. Sikeres tesztelés után kattintson az **OK** gombra az vSphere-végpont létrehozásához.
-    ![vRA-végponti konfigurációs hozzáférési](media/configure-vra-endpoint-vra-edit.png)
+1. Nyissa meg https://*vra-url*/vcac kapcsolót, és jelentkezzen be **ConfigurationAdmin**néven.
+2. Válassza **ki az infrastruktúra** > **végpontjainak** > **végpontjait.**
+3. Válassza az **Új** > **virtuális** > **vSphere**lehetőséget.
+4. Adja meg az előző eljárásban megadott vSphere végpont nevét.
+5. Cím **esetén**adja meg a Private Cloud vCenter Server URL-címét https://*vcenter-fqdn*/sdk formátumban, ahol a *vcenter-fqdn* a vCenter-kiszolgáló neve.
+6. Adja meg a hitelesítő adatokat a vRealize Automation IaaS felügyeleti felhasználó, amely CloudSimple támogatás által létrehozott.
+7. Kattintson a **Kapcsolat tesztelése** gombra a felhasználói hitelesítő adatok érvényesítéséhez. Ha a teszt sikertelen, ellenőrizze az URL-címet, a fiókadatokat és a [végpont nevét,](#verify-the-endpoint-name) és tesztelje újra.
+8. Sikeres teszt után kattintson az **OK** gombra a vSphere-végpont létrehozásához.
+    ![vRA-végpontkonfigurációs hozzáférés](media/configure-vra-endpoint-vra-edit.png)
 
 ### <a name="verify-the-endpoint-name"></a>A végpont nevének ellenőrzése
 
-A megfelelő vCenter-kiszolgálói végpont nevének azonosításához tegye a következőket:
+A megfelelő vCenter-kiszolgálói végpontnév azonosításához tegye a következőket:
 
-1. Nyisson meg egy parancssort a IaaS készüléken.
-2. Módosítsa a könyvtárat a C:\Program Files (x86) \VMware\vCAC\Agents\agent-name, ahol az *ügynök neve* az vCenter-kiszolgálói végponthoz rendelt név.
+1. Nyisson meg egy parancssort az IaaS-készüléken.
+2. Módosítsa a könyvtárat C:\Program Files (x86)\VMware\vCAC\Agents\agent-name név re, ahol az *ügynöknév* a vCenter-kiszolgáló végpontjának a hozzárendelt neve.
 3. Futtassa a következő parancsot.
 
 ```
 ..\..\Server\DynamicOps.Vrm.VRMencrypt.exe VRMAgent.exe.config get
 ```
 
-A kimenet az alábbihoz hasonló. A `managementEndpointName` mező értéke a végpont neve.
+A kimenet hasonló a következőhöz. A `managementEndpointName` mező értéke a végpont neve.
 
 ```
 managementEndpointName: cslab1pc3-vc

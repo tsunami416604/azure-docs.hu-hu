@@ -10,26 +10,26 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: fa3888d28c52625684676036def7e2920b77b5ca
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77202111"
 ---
-A következő típusú paramétereket használhatja az indító blobhoz:
+Az eseményindító blobhoz a következő paramétertípusokat használhatja:
 
 * `Stream`
 * `TextReader`
 * `string`
 * `Byte[]`
-* A POCO szerializálható JSON-ként
+* JSON-ként szerializálható POCO
 * `ICloudBlob`<sup>1</sup>
 * `CloudBlockBlob`<sup>1</sup>
 * `CloudPageBlob`<sup>1</sup>
 * `CloudAppendBlob`<sup>1</sup>
 
-<sup>1</sup> "be" `direction` kötést igényel a *function. JSON* fájlban, vagy C# `FileAccess.ReadWrite` egy osztály-függvénytárban.
+<sup>1</sup> A `direction` *function.json* vagy `FileAccess.ReadWrite` a C# osztálykönyvtárban "inout" kötést igényel.
 
-Ha egy Storage SDK-típushoz próbál kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e a [megfelelő Storage SDK-verzióra](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
+Ha megpróbál kötést kötni a Storage SDK egyik típusához, és hibaüzenetet kap, győződjön meg arról, hogy [rendelkezik a megfelelő Storage SDK-verzióra](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
-`string`hoz, `Byte[]`hoz vagy POCOhöz való kötés csak akkor ajánlott, ha a blob mérete kicsi, mert a blob teljes tartalma betöltődik a memóriába. Általában érdemes `Stream` vagy `CloudBlockBlob` típust használni. További információ: [párhuzamosság és memóriahasználat](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage) a cikk későbbi részében.
+A `string`, `Byte[]`vagy POCO kötés csak akkor ajánlott, ha a blob mérete kicsi, mivel a teljes blob tartalom betöltődik a memóriába. Általában célszerű használni, `Stream` vagy `CloudBlockBlob` típus. További információt a cikk [későbbi részében, az Egyidejűség és a memóriahasználat](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage) című témakörben talál.

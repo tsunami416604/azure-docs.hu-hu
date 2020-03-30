@@ -1,29 +1,29 @@
 ---
-title: Memóriavesztés észlelése – Azure Application Insights intelligens észlelés
-description: Alkalmazások figyelése az Azure Application Insights a lehetséges memória-szivárgáshoz.
+title: Memóriavesztés észlelése – Az Azure Application Insights intelligens észlelése
+description: Az Azure Application Insights segítségével figyelheti az alkalmazásokat a potenciális memóriavesztések miatt.
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.openlocfilehash: 85d138518dfb1313a810657016e9fe3143887b6d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671698"
 ---
 # <a name="memory-leak-detection-preview"></a>Memóriavesztés észlelése (előzetes verzió)
 
-A Application Insights automatikusan elemzi az alkalmazásban az egyes folyamatok memória-felhasználását, és figyelmezteti a lehetséges memória-szivárgásra vagy a megnövekedett memória-felhasználásra.
+Az Application Insights automatikusan elemzi az alkalmazás egyes folyamatainak memóriafelhasználását, és figyelmezteti a potenciális memóriavesztésre vagy a megnövekedett memóriafelhasználásra.
 
-Ehhez a szolgáltatáshoz nem szükséges speciális beállítás, az alkalmazáshoz tartozó [teljesítményszámlálók](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) kivételével. Aktív, ha az alkalmazás elegendő memóriát generál a teljesítményszámlálók telemetria (például privát bájt).
+Ez a funkció nem igényel speciális beállítást, kivéve az alkalmazás [teljesítményszámlálóinak konfigurálását.](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) Akkor aktív, ha az alkalmazás elegendő memóriateljesítmény-számlálót (például privát bájtot) hoz létre.
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Mikor kapok ilyen típusú intelligens észlelési értesítést?
-Egy tipikus értesítés hosszú időn keresztül, egy vagy több folyamaton és/vagy egy vagy több gépen, az alkalmazás részét képező, állandó növekedést követ. A gépi tanulási algoritmusok a memória-szivárgás mintázatának megfelelő megnövekedett memóriahasználat észlelésére szolgálnak.
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Mikor kapom meg az ilyen típusú intelligens észlelési értesítést?
+Egy tipikus értesítés a memóriahasználat hosszú időn keresztül iménynövekedését követi egy vagy több folyamatban és/vagy egy vagy több gépen, amelyek az alkalmazás részét képezik. A gépi tanulási algoritmusok a memóriavesztés mintájának megfelelő megnövekedett memóriafelhasználás észlelésére szolgálnak.
 
-## <a name="does-my-app-really-have-a-problem"></a>Az alkalmazásom valóban probléma van?
-Nem, egy értesítés nem azt jelenti, hogy az alkalmazásnak feltétlenül van problémája. Bár a memóriavesztés általában az alkalmazás hibáját jelzi, ezek a minták az adott folyamatra jellemzőek lehetnek, vagy természetes üzleti indoklással rendelkezhetnek, és figyelmen kívül hagyhatók.
+## <a name="does-my-app-really-have-a-problem"></a>Tényleg probléma van az alkalmazásommal?
+Nem, az értesítés nem jelenti azt, hogy az alkalmazásnak feltétlenül problémája van. Bár a memóriavesztési minták általában egy alkalmazásproblémát jeleznek, ezek a minták az adott folyamatra jellemzőek lehetnek, vagy természetes üzleti indoklással rendelkezhetnek, és figyelmen kívül hagyhatók.
 
-## <a name="how-do-i-fix-it"></a>Hogyan javíthatom?
-Az értesítések a diagnosztikai elemzési folyamat támogatásához szükséges diagnosztikai információkat tartalmazzák:
-1. **Osztályozás.** Az értesítés megjeleníti a memória növelésének mennyiségét (GB-ban), valamint azt az időtartományt, amelyben a memória növekedett. Ez segíthet a probléma prioritásának hozzárendelésében.
-2. **Hatókör.** Hány gép mutatta a memóriavesztés mintáját? Hány kivételt váltott ki a potenciális memóriavesztés? Ezeket az információkat az értesítésből lehet beszerezni.
-3. **Diagnosztizálása.** Az észlelés a memóriavesztés mintáját tartalmazza, amely a folyamat által az idő múlásával felhasznált memóriát mutatja. A probléma további diagnosztizálásához a kapcsolódó elemeket és jelentéseket is használhatja a támogatási információkhoz.
+## <a name="how-do-i-fix-it"></a>Hogyan lehet kijavítani a hibát?
+Az értesítések diagnosztikai információkat tartalmaznak a diagnosztikai elemzési folyamat támogatásához:
+1. **Osztályozás.** Az értesítés megmutatja a memória növekedésének mértékét (GB-ban), és azt az időtartományt, amelyben a memória növekedett. Ez segíthet abban, hogy prioritást rendeljen a problémához.
+2. **Hatókör.** Hány gépmutatta a memóriaszivárgást? Hány kivétel vált ki a potenciális memóriavesztés során? Ez az információ az értesítésből szerezhető be.
+3. **Diagnosztizálni.** Az észlelés tartalmazza a memóriavesztés mintáját, amely a folyamat memóriafelhasználását mutatja az idő múlásával. A kapcsolódó elemeket és jelentéseket a támogató információkhoz csatolva is használhatja a probléma további diagnosztizálásához.

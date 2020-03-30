@@ -1,6 +1,6 @@
 ---
-title: Infrastruktúra és kapcsolódás az Azure-SAP HANAhoz (nagyméretű példányok) | Microsoft Docs
-description: Konfigurálja a szükséges kapcsolati infrastruktúrát az Azure-beli SAP HANA használatához (nagyméretű példányok esetén).
+title: Infrastruktúra és kapcsolat az SAP HANA-val az Azure-ban (nagy példányok) | Microsoft dokumentumok
+description: Konfigurálja a szükséges kapcsolati infrastruktúrát az SAP HANA azure-beli (nagy példányok) használatához.
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,43 +14,43 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cea89087742f1987f693b8bfb627bd71038a0c14
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616922"
 ---
-# <a name="sap-hana-large-instances-deployment"></a>SAP HANA (nagyméretű példányok) üzembe helyezése 
+# <a name="sap-hana-large-instances-deployment"></a>SAP HANA (nagy példányok) telepítése 
 
-Ez a cikk azt feltételezi, hogy elvégezte a Microsoft Azure-beli (nagyméretű példányok) SAP HANAának megvásárlását. A cikk elolvasása előtt általános háttérként tekintse meg a [Hana nagyméretű példányainak általános kifejezéseit](hana-know-terms.md) és a [Hana Large instances SKU](hana-available-skus.md)-t.
+Ez a cikk feltételezi, hogy befejezte az SAP HANA megvásárlását az Azure-ban (nagy példányok) a Microsofttól. A cikk elolvasása előtt az általános háttér, [lásd: HANA nagy példányok közös kifejezések](hana-know-terms.md) és [HANA nagy példányok SK.](hana-available-skus.md).
 
 
-A Microsoft a következő információkat igényli a HANA nagyméretű példányok üzembe helyezéséhez:
+A Microsoftnak a hana-példányok központi telepítéséhez a következő adatokra van szüksége:
 
-- Az ügyfél neve.
-- Üzleti kapcsolattartási adatok (beleértve az e-mail-címet és a telefonszámot).
-- Technikai kapcsolattartási adatok (beleértve az e-mail-címet és a telefonszámot).
-- Technikai hálózati kapcsolattartási adatok (beleértve az e-mail-címet és a telefonszámot).
-- Azure üzembe helyezési régió (például az USA nyugati régiója, Kelet-Ausztrália vagy Észak-Európa).
-- SAP HANA az Azure-ban (nagyméretű példányok) SKU (konfiguráció).
-- Minden Azure-beli üzembe helyezési régióban:
-    - A/29 IP-címtartomány az olyan ER-P2P kapcsolatok esetében, amelyek az Azure-beli virtuális hálózatokat a HANA nagyméretű példányaihoz kötik.
-    - A HANA nagyméretű példányok kiszolgálói IP-készletéhez használt a/24 CIDR-blokk.
-    - Nem kötelező, ha a [ExpressRoute-Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) használatával engedélyezi a közvetlen útválasztást a helyszínről a nagyméretű példányok számára, vagy a különböző Azure-régiókban lévő HANA nagyméretű példány-egységek közötti útválasztást, egy másik/29 IP-címtartományt kell fenntartania. Ez az adott tartomány nem fedi át a korábban definiált többi IP-címtartományt.
-- A HANA nagyméretű példányokhoz csatlakozó összes Azure-beli virtuális hálózat virtuális hálózati címtartomány attribútumában használt IP-címtartomány értékei.
-- Az egyes HANA Large instances rendszerekhez tartozó adatmennyiség:
-  - A kívánt állomásnév, ideális esetben egy teljesen minősített tartománynév.
-  - A HANA nagyméretű példányának kívánt IP-címe a kiszolgáló IP-készletének címtartományból. (A kiszolgáló IP-címkészlet címének első 30 IP-címe a HANA nagyméretű példányain belüli belső használatra van fenntartva.)
-  - SAP HANA SID neve a SAP HANA példányhoz (a szükséges SAP HANA kapcsolódó kötetek létrehozásához szükséges). A Microsoftnak szüksége van a HANA SID-re az NFS-köteteken található sidadm engedélyeinek létrehozásához. Ezek a kötetek a HANA nagyméretű példány-egységhez csatlakoznak. A HANA SID a csatlakoztatott lemez kötetek egyikének a nevét is használja. Ha egynél több HANA-példányt szeretne futtatni az egységen, több HANA-SID-t is fel kell sorolnia. Mindegyikhez egy különálló kötet lesz hozzárendelve.
-  - A Linux operációs rendszerekben a sidadm felhasználónak van egy csoport azonosítója. Ez az azonosító szükséges a szükséges SAP HANA kapcsolódó kötetek létrehozásához. A SAP HANA telepítés általában létrehozza a sapsys csoportot, amelynek csoportazonosító 1001. A sidadm felhasználó tagja ennek a csoportnak.
-  - A Linux operációs rendszerekben a sidadm felhasználója felhasználói AZONOSÍTÓval rendelkezik. Ez az azonosító szükséges a szükséges SAP HANA kapcsolódó kötetek létrehozásához. Ha az egységen több HANA-példányt futtat, sorolja fel a sidadm összes felhasználóját. 
-- Az Azure-előfizetéshez tartozó Azure-előfizetés azonosítója, amelyhez az Azure HANA nagyméretű példányain SAP HANA közvetlenül csatlakoztatva lesznek. Ez az előfizetés-azonosító az Azure-előfizetésre hivatkozik, amelyet a HANA nagyméretű példány egységével vagy egységével kell fizetni.
+- Vevő neve.
+- Üzleti kapcsolattartási adatok (beleértve az e-mail címet és a telefonszámot).
+- Műszaki kapcsolattartási adatok (beleértve az e-mail címet és a telefonszámot).
+- Műszaki hálózati kapcsolattartási adatok (beleértve az e-mail címet és a telefonszámot).
+- Azure telepítési régió (például USA nyugati régiója, Kelet-Ausztrália vagy Észak-Európa).
+- SAP HANA az Azure-ban (nagy példányok) Termékváltozat (konfiguráció).
+- Minden Azure-telepítési régióesetében:
+    - A /29 IP-címtartomány ER-P2P kapcsolatok, amelyek összekötik az Azure virtuális hálózatok HANA nagy példányok.
+    - A HANA nagypéldányok kiszolgálóIP-készletéhez használt /24 CIDR blokk.
+    - Ha nem kötelező [az ExpressRoute globális elérés](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) használatával a helyszíni hana nagy példány egységek közötti közvetlen útválasztás vagy a HANA nagy példány egységek közötti útválasztás különböző Azure-régiókban, le kell foglalnia egy másik /29 IP-címtartományt. Előfordulhat, hogy ez a tartomány nem fedi át a korábban megadott többi IP-címtartományt.
+- A virtuális hálózati címtér attribútumában használt IP-címtartomány-értékek minden olyan Azure virtuális hálózathoz, amely a HANA nagypéldányokhoz csatlakozik.
+- Adatok az egyes HANA nagy példányok rendszer:
+  - A kívánt állomásnév, ideális esetben egy teljesen minősített domain névvel.
+  - A HANA nagypéldány-egység kívánt IP-címe a kiszolgáló IP-készletcímtartományán kívül. (A kiszolgáló IP-készletcímtartományában szereplő első 30 IP-cím a HANA nagypéldányain belüli belső használatra van fenntartva.)
+  - SAP HANA SID-név az SAP HANA-példány (szükséges a szükséges SAP HANA-val kapcsolatos lemezkötetek létrehozásához szükséges). A Microsoftnak szüksége van a HANA-biztonsági azonosítóra az NFS-köteteken lévő sidadm engedélyei létrehozásához. Ezek a kötetek a HANA nagypéldány-egységhez kapcsolódnak. A HANA SID is használják, mint az egyik név összetevői a lemez kötetek, hogy csatlakoztatva van. Ha azt szeretné, hogy egynél több HANA-példányt az egységen, több HANA-azonosítók at kell sorolnia. Mindegyik külön kötetkészletet kap hozzárendelve.
+  - A Linux operációs rendszerben a sidadm felhasználó rendelkezik egy csoportazonosítóval. Ez az azonosító szükséges a szükséges SAP HANA-val kapcsolatos lemezkötetek létrehozásához. Az SAP HANA telepítése általában létrehozza a sapsys csoportot, 1001-es csoportazonosítóval. A sidadm felhasználó része, hogy a csoport.
+  - A Linux operációs rendszerben a sidadm felhasználó rendelkezik felhasználói azonosítóval. Ez az azonosító szükséges a szükséges SAP HANA-val kapcsolatos lemezkötetek létrehozásához. Ha több HANA-példányt futtat az egységen, sorolja fel az összes sidadm-felhasználót. 
+- Az Azure-előfizetési azonosító, amelyhez az Azure HANA az Azure HANA nagy példányai közvetlenül kapcsolódnak. Ez az előfizetési azonosító az Azure-előfizetésre hivatkozik, amely a HANA nagy példányegységével vagy egységeivel lesz felszámítva.
 
-Az előző információk megadása után a Microsoft SAP HANA az Azure-ban (nagyméretű példányok). A Microsoft információkat küld Önnek az Azure-beli virtuális hálózatok a HANA nagyméretű példányokhoz való összekapcsolásához. A HANA nagyméretű példányok egységeit is elérheti.
+Miután az előző adatokat, a Microsoft rendelkezések SAP HANA az Azure-ban (nagy példányok). A Microsoft adatokat küld az Azure virtuális hálózatok hana nagy példányokkal való összekapcsolására. A HANA nagy példányegységek is hozzáférhet.
 
-A következő műveletsorral csatlakozhat a HANA nagyméretű példányaihoz a Microsoft általi üzembe helyezése után:
+A következő szekvenciával csatlakozhat a HANA nagy példányaihoz, miután a Microsoft telepítette azt:
 
-1. [Azure-beli virtuális gépek csatlakoztatása nagyméretű HANA-példányokhoz](hana-connect-azure-vm-large-instances.md)
-2. [VNet csatlakoztatása a HANA Large instances ExpressRoute](hana-connect-vnet-express-route.md)
+1. [Az Azure-beli virtuális gépek csatlakoztatása hana-példányokhoz](hana-connect-azure-vm-large-instances.md)
+2. [Virtuális hálózat csatlakoztatása hana nagypéldányokhoz ExpressRoute](hana-connect-vnet-express-route.md)
 3. [További hálózati követelmények (nem kötelező)](hana-additional-network-requirements.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Az alapszintű nyilvános verzióról a standard Public-Azure Load Balancer
-description: Ez a cikk bemutatja, hogyan frissítheti az Azure alapszintű belső Load Balancer a standard szintű nyilvános Load Balancerre
+title: Frissítés egyszerű nyilvánosról standard nyilvánosra – Azure load balancer
+description: Ez a cikk bemutatja, hogyan frissítheti az Azure Basic belső terheléselosztót standard nyilvános terheléselosztóra
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
@@ -8,78 +8,78 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
 ms.openlocfilehash: 346fc3d5a4e7b165caafd9847b9797abae0c9113
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77659985"
 ---
-# <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure belső Load Balancer frissítése – kimenő kapcsolatok szükségesek
-Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus). Mivel a standard belső Load Balancer nem biztosít kimenő kapcsolatokat, megoldást biztosítunk a standard nyilvános Load Balancer létrehozására.
+# <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Az Azure belső terheléselosztójának frissítése – kimenő kapcsolat szükséges
+[Az Azure Standard Load Balancer](load-balancer-overview.md) a funkciók és a magas rendelkezésre állás széles készletét kínálja a zónaredundancia révén. Ha többet szeretne megtudni a terheléselosztó termékváltozatáról, tekintse meg az [összehasonlító táblázatot.](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus) Mivel a standard belső terheléselosztó nem biztosít kimenő kapcsolatot, megoldást kínálunk egy szabványos nyilvános terheléselosztó létrehozására.
 
 A frissítésnek négy szakasza van:
 
-1. Telepítse át a konfigurációt a standard nyilvános Load Balancer
-2. Virtuális gépek hozzáadása szabványos nyilvános Load Balancer háttérbeli készletekhez
-3. Kimenő szabály létrehozása a Load Balancer kimenő kapcsolatok esetén
-4. NSG szabályok beállítása az alhálózathoz/virtuális gépekhez, amelyeknek az internetre kell tartózkodniuk
+1. A konfiguráció áttelepítése standard nyilvános terheléselosztóra
+2. Virtuális gépek hozzáadása a szabványos nyilvános terheléselosztó háttérkészleteihez
+3. Kimenő szabály létrehozása a terheléselosztón kimenő kapcsolathoz
+4. NSG-szabályok beállítása olyan alhálózatokhoz/virtuális gépekhez, amelyektől tartózkodni kell az internettől
 
-Ez a cikk a konfiguráció áttelepítését ismerteti. A virtuális gépeknek a háttérbeli készletekbe való felvétele az adott környezettől függően változhat. Bizonyos magas szintű általános javaslatok azonban [megtalálhatók](#add-vms-to-backend-pools-of-standard-load-balancer).
+Ez a cikk a konfiguráció áttelepítésével foglalkozik. Virtuális gépek hozzáadása háttérkészletek hez az adott környezettől függően változhat. Ugyanakkor néhány magas szintű, általános ajánlások [is rendelkezésre állnak.](#add-vms-to-backend-pools-of-standard-load-balancer)
 
 ## <a name="upgrade-overview"></a>Frissítés áttekintése
 
-Olyan Azure PowerShell-parancsfájl érhető el, amely a következő műveleteket végzi el:
+Egy Azure PowerShell-parancsfájl érhető el, amely a következőket teszi:
 
-* Egy szabványos SKU nyilvános Load Balancer hoz létre az erőforráscsoport és a megadott helyen.
-* Zökkenőmentesen másolja az alapszintű SKU belső Load Balancer konfigurációit az újonnan létrehozott Standard nyilvános Load Balancerre.
+* Létrehoz egy szabványos termékváltozat nyilvános terheléselosztót a megadott erőforráscsoportban és helyen.
+* Zökkenőmentesen másolja az alapszintű termékváltozat belső terheléselosztó konfigurációit az újonnan létrehozott szabványos nyilvános terheléselosztóba.
 
-### <a name="caveatslimitations"></a>Caveats\Limitations
+### <a name="caveatslimitations"></a>Kikötések\Korlátozások
 
-* A parancsfájl támogatja a belső Load Balancer verziófrissítést, ahol a kimenő kapcsolatok szükségesek. Ha a virtuális gépekhez nem szükségesek kimenő kapcsolatok, tekintse meg [ezt az oldalt](upgrade-basicInternal-standard.md) az ajánlott eljáráshoz.
-* A standard Load Balancer új nyilvános címnek kell lennie. A meglévő alapszintű belső Load Balancerokhoz kapcsolódó IP-címeket nem lehet zökkenőmentesen áthelyezni a standard nyilvános Load Balancerhoz, mivel ezek eltérő SKU-k.
-* Ha a standard Load Balancer egy másik régióban lett létrehozva, akkor a régi régióban meglévő virtuális gépeket nem lehet az újonnan létrehozott standard Load Balancerhoz rendelni. A korlátozás megkerüléséhez hozzon létre egy új virtuális gépet az új régióban.
-* Ha a Load Balancer nem rendelkezik előtér-IP-konfigurációval vagy háttér-készlettel, valószínűleg a parancsfájl futtatásakor hiba lépett fel.  Győződjön meg arról, hogy nem üresek.
+* A parancsfájl támogatja a belső terheléselosztó frissítését, ahol kimenő kapcsolatra van szükség. Ha a kimenő kapcsolat nem szükséges a virtuális gépek bármelyike, olvassa el ezt az [oldalt](upgrade-basicInternal-standard.md) az ajánlott eljárás.
+* A standard terheléselosztó új nyilvános címmel rendelkezik. A meglévő belső belső terheléselosztóhoz társított IP-címeket nem lehet zökkenőmentesen áthelyezni a standard nyilvános terheléselosztóba, mivel különböző termékkódokkal rendelkeznek.
+* Ha a standard terheléselosztó egy másik régióban jön létre, nem fogja tudni társítani a régi régióban meglévő virtuális gépeket az újonnan létrehozott standard terheléselosztóhoz. A korlátozás megkerülése, győződjön meg róla, hogy hozzon létre egy új virtuális gép az új régióban.
+* Ha a terheléselosztó nem rendelkezik előtér-IP-konfigurációval vagy háttérkészlettel, valószínűleg hibát talál el a parancsfájl futtatásakor.  Győződjön meg róla, hogy nem üres.
 
-## <a name="download-the-script"></a>A parancsfájl letöltése
+## <a name="download-the-script"></a>A szkript letöltése
 
-Töltse le az áttelepítési parancsfájlt a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0).
+Töltse le az áttelepítési parancsfájlt a [PowerShell-galériából.](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0)
 ## <a name="use-the-script"></a>A szkript használata
 
-A helyi PowerShell-környezet beállításaitól és beállításaitól függően két lehetőség közül választhat:
+A helyi PowerShell-környezet beállításától és beállításaitól függően két lehetőség közül választhat:
 
-* Ha nem rendelkezik az Azure az modulok telepítésével, vagy ne feledje eltávolítani az Azure-t, akkor a legjobb lehetőség a szkript futtatására szolgáló `Install-Script` lehetőség használata.
-* Ha meg kell őriznie az Azure az modulokat, a legjobb megoldás, ha letölti a szkriptet, és közvetlenül futtatja.
+* Ha nincs telepítve az Azure Az-modulok, vagy nem bánja az Azure Az-modulok eltávolítását, a `Install-Script` legjobb megoldás a parancsfájl futtatásához.
+* Ha meg kell tartania az Azure Az modulokat, a legjobb, ha letölti a parancsfájlt, és közvetlenül futtatja.
 
-Annak megállapításához, hogy telepítve van-e az Azure az modulok, futtassa `Get-InstalledModule -Name az`. Ha a telepített modulok nem láthatók, akkor a `Install-Script` metódust használhatja.
+Annak megállapításához, hogy telepítve vannak-e `Get-InstalledModule -Name az`az Azure Az modulok, futtassa a futtassa a futtassa a futtassa a programot. Ha nem látja a telepített Az modulokat, akkor `Install-Script` használhatja a módszert.
 
-### <a name="install-using-the-install-script-method"></a>Telepítés az install-script metódus használatával
+### <a name="install-using-the-install-script-method"></a>Telepítés a Install-Script metódussal
 
-Ha ezt a beállítást szeretné használni, az Azure az modulokat nem kell telepítenie a számítógépre. Ha telepítve vannak, a következő parancs hibát jelez. Távolítsa el az Azure az modulokat, vagy használja a másik lehetőséget a szkript manuális letöltéséhez és futtatásához.
+A beállítás használatához nem kell az Azure Az modulok telepítve a számítógépre. Ha telepítve vannak, a következő parancs hibát jelenít meg. Eltávolíthatja az Azure Az modulokat, vagy a másik lehetőséggel manuálisan letöltheti a parancsfájlt, és futtathatja azt.
   
-Futtassa a szkriptet a következő paranccsal:
+Futtassa a parancsfájlt a következő paranccsal:
 
 `Install-Script -Name AzurePublicLBUpgrade`
 
-Ez a parancs telepíti a szükséges az modulokat is.  
+Ez a parancs a szükséges Az modulokat is telepíti.  
 
-### <a name="install-using-the-script-directly"></a>Telepítés közvetlenül a szkript használatával
+### <a name="install-using-the-script-directly"></a>Telepítés közvetlenül a parancsfájl használatával
 
-Ha van néhány Azure az modulok telepítve, és nem távolítható el (vagy nem szeretné eltávolítani őket), manuálisan letöltheti a szkriptet a parancsfájl letöltése hivatkozás **manuális Letöltés** lapján. A parancsfájl nyers nupkg-fájlként van letöltve. Ha a parancsfájlt erről a nupkg-fájlról szeretné telepíteni, olvassa el a [manuális csomagok letöltése](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)című témakört.
+Ha néhány Azure Az-modul telepítve van, és nem tudja eltávolítani őket (vagy nem szeretné eltávolítani őket), manuálisan letöltheti a parancsfájlt a parancsfájl **letöltési hivatkozásának Kézi letöltés** elapjával. A szkript letölthető, mint egy nyers nupkg fájlt. Ha erről a nupkg fájlból szeretné telepíteni a parancsfájlt, olvassa el a Kézi csomag letöltése című [témakört.](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)
 
 A szkript futtatása:
 
-1. `Connect-AzAccount` használata az Azure-hoz való kapcsolódáshoz.
+1. Az `Connect-AzAccount` Azure-hoz való csatlakozáshoz használható.
 
-1. A `Import-Module Az` használatával importálja az az modulokat.
+1. Az `Import-Module Az` Az modulok importálására használható.
 
 1. Vizsgálja meg a szükséges paramétereket:
 
-   * **oldRgName: [string]: kötelező** – ez a meglévő alapszintű Load Balancerhez tartozó erőforráscsoport, amelyet frissíteni kíván. A karakterlánc értékének megkereséséhez navigáljon Azure Portal, válassza ki az alapszintű Load Balancer forrását, és kattintson a terheléselosztó **áttekintésére** . Az erőforráscsoport ezen az oldalon található.
-   * **oldLBName: [string]: kötelező** – ez a meglévő alapszintű, frissíteni kívánt alapbalancer neve. 
-   * **newrgName: [string]: kötelező** – ez az az erőforráscsoport, amelyben a rendszer létrehozza a standard Load Balancer. Ez lehet egy új erőforráscsoport vagy egy meglévő. Ha kiválaszt egy meglévő erőforráscsoportot, vegye figyelembe, hogy a Load Balancer nevének egyedinek kell lennie az erőforráscsoport belül. 
-   * **newlocation: [string]: kötelező** – ez az a hely, ahol a standard Load Balancer létre lesz hozva. Azt javasoljuk, hogy a kiválasztott alapszintű Load Balancer ugyanazon helyét örökli a standard Load Balancer a többi meglévő erőforrással való jobb együttműködés érdekében.
-   * **newLBName: [string]: kötelező** – ez a létrehozandó standard Load Balancer neve.
-1. Futtassa a szkriptet a megfelelő paraméterek használatával. A befejezéshez öt – hét percet is igénybe vehet.
+   * **oldRgName: [String]: Kötelező** – Ez a frissíteni kívánt alapszintű terheléselosztó erőforráscsoportja. A karakterlánc-érték megkereséséhez keresse meg az Azure Portalon, válassza ki az alapszintű terheléselosztó forrását, és kattintson a terheléselosztó **áttekintése** elemre. Az erőforráscsoport azon a lapon található.
+   * **oldLBName: [String]: Kötelező** – Ez a frissíteni kívánt meglévő alapszintű kiegyensúlyozó neve. 
+   * **newrgName: [String]: Kötelező** – Ez az az erőforráscsoport, amelyben a standard terheléselosztó létrejön. Ez lehet egy új erőforráscsoport vagy egy meglévő. Ha egy meglévő erőforráscsoportot választ, vegye figyelembe, hogy a terheléselosztó nevének egyedinek kell lennie az erőforráscsoporton belül. 
+   * **newlocation: [String]: Kötelező** – Ez az a hely, ahol a standard terheléselosztó létrejön. Azt javasoljuk, hogy a kiválasztott alapszintű terheléselosztó ugyanazon helyét örökölje a standard terheléselosztóhoz, hogy jobban hozzálegyen hozzávetőlegetve más meglévő erőforrásokhoz.
+   * **newLBName: [String]: Kötelező** – Ez a létrehozandó standard terheléselosztó neve.
+1. Futtassa a parancsfájlt a megfelelő paraméterek kel. 5-7 percig is eltarthat.
 
     **Példa**
 
@@ -87,53 +87,53 @@ A szkript futtatása:
    AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
-### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Virtuális gépek hozzáadása standard Load Balancer backend-készletéhez
+### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Virtuális gépek hozzáadása a standard terheléselosztó háttérkészleteihez
 
-Először ellenőrizze, hogy a parancsfájl sikeresen létrehozott-e egy új standard nyilvános Load Balancer az alapszintű nyilvános Load Balancer áttelepített pontos konfigurációval. Ezt a Azure Portal ellenőrizheti.
+Először ellenőrizze, hogy a parancsfájl sikeresen létrehozott-e egy új standard nyilvános terheléselosztót, amelynek pontos konfigurációja átlett telepítve az alapszintű nyilvános terheléselosztóról. Ezt az Azure Portalon ellenőrizheti.
 
-Ügyeljen arra, hogy kis mennyiségű forgalmat küldjön a standard Load Balancer manuális tesztként.
+Ügyeljen arra, hogy manuális tesztként kis mennyiségű forgalmat küldjön a Standard Load Balancer-en keresztül.
   
-Íme néhány forgatókönyv, amely azt ismerteti, hogyan adhat hozzá virtuális gépeket az újonnan létrehozott Standard nyilvános Load Balancer backend-készletéhez, valamint a javaslataikat a következőkhöz:
+Íme néhány forgatókönyv arról, hogyan adhat hozzá virtuális gépeket az újonnan létrehozott szabványos nyilvános terheléselosztó háttérkészleteihez, és mindegyikre vonatkozó javaslataink:
 
-* **Meglévő virtuális gépek áthelyezése a régi alapszintű nyilvános Load Balancer háttér-készletekből az újonnan létrehozott Standard nyilvános Load Balancer háttér-készletei**között.
-    1. A rövid útmutatóban szereplő feladatok végrehajtásához jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+* **A meglévő virtuális gépek áthelyezése a régi alapszintű nyilvános terheléselosztó háttérkészleteiből az újonnan létrehozott szabványos nyilvános terheléselosztó háttérkészleteibe.**
+    1. A gyorsútmutatóban szereplő feladatok elvégzéséhez jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
  
-    1. A bal oldali menüben válassza az **összes erőforrás** lehetőséget, majd válassza ki az **újonnan létrehozott Standard Load Balancer** az erőforrás-listából.
+    1. Válassza a bal oldali menü **Összes erőforrás elemét,** majd válassza ki az **újonnan létrehozott standard terheléselosztót** az erőforráslistából.
    
-    1. A **Beállítások** alatt válassza ki a **Háttérkészletek** elemet.
+    1. A **Beállítások csoportban**válassza **a Háttérkészletek lehetőséget.**
    
-    1. Válassza ki azt a háttér-készletet, amely megfelel az alapszintű Load Balancer háttér-készletének, válassza ki a következő értéket: 
-      - **Virtuális gép**: a legördülő listából válassza ki a virtuális gépeket az alapszintű Load Balancer megfelelő háttérbeli készletéből.
+    1. Válassza ki azt a háttérkészletet, amely megfelel az alapterhelés-elosztó háttérkészletének, válassza ki a következő értéket: 
+      - **Virtuális gép:** Legördülő menüből válassza ki a virtuális gépeket az alapszintű terheléselosztó megfelelő háttérkészletéből.
     1. Kattintson a **Mentés** gombra.
     >[!NOTE]
-    >A nyilvános IP-címmel rendelkező virtuális gépek esetében először a szabványos IP-címeket kell létrehoznia, ahol az IP-cím nem garantált. A virtuális gépeket az alapszintű IP-címekről társíthatja, és társíthatja őket az újonnan létrehozott szabványos IP-címekkel. Ezt követően az utasításokat követve hozzáadhat virtuális gépeket standard Load Balancer háttérbeli készletéből. 
+    >A nyilvános IP-címekkel rendelkező virtuális gépek esetén először szabványos IP-címeket kell létrehoznia, ahol nem garantált ugyanaz az IP-cím. A virtuális gépek leválaszthatják az alapvető IP-címek, és társítja őket az újonnan létrehozott szabványos IP-címek. Ezután képes lesz követni az utasításokat a virtuális gépek hozzáadása a standard terheléselosztó háttérkészletébe. 
 
-* **Új virtuális gépek létrehozása az újonnan létrehozott Standard nyilvános Load Balancer háttér-készletekhez való hozzáadásához**.
-    * További információ a virtuális gép létrehozásával és a standard Load Balancerhoz való hozzárendelésével kapcsolatban [itt](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)található.
+* **Új virtuális gépek létrehozása az újonnan létrehozott szabványos nyilvános terheléselosztó háttérkészleteihez való hozzáadása érdekében.**
+    * További utasításokat, hogyan kell létrehozni a virtuális gép és társítani a Standard Load Balancer [megtalálható itt](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines).
 
-### <a name="create-an-outbound-rule-for-outbound-connection"></a>Kimenő szabály létrehozása a kimenő kapcsolatok számára
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>Kimenő szabály létrehozása kimenő kapcsolathoz
 
 Kövesse az [utasításokat](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration) egy kimenő szabály létrehozásához, hogy
-* Adja meg a kimenő NAT-t a semmiből.
-* A meglévő kimenő NAT működésének skálázása és finomhangolása.
+* Adja meg a kimenő nat-t a nulláról.
+* A meglévő kimenő hálózati tetszési arány méretezése és finomhangolása.
 
-### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>NSG szabályok létrehozása olyan virtuális gépekhez, amelyek nem tudnak kommunikálni az internetről
-Ha azt szeretné, hogy az internetes forgalom ne jusson el a virtuális gépekhez, létrehozhat egy [NSG-szabályt](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) a virtuális gépek hálózati adapterén.
+### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>NSG-szabályok létrehozása olyan virtuális gépekhez, amelyek tartózkodnak az internetről vagy az internetről való kommunikációtól
+Ha azt szeretné, hogy tartózkodjanak az internetes forgalom elérése a virtuális gépek, létrehozhat egy [NSG-szabályt](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) a virtuális gépek hálózati felületén.
 
 ## <a name="common-questions"></a>Gyakori kérdések
 
-### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Vannak korlátozások a Azure PowerShell szkripttel a konfiguráció a v1-ről a v2-re való áttelepíteni?
+### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Vannak-e korlátozások az Azure PowerShell-parancsfájl áttelepítése a konfiguráció v1 v2?
 
-Igen. Lásd a [figyelmeztetéseket és korlátozásokat](#caveatslimitations).
+Igen. Lásd [a kifogásokat/korlátozásokat.](#caveatslimitations)
 
-### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>A Azure PowerShell szkript az alapszintű Load Balancerról az újonnan létrehozott standard Load Balancerra is átváltja a forgalmat?
+### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Az Azure PowerShell-parancsfájl is átvált az alapszintű terheléselosztóról az újonnan létrehozott standard terheléselosztóra?
 
-Nem. A Azure PowerShell szkript csak a konfigurációt telepíti át. A tényleges forgalom áttelepítése az Ön felelőssége és a vezérlése.
+Nem. Az Azure PowerShell-parancsfájl csak a konfiguráció áttelepítése. A tényleges forgalom migráció az Ön felelőssége, és az Ön ellenőrzése.
 
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Néhány probléma merült fel a szkript használatával. Hogyan Kérhetek segítséget?
+### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Belefutottam néhány probléma segítségével ezt a forgatókönyvet. Hogyan kaphatok segítséget?
   
-E-mailt küldhet slbupgradesupport@microsoft.comnak, megnyithat egy támogatási esetet az Azure-támogatással, vagy mindkettőt elvégezheti.
+E-mailt küldhet slbupgradesupport@microsoft.coma, megnyithat egy támogatási esetet az Azure-támogatással, vagy mindkettőt megteheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Tudnivalók a standard Load Balancer](load-balancer-overview.md)
+[További információ a standard terheléselosztóról](load-balancer-overview.md)

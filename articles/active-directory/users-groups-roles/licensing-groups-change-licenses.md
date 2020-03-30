@@ -1,6 +1,6 @@
 ---
-title: Licenc-csomagok módosítása felhasználók és csoportok számára – Azure AD | Microsoft Docs
-description: Felhasználók áttelepítésének módja egy csoporton belül különböző szolgáltatási csomagokra a csoportos licencelés használatával Azure Active Directory
+title: Felhasználók és csoportok licenccsomagjainak módosítása - Azure AD | Microsoft dokumentumok
+description: A csoporton belüli felhasználók áttelepítése különböző szolgáltatási csomagokba az Azure Active Directory ban lévő csoportlicencelés használatával
 services: active-directory
 keywords: Az Azure AD licencelése
 documentationcenter: ''
@@ -17,68 +17,68 @@ ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf2f04e1728f94c89bddcc31c287cc017a79020f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025909"
 ---
-# <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Felhasználóra vagy csoportra vonatkozó licenc-hozzárendelések módosítása Azure Active Directory
+# <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Felhasználó vagy csoport licenc-hozzárendelésének módosítása az Azure Active Directoryban
 
-Ez a cikk azt ismerteti, hogyan helyezhet át felhasználókat és csoportokat a szolgáltatási licencek között a Azure Active Directory (Azure AD) szolgáltatásban. Az Azure AD célja annak biztosítása, hogy a licenc változása során ne legyen elvesztése a szolgáltatás vagy az adat. A felhasználóknak zökkenőmentesen kell váltaniuk a szolgáltatások között. A cikkben ismertetett licencfeltételek a felhasználó vagy csoport módosítását ismertetik az Office 365 E1 és az Office 365 E3 között, de a lépések az összes licenccel érvényesek. Amikor egy felhasználóra vagy csoportra frissíti a licenc-hozzárendeléseket, a licenc-hozzárendelések eltávolítása és az új hozzárendelések egyidejűleg történnek, így a felhasználók nem veszítik el a szolgáltatásokhoz való hozzáférést a licencek módosítása során, vagy megtekinthetik a csomagok közötti licencfeltételeket.
+Ez a cikk ismerteti, hogyan helyezheti át a felhasználók és csoportok között szolgáltatási licenccsomagok az Azure Active Directoryban (Azure AD). A cél az Azure AD megközelítése annak biztosítása, hogy a licenc módosítása során ne vessüljen el a szolgáltatás vagy az adatok. A felhasználóknak zökkenőmentesen kell váltaniuk a szolgáltatások között. Az ebben a cikkben ismertetett licenccsomag-hozzárendelési lépések az Office 365 E1 egyik felhasználójának vagy csoportjának office 365 E3-ra történő módosítását ismertetik, de a lépések az összes licenccsomagra vonatkoznak. Amikor frissíti egy felhasználó vagy csoport licenc-hozzárendeléseit, a licenc-hozzárendelések és az új hozzárendelések egyidejűleg történnek, így a felhasználók nem veszítik el a hozzáférést a szolgáltatásaikhoz a licencmódosítások során, vagy nem látják a csomagok közötti licencütközéseket.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A licenc-hozzárendelések frissítése előtt fontos ellenőrizni, hogy egyes feltételezések teljesülnek-e az összes frissítendő felhasználóhoz vagy csoporthoz. Ha a feltételezések nem teljesülnek a csoport összes felhasználója esetében, előfordulhat, hogy a Migrálás sikertelen lesz. Ennek eredményeképpen előfordulhat, hogy egyes felhasználók elveszítik a hozzáférést a szolgáltatásokhoz vagy az adatokhoz. Győződjön meg arról, hogy:
+A licenc-hozzárendelések frissítése előtt fontos ellenőrizni, hogy bizonyos feltételezések minden frissítésre vonatkozóan igazak-e. Ha a feltételezések nem igazak a csoport összes felhasználójára, az áttelepítés néhány esetben sikertelen lehet. Ennek eredményeképpen előfordulhat, hogy egyes felhasználók elveszítik a szolgáltatásokhoz vagy adatokhoz való hozzáférést. Győződjön meg arról, hogy:
 
-- A felhasználók rendelkeznek az aktuális licenccel (ebben az esetben az Office 365 e1), amelyet egy csoporthoz rendeltek, és amelyeket a felhasználó örököl, és nem közvetlenül van hozzárendelve.
+- A felhasználók rendelkeznek a jelenlegi licenccsomaggal (ebben az esetben az Office 365 E1-el), amely egy csoporthoz van rendelve, és amelyet a felhasználó örököl, és nem közvetlenül.
 
-- Elegendő licenccel rendelkezik a hozzárendelt licencelési csomaghoz. Ha nem rendelkezik elegendő licenccel, előfordulhat, hogy egyes felhasználók nem kapják meg az új licencszerződést. Megtekintheti a rendelkezésre álló licencek számát.
+- Elegendő licence van a hozzárendelt licenccsomaghoz. Ha nem rendelkezik elegendő licenccel, előfordulhat, hogy egyes felhasználók nem kapják meg az új licenccsomagot. Ellenőrizheti az elérhető licencek számát.
 
-- A felhasználók nem rendelkeznek más hozzárendelt szolgáltatási licenccel, amelyek ütközhetnek a kívánt licenccel, vagy megakadályozzák az aktuális licenc eltávolítását. Például egy olyan szolgáltatástól származó licenc, mint például a munkahelyi Analitika vagy a Project online, amely más szolgáltatásokkal való függőséggel rendelkezik.
+- A felhasználók nem rendelkeznek más hozzárendelt szolgáltatási licencekkel, amelyek ütközhetnek a kívánt licenccel, vagy megakadályozhatják az aktuális licenc eltávolítását. Például egy olyan szolgáltatás, például a Workplace Analytics vagy a Project Online licence, amely más szolgáltatásoktól függ.
 
-- Ha a helyszíni csoportokat felügyeli, és szinkronizálja őket az Azure AD-be a Azure AD Connect-on keresztül, akkor a helyszíni rendszer használatával hozzáadhatja vagy eltávolíthatja a felhasználókat. Eltarthat egy ideig, amíg a módosítások az Azure AD-vel való szinkronizálása csoportos licenceléssel is elvégezhető.
+- Ha a helyszíni csoportokat kezeli, és szinkronizálja őket az Azure AD Connecten keresztül, majd a helyszíni rendszer használatával felhasználókat vesz fel vagy távolít el. Eltarthat egy ideig, amíg a módosítások szinkronizálása az Azure AD-vel a csoport licencelése által felvette.
 
-- Ha Azure AD-beli dinamikus csoporttagság-tagságot használ, a felhasználókat az attribútumaik módosításával adhatja hozzá vagy távolíthatja el, de a licenc-hozzárendelések frissítési folyamata változatlan marad.
+- Ha az Azure AD dinamikus csoporttagságait használja, az attribútumok módosításával felhasználókat vesz fel vagy távolít el, de a licenc-hozzárendelések frissítési folyamata ugyanaz marad.
 
 ## <a name="change-user-license-assignments"></a>Felhasználói licenc-hozzárendelések módosítása
 
-Ha úgy látja, hogy egyes jelölőnégyzetek nem érhetők el, a **licenc-hozzárendelések frissítése** oldalon láthatja azokat a szolgáltatásokat, amelyek nem módosíthatók, mert örökölnek egy csoporttól származó licenccel.
+A **Licenc-hozzárendelések frissítése** lapon, ha azt látja, hogy egyes jelölőnégyzetek nem érhetők el, az olyan szolgáltatásokat jelez, amelyek nem módosíthatók, mert csoportlicencből származnak.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure ad-szervezetben található licenc-rendszergazdai fiók használatával.
-1. Válassza ki **Azure Active Directory** > **felhasználók**elemet, majd nyissa meg egy felhasználó **profil** lapját.
-1. Válassza a **licencek**lehetőséget.
-1. Válassza a **hozzárendelések** lehetőséget a felhasználó vagy csoport licenc-hozzárendelésének szerkesztéséhez. A **hozzárendelések** lap a licenc-hozzárendelési ütközések feloldására szolgál.
-1. Jelölje be az Office 366 E3 jelölőnégyzetét, és győződjön meg arról, hogy legalább a felhasználóhoz rendelt összes E1 szolgáltatás ki van választva.
-1. Törölje az Office 365 E1 jelölőnégyzet jelölését.
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/) egy licencrendszergazdai fiók használatával az Azure AD-szervezetben.
+1. Válassza az Azure Active > **Directory-felhasználók**lehetőséget, majd nyissa meg a **profillapot** egy felhasználó számára. **Azure Active Directory**
+1. Válassza **a Licencek**lehetőséget.
+1. Válassza **a Hozzárendelések** lehetőséget a felhasználó vagy csoport licenchozzárendelésének szerkesztéséhez. A **Hozzárendelések** lapon feloldhatja a licenc-hozzárendelési ütközéseket.
+1. Jelölje be az Office 366 E3 jelölőnégyzetét, és győződjön meg arról, hogy legalább a felhasználóhoz rendelt összes E1 szolgáltatás ki van jelölve.
+1. Törölje a jelet az Office 365 E1 jelölőnégyzetéből.
 
-    ![a licenc-hozzárendelések lapja, amely az Office 365 E1 és az Office 365 E3 jelölésű felhasználóra mutat](media/licensing-groups-change-licenses/update-user-license-assignments.png)
-
-1. Kattintson a **Mentés** gombra.
-
-Az Azure AD az új licenceket alkalmazza, és egyszerre eltávolítja a régi licenceket a szolgáltatás folytonosságának biztosításához.
-
-## <a name="change-group-license-assignments"></a>Csoport licenc-hozzárendeléseinek módosítása
-
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure ad-szervezetben található licenc-rendszergazdai fiók használatával.
-1. Válassza ki **Azure Active Directory** > **csoportokat**, majd nyissa meg egy csoport **Áttekintés** lapját.
-1. Válassza a **licencek**lehetőséget.
-1. Kattintson a **hozzárendelések** parancsra a felhasználó vagy csoport licenc-hozzárendelésének szerkesztéséhez.
-1. Jelölje be az Office 366 E3 jelölőnégyzetét. A szolgáltatás folytonosságának fenntartása érdekében válassza ki az összes olyan E1-szolgáltatást, amely már hozzá van rendelve a felhasználóhoz.
-1. Törölje az Office 365 E1 jelölőnégyzet jelölését.
-
-    ![Válassza a hozzárendelések parancsot egy felhasználói vagy csoportos licencek oldalon.](media/licensing-groups-change-licenses/update-group-license-assignments.png)
+    ![licenc-hozzárendelések lap egy olyan felhasználó számára, aki törli az Office 365 E1-et és az Office 365 E3-at kiválasztva](media/licensing-groups-change-licenses/update-user-license-assignments.png)
 
 1. Kattintson a **Mentés** gombra.
 
-A szolgáltatás folytonosságának biztosítása érdekében az Azure AD alkalmazza az új licenceket, és a csoport összes felhasználójára egyidejűleg eltávolítja a régi licenceket.
+Az Azure AD alkalmazza az új licenceket, és egyszerre eltávolítja a régi licenceket a szolgáltatás folytonosságának biztosítása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="change-group-license-assignments"></a>Csoportlicenc-hozzárendelések módosítása
 
-További tudnivalók a licencek kezelésével kapcsolatos egyéb forgatókönyvekről a csoportok segítségével a következő cikkekben:
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/) egy licencrendszergazdai fiók használatával az Azure AD-szervezetben.
+1. Válassza az **Azure Active Directory-csoportok** > **Groups**lehetőséget, majd nyissa meg egy csoport **áttekintő** lapját.
+1. Válassza **a Licencek**lehetőséget.
+1. Válassza a **Hozzárendelések** parancsot a felhasználó vagy csoport licenc-hozzárendelésének szerkesztéséhez.
+1. Jelölje be az Office 366 E3 jelölőnégyzetét. A szolgáltatás folytonosságának fenntartása érdekében győződjön meg arról, hogy a felhasználóhoz már hozzárendelt összes E1 szolgáltatást ki kell választania.
+1. Törölje a jelet az Office 365 E1 jelölőnégyzetéből.
+
+    ![A Hozzárendelések parancs kijelölése egy felhasználói vagy csoportlicencek lapon](media/licensing-groups-change-licenses/update-group-license-assignments.png)
+
+1. Kattintson a **Mentés** gombra.
+
+A szolgáltatás folytonosságának biztosítása érdekében az Azure AD alkalmazza az új licenceket, és egyszerre eltávolítja a régi licenceket a csoport összes felhasználója számára.
+
+## <a name="next-steps"></a>További lépések
+
+A csoportokon keresztüli licenckezelés egyéb forgatókönyveiről az alábbi cikkekben olvashat:
 
 - [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](../users-groups-roles/licensing-groups-assign.md)
 - [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](../users-groups-roles/licensing-groups-resolve-problems.md)
-- [Egyéni licenccel rendelkező felhasználók áttelepítésének engedélyezése a Azure Active Directory](../users-groups-roles/licensing-groups-migrate-users.md)
-- [További forgatókönyvek Azure Active Directory csoport licencelése](../users-groups-roles/licensing-group-advanced.md)
-- [PowerShell-példák a csoportos licencelésre Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)
+- [Az egyéni licencelt felhasználók áttelepítése az Azure Active Directory licencelésének csoportosítására](../users-groups-roles/licensing-groups-migrate-users.md)
+- [Az Azure Active Directory csoport további forgatókönyvek licencelése](../users-groups-roles/licensing-group-advanced.md)
+- [Példák a csoportlicencelésre az Azure Active Directoryban](../users-groups-roles/licensing-ps-examples.md)

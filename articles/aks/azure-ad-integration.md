@@ -1,168 +1,168 @@
 ---
-title: Azure Active Directory integrálása az Azure Kubernetes szolgáltatással
-description: Azure Active Directory-kompatibilis Azure Kubernetes Service-(ak-) fürtök létrehozása
+title: Az Azure Active Directory Azure Kubernetes Service-szel való integrálása
+description: Azure Active Directory-kompatibilis Azure Kubernetes-szolgáltatás (AKS) fürtjének létrehozása
 services: container-service
 ms.topic: article
 ms.date: 02/02/2019
 ms.openlocfilehash: 0476acadf5af3a3e2c470fe6c08ebbd355653e22
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596589"
 ---
-# <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory integrálása az Azure Kubernetes szolgáltatással
+# <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Az Azure Active Directory Azure Kubernetes Service-szel való integrálása
 
-Az Azure Kubernetes Service (ak) konfigurálható úgy, hogy Azure Active Directory (Azure AD) használatát használja a felhasználói hitelesítéshez. Ebben a konfigurációban az Azure AD-hitelesítési token használatával tud bejelentkezni egy AK-fürtbe.
+Az Azure Kubernetes-szolgáltatás (AKS) konfigurálható az Azure Active Directory (Azure AD) használatára a felhasználói hitelesítéshez. Ebben a konfigurációban az Azure AD-hitelesítési jogkivonat használatával bejelentkezhet egy AKS-fürtbe.
 
-A Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) állíthat be a felhasználó identitása vagy a címtár csoporttagság alapján.
+A fürtrendszergazdák konfigurálhatják a Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) a felhasználó identitás- vagy címtárcsoport-tagsága alapján.
 
 Ez a cikk a következőket ismerteti:
 
-- Telepítse az AK-ra és az Azure AD-ra vonatkozó előfeltételeket.
-- Azure AD-kompatibilis fürt üzembe helyezése.
-- Hozzon létre egy alapszintű RBAC-szerepkört az AK-fürtben a Azure Portal használatával.
+- Az AKS és az Azure AD előfeltételeinek üzembe helyezése.
+- Üzembe helyezhet egy Azure AD-kompatibilis fürtöt.
+- Hozzon létre egy alapvető RBAC-szerepkört az AKS-fürtben az Azure Portal használatával.
 
-Ezeket a lépéseket az [Azure CLI][azure-ad-cli]használatával is elvégezheti.
-
-> [!NOTE]
-> Az Azure AD csak akkor engedélyezhető, ha új RBAC-kompatibilis fürtöt hoz létre. Az Azure AD nem engedélyezhető egy meglévő AK-fürtön.
-
-## <a name="authentication-details"></a>Hitelesítés részletei
-
-Az Azure AD-hitelesítést az OpenID Connecttel rendelkező AK-fürtökhöz biztosítjuk. Az OpenID Connect egy OAuth 2,0 protokollra épülő identitási réteg.
-
-Az OpenID Connecttel kapcsolatos további információkért lásd: [hozzáférés engedélyezése webalkalmazásokhoz az OpenID Connect és az Azure ad használatával][open-id-connect].
-
-A Kubernetes-fürtön belül a rendszer webhook token-hitelesítést használ a hitelesítési jogkivonatokhoz. A webhook-jogkivonat hitelesítése az AK-fürt részeként van konfigurálva és felügyelve.
-
-A webhook jogkivonat-hitelesítéssel kapcsolatos további információkért tekintse meg a Kubernetes dokumentációjának [webhook token-hitelesítés][kubernetes-webhook] című szakaszát.
-
-Ha az Azure AD-hitelesítést egy AK-fürthöz szeretné biztosítani, két Azure AD-alkalmazás jön létre. Az első alkalmazás egy kiszolgáló-összetevő, amely felhasználói hitelesítést biztosít. A második alkalmazás egy ügyfél-összetevő, amelyet a parancssori felület hitelesítésre való felszólításakor használ a rendszer. Ez az ügyfélalkalmazás a kiszolgálói alkalmazást használja az ügyfél által megadott hitelesítő adatok tényleges hitelesítéséhez.
+Ezeket a lépéseket az [Azure CLI][azure-ad-cli]használatával is végrehajthatja.
 
 > [!NOTE]
-> Ha az Azure AD-t AK-hitelesítésre konfigurálja, két Azure AD-alkalmazás van konfigurálva. Az egyes alkalmazásokra vonatkozó engedélyek delegálásának lépéseit egy Azure bérlői rendszergazdának kell elvégeznie.
+> Az Azure AD csak akkor engedélyezhető, ha új RBAC-kompatibilis fürtöt hoz létre. Az Azure AD nem engedélyezhető egy meglévő AKS-fürtön.
+
+## <a name="authentication-details"></a>Hitelesítésrészletei
+
+Az Azure AD-hitelesítés openID Connecttel rendelkező AKS-fürtök számára biztosított. Az OpenID Connect az OAuth 2.0 protokoll ra épülő identitásréteg.
+
+Az OpenID Connect szolgáltatásról az [OpenID Connect és az Azure AD használatával a webalkalmazásokhoz való hozzáférés engedélyezése][open-id-connect]című témakörben talál további információt.
+
+A Kubernetes-fürtön belül webhook token hitelesítési hitelesítési jogkivonatok használják. A Webhook token hitelesítése az AKS-fürt részeként van konfigurálva és kezelve.
+
+A webhook token hitelesítéséről a Kubernetes-dokumentáció [Webhook token hitelesítése][kubernetes-webhook] című szakaszában olvashat bővebben.
+
+Az AKS-fürt Azure AD-hitelesítésének biztosításához két Azure AD-alkalmazás jön létre. Az első alkalmazás egy kiszolgálói összetevő, amely felhasználói hitelesítést biztosít. A második alkalmazás egy ügyfél-összetevő, amely akkor használatos, amikor a CLI hitelesítésre kéri. Ez az ügyfélalkalmazás a kiszolgálóalkalmazást használja az ügyfél által megadott hitelesítő adatok tényleges hitelesítéséhez.
+
+> [!NOTE]
+> Amikor az Azure AD-t AKS-hitelesítéshez konfigurálja, két Azure AD-alkalmazás van konfigurálva. Az egyes alkalmazások engedélyeinek delegálásához szükséges lépéseket egy Azure-bérlői rendszergazdának kell elvégeznie.
 
 ## <a name="create-the-server-application"></a>A kiszolgálóalkalmazás létrehozása
 
-Az első Azure AD-alkalmazás a felhasználó Azure AD-csoporttagság beszerzéséhez lesz alkalmazva. Az alkalmazás létrehozása a Azure Portalban:
+Az első Azure AD-alkalmazás a felhasználó Azure AD-csoporttagságának lekért alkalmazásával kerül alkalmazásra. Az alkalmazás létrehozása az Azure Portalon:
 
-1. Válassza a **Azure Active Directory** > **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget.
+1. Válassza az **Azure Active Directory** > **alkalmazás regisztrációit** > **Új regisztráció.**
 
     a. Adjon nevet az alkalmazásnak, például *AKSAzureADServer*.
 
-    b. **Támogatott fióktípus**esetén **csak a szervezeti címtárban**válassza a fiókok lehetőséget.
+    b. A **Támogatott fióktípusok**esetén válassza a Fiókok lehetőséget **ebben a szervezeti címtárban.**
     
-    c. Válassza a **web** lehetőséget az átirányítási URI típushoz, majd adjon meg egy URI-formátumú értéket, például *https://aksazureadserver* .
+    c. Válassza a **Web** lehetőséget az Átirányítás URI-típusához, majd *https://aksazureadserver*adja meg az URI-formátumú értéket, például .
 
-    d. Ha elkészült, válassza a **regisztráció** lehetőséget.
+    d. Ha végzett, válassza a **Regisztráció** lehetőséget.
 
-2. Válassza a **jegyzékfájl**lehetőséget, majd szerkessze a **groupMembershipClaims:** Value **értéket.** Ha végzett a frissítésekkel, válassza a **Mentés**lehetőséget.
+2. Válassza **a Manifest**lehetőséget, majd szerkessze a **groupMembershipClaims:** value as **All**értéket. Ha végzett a frissítésekkel, válassza a **Mentés gombot.**
 
     ![Csoporttagság frissítése az összesre](media/aad-integration/edit-manifest.png)
 
-3. Az Azure AD-alkalmazás bal oldali ablaktábláján válassza a **tanúsítványok & Secrets**elemet.
+3. Az Azure AD-alkalmazás bal oldali ablaktáblájában válassza **a Tanúsítványok & titkos kulcsok**lehetőséget.
 
-    a. Válassza az **+ új ügyfél titkot**.
+    a. Válassza a **+ Új ügyféltitok lehetőséget.**
 
-    b. Adja meg a kulcs leírását, például: *AK Azure ad Server*. Válassza ki a lejárati időt, majd kattintson a **Hozzáadás**gombra.
+    b. Adjon hozzá egy kulcsleírást, például *az AKS Azure AD-kiszolgálót.* Válassza ki a lejárati időt, majd válassza **a Hozzáadás lehetőséget.**
 
-    c. Jegyezze fel a kulcs értékét, amely csak most jelenik meg. Amikor üzembe helyez egy Azure AD-kompatibilis AK-fürtöt, ezt az értéket a kiszolgálói alkalmazás titkának nevezzük.
+    c. Figyelje meg a kulcsértéket, amely csak ebben az időben jelenik meg. Ha egy Azure AD-kompatibilis AKS-fürt, ezt az értéket nevezzük a kiszolgálóalkalmazás titkos.
 
-4. Az Azure AD-alkalmazás bal oldali ablaktábláján válassza az **API-engedélyek**lehetőséget, majd válassza az **+ engedély hozzáadása**lehetőséget.
+4. Az Azure AD-alkalmazás bal oldali ablaktáblájában válassza az **API-engedélyek lehetőséget,** majd válassza **a + Engedély hozzáadása**lehetőséget.
 
-    a. A **Microsoft API**-k területen válassza a **Microsoft Graph**lehetőséget.
+    a. A **Microsoft API-k csoportban**válassza a **Microsoft Graph**lehetőséget.
 
-    b. Válassza a **delegált engedélyek**lehetőséget, majd jelölje be a **könyvtár > Directory. Read. All (címtáradatok olvasása)** jelölőnégyzetet.
+    b. Jelölje be a **Delegált engedélyek jelölőnégyzetet,** majd jelölje be a **Directory > Directory.Read.All (Könyvtáradatok olvasása) jelölőnégyzetet.**
 
-    c. Ha a felhasználóhoz > felhasználó számára egy alapértelmezett delegált engedély van **. az olvasás (bejelentkezés és a felhasználói profil olvasása)** nem létezik, jelölje be a jelölőnégyzetet.
+    c. Ha nem létezik alapértelmezett delegált engedély a **User > User.Read (Bejelentkezés és felhasználói profil olvasása)** számára, jelölje be a mellette lévő jelölőnégyzetet.
 
-    d. Válassza az **alkalmazás engedélyei**lehetőséget, majd jelölje be a **könyvtár > Directory. Read. All (címtáradatok olvasása)** jelölőnégyzetet.
+    d. Jelölje be **az Alkalmazásengedélyek**lehetőséget, majd jelölje be a **Directory > Directory.Read.All (Könyvtáradatok olvasása) jelölőnégyzetet.**
 
-    ![Gráf engedélyeinek beállítása](media/aad-integration/graph-permissions.png)
+    ![Diagramengedélyek beállítása](media/aad-integration/graph-permissions.png)
 
-    e. A frissítések mentéséhez válassza az **engedélyek** megadása lehetőséget.
+    e. A frissítések mentéséhez válassza az **Engedélyek hozzáadása** lehetőséget.
 
-    f. A **jóváhagyás engedélyezése**területen válassza a **rendszergazdai jóváhagyás megadása**lehetőséget. Ez a gomb nem érhető el, mert a jelenleg használt fiók nem szerepel bérlői rendszergazdaként.
+    f. A **Grant consent (Engedélyező) csoportban**válassza **a Rendszergazdai hozzájárulás megadása**lehetőséget. Ez a gomb nem lesz elérhető, a használt aktuális fiók nem szerepel bérlői rendszergazdaként.
 
-    Az engedélyek sikeres megadása után a következő értesítés jelenik meg a portálon:
+    Az engedélyek sikeres megadása után a portálon a következő értesítés jelenik meg:
 
-   ![A sikeres engedélyek bejelentése](media/aad-integration/permissions-granted.png)
+   ![Értesítés a megadott sikeres engedélyekről](media/aad-integration/permissions-granted.png)
 
-5. Az Azure AD-alkalmazás bal oldali ablaktábláján válassza ki az **API közzététele**lehetőséget, majd válassza **a + hatókör hozzáadása**elemet.
+5. Az Azure AD-alkalmazás bal oldali ablaktáblájában válassza az **API megjelenítése**lehetőséget, majd a + **Hatókör hozzáadása**lehetőséget.
     
-    a. Adja meg a **hatókör nevét**, a rendszergazda által megadott **megjelenítendő nevet**, majd egy **rendszergazdai beleegyező leírást** , például *AKSAzureADServer*.
+    a. Adjon meg egy **hatókörnevet**, egy **rendszergazdai jóváhagyás megjelenítendő nevét,** majd egy **rendszergazdai hozzájárulási leírást,** például *az AKSAzureADServer.*
 
-    b. Győződjön meg arról, hogy az **állapot** beállítás **engedélyezve**értékre van állítva.
+    b. Győződjön meg **arról,** hogy az Állapot beállítása **Engedélyezve**.
 
-    ![A kiszolgálói alkalmazás elérhetővé tétele API-ként más szolgáltatásokkal való használathoz](media/aad-integration/expose-api.png)
+    ![A kiszolgálóalkalmazás api-ként való megjelenítése más szolgáltatásokkal való használatra](media/aad-integration/expose-api.png)
 
-    c. Válassza a **hatókör hozzáadása**elemet.
+    c. Válassza **a Hatókör hozzáadása**lehetőséget.
 
-6. Térjen vissza az alkalmazás **áttekintése** lapra, és jegyezze fel az **alkalmazás (ügyfél) azonosítóját**. Ha Azure AD-kompatibilis AK-fürtöt helyez üzembe, ezt az értéket kiszolgálóalkalmazás-AZONOSÍTÓnak nevezzük.
+6. Térjen vissza az alkalmazás **áttekintése** lapra, és jegyezze fel az **alkalmazás (ügyfél) azonosítóját**. Ha egy Azure AD-kompatibilis AKS-fürt, ezt az értéket nevezzük a kiszolgálóalkalmazás-azonosító.
 
-    ![Alkalmazás AZONOSÍTÓjának beolvasása](media/aad-integration/application-id.png)
+    ![Alkalmazásazonosító beszereznie](media/aad-integration/application-id.png)
 
 ## <a name="create-the-client-application"></a>Az ügyfélalkalmazás létrehozása
 
-A második Azure AD-alkalmazást akkor használja a rendszer, amikor bejelentkezik a Kubernetes CLI-vel (kubectl).
+A második Azure AD-alkalmazás akkor használatos, amikor bejelentkezik a Kubernetes CLI (kubectl).
 
-1. Válassza a **Azure Active Directory** > **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget.
+1. Válassza az **Azure Active Directory** > **alkalmazás regisztrációit** > **Új regisztráció.**
 
     a. Adjon nevet az alkalmazásnak, például *AKSAzureADClient*.
 
-    b. **Támogatott fióktípus**esetén **csak a szervezeti címtárban**válassza a fiókok lehetőséget.
+    b. A **Támogatott fióktípusok**esetén válassza a Fiókok lehetőséget **ebben a szervezeti címtárban.**
 
-    c. Válassza a **web** lehetőséget az átirányítási URI típushoz, majd írjon be egy URI-formázott értéket, például *https://aksazureadclient* .
+    c. Válassza a **Web** lehetőséget az Átirányítás URI-típusához, majd *https://aksazureadclient*adja meg az URI-formátumú értéket, például .
 
     >[!NOTE]
-    >Ha új RBAC-kompatibilis fürtöt hoz létre a tárolók Azure Monitor támogatásához, adja hozzá a következő két további átirányítási URL-címet a listához **webalkalmazás-** típusokként. Az első URL-cím értékének `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`nak kell lennie, és a második alap URL-címnek `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`nak kell lennie.
+    >Ha egy új RBAC-kompatibilis fürt támogatja az Azure Monitor tárolók, adja hozzá a következő **Web** két további átirányítási URL-címeket a listához webalkalmazás-típusok. Az első alap URL-értéknek, `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` a második `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`alap URL-értéknek pedig a legyen .
     >
-    >Ha ezt a funkciót az Azure China-ban használja, az első alap URL-címet `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` kell megadni, és a második alap URL-címet `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`kell megadni.
+    >Ha ezt a funkciót az Azure China-ban használja, `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` az első alap URL-értéknek kell lennie, és a második alap URL-értéknek kell lennie. `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`
     >
-    >További információkért lásd: [a Azure monitor élő adatok (előzetes verzió) szolgáltatásának beállítása](../azure-monitor/insights/container-insights-livedata-setup.md) a tárolók számára, valamint a hitelesítés konfigurálásának lépései az [ad integrált hitelesítés konfigurálása](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication) szakaszban.
+    >További információ: [A Live Data (előzetes verzió) szolgáltatás beállítása az](../azure-monitor/insights/container-insights-livedata-setup.md) Azure Monitor tárolókhoz, és a hitelesítés konfigurálásának lépései az [AD integrált hitelesítés konfigurálása](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication) szakaszban.
 
-    d. Ha elkészült, válassza a **regisztráció** lehetőséget.
+    d. Ha végzett, válassza a **Regisztráció** lehetőséget.
 
-2. Az Azure AD-alkalmazás bal oldali ablaktábláján válassza az **API-engedélyek**lehetőséget, majd válassza az **+ engedély hozzáadása**lehetőséget.
+2. Az Azure AD-alkalmazás bal oldali ablaktáblájában válassza az **API-engedélyek lehetőséget,** majd válassza **a + Engedély hozzáadása**lehetőséget.
 
-    a. Válassza a **saját API**-k lehetőséget, majd válassza ki az előző lépésben létrehozott Azure ad Server-alkalmazást, például *AKSAzureADServer*.
+    a. Válassza **a Saját API-k**lehetőséget, majd válassza ki az előző lépésben létrehozott Azure AD-kiszolgálóalkalmazást, például az *AKSAzureADServer alkalmazást.*
 
-    b. Válassza a **delegált engedélyek**lehetőséget, majd jelölje be az Azure ad Server-alkalmazás melletti jelölőnégyzetet.
+    b. Válassza **a Delegált engedélyek lehetőséget,** majd jelölje be az Azure AD-kiszolgálóalkalmazás melletti jelölőnégyzetet.
 
-    ![Alkalmazás engedélyeinek konfigurálása](media/aad-integration/select-api.png)
+    ![Alkalmazásengedélyek konfigurálása](media/aad-integration/select-api.png)
 
-    c. Válassza az **engedélyek hozzáadása**lehetőséget.
+    c. Válassza **az Engedélyek hozzáadása**lehetőséget.
 
-    d. A **jóváhagyás engedélyezése**területen válassza a **rendszergazdai jóváhagyás megadása**lehetőséget. Ez a gomb nem érhető el, ha az aktuális fiók nem bérlői rendszergazda. Az engedélyek megadása után a következő értesítés jelenik meg a portálon:
+    d. A **Grant consent (Engedélyező) csoportban**válassza **a Rendszergazdai hozzájárulás megadása**lehetőséget. Ez a gomb nem érhető el, ha az aktuális fiók nem bérlői rendszergazda. Az engedélyek megadásakor a portálon a következő értesítés jelenik meg:
 
-    ![A sikeres engedélyek bejelentése](media/aad-integration/permissions-granted.png)
+    ![Értesítés a megadott sikeres engedélyekről](media/aad-integration/permissions-granted.png)
 
-3. Az Azure AD-alkalmazás bal oldali ablaktábláján válassza a **hitelesítés**lehetőséget.
+3. Az Azure AD-alkalmazás bal oldali ablaktáblájában válassza a **Hitelesítés**lehetőséget.
 
-    - Az **alapértelmezett ügyfél típusa**területen válassza az **Igen** lehetőséget, ha **az ügyfelet nyilvános ügyfélként szeretné kezelni**.
+    - Az **Alapértelmezett ügyféltípus csoportban**válassza az **Igen** lehetőséget az ügyfél **nyilvános ügyfélként való kezelésére.**
 
-5. Az Azure AD-alkalmazás bal oldali ablaktábláján jegyezze fel az alkalmazás AZONOSÍTÓját. Ha Azure AD-kompatibilis AK-fürtöt helyez üzembe, ezt az értéket ügyfélalkalmazás-AZONOSÍTÓnak nevezzük.
+5. Az Azure AD-alkalmazás bal oldali ablaktáblájában jegyezze fel az alkalmazásazonosítóját. Ha egy Azure AD-kompatibilis AKS-fürt, ezt az értéket nevezzük az ügyfélalkalmazás-azonosító.
 
-   ![Az alkalmazás AZONOSÍTÓjának beolvasása](media/aad-integration/application-id-client.png)
+   ![Az alkalmazásazonosító beszereznie](media/aad-integration/application-id-client.png)
 
-## <a name="get-the-tenant-id"></a>A bérlő AZONOSÍTÓjának beolvasása
+## <a name="get-the-tenant-id"></a>A bérlőazonosító beszereznie
 
-Ezután szerezze be az Azure-bérlő AZONOSÍTÓját. Ez az érték az AK-fürt létrehozásakor használatos.
+Ezután az Azure-bérlő azonosítóját. Ez az érték az AKS-fürt létrehozásakor használatos.
 
-A Azure Portal válassza ki **Azure Active Directory** > a **Tulajdonságok** elemet, és jegyezze fel a **könyvtár azonosítóját**. Amikor létrehoz egy Azure AD-kompatibilis AK-fürtöt, ezt az értéket a bérlői AZONOSÍTÓnak nevezzük.
+Az Azure Portalon válassza az Azure Active > **Directory-tulajdonságok lehetőséget,** és jegyezze fel a **címtárazonosítót.** **Azure Active Directory** Amikor létrehoz egy Azure AD-kompatibilis AKS-fürt, ezt az értéket nevezzük a bérlői azonosító.
 
-![Az Azure-bérlő AZONOSÍTÓjának beolvasása](media/aad-integration/tenant-id.png)
+![Az Azure-beli bérlői azonosító beszereznie](media/aad-integration/tenant-id.png)
 
-## <a name="deploy-the-aks-cluster"></a>Az AK-fürt üzembe helyezése
+## <a name="deploy-the-aks-cluster"></a>Az AKS-fürt telepítése
 
-Az az [Group Create][az-group-create] parancs használatával hozzon létre egy ERŐFORRÁSCSOPORTOT az AK-fürthöz.
+Az [az csoport létrehozása][az-group-create] paranccsal hozzon létre egy erőforráscsoportot az AKS-fürthöz.
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Használja az az [AK Create][az-aks-create] parancsot az AK-fürt üzembe helyezéséhez. Ezután cserélje le a következő példában szereplő parancs értékeit. Az Azure AD-alkalmazások a kiszolgálói alkalmazás AZONOSÍTÓjának, az alkalmazás titkos kódjának, az ügyfélalkalmazás azonosítójának és a bérlő AZONOSÍTÓjának létrehozásakor gyűjtött értékeket használja.
+Az [AKS-fürt][az-aks-create] üzembe helyezéséhez használja az aks create parancsot. Ezután cserélje le a következő mintaparancs értékeit. Használja az Azure AD-alkalmazások létrehozásakor gyűjtött értékeket a kiszolgálóalkalmazás-azonosítóhoz, az alkalmazástitkos kulcsot, az ügyfélalkalmazás-azonosítót és a bérlői azonosítót.
 
 ```azurecli
 az aks create \
@@ -175,32 +175,32 @@ az aks create \
   --aad-tenant-id 72f988bf-0000-0000-0000-2d7cd011db47
 ```
 
-Egy AK-fürt létrehozása néhány percet vesz igénybe.
+Az AKS-fürt létrehozása néhány percet vesz igénybe.
 
-## <a name="create-an-rbac-binding"></a>RBAC kötés létrehozása
+## <a name="create-an-rbac-binding"></a>RBAC-kötés létrehozása
 
 > [!NOTE]
-> A fürt szerepkörének kötési neve megkülönbözteti a kis-és nagybetűket.
+> A fürtszerepkör kötési neve a kis- és nagybetűket megkülönböztető.
 
-Mielőtt egy Azure Active Directory fiókot használ egy AK-fürthöz, létre kell hoznia egy szerepkör-kötés vagy egy fürt szerepkör-kötést. A szerepkörök határozzák meg a megadható engedélyeket, a kötések pedig a kívánt felhasználókra vonatkoznak. Ezek a hozzárendelések egy adott névtérre vagy a teljes fürtre is alkalmazhatók. További információ: RBAC- [hitelesítés használata][rbac-authorization].
+Mielőtt egy AKS-fürthöz Azure Active Directory-fiókot használna, létre kell hoznia a szerepkör-kötést vagy a fürtszerepkör-kötést. A szerepkörök határozzák meg a megadandó engedélyeket, és a kötések a kívánt felhasználókra is alkalmazzák azokat. Ezek a hozzárendelések alkalmazhatók egy adott névtérre vagy a teljes fürtre. További információ: [Az RBAC-engedélyezés használata.][rbac-authorization]
 
-Először is használja az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot a `--admin` argumentummal a fürtbe való bejelentkezéshez rendszergazdai hozzáféréssel.
+Először használja az [aks get-credentials][az-aks-get-credentials] parancsot az `--admin` argumentummal, hogy jelentkezzen be a fürtbe rendszergazdai hozzáféréssel.
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-Ezután hozzon létre ClusterRoleBinding egy Azure AD-fiókhoz, amelyhez hozzáférést szeretne adni az AK-fürthöz. A következő példa a fiók teljes hozzáférését adja a fürt összes névteréhez:
+Ezután hozzon létre ClusterRoleBinding egy Azure AD-fiók, amely hozzáférést szeretne adni az AKS-fürthöz. A következő példa teljes hozzáférést biztosít a fióknak a fürt összes névteréhez:
 
-- Ha az RBAC-kötést megadó felhasználó ugyanahhoz az Azure AD-bérlőhöz van rendelve, akkor az egyszerű felhasználónév (UPN) alapján rendeljen engedélyeket. A ClusterRoleBinding YAML-jegyzékfájljának létrehozásához lépjen a lépéshez.
+- Ha a felhasználó, amiért megadja az RBAC-kötés ugyanabban az Azure AD-bérlőben van, rendeljen hozzá engedélyeket az egyszerű felhasználónév (UPN) alapján. Lépjen tovább a lépésre a ClusterRoleBinding YAML-jegyzékfájljának létrehozásához.
 
-- Ha a felhasználó egy másik Azure AD-bérlőben található, a **objectId** tulajdonság lekérdezése és használata. Ha szükséges, kérje le a szükséges felhasználói fiók objectId az az [ad User show][az-ad-user-show] parancs használatával. Adja meg a szükséges fiók egyszerű felhasználónevét (UPN):
+- Ha a felhasználó egy másik Azure AD-bérlő, lekérdezése és használata az **objectId** tulajdonság helyett. Szükség esetén az [az ad user show][az-ad-user-show] paranccsal szerezd be a szükséges felhasználói fiók objectId azonosítóját. Adja meg a szükséges fiók egyszerű felhasználónevét (UPN):
 
     ```azurecli-interactive
     az ad user show --upn-or-object-id user@contoso.com --query objectId -o tsv
     ```
 
-Hozzon létre egy fájlt, például *RBAC-HRE-user. YAML*, majd illessze be a következő tartalmakat. Az utolsó sorban cserélje le a **userPrincipalName_or_objectIdt** az UPN-vagy OBJEKTUMAZONOSÍTÓ-azonosítóra. A választás attól függ, hogy a felhasználó azonos-e az Azure AD-Bérlővel, vagy sem.
+Hozzon létre egy fájlt, például *rbac-aad-user.yaml*, majd illessze be a következő tartalmat. Az utolsó sorban cserélje le **userPrincipalName_or_objectId** az upn vagy az objektumazonosítóra. A választás attól függ, hogy a felhasználó ugyanaz az Azure AD-bérlő, vagy sem.
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -217,15 +217,15 @@ subjects:
   name: userPrincipalName_or_objectId
 ```
 
-Alkalmazza a kötést a [kubectl Apply][kubectl-apply] parancs használatával az alábbi példában látható módon:
+Alkalmazza a kötést a [kubectl apply][kubectl-apply] paranccsal, ahogy az a következő példában látható:
 
 ```console
 kubectl apply -f rbac-aad-user.yaml
 ```
 
-Az Azure AD-csoportok összes tagjához szerepkör-kötés is létrehozható. Az Azure AD-csoportokat az alábbi példában látható módon adja meg a csoport objektum-azonosító használatával.
+Egy szerepkör-kötés is létrehozható az Azure AD-csoport minden tagja számára. Az Azure AD-csoportok a csoportobjektum-azonosító használatával vannak megadva, ahogy az a következő példában látható.
 
-Hozzon létre egy fájlt, például *RBAC-HRE-Group. YAML*, majd illessze be a következő tartalmakat. Frissítse a csoport objektum AZONOSÍTÓját az Azure AD-bérlő egyikével:
+Hozzon létre egy fájlt, például *rbac-aad-group.yaml*, majd illessze be a következő tartalmat. Frissítse a csoportobjektum-azonosítót az Azure AD-bérlőegyikdel:
 
  ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -242,23 +242,23 @@ subjects:
    name: "894656e1-39f8-4bfe-b16a-510f61af6f41"
 ```
 
-Alkalmazza a kötést a [kubectl Apply][kubectl-apply] parancs használatával az alábbi példában látható módon:
+Alkalmazza a kötést a [kubectl apply][kubectl-apply] paranccsal, ahogy az a következő példában látható:
 
 ```console
 kubectl apply -f rbac-aad-group.yaml
 ```
 
-A Kubernetes-fürtök RBAC-vel való biztonságossá tételével kapcsolatos további információkért lásd: a [RBAC-hitelesítés használata][rbac-authorization].
+A Kubernetes-fürt RBAC-mal való védelméről az [RBAC-engedélyezés használata című][rbac-authorization]témakörben talál további információt.
 
 ## <a name="access-the-cluster-with-azure-ad"></a>A fürt elérése az Azure AD-vel
 
-A nem rendszergazda felhasználó környezetének lekéréséhez használja az az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot.
+Húzza le a környezetben a nem rendszergazdai felhasználó az [az aks get-credentials][az-aks-get-credentials] paranccsal.
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-A `kubectl` parancs futtatása után a rendszer kérni fogja, hogy az Azure használatával hitelesítse magát. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat, ahogy az az alábbi példában is látható:
+Miután futtatta a parancsot, a rendszer kéri, hogy hitelesítse magát az `kubectl` Azure használatával. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat, ahogy az a következő példában látható:
 
 ```console
 $ kubectl get nodes
@@ -271,26 +271,26 @@ aks-nodepool1-79590246-1   Ready     agent     1h        v1.13.5
 aks-nodepool1-79590246-2   Ready     agent     1h        v1.13.5
 ```
 
-A folyamat befejezésekor a rendszer gyorsítótárazza a hitelesítési jogkivonatot. A rendszer csak a jogkivonat lejáratakor vagy a Kubernetes konfigurációs fájl újbóli létrehozásakor kéri a bejelentkezést.
+Amikor a folyamat befejeződött, a hitelesítési jogkivonat gyorsítótárba kerül. A rendszer csak akkor kéri, hogy jelentkezzen be újra, amikor a jogkivonat lejár, vagy a Kubernetes konfigurációs fájl újra létrejön.
 
-Ha a sikeres bejelentkezést követően megjelenik egy engedélyezési hibaüzenet, ellenőrizze a következő feltételeket:
+Ha a sikeres bejelentkezés után megjelenik egy engedélyezési hibaüzenet, ellenőrizze az alábbi feltételeket:
 
 ```console
 error: You must be logged in to the server (Unauthorized)
 ```
 
 
-- A megfelelő objektumazonosítót vagy UPN-t definiálta attól függően, hogy a felhasználói fiók ugyanahhoz az Azure AD-bérlőhöz van-e társítva.
-- A felhasználó nem tagja több mint 200 csoportnak.
-- Az alkalmazás-regisztráció a kiszolgálón megadott titok megegyezik a `--aad-server-app-secret`használatával konfigurált értékkel.
+- Ön definiálta a megfelelő objektumazonosítót vagy upn-t attól függően, hogy a felhasználói fiók ugyanabban az Azure AD-bérlőben van-e vagy sem.
+- A felhasználó nem tagja 200-nál több csoportnak.
+- A kiszolgáló alkalmazásregisztrációjában megadott titkos titok megegyezik `--aad-server-app-secret`a használatával konfigurált értékkel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha az Azure AD-felhasználókat és-csoportokat szeretné használni a fürterőforrások elérésének vezérléséhez, tekintse meg a [fürterőforrások hozzáférésének szabályozása szerepköralapú hozzáférés-vezérléssel és az AK-beli Azure ad-identitások használatával című részt][azure-ad-rbac].
+Ha az Azure AD-felhasználók és csoportok használatával szabályozhatja a fürterőforrásokhoz való hozzáférést, [olvassa el a Fürterőforrásokhoz való hozzáférés szabályozása szerepköralapú hozzáférés-vezérlés sel és az Azure AD-identitások az AKS-ben című témakört.][azure-ad-rbac]
 
-További információ a Kubernetes-fürtök biztonságossá tételéről: [hozzáférési és identitási beállítások az AK][rbac-authorization]-hoz.
+A Kubernetes-fürtök védelméről az [AKS hozzáférési és identitáskezelési beállításai][rbac-authorization]című témakörben talál további információt.
 
-Az identitás-és erőforrás-vezérléssel kapcsolatos további információkért lásd: [ajánlott eljárások a hitelesítéshez és engedélyezéshez az AK-ban][operator-best-practices-identity].
+Az identitás- és erőforrás-vezérlésről az [AKS-ben a hitelesítéssel és engedélyezéssel kapcsolatos gyakorlati tanácsok][operator-best-practices-identity]című témakörben olvashat bővebben.
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication

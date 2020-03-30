@@ -1,19 +1,19 @@
 ---
-title: Útmutató az Azure Signaler szolgáltatás ügyfeleinek hitelesítéséhez
-description: Ismerje meg, hogyan implementálhatja saját hitelesítését, és hogyan integrálhatja azt az Azure Signaler szolgáltatással a E2E példa alapján.
+title: Útmutató az Azure SignalR Service-ügyfelek hitelesítéséhez
+description: Ismerje meg, hogyan valósíthatja meg saját hitelesítését, és integrálhatja azt az Azure SignalR-szolgáltatással az e2e-példát követve.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: cc955adffbe7df5809f9c4c860877ad22df3e99b
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158281"
 ---
-# <a name="azure-signalr-service-authentication"></a>Azure Signaler szolgáltatás hitelesítése
+# <a name="azure-signalr-service-authentication"></a>Azure SignalR szolgáltatás – hitelesítés
 
 Ez az oktatóanyag a rövid útmutatóban bemutatott csevegőszoba-alkalmazásra épít. Ha még nem végezte el a [Csevegőszoba létrehozása SignalR szolgáltatással](signalr-quickstart-dotnet-core.md) gyakorlatot, először végezze el azt.
 
@@ -31,7 +31,7 @@ Az oktatóanyag kódja letölthető az [AzureSignalR-minták GitHub-adattárjáb
 
 ![Azure-ban üzemeltetett teljes OAuth-hitelesítés](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Új OAuth-alkalmazás regisztrálása a GitHub-fiókkal
@@ -48,21 +48,21 @@ Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
 * [Git](https://git-scm.com/)
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)
 * [Konfigurált Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
-* Töltse le vagy klónozott [AzureSignalR – minta GitHub-](https://github.com/aspnet/AzureSignalR-samples) tárházat.
+* Töltse le vagy klónozza az [AzureSignalR-minta](https://github.com/aspnet/AzureSignalR-samples) GitHub-tárházat.
 
 ## <a name="create-an-oauth-app"></a>OAuth-alkalmazás létrehozása
 
 1. Nyisson meg egy webböngészőt, navigáljon a `https://github.com` helyre, és jelentkezzen be a fiókjába.
 
-2. A fiókjában lépjen a **Settings (Beállítások)**  > **Developer settings (Fejlesztői beállítások)** részre, majd az **OAuth Apps (OAuth-alkalmazások)** területen kattintson a **Register a new application (Új alkalmazás regisztrálása)** vagy a *New OAuth App (Új OAuth-alkalmazás)* lehetőségre.
+2. A fiókjában keresse meg a **Beállítások** > **fejlesztői beállításait,** és kattintson az Új alkalmazás **regisztrálása**vagy az Új **OAuth alkalmazás** elemre az *OAuth-alkalmazások csoportban.*
 
 3. Adja meg a következő beállításokat az új OAuth-alkalmazás számára, majd kattintson a **Register application (Alkalmazás regisztrálása)** lehetőségre:
 
     | Beállítás neve | Ajánlott érték | Leírás |
     | ------------ | --------------- | ----------- |
-    | Alkalmazásnév | *Azure SignalR Chat* | A GitHub-felhasználónak képesnek kell lennie a hitelesítéssel rendelkező alkalmazás felismerésére és megbízhatóságára.   |
+    | Alkalmazásnév | *Azure SignalR Chat* | A GitHub-felhasználónak képesnek kell lennie felismerni és megbízni abban az alkalmazásban, amelyet hitelesít.   |
     | Kezdőlap URL-címe | `http://localhost:5000/home` | |
-    | Alkalmazás leírása | *Egy chat room-minta, amely az Azure Signaler szolgáltatást használja GitHub-hitelesítéssel* | Az alkalmazás hasznos leírása, amely információkat nyújt az alkalmazás felhasználóinak az alkalmazott hitelesítés környezetéről. |
+    | Alkalmazás leírása | *Csevegőszoba-minta az Azure SignalR-szolgáltatás használatával GitHub-hitelesítéssel* | Az alkalmazás hasznos leírása, amely információkat nyújt az alkalmazás felhasználóinak az alkalmazott hitelesítés környezetéről. |
     | Az engedélyezési visszahívás URL-címe | `http://localhost:5000/signin-github` | Ez az OAuth-alkalmazás legfontosabb beállítása. Ez az a visszahívási URL-cím, amelyet a GitHub a sikeres hitelesítés után visszaad a felhasználónak. Ebben az oktatóanyagban az *AspNet.Security.OAuth.GitHub* csomag alapértelmezett visszahívási URL-címét kell használnia: */signin-github*.  |
 
 4. Az új OAuth-alkalmazás regisztrálását követően adja hozzá az *Ügyfél-azonosítót* és a *Titkos ügyfélkulcsot* a Secret Managerhez az alábbi parancsokkal. Cserélje le a *Your_GitHub_Client_Id* és a *Your_GitHub_Client_Secret* elemeket az OAuth-alkalmazás értékeire.
@@ -377,7 +377,7 @@ Ebben a szakaszban be fogja kapcsolni a valódi hitelesítést azáltal, hogy ho
 
 ## <a name="deploy-the-app-to-azure"></a>Az alkalmazás üzembe helyezése az Azure-ban
 
-Ebben a szakaszban az Azure parancssori felületét (CLI) fogja használni a Azure Cloud Shell egy új webalkalmazás létrehozásához [Azure app Service](https://docs.microsoft.com/azure/app-service/) a ASP.NET-alkalmazás Azure-ban való üzemeltetéséhez. A webalkalmazás a Git helyi üzemelő példányának használatára lesz konfigurálva. A webalkalmazás emellett a SignalR kapcsolati sztringgel, GitHub OAuth titkos alkalmazáskulcsokkal és egy üzembe helyező felhasználóval is konfigurálva lesz.
+Ebben a szakaszban az Azure Cloud Shell ből származó Azure parancssori felület (CLI) használatával új webalkalmazást hozhat létre az [Azure App Service-ben,](https://docs.microsoft.com/azure/app-service/) hogy az ASP.NET alkalmazást az Azure-ban tárolhatja. A webalkalmazás a Git helyi üzemelő példányának használatára lesz konfigurálva. A webalkalmazás emellett a SignalR kapcsolati sztringgel, GitHub OAuth titkos alkalmazáskulcsokkal és egy üzembe helyező felhasználóval is konfigurálva lesz.
 
 A jelen szakaszban ismertetett lépések az Azure CLI *signalr* bővítményét használják. Hajtsa végre az alábbi parancsot a *signalr* bővítmény az Azure CLI-hez való telepítéséhez:
 
@@ -539,7 +539,7 @@ A kód üzembe helyezéséhez hajtsa végre az alábbi parancsokat egy Git-rends
 
 A legutolsó dolog, amit el kell végeznie, az a GitHub OAuth-alkalmazás **Homepage URL** (Kezdőlap URL-címe) és **Authorization callback URL** (Engedélyezés-visszahívási URL-cím) tulajdonságának frissítését, hogy azok az új üzemeltetett alkalmazásra mutassanak.
 
-1. Nyissa meg a [https://github.com](https://github.com) webhelyet egy böngészőben, majd lépjen a fiókja **Settings (Beállítások)**  > **Developer settings (Fejlesztői beállítások)**  > **Oauth Apps (OAuth-alkalmazások)** elemére.
+1. Nyissa [https://github.com](https://github.com) meg a böngészőben, és keresse meg a fiók **Beállítások** > **fejlesztői beállítások** > **Oauth Apps**.
 
 2. Kattintson a hitelesítő alkalmazásra, és a frissítse a **Homepage URL** (Kezdőlap URL-címe) és **Authorization callback URL** (Engedélyezés-visszahívási URL-cím) tulajdonságát a lent látható módon:
 
@@ -563,15 +563,15 @@ Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díj
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
 
-A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *SignalRTestResources* nevű erőforráscsoportot használtak. Az eredménylistában kattintson a **…** ikonra az erőforráscsoport mellett, majd kattintson az **Erőforráscsoport törlése** lehetőségre.
+A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *SignalRTestResources* nevű erőforráscsoportot használtak. Az eredménylistában kattintson a **…** ikonra az erőforráscsoport mellett, majd kattintson az **Erőforráscsoport törlése** elemre.
 
 ![Törlés](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 
-A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be az erőforráscsoport nevét, és kattintson a **Törlés** elemre.
+A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be az erőforráscsoport nevét, és kattintson a **Törlés** gombra.
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban OAuth-hitelesítést adott hozzá az alkalmazáshoz, hogy jobb hitelesítési megoldást biztosítson az Azure SignalR Service szolgáltatással. Ha többet szeretne megtudni az Azure SignalR Server használatáról, lépjen tovább a SignalR Service Azure CLI-mintáira.
 

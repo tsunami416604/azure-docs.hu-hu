@@ -1,6 +1,6 @@
 ---
-title: azcopy | Microsoft Docs
-description: Ez a cikk a azcopy parancsra vonatkozó tudnivalókat tartalmazza.
+title: azcopy | Microsoft dokumentumok
+description: Ez a cikk az azcopy parancsra vonatkozó referenciainformációkat tartalmaz.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,53 +9,53 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 5da3a2e5d003a191bff66af6599cae4d34ab60c6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74038092"
 ---
 # <a name="azcopy"></a>azcopy
 
-A AzCopy olyan parancssori eszköz, amely az Azure Storage-ba és az-ba helyezi át az adatátvitelt.
+Az AzCopy egy parancssori eszköz, amely adatokat mozgat az Azure Storage-ba és az Azure Storage-ból.
 
 ## <a name="synopsis"></a>Áttekintés
 
 A parancsok általános formátuma: `azcopy [command] [arguments] --[flag-name]=[flag-value]`.
 
-Ha problémákat szeretne jelenteni, vagy többet szeretne megtudni az eszközről, tekintse meg a következőt: [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy).
+A problémák jelentéséhez vagy az eszközről a témakörben olvashat bővebben. [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy)
 
-## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+## <a name="related-conceptual-articles"></a>Kapcsolódó koncepcionális cikkek
 
-- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
-- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
-- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
-- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
+- [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
+- [Adatok átvitele az AzCopy és blob tárhellyel](storage-use-azcopy-blobs.md)
+- [Adatátvitel átvitele az AzCopy programmal és a fájltárolással](storage-use-azcopy-files.md)
+- [Az AzCopy konfigurálása, optimalizálása és hibaelhárítása](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Beállítások
 
-**--Cap-Mbps UInt32**   Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.
+**--sapka-mbps uint32**   Az átviteli sebesség felső határa megabit/másodpercben. A pillanatonkénti átviteli kapacitás kissé eltérhet a kupaktól. Ha ez a beállítás nulla, vagy nincs megadva, az átviteli áteresztőmód nem lesz korlátozva.
 
-**-h,-– Súgó** Súgó a azcopy
+**-h, --segítség** Segítség azcopy
       
-**--output-Type**  A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text". (alapértelmezett "text")
+**--kimenet-típusú**  A parancs kimenetének formátuma. A lehetőségek a következők: szöveg, json. Az alapértelmezett érték a "szöveg". (alapértelmezett "szöveg")
 
 ## <a name="see-also"></a>Lásd még
 
-- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
-- [azcopy pad](storage-ref-azcopy-bench.md)
-- [azcopy másolása](storage-ref-azcopy-copy.md)
+- [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
+- [azcopy bench](storage-ref-azcopy-bench.md)
+- [azcopy copy](storage-ref-azcopy-copy.md)
 - [azcopy doc](storage-ref-azcopy-doc.md)
 - [azcopy env](storage-ref-azcopy-env.md)
-- [azcopy-feladatok](storage-ref-azcopy-jobs.md)
-- [azcopy-feladatok tisztítása](storage-ref-azcopy-jobs-clean.md)
-- [azcopy feladatok listája](storage-ref-azcopy-jobs-list.md)
-- [azcopy feladatok eltávolítása](storage-ref-azcopy-jobs-remove.md)
-- [azcopy-feladatok folytatása](storage-ref-azcopy-jobs-resume.md)
-- [azcopy-feladatok megjelenítése](storage-ref-azcopy-jobs-show.md)
-- [azcopy listája](storage-ref-azcopy-list.md)
-- [azcopy bejelentkezés](storage-ref-azcopy-login.md)
-- [azcopy kijelentkezése](storage-ref-azcopy-logout.md)
-- [azcopy](storage-ref-azcopy-make.md)
-- [azcopy eltávolítása](storage-ref-azcopy-remove.md)
-- [azcopy szinkronizálása](storage-ref-azcopy-sync.md)
+- [azcopy jobs](storage-ref-azcopy-jobs.md)
+- [azcopy jobs clean](storage-ref-azcopy-jobs-clean.md)
+- [azcopy jobs list](storage-ref-azcopy-jobs-list.md)
+- [azcopy jobs remove](storage-ref-azcopy-jobs-remove.md)
+- [azcopy jobs resume](storage-ref-azcopy-jobs-resume.md)
+- [azcopy jobs show](storage-ref-azcopy-jobs-show.md)
+- [azcopy list](storage-ref-azcopy-list.md)
+- [azcopy login](storage-ref-azcopy-login.md)
+- [azcopy logout](storage-ref-azcopy-logout.md)
+- [azcopy make](storage-ref-azcopy-make.md)
+- [azcopy remove](storage-ref-azcopy-remove.md)
+- [azcopy sync](storage-ref-azcopy-sync.md)

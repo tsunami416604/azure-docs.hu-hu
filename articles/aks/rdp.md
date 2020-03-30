@@ -1,37 +1,37 @@
 ---
-title: RDP az Azure Kubernetes Service (ak) fürt Windows Server-csomópontjain
-description: Ismerje meg, hogyan hozhat létre RDP-kapcsolatokat az Azure Kubernetes Service (ak) fürt Windows Server-csomópontjaival hibaelhárítási és karbantartási feladatokhoz.
+title: RDP az Azure Kubernetes Szolgáltatás (AKS) fürtwindows Server csomópontjaiba
+description: Ismerje meg, hogyan hozhat létre RDP-kapcsolatot az Azure Kubernetes-szolgáltatás (AKS) fürt Windows Server-csomópontjaival hibaelhárítási és karbantartási feladatokhoz.
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
 ms.openlocfilehash: 897504aa9902d0feaf4245c719d3a4a3c6fd2241
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594481"
 ---
-# <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Kapcsolódás RDP-vel az Azure Kubernetes Service (ak) fürthöz Windows Server-csomópontok karbantartáshoz vagy hibaelhárításhoz
+# <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Csatlakozás rdp-vel az Azure Kubernetes Service (AKS) fürt Windows Server csomópontjaihoz karbantartás vagy hibaelhárítás érdekében
 
-Az Azure Kubernetes Service (ak) fürt életciklusa során előfordulhat, hogy egy AK-beli Windows Server-csomóponthoz kell hozzáférnie. Ez a hozzáférés lehet karbantartási, naplózási vagy egyéb hibaelhárítási művelet. Az AK Windows Server-csomópontok RDP használatával érhetők el. Ha azt szeretné, hogy az SSH-val hozzáférjen az AK Windows Server-csomópontokhoz, és a fürt létrehozásakor használt kulcspárt is elérheti, kövesse az SSH-ban az [Azure Kubernetes Service (ak) fürtcsomópontok csomópontot][ssh-steps]. Biztonsági okokból az AK-csomópontok nem érhetők el az interneten.
+Az Azure Kubernetes-szolgáltatás (AKS) fürtjének teljes életciklusa során előfordulhat, hogy hozzá kell férnie egy AKS Windows Server-csomóponthoz. Ez a hozzáférés lehet karbantartási, naplógyűjtési vagy egyéb hibaelhárítási műveletekhez. Az AKS Windows Server-csomópontok rdp használatával érhetők el. Másik lehetőségként, ha az SSH használatával szeretné elérni az AKS Windows Server-csomópontokat, és ugyanazhoz a kulcspárhoz van hozzáférése, amelyet a fürt létrehozása során használt, kövesse az SSH lépéseket az [Azure Kubernetes Service (AKS) fürtcsomópontokba.][ssh-steps] Biztonsági okokból az AKS-csomópontok nincsenek kitéve az internetnek.
 
-A Windows Server-csomópontok támogatása jelenleg előzetes verzióban érhető el az AK-ban.
+A Windows Server-csomópont támogatása jelenleg előzetes verzióban érhető el az AKS-ben.
 
-Ebből a cikkből megtudhatja, hogyan hozható létre RDP-kapcsolat egy AK-csomóponttal magánhálózati IP-címeik használatával.
+Ez a cikk bemutatja, hogyan hozhat létre RDP-kapcsolatot egy AKS-csomóddal a saját IP-címük használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel egy Windows Server-csomóponttal. Ha AK-fürtre van szüksége, tekintse meg a következő cikket: [AK-fürt létrehozása Windows-tárolóval az Azure CLI használatával][aks-windows-cli]. Szüksége lesz a Windows Server-csomópontra, amelyet a hibakereséshez használni szeretne. Szüksége lesz egy RDP-ügyfélre is, például a [Microsoft távoli asztalra][rdp-mac].
+Ez a cikk feltételezi, hogy egy meglévő AKS-fürttel rendelkezik Windows Server-csomón. Ha AKS-fürtre van szüksége, olvassa el az [AKS-fürt létrehozásáról][aks-windows-cli]szóló cikket az Azure CLI használatával. A hibaelhárításhoz szükséges Windows-rendszergazdai felhasználónévre és jelszóra van szüksége. Szüksége van egy RDP-ügyfélre is, például [a Microsoft Remote Desktop programra.][rdp-mac]
 
-Szüksége lesz az Azure CLI 2.0.61 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió megkereséséhez futtassa a `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Az Azure CLI 2.0.61-es vagy újabb verziójára is szüksége van telepítve és konfigurálva. Futtassa `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni kell, olvassa el [az Azure CLI telepítése][install-azure-cli]című témakört.
 
-## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>Virtuális gép üzembe helyezése a fürttel azonos alhálózaton
+## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>Virtuális gép üzembe helyezése a fürttel azonos alhálózatra
 
-Az AK-fürt Windows Server-csomópontjai nem rendelkeznek külsőleg elérhető IP-címekkel. RDP-kapcsolat létrehozásához egy nyilvánosan elérhető IP-címmel rendelkező virtuális gépet is telepíthet a Windows Server-csomópontokkal megegyező alhálózatra.
+Az AKS-fürt Windows Server-csomópontjai nem rendelkeznek külsőleg elérhető IP-címekkel. RdP-kapcsolat létesítéséhez nyilvánosan elérhető IP-címmel rendelkező virtuális gépet telepíthet ugyanarra az alhálózatra, mint a Windows Server-csomópontok.
 
-A következő példában létrehozunk egy *myVM* nevű virtuális gépet a *myResourceGroup* erőforráscsoporthoz.
+A következő példa létrehoz egy *myVM* nevű virtuális gépet a *myResourceGroup* erőforráscsoportban.
 
-Először szerezze be a Windows Server Node-készlet által használt alhálózatot. Az alhálózat azonosítójának lekéréséhez szüksége lesz az alhálózat nevére. Az alhálózat nevének lekéréséhez szüksége lesz a vnet nevére. Szerezze be a vnet nevét úgy, hogy lekérdezi a fürtöt a hálózatok listájára. A fürt lekérdezéséhez a nevét kell megadnia. Mindezt az alábbi Azure Cloud Shell futtatásával érheti el:
+Először a Windows Server-csomópontkészlet által használt alhálózatot kapja meg. Az alhálózat-azonosító lekért, szüksége van az alhálózat nevére. Az alhálózat nevének leéséhez a virtuális hálózat nevére van szükség. A virtuális hálózat nevének lekérdezésével a fürt a hálózatok listáját. A fürt lekérdezéséhez szüksége van a nevére. Ezeket az Azure Cloud Shellben a következők futtatásával szerezheti be:
 
 ```azurecli-interactive
 CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
@@ -40,7 +40,7 @@ SUBNET_NAME=$(az network vnet subnet list -g $CLUSTER_RG --vnet-name $VNET_NAME 
 SUBNET_ID=$(az network vnet subnet show -g $CLUSTER_RG --vnet-name $VNET_NAME --name $SUBNET_NAME --query id -o tsv)
 ```
 
-Most, hogy már rendelkezik a SUBNET_ID, futtassa a következő parancsot ugyanabban a Azure Cloud Shell ablakban a virtuális gép létrehozásához:
+Most, hogy rendelkezik a SUBNET_ID, futtassa a következő parancsot ugyanabban az Azure Cloud Shell ablakban a virtuális gép létrehozásához:
 
 ```azurecli-interactive
 az vm create \
@@ -53,56 +53,56 @@ az vm create \
     --query publicIpAddress -o tsv
 ```
 
-A következő példa kimenete azt mutatja, hogy a virtuális gép sikeresen létrejött, és a virtuális gép nyilvános IP-címét jeleníti meg.
+A következő példa kimeneti azt mutatja, hogy a virtuális gép sikeresen létrejött, és megjeleníti a virtuális gép nyilvános IP-címét.
 
 ```console
 13.62.204.18
 ```
 
-Jegyezze fel a virtuális gép nyilvános IP-címét. Ezt a címeket egy későbbi lépésben fogja használni.
+Rögzítse a virtuális gép nyilvános IP-címét. Ezt a címet egy későbbi lépésben fogja használni.
 
-## <a name="allow-access-to-the-virtual-machine"></a>A virtuális géphez való hozzáférés engedélyezése
+## <a name="allow-access-to-the-virtual-machine"></a>Hozzáférés engedélyezése a virtuális géphez
 
-Az AK Node-készlet alhálózatai alapértelmezés szerint a NSG (hálózati biztonsági csoportok) védelemmel vannak ellátva. A virtuális gép eléréséhez engedélyezni kell a hozzáférést a NSG.
+Az AKS-csomópontkészlet alhálózatai alapértelmezés szerint NSG-kkel (hálózati biztonsági csoportokkal) védettek. A virtuális gép eléréséhez engedélyeznie kell a hozzáférést az NSG-ben.
 
 > [!NOTE]
-> A NSG az AK szolgáltatás vezérli. A NSG végzett módosításokat a vezérlési síkon bármikor felülírja a rendszer.
+> Az NSG-ket az AKS szolgáltatás vezérli. Az NSG-n történt módosításokat a vezérlősík bármikor felülírja.
 >
 
-Először kérje le a NSG erőforráscsoport-és NSG-nevét, és adja hozzá a szabályt a következőhöz:
+Először is, az erőforráscsoport és az nsg neve az nsg hozzáadásához a szabály:
 
 ```azurecli-interactive
 CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
 NSG_NAME=$(az network nsg list -g $CLUSTER_RG --query [].name -o tsv)
 ```
 
-Ezután hozza létre a NSG szabályt:
+Ezután hozza létre az NSG-szabályt:
 
 ```azurecli-interactive
 az network nsg rule create --name tempRDPAccess --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --priority 100 --destination-port-range 3389 --protocol Tcp --description "Temporary RDP access to Windows nodes"
 ```
 
-## <a name="get-the-node-address"></a>A csomópont-címek beolvasása
+## <a name="get-the-node-address"></a>A csomópont címének beszerezése
 
-A Kubernetes-fürtök kezeléséhez a [kubectl][kubectl], a Kubernetes parancssori ügyfélprogramot kell használnia. Ha Azure Cloud Shell használ, `kubectl` már telepítve van. `kubectl` helyi telepítéséhez használja az az [AK install-CLI][az-aks-install-cli] parancsot:
+A Kubernetes-fürt kezeléséhez [kubectl][kubectl], a Kubernetes parancssori ügyfél használatával kell használnia. Ha az Azure Cloud `kubectl` Shell, már telepítve van. A `kubectl` helyi telepítéshez használja az [aks install-cli][az-aks-install-cli] parancsot:
     
 ```azurecli-interactive
 az aks install-cli
 ```
 
-Ha `kubectl` szeretne konfigurálni a Kubernetes-fürthöz való kapcsolódáshoz, használja az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
+Az [aks get-credentials][az-aks-get-credentials] paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t azok használatára.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-A Windows Server-csomópontok belső IP-címének listázása a [kubectl Get][kubectl-get] paranccsal:
+A Windows Server-csomópontok belső IP-címének felsorolása a [kubectl get][kubectl-get] paranccsal:
 
 ```console
 kubectl get nodes -o wide
 ```
 
-A következő példa kimenet a fürt összes csomópontjának belső IP-címét jeleníti meg, beleértve a Windows Server-csomópontokat is.
+A következő példa kimeneta a fürt összes csomópontjának belső IP-címét mutatja, beleértve a Windows Server-csomópontokat is.
 
 ```console
 $ kubectl get nodes -o wide
@@ -111,33 +111,33 @@ aks-nodepool1-42485177-vmss000000   Ready    agent   18h   v1.12.7   10.240.0.4 
 aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67   <none>        Windows Server Datacenter   10.0.17763.437
 ```
 
-Jegyezze fel a Windows Server azon csomópontjának belső IP-címét, amelyet a hibakereséshez kíván használni. Ezt a címeket egy későbbi lépésben fogja használni.
+Rögzítse a hibaelhárításra kívánt Windows Server-csomópont belső IP-címét. Ezt a címet egy későbbi lépésben fogja használni.
 
-## <a name="connect-to-the-virtual-machine-and-node"></a>Kapcsolódás a virtuális géphez és a csomóponthoz
+## <a name="connect-to-the-virtual-machine-and-node"></a>Csatlakozás a virtuális géphez és a csomóponthoz
 
-Kapcsolódjon a korábban létrehozott virtuális gép nyilvános IP-címéhez egy RDP-ügyfél (például [Microsoft távoli asztal][rdp-mac]) használatával.
+Csatlakozzon a korábban létrehozott virtuális gép nyilvános IP-címéhez egy RDP-ügyfél, például a [Microsoft Távoli asztal][rdp-mac]használatával.
 
-![Az RDP-ügyfél használatával a virtuális géphez való csatlakozás képe](media/rdp/vm-rdp.png)
+![RdP-ügyfél használatával csatlakozik a virtuális géphez](media/rdp/vm-rdp.png)
 
-Miután csatlakozott a virtuális géphez, kapcsolódjon ahhoz a Windows Server *-csomópont belső IP-címéhez* , amelyet a virtuális GÉPEN lévő RDP-ügyfél használatával szeretne elhárítani.
+Miután csatlakozott a virtuális géphez, csatlakozzon annak a Windows Server-csomópontnak a *belső IP-címéhez,* amelyet a virtuális gépen lévő RDP-ügyfél használatával szeretne elhárítani.
 
-![Az RDP-ügyfél használatával a Windows Server-csomóponthoz való csatlakozás képe](media/rdp/node-rdp.png)
+![RdP-ügyfél lelte a Windows Server-csomóponthoz való csatlakozás t](media/rdp/node-rdp.png)
 
-Ezzel csatlakozott a Windows Server-csomóponthoz.
+Most már csatlakozik a Windows Server-csomóponthoz.
 
 ![A Windows Server-csomópont cmd ablakának képe](media/rdp/node-session.png)
 
-Mostantól a *cmd* ablakban is futtathat hibaelhárítási parancsokat. Mivel a Windows Server-csomópontok a Windows Server Core-t használják, nincs teljes grafikus felhasználói felület vagy más GUI-eszköz, amikor RDP-kapcsolaton keresztül csatlakozik egy Windows Server-csomóponthoz.
+Most már futtathat hibaelhárítási parancsokat a *cmd* ablakban. Mivel a Windows Server-csomópontok a Windows Server Core rendszert használják, nincs teljes grafikus felhasználói felület vagy más grafikus felhasználói felület-eszköz, amikor rdp-n keresztül csatlakozik egy Windows Server-csomóponthoz.
 
-## <a name="remove-rdp-access"></a>RDP-hozzáférés eltávolítása
+## <a name="remove-rdp-access"></a>RdP-hozzáférés eltávolítása
 
-Ha elkészült, lépjen ki az RDP-kapcsolattal a Windows Server-csomópontra, majd lépjen ki az RDP-munkamenetből a virtuális gépre. Az RDP-munkamenetek kilépését követően törölje a virtuális gépet az az [VM delete][az-vm-delete] paranccsal:
+Ha végzett, lépjen ki a Windows Server-csomópontrdp-kapcsolatból, majd lépjen ki az RDP-munkamenetből a virtuális gépre. Miután kilépett mindkét RDP-munkamenetből, törölje a virtuális gépet az [az vm delete][az-vm-delete] paranccsal:
 
 ```azurecli-interactive
 az vm delete --resource-group myResourceGroup --name myVM
 ```
 
-És a NSG szabály:
+És az NSG szabály:
 
 ```azurecli-interactive
 CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
@@ -148,9 +148,9 @@ NSG_NAME=$(az network nsg list -g $CLUSTER_RG --query [].name -o tsv)
 az network nsg rule delete --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --name tempRDPAccess
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha további hibaelhárítási adatokra van szüksége, [megtekintheti a Kubernetes fő csomópontjának naplóit][view-master-logs] vagy [Azure monitor][azure-monitor-containers].
+Ha további hibaelhárítási adatokra van szüksége, [megtekintheti a Kubernetes fő csomópontnaplókat][view-master-logs] vagy az [Azure Monitort.][azure-monitor-containers]
 
 <!-- EXTERNAL LINKS -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/

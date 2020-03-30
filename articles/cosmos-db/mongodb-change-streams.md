@@ -1,6 +1,6 @@
 ---
-title: Adatfolyamok módosítása Azure Cosmos DB API-MongoDB
-description: Megtudhatja, hogyan használhatja a MongoDB n Azure Cosmos DB API-ját az adatain végrehajtott módosítások beszerzéséhez.
+title: Adatfolyamok módosítása az Azure Cosmos DB MongoDB-hoz való API-jában
+description: Ismerje meg, hogyan használhatja a változásfolyamok n Az Azure Cosmos DB API-t A MongoDB az adatok módosításait.
 author: srchi
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: srchi
 ms.openlocfilehash: ec1ec1a8a80953f8988355341ee7128bd29b982d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77467777"
 ---
-# <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Adatfolyamok módosítása Azure Cosmos DB API-MongoDB
+# <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Adatfolyamok módosítása az Azure Cosmos DB MongoDB-hoz való API-jában
 
-A Azure Cosmos DB API-MongoDB való [adatcsatorna](change-feed.md) -támogatás módosítása a Streams API-t használva érhető el. Az adatfolyamok módosítása API használatával az alkalmazások beszerezhetik a gyűjteményen vagy az egyetlen szegmensben lévő elemeken végrehajtott módosításokat. Később további műveleteket is végrehajthat az eredmények alapján. A gyűjtemény elemeinek módosításait a rendszer a módosítási idő sorrendjében rögzíti, és a rendezési sorrendet a rendszer a szegmens kulcsa szerint biztosítja.
+[Módosítsa a hírcsatorna-támogatást](change-feed.md) az Azure Cosmos DB MongoDB API-jában a változásfolyamok API használatával érhető el. A változásstreamek API használatával az alkalmazások lejuthatnak a gyűjteményben vagy az elemekegyetlen szegmensben végrehajtott módosításai. Később további műveleteket is végrehajthat az eredmények alapján. A gyűjteményelemeinek módosításai a módosítási idő sorrendjében kerülnek rögzítésre, és a rendezési sorrend shard kulcsonként garantált.
 
 > [!NOTE]
-> Az adatfolyamok módosításának használatához hozza létre a fiókot a Azure Cosmos DB API-MongoDB vagy egy újabb verziójának 3,6-es verziójával. Ha a változás stream-példákat egy korábbi verzióra futtatja, előfordulhat, hogy a `Unrecognized pipeline stage name: $changeStream` hibaüzenet jelenik meg. 
+> A változásfolyamok használatához hozza létre a fiókot az Azure Cosmos DB MongoDB API-jának 3.6-os verziójával vagy egy újabb verzióval. Ha a változásfolyam-példákat egy korábbi verzióhoz `Unrecognized pipeline stage name: $changeStream` futtatja, előfordulhat, hogy megjelenik a hiba. 
 
-Az alábbi példa azt szemlélteti, hogyan lehet módosítani a gyűjtemény összes elemének változásait. Ez a példa létrehoz egy kurzort, amellyel megtekintheti a beszúrt, frissített vagy lecserélt elemeket. A változtatási adatfolyamok beolvasásához a $match szakasz, a $project színpad és a fullDocument beállítás szükséges. A módosítási streameket használó törlési műveletek figyelése jelenleg nem támogatott. Megkerülő megoldásként hozzáadhat egy lágy jelölőt a törölt elemekhez. Hozzáadhat például egy attribútumot a "törölt" nevű elemhez, és beállíthatja "igaz" értékre, és beállíthatja az elem ÉLETTARTAMát, így automatikusan törölheti azt, és nyomon követheti is.
+A következő példa bemutatja, hogyan lehet a gyűjtemény összes elemére módosítási adatfolyamokat beszerezni. Ez a példa egy kurzort hoz létre az elemek megtekintéséhez, amikor beszúrják, frissítik vagy kicserélik őket. A $match szakasz, $project szakasz és fullDocument beállítás szükséges a változásfolyamok leválasztásához. A módosítási adatfolyamok használatával végzett törlési műveletek figyelése jelenleg nem támogatott. Kerülő megoldásként lágy jelölőt adhat a törölt elemekhez. Hozzáadhat például egy attribútumot a "törölt" nevű elemhez, és beállíthatja azt "true" értékre, és beállíthat egy TTL-t az elemen, így automatikusan törölheti és nyomon követheti.
 
 ```javascript
 var cursor = db.coll.watch(
@@ -38,7 +38,7 @@ while (!cursor.isExhausted()) {
 }
 ```
 
-Az alábbi példa azt szemlélteti, hogyan lehet módosítani az elemeket egyetlen szegmensben. Ez a példa a "a" és a "1" értékkel egyenlő, a szilánkok kulcsának értékét tartalmazó elemek változásait olvassa be.
+A következő példa bemutatja, hogyan lehet az elemek módosításait egyetlen szegmensben beszerezni. Ebben a példában leteszi az elemek módosításait, amelyek shard kulcs egyenlő "a" és a szegmens kulcs értéke egyenlő "1".
 
 ```javascript
 var cursor = db.coll.watch(
@@ -59,22 +59,22 @@ var cursor = db.coll.watch(
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-A Change streamek használatakor a következő korlátozások érvényesek:
+A következő korlátozások vonatkoznak a változási adatfolyamok használatára:
 
-* A `operationType` és `updateDescription` tulajdonságok még nem támogatottak a kimeneti dokumentumban.
-* A `insert`, `update`és `replace` műveleti típusok jelenleg támogatottak. A törlési művelet vagy más esemény még nem támogatott.
+* A `operationType` `updateDescription` és a tulajdonságok még nem támogatottak a kimeneti dokumentumban.
+* A `insert` `update`, `replace` és a műveletek típusajelenleg támogatott. A törlési művelet vagy más események még nem támogatottak.
 
-A korlátozások miatt a $match szakasz, a $project szakasz és a fullDocument lehetőségek szükségesek, ahogy az előző példákban is látható.
+Ezek a korlátozások miatt a $match szakasz, $project szakasz és a fullDocument beállítások szükségesek, ahogy az előző példákban látható.
 
 ## <a name="error-handling"></a>Hibakezelés
 
-A Change streamek használatakor a következő hibakódok és üzenetek támogatottak:
+A következő hibakódok és üzenetek támogatottak a változási adatfolyamok használatakor:
 
-* **Http-hibakód 429** – ha a Change stream szabályozása megtörtént, üres lapot ad vissza.
+* **HTTP-hibakód 429** - Ha a változásstream szabályozott, üres lapot ad vissza.
 
-* **NamespaceNotFound (OperationType-érvénytelenítés)** – ha a módosítási adatfolyamot nem létező gyűjteményen futtatja, vagy ha a gyűjtemény el van dobva, akkor a rendszer `NamespaceNotFound` hibát ad vissza. Mivel a `operationType` tulajdonságot nem lehet visszaadni a kimeneti dokumentumban a `operationType Invalidate` hiba helyett, a rendszer a `NamespaceNotFound` hibát adja vissza.
+* **NamespaceNotFound (OperationType Invalidate)** - Ha nem létező változásfolyamot futtat a gyűjteményen, `NamespaceNotFound` vagy ha a gyűjteményt eldobják, akkor a rendszer hibaüzenetet ad vissza. Mivel `operationType` a tulajdonság nem adható vissza a kimeneti `operationType Invalidate` dokumentumban, a hiba helyett a `NamespaceNotFound` hiba ad vissza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [A MongoDB Azure Cosmos DB API-ban való használatának ideje az élettartam lejáratára](mongodb-time-to-live.md)
-* [Indexelés Azure Cosmos DB API-MongoDB](mongodb-indexing.md)
+* [Az élő idő használata az adatok automatikus lejáratához az Azure Cosmos DB MongoDB-hoz való API-jában](mongodb-time-to-live.md)
+* [Indexelés az Azure Cosmos DB MongoDB-hoz elérhető API-jában](mongodb-indexing.md)

@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Azure VMware virtuális gép létrehozása privát felhőben – Azure VMware-megoldás CloudSimple
-description: Útmutató Azure VMware virtuális gép létrehozásához CloudSimple privát felhőben
+title: Rövid útmutató – Hozzon létre egy Azure VMware vm-et magánfelhőben – Azure VMware-megoldás a CloudSimple-től
+description: Bemutatja, hogyan hozhat létre Egy Azure VMware virtuális gép a CloudSimple private cloud
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -9,118 +9,118 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77566148"
 ---
-# <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>VMware virtuális gépek létrehozása a saját felhőben
+# <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>VMware virtuális gépek létrehozása a magánfelhőben
 
-Ahhoz, hogy virtuális gépeket hozzon létre a saját felhőben, először nyissa meg a CloudSimple-portált a Azure Portal.
+Virtuális gépek létrehozása a magánfelhőben, először is az Azure Portalon a CloudSimple portál eléréséhez.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
 
 ## <a name="access-the-cloudsimple-portal"></a>Hozzáférés a CloudSimple portáljához
 
 1. Válassza az **Összes szolgáltatás** elemet.
-2. Keressen rá a **CloudSimple Services**kifejezésre.
-3. Válassza ki azt a CloudSimple-szolgáltatást, amelyen létre szeretné hozni a saját Felhőjét.
-4. Az **Áttekintés** lapon kattintson **az Ugrás a CloudSimple portálra** elemre, és nyissa meg a CloudSimple-portál új böngésző lapját.  Ha a rendszer kéri, jelentkezzen be az Azure bejelentkezési hitelesítő adataival.  
+2. Keresse meg a **CloudSimple szolgáltatásokat.**
+3. Válassza ki azt a CloudSimple szolgáltatást, amelyen létre szeretné hozni a magánfelhőt.
+4. Az **Áttekintés** lapon kattintson **az Ugrás a CloudSimple portálra** egy új böngészőlap megnyitásához a CloudSimple portálhoz.  Ha a rendszer kéri, jelentkezzen be az Azure bejelentkezési hitelesítő adataival.  
 
-    ![A CloudSimple-portál elindítása](media/launch-cloudsimple-portal.png)
+    ![A CloudSimple portál elindítása](media/launch-cloudsimple-portal.png)
 
-## <a name="launch-vcenter-web-ui"></a>Webes vCenter elindítása – felhasználói felület
+## <a name="launch-vcenter-web-ui"></a>VCenter web-ui indítása
 
-Most már elindíthatja a vCenter-t a virtuális gépek és házirendek beállításához.
+Most már elindíthatja a virtuális gépek és házirendek virtuális gépek és házirendek beállításához.
 
-A vCenter eléréséhez Kezdje a CloudSimple portálról. A Kezdőlap **Általános feladatok**területén kattintson az **vSphere-ügyfél indítása**lehetőségre.  Válassza ki a privát felhőt, majd kattintson a **vSphere-ügyfél indítása** lehetőségre a privát felhőben.
+A vCenter eléréséhez indítsa el a CloudSimple portálon. A Kezdőlap Gyakori **feladatok területén**kattintson a **VSphere-ügyfél indítása gombra.**  Válassza a magánfelhőt, majd kattintson a **VSphere-ügyfél indítása** a magánfelhőben parancsra.
 
-   ![VSphere-ügyfél elindítása](media/launch-vcenter-from-cloudsimple-portal.png)
+   ![VSphere kliens indítása](media/launch-vcenter-from-cloudsimple-portal.png)
 
-## <a name="upload-an-iso-or-vsphere-template"></a>ISO-vagy vSphere-sablon feltöltése
+## <a name="upload-an-iso-or-vsphere-template"></a>ISO- vagy vSphere-sablon feltöltése
 
   > [!WARNING]
-  > Az ISO-feltöltéshez használja a vSphere HTML5-ügyfelet.  A Flash-ügyfél használata hibát okozhat.
+  > Az ISO feltöltéshez használja a vSphere HTML5 klienst.  A Flash-ügyfél használata hibát okozhat.
 
-1. Szerezze be a vCenter feltölteni kívánt ISO-vagy vSphere-sablont, és hozzon létre egy virtuális gépet, és legyen elérhető a helyi rendszeren.
-2. A vCenter-ben kattintson a **lemez** ikonra, és válassza a **vsanDatastore**lehetőséget. Kattintson a **fájlok** , majd az **új mappa**elemre.
+1. Szerezze be az ISO vagy vSphere sablont, amelyet fel szeretne tölteni a vCenterbe egy virtuális gép létrehozásához, és elérhetővé teszi a helyi rendszeren.
+2. A vCenterben kattintson a **Lemez** ikonra, és válassza **a vsanDatastore**lehetőséget. Kattintson **a Fájlok,** majd **az Új mappa gombra.**
     ![vCenter ISO](media/vciso00.png)
 
-3. Hozzon létre egy "ISO-és sablonok" nevű mappát.
+3. Hozzon létre egy mappát "ISO és sablonok" címmel.
 
-4. Navigáljon az ISOs mappába az ISO-fájlok és a sablonok területen, majd kattintson a **fájlok feltöltése**elemre. Az ISO feltöltéséhez kövesse a képernyőn megjelenő utasításokat.
+4. Nyissa meg az ISO-k és sablonok ISO-k mappáját, és kattintson **a Fájlok feltöltése gombra.** Kövesse a képernyőn megjelenő utasításokat az ISO feltöltéséhez.
 
-## <a name="create-a-virtual-machine-in-vcenter"></a>Virtuális gép létrehozása a vCenter-ben
+## <a name="create-a-virtual-machine-in-vcenter"></a>Virtuális gép létrehozása a vCenterben
 
-1. A vCenter-ben kattintson a **gazdagépek és fürtök** ikonra.
+1. A vCenterben kattintson a **Gazdagépek és fürtök** ikonra.
 
-2. Kattintson a jobb gombbal a **munkaterhelés** elemre, és válassza az **új virtuális gép**lehetőséget.
-    Új virtuális gép ![](media/vcvm01.png)
+2. Kattintson a jobb gombbal **a Számítási feladatok elemre,** és válassza az **Új virtuális gép parancsot.**
+    ![Új virtuális gép](media/vcvm01.png)
 
-3. Válassza az **új virtuális gép létrehozása** lehetőséget, majd kattintson a **tovább**gombra.
-    Új virtuális gép ![](media/vcvm02.png)
+3. Válassza **az Új virtuális gép létrehozása lehetőséget,** és kattintson a **Tovább**gombra.
+    ![Új virtuális gép](media/vcvm02.png)
 
-4. Nevezze el a gépet, válassza ki a számítási **feladatok virtuális** gépe helyét, majd kattintson a **tovább**gombra.
-    Új virtuális gép ![](media/vcvm03.png)
+4. Nevezze el a gépet, válassza ki a **számítási feladatok virtuális gépének** helyét, és kattintson a **Tovább**gombra.
+    ![Új virtuális gép](media/vcvm03.png)
 
-5. Válassza ki a **munkaterhelés** számítási erőforrását, és kattintson a **tovább**gombra.
-    Új virtuális gép ![](media/vcvm04.png)
+5. Jelölje ki a **Számítási számítási** erőforrást, és kattintson a **Tovább gombra.**
+    ![Új virtuális gép](media/vcvm04.png)
 
-6. Válassza a **vsanDatastore** lehetőséget, majd kattintson a **tovább**gombra.
-    Új virtuális gép ![](media/vcvm05.png)
+6. Válassza **a vsanDatastore lehetőséget,** és kattintson a **Tovább**gombra.
+    ![Új virtuális gép](media/vcvm05.png)
 
-7. Tartsa meg az alapértelmezett ESXi 6,5 kompatibilitási beállítást, majd kattintson a **tovább**gombra.
-    Új virtuális gép ![](media/vcvm06.png)
+7. Tartsa meg az alapértelmezett ESXi 6.5 kompatibilitási beállítást, és kattintson a **Tovább**gombra.
+    ![Új virtuális gép](media/vcvm06.png)
 
-8. Válassza ki az ISO-t a létrehozandó virtuális géphez tartozó vendég operációs rendszernek, és kattintson a **tovább**gombra.
-    Új virtuális gép ![](media/vcvm07.png)
+8. Válassza ki a létrehozni kívánt virtuális gép ISO-jának vendég operációs rendszerét, és kattintson a **Tovább**gombra.
+    ![Új virtuális gép](media/vcvm07.png)
 
-9. Válassza a merevlemez és hálózati beállítások lehetőséget. Új CD/DVD-meghajtó esetén válassza az **ADATTÁR ISO-fájlja**lehetőséget.  Ha engedélyezni szeretné a nyilvános IP-címről érkező forgalmat erre a virtuális gépre, válassza a hálózatot **VM-1-** ként.
-    Új virtuális gép ![](media/vcvm08.png)
+9. Adja meg a merevlemez és a hálózati beállításokat. Új CD/DVD-meghajtó esetén válassza **az Adattár ISO-fájl jave**lehetőséget.  Ha engedélyezni szeretné a nyilvános IP-címről erre a virtuális gépre irányuló forgalmat, válassza ki a hálózatot **vm-1-ként.**
+    ![Új virtuális gép](media/vcvm08.png)
 
-10. Megnyílik egy kiválasztási ablak. Válassza ki az ISO-fájlok és Sablonok mappába korábban feltöltött fájlt, majd kattintson **az OK**gombra.
-    Új virtuális gép ![](media/vcvm10.png)
+10. Megnyílik egy kijelölési ablak. Jelölje ki az ISO-k és sablonok mappába korábban feltöltött fájlt, és kattintson az **OK**gombra.
+    ![Új virtuális gép](media/vcvm10.png)
 
-11. Tekintse át a beállításokat, majd kattintson az **OK** gombra a virtuális gép létrehozásához.
-    Új virtuális gép ![](media/vcvm11.png)
+11. Tekintse át a beállításokat, és kattintson az **OK** gombra a virtuális gép létrehozásához.
+    ![Új virtuális gép](media/vcvm11.png)
 
-A virtuális gép most már hozzá van adva a munkaterhelés számítási erőforrásaihoz, és készen áll a használatra. 
-Új virtuális gép ![](media/vcvm12.png)
+A virtuális gép most hozzáadódik a számítási számítási erőforrásokhoz, és készen áll a használatra. 
+![Új virtuális gép](media/vcvm12.png)
 
-Az alapszintű telepítés már befejeződött. A saját Felhőjét ugyanúgy használhatja, mint a helyszíni virtuálisgép-infrastruktúrát.
+Az alapbeállítás befejeződött. A privát felhő használatát a helyszíni virtuálisgép-infrastruktúra használatához hasonlóan kezdheti el használni.
 
-A következő szakaszban a DNS-és DHCP-kiszolgálók saját Felhőbeli számítási feladatokhoz való beállításával és az alapértelmezett hálózati konfiguráció módosításával kapcsolatos opcionális információk szerepelnek.
+A következő szakaszok nem kötelező információkat tartalmaznak a DNS- és DHCP-kiszolgálók magánfelhőbeli számítási feladatokhoz való beállításáról és az alapértelmezett hálózati konfiguráció módosításáról.
 
-## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>Felhasználók és identitási források hozzáadása a vCenter (nem kötelező)
+## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>Felhasználók és identitásforrások hozzáadása a vCenterhez (nem kötelező)
 
-A CloudSimple egy alapértelmezett vCenter-felhasználói fiókot rendel a Felhasználónév `cloudowner@cloudsimple.local`. A kezdéshez nincs szükség további fiók beállítására.  A CloudSimple szabályosan rendeli hozzá a rendszergazdákat a normál működéshez szükséges jogosultságok végrehajtásához.  Állítsa be a helyszíni Active Directoryt vagy az Azure AD-t egy [további személyazonossági forrásként](set-vcenter-identity.md) a privát felhőben.
+A CloudSimple alapértelmezett vCenter felhasználói fiókot rendel felhasználónévvel. `cloudowner@cloudsimple.local` Az első lépésekhez nincs szükség további fiókbeállításokra.  A CloudSimple általában hozzárendeli a rendszergazdáknak a normál műveletek végrehajtásához szükséges jogosultságokat.  Állítsa be a helyszíni active directoryt vagy az Azure AD-t [további identitásforrásként](set-vcenter-identity.md) a magánfelhőben.
 
-## <a name="create-a-dns-and-dhcp-server-optional"></a>DNS-és DHCP-kiszolgáló létrehozása (nem kötelező)
+## <a name="create-a-dns-and-dhcp-server-optional"></a>DNS- és DHCP-kiszolgáló létrehozása (nem kötelező)
 
-A privát felhőalapú környezetekben futó alkalmazások és munkaterhelések névfeloldást és DHCP-szolgáltatásokat igényelnek a keresési és IP-címek hozzárendeléséhez. Ezeknek a szolgáltatásoknak a biztosításához megfelelő DHCP-és DNS-infrastruktúra szükséges. A vCenter virtuális gépet úgy is konfigurálhatja, hogy ezeket a szolgáltatásokat a saját felhőalapú környezetében adja meg.
+A magánfelhő-környezetben futó alkalmazások és munkaterhelések névfeloldást és DHCP-szolgáltatásokat igényelnek a keresgéléshez és az IP-címhozzárendeléshez. A szolgáltatások biztosításához megfelelő DHCP- és DNS-infrastruktúrára van szükség. Konfigurálhatja a virtuális gépet a vCenterben, hogy ezeket a szolgáltatásokat a privát felhőbeli környezetben biztosítsa.
 
 Előfeltételek
 
-* Elosztott porttartomány konfigurált VLAN-val
+* Elosztott portcsoport VLAN-nal konfigurálva
 
-* A beállítás átirányítása helyszíni vagy internetalapú DNS-kiszolgálókra
+* A telepítés irányítása a helyszíni vagy az internetalapú DNS-kiszolgálókra
 
 * Virtuálisgép-sablon vagy ISO virtuális gép létrehozásához
 
-A következő hivatkozások útmutatást nyújtanak a DHCP-és DNS-kiszolgálók Linux és Windows rendszeren történő beállításához.
+Az alábbi hivatkozások útmutatást nyújtanak a DHCP- és DNS-kiszolgálók Linuxon és Windows rendszeren történő beállításához.
 
 #### <a name="linux-based-dns-server-setup"></a>Linux-alapú DNS-kiszolgáló beállítása
 
-A Linux különböző csomagokat kínál a DNS-kiszolgálók beállításához.  Az alábbi hivatkozás egy nyílt forráskódú kötési DNS-kiszolgáló beállítására vonatkozó útmutatást tartalmaz.
+A Linux különböző csomagokat kínál a DNS-kiszolgálók beállításához.  Az alábbi hivatkozás a nyílt forráskódú BIND DNS-kiszolgáló beállítására vonatkozó utasításokra mutat.
 
-[Példa a telepítőre](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7)
+[Példa beállítására](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7)
 
 #### <a name="windows-based-setup"></a>Windows-alapú telepítés
 
-Ezek a Microsoft-témakörök leírják, hogyan állíthat be egy Windows-kiszolgálót DNS-kiszolgálóként és DHCP-kiszolgálóként.
+Ezek a Microsoft-témakörök azt ismertetik, hogyan állítható be a Windows-kiszolgáló DNS-kiszolgálóként és DHCP-kiszolgálóként.
 
 [Windows Server DNS-kiszolgálóként](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
 
@@ -128,30 +128,30 @@ Ezek a Microsoft-témakörök leírják, hogyan állíthat be egy Windows-kiszol
 
 ## <a name="customize-networking-configuration-optional"></a>Hálózati konfiguráció testreszabása (nem kötelező)
 
-A CloudSimple-portál hálózati lapjai lehetővé teszik a tűzfalak és a virtuális gépek nyilvános IP-címei konfigurációjának megadását.
+A Network-lapok a CloudSimple portálon lehetővé teszik a tűzfaltáblák és a virtuális gépek nyilvános IP-címeinek konfigurációjának megadását.
 
-### <a name="allocate-public-ips"></a>Nyilvános IP-címek lefoglalása
+### <a name="allocate-public-ips"></a>Nyilvános IP-k kiosztása
 
-1. Navigáljon a CloudSimple **-portál hálózati > nyilvános IP** -címére.
-2. Kattintson a **nyilvános IP-cím lefoglalása**elemre.
-3. Adja meg az IP-cím bejegyzését azonosító nevet.
+1. Keresse meg **a Network > Nyilvános IP-címet** a CloudSimple portálon.
+2. Kattintson **a Nyilvános IP lefoglalása gombra.**
+3. Adjon meg egy nevet az IP-címbejegyzés azonosításához.
 4. Tartsa meg az alapértelmezett helyet.
-5. Ha szükséges, használja a csúszkát az Üresjárati időkorlát módosításához.
-6. Adja meg azt a helyi IP-címet, amelyhez nyilvános IP-címet szeretne hozzárendelni.
+5. A csúszkával szükség esetén módosíthatja az tétlen időoutot.
+6. Adja meg azt a helyi IP-címet, amelyhez nyilvános IP-címet kíván rendelni.
 7. Szükség esetén adjon meg egy társított DNS-nevet.
 8. Kattintson a **Done** (Kész) gombra.
 
     ![Nyilvános IP-cím](media/quick-create-pc-public-ip.png)
 
-A nyilvános IP-cím lefoglalásának feladata megkezdődik. A feladat állapotát a **tevékenység > feladatok** oldalon tekintheti meg. A foglalás befejezésekor az új bejegyzés megjelenik a nyilvános IP-címek lapon.
+Megkezdődik a nyilvános IP-cím felosztása. A tevékenység állapotát a Tevékenység **> tevékenységek** lapon ellenőrizheti. Ha a foglalás befejeződött, az új bejegyzés megjelenik a Nyilvános IP-oldalakon.
 
-Azt a virtuális gépet, amelyhez meg kell feleltetni ezt az IP-címet, konfigurálni kell a fent megadott helyi címmel. Az IP-cím konfigurálására szolgáló eljárás a virtuális gép operációs rendszerére vonatkozik. A megfelelő eljáráshoz olvassa el a virtuális gép operációs rendszerének dokumentációját.
+A virtuális gép, amelyhez ezt az IP-címet le kell képeznie kell kell, a fent megadott helyi címmel kell konfigurálni. Az IP-cím konfigurálásának eljárása a virtuális gép operációs rendszerére vonatkozik. A megfelelő eljárásról a virtuális gép operációs rendszerének dokumentációjában tájékozódhat.
 
 #### <a name="example"></a>Példa
 
-Íme például az Ubuntu 16,04 részletei.
+Például itt vannak az Ubuntu 16.04 részletei.
 
-Adja hozzá a statikus metódust az inet-címek családjának konfigurációjához a/etc/network/interfaces. fájlban. Módosítsa a címeket, a hálózati maszkot és az átjáró értékeit. Ebben a példában a ETH0 felületet, a belső IP-192.168.24.10, az átjáró 192.168.24.1 és a hálózati maszk 255.255.255.0 használjuk. A környezetében az üdvözlő e-mailben a rendelkezésre álló alhálózati információk szerepelnek.
+Adja hozzá a statikus metódust az inet address family konfigurációhoz az /etc/network/interfaces fájlban. Módosítsa a cím-, hálózati maszk- és átjáróértékeket. Ebben a példában az eth0-összeköttetést, a 192.168.24.10 belső IP-címet, a 192.168.24.1 átjárócímet és a 255.255.255.0 hálózati maszkot használjuk. Az Ön környezetében a rendelkezésre álló alhálózati információk az üdvözlő e-mailben érhetők el.
 
 ```
 sudo vi /etc/network/interfaces
@@ -168,7 +168,7 @@ dns-nameservers 8.8.8.8
 dns-domain acme.com
 dns-search acme.com
 ```
-Manuálisan tiltsa le az illesztőfelületet.
+Manuálisan tiltsa le a felületet.
 
 ```
 sudo ifdown eth0
@@ -179,52 +179,52 @@ Manuálisan engedélyezze újra a felületet.
 sudo ifup eth0
 ```
 
-Alapértelmezés szerint a rendszer **megtagadja**az internetről érkező összes bejövő forgalmat. Ha bármilyen más portot szeretne megnyitni, hozzon létre egy [Tűzfalszabály-táblázatot](firewall.md).
+Alapértelmezés szerint az internetről érkező összes bejövő forgalom **megtagadva.** Ha más portot szeretne megnyitni, hozzon létre egy [tűzfaltáblát.](firewall.md)
 
-Miután a belső IP-címet statikus IP-címként konfigurálta, ellenőrizze, hogy elérhető-e az Internet a virtuális gépről.
+Miután egy belső IP-címet statikus IP-címként konfigurált, ellenőrizze, hogy a virtuális gépről elérheti-e az internetet.
 
 ```
 ping 8.8.8.8
 ```
-Ellenőrizze azt is, hogy a virtuális gépet a nyilvános IP-cím használatával is elérheti-e az internetről.
+Ellenőrizze azt is, hogy a virtuális gép az internetről a nyilvános IP-cím használatával érhető el.
 
-Győződjön meg arról, hogy a virtuális gépen lévő összes iptables-szabály nem blokkolja a bejövő 80-as portot.
+Győződjön meg arról, hogy a virtuális gép iptable szabályai nem blokkolja a 80-as bejövő portot.
         
 ```
 netstat -an | grep 80
 ```
 
-Indítsa el a 80-es portot figyelő http-kiszolgálót.
+Indítsa el a 80-as porton figyelő http-kiszolgálót.
        
 ```
 python2.7 -m SimpleHTTPServer 80
 ```
 
-or
+vagy
 
 ```
 python3 -m http.server 80
 ```
-Nyisson meg egy böngészőt az asztalon, és mutasson a 80-es portra a nyilvános IP-cím megadásához a virtuális gépen található fájlok tallózásához.
+Indítson el egy böngészőt az asztalon, és irányítsa a 80-as portra a nyilvános IP-címhez a virtuális gépen lévő fájlok tallózásához.
 
-### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>Alapértelmezett CloudSimple tűzfalszabályok a nyilvános IP-címekhez
+### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>Alapértelmezett CloudSimple tűzfalszabályok nyilvános IP-címhez
 
-* VPN-forgalom: a VPN és az összes munkaterhelés-hálózat és felügyeleti hálózat közötti összes forgalom engedélyezett.
-* Privát felhő belső forgalma: a (z) és a (z) és a (z) közötti összes kelet-nyugati forgalom engedélyezett.
+* VPN-forgalom: A VPN és az összes számításifeladatok hálózata és felügyeleti hálózata közötti összes forgalom engedélyezett.
+* Privát felhő belső forgalma: Minden kelet-nyugati forgalom között (-ból/-a) számítási feladatok hálózatok és a felügyeleti hálózat (fent látható) engedélyezett.
 * Internetes forgalom:
-  * Az internetről érkező összes bejövő forgalom megtagadva a munkaterhelés-hálózatok és a felügyeleti hálózat számára.
-  * Az internetre irányuló összes kimenő forgalom a munkaterhelés-hálózatokból vagy a felügyeleti hálózatból engedélyezett.
+  * Az internetről érkező összes bejövő forgalom nem érhető el a számítási feladatok hálózataitól és a felügyeleti hálózattól.
+  * A számítási feladatok hálózatairól vagy a felügyeleti hálózatról az internetre irányuló összes kimenő forgalom engedélyezett.
 
-A tűzfalszabályok funkció használatával módosíthatja a forgalom védelmét is. További információ: [Tűzfalszabályok és szabályok beállítása](firewall.md).
+A tűzfalszabályok szolgáltatással módosíthatja a forgalom biztonságossági módját is. További információt a [Tűzfaltáblák és -szabályok beállítása](firewall.md)című témakörben talál.
 
 ## <a name="install-solutions-optional"></a>Megoldások telepítése (nem kötelező)
 
-A saját felhőalapú vCenter-környezete teljes körű kihasználása érdekében telepíthet megoldásokat a saját CloudSimple-felhőbe. Beállíthatja a biztonsági mentést, a vész-helyreállítást, a replikálást és a virtuális gépeket védő egyéb funkciókat. Ilyenek például a VMware Site Recovery Manager (VMware SRM) és a Veeam Backup & replikációja.
+Megoldásokat telepíthet a CloudSimple Private Cloud szolgáltatásra, hogy teljes mértékben kihasználhassa a privát felhőbeli vCenter-környezet előnyeit. Beállíthatja a biztonsági mentést, a vészhelyreállítást, a replikációt és más funkciókat a virtuális gépek védelmére. Ilyenek például a VMware Site Recovery Manager (VMware SRM) és a Veeam Backup & replication.
 
-Megoldás telepítéséhez további jogosultságokat kell megadnia korlátozott időtartamra. Lásd: a [jogosultságok kiterjesztésének](escalate-private-cloud-privileges.md)megtalálása.
+A megoldás telepítéséhez korlátozott időtartamra további jogosultságokat kell kérnie. Lásd: [Jogosultságok elmélyítése](escalate-private-cloud-privileges.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* [VMware virtuális gépek használata az Azure-ban](quickstart-create-vmware-virtual-machine.md)
-* [Kapcsolódás helyszíni hálózathoz az Azure ExpressRoute](on-premises-connection.md)
+* [VMware rendszerű virtuális gépek felhasználása az Azure-ban](quickstart-create-vmware-virtual-machine.md)
+* [Csatlakozás helyszíni hálózathoz az Azure ExpressRoute használatával](on-premises-connection.md)
 * [VPN-átjárók beállítása a CloudSimple hálózaton](vpn-gateway.md)

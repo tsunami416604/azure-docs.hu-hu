@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Identity Protection biztonsági áttekintés
-description: Ismerje meg, hogy a biztonsági áttekintés hogyan nyújt betekintést a szervezet biztonsági állapotára.
+title: Az Azure Active Directory identitásvédelem biztonságának áttekintése
+description: Ismerje meg, hogy a Biztonság áttekintése hogyan nyújt betekintést a szervezet biztonsági helyzetébe.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,58 +12,58 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9550684ad154f28a02ee347fd0a79c1ec286beb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74382184"
 ---
-# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – biztonsági áttekintés
+# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory identitásvédelem – biztonság – áttekintés
 
-A Azure Portal [biztonsági áttekintése](https://aka.ms/IdentityProtectionRefresh) betekintést nyújt a szervezet biztonsági állapotára. Segít azonosítani a lehetséges támadásokat és értelmezni a szabályzatok hatékonyságát.
+Az Azure Portal [biztonsági áttekintése](https://aka.ms/IdentityProtectionRefresh) betekintést nyújt a szervezet biztonsági helyzetébe. Segít azonosítani a lehetséges támadásokat, és megérteni a szabályzatok hatékonyságát.
 
-A "biztonsági áttekintés" széles körben két szakaszra oszlik:
+A "Biztonsági áttekintés" nagyjából két részből áll:
 
-- A bal oldali trendek a szervezeten belüli kockázati idővonalat biztosítanak.
-- A csempék a jobb oldalon kiemelik a szervezeten belüli aktuális problémákat, és arra utalnak, hogyan lehet gyorsan végrehajtani a műveleteket.
+- A bal oldali trendek a szervezeten belüli kockázatok idővonalát biztosítják.
+- A jobb oldalon található csempék kiemelik a szervezetben folyamatban lévő legfontosabb problémákat, és javaslatot tesznek a gyors cselekvésre.
 
 ![Biztonsági áttekintés](./media/concept-identity-protection-security-overview/01.png)
   
 ## <a name="trends"></a>Trendek
 
-### <a name="new-risky-users-detected"></a>Új kockázatos felhasználók észlelhetők
+### <a name="new-risky-users-detected"></a>Új kockázatos felhasználók észlelve
 
-Ez a diagram a kiválasztott időszakban észlelt új kockázatos felhasználók számát jeleníti meg. A diagram nézetét felhasználói kockázati szint alapján szűrheti (alacsony, közepes, magas). Vigye az egérmutatót az UTC dátum fölé, hogy megtekintse az adott napon észlelt kockázatos felhasználók számát. A diagramra kattintva megjelenik a "kockázatos felhasználók" jelentés. A veszélyeztetett felhasználók szervizeléséhez érdemes lehet módosítani a jelszavát.
+Ez a diagram a kiválasztott időszakban észlelt új kockázatos felhasználók számát mutatja. A diagram nézetét felhasználói kockázati szint (alacsony, közepes, magas) szerint szűrheti. Vigye az UTC-dátumlépések fölé az adott napon észlelt kockázatos felhasználók számának megtekintéséhez. A diagramra kattintva megjelenik a "Kockázatos felhasználók" jelentés. A veszélyeztetett felhasználók kiiktatása érdekében fontolja meg a jelszavuk módosítását.
 
-### <a name="new-risky-sign-ins-detected"></a>Új kockázatos bejelentkezések észlelhetők
+### <a name="new-risky-sign-ins-detected"></a>Új kockázatos bejelentkezések észlelve
 
-Ez a diagram a kiválasztott időszakban észlelt kockázatos bejelentkezések számát jeleníti meg. A diagram nézetét szűrheti a bejelentkezési kockázat típusa (valós idejű vagy Összesítés) és a bejelentkezési kockázati szint (alacsony, közepes, magas) alapján. A nem védett bejelentkezések olyan valós idejű kockázatos bejelentkezések, amelyek nem lettek kitéve az MFA-nak. (Megjegyzés: az offline észlelések miatt kockázatos bejelentkezések nem védhetők valós időben a bejelentkezési kockázati szabályzatok alapján). Vigye az egérmutatót az UTC dátum fölé, hogy megtekintse az adott nap során a kockázattal észlelt bejelentkezések számát. A diagramra kattintva a "kockázatos bejelentkezések" jelentésbe kerül.
+Ez a diagram a kiválasztott időszakban észlelt kockázatos bejelentkezések számát mutatja. A diagram nézetét a bejelentkezési kockázat típusa (valós idejű vagy összesítés) és a bejelentkezési kockázati szint (alacsony, közepes, magas) szerint szűrheti. A nem védett bejelentkezések olyan sikeres valós idejű kockázati bejelentkezések, amelyek nem voltak megkérdőjelezve az MFA-val szemben. (Megjegyzés: Az offline észlelések miatt kockázatos bejelentkezések nem védhetők valós időben a bejelentkezési kockázati szabályzatokkal). Vigye az UTC-dátumlépések fölé az adott napon észlelt bejelentkezések számának megtekintéséhez. A diagramra kattintva megjelenik a "Kockázatos bejelentkezések" jelentés.
 
 ## <a name="tiles"></a>Csempék
  
 ### <a name="high-risk-users"></a>Magas kockázatú felhasználók
 
-A "magas kockázatú felhasználók" csempe azon felhasználók legújabb számát jeleníti meg, akik nagy valószínűséggel veszélyeztetik az identitást. Ennek a vizsgálat legfontosabb prioritásának kell lennie. A "magas kockázatú felhasználók" csempére kattintva a rendszer átirányítja a "kockázatos felhasználók" jelentés szűrt nézetére, amely csak a kockázati szinttel rendelkező felhasználókat jeleníti meg. A jelentés használatával további információkat tudhat meg, és elháríthatja ezeket a felhasználókat jelszó-visszaállítással.
+A "Magas kockázatú felhasználók" csempe mutatja a felhasználók legfrissebb száma nagy valószínűséggel identitás-kompromisszum. Ezeknek kiemelt prioritást kell élvezniük a nyomozás során. A "Magas kockázatú felhasználók" csempére való kattintás átirányítja a "Kockázatos felhasználók" jelentés szűrt nézetére, amely csak a magas kockázati szintű felhasználókat jeleníti meg. Ezzel a jelentéssel további információval és jelszó-visszaállítással orvosolhatja ezeket a felhasználókat.
 
 ![Biztonsági áttekintés](./media/concept-identity-protection-security-overview/02.png)
 
 ### <a name="medium-risk-users"></a>Közepes kockázatú felhasználók
-A "közepes kockázatú felhasználók" csempe azon felhasználók legújabb számát jeleníti meg, akik közepes valószínűséggel veszélyeztetik az identitást. A "közepes kockázatú felhasználók" csempére kattintva a rendszer átirányítja a "kockázatos felhasználók" jelentés szűrt nézetére, amely csak a közepes kockázati szintű felhasználókat jeleníti meg. A jelentés használatával tovább vizsgálhatja és javíthatja ezeket a felhasználókat.
+A "Közepes kockázatú felhasználók" csempe az identitásbiztonság közepes valószínűségű felhasználók legfrissebb számát jeleníti meg. A "Közepes kockázatú felhasználók" csempére való kattintás átirányítja a "Kockázatos felhasználók" jelentés szűrt nézetére, amely csak a közepes kockázati szintű felhasználókat jeleníti meg. A jelentés használatával tovább vizsgálhatja és kiigazíthatja ezeket a felhasználókat.
 
-### <a name="unprotected-risky-sign-ins"></a>Nem védett kockázatos bejelentkezések
+### <a name="unprotected-risky-sign-ins"></a>Védelem nélküli kockázatos bejelentkezések
 
-A "nem védett kockázatos bejelentkezések" csempe a legutóbbi hét azon sikeres és valós idejű, kockázatos bejelentkezések számát jeleníti meg, amelyeket a feltételes hozzáférési szabályzat, az Identity Protection kockázati házirendje vagy felhasználónkénti MFA-val nem blokkoltak. Ezek olyan feltört bejelentkezések, amelyek sikeresek voltak, és az MFA-t nem vitatták meg. Az ilyen bejelentkezések jövőbeli biztosításához alkalmazza a bejelentkezési kockázati házirendet. Ha a "nem védett kockázatos bejelentkezések" csempére kattint, a rendszer átirányítja a bejelentkezési kockázati házirend konfigurálási paneljére, ahol konfigurálhatja a bejelentkezési kockázati házirendet, hogy az MFA-t egy megadott kockázati szinttel rendelkező bejelentkezéshez is megkövetelje.
+A "Nem védett kockázatos bejelentkezések" csempe mutatja a múlt heti száma a sikeres, valós idejű kockázatos bejelentkezések, amelyek nem blokkolt, vagy MFA megtámadta a feltételes hozzáférési szabályzat, identitásvédelem kockázati házirend, vagy felhasználónkénti MFA. Ezek potenciálisan kompromittált bejelentkezések, amelyek sikeresek voltak, és nem MFA kétségbe. Az ilyen bejelentkezések védelme érdekében a jövőben alkalmazza a bejelentkezési kockázati szabályzatot. A "Nem védett kockázatos bejelentkezések" csempére kattintva átirányítja a bejelentkezési kockázati házirend konfigurációs panelre, ahol konfigurálhatja a bejelentkezési kockázati szabályzatot, hogy a megadott kockázati szintű bejelentkezési modulon követelje meg az MFA-t.
 
 ### <a name="legacy-authentication"></a>Örökölt hitelesítés
 
-Az "örökölt hitelesítés" csempe a szervezet korábbi hitelesítésének múlt heti számát mutatja. Az örökölt hitelesítési protokollok nem támogatják a modern biztonsági módszereket, például az MFA-t. A régi hitelesítés megakadályozása érdekében alkalmazhat feltételes hozzáférési szabályzatot is. Az "örökölt hitelesítés" csempére kattintva átirányítjuk a "személyazonosság biztonságos pontszáma" értékre.
+Az "Örökölt hitelesítés" csempe a szervezeten belüli örökölt hitelesítések múlt heti számát jeleníti meg. Az örökölt hitelesítési protokollok nem támogatják a modern biztonsági módszereket, például az MFA-t. Az örökölt hitelesítés megakadályozása érdekében feltételes hozzáférési szabályzatot alkalmazhat. Az "Örökölt hitelesítés" csempére kattintva átirányítja önt az "Identitás biztonságos pontszámára".
 
 ### <a name="identity-secure-score"></a>Identitás biztonságos pontszáma
 
-Az identitások biztonságos pontszáma méri és összehasonlítja a biztonsági helyzeteket az iparági mintákkal. Ha a "személyazonosság biztonságos pontszám (előzetes verzió)" csempére kattint, a rendszer átirányítja a "személyazonosság biztonságos pontszáma" panelre, ahol részletesebben is tájékozódhat a biztonsági helyzet javításáról.
+Az identitásbiztonságos pontszám méri és összehasonlítja a biztonsági állapotot az iparági mintákkal. Ha az "Identitás biztonságos pontszáma (előnézet)" csempére kattint, az átirányítja az "Identitás biztonságos pontszáma" panelre, ahol többet megtudhat a biztonsági testhelyzet javításáról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Mi a kockázat](concept-identity-protection-risks.md)
+- [Mi a kockázat?](concept-identity-protection-risks.md)
 
-- [A kockázatok enyhítésére rendelkezésre álló szabályzatok](concept-identity-protection-policies.md)
+- [A kockázatok csökkentésére rendelkezésre álló politikák](concept-identity-protection-policies.md)

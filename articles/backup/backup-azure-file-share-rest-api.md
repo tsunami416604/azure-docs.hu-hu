@@ -1,22 +1,22 @@
 ---
-title: Azure-fájlmegosztás biztonsági mentése a REST API
-description: Ismerje meg, hogyan használhatja a REST API az Azure-fájlmegosztás biztonsági mentésére az Recovery Services-tárolóban
+title: Az Azure-fájlmegosztások biztonsági és biztonsági és biztonsági és biztonsági és biztonsági és biztonsági és biztonsági és biztonsági,
+description: Megtudhatja, hogy miként ment mentés az Azure-fájlmegosztásokról a Recovery Services Vaultban a REST API használatával
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248098"
 ---
-# <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Azure-fájlmegosztás biztonsági mentése a Azure Backup használatával REST API-n keresztül
+# <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Azure-fájlmegosztás biztonsági mentése az Azure Biztonsági másolat segédprogramjával a Rest API-n keresztül
 
-Ez a cikk azt ismerteti, hogyan készíthet biztonsági mentést egy Azure-fájlmegosztás Azure Backup használatával REST API segítségével.
+Ez a cikk ismerteti, hogyan készíthet biztonsági másolatot egy Azure-fájlmegosztásról az Azure Backup használatával REST API-n keresztül.
 
-Ez a cikk azt feltételezi, hogy már létrehozott egy Recovery Services-tárolót és szabályzatot a fájlmegosztás biztonsági mentésének konfigurálásához. Ha még nem tette meg, tekintse meg a [create vaultot](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatevault) , és [hozzon létre házirendet](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy) REST API oktatóanyagokat új tárolók és házirendek létrehozásához.
+Ez a cikk feltételezi, hogy már létrehozott egy helyreállítási szolgáltatások tárolóját és házirendjét a fájlmegosztás biztonsági mentésének konfigurálásához. Ha még nem, olvassa el a [hozzon létre egytárolót,](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatevault) és [hozzon létre házirend](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy) REST API oktatóanyagok új tárolók és szabályzatok létrehozásához.
 
-Ebben a cikkben a következő erőforrásokat fogjuk használni:
+Ebben a cikkben a következő forrásokat használjuk:
 
 - **RecoveryServicesVault**: *azurefilesvault*
 
@@ -24,45 +24,45 @@ Ebben a cikkben a következő erőforrásokat fogjuk használni:
 
 - **Erőforráscsoport**: *azurefiles*
 
-- **Storage-fiók**: *testvault2*
+- **Tárfiók**: *testvault2*
 
 - **Fájlmegosztás**: *testshare*
 
-## <a name="configure-backup-for-an-unprotected-azure-file-share-using-rest-api"></a>Nem védett Azure-fájlmegosztás biztonsági mentésének konfigurálása REST API használatával
+## <a name="configure-backup-for-an-unprotected-azure-file-share-using-rest-api"></a>Nem védett Azure-fájlmegosztás biztonsági másolatának konfigurálása REST API használatával
 
-### <a name="discover-storage-accounts-with-unprotected-azure-file-shares"></a>Nem védett Azure-fájlmegosztás esetén a Storage-fiókok felderítése
+### <a name="discover-storage-accounts-with-unprotected-azure-file-shares"></a>Tárfiókok felderítése nem védett Azure-fájlmegosztásokkal
 
-A tárolónak fel kell derítenie az előfizetés összes olyan Azure Storage-fiókját, amelyről biztonsági másolatot készíthet a Recovery Services tárolóba. Ez a [frissítési művelettel](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)aktiválódik. Ez egy aszinkron *post* művelet, amely biztosítja, hogy a tároló megkapja az aktuális előfizetésben és a "gyorsítótárban" található összes nem védett Azure-fájlmegosztás legújabb listáját. Miután a fájlmegosztás gyorsítótárazva van, a helyreállítási szolgáltatások hozzáférhetnek a fájlmegosztáshoz, és megoszthatják azt.
+A tárolónak fel kell derítenie az összes Azure storage-fiókot az előfizetésben olyan fájlmegosztásokkal, amelyekről a Recovery Services-tantárolóba lehet biztonsági másolatot adni. Ez a [frissítési művelettel](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)aktiválódik. Ez egy aszinkron *POST-művelet,* amely biztosítja, hogy a tároló megkapja az aktuális előfizetésben lévő összes nem védett Azure File-megosztás okainak legújabb listáját, és "gyorsítótárazza" azokat. Miután a fájlmegosztás "gyorsítótárazott", a helyreállítási szolgáltatások hozzáférhetnek a fájlmegosztáshoz és megvédhetik azt.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
 ```
 
-A POST URI `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}`és `{fabricName}` paramétereket tartalmaz. A példánkban a különböző paraméterek értéke a következő lesz:
+A POST `{subscriptionId}`URI `{vaultName}` `{vaultresourceGroupName}`a `{fabricName}` , , és paramétereivel rendelkezik. A példánkban a különböző paraméterek értéke a következő:
 
-- `{fabricName}` az *Azure*
+- `{fabricName}`az *Azure*
 
-- `{vaultName}` *azurefilesvault*
+- `{vaultName}`*az azurefilesvault*
 
-- `{vaultresourceGroupName}` *azurefiles*
+- `{vaultresourceGroupName}`*az azurefiles*
 
-- $filter = backupManagementType EQ "AzureStorage"
+- $filter=backupManagementType eq "AzureStorage"
 
-Mivel az összes kötelező paraméter meg van adva az URI-ban, nincs szükség külön kérelem törzsére.
+Mivel az összes szükséges paraméter meg van adva az URI-ban, nincs szükség külön kérelemtörzsre.
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
 ```
 
-#### <a name="responses"></a>Responses
+#### <a name="responses"></a>Válaszok
 
-A "refresh" művelet egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
+A "frissítési" művelet [aszinkron művelet.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) Ez azt jelenti, hogy ez a művelet létrehoz egy másik műveletet, amelyet külön kell nyomon követni.
 
-Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, és 200 (OK), amikor a művelet befejeződik.
+Két választ ad vissza: 202 (Elfogadva) egy másik művelet létrehozásakor, és 200 (OK) a művelet befejezésekor.
 
-##### <a name="example-responses"></a>Válaszok – példa
+##### <a name="example-responses"></a>Példa válaszok
 
-A *post* kérelem elküldése után a rendszer egy 202 (elfogadott) választ ad vissza.
+A *POST-kérelem* benyújtását követően a rendszer 202(Elfogadva) választ ad vissza.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -83,13 +83,13 @@ cca47745-12d2-42f9-b3a4-75335f18fdf6?api-version=2016-12-01’
 'Date': 'Mon, 03 Feb 2020 09:13:25 GMT'
 ```
 
-Az eredményül kapott művelet nyomon követése a "location" fejléc használatával egy egyszerű *Get* paranccsal
+Az eredményül kapott művelet nyomon követése a "Hely" fejléc segítségével egy egyszerű *GET* paranccsal
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/operationResults/cca47745-12d2-42f9-b3a4-75335f18fdf6?api-version=2016-12-01
 ```
 
-Miután az összes Azure Storage-fiókot felderíti, a GET parancs 200 (nincs tartalom) választ ad vissza. A tár mostantól képes felderíteni az előfizetésen belül biztonsági mentésre alkalmas fájlmegosztás-fiókokat.
+Miután az összes Azure Storage-fiókok felderítése, a GET parancs egy 200 (nincs tartalom) választ ad vissza. A tároló most már képes felderíteni minden tárfiókot fájlmegosztások, amelyek az előfizetésen belül biztonsági másolatot lehet.
 
 ```http
 HTTP/1.1 200 NoContent
@@ -106,17 +106,17 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105304Z:d9bdb266-8349-4dbd-968
 Date   : Mon, 27 Jan 2020 10:53:04 GMT
 ```
 
-### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>Recovery Services-tárolóval védhető Storage-fiókok listájának beolvasása
+### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>A Recovery Services-tárolóval védhető tárfiókok listájának beszerzése
 
-Annak ellenőrzéséhez, hogy a "gyorsítótárazás" elkészült-e, sorolja fel az előfizetéshez tartozó összes védhető Storage-fiókot. Ezután keresse meg a kívánt Storage-fiókot a válaszban. Ez a [ProtectableContainers lekérése](https://docs.microsoft.com/rest/api/backup/protectablecontainers/list) művelettel történik.
+Annak ellenőrzéséhez, hogy a "gyorsítótárazás" megtörtént-e, sorolja fel az összes védett tárfiókot az előfizetés alatt. Ezután keresse meg a kívánt tárfiókot a válaszban. Ez a [GET ProtectableContainers](https://docs.microsoft.com/rest/api/backup/protectablecontainers/list) művelethasználatával történik.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
 ```
 
-A *Get* URI az összes szükséges paraméterrel rendelkezik. Nincs szükség további kérelem törzsére.
+A *GET* URI rendelkezik az összes szükséges paraméterrel. Nincs szükség további kéréstörzsre.
 
-Példa a válasz törzsére:
+Példa a választörzsre:
 
 ```json
 {
@@ -156,26 +156,26 @@ protectableContainers/StorageContainer;Storage;AzureFiles;testvault2",
 }
 ```
 
-Mivel a rövid névvel megkeresheti a *testvault2* Storage-fiókot a válasz törzsében, a fentiekben végrehajtott frissítési művelet sikeres volt. A Recovery Services-tároló mostantól képes sikeresen felderíteni a nem védett fájlokkal rendelkező Storage-fiókokat ugyanabban az előfizetésben.
+Mivel a *testvault2* tárfiókot a választörzsben a rövid névvel találjuk, a fent végrehajtott frissítési művelet sikeres volt. A helyreállítási szolgáltatások tárolómost már sikeresen felderítheti a nem védett fájlokat ugyanabban az előfizetésben lévő tárfiókokat.
 
-### <a name="register-storage-account-with-recovery-services-vault"></a>Storage-fiók regisztrálása a Recovery Services-tárolóval
+### <a name="register-storage-account-with-recovery-services-vault"></a>Tárfiók regisztrálása a Recovery Services-tárolóval
 
-Erre a lépésre csak akkor van szükség, ha korábban nem regisztrálta a Storage-fiókot a tárolóban. A tárolót a [ProtectionContainers-regisztráció művelettel](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register)lehet regisztrálni.
+Ez a lépés csak akkor szükséges, ha korábban nem regisztrálta a tárfiókot a tárolóval. A tárolóregisztrálhatja a [ProtectionContainers-Register műveletet.](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register)
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}?api-version=2016-12-01
 ```
 
-Állítsa be az URI változóit a következőképpen:
+Az URI változóit az alábbiak szerint állítsa be:
 
-- {resourceGroupName} – *azurefiles*
+- {resourceGroupName} - *azurefiles*
 - {fabricName} – *Azure*
-- {vaultName} – *azurefilesvault*
-- {containerName} – ez a Name attribútum a GET ProtectableContainers művelet válasz törzsében.
-   A példánkban ez a *StorageContainer; Storage AzureFiles; testvault2*
+- {vaultName} - *azurefilesvault*
+- {containerName} – Ez a name attribútum a GET ProtectableContainers művelet választörzsében.
+   A példánkban a *StorageContainer; Tárolás; AzureFiles;testvault2*
 
 >[!NOTE]
-> Mindig adja meg a válasz Name (név) attribútumát, és töltse ki a kérelemben. Ne adjon meg merevlemezt, vagy hozza létre a tároló nevének formátumát. Ha létrehoz vagy feldolgoz egy kódot, az API-hívás sikertelen lesz, ha a tároló-név formátuma később megváltozik.
+> Mindig vegye be a válasz névattribútumát, és töltse ki ezt a kérést. Ne kódolj, vagy hozzon létre a tárolónév formátumot. Ha létrehozza vagy kódolja, az API-hívás sikertelen lesz, ha a tároló névformátuma a jövőben megváltozik.
 
 <br>
 
@@ -183,7 +183,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AzureFiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2?api-version=2016-12-01
 ```
 
-A kérelem létrehozása törzs a következő:
+A létrehozási kérelem törzse a következő:
 
 ```json
 {
@@ -209,15 +209,15 @@ A kérelem létrehozása törzs a következő:
  }
 ```
 
-A kérelem törzsének és egyéb részleteinek teljes listájáért tekintse meg a [ProtectionContainers-Register](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register#azurestoragecontainer)című témakört.
+A kérelemtörzs definícióinak teljes listáját és egyéb részleteket a [ProtectionContainers-Register című dokumentumban találja.](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register#azurestoragecontainer)
 
-Ez egy aszinkron művelet, és visszaadja a következő két választ: "202 elfogadva", ha a művelet el van fogadva, és "200 OK", amikor a művelet befejeződött.  A művelet állapotának nyomon követéséhez használja a Location (hely) fejlécet a művelet legutóbbi állapotának lekéréséhez.
+Ez egy aszinkron művelet, és két választ ad vissza: "202 Elfogadva", amikor a műveletet elfogadják, és "200 OK", amikor a művelet befejeződött.  A művelet állapotának nyomon követéséhez használja a helyfejlécet a művelet legutóbbi állapotának beolvasásához.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AzureFiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2/operationresults/1a3c8ee7-e0e5-43ed-b8b3-73cc992b6db9?api-version=2016-12-01
 ```
 
-Példa a válasz törzsére a művelet befejezésekor:
+Példa választörzsre, ha a művelet befejeződött:
 
 ```json
 {
@@ -237,21 +237,21 @@ protectionContainers/StorageContainer;Storage;AzureFiles;testvault2",
 }
 ```
 
-A válasz törzsében ellenőrizheti, hogy a regisztráció sikeres volt-e a *registrationstatus* paraméter értéke alapján. Esetünkben a *testvault2*regisztrált állapota jelenik meg, így a regisztrálási művelet sikeres volt.
+Ellenőrizheti, hogy a regisztráció sikeres volt-e a *választörzsregisztrációs* paraméter értékéből. A mi esetünkben, ez azt mutatja, az állapot regisztrált *testvault2*, így a regisztrációs művelet sikeres volt.
 
-### <a name="inquire-all-unprotected-files-shares-under-a-storage-account"></a>Az összes nem védett fájl megosztásának lekérdezése egy Storage-fiókban
+### <a name="inquire-all-unprotected-files-shares-under-a-storage-account"></a>Az összes nem védett fájl megosztásának lekérdezése tárfiók alatt
 
-A Protected items ( [védelmi tárolók – lekérdezési](https://docs.microsoft.com/rest/api/backup/protectioncontainers/inquire) művelet) használatával megtekintheti a Storage-fiókok védhető elemeit. Ez egy aszinkron művelet, és az eredményeket a Location fejléc használatával kell követni.
+A [védelmi tárolók-lekérdezés](https://docs.microsoft.com/rest/api/backup/protectioncontainers/inquire) művelettel érdeklődhet a tárfiókvédett elemeiről. Ez egy aszinkron művelet, és az eredményeket a helyfejléc használatával kell nyomon követni.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire?api-version=2016-12-01
 ```
 
-Állítsa be a fenti URI változóit a következőképpen:
+Állítsa be a fenti URI változóit az alábbiak szerint:
 
-- {vaultName} – *azurefilesvault*
+- {vaultName} - *azurefilesvault*
 - {fabricName} – *Azure*
-- {containerName} – a ProtectableContainers beolvasása művelet válasz törzsében található Name attribútumra hivatkozik. A példánkban ez a *StorageContainer; Storage AzureFiles; testvault2*
+- {containerName}- Tekintse meg a name attribútumot a GET ProtectableContainers művelet választörzsében. A példánkban a *StorageContainer; Tárolás; AzureFiles;testvault2*
 
 ```http
 https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2/inquire?api-version=2016-12-01
@@ -274,24 +274,24 @@ x-ms-routing-request-id   : CENTRALUSEUAP:20200127T105305Z:68727f1e-b8cf-4bf1-bf
 Date  : Mon, 27 Jan 2020 10:53:05 GMT
 ```
 
-### <a name="select-the-file-share-you-want-to-back-up"></a>Válassza ki azt a fájlmegosztást, amelyről biztonsági másolatot szeretne készíteni
+### <a name="select-the-file-share-you-want-to-back-up"></a>Válassza ki a biztonsági másolatot létrehozni kívánt fájlmegosztást
 
-Az előfizetéshez tartozó összes védhető elemet listázhatja, és megkeresheti a kívánt fájlmegosztást, amelyről biztonsági másolatot szeretne készíteni a [backupprotectableItems beolvasása](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) művelet használatával.
+Az előfizetés alatt felsorolhatja az összes védhető elemet, és megkeresheti a get [backupprotectableItems](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) művelettel biztonsági másolatot készíteni kívánt fájlmegosztásról.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems?api-version=2016-12-01&$filter={$filter}
 ```
 
-Hozza létre az URI-t a következőképpen:
+Az URI-t az alábbiak szerint kell megépíteni:
 
-- {vaultName} – *azurefilesvault*
-- {$filter} – *backupManagementType EQ "AzureStorage"*
+- {vaultName} - *azurefilesvault*
+- {$filter} - *backupManagementType eq "AzureStorage"*
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupProtectableItems?$filter=backupManagementType eq 'AzureStorage'&api-version=2016-12-01
 ```
 
-Példa a válaszra:
+Mintaválasz:
 
 ```json
 Status Code:200
@@ -347,33 +347,33 @@ Status Code:200
 }
 ```
 
-A válasz tartalmazza az összes nem védett fájlmegosztás listáját, és az Azure Recovery szolgáltatás által a biztonsági mentés konfigurálásához szükséges összes információt tartalmazza.
+A válasz tartalmazza az összes nem védett fájlmegosztások listáját, és tartalmazza az Azure Recovery Service által a biztonsági mentés konfigurálásához szükséges összes információt.
 
-### <a name="enable-backup-for-the-file-share"></a>A fájlmegosztás biztonsági mentésének engedélyezése
+### <a name="enable-backup-for-the-file-share"></a>Biztonsági mentés engedélyezése a fájlmegosztáshoz
 
-Ha a megfelelő fájlmegosztás "azonosítva" a rövid névvel, válassza ki a védelemmel ellátni kívánt szabályzatot. A meglévő szabályzatok a tárolóban való megismeréséhez tekintse meg a [házirend-API listázása](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)című témakört. Ezután válassza ki a [megfelelő szabályzatot](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) a szabályzat nevére hivatkozva. A szabályzatok létrehozásával kapcsolatban tekintse meg a [házirend létrehozása oktatóanyagot](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy).
+Miután a megfelelő fájlmegosztást "azonosította" a rövid névvel, válassza ki a védeni kívánt házirendet. Ha többet szeretne megtudni a tárolóban meglévő szabályzatokról, olvassa el a [list Policy API című listát.](https://docs.microsoft.com/rest/api/backup/backuppolicies/list) Ezután válassza ki a [megfelelő házirendet](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) a házirend nevére hivatkozva. Házirendek létrehozásához olvassa el a [házirend-oktatóanyag létrehozása](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy)című fájlt.
 
-A védelem engedélyezése egy aszinkron *put* művelet, amely létrehoz egy "védett elemeket".
+A védelem engedélyezése egy aszinkron *PUT* PUT-művelet, amely "védett elemet" hoz létre.
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
-Állítsa be a **ContainerName** és a **protecteditemname** változót a Get backupprotectableitems művelet válasz törzsében található ID attribútum használatával.
+Állítsa be a **containername** és **a protecteditemname** változókat a GET backupprotectableitems művelet választörzsében lévő ID attribútum használatával.
 
-A példában a védelemmel ellátni kívánt fájlmegosztás azonosítója a következő:
+A példánkban a védeni kívánt fájlmegosztás azonosítója a következő:
 
 ```output
 "/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;testvault2/protectableItems/azurefileshare;testshare
 ```
 
-- {ContainerName} – *storagecontainer; Storage; azurefiles; testvault2*
-- {protectedItemName} – *azurefileshare; testshare*
+- {containername} - *storagecontainer;storage;azurefiles;testvault2*
+- {protectedItemName} - *azurefileshare;testshare*
 
-Vagy a védelmi tároló és a védhető elemek válaszának **Name (név** ) attribútumára is hivatkozhat.
+Vagy hivatkozhat a védelmi tároló **névattribútumára** és a védett elemválaszokra.
 
 >[!NOTE]
->Mindig adja meg a válasz Name (név) attribútumát, és töltse ki a kérelemben. Ne adjon meg merevlemezt vagy hozzon létre egy tároló-név formátumot vagy a védett elemnév formátumát. Ha létrehoz vagy rögzített kódot, az API-hívás sikertelen lesz, ha a tároló-név formátuma vagy a védett elem nevének formátuma megváltozik a jövőben.
+>Mindig vegye be a válasz névattribútumát, és töltse ki ezt a kérést. Ne kódolja, és ne hozza létre a tárolónév-vagy védett elemnév-formátumot. Ha létrehozza vagy kódolja, az API-hívás sikertelen lesz, ha a tárolónév-formátum vagy a védett elemnév formátuma a jövőben megváltozik.
 
 <br>
 
@@ -381,9 +381,9 @@ Vagy a védelmi tároló és a védhető elemek válaszának **Name (név** ) at
 PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2/protectedItems/azurefileshare;testshare?api-version=2016-12-01
 ```
 
-Kérelem törzsének létrehozása:
+Kérelemtörzs létrehozása:
 
-A következő kérelem törzse a védett elemek létrehozásához szükséges tulajdonságokat definiálja.
+A következő kérelemtörzs a védett elem létrehozásához szükséges tulajdonságokat határozza meg.
 
 ```json
 {
@@ -395,13 +395,13 @@ A következő kérelem törzse a védett elemek létrehozásához szükséges tu
 }
 ```
 
-A **sourceresourceid azonosítónak** a Get backupprotectableItems **parentcontainerFabricID** válasza.
+A **sourceResourceId** a get backupprotectableItems válaszul **parentcontainerFabricID.**
 
 Mintaválasz
 
-A védett elem létrehozása egy aszinkron művelet, amely egy másik műveletet hoz létre, amelyet nyomon kell követni. Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, és 200 (OK), amikor a művelet befejeződik.
+A védett elem létrehozása egy aszinkron művelet, amely egy másik műveletet hoz létre, amelyet nyomon kell követni. Két választ ad vissza: 202 (Elfogadva) egy másik művelet létrehozásakor, és 200 (OK) a művelet befejezésekor.
 
-Miután elküldte a *put* kérelmet a védett elemek létrehozásához vagy frissítéséhez, a kezdeti válasz 202 (elfogadva), a hely fejléce.
+Miután elküldte a *PUT* kérelmet a védett elemek létrehozására vagy frissítésére, a kezdeti válasz 202 (Elfogadva) egy helyfejléccel.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -421,15 +421,15 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105412Z:b55527fa-f473-4f09-b16
 Date : Mon, 27 Jan 2020 10:54:12 GMT
 ```
 
-Ezután kövesse az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával egy *Get* paranccsal.
+Ezután kövesse nyomon az eredményül kapott műveletet a helyfejléc vagy az Azure-AsyncOperation fejléc használatával egy *GET* paranccsal.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/c3a52d1d-0853-4211-8141-477c65740264?api-version=2016-12-01
 ```
 
-A művelet befejezése után a 200 (OK) értéket adja vissza a válasz törzsében található védett elem tartalmával.
+Miután a művelet befejeződött, 200 (OK) értéket ad vissza a védett elem tartalmával a választörzsben.
 
-Példa a válasz törzsére:
+Mintaválasz törzse:
 
 ```json
 {
@@ -445,35 +445,35 @@ Példa a válasz törzsére:
 }
 ```
 
-Ez megerősíti, hogy engedélyezve van a fájlmegosztás védelme, és az első biztonsági mentés a házirend-ütemtervnek megfelelően aktiválódik.
+Ez megerősíti, hogy a fájlmegosztás védettsége engedélyezve van, és az első biztonsági mentés a házirend-ütemezésnek megfelelően aktiválódik.
 
-## <a name="trigger-an-on-demand-backup-for-file-share"></a>Igény szerinti biztonsági mentés indítása a fájlmegosztás számára
+## <a name="trigger-an-on-demand-backup-for-file-share"></a>Igény szerinti biztonsági mentés aktiválása a fájlmegosztáshoz
 
-Ha egy Azure-fájlmegosztás biztonsági mentésre van konfigurálva, a biztonsági mentések a szabályzat ütemezése szerint futnak. Megvárhatja az első ütemezett biztonsági mentést, vagy bármikor elindíthat egy igény szerinti biztonsági mentést.
+Miután egy Azure-fájlmegosztás van konfigurálva a biztonsági mentés, a biztonsági mentések a házirend-ütemezés szerint futnak. Megvárhatja az első ütemezett biztonsági mentést, vagy bármikor elindíthatja az igény szerinti biztonsági mentést.
 
-Az igény szerinti biztonsági mentés aktiválás utáni művelet.
+Az igény szerinti biztonsági mentés aktiválása postaművelet.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup?api-version=2016-12-01
 ```
 
-a biztonsági mentés engedélyezése során a ({containerName} és a {protectedItemName}) a fentiek szerint lett kiépítve. A példánkban ez a következőt jelenti:
+A(z) {containerName} és a{protectedItemName} a fenti módon épül fel a biztonsági mentés engedélyezése közben. Példánkban ez a következőket jelenti:
 
 ```http
 POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;testvault2/protectedItems/AzureFileShare;testshare/backup?api-version=2017-07-01
 ```
 
-### <a name="create-request-body"></a>Kérelem törzsének létrehozása
+### <a name="create-request-body"></a>Kérelemtörzs létrehozása
 
-Az igény szerinti biztonsági mentés elindításához kövesse a kérelem törzsének összetevőit.
+Az igény szerinti biztonsági mentés aktiválásához a következő összetevők a kérelem törzse.
 
 | Név       | Típus                       | Leírás                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Tulajdonságok | AzurefilesharebackupReques | BackupRequestResource tulajdonságai |
 
-A kérelem törzsének és egyéb részleteinek teljes listájáért lásd: a [védett elemek biztonsági mentésének elindítása REST API dokumentum](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body).
+A kérelemtörzs definícióinak teljes listáját és egyéb részleteket a [REST API-dokumentum védett elemekhez való biztonsági másolatkészítési dokumentumban](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body)találja.
 
-Példa a kérelem szövegtörzsére
+Példa a törzs igénylésére
 
 ```json
 {
@@ -487,15 +487,15 @@ Példa a kérelem szövegtörzsére
 }
 ```
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Válaszok
 
-Az igény szerinti biztonsági mentés indítása [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
+Az igény szerinti biztonsági mentés aktiválása [aszinkron művelet.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) Ez azt jelenti, hogy ez a művelet létrehoz egy másik műveletet, amelyet külön kell nyomon követni.
 
-Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, és 200 (OK), amikor a művelet befejeződik.
+Két választ ad vissza: 202 (Elfogadva) egy másik művelet létrehozásakor, és 200 (OK) a művelet befejezésekor.
 
-### <a name="example-responses"></a>Válaszok – példa
+### <a name="example-responses"></a>Példa válaszok
 
-Miután elküldte a *post* -kérést egy igény szerinti biztonsági mentéshez, a kezdeti válasz 202 (elfogadva), egy Location fejlécet vagy egy Azure-aszinkron-fejlécet tartalmaz.
+Miután elküldte a POST kérést egy igény szerinti biztonsági mentésre, a kezdeti válasz 202 (Elfogadva) egy helyfejléccel vagy az Azure-async-header.Once you submit the *POST* request for an on-demand backup, the initial response is 202 (Accepted) with a location header or Azure-async-header.
 
 ```http
 'Cache-Control': 'no-cache'
@@ -516,15 +516,15 @@ Miután elküldte a *post* -kérést egy igény szerinti biztonsági mentéshez,
 'Content-Length': '0'
 ```
 
-Ezután kövesse az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával egy *Get* paranccsal.
+Ezután kövesse nyomon az eredményül kapott műveletet a helyfejléc vagy az Azure-AsyncOperation fejléc használatával egy *GET* paranccsal.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/dc62d524-427a-4093-968d-e951c0a0726e?api-version=2016-12-01
 ```
 
-A művelet befejezése után a 200 (OK) értéket adja vissza az eredményül kapott biztonsági mentési feladatoknak a válasz törzsében.
+Miután a művelet befejeződött, 200 -ot (OK) ad vissza az eredményül kapott biztonsági mentési feladat azonosítójával a választörzsben.
 
-#### <a name="sample-response-body"></a>Példa a válasz törzsére
+#### <a name="sample-response-body"></a>Mintaválasz törzse
 
 ```json
 {
@@ -540,8 +540,8 @@ A művelet befejezése után a 200 (OK) értéket adja vissza az eredményül ka
 }
 ```
 
-Mivel a biztonsági mentési feladat hosszú ideig futó művelet, azt a [feladatok figyelése REST API dokumentum használatával](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)című részben leírtak szerint kell követni.
+Mivel a biztonsági mentési feladat egy hosszú ideig futó művelet, nyomon kell követni a [rest API-dokumentum használatával a figyelőfeladatokban leírtak szerint.](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [állíthatja vissza az Azure-fájlmegosztást a REST API használatával](restore-azure-file-share-rest-api.md).
+- Ismerje meg, hogyan állíthatja vissza az [Azure-fájlmegosztásokat a Rest API használatával.](restore-azure-file-share-rest-api.md)

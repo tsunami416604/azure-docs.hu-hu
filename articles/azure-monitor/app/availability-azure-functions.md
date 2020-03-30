@@ -1,51 +1,51 @@
 ---
-title: Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azure Functions használatával
-description: Ez a dokumentum azt ismerteti, hogyan hozhat létre egy Azure-függvényt a TrackAvailability () használatával, amely rendszeres időközönként a TimerTrigger függvényben megadott konfigurációnak megfelelően fog futni. A teszt eredményét a rendszer elküldi a Application Insights-erőforrásnak, ahol a rendelkezésre állási eredmények adataira vonatkozó lekérdezéssel és riasztással kapcsolatos értesítéseket fog kapni. A testreszabott tesztek lehetővé teszik az összetettebb rendelkezésre állási tesztek megírását, mint amennyi a portál felhasználói felületén lehetséges, figyelheti az alkalmazást az Azure-VNET belül, módosíthatja a végponti címeket, vagy létrehozhat egy rendelkezésre állási tesztet, ha az nem érhető el a régióban.
+title: Egyéni rendelkezésre állási tesztek létrehozása és futtatása az Azure Functions használatával
+description: Ez a dokumentum ismerteti, hogyan hozhat létre egy Azure-függvény TrackAvailability() amely rendszeresen fut a TimerTrigger függvényben megadott konfigurációnak megfelelően. A teszt eredményeit a rendszer elküldi az Application Insights-erőforrásnak, ahol lekérdezheti és riasztást kaphat a rendelkezésre állási eredmények adatairól. A testreszabott tesztek lehetővé teszik, hogy a portál felhasználói felületén a lehetségesnél összetettebb rendelkezésre állási teszteket írjon, figyeljen egy alkalmazást az Azure virtuális hálózatán belül, módosítsa a végpont címét, vagy hozzon létre egy rendelkezésre állási tesztet, ha az nem érhető el a régiójában.
 ms.topic: conceptual
 author: morgangrobin
 ms.author: mogrobin
 ms.date: 11/22/2019
 ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665799"
 ---
-# <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azure Functions használatával
+# <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Egyéni rendelkezésre állási tesztek létrehozása és futtatása az Azure Functions használatával
 
-Ez a cikk bemutatja, hogyan hozhat létre egy Azure-függvényt a TrackAvailability () használatával, amely rendszeres időközönként, a TimerTrigger függvényben megadott konfiguráció alapján, saját üzleti logikával fog futni. A teszt eredményét a rendszer elküldi a Application Insights-erőforrásnak, ahol a rendelkezésre állási eredmények adataira vonatkozó lekérdezéssel és riasztással kapcsolatos értesítéseket fog kapni. Ez lehetővé teszi, hogy a portálon a [rendelkezésre állási monitorozáshoz](../../azure-monitor/app/monitor-web-app-availability.md) hasonló testreszabott teszteket hozzon létre. A testreszabott tesztek lehetővé teszik összetettebb rendelkezésre állási tesztek megírását, mint amennyi a portál felhasználói felületén lehetséges, figyelheti az alkalmazást az Azure-VNET, módosíthatja a végponti címeket, vagy létrehozhat egy rendelkezésre állási tesztet, még akkor is, ha ez a funkció nem érhető el a régióban.
+Ez a cikk ismerteti, hogyan hozhat létre egy Azure-függvény TrackAvailability() amely rendszeresen fut a timertrigger függvényben megadott konfiguráció nak megfelelően a saját üzleti logikával. A teszt eredményeit a rendszer elküldi az Application Insights-erőforrásnak, ahol lekérdezheti és riasztást kaphat a rendelkezésre állási eredmények adatairól. Ez lehetővé teszi, hogy személyre szabott teszteket hozzon létre, hasonlóan ahhoz, amit a [portálon a rendelkezésre állásfigyelésen](../../azure-monitor/app/monitor-web-app-availability.md) keresztül tehet. A testreszabott tesztek lehetővé teszik, hogy a portál felhasználói felületén a lehetségesnél összetettebb rendelkezésre állási teszteket írjon, figyeljen egy alkalmazást az Azure virtuális hálózatán belül, módosítsa a végpont címét, vagy hozzon létre egy rendelkezésre állási tesztet, még akkor is, ha ez a funkció nem érhető el az Ön régiójában.
 
 > [!NOTE]
-> Ez a példa kizárólag arra szolgál, hogy megmutassa, hogyan működik a TrackAvailability () API-hívás egy Azure-függvényen belül. Nem kell megírnia a mögöttes HTTP-teszt kódját/üzleti logikáját, amely a teljes funkcionalitású rendelkezésre állási teszthez szükséges lenne. Ha ezt a példát mutatja be, alapértelmezés szerint létre fog hozni egy rendelkezésre állási tesztet, amely mindig hibát eredményez.
+> Ebben a példában kizárólag a TrackAvailability() API-hívás azure-függvényen belüli működésének mechanikáját mutatja be. Nem, hogyan kell írni az alapul szolgáló HTTP-teszt kód/üzleti logika, amely szükséges lenne, hogy kapcsolja be ezt egy teljesen működőképes rendelkezésre állási teszt. Alapértelmezés szerint, ha végigvezeti ezt a példát, akkor létre fog hozni egy rendelkezésre állási tesztet, amely mindig létrehoz egy hibát.
 
-## <a name="create-timer-triggered-function"></a>Időzítő által aktivált függvény létrehozása
+## <a name="create-timer-triggered-function"></a>Időzítő aktivált függvény létrehozása
 
-- Ha Application Insights erőforrással rendelkezik:
-    - Alapértelmezés szerint a Azure Functions egy Application Insights-erőforrást hoz létre, de ha a már létrehozott erőforrások valamelyikét szeretné használni, akkor a létrehozás során meg kell adnia.
-    - Kövesse az [Azure functions erőforrás és időzítő által aktivált függvény létrehozásához](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) szükséges lépéseket (leállítás a tisztítás előtt) a következő lehetőségekkel.
-        -  Kattintson a felül található **figyelés** fülre.
+- Ha rendelkezik egy Application Insights-erőforrással:
+    - Alapértelmezés szerint az Azure Functions létrehoz egy Application Insights-erőforrást, de ha a már létrehozott erőforrások egyikét szeretné használni, meg kell adnia azt a létrehozás során.
+    - Kövesse az Azure [Functions-erőforrás és időzítő aktivált függvény (leállítás](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) a karbantartás előtt) az alábbi lehetőségekkel kapcsolatos utasításokat.
+        -  Válassza a **Figyelés** lapot a felső sarokmellett.
 
-            ![ Hozzon létre egy Azure Functions alkalmazást a saját alkalmazás-keresési erőforrással](media/availability-azure-functions/create-function-app.png)
+            ![ Hozzon létre egy Azure Functions alkalmazást saját App Insights-erőforrással](media/availability-azure-functions/create-function-app.png)
 
-        - Jelölje be a Application Insights legördülő listát, és írja be vagy válassza ki az erőforrás nevét.
+        - Jelölje be az Application Insights legördülő lista, és írja be vagy válassza ki az erőforrás nevét.
 
-            ![Meglévő Application Insights erőforrás kiválasztása](media/availability-azure-functions/app-insights-resource.png)
+            ![Meglévő Application Insights-erőforrás kiválasztása](media/availability-azure-functions/app-insights-resource.png)
 
-        - Válassza a **felülvizsgálat + létrehozás** lehetőséget
-- Ha még nem rendelkezik olyan Application Insights erőforrással, amelyet az időzítő által aktivált függvényhez még nem hozott létre:
-    - Alapértelmezés szerint a Azure Functions-alkalmazás létrehozásakor létrejön egy Application Insights erőforrás.
-    - Kövesse az [Azure functions erőforrás és időzítő által aktivált függvény létrehozásával](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) kapcsolatos utasításokat (leállítás a tisztítás előtt).
+        - Válassza **a Véleményezés + létrehozás lehetőséget**
+- Ha még nem hozott létre egy Application Insights-erőforrást az időzítő által aktivált függvényhez:
+    - Alapértelmezés szerint az Azure Functions-alkalmazás létrehozásakor létrehoz egy Application Insights-erőforrást.
+    - Kövesse az [Utasításokat,](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) hogyan hozhat létre egy Azure Functions erőforrás és időzítő aktivált függvény (stop tisztítás előtt).
 
 ## <a name="sample-code"></a>Mintakód
 
-Másolja az alábbi kódot a Run. CSX fájlba (Ezzel felülírja a már meglévő kódot). Ehhez lépjen a Azure Functions alkalmazásba, és válassza ki a bal oldali időzítő trigger funkciót.
+Másolja az alábbi kódot a run.csx fájlba (ez felülírja a már meglévő kódot). Ehhez lépjen be az Azure Functions alkalmazásba, és válassza ki az időzítő eseményindító funkciót a bal oldalon.
 
 >[!div class="mx-imgBorder"]
->![Azure-függvény Run. CSX Azure Portal](media/availability-azure-functions/runcsx.png)
+>![Az Azure-függvény run.csx szolgáltatása az Azure Portalon](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> A használni kívánt végpont címe: `EndpointAddress= https://dc.services.visualstudio.com/v2/track`. Kivéve, ha az erőforrás olyan régióban található, mint Azure Government vagy az Azure China, ahol ebben az esetben az [alapértelmezett végpontok felülbírálásával](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) és a régió megfelelő telemetria-csatornájának végpontjának megadásával foglalkozó cikkben tájékozódhat.
+> Az végpontcímhez a következőt kell használnia: `EndpointAddress= https://dc.services.visualstudio.com/v2/track`. Kivéve, ha az erőforrás található egy régióban, például az Azure Government vagy az Azure China ebben az esetben olvassa el ezt a cikket [az alapértelmezett végpontok felülbírálása,](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) és válassza ki a megfelelő telemetriai csatorna végpont a régióban.
 
 ```C#
 #load "runAvailabilityTest.csx"
@@ -127,7 +127,7 @@ public async static Task Run(TimerInfo myTimer, ILogger log)
 
 ```
 
-A fájlok megtekintése lehetőségnél kattintson a **Hozzáadás**gombra. Hívja meg az új file **function. Proj** fájlt a következő konfigurációval.
+A nézetfájlok jobb oldalán válassza a **Hozzáadás**lehetőséget. Hívja meg az új **function.proj** fájlt a következő konfigurációval.
 
 ```C#
 <Project Sdk="Microsoft.NET.Sdk">
@@ -142,9 +142,9 @@ A fájlok megtekintése lehetőségnél kattintson a **Hozzáadás**gombra. Hív
 ```
 
 >[!div class="mx-imgBorder"]
->![a jobb gombbal válassza a Hozzáadás elemet. Nevezze el a file function. Proj](media/availability-azure-functions/addfile.png)
+>![A jobb oldali válassza ki, add. A function.proj fájl elnevezése](media/availability-azure-functions/addfile.png)
 
-A fájlok megtekintése lehetőségnél kattintson a **Hozzáadás**gombra. Hívja meg az új **runAvailabilityTest. CSX** fájlt a következő konfigurációval.
+A nézetfájlok jobb oldalán válassza a **Hozzáadás**lehetőséget. Hívja meg az új fájlt **runAvailabilityTest.csx** a következő konfigurációval.
 
 ```C#
 public async static Task RunAvailbiltyTestAsync(ILogger log)
@@ -155,39 +155,39 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 
 ```
 
-## <a name="check-availability"></a>Rendelkezésre állás keresése
+## <a name="check-availability"></a>Elérhetőség ellenőrzése
 
-Az összes működésének ellenőrzéséhez tekintse meg a diagramot a Application Insights erőforrás rendelkezésre állás lapján.
+Győződjön meg arról, hogy minden működik, tekintse meg a grafikont az Application Insights-erőforrás Rendelkezésre álláslapján.
 
 > [!NOTE]
-> Ha a saját üzleti logikáját implementálta a runAvailabilityTest. CSX-ben, akkor a sikeres eredményeket fogja látni, például az alábbi képernyőképeken, ha nem, akkor a sikertelen találatok jelennek meg.
+> Ha végre a saját üzleti logika runAvailabilityTest.csx akkor látni fogja a sikeres eredményeket, mint a screenshotok alatt, ha nem, akkor látni fogja, sikertelen eredményeket.
 
 >[!div class="mx-imgBorder"]
->![rendelkezésre állás lap sikeres eredményekkel](media/availability-azure-functions/availtab.png)
+>![Rendelkezésre állás lap sikeres eredményekkel](media/availability-azure-functions/availtab.png)
 
-Ha a tesztet a Azure Functions használatával állítja be, akkor **a teszt nem** jelenik meg a rendelkezésre állás lapon, és nem fog tudni kommunikálni a tesztek nevével. Az eredmények vizualizációval jelennek meg, de a részletes nézet helyett a portálon keresztüli rendelkezésre állási teszt létrehozásakor is megjelenik egy összegző nézet.
+Amikor beállítja a tesztet az Azure Functions használatával, észre fogja venni, hogy ellentétben a **Teszt hozzáadása** a Rendelkezésre állás lapon, a teszt neve nem jelenik meg, és nem lesz képes együttműködni vele. Az eredmények láthatóvá válnak, de a portálon keresztül rendelkezésre állási teszt létrehozásakor a részletes nézet helyett egy összegző nézetet kap.
 
-A végpontok közötti tranzakció részleteinek megtekintéséhez válassza a **sikeres** vagy **sikertelen** művelet elemet a részletezés szakaszban, majd válasszon ki egy mintát. A végpontok közötti tranzakció részleteit úgy is elérheti, ha kijelöl egy adatpontot a diagramon.
-
->[!div class="mx-imgBorder"]
->![válasszon ki egy minta rendelkezésre állási tesztet](media/availability-azure-functions/sample.png)
+A végpontok között tranzakció részleteinek megtekintéséhez válassza **a Sikeres** vagy **sikertelen** lehetőséget a részletezés alatt, majd válasszon egy mintát. A végpontok között a tranzakció részleteit is megkaphatja, ha kiválaszt egy adatpontot a grafikonon.
 
 >[!div class="mx-imgBorder"]
->![végpontok közötti tranzakció részletei](media/availability-azure-functions/end-to-end.png)
-
-Ha mindent futtatott (üzleti logika hozzáadása nélkül), akkor a teszt sikertelen lesz.
-
-## <a name="query-in-logs-analytics"></a>Lekérdezés a naplókban (Analitika)
-
-A naplók (Analitika) használatával megtekintheti a rendelkezésre állási eredményeket, a függőségeket és egyebeket. A naplókról további információt a [log Query áttekintése című](../../azure-monitor/log-query/log-query-overview.md)témakörben találhat.
+>![Mintarendelkezésre állási teszt kiválasztása](media/availability-azure-functions/sample.png)
 
 >[!div class="mx-imgBorder"]
->![rendelkezésre állási eredmények](media/availability-azure-functions/availabilityresults.png)
+>![Végpontok között lebonyolított tranzakciók részletei](media/availability-azure-functions/end-to-end.png)
+
+Ha mindent úgy futtatott, ahogy van (üzleti logika hozzáadása nélkül), akkor látni fogja, hogy a teszt sikertelen volt.
+
+## <a name="query-in-logs-analytics"></a>Lekérdezés a naplókban (Analytics)
+
+A Naplók(elemzés) segítségével megtekintheti a rendelkezésre állási eredményeket, a függőségeket és egyebeket. Ha többet szeretne megtudni a Naplókról, látogasson el [a Lekérdezés áttekintése című témakörbe.](../../azure-monitor/log-query/log-query-overview.md)
+
+>[!div class="mx-imgBorder"]
+>![Elérhetőségi eredmények](media/availability-azure-functions/availabilityresults.png)
 
 >[!div class="mx-imgBorder"]
 >![Függőségek](media/availability-azure-functions/dependencies.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Alkalmazástérkép](../../azure-monitor/app/app-map.md)
-- [Tranzakció-diagnosztika](../../azure-monitor/app/transaction-diagnostics.md)
+- [Tranzakció diagnosztikája](../../azure-monitor/app/transaction-diagnostics.md)
