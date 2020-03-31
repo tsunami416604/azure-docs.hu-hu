@@ -4,7 +4,7 @@
   items:
     - name: Dedicated HSM – áttekintés
       href: overview.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: HSM-ek üzembe helyezése meglévő virtuális hálózaton a parancssori felülettel
       href: tutorial-deploy-hsm-cli.md
@@ -26,6 +26,8 @@
   items:
     - name: Az üzembehelyezési architektúra kiválasztása
       href: deployment-architecture.md
+    - name: Hibaelhárítás
+      href: troubleshoot.md
 - name: További források
   items:
     - name: Gyakori kérdések

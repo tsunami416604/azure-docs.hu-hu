@@ -1,130 +1,130 @@
 ---
 title: Ismerkedés az Azure Advisor szolgáltatással
-description: A Azure Advisor első lépései.
+description: Ismerkedés az Azure Advisorral.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259629"
 ---
 # <a name="get-started-with-azure-advisor"></a>Ismerkedés az Azure Advisor szolgáltatással
 
-Ismerje meg, hogyan érheti el az Advisorot a Azure Portalon keresztül, javaslatokat kaphat, és javaslatokat valósíthat meg.
+Megtudhatja, hogyan érheti el az Advisort az Azure Portalon keresztül, hogyan kaphat javaslatokat, és valósíthat meg javaslatokat.
 
 > [!NOTE]
-> Azure Advisor automatikusan fut a háttérben az újonnan létrehozott erőforrások megtalálásához. Akár 24 órát is igénybe vehet, hogy javaslatokat nyújtson ezekre az erőforrásokra vonatkozóan.
+> Az Azure Advisor automatikusan fut a háttérben az újonnan létrehozott erőforrások kereséséhez. Az erőforrásokkal kapcsolatos ajánlások akár 24 órába is beletelhet.
 
-## <a name="get-recommendations"></a>Javaslatok kérése
+## <a name="get-recommendations"></a>Javaslatok beszerezni
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-1. A bal oldali ablaktáblán kattintson az **Advisor**elemre.  Ha nem látja az Advisort a bal oldali ablaktáblán, kattintson a **minden szolgáltatás**elemre.  Kattintson a szolgáltatás menü **felügyelet és kezelés**területén található **Advisor**elemre. Megjelenik az Advisor irányítópultja.
+1. A bal oldali ablaktáblában kattintson a **Tanácsadó gombra.**  Ha a tanácsadó nem látható a bal oldali ablaktáblában, kattintson a **Minden szolgáltatás gombra.**  A szolgáltatás menüablaktáblájának **Figyelés és kezelés**területén kattintson a **Tanácsadó gombra.** Megjelenik az Advisor irányítópultja.
 
-   ![Hozzáférés Azure Advisor a Azure Portal használatával](./media/advisor-get-started/advisor-portal-menu.png) 
+   ![Access Azure Advisor az Azure Portalhasználatával](./media/advisor-get-started/advisor-portal-menu.png) 
 
 1. Az Advisor irányítópultja a javaslatok összefoglalását jeleníti meg az összes kiválasztott előfizetésre vonatkozóan.  Az előfizetési szűrő legördülő menüje segítségével kiválaszthatja azokat az előfizetéseket, amelyekhez javaslatokat kíván megjeleníteni.
 
-1. Egy adott kategóriához tartozó javaslatok beszerzéséhez kattintson az egyik lapra: **magas rendelkezésre állás**, **Biztonság**, **teljesítmény**vagy **Cost**. 
+1. Egy adott kategóriára vonatkozó javaslatok lekérni, kattintson az egyik fülre: **Magas rendelkezésre állás,** **Biztonság,** **Teljesítmény**vagy **Költség**. 
 
-   ![Azure Advisor irányítópult](./media/advisor-overview/advisor-dashboard.png)
+   ![Az Azure Advisor irányítópultja](./media/advisor-overview/advisor-dashboard.png)
 
-## <a name="get-recommendation-details-and-implement-a-solution"></a>Javaslat részleteinek beszerzése és megoldás implementálása
+## <a name="get-recommendation-details-and-implement-a-solution"></a>Az ajánlás részleteinek beszereznie és megvalósítania egy megoldást
 
-Kiválaszthat egy javaslatot az Advisorban, ahol további részleteket tekinthet meg – például a javasolt műveleteket és az érintett erőforrásokat –, valamint a megoldás megvalósítását a javaslathoz.  
+Az Advisorban kiválaszthat egy ajánlást további részletek megtekintéséhez – például az ajánlási műveletekhez és az érintett erőforrásokhoz –, és megvalósíthatja a javaslat megoldását.  
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd nyissa meg az [Advisor alkalmazást](https://aka.ms/azureadvisordashboard).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), majd nyissa meg [az Advisor](https://aka.ms/azureadvisordashboard)t.
 
-1. Válasszon egy javaslatot a kategórián belüli javaslatok listájának megjelenítéséhez, vagy válassza az **összes** fület az összes javaslat megtekintéséhez.
+1. Válasszon egy javaslatkategóriát az adott kategórián belüli javaslatok listájának megjelenítéséhez, vagy kattintson a **Mind** fülre az összes javaslat megtekintéséhez.
 
-1. Kattintson arra a javaslatra, amelyet részletesen szeretne áttekinteni.
+1. Kattintson egy részletesen áttekinteni kívánt javaslatra.
 
-1. Tekintse át a javaslatra vonatkozó információkat és azokat az erőforrásokat, amelyekre a javaslat vonatkozik.
+1. Tekintse át a javaslatra vonatkozó információkat és azerőforrásokat, amelyekre a javaslat vonatkozik.
 
-1. A javaslat megvalósításához kattintson a **javasolt műveletre** .
+1. Kattintson az **ajánlott műveletre** a javaslat végrehajtásához.
 
-## <a name="filter-recommendations"></a>Javaslatok szűrése
+## <a name="filter-recommendations"></a>Szűrési javaslatok
 
-A javaslatok szűrésével a legfontosabb dolgokra szűkítheti a részletezést.  Az előfizetés, az erőforrástípus vagy a javaslat állapota alapján szűrhet.  
+A javaslatok szűrése a legfontosabb az Ön számára legfontosabb.  Szűrhet előfizetés, erőforrástípus vagy javaslat állapota szerint.  
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd nyissa meg az [Advisor alkalmazást](https://aka.ms/azureadvisordashboard).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), majd nyissa meg [az Advisor](https://aka.ms/azureadvisordashboard)t.
 
-1. Használja az Advisor irányítópult legördülő menüit az előfizetés, az erőforrástípus vagy a javaslat állapota alapján történő szűréshez.
+1. Az Advisor irányítópultján található legördülő menük segítségével előfizetés, erőforrástípus vagy ajánlási állapot szerint szűrhet.
 
-    ![Advisor Search – szűrési feltételek](./media/advisor-get-started/advisor-filters.png)
+    ![Tanácsadó keresési szűrőjének feltételei](./media/advisor-get-started/advisor-filters.png)
 
-## <a name="postpone-or-dismiss-recommendations"></a>Javaslatok elhalasztása vagy elvetése
+## <a name="postpone-or-dismiss-recommendations"></a>Ajánlások elhalasztása vagy elvetése
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd nyissa meg az [Advisor alkalmazást](https://aka.ms/azureadvisordashboard).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), majd nyissa meg [az Advisor](https://aka.ms/azureadvisordashboard)t.
 
-1. Navigáljon az elhalasztani vagy elvetni kívánt javaslathoz.
+1. Keresse meg az elhalasztani vagy elutasítani kívánt javaslatot.
 
 1. Kattintson a javaslatra.
 
-1. Kattintson az **elhalasztás**gombra. 
+1. Kattintson **a Halasztás gombra.** 
 
-1. Adja meg az elhalasztási időszakot, vagy válassza a **soha** lehetőséget a javaslat bezárásához.
+1. Adjon meg egy elhalasztási időszakot, vagy válassza a **Soha** lehetőséget a javaslat elvetéséhez.
 
 ## <a name="exclude-subscriptions-or-resource-groups"></a>Előfizetések vagy erőforráscsoportok kizárása
 
-Lehetnek olyan erőforráscsoportok vagy előfizetések, amelyekhez nem kíván tanácsadói javaslatokat kapni – például "teszt" erőforrásokra.  Az Advisort úgy is beállíthatja, hogy csak bizonyos előfizetésekhez és erőforráscsoportokhöz készítsen javaslatokat.
+Előfordulhat, hogy olyan erőforráscsoportokat vagy előfizetéseket szeretne kapni, amelyekre nem szeretne Tanácsadói javaslatokat kapni – például "teszt" erőforrásokat.  Az Advisor konfigurálható úgy, hogy csak adott előfizetésekhez és erőforráscsoportokhoz hozzon létre javaslatokat.
 
 > [!NOTE]
-> Előfizetés vagy erőforráscsoport az Advisorból való felvételéhez vagy kizárásához előfizetés-tulajdonosnak kell lennie.  Ha nem rendelkezik az előfizetéshez vagy az erőforráscsoporthoz szükséges engedélyekkel, a felhasználói felületen le kell tiltania vagy kizárhatja a beállítást.
+> Ahhoz, hogy egy előfizetést vagy erőforráscsoportot kizárjon az Advisorból, előfizetéstulajdonosnak kell lennie.  Ha nem rendelkezik az előfizetéshez vagy erőforráscsoporthoz szükséges engedélyekkel, a felhasználói felületen le van tiltva a felvétel vagy kizárás lehetősége.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd nyissa meg az [Advisor alkalmazást](https://aka.ms/azureadvisordashboard).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), majd nyissa meg [az Advisor](https://aka.ms/azureadvisordashboard)t.
 
-1. Kattintson a **Konfigurálás** elemre a művelet sávon.
+1. Kattintson a **műveletsáv Konfigurálás** gombjára.
 
-1. Törölje az összes olyan előfizetést vagy erőforráscsoportot, amelyről nem kíván tanácsadói javaslatokat kapni.
+1. Törölje a jelet azon előfizetések vagy erőforráscsoportok jelölőnégyzetéből, amelyekhez nem szeretne Tanácsadói javaslatokat kapni.
 
-    ![Advisor-erőforrások konfigurálása – példa](./media/advisor-get-started/advisor-configure-resources.png)
+    ![Tanácsadó konfigurálja az erőforrásokat példa](./media/advisor-get-started/advisor-configure-resources.png)
 
 1. Kattintson az **Alkalmaz** gombra.
 
-## <a name="configure-low-usage-vm-recommendation"></a>Alacsony használati virtuálisgép-javaslat konfigurálása
+## <a name="configure-low-usage-vm-recommendation"></a>Alacsony használatú virtuálisgép-ajánlás konfigurálása
 
-Ezzel az eljárással konfigurálhatja az alacsony kihasználtságú virtuális gépekre vonatkozó ajánlás átlagos CPU-kihasználtsági szabályát.
+Ez az eljárás az alacsony használatú virtuálisgép-ajánlás átlagos CPU-kihasználtsági szabályát konfigurálja.
 
-Az Advisor 7 napig figyeli a virtuális gépek használatát, majd azonosítja az alacsony kihasználtságú virtuális gépeket. A virtuális gépek alacsony kihasználtságnak számítanak, ha a processzor kihasználtsága 5% vagy kevesebb, és a hálózati kihasználtsága kevesebb, mint 2%, vagy ha a jelenlegi számítási feladatot kisebb virtuálisgép-mérettel lehet elfogadni.
+Az Advisor 7 napig figyeli a virtuális gép használatát, majd azonosítja az alacsony kihasználtságú virtuális gépeket. A virtuális gépek akkor minősülnek alacsony kihasználtságúnak, ha a processzorkihasználtságuk 5%, és a hálózati kihasználtságuk kevesebb, mint 2%, vagy ha az aktuális munkaterhelés kisebb virtuálisgép-mérettel is elhelyezhető.
 
-Ha szeretné, hogy az alacsony kihasználtságú virtuális gépek azonosítása agresszívebb legyen, az átlagos CPU-kihasználtsági szabályt előfizetési alapon állíthatja be.  A CPU-kihasználtsági szabály 5%-ra, 10%-ra, 15%-ra vagy 20%-ra állítható be.
+Ha agresszívebb szeretne lenni az alacsony használatú virtuális gépek azonosításában, előfizetésenként módosíthatja az átlagos CPU-kihasználtsági szabályt.  A PROCESSZOR-kihasználtsági szabály 5%, 10%, 15% vagy 20%.
 
 > [!NOTE]
-> Az alacsony kihasználtságú virtuális gépek azonosítására szolgáló átlagos CPU-kihasználtsági szabály módosításához előfizetés- *tulajdonosnak*kell lennie.  Ha nem rendelkezik az előfizetéshez vagy az erőforráscsoporthoz szükséges engedélyekkel, a felhasználói felületen le kell tiltania vagy kizárhatja a beállítást. 
+> Az alacsony használatú virtuális gépek azonosítására szolgáló átlagos CPU-kihasználtsági szabály módosításához *előfizetés-tulajdonosnak*kell lennie.  Ha nem rendelkezik az előfizetéshez vagy erőforráscsoporthoz szükséges engedélyekkel, a felhasználói felületen letiltja a felvétel vagy kizárás lehetőségét. 
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd nyissa meg az [Advisor alkalmazást](https://aka.ms/azureadvisordashboard).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), majd nyissa meg [az Advisor](https://aka.ms/azureadvisordashboard)t.
 
-1. Kattintson a **Konfigurálás** elemre a művelet sávon.
+1. Kattintson a **műveletsáv Konfigurálás** gombjára.
 
-1. Kattintson a **szabályok** fülre.
+1. Kattintson a **Szabályok** fülre.
 
-1. Válassza ki azokat az előfizetéseket, amelyekre módosítani szeretné az átlagos CPU-kihasználtsági szabályt, majd kattintson a **Szerkesztés**gombra.
+1. Válassza ki azokat az előfizetéseket, amelyeknél módosítani szeretné az átlagos CPU-kihasználtsági szabályt, majd kattintson a **Szerkesztés gombra.**
 
-1. Válassza ki a kívánt átlagos CPU-kihasználtsági értéket, majd kattintson az **alkalmaz**gombra.
+1. Válassza ki a kívánt átlagos CPU-kihasználtsági értéket, és kattintson **az Alkalmaz gombra.**
 
-1. Az új átlagos CPU-kihasználtsági szabály használatához kattintson a **javaslatok frissítése** lehetőségre a meglévő javaslatok frissítéséhez. 
+1. Kattintson **a Javaslatok frissítése** gombra az új átlagos CPU-kihasználtsági szabály használatához a meglévő javaslatok frissítéséhez. 
 
-   ![Tanácsadói javaslatok konfigurálása – példa](./media/advisor-get-started/advisor-configure-rules.png)
+   ![Az Advisor konfigurálja a javaslati szabályokat példa](./media/advisor-get-started/advisor-configure-rules.png)
 
 ## <a name="download-recommendations"></a>Javaslatok letöltése
 
-Az Advisor lehetővé teszi a javaslatok összefoglalásának letöltését.  Az ajánlásokat PDF-fájlként vagy CSV-fájlként töltheti le.  A javaslatok letöltésével könnyedén megoszthatja munkatársaival, vagy elvégezheti a saját elemzését az ajánlási adatok felett.
+Az Advisor lehetővé teszi a javaslatok összegzésének letöltését.  A javaslatokat PDF-fájlként vagy CSV-fájlként töltheti le.  A javaslatok letöltésével könnyedén megoszthatja munkatársaival, vagy elvégezheti saját elemzését a javaslati adatokon felül.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd nyissa meg az [Advisor alkalmazást](https://aka.ms/azureadvisordashboard).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), majd nyissa meg [az Advisor](https://aka.ms/azureadvisordashboard)t.
 
-1. Kattintson a **Letöltés CSV** **formátumban vagy Letöltés PDF** -ként lehetőségre a műveleti sávon.
+1. Kattintson a **Letöltés CSV-ként** vagy a **Letöltés PDF formátumban** elemre a műveletsávon.
 
-A letöltési lehetőség tiszteletben tartja az Advisor irányítópultra alkalmazott szűrőket.  Ha a letöltés lehetőséget választja egy adott javaslat kategóriájának vagy javaslatának megtekintésekor, a letöltött összefoglalás csak az adott kategória vagy javaslat információit tartalmazza. 
+A letöltési lehetőség tiszteletben tartja az Advisor irányítópultjára alkalmazott szűrőket.  Ha egy adott javaslatkategória vagy javaslat megtekintésekor választja a letöltési lehetőséget, a letöltött összefoglaló csak az adott kategóriára vagy javaslatra vonatkozó információkat tartalmazza. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az Advisor szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következőt:
+Ha többet szeretne megtudni az Advisorról, olvassa el az:
 
-- [Bevezetés a Azure Advisorba](advisor-overview.md)
-- [Advisor – magas rendelkezésre állási javaslatok](advisor-high-availability-recommendations.md)
-- [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
-- [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
-- [Advisor – Cost-javaslatok](advisor-performance-recommendations.md)
+- [Bevezetés az Azure Advisorba](advisor-overview.md)
+- [Tanácsadó magas rendelkezésre állásra vonatkozó ajánlásai](advisor-high-availability-recommendations.md)
+- [Tanácsadó biztonsági ajánlásai](advisor-security-recommendations.md)
+- [Tanácsadó teljesítményre vonatkozó ajánlásai](advisor-performance-recommendations.md)
+- [Tanácsadói költségajánlások](advisor-performance-recommendations.md)

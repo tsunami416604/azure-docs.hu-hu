@@ -10,9 +10,31 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Sablonok létrehozása – VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
+    - name: Azure-szolgáltatások
+      items:
+        - name: AKS
+          href: ../../aks/kubernetes-walkthrough-rm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Backup
+          href: ../../backup/quick-backup-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Cosmos DB
+          href: ../../cosmos-db/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Event Grid
+          href: ../../event-grid/blob-event-quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Eseményközpont
+          href: ../../event-hubs/event-hubs-resource-manager-namespace-event-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Key Vault
+          href: ../../key-vault/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Load Balancer
+          href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Szabályzat
+          href: ../../governance/policy/assign-policy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Service Bus-üzenetkezelés
+          href: ../../service-bus-messaging/service-bus-resource-manager-namespace-queue.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: SQL Database
+          href: ../../sql-database/sql-database-single-database-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: Oktatóanyagok
   items:
-    - name: Kezdő
+    - name: Sablonok kezdők számára
       items:
         - name: 1 – Az első sablon létrehozása
           href: template-tutorial-create-first-template.md
@@ -34,6 +56,15 @@
           href: template-tutorial-add-tags.md
         - name: 10 – Paraméterfájl használata
           href: template-tutorial-use-parameter-file.md
+    - name: Környezet
+      items:
+        - name: 1 – Helyi sablon üzembe helyezése
+          href: deployment-tutorial-local-template.md
+        - name: 2 – Hivatkozott sablon üzembe helyezése
+          href: deployment-tutorial-linked-template.md
+        - name: 3 – Folyamat létrehozása
+          displayName: Devop
+          href: deployment-tutorial-pipeline.md
     - name: Speciális
       items:
         - name: A sablonreferencia felhasználása
@@ -61,9 +92,6 @@
           href: template-tutorial-deploy-sql-extensions-bacpac.md
         - name: Biztonságos összetevők
           href: template-tutorial-secure-artifacts.md
-        - name: Folyamatos integráció az Azure Pipelinesszal
-          displayName: DevOps
-          href: template-tutorial-use-azure-pipelines.md
         - name: Biztonságos üzembehelyezési gyakorlatok
           displayName: adm
           href: deployment-manager-tutorial.md
@@ -214,7 +242,7 @@
         - name: InvalidTemplate
           href: error-invalid-template.md
         - name: Üzembehelyezési problémák Linux rendszerben
-          href: ../../virtual-machines/linux/troubleshoot-deploy-vm.md
+          href: ../../virtual-machines/troubleshooting/troubleshoot-deploy-vm-linux.md
         - name: NoRegisteredProviderFound
           href: error-register-resource-provider.md
         - name: NotFound
@@ -222,9 +250,9 @@
         - name: ParentResourceNotFound
           href: error-parent-resource.md
         - name: Kiépítéssel és foglalással kapcsolatos problémák Linux rendszerben
-          href: ../../virtual-machines/linux/troubleshoot-deployment-new-vm.md
+          href: ../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md
         - name: Kiépítéssel és foglalással kapcsolatos problémák Windows rendszerben
-          href: ../../virtual-machines/windows/troubleshoot-deployment-new-vm.md
+          href: ../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md
         - name: RequestDisallowedByPolicy
           href: error-policy-requestdisallowedbypolicy.md
         - name: ReservedResourceName
@@ -234,7 +262,7 @@
         - name: SkuNotAvailable
           href: error-sku-not-available.md
         - name: Üzembehelyezési problémák Windows rendszerben
-          href: ../../virtual-machines/windows/troubleshoot-deploy-vm.md
+          href: ../../virtual-machines/troubleshooting/troubleshoot-deploy-vm-windows.md
 - name: Referencia
   items:
     - name: Sablonreferencia

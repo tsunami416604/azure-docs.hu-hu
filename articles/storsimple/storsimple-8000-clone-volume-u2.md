@@ -1,6 +1,6 @@
 ---
-title: Kötet klónozása a StorSimple 8000 sorozaton | Microsoft Docs
-description: Ismerteti a klónok különböző típusait és használatát, valamint ismerteti, hogyan használhat egy biztonságimásolat-készletet egy StorSimple 8000 Series-eszközön lévő egyes kötetek klónozásához.
+title: Klónozzon egy kötetet a StorSimple 8000 sorozaton | Microsoft dokumentumok
+description: Ismerteti a különböző klóntípusok és a használat, és bemutatja, hogyan lehet egy biztonsági másolat készlet klónegy adott kötet egy StorSimple 8000 sorozatú eszköz.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,109 +15,109 @@ ms.workload: TBD
 ms.date: 12/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 84734aefb72a3330d99c5707b461de2cd5e30484
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255001"
 ---
-# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>A kötet klónozásához használja a Azure Portal StorSimple Eszközkezelő szolgáltatását.
+# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Kötet klónozása az Azure Portal StorSimple-eszközkezelő szolgáltatásával
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az oktatóanyag leírja, hogyan használhat egy biztonságimásolat-készletet egy adott kötet klónozásához a **biztonsági mentési katalógus** paneljén keresztül. Emellett az *átmeneti* és az *állandó* klónok közötti különbséget is ismerteti. Az oktatóanyagban szereplő útmutatás a 3. vagy újabb verziót futtató összes StorSimple 8000 Series-eszközre vonatkozik.
+Ez az oktatóanyag bemutatja, hogyan használhatja a biztonsági másolat készletklónozására egy adott kötetet a **Biztonsági másolat katalógus** panelen keresztül. Ez megmagyarázza az *átmeneti* és *az állandó* klónok közötti különbséget is. Az oktatóanyagban szereplő útmutató a 3.
 
-A StorSimple Eszközkezelő szolgáltatás **biztonságimásolat-katalógusa** panel megjeleníti a manuális vagy automatikus biztonsági mentések során létrehozott összes biztonságimásolat-készletet. Ezt követően kiválaszthat egy kötetet a klónozott biztonságimásolat-készletben.
+A StorSimple Eszközkezelő szolgáltatás **Biztonsági másolat katalógus** panel megjeleníti az összes biztonsági mentési készletek, amelyek a manuális vagy automatikus biztonsági mentések készítésekor jönnek létre. Ezután kiválaszthatja a klónozni kívánt biztonságimásolat-készletben a kötetet.
 
- ![Biztonságimásolat-készlet listája](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+ ![Biztonságimásolat-készlet lista](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
 
-## <a name="considerations-for-cloning-a-volume"></a>A kötetek klónozásával kapcsolatos megfontolások
+## <a name="considerations-for-cloning-a-volume"></a>A kötet klónozásának szempontjai
 
-A kötetek klónozásakor vegye figyelembe a következő információkat:
+A kötet klónozásasorán vegye figyelembe az alábbi információkat.
 
-- A klónok ugyanúgy viselkednek, mint a normál kötetek. A klónozáshoz minden lehetséges művelet elérhető.
+- A klón ugyanúgy viselkedik, mint a normál kötet. Minden olyan művelet, amely egy köteten lehetséges, elérhető a klónszámára.
 
-- A figyelés és az alapértelmezett biztonsági mentés automatikusan le van tiltva a klónozott köteteken. Minden biztonsági mentéshez konfigurálnia kell egy klónozott kötetet.
+- A figyelés és az alapértelmezett biztonsági mentés automatikusan le van tiltva egy klónozott köteten. A biztonsági mentések esetében konfigurálnia kell egy klónozott kötetet.
 
-- Egy helyileg rögzített kötet klónozott kötetként van klónozott. Ha a klónozott kötetnek helyileg rögzítettnek kell lennie, a klónozást egy helyileg rögzített kötetre konvertálhatja a klónozási művelet sikeres befejeződése után. A többkötetes kötetek helyileg rögzített kötetre való konvertálásával kapcsolatos információkért lépjen [a kötet típusának módosítása](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)elemre.
+- A helyileg rögzített kötetek rétegzett kötetként klónozva vannak. Ha a klónozott kötet helyi legrögzítettet szeretne, a klónozást helyileg rögzített kötetté alakíthatja a klónozássikeres befejezése után. A rétegzett kötetek helyileg rögzített kötetté alakításáról [a Kötettípus módosítása](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)című részről tudhatja meg.
 
-- Ha a klónozott kötetet a klónozást követően közvetlenül a klónozás után (ha még mindig átmeneti klón) próbálják alakítani, a konverzió a következő hibaüzenettel meghiúsul:
+- Ha egy klónozott kötetet közvetlenül a klónozás után (ha még átmeneti klónként) helyileg rögzítettkötetté próbál konvertálni, az átalakítás a következő hibaüzenettel sikertelen:
 
     `Unable to modify the usage type for volume {0}. This can happen if the volume being modified is a transient clone and hasn’t been made permanent. Take a cloud snapshot of this volume and then retry the modify operation.`
 
-    A rendszer csak akkor fogadja ezt a hibát, ha egy másik eszközre klónozást végez. A kötetet sikeresen átalakíthatja helyileg rögzítettre, ha először konvertálja az átmeneti klónt egy állandó klónba. Készítsen egy Felhőbeli pillanatképet az átmeneti klónról, és alakítsa át állandó klónozásra.
+    Ez a hiba csak akkor jelenik meg, ha egy másik eszközre klónoz. Sikeresen konvertálhatja a kötetet helyileg rögzítettre, ha először konvertálja az átmeneti klónt állandó klónlá. Az átmeneti klón felhőbeli pillanatképe állandó klónlá alakításához.
 
-## <a name="create-a-clone-of-a-volume"></a>Kötet klónozásának létrehozása
+## <a name="create-a-clone-of-a-volume"></a>Kötet klónjának létrehozása
 
-Létrehozhat egy klónt ugyanazon az eszközön, egy másik eszközön, vagy akár egy felhőalapú készüléken is egy helyi vagy Felhőbeli pillanatkép használatával.
+Létrehozhat egy klónt ugyanazon az eszközön, egy másik eszközön, vagy akár egy felhőalapú készüléket egy helyi vagy felhőbeli pillanatkép használatával.
 
-Az alábbi eljárás azt ismerteti, hogyan hozhat létre egy klónt a biztonsági mentési katalógusból.  Egy másik módszer a klónozás elindítására, ha a **kötetek**elemre kattint, kijelöl egy kötetet, majd a jobb gombbal rákattint a helyi menü meghívására és a **klónozás**elemre.
+Az alábbi eljárás bemutatja, hogyan hozhat létre klónt a biztonsági másolat katalógusából.  A klónozás kezdeményezésének másik módja a **Kötetek**, válasszon ki egy kötetet, majd kattintson a jobb gombbal a helyi menü meghívásához, és válassza a **Klónozás parancsot.**
 
-A következő lépések végrehajtásával hozza létre a kötet klónját a biztonsági mentési katalógusból.
+Hajtsa végre az alábbi lépéseket a kötet klónozásához a biztonsági másolat katalógusából.
 
 #### <a name="to-clone-a-volume"></a>Kötet klónozása
 
-1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, majd kattintson a **biztonsági mentési katalógus**lehetőségre.
+1. Nyissa meg a StorSimple Eszközkezelő szolgáltatást, és kattintson **a Katalógus biztonsági másolata**gombra.
 
-2. Válasszon egy biztonságimásolat-készletet a következők szerint:
+2. Válasszon ki egy biztonságimentési készletet az alábbiak szerint:
    
    1. Válassza ki a megfelelő eszközt.
-   2. A legördülő listában válassza ki a kijelölni kívánt biztonsági másolathoz tartozó kötetet vagy biztonsági mentési szabályzatot.
-   3. Határozza meg az időtartományt.
-   4. A lekérdezés végrehajtásához kattintson az **alkalmaz** gombra.
+   2. A legördülő listában válassza ki a kijelölni kívánt biztonsági másolat kötet- vagy biztonsági mentési házirendet.
+   3. Adja meg az időtartományt.
+   4. A lekérdezés végrehajtásához kattintson az **Alkalmaz** gombra.
 
-      A kiválasztott kötethez vagy biztonsági mentési szabályzathoz társított biztonsági másolatoknak szerepelniük kell a biztonságimásolat-készletek listájában.
+      A kijelölt kötethez vagy biztonsági mentési házirendhez társított biztonsági másolatnak meg kell jelennie a biztonságimásolat-készletek listájában.
    
-      ![Biztonságimásolat-készlet listája](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+      ![Biztonságimásolat-készlet lista](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
-3. Bontsa ki a biztonságimásolat-készletet, hogy megtekintse a társított kötetet, és válasszon egy kötetet egy biztonságimásolat-készletben. Kattintson a jobb gombbal, majd a helyi menüben válassza a **klónozás**lehetőséget.
+3. Bontsa ki a biztonságimásolat-készletet a társított kötet megtekintéséhez és egy biztonságimásolat-készletben lévő kötet kiválasztásához. Kattintson a jobb gombbal, majd a helyi menüben válassza a **Klónozás parancsot.**
 
-   ![Biztonságimásolat-készlet listája](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
+   ![Biztonságimásolat-készlet lista](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 
-3. A **klónozás** panelen hajtsa végre a következő lépéseket:
+3. A **Klónozás** panelen tegye a következő lépéseket:
    
-   1. Jelölje ki a kívánt eszközt. Ez az a hely, ahol a klón létre lesz hozva. Kiválaszthatja ugyanazt az eszközt, vagy megadhat egy másik eszközt is.
+   1. Azonosítsa a céleszközt. Ez az a hely, ahol a klón létrejön. Kiválaszthatja ugyanazt az eszközt, vagy megadhat egy másik eszközt.
 
       > [!NOTE]
-      > Győződjön meg arról, hogy a klónozáshoz szükséges kapacitás alacsonyabb, mint a megcélzott eszközön rendelkezésre álló kapacitás.
+      > Győződjön meg arról, hogy a klónhoz szükséges kapacitás alacsonyabb, mint a céleszközön rendelkezésre álló kapacitás.
        
-   2. Adja meg a klón egyedi kötetének nevét. A névnek 3 és 127 karakter közöttinek kell lennie.
+   2. Adja meg a klón egyedi kötetnevét. A névnek 3 és 127 karakter közötti nek kell lennie.
       
        > [!NOTE]
-       > A **klónozott kötet as** mezője akkor is fel lesz **bontva** , ha egy helyileg rögzített kötetet klónozást végez. Ez a beállítás nem módosítható; Ha azonban szükség van a klónozott kötet helyi rögzítésére is, akkor a klón sikeres létrehozása után konvertálhatja a klónozást egy helyileg rögzített kötetre. A többkötetes kötetek helyileg rögzített kötetre való konvertálásával kapcsolatos információkért lépjen [a kötet típusának módosítása](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)elemre.
+       > A **Klónozási kötet mint** mező **rétegzett** lesz, még akkor is, ha helyileg rögzített kötetet klónoz. Ez a beállítás nem módosítható; ha azonban a klónozott kötetet is helyileg rögzíteni szeretné, a klónt helyileg rögzített kötetté alakíthatja, miután sikeresen létrehozta a klónt. A rétegzett kötetek helyileg rögzített kötetté alakításáról [a Kötettípus módosítása](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)című részről tudhatja meg.
           
-   3. A **csatlakoztatott gazdagépek**területen határozzon meg egy hozzáférés-vezérlési REKORDOT (ACR) a klónozáshoz. Hozzáadhat egy új ACR-t, vagy választhat a meglévő listából is. Az ACR meghatározza, hogy mely gazdagépek férhetnek hozzá ehhez a klónhoz.
+   3. A **Csatlakoztatott állomások csoportban**adja meg a klón hozzáférés-vezérlési rekordját (ACR). Hozzáadhat egy új ACR-t, vagy választhat a meglévő listából. Az ACR határozza meg, hogy mely állomások férhetnek hozzá ehhez a klónhoz.
       
-       ![Biztonságimásolat-készlet listája](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
+       ![Biztonságimásolat-készlet lista](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
-   4. A művelet befejezéséhez kattintson a **klónozás** gombra.
+   4. A művelet végrehajtásához kattintson a **Klónozás** gombra.
 
-4. A klónozott feladatok elindulnak, és értesítést kap, amikor a klón sikeresen létrejött. A klónozási feladat figyeléséhez kattintson a feladat értesítése vagy a **feladatok** panelre.
+4. A klónozási feladat elindul, és a klón sikeres létrehozásáról értesítést kap. Kattintson a feladat értesítési vagy lépjen a **feladatok** panela klónfeladat figyeléséhez.
 
-    ![Biztonságimásolat-készlet listája](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
+    ![Biztonságimásolat-készlet lista](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
 
-7. A klónozási feladatok befejezése után lépjen az eszközre, majd kattintson a **kötetek**elemre. A kötetek listájában látnia kell a klónozást, amelyet az imént hozott létre ugyanabban a kötet-tárolóban, amelyben a forrás kötet található.
+7. A klónozási feladat befejezése után nyissa meg a készüléket, és kattintson **a Kötetek gombra.** A kötetek listájában látnia kell a klón, amely csak létre ugyanabban a kötettárolóban, amely rendelkezik a forráskötettel.
 
-    ![Biztonságimásolat-készlet listája](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
+    ![Biztonságimásolat-készlet lista](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
 
-Az így létrehozott klón egy átmeneti klón. További információ a klónozási típusokról: [átmeneti és állandó klónok](#transient-vs-permanent-clones).
+Egy klón, ami így jön létre, egy átmeneti klón. A klóntípusokról további információt az [Átmeneti és állandó klónok](#transient-vs-permanent-clones)című témakörben talál.
 
 
 ## <a name="transient-vs-permanent-clones"></a>Átmeneti és állandó klónok
-Az átmeneti klónok csak akkor jönnek létre, amikor egy másik eszközre klónozást végez. A biztonságimásolat-készletből egy adott kötetet egy másik, a StorSimple Eszközkezelő által felügyelt eszközre is klónozott. Az átmeneti klón az eredeti köteten lévő adatokra hivatkozik, és ezeket az adatokkal helyileg olvashatja és írhatja a céleszköz.
+Az átmeneti klónok csak akkor jönnek létre, ha egy másik eszközre klónoz. Egy adott kötet klónozható egy biztonsági mentési készlet egy másik eszköz a StorSimple Eszközkezelő által felügyelt. Az átmeneti klón az eredeti kötetben lévő adatokra hivatkozik, és ezeket az adatokat használja a céleszköz helyi olvasásához és írásához.
 
-Miután elvégezte a Felhőbeli pillanatképet egy átmeneti klónról, az eredményül kapott klón egy *állandó* klón. A folyamat során a rendszer létrehozza az adatmásolatot a felhőben, és az Adatmásolás idejét az adatmennyiség és az Azure-késés (ez egy Azure – Azure-példány) alapján határozza meg. Ez a folyamat több napot is igénybe vehet. Az átmeneti klón állandó klón lesz, és nem rendelkezik az eredeti kötet azon adatainak hivatkozásával, amelyekről klónozott volt.
+Miután egy átmeneti klón felhőbeli pillanatképét készített, az eredményül kapott klón *állandó* klón. A folyamat során az adatok egy példányát a felhőben jön létre, és az adatok másolásának idejét az adatok mérete és az Azure-késések (ez egy Azure-azure-beli másolat). Ez a folyamat napokig vagy hetekig is eltarthat. Az átmeneti klón állandó klónná válik, és nem hivatkozik az eredeti kötetadatokra, amelyekből klónozták.
 
 ## <a name="scenarios-for-transient-and-permanent-clones"></a>Átmeneti és állandó klónok forgatókönyvei
-Az alábbi szakaszok olyan példákat ismertetnek, amelyekben átmeneti és állandó klónozást lehet használni.
+A következő szakaszok olyan példahelyzeteket írnak le, amelyekben átmeneti és állandó klónok használhatók.
 
-### <a name="item-level-recovery-with-a-transient-clone"></a>Elemszintű helyreállítás átmeneti klónozással
-Egy egyéves Microsoft PowerPoint-bemutató fájlt kell helyreállítani. A rendszergazda azonosítja az adott időpontra vonatkozó biztonsági mentést, majd szűri a kötetet. A rendszergazda ezután klónozott a kötetet, megkeresi a keresett fájlt, és megadja Önnek. Ebben a forgatókönyvben egy átmeneti klónt használunk.
+### <a name="item-level-recovery-with-a-transient-clone"></a>Elemszintű helyreállítás átmeneti klónnal
+Vissza kell állítania egy egyéves Microsoft PowerPoint-bemutatófájlt. A rendszergazda azonosítja az adott biztonsági mentést attól az időponttól kezdve, majd szűri a kötetet. A rendszergazda ezután klónozza a kötetet, megkeresi a keresett fájlt, és megadja azt. Ebben a forgatókönyvben egy átmeneti klón t használ.
 
-### <a name="testing-in-the-production-environment-with-a-permanent-clone"></a>Éles környezetben végzett tesztelés állandó klónozással
-Ellenőrizze, hogy van-e tesztelési hiba az éles környezetben. Létre kell hoznia egy klónt a kötetről az éles környezetben, majd el kell készítenie egy Felhőbeli pillanatképet a klónról egy független klónozott kötet létrehozásához. Ebben az esetben állandó klónozást használunk.
+### <a name="testing-in-the-production-environment-with-a-permanent-clone"></a>Tesztelés az éles környezetben állandó klónnal
+Meg kell erősítenie a tesztelési hibát az éles környezetben. Hozzon létre egy klón a kötet az éles környezetben, majd egy felhőbeli pillanatképet a klón egy független klónozott kötet létrehozásához. Ebben a forgatókönyvben egy állandó klón használatos.
 
-## <a name="next-steps"></a>Következő lépések
-* Megtudhatja, hogyan [állíthatja vissza a StorSimple kötetét egy biztonságimásolat-készletből](storsimple-8000-restore-from-backup-set-u2.md).
-* Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).
+## <a name="next-steps"></a>További lépések
+* További információ a [StorSimple kötet biztonsági másolatból történő visszaállításáról.](storsimple-8000-restore-from-backup-set-u2.md)
+* Ismerje meg, hogyan [használhatja a StorSimple Eszközkezelő szolgáltatást a StorSimple-eszköz felügyeletére.](storsimple-8000-manager-service-administration.md)
 

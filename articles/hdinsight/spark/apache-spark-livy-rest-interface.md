@@ -1,6 +1,6 @@
 ---
-title: Feladatok beküldése a Spark-fürtbe az Azure HDInsight Livy Spark használatával
-description: Ismerje meg, hogyan küldhet el a Spark-feladatokat a Apache Spark REST API használatával egy Azure HDInsight-fürtön.
+title: A Livy Spark használatával feladatokat küldhet a Spark-fürtnek az Azure HDInsightban
+description: Ismerje meg, hogyan küldhet idáig az Apache Spark REST API-val a Spark-feladatok távolról történő elküldéséhez egy Azure HDInsight-fürtbe.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: ac3904284ebf20fa1d5e75f9249732be3963f677
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78206282"
 ---
-# <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Távoli feladatok küldése HDInsight Spark-fürtre Apache Spark REST API használatával
+# <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Az Apache Spark REST API használata távoli feladatok küldéséhez egy HDInsight Spark-fürtre
 
-Ismerje meg, hogyan használható az [Apache Livy](https://livy.incubator.apache.org/), a Apache Spark REST API, amely távoli feladatok Azure HDInsight Spark fürtbe való küldésére szolgál. Részletes dokumentáció: [Apache Livy](https://livy.incubator.apache.org/docs/latest/rest-api.html).
+Ismerje meg, hogyan használhatja az [Apache Livyt,](https://livy.incubator.apache.org/)az Apache Spark REST API-t, amely távoli feladatok azure HDInsight Spark-fürtbe küldésére szolgál. A részletes dokumentációt az [Apache Livy című témakörben találja.](https://livy.incubator.apache.org/docs/latest/rest-api.html)
 
-A Livy használatával interaktív Spark-rendszerhéjakat futtathat, vagy elküldheti a Spark-on futó kötegelt feladatokat. Ez a cikk a Livy a Batch-feladatok elküldésére való használatát ismerteti. A cikkben szereplő kódrészletek a cURL használatával kezdeményezik REST API hívásokat a Livy Spark-végpontra.
+Livy segítségével interaktív Spark-rendszerhéjak futtatásához, vagy kötegelt feladatok futtatásához a Spark. Ez a cikk a Livy kötegelt feladatok küldésére való használatáról szól. Ebben a cikkben a kódrészletek cURL használatával rest API-hívások a Livy Spark-végpont.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
 
-## <a name="submit-an-apache-livy-spark-batch-job"></a>Apache Livy Spark batch-feladatok elküldése
+## <a name="submit-an-apache-livy-spark-batch-job"></a>Apache Livy Spark kötegelt feladat elküldése
 
-A Batch-feladatok elküldése előtt fel kell töltenie az alkalmazás-jar-t a fürthöz társított fürt tárolójába. Ehhez használhatja a [AzCopy](../../storage/common/storage-use-azcopy.md)parancssori segédprogramot is. Számos más ügyfél is felhasználhatja az adatok feltöltését. További információt a [HDInsight-ben található Apache Hadoop feladatok feltöltésekor](../hdinsight-upload-data.md)talál.
+A kötegelt feldolgozás elküldése előtt fel kell töltenie az alkalmazásjart a fürthöz társított fürttárolón. Ehhez az [AzCopy](../../storage/common/storage-use-azcopy.md) parancssori segédprogramot használhatja. Vannak különböző más ügyfelek segítségével adatok at feltölteni. Ezekről többet a [HDInsight-ban található Apache Hadoop-feladatok adatainak feltöltése területen](../hdinsight-upload-data.md)talál.
 
 ```cmd
 curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
@@ -35,19 +35,19 @@ curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -
 
 ### <a name="examples"></a>Példák
 
-* Ha a jar-fájl a fürt tárterületén található (WASBS)
+* Ha a jar fájl a fürttárolón (WASBS) található
 
     ```cmd  
     curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
-* Ha a jar fájlnevét és az osztálynév-t egy bemeneti fájl részeként szeretné átadni (ebben a példában a input. txt)
+* Ha a jar fájlnevet és az osztálynevet egy bemeneti fájl részeként szeretné átadni (ebben a példában a input.txt fájlban)
 
     ```cmd
     curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
-## <a name="get-information-on-livy-spark-batches-running-on-the-cluster"></a>Információk lekérése a fürtön futó Livy Spark-kötegekről
+## <a name="get-information-on-livy-spark-batches-running-on-the-cluster"></a>Információk a fürtön futó Livy Spark-kötegekről
 
 Szintaxis:
 
@@ -63,13 +63,13 @@ curl -k --user "admin:password" -v -X GET "https://<spark_cluster_name>.azurehdi
     curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches"
     ```
 
-* Ha egy adott batch-AZONOSÍTÓval rendelkező köteget szeretne lekérni
+* Ha egy adott köteget egy adott kötegazonosítóval szeretne beolvasni
 
     ```cmd
     curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches/{batchId}"
     ```
 
-## <a name="delete-a-livy-spark-batch-job"></a>Livy Spark batch-feladatok törlése
+## <a name="delete-a-livy-spark-batch-job"></a>Livy Spark kötegelt feldolgozás törlése
 
 ```cmd
 curl -k --user "admin:mypassword1!" -v -X DELETE "https://<spark_cluster_name>.azurehdinsight.net/livy/batches/{batchId}"
@@ -77,42 +77,42 @@ curl -k --user "admin:mypassword1!" -v -X DELETE "https://<spark_cluster_name>.a
 
 ### <a name="example"></a>Példa
 
-A Batch-AZONOSÍTÓval rendelkező batch-feladatok törlése `5`.
+Kötegelt feldolgozás törlése kötegelt azonosítóval. `5`
 
 ```cmd
 curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/5"
 ```
 
-## <a name="livy-spark-and-high-availability"></a>Livy Spark és magas rendelkezésre állás
+## <a name="livy-spark-and-high-availability"></a>Livy Spark és a magas rendelkezésre állás
 
-A Livy magas rendelkezésre állást biztosít a fürtön futó Spark-feladatok számára. Íme néhány példa.
+A Livy magas rendelkezésre állást biztosít a fürtön futó Spark-feladatokszámára. Íme néhány példa.
 
-* Ha a Livy szolgáltatás a feladatoknak a Spark-fürtön való távoli elküldését követően leáll, a rendszer továbbra is futtatja a feladatot a háttérben. Ha a Livy biztonsági mentést készít, a visszaállítja a feladatok állapotát, és visszaküldi azt.
-* A HDInsight tartozó Jupyter-jegyzetfüzeteket a háttérbeli Livy látja el. Ha egy jegyzetfüzet egy Spark-feladatot futtat, és a Livy szolgáltatás újraindul, a jegyzetfüzet továbbra is futtatja a kódrészleteket.
+* Ha a Livy szolgáltatás leáll, miután távolról elküldte a feladatot egy Spark-fürthöz, a feladat továbbra is fut a háttérben. Amikor Livy újra működik, visszaállítja a feladat állapotát, és jelenti azt.
+* A HDInsight Jupyter-jegyzetfüzeteit livy a háttérben működteti. Ha egy jegyzetfüzet egy Spark-feladatot futtat, és a Livy szolgáltatás újraindul, a jegyzetfüzet továbbra is futtatja a kódcellákat.
 
 ## <a name="show-me-an-example"></a>Példa megjelenítése
 
-Ebben a szakaszban a Livy Spark használatával kötegelt feladatok küldésére, a feladatok előrehaladásának figyelésére, majd a törlésre vonatkozó példákat tekintjük át. Az ebben a példában használt alkalmazás egy [önálló Scala-alkalmazás létrehozása és a HDInsight Spark-fürtön való futtatása](apache-spark-create-standalone-application.md)során készült. A következő lépések feltételezik:
+Ebben a szakaszban példákat tekintünk a Livy Spark használatával kötegelt feldolgozás elküldésére, a feladat előrehaladásának figyelésére, majd törlésére. Az ebben a példában használt alkalmazás az, amelyet a Cikkben kifejlesztett [Hozzon létre egy önálló Scala alkalmazással, és futtasson a HDInsight Spark-fürtön.](apache-spark-create-standalone-application.md) Az itt leírt lépések a következőket feltételezik:
 
-* Már átmásolta az Application jar-t a fürthöz társított Storage-fiókba.
-* Olyan számítógépre telepítette a fürtöket, amelyen a lépéseket megpróbálta kipróbálni.
+* Már másolta át az alkalmazás jar a fürthöz társított tárfiókba.
+* A CuRL telepítve van arra a számítógépre, amelyen ezeket a lépéseket próbálja.
 
 Hajtsa végre a következő lépéseket:
 
-1. Az egyszerű használat érdekében állítsa be a környezeti változókat. Ez a példa egy Windows-környezetben alapul, és szükség szerint módosítja a változókat a környezetében. Cserélje le a `CLUSTERNAME`t, és `PASSWORD` a megfelelő értékekkel.
+1. A könnyű használat érdekében állítsa be a környezeti változókat. Ez a példa egy Windows-környezeten alapul, a környezethez szükséges változók at vizsgálja felül. Cserélje `CLUSTERNAME`ki `PASSWORD` a megfelelő értékeket.
 
     ```cmd
     set clustername=CLUSTERNAME
     set password=PASSWORD
     ```
 
-1. Győződjön meg arról, hogy a Livy Spark fut a fürtön. Ezt a futó kötegek listájának beszerzésével teheti meg. Ha első alkalommal futtat egy feladatot a Livy használatával, a kimenetnek nullát kell visszaadnia.
+1. Ellenőrizze, hogy a Livy Spark fut-e a fürtön. Ezt úgy tehetjük meg, hogy megszerzünk egy listát a futó kötegekről. Ha a Livy használatával futtat egy feladatot, a kimenetnek nullát kell visszaadnia.
 
     ```cmd
     curl -k --user "admin:%password%" -v -X GET "https://%clustername%.azurehdinsight.net/livy/batches"
     ```
 
-    A következő kódrészlethez hasonló kimenetnek kell megjelennie:
+    A következő kódrészlethez hasonló kimenetet kell kapnia:
 
     ```output
     < HTTP/1.1 200 OK
@@ -126,15 +126,15 @@ Hajtsa végre a következő lépéseket:
     {"from":0,"total":0,"sessions":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    Figyelje meg, hogy a kimenet utolsó sora **összesen: 0**, amely nem javasol futó kötegeket.
+    Figyelje meg, hogy a kimenet utolsó sora **a total:0-t**mondja, ami azt sugallja, hogy nincs enek futó köteg.
 
-1. Most küldje el a Batch-feladatot. Az alábbi kódrészlet egy bemeneti fájlt (input. txt) használ, hogy paraméterekként adja át a jar nevét és az osztály nevét. Ha ezeket a lépéseket egy Windows rendszerű számítógépről futtatja, az ajánlott módszer a bemeneti fájl használata.
+1. Most küldjünk be egy kötegelt feladatot. A következő kódrészlet egy bemeneti fájlt (input.txt) használ a jar név és az osztály nevének paraméterként való átadására. Ha ezeket a lépéseket Windows rendszerű számítógépről futtatja, az ajánlott megközelítés egy beviteli fájl használata.
 
     ```cmd
     curl -k --user "admin:%password%" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://%clustername%.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
-    A file **input. txt** fájl paramétereinek meghatározása a következő:
+    A **input.txt** fájl paraméterei a következők:
 
     ```text
     { "file":"wasbs:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
@@ -155,9 +155,9 @@ Hajtsa végre a következő lépéseket:
     {"id":0,"state":"starting","log":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    Figyelje meg, hogy a kimenet utolsó sora az **állapotot mutatja: indítás**. Azt is mondja, **azonosító: 0**. Itt a **0** a Batch-azonosító.
+    Figyelje meg, hogy a kimenet utolsó sora az **állapot: indítás.** Azt is mondja, **id:0**. Itt **a 0** a kötegazonosító.
 
-1. Most már lekérheti az adott köteg állapotát a Batch-azonosító használatával.
+1. Most már lekérheti az adott köteg állapotát a kötegazonosító használatával.
 
     ```cmd
     curl -k --user "admin:%password%" -v -X GET "https://%clustername%.azurehdinsight.net/livy/batches/0"
@@ -177,7 +177,7 @@ Hajtsa végre a következő lépéseket:
     {"id":0,"state":"success","log":["\t diagnostics: N/A","\t ApplicationMaster host: 10.0.0.4","\t ApplicationMaster RPC port: 0","\t queue: default","\t start time: 1448063505350","\t final status: SUCCEEDED","\t tracking URL: http://myspar.lpel.jx.internal.cloudapp.net:8088/proxy/application_1447984474852_0002/","\t user: root","15/11/20 23:52:47 INFO Utils: Shutdown hook called","15/11/20 23:52:47 INFO Utils: Deleting directory /tmp/spark-b72cd2bf-280b-4c57-8ceb-9e3e69ac7d0c"]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    Ekkor a kimenet **állapota: sikeres**, ami azt sugallja, hogy a feladatot sikerült befejezni.
+    A kimenet most az **state:success-t**mutatja, ami azt jelzi, hogy a feladat sikeresen befejeződött.
 
 1. Ha szeretné, most törölheti a köteget.
 
@@ -199,17 +199,17 @@ Hajtsa végre a következő lépéseket:
     {"msg":"deleted"}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    A kimenet utolsó sora azt mutatja, hogy a köteg sikeresen törölve lett. A feladatok törlése a futása közben is megöli a feladatot. Ha töröl egy olyan feladatot, amely sikeresen vagy más módon lett végrehajtva, a feladathoz tartozó adatokat teljesen törli.
+    A kimenet utolsó sora azt mutatja, hogy a köteg et sikeresen törölték. Ha egy munka törlése, miközben fut, az is megöli a munkát. Ha töröl egy sikeresen vagy más módon befejeződött feladatot, akkor teljesen törli a feladatadatait.
 
-## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>A HDInsight 3,5 verziótól kezdődően a Livy-konfiguráció frissítései
+## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>A Livy-konfiguráció frissítései a HDInsight 3.5 verziójával kezdve
 
-A HDInsight 3,5-es és újabb fürtökön alapértelmezés szerint letiltja a helyi fájlelérési utak használatát a mintavételi adatfájlok vagy a tégelyek eléréséhez. Javasoljuk, hogy a `wasbs://` elérési utat használja ahelyett, hogy az adattárolók vagy mintaadatok fájljait a fürtből hozzáférhessen.
+A HDInsight 3.5-ös és újabb fürtjei alapértelmezés szerint letiltják a helyi fájlelérési utak használatát a mintaadatfájlok vagy -üvegek eléréséhez. Azt javasoljuk, hogy `wasbs://` használja az elérési utat, hanem a fürtből származó üvegek vagy minta adatfájlok eléréséhez.
 
-## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Livy-feladatok elküldése egy fürthöz egy Azure-beli virtuális hálózaton belül
+## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Livy-feladatok küldése egy fürthöz egy Azure virtuális hálózaton belül
 
-Ha egy Azure-Virtual Networkon belül csatlakozik egy HDInsight Spark-fürthöz, közvetlenül kapcsolódhat a Livy a fürtön. Ebben az esetben a Livy-végpont URL-címe `http://<IP address of the headnode>:8998/batches`. Itt a **8998** az a port, amelyen a Livy fut a fürt átjárócsomóponthoz. A nem nyilvános portokon található szolgáltatások elérésével kapcsolatos további információkért lásd: [Apache Hadoop Services által használt portok a HDInsight-on](../hdinsight-hadoop-port-settings-for-services.md).
+Ha egy Azure virtuális hálózaton belül csatlakozik egy HDInsight Spark-fürthöz, közvetlenül csatlakozhat livy-hez a fürtön. Ebben az esetben a Livy-végpont `http://<IP address of the headnode>:8998/batches`URL-címe . Itt a **8998** az a port, amelyen Livy a fürt csomópontján fut. A nem nyilvános portokon lévő szolgáltatások eléréséről az [Apache Hadoop-szolgáltatások által a HDInsight szolgáltatáson használt portok](../hdinsight-hadoop-port-settings-for-services.md)című témakörben talál további információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Apache Livy REST API dokumentáció](https://livy.incubator.apache.org/docs/latest/rest-api.html)
 * [Apache Spark-fürt erőforrásainak kezelése az Azure HDInsightban](apache-spark-resource-manager.md)

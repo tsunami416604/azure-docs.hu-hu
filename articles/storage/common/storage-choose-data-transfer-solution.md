@@ -1,6 +1,6 @@
 ---
-title: Azure-alapú megoldás kiválasztása adatátvitelhez | Microsoft Docs
-description: Megtudhatja, hogyan választhat ki Azure-megoldást az adatátvitelhez az adatméretek és a környezetben elérhető hálózati sávszélesség alapján
+title: Válasszon egy Azure-megoldást az adatátvitelhez| Microsoft dokumentumok
+description: Megtudhatja, hogyan választhat Azure-megoldást adatátvitelre az adatméretek és a környezetben rendelkezésre álló hálózati sávszélesség alapján
 services: storage
 author: alkohli
 ms.service: storage
@@ -9,77 +9,77 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
 ms.openlocfilehash: ada96d0d4b167e30cb6e271aa02d0d399a9ae7d3
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303086"
 ---
-# <a name="choose-an-azure-solution-for-data-transfer"></a>Azure-alapú megoldás kiválasztása adatátvitelhez
+# <a name="choose-an-azure-solution-for-data-transfer"></a>Válasszon egy Azure-megoldást az adatátvitelhez
 
-Ez a cikk áttekintést nyújt a közös Azure adatátviteli megoldásokról. A cikk a környezetében található hálózati sávszélességtől és az átvinni kívánt adatok méretétől függően a javasolt beállításokra is hivatkozik.
+Ez a cikk áttekintést nyújt a gyakori Azure-adatátviteli megoldások. A cikk a környezet hálózati sávszélességétől és az átvinni kívánt adatok méretétől függően az ajánlott beállításokra is hivatkozik.
 
-## <a name="types-of-data-movement"></a>Adatáthelyezési típusok
+## <a name="types-of-data-movement"></a>Az adatmozgás típusai
 
-Az adatátvitel lehet offline vagy a hálózati kapcsolaton keresztül. Válasszon a megoldástól függően:
+Az adatátvitel lehet offline vagy hálózati kapcsolaton keresztül. Válassza ki a megoldást a következőktől függően:
 
-- **Adatok mérete** – az átvitelre szánt adatok mérete
-- **Átvitel gyakorisága** – egyszeri vagy rendszeres adatfeldolgozás, valamint
-- **Hálózat** – a környezetében az adatátvitelhez rendelkezésre álló sávszélesség.
+- **Adatméret** – Az átvitelre szánt adatok mérete,
+- **Átviteli gyakoriság** – egyszeri vagy időszakos adatbetöltés, és
+- **Hálózat** – A környezetben történő adatátvitelhez rendelkezésre álló sávszélesség.
 
-Az adatáthelyezés a következő típusúak lehetnek:
+Az adatmozgás a következő típusú lehet:
 
-- **Offline átvitel shippable-eszközök használatával** – használjon fizikai shippable eszközöket, ha offline egyszeri tömeges adatátvitelt szeretne végezni. A Microsoft egy lemezt vagy biztonságos speciális eszközt küld Önnek. Másik lehetőségként megvásárolhatja és elküldheti saját lemezeit. Másolja az eszközöket az eszközre, majd küldje el az Azure-ba, ahol az adatfeltöltve van.  Ebben az esetben a rendelkezésre álló beállítások a következők: Data Box Disk, Data Box, Data Box Heavy és Importálás/Exportálás (saját lemezek használata).
+- **Offline átvitel átruházható eszközökkel** – Fizikai, átruházható eszközöket használhat, ha egyszeri tömeges adatátvitelt szeretne végezni. A Microsoft küld önnek egy lemezt vagy egy biztonságos speciális eszközt. Azt is megteheti, hogy megvásárolja és szállítja a saját lemezeit. Adatokat másol az eszközre, majd szállítja az Azure-ba, ahol az adatok feltöltése.  Ebben az esetben a rendelkezésre álló lehetőségek: Data Box Disk, Data Box, Data Box Heavy, és import/export (használja a saját lemezeit).
 
-- **Hálózati átvitel** – az adatok átvitele az Azure-ba hálózati kapcsolaton keresztül történik. Ezt többféleképpen is megteheti.
+- **Hálózati átvitel** – Az adatokat hálózati kapcsolaton keresztül továbbítja az Azure-ba. Ezt sokféleképpen meg lehet tenni.
 
-    - **Grafikus felület** – ha alkalmanként csak néhány fájlt továbbít, és nem kell automatizálnia az adatátvitelt, kiválaszthat egy grafikus kezelőfelületi eszközt, például Azure Storage Explorer vagy webalapú feltárási eszközt a Azure Portal.
-    - **Parancsfájlos vagy programozott átvitel** – használhat optimalizált szoftvereket, amelyeket a REST API-k/SDK-k közvetlen használatával biztosítanak vagy meghívhatnak. A rendelkezésre álló parancsfájl-előkészítő eszközök a következők: AzCopy, Azure PowerShell és Azure CLI. Programozási felületen a .NET, a Java, a Python, a Node/JS, C++a go, a php vagy a Ruby SDK-k egyikét használhatja.
-    - Helyszíni **eszközök** – biztosítunk Önnek egy fizikai vagy virtuális eszközt, amely az adatközpontban található, és optimalizálja a hálózaton keresztüli adatátvitelt. Ezek az eszközök a gyakran használt fájlok helyi gyorsítótárát is tartalmazzák. A fizikai eszköz a Data Box Edge, a virtuális eszköz pedig a Data Box Gateway. Mindkettő véglegesen fut a helyszínen, és csatlakozik az Azure-hoz a hálózaton keresztül.
-    - **Felügyelt adatfolyamat** – beállíthatja, hogy egy felhőalapú folyamat rendszeresen továbbítson fájlokat több Azure-szolgáltatás, a helyszíni vagy kettő kombinációja között. Az adatfolyamatok beállításához és kezeléséhez, valamint az elemzéshez az adatátvitelhez és az átalakításhoz használja a Azure Data Factory.
+    - **Grafikus felület** – Ha alkalmanként csak néhány fájlt továbbít, és nem kell automatizálnia az adatátvitelt, választhat egy grafikus felület eszközt, például az Azure Storage Explorert vagy egy webalapú feltárási eszközt az Azure Portalon.
+    - **Parancsfájlalapú vagy programozott átvitel** – Használhat optimalizált szoftvereszközöket, amelyeket rest API-kat/SDK-kat közvetlenül biztosítunk vagy hívunk. A rendelkezésre álló parancsfájlok eszközei az AzCopy, az Azure PowerShell és az Azure CLI. Programozott felülethez használja a .NET, Java, Python, Node/JS, C++, Go, PHP vagy Ruby sdk-k egyikét.
+    - **Helyszíni eszközök** – Olyan fizikai vagy virtuális eszközt biztosítunk Önnek, amely az adatközpontban található, és optimalizálja a hálózaton keresztüli adatátvitelt. Ezek az eszközök a gyakran használt fájlok helyi gyorsítótárát is biztosítják. A fizikai eszköz a Data Box Edge, a virtuális eszköz pedig a Data Box Gateway. Mindkettő folyamatosan fut a helyszínen, és a hálózaton keresztül csatlakozik az Azure-hoz.
+    - **Felügyelt adatfolyamat** – Beállíthat egy felhőalapú folyamatot, amely rendszeresen továbbítja a fájlokat több Azure-szolgáltatás, helyszíni vagy kettő kombinációja között. Az Azure Data Factory segítségével adatfolyamatokat állíthat be és kezelhet, valamint áthelyezheti és átalakíthatja az adatokat elemzésre.
 
-A következő vizualizáció bemutatja az irányelveket, amelyekkel kiválaszthatja a különböző Azure-adatátviteli eszközöket az átvitelhez rendelkezésre álló hálózati sávszélességtől, az átvitelre szánt adatok méretétől és az átvitel gyakoriságának megfelelően.
+A következő vizuális bemutatja a különböző Azure adatátviteli eszközök kiválasztásának irányelveit az átvitelre rendelkezésre álló hálózati sávszélességtől, az adatátvitelre szánt adatok méretétől és az átvitel gyakoriságától függően.
 
-![Az Azure adatátviteli eszközei](media/storage-choose-data-transfer-solution/azure-data-transfer-options-3.png)
+![Azure adatátviteli eszközök](media/storage-choose-data-transfer-solution/azure-data-transfer-options-3.png)
 
-**az offline átvitelű eszközök felső korlátait – a Data Box Disk, a Data Box és a Data Box Heavy kiterjeszthető egy eszköz típusának több rendelésének elhelyezésével.*
+**Az offline átviteli eszközök felső határai - Data Box Disk, Data Box és Data Box Heavy kiterjeszthetők több eszköztípusú megrendeléssel.*
 
 ## <a name="selecting-a-data-transfer-solution"></a>Adatátviteli megoldás kiválasztása
 
-Válaszoljon a következő kérdésekre az adatátviteli megoldás kiválasztásához:
+Az adatátviteli megoldás kiválasztásához válaszoljon a következő kérdésekre:
 
 - A rendelkezésre álló hálózati sávszélesség korlátozott vagy nem létezik, és nagy adatkészleteket szeretne átvinni?
   
-    Ha igen, lásd: [1. forgatókönyv: nagyméretű adatkészletek átvitele nem vagy alacsony hálózati sávszélességgel](storage-solution-large-dataset-low-network.md).
-- Nagy adatkészleteket szeretne átvinni a hálózaton keresztül, és közepes és magas hálózati sávszélességgel rendelkezik?
+    Ha igen, olvassa el a [következőt: 1. forgatókönyv: Nagy adatkészletek átvitele nincs vagy alacsony hálózati sávszélességgel.](storage-solution-large-dataset-low-network.md)
+- Nagy adatkészleteket szeretne átvinni a hálózaton keresztül, és közepesen nagy hálózati sávszélességgel rendelkezik?
 
-    Ha igen, lásd: [2. forgatókönyv: nagyméretű adatkészletek átvitele közepes és magas hálózati sávszélességgel](storage-solution-large-dataset-moderate-high-network.md).
+    Ha igen, olvassa el a [következőt: 2. forgatókönyv: Nagy, közepes vagy nagy hálózati sávszélességű adatkészletek átvitele.](storage-solution-large-dataset-moderate-high-network.md)
 - Időnként csak néhány fájlt szeretne átvinni a hálózaton keresztül?
 
-    Ha igen, tekintse [meg a 3. forgatókönyv: kisméretű adathalmazok átvitele korlátozott hálózati sávszélességgel](storage-solution-small-dataset-low-moderate-network.md).
-- Rendszeres időközönként keresi az időponthoz való adatátvitelt?
+    Ha igen, olvassa [el a 3.](storage-solution-small-dataset-low-moderate-network.md)
+- Rendszeres időközönként időponthoz szerzett adatátvitelt keres?
 
-    Ha igen, használja a 4. forgatókönyvben ismertetett parancsfájl-/programozási beállításokat [: rendszeres adatátvitelek](storage-solution-periodic-data-transfer.md).
-- Folyamatos adatátvitelt keres?
+    Ha igen, használja a [4.](storage-solution-periodic-data-transfer.md)
+- Folyamatos, folyamatos adatátvitelt keres?
 
-    Ha igen, használja a [4. forgatókönyv: rendszeres adatátvitelek](storage-solution-periodic-data-transfer.md)lehetőségeit.
+    Ha igen, használja a [4.](storage-solution-periodic-data-transfer.md)
 
-## <a name="data-transfer-feature-in-azure-portal"></a>Adatátviteli szolgáltatás a Azure Portal
+## <a name="data-transfer-feature-in-azure-portal"></a>Adatátviteli funkció az Azure Portalon
 
-Az Azure Storage-fiókját Azure Portalban is megtekintheti, és kiválaszthatja az **adatátviteli** funkciót. Adja meg a hálózati sávszélességet a környezetében, az átvinni kívánt adatok méretét és az adatátvitel gyakoriságát. A megadott adatoknak megfelelő optimális adatátviteli megoldások jelennek meg. 
+Az Azure Storage-fiók az Azure Portalon is, és válassza ki az **adatátviteli** funkciót. Adja meg a hálózati sávszélességet a környezetben, az átvinni kívánt adatok méretét és az adatátvitel gyakoriságát. Az Ön által megadott információknak megfelelő optimális adatátviteli megoldásokat fogja látni. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Ismerkedjen meg Azure Storage Explorerával](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
-- [Olvassa el a AzCopy áttekintését](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
-- [Azure PowerShell használata az Azure Storage-ban](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
-- [Gyors útmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel](../blobs/storage-quickstart-blobs-cli.md)
-- További információ:
+- [Bevezetés az Azure Storage Explorer bemutatkozása.](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/)
+- [Olvassa el az AzCopy áttekintését.](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+- [Az Azure PowerShell használata az Azure Storage szolgáltatással](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
+- [Rövid útmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel](../blobs/storage-quickstart-blobs-cli.md)
+- Ismerkedjen meg a következőkkel:
 
-    - [Az offline átvitelek Azure Data Box, Azure Data Box Disk és Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/).
-    - [Online átvitelek Azure Data Box Gateway és Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/).
+    - [Azure Data Box, Azure Data Box Disk és Azure Data Box Heavy offline átvitelhez.](https://docs.microsoft.com/azure/databox/)
+    - [Az Azure Data Box Gateway és az Azure Data Box Edge az online átvitelhez.](https://docs.microsoft.com/azure/databox-online/)
 - [Ismerje meg, mi az Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview).
 - Adatok átvitele a REST API-k használatával
 
     - [A .NET-ben](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [Java-ban](https://docs.microsoft.com/java/api/overview/azure/storage)
+    - [A Javában](https://docs.microsoft.com/java/api/overview/azure/storage)

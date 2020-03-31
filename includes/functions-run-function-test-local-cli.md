@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 02/09/2020
 ms.author: glenga
 ms.openlocfilehash: d53c41752d57a27ebea9bd60f7e723dab1e7308a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78190855"
 ---
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
-A függvény futtatásához indítsa el a helyi Azure Functions Runtime-gazdagépet a *LocalFunctionProj* mappából:
+Futtassa a függvényt a helyi Azure Functions futásidejű gazdagép nek a *LocalFunctionProj* mappából történő elindításával:
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-javascript,programming-language-python"
 ```
@@ -28,7 +28,7 @@ npm start
 ```
 ::: zone-end
 
-A kimenet vége felé a következő soroknak kell megjelenniük: 
+A kimenet vége felé a következő sorokjelennek meg: 
 
 <pre>
 ...
@@ -44,12 +44,12 @@ Http Functions:
 </pre>
 
 >[!NOTE]  
-> Ha a HttpExample nem jelenik meg az alább látható módon, valószínűleg elindította a gazdagépet a *HttpExample* mappából. Ebben az esetben a **Ctrl**+**C** billentyűkombinációval állítsa le a gazdagépet, navigáljon a szülő *LocalFunctionProj* mappára, és futtassa újra az előző parancsot.
+> Ha a HttpExample nem az alábbi módon jelenik meg, akkor valószínűleg a *HttpExample* mappából indította el az állomást. Ebben az esetben a **Ctrl C billentyűvel**+**C** állítsa le az állomást, keresse meg a szülő *LocalFunctionProj* mappát, és futtassa újra az előző parancsot.
 
-Másolja a `HttpExample` függvény URL-címét ebből a kimenetből egy böngészőbe, és fűzze hozzá a lekérdezési karakterláncot `?name=<your-name>`, így a teljes URL-címet, például `http://localhost:7071/api/HttpExample?name=Functions`. A böngészőben a következőhöz hasonló üzenetnek kell megjelennie `Hello Functions`:
+Másolja a `HttpExample` függvény URL-címét erről a kimenetről `?name=<your-name>`egy böngészőbe, `http://localhost:7071/api/HttpExample?name=Functions`és fűzze hozzá a lekérdezési karakterláncot, így a teljes URL-t például a . A böngészőnek olyan `Hello Functions`üzenetet kell megjelenítenie, mint:
 
-![A függvény helyi futtatásának eredménye a böngészőben](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
+![A függvény helyileg futtatott eredménye a böngészőben](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
 
-A `func start` futtatott terminál a kérések során a naplózási kimenetet is megjeleníti.
+A terminál, amelyben `func start` futtatott is mutatja a napló kimeneti kérések esetén.
 
-Ha elkészült, használja a CTRL+**C** **billentyűkombinációt** , és válassza a `y` lehetőséget a functions gazdagép leállításához.
+Ha készen áll, használja a `y` Ctrl**C** **billentyűt,**+és állítsa le a függvényállomást.

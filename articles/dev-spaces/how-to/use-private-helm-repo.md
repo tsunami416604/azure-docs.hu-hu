@@ -1,45 +1,45 @@
 ---
-title: Privát Helm-adattár használata az Azure dev Spaces szolgáltatásban
+title: Privát Helm-tárház használata az Azure dev spaces-ben
 services: azure-dev-spaces
 author: zr-msft
 ms.author: zarhoads
 ms.date: 08/22/2019
 ms.topic: conceptual
-description: Használjon privát Helm-tárházat egy Azure fejlesztői tárhelyen.
-keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók, Helm
+description: Használjon egy privát Helm-tárházat egy Azure Dev Space-ben.
+keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, tárolók, Helm
 manager: gwallace
-ms.openlocfilehash: 6036184c43242f2ec2279438950b26dfb53e9bb4
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538669"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240469"
 ---
-# <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Privát Helm-tárház használata az Azure dev Spaces szolgáltatásban
+# <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Privát Helm-tárház használata az Azure dev spaces-ben
 
-A [Helm][helm] a Kuberentes csomagkezelő. A Helm [diagram][helm-chart] formátumot használ a függőségek kicsomagolásához. A Helm-diagramok tárolása olyan tárházban történik, amely nyilvános vagy magánjellegű lehet. Az Azure dev Spaces csak az alkalmazás futtatásakor kéri le a nyilvános adattárakból származó Helm-diagramokat. Azokban az esetekben, amikor a Helm-adattár magán vagy az Azure dev Spaces nem fér hozzá, hozzáadhat egy diagramot az adott tárházból közvetlenül az alkalmazáshoz. A diagram közvetlen hozzáadása lehetővé teszi, hogy az Azure dev Spaces az alkalmazást anélkül futtassa, hogy hozzá kellene férnie a Private Helm-tárházhoz.
+[Helm][helm] a Kubernetes csomagkezelője. A Helm [diagramformátumot][helm-chart] használ a függőségek csomagolásához. A helm diagramok egy tárházban tárolódnak, amely lehet nyilvános vagy privát. Az Azure Dev Spaces csak az alkalmazás futtatásakor lekéri a helm-diagramokat a nyilvános adattárakból. Azokban az esetekben, ahol a Helm-tárház privát vagy az Azure Dev Spaces nem tud hozzáférni, hozzáadhat egy diagramot, hogy a tárház közvetlenül az alkalmazáshoz. A diagram hozzáadása közvetlenül lehetővé teszi az Azure Dev Spaces futtatásához az alkalmazást anélkül, hogy a privát Helm tárház eléréséhez.
 
-## <a name="add-the-private-helm-repository-to-your-local-machine"></a>Adja hozzá a Private Helm-tárházat a helyi géphez
+## <a name="add-the-private-helm-repository-to-your-local-machine"></a>Adja hozzá a privát Helm-tárházat a helyi számítógéphez
 
-A [Helm repo Add][helm-repo-add] and [Helm repo Update][helm-repo-update] paranccsal elérheti a privát Helm-tárházat a helyi gépről.
+Helm [repo add][helm-repo-add] és [helm repo frissítés][helm-repo-update] használatával a helyi helm-tárház helyi gépről való eléréséhez.
 
 ```cmd
 helm repo add privateRepoName http://example.com/helm/v1/repo --username user --password 5tr0ng_P@ssw0rd!
 helm repo update
 ```
 
-## <a name="add-the-chart-to-your-application"></a>Diagram hozzáadása az alkalmazáshoz
+## <a name="add-the-chart-to-your-application"></a>A diagram hozzáadása az alkalmazáshoz
 
-Navigáljon a projekt könyvtárába, és futtassa `azds prep`.
+Nyissa meg a projekt könyvtárát, és futtassa a programot. `azds prep`
 
 ```cmd
 azds prep --enable-ingress
 ```
 
 > [!TIP]
-> A `prep` parancs megkísérli [egy Docker és egy Helm-diagram](../how-dev-spaces-works.md#prepare-your-code) létrehozását a projekthez. Az Azure dev Spaces ezeket a fájlokat használja a kód összeállításához és futtatásához, de módosíthatja ezeket a fájlokat, ha módosítani szeretné a projekt felépítésének és futtatásának módját.
+> A `prep` parancs [docker-fájl- és helmdiagramot](../how-dev-spaces-works-prep.md#prepare-your-code) próbál létrehozni a projekthez. Az Azure Dev Spaces ezeket a fájlokat használja a kód létrehozásához és futtatásához, de módosíthatja ezeket a fájlokat, ha módosítani szeretné a projekt felépítését és futtatását.
 
-Hozzon létre egy [követelmény. YAML][helm-requirements] fájlt a diagrammal az alkalmazás diagramjának könyvtárában. Ha például az alkalmazás neve *App1*, akkor létre kell hoznia a *diagramok/App1/követelmények. YAML*.
+Hozzon létre egy [requirements.yaml][helm-requirements] fájlt a diagrammal az alkalmazás diagramkönyvtárában. Ha például az alkalmazás neve *app1,* *akkor diagramokat/app1/requirements.yaml-t kell létrehoznia.*
 
 ```yaml
 dependencies:
@@ -48,19 +48,19 @@ dependencies:
       repository:  http://example.com/helm/v1/repo
 ```
 
-Navigáljon az alkalmazás diagramjának könyvtárába, és a [Helm függőségi frissítés][helm-dependency-update] használatával frissítse az alkalmazás Helm-függőségeit, és töltse le a diagramot a privát tárházból.
+Keresse meg az alkalmazás diagramkönyvtárát, és [helm függőségi frissítés][helm-dependency-update] használatával frissítse az alkalmazás Helm-függőségeit, és töltse le a diagramot a magántárházból.
 
 ```cmd
 helm dependency update
 ```
 
-Győződjön meg arról, hogy *a diagram* alkönyvtára egy *tgz* -fájllal lett hozzáadva az alkalmazás diagramjának könyvtárába. Például: *Charts/App1/Charts/mychart-0.1.0. tgz*.
+Ellenőrizze, hogy egy *tgz-fájlt* tartalmazó *diagramalkönyvtár* at adott-e hozzá az alkalmazás diagramkönyvtárához. Például *diagramok/app1/diagramok/mychart-0.1.0.tgz*.
 
-A saját Helm-tárházból származó diagram le lett töltve, és hozzá lett adva a projekthez. Távolítsa el a *követelmények. YAML* fájlt, hogy a fejlesztői szóközök ne próbáljanak frissíteni ezt a függőséget.
+A privát Helm-tárházból származó diagram le lett töltve, és hozzáadva a projekthez. Távolítsa el a *requirements.yaml* fájlt, hogy a fejlesztői tárolók ne kíséreljék meg frissíteni ezt a függőséget.
 
 ## <a name="run-your-application"></a>Az alkalmazás futtatása
 
-Navigáljon a projekt gyökérkönyvtárához, és `azds up` futtatásával ellenőrizze, hogy az alkalmazás sikeresen fut-e a fejlesztői térben.
+Keresse meg a projekt gyökérkönyvtárát, és futtassa `azds up` az alkalmazás sikeres futtatásának ellenőrzését a fejlesztői területen.
 
 ```cmd
 $ azds up
@@ -75,9 +75,9 @@ Service 'app1' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [helmről és annak működéséről][helm].
+Tudjon meg többet [a Helm és hogyan működik][helm].
 
 [helm]: https://docs.helm.sh
 [helm-chart]: https://helm.sh/docs/topics/charts/

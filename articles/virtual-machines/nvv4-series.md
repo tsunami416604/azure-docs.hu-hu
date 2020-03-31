@@ -1,6 +1,6 @@
 ---
-title: NVv4 sorozat – Azure Virtual Machines
-description: A NVv4 sorozatú virtuális gépek specifikációi.
+title: NVv4 sorozat - Azure virtuális gépek
+description: Az NVv4 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
 author: vikancha
 ms.service: virtual-machines
@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 0295ed7d44d64fcc1aeb68e1beaa37987b177edb
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273845"
 ---
 # <a name="nvv4-series"></a>NVv4 sorozat 
 
-A NVv4 sorozatú virtuális gépeket az [AMD Radeon ösztön MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPU-k és az AMD EPYC 7V12 (Róma) CPU-k működtetik. A NVv4 sorozatú Azure a részleges GPU-val rendelkező virtuális gépek bevezetését ismerteti. Válassza ki a megfelelő méretű virtuális gépet GPU-gyorsított grafikus alkalmazások és virtuális asztalok számára a GPU-k 1/8-étől kezdődően 2 GiB frame-pufferrel egy teljes GPU-val, 16 GiB frame-pufferrel. A NVv4 Virtual Machines jelenleg csak a Windows vendég operációs rendszert támogatja.
+Az NVv4 sorozatú virtuális gépeket [AMD Radeon Instinct MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPU-k és AMD EPYC 7V12(Róma) CPU-k működtetik. Az NVv4 sorozatú Azure részleges GPU-kkal rendelkező virtuális gépeket vezet be. Válassza ki a megfelelő méretű virtuális gépet a GPU gyorsított grafikus alkalmazásokhoz és virtuális asztalokhoz, amelyek a 2 GiB keretpufferrel rendelkező GPU 1/8-atól indulnak, és 16 GiB keretpufferrel rendelkező teljes GPU-ra. Az NVv4 virtuális gépek jelenleg csak a Windows vendég operációs rendszerét támogatják.
 
 <br>
 
-Premium Storage: támogatott
+Prémium szintű tárhely: Támogatott
 
-Premium Storage gyorsítótárazás: támogatott
+Prémium szintű tárolási gyorsítótárazás: Támogatott
 
-Élő áttelepítés: nem támogatott
+Élő áttelepítés: Nem támogatott
 
-Memória-megőrzési frissítések: nem támogatott
+Memóriamegőrzési frissítések: Nem támogatott
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -35,15 +35,15 @@ Memória-megőrzési frissítések: nem támogatott
 | Standard_NV16as_v4 |16 |56 |352 | 1/2 | 8 | 16 | 8 |
 | Standard_NV32as_v4 |32 |112 |704 | 1 | 16 | 32 | 8 |
 
-<sup>1</sup> a NVv4 sorozatú virtuális gépek AMD szimultán többszálú technológiával rendelkeznek
+<sup>Az 1</sup> NVv4 sorozatból álló virtuális gépek AMD egyidejű többszálas technológiával rendelkeznek
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="supported-operating-systems-and-drivers"></a>Támogatott operációs rendszerek és illesztőprogramok
 
-A Windows rendszerű Azure NVv4-sorozatú virtuális gépek GPU-képességeinek kihasználásához telepíteni kell az AMD GPU-illesztőprogramokat.
+A Windows rendszert futtató Azure NVv4 sorozatú virtuális gépek GPU-funkcióinak kihasználásához telepíteni kell az AMD GPU-illesztőprogramokat.
 
-Az AMD GPU-illesztőprogramok manuális telepítéséhez lásd: [N-sorozatú AMD GPU illesztőprogram-telepítő a Windows](./windows/n-series-amd-driver-setup.md) rendszerhez támogatott operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések.
+Az AMD GPU-illesztőprogramok manuális telepítéséhez olvassa el az [N sorozatú AMD GPU-illesztőprogram windowsos beállítását](./windows/n-series-amd-driver-setup.md) a támogatott operációs rendszerekhez, illesztőprogramokhoz, telepítéshez és ellenőrzési lépésekhez.
 
 ## <a name="other-sizes"></a>Egyéb méretek
 
@@ -54,6 +54,6 @@ Az AMD GPU-illesztőprogramok manuális telepítéséhez lásd: [N-sorozatú AMD
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
+További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.

@@ -1,7 +1,7 @@
 ---
-title: Modellek üzembe helyezése az Azure Kubernetes Service-ben
+title: Modellek üzembe helyezése az Azure Kubernetes szolgáltatásban
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning modelleket webszolgáltatásként az Azure Kubernetes Service használatával.
+description: Ismerje meg, hogyan telepítheti az Azure Machine Learning-modelleket webszolgáltatásként az Azure Kubernetes-szolgáltatás használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,65 +11,65 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
 ms.openlocfilehash: db2e80ebb6cbe5f31f2d99a1403a15daf38fd877
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722407"
 ---
-# <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése Azure Kubernetes Service-fürtön
+# <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése egy Azure Kubernetes-szolgáltatásfürtben
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként az Azure Kubernetes szolgáltatásban (ak) a Azure Machine Learning használatával. Az Azure Kubernetes szolgáltatás kiválóan alkalmas a nagy léptékű éles környezetekben való üzembe helyezésre. Ha a következő lehetőségek közül egyet vagy többet szeretne használni, használja az Azure Kubernetes szolgáltatást:
+Ismerje meg, hogyan használhatja az Azure Machine Learning egy modell webszolgáltatásként az Azure Kubernetes szolgáltatás (AKS) használatával. Az Azure Kubernetes szolgáltatás nagy méretű éles környezetek esetén is alkalmas. Az Azure Kubernetes-szolgáltatást akkor használja, ha az alábbi képességek közül egyre van szüksége:
 
 - __Gyors válaszidő__.
-- A telepített szolgáltatás automatikus __skálázása__ .
-- __Hardveres gyorsítási__ lehetőségek, például GPU és mező – programozható Gate-tömbök (FPGA).
+- Az üzembe helyezett szolgáltatás __automatikus skálázása.__
+- __Hardveres gyorsítási__ lehetőségek, például GPU és mezőprogramozható kaputömbök (FPGA).
 
 > [!IMPORTANT]
-> A fürt skálázása nincs megadva a Azure Machine Learning SDK-n keresztül. Az AK-fürtök csomópontjainak méretezésével kapcsolatos további információkért lásd: [a csomópontok számának skálázása egy AK-fürtben](../aks/scale-cluster.md).
+> Fürtskálázás nem érhető el az Azure Machine Learning SDK.Cluster scaling is not provided through the Azure Machine Learning SDK. Az AKS-fürt csomópontjainak méretezése című témakörben talál további információt [az AKS-fürt csomópontszámának méretezése című témakörben.](../aks/scale-cluster.md)
 
-Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a __munkaterülethez csatlakoztatott__AK-fürtbe helyezi üzembe a szolgáltatást. Az AK-fürtök kétféleképpen csatlakoztathatók a munkaterülethez:
+Az Azure Kubernetes szolgáltatásra való üzembe helyezéskor a munkaterülethez csatlakoztatott AKS-fürtre __telepíti a központi telepítést.__ Az AKS-fürtöket kétféleképpen kapcsolhatja össze a munkaterülettel:
 
-* Hozza létre az AK-fürtöt az Azure Machine Learning SDK, a Machine Learning parancssori felület vagy a [Azure Machine learning Studio](https://ml.azure.com)használatával. Ez a folyamat automatikusan csatlakoztatja a fürtöt a munkaterülethez.
-* Csatoljon egy meglévő AK-fürtöt az Azure Machine Learning-munkaterülethez. A fürtök csatlakoztathatók a Azure Machine Learning SDK, Machine Learning CLI vagy a Azure Machine Learning Studio használatával.
+* Hozza létre az AKS-fürtöt az Azure Machine Learning SDK, a Machine Learning CLI vagy az [Azure Machine Learning studio](https://ml.azure.com)használatával. Ez a folyamat automatikusan összekapcsolja a fürtöt a munkaterülettel.
+* Meglévő AKS-fürt csatolása az Azure Machine Learning-munkaterülethez. A fürt az Azure Machine Learning SDK, a Machine Learning CLI vagy az Azure Machine Learning studio használatával csatolható.
 
 > [!IMPORTANT]
-> A létrehozási vagy a mellékleti folyamat egy egyszeri feladat. Ha egy AK-fürt csatlakozik a munkaterülethez, használhatja azt az üzembe helyezésekhez. Ha már nincs szüksége rá, leválaszthatja vagy törölheti az AK-fürtöt. A leválasztást vagy törlést követően a továbbiakban nem fogja tudni telepíteni a fürtöt.
+> A létrehozási vagy csatolási folyamat egyszeri feladat. Miután egy AKS-fürt csatlakozik a munkaterülethez, használhatja azt a központi telepítésekhez. Leválaszthatja vagy törölheti az AKS-fürtöt, ha már nincs rá szüksége. Leválasztva vagy törölve a továbbiakban nem lesz képes telepíteni a fürtre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
+- Egy Azure Machine Learning-munkaterület. További információ: [Create an Azure Machine Learning workspace](how-to-manage-workspace.md).
 
-- A munkaterületen regisztrált gépi tanulási modell. Ha nem rendelkezik regisztrált modellel, tekintse meg a [modellek üzembe helyezésének módját és helyét](how-to-deploy-and-where.md).
+- A munkaterületen regisztrált gépi tanulási modell. Ha nem rendelkezik regisztrált modellel, olvassa el a Modellek üzembe helyezése és [helye.](how-to-deploy-and-where.md)
 
-- Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](tutorial-setup-vscode-extension.md).
+- Az [Azure CLI-bővítmény a Machine Learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [az Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)vagy az [Azure Machine Learning Visual Studio Code bővítmény.](tutorial-setup-vscode-extension.md)
 
-- A cikkben szereplő __Python__ -kódrészletek azt feltételezik, hogy a következő változók vannak beállítva:
+- A cikkben szereplő __Python-kódrészletek__ feltételezik, hogy a következő változók vannak beállítva:
 
-    * `ws` – állítsa be a munkaterületre.
-    * `model` – a regisztrált modellre van állítva.
-    * `inference_config` – a modellre vonatkozó következtetési konfigurációra van beállítva.
+    * `ws`- Állítsa be a munkaterületet.
+    * `model`- Állítsa be a regisztrált modell.
+    * `inference_config`- Állítsa be a következtetés konfigurációját a modell.
 
-    A változók beállításával kapcsolatos további információkért lásd: [how és How to Deploy models (modellek üzembe helyezése](how-to-deploy-and-where.md)).
+    A változók beállításáról a [Modellek üzembe helyezése című](how-to-deploy-and-where.md)témakörben talál további információt.
 
-- A cikkben szereplő __CLI__ -kódrészletek azt feltételezik, hogy létrehozott egy `inferenceconfig.json` dokumentumot. A dokumentum létrehozásával kapcsolatos további információkért lásd: [how és How to Deploy models (modellek üzembe helyezése](how-to-deploy-and-where.md)).
+- A cikkben szereplő __CLI-kódrészletek__ feltételezik, `inferenceconfig.json` hogy létrehozott egy dokumentumot. A dokumentum létrehozásáról további információt a [Modellek üzembe helyezése című](how-to-deploy-and-where.md)témakörben talál.
 
-## <a name="create-a-new-aks-cluster"></a>Új AK-fürt létrehozása
+## <a name="create-a-new-aks-cluster"></a>Új AKS-fürt létrehozása
 
-**Becsült idő**: körülbelül 20 perc.
+**Becsült idő**: Körülbelül 20 perc.
 
-Egy AK-fürt létrehozása vagy csatolása egy egyszeri folyamat a munkaterülethez. Újból felhasználhatja a fürt több telepítéshez. Ha törli a fürtöt vagy az azt tartalmazó erőforráscsoportot, létre kell hoznia egy új fürtöt, amikor legközelebb telepítenie kell. A munkaterülethez több AK-alapú fürtök is tartozhatnak.
+Az AKS-fürt létrehozása vagy csatolása a munkaterület egyszeri folyamata. Ezt a fürtöt több központi telepítéshez is felhasználhatja. Ha törli a fürtöt vagy az azt tartalmazó erőforráscsoportot, a következő üzembe helyezéskor új fürtöt kell létrehoznia. A munkaterülethez több AKS-fürt is csatlakoztatható.
 
 > [!TIP]
-> Ha Azure-Virtual Network használatával szeretné biztonságossá tenni az AK-fürtöt, először létre kell hoznia a virtuális hálózatot. További információ: [biztonságos kísérletezés és következtetés az Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
+> Ha az AKS-fürtöt egy Azure virtuális hálózaton keresztül szeretné biztonságossá tenni, először létre kell hoznia a virtuális hálózatot. További információ: [Biztonságos kísérletezés és következtetés az Azure virtuális hálózattal.](how-to-enable-virtual-network.md#aksvnet)
 
-Ha AK-fürtöt kíván létrehozni a __fejlesztéshez__, az __ellenőrzéshez__és a __teszteléshez__ az éles környezet helyett, megadhatja a __fürt célját__ a __fejlesztői teszthez__.
+Ha éles környezet helyett __fejlesztési,__ __érvényesítési__és __tesztelési__ AKS-fürtöt szeretne létrehozni, megadhatja a __fejlesztői__ __tesztelés__célját.
 
 > [!WARNING]
-> Ha beállítja a `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, a létrehozott fürt nem alkalmas üzemi szintű forgalomra, és növelheti a következtetési időt. A fejlesztési és tesztelési fürtök szintén nem garantálják a hibatűrést. Legalább 2 virtuális processzort ajánlunk fejlesztési és tesztelési fürtökhöz.
+> Ha beállítja, `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`a létrehozott fürt nem alkalmas éles szintű forgalomra, és növelheti a következtetési időket. A fejlesztői és tesztelési fürtök szintén nem garantálják a hibatűrést. Legalább 2 virtuális processzort ajánlunk fejlesztési és tesztelési fürtökhöz.
 
-Az alábbi példák bemutatják, hogyan hozhat létre egy új AK-fürtöt az SDK és a parancssori felület használatával:
+Az alábbi példák bemutatják, hogyan hozhat létre új AKS-fürtöt az SDK és a CLI használatával:
 
 **Az SDK használata**
 
@@ -92,53 +92,53 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> Ha [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)a `agent_count` és a `vm_size`egyéni értékeit választja, és a `cluster_purpose` nem `DEV_TEST`, akkor meg kell győződnie arról, `agent_count` megszorozva `vm_size` nagyobb vagy egyenlő, mint 12 virtuális processzor. Ha például "Standard_D3_v2" `vm_size` használ, amely 4 virtuális processzorral rendelkezik, akkor válasszon ki egy 3 vagy több `agent_count`.
+> Ha [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)a , és `agent_count` a `vm_size`, `cluster_purpose` és `DEV_TEST`a, és a, akkor győződjön meg arról, `agent_count` hogy szorozva `vm_size` 12 virtuális PROCESSZORokkal nagyobb vagy azzal egyenlő. Ha például a `vm_size` 4 virtuális processzort használó "Standard_D3_v2" (Standard_D3_v2) `agent_count` használ, akkor 3-as vagy nagyobb processzort kell választania.
 >
-> Az Azure Machine Learning SDK nem támogatja az AK-fürtök méretezését. A fürt csomópontjainak méretezéséhez használja a Azure Machine Learning Studióban az AK-fürt felhasználói felületét. Csak a csomópontok számát módosíthatja, nem a fürt virtuálisgép-méretét.
+> Az Azure Machine Learning SDK nem nyújt támogatást az AKS-fürt méretezése. A fürt csomópontjainak méretezéséhez használja a felhasználói felületet az AKS-fürthöz az Azure Machine Learning-stúdióban. Csak a csomópontszámát módosíthatja, a fürt virtuális gépméretét nem.
 
-Az ebben a példában használt osztályokkal, metódusokkal és paraméterekkel kapcsolatos további információkért tekintse meg a következő dokumentációt:
+A példában használt osztályokról, módszerekről és paraméterekről a következő referenciadokumentumokban talál további információt:
 
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)
-* [AksCompute. provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [ComputeTarget. Create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget. wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#wait-for-completion-show-output-false-)
+* [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [Számítási cél.create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)
+* [Számítási cél.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#wait-for-completion-show-output-false-)
 
-**A parancssori felület használata**
+**A CLI használata**
 
 ```azurecli
 az ml computetarget create aks -n myaks
 ```
 
-További információ: az [ml computetarget Create AK](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference.
+További információ: az [az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference.
 
-## <a name="attach-an-existing-aks-cluster"></a>Meglévő AK-fürt csatolása
+## <a name="attach-an-existing-aks-cluster"></a>Meglévő AKS-fürt csatolása
 
-**Becsült idő:** Körülbelül 5 percet vesz igénybe.
+**Becsült idő:** Körülbelül 5 perc.
 
-Ha már rendelkezik AK-fürttel az Azure-előfizetésben, és 1,17-es vagy alacsonyabb verziójú, akkor a lemezkép üzembe helyezéséhez használhatja azt.
+Ha már rendelkezik AKS-fürtaz Azure-előfizetésében, és ez az 1.17-es vagy alacsonyabb verzió, használhatja a lemezkép üzembe helyezéséhez.
 
 > [!TIP]
-> A meglévő AK-fürt a Azure Machine Learning munkaterülettől eltérő Azure-régióban is lehet.
+> A meglévő AKS-fürt lehet az Azure Machine Learning-munkaterülettől eltérő Azure-régióban.
 >
-> Ha Azure-Virtual Network használatával szeretné biztonságossá tenni az AK-fürtöt, először létre kell hoznia a virtuális hálózatot. További információ: [biztonságos kísérletezés és következtetés az Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
+> Ha az AKS-fürtöt egy Azure virtuális hálózaton keresztül szeretné biztonságossá tenni, először létre kell hoznia a virtuális hálózatot. További információ: [Biztonságos kísérletezés és következtetés az Azure virtuális hálózattal.](how-to-enable-virtual-network.md#aksvnet)
 
-Ha AK-fürtöt csatol egy munkaterülethez, megadhatja, hogyan fogja használni a fürtöt a `cluster_purpose` paraméter beállításával.
+Amikor a `cluster_purpose` paraméter beállításával AKS-fürtöt csatlakoztat egy munkaterülethez, megadhatja, hogyan használja a fürtöt.
 
-Ha nem állítja be a `cluster_purpose` paramétert, vagy beállítja a `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, akkor a fürtnek legalább 12 virtuális CPU-t kell használnia.
+Ha nem állítja `cluster_purpose` be a `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`paramétert, vagy nem állítja be a paramétert, akkor a fürtnek legalább 12 virtuális processzort kell rendelkezésre állnia.
 
-Ha beállítja `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, akkor a fürtnek nem kell 12 virtuális processzorral rendelkeznie. A fejlesztéshez és teszteléshez legalább 2 virtuális processzort ajánlunk. A fejlesztéshez és teszteléshez konfigurált fürt azonban nem alkalmas a termelési szint forgalmára, és növelheti a következtetési időt. A fejlesztési és tesztelési fürtök szintén nem garantálják a hibatűrést.
+Ha beállítja a , `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`majd a fürt nem kell 12 virtuális processzorok. Javasoljuk, hogy legalább 2 virtuális CPU-k fejlesztési/tesztelési. Azonban a fürt, amely konfigurálva van a fejlesztési/tesztelési nem alkalmas éles szintű forgalmat, és növelheti a következtetési idő. A fejlesztői és tesztelési fürtök szintén nem garantálják a hibatűrést.
 
 > [!WARNING]
-> Ne hozzon létre több, egyidejű mellékletet ugyanahhoz az AK-fürthöz a munkaterületről. Például egy AK-fürt csatolása egy munkaterülethez két különböző név használatával. Minden új melléklet megtöri az előző meglévő melléklet (eke) t.
+> Ne hozzon létre több, egyidejű mellékletet ugyanahhoz az AKS-fürthöz a munkaterületről. Ha például egy AKS-fürtöt két különböző névvel kapcsol egy munkaterülethez. Minden új melléklet megszakítja a korábbi melléklet(eke)t.
 >
-> Ha egy AK-fürtöt újra szeretne csatlakoztatni, például az SSL vagy más fürtkonfiguráció beállításainak módosításához, először el kell távolítania a meglévő mellékletet a [AksCompute. leválasztás ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--)használatával.
+> Ha újra csatolni szeretne egy AKS-fürtöt, például az SSL vagy más fürtkonfigurációs beállítás módosításához, először el kell távolítania a meglévő mellékletet az [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--)használatával.
 
-A következő cikkekből megtudhatja, hogyan hozhat létre egy AK-fürtöt az Azure CLI vagy a portál használatával:
+Az AKS-fürt Azure CLI vagy portál használatával történő létrehozásáról az alábbi cikkekben talál további információt:
 
-* [AK-fürt létrehozása (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
-* [AK-fürt létrehozása (portál)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
+* [AKS-fürt (CLI) létrehozása](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
+* [AKS-fürt (portál) létrehozása](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
-Az alábbi példák bemutatják, hogyan csatolhat egy meglévő AK-fürtöt a munkaterülethez:
+Az alábbi példák bemutatják, hogyan csatolhat egy meglévő AKS-fürtöt a munkaterülethez:
 
 **Az SDK használata**
 
@@ -157,37 +157,37 @@ attach_config = AksCompute.attach_configuration(resource_group = resource_group,
 aks_target = ComputeTarget.attach(ws, 'myaks', attach_config)
 ```
 
-Az ebben a példában használt osztályokkal, metódusokkal és paraméterekkel kapcsolatos további információkért tekintse meg a következő dokumentációt:
+A példában használt osztályokról, módszerekről és paraméterekről a következő referenciadokumentumokban talál további információt:
 
-* [AksCompute. attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)
-* [AksCompute. Attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#attach-workspace--name--attach-configuration-)
+* [AksCompute.attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#attach-workspace--name--attach-configuration-)
 
-**A parancssori felület használata**
+**A CLI használata**
 
-Meglévő fürt parancssori felülettel való csatolásához le kell kérnie a meglévő fürt erőforrás-AZONOSÍTÓját. Az érték beszerzéséhez használja a következő parancsot. Cserélje le a `myexistingcluster`t az AK-fürt nevére. Cserélje le a `myresourcegroup`t a fürtöt tartalmazó erőforráscsoporthoz:
+Ha meglévő fürthöz szeretne csatolni a CLI-t, be kell szereznie a meglévő fürt erőforrásazonosítóját. Az érték levételéhez használja a következő parancsot. Cserélje `myexistingcluster` le az AKS-fürt nevét. Cserélje `myresourcegroup` le a fürtöt tartalmazó erőforráscsoportra:
 
 ```azurecli
 az aks show -n myexistingcluster -g myresourcegroup --query id
 ```
 
-Ez a parancs az alábbi szöveghez hasonló értéket ad vissza:
+Ez a parancs a következő höz hasonló értéket ad vissza:
 
 ```text
 /subscriptions/{GUID}/resourcegroups/{myresourcegroup}/providers/Microsoft.ContainerService/managedClusters/{myexistingcluster}
 ```
 
-Ha a meglévő fürtöt a munkaterülethez szeretné csatolni, használja a következő parancsot. Cserélje le a `aksresourceid` értéket az előző parancs által visszaadott értékre. Cserélje le a `myresourcegroup`t a munkaterületet tartalmazó erőforráscsoporthoz. Cserélje le a `myworkspace`t a munkaterület nevére.
+Ha a meglévő fürtöt a munkaterülethez szeretné csatolni, használja a következő parancsot. Cserélje `aksresourceid` le az előző parancs által visszaadott értékre. Cserélje `myresourcegroup` le a munkaterületet tartalmazó erőforráscsoportra. Cserélje `myworkspace` le a munkaterület nevét.
 
 ```azurecli
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-További információ: az [ml computetarget Attach AK](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) -referenciája.
+További információ: az [az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) reference.
 
 ## <a name="deploy-to-aks"></a>Üzembe helyezés az AKS-ben
 
-Ha modellt szeretne üzembe helyezni az Azure Kubernetes szolgáltatásban, hozzon létre egy __központi telepítési konfigurációt__ , amely leírja a szükséges számítási erőforrásokat. Például a magok és a memória száma. Szüksége lesz egy __következtetésre__is, amely leírja a modell és a webszolgáltatás üzemeltetéséhez szükséges környezetet. A következtetések konfigurációjának létrehozásáról további információt a [modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)című témakörben talál.
+Egy modell üzembe helyezéséhez az Azure Kubernetes-szolgáltatás, hozzon létre egy __központi telepítési konfigurációt,__ amely leírja a szükséges számítási erőforrásokat. Például a magok száma és a memória. A modell és a webszolgáltatás üzemeltetéséhez szükséges környezetet is leíró __konfigurációra__van szükség. A következtetési konfiguráció létrehozásáról további információt a Modellek üzembe helyezése című témakörben [talál.](how-to-deploy-and-where.md)
 
 ### <a name="using-the-sdk"></a>Az SDK használata
 
@@ -206,16 +206,16 @@ print(service.state)
 print(service.get_logs())
 ```
 
-Az ebben a példában használt osztályokkal, metódusokkal és paraméterekkel kapcsolatos további információkért tekintse meg a következő dokumentációt:
+A példában használt osztályokról, módszerekről és paraméterekről a következő referenciadokumentumokban talál további információt:
 
 * [AksCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute?view=azure-ml-py)
-* [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
-* [Modell. Deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
-* [Webszolgáltatás. wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#wait-for-deployment-show-output-false-)
+* [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
+* [Model.deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
+* [Webszolgáltatás.wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#wait-for-deployment-show-output-false-)
 
-### <a name="using-the-cli"></a>A parancssori felület használata
+### <a name="using-the-cli"></a>A CLI használata
 
-A CLI használatával történő üzembe helyezéshez használja a következő parancsot. Cserélje le a `myaks`t az AK számítási cél nevére. Cserélje le a `mymodel:1`t a regisztrált modell nevére és verziójára. Cserélje le a `myservice`t a következő névre, hogy megadja a szolgáltatást:
+A CLI használatával történő telepítéshez használja a következő parancsot. Cserélje `myaks` le az AKS számítási cél nevére. Cserélje `mymodel:1` le a regisztrált modell nevére és verziójára. Cserélje `myservice` le a nevét, hogy ezt a szolgáltatást:
 
 ```azurecli-interactive
 az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
@@ -223,20 +223,20 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-További információ: az [ml Model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) Reference.
+További információ: az [ml modell üzembe helyezési](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) referencia.
 
 ### <a name="using-vs-code"></a>A VS Code használata
 
-A VS Code használatával kapcsolatos információkért lásd: [üzembe helyezés az AK-n keresztül a vs Code bővítménnyel](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model).
+A VS-kód használatával kapcsolatos további tudnivalókért tekintse meg [az AKS-ra való telepítést a VS Code bővítményen keresztül.](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)
 
 > [!IMPORTANT]
-> A VS code-on keresztül történő üzembe helyezéshez az AK-fürt létrehozása vagy a munkaterülethez való csatolása szükséges.
+> A VS-kódon keresztül történő üzembe helyezéshez az AKS-fürtöt előre létre kell hozni, vagy csatolni kell a munkaterülethez.
 
-## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Modellek üzembe helyezése az AK-ban vezérelt bevezetéssel (előzetes verzió)
-A modell verzióinak elemzése és előléptetése vezérelt módon, végpontok használatával. Legfeljebb 6 verziót helyezzen üzembe egy végpont mögött, és konfigurálja a pontozási forgalom%-át az egyes telepített verzióra. Az alkalmazások elemzése lehetővé teszi a végpontok és a telepített verziók működési mérőszámának megtekintését.
+## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Modellek üzembe helyezése az AKS-re ellenőrzött bevezetéssel (előzetes verzió)
+Modellverziók elemzése és előléptetése ellenőrzött módon végpontok használatával. Egyetlen végpont mögött legfeljebb 6 verziót telepíthet, és konfigurálja a pontozási forgalom %-át az egyes telepített verziókra. Engedélyezheti, hogy az alkalmazáselemzések a végpontok és az üzembe helyezett verziók működési metrikáit tekintsék.
 
 ### <a name="create-an-endpoint"></a>Végpont létrehozása
-Ha készen áll a modellek üzembe helyezésére, hozzon létre egy pontozási végpontot, és telepítse az első verziót. Az alábbi lépésből megtudhatja, hogyan helyezheti üzembe és hozza létre a végpontot az SDK használatával. Az első központi telepítés az alapértelmezett verzióként lesz meghatározva, ami azt jelenti, hogy az összes verzióban meghatározatlan forgalom százalékos értéke az alapértelmezett verzió lesz.  
+Miután készen áll a modellek üzembe helyezésére, hozzon létre egy pontozási végpontot, és telepítse az első verziót. Az alábbi lépés bemutatja, hogyan telepítheti és hozhatja létre a végpontot az SDK használatával. Az első központi telepítés lesz definiálva, mint az alapértelmezett verzió, ami azt jelenti, hogy a meghatározatlan forgalom percentilis az összes verzió megy az alapértelmezett verzióra.  
 
 ```python
 import azureml.core,
@@ -260,9 +260,9 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
  endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
  ```
 
-### <a name="update-and-add-versions-to-an-endpoint"></a>Verziók frissítése és hozzáadása egy végponthoz
+### <a name="update-and-add-versions-to-an-endpoint"></a>Verziók frissítése és hozzáadása végponthoz
 
-Adjon hozzá egy újabb verziót a végponthoz, és konfigurálja a pontozási forgalom százalékos értékének megadását a verzióra. A verzióknak két típusa van, egy vezérlő és egy kezelési verzió. Több kezelési verzió is felhasználható egyetlen vezérlő verziójának összehasonlítására.
+Adjon hozzá egy másik verziót a végponthoz, és konfigurálja a pontozási forgalom percentilis megy a verzióra. Kétféle verzió létezik: egy kontroll és egy kezelési verzió. Nem lehet több kezelési verzió, hogy segítsen összehasonlítani egy kontroll verzió.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -277,7 +277,7 @@ endpoint.create_version(version_name = version_name_add,
                         traffic_percentile = 10)
 ```
 
-Meglévő verziók frissítése vagy törlése egy végponton. Megváltoztathatja a verzió alapértelmezett típusát, a vezérlő típusát és a forgalmi percentilis értéket.
+Frissítse a meglévő verziókat, vagy törölje őket egy végponton. Módosíthatja a verzió alapértelmezett típusát, vezérlőtípusát és a forgalom százalékos arányát.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -295,21 +295,21 @@ endpoint.delete_version(version_name="versionb")
 ```
 
 
-## <a name="web-service-authentication"></a>Webszolgáltatás-hitelesítés
+## <a name="web-service-authentication"></a>Webszolgáltatás hitelesítése
 
-Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a __kulcs alapú__ hitelesítés alapértelmezés szerint engedélyezve van. Engedélyezheti a __jogkivonat-alapú__ hitelesítést is. A jogkivonat-alapú hitelesítéshez az szükséges, hogy az ügyfelek egy Azure Active Directory fiókot használjanak a hitelesítési jogkivonat igényléséhez, amely a központilag telepített szolgáltatásra irányuló kérések elvégzésére szolgál.
+Az Azure Kubernetes-szolgáltatásüzembe helyezéskor a __kulcsalapú__ hitelesítés alapértelmezés szerint engedélyezve van. A __tokenalapú__ hitelesítést is engedélyezheti. A jogkivonat-alapú hitelesítés megköveteli, hogy az ügyfelek egy Azure Active Directory-fiók használatával kérjenek egy hitelesítési jogkivonatot, amely az üzembe helyezett szolgáltatásnak történő kérelmek teljesítésére szolgál.
 
-A hitelesítés __letiltásához__ állítsa be a `auth_enabled=False` paramétert a telepítési konfiguráció létrehozásakor. Az alábbi példa az SDK használatával letiltja a hitelesítést:
+A hitelesítés __letiltásához__ állítsa be a `auth_enabled=False` paramétert a központi telepítési konfiguráció létrehozásakor. A következő példa letiltja a hitelesítést az SDK használatával:
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, auth_enabled=False)
 ```
 
-Az ügyfélalkalmazások általi hitelesítéssel kapcsolatos információkért tekintse meg a [webszolgáltatásként üzembe helyezett Azure Machine learning modell](how-to-consume-web-service.md)felhasználását ismertető témakört.
+Az ügyfélalkalmazásból történő hitelesítésről a [Webszolgáltatásként telepített Azure Machine Learning-modell](how-to-consume-web-service.md)felhasználásáról nyújt be információt.
 
 ### <a name="authentication-with-keys"></a>Hitelesítés kulcsokkal
 
-Ha a kulcsos hitelesítés engedélyezve van, a `get_keys` metódussal kérhet le elsődleges és másodlagos hitelesítési kulcsot:
+Ha a kulcshitelesítés engedélyezve `get_keys` van, a módszerrel lekérheti az elsődleges és másodlagos hitelesítési kulcsot:
 
 ```python
 primary, secondary = service.get_keys()
@@ -317,17 +317,17 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Ha újra kell létrehoznia egy kulcsot, használja a [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
+> Ha újra kell generálnia egy kulcsot, használja a[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
 
 ### <a name="authentication-with-tokens"></a>Hitelesítés jogkivonatokkal
 
-A jogkivonat-hitelesítés engedélyezéséhez állítsa be a `token_auth_enabled=True` paramétert egy központi telepítés létrehozásakor vagy frissítésekor. Az alábbi példa lehetővé teszi a jogkivonat-hitelesítés használatát az SDK-val:
+A tokenhitelesítés engedélyezéséhez `token_auth_enabled=True` állítsa be a paramétert központi telepítés létrehozásakor vagy frissítésekor. A következő példa engedélyezi a tokenhitelesítést az SDK használatával:
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, token_auth_enabled=True)
 ```
 
-Ha engedélyezve van a jogkivonat-hitelesítés, a `get_token` metódussal kérhet le egy JWT tokent és a jogkivonat lejárati idejét:
+Ha a tokenhitelesítés engedélyezve `get_token` van, a módszer segítségével lekérheti a JWT-jogkivonatot és a token lejárati idejét:
 
 ```python
 token, refresh_by = service.get_token()
@@ -335,20 +335,20 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Új jogkivonatot kell kérnie a jogkivonat `refresh_by` időpontja után.
+> A jogkivonat ideje után új jogkivonatot kell kérnie. `refresh_by`
 >
-> A Microsoft nyomatékosan javasolja, hogy a Azure Machine Learning munkaterületet ugyanabban a régióban hozza létre, mint az Azure Kubernetes Service-fürtöt. A webszolgáltatások tokenekkel történő hitelesítéséhez a webszolgáltatás meghívja a Azure Machine Learning munkaterület létrehozásához használt régiót. Ha a munkaterület régiója nem érhető el, akkor sem fogja tudni lehívni a webszolgáltatáshoz tartozó jogkivonatot, ha a fürt a munkaterülettől eltérő régióban található. Ez gyakorlatilag a jogkivonat-alapú hitelesítés nem érhető el, amíg a munkaterület régiója újra elérhetővé nem válik. Emellett minél nagyobb a távolság a fürt régiója és a munkaterület régiója között, annál hosszabb ideig tart a token beolvasása.
+> A Microsoft azt javasolja, hogy hozza létre az Azure Machine Learning-munkaterületet ugyanabban a régióban, mint az Azure Kubernetes service-fürt. A jogkivonattal történő hitelesítéshez a webszolgáltatás hívást kezdeményez arra a régióra, amelyben az Azure Machine Learning-munkaterület létrejön. Ha a munkaterület régiója nem érhető el, akkor nem lesz képes lekérni egy jogkivonatot a webszolgáltatáshoz, még akkor sem, ha a fürt a munkaterülettől eltérő régióban van. Ez hatékonyan eredményezi a token-alapú hitelesítés nem érhető el, amíg a munkaterület régiója újra elérhetővé válik. Ezenkívül minél nagyobb a távolság a fürt régiója és a munkaterület régiója között, annál tovább tart a jogkivonat beolvasása.
 
-## <a name="update-the-web-service"></a>A web service frissítése
+## <a name="update-the-web-service"></a>A webszolgáltatás frissítése
 
 [!INCLUDE [aml-update-web-service](../../includes/machine-learning-update-web-service.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Biztonságos kísérletezés és következtetés egy virtuális hálózaton](how-to-enable-virtual-network.md)
+* [Biztonságos kísérletezés és következtetés a virtuális hálózatban](how-to-enable-virtual-network.md)
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
-* [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
-* [Biztonságos Azure Machine Learning webszolgáltatások SSL használatával](how-to-secure-web-service.md)
-* [Webszolgáltatásként üzembe helyezett ML-modell felhasználása](how-to-consume-web-service.md)
-* [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
-* [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)
+* [Központi telepítés – hibaelhárítás](how-to-troubleshoot-deployment.md)
+* [Biztonságos Azure Machine Learning-webszolgáltatások SSL-lel](how-to-secure-web-service.md)
+* [Webszolgáltatásként üzembe helyezett ml-modell felhasználása](how-to-consume-web-service.md)
+* [Az Azure Machine Learning-modellek figyelése az Application Insights segítségével](how-to-enable-app-insights.md)
+* [Adatok gyűjtése a termelésben lévő modellekről](how-to-enable-data-collection.md)

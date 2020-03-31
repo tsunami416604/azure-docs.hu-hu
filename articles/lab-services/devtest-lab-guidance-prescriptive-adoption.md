@@ -1,6 +1,6 @@
 ---
-title: Az Azure DevTest Labs elfogadják a vállalat számára
-description: Ez a cikk nyújt részletes útmutatást a vállalat az Azure DevTest Labs használatával.
+title: Az Azure DevTest Labs elfogadása a vállalatszámára
+description: Ez a cikk előíró útmutatást nyújt az Azure DevTest Labs vállalati használatához.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,31 +14,31 @@ ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 32e828f420d41d7a67e4f41ac8a4a0698711ce2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64916408"
 ---
 # <a name="devtest-labs-in-the-enterprise"></a>Vállalati DevTest Labs
-Akik vállalatok gyorsan vezetnek be a felhőben, mert [előnyöket](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) , amelyek rugalmasságot, a rugalmasságot és költséghatékonyságot tartalmaznak. Az első lépéseket gyakran fejlesztési és tesztelési feladataikat. Az Azure DevTest Labs biztosít [funkciók](devtest-lab-concepts.md) , amely a vállalati és a támogatási előnyökkel jár [kulcsfontosságú a fejlesztési és tesztelési célra](devtest-lab-guidance-get-started.md).
+A vállalatok gyorsan alkalmazzák a felhőt az agilitást, a rugalmasságot és a [gazdaságosságot](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) is magában foglalja. Az első lépések gyakran fejlesztési és tesztelési számítási feladatok. Az Azure DevTest Labs olyan [funkciókat](devtest-lab-concepts.md) kínál, amelyek a vállalati és a [kulcsfejlesztési/tesztelési forgatókönyveket támogatják.](devtest-lab-guidance-get-started.md)
 
-Az olyan vállalatok, amelyek a munkaterhelések áttelepítését a felhőbe a gyakori problémák a következők:
+A számítási feladatokat a felhőbe áttelepítő vállalatok gyakori aggályai a következők:
 
-- [Fejlesztési-tesztelési erőforrások védelme](devtest-lab-guidance-governance-policy-compliance.md)
-- [Kezelése és a költségek ismertetése](devtest-lab-guidance-governance-cost-ownership.md)
-- Önkiszolgáló engedélyezése fejlesztők számára a vállalati biztonsági és megfelelőségi veszélyeztetése nélkül
-- Automatizálása és a DevTest Labs-további forgatókönyveket fednek le kiterjesztése
-- [Erőforrások ezer DevTest Labs-alapú megoldás skálázása](devtest-lab-guidance-scale.md)
-- [A DevTest Labs a nagyméretű telepítésekkel](devtest-lab-guidance-orchestrate-implementation.md)
-- [A koncepció igazolása – első lépések](devtest-lab-guidance-orchestrate-implementation.md)
+- [Fejlesztési/tesztelési erőforrások biztosítása](devtest-lab-guidance-governance-policy-compliance.md)
+- [A költségek kezelése és megértése](devtest-lab-guidance-governance-cost-ownership.md)
+- Önkiszolgáló szolgáltatás engedélyezése a fejlesztők számára a vállalati biztonság és megfelelőség veszélyeztetése nélkül
+- A DevTest Labs automatizálása és bővítése további forgatókönyvekkel
+- [DevTest Labs-alapú megoldás méretezése több ezer erőforrásra](devtest-lab-guidance-scale.md)
+- [A DevTest Labs nagyméretű telepítései](devtest-lab-guidance-orchestrate-implementation.md)
+- [Első lépések a koncepció igazolásával](devtest-lab-guidance-orchestrate-implementation.md)
 
 ## <a name="intended-audience"></a>Célközönség
-Ez a dokumentáció a vállalati informatikai tervezők, a tervezőket és a vezetők, akik és központi telepítések áttekintése és műveletek felügyeletéért felelős. Ezek a cikkek a teljes folyamat, illetve a javasolt tervezési alapelvek kiemelni. A célja, hogy egy biztonságos, stabil fejlesztési-tesztelési környezet, amely végső soron az Azure DevTest Labs szervezeten belüli bevezetését meghajtók támogatása.
+Ez a dokumentáció olyan vállalati informatikai tervezőknek, építészeknek és vezetőknek szól, akik felelősek a központi telepítések létrehozásáért és felülvizsgálatáért, valamint a műveletek felügyeletéért. Ezek a cikkek hangsúlyozzák az általános folyamat és az ajánlott tervezési elveket. A cél egy biztonságos és stabil fejlesztési/tesztelési környezet előmozdítása, amely végső soron az Azure DevTest Labs szervezeten belüli bevezetését ösztönzi.
 
-## <a name="enterprise-customers"></a>A vállalati felhasználók
+## <a name="enterprise-customers"></a>Nagyvállalati ügyfelek
 
-Sok aktuális DevTest Labs vállalati ügyfél sikeresen DevTest Labs használatát, fejlesztési és tesztelési számítási feladatokat a szervezetben. [További információk](https://azure.microsoft.com/case-studies/?term=DevTest+labs).
+Számos jelenlegi DevTest Labs vállalati ügyfél sikeresen használja a DevTest Labs-t a fejlesztéshez és a munkaterhelések teszteléséhez a szervezetükben. [További információ](https://azure.microsoft.com/case-studies/?term=DevTest+labs).
 
 ## <a name="next-steps"></a>További lépések
-- [A vállalati a referencia-architektúra](devtest-lab-reference-architecture.md)
+- [Hivatkozási architektúra egy vállalat számára](devtest-lab-reference-architecture.md)

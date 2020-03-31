@@ -1,6 +1,6 @@
 ---
-title: Azure Firewall minősítések
-description: A PCI, SOC, ISO és ICSA Labs Azure Firewall-tanúsítványok listája
+title: Azure tűzfal-tanúsítványok
+description: A PCI, SOC, ISO és ICSA Labs Azure tűzfal-tanúsítványainak listája
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,114 +8,114 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: victorh
 ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77482180"
 ---
-# <a name="azure-firewall-certifications"></a>Azure Firewall minősítések
+# <a name="azure-firewall-certifications"></a>Azure tűzfal-tanúsítványok
 
-A Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls (SOC), a Nemzetközi Szabványügyi Szervezet (ISO), a ICSA Labs és a HITRUST megfelelője.
+Az Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls (SOC), a Nemzetközi Szabványügyi Szervezet (ISO), az ICSA Labs és a HITRUST-kompatibilis.
 
-A következő minősítések a globális Azure-ra és a Azure Governmentra vonatkoznak.
+A következő tanúsítványok a globális Azure és az Azure Government.
 
-## <a name="global-azure-certifications"></a>Globális Azure-minősítések
+## <a name="global-azure-certifications"></a>Globális Azure-tanúsítványok
 
-A következő Azure Firewall minősítések a globális Azure-ra vonatkoznak:
+Az alábbi Azure Firewall-tanúsítványok a globális Azure-hoz tartoznak:
 
 - 23 NYCRR 500
 - AFM és DNB (Hollandia)
 - AMF és ACPR (Franciaország)
-- APRA (Ausztrália)
+- APRA(Ausztrália)
 - Argentína PDPA
-- Ausztráliai IRAP
+- Ausztrália IRAP
 - CDSA
-- CFTC 1,31
-- CSA STAR-igazolás
-- CSA STAR-minősítés
+- CFTC 1.31
+- CSA STAR tanúsítvány
+- CSA STAR tanúsítvány
 - CSA STAR önértékelés
 - Kanadai adatvédelmi törvények
-- DPP (EGYESÜLT KIRÁLYSÁG)
+- DPP(Egyesült Királyság)
 - EU ENISA IAF
-- Az EU Model záradékai
-- Európai Bankfelügyeleti Hatóság
-- FCA és PRA (Egyesült Királyság)
-- FERPA (US)
-- FFIEC (US)
+- Uniós mintazáradékok
+- Európai Bankhatóság
+- FCA és PRA (UK)
+- FERPA (Amerikai Egyesült Államok)
+- FFIEC(US)
 - FINMA (Svájc)
 - FSA (Dánia)
-- GLBA (US)
-- Németországi C5
-- GxP (FDA 21 CFR Part 11)
-- HITRUST
+- GLBA (AMERIKAI)
+- Németország C5
+- GxP (FDA 21 CFR 11. rész)
+- HITRUST (HITRUST)
 - ISO 20000-1:2011
 - ISO 22301:2012
 - ISO 27001:2013
 - ISO 27017:2015
 - ISO 27018:2014
 - ISO 9001:2015
-- Japán saját számú szabály
-- K-IZMUSOK
-- KNF (Lengyelország)
+- Japán My Number Act
+- K-ISMS
+- KNF(Lengyelország)
 - MAS és ABS (Szingapúr)
-- MPAA (US)
+- MPAA(Amerikai Egyesült Államok)
 - NBB és FSMA (Belgium)
 - NEN 7510:2011 (Hollandia)
-- NHS IG Toolkit (Egyesült Királyság)
-- Holland BIR 2012
-- OSFI (Kanada)
-- PCI DSS 1. szint
-- REGISZTRÁCIÓRA és IRDAI (India)
-- SOC 1 típus 2
-- SOC 2 Type 2
+- NHS IG toolkit (Egyesült Királyság)
+- Hollandia BIR 2012
+- OSFI(Kanada)
+- 1. szintű PCI DSS
+- RBI és IRDAI (India)
+- SOC 1 2.
+- SOC 2 típus 2
 - SOC 3
-- SOX (US)
-- Spanyolországi DPA
+- SOX (AMERIKAI)
+- Spanyolország DPA
 - TISAX
-- TruSight
-- Egyesült Királyságbeli G-Cloud
+- TruSight között
+- Egyesült Királyság G-Cloud
 - WCAG 2,0
 
 
-## <a name="azure-government-certifications"></a>Azure Government minősítések
+## <a name="azure-government-certifications"></a>Azure Government-tanúsítványok
 
-A következő Azure Firewall minősítések a Azure Government:
+Az Alábbi Azure Firewall-tanúsítványok az Azure Government-hez tartoznak:
 
 - CJIS
-- CNSSI 1253
-- CSA STAR-igazolás
+- CnsSI 1253
+- CSA STAR tanúsítvány
 - DFARS
-- DoD DISA SRG 2. szint
-- DoE 10 CFR rész 810
-- BIOTERMIKUS
+- DoD DISA SRG szint 2
+- Doe 10 CFR rész 810
+- Fül
 - FIPS 140-2
 - FedRAMP High
-- HITRUST
+- HITRUST (HITRUST)
 - IRS 1075
 - ITAR
-- MARS-E (US)
-- NERC
-- NIST kiberbiztonsági-keretrendszer
+- MARS-E (Amerikai Egyesült Államok)
+- NERC (NERC)
+- NIST kiberbiztonsági keretrendszer
 - NIST SP 800-171
-- SOC 1 típus 2
-- SOC 2 Type 2
+- SOC 1 2.
+- SOC 2 típus 2
 - SOC 3
-- SOX (US)
-- 508. szakasz Vpat
+- SOX (AMERIKAI)
+- 508. szakasz VPAT-ok
 
 ## <a name="icsa-labs-corporate-firewall-certification"></a>ICSA Labs vállalati tűzfal minősítése
 
 ![ICSA-tanúsítvány](media/overview/icsa-cert-firewall-small.png)
 
-A ICSA Labs egy vezető gyártó a harmadik féltől származó biztonsági és egészségvédelmi termékek, valamint a hálózattal összekapcsolt eszközök tesztelésében és minősítésében. A termékek megfelelőségét, megbízhatóságát és teljesítményét mérik a világ legfontosabb technológiai szállítóinak többségében.
+Az ICSA Labs vezető szállító a biztonsági és egészségügyi informatikai termékek, valamint a hálózathoz csatlakoztatott eszközök külső tesztelésében és tanúsításában. A világ legjobb technológiai gyártóinak termékmegfelelését, megbízhatóságát és teljesítményét mérik.
 
-Azure Firewall az első felhőalapú tűzfal-szolgáltatás a ICSA Labs vállalati tűzfal-tanúsítványának eléréséhez. A Azure Firewall minősítési jelentéssel kapcsolatban lásd: [ICSA Labs minősítési teszt és naplózási jelentés](https://aka.ms/ICSALabsCertification). További információkért lásd a [ICSA Labs-tűzfal minősítési programjának](https://www.icsalabs.com/technology-program/firewalls) oldalát.
+Az Azure Firewall az első felhőalapú tűzfalszolgáltatás, amely eléri az ICSA Labs vállalati tűzfalminősítését. Az Azure Firewall minősítési jelentésről az [ICSA Labs tanúsítványtesztelési és -ellenőrzési jelentésben található.](https://aka.ms/ICSALabsCertification) További információt az [ICSA Labs tűzfaltanúsítási program](https://www.icsalabs.com/technology-program/firewalls) oldalán talál.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A Microsoft megfelelőségi szolgáltatásával kapcsolatos további információkért tekintse meg a következő információkat.
+A Microsoft megfelelőségéről az alábbi információk ban talál további információt.
 
-- [A Microsoft megfelelőségi útmutatója](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide)
+- [Útmutató a Microsoft megfelelőségi útmutatójához](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide)
 - [A Microsoft Azure megfelelőségének áttekintése](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)

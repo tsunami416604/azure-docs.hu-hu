@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 11/15/2019
 ms.author: pabouwer
 ms.openlocfilehash: 562382cc1cfb6adb7e65d76e717df4c4e2962ba7
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593967"
 ---
-## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Töltse le és telepítse a Istio istioctl-ügyfél bináris fájlját
+## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Az Istio istioctl kliens bináris letöltése és telepítése
 
-A Windows PowerShell-alapú rendszerhéjában a `Invoke-WebRequest` használatával töltse le a Istio-kiadást, majd bontsa ki a `Expand-Archive` a következő módon:
+A Windows PowerShell-alapú rendszerhéjában töltse `Invoke-WebRequest` le az Istio-kiadást, majd bontsa ki `Expand-Archive` az alábbi módon:
 
 ```powershell
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -24,7 +24,7 @@ $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github
 Expand-Archive -Path "istio-$ISTIO_VERSION.zip" -DestinationPath .
 ```
 
-A `istioctl`-ügyfél bináris fájlja fut az ügyfélszámítógépen, és lehetővé teszi a Istio szolgáltatás hálójának kezelését. A következő parancsokkal telepítheti a Istio `istioctl`-ügyfél bináris fájlját PowerShell-alapú rendszerhéjba Windows rendszeren. Ezek a parancsok a `istioctl`-ügyfél bináris fájljait egy Istio mappába másolják, majd azonnal elérhetővé teszik (a jelenlegi rendszerhéjban) és véglegesen (a rendszerhéj újraindításakor) a `PATH`keresztül. A parancsok futtatásához nincs szükség emelt szintű (rendszergazdai) jogosultságokra, és nem kell újraindítani a rendszerhéjat.
+Az `istioctl` ügyfél bináris fut az ügyfélgépen, és lehetővé teszi, hogy az Istio szolgáltatás hálója. A következő parancsokkal telepítse az `istioctl` Istio-ügyfél bináris egy PowerShell-alapú rendszerhéj a Windows. Ezek a `istioctl` parancsok másolja az ügyfél bináris egy Istio mappába, majd elérhetővé mind azonnal (az `PATH`aktuális shell) és véglegesen (az egész shell újraindul) keresztül. A parancsok futtatásához nincs szükség emelt szintű (rendszergazdai) jogosultságokra, és nem kell újraindítania a rendszerhéjat.
 
 ```powershell
 # Copy istioctl.exe to C:\Istio

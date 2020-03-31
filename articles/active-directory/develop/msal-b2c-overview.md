@@ -1,7 +1,7 @@
 ---
-title: A MSAL használata a Azure Active Directory B2CLearn használatával | Azure
+title: Az MSAL használata az Azure Active Directory B2CLearn szolgáltatással | Azure
 titleSuffix: Microsoft identity platform
-description: A Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazások számára a Azure AD B2C és a jogkivonatok megszerzését a biztonságos webes API-k meghívásához. Ezek a webes API-k lehetnek Microsoft Graph, más Microsoft API-k, a másoktól származó webes API-k vagy a saját webes API-k.
+description: A Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazások számára az Azure AD B2C-vel való együttműködést, és a védett webes API-k hívására vonatkozó jogkivonatokat. Ezek a webes API-k lehetnek a Microsoft Graph, más Microsoft API-k, mások webes API-i vagy saját webes API-k.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -14,45 +14,45 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: e25564e64410701754390024a5bcfd39321343e2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696452"
 ---
-# <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>A Microsoft hitelesítési függvénytárának használata a Azure Active Directory B2C való együttműködéshez
+# <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>Az Azure Active Directory B2C szolgáltatással való együttműködést a Microsoft hitelesítési tárának használata
 
-A Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazások fejlesztői számára, hogy [Azure Active Directory B2C (Azure ad B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)használatával hitelesítsék a felhasználókat a közösségi és a helyi identitásokkal. Azure AD B2C egy Identitáskezelés szolgáltatás. A használatával testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat, amikor az alkalmazásaikat használják.
+A Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazásfejlesztők számára, hogy az [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)használatával hitelesítsék a felhasználókat a közösségi és helyi identitással. Az Azure AD B2C egy identitáskezelési szolgáltatás. Használatával testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálnak, jelentkezzenek be és kezeljék a profiljukat az alkalmazások használata során.
 
-A Azure AD B2C lehetővé teszi az alkalmazások felhasználói felületének kiírását és testreszabását, hogy zökkenőmentes élményt nyújtson ügyfeleinek.
+Az Azure AD B2C lehetővé teszi az alkalmazások felhasználói felületének márkajelzését és testreszabását is, hogy zökkenőmentes élményt nyújtson ügyfeleinek.
 
-Ez az oktatóanyag azt mutatja be, hogyan használható a MSAL az Azure AD B2C való együttműködéshez.
+Ez az oktatóanyag bemutatja, hogyan használhatja az MSAL-t az Azure AD B2C-vel való együttműködést.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nem hozott létre saját [Azure ad B2C bérlőt](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant), hozzon létre egyet most. Meglévő Azure AD B2C bérlőt is használhat.
+Ha még nem hozta létre a saját [Azure AD B2C-bérlő,](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)hozzon létre egyet most. Egy meglévő Azure AD B2C-bérlő is használható.
 
 ## <a name="javascript"></a>JavaScript
 
-A következő lépések bemutatják, hogyan használható egy egyoldalas alkalmazás a Azure AD B2C a regisztrációhoz, a bejelentkezéshez és a védett webes API meghívásához.
+A következő lépések bemutatják, hogy egy egyoldalas alkalmazás hogyan használhatja az Azure AD B2C-t a regisztrációhoz, a bejelentkezéshez és a védett webes API-k hívásához.
 
-### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
+### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 
-A hitelesítés megvalósításához először regisztrálnia kell az alkalmazást. Lásd: [az alkalmazás regisztrálása](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c) a részletes lépésekhez.
+A hitelesítés megvalósításához először regisztrálnia kell az alkalmazást. Részletes lépésekért [lásd az alkalmazás regisztrálása](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c) című témakört.
 
-### <a name="step-2-download-the-sample-application"></a>2\. lépés: a minta alkalmazás letöltése
+### <a name="step-2-download-the-sample-application"></a>2. lépés: A mintaalkalmazás letöltése
 
-Töltse le a mintát zip-fájlként, vagy klónozást a GitHubról:
+Töltse le a mintát zip-fájlként, vagy klónozza a GitHubról:
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
 
-### <a name="step-3-configure-authentication"></a>3\. lépés: a hitelesítés konfigurálása
+### <a name="step-3-configure-authentication"></a>3. lépés: Hitelesítés konfigurálása
 
-1. Nyissa meg az **index. html** fájlt a mintában.
+1. Nyissa meg az **index.html** fájlt a mintában.
 
-1. Konfigurálja a mintát az alkalmazás regisztrálása során korábban rögzített ügyfél-AZONOSÍTÓval és kulccsal. Módosítsa a kód következő sorait úgy, hogy lecseréli az értékeket a címtár és az API-k nevére:
+1. Konfigurálja a mintát az ügyfélazonosítóval és a korábban az alkalmazás regisztrálása során rögzített kulccsal. Módosítsa a következő kódsorokat úgy, hogy az értékeket a könyvtár és az API-k nevére cseréli le:
 
    ```javascript
    // The current application coordinates were pre-registered in a B2C tenant.
@@ -78,22 +78,22 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
    ```
 
-Az oktatóanyagban szereplő [felhasználói folyamat](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) neve **B2C_1_signupsignin1**. Ha más felhasználói folyamatot használ, állítsa be a **szolgáltató** értékét erre a névre.
+Az oktatóanyag [felhasználói folyamatának](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) neve **B2C_1_signupsignin1**. Ha más felhasználói folyamatnevet használ, állítsa a **jogosultsági** értéket erre a névre.
 
-### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>4\. lépés: az alkalmazás konfigurálása `b2clogin.com` használatára
+### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>4. lépés: Az alkalmazás konfigurálása a használatra`b2clogin.com`
 
-A `b2clogin.com` a `login.microsoftonline.com` helyett átirányítási URL-címként használhatja. Ezt a Azure AD B2C alkalmazásban teheti meg, amikor beállít egy identitás-szolgáltatót a regisztrációhoz és a bejelentkezéshez.
+Használhatja `b2clogin.com` helyett átirányítási `login.microsoftonline.com` URL-t. Ezt az Azure AD B2C-alkalmazásban teszi meg, amikor identitásszolgáltatót állít be a regisztrációhoz és a bejelentkezéshez.
 
-A `b2clogin.com` `https://your-tenant-name.b2clogin.com/your-tenant-guid` kontextusában való használata a következő hatásokkal jár:
+Használata `b2clogin.com` keretében a `https://your-tenant-name.b2clogin.com/your-tenant-guid` következő hatásai vannak:
 
-- A Microsoft szolgáltatásai kevesebb helyet foglalnak el a cookie-fejlécben.
-- Az URL-címek már nem tartalmaznak hivatkozást a Microsoftnak. A Azure AD B2C alkalmazás például valószínűleg `login.microsoftonline.com`ra hivatkozik.
+- A Microsoft-szolgáltatások kevesebb helyet foglalnak el a cookie-k fejlécében.
+- Az URL-ek már nem tartalmaznak hivatkozást a Microsoftra. Például az Azure AD B2C alkalmazás `login.microsoftonline.com`valószínűleg hivatkozik.
 
- `b2clogin.com`használatához frissítenie kell az alkalmazás konfigurációját.  
+ A `b2clogin.com`használatához frissítenie kell az alkalmazás konfigurációját.  
 
-- A **validateAuthority** tulajdonságot állítsa `false`értékre, hogy az átirányítások `b2clogin.com` használatával is előfordulhatnak.
+- Állítsa a **validateAuthority** tulajdonságot a `false`, `b2clogin.com` hogy az átirányítások használatával is előfordulhassanak.
 
-Az alábbi példa bemutatja, hogyan állíthatja be a tulajdonságot:
+A következő példa bemutatja, hogyan állíthatja be a tulajdonságot:
 
 ```javascript
 // The current application coordinates were pre-registered in a B2C directory.
@@ -112,13 +112,13 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 ```
 
 > [!NOTE]
-> A Azure AD B2C alkalmazás valószínűleg több helyen található `login.microsoftonline.com`ra hivatkozik, például a felhasználói folyamat referenciái és a jogkivonat-végpontok. Győződjön meg arról, hogy az engedélyezési végpont, a jogkivonat-végpont és a kiállító frissítve lett `your-tenant-name.b2clogin.com`használatára.
+> Az Azure AD B2C-alkalmazás `login.microsoftonline.com` valószínűleg több helyen hivatkozik, például a felhasználói folyamat hivatkozások és a token végpontok. Győződjön meg arról, hogy az engedélyezési végpont, a `your-tenant-name.b2clogin.com`tokenvégpont és a kibocsátó frissítése megtörtént.
 
-Kövesse [ezt a MSAL JavaScript-mintát](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#single-page-application-built-on-msaljs-with-azure-ad-b2c) a JavaScript MSAL előzetes verziójának használatával (MSAL. js). A minta egy hozzáférési jogkivonatot kap, és a Azure AD B2C által védett API-t hív meg.
+Kövesse [ezt az MSAL JavaScript mintát](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#single-page-application-built-on-msaljs-with-azure-ad-b2c) a JavaScript MSAL Preview (MSAL.js) használatáról. A minta kap egy hozzáférési jogkivonatot, és az Azure AD B2C által védett API-t hív meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információk:
 
-- [Egyéni szabályzatok](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
-- [A felhasználói felület testreszabása](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-overview)
+- [Egyéni házirendek](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
+- [Felhasználói felület testreszabása](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-overview)

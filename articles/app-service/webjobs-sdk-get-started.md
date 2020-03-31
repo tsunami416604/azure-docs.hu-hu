@@ -1,45 +1,45 @@
 ---
-title: Ismerkedés a webjobs SDK-val
-description: Bevezetés a webjobs SDK-val eseményvezérelt háttérbeli feldolgozásra. Ismerje meg, hogyan érheti el az Azure-szolgáltatások és a harmadik féltől származó szolgáltatások adatszolgáltatásait.
+title: A WebJobs SDK – első lépések
+description: Bevezetés a WebJobs SDK eseményvezérelt háttérfeldolgozáshoz. Ismerje meg, hogyan érheti el az Azure-szolgáltatások ban és a külső szolgáltatásokban található adatokat.
 author: ggailey777
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: bfbae282f9c383c19aae84a70dfc53f754bd9367
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77592611"
 ---
-# <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Ismerkedés a Azure WebJobs SDK-val az eseményvezérelt háttér-feldolgozáshoz
+# <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK első lépései az eseményalapú háttérfeldolgozáshoz
 
-Ez a cikk bemutatja, hogyan használható a Visual Studio 2019 egy Azure WebJobs SDK-projekt létrehozásához, helyi futtatásához, majd a [Azure app Service](overview.md)üzembe helyezéséhez. A webjobs SDK 3. x verziója a .NET Core és a .NET Framework Console-alkalmazásokat egyaránt támogatja. További információ a webjobs SDK [használatáról: az Azure WEBJOBS SDK használata eseményvezérelt háttér-feldolgozáshoz](webjobs-sdk-how-to.md).
+Ez a cikk bemutatja, hogyan hozhat létre a Visual Studio 2019 segítségével egy Azure WebJobs SDK-projektet, hogyan futtathat helyileg, majd telepítheti azt az [Azure App Service szolgáltatásba.](overview.md) A WebJobs SDK 3.x verziója támogatja a .NET Core és a .NET Framework konzolalkalmazásokat is. Ha többet szeretne tudni a WebJobs SDK használatáról, olvassa [el az Azure WebJobs SDK használata eseményvezérelt háttérfeldolgozáshoz](webjobs-sdk-how-to.md)című témakört.
 
-Ebből a cikkből megtudhatja, hogyan telepítheti a webjobs-t .NET Core Console-alkalmazásként. A webjobs .NET-keretrendszerbeli konzol alkalmazásként történő üzembe helyezéséhez lásd: [webjobs as .NET-keretrendszer Console apps](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps). Ha érdekli a webjobs SDK 2. x verziója, amely csak a .NET-keretrendszert támogatja, lásd: [webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studio-Azure app Service használatával](webjobs-dotnet-deploy-vs.md).
+Ez a cikk bemutatja, hogyan telepítheti a WebJobs-ot .NET Core konzolalkalmazásként. A WebJobs . [WebJobs as .NET Framework console apps](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps) Ha érdekli a WebJobs SDK 2.x-es verziója, amely csak a .NET Framework-et támogatja, olvassa el [a WebJobs fejlesztése és telepítése a Visual Studio – Azure App Service használatával című témakört.](webjobs-dotnet-deploy-vs.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Telepítse a Visual Studio 2019](/visualstudio/install/) -et az **Azure-fejlesztési** számítási feladattal. Ha már rendelkezik a Visual Studióval, de nem rendelkezik ezzel a számítási feladattal, adja hozzá a számítási feladatot úgy, hogy az eszközök **> eszközök és szolgáltatások lekérése**lehetőséget
+* [Telepítse a Visual Studio 2019-et](/visualstudio/install/) az **Azure fejlesztési** munkaterhelésével. Ha már rendelkezik a Visual Studio szolgáltatással, de nem rendelkezik ezzel a munkaterheléssel, adja hozzá a munkaterhelést az **Eszközök > Eszközök beésési szolgáltatásai**lehetőséget választva.
 
-* A webjobs SDK-projekt Azure-ba való közzétételéhez [Azure-fiókkal](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) kell rendelkeznie.
+* A WebJobs SDK-projekt Azure-ban való közzétételéhez [Azure-fiókkal](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) kell rendelkeznie.
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
-1. A Visual Studióban válassza az **új projekt létrehozása**lehetőséget.
+1. A Visual Studióban válassza **az Új projekt létrehozása**lehetőséget.
 
-2. Válassza ki a **Console app (.net Core)** elemet.
+2. Válassza a **Console App (.NET Core) lehetőséget.**
 
-3. Nevezze el a projekt *WebJobsSDKSample*, majd válassza a **Létrehozás**lehetőséget.
+3. Nevezze el a projektet *WebJobsSDKSample néven,* majd válassza **a Létrehozás lehetőséget.**
 
    ![New Project (Új projekt) párbeszédpanel](./media/webjobs-sdk-get-started/new-project.png)
 
-## <a name="webjobs-nuget-packages"></a>Webjobs NuGet-csomagok
+## <a name="webjobs-nuget-packages"></a>WebJobs NuGet csomagok
 
-1. Telepítse a `Microsoft.Azure.WebJobs.Extensions` NuGet csomag legújabb stabil 3. x verzióját, amely tartalmazza a `Microsoft.Azure.WebJobs`.
+1. Telepítse a `Microsoft.Azure.WebJobs.Extensions` NuGet csomag legújabb stabil 3.x `Microsoft.Azure.WebJobs`verzióját, amely tartalmazza a .
 
-     A 3.0.2 verziójának **Package Manager konzol** parancsa:
+     A **Csomagkezelő konzol** parancsa a 3.0.2-es verzióhoz:
 
      ```powershell
      Install-Package Microsoft.Azure.WebJobs.Extensions -version 3.0.2
@@ -47,9 +47,9 @@ Ebből a cikkből megtudhatja, hogyan telepítheti a webjobs-t .NET Core Console
 
 ## <a name="create-the-host"></a>A gazdagép létrehozása
 
-A gazdagép az eseményindítókat figyelő és a hívási funkciókat figyelő függvények futásidejű tárolója. A következő lépések olyan gazdagépet hoznak létre, amely megvalósítja [`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost), amely a ASP.net Core általános gazdagépe.
+Az állomás az eseményindítók és hívások függvényeket figyelő függvények futásidejű tárolója. A következő lépések hozzon [`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost)létre egy állomás, amely megvalósítja , amely az általános állomás ASP.NET Core.
 
-1. A *program.cs*-ben adjon hozzá egy `using` utasítást:
+1. A *Program.cs*adjon `using` hozzá egy nyilatkozatot:
 
     ```cs
     using Microsoft.Extensions.Hosting;
@@ -73,27 +73,27 @@ A gazdagép az eseményindítókat figyelő és a hívási funkciókat figyelő 
     }
     ```
 
-ASP.NET Core a gazdagép-konfigurációk beállítása a [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) példány metódusának meghívásával történik. További információ: [.net általános gazdagép](/aspnet/core/fundamentals/host/generic-host). A `ConfigureWebJobs`-bővítményi metódus inicializálja a webjobs-gazdagépet. `ConfigureWebJobs`a webjobs-bővítmények inicializálása és a bővítmények tulajdonságainak beállítása.  
+A core ASP.NET állomáskonfigurációk at a [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) példány hívási metódusai határozzák meg. További információt a .NET Generic Host című [témakörben talál.](/aspnet/core/fundamentals/host/generic-host) A `ConfigureWebJobs` bővítmény metódusa inicializálja a WebJobs állomást. A `ConfigureWebJobs`alkalmazásban inicializálhatja a WebJobs-bővítményeket, és beállíthatja a bővítmények tulajdonságait.  
 
-## <a name="enable-console-logging"></a>Konzol naplózásának engedélyezése
+## <a name="enable-console-logging"></a>Konzolnaplózás engedélyezése
 
-Ebben a szakaszban a [ASP.net Core naplózási keretrendszert](/aspnet/core/fundamentals/logging)használó konzol-naplózást állít be.
+Ebben a szakaszban olyan konzolnaplózást állíthat be, amely a [ASP.NET Core naplózási keretrendszert](/aspnet/core/fundamentals/logging)használja.
 
-1. Telepítse a `Microsoft.Extensions.Logging.Console` NuGet csomag legújabb stabil verzióját, amely tartalmazza a `Microsoft.Extensions.Logging`.
+1. Telepítse a `Microsoft.Extensions.Logging.Console` NuGet csomag legújabb stabil `Microsoft.Extensions.Logging`verzióját, amely tartalmazza a .
 
-   Íme a **Package Manager Console** parancs a 2.2.0-as verzióhoz:
+   A **Csomagkezelő konzol** parancsa a 2.2.0-s verzióhoz:
 
    ```powershell
    Install-Package Microsoft.Extensions.Logging.Console -version 2.2.0
    ```
 
-1. A *program.cs*-ben adjon hozzá egy `using` utasítást:
+1. A *Program.cs*adjon `using` hozzá egy nyilatkozatot:
 
    ```cs
    using Microsoft.Extensions.Logging;
    ```
 
-1. A`HostBuilder`[`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) metódusának [ ](/dotnet/api/microsoft.extensions.hosting.hostbuilder)meghívása. A [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) metódus a konzol naplózását adja hozzá a konfigurációhoz.
+1. Hívja [`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) meg [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)a metódust . A [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) metódus hozzáadja a konzolnaplózást a konfigurációhoz.
 
     ```cs
     builder.ConfigureLogging((context, b) =>
@@ -102,7 +102,7 @@ Ebben a szakaszban a [ASP.net Core naplózási keretrendszert](/aspnet/core/fund
     });
     ```
 
-    A `Main` metódus most így néz ki:
+    A `Main` módszer most így néz ki:
 
     ```cs
     static void Main(string[] args)
@@ -124,26 +124,26 @@ Ebben a szakaszban a [ASP.net Core naplózási keretrendszert](/aspnet/core/fund
     }
     ```
 
-    A frissítés a következő műveleteket végzi el:
+    A frissítés a következőket teszi:
 
-    * Letiltja az [irányítópultok naplózását](https://github.com/Azure/azure-webjobs-sdk/wiki/Queues#logs). Az irányítópult egy örökölt figyelési eszköz, és az irányítópultok naplózása nem ajánlott nagy átviteli sebességű éles környezetekben.
-    * Hozzáadja a konzol szolgáltatóját az alapértelmezett [szűréshez](webjobs-sdk-how-to.md#log-filtering).
+    * Letiltja [az irányítópult naplózását.](https://github.com/Azure/azure-webjobs-sdk/wiki/Queues#logs) Az irányítópult egy örökölt figyelési eszköz, és az irányítópult naplózása nem ajánlott a nagy átviteli sebességű éles forgatókönyvek.
+    * Hozzáadja a konzolszolgáltatót az alapértelmezett [szűréssel.](webjobs-sdk-how-to.md#log-filtering)
 
-Most hozzáadhat egy olyan függvényt, amelyet az [Azure Storage-várólistába](../azure-functions/functions-bindings-storage-queue.md)érkező üzenetek indítottak el.
+Most hozzáadhat egy függvényt, amelyet az Azure [Storage-várólistába](../azure-functions/functions-bindings-storage-queue.md)érkező üzenetek váltanak ki.
 
 ## <a name="install-the-storage-binding-extension"></a>A Storage-kötésbővítmény telepítése
 
-A 3. x verziótól kezdődően explicit módon telepítenie kell a webjobs SDK által igényelt tárolási kötési bővítményt. A korábbi verziók esetében a tárolási kötések szerepeltek az SDK-ban.
+A 3.x-es verziótól kezdve explicit módon telepítenie kell a WebJobs SDK által igényelt Storage kötésbővítményt. A korábbi verziókban a Storage kötések az SDK-ban szerepeltek.
 
-1. Telepítse a [Microsoft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet-csomag (3. x verzió) legújabb stabil verzióját. 
+1. Telepítse a [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet csomag legújabb stabil verzióját, 3.x-es verzió. 
 
-    A következő a **Package Manager Console** parancs a 3.0.4-es verzióhoz:
+    A **Csomagkezelő konzol** parancsa a 3.0.4-es verzióhoz:
 
     ```powershell
     Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.4
     ```
 
-2. A `ConfigureWebJobs` bővítmény metódusban hívja meg a [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) példányon a `AddAzureStorage` metódust a tárolási bővítmény inicializálásához. Ezen a ponton a `ConfigureWebJobs` metódus a következő példához hasonlóan néz ki:
+2. A `ConfigureWebJobs` bővítmény metódusban `AddAzureStorage` hívja meg [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) a metódust a példányin a Storage bővítmény inicializálásához. Ezen a ponton `ConfigureWebJobs` a módszer a következő példához hasonlóan néz ki:
 
     ```cs
     builder.ConfigureWebJobs(b =>
@@ -155,9 +155,9 @@ A 3. x verziótól kezdődően explicit módon telepítenie kell a webjobs SDK �
 
 ## <a name="create-a-function"></a>Függvény létrehozása
 
-1. Kattintson a jobb gombbal a projektre, válassza **az új elem** **hozzáadása** > ... lehetőséget, válassza az C# **osztály**lehetőséget, nevezze el az új *functions.cs*, és válassza a **Hozzáadás**lehetőséget.
+1. Kattintson a jobb gombbal a projektre, válassza az Új elem **hozzáadása** > **parancsot...**, válassza **az Osztály parancsot,** nevezze el az új C# osztályfájlt *Functions.cs,* és válassza **a Hozzáadás parancsot.**
 
-1. A Functions.cs cserélje le a generált sablont a következő kódra:
+1. A Functions.cs cserélje le a létrehozott sablont a következő kódra:
 
    ```cs
    using Microsoft.Azure.WebJobs;
@@ -175,45 +175,45 @@ A 3. x verziótól kezdődően explicit módon telepítenie kell a webjobs SDK �
    }
    ```
 
-   A `QueueTrigger` attribútum arra utasítja a futtatókörnyezetet, hogy hívja meg ezt a funkciót, ha egy új üzenetet ír egy `queue`nevű Azure Storage-várólistán. A várólista-üzenet tartalma a `message` paraméterben található metódus kódjához van megadva. A metódus törzse az, ahol feldolgozza az aktiváló adatmennyiséget. Ebben a példában a kód csak az üzenetet naplózza.
+   Az `QueueTrigger` attribútum megmondja a futásidejűnek, hogy hívja meg ezt a `queue`függvényt, ha egy új üzenet van írva egy Azure Storage-várólistában, amelynek neve. A várólistaüzenet tartalma a `message` paraméterben lévő metóduskódhoz van megadva. A metódus törzse az, ahol feldolgozza az eseményindító adatait. Ebben a példában a kód csak naplózza az üzenetet.
 
-   A `message` paraméternek nem kell karakterláncnak lennie. Egy JSON-objektumhoz, egy byte-tömbhöz vagy egy [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) objektumhoz is köthető. [Lásd: üzenetsor-trigger használata](../azure-functions/functions-bindings-storage-queue-trigger.md#usage). Az egyes kötési típusok (például a várólisták, a Blobok vagy a táblák) különböző típusú paramétereket tartalmazhatnak, amelyekhez kötést hozhat létre.
+   A `message` paraméternek nem kell karakterláncnak lennie. JSON-objektumhoz, bájttömbhöz vagy [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) objektumhoz is köthető. [Lásd: Várólista-eseményindító kulcsok használata](../azure-functions/functions-bindings-storage-queue-trigger.md#usage). Minden kötéstípus (például várólisták, blobok vagy táblák) különböző paramétertípus-készlettel rendelkezik, amelyhez kötődhet.
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="create-a-storage-account"></a>Create a storage account
 
-A helyileg futó Azure Storage-emulátor nem rendelkezik a webjobs SDK által igényelt összes szolgáltatással. Ebben a szakaszban egy Storage-fiókot hoz létre az Azure-ban, és konfigurálja a projektet a használatára. Ha már rendelkezik Storage-fiókkal, ugorjon a 6. lépésre.
+A helyileg futó Azure Storage-emulátor nem rendelkezik a WebJobs SDK által igényelt összes szolgáltatással. Így ebben a szakaszban hozzon létre egy tárfiókot az Azure-ban, és konfigurálja a projektet, hogy azt használja. Ha már rendelkezik tárfiókkal, ugorjon le a 6.
 
-1. Nyissa meg a **Server Explorert** a Visual Studióban, és jelentkezzen be az Azure-ba. Kattintson a jobb gombbal az **Azure** -csomópontra, majd válassza a **Kapcsolódás Microsoft Azure előfizetéshez**lehetőséget.
+1. Nyissa meg **a Kiszolgálókezelőt** a Visual Studióban, és jelentkezzen be az Azure-ba. Kattintson a jobb gombbal az **Azure-csomópontra,** majd válassza **a Csatlakozás a Microsoft Azure-előfizetéshez parancsot.**
 
    ![Bejelentkezés az Azure-ba](./media/webjobs-sdk-get-started/sign-in.png)
 
-1. A **Server Explorer** **Azure** csomópontja alatt kattintson a jobb gombbal a **Storage**elemre, majd válassza a **Storage-fiók létrehozása**lehetőséget.
+1. A **Kiszolgálókezelő** **Azure-csomópontja** alatt kattintson a jobb gombbal a **Storage**elemre, majd válassza **a Tárfiók létrehozása parancsot**.
 
-   ![Storage-fiók létrehozása menü](./media/webjobs-sdk-get-started/create-storage-account-menu.png)
+   ![Tárfiók létrehozása menü](./media/webjobs-sdk-get-started/create-storage-account-menu.png)
 
-1. A **Storage-fiók létrehozása** párbeszédpanelen adjon meg egy egyedi nevet a Storage-fiók számára.
+1. A **Tárfiók létrehozása** párbeszédpanelen adjon meg egy egyedi nevet a tárfióknak.
 
-1. Válassza ki ugyanazt a **régiót** , amelyet Ön hozott létre a app Service alkalmazásban, vagy egy régiót a közelben.
+1. Válassza ki ugyanazt a **régiót,** amelyben létrehozta az App Service-alkalmazást, vagy egy önhöz közeli régiót.
 
 1. Kattintson a **Létrehozás** gombra.
 
-   ![Storage-fiók létrehozása](./media/webjobs-sdk-get-started/create-storage-account.png)
+   ![Tárfiók létrehozása](./media/webjobs-sdk-get-started/create-storage-account.png)
 
-1. A **Server Explorer** **tároló** csomópontja alatt válassza ki az új Storage-fiókot. A **Properties (Tulajdonságok** ) ablakban válassza a **kapcsolatok karakterlánc** értéke mező jobb oldalán található három pontot ( **..** .).
+1. A **Kiszolgálókezelő** **Tároló** csomópontja csoportban válassza ki az új tárfiókot. A **Tulajdonságok** ablakban jelölje ki a **kapcsolati karakterlánc** értékmezőjének jobb oldalán található három pontot (**...**).
 
-   ![A kapcsolatok karakterláncának három pontja](./media/webjobs-sdk-get-started/conn-string-ellipsis.png)
+   ![Kapcsolati karakterlánc három ponttal](./media/webjobs-sdk-get-started/conn-string-ellipsis.png)
 
-1. Másolja ki a kapcsolatok karakterláncát, és mentse el valahol, hogy könnyen másolhatja.
+1. Másolja a kapcsolati karakterláncot, és mentse ezt az értéket olyan helyre, ahol újra könnyen másolhatja.
 
-   ![A kapcsolatok karakterláncának másolása](./media/webjobs-sdk-get-started/copy-key.png)
+   ![Kapcsolati karakterlánc másolása](./media/webjobs-sdk-get-started/copy-key.png)
 
-## <a name="configure-storage-to-run-locally"></a>A tárterület konfigurálása helyileg történő futtatásra
+## <a name="configure-storage-to-run-locally"></a>A tároló helyi futtatásának beállítása
 
-A webjobs SDK a Storage-kapcsolatok karakterláncát keresi az Azure-beli Alkalmazásbeállítások között. Ha helyileg futtatja, a rendszer ezt az értéket a helyi konfigurációs fájlban vagy a környezeti változókban keresi.
+A WebJobs SDK megkeresi a tárolási kapcsolat karakterláncát az Azure alkalmazásbeállításaiban. Ha helyileg futtatja, akkor ezt az értéket keresi a helyi konfigurációs fájlban vagy a környezeti változókban.
 
-1. Kattintson a jobb gombbal a projektre, válassza az új elem > **hozzáadása** **elemet...** , válassza a **JavaScript JSON konfigurációs fájl**nevet, nevezze el az új *appSettings. JSON* fájlt, majd kattintson a **Hozzáadás**gombra. 
+1. Kattintson a jobb gombbal a projektre, válassza **az** > Új elem hozzáadása**parancsot...**, válassza a **JavaScript JSON konfigurációs fájlt,** nevezze el az új *fájlt appsettings.json* fájlnak, és válassza **a Hozzáadás parancsot.** 
 
-1. Az új fájlban adjon hozzá egy `AzureWebJobsStorage` mezőt, ahogy az alábbi példában látható:
+1. Az új fájlban `AzureWebJobsStorage` vegyen fel egy mezőt, ahogy az a következő példában is:
 
     ```json
     {
@@ -221,19 +221,19 @@ A webjobs SDK a Storage-kapcsolatok karakterláncát keresi az Azure-beli Alkalm
     }
     ```
 
-1. Cserélje le a *{Storage-beli kapcsolatok karakterláncát* a korábban átmásolt kapcsolatok karakterlánccá.
+1. Cserélje le *a(z) {storage connection string}* karakterláncot a korábban másolt kapcsolati karakterláncra.
 
-1. Válassza ki a *appSettings. JSON* fájlt megoldáskezelő és a **Tulajdonságok** ablakban állítsa be a **Másolás a kimeneti könyvtárba** a **Másolás, ha újabb**.
+1. Jelölje ki az *appsettings.json* fájlt a Megoldáskezelőben, és a **Tulajdonságok** ablakban állítsa a **Másolás beállítást kimeneti könyvtárra** **másolásra, ha újabb.**
 
-Később felveszi az alkalmazásában a Azure App Service.
+Később ugyanazt a kapcsolati karakterlánc-alkalmazásbeállítást fogja hozzáadni az alkalmazáshoz az Azure App Service-ben.
 
 ## <a name="test-locally"></a>Helyi tesztelés
 
-Ebben a szakaszban helyileg hozza létre és futtatja a projektet, és egy üzenetsor-üzenet létrehozásával aktiválja a függvényt.
+Ebben a szakaszban a projektet helyileg hozza létre és futtatja, és a függvényt egy üzenetsor-üzenet létrehozásával indítja el.
 
-1. A projekt futtatásához nyomja le a **CTRL + F5** billentyűkombinációt.
+1. A projekt futtatásához nyomja le a **Ctrl+F5** billentyűkombinációt.
 
-   A konzolon látható, hogy a futtatókörnyezet megtalálta a függvényt, és várakozik az üzenetsor-üzenetek indítására. A következő kimenetet hozza létre a v3. x gazdagép:
+   A konzol azt mutatja, hogy a futásidejű megtalálta a funkciót, és várja a várólista-üzenetek indítását. A v3.x állomás a következő kimenetet hozza létre:
 
    ```console
     info: Microsoft.Azure.WebJobs.Hosting.JobHostService[0]
@@ -249,33 +249,33 @@ Ebben a szakaszban helyileg hozza létre és futtatja a projektet, és egy üzen
     Content root path: C:\WebJobsSDKSample\WebJobsSDKSample\bin\Debug\netcoreapp2.1\
    ```
 
-1. Zárjuk be a konzolablak ablakát.
+1. Zárja be a konzolablakot.
 
-1. A Visual Studióban a **Server Explorerben** bontsa ki a csomópontot az új Storage-fiókhoz, majd kattintson a jobb gombbal a **várólisták**elemre.
+1. A Visual Studio **Kiszolgálókezelőjében** bontsa ki az új tárfiók csomópontját, majd kattintson a jobb gombbal **a Várólisták**elemre.
 
-1. Válassza a **várólista létrehozása**lehetőséget.
+1. Válassza **a Várólista létrehozása**lehetőséget.
 
-1. Adja *meg a várólista nevét* a várólista neveként, majd kattintson az **OK gombra**.
+1. Írja be a *várólista* nevét a várólista neveként, majd kattintson az **OK gombra.**
 
    ![Várólista létrehozása](./media/webjobs-sdk-get-started/create-queue.png)
 
-1. Kattintson a jobb gombbal az új várólista csomópontjára, majd válassza a **várólista megtekintése**lehetőséget.
+1. Kattintson a jobb gombbal az új várólista csomópontjára, majd válassza a **Várólista megtekintése parancsot.**
 
-1. Válassza az **üzenet hozzáadása** ikont.
+1. Kattintson az **Üzenet hozzáadása** ikonra.
 
    ![Várólista létrehozása](./media/webjobs-sdk-get-started/create-queue-message.png)
 
-1. Az **üzenet hozzáadása** párbeszédpanelen adja meg a következőt: *"Helló világ!" alkalmazás!* az **üzenet szövegeként**, majd kattintson **az OK gombra**. Most már van egy üzenet a várólistában.
+1. Az **Üzenet hozzáadása** párbeszédpanelen adja meg a *Hello World!* **üzenetszövegként,** majd válassza az **OK gombot.** Most egy üzenet van a várólistában.
 
    ![Várólista létrehozása](./media/webjobs-sdk-get-started/hello-world-text.png)
 
 1. Futtassa ismét a projektet.
 
-   Mivel a `ProcessQueueMessage` függvényben a `QueueTrigger` attribútumot használta, a WeJobs SDK futtatókörnyezet az indításkor figyeli az üzenetsor-üzeneteket. Egy új üzenetsor-üzenetet talál *a várólista nevű* várólistában, és meghívja a függvényt.
+   Mivel az `QueueTrigger` attribútumot használta `ProcessQueueMessage` a függvényben, a WeJobs SDK futásidejű figyeli a várólista-üzeneteket indításkor. Új várólista-üzenetet talál a *várólistában,* és meghívja a függvényt.
 
-   A [várólista-lekérdezések exponenciális leállítási](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)miatt előfordulhat, hogy a futtatókörnyezet csak 2 percet vesz igénybe, hogy megkeresse az üzenetet, és meghívja a függvényt. Ez a várakozási idő a [fejlesztési módban](webjobs-sdk-how-to.md#host-development-settings)való futtatással csökkenthető.
+   A [várólista-lekérdezés exponenciális visszalépése](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)miatt akár 2 percig is eltarthat, amíg a futásidejű megtalálja az üzenetet, és meghívja a függvényt. Ez a várakozási idő [fejlesztési módban](webjobs-sdk-how-to.md#host-development-settings)való futással csökkenthető.
 
-   A konzol kimenete a következőképpen néz ki:
+   A konzol kimenete így néz ki:
 
    ```console
     info: Function.ProcessQueueMessage[0]
@@ -288,53 +288,53 @@ Ebben a szakaszban helyileg hozza létre és futtatja a projektet, és egy üzen
           Executed 'Functions.ProcessQueueMessage' (Succeeded, Id=2c319369-d381-43f3-aedf-ff538a4209b8)
    ```
 
-1. Zárjuk be a konzolablak ablakát. 
+1. Zárja be a konzolablakot. 
 
-1. Térjen vissza a várólista ablakhoz, és frissítse azt. Az üzenet el lett mentve, mert a funkció a helyileg futó függvény által lett feldolgozva. 
+1. Lépjen vissza a Várólista ablakba, és frissítse azt. Az üzenet eltűnt, mivel a helyileg futó függvény feldolgozta. 
 
-## <a name="add-application-insights-logging"></a>Application Insights naplózás hozzáadása
+## <a name="add-application-insights-logging"></a>Alkalmazáselemzési naplózás hozzáadása
 
-Ha a projekt az Azure-ban fut, a konzol kimenetének megtekintésével nem figyelheti a funkciók végrehajtását. Az általunk javasolt figyelési megoldás [Application Insights](../azure-monitor/app/app-insights-overview.md). További információ: [Azure functions figyelése](../azure-functions/functions-monitoring.md).
+Amikor a projekt fut az Azure-ban, nem figyelheti a függvény végrehajtását a konzol kimenetének megtekintésével. Az általunk ajánlott figyelési megoldás az [Application Insights.](../azure-monitor/app/app-insights-overview.md) További információ: [Monitor Azure Functions](../azure-functions/functions-monitoring.md).
 
-Ebben a szakaszban a következő feladatokat végezheti el a Application Insights naplózás beállításához az Azure-ba való üzembe helyezés előtt:
+Ebben a szakaszban a következő feladatokat az Application Insights-naplózás beállításához az Azure-ba való üzembe helyezés előtt végezze el:
 
-* Győződjön meg arról, hogy rendelkezik App Service-alkalmazással és egy Application Insights-példánnyal a következővel való együttműködéshez.
-* Konfigurálja úgy a App Service alkalmazást, hogy az Application Insights példányt és a korábban létrehozott Storage-fiókot használja.
-* Állítsa be a projektet a Application Insights való naplózáshoz.
+* Győződjön meg arról, hogy rendelkezik egy App Service-alkalmazás és egy Application Insights-példány dolgozni.
+* Konfigurálja az App Service-alkalmazást az Application Insights-példány és a korábban létrehozott tárfiók használatára.
+* Állítsa be a projektet az Application Insights ba való naplózáshoz.
 
-### <a name="create-app-service-app-and-application-insights-instance"></a>App Service alkalmazás és Application Insights példány létrehozása
+### <a name="create-app-service-app-and-application-insights-instance"></a>App Service-alkalmazás és Alkalmazásinsights-példány létrehozása
 
-1. Ha még nem rendelkezik olyan App Service alkalmazással, amelyet használhat, [hozzon létre egyet](app-service-web-get-started-dotnet-framework.md). Az alkalmazás létrehozásakor létrehozhat egy csatlakoztatott Application Insights-erőforrást is. Ha ezt teszi, a `APPINSIGHTS_INSTRUMENTATIONKEY` be van állítva az alkalmazásban.
+1. Ha még nem rendelkezik használható App Service-alkalmazással, [hozzon létre egyet.](app-service-web-get-started-dotnet-framework.md) Az alkalmazás létrehozásakor is létrehozhat egy csatlakoztatott Application Insights-erőforrást. Ha ezt teszi, `APPINSIGHTS_INSTRUMENTATIONKEY` a beállítás az alkalmazásban van beállítva.
 
-1. Ha még nem rendelkezik olyan Application Insights erőforrással, amelyet használhat, [hozzon létre egyet](../azure-monitor/app/create-new-resource.md ). Állítsa az **alkalmazás típusát** **általános**értékre, majd ugorja át a kialakítási **kulcs másolását**követő szakaszokat.
+1. Ha még nem rendelkezik olyan Application Insights-erőforrással, amelyet használhat, [hozzon létre egyet.](../azure-monitor/app/create-new-resource.md ) Állítsa **az Alkalmazás típusát** **Általános**beállításra , és hagyja ki **a instrumentation billentyű másolása**követendő szakaszokat .
 
-1. Ha már rendelkezik egy használni kívánt Application Insights erőforrással, [másolja a](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key)kialakítási kulcsot.
+1. Ha már rendelkezik egy használni kívánt Application Insights-erőforrással, [másolja a instrumentation kulcsot.](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key)
 
 ### <a name="configure-app-settings"></a>Alkalmazásbeállítások konfigurálása 
 
-1. A Visual Studióban a **Server Explorerben** bontsa ki a **app Service** csomópontot az **Azure**alatt.
+1. A Visual Studio **Kiszolgálókezelőjében** bontsa ki az **App Service-csomópontot** az **Azure**csoportban.
 
-1. Bontsa ki azt az erőforráscsoportot, amelyen a App Service alkalmazás található, majd kattintson a jobb gombbal a App Service alkalmazásra.
+1. Bontsa ki azt az erőforráscsoportot, amelyben az App Service-alkalmazás található, majd kattintson a jobb gombbal az App Service-alkalmazásra.
 
-1. Válassza a **beállítások megtekintése**lehetőséget.
+1. Válassza **a Nézetbeállításai lehetőséget.**
 
-1. Adja hozzá a következő bejegyzést a **kapcsolatok karakterláncok** mezőben.
+1. A **Kapcsolati karakterláncok** mezőben adja hozzá a következő bejegyzést.
 
-   |Name (Név)  |kapcsolatok karakterlánca  |Adatbázis típusa|
+   |Név  |kapcsolati karakterlánc  |Adatbázis típusa|
    |---------|---------|------|
-   |AzureWebJobsStorage | {a korábban átmásolt tárolási kapcsolatok karakterlánca}|Egyéni|
+   |AzureWebJobsStorage | {a korábban másolt Tárolási kapcsolatkarakterlánc}|Egyéni|
 
-1. Ha az **Alkalmazásbeállítások** mezőhöz nem tartozik Application Insights kialakítási kulcs, adja hozzá a korábban átmásolt eszközt. (A rendszerállapot-kulcs már ott is lehet, attól függően, hogyan hozta létre a App Service alkalmazást.)
+1. Ha az **Alkalmazásbeállítások** mező nem rendelkezik Application Insights instrumentation kulccsal, adja hozzá a korábban másolt. (Előfordulhat, hogy a instrumentation kulcs már ott van, attól függően, hogy hogyan hozta létre az App Service-alkalmazást.)
 
-   |Name (Név)  |Érték  |
+   |Név  |Érték  |
    |---------|---------|
-   |ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY | {Instrumentation-kulcs} |
+   |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentation kulcs} |
 
-1. Cserélje le a *{Instrumentation Key}* elemet a használt Application Insights erőforrás rendszerállapot-kulcsára.
+1. Cserélje le *a(z) {instrumentation key}* kulcsot a használt Application Insights-erőforrás instrumentation kulcsára.
 
 1. Kattintson a **Mentés** gombra.
 
-1. Adja hozzá a Application Insights-kapcsolódást a projekthez, hogy helyileg is futtatható legyen. Az *appSettings. JSON* fájlban adjon hozzá egy `APPINSIGHTS_INSTRUMENTATIONKEY` mezőt, ahogy az alábbi példában is látható:
+1. Adja hozzá az Application Insights-kapcsolatot a projekthez, hogy helyileg futtathassa. Az *appsettings.json* fájlban `APPINSIGHTS_INSTRUMENTATIONKEY` adjon hozzá egy mezőt, ahogy az alábbi példában is:
 
     ```json
     {
@@ -343,26 +343,26 @@ Ebben a szakaszban a következő feladatokat végezheti el a Application Insight
     }
     ```
 
-    Cserélje le a *{Instrumentation Key}* elemet a használt Application Insights erőforrás rendszerállapot-kulcsára.
+    Cserélje le *a(z) {instrumentation key}* kulcsot a használt Application Insights-erőforrás instrumentation kulcsára.
 
 1. Mentse a módosításokat.
 
-### <a name="add-application-insights-logging-provider"></a>Application Insights naplózási szolgáltató hozzáadása
+### <a name="add-application-insights-logging-provider"></a>Alkalmazáselemzési naplózási szolgáltató hozzáadása
 
-A [Application Insights](../azure-monitor/app/app-insights-overview.md) naplózási funkciójának kihasználása érdekében frissítse a naplózási kódot a következő műveletekhez:
+Az Application [Insights](../azure-monitor/app/app-insights-overview.md) naplózásának előnyeinek kihasználásához frissítse a naplózási kódot az alábbi módon:
 
-* Application Insights naplózási szolgáltató hozzáadása alapértelmezett [szűréssel](webjobs-sdk-how-to.md#log-filtering); az összes információ és a magasabb szintű naplók a konzolon és a Application Insights is a helyi futtatásakor futnak.
-* Helyezze a [LoggerFactory](./webjobs-sdk-how-to.md#logging-and-monitoring) objektumot egy `using` blokkba annak biztosításához, hogy a napló kimenete ki legyen ürítve, amikor a gazdagép kilép.
+* Adjon hozzá egy Application Insights-naplózási szolgáltatót az alapértelmezett [szűréssel](webjobs-sdk-how-to.md#log-filtering); az összes információ és a magasabb szintű naplók a konzolra és az Application Insightsra is átkerül, ha helyileg fut.
+* Helyezze a [LoggerFactory](./webjobs-sdk-how-to.md#logging-and-monitoring) `using` objektumot egy blokkba, hogy a naplókimenet kiürítése, amikor az állomás kilép.
 
-1. Telepítse a NuGet-csomag legújabb stabil 3. x verzióját a Application Insights naplózási szolgáltatóhoz: `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`.
+1. Telepítse a NuGet csomag legújabb stabil 3.x verzióját az `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`Application Insights naplózási szolgáltatóhoz: .
 
-   A 3.0.2 verziójának **Package Manager konzol** parancsa:
+   A **Csomagkezelő konzol** parancsa a 3.0.2-es verzióhoz:
 
    ```powershell
    Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version 3.0.2
    ```
 
-1. Nyissa meg a *program.cs* , és cserélje le a kódot a `Main` metódusba a következő kóddal:
+1. Nyissa *meg Program.cs,* és `Main` cserélje le a metódusban lévő kódot a következő kódra:
 
     ```cs
     static void Main(string[] args)
@@ -393,66 +393,66 @@ A [Application Insights](../azure-monitor/app/app-insights-overview.md) naplóz�
     }
     ```
 
-    Ezzel hozzáadja a Application Insights szolgáltatót a naplózáshoz, az alkalmazás beállításaihoz korábban hozzáadott kulcs használatával.
+    Ez hozzáadja az Application Insights-szolgáltatót a naplózáshoz az alkalmazásbeállításokhoz korábban hozzáadott kulcs használatával.
 
-## <a name="test-application-insights-logging"></a>Application Insights naplózás tesztelése
+## <a name="test-application-insights-logging"></a>Az Alkalmazáselemzési adatok naplózása
 
-Ebben a szakaszban ismét helyileg futtatja annak ellenőrzéséhez, hogy a naplózási adatai mostantól Application Insights és a-konzolon is elérhetők lesznek.
+Ebben a szakaszban futtassa újra helyileg, hogy ellenőrizze, hogy az adatok naplózása most az Application Insights és a konzolra.
 
-1. A Visual Studióban a **Server Explorer** használatával hozzon létre egy üzenetsor-üzenetet, mint [korábban](#test-locally), a *Hello app bepillantást* beírni. az üzenet szövegeként.
+1. A Visual Studio **Kiszolgálókezelőjével** hozzon létre egy várólista-üzenetet, mint [korábban,](#test-locally)kivéve a *Hello App Insights!* mint az üzenet szövegét.
 
 1. Futtassa a projektet.
 
-   A webjobs SDK dolgozza fel az üzenetsor-üzenetet, és a naplók a konzol ablakában jelennek meg.
+   A WebJobs SDK feldolgozza a várólista-üzenetet, és a naplók a konzolablakban jelennek meg.
 
-1. Zárjuk be a konzolablak ablakát.
+1. Zárja be a konzolablakot.
 
-1. A Application Insights erőforrás megtekintéséhez lépjen a [Azure Portal](https://portal.azure.com/) . Keresse meg és válassza ki a **Application Insights**.
+1. Az [Azure Insights-erőforrás](https://portal.azure.com/) megtekintéséhez látogasson el az Azure Portalra. Keresse meg és válassza az **Application Insights**lehetőséget.
 
-1. Válassza ki Application Insights-példányát.
+1. Válassza ki az Application Insights-példányt.
 
-1. Válassza a **Keresés**lehetőséget.
+1. Válassza a **Keresés lehetőséget.**
 
    ![Keresés kiválasztása](./media/webjobs-sdk-get-started/select-search.png)
 
-1. Ha nem látja a *Hello app bepillantást!* üzenetben válassza a **frissítés** rendszeres időközönként több percig lehetőséget. (A naplók nem jelennek meg azonnal, mert eltarthat egy ideig, amíg a Application Insights-ügyfél kiüríti az informatikai folyamatokat.)
+1. Ha nem látja a *Hello App Insights!* üzenetben válassza a **Frissítés** néhány percig. (A naplók nem jelennek meg azonnal, mert eltart egy ideig, amíg az Application Insights-ügyfél kiüríti a feldolgozott naplókat.)
 
-   ![Naplók Application Insights](./media/webjobs-sdk-get-started/logs-in-ai.png)
+   ![Naplók az Application Insightsban](./media/webjobs-sdk-get-started/logs-in-ai.png)
 
-1. Zárjuk be a konzolablak ablakát.
+1. Zárja be a konzolablakot.
 
-## <a name="deploy-as-a-webjob"></a>Üzembe helyezés az Azure-ban
+## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Üzembe helyezés az Azure-ban
 
-Az üzembe helyezés során létre kell hoznia egy app Service-példányt, amelyben a függvények futtatására kerül sor. Ha egy .NET Core Console alkalmazást tesz közzé App Service az Azure-ban, automatikusan Webjobs fut. További információ a közzétételről: [webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studióval](webjobs-dotnet-deploy-vs.md).
+A központi telepítés során hozzon létre egy alkalmazásszolgáltatás-példányt, amelyben a függvények futtatásához. Amikor közzétesz egy .NET Core konzolalkalmazást az Azure-beli App Service szolgáltatásban, az automatikusan webfeladatként jelenik meg. A közzétételről a [WebJobs fejlesztése és telepítése a Visual Studio használatával (Webhelyalkalmazások fejlesztése és telepítése) témakörben](webjobs-dotnet-deploy-vs.md)olvashat bővebben.
 
 [!INCLUDE [webjobs-publish-net-core](../../includes/webjobs-publish-net-core.md)]
 
-## <a name="trigger-the-function-in-azure"></a>A függvény elindítása az Azure-ban
+## <a name="trigger-the-function-in-azure"></a>A funkció aktiválása az Azure-ban
 
-1. Győződjön meg arról, hogy nem helyileg fut (a konzol ablak bezárásával, ha még meg van nyitva). Ellenkező esetben előfordulhat, hogy a helyi példány a létrehozott üzenetsor-üzenetek feldolgozásának első lépései.
+1. Győződjön meg arról, hogy nem helyileg fut (zárja be a konzolablakot, ha még nyitva van). Ellenkező esetben előfordulhat, hogy a helyi példány az első, amely feldolgozza a létrehozott várólista-üzeneteket.
 
-1. A Visual Studio **üzenetsor** lapján adjon hozzá egy üzenetet a várólistához, mint korábban.
+1. A Visual Studio **Várólista lapján** adjon hozzá egy üzenetet a várólistához a korábban adott módon.
 
-1. Frissítse a **várólista** lapot, és az új üzenet eltűnik, mert az Azure-ban futó függvény feldolgozta.
+1. Frissítse a **Várólista** lapot, és az új üzenet eltűnik, mert az Azure-ban futó függvény feldolgozta.
 
    > [!TIP]
-   > Az Azure-ban végzett tesztelés során a [fejlesztési mód](webjobs-sdk-how-to.md#host-development-settings) használatával győződjön meg arról, hogy a várólista-eseményindító függvényt azonnal meghívja, és elkerülje a késést a [várólista-lekérdezés exponenciális leállítási](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)miatt.
+   > Amikor az Azure-ban teszteli, használja [a fejlesztési módot](webjobs-sdk-how-to.md#host-development-settings) annak biztosítására, hogy a várólista-eseményindító függvényt azonnal meghívja, és elkerülje a késleltetést a [várólista-lekérdezés exponenciális visszalépésmiatt.](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)
 
-### <a name="view-logs-in-application-insights"></a>Naplók megtekintése Application Insights
+### <a name="view-logs-in-application-insights"></a>Naplók megtekintése az Application Insightsban
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com/), és lépjen a Application Insights-erőforráshoz.
+1. Nyissa meg az [Azure Portalon,](https://portal.azure.com/)és nyissa meg az Application Insights-erőforrást.
 
-1. Válassza a **Keresés**lehetőséget.
+1. Válassza a **Keresés lehetőséget.**
 
-1. Ha nem látja a *Hello Azure* -t! üzenetben válassza a **frissítés** rendszeres időközönként több percig lehetőséget.
+1. Ha nem látja a *Hello Azure!* üzenetben válassza a **Frissítés** néhány percig.
 
-   Ekkor megjelenik a Webjobs futó függvény naplófájljai, beleértve a *Hello Azure* -t! az előző szakaszban megadott szöveg
+   Megjelennek a webjobban futó függvény naplói, beleértve a *Hello Azure-t is!* az előző szakaszban beírt szöveget.
 
 ## <a name="add-an-input-binding"></a>Bemeneti kötés hozzáadása
 
-A bemeneti kötések leegyszerűsítik a kódot, amely adatokat olvas be. Ebben a példában a várólista-üzenet a blob neve lesz, és a blob neve alapján megkeresheti és beolvashatja a blobot az Azure Storage-ban.
+A bemeneti kötések leegyszerűsítik az adatokat beolvasó kódot. Ebben a példában a várólista-üzenet lesz a blob nevét, és a blob nevét fogja használni, hogy megtalálja és olvassa el a blob az Azure Storage-ban.
 
-1. A *functions.cs*cserélje le a `ProcessQueueMessage` metódust a következő kódra:
+1. A *Functions.cs*a `ProcessQueueMessage` módszert a következő kóddal helyettesítse:
 
    ```cs
    public static void ProcessQueueMessage(
@@ -464,37 +464,37 @@ A bemeneti kötések leegyszerűsítik a kódot, amely adatokat olvas be. Ebben 
    }
    ```
 
-   Ebben a kódban a `queueTrigger` egy [kötési kifejezés](../azure-functions/functions-bindings-expressions-patterns.md), ami azt jelenti, hogy a rendszer egy másik értékre oldja fel futásidőben.  Futásidőben a várólista-üzenet tartalma jelenik meg.
+   Ebben a `queueTrigger` kódban egy [kötési kifejezés,](../azure-functions/functions-bindings-expressions-patterns.md)ami azt jelenti, hogy futásidőben egy másik értékre oldódik fel.  Futásidőben a várólista-üzenet tartalma is benne van.
 
-1. `using`hozzáadása:
+1. Adjon `using`hozzá egy :
 
    ```cs
    using System.IO;
    ```
 
-1. Hozzon létre egy BLOB-tárolót a Storage-fiókban.
+1. Hozzon létre egy blob tárolót a tárfiókban.
 
-   a. A Visual Studióban a **Server Explorerben** bontsa ki a Storage-fiók csomópontját **, kattintson a**jobb gombbal a Blobok elemre, majd válassza a **blob-tároló létrehozása**parancsot.
+   a. A Visual Studio **Kiszolgálókezelőjében** bontsa ki a tárfiók csomópontját, kattintson a jobb gombbal a **Blobs**elemre, és válassza **a Blob Container létrehozása parancsot.**
 
-   b. A **blob-tároló létrehozása** párbeszédpanelen írja be a *tároló* nevet a tároló neveként, majd kattintson az **OK**gombra.
+   b. A **Blob tároló létrehozása** párbeszédpanelen adja meg a *tárolót* a tároló neveként, majd kattintson az **OK**gombra.
 
-1. Töltse fel a *program.cs* -fájlt a blob-tárolóba. (Ezt a fájlt példaként használjuk, feltölthet bármilyen szövegfájlt, és létrehozhat egy üzenetsor-üzenetet a fájl nevével.)
+1. Töltse fel a *Program.cs* fájlt a blob tárolóba. (Ez a fájl itt példaként használható; bármilyen szöveges fájlt feltölthet, és a fájl nevével rendelkező várólista-üzenetet hozhat létre.)
 
-   a. A **Server Explorerben**kattintson duplán a létrehozott tároló csomópontjára.
+   a. A **Kiszolgálókezelőben**kattintson duplán a létrehozott tároló csomópontjára.
 
-   b. A **tároló** ablakban válassza a **feltöltés** gombot.
+   b. A **Tároló ablakban** válassza a **Feltöltés** gombot.
 
-   ![BLOB feltöltése gomb](./media/webjobs-sdk-get-started/blob-upload-button.png)
+   ![A Blob feltöltése gomb](./media/webjobs-sdk-get-started/blob-upload-button.png)
 
-   c. Keresse meg és válassza ki a *program.cs*, majd kattintson **az OK gombra**.
+   c. Keresse meg és *jelölje*Program.cs, majd kattintson az **OK gombra.**
 
-1. Hozzon létre egy üzenetsor-üzenetet a korábban létrehozott várólistán, a *program.cs* pedig az üzenet szövegeként.
+1. Hozzon létre egy várólista-üzenetet a korábban létrehozott várólistában, *Program.cs* az üzenet szövegeként.
 
-   ![Üzenetsor-Program.cs](./media/webjobs-sdk-get-started/queue-msg-program-cs.png)
+   ![Üzenetsor-üzenet Program.cs](./media/webjobs-sdk-get-started/queue-msg-program-cs.png)
 
-1. A projekt helyi futtatása.
+1. Futtassa a projektet helyileg.
 
-   Az üzenetsor-üzenet elindítja a függvényt, amely ezután beolvassa a blobot, és naplózza a hosszát. A konzol kimenete a következőképpen néz ki:
+   A várólista-üzenet elindítja a függvényt, amely ezután beolvassa a blobot, és naplózza annak hosszát. A konzol kimenete így néz ki:
 
    ```console
    Found the following functions:
@@ -508,7 +508,7 @@ A bemeneti kötések leegyszerűsítik a kódot, amely adatokat olvas be. Ebben 
 
 ## <a name="add-an-output-binding"></a>Kimeneti kötés hozzáadása
 
-A kimeneti kötések leegyszerűsítik a kódot, amely adatokat ír. Ez a példa úgy módosítja az előzőt, hogy a blob egy másolatát megírta a méretének naplózása helyett. A blob Storage-kötések a korábban telepített Azure Storage-bővítmény csomag részét képezik.
+A kimeneti kötések egyszerűsítik az adatokat író kódot. Ez a példa módosítja az előzőt a blob egy példányának írásával a mérete naplózása helyett. A Blob storage-kötések szerepelnek a korábban telepített Azure Storage-bővítménycsomagban.
 
 1. Cserélje le az `ProcessQueueMessage` metódust az alábbi kódra:
 
@@ -524,23 +524,23 @@ A kimeneti kötések leegyszerűsítik a kódot, amely adatokat ír. Ez a példa
    }
    ```
 
-1. Hozzon létre egy másik üzenetsor-üzenetet a *program.cs* az üzenet szövegeként.
+1. Hozzon létre egy másik üzenetsor-üzenetet, *amelynek szövege* Program.cs.
 
-1. A projekt helyi futtatása.
+1. Futtassa a projektet helyileg.
 
-   Az üzenetsor-üzenet elindítja a függvényt, amely ezután beolvassa a blobot, naplózza a hosszát, és létrehoz egy új blobot. A konzol kimenete azonos, de ha a blob-tároló ablakra lép, majd a **frissítés**lehetőséget választja, megjelenik egy új, *copy-program.cs* nevű blob.
+   A várólista-üzenet elindítja a függvényt, amely ezután beolvassa a blobot, naplózza annak hosszát, és létrehoz egy új blobot. A konzol kimenete ugyanaz, de amikor a blob tároló ablakába lép, és a Frissítés lehetőséget **választja,** megjelenik egy copy-Program.cs nevű új *blob.*
 
-## <a name="republish-the-updates-to-azure"></a>A frissítések ismételt közzététele az Azure-ban
+## <a name="republish-the-updates-to-azure"></a>A frissítések újbóli közzététele az Azure-ban
 
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget.
 
-1. A **Közzététel** párbeszédpanelen ellenőrizze, hogy az aktuális profil van-e kiválasztva, majd válassza a **Közzététel**lehetőséget. A közzététel eredményei a **kimenet** ablakban vannak részletezve.
+1. A **Közzététel** párbeszédpanelen győződjön meg arról, hogy az aktuális profil ki van jelölve, majd válassza a **Közzététel**lehetőséget. A közzététel eredményeit a **Kimenet** ablak részletezi.
  
-1. Ellenőrizze a függvényt az Azure-ban, hogy ismét feltölt egy fájlt a blob-tárolóba, és hozzáad egy üzenetet a várólistához, amely a feltöltött fájl neve. Megjelenik az üzenet, amelyet a rendszer eltávolít a sorból, és a blob-tárolóban létrehozott fájl másolatát. 
+1. Ellenőrizze a függvényt az Azure-ban, ha újra feltölt egy fájlt a blobtárolóba, és hozzáad egy üzenetet a várólistához, amely a feltöltött fájl neve. Láthatja, hogy az üzenet törlődik a várólistából, és a blob tárolóban létrehozott fájl másolata. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez a cikk bemutatja, hogyan hozhat létre, futtathat és helyezhet üzembe egy webjobs SDK 3. x projektet.
+Ez a cikk bemutatja, hogyan hozhat létre, futtathat és telepíthet webjobs SDK 3.x projektet.
 
 > [!div class="nextstepaction"]
-> [További információ a webjobs SDK-ról](webjobs-sdk-how-to.md)
+> [További információ a WebJobs SDK-ról](webjobs-sdk-how-to.md)

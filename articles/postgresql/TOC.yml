@@ -102,6 +102,8 @@
               href: concepts-data-access-and-security-private-link.md
             - name: Adattitkosítás
               href: concepts-data-encryption-postgresql.md
+            - name: Biztonsági alapkonfiguráció
+              href: security-baseline.md
         - name: Az üzletmenet folytonossága
           items:
             - name: Az üzletmenet folytonossága – bevezetés
@@ -273,6 +275,10 @@
               href: howto-restart-server-portal.md
             - name: Azure CLI
               href: howto-restart-server-cli.md
+        - name: Nyilvános hálózati hozzáférés megtagadása
+          items:
+            - name: Azure Portal
+              href: howto-deny-public-network-access.md
         - name: Replikáció
           items:
             - name: Olvasási replikák kezelése az Azure Portalon

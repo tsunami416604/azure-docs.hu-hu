@@ -1,6 +1,6 @@
 ---
-title: Hue a Hadoop on HDInsight Linux-alapú fürtökön – Azure
-description: Megtudhatja, hogyan telepítheti a Hue-t a HDInsight-fürtökre, és hogyan használhatja a bújtatást a kérések Színezetbe irányításához A Hue használatával böngészhet a tárolóban, és futtathatja a kaptár vagy a Pig-t.
+title: Színárnyalat a Hadoop-tal HDInsight Linux-alapú fürtökön – Azure
+description: Megtudhatja, hogyan telepítheti a Hue-t a HDInsight-fürtökre, és hogyan használhatja a bújtatást a kérelmek Hue-ra történő továbbításához. A Hue segítségével tallózhat a tárolóban, és futtathat Hive vagy Pig.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,62 +9,62 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
 ms.openlocfilehash: 69acfd4f2edab9be1b1dcfbb52eafbd00aec712f
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934561"
 ---
-# <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>A Hue telepítése és használata a HDInsight Hadoop-fürtökön
+# <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>A Hue telepítése és használata HDInsight Hadoop-fürtökön
 
-Megtudhatja, hogyan telepítheti a Hue-t a HDInsight-fürtökre, és hogyan használhatja a bújtatást a kérések Színezetbe irányításához
+Megtudhatja, hogyan telepítheti a Hue-t a HDInsight-fürtökre, és hogyan használhatja a bújtatást a kérelmek Hue-ra történő továbbításához.
 
 ## <a name="what-is-hue"></a>Mi az a Hue?
 
-A Hue egy Apache Hadoop-fürttel való interakcióhoz használt webalkalmazások összessége. A Hue használatával megkeresheti a Hadoop-fürthöz társított tárolót (WASB, HDInsight-fürtök esetén), és futtathatja a kaptár-feladatokat és a Pig-parancsfájlokat, és így tovább. Az alábbi összetevők HDInsight Hadoop-fürtön található Hue-telepítésekkel érhetők el.
+A Hue az Apache Hadoop-fürttel való interakcióra használt webalkalmazások készlete. A Hue segítségével tallózhat a Hadoop-fürthöz (WASB, HDInsight-fürtök esetében) társított tárolóban, futtathatja a Hive-feladatokat és a Pig-parancsfájlokat, és így tovább. A következő összetevők érhetők el a Hue telepítések egy HDInsight Hadoop-fürtön.
 
-* Méhviasz-struktúra szerkesztője
-* Apache Pig
-* Metaadattár-kezelő
-* Apache Oozie
-* Fájlböngésző (amely a WASB alapértelmezett tárolóra beszél)
-* Feladatok böngészője
+* Méhviasz kaptár szerkesztő
+* Apache sertés
+* Metastore menedzser
+* Apacs Oozie
+* FileBrowser (amely beszél WASB alapértelmezett tároló)
+* Feladat böngésző
 
 > [!WARNING]  
-> A HDInsight-fürthöz biztosított összetevők teljes mértékben támogatottak, és Microsoft ügyfélszolgálata az ezen összetevőkkel kapcsolatos problémák elkülönítésében és megoldásában is segítséget nyújt.
+> A HDInsight-fürthöz tartozó összetevők teljes mértékben támogatottak, és a Microsoft támogatási szolgálata segít az összetevőkkel kapcsolatos problémák elkülönítésében és megoldásában.
 >
-> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. Ez a probléma megoldásához vezethet, vagy megkérdezheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat szeretne-e felvenni. Többek között számos közösségi webhely használható, például a [következőhöz: HDInsight MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com). Emellett az Apache-projektek [https://apache.org on ](https://apache.org)is rendelkeznek projekt-webhelyekkel, például: [Hadoop](https://hadoop.apache.org/).
+> Az egyéni összetevők üzletileg ésszerű támogatást kapnak a probléma további elhárításához. Ez a probléma megoldásához vezethet, vagy megkéri, hogy vegyen részt a nyílt forráskódú technológiák elérhető csatornáiban, ahol az adott technológiával kapcsolatos mély szakértelem található. Például számos közösségi webhely használható, például: [MSDN fórum a HDInsighthoz](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Szintén Apache projektek projekt [https://apache.org](https://apache.org)oldalak , például: [Hadoop](https://hadoop.apache.org/).
 
-## <a name="install-hue-using-script-actions"></a>A Hue telepítése parancsfájl-műveletek használatával
+## <a name="install-hue-using-script-actions"></a>A Színárnyalat telepítése parancsfájlműveletek használatával
 
-Használja az alábbi táblázatban szereplő információkat a parancsfájl-művelethez. Lásd: [HDInsight-fürtök testreszabása parancsfájl-műveletekkel](hdinsight-hadoop-customize-cluster-linux.md) a parancsfájl-műveletek használatával kapcsolatos konkrét utasításokhoz.
+Használja az alábbi táblázatban található információkat a parancsfájl-művelethez. A Parancsfájl-műveletek használatával kapcsolatos speciális utasításokat a [HDInsight-fürtök testreszabása parancsfájlműveletekkel](hdinsight-hadoop-customize-cluster-linux.md) című témakörben találja.
 
 > [!NOTE]  
-> A Hue HDInsight-fürtökön való telepítéséhez az ajánlott átjárócsomóponthoz mérete legalább a4 (8 mag, 14 GB memória).
+> A Hue HDInsight-fürtökre való telepítéséhez a fejcsomópont ajánlott mérete legalább A4 (8 mag, 14 GB memória).
 
-|Tulajdonság |Value (Díj) |
+|Tulajdonság |Érték |
 |---|---|
-|Parancsfájl típusa:|– Egyéni|
-|Név|A Hue telepítése|
-|Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
-|Csomópont típusa (i):|Fej|
+|Parancsfájl típusa:|- Egyéni|
+|Név|Színárnyalat telepítése|
+|Bash parancsfájl URI|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
+|Csomóponttípus(ok):|Head|
 
 ## <a name="use-hue-with-hdinsight-clusters"></a>A Hue használata HDInsight-fürtökkel
 
-Az SSH-bújtatás az egyetlen módszer a színárnyalat elérésére a fürtön, ha fut. Az SSH-n keresztüli bújtatás lehetővé teszi, hogy a forgalom közvetlenül annak a fürtnek a átjárócsomóponthoz menjen, ahol a Hue fut. Miután a fürt befejezte az üzembe helyezést, a következő lépésekkel használhatja a Hue szolgáltatást egy HDInsight-fürtön.
+SSH tunneling az egyetlen módja annak, hogy a fürt önfuttatását követően a Hue eléréséhez. Az SSH-n keresztüli bújtatás lehetővé teszi, hogy a forgalom közvetlenül a Hue-t futtató fürt csomópontjára lépjen. Miután a fürt kiépített, a következő lépésekkel használja a Hue-t egy HDInsight-fürtön.
 
 > [!NOTE]  
-> Javasoljuk, hogy kövesse az alábbi utasításokat a Firefox böngésző használatával.
+> Javasoljuk, hogy a Firefox böngészőt használja az alábbi utasítások követéséhez.
 
-1. Az [SSH-bújtatás használata az Apache Ambari webes felhasználói felület, a erőforráskezelő, a JobHistory, a NameNode, a Oozie és az egyéb webes kezelőfelületek eléréséhez](hdinsight-linux-ambari-ssh-tunnel.md) használja az SSH-alagutat az ügyfél rendszeréről a HDInsight-fürtre, majd konfigurálja úgy a webböngészőt, hogy az SSH-alagutat proxyként használja.
+1. Az [SSH-bújtatás használata az Apache Ambari webes felhasználói felületének, a ResourceManagernek, a JobHistory-nak, a NameNode-nak, az Oozie-nek és más webes felhasználói felületnek az információival](hdinsight-linux-ambari-ssh-tunnel.md) ssh-alagutat hozhat létre az ügyfélrendszerből a HDInsight-fürthöz, majd konfigurálhatja a webböngészőt az SSH-alagút proxyként való használatára.
 
-1. A fürthöz való kapcsolódáshoz használja az [SSH-parancsot](./hdinsight-hadoop-linux-use-ssh-unix.md) . Szerkessze az alábbi parancsot az CLUSTERNAME helyére a fürt nevével, majd írja be a következő parancsot:
+1. Az [ssh paranccsal](./hdinsight-hadoop-linux-use-ssh-unix.md) csatlakozhat a fürthöz. Az alábbi parancs szerkesztésével cserélje le a CLUSTERNAME-t a fürt nevére, majd írja be a parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Csatlakozás után a következő paranccsal szerezheti be az elsődleges átjárócsomóponthoz teljes tartománynevét:
+1. A csatlakozás után a következő paranccsal szerezze be az elsődleges főcsomópont teljesen minősített tartománynevét:
 
     ```bash
     hostname -f
@@ -74,57 +74,57 @@ Az SSH-bújtatás az egyetlen módszer a színárnyalat elérésére a fürtön,
 
         myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
-    Ez az az elsődleges átjárócsomóponthoz állomásneve, ahol a Hue webhely található.
+    Ez annak az elsődleges csomópontnak a gazdaneve, ahol a Hue webhely található.
 
-1. A böngészőben nyissa meg a Hue portált `http://HOSTNAME:8888`címen. Cserélje le az ÁLLOMÁSNÉV nevet az előző lépésben beszerzett névre.
+1. A böngészősegítségével nyissa meg `http://HOSTNAME:8888`a Hue portált a alkalmazásban. Cserélje le a HOSTNAME nevet az előző lépésben kapott névre.
 
    > [!NOTE]  
-   > Amikor első alkalommal jelentkezik be, a rendszer felszólítja, hogy hozzon létre egy fiókot a Hue Portalra való bejelentkezéshez. Az itt megadott hitelesítő adatokat a rendszer a portálra korlátozza, és nem kapcsolódik a fürt kiépítésekor megadott rendszergazdai vagy SSH-felhasználói hitelesítő adatokhoz.
+   > Amikor először jelentkezik be, a rendszer kéri, hogy hozzon létre egy fiókot a Hue portálra való bejelentkezéshez. Az itt megadott hitelesítő adatok a portálra korlátozódnak, és nem kapcsolódnak a fürt kiépítése során megadott rendszergazdai vagy SSH-felhasználói hitelesítő adatokhoz.
 
-    ![HDInsight Hue Portal bejelentkezési ablak](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Hitelesítő adatok megadása a Hue Portalhoz")
+    ![HDInsight színárnyalat portál bejelentkezési ablak](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Hitelesítő adatok megadása a Színszín portálhoz")
 
 ### <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
 
-1. A Hue Portalon válassza a **lekérdezési szerkesztők**lehetőséget, majd válassza a **kaptár** elemet a kaptár-szerkesztő megnyitásához.
+1. A Hue portálon válassza a **Lekérdezésszerkesztők**lehetőséget, majd a **Hive-szerkesztő** megnyitásához válassza a Hive-szerkesztőt.
 
-    ![HDInsight Hue-portál a kaptár-szerkesztő használatával](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Hive használata")
+    ![A HDInsight színárnyalat portál jattot használ](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Hive használata")
 
-2. Az **assziszt** lapon az **adatbázis**területen tekintse meg a **hivesampletable**. Ez egy minta tábla, amely a HDInsight összes Hadoop-fürtjével együtt kapható. Adjon meg egy minta lekérdezést a jobb oldali ablaktáblán, és tekintse meg az alábbi ablaktábla **eredmények** lapján látható kimenetet, ahogy az a képernyőfelvételen látható.
+2. A **Segédlap** **Adatbázis**csoportjában a **hivesampletable**jelenik meg. Ez egy mintatábla, amely a HDInsight összes Hadoop-fürtjével együtt kerül kiszállításra. Írjon be egy mintalekérdezést a jobb oldali ablaktáblába, és tekintse meg a kimenetet az alábbi ablaktábla **Eredmények** lapján, ahogy az a képernyőfelvételen látható.
 
-    ![HDInsight Hue-portál struktúrájának lekérdezése](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Struktúra-lekérdezés futtatása")
+    ![HDInsight színárnyalat portálstruktúra-lekérdezés](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Hive-lekérdezés futtatása")
 
-    A **diagram** lapon megtekintheti az eredmény vizuális ábrázolását is.
+    A **Diagram** lapon az eredmény vizuális ábrázolását is megtekintheti.
 
-### <a name="browse-the-cluster-storage"></a>A fürt tárterületének tallózása
+### <a name="browse-the-cluster-storage"></a>Böngészés a fürttárolóban
 
-1. A Hue Portalon válassza a menüsáv jobb felső sarkában található **fájlkezelő** elemet.
-2. Alapértelmezés szerint a fájlkezelő a **/User/myuser** könyvtárban nyílik meg. A fürthöz társított Azure Storage-tároló gyökeréhez való ugráshoz válassza a perjel közvetlenül az elérési úton lévő felhasználói könyvtárat.
+1. A Színezet portálon válassza a Menüsor jobb felső sarkában található **Fájltallózó** lehetőséget.
+2. Alapértelmezés szerint a fájlböngésző a **/user/myuser** könyvtárban nyílik meg. Válassza ki az előre perjel közvetlenül a felhasználói könyvtár az elérési úton, hogy a fürthöz társított Azure storage tároló gyökér.
 
-    ![HDInsight Hue-portál fájljának böngészője](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "A fájl böngésző használata")
+    ![HDInsight színárnyalat portálfájl-böngésző](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "Fájlböngésző használata")
 
-3. Kattintson a jobb gombbal egy fájlra vagy mappára az elérhető műveletek megtekintéséhez. A jobb oldali sarokban található **feltöltés** gomb használatával fájlokat tölthet fel az aktuális könyvtárba. Új fájlok vagy könyvtárak létrehozásához használja az **új** gombot.
+3. Az elérhető műveletek megtekintéséhez kattintson a jobb gombbal egy fájlra vagy mappára. A jobb sarokban található **Feltöltés** gombbal fájlokat tölthet fel az aktuális könyvtárba. Az **Új** gombbal új fájlokat vagy könyvtárakat hozhat létre.
 
 > [!NOTE]  
-> A Hue file Browser csak a HDInsight-fürthöz társított alapértelmezett tároló tartalmát jeleníti meg. A fürthöz esetlegesen hozzárendelt további Storage-fiókok vagy tárolók nem lesznek elérhetők a fájlkezelő használatával. A fürthöz társított további tárolók azonban mindig elérhetővé válnak a kaptár-feladatok számára. Ha például beírja a `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` parancsot a kaptár-szerkesztőben, a további tárolók tartalmát is megtekintheti. Ebben a parancsban a **newcontainer** nem a fürthöz társított alapértelmezett tároló.
+> A Hue fájl böngészőcsak a HDInsight-fürthöz társított alapértelmezett tároló tartalmát tudja megjeleníteni. A fürthöz társított további tárfiókok/tárolók nem lesznek elérhetők a fájlböngészőhasználatával. Azonban a fürthöz társított további tárolók mindig elérhető a Hive-feladatok. Ha például beírja `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` a parancsot a Hive-szerkesztőbe, láthatja a további tárolók tartalmát is. Ebben a **parancsban** az új tároló nem a fürthöz társított alapértelmezett tároló.
 
 ## <a name="important-considerations"></a>Fontos szempontok
 
-1. A Hue telepítéséhez használt parancsfájl csak a fürt elsődleges átjárócsomóponthoz telepíti.
+1. A Hue telepítéséhez használt parancsfájl csak a fürt elsődleges csomópontjára telepíti azt.
 
-1. A telepítés során a rendszer több Hadoop szolgáltatást (HDFS, FONALat, MR2, Oozie) indít el a konfiguráció frissítéséhez. Miután a parancsfájl befejezte a Hue telepítését, eltarthat egy ideig, amíg a többi Hadoop-szolgáltatás elindul. Ez hatással lehet a Hue teljesítményére. Az összes szolgáltatás elindítása után a Hue teljes mértékben működőképes lesz.
+1. A telepítés során több Hadoop-szolgáltatás (HDFS, YARN, MR2, Oozie) újraindul a konfiguráció frissítéséhez. Miután a parancsfájl befejezte a Hue telepítését, eltarthat egy ideig, amíg más Hadoop-szolgáltatások elindulnak. Ez kezdetben hatással lehet hue teljesítményére. Amint minden szolgáltatás elindul, a Hue teljesen működőképes lesz.
 
-1. A Hue nem érti az Apache TEZ-feladatokat, ami a struktúra aktuális alapértelmezett értéke. Ha a MapReduce-t a kaptár-végrehajtó motorként szeretné használni, frissítse a parancsfájlt a következő parancs használatára a parancsfájlban:
+1. A Hue nem érti az Apache Tez-feladatokat, ami a Hive jelenlegi alapértelmezett beállítása. Ha a MapReduce programot szeretné használni a Hive végrehajtási motorjaként, frissítse a parancsfájlt úgy, hogy a parancsfájlban a következő parancsot használja:
 
         set hive.execution.engine=mr;
 
-1. A Linux-fürtök esetében lehet olyan forgatókönyv, amelyben a szolgáltatások az elsődleges átjárócsomóponthoz futnak, miközben a Resource Manager a másodlagos gépen is fut. Egy ilyen forgatókönyv hibákat eredményezhet (alább látható), ha a Hue használatával megtekinti a fürtön futó feladatok részleteit. Megtekintheti azonban a feladatok részleteit a feladatok befejeződése után.
+1. Linux-fürtök, egy forgatókönyv, amelyben a szolgáltatások futnak az elsődleges csomópont, míg az erőforrás-kezelő lehet, hogy fut a másodlagos. Egy ilyen forgatókönyv hibákat okozhat (alább látható), ha a Hue használatával a fürtön futó feladatok részleteinek megtekintéséhez. A feladat részleteit azonban megtekintheti, ha a feladat befejeződött.
 
-   ![Hue Portal – hiba minta üzenet](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Hue-portál hibája")
+   ![Színárnyalat portál – mintaüzenet](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Színárnyalat portál hiba")
 
-   Ezt egy ismert probléma okozza. Áthidaló megoldásként módosítsa a Ambari, hogy az Active Resource Manager is az elsődleges átjárócsomóponthoz fusson.
+   Ez egy ismert probléma miatt történt. Kerülő megoldásként módosítsa az Ambari-t úgy, hogy az aktív erőforrás-kezelő is futaz elsődleges csomóponton.
 
-1. A Hue megérti a WebHDFS, miközben a HDInsight-fürtök az Azure Storage-t használják `wasbs://`használatával. Így a parancsfájl-művelettel használt egyéni szkript telepíti a WebWasb-t, amely egy WebHDFS-kompatibilis szolgáltatás, amely a WASB-re mutat. Tehát bár a Hue Portal a HDFS (például ha az egérmutatót a **fájlkezelőben**helyezi át), akkor a WASB kell értelmezni.
+1. A Hue a WebHDFS szolgáltatást értelmezi, `wasbs://`míg a HDInsight-fürtök az Azure Storage-ot használják a használatával. Tehát a parancsfájlművelethez használt egyéni parancsfájl telepíti a WebWasb-ot, amely egy WebHDFS-kompatibilis szolgáltatás a WASB-szel való beszélgetéshez. Tehát, bár a Hue portál azt mondja, HDFS helyeken (mint amikor az egeret a **file browser),** meg kell értelmezni WASB.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Telepítse az R-t a HDInsight-fürtökön](hdinsight-hadoop-r-scripts-linux.md). A fürt testreszabásával telepítse az R-t a HDInsight Hadoop-fürtökön. Az R egy nyílt forráskódú nyelv és környezet statisztikai számítástechnikai szolgáltatásokhoz. Több száz beépített statisztikai funkciót és saját programozási nyelvet biztosít, amely ötvözi a funkcionális és az objektumorientált programozás szempontjait. Emellett kiterjedt grafikus képességeket is biztosít.
+[Telepítse az R-t a HDInsight-fürtökre](hdinsight-hadoop-r-scripts-linux.md). A fürt testreszabásával telepítse az R-t a HDInsight Hadoop-fürtökre. Az R a statisztikai számítástechnika nyílt forráskódú nyelve és környezete. Több száz beépített statisztikai funkciót és saját programozási nyelvet biztosít, amely egyesíti a funkcionális és objektumorientált programozás szempontjait. Ez is szolgáltat kiterjedt grafikus képességek.

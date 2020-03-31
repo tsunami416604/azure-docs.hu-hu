@@ -1,6 +1,6 @@
 ---
-title: SRE-események listája | Microsoft Docs
-description: Vegyen részt a globális SRE Közösségben az események beküldésével.
+title: SRE eseménylista | Microsoft dokumentumok
+description: Vegyen részt a globális SRE közösség ben, részt vehet ezeken az eseményeken.
 author: dnblankedelman
 manager: efreeman
 ms.service: site-reliability-engineering
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: dnb
 ms.openlocfilehash: 5360ada6dab19564bfa88697d2adc6ef751f3935
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78254807"
 ---
-# <a name="participate-in-the-global-site-reliability-engineering-community"></a>Részvétel a globális site megbízhatóság-tervezési Közösségben
+# <a name="participate-in-the-global-site-reliability-engineering-community"></a>Részvétel a webhely megbízhatóságának globális mérnöki közösségében
 
-A SRE-on való olvasáskor fontos, hogy gyakran nagyobb jelentőséggel bír, hogy a társaival is beszéljen róla. A SRE kapcsolatos kihívások, sikerek és hibák megvitatása döntő fontosságú lehet a tárgy részletes megismerése érdekében.
+Az SRE-ről olvasni fontos, de gyakran még fontosabb beszélni róla a társaival. Az SRE-re vonatkozó kihívások, sikerek és kudarcok megbeszélése alapvető fontosságú lehet a tárgy részletes megértésében.
 
-Számos olyan Meetup és konferencia található, amely SRE-tartalmat tartalmaz. A legfontosabb, hogy a USENIX által terjesztett globálisan elosztott [SREcon-konferenciák](https://www.usenix.org/conferences) a legközvetlenebb jelentőséggel rendelkeznek.
+Számos, SRE-tartalmakat felvonultató találkozó és konferencia közül lehet választani. Talán a legközvetlenebbül a usenix által szervezett, globálisan elosztott [SREcon konferenciák.](https://www.usenix.org/conferences)
 
-Egyre több és több SRE-tartalom teszi lehetővé az olyan konferenciákat, mint például a [Lisa](https://www.usenix.org/conferences/byname/5), [az egész napos DevOps](https://www.alldaydevops.com), a [DevOps Enterprise Summit](https://events.itrevolution.com) és a helyi DevOps konferenciák, például a [DevOps napok](https://www.devopsdays.org). Ezt a tartalmat és a tárgyat érdeklő másokat is megkeresheti, bárhol is megtalálhatja.
+Egyre több SRE tartalom teszi az utat a konferenciák, mint [a LISA,](https://www.usenix.org/conferences/byname/5) [Egész nap DevOps](https://www.alldaydevops.com), [DevOps Enterprise Summit](https://events.itrevolution.com) és a helyi DevOps konferenciák, mint a [DevOps Days](https://www.devopsdays.org). Keresse meg ezt a tartalmat, és mások at érdekel a téma, ahol megtalálja, és őket.

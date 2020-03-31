@@ -5,50 +5,50 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75467096"
 ---
-A rendelkezésre állási csoport figyelője az SQL Server rendelkezésre állási csoport által figyelt IP-cím és hálózati név. A rendelkezésre állási csoport figyelő létrehozásához tegye a következőket:
+A rendelkezésre állási csoport figyelője egy IP-cím és hálózati név, amelyet az SQL Server rendelkezésre állási csoport figyel. A rendelkezésre állási csoport figyelőjének létrehozásához tegye a következőket:
 
-1. <a name="getnet"></a>Szerezze be a fürt hálózati erőforrásának nevét.
+1. <a name="getnet"></a>A fürt hálózati erőforrásának bekéselése.
 
-    a. Az RDP használatával csatlakozzon az elsődleges replikát futtató Azure-beli virtuális géphez. 
+    a. Az RDP használatával csatlakozzon az elsődleges replikát tartalmazó Azure virtuális géphez. 
 
-    b. Nyissa meg Feladatátvevőfürt-kezelő.
+    b. Nyissa meg a feladatátvevőfürt-kezelőt.
 
-    c. Válassza a **hálózatok** csomópontot, és jegyezze fel a fürt hálózati nevét. Használja ezt a nevet a PowerShell-parancsfájl `$ClusterNetworkName` változójában. A következő ábrán a fürt hálózati neve a **cluster Network 1**:
+    c. Jelölje ki a **Hálózatok** csomópontot, és jegyezze fel a fürthálózat nevét. Használja ezt a `$ClusterNetworkName` nevet a változóban a PowerShell-parancsfájlban. Az alábbi képen a fürt hálózatának neve **Fürthálózat 1**:
 
-   ![Fürt hálózatnév](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
+   ![Fürthálózat neve](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
 
-1. <a name="addcap"></a>Adja hozzá az ügyfél-hozzáférési pontot.  
-    Az ügyfél-hozzáférési pont annak a hálózatnak a neve, amelyet az alkalmazások a rendelkezésre állási csoportban lévő adatbázisokhoz való kapcsolódáshoz használnak. Hozza létre az ügyfél-hozzáférési pontot Feladatátvevőfürt-kezelőban.
+1. <a name="addcap"></a>Adja hozzá az ügyfél hozzáférési pontját.  
+    Az ügyfél-hozzáférési pont az a hálózati név, amelyet az alkalmazások egy rendelkezésre állási csoport adatbázisaihoz való csatlakozáshoz használnak. Hozza létre az ügyfél-hozzáférési pontot a Feladatátvevőfürt-kezelőben.
 
-    a. Bontsa ki a fürt nevét, majd kattintson a **szerepkörök**elemre.
+    a. Bontsa ki a fürt nevét, majd kattintson a **Szerepkörök gombra.**
 
-    b. A **szerepkörök** ablaktáblán kattintson a jobb gombbal a rendelkezésre állási csoport nevére, majd válassza az **erőforrás hozzáadása** > **ügyfél-hozzáférési pont**lehetőséget.
+    b. A **Szerepkörök** ablaktáblán kattintson a jobb gombbal az elérhetőségi csoport nevére, majd válassza **az Erőforrás-ügyfél** > hozzáférési pontjának hozzáadása**parancsot.**
 
    ![Ügyfél-hozzáférési pont](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
-    c. A **név** mezőben hozzon létre egy nevet ehhez az új figyelőhöz. 
-   Az új figyelő neve annak a hálózatnak a neve, amelyet az alkalmazások a SQL Server rendelkezésre állási csoportban lévő adatbázisokhoz való kapcsolódáshoz használnak.
+    c. A **Név** mezőben hozzon létre egy nevet az új figyelőnek. 
+   Az új figyelő neve az a hálózati név, amelyet az alkalmazások az SQL Server rendelkezésre állási csoportjában lévő adatbázisokhoz való csatlakozáshoz használnak.
 
-    d. A figyelő létrehozásának befejezéséhez kattintson kétszer a **tovább** gombra, majd kattintson a **Befejezés**gombra. Ezen a ponton ne helyezze online állapotba a figyelőt vagy az erőforrást.
+    d. A figyelő létrehozásának befejezéséhez kattintson kétszer a **Tovább** gombra, majd a **Befejezés**gombra. Ne hozza a figyelő vagy erőforrás online ezen a ponton.
 
-1. Állítsa offline állapotba a rendelkezésre állási csoport fürt szerepkörét. **Feladatátvevőfürt-kezelő** a **szerepkörök**területen kattintson a jobb gombbal a szerepkörre, majd válassza a **szerepkör leállítása**lehetőséget.
+1. A rendelkezésre állási csoport fürtszerepkörének offline állapotba helyezése. A **Feladatátvevőfürt-kezelő** **szerepkörök**csoportjában kattintson a jobb gombbal a szerepkörre, és válassza a **Szerepkör leállítása parancsot.**
 
-1. <a name="congroup"></a>Konfigurálja az IP-erőforrást a rendelkezésre állási csoport számára.
+1. <a name="congroup"></a>Konfigurálja az IP-erőforrást a rendelkezésre állási csoporthoz.
 
-    a. Kattintson a **Resources (erőforrások** ) lapra, majd bontsa ki a létrehozott ügyfél-hozzáférési pontot.  
+    a. Kattintson az **Erőforrások** fülre, majd bontsa ki a létrehozott ügyfél-hozzáférési pontot.  
     Az ügyfél-hozzáférési pont offline állapotban van.
 
    ![Ügyfél-hozzáférési pont](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
 
-    b. Kattintson a jobb gombbal az IP-erőforrásra, majd kattintson a Tulajdonságok elemre. Jegyezze fel az IP-cím nevét, és használja a `$IPResourceName` változóban a PowerShell-parancsfájlban.
+    b. Kattintson a jobb gombbal az IP-erőforrásra, majd kattintson a tulajdonságok parancsra. Vegye figyelembe az IP-cím nevét, `$IPResourceName` és használja azt a változóban a PowerShell-parancsfájlban.
 
-    c. Az **IP-cím**területen kattintson a **statikus IP-cím**elemre. Állítsa be az IP-címet ugyanazzal a címmel, amelyet a terheléselosztó címének a Azure Portal való beállításakor használt.
+    c. Az **IP-cím csoportban**kattintson a **Statikus IP-cím gombra.** Állítsa be az IP-címet, mint ugyanazt a címet, amelyet az Azure Portalon a terheléselosztó címének beállításakor használt.
 
    ![IP-erőforrás](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
@@ -56,41 +56,41 @@ A rendelkezésre állási csoport figyelője az SQL Server rendelkezésre állá
     1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
     ------------------------->
 
-1. <a name = "dependencyGroup"></a>Az SQL Server rendelkezésre állási csoport erőforrásának kihasználása az ügyfél-hozzáférési ponttól függ.
+1. <a name = "dependencyGroup"></a>Az SQL Server rendelkezésre állási csoportjának erőforrásának függővé tételéhez függjön az ügyfél hozzáférési pontja.
 
-    a. A Feladatátvevőfürt-kezelő területen kattintson a **szerepkörök**elemre, majd kattintson a rendelkezésre állási csoportra.
+    a. A Feladatátvevőfürt-kezelőben kattintson a **Szerepkörök**elemre, majd az elérhetőségi csoportra.
 
-    b. Az **erőforrások** lap **egyéb erőforrások**területén kattintson a jobb gombbal a rendelkezésre állási erőforráscsoport elemre, majd kattintson a **Tulajdonságok**elemre. 
+    b. Az **Erőforrások** lap **Egyéb erőforrások**csoportjában kattintson a jobb gombbal az elérhetőségi erőforráscsoportra, majd kattintson a **Tulajdonságok parancsra.** 
 
-    c. A függőségek lapon adja meg az ügyfél-hozzáférési pont (a figyelő) erőforrásának nevét.
+    c. A függőségek lapon adja hozzá az ügyfél-hozzáférési pont (a figyelő) erőforrás nevét.
 
    ![IP-erőforrás](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
     d. Kattintson az **OK** gombra.
 
-1. <a name="listname"></a>Az ügyfél-hozzáférési pont erőforrásának kihasználása az IP-címről függ.
+1. <a name="listname"></a>Az ügyfél-hozzáférési pont erőforrásának függővé az IP-címtől függővé.
 
-    a. A Feladatátvevőfürt-kezelő területen kattintson a **szerepkörök**elemre, majd kattintson a rendelkezésre állási csoportra. 
+    a. A Feladatátvevőfürt-kezelőben kattintson a **Szerepkörök**elemre, majd az elérhetőségi csoportra. 
 
-    b. Az **erőforrások** lapon kattintson a jobb gombbal az ügyfél-hozzáférési pont erőforrásra a **kiszolgáló neve**területen, majd kattintson a **Tulajdonságok**elemre. 
+    b. Az **Erőforrások** lapon kattintson a jobb gombbal az ügyfélelérési pont erőforrására a **Kiszolgáló neve területen,** majd kattintson a **Tulajdonságok parancsra.** 
 
    ![IP-erőforrás](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-    c. Kattintson a **függőségek** lapra. Ellenőrizze, hogy az IP-cím függőség-e. Ha nem, állítsa be az IP-cím függőségét. Ha több erőforrás van felsorolva, ellenőrizze, hogy az IP-címek rendelkeznek-e vagy, nem és, függőségekkel. Kattintson az **OK** gombra. 
+    c. Kattintson a **Függőségek** fülre. Ha nem, állítsa be az IP-cím függőségét. Ha több erőforrás szerepel a listában, ellenőrizze, hogy az IP-címek OR, nem ÉS, függőségekkel rendelkeznek-e. Kattintson az **OK** gombra. 
 
    ![IP-erőforrás](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
     >[!TIP]
-    >Ellenőrizheti, hogy a függőségek megfelelően vannak-e konfigurálva. A Feladatátvevőfürt-kezelő területen lépjen a szerepkörök pontra, kattintson a jobb gombbal a rendelkezésre állási csoportra, kattintson a **További műveletek**parancsra, majd a **függőségi jelentés megjelenítése**elemre. Ha a függőségek megfelelően vannak konfigurálva, a rendelkezésre állási csoport a hálózat nevétől függ, a hálózat neve pedig az IP-címről függ. 
+    >Ellenőrizheti, hogy a függőségek megfelelően vannak-e konfigurálva. A Feladatátvevőfürt-kezelőben nyissa meg a Szerepkörök, kattintson a jobb gombbal az elérhetőségi csoportra, kattintson a **További műveletek parancsra,** majd kattintson a **Függőségi jelentés megjelenítése parancsra.** Ha a függőségek megfelelően vannak konfigurálva, a rendelkezésre állási csoport a hálózat nevétől függ, a hálózat neve pedig az IP-címtől függ. 
 
 
-1. <a name="setparam"></a>A fürt paramétereinek beállítása a PowerShellben.
+1. <a name="setparam"></a>Állítsa be a fürt paramétereit a PowerShellben.
 
-   a. Másolja az alábbi PowerShell-szkriptet az egyik SQL Server példányára. Frissítse a környezet változóit.
+   a. Másolja a következő PowerShell-parancsfájlt az SQL Server egyik példányába. Frissítse a környezet változóit.
 
-   - `$ListenerILBIP` a rendelkezésre állási csoport figyelője számára az Azure Load balancerben létrehozott IP-cím.
+   - `$ListenerILBIP`Az Azure load balancer a rendelkezésre állási csoport figyelője által létrehozott IP-cím.
     
-   - `$ListenerProbePort` a rendelkezésre állási csoport figyelője számára az Azure Load balancerben konfigurált port.
+   - `$ListenerProbePort`a port konfigurált az Azure terheléselosztó a rendelkezésre állási csoport figyelője.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -103,28 +103,28 @@ A rendelkezésre állási csoport figyelője az SQL Server rendelkezésre állá
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ListenerILBIP";"ProbePort"=$ListenerProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
-   b. Állítsa be a fürt paramétereit úgy, hogy futtatja a PowerShell-parancsfájlt az egyik fürtcsomóponton.  
+   b. Állítsa be a fürt paramétereit a PowerShell-parancsfájl futtatásával a fürtcsomópontok egyikén.  
 
    > [!NOTE]
-   > Ha a SQL Server példányai különálló régiókban találhatók, akkor kétszer kell futtatnia a PowerShell-szkriptet. Az első alkalommal használja az első régió `$ListenerILBIP` és `$ListenerProbePort`. A második alkalommal használja a második régió `$ListenerILBIP` és `$ListenerProbePort`. A fürt hálózati neve és a fürt IP-erőforrásának neve is eltérő az egyes régiókban.
+   > Ha az SQL Server-példányok külön régiókban vannak, kétszer kell futtatnia a PowerShell-parancsfájlt. Az első alkalommal `$ListenerILBIP` használja `$ListenerProbePort` a és az első régióból. A második alkalommal `$ListenerILBIP` használja `$ListenerProbePort` a és a második régióból. A fürthálózat neve és a fürt IP-erőforrásneve régiónként is eltérő.
 
-1. A rendelkezésre állási csoport fürt szerepkörének online állapotba hozása. **Feladatátvevőfürt-kezelő** a **szerepkörök**területen kattintson a jobb gombbal a szerepkörre, majd válassza a **szerepkör indítása**lehetőséget.
+1. Hozza online állapotba a rendelkezésre állási csoport fürtszerepkörét. A **Feladatátvevőfürt-kezelő** **szerepkör öklében**kattintson a jobb gombbal a szerepkörre, és válassza a **Szerepkör indítása parancsot.**
 
-Ha szükséges, ismételje meg a fenti lépéseket a WSFC-fürt IP-címéhez tartozó fürt paramétereinek megadásához.
+Ha szükséges, ismételje meg a fenti lépéseket a WSFC-fürt IP-címének fürtparamétereinek beállításához.
 
-1. Szerezze be a WSFC-fürt IP-címének IP-címét. **Feladatátvevőfürt-kezelő** a **fürt alapvető erőforrásai**területen keresse meg a **kiszolgáló nevét**.
+1. A WSFC-fürt IP-címének beszerezése. A **Fürtalapvető erőforrások**csoport **Feladatátvevőfürt-kezelőjében** keresse meg a **Kiszolgálónevét.**
 
-1. Kattintson a jobb gombbal az **IP-cím**elemre, majd válassza a **Tulajdonságok**lehetőséget.
+1. Kattintson a jobb gombbal **az IP-cím**elemre, és válassza **a Tulajdonságok parancsot.**
 
-1. Másolja ki az IP-cím **nevét** . Lehet, hogy `Cluster IP Address`. 
+1. Másolja az IP-cím **nevére.** Lehet, `Cluster IP Address`hogy . 
 
-1. <a name="setwsfcparam"></a>A fürt paramétereinek beállítása a PowerShellben.
+1. <a name="setwsfcparam"></a>Állítsa be a fürt paramétereit a PowerShellben.
   
-   a. Másolja az alábbi PowerShell-szkriptet az egyik SQL Server példányára. Frissítse a környezet változóit.
+   a. Másolja a következő PowerShell-parancsfájlt az SQL Server egyik példányába. Frissítse a környezet változóit.
 
-   - `$ClusterCoreIP` az az IP-cím, amelyet az Azure Load balancerben hozott létre az WSFC Core fürterőforrás számára. Eltér a rendelkezésre állási csoport figyelője IP-címétől.
+   - `$ClusterCoreIP`A WSFC core cluster erőforrás Azure-terheléselosztóján létrehozott IP-cím. Ez eltér a rendelkezésre állási csoport figyelőip-címét.
 
-   - `$ClusterProbePort` az Azure Load balancerben a WSFC Health mintavételhez konfigurált port. Eltér a rendelkezésre állási csoport figyelője mintavételének.
+   - `$ClusterProbePort`a WSFC-állapotminta Azure-terheléselosztóján konfigurált port. Ez eltér a rendelkezésre állási csoport figyelője a mintavétel.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -137,7 +137,7 @@ Ha szükséges, ismételje meg a fenti lépéseket a WSFC-fürt IP-címéhez tar
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ClusterCoreIP";"ProbePort"=$ClusterProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
-   b. Állítsa be a fürt paramétereit úgy, hogy futtatja a PowerShell-parancsfájlt az egyik fürtcsomóponton.  
+   b. Állítsa be a fürt paramétereit a PowerShell-parancsfájl futtatásával a fürtcsomópontok egyikén.  
 
 >[!WARNING]
->A rendelkezésre állási csoport figyelő állapotának mintavételi portjának eltérőnek kell lennie a fürt alapvető IP-címe állapotának mintavételi portján. Ezekben a példákban a figyelő portja 59999, és a fürt alapszintű IP-címe állapotának mintavételi portja 58888. Mindkét portnak engedélyezve kell lennie a bejövő tűzfalszabály engedélyezése szabálynak.
+>A rendelkezésre állási csoport figyelő állapotmintavételi portnak különböznie kell a fürt magjának IP-cím állapotmintavételi portjától. Ezekben a példákban a figyelő port 59999 és a fürt magja IP-cím állapot mintavételi port 58888. Mindkét porthoz bejövő tűzfalszabály szükséges.

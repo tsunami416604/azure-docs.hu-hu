@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a Zscaler Beta konfigurálása automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Zscaler Bétaverzióba.
+title: 'Oktatóanyag: A Zscaler Beta konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
+description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryt a Felhasználói fiókok zscaler béta verziójára történő automatikus kiépítésére és kiépítésének kimerülésével.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,18 +16,18 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 505cd7a3350c937885f0f03268ef326a4f784258
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062729"
 ---
-# <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler Beta konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
+# <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Oktatóanyag: A Zscaler Béta beállítása automatikus felhasználói kiépítéshez
 
-Ennek az oktatóanyagnak a célja, hogy bemutassa a Zscaler Beta és Azure Active Directory (Azure AD) szolgáltatásban elvégzendő lépéseket, hogy az Azure AD konfigurálja a felhasználókat és/vagy csoportokat a bétaverzió Zscaler való automatikus kiépítésére és kiépítésére.
+Ez az oktatóanyag célja, hogy bemutassa a Zscaler Beta és az Azure Active Directory (Azure AD) által végrehajtandó lépéseket az Azure AD konfigurálásához, hogy automatikusan kiépítse és kibontsa a felhasználókat és/vagy csoportokat a Zscaler Béta verziójára.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../active-directory-saas-app-provisioning.md).
+> Ez az oktatóanyag az Azure AD felhasználói létesítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../active-directory-saas-app-provisioning.md)
 >
 
 
@@ -35,138 +35,138 @@ Ennek az oktatóanyagnak a célja, hogy bemutassa a Zscaler Beta és Azure Activ
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következőkkel:
 
-* Azure AD-bérlő
-* Zscaler Beta-bérlő
-* Felhasználói fiók a Zscaler Beta-ban rendszergazdai engedélyekkel
+* Egy Azure AD-bérlő
+* A Zscaler Béta bérlő
+* A Zscaler Beta felhasználói fiókja rendszergazdai engedélyekkel
 
 > [!NOTE]
-> Az Azure AD-kiépítés integrációja a Zscaler Beta SCIM API-ra támaszkodik, amely a vállalati csomaggal rendelkező fiókok Zscaler béta-fejlesztői számára érhető el.
+> Az Azure AD-kiépítési integráció a Zscaler Beta SCIM API-ra támaszkodik, amely a Zscaler Beta fejlesztők számára érhető el a vállalati csomaggal rendelkező fiókokhoz.
 
-## <a name="adding-zscaler-beta-from-the-gallery"></a>Zscaler Beta hozzáadása a katalógusból
+## <a name="adding-zscaler-beta-from-the-gallery"></a>Zscaler Beta hozzáadása a galériából
 
-Mielőtt a Zscaler Beta-ot konfigurálja az Azure AD-vel való automatikus felhasználói üzembe helyezéshez, hozzá kell adnia a Zscaler Beta-t az Azure AD-alkalmazás-katalógusból a felügyelt SaaS-alkalmazások listájára.
+A Zscaler Beta konfigurálása az Azure AD-vel való automatikus felhasználói kiépítéshez, hozzá kell adnia a Zscaler Beta-t az Azure AD alkalmazásgyűjteményéből a felügyelt SaaS-alkalmazások listájához.
 
-**A Zscaler Beta az Azure AD Application Galleryből való hozzáadásához hajtsa végre a következő lépéseket:**
+**Ha hozzá szeretné adni a Zscaler Beta-t az Azure AD alkalmazásgyűjteményből, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Zscaler Beta**kifejezést, válassza a **Zscaler Beta** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Zscaler Beta**kifejezést , válassza a **Zscaler Beta** elemet az eredménypanelről, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Zscaler Beta az eredmények listájában](common/search-new-app.png)
+    ![Zscaler Béta az eredménylistában](common/search-new-app.png)
 
-## <a name="assigning-users-to-zscaler-beta"></a>Felhasználók kiosztása a Zscaler Beta-hoz
+## <a name="assigning-users-to-zscaler-beta"></a>Felhasználók hozzárendelése a Zscaler Beta programhoz
 
-Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában a rendszer csak azokat a felhasználókat és/vagy csoportokat szinkronizálja, akik az Azure AD-alkalmazáshoz lettek rendelve.
+Az Azure Active Directory a "hozzárendelések" nevű koncepciót használja annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak a felhasználók és/vagy csoportok, amelyek "hozzárendelt" egy alkalmazás az Azure AD-ben szinkronizálva vannak.
 
-Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoportjai számára szükséges a Zscaler Beta eléréséhez. A döntés után a felhasználókat és/vagy csoportokat hozzárendelheti a Zscaler Betahoz az alábbi utasításokat követve:
+Az automatikus felhasználói kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoportjainak kell hozzáférniük a Zscaler Beta szolgáltatáshoz. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Zscaler Beta-hoz az alábbi utasításokat követve:
 
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-zscaler-beta"></a>Fontos Tippek a felhasználók Zscaler bétaverzióhoz való hozzárendeléséhez
+### <a name="important-tips-for-assigning-users-to-zscaler-beta"></a>Fontos tippek a felhasználók Zscaler Beta programhoz való hozzárendeléséhez
 
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a Zscaler Beta rendszerhez az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
+* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve zscaler béta az automatikus felhasználói kiépítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
 
-* Amikor felhasználót rendel a Zscaler bétaverzióhoz, ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelés párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
+* Amikor egy felhasználót a Zscaler Béta értékhez rendel, a hozzárendelési párbeszédpanelen ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
 
-## <a name="configuring-automatic-user-provisioning-to-zscaler-beta"></a>Automatikus felhasználó-kiépítés beállítása a Zscaler Beta-ra
+## <a name="configuring-automatic-user-provisioning-to-zscaler-beta"></a>Automatikus felhasználói kiépítés konfigurálása a Zscaler Beta rendszerbe
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy csoportos hozzárendelések alapján hozza létre, frissítse és tiltsa le a Zscaler Beta felhasználóit és/vagy csoportjait.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le a Zscaler Beta-ban az Azure AD felhasználói és/vagy csoport-hozzárendelései alapján.
 
 > [!TIP]
-> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Zscaler Beta esetében, a [Zscaler Beta egyszeri bejelentkezés oktatóanyagában](zscaler-beta-tutorial.md)szereplő utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+> Dönthet úgy is, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Zscaler Beta számára, a [Zscaler Beta egyszeri bejelentkezési oktatóanyagutasításait](zscaler-beta-tutorial.md)követve. Egyszeri bejelentkezés konfigurálható az automatikus felhasználói kiépítéstől függetlenül, bár ez a két funkció kiegészíti egymást.
 
-### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>A Zscaler Beta automatikus felhasználói üzembe helyezésének konfigurálása az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>A Zscaler Beta automatikus felhasználói kiépítésének konfigurálása az Azure AD-ben:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Zscaler Beta**elemet.
+1. Jelentkezzen be az [Azure Portalra,](https://portal.azure.com) és válassza a **Vállalati alkalmazások**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza a **Zscaler Beta**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Zscaler Beta**elemet.
+2. Az alkalmazások listájában válassza a **Zscaler Beta**lehetőséget.
 
-    ![A Zscaler Beta hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![A Zscaler Béta hivatkozása az Alkalmazások listában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
+    ![Zscaler bétakiépítés](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **létesítési módot** **Automatikus**ra.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
+    ![Zscaler bétakiépítés](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Zscaler Beta-fiókjának **bérlői URL-címét** és **titkos jogkivonatát** a 6. lépésben leírtak szerint.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL-címet** és a Titkos **jogkivonata** a Zscaler béta fiók a 6.
 
-6. A **bérlői URL-cím** és a **titkos jogkivonat**beszerzéséhez navigáljon az **Adminisztráció > hitelesítési beállítások** elemre a Zscaler Beta Portal felhasználói felületén, és kattintson az **SAML** elemre a **Hitelesítés típusa**alatt.
+6. A **bérlői URL és** a **titkos jogkivonat**beszerzéséhez keresse meg a **Felügyeleti > hitelesítési beállítások at** a Zscaler Beta portál felhasználói felületén, és kattintson az **SAML** elemre a **Hitelesítés típusa területen.**
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
+    ![Zscaler bétakiépítés](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
 
-    Az SAML **konfigurálása** elemre kattintva nyissa meg a **konfigurációs SAML** -beállításokat.
+    Kattintson az **SAML konfigurálása** gombra az **SAML konfigurációja** beállításainak megnyitásához.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
+    ![Zscaler bétakiépítés](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
 
-    Válassza az **scim kiépítés engedélyezése** lehetőséget az **alap URL-cím** és a **tulajdonosi jogkivonat**lekéréséhez, majd mentse a beállításokat. Másolja az **alap URL-címet** a **bérlői URL**-címre, és a **tulajdonosi jogkivonatot** a Azure Portal **titkos jogkivonatára** .
+    Válassza **az Scim-alapú kiépítés engedélyezése** lehetőséget az alap **URL-cím** és **a tulajdonosi token**lekéréséhez, majd mentse a beállításokat. Másolja az **alap URL-címet** **a bérlői URL-címre,** és **a tulajdonosi jogkivonatot** titkos **jogkivonatba** másolja az Azure Portalon.
 
-7. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a Zscaler Beta szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Zscaler Beta-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+7. Az 5. **Test Connection** Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a Zscaler Béta fiók rendszergazdai engedélyekkel rendelkezik, majd próbálkozzon újra.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
+    ![Zscaler bétakiépítés](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
 
-8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be az **e-mail-értesítés küldése hiba**esetén jelölőnégyzetet.
+8. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és jelölje be az **E-mail értesítés küldése hiba esetén jelölőnégyzetet.**
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/notification.png)
+    ![Zscaler bétakiépítés](./media/zscaler-beta-provisioning-tutorial/notification.png)
 
-9. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Mentés** gombra.
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Zscaler Beta-** ra lehetőséget.
+10. A **Leképezések** szakaszban válassza **az Azure Active Directory felhasználóinak szinkronizálása a Bátk-lizóval lehetőséget.**
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/user-mappings.png)
+    ![Zscaler bétakiépítés](./media/zscaler-beta-provisioning-tutorial/user-mappings.png)
 
-11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelési** szakaszban található Zscaler Beta elemre. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Zscaler Beta felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+11. Tekintse át az Azure AD és a Zscaler Beta között szinkronizált felhasználói attribútumokat az **Attribútumleképezés** szakaszban. Az **egyező** tulajdonságokként kijelölt attribútumok a Zscaler Béta verzió felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/user-attribute-mappings.png)
+    ![Zscaler bétakiépítés](./media/zscaler-beta-provisioning-tutorial/user-attribute-mappings.png)
 
-12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a Zscaler bétaverzióhoz**lehetőséget.
+12. A **Leképezések** szakaszban válassza **az Azure Active Directory-csoportok szinkronizálása a Bifzerbéta szolgáltatással**lehetőséget.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/group-mappings.png)
+    ![Zscaler bétakiépítés](./media/zscaler-beta-provisioning-tutorial/group-mappings.png)
 
-13. Tekintse át az Azure AD-ből szinkronizált Zscaler az attribútumok **leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Zscaler Beta-ban lévő csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+13. Tekintse át az Azure AD és a Zscaler Beta között szinkronizált csoportattribútumokat az **Attribútumleképezés** szakaszban. Az **egyező** tulajdonságokként kijelölt attribútumok a Zscaler Beta csoportjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
+    ![Zscaler bétakiépítés](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
 
-14. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](./../active-directory-saas-scoping-filters.md).
+14. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](./../active-directory-saas-scoping-filters.md)található alábbi utasításokat.
 
-15. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Zscaler Beta számára, módosítsa a **kiépítési állapotot** **a következőre** a **Settings (beállítások** ) szakaszban.
+15. Az Azure AD-kiépítési szolgáltatás zscaler béta engedélyezéséhez módosítsa a **kiépítési állapot** **be van kapcsolva** a **Beállítások** szakaszban.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/provisioning-status.png)
+    ![Zscaler bétakiépítés](./media/zscaler-beta-provisioning-tutorial/provisioning-status.png)
 
-16. Adja meg azokat a felhasználókat és/vagy csoportokat, akik számára a Zscaler Beta-t szeretné kiépíteni. Ehhez válassza ki a kívánt értékeket a **hatókörben** a **Beállítások** szakaszban.
+16. Határozza meg azokat a felhasználókat és/vagy csoportokat, amelyeket a Zscaler Beta alkalmazásba szeretne kiépíteni, ha a **Beállítások** szakasz **hatókörében** kiválasztja a kívánt értékeket.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/scoping.png)
+    ![Zscaler bétakiépítés](./media/zscaler-beta-provisioning-tutorial/scoping.png)
 
-17. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+17. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
+    ![Zscaler bétakiépítés](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Zscaler Beta-on végrehajtott összes műveletet ismertetik.
+Ez a művelet elindítja a Beállítások szakasz **hatókörében** definiált összes felhasználó és/vagy csoport kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. A Szinkronizálás **részletei** szakasz segítségével figyelheti az előrehaladást, és kövesse a kiépítési tevékenység jelentésre mutató hivatkozásokat, amely ismerteti az Azure AD-kiépítési szolgáltatás által a Zscaler Beta- szolgáltatáson végrehajtott összes műveletet.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../active-directory-saas-provisioning-reporting.md)helyezéséhez.
+Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../active-directory-saas-provisioning-reporting.md)olvashat bővebben.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../active-directory-saas-provisioning-reporting.md)
+* [További információ a naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések beésének módjáról](../active-directory-saas-provisioning-reporting.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-beta-provisioning-tutorial/tutorial-general-01.png

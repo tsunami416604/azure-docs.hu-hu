@@ -1,6 +1,6 @@
 ---
-title: Várakozási tevékenység Azure Data Factory
-description: A várakozási tevékenység szünetelteti a folyamat végrehajtását a megadott időszakra vonatkozóan.
+title: Várakozási tevékenység az Azure Data Factoryban
+description: A Várakozás tevékenység felfüggeszti a folyamat végrehajtását a megadott időszakra.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: f9dd53fded06eec169219d00993620a0f2aa2bf0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73678238"
 ---
-# <a name="execute-wait-activity-in-azure-data-factory"></a>Várakozási tevékenység végrehajtása a Azure Data Factoryban
+# <a name="execute-wait-activity-in-azure-data-factory"></a>Várakozási tevékenység végrehajtása az Azure Data Factoryban
 Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a megadott időtartamot, és csak az után folytatja a további tevékenységek futtatását. 
 
 ## <a name="syntax"></a>Szintaxis
@@ -39,16 +39,16 @@ Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a me
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
 név | A `Wait` tevékenység neve. | Sztring | Igen
-type | **Várakozási**értékre kell beállítani. | Sztring | Igen
-waitTimeInSeconds | Azon másodpercek száma, ameddig a folyamat várakozik a feldolgozás folytatása előtt. | Egész szám | Igen
+type | A Várakozás **beállításnak**kell lennie. | Sztring | Igen
+waitTimeInSeconds | Az a másodpercszám, ameddig a folyamat várakozik a feldolgozás folytatása előtt. | Egész szám | Igen
 
 ## <a name="example"></a>Példa
 
 > [!NOTE]
-> Ez a szakasz JSON-definíciókat és PowerShell-parancsokat tartalmaz a folyamat futtatásához. A Data Factory-adatfolyamatok Azure PowerShell és JSON-definíciók használatával történő létrehozásával kapcsolatos részletes útmutatásért lásd [: oktatóanyag: az adatfeldolgozó létrehozása a Azure PowerShell használatával](quickstart-create-data-factory-powershell.md).
+> Ez a szakasz JSON-definíciókat és minta PowerShell-parancsokat biztosít a folyamat futtatásához. A Data Factory-folyamat Azure PowerShell- és JSON-definíciók használatával történő létrehozásához részletes útmutatót az oktatóanyag ban [talál: adatgyár létrehozása az Azure PowerShell használatával](quickstart-create-data-factory-powershell.md)című témakörben.
 
-### <a name="pipeline-with-wait-activity"></a>Várakozási tevékenységgel rendelkező folyamat
-Ebben a példában a folyamat két tevékenységgel rendelkezik: **eddig** és **várni**. A várakozási tevékenység úgy van konfigurálva, hogy várjon egy másodpercig. A folyamat egy ciklusban futtatja a webes tevékenységet egy másodperces várakozási idővel az egyes futtatások között. 
+### <a name="pipeline-with-wait-activity"></a>Folyamat várakozási tevékenységgel
+Ebben a példában a folyamat két tevékenységet rendelkezik: **Ig** és **Várjon**. A Várakozás tevékenység úgy van beállítva, hogy várjon egy másodpercet. A folyamat egy ciklusban futtatja a webes tevékenységet, és minden futtatás között egy másodperc várakozási idő áll. 
 
 ```json
 {
@@ -99,12 +99,12 @@ Ebben a példában a folyamat két tevékenységgel rendelkezik: **eddig** és *
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
+Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamattevékenységeket: 
 
 - [If Condition tevékenység](control-flow-if-condition-activity.md)
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)
-- [Minden tevékenységhez](control-flow-for-each-activity.md)
+- [Minden egyes tevékenységhez](control-flow-for-each-activity.md)
 - [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keresstevékenységet](control-flow-lookup-activity.md)
 - [Webes tevékenység](control-flow-web-activity.md)
 - [Until tevékenység](control-flow-until-activity.md)

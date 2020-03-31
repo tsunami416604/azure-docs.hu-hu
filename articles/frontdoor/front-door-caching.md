@@ -1,6 +1,6 @@
 ---
-title: Azure bejárati ajtó szolgáltatás – gyorsítótárazás | Microsoft Docs
-description: Ez a cikk segít megérteni, hogy az Azure bejárati ajtó szolgáltatás hogyan figyeli a háttérrendszer állapotát
+title: Azure bejárati ajtó - gyorsítótárazás | Microsoft dokumentumok
+description: Ez a cikk segít megérteni, hogy az Azure Front Door hogyan figyeli a háttérrendszerek állapotát
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,110 +11,108 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 70ee0af0b39e80aa90d143303b3c522fbb3cc780
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839214"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471744"
 ---
-# <a name="caching-with-azure-front-door-service"></a>Gyorsítótárazás az Azure bejárati ajtó szolgáltatásával
-A következő dokumentum a bejárati ajtó működésének módját határozza meg az olyan útválasztási szabályokkal, amelyeken engedélyezve van a gyorsítótárazás.
+# <a name="caching-with-azure-front-door"></a>Gyorsítótárazás az Azure bejárati ajtajával
+A következő dokumentum a ház elülső ajtajának működését határozza meg olyan útválasztási szabályokkal, amelyek engedélyezték a gyorsítótárazást. Bejárati ajtó egy modern Content Delivery Network (CDN), és így együtt dinamikus site gyorsítás és terheléselosztás, ez is támogatja a gyorsítótárazás idotartama, mint bármely más CDN.
 
-## <a name="delivery-of-large-files"></a>Nagyméretű fájlok kézbesítése
-Az Azure bejárati ajtó szolgáltatás nagyméretű fájlokat tesz elérhetővé a fájl mérete nélkül. A bejárati ajtó egy objektum-darabolás nevű technikát használ. Amikor nagyméretű fájlokat igényelnek, a Front Door lekéri a fájl kisebb darabjait a háttérrendszerről. Ha a rendszer teljes vagy bájttartományra vonatkozó fájlkérelmet kap, a Front Door-környezet 8 MB-os darabokban kéri le a fájlt a háttérrendszerről.
+## <a name="delivery-of-large-files"></a>Nagy fájlok kézbesítése
+Az Azure Front Door nagy fájlokat biztosít a fájlméret korlátozása nélkül. A Bejárati ajtó az objektumdarabolásnak nevezett technikát használja. Amikor nagyméretű fájlokat igényelnek, a Front Door lekéri a fájl kisebb darabjait a háttérrendszerről. Ha a rendszer teljes vagy bájttartományra vonatkozó fájlkérelmet kap, a Front Door-környezet 8 MB-os darabokban kéri le a fájlt a háttérrendszerről.
 
-</br>Miután a rendszer beolvasta a tömböt az első ajtós környezetben, a gyorsítótárba kerül, és azonnal kiszolgálja a felhasználónak. A bejárati ajtó ezután előre lekéri a következő adatrészletet párhuzamosan. Ez az előzetes beolvasás biztosítja, hogy a tartalom a felhasználó előtt egy darabban maradjon, ami csökkenti a késést. Ez a folyamat addig folytatódik, amíg a teljes fájl le nem töltődik (ha szükséges), az összes bájtos tartomány elérhető (ha szükséges), vagy az ügyfél leállítja a csatlakozást.
+</br>Miután az adattömb megérkezik a bejárati ajtó környezetben, a gyorsítótárba kerül, és azonnal kiszolgálja a felhasználónak. Bejárati ajtó, majd előre fetches a következő darab párhuzamosan. Ez az előzetes lekérés biztosítja, hogy a tartalom egy adattömböt maradjon a felhasználó előtt, ami csökkenti a késést. Ez a folyamat addig folytatódik, amíg a teljes fájlt le nem tölti (ha szükséges), az összes bájttartomány elérhető (ha szükséges), vagy az ügyfél meg nem szakítja a kapcsolatot.
 
-</br>A byte-Range kérelemmel kapcsolatos további információkért olvassa el a következőt: [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
-A bejárati ajtó gyorsítótárba helyezi a kapott adattömböket, így a teljes fájlt nem kell gyorsítótárazni a bejárati ajtó gyorsítótárában. A fájl-vagy byte-tartományokra vonatkozó további kérelmek a gyorsítótárból lesznek kézbesítve. Ha nem az összes adathalmaz gyorsítótárazva van, a rendszer a háttérbeli adattömböket kéri le. Ez az optimalizálás arra támaszkodik, hogy a háttérrendszer képes támogatni a bájtos tartományokra vonatkozó kérelmeket; Ha a háttérrendszer nem támogatja a bájtok közötti kérelmeket, ez az optimalizálás nem érvényes.
+</br>A bájttartomány-kérelemmel kapcsolatos további információkért olvassa el [a 7233.RFC](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
+A Bejárati ajtó gyorsítótárazza az adattömböket, ahogy azok beérkeznek, így a teljes fájlt nem kell gyorsítótárazni a bejárati ajtó gyorsítótárában. A fájlra vagy bájtos tartományokra vonatkozó további kérelmek et a gyorsítótárból szolgálják ki. Ha nem az összes adattömb van gyorsítótárazva, az előzetes lekérés a háttérrendszerből származó adattömbök kérésére szolgál. Ez az optimalizálás a háttér-képernyő bájttartomány-kérelmek támogatásának képességén alapul; ha a háttérszolgáltatás nem támogatja a bájttartomány-kérelmeket, ez az optimalizálás nem hatékony.
 
 ## <a name="file-compression"></a>Fájltömörítés
-A bejárati ajtó dinamikusan tömörítheti a tartalmat a peremhálózat szélén, így kevesebb és gyorsabb választ kaphat az ügyfeleknek. Az összes fájl tömörítésre alkalmas. A fájlnak azonban olyan MIME-típusnak kell lennie, amely jogosult a tömörítési listára. Jelenleg a bejárati ajtó nem teszi lehetővé a lista módosítását. Az aktuális lista:</br>
-- "alkalmazás/EOT"
-- "alkalmazás/betűkészlet"
-- "alkalmazás/betűkészlet – sfnt"
-- "alkalmazás/JavaScript"
-- "alkalmazás/JSON"
-- "alkalmazás/OpenType"
-- "alkalmazás/OTF"
-- "Application/PKCS7 – MIME"
-- "alkalmazás/TrueType"
-- "Application/TTF",
-- "Application/vnd. MS-fontobject"
-- "Application/XHTML + XML"
-- "Application/XML"
-- "alkalmazás/XML + RSS"
-- "application/x-font-OpenType"
-- "application/x-font-TrueType"
-- "application/x-font-TTF"
-- "application/x-httpd-CGI"
-- "application/x-mpegurl"
-- "application/x-OpenType"
-- "application/x-OTF"
-- "application/x-Perl"
-- "application/x-TTF"
-- "alkalmazás/x-JavaScript"
-- "font/EOT"
-- "betűkészlet/TTF"
-- "font/OTF"
-- "betűkészlet/OpenType"
-- "rendszerkép/SVG + XML"
-- "text/CSS"
-- "text/CSV"
-- "text/html"
-- "text/JavaScript"
-- "text/js", "text/plain"
-- "text/RichText"
-- "szöveg/tabulátorral tagolt értékek"
-- "text/XML"
-- "text/x-script"
-- "text/x-Component"
-- "text/x-Java-Source"
+A Bejárati ajtó dinamikusan tömöríti a peremhálózaton lévő tartalmakat, ami kisebb és gyorsabb választ eredményez az ügyfelek számára. Minden fájl jogosult a tömörítésre. A fájloknak azonban olyan MIME típusúnak kell lenniük, amely jogosult a tömörítési listára. Jelenleg a Bejárati ajtó nem teszi lehetővé a lista módosítását. Az aktuális lista:</br>
+- "alkalmazás/eot"
+- "alkalmazás/betűtípus"
+- "alkalmazás/betűtípus-sfnt"
+- "alkalmazás/javascript"
+- alkalmazás/json
+- "alkalmazás/opentype"
+- "alkalmazás/otf"
+- "alkalmazás/pkcs7-pantomim"
+- "alkalmazás/truetype"
+- "alkalmazás/ttf",
+- "alkalmazás/vnd.ms-fontobject"
+- "alkalmazás/xhtml+xml"
+- "alkalmazás/xml"
+- "alkalmazás/xml+rss"
+- "alkalmazás/x-font-opentype"
+- "alkalmazás/x-font-truetype"
+- "alkalmazás/x-font-ttf"
+- "alkalmazás/x-httpd-cgi"
+- "alkalmazás/x-mpegurl"
+- "alkalmazás/x-opentype"
+- "alkalmazás/x-otf"
+- "alkalmazás/x-perl"
+- "alkalmazás/x-ttf"
+- "alkalmazás/x-javascript"
+- "font/eot"
+- "betűtípus/ttf"
+- "betűtípus/otf"
+- "betűtípus/opentype"
+- "kép/svg+xml"
+- "szöveg/css"
+- "szöveg/csv"
+- "szöveg/html"
+- "szöveg/javascript"
+- "szöveg/js", "szöveg/sima"
+- "szöveg/richtext"
+- "szöveg/tabulátor-elválasztott értékek"
+- "szöveg/xml"
+- "szöveg/x-script"
+- "szöveg/x-összetevő"
+- "szöveg/x-java-source"
 
-Emellett a fájlnak 1 KB és 8 MB méretűnek kell lennie, beleértve a-t is.
+Ezenkívül a fájlnak 1 KB és 8 MB közötti méretűnek kell lennie.
 
 Ezek a profilok a következő tömörítési kódolásokat támogatják:
 - [Gzip (GNU zip)](https://en.wikipedia.org/wiki/Gzip)
-- [Brotli](https://en.wikipedia.org/wiki/Brotli)
+- [Brotli között](https://en.wikipedia.org/wiki/Brotli)
 
-Ha egy kérelem támogatja a gzip és a Brotli tömörítést, a Brotli-tömörítés elsőbbséget élvez.</br>
-Ha egy adategységre vonatkozó kérelem meghatározza a tömörítést, és a kérés gyorsítótár-hiányt eredményez, a bejárati ajtó közvetlenül a POP-kiszolgálón végzi el az eszköz tömörítését. Ezt követően a tömörített fájlt a rendszer a gyorsítótárból kézbesíti. Az eredményül kapott tételt egy átvitel – Encoding: darabolásos érték adja vissza.
+Ha egy kérelem támogatja a gzip és brotli tömörítést, a Brotli-tömörítés élvez elsőbbséget.</br>
+Ha egy eszközre vonatkozó kérelem tömörítést határoz meg, és a kérelem gyorsítótár-tévesztést eredményez, a Bejárati ajtó közvetlenül a POP-kiszolgálón hajtja végre az eszköz tömörítését. Ezt követően a tömörített fájl a gyorsítótárból jelenik meg. Az eredményül kapott cikk átadás-kódolással kerül visszaadásra: darabolva.
 
 ## <a name="query-string-behavior"></a>Lekérdezési karakterlánc viselkedése
-A bejárati ajtó segítségével szabályozhatja, hogy a rendszer hogyan gyorsítótárazza a fájlokat a lekérdezési karakterláncot tartalmazó webes kérelmek esetében. Lekérdezési karakterláncot tartalmazó webes kérelem esetén a lekérdezési karakterlánc a kérelemnek a kérdőjel (?) utáni részét jelöli. A lekérdezési karakterláncok tartalmazhatnak egy vagy több kulcs-érték párokat, amelyekben a mező nevét és értékét egy egyenlőségjel (=) választja el egymástól. A kulcs-érték párokat egy jel (&) választja el egymástól. Például: `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Ha egy kérelem lekérdezési karakterláncában egynél több kulcs-érték pár szerepel, a rendelésük nem számít.
-- **Lekérdezési karakterláncok figyelmen kívül hagyása**: alapértelmezett mód. Ebben a módban a bejárati ajtó továbbítja a lekérdezési karakterláncokat a kérelmezőtől az első kérelemben található háttérbe, és gyorsítótárazza az eszközt. Az eszköz bejárati környezetből kiszolgált összes további kérelme figyelmen kívül hagyja a lekérdezési karakterláncokat, amíg a gyorsítótárazott eszköz le nem jár.
+A Bejárati ajtó segítségével szabályozhatja, hogy a rendszer hogyan gyorsítótárazzata a fájlokat egy lekérdezési karakterláncot tartalmazó webes kérelemhez. A lekérdezési karakterláncot tartalmazó webes kérelemben a lekérdezési karakterlánc a kérelemnek az a része, amely egy kérdőjel (?) után következik be. A lekérdezési karakterlánc egy vagy több kulcs-érték párt tartalmazhat, amelyekben a mező nevét és értékét egyenlőségjel (=) választja el egymástól. Minden kulcs-érték párt egy -mampersand (&) választ el egymástól. Például: `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Ha egy kérelem lekérdezési karakterláncában egynél több kulcs-érték pár van, a sorrendjük nem számít.
+- **Lekérdezési karakterláncok figyelmen kívül hagyása**: Alapértelmezett mód. Ebben a módban a Bejárati ajtó átadja a lekérdezési karakterláncokat a kérelmezőa konkretor az első kérés, és gyorsítótárazza az eszközt. A bejárati ajtó környezetből kiszolgált eszköz minden további kérése figyelmen kívül hagyja a lekérdezési karakterláncokat, amíg a gyorsítótárazott eszköz le nem jár.
 
-- **Gyorsítótár – minden egyedi URL-cím**: ebben a módban minden egyedi URL-címmel rendelkező kérelem, beleértve a lekérdezési karakterláncot, a saját gyorsítótárral rendelkező egyedi objektumként lesz kezelve. Például a rendszer a háttérbeli `www.example.ashx?q=test1`re vonatkozó kérelemre adott válaszát gyorsítótárazza a bejárati ajtó környezetében, és visszaadja a későbbi gyorsítótárak esetében ugyanazzal a lekérdezési karakterlánccal. A `www.example.ashx?q=test2`ra vonatkozó kérelmet a rendszer külön eszközként gyorsítótárazza a saját élettartam beállítással.
+- **Minden egyedi URL gyorsítótárazása:** Ebben a módban minden egyedi URL-címmel rendelkező kérelem, beleértve a lekérdezési karakterláncot is, egyedi eszközként lesz kezelve, saját gyorsítótárral. Például a válasz a háttérrendszer egy `www.example.ashx?q=test1` kérelem gyorsítótárba a bejárati ajtaját környezetben, és visszaadja a későbbi gyorsítótárak ugyanazzal a lekérdezési karakterlánccal. A kérelem `www.example.ashx?q=test2` a gyorsítótárba, mint egy külön eszköz saját time-to-live beállítást.
 
-## <a name="cache-purge"></a>Gyorsítótár kiürítése
-A bejárati ajtó gyorsítótárba helyezi az eszközöket, amíg az eszköz élettartama (TTL) lejár. Miután az objektum ÉLETTARTAMa lejár, amikor egy ügyfél kéri az eszközt, az előtérben lévő környezet beolvassa az eszköz új, frissített példányát az ügyfél kérésének kiszolgálásához, és tárolja a gyorsítótár frissítését.
-</br>Az ajánlott eljárás annak biztosítására, hogy a felhasználók mindig megkapják az adategységek legújabb példányát, hogy minden egyes frissítéshez a saját eszközeiket, és azokat új URL-ként tegye közzé. A bejárati ajtó azonnal lekéri az új eszközöket a következő ügyfelek kéréseire. Előfordulhat, hogy a gyorsítótárazott tartalmat törölni kívánja az összes peremhálózati csomópontról, és az összeset kényszeríti az új eszközök beolvasására. Ennek oka lehet a webalkalmazás frissítései, vagy a helytelen adatokat tartalmazó eszközök gyors frissítése.
+## <a name="cache-purge"></a>Gyorsítótár-kiürítés
+A Bejárati ajtó gyorsítótárazza az eszközöket, amíg az eszköz élni való lejárati ideje (TTL) le nem jár. Miután az eszköz TTL lejár, amikor egy ügyfél kéri az eszközt, a Bejárati ajtajának környezet lekéri az eszköz egy új frissített példányát az ügyfélkérelem kiszolgálásához és a gyorsítótár frissítésének tárolásához.
+</br>Az ajánlott eljárás annak biztosítása érdekében, hogy a felhasználók mindig megkapják az eszközök legújabb példányát, hogy minden egyes frissítéshez verziószámba adják az eszközöket, és új URL-ként teszik közzé őket. A Front Door azonnal lekéri az új eszközöket a következő ügyfélkérelmekhez. Előfordulhat, hogy szeretné kiüríteni a gyorsítótárazott tartalmat az összes peremhálózati csomópontról, és mindet kényszeríteni az új frissített eszközök lekéréséhez. Ennek oka lehet a webalkalmazás frissítése, vagy a helytelen adatokat tartalmazó eszközök gyors frissítése.
 
-</br>Válassza ki, hogy milyen eszközöket kíván kiüríteni a peremhálózati csomópontokból. Ha törölni kívánja az összes eszközt, kattintson az összes kiürítés jelölőnégyzetre. Ellenkező esetben írja be az elérési út szövegmezőben az összes törölni kívánt eszköz elérési útját. Az alábbi formátumok támogatottak az elérési úton.
-1. **Egy URL-cím kiürítése**: az egyes adategységek kiürítése a teljes URL-cím megadásával, a fájlkiterjesztés használatával, például/Pictures/Strasbourg.png;
-2. **Helyettesítő karakteres törlés**: a csillag (\*) helyettesítő karakterként is használható. Az összes mappa, almappa és fájl végleges törlése az elérési út vagy\* alatt lévő végpont alatt, illetve az összes almappa és fájl kiürítése egy adott mappában, a mappa és a\*(például/Pictures/\*) megadása után.
-3. **Gyökértartomány kiürítése**: Ürítse ki a végpont gyökerét az elérési úton található "/" értékkel.
+</br>Válassza ki, hogy milyen eszközöket szeretne kiüríteni a peremhálózati csomópontokról. Ha törölni szeretné az összes eszköz törlését, kattintson az Összes törlése jelölőnégyzetre. Ellenkező esetben írja be a kiüríteni kívánt eszközök elérési útját a Görbe mezőbe. Az alábbi formátumok at támogatja az elérési út.
+1. **Egyútvonal-kiürítés**: Az egyes eszközök kiürítése az eszköz teljes elérési útjának megadásával (a protokoll és a tartomány nélkül), a fájlkiterjesztéssel, például /pictures/strasbourg.png;
+2. **Helyettesítő karakter kiürítése**\*: Csillag ( ) használható helyettesítő karakterként. Ürítse ki az összes mappát, almappát és fájlt a végpont alatt a /\* az elérési úton,\*vagy ürítse\*ki az összes almappát és fájlt egy adott mappa alatt a mappa megadásával, majd a / , például a /pictures/ .
+3. **Gyökértartomány kiürítése**: Ürítse ki a végpont gyökerét az elérési úton lévő "/" kapcsolóval.
 
-A bejárati ajtón a gyorsítótár kiürítése kis-és nagybetűk megkülönböztetése nélkül történik. Emellett a lekérdezési karakterláncokat is használják, ami azt jelenti, hogy az URL-cím ürítése törli az összes lekérdezési karakterlánc-változatot. 
+A bejárati ajtón lévő gyorsítótár-tisztítások nem különböznek a kis- és nagybetűktől. Emellett ezek lekérdezési karakterlánc agnosztikus, ami azt jelenti, hogy egy URL-cím törlése törli az összes lekérdezés-karakterlánc variációk is. 
 
 ## <a name="cache-expiration"></a>Gyorsítótár lejárata
-A rendszer a következő fejlécek sorrendjét használja annak meghatározásához, hogy mennyi ideig tárolja a rendszer az elemeket a gyorsítótárban:</br>
-1. Cache-Control: s-maxage =\<másodperc >
-2. Cache-Control: Max-Age =\<másodperc >
-3. Lejárat: \<http-Date >
+A fejlécek következő sorrendje alapján állapítható meg, hogy egy elem mennyi ideig lesz tárolva a gyorsítótárban:</br>
+1. Cache-Control: s-maxage\<= másodperc>
+2. Cache-Control: max-age\<= másodperc>
+3. Lejár: \<http-date>
 
-Cache-Control Response fejlécek, amelyek azt jelzik, hogy a válasz nem lesz gyorsítótárazva, például a Cache-Control: Private, Cache-Control: no-cache és Cache-Control: No-Store tiszteletben. Ha azonban egy adott URL-címen több kérelem van folyamatban egy POP-on, akkor megoszthatják a választ. Ha nincs gyorsítótár-vezérlő, az alapértelmezett viselkedés az, hogy a AFD gyorsítótárazza az erőforrást X időtartamra, ahol az X véletlenszerűen 1 és 3 nap közötti értéket vesz fel.
+Cache-Control válaszfejlécek, amelyek azt jelzik, hogy a válasz nem lesz gyorsítótárazva, mint például a Cache-Control: private, Cache-Control: no-cache, és a Cache-Control: no-store a rendszer tiszteletben tartja. Ha azonban egy POP-ban több kérelem van egy POP-on ugyanarra az URL-re vonatkozóan, megoszthatják a választ. Ha nincs gyorsítótár-vezérlés jelen az alapértelmezett viselkedés, hogy az AFD gyorsítótárazza az erőforrást X idő, amikor X véletlenszerűen szedett között 1-3 nap.
 
+## <a name="request-headers"></a>Kérésfejlécek
 
-## <a name="request-headers"></a>Kérések fejlécei
-
-A következő kérések fejléceit a rendszer nem továbbítja a háttérbe gyorsítótárazás használatakor.
-- Engedélyezés
-- Content-Length
-- Átvitel – kódolás
+A következő kérelemfejlécek nem lesznek továbbtovábbítva a háttér-gyorsítótárazás használatakor.
+- Tartalom hossza
+- Átvitel-kódolás
 
 ## <a name="next-steps"></a>További lépések
 
-- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid Azure Maps esemény sémája
-description: A Azure Maps eseményekhez megadott tulajdonságokat és sémát ismerteti Azure Event Grid
+title: Azure Event Grid Azure Maps eseményséma
+description: Az Azure Maps-események és az Azure Event Grid szolgáltatásban megadott tulajdonságok és séma ismertetése
 services: event-grid
 author: femila
 ms.service: event-grid
@@ -8,29 +8,29 @@ ms.topic: reference
 ms.date: 02/08/2019
 ms.author: femila
 ms.openlocfilehash: 9acef524521e8fac6ce6f8f61e5ff3fbbb81d18d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77486359"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure Maps Azure Event Gridi esemény sémája
+# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure Event Grid eseménysémája az Azure Maps-hez
 
-Ez a cikk a Azure Maps eseményeinek tulajdonságait és sémáját ismerteti. Az események sémáinak bemutatása: [Azure Event Grid Event Schema](https://docs.microsoft.com/azure/event-grid/event-schema).
+Ez a cikk az Azure Maps-események tulajdonságait és sémáját tartalmazza. Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](https://docs.microsoft.com/azure/event-grid/event-schema)
 
-## <a name="available-event-types"></a>Elérhető események típusai
+## <a name="available-event-types"></a>Elérhető eseménytípusok
 
-Egy Azure Maps fiók a következő típusú eseményeket bocsátja ki:
+Az Azure Maps-fiók a következő eseménytípusokat bocsátja ki:
 
-| Esemény típusa | Leírás |
+| Eseménytípus | Leírás |
 | ---------- | ----------- |
-| Microsoft.Maps.GeofenceEntered | Akkor következik be, amikor a kapott koordináták egy adott geokerítésen kívülre kerültek a következőn belül: |
-| Microsoft.Maps.GeofenceExited | Akkor következik be, amikor a kapott koordináták egy adott geokerítésen kívülre kerültek |
-| Microsoft.Maps.GeofenceResult | Minden alkalommal, amikor egy geokerítések-lekérdezés eredményt ad vissza, az állapottól függetlenül |
+| Microsoft.Maps.GeofenceEntered | Amikor a kapott koordináták egy adott geokerítésen kívülről a megadott geokerítésen belülre |
+| Microsoft.Maps.GeofenceKilépett | Akkor emelkedik, ha a kapott koordináták egy adott geokerítésen belülről külső |
+| Microsoft.Maps.GeofenceEredmény | Minden alkalommal, amikor egy geofencing lekérdezés eredményt ad vissza, függetlenül az állapottól |
 
-## <a name="event-examples"></a>Példák az eseményekre
+## <a name="event-examples"></a>Példák eseményre
 
-Az alábbi példa egy **GeofenceEntered** -esemény sémáját mutatja be.
+A következő példa egy **GeofenceEntered** esemény sémáját mutatja be.
 
 ```JSON
 {   
@@ -60,7 +60,7 @@ Az alábbi példa egy **GeofenceEntered** -esemény sémáját mutatja be.
 }
 ```
 
-Az alábbi példa a **GeofenceResult** sémáját mutatja be 
+A következő példa a **GeofenceResult** sémáját mutatja be. 
 
 ```JSON
 {   
@@ -100,70 +100,70 @@ Az alábbi példa a **GeofenceResult** sémáját mutatja be
 
 ## <a name="event-properties"></a>Esemény tulajdonságai
 
-Egy esemény a következő legfelső szintű adattal rendelkezik:
+Egy esemény legfelső szintű adatokat rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Event Grid megadja ezt az értéket. |
-| subject | sztring | Közzétevő által megadott elérési út az esemény tárgya számára. |
-| eventType | sztring | Az eseményforrás egyik regisztrált eseménytípus. |
-| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
-| id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | Geokerítések. |
-| dataVersion | sztring | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
-| metadataVersion | sztring | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
+| témakör | sztring | Az eseményforrás teljes erőforráselérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| Tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
+| eventTime | sztring | Az esemény létrehozásának időpontja a szolgáltató UTC-ideje alapján. |
+| id | sztring | Az esemény egyedi azonosítója |
+| data | objektum | Geofencing esemény adatok. |
+| dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
+| metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| apiCategory | sztring | Az esemény API-kategóriája. |
-| apiName | sztring | Az esemény API-neve. |
-| issues | objektum | A feldolgozás során felmerülő problémák felsorolása. Ha bármilyen hibát ad vissza, akkor a válaszban nem lesznek visszaadott geometriák. |
-| responseCode | szám | HTTP-válasz kódja |
-| geometries | objektum | Felsorolja a koordináta pozícióját tartalmazó kerítési geometriákat, vagy átfedésben van a searchBuffer a pozíció körül. |
+| apiKategória | sztring | Az esemény API-kategóriája. |
+| apiName (apiName) | sztring | Az esemény API-neve. |
+| problémák | objektum | A feldolgozás során észlelt problémák listája. Ha bármilyen problémát ad vissza, akkor nem lesznek geometriák a válaszmal. |
+| responseCode | szám | HTTP-válaszkód |
+| Geometriák | objektum | Felsorolja azokat a kerítésgeometriákat, amelyek tartalmazzák a koordináta-pozíciót, vagy átfedik a keresőpuffert a pozíció körül. |
 
-A rendszer visszaadja a hiba objektumot, ha hiba történik a Maps API-ban. A hiba objektum a következő tulajdonságokkal rendelkezik:
-
-| Tulajdonság | Típus | Leírás |
-| -------- | ---- | ----------- |
-| error | ErrorDetails |Ezt az objektumot akkor adja vissza a rendszer, ha hiba történik a Maps API-ban  |
-
-A ErrorDetails objektum visszaadása akkor történik meg, ha hiba lép fel a Maps API-ban. A ErrorDetails vagy objektum a következő tulajdonságokkal rendelkezik:
+A hibaobjektum akkor jelenik meg, ha hiba történik a Térképek API-ban. A hibaobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| code | sztring | A HTTP-állapotkód. |
-| message | sztring | Ha elérhető, a hiba olvasható leírása. |
-| innererror | InnerError | Ha elérhető, a hibával kapcsolatos szolgáltatás-specifikus adatokat tartalmazó objektum. |
+| error | ErrorDetails |Ez az objektum akkor kerül visszaadásra, ha hiba történik a Térképek API-ban  |
 
-A InnerError egy olyan objektum, amely szolgáltatás-specifikus adatokat tartalmaz a hibáról. A InnerError objektum a következő tulajdonságokkal rendelkezik: 
+Az ErrorDetails objektum akkor jelenik meg, ha hiba történik a Térképek API-ban. Az ErrorDetails vagy az objektum a következő tulajdonságokkal rendelkezik:
+
+| Tulajdonság | Típus | Leírás |
+| -------- | ---- | ----------- |
+| code | sztring | A HTTP állapotkód. |
+| message | sztring | Ha rendelkezésre áll, a hiba emberileg olvasható leírása. |
+| belső hiba | Belső hiba | Ha rendelkezésre áll, egy objektum, amely szolgáltatásspecifikus információkat tartalmaz a hibáról. |
+
+Az InnerError egy olyan objektum, amely szolgáltatásspecifikus információkat tartalmaz a hibáról. Az InnerError objektum a következő tulajdonságokkal rendelkezik: 
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | code | sztring | A hibaüzenet. |
 
-A geometriák objektum felsorolja a kérelemben a felhasználói időponthoz képest lejárt geofences geometriai azonosítóit. A geometriák objektum a következő tulajdonságokkal rendelkező geometriai elemeket tartalmaz: 
+A geometriaobjektum felsorolja a kérelemben szereplő felhasználói időhöz viszonyított lejárt geokerítések geometriaazonosítóit. A geometriaobjektum geometriaelemei nek a következő tulajdonságokkal rendelkező geometriaelemei vannak: 
 
 | Tulajdonság | Típus | Leírás |
 |:-------- |:---- |:----------- |
-| deviceid | sztring | Az eszköz azonosítója. |
-| távolságskála | sztring | <p>A koordináta távolsága a geokerítésen legközelebbi szegélyéhez. A pozitív érték azt jelenti, hogy a koordináta a geokerítésen kívül esik. Ha a koordináta a geokerítésen kívül esik, de a legközelebb geokerítésen searchBuffer nagyobb a távolság, akkor az érték 999. Negatív érték azt jelenti, hogy a koordináta a geokerítésen belül van. Ha a koordináta a sokszögen belül van, de a legközelebbi geokerítések searchBuffer nem, akkor az érték-999. A 999 érték azt jelenti, hogy nagy a megbízhatóság, hogy a koordináta jól kívül van a geokerítésen. A-999 érték azt jelenti, hogy nagy a megbízhatóság, hogy a koordináta jól működik a geokerítésen belül.<p> |
-| geometryid |sztring | Az egyedi azonosító azonosítja a geokerítésen geometriát. |
-| nearestlat | szám | A geometria legközelebbi pontjának földrajzi szélessége |
-| nearestlon | szám | A geometria legközelebbi pontjának hosszúsága |
-| udId | sztring | A felhasználói feltöltési szolgáltatás által visszaadott egyedi azonosító a geokerítésen feltöltésekor. Nem fog szerepelni a geokerítések post API-ban. |
+| Deviceid | sztring | Az eszköz azonosítója. |
+| Távolság | sztring | <p>Távolság a koordinátától a geokerítés legközelebbi határához. A pozitív azt jelenti, hogy a koordináta a geokerítésen kívül van. Ha a koordináta kívül esik a geokerítésen, de több, mint a searchBuffer értéke a legközelebbi geokerítés határától, akkor az érték 999. A negatív azt jelenti, hogy a koordináta a geokerítésen belül van. Ha a koordináta a sokszögön belül van, de több, mint a searchBuffer értéke a legközelebbi geofencing határtól, akkor az érték -999. A 999-es érték azt jelenti, hogy nagy a bizalom, hogy a koordináta jóval a geokerítésen kívül van. A -999 érték azt jelenti, hogy nagy a megbízhatóság, hogy a koordináta jóval a geokerítésen belül van.<p> |
+| geometriai azonosító |sztring | Az egyedi azonosító azonosítja a geokerítés geometriáját. |
+| legközelebbi | szám | A geometria legközelebbi pontjának szélessége. |
+| legközelebbi | szám | A geometria legközelebbi pontjának hosszúsága. |
+| udId | sztring | A geokerítés feltöltésekor a felhasználó feltöltési szolgáltatásából visszaadott egyedi azonosító. Nem fog szerepelni a geofencing post API.Will not be included in geofencing post API. |
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| expiredGeofenceGeometryId | string[] | Azon geokerítésen geometria-AZONOSÍTÓinak listája, amelyek a kérelemben megadott felhasználói időhöz képest lejárnak. |
-| geometries | geometriák [] |Felsorolja a koordináta pozícióját tartalmazó kerítési geometriákat, vagy átfedésben van a searchBuffer a pozíció körül. |
-| invalidPeriodGeofenceGeometryId | string[]  | A kérelemben szereplő felhasználói időhöz képest érvénytelen időszakra vonatkozó geokerítésen geometriai AZONOSÍTÓjának listája. |
-| isEventPublished | logikai | Igaz, ha legalább egy eseményt közzétesznek a Azure Maps esemény előfizetője számára, hamis értéket, ha egyetlen eseményt sem tesznek közzé a Azure Maps esemény előfizetője számára. |
+| lejártGeofenceGeometryId | karakterlánc[] | A geokerítés geometriai azonosítójának listája, amely a kérelemben szereplő felhasználói időhöz viszonyítva lejárt. |
+| Geometriák | geometriák[] |Felsorolja azokat a kerítésgeometriákat, amelyek tartalmazzák a koordináta-pozíciót, vagy átfedik a keresőpuffert a pozíció körül. |
+| invalidPeriodGeofenceGeometryId | karakterlánc[]  | A geokerítés geometriaazonosítójának listája, amely a kérelemben szereplő felhasználói időhöz képest érvénytelen. |
+| isEventPublished | logikai | Igaz, ha legalább egy eseményt közzé tesznek az Azure Maps esemény-előfizető, hamis, ha nincs esemény közzé téve az Azure Maps esemény-előfizető. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
-* Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).
+* Az Azure Event Grid bemutatása a [Mi az eseményrács?](overview.md)
+* Az Azure Event Grid-előfizetés ek létrehozásáról az [Event Grid-előfizetésséma](subscription-creation-schema.md)című témakörben talál további információt.

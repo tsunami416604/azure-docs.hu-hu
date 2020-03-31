@@ -18,17 +18,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 62f0d82a543c0ae4e629eda3bca18b0a06322f2c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381237"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Azure AD Connect a Microsoft Cloud németországi adatközpontjában – nyilvános előzetes verzió
 ## <a name="introduction"></a>Bevezetés
 Az Azure AD Connect szinkronizálást biztosít a helyszíni Active Directory és az Azure Active Directory között.
 A [Microsoft Cloud németországi adatközpontja](https://azure.microsoft.com/global-infrastructure/germany/
-) esetében az eljárások jelentős részét a kezelőnek kell elvégeznie. A Microsoft Cloud németországi adatközpontjában használatakor vegye figyelembe a következő információkat:
+) esetében az eljárások jelentős részét a kezelőnek kell elvégeznie. A Microsoft Cloud Germany használatakor a következő információkat kell figyelembe vennie:
 
 * A következő URL-címeket meg kell nyitni egy proxykiszolgálón ahhoz, hogy sikeres lehessen a szinkronizálás:
   
@@ -48,7 +48,7 @@ Miután bejelentkezett az Azure Portalra:
 2. Válassza az Azure Active Directory elemet.
 3. Ezután válassza az Azure AD Connect elemet.
 
-Ekkor megjelenik az alábbi adatokat:
+A következő részletek jelennek meg:
 
 ![Az Azure AD Connect panel](./media/reference-connect-germany/germany1.png)
 
@@ -64,5 +64,5 @@ A következő táblázat a panelen látható funkciókat ismerteti.
 Az Azure AD Connect telepítéséhez használhatja az [itt](how-to-connect-install-roadmap.md) található dokumentációt.
 
 ## <a name="advanced-features-and-additional-information"></a>Speciális szolgáltatások és további információk
-Egyéni beállításokkal vagy speciális konfigurációkkal kapcsolatos további információkért látogasson el [a helyszíni identitások integrálása az Azure Active Directory](whatis-hybrid-identity.md). Ez a lap a további útmutatással kapcsolatos információkat és hivatkozásokat ismerteti.
+Az egyéni beállításokkal vagy a speciális konfigurációkkal kapcsolatos további információkért látogasson el [a helyszíni identitások integrálása az Azure Active Directoryval című lapba.](whatis-hybrid-identity.md) Ez a lap a további útmutatással kapcsolatos információkat és hivatkozásokat ismerteti.
 

@@ -5,7 +5,7 @@
   items:
     - name: Mi az az Anomaly Detector API?
       href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Ügyfélkódtár
@@ -24,7 +24,7 @@
           href: quickstarts/detect-data-anomalies-java.md
         - name: A Python használata
           href: quickstarts/detect-data-anomalies-python.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Rendellenességek vizualizálása kötegként a Power BI használatával
       href: tutorials/batch-anomaly-detection-powerbi.md
@@ -78,6 +78,16 @@
       href: 'https://arxiv.org/abs/1906.03821'
 - name: További források
   items:
+    - name: Támogatás
+      items:
+        - name: Támogatás kérése
+          href: 'https://aka.ms/adsupport'
+        - name: Stack Overflow
+          href: 'https://aka.ms/adso'
+        - name: MSDN
+          href: 'https://aka.ms/admsdn'
+        - name: Felhasználói vélemény
+          href: 'https://aka.ms/aduservoice'
     - name: Díjszabás
       href: 'https://aka.ms/adpricing'
     - name: Régiónkénti rendelkezésre állás
@@ -90,13 +100,3 @@
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-- name: Támogatás
-  items:
-    - name: Támogatás kérése
-      href: 'https://aka.ms/adsupport'
-    - name: Stack Overflow
-      href: 'https://aka.ms/adso'
-    - name: MSDN
-      href: 'https://aka.ms/admsdn'
-    - name: Felhasználói vélemény
-      href: 'https://aka.ms/aduservoice'

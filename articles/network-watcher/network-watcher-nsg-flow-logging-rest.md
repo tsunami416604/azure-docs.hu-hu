@@ -1,7 +1,7 @@
 ---
-title: NSG-adatforgalmi naplók kezelése – Azure REST API
+title: NSG-folyamatnaplók kezelése – Azure REST API
 titleSuffix: Azure Network Watcher
-description: Ez az oldal azt ismerteti, hogyan kezelhetők a hálózati biztonsági csoportok folyamatábrái az Azure Network Watcherban REST API
+description: Ez a lap bemutatja, hogyan kezelhetők a hálózati biztonsági csoport folyamatnaplói az Azure Network Watcher ben rest API-val
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,44 +13,44 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 7cc47414dc985f6fc2fff3c57d809f307b142e30
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840927"
 ---
-# <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Hálózati biztonsági csoport folyamatábráinak konfigurálása REST API használatával
+# <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Hálózati biztonsági csoport folyamatnaplóinak konfigurálása REST API használatával
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
-> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure-portál](network-watcher-nsg-flow-logging-portal.md)
+> - [Powershell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
-A hálózati biztonsági csoport folyamatábrái a Network Watcher szolgáltatása, amely lehetővé teszi, hogy a hálózati biztonsági csoporton keresztül megtekintse a bejövő és kimenő IP-forgalomra vonatkozó információkat. Ezeket a folyamatokat a rendszer JSON formátumban írja be, és a kimenő és bejövő folyamatokat egy szabály alapján jeleníti meg, a flow a folyamatra vonatkozik, 5 rekordos információ a folyamatról (forrás/cél IP-cím, forrás/cél port, protokoll), és ha a forgalom engedélyezett vagy megtagadott volt.
+A hálózati biztonsági csoport folyamatnaplói a Network Watcher szolgáltatása, amely lehetővé teszi a hálózati biztonsági csoporton keresztül a be- és kilépésip-forgalommal kapcsolatos információkat. Ezek a folyamatnaplók json formátumban vannak megírva, és szabályonként mutatják a kimenő és bejövő folyamatokat, a folyamat által alkalmazott hálózati adaptert, a folyamat 5-tuple információit (Forrás/cél IP, Forrás/cél port, Protokoll), és ha a forgalmat engedélyezték vagy megtagadták.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-A ARMclient a REST API a PowerShell használatával történő meghívására szolgál. A ARMClient a chocolatey címen található a [ARMClient-on](https://chocolatey.org/packages/ARMClient)
+Az ARMclient a REST API-t a PowerShell használatával hívja meg. ARMClient található csokoládés [armclient a Chocolatey](https://chocolatey.org/packages/ARMClient)
 
-Ez a forgatókönyv feltételezi, hogy már követte a [Network Watcher létrehozása](network-watcher-create.md) című témakör lépéseit Network Watcher létrehozásához.
+Ez a forgatókönyv feltételezi, hogy már követte a [Hálózatfigyelő létrehozása](network-watcher-create.md) a Hálózatfigyelő létrehozásához című lépéseit.
 
 > [!Important]
-> A (z) Network Watcher REST API meghívja az erőforráscsoport nevét a kérelem URI azonosítójában az az erőforráscsoport, amely a Network Watcher tartalmazza, és nem a diagnosztikai műveleteket végző erőforrásokat.
+> A Network Watcher REST API meghívja az erőforráscsoport nevét a kérelem URI az erőforráscsoport, amely tartalmazza a Hálózati figyelő, nem az erőforrásokat, amelyeken a diagnosztikai műveleteket hajt végre.
 
-## <a name="scenario"></a>Alkalmazási helyzet
+## <a name="scenario"></a>Forgatókönyv
 
-A cikkben ismertetett forgatókönyv bemutatja, hogyan engedélyezheti, tilthatja le és kérdezheti le a flow-naplókat a REST API használatával. Ha többet szeretne megtudni a hálózati biztonsági csoport folyamatának naplózásáról, keresse fel a [hálózati biztonsági csoport flow naplózása – áttekintés](network-watcher-nsg-flow-logging-overview.md)című témakört.
+A forgatókönyv ebben a cikkben bemutatja, hogyan engedélyezheti, letilthatja és lekérdezési folyamatnaplók a REST API használatával. Ha többet szeretne megtudni a hálózati biztonsági csoport folyamatnaplózásáról, látogasson el a [Hálózati biztonsági csoport folyamatnaplózása – Áttekintés című témakörbe.](network-watcher-nsg-flow-logging-overview.md)
 
-Ebben az esetben a következőket kell tennie:
+Ebben a forgatókönyvben a következőket fogja:
 
-* Adatforgalmi naplók engedélyezése (2. verzió)
-* Folyamatok naplófájljainak letiltása
-* Lekérdezési folyamat naplófájljainak állapota
+* Folyamatnaplók engedélyezése (2. verzió)
+* Folyamatnaplók letiltása
+* Lekérdezési folyamatnaplók állapota
 
-## <a name="log-in-with-armclient"></a>Bejelentkezés a ARMClient
+## <a name="log-in-with-armclient"></a>Bejelentkezés armclient nal
 
-Jelentkezzen be a armclient az Azure-beli hitelesítő adataival.
+Jelentkezzen be az Armclient-ba az Azure-hitelesítő adataival.
 
 ```powershell
 armclient login
@@ -58,16 +58,16 @@ armclient login
 
 ## <a name="register-insights-provider"></a>Insights-szolgáltató regisztrálása
 
-Ahhoz, hogy a folyamatok naplózása sikeresen működjön, regisztrálni kell a **Microsoft. bepillantást** nyújtó szolgáltatót. Ha nem biztos abban, hogy a **Microsoft.** betekintő szolgáltató regisztrálva van, futtassa az alábbi szkriptet.
+A folyamatnaplózás sikeres működéséhez a **Microsoft.Insights-szolgáltatót** regisztrálni kell. Ha nem biztos abban, hogy a **Microsoft.Insights-szolgáltató** regisztrálva van-e, futtassa a következő parancsfájlt.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
 armclient post "https://management.azure.com//subscriptions/${subscriptionId}/providers/Microsoft.Insights/register?api-version=2016-09-01"
 ```
 
-## <a name="enable-network-security-group-flow-logs"></a>Hálózati biztonsági csoport folyamatábráinak engedélyezése
+## <a name="enable-network-security-group-flow-logs"></a>Hálózati biztonsági csoport folyamatnaplóinak engedélyezése
 
-A flow-naplók 2. verziójának engedélyezésére szolgáló parancs az alábbi példában látható. Az 1. verziónál cserélje le a "version" mezőt az "1" értékre:
+A folyamatnaplók 2-es verziójú engedélyezésére a következő példa jelenik meg. Az 1.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -96,7 +96,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/configureFlowLog?api-version=2016-12-01" $requestBody
 ```
 
-Az előző példától kapott válasz a következő:
+Az előző példából visszaadott válasz a következő:
 
 ```json
 {
@@ -116,9 +116,9 @@ Az előző példától kapott válasz a következő:
 }
 ```
 
-## <a name="disable-network-security-group-flow-logs"></a>Hálózati biztonsági csoport folyamatábráinak letiltása
+## <a name="disable-network-security-group-flow-logs"></a>Hálózati biztonsági csoport folyamatnaplóinak letiltása
 
-A következő példa használatával tiltsa le a folyamat naplóit. A hívás megegyezik a flow-naplók engedélyezésével, kivéve a **false értéket** az engedélyezett tulajdonsághoz.
+A következő példában tiltsa le a folyamatnaplókat. A hívás megegyezik a folyamatnaplók engedélyezésével, kivéve, hogy **hamis** beállítás van beállítva az engedélyezett tulajdonsághoz.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -147,7 +147,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/configureFlowLog?api-version=2016-12-01" $requestBody
 ```
 
-Az előző példától kapott válasz a következő:
+Az előző példából visszaadott válasz a következő:
 
 ```json
 {
@@ -167,9 +167,9 @@ Az előző példától kapott válasz a következő:
 }
 ```
 
-## <a name="query-flow-logs"></a>Lekérdezési folyamat naplófájljai
+## <a name="query-flow-logs"></a>Lekérdezési folyamatnaplók
 
-A következő REST-hívás lekérdezi a folyamat naplóinak állapotát egy hálózati biztonsági csoporton.
+A következő REST-hívás lekérdezi a folyamatnaplók állapotát egy hálózati biztonsági csoporton.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -185,7 +185,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/queryFlowLogStatus?api-version=2016-12-01" $requestBody
 ```
 
-Az alábbi példa a kapott választ:
+A következő példa a visszaadott válasz:
 
 ```json
 {
@@ -205,18 +205,18 @@ Az alábbi példa a kapott választ:
 }
 ```
 
-## <a name="download-a-flow-log"></a>Flow-napló letöltése
+## <a name="download-a-flow-log"></a>Folyamatnapló letöltése
 
-A folyamat naplójának tárolási helye a létrehozáskor van meghatározva. A rendszer a Storage-fiókba mentett adatforgalmi naplók elérésére alkalmas eszközt Microsoft Azure Storage Explorer, amely letölthető innen: https://storageexplorer.com/
+A folyamatnapló tárolási helye a létrehozáskor van definiálva. A tárfiókba mentett folyamatnaplók elérésének kényelmes eszköze a Microsoft Azure Storage Explorer, amely itt tölthető le:https://storageexplorer.com/
 
-Ha meg van adva egy Storage-fiók, a rendszer a csomag rögzítési fájljait a következő helyen menti a Storage-fiókba:
+Ha meg van adva tárfiók, a csomagrögzítő fájlok at a következő helyen menti a rendszer egy tárfiókba:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan [jelenítheti meg a NSG flow-naplókat a PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md) használatával
+Az [NSG-folyamatnaplók visualualizálása a PowerBI-vel](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
-Ismerje meg, hogyan [jelenítheti meg a NSG-flow-naplókat nyílt forráskódú eszközökkel](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Ismerje meg, hogyan [jelenítheti meg az NSG-folyamatnaplókat nyílt forráskódú eszközökkel](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)

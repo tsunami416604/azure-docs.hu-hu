@@ -1,6 +1,6 @@
 ---
-title: A felhasználók listájának letöltése (előzetes verzió) a Azure Active Directory portálon | Microsoft Docs
-description: A felhasználói rekordok tömeges letöltése a Azure Active Directory Azure felügyeleti központban.
+title: Felhasználók listájának letöltése (előzetes verzió) az Azure Active Directory portálon | Microsoft dokumentumok
+description: Töltse le a felhasználói rekordokat tömegesen az Azure Active Directory Azure Felügyeleti központban.
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -14,28 +14,28 @@ ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4716ff9547f64dc6551b4d4adb0a8578da9fa83e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063832"
 ---
-# <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>A felhasználók listájának letöltése (előzetes verzió) a Azure Active Directory portálon
+# <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Felhasználók listájának letöltése (előzetes verzió) az Azure Active Directory portálon
 
-Azure Active Directory (Azure AD) támogatja a tömeges felhasználói importálás (létrehozás) műveleteit.
+Az Azure Active Directory (Azure AD) támogatja a tömeges felhasználói importálási (létrehozási) műveleteket.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-Az Azure AD felügyeleti központban lévő felhasználók listájának letöltéséhez be kell jelentkeznie egy, az Azure AD-ben egy vagy több szervezeti szintű rendszergazdai szerepkörhöz hozzárendelt felhasználóval. A vendég meghívója és az alkalmazás fejlesztője nem tekintendő rendszergazdai szerepkörnek.
+A felhasználók listájának letöltéséhez az Azure AD felügyeleti központból, be kell jelentkeznie egy felhasználórendelt egy vagy több szervezet szintű rendszergazdai szerepkörök az Azure AD-ben. A vendégmeghívó és az alkalmazásfejlesztő nem minősül rendszergazdai szerepkörnek.
 
-## <a name="to-download-a-list-of-users"></a>A felhasználók listájának letöltése
+## <a name="to-download-a-list-of-users"></a>Felhasználók listájának letöltése
 
-1. [Jelentkezzen be az Azure ad-szervezetbe](https://aad.portal.azure.com) egy felhasználói rendszergazdai fiókkal a szervezeten belül.
-2. Navigáljon Azure Active Directory > felhasználóhoz. Ezután válassza ki a letöltéshez használni kívánt felhasználókat, ha a bal oldali oszlopban lévő jelölőnégyzetet bejelöli az egyes felhasználók mellett. Megjegyzés: jelenleg nincs lehetőség az összes felhasználó kiválasztására az exportáláshoz. Mindegyiket külön kell kiválasztani.
-3. Az Azure AD-ben válassza a **felhasználók** > **felhasználók letöltése**lehetőséget.
-4. A **felhasználók letöltése** lapon kattintson a **Start** gombra a felhasználói profil tulajdonságait tartalmazó CSV-fájl fogadásához. Ha hibák léptek fel, letöltheti és megtekintheti az eredményeket tartalmazó fájlt a tömeges művelet eredményei lapon. A fájl az egyes hibák okát tartalmazza.
+1. [Jelentkezzen be az Azure AD-szervezetbe](https://aad.portal.azure.com) egy felhasználói rendszergazdai fiókkal a szervezetben.
+2. Keresse meg az Azure Active Directory > felhasználók. Ezután válassza ki azokat a felhasználókat, akiket be szeretne vonni a letöltésbe, jelölje be az egyes felhasználók melletti bal oldali oszlopban lévő négyzetet. Megjegyzés: Jelenleg nincs mód az összes felhasználó kiválasztására az exportáláshoz. Mindegyiket egyenként kell kiválasztani.
+3. Az Azure AD-ben válassza a **Felhasználók** > **felhasználók letöltése**lehetőséget.
+4. A **Felhasználók letöltése** lapon válassza az **Indítás** lehetőséget, ha a felhasználói profil tulajdonságait tartalmazó CSV-fájlt szeretne kapni. Ha vannak hibák, letöltheti és megtekintheti az eredményfájlt a Tömeges művelet eredménylapján. A fájl tartalmazza az egyes hibák okát.
 
-   ![Válassza ki, hova szeretné listázni a letölteni kívánt felhasználókat](./media/users-bulk-download/bulk-download.png)
+   ![Válassza ki, hogy hol szeretné a listát a letölteni kívánt felhasználók között](./media/users-bulk-download/bulk-download.png)
 
    A letöltési fájl a felhasználók szűrt listáját fogja tartalmazni.
 
@@ -43,43 +43,43 @@ Az Azure AD felügyeleti központban lévő felhasználók listájának letölt�
 
    - userPrincipalName
    - displayName
-   - Vezetéknév
-   - mail
+   - surname
+   - Levelezés
    - givenName
    - objectId
-   - userType
-   - Beosztás
-   - Szervezeti egység
+   - userType (felhasználótípusa)
+   - jobTitle
+   - Részleg
    - accountEnabled
-   - usageLocation
-   - streetAddress
+   - usageLocation (használathelye)
+   - utcacím
    - state
    - ország
    - physicalDeliveryOfficeName
    - city
-   - Irányítószám
-   - telephoneNumber
+   - postai kód
+   - telefonszáma
    - mobil
-   - authenticationPhoneNumber
-   - authenticationAlternativePhoneNumber
-   - authenticationEmail
+   - hitelesítésPhoneNumber
+   - hitelesítésAlternatívPhoneNumber
+   - hitelesítésE-mail
    - alternateEmailAddress
-   - Beszerzésimennyiség
+   - korcsoport
    - consentProvidedForMinor
    - legalAgeGroupClassification
 
 ## <a name="check-status"></a>Állapot ellenőrzése
 
-A függőben lévő tömeges kérelmek állapotát a **tömeges művelet eredményei (előzetes verzió)** lapon tekintheti meg.
+A függőben lévő tömeges kérelmek állapotát a **Tömeges művelet eredményei (előzetes verzió)** lapon tekintheti meg.
 
-   ![Feltöltés állapotának keresése a tömeges műveletek eredményei lapon](./media/users-bulk-download/bulk-center.png)
+   ![Feltöltési állapot ellenőrzése a Tömeges műveletek eredménylapján](./media/users-bulk-download/bulk-center.png)
 
-## <a name="bulk-download-service-limits"></a>Szolgáltatási korlátok tömeges letöltése
+## <a name="bulk-download-service-limits"></a>Tömeges letöltési szolgáltatás korlátai
 
-A felhasználók listájának létrehozásához minden tömeges tevékenység akár egy óráig is futhat. Ez lehetővé teszi, hogy legalább 500 000 felhasználóból álló listát hozzanak létre és töltsenek le.
+Minden tömeges tevékenység a felhasználók listájának létrehozásához legfeljebb egy órán keresztül futtatható. Ez lehetővé teszi legalább 500 000 felhasználóból álló lista létrehozását és letöltését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felhasználók tömeges hozzáadása](users-bulk-add.md)
 - [Felhasználók tömeges törlése](users-bulk-delete.md)
-- [Felhasználók tömeges visszaállítása](users-bulk-restore.md)
+- [Tömeges visszaállítási felhasználók](users-bulk-restore.md)

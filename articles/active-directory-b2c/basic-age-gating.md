@@ -1,6 +1,6 @@
 ---
-title: Az Age kapuzás engedélyezése a Azure Active Directory B2Cban | Microsoft Docs
-description: Ismerje meg, hogyan azonosíthatók a kiskorúak az alkalmazás használatával.
+title: Korpirálás engedélyezése az Azure Active Directory B2C könyvtárában | Microsoft dokumentumok
+description: További információ a kiskorúak azonosításáról az alkalmazás használatával.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,41 +11,41 @@ ms.date: 11/13/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 56cbeb8e8fe21f4b39c2f5c6af43e83ae330e5d5
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189973"
 ---
-# <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Az Age kapuzás engedélyezése a Azure Active Directory B2Cban
+# <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Korozás engedélyezése az Azure Active Directory B2C-ben
 
 >[!IMPORTANT]
->Ez a funkció nyilvános előzetes verzióban érhető el. Ne használja a szolgáltatást éles alkalmazásokhoz.
+>Ez a funkció nyilvános előzetes verzióban érhető el. Ne használjon szolgáltatást éles alkalmazásokhoz.
 >
 
-Azure Active Directory B2C (Azure AD B2C) Age kapuzás lehetővé teszi az alkalmazást használó kiskorúak azonosítását. Dönthet úgy is, hogy letiltja a kiskorú regisztrációját az alkalmazásba. A felhasználók visszatérhetnek az alkalmazáshoz, és meghatározhatják a korcsoport és a szülői hozzájárulásukat is. A Azure AD B2C szülői engedély nélkül blokkolhatja a kiskorúakat. A Azure AD B2C beállítható úgy is, hogy az alkalmazás eldöntse, mi a teendő a kiskorúakkal.
+Az Azure Active Directory B2C (Azure AD B2C) korgatálása lehetővé teszi az alkalmazást használni kívánó kiskorúak azonosítását. Beállíthatja, hogy a kiskorú jelentkezzen be az alkalmazásba. A felhasználók visszatérhetnek az alkalmazáshoz, és azonosíthatják korcsoportjukat és szülői beleegyezési állapotukat. Az Azure AD B2C szülői beleegyezés nélkül letilthatja a kiskorúakat. Az Azure AD B2C is beállítható, hogy az alkalmazás döntse el, mi a teendő a kiskorúakkal.
 
-Miután engedélyezte az Age kapuzás a [felhasználói folyamat](user-flow-overview.md)során, a rendszer megkérdezi a felhasználókat, hogy mikor születtek és milyen országban/régióban laknak. Ha egy felhasználó bejelentkezik, amely korábban nem adta meg az adatokat, akkor a következő bejelentkezéskor meg kell adnia. A szabályok minden alkalommal érvényesek, amikor egy felhasználó bejelentkezik.
+Miután engedélyezte az életkori gating-ot a [felhasználói folyamatban,](user-flow-overview.md)a rendszer megkérdezi a felhasználókat, hogy mikor születtek, és melyik országban/régióban élnek. Ha egy felhasználó olyan bejelentkezik, amely korábban nem adta meg az adatokat, a következő bejelentkezéskor meg kell adnia azt. A szabályok minden alkalommal érvényesek, amikor egy felhasználó bejelentkezik.
 
-Azure AD B2C a felhasználó által megadott adatok alapján azonosítja, hogy azok kisebbek-e. A rendszer ezután frissíti a **beszerzésimennyiség** mezőt a fiókjában. Az érték lehet `null`, `Undefined`, `Minor`, `Adult`és `NotAdult`.  A rendszer ezután a **beszerzésimennyiség** és a **consentProvidedForMinor** mezőket használja a **legalAgeGroupClassification**értékének kiszámításához.
+Az Azure AD B2C a felhasználó által megadott adatok alapján állapítja meg, hogy ők is kiskorúak-e. Az **ageGroup** mező ezután frissül a fiókjában. Az érték `null`lehet `Undefined` `Minor`, `Adult`, `NotAdult`, , és .  Az **ageGroup** és **consentProvidedForMinor** mezőket ezután a **legalAgeGroupClassification**értékének kiszámításához használja a rendszer.
 
-Az Age kapuzás két életkori értéket tartalmaz: az életkort, amelyet valaki már nem tekint kisebbnek, és azt, hogy a kiskorú gyermekeknek hogyan kell beleegyezniük. A következő táblázat felsorolja azokat a kor-szabályokat, amelyek egy kisebb és egy kisebb, a hozzájuk szükséges engedély definiálásához használatosak.
+Az életkori gating két életkori értéket foglal magában: azt a kort, amelyet valaki már nem tekint kiskorúnak, és azt a kort, amikor a kiskorúnak szülői beleegyezéssel kell rendelkeznie. Az alábbi táblázat azokat a korszabályokat sorolja fel, amelyek a kiskorú és a beleegyezést igénylő kiskorú meghatározásához használatosak.
 
-| Ország/régió | Ország/régió neve | Kisebb beleegyező életkor | Kisebb kor |
+| Ország/régió | Ország/régió neve | Kisebb hozzájárulási életkor | Kisebb életkor |
 | -------------- | ------------------- | ----------------- | --------- |
-| Alapértelmezett | Nincsenek | Nincsenek | 18 |
-| AE | Egyesült Arab Emírségek | Nincsenek | 21 |
+| Alapértelmezett | None | None | 18 |
+| AE | Egyesült Arab Emírségek | None | 21 |
 | AT | Ausztria | 14 | 18 |
 | BE | Belgium | 14 | 18 |
 | BG | Bulgária | 16 | 18 |
-| BH | Bahrein | Nincsenek | 21 |
-| CM | Kamerun | Nincsenek | 21 |
+| BH | Bahrein | None | 21 |
+| CM | Kamerun | None | 21 |
 | CY | Ciprus | 16 | 18 |
 | CZ | Cseh Köztársaság | 16 | 18 |
 | DE | Németország | 16 | 18 |
 | DK | Dánia | 16 | 18 |
 | EE | Észtország | 16 | 18 |
-| EG | Egyiptom | Nincsenek | 21 |
+| EG | Egyiptom | None | 21 |
 | ES | Spanyolország | 13 | 18 |
 | JK | Franciaország | 16 | 18 |
 | GB | Egyesült Királyság | 13 | 18 |
@@ -59,51 +59,51 @@ Az Age kapuzás két életkori értéket tartalmaz: az életkort, amelyet valaki
 | LU | Luxemburg | 16 | 18 |
 | LV | Lettország | 16 | 18 |
 | MT | Málta | 16 | 18 |
-| NA | Namíbia | Nincsenek | 21 |
+| NA | Namíbia | None | 21 |
 | NL | Hollandia | 16 | 18 |
 | PL | Lengyelország | 13 | 18 |
 | PT | Portugália | 16 | 18 |
 | RO | Románia | 16 | 18 |
 | SE | Svédország | 13 | 18 |
-| SG | Szingapúr | Nincsenek | 21 |
+| SG | Szingapúr | None | 21 |
 | SI | Szlovénia | 16 | 18 |
 | SK | Szlovákia | 16 | 18 |
-| TD | Csád | Nincsenek | 21 |
-| TH | Thaiföld | Nincsenek | 20 |
-| TW | Tajvan | Nincsenek | 20 |
-| US | Egyesült Államok | 13 | 18 |
+| TD | Csád | None | 21 |
+| TH | Thaiföld | None | 20 |
+| TW | Tajvan | None | 20 |
+| USA | Egyesült Államok | 13 | 18 |
 
-## <a name="age-gating-options"></a>Kor kapuzás beállításai
+## <a name="age-gating-options"></a>Kor gating lehetőségek
 
-### <a name="allowing-minors-without-parental-consent"></a>Szülői engedély nélküli kiskorúak engedélyezése
+### <a name="allowing-minors-without-parental-consent"></a>Kiskorúak szülői beleegyezés nélküli engedélyezése
 
-A regisztrációt, bejelentkezést vagy mindkettőt engedélyező felhasználói folyamatok esetében dönthet úgy is, hogy engedélyezi a kiskorúak számára, hogy beleegyezett az alkalmazásba. A szülői engedély nélküli kiskorúak bejelentkezhetnek, vagy a szokásos módon regisztrálhatnak, és Azure AD B2C a **legalAgeGroupClassification** jogcím azonosító jogkivonatot bocsát ki. Ez a jogcím határozza meg a felhasználók által használt felhasználói élményt, például a szülői engedély begyűjtését és a **consentProvidedForMinor** mező frissítését.
+A felhasználói folyamatok, amelyek lehetővé teszik a regisztráció, bejelentkezés, vagy mindkettő, dönthet úgy, hogy a kiskorúak beleegyezése nélkül az alkalmazásba. A szülői beleegyezéssel nem rendelkező kiskorúak a szokásos módon jelentkezhetnek be vagy regisztrálhatnak, és az Azure AD B2C azonosító jogkivonatot ad ki a **legalAgeGroupClassification** jogcímhez. Ez a jogcím határozza meg a felhasználók által tapasztalt élményt, például a szülői beleegyezés gyűjtését és a **consentProvidedForMinor** mező frissítését.
 
-### <a name="blocking-minors-without-parental-consent"></a>Kiskorúak blokkolása szülői engedély nélkül
+### <a name="blocking-minors-without-parental-consent"></a>Kiskorúak letiltása szülői beleegyezés nélkül
 
-A regisztrációt, bejelentkezést vagy mindkettőt engedélyező felhasználói folyamatok esetében dönthet úgy is, hogy letiltja a kiskorúakat az alkalmazás beleegyezike nélkül. A következő beállítások érhetők el a letiltott felhasználók Azure AD B2Cban való kezelésére:
+A felhasználói folyamatok, amelyek lehetővé teszik a regisztráció, bejelentkezés vagy mindkettő, dönthet úgy, hogy blokkolja a kiskorúak hozzájárulása nélkül az alkalmazás. Az Azure AD B2C-ben a letiltott felhasználók kezelésére a következő lehetőségek érhetők el:
 
-- JSON küldése az alkalmazásnak – ez a beállítás visszaküldi a választ az alkalmazásnak, amelyet a rendszer letiltott.
-- Hibaüzenet megjelenítése – a felhasználó egy lap jelenik meg, amely tájékoztatja őket arról, hogy nem férhetnek hozzá az alkalmazáshoz.
+- JSON küldése vissza az alkalmazásnak – ez a beállítás választ küld az alkalmazásnak, amely egy kiskorú le van tiltva.
+- Hibaoldal megjelenítése – a felhasználó egy olyan oldal jelenik meg, amely tájékoztatja őket arról, hogy nem férhetnek hozzá az alkalmazáshoz.
 
-## <a name="set-up-your-tenant-for-age-gating"></a>A bérlő beállítása az Age kapuzás
+## <a name="set-up-your-tenant-for-age-gating"></a>Állítsa be a bérlőt az életkori gatinghoz
 
-Ahhoz, hogy a kapuzás a felhasználói folyamatokban használhassa, konfigurálnia kell a bérlőt, hogy további tulajdonságokkal rendelkezzen.
+Az életkor gating használata a felhasználói folyamat, konfigurálnia kell a bérlő további tulajdonságokkal.
 
-1. Győződjön meg arról, hogy az Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza a **címtár + előfizetés** szűrőt. Válassza ki a bérlőt tartalmazó könyvtárat.
-2. A Azure Portal bal felső sarkában válassza a **minden szolgáltatás** lehetőséget, keresse meg és válassza ki a **Azure ad B2C**.
-3. Válassza ki a bérlő **tulajdonságait** a bal oldali menüben.
-2. Az **Age kapuzás** szakaszban kattintson a configure ( **Konfigurálás**) elemre.
-3. Várjon, amíg a művelet befejeződik, és a bérlő az Age kapuzás lesz beállítva.
+1. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja a felső menü **Directory + előfizetésszűrő** jének kiválasztásával. Válassza ki a bérlőt tartalmazó könyvtárat.
+2. Válassza az **Összes szolgáltatás** lehetőséget az Azure Portal bal felső sarkában, keresse meg és válassza az **Azure AD B2C**lehetőséget.
+3. Válassza ki **a bérlők tulajdonságai** a bal oldali menüben.
+2. Az **Életkor beállítás** szakaszban kattintson a Configure **(Kor) szakaszra.**
+3. Várja meg, amíg a művelet befejeződik, és a bérlő lesz beállítva a kor gating.
 
-## <a name="enable-age-gating-in-your-user-flow"></a>Az életkor kapuzás engedélyezése a felhasználói folyamatokban
+## <a name="enable-age-gating-in-your-user-flow"></a>Kormegforgatás engedélyezése a felhasználói folyamatban
 
-Miután a bérlő beállította az Age kapuzás használatát, ezt a funkciót használhatja a [felhasználói folyamatokban](user-flow-versions.md) , ahol engedélyezve van. Az Age kapuzás a következő lépésekkel engedélyezhető:
+Miután a bérlő be van állítva az életkor gating használatára, majd használhatja ezt a funkciót a [felhasználói folyamatokban,](user-flow-versions.md) ahol engedélyezve van. A kormegforgatást a következő lépésekkel engedélyezheti:
 
-1. Hozzon létre egy olyan felhasználói folyamatot, amelynél engedélyezve van az Age kapuzás.
-2. A felhasználói folyamat létrehozása után válassza a menü **Tulajdonságok** elemét.
-3. Az **Age kapuzás** szakaszban válassza az **engedélyezve**lehetőséget.
-4. Ezután eldöntheti, hogyan kívánja kezelni a kiskorúakat azonosító felhasználókat. A **regisztrációhoz vagy a bejelentkezéshez**válassza `Allow minors to access your application` vagy `Block minors from accessing your application`lehetőséget. Ha kijelöli a kiskorúakat, válassza a `Send a JSON back to the application` vagy `Show an error message`lehetőséget.
+1. Hozzon létre egy felhasználói folyamatot, amelyen engedélyezve van az életkor imitálása.
+2. A felhasználói folyamat létrehozása után válassza a menü **Tulajdonságok parancsát.**
+3. Az **Életkor kiforgatás a** **csoportban**válassza az Engedélyezve lehetőséget.
+4. Ezután eldöntheti, hogyan szeretné kezelni a kiskorúként azonosító felhasználókat. A **Regisztráció vagy a bejelentkezés lehetőségnél**válassza a vagy `Allow minors to access your application` `Block minors from accessing your application`a lehetőséget. Ha a kiskorúak letiltása `Send a JSON back to the application` `Show an error message`lehetőség van kiválasztva, a vagy a lehetőséget választja.
 
 
 

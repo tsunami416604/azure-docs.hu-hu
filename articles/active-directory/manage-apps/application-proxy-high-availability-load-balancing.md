@@ -1,6 +1,6 @@
 ---
-title: Magas rendelkezésre állás és terheléselosztás – Azure AD Application Proxy
-description: A Traffic Distribution működése az alkalmazásproxy üzembe helyezésével. Az összekötők teljesítményének optimalizálására és a háttér-kiszolgálók terheléselosztásának használatára vonatkozó tippeket tartalmaz.
+title: Magas rendelkezésre állás és terheléselosztás – Azure AD alkalmazásproxy
+description: Hogyan működik a forgalom elosztása az alkalmazásproxy központi telepítésével. Tippek az összekötőteljesítmény optimalizálásához és a háttérkiszolgálók terheléselosztásának használatához.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,90 +16,90 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9add6ac30184d87ef50200c3ab944698a1a660f8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3202c2fbfedfce0b0b52be94b1e0d165a6e72546
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275539"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481313"
 ---
-# <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Az alkalmazásproxy-összekötők és-alkalmazások magas rendelkezésre állása és terheléselosztása
+# <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Az alkalmazásproxy-csatlakozók és -alkalmazások magas rendelkezésre állása és terheléselosztása
 
-Ez a cikk azt ismerteti, hogyan működik a forgalom eloszlása az alkalmazásproxy üzembe helyezésével. A következőket tárgyaljuk:
+Ez a cikk bemutatja, hogyan működik a forgalom elosztása az alkalmazásproxy központi telepítésével. Majd megbeszéljük:
 
-- A forgalom elosztása a felhasználók és az összekötők között, valamint tippek az összekötő teljesítményének optimalizálásához
+- A forgalom elosztása a felhasználók és az összekötők között, valamint tippek az összekötők teljesítményének optimalizálásához
 
-- Az összekötők és a háttérrendszer-kiszolgálók közötti adatforgalom, valamint a több háttér-kiszolgáló közötti terheléselosztási javaslatok
+- Hogyan áramlik a forgalom az összekötők és a háttéralkalmazás-kiszolgálók között, több háttérkiszolgáló közötti terheléselosztásra vonatkozó javaslatokkal
 
-## <a name="traffic-distribution-across-connectors"></a>Forgalom eloszlása összekötők között
+## <a name="traffic-distribution-across-connectors"></a>Forgalomeloszlás az összekötők között
 
-Az összekötők a magas rendelkezésre állás elve alapján létesítenek kapcsolatot. Nincs garancia arra, hogy a forgalom mindig egyenletesen oszlik meg az összekötők között, és nincs munkamenet-affinitás. Azonban a használat változó és a kérelmek küldése véletlenszerűen történik az Application proxy Service-példányok számára. Ennek eredményeképpen a forgalom általában csaknem egyenletesen oszlik meg az összekötők között. A diagram és az alábbi lépések azt mutatják be, hogyan jöttek kapcsolatok a felhasználók és az összekötők között.
+Az összekötők a magas rendelkezésre állás elvein alapuló kapcsolataikat hozzák létre. Nincs garancia arra, hogy a forgalom mindig egyenletesen oszlik el az összekötők között, és nincs munkamenet-affinitás. A használat azonban változó, és a kérelmeket véletlenszerűen küldi el az Alkalmazásproxy szolgáltatáspéldányai. Ennek eredményeképpen a forgalom általában szinte egyenletesen oszlik el az összekötők között. Az alábbi diagram és az alábbi lépések bemutatják, hogyan jönnek létre a felhasználók és az összekötők közötti kapcsolatok.
 
-![A felhasználók és összekötők közötti kapcsolatokat bemutató ábra](media/application-proxy-high-availability-load-balancing/application-proxy-connections.png)
+![Felhasználók és összekötők közötti kapcsolatokat bemutató diagram](media/application-proxy-high-availability-load-balancing/application-proxy-connections.png)
 
-1. Az ügyféleszközök felhasználója megpróbál hozzáférni egy, az Application proxyn keresztül közzétett helyszíni alkalmazáshoz.
-2. A kérelem egy Azure Load Balanceron keresztül dönti el, hogy melyik alkalmazásproxy-szolgáltatási példánynak kell elvégeznie a kérelmet. Régiónként a kérés elfogadásához több tízezer példány áll rendelkezésre. Ez a módszer segít a forgalom egyenletes elosztásában a szolgáltatási példányok között.
-3. A rendszer elküldi a kérést a [Service Busnak](https://docs.microsoft.com/azure/service-bus-messaging/).
-4. Service Bus ellenőrzi, hogy a csatlakozás korábban egy meglévő összekötőt használt-e az összekötő csoportban. Ha igen, újrahasználja a kapcsolatokat. Ha még nincs összekötő társítva a kapcsolódási ponthoz, a rendszer véletlenszerűen jelöl ki egy elérhető összekötőt, és jelzi a jelet. Az összekötő ezután felveszi a kérést a Service Busból.
+1. Az ügyféleszközön lévő felhasználó megpróbál hozzáférni egy alkalmazásproxyn keresztül közzétett helyszíni alkalmazáshoz.
+2. A kérelem egy Azure Load Balancer-en keresztül történik, hogy meghatározza, melyik alkalmazásproxy-szolgáltatáspéldánynak kell megkérnie a kérelmet. Régiónként több tíz példány áll rendelkezésre a kérelem fogadásához. Ez a módszer segít a forgalom egyenletes elosztásában a szolgáltatáspéldányok között.
+3. A rendszer elküldi a kérelmet a [Service Bus rendszernek.](https://docs.microsoft.com/azure/service-bus-messaging/)
+4. A Service Bus ellenőrzi, hogy a kapcsolat korábban használt-e egy meglévő összekötőt az összekötőcsoportban. Ha igen, akkor újra felhasználja a kapcsolatot. Ha még nincs összekötő párosítva a kapcsolattal, akkor véletlenszerűen egy rendelkezésre álló csatlakozót választ, amelynek jelez. Az összekötő ezután felveszi a kérelmet a Service Bus.
 
-   - A 2. lépésben a kérelmek különböző alkalmazásproxy-szolgáltatásbeli példányokra mutatnak, így a kapcsolatok nagyobb valószínűséggel lesznek különböző összekötők. Ennek eredményeképpen az összekötők szinte egyenletesen használhatók a csoporton belül.
+   - A 2. Ennek eredményeképpen az összekötőket szinte egyenletesen használják a csoporton belül.
 
-   - A rendszer csak akkor hozza létre a kapcsolatokat, ha a kapcsolatok megszakadnak vagy 10 perces üresjárati időszakot. Előfordulhat például, hogy a rendszer megszakítja a kapcsolódást egy gép vagy összekötő szolgáltatás újraindításakor, vagy hálózati megszakadást okoz.
+   - A kapcsolat csak akkor jön létre, ha a kapcsolat megszakad, vagy 10 perces tétlen ség következik be. Például a kapcsolat megszakadhat, ha egy gép vagy összekötő szolgáltatás újraindul, vagy hálózati zavar van.
 
-5. Az összekötő továbbítja a kérést az alkalmazás háttér-kiszolgálójához. Ezután az alkalmazás visszaküldi a választ az összekötőnek.
-6. Az összekötő befejezi a választ úgy, hogy megnyit egy kimenő kapcsolódást a szolgáltatás azon példányához, ahonnan a kérés érkezett. Ezt követően a rendszer azonnal lezárta a kapcsolatokat. Alapértelmezés szerint minden összekötő 200 egyidejű kimenő kapcsolatra van korlátozva.
-7. Ezután a rendszer visszaküldi a választ az ügyfélnek a szolgáltatási példányból.
-8. Az egyazon kapcsolatban érkező további kérelmek megismétlik a fenti lépéseket, amíg ez a hálózat megszakad, vagy 10 percen belül üresjáratban van.
+5. Az összekötő továbbítja a kérelmet az alkalmazás háttérkiszolgálójára. Ezután az alkalmazás elküldi a választ az összekötőnek.
+6. Az összekötő befejezi a választ egy kimenő kapcsolat megnyitásával a szolgáltatáspéldányhoz, ahonnan a kérelem érkezett. Ezután ez a kapcsolat azonnal megszakad. Alapértelmezés szerint minden összekötő legfeljebb 200 egyidejű kimenő kapcsolat.
+7. A válasz ezután visszakerül az ügyfélnek a szolgáltatáspéldányból.
+8. Az azonos kapcsolatból érkező további kérések addig ismétlődnek, amíg a kapcsolat megszakad vagy 10 percig tétlen.
 
-Egy alkalmazásnak gyakran sok erőforrása van, és több kapcsolatot nyit meg a betöltéskor. Az egyes kapcsolatok a fenti lépéseket követve válnak elérhetővé a szolgáltatási példányok számára, válasszon ki egy új elérhető összekötőt, ha a kapcsolódás még nem volt korábban összekötővel párosítva.
+Egy alkalmazás gyakran sok erőforrást, és megnyit több kapcsolatot, amikor bevan töltve. Minden kapcsolat végigmegy a fenti lépéseket, hogy lelegyen foglalva egy szolgáltatáspéldány, válasszon ki egy új elérhető összekötőt, ha a kapcsolat még nem párosított egy összekötőt.
 
 
-## <a name="best-practices-for-high-availability-of-connectors"></a>Ajánlott eljárások az összekötők magas rendelkezésre állásához
+## <a name="best-practices-for-high-availability-of-connectors"></a>Ajánlott eljárások a csatlakozók magas rendelkezésre állásával kapcsolatban
 
-- Mivel a forgalom a magas rendelkezésre állás érdekében az összekötők között oszlik el, elengedhetetlen, hogy mindig legyen legalább két összekötő egy összekötő-csoportban. Három összekötő előnyben részesített, hogy további puffert biztosítson az összekötők között. A szükséges összekötők megfelelő számának meghatározásához kövesse a kapacitás megtervezése dokumentációt.
+- A forgalom elosztása az összekötők között a magas rendelkezésre állás érdekében, elengedhetetlen, hogy mindig legalább két összekötők egy összekötőcsoportban. Három összekötők előnyben részesítik, hogy további puffer összekötők között. A szükséges összekötők helyes számának meghatározásához kövesse a kapacitástervezési dokumentációt.
 
-- Az összekötőket különböző kimenő kapcsolatokon helyezheti el, hogy elkerülje az egyetlen meghibásodási pontot. Ha az összekötők ugyanazt a kimenő csatlakozást használják, a csatlakozás hálózati problémája hatással lehet az összes összekötőre.
+- Egyetlen meghibásodási pont elkerülése érdekében helyezzen összekötőket különböző kimenő kapcsolatokra. Ha az összekötők ugyanazt a kimenő kapcsolatot használják, a kapcsolattal kapcsolatos hálózati probléma hatással lehet az azt használó összes összekötőre.
 
-- A termelési alkalmazásokhoz való csatlakozáskor ne kényszerítse az összekötők újraindítását. Ez negatív hatással lehet az összekötők közötti forgalom eloszlására. Az összekötők újraindítása azt eredményezi, hogy a további összekötők nem lesznek elérhetők, és a többi elérhető összekötőhöz csatlakoznak. Az eredmény az összekötők egyenetlen használata.
+- Kerülje az összekötők újraindításának kényszerítését, amikor éles alkalmazásokhoz csatlakozik. Ez negatívan befolyásolhatja a forgalom elosztását az összekötők között. Az összekötők újraindítása miatt több összekötő nem érhető el, és a kapcsolatokat a fennmaradó rendelkezésre álló összekötőkhöz kényszeríti. Az eredmény kezdetben a csatlakozók egyenetlen használata.
 
-- Kerülje a beágyazott ellenőrzés összes formáját az összekötők és az Azure közötti kimenő TLS-kommunikációra. Az ilyen típusú beágyazott ellenőrzés a kommunikációs folyamat romlását okozza.
+- Kerülje a szövegközi ellenőrzés minden formáját az összekötők és az Azure közötti kimenő TLS-kommunikációsorán. Ez a fajta inline ellenőrzés a kommunikációs folyamat romlását okozza.
 
-- Győződjön meg arról, hogy az összekötők számára az automatikus frissítések szolgáltatás fut. Ha az alkalmazásproxy Connector Updater szolgáltatás fut, az összekötők automatikusan frissülnek, és megkapják a legújabb frissítést. Ha nem látja a Connector Updater szolgáltatást a kiszolgálón, újra kell telepítenie az összekötőt a frissítések beszerzéséhez.
+- Ügyeljen arra, hogy az automatikus frissítések továbbra is futjanak az összekötőkhöz. Ha az Alkalmazásproxy-összekötő frissítő szolgáltatás fut, az összekötők automatikusan frissülnek, és megkapják a legújabb frissítést. Ha nem látja az Összekötő frissítő szolgáltatást a kiszolgálón, újra kell telepítenie az összekötőt a frissítések lekéréséhez.
 
-## <a name="traffic-flow-between-connectors-and-back-end-application-servers"></a>Az összekötők és a háttérbeli alkalmazás-kiszolgálók közötti adatforgalom
+## <a name="traffic-flow-between-connectors-and-back-end-application-servers"></a>Az összekötők és a háttéralkalmazás-kiszolgálók közötti forgalom
 
-Egy másik kulcsfontosságú hely, ahol a magas rendelkezésre állás egy tényező az összekötők és a háttér-kiszolgálók közötti kapcsolat. Ha egy alkalmazást az Azure AD Application Proxyon keresztül tesznek közzé, a felhasználók és az alkalmazások közötti forgalom három ugráson keresztül áramlik:
+Egy másik kulcsfontosságú terület, ahol a magas rendelkezésre állás tényező az összekötők és a háttérkiszolgálók közötti kapcsolat. Ha egy alkalmazás az Azure AD alkalmazásproxyn keresztül jelenik meg, a felhasználók tól az alkalmazásokfelé irányuló forgalom három ugráson keresztül áramlik:
 
-1. A felhasználó az Azure AD Application Proxy szolgáltatás nyilvános végpontján csatlakozik az Azure-ban. A kapcsolat létrejön az ügyfél a kezdeményező ügyfél IP-címe (nyilvános) és az alkalmazásproxy-végpont IP-címe között.
-2. Az alkalmazásproxy-összekötő lekéri az ügyfél HTTP-kérelmét az alkalmazásproxy szolgáltatásból.
-3. Az alkalmazásproxy-összekötő csatlakozik a célalkalmazás alkalmazáshoz. Az összekötő a saját IP-címét használja a kapcsolat létrehozásához.
+1. A felhasználó csatlakozik az Azure AD alkalmazásproxy szolgáltatás nyilvános végponthoz az Azure-ban. A kapcsolat az ügyfél eredeti ügyfél IP-címe (nyilvános) és az alkalmazásproxy-végpont IP-címe között jön létre.
+2. Az alkalmazásproxy-összekötő lekéri az ügyfél HTTP-kérelmét az alkalmazásproxy-szolgáltatásból.
+3. Az alkalmazásproxy-összekötő csatlakozik a célalkalmazáshoz. Az összekötő saját IP-címét használja a kapcsolat létrehozásához.
 
-![Alkalmazás-proxyn keresztül csatlakozó felhasználó diagramja](media/application-proxy-high-availability-load-balancing/application-proxy-three-hops.png)
+![Alkalmazásproxyn keresztül iaalkalmazáshoz csatlakozó felhasználó diagramja](media/application-proxy-high-availability-load-balancing/application-proxy-three-hops.png)
 
-### <a name="x-forwarded-for-header-field-considerations"></a>X – továbbítva – a fejléc mezőhöz kapcsolódó megfontolások
-Bizonyos helyzetekben (például a naplózás, a terheléselosztás stb.) a külső ügyfél eredeti IP-címének megosztása a helyszíni környezettel követelmény. A követelmény megoldásához az Azure AD Application Proxy-összekötő hozzáadja az X által továbbított-for header mezőt a kezdeményező ügyfél IP-címével (nyilvános) a HTTP-kérelemhez. A megfelelő hálózati eszköz (terheléselosztó, tűzfal) vagy a webkiszolgáló vagy háttérbeli alkalmazás elolvashatja és használhatja az információkat.
+### <a name="x-forwarded-for-header-field-considerations"></a>X-Forwarded-A fejléc mező szempontjai
+Bizonyos helyzetekben (például naplózás, terheléselosztás stb.) a külső ügyfél eredeti IP-címének megosztása a helyszíni környezettel követelmény. A követelmény teljesítése érdekében az Azure AD alkalmazásproxy-összekötő hozzáadja az X-Forwarded-For fejlécmezőt az eredeti ügyfél IP-címével (nyilvános) a HTTP-kérelemhez. A megfelelő hálózati eszköz (terheléselosztó, tűzfal) vagy a webkiszolgáló vagy a háttéralkalmazás ezután eltudja olvasni és használhatja az adatokat.
 
-## <a name="best-practices-for-load-balancing-among-multiple-app-servers"></a>Ajánlott eljárások több App-kiszolgáló közötti terheléselosztáshoz
-Ha az alkalmazásproxy-alkalmazáshoz hozzárendelt összekötő csoport két vagy több összekötővel rendelkezik, és a háttér-webalkalmazást több kiszolgálón (kiszolgálófarm) futtatja, a megfelelő terheléselosztási stratégia szükséges. Egy jó stratégia biztosítja, hogy a kiszolgálók egyenletesen felveszik az ügyfeleket, és meggátolják a kiszolgálók feletti vagy alatti kihasználtságot a kiszolgálófarm számára.
-### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>1\. forgatókönyv: a háttérbeli alkalmazás nem igényli a munkamenetek megőrzését
-A legegyszerűbb eset az, amikor a háttér-webalkalmazás nem igényel munkamenet-kitartást (munkamenet-megőrzés). A felhasználótól érkező kéréseket a kiszolgálófarm bármely háttérbeli alkalmazás-példánya kezelheti. A 4. rétegbeli terheléselosztó használható, és nem lehet affinitást beállítani. Bizonyos lehetőségek közé tartozik a Microsoft hálózati terheléselosztás és a Azure Load Balancer vagy egy másik gyártótól származó terheléselosztó. Azt is megteheti, hogy a ciklikus multiplexelés DNS-t konfigurálhatja.
-### <a name="scenario-2-back-end-application-requires-session-persistence"></a>2\. forgatókönyv: a háttérbeli alkalmazáshoz munkamenet-megőrzés szükséges
-Ebben az esetben a háttér-webalkalmazásnak a hitelesített munkamenet során a munkamenetek állandósága (munkamenet-megőrzés) szükséges. A felhasználótól érkező kérelmeket a kiszolgálófarm ugyanazon kiszolgálóján futó háttérbeli alkalmazás-példánynak kell kezelnie.
-Ez a forgatókönyv bonyolultabb lehet, mivel az ügyfél általában több kapcsolatot létesít az alkalmazásproxy szolgáltatással. A különböző kapcsolatokon keresztüli kérelmek különböző összekötőket és kiszolgálókat is megérkeznek a farmon. Mivel az egyes összekötők a saját IP-címét használják ehhez a kommunikációhoz, a terheléselosztó nem tudja biztosítani a munkamenet-kikötést az összekötők IP-címe alapján. A forrás IP-affinitása nem használható.
-Íme néhány lehetőség a 2. forgatókönyvhöz:
+## <a name="best-practices-for-load-balancing-among-multiple-app-servers"></a>Gyakorlati tanácsok a több alkalmazáskiszolgáló közötti terheléselosztáshoz
+Ha az alkalmazásproxy-alkalmazáshoz rendelt összekötőcsoport két vagy több összekötővel rendelkezik, és a háttérszintű webalkalmazást több kiszolgálón (kiszolgálófarmon) futtatja, akkor jó terheléselosztási stratégiára van szükség. A jó stratégia biztosítja, hogy a kiszolgálók egyenletesen vegyék fel az ügyfélkérelmeket, és megakadályozza a kiszolgálófarm kiszolgálóinak túl- vagy alulkihasználtságát.
+### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>1. eset: A háttéralkalmazás nem igényel munkamenet-megőrzést
+A legegyszerűbb forgatókönyv az, ahol a háttér-webes alkalmazás nem igényel munkamenet stickiness (munkamenet-perzisztencia). A felhasználó bármely kérését a kiszolgálófarm bármely háttéralkalmazás-példánya eltudja intézni. Használhatja a 4. Néhány lehetőség a Microsoft Network Load Balancing and Azure Load Balancer vagy egy másik szállító terheléselosztója. Másik lehetőségként a ciklikus multiplexeléses DNS is konfigurálható.
+### <a name="scenario-2-back-end-application-requires-session-persistence"></a>2. forgatókönyv: A háttéralkalmazás munkamenet-megőrzést igényel
+Ebben a forgatókönyvben a háttér-webalkalmazás munkamenet stickiness (munkamenet-megőrzési) a hitelesített munkamenet során igényel munkamenet stickiness (munkamenet-megőrzési). A felhasználótól érkező összes kérést a kiszolgálófarm ugyanazon kiszolgálóján futó háttéralkalmazás-példánynak kell kezelnie.
+Ez a forgatókönyv bonyolultabb lehet, mivel az ügyfél általában több kapcsolatot hoz létre az alkalmazásproxy szolgáltatással. A különböző kapcsolatokon keresztül érkező kérelmek a farm különböző összekötőihez és kiszolgálóihoz érkezhetnek. Mivel minden összekötő saját IP-címet használ ehhez a kommunikációhoz, a terheléselosztó nem tudja biztosítani a munkamenet-ragozást az összekötők IP-címe alapján. Forrás IP affinitás nem használható sem.
+Íme néhány lehetőség a 2.
 
-- 1\. lehetőség: a munkamenet megőrzésének alapja a terheléselosztó által beállított munkamenet-cookie-ban. Ez a beállítás azért ajánlott, mert lehetővé teszi, hogy a terhelés egyenletesen legyen elosztva a háttér-kiszolgálók között. Ehhez a képességhez 7. rétegbeli terheléselosztó szükséges, amely képes kezelni a HTTP-forgalmat, és megszakítja az SSL-kapcsolatokat. Az Azure Application Gateway (munkamenet-affinitás) vagy egy másik gyártótól származó terheléselosztó is használható.
+- 1. lehetőség: A munkamenet-megőrzést a terheléselosztó által beállított munkamenet-cookie-ra alapozza. Ez a beállítás azért ajánlott, mert lehetővé teszi, hogy a terhelés egyenletesebben oszlik el a háttérkiszolgálók között. Ez megköveteli a layer 7 terheléselosztó ezzel a képességgel, és amely képes kezelni a HTTP-forgalmat, és megszünteti a TLS-kapcsolat. Használhatja az Azure Application Gateway (Session Affinity) vagy egy terheléselosztó egy másik szállítótól.
 
-- 2\. lehetőség: a munkamenet megőrzésének alapja az X által továbbított fejlécnél. Ehhez a lehetőséghez egy 7. rétegbeli terheléselosztó szükséges, amely képes kezelni a HTTP-forgalmat, és megszakítani az SSL-kapcsolatokat.  
+- 2. lehetőség: A munkamenet-megőrzést az X-Forwarded-For fejlécmezőre alapozza. Ehhez a beállításhoz egy 7-es réteges terheléselosztóra van szükség ezzel a képességgel, amely képes kezelni a HTTP-forgalmat, és megszüntetni a TLS-kapcsolatot.  
 
-- 3\. lehetőség: a háttérbeli alkalmazás konfigurálása, hogy ne kelljen a munkamenetek megőrzésére.
+- 3. lehetőség: Állítsa be úgy a háttéralkalmazást, hogy ne igényeljen munkamenet-megőrzést.
 
-A szoftver gyártójának dokumentációjában tájékozódhat a háttérrendszer terheléselosztási követelményeiről.
+A háttéralkalmazás terheléselosztási követelményeinek megismeréséhez tekintse meg a szoftver gyártójának dokumentációját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Alkalmazásproxy engedélyezése](application-proxy-add-on-premises-application.md)
 - [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Feltételes hozzáférés engedélyezése](application-proxy-integrate-with-sharepoint-server.md)
-- [Az Application proxyval kapcsolatos problémák elhárítása](application-proxy-troubleshoot.md)
-- [Ismerje meg, hogyan támogatja az Azure AD architektúra a magas rendelkezésre állást](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)
+- [Az alkalmazásproxyval kapcsolatos problémák hibaelhárítása](application-proxy-troubleshoot.md)
+- [Ismerje meg, hogy az Azure AD architektúra hogyan támogatja a magas rendelkezésre állást](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

@@ -1,6 +1,6 @@
 ---
 title: Képadatok feltöltése a felhőbe az Azure Storage segítségével | Microsoft Docs
-description: Azure Blob storage használata egy olyan webalkalmazással az alkalmazásadatok tárolására szolgáló
+description: Az Azure Blob storage használata webalkalmazással az alkalmazásadatok tárolására
 author: mhopkins-msft
 ms.service: storage
 ms.subservice: blobs
@@ -9,41 +9,41 @@ ms.date: 03/06/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
 ms.openlocfilehash: 49078d2f374203a9fab4fe0f5e3881f6b1b22959
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79130329"
 ---
-# <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Oktatóanyag: A felhőben az Azure Storage képadatok feltöltése
+# <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Oktatóanyag: Képadatok feltöltése a felhőben az Azure Storage segítségével
 
-Ez az oktatóanyag egy sorozat első része. Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy olyan webalkalmazást, amely az Azure Blob Storage ügyféloldali kódtárat használja a lemezképek Storage-fiókba való feltöltéséhez. Ha elkészült, rendelkezni fog a egy webalkalmazást, amely tárolja, és megjeleníti a rendszerképeket az Azure storage-ból.
+Ez az oktatóanyag egy sorozat első része. Ebben az oktatóanyagban megtudhatja, hogyan telepíthet egy webalkalmazást, amely az Azure Blob storage-ügyfélkódtár használatával képeket tölthet fel egy tárfiókba. Ha elkészült, lesz egy webalkalmazás, amely tárolja és megjeleníti az Azure storage-ból származó képeket.
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
-![Rendszerkép-alkalmazás a .NET-ben](media/storage-upload-process-images/figure2.png)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+![Képátsizer alkalmazás a .NET-ben](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
-![Képresizer alkalmazás Node. js v10-ben](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
+![Képresizer alkalmazás a Node.js V10-ben](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
 A sorozat első részében a következőkkel ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Tárfiók létrehozása
+> * Create a storage account
 > * Tároló létrehozása és az engedélyek beállítása
 > * Hozzáférési kulcs lekérése
-> * Webalkalmazás üzembe helyezése az Azure-bA
+> * Webalkalmazás üzembe helyezése az Azure-ban
 > * Alkalmazásbeállítások konfigurálása
-> * A webalkalmazás kezelése
+> * A webalkalmazás sal való együttműködése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre. Mielőtt elkezdené, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
+Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre. Hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) mielőtt elkezdené.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Helyi telepítése és használata a parancssori felület, ebben az oktatóanyagban, hogy, futtatnia kell az Azure CLI 2.0.4-es vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+A CLI helyi telepítéséhez és használatához ez az oktatóanyag megköveteli az Azure CLI 2.0.4-es vagy újabb verzióját. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -55,14 +55,14 @@ A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscso
 az group create --name myResourceGroup --location southeastasia
 ```
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="create-a-storage-account"></a>Create a storage account
 
-A minta feltölti a képeket egy Azure Storage-fiókban található blob-tárolóba. A tárfiók egy egyedi névteret biztosít az Azure Storage-adatobjektumok tárolásához és hozzáféréséhez. Az [az storage account create](/cli/azure/storage/account) paranccsal hozzon létre egy tárfiókot a létrehozott erőforráscsoportban.
+A minta képeket tölt fel egy Blob-tárolóba egy Azure-tárfiókban. A tárfiók egy egyedi névteret biztosít az Azure Storage-adatobjektumok tárolásához és hozzáféréséhez. Az [az storage account create](/cli/azure/storage/account) paranccsal hozzon létre egy tárfiókot a létrehozott erőforráscsoportban.
 
 > [!IMPORTANT]
-> Az oktatóanyag 2 része az Azure Event Grid használhatja a Blob storage használatával. Ellenőrizze, hogy a tárfiók létrehozása az Azure-régióban, amely támogatja az Event Griddel. A támogatott régiók listáját lásd: Azure- [termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
+> Az oktatóanyag 2. Győződjön meg arról, hogy hozzon létre a tárfiókot egy Azure-régióban, amely támogatja az Event Grid. A támogatott régiók listáját az [Azure-termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)című témakörben tájékán tájékykad.
 
-A következő parancsban cserélje le a saját globálisan egyedi nevét arra a blob Storage-fiókra, amelyben a `<blob_storage_account>` helyőrző látható.
+A következő parancsban cserélje le a saját globálisan egyedi nevét `<blob_storage_account>` a Blob storage-fiók, ahol a helyőrző látható.
 
 ```azurecli-interactive
 blobStorageAccount="<blob_storage_account>"
@@ -71,13 +71,13 @@ az storage account create --name $blobStorageAccount --location southeastasia \
   --resource-group myResourceGroup --sku Standard_LRS --kind StorageV2 --access-tier hot
 ```
 
-## <a name="create-blob-storage-containers"></a>A Blob storage-tárolók létrehozása
+## <a name="create-blob-storage-containers"></a>Blob-tárolók létrehozása
 
-Az alkalmazás két tárolót használ a Blob Storage-fiókban. A tárolók hasonlók a mappákhoz, és a blobok tárolására. A *képek* tároló az a hely, ahová az alkalmazás feltölti a teljes felbontású képeket. A sorozat egy későbbi részében egy Azure-függvényalkalmazás tölt fel átméretezett képminiatűröket a *thumbnails* tárolóba.
+Az alkalmazás két tárolót használ a Blob Storage-fiókban. A tárolók hasonlóak a mappákhoz és a tárolóblobokhoz. A *képek* tároló az a hely, ahová az alkalmazás feltölti a teljes felbontású képeket. A sorozat egy későbbi részében egy Azure-függvényalkalmazás tölt fel átméretezett képminiatűröket a *thumbnails* tárolóba.
 
-Szerezze be a tárfiókkulcsot az [az storage account keys list](/cli/azure/storage/account/keys) parancs segítségével. Ezután ezt a kulcsot használva hozzon létre két tárolót az az [Storage Container Create](/cli/azure/storage/container) paranccsal.
+Szerezze be a tárfiókkulcsot az [az storage account keys list](/cli/azure/storage/account/keys) parancs segítségével. Ezután ezzel a kulccsal hozzon létre két tárolót az [az storage container create](/cli/azure/storage/container) paranccsal.
 
-A *rendszerkép* -tároló nyilvános hozzáférése `off`értékre van állítva. A *miniatűrök* tároló nyilvános hozzáférése `container`értékre van állítva. A `container` nyilvános hozzáférés beállítás lehetővé teszi, hogy a weblapon megtekintő felhasználók megtekinthessék a miniatűrt.
+A *rendszerképek* tárolójának nyilvános `off`hozzáférése a. A *miniatűrök* tárolójának nyilvános `container`hozzáférése a. A `container` nyilvános hozzáférés beállítás lehetővé teszi a felhasználók számára, akik ellátogatnak a weboldalra, hogy megtekintsék a miniatűröket.
 
 ```azurecli-interactive
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
@@ -93,7 +93,7 @@ echo "Make a note of your Blob storage account key..."
 echo $blobStorageAccountKey
 ```
 
-Jegyezze fel a Blob storage-fiók neve és kulcsa. A mintaalkalmazás csatlakozhat a tárfiókhoz a képek alkalmazza ezeket a beállításokat. 
+Jegyezze fel a Blob tárfiók nevét és kulcsát. A mintaalkalmazás ezeket a beállításokat használja a tárfiókhoz való csatlakozáshoz a képek feltöltéséhez. 
 
 ## <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 
@@ -109,9 +109,9 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A webalkalmazás üzemeltetési tárterületet biztosít a GitHub-mintaadattárból az üzembe helyezett app mintakódot. Az [ az webapp create](../../app-service/overview.md) paranccsal hozzon létre egy `myAppServicePlan`webalkalmazást[ a ](/cli/azure/webapp) App Service-csomagban.  
+A webalkalmazás tárhelyet biztosít a GitHub mintatárból üzembe helyezett mintaalkalmazás-kódszámára. Az [ az webapp create](/cli/azure/webapp) paranccsal hozzon létre egy [webalkalmazást](../../app-service/overview.md) a `myAppServicePlan` App Service-csomagban.  
 
-A következő parancsban cserélje le a `<web_app>`t egyedi névre. Érvényes karakterek: `a-z`, `0-9` és `-`. Ha az `<web_app>` nem egyedi, a következő hibaüzenet jelenik meg: *A megadott `<web_app>` névvel már létezik webhely.* A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`.  
+A következő parancsban `<web_app>` cserélje le egy egyedi névre. Érvényes karakterek: `a-z`, `0-9` és `-`. Ha az `<web_app>` nem egyedi, a következő hibaüzenet jelenik meg: *A megadott `<web_app>` névvel már létezik webhely.* A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`.  
 
 ```azurecli-interactive
 webapp="<web_app>"
@@ -121,11 +121,11 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>Mintaalkalmazás üzembe helyezése a GitHub-adattárból
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
 Az App Service több módszert is támogat tartalmak webalkalmazásba való üzembe helyezésére. Ebben az oktatóanyagban a webalkalmazást egy [nyilvános GitHub-mintaadattárból](https://github.com/Azure-Samples/storage-blob-upload-from-webapp) telepítheti. Konfigurálja a GitHubról való telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source) parancs segítségével.
 
-A minta projekt egy [ASP.net MVC](https://www.asp.net/mvc) -alkalmazást tartalmaz. Az alkalmazás fogad, a storage-tárfiókba menti és képeket miniatűrtárolóból jeleníti meg. A webalkalmazás az [Azure. Storage](/dotnet/api/azure.storage), az [Azure. Storage. Blobs](/dotnet/api/azure.storage.blobs)és az [Azure. Storage. Blobs. models](/dotnet/api/azure.storage.blobs.models) névtereket használja az Azure Storage szolgáltatással való kommunikációhoz.
+A mintaprojekt egy [ASP.NET MVC](https://www.asp.net/mvc) alkalmazást tartalmaz. Az alkalmazás elfogadja a képet, menti azt egy tárfiókba, és képeket jelenít meg egy miniatűr tárolóból. A webalkalmazás az [Azure.Storage](/dotnet/api/azure.storage), [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs)és [Az Azure.Storage.Blobs.Models](/dotnet/api/azure.storage.blobs.models) névtereket használja az Azure Storage szolgáltatással való interakcióhoz.
 
 ```azurecli-interactive
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
@@ -133,7 +133,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 Az App Service több módszert is támogat tartalmak webalkalmazásba való üzembe helyezésére. Ebben az oktatóanyagban a webalkalmazást egy [nyilvános GitHub-mintaadattárból](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node) telepítheti. Konfigurálja a GitHubról való telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source) parancs segítségével.
 
 ```azurecli-interactive
@@ -146,9 +146,9 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 ## <a name="configure-web-app-settings"></a>A webalkalmazás beállításainak konfigurálása
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
-A minta webalkalmazás a [.net-hez készült Azure Storage API-kat](/dotnet/api/overview/azure/storage) használja a Képek feltöltéséhez. A Storage-fiók hitelesítő adatai a webalkalmazás alkalmazás-beállításainál vannak megadva. Adja hozzá az alkalmazás beállításait az üzembe helyezett alkalmazáshoz az az [WebApp config appSettings set](/cli/azure/webapp/config/appsettings) paranccsal.
+A minta webalkalmazás a [.NET Azure Storage API-kat](/dotnet/api/overview/azure/storage) használja a képek feltöltéséhez. A tárfiók hitelesítő adatai a webalkalmazás alkalmazásbeállításaiban vannak beállítva. Adja hozzá az alkalmazásbeállításokat az üzembe helyezett alkalmazáshoz az [az webapp-beállításkészlet](/cli/azure/webapp/config/appsettings) paranccsal.
 
 ```azurecli-interactive
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -158,9 +158,9 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
     AzureStorageConfig__AccountKey=$blobStorageAccountKey
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
-A minta-webalkalmazás az [Azure Storage ügyféloldali kódtár](https://github.com/Azure/azure-storage-js) segítségével kér a képfeltöltéshez használt hozzáférési jogkivonatokat. A tárfiók hitelesítő adatainak a Storage SDK-t használja a web app alkalmazás beállításai vannak beállítva. Adja hozzá az alkalmazás beállításait az üzembe helyezett alkalmazáshoz az az [WebApp config appSettings set](/cli/azure/webapp/config/appsettings) paranccsal.
+A minta-webalkalmazás az [Azure Storage ügyféloldali kódtár](https://github.com/Azure/azure-storage-js) segítségével kér a képfeltöltéshez használt hozzáférési jogkivonatokat. A storage SDK által használt tárfiók hitelesítő adatai a webalkalmazás alkalmazásbeállításaiban vannak beállítva. Adja hozzá az alkalmazásbeállításokat az üzembe helyezett alkalmazáshoz az [az webapp-beállításkészlet](/cli/azure/webapp/config/appsettings) paranccsal.
 
 ```azurecli-interactive
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -170,19 +170,19 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 ---
 
-Miután telepíti és konfigurálja a web app, tesztelheti a képek feltöltésének működését az alkalmazásban.
+A webalkalmazás telepítése és konfigurálása után tesztelheti a képfeltöltési funkciót az alkalmazásban.
 
 ## <a name="upload-an-image"></a>Rendszerkép feltöltése
 
 A webalkalmazás teszteléséhez nyissa meg a közzétett alkalmazás URL-címét. A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`.
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
-Válassza a **fényképek feltöltése** régiót egy fájl megadásához és feltöltéséhez, vagy húzzon egy fájlt a régióra. Sikeres feltöltés esetén a kép eltűnik. A **létrehozott miniatűrök** szakasz üres marad, amíg a témakör későbbi szakaszában nem teszteljük.
+Válassza ki a **Fényképek feltöltése** régiót egy fájl megadásához és feltöltéséhez, vagy húzzon egy fájlt a régióra. Sikeres feltöltés esetén a kép eltűnik. A **Létrehozott miniatűrök** szakasz üres marad, amíg a témakör későbbi részében nem teszteljük.
 
-![Fényképek feltöltése a .NET-ben](media/storage-upload-process-images/figure1.png)
+![Fotók feltöltése a .NET fájlban](media/storage-upload-process-images/figure1.png)
 
-A mintakód a *Storagehelper.cs* fájl `UploadFileToStorage` feladatát használja *a lemezképek tárolójába* való feltöltéséhez a Storage-fiókon belül a [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) metódus használatával. A következő mintakód tartalmazza a `UploadFileToStorage` műveletet.
+A mintakódban `UploadFileToStorage` a *Storagehelper.cs* fájlban lévő feladat a rendszer a rendszerképek feltöltésére szolgál a tárfiókban lévő *lemezképek* tárolójába az [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) metódus használatával. A következő mintakód tartalmazza a `UploadFileToStorage` műveletet.
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName,
@@ -214,25 +214,25 @@ Az előző feladatban használt osztályok és módszerek a következők:
 
 | Osztály    | Módszer   |
 |----------|----------|
-| [URI](/dotnet/api/system.uri) | [URI-konstruktor](/dotnet/api/system.uri.-ctor) |
-| [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential (karakterlánc, karakterlánc) konstruktor](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
+| [Uri](/dotnet/api/system.uri) | [Uri konstruktor](/dotnet/api/system.uri.-ctor) |
+| [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential(Karakterlánc, karakterlánc) konstruktor](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
 | [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) | [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) |
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
-Válassza a **fájl** kiválasztása lehetőséget egy fájl kiválasztásához, majd kattintson a **rendszerkép feltöltése**elemre. A **létrehozott miniatűrök** szakasz üres marad, amíg a témakör későbbi szakaszában nem teszteljük. 
+Fájl kijelöléséhez válassza a **Fájl kiválasztása** lehetőséget, majd kattintson a **Kép feltöltése gombra.** A **Létrehozott miniatűrök** szakasz üres marad, amíg a témakör későbbi részében nem teszteljük. 
 
-![Fényképek feltöltése a Node. js v10-ben](media/storage-upload-process-images/upload-app-nodejs.png)
+![Fotók feltöltése a Node.js V10](media/storage-upload-process-images/upload-app-nodejs.png)
 
 A mintakódban a `post` útvonal felelős a képek blobtárolóba való feltöltéséért. Az útvonal modulok használatával segíti a feltöltés feldolgozását:
 
-- a [multer](https://github.com/expressjs/multer) megvalósítja a feltöltési stratégiát az útválasztási kezelőhöz.
-- a [into-stream](https://github.com/sindresorhus/into-stream) a [createBlockBlobFromStream](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html)által előírt módon átalakítja a puffert egy adatfolyamba.
+- [a multer](https://github.com/expressjs/multer) megvalósítja az útvonalkezelő feltöltési stratégiáját.
+- [az adatfolyamon át](https://github.com/sindresorhus/into-stream) alakítja a puffert streamelésre a [createBlockBlobFromStream](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html)által megkövetelt korban.
 
-A fájlt küld az útvonalat, mivel a fájl tartalmát a memóriában marad, amíg nem a feltölti a blobtárolóba.
+A fájl elküldése az útvonalra, a fájl tartalma a memóriában marad, amíg a fájl feltöltése a blob tárolóba.
 
 > [!IMPORTANT]
-> Nagy fájlok betöltése a memóriába, előfordulhat, hogy a webalkalmazás teljesítményére negatív hatással. Ha azt felhasználók közzététele a nagy méretű fájlok, érdemes, vegye figyelembe a web server fájlrendszer a fájlok átmeneti, és ezután ütemezés feltöltése a Blob storage-bA. Miután a fájlok Blob storage-ban, a kiszolgáló fájlrendszerből eltávolíthatja őket.
+> A nagy méretű fájlok memóriába töltése negatív hatással lehet a webalkalmazás teljesítményére. Ha azt várja a felhasználóktól, hogy nagy fájlokat tegyenek közzé, érdemes lehet megfontolni a fájlok nak a webkiszolgáló fájlrendszerén való előkészítését, majd a feltöltések ütemezését a Blob storage-ba. Miután a fájlok a Blob storage,eltávolíthatja őket a kiszolgáló fájlrendszerből.
 
 ```javascript
 const {
@@ -300,39 +300,39 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>Ellenőrizze, hogy a kép megjelenik-e a tárfiókban
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com). A bal oldali menüben válassza a **Tárfiókok** lehetőséget, majd válassza ki saját tárfiókja nevét. Válassza a **tárolók**, majd a **lemezképek** tároló elemet.
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) A bal oldali menüben válassza a **Tárfiókok** lehetőséget, majd válassza ki saját tárfiókja nevét. Válassza **a Tárolók**lehetőséget, majd jelölje ki a **lemezképek** tárolóját.
 
 Ellenőrizze, hogy a kép megjelenik-e a tárolóban.
 
-![Képek tárolójának Azure Portal-listája](media/storage-upload-process-images/figure13.png)
+![Az Azure Portal rendszerképek-tárolójának listája](media/storage-upload-process-images/figure13.png)
 
 ## <a name="test-thumbnail-viewing"></a>Miniatűr megtekintésének tesztelése
 
-A miniatűr megtekintésének teszteléséhez fel kell töltenie egy rendszerképet a **miniatűrök** tárolóba annak ellenőrzéséhez, hogy az alkalmazás képes-e olvasni a **miniatűrök** tárolót.
+A miniatűrök megtekintésének teszteléséhez töltsön fel egy képet a **miniatűrök** tárolóba, hogy ellenőrizze, hogy az alkalmazás képes-e olvasni a **miniatűrök** tárolóját.
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com). A bal oldali menüben válassza a **Tárfiókok** lehetőséget, majd válassza ki saját tárfiókja nevét. Válassza a **tárolók**lehetőséget, majd válassza ki a **miniatűrök** tárolót. Válassza a **Feltöltés** lehetőséget a **Blob feltöltése** panel megnyitásához.
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) A bal oldali menüben válassza a **Tárfiókok** lehetőséget, majd válassza ki saját tárfiókja nevét. Válassza **a Tárolók**lehetőséget, majd jelölje ki a **bélyegképek tárolóját.** Válassza a **Feltöltés** lehetőséget a **Blob feltöltése** panel megnyitásához.
 
-Válasszon ki egy fájlt a fájl választóval, és válassza a **feltöltés**lehetőséget.
+Válasszon ki egy fájlt a fájlválasztóval, és válassza a **Feltöltés**lehetőséget.
 
 Lépjen vissza az alkalmazásba és ellenőrizze, hogy a **thumbnails** tárolóba feltöltött kép látható-e.
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
-![.NET-rendszerkép Resizer-alkalmazás új képpel megjelenítve](media/storage-upload-process-images/figure2.png)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+![.NET image resizer alkalmazás új képpel](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
-![Node. js v10 rendszerkép-alkalmazás új képpel megjelenítve](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
+![Node.js V10 image resizer alkalmazás új kép jelenik meg](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
-A sorozat második részében, automatizálhatja a miniatűr kép létrehozása így nem szükséges ezt a képet. Az Azure Portalon, a **thumbnails** tárolóban válassza ki a feltöltött képet, majd kattintson a **Törlés** elemre a kép törléséhez. 
+A sorozat második részében automatizálhatja a miniatűr képek létrehozását, így nincs szüksége erre a képre. Az Azure Portalon, a **thumbnails** tárolóban válassza ki a feltöltött képet, majd kattintson a **Törlés** elemre a kép törléséhez. 
 
-Engedélyezheti Content Delivery Network (CDN) számára a tartalom gyorsítótárazását az Azure Storage-fiókból. A CDN Azure Storage-fiókkal való engedélyezésével kapcsolatos további információkért lásd: [Azure Storage-fiók integrálása Azure CDNokkal](../../cdn/cdn-create-a-storage-account-with-cdn.md).
+Engedélyezheti, hogy a Content Delivery Network (CDN) gyorsítótárazhassa a tartalmat az Azure-tárfiókból. A CDN Azure-tárfiókkal való engedélyezéséről az [Azure-tárfiók integrálása az Azure CDN-nel](../../cdn/cdn-create-a-storage-account-with-cdn.md)című témakörben talál további információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A sorozat első részében, az útmutatóból megtudhatta, hogyan kommunikál a storage-WebApp konfigurálásához.
+A sorozat első részében megtanulta, hogyan konfigurálhat egy webalkalmazást a tárterülettel való interakcióra.
 
-Lépjen be a két sorozat része további információ az Event Grid használatával aktiválhat egy Azure-függvényt egy kép átméretezéséhez.
+Folytassa a sorozat második részével, és ismerje meg, hogy az Event Grid használatával aktiválhat-e egy Azure-függvényt egy lemezkép átméretezéséhez.
 
 > [!div class="nextstepaction"]
 > [Egy Azure-függvény Event Grid használatával történő aktiválása egy feltöltött kép átméretezéséhez](../../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

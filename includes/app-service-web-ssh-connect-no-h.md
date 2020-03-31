@@ -9,20 +9,20 @@ ms.date: 03/29/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 060bc1039982cc0a77214d5dbe2a08de7a839c84
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179598"
 ---
-Ahhoz, hogy nyissa meg a tároló egy közvetlen SSH-munkamenetet, az alkalmazás kell futtatnia.
+Ahhoz, hogy közvetlen SSH-munkamenetet nyisson meg a tárolóval, az alkalmazásnak futnia kell.
 
-Illessze be a következő URL-címet a böngészőben, és cserélje le \<alkalmazás-neve > az alkalmazás nevére:
+Illessze be a következő \<URL-címet a böngészőbe, és cserélje le az alkalmazásnév-> az alkalmazás nevére:
 
 ```
 https://<app-name>.scm.azurewebsites.net/webssh/host
 ```
 
-Ha még nincs hitelesítve, meg kell hitelesítést az Azure-előfizetésében való csatlakozáshoz. A hitelesítést követően látni egy böngészőben rendszerhéj, ahol futtathat parancsokat a tárolóban.
+Ha még nem hitelesített, akkor a csatlakozáshoz az Azure-előfizetéssel kell hitelesítenie magát. A hitelesítés után megjelenik egy böngészőben lévő rendszerhéj, ahol parancsokat futtathat a tárolón belül.
 
-![SSH-kapcsolatot](./media/app-service-web-ssh-connect-no-h/app-service-linux-ssh-connection.png)
+![SSH kapcsolat](./media/app-service-web-ssh-connect-no-h/app-service-linux-ssh-connection.png)

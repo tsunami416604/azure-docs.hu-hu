@@ -1,52 +1,52 @@
 ---
-title: Office 365 felügyeleti megoldás az Azure-ban | Microsoft Docs
-description: Ez a cikk részletesen ismerteti az Office 365-megoldás konfigurálását és használatát az Azure-ban.  A Azure Monitorban létrehozott Office 365-rekordok részletes leírását tartalmazza.
+title: Office 365 felügyeleti megoldás az Azure-ban | Microsoft dokumentumok
+description: Ez a cikk az Office 365-megoldás Azure-beli konfigurálásáról és használatáról nyújt tájékoztatást.  Az Azure Monitorban létrehozott Office 365-rekordok részletes leírását tartalmazza.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
 ms.openlocfilehash: 0018ae55ab74e691577a34a397c15355587e0fac
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663255"
 ---
-# <a name="office-365-management-solution-in-azure-preview"></a>Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
+# <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldása az Azure-ban (előzetes verzió)
 
-![Office 365 embléma](media/solution-office-365/icon.png)
+![Office 365-embléma](media/solution-office-365/icon.png)
 
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Megoldás frissítése
-> Ezt a megoldást az [Office 365](../../sentinel/connect-office-365.md) általánosan elérhető megoldás váltotta fel az [Azure Sentinel](../../sentinel/overview.md) és az [Azure ad jelentéskészítési és figyelési megoldásában](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Együttesen a korábbi Azure Monitor Office 365-megoldás frissített verzióját nyújtják, amely továbbfejlesztett konfigurációs élményt biztosít. Továbbra is használhatja a meglévő megoldást 2020. április 30-ig.
+> Ezt a megoldást az [Azure Sentinel](../../sentinel/overview.md) [Office 365](../../sentinel/connect-office-365.md) általános rendelkezésre állási megoldása és az Azure [AD jelentéskészítési és figyelési megoldásváltotta](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)fel. Együtt biztosítják az előző Azure Monitor Office 365-megoldás frissített verzióját továbbfejlesztett konfigurációs felülettel. A meglévő megoldást 2020.
 > 
-> Az Azure Sentinel egy Felhőbeli natív biztonsági információ-és eseménykezelő megoldás, amely betölti a naplókat, és további SIEM-funkciókat biztosít, beleértve az észleléseket, a nyomozást, a vadászatot és a gépi tanulásra épülő elemzéseket. Az Azure Sentinel használatával mostantól az Office 365 SharePoint-tevékenységek és az Exchange felügyeleti naplók betöltése is elérhetővé válik.
+> Az Azure Sentinel egy natív, natív biztonsági információkkal és eseményekkezelésével kapcsolatos megoldás, amely betöltődik a naplókba, és további SIEM-funkciókat biztosít, beleértve az észleléseket, a vizsgálatokat, a vadászatot és a gépi tanulásvezérelt elemzéseket. Az Azure Sentinel használatával mostantól az Office 365 SharePoint-tevékenység- és Exchange-felügyeleti naplók betöltését biztosítjuk.
 > 
-> Az Azure AD jelentéskészítés átfogóbb áttekintést nyújt az Azure AD-tevékenységekből származó naplókról a környezetében, beleértve a bejelentkezési eseményeket, a naplózási eseményeket és a címtárban történt módosításokat. Az Azure AD-naplók összekapcsolásához használhatja az [Azure Sentinel Azure ad-összekötőt](../../sentinel/connect-azure-active-directory.md) , vagy konfigurálhatja az [Azure ad-naplók integrációját Azure monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md). 
+> Az Azure AD-jelentés átfogóbb képet nyújt az Azure AD-tevékenységből származó naplókról a környezetében, beleértve a bejelentkezési eseményeket, a naplózási eseményeket és a címtár változásait. Az Azure AD-naplók csatlakoztatásához használhatja az [Azure Sentinel Azure AD-összekötőt,](../../sentinel/connect-azure-active-directory.md) vagy konfigurálhatja az [Azure AD-naplók integrációját az Azure Monitorlal.](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) 
 >
-> Az Azure AD-napló gyűjteménye Azure Monitor díjszabás alá esik.  További információért tekintse meg a [Azure monitor díjszabását](https://azure.microsoft.com/pricing/details/monitor/) .
+> Az Azure AD-napló gyűjteménye az Azure Monitor díjszabása.  További információkért lásd az [Azure Monitor díjszabását.](https://azure.microsoft.com/pricing/details/monitor/)
 >
-> Az Azure Sentinel Office 365 megoldás használata:
-> 1. Az Office 365 Connector használata az Azure Sentinelben hatással van a munkaterület díjszabására. További információ: az [Azure Sentinel díjszabása](https://azure.microsoft.com/pricing/details/azure-sentinel/).
-> 2. Ha már használja a Azure Monitor Office 365 megoldást, először el kell távolítania azt az [Eltávolítás szakaszban](#uninstall)található parancsfájl használatával.
+> Az Azure Sentinel Office 365-ös megoldás használata:
+> 1. Az Office 365-összekötő azure Sentinel használata hatással van a munkaterület díjszabására. További információ: [Azure Sentinel díjszabás.](https://azure.microsoft.com/pricing/details/azure-sentinel/)
+> 2. Ha már használja az Azure Monitor Office 365-ös megoldást, először el kell távolítania azt az [alábbi Eltávolítás szakaszban](#uninstall)található parancsfájl használatával.
 > 3. [Engedélyezze az Azure Sentinel-megoldást](../../sentinel/quickstart-onboard.md) a munkaterületen.
-> 4. Nyissa meg az Azure Sentinel **adatösszekötők** lapját, és engedélyezze az **Office 365** -összekötőt.
+> 4. Nyissa meg az Azure Sentinel **Adatösszekötők lapját,** és engedélyezze az **Office 365-összekötőt.**
 >
 > ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>K: az Office 365 Azure Monitor megoldást most és április 30-ig is fel lehet venni?
-> Nem, a Azure Monitor Office 365-megoldás bevezetési parancsfájljai már nem érhetők el. A megoldás április 30-ig el lesz távolítva.
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>K: Lehetséges-e az Office 365 Azure Monitor megoldásának fedélzetre kapcsolása mostantól április 30-ig?
+> Nem, az Azure Monitor Office 365-megoldás bevezetési parancsfájljai már nem érhetők el. A megoldást április 30-án távolítják el.
 > 
-> ### <a name="q-will-the-tables-and-schemas-be-changed"></a>K: a táblák és sémák módosulnak?
-> A **OfficeActivity** -tábla neve és sémája ugyanaz marad, mint az aktuális megoldásban. Továbbra is használhatja az új megoldásban ugyanazokat a lekérdezéseket, az Azure AD-adataira hivatkozó lekérdezések kivételével.
+> ### <a name="q-will-the-tables-and-schemas-be-changed"></a>K: Megváltoznak a táblák és a sémák?
+> Az **OfficeActivity** tábla neve és sémája ugyanaz marad, mint az aktuális megoldásban. Továbbra is használhatja ugyanazokat a lekérdezéseket az új megoldásban, kivéve az Azure AD-adatokat hivatkozó lekérdezéseket.
 > 
-> Az új [Azure ad jelentéskészítési és figyelési megoldás](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) naplói bekerülnek a [SigninLogs](../../active-directory/reports-monitoring/concept-sign-ins.md) és a [AuditLogs](../../active-directory/reports-monitoring/concept-audit-logs.md) táblákba a **OfficeActivity**helyett. További információ: az Azure [ad-naplók elemzése](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md), amely az Azure Sentinel és a Azure monitor felhasználók számára is fontos.
+> Az új [Azure AD-jelentési és figyelési megoldásnaplók](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) az **OfficeActivity**helyett a [SigninLogs](../../active-directory/reports-monitoring/concept-sign-ins.md) és [auditLogs](../../active-directory/reports-monitoring/concept-audit-logs.md) táblákba kerülnek. További információkért tekintse meg, hogyan elemezheti az [Azure AD-naplókat,](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md)ami az Azure Sentinel és az Azure Monitor felhasználói számára is fontos.
 > 
-> A következő minták a **OfficeActivity** és a **SigninLogs**lekérdezések átalakítására szolgálnak:
+> Az alábbiakban mintákat tartalmaz a lekérdezések **OfficeActivity-ból** **SigninLogs-ra**történő konvertálásához:
 > 
-> **Sikertelen bejelentkezések lekérdezése felhasználónként:**
+> **A lekérdezés nem sikerült bejelentkezések, felhasználó szerint:**
 > 
 > ```Kusto
 > OfficeActivity
@@ -62,7 +62,7 @@ ms.locfileid: "77663255"
 > | summarize count() by UserDisplayName
 > ```
 > 
-> **Azure AD-műveletek megtekintése:**
+> **Az Azure AD-műveletek megtekintése:**
 > 
 > ```Kusto
 > OfficeActivity
@@ -76,57 +76,57 @@ ms.locfileid: "77663255"
 > | summarize count() by OperationName
 > ```
 > 
-> ### <a name="q-how-can-i-on-board-azure-sentinel"></a>K: Hogyan lehet a fedélzeten az Azure Sentinel?
-> Az Azure Sentinel egy olyan megoldás, amelyet engedélyezheti új vagy meglévő Log Analytics munkaterületen. További információ: [Az Azure Sentinel helyszíni dokumentációja](../../sentinel/quickstart-onboard.md).
+> ### <a name="q-how-can-i-on-board-azure-sentinel"></a>K: Hogyan tudom a fedélzeti Azure Sentinel?
+> Az Azure Sentinel egy olyan megoldás, amely et új vagy meglévő Log Analytics-munkaterületen is engedélyezhet. További információ: [Azure Sentinel beszállási dokumentáció.](../../sentinel/quickstart-onboard.md)
 >
-> ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>K: Szükségem van az Azure Sentinelre az Azure AD-naplók összekapcsolásához?
-> Konfigurálhatja az [Azure ad-naplók integrációját Azure monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), amely nem kapcsolódik az Azure Sentinel megoldáshoz. Az Azure Sentinel natív összekötőt és beépített tartalmat biztosít az Azure AD-naplók számára. További információkért tekintse meg az alábbi, a beépített biztonsággal kapcsolatos tartalomra vonatkozó kérdést.
+> ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>K: Szükségem van az Azure Sentinelre az Azure AD-naplók csatlakoztatásához?
+> Konfigurálhatja [az Azure AD-naplók integrációját az Azure Monitorlal,](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)amely nem kapcsolódik az Azure Sentinel-megoldáshoz. Az Azure Sentinel egy natív összekötőt és beépített tartalmat biztosít az Azure AD-naplókhoz. További információt az alábbi, használatra alkalmas, biztonságorientált tartalommal kapcsolatos kérdésben talál.
 >
-> ###   <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>K: Milyen különbségek vannak az Azure AD-naplók Azure Sentinel-és Azure Monitor-beli csatlakoztatásakor?
-> Az Azure Sentinel és a Azure Monitor ugyanazon [Azure ad-jelentéskészítési és-figyelési megoldás](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)alapján csatlakozik az Azure ad-naplókhoz. Az Azure Sentinel egy kattintással elérhető natív összekötőt biztosít, amely ugyanazokat az adatokat köti össze, és figyelési információkat biztosít.
+> ###   <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>K: Miak a különbségek az Azure Sentinel ből és az Azure Monitorból származó Azure AD-naplók csatlakoztatásakor?
+> Az Azure Sentinel és az Azure Monitor ugyanazon [Azure AD-jelentéskészítési és figyelési megoldáson](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)alapuló Azure AD-naplókhoz csatlakozik. Az Azure Sentinel egy kattintással elérhető, natív összekötőt biztosít, amely ugyanazokat az adatokat kapcsolja össze, és figyelési információkat biztosít.
 >
-> ###   <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>K: mit kell módosítani az új Azure AD jelentéskészítési és figyelési táblázatokra való áttéréskor?
-> Az Azure AD-adatokat használó összes lekérdezést, beleértve a riasztások, az irányítópultok és az Office 365 Azure AD-adatokat használó összes tartalmat, újra létre kell hozni az új táblák használatával.
+> ###   <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>K: Mit kell módosítanom, amikor az új Azure AD-jelentési és figyelési táblákra költözik?
+> Az Azure AD-adatokat használó összes lekérdezést, beleértve a riasztásokban, irányítópultokban és az Office 365 Azure AD-adatokkal létrehozott tartalmakat, újra létre kell hozni az új táblák használatával.
 >
-> Az Azure Sentinel és az Azure AD beépített tartalmakat biztosít, amelyeket az Azure AD jelentéskészítési és figyelési megoldásra való áttéréshez használhat. További információkért tekintse meg a következő, a beépített biztonsággal kapcsolatos tartalomra vonatkozó kérdést, valamint a [Azure monitor munkafüzetek használatát Azure Active Directory jelentésekhez](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md). 
+> Az Azure Sentinel és az Azure AD beépített tartalmat biztosít, amelyet az Azure AD jelentéskészítési és figyelési megoldásra való áttéréskor használhat. További információt a beépített biztonságorientált tartalommal és az [Azure Active Directory-jelentésekhez tartozó Azure Monitor-munkafüzetek használatával](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md)kapcsolatos következő kérdésben talál. 
 >
-> ### <a name="q-how-i-can-use-the-azure-sentinel-out-of-the-box-security-oriented-content"></a>K: Hogyan használhatom az Azure Sentinel out-of-the-Box biztonsági irányultságú tartalmat?
-> Az Azure Sentinel beépített, biztonsági szintű irányítópultokat, egyéni riasztási lekérdezéseket, vadászati lekérdezéseket, nyomozást és automatizált reagálási képességeket biztosít az Office 365 és az Azure AD-naplók alapján. További információért tekintse meg az Azure Sentinel GitHubot és oktatóanyagokat:
+> ### <a name="q-how-i-can-use-the-azure-sentinel-out-of-the-box-security-oriented-content"></a>K: Hogyan használhatom az Azure Sentinel beépített biztonságorientált tartalmat?
+> Az Azure Sentinel az Office 365- és az Azure AD-naplók on-the-box ban található, biztonságorientált irányítópultokat, egyéni riasztási lekérdezéseket, vadászati lekérdezéseket, lekérdezéseket és automatikus válaszadási lehetőségeket biztosít. További információért ismerje meg az Azure Sentinel GitHubot és az oktatóanyagokat:
 >
-> - [Fenyegetések észlelése](../../sentinel/tutorial-detect-threats-built-in.md)
+> - [A fenyegetések észlelése beépített fenyegetések](../../sentinel/tutorial-detect-threats-built-in.md)
 > - [Egyéni elemzési szabályok létrehozása gyanús fenyegetések észleléséhez](../../sentinel/tutorial-detect-threats-custom.md)
-> - [Az adatai figyelése](../../sentinel/tutorial-monitor-your-data.md)
-> - [Incidensek vizsgálata az Azure Sentineltel](../../sentinel/tutorial-investigate-cases.md)
-> - [Automatizált veszélyforrásokkal kapcsolatos válaszok beállítása az Azure Sentinelben](../../sentinel/tutorial-respond-threats-playbook.md)
-> - [Azure Sentinel GitHub-Közösség](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
+> - [Adatok monitorozása](../../sentinel/tutorial-monitor-your-data.md)
+> - [Incidensek kivizsgálása az Azure Sentinellel](../../sentinel/tutorial-investigate-cases.md)
+> - [Automatikus fenyegetésre adott válaszok beállítása az Azure Sentinelben](../../sentinel/tutorial-respond-threats-playbook.md)
+> - [Azure Sentinel GitHub-közösség](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
 > 
-> ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>K: az Azure Sentinel további összekötőket biztosít a megoldás részeként?
-> Igen, lásd: [Az Azure Sentinel összekapcsolási adatforrásai](../../sentinel/connect-data-sources.md).
+> ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>K: Az Azure Sentinel további összekötők a megoldás részeként?
+> Igen, lásd: [Azure Sentinel connect adatforrások](../../sentinel/connect-data-sources.md).
 > 
-> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>K: mi fog történni április 30-án? Előre kell regisztrációjának megszüntetésére szolgáló?
+> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>K: Mi történik április 30-án? Előre le kell mondanom?
 > 
-> - Nem fogja tudni fogadni az **Office 365** -megoldás adatait. A megoldás többé nem lesz elérhető a piactéren
-> - Az Azure Sentinel-ügyfelek esetében a Log Analytics munkaterület megoldás **Office 365** szerepelni fognak az Azure Sentinel **SecurityInsights** megoldásban.
-> - Ha nem regisztrációjának megszüntetésére szolgáló manuálisan a megoldást, az adatai automatikusan le lesznek választva április 30-ig.
+> - Az **Office365-megoldásból** nem fog tudni adatokat fogadni. A megoldás a továbbiakban nem lesz elérhető a Marketplace-en
+> - Az Azure Sentinel-ügyfelek számára az **Office365** Log Analytics-munkaterületi megoldás az Azure Sentinel **SecurityInsights-megoldás** része lesz.
+> - Ha nem veszi ki manuálisan a megoldást, az adatok automatikusan lelesznek választva április 30-án.
 > 
-> ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>K: az adatok átkerülnek az új megoldásba?
-> Igen. Ha eltávolítja az **Office 365** -megoldást a munkaterületről, az adatai átmenetileg elérhetetlenné válnak, mert a séma el lesz távolítva. Ha engedélyezi az új **Office 365** -összekötőt a sentinelben, a séma vissza lesz állítva a munkaterületre, és a már összegyűjtött adatok elérhetővé válnak. 
+> ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>K: Átfog-e az adattovábbítás az új megoldásba?
+> Igen. Amikor eltávolítja az **Office 365-megoldást** a munkaterületről, az adatok ideiglenesen elérhetetlenné válnak, mert a séma eltávolításra kerül. Ha engedélyezi az új **Office 365-összekötőt** a Sentinelben, a séma visszaáll a munkaterületre, és a már összegyűjtött adatok elérhetővé válnak. 
  
 
-Az Office 365 felügyeleti megoldás lehetővé teszi az Office 365-környezet figyelését Azure Monitorban.
+Az Office 365 felügyeleti megoldás lehetővé teszi az Office 365-környezet figyelését az Azure Monitorban.
 
-- Az Office 365-fiókok felhasználói tevékenységeinek monitorozásával elemezheti a használati mintákat, valamint azonosíthatja a viselkedési trendeket. Kinyerheti például bizonyos használati forgatókönyveket, például a szervezeten kívül megosztott fájlokat vagy a legnépszerűbb SharePoint-webhelyeket.
-- Rendszergazdai tevékenységek figyelése a konfigurációs változások és a magas jogosultsági szintű műveletek nyomon követéséhez.
-- A nem kívánt felhasználói viselkedés észlelése és vizsgálata, amely testreszabható a szervezeti igényeknek megfelelően.
-- Auditálás és megfelelőség bemutatása. Például figyelheti a fájl-hozzáférési műveleteket a bizalmas fájlokon, ami segíthet a naplózási és megfelelőségi folyamatokban.
-- Hajtsa végre a működés közbeni hibaelhárítást a szervezete Office 365-tevékenység adataihoz tartozó [lekérdezések](../log-query/log-query-overview.md) használatával.
+- Az Office 365-fiókok felhasználói tevékenységeinek figyelésével elemezheti a használati mintákat, valamint azonosíthatja a viselkedési trendeket. Kibonthat például bizonyos használati eseteket, például a szervezeten kívüli megosztott fájlokat vagy a legnépszerűbb SharePoint-webhelyeket.
+- A rendszergazdai tevékenységek figyelése a konfigurációs módosítások vagy a magas jogosultsági szintű műveletek nyomon követéséhez.
+- Észlelheti és megvizsgálhatja a nem kívánt felhasználói viselkedést, amely a szervezeti igényeknek megfelelően testreszabható.
+- Az audit és a megfelelőség bemutatása. Figyelheti például a bizalmas fájlok fájlhozzáférési műveleteit, amelyek segíthetnek a naplózási és megfelelőségi folyamatban.
+- Működési hibaelhárítást végezhet a szervezet Office 365-tevékenységi adatain felüli [naplólekérdezésekkel.](../log-query/log-query-overview.md)
 
 
 ## <a name="uninstall"></a>Eltávolítás
 
-Az Office 365 felügyeleti megoldás eltávolításához használja a [felügyeleti megoldás eltávolítása](solutions.md#remove-a-monitoring-solution)című eljárást. Ez nem állítja le az Office 365-ből gyűjtött adatokat a Azure Monitor mégis. Kövesse az alábbi eljárást az Office 365 lemondásához és az adatok gyűjtésének leállításához.
+Az Office 365 felügyeleti megoldása a [Felügyeleti megoldás eltávolítása](solutions.md#remove-a-monitoring-solution)című folyamatban található folyamattal távolítható el. Ez azonban nem állítja le az Office 365-ből az Azure Monitorba gyűjtött adatokat. Az alábbi eljárással leiratkozhat az Office 365-ről, és leállíthatja az adatgyűjtést.
 
-1. Mentse a következő parancsfájlt *office365_unsubscribe. ps1*néven.
+1. Mentse a következő parancsfájlt *office365_unsubscribe.ps1*néven.
 
     ```powershell
     param (
@@ -213,7 +213,7 @@ Az Office 365 felügyeleti megoldás eltávolításához használja a [felügyel
     Office-UnSubscribe-Call -ErrorAction Stop
     ```
 
-2. Futtassa a szkriptet a következő paranccsal:
+2. Futtassa a parancsfájlt a következő paranccsal:
 
     ```
     .\office365_unsubscribe.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeTennantID <Tenant ID> 
@@ -225,255 +225,255 @@ Az Office 365 felügyeleti megoldás eltávolításához használja a [felügyel
     .\office365_unsubscribe.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx'
     ```
 
-A rendszer kérni fogja a hitelesítő adatokat. Adja meg a Log Analytics munkaterület hitelesítő adatait.
+A rendszer kérni fogja a hitelesítő adatokat. Adja meg a Hitelesítő adatokat a Log Analytics-munkaterülethez.
 
 ## <a name="data-collection"></a>Adatgyűjtés
 
-Az adatok kezdetben való gyűjtése igénybe vehet néhány órát. A gyűjtés megkezdése után az Office 365 egy [webhook-értesítést](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) küld a részletes adatokkal, hogy Azure monitor minden alkalommal, amikor létrejön egy rekord. Ez a rekord a kézhezvételt követően néhány percen belül Azure Monitor érhető el.
+Az adatok első gyűjtése néhány órát is igénybe vehet. Az adatgyűjtés megkezdése után az Office 365 egy webhook-értesítést küld részletes adatokat tartalmazó [webhook-értesítésről](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) az Azure Monitornak minden alkalommal, amikor egy rekordot létrehoz. Ez a rekord a fogadást követő néhány percen belül elérhető az Azure Monitorban.
 
 ## <a name="using-the-solution"></a>A megoldás használata
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-Amikor hozzáadja az Office 365-megoldást a Log Analytics munkaterülethez, az **office 365** csempe hozzá lesz adva az irányítópulthoz. Ez a csempe a környezetben jelenleg elérhető számítógépek számát és grafikus ábrázolását jeleníti meg, valamint a frissítési megfelelőségi állapotukat.<br><br>
-![Office 365 összefoglaló csempe](media/solution-office-365/tile.png)  
+Amikor hozzáadja az Office 365-megoldást a Log Analytics-munkaterülethez, az **Office 365** csempe hozzáadódik az irányítópulthoz. Ez a csempe a környezetben jelenleg elérhető számítógépek számát és grafikus ábrázolását jeleníti meg, valamint a frissítési megfelelőségi állapotukat.<br><br>
+![Az Office 365 összefoglaló csempéje](media/solution-office-365/tile.png)  
 
-Kattintson az **office 365** csempére az **Office 365** irányítópultjának megnyitásához.
+Kattintson az **Office 365** csempére az **Office 365** irányítópultjának megnyitásához.
 
-![Office 365 irányítópult](media/solution-office-365/dashboard.png)  
+![Az Office 365 irányítópultja](media/solution-office-365/dashboard.png)  
 
-Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. Minden oszlop felsorolja az első tíz riasztást az oszlopnak a megadott hatókörhöz és időtartományhoz tartozó feltételeinek megfelelő számokkal. Futtathat egy naplóbeli keresést, amely a teljes listát az oszlop alján található az összes megjelenítése elemre kattintva vagy az oszlop fejlécére kattintva jeleníti meg.
+Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. Minden oszlop felsorolja az első tíz riasztást az adott oszlop adott hatókörre és időtartományra vonatkozó feltételeinek megfelelő szám szerint. A teljes listát tartalmazó naplókeresést úgy futtathatja, hogy az oszlop alján található Összes megtekintése gombra vagy az oszlopfejlécre kattint.
 
 | Oszlop | Leírás |
 |:--|:--|
-| Műveletek | Az összes figyelt Office 365-előfizetés aktív felhasználóival kapcsolatos információkat nyújt. Megtekintheti az idő múlásával zajló tevékenységek számát is.
-| Exchange | Megjeleníti az Exchange Server-tevékenységek részletezését, például a Add-Mailbox engedélyt vagy a set-Mailbox műveletet. |
-| SharePoint | Megjeleníti a felhasználók által a SharePoint-dokumentumokon végrehajtott legfontosabb tevékenységeket. Ha ezen a csempén végez részletezést, a Keresés lap megjeleníti a tevékenységek részleteit, például a célként megadott dokumentumot és a tevékenység helyét. Egy fájlhoz hozzáférő esemény esetében például megtekintheti az elérni kívánt dokumentumot, a hozzá tartozó fióknevet és IP-címet. |
-| Azure Active Directory | Magában foglalja a leggyakoribb felhasználói tevékenységeket, például a felhasználói jelszavak visszaállítását és a bejelentkezési kísérleteket. A részletezés során látni fogja a tevékenységek részleteit, például az eredmény állapotát. Ez általában akkor hasznos, ha a Azure Active Directory gyanús tevékenységeket szeretne figyelni. |
+| Műveletek | Tájékoztatást nyújt az összes figyelt Office 365-előfizetés aktív felhasználóiról. Azt is látni fogja, hogy az idő múlásával végzett tevékenységek száma.
+| Exchange | Az Exchange Server tevékenységeinek ( postaláda-hozzáadása engedély vagy Set-Mailbox) bontását jeleníti meg. |
+| SharePoint | A felhasználók által a SharePoint-dokumentumokon végzett legfontosabb tevékenységek et jeleníti meg. Ha leás erről a csempéről, a keresőoldal megjeleníti ezeknek a tevékenységeknek a részleteit, például a céldokumentumot és a tevékenység helyét. Egy fájlhoz hozzáféréssel rendelkező esemény esetén például láthatja az elért dokumentumot, a hozzá tartozó fióknevét és IP-címét. |
+| Azure Active Directory | Tartalmazza a legnépszerűbb felhasználói tevékenységeket, például a Felhasználói jelszó alaphelyzetbe állítását és a bejelentkezési kísérleteket. Amikor leás, akkor képes lesz arra, hogy a részleteket ezek a tevékenységek, mint például az eredmény állapota. Ez leginkább akkor hasznos, ha az Azure Active Directoryban szeretné figyelni a gyanús tevékenységeket. |
 
 
 
 
-## <a name="azure-monitor-log-records"></a>Naplóbejegyzések Azure Monitor
+## <a name="azure-monitor-log-records"></a>Az Azure Monitor naplórekordjai
 
-Az Office 365-megoldás által Azure Monitor Log Analytics munkaterületen létrehozott összes rekord **típusa** **OfficeActivity**.  A **OfficeWorkload** tulajdonság határozza meg, hogy melyik Office 365-szolgáltatás a rekord a-Exchange, a AzureActiveDirectory, a SharePoint vagy a OneDrive kifejezésre hivatkozik.  A **rekordtípus** tulajdonság meghatározza a művelet típusát.  A tulajdonságok minden egyes Művelettípus esetében eltérőek lesznek, és az alábbi táblázatokban jelennek meg.
+Az Office 365-megoldás által az Azure Monitor Log Analytics-munkaterületén létrehozott összes rekord **office-tevékenység** **típussal**rendelkezik.  Az **OfficeWorkload** tulajdonság határozza meg, hogy a rekord melyik Office 365-szolgáltatásra hivatkozik – Exchange, AzureActiveDirectory, SharePoint vagy OneDrive.  A **RecordType** tulajdonság a művelet típusát adja meg.  A tulajdonságok az egyes művelettípusoktól függően változnak, és az alábbi táblázatokban láthatók.
 
-### <a name="common-properties"></a>Általános tulajdonságok
+### <a name="common-properties"></a>Közös tulajdonságok
 
-A következő tulajdonságok minden Office 365-rekordnál közösek.
+Az alábbi tulajdonságok az összes Office 365-rekordban közösek.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus | *OfficeActivity* |
-| ClientIP | Annak az eszköznek az IP-címe, amelyet a tevékenység naplózása során használt. Az IP-cím IPv4-vagy IPv6-cím formátumban jelenik meg. |
+| Típus | *OfficeActivity tevékenység* |
+| ÜgyfélIP-címe | Az esemény naplózásakor használt eszköz IP-címe. Az IP-cím IPv4 vagy IPv6 formátumban jelenik meg. |
 | OfficeWorkload | Az Office 365 szolgáltatás, amelyre a rekord hivatkozik.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
-| Művelet | A felhasználó vagy a rendszergazda tevékenység neve.  |
-| OrganizationId | A szervezet Office 365-bérlője GUID azonosítója. Ez az érték mindig ugyanaz lesz a szervezetnél, függetlenül attól, hogy melyik Office 365-szolgáltatásban történik. |
-| RecordType | A végrehajtott művelet típusa. |
-| ResultStatus | Azt jelzi, hogy a művelet (a műveleti tulajdonságban megadott művelet) sikeres volt-e. A lehetséges értékek sikeresek, PartiallySucceeded vagy sikertelenek. Exchange-rendszergazdai tevékenység esetén az érték igaz vagy hamis. |
-| UserId | A naplózni kívánt műveletet végrehajtó felhasználó UPN-neve (egyszerű felhasználónév); például my_name@my_domain_name. Vegye figyelembe, hogy a rendszerfiókok (például SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végzett tevékenységekre vonatkozó rekordok is szerepelnek. | 
-| UserKey | A felhasználóazonosító tulajdonságban azonosított felhasználó alternatív azonosítója.  Ez a tulajdonság például a Passport egyedi azonosítójával (PUID) van feltöltve a felhasználók által a SharePointban, a vállalati OneDrive és az Exchange-ben végrehajtott eseményekhez. Ez a tulajdonság a felhasználóazonosító tulajdonsággal megegyező értéket is megadhat a más szolgáltatásokban és a rendszerfiókokban végrehajtott eseményekben előforduló események esetében.|
-| UserType | A műveletet végrehajtó felhasználó típusa.<br><br>Rendszergazda<br>Alkalmazás<br>DcAdmin<br>Rendszeres<br>Fenntartva<br>ServicePrincipal<br>Rendszer |
+| Művelet | A felhasználói vagy rendszergazdai tevékenység neve.  |
+| OrganizationId (Szervezeti azonosító) | A szervezet Office 365-ös bérlőjének GUID azonosítója. Ez az érték mindig ugyanaz lesz a szervezet számára, függetlenül attól, hogy melyik Office 365 szolgáltatásban fordul elő. |
+| RecordType (Rekordtípus) | Az elvégzett művelet típusa. |
+| ResultStatus (Eredmény állapota) | Azt jelzi, hogy a (Művelet tulajdonságban megadott) művelet sikeres volt-e. A lehetséges értékek sikeresek, részlegesen sikeresek vagy sikertelenek. Exchange felügyeleti tevékenység esetén az érték értéke Igaz vagy Hamis. |
+| UserId (Felhasználóazonosító) | Annak a felhasználónak az egyszerű felhasználóneve (egyszerű felhasználónév), aki a rekordot naplózott műveletet eredményezte; például my_name@my_domain_name. Vegye figyelembe, hogy a rendszerfiókok által végzett tevékenységek (például sharepoint\system vagy NTAUTHORITY\SYSTEM) bejegyzései is szerepelnek. | 
+| UserKey (Felhasználói kulcs) | A UserId tulajdonságban azonosított felhasználó alternatív azonosítója.  Ez a tulajdonság például a SharePoint, a OneDrive Vállalati verzió és az Exchange felhasználói által végrehajtott események hez tartalmazza az útlevél egyedi azonosítóját (PUID). Ez a tulajdonság a UserID tulajdonsággal megegyező értéket is megadhat a rendszerfiókok által végrehajtott egyéb szolgáltatásokban és eseményekben bekövetkező eseményeknél.|
+| UserType (Felhasználótípus) | A műveletet végrehajtó felhasználó típusa.<br><br>Rendszergazda<br>Alkalmazás<br>DcAdmin<br>Hagyományos<br>Foglalt<br>Szolgáltatásnév<br>Rendszer |
 
 
-### <a name="azure-active-directory-base"></a>Azure Active Directory alapja
+### <a name="azure-active-directory-base"></a>Az Azure Active Directory alapja
 
-A következő tulajdonságok minden Azure Active Directory rekordnál közösek.
+A következő tulajdonságok az összes Azure Active Directory-rekord közösek.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| RecordType (Rekordtípus)     | AzureActiveDirectory |
 | AzureActiveDirectory_EventType | Az Azure AD-esemény típusa. |
-| ExtendedProperties | Az Azure AD-esemény kiterjesztett tulajdonságai. |
+| Bővített tulajdonságok | Az Azure AD-esemény bővített tulajdonságai. |
 
 
-### <a name="azure-active-directory-account-logon"></a>Azure Active Directory fiók bejelentkezése
+### <a name="azure-active-directory-account-logon"></a>Az Azure Active Directory-fiók bejelentkezése
 
-Ezek a rekordok akkor jönnek létre, amikor egy Active Directory felhasználó megpróbál bejelentkezni.
+Ezek a rekordok akkor jönnek létre, amikor az Active Directory felhasználó megpróbál bejelentkezni.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
-| `Application` | Az alkalmazás, amely elindítja a fiók bejelentkezési eseményét, például: Office 15. |
-| `Client` | A fiók bejelentkezési eseményéhez használt ügyféleszközök, eszköz operációs rendszer és eszköz böngésző adatai. |
-| `LoginStatus` | Ez a tulajdonság a OrgIdLogon. LoginStatus közvetlenül származik. A különböző érdekes bejelentkezési hibák leképezése a riasztási algoritmusokkal végezhető el. |
-| `UserDomain` | A bérlői azonosító információi (TII). | 
+| `Application` | A fiókbejelentkezési eseményt kiváltó alkalmazás, például az Office 15. |
+| `Client` | A fiókbejelentkezési eseményhez használt ügyféleszköz, eszközoperációs rendszer és eszközböngésző részletei. |
+| `LoginStatus` | Ez a tulajdonság közvetlenül az OrgIdLogon.LoginStatus fájlból származik. A különböző érdekes bejelentkezési hibák leképezése algoritmusok riasztásával végezhető el. |
+| `UserDomain` | A bérlői identitásinformáció (TII). | 
 
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Ezek a rekordok akkor jönnek létre, amikor módosítást vagy kiegészítést végeznek Azure Active Directory objektumokhoz.
+Ezek a rekordok akkor jönnek létre, amikor az Azure Active Directory-objektumok módosítása vagy kiegészítése történik.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
-| AADTarget | A felhasználó, aki a műveletet (a művelet tulajdonsága azonosítja) elvégezte. |
-| Színész | Az a felhasználó vagy szolgáltatásnév, amely végrehajtotta a műveletet. |
-| ActorContextId | Annak a szervezetnek a GUID azonosítója, amelyhez a szereplő tartozik. |
-| ActorIpAddress | A szereplő IP-címe IPV4-vagy IPV6-cím formátumban. |
-| InterSystemsId | A GUID-azonosító, amely az Office 365 szolgáltatásban található összetevők közötti műveleteket nyomon követi. |
-| IntraSystemId |   A Azure Active Directory által generált GUID a művelet nyomon követéséhez. |
-| SupportTicketId | Az ügyfél-támogatási jegy azonosítója a művelethez "működés közbeni" helyzetekben. |
-| TargetContextId | Annak a szervezetnek a GUID azonosítója, amelyhez a megcélozott felhasználó tartozik. |
+| RecordType (Rekordtípus)     | AzureActiveDirectory |
+| AADCél | Az a felhasználó, akire a műveletet (az Operation tulajdonság azonosította) végrehajtotta. |
+| Színész | A műveletet végző felhasználó vagy egyszerű szolgáltatás. |
+| ActorContextId (Színészkörnyezetazonosító) | Annak a szervezetnek a GUID azonosítója, amelyhez az aktor tartozik. |
+| ActorIpAddress cím | Az aktor IP-címe IPV4 vagy IPV6 címformátumban. |
+| InterSystemsId | Az Office 365 szolgáltatás összetevőiközötti műveleteket nyomon követő GUID azonosító. |
+| IntraSystemId |   Az Azure Active Directory által a művelet nyomon követéséhez generált GUID. |
+| SupportTicketId azonosító | Az ügyfélszolgálati jegy azonosítója a művelethez a "cselekvés a nevében" helyzetekben. |
+| TargetContextId azonosító | Annak a szervezetnek a GUID azonosítója, amelyhez a megcélzott felhasználó tartozik. |
 
 
 ### <a name="data-center-security"></a>Adatközpont biztonsága
 
-Ezeket a rekordokat az adatközpont biztonsági naplózási adatai alapján hozza létre a rendszer.  
+Ezek a rekordok az adatközpont-biztonsági naplózási adatokból jönnek létre.  
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| EffectiveOrganization | Annak a bérlőnek a neve, amelyhez a Jogosultságszint-emelés vagy a parancsmag irányult. |
-| ElevationApprovedTime | A Jogosultságszint-emelés jóváhagyásának időbélyegzője. |
-| ElevationApprover | A Microsoft Manager neve. |
-| ElevationDuration | Az az időtartam, ameddig a Jogosultságszint-emelés aktív volt. |
-| ElevationRequestId |  A jogosultságszint-emelési kérelem egyedi azonosítója. |
-| ElevationRole | A jogosultságszint-emelést kérő szerepkör. |
-| ElevationTime | A Jogosultságszint-emelés kezdési időpontja. |
-| Start_Time | A parancsmag végrehajtásának kezdési időpontja. |
+| Hatékony szervezet | Annak a bérlőnek a neve, amelyre a magasság/parancsmag irányult. |
+| ElevationApprovedTime | A jogosultságszint-emelés jóváhagyásának időbélyegzője. |
+| ElevationApprover | A Microsoft-kezelő neve. |
+| MagasságIdőtartam | Az az időtartam, amelynél a magasság aktív volt. |
+| Magasságkérése |  A magassági kérelem egyedi azonosítója. |
+| ElevationRole (Magassági szerepkör) | A jogosultságszint-emelés kért szerepkör. |
+| Magassági idő | A magasság kezdési időpontja. |
+| Start_Time | A parancsmag végrehajtásának kezdő időpontja. |
 
 
 ### <a name="exchange-admin"></a>Exchange-rendszergazda
 
-Ezek a rekordok akkor jönnek létre, amikor módosításokat végeznek az Exchange-konfigurációban.
+Ezek a rekordok az Exchange-konfiguráció módosításakor jönnek létre.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
-| RecordType     | ExchangeAdmin |
-| ExternalAccess |  Megadja, hogy a parancsmagot a szervezet egy felhasználója, a Microsoft Datacenter személyzete vagy egy adatközpont-szolgáltatásfiók vagy egy meghatalmazott rendszergazda futtatta-e. A False érték azt jelzi, hogy a parancsmagot a szervezet egy személye futtatta. Az igaz érték azt jelzi, hogy a parancsmagot az adatközpont munkatársai, egy adatközpont-szolgáltatásfiók vagy meghatalmazott rendszergazda futtatták. |
-| ModifiedObjectResolvedName |  Ez a parancsmag által módosított objektum felhasználóbarát neve. Ezt csak akkor naplózza a rendszer, ha a parancsmag módosítja az objektumot. |
-| Cégnév | A bérlő neve. |
-| OriginatingServer | Annak a kiszolgálónak a neve, amelyből a parancsmag végre lett hajtva. |
+| RecordType (Rekordtípus)     | ExchangeAdmin |
+| ExternalAccess |  Itt adható meg, hogy a parancsmackét a szervezet egyik felhasználója, a Microsoft adatközpont munkatársai vagy egy adatközpont-szolgáltatási fiók vagy egy delegált rendszergazda futtatta-e. A Hamis érték azt jelzi, hogy a parancsmatot a szervezet egy tagja futtatta. Az Igaz érték azt jelzi, hogy a parancsmac-ot adatközpont-személyzet, egy adatközpont-szolgáltatásfiók vagy egy delegált rendszergazda futtatta. |
+| ModifiedObjectResolvedName |  Ez annak az objektumnak a felhasználóbarát neve, amelyet a parancsmag módosított. Ez csak akkor kerül naplózásra, ha a parancsmag módosítja az objektumot. |
+| OrganizationName | A bérlő neve. |
+| Származókiszolgáló | Annak a kiszolgálónak a neve, amelyről a parancsmag ot végrehajtották. |
 | Paraméterek | Az Operations tulajdonságban azonosított parancsmaggal használt összes paraméter neve és értéke. |
 
 
-### <a name="exchange-mailbox"></a>Exchange postaláda
+### <a name="exchange-mailbox"></a>Exchange-postaláda
 
-Ezek a rekordok akkor jönnek létre, amikor az Exchange-postaládák módosításai vagy kiegészítései történnek.
-
-| Tulajdonság | Leírás |
-|:--- |:--- |
-| OfficeWorkload | Exchange |
-| RecordType     | ExchangeItem |
-| ClientInfoString | A művelet végrehajtásához használt e-mail-ügyféllel kapcsolatos információk, például a böngésző verziószáma, az Outlook verziója és a mobileszköz-információ. |
-| Client_IPAddress | Annak az eszköznek az IP-címe, amelyet a művelet naplózásakor használt. Az IP-cím IPv4-vagy IPv6-cím formátumban jelenik meg. |
-| ClientMachineName | Az Outlook-ügyfelet futtató számítógépnév. |
-| ClientProcessName | A postaláda elérésére használt e-mail ügyfélprogram. |
-| ClientVersion | Az e-mail ügyfélprogram verziója. |
-| InternalLogonType | Belső használatra fenntartva. |
-| Logon_Type | Megadja a postaládához hozzáférő felhasználó típusát, és végrehajtotta a naplózott műveletet. |
-| LogonUserDisplayName |    A műveletet végrehajtó felhasználó felhasználóbarát neve. |
-| LogonUserSid | A műveletet végrehajtó felhasználó biztonsági azonosítója. |
-| MailboxGuid | Az elérni kívánt postaláda Exchange GUID azonosítója. |
-| MailboxOwnerMasterAccountSid | A postaláda-tulajdonos fiókjának fő fiókja SID. |
-| MailboxOwnerSid | A postaláda tulajdonosának biztonsági azonosítója. |
-| MailboxOwnerUPN | Az elérni kívánt postaládát birtokló személy e-mail-címe. |
-
-
-### <a name="exchange-mailbox-audit"></a>Exchange-postaláda naplózása
-
-Ezek a rekordok a postaláda-naplózási bejegyzések létrehozásakor jönnek létre.
+Ezek a rekordok akkor jönnek létre, amikor az Exchange-postaládákban módosításokat vagy kiegészítéseket hajtvégre.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
-| RecordType     | ExchangeItem |
-| Elem | Azt az elemeket jelöli, amelyen a műveletet elvégezték | 
-| SendAsUserMailboxGuid | Azon postaláda Exchange GUID azonosítója, amelyet a rendszer az e-mailek küldésére használt. |
-| SendAsUserSmtp | A megszemélyesíteni kívánt felhasználó SMTP-címe. |
-| SendonBehalfOfUserMailboxGuid | Azon postaláda Exchange GUID azonosítója, amelyet a rendszer a levél nevében küldött e-mailek küldéséhez. |
-| SendOnBehalfOfUserSmtp | Annak a felhasználónak az SMTP-címe, akinek az e-mail-címét elküldi. |
+| RecordType (Rekordtípus)     | ExchangeItem elem |
+| ClientInfoString | Információ a művelet végrehajtásához használt levelezőprogramról, például a böngésző verziójáról, az Outlook verziójáról és a mobileszköz-adatokról. |
+| Client_IPAddress | Annak az eszköznek az IP-címe, amelyet a művelet naplózásakor használtak. Az IP-cím IPv4 vagy IPv6 formátumban jelenik meg. |
+| ClientMachineName | Az Outlook-ügyfelet tartalmazó számítógépnév. |
+| ClientProcessName | A postaláda eléréséhez használt levelezőprogram. |
+| Ügyfélverzió | Az e-mail ügyfél verziója . |
+| InternalLogonType típus | Belső használatra fenntartva. |
+| Logon_Type | Azt jelzi, hogy ki kit feknek hozzá a postaládához, és milyen típusú a naplózott művelet. |
+| LogonUserDisplayName |    A műveletet végző felhasználó felhasználóbarát neve. |
+| LogonUserSid | A műveletet végző felhasználó biztonsági azonosítója. |
+| MailboxGuid (Postaláda guid) | Az elérni kívánt postaláda Exchange GUID azonosítója. |
+| MailboxOwnerMasterAccountSid | A postaláda-tulajdonosi fiók fő fiókjának biztonsági azonosítója. |
+| PostaládaTulajdonosSid | A postaláda-tulajdonos biztonsági azonosítója. |
+| Postaláda-tulajdonos | Az elért postaládát birtokló személy e-mail címe. |
 
 
-### <a name="exchange-mailbox-audit-group"></a>Exchange postaláda-naplózási csoport
+### <a name="exchange-mailbox-audit"></a>Exchange-postaláda-naplózás
 
-Ezek a rekordok akkor jönnek létre, amikor változtatásokat vagy kiegészítéseket végeznek az Exchange-csoportokban.
+Ezek a rekordok a postaláda-naplózási bejegyzés létrehozásakor jönnek létre.
+
+| Tulajdonság | Leírás |
+|:--- |:--- |
+| OfficeWorkload | Exchange |
+| RecordType (Rekordtípus)     | ExchangeItem elem |
+| Elem | Azt az elemet jelöli, amelyen a műveletet végrehajtották. | 
+| SendAsUserMailboxGuid | Az e-mailek küldéséhez hozzáfért postaláda Exchange GUID azonosítója. |
+| SendAsUserSmtp | A megszemélyesített felhasználó SMTP-címe. |
+| SendonBehalfOfUserMailboxGuid | Annak a postaláda-guid-nak az Exchange GUID azonosítója, amelyhez a nevében e-mailt küldhetett. |
+| SendOnBehalfOfUserSmtp | Annak a felhasználónak az SMTP-címe, akinek nevében az e-mailt küldik. |
+
+
+### <a name="exchange-mailbox-audit-group"></a>Exchange-postaláda-naplózási csoport
+
+Ezek a rekordok akkor jönnek létre, amikor az Exchange-csoportokban módosításokat vagy kiegészítéseket hajtvégre.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
-| AffectedItems | Információk a csoport egyes elemeiről. |
-| CrossMailboxOperations | Azt jelzi, hogy a művelet több postaládát is érintett-e. |
-| DestMailboxId | Csak akkor állítható be, ha a CrossMailboxOperations paraméter értéke TRUE (igaz). Megadja a cél postaláda GUID azonosítóját. |
-| DestMailboxOwnerMasterAccountSid | Csak akkor állítható be, ha a CrossMailboxOperations paraméter értéke TRUE (igaz). Meghatározza a postaláda tulajdonosának fő fiókjának SID-azonosítóját. |
-| DestMailboxOwnerSid | Csak akkor állítható be, ha a CrossMailboxOperations paraméter értéke TRUE (igaz). Megadja a cél postaláda SID-azonosítóját. |
-| DestMailboxOwnerUPN | Csak akkor állítható be, ha a CrossMailboxOperations paraméter értéke TRUE (igaz). Megadja a cél postaláda tulajdonosának egyszerű felhasználónevét. |
-| DestFolder | A célmappa olyan műveletek esetén, mint például az áthelyezés. |
-| Mappa | Az a mappa, ahol az elemek csoportja található. |
-| Mappák |     A műveletben érintett forrás mappákkal kapcsolatos információk; például ha a mappák elem ki van választva, majd törölve lett. |
+| Érintett elemek | Információ a csoport egyes cikkeiről. |
+| CrossMailboxOperations (KeresztpostaI Műveletek) | Azt jelzi, hogy a művelet egynél több postaládát érintett-e. |
+| DestMailboxId azonosító | Csak akkor állítsa be, ha a CrossMailboxOperations paraméter Igaz. Megadja a célpostaláda GUID azonosítóját. |
+| DestMailboxOwnerMasterAccountSid | Csak akkor állítsa be, ha a CrossMailboxOperations paraméter Igaz. Megadja a célpostafiók tulajdonosának főfiók-biztonsági azonosítójának sid-jét. |
+| DestMailboxOwnerSid | Csak akkor állítsa be, ha a CrossMailboxOperations paraméter Igaz. A célpostafiók biztonsági azonosítóját adja meg. |
+| DestMailboxOwnerUPN | Csak akkor állítsa be, ha a CrossMailboxOperations paraméter Igaz. Megadja a célpostaláda tulajdonosának upn-ját. |
+| DestFolder mappa | A célmappa az olyan műveletekhez, mint az Áthelyezés. |
+| Mappa | Az a mappa, ahol egy elemcsoport található. |
+| Mappák |     Információ a műveletben részt vevő forrásmappákról; például ha a mappák ki vannak jelölve, majd törlődnek. |
 
 
-### <a name="sharepoint-base"></a>SharePoint-alap
+### <a name="sharepoint-base"></a>SharePoint Alap
 
-Ezek a tulajdonságok az összes SharePoint-rekord esetében azonosak.
+Ezek a tulajdonságok minden SharePoint-rekordban közösek.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
-| EventSource | Azt azonosítja, hogy egy esemény történt a SharePointban. A lehetséges értékek a következők: SharePoint vagy ObjectModel. |
-| ItemType | Az elért vagy módosított objektum típusa. Az objektumok típusairól a ItemType táblázatban talál további információt. |
-| MachineDomainInfo | Az eszköz-szinkronizálási műveletekkel kapcsolatos információk. Ezek az adatok csak akkor jelennek meg, ha szerepelnek a kérelemben. |
-| MachineId |   Az eszköz-szinkronizálási műveletekkel kapcsolatos információk. Ezek az adatok csak akkor jelennek meg, ha szerepelnek a kérelemben. |
+| EventSource (Eseményforrás) | Azt határozza meg, hogy történt-e esemény a SharePointban. A lehetséges értékek a SharePoint vagy az ObjectModel. |
+| ItemType | Az elért vagy módosított objektum típusa. Az objektumtípusokról az ItemType táblában talál részleteket. |
+| MachineDomainInfo | Információ az eszközszinkronizálási műveletekről. Ez eket az adatokat csak akkor jelenti a program, ha az szerepel a kérésben. |
+| MachineId |   Információ az eszközszinkronizálási műveletekről. Ez eket az adatokat csak akkor jelenti a program, ha az szerepel a kérésben. |
 | Site_ | Annak a helynek a GUID azonosítója, ahol a felhasználó által elért fájl vagy mappa található. |
-| Source_Name | Az a entitás, amely kiváltotta a naplózott műveletet. A lehetséges értékek a következők: SharePoint vagy ObjectModel. |
-| UserAgent | A felhasználó ügyfelének vagy böngészőjének adatai. Ezt az információt az ügyfél vagy a böngésző biztosít. |
+| Source_Name | A naplózott műveletet aktiváló entitás. A lehetséges értékek a SharePoint vagy az ObjectModel. |
+| Useragent | Információ a felhasználó ügyfél- vagy böngészőjéről. Ezt az információt az ügyfél vagy a böngésző biztosítja. |
 
 
 ### <a name="sharepoint-schema"></a>SharePoint-séma
 
-Ezek a rekordok akkor jönnek létre, amikor konfigurációs módosításokat végeznek a SharePointban.
+Ezek a rekordok akkor jönnek létre, amikor a SharePoint konfigurációs módosításatörténik.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
-| CustomEvent | Nem kötelező karakterlánc az egyéni eseményekhez. |
-| Event_Data |  Nem kötelező adattartalom az egyéni eseményekhez. |
-| ModifiedProperties | A tulajdonságot a felügyeleti események tartalmazzák, például a felhasználók hozzáadása egy helyhez vagy egy webhelycsoport-felügyeleti csoport tagjaként. A tulajdonság tartalmazza a módosított tulajdonság nevét (például a hely felügyeleti csoportját), a módosított tulajdonság új értékét (például a hely rendszergazdájaként hozzáadott felhasználót) és a módosított objektum előző értékét. |
+| Egyéni esemény | Választható karakterlánc egyéni eseményekhez. |
+| Event_Data |  Választható hasznos adat egyéni eseményekhez. |
+| Módosítotttulajdonságok | A tulajdonság rendszergazdai eseményekhez, például egy felhasználó hozzáadása webhely vagy webhelycsoport felügyeleti csoportjának tagjaként. A tulajdonság tartalmazza a módosított tulajdonság nevét (például a Webhely gazdák csoportját), a módosított tulajdonság új értékét (például a webhely adminisztrátoraként hozzáadott felhasználót) és a módosított objektum korábbi értékét. |
 
 
-### <a name="sharepoint-file-operations"></a>SharePoint-fájl műveletei
+### <a name="sharepoint-file-operations"></a>SharePoint-fájlműveletek
 
-Ezek a rekordok a SharePoint-fájl műveleteire adott válaszként jönnek létre.
+Ezek a rekordok a SharePoint fájlműveleteire válaszul jönnek létre.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
-| DestinationFileExtension | A másolt vagy áthelyezett fájl kiterjesztése. Ez a tulajdonság csak a FileCopied és a FileMoved eseményekhez jelenik meg. |
-| DestinationFileName | A másolt vagy áthelyezett fájl neve. Ez a tulajdonság csak a FileCopied és a FileMoved eseményekhez jelenik meg. |
-| DestinationRelativeUrl | Annak a célmappanek az URL-címe, ahová a fájl másolása vagy áthelyezése történik. A SiteURL, a DestinationRelativeURL és a DestinationFileName paraméterek értékeinek kombinációja megegyezik a ObjectID tulajdonság értékével, amely a másolt fájl teljes elérési útja. Ez a tulajdonság csak a FileCopied és a FileMoved eseményekhez jelenik meg. |
-| SharingType | A felhasználóhoz hozzárendelt megosztási engedélyek típusa, amelyekkel az erőforrás meg lett osztva. Ezt a felhasználót a UserSharedWith paraméter azonosítja. |
-| Site_Url | Annak a helynek az URL-címe, ahol a felhasználó által elért fájl vagy mappa található. |
-| SourceFileExtension | A felhasználó által elért fájl kiterjesztése. Ez a tulajdonság üres, ha az elérni kívánt objektum egy mappa. |
-| SourceFileName |  A felhasználó által elért fájl vagy mappa neve. |
-| SourceRelativeUrl | A felhasználó által elért fájlt tartalmazó mappa URL-címe. A SiteURL, a SourceRelativeURL és a SourceFileName paraméterek értékeinek kombinációja megegyezik a ObjectID tulajdonság értékével, amely a felhasználó által elért fájl teljes elérési útja. |
-| UserSharedWith |  Az a felhasználó, aki az erőforrást megosztotta. |
+| DestinationFileExtension | A másolt vagy áthelyezett fájl kiterjesztése. Ez a tulajdonság csak A FileCopied és FileMoved események esetén jelenik meg. |
+| Célfájlneve | A másolt vagy áthelyezett fájl neve. Ez a tulajdonság csak A FileCopied és FileMoved események esetén jelenik meg. |
+| DestinationRelativeUrl | Annak a célmappának az URL-címe, ahová a fájlt másolják vagy áthelyezik. A SiteURL, a DestinationRelativeURL és a DestinationFileName paraméterek értékeinek kombinációja megegyezik az ObjectID tulajdonság értékével, amely a másolt fájl teljes elérési útja. Ez a tulajdonság csak A FileCopied és FileMoved események esetén jelenik meg. |
+| Megosztástípusa | Az erőforrást megosztó felhasználóhoz rendelt megosztási engedélyek típusa. Ezt a felhasználót a UserSharedWith paraméter azonosítja. |
+| Site_Url | Annak a webhelynek az URL-címe, ahol a felhasználó által elért fájl vagy mappa található. |
+| SourceFileExtension | A fájl kiterjesztése a fájl, amely a felhasználó által elért. Ez a tulajdonság üres, ha az elért objektum egy mappa. |
+| Forrásfájlneve |  A felhasználó által elért fájl vagy mappa neve. |
+| SourceRelativeUrl | Annak a mappának az URL-címe, amely a felhasználó által elért fájlt tartalmazza. A SiteURL, SourceRelativeURL és SourceFileName paraméterek értékeinek kombinációja megegyezik az ObjectID tulajdonság értékével, amely a felhasználó által elért fájl teljes elérési útja. |
+| UserSharedWith |  Az a felhasználó, akivel egy erőforrást megosztottak. |
 
 
 
 
-## <a name="sample-log-queries"></a>Példák a naplók lekérdezésére
+## <a name="sample-log-queries"></a>Mintanapló-lekérdezések
 
-A következő táblázat példákat tartalmaz a megoldás által gyűjtött frissítési rekordok lekérdezésére.
+Az alábbi táblázat mintanapló-lekérdezéseket tartalmaz a megoldás által gyűjtött frissítési rekordokhoz.
 
 | Lekérdezés | Leírás |
 | --- | --- |
-|Az Office 365-előfizetés összes műveletének száma |OfficeActivity &#124; összesített száma () művelet szerint |
-|SharePoint-webhelyek használata|OfficeActivity &#124; , ahol a OfficeWorkload = ~ " &#124; SharePoint" összesítő darabszám () SiteUrl szerint \| rendezése az ASC szám szerint|
-|Fájl-hozzáférési műveletek felhasználói típus szerint | OfficeActivity &#124; összesített száma () UserType szerint |
-|Külső műveletek figyelése az Exchange-ben|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|
+|Az Office 365-előfizetés összes műveletének megszámlálása |OfficeAktivitás &#124; a count() összegzése művelet szerint |
+|SharePoint-webhelyek használata|OfficeActivity &#124; ahol az OfficeWorkload =~ "sharepoint" &#124; \| összegezi a count() -t SiteUrl szerint, asc gróf szerint rendezve|
+|Fájlelérési műveletek felhasználótípus szerint | OfficeAktivitás &#124; összegezi a count() programot a UserType szerint |
+|Külső műveletek figyelése az Exchange-en|OfficeActivity &#124; ahol OfficeWorkload =~ "exchange" és ExternalAccess == igaz|
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A részletes frissítési információk megtekintéséhez használja [a Azure monitor a naplózási lekérdezéseket](../log-query/log-query-overview.md) .
-* [Saját irányítópultok létrehozásával](../learn/tutorial-logs-dashboards.md) megjelenítheti kedvenc Office 365 keresési lekérdezéseit.
-* [Riasztásokat hozhat létre](../platform/alerts-overview.md) , amelyekkel proaktívan értesítheti a fontos Office 365-tevékenységeket.  
+* Az [Azure Monitor naplólekérdezései](../log-query/log-query-overview.md) segítségével részletes frissítési adatokat tekinthet meg.
+* [Saját irányítópultokat hozhat létre](../learn/tutorial-logs-dashboards.md) kedvenc Office 365-keresési lekérdezéseinek megjelenítéséhez.
+* Riasztások létrehozása, hogy proaktív módon [értesülhes](../platform/alerts-overview.md) az Office 365 fontos tevékenységeiről.  

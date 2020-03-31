@@ -9,21 +9,21 @@ ms.date: 05/28/2019
 ms.author: lahugh
 ms.custom: include file
 ms.openlocfilehash: 22bfc3c86605f4c2eed4c022919b3643f394ea95
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67080904"
 ---
-| **Erőforrás** | **Alapértelmezett korlát** | **Felső korlát** |
+| **Erőforrás** | **Alapértelmezett korlát** | **Maximális határérték** |
 | --- | --- | --- |
-| Azure Batch fiók/régió/előfizetés | 1-3 |50 |
-| Dedikált magok száma batch-fiókkal | 90-900 | Forduljon a támogatási szolgálathoz. |
-| Alacsony prioritású magok száma batch-fiókban | 10-100 | Forduljon a támogatási szolgálathoz. |
-| **[Aktív](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate)** feladatok és feladatok ütemezett száma batch-fiókban (a**befejezett** feladatok nem rendelkeznek korláttal) | 100-300 | 1 000<sup>1</sup> |
-| Készletek Batch-fiókonként | 20-100 | 500<sup>1</sup> |
+| Azure Batch-fiókok régiónként és előfizetésenként | 1-3 |50 |
+| Dedikált magok Batch-fiókonként | 90-900 | Kapcsolatfelvétel a támogatási szolgáltatással |
+| Alacsony prioritású magok kötegelt fiókonként | 10-100 | Kapcsolatfelvétel a támogatási szolgáltatással |
+| **[Aktív](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate)** feladatok és feladatütemezések kötegelt fiókonként **(a befejezett** feladatoknak nincs korlátozva) | 100-300 | 1000<sup>1</sup> |
+| Készletek száma Batch-fiókonként | 20-100 | 500<sup>1</sup> |
 
 > [!NOTE]
-> Az alapértelmezett korlátok a Batch-fiók létrehozásához használt előfizetés típusától függően változnak. A kimutatott magok kvótái a Batch szolgáltatás üzemmódjában található batch-fiókokra vonatkoznak. [Megtekintheti a Batch-fiókban lévő kvótákat](../articles/batch/batch-quota-limit.md#view-batch-quotas).
+> Az alapértelmezett korlátok a Batch-fiók létrehozásához használt előfizetés típusától függően változnak. A megjelenített magok a Batch-fiókok batch szolgáltatás módban. [Tekintse meg a kvótákat a Batch-fiókban.](../articles/batch/batch-quota-limit.md#view-batch-quotas)
 
-<sup>1</sup> A korlátot meghaladó növekedés igényléséhez forduljon az Azure ügyfélszolgálatához.
+<sup>1 1</sup> Ha ennél a korláton túl szeretne növekedést kérni, forduljon az Azure-támogatáshoz.

@@ -1,44 +1,44 @@
 ---
-title: Titkosítás az ügyfelek által felügyelt kulcsokkal
-description: Ismerje meg az Azure Container Registry titkosítását, valamint azt, hogyan titkosíthatja a beállításjegyzéket a Azure Key Vaultban tárolt ügyfél által felügyelt kulccsal.
+title: Inaktív titkosítás az ügyfél által felügyelt kulcsokkal
+description: Ismerje meg az Azure-tároló beállításjegyzékének titkosítását, és a rendszerleíró adatbázis titkosítását az Azure Key Vaultban tárolt ügyfél által felügyelt kulccsal
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: 7bfc4e9a73280ab330efbeeba51a5dcb0a80da10
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: fe0736f83db2ba5b872d50bcf1262ca423de9f09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79365341"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498945"
 ---
-# <a name="encryption-using-customer-managed-keys"></a>Titkosítás az ügyfél által felügyelt kulcsokkal
+# <a name="encryption-using-customer-managed-keys"></a>Titkosítás ügyfél által kezelt kulcsok használatával
 
-Ha lemezképeket és egyéb összetevőket tárol egy Azure Container registryben, az Azure automatikusan titkosítja a beállításjegyzék tartalmát a [szolgáltatás által felügyelt kulcsokkal](../security/fundamentals/encryption-atrest.md#data-encryption-models). Egy további titkosítási réteggel kiegészítheti az alapértelmezett titkosítást a Azure Key Vault-ben létrehozott és kezelt kulcs használatával. Ez a cikk végigvezeti az Azure CLI és a Azure Portal használatának lépésein.
+Ha lemezképeket és egyéb összetevőket tárol egy [Azure-tároló](../security/fundamentals/encryption-atrest.md#data-encryption-models)beállításjegyzékében, az Azure szolgáltatás által felügyelt kulcsokkal automatikusan titkosítja a beállításjegyzék tartalmát. Az alapértelmezett titkosítást kiegészítheti egy további titkosítási réteggel az Azure Key Vaultban létrehozott és felügyelt kulcs használatával. Ez a cikk bemutatja az Azure CLI és az Azure Portal lépéseit.
 
-Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítást a [Azure Key Vault](../key-vault/key-vault-overview.md)integrációja támogatja. Létrehozhatja saját titkosítási kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-jait a titkosítási kulcsok létrehozásához. A Azure Key Vault használatával is naplózhatja a kulcshasználat.
+Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítást az [Azure Key Vaultszolgáltatással](../key-vault/key-vault-overview.md)való integráció támogatja. Létrehozhat saját titkosítási kulcsokat, és tárolhatja őket egy key vaultban, vagy használhatja az Azure Key Vault API-kat titkosítási kulcsok létrehozásához. Az Azure Key Vault segítségével is naplózhatja a kulcshasználatot.
 
-Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry SKU](container-registry-skus.md)-i.
+Ez a funkció a **prémium szintű** tároló beállításjegyzék-szolgáltatásszintjén érhető el. A beállításjegyzék-szolgáltatási szintekről és -korlátozásokról az [Azure Container Registry ska](container-registry-skus.md)című témakörben talál további információt.
 
 > [!IMPORTANT]
 > Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások](#preview-limitations) érvényesek. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 >
    
-## <a name="preview-limitations"></a>Előzetes verzió korlátozásai 
+## <a name="preview-limitations"></a>Előnézeti korlátozások 
 
-* Jelenleg csak a beállításjegyzék létrehozásakor engedélyezheti ezt a funkciót.
-* Az ügyfél által felügyelt kulcs beállításjegyzékbe való engedélyezése után nem lehet letiltani.
-* A [tartalom megbízhatósága](container-registry-content-trust.md) jelenleg nem támogatott az ügyfél által felügyelt kulccsal titkosított beállításjegyzékben.
-* Az ügyfél által felügyelt kulccsal titkosított beállításjegyzékben az [ACR-feladatokhoz](container-registry-tasks-overview.md) tartozó naplókat jelenleg csak 24 óráig őrzi meg a rendszer. Ha hosszabb ideig kell megőriznie a naplókat, tekintse meg a [feladat-futtatási naplók exportálásával és tárolásával](container-registry-tasks-logs.md#alternative-log-storage)kapcsolatos útmutatót.
+* Ezt a szolgáltatást jelenleg csak beállításjegyzék létrehozásakor engedélyezheti.
+* Miután engedélyezte az ügyfél által felügyelt kulcsot a beállításjegyzékben, nem tilthatja le.
+* [A tartalommegbízhatóság](container-registry-content-trust.md) jelenleg nem támogatott az ügyfél által felügyelt kulccsal titkosított beállításjegyzékben.
+* Az ügyfél által felügyelt kulccsal titkosított beállításjegyzékben az [ACR-feladatok](container-registry-tasks-overview.md) futtatási naplói jelenleg csak 24 órán keresztül maradnak meg. Ha hosszabb ideig kell megőriznie a naplókat, olvassa el a [feladatfuttatási naplók exportálására és tárolására vonatkozó útmutatást.](container-registry-tasks-logs.md#alternative-log-storage)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben szereplő Azure CLI-lépések használatához az Azure CLI-es vagy újabb verziójára lesz szüksége. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Az Azure CLI ebben a cikkben leírt lépések használatához az Azure CLI 2.2.0-s vagy újabb verziójára van szükség. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-## <a name="enable-customer-managed-key---cli"></a>Ügyfél által felügyelt kulcs engedélyezése – parancssori felület
+## <a name="enable-customer-managed-key---cli"></a>Ügyfél által kezelt kulcs engedélyezése - CLI
 
 ### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Szükség esetén futtassa az az [Group Create][az-group-create] parancsot egy erőforráscsoport létrehozásához a kulcstartó, a tároló-beállításjegyzék és az egyéb szükséges erőforrások létrehozásához.
+Ha szükséges, futtassa az [az csoport létrehozása][az-group-create] parancsot a key vault, a tároló beállításjegyzékés más szükséges erőforrások létrehozásához szükséges erőforráscsoport létrehozásához.
 
 ```azurecli
 az group create --name <resource-group-name> --location <location>
@@ -46,7 +46,7 @@ az group create --name <resource-group-name> --location <location>
 
 ### <a name="create-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása
 
-Hozzon létre egy felhasználó által hozzárendelt [felügyelt identitást az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md) az az [Identity Create][az-identity-create] paranccsal. Ezt az identitást a beállításjegyzék fogja használni a Key Vault szolgáltatás eléréséhez.
+Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást az [Azure-erőforrások hoz](../active-directory/managed-identities-azure-resources/overview.md) létre az az identitás [létrehozása][az-identity-create] paranccsal. Ezt az identitást a beállításjegyzék fogja használni a Key Vault szolgáltatás eléréséhez.
 
 ```azurecli
 az identity create \
@@ -54,7 +54,7 @@ az identity create \
   --name <managed-identity-name> 
 ```
 
-A parancs kimenetében jegyezze fel a következő értékeket: `id` és `principalId`. Ezekre az értékekre szüksége lesz a beállításjegyzék hozzáférésének a Key vaulthoz való konfigurálásának későbbi lépéseiben.
+A parancs kimenetében vegye figyelembe a `id` `principalId`következő értékeket: és . Ezekre az értékekre későbbi lépésekben szükség van a rendszerleíró adatbázis hozzáférésének konfigurálásához a key vaulthoz.
 
 ```JSON
 {
@@ -71,7 +71,7 @@ A parancs kimenetében jegyezze fel a következő értékeket: `id` és `princip
 }
 ```
 
-A kényelem érdekében tárolja ezeket az értékeket környezeti változókban:
+A kényelem érdekében ezeket az értékeket környezeti változókban tárolja:
 
 ```azurecli
 identityID=$(az identity show --resource-group <resource-group-name> --name <managed-identity-name> --query 'id' --output tsv)
@@ -81,9 +81,9 @@ identityPrincipalID=$(az identity show --resource-group <resource-group-name> --
 
 ### <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
-Hozzon létre egy Key vaultot az az Key Vault [létrehozásával][az-keyvault-create] , amely az ügyfél által felügyelt kulcsot tárolja a beállításjegyzék titkosításához. 
+Hozzon létre egy key vault [létrehozása][az-keyvault-create] az ügyfél által felügyelt kulcs tárolására beállításjegyzék-titkosítást. 
 
-Ha meg szeretné akadályozni, hogy a véletlen kulcs vagy a kulcstartó törlése okozza az adatvesztést, akkor a következő beállításokat kell engedélyeznie: **Soft delete** and **Purge Protection**. Az alábbi példa paramétereket tartalmaz a következő beállításokhoz: 
+A véletlen kulcs- vagy kulcstároló-törlések által okozott adatvesztés elkerülése érdekében a következő beállításokat kell engedélyeznie: **Ideiglenes törlés** és **Törlés védelem**. A következő példa a következő beállítások paramétereit tartalmazza: 
 
 ```azurecli
 az keyvault create --name <key-vault-name> \
@@ -92,9 +92,9 @@ az keyvault create --name <key-vault-name> \
   --enable-purge-protection
 ```
 
-### <a name="add-key-vault-access-policy"></a>Key Vault hozzáférési szabályzat hozzáadása
+### <a name="add-key-vault-access-policy"></a>Kulcstartó hozzáférési házirendjének hozzáadása
 
-Konfiguráljon egy házirendet a Key vaulthoz, hogy az identitás hozzáférhessen. A következő az a kulcstartó [set-Policy][az-keyvault-set-policy] paranccsal megadhatja a korábban létrehozott felügyelt identitás elsődleges azonosítóját, amelyet előzőleg egy környezeti változóban tároltak. Adja meg a **Get**, a **UnwrapKey**és a **wrapKey**kulcs engedélyeit.  
+Konfigurálja a key vault házirendjét, hogy az identitás hozzáférhessen. A következő [az keyvault set-policy][az-keyvault-set-policy] parancs, adja át a felügyelt identitás, amely létrehozott, korábban tárolt egy környezeti változó. Kulcsengedélyek **beírásának**, **kicsomagolásikulcsésának**és **burkolókulcsának**beállítása.  
 
 ```azurecli
 az keyvault set-policy \
@@ -104,9 +104,9 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey 
 ```
 
-### <a name="create-key-and-get-key-id"></a>Kulcs létrehozása és a kulcs AZONOSÍTÓjának beolvasása
+### <a name="create-key-and-get-key-id"></a>Kulcs létrehozása és kulcsazonosító beírása
 
-Futtassa az az kulcstartó [kulcs létrehozása][az-keyvault-key-create] parancsot a Key vaultban lévő kulcs létrehozásához.
+Futtassa az [az keyvault key create][az-keyvault-key-create] parancsot egy kulcs létrehozásához a key vaultban.
 
 ```azurecli
 az keyvault key create \
@@ -114,7 +114,7 @@ az keyvault key create \
   --vault-name <key-vault-name>
 ```
 
-A parancs kimenetében jegyezze fel a kulcs AZONOSÍTÓját, `kid`. Ezt az azonosítót a következő lépésben kell használni:
+A parancs kimenetében vegye figyelembe a kulcs `kid`azonosítóját, . Ezt az azonosítót a következő lépésben használhatja:
 
 ```JSON
 [...]
@@ -137,15 +137,15 @@ A parancs kimenetében jegyezze fel a kulcs AZONOSÍTÓját, `kid`. Ezt az azono
     "kty": "RSA",
 [...]
 ```
-A kényelem érdekében tárolja ezt az értéket egy környezeti változóban:
+A kényelem érdekében ezt az értéket egy környezeti változóban tárolja:
 
 ```azurecli
 keyID=$(az keyvault key show --name <keyname> --vault-name <key-vault-name> --query 'key.kid' --output tsv)
 ```
 
-### <a name="create-a-registry-with-customer-managed-key"></a>Beállításjegyzék létrehozása az ügyfél által felügyelt kulccsal
+### <a name="create-a-registry-with-customer-managed-key"></a>Rendszerleíró adatbázis létrehozása ügyfél által kezelt kulccsal
 
-Futtassa az az [ACR Create][az-acr-create] parancsot egy beállításjegyzék létrehozásához és az ügyfél által felügyelt kulcs engedélyezéséhez. Adja át a felügyelt identitás résztvevő-AZONOSÍTÓját és a korábban a környezeti változókban tárolt kulcs AZONOSÍTÓját:
+Futtassa az [az acr create][az-acr-create] parancsot egy rendszerleíró adatbázis létrehozásához és az ügyfél által felügyelt kulcs engedélyezéséhez. Adja át a felügyelt identitás egyszerű azonosítóját és a korábban környezeti változókban tárolt kulcsazonosítót:
 
 ```azurecli
 az acr create \
@@ -158,70 +158,70 @@ az acr create \
 
 ### <a name="show-encryption-status"></a>Titkosítási állapot megjelenítése
 
-Annak megjelenítéséhez, hogy engedélyezve van-e az ügyfél által felügyelt kulccsal rendelkező beállításjegyzék-titkosítás, futtassa az az [ACR encryption show][az-acr-encryption-show] parancsot:
+Ha meg szeretné jelenik, hogy engedélyezve van-e a rendszerleíró adatbázis titkosítása az ügyfél által kezelt kulccsal, futtassa az [az acr encryption show][az-acr-encryption-show] parancsot:
 
 ```azurecli
 az acr encryption show --name <registry-name> 
 ```
 
-## <a name="enable-customer-managed-key---portal"></a>Ügyfél által felügyelt kulcs engedélyezése – portál
+## <a name="enable-customer-managed-key---portal"></a>Ügyfél által felügyelt kulcs engedélyezése - portál
 
 ### <a name="create-a-managed-identity"></a>Felügyelt identitás létrehozása
 
-Hozzon létre egy felhasználó által hozzárendelt [felügyelt identitást az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md) a Azure Portal. A lépéseket a [felhasználó által hozzárendelt identitás létrehozása](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)című témakörben tekintheti meg.
+Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást az [Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md) az Azure Portalon. Lépések: [Felhasználó által hozzárendelt identitás létrehozása.](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)
 
-Jegyezze fel a felügyelt identitás **erőforrásának nevét** . Ezt a nevet a későbbi lépésekben kell megadnia.
+Vegye figyelembe a felügyelt identitás **erőforrásnevét.** Erre a névre későbbi lépésekben van szükség.
 
-![Felhasználó által hozzárendelt felügyelt identitás létrehozása a Azure Portalban](./media/container-registry-customer-managed-keys/create-managed-identity.png)
+![Felhasználó által hozzárendelt felügyelt identitás létrehozása az Azure Portalon](./media/container-registry-customer-managed-keys/create-managed-identity.png)
 
 ### <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
-A kulcstartó létrehozásának lépéseiért lásd [: gyors üzembe helyezés és a Azure Key Vault titkos kód beolvasása a Azure Portal használatával](../key-vault/quick-create-portal.md).
+A kulcstartó létrehozásának lépéseiért olvassa el [a Rövid útmutató: Titkos kulcs beállítása és beolvasása az Azure Key Vaultból az Azure Portalon keresztül című témakört.](../key-vault/quick-create-portal.md)
 
-Amikor az ügyfél által felügyelt kulcshoz kulcstartót hoz létre, az **alapvető** beállítások lapon engedélyeznie kell a következő védelmi beállításokat: **Soft delete** és **Purge Protection**. Ezek a beállítások segítenek megakadályozni az adatvesztést a véletlen kulcs vagy a kulcstartó törlése miatt.
+Amikor egy ügyfél által felügyelt kulcshoz hoz létre kulcstartót, az Alapok lapon a következő védelmi beállításokat kell **engedélyeznie:** **Ideiglenes törlés** és **Védelem kiürítése**. Ezek a beállítások segítenek megakadályozni a véletlen kulcs- vagy kulcstartó-törlések által okozott adatvesztést.
 
-![Key Vault létrehozása a Azure Portalban](./media/container-registry-customer-managed-keys/create-key-vault.png)
+![Kulcstartó létrehozása az Azure Portalon](./media/container-registry-customer-managed-keys/create-key-vault.png)
 
-### <a name="add-key-vault-access-policy"></a>Key Vault hozzáférési szabályzat hozzáadása
+### <a name="add-key-vault-access-policy"></a>Kulcstartó hozzáférési házirendjének hozzáadása
 
-Konfiguráljon egy házirendet a Key vaulthoz, hogy az identitás hozzáférhessen.
+Konfigurálja a key vault házirendjét, hogy az identitás hozzáférhessen.
 
-1. Navigáljon a kulcstartóhoz.
-1. Válassza a **beállítások** > **hozzáférési szabályzatok > + hozzáférési házirend hozzáadása**lehetőséget.
-1. Válassza a **kulcs engedélyei**lehetőséget, majd a **beolvasás**, a **kicsomagolás** **és a**kicsomagolási kulcs elemet.
-1. Válassza a **rendszerbiztonsági tag** kiválasztása lehetőséget, és válassza ki a felhasználó által hozzárendelt felügyelt identitás erőforrásának nevét.  
-1. Válassza a **Hozzáadás**, majd a **Mentés**lehetőséget.
+1. Nyissa meg a kulcstartót.
+1. Válassza a **Beállítások** > **hozzáférési házirendek > +Hozzáférési házirend hozzáadása lehetőséget.**
+1. Válassza a **Kulcsengedélyek**lehetőséget, majd a **Get**, **A Kulcs kicsomagolása**és **a Körbefolyatási kulcs lehetőséget.**
+1. Válassza **az Egyszerű kiválasztása lehetőséget,** és válassza ki a felhasználó által hozzárendelt felügyelt identitás erőforrásnevét.  
+1. Válassza **a Hozzáadás**lehetőséget, majd a **Mentés**lehetőséget.
 
-![Key Vault hozzáférési szabályzat létrehozása](./media/container-registry-customer-managed-keys/add-key-vault-access-policy.png)
+![Kulcstartó-hozzáférési szabályzat létrehozása](./media/container-registry-customer-managed-keys/add-key-vault-access-policy.png)
 
 ### <a name="create-key"></a>Kulcs létrehozása
 
-1. Navigáljon a kulcstartóhoz.
-1. Válassza a **beállítások** > **kulcsok**elemet.
-1. Válassza a **+ Létrehozás/importálás** lehetőséget, és adjon meg egy egyedi nevet a kulcshoz.
-1. Fogadja el a többi alapértelmezett értéket, és válassza a **Létrehozás**lehetőséget.
-1. A létrehozás után válassza ki a kulcsot, és jegyezze fel az aktuális kulcs verzióját.
+1. Nyissa meg a kulcstartót.
+1. Válassza a **Beállítások** > **billentyűk lehetőséget**.
+1. Válassza a **+Létrehozás/importálás lehetőséget,** és adjon meg egy egyedi nevet a kulcsnak.
+1. Fogadja el a fennmaradó alapértelmezett értékeket, és válassza a **Létrehozás lehetőséget.**
+1. A létrehozás után jelölje ki a kulcsot, és vegye figyelembe az aktuális kulcsverziót.
 
 ### <a name="create-azure-container-registry"></a>Azure Container Registry létrehozása
 
-1. Válassza az **Erőforrás létrehozása** > **Tárolók** > **Container Registry** elemet.
-1. Az **alapvető beállítások** lapon válasszon ki vagy hozzon létre egy erőforráscsoportot, és adjon meg egy beállításjegyzék-nevet. Az **SKU**területen válassza a **prémium**lehetőséget.
-1. A **titkosítás** lap **ügyfél által felügyelt kulcs**területén válassza az **engedélyezve**lehetőséget.
-1. Az **identitás**területen válassza ki a létrehozott felügyelt identitást.
-1. A **titkosítási kulcs**területen válassza **a kiválasztás Key Vault**lehetőséget.
-1. A **válasszon kulcsot Azure Key Vault** ablakban válassza ki az előző szakaszban létrehozott kulcstárolót, kulcsot és verziót.
-1. A **titkosítás** lapon válassza a **felülvizsgálat + létrehozás**elemet.
-1. Válassza a **Létrehozás** lehetőséget a beállításjegyzék-példány telepítéséhez.
+1. Válassza **az Erőforrástárolók** > **Containers** > **tárolók beállításjegyzékének**létrehozása lehetőséget.
+1. Az **Alapok** lapon jelöljön ki vagy hozzon létre egy erőforráscsoportot, és adjon meg egy rendszerleíró adatbázis nevét. A **Termékváltozatban**válassza a **Prémium**lehetőséget.
+1. A **Titkosítás** lap **Ügyfél által kezelt kulcs**csoportjában válassza az **Engedélyezve**lehetőséget.
+1. Az **Identitás csoportban**válassza ki a létrehozott felügyelt identitást.
+1. A **Titkosítási kulcs**csoportban válassza **a Válasszon a kulcstartóból**lehetőséget.
+1. Az **Azure Key Vault ból kulcs kiválasztása** ablakban válassza ki az előző szakaszban létrehozott key vaultot, kulcsot és verziót.
+1. A **Titkosítás** lapon válassza a **Véleményezés + create**lehetőséget.
+1. A Beállításjegyzék-példány telepítéséhez válassza a **Létrehozás** lehetőséget.
 
-![Tároló-beállításjegyzék létrehozása a Azure Portal](./media/container-registry-customer-managed-keys/create-encrypted-registry.png)
+![Tárolóbeállításjegyzék létrehozása az Azure Portalon](./media/container-registry-customer-managed-keys/create-encrypted-registry.png)
 
-Ha szeretné megtekinteni a beállításjegyzék titkosítási állapotát a portálon, keresse meg a beállításjegyzéket. A **Beállítások**területen válassza a **titkosítás (előzetes verzió)** lehetőséget.
+A beállításjegyzék titkosítási állapotának megtekintéséhez keresse meg a rendszerleíró adatbázist. A **Beállítások csoportban**válassza a **Titkosítás (előnézet) lehetőséget.**
 
-## <a name="enable-customer-managed-key---template"></a>Ügyfél által felügyelt kulcs – sablon engedélyezése
+## <a name="enable-customer-managed-key---template"></a>Ügyfél által kezelt kulcs engedélyezése - sablon
 
-Egy Resource Manager-sablonnal is létrehozhat egy beállításjegyzéket, és engedélyezheti a titkosítást az ügyfél által felügyelt kulccsal. 
+Az Erőforrás-kezelő sablonnal rendszerleíró adatbázist is létrehozhat, és ügyfél által kezelt kulccsal engedélyezheti a titkosítást. 
 
-A következő sablon létrehoz egy új tároló-beállításjegyzéket és egy felhasználó által hozzárendelt felügyelt identitást. Másolja az alábbi tartalmat egy új fájlba, és mentse azt egy fájlnév, például `CMKtemplate.json`használatával.
+A következő sablon létrehoz egy új tároló beállításjegyzéket és egy felhasználó által hozzárendelt felügyelt identitást. Másolja a következő tartalmat egy új fájlba, `CMKtemplate.json`és mentse fájlnévvel, például .
 
 ```JSON
 {
@@ -327,12 +327,12 @@ A következő sablon létrehoz egy új tároló-beállításjegyzéket és egy f
 
 ```
 
-Kövesse az előző szakaszokban ismertetett lépéseket a következő erőforrások létrehozásához:
+Az előző szakaszokban ismertetett lépéseket követve hozza létre a következő erőforrásokat:
 
-* Key Vault, név alapján azonosítva
-* Key Vault-kulcs, kulcs azonosítója alapján azonosítva
+* Kulcstartó, név szerint azonosítva
+* Kulcstartó kulcsa, kulcsazonosítóval azonosítva
 
-Futtassa az alábbi az [Group Deployment Create][az-group-deployment-create] parancsot a beállításjegyzék előző sablonfájl használatával történő létrehozásához. Ha meg van jelölve, adja meg az új beállításjegyzék-nevet és a felügyelt identitás nevét, valamint a létrehozott kulcstároló nevét és AZONOSÍTÓját. 
+Futtassa a következő [az csoport központi telepítési létrehozási][az-group-deployment-create] parancsát a rendszerleíró adatbázis előző sablonfájl használatával történő létrehozásához. Ha jel, adjon meg egy új rendszerleíró adatbázis nevét és felügyelt identitás nevét, valamint a key vault nevét és a létrehozott kulcsazonosítót. 
 
 ```bash
 az group deployment create \
@@ -347,7 +347,7 @@ az group deployment create \
 
 ### <a name="show-encryption-status"></a>Titkosítási állapot megjelenítése
 
-A beállításjegyzék-titkosítás állapotának megjelenítéséhez futtassa az [az ACR encryption show-status] [az-ACR-encryption-show-status] parancsot:
+A rendszerleíró adatbázis titkosításának állapotának megjelenítéséhez futtassa az [az acr encryption show-status][az-acr-encryption-show-status] parancsot:
 
 ```azurecli
 az acr encryption show-status --name <registry-name> 
@@ -355,19 +355,19 @@ az acr encryption show-status --name <registry-name>
 
 ## <a name="use-the-registry"></a>A beállításjegyzék használata
 
-Miután engedélyezte a beállításjegyzék számára az adatok titkosítását az ügyfél által felügyelt kulcs használatával, ugyanazokat a beállításjegyzékbeli műveleteket hajthatja végre, amelyeket olyan beállításjegyzékben hajt végre, amely nem titkosított ügyfél által felügyelt kulccsal. Például a hitelesítést a beállításjegyzékben és a Docker-rendszerképek leküldésekor végezheti el. Lásd: példák a [leküldéses és a lekérési](container-registry-get-started-docker-cli.md)parancsokra.
+Miután engedélyezte, hogy a rendszerleíró adatbázis ügyfél által kezelt kulccsal titkosítsa az adatokat, ugyanazokat a beállításjegyzék-műveleteket hajthatja végre, mint amelyeket olyan beállításjegyzékben hajt végre, amely nem ügyfél által kezelt kulccsal van titkosítva. Például hitelesítheti magát a beállításjegyzékkel, és leküldéses Docker-rendszerképek. Példaparancsok megtekintése a [Képek leküldése és lekérése című](container-registry-get-started-docker-cli.md)témakörben.
 
-## <a name="rotate-key"></a>Elforgatási kulcs
+## <a name="rotate-key"></a>Billentyű elforgatása
 
-A megfelelőségi szabályzatok alapján Azure Key Vault elforgathatja az ügyfél által felügyelt kulcsot. Hozzon létre egy új kulcsot, majd frissítse a beállításjegyzéket az adattitkosításhoz az új kulccsal. Ezeket a lépéseket az Azure CLI használatával vagy a portálon végezheti el.
+Az azure-key vaultban az ügyfél által felügyelt kulcsot a megfelelőségi szabályzatok szerint forgathatja. Hozzon létre egy új kulcsot, majd frissítse a rendszerleíró adatbázist az adatok titkosításához az új kulccsal. Ezeket a lépéseket az Azure CLI vagy a portálon hajthatja végre.
 
-Például futtassa az az [kulcstartó kulcs létrehozása][az-keyvault-key-create] parancsot egy új kulcs létrehozásához:
+Futtassa például az [az keyvault-kulcs létrehozási][az-keyvault-key-create] parancsát egy új kulcs létrehozásához:
 
 ```azurecli
 az keyvault key create –-name <new-key-name> --vault-name <key-vault-name> 
 ```
 
-Ezután futtassa az az [ACR encryption forgatni-Key][az-acr-encryption-rotate-key] parancsot, amely átadja az új kulcs azonosítóját és a korábban konfigurált felügyelt identitás elsődleges azonosítóját:
+Ezután futtassa az [az acr encryption rotate-key][az-acr-encryption-rotate-key] parancsot, adja át az új kulcsazonosítót és a korábban konfigurált felügyelt identitás fő azonosítóját:
 
 ```azurecli
 az acr encryption rotatekey \
@@ -378,7 +378,7 @@ az acr encryption rotatekey \
 
 ## <a name="revoke-key"></a>Kulcs visszavonása
 
-A Key Vault hozzáférési házirendjének módosításával vagy a kulcs törlésével vonja vissza az ügyfél által felügyelt titkosítási kulcsot. Például az az Key [Vault delete-Policy][az-keyvault-delete-policy] paranccsal módosíthatja a beállításjegyzék által használt felügyelt identitás hozzáférési házirendjét. Például:
+Vonja vissza az ügyfél által felügyelt titkosítási kulcsot a kulcstartó hozzáférési szabályzatának módosításával vagy a kulcs törlésével. Például az [az keyvault delete-policy][az-keyvault-delete-policy] paranccsal módosíthatja a beállításjegyzék által használt felügyelt identitás hozzáférési házirendjét. Példa:
 
 ```azurecli
 az keyvault delete-policy \
@@ -387,13 +387,13 @@ az keyvault delete-policy \
   --object-id $identityPrincipalID
 ```
 
-A kulcs visszavonása gyakorlatilag blokkolja az összes beállításjegyzék-adattal való hozzáférést, mivel a beállításjegyzék nem fér hozzá a titkosítási kulcshoz. Ha a kulcshoz való hozzáférés engedélyezve van, vagy a törölt kulcs vissza lett állítva, a beállításjegyzékben meg kell választania a kulcsot, hogy újra hozzáférhessen a titkosított beállításjegyzék-adataihoz.
+A kulcs visszavonása hatékonyan blokkolja az összes rendszerleíró adathoz való hozzáférést, mivel a rendszerleíró adatbázis nem fér hozzá a titkosítási kulcshoz. Ha a kulcshoz való hozzáférés engedélyezve van, vagy a törölt kulcs helyreáll, a rendszerleíró adatbázis kiválasztja a kulcsot, hogy újra hozzáférhessen a titkosított rendszerleíró adatokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ [Az Azure-](../security/fundamentals/encryption-atrest.md)beli inaktív adatok titkosításáról.
-* További információ a hozzáférési házirendekről és a [kulcstartóhoz való hozzáférés biztonságossá](../key-vault/key-vault-secure-your-key-vault.md)tételéről.
-* Ha visszajelzést szeretne küldeni a Azure Container Registry ügyfél által felügyelt kulcsairól, látogasson el az [ACR GitHub webhelyére](https://aka.ms/acr/issues).
+* További információ [az Azure-beli titkosításról.](../security/fundamentals/encryption-atrest.md)
+* További információ a hozzáférési szabályzatokról és a [kulcstartóhoz való hozzáférés biztonságossá téválásához.](../key-vault/key-vault-secure-your-key-vault.md)
+* Ha visszajelzést szeretne adni az Azure Container Registry ügyfél által felügyelt kulcsairól, keresse fel az [ACR GitHub-webhelyet.](https://aka.ms/acr/issues)
 
 
 <!-- LINKS - external -->
@@ -408,9 +408,9 @@ A kulcs visszavonása gyakorlatilag blokkolja az összes beállításjegyzék-ad
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
 [az-keyvault-create]: /cli/azure/keyvault#az-keyvault-create
-[az-keyvault-key-create]: /cli/azure/keyvault/keyt#az-keyvault-key-create
-[az-keyvault-set-policy]: /cli/azure/keyvault/keyt#az-keyvault-set-policy
-[az-keyvault-delete-policy]: /cli/azure/keyvault/keyt#az-keyvault-delete-policy
+[az-keyvault-key-create]: /cli/azure/keyvault/key#az-keyvault-key-create
+[az-keyvault-set-policy]: /cli/azure/keyvault#az-keyvault-set-policy
+[az-keyvault-delete-policy]: /cli/azure/keyvault#az-keyvault-delete-policy
 [az-resource-show]: /cli/azure/resource#az-resource-show
 [az-acr-create]: /cli/azure/acr#az-acr-create
 [az-acr-show]: /cli/azure/acr#az-acr-show

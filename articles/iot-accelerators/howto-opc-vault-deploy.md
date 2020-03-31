@@ -1,6 +1,6 @@
 ---
-title: Az OPC Vault Certificate Management szolgáltatás üzembe helyezése – Azure | Microsoft Docs
-description: Az OPC-tár tanúsítványkezelő szolgáltatásának üzembe helyezése a semmiből.
+title: Az OPC Vault tanúsítványkezelési szolgáltatásának telepítése - Azure | Microsoft dokumentumok
+description: Az OPC Vault tanúsítványkezelési szolgáltatásának telepítése a nulláról.
 author: mregen
 ms.author: mregen
 ms.date: 08/16/2019
@@ -9,55 +9,55 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: f577059e1ebf70e3a9dfe9e538a9d3d49d7c8e96
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71199993"
 ---
-# <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Az OPC Vault Certificate Management szolgáltatás létrehozása és üzembe helyezése
+# <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Az OPC Vault tanúsítványkezelési szolgáltatásának létrehozása és üzembe helyezése
 
-Ez a cikk bemutatja, hogyan helyezheti üzembe az OPC Vault tanúsítványkezelő szolgáltatást az Azure-ban.
+Ez a cikk bemutatja, hogyan telepítheti az OPC Vault tanúsítványkezelési szolgáltatás az Azure-ban.
 
 > [!NOTE]
-> További információ: GitHub [OPC Vault adattár](https://github.com/Azure/azure-iiot-opc-vault-service).
+> További információt a GitHub [OPC Vault tárháza](https://github.com/Azure/azure-iiot-opc-vault-service)tartalmaz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="install-required-software"></a>A szükséges szoftverek telepítése
 
-Jelenleg a létrehozási és üzembe helyezési művelet a Windowsra korlátozódik.
-A minták mind a C# .NET Standard verzióra vannak írva, amelyhez létre kell hoznia a szolgáltatást és a mintákat az üzembe helyezéshez.
-A .NET szabványhoz szükséges összes eszköz a .NET Core-eszközökkel együtt érhető el. Lásd: [a .net Core első lépései](https://docs.microsoft.com/dotnet/articles/core/getting-started).
+Jelenleg a build és üzembe helyezési művelet a Windows rendszerre korlátozódik.
+A minták mind a C# .NET Standard, amely a szolgáltatás és a minták üzembe helyezéshez kell készíteni.
+A .NET Standard minden szükséges eszköze a . Lásd: [A .NET Core ismerkedése](https://docs.microsoft.com/dotnet/articles/core/getting-started).
 
-1. [Telepítse a .net Core 2.1 +][dotnet-install]-ot.
-2. A [Docker telepítése][docker-url] (nem kötelező, csak akkor, ha a helyi Docker-Build szükséges).
-4. Telepítse a [powershellhez készült Azure parancssori eszközöket][powershell-install].
-5. Regisztráljon egy Azure- [előfizetésre][azure-free].
+1. [Telepítse a .NET Core 2.1+ programot.][dotnet-install]
+2. [Telepítse a Dockert][docker-url] (nem kötelező, csak akkor, ha a helyi Docker-build szükséges).
+4. Telepítse a [PowerShell Hez használt Azure parancssori eszközeit.][powershell-install]
+5. Regisztráljon egy [Azure-előfizetésre.][azure-free]
 
 ### <a name="clone-the-repository"></a>A tárház klónozása
 
-Ha még nem tette meg, akkor a GitHub-tárház klónozásával. Nyisson meg egy parancssort vagy terminált, és futtassa a következőt:
+Ha még nem tette meg, klónozza ezt a GitHub-tárházat. Nyisson meg egy parancssort vagy terminált, és futtassa a következőket:
 
 ```bash
 git clone https://github.com/Azure/azure-iiot-opc-vault-service
 cd azure-iiot-opc-vault-service 
 ```
 
-Azt is megteheti, hogy közvetlenül a Visual Studio 2017-ben klónozást végez a tárházban.
+Másik lehetőségként klónozhathatja a tárta közvetlenül a Visual Studio 2017.Alternatively, you can clone the repo directly in Visual Studio 2017.
 
 ### <a name="build-and-deploy-the-azure-service-on-windows"></a>Az Azure-szolgáltatás létrehozása és üzembe helyezése Windows rendszeren
 
-A PowerShell-parancsfájlok egyszerű módszert biztosítanak az OPC-tároló-szolgáltatás és az alkalmazás üzembe helyezésére.
+A PowerShell-parancsfájl oka az OPC Vault mikroszolgáltatás és az alkalmazás üzembe helyezésének egyszerű módja.
 
-1. Nyisson meg egy PowerShell-ablakot a tárház gyökerében. 
-3. Nyissa meg a központi `cd deploy`telepítés mappát.
-3. Válasszon egy nevet `myResourceGroup` , amely nem valószínű, hogy ütközik más központilag telepített weblapokkal. A cikk későbbi részében tekintse meg a "webhely neve már használatban" című szakaszt.
-5. Indítsa el a központi `.\deploy.ps1` telepítést interaktív telepítéssel, vagy adjon meg egy teljes parancssort:  
+1. Nyisson meg egy PowerShell-ablakot a tárház gyökér. 
+3. Nyissa meg a `cd deploy`központi telepítés mappát.
+3. Olyan nevet `myResourceGroup` válasszon, amely valószínűleg nem okoz ütközést más telepített weblapokkal. Lásd a cikk későbbi, "A webhely neve már használatban van" című részét.
+5. Indítsa el `.\deploy.ps1` a telepítést interaktív telepítéssel, vagy adjon meg egy teljes parancssort:  
 `.\deploy.ps1  -subscriptionName "MySubscriptionName" -resourceGroupLocation "East US" -tenantId "myTenantId" -resourceGroupName "myResourceGroup"`
-7. Ha ezt az üzembe helyezést tervezi, a Hozzáadás `-development 1` gombra kattintva engedélyezheti a hencegő felületet, és üzembe helyezheti a hibakeresési buildeket.
-6. A parancsfájl utasításait követve jelentkezzen be az előfizetésbe, és adjon meg további információkat.
-9. Sikeres felépítési és üzembe helyezési művelet után a következő üzenetnek kell megjelennie:
+7. Ha azt tervezi, hogy dolgozzon ezzel a központi telepítéssel, adja hozzá, `-development 1` hogy a Swagger felhasználói felület, és a hibakeresési buildek üzembe helyezéséhez.
+6. Kövesse a parancsfájlutasításait, hogy jelentkezzen be az előfizetésbe, és további információkat adjon meg.
+9. A sikeres létrehozási és üzembe helyezési művelet után a következő üzenetnek kell megjelennie:
    ```
    To access the web client go to:
    https://myResourceGroup.azurewebsites.net
@@ -73,51 +73,51 @@ A PowerShell-parancsfájlok egyszerű módszert biztosítanak az OPC-tároló-sz
    ```
 
    > [!NOTE]
-   > Problémák esetén tekintse meg a cikk későbbi, "központi telepítési hibák elhárítása" című szakaszát.
+   > Problémák esetén olvassa el a cikk későbbi, "Központi telepítési hibák elhárítása" című szakaszát.
 
-8. Nyissa meg a kedvenc böngészőjét, és nyissa meg az alkalmazás lapot:`https://myResourceGroup.azurewebsites.net`
-8. Az üzembe helyezést követően néhány perc alatt bemelegítheti a webalkalmazást és az OPC-tárolót. Előfordulhat, hogy a Webkezdőlap az első használat után legfeljebb egy percig lefagy, amíg meg nem kapja az első válaszokat.
-11. A hencegő API megkereséséhez nyissa meg a következőt:`https://myResourceGroup-service.azurewebsites.net`
-13. Ha egy helyi GDS-kiszolgálót a DotNet használatával szeretne `.\myResourceGroup-gds.cmd`elindítani, indítsa el a következőt:. A Docker-ben `.\myResourceGroup-dockergds.cmd`indítsa el a t.
+8. Nyissa meg kedvenc böngészőjét, és nyissa meg az alkalmazáslapját:`https://myResourceGroup.azurewebsites.net`
+8. Adjon a webalkalmazás és az OPC Vault mikroszolgáltatás néhány percig, hogy felmelegedjen a telepítés után. Előfordulhat, hogy a kezdőlap első használatkor akár egy percig is lefagy, amíg meg nem kapja az első válaszokat.
+11. A Swagger API-t meg nyithatja:`https://myResourceGroup-service.azurewebsites.net`
+13. Ha egy helyi GDS-kiszolgálót szeretne `.\myResourceGroup-gds.cmd`indítani a dotnet tel, indítsa el a programot. A Docker, `.\myResourceGroup-dockergds.cmd`indítsa el .
 
-A buildek újbóli üzembe helyezése pontosan ugyanazokkal a beállításokkal lehetséges. Vegye figyelembe, hogy egy ilyen művelet megújítja az összes alkalmazás titkos kulcsát, és egyes beállítások alaphelyzetbe állíthatók a Azure Active Directory (Azure AD) alkalmazás regisztrációjában.
+Lehetőség van egy build pontosan ugyanazokat a beállításokat újratelepíteni. Vegye figyelembe, hogy egy ilyen művelet megújítja az összes alkalmazástitkos kulcsokat, és előfordulhat, hogy az Azure Active Directory (Azure AD) alkalmazásregisztrációk egyes beállításait alaphelyzetbe állítja.
 
-Az is lehetséges, hogy csak a webalkalmazás bináris fájljait telepíti újra. A paraméterrel `-onlyBuild 1`a szolgáltatás új zip-csomagjait és az alkalmazást telepíti a webalkalmazások számára.
+Lehetőség van csak a webes alkalmazás bináris fájljainak újratelepítésére is. A paraméterrel `-onlyBuild 1`a szolgáltatás és az alkalmazás új zip-csomagjai kerülnek a webes alkalmazásokba.
 
-A sikeres telepítés után elkezdheti a szolgáltatások használatát. Lásd: [az OPC-tár tanúsítványkezelő szolgáltatásának kezelése](howto-opc-vault-manage.md).
+A sikeres telepítés után elkezdheti használni a szolgáltatásokat. Lásd: [Az OPC Vault tanúsítványkezelési szolgáltatásának kezelése.](howto-opc-vault-manage.md)
 
-## <a name="delete-the-services-from-the-subscription"></a>Szolgáltatások törlése az előfizetésből
+## <a name="delete-the-services-from-the-subscription"></a>A szolgáltatások törlése az előfizetésből
 
 Ezt a következőképpen teheti meg:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Keresse meg azt az erőforráscsoportot, amelyben a szolgáltatást telepítették.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+2. Nyissa meg azt az erőforráscsoportot, amelyben a szolgáltatást telepítették.
 3. Válassza az **Erőforráscsoport törlése** elemet, és erősítse meg a választását.
-4. Rövid idő elteltével a rendszer az összes üzembe helyezett szolgáltatás-összetevőt törli.
-5. Nyissa meg **Azure Active Directory** > **Alkalmazásregisztrációk**.
-6. Minden telepített erőforráscsoport esetében három regisztrációnak kell szerepelnie. A regisztrációk a következő nevekkel rendelkeznek `resourcegroup-client`: `resourcegroup-module`, `resourcegroup-service`,. Törölje az egyes regisztrációkat külön.
+4. Rövid idő elteltével az összes üzembe helyezett szolgáltatásösszetevő törlődik.
+5. Nyissa meg az **Azure Active Directory** > **alkalmazásregisztrációit.**
+6. Minden telepített erőforráscsoporthoz három regisztrációnak kell szerepelnie. A regisztrációk neve a `resourcegroup-client` `resourcegroup-module`következő: , , `resourcegroup-service`. Törölje az egyes regisztrációkat külön-külön.
 
-Mostantól az összes telepített összetevő el lesz távolítva.
+Most az összes üzembe helyezett összetevő eltávolításra kerül.
 
 ## <a name="troubleshooting-deployment-failures"></a>Telepítési hibák elhárítása
 
 ### <a name="resource-group-name"></a>Erőforráscsoport neve
 
-Használjon rövid és egyszerű erőforráscsoport-nevet. A név az erőforrások és a szolgáltatás URL-címének előtagját is használja. Ennek megfelelően meg kell felelnie az erőforrás-elnevezési követelményeknek.  
+Használjon rövid és egyszerű erőforráscsoport nevet. A név az erőforrások és a szolgáltatás URL-előtagja elnevezésére is szolgál. Mint ilyen, meg kell felelnie az erőforrás-elnevezési követelményeknek.  
 
 ### <a name="website-name-already-in-use"></a>A webhely neve már használatban van
 
-Lehetséges, hogy a webhely neve már használatban van. Más erőforráscsoport-nevet kell használnia. Az üzembe helyezési parancsfájl által használt állomásnevek a következők: https://resourcegroupname.azurewebsites.net és https://resourgroupname-service.azurewebsites.net.
-A szolgáltatások egyéb neveit a rövid névvel ellátott kivonatok kombinációjával építjük össze, és nem valószínű, hogy ütköznek más szolgáltatásokkal.
+Lehetséges, hogy a webhely neve már használatban van. Másik erőforráscsoport nevet kell használnia. A központi telepítési parancsfájl által használt https://resourcegroupname.azurewebsites.net https://resourgroupname-service.azurewebsites.netállomásnevek a következők: és .
+A szolgáltatások más nevei a rövid névkiírások kombinációjával épülnek fel, és nem valószínű, hogy ütköznek más szolgáltatásokkal.
 
 ### <a name="azure-ad-registration"></a>Azure AD-regisztráció 
 
-Az üzembe helyezési parancsfájl három Azure AD-alkalmazás regisztrálását kísérli meg az Azure AD-ben. A kiválasztott Azure AD-bérlő engedélyeitől függően ez a művelet sikertelen lehet. Két lehetőség közül választhat:
+A központi telepítési parancsfájl három Azure AD-alkalmazást próbál regisztrálni az Azure AD-ben. A ttól függően, hogy a kiválasztott Azure AD-bérlő engedélyeket, ez a művelet sikertelen lehet. Két lehetőség érhető el:
 
-- Ha az Azure AD-bérlőt választotta a bérlők listájáról, indítsa újra a szkriptet, és válasszon egy másikat a listából.
-- Alternatív megoldásként helyezzen üzembe egy privát Azure AD-bérlőt egy másik előfizetésben. Indítsa újra a szkriptet, és válassza ki a használatát.
+- Ha egy Azure AD-bérlőt választott a bérlők listájából, indítsa újra a parancsfájlt, és válasszon egy másikat a listából.
+- Másik lehetőségként üzembe helyezhet egy privát Azure AD-bérlőt egy másik előfizetésben. Indítsa újra a parancsfájlt, és válassza a használatát.
 
-## <a name="deployment-script-options"></a>Üzembe helyezési parancsfájl beállításai
+## <a name="deployment-script-options"></a>Központi telepítési parancsfájl beállításai
 
 A parancsfájl a következő paramétereket veszi figyelembe:
 
@@ -133,21 +133,21 @@ Ez lehet egy meglévő vagy egy új erőforráscsoport neve.
 ```
 
 
-Ez az előfizetés-azonosító, amelyben az erőforrások telepítve lesznek. Nem kötelező.
+Ez az az előfizetés-azonosító, ahol az erőforrások üzembe kerülnek. Ez nem kötelező.
 
 ```
 -subscriptionName
 ```
 
 
-Másik lehetőségként használhatja az előfizetés nevét is.
+Másik lehetőségként használhatja az előfizetés nevét.
 
 ```
 -resourceGroupLocation
 ```
 
 
-Ez egy erőforráscsoport-hely. Ha meg van adva, ez a paraméter megpróbál létrehozni egy új erőforráscsoportot ezen a helyen. Ez a paraméter szintén nem kötelező.
+Ez egy erőforráscsoport helye. Ha meg van adva, ez a paraméter megpróbál új erőforráscsoportot létrehozni ezen a helyen. Ez a paraméter is nem kötelező.
 
 
 ```
@@ -155,19 +155,19 @@ Ez egy erőforráscsoport-hely. Ha meg van adva, ez a paraméter megpróbál lé
 ```
 
 
-Ezt az Azure AD-bérlőt kell használnia. 
+Ez az Azure AD-bérlő használata. 
 
 ```
 -development 0|1
 ```
 
-Ez a fejlesztéshez való üzembe helyezés. Használja a hibakeresési buildet, és állítsa be a ASP.NET környezetet a fejlesztéshez. Hozza `.publishsettings` létre az importáláshoz a Visual Studio 2017-ben, hogy lehetővé tegye az alkalmazás és a szolgáltatás közvetlen üzembe helyezését. Ez a paraméter szintén nem kötelező.
+Ez a fejlesztéshez szükséges. Használja a hibakeresési buildet, és állítsa a ASP.NET környezetet Fejlesztési beállításra. Hozzon létre `.publishsettings` importálásra a Visual Studio 2017-ben, hogy lehetővé tegye az alkalmazás és a szolgáltatás közvetlen üzembe helyezését. Ez a paraméter is nem kötelező.
 
 ```
 -onlyBuild 0|1
 ```
 
-Ez az Újraépítés és a csak a webalkalmazások újbóli üzembe helyezése, valamint a Docker-tárolók újraépítése. Ez a paraméter szintén nem kötelező.
+Ez az újraépítés és a webalkalmazások újratelepítése, és a Docker-tárolók újratelepítése. Ez a paraméter is nem kötelező.
 
 [azure-free]:https://azure.microsoft.com/free/
 [powershell-install]:https://azure.microsoft.com/downloads/#powershell
@@ -176,7 +176,7 @@ Ez az Újraépítés és a csak a webalkalmazások újbóli üzembe helyezése, 
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan helyezheti üzembe az OPC-tárolót a semmiből, a következőket teheti:
+Most, hogy megtanulta az OPC Vault telepítését a semmiből, a következőket teheti:
 
 > [!div class="nextstepaction"]
 > [OPC-tároló kezelése](howto-opc-vault-manage.md)

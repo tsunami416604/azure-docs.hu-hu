@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás a OneDrive for Businesshez
-description: Fájlok feltöltése és kezelése a OneDrive for Business REST API-kkal és Azure Logic Apps
+title: Csatlakozás a OneDrive Vállalati verzióhoz
+description: Fájlok feltöltése és kezelése a OneDrive Vállalati REST API-kkal és az Azure Logic Apps alkalmazásokkal
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,32 +8,32 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 48c819566db43e2f997309d1bea55a9436ec7085
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789451"
 ---
-# <a name="get-started-with-the-onedrive-for-business-connector"></a>Ismerkedés a OneDrive for Business-összekötővel
-Kapcsolódjon a OneDrive for Business szolgáltatáshoz a fájlok kezeléséhez. Különböző műveleteket hajthat végre, például fájlokat tölthet fel, frissíthet, kérhet le és törölhet.
+# <a name="get-started-with-the-onedrive-for-business-connector"></a>A OneDrive Vállalati verzió összekötőjének első lépései
+Csatlakozzon a OneDrive Vállalati verzióhoz a fájlok kezeléséhez. Különböző műveleteket hajthat végre, például fájlok feltöltését, frissítését, begetését és törlését.
 
-A logikai alkalmazások létrehozásának első lépéseiről a [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakörben olvashat.
+A kezdéshez hozzon létre egy logikai alkalmazást most, [lásd: Logikai alkalmazás létrehozása.](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-## <a name="create-a-connection-to-onedrive-for-business"></a>OneDrive for Business-kapcsolatok létrehozása
-Ha logikai alkalmazásokat szeretne létrehozni a OneDrive for Business használatával, először létre kell hoznia egy **kapcsolatokat** , majd meg kell adnia a következő tulajdonságok részleteit:
+## <a name="create-a-connection-to-onedrive-for-business"></a>Kapcsolat létrehozása a OneDrive Vállalati verzióval
+Ha logikai alkalmazásokat szeretne létrehozni a OneDrive Vállalati verzióval, először létre kell hoznia egy **kapcsolatot,** majd meg kell adnia a következő tulajdonságok részleteit:
 
-| Tulajdonság | Szükséges | Leírás |
+| Tulajdonság | Kötelező | Leírás |
 | --- | --- | --- |
-| Jogkivonat |Igen |OneDrive megadása üzleti hitelesítő adatokhoz |
+| Jogkivonat |Igen |A OneDrive Vállalati verzió hitelesítő adatainak megadása |
 
-A kapcsolatok létrehozása után a használatával végrehajthatja a műveleteket, és figyelheti a cikkben ismertetett eseményindítókat.
+A kapcsolat létrehozása után használhatja a műveletek végrehajtására és a cikkben leírt eseményindítók figyelésére.
 
 > [!INCLUDE [Steps to create a connection to OneDrive for Business](../../includes/connectors-create-api-onedriveforbusiness.md)]
 > 
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
-Megtekintheti a hencegés során definiált összes eseményindítót és műveletet, valamint az [összekötő részleteiben](/connectors/onedriveforbusinessconnector/)megjelenő korlátokat is.
+Tekintse meg a swaggerben definiált eseményindítókat és műveleteket, és tekintse meg a korlátokat az [összekötő részleteiben.](/connectors/onedriveforbusinessconnector/)
 
-## <a name="more-connectors"></a>További összekötők
-Lépjen vissza az API-k [listájára](apis-list.md).
+## <a name="more-connectors"></a>További csatlakozók
+Lépjen vissza az [API-k listájára.](apis-list.md)

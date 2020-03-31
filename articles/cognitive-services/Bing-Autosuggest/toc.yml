@@ -7,28 +7,30 @@
     - name: Bing Search API-k összehasonlítása
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: REST API – rövid útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
-- name: Ügyfélkódtár
-  items:
-    - name: 'C#'
-      href: quickstarts/csharp-sdk.md
-    - name: Indítás
-      href: quickstarts/go-sdk.md
-- name: oktatóanyagokat
+    - name: REST API
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp.md
+        - name: Java
+          href: quickstarts/java.md
+        - name: Node.js
+          href: quickstarts/nodejs.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: Ruby
+          href: quickstarts/ruby.md
+    - name: Ügyfélkódtár
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp-sdk.md
+        - name: Indítás
+          href: quickstarts/go-sdk.md
+- name: Oktatóanyagok
   items:
     - name: Egyoldalas webalkalmazás
       href: tutorials/autosuggest.md

@@ -1,6 +1,6 @@
 ---
-title: A Azure NetApp Files metrikái | Microsoft Docs
-description: A Azure NetApp Files metrikáinak leírása.
+title: Az Azure NetApp-fájlok metrikája | Microsoft dokumentumok
+description: Az Azure NetApp-fájlok metrikák ismertetése.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,60 +12,62 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 03/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 7cf382f511d2ba8452d77bf207f36b749cb31e94
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c8e3b616dee1ab4e6bb6e77c6a8bab5661d4e20b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848795"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460432"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Az Azure NetApp Files metrikái
 
-Azure NetApp Files metrikákat biztosít a lefoglalt tárolóban, a tényleges tárterület-használatot, a kötet átviteli sebességét, a IOPS és a késést. A metrikák elemzésével jobban megismerheti a NetApp-fiókok használati mintáját és a kötet teljesítményét.  
+Az Azure NetApp Files metrikákat biztosít a lefoglalt tárhely, a tényleges tárhelyhasználat, a kötet IOPS és a késés. Ezeknek a mutatóknak az elemzésével jobban megértheted netapp-fiókjaid használati mintáját és volumenteljesítményét.  
 
-## <a name="capacity_pools"></a>A kapacitási készletek használati metrikái
+## <a name="usage-metrics-for-capacity-pools"></a><a name="capacity_pools"></a>Kapacitáskészletek használati metrikái
 
 <!-- 
-- *Volume pool allocated size*  
-    The size (GiB) of the provisioned capacity pool  
+- *Pool Provisioned Size*  
+    The logical space (GiB) the capacity pool is provisioned with.  
+    This size is the size you selected during capacity pool creation. 
 --> 
-- *Lefoglalt kötet-készlet*  
-    Az adott kapacitási készletben lévő mennyiségi kvóta (GiB) összege (azaz a kötetek kiosztott méretei összesen)  
-    A kötet létrehozása során kiválasztott méret.  
-- *Kötet készletének teljes logikai mérete*  
-    A kapacitási készlet kötetei között használt logikai terület teljes mérete (GiB)  
+- *Kötetmérethez rendelt készlet*  
+    Egy adott kapacitáskészletben lévő mennyiségi kvóta (GiB) teljes összege (azaz a kapacitáskészletben lévő kötetek kiosztott méreteinek összege).  
+    Ez a méret a kötet létrehozása során kiválasztott méret.  
+- *Készlet felhasznált mérete*  
+    A kapacitáskészlet kötetei között használt logikai terület (GiB) teljes összege.  
 <!-- 
-- *Volume pool total snapshot size*  
-    The total of incremental logical space used by the snapshots  
+- *Pool Consumed Snapshot Size*  
+    The total of logical space (GiB) used by snapshots across all volumes in a capacity pool. 
 -->
 
-## <a name="volumes"></a>A kötetek használati metrikái
+## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>Kötetek használati mutatói
 
-<!-- 
-- *Volume allocated size*   
-    The volume size (quota) provisioned in GiB  
---> 
-- *Kötet logikai mérete*   
-    A kötetben használt teljes logikai terület (GiB)  
-    Ez a méret magában foglalja az aktív fájlrendszerek és Pillanatképek által használt logikai teret.  
+<!--
+- *Volume Quota Size*    
+    The quota size (GiB) the volume is provisioned with.   
+    This size is the size you selected during capacity pool creation. 
+-->
+- *Felhasznált kötet mérete*   
+    A kötetben használt teljes logikai terület (GiB).  
+    Ez a méret magában foglalja az aktív fájlrendszerek és pillanatképek által használt logikai területet.  
 - *Kötet pillanatképének mérete*   
-   A pillanatképek által a köteten használt növekményes logikai terület  
+   A kötetpillanatok által használt növekményes logikai terület.  
 
-## <a name="performance-metrics-for-volumes"></a>A kötetek teljesítmény-mérőszámai
+## <a name="performance-metrics-for-volumes"></a>Kötetek teljesítménymutatói
 
-- *AverageReadLatency*   
-    A kötet olvasási idejének átlagos ideje ezredmásodpercben
-- *AverageWriteLatency*   
-    A kötet írási idejének átlagos ideje ezredmásodpercben
-- *ReadIops*   
-    A kötetre irányuló olvasási műveletek száma másodpercenként
-- *WriteIops*   
-    A kötetbe való írások másodpercenkénti száma
+- *Átlagos olvasási átkés*   
+    A kötetből beolvasások átlagos ideje ezredmásodpercben.
+- *Átlagos íráskésleltetés*   
+    A kötetből írt írások átlagos ideje ezredmásodpercben.
+- *ReadIops között*   
+    A kötetre olvasások száma másodpercenként.
+- *WriteIops (WriteIops)*   
+    A kötetre történő írások száma másodpercenként.
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Azure NetApp Files tárolási hierarchiájának megismerése](azure-netapp-files-understand-storage-hierarchy.md)
+* [Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md)
 * [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
-* [Kötet létrehozása Azure NetApp Files-hoz](azure-netapp-files-create-volumes.md)
+* [Kötet létrehozása az Azure NetApp Files számára](azure-netapp-files-create-volumes.md)

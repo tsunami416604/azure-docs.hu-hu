@@ -1,46 +1,46 @@
 ---
-title: A lekérdezés nyelvének megismerése
-description: Az Azure Resource Graph-ban használható Resource Graph-táblákat, valamint az elérhető Kusto adattípusokat, operátorokat és függvényeket ismerteti.
+title: A lekérdezésnyelv megismerése
+description: Az Azure Resource Graph segítségével használható Erőforrásgráf-táblák, valamint a rendelkezésre álló Kusto-adattípusok, operátorok és funkciók ismertetése.
 ms.date: 03/07/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2f4be4d86a340867e1ad3015ff288f98fc54cecf
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78927494"
 ---
-# <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure Resource Graph lekérdezési nyelvének megismerése
+# <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure Resource Graph lekérdezési nyelvének ismertetése
 
-Az Azure Resource Graph lekérdezési nyelve számos operátort és funkciót támogat. Minden munka és működés a [Kusto lekérdezési nyelvén (KQL)](/azure/kusto/query/index)alapul. Az erőforrás-gráf által használt lekérdezési nyelv megismeréséhez Kezdje a [KQL oktatóanyagával](/azure/kusto/query/tutorial).
+Az Azure Resource Graph lekérdezési nyelve számos operátort és függvényt támogat. Minden munka és működik alapján [Kusto Query Language (KQL)](/azure/kusto/query/index). Ha többet szeretne megtudni a Resource Graph által használt lekérdezési nyelvről, kezdje a [KQL oktatóanyagával.](/azure/kusto/query/tutorial)
 
-Ez a cikk az erőforrás-gráf által támogatott nyelvi összetevőket ismerteti:
+Ez a cikk az Erőforrás-grafikon által támogatott nyelvi összetevőket ismerteti:
 
-- [Resource Graph-táblák](#resource-graph-tables)
+- [Erőforrásgráf-táblák](#resource-graph-tables)
 - [Támogatott KQL nyelvi elemek](#supported-kql-language-elements)
-- [Escape-karakterek](#escape-characters)
+- [Escape karakterek](#escape-characters)
 
-## <a name="resource-graph-tables"></a>Resource Graph-táblák
+## <a name="resource-graph-tables"></a>Erőforrásgráf-táblák
 
-Az erőforrás-diagram több táblázatot is biztosít a Resource Manager-erőforrástípusok és azok tulajdonságairól tárolt adattároláshoz. Ezek a táblázatok `join` vagy `union` operátorral használhatók a tulajdonságok a kapcsolódó erőforrástípusokből való lekéréséhez. Itt látható az erőforrás-gráfban elérhető táblák listája:
+Az Erőforrásgráf számos táblát biztosít az Erőforrás-kezelő erőforrástípusokkal és azok tulajdonságaival kapcsolatos adatokhoz. Ezek a táblák `join` a `union` kapcsolódó erőforrástípusok tulajdonságainak leéséhez használhatók vagy operátorokkal. Az Erőforrásgrafikonban elérhető táblák listája:
 
-|Resource Graph-táblák |Leírás |
+|Erőforrásgráf-táblák |Leírás |
 |---|---|
-|További források |Az alapértelmezett tábla, ha nincs megadva a lekérdezésben. A legtöbb Resource Manager-erőforrás típusa és tulajdonsága itt található. |
-|ResourceContainers |Az előfizetést (előzetes verzió – `Microsoft.Resources/subscriptions`) és az erőforráscsoport (`Microsoft.Resources/subscriptions/resourcegroups`) típusú erőforrásokat és az adattípusokat tartalmazza. |
-|AdvisorResources |`Microsoft.Advisor`hoz _kapcsolódó_ erőforrásokat tartalmaz. |
-|AlertsManagementResources |`Microsoft.AlertsManagement`hoz _kapcsolódó_ erőforrásokat tartalmaz. |
-|MaintenanceResources |`Microsoft.Maintenance`hoz _kapcsolódó_ erőforrásokat tartalmaz. |
-|SecurityResources |`Microsoft.Security`hoz _kapcsolódó_ erőforrásokat tartalmaz. |
+|Források |Az alapértelmezett tábla, ha nincs definiálva a lekérdezésben. A legtöbb Erőforrás-kezelő erőforrástípus és -tulajdonság itt található. |
+|Erőforrástárolók |Tartalmazza az előfizetést `Microsoft.Resources/subscriptions`(előzetes verzióban`Microsoft.Resources/subscriptions/resourcegroups`-- ) és az erőforráscsoport ( ) erőforrástípusokat és adatokat. |
+|Tanácsadóforrások |A _hoz_ `Microsoft.Advisor`kapcsolódó erőforrásokat tartalmazza. |
+|FigyelmeztetésekManagementErőforrások |A _hoz_ `Microsoft.AlertsManagement`kapcsolódó erőforrásokat tartalmazza. |
+|Karbantartási erőforrások |A _hoz_ `Microsoft.Maintenance`kapcsolódó erőforrásokat tartalmazza. |
+|Biztonsági erőforrások |A _hoz_ `Microsoft.Security`kapcsolódó erőforrásokat tartalmazza. |
 
-A teljes listát, például az erőforrástípusok listáját a következő témakörben tekintheti meg [: hivatkozás: támogatott táblák és erőforrástípusok](../reference/supported-tables-resources.md).
+Az erőforrástípusokat tartalmazó teljes listát a [Hivatkozás: Támogatott táblák és erőforrástípusok című témakörben található.](../reference/supported-tables-resources.md)
 
 > [!NOTE]
-> Az _erőforrások_ az alapértelmezett tábla. A _Resources (erőforrások_ ) tábla lekérdezésekor nem kell megadnia a tábla nevét, kivéve `join` vagy `union` használata esetén. Azonban az ajánlott eljárás az, hogy mindig tartalmazza a kezdeti táblát a lekérdezésben.
+> _Az erőforrások_ az alapértelmezett tábla. Az _Erőforrások_ tábla lekérdezése közben nem szükséges megadni a `join` `union` tábla nevét, kivéve, ha az az erőforrások at használja. Az ajánlott eljárás azonban az, hogy mindig a kezdeti táblát tartalmazza a lekérdezésben.
 
-A portálon a Resource Graph Explorer segítségével derítheti ki, hogy milyen típusú erőforrások érhetők el az egyes táblákban. Alternatív megoldásként használjon egy lekérdezést, például az `<tableName> | distinct type`-t, hogy lekérje a megadott Resource Graph-táblázat által támogatott erőforrástípusok listáját.
+A portálon található Erőforrásgráf-kezelővel megtudhatja, hogy az egyes táblákban milyen erőforrástípusok érhetők el. Másik lehetőségként használjon egy `<tableName> | distinct type` lekérdezést, például a megadott Erőforrásgráf tábla által támogatott erőforrástípusok listáját.
 
-A következő lekérdezés egy egyszerű `join`mutat be. A lekérdezés eredménye összekeveri az oszlopokat és az illesztett táblázat ismétlődő oszlopainak nevét, az ebben a példában szereplő _ResourceContainers_ pedig **1**. Mivel a _ResourceContainers_ tábla mindkét előfizetéshez és az erőforráscsoporthoz is rendelkezik, a Type ( _erőforrások_ ) tábla erőforrásokhoz való csatlakoztatására is használható.
+A következő lekérdezés `join`egy egyszerű . A lekérdezés eredménye keveri az oszlopokat, és az összekapcsolt tábla ismétlődő oszlopneveit, a _ResourceContainers-t_ ebben a példában a program **az 1-hez**fűzi hozzá. Mivel _a ResourceContainers_ tábla előfizetésekhez és erőforráscsoportokhoz is tartalmaz típusokat, bármelyik típus használható az _erőforráshoz_ való csatlakozáshoz az erőforrástáblából.
 
 ```kusto
 Resources
@@ -48,7 +48,7 @@ Resources
 | limit 1
 ```
 
-Az alábbi lekérdezés a `join`összetettebb használatát mutatja be. A lekérdezés korlátozza az összekapcsolt táblát az előfizetések erőforrásaira, és a `project`, hogy csak az eredeti mezőt _subscriptionId_ , a _név_ mezőt pedig nevezze át a _alnévre_. A mező átnevezése elkerüli, hogy `join` hozzáadja a _name1_ , mert a mező már létezik az _erőforrásokban_. Az eredeti tábla `where` van szűrve, és az alábbi `project` mindkét táblából származó oszlopokat tartalmaz. A lekérdezés eredménye egyetlen kulcstároló-megjelenítési típus, a kulcstartó neve és az előfizetés neve.
+A következő lekérdezés a összetettebb `join`használatát mutatja. A lekérdezés az összekapcsolt táblát előfizetési `project` erőforrásokra korlátozza, és csak az eredeti _mező-előfizetésazonosítót_ és az _Alnév_névre átnevezett _névmezőt_ tartalmazza. A mező átnevezése nem `join` adja hozzá _név1-nek,_ mivel a mező már létezik az Erőforrások _mezőben._ Az eredeti táblázat szűrése a `project` következővel `where` történik, és mindkét tábla oszlopait tartalmazza. A lekérdezés eredménye egy egy kulcstartó titulus, a kulcstartó neve, és az előfizetés neve, amelyben van.
 
 ```kusto
 Resources
@@ -59,69 +59,69 @@ Resources
 ```
 
 > [!NOTE]
-> Ha a `join` eredményeket `project`re korlátozza, a `join` által használt tulajdonságot a fenti példában szereplő két tábla _subscriptionId_ kell `project`.
+> Ha az `join` `project`eredményeket a lehetőséggel korlátozza, a két tábla `join` összefüggésére használt tulajdonságot, a fenti példában szereplő _subscriptionId azonosítót_ a részét a rendszernek kell tartalmaznia. `project`
 
 ## <a name="supported-kql-language-elements"></a>Támogatott KQL nyelvi elemek
 
-Az erőforrás-gráf támogatja az összes KQL [adattípust](/azure/kusto/query/scalar-data-types/), [skaláris függvényt](/azure/kusto/query/scalarfunctions), [skaláris operátort](/azure/kusto/query/binoperators)és [összesítési függvényt](/azure/kusto/query/any-aggfunction). Az erőforrás-gráf bizonyos [táblázatos operátorokat](/azure/kusto/query/queries) támogat, amelyek némelyike eltérő viselkedéssel rendelkezik.
+A Resource Graph támogatja az összes KQL [adattípust](/azure/kusto/query/scalar-data-types/), [skalárfüggvényt](/azure/kusto/query/scalarfunctions), [skalároperátort](/azure/kusto/query/binoperators)és [összesítési függvényt](/azure/kusto/query/any-aggfunction). A konkrét [táblázatos operátorokat a](/azure/kusto/query/queries) Resource Graph támogatja, amelyek közül néhány eltérő viselkedéssel rendelkezik.
 
 ### <a name="supported-tabulartop-level-operators"></a>Támogatott táblázatos/legfelső szintű operátorok
 
-Itt látható a KQL táblázatos operátorok listája, amelyeket az erőforrás-gráf adott mintákkal támogat:
+Itt van a Resource Graph által támogatott KQL táblázatos operátorok listája, konkrét mintákkal:
 
-|KQL |Resource Graph-minta lekérdezése |Megjegyzések |
+|KQL |Erőforrásgráf mintalekérdezése |Megjegyzések |
 |---|---|---|
-|[count](/azure/kusto/query/countoperator) |[Kulcstartók száma](../samples/starter.md#count-keyvaults) | |
-|[különböző](/azure/kusto/query/distinctoperator) |[Egy adott alias különböző értékeinek megjelenítése](../samples/starter.md#distinct-alias-values) | |
-|[kiterjesztése](/azure/kusto/query/extendoperator) |[A virtuális gépek száma az operációs rendszer típusa szerint](../samples/starter.md#count-os) | |
-|[csatlakozás](/azure/kusto/query/joinoperator) |[Key Vault előfizetés neve](../samples/advanced.md#join) |A JOIN Flavors támogatott: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Legfeljebb 3 `join` egyetlen lekérdezésben. Az egyéni csatlakoztatási stratégiák, például a szórásos csatlakozás, nem engedélyezettek. Egy táblán belül, illetve az _erőforrások_ és a _ResourceContainers_ táblák között is felhasználható. |
-|[korlátot](/azure/kusto/query/limitoperator) |[Az összes nyilvános IP-cím listázása](../samples/starter.md#list-publicip) |`take` szinonimája |
-|[mvexpand](/azure/kusto/query/mvexpandoperator) | | Örökölt operátor, használjon `mv-expand` helyette. _ROWLIMIT_ Max 400. Az alapértelmezett érték a 128. |
-|[MV – Kibontás](/azure/kusto/query/mvexpandoperator) |[Adott írási hellyel rendelkező Cosmos DB listázása](../samples/advanced.md#mvexpand-cosmosdb) |_ROWLIMIT_ Max 400. Az alapértelmezett érték a 128. |
-|[sorrendben](/azure/kusto/query/orderoperator) |[Az erőforrások listája név szerint rendezve](../samples/starter.md#list-resources) |`sort` szinonimája |
-|[projekt](/azure/kusto/query/projectoperator) |[Az erőforrások listája név szerint rendezve](../samples/starter.md#list-resources) | |
-|[projekt – vendég](/azure/kusto/query/projectawayoperator) |[Oszlopok eltávolítása az eredményekből](../samples/advanced.md#remove-column) | |
-|[Rendezés](/azure/kusto/query/sortoperator) |[Az erőforrások listája név szerint rendezve](../samples/starter.md#list-resources) |`order` szinonimája |
-|[Összegzés](/azure/kusto/query/summarizeoperator) |[Az Azure-erőforrások száma](../samples/starter.md#count-resources) |Csak egyszerűsített első oldal |
-|[eltarthat](/azure/kusto/query/takeoperator) |[Az összes nyilvános IP-cím listázása](../samples/starter.md#list-publicip) |`limit` szinonimája |
-|[Top](/azure/kusto/query/topoperator) |[Az első öt virtuális gép megjelenítése a nevük és az operációs rendszerük típusa szerint](../samples/starter.md#show-sorted) | |
-|[Union](/azure/kusto/query/unionoperator) |[Két lekérdezés eredményeinek egyetlen eredménybe való egyesítése](../samples/advanced.md#unionresults) |Önálló tábla engedélyezve: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _tábla_. Legfeljebb 3 `union` lábát egyetlen lekérdezésben. `union` lábát tartalmazó táblák fuzzy feloldása nem engedélyezett. Egy táblán belül, illetve az _erőforrások_ és a _ResourceContainers_ táblák között is felhasználható. |
-|[ahol](/azure/kusto/query/whereoperator) |[A tárolót tartalmazó erőforrások megjelenítése](../samples/starter.md#show-storage) | |
+|[Számít](/azure/kusto/query/countoperator) |[Kulcstartók megszámlálása](../samples/starter.md#count-keyvaults) | |
+|[distinct](/azure/kusto/query/distinctoperator) |[Adott alias különböző értékeinek megjelenítése](../samples/starter.md#distinct-alias-values) | |
+|[Kiterjesztése](/azure/kusto/query/extendoperator) |[A virtuális gépek száma az operációs rendszer típusa szerint](../samples/starter.md#count-os) | |
+|[csatlakozás](/azure/kusto/query/joinoperator) |[Kulcstartó előfizetésnévvel](../samples/advanced.md#join) |Csatlakoztassa ízek támogatott: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [belső](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Legfeljebb `join` 3 egy lekérdezésben. Egyéni illesztési stratégiák, például a szórásos illesztés, nem engedélyezettek. Egyetlen táblában vagy az _Erőforrások_ és _a ResourceContainers_ táblák között használható. |
+|[Korlátoz](/azure/kusto/query/limitoperator) |[Az összes nyilvános IP-cím listázása](../samples/starter.md#list-publicip) |Szinonimája`take` |
+|[mvexpand](/azure/kusto/query/mvexpandoperator) | | Örökölt operátor, `mv-expand` használja helyette. _RowLimit_ max. Az alapértelmezett érték 128. |
+|[mv-kibontás](/azure/kusto/query/mvexpandoperator) |[Cosmos DB listázása adott írási helyekkel](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ max. Az alapértelmezett érték 128. |
+|[Rendelés](/azure/kusto/query/orderoperator) |[Név szerint rendezett erőforrások listázása](../samples/starter.md#list-resources) |Szinonimája`sort` |
+|[Projekt](/azure/kusto/query/projectoperator) |[Név szerint rendezett erőforrások listázása](../samples/starter.md#list-resources) | |
+|[projekt-el](/azure/kusto/query/projectawayoperator) |[Oszlopok eltávolítása az eredményekből](../samples/advanced.md#remove-column) | |
+|[Rendezés](/azure/kusto/query/sortoperator) |[Név szerint rendezett erőforrások listázása](../samples/starter.md#list-resources) |Szinonimája`order` |
+|[Összefoglalni](/azure/kusto/query/summarizeoperator) |[Az Azure-erőforrások száma](../samples/starter.md#count-resources) |Csak egyszerűsített első oldal |
+|[venni](/azure/kusto/query/takeoperator) |[Az összes nyilvános IP-cím listázása](../samples/starter.md#list-publicip) |Szinonimája`limit` |
+|[Top](/azure/kusto/query/topoperator) |[Az első öt virtuális gép megjelenítése név és operációs rendszer típusa szerint](../samples/starter.md#show-sorted) | |
+|[Unió](/azure/kusto/query/unionoperator) |[Két lekérdezés eredményeinek egyetlen eredménybe való egyesítése](../samples/advanced.md#unionresults) |Egytábla engedélyezett: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \] _Table_ColumnName tábla . _ColumnName_ \[ `withsource=` Legfeljebb `union` 3 láb egyetlen lekérdezésben. A lábasztalok fuzzy felbontása `union` nem megengedett. Egyetlen táblában vagy az _Erőforrások_ és _a ResourceContainers_ táblák között használható. |
+|[Ahol](/azure/kusto/query/whereoperator) |[Tárolót tartalmazó erőforrások megjelenítése](../samples/starter.md#show-storage) | |
 
-## <a name="escape-characters"></a>Escape-karakterek
+## <a name="escape-characters"></a>Escape karakterek
 
-Egyes tulajdonságnév, például `.` vagy `$`belefoglalása szükséges, a lekérdezésben kell becsomagolni vagy megszökni, vagy a tulajdonság neve helytelenül van értelmezve, és nem biztosítja a várt eredményeket.
+Egyes tulajdonságneveket, például `.` azokat, amelyek egy vagyt `$`tartalmaznak, a lekérdezésben be kell csomagolni vagy meg kell kerülni, vagy a tulajdonság nevét helytelenül értelmezi a rendszer, és nem adja meg a várt eredményt.
 
-- `.` – a tulajdonság nevét csomagolja be: `['propertyname.withaperiod']`
+- `.`- A tulajdonság nevét a következőképpen csomagolja be:`['propertyname.withaperiod']`
   
-  Példa lekérdezésre, amely a OData tulajdonságot csomagolja _. írja be a következőt_:
+  Példa lekérdezésre, amely az _odata.type_tulajdonságot tördeli:
 
   ```kusto
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- `$` – escape a tulajdonság nevében szereplő karakter. A használatban lévő escape-karakter a rendszerhéj-erőforrás Gráftól függ.
+- `$`- Escape a karakter a tulajdonság nevét. A használt escape karakter attól függ, hogy a rendszerhéj Resource Graph fut.
 
-  - **bash** - `\`
+  - **Bash** - `\`
 
-    Példa olyan lekérdezésre, amely megmenekül a _\$típus_ a bash-ben:
+    Példa lekérdezésre, amely _ \$_ elkerüli a tulajdonság típusát a bash-ben:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
     ```
 
-  - **cmd** – ne elkerülje a `$` karaktert.
+  - **cmd** - Ne meneküljön a `$` karakter.
 
-  - **PowerShell** - - ``` ` ```
+  - **Powershell** - ``` ` ```
 
-    Példa olyan lekérdezésre, amely megmenekül a tulajdonság _\$típus_ a PowerShellben:
+    Példa lekérdezésre, amely elkerüli a _ \$tulajdonságtípusát_ a PowerShellben:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
-- Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).
-- További információ az [erőforrások feltárásáról](explore-resources.md).
+- Tekintse meg a használt nyelvet az [Indítólekérdezésekben.](../samples/starter.md)
+- Lásd: Speciális használat a [Speciális lekérdezésekben.](../samples/advanced.md)
+- További információ az [erőforrások felfedezéséről.](explore-resources.md)
