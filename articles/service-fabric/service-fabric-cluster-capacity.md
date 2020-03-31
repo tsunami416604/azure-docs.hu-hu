@@ -1,206 +1,206 @@
 ---
-title: A Service Fabric-fürt kapacitásának megtervezése
-description: Service Fabric a fürt kapacitásának tervezési szempontjait. Nodetypes, üzemeltetés, tartósság és megbízhatósági szintek
+title: A Service Fabric fürtkapacitásának megtervezése
+description: Service Fabric fürt kapacitástervezési szempontok. Nodetypes, Operations, Tartósság és Megbízhatóság szintek
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: pepogors
 ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258914"
 ---
-# <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric a fürt kapacitásának tervezési szempontjait
-Az éles üzembe helyezéshez a kapacitás megtervezése fontos lépés. Íme néhány olyan elem, amelyet a folyamat részeként kell figyelembe vennie.
+# <a name="service-fabric-cluster-capacity-planning-considerations"></a>A Service Fabric fürtkapacitás-tervezési szempontjai
+A kapacitástervezés az éles rendszerek üzembe helyezésének lényeges lépése. Íme néhány elem, amelyet figyelembe kell vennie a folyamat részeként.
 
-* Azon csomópont-típusok száma, amelyeknek a fürtnek el kell indulnia
-* Az egyes csomópontok típusának tulajdonságai (méret, elsődleges, internet felé irányuló, virtuális gépek száma stb.)
+* Azoknak a csomóponttípusoknak a száma, amelyekkel a fürtnek el kell indulnia
+* Az egyes csomóponttípusok tulajdonságai (méret, elsődleges, internetezés, virtuális gépek száma stb.)
 * A fürt megbízhatóságra és tartósságra vonatkozó jellemzői.
 
 > [!NOTE]
-> A tervezés során minimálisan ellenőrizze az összes **nem engedélyezett** frissítési szabályzat értékét. Ezzel a beállítással biztosíthatja, hogy a rendszer megfelelően állítsa be a megfelelő értékeket, és csökkentse a fürt elégetését később, a nem módosítható rendszerkonfigurációs beállítások miatt. 
+> A tervezés során minimálisan tekintse át az összes **nem engedélyezett** frissítési házirend-értéket. Ez biztosítja, hogy megfelelően állítsa be az értékeket, és csökkentse a fürt későbbi leégetését a változatlan rendszerkonfigurációs beállítások miatt. 
 > 
 
-Röviden tekintsük át ezeket az elemeket.
+Nézzük röviden át tekintsük ezeket a tételeket.
 
-## <a name="the-number-of-node-types-your-cluster-needs-to-start-out-with"></a>Azon csomópont-típusok száma, amelyeknek a fürtnek el kell indulnia
-Először is meg kell állapítania, hogy a létrehozandó fürt milyen módon lesz használatban.  Milyen típusú alkalmazásokat kíván telepíteni a fürtbe? Ha nem törli a fürt célját, valószínűleg még nem áll készen a kapacitás-tervezési folyamat megadására.
+## <a name="the-number-of-node-types-your-cluster-needs-to-start-out-with"></a>Azoknak a csomóponttípusoknak a száma, amelyekkel a fürtnek el kell indulnia
+Először ki kell találnia, hogy a létrehozott fürt mire lesz használva.  Milyen típusú alkalmazásokat tervez telepíteni a fürtbe? Ha nem egyértelmű a fürt célja, akkor valószínűleg még nem áll készen a kapacitástervezési folyamatba való belépésre.
 
-Határozza meg, hogy a fürt hány csomópont-típust kell elindítania.  Mindegyik csomópont-típus egy virtuálisgép-méretezési csoportra van leképezve. Ezután mindegyik csomóponttípus egymástól függetlenül skálázható vertikálisan le vagy fel, eltérő nyitott portokkal rendelkezhet, és eltérő kapacitásmetrikái lehetnek. Ezért a csomópont-típusok számának döntése alapvetően a következő szempontokat követi:
+Adja meg, hogy a fürtnek hány csomóponttípussal kell elindulnia.  Minden csomóponttípus egy virtuálisgép-méretezési csoporthoz van rendelve. Ezután mindegyik csomóponttípus egymástól függetlenül skálázható vertikálisan le vagy fel, eltérő nyitott portokkal rendelkezhet, és eltérő kapacitásmetrikái lehetnek. Tehát a csomóponttípusok számának döntése lényegében a következő megfontolásokon múlik:
 
-* Az alkalmazása több szolgáltatással rendelkezik, és ezek közül bármelyiknek nyilvánosnak vagy internetkapcsolatnak kell lennie? A tipikus alkalmazások olyan előtér-átjáró szolgáltatást tartalmaznak, amely egy ügyféltől érkező adatokat fogad, valamint egy vagy több háttér-szolgáltatást, amely az előtér-szolgáltatásokkal kommunikál. Így ebben az esetben a befejezéshez legalább két csomópont-típust kell beállítania.
-* Különböző infrastrukturális igényeket (például nagyobb RAM-ot vagy magasabb CPU-ciklusokat) igényelnek a szolgáltatásai (az alkalmazást alkotó alkalmazások)? Tegyük fel például, hogy a telepíteni kívánt alkalmazás előtér-szolgáltatást és háttér-szolgáltatást tartalmaz. Az előtér-szolgáltatás a kisebb méretű virtuális gépeken (például a D2-ben) is futtatható, amelyeken a portok nyitva vannak az interneten.  A háttérben futó szolgáltatás azonban nagy számítási igényű, és nagyobb méretű virtuális gépeken (például D4, D6, D15) kell futnia, amelyek nem az internetkapcsolattal rendelkeznek.
+* Az alkalmazás több szolgáltatással rendelkezik, és bármelyiknek nyilvánosnak vagy internettel szemben kell lennie? A tipikus alkalmazások egy előtér-átjárószolgáltatást tartalmaznak, amely bemenetet fogad egy ügyféltől és egy vagy több háttérszolgáltatástól, amelyek az előtér-szolgáltatásokkal kommunikálnak. Tehát ebben az esetben, ha a végén, hogy legalább két csomópont típusok.
+* A szolgáltatások (amelyek az alkalmazást alkotják) különböző infrastruktúra-igényeket, például nagyobb RAM-mal vagy nagyobb CPU-ciklusokkal rendelkeznek? Tegyük fel például, hogy a telepíteni kívánt alkalmazás egy előtér-szolgáltatást és egy háttérszolgáltatást tartalmaz. Az előtér-szolgáltatás kisebb virtuális gépeken (például D2-hez hasonló virtuális gépeken) futtatható, amelyek portjai nyitva állnak az interneten.  A háttérszolgáltatás azonban számításigényes, és nagyobb virtuális gépeken kell futnia (olyan virtuális gépméretekkel, mint a D4, D6, D15), amelyek nem az internetfelé néznek.
   
-  Ebben a példában úgy is dönthet, hogy az összes szolgáltatást egy csomópont-típuson helyezi el, ezért azt javasoljuk, hogy egy két csomóponttal rendelkező fürtbe helyezze őket.  Ez lehetővé teszi, hogy az egyes csomópont-típusok különböző tulajdonságokkal rendelkezzenek, például az internetkapcsolat vagy a virtuális gép méretével. A virtuális gépek száma egymástól függetlenül méretezhető.  
-* Mivel nem tudja megjósolni a jövőt, tekintse meg a tényeket, és válassza ki, hogy hány csomópont-típust kell kezdenie az alkalmazásokhoz. Később bármikor hozzáadhat vagy eltávolíthat csomópont-típusokat. Egy Service Fabric fürtnek legalább egy csomópont-típussal kell rendelkeznie.
+  Ebben a példában, bár dönthet úgy, hogy az összes szolgáltatást egy csomóponttípusra helyezi, azt javasoljuk, hogy helyezze el őket egy fürtkét csomóponttípussal.  Ez lehetővé teszi, hogy minden csomóponttípus különböző tulajdonságokkal rendelkezik, például az internetkapcsolattal vagy a virtuális gép méretével. A virtuális gépek száma egymástól függetlenül is méretezhető.  
+* Mivel nem tudja megjósolni a jövőt, menjen a tényeket, tudod, és válassza ki, hogy hány csomóponttípusok, hogy az alkalmazások kell kezdeni. Később bármikor hozzáadhat vagy eltávolíthat csomóponttípusokat. A Service Fabric-fürtnek legalább egy csomóponttípussal kell rendelkeznie.
 
-## <a name="the-properties-of-each-node-type"></a>Az egyes csomópontok típusának tulajdonságai
-A **csomópont típusa** a Cloud Services szerepköreinek megfelelőként tekinthető meg. A csomópontok típusai határozzák meg a virtuálisgép-méreteket, a virtuális gépek számát és a tulajdonságaikat. Minden Service Fabric fürtben definiált csomópont-típus egy [virtuálisgép-méretezési csoportra](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)mutat.  
-Az egyes csomópont-típusok külön méretezési csoportok, amelyek egymástól függetlenül méretezhetők, különböző portokat nyitnak meg, és különböző kapacitási metrikákkal rendelkeznek. További információ a csomópontok típusai és a virtuálisgép-méretezési csoportok közötti kapcsolatokról, az RDP-nek az egyik példányhoz való használatáról, az új portok megnyitásáról és így tovább: [Service Fabric fürtcsomópontok típusai](service-fabric-cluster-nodetypes.md).
+## <a name="the-properties-of-each-node-type"></a>Az egyes csomóponttípusok tulajdonságai
+A **csomóponttípus** a felhőszolgáltatások szerepköreivel egyenértékűnek tekinthető. A csomóponttípusok határozzák meg a virtuális gép méretét, a virtuális gépek számát és azok tulajdonságait. A Service Fabric-fürtben definiált minden csomóponttípus [egy virtuálisgép-méretezési csoportra van leképezve.](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)  
+Minden csomóponttípus egy különálló méretezési csoport, és egymástól függetlenül skálázható fel- vagy leskálázható, különböző portkészleteket nyithat meg, és különböző kapacitási metrikákkal rendelkezhet. A csomóponttípusok és a virtuálisgép-méretezési csoportok közötti kapcsolatokról, az RDP egyik példányba való bekapcsolásáról, az új portok megnyitásáról [stb.](service-fabric-cluster-nodetypes.md)
 
-Egy Service Fabric-fürt több csomópont-típusból állhat. Ebben az esetben a fürt egy elsődleges csomópont-típusból és egy vagy több nem elsődleges csomópontból áll.
+A Service Fabric-fürt egynél több csomóponttípusból állhat. Ebben az esetben a fürt egy elsődleges csomóponttípusból és egy vagy több nem elsődleges csomóponttípusból áll.
 
-Az egycsomópontos típusok nem tudják megbízhatóan méretezni a virtuálisgép-méretezési csoporton túli 100-csomópontok számát az SF-alkalmazásokhoz. Ha a 100-nél több csomópontot szeretne megbízhatóan elérni, további virtuálisgép-méretezési csoportokat kell hozzáadnia.
+Egyetlen csomóponttípus nem tudja megbízhatóan átméretezni az SF-alkalmazások virtuálisgép-méretezési csoportjánként 100 csomópontot meghaladó méretet; a 100-nál megbízhatóan elérhető, további virtuálisgép-méretezési csoportok hozzáadásához szükséges.
 
 ### <a name="primary-node-type"></a>Elsődleges csomópont típusa
 
-A Service Fabric rendszerszolgáltatások (például a Fürtfelügyelő szolgáltatás vagy a lemezképtároló szolgáltatás) az elsődleges csomópont típusára kerülnek. 
+A Service Fabric rendszerszolgáltatások (például a Cluster Manager szolgáltatás vagy image store szolgáltatás) kerülnek az elsődleges csomópont típusa. 
 
-![Képernyőfelvétel két csomóponttal rendelkező fürtről][SystemServices]
+![Képernyőkép egy két csomóponttípussal rendelkező fürtről][SystemServices]
 
-* Az elsődleges csomópont típusához tartozó **virtuális gépek minimális méretét** a választott **tartóssági szint** határozza meg. Az alapértelmezett tartóssági szintje bronz. További részletekért tekintse meg a [fürt tartóssági jellemzőit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) .  
-* Az elsődleges csomópont típusához tartozó **virtuális gépek minimális számát** a választott **megbízhatósági szint** határozza meg. Az alapértelmezett megbízhatósági szintek az ezüst. További részletekért tekintse meg a [fürt megbízhatósági jellemzőit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) .  
+* Az elsődleges csomóponttípus **virtuális gépeinek minimális méretét** a választott **tartóssági szint** határozza meg. Az alapértelmezett tartóssági szint a Bronz. További részletekért [lásd a fürt tartóssági jellemzőit.](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)  
+* Az elsődleges csomóponttípus **virtuális gépeinek minimális számát** a kiválasztott **megbízhatósági szint** határozza meg. Az alapértelmezett megbízhatósági szint a Silver. További részletek [a fürt megbízhatósági jellemzői.](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)  
 
-A Azure Resource Manager sablonban az elsődleges csomópont típusa az `isPrimary` attribútummal van konfigurálva a [csomópont típusa definíciójában](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object).
+Az Azure Resource Manager sablonból az elsődleges csomóponttípusa a `isPrimary` [csomóponttípus-definíció](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object)alatt található attribútummal van konfigurálva.
 
-### <a name="non-primary-node-type"></a>Nem elsődleges csomópont típusa
+### <a name="non-primary-node-type"></a>Nem elsődleges csomóponttípus
 
-Egy több csomópontot tartalmazó fürtben van egy elsődleges csomópont típusa, a többi pedig nem elsődleges.
+A több csomóponttípussal rendelkező fürtben egy elsődleges csomóponttípus van, a többi pedig nem elsődleges.
 
-* A nem elsődleges csomópont típusú **virtuális gépek minimális méretét** a választott **tartóssági szint** határozza meg. Az alapértelmezett tartóssági szintje bronz. További információ: a [fürt tartóssági jellemzői](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).  
-* A nem elsődleges csomópont típusú **virtuális gépek minimális száma** egy. Ezt a számot azonban az ebben a csomópont-típusban futtatni kívánt alkalmazás/szolgáltatások replikáinak száma alapján kell kiválasztani. A csomópont-típusban lévő virtuális gépek száma a fürt üzembe helyezése után növelhető.
+* A virtuális **gépek minimális méretét** a nem elsődleges csomóponttípusok hoz a választott **tartóssági szint** határozza meg. Az alapértelmezett tartóssági szint a Bronz. További információ: [A fürt tartóssági jellemzői.](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)  
+* A nem elsődleges csomóponttípusok **virtuális gépeinek minimális száma** egy. Ezt a számot azonban az ebben a csomóponttípusban futtatni kívánt alkalmazás/szolgáltatások replikáinak száma alapján kell kiválasztania. A csomóponttípusban lévő virtuális gépek száma növelhető a fürt üzembe helyezése után.
 
-## <a name="the-durability-characteristics-of-the-cluster"></a>A fürt tartóssági jellemzői
-A tartóssági szint azt jelzi, hogy a rendszer a virtuális gépek által a mögöttes Azure-infrastruktúrához tartozó jogosultságokat használja. Az elsődleges csomópont típusában ez a jogosultság lehetővé teszi, hogy a Service Fabric szüneteltetni lehessen a rendszerszolgáltatások és az állapot-nyilvántartó szolgáltatások Kvórumának követelményeit érintő virtuálisgép-szintű infrastruktúra-kérelmeket (például a virtuális gépek újraindítását, a virtuális gépek rendszerképét vagy a virtuális gépek áttelepítését). A nem elsődleges csomópontok típusainál ez a jogosultság lehetővé teszi, hogy a Service Fabric szüneteltetni lehessen a virtuálisgép-szintű infrastruktúra-kérelmeket (például a virtuális gépek újraindítását, a virtuális gép rendszerképét és a virtuális gépek áttelepítését), amelyek hatással vannak az állapot-nyilvántartó szolgáltatásokra
+## <a name="the-durability-characteristics-of-the-cluster"></a>A fürt tartósságára vonatkozó jellemzők
+A tartóssági szint jelzi a rendszer számára a virtuális gépek az alapul szolgáló Azure-infrastruktúrával rendelkező jogosultságokat. Az elsődleges csomópont típusában ez a jogosultság lehetővé teszi, hogy a Service Fabric szüneteltesse a virtuális gép szintű infrastruktúra-kérelmek (például a virtuális gép újraindítása, virtuális gép újraképzése vagy virtuális gép áttelepítése), amelyek hatással vannak a rendszerszolgáltatások és az állapotalapú szolgáltatások kvórumkövetelményeinek. A nem elsődleges csomóponttípusok, ez a jogosultság lehetővé teszi, hogy a Service Fabric szüneteltesse a virtuálisgép-szintű infrastruktúra-kérelmek (például a virtuális gép újraindítása, virtuális gép újraképe és a virtuális gép áttelepítése), amelyek hatással vannak az állapotalapú szolgáltatások kvórumkövetelményeinek.
 
-| Tartóssági szintek  | A virtuális gépek minimálisan szükséges száma | Támogatott VM-beli SKU-ket                                                                  | A virtuálisgép-méretezési csoporton elérhető frissítések                               | Az Azure által kezdeményezett frissítések és karbantartás                                                              | 
+| Tartóssági szint  | A virtuális gépek minimális minimális száma | Támogatott VM SKUs                                                                  | A virtuálisgép-méretezési csoport frissítései                               | Az Azure által kezdeményezett frissítések és karbantartások                                                              | 
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| Arany             | 5                              | Egyetlen ügyfél számára dedikált teljes csomópontos SKU-EK (például L32s, GS5, G5, DS15_v2, D15_v2) | A Service Fabric-fürt általi jóváhagyásig késleltethető | Akár 2 óráig is szüneteltethető, így a replikák a korábbi hibák miatt további időt is igénybe vehetnek. |
-| Ezüst           | 5                              | Egymagos vagy annál újabb virtuális gépek legalább 50 GB helyi SSD-vel                      | A Service Fabric-fürt általi jóváhagyásig késleltethető | Nem késleltethető jelentős időszakra                                                    |
-| Bronz           | 1                              | Legalább 50 GB helyi SSD-vel rendelkező virtuális gépek                                              | Nem késlelteti a Service Fabric-fürt           | Nem késleltethető jelentős időszakra                                                    |
+| Arany             | 5                              | Egyetlen ügyfélnek szentelt teljes csomópontos suk-ok (például L32s, GS5, G5, DS15_v2, D15_v2) | A Service Fabric-fürt által idáig elhalasztható | Ud-onként 2 órán keresztül szüneteltethető, így a kópiák nak további időt kell hagynia a korábbi hibák helyreállítására |
+| Ezüst           | 5                              | Egymagos vagy annál magasabb magú virtuális gépek legalább 50 GB helyi SSD-vel                      | A Service Fabric-fürt által idáig elhalasztható | Nem késleltethető jelentős ideig                                                    |
+| Bronz           | 1                              | Legalább 50 GB helyi SSD-vel rendelkező virtuális gépek                                              | A Service Fabric-fürt nem késlelteti           | Nem késleltethető jelentős ideig                                                    |
 
 > [!WARNING]
-> A bronz tartóssággal futó csomópont-típusok _nem kapnak jogosultságot_. Ez azt jelenti, hogy az állapot-nyilvántartó számítási feladatokat befolyásoló infrastrukturális feladatok nem lesznek leállítva vagy késleltetve, ami hatással lehet a számítási feladatokra. Csak az állapot nélküli munkaterheléseket futtató csomópont-típusok esetében használjon Bronzat. Az éles számítási feladatokhoz a Silver vagy a Above futtatása ajánlott. 
+> A Bronz tartóssággal futó csomóponttípusok _nem kapnak jogosultságokat._ Ez azt jelenti, hogy az állapotalapú számítási feladatokat befolyásoló infrastruktúra-feladatok nem lesznek leállítva vagy késve, ami hatással lehet a számítási feladatokra. Csak bronz ot használjon olyan csomóponttípusokhoz, amelyek csak állapot nélküli számítási feladatokat futtatnak. Éles számítási feladatok hoz, Silver vagy annál magasabb futtatása ajánlott. 
 > 
-> Bármilyen tartóssági szinttől függetlenül a virtuálisgép-méretezési csoport [felszabadítási](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) művelete el fogja pusztítani a fürtöt.
+> A tartóssági szinttől függetlenül a virtuálisgép-méretezési csoporton a [kiosztási](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) művelet megsemmisíti a fürtöt
 
 **Az ezüst vagy arany tartóssági szintek használatának előnyei**
  
-- Csökkenti a szükséges lépések számát a méretezési műveletekben (azaz a csomópont inaktiválása és a Remove-ServiceFabricNodeState automatikusan történik).
-- Csökkenti az adatvesztés kockázatát az ügyfél által kezdeményezett, helyi virtuálisgép-módosítási művelet vagy az Azure-infrastruktúra műveletei miatt.
+- Csökkenti a szükséges lépések számát egy horizontális felskálázási műveletben (azaz a csomópont inaktiválása és az Eltávolítás-ServiceFabricNodeState automatikusan van meghívva).
+- Csökkenti az adatvesztés kockázatát az ügyfél által kezdeményezett virtuális gép termékváltozatának módosítása vagy az Azure-infrastruktúra-műveletek miatt.
 
-**Az ezüst vagy arany tartóssági szintek használatának hátránya**
+**Az ezüst vagy arany tartóssági szintek használatának hátrányai**
  
-- A virtuálisgép-méretezési csoportra és más kapcsolódó Azure-erőforrásokra való üzembe helyezések késleltethető, időtúllépést okozhatnak, vagy a fürtben vagy az infrastruktúra szintjén is teljes mértékben letiltható. 
-- Növeli a replika- [életciklus eseményeinek](service-fabric-reliable-services-lifecycle.md) (például az elsődleges swapok) számát az Azure-infrastruktúra műveletei során felmerülő automatizált csomópont-inaktiválások miatt.
-- Az Azure platform szoftverfrissítések vagy a hardveres karbantartási tevékenységek ideje alatt a csomópontokon kívüli szolgáltatások is igénybe vesznek. Ezen tevékenységek során előfordulhat, hogy a letiltási/letiltási állapotú csomópontok láthatók. Ez csökkenti a fürt kapacitását átmenetileg, de nem befolyásolja a fürt vagy az alkalmazások rendelkezésre állását.
+- A virtuális gép méretezési csoportjába és más kapcsolódó Azure-erőforrásokra történő központi telepítések késleltethetők, időtúlodhatnak, vagy teljes mértékben blokkolhatók a fürtben vagy az infrastruktúra szintjén felmerülő problémák. 
+- Növeli a [replika életciklus-események](service-fabric-reliable-services-lifecycle.md) (például elsődleges swap) az Azure-infrastruktúra-műveletek során az automatikus csomópont-inaktiválások miatt.
+- A csomópontokat egy ideig üzemen kívüli reked, amíg az Azure platform szoftverfrissítései vagy hardverkarbantartási tevékenységei megtörténnek. Ezeka tevékenységek során előfordulhat, hogy a letiltó/letiltott állapotú csomópontok jelennek meg. Ez ideiglenesen csökkenti a fürt kapacitását, de nem befolyásolja a fürt vagy az alkalmazások rendelkezésre állását.
 
-### <a name="recommendations-for-when-to-use-silver-or-gold-durability-levels"></a>Javaslatok az ezüst vagy arany tartóssági szintek használatára
+### <a name="recommendations-for-when-to-use-silver-or-gold-durability-levels"></a>Ajánlások az ezüst vagy arany tartóssági szintek használatára vonatkozóan
 
-Használja az ezüst vagy a arany tartósságot az összes olyan csomópont-típushoz, amely a méretezéshez várhatóan (a virtuálisgép-példányok számának csökkentése) a várt állapot-nyilvántartó szolgáltatásokat tárolja Operations. A kibővíthető forgatókönyvek (virtuális gépek példányainak hozzáadásával) nem játszhatók le a tartóssági szinten, csak a méretezési lehetőségekkel.
+Használja ezüst vagy arany tartósság minden csomópont-típusok, amelyek a fogadó állapotalapú szolgáltatások várhatóan a méretezési (csökkenti a virtuális gép példányok száma) gyakran, és szeretné, hogy a telepítési műveletek késik, és a kapacitás csökkenteni kell az egyszerűsítése érdekében ezek a méretezési Műveletek. A horizontális felskálázási forgatókönyvek (virtuális géppéldányok hozzáadása) nem játszanak a választott tartóssági réteg, csak a horizontális felskálázás nem.
 
-### <a name="changing-durability-levels"></a>Tartóssági szintek módosítása
-- Az ezüst vagy arany tartóssági szinttel rendelkező csomópont-típusok nem állíthatók vissza a Bronzra.
-- A bronzról ezüstre vagy arannyal való frissítés néhány órát is igénybe vehet.
-- A tartóssági szint módosításakor ügyeljen arra, hogy a virtuálisgép-méretezési csoport erőforrásában lévő Service Fabric-bővítmény konfigurációjában, valamint a Service Fabric-fürterőforrás csomópont-típus definíciójában is frissítse azt. Ezeknek az értékeknek egyezniük kell.
+### <a name="changing-durability-levels"></a>A tartóssági szintek változása
+- Az ezüst vagy arany tartóssági szinttel rendelkező csomóponttípusok nem minősíthetők bronzra.
+- A bronzról ezüstre vagy aranyra való frissítés néhány órát is igénybe vehet.
+- Tartóssági szint módosításakor győződjön meg róla, hogy frissítse azt mind a Service Fabric-bővítmény konfigurációját a virtuális gép méretezési készlet erőforrásában, és a csomópont típusdefiníciójában a Service Fabric fürterőforrásban. Ezeknek az értékeknek egyezniük kell.
 
-### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Működési javaslatok az ezüst vagy arany tartóssági szintre beállított csomópont-típushoz.
+### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Az ezüst vagy arany tartóssági szintre beállított csomóponttípus működési javaslatai.
 
-- Mindig kifogástalan állapotban tarthatja a fürtjét és az alkalmazásait, és gondoskodhat arról, hogy az alkalmazások az összes [szolgáltatás-replika életciklus-eseményre](service-fabric-reliable-services-lifecycle.md) válaszoljanak (például a buildben található replika beragadva).
-- A virtuális gép SKU-jának módosításának biztonságosabbá tétele (vertikális felskálázás): a virtuálisgép-méretezési csoport VM SKU-jának módosítása számos lépést és szempontot igényel. Itt látható a gyakori problémák elkerülésére szolgáló folyamat.
-    - **Nem elsődleges csomópontok típusai esetén:** Javasoljuk, hogy hozzon létre új virtuálisgép-méretezési készletet, módosítsa a szolgáltatás elhelyezésére vonatkozó korlátozást, hogy tartalmazza az új virtuálisgép-méretezési csoport/csomópont-típust, majd csökkentse a régi virtuálisgép-méretezési csoport példányainak számát nulla értékre, egyszerre egy csomópontra (ez biztosítja, hogy a csomópontok eltávolítása ne befolyásolja a fürt megbízhatóságát).
-    - **Az elsődleges csomópont típusa:** Ha a kiválasztott virtuálisgép-SKU kapacitással rendelkezik, és egy nagyobb virtuálisgép-SKU-ra szeretne váltani, kövesse az [elsődleges csomópont típusának vertikális skálázásra vonatkozó](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type)útmutatását. 
+- A fürt és az alkalmazások mindig kifogástalan állapotban, és győződjön meg arról, hogy az alkalmazások reagálnak az összes [szolgáltatás replika életciklus-események](service-fabric-reliable-services-lifecycle.md) (például a replika buildbe van ragasztva) időben.
+- A virtuális gép termékváltozatának módosításával biztonságosabb módszereket alkalmazhat (Fel-fel/le skálázás): A virtuálisgép-méretezési csoport virtuálisgép-méretezési készlet virtuálisgép-termékváltozatának módosítása számos lépést és szempontot igényel. Itt van a folyamat, amit követhet, hogy elkerülje a gyakori problémákat.
+    - **Nem elsődleges csomóponttípusok esetén:** Javasoljuk, hogy hozzon létre új virtuálisgép-méretezési készletet, módosítsa a szolgáltatáselhelyezési megkötést, hogy tartalmazza az új virtuálisgép-méretezési készlet/csomópont típust, majd csökkentse a régi virtuálisgép-méretezési példány számát nullára, egyszerre egy csomópontra (ez annak biztosítása, hogy a csomópontok eltávolítása ne befolyásolja a fürt megbízhatóságát).
+    - **Az elsődleges csomóponttípushoz:** Ha a kiválasztott virtuális gép termékváltozat kapacitása van, és nagyobb virtuálisgép-termékváltozatra szeretne váltani, kövesse az [elsődleges csomóponttípus vertikális skálázásra](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type)vonatkozó útmutatásunkat. 
 
-- Legalább öt csomópontot kell fenntartania minden olyan virtuálisgép-méretezési csoportnál, amelynél a tartóssági szint (arany vagy ezüst) engedélyezve van.
-- Az ezüst vagy arany tartóssági szinttel rendelkező virtuálisgép-méretezési csoportoknak a Service Fabric fürtben lévő saját csomópont-típusra kell leképezniük. Több virtuálisgép-méretezési csoport egyetlen csomópontos típusra való leképezése megakadályozza a Service Fabric-fürt és az Azure-infrastruktúra megfelelő működésének összehangolását.
-- Ne törölje a véletlenszerű virtuálisgép-példányokat, mindig használja a virtuálisgép-méretezési csoport méretezési funkcióját. A véletlenszerű virtuálisgép-példányok törlésének lehetősége van a virtuálisgép-példányok által az UD és az FD-ban elterjedt egyenlőtlenségek létrehozására. Ez az egyensúlyhiány hátrányosan befolyásolhatja, hogy a rendszer képes legyen a szolgáltatás példányainak vagy szolgáltatás-replikái közötti megfelelő terheléselosztásra.
-- Ha az autoscale-t használja, akkor állítsa be azokat a szabályokat, amelyek (a virtuálisgép-példányok eltávolításával) a skálázást végzik, egyszerre csak egy csomópontot végeznek. Egyszerre legfeljebb egy példány skálázása nem biztonságos.
-- Ha a virtuális gépeket az elsődleges csomópont típusa szerint törli vagy felszabadítja, soha ne csökkentse a kiosztott virtuális gépek számát, amely alatt a megbízhatósági réteg szükséges. Ezeket a műveleteket a rendszer határozatlan ideig blokkolja egy olyan méretezési csoportnál, amelynek tartóssági szintje ezüst vagy arany.
+- Legalább öt csomópontot tart fenn minden olyan virtuálisgép-méretezési készlethez, amelynek tartóssági szintje engedélyezve van az Arany vagy ezüst értékhez.
+- Minden virtuális gép méretezési szint beállítása tartóssági szint ezüst vagy arany kell leképezni a saját csomópont típusát a Service Fabric-fürtben. Több virtuálisgép-méretezési csoport egyetlen csomóponttípusra történő leképezése megakadályozza a Service Fabric-fürt és az Azure-infrastruktúra közötti koordináció megfelelő működését.
+- Ne törölje a véletlenszerű virtuálisgép-példányokat, mindig használja a virtuális gép méretezési készletének leskálázási szolgáltatását. A véletlenszerű virtuálisgép-példányok törlése rendelkezik azzal a potenciállal, hogy a virtuálisgép-példányban az UD és az FD között elosztva egyensúlyhiányok létrehozása. Ez a kiegyensúlyozatlanság hátrányosan befolyásolhatja a rendszer azon képességét, hogy megfelelően terheléselosztás között a szolgáltatás példányok/szolgáltatás replikák.
+- Automatikus skálázás használata esetén állítsa be a szabályokat úgy, hogy a skálázás (virtuálisgép-példányok eltávolítása) egyszerre csak egy csomóponttörténik. Egyszerre több példány leskálázása nem biztonságos.
+- Ha az elsődleges csomóponttípuson lévő virtuális gépek törlése vagy felosztása, soha ne csökkentse a lefoglalt virtuális gépek számát a megbízhatósági szint által igényelt szint alá. Ezek a műveletek határozatlan ideig blokkolva lesznek egy ezüst vagy arany tartóssági szinttel rendelkező méretezési készletben.
 
 ## <a name="the-reliability-characteristics-of-the-cluster"></a>A fürt megbízhatósági jellemzői
-A megbízhatósági szint azon rendszerszolgáltatások replikáinak a megadására szolgál, amelyeket ebben a fürtben szeretne futtatni az elsődleges csomópont típusán. Minél több replikát, annál megbízhatóbb a rendszerszolgáltatások a fürtben.  
+A megbízhatósági szint a fürtben az elsődleges csomóponttípuson futtatni kívánt rendszerszolgáltatások replikáinak számát állítja be. Minél több a replikák száma, annál megbízhatóbbak a rendszerszolgáltatások a fürtben.  
 
-A megbízhatósági szintek a következő értékeket vehetik igénybe:
+A megbízhatósági szint a következő értékeket veheti fel:
 
-* Platinum – a rendszerszolgáltatások futtatása a célként megadott replikakészlet kilencnél több számával
-* Gold – a rendszerszolgáltatások futtatása egy célként megadott replikakészlet-készlettel hét
-* Silver – a rendszerszolgáltatások futtatása a célként megadott replikakészlet öt értékének számával 
-* Bronz – a rendszerszolgáltatások futtatása a célként megadott replikakészlet három számával
+* Platina – A rendszerszolgáltatások futtatása kilenc célreplikakészletszámmal
+* Arany – A rendszerszolgáltatások futtatása hét célreplikakészletszámmal
+* Ezüst – A rendszerszolgáltatások futtatása öt célreplikakészletszámmal 
+* Bronz – A rendszerszolgáltatások futtatása három célreplika-készletszámmal
 
 > [!NOTE]
-> A kiválasztott megbízhatósági szint határozza meg, hogy az elsődleges csomópont típusának milyen csomópontok minimális száma szükséges. 
+> A kiválasztott megbízhatósági szint határozza meg az elsődleges csomóponttípusáltal rendelkeznie kívánt csomópontok minimális számát. 
 > 
 > 
 
-### <a name="recommendations-for-the-reliability-tier"></a>A megbízhatósági szintű javaslatok
+### <a name="recommendations-for-the-reliability-tier"></a>Ajánlások a megbízhatósági szintre vonatkozóan
 
-A fürt méretének növelése vagy csökkentése (a virtuálisgép-példányok száma az összes csomópontban) a fürt megbízhatóságát az egyik rétegről egy másikra kell frissítenie. Ennek hatására a rendszer elindítja a fürt frissítéseit a rendszerszolgáltatások replikáinak számának módosításához. Várjon, amíg a frissítés befejeződik, mielőtt bármilyen más módosítást hajt végre a fürtön, például csomópontok hozzáadását.  A frissítés előrehaladását Service Fabric Explorer vagy a [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) futtatásával figyelheti.
+Ha növeli vagy csökkenti a fürt méretét (a virtuálisgép-példányok összegét az összes csomóponttípusban), frissítenie kell a fürt megbízhatóságát az egyik rétegről a másikra. Ezzel elindítja a rendszerszolgáltatások replikakészletszámának módosításához szükséges fürtfrissítéseket. Várja meg, amíg a folyamatban lévő frissítés befejeződik, mielőtt bármilyen más módosítást végezne a fürtön, például csomópontok hozzáadása.  A frissítés előrehaladását a Service Fabric Explorer böngészőben vagy a [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) futtatásával figyelheti
 
-A megbízhatósági szintet a következő javaslat alapján választhatja ki.  A magok csomópontjainak számát a megbízhatósági szint csomópontjainak minimális száma is beállítja.  Az arany megbízhatóságú fürtök esetében például 7 mag csomópont található.
+Itt van a megbízhatósági szint kiválasztására vonatkozó javaslat.  A magcsomópontok száma is a megbízhatósági szint minimális csomópontjainak száma.  Például egy fürt Gold megbízhatósággal vannak 7 mag csomópontok.
 
-| **Fürtcsomópontok száma** | **Megbízhatósági szintek** |
+| **Fürtcsomópontok száma** | **Megbízhatósági szint** |
 | --- | --- |
-| 1 |Ne határozza meg a megbízhatósági szint paraméterét, a rendszeren kiszámítva |
+| 1 |Ne adja meg a Megbízhatósági szint paramétert, a rendszer kiszámítja azt |
 | 3 |Bronz |
 | 5 vagy 6|Ezüst |
 | 7 vagy 8 |Arany |
 | 9 és fel |Platina |
 
-## <a name="primary-node-type---capacity-guidance"></a>Elsődleges csomópont típusa – kapacitási útmutató
+## <a name="primary-node-type---capacity-guidance"></a>Elsődleges csomópont típusa - kapacitásútmutató
 
-Az alábbi útmutató az elsődleges csomópont típusú kapacitás megtervezéséhez nyújt útmutatást:
+Az elsődleges csomóponttípus-kapacitás tervezéséhez az alábbiakat talál:
 
-- Virtuálisgép **-példányok száma az Azure-ban az éles számítási feladatok futtatásához:** Meg kell adnia egy minimális elsődleges csomópont-típust, amely 5, a megbízhatósági szint pedig ezüst.  
-- A **tesztelési feladatokat az Azure-ban futtató virtuálisgép-példányok száma** Megadhatja a minimálisan 1 vagy 3 típusú elsődleges csomópont-méretet. Az egy csomópontos fürt speciális konfigurációval fut, így a fürt kiskálázása nem támogatott. Az egy csomópontos fürtnek nincs megbízhatósága, így a Resource Manager-sablonban el kell távolítania/nem kell megadnia a konfigurációt (nem kell beállítania a konfigurációs értéket). Ha az egy csomópontos fürtöt a portálon keresztül állítja be, akkor a rendszer automatikusan gondoskodik a konfigurációról. Az egyik és a három csomópontos fürt nem támogatott éles számítási feladatok futtatásához. 
-- **VM SKU:** Az elsődleges csomópont típusa a rendszerszolgáltatások futtatásának helye, így a hozzá tartozó virtuálisgép-SKU-nak figyelembe kell vennie a fürtbe helyezendő teljes terhelést. Itt egy analógia szemlélteti, hogy mit gondolok itt – gondoljunk az elsődleges csomópont típusára, mint a "tüdő", ami az oxigént biztosítja az agy számára, így ha az agy nem kap elég oxigént, a törzs szenved. 
+- **Az azure-beli éles számítási feladatok futtatásához a virtuálisgép-példányok száma:** Meg kell adnia egy minimális elsődleges csomóponttípus-méretet 5 és egy silver megbízhatósági szintet.  
+- **A tesztszámítási feladatok futtatásához az Azure-ban futtatandó virtuálisgép-példányok száma** Megadhat egy minimális elsődleges csomóponttípus-méretet 1 vagy 3. Az egy csomópont-fürt, fut egy speciális konfigurációt, és így, horizontális felskálázása, hogy a fürt nem támogatott. Az egy csomópontos fürt, nincs megbízhatósága, és így az Erőforrás-kezelő sablonban el kell távolítania/nem kell megadnia, hogy a konfiguráció (nem a konfigurációs érték beállítása nem elegendő). Ha a portálon keresztül beállított egycsomópontos fürtöt állítja be, akkor a konfiguráció automatikusan gondoskodik. Egy és három csomópontfürtök nem támogatottak éles számítási feladatok futtatásához. 
+- **VM Termékváltozat:** Elsődleges csomópont típusa, ahol a rendszerszolgáltatások futnak, így a virtuális gép Termékváltozat választja ki, figyelembe kell vennie a teljes csúcsterhelést, amelyet a fürtbe kíván helyezni. Itt van egy analógia, hogy bemutassa, mire gondolok itt - Gondoljon az elsődleges csomópont típus, mint a "Tüdő", ez az, ami oxigént biztosít az agyad, és így ha az agy nem kap elég oxigént, a szervezet szenved. 
 
-Mivel a fürt kapacitási igényeit a fürtben futtatni kívánt számítási feladatok határozzák meg, nem biztosítunk Önnek minőségi útmutatást az adott számítási feladathoz, azonban itt találja az első lépésekhez segítséget nyújtó átfogó útmutatást.
+Mivel a fürt kapacitásigényét a fürtben futtatni kívánt munkaterhelés határozza meg, nem tudunk minőségi útmutatást nyújtani az adott számítási feladathoz, azonban itt van egy átfogó útmutató az induláshoz
 
-Éles munkaterhelések esetén: 
+Éles számítási feladatok esetén: 
 
-- Javasoljuk, hogy a fürtök elsődleges NodeType a rendszerszolgáltatásokra fordítsa, és használja az elhelyezési korlátozásokat az alkalmazás másodlagos NodeTypes való üzembe helyezéséhez.
-- Az ajánlott VM-SKU standard D2_V2 vagy azzal egyenértékű, legalább 50 GB helyi SSD-vel.
-- A minimálisan támogatott virtuális gép SKU Standard_D2_V3 vagy standard D1_V2, vagy azzal egyenértékű, legalább 50 GB helyi SSD-vel. 
-- A Javaslatunk legalább 50 GB. A számítási feladatokhoz – különösen a Windows-tárolók futtatásakor – nagyobb lemezek szükségesek. 
-- A részleges Core virtuális gépek, például a standard a0 nem támogatottak az éles számítási feladatokhoz.
-- Az adatsorozatos virtuális gépek nem támogatottak a teljesítmény szempontjából a termelési számítási feladatok esetében.
-- Az alacsony prioritású virtuális gépek nem támogatottak.
+- Javasoljuk, hogy a fürtök elsődleges NodeType-ját a rendszerszolgáltatásoknak szentelje, és elhelyezési korlátozásokhasználatával telepítse az alkalmazást másodlagos nodetypes-re.
+- Az ajánlott virtuális gép termékváltozat standard D2_V2 vagy egyenértékű, legalább 50 GB helyi SSD.The recommended VM SKU is Standard D2_V2 or equivalent with a minimum 50 GB local SSD.
+- A minimálisan támogatott virtuálisgép-termékváltozat Standard_D2_V3 vagy standard D1_V2 vagy azzal egyenértékű, legalább 50 GB helyi SSD-vel. 
+- Javaslatunk legalább 50 GB. A számítási feladatokhoz, különösen a Windows-tárolók futtatásakor, nagyobb lemezek szükségesek. 
+- Részleges magvú skus, mint a standard A0 nem támogatott éles számítási feladatok.
+- A sorozatos virtuálisgép-sorozat megfelelőségi készletei teljesítménybeli okokból nem támogatottak éles számítási feladatokhoz.
+- Alacsony prioritású virtuális gépek nem támogatottak.
 
 > [!WARNING]
-> Az elsődleges csomópont virtuális gép SKU-méretének módosítása egy futó fürtön, egy méretezési művelet, és dokumentálva van a [virtuálisgép-méretezési csoport horizontális Felskálázási](virtual-machine-scale-set-scale-node-type-scale-out.md) dokumentációjában.
+> Az elsődleges csomópont virtuálisgép-termékváltozat méretének módosítása egy futó fürtön, egy méretezési művelet, és a [virtuálisgép-méretezési csoport horizontális felskálázási](virtual-machine-scale-set-scale-node-type-scale-out.md) dokumentációjában dokumentált.
 
-## <a name="non-primary-node-type---capacity-guidance-for-stateful-workloads"></a>Nem elsődleges csomópont típusa – kapacitási útmutató állapot-nyilvántartó számítási feladatokhoz
+## <a name="non-primary-node-type---capacity-guidance-for-stateful-workloads"></a>Nem elsődleges csomóponttípus – kapacitásútmutató az állapotalapú munkaterhelésekhez
 
-Ez az útmutató olyan állapot-nyilvántartó számítási feladatokhoz használható, amelyek a Service Fabric [megbízható gyűjteményeit vagy](service-fabric-choose-framework.md) a nem elsődleges csomópont-típusban futtatott megbízható szereplőket használják.
+Ez az útmutató a service fabric [megbízható gyűjtemények vagy megbízható szereplők,](service-fabric-choose-framework.md) amelyek nem elsődleges csomóponttípushasználatával állapotalapú számítási feladatok.
 
-Virtuálisgép- **példányok száma:** Az állapot-nyilvántartó számítási feladatokhoz ajánlott a minimális és a célként megadott replika 5-öt kell futtatnia. Ez azt jelenti, hogy az állandó állapotban az egyes tartalék tartományokban és a frissítési tartományokban egy replikával (egy replikakészlet-készletből) fejeződik be. Az elsődleges csomópont típusának teljes megbízhatósági szint koncepciója a rendszerszolgáltatások beállításainak megadása. Ezért ugyanez a megfontolás vonatkozik az állapot-nyilvántartó szolgáltatásokra is.
+**Virtuálisgép-példányok száma:** Az állapotalapú éles számítási feladatok esetén ajánlott, hogy futtassa őket egy minimális és cél replika száma 5. Ez azt jelenti, hogy állandósult állapotban minden tartalék tartományban és frissítési tartományban egy replika (egy replikakészletből származó) replikát kap. Az elsődleges csomóponttípus teljes megbízhatósági szint-koncepciója a rendszerszolgáltatások ezen beállításának megadására szolgáló módszer. Tehát ugyanez a megfontolás vonatkozik az ön állami szolgáltatások is.
 
-Az éles munkaterhelések esetében tehát a minimálisan ajánlott nem elsődleges csomópont típusa 5, ha állapot-nyilvántartó számítási feladatokat futtat.
+Így az éles számítási feladatok esetében a minimálisan ajánlott nem elsődleges csomóponttípus-méret 5, ha állapotalapú számítási feladatokat futtat benne.
 
-**VM SKU:** Ez az a csomópont-típus, ahol az alkalmazás-szolgáltatások futnak, ezért az Ön által választott virtuálisgép-SKU-nak figyelembe kell vennie az egyes csomópontokon elhelyezni kívánt maximális terhelést. A csomópont típusú kapacitás szükségleteit a fürtben futtatni kívánt számítási feladatok határozzák meg, ezért nem biztosítunk Önnek minőségi útmutatást az adott számítási feladatokhoz, de itt találja az első lépésekhez segítséget nyújtó átfogó útmutatót.
-
-Éles számítási feladatokhoz 
-
-- Az ajánlott VM-SKU standard D2_V2 vagy azzal egyenértékű, legalább 50 GB helyi SSD-vel.
-- A minimálisan támogatott virtuális gép SKU Standard_D2_V3 vagy standard D1_V2, vagy azzal egyenértékű, legalább 50 GB helyi SSD-vel. 
-- A részleges Core virtuális gépek, például a standard a0 nem támogatottak az éles számítási feladatokhoz.
-- Az adatsorozatos virtuális gépek nem támogatottak a teljesítmény szempontjából a termelési számítási feladatok esetében.
-
-## <a name="non-primary-node-type---capacity-guidance-for-stateless-workloads"></a>Nem elsődleges csomópont típusa – kapacitási útmutató állapot nélküli munkaterhelésekhez
-
-A nem elsődleges csomópont-típuson futó állapot nélküli munkaterhelések útmutatója.
-
-Virtuálisgép- **példányok száma:** Az állapot nélküli éles számítási feladatokhoz a minimálisan támogatott, nem elsődleges csomópont típusának mérete 2. Ez lehetővé teszi az alkalmazás két állapot nélküli példányának futtatását, és lehetővé teszi, hogy a szolgáltatás megmaradjon a virtuálisgép-példányok elvesztése miatt. 
-
-**VM SKU:** Ez az a csomópont-típus, ahol az alkalmazás-szolgáltatások futnak, ezért az Ön által választott virtuálisgép-SKU-nak figyelembe kell vennie az egyes csomópontokon elhelyezni kívánt maximális terhelést. A csomópont típusú kapacitás szükségleteit a fürtben futtatni kívánt munkaterhelés határozza meg. Az adott számítási feladathoz nem biztosítunk minőségi útmutatást.  Itt azonban az első lépésekhez segítséget nyújtó átfogó útmutató.
+**VM Termékváltozat:** Ez az a csomóponttípus, ahol az alkalmazásszolgáltatások futnak, így a virtuális gép termékváltozatának, amelyet kiválaszt, figyelembe kell vennie az egyes csomópontokba kívánt csúcsterhelést. A csomóponttípus kapacitásigényét a fürtben futtatni kívánt munkaterhelés határozza meg, így nem tudunk minőségi útmutatást nyújtani az adott munkaterheléshez, de itt van egy átfogó útmutató a kezdéshez
 
 Éles számítási feladatokhoz 
 
-- Az ajánlott VM-SKU standard D2_V2 vagy azzal egyenértékű. 
-- A minimálisan támogatott virtuálisgép-SKU standard D1 vagy standard D1_V2 vagy azzal egyenértékű. 
-- A részleges Core virtuális gépek, például a standard a0 nem támogatottak az éles számítási feladatokhoz.
-- Az adatsorozatos virtuális gépek nem támogatottak a teljesítmény szempontjából a termelési számítási feladatok esetében.
+- Az ajánlott virtuális gép termékváltozat standard D2_V2 vagy egyenértékű, legalább 50 GB helyi SSD.The recommended VM SKU is Standard D2_V2 or equivalent with a minimum 50 GB local SSD.
+- A minimálisan támogatott virtuálisgép-termékváltozat Standard_D2_V3 vagy standard D1_V2 vagy azzal egyenértékű, legalább 50 GB helyi SSD-vel. 
+- Részleges magvú skus, mint a standard A0 nem támogatott éles számítási feladatok.
+- A sorozatos virtuálisgép-sorozat megfelelőségi készletei teljesítménybeli okokból nem támogatottak éles számítási feladatokhoz.
+
+## <a name="non-primary-node-type---capacity-guidance-for-stateless-workloads"></a>Nem elsődleges csomóponttípus – kapacitásútmutató állapot nélküli számítási feladatokhoz
+
+Ez az útmutató a nem elsődleges csomóponttípuson futó állapot nélküli számítási feladatokról.
+
+**Virtuálisgép-példányok száma:** Az állapot nélküli éles számítási feladatok esetében a minimálisan támogatott nem elsődleges csomóponttípus-méret 2. Ez lehetővé teszi, hogy futtassa az alkalmazás két állapotnélküli példányát, és lehetővé teszi a szolgáltatás számára, hogy túlélje a virtuálisgép-példány elvesztését. 
+
+**VM Termékváltozat:** Ez az a csomóponttípus, ahol az alkalmazásszolgáltatások futnak, így a virtuális gép termékváltozatának, amelyet kiválaszt, figyelembe kell vennie az egyes csomópontokba kívánt csúcsterhelést. A csomóponttípus kapacitásigényét a fürtben futtatni kívánt munkaterhelés határozza meg. Nem tudunk minőségi útmutatást nyújtani az adott munkaterheléshez.  Azonban itt van a széles körű útmutatást, hogy segítsen az induláshoz.
+
+Éles számítási feladatokhoz 
+
+- Az ajánlott virtuális gép termékváltozat a standard D2_V2 vagy azzal egyenértékű. 
+- A minimálisan támogatott virtuálisgép-termékváltozat a Standard D1 vagy standard D1_V2 vagy azzal egyenértékű. 
+- Részleges magvú skus, mint a standard A0 nem támogatott éles számítási feladatok.
+- A sorozatos virtuálisgép-sorozat megfelelőségi készletei teljesítménybeli okokból nem támogatottak éles számítási feladatokhoz.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## <a name="next-steps"></a>Következő lépések
-Miután befejezte a kapacitás megtervezését és a fürt beállítását, olvassa el a következőket:
+## <a name="next-steps"></a>További lépések
+Miután befejezte a kapacitástervezést és beállított egy fürtöt, olvassa el az alábbi szöveget:
 
-* [Service Fabric-fürt biztonsága](service-fabric-cluster-security.md)
-* [Fürt méretezése Service Fabric](service-fabric-cluster-scaling.md)
-* [Vész-helyreállítási tervezés](service-fabric-disaster-recovery.md)
-* [A Nodetypes kapcsolata a virtuálisgép-méretezési csoporttal](service-fabric-cluster-nodetypes.md)
+* [A Service Fabric fürtjének biztonsága](service-fabric-cluster-security.md)
+* [A Service Fabric fürtméretezése](service-fabric-cluster-scaling.md)
+* [Katasztrófautáni helyreállítás tervezése](service-fabric-disaster-recovery.md)
+* [Nodetypes kapcsolata a virtuálisgép-méretezési készlethez](service-fabric-cluster-nodetypes.md)
 
 <!--Image references-->
 [SystemServices]: ./media/service-fabric-cluster-capacity/SystemServices.png

@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 02/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 8c87e14071b3bb40421ab655c172df739570e295
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179574"
 ---
-Alábbi korlátozásokkal adatokra vonatkoznak, ahogy azt az Azure-bA helyezi át.
+A következő kikötések vonatkoznak az adatokra, ahogy az Azure-ba költöznek.
 
-- Javasoljuk, hogy több eszköz nem kell írni ugyanazt a tárolót.
-- Ha egy meglévő Azure objektum (például egy blobba vagy egy fájlt) ezzel a névvel, az objektum, amely a másolásakor a felhőben, az eszköz felülírja a fájl a felhőben.
-- Egy üres könyvtár-hierarchia (nélküli fájlokat) a megosztás mappák létrehozása a blob-tárolók nem van feltöltve.
-- Húzza át az adatokat másolja, és dobja el a fájlkezelő vagy az parancssor segítségével. Ha éppen másolt fájlok összesített mérete 10 GB-nál nagyobb, javasoljuk, például Robocopy vagy rsync tömeges másolási programot használ. A tömeges másolási eszközök ismételje meg a másolási művelet időszakos hibák, és nagyobb rugalmasság biztosítása érdekében.
-- Ha a társított Azure storage-tároló megosztás feltölti a blobok, amelyek nem egyeznek meg van határozva a megosztás létrehozásakor blobok típusát, majd az ilyen blobok nem frissülnek. Például létrehozhat egy block blob megosztás az eszközön. A megosztás társítása meglévő felhőalapú tároló, amely rendelkezik a lapblobokat. Frissítse a fájlok letöltéséhez használt megosztást. Módosítsa a frissített fájlokat már lapblobként a felhőben tárolt némelyike. Látni fogja feltölteni a hibák.
+- Azt javasoljuk, hogy egynél több eszköz ne írjon ugyanabba a tárolóba.
+- Ha van egy meglévő Azure-objektum (például egy blob vagy egy fájl) a felhőben az azonos nevű, mint az objektum, amely a másolás alatt áll, az eszköz felülírja a fájlt a felhőben.
+- A megosztási mappák alatt létrehozott üres könyvtárhierarchia (fájlok nélkül) nem töltődik fel a blobtárolókba.
+- Az adatokat a Fájlkezelővel vagy a parancssorból húzással másolhatja. Ha a másolt fájlok összesített mérete meghaladja a 10 GB-ot, javasoljuk, hogy tömeges másolási programot használjon, például robocopy vagy rsync. A tömeges másolási eszközök újra próbálkoznak a másolási művelet időszakos hibák, és további rugalmasságot biztosít.
+- Ha az Azure storage-tárolóhoz társított megosztás olyan blobokat tölt fel, amelyek nem egyeznek meg a megosztáshoz a létrehozás időpontjában meghatározott blobok típusával, majd az ilyen blobok nem frissülnek. Például létrehoz egy blokk blob megosztást az eszközön. Társítsa a megosztást egy meglévő felhőalapú tárolóhoz, amely lapblobokat is rendelkezik. Frissítse a megosztást a fájlok letöltéséhez. Módosítsa a felhőben már lapblobként tárolt frissített fájlok némelyikét. Látni fogja, feltöltési hibák.

@@ -1,6 +1,6 @@
 ---
-title: 'Azure VPN Gateway: konfigurációk és kapcsolatok hibaelhárítása'
-description: Ez a cikk segítséget nyújt a cikkek VPN Gateway konfigurációjának, kapcsolatának és az átviteli sebesség ellenőrzésének hibakereséséhez.
+title: 'Azure VPN-átjáró: Konfigurációk és kapcsolatok hibaelhárítása'
+description: Ez a cikk a VPN-átjáró konfigurációjának, kapcsolatának és az átviteli rendszer érvényesítéséhez szükséges cikkekre mutató hivatkozásokat tartalmaz.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,26 +8,26 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: cherylmc
 ms.openlocfilehash: d73bc8e9c39c14a254e8f7bae1d7b1a96a6c3225
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75780164"
 ---
-# <a name="troubleshoot-vpn-gateway"></a>Hibakeresés VPN Gateway
+# <a name="troubleshoot-vpn-gateway"></a>VPN-átjáró – problémamegoldás
 
-A VPN Gateway kapcsolatok számos okból sikertelenek lehetnek. Ez a cikk hivatkozásokat tartalmaz a hibaelhárítással kapcsolatos lépések elkezdéséhez. A teljes listát lásd a tartalomjegyzékben **található, az**oldal bal oldalán található cikkekben.
+A VPN-átjárókapcsolatok számos okból sikertelenek lehetnek. Ez a cikk hivatkozásokat tartalmaz a hibaelhárítás megkezdéséhez. A teljes listát a lap bal oldalán, a Hibaelhárítás csoportban található, **tartalomelhárítás**i.
 
 ## <a name="troubleshooting-scenarios-and-solutions"></a>Forgatókönyvek és megoldások hibaelhárítása
 
-* [VPN teljesítményének érvényesítése VNeten](vpn-gateway-validate-throughput-to-vnet.md)<br>A VPN Gateway-kapcsolat lehetővé teszi, hogy biztonságos, létesítmények közötti kapcsolatot hozzon létre az Azure-ban és a helyszíni informatikai infrastruktúrán belüli Virtual Network között. Ez a cikk bemutatja, hogyan érvényesítheti a helyszíni erőforrások hálózati átviteli sebességét egy Azure-beli virtuális gépre (VM). Emellett hibaelhárítási útmutatót is tartalmaz.
+* [VPN teljesítményének érvényesítése VNeten](vpn-gateway-validate-throughput-to-vnet.md)<br>A VPN-átjárókapcsolat lehetővé teszi, hogy biztonságos, több helyiségen át vezető kapcsolatot hozzon létre az Azure-on belüli virtuális hálózat és a helyszíni informatikai infrastruktúra között. Ez a cikk bemutatja, hogyan érvényesítheti a hálózati átviteli a helyszíni erőforrások egy Azure virtuális gép (VM). Hibaelhárítási útmutatást is nyújt.
 
-* [VPN-és tűzfal-eszközbeállítások](vpn-gateway-third-party-settings.md)<br>Ez a cikk számos javasolt megoldást tartalmaz a harmadik féltől származó VPN-vagy tűzfal-eszközökhöz, amelyeket a VPN Gateway használ. A külső gyártótól származó VPN-vagy tűzfal-eszközök technikai támogatását az eszköz gyártója biztosítja.
+* [Vpn- és tűzfaleszköz-beállítások](vpn-gateway-third-party-settings.md)<br>Ez a cikk számos javasolt megoldást kínál a VPN-átjáróval használt külső VPN- vagy tűzfaleszközökhöz. A külső VPN- vagy tűzfaleszközök technikai támogatását az eszköz gyártója biztosítja.
 
-* [Pont–hely kapcsolatok](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)<br>Ez a cikk az esetlegesen felmerülő, pont – hely kapcsolatokkal kapcsolatos gyakori problémákat sorolja fel. Emellett a problémák lehetséges okait és megoldásait is tárgyalja.
+* [Pont–hely kapcsolatok](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)<br>Ez a cikk a helyek közötti gyakori kapcsolódási problémákat sorolja fel. A bizottság ismerteti e problémák lehetséges okait és megoldásait is.
 
-* [Helyek közötti kapcsolatok](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)<br>Miután konfigurált egy helyek közötti VPN-kapcsolatot egy helyszíni hálózat és egy Azure-beli virtuális hálózat között, a VPN-kapcsolat hirtelen leáll, és nem lehet újracsatlakozni. Ez a cikk a probléma megoldásához szükséges hibaelhárítási lépéseket ismerteti.
+* [Helyek közötti kapcsolatok](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)<br>Miután konfigurálta a helyszíni hálózat és az Azure virtuális hálózat közötti hely-hely VPN-kapcsolatot, a VPN-kapcsolat hirtelen leáll, és nem csatlakoztatható újra. Ez a cikk hibaelhárítási lépéseket tartalmaz a probléma megoldásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A [VNet és a VPN-kapcsolatok ellenőrzéséhez](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)ezeket a lépéseket is használhatja.
+Ezekkel a lépésekkel [is ellenőrizheti a virtuális hálózat és a VPN-kapcsolatokat.](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)

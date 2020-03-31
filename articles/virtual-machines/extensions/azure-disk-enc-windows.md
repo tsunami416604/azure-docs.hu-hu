@@ -1,6 +1,6 @@
 ---
-title: Windows Azure Disk Encryption
-description: Azure Disk Encryption üzembe helyezése egy Windows rendszerű virtuális gépen a virtuálisgép-bővítmény használatával.
+title: Azure lemeztitkosítás Windows hoz
+description: Az Azure Disk Encryption telepítése egy Windows virtuális gép egy virtuális gép bővítmény használatával.
 services: virtual-machines-windows
 documentationcenter: ''
 author: ejarvi
@@ -11,163 +11,174 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/12/2018
+ms.date: 03/19/2020
 ms.author: ejarvi
-ms.openlocfilehash: 8435663dcf92e2617ea2fe9218649e94243272d2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e975e1757b77b4aab52a59d1f0709ef9cadae94e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79250646"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066866"
 ---
-# <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows Azure Disk Encryption (Microsoft. Azure. Security. AzureDiskEncryption)
+# <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure lemeztitkosítás Windows hoz (Microsoft.Azure.Security.AzureDiskEncryption)
 
 ## <a name="overview"></a>Áttekintés
 
-Azure Disk Encryption a BitLockert a Windows rendszerű Azure-beli virtuális gépek teljes lemezes titkosításának biztosítására használja.  Ez a megoldás integrálva van Azure Key Vault a lemez titkosítási kulcsainak és a titkos kulcsoknak a Key Vault-előfizetésben való kezeléséhez. 
+Az Azure Disk Encryption a BitLocker segítségével teljes lemeztitkosítást biztosít a Windows rendszert futtató Azure virtuális gépeken.  Ez a megoldás integrálva van az Azure Key Vault lemeztitkosítási kulcsok és titkos kulcsok kezelése a key vault-előfizetés. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az előfeltételek teljes listájáért lásd: [Azure Disk Encryption Linux rendszerű virtuális gépekhez](../linux/disk-encryption-overview.md), konkrétan a következő részekben:
+Az előfeltételek teljes listáját az Azure Disk Encryption for Windows virtuális gépek című [témakörében,](../windows/disk-encryption-overview.md)különösen a következő szakaszokban tartalmazza:
 
-- [Azure Disk Encryption Linux rendszerű virtuális gépekhez](../windows/disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [Támogatott virtuális gépek és operációs rendszerek](../windows/disk-encryption-overview.md#supported-vms-and-operating-systems)
 - [Hálózati követelmények](../windows/disk-encryption-overview.md#networking-requirements)
-- [Csoportházirend követelmények](../windows/disk-encryption-overview.md#group-policy-requirements)
+- [Csoportházirend-követelmények](../windows/disk-encryption-overview.md#group-policy-requirements)
 
-## <a name="extension-schemata"></a>Bővítmény sémák
+## <a name="extension-schema"></a>Bővítményséma
 
-A Windows AzureDiskEncryption bővítményhez két sémák tartozik: v 2.2, egy újabb, ajánlott séma, amely nem használja a Azure Active Directory (HRE) tulajdonságokat és a v 1.1-et, egy régebbi, HRE-tulajdonságokat igénylő sémát. Az Ön által használt bővítménynek megfelelő séma-verziót kell használnia: schema v 2.2 a AzureDiskEncryption bővítmény 2,2-es verziójához, a Schema v 1.1-es verzióját a AzureDiskEncryption Extension 1,1-es verziójában.
+Az Azure Disk Encryption (ADE) bővítménysémának két verziója van:
+- 2.2-es érték – Egy újabb ajánlott séma, amely nem használja az Azure Active Directory (AAD) tulajdonságait.
+- 1.1-es érték: Egy régebbi séma, amely az Azure Active Directory (AAD) tulajdonságait igényli. 
 
-### <a name="schema-v22-no-aad-recommended"></a>Schema v 2.2: nincs HRE (ajánlott)
+A célséma kiválasztásához `typeHandlerVersion` a tulajdonságot a használni kívánt séma verziójával egyenlőnek kell beállítani.
 
-A v 2.2 séma minden új virtuális gép esetében ajánlott, és nem igényel Azure Active Directory tulajdonságokat.
+### <a name="schema-v22-no-aad-recommended"></a>2.2-es séma: Nincs AAD (ajánlott)
+
+A v2.2-es séma minden új virtuális géphez ajánlott, és nem igényel Azure Active Directory-tulajdonságokat.
 
 ```json
 {
   "type": "extensions",
   "name": "[name]",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2019-07-01",
   "location": "[location]",
   "properties": {
-    "publisher": "Microsoft.Azure.Security",
-    "settings": {
-      "EncryptionOperation": "[encryptionOperation]",
-      "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
-      "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
-      "KekVaultResourceId": "[keyVaultResourceID]",
-      "KeyVaultURL": "[keyVaultURL]",
-      "KeyVaultResourceId": "[keyVaultResourceID]",
-      "SequenceVersion": "sequenceVersion]",
-      "VolumeType": "[volumeType]"
-    },
-  "type": "AzureDiskEncryption",
-  "typeHandlerVersion": "[extensionVersion]"
+        "publisher": "Microsoft.Azure.Security",
+        "type": "AzureDiskEncryption",
+        "typeHandlerVersion": "2.2",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "EncryptionOperation": "[encryptionOperation]",
+          "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+          "KeyVaultURL": "[keyVaultURL]",
+          "KekVaultResourceId": "[keyVaultResourceID]",
+          "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+          "KeyVaultResourceId": "[keyVaultResourceID]",
+          "SequenceVersion": "sequenceVersion]",
+          "VolumeType": "[volumeType]"
+        }
   }
 }
 ```
 
 
-### <a name="schema-v11-with-aad"></a>Schema v 1.1: a HRE 
+### <a name="schema-v11-with-aad"></a>Séma v1.1: a AAD 
 
-Az 1,1 sémához `aadClientID` és `aadClientSecret` vagy `AADClientCertificate` szükséges, és az új virtuális gépek esetében nem ajánlott.
+Az 1.1-es `aadClientID` séma `AADClientCertificate` igényel, és vagy, `aadClientSecret` és nem ajánlott az új virtuális gépek.
 
-`aadClientSecret`használata:
+A `aadClientSecret`következők használata:
 
 ```json
 {
   "type": "extensions",
   "name": "[name]",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2019-07-01",
   "location": "[location]",
   "properties": {
     "protectedSettings": {
       "AADClientSecret": "[aadClientSecret]"
     },    
     "publisher": "Microsoft.Azure.Security",
+    "type": "AzureDiskEncryption",
+    "typeHandlerVersion": "1.1",
     "settings": {
       "AADClientID": "[aadClientID]",
       "EncryptionOperation": "[encryptionOperation]",
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
-      "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
-      "KekVaultResourceId": "[keyVaultResourceID]",
       "KeyVaultURL": "[keyVaultURL]",
       "KeyVaultResourceId": "[keyVaultResourceID]",
+      "KekVaultResourceId": "[keyVaultResourceID]",
+      "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
-    },
-  "type": "AzureDiskEncryption",
-  "typeHandlerVersion": "[extensionVersion]"
+    }
   }
 }
 ```
 
-`AADClientCertificate`használata:
+A `AADClientCertificate`következők használata:
 
 ```json
 {
   "type": "extensions",
   "name": "[name]",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2019-07-01",
   "location": "[location]",
   "properties": {
     "protectedSettings": {
       "AADClientCertificate": "[aadClientCertificate]"
     },    
     "publisher": "Microsoft.Azure.Security",
+    "type": "AzureDiskEncryption",
+    "typeHandlerVersion": "1.1",
     "settings": {
       "AADClientID": "[aadClientID]",
       "EncryptionOperation": "[encryptionOperation]",
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
-      "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
-      "KekVaultResourceId": "[keyVaultResourceID]",
       "KeyVaultURL": "[keyVaultURL]",
       "KeyVaultResourceId": "[keyVaultResourceID]",
+      "KekVaultResourceId": "[keyVaultResourceID]",
+      "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
-    },
-  "type": "AzureDiskEncryption",
-  "typeHandlerVersion": "[extensionVersion]"
+    }
   }
 }
 ```
 
 
-### <a name="property-values"></a>Tulajdonságok értékei
+### <a name="property-values"></a>Tulajdonság értékek
 
-| Name (Név) | Érték és példa | Adattípus |
+| Név | Érték / Példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | dátum |
-| publisher | Microsoft.Azure.Security | sztring |
-| type | AzureDiskEncryptionForLinux | sztring |
-| typeHandlerVersion | 1,1, 2,2 | sztring |
-| (1,1 séma) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
-| (1,1 séma) AADClientSecret | jelszó | sztring |
-| (1,1 séma) AADClientCertificate | thumbprint | sztring |
-| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-szótár |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | sztring | 
-| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | sztring |
-| KeyEncryptionKeyURL | url | sztring |
+| apiVersion | 2019-07-01 | dátum |
+| közzétevő | Microsoft.Azure.Biztonság | sztring |
+| type | AzureDiskEncryption | sztring |
+| typeHandlerVersion | 2.2, 1.1 | sztring |
+| (1.1 séma) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Guid | 
+| (1.1 séma) AADClientSecret | jelszó | sztring |
+| (1.1 séma) AADClientCertificate | Ujjlenyomat | sztring |
+| Titkosítási művelet | EnableEncryption, EnableEncryptionFormatAll | sztring | 
+| (nem kötelező - alapértelmezett RSA-OAEP) KeyEncryptionAlgorithm (KeyEncryptionAlgorithm) | "RSA-OAEP", "RSA-OAEP-256", "RSA1_5" | sztring |
 | KeyVaultURL | url | sztring |
-| választható Jelszót | jelszó | sztring | 
-| SequenceVersion | uniqueidentifier | sztring |
-| VolumeType | Operációs rendszer, az összes | sztring |
+| KeyVaultResourceId azonosító | url | sztring |
+| (nem kötelező) KeyEncryptionKeyURL | url | sztring |
+| (nem kötelező) KekVaultResourceId | url | sztring |
+| (nem kötelező) SequenceVersion (SequenceVersion) | uniqueidentifier | sztring |
+| VolumeType (Kötettípusa) | OS, Adatok, Minden | sztring |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
-A sablonok központi telepítésének példáját lásd: [új titkosított Windows rendszerű virtuális gép létrehozása a katalógus rendszerképből](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).
 
-## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
+A 2.2-es séma alapú sablontelepítést az Azure QuickStart Template [201-encrypt-running-windows-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)című témakörben talál.
 
-Az utasítások az [Azure CLI legújabb dokumentációjában](/cli/azure/vm/encryption?view=azure-cli-latest)találhatók. 
+A sablon 1.1-es számú sémaalapú központi telepítésének példáját az Azure QuickStart Template [201-encrypt-running-windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)című témakörben talál.
+
+>[!NOTE]
+> Ha `VolumeType` a paraméter beállítása Minden, az adatlemezek csak akkor lesznek titkosítva, ha megfelelően vannak formázva. 
 
 ## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-Tekintse át a [Azure Disk Encryption hibaelhárítási útmutatót](../../security/azure-security-disk-encryption-tsg.md).
+A hibaelhárításról az [Azure lemeztitkosításhiba-elhárítási útmutatójában](../windows/disk-encryption-troubleshooting.md)talál.
 
 ### <a name="support"></a>Támogatás
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/community/)is. Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha további segítségre van szüksége a cikk bármely pontján, felveheti a kapcsolatot az Azure szakértőivel az [MSDN Azure és a Stack Overflow fórumokon.](https://azure.microsoft.com/support/community/) 
 
-## <a name="next-steps"></a>Következő lépések
-További információ a bővítményekről: [virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez](features-windows.md).
+Másik lehetőségként benyújthat egy Azure-támogatási incidenst. Nyissa meg az [Azure-támogatás,](https://azure.microsoft.com/support/options/) és válassza a Támogatás beszerezni. Az Azure-támogatás használatáról a [Microsoft Azure támogatási gyIK](https://azure.microsoft.com/support/faq/)című területén olvashat.
+
+## <a name="next-steps"></a>További lépések
+
+* A bővítményekről a [Virtuálisgép-bővítmények és -szolgáltatások windowsos](features-windows.md)című témakörben talál további információt.
+* Az Azure Disk Encryption for Windows szolgáltatásról további információt a Windows virtuális gépek című [témakörben talál.](../../security/fundamentals/azure-disk-encryption-vms-vmss.md#windows-virtual-machines)

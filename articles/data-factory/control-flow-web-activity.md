@@ -1,6 +1,6 @@
 ---
-title: Webes tevékenység Azure Data Factory
-description: Megtudhatja, hogyan használhatja a webes tevékenységeket, a Data Factory által támogatott vezérlési folyamatok egyikét a REST-végpontok egy folyamatból való meghívásához.
+title: Webes tevékenység az Azure Data Factoryban
+description: Megtudhatja, hogy a Data Factory által támogatott webtevékenység segítségével hogyan hívhat meg egy REST-végpontot egy folyamatból.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: c700c9786f3bec4c79cae904a95deb5fd1c670b4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260864"
 ---
-# <a name="web-activity-in-azure-data-factory"></a>Webes tevékenység Azure Data Factory
+# <a name="web-activity-in-azure-data-factory"></a>Webes tevékenység az Azure Data Factoryban
 A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy Data Factory-folyamatból. Az adatkészleteket és a társított szolgáltatásokat továbbíthatja a tevékenység számára felhasználásra vagy elérés céljára.
 
 > [!NOTE]
-> A webes tevékenység csak nyilvánosan elérhető URL-címeket hívhat fel. A magánhálózati virtuális hálózatokban tárolt URL-címek esetében nem támogatott.
+> A webes tevékenység csak nyilvánosan elérhető URL-címeket hívhat meg. Nem támogatott a magán virtuális hálózatban üzemeltetett URL-címek.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -66,21 +66,21 @@ A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
 név | A webes tevékenység neve | Sztring | Igen
-type | **Webtevékenységre**kell beállítani. | Sztring | Igen
-method | A célként megadott végpont REST API-metódusa. | sztring elemet. <br/><br/>Támogatott típusok: "GET", "POST", "PUT" | Igen
-url | Cél végpontja és elérési útja | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). A tevékenység 1 percenként időtúllépést jelez, ha a végponttól nem érkezik válasz. | Igen
-fejlécek | A kérelembe küldendő fejlécek. Például egy kérelem nyelvének és típusának megadásához: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Igen, a Content-Type fejléc megadása kötelező. `"headers":{ "Content-Type":"application/json"}`
-törzse | A végpontnak elküldhető adattartalmat jelöli.  | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). <br/><br/>Tekintse meg a kérelem hasznos adatainak sémáját a [kérelmek hasznos adatait tartalmazó sémában](#request-payload-schema) . | A POST/PUT metódusokhoz szükséges.
-hitelesítés | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű vagy ClientCertificate". További információ: [hitelesítés](#authentication) szakasz. Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
-datasets | A végpontnak átadott adatkészletek listája. | Adatkészlet-hivatkozások tömbje. Üres tömb lehet. | Igen
-linkedServices | A végpontnak átadott társított szolgáltatások listája. | Társított szolgáltatási referenciák tömbje. Üres tömb lehet. | Igen
+type | A **WebActivity (WebActivity**) beállításra kell tini. | Sztring | Igen
+method | Rest API-módszer a célvégponthoz. | Sztring. <br/><br/>Támogatott típusok: "GET", "POST", "PUT" | Igen
+url | Célvégpont és elérési út | Karakterlánc (vagy kifejezés resultType of string). A tevékenység időtúllépések 1 perc egy hiba, ha nem kap választ a végponttól. | Igen
+Fejlécek | A kérésnek küldött fejlécek. Például a nyelv és a beírás `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`beállítása a kérelemben: . | Karakterlánc (vagy kifejezés resultKarakterlánctal) | Igen, tartalomtípusú fejléc szükséges. `"headers":{ "Content-Type":"application/json"}`
+body (Törzs) | A végpontra küldött hasznos adat.  | Karakterlánc (vagy kifejezés resultType of string). <br/><br/>Tekintse meg a kérelem hasznos adatának sémáját a [Hasznos séma kérése](#request-payload-schema) szakaszban. | A POST/PUT módszerekhez szükséges.
+hitelesítés | A végpont hívására használt hitelesítési módszer. A támogatott típusok az "Alapszintűek vagy ügyféltanúsítvány". További információt a [Hitelesítés](#authentication) szakaszban talál. Ha nincs szükséges hitelesítés, zárja ki ezt a tulajdonságot. | Karakterlánc (vagy kifejezés resultKarakterlánctal) | Nem
+adathalmazok | A végpontnak átadott adatkészletek listája. | Adatkészlet-hivatkozások tömbje. Lehet egy üres tömb. | Igen
+csatolt szolgáltatások | A végpontnak átadott csatolt szolgáltatások listája. | Csatolt szolgáltatáshivatkozások tömbje. Lehet egy üres tömb. | Igen
 
 > [!NOTE]
-> A webes tevékenység által meghívott REST-végpontoknak JSON típusú választ kell visszaadniuk. A tevékenység 1 percenként időtúllépést jelez, ha a végponttól nem érkezik válasz.
+> REST-végpontok, amelyek a webes tevékenység meghívja kell visszaadnia a válasz típusú JSON. A tevékenység időtúllépések 1 perc egy hiba, ha nem kap választ a végponttól.
 
-A következő táblázat a JSON-tartalomra vonatkozó követelményeket mutatja be:
+Az alábbi táblázat a JSON-tartalomra vonatkozó követelményeket mutatja be:
 
-| Érték típusa | A kérés törzse | Válasz törzse |
+| Érték típusa | A kérés törzse | Választörzs |
 |---|---|---|
 |JSON-objektum | Támogatott | Támogatott |
 |JSON-tömb | Támogatott <br/>(Jelenleg a JSON-tömbök nem működnek hiba miatt. A javítás folyamatban van.) | Nem támogatott |
@@ -88,17 +88,17 @@ A következő táblázat a JSON-tartalomra vonatkozó követelményeket mutatja 
 | Nem JSON-típus | Nem támogatott | Nem támogatott |
 ||||
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
-Az alábbiakban láthatók a webes tevékenységben támogatott hitelesítési típusok.
+Az alábbiakban a webes tevékenység támogatott hitelesítési típusai láthatók.
 
-### <a name="none"></a>Nincs
+### <a name="none"></a>None
 
-Ha nincs szükség hitelesítésre, ne adja meg a "hitelesítés" tulajdonságot.
+Ha nincs szükséges hitelesítés, ne adja meg a "hitelesítés" tulajdonságot.
 
-### <a name="basic"></a>Alapszintű
+### <a name="basic"></a>Basic
 
-Adja meg az alapszintű hitelesítéshez használni kívánt felhasználónevet és jelszót.
+Adja meg az alapfokú hitelesítéshez használandó felhasználónevet és jelszót.
 
 ```json
 "authentication":{
@@ -110,7 +110,7 @@ Adja meg az alapszintű hitelesítéshez használni kívánt felhasználónevet 
 
 ### <a name="client-certificate"></a>Ügyféltanúsítvány
 
-A PFX-fájl és a jelszó Base64 kódolású tartalmának megadása.
+Adja meg a PFX-fájl base64 kódolású tartalmát és a jelszót.
 
 ```json
 "authentication":{
@@ -122,7 +122,7 @@ A PFX-fájl és a jelszó Base64 kódolású tartalmának megadása.
 
 ### <a name="managed-identity"></a>Felügyelt identitás
 
-Itt adhatja meg azt az erőforrás-URI-t, amelynek a hozzáférési jogkivonatát a rendszer az adatok előállítójának felügyelt identitása alapján kéri le. Az Azure Resource Management API meghívásához használja a `https://management.azure.com/`. További információ a felügyelt identitások működéséről: [felügyelt identitások az Azure-erőforrások áttekintéséhez](/azure/active-directory/managed-identities-azure-resources/overview).
+Adja meg azt az erőforrás-uri-t, amelyhez a hozzáférési jogkivonatot a rendszer az adat-előállító felügyelt identitásának használatával kéri. Az Azure Resource Management API `https://management.azure.com/`hívásához használja a használatát. A felügyelt identitások működéséről az [Azure-erőforrások felügyelt identitások áttekintése lapon olvashat bővebben.](/azure/active-directory/managed-identities-azure-resources/overview)
 
 ```json
 "authentication": {
@@ -132,10 +132,10 @@ Itt adhatja meg azt az erőforrás-URI-t, amelynek a hozzáférési jogkivonatá
 ```
 
 > [!NOTE]
-> Ha az adat-előállító git-tárházral van konfigurálva, az alapszintű vagy az ügyféltanúsítvány-alapú hitelesítés használatához a hitelesítő adatait Azure Key Vault kell tárolnia. A Azure Data Factory nem tárol jelszavakat a git-ben.
+> Ha az adatgyár git-tárházzal van konfigurálva, az alapszintű vagy ügyféltanúsítvány-hitelesítés használatához az Azure Key Vaultban kell tárolnia a hitelesítő adatait. Az Azure Data Factory nem tárolja a jelszavakat a gitben.
 
-## <a name="request-payload-schema"></a>Adattartalom-séma kérése
-Ha a POST/PUT metódust használja, a Body (törzs) tulajdonság a végpontnak elküldhető adattartalmat jelöli. A hasznos adatok részeként a társított szolgáltatásokat és adatkészleteket is átadhatja. Itt látható a hasznos adatok sémája:
+## <a name="request-payload-schema"></a>Hasznos adatséma kérése
+A POST/PUT metódus használatakor a törzs tulajdonság a végpontnak küldött hasznos adat. A tartalom részeként átadhatja a csatolt szolgáltatásokat és adatkészleteket. Itt van a hasznos adat sémája:
 
 ```json
 {
@@ -158,9 +158,9 @@ Ha a POST/PUT metódust használja, a Body (törzs) tulajdonság a végpontnak e
 ```
 
 ## <a name="example"></a>Példa
-Ebben a példában a folyamat webes tevékenysége REST-végpontot hív meg. Egy Azure SQL társított szolgáltatást és egy Azure SQL-adatkészletet továbbít a végpontnak. A REST-végpont az Azure SQL-kapcsolati karakterlánc használatával csatlakozik az Azure SQL Serverhez, és az SQL Server-példány nevét adja vissza.
+Ebben a példában a folyamat webes tevékenysége rest-végpontot hív meg. Egy Azure SQL-kapcsolattal összekapcsolt szolgáltatást és egy Azure SQL-adatkészletet avégpontra továbbítja. A REST végpont az Azure SQL-kapcsolati karakterlánc ot használja az Azure SQL-kiszolgálóhoz való csatlakozáshoz, és visszaadja az SQL-kiszolgáló példányának nevét.
 
-### <a name="pipeline-definition"></a>Folyamat definíciója
+### <a name="pipeline-definition"></a>Csővezeték definíciója
 
 ```json
 {
@@ -212,7 +212,7 @@ Ebben a példában a folyamat webes tevékenysége REST-végpontot hív meg. Egy
 
 ```
 
-### <a name="pipeline-parameter-values"></a>A folyamat paramétereinek értékei
+### <a name="pipeline-parameter-values"></a>Csővezeték paraméterértékei
 
 ```json
 {
@@ -222,7 +222,7 @@ Ebben a példában a folyamat webes tevékenysége REST-végpontot hív meg. Egy
 
 ```
 
-### <a name="web-service-endpoint-code"></a>Webszolgáltatás végpontjának kódja
+### <a name="web-service-endpoint-code"></a>Webszolgáltatás végpontkódja
 
 ```csharp
 
@@ -251,10 +251,10 @@ public HttpResponseMessage Execute(JObject payload)
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
-Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat:
+## <a name="next-steps"></a>További lépések
+Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamattevékenységeket:
 
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)
-- [Minden tevékenységhez](control-flow-for-each-activity.md)
+- [Minden egyes tevékenységhez](control-flow-for-each-activity.md)
 - [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keresstevékenységet](control-flow-lookup-activity.md)

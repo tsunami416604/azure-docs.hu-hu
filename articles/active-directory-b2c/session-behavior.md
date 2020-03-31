@@ -1,6 +1,6 @@
 ---
-title: Munkamenet-viselkedés konfigurálása – Azure Active Directory B2C | Microsoft Docs
-description: Munkamenet-viselkedés konfigurálása Azure Active Directory B2Cban.
+title: Munkamenet-viselkedés konfigurálása – Azure Active Directory B2C | Microsoft dokumentumok
+description: Munkamenet-viselkedés konfigurálása az Azure Active Directory B2C-ben.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,51 +11,51 @@ ms.date: 04/16/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c1d39fdbca9484f47ce0c8537c82247b75b2e3db
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186811"
 ---
-# <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Munkamenet-viselkedés konfigurálása Azure Active Directory B2Cban
+# <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Munkamenet-viselkedés konfigurálása az Azure Active Directory B2C szolgáltatásában
 
-Ez a szolgáltatás részletesen szabályozható vezérlést tesz lehetővé a következő [módon](user-flow-overview.md):
+Ez a funkció a következők részletes vezérlését biztosítja [felhasználónkénti áramlási alapon:](user-flow-overview.md)
 
-- A Azure AD B2C által felügyelt webalkalmazás-munkamenetek élettartama.
-- Az egyszeri bejelentkezés (SSO) viselkedése több alkalmazás és felhasználói folyamat között a Azure AD B2C-bérlőben.
+- Az Azure AD B2C által kezelt webalkalmazás-munkamenetek élettartama.
+- Egyszeri bejelentkezési (SSO) viselkedés több alkalmazás és a felhasználói folyamatok az Azure AD B2C bérlőben.
 
-Ezek a beállítások nem érhetők el a felhasználói folyamatok jelszavának alaphelyzetbe állításához.
+Ezek a beállítások nem érhetők el a jelszó-visszaállításfelhasználói folyamatokhoz.
 
-Azure AD B2C támogatja az [OpenID Connect hitelesítési protokollt](openid-connect.md) a biztonságos bejelentkezés webalkalmazásokhoz való engedélyezéséhez. A webalkalmazás-munkamenetek kezeléséhez a következő tulajdonságokat használhatja:
+Az Azure AD B2C támogatja az [OpenID Connect hitelesítési protokollt](openid-connect.md) a webes alkalmazásokba való biztonságos bejelentkezés engedélyezéséhez. A következő tulajdonságokkal kezelheti a webalkalmazás-munkameneteket:
 
-## <a name="session-behavior-properties"></a>Munkamenet viselkedési tulajdonságai
+## <a name="session-behavior-properties"></a>Munkamenet viselkedésének tulajdonságai
 
-- **Webalkalmazás-munkamenet élettartama (perc)** – sikeres hitelesítés után a felhasználó böngészőjében tárolt Azure ad B2C's-munkamenet-cookie élettartama.
+- **Webapp-munkamenet élettartama (perc)** – Az Azure AD B2C munkamenet-cookie-jának a felhasználó böngészőjében tárolt élettartama sikeres hitelesítés esetén.
     - Alapértelmezett = 1440 perc.
-    - Minimum (inkluzív) = 15 perc.
-    - Maximum (inkluzív) = 1440 perc.
-- **Webalkalmazás-munkamenet időkorlátja** – ha ez a kapcsoló **abszolút**értékre van állítva, a rendszer a **webalkalmazás-munkamenet élettartama (perc)** által megadott időszak elteltével újra hitelesíti a felhasználót. Ha a kapcsoló a **működés közbeni** (alapértelmezett beállítás) értékre van állítva, a felhasználó mindaddig bejelentkezett marad, amíg a felhasználó folyamatosan aktív a webalkalmazásban.
-- **Egyszeri bejelentkezés konfigurálása** Ha több alkalmazással és felhasználói folyamattal rendelkezik a B2C-bérlőben, akkor az **egyszeri bejelentkezési konfigurációs** tulajdonsággal kezelheti a felhasználók interakcióit. A tulajdonságot a következő beállítások egyikére állíthatja be:
-    - **Bérlő** – ez a beállítás az alapértelmezett érték. Ezzel a beállítással a B2C-bérlőben több alkalmazás és felhasználói folyamat is megoszthatja ugyanazt a felhasználói munkamenetet. Ha például egy felhasználó bejelentkezik egy alkalmazásba, a felhasználó zökkenőmentesen bejelentkezhet egy másik, contoso gyógyszertárba, amikor hozzáfér.
-    - **Alkalmazás** – ez a beállítás lehetővé teszi, hogy a felhasználói munkamenetet kizárólag egy alkalmazáshoz, más alkalmazásoktól függetlenül kezelje. Ha például azt szeretné, hogy a felhasználó bejelentkezzen a contoso gyógyszertárba (ugyanazzal a hitelesítő adatokkal), akkor is, ha a felhasználó már be van jelentkezve a contoso Shoppingba, egy másik alkalmazás ugyanazon B2C-bérlőn.
-    - **Házirend** – ez a beállítás lehetővé teszi a felhasználói munkamenetek kizárólag felhasználói folyamatokhoz való fenntartását, az azt használó alkalmazásoktól függetlenül. Ha például a felhasználó már bejelentkezett, és elvégezte a többtényezős hitelesítés (MFA) lépését, a felhasználó több alkalmazás nagyobb biztonságú részeihez is hozzáférhet, ha a munkamenet a felhasználói folyamathoz kötődik, nem jár le.
-    - **Letiltva** – ez a beállítás arra kényszeríti a felhasználót, hogy a teljes felhasználói folyamaton keresztül fusson a szabályzat minden egyes végrehajtásán.
+    - Minimum (bezárólag) = 15 perc.
+    - Maximum (bezárólag) = 1440 perc.
+- **Webapp-munkamenet időmeghosszabbítása** – Ha ez a kapcsoló **Abszolút**értékre van állítva, a felhasználónak újra hitelesítenie kell magát a **webalkalmazás munkamenetének élettartama (perc)** által megadott időszak letelte után. Ha ez a kapcsoló **gördülő** (az alapértelmezett beállítás), a felhasználó mindaddig bejelentkezve marad, amíg a felhasználó folyamatosan aktív a webalkalmazásban.
+- **Egyszeri bejelentkezési konfiguráció** Ha több alkalmazás és felhasználói folyamatok a B2C bérlő, kezelheti a felhasználói interakciók közöttük az **egyszeri bejelentkezési konfigurációs** tulajdonság használatával. A tulajdonságot az alábbi beállítások egyikére állíthatja be:
+    - **Bérlő** – Ez a beállítás az alapértelmezett. Ezzel a beállítással lehetővé teszi, hogy több alkalmazás és a felhasználói folyamatok a B2C-bérlő ugyanazt a felhasználói munkamenetet. Ha például egy felhasználó bejelentkezik egy alkalmazásba, a felhasználó zökkenőmentesen bejelentkezhet egy másikba, a Contoso Pharmacy-be is, amikor hozzáfér hozzá.
+    - **Alkalmazás** – Ez a beállítás lehetővé teszi, hogy a felhasználói munkamenet et kizárólag egy alkalmazáshoz tartsa fenn, függetlenül más alkalmazásoktól. Ha például azt szeretné, hogy a felhasználó jelentkezzen be a Contoso Gyógyszertárba (ugyanazzal a hitelesítő adatokkal), még akkor is, ha a felhasználó már be van jelentkezve a Contoso Shopping- ba, ugyanazon a B2C-bérlőn lévő másik alkalmazásba.
+    - **Házirend** – Ez a beállítás lehetővé teszi, hogy a felhasználói munkamenet et kizárólag egy felhasználói folyamat számára tartsa fenn, függetlenül az azt használó alkalmazásoktól. Ha például a felhasználó már bejelentkezett, és végrehajtott egy többtényezős hitelesítési (MFA) lépést, a felhasználó több alkalmazás magasabb biztonsági részeihez is hozzáférést kaphat, feltéve, hogy a felhasználói folyamathoz kötött munkamenet nem jár le.
+    - **Letiltva** – Ez a beállítás arra kényszeríti a felhasználót, hogy a szabályzat minden végrehajtásakor végigfusson a teljes felhasználói folyamaton.
 
-A következő használati esetek engedélyezettek a következő tulajdonságok használatával:
+A következő használati esetek engedélyezve vannak a következő tulajdonságok használatával:
 
-- Az iparág biztonsági és megfelelőségi követelményeinek kielégítése a webalkalmazás-munkamenetek megfelelő élettartamának beállításával.
-- A hitelesítés kényszerítése egy beállított időszak után a felhasználó interakciójában a webalkalmazás magas biztonsági részével.
+- A megfelelő webalkalmazás-munkamenet-élettartam beállításával megfelelt az iparág biztonsági és megfelelőségi követelményeinek.
+- A hitelesítés kényszerítése egy meghatározott időszak után a felhasználó és a webalkalmazás magas biztonsági szintű részével folytatott interakció során.
 
 ## <a name="configure-the-properties"></a>A tulajdonságok konfigurálása
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőt tartalmazza.
-3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-4. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+2. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja, ha a felső **menüben** a Directory + előfizetésszűrőt választja, és kiválasztja az Azure AD B2C-bérlőt tartalmazó könyvtárat.
+3. Válassza az **Összes szolgáltatás** lehetőséget az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Azure AD B2C parancsot.**
+4. Válassza a **Felhasználói folyamatok (házirendek)** lehetőséget.
 5. Nyissa meg a korábban létrehozott felhasználói folyamatot.
-6. Válassza ki a **Tulajdonságok** elemet.
-7. Konfigurálja a **webalkalmazás-munkamenet élettartamát (perc)** , a **webalkalmazás-munkamenet időkorlátját**, az **egyszeri bejelentkezés konfigurációját**, és szükség szerint adja **meg az azonosító tokent a kijelentkezési kérésekben** .
+6. Válassza **a Tulajdonságok lehetőséget.**
+7. Konfigurálja **a webalkalmazás munkamenetének élettartamát (perc),** **a webalkalmazás munkamenetének időmegmaradását**, **egyszeri bejelentkezési konfigurációját**, és szükség szerint **adja meg az azonosító jogkivonatot a kijelentkezési kérelmekben.**
 
-    ![A munkamenet viselkedési tulajdonságának beállításai a Azure Portalban](./media/session-behavior/session-behavior.png)
+    ![Munkamenet-viselkedés tulajdonságbeállításai az Azure Portalon](./media/session-behavior/session-behavior.png)
 
-8. Kattintson a **Save** (Mentés) gombra.
+8. Kattintson a **Mentés** gombra.

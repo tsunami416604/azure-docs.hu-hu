@@ -1,6 +1,6 @@
 ---
-title: ClaimsProviders – Azure Active Directory B2C | Microsoft Docs
-description: A Azure Active Directory B2C egyéni házirendjének ClaimsProvider elemének megadásához.
+title: Jogcímszolgáltatók – Azure Active Directory B2C | Microsoft dokumentumok
+description: Adja meg az egyéni szabályzat ClaimsProvider elemét az Azure Active Directory B2C-ben.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,17 +11,17 @@ ms.date: 01/29/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dfb34085181e0b759d1d77485ff21b5bc59e0de3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189769"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A jogcím-szolgáltató [technikai profilokat](technicalprofiles.md)tartalmaz. Minden jogcím-szolgáltatónak rendelkeznie kell egy vagy több olyan technikai profillal, amely meghatározza a végpontokat és a jogcím-szolgáltatóval való kommunikációhoz szükséges protokollokat. A jogcím-szolgáltató több technikai profillal is rendelkezhet. Például több technikai profil is definiálható, mert a jogcím-szolgáltató több protokollt támogat, különböző képességekkel rendelkező végpontokat, illetve különböző jogcímeket különböző megbízhatósági szinteken szabadít fel. Lehetséges, hogy a bizalmas jogcímeket egy felhasználói úton kell kibocsátani, de nem egy másikban.
+A jogcímszolgáltató [technikai profilokat](technicalprofiles.md)tartalmaz. Minden jogcímszolgáltatónak rendelkeznie kell egy vagy több technikai profillal, amely meghatározza a jogcímszolgáltatóval való kommunikációhoz szükséges végpontokat és protokollokat. A jogcímszolgáltató több technikai profillal is rendelkezhet. Például több technikai profil is definiálható, mert a jogcímszolgáltató több protokollt támogat, különböző különböző képességekkel rendelkező végpontokat, vagy különböző jogcímeket ad ki különböző megbízhatósági szinteken. Előfordulhat, hogy egy felhasználói út során felszabadítja a bizalmas jogcímeket, de egy másikban nem.
 
 ```XML
 <ClaimsProviders>
@@ -43,19 +43,19 @@ A **ClaimsProviders** elem a következő elemet tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| ClaimsProvider | 1: n | Egy akkreditált jogcím-szolgáltató, amely különböző felhasználói útvonalakon is kihasználható. |
+| Jogcímszolgáltató | 1:n | Akkreditált jogcímszolgáltató, amely különböző felhasználói utazások során használható. |
 
-## <a name="claimsprovider"></a>ClaimsProvider
+## <a name="claimsprovider"></a>Jogcímszolgáltató
 
-A **ClaimsProvider** elem a következő alárendelt elemeket tartalmazza:
+A **ClaimsProvider** elem a következő gyermekelemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ---------- | ----------- |
-| Domain | 0:1 | A jogcím-szolgáltató tartománynevét tartalmazó karakterlánc. Ha például a jogcímek szolgáltatója tartalmazza a Facebook technikai profilt, a tartománynév Facebook.com. Ezt a tartománynevet a rendszer a jogcím-szolgáltatóban definiált összes műszaki profilhoz használja, kivéve ha a technikai profil felülbírálja. A tartománynevet **domain_hint**is lehet hivatkozni. További információkért tekintse [meg a közvetlen bejelentkezés beállítása a Azure Active Directory B2C használatával](direct-signin.md)című témakör **átirányítása a közösségi szolgáltatónak** című szakaszát. |
-| DisplayName | 1:1 | A jogcím-szolgáltató nevét tartalmazó karakterlánc. |
-| [TechnicalProfiles](technicalprofiles.md) | 0:1 | A jogcím-szolgáltató által támogatott technikai profilok készlete |
+| Domain | 0:1 | A jogcímszolgáltató tartománynevét tartalmazó karakterlánc. Ha például a jogcímszolgáltatód tartalmazza a Facebook technikai profilját, a domain név Facebook.com. Ez a tartománynév a jogcímszolgáltatóban definiált összes technikai profilhoz használatos, kivéve, ha a technikai profil felülbírálja. A tartománynévre **domain_hint**is hivatkozhat. További információt az Azure Active Directory B2C használatával közvetlen bejelentkezés beállítása című közösségi szolgáltatóba való bejelentkezés **átirányítása** [című szakaszban talál.](direct-signin.md) |
+| DisplayName | 1:1 | A jogcímszolgáltató nevét tartalmazó karakterlánc. |
+| [TechnicalProfiles](technicalprofiles.md) | 0:1 | A jogcímszolgáltató által támogatott technikai profilok |
 
-A **ClaimsProvider** szervezi, hogy a technikai profilok hogyan kapcsolódnak a jogcím-szolgáltatóhoz. A következő példa a Azure Active Directory jogcím-szolgáltatót mutatja be a Azure Active Directory technikai profiljaival:
+**A ClaimsProvider** rendszerezi, hogy a technikai profilok hogyan kapcsolódnak a jogcímszolgáltatóhoz. A következő példa az Azure Active Directory jogcímszolgáltatóját mutatja be az Azure Active Directory technikai profiljaival:
 
 ```XML
 <ClaimsProvider>
@@ -93,7 +93,7 @@ A **ClaimsProvider** szervezi, hogy a technikai profilok hogyan kapcsolódnak a 
 </ClaimsProvider>
 ```
 
-A következő példa a Facebook **-OAUTH** technikai profillal rendelkező Facebook-jogcímek szolgáltatóját mutatja be.
+A következő példa a Facebook-jogcímszolgáltatót mutatja be a **Facebook-OAUTH** technikai profillal.
 
 ```XML
 <ClaimsProvider>

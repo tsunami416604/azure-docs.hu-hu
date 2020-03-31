@@ -1,7 +1,7 @@
 ---
-title: '& Gyorsítótár-tokenek beszerzése a MSAL-mel | Azure'
+title: Gyorsítótár-tokenek & beszerzése az MSAL-lal | Azure
 titleSuffix: Microsoft identity platform
-description: További információ a tokenek beszerzéséről és gyorsítótárazásáról a Microsoft Authentication Library (MSAL) használatával.
+description: Ismerje meg a tokenek beszerzését és gyorsítótárazását a Microsoft hitelesítési könyvtár (MSAL) használatával.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,101 +14,101 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: c1f1cbf85b96aade745cc4248aed4bc89e41b450
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085164"
 ---
-# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Tokenek beszerzése és gyorsítótárazása a Microsoft Authentication Library (MSAL) használatával
+# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Tokenek beszerzése és gyorsítótárazása a Microsoft hitelesítési könyvtárával (MSAL)
 
-A [hozzáférési tokenek](access-tokens.md) lehetővé teszik az ügyfelek számára az Azure által védett webes API-k biztonságos meghívását. A Microsoft Authentication Library (MSAL) segítségével többféleképpen is beszerezheti a jogkivonatokat. A felhasználók egy webböngészőn keresztüli interakciót igényelnek. Némelyikhez nincs szükség felhasználói beavatkozásra. Általánosságban elmondható, hogy a token beszerzésének módja attól függ, hogy az alkalmazás egy nyilvános ügyfélalkalmazás (asztali vagy mobil alkalmazás) vagy egy bizalmas ügyfélalkalmazás (webalkalmazás, webes API vagy démon alkalmazás, például Windows-szolgáltatás).
+[A hozzáférési jogkivonatok](access-tokens.md) lehetővé teszik az ügyfelek számára, hogy biztonságosan hívhassák meg az Azure által védett webes API-kat. A Microsoft Authentication Library (MSAL) segítségével számos módon szerezhet be jogkivonatot. Bizonyos módokfelhasználói interakciókat igényelnek a webböngészőn keresztül. Vannak, akik nem igényelnek felhasználói beavatkozást. A jogkivonat beszerzésének módja általában attól függ, hogy az alkalmazás nyilvános ügyfélalkalmazás (asztali vagy mobilalkalmazás) vagy bizalmas ügyfélalkalmazás (Web App, Web API vagy démonalkalmazás, például Windows-szolgáltatás).
 
-A MSAL a beszerzését követően gyorsítótárazza a tokent.  Az alkalmazás kódjának csendesen (a gyorsítótárból) meg kell próbálnia a token lekérését, mielőtt más módon beszerezze a jogkivonatot.
+Az MSAL a beolvasás után gyorsítótárazza a jogkivonatot.  Az alkalmazáskódnak meg kell próbálnia egy jogkivonatot csendben beszerezni (a gyorsítótárból), először, mielőtt más módon szerezne be egy jogkivonatot.
 
-Törölheti a jogkivonat-gyorsítótárat is, amely a fiókoknak a gyorsítótárból való eltávolításával érhető el. Ez nem távolítja el a böngészőben található munkamenet-cookie-t, de.
+Törölheti a token gyorsítótár, amely úgy érhető el, hogy eltávolítja a fiókokat a gyorsítótárból. Ez azonban nem távolítja el a munkamenet-cookie-t, amely a böngészőben található.
 
-## <a name="scopes-when-acquiring-tokens"></a>Hatókörök a jogkivonatok beszerzése során
+## <a name="scopes-when-acquiring-tokens"></a>Hatókörök jogkivonatok beolvasásakor
 
-A [hatókörök](v2-permissions-and-consent.md) azok az engedélyek, amelyeket a webes API tesz elérhetővé az ügyfélalkalmazások számára, hogy hozzáférést kérjenek a alkalmazáshoz. Az ügyfélalkalmazások kérik a felhasználó belefoglalását ezekhez a hatókörökhöz, amikor hitelesítési kéréseket kap a tokenek eléréséhez a webes API-khoz. A MSAL lehetővé teszi, hogy jogkivonatokat kapjon az Azure AD for Developers (v 1.0) és a Microsoft Identity platform (v 2.0) API-k eléréséhez. a v 2.0 protokoll hatóköröket használ a kérelmekben lévő erőforrások helyett. További információért olvassa el a következőt: [v 1.0 és v 2.0 összehasonlítás](active-directory-v2-compare.md). Az által elfogadott jogkivonat-verzió webes API-konfigurációja alapján a v 2.0-végpont visszaadja a hozzáférési jogkivonatot a MSAL.
+[A hatókörök](v2-permissions-and-consent.md) azok az engedélyek, amelyeket a webes API-k elérhetővé tegyenek az ügyfélalkalmazások számára. Az ügyfélalkalmazások a felhasználó beleegyezését kérik ezekhez a hatókörökhöz, amikor hitelesítési kérelmeket hajtanak, hogy jogkivonatokat kapjanak az webes API-k eléréséhez. Az MSAL lehetővé teszi, hogy jogkivonatokat szerezzen az Azure AD-hez a fejlesztők (1.0-s verzió) és a Microsoft identity platform (2.0) API-k számára. A 2.0-s protokoll a kérelmekben erőforrás helyett hatóköröket használ. További információért olvassa el [az 1.0 és a 2.0-s és a 2.0-s összehasonlítást.](active-directory-v2-compare.md) A web API-konfiguráció alapján a jogkivonat-verzió elfogadja, a v2.0 végpont visszaadja a hozzáférési jogkivonatot az MSAL.
 
-A MSAL beszerzésére szolgáló metódusok számának *hatókör* -paramétert kell megadni. Ez a paraméter a szükséges engedélyeket és erőforrásokat deklaráló karakterláncok egyszerű listája. A jól ismert hatókörök a [Microsoft Graph engedélyek](/graph/permissions-reference).
+Számos MSAL token metódusok *hatókör-paramétert* igényel. Ez a paraméter a kért engedélyeket és erőforrásokat deklaráló karakterláncok egyszerű listája. Jól ismert hatókörök a [Microsoft Graph engedélyeket](/graph/permissions-reference).
 
-A MSAL a v 1.0 erőforrásokhoz is hozzáfér. További információért olvassa el [a v 1.0 alkalmazás hatóköröket](msal-v1-app-scopes.md).
+Az MSAL-ban is lehetséges az 1.0-s és a 0-s erőforrás eléréséhez. További információért olvassa el [a Hatókörek egy 1.0-s alkalmazás hatóköreit.](msal-v1-app-scopes.md)
 
-### <a name="request-specific-scopes-for-a-web-api"></a>A webes API-k adott hatókörének kérése
+### <a name="request-specific-scopes-for-a-web-api"></a>Adott hatókörök kérése egy webes API-hoz
 
-Ha az alkalmazásnak adott engedélyekkel rendelkező jogkivonatokat kell igényelnie egy erőforrás-API-hoz, át kell adnia az API alkalmazás-azonosító URI-JÁT tartalmazó hatóköröket az alábbi formátumban: *&lt;alkalmazás azonosítójának URI-ja&gt;/&lt;hatóköre&gt;*
+Ha az alkalmazásnak adott engedélyekkel rendelkező jogkivonatokat kell kérnie egy erőforrás API-hoz, az alábbi formátumban kell átadnia az API alkalmazásazonosító-URI-ját tartalmazó * &lt;hatóköröket: alkalmazásazonosító&gt;/&lt;URI-hatóköre&gt;*
 
-Például Microsoft Graph API hatókörei: `https://graph.microsoft.com/User.Read`
+Például a Microsoft Graph API hatókörei:`https://graph.microsoft.com/User.Read`
 
-Vagy például egy egyéni webes API hatókörei: `api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
+Vagy például egy egyéni webes API hatókörei:`api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
 
-A Microsoft Graph API esetében csak a hatókör érték `user.read` `https://graph.microsoft.com/User.Read` formátumra mutat, és a szolgáltatás szinonimaként használható.
+A Microsoft Graph API esetében csak `user.read` egy `https://graph.microsoft.com/User.Read` hatókörérték-leképezések formázni, és szinonimaként használható.
 
 > [!NOTE]
-> Bizonyos webes API-k (például a Azure Resource Manager API) (https://management.core.windows.net/) a hozzáférési jogkivonat célközönségi jogcíme (AUD) "/" karakterét várnak. Ebben az esetben fontos átadni a hatókört https://management.core.windows.net//user_impersonationként (jegyezze fel a dupla perjelet), hogy a token érvényes legyen az API-ban.
+> Bizonyos webes API-k, példáulhttps://management.core.windows.net/) az Azure Resource Manager API (a hozzáférési jogkivonat közönségjogcímében (aud) egy záró "/" várható. Ebben az esetben fontos, hogy adja https://management.core.windows.net//user_impersonation át a hatókört (vegye figyelembe a kettős perjel), a jogkivonat érvényes az API-ban.
 
-### <a name="request-dynamic-scopes-for-incremental-consent"></a>Dinamikus hatókörök kérése növekményes engedélyhez
+### <a name="request-dynamic-scopes-for-incremental-consent"></a>Dinamikus hatókörök kérése a növekményes hozzájáruláshoz
 
-Ha a 1.0-s verziójú alkalmazásokat készít, regisztrálnia kell az alkalmazás által a bejelentkezéskor a felhasználó számára szükséges engedélyek (statikus hatókörök) teljes készletét. A 2.0-s verzióban a hatókör-paraméterrel további engedélyekre lehet szükség. Ezeket dinamikus hatóköröknek nevezzük, és lehetővé teszik, hogy a felhasználó növekményes beleegyezett a hatókörökbe.
+Amikor az 1.0-s verziója használatával hoz létre alkalmazásokat, regisztrálnia kellett az alkalmazás által a bejelentkezéskor szükséges engedélyek (statikus hatókörök) teljes készletét. A 2.0-s vagyonban szükség szerint további engedélyeket kérhet a hatókör paraméter használatával. Ezeket dinamikus hatóköröknek nevezzük, és lehetővé teszik a felhasználó számára, hogy növekményes jóváhagyást adjon a hatókörökhöz.
 
-Például először bejelentkezhet a felhasználóba, és megtagadhatja a hozzáférést. Később lehetőség van arra, hogy beolvassa a felhasználó naptárát úgy, hogy kéri a naptár hatókörét a beszerzési jogkivonat metódusokban, és beolvassa a felhasználó belefoglalását.
+Például először bejelentkezhet a felhasználóba, és megtagadhatja tőlük a hozzáférést. Később lehetővé teheti számukra, hogy olvassa el a naptár a felhasználó a beszerzési jogkivonat-metódusok a naptár hatókörét, és a felhasználó beleegyezését.
 
-Például: `https://graph.microsoft.com/User.Read` és `https://graph.microsoft.com/Calendar.Read`
+Például: `https://graph.microsoft.com/User.Read` és`https://graph.microsoft.com/Calendar.Read`
 
-## <a name="acquiring-tokens-silently-from-the-cache"></a>Tokenek csendes beszerzése (a gyorsítótárból)
+## <a name="acquiring-tokens-silently-from-the-cache"></a>Tokenek csendes beolvasása (a gyorsítótárból)
 
-A MSAL megőrzi a jogkivonat-gyorsítótárat (vagy két gyorsítótárat a bizalmas ügyfélalkalmazások számára), és a beszerzése után gyorsítótárazza a tokent.  Sok esetben, ha egy jogkivonat csendes beolvasását kísérli meg, a gyorsítótárban lévő tokenen alapuló további hatókörök is megszerezhetnek egy másik tokent. Emellett képes a jogkivonatok frissítésére is, ha a lejárathoz közeledik (mivel a jogkivonat-gyorsítótár frissítési jogkivonatot is tartalmaz).
+Az MSAL jogkivonat-gyorsítótárat (vagy a bizalmas ügyfélalkalmazások két gyorsítótárát) tart fenn, és a beolvasást követően gyorsítótárazza a jogkivonatot.  Sok esetben egy jogkivonat csendes lekérésének megkísérlése egy másik jogkivonatot szerez be, amely több hatókört a gyorsítótárban lévő jogkivonaton alapuló további hatókörekkel. A token frissítésére is képes, amikor a lejárati idő höz közeledik (mivel a token gyorsítótára frissítési jogkivonatot is tartalmaz).
 
-### <a name="recommended-call-pattern-for-public-client-applications"></a>A nyilvános ügyfélalkalmazások ajánlott hívási mintája
+### <a name="recommended-call-pattern-for-public-client-applications"></a>Ajánlott hívásminta nyilvános ügyfélalkalmazásokhoz
 
-Az alkalmazás kódjának meg kell próbálkoznia a token csendes lekérésével (a gyorsítótárból), először.  Ha a metódus hívása "felhasználói felület szükséges" hibát vagy kivételt ad vissza, próbálkozzon más módon a jogkivonat beszerzésével. 
+Alkalmazáskód meg kell próbálnia, hogy egy jogkivonatot csendben (a gyorsítótárból), először.  Ha a metódushívás "Felhasználói felület szükséges" hibát vagy kivételt ad vissza, próbáljon meg más módon tokeneket beszerezni. 
 
-Van azonban két folyamat, amely előtt **ne** próbálkozzon a tokenek csendes beszerzésével:
+Azonban két folyamat, amely előtt **nem kell** megpróbálni, hogy csendben megszerezni egy jogkivonatot:
 
-- az [ügyfél-hitelesítő adatok folyamata](msal-authentication-flows.md#client-credentials), amely nem használja a felhasználói jogkivonat-gyorsítótárat, de az alkalmazás-jogkivonat gyorsítótára. Ez a módszer gondoskodik az alkalmazás-jogkivonat gyorsítótárának ellenőrzéséről, mielőtt elküld egy kérést az STS-nek.
-- az [engedélyezési kód](msal-authentication-flows.md#authorization-code) Web Apps, mivel bevált egy kódot, amelyet az alkalmazás a felhasználó bejelentkezésekor kapott, és amelyek további hatókörökhöz csatlakoznak. Mivel a kód paraméterként van megadva, és nem egy fiók, a metódus nem tud megtekinteni a gyorsítótárban a kód beváltása előtt, amelyhez egyébként a szolgáltatás hívása szükséges.
+- [ügyfél hitelesítő adatok flow,](msal-authentication-flows.md#client-credentials)amely nem használja a felhasználói jogkivonat-gyorsítótár, hanem egy alkalmazás token cache. Ez a módszer gondoskodik az alkalmazástoken-gyorsítótár ellenőrzéséről, mielőtt kérelmet küldene az STS-nek.
+- [engedélyezési kód áramlását](msal-authentication-flows.md#authorization-code) a Web Apps, mivel beváltja a kódot, hogy az alkalmazás kapott a felhasználó bejelentkezésével, és azokat hozzájárulástovábbi hatókörök. Mivel a kód paraméterként, és nem fiókként kerül átadásra, a metódus nem tud a gyorsítótárban keresni a kód beváltása előtt, amely egyébként is hívást igényel a szolgáltatáshoz.
 
-### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Ajánlott hívási minta a Web Apps az engedélyezési kód folyamatábrájának használatával
+### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Ajánlott hívásminta a webalkalmazásokban az Engedélyezési kód folyamat használatával
 
-Az [OpenID Connect engedélyezési kódját](v2-protocols-oidc.md)használó webalkalmazások esetében a vezérlők ajánlott mintája a következő:
+Az [OpenID Connect engedélyezési kódfolyamatot](v2-protocols-oidc.md)használó webalkalmazások esetében a vezérlők ajánlott mintája a következő:
 
-- Egy bizalmas ügyfélalkalmazás létrehozása a jogkivonat-gyorsítótárral testreszabott szerializálással. 
-- A jogkivonat beszerzése az engedélyezési kód folyamatábrájának használatával
+- Bizalmas ügyfélalkalmazás példányosítása egyedi szerializálással rendelkező jogkivonat-gyorsítótárral. 
+- A jogkivonat beszerzése az engedélyezési kód folyamatával
 
-## <a name="acquiring-tokens"></a>Jogkivonatok beszerzése
+## <a name="acquiring-tokens"></a>Tokenek beolvasása
 
-Általában a token beszerzésének módja attól függ, hogy nyilvános ügyfél vagy bizalmas ügyfélalkalmazás-e.
+Általában a jogkivonat megszerzésének módja attól függ, hogy nyilvános vagy bizalmas ügyfélalkalmazásról van-e szó.
 
 ### <a name="public-client-applications"></a>Nyilvános ügyfélalkalmazások
 
-A nyilvános ügyfélalkalmazások (asztali vagy mobil alkalmazások) esetében:
-- A tokenek gyakran interaktív módon szerezhetők be, és a felhasználó felhasználói felület vagy előugró ablak használatával jelentkeznek be.
-- [Tokent kaphat a bejelentkezett felhasználó számára](msal-authentication-flows.md#integrated-windows-authentication) az integrált Windows-hitelesítés (IWA/Kerberos) használatával, ha az asztali alkalmazás egy tartományhoz vagy az Azure-hoz csatlakoztatott Windows-számítógépen fut.
-- A .NET-keretrendszer asztali ügyfélalkalmazások [számára a felhasználónévvel és jelszóval rendelkező tokent kaphat](msal-authentication-flows.md#usernamepassword) , de ez nem ajánlott. Ne használja a username/Password nevet a bizalmas ügyfélalkalmazások számára.
-- A nem webböngészővel rendelkező eszközökön futó alkalmazások [programkód-folyamatán](msal-authentication-flows.md#device-code) keresztül kaphat jogkivonatot. A felhasználónak egy URL-címmel és egy kóddal kell megadnia egy webböngészőt, és be kell írnia a kódot, és be kell jelentkeznie.  Az Azure AD ezután visszaküldi a jogkivonatot a böngésző nélküli eszközre.
+Nyilvános ügyfélalkalmazások (asztali vagy mobilalkalmazás) esetén:
+- Gyakran szerez tokeneket interaktívan, miután a felhasználó egy felhasználói felületen vagy előugró ablakon keresztül jelentkezik be.
+- Az integrált Windows-hitelesítés (IWA/Kerberos) használatával [a bejelentkezett felhasználó számára csendes en konkretitust kaphat,](msal-authentication-flows.md#integrated-windows-authentication) ha az asztali alkalmazás egy tartományhoz vagy az Azure-hoz csatlakozott Windows-számítógépen fut.
+- A .NET framework asztali ügyfélalkalmazásokban [felhasználónévvel és jelszóval rendelkező jogkivonatot kaphat,](msal-authentication-flows.md#usernamepassword) de ez nem ajánlott. Ne használjon felhasználónevet/jelszót bizalmas ügyfélalkalmazásokban.
+- Szerezhet egy jogkivonatot az [eszközkód-folyamaton](msal-authentication-flows.md#device-code) keresztül olyan eszközökön futó alkalmazásokban, amelyek nem rendelkeznek webböngészővel. A felhasználó kap egy URL-t és egy kódot, aki ezután megy egy webböngésző egy másik eszközön, és beírja a kódot, és bejelentkezik.  Az Azure AD ezután egy jogkivonatot küld vissza a böngésző nélküli eszközre.
 
 ### <a name="confidential-client-applications"></a>Bizalmas ügyfélalkalmazások
 
-A bizalmas ügyfélalkalmazások (webalkalmazások, webes API-k vagy démoni alkalmazások, például Windows-szolgáltatások) esetében:
-- Az [ügyfél hitelesítő adatainak](msal-authentication-flows.md#client-credentials)beszerzésével **saját maga is megvásárolhatja az alkalmazáshoz** tartozó jogkivonatokat, nem pedig felhasználó számára. Ez használható eszközök szinkronizálására, illetve olyan eszközökre, amelyek általános és nem egy adott felhasználó számára dolgozzák fel a felhasználókat. 
-- A webes API-k által használt, a felhasználó nevében egy API-t meghívó [helyszíni folyamat](msal-authentication-flows.md#on-behalf-of) . Az alkalmazás ügyfél-hitelesítő adatokkal van azonosítva, hogy a jogkivonat beszerzése felhasználói állítás (SAML például vagy JWT token) alapján történjen. Ezt a folyamatot olyan alkalmazások használják, amelyeknek hozzá kell férniük egy adott felhasználó erőforrásaihoz a szolgáltatások közötti hívásokban.
-- Jogkivonatok beszerzése a webalkalmazások [engedélyezési kódjának](msal-authentication-flows.md#authorization-code) használatával, miután a felhasználó bejelentkezik az engedélyezési kérelem URL-címén. Az OpenID Connect alkalmazás általában ezt a mechanizmust használja, amely lehetővé teszi a felhasználó számára a bejelentkezést az Open ID Connect használatával, majd a felhasználó nevében hozzáférni a webes API-khoz.
+Bizalmas ügyfélalkalmazások (Web App, Web API vagy démonalkalmazás, például Windows-szolgáltatások) esetén a következőket kell:
+- Az [ügyfél hitelesítő adatainak folyamatával](msal-authentication-flows.md#client-credentials)nem az **alkalmazás jogkivonatait** szerezze be, és ne egy felhasználószámára. Ez olyan eszközök vagy eszközök szinkronizálására használható, amelyek általában a felhasználókat dolgozzák fel, és nem egy adott felhasználót. 
+- A webes [API-k nevében egy api-t](msal-authentication-flows.md#on-behalf-of) a felhasználó nevében hívhat meg. Az alkalmazás ügyfélhitelesítő adatokkal azonosítja annak érdekében, hogy egy felhasználói állításon (például SAML vagy jwt-jogkivonaton) alapuló jogkivonatot szerezzen be. Ezt a folyamatot olyan alkalmazások használják, amelyeknek egy adott felhasználó erőforrásaihoz kell hozzáférnie a szolgáltatás-szolgáltatás hívásokban.
+- Tokenek beszerzése az [engedélyezési kód folyamat](msal-authentication-flows.md#authorization-code) a webalkalmazásokban, miután a felhasználó bejelentkezik az engedélyezési kérelem URL-címen keresztül. OpenID Connect alkalmazás általában ezt a mechanizmust használja, amely lehetővé teszi a felhasználó bejelentkezést open id connect használatával, majd a felhasználó nevében webes API-k eléréséhez.
 
 ## <a name="authentication-results"></a>Hitelesítési eredmények
 
-Ha az ügyfél hozzáférési jogkivonatot kér, az Azure AD olyan hitelesítési eredményt is ad vissza, amely a hozzáférési jogkivonattal kapcsolatos metaadatokat tartalmaz. Ez az információ tartalmazza a hozzáférési jogkivonat lejárati idejét, valamint azokat a hatóköröket, amelyekhez érvényes. Ezek az adatmennyiség lehetővé teszi, hogy az alkalmazás a hozzáférési tokenek elemzése nélkül végezzen intelligens gyorsítótárazást a hozzáférési jogkivonatok használatával.  A hitelesítési eredmények a következőket teszik elérhetővé:
+Amikor az ügyfél hozzáférési jogkivonatot kér, az Azure AD egy hitelesítési eredményt is ad vissza, amely tartalmaz néhány metaadatot a hozzáférési jogkivonatról. Ez az információ tartalmazza a hozzáférési jogkivonat lejárati idejét és azokat a hatóköröket, amelyekre érvényes. Ezek az adatok lehetővé teszik, hogy az alkalmazás a hozzáférési jogkivonatok intelligens gyorsítótárazását anélkül végezze el, hogy magát a hozzáférési jogkivonatot kellene elemeznie.  A hitelesítéseredménye a következőket teszi elérhetővé:
 
-- A webes API [hozzáférési jogkivonata](access-tokens.md) az erőforrások eléréséhez. Ez egy karakterlánc, amely általában Base64 kódolású JWT, de az ügyfélnek soha nem kell megkeresnie a hozzáférési jogkivonatban. A formátum nem garantált, hogy stabil maradjon, és titkosítva lehet az erőforrás számára. Az ügyfél hozzáférési jogkivonatának tartalmától függően a kód írása az egyik legnagyobb forrása a hibáknak és az ügyfél-logikai szüneteknek.
-- A felhasználó [azonosító jogkivonata](id-tokens.md) (ez egy JWT).
-- A jogkivonat lejárata, amely a jogkivonat lejárati dátumát és időpontját jelzi.
-- A bérlő azonosítója tartalmazza azt a bérlőt, amelyben a felhasználó található. A vendég felhasználók (Azure AD B2B forgatókönyvek) esetében a bérlői azonosító a vendég bérlő, nem az egyedi bérlő. Ha a tokent egy felhasználó nevében küldi el a rendszer, a hitelesítési eredmény a felhasználóval kapcsolatos információkat is tartalmaz. A bizalmas ügyfél-folyamatok esetében, amelyekben a rendszer a jogkivonatokat nem felhasználó (az alkalmazás esetében) kéri, ez a felhasználói információ null értékű.
-- Azok a hatókörök, amelyekhez a jogkivonat ki lett állítva.
+- A webes API-hoz az erőforrások eléréséhez a [hozzáférési jogkivonat.](access-tokens.md) Ez egy karakterlánc, általában egy base64 kódolt JWT, de az ügyfél soha ne nézzen a hozzáférési jogkivonatba. A formátum nem garantált, hogy stabil marad, és az erőforrás titkosítható. Az ügyfélen lévő hozzáférési jogkivonat-tartalomtól függően kódot író személyek az egyik legnagyobb hibaforrás és ügyféllogikai törés.
+- A felhasználó [azonosító tokenje](id-tokens.md) (ez egy JWT).
+- A jogkivonat lejárata, amely megmondja a dátum/idő, amikor a jogkivonat lejár.
+- A bérlőazonosító tartalmazza azt a bérlőt, amelyben a felhasználó található. Vendég felhasználók (Azure AD B2B forgatókönyvek) a bérlői azonosító a vendég bérlő, nem az egyedi bérlő. Amikor a jogkivonat egy felhasználó nevében kerül kézbesítésre, a hitelesítési eredmény a felhasználóra vonatkozó információkat is tartalmaz. Olyan bizalmas ügyfélfolyamatok esetén, ahol a jogkivonatokat felhasználó nélkül kérik (az alkalmazáshoz), ez a felhasználói információ null értékű.
+- Azok a hatókörök, amelyekhez a jogkivonatot kiadták.
 - A felhasználó egyedi azonosítója.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha Java-MSAL használ, ismerkedjen meg az [Egyéni jogkivonat-gyorsítótár szerializálásával a MSAL for javában](msal-java-token-cache-serialization.md).
+Ha Az MSAL java-hoz, ismerje meg az [egyéni tokengyorsítótár-szerializálást az MSAL for Java alkalmazásban.](msal-java-token-cache-serialization.md)
 
-További információ a [hibák és a kivételek kezelésére](msal-handling-exceptions.md)vonatkozóan.
+További információ a [hibák és kivételek kezeléséről.](msal-handling-exceptions.md)

@@ -1,126 +1,128 @@
 ---
-title: A Azure File Sync Cloud-rétegek ismertetése | Microsoft Docs
-description: Tudnivalók a Azure File Sync funkcióinak felhős szintjéről
+title: Az Azure File Sync cloud rétegezése | Microsoft dokumentumok
+description: További információ az Azure File Sync felhőalapú rétegezési funkciójáról
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 03/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fea9cebc5199fc7c1fc5c081aa45f08044c21e44
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 11f9097fc4875f0a4300ac56dafe7af9a0b00c97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79268092"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454618"
 ---
-# <a name="cloud-tiering-overview"></a>A felhőalapú rétegek áttekintése
-A felhőalapú rétegek a Azure File Sync választható funkciója, amelyekben a gyakran használt fájlok a kiszolgálón helyileg vannak gyorsítótárazva, míg az összes többi fájl a házirend-beállítások alapján Azure Files. Egy fájl többszintű kiválasztásakor a Azure File Sync fájlrendszer-szűrő (StorageSync. sys) a fájlt helyileg váltja fel egy mutatóval vagy újraelemzési ponttal. Az újraelemzési pont a fájl URL-címét jelöli Azure Files. A többrétegű fájlok "offline" attribútummal és az NTFS fájlrendszerrel beállított FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútummal is rendelkeznek, így a harmadik féltől származó alkalmazások biztonságosan azonosíthatják a többrétegű fájlokat.
+# <a name="cloud-tiering-overview"></a>Felhőrétegezés – áttekintés
+A felhőrétegezés az Azure File Sync opcionális szolgáltatása, amelyben a gyakran használt fájlok helyileg vannak gyorsítótárazva a kiszolgálón, míg az összes többi fájl rétegzett az Azure Files-ba a házirend-beállítások alapján. Ha egy fájl rétegzett, az Azure File Sync fájlrendszer szűrő (StorageSync.sys) lecseréli a fájlt helyileg egy mutatót, vagy újraelemzési pont. Az újraelemzési pont a fájl URL-címét jelöli az Azure Files-ban. A rétegzett fájlok rendelkeznek az "offline" attribútummal és az NTFS fájlrendszerben beállított FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútummal, így a harmadik féltől származó alkalmazások biztonságosan azonosíthatják a rétegzett fájlokat.
  
-Amikor egy felhasználó megnyit egy rétegű fájlt, Azure File Sync zökkenőmentesen visszahívja a fájl adatait a Azure Files anélkül, hogy a felhasználónak tudniuk kell róla, hogy a fájlt az Azure tárolja. 
+Amikor egy felhasználó megnyit egy rétegzett fájlt, az Azure File Sync zökkenőmentesen visszahívja a fájladatokat az Azure Files-ból anélkül, hogy a felhasználónak tudnia kellene, hogy a fájl az Azure-ban van tárolva. 
  
  > [!Important]  
- > A felhő-rétegek nem támogatottak a Windows rendszerköteteken található kiszolgálói végpontok esetében, és csak a 64 KiB-nál nagyobb méretű fájlok állíthatók be Azure Files.
+ > A felhőrétegezés nem támogatott a Windows rendszerkötetén.
     
-A Azure File Sync nem támogatja a 64 KiB-nál kisebb méretű fájlok használatát, mivel a rétegek és az ilyen kisméretű fájlok visszahívásának teljesítménye meghaladja a lemezterület megtakarítását.
-
  > [!Important]  
- > A lépcsőzetesen beállított fájlok felidézéséhez a hálózati sávszélességnek legalább 1 MB/s-nak kell lennie. Ha a hálózati sávszélesség kevesebb, mint 1 Mbps, előfordulhat, hogy a fájlok időtúllépési hiba miatt nem tudnak felidézni.
+ > A rétegzett fájlok visszahívásához a hálózati sávszélességnek legalább 1 Mb/s-nak kell lennie. Ha a hálózati sávszélesség kisebb, mint 1 Mb/s, előfordulhat, hogy a fájlok időkihagyási hibával nem tudnak visszahívni.
 
-## <a name="cloud-tiering-faq"></a>Felhőalapú rétegek – gyakori kérdések
+## <a name="cloud-tiering-faq"></a>Gyakori kérdések a felhőrétegezésről
 
 <a id="afs-cloud-tiering"></a>
-### <a name="how-does-cloud-tiering-work"></a>Hogyan működik a felhőalapú rétegek működése?
-A Azure File Sync rendszerszűrő minden kiszolgálói végponton létrehoz egy "hő"-t a névtérből. A szolgáltatás az idő múlásával figyeli a hozzáféréseket (olvasási és írási műveleteket), majd a hozzáférés gyakorisága és recency alapján minden fájlhoz hozzárendel egy hő pontszámot. A legutóbb megnyitott fájl gyakran megtekinthető állapotba kerül, míg egy kis ideig nem fér hozzá a fájlhoz. Ha a kiszolgálón lévő fájl mennyisége meghaladja a szabad területhez beállított mennyiség küszöbértékét, akkor a rendszer a leghidegebb fájlokat Azure Files, amíg a szabad terület százalékos értéke nem teljesül.
+### <a name="how-does-cloud-tiering-work"></a>Hogyan működik a felhőrétegezés?
+Az Azure File Sync rendszerszűrő minden kiszolgálóvégponton létrehoz egy "hőtérképet" a névtérből. Ez figyeli a hozzáférések (olvasási és írási műveletek) idővel, majd alapján mind a gyakorisága és recency hozzáférés, hozzárendeli a hőpontszám minden fájlt. A gyakran használt fájl, amely a közelmúltban nyitotta meg kell tekinteni forró, míg a fájl, amely alig érintette, és nem érhető el egy ideje lesz tekinthető hűvös. Ha a kiszolgálón lévő fájlkötet túllépi a beállított kötetszabad terület küszöbértéket, a leghűvösebb fájlokat rétegezi az Azure Files-ba, amíg a szabad terület százaléka el nem teljesül.
 
-A Azure File Sync ügynök 4,0-es és újabb verzióiban megadhatja a dátumra vonatkozó házirendet minden olyan kiszolgálói végponton, amely a megadott számú napon belül nem hozzáférő vagy módosított fájlokat tartalmaz.
+Az Azure File Sync ügynök 4.0-s és újabb verzióiban megadhatja továbbá a dátumházirendet minden kiszolgálóvégponton, amely meghatározott számú napon belül rétegezi a nem elért vagy módosított fájlokat.
+
+<a id="tiering-minimum-file-size"></a>
+### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Mekkora a fájlréteg minimális fájlmérete?
+A 9.x-es és újabb ügynökverziók esetében a fájl-réteg minimális fájlmérete a fájlrendszer fürtjének méretétől függ (a fájlrendszer fürtméretének kétszerese). Ha például az NTFS fájlrendszer fürtjének mérete 4 KB, akkor a fájl és a szint minimális fájlmérete 8 KB. A 8.x-es vagy régebbi ügynökverziók esetében a fájl és a szint minimális fájlmérete 64 KB.
 
 <a id="afs-volume-free-space"></a>
-### <a name="how-does-the-volume-free-space-tiering-policy-work"></a>Hogyan működik a kötet szabad területének rétegű házirendje?
-A kötet szabad területe az a szabad terület, amelyet le szeretne foglalni azon a köteten, amelyen a kiszolgálói végpont található. Ha például a kötet szabad területe 20%-ra van állítva egy olyan köteten, amely egy kiszolgáló-végponttal rendelkezik, a legutóbb elért fájlok a lemezterület 80%-ában lesznek elfoglalva, az összes többi olyan fájllal, amely nem fér el az Azure-ba. A kötet szabad területe a kötet szintjén érvényes, nem pedig az egyes címtárak vagy szinkronizálási csoportok szintjére. 
+### <a name="how-does-the-volume-free-space-tiering-policy-work"></a>Hogyan működik a köteten található szabad hely rétegzési szabályzata?
+A kötetszabad terület az a szabad terület, amelyet azon a köteten szeretne lefoglalni, amelyen a kiszolgálóvégpont található. Ha például a kötet szabad területe 20%-ra van állítva egy olyan köteten, amely egy kiszolgálói végpontot tartalmaz, a kötetterület legfeljebb 80%-át a legutóbb elért fájlok foglalják el, és a fennmaradó fájlok, amelyek nem férnek bele ebbe a térbe az Azure-ig rétegezve. A kötetszabad terület a kötet szintjén érvényes, nem pedig az egyes könyvtárak vagy szinkronizálási csoportok szintjén. 
 
 <a id="volume-free-space-fastdr"></a>
-### <a name="how-does-the-volume-free-space-tiering-policy-work-with-regards-to-new-server-endpoints"></a>Hogyan működik a kötet szabad területének rétegeinek szabályzata az új kiszolgálói végpontok tekintetében?
-Ha egy kiszolgálói végpontot újonnan létesítettek és csatlakoztatnak egy Azure-fájlmegosztást, akkor a kiszolgáló először lekéri a névteret, majd lekéri a tényleges fájlokat, amíg eléri a kötet szabad területének küszöbértékét. Ezt a folyamatot a gyors katasztrófa-helyreállítás vagy a névtér gyors visszaállítása is nevezik.
+### <a name="how-does-the-volume-free-space-tiering-policy-work-with-regards-to-new-server-endpoints"></a>Hogyan működik a köteten található szabad hely rétegzési szabályzata az új kiszolgálóvégpontok szempontjából?
+Amikor egy kiszolgálóvégpont újonnan ki van építve, és egy Azure-fájlmegosztáshoz csatlakozik, a kiszolgáló először lehúzza a névteret, majd lehúzza a tényleges fájlokat, amíg el nem éri a kötet szabad területküszöbértéket. Ezt a folyamatot gyors vészhelyreállításnak vagy gyors névtér-visszaállításnak is nevezik.
 
 <a id="afs-effective-vfs"></a>
-### <a name="how-is-volume-free-space-interpreted-when-i-have-multiple-server-endpoints-on-a-volume"></a>Hogyan történik a kötetek szabad területének értelmezése, ha több kiszolgálói végpontom van egy köteten?
-Ha egy köteten egynél több kiszolgálói végpont található, akkor a köteten lévő összes kiszolgálói végponton megadott legnagyobb szabad terület nagysága az adott köteten lévő összes kiszolgáló-végponton. A fájlok a használati minták alapján lesznek feldolgozva, függetlenül attól, hogy melyik kiszolgálói végponthoz tartoznak. Ha például két kiszolgáló-végponttal rendelkezik egy köteten, a Endpoint1 és a Endpoint2, ahol a Endpoint1 a kötet szabad területének küszöbértéke 25%, a Endpoint2 pedig 50%-os szabad területtel rendelkezik, akkor a kiszolgálói végpontok esetében a kötet szabad területének küszöbértéke 50% lesz. 
+### <a name="how-is-volume-free-space-interpreted-when-i-have-multiple-server-endpoints-on-a-volume"></a>Hogyan értelmezi a rendszer a köteten található szabad hely mennyiségét, ha a kötetnek több kiszolgálói végpontja van?
+Ha egy köteten egynél több kiszolgálóvégpont van, a kötet tényleges szabad területküszöbértéke a kötet bármely kiszolgálóvégpontján megadott legnagyobb kötetszabad terület. A fájlok rétegezése a használati minták szerint lesz, függetlenül attól, hogy melyik kiszolgálóvégponthoz tartoznak. Ha például két kiszolgálóvégpontvan egy köteten, az Endpoint1 és az Endpoint2, ahol az Endpoint1 kötetszabad terület küszöbértéke 25%, az Endpoint2 pedig 50%-os kötetszabad területküszöbértéktel rendelkezik, a kötetszabad terület küszöbértéke mindkét kiszolgálóvégpont esetében 50%. 
 
 <a id="date-tiering-policy"></a>
-### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Hogyan működik a dátum-előtételi szabályzat a kötet szabad területére vonatkozó adatmennyiségi szabályzattal együtt? 
-Ha egy kiszolgálói végponton engedélyezi a felhő-rétegek bekapcsolását, beállíthatja a kötet szabad területére vonatkozó házirendet. Mindig elsőbbséget élvez minden más szabályzattal szemben, beleértve a dátumra vonatkozó házirendet is. Lehetőség van arra is, hogy minden egyes kiszolgálói végponthoz engedélyezheti a dátumra vonatkozó szabályzatot, ami azt jelenti, hogy csak a megadott (azaz a (z) és a (z), a jelen szabályzatban ismertetett fájlok jelennek meg a házirendben, és az elavult fájlokkal együtt, az összes elavult fájllal. Ne feledje, hogy a kötet szabad területének házirendje mindig elsőbbséget élvez, és ha nincs elég szabad terület a köteten, hogy annyi napig érdemes megőrizni a fájlokat, ahogy azt a dátum házirend írja le, a Azure File Sync továbbra is a leghidegebb fájlokat fogja használni, amíg a kötet nem szabad a terület százalékos aránya teljesül.
+### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Hogyan működik a dátum rétegzési szabályzata a köteten található szabad hely rétegzési szabályzatával együtt? 
+Amikor engedélyezi a felhőrétegezést egy kiszolgálóvégponton, mennyiségi szabad területházirendet kell beállítania. Mindig elsőbbséget élvez minden más házirenddel szemben, beleértve a dátumházirendet is. Szükség esetén engedélyezheti a dátumházirendet az adott kötet en lévő minden kiszolgálóvégponthoz, ami azt jelenti, hogy csak a házirendben leírt napokon belül érhető el (azaz olvasott vagy írt) fájlok maradnak helyi szinten, a staler-fájlok rétegezve. Ne feledje, hogy a kötetszabad területházirend mindig elsőbbséget élvez, és ha nincs elég szabad hely a köteten ahhoz, hogy a dátumházirendben leírt számú fájl megőrződjön, az Azure File Sync folytatja a leghidegebb fájlok rétegezését, amíg a kötet ingyenes helyszázaléka teljesül.
 
-Tegyük fel például, hogy egy 60 napos dátum-alapú rétegbeli szabályzattal és 20%-os mennyiségű szabad területtel rendelkezik. Ha a dátum házirend alkalmazása után a szabad terület kevesebb, mint 20%-a a köteten van, akkor a kötet szabad területére vonatkozó házirend bekerül és felülbírálja a dátum házirendet. Ennek eredményeképpen a rendszer több fájlt is felhasznál, így a kiszolgálón tárolt adatok mennyisége 60 nap és 45 nap között csökkenthető. Ezzel a szabályzattal ellentétben az időtartományon kívül eső fájlok rétegeire is kényszeríthető, még akkor is, ha még nem találta meg a szabad terület küszöbértékét – tehát a 61 napos fájlok akkor is lesznek feldolgozva, ha a kötet üres.
+Tegyük fel például, hogy 60 napos dátumalapú rétegezési házirenddel és 20%-os kötetszabad területházirenddel rendelkezik. Ha a dátumházirend alkalmazása után a köteten a szabad terület kevesebb mint 20%-a van, a kötetszabad terület házirend beindul, és felülbírálja a dátumházirendet. Ez azt eredményezi, hogy több fájl rétegzett lesz, így a kiszolgálón tárolt adatok mennyisége 60 napról 45 napra csökkenthető. Ezzel szemben ez a házirend akkor is kényszeríti az időtartományon kívül esik fájlok rétegezését, ha még akkor sem érte el a szabad terület küszöbértékét – így a 61 napos fájlok akkor is rétegzettek lesznek, ha a kötet üres.
 
 <a id="volume-free-space-guidelines"></a>
-### <a name="how-do-i-determine-the-appropriate-amount-of-volume-free-space"></a>Hogyan határozza meg a kötet szabad területének megfelelő mennyiségét?
-A helyi adatok mennyiségét néhány tényező határozza meg: a sávszélesség, az adatkészlet hozzáférési mintája és a költségkeret. Ha alacsony sávszélességű kapcsolattal rendelkezik, érdemes megtartania a helyi adatait, hogy a felhasználók minimális késéssel rendelkezzenek. Ellenkező esetben egy adott időszakon belül elvégezheti azt a kiindulási arányban. Ha például tudja, hogy az 1 TB-os adatkészlet 10%-a megváltozik, vagy minden hónapban aktívan hozzáfér, akkor érdemes megtartania a 100 GB-ot a helyi számítógépen, hogy ne kelljen gyakran újrahívni a fájlokat. Ha a kötet 2TB, akkor 5%-ot (vagy 100 GB-ot) kell megtartania, ami azt jelenti, hogy a fennmaradó 95% a kötet szabad területének százalékos aránya. Azt javasoljuk azonban, hogy adjon hozzá egy puffert a nagyobb adatváltozási időszakok esetében, azaz a mennyiségtől kezdve a szabad lemezterület százalékos arányát, majd később szükség esetén módosítsa. 
+### <a name="how-do-i-determine-the-appropriate-amount-of-volume-free-space"></a>Hogyan határozhatom meg a köteten található szabad hely megfelelő méretét?
+A helyi szinten tartandó adatok mennyiségét néhány tényező határozza meg: a sávszélesség, az adatkészlet hozzáférési mintája és a költségkeret. Ha alacsony sávszélességű kapcsolattal rendelkezik, érdemes több adatot helyi szinten tartani, hogy a felhasználók számára minimális késés legyen. Ellenkező esetben egy adott időszakban a lemorzsolódási arányalapján alapjául számíthat. Ha például tudja, hogy az 1 TB-os adatkészlet körülbelül 10%-a megváltozik, vagy havonta aktívan hozzáfér, akkor érdemes lehet 100 GB-ot helyi szinten tartani, hogy ne hívja vissza gyakran a fájlokat. Ha a kötet 2 TB, akkor meg kell tartani 5% (vagy 100 GB) helyi, ami azt jelenti, a fennmaradó 95%, a kötet szabad terület százaléka. Azonban azt javasoljuk, hogy adjon hozzá egy puffert a magasabb lemorzsolódási időszakokhoz – más szóval, kezdve egy kisebb kötetszabad terület százalékával, majd szükség esetén később állítsa be. 
 
-A további adatok helyi megtartása csökkenti a kimenő forgalom költségeit, mivel az Azure-ból kevesebb fájl lesz meghívva, de emellett nagyobb mennyiségű helyszíni tárterület fenntartására is van szükség, amely a saját költségén alapul. Ha Azure File Sync központilag telepítette a példányát, megtekintheti a Storage-fiók kimenő adatait, hogy nagyjából felmérje, hogy a kötet szabad területének beállításai megfelelőek-e a használathoz. Feltételezve, hogy a Storage-fiók csak a Azure File Sync Felhőbeli végpontját (azaz a szinkronizálási megosztást) tartalmazza, a magas kimenő forgalom pedig azt jelenti, hogy a felhőből sok fájl visszahívásra kerül, és érdemes megfontolni a helyi gyorsítótár növelését.
+Több adat helyi szinten tartása azt jelenti, hogy alacsonyabb kimenő költségeket, mivel kevesebb fájlt kell visszahívni az Azure-ból, de azt is megköveteli, hogy nagyobb mennyiségű helyszíni tárhelyet tartson fenn, amely saját költségén érkezik. Miután telepítette az Azure File Sync egy példányát, megnézheti a tárfiók kimenő kijáratait, hogy nagyjából felmérhesse, hogy a kötetszabad terület beállításai megfelelnek-e a használatnak. Feltéve, hogy a tárfiók csak az Azure File Sync Cloud Endpoint (azaz a szinkronizálási megosztás), majd a magas kimenő forgalom azt jelenti, hogy sok fájl van visszahívva a felhőből, és érdemes növelni a helyi gyorsítótár.
 
 <a id="how-long-until-my-files-tier"></a>
-### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>Új kiszolgálói végpontot adott hozzá. Mennyi ideig tartanak a fájlok a kiszolgálói szinten?
-A Azure File Sync ügynök 4,0-es és újabb verzióiban a fájlok Azure-fájlmegosztásba való feltöltése után a rendszer a szabályzatok alapján a következő, az óránként egyszer megjelenő munkamenet-futtatási időpontokat fogja felosztani. A régebbi ügynökök esetében a rétegek akár 24 órát is igénybe vehetnek.
+### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>Új kiszolgálóvégpontot adtam hozzá. Mennyi idő múlva a fájlokat ezen a kiszolgálón szinten?
+Az Azure File Sync ügynök 4.0-s és újabb verzióiban, miután a fájlokat feltöltötte az Azure-fájlmegosztásba, a rendszer tiered a szabályzatok szerint, amint a következő rétegezési munkamenet fut, ami óránként egyszer történik. Régebbi ügynököknél a rétegezés akár 24 órát is igénybe vehet.
 
 <a id="is-my-file-tiered"></a>
-### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>Honnan tudhatom meg, hogy van-e lépcsőzetesen egy fájl?
-Több módon is ellenőrizhető, hogy a fájl az Azure-fájlmegosztás szintjére lett-e osztva:
+### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>Hogyan állapítható meg, hogy egy fájl rétegzett-e?
+Számos módja van annak ellenőrzésére, hogy egy fájl rétegzett-e az Azure-fájlmegosztáshoz:
     
-   *  **Keresse meg a fájl attribútumait a fájlban.**
-     Kattintson a jobb gombbal egy fájlra, lépjen a **részletek**menüpontra, majd görgessen le az **attribútumok** tulajdonsághoz. A rétegű fájlok a következő attribútumokkal vannak beállítva:     
+   *  **Ellenőrizze a fájl attribútumait.**
+     Kattintson a jobb gombbal egy fájlra, válassza a **Részletek menüt,** majd görgessen le az **Attribútumok** tulajdonsághoz. A rétegzett fájlok attribútumai a következőtulajdonságokkal rendelkeznek:     
         
-        | Attribútum betűjele | Attribútum | Meghatározás |
+        | Attribútumbetű | Attribútum | Meghatározás |
         |:----------------:|-----------|------------|
-        | Az | Archívum | Azt jelzi, hogy a fájlt biztonsági mentési szoftverrel kell biztonsági másolatot készíteni. Ez az attribútum mindig be van állítva, függetlenül attól, hogy a fájl többszintes vagy teljes mértékben a lemezen van-e tárolva. |
-        | P | Ritka fájl | Azt jelzi, hogy a fájl ritka fájl. A ritka fájlok olyan speciális fájltípusok, amelyeket az NTFS biztosít a hatékony használatra, ha a lemezen lévő fájl többnyire üres. A Azure File Sync ritka fájlokat használ, mivel a fájlok teljes mértékben, vagy részben visszahívásra kerülnek. A teljes mértékben többrétegű fájlokban a fájl stream a felhőben tárolódik. Egy részben visszanevezett fájlban a fájl egy része már lemezen van. Ha egy fájl teljesen visszahívásra kerül a lemezre, Azure File Sync átalakítja egy ritka fájlból egy normál fájlba. Ez az attribútum csak a Windows Server 2016-es és régebbi verzióra van beállítva.|
-        | M | Visszahívás az adateléréssel kapcsolatban | Azt jelzi, hogy a fájl nem teljes mértékben jelen van a helyi tárolóban. A fájl olvasása esetén a fájl legalább egy olyan Azure-fájlmegosztás lekérését eredményezi, amelyhez a kiszolgálói végpont csatlakozik. Ez az attribútum csak a Windows Server 2019 rendszerre van beállítva. |
-        | L | Újraelemzési pont | Azt jelzi, hogy a fájl újraelemzési ponttal rendelkezik. Az újraelemzési pont egy speciális mutató, amely egy fájlrendszer-szűrő általi használatra szolgál. A Azure File Sync újraelemzési pontokat használ a Azure File Sync fájlrendszer-szűrő (StorageSync. sys) megadásához a fájl tárolására szolgáló Felhőbeli helyen. Ez támogatja a zökkenőmentes hozzáférést. A felhasználóknak nem kell tudniuk, hogy a Azure File Sync használatban van, vagy hogyan érhetik el az Azure-fájlmegosztás fájlját. Ha egy fájl teljesen visszahívásra kerül, Azure File Sync eltávolítja az újraelemzési pontot a fájlból. |
-        | O | Kapcsolat nélküli | Azt jelzi, hogy a fájl tartalma nem tárolódik a lemezen. Ha egy fájl teljesen visszahívásra kerül, Azure File Sync eltávolítja ezt az attribútumot. |
+        | A | Archívum | Azt jelzi, hogy a fájlról biztonsági másolatkészítésre van kiegészül. Ez az attribútum mindig be van állítva, függetlenül attól, hogy a fájl rétegzett vagy teljes mértékben a lemezen van-e tárolva. |
+        | P | Ritka fájl | Azt jelzi, hogy a fájl ritka fájl. A ritka fájl egy speciális típusú fájl, amelyet az NTFS kínál a hatékony használat érdekében, ha a lemezfolyamon lévő fájl többnyire üres. Az Azure File Sync ritka fájlokat használ, mert egy fájl teljesen rétegzett vagy részben visszahívott. Egy teljes rétegzett fájlban a fájladatfolyam a felhőben tárolódik. Egy részben visszahívott fájlban a fájl nak ez a része már a lemezen van. Ha egy fájl teljes mértékben visszahívott a lemezre, az Azure File Sync konvertálja azt egy ritka fájlból egy normál fájlba. Ez az attribútum csak Windows Server 2016-os és régebbi rendszeren van beállítva.|
+        | M | Adathozzáférés visszahívása | Azt jelzi, hogy a fájl adatai nincsenek teljes mértékben jelen a helyi tárolón. A fájl olvasása esetén a fájl tartalom legalább egy részét lekell kérni egy Olyan Azure-fájlmegosztásból, amelyhez a kiszolgálóvégpont csatlakozik. Ez az attribútum csak Windows Server 2019 rendszeren van beállítva. |
+        | L | Újraelemzési pont | Azt jelzi, hogy a fájlnak újraelemzési pontja van. Az újraelemzési pont egy speciális mutató, amelyet a fájlrendszer szűrője használhat. Az Azure File Sync újraelemzési pontokat használ az Azure File Sync fájlrendszerszűrő (StorageSync.sys) számára a fájl tárolási helyének meghatározásához. Ez támogatja a zökkenőmentes hozzáférést. A felhasználóknak nem kell tudniuk, hogy az Azure File Sync használatban van, vagy hogyan férhethozzá a fájlhoz az Azure-fájlmegosztásban. Amikor egy fájl teljes visszahívott, az Azure File Sync eltávolítja az újraelemzési pontot a fájlból. |
+        | O | Offline | Azt jelzi, hogy a fájl tartalmának egy része vagy egésze nem található a lemezen. Amikor egy fájl teljes visszahívott, az Azure File Sync eltávolítja ezt az attribútumot. |
 
-        ![A fájlhoz tartozó Tulajdonságok párbeszédpanel, ahol a Részletek lap van kijelölve](media/storage-files-faq/azure-file-sync-file-attributes.png)
+        ![A fájl Tulajdonságok párbeszédpanelje, a Kijelölt Részletek lap](media/storage-files-faq/azure-file-sync-file-attributes.png)
         
-        A mappában található összes fájl attribútumait úgy tekintheti meg, hogy hozzáadja az **attribútumok** mezőt a fájlkezelő tábla megjelenítéséhez. Ehhez kattintson a jobb gombbal egy meglévő oszlopra (például **méret**), válassza a **továbbiak**lehetőséget, majd válassza az **attribútumok** elemet a legördülő listából.
+        A mappában lévő összes fájl attribútumait úgy jelenítheti meg, hogy hozzáadja az **Attribútumok** mezőt a Fájlkezelő táblakijelzőjéhez. Ehhez kattintson a jobb gombbal egy meglévő oszlopra (például **méret),** válassza az **Egyebek**parancsot, majd válassza az **Attribútumok** elemet a legördülő listából.
         
-   * **Az újraelemzési pontok egy fájlon való ellenőrzéséhez használja a `fsutil`.**
-       Az előző beállításban leírtaknak megfelelően a többplatformos fájlok esetében mindig van egy újraelemzési pont beállítása. Az újraelemzési mutató egy speciális mutató a Azure File Sync fájlrendszer-szűrőhöz (StorageSync. sys). Annak ellenőrzéséhez, hogy egy fájl rendelkezik-e újraelemzési ponttal, rendszergazda jogú parancssorban vagy PowerShell-ablakban futtassa a `fsutil` segédprogramot:
+   * **A `fsutil` fájl újraelemzési pontjainak ellenőrzésére használható.**
+       Az előző beállításban leírtak szerint a rétegzett fájlhoz mindig van egy újraelemzési pont készlet. Az újraelemzési mutató az Azure File Sync fájlrendszerszűrő (StorageSync.sys) speciális mutatója. Annak ellenőrzéséhez, hogy egy fájl rendelkezik-e újraelemzési ponttal, egy `fsutil` emelt szintű parancssorból vagy PowerShell-ablakban futtassa a segédprogramot:
     
         ```powershell
         fsutil reparsepoint query <your-file-name>
         ```
 
-        Ha a fájl újraelemzési ponttal rendelkezik, várhatóan megtekintheti az **újraelemzési címke értékét: 0x8000001e**. Ez a hexadecimális érték a Azure File Sync tulajdonában lévő újraelemzési pont értéke. A kimenet tartalmazza azokat az újraelemzési adatokat is, amelyek az Azure-fájlmegosztás fájljának elérési útját jelölik.
+        Ha a fájl újraelemzési ponttal rendelkezik, akkor a **Reparse címke értéke: 0x8000001e**. Ez a hexadecimális érték az Azure File Sync tulajdonában lévő újraelemzési pont érték. A kimenet is tartalmazza az újraelemzési adatokat, amelyek az Azure-fájlmegosztáson a fájl elérési útját jelölik.
 
         > [!WARNING]  
-        > Az `fsutil reparsepoint` segédprogram-parancs is képes törölni egy újraelemzési pontot. Ne hajtsa végre ezt a parancsot, kivéve, ha a Azure File Sync mérnöki csapat kéri. A parancs futtatása adatvesztést okozhat. 
+        > A `fsutil reparsepoint` segédprogram-parancs képes újraelemzési pont törlésére is. Ne hajtsa végre ezt a parancsot, kivéve, ha az Azure File Sync mérnöki csapata kéri. A parancs futtatása adatvesztést okozhat. 
 
 <a id="afs-recall-file"></a>
 
-### <a name="a-file-i-want-to-use-has-been-tiered-how-can-i-recall-the-file-to-disk-to-use-it-locally"></a>A használni kívánt fájlt a rendszer lépcsőzetesen felhasználta. Hogyan hívhatom fel a fájlt a lemezre helyileg való használatra?
-A fájlok lemezre való felidézésének legegyszerűbb módja a fájl megnyitása. A Azure File Sync fájlrendszer-szűrő (StorageSync. sys) zökkenőmentesen letölti az Azure-fájlmegosztás fájlját anélkül, hogy az Ön részéről munkát kellene elosztania. A részben beolvasható fájltípusok, például a multimédia vagy a. zip fájlok esetében a fájl megnyitása nem tölti le a teljes fájlt.
+### <a name="a-file-i-want-to-use-has-been-tiered-how-can-i-recall-the-file-to-disk-to-use-it-locally"></a>A használni kívánt fájl rétegzett. Hogyan idézhetem vissza a fájlt a lemezre, hogy helyileg használhassam?
+A fájlok lemezre való visszahívásának legegyszerűbb módja a fájl megnyitása. Az Azure File Sync fájlrendszer szűrő (StorageSync.sys) zökkenőmentesen letölti a fájlt az Azure-fájlmegosztásnélkül az Ön részéről. A részben olvasható fájltípusok, például multimédiás vagy .zip fájlok esetén a fájl megnyitása nem tölti le a teljes fájlt.
 
-A PowerShell használatával is kényszerítheti a fájlok visszahívását. Ez a beállítás akkor lehet hasznos, ha egyszerre több fájlt szeretne felidézni, például egy mappa összes fájlját. Nyisson meg egy PowerShell-munkamenetet azon a kiszolgáló-csomóponton, ahol a Azure File Sync telepítve van, majd futtassa a következő PowerShell-parancsokat:
+A PowerShell segítségével is kényszerítheti a fájl visszahívható. Ez a beállítás akkor lehet hasznos, ha egyszerre több fájlt szeretne visszahívni, például egy mappában lévő összes fájlt. Nyisson meg egy PowerShell-munkamenetet az On-kiszolgáló csomóponton, ahol az Azure File Sync telepítve van, majd futtassa a következő PowerShell-parancsokat:
     
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 Választható paraméterek:
-* a `-Order CloudTieringPolicy` először a legutóbb módosított fájlokat fogja felidézni.  
-* `-ThreadCount` meghatározza, hogy hány fájlt lehet visszahívni párhuzamosan.
-* `-PerFileRetryCount`meghatározza, hogy a rendszer milyen gyakran próbálkozzon a visszahívással egy jelenleg blokkolt fájlon.
-* `-PerFileRetryDelaySeconds`meghatározza azt az időt másodpercben, ameddig a rendszer újrahívja az újrapróbálkozási kísérleteket, és mindig az előző paraméterrel együtt kell használni őket.
+* `-Order CloudTieringPolicy`először a legutóbb módosított fájlokat hívja vissza.  
+* `-ThreadCount`meghatározza, hogy hány fájl hívható vissza párhuzamosan.
+* `-PerFileRetryCount`meghatározza, hogy milyen gyakran kísérelnek meg visszahívást egy jelenleg letiltott fájlra.
+* `-PerFileRetryDelaySeconds`meghatározza a visszahívási kísérletek újrapróbálkozása közötti időt másodpercben, és mindig az előző paraméterrel együtt kell használni.
 
 > [!Note]  
-> Ha a kiszolgálót futtató helyi köteten nincs elég szabad hely az összes rétegű adat felidézéséhez, akkor a `Invoke-StorageSyncFileRecall` parancsmag sikertelen lesz.  
+> Ha a kiszolgálót üzemeltető helyi köteten nincs elegendő szabad terület `Invoke-StorageSyncFileRecall` az összes rétegzett adat visszahívásához, a parancsmag sikertelen lesz.  
 
 <a id="sizeondisk-versus-size"></a>
-### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Miért nem egyezik *meg* a fájl mérete a *méret tulajdonsággal* a Azure file Sync használata után? 
-A Windows fájlkezelő két tulajdonságot tesz elérhetővé a fájl méretének, a **méretnek és** **a méretnek a lemezen**való megjelenítéséhez. Ezek a tulajdonságok finoman különböznek a jelentésekben. A **méret** a fájl teljes méretét jelöli. A **lemez mérete** a lemezen tárolt fájl adatfolyamának méretét jelöli. Ezeknek a tulajdonságoknak az értékei különböző okoktól különbözőek lehetnek, például a tömörítés, az adatok deduplikálása vagy a Felhőbeli rétegek Azure File Sync használatával. Ha egy fájl egy Azure-fájlmegosztás keretén belül van, a lemez mérete nulla, mivel a fájl streamet az Azure-fájlmegosztás tárolja, és nem a lemezen. A fájlok részlegesen is elhelyezhetők (vagy részben visszahívható). Egy részben rétegű fájlban a fájl egy része a lemezen található. Ez akkor fordulhat elő, ha a fájlok részben olvashatók az olyan alkalmazások, mint például a multimédia lejátszók vagy a zip-segédprogramok. 
+### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Miért nem felel meg a fájl *mérete a lemezen* tulajdonságnak a *Size* tulajdonsággal az Azure File Sync használata után? 
+A Windows Fájlkezelő két tulajdonságot takar a fájl méretéről: **Méret** és **Méret a lemezen**. Ezek a tulajdonságok jelentésükben finoman különböznek. **A méret** a fájl teljes méretét jelöli. **A lemezen lévő méret** a lemezen tárolt fájladatfolyam méretét jelöli. Ezek a tulajdonságok értékei különbözőek lehetnek a különböző okok miatt, például a tömörítés, az adatdeduplikáció használata vagy a felhőrétegezés az Azure File Sync használatával. Ha egy fájl rétegzett egy Azure-fájlmegosztás, a lemez mérete nulla, mert a fájlstream az Azure-fájlmegosztásban van tárolva, és nem a lemezen. Az is lehetséges, hogy egy fájl részlegesen rétegzett (vagy részben visszahívott). Egy részben rétegzett fájlban a fájl egy része a lemezen található. Ez akkor fordulhat elő, ha a fájlokat részben olyan alkalmazások olvassák el, mint a multimédia lejátszók vagy a zip segédprogramok. 
 
 <a id="afs-force-tiering"></a>
-### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Hogyan egy fájl vagy könyvtár lépcsőzetes kikényszerítését?
-Ha engedélyezve van a felhő-előállítási funkció, a Felhőbeli rétegek automatikusan a legutóbbi hozzáférés és a módosítási idő alapján, a Felhőbeli végponton megadott mennyiségű szabad terület százalékos arányának eléréséhez. Időnként előfordulhat azonban, hogy manuálisan szeretné kényszeríteni a fájl a szintet. Ez akkor lehet hasznos, ha olyan nagyméretű fájlt ment, amelyet hosszú ideje nem kíván újra használni, és azt szeretné, hogy a köteten lévő szabad terület más fájlokhoz és mappákhoz is használható legyen. Az alábbi PowerShell-parancsokkal kényszerítheti a rétegek használatát:
+### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Hogyan kényszeríthetek egy fájl vagy könyvtár rétegzett?
+Ha a felhőrétegezési funkció engedélyezve van, a felhőrétegezés automatikusan rétegezi a fájlokat az utolsó hozzáférés alapján, és módosítja az időpontokat, hogy elérje a felhővégponton megadott szabad terület százalékát. Néha azonban előfordulhat, hogy manuálisan szeretné kényszeríteni a fájlt a szintre. Ez akkor lehet hasznos, ha olyan nagyméretű fájlt ment, amelyet hosszú ideig nem kíván újra használni, és azt szeretné, hogy a köteten lévő szabad terület más fájlok és mappák számára is használható legyen. A rétegezést a következő PowerShell-parancsokkal kényszerítheti:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -128,11 +130,11 @@ Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ```
 
 <a id="afs-image-thumbnail"></a>
-### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>A Windows Intézőben miért nem láthatók miniatűr vagy előzetes verziók a többrétegű fájlok számára?
-A többhelyes fájlok esetében a miniatűrök és az előzetes verziók nem láthatók a kiszolgálói végponton. Ez a viselkedés várható, mivel a Windows miniatűr gyorsítótár funkciója szándékosan kihagyja a fájlok olvasását az offline attribútummal. Ha engedélyezve van a felhőalapú rétegek beolvasása, a többoldalas fájlok olvasásával le lehet tölteni őket (visszahívásra).
+### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>Miért nem jelennek meg a többszintű fájlok miniatűrjei vagy előnézetei a Windows Intézőben?
+Rétegzett fájlok esetén a miniatűrök és az előnézetek nem lesznek láthatók a kiszolgáló végpontján. Ez a viselkedés várható, mivel a Windows miniatűr gyorsítótár-szolgáltatása szándékosan kihagyja az offline attribútummal rendelkező fájlok olvasását. Ha a felhőrétegezés engedélyezve van, a rétegzett fájlok olvasása a rendszer letöltését (visszahívva) eredményezi.
 
-Ez a viselkedés nem jellemző a Azure File Syncre, a Windows Intéző megjeleníti a "szürke X" értéket minden olyan fájlnál, amelynél az offline attribútum be van állítva. Az X ikon jelenik meg, amikor SMB-kapcsolaton keresztül fér hozzá a fájlokhoz. A viselkedés részletes ismertetését itt találja: [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+Ez a viselkedés nem az Azure File Sync, a Windows Intéző megjeleníti a "szürke X" minden olyan fájlokat, amelyek az offline attribútum beállítva. Az X ikon jelenik meg, amikor sMB-n keresztül fér hozzá a fájlokhoz. Ennek a viselkedésnek a részletes magyarázatát lásd:[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
 
 
-## <a name="next-steps"></a>További lépések
-* [Azure File Sync központi telepítésének tervezése](storage-sync-files-planning.md)
+## <a name="next-steps"></a>Következő lépések
+* [Az Azure-fájlszinkronizálás telepítésének megtervezése](storage-sync-files-planning.md)

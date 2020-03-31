@@ -1,4 +1,4 @@
-- name: Notification Hubs – dokumentáció
+- name: A Notification Hubs dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
@@ -11,7 +11,9 @@
   items:
     - name: Értesítési központ létrehozása – Azure Portal
       href: create-notification-hub-portal.md
-    - name: Értesítési központ konfigurálása – Azure Portal
+    - name: Értesítési központ létrehozása – Azure CLI
+      href: create-notification-hub-azure-cli.md
+    - name: Értesítési központ konfigurálása
       href: configure-notification-hub-portal-pns-settings.md
 - name: Oktatóanyagok
   items:
@@ -140,6 +142,8 @@
       href: notification-hubs-push-notification-fixer.md
     - name: Leküldéses értesítések küldése felhőalapú Baidu-értesítés használatával
       href: notification-hubs-baidu-china-android-notifications-get-started.md
+    - name: Az APNS VOIP használata a Notification Hubson keresztül
+      href: voip-apns.md
 - name: Referencia
   items:
     - name: .NET

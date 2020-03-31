@@ -1,56 +1,71 @@
 ---
-title: Feltételes hozzáférés – kombinált biztonsági információk – Azure Active Directory
-description: Egyéni feltételes hozzáférési szabályzat létrehozása a biztonsági adatok regisztrálásához szükséges megbízható hely megköveteléséhez
+title: Feltételes hozzáférés – Kombinált biztonsági információk – Azure Active Directory
+description: Egyéni feltételes hozzáférési házirend létrehozása a biztonsági adatok regisztrálásához
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c9b01cc06b3d0ef8f47b34e9ef86bec9adac03f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f69a94e17155ff93510d09f666bce12f628274f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424848"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295173"
 ---
-# <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Feltételes hozzáférés: megbízható hely megkövetelése az MFA-regisztrációhoz
+# <a name="conditional-access-securing-security-info-registration"></a>Feltételes hozzáférés: A biztonsági adatok regisztrációjának biztonságossá tétele
 
-Az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás felhasználó általi regisztrálásának engedélyezése a felhasználói műveletekhez a feltételes hozzáférési házirendben. Ez az előzetes verziójú funkció olyan szervezetek számára érhető el, akik engedélyezték a [közös regisztráció előzetes](../authentication/concept-registration-mfa-sspr-combined.md)verzióját. Ez a funkció olyan szervezeteknél engedélyezhető, ahol olyan feltételeket kívánnak használni, mint például a megbízható hálózati hely az Azure-Multi-Factor Authentication és SSPR való regisztrációhoz való hozzáférés korlátozása érdekében. A megbízható helyek feltételes hozzáférésben való létrehozásával kapcsolatos további információkért tekintse meg a következő cikket: [Mi a hely feltétele a feltételes hozzáférés Azure Active Directory?](../conditional-access/location-condition.md#named-locations)
+A feltételes hozzáférési szabályzat felhasználói lépéseivel biztosíthatja, hogy mikor és hogyan regisztrálhassanak a felhasználók az Azure többtényezős hitelesítésre és az önkiszolgáló jelszó-visszaállításra. Ez az előzetes verzió funkció azon szervezetek számára érhető el, amelyek engedélyezték a [kombinált regisztrációs előnézetet.](../authentication/concept-registration-mfa-sspr-combined.md) Ez a funkció engedélyezhető olyan szervezetekben, ahol olyan feltételeket szeretnének használni, mint a megbízható hálózati hely az Azure többtényezős hitelesítéshez való regisztrációhoz való hozzáférés korlátozásához és az önkiszolgáló jelszó-visszaállításhoz (SSPR). A használható feltételekről a Feltételes [hozzáférés: Feltételek](concept-conditional-access-conditions.md)című témakörben olvashat bővebben.
 
-## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Szabályzat létrehozása megbízható helyről való regisztráció megköveteléséhez
+## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Házirend létrehozása, amely megköveteli a regisztrációt egy megbízható helyről
 
-A következő házirend az összes kijelölt felhasználóra vonatkozik, akik a közös regisztrációs élmény használatával próbálnak regisztrálni, és blokkolja a hozzáférést, kivéve, ha egy megbízható hálózatként megjelölt helyről csatlakoznak.
+A következő házirend minden kiválasztott felhasználóra vonatkozik, akik a kombinált regisztrációs felület használatával próbálnak regisztrálni, és letiltja a hozzáférést, kivéve, ha megbízható hálózatként megjelölt helyről csatlakoznak.
 
-1. A **Azure Portal**keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**lehetőséget.
-1. Válassza az **új szabályzat**lehetőséget.
-1. A név mezőben adja meg a szabályzat nevét. Például **a megbízható hálózatokon található kombinált biztonsági adatok regisztrálása**.
-1. A **hozzárendelések**területen kattintson a **felhasználók és csoportok**elemre, majd válassza ki azokat a felhasználókat és csoportokat, amelyekre alkalmazni szeretné a szabályzatot.
+1. Az **Azure Portalon**keresse meg az Azure Active > **Directory–biztonsági** > **feltételes hozzáférést.** **Azure Active Directory**
+1. Válassza az **Új házirend lehetőséget.**
+1. A Név mezőbe írja be a házirend nevét. Például **a Kombinált biztonsági adatok regisztrálása megbízható hálózatokon**.
+1. A **Hozzárendelések**csoportban válassza a **Felhasználók és csoportok**lehetőséget, és jelölje ki azokat a felhasználókat és csoportokat, amelyekre ez a házirend vonatkozni fog.
 
    > [!WARNING]
-   > A felhasználók számára engedélyezni kell a [kombinált regisztráció előzetes](../authentication/howto-registration-mfa-sspr-combined.md)verzióját.
+   > A felhasználóknak engedélyezniük kell a [kombinált regisztrációs előnézetet.](../authentication/howto-registration-mfa-sspr-combined.md)
 
-1. A **Cloud apps vagy műveletek**területen válassza a **felhasználói műveletek**lehetőséget, és jelölje be a **biztonsági adatok regisztrálása (előzetes verzió)** jelölőnégyzetet.
-1. A **feltételek** > **helyen**.
-   1. Konfigurálja az **Igen értéket**.
-   1. Adjon meg **bármilyen helyet**.
-   1. **Az összes megbízható helyszín**kizárása.
-   1. Kattintson a **kész** gombra a helyszínek panelen.
-   1. A feltételek panelen kattintson a **kész** gombra.
-1. A **hozzáférés-vezérlés** > a **támogatás**elemre.
-   1. Kattintson a **hozzáférés letiltása**elemre.
+1. A **Felhőalapú alkalmazások vagy műveletek csoportban**válassza a **Felhasználói műveletek**lehetőséget, jelölje be a Biztonsági adatok **regisztrálása (előzetes verzió)** jelölőnégyzetet.
+1. **Feltételek szerint** > **helyeken**.
+   1. Állítsa be **az Igen**lehetőséget.
+   1. **Tartalmazza a bármely helyet.**
+   1. **Az összes megbízható hely kizárása**.
+   1. Válassza a **Kész** lehetőséget a Helyek panelen.
+   1. Válassza a **Kész** lehetőséget a Feltételek panelen.
+1. A **Feltételek** > **az ügyfélalkalmazások (előzetes verzió)** csoportban állítsa a **Konfigurálás** beállítást **Igen**értékre, és válassza a **Kész gombot.**
+1. A **Grant hozzáférési vezérlők csoportban.** > **Grant**
+   1. Válassza **a Hozzáférés blokkolása**lehetőséget.
    1. Ezután kattintson a **Kiválasztás** elemre.
 1. Állítsa a **Házirend engedélyezése** kapcsolót **Be** állásba.
-1. Ezután kattintson a **Save** (Mentés) gombra.
+1. Ezután válassza a **Save** (Mentés) lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+Ebben a házirendben a 6. A fenti házirend megbízható hálózati helyről történő regisztrációt igényel. A szervezetek választhatnak, hogy a **helyszínek**helyett bármilyen rendelkezésre álló feltételt igénybe vehetnek. Ne feledje, hogy ez a házirend egy blokk házirend, így minden benne van tiltva, és bármi, ami nem felel meg a include megengedett. 
 
-[Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
+Néhányan dönthetnek úgy, hogy a fenti 6.
 
-[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-report-only.md)
+6. Az Eszköz **állapotának feltételei** > **(előzetes verzió)** alatt.
+   1. Állítsa be **az Igen**lehetőséget.
+   1. **Tartalmazza az összes eszközállapotát**.
+   1. Az **eszközhibrid Azure AD-csatlakozás** és/vagy **megfelelőként megjelölt eszköz kizárása**
+   1. Válassza a **Kész** lehetőséget a Helyek panelen.
+   1. Válassza a **Kész** lehetőséget a Feltételek panelen.
 
-[Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
+> [!WARNING]
+> Ha az eszközállapotot használja feltételként a házirendben, ez hatással lehet a címtárban lévő vendégfelhasználókra. [A csak jelentésmód](concept-conditional-access-report-only.md) segíthet a szakpolitikai döntések hatásának meghatározásában.
+
+## <a name="next-steps"></a>További lépések
+
+[Feltételes hozzáférés közös házirendjei](concept-conditional-access-policy-common.md)
+
+[Hatás meghatározása csak feltételes hozzáférésű jelentésmódhasználatával](howto-conditional-access-report-only.md)
+
+[Bejelentkezési viselkedés szimulálása a Feltételes hozzáférés Mi ha eszközzel](troubleshoot-conditional-access-what-if.md)

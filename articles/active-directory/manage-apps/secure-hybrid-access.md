@@ -1,6 +1,6 @@
 ---
-title: Azure AD biztonságos hibrid hozzáférés | Microsoft Docs
-description: Ez a cikk azokat a partneri megoldásokat ismerteti, amelyekkel az Azure AD-vel integrálhatja az örökölt helyszíni, nyilvános Felhőbeli és saját felhőalapú alkalmazásokat. Az alkalmazások kézbesítési vezérlőit vagy hálózatait az Azure AD-hez való csatlakozással védheti meg örökölt alkalmazásait.
+title: Azure AD biztonságos hibrid hozzáférés | Microsoft dokumentumok
+description: Ez a cikk az örökölt helyszíni, nyilvános felhőbeli vagy magánfelhő-alkalmazások Azure AD-vel való integrálására szolgáló partnermegoldásokat ismerteti. Az örökölt alkalmazások at az alkalmazáskézbesítési vezérlők vagy hálózatok Azure AD-hez való csatlakoztatásával biztosíthatja.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,23 +12,23 @@ ms.date: 12/18/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0e97b95e290ef74ffd98a3396ffe4705270132b2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75433768"
 ---
-# <a name="secure-hybrid-access-secure-legacy-apps-with-app-delivery-controllers-and-networks"></a>Biztonságos hibrid hozzáférés: a régi alkalmazások biztonságossá tétele az App Delivery Controllers és Networks szolgáltatással
+# <a name="secure-hybrid-access-secure-legacy-apps-with-app-delivery-controllers-and-networks"></a>Biztonságos hibrid hozzáférés: Az örökölt alkalmazások biztonságossá tétele alkalmazáskézbesítési vezérlőkkel és hálózatokkal
 
-Mostantól a helyszíni és a Felhőbeli örökölt hitelesítési alkalmazásokat is védetté teheti az Azure AD-hez való csatlakozással a meglévő Application Delivery Controller vagy Network használatával. Így áthidalhatja a hézagot, és megerősítheti a biztonsági helyzeteket az Azure AD-funkciókkal, például az Azure AD feltételes hozzáféréssel és a Azure AD Identity Protectionával az összes alkalmazásban.
+Mostantól megvédheti a helyszíni és a felhőbeli örökölt hitelesítési alkalmazásokat, ha csatlakoztatja őket az Azure AD-hez a meglévő alkalmazáskézbesítési vezérlővel vagy hálózattal. Így áthidalhatja a szakadékot, és erősítheti a biztonsági állapotát az összes alkalmazásban az Azure AD-képességekkel, például az Azure AD feltételes hozzáféréssel és az Azure AD-identitásvédelemmel.
 
-A meglévő hálózatkezelési és kézbesítési vezérlő használatával könnyedén biztosíthatja az üzleti folyamatok számára kritikus fontosságú, de az Azure AD-vel még nem védett korábbi alkalmazásokat. Valószínűleg már mindent megtalál, amire szüksége lehet az alkalmazások védelmének megkezdéséhez.
+A meglévő hálózati és kézbesítési vezérlő használatával könnyedén megvédheti azokat az örökölt alkalmazásokat, amelyek még mindig kritikus fontosságúak az üzleti folyamatok szempontjából, de amelyeket az Azure AD-vel korábban nem tudott megvédeni. Valószínű, hogy már mindent megtud, amire szüksége van az alkalmazások védelméhez.
 
-![A biztonságos hibrid hozzáférést mutató kép](media/secure-hybrid-access/secure-hybrid-access.png)
+![Biztonságos hibrid hozzáférést ábrázoló kép](media/secure-hybrid-access/secure-hybrid-access.png)
 
-Az alábbi gyártók előre elkészített megoldásokat és részletes útmutatást nyújtanak az Azure AD-vel való integráláshoz.
+A következő szállítók előre elkészített megoldásokat és részletes útmutatást kínálnak az Azure AD-vel való integrációhoz.
 
-* [Akamai Enterprise Application Access (EAA)](../saas-apps/akamai-tutorial.md)
-* [Citrix Application Delivery Controller (ADC)](../saas-apps/citrix-netscaler-tutorial.md)
-* [F5 Big-IP APM](https://aka.ms/f5-hybridaccessguide)
-* [Zscaler privát hozzáférése (ZPA)](https://aka.ms/zscaler-hybridaccessguide)
+* [Akamai vállalati alkalmazáshozzáférés (EAA)](../saas-apps/akamai-tutorial.md)
+* [Citrix alkalmazáskézbesítési vezérlő (ADC)](../saas-apps/citrix-netscaler-tutorial.md)
+* [F5 Nagy IP APM](https://aka.ms/f5-hybridaccessguide)
+* [Zscaler Private Access (ZPA)](https://aka.ms/zscaler-hybridaccessguide)

@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure Files-NetApp |} A Microsoft Docs
+title: Mi az Azure NetApp-fájlok | Microsoft dokumentumok
 description: A cikk áttekintést nyújt az Azure NetApp Files szolgáltatásról és a kulcsfontosságú feladatokról.
 services: azure-netapp-files
 documentationcenter: ''
@@ -15,24 +15,24 @@ ms.topic: overview
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: 33a90f876f5ce35b52bb2d5625fa9d91a0a33dee
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "65522995"
 ---
 # <a name="what-is-azure-netapp-files"></a>Mi az az Azure NetApp Files?
 
-Az Azure NetApp Files szolgáltatás egy nagyvállalati szintű, nagy teljesítményű, forgalmi díjas fájltárolási szolgáltatás. Az Azure NetApp Files minden típusú számítási feladatot támogat, és alapértelmezés szerint magas rendelkezésre állást biztosít. Válassza ki a szolgáltatás- és teljesítményszinteket, és állítsa be a szolgáltatás keretében pillanatképek. 
+Az Azure NetApp Files szolgáltatás egy nagyvállalati szintű, nagy teljesítményű, forgalmi díjas fájltárolási szolgáltatás. Az Azure NetApp Files minden típusú számítási feladatot támogat, és alapértelmezés szerint magas rendelkezésre állást biztosít. Kiválaszthatja a szolgáltatási és teljesítményszintet, illetve beállíthat pillanatképeket a szolgáltatáson keresztül. 
 
-## <a name="learn-how-to-use-azure-netapp-files"></a>Ismerje meg, hogyan használható az Azure Files-NetApp
+## <a name="learn-how-to-use-azure-netapp-files"></a>Az Azure NetApp-fájlok használata
 
 Az Azure NetApp Files dokumentációja utasításokkal szolgál arról, hogyan hozhat létre és kezelhet köteteket az Azure NetApp Files használatával. 
 
 > [!IMPORTANT] 
-> Ebben a dokumentációban ismertetett műveletek szükséges, hogy rendelkezik a NetApp fájlokat az Azure-szolgáltatáshoz való hozzáférést. Kérjen hozzáférést a szolgáltatásban, lásd: [igényelnie nagyságától a szolgáltatás elérésével](azure-netapp-files-register.md#waitlist).
+> A dokumentációban ismertetett összes feladathoz hozzáférést kell biztosítani az Azure NetApp Files szolgáltatáshoz. A szolgáltatáshoz való hozzáférés kéréséhez olvassa el a [Várólistás kérelem küldése a szolgáltatás eléréséhez című témakört.](azure-netapp-files-register.md#waitlist)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megismerheti a NetApp Azure-fájlok hierarchiája](azure-netapp-files-understand-storage-hierarchy.md) 
-* [Rövid útmutató: Állítsa be az Azure NetApp Files és az NFS-kötet létrehozása](azure-netapp-files-quickstart-set-up-account-create-volumes.md)
+* [Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md) 
+* [Rövid útmutató: Az Azure NetApp-fájlok beállítása és NFS-kötet létrehozása](azure-netapp-files-quickstart-set-up-account-create-volumes.md)

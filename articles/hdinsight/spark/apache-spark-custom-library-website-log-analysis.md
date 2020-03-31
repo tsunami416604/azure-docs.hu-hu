@@ -1,6 +1,6 @@
 ---
-title: Webhelyek naplóinak elemzése Python-tárakkal a Sparkban – Azure
-description: Ez a jegyzetfüzet azt mutatja be, hogyan elemezheti a naplózási adataikat egyéni kódtár használatával a Spark on Azure HDInsight.
+title: Webhelynaplók elemzése Python-kódtárakkal a Sparkban – Azure
+description: Ez a jegyzetfüzet bemutatja, hogyan elemezheti a naplóadatokat egy egyéni kódtár használatával az Azure HDInsight Spark használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,56 +9,56 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: c6bf26d8f3a73db6ee69b2aa0de73872911893bf
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552712"
 ---
-# <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Webhelyek naplóinak elemzése egyéni Python-kódtár használatával Apache Spark-fürttel a HDInsight-on
+# <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Webhelynaplók elemzése egyéni Python-könyvtár használatával az Apache Spark-fürttel a HDInsighton
 
-Ez a jegyzetfüzet azt mutatja be, hogyan elemezheti a naplózási adataikat egy egyéni kódtár használatával, Apache Spark a HDInsight. Az általunk használt egyéni könyvtár egy **iislogparser.py**nevű Python-könyvtár.
+Ez a jegyzetfüzet bemutatja, hogyan elemezheti a naplóadatokat egy egyéni könyvtár használatával az Apache Spark segítségével a HDInsighton. Az általunk használt egyéni könyvtár egy **Python-könyvtár,** a iislogparser.py.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
 
-## <a name="save-raw-data-as-an-rdd"></a>Nyers adatbázis mentése RDD
+## <a name="save-raw-data-as-an-rdd"></a>Nyers adatok mentése rdd-ként
 
-Ebben a szakaszban a HDInsight lévő Apache Spark-fürthöz társított [Jupyter](https://jupyter.org) -jegyzetfüzetet használjuk a nyers mintaadatok feldolgozását végző feladatok futtatásához és egy struktúra-táblázatként való mentéséhez. A mintaadatok egy. csv-fájl (HVAC. csv), amely alapértelmezés szerint minden fürtön elérhető.
+Ebben a szakaszban a HDInsightban egy Apache Spark-fürthöz társított [Jupyter-jegyzetfüzetet](https://jupyter.org) használjuk a nyers mintaadatokat feldolgozó és Hive-táblaként mentést tartalmazó feladatok futtatásához. A mintaadatok alapértelmezés szerint az összes fürtön elérhető .csv fájl (hvac.csv).
 
-Miután az adatait Apache Hive táblázatként mentette, a következő szakaszban a BI-eszközök, például a Power BI és a tabló használatával fogunk csatlakozni a kaptár táblához.
+Miután az adatokat apache Hive-táblaként mentette, a következő szakaszban bi-eszközökkel, például a Power BI-val és a Tableau-val fogunk csatlakozni a Hive-táblához.
 
-1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/jupyter`, ahol a `CLUSTERNAME` a fürt neve.
+1. Egy webböngészőből keresse `https://CLUSTERNAME.azurehdinsight.net/jupyter`meg `CLUSTERNAME` a , ahol a fürt neve.
 
-1. Hozzon létre új notebookot. Válassza az **új**, majd a **PySpark**lehetőséget.
+1. Hozzon létre új notebookot. Válassza az **Új**lehetőséget, majd a **PySpark**lehetőséget.
 
-    ![Új Apache Jupyter-jegyzetfüzet létrehozása](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Új Jupyter notebook létrehozása")
+    ![Új Apache Jupyter notebook létrehozása](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Új Jupyter notebook létrehozása")
 
-1. Az új notebook létrejött, és Untitled.pynb néven nyílt meg. Válassza ki a jegyzetfüzet nevét a tetején, és adjon meg egy rövid nevet.
+1. Az új notebook létrejött, és Untitled.pynb néven nyílt meg. Jelölje ki a jegyzetfüzet nevét a tetején, és adjon meg egy rövid nevet.
 
-    ![Adja meg a jegyzetfüzet nevét](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "A notebook elnevezése")
+    ![A notebook elnevezése](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "A notebook elnevezése")
 
-1. Mivel a PySpark kernel használatával létrehozott egy jegyzetfüzetet, nem kell explicit módon létrehoznia a környezeteket. Az első kódcella futtatásakor a Spark- és Hive-környezetek automatikusan létrejönnek. Először importálja a forgatókönyvhöz szükséges típusokat. Illessze be a következő kódrészletet egy üres cellába, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt.
+1. Mivel a PySpark kernel használatával létrehozott egy jegyzetfüzetet, nem kell explicit környezeteket létrehoznia. Az első kódcella futtatásakor a Spark- és Hive-környezetek automatikusan létrejönnek. Először importálja az ehhez a forgatókönyvhöz szükséges típusokat. Illessze be a következő kódrészletet egy üres cellába, majd nyomja le a **Shift + Enter billentyűkombinációt.**
 
     ```pyspark
     from pyspark.sql import Row
     from pyspark.sql.types import *
     ```
 
-1. Hozzon létre egy RDD a fürtön már elérhető mintaadatok használatával. A fürthöz tartozó alapértelmezett Storage-fiókban `\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log`címen érheti el azokat. Hajtsa végre a következő kódot:
+1. RdD létrehozása a fürtön már elérhető mintanapló-adatok használatával. A fürthöz társított alapértelmezett tárfiókban lévő `\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log`adatokat a rendszer a ban érheti el. Hajtsa végre a következő kódot:
 
     ```pyspark
     logs = sc.textFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
     ```
 
-1. Egy mintául szolgáló naplóbejegyzés lekérésével ellenőrizheti, hogy az előző lépés sikeresen befejeződött-e.
+1. A mintanapló készlet beolvasása annak ellenőrzéséhez, hogy az előző lépés sikeresen befejeződött-e.
 
     ```pyspark
     logs.take(5)
     ```
 
-    Az alábbi szöveghez hasonló kimenetnek kell megjelennie:
+    A következő höz hasonló kimenetnek kell lennie:
 
     ```output
     [u'#Software: Microsoft Internet Information Services 8.0',
@@ -68,17 +68,17 @@ Miután az adatait Apache Hive táblázatként mentette, a következő szakaszba
     u'2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step4.png X-ARR-LOG-ID=4bea5b3d-8ac9-46c9-9b8c-ec3e9500cbea 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 72177 871 47']
     ```
 
-## <a name="analyze-log-data-using-a-custom-python-library"></a>Naplófájlok elemzése egyéni Python-kódtár használatával
+## <a name="analyze-log-data-using-a-custom-python-library"></a>Naplóadatok elemzése egyéni Python-tár használatával
 
-1. A fenti kimenetben az első pár sor tartalmazza a fejléc adatait, és minden fennmaradó sor megegyezik a fejlécben leírt sémával. Az ilyen naplók elemzése bonyolult lehet. Tehát egy egyéni Python-függvénytárat (**iislogparser.py**) használunk, amely sokkal egyszerűbbé teszi az ilyen naplók elemzését. Alapértelmezés szerint ez a könyvtár a HDInsight-on `/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py`-on található Spark-fürt része.
+1. A fenti kimenetben az első pársorok tartalmazzák a fejlécadatokat, és minden fennmaradó sor megegyezik a fejlécben leírt sémával. Az ilyen naplók elemzése bonyolult lehet. Tehát egy egyéni Python könyvtárat **(iislogparser.py)** használunk, amely sokkal könnyebbé teszi az ilyen naplók elemzését. Alapértelmezés szerint ez a tár tartalmazza a Spark-fürt hdinsight a. `/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py`
 
-    Ez a tár azonban nincs a `PYTHONPATH`ban, ezért nem használhatjuk olyan importálási utasítás használatával, mint a `import iislogparser`. Ennek a könyvtárnak a használatához terjesztenie kell az összes munkavégző csomópontra. Futtassa az alábbi kódrészletet.
+    Ez a könyvtár azonban nem `PYTHONPATH` található, így nem használhatjuk egy `import iislogparser`importálási utasítás használatával, például a . A tár használatához szét kell osztanunk az összes munkavégző csomópontnak. Futtassa a következő részletet.
 
     ```pyspark
     sc.addPyFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
     ```
 
-1. `iislogparser` olyan függvényt biztosít `parse_log_line`, amely `None`t ad vissza, ha a naplósor egy fejlécsor, és a `LogLine` osztály egy példányát adja vissza, ha egy naplófájlban szerepel. A `LogLine` osztály használatával csak a naplósorokat lehet kibontani a RDD:
+1. `iislogparser`olyan függvényt `parse_log_line` `None` ad vissza, amely akkor ad vissza, `LogLine` ha a naplósor fejlécsor, és az osztály egy példányát adja vissza, ha naplósorba ütközik. Az `LogLine` osztály segítségével csak a naplósorokat bontsa ki az RDD-ből:
 
     ```pyspark
     def parse_line(l):
@@ -87,20 +87,20 @@ Miután az adatait Apache Hive táblázatként mentette, a következő szakaszba
     logLines = logs.map(parse_line).filter(lambda p: p is not None).cache()
     ```
 
-1. Néhány kibontott naplózási sor beolvasása annak ellenőrzéséhez, hogy a lépés sikeresen befejeződött-e.
+1. Néhány kibontott naplósor beolvasása a lépés sikeres befejezésének ellenőrzéséhez.
 
     ```pyspark
     logLines.take(2)
     ```
 
-   A kimenetnek az alábbi szöveghez hasonlónak kell lennie:
+   A kimenetnek a következő szöveghez hasonlónak kell lennie:
 
     ```output
     [2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step2.png X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 53175 871 46,
     2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step3.png X-ARR-LOG-ID=9eace870-2f49-4efd-b204-0d170da46b4a 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 51237 871 32]
     ```
 
-1. A `LogLine` osztálynak van néhány hasznos módszere, például a `is_error()`, amely azt adja vissza, hogy a naplóbejegyzés hibakódot tartalmaz-e. Ebben az osztályban kiszámíthatja a hibák számát a kibontott napló soraiban, majd egy másik fájlba naplózhatja az összes hibát.
+1. Az `LogLine` osztály viszont rendelkezik néhány hasznos `is_error()`módszerrel, például a , amely azt adja vissza, hogy a naplóbejegyzésnek van-e hibakódja. Ezzel az osztállyal kiszámíthatja a kibontott naplósorokban előforduló hibák számát, majd naplózja az összes hibát egy másik fájlba.
 
     ```pyspark
     errors = logLines.filter(lambda p: p.is_error())
@@ -110,9 +110,9 @@ Miután az adatait Apache Hive táblázatként mentette, a következő szakaszba
     errors.map(lambda p: str(p)).saveAsTextFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b-2.log')
     ```
 
-    A kimenetnek `There are 30 errors and 646 log entries`állapotot kell tartalmaznia.
+    A kimenetnek `There are 30 errors and 646 log entries`meg kell jelennie.
 
-1. Az **Matplotlib** használatával az adatvizualizációt is létrehozhatja. Ha például el szeretné különíteni a hosszú ideig futó kérelmek okát, érdemes lehet megkeresni azokat a fájlokat, amelyek a legtöbb időt igénybe vehetik. Az alábbi kódrészlet lekérdezi az első 25 erőforrást, amely a legtöbb időt a kérelem kiszolgálására vette.
+1. A **Matplotlib** segítségével is létrehozhatja az adatok vizualizációját. Ha például el szeretné különíteni a hosszú ideig futó kérelmek okait, érdemes lehet megkeresni azokat a fájlokat, amelyek átlagosan a legtöbb időt veszik igénybe. Az alábbi kódrészlet lekéri a 25 legfontosabb erőforrást, amely a legtöbb időt vett igénybe a kérelem kiszolgálásához.
 
     ```pyspark
     def avgTimeTakenByKey(rdd):
@@ -124,7 +124,7 @@ Miután az adatait Apache Hive táblázatként mentette, a következő szakaszba
     avgTimeTakenByKey(logLines.map(lambda p: (p.cs_uri_stem, p))).top(25, lambda x: x[1])
     ```
 
-   Az alábbi szöveghez hasonló kimenetnek kell megjelennie:
+   A következő hez hasonló kimenetnek kell lennie:
 
     ```output
     [(u'/blogposts/mvc4/step13.png', 197.5),
@@ -154,7 +154,7 @@ Miután az adatait Apache Hive táblázatként mentette, a következő szakaszba
     (u'/blogposts/mvc4/step1.png', 98.0)]
     ```
 
-1. Ezeket az információkat a mintaterület formájában is megjelenítheti. Első lépésként hozzon létre egy ideiglenes tábla **AverageTime**. A tábla ideje szerint csoportosítja a naplókat, hogy az adott időpontban szokatlan késéssel jár-e.
+1. Ezt az információt nyomtatás formájában is megmutathatja. A telek létrehozásának első lépéseként hozzunk létre először egy ideiglenes táblázatot **AverageTime**. A tábla csoportosítja a naplókat az idő, hogy lássa, voltak-e szokatlan késési csúcsok egy adott időpontban.
 
     ```pyspark
     avgTimeTakenByMinute = avgTimeTakenByKey(logLines.map(lambda p: (p.datetime.minute, p))).sortByKey()
@@ -165,22 +165,22 @@ Miután az adatait Apache Hive táblázatként mentette, a következő szakaszba
     avgTimeTakenByMinuteDF.registerTempTable('AverageTime')
     ```
 
-1. Ezután futtathatja a következő SQL-lekérdezést a **AverageTime** tábla összes rekordjának lekéréséhez.
+1. Ezután a következő SQL-lekérdezés futtatásával lejuthat az **AverageTime** tábla összes rekordjának lehívására.
 
     ```pyspark
     %%sql -o averagetime
     SELECT * FROM AverageTime
     ```
 
-   A `%%sql` Magic ezt követően `-o averagetime` biztosítja, hogy a lekérdezés kimenete helyileg megmaradjon a Jupyter-kiszolgálón (általában a fürt átjárócsomóponthoz). A kimenet a megadott nevű **Averagetime** [pandák](https://pandas.pydata.org/) dataframe marad.
+   A `%%sql` varázslat, `-o averagetime` amelyet követ, biztosítja, hogy a lekérdezés kimenete helyileg megmarad a Jupyter-kiszolgálón (általában a fürt fejnokrészén). A kimenet [pandas](https://pandas.pydata.org/) adatkeretként marad meg a megadott nevű **átlagidővel.**
 
-   A következő képhez hasonló kimenetnek kell megjelennie:
+   A következőhez hasonló kimenetnek kell lennie:
 
-   ![hdinsight jupyter SQL-lekérdezés kimenete](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL-lekérdezés kimenete")
+   ![hdinsight jupyter sql lekérdezés kimenete](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL-lekérdezés kimenete")
 
-   A `%%sql` Magic szolgáltatással kapcsolatos további információkért tekintse meg [a (z)%% SQL Magic által támogatott paramétereket](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+   A `%%sql` varázslattal kapcsolatos további információkért [lásd: A (z) %%sql magic által támogatott paraméterek](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
-1. Most már használhatja a Matplotlib, az adatvizualizációk létrehozásához használt könyvtárat, amely létrehoz egy rajzolt. Mivel a parcellát a helyileg megőrzött **averagetime** -dataframe kell létrehozni, a kódrészletnek a `%%local` varázslattal kell kezdődnie. Ez biztosítja, hogy a kód helyileg fusson a Jupyter-kiszolgálón.
+1. Most már használhatja Matplotlib, a könyvtár létrehozásához használt vizualizációs adatok, hozzon létre egy telek. Mivel a nyomtatást a helyileg megőrzött **átlagos időadatkeretből** kell létrehozni, `%%local` a kódrészletnek a varázslattal kell kezdődnie. Ez biztosítja, hogy a kód helyileg fusson a Jupyter kiszolgálón.
 
     ```pyspark
     %%local
@@ -192,15 +192,15 @@ Miután az adatait Apache Hive táblázatként mentette, a következő szakaszba
     plt.ylabel('Average time taken for request (ms)')
     ```
 
-   A következő képhez hasonló kimenetnek kell megjelennie:
+   A következőhez hasonló kimenetnek kell lennie:
 
-   ![az Apache Spark webes naplójának elemzési ábrázolása](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib kimenete")
+   ![Apache Spark webnapló elemzés telek](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib kimenet")
 
-1. Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erőforrások felszabadításához. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ez a művelet leállítja és bezárja a jegyzetfüzetet.
+1. Miután befejezte az alkalmazás futtatását, állítsa le a jegyzetfüzetet az erőforrások felszabadításához. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ez a művelet leállítja és bezárja a jegyzetfüzetet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerkedjen meg a következő cikkekkel:
+Fedezze fel a következő cikkeket:
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)

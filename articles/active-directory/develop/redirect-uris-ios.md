@@ -1,7 +1,7 @@
 ---
-title: Átirányítási URI-k használata a MSAL (iOS/macOS) | Azure
+title: Átirányítási URI-k használata Az MSAL (iOS/macOS) használatával | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg a Microsoft Authentication Library for ObjectiveC (iOS és macOS MSAL) és az Azure AD Authentication Library for ObjectiveC (ADAL) közötti különbségeket. ObjC) és a közöttük való Migrálás módját.
+description: Ismerje meg a Microsoft Authentication Library for ObjectiveC (MSAL iOS és macOS) és az Azure AD Authentication Library for ObjectiveC (ADAL) közötti különbségeket. ObjC), és hogyan vándorolnak közöttük.
 services: active-directory
 documentationcenter: dev-center-name
 author: mmacy
@@ -18,50 +18,50 @@ ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
 ms.openlocfilehash: c36c6b1b1b08de6d2db9a7f7f9ebd3b162c02383
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240841"
 ---
-# <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Átirányítási URI-k használata az iOS és a macOS rendszerhez készült Microsoft Authentication Library használatával
+# <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Átirányítási URI-k használata az iOS és macOS Rendszerhez szükséges Microsoft hitelesítési könyvtárral
 
-Amikor egy felhasználó hitelesít, Azure Active Directory (Azure AD) elküldi a jogkivonatot az alkalmazásnak az Azure AD-alkalmazásban regisztrált átirányítási URI használatával.
+Amikor egy felhasználó hitelesíti magát, az Azure Active Directory (Azure AD) elküldi a jogkivonatot az alkalmazásnak az Azure AD-alkalmazásban regisztrált átirányítási URI használatával.
 
-A Microsoft Authentication Library (MSAL) megköveteli, hogy az átirányítási URI-t egy adott formátumban regisztrálja az Azure AD-alkalmazásban. A MSAL egy alapértelmezett átirányítási URI-t használ, ha nem ad meg egyet. A formátum `msauth.[Your_Bundle_Id]://auth`.
+A Microsoft authentication library (MSAL) megköveteli, hogy az átirányítási URI-t regisztrálni kell az Azure AD alkalmazás egy adott formátumban. Az MSAL alapértelmezett átirányítási URI-t használ, ha nem ad meg egyet. A formátum `msauth.[Your_Bundle_Id]://auth`.
 
-Az alapértelmezett átirányítási URI formátum a legtöbb alkalmazáshoz és forgatókönyvhöz használható, beleértve a felügyelt hitelesítést és a rendszer webes nézetét. Ha lehetséges, használja az alapértelmezett formátumot.
+Az alapértelmezett átirányítási URI-formátum a legtöbb alkalmazáshoz és forgatókönyvhöz működik, beleértve a felügyelt hitelesítést és a rendszerwebnézetet. Amikor csak lehetséges, használja az alapértelmezett formátumot.
 
-Előfordulhat azonban, hogy módosítania kell az átirányítási URI-t a speciális forgatókönyvek esetében az alább leírtak szerint.
+Előfordulhat azonban, hogy módosítania kell az átirányítási URI-t a speciális forgatókönyvekhez, az alábbiakban leírtak szerint.
 
-## <a name="scenarios-that-require-a-different-redirect-uri"></a>Eltérő átirányítási URI-t igénylő forgatókönyvek
+## <a name="scenarios-that-require-a-different-redirect-uri"></a>Eltérő átirányítási URI-t igénylő esetek
 
-### <a name="cross-app-single-sign-on-sso"></a>Alkalmazások közötti egyszeri bejelentkezés (SSO)
+### <a name="cross-app-single-sign-on-sso"></a>Alkalmazásközi egyszeri bejelentkezés (Egyszeri bejelentkezés)
 
-Ahhoz, hogy a Microsoft Identity platform megossza a jogkivonatokat az alkalmazások között, minden alkalmazásnak ugyanazzal az ügyfél-AZONOSÍTÓval vagy alkalmazás-AZONOSÍTÓval kell rendelkeznie. Ez az egyedi azonosító, amely akkor érhető el, ha az alkalmazást a portálon regisztrálta (nem pedig az Apple-alkalmazásban regisztrálva lévő alkalmazáscsomag-azonosítót).
+Ahhoz, hogy a Microsoft Identity platform ossza meg a jogkivonatokat az alkalmazások között, minden alkalmazásnak ugyanazzal az ügyfélazonosítóval vagy alkalmazásazonosítóval kell rendelkeznie. Ez az egyedi azonosító, amelyet akkor ad meg, amikor regisztrálta az alkalmazást a portálon (nem pedig az alkalmazásköteg-azonosítót, amelyet alkalmazásonként regisztrál az Apple-nél).
 
-Az átirányítási URI-azonosítóknak különbözőeknek kell lenniük az egyes iOS-alkalmazások esetében. Ez lehetővé teszi, hogy a Microsoft Identity szolgáltatás egyedi módon azonosítsa az alkalmazás-AZONOSÍTÓval rendelkező különböző alkalmazásokat. Mindegyik alkalmazás több átirányítási URI-t is regisztrál a Azure Portalban. A csomag minden alkalmazásának egy másik átirányítási URI-ja lesz. Például:
+Az átirányítási URI-knak minden iOS-alkalmazásesetében eltérőnek kell lenniük. Ez lehetővé teszi, hogy a Microsoft identity service egyedileg azonosítsa az alkalmazásazonosítót megosztó különböző alkalmazásokat. Minden alkalmazás rendelkezhet több átirányítási URI-k regisztrálva az Azure Portalon. A csomag minden alkalmazás a csomag ban lesz egy másik átirányítási URI.Each app in your suite will have a different redirect URI. Példa:
 
-A következő alkalmazás-regisztráció a Azure Portalban:
+A következő alkalmazásregisztráció az Azure Portalon:
 
     Client ID: ABCDE-12345 (this is a single client ID)
     RedirectUris: msauth.com.contoso.app1://auth, msauth.com.contoso.app2://auth, msauth.com.contoso.app3://auth
 
-A App1 átirányítási `msauth.com.contoso.app1://auth` App2 használ `msauth.com.contoso.app2://auth` App3 használ `msauth.com.contoso.app1://auth`
+Az App1 `msauth.com.contoso.app1://auth` az átirányítási alkalmazásthasználja2 az `msauth.com.contoso.app2://auth` App3-at`msauth.com.contoso.app1://auth`
 
-### <a name="migrating-from-adal-to-msal"></a>Migrálás a ADAL-ből a MSAL-be
+### <a name="migrating-from-adal-to-msal"></a>Áttelepítés ADAL-ról MSAL-ra
 
-Ha olyan kódot telepít át, amely az Azure AD hitelesítési függvénytárat (ADAL) MSAL-ra használta, lehetséges, hogy már rendelkezik egy átirányítási URI-val az alkalmazáshoz. Továbbra is használhatja ugyanezt az átirányítási URI-t, ha a ADAL alkalmazás úgy lett konfigurálva, hogy támogassa a felügyelt forgatókönyveket, és az átirányítási URI megfelel a MSAL átirányítási URI-formátum követelményeinek.
+Az Azure AD hitelesítési könyvtárat (ADAL) az MSAL-ba való áttelepítésekor előfordulhat, hogy már rendelkezik az alkalmazáshoz konfigurált átirányítási URI-val. Továbbra is használhatja ugyanazt az átirányítási URI-t, amíg az ADAL-alkalmazás a felügyelt forgatókönyvek támogatására lett konfigurálva, és az átirányítási URI megfelel az MSAL átirányítási URI-formátum követelményeinek.
 
-## <a name="msal-redirect-uri-format-requirements"></a>MSAL átirányítási URI-formátumra vonatkozó követelmények
+## <a name="msal-redirect-uri-format-requirements"></a>Az MSAL átirányítása URI formátumra vonatkozó követelmények
 
-* A MSAL átirányítási URI-nak az űrlapon kell lennie `<scheme>://host`
+* Az MSAL átirányítási URI-nak a`<scheme>://host`
 
-    Ahol a `<scheme>` egy egyedi karakterlánc, amely azonosítja az alkalmazást. Elsődlegesen az alkalmazás köteg-azonosítóján alapul, amely garantálja az egyediséget. Ha például az alkalmazás Bundle-azonosítója `com.contoso.myapp`, az átirányítási URI formátuma a következő lesz: `msauth.com.contoso.myapp://auth`.
+    Hol `<scheme>` található az alkalmazást azonosító egyedi karakterlánc. Elsősorban az alkalmazás csomagazonosítóján alapul, hogy garantálja az egyediséget. Ha például az alkalmazás bundle-azonosítója, az `com.contoso.myapp`átirányítási URI a `msauth.com.contoso.myapp://auth`következő formában jelenik meg: .
 
-    Ha a ADAL-ről végez áttelepítést, az átirányítási URI-ja valószínűleg a következő formátumú lesz: `<scheme>://[Your_Bundle_Id]`, ahol a `scheme` egyedi karakterlánc. A MSAL használatakor ez a formátum továbbra is működni fog.
+    Ha ADAL-ról migrál, az átirányítási URI valószínűleg a következő formátummal fog rendelkezni: `<scheme>://[Your_Bundle_Id]`, hol `scheme` található egy egyedi karakterlánc. Ez a formátum az MSAL használatakor is működni fog.
 
-* `<scheme>` regisztrálni kell az alkalmazás info. plist fájljában `CFBundleURLTypes > CFBundleURLSchemes`alatt.  Ebben a példában a info. plist fájl forráskódként lett megnyitva:
+* `<scheme>`regisztrálnia kell az alkalmazás Info.plist `CFBundleURLTypes > CFBundleURLSchemes`alatt .  Ebben a példában az Info.plist forráskódként lett megnyitva:
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -76,15 +76,15 @@ Ha olyan kódot telepít át, amely az Azure AD hitelesítési függvénytárat 
     ```
     
 
-A MSAL ellenőrzi, hogy az átirányítási URI megfelelően van-e regisztrálva, és ha nem, hibaüzenetet ad vissza.
+Az MSAL ellenőrzi, hogy az átirányítási URI megfelelően regisztrál-e, és hibát ad vissza, ha nem.
     
-* Ha az univerzális hivatkozásokat átirányítási URI-ként kívánja használni, akkor a `<scheme>`nak `https` kell lennie, és nem kell deklarálnia `CFBundleURLSchemes`ban. Ehelyett konfigurálja az alkalmazást és a tartományt az Apple által a [fejlesztők számára elérhető univerzális hivatkozásokon](https://developer.apple.com/ios/universal-links/) , és hívja meg a `MSALPublicClientApplication` `handleMSALResponse:sourceApplication:` módszerét, amikor az alkalmazást univerzális kapcsolaton keresztül nyitják meg.
+* Ha univerzális hivatkozásokat szeretne átirányítási URI-ként használni, akkor a `<scheme>` rendszert a alkalmazásban kell és `https` nem is kell `CFBundleURLSchemes`deklarálni. Ehelyett konfigurálja az alkalmazást és a tartományt az Apple `handleMSALResponse:sourceApplication:` utasításai `MSALPublicClientApplication` szerint a Universal Links [for Developers](https://developer.apple.com/ios/universal-links/) oldalon, és hívja meg azt a módszert, amikor az alkalmazás univerzális hivatkozáson keresztül nyílik meg.
 
 ## <a name="use-a-custom-redirect-uri"></a>Egyéni átirányítási URI használata
 
-Ha egyéni átirányítási URI-t szeretne használni, adja át a `redirectUri` paramétert, hogy `MSALPublicClientApplicationConfig`, és adja át ezt az objektumot `MSALPublicClientApplication` az objektum inicializálásakor. Ha az átirányítási URI-azonosító érvénytelen, az inicializáló `nil`t ad vissza, és további információkkal állítja be a `redirectURIError`.  Például:
+Egyéni átirányítási URI használatához adja `redirectUri` át `MSALPublicClientApplicationConfig` a paramétert, és adja át az objektumot `MSALPublicClientApplication` az objektum inicializálásakor. Ha az átirányítási URI érvénytelen, az `nil` inicializáló visszatér, és beállítja a `redirectURIError`további információkat.  Példa:
 
-Objective-C:
+C célkitűzés:
 
 ```objc
 MSALPublicClientApplicationConfig *config =
@@ -96,7 +96,7 @@ MSALPublicClientApplication *application =
         [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&redirectURIError];
 ```
 
-Swift
+Swift:
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -112,11 +112,11 @@ do {
 
 
 
-## <a name="handle-the-url-opened-event"></a>A megnyitott URL-cím eseményének kezelése
+## <a name="handle-the-url-opened-event"></a>A megnyitott URL-esemény kezelése
 
-Az alkalmazásnak meg kell hívnia a MSAL, ha bármilyen választ kap az URL-sémák vagy az univerzális hivatkozások segítségével. Hívja meg a `MSALPublicClientApplication` `handleMSALResponse:sourceApplication:` módszerét az alkalmazás megnyitásakor. Az alábbi példa az egyéni sémákat szemlélteti:
+Az alkalmazásnak meg kell hívnia az MSAL-t, ha url-sémákon vagy univerzális hivatkozásokon keresztül kap választ. Hívja `handleMSALResponse:sourceApplication:` meg `MSALPublicClientApplication` az alkalmazás megnyitásakori metódust. Íme egy példa az egyéni sémákra:
 
-Objective-C:
+C célkitűzés:
 
 ```objc
 - (BOOL)application:(UIApplication *)app
@@ -128,7 +128,7 @@ Objective-C:
 }
 ```
 
-Swift
+Swift:
 
 ```swift
 func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -140,4 +140,4 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [hitelesítési folyamatokról és az alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md)
+További információ a [hitelesítési folyamatokról és az alkalmazásforgatókönyvekről](authentication-flows-app-scenarios.md)

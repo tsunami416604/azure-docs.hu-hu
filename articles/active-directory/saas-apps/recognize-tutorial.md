@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a felismeréssel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és felismerheti.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Recognize | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Felismerés között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,248 +16,248 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: c0a513ad8fe772839813615d065616f2c911a031
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943339"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Oktatóanyag: Azure Active Directory integráció felismeréssel
+# <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Oktatóanyag: Az Azure Active Directory integrációja az Recognize szolgáltatással
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az felismerést Azure Active Directory (Azure AD) használatával.
-Az Azure AD-vel való felismerés integrálása a következő előnyöket biztosítja:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Felismerés t az Azure Active Directoryval (Azure AD).
+Az Recognize with Azure AD integrálása a következő előnyöket nyújtja:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a felismeréshez.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az Azure AD-fiókjával való felismerésre (egyszeri bejelentkezésre).
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD-ben szabályozhatja, hogy kinek van hozzáférése az Recognize szolgáltatáshoz.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezzenek az Recognize (Single Sign-On) szolgáltatásba az Azure AD-fiókjukkal.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció felismeréssel való konfigurálásához a következő elemek szükségesek:
+Az Azure AD-integráció felismeréssel való konfigurálásához a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Egyszeri bejelentkezésre engedélyezett előfizetés felismerése
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
+* Egyszeri bejelentkezéssel rendelkező előfizetés felismerése
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* A felismerés támogatja az **SP** által kezdeményezett egyszeri bejelentkezést
+* A felismerés támogatja az **SP** által kezdeményezett sso-t
 
-## <a name="adding-recognize-from-the-gallery"></a>Felismerés hozzáadása a gyűjteményből
+## <a name="adding-recognize-from-the-gallery"></a>Felismerés hozzáadása a galériából
 
-Az Azure AD-ben való felismerés integrálásának konfigurálásához fel kell vennie a gyűjteményt a katalógusból a felügyelt SaaS-alkalmazások listájára.
+Az Recognize integrálásának konfigurálásához az Azure AD-be, hozzá kell adnia a galéria felismerését a felügyelt SaaS-alkalmazások listájához.
 
-**Ha fel szeretne venni egy felismerést a gyűjteményből, hajtsa végre a következő lépéseket:**
+**Ha a gyűjteményből szeretné hozzáadni az Recognize funkciót, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a következőt: **felismerés**, válassza a **felismerés** az eredményekből panelt, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Felismerés**, az Eredménypanel **Felismerés parancsát,** majd az alkalmazás hozzáadásához kattintson a **Hozzáadás** gombra.
 
-     ![Felismerés az eredmények listájában](common/search-new-app.png)
+     ![Felismerés az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti a **Britta Simon**nevű tesztelési felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolati kapcsolatot kell létrehozni.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a Recognize szolgáltatással egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés a munka, az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat felismerése kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezés felismeréssel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. Az **[egyszeri bejelentkezés felismerésének beállítása](#configure-recognize-single-sign-on)** – az alkalmazás oldalának egyszeri bejelentkezési beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. A **[felismerési teszt felhasználójának létrehozása](#create-recognize-test-user)** – hogy a Britta Simon partnere legyen, amely a felhasználó Azure ad-képviseletéhez van csatolva.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja az egyszeri bejelentkezés felismerése](#configure-recognize-single-sign-on)** beállítást - az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalon.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre felismerési teszt felhasználó](#create-recognize-test-user)** - egy megfelelője Britta Simon a Recognize, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés felismeréssel való konfigurálásához hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezésének az Recognize szolgáltatással való konfigurálásához hajtsa végre az alábbi lépéseket:
 
-1. Az [Azure Portal](https://portal.azure.com/)az alkalmazás-integráció **felismerése** lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com/)az Alkalmazásintegráció **felismerése** lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az alapszintű **SAML-konfiguráció** szakaszban, ha **szolgáltatói metaadatokat tartalmazó fájllal**rendelkezik, hajtsa végre a következő lépéseket:
+4. Az **Egyszerű SAML-konfiguráció** szakaszban, ha **a Szolgáltató metaadatfájlja**található, hajtsa végre az alábbi lépéseket:
 
     >[!NOTE]
-    >A **szolgáltatói metaadat-fájlt** az oktatóanyag felismerési **egyszeri bejelentkezés beállítása** szakaszában találja.
+    >A Szolgáltató **metaadat-fájlját** az oktatóanyag **Egyszeri bejelentkezés felismerésének konfigurálása** szakaszából kapja meg.
 
-    a. Kattintson a **metaadatfájl feltöltése**.
+    a. Kattintson **a Metaadatfájl feltöltése gombra.**
 
     ![Metaadatfájl feltöltése](common/upload-metadata.png)
 
-    b. Kattintson a **mappa embléma** válassza ki a metaadat-fájlt, és kattintson a **feltöltése**.
+    b. Kattintson a **mappaemblémára** a metaadatfájl kijelöléséhez, majd a **Feltöltés gombra.**
 
-    ![metaadat-fájl kiválasztása](common/browse-upload-metadata.png)
+    ![metaadatfájl kiválasztása](common/browse-upload-metadata.png)
 
-    c. A metaadat-fájl feltöltése után az **azonosító** érték az alapszintű SAML-konfiguráció szakaszban automatikusan feltöltve lesz.
+    c. A metaadatfájl sikeres feltöltése után az **azonosító** értéke automatikusan feltöltődik az egyszerű SAML-konfiguráció szakaszban.
 
     ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak felismerése](common/sp-identifier.png)
 
-     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://recognizeapp.com/<your-domain>/saml/sso`
+     A Bejelentkezés az **URL-cím** mezőbe írja be az URL-címet a következő minta használatával:`https://recognizeapp.com/<your-domain>/saml/sso`
 
     > [!Note]
-    > Ha az **azonosító** értéke nem jelenik meg automatikusan, az azonosító értékét a szolgáltatói metaadatok URL-címének megnyitásával, az egyszeri bejelentkezés beállításai szakaszban találja, amelyet a következő témakörben talál: az írásvédett **egyszeri bejelentkezés konfigurálása** oktatóanyag. A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték lekéréséhez forduljon az [ügyfél-támogatási csapathoz](mailto:support@recognizeapp.com) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ha az **azonosító** értéke nem lesz automatikusan feltöltve, akkor az azonosító értékét úgy kapja meg, hogy megnyitja a Szolgáltató metaadat-URL-címét az sso-beállítások szakaszban, amelyet később, az **oktatóanyag Egyszeri bejelentkezés felismerése** című szakaszában ismertetünk ki. A bejelentkezési URL-érték nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Lépjen kapcsolatba [az ügyfél támogatási csapatával](mailto:support@recognizeapp.com) az érték lefelvételéhez. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-6. A felismerés **beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények szerint.
+6. A **Beállítási felismerés** csoportban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure AD-azonosító
+    b. Azure Hirdetés-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezés URL-címe
 
-### <a name="configure-recognize-single-sign-on"></a>Az egyszeri bejelentkezés felismerésének konfigurálása
+### <a name="configure-recognize-single-sign-on"></a>Egyszeri bejelentkezés felismerése konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a felismerő bérlőre rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként az Recognize tenant-be.
 
-2. A jobb felső sarokban kattintson a **menü**elemre. Válassza a **vállalati rendszergazda**lehetőséget.
+2. A jobb felső sarokban kattintson a **Menü gombra.** Nyissa meg a **Vállalati rendszergazda lehetőséget.**
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_000.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/recognize-tutorial/tutorial_recognize_000.png)
 
-3. A bal oldali navigációs ablaktáblán kattintson a **Beállítások**elemre.
+3. A bal oldali navigációs ablakban kattintson a **Beállítások gombra.**
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_001.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/recognize-tutorial/tutorial_recognize_001.png)
 
 4. Hajtsa végre az alábbi lépéseket az **SSO-beállítások** szakaszban.
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_002.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/recognize-tutorial/tutorial_recognize_002.png)
     
-    a. Az **SSO engedélyezése**beállításnál válassza **a be**lehetőséget.
+    a. Az **SSO engedélyezése mezőben**válassza **a BE**lehetőséget.
 
-    b. Az **identitásszolgáltató entitás-azonosító** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
+    b. Az **IDP-entitásazonosító** szövegdobozába illessze be az **Azure AD-azonosító** értékét, amelyet az Azure Portalról másolt.
     
-    c. Az **SSO cél URL-címe** szövegmezőbe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
+    c. Az **Sso cél URL-szövegmezőbe** illessze be a **bejelentkezési URL-cím** értékét, amelyet az Azure Portalról másolt.
     
-    d. A **slo-cél URL-címe** szövegmezőbe illessze be a kijelentkezési **URL-cím** értékét, amelyet a Azure Portal másolt. 
+    d. A **Slo cél URL-szövegmezőbe** illessze be a **kijelentkezési URL-cím** értékét, amelyet az Azure Portalról másolt. 
     
-    e. Nyissa meg a letöltött **tanúsítvány (Base64)** fájlt a Jegyzettömbben, másolja a vágólapra a tartalmát, majd illessze be a **tanúsítvány** szövegmezőbe.
+    e. Nyissa meg a letöltött **tanúsítványfájlt (Base64)** a jegyzettömbben, másolja annak tartalmát a vágólapra, majd illessze be a **Tanúsítvány** szövegmezőbe.
     
     f. Kattintson a **Beállítások mentése** gombra. 
 
-5. Az **SSO-beállítások** szakasz mellett másolja az URL-címet a **szolgáltatói metaadatok URL-címe**alatt.
+5. Az **SSO Settings** szakasz mellett másolja az URL-t a **Szolgáltató metaadatai url-cím alá.**
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_003.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/recognize-tutorial/tutorial_recognize_003.png)
 
-6. A metaadat-dokumentum letöltéséhez nyissa meg a **metaadatok URL-hivatkozását** egy üres böngésző alatt. Ezután másolja a EntityDescriptor értéket (entityID) a fájlból, és illessze be az **azonosító** szövegmezőbe az alapszintű **SAML** -konfigurációban Azure Portalon.
+6. Nyissa meg a **metaadat-URL-hivatkozást** egy üres böngésző alatt a metaadat-dokumentum letöltéséhez. Ezután másolja az EntityDescriptor értékét (entityID) a fájlból, és illessze be **az Azure** Portal **alapszintű SAML-konfigurációjának** azonosító szövegmezőjébe.
     
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_004.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/recognize-tutorial/tutorial_recognize_004.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. A **Felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extensiona nevet. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mező brittasimon@yourcompanydomain.extensiontípusa mezőben. Például: BrittaSimon@contoso.com
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a felismeréshez való hozzáférés biztosításával.
+Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés t azáltal, hogy hozzáférést biztosít az recognize.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **felismerés**lehetőséget.
+1. Az Azure portalon válassza a **Vállalati alkalmazások**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd kattintson a **Felismerés gombra.**
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **felismerés**lehetőséget.
+2. Az alkalmazások listájában válassza a **Felismerés**lehetőséget.
 
-    ![Az alkalmazások lista felismerés hivatkozása](common/all-applications.png)
+    ![Az Alkalmazások listájában található Felismerés hivatkozás](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-recognize-test-user"></a>Felismerési teszt felhasználó létrehozása
+### <a name="create-recognize-test-user"></a>Felismerési tesztfelhasználó létrehozása
 
-Annak érdekében, hogy az Azure AD-felhasználók bejelentkezzenek az felismerésbe, fel kell venni őket a felismerésbe. Felismerés esetén a kiépítés manuális feladat.
+Annak érdekében, hogy az Azure AD-felhasználók bejelentkezhessenek az Recognize-ba, ki kell építeni őket az Recognize-ba. Felismerés esetén a kiépítés manuális feladat.
 
-Ez az alkalmazás nem támogatja a SCIM-létesítést, de a felhasználókra vonatkozó másodlagos felhasználói szinkronizálást is tartalmaz. 
+Ez az alkalmazás nem támogatja az SCIM-kiépítést, de van egy másik felhasználói szinkronizálás, amely a felhasználók számára. 
 
-**Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:**
+**Felhasználói fiók kiépítéséhez hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be a vállalati webhely felismerése rendszergazdaként.
+1. Jelentkezzen be rendszergazdaként a vállalati webhely felismerése.
 
-2. A jobb felső sarokban kattintson a **menü**elemre. Válassza a **vállalati rendszergazda**lehetőséget.
+2. A jobb felső sarokban kattintson a **Menü gombra.** Nyissa meg a **Vállalati rendszergazda lehetőséget.**
 
-3. A bal oldali navigációs ablaktáblán kattintson a **Beállítások**elemre.
+3. A bal oldali navigációs ablakban kattintson a **Beállítások gombra.**
 
-4. Hajtsa végre a következő lépéseket a **felhasználói szinkronizálás** szakaszban.
+4. Hajtsa végre az alábbi lépéseket a **Felhasználószinkronizálás** szakaszban.
    
     ![Új felhasználó](./media/recognize-tutorial/tutorial_recognize_005.png "Új felhasználó")
    
-    a. Ha **engedélyezve van a szinkronizálás**, válassza **a be**lehetőséget.
+    a. A **Szinkronizálás engedélyezve**lehetőséget válassza **a BE**lehetőséget.
    
-    b. A **szinkronizálási szolgáltató**kiválasztása lapon válassza a **Microsoft/Office 365**lehetőséget.
+    b. A **Szinkronizálásszolgáltató kiválasztása csoportban**válassza a **Microsoft / Office 365**lehetőséget.
    
-    c. Kattintson a **felhasználói szinkronizálás futtatása**elemre.
+    c. Kattintson **a Felhasználószinkronizálás futtatása gombra.**
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a felismerő csempére kattint, automatikusan be kell jelentkeznie arra az felismerésre, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen a Felismerés csempére kattint, automatikusan be kell jelentkeznie arra az felismerésre, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

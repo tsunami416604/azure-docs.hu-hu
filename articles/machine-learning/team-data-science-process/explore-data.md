@@ -1,6 +1,6 @@
 ---
 title: Az adatok megismerése a csoportos adatelemzési folyamattal
-description: Fedezze fel az adatokat különböző tárolási olyan környezetekben, amelyek jellemzően a csoportos adatelemzési folyamat.
+description: Fedezze fel az adatokat a különböző tárolási környezetekben, amelyek általában a csapat adatelemzési folyamat.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,20 +12,20 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ca993fd6a449b2655b13da337875fa3f9f27cade
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721268"
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>Az adatok megismerése a csoportos adatelemzési folyamattal
 
-Az adatelemzés a [csoportos adatelemzési folyamat](overview.md)egyik lépése.
+Az adatok feltárása egy lépés a [csapat adatelemzési folyamatában.](overview.md)
 
-Az alábbi cikkek ismertetik, hogyan fedezheti fel az adatok három különböző tároló környezetekben, amelyek jellemzően a adatelemzési folyamat:
+Az alábbi cikkek ismertetik, hogyan fedezheti fel az adatokat három különböző tárolási környezetben, amelyek általában az adatelemzési folyamat ban használatosak:
 
-* Ismerkedjen meg az [Azure Blob Container](explore-data-blob.md) -adataival a [Panda](https://pandas.pydata.org/) Python-csomag használatával.
-* Ismerkedjen meg [SQL Server](explore-data-sql-server.md) adatokat az SQL használatával és egy programozási nyelv, például a Python használatával.
-* A [kaptár-táblák](explore-data-hive-tables.md) adatai a kaptár-lekérdezések használatával.
+* Fedezze fel [az Azure blob tárolóadatait](explore-data-blob.md) a [Pandas](https://pandas.pydata.org/) Python-csomag használatával.
+* Fedezze fel [az SQL Server-adatokat](explore-data-sql-server.md) az SQL használatával és egy programozási nyelv, például a Python használatával.
+* A [Hive-tábla](explore-data-hive-tables.md) adatainak feltárása Hive-lekérdezések használatával.
 
-Emellett a videó, Azure Machine Learning Studio az [adatok előfeldolgozása](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)az adatok tisztításához és átalakításához leggyakrabban használt modulokat ismerteti.
+Emellett a videó, [előfeldolgozási adatok az Azure Machine Learning Studio,](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)ismerteti a gyakran használt modulok az adatok tisztításához és átalakításához.

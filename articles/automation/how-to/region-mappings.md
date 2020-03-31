@@ -1,6 +1,6 @@
 ---
-title: Munkaterület-hozzárendelések Azure Automation és Log Analytics
-description: Ez a cikk az Automation-fiók és a Log Analytics munkaterület közötti, a megoldás támogatásához engedélyezett leképezéseket ismerteti
+title: Az Azure Automation és a Log Analytics munkaterület-leképezései
+description: Ez a cikk az Automation-fiók és a Log Analytics-munkaterület között a megoldás támogatásához engedélyezett leképezéseket ismerteti.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -10,83 +10,83 @@ ms.date: 05/20/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 965d6b206bb64e90fe59798ce0c37ccf029117f5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74849513"
 ---
-# <a name="workspace-mappings"></a>Munkaterület-hozzárendelések
+# <a name="workspace-mappings"></a>Munkaterület-leképezések
 
-Ha olyan megoldásokat engedélyez, mint például a Update Management, a Change Tracking és a leltár vagy a Start/Stop VMs during off-hours megoldás, akkor csak bizonyos régiók támogatottak Log Analytics munkaterület és egy Automation-fiók összekapcsolásához. Ez a leképezés csak az Automation-fiókra és a Log Analytics munkaterületre vonatkozik. Az Automation-fiókjába vagy Log Analytics-munkaterületre jelentett erőforrások más régiókban is lehetnek.
+Ha olyan megoldásokat engedélyez, mint a frissítéskezelés, a változáskövetés és a készlet, vagy a virtuális gépek indítása/leállítása munkaidőn kívüli megoldás során, csak bizonyos régiók támogatják a Log Analytics-munkaterület és az Automation-fiók összekapcsolásához. Ez a leképezés csak az Automation-fiókra és a Log Analytics-munkaterületre vonatkozik. Az Automation-fiókba vagy a Log Analytics-munkaterületre jelentéskészítő erőforrások más régiókban is elhelyezkedhetnek.
 
 ## <a name="supported-mappings"></a>Támogatott leképezések
 
-A következő táblázat a támogatott leképezéseket tartalmazza:
+Az alábbi táblázat a támogatott hozzárendeléseket mutatja be:
 
-|**Log Analytics munkaterület-régió**|**Azure Automation régió**|
+|**Log Analytics-munkaterületi terület**|**Azure automation régió**|
 |---|---|
 |**USA**||
-|<sup>1</sup> . EastUS|EastUS2|
-|WestUS2|WestUS2|
-|<sup>2</sup> . WestCentralUS|<sup>2</sup> . WestCentralUS|
+|Kelet-US<sup>1</sup>|KeletUS2|
+|Nyugat-us2|Nyugat-us2|
+|WestCentralUS<sup>2 (Nyugat-közép-nyugati közép- és nyugati</sup>|WestCentralUS<sup>2 (Nyugat-közép-nyugati közép- és nyugati</sup>|
 |**Kanada**||
-|CanadaCentral|CanadaCentral|
+|KanadaKözponti|KanadaKözponti|
 |**Ázsia és a Csendes-óceáni térség**||
-|AustraliaSoutheast|AustraliaSoutheast|
-|SoutheastAsia|SoutheastAsia|
-|CentralIndia|CentralIndia|
-|JapanEast|JapanEast|
+|AusztráliaDélkelet|AusztráliaDélkelet|
+|Délkelet-Ázsia|Délkelet-Ázsia|
+|Közép-India|Közép-India|
+|JapánKelet|JapánKelet|
 |**Európa**||
 |UKSouth|UKSouth|
 |WestEurope|WestEurope|
 |**US Gov**||
-|USGovVirginia|USGovVirginia|
+|USGovVirginia között|USGovVirginia között|
 
-<sup>1</sup> a log Analytics-munkaterületek automatizálási fiókokba való hozzárendelése nem a régió-hozzárendelés pontos EastUS, hanem a megfelelő leképezés.
+<sup>1</sup> A Log Analytics-munkaterületek EastUS-hozzárendelése az Automation-fiókokhoz nem pontos régió-régió leképezés, hanem a helyes leképezés.
 
-<sup>2</sup> a kapacitás korlátozásai miatt a régió nem érhető el új erőforrások létrehozásakor. Ez magában foglalja az Automation-fiókokat és a Log Analytics munkaterületeket. A régióban azonban a már meglévő társított erőforrások továbbra is működőképesek maradnak.
+<sup>2</sup> A kapacitáskorlátok miatt a régió nem érhető el új erőforrások létrehozásakor. Ez magában foglalja az Automation-fiókok és a Log Analytics-munkaterületeket. A régióban már meglévő összekapcsolt erőforrásoknak azonban továbbra is működniük kell.
 
 ## <a name="unlink-workspace"></a>Munkaterület leválasztása
 
-Ha úgy dönt, hogy már nem szeretné integrálni az Automation-fiókot egy Log Analytics munkaterülettel, közvetlenül a Azure Portalból is leválaszthatja a fiókját. Mielőtt továbblépne, először el kell távolítania a Update Management, a Change Tracking és a leltárt, vagy a Start/Stop VMs during off-hours megoldásokat, ha azokat használja. Ha nem távolítja el őket, a folyamat nem fog folytatódni. Tekintse át az importált konkrét megoldásról szóló cikket az eltávolításához szükséges lépések megismeréséhez.
+Ha úgy dönt, hogy már nem szeretné integrálni az Automation-fiókot egy Log Analytics-munkaterülettel, leválaszthatja fiókját közvetlenül az Azure Portalról. Mielőtt továbblépne, először el kell távolítania a frissítéskezelést, a változáskövetést és a készletrendszert, illetve a kezdő/leállító virtuális gépeket munkaidőn kívüli megoldások során, ha használja őket. Ha nem távolítja el őket, ez a folyamat nem folytatódik. Tekintse át a cikket az adott megoldás importált, hogy megértsék a szükséges lépéseket, hogy távolítsa el azt.
 
-A megoldások eltávolítása után a következő lépések végrehajtásával leválaszthatja az Automation-fiókját.
+Miután eltávolította ezeket a megoldásokat, az automation-fiók leválasztásához hajtsa végre az alábbi lépéseket.
 
 > [!NOTE]
-> Előfordulhat, hogy néhány megoldás, például az Azure SQL-figyelési megoldás korábbi verziói automatizálási eszközöket hoztak létre, és a munkaterület leválasztása előtt is el kell távolítani őket.
+> Egyes megoldások, beleértve az Azure SQL figyelési megoldás korábbi verzióit, előfordulhat, hogy automatizálási eszközöket hoztak létre, és előfordulhat, hogy a munkaterület leválasztása előtt el kell távolítani őket.
 
-1. A Azure Portal nyissa meg az Automation-fiókját, és az Automation-fiók lapon válassza a **csatolt munkaterület** lehetőséget a bal oldalon található **kapcsolódó erőforrások** szakaszban.
+1. Az Azure Portalon nyissa meg az Automation-fiókot, és az Automation-fiók lapon válassza a **Csatolt munkaterület** lehetőséget a bal oldali **Kapcsolódó erőforrások** szakaszban.
 
-2. A munkaterület leválasztása lapon kattintson a **munkaterület leválasztása**elemre. A folytatáshoz meg kell kapnia egy figyelmeztetést.
+2. A munkaterület leválasztása lapon kattintson a **Munkaterület leválasztása gombra.** A folytatást ellenőrző üzenet jelenik meg.
 
-3. Míg Azure Automation megkísérli leválasztani a fiókot a Log Analytics munkaterületen, nyomon követheti a menü **értesítések** részén látható előrehaladást.
+3. Bár az Azure Automation megpróbálja leválasztani a fiókot a Log Analytics-munkaterületről, nyomon követheti a folyamatot a menü **értesítések** csoportban.
 
-Ha a Update Management megoldást használta, érdemes lehet eltávolítani a következő elemeket, amelyekre már nincs szükség a megoldás eltávolítása után.
+Ha az Update Management megoldást használta, szükség esetén a megoldás eltávolítása után a következő elemeket is eltávolíthatja.
 
-* Frissítési ütemtervek – minden olyan névvel rendelkezik, amely megfelel a létrehozott frissítési központi telepítésnek.
+* Ütemezések frissítése – Mindegyiknek olyan neve lesz, amely megfelel a létrehozott frissítési központi telepítéseknek)
 
-* A megoldáshoz létrehozott hibrid feldolgozói csoportok – mindegyik neve hasonló lesz `machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8`).
+* A megoldáshoz létrehozott hibrid munkavégző csoportok – `machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8`Mindegyik a rendszerhez hasonlóan lesz elnevezve.Hybrid worker groups created for the solution – Each will be named similars to).
 
-Ha a Start/Stop VMs during off-hours megoldást használta, érdemes lehet eltávolítani a következő elemeket, amelyekre már nincs szükség a megoldás eltávolítása után.
+Ha a virtuális gépek indítása/leállítása munkaidőn kívüli megoldás során, szükség esetén érdemes lehet eltávolítani a következő elemeket, amelyek már nincs szükség a megoldás eltávolítása után.
 
-* VM runbook-ütemtervek elindítása és leállítása
-* VM-runbookok elindítása és leállítása
+* Virtuálisgép-runbook-ütemezések indítása és leállítása
+* Virtuálisgép-runbookok indítása és leállítása
 * Változók
 
-Azt is megteheti, hogy kikapcsolja a munkaterületet az Automation-fiókjából a Log Analytics munkaterületről. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások**területen. Az Automation-fiók lapon válassza a **fiók megszüntetése**lehetőséget.
+Azt is megteheti, hogy leválassza a munkaterületet az Automation-fiókról a Log Analytics-munkaterületről. A munkaterületen válassza az **Automatizálási fiók** lehetőséget a **Kapcsolódó erőforrások csoportban.** Az Automatizálási fiók lapon válassza a **Fiók leválasztása**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerje meg a következő megoldások bevezetését:
+Ismerje meg, hogyan kell a következő megoldásokat beszállni:
 
-Update Management és Change Tracking és leltár:
+A kezelés és a változáskövetés és a készlet frissítése:
 
-* [Virtuális gépről](../automation-onboard-solutions-from-vm.md)
+* Virtuális [gépről](../automation-onboard-solutions-from-vm.md)
 * Az [Automation-fiókból](../automation-onboard-solutions-from-automation-account.md)
-* [Több gép tallózása](../automation-onboard-solutions-from-browse.md)
-* [Runbook](../automation-onboard-solutions.md)
+* [Több gép böngészése közben](../automation-onboard-solutions-from-browse.md)
+* [Runbookból](../automation-onboard-solutions.md)
 
-Virtuális gépek munkaidőn kívüli elindítása/leállítása
+Virtuális gépek indítása és leállítása munkaidőn kívül
 
-* [Start/Stop VMs during off-hours üzembe helyezése](../automation-solution-vm-management.md)
+* [Virtuális gépek telepítése/leállítása munkaidőn kívül](../automation-solution-vm-management.md)

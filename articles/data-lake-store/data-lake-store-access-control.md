@@ -1,6 +1,6 @@
 ---
-title: Hozzáférés-vezérlés a Data Lake Storage Gen1 áttekintése |} A Microsoft Docs
-description: Hozzáférés-vezérlés működésének megismerése az Azure Data Lake Storage Gen1
+title: Hozzáférés-vezérlés áttekintése a Data Lake Storage Gen1 programban | Microsoft dokumentumok
+description: A hozzáférés-vezérlés működésének megismerése az Azure Data Lake Storage Gen1 szolgáltatásban
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260331"
 ---
-# <a name="access-control-in-azure-data-lake-storage-gen1"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen1
+# <a name="access-control-in-azure-data-lake-storage-gen1"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen1-ben
 
-Az Azure Data Lake Storage Gen1 egy hozzáférés-vezérlési modellből származó HDFS, a POSIX hozzáférés-vezérlési modellből származó valamint valósítja meg. Ez a cikk a Data Lake Storage Gen1 foglalja össze a hozzáférés-vezérlési modelljének alapjait. 
+Az Azure Data Lake Storage Gen1 egy HDFS-ből származó hozzáférés-vezérlési modellt valósít meg, amely viszont a POSIX hozzáférés-vezérlési modellből származik. Ez a cikk a Data Lake Storage Gen1 hozzáférés-vezérlési modelljének alapjait foglalja össze. 
 
 ## <a name="access-control-lists-on-files-and-folders"></a>Fájlokra és mappákra vonatkozó hozzáférés-vezérlési listák
 
@@ -47,9 +47,9 @@ A fájlrendszer objektumaira vonatkozó engedélyek a következők: **Olvasás**
 
 |            |    Fájl     |   Mappa |
 |------------|-------------|----------|
-| **Olvasás (R)** | Olvashatja a fájl tartalmát | **Olvasás** és **Végrehajtás** szükséges a mappa tartalmának listázásához|
+| **Olvasás (R)** | Olvashatja a fájl tartalmát | **Olvasás és** **végrehajtás** szükséges a mappa tartalmának listázásához|
 | **Írás (W)** | Írhatja a fájlt vagy hozzáfűzhet a fájlhoz | **Írás** és **Végrehajtás** szükséges gyermekelemek létrehozásához a mappában |
-| **Végrehajtás (X)** | Nem jelent semmit a Data Lake Storage Gen1 környezetében | Szükséges egy mappa gyermekelemeinek bejárásához |
+| **Végrehajtás (X)** | Nem jelent semmit a Data Lake Storage Gen1 | Szükséges egy mappa gyermekelemeinek bejárásához |
 
 ### <a name="short-forms-for-permissions"></a>Az engedélyek rövid alakjai
 
@@ -65,21 +65,21 @@ A fájlrendszer objektumaira vonatkozó engedélyek a következők: **Olvasás**
 
 ### <a name="permissions-do-not-inherit"></a>Az engedélyek nem öröklődnek
 
-A Data Lake Storage Gen1 által használt POSIX-stílusú modellben az elemhez tartozó engedélyek magában az elemben tárolódnak. Vagyis egy elem az engedélyeit nem örökölheti a szülőelemektől.
+A Data Lake Storage Gen1 által használt POSIX-stílusú modellben az elem engedélyei magán az elemen tárolódnak. Vagyis egy elem az engedélyeit nem örökölheti a szülőelemektől.
 
 ## <a name="common-scenarios-related-to-permissions"></a>Az engedélyekhez kapcsolódó gyakori helyzetek
 
-Az alábbiakban néhány gyakori helyzet segítenek megérteni, milyen engedélyek szükségesek a Data Lake Storage Gen1-fiók bizonyos műveletek végrehajtásához.
+Az alábbiakban néhány gyakori forgatókönyv, amely segít megérteni, hogy milyen engedélyek szükségesek bizonyos műveletek végrehajtásához egy Data Lake Storage Gen1 fiók.
 
-| Művelet | Objektum              |    /      | Seattle /   | Portland /   | Data.txt       |
+| Művelet | Objektum              |    /      | Seattle/   | Portland/   | Data.txt fájl       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
-| Olvasás      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Hozzáfűzése | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Törlés    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Létrehozás    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Olvasás      | Data.txt fájl            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Hozzáfűzés hozzáfűzés | Data.txt fájl            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Törlés    | Data.txt fájl            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Létrehozás    | Data.txt fájl            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Lista      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | Lista      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
-| Lista      | /Seattle/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
+| Lista      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]
@@ -98,17 +98,17 @@ Minden fájl és mappa külön engedélyekkel rendelkezik az alábbi identitáso
 * Nevesített csoportok
 * Minden egyéb felhasználó
 
-A felhasználók és csoportok identitása Azure Active Directory- (Azure AD-) indentitás. Így ha nincs másképp jelölve, a "felhasználó" Data Lake Storage Gen1 környezetében is jelenthet egy Azure AD-felhasználó vagy az Azure AD biztonsági csoportot.
+A felhasználók és csoportok identitása Azure Active Directory- (Azure AD-) indentitás. Így eltérő módon a Data Lake Storage Gen1 környezetében egy "felhasználó" jelentheti az Azure AD-felhasználót vagy egy Azure AD biztonsági csoportot.
 
 ### <a name="the-super-user"></a>A felügyelő
 
-A felügyelő rendelkezik a felhasználók a legtöbb joggal a Data Lake Storage Gen1 fiókban. A felügyelő:
+A super-user rendelkezik a legtöbb jogosultságot az összes felhasználó a Data Lake Storage Gen1 fiókban. A felügyelő:
 
 * RWX-engedéllyel (olvasás, írás és végrehajtás) rendelkezik az **összes** fájlhoz és mappához.
 * Bármely fájl vagy mappa engedélyeit megváltoztathatja.
 * Bármely fájl vagy mappa tulajdonosát vagy tulajdonoscsoportját megváltoztathatja.
 
-A Data Lake Storage Gen1 fiók **tulajdonosi** szerepköréhez tartozó összes felhasználó automatikusan egy felügyelő.
+Minden felhasználó, amely része a **tulajdonosok** szerepkör a Data Lake Storage Gen1 fiók automatikusan egy szuper-felhasználó.
 
 ### <a name="the-owning-user"></a>A tulajdonos felhasználó
 
@@ -128,14 +128,14 @@ Automatikusan az elem tulajdonosa lesz az a felhasználó, aki létrehozta az el
 
 A POSIX ACL-ekben minden felhasználó társítva van egy „elsődleges csoporttal”. Például az „alice” nevű felhasználó a „finance” csoportba tartozhat. Alice több csoporthoz is tartozhat, de egy csoport mindig ki van jelölve elsődleges csoportjaként. A POSIX-ben ha Alice létrehoz egy fájlt, a fájl tulajdonoscsoportja Alice elsődleges csoportja lesz, ami ebben az esetben a „finance”. A tulajdonos csoport egyéb esetben egyéb felhasználókhoz/csoportokhoz hozzárendelt engedélyekhez hasonlóan viselkedik.
 
-Mivel nincs "elsődleges csoporttal" tartozó Data Lake Storage Gen1 a felhasználók számára, a tulajdonoscsoport hozzá van rendelve az alábbi.
+Mivel a Data Lake Storage Gen1-ben nincs "elsődleges csoport" társítva a felhasználókhoz, a tulajdonában lévő csoport az alábbiak szerint van hozzárendelve.
 
-**A tulajdonos csoport kiosztása új fájlhoz vagy mappához**
+**A birtokló csoport hozzárendelése új fájlhoz vagy mappához**
 
-* **1. eset**: A gyökérmappa „/”. Ez a mappa a Data Lake Storage Gen1 fiók létrehozásakor jön létre. Ebben az esetben a tulajdonoscsoport értéke egy minden nulla GUID-Azonosítót.  Ez az érték nem engedélyezi a hozzáférést.  Egy helyőrző addig egy csoport van hozzárendelve.
+* **1. eset**: A gyökérmappa „/”. Ez a mappa a Data Lake Storage Gen1 fiók létrehozásakor jön létre. Ebben az esetben a tulajdonában lévő csoport értéke nulla GUID.  Ez az érték nem engedélyezi a hozzáférést.  Ez egy helyőrző, amíg egy csoport van rendelve.
 * **2. eset** (minden egyéb eset): Egy új elem létrehozásakor a tulajdonoscsoport a szülőmappából másolódik át.
 
-**A tulajdonos csoport módosítása**
+**A birtokló csoport módosítása**
 
 A tulajdonoscsoportot megváltoztathatja:
 * Bármely felügyelő.
@@ -144,12 +144,12 @@ A tulajdonoscsoportot megváltoztathatja:
 > [!NOTE]
 > A tulajdonoscsoport *nem* változtathatja meg egy fájl vagy mappa ACL-eit.
 >
-> Az 2018-on vagy azt megelőzően létrehozott fiókokhoz a tulajdonos csoportot arra a felhasználóra állították be, aki létrehozta a fiókot az **1. eset**esetén a gyökérmappa esetében.  Egyetlen felhasználói fiók érvénytelen nem jogosult engedélyeket kiadni a tulajdonoscsoporton keresztül, így nem engedélyekkel ezen alapbeállítás szerint. Ezt az engedélyt hozzárendelheti egy érvényes felhasználói csoport számára.
+> A 2018 szeptemberében vagy azt megelőzően létrehozott fiókok esetében a tulajdonában lévő csoportot annak a felhasználónak állították be, aki a fenti **1.**  Egyetlen felhasználói fiók nem érvényes a tulajdonában lévő csoporton keresztüli engedélyek megadására, így ez az alapértelmezett beállítás nem ad meg engedélyeket. Ezt az engedélyt érvényes felhasználói csoporthoz rendelheti.
 
 
 ## <a name="access-check-algorithm"></a>Hozzáférés-ellenőrzési algoritmus
 
-A következő pseudocode Data Lake Storage Gen1 fiókok esetében a hozzáférés-ellenőrzési algoritmus jelöli.
+A következő pszeudokód a Data Lake Storage Gen1 fiókok hozzáférés-ellenőrzési algoritmusát jelöli.
 
 ```
 def access_check( user, desired_perms, path ) : 
@@ -194,20 +194,20 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="the-mask"></a>A maszk
 
-Ahogy az a hozzáférés-ellenőrzési algoritmusban is látható, a maszk korlátozza a **megnevezett felhasználók**, a **tulajdonos csoport**és a **nevesített csoportok**hozzáférését.  
+Az Access Check Algorithm ábrán látható módon a maszk korlátozza a hozzáférést a **megnevezett felhasználók**, a **tulajdonában lévő csoport**és a **névvel ellátott csoportok**számára.  
 
 > [!NOTE]
-> Az új Data Lake Storage Gen1-fiókoknál a gyökérmappa ("/") hozzáférési ACL-JÉNEK maszk alapértelmezés szerint RWX-re.
+> Új Data Lake Storage Gen1 fiók esetén a gyökérmappa hozzáférési listájának maszkja ("/") alapértelmezés szerint RWX.
 >
 >
 
 ### <a name="the-sticky-bit"></a>Ragadós bit
 
-A ragadós (sticky) bit a POSIX-fájlrendszer egy speciális funkciója. Data Lake Storage Gen1 összefüggésben nem valószínű, hogy a ragadós bit lesz szükség. Összefoglalva Ha a ragadós bit engedélyezve van egy mappába, a gyermekelem is csak kell törölték vagy átnevezték a gyermek-konfigurációelem tulajdonosa felhasználó által.
+A ragadós (sticky) bit a POSIX-fájlrendszer egy speciális funkciója. A Data Lake Storage Gen1 környezetében nem valószínű, hogy a ragadós bitre lesz szükség. Összefoglalva, ha a ragadós bit engedélyezve van egy mappában, a gyermekelemet csak a gyermekelem tulajdonában lévő felhasználó törölheti vagy nevezheti át.
 
 A ragadós bit nem látható az Azure Portalon.
 
-## <a name="default-permissions-on-new-files-and-folders"></a>Új fájlok és mappák alapértelmezett engedélyek
+## <a name="default-permissions-on-new-files-and-folders"></a>Alapértelmezett engedélyek az új fájlokhoz és mappákhoz
 
 Az új fájlok vagy mappák meglévő mappában történő létrehozásakor a szülőmappára vonatkozó alapértelmezett ACL a következőket határozza meg:
 
@@ -216,19 +216,19 @@ Az új fájlok vagy mappák meglévő mappában történő létrehozásakor a sz
 
 ### <a name="umask"></a>umask
 
-Egy fájl vagy mappa létrehozásakor umask segítségével módosíthatja az alapértelmezett ACL-ek az alárendelt elem beállításának módját. a umask egy 9 bites érték a szülő mappákban, amelyek RWX értéket tartalmaznak a **tulajdonos felhasználó**, a **tulajdonos csoport**és a **többi**számára.
+Fájl vagy mappa létrehozásakor az umask segítségével módosíthatja, hogy az alapértelmezett ACL-k hogyan vannak beállítva a gyermekelemen. Az umask egy 9 bites érték a szülőmappákon, amely RWX-értéket tartalmaz a felhasználó, a csoport tulajdonosának és **egyéb** **tulajdonosának.** **owning group**
 
-A Azure Data Lake Storage Gen1 umask egy állandó érték, amely a 007-re van állítva. Ezt az értéket a rendszer lefordítja arra
+Az Azure Data Lake Storage Gen1 umask egy 007-re beállított állandó érték. Ez az érték
 
 | umask összetevő     | Numerikus alak | Rövid alak | Jelentés |
 |---------------------|--------------|------------|---------|
-| umask.owning_user   |    0         |   `---`      | A tulajdonos felhasználó, másolja a szülő alapértelmezett ACL-je a gyermek hozzáférési ACL-je | 
-| umask.owning_group  |    0         |   `---`      | A tulajdonoscsoport, másolja a szülő alapértelmezett ACL-je a gyermek hozzáférési ACL-je | 
-| umask.Other         |    7         |   `RWX`      | Más a gyermek hozzáférési ACL-je a minden engedély eltávolítása |
+| umask.owning_user   |    0         |   `---`      | Felhasználó esetén másolja a szülő alapértelmezett hozzáférés-kulcsát a gyermek hozzáférési kulcsa imasába | 
+| umask.owning_group  |    0         |   `---`      | A tulajdonos csoport esetén másolja a szülő alapértelmezett hozzáférés-kulcsát a gyermek hozzáférési licenccsomagjára | 
+| umask.más         |    7         |   `RWX`      | Egyéb esetén távolítsa el a gyermek hozzáférési kulcszatának összes engedélyét |
 
-Az Azure Data Lake Storage Gen1 hatékonyan használható umask érték azt jelenti, hogy az érték más soha nem továbbított alapértelmezés szerint az új gyermek - függetlenül az alapértelmezett ACL-t jelzi. 
+Az Azure Data Lake Storage Gen1 által használt umask érték gyakorlatilag azt jelenti, hogy a többi érték alapértelmezés szerint soha nem kerül továbbításra az új gyermekekre – függetlenül attól, hogy az alapértelmezett ACL mit jelez. 
 
-A következő pseudocode bemutatja, hogyan kell alkalmazni az umask a hozzáférés-vezérlési egy gyermek-konfigurációelem létrehozása során.
+A következő pszeudokód bemutatja, hogyan alkalmazza az umask-ot az ACL-ek létrehozásakor egy gyermekelemhez.
 
 ```
 def set_default_acls_for_new_child(parent, child):
@@ -246,11 +246,11 @@ def set_default_acls_for_new_child(parent, child):
         child_acls.add( new_entry )
 ```
 
-## <a name="common-questions-about-acls-in-data-lake-storage-gen1"></a>A Data Lake Storage Gen1 ACL-lel kapcsolatos gyakori kérdésekre
+## <a name="common-questions-about-acls-in-data-lake-storage-gen1"></a>Gyakori kérdések a Data Lake Storage Gen1 ACL-jével kapcsolatban
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Engedélyeznem kell az ACL támogatását?
 
-Nem. Az ACL-alapú hozzáférés-vezérlés mindig be van kapcsolva egy Data Lake Storage Gen1 fiókot.
+Nem. Hozzáférés-vezérlés ACLs mindig be van kapcsolva a Data Lake Storage Gen1 fiók.
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>Milyen engedélyek szükségesek egy mappa és tartalma rekurzív törléséhez?
 
@@ -258,7 +258,7 @@ Nem. Az ACL-alapú hozzáférés-vezérlés mindig be van kapcsolva egy Data Lak
 * A törölni kívánt mappához és a benne található összes mappához **Olvasás + Írás + Végrehajtás** engedélyre van szükség.
 
 > [!NOTE]
-> A mappákban található fájlok törléséhez nem szükséges írási engedély. Emellett a „/” gyökérmappa **soha** nem törölhető.
+> A mappákban található fájlok törléséhez nem szükséges írási engedély. Is, a gyökér mappa "/" **soha nem** lehet törölni.
 >
 >
 
@@ -282,21 +282,21 @@ Az ACL-ek bejegyzéseinek tárolása olyan GUID azonosítókként történik, am
 
 Ha a felhasználó már nem létezik az Azure AD-ben, egy GUID lesz látható. Ez általában akkor történik, ha a felhasználó elhagyta a vállalatot, vagy törölve lett a fiókja az Azure AD-ben.
 
-### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Támogatja a Data Lake Storage Gen1 ACL-ek öröklése?
+### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>A Data Lake Storage Gen1 támogatja az ACL-ek öröklődését?
 
 Nem, az alapértelmezett ACL-ek azonban használhatók a szülő mappán belül újonnan létrehozott gyermekfájlok és mappák ACL-jeinek beállításához.  
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Hol tudhatok meg többet a POSIX hozzáférés-vezérlési modellről?
 
 * [POSIX hozzáférés-vezérlési listák Linux rendszeren](https://www.linux.com/news/posix-acls-linux)
-* [HDFS-engedélyek útmutatója](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
+* [HDFS-engedélyútmutató](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 * [POSIX – gyakori kérdések](https://www.opengroup.org/austin/papers/posix_faq.html)
 * [POSIX 1003.1 2008](https://standards.ieee.org/findstds/standard/1003.1-2008.html)
 * [POSIX 1003.1 2013](https://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
 * [POSIX 1003.1 2016](https://pubs.opengroup.org/onlinepubs/9699919799.2016edition/)
 * [POSIX ACL Ubuntu rendszeren](https://help.ubuntu.com/community/FilePermissionsACLs)
-* [Hozzáférés-vezérlési listákat használó ACL Linux rendszeren](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
+* [Hozzáférés-vezérlési listák használatával Az ACL Linuxon](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
 ## <a name="see-also"></a>Lásd még
 
-* [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
+* [Az Azure Data Lake storage gen1 áttekintése](data-lake-store-overview.md)

@@ -1,93 +1,93 @@
 ---
-title: Azure Functions zip-leküldéses üzembe helyezése
-description: A Azure Functions közzétételéhez használja a kudu üzembe helyezési szolgáltatás. zip fájljának központi telepítési létesítményeit.
+title: Zip push üzembe helyezés az Azure Functions-hez
+description: Használja a .zip fájl telepítési lehetőségek a Kudu telepítési szolgáltatás az Azure Functions közzétételéhez.
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75769667"
 ---
-# <a name="zip-deployment-for-azure-functions"></a>A Azure Functions zip üzembe helyezése
+# <a name="zip-deployment-for-azure-functions"></a>Azure Functions üzembe helyezése ZIP-fájlokkal
 
-Ez a cikk bemutatja, hogyan helyezheti üzembe a Function app Project-fájljait az Azure-ban egy. zip (tömörített) fájlból. Megtudhatja, hogyan végezheti el a leküldéses telepítést az Azure CLI és a REST API-k használatával. A [Azure functions Core Tools](functions-run-local.md) ezeket a telepítési API-kat használja, amikor helyi projektet tesz közzé az Azure-ban.
+Ez a cikk ismerteti, hogyan telepítheti a függvényalkalmazás-projektfájlokat az Azure-ban egy .zip (tömörített) fájlból. Megtudhatja, hogyan hajthet leküldéses központi telepítést, az Azure CLI használatával és a REST API-k használatával. [Az Azure Functions Core Tools](functions-run-local.md) ezeket a központi API-kat is használja, amikor egy helyi projektet tesz közzé az Azure-ban.
 
-A Azure Functions a Azure App Service által biztosított folyamatos üzembe helyezési és integrációs lehetőségek teljes skáláját ismerteti. További információ: [Azure functions folyamatos üzembe helyezése](functions-continuous-deployment.md).
+Az Azure Functions az Azure App Service által biztosított folyamatos üzembe helyezési és integrációs lehetőségek teljes választékával rendelkezik. További információ: [Folyamatos üzembe helyezés az Azure Functions számára.](functions-continuous-deployment.md)
 
-A fejlesztés felgyorsításához könnyebben telepítheti a Function app Project-fájljait közvetlenül egy. zip-fájlból. A. zip telepítési API egy. zip fájl tartalmát veszi fel, és kibontja a tartalmat a Function alkalmazás `wwwroot` mappájába. Ez a. zip-fájl központi telepítése ugyanazt a kudu szolgáltatást használja, amely a folyamatos integráción alapuló központi telepítéseket is magában foglalja, beleértve a következőket:
+A fejlesztés felgyorsítása érdekében egyszerűbben telepítheti a függvényalkalmazás-projektfájlokat közvetlenül egy .zip fájlból. A .zip központi telepítési API egy .zip fájl tartalmát `wwwroot` veszi fel, és kibontja a tartalmat a függvényalkalmazás mappájába. Ez a .zip fájltelepítés ugyanazt a Kudu szolgáltatást használja, amely folyamatos integrációalapú telepítéseket hajt elő, többek között a következőket:
 
-+ A korábbi központi telepítések során hagyott fájlok törlése.
-+ Központi telepítés testreszabása, beleértve az üzembe helyezési parancsfájlok futtatását is.
-+ Üzembe helyezési naplók.
-+ A Function triggerek szinkronizálása egy [felhasználási terv](functions-scale.md) Function alkalmazásban.
++ A korábbi központi telepítésekből megmaradt fájlok törlése.
++ A telepítés testreszabása, beleértve a központi telepítési parancsfájlok futtatását is.
++ Telepítési naplók.
++ A szinkronizálási függvény egy [fogyasztási terv](functions-scale.md) függvényalkalmazásban aktiválódik.
 
-További információ: [. zip telepítési útmutató](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
+További információt a [.zip telepítési útmutatóban](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)talál.
 
-## <a name="deployment-zip-file-requirements"></a>Az üzembe helyezés. zip fájlra vonatkozó követelmények
+## <a name="deployment-zip-file-requirements"></a>A központi telepítési .zip fájl követelményei
 
-A leküldéses telepítéshez használt. zip fájlnak tartalmaznia kell a függvény futtatásához szükséges összes fájlt.
+A leküldéses telepítéshez használt .zip fájlnak tartalmaznia kell a funkció futtatásához szükséges összes fájlt.
 
 >[!IMPORTANT]
-> Ha a. zip-telepítést használja, a. zip fájlban nem található, meglévő telepítésből származó összes fájl törlődik a Function alkalmazásból.  
+> A .zip központi telepítés használatakor a .zip fájlban nem található meglévő központi telepítésből származó fájlok törlődnek a függvényalkalmazásból.  
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-A Function alkalmazás tartalmazza a `wwwroot` könyvtárban található összes fájlt és mappát. A. zip fájlok központi telepítése magában foglalja a `wwwroot` könyvtár tartalmát, a könyvtárat azonban nem. Az C# osztályazonosítók telepítésekor a lefordított függvénytár-fájlokat és a függőségeket is bele kell foglalni a. zip-csomagban található `bin` almappába.
+A függvényalkalmazás a `wwwroot` címtárban lévő összes fájlt és mappát tartalmazza. A .zip fájl központi telepítése `wwwroot` tartalmazza a könyvtár tartalmát, de magát a könyvtárat nem. C# osztálykönyvtár-projekt telepítésekor a lefordított könyvtárfájlokat és -függőségeket a .zip csomag almappájába `bin` kell foglalnia.
 
-## <a name="download-your-function-app-files"></a>A Function alkalmazás fájljainak letöltése
+## <a name="download-your-function-app-files"></a>A függvényalkalmazás-fájlok letöltése
 
-Ha helyi számítógépen fejleszt, egyszerűen létrehozhat egy. zip fájlt a Function app Project mappából a fejlesztői számítógépen.
+Ha helyi számítógépen fejleszt, egyszerűen létrehozhat egy .zip fájlt a függvényalkalmazás-projekt mappából a fejlesztőszámítógépen.
 
-Előfordulhat azonban, hogy a Azure Portal szerkesztője segítségével hozta létre a függvényeket. Egy meglévő Function app-projektet a következő módokon tölthet le:
+Azonban előfordulhat, hogy az Azure Portal szerkesztője segítségével hozta létre a függvényeket. Egy meglévő függvényalkalmazás-projektet az alábbi módokon tölthet le:
 
-+ **A Azure Portal:**
++ **Az Azure portalról:**
 
-  1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd nyissa meg a Function alkalmazást.
+  1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com)majd nyissa meg a függvényalkalmazást.
 
-  2. Az **Áttekintés** lapon válassza az **alkalmazás tartalmának letöltése**lehetőséget. Válassza ki a letöltési beállításokat, majd válassza a **Letöltés**lehetőséget.
+  2. Az **Áttekintés** lapon válassza **az Alkalmazástartalom letöltése**lehetőséget. Adja meg a letöltési beállításokat, majd kattintson a **Letöltés gombra.**
 
-      ![A Function app-projekt letöltése](./media/deployment-zip-push/download-project.png)
+      ![A függvényalkalmazás-projekt letöltése](./media/deployment-zip-push/download-project.png)
 
-     A letöltött. zip fájl formátuma megfelelő, és a. zip leküldéses telepítés használatával újra közzé kell tenni a Function alkalmazásban. A portál letöltése azt is felveheti a szükséges fájlokat, hogy közvetlenül a Visual Studióban nyissa meg a Function alkalmazást.
+     A letöltött .zip fájl a megfelelő formátumú, hogy újra közzé kell tenni a függvényalkalmazás segítségével .zip push deployment. A portál letöltése is hozzáadhatja a függvényalkalmazás közvetlen megnyitásához szükséges fájlokat közvetlenül a Visual Studióban.
 
 + **REST API-k használata:**
 
-    A következő üzembe helyezési API-val letöltheti a fájlokat a `<function_app>` projektből: 
+    A következő központi telepítési GET API-val töltse le a fájlokat a `<function_app>` projektből: 
 
         https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
 
-    A `/site/wwwroot/` is beleértve, hogy a zip-fájl csak a Function app Project-fájlokat tartalmazza, nem pedig a teljes helyet. Ha még nem jelentkezett be az Azure-ba, a rendszer erre kéri.  
+    Beleértve `/site/wwwroot/` biztosítja, hogy a zip fájl csak a függvény alkalmazás projekt fájlokat, és nem az egész oldalon. Ha még nem jelentkezett be az Azure-ba, a rendszer megkéri, hogy tegye meg.  
 
-A. zip fájlt egy GitHub-adattárból is letöltheti. Amikor a GitHub-tárházat. zip fájlként tölti le, a GitHub hozzáadja az ág további mappa szintjét. Ez az extra mappa-szint azt jelenti, hogy a. zip fájlt nem lehet közvetlenül a GitHubról letölteni. Ha GitHub-tárházat használ a Function-alkalmazás karbantartásához, akkor a [folyamatos integrációt](functions-continuous-deployment.md) kell használnia az alkalmazás üzembe helyezéséhez.  
+A .zip fájlt egy GitHub-tárházból is letöltheti. Amikor egy GitHub-tárházat .zip fájlként tölt le, a GitHub egy további mappaszintet ad hozzá az ághoz. Ez az extra mappaszint azt jelenti, hogy nem telepítheti a .zip fájlt közvetlenül, amikor letöltötte a GitHubról. Ha egy GitHub-tárházat használ a függvényalkalmazás karbantartásához, [folyamatos integrációt](functions-continuous-deployment.md) kell használnia az alkalmazás üzembe helyezéséhez.  
 
-## <a name="cli"></a>Üzembe helyezés az Azure CLI használatával
+## <a name="deploy-by-using-azure-cli"></a><a name="cli"></a>Üzembe helyezés az Azure CLI-vel
 
-A leküldéses telepítést az Azure CLI használatával aktiválhatja. Az az [functionapp Deployment Source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) paranccsal leküldheti a. zip-fájl üzembe helyezését a Function alkalmazásba. A parancs használatához az Azure CLI 2.0.21 vagy újabb verzióját kell használnia. Ha szeretné megtekinteni, hogy milyen Azure CLI-verziót használ, használja a `az --version` parancsot.
+Az Azure CLI használatával leküldéses üzembe helyezést indíthat el. Az [az functionapp telepítési forrás config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) parancs használatával leküldéses.deploy a .zip file to your function app by using the functionapp deployment source config-zip command. A parancs használatához az Azure CLI 2.0.21-es vagy újabb verzióját kell használnia. A használt Azure CLI-verzió megtekintéséhez `az --version` használja a parancsot.
 
-A következő parancsban cserélje le a `<zip_file_path>` helyőrzőt a. zip fájl helyének elérési útjára. Továbbá cserélje le a `<app_name>`t a Function alkalmazás egyedi nevére, és cserélje le az `<resource_group>` az erőforráscsoport nevére.
+A következő parancsban `<zip_file_path>` cserélje le a helyőrzőt a .zip fájl helyére vezető elérési útra. Emellett cserélje `<app_name>` le a függvényalkalmazás egyedi `<resource_group>` nevét, és cserélje le az erőforráscsoport nevét.
 
 ```azurecli-interactive
 az functionapp deployment source config-zip -g <resource_group> -n \
 <app_name> --src <zip_file_path>
 ```
 
-Ezzel a paranccsal a letöltött. zip fájlból telepítheti a Project fájlokat a Function alkalmazásba az Azure-ban. Ezután újraindítja az alkalmazást. A Function app-példányok listájának megtekintéséhez a REST API-kat kell használnia.
+Ez a parancs a letöltött .zip fájlból származó projektfájlokat telepíti az Azure-beli függvényalkalmazásba. Ezután újraindítja az alkalmazást. A függvényalkalmazás központi telepítései listájának megtekintéséhez a REST API-kat kell használnia.
 
-Ha a helyi számítógépen használja az Azure CLI-t, `<zip_file_path>` a. zip-fájl elérési útja a számítógépen. Az Azure CLI-t a [Azure Cloud Shell](../cloud-shell/overview.md)is futtathatja. Cloud Shell használatakor először fel kell töltenie a Deployment. zip fájlt a Cloud Shell társított Azure Files-fiókba. Ebben az esetben `<zip_file_path>` az a tárolási hely, amelyet a Cloud Shell-fiók használ. További információ: fájlok megőrzése [Azure Cloud Shellban](../cloud-shell/persisting-shell-storage.md).
+Ha az Azure CLI-t használja `<zip_file_path>` a helyi számítógépen, ez a számítógépen lévő .zip fájl elérési útja. Az Azure CLI-t az [Azure Cloud Shellben](../cloud-shell/overview.md)is futtathatja. A Cloud Shell használatakor először fel kell töltenie a központi telepítési .zip fájlt a Cloud Shellhez társított Azure Files-fiókba. Ebben az `<zip_file_path>` esetben a Cloud Shell-fiók által használt tárolási hely. További információ: [Fájlok megőrzése az Azure Cloud Shellben](../cloud-shell/persisting-shell-storage.md)című témakörben talál.
 
 [!INCLUDE [app-service-deploy-zip-push-rest](../../includes/app-service-deploy-zip-push-rest.md)]
 
 ## <a name="run-functions-from-the-deployment-package"></a>Függvények futtatása a központi telepítési csomagból
 
-Dönthet úgy is, hogy a függvényeket közvetlenül a központi telepítési csomag fájljából futtatja. Ez a módszer kihagyja a telepítési lépést a fájlok a csomagból a Function alkalmazás `wwwroot` könyvtárába való másolásával. Ehelyett a csomagfájl a functions futtatókörnyezettel van csatlakoztatva, és a `wwwroot` könyvtár tartalma írásvédett lesz.  
+Azt is választhatja, hogy a függvényeket közvetlenül a központi telepítési csomag fájlból futtatja. Ez a módszer kihagyja a fájlok másolásának telepítési `wwwroot` lépését a csomagból a függvényalkalmazás könyvtárába. Ehelyett a csomagfájlt a Functions futásidő csatlakoztatja, és `wwwroot` a könyvtár tartalma írásvédetté válik.  
 
-A zip-telepítés integrálva van ezzel a szolgáltatással, amelyet engedélyezheti, ha a Function app-beállítást `WEBSITE_RUN_FROM_PACKAGE` `1`értékre állítja. További információkért lásd: [függvények futtatása központi telepítési csomagból](run-functions-from-deployment-package.md).
+A zip-telepítés integrálódik ezzel a funkcióval, amelyet a `1`függvényalkalmazás beállításának `WEBSITE_RUN_FROM_PACKAGE` beállításával engedélyezhet. További információt [a Függvények futtatása központi telepítési csomagfájlból](run-functions-from-deployment-package.md)című témakörben talál.
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)
