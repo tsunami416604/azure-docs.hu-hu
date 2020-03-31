@@ -1,6 +1,6 @@
 ---
-title: Hibrid identitás Tervező – Azure bevezetési stratégia |} A Microsoft Docs
-description: A feltételes hozzáférés-vezérléssel Azure Active Directory ellenőrzi a meghatározott feltételek, válassza ki, amikor a felhasználó hitelesítése és engedélyezése az alkalmazáshoz való hozzáférés előtt. Ha ezek a feltételek teljesülnek, a felhasználó hitelesítése és hozzáférhessen az alkalmazáshoz.
+title: Hibrid identitástervezés – bevezetési stratégia Azure | Microsoft dokumentumok
+description: Feltételes hozzáférés-vezérléssel az Azure Active Directory ellenőrzi a felhasználó hitelesítésekénél és az alkalmazáshoz való hozzáférés engedélyezésekor választott feltételeket. Ha ezek a feltételek teljesülnek, a felhasználó hitelesítve lesz, és hozzáférést biztosít az alkalmazáshoz.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,195 +18,195 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109334"
 ---
-# <a name="define-a-hybrid-identity-adoption-strategy"></a>A hibrid identitás bevezetési stratégia kidolgozása
-Ebben a feladatban a hibrid identitáskezelési megoldás, amely aktorcsoportot tárgyalt, az üzleti igényeknek hibrid identitás bevezetési stratégiája határozza meg:
+# <a name="define-a-hybrid-identity-adoption-strategy"></a>Hibrid identitásbevezetési stratégia definiálása
+Ebben a feladatban a hibrid identitásbevezetési stratégia a hibrid identitáskezelési megoldás, hogy megfeleljen az üzleti követelményeknek, amelyek tárgyaltak:
 
-* [Üzleti igények meghatározása](plan-hybrid-identity-design-considerations-business-needs.md)
-* [Határozza meg a címtár-szinkronizálás követelményei](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
-* [A multi-factor authentication-követelmények meghatározása](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
+* [Határozza meg az üzleti igényeket](plan-hybrid-identity-design-considerations-business-needs.md)
+* [Címtár-szinkronizálási követelmények meghatározása](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
+* [Többtényezős hitelesítési követelmények meghatározása](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
-## <a name="define-business-needs-strategy"></a>Üzleti igények stratégia kidolgozása
-Az első feladat címeket, amely meghatározza, hogy a szervezetek üzleti van szüksége.  Ez rendkívül széles körű lehet, és a hatókör kötés akkor fordulhat elő, ha nem gondos.  Első legyen egyszerű, de ne felejtse el fogja befogadásához, és módosítsa a jövőben megkönnyítése kialakítás tervezését.  Függetlenül attól, hogy egy egyszerű kialakítás vagy rendkívül összetett egy, az Azure Active Directory a Microsoft Identity platform, amely támogatja az Office 365-höz, a Microsoft Online Services és a felhő figyelembe vevő alkalmazásokkal.
+## <a name="define-business-needs-strategy"></a>Az üzleti igények reklénystratégiájának meghatározása
+Az első feladat a szervezetek üzleti igényeinek meghatározásával foglalkozik.  Ez lehet nagyon széles és hatálya creep is előfordulhat, ha nem vigyázunk.  Az elején, tartsa egyszerű, de mindig emlékezni, hogy tervezzen egy design, amely befogadására és megkönnyítése változás a jövőben.  Függetlenül attól, hogy egyszerű vagy rendkívül összetett kialakításról van-e szó, az Azure Active Directory a Microsoft Identity platform, amely támogatja az Office 365-öt, a Microsoft Online Services-t és a felhőalapú alkalmazásokat.
 
-## <a name="define-an-integration-strategy"></a>Egy integrációs stratégia kidolgozása
-A Microsoft rendelkezik három fő integrációs forgatókönyvek, melyek felhőbeli identitások, a szinkronizált identitások és a összevont identitások kialakítása.  Meg kell terveznie az alábbi integrációs stratégiák egyikét bevezetése.  A választott stratégia eltérőek lehetnek, és a döntések megválasztásához egy tartalmazhatnak, milyen típusú felhasználói élményt szeretne biztosítani, rendelkezik egy meglévő infrastruktúra, és mi az a leginkább költséghatékony.  
+## <a name="define-an-integration-strategy"></a>Integrációs stratégia meghatározása
+A Microsoft három fő integrációs forgatókönyvvel rendelkezik, amelyek a felhőidentitások, a szinkronizált identitások és az összevont identitások.  Meg kell terveznie az integrációs stratégiák egyikének elfogadását.  A választott stratégia változhat, és a választássorán hozott döntések közé tartozhat, hogy milyen típusú felhasználói élményt szeretne biztosítani, rendelkezik-e meglévő infrastruktúrával, és mi a leginkább költséghatékony.  
 
-![Integrációs forgatókönyvek](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
+![integrációs forgatókönyvek](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
 
-A fenti ábrán meghatározott a következők:
+A fenti ábrán meghatározott forgatókönyvek a következők:
 
-* **Felhőalapú Identitások**: ezek az identitások, amelyek csak a felhőben található.  Esetén az Azure AD-ben, volna lennie kifejezetten az Azure AD-címtár.
-* **Szinkronizált**: ezek a meglévő helyszíni identitások és a felhőben.  Az Azure AD Connect használatával, ezek a felhasználók vannak hoznak létre vagy meglévő Azure AD-fiókok csatlakozott.  A felhasználó Jelszókivonat szinkronizálja a helyszíni környezetből a felhőbe, az úgynevezett Jelszókivonat.  Szinkronizált használatával egy csoportosítani esetén, hogy a felhasználó le van tiltva, a helyszíni környezetben, is igénybe vehet akár három órát, hogy megjelenjen az Azure AD a fiók állapota.  A szinkronizálási időtartam alatt okozza.
-* **Összevont**: ezeket az identitásokat a helyszíni létezik, és a felhőben.  Az Azure AD Connect használatával, ezek a felhasználók vannak hoznak létre vagy meglévő Azure AD-fiókok csatlakozott.  
+* **Felhőalapú identitások:** ezek olyan identitások, amelyek kizárólag a felhőben találhatók.  Az Azure AD esetén azok kifejezetten az Azure AD-címtárban találhatók.
+* **Szinkronizált:** ezek olyan identitások, amelyek a helyszínen és a felhőben léteznek.  Az Azure AD Connect használatával ezek a felhasználók vagy létrejönnek, vagy csatlakoznak a meglévő Azure AD-fiókokhoz.  A felhasználó jelszókivonata szinkronizálva van a helyszíni környezetből a felhőbe, amelyet jelszókivonatnak nevezünk.  Szinkronizált használata esetén az egyik kikötés, hogy ha egy felhasználó le van tiltva a helyszíni környezetben, akár három órát is igénybe vehet, amíg a fiók állapota megjelenik az Azure AD-ben.  Ennek oka a szinkronizálási időintervallum.
+* **Összevont:** ezek az identitások léteznek a helyszíni és a felhőben.  Az Azure AD Connect használatával ezek a felhasználók vagy létrejönnek, vagy csatlakoznak a meglévő Azure AD-fiókokhoz.  
 
 > [!NOTE]
-> A szinkronizálási beállítások kapcsolatos további információkért olvassa el a [a helyszíni identitások integrálása az Azure Active Directory](whatis-hybrid-identity.md).
+> A szinkronizálási beállításokkal kapcsolatos további információkért olvassa el [a Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)című részt.
 > 
 > 
 
-Az alábbi táblázat segítségével előnyeit és hátrányait az alábbi stratégiák meghatározása során:
+Az alábbi táblázat segít meghatározni az alábbi stratégiák előnyeit és hátrányait:
 
-| Stratégia | Előnyök | Hátrányai |
+| Stratégia | Előnyök | Hátrányok |
 | --- | --- | --- |
-| **Felhőbeli identitások** |Könnyebben kezelhető kis szervezete számára. <br> Semmit nem kell telepítenie a helyszínen. Nincs szükség további hardverre<br>Könnyen használható, ha a felhasználó távozik a szervezettől |Felhasználók kell bejelentkezni, a felhőalapú számítási feladatokat elérésekor <br> Előfordulhat, hogy jelszavakat, és nem lehet azonos a felhőbeli és helyszíni identitások |
-| **Synchronized** |Helyszíni jelszóval hitelesíti magát, mind a helyszíni és felhőbeli címtárakban <br>Könnyebben kezelhető kicsi, közepes vagy nagy szervezetek számára <br>Az egyes erőforrások felhasználók rendelkezhetnek egyszeri bejelentkezés (SSO) <br> Szinkronizálási Microsoft előnyben részesített módszere <br> Könnyebben kezelhető |Lehet, hogy egyes ügyfeleknek védhetőek, azok a címtárak szinkronizálásának adott vállalat rendőrségi miatt a felhővel |
-| **Összevont** |Egyszeri bejelentkezés (SSO) a felhasználók rendelkezhetnek <br>Ha a felhasználó le van állítva, vagy hagyja, a fiók azonnal letiltja, és a hozzáférés visszavonása esetén<br> Támogatja a speciális forgatókönyvek, amelyek nem konfigurálhatók az szinkronizálva |További lépéseket és beállítása <br> Nagyobb karbantartási <br> További hardverre lehet szükség az STS-infrastruktúra <br> Az összevonási kiszolgáló telepítése további hardverre lehet szükség. További szoftverek szükség, az AD FS használata <br> Egyszeri bejelentkezés kiterjedt beállítása szükséges <br> Kritikus pontok hiba, ha az összevonási kiszolgáló nem működik a felhasználók nem tudják hitelesíteni |
+| **Felhőidentitások** |Könnyebb kezelni a kis szervezet. <br> Nincs mit telepíteni a helyszínen. Nincs szükség további hardverre<br>Könnyen letiltható, ha a felhasználó elhagyja a vállalatot |A felhasználóknak be kell jelentkezniük, amikor hozzáférnek a számítási feladatokhoz a felhőben <br> Előfordulhat, hogy a jelszavak nem azonosak a felhőbeli és helyszíni identitások esetében |
+| **Szinkronizált** |A helyszíni jelszó hitelesíti a helyszíni és a felhőbeli könyvtárakat is <br>Könnyebben kezelhető kis, közepes vagy nagy szervezetek számára <br>A felhasználók egyes erőforrásokhoz egyszeri bejelentkezés (SSO) is rendelkezhetnek <br> A Microsoft által előnyben részesített szinkronizálási módszer <br> Könnyebben kezelhető |Egyes ügyfelek vonakodhatnak a könyvtárak szinkronizálását a felhővel az adott vállalat rendőrsége miatt |
+| **Összevont** |A felhasználók egyszeri bejelentkezést (SSO) <br>Ha egy felhasználó megszűnik vagy kilép, a fiók azonnal letiltható, és a hozzáférés visszavonható,<br> Támogatja azokat a speciális forgatókönyveket, amelyek nem valósíthatók meg szinkronizált |További lépések a beállításhoz és a konfiguráláshoz <br> Nagyobb karbantartás <br> További hardverre lehet szükség az STS-infrastruktúrához <br> Az összevonási kiszolgáló telepítéséhez további hardverre lehet szükség. További szoftverre van szükség, ha AD FS-t használ <br> Kiterjedt beállítás szükséges az SSO-hoz <br> Kritikus meghibásodási pont, ha az összevonási kiszolgáló nem található, a felhasználók nem tudják hitelesíteni magukat |
 
 ### <a name="client-experience"></a>Ügyfélélmény
-A használt stratégia fogja diktálni a felhasználói bejelentkezési élmény.  A következő táblázatokban, amelyen a felhasználók milyen kell látnia kell a bejelentkezési élmény vonatkozó információk.  Nem minden összevont identitás-szolgáltatóktól minden forgatókönyvben támogatja az egyszeri Bejelentkezést.
+A stratégia, amely a felhasználó bejelentkezési élményt diktálja.  Az alábbi táblázatok tájékoztatást nyújtanak arról, hogy a felhasználóknak milyen bejelentkezési élményre kell számítaniuk.  Nem minden összevont identitásszolgáltató támogatja az SSO-t minden esetben.
 
-**A tartomány tagja, és privát hálózati alkalmazások**:
+**Doman-csatlakozott és magánhálózati alkalmazások:**
 
-|  | Szinkronizált identitás | Összevont identitás |
+|  | Szinkronizált identitás | Federated Identity |
 | --- | --- | --- |
-| Webböngészők |Űrlapalapú hitelesítés |egyszeri bejelentkezés, egyes esetekben szükséges adja meg a szervezet azonosítója |
-| Outlook |Hitelesítő adatok kérése |Hitelesítő adatok kérése |
-| Skype vállalati verzió (Lync). |Hitelesítő adatok kérése |egyszeri bejelentkezés Lync, a rendszer hitelesítő adatokat az Exchange-hez |
-| OneDrive Vállalati verzió |Hitelesítő adatok kérése |Egyszeri bejelentkezés |
-| Office Pro Plus előfizetés |Hitelesítő adatok kérése |Egyszeri bejelentkezés |
+| Webböngészők |Űrlapalapú hitelesítés |egyszeri bejelentkezés, néha a szervezeti azonosító biztosításához szükséges |
+| Outlook |Hitelesítő adatok bekérése |Hitelesítő adatok bekérése |
+| Skype Vállalati verzió (Lync) |Hitelesítő adatok bekérése |egyszeri bejelentkezés a Lyncbe, hitelesítő adatokat kér az Exchange-hez |
+| OneDrive Vállalati verzió |Hitelesítő adatok bekérése |egyszeri bejelentkezés |
+| Office Pro Plus-előfizetés |Hitelesítő adatok bekérése |egyszeri bejelentkezés |
 
-**Külső vagy nem megbízható forrásból**:
+**Külső vagy nem megbízható források:**
 
-|  | Szinkronizált identitás | Összevont identitás |
+|  | Szinkronizált identitás | Federated Identity |
 | --- | --- | --- |
 | Webböngészők |Űrlapalapú hitelesítés |Űrlapalapú hitelesítés |
-| Az Outlook, a Skype for Business (Lync), a OneDrive vállalati verzióba, Office-előfizetés |Hitelesítő adatok kérése |Hitelesítő adatok kérése |
-| Exchange ActiveSync |Hitelesítő adatok kérése |egyszeri bejelentkezés Lync, a rendszer hitelesítő adatokat az Exchange-hez |
-| Mobilalkalmazásokban |Hitelesítő adatok kérése |Hitelesítő adatok kérése |
+| Outlook, Skype Vállalati verzió (Lync), OneDrive Vállalati verzió, Office-előfizetés |Hitelesítő adatok bekérése |Hitelesítő adatok bekérése |
+| Exchange ActiveSync |Hitelesítő adatok bekérése |egyszeri bejelentkezés a Lyncbe, hitelesítő adatokat kér az Exchange-hez |
+| Mobilalkalmazások |Hitelesítő adatok bekérése |Hitelesítő adatok bekérése |
 
-Ha eldöntötte, hogy a külső identitásszolgáltató vagy van folyamatban az Azure AD összevonási használata egy 1. feladat származó, vegye figyelembe a következő támogatott funkciók szeretné:
+Ha az első feladatból úgy döntött, hogy rendelkezik egy külső idP-vel, vagy az Azure AD összevonásának biztosításához fogja használni, tisztában kell lennie a következő támogatott képességekkel:
 
-* Bármely SAML 2.0-s szolgáltató, amely megfelel az SP-Lite profil az Azure AD-hitelesítést is támogatja, és a társított alkalmazások
-* Támogatja a passzív hitelesítést, amely elősegíti a hitelesítést az OWA-, az SPO-, stb.
-* Az ügyfelek Exchange online-hoz használható keresztül a SAML 2.0-s fokozott ügyfél profil (ECP)
+* Az SP-Lite-profilnak megfelelő SAML 2.0-s szolgáltatók támogathatják az Azure AD és a kapcsolódó alkalmazások hitelesítését
+* Támogatja a passzív hitelesítést, amely megkönnyíti az OWA, SPO stb.
+* Az Exchange Online-ügyfelek az SAML 2.0 enhanced client profile (ECP) segítségével támogatottak
 
-Is kell vigyázni, milyen lehetőségek nem lesznek elérhetők:
+Tisztában kell lennie azzal is, hogy milyen képességek nem lesznek elérhetők:
 
-* WS-megbízhatósági vagy összevonás-támogatás nélkül más aktív ügyfelek felosztása
-  * Ez azt jelenti, nem Lync ügyfelet, a onedrive-on client, Office-előfizetés, Office Mobile, Office 2016 előtt
-* Áttérés az Office passzív hitelesítést lehetővé teszi, hogy tiszta SAML 2.0 identitásszolgáltató használatát támogató, de támogatása továbbra is elszámolással, az ügyfél az ügyfél által
+* A WS-Trust/Federation támogatás nélkül az összes többi aktív ügyfél megtör
+  * Ez azt jelenti, hogy az Office 2016 előtt nincs Lync-ügyfél, OneDrive-ügyfél, Office-előfizetés, Office Mobile
+* Az Office passzív hitelesítésre való áttérése lehetővé teszi számukra, hogy támogassák a tiszta SAML 2.0 azonosítókat, de a támogatás továbbra is ügyfélenként történik
 
 > [!NOTE]
-> A legtöbb frissített listáját, olvassa el a cikket a [az Azure AD összevonás kompatibilitási listája](how-to-connect-fed-compatibility.md).
+> A legfrissebb lista az [Azure AD összevonási kompatibilitási listáját](how-to-connect-fed-compatibility.md)tartalmazza.
 > 
 > 
 
-## <a name="define-synchronization-strategy"></a>Szinkronizálási stratégia kidolgozása
-Ebben a feladatban az eszközök szinkronizálásához használt határoz a szervezet helyszíni adatokat a felhőbe, és mit kell használnia a topológia.  Mivel a legtöbb szervezet számára az Active Directory használatával, oldja meg a fenti kérdések az Azure AD Connect használatával információkat néhány részletet.  Olyan környezetekben, amelyek nem rendelkeznek az Active Directory nincs érdekében ez a stratégia megtervezése a FIM 2010 R2-ről vagy a MIM 2016 használatával kapcsolatos információkat.  Azonban későbbi kiadásokban az Azure AD Connect támogatja az LDAP-címtárak esetén a idővonalán, így függően ezek az információk, előfordulhat, hogy tudni segíteni.
+## <a name="define-synchronization-strategy"></a>Szinkronizálási stratégia meghatározása
+Ebben a feladatban határozza meg azokat az eszközöket, amelyek a szervezet helyszíni adatainak a felhővel való szinkronizálásához, valamint a használni kívánt topológiát használják.  Mivel a legtöbb szervezet az Active Directoryt használja, az Azure AD Connect használatával kapcsolatos információk a fenti kérdések megválaszolására részletesen rendelkezésre állnak.  Az Active Directoryval nem rendelkező környezetek esetén a FIM 2010 R2 vagy a MIM 2016 használatával kapcsolatos információk segítenek a stratégia megtervezésében.  Az Azure AD Connect jövőbeli kiadásai azonban támogatják az LDAP-könyvtárakat, így az idővonaltól függően ezek az információk segíthetnek.
 
-### <a name="synchronization-tools"></a>Eszközök szinkronizálása
-Az évek során több szinkronizálási eszközök létezett, és különféle forgatókönyvekhez használt.  Az Azure AD Connect jelenleg az Ugrás a kívánt eszközben dolgozhat az összes támogatott forgatókönyveket.  AAD-Szinkronizáló DirSync továbbra is körül és is lehet a környezetében található most. 
+### <a name="synchronization-tools"></a>Szinkronizálási eszközök
+Az évek során számos szinkronizálási eszköz létezett, és különböző forgatókönyvekhez használt.  Jelenleg az Azure AD Connect az összes támogatott forgatókönyvhez választható eszköz.  AAD Szinkronizál és DirSync van is csendes körül és május egyenletes lenni bemutat -ban -a környezet most. 
 
 > [!NOTE]
-> A legújabb információk a támogatott képességek kapcsolatos minden egyes eszköz [címtár-integrációs eszközök összehasonlítása](plan-hybrid-identity-design-considerations-tools-comparison.md) cikk.  
+> Az egyes eszközök támogatott képességeivel kapcsolatos legfrissebb információkért olvassa el a [Címtárintegrációs eszközök összehasonlító](plan-hybrid-identity-design-considerations-tools-comparison.md) cikkét.  
 > 
 > 
 
 ### <a name="supported-topologies"></a>Támogatott topológiák
-A szinkronizálás stratégia meghatározásakor a használt topológia kell meghatározni. A lépésben meghatározott információknak 2 lehet meghatározni, hogy melyik topológiát megállapítsuk, melyiket érdemes használni. Egyetlen erdő, egyetlen Azure AD-topológia a leggyakoribb, és egyetlen Active Directory-erdő és az Azure ad-ben egyetlen példánya áll.  Ez a legtöbb forgatókönyv használni fog, és a várt topológia az Azure AD Connect Expressz telepítés használatakor, az alábbi ábrán látható módon.
+Szinkronizálási stratégia definiálásakor meg kell határozni a használt topológiát. A 2. Az egyetlen erdő, egyetlen Azure AD topológia a leggyakoribb, és egyetlen Active Directory-erdőből és az Azure AD egyetlen példányából áll.  Ez lesz használva a legtöbb forgatókönyv, és a várt topológia használata esetén az Azure AD Connect Express telepítés, ahogy az alábbi ábrán látható.
 
-![Támogatott topológiák](./media/plan-hybrid-identity-design-considerations/single-forest.png) egyetlen erdőben forgatókönyv szokás több erdővel rendelkezik, akár kis és nagy szervezetek számára az 5. ábrán látható módon.
+![Támogatott topológiák](./media/plan-hybrid-identity-design-considerations/single-forest.png) Egyerdős forgatókönyv Gyakori, hogy a nagy, sőt kis szervezetek több erdővel rendelkeznek, ahogy az 5.
 
 > [!NOTE]
-> További információ a különböző helyszíni és az Azure AD Connect-topológiák az Azure AD sync olvassa [az Azure AD Connect-topológiák](plan-connect-topologies.md).
+> A különböző helyszíni és Azure AD-topológiák ról az Azure AD Connect szinkronizálásával kapcsolatos további információkért olvassa el az [Azure AD Connect Topologies című cikkét.](plan-connect-topologies.md)
 > 
 > 
 
-![Többerdős topológia](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
+![többerdős topológia](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
 
 Többerdős forgatókönyv
 
-Ha ez a helyzet, akkor a több erdőt egyetlen Azure AD-topológia kell alkalmazni, ha teljesül a következő elemek:
+Ebben az esetben a többerdős egyetlen Azure AD-topológia akkor kell figyelembe venni, ha a következő elemek teljesülnek:
 
-* Felhasználók csak 1 identitás összes erdőben rendelkeznek. – a egyedileg azonosító felhasználók az alábbi szakasz részletesen ismerteti a.
-* A felhasználó hitelesíti magát az erdőben, ahol-azonosítót fog kérni is található
-* Egyszerű felhasználónév és a Forráshorgony (nem módosítható azonosító) fognak érkezni az erdő
-* Minden olyan erdőben elérhetők az Azure AD Connect – Ez azt jelenti, hogy nem kell lennie a tartomány tagja, és ha ez elősegíti, hogy ez egy DMZ-ben elhelyezett.
-* A felhasználóknak rendelkezniük csak egy postaláda
-* Az erdő, amelyen a felhasználók postaládáihoz rendelkezik a legjobb adatminőség attribútumok látható a az Exchange globális cím lista (GAL)
-* Ha a felhasználó nem postaláda van, majd bármely erdőben használható működhet közre ezeket az értékeket
-* Rendelkezhetnek hivatkozott postafiókkal, majd van-e még egy másik fiókba való bejelentkezéshez használt eltérő erdőben.
+* A felhasználók csak 1 identitással rendelkeznek az összes erdőben – az egyedileg azonosító felhasználók szakasz ezt részletesebben ismerteti.
+* A felhasználó hitelesíti magát abban az erdőben, amelyben a személyazonossága található
+* Upn és forrás horgony (nem módosítható id) fog származni az erdő
+* Az Azure AD Connect minden erdő elérhető – ez azt jelenti, hogy nem kell tartományhoz csatlakozni, és elhelyezhető egy DMZ-ben, ha ez megkönnyíti ezt.
+* A felhasználóknak csak egy postaládája van
+* A felhasználó postaládáját tároló erdő rendelkezik a legjobb adatminőséggel az Exchange globális címlistájában (GAL) látható attribútumokhoz
+* Ha nincs postaláda a felhasználón, akkor bármelyik erdő felhasználható ezen értékek
+* Ha összekapcsolt postaládával rendelkezik, akkor van egy másik fiók is egy másik erdőben, amelyet a bejelentkezéshez használnak.
 
 > [!NOTE]
-> Objektumok, a helyszínen található, és a felhőben "keresztül vannak csatlakoztatva" egyedi azonosítója. A címtár-szinkronizálás környezetében Ez az egyedi azonosító nevezzük a SourceAnchor. A környezetben az egyszeri bejelentkezést ezt nevezik immutableid azonosítója. [Tervezési alapelvek az Azure AD Connect](plan-connect-design-concepts.md#sourceanchor) a SourceAnchor használatával kapcsolatban további szempontok.
+> A helyszíni és a felhőben egyaránt létező objektumok "egyedi azonosítón keresztül" vannak "csatlakoztatva". A címtár-szinkronizálás környezetében ezt az egyedi azonosítót SourceAnchor-nak nevezzük. Az egyszeri bejelentkezés összefüggésében ezt immutableId-nek nevezzük. [Tervezési fogalmak az Azure AD Connect](plan-connect-design-concepts.md#sourceanchor) további szempontok at a SourceAnchor használatával kapcsolatban.
 > 
 > 
 
-Ha a fenti nem teljesülnek, és több aktív fiók vagy postaláda egynél több, az Azure AD Connect válasszon egyet, és a többi mellőzése.  Ha postaládák, de nincs más fiók, ezek a fiókok nem lesznek exportálva az Azure AD és, hogy a felhasználó nem egy csoportnak sem tagja.  Ez eltér a módját a DirSync korábban volt, és azt szándékos jobb támogatása Többerdős forgatókönyvekben. Egy Többerdős forgatókönyv az alábbi ábrán látható.
+Ha a fentiek nem igazak, és egynél több aktív fiókkal vagy egynél több postaládával rendelkezik, az Azure AD Connect kiválasztegyet, és figyelmen kívül hagyja a másikat.  Ha csatolt postaládák, de nincs más fiók, ezek a fiókok nem lesznek exportálva az Azure AD-be, és a felhasználó nem lesz tagja semmilyen csoportnak.  Ez eltér attól, ahogyan a dirsync-szel korábban volt, és szándékosan támogatja ezeket a többerdős forgatókönyveket. A többerdős forgatókönyv az alábbi ábrán látható.
 
-![Több Azure AD-bérlő](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
+![több Azure AD-bérlő](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
 
-**Többerdős több Azure AD-forgatókönyv**
+**Többerdős, több Azure AD-forgatókönyv**
 
-Javasoljuk, hogy a szervezet Azure AD-ben csak egyetlen címtárral rendelkezik, de támogatott egy 1:1 számosságú kapcsolatok elkülönülve lesz egy Azure AD Connect szinkronizálási kiszolgáló és az Azure AD-címtár között.  Az Azure AD minden példánya esetében az Azure AD Connect telepíteni kell.  Ezenkívül Azure AD-ben elvárt elkülönítve, és a egy példányát az Azure AD a felhasználók nem fognak látni egy másik példány a felhasználók.
+Javasoljuk, hogy csak egy könyvtárat az Azure AD egy szervezet, de támogatott, hogy egy 1:1 kapcsolat között az Azure AD Connect szinkronizálási kiszolgáló és egy Azure AD könyvtár.  Az Azure AD minden példányához szüksége van az Azure AD Connect telepítésére.  Emellett az Azure AD, a tervezés elkülönítve van, és a felhasználók egy példányát az Azure AD nem fogja látni a felhasználók egy másik példányban.
 
-Ez a módszer lehetséges és támogatott Active Directory helyszíni példányát egy több Azure AD-címtár csatlakozni, az alábbi ábrán látható módon:
+Az Active Directory egy helyszíni példányát több Azure AD-könyvtárhoz csatlakoztathatja, az alábbi ábrán látható módon:
 
-![egyetlen erdő szűrése](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
+![egyetlen erdőszűrés](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
 
 **Egyerdős szűrési forgatókönyv**
 
-Ehhez az alábbiaknak kell teljesülniük:
+Ehhez a következőnek kell igaznak lennie:
 
-* Az Azure AD Connect szinkronizálási kiszolgálót úgy, hogy egyes objektumok egymást kölcsönösen kizáró csoportja szűréshez kell konfigurálni.  Ez történik, például hatókörének beállítása az egyes tartományokhoz vagy szervezeti egység minden kiszolgáló által.
-* DNS-tartományt csak egyetlen lehet regisztrálni az Azure AD-címtár tehát az UPN-EK a felhasználók a helyszíni AD külön névtereket kell használnia
-* Azure AD egy példányát a felhasználók csak lesz az áttelepített példány felhasználót láthatja.  Nem lesz a többi példány a felhasználó megjelenítése
-* Csak az Azure AD-címtár egyik engedélyezheti a helyszíni Exchange hibrid AD
-* Kölcsönös kizárólagosság késleltetve visszaírt is vonatkozik.  Ez lehetővé teszi az egyes késleltetve visszaírt funkciók nem támogatott az ehhez a topológiához, mert ezek feltételezik, hogy egy egyetlen helyszíni konfigurálása.  Az érintett műveletek közé tartoznak az alábbiak:
-  * Alapértelmezett konfiguráció késleltetve visszaírt-csoport
-  * Eszközvisszaírás
+* Az Azure AD Connect szinkronizálási kiszolgálókat be kell állítani a szűréshez, hogy mindegyik nek kölcsönösen kizáró objektumkészlete legyen.  Ez például úgy történt, hogy minden kiszolgálót egy adott tartományra vagy szervezeti egységre külön-külön felkell ügyezni.
+* Egy DNS-tartomány csak egyetlen Azure AD-címtárban regisztrálható, így a helyszíni AD felhasználóinak UPN-einek külön névtereket kell használniuk.
+* Az Azure AD egy példányában a felhasználók csak a saját példányból láthatják a felhasználókat.  A többi esetben nem fogják látni a felhasználókat
+* Csak az egyik Az Azure AD könyvtárak engedélyezheti az Exchange hibrid a helyszíni AD
+* A kölcsönös kizárólagosság a visszaírásra is vonatkozik.  Ez legyártja, hogy néhány visszaírási funkció nem támogatott ezzel a topológiával, mivel ezek egyetlen helyszíni konfigurációt feltételeznek.  Az érintett műveletek közé tartoznak az alábbiak:
+  * Csoportvisszaírás alapértelmezett konfigurációval
+  * Eszköz visszaírása
 
-A következő nem támogatott, és nem kell megválasztani implementálhat:
+A következők nem támogatottak, és nem választhatók implementációként:
 
-* Szeretné, hogy több Azure AD Connect szinkronizálási kiszolgáló ugyanabban az Azure AD-címtár csatlakozik, akkor is, ha azok konfigurált a szinkronizáláshoz egymást kölcsönösen kizáró set-objektum nem támogatott
-* Ez ugyanaz a felhasználó a több Azure AD-címtár szinkronizálása nem támogatott. 
-* Azt is nem támogatja az olyan konfigurációs módosítást, hogy a felhasználók az egyik Azure AD-névjegyeit, állítsa be egy másik Azure AD-címtárban hálózatnak látszanak. 
-* Emellett akkor is szeretne csatlakozni a több Azure AD-címtár Azure AD Connect szinkronizálásának módosítása nem támogatott.
-* Az Azure AD-címtár elkülönített kialakítás szerint is. Egy másik Azure AD-címtár létrehozása egy közös és egységes GAL a címtárak között az adatokat olvasni az Azure AD Connect-szinkronizálás konfigurációjának módosítása nem támogatott. Azt is nem támogatja a névjegyek, a felhasználók exportálása egy másik helyszíni AD-bA az Azure AD Connect szinkronizálása.
+* Nem támogatott, ha több Azure AD Connect-szinkronizálási kiszolgáló csatlakozik ugyanahhoz az Azure AD-könyvtárhoz, még akkor sem, ha úgy vannak konfigurálva, hogy szinkronizálják a kölcsönösen kizáró objektumkészletet
+* Nem támogatott, hogy szinkronizálja ugyanazt a felhasználót több Azure AD-könyvtárak. 
+* Az is nem támogatott, hogy a konfigurációs változás, hogy a felhasználók egy Azure AD-ben jelennek meg a kapcsolattartók egy másik Azure AD-címtárban. 
+* Emellett nem támogatott az Azure AD Connect-szinkronizálás módosítása, hogy több Azure AD-könyvtárhoz csatlakozzon.
+* Az Azure AD-könyvtárak kialakítás szerint elkülönítettek. Nem támogatott az Azure AD Connect-szinkronizálás konfigurációjának módosítása egy másik Azure AD-könyvtárból származó adatok olvasásához, hogy egy közös és egységes ÍTETT gal-t hozzon létre a könyvtárak között. Az Azure AD Connect-szinkronizálás használatával a felhasználók kapcsolattartók ként történő exportálása nem támogatott.
 
 > [!NOTE]
-> Ha a szervezet a hálózaton lévő számítógépekre korlátozza a kapcsolódást az internethez, ez a cikk felsorolja a végpontok (teljesen minősített tartományneveket, IPv4 és IPv6-címtartományok), akkor tartalmaznia kell a listák és az Internet Explorer Megbízható helyek zónához ügyfél a kimenő engedélyezése Győződjön meg, hogy a számítógépek sikeresen használható Office 365-höz. További információk [Office 365 URL-címei és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US).
+> Ha a szervezet korlátozza a hálózat számítógépeit az internethez való csatlakozásban, ez a cikk felsorolja azokat a végpontokat (FQDNs, IPv4 és IPv6 címtartományok), amelyeket fel kell tüntetnie a kimenő engedélyezési listákban és az Internet Explorer megbízható helyek zónájában az ügyfelek számítógépeket, hogy a számítógépek sikeresen használhassák az Office 365-öt. További információért olvassa el az [Office 365 URL-címeit és IP-címtartományait.](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)
 > 
 > 
 
-## <a name="define-multi-factor-authentication-strategy"></a>A multi-factor authentication-stratégia kidolgozása
-Ebben a feladatban a multi-factor authentication szolgáltatás stratégia használatára fogja meghatározni.  Az Azure multi-factor Authentication két változatban érhető el.  Az egyik egy felhőalapú a másik pedig a helyszíni, az Azure MFA-kiszolgáló használatával.  Az értékelés alapján volt a fent meghatározhatja melyik megoldás felel meg a megfelelőt a stratégiához.  Az alábbi táblázat segítségével határozhatja meg, melyik legjobb tervezési beállítás megfelel a vállalat biztonsági követelmény:
+## <a name="define-multi-factor-authentication-strategy"></a>Többtényezős hitelesítési stratégia meghatározása
+Ebben a feladatban határozza meg a többtényezős hitelesítési stratégiát.  Az Azure többtényezős hitelesítés két különböző verzióban érkezik.  Az egyik egy felhőalapú, a másik pedig az Azure MFA-kiszolgáló használatával helyszíni.  A fenti értékelés alapján meghatározhatja, hogy melyik megoldás a megfelelő a stratégiájához.  Az alábbi táblázat segítségével meghatározhatja, hogy melyik tervezési lehetőség felel meg legjobban a vállalat biztonsági követelményének:
 
-Multi-factor Authentication kialakítási lehetőségeit:
+Többtényezős tervezési lehetőségek:
 
-| Az eszköz biztonságossá tételéhez | MFA a felhőben | Helyszíni MFA |
+| Biztonságos eszköz | MFA a felhőben | Helyszíni MFA |
 | --- | --- | --- |
 | Microsoft-alkalmazások |igen |igen |
 | SaaS-alkalmazások az alkalmazáskatalógusban |igen |igen |
 | Az Azure AD-alkalmazásproxyn keresztül közzétett IIS-alkalmazások |igen |igen |
-| Nem az Azure AD-alkalmazásproxyn keresztül közzétett IIS-alkalmazások |nem |igen |
-| Távoli elérés, VPN vagy RDG |nem |igen |
+| Az Azure AD alkalmazásproxyn keresztül közzé nem tett IIS-alkalmazások |nem |igen |
+| Távelérés VPN-ként, RDG-ként |nem |igen |
 
-Bár előfordulhat, hogy kiegyenlítése után a megoldás a stratégia, akkor továbbra is szeretné használni a kiértékelés a fent hol találhatók a felhasználók a.  Emiatt előfordulhat, hogy a megoldás módosítása.  Használja az alábbi táblázat, amely meghatározza, hogy ez:
+Annak ellenére, hogy előfordulhat, hogy a stratégia megoldása alapján telepedett le, akkor is fentről kell használnia az értékelést a felhasználók tartózkodási helye alapján.  Ez a megoldás megváltozását okozhatja.  Az alábbi táblázat segítségével meghatározhatja ezt:
 
 | Felhasználó helye | Előnyben részesített tervezési beállítás |
 | --- | --- |
-| Azure Active Directory |Multi-FactorAuthentication a felhőben |
+| Azure Active Directory |Többtényezős hitelesítés a felhőben |
 | Azure AD és helyszíni AD összevonással az AD FS-sel |Mindkettő |
-| Az Azure AD és helyszíni AD-bA az Azure AD Connect jelszó-szinkronizálás nélkül |Mindkettő |
-| Az Azure AD és helyszíni Azure AD Connect használatával, jelszó-szinkronizálással |Mindkettő |
-| A helyszíni AD |Multi-Factor Authentication-kiszolgáló |
+| Az Azure AD és a helyszíni AD az Azure AD Connect használatával nincs jelszószinkronizálás |Mindkettő |
+| Az Azure AD és a helyszíni azure AD Connect jelszószinkronizálással |Mindkettő |
+| Helyszíni AD |Multi-Factor Authentication-kiszolgáló |
 
 > [!NOTE]
-> Gondoskodnia kell arról, hogy a multi-factor authentication szolgáltatás tervezési beállítás, amely a kijelölt támogatja-e a funkciókat, a Tervező szükséges.  További információk [válassza ki a legmegfelelőbb többtényezős biztonsági megoldást,](../authentication/concept-mfa-howitworks.md).
+> Azt is győződjön meg arról, hogy a kiválasztott többtényezős hitelesítés tervezési beállítás támogatja a tervezéshez szükséges funkciókat.  További [információ: Válassza ki a többtényezős biztonsági megoldást.](../authentication/concept-mfa-howitworks.md)
 > 
 
-## <a name="multi-factor-auth-provider"></a>Multi-factor Auth szolgáltatóval
-A multi-factor authentication szolgáltatás Azure Active Directory-bérlővel rendelkező globális adminisztrátorok számára alapértelmezés szerint érhető el. Azonban ha szeretné kiterjeszteni a multi-factor authentication szolgáltatás minden felhasználó és/vagy a globális rendszergazdákat szeretne lehessen venni használja ki a Funkciók, például a felügyeleti portálon, egyéni Üdvözlések és jelentéseket, majd vásárolnia és konfigurálnia kell Többtényezős hitelesítési szolgáltató.
+## <a name="multi-factor-auth-provider"></a>Többtényezős hitelesítésszolgáltató
+A többtényezős hitelesítés alapértelmezés szerint elérhető az Azure Active Directory-bérlővel rendelkező globális rendszergazdák számára. Ha azonban a többtényezős hitelesítést ki szeretné terjeszteni az összes felhasználóra és/vagy a globális rendszergazdákra, hogy kihasználhassa az olyan funkciókat, mint a felügyeleti portál, az egyéni üdvözlések és a jelentések, akkor meg kell vásárolnia és konfigurálnia kell a többtényezős hitelesítésszolgáltatót.
 
 > [!NOTE]
-> Gondoskodnia kell arról, hogy a multi-factor authentication szolgáltatás tervezési beállítás, amely a kijelölt támogatja-e a funkciókat, a Tervező szükséges. 
+> Azt is győződjön meg arról, hogy a kiválasztott többtényezős hitelesítés tervezési beállítás támogatja a tervezéshez szükséges funkciókat. 
 > 
 > 
 
@@ -214,5 +214,5 @@ A multi-factor authentication szolgáltatás Azure Active Directory-bérlővel r
 [Az adatvédelmi követelmények meghatározása](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
 ## <a name="see-also"></a>Lásd még
-[Kialakítási szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
+[Tervezési szempontok – áttekintés](plan-hybrid-identity-design-considerations-overview.md)
 

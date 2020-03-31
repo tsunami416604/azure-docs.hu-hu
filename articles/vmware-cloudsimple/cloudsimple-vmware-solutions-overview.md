@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldások (AVS) – áttekintés
-description: Ismerje meg az Azure-beli VMware-megoldások funkcióit, forgatókönyveit és előnyeit az AVS szolgáltatással.
+title: Azure VMware-megoldás a CloudSimple-től – áttekintés
+description: Ismerje meg a VMware-megoldás funkcióit, forgatókönyveit és előnyeit az Azure-ban a CloudSimple szolgáltatás által.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,62 +8,62 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5de5a11f520a6882bb474e9926ad370bf330be1e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024874"
 ---
-# <a name="what-is-azure-vmware-solutions-avs"></a>Mi az Azure VMware Solutions (AVS)?
+# <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>Mi az Azure VMware megoldás a CloudSimple-től?
 
-Az **Azure VMware-megoldás (AVS)** egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a VMware platform futtatását az Azure-ban. Ez a megoldás magában foglalja az vSphere, a vCenter, a vSAN, a NSX-T és a megfelelő eszközöket. A VMware-környezet natív módon fut az Azure-beli operációs rendszer nélküli infrastruktúrában az Azure felhőalapú helyein. A szolgáltatás minden olyan funkciót magában foglal, amely a VMware-platformok hatékony és biztonságos felhasználásához szükséges.
+**Az Azure VMware Solution by CloudSimple** egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a VMware platform futtatását az Azure-ban. Ez a megoldás tartalmazza a vSphere, vCenter, vSAN, NSX-T és a megfelelő eszközöket. A VMware-környezet natívan fut az Azure operációs rendszer nélküli infrastruktúrán az Azure felhőbeli helységein. A szolgáltatás tartalmazza a VMware platformok hatékony és biztonságos felhasználásához szükséges összes funkciót.
 
-![VMware-megoldás az Azure-ban az AVS áttekintése](media/azure-vmware-solution-by-cloudsimple.png)
+![VMware-megoldás az Azure-ban a CloudSimple áttekintése](media/azure-vmware-solution-by-cloudsimple.png)
 
-## <a name="features"></a>Jellemzők
+## <a name="features"></a>Szolgáltatások
 
-* VMware felhőalapú környezetek igény szerinti, önkiszolgáló üzembe helyezése. Kapacitás igény szerinti hozzáadásának és eltávolításának lehetősége.
-* VMware platform üzembe helyezése, frissítés, felügyeleti sík biztonsági mentése, állapot/kapacitás figyelése, riasztások, hibaelhárítás és szervizelés.
-* A VMware engedélyezéséhez szükséges hálózati szolgáltatások, beleértve az L2/L3-szolgáltatásokat és a tűzfalszabályok kezelését.
-* Edge típusú hálózati szolgáltatások, beleértve a VPN-t, a nyilvános IP-címet és az internetes átjárókat. Ezek a szolgáltatások az Azure-ban futnak, és az Azure biztonsági és DDoS-védelmét végzik.
-* Kapacitás foglalása alacsonyabb költségek mellett.
-* Nagy sebességű, kis késleltetésű kapcsolat az Azure-ban és a helyszínen.
-* Megoldási architektúrák az ügyfelek számára, hogy integrált módon használják az Azure-szolgáltatásokat, és kihasználják ezt az egyedi "VMware Cloud in a Public Cloud" architektúrát. Az Azure-szolgáltatások közé tartozik az Azure AD, a Storage, az Application Gateway és egyebek.
-* Az Ön számára teljes mértékben dedikált infrastruktúra, amely a többi ügyfél infrastruktúrájában fizikailag el van különítve.
-* Felügyeleti funkciók, például a tevékenységek kezelése, a használat, a számlázás/mérés és a felhasználói felügyelet.
-* nonstop ügyfélszolgálata.
+* VMware felhőkörnyezetek igény szerinti önkiszolgáló kiépítése. Kapacitás hozzáadása és eltávolítása igény szerint.
+* VMware platform telepítése, frissítése, felügyeleti sík biztonsági mentése, állapot/kapacitás figyelése, riasztás, hibaelhárítás és szervizelés.
+* Alávetítési hálózati szolgáltatások szükségesek a VMware engedélyezéséhez, beleértve az L2/L3 szolgáltatásokat és a tűzfalszabály-kezelést.
+* Peremhálózati hálózati szolgáltatások, beleértve a VPN-t, a nyilvános IP-címet és az internetes átjárókat. Ezek a szolgáltatások az Azure-on futnak, és az Azure biztonsági és DDoS-védelmét hordozzák.
+* Kapacitáslefoglalás a költségek csökkentése érdekében.
+* Nagy sebességű, alacsony késleltetésű kapcsolat az Azure-ral és a helyszíni kapcsolattal.
+* Megoldásarchitektúrák az ügyfelek számára, hogy integrált módon használják az Azure-szolgáltatásokat, és kihasználják ezt az egyedülálló "VMware felhő nyilvános felhőben" architektúrát. Az Azure-szolgáltatások közé tartozik az Azure AD, a tárolás, az alkalmazásátjárók és mások.
+* Olyan infrastruktúra, amely teljes mértékben az Ön számára van elkülönítve, és fizikailag el van szigetelve más ügyfelek infrastruktúrájától.
+* A felügyeleti funkciók, például a tevékenységkezelés, a használat, a számlázás/mérés és a felhasználókezelés.
+* 24x7 ügyfélszolgálat.
 
 ## <a name="benefits"></a>Előnyök
 
-* **Működési folytonosság**. Az AVS natív hozzáférést biztosít a VMware platformokhoz. Az AVS-architektúra kompatibilis a meglévővel:
+* **Működési folytonosság**. A CloudSimple natív hozzáférést biztosít a VMware platformokhoz. A CloudSimple architektúra kompatibilis a meglévő:
     * Alkalmazások
     * Műveletek
     * Biztonság
-    * Biztonsági mentés
+    * Backup
     * Vészhelyreállítás
     * Naplózás
     * Megfelelőségi eszközök
     * Folyamatok
-* **Nincs újraképzés**. A VMware platform Compatibility lehetővé teszi a meglévő képességek és ismeretek használatát.
-* **Infrastruktúra-agilitás**. Már nem kell előre megjósolnia az összes kapacitási igényt, és végül az elpazarolt kapacitással vagy az infrastruktúra hiányával kell foglalkoznia. Az AVS felhőalapú szolgáltatásként érhető el, és bármikor felveheti vagy csökkentheti a kapacitást.
-* **Biztonság**. Az Azure-on keresztül elérhető AVS-környezet beépített DDoS-védelmet és biztonsági monitorozást biztosít.
-* **Alacsonyabb díj**. Az AVS platform nagy mértékben lett tervezve, és magas szintű automatizálást, működési hatékonyságot és méretgazdaságosságot biztosít. Ezen túlmenően az AVS olyan megoldási architektúrákat tesz közzé, amelyek kihasználják a VMware nyilvános felhőben való jelenlétét a költségek csökkentése érdekében. Ilyenek például az Azure AD, az Azure Storage-ba való biztonsági mentés, az Application Gateway, a Load Balancer és egyebek.
-* **Egy új hibrid platform**. A szolgáltatás lehetővé teszi a nagy sebességű, kis késésű hozzáférést az Azure többi részénél. Ezen túlmenően az AVS-kezelés lehetővé teszi a VMware virtuális gépek és az Azure többi részének egységes kezelését ugyanazzal a KEZELŐFELÜLETtel és API-val. A fejlesztői csapatok integrált, egységes módon vehetik igénybe a nyilvános és a privát platformokat is.
-* **Infrastruktúra-figyelés, hibaelhárítás és támogatás**. Az AVS szolgáltatásként működteti a mögöttes infrastruktúrát. A meghiúsult hardver automatikusan lecserélve. A felhasználásra koncentrálhat, miközben az AVS biztosítja, hogy a környezet zökkenőmentesen fusson.
-* **Házirend-kompatibilitás**. Megtarthatja VMware-alapú eszközeit, biztonsági eljárásait, auditálási gyakorlatait és megfelelőségi tanúsítványait.
+* **Nincs átképzés**. A VMware platformkompatibilitás lehetővé teszi a meglévő készségek és ismeretek használatát.
+* **Infrastruktúra agilitás**. Többé nem kell megjósolnia az összes kapacitásigényét, majd elpazarolt kapacitás- vagy infrastruktúrahiányt kell maga után végeznie. A CloudSimple felhőszolgáltatásként érhető el, és bármikor hozzáadhat vagy csökkentheti a kapacitást
+* **Biztonság**. A CloudSimple környezethez való hozzáférés az Azure-on keresztül beépített DDoS-védelmet és biztonsági figyelést biztosít.
+* **Alacsonyabb költség**. A CloudSimple platform nagy tervezésű, és magas szintű automatizálást, működési hatékonyságot és méretgazdaságosságot biztosít. Továbbá a CloudSimple olyan megoldásarchitektúrákat tesz közzé, amelyek a költségek csökkentése érdekében kihasználják a VMware nyilvános felhőben való jelenlétét. Ilyenek például az Azure AD, biztonsági mentés az Azure storage, alkalmazásátjáró, terheléselosztó és mások.
+* **Egy új hibrid platform**. A szolgáltatás lehetővé teszi a nagy sebességű, alacsony késésű hozzáférést az Azure többi részéhez. Továbbá a CloudSimple-felügyelet lehetővé teszi a VMware virtuális gépek és az Azure többi részének egységes kezelését ugyanazzal a felhasználói felülettel és API-val. A fejlesztőcsapatok integrált, következetes módon is kihasználhatják a nyilvános és a privát platformok előnyeit.
+* **Infrastruktúra figyelése, hibaelhárítása és támogatása**. A CloudSimple szolgáltatásként működteti az alapul szolgáló infrastruktúrát. A hibahardvert a rendszer automatikusan lecseréli. A felhasználásra összpontosíthat, míg a CloudSimple biztosítja a környezet zökkenőmentes futását.
+* **Házirend-kompatibilitás**. Tartsa meg vmware-alapú eszközeit, biztonsági eljárásait, naplózási gyakorlatait és megfelelőségi tanúsítványait.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
-* **Adatközpont-nyugdíjazás vagy áttelepítés**. Ha eléri a meglévő adatközpont korlátait, vagy frissíti a hardvert, további kapacitást érhet el. Könnyedén felveheti a szükséges kapacitást a felhőbe, és nem távolítja el a hardveres frissítések kezelésének fejfájását. Csökkentse a felhőbe való Migrálás kockázatát és költségeit az időigényes átalakítások vagy az újraarchitektúrák összehasonlításával. A felhőbe történő Migrálás felgyorsításához használja a jól ismert VMware-eszközöket és-képességeket. A felhőben az Azure-szolgáltatások segítségével modernizálhatja alkalmazásait a tempóban.
-* **Kibontás igény szerint**. Bontsa ki a felhőt a nem várt igények kielégítéséhez, például az új fejlesztési környezetekhez vagy a szezonális kapacitások kitöréséhez. Igény szerint egyszerűen hozhat létre új kapacitást, és megtarthatja azt, amíg szüksége van rá. Csökkentse a kezdeti befektetéseket, gyorsítsa fel a kiépítés sebességét, és csökkentse a bonyolultságot ugyanazzal az architektúrával és házirenddel mind a helyszínen, mind a felhőben.
-* Vész- **helyreállítási és virtuális asztalok az Azure-felhőben**. Távoli hozzáférés létrehozása az Azure-felhőben tárolt adatelemekhez, alkalmazásokhoz és asztali gépekhez. A nagy sávszélességű kapcsolatokkal gyorsan feltöltheti és letöltheti az adatokat az incidensből való helyreállításhoz. Az alacsony késleltetésű hálózatok gyors válaszidőt biztosítanak a felhasználók számára egy asztali alkalmazástól. Az AVS-vel könnyedén replikálhatja az összes házirendjét és hálózatát a felhőben az AVS-portál és az ismerős VMware-eszközök használatával. A könnyű helyreállítás és a replikálás nagy mértékben csökkenti a DR-és VDI-implementációk létrehozásának és kezelésének erőfeszítéseit és kockázatait.
-* **Nagy teljesítményű alkalmazások és adatbázisok**. Az AVS egy hiperkonvergens architektúra, amely a legigényesebb VMware-alapú számítási feladatok futtatására szolgál. Az Oracle, a Microsoft SQL Server, a köztes rendszerek és a nagy teljesítményű, nem SQL-adatbázisok futtatása. A felhőt saját adatközpontként használhatja nagy sebességű, 25 GB/s-os hálózati kapcsolatokkal, amelyek lehetővé teszik a helyszíni, VMware-alapú és Azure-beli privát számítási feladatok futtatását a teljesítmény veszélyeztetése nélkül.
-* **Valódi hibrid**. Egyesítse a DevOps a VMware és az Azure között. Optimalizálja a VMware-felügyeletet az Azure-szolgáltatásokhoz és-megoldásokhoz, amelyek az összes számítási feladatra alkalmazhatók. A nyilvános felhőalapú szolgáltatásokat anélkül érheti el, hogy kibővíti az adatközpontot, vagy újratervezi az alkalmazásokat. Az Azure-beli VMware-alkalmazások identitásának, hozzáférés-vezérlési házirendjeinek, naplózásának és figyelésének központosítása.
+* **Adatközpont-kivonás vagy áttelepítés**. További kapacitást kaphat, ha eléri a meglévő adatközpont korlátait, vagy frissíti a hardvert. A szükséges kapacitást egyszerűen hozzáadhatja a felhőben, és kiküszöbölheti a hardverfrissítések kezelésével kapcsolatos fejfájást. Csökkentse a felhőbe való migrálás kockázatát és költségét az időigényes konverziókhoz vagy újraarchitektúrákhoz képest. A felhőbe való bevetés felgyorsításához használja a jól ismert VMware eszközöket és készségeket. A felhőben az Azure-szolgáltatások segítségével modernizálhatja alkalmazásait az Ön tempójában.
+* **Bővítse ki igény szerint**. Bontsa ki a felhőt a nem várt igények, például az új fejlesztési környezetek vagy a szezonális kapacitásadatlöketek kielégítésére. Igény szerint egyszerűen létrehozhat új kapacitást, és csak addig tarthatja meg, amíg szüksége van rá. Csökkentse az előzetes befektetést, gyorsítsa fel a kiépítés sebességét, és csökkentse az összetettséget ugyanazzal az architektúrával és szabályzatokkal mind a helyszíni, mind a felhőben.
+* **Vészhelyreállítás és virtuális asztalok az Azure-felhőben.** Távoli hozzáférést hozhat létre az adatokhoz, alkalmazásokhoz és asztalokhoz az Azure-felhőben. A nagy sávszélességű kapcsolatokkal gyorsan tölthet fel és tölthet le adatokat az incidensek helyreállítása érdekében. Az alacsony késleltetésű hálózatok gyors válaszidőt biztosítanak, amelyet a felhasználók elvárnak egy asztali alkalmazástól. A CloudSimple segítségével a CloudSimple portálés a jól ismert VMware-eszközök segítségével egyszerűen replikálhatja az összes szabályzatot és hálózatot a felhőben. A helyreállítás és a replikáció egyszerűsége jelentősen csökkenti a DR és VDI implementációk létrehozásának és kezelésének erőfeszítését és kockázatát.
+* **Nagy teljesítményű alkalmazások és adatbázisok**. A CloudSimple egy hiperkonvergens architektúrát biztosít, amely a legigényesebb VMware-számítási feladatok futtatására szolgál. Futtassa az Oracle, a Microsoft SQL server, a middleware rendszerek és a nagy teljesítményű, nem SQL adatbázisok futtatását. A felhőt saját adatközpontként saját adatközpontként saját adatközpontként tapasztalhatja meg a nagy sebességű, 25 gbagbói hálózati kapcsolatokkal, amelyek lehetővé teszik a helyszíni, az Azure-beli VMware és az Azure privát számítási feladatait átfogó hibrid alkalmazások futtatását a teljesítmény veszélyeztetése nélkül.
+* **Igazi hibrid**. A DevOps egyesítése a VMware és az Azure területén. Optimalizálja a VMware felügyeletét az Azure-szolgáltatásokhoz és -megoldásokhoz, amelyek az összes számítási feladatra alkalmazhatók. Az adatközpont bővítése vagy az alkalmazások újratervezése nélkül is elérheti a nyilvános felhőszolgáltatásokat. Központosíthatja az identitásokat, a hozzáférés-vezérlési szabályzatokat, a naplózást és a figyelést az Azure-beli VMware-alkalmazásokhoz.
 
-![Alkalmazási helyzetek](media/cloudsimple-scenarios.png)
+![Forgatókönyvek](media/cloudsimple-scenarios.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [AVS-szolgáltatás létrehozása](quickstart-create-cloudsimple-service.md)
-* [AVS Private Cloud létrehozása](quickstart-create-private-cloud.md)
+* [CloudSimple szolgáltatás létrehozása](quickstart-create-cloudsimple-service.md)
+* [Privát felhő létrehozása](quickstart-create-private-cloud.md)

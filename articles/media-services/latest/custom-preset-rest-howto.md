@@ -1,6 +1,6 @@
 ---
-title: Kódolás a Media Services v3 REST - az Azure használatával egyéni átalakító |} A Microsoft Docs
-description: Ez a témakör bemutatja, hogyan használható az Azure Media Services v3 kódolása a REST használatával egyéni átalakító.
+title: Egyéni átalakítás kódolása a Media Services v3 REST használatával – Azure | Microsoft dokumentumok
+description: Ez a témakör bemutatja, hogyan használhatja az Azure Media Services v3-as egyéni átalakítás t rest használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,33 +13,33 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65761797"
 ---
-# <a name="how-to-encode-with-a-custom-transform---rest"></a>Az egyéni átalakítási – REST kódolása
+# <a name="how-to-encode-with-a-custom-transform---rest"></a>Hogyan kódolunk egyéni átalakítással - REST
 
-Ha az Azure Media Services encoding, ismerkedhet meg gyorsan az, ahogyan az ágazatban kialakult bevált gyakorlaton alapuló ajánlott a beépített beállítások egyikét a [fájlok Streamelési](stream-files-tutorial-with-rest.md#create-a-transform) oktatóanyag. Az egyedi, amelyekre az adott forgatókönyv vagy eszközkövetelmények készletek is létrehozható.
+Az Azure Media Services használatával történő kódolás során gyorsan elkezdheti az ajánlott beépített készletek egyikét, amelyek az iparági bevált gyakorlatokon alapulnak, ahogy azt a [Streamelési fájlok](stream-files-tutorial-with-rest.md#create-a-transform) oktatóanyaga is mutatja. Egyéni készletet is létrehozhat az adott forgatókönyv vagy eszköz követelményeinek megcélzásához.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-Egyéni készletek létrehozásakor a következő szempontokat kell figyelembe venni:
+Egyéni készletek létrehozásakor a következő szempontok érvényesek:
 
-* Minden értékét magasságát és szélességét AVC tartalom kezelésére kell költeni 4 többszörösének kell lennie.
-* Az Azure Media Services v3-as a kódolási bitsebességre való átkódolása összes bit / másodperc. Ez különbözik a készletek a v2 API-kkal használt egységet kilobit/másodperc. Például ha az átviteli sebesség a v2-ben van megadva, 128 (kilobit/másodperc), a v3-as volna meg akkor 128000 (bit/másodperc).
+* Az AVC-tartalom magasságának és szélességének minden értékének a 4 többszörösének kell lennie.
+* Az Azure Media Services v3-as részében az összes kódolási bitsebesség bitper másodpercben van. Ez eltér a v2 API-kkal rendelkező készletektől, amelyek kilobit/második egységként használták a kilobitokat/ a második at. Ha például a v2-ben a bitráta 128 (kilobit/másodperc), akkor a v3-ban 128000 (bit/másodperc) lesz megadva.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-- [A Media Services-fiók létrehozása](create-account-cli-how-to.md). <br/>Ellenőrizze, hogy ne felejtse el az erőforráscsoport nevét és a Media Services-fiók nevét. 
-- [Postman konfigurálása az Azure Media Services REST API-hívások](media-rest-apis-with-postman.md).<br/>Kövesse a témakör az utolsó lépés [lekérése az Azure AD-Token](media-rest-apis-with-postman.md#get-azure-ad-token). 
+- [Hozzon létre egy Media Services-fiókot](create-account-cli-how-to.md). <br/>Győződjön meg arról, hogy nem emlékszik az erőforráscsoport nevére és a Media Services-fiók nevére. 
+- [A Postman konfigurálása az Azure Media Services REST API-hívásaihoz.](media-rest-apis-with-postman.md)<br/>Győződjön meg arról, hogy kövesse az [Azure AD-token beszerezni című](media-rest-apis-with-postman.md#get-azure-ad-token)témakör utolsó lépését. 
 
-## <a name="define-a-custom-preset"></a>Egyéni előbeállítás definiálása
+## <a name="define-a-custom-preset"></a>Egyéni készlet definiálása
 
-Az alábbi példa egy új átalakítás kérelem törzsét határozza meg. Azt adja meg, amelyet szeretnénk hozható létre, ha az átalakítás szolgál csoportját. 
+A következő példa egy új átalakítás kérelemtörzsét határozza meg. Meghatározzuk a kimenetek egy készletét, amelyet az átalakítás során szeretnénk létrehozni. 
 
-Ebben a példában először hozzáadunk egy AacAudio réteget a hang kódolása és két H264Video réteget a videó kódolásához. A videó rétegekben hogy címkék hozzárendelésére, hogy a kimeneti fájl nevében szereplő használható. Ezután szeretnénk a kimenetet a miniatűrök is tartalmazhatnak. Az alábbi példában képek PNG formátumú, a bemeneti videó felbontása 50 %-át, vagy három időbélyegeket – {25 %-kal, 50 %-os, 75}, a bemeneti videó hosszától egy előállított adjuk meg. Végül adjuk meg a formátum a kimeneti fájlok – egy videó és hang-, a másik pedig a miniatűrök. Mivel több H264Layers rendelkezünk, egyedi nevek rétegenként eredményező makrók van. Azt is, vagy használja a `{Label}` vagy `{Bitrate}` makró-, a példa bemutatja a korábbi.
+Ebben a példában először a hangkódoláshoz adunk hozzá egy AacAudio réteget, és két H264Video réteget a videó kódoláshoz. A videorétegeken címkéket rendelünk hozzá, hogy azok használhatók legyenek a kimeneti fájlnevekben. Ezután azt szeretnénk, hogy a kimenet is tartalmazza a miniatűröket. Az alábbi példában png formátumú képeket adunk meg, amelyek a bemeneti videó felbontásának 50%-ában, és a bemeneti videó hosszának {25%, 50%, 75} - létrehozásához. Végül, mi határozza meg a formátumot a kimeneti fájlokat - az egyik a videó + audio, és egy másik a miniatűrök. Mivel több H264Layers-ünk van, olyan makrókat kell használnunk, amelyek rétegenként egyedi neveket hoznak létre. Használhatjuk vagy `{Label}` `{Bitrate}` makrót, a példa az előbbit mutatja.
 
 ```json
 {
@@ -131,24 +131,24 @@ Ebben a példában először hozzáadunk egy AacAudio réteget a hang kódolása
 
 ```
 
-## <a name="create-a-new-transform"></a>Hozzon létre egy új átalakítás  
+## <a name="create-a-new-transform"></a>Új átalakítás létrehozása  
 
-Ebben a példában létrehozunk egy **átalakítása** , amely a korábban meghatározott egyéni előbeállítás alapul. Egy-egy átalakítási létrehozásakor, akkor először az [első](https://docs.microsoft.com/rest/api/media/transforms/get) ellenőrizheti, ha egy már létezik. Ha az átalakítás létezik, akkor újra felhasználhatja. 
+Ebben a példában létrehozunk egy **átalakítást,** amely a korábban definiált egyéni készleten alapul. Átalakítás létrehozásakor először a [Get](https://docs.microsoft.com/rest/api/media/transforms/get) parancsot kell használnia annak ellenőrzésére, hogy létezik-e már ilyen. Ha létezik az átalakítás, használja fel újra. 
 
-Válassza ki a letöltött a Postman-gyűjtemény, **átalakítások és feladatok**->**létrehozás vagy frissítés átalakítása**.
+A letöltött postás gyűjteményében válassza az **Átalakítások és feladatok**->**létrehozása vagy az átalakítás frissítése lehetőséget.**
 
-A **PUT** HTTP-kérési metódust hasonlít:
+A **PUT** HTTP kérelem módszer hasonló a következőkhöz:
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
 ```
 
-Válassza ki a **törzs** lapra, és cserélje le a szervezet a json-kódot [korábban meghatározott](#define-a-custom-preset). A Media Services a alkalmazni az átalakítás a megadott videó vagy hang kell egy adott átalakítási feladat elküldéséhez.
+Válassza a **Törzs** lapot, és cserélje le a törzset a [korábban megadott](#define-a-custom-preset)jsonkódra. Ahhoz, hogy a Media Services alkalmazza az átalakítást a megadott videóra vagy hangra, el kell küldenie egy feladatot az adott átalakítás alatt.
 
-Kattintson a **Küldés** gombra. 
+Válassza a **Küldés**lehetőséget. 
 
-A Media Services a alkalmazni az átalakítás a megadott videó vagy hang kell egy adott átalakítási feladat elküldéséhez. Egy teljes példa bemutatja, hogyan lehet elküldeni egy egy-egy átalakítási feladat, lásd: [oktatóanyag: Stream-videó fájlok – REST](stream-files-tutorial-with-rest.md).
+Ahhoz, hogy a Media Services alkalmazza az átalakítást a megadott videóra vagy hangra, el kell küldenie egy feladatot az adott átalakítás alatt. Egy teljes példa, amely bemutatja, hogyan kell benyújtani a munkát egy átalakítás alatt, [lásd: Bemutató: Videofájlok streamelése - REST](stream-files-tutorial-with-rest.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd: [más REST-műveletek](https://docs.microsoft.com/rest/api/media/)
+Lásd [a többi REST-műveletet](https://docs.microsoft.com/rest/api/media/)

@@ -1,75 +1,75 @@
 ---
-title: Kiszolgálói paraméterek konfigurálása – Azure CLI – Azure Database for MariaDB
-description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni a szolgáltatás paramétereit Azure Database for MariaDB az Azure CLI parancssori segédprogram használatával.
+title: Kiszolgálóparaméterek konfigurálása - Azure CLI - Azure Database for MariaDB
+description: Ez a cikk ismerteti, hogyan konfigurálhatja a szolgáltatás paramétereit az Azure Database for MariaDB az Azure CLI parancssori segédprogram használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 707f4eca440c0e8461420ff0bbc5e67f8e5ad69d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 3/18/2020
+ms.openlocfilehash: 56975c52b22b90840fb1534187e99f6efa19469e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888512"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527673"
 ---
-# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Kiszolgáló konfigurációs paramétereinek testreszabása az Azure CLI használatával
-Az Azure CLI, az Azure parancssori segédprogram használatával listázhatja, megjelenítheti és frissítheti az Azure Database for MariaDB-kiszolgáló konfigurációs paramétereit. A motor konfigurációjának egy részhalmaza a kiszolgáló szintjén érhető el, és módosítható.
+# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Kiszolgálókonfigurációs paraméterek testreszabása az Azure CLI használatával
+Az Azure CLI, az Azure parancssori segédprogram használatával listázhatja, megjelenítheti és frissítheti a MariaDB-kiszolgálókazure Database konfigurációs paramétereit. A motorkonfigurációk egy részhalmaza a kiszolgáló szintjén érhető el, és módosítható.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
-- [Egy Azure Database for MariaDB-kiszolgáló](quickstart-create-mariadb-server-database-using-azure-cli.md)
-- [Azure CLI](/cli/azure/install-azure-cli) parancssori segédprogram, vagy használja a Azure Cloud shellt a böngészőben.
+Az útmutató útmutatón való átlépéshez a következőkre van szükség:
+- [Azure-adatbázis a MariaDB-kiszolgálóhoz](quickstart-create-mariadb-server-database-using-azure-cli.md)
+- [Azure CLI](/cli/azure/install-azure-cli) parancssori segédprogram, vagy használja az Azure Cloud Shell a böngészőben.
 
-## <a name="list-server-configuration-parameters-for-azure-database-for-mariadb-server"></a>Azure Database for MariaDB kiszolgáló kiszolgáló-konfigurációs paramétereinek listázása
-A kiszolgálók és azok értékei összes módosítható paraméterének listázásához futtassa az az [MariaDB Server Configuration List](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) parancsot.
+## <a name="list-server-configuration-parameters-for-azure-database-for-mariadb-server"></a>A MariaDB-kiszolgálóhoz való Azure Database kiszolgálókonfigurációs paramétereinek listázása
+A kiszolgáló összes módosítható paraméterének és értékeinek listázásához futtassa az [az mariadb kiszolgáló konfigurációs lista](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) parancsát.
 
-A kiszolgálói **mydemoserver.MariaDB.database.Azure.com** tartozó kiszolgálói konfigurációs paramétereket a **myresourcegroup**erőforráscsoport alatt listázhatja.
+A **kiszolgáló** mydemoserver.mariadb.database.azure.com kiszolgálókonfigurációs paramétereit a **myresourcegroup**erőforráscsoport alatt sorolhatja fel.
 ```azurecli-interactive
 az mariadb server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
 
-Az egyes felsorolt paraméterek definícióját a [kiszolgálói rendszerváltozók](https://mariadb.com/kb/en/library/server-system-variables/)MariaDB-hivatkozás szakasza tartalmazza.
+Az egyes felsorolt paraméterek meghatározásáról a [Kiszolgálórendszerváltozók](https://mariadb.com/kb/en/library/server-system-variables/)MariaDB referenciaszakaszában lehet részt látni.
 
-## <a name="show-server-configuration-parameter-details"></a>Kiszolgáló konfigurációs paramétereinek megjelenítése – részletek
-A kiszolgálók egy adott konfigurációs paraméterének részleteinek megjelenítéséhez futtassa az az [MariaDB Server Configuration show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) parancsot.
+## <a name="show-server-configuration-parameter-details"></a>Kiszolgálókonfigurációs paraméter részleteinek megjelenítése
+A kiszolgáló adott konfigurációs paraméterének részleteinek megjelenítéséhez futtassa az [az mariadb kiszolgáló konfigurációs show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) parancsát.
 
-Ez a példa a **lassú\_lekérdezés** részleteit mutatja be\_a log Server konfigurációs paraméterét a kiszolgáló **mydemoserver.MariaDB.database.Azure.com** az erőforráscsoport **myresourcegroup területen.**
+Ez a példa a kiszolgáló **mydemoserver.mariadb.database.azure.com** a **myresourcegroup** erőforráscsoport alatti **lassú\_\_lekérdezésnapló-kiszolgáló** konfigurációs paraméterének részleteit mutatja be.
 ```azurecli-interactive
 az mariadb server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 
-## <a name="modify-a-server-configuration-parameter-value"></a>Kiszolgáló-konfigurációs paraméter értékének módosítása
-Egy bizonyos kiszolgáló-konfigurációs paraméter értékét is módosíthatja, amely frissíti a MariaDB-kiszolgáló motorjának alapjául szolgáló konfigurációs értéket. A konfiguráció frissítéséhez használja az az [MariaDB Server Configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) parancsot. 
+## <a name="modify-a-server-configuration-parameter-value"></a>Kiszolgálókonfigurációs paraméter értékének módosítása
+Módosíthatja egy bizonyos kiszolgálókonfigurációs paraméter értékét is, amely frissíti a MariaDB kiszolgálómotor alapjául szolgáló konfigurációs értéket. A konfiguráció frissítéséhez használja az [az mariadb kiszolgáló konfigurációkészlet parancsát.](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) 
 
-Ha frissíteni szeretné a **lassú\_lekérdezést\_a log** Server konfigurációs paraméterét a kiszolgáló **mydemoserver.MariaDB.database.Azure.com** az erőforráscsoport **myresourcegroup területen.**
+A **kiszolgálói mydemoserver.mariadb.database.azure.com** **lassú\_\_lekérdezésnapló-kiszolgálókonfigurációs** paraméterének frissítése a **myresourcegroup** erőforráscsoport alatt.
 ```azurecli-interactive
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
 
-Ha alaphelyzetbe kívánja állítani egy konfigurációs paraméter értékét, hagyja ki a választható `--value` paramétert, és a szolgáltatás alkalmazza az alapértelmezett értéket. A fenti példában a következőképpen fog kinézni:
+Ha alaphelyzetbe szeretné állítani egy konfigurációs paraméter `--value` értékét, hagyja ki a választható paramétert, és a szolgáltatás az alapértelmezett értéket alkalmazza. A fenti példában így nézne ki:
 ```azurecli-interactive
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 
-Ez a kód visszaállítja a **lassú\_lekérdezési\_naplózási** konfigurációját az **alapértelmezett értékre**. 
+Ez a kód visszaállítja a **lassú\_lekérdezésnapló\_** konfigurációját az alapértelmezett **OFF**értékre. 
 
-## <a name="working-with-the-time-zone-parameter"></a>Az időzóna-paraméter használata
+## <a name="working-with-the-time-zone-parameter"></a>Az időzóna paraméterrel való együttműködés
 
-### <a name="populating-the-time-zone-tables"></a>Az időzóna-táblák feltöltése
+### <a name="populating-the-time-zone-tables"></a>Az időzóna-táblázatok feltöltése
 
-A kiszolgálón található időzóna-táblákat úgy töltheti fel, hogy meghívja a `az_load_timezone` tárolt eljárást egy olyan eszközről, mint a MariaDB parancssori vagy a MariaDB Workbench.
+A kiszolgálón lévő időzóna-táblák feltölthetők, ha a `az_load_timezone` tárolt eljárást egy eszközből, például a MariaDB parancssorból vagy a MariaDB Workbench-ből hívja meg.
 
 > [!NOTE]
-> Ha a MariaDB Workbench `az_load_timezone` parancsát futtatja, előfordulhat, hogy először a `SET SQL_SAFE_UPDATES=0;`használatával kell kikapcsolnia a biztonságos frissítési módot.
+> Ha a parancsot a MariaDB Workbench-ből futtatja, előfordulhat, hogy először ki kell kapcsolnia a `az_load_timezone` csökkentett frissítési módot a használatával. `SET SQL_SAFE_UPDATES=0;`
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> Indítsa újra a kiszolgálót az időzóna-táblák megfelelő kitöltésének biztosításához. A kiszolgáló újraindításához használja a [Azure Portal](howto-restart-server-portal.md) vagy a [parancssori](howto-restart-server-cli.md)felületet.
+> Az időzóna-táblák megfelelő feltöltéséhez indítsa újra a kiszolgálót. A kiszolgáló újraindításához használja az [Azure Portalt](howto-restart-server-portal.md) vagy a [CLI-t.](howto-restart-server-cli.md)
 
 A rendelkezésre álló időzóna-értékek megtekintéséhez futtassa a következő parancsot:
 
@@ -79,24 +79,24 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>A globális szintű időzóna beállítása
 
-A globális szintű időzónát az az [MariaDB Server Configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) paranccsal lehet beállítani.
+A globális szintű időzóna az [az mariadb kiszolgáló konfigurációkészlet](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) parancsával állítható be.
 
-A következő parancs frissíti az **idő\_zóna** kiszolgálójának konfigurációs paraméterét a kiszolgáló **mydemoserver.MariaDB.database.Azure.com** az **USA/csendes-óceáni**csoport **myresourcegroup** .
+A következő parancs frissíti a kiszolgáló **mydemoserver.mariadb.database.azure.com** **idikmydemoserver.mariadb.database.azure.com\_** **a myresourcegroup** erőforráscsoport alatti időzóna-kiszolgáló konfigurációs paraméterét **az USA/csendes-óceáni szintre.**
 
 ```azurecli-interactive
 az mariadb server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
 ```
 
-### <a name="setting-the-session-level-time-zone"></a>A munkamenet-szint időzónájának beállítása
+### <a name="setting-the-session-level-time-zone"></a>A munkamenetszint időzónájának beállítása
 
-A munkamenet-szint időzónája beállítható úgy, hogy a `SET time_zone` parancsot egy olyan eszközről futtatja, mint a MariaDB parancssori vagy a MariaDB Workbench. Az alábbi példa az időzónát az **USA/csendes-óceáni** időzónára állítja be.  
+A munkamenet-szint időzónája úgy `SET time_zone` állítható be, hogy a parancsot egy olyan eszközről futtatja, mint a MariaDB parancssorvagy a MariaDB workbench. Az alábbi példa az időzónát az **USA/csendes-óceáni** időzónára állítja be.  
 
 ```sql
 SET time_zone = 'US/Pacific';
 ```
 
-A [dátum-és Időfüggvényekhez](https://mariadb.com/kb/en/library/date-time-functions/)tekintse meg a MariaDB dokumentációját.
+A [Dátum- és időfüggvények](https://mariadb.com/kb/en/library/date-time-functions/)című dokumentumban a MariaDB dokumentációjában olvashat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Kiszolgáló paramétereinek konfigurálása Azure Portal](howto-server-parameters.md)
+- [Kiszolgálóparaméterek konfigurálása az Azure Portalon](howto-server-parameters.md)

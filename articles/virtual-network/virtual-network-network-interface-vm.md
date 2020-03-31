@@ -1,6 +1,6 @@
 ---
-title: Hálózati adapterek hozzáadása vagy eltávolítása az Azure-beli virtuális gépekről
-description: Ismerje meg, hogyan adhat hozzá hálózati adaptereket a virtuális gépek hálózati adapterei számára, illetve távolíthatja el azokat.
+title: Hálózati csatolók hozzáadása az Azure virtuális gépeihez, illetve azok eltávolítása
+description: Megtudhatja, hogy miként adhat hálózati adaptereket a virtuális gépekhez, illetve hogyan távolíthatja el a hálózati adaptereket.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,122 +13,152 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/15/2017
+ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: a55bf014a2da10069e4e6a5f6f4eb4b8cd9ff205
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 4169bfb5da5b1ad13bab0eb01397f7c1fb20b11b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79279558"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060324"
 ---
-# <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Hálózati adapterek hozzáadása vagy eltávolítása a virtuális gépek hálózati adapterei közül
+# <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Hálózati adapterek hozzáadása vagy eltávolítása virtuális gépekről
 
-Megtudhatja, hogyan adhat hozzá meglévő hálózati adaptert egy Azure-beli virtuális gép (VM) létrehozásakor, illetve hogyan adhat hozzá vagy távolíthat el hálózati adaptereket egy meglévő virtuális gépről a leállított (kiosztott) állapotban. A hálózati adapterek lehetővé teszik, hogy egy Azure-beli virtuális gép kommunikáljon az internettel, az Azure-ral és a helyszíni erőforrásokkal. A virtuális gépek egy vagy több hálózati adapterrel rendelkezhetnek. 
+Ismerje meg, hogyan adhat hozzá egy meglévő hálózati adaptert, amikor létrehoz egy Azure virtuális gépet (VM). Azt is megtudhatja, hogy hálózati adapterek hozzáadása vagy eltávolítása egy meglévő virtuális gép a leállított (felszabadított) állapotban. A hálózati felület lehetővé teszi, hogy az Azure virtuális gép kommunikáljon az internettel, az Azure-ral és a helyszíni erőforrásokkal. A virtuális gép egy vagy több hálózati adapterrel rendelkezik. 
 
-Ha IP-címeket kell hozzáadnia, módosítania vagy eltávolítania egy hálózati adapterhez, tekintse meg a [hálózati adapter IP-címeinek kezelése](virtual-network-network-interface-addresses.md)című témakört. Ha hálózati adaptereket kell létrehoznia, módosítania vagy törölnie, tekintse meg a [hálózati adapterek kezelése](virtual-network-network-interface.md)című témakört.
+Ha hálózati adapter IP-címeinek hozzáadására, módosítására vagy eltávolítására van szüksége, olvassa el [a Hálózati adapter IP-címeinek kezelése című témakört.](virtual-network-network-interface-addresses.md) Hálózati adapterek létrehozásáról, módosításáról vagy törléséről a [Hálózati adapterek kezelése](virtual-network-network-interface.md)című témakörben látható.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a következő feladatokat:
+Ha még nem rendelkezik ilyennel, állítson be egy Aktív előfizetéssel rendelkező Azure-fiókot. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). A cikk további részének megkezdése előtt hajtsa végre az alábbi feladatok egyikét:
 
-- Ha még nem rendelkezik Azure-fiókkal, regisztráljon az [ingyenes próbaverziós fiókra](https://azure.microsoft.com/free).
-- Ha a portált használja, nyissa meg https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
-- Ha a cikkben szereplő feladatok végrehajtásához PowerShell-parancsokat használ, futtassa a [Azure Cloud Shell](https://shell.azure.com/powershell)parancsait, vagy a PowerShellt a számítógépről futtatva. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ehhez az oktatóanyaghoz a Azure PowerShell modul 1.0.0-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
-- Ha az Azure parancssori felület (CLI) parancsait használja a jelen cikkben található feladatok elvégzéséhez, futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy a CLI-t a számítógépről futtatva. Ehhez az oktatóanyaghoz az Azure CLI 2.0.26 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI-t, a `az login` futtatásával is létre kell hoznia egy, az Azure-hoz való kapcsolódást.
+- **Portál felhasználói:** Jelentkezzen be az [Azure Portalon](https://portal.azure.com) az Azure-fiókjával.
 
-## <a name="add-existing-network-interfaces-to-a-new-vm"></a>Meglévő hálózati adapterek hozzáadása egy új virtuális géphez
+- **PowerShell-felhasználók:** Vagy futtassa a parancsokat az [Azure Cloud Shellben,](https://shell.azure.com/powershell)vagy futtassa a PowerShellt a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Az Azure Cloud Shell böngészőlapján keresse meg a **Környezet kiválasztása** legördülő listát, majd válassza a **PowerShellt,** ha még nincs kiválasztva.
 
-Ha a portálon keresztül hoz létre virtuális gépet, a portál létrehoz egy alapértelmezett beállításokkal rendelkező hálózati adaptert, és csatolja azt a virtuális GÉPHEZ. Nem adhat hozzá meglévő hálózati adaptereket új virtuális géphez, és nem hozhat létre több hálózati adapterrel rendelkező virtuális gépet a Azure Portal használatával. Mindkettőt a CLI vagy a PowerShell használatával is elvégezheti, de mindenképpen ismerkedjen meg a [korlátozásokkal](#constraints). Ha több hálózati adapterrel rendelkező virtuális gépet hoz létre, akkor a virtuális gép létrehozása után is megfelelően kell konfigurálnia az operációs rendszert. Megtudhatja, hogyan konfigurálhat [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) vagy [Windows rendszert](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) több hálózati adapterhez.
+    Ha a PowerShellt helyileg futtatja, használja az Azure PowerShell 1.0.0-s vagy újabb verzióját. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az.Network`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Futtassa a `Connect-AzAccount` parancsot, hogy kapcsolatot hozzon létre az Azure-ral.
+
+- **Azure parancssori felület (CLI) felhasználói:** Vagy futtassa a parancsokat az [Azure Cloud Shell,](https://shell.azure.com/bash)vagy a CLI a számítógépről. Az Azure CLI 2.0.26-os vagy újabb verzióját használja, ha helyileg futtatja az Azure CLI-t. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Futtassa a `az login` parancsot, hogy kapcsolatot hozzon létre az Azure-ral.
+
+## <a name="add-existing-network-interfaces-to-a-new-vm"></a>Meglévő hálózati csatolók hozzáadása új virtuális géphez
+
+Amikor virtuális gépet hoz létre a portálon keresztül, a portál létrehoz egy hálózati adaptert az alapértelmezett beállításokkal, és csatlakoztatja a hálózati adaptert a virtuális géphez. A portál használatával nem adhat hozzá meglévő hálózati adaptereket egy új virtuális géphez, vagy több hálózati adapterrel rendelkező virtuális gép létrehozásához. Mindkettőt megteheti a CLI vagy a PowerShell használatával. Ügyeljen arra, hogy megismerkedjen a [korlátokkal.](#constraints) Ha több hálózati adapterrel rendelkező virtuális gép létrehozása, akkor is be kell állítania az operációs rendszert, hogy megfelelően használja őket a virtuális gép létrehozása után. További információ a [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) vagy a [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) több hálózati kapcsolathoz való konfigurálásáról.
 
 ### <a name="commands"></a>Parancsok
 
-A virtuális gép létrehozása előtt hozzon létre egy hálózati adaptert a [hálózati adapter létrehozása](virtual-network-network-interface.md#create-a-network-interface)című témakör lépéseit követve.
+A virtuális gép létrehozása előtt [hozzon létre egy hálózati adaptert.](virtual-network-network-interface.md#create-a-network-interface)
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az vm create](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-|PowerShell|[New-AzVM](/powershell/module/az.compute/new-azvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|parancssori felület|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-network-nic-create)|
+|PowerShell|[Új-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
-## <a name="vm-add-nic"></a>Hálózati adapter hozzáadása meglévő virtuális géphez
+## <a name="add-a-network-interface-to-an-existing-vm"></a>Hálózati adapter hozzáadása meglévő virtuális géphez
 
-1. Jelentkezzen be az Azure portálra.
-2. A portál felső részén található keresőmezőbe írja be annak a virtuális gépnek a nevét, amelyhez hozzá szeretné adni a hálózati adaptert, vagy tallózással keresse meg a virtuális GÉPET a **minden szolgáltatás**, majd a **virtuális gépek**lehetőség kiválasztásával. Miután megtalálta a virtuális gépet, válassza ki. A virtuális gépnek támogatnia kell a felvenni kívánt hálózati adapterek számát. Annak megállapításához, hogy az egyes virtuálisgép-méretek hány hálózati adaptert támogatnak, lásd: [a Linux rendszerű virtuális gépek méretei az Azure-ban](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , illetve a [Windowsos virtuális gépek méretei az Azure-ban](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)  
-3. Válassza az **Áttekintés**lehetőséget a **Beállítások**területen. Válassza a **Leállítás**lehetőséget, majd várjon, amíg a virtuális gép **állapota** leállítva értékre nem változik (fel van **foglalva)** .
-4. Válassza a **hálózatkezelés**lehetőséget a **Beállítások**területen.
-5. Válassza a **hálózati adapter csatolása**lehetőséget. Azon hálózati adapterek listájából, amelyek jelenleg nem csatlakoznak egy másik virtuális géphez, válassza ki azt, amelyet csatlakoztatni szeretne.
+Hálózati adapter hozzáadása a virtuális géphez:
 
-   >[!NOTE]
-   >A kiválasztott hálózati adapter nem rendelkezhet a gyorsított hálózatkezelés engedélyezésével, nem rendelkezhet hozzá IPv6-címekkel, és ugyanabban a virtuális hálózatban kell lennie, mint amely a virtuális géphez jelenleg csatlakozó hálózati adaptert tartalmazza.
+1. Az [Azure Portalon](https://portal.azure.com) megkeresheti a meglévő virtuális gépet. Keressen és válasszon **virtuális gépek**lehetőséget.
 
-   Ha nem rendelkezik meglévő hálózati adapterrel, először létre kell hoznia egyet. Ehhez válassza a **hálózati adapter létrehozása**lehetőséget. A hálózati adapterek létrehozásával kapcsolatos további tudnivalókért tekintse meg [a hálózati adapterek](virtual-network-network-interface.md#create-a-network-interface)létrehozásával foglalkozó témakört. Ha többet szeretne megtudni a hálózati adapterek virtuális gépekhez adásával kapcsolatos további korlátozásokról, lásd: [megkötések](#constraints).
+2. Válassza ki a virtuális gép nevét. A virtuális gépnek támogatnia kell a hozzáadni kívánt hálózati adapterek számát. Ha meg szeretné tudni, hogy az egyes virtuális gépek méretehány hálózati adaptert támogat, tekintse meg az Azure [linuxos virtuális gépekhez](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy Windows virtuális gépekhez való [méreteit.](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
-6. Kattintson az **OK** gombra.
-7. Válassza az **Áttekintés**lehetőséget, a **Beállítások**területen, majd **indítsa** el a virtuális gépet.
-8. Konfigurálja úgy a virtuális gép operációs rendszerét, hogy megfelelően több hálózati adaptert használjon. Megtudhatja, hogyan konfigurálhat [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) vagy [Windows rendszert](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) több hálózati adapterhez.
+3. A Virtuálisgép parancssávján válassza a **Leállítás**lehetőséget, majd a megerősítést kérő **párbeszédpanelen** az OK gombot. Ezután várja **meg,** amíg a virtuális gép állapota **Leállítva (felszabadított)** lesz.
 
-### <a name="commands"></a>Parancsok
-|Eszköz|Parancs|
-|---|---|
-|parancssori felület|[az VM NIC Add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json) (Reference) vagy [részletes lépések](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
-|PowerShell|[Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (hivatkozás) vagy [részletes lépések](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
+4. A Virtuális gép menüsorából válassza a **Hálózati** > **csatoló csatolása**lehetőséget. Ezután a **Meglévő hálózati adapter csatolása**területen válassza ki a csatolni kívánt hálózati illesztőfelületet, és kattintson az **OK gombra.**
 
-## <a name="view-network-interfaces-for-a-vm"></a>Virtuális gép hálózati adapterének megtekintése
+    >[!NOTE]
+    >A kiválasztott hálózati adapternem engedélyezhető a gyorsított hálózatkezelés, nem rendelhető hozzá IPv6-cím, és ugyanannál a virtuális hálózatnál kell léteznie, amelyen a virtuális géphez jelenleg csatlakoztatott hálózati adapter található.
 
-Megtekintheti a virtuális géphez csatlakozó hálózati adaptereket, és megismerheti az egyes hálózati adapterek konfigurációját, valamint az egyes hálózati adapterekhez hozzárendelt IP-címeket. 
+    Ha nem rendelkezik meglévő hálózati adapter, először létre kell hoznia egyet. Ehhez válassza a **Hálózati adapter létrehozása**lehetőséget. A hálózati adapter létrehozásáról a Hálózati adapter létrehozása című témakörben olvashat [bővebben.](virtual-network-network-interface.md#create-a-network-interface) Ha többet szeretne tudni arról, hogy milyen további korlátozások vannak a hálózati adapterek virtuális gépekhez való hozzáadásakor, olvassa el a Kényszerek ( Korlátozások ) [témakört.](#constraints)
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely hozzá van rendelve a tulajdonos, közreműködő vagy hálózati közreműködő szerepkörhöz az előfizetéséhez. Ha többet szeretne megtudni a szerepkörök a fiókokhoz való hozzárendeléséről, tekintse meg az [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörei](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)című témakört.
-2. A Azure Portal tetején található szöveges **keresési erőforrásokat** tartalmazó mezőbe írja be a következőt: **Virtual Machines**. Ha a **virtuális gépek** megjelennek a keresési eredmények között, válassza ki.
-3. Válassza ki annak a virtuális gépnek a nevét, amelyre vonatkozóan meg szeretné tekinteni a hálózati adaptereket.
-4. A kiválasztott virtuális gép **Beállítások** szakaszában válassza a **hálózatkezelés**lehetőséget. A hálózati adapterek beállításairól és azok módosításáról a [hálózati adapterek kezelése](virtual-network-network-interface.md)című témakörben olvashat bővebben. A hálózati adapterhez hozzárendelt IP-címek hozzáadásával, módosításával vagy eltávolításával kapcsolatos további információkért lásd: a [hálózati adapter IP-címeinek kezelése](virtual-network-network-interface-addresses.md).
+5. A virtuális gép menüsorában válassza **az Áttekintés** > **kezdete** lehetőséget a virtuális gép újraindításához.
+
+Most konfigurálhatja a virtuális gép operációs rendszerét, hogy több hálózati adaptert használjon megfelelően. További információ a [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) vagy a [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) több hálózati kapcsolathoz való konfigurálásáról.
 
 ### <a name="commands"></a>Parancsok
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az vm show](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|parancssori felület|[az vm nic add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-add) (hivatkozás); [részletes lépések](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
+|PowerShell|[Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (hivatkozás); [részletes lépések](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
+
+## <a name="view-network-interfaces-for-a-vm"></a>Virtuális gép hálózati adaptereinek megtekintése
+
+Megtekintheti a virtuális géphez jelenleg csatlakoztatott hálózati adaptereket, hogy megismerje az egyes hálózati adapterek konfigurációját, valamint az egyes hálózati adapterekhez rendelt IP-címeket. 
+
+1. Az [Azure Portalon](https://portal.azure.com) megkeresheti a meglévő virtuális gépet. Keressen és válasszon **virtuális gépek**lehetőséget.
+
+    >[!NOTE]
+    >Jelentkezzen be egy olyan fiókkal, amely az előfizetéshez tulajdonosi, közreműködői vagy hálózati közreműködői szerepkörrel van elrendelve. Ha többet szeretne tudni aszerepkörök fiókokhoz való hozzárendeléséről, olvassa [el az Azure szerepköralapú hozzáférés-vezérlésbeépített szerepköreit.](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)
+
+2. Válassza ki annak a virtuális gépnek a nevét, amelynek a csatlakoztatott hálózati csatolóit meg szeretné tekinteni.
+
+3. A Virtuálisgép menüsorban válassza a **Hálózat lehetőséget.**
+
+A hálózati adapter beállításairól és módosításukról a [Hálózati csatolók kezelése (Manage) (Hálózati adapterek kezelése) témakörben](virtual-network-network-interface.md)olvashat. A hálózati adapterhez rendelt IP-címek hozzáadásáról, módosításáról és eltávolításáról a [Hálózati adapter IP-címeinek kezelése című](virtual-network-network-interface-addresses.md)témakörben olvashat.
+
+### <a name="commands"></a>Parancsok
+
+|Eszköz|Parancs|
+|---|---|
+|parancssori felület|[az vm nic lista](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-list)|
 |PowerShell|[Get-AzVM](/powershell/module/az.compute/get-azvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
-## <a name="remove-a-network-interface-from-a-vm"></a>Hálózati adapter eltávolítása egy virtuális gépről
+## <a name="remove-a-network-interface-from-a-vm"></a>Hálózati adapter eltávolítása a virtuális gépről
 
-1. Jelentkezzen be az Azure portálra.
-2. A portál felső részén található keresőmezőbe keresse meg annak a virtuális gépnek a nevét, amelyet el szeretne távolítani (válassza le) a hálózati adaptert, vagy keresse meg a virtuális GÉPET a **minden szolgáltatás**, majd a **virtuális gépek**lehetőség kiválasztásával. Miután megtalálta a virtuális gépet, válassza ki.
-3. Válassza az **Áttekintés**, a **Beállítások**, majd a **Leállítás**lehetőséget. Várjon, amíg a virtuális gép **állapota** leállítva értékre nem változik (fel van **foglalva)** .
-4. Válassza a **hálózatkezelés**lehetőséget a **Beállítások**területen.
-5. Válassza a **hálózati adapter leválasztása**lehetőséget. A virtuális géphez jelenleg csatlakozó hálózati adapterek listájából válassza ki a leválasztani kívánt hálózati adaptert.
+1. Az [Azure Portalon](https://portal.azure.com) megkeresheti a meglévő virtuális gépet. Keressen és válasszon **virtuális gépek**lehetőséget.
 
-   >[!NOTE]
-   >Ha csak egy hálózati adapter van felsorolva, akkor nem lehet leválasztani, mert a virtuális gépnek mindig legalább egy hálózati adapterrel kell rendelkeznie.
-6. Kattintson az **OK** gombra.
+2. Válassza ki annak a virtuális gépnek a nevét, amelynek a csatlakoztatott hálózati csatolóit meg szeretné tekinteni.
+
+3. A Virtuálisgép eszköztáron válassza a **Leállítás választót.**
+
+4. **Várjon,** amíg a virtuális gép állapota **Leállítva (felszabadított)** lesz.
+
+5. A Virtuálisgép menüsorából válassza a **Hálózati** > **leválasztás hálózati adapter lehetőséget.**
+
+6. A **Hálózati adapter leválasztása** párbeszédpanelen jelölje ki a leválasztani kívánt hálózati illesztőfelületet. Ezután kattintson az **OK** gombra.
+
+    >[!NOTE]
+    >Ha csak egy hálózati csatoló szerepel a listában, nem lehet leválasztani, mert a virtuális géphez mindig legalább egy hálózati illesztőnek kell hozzákapcsolódnia.
 
 ### <a name="commands"></a>Parancsok
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az VM NIC Remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json) (Reference) vagy [részletes lépések](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
-|PowerShell|[Remove-AzVMNetworkInterface](/powershell/module/az.compute/remove-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (hivatkozás) vagy [részletes lépések](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
+|parancssori felület|[az vm nic eltávolítás](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-remove) (hivatkozás); [részletes lépések](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
+|PowerShell|[Eltávolítás-AzVMNetworkInterface](/powershell/module/az.compute/remove-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (hivatkozás); [részletes lépések](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
 
 ## <a name="constraints"></a>Korlátozások
 
-- A virtuális gépekhez legalább egy hálózati adapternek hozzá kell tartoznia.
-- A virtuális gépek csak annyi hálózati csatolóval rendelkezhetnek, amennyit a virtuálisgép-méret is támogat. Ha többet szeretne megtudni arról, hogy az egyes virtuálisgép-méretek hány hálózati adaptert támogatnak, tekintse meg a Linux rendszerű [virtuális gépek méretei az Azure-ban](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy az Azure-beli [Windowsos virtuális gépek](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)mérete Minden méret legalább két hálózati adaptert támogat.
-- A virtuális géphez hozzáadott hálózati adapterek jelenleg nem csatlakoztathatók másik virtuális géphez. A hálózati adapterek létrehozásával kapcsolatos további tudnivalókért tekintse meg [a hálózati adapterek](virtual-network-network-interface.md#create-a-network-interface)létrehozásával foglalkozó témakört.
-- A múltban a hálózati adapterek csak olyan virtuális gépekhez vehetők fel, amelyek több hálózati adaptert támogattak, és legalább két hálózati adapterrel lettek létrehozva. Nem lehet hálózati adaptert hozzáadni egy olyan virtuális géphez, amely egyetlen hálózati adapterrel lett létrehozva, még akkor is, ha a virtuális gép mérete több hálózati csatolót is támogat. Ezzel szemben a hálózati adapterek csak legalább három hálózati adapterrel távolíthatók el, mert legalább két hálózati adapterrel létrehozott virtuális gépeknek mindig legalább két hálózati adapterrel kell rendelkezniük. A megkötések egyike sem vonatkozik többé. Most már létrehozhat egy tetszőleges számú hálózati adapterrel rendelkező virtuális gépet (a virtuális gép mérete által támogatott számmal).
-- Alapértelmezés szerint a virtuális géphez csatolt első hálózati adapter az *elsődleges* hálózati adapterként van meghatározva. A virtuális gép összes többi hálózati adaptere *másodlagos* hálózati adapter.
-- Bár szabályozhatja, hogy melyik hálózati adaptert küldi el a kimenő forgalom, alapértelmezés szerint a virtuális gépről érkező összes kimenő forgalom az elsődleges hálózati adapter elsődleges IP-konfigurációjához rendelt IP-címet kapja meg.
-- A múltban az azonos rendelkezésre állási csoportba tartozó összes virtuális gépnek egyetlen vagy több hálózati adapterrel kell rendelkeznie. A tetszőleges számú hálózati adapterrel rendelkező virtuális gépek már ugyanabban a rendelkezésre állási készletben létezhetnek, a virtuális gép mérete által támogatott számmal. A létrehozáskor csak egy virtuális gépet adhat hozzá rendelkezésre állási készlethez. További információ a rendelkezésre állási csoportokról: [virtuális gépek rendelkezésre állásának kezelése az Azure-ban](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
-- Míg az azonos virtuális GÉPEN lévő hálózati adapterek egy virtuális hálózaton belül más alhálózatokhoz is csatlakoztathatók, a hálózati adaptereknek mind ugyanahhoz a virtuális hálózathoz kell csatlakozniuk.
-- Bármely elsődleges vagy másodlagos hálózati adapter IP-konfigurációjához bármilyen IP-címet hozzáadhat egy Azure Load Balancer háttér-készlethez. A múltban csak az elsődleges hálózati adapter elsődleges IP-címe adható hozzá a háttér-készlethez. További információ az IP-címekről és a konfigurációkról: [IP-címek hozzáadása, módosítása vagy eltávolítása](virtual-network-network-interface-addresses.md).
-- A virtuális gép törlése nem törli a hozzá csatolt hálózati adaptereket. Ha töröl egy virtuális gépet, a hálózati adapterek le lesznek választva a virtuális gépről. A hálózati adaptereket különböző virtuális gépekhez is hozzáadhatja, vagy törölheti őket.
-- Mint az IPv6 esetében, nem csatolhat olyan hálózati adaptert, amelynek a létrehozása után a gyorsított hálózatkezelés engedélyezve van a virtuális géphez. A gyorsított hálózatkezelés kihasználása érdekében a virtuális gép operációs rendszerének lépéseit is végre kell hajtania. További információ a gyorsított hálózatkezelésről és egyéb korlátozásokról Windows vagy [Linux](create-vm-accelerated-networking-cli.md) [rendszerű](create-vm-accelerated-networking-powershell.md) virtuális gépek esetén.
+- A virtuális géphez legalább egy hálózati adapternek hozzá kell kapcsolódnia.
 
-## <a name="next-steps"></a>Következő lépések
-Ha több hálózati adapterrel vagy IP-címmel rendelkező virtuális gépet szeretne létrehozni, tekintse meg a következő cikkeket:
+- A virtuális gép csak annyi hálózati adapterek csatolták hozzá, mint a virtuális gép mérete támogatja. Ha többet szeretne megtudni arról, hogy az egyes virtuális gépek méretehány hálózati adaptert támogat, tekintse meg az Azure [linuxos virtuális gépekhez](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy Windows virtuális gépekhez való [méreteit.](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Minden méretlegalább két hálózati adaptert támogat.
+
+- A virtuális géphez hozzáadott hálózati adapterek jelenleg nem csatolhatók egy másik virtuális géphez. A hálózati adapterek létrehozásáról a Hálózati adapter létrehozása című témakörben olvashat [bővebben.](virtual-network-network-interface.md#create-a-network-interface)
+
+- A múltban csak olyan virtuális gépekhez adhat hálózati adaptereket, amelyek több hálózati adaptert támogattak, és legalább két hálózati adapterrel jöttek létre. Nem lehetett hálózati adaptert hozzáadni egy virtuális géphez, amely et egy hálózati adapterrel hoztak létre, még akkor sem, ha a virtuális gép mérete egynél több hálózati adaptert támogatott. Ezzel szemben csak a legalább három hálózati csatolákkal rendelkező virtuális gép hálózati csatolóiközül távolíthatja el a hálózati adaptereket, mert a legalább két hálózati adapterrel létrehozott virtuális gépeknek mindig legalább két hálózati adapterrel kellett rendelkezniük. Ezek a megkötések már nem érvényesek. Most már létrehozhat egy virtuális gép tetszőleges számú hálózati adapterek (a virtuális gép mérete által támogatott számig).
+
+- Alapértelmezés szerint a virtuális géphez csatolt első hálózati adapter az *elsődleges* hálózati csatoló. A virtuális gép összes többi hálózati csatolója *másodlagos* hálózati csatoló.
+
+- Szabályozhatja, hogy melyik hálózati felületre küldkimenő forgalmat. Azonban a virtuális gép alapértelmezés szerint küldi az összes kimenő forgalmat az IP-cím, amely az elsődleges IP-konfiguráció az elsődleges hálózati adapter.
+
+- A múltban az azonos rendelkezésre állási csoporton belüli összes virtuális gépnek egyetlen vagy több hálózati adapterrel kellett rendelkeznie. Tetszőleges számú hálózati adapterrel rendelkező virtuális gépek most már létezhetnek ugyanabban a rendelkezésre állási csoportban, a virtuális gép mérete által támogatott számig. Csak akkor adhat hozzá virtuális gép egy rendelkezésre állási csoport létrehozásakor. A rendelkezésre állási csoportokról a [Virtuális gépek azure-beli elérhetőségének kezelése című témakörben olvashat](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)bővebben.
+
+- Az azonos virtuális gépen lévő hálózati adaptereket a virtuális hálózaton belüli különböző alhálózatokhoz csatlakoztathatja. A hálózati adaptereknek azonban ugyanahhoz a virtuális hálózathoz kell csatlakozniuk.
+
+- Bármely elsődleges vagy másodlagos hálózati adapter bármely IP-konfigurációjához bármilyen IP-címet hozzáadhat egy Azure Load Balancer háttérkészlethez. A múltban csak az elsődleges hálózati adapter elsődleges IP-címe adható hozzá egy háttérkészlethez. Az IP-címekről és -konfigurációkról az [IP-címek hozzáadása, módosítása és eltávolítása](virtual-network-network-interface-addresses.md)című témakörben olvashat bővebben.
+
+- A virtuális gép törlése nem törli a hozzá csatlakoztatott hálózati adaptereket. Virtuális gép törlésekor a hálózati adapterek leválnak a virtuális gépről. Ezeket a hálózati adaptereket hozzáadhatja a különböző virtuális gépekhez, vagy törölheti őket.
+
+- Az IPv6-hoz is nem csatolhat olyan hálózati adaptert, amelyen a gyorsított hálózat engedélyezve van a virtuális géphez a létrehozása után. Továbbá a gyorsított hálózatkezelés előnyeinek kihasználásához a virtuális gép operációs rendszerén belül is végre kell hajtania a lépéseket. További információ a windowsos vagy [Linuxos](create-vm-accelerated-networking-cli.md) virtuális gépeken futó gyorsított hálózatkezelésről [és](create-vm-accelerated-networking-powershell.md) egyéb korlátozásokról.
+
+## <a name="next-steps"></a>További lépések
+
+Több hálózati adapterrel vagy IP-címmel rendelkező virtuális gép létrehozásáról a következő témakörben lehet tudni:
 
 |Tevékenység|Eszköz|
 |---|---|
 |Több hálózati adapterrel rendelkező virtuális gép létrehozása|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-|Egyetlen hálózati adaptert tartalmazó virtuális gép létrehozása több IPv4-címmel|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
-|Egyetlen hálózati adaptert tartalmazó virtuális gép létrehozása magánhálózati IPv6-cím (Azure Load Balancer mögött)|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Azure Resource Manager sablon](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|Egyetlen hálózati adapter virtuális gép létrehozása több IPv4-címmel|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
+|Egyetlen hálózati adapter virtuális gép létrehozása privát IPv6-címmel (egy Azure Load Balancer mögött)|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Azure Resource Manager sablon](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|

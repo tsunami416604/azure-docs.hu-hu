@@ -1,6 +1,6 @@
 ---
-title: Az Azure által korlátozott vCPU méretek – Windows
-description: Felsorolja azokat a virtuálisgép-méreteket, amelyek képesek korlátozott számú vCPU.
+title: Az Azure korlátozott vCPU-méretei – Windows
+description: Felsorolja a virtuális gép mérete, amelyek képesek a korlátozott vCPU-szám.
 services: virtual-machines-windows
 documentationcenter: ''
 author: joelpelley
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
 ms.openlocfilehash: 4121da405c2700e09bf22d1e7b42fbdc5cdc35a7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77912834"
 ---
-# <a name="constrained-vcpu-capable-vm-sizes"></a>Korlátozott vCPU képességgel rendelkező VM-méretek
+# <a name="constrained-vcpu-capable-vm-sizes"></a>Korlátozott vCPU-képes virtuális gépméretek
 
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-constrained-vcpu.md)]
@@ -33,6 +33,6 @@ ms.locfileid: "77912834"
 - [GPU](sizes-gpu.md)
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 
-## <a name="next-steps"></a>Következő lépések
-További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
+## <a name="next-steps"></a>További lépések
+További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.
 

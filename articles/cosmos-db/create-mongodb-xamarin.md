@@ -1,21 +1,21 @@
 ---
-title: Xamarin-alkalmazás létrehozása a .NET-tel és Azure Cosmos DB API-val MongoDB
-description: A MongoDB API-jával való kapcsolódáshoz és Azure Cosmos DB lekérdezéshez használható Xamarin-mintakód
+title: Xamarin-alkalmazás létrehozása a .NET és az Azure Cosmos DB MongoDB-hoz való API-jával
+description: Bemutatja a Xamarin-kód mintát, amelynek segítségével csatlakozhat és lekérdezheti az Azure Cosmos DB MongoDB API-ját
 author: codemillmatt
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/20/2018
+ms.date: 03/16/2020
 ms.author: masoucou
-ms.openlocfilehash: a21e3705fe367e478ec02b82ec83c4ad7cfb4151
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 98b0ddf345ebd19e2cd974db3891e88c9f72530d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445450"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79481687"
 ---
-# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: Xamarin. Forms-alkalmazás létrehozása .NET SDK-val és Azure Cosmos DB API-val a MongoDB-hoz
+# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Rövid útmutató: Xamarin.Forms alkalmazás létrehozása .NET SDK-val és az Azure Cosmos DB MongoDB-hoz tartozó API-jával
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -28,13 +28,13 @@ ms.locfileid: "75445450"
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre [Azure Cosmos db API-val konfigurált Cosmos-fiókot a MongoDB](mongodb-introduction.md), a dokumentum-adatbázishoz és a gyűjteményhez a Azure Portal használatával. Ezután létrehoz egy Todo-alkalmazást Xamarin. Forms alkalmazást a [MongoDB .net-illesztőprogram](https://docs.mongodb.com/ecosystem/drivers/csharp/)használatával.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre egy [Cosmos-fiókot az Azure Cosmos DB MongoDB API-jával konfigurálva,](mongodb-introduction.md)a dokumentum-adatbázissal és az Azure Portalon keresztül gyűjteményhasználatával. Ezután a [MongoDB .NET illesztőprogram](https://docs.mongodb.com/ecosystem/drivers/csharp/)segítségével egy Xamarin.Forms alkalmazást kell készítenie.
 
 ## <a name="prerequisites-to-run-the-sample-app"></a>A mintaalkalmazás futtatásának előfeltételei
 
 A mintaalkalmazás futtatásához szüksége lesz a [Visual Studio](https://www.visualstudio.com/downloads/) vagy a [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) alkalmazásra és egy érvényes Azure CosmosDB-fiókra.
 
-Ha még nem rendelkezik a Visual Studióval, töltse le a [Visual studio 2019 Community Editiont](https://www.visualstudio.com/downloads/) a **Mobile Development** használatával a telepítővel telepített .net-munkaterheléssel.
+Ha még nem rendelkezik Visual Studio-val, töltse le a [Visual Studio 2019 Community Edition alkalmazást](https://www.visualstudio.com/downloads/) a Mobile **fejlesztéssel, amelyen a .NET** munkaterhelés telepítve van a telepítővel.
 
 Ha Mac gépet használ, a [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) alkalmazást töltse le, és futtassa a telepítést.
 
@@ -50,12 +50,20 @@ A cikkben leírt minta kompatibilis a MongoDB.Driver 2.6.1-es verziójával.
 
 ## <a name="clone-the-sample-app"></a>A mintaalkalmazás klónozása
 
-Először töltse le a minta alkalmazást a GitHubról. Ez implementál egy teendőkezelő alkalmazást a MongoDB dokumentumtároló modelljével.
+Először töltse le a mintaalkalmazást a GitHubról. Ez implementál egy teendőkezelő alkalmazást a MongoDB dokumentumtároló modelljével.
 
-1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
+
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+1. Windows megnyitni egy parancssort, vagy a Mac nyissa meg a terminált, hozzon létre egy új mappát nevű git-minták, majd zárja be az ablakot.
+
+    ```batch
+    md "C:\git-samples"
+    ```
 
     ```bash
-    md "C:\git-samples"
+    mkdir '$home\git-samples\
     ```
 
 2. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` parancs használatával váltson az új mappára, ahol telepíteni szeretné a mintaalkalmazást.
@@ -76,7 +84,7 @@ Ha nem szeretné a gitet használni, [a projektet ZIP-fájlként is letöltheti]
 
 Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra.
 
-A következő kódrészletek mind a `MongoService` osztályból származnak, a következő elérési úton található: src/TaskList. Core/Services/MongoService. cs.
+A következő kódrészletek mind az `MongoService` osztályból származnak, a következő elérési úton találhatók: src/TaskList.Core/Services/MongoService.cs.
 
 * A Mongo Client inicializálása.
     ```cs
@@ -86,6 +94,8 @@ A következő kódrészletek mind a `MongoService` osztályból származnak, a k
 
     settings.SslSettings =
         new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+
+    settings.RetryWrites = false;
 
     MongoClient mongoClient = new MongoClient(settings);
     ```
@@ -132,7 +142,7 @@ A következő kódrészletek mind a `MongoService` osztályból származnak, a k
     }
     ```
 
-* Feladat frissítése egy gyűjteményben.
+* A gyűjtemény egy feladatának frissítése.
     ```cs
     public async Task UpdateTask(MyTask task)
     {
@@ -140,7 +150,7 @@ A következő kódrészletek mind a `MongoService` osztályból származnak, a k
     }
     ```
 
-* Feladat törlése egy gyűjteményből.
+* Feladat törlése gyűjteményből.
     ```cs
     public async Task DeleteTask(MyTask task)
     {
@@ -159,6 +169,11 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 2. Nyissa meg a **TaskList.Core** projekt **Helpers** könyvtárában lévő **APIKeys.cs** fájlt.
 
 3. Másolja ki az **elsődleges kapcsolati sztring** értekét a portálról (a másolási gombbal), és ezt adja meg a **ConnectionString** mező értékeként az **APIKeys.cs** fájlban.
+
+4. Eltávolítás `&replicaSet=globaldb` a kapcsolati karakterláncból. Futásidejű hibaüzenetjelenik meg, ha nem távolítja el ezt az értéket a lekérdezési karakterláncból.
+
+> [!IMPORTANT]
+> A futásidejű `&replicaSet=globaldb` hiba elkerülése érdekében el kell távolítania a kulcs/érték párt a kapcsolati karakterlánc lekérdezési karakterláncából.
 
 Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges.
 
@@ -187,9 +202,9 @@ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Az
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, és Xamarin.Forms-alkalmazást futtatni a MongoDB API-jával. Most további adatokat importálhat a Cosmos DB-fiókba.
 
 > [!div class="nextstepaction"]
-> [Adatimportálás a Azure Cosmos DB Azure Cosmos DB API-jával konfigurált MongoDB](mongodb-migrate.md)
+> [Adatok importálása az Azure Cosmos DB-be az Azure Cosmos DB MongoDB-hoz való API-jával konfigurálva](mongodb-migrate.md)

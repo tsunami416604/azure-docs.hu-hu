@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure Data Science Virtual Machine
+title: Mi az Azure Data Science virtuális gép
 titleSuffix: Azure Data Science Virtual Machine
 description: Alapvető elemzési helyzetek és összetevők Windows és Linux rendszerű adatelemző virtuális gépekhez.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
@@ -10,80 +10,80 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 12/31/2019
-ms.openlocfilehash: ea53ee3f3c1d39652982b6343b1e634dac1fbc75
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: a5fbcc1eef8717fdb1aa7f914c3e0ba6594fc27a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241625"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281799"
 ---
-# <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Mi a Linux és a Windows rendszerhez készült Azure Data Science Virtual Machine?
+# <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Mi az Azure Data Science virtuális gép Linux és Windows?
 
-A Data Science Virtual Machine (DSVM) egy testreszabott virtuálisgép-rendszerkép az Azure Cloud platformon, amely kifejezetten az adatelemzéshez készült. Számos népszerű adatelemzési eszköz előre telepítve van és előre konfigurálva van az intelligens alkalmazások speciális elemzésekhez való kialakításához. 
+Az adatelemzési virtuális gép (DSVM) egy testre szabott virtuális gép az Azure felhőplatformon kifejezetten adatelemzési célokra készült. Számos népszerű adatelemzési eszközzel rendelkezik, amelyek előre telepítve vannak, és előre konfigurálva vannak, hogy intelligens alkalmazásokat építsenek a fejlett elemzésekhez. 
 
-A DSVM a következő címen érhető el:
-+ **Windows Server 2019 (előzetes verzió)**
-+ **Ubuntu 18,04 LTS (előzetes verzió)**
+A DSVM a következő oldalon érhető el:
++ **Windows Server 2019**
++ **Ubuntu 18.04 LTS**
 + Windows Server 2016
-+ Ubuntu 16,04 LTS és CentOS 7,4
++ Ubuntu 16.04 LTS és CentOS 7.4
 
 
 > [!NOTE]
-> A Deep learninghez készült összes virtuálisgép-eszköz be lett hajtva a Data Science Virtual Machineba. 
+> A deep learning minden virtuálisgép-eszköze be van hajtva az adatelemzési virtuális gépbe. 
 
 
-## <a name="why-choose-the-dsvm"></a>Miért érdemes kiválasztani a DSVM?
-A Data Science Virtual Machine célja, hogy minden képzettségi szinten és az iparágon keresztül biztosítson szakembereket egy súrlódás nélküli, előre konfigurált adatelemzési környezettel. Ahelyett, hogy saját maga is kiépít egy hasonló munkaterületet, létrehozhat egy DSVM. Ez a választás a telepítés, a konfiguráció és a csomag felügyeleti folyamatainál akár napokat, akár _heteket_ is megtakaríthat. A DSVM üzembe helyezése után azonnal munkához láthat adatelemzési projektjén.
+## <a name="why-choose-the-dsvm"></a>Miért válassza a DSVM-et?
+Az adatelemzési virtuális gép célja, hogy az adatszakemberek minden képzettségi szint és az iparágak között egy súrlódásmentes, előre konfigurált adatelemzési környezetben. Ahelyett, hogy egy hasonló munkaterületet a saját, kiépítheti a DSVM. Ezzel a választással napokat vagy akár _heteket_ takaríthat meg a telepítési, konfigurációs és csomagkezelési folyamatok során. A DSVM üzembe helyezése után azonnal munkához láthat adatelemzési projektjén.
 
-## <a name="sample-use-cases"></a>Példa használati esetekre
+## <a name="sample-use-cases"></a>Használati esetek mintája
 
-Alább bemutatjuk néhány gyakori használati esetet a DSVM-ügyfelek számára.
+Az alábbiakban bemutatjuk néhány gyakori használati esetek DSVM ügyfelek számára.
 
 ### <a name="moving-data-science-workloads-to-the-cloud"></a>Adatelemzési számítási feladatok áthelyezése a felhőbe
 
-A DSVM olyan adatelemző csapatok számára biztosít alapkonfigurációt, amelyek a helyi asztalait egy felügyelt Felhőbeli asztallal szeretnék helyettesíteni, így biztosítva, hogy egy adott csapat összes adatszakértője konzisztens módon legyen beállítva a kísérletek ellenőrzéséhez és az együttműködés előmozdításához. A rendszergazdai terhek csökkentésével csökkenti a költségeket is. Ez a terhek csökkentése a speciális analitikai szoftvercsomagok kiértékeléséhez, telepítéséhez és karbantartásához szükséges időt takarít meg.
+A DSVM alapkonfigurációt biztosít az adatelemzési csoportok számára, amelyek le szeretnék cserélni a helyi asztalukat egy felügyelt felhőalapú asztalra, biztosítva, hogy a csapat összes adattudósa egységes beállítással rendelkezzen, amellyel ellenőrizheti a kísérleteket és elő szeretné mozdítani az együttműködést. Csökkenti a költségeket is azáltal, hogy csökkenti a rendszergazdai terheket. Ez a tehercsökkentés időt takarít meg a speciális elemzésekhez szükséges szoftvercsomagok kiértékeléséhez, telepítéséhez és karbantartásához.
 
 ### <a name="data-science-training-and-education"></a>Adatelemzési képzés és oktatás
-Az adatelemzési osztályokat tanító vállalati oktatók és oktatók általában virtuálisgép-rendszerképet biztosítanak. A rendszerkép biztosítja, hogy a tanulók konzisztens beállításokkal rendelkezzenek, és hogy a minták kiszámíthatóan működjenek. 
+Vállalati oktatók és oktatók, akik tanítanak adatelemzési osztályok általában egy virtuális gép imázsát. A kép biztosítja, hogy a diákok egységes beállítással rendelkezzenek, és hogy a minták kiszámíthatóan működjenek. 
 
-A DSVM egy igény szerinti környezetet hoz létre egy konzisztens beállítással, amely megkönnyíti a támogatási és kompatibilitási kihívásokat. Olyan esetekben, amikor gyakran kell környezetet kiépíteni, különösen a rövidebb kurzusokhoz, ez jelentős előnnyel jár.
+A DSVM igény szerinti környezetet hoz létre, amely egységes beállítással könnyíti meg a támogatási és inkompatibilitási kihívásokat. Olyan esetekben, amikor gyakran kell környezetet kiépíteni, különösen a rövidebb kurzusokhoz, ez jelentős előnnyel jár.
 
 ### <a name="on-demand-elastic-capacity-for-large-scale-projects"></a>Igény szerinti rugalmas kapacitás nagyszabású projektekhez
-Az adatelemzési ötletbörzékhez/versenyeken, illetve a nagyméretű adatmodellezésen és-kutatáson túl nagy kapacitást kell kibővíteni, jellemzően rövid időtartamra. A DSVM segítségével gyorsan, igény szerint replikálhatja az adatelemzési környezetet, a nagy teljesítményű számítástechnikai erőforrások által futtatható kísérleteket lehetővé tevő kibővített kiszolgálókon.
+Adattudomány hackathons/versenyek vagy nagyszabású adatmodellezés és feltárási igényel kibővített hardverkapacitás, általában rövid időtartamra. A DSVM segítségével replikálhatja az adatelemzési környezet gyorsan igény szerint, a kibővített kiszolgálók, amelyek lehetővé teszik a kísérleteket, hogy a nagy teljesítményű számítástechnikai erőforrások futtatható.
 
-### <a name="custom-compute-power-for-azure-notebooks"></a>Azure Notebooks egyéni számítási teljesítmény
-[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) egy ingyenes üzemeltetett szolgáltatás, amely a felhőben Jupyter-jegyzetfüzeteket fejleszt, futtat és oszt meg a telepítés nélkül. Az ingyenes szolgáltatási csomag legfeljebb 4 GB memóriával és 1 GB adattal rendelkezik. 
+### <a name="custom-compute-power-for-azure-notebooks"></a>Egyéni számítási teljesítmény az Azure-jegyzetfüzetekhez
+[Az Azure Notebooks](../../notebooks/azure-notebooks-overview.md) egy ingyenes üzemeltetett szolgáltatás a Jupyter-jegyzetfüzetek fejlesztéséhez, futtatásához és megosztásához a felhőben telepítés nélkül. Az ingyenes szolgáltatási szint 4 GB memóriára és 1 GB adatra korlátozódik. 
 
-Az összes korlát felszabadításához csatolhat jegyzetfüzet-projektet egy DSVM vagy bármely más, a Jupyter-kiszolgálón futó virtuális géphez. Ha Azure Active Directory (például vállalati) fiókkal jelentkezik be a Azure Notebooksba, a jegyzetfüzetek automatikusan megjeleníti a fiókhoz társított előfizetések Dsvm. A rendelkezésre álló számítási teljesítmény kibontásához [DSVM csatolhat Azure Notebookshoz](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) .
+Az összes korlát felszabadításához csatolhat egy jegyzetfüzet-projektet egy DSVM-hez vagy bármely más, Jupyter-kiszolgálón futó virtuális géphez. Ha az Azure Active Directory használatával (például vállalati fiókkal) fiókkal jelentkezik be az Azure Notebooks ba, a notebookok automatikusan megjelenítik a DSVM-eket az adott fiókhoz társított előfizetésekben. [DSVM-et csatlakoztathat az Azure Notebooks-hoz](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) a rendelkezésre álló számítási teljesítmény bővítéséhez.
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Rövidtávú kísérletezés és kiértékelés
-A DSVM segítségével kiértékelheti vagy megismerheti az új adatelemzési [eszközöket](./tools-included.md), különösen a közzétett [minták és](./dsvm-samples-and-walkthroughs.md)útmutatók egyes részein.
+A DSVM segítségével új adatelemzési [eszközöket](./tools-included.md)értékelhet vagy tanulhat, különösen a közzétett [minták és forgatókönyvek némelyikének átnézésével.](./dsvm-samples-and-walkthroughs.md)
 
 
-### <a name="deep-learning-with-gpus"></a>Mély tanulás a GPU-k révén
-A DSVM a képzési modellek mély tanulási algoritmusokat használhatnak a grafikus feldolgozási egységeken (GPU-k) alapuló hardveren. Az Azure platform virtuálisgép-méretezési képességeinek kihasználásával a DSVM a Felhőbeli GPU-alapú hardverek igény szerinti használatát teszi lehetővé. Ha nagyméretű modelleket szeretne betanítani, váltson GPU-alapú virtuális gépre, vagy ha nagy sebességű számításokra van szüksége, miközben az operációs rendszer lemezét is megtartja. Az N sorozatú GPU-t használó virtuális gépek SKU-DSVM is kiválaszthatja. Vegye figyelembe, hogy az ingyenes Azure-fiókok nem támogatják a GPU-t használó virtuális gépekhez tartozó SKU-ket.
+### <a name="deep-learning-with-gpus"></a>Mély tanulás GPU-kkal
+A DSVM-ben a betanítási modellek mélytanulási algoritmusokat használhatnak a grafikus feldolgozó egységeken (GPU-k) alapuló hardveren. Az Azure platform virtuális gépméretezési képességeinek kihasználásával a DSVM segít a GPU-alapú hardver ek használatával a felhőben az igényeinek megfelelően. A GPU-alapú virtuális gépre válthat nagy modellek betanításakor, vagy ha nagy sebességű számításokra van szüksége, miközben ugyanazt az operációsrendszert tartja. Bármelyik N sorozatú GPU-kompatibilis virtuálisgép-sus-t választhatd DSVM-mel. Kérjük, vegye figyelembe, hogy az ingyenes Azure-fiókok nem támogatják a GPU-kompatibilis virtuálisgép-skus-okat.
 
-A DSVM Windows Server 2016-es kiadása előre telepítve van a GPU-illesztőprogramokkal,-keretrendszerekkel és a Deep learning-keretrendszerek GPU-verzióival. A Linux-kiadásban a GPU-k mélyreható megismerése engedélyezve van a CentOS és az Ubuntu Dsvm is. 
+A DSVM Windows Server 2016 kiadása előre telepítve van a mélytanulási keretrendszerek GPU-illesztőprogramjaival, keretrendszerekkel és GPU-verzióival. A Linux kiadásban a GPU-k mély tanulása mind a CentOS, mind az Ubuntu DSVM-eken engedélyezve van. 
 
-A DSVM Ubuntu, CentOS vagy Windows 2016 kiadását egy olyan Azure-beli virtuális gépre is üzembe helyezheti, amely nem a GPU-k alapján van. Ebben az esetben az összes mély tanulási keretrendszer vissza fog térni a CPU-módra.
+A DSVM Ubuntu, CentOS vagy Windows 2016 kiadását is telepítheti egy olyan Azure-beli virtuális gépre, amely nem GPU-kon alapul. Ebben az esetben az összes deep learning keretrendszerek esnek vissza a CPU módban.
  
-[További információ az elérhető Deep learning-és AI-keretrendszerekről](dsvm-tools-deep-learning-frameworks.md).
+[További információ az elérhető mélytanulásról és a a mi keretrendszerekről.](dsvm-tools-deep-learning-frameworks.md)
 
 <a name="included"></a>
 
 ## <a name="whats-included-on-the-dsvm"></a>Mit tartalmaz a DSVM?
 
-Tekintse meg a Windows és a Linux DSVM található eszközök teljes listáját [itt](tools-included.md).
+Lásd a teljes listát az eszközök mind a Windows és a Linux DSVM [itt](tools-included.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ ezekről a cikkekről:
+További információ az alábbi cikkekkel:
 
 + Windows:
   + [Windowsos DSVM beállítása](provision-vm.md)
-  + [Tíz dolog, amit elvégezhet a Windows DSVM](vm-do-ten-things.md)
+  + [Tíz dolog, amit elérhet a Windows DSVM-en](vm-do-ten-things.md)
 
 + Linux:
-  + [Linux DSVM (Ubuntu) beállítása](dsvm-ubuntu-intro.md)
-  + [Linux DSVM (CentOS) beállítása](linux-dsvm-intro.md)
-  + [Adatelemzés Linux-DSVM](linux-dsvm-walkthrough.md)
+  + [LinuxOs DSVM (Ubuntu) beállítása](dsvm-ubuntu-intro.md)
+  + [Linuxos DSVM (CentOS) beállítása](linux-dsvm-intro.md)
+  + [Adattudomány Linux DSVM-en](linux-dsvm-walkthrough.md)

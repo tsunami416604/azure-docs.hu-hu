@@ -1,6 +1,6 @@
 ---
-title: A StorSimple 8000 sorozatú eszköz a ház cseréje |} A Microsoft Docs
-description: Távolítsa el, és a StorSimple elsődleges ház vagy EBOD ház a ház cseréje módját ismerteti.
+title: Cserélje ki a vázat a StorSimple 8000 sorozatú eszközön | Microsoft dokumentumok
+description: Bemutatja, hogyan távolíthatja el és cserélheti le a StorSimple elsődleges ház vagy Az EBOD ház alvázát.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,47 +15,47 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 7dfc39f4d08c8a49d1564a0a5bd7e3ef4156e3fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61312445"
 ---
-# <a name="replace-the-chassis-on-your-storsimple-device"></a>A StorSimple eszközön a ház cseréje
+# <a name="replace-the-chassis-on-your-storsimple-device"></a>Cserélje ki a storSimple eszköz házát
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag azt ismerteti, hogyan távolítsa el, és a egy StorSimple 8000 sorozatú eszköz a ház cseréje. A StorSimple 8100-as modell (egy házban csoportosítva), egyetlen lemezház eszköz, mivel a 8600-as kettős ház eszköz (két váz). Egy 8600-as modellhez sikertelen lehet, az eszközt a vélhetően két váz vannak: a váz, az elsődleges ház vagy a váz a EBOD ház számára.
+Ez az oktatóanyag bemutatja, hogyan távolíthatja el és cserélheti le a storSimple 8000 sorozatú eszközök alvázát. A StorSimple 8100 modell egyetlen beépített eszköz (egy ház), míg a 8600 egy kettős ház eszköz (két ház). Egy 8600-as modell esetében potenciálisan két ház lehet, amelyek meghibásodhatnak az eszközben: az elsődleges ház háza vagy az EBOD ház házának háza.
 
-Mindkét esetben a helyettesítő váz, amely tartalmazza a szükséges a Microsoft je prázdná. Nincs Power és hűtéssel modulok (PCMs), vezérlő-modulok szemben – tartós állapotú meghajtók (SSD-kkel), merevlemezes (HDD) meghajtók vagy EBOD modulok fognak szerepelni.
+A Microsoft által szállított csereház mindkét esetben üres. Nem power and Cooling modules (PCMs), vezérlő modulok, ssds (SSD), merevlemez-meghajtók (HDD), vagy EBOD modulok at.
 
 > [!IMPORTANT]
-> Mielőtt eltávolítása és cseréje a váz, tekintse át a biztonsági információk [StorSimple összetevő hardvercseréhez](storsimple-8000-hardware-component-replacement.md).
+> A ház eltávolítása és cseréje előtt tekintse át a [StorSimple hardverösszetevő-csere](storsimple-8000-hardware-component-replacement.md)biztonsági tudnivalóit.
 
 
-## <a name="remove-the-chassis"></a>Távolítsa el a váz
-A következő lépésekkel távolítsa el a váz a StorSimple eszközön.
+## <a name="remove-the-chassis"></a>Az alváz eltávolítása
+Hajtsa végre az alábbi lépéseket, hogy távolítsa el a ház a StorSimple eszköz.
 
-#### <a name="to-remove-a-chassis"></a>A váz eltávolítása
-1. Győződjön meg arról, hogy a StorSimple-eszköz leállítja, majd az áramforrásokból kapcsolódik.
-2. Távolítsa el a hálózat és a SAS-kábel, ha van ilyen.
-3. Távolítsa el a egység az állványra szerelt.
-4. Távolítsa el az egyes meghajtókat, és jegyezze fel a tárolóhelyek, amelyből el lesznek távolítva. További információkért lásd: [távolítsa el a lemezmeghajtó](storsimple-8000-disk-drive-replacement.md#remove-the-disk-drive).
-5. (Ha ez a váz sikertelenül) a EBOD tárolóeszközön távolítsa el az EBOD-vezérlő modulokat. További információkért lásd: [távolítsa el az EBOD-vezérlő](storsimple-8000-ebod-controller-replacement.md#remove-an-ebod-controller).
+#### <a name="to-remove-a-chassis"></a>Alváz eltávolítása
+1. Győződjön meg arról, hogy a StorSimple eszköz le van kapcsolva, és le van választva az összes áramforrásról.
+2. Távolítsa el az összes hálózati és SAS-kábelt, ha van ilyen.
+3. Vegye ki a készüléket a rackből.
+4. Távolítsa el az egyes meghajtókat, és jegyezze fel azokat a bővítőhelyeket, amelyekről eltávolították őket. További információt [a Lemezmeghajtó eltávolítása](storsimple-8000-disk-drive-replacement.md#remove-the-disk-drive)című témakörben talál.
+5. Az EBOD ház (ha ez a ház, amely nem sikerült), távolítsa el az EBOD vezérlő modulokat. További információ: [EBOD-vezérlő eltávolítása.](storsimple-8000-ebod-controller-replacement.md#remove-an-ebod-controller)
    
-    A elsődleges tárolóeszközön (Ha ez a váz sikertelenül) távolítsa el a tartományvezérlők, és jegyezze fel a tárolóhelyek, amelyből el lesznek távolítva. További információkért lásd: [egy vezérlő eltávolítása](storsimple-8000-controller-replacement.md#remove-a-controller).
+    Az elsődleges ház (ha ez a ház, hogy nem sikerült), távolítsa el a vezérlőket, és vegye figyelembe a bővítőhely, amelyből eltávolították. További információt a Vezérlő eltávolítása című témakörben [talál.](storsimple-8000-controller-replacement.md#remove-a-controller)
 
-## <a name="install-the-chassis"></a>Telepítse a váz
-A következő lépésekkel telepítse a váz a StorSimple-eszköz.
+## <a name="install-the-chassis"></a>A ház felszerelése
+Hajtsa végre az alábbi lépéseket a ház StorSimple eszközre való telepítéséhez.
 
-#### <a name="to-install-a-chassis"></a>A váz telepítése
-1. Csatlakoztassa a váz, az állvány egyik kiszolgálója. További információkért lásd: [Rack csatlakoztatást a StorSimple 8100-as eszköz](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device) vagy [Rack csatlakoztatást a StorSimple 8600-as eszköz](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device).
-2. Miután a váz csatlakoztatva van, az állvány egyik kiszolgálója, a tartományvezérlő-modulok telepítéséhez helyzetben, amelyeket korábban telepítettek.
-3. Telepítse a meghajtók azonos pozíciók és tárolóhelyei, amelyeket korábban telepítettek.
+#### <a name="to-install-a-chassis"></a>Ház telepítése
+1. Szerelje fel az alvázat az állványra. További információ: [Rack-mount a StorSimple 8100 eszköz](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device) vagy [Rack-mount a StorSimple 8600 eszköz](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device).
+2. Miután a ház az állványra van szerelve, telepítse a vezérlőmodulokat ugyanabban a pozícióban, mint korábban.
+3. Telepítse a meghajtókat ugyanabban a pozícióban és bővítőhelyen, amelybe korábban telepítették őket.
    
    > [!NOTE]
-   > Azt javasoljuk, hogy először telepítse az SSD-k tárolóhelyben, és telepítheti őket a HDD.
+   > Javasoljuk, hogy először telepítse az SSD-ket a tárolóhelyekre, majd telepítse a HDD-ket.
   
-4. Az eszköz csatlakoztatva van, az állvány és a telepített összetevők az eszköz csatlakoztatása a megfelelő áramforrásokból, és kapcsolja be az eszközt. További információkért lásd: [a StorSimple 8100 sorozatú eszköz kábelezése](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) vagy [a StorSimple 8600 sorozatú eszköz kábelezése](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
+4. Ha az eszköz az állványra van szerelve, és az összetevők telepítve vannak, csatlakoztassa az eszközt a megfelelő áramforráshoz, és kapcsolja be az eszközt. További információt [a StorSimple 8100-as eszköz kábelezése](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) vagy [a StorSimple 8600-as eszköz kábelezése.](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device)
 
 ## <a name="next-steps"></a>További lépések
-Tudjon meg többet [StorSimple összetevő hardvercseréhez](storsimple-8000-hardware-component-replacement.md).
+További információ a [StorSimple hardverösszetevő-cseréjéről.](storsimple-8000-hardware-component-replacement.md)
 

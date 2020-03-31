@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: rugalmas készlet hozzáadása feladatátvételi csoporthoz'
-description: A Azure Portal, a PowerShell vagy az Azure CLI használatával hozzáadhat egy Azure SQL Database rugalmas készletet egy feladatátvételi csoporthoz.
+title: 'Oktatóanyag: Rugalmas készlet hozzáadása feladatátvételi csoporthoz'
+description: Adjon hozzá egy Azure SQL Database rugalmas készletet egy feladatátvételi csoporthoz az Azure Portalon, a PowerShellen vagy az Azure CLI-n keresztül.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,67 +12,67 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
 ms.openlocfilehash: c57f9eed2147504dd7b3313d58468fb76ab40caa
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268976"
 ---
-# <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Oktatóanyag: Azure SQL Database rugalmas készlet hozzáadása egy feladatátvételi csoporthoz
+# <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Oktatóanyag: Azure SQL Database rugalmas készlet hozzáadása feladatátvételi csoporthoz
 
-Feladatátvevő csoport konfigurálása Azure SQL Database rugalmas készlethez és feladatátvételi teszt a Azure Portal használatával.  Az oktatóanyag során a következőket fogja elsajátítani:
+Konfiguráljon egy feladatátvételi csoportot egy Azure SQL Database rugalmas készlethez, és tesztelje a feladatátvételt az Azure Portalhasználatával.  Az oktatóanyag során a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
-> - Hozzon létre egy Azure SQL Database önálló adatbázist.
-> - Adja hozzá az önálló adatbázist egy rugalmas készlethez. 
-> - Hozzon létre egy [feladatátvételi csoportot](sql-database-auto-failover-group.md) két rugalmas készlethez két logikai SQL-kiszolgáló között.
-> - Feladatátvételi teszt.
+> - Hozzon létre egy Azure SQL Database egyetlen adatbázist.
+> - Adja hozzá az egyetlen adatbázist egy rugalmas készletbe. 
+> - [Feladatátvételi csoport](sql-database-auto-failover-group.md) létrehozása két rugalmas készlethez két logikai SQL-kiszolgáló között.
+> - Feladatátvétel tesztelése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következőkkel: 
 
-- Azure-előfizetés. Ha még nem rendelkezik ilyennel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+- Azure-előfizetés. [Hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) ha még nem rendelkezik ilyen.
 
 
-## <a name="1---create-a-single-database"></a>1 – önálló adatbázis létrehozása 
+## <a name="1---create-a-single-database"></a>1 - Egyetlen adatbázis létrehozása 
 
 [!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
 
-## <a name="2---add-single-database-to-elastic-pool"></a>2 – önálló adatbázis hozzáadása a rugalmas készlethez
-Ebben a lépésben létrehoz egy rugalmas készletet, és hozzáadja az önálló adatbázist. 
+## <a name="2---add-single-database-to-elastic-pool"></a>2 - Egyetlen adatbázis hozzáadása a rugalmas készlethez
+Ebben a lépésben hozzon létre egy rugalmas készletet, és adja hozzá az egyetlen adatbázist. 
 
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Hozzon létre rugalmas készletet a Azure Portal használatával. 
+Hozzon létre rugalmas készletet az Azure Portal használatával. 
 
 
-1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
-1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A különböző adatbázisokkal kapcsolatos további információkat az adatbázisok csempén a Részletek megjelenítése lehetőség kiválasztásával tekintheti meg.
-1. Az **SQL-adatbázisok** csempén válassza a **rugalmas készlet** lehetőséget az **Erőforrás típusa** legördülő menüből. A rugalmas készlet létrehozásához válassza a **Létrehozás** lehetőséget. 
+1. Válassza az **Azure SQL** az Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **Minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. (Nem kötelező) Válassza ki az **Azure SQL** melletti csillagot a kedvencként, és adja hozzá elemként a bal oldali navigációs sávban. 
+1. Válassza a **+ Add lehetőséget** az SQL kiválasztása telepítési **lehetőség** lap megnyitásához. A különböző adatbázisokra vonatkozó további információkat az Adatbázisok csempén a Részletek megjelenítése lehetőséget választva tekintheti meg.
+1. Válassza ki a **Rugalmas készletet** az **SQL-adatbázisok** csempén található **Erőforrástípus** legördülő listából. A rugalmas készlet létrehozásához válassza a **Létrehozás** lehetőséget. 
 
     ![Rugalmas készlet kiválasztása](media/sql-database-elastic-pool-failover-group-tutorial/select-azure-sql-elastic-pool.png)
 
-1. Állítsa be a rugalmas készletet a következő értékekkel:
-   - **Név**: adjon egyedi nevet a rugalmas készletnek, például `myElasticPool`. 
-   - **Előfizetés**: válassza ki az előfizetését a legördülő menüből.
-   - **ResourceGroup**: válassza ki `myResourceGroup` a legördülő menüből az 1. szakaszban létrehozott erőforráscsoportot. 
-   - **Kiszolgáló**: válassza ki az 1. szakaszban létrehozott kiszolgálót a legördülő menüből.  
+1. Konfigurálja a rugalmas készletet a következő értékekkel:
+   - **Név**: Adjon meg egyedi nevet a `myElasticPool`rugalmas készletnek, például . 
+   - **Előfizetés**: Válassza ki az előfizetést a legördülő menüből.
+   - **Erőforráscsoport**: `myResourceGroup` Válassza ki a legördülő menüből az 1. 
+   - **Kiszolgáló**: Válassza ki az 1.  
 
-       ![Új kiszolgáló létrehozása rugalmas készlethez](media/sql-database-elastic-pool-failover-group-tutorial/use-existing-server-for-elastic-pool.png)
+       ![Új kiszolgáló létrehozása a rugalmas készlethez](media/sql-database-elastic-pool-failover-group-tutorial/use-existing-server-for-elastic-pool.png)
 
-   - **Számítás + tárolás**: válassza a **rugalmas készlet beállítása** lehetőséget a számítási és tárolási beállítások konfigurálásához, és adja hozzá az önálló adatbázist a rugalmas készlethez. A **készlet beállításai** lapon hagyja meg az alapértelmezett Gen5, 2 virtuális mag és 32gb értékkel. 
+   - **Számítás + tárolás:** Válassza **a Rugalmas készlet konfigurálása** a számítási, tárolási, és adja hozzá az egyetlen adatbázisa a rugalmas készlet. A **Készletbeállítások** lapon hagyja meg a Gen5 alapértelmezett, 2 virtuális maggal és 32 gb-os magokkal. 
 
-1. A **configure (Konfigurálás** ) lapon válassza az **adatbázisok** fület, majd válassza az **adatbázis hozzáadása**elemet. Válassza ki az 1. szakaszban létrehozott adatbázist, majd válassza az **alkalmaz** lehetőséget a rugalmas készlethez való hozzáadásához. A rugalmas készlet beállításainak alkalmazásához és a **configure (Konfigurálás** ) lap bezárásához kattintson ismét az **alkalmaz** gombra. 
+1. A **Konfigurálás** lapon válassza az **Adatbázisok** lapot, majd válassza az **Adatbázis hozzáadása lehetőséget.** Válassza ki az 1. **Apply** A rugalmas készletbeállításainak alkalmazásához és a **Konfigurálás** lap bezárásához válassza ismét az **Alkalmaz** lehetőséget. 
 
-    ![SQL-adatbázis hozzáadása rugalmas készlethez](media/sql-database-elastic-pool-failover-group-tutorial/add-database-to-elastic-pool.png)
+    ![SQL DB hozzáadása a rugalmas készlethez](media/sql-database-elastic-pool-failover-group-tutorial/add-database-to-elastic-pool.png)
 
-1. A rugalmas készlet beállításainak áttekintéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget, majd válassza a **Létrehozás** lehetőséget a rugalmas készlet létrehozásához. 
+1. Válassza **a Véleményezés + létrehozás** lehetőséget a rugalmas készlet beállításainak áttekintéséhez, majd a **Létrehozás gombra** a rugalmas készlet létrehozásához. 
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Hozzon létre rugalmas készleteket és másodlagos kiszolgálót a PowerShell használatával. 
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+Rugalmas készletek és a másodlagos kiszolgáló a PowerShell használatával. 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -120,52 +120,52 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új – AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Rugalmas adatbázis-készletet hoz létre egy Azure SQL Databasehoz.| 
-| [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Beállítja egy adatbázis tulajdonságait, vagy áthelyezi egy meglévő adatbázist egy rugalmas készletbe. | 
+| [Új-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Rugalmas adatbáziskészletet hoz létre egy Azure SQL-adatbázishoz.| 
+| [Set-AzSqlDatabase Adatbázis](/powershell/module/az.sql/set-azsqldatabase) | Beállítja az adatbázis tulajdonságait, vagy áthelyez egy meglévő adatbázist egy rugalmas készletbe. | 
 
 ---
 
-## <a name="3---create-the-failover-group"></a>3 – a feladatátvételi csoport létrehozása 
-Ebben a lépésben létre fog hozni egy [feladatátvételi csoportot](sql-database-auto-failover-group.md) egy meglévő Azure SQL Server-kiszolgáló és egy másik régióban lévő új Azure SQL Server között. Ezután adja hozzá a rugalmas készletet a feladatátvételi csoporthoz. 
+## <a name="3---create-the-failover-group"></a>3 - A feladatátvételi csoport létrehozása 
+Ebben a lépésben egy [feladatátvételi csoportot](sql-database-auto-failover-group.md) hoz létre egy meglévő Azure SQL-kiszolgáló és egy másik régióban lévő új Azure SQL-kiszolgáló között. Ezután adja hozzá a rugalmas készletet a feladatátvételi csoporthoz. 
 
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Hozza létre a feladatátvételi csoportot a Azure Portal használatával. 
+Hozza létre a feladatátvételi csoportot az Azure Portalon. 
 
-1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
-1. Válassza ki az előző szakaszban létrehozott rugalmas készletet, például `myElasticPool`. 
-1. Az **Áttekintés** ablaktáblán válassza ki a kiszolgáló nevét a kiszolgáló **neve** alatt a kiszolgáló beállításainak megnyitásához.
+1. Válassza az **Azure SQL** lehetőséget az [Azure](https://portal.azure.com)Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **Minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. (Nem kötelező) Válassza ki az **Azure SQL** melletti csillagot a kedvencként, és adja hozzá elemként a bal oldali navigációs sávban. 
+1. Válassza ki az előző szakaszban létrehozott `myElasticPool`rugalmas készletet, például a . 
+1. Az **Áttekintő** ablaktáblán válassza ki a kiszolgáló nevét a **Kiszolgáló neve** csoportban a kiszolgáló beállításainak megnyitásához.
   
-    ![Rugalmas készlet kiszolgálójának megnyitása](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
+    ![Kiszolgáló megnyitása a rugalmas készlethez](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
 
-1. Válassza a **Beállítások** ablaktábla **feladatátvételi csoportok** elemét, majd válassza a **Csoport hozzáadása** lehetőséget egy új feladatátvételi csoport létrehozásához. 
+1. Válassza a **Feladatátvételi csoportok** lehetőséget a **Beállítások** ablaktáblán, majd a **Csoport hozzáadása lehetőséget** új feladatátvételi csoport létrehozásához. 
 
     ![Új feladatátvételi csoport hozzáadása](media/sql-database-elastic-pool-failover-group-tutorial/elastic-pool-failover-group.png)
 
-1. A **feladatátvételi csoport** lapon adja meg vagy válassza ki a következő értékeket, majd válassza a **Létrehozás**lehetőséget:
-    - **Feladatátvételi csoport neve**: adjon meg egy egyedi feladatátvételi csoport nevét, például `failovergrouptutorial`. 
-    - **Másodlagos kiszolgáló**: válassza a *szükséges beállítások konfigurálását* , majd válassza az **új kiszolgáló létrehozása**lehetőséget. Másik lehetőségként már meglévő kiszolgálót is választhat másodlagos kiszolgálóként. Miután megadta a következő értékeket az új másodlagos kiszolgálóhoz, válassza a **kiválasztás**lehetőséget. 
-        - **Kiszolgáló neve**: írjon be egy egyedi nevet a másodlagos kiszolgálónak, például `mysqlsecondary`. 
-        - **Kiszolgáló-rendszergazdai bejelentkezés**: típus `azureuser`
-        - **Password (jelszó**): írjon be egy olyan összetett jelszót, amely megfelel a jelszó követelményeinek.
-        - **Hely**: válasszon ki egy helyet a legördülő menüből, például `East US`. Ez a hely nem lehet ugyanazon a helyen, mint az elsődleges kiszolgáló.
+1. A **Feladatátvevő csoport** lapon adja meg vagy jelölje ki a következő értékeket, majd válassza a **Létrehozás**lehetőséget:
+    - **Feladatátvételi csoport neve**: Írjon be `failovergrouptutorial`egy egyedi feladatátvételi csoport nevét, például . 
+    - **Másodlagos kiszolgáló**: Válassza ki a *kívánt beállítások konfigurálásának* lehetőségét, majd válassza **az Új kiszolgáló létrehozása**lehetőséget. Másik lehetőségként másodlagos kiszolgálóként választhat egy már meglévő kiszolgálót. Miután megadta az új másodlagos kiszolgáló következő értékeit, válassza a **Kijelölés lehetőséget.** 
+        - **Kiszolgáló neve**: Írja be a másodlagos kiszolgáló `mysqlsecondary`egyedi nevét, például . 
+        - **Kiszolgálórendszergazdai bejelentkezés:** Írja be a típust`azureuser`
+        - **Jelszó**: Írjon be egy összetett jelszót, amely megfelel a jelszókövetelményeknek.
+        - **Hely**: Válasszon egy helyet a `East US`legördülő menüből, például . Ez a hely nem lehet ugyanaz a hely, mint az elsődleges kiszolgáló.
 
        > [!NOTE]
-       > A kiszolgáló bejelentkezési és tűzfalbeállítások meg kell egyeznie az elsődleges kiszolgálóval. 
+       > A kiszolgáló bejelentkezési és tűzfalbeállításainak meg kell egyezniük az elsődleges kiszolgáló beállításaival. 
     
-       ![Másodlagos kiszolgáló létrehozása a feladatátvételi csoport számára](media/sql-database-elastic-pool-failover-group-tutorial/create-secondary-failover-server.png)
+       ![Másodlagos kiszolgáló létrehozása a feladatátvételi csoportszámára](media/sql-database-elastic-pool-failover-group-tutorial/create-secondary-failover-server.png)
 
-1. Válassza ki a **csoportban lévő adatbázisokat** , majd válassza ki a 2. szakaszban létrehozott rugalmas készletet. Egy figyelmeztetésnek kell megjelennie, amely arra kéri, hogy hozzon létre egy rugalmas készletet a másodlagos kiszolgálón. Válassza ki a figyelmeztetést, majd kattintson az **OK** gombra a rugalmas készlet létrehozásához a másodlagos kiszolgálón. 
+1. Válassza **az adatbázisok a csoporton belül,** majd válassza ki a 2. Egy figyelmeztetés jelenik meg, amely arra kéri, hogy hozzon létre egy rugalmas készletet a másodlagos kiszolgálón. Jelölje ki a figyelmeztetést, majd az **OK** gombra a rugalmas készlet létrehozásához a másodlagos kiszolgálón. 
         
-    ![Rugalmas készlet hozzáadása a feladatátvételi csoporthoz](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
+    ![Rugalmas készlet hozzáadása feladatátvételi csoporthoz](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
-1. Válassza a **kiválasztás** elemet a rugalmas készlet beállításainak a feladatátvételi csoportra való alkalmazásához, majd válassza a **Létrehozás** lehetőséget a feladatátvételi csoport létrehozásához. A rugalmas készlet a feladatátvételi csoportba való felvétele automatikusan elindítja a Geo-replikálási folyamatot.
+1. Válassza **a Kijelölés lehetőséget,** ha a rugalmas készlet beállításait a feladatátvételi csoportra szeretné alkalmazni, majd válassza a **Létrehozás** lehetőséget a feladatátvételi csoport létrehozásához. A rugalmas készlet hozzáadása a feladatátvételi csoporthoz automatikusan elindítja a georeplikációs folyamatot.
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Hozzon létre egy feladatátvételi csoportot a PowerShell használatával. 
+Hozza létre a feladatátvételi csoportot a PowerShell használatával. 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -238,47 +238,47 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database kiszolgálót, amely önálló adatbázist és rugalmas készleteket üzemeltet. |
-| [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tűzfalszabály létrehozása logikai kiszolgálóhoz. | 
-| [Új – AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Rugalmas adatbázis-készletet hoz létre egy Azure SQL Databasehoz.| 
-| [Új – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Létrehoz egy új feladatátvételi csoportot. |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Egy vagy több Azure SQL-adatbázis egy feladatátvételi csoportba való hozzáadására szolgál. |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Lekérdezi vagy felsorolja Azure SQL Database feladatátvételi csoportokat. |
+| [Új-AzsqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database-kiszolgálót, amely egyetlen adatbázisokat és rugalmas készleteket üzemeltet. |
+| [Új-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tűzfalszabályt hoz létre egy logikai kiszolgálóhoz. | 
+| [Új-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Rugalmas adatbáziskészletet hoz létre egy Azure SQL-adatbázishoz.| 
+| [Új-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Új feladatátvételi csoportot hoz létre. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Egy vagy több Azure SQL-adatbázis hozzáadása egy feladatátvételi csoporthoz. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Leésezése vagy listázása Az Azure SQL Database feladatátvételi csoportok. |
 
 ---
 
 
-## <a name="4---test-failover"></a>4 – feladatátvételi teszt 
-Ebben a lépésben a feladatátvételi csoportot a másodlagos kiszolgálóra fogja felvenni, majd a Azure Portal használatával hajtja végre a feladatokat. 
+## <a name="4---test-failover"></a>4 - Feladatátvétel tesztje 
+Ebben a lépésben sikertelen lesz a feladatátvételi csoport a másodlagos kiszolgálóra, majd az Azure Portal használatával. 
 
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A feladatátvételi csoport feladatátvételi tesztje a Azure Portal használatával. 
+Tesztelje a feladatátvételi csoport feladatátvételi az Azure Portalon keresztül. 
 
-1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
-1. Válassza ki az előző szakaszban létrehozott rugalmas készletet, például `myElasticPool`. 
-1. A kiszolgáló beállításainak megnyitásához válassza a **kiszolgáló neve alatt lévő** kiszolgáló nevét.
+1. Válassza az **Azure SQL** lehetőséget az [Azure](https://portal.azure.com)Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **Minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. (Nem kötelező) Válassza ki az **Azure SQL** melletti csillagot a kedvencként, és adja hozzá elemként a bal oldali navigációs sávban. 
+1. Válassza ki az előző szakaszban létrehozott `myElasticPool`rugalmas készletet, például a . 
+1. A **kiszolgáló beállításainak** megnyitásához a Kiszolgáló neve csoportban válassza ki a kiszolgáló nevét.
 
-    ![Rugalmas készlet kiszolgálójának megnyitása](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
+    ![Kiszolgáló megnyitása a rugalmas készlethez](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
 
-1. Válassza a **Beállítások** ablaktábla **feladatátvételi csoportok** elemét, majd válassza ki a 2. szakaszban létrehozott feladatátvételi csoportot. 
+1. Válassza a **Feladatátvételi csoportok lehetőséget** a **Beállítások** ablaktáblán, majd válassza ki a 2. 
   
-   ![Válassza ki a feladatátvételi csoportot a portálon](media/sql-database-elastic-pool-failover-group-tutorial/select-failover-group.png)
+   ![Válassza ki a feladatátvételi csoportot a portálról](media/sql-database-elastic-pool-failover-group-tutorial/select-failover-group.png)
 
-1. Ellenőrizze, hogy melyik kiszolgáló elsődleges, és melyik kiszolgáló a másodlagos. 
-1. Válassza a **feladatátvétel** lehetőséget a feladat ablaktáblán a rugalmas készletet tartalmazó feladatátvételi csoport feladatátvételéhez. 
-1. Válassza az **Igen** lehetőséget arra a figyelmeztetésre, amely értesíti, hogy a TDS-munkamenetek le lesznek választva. 
+1. Tekintse át, hogy melyik kiszolgáló az elsődleges, és melyik kiszolgáló másodlagos. 
+1. Válassza **a feladatátvétel** lehetőséget a munkaablakból a rugalmas készletet tartalmazó feladatátvételi csoport feladatátvételi csoportát. 
+1. Válassza az **Igen** lehetőséget a figyelmeztetésen, amely értesíti, hogy a TDS-munkamenetek megszakadnak. 
 
-   ![Az SQL-adatbázist tartalmazó feladatátvételi csoport feladatátvétele](media/sql-database-elastic-pool-failover-group-tutorial/failover-sql-db.png)
+   ![Feladatátvétel az SQL-adatbázist tartalmazó feladatátvételi csoport felett](media/sql-database-elastic-pool-failover-group-tutorial/failover-sql-db.png)
 
-1. Tekintse át, hogy melyik kiszolgáló elsődleges, melyik kiszolgáló a másodlagos. Ha a feladatátvétel sikeres volt, a két kiszolgálónak felcserélt szerepkörrel kell rendelkeznie. 
-1. Válassza újra a **feladatátvételt** , hogy a feladatátvételi csoportot vissza lehessen térni az eredeti beállításokhoz. 
+1. Tekintse át, hogy melyik kiszolgáló az elsődleges, melyik kiszolgáló másodlagos. Ha a feladatátvétel sikeres volt, a két kiszolgálónak szerepköröket kellett cserélnie. 
+1. Válassza **a Feladatátvétel** lehetőséget, ha a feladatátvételi csoportot vissza szeretné adni az eredeti beállításokhoz. 
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-A feladatátvételi csoport feladatátvételi tesztje a PowerShell használatával. 
+Tesztelje a feladatátvételi csoport feladatátvételi csoport powershell használatával. 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -310,7 +310,7 @@ A feladatátvételi csoport feladatátvételi tesztje a PowerShell használatáv
    Write-host "Failover group failed over to" $drServerName 
    ```
 
-A feladatátvételi csoportot a másodlagos kiszolgálóra nem lehet felvenni, majd a PowerShell használatával hajtsa végre a feladat-visszavétel. 
+A feladatátvételi csoport átad a másodlagos kiszolgálóra, majd a PowerShell használatával. 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -346,28 +346,28 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Lekérdezi vagy felsorolja Azure SQL Database feladatátvételi csoportokat. |
-| [Kapcsoló – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Database feladatátvételi csoport feladatátvételét hajtja végre. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Leésezése vagy listázása Az Azure SQL Database feladatátvételi csoportok. |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Egy Azure SQL Database feladatátvételi csoport feladatátvételt hajt végre. |
 
 
 ---
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 
-Törölje az erőforrásokat az erőforráscsoport törlésével. 
+Az erőforráscsoport törlésével törölje az erőforrásokat. 
 
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
 
-1. Navigáljon az erőforráscsoporthoz a [Azure Portal](https://portal.azure.com).
-1. Válassza az **erőforráscsoport törlése** lehetőséget a csoport összes erőforrásának, valamint maga az erőforráscsoport törléséhez. 
-1. Írja be az erőforráscsoport nevét, `myResourceGroup`, a szövegmezőbe, majd válassza a **Törlés** lehetőséget az erőforráscsoport törléséhez. 
+1. Nyissa meg az erőforráscsoportot az [Azure Portalon.](https://portal.azure.com)
+1. Válassza **az Erőforráscsoport törlése** lehetőséget a csoport összes erőforrásának, valamint magának az erőforráscsoportnak a törléséhez. 
+1. Írja be az erőforráscsoport `myResourceGroup`nevét , a mezőbe, majd válassza a **Törlés** gombot az erőforráscsoport törléséhez. 
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Az erőforrások tisztítása a PowerShell használatával. 
+Az erőforrások karbantartása a PowerShell használatával. 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -379,7 +379,7 @@ Az erőforrások tisztítása a PowerShell használatával.
    Write-host "Resource group removed =" $resourceGroupName
    ```
 
-Az oktatóanyag ezen része a következő PowerShell-parancsmagot használja:
+Az oktatóanyag ezen része a következő PowerShell-parancsmast használja:
 
 | Parancs | Megjegyzések |
 |---|---|
@@ -388,11 +388,11 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagot használja:
 ---
 
 > [!IMPORTANT]
-> Ha meg kívánja őrizni az erőforráscsoportot, de törölni szeretné a másodlagos adatbázist, akkor a törlés előtt távolítsa el a feladatátvételi csoportból. Ha egy másodlagos adatbázist töröl a feladatátvételi csoportból való eltávolítása előtt, akkor kiszámíthatatlan viselkedést okozhat. 
+> Ha meg szeretné tartani az erőforráscsoportot, de törölni szeretné a másodlagos adatbázist, törlés előtt távolítsa el azt a feladatátvételi csoportból. Ha egy másodlagos adatbázist töröl a feladatátvételi csoportból való eltávolítása előtt, az kiszámíthatatlan viselkedést okozhat. 
 
 ## <a name="full-script"></a>Teljes szkript
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-elastic-pool-to-failover-group-az-ps.ps1 "Add elastic pool to a failover group")]
 
@@ -401,35 +401,35 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database kiszolgálót, amely önálló adatbázist és rugalmas készleteket üzemeltet. |
-| [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tűzfalszabály létrehozása logikai kiszolgálóhoz. | 
-| [Új – AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Létrehoz egy új Azure SQL Database önálló adatbázist. | 
-| [Új – AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Rugalmas adatbázis-készletet hoz létre egy Azure SQL Databasehoz.| 
-| [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Beállítja egy adatbázis tulajdonságait, vagy áthelyezi egy meglévő adatbázist egy rugalmas készletbe. | 
-| [Új – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Létrehoz egy új feladatátvételi csoportot. |
-| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Egy vagy több SQL-adatbázis beolvasása. |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Egy vagy több Azure SQL-adatbázis egy feladatátvételi csoportba való hozzáadására szolgál. |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Lekérdezi vagy felsorolja Azure SQL Database feladatátvételi csoportokat. |
-| [Kapcsoló – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Database feladatátvételi csoport feladatátvételét hajtja végre. |
+| [Új-AzsqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database-kiszolgálót, amely egyetlen adatbázisokat és rugalmas készleteket üzemeltet. |
+| [Új-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tűzfalszabályt hoz létre egy logikai kiszolgálóhoz. | 
+| [Új-AzsqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Új Azure SQL Database egyetlen adatbázist hoz létre. | 
+| [Új-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Rugalmas adatbáziskészletet hoz létre egy Azure SQL-adatbázishoz.| 
+| [Set-AzSqlDatabase Adatbázis](/powershell/module/az.sql/set-azsqldatabase) | Beállítja az adatbázis tulajdonságait, vagy áthelyez egy meglévő adatbázist egy rugalmas készletbe. | 
+| [Új-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Új feladatátvételi csoportot hoz létre. |
+| [Get-AzSqlDatabase adatbázis](/powershell/module/az.sql/get-azsqldatabase) | Beggyelelt egy vagy több SQL-adatbázist. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Egy vagy több Azure SQL-adatbázis hozzáadása egy feladatátvételi csoporthoz. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Leésezése vagy listázása Az Azure SQL Database feladatátvételi csoportok. |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Egy Azure SQL Database feladatátvételi csoport feladatátvételt hajt végre. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Erőforráscsoport eltávolítása | 
 
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-Nincsenek elérhető parancsfájlok a Azure Portal számára.
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+Nincsenek elérhető parancsfájlok az Azure Portalon.
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy Azure SQL Database rugalmas készletet adott hozzá egy feladatátvételi csoporthoz, és tesztelte a feladatátvételt. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban egy Azure SQL Database rugalmas készletet adott hozzá egy feladatátvételi csoporthoz, és tesztelt feladatátvételt. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> - Hozzon létre egy Azure SQL Database önálló adatbázist.
-> - Adja hozzá az önálló adatbázist egy rugalmas készlethez. 
-> - Hozzon létre egy [feladatátvételi csoportot](sql-database-auto-failover-group.md) két rugalmas készlethez két logikai SQL-kiszolgáló között.
-> - Feladatátvételi teszt.
+> - Hozzon létre egy Azure SQL Database egyetlen adatbázist.
+> - Adja hozzá az egyetlen adatbázist egy rugalmas készletbe. 
+> - [Feladatátvételi csoport](sql-database-auto-failover-group.md) létrehozása két rugalmas készlethez két logikai SQL-kiszolgáló között.
+> - Feladatátvétel tesztelése.
 
-Folytassa a következő oktatóanyaggal, amely bemutatja, hogyan migrálhat a DMS használatával.
+Tovább a következő oktatóanyaghoz a DMS használatával történő áttelepítésről.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: SQL Server migrálása egy készletezett adatbázisba a DMS használatával](../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json)
+> [Oktatóanyag: Az SQL Server áttelepítése készletezésű adatbázisba A DMS használatával](../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json)

@@ -1,7 +1,7 @@
 ---
-title: A Storage-fiók típusának és az SKU nevének beolvasása a .NET-tel
+title: Tárfiók típusának és termékváltozatának beírása a .NET segítségével
 titleSuffix: Azure Storage
-description: Ismerje meg, hogyan kérheti le az Azure Storage-fiók típusát és az SKU nevét a .NET ügyféloldali kódtár használatával.
+description: Megtudhatja, hogyan szerezheti be az Azure Storage-fiók típusát és a termékváltozat nevét a .NET ügyfélkódtár használatával.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -10,29 +10,29 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.openlocfilehash: 1495ed55c24a0f94b911d60d1db0f32940ea134a
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137058"
 ---
-# <a name="get-storage-account-type-and-sku-name-with-net"></a>A Storage-fiók típusának és az SKU nevének beolvasása a .NET-tel
+# <a name="get-storage-account-type-and-sku-name-with-net"></a>Tárfiók típusának és termékváltozatának beírása a .NET segítségével
 
-Ez a cikk bemutatja, hogyan kérhető le az Azure Storage-fiók típusa és SKU-neve egy blobhoz az [Azure Storage .net](/dotnet/api/overview/azure/storage?view=azure-dotnet)-hez készült ügyféloldali kódtár használatával.
+Ez a cikk bemutatja, hogyan szerezheti be az Azure Storage-fiók típusát és a blob termékváltozatának nevét a [.NET Azure Storage-ügyfélkódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet)használatával.
 
-A fiókadatok a 2018-03-28-es verziótól kezdődően elérhetők a szolgáltatás verzióiban.
+A fiókadatok a 2018-03-28-as verziótól kezdődően érhetők el a szolgáltatásverziókban.
 
-## <a name="about-account-type-and-sku-name"></a>A fiók típusa és az SKU neve
+## <a name="about-account-type-and-sku-name"></a>A fióktípus és a Termékváltozat neve
 
-**Fióktípus**: az érvényes fióktípus például `BlobStorage`, `BlockBlobStorage`, `FileStorage`, `Storage`és `StorageV2`. Az [Azure Storage-fiók áttekintése](storage-account-overview.md) több információt tartalmaz, többek között a különböző Storage-fiókok leírását.
+**Számlatípus**: Az `BlobStorage`érvényes `BlockBlobStorage` `FileStorage`számlatípusok közé tartozik a , , , , `Storage`, és `StorageV2`. [Az Azure storage-fiók áttekintése](storage-account-overview.md) további információkat tartalmaz, beleértve a különböző tárfiókok leírását.
 
-**SKU neve**: érvényes SKU-nevek: `Premium_LRS`, `Premium_ZRS`, `Standard_GRS`, `Standard_GZRS`, `Standard_LRS`, `Standard_RAGRS`, `Standard_RAGZRS`és `Standard_ZRS`. Az SKU-nevek megkülönböztetik a kis-és nagybetűket, és a [SkuName osztály](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet)sztring mezői.
+**Termékváltozat neve**: Az `Premium_LRS`érvényes `Premium_ZRS` `Standard_GRS`termékváltozatnevek közé tartozik , , `Standard_GZRS` `Standard_LRS`, , `Standard_RAGRS`, , `Standard_RAGZRS`és `Standard_ZRS`. A termékváltozatnevek ben a kis- és nagybetűket nem lehet figyelembe, és karakterláncmezők a [SkuName osztályban.](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet)
 
-## <a name="retrieve-account-information"></a>Fiókadatok beolvasása
+## <a name="retrieve-account-information"></a>Fiókadatok lekérése
 
-A Storage-fiók típusának és a blobhoz társított SKU-nak a meghívásával hívja meg a [GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties?view=azure-dotnet) vagy a [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync?view=azure-dotnet) metódust.
+A tárfiók típusának és a blobhoz társított Termékváltozat nevének lekérnie, hívja meg a [GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties?view=azure-dotnet) vagy a [GetAccountPropertiesAsync metódust.](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync?view=azure-dotnet)
 
-A következő kódrészlet lekéri és megjeleníti a csak olvasható fiók tulajdonságait.
+A következő kódpélda beolvassa és megjeleníti az írásvédett fiók tulajdonságait.
 
 ```csharp
 private static async Task GetAccountInfoAsync(CloudBlob blob)
@@ -60,8 +60,8 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan végezhet el más műveleteket a Storage-fiókokon a [Azure Portal](https://portal.azure.com) és az Azure REST API használatával.
+Ismerje meg a tárfiókon az Azure [Portalon](https://portal.azure.com) és az Azure REST API-n keresztül végrehajtható egyéb műveleteket.
 
-- [Fiókadatok beolvasása művelet (REST)](/rest/api/storageservices/get-account-information)
+- [Fiókinformáció-művelet beszerezése (REST)](/rest/api/storageservices/get-account-information)

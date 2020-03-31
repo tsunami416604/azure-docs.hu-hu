@@ -1,74 +1,74 @@
 ---
-title: Új javaslatok Azure Advisor riasztások létrehozása
-description: Új javaslat Azure Advisor riasztások létrehozása
+title: Azure Advisor-riasztások létrehozása új javaslatokhoz
+description: Azure Advisor-riasztások létrehozása új javaslathoz
 ms.topic: article
 ms.date: 09/09/2019
 ms.openlocfilehash: 07cbc57ef718b6cac104d2b5238ff4e3196f197a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443156"
 ---
-# <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Új javaslatokra vonatkozó Azure Advisor riasztások létrehozása 
+# <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Azure Advisor-riasztások létrehozása új javaslatokhoz 
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a Azure Advisor új javaslataira vonatkozó riasztásokat a Azure Portal és a Azure Resource Manager sablonok használatával. 
+Ez a cikk bemutatja, hogyan állíthat be egy riasztást az Azure Advisor új javaslataihoz az Azure Portal és az Azure Resource Manager-sablonok használatával. 
 
-Ha Azure Advisor észleli az egyik erőforrásra vonatkozó új javaslatot, egy eseményt az [Azure-tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview)tárol a rendszer. Az eseményekre vonatkozó riasztásokat a Azure Advisor-specifikus riasztások létrehozási felületének használatával állíthatja be. Kiválaszthat egy előfizetést, és opcionálisan egy erőforráscsoportot is megadhatja azokat az erőforrásokat, amelyekről riasztást szeretne kapni. 
+Amikor az Azure Advisor új javaslatot észlel az egyik erőforrásához, egy esemény az [Azure-tevékenységnaplóban](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview)tárolódik. Az Azure Advisor által az Azure Advisor-tól riasztásokat állíthat be egy javaslatspecifikus riasztások létrehozása ként. Kiválaszthat egy előfizetést, és szükség esetén egy erőforráscsoportot, amely megadja azokat az erőforrásokat, amelyekről értesítéseket szeretne kapni. 
 
-A következő tulajdonságokkal is meghatározhatja a javaslatok típusait:
+A javaslatok típusait az alábbi tulajdonságok használatával is meghatározhatja:
 
 * Kategória
-* Hatás szintje
+* Ütközési szint
 * Javaslat típusa
 
-Azt is beállíthatja, hogy milyen műveletet hajtson végre a rendszer a riasztás indításakor:  
+Azt a műveletet is beállíthatja, amely akkor történik, amikor a riasztást a következő váltja ki:  
 
-* Meglévő műveleti csoport kiválasztása
-* Új műveleti csoport létrehozása
+* Meglévő műveletcsoport kijelölése
+* Új műveletcsoport létrehozása
 
 A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/platform/action-groups.md) szóló cikkben talál.
 
 > [!NOTE] 
-> Az Advisor-riasztások jelenleg csak a magas rendelkezésre állás, a teljesítmény és a Cost-javaslatok esetében érhetők el. A biztonsági javaslatok nem támogatottak. 
+> Az Advisor-riasztások jelenleg csak a magas rendelkezésre állású, a teljesítmény és a költségjavaslatok esetén érhetők el. A biztonsági javaslatok nem támogatottak. 
 
 ## <a name="in-the-azure-portal"></a>Az Azure Portalon
-1. A **portálon**válassza a **Azure Advisor**lehetőséget.
+1. A **portálon**válassza az **Azure Advisor lehetőséget.**
 
     ![Azure Advisor a portálon](./media/advisor-alerts/create1.png)
 
-2. A bal oldali menü **figyelés** területén válassza a **riasztások**lehetőséget. 
+2. A bal oldali menü **Figyelés** szakaszában válassza a **Riasztások**lehetőséget. 
 
-    ![Riasztások az Advisorban](./media/advisor-alerts/create2.png)
+    ![Figyelmeztetések az Advisorban](./media/advisor-alerts/create2.png)
 
-3. Válassza az **új Advisor-riasztás**lehetőséget.
+3. Válassza az **Új tanácsadóriasztás lehetőséget.**
 
-    ![Új Advisor-riasztás](./media/advisor-alerts/create3.png)
+    ![Új tanácsadó riasztás](./media/advisor-alerts/create3.png)
 
-4. A **hatókör** szakaszban válassza ki az előfizetést és opcionálisan azt az erőforráscsoportot, amelyet a riasztásra szeretne kapni. 
+4. A **Hatókör szakaszban** válassza ki azt az előfizetést és szükség esetén azt az erőforráscsoportot, amelyről értesítést szeretne kapni. 
 
-    ![Advisor riasztási hatóköre](./media/advisor-alerts/create4.png)
+    ![Tanácsadó riasztási hatóköre](./media/advisor-alerts/create4.png)
 
-5. A **feltétel** szakaszban válassza ki a riasztás konfigurálásához használni kívánt módszert. Ha szeretne riasztást kapni egy adott kategória és/vagy hatás szintjére vonatkozó javaslatokról, válassza a **Kategória és a hatás szintjét**. Ha egy bizonyos típusra vonatkozó javaslatra vonatkozóan szeretne riasztást kapni, válassza a **javaslat típusa**lehetőséget.
+5. A **Feltétel csoportban** válassza ki a riasztás konfigurálásához használni kívánt módszert. Ha egy adott kategóriára és/vagy hatásszintre vonatkozó összes javaslatról szeretne értesítést kapni, válassza **a Kategória és hatásszint**lehetőséget. Ha egy adott típusú összes javaslatra vonatkozóan szeretne értesítést kapni, válassza a **Javaslat típust.**
 
-    ![Azure Advisor riasztási feltétel](./media/advisor-alerts/create5.png)
+    ![Az Azure Advisor riasztási feltétele](./media/advisor-alerts/create5.png)
 
-6. A kiválasztott beállítástól függően megadhatja a feltételt. Ha minden javaslatot szeretne, hagyja üresen a fennmaradó mezőket. 
+6. A kiválasztott Beállítás beállítástól függően megadhatja a feltételeket. Ha az összes javaslatot szeretné, hagyja üresen a fennmaradó mezőket. 
 
-    ![Advisor riasztási műveleti csoport](./media/advisor-alerts/create6.png)
+    ![Tanácsadó riasztási műveletcsoportja](./media/advisor-alerts/create6.png)
 
-7. A **műveleti csoportok** szakaszban válassza a **meglévő hozzáadása** elemet a már létrehozott műveleti csoport használatához, vagy válassza az **új létrehozása** lehetőséget egy új [műveleti csoport](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)beállításához. 
+7. A **műveletcsoportok** csoportban válassza a **Meglévő hozzáadása lehetőséget** a már létrehozott műveletcsoport használatához, vagy válassza az Új **létrehozása** lehetőséget új [műveletcsoport](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)beállításához. 
 
-    ![Advisor-riasztás meglévő hozzáadása](./media/advisor-alerts/create7.png)
+    ![Az Advisor riasztása meglévőt ad hozzá](./media/advisor-alerts/create7.png)
 
-8. A riasztás részletei szakaszban adja meg a riasztás nevét és rövid leírását. Ha azt szeretné, hogy a riasztás engedélyezve legyen, hagyja a **szabály engedélyezése** beállítást az **Igen**értékre a létrehozás kiválasztása után. Ezután válassza ki azt az erőforráscsoportot, amelybe menteni szeretné a riasztást. Ez nem befolyásolja a javaslat célcsoport-hatókörét. 
+8. A Riasztás részletei szakaszban adja meg a riasztás nevét és rövid leírását. Ha engedélyezni szeretné a riasztást, hagyja a **Szabály engedélyezése a létrehozási** kijelölés i **értékén**beállítást. Ezután válassza ki azt az erőforráscsoportot, amelybe menteni szeretné a riasztást. Ez nem befolyásolja az ajánlás célzási hatókörét. 
 
-    ![Azure Advisor banner](./media/advisor-alerts/create8.png)
+    ![Azure-tanácsadó bannere](./media/advisor-alerts/create8.png)
 
 
-## <a name="with-an-azure-resource-manager-template"></a>Azure Resource Manager sablonnal
+## <a name="with-an-azure-resource-manager-template"></a>Azure Resource Manager-sablonnal
 
-Ez a Resource Manager-sablon egy javaslat-riasztást és egy új műveleti csoportot hoz létre.
+Ez az Erőforrás-kezelő sablon létrehoz egy javaslatriasztást és egy új műveletcsoportot.
 
 ```json
 {
@@ -165,16 +165,16 @@ Ez a Resource Manager-sablon egy javaslat-riasztást és egy új műveleti csopo
 }
   ```
 
-## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>Ajánlási riasztások konfigurálása webhook használatára
-Ebből a szakaszból megtudhatja, hogyan konfigurálhat Azure Advisor riasztásokat arra, hogy a meglévő rendszereken webhookokon keresztül küldje el a javaslati adatait. 
+## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>Javaslatriasztások konfigurálása webhook használatára
+Ez a szakasz bemutatja, hogyan konfigurálhatja az Azure Advisor-riasztásokat, hogy a webhookokon keresztül javaslatokat küldjenek a meglévő rendszereknek. 
 
-Beállíthat riasztásokat, amelyekről értesítést kaphat, ha új tanácsadói javaslattal rendelkezik az egyik erőforráson. Ezek a riasztások e-mailben vagy SMS-ben értesítik Önt, de a meglévő rendszerekkel való integrálására is használhatók webhook használatával. 
+Beállíthatja, hogy a riasztások értesítést kapjanak, ha új tanácsadói javaslata van az egyik erőforrásához. Ezek a riasztások e-mailben vagy szöveges üzenetben értesíthetik Önt, de a meglévő rendszerekkel való integrációra is használhatók egy webhookon keresztül. 
 
 
-### <a name="using-the-advisor-recommendation-alert-payload"></a>Az Advisor javaslat riasztási hasznos adatai
-Ha az Advisor-riasztásokat webhook használatával szeretné integrálni a saját rendszereibe, meg kell elemezni az értesítésből küldött JSON-adattartalmat. 
+### <a name="using-the-advisor-recommendation-alert-payload"></a>Az Advisor-ajánlás riasztási hasznos teher használata
+Ha azt szeretné, hogy integrálja az Advisor-riasztásokat a saját rendszerébe egy webhook használatával, elemeznie kell a JSON hasznos adat, amely az értesítésből küldött. 
 
-A riasztáshoz tartozó műveleti csoport beállításakor kiválaszthatja, hogy szeretné-e használni a Common Alert sémát. Ha a gyakori riasztási sémát választja, az adattartalom a következőképpen fog kinézni: 
+Amikor beállítja a műveletcsoportot ehhez a riasztáshoz, kiválaszthatja, hogy szeretné-e használni a közös riasztási sémát. Ha kiválasztja a közös riasztási sémát, a hasznos adat a következőkre fog kinézni: 
 
 ```json
 {  
@@ -223,7 +223,7 @@ A riasztáshoz tartozó műveleti csoport beállításakor kiválaszthatja, hogy
 }
   ```
 
-Ha nem használja a közös sémát, az adattartalom a következőhöz hasonlóan néz ki: 
+Ha nem használja a közös sémát, a hasznos adat a következőképpen néz ki: 
 
 ```json
 {  
@@ -268,32 +268,32 @@ Ha nem használja a közös sémát, az adattartalom a következőhöz hasonlóa
 }
 ```
 
-Bármelyik sémában azonosíthatja az Advisor-javaslatok eseményeit, ha a **eventSource** `Recommendation`, és a **operationName** `Microsoft.Advisor/recommendations/available/action`.
+Mindkét sémában azonosíthatja az Advisor ajánlási eseményeit **az eventSource** is `Recommendation` és **operationName** is. `Microsoft.Advisor/recommendations/available/action`
 
-Néhány további fontos mező, amelyet érdemes használni: 
+Néhány más fontos mező, amelyet érdemes lehet használni: 
 
-* *alertTargetIDs* (a közös sémában) vagy *resourceId* (örökölt séma)
-* *recommendationType*
-* *recommendationName*
-* *recommendationCategory*
-* *recommendationImpact*
-* *recommendationResourceLink*
+* *alertTargetIds* (a közös séma) vagy *resourceId* (örökölt séma)
+* *ajánlástípusa*
+* *ajánlásNeve*
+* *ajánlásKategória*
+* *ajánlásHatás*
+* *ajánlásResourceLink*
 
 
 ## <a name="manage-your-alerts"></a>A riasztások kezelése 
 
-A Azure Advisorban szerkesztheti, törölheti vagy letilthatja és engedélyezheti a javaslatok riasztásait. 
+Az Azure Advisorban szerkesztheti, törölheti vagy letilthatja és engedélyezheti a javaslatok riasztásait. 
 
-1. A **portálon**válassza a **Azure Advisor**lehetőséget.
+1. A **portálon**válassza az **Azure Advisor lehetőséget.**
 
-    ![Azure Advisor banner](./media/advisor-alerts/create1.png)
+    ![Azure-tanácsadó bannere](./media/advisor-alerts/create1.png)
 
-2. A bal oldali menü **figyelés** területén válassza a **riasztások**lehetőséget.
+2. A bal oldali menü **Figyelés** szakaszában válassza a **Riasztások**lehetőséget.
 
-    ![Azure Advisor banner](./media/advisor-alerts/create2.png)
+    ![Azure-tanácsadó bannere](./media/advisor-alerts/create2.png)
 
-3. A riasztások szerkesztéséhez kattintson a riasztás nevére a riasztás megnyitásához, és szerkessze a szerkeszteni kívánt mezőket.
+3. A riasztás szerkesztéséhez kattintson a Riasztás nevére a riasztás megnyitásához és a szerkesztendő mezők szerkesztéséhez.
 
-4. A riasztások törléséhez, engedélyezéséhez vagy letiltásához kattintson a sor végén található ellipszisre, majd válassza ki a végrehajtani kívánt műveletet.
+4. A riasztás törléséhez, engedélyezéséhez vagy letiltásához kattintson a sor végén lévő ellipszisre, majd válassza ki a végrehajtani kívánt műveletet.
  
 

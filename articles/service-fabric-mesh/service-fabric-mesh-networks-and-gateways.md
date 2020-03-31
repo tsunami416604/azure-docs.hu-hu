@@ -1,41 +1,41 @@
 ---
-title: Az Azure Service Fabric hálózatkezelés bemutatása
-description: Ismerje meg a hálózatokat, az átjárókat és az intelligens forgalom útválasztását Service Fabric Meshban.
+title: Bevezetés az Azure Service Fabric hálózati szolgáltatásába
+description: Ismerje meg a hálózatok, átjárók és intelligens forgalomútválasztás a Service Fabric Mesh.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75459139"
 ---
-# <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric Mesh-alkalmazások hálózatkezelésének bemutatása
-Ez a cikk a terheléselosztó különböző típusait ismerteti, az átjárók hogyan kötik össze a hálózatot az alkalmazásaival más hálózatokkal, valamint azt, hogy a forgalom hogyan legyen átirányítva az alkalmazások szolgáltatásai között.
+# <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Bevezetés a hálózatépítésbe a Service Fabric Mesh alkalmazásokban
+Ez a cikk ismerteti a különböző típusú terheléselosztók, hogyan átjárók csatlakoztassa a hálózatot az alkalmazások más hálózatokhoz, és hogyan forgalom között irányítják a szolgáltatások az alkalmazásokban.
 
-## <a name="layer-4-vs-layer-7-load-balancers"></a>4\. réteg vs 7. rétegbeli terheléselosztó
-A terheléselosztás az [OSI-modell](https://en.wikipedia.org/wiki/OSI_model) különböző rétegein végezhető el a hálózatkezeléshez, gyakran a 4. rétegben (L4) és a 7. rétegben (L7).  Jellemzően két típusú terheléselosztó létezik:
+## <a name="layer-4-vs-layer-7-load-balancers"></a>4. réteg vs. 7.
+A terheléselosztás az [OSI modell](https://en.wikipedia.org/wiki/OSI_model) különböző rétegeiben végezhető el a hálózatépítéshez, gyakran a 4.  Általában kétféle terheléselosztó létezik:
 
-- Az L4 terheléselosztó a hálózatkezelési átviteli rétegen működik, amely a csomagok tartalmának figyelmen kívül hagyásával a csomagok szállításával foglalkozik. A terheléselosztó csak a csomagok fejléceit ellenőrzi, így az egyenlegező feltételek az IP-címekre és a portokra korlátozódnak. Egy ügyfél például TCP-kapcsolatban áll a terheléselosztó használatával. A terheléselosztó leállítja a kapcsolódást (közvetlenül a SYN-re válaszol), kiválasztja a hátteret, és új TCP-kapcsolódást végez a háttérrel (új SYN-t küld). Az L4 Load Balancer általában csak a L4 TCP/UDP kapcsolat vagy munkamenet szintjén működik. Így a terheléselosztás átirányítja a bájtok körét, és gondoskodik arról, hogy az azonos munkamenetből származó bájtok ugyanazon a háttérön legyenek. Az L4 Load Balancer nem ismeri az áthelyezett bájtok összes alkalmazási részletét. A bájtok bármely alkalmazás-protokoll lehetnek.
+- Az L4-es terheléselosztó a hálózati átviteli rétegen dolgozik, amely a csomagok kézbesítésével foglalkozik, tekintet nélkül a csomagok tartalmára. A terheléselosztó csak a csomagfejléceket vizsgálja, így az elosztási feltételek az IP-címekre és portokra korlátozódnak. Például egy ügyfél TCP-kapcsolatot létesít a terheléselosztóval. A terheléselosztó megszakítja a kapcsolatot (közvetlenül a SYN-nek válaszolva), kiválaszt egy háttérrendszert, és új TCP-kapcsolatot hoz létre a háttérrendszerhez (új SYN-t küld). Az L4-es terheléselosztó általában csak az L4 TCP/UDP-kapcsolat vagy -munkamenet szintjén működik. Így a terheléselosztás átirányítja bájt körül, és gondoskodik arról, hogy bájt ugyanabból a munkamenetből a szél ugyanabban a háttérben. Az L4-es terheléselosztó nem ismeri az alkalmazás részleteit a bájtról, amelyet mozog. A bájtok bármilyen alkalmazásprotokoll lehetnek.
 
-- Egy L7 terheléselosztó az alkalmazás rétegében működik, amely az egyes csomagok tartalmával foglalkozik. Megvizsgálja a csomagok tartalmát, mert megérti a protokollokat, például a HTTP-, HTTPS-vagy WebSocket-csomagokat. Ez biztosítja, hogy a terheléselosztó képes legyen speciális útválasztást végezni. Az ügyfél például egyetlen HTTP/2 TCP-kapcsolódást tesz lehetővé a terheléselosztó számára. A terheléselosztó ezután két háttérbeli kapcsolatot hajt végre. Amikor az ügyfél két HTTP/2 streamet küld a terheléselosztó felé, a streamet a rendszer a háttérbe küldi, a két stream pedig a két háttérbe kerül. Így a nagymértékben eltérő kérelmeket használó ügyfeleket még a háttérben is hatékonyan kiegyensúlyozottan fogja biztosítani. 
+- Az L7-es terheléselosztó az alkalmazásrétegen működik, amely az egyes csomagok tartalmával foglalkozik. Megvizsgálja a csomagok tartalmát, mert megérti az olyan protokollokat, mint a HTTP, HTTPS vagy WebSockets. Ez lehetővé teszi a terheléselosztó számára a speciális útválasztás elvégzését. Például egy ügyfél egyetlen HTTP/2 TCP-kapcsolatot létesít a terheléselosztóval. A terheléselosztó ezután két háttérkapcsolat létesítése után folytatja. Amikor az ügyfél két HTTP/2 streamet küld a terheléselosztónak, az egyik streamelése az első háttérrendszerre, a kettő pedig a második háttérrendszerre kerül. Így még a túlnyomómértékben eltérő kérésterheléssel rendelkező multiplexügyfelek is hatékonyan kiegyensúlyozottak lesznek a háttérrendszereken keresztül. 
 
 ## <a name="networks-and-gateways"></a>Hálózatok és átjárók
-A [Service Fabric erőforrás-modellben](service-fabric-mesh-service-fabric-resources.md)a hálózati erőforrás egy önállóan telepíthető erőforrás, amely független az alkalmazás-vagy szolgáltatási erőforrástól, amely függőségként hivatkozik rá. A rendszer az internetre nyitott alkalmazások hálózatának létrehozására szolgál. A különböző alkalmazásokból több szolgáltatás is lehet ugyanazon hálózat része. Ezt a magánhálózatot a Service Fabric hozza létre és kezeli, és nem Azure-beli virtuális hálózat (VNET). Az alkalmazások dinamikusan hozzáadhatók és eltávolíthatók a hálózati erőforrásból a VNET-kapcsolat engedélyezéséhez és letiltásához. 
+A [Service Fabric erőforrás-modellben](service-fabric-mesh-service-fabric-resources.md)a hálózati erőforrás egy egyedileg telepíthető erőforrás, függetlenül egy alkalmazástól vagy szolgáltatáserőforrástól, amely függőségként hivatkozhat rá. Arra használják, hogy hozzon létre egy hálózatot az alkalmazások, amely nyitott az interneten. A különböző alkalmazásokból származó több szolgáltatás ugyanannak a hálózatnak a része lehet. Ezt a magánhálózatot a Service Fabric hozta létre és kezeli, és nem egy Azure virtuális hálózat (VNET). A virtuális hálózat internetkapcsolatának engedélyezéséhez és letiltásához az alkalmazások dinamikusan hozzáadhatók és eltávolíthatók a hálózati erőforrásból. 
 
-Az átjáró két hálózat összeépítésére szolgál. Az átjáró erőforrása olyan [meghatalmazotti proxyt](https://www.envoyproxy.io/) helyez üzembe, amely L4 útválasztást biztosít bármely protokoll-és L7-útválasztáshoz a speciális http (S) alkalmazás-útválasztáshoz. Az átjáró egy külső hálózatról irányítja át a forgalmat a hálózatra, és meghatározza, hogy melyik szolgáltatás irányítja át a forgalmat.  A külső hálózat lehet egy nyílt hálózat (lényegében a nyilvános Internet) vagy egy Azure-beli virtuális hálózat, amely lehetővé teszi a más Azure-alkalmazásokhoz és-erőforrásokhoz való kapcsolódást. 
+Az átjáró két hálózat áthidalására szolgál. Az átjáró erőforrás olyan [Envoy proxyt](https://www.envoyproxy.io/) telepít, amely L4-es útválasztást biztosít bármely protokollhoz, és L7 útválasztást a speciális HTTP(S) alkalmazások útválasztásához. Az átjáró egy külső hálózatról irányítja a forgalmat a hálózatba, és meghatározza, hogy melyik szolgáltatáshoz irányítsa a forgalmat.  A külső hálózat lehet egy nyílt hálózat (lényegében a nyilvános internet) vagy egy Azure virtuális hálózat, amely lehetővé teszi, hogy csatlakozzon a többi Azure-alkalmazások és erőforrások. 
 
 ![Hálózat és átjáró][Image1]
 
-Ha a hálózati erőforrást `ingressConfig`tel hozza létre, a hálózati erőforráshoz a rendszer egy nyilvános IP-címet rendel hozzá. A nyilvános IP-cím a hálózati erőforrás élettartamához lesz kötve.
+Amikor a hálózati erőforrást a segítségével `ingressConfig`hozza létre, a hálózati erőforráshoz nyilvános IP-cím van hozzárendelve. A nyilvános IP lesz kötve a hálózati erőforrás élettartama.
 
-Egy rácsvonal-alkalmazás létrehozásakor egy meglévő hálózati erőforrásra kell hivatkoznia. Új nyilvános portok adhatók hozzá, vagy a meglévő portok eltávolíthatók a bejövő konfigurációból. Egy hálózati erőforrás törlése sikertelen lesz, ha egy alkalmazás-erőforrás hivatkozik rá. Az alkalmazás törlésekor a hálózati erőforrás el lesz távolítva.
+Mesh alkalmazás létrehozásakor egy meglévő hálózati erőforrásra kell hivatkoznia. Új nyilvános portok is hozzáadhatók, vagy meglévő portok eltávolíthatók a be- ésakozókonfigurációból. A hálózati erőforrás törlése sikertelen lesz, ha egy alkalmazás-erőforrás hivatkozik rá. Az alkalmazás törlésekor a rendszer eltávolítja a hálózati erőforrást.
 
-## <a name="next-steps"></a>Következő lépések 
-Ha többet szeretne megtudni a Service Fabric Meshról, olvassa el az áttekintést:
-- [Service Fabric Mesh – áttekintés](service-fabric-mesh-overview.md)
+## <a name="next-steps"></a>További lépések 
+Ha többet szeretne megtudni a Service Fabric Mesh-ről, olvassa el az áttekintést:
+- [A szolgáltatásháló hálója – áttekintés](service-fabric-mesh-overview.md)
 
 [Image1]: media/service-fabric-mesh-networks-and-gateways/NetworkAndGateway.png

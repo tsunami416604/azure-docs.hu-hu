@@ -1,6 +1,6 @@
 ---
-title: Feladatok beosztása
-description: Feladatok kezelése feladatütemezés használatával.
+title: A feladatok ütemezése
+description: A feladatok kezeléséhez használja a feladatütemezést.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -13,73 +13,73 @@ ms.date: 02/20/2020
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 55ea8fb4cc0e65deaa89d718c4a46513716dcf54
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672432"
 ---
-# <a name="schedule-jobs-for-efficiency"></a>Feladatok ütemezett hatékonysága
+# <a name="schedule-jobs-for-efficiency"></a>Feladatok ütemezése a hatékonyság érdekében
 
-A Batch-feladatok ütemezése lehetővé teszi, hogy rangsorolja azokat a feladatokat, amelyeket először szeretne futtatni, miközben a más feladatokra függőségekkel rendelkező feladatokat is figyelembe veszi. A feladatok ütemezésével gondoskodhat arról, hogy a lehető legkevesebb erőforrást használja. Ha nincs rá szükség, a csomópontok levonhatók, és a munkafolyamatok optimalizálására szolgáló feladatokat csak időben használják fel. Egyszerre csak egy feladatot futtat. Egy új nem indul el, amíg az előző be nem fejeződik. A feladatot beállíthatja automatikus kiegészítésre. 
+A Kötegelt feladatok ütemezése lehetővé teszi, hogy rangsorolja azokat a feladatokat, amelyeket először futtatni szeretne, miközben figyelembe veszi azokat a feladatokat, amelyek más tevékenységektől függenek. A feladatok ütemezésével biztosíthatja, hogy a legkevesebb erőforrást használja. A csomópontok akkor szerelhetők le, ha nincs rá szükség, a más feladatoktól függő feladatok éppen időben, a munkafolyamatok optimalizálásával jelennek meg. Egyszerre csak egy feladat fut. Egy új nem indul el, amíg az előző be nem fejeződik. Beállíthatja, hogy a feladat automatikus kiegészítés. 
 
 ## <a name="benefit-of-job-scheduling"></a>A feladatütemezés előnyei
 
-A feladatok ütemezésének előnye, hogy megadhat egy ütemezést a feladatok létrehozásához. A Feladatkezelő feladat használatával ütemezett feladatok egy feladathoz vannak társítva. A Feladatkezelő feladat feladatokat hoz létre a feladathoz. Ehhez a Feladatkezelő feladatnak hitelesítenie kell magát a Batch-fiókkal. Használja a AZ_BATCH_AUTHENTICATION_TOKEN hozzáférési tokent. A jogkivonat a feladatokhoz való hozzáférést is lehetővé teszi. 
+A feladatok ütemezésének előnye, hogy megadhat egy ütemtervet a munkahelyteremtéshez. A feladatkezelő feladattal ütemezett feladatok egy feladathoz vannak társítva. A feladatkezelő feladat feladatokat hoz létre a feladathoz. Ehhez a feladatkezelő feladatnak hitelesítenie kell magát a Batch-fiókkal. Használja a AZ_BATCH_AUTHENTICATION_TOKEN hozzáférési jogkivonatot. A jogkivonat hozzáférést biztosít a feladat többi részéhez. 
 
-## <a name="use-the-portal-to-schedule-a-job"></a>Feladatok beütemezés a portál használatával
+## <a name="use-the-portal-to-schedule-a-job"></a>Feladat ütemezése a portálhasználatával
 
    1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-   2. Válassza ki azt a Batch-fiókot, amelyben a feladatokat ütemezni szeretné.
+   2. Válassza ki azt a Batch-fiókot, amelybe feladatokat szeretne ütemezni.
 
-   3. A **Hozzáadás** gombra kattintva hozzon létre egy új feladatütemezés, és fejezze be az **alapszintű űrlapot**.
-
-
-
-![Feladatok ütemezve][1]
-
-**FELADATÜTEMEZÉS azonosítója**: a feladatütemezés egyedi azonosítója.
-
-**Megjelenítendő név**: a feladatokhoz tartozó megjelenítendő névnek nem kell egyedinek lennie, de legfeljebb 1024 karakter hosszú lehet.
-
-Ne **fusson, amíg**: megadja a művelet legkorábbi futási idejét. Ha ezt nem teszi meg, az ütemterv azonnal készen áll a feladatok futtatására.
-
-Ne **futtassa azt követően**: az itt beállított idő után nem futnak feladatok. Ha nem ad meg időpontot, akkor ismétlődő feladatütemezés jön létre, amely mindaddig aktív marad, amíg explicit módon meg nem szünteti.
-
-**Ismétlődési időköz**: megadhatja a feladatok közötti időtartamot. Ütemezés szerint egyszerre csak egy feladattal rendelkezhet, így ha új feladatot szeretne létrehozni egy feladatütemezés alatt, de az előző művelet még fut, a Batch szolgáltatás nem hozza létre az új feladatot addig, amíg az előző feladatot be nem fejeződik.  
-
-**Kezdési ablak**: Itt adhatja meg azt az időintervallumot, amelytől kezdve az ütemezés azt jelzi, hogy melyik feladatot kell létrehozni, amíg be nem fejeződik. Ha az aktuális feladattípus nem fejeződött be az ablakában, a következő feladatot nem fogja elindítani.
-
-Az alapszintű űrlap alján adja meg azt a készletet, amelyen futtatni szeretné a feladatot. A készlet AZONOSÍTÓjának adatainak megkereséséhez válassza a **frissítés**lehetőséget. 
-
-![Készlet meghatározása][2]
+   3. Új feladatütemezés létrehozásához és az **Alapképernyő kitöltéséhez**válassza a **Hozzáadás** lehetőséget.
 
 
-**Készlet azonosítója**: azonosítsa azt a készletet, amelyen a feladatot futtatni fogja.
 
-**Feladat-konfigurálási feladat**: válassza a **frissítés** lehetőséget a Feladatkezelő feladat elnevezéséhez, valamint a feladat-előkészítési és-kiadási feladatokhoz, ha azokat használja.
+![Feladat ütemezése][1]
 
-**Prioritás**: adjon prioritást a feladatnak.
+**Munkaütemezés-azonosító**: A feladatütemezés egyedi azonosítója.
 
-**Maximális falióra-idő**: állítsa be azt a maximális időtartamot, ameddig a feladatot futtatni lehet. Ha az idő keretén belül nem fejeződik be, a Batch leállítja a feladatot. Ha ezt nem teszi meg, akkor a feladatokhoz nincs időkorlát.
+**Megjelenítendő név**: A feladat megjelenítendő nevének nem kell egyedinek lennie, de legfeljebb 1024 karakter hosszúságúnak kell lennie.
 
-**Feladat-újrapróbálkozások maximális**száma: Itt adhatja meg, hogy hány alkalommal próbálkozzon újra egy tevékenység legfeljebb négyszer. Ez nem ugyanaz, mint az API-hívások újrapróbálkozások száma.
+**Ne fusson, amíg**: Megadja a feladat futtatásának legkorábbi idejét. Ha ezt nem állítja be, az ütemezés azonnal készen áll a feladatok futtatására.
 
-**Ha az összes feladat befejeződött**: az alapértelmezett érték nincs művelet.
+**Ne fusson a következő után:** Nincs feladat fut az itt beállított idő után. Ha nem ad meg időpontot, akkor ismétlődő feladatütemezést hoz létre, amely addig marad aktív, amíg kifejezetten le nem állítja.
 
-**Ha egy feladat meghiúsul**: az alapértelmezett érték nincs művelet. Egy feladat meghiúsul, ha az újrapróbálkozások száma kimerült, vagy hiba történt a feladat indításakor. 
+**Ismétlődési időköz**: Megadhatja a feladatok közötti időt. Egyszerre csak egy feladat lehet ütemezve, így ha itt az ideje, hogy új feladatot hozzon létre egy feladatütemezés alatt, de az előző feladat még mindig fut, a Batch szolgáltatás nem hozza létre az új feladatot, amíg az előző feladat be nem fejeződik.  
 
-Ha a **Mentés**gombra kattint, ha a bal oldali navigációs sávon a **feladatok ütemterve** lehetőségre kattint, a **végrehajtási adatok**lehetőség választásával nyomon követheti a feladatok végrehajtását.
+**Kezdőablak**: Itt adhatja meg az időintervallumot, amely attól az időponttól kezdődik, amikor az ütemezés azt jelzi, hogy egy feladatot létre kell hozni, amíg be nem fejeződik. Ha az aktuális feladat nem fejeződik be az ablak alatt, a következő feladat nem indul el.
+
+Az alapűrlap alján adhatja meg azt a készletet, amelyen a feladatot futtatni szeretné. A készletazonosító adatainak megkereséséhez válassza a **Frissítés lehetőséget.** 
+
+![Készlet megadása][2]
+
+
+**Készlet azonosító:** azonosítsa a készlet fog futni a feladatot.
+
+**Feladatkonfigurációs feladat**: Válassza a **Frissítés** lehetőséget a Feladatkezelő feladat, valamint a Feladat-előkészítési és kiadási feladatok elnevezéséhez, ha használja őket.
+
+**Prioritás**: Adjon elsőbbséget a feladatnak.
+
+**Maximális falióra-idő:** Állítsa be azt a maximális időtartamot, amerre a feladat futhat. Ha nem fejeződik be az időkereten belül, batch leállítja a feladatot. Ha ezt nem állítja be, akkor nincs határidő a feladatra.
+
+**Feladat újrapróbálkozások maximális száma**: Adja meg, hogy egy feladat hányszor próbálható újra legfeljebb négy alkalommal. Ez nem egyezik meg az API-hívás újrapróbálkozásainak számával.
+
+**Ha az összes feladat befejeződött:** Az alapértelmezett beállítás nem művelet.
+
+**Ha egy feladat sikertelen**: Az alapértelmezett beállítás nem művelet. Egy feladat sikertelen, ha az újrapróbálkozások száma kimerült, vagy hiba történt a feladat indításakor. 
+
+Miután a **Mentés**lehetőséget választotta, ha a bal oldali navigációs sávban a **Feladatütemezések lehetőséget választja,** a **Végrehajtási adatok**lehetőség kiválasztásával nyomon követheti a feladat végrehajtását.
 
 
 ## <a name="for-more-information"></a>További tudnivalók
 
-Ha az Azure CLI használatával szeretné kezelni a feladatokat, tekintse meg az [az batch Job-Schedule](https://docs.microsoft.com/cli/azure/batch/job-schedule?view=azure-cli-latest)című témakört.
+Ha az Azure CLI használatával szeretne kezelni egy feladatot, olvassa [el az az kötegelt feladat ütemezése című témakört.](https://docs.microsoft.com/cli/azure/batch/job-schedule?view=azure-cli-latest)
 
 ## <a name="next-steps"></a>További lépések
 
-[Feladat függőségeinek létrehozása olyan feladatok futtatásához, amelyek más feladatoktól függenek](batch-task-dependencies.md).
+[Tevékenységfüggőségek létrehozása más feladatoktól függő feladatok futtatásához.](batch-task-dependencies.md)
 
 
 

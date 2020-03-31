@@ -1,26 +1,26 @@
 ---
-title: Helyszíni tűzfal és proxybeállítások Azure File Sync | Microsoft Docs
-description: Helyszíni hálózati konfiguráció Azure File Sync
+title: Az Azure File Sync helyszíni tűzfal- és proxybeállításai | Microsoft dokumentumok
+description: Az Azure File Sync helyszíni hálózati konfigurációja
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 93681813c12f0df99909c849e57153e7a64c78fb
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: 7f398012edc25ba6a04e230fa8049e7264f857bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79299311"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294525"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
-Azure File Sync összekapcsolja a helyszíni kiszolgálókat a Azure Fileshoz, és lehetővé teszi a többhelyes szinkronizálást és a felhőalapú rétegbeli funkciókat. Ennek megfelelően a helyszíni kiszolgálónak csatlakoznia kell az internethez. A rendszergazdának el kell döntenie, hogy melyik a legjobb elérési út ahhoz, hogy a kiszolgáló elérje az Azure Cloud Services szolgáltatást.
+Az Azure File Sync csatlakoztatja a helyszíni kiszolgálókat az Azure Files-hoz, lehetővé téve a többhelyes szinkronizálást és a felhőrétegezési funkciókat. Így a helyszíni kiszolgálónak csatlakoznia kell az internethez. Egy informatikai rendszergazdának el kell döntenie, hogy a kiszolgáló számára melyik legjobb elérési utat kell elérnie az Azure felhőszolgáltatásaihoz.
 
-Ez a cikk betekintést nyújt a-kiszolgáló sikeres és biztonságos összekapcsolásához szükséges konkrét követelményekkel és lehetőségekkel Azure File Synchoz.
+Ez a cikk betekintést nyújt a kiszolgáló azure-fájlszinkronizáláshoz való sikeres és biztonságos csatlakoztatásához rendelkezésre álló konkrét követelményekbe és lehetőségekbe.
 
 ## <a name="overview"></a>Áttekintés
-Azure File Sync a Windows-kiszolgáló, az Azure-fájlmegosztás és számos más Azure-szolgáltatás között összehangoló szolgáltatásként működik, hogy szinkronizálja az adatait a szinkronizálási csoportban leírtak szerint. Ahhoz, hogy a Azure File Sync megfelelően működjön, konfigurálnia kell a kiszolgálókat a következő Azure-szolgáltatásokkal való kommunikációhoz:
+Az Azure File Sync vezénylési szolgáltatásként működik a Windows Server, az Azure-fájlmegosztás és számos más Azure-szolgáltatás között az adatok szinkronizálásához a szinkronizálási csoportban leírtak szerint. Ahhoz, hogy az Azure File Sync megfelelően működjön, konfigurálnia kell a kiszolgálókat a következő Azure-szolgáltatásokkal való kommunikációra:
 
 - Azure Storage
 - Azure File Sync
@@ -28,38 +28,38 @@ Azure File Sync a Windows-kiszolgáló, az Azure-fájlmegosztás és számos má
 - Hitelesítési szolgáltatások
 
 > [!Note]  
-> A Windows Serveren futó Azure File Sync ügynök minden olyan kérést kezdeményez a Cloud Serviceshez, amely csak a tűzfal perspektívából érkező kimenő forgalmat veszi figyelembe. <br /> Egyetlen Azure-szolgáltatás sem kezdeményez kapcsolódást a Azure File Sync ügynökhöz.
+> A Windows Server Azure File Sync ügynöke elindítja az összes kérelmet a felhőszolgáltatások, ami azt eredményezi, hogy csak a kimenő forgalmat a tűzfal szempontjából. <br /> Egyetlen Azure-szolgáltatás sem kezdeményez kapcsolatot az Azure File Sync ügynökkel.
 
 ## <a name="ports"></a>Portok
-Azure File Sync a fájl-és metaadatokat kizárólag HTTPS-en keresztül helyezi át, és az 443-es portot kell megnyitni kimenőként.
+Az Azure File Sync a fájladatokat és a metaadatokat kizárólag HTTPS-kapcsolaton keresztül helyezi át, és a 443-as portot kimenő en kell megnyitni.
 Ennek eredményeképpen minden forgalom titkosítva van.
 
-## <a name="networks-and-special-connections-to-azure"></a>Hálózatok és speciális kapcsolódás az Azure-hoz
-A Azure File Sync ügynökhöz nem tartoznak követelmények olyan speciális csatornákra vonatkozóan, mint a [ExpressRoute](../../expressroute/expressroute-introduction.md), stb.
+## <a name="networks-and-special-connections-to-azure"></a>Hálózatok és speciális kapcsolatok az Azure-ral
+Az Azure File Sync ügynök nem rendelkezik a speciális csatornák, például [ExpressRoute,](../../expressroute/expressroute-introduction.md)stb az Azure-ra vonatkozó követelményekkel.
 
-Azure File Sync az Azure-ba való belépést lehetővé tevő bármely eszközön elérhetővé válik, és automatikusan alkalmazkodik a különböző hálózati jellemzőkre, például a sávszélességre, a késésre, valamint a felügyelet vezérlésére a finomhangoláshoz. Jelenleg nem minden szolgáltatás érhető el. Ha konkrét viselkedést szeretne beállítani, tudassa velünk [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670)keresztül.
+Az Azure File Sync minden olyan eszközzel működik, amely lehetővé teszi az Azure elérését, automatikusan alkalmazkodik a különböző hálózati jellemzőkhöz, például a sávszélességhez, a késéshez, valamint a finomhangoláshoz felügyeleti vezérlést kínál. Jelenleg nem minden funkció érhető el. Ha egy adott viselkedést szeretne konfigurálni, tudassa velünk az [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670)segítségével.
 
 ## <a name="proxy"></a>Proxy
-Azure File Sync támogatja az alkalmazás-specifikus és a számítógép-szintű proxybeállításokat.
+Az Azure File Sync támogatja az alkalmazás-specifikus és a gép-szintű proxy beállításokat.
 
-Az **alkalmazásspecifikus proxybeállítások** lehetővé teszik a proxy konfigurációját kifejezetten Azure file Sync forgalom számára. Az alkalmazásspecifikus proxybeállítások az ügynök 4.0.1.0 vagy újabb verziója esetén támogatottak, és az ügynök telepítése vagy a set-StorageSyncProxyConfiguration PowerShell-parancsmag használatával konfigurálhatók.
+**Az alkalmazásspecifikus proxybeállítások** lehetővé teszik egy proxy konfigurációját kifejezetten az Azure File Sync forgalomhoz. Az alkalmazásspecifikus proxybeállítások at a 4.0.1.0-s vagy újabb ügynökverzió támogatja, és az ügynök telepítése során vagy a Set-StorageSyncConfiguration PowerShell-parancsmag használatával konfigurálhatók.
 
-PowerShell-parancsok az alkalmazás-specifikus proxybeállítások konfigurálásához:
+Az alkalmazásspecifikus proxybeállítások konfigurálásához powershell-parancsok:
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
-A **számítógép-szintű proxybeállítások** transzparensek a Azure file Sync ügynök számára, mivel a kiszolgáló teljes forgalma a proxyn keresztül irányítható.
+**A gép szintű proxybeállítások** az Azure File Sync ügynök számára transzparensek, mivel a kiszolgáló teljes forgalma a proxyn keresztül történik.
 
-A számítógép-szintű proxybeállítások konfigurálásához kövesse az alábbi lépéseket: 
+A gép szintű proxybeállítások konfigurálásához kövesse az alábbi lépéseket: 
 
-1. Proxybeállítások konfigurálása .NET-alkalmazásokhoz 
+1. Proxybeállítások konfigurálása .NET alkalmazásokhoz 
 
-   - Szerkessze ezt a két fájlt:  
+   - A két fájl szerkesztése:  
      C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
      C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 
-   - Adja hozzá a < System. net > szakaszt a Machine. config fájlokban (a < System. serviceModel > szakaszban).  Módosítsa a 127.0.01:8888 a proxykiszolgáló IP-címére és portjára. 
+   - Adja hozzá a <system.net> szakaszt a machine.config fájlokban (a <system.serviceModel> szakasz alatt).  Módosítsa a 127.0.01:8888 módosítást a proxykiszolgáló IP-címére és portjára. 
      ```
       <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
@@ -68,44 +68,44 @@ A számítógép-szintű proxybeállítások konfigurálásához kövesse az al�
       </system.net>
      ```
 
-2. A WinHTTP proxy beállításainak megadása 
+2. A WinHTTP-proxy beállításainak megadása 
 
-   - Futtassa a következő parancsot egy rendszergazda jogú parancssorból vagy a PowerShellből a meglévő proxy beállítás megtekintéséhez:   
+   - Futtassa a következő parancsot egy rendszergazda jogú parancssorból vagy a PowerShellből a meglévő proxybeállítás megtekintéséhez:   
 
-     netsh WinHTTP show proxy
+     netsh winhttp show proxy
 
-   - Futtassa a következő parancsot egy rendszergazda jogú parancssorból vagy a PowerShellből a proxybeállítások beállításához (módosítsa a 127.0.01:8888 a proxykiszolgáló IP-címére és portjára):  
+   - Futtassa a következő parancsot egy rendszergazda jogú parancssorból vagy a PowerShell ből a proxybeállítás beállításához (módosítsa a 127.0.01:8888-as módosítást a proxykiszolgáló IP-címére és portjára):  
 
-     netsh WinHTTP set proxy 127.0.0.1:8888
+     netsh winhttp set proxy 127.0.0.1:8888
 
-3. Indítsa újra a Storage Sync Agent szolgáltatást úgy, hogy futtatja a következő parancsot egy rendszergazda jogú parancssorból vagy a PowerShellből: 
+3. Indítsa újra a Storage Sync Agent szolgáltatást a következő parancs futtatásával egy rendszergazda jogú parancssorból vagy powershellből: 
 
       net stop filesyncsvc
 
-      Megjegyzés: a Storage Sync Agent (filesyncsvc) szolgáltatás a leállítást követően automatikusan elindul.
+      Megjegyzés: A Storage Sync Agent (filesyncsvc) szolgáltatás automatikusan elindul, miután leállt.
 
 ## <a name="firewall"></a>Tűzfal
-Ahogy az előző szakaszban is említettük, a 443-es portot kell megnyitni. Az adatközpontban, ágban vagy régióban lévő szabályzatok alapján szükség lehet arra, hogy a porton keresztüli adatforgalmat bizonyos tartományokra szűkítse.
+Amint azt egy korábbi szakaszban említettük, a 443-as portnak nyitott kimenőnek kell lennie. Az adatközpontban, ágban vagy régióban lévő szabályzatok alapján a porton keresztüli forgalom adott tartományokra való további korlátozása szükséges vagy szükséges lehet.
 
-A következő táblázat ismerteti a szükséges tartományokat a kommunikációhoz:
+Az alábbi táblázat a kommunikációhoz szükséges tartományokat ismerteti:
 
-| Szolgáltatás | Nyilvános Felhőbeli végpont | Azure Government végpont | Használat |
+| Szolgáltatás | Nyilvános felhővégpont | Azure Government-végpont | Használat |
 |---------|----------------|---------------|------------------------------|
-| **Azure Resource Manager** | https://management.azure.com | https://management.usgovcloudapi.net | Bármely felhasználói hívás (például a PowerShell) az ezen az URL-címen halad át, beleértve a kezdeti kiszolgáló regisztrációs hívását is. |
-| **Azure Active Directory** | https://login.windows.net<br>https://login.microsoftonline.com | https://login.microsoftonline.us | A Azure Resource Manager hívásokat hitelesített felhasználó kell elvégezni. A sikeres végrehajtáshoz ezt az URL-címet használja a rendszer a felhasználói hitelesítéshez. |
-| **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | A Azure File Sync üzembe helyezésének részeként létrejön egy egyszerű szolgáltatásnév az előfizetés Azure Active Directory. Ezt az URL-címet használja a rendszer. Ez a rendszerbiztonsági tag a Azure File Sync szolgáltatáshoz minimálisan szükséges jogok delegálására szolgál. Azure File Sync kezdeti beállítását végző felhasználónak hitelesített felhasználónak kell lennie az előfizetés tulajdonosának jogosultságokkal. |
-| **Azure Storage** | &ast;. core.windows.net | &ast;. core.usgovcloudapi.net | Amikor a kiszolgáló letölt egy fájlt, a kiszolgáló hatékonyabban hajtja végre az adatáthelyezést, amikor közvetlenül a Storage-fiókban lévő Azure-fájlmegosztás felé folytatja a kommunikációt. A kiszolgálónak van egy SAS-kulcsa, amely csak a célként megadott fájlmegosztás elérését teszi lehetővé. |
-| **Azure File Sync** | &ast;. one.microsoft.com<br>&ast;. afs.azure.net | &ast;. afs.azure.us | A kiszolgáló kezdeti regisztrációja után a kiszolgáló megkapja az adott régióban található Azure File Sync szolgáltatási példány regionális URL-címét. A kiszolgáló az URL-cím használatával közvetlenül és hatékonyan tud kommunikálni a szinkronizálást kezelő példánnyal. |
-| **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Miután telepítette a Azure File Sync ügynököt, a PKI URL-címével letöltheti a Azure File Sync szolgáltatással és az Azure-fájlmegosztás használatával folytatott kommunikációhoz szükséges köztes tanúsítványokat. Az OCSP URL-cím segítségével ellenőrizhető a tanúsítvány állapota. |
+| **Azure Resource Manager** | `https://management.azure.com` | https://management.usgovcloudapi.net | Minden felhasználói hívás (például a PowerShell) megy/ ezen az URL-címen keresztül, beleértve a kezdeti kiszolgáló regisztrációs hívást. |
+| **Azure Active Directory** | https://login.windows.net<br>`https://login.microsoftonline.com` | https://login.microsoftonline.us | Az Azure Resource Manager-hívásokat hitelesített felhasználónak kell kezdeményeznie. A siker érdekében ez az URL-cím használható a felhasználói hitelesítéshez. |
+| **Azure Active Directory** | https://graph.microsoft.com/ | https://graph.microsoft.com/ | Az Azure File Sync központi telepítésének részeként létrejön egy egyszerű szolgáltatás az előfizetés Azure Active Directoryjában. Ehhez az URL-cím használatos. Ez a fő névvel az Azure File Sync szolgáltatás minimális jogosultságkészletének delegálása. Az Azure File Sync kezdeti beállítását végző felhasználónak előfizetés-tulajdonosi jogosultságokkal rendelkező hitelesített felhasználónak kell lennie. |
+| **Azure Storage** | &ast;core.windows.net | &ast;core.usgovcloudapi.net | Amikor a kiszolgáló letölt egy fájlt, majd a kiszolgáló hatékonyabban hajtja végre az adatmozgást, amikor közvetlenül az Azure-fájlmegosztással beszél a storage-fiókban. A kiszolgáló rendelkezik egy SAS-kulccsal, amely csak célzott fájlmegosztási hozzáférést tesz lehetővé. |
+| **Azure File Sync** | &ast;one.microsoft.com<br>&ast;.afs.azure.net | &ast;afs.azure.us | A kiszolgáló első regisztrációja után a kiszolgáló egy regionális URL-címet kap az adott régióban az Azure File Sync szolgáltatáspéldányhoz. A kiszolgáló az URL-cím segítségével közvetlenül és hatékonyan kommunikálhat a szinkronizálást kezelő példánysal. |
+| **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Az Azure File Sync ügynök telepítése után a PKI URL-cím használatával letölti az Azure File Sync szolgáltatással és az Azure fájlmegosztással való kommunikációhoz szükséges köztes tanúsítványokat. Az OCSP URL-cím a tanúsítvány állapotának ellenőrzésére szolgál. |
 
 > [!Important]
-> Ha engedélyezi a forgalmat a &ast;. one.microsoft.com-ra, akkor a kiszolgálóról érkező forgalom több, mint a szinkronizálási szolgáltatásra van lehetséges. Számos további Microsoft-szolgáltatás érhető el az altartományok alatt.
+> Ha engedélyezi a &ast;forgalmat a .one.microsoft.com, a forgalom nem csak a szinkronizálási szolgáltatás lehetséges a kiszolgálóról. Az altartományok alatt sokkal több Microsoft-szolgáltatás érhető el.
 
-Ha &ast;. one.microsoft.com túl széles, korlátozhatja a kiszolgáló kommunikációját, mivel lehetővé teszi a kommunikációt az Azure Files Sync szolgáltatás explicit regionális példányaira. A kiválasztható példány (ok) a Storage Sync szolgáltatás azon régiójától függ, amelyet üzembe helyezett, és amelybe regisztrálta a kiszolgálót. Ezt a régiót az alábbi táblázatban "elsődleges végpont URL-ként" nevezzük.
+Ha &ast;az .one.microsoft.com túl tág, korlátozhatja a kiszolgáló kommunikációját azáltal, hogy engedélyezi a kommunikációt az Azure Files Sync szolgáltatás csak explicit regionális példányai számára. A választás melyik példány(ok) attól függ, hogy a tároló szinkronizálási szolgáltatás melyik régiójában telepítette és regisztrálta a kiszolgálót. Ezt a régiót az alábbi táblázat "Elsődleges végpont URL-címének" nevezi.
 
-Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) miatt előfordulhat, hogy az Azure-fájlmegosztást globálisan redundáns (GRS) Storage-fiókban adta meg. Ha ez az eset áll fenn, akkor az Azure-fájlmegosztás egy tartós regionális kimaradás esetén átveszi a feladatokat a párosított régióba. Azure File Sync ugyanazokat a regionális párosításokat használja, mint a Storage. Így ha GRS-fiókokat használ, engedélyeznie kell a további URL-címeket, hogy a kiszolgáló a párosított régióval beszéljen a Azure File Sync. Az alábbi táblázat ezt a "párosított régiót" hívja meg. Ezen kívül egy Traffic Manager-profil URL-címét is engedélyezni kell. Ez biztosítja, hogy a hálózati forgalom zökkenőmentesen átirányítható legyen a párosított régióba feladatátvétel esetén, és az alábbi táblázatban "felderítési URL-cím" néven jelenik meg.
+Az üzletmenet folytonossága és a vész-helyreállítási (BCDR) okok miatt előfordulhat, hogy az Azure-fájlmegosztások egy globálisan redundáns (GRS) tárfiókban. Ebben az esetben az Azure-fájlmegosztások a párosított régióra kerülnek, ha tartós regionális kimaradás lép ki. Az Azure File Sync ugyanazokat a regionális párosításokat használja, mint a storage. Így ha GRS-tárfiókokat használ, engedélyeznie kell a további URL-címeket, hogy a kiszolgáló az Azure File Sync párosított régiójával beszélgethessen. Az alábbi táblázat ezt a "Párosított régiót" hívja meg. Emellett van egy traffic manager profil URL-jét, amelyet engedélyezni kell is. Ez biztosítja, hogy a hálózati forgalom zökkenőmentesen átirányítható a párosított régióba feladatátvétel esetén, és az alábbi táblázatban "Felderítési URL"-nek nevezik.
 
-| Felhő  | Régió | Elsődleges végpont URL-címe | Párosított régió | Felderítési URL-cím |
+| Felhő  | Régió | Elsődleges végpont URL-címe | Párosított régió | Felderítés URL-címe |
 |--------|--------|----------------------|---------------|---------------|
 | Nyilvános |Kelet-Ausztrália | https:\//kailani-aue.one.microsoft.com | Délkelet-Ausztrália | https:\//tm-kailani-aue.one.microsoft.com |
 | Nyilvános |Délkelet-Ausztrália | https:\//kailani-aus.one.microsoft.com | Kelet-Ausztrália | https:\//tm-kailani-aus.one.microsoft.com |
@@ -119,8 +119,8 @@ Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) miatt előford
 | Nyilvános | USA 2. keleti régiója | https:\//kailani-ess.one.microsoft.com | USA középső régiója | https:\//tm-kailani-ess.one.microsoft.com |
 | Nyilvános | Kelet-Japán | https:\//japaneast01.afs.azure.net | Nyugat-Japán | https:\//tm-japaneast01.afs.azure.net |
 | Nyilvános | Nyugat-Japán | https:\//japanwest01.afs.azure.net | Kelet-Japán | https:\//tm-japanwest01.afs.azure.net |
-| Nyilvános | Korea középső régiója | https:\//koreacentral01.afs.azure.net/ | Korea déli régiója | https:\//tm-koreacentral01.afs.azure.net/ |
-| Nyilvános | Korea déli régiója | https:\//koreasouth01.afs.azure.net/ | Korea középső régiója | https:\//tm-koreasouth01.afs.azure.net/ |
+| Nyilvános | Dél-Korea középső régiója | https:\//koreacentral01.afs.azure.net/ | Dél-Korea déli régiója | https:\//tm-koreacentral01.afs.azure.net/ |
+| Nyilvános | Dél-Korea déli régiója | https:\//koreasouth01.afs.azure.net/ | Dél-Korea középső régiója | https:\//tm-koreasouth01.afs.azure.net/ |
 | Nyilvános | USA északi középső régiója | https:\//northcentralus01.afs.azure.net | USA déli középső régiója | https:\//tm-northcentralus01.afs.azure.net |
 | Nyilvános | Észak-Európa | https:\//kailani7.one.microsoft.com | Nyugat-Európa | https:\//tm-kailani7.one.microsoft.com |
 | Nyilvános | USA déli középső régiója | https:\//southcentralus01.afs.azure.net | USA északi középső régiója | https:\//tm-southcentralus01.afs.azure.net |
@@ -135,78 +135,145 @@ Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) miatt előford
 | Government | USA-beli államigazgatás – Arizona | https:\//usgovarizona01.afs.azure.us | USA-beli államigazgatás – Texas | https:\//tm-usgovarizona01.afs.azure.us |
 | Government | USA-beli államigazgatás – Texas | https:\//usgovtexas01.afs.azure.us | USA-beli államigazgatás – Arizona | https:\//tm-usgovtexas01.afs.azure.us |
 
-- Ha a helyileg redundáns (LRS) vagy a Zone redundáns (ZRS) Storage-fiókokat használja, csak engedélyeznie kell az "elsődleges végpont URL-címe" alatt felsorolt URL-címet.
+- Ha helyileg redundáns (LRS) vagy zónaredundáns (ZRS) tárfiókokat használ, csak az "Elsődleges végpont URL-címe" alatt felsorolt URL-címet kell engedélyeznie.
 
-- Ha globálisan redundáns (GRS) tárolási fiókokat használ, engedélyezze a három URL-címet.
+- Ha globálisan redundáns (GRS) tárfiókokat használ, engedélyezze a három URL-t.
 
-**Példa:** A Storage Sync szolgáltatást `"West US"`-ben helyezi üzembe, és regisztrálja a kiszolgálót. Az URL-címek, amelyek lehetővé teszik, hogy a kiszolgáló kommunikáljon a következő esetekben:
+**Példa:** Üzembe helyez egy tárolószinkronizálási szolgáltatást, `"West US"` és regisztrálja vele a kiszolgálót. Azok az URL-címek, amelyekkel a kiszolgáló az eset hez képest kommunikálhat, a következők:
 
-> - https:\//kailani.one.microsoft.com (elsődleges végpont: USA nyugati régiója)
+> - https:\//kailani.one.microsoft.com (elsődleges végpont: USA nyugati pontja)
 > - https:\//kailani1.one.microsoft.com (párosított feladatátvételi régió: USA keleti régiója)
 > - https:\//tm-kailani.one.microsoft.com (az elsődleges régió felderítési URL-címe)
 
-### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Azure File Sync IP-címek engedélyezési listájának engedélyezése
-Ha a helyszíni tűzfalhoz konkrét IP-címeket kell hozzáadni egy engedélyezési listához a Azure File Synchoz való csatlakozáshoz, a következő IP-címtartományok adhatók meg azon régiók alapján, amelyekhez csatlakozik.
+### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Az Azure File Sync IP-címeinek listájának engedélyezése
+Az Azure File Sync támogatja a [szolgáltatáscímkék](../../virtual-network/service-tags-overview.md)használatát, amelyek egy adott Azure-szolgáltatás IP-címelőtagjainak csoportját képviselik. A szolgáltatáscímkék segítségével tűzfalszabályokat hozhat létre, amelyek lehetővé teszik az Azure File Sync szolgáltatással való kommunikációt. Az Azure File Sync `StorageSyncService`szolgáltatáscímkéje a.
 
-| Régió | IP-címtartományok |
-|--------|-------------------|
-| USA középső régiója | 52.176.149.179/32, 20.37.157.80/29 |
-| USA 2. keleti régiója | 40.123.47.110/32, 20.41.5.144/29 |
-| USA keleti régiója | 104.41.148.238/32, 20.42.4.248/29 |
-| USA északi középső régiója | 65.52.62.167/32, 40.80.188.24/29 |
-| USA déli középső régiója | 104.210.219.252/32, 13.73.248.112/29 |
-| USA nyugati régiója, 2. | 52.183.27.204/32, 20.42.131.224/29 |
-| USA nyugati középső régiója | 52.161.25.233/32, 52.150.139.104/29 |
-| USA nyugati régiója | 40.112.150.67/32, 40.82.253.192/29 |
-| Közép-Kanada | 52.228.42.41/32, 52.228.81.248/29 |
-| Kelet-Kanada | 52.235.36.119/32, 40.89.17.232/29 |
-| Dél-Brazília | 191.237.253.115/32, 191.235.225.216/29 |
-| Észak-Európa | 40.113.94.67/32, 20.38.85.152/29 |
-| Nyugat-Európa | 104.40.191.8/32, 20.50.1.0/29 |
-| Közép-Franciaország | 52.143.166.54/32, 20.43.42.8/29 |
-| Dél-Franciaország | 52.136.131.99/32, 51.105.88.248/29 |
-| Az Egyesült Királyság déli régiója | 51.140.67.72/32, 51.104.25.224/29 |
-| Az Egyesült Királyság nyugati régiója | 51.140.202.34/32, 51.137.161.240/29 |
-| Észak-Svájc | 51.107.48.224/29 |
-| Nyugat-Svájc | 51.107.144.216/29 |
-| Norvégia nyugati régiója | 51.120.224.216/29 |
-| Kelet-Norvégia | 51.120.40.224/29 |
-| Kelet-Ázsia | 23.102.225.54/32, 20.189.108.56/29 |
-| Délkelet-Ázsia | 13.76.81.46/32, 20.43.131.40/29 |
-| Ausztrália középső régiója | 20.37.224.216/29 |
-| Ausztrália 2. középső régiója | 20.36.120.216/29 |
-| Kelet-Ausztrália | 13.75.153.240/32, 20.37.195.96/29 |
-| Délkelet-Ausztrália | 13.70.176.196/32, 20.42.227.128/29 |
-| Dél-India | 104.211.231.18/32, 20.41.193.160/29 |
-| Nyugat-India | 52.136.48.216/29 |
-| Kelet-Japán | 104.41.161.113/32, 20.43.66.0/29 |
-| Nyugat-Japán | 23.100.106.151/32, 40.80.57.192/29 |
-| Korea középső régiója | 52.231.67.75/32, 20.41.65.184/29 |
-| Korea déli régiója | 52.231.159.38/32, 40.80.169.176/29 |
-| US DoD – Kelet | 20.140.72.152/29 |
-| USA-beli államigazgatás – Arizona | 20.140.64.152/29 |
-| USA-beli államigazgatás – Arizona | 52.244.75.224/32, 52.244.79.140/32 |
-| US Gov Iowa | 52.244.79.140/32, 52.244.75.224/32 |
-| USA-beli államigazgatás – Texas | 52.238.166.107/32, 52.238.79.29/32 |
-| USA-beli államigazgatás – Virginia | 13.72.17.152/32, 52.227.153.92/32 |
-| Dél-Afrika északi régiója | 102.133.175.72/32 |
-| Dél-Afrika nyugati régiója | 102.133.75.173/32, 102.133.56.128/29, 20.140.48.216/29 |
-| UAE középső régiója | 20.45.71.151/32, 20.37.64.216/29, 20.140.48.216/29 |
-| Észak-Egyesült Arab | 40.123.216.130/32, 20.38.136.224/29, 20.140.56.136/29 |
+Ha az Azure File Sync-et használja az Azure-ban, használhatja a szolgáltatáscímke nevét közvetlenül a hálózati biztonsági csoportban a forgalom engedélyezéséhez. Ennek módjáról a Hálózati biztonsági csoportok ( [Hálózati biztonsági csoportok](../../virtual-network/security-overview.md)) témakörben olvashat bővebben.
 
-## <a name="test-network-connectivity-to-service-endpoints"></a>Hálózati kapcsolat tesztelése a szolgáltatási végpontokhoz
-Ha egy kiszolgáló regisztrálva van a Azure File Sync szolgáltatásban, a test-StorageSyncNetworkConnectivity parancsmag és a ServerRegistration. exe segítségével tesztelheti a kiszolgálón található összes végponttal (URL-címmel) folytatott kommunikációt. Ez a parancsmag segít elhárítani a hiányos kommunikációt, ami megakadályozza, hogy a kiszolgáló teljes mértékben működjön a Azure File Sync, és használható a proxy és a tűzfal konfigurációinak finomhangolására.
+Ha az Azure File Sync helyszíni használata, a szolgáltatáscímke API-t a tűzfal engedélyezési listájának adott IP-címtartományai lehívásához használhatja. Ezt az információt kétfélekul lehet beadni:
 
-A hálózati kapcsolat teszt futtatásához telepítse a Azure File Sync Agent 9,1-es vagy újabb verzióját, és futtassa a következő PowerShell-parancsokat:
+- A szolgáltatáscímkéket támogató összes Azure-szolgáltatás címkéjének IP-címtartományainak aktuális listáját hetente teszik közzé a Microsoft letöltőközpontban JSON-dokumentum formájában. Minden Azure-felhő saját JSON-dokumentummal rendelkezik, amely az adott felhőhöz tartozó IP-címtartományokkal rendelkezik:
+    - [Azure Public](https://www.microsoft.com/download/details.aspx?id=56519)
+    - [Az Azure Amerikai Egyesült Államok kormánya](https://www.microsoft.com/download/details.aspx?id=57063)
+    - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
+    - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)
+- A szolgáltatáscímke felderítési API (előzetes verzió) lehetővé teszi a szolgáltatáscímkék aktuális listájának programozott lekérését. Előzetes verzióban a szolgáltatáscímke felderítési API-ja olyan információkat adhat vissza, amelyek kevésbé aktuálisak, mint a Microsoft letöltőközpontban közzétett JSON-dokumentumokból visszaadott információk. Az API-felületet az automatizálási preferenciája alapján használhatja:
+    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+
+Mivel a szolgáltatáscímke felderítési API-ja nem frissül olyan gyakran, mint a Microsoft letöltőközpontban közzétett JSON-dokumentumok, javasoljuk, hogy a JSON-dokumentum mal a helyszíni tűzfal engedélyezési listájának frissítéséhez használja a JSON-dokumentumot. Ez a következőképpen végezhető el:
+
+```PowerShell
+# The specific region to get the IP address ranges for. Replace westus2 with the desired region code 
+# from Get-AzLocation.
+$region = "westus2"
+
+# The service tag for Azure File Sync. Do not change unless you're adapting this
+# script for another service.
+$serviceTag = "StorageSyncService"
+
+# Download date is the string matching the JSON document on the Download Center. 
+$possibleDownloadDates = 0..7 | `
+    ForEach-Object { [System.DateTime]::Now.AddDays($_ * -1).ToString("yyyyMMdd") }
+
+# Verify the provided region
+$validRegions = Get-AzLocation | `
+    Where-Object { $_.Providers -contains "Microsoft.StorageSync" } | `
+    Select-Object -ExpandProperty Location
+
+if ($validRegions -notcontains $region) {
+    Write-Error `
+            -Message "The specified region $region is not available. Either Azure File Sync is not deployed there or the region does not exist." `
+            -ErrorAction Stop
+}
+
+# Get the Azure cloud. This should automatically based on the context of 
+# your Az PowerShell login, however if you manually need to populate, you can find
+# the correct values using Get-AzEnvironment.
+$azureCloud = Get-AzContext | `
+    Select-Object -ExpandProperty Environment | `
+    Select-Object -ExpandProperty Name
+
+# Build the download URI
+$downloadUris = @()
+switch($azureCloud) {
+    "AzureCloud" { 
+        $downloadUris = $possibleDownloadDates | ForEach-Object {  
+            "https://download.microsoft.com/download/7/1/D/71D86715-5596-4529-9B13-DA13A5DE5B63/ServiceTags_Public_$_.json"
+        }
+    }
+
+    "AzureUSGovernment" {
+        $downloadUris = $possibleDownloadDates | ForEach-Object { 
+            "https://download.microsoft.com/download/6/4/D/64DB03BF-895B-4173-A8B1-BA4AD5D4DF22/ServiceTags_AzureGovernment_$_.json"
+        }
+    }
+
+    "AzureChinaCloud" {
+        $downloadUris = $possibleDownloadDates | ForEach-Object { 
+            "https://download.microsoft.com/download/9/D/0/9D03B7E2-4B80-4BF3-9B91-DA8C7D3EE9F9/ServiceTags_China_$_.json"
+        }
+    }
+
+    "AzureGermanCloud" {
+        $downloadUris = $possibleDownloadDates | ForEach-Object { 
+            "https://download.microsoft.com/download/0/7/6/076274AB-4B0B-4246-A422-4BAF1E03F974/ServiceTags_AzureGermany_$_.json"
+        }
+    }
+
+    default {
+        Write-Error -Message "Unrecognized Azure Cloud: $_" -ErrorAction Stop
+    }
+}
+
+# Find most recent file
+$found = $false 
+foreach($downloadUri in $downloadUris) {
+    try { $response = Invoke-WebRequest -Uri $downloadUri -UseBasicParsing } catch { }
+    if ($response.StatusCode -eq 200) {
+        $found = $true
+        break
+    }
+}
+
+if ($found) {
+    # Get the raw JSON 
+    $content = [System.Text.Encoding]::UTF8.GetString($response.Content)
+
+    # Parse the JSON
+    $serviceTags = ConvertFrom-Json -InputObject $content -Depth 100
+
+    # Get the specific $ipAddressRanges
+    $ipAddressRanges = $serviceTags | `
+        Select-Object -ExpandProperty values | `
+        Where-Object { $_.id -eq "$serviceTag.$region" } | `
+        Select-Object -ExpandProperty properties | `
+        Select-Object -ExpandProperty addressPrefixes
+} else {
+    # If the file cannot be found, that means there hasn't been an update in
+    # more than a week. Please verify the download URIs are still accurate
+    # by checking https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+    Write-Verbose -Message "JSON service tag file not found."
+    return
+}
+```
+
+Ezután a tűzfal frissítéséhez `$ipAddressRanges` használhatja a bejövő IP-címtartományokat. A tűzfal/hálózati készülék webhelyén a tűzfal frissítésével kapcsolatos információkért tekintse meg.
+
+## <a name="test-network-connectivity-to-service-endpoints"></a>Hálózati kapcsolat tesztelése a szolgáltatás végpontjaihoz
+Miután egy kiszolgáló regisztrálva van az Azure File Sync szolgáltatás, a Test-StorageSyncNetworkConnectivity parancsmag és ServerRegistration.exe lehet használni, hogy teszteljék a kommunikáció támpontokkal (URL-ek) jellemző en a kiszolgálón. Ez a parancsmag segíthet a hibaelhárításban, ha a hiányos kommunikáció megakadályozza, hogy a kiszolgáló teljes mértékben együttműködjön az Azure File Sync szolgáltatással, és használható a proxy- és tűzfal-konfigurációk finomhangolására.
+
+A hálózati kapcsolati teszt futtatásához telepítse az Azure File Sync agent 9.1-es vagy újabb verzióját, és futtassa a következő PowerShell-parancsokat:
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Test-StorageSyncNetworkConnectivity
 ```
 
-## <a name="summary-and-risk-limitation"></a>Összefoglalás és kockázati korlátozás
-A dokumentum korábbi listája tartalmazza azokat az URL-címeket, Azure File Sync jelenleg kommunikál. A tűzfalaknak képesnek kell lenniük a kimenő forgalom engedélyezésére ezen tartományokban. A Microsoft igyekszik megőrizni a listát.
+## <a name="summary-and-risk-limitation"></a>Összefoglalás és kockázatkorlátozás
+A jelen dokumentum korábbi listái tartalmazzák az Azure File Sync url-címeket, amelyekkel jelenleg kommunikál. A tűzfalaknak engedélyezniük kell a forgalmat ezekhez a tartományokhoz. A Microsoft arra törekszik, hogy ezt a listát folyamatosan frissítsük.
 
-A tartomány korlátozására vonatkozó tűzfalszabályok beállítása lehet egy mérték a biztonság növelése érdekében. Ha ezeket a tűzfal-konfigurációkat használja, az egyiknek figyelembe kell vennie, hogy az URL-címek fel lesznek véve, és akár idővel is változhatnak. Ebben a cikkben rendszeresen tájékozódhat.
+A tartománykorlátozó tűzfalszabályok beállítása a biztonság növelésének mércéje lehet. Ha ezeket a tűzfal-konfigurációkat használja, szem előtt kell tartania, hogy az URL-címek hozzáadódnak, és idővel változhatnak. Rendszeresen ellenőrizze ezt a cikket.
 
 ## <a name="next-steps"></a>További lépések
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)

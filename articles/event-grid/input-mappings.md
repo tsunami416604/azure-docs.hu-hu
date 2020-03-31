@@ -1,6 +1,6 @@
 ---
-title: Egyéni mező leképezése az Azure Event Grid-séma
-description: Ez a cikk azt ismerteti, hogyan alakíthatja át az egyéni sémát a Azure Event Grid sémára, ha az esemény adatai nem egyeznek Event Grid sémával.
+title: Egyéni mező hozzárendelése az Azure Event Grid sémájához
+description: Ez a cikk ismerteti, hogyan konvertálhatja az egyéni sémát az Azure Event Grid séma, ha az esemény adatok nem egyeznek Event Grid séma.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721659"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Egyéni mezők leképezése Event Grid-sémára
 
-Ha az esemény adatai nem egyeznek a várt [Event Grid sémával](event-schema.md), továbbra is használhatja a Event Gridt az események előfizetőknek való irányításához. Ez a cikk ismerteti, hogyan képezhet le a séma az Event Grid-sémát.
+Ha az eseményadatok nem egyeznek meg a várt [Eseményrács-sémával,](event-schema.md)továbbra is használhatja az Event Grid et az esemény előfizetőkhöz való irányításához. Ez a cikk azt ismerteti, hogyan képezheti le a sémát az Event Grid sémára.
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-## <a name="install-preview-feature"></a>Előzetes verziójú funkció telepítése
+## <a name="install-preview-feature"></a>Az előzetes verzió telepítése szolgáltatás
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-## <a name="original-event-schema"></a>Eredeti eseménysémája
+## <a name="original-event-schema"></a>Eredeti eseményséma
 
-Tegyük fel, hogy egy alkalmazást, amely elküldi az eseményeket a következő formátumban:
+Tegyük fel, hogy van egy olyan alkalmazása, amely az eseményeket a következő formátumban küldi:
 
 ```json
 [
@@ -39,19 +39,19 @@ Tegyük fel, hogy egy alkalmazást, amely elküldi az eseményeket a következő
 ]
 ```
 
-Bár a formátuma nem felel meg a szükséges séma, Event Grid lehetővé teszi, hogy a mezők leképezése a sémát. Vagy az eredeti sémában is kap, az értékeket.
+Bár ez a formátum nem felel meg a szükséges sémának, az Event Grid lehetővé teszi a mezők sémához való hozzárendelését. Vagy fogadhatja az eredeti séma értékeit.
 
-## <a name="create-custom-topic-with-mapped-fields"></a>Leképezett mezők az egyéni témakör létrehozása
+## <a name="create-custom-topic-with-mapped-fields"></a>Egyéni témakör létrehozása leképezett mezőkkel
 
-Egy egyéni témakör létrehozásakor adja meg, hogyan képezhet le a mezők az eredeti esemény az event grid-séma. Három értékek testre szabhatja a leképezés használatával:
+Egyéni témakör létrehozásakor adja meg, hogyan képezheti le a mezőket az eredeti eseményről az eseményrácssémához. A leképezés testreszabásához három érték használható:
 
-* A **bemeneti séma** értéke határozza meg a séma típusát. Az elérhető lehetőségek a következők: CloudEvents-séma, egyéni eseményt séma vagy Event Grid-sémát. Az alapértelmezett értéke az Event Grid-sémát. Egyéni leképezés a séma- és az event grid-séma közötti létrehozásakor használja az egyéni esemény sémája. Amikor események válnak a CloudEvents-séma, Cloudevents-séma használja.
+* A **bemeneti séma** értéke a séma típusát adja meg. A rendelkezésre álló lehetőségek a CloudEvents séma, az egyéni eseményséma vagy az Event Grid-séma. Az alapértelmezett érték az Eseményrács sémája. Amikor egyéni leképezést hoz létre a séma és az eseményrács sémája között, egyéni eseménysémát használjon. Ha az események a CloudEvents sémában vannak, használja a Cloudevents sémát.
 
-* Az **alapértelmezett értékek leképezése** tulajdonság a Event Grid séma mezőinek alapértelmezett értékeit adja meg. Megadhatja `subject`, `eventtype`és `dataversion`alapértelmezett értékeit. Jellemzően ezt a paramétert használni, amikor az egyéni séma nem tartalmaz egy olyan mező, ezek három mezőt valamelyikének felel meg. Megadhatja például, hogy az adatverzió mindig **1,0**-re legyen állítva.
+* A **leképezési alapértelmezett értékek** tulajdonság az Eseményrács séma mezőinek alapértelmezett értékeit adja meg. A programhoz alapértelmezett `subject` `eventtype`értékeket `dataversion`állíthat be a és a hoz. Ezt a paramétert általában akkor használja, ha az egyéni séma nem tartalmaz olyan mezőt, amely a három mező egyikének felel meg. Megadhatja például, hogy az adatverzió mindig **1.0-ra**van állítva.
 
-* A **leképezési mezők** érték leképezi a sémában található mezőket az Event Grid sémába. Szóközzel elválasztott kulcs/érték párok értékeket határozhat meg. A kulcs nevét az event grid mező nevét használja. Az érték használja a mező nevét. `id`, `topic`, `eventtime`, `subject`, `eventtype`és `dataversion`nyilvánoskulcs-neveket is használhat.
+* A **leképezési mezők** értéke leképezi a mezőket a sémából az eseményrács sémájához. Az értékeket szóközre bontott kulcs-érték párokban adhatja meg. A kulcs nevéhez használja az eseményrács mező nevét. Az értékhez használja a mező nevét. Kulcsneveket `id`használhatunk `topic`a `eventtime` `subject`, `eventtype`, `dataversion`, , , , és .
 
-Az Azure CLI-vel egy egyéni témakör létrehozásához használja:
+Egyéni témakör létrehozásához az Azure CLI használatával használja:
 
 ```azurecli-interactive
 # If you have not already installed the extension, do it now.
@@ -83,11 +83,11 @@ New-AzureRmEventGridTopic `
   -InputMappingDefaultValue @{subject="DefaultSubject"; dataVersion="1.0" }
 ```
 
-## <a name="subscribe-to-event-grid-topic"></a>Fizessen elő az event grid-témakör
+## <a name="subscribe-to-event-grid-topic"></a>Feliratkozás az eseményrács témakörére
 
-Amikor feliratkozik az egyéni témakörre, adja meg a séma, az események fogadására használni szeretné. Megadhatja a CloudEvents-séma használata, egyéni eseményt séma vagy Event Grid-sémát. Az alapértelmezett értéke az Event Grid-sémát.
+Az egyéni témakörre való feliratkozáskor megadhatja az események fogadásához használni kívánt sémát. Megadhatja a CloudEvents sémát, az egyéni eseménysémát vagy az Event Grid sémát. Az alapértelmezett érték az Eseményrács sémája.
 
-Az alábbi példa feliratkozik egy event grid-témakört, és az Event Grid-sémát használja. Azure CLI esetén használja az alábbi parancsot:
+A következő példa feliratkozik egy eseményrács-témakörre, és az Event Grid sémát használja. Azure CLI esetén használja az alábbi parancsot:
 
 ```azurecli-interactive
 topicid=$(az eventgrid topic show --name demoTopic -g myResourceGroup --query id --output tsv)
@@ -99,7 +99,7 @@ az eventgrid event-subscription create \
   --endpoint <endpoint_URL>
 ```
 
-A következő példában a bemeneti sémát az esemény:
+A következő példa az esemény bemeneti sémáját használja:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -109,7 +109,7 @@ az eventgrid event-subscription create \
   --endpoint <endpoint_URL>
 ```
 
-Az alábbi példa feliratkozik egy event grid-témakört, és az Event Grid-sémát használja. PowerShell esetén használja az alábbi parancsot:
+A következő példa feliratkozik egy eseményrács-témakörre, és az Event Grid sémát használja. PowerShell esetén használja az alábbi parancsot:
 
 ```azurepowershell-interactive
 $topicid = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
@@ -122,7 +122,7 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema EventGridSchema
 ```
 
-A következő példában a bemeneti sémát az esemény:
+A következő példa az esemény bemeneti sémáját használja:
 
 ```azurepowershell-interactive
 New-AzureRmEventGridSubscription `
@@ -133,9 +133,9 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CustomInputSchema
 ```
 
-## <a name="publish-event-to-topic"></a>A témakör esemény közzététele
+## <a name="publish-event-to-topic"></a>Esemény közzététele a témában
 
-Most már készen áll, küldünk egy eseményt az egyéni témakör és az eredmény a leképezés megjelenítéséhez. Az alábbi parancsfájl egy esemény a [példában szereplő sémában](#original-event-schema)való közzétételéhez:
+Most már készen áll arra, hogy egy eseményt küldjön az egyéni témakörnek, és tekintse meg a leképezés eredményét. A következő parancsfájl, amely egy eseményt tesz közzé a [példasémában:](#original-event-schema)
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -166,9 +166,9 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-Most tekintse meg a WebHook-végpontot. A két előfizetés különböző sémákkal leszállítani eseményeket.
+Most nézze meg a WebHook-végpontot. A két előfizetés különböző sémákban szállított eseményeket.
 
-Az első előfizetés event grid séma használja. A szállított események formátuma:
+Az első előfizetés eseményrács-sémát használt. A leszállított esemény formátuma:
 
 ```json
 {
@@ -189,9 +189,9 @@ Az első előfizetés event grid séma használja. A szállított események for
 }
 ```
 
-Ezek a mezők a leképezéseket, az egyéni témakör tartalmaz. a **myEventTypeField** a **EventType**van leképezve. A rendszer a **DataVersion** és a **Tárgy** alapértelmezett értékeit használja. Az **adatobjektum tartalmazza az eredeti** Event Schema mezőket.
+Ezek a mezők az egyéni témakör leképezéseit tartalmazzák. **A myEventTypeField** az **EventType típusra**van leképezve. A **DataVersion** és a **Tárgy** alapértelmezett értékeit használja a rendszer. Az **Adat** objektum az eredeti eseménysémamezőket tartalmazza.
 
-A második előfizetés használni a bemeneti eseményt séma. A szállított események formátuma:
+A második előfizetés a bemeneti eseménysémát használta. A leszállított esemény formátuma:
 
 ```json
 {
@@ -203,10 +203,10 @@ A második előfizetés használni a bemeneti eseményt séma. A szállított es
 }
 ```
 
-Figyelje meg, hogy az eredeti mezők kézbesítése.
+Figyelje meg, hogy az eredeti mezők kézbesítve voltak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).
-* Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
-* Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.
+* Az eseménykézbesítésről és az újrapróbálkozásokról az [Event Grid üzenetkézbesítésével és újrapróbálkozásával](delivery-and-retry.md)kapcsolatos információkért kattintson.
+* Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).
+* Az Event Grid használatának gyors megkezdéséhez olvassa el az [Egyéni események létrehozása és irányítása az Azure Event Griddel című témakört.](custom-event-quickstart.md)

@@ -1,6 +1,6 @@
 ---
-title: Egyéni szabályzatok Azure Active Directory B2C | Microsoft Docs
-description: Ismerkedjen meg Azure Active Directory B2C egyéni szabályzatokkal.
+title: Az Azure Active Directory B2C egyéni házirendjei | Microsoft dokumentumok
+description: További információ az Azure Active Directory B2C egyéni szabályzatairól.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,59 +11,59 @@ ms.date: 03/20/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246044"
 ---
-# <a name="custom-policies-in-azure-active-directory-b2c"></a>Egyéni házirendek a Azure Active Directory B2Cban
+# <a name="custom-policies-in-azure-active-directory-b2c"></a>Egyéni házirendek az Azure Active Directory B2C-ben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az egyéni házirendek olyan konfigurációs fájlok, amelyek meghatározzák a Azure Active Directory B2C (Azure AD B2C) bérlő viselkedését. A felhasználói folyamatok előre definiálva vannak a Azure AD B2C-portálon a leggyakoribb identitási feladatokhoz. Az egyéni házirendek teljes mértékben szerkeszthetők egy identitás-fejlesztőtől számos különböző feladat elvégzéséhez.
+Az egyéni szabályzatok olyan konfigurációs fájlok, amelyek meghatározzák az Azure Active Directory B2C (Azure AD B2C) bérlőjének viselkedését. A felhasználói folyamatok előre definiálva vannak az Azure AD B2C portálon a leggyakoribb identitáskezelési feladatokhoz. Az egyéni házirendeket egy identitásfejlesztő teljes mértékben szerkesztheti számos különböző feladat elvégzéséhez.
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>Felhasználói folyamatok és egyéni házirendek összehasonlítása
 
 | | Felhasználói folyamatok | Egyéni szabályzatok |
 |-|-------------------|-----------------|
-| Megcélzott felhasználók | Az összes alkalmazás-fejlesztő személyazonossági szakértelemmel vagy anélkül. | Identitás-szakemberek, rendszerintegrátorok, tanácsadók és belső identitású csapatok. Ezek kényelmesek az OpenID Connect-folyamatokkal, valamint az identitás-szolgáltatók és a jogcímek hitelesítésének megismerésére. |
-| Konfigurációs módszer | Azure Portal egy felhasználóbarát felhasználói felülettel (UI). | Közvetlenül szerkesztheti az XML-fájlokat, majd feltöltheti őket a Azure Portalba. |
-| Felhasználói felület testreszabása | A felhasználói felület teljes testreszabása HTML-, CSS-és JavaScript-beállításokkal.<br><br>Többnyelvű támogatás egyéni karakterláncokkal. | azonos |
-| Attribútumok testreszabása | Standard és egyéni attribútumok. | azonos |
-| Jogkivonat-és munkamenet-kezelés | Egyéni jogkivonat és több munkamenet-beállítás. | azonos |
-| Identitásszolgáltatók | Előre definiált helyi vagy közösségi szolgáltató és a legtöbb OIDC-identitás szolgáltatója, mint például az Azure Active Directory bérlők közötti összevonás. | Szabványokon alapuló OIDC, OAUTH és SAML.  A REST API-kkal való integráció használatával a hitelesítés is lehetséges. |
-| Identitással kapcsolatos feladatok | Regisztráció vagy bejelentkezés helyi vagy számos közösségi fiókkal.<br><br>Önkiszolgáló jelszó-visszaállítás.<br><br>Profil szerkesztése.<br><br>Multi-Factor Authentication.<br><br>Jogkivonatok és munkamenetek testreszabása.<br><br>Hozzáférési jogkivonat folyamatai. | Hajtsa végre ugyanazokat a feladatokat, mint a felhasználói folyamatok egyéni identitás-szolgáltatók használatával vagy egyéni hatókörök használata.<br><br>Hozzon létre egy felhasználói fiókot egy másik rendszeren a regisztráció időpontjában.<br><br>Üdvözlő e-mail küldése a saját e-mail szolgáltatójának használatával.<br><br>Használjon Azure AD B2Con kívüli felhasználói tárolót.<br><br>A felhasználó által megadott adatok érvényesítése egy megbízható rendszerrel egy API használatával. |
+| Felhasználók megcélzása | Minden alkalmazásfejlesztők vagy anélkül identitás szakértelemmel. | Identitás-profik, rendszerintegrátorok, tanácsadók és házon belüli identitáscsoportok. Ezek kényelmes OpenID Connect folyamatok és megérteni identitásszolgáltatók és jogcímalapú hitelesítés. |
+| Konfigurációs módszer | Az Azure Portal felhasználóbarát felhasználói felülettel (UI) rendelkezik. | Közvetlenül szerkesztheti az XML-fájlokat, majd feltöltheti az Azure Portalra. |
+| A felhasználói felület testreszabása | Teljes felhasználói felület testreszabása, beleértve a HTML, CSS és JavaScript.<br><br>Többnyelvű támogatás egyéni karakterláncokkal. | Ugyanaz |
+| Attribútum testreszabása | Normál és egyéni attribútumok. | Ugyanaz |
+| Jogkivonat- és munkamenet-kezelés | Egyéni jogkivonat és több munkamenet-beállítás. | Ugyanaz |
+| Identitásszolgáltatók | Előre definiált helyi vagy közösségi szolgáltató és a legtöbb OIDC-identitásszolgáltató, például az Azure Active Directory-bérlőkösszevonása. | Szabványokon alapuló OIDC, OAUTH és SAML.  A rest API-kkal való integrációval is lehetséges a hitelesítés. |
+| Identitáskezelési feladatok | Bejelentkezés vagy bejelentkezés helyi vagy számos közösségi fiókkal.<br><br>Önkiszolgáló jelszó-visszaállítás.<br><br>Profil szerkesztése.<br><br>Többtényezős hitelesítés.<br><br>Testreszabása tokenek és munkamenetek.<br><br>A hozzáférési jogkivonat-folyamatok. | Végezze el ugyanazokat a feladatokat, mint a felhasználói folyamatok egyéni identitásszolgáltatók használatával, vagy használjon egyéni hatóköröket.<br><br>Felhasználói fiók kiépítése egy másik rendszerben a regisztráció időpontjában.<br><br>Küldjön üdvözlő e-mailt saját e-mail szolgáltatójával.<br><br>Az Azure AD B2C-n kívüli felhasználói tároló használata.<br><br>Ellenőrizze a felhasználó által megadott adatokat egy megbízható rendszerrel egy API használatával. |
 
-## <a name="policy-files"></a>Házirend-fájlok
+## <a name="policy-files"></a>Házirendfájlok
 
-A rendszer a következő három típusú házirend-fájlt használja:
+A házirendfájlok alábbi három típusát használjuk:
 
-- **Alapfájl** – a definíciók többségét tartalmazza. Javasoljuk, hogy a hibák elhárításához és a szabályzatok hosszú távú karbantartásához legalább a fájl módosításait végezze el.
-- **Kiterjesztések fájl** – a bérlő egyedi konfigurációs módosításait tartalmazza.
-- **Függő entitás (RP) fájlja** – az alkalmazás vagy szolgáltatás által közvetlenül meghívott, egyetlen feladat által irányított fájl (más néven függő entitás). Mindegyik egyedi feladat saját RP-t igényel, és a márkaépítési követelményektől függően a szám a használati esetek teljes száma x számú.
+- **Alapfájl** - tartalmazza a legtöbb definíciót. Javasoljuk, hogy a hibaelhárítás és a szabályzatok hosszú távú karbantartása érdekében hajtson végre egy minimális számú módosítást a fájlon.
+- **Extensions file** – rendelkezik a bérlő egyedi konfigurációs módosításai.
+- **Függő entitás (RP) fájl** – Az egyetlen feladat-központú fájl, amely et közvetlenül az alkalmazás vagy szolgáltatás (más néven függő entitás) hív meg. Minden egyedi feladathoz saját RP szükséges, és a márkajelzési követelményektől függően a szám "az alkalmazások száma x a használati esetek teljes száma" lehet.
 
-A felhasználó Azure AD B2C a fentiekben látható három fájlra, de a fejlesztő csak az RP-fájlt látja, míg a Azure Portal módosítja a háttérben a kiterjesztéseket tartalmazó fájlt.
+Az Azure AD B2C felhasználói folyamatai a fent ábrázolt háromfájlos mintát követik, de a fejlesztő csak az RP-fájlt látja, míg az Azure Portal módosítja a bővítmények fájljának hátterét.
 
-## <a name="custom-policy-core-concepts"></a>Egyéni szabályzat – alapfogalmak
+## <a name="custom-policy-core-concepts"></a>Egyéni házirend alapfogalmai
 
-Az Azure-beli ügyfél-identitás-és hozzáférés-kezelési (CIAM) szolgáltatás az alábbiakat tartalmazza:
+Az Azure-beli ügyfélidentitás- és hozzáférés-kezelési (CIAM) szolgáltatás a következőket tartalmazza:
 
-- Olyan felhasználói könyvtár, amely Microsoft Graph használatával érhető el, és amely a helyi fiókok és az összevont fiókok felhasználói adataival rendelkezik.
-- Hozzáférés az **Identity Experience keretrendszerhez** , amely összehangolja a felhasználók és az entitások közötti bizalmi kapcsolatot, és a közöttük lévő jogcímeket a személyazonossági vagy hozzáférés-kezelési feladatok elvégzéséhez
-- Egy biztonságijogkivonat-szolgáltatás (STS), amely azonosító jogkivonatokat, frissítési jogkivonatokat és hozzáférési jogkivonatokat (és egyenértékű SAML-kijelentéseket) állít ki, és ellenőrzi, hogy az erőforrások védelme megtörtént-e.
+- Olyan felhasználói könyvtár, amely a Microsoft Graph segítségével érhető el, és amely felhasználói adatokat tartalmaz mind a helyi fiókok, mind az összevont fiókok számára.
+- Hozzáférés az **identitásélmény-keretrendszerhez,** amely vezényli a felhasználók és az entitások közötti bizalmat, és átadja a jogcímeket közöttük egy identitás- vagy hozzáférés-kezelési feladat végrehajtásához.
+- Egy biztonsági jogkivonat-szolgáltatás (STS), amely azonosító jogkivonatokat, frissítési jogkivonatokat és hozzáférési jogkivonatokat (és egyenértékű SAML-állításokat) ad ki, és ellenőrzi azokat az erőforrások védelme érdekében.
 
-A Azure AD B2C identitás-szolgáltatók, felhasználók, más rendszerek és a helyi felhasználói könyvtár használatával kommunikálnak az identitási feladatok eléréséhez. Például jelentkezzen be egy felhasználóval, regisztráljon egy új felhasználót, vagy állítsa alaphelyzetbe a jelszót. Az identitási élmény keretrendszere és a szabályzat (más néven felhasználói út vagy megbízhatósági keretrendszer-házirend) többrésztvevős megbízhatóságot hoz létre, és explicit módon meghatározza a szereplőkkel, a műveletekkel, a protokollokkal és a végrehajtandó lépések sorozatával kapcsolatos feladatokat.
+Az Azure AD B2C együttműködik az identitásszolgáltatókkal, a felhasználókkal, más rendszerekkel és a helyi felhasználói címtárral egy identitáskezelési feladat elérése érdekében. Például jelentkezzen be egy felhasználót, regisztráljon egy új felhasználót, vagy állítsa alaphelyzetbe a jelszót. Az identitáskezelési keretrendszer és egy házirend (más néven felhasználói út vagy megbízhatósági keretházirend) többrésztvevős megbízhatóságot hoz létre, és kifejezetten meghatározza a szereplőket, a műveleteket, a protokollokat és a végrehajtandó lépések sorrendjét.
 
-Az Identity Experience Framework egy teljes körűen konfigurálható, házirend által vezérelt, felhőalapú Azure-platform, amely az entitások közötti megbízhatósági kapcsolatot hangolja össze a szabványos protokoll-formátumokban, mint például az OpenID Connect, a OAuth, az SAML és néhány nem standard, például REST API-alapú rendszer-rendszerbeli jogcímek cseréje. A keretrendszer felhasználóbarát, fehér címkével ellátott, a HTML-t és a CSS-t támogató tapasztalatokat hoz létre.
+Az Identity Experience Framework egy teljes mértékben konfigurálható, házirend-alapú, felhőalapú Azure-platform, amely olyan szabványos protokollformátumokban vezényli az entitások közötti bizalmat, mint az OpenID Connect, az OAuth, az SAML és néhány nem szabványos, például rest API-alapú rendszer-rendszer jogcímek cseréje. A keretrendszer felhasználóbarát, fehér címkével ellátott, HTML- és CSS-t támogató élményeket hoz létre.
 
-Az egyéni szabályzatok egy vagy több XML formátumú fájlként jelennek meg, egymásra hierarchikus sorrendben hivatkozva. Az XML-elemek meghatározzák a jogcímek sémáját, a jogcímek átalakítását, a tartalmi definíciókat, a jogcím-szolgáltatókat, a technikai profilokat és a felhasználói útvonalak előkészítésének lépéseit a többi elem Az egyéni szabályzatok egy vagy több olyan XML-fájlhoz érhetők el, amelyet az Identity Experience Framework hajt végre, amikor egy függő entitás meghívja őket. Az egyéni házirendeket konfiguráló fejlesztőknek alapos részletességgel kell megadniuk a megbízható kapcsolatokat, hogy tartalmazzák a metaadatok végpontját, a pontos jogcím-definíciókat, valamint a titkok, kulcsok és tanúsítványok konfigurálását az egyes identitás-szolgáltatók igényei szerint.
+Az egyéni szabályzatok egy vagy több XML formátumú fájlként jelennek meg, egymásra hierarchikus sorrendben hivatkozva. Az XML-elemek többek között a jogcímsémát, a jogcímátalakításokat, a tartalomdefiníciókat, a jogcímszolgáltatókat, a technikai profilokat és a felhasználói út vezénylési lépéseit határozzák meg. Az egyéni házirend egy vagy több XML-fájlként érhető el, amelyeket az identitáskezelési keretrendszer hajt végre, ha egy függő entitás hívja meg őket. Az egyéni házirendeket konfiguráló fejlesztőknek részletesen meg kell határozniuk a megbízható kapcsolatokat, hogy tartalmazzák a metaadat-végpontokat, a pontos jogcímcsere-definíciókat, és szükség szerint konfigurálják a titkos kulcsokat, kulcsokat és tanúsítványokat az egyes identitásszolgáltatók által szükség szerint.
 
 ### <a name="inheritance-model"></a>Öröklési modell
 
-Amikor egy alkalmazás meghívja az RP-házirend fájlját, a Azure AD B2C Identity Experience Framework az alapfájlból származó összes elemet hozzáadja a kiterjesztések fájlból, majd az RP-házirend fájlból az aktuális házirend összeállításához.  Az RP-fájlban szereplő azonos típusú és nevű elemek felülbírálják a bővítmények és a bővítmények felülbírálásának alapjait.
+Amikor egy alkalmazás meghívja az RP-házirendfájlt, az Azure AD B2C identitáskezelési keretrendszere hozzáadja az összes elemet az alapfájlból, a bővítményfájlból, majd az RP-házirendfájlból az aktuális szabályzat összeállításához.  Az RP-fájlban lévő azonos típusú és nevű elemek felülírják a kiterjesztésekben lévőket, a kiterjesztések pedig felülírják az alapot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés az egyéni szabályzatokkal](custom-policy-get-started.md)
+> [Egyéni szabályzatok – első lépések](custom-policy-get-started.md)

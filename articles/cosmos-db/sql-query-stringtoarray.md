@@ -1,6 +1,6 @@
 ---
-title: StringToArray Azure Cosmos DB lekérdezési nyelven
-description: Ismerkedjen meg az SQL System Function StringToArray Azure Cosmos DB.
+title: StringToArray az Azure Cosmos DB lekérdezési nyelvében
+description: Ismerje meg az SQL rendszer függvényStringToArray az Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302916"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
- Egy tömbre fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, a nem definiált értéket adja vissza.  
+ Tömbre fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, akkor nem definiált értéket ad vissza.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,20 +26,20 @@ StringToArray(<str_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *str_expr*  
-   Egy karakterlánc-kifejezés, amely JSON-tömb kifejezésként lesz értelmezve. 
+   JSON tömbkifejezésként elemezendő karakterlánc-kifejezés. 
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy tömböt megadó kifejezést vagy nem definiált értéket ad vissza. 
+  Tömbkifejezést ad vissza, vagy nem definiált. 
   
 ## <a name="remarks"></a>Megjegyzések
-  A beágyazott karakterlánc-értékeket idézőjelek közé kell írni, hogy érvényes JSON legyen. A JSON formátumával kapcsolatos részletekért lásd: [JSON.org](https://json.org/)
+  A beágyazott karakterlánc-értékeket dupla idézőjelekkel kell írni ahhoz, hogy érvényes JSON-ok legyenek. A JSON formátumról a [json.org](https://json.org/)
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa bemutatja, hogyan viselkedik a `StringToArray` különböző típusokban. 
+  A következő példa `StringToArray` bemutatja, hogyan viselkedik a különböző típusok között. 
   
- Az alábbi példák érvényes bemenettel rendelkeznek.
+ Az alábbiakban érvényes bemenettel rendelkező példákat mutatunk be.
 
 ```sql
 SELECT 
@@ -50,7 +50,7 @@ SELECT
     StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
 ```
 
-Íme az eredményhalmaz.
+Itt van az eredményhalmaz.
 
 ```json
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
@@ -58,23 +58,23 @@ SELECT
 
 Az alábbi példa érvénytelen bemenetet mutat be. 
    
- A tömbben lévő szimpla idézőjelek nem érvényesek a JSON-ban.
-Annak ellenére, hogy egy lekérdezésen belül érvényesek, nem fogják értelmezni az érvényes tömböket. A tömb karakterláncán belüli karakterláncokat el kell kerülni "[\\"\\"]" vagy a környező idézőjelnek egyetlen "[" "]" karakternek kell lennie.
+ A tömbön belüli egyszeres idézőjelek nem érvényesek json.
+Annak ellenére, hogy egy lekérdezésen belül érvényesek, nem elemzik az érvényes tömböket. A tömbkarakterláncok karakterláncait vagy meg\\\\kell kerülni a "[ " "]" karakterből, vagy a környező idézőjeleknek "[""]"-nak kell lenniük.
 
 ```sql
 SELECT
     StringToArray("['5','6','7']")
 ```
 
-Íme az eredményhalmaz.
+Itt van az eredményhalmaz.
 
 ```json
 [{}]
 ```
 
-A következő példák érvényes bemenetre mutatnak.
+Az alábbi példák érvénytelen bemenetre mutatnak.
    
- Az átadott kifejezés JSON-tömbként lesz értelmezve; a következő nem értékeli ki a tömböt, ezért a nem definiált értéket adja vissza.
+ Az átadott kifejezés JSON-tömbként lesz elemezve; a következő nem értékeli ki a szövegtömböt, és így nem definiált értéket ad vissza.
    
 ```sql
 SELECT
@@ -85,7 +85,7 @@ SELECT
     StringToArray(undefined)
 ```
 
-Íme az eredményhalmaz.
+Itt van az eredményhalmaz.
 
 ```json
 [{}]
@@ -93,10 +93,10 @@ SELECT
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfüggvény nem fogja használni az indexet.
+Ez a rendszerfunkció nem használja az indexet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
-- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB karakterlánc-függvényei](sql-query-string-functions.md)
+- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)

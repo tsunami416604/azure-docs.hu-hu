@@ -1,35 +1,37 @@
 ---
-title: Pont – hely (P2S) VPN konfigurálása Linux rendszeren a Azure Fileshoz való használathoz | Microsoft Docs
-description: Pont – hely (P2S) VPN konfigurálása Linux rendszeren a Azure Fileshoz való használatra
+title: Pont-hely (P2S) VPN konfigurálása Linuxon az Azure Files-szal való használatra | Microsoft dokumentumok
+description: Pont-hely (P2S) VPN konfigurálása Linuxon az Azure Files használatához
 author: roygara
 ms.service: storage
 ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b988435fc6928d52321cb427e2412e7ca81680d2
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: cfff05ed52258ee448d83a521b99dca7d356a0f9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73141744"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061052"
 ---
-# <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Pont – hely (P2S) VPN konfigurálása Linux rendszeren a Azure Files-vel való használatra
-A pont – hely (P2S) VPN-kapcsolattal Azure-fájlmegosztás az Azure-on kívülről is csatlakoztatható SMB-n keresztül, a 445-es port megnyitása nélkül. A pont – hely VPN-kapcsolat az Azure és az egyes ügyfelek közötti VPN-kapcsolat. Ha a P2S VPN-kapcsolatot Azure Files használatával szeretné használni, konfigurálnia kell egy P2S VPN-kapcsolatot minden olyan ügyfél számára, amelyhez csatlakozni szeretne. Ha sok ügyféllel kell csatlakoznia az Azure-fájlmegosztás számára a helyszíni hálózatból, akkor az egyes ügyfelek pont – hely kapcsolata helyett használhat helyek közötti (S2S) VPN-kapcsolatot. További információ: helyek közötti [VPN konfigurálása Azure Fileshoz való használatra](storage-files-configure-s2s-vpn.md).
+# <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Pont-hely (P2S) VPN konfigurálása Linuxon az Azure Files-szal való használatra
+A Point-to-Site (P2S) VPN-kapcsolat segítségével az Azure-fájlmegosztások csatlakoztatása SMB-en keresztül az Azure-on kívülről, a 445-ös port megnyitása nélkül. A pont-hely VPN-kapcsolat az Azure és az egyes ügyfelek közötti VPN-kapcsolat. P2S VPN-kapcsolat használatához az Azure Files, a P2S VPN-kapcsolat kell konfigurálni minden ügyfél, amely csatlakozni kíván. Ha sok ügyfél, amelynek csatlakoznia kell az Azure-fájlmegosztások a helyszíni hálózatról, használhatja a helyek közötti (S2S) VPN-kapcsolat helyett egy point-to-site kapcsolat minden ügyfél számára. További információ: A helyek közötti [VPN konfigurálása az Azure Files szolgáltatáshoz című témakörben olvashat.](storage-files-configure-s2s-vpn.md)
 
-Javasoljuk, hogy olvassa el [Azure Files hálózatkezelési áttekintést](storage-files-networking-overview.md) , mielőtt folytatná ezt a cikket a Azure Files elérhető hálózati beállítások teljes körű megvitatására.
+Azt javasoljuk, hogy olvassa el [az Azure Files hálózati áttekintést,](storage-files-networking-overview.md) mielőtt folytatná ezt a cikket az Azure Files elérhető hálózati lehetőségek teljes körű megvitatására.
 
-A cikk részletesen bemutatja, hogyan konfigurálhat egy pont – hely VPN-t Linux rendszeren az Azure-fájlmegosztás közvetlen helyszíni csatlakoztatásához. Ha VPN-en keresztül szeretné átirányítani Azure File Sync forgalmat, tekintse meg a [Azure file Sync proxy-és tűzfalbeállítások konfigurálása](storage-sync-files-firewall-and-proxy.md)című témakört.
+A cikk ismerteti a lépéseket, hogy konfigurálja a Point-to-Site VPN Linuxon az Azure-fájlmegosztások közvetlenül a helyszínen csatlakoztatása. Ha az Azure File Sync forgalmat VPN-en keresztül szeretné irányítani, olvassa el [az Azure File Sync proxy és a tűzfal beállításainak konfigurálását.](storage-sync-files-firewall-and-proxy.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Az Azure CLI legújabb verziója. Az Azure CLI telepítésével kapcsolatos további információkért lásd: [install the Azure POWERSHELL CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) , és válassza ki az operációs rendszert. Ha a Linux rendszeren szeretné használni a Azure PowerShell-modult, akkor az alábbi utasításokat azonban az Azure CLI-hez mutatjuk be.
+- Az Azure CLI legújabb verziója. Az Azure CLI telepítéséről az [Azure PowerShell CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) és az operációs rendszer kiválasztása című témakörben talál további információt. Ha az Azure PowerShell-modult Linuxon szeretné használni, azonban az alábbi utasítások az Azure CLI-hez kerülnek bemutatásra.
 
-- Egy Azure-fájlmegosztás, amelyet a helyszínen kíván csatlakoztatni. A pont – hely VPN használatával [standard](storage-how-to-create-file-share.md) vagy [prémium szintű Azure-fájlmegosztás](storage-how-to-create-premium-fileshare.md) is használható.
+- Egy Azure-fájlmegosztást szeretne csatlakoztatni a helyszíni. Az Azure-fájlmegosztások a tárfiókokon belül vannak üzembe helyezve, amelyek olyan felügyeleti konstrukciók, amelyek egy megosztott tárolókészletet képviselnek, amelyben több fájlmegosztást, valamint más tárolási erőforrásokat, például blobtárolókat vagy várólistákat helyezhet üzembe. Az Azure-fájlmegosztások és tárfiókok üzembe helyezéséről az [Azure-fájlmegosztás létrehozása](storage-how-to-create-file-share.md)című részben olvashat bővebben.
+
+- A helyszíni csatlakoztatni kívánt Azure-fájlmegosztást tartalmazó tárfiók privát végpontja. Ha többet szeretne tudni a rról, hogyan hozhat létre privát [végpontot, olvassa el az Azure Files hálózati végpontok konfigurálása című témakört.](storage-files-networking-endpoints.md?tabs=azure-cli) 
 
 ## <a name="install-required-software"></a>A szükséges szoftverek telepítése
-Az Azure-beli virtuális hálózati átjáró több VPN-protokollt használó VPN-kapcsolatot is biztosít, beleértve az IPsec és az OpenVPN-t is. Ez az útmutató bemutatja, hogyan használható az IPsec, és hogyan használhatja a alapú strongswan csomagot a Linux-támogatás biztosításához. 
+Az Azure virtuális hálózati átjáró több VPN-protokoll használatával biztosít VPN-kapcsolatokat, beleértve az IPsec-et és az OpenVPN-t. Ez az útmutató bemutatja, hogyan kell használni az IPsec-et, és a strongSwan csomagot használja a Linux támogatásához. 
 
-> Ellenőrizve Ubuntu 18,10.
+> Ellenőrzött Ubuntu 18.10.
 
 ```bash
 sudo apt install strongswan strongswan-pki libstrongswan-extra-plugins curl libxml2-utils cifs-utils
@@ -37,12 +39,12 @@ sudo apt install strongswan strongswan-pki libstrongswan-extra-plugins curl libx
 installDir="/etc/"
 ```
 
-### <a name="deploy-a-virtual-network"></a>Virtuális hálózat üzembe helyezése 
-Ha egy pont – hely típusú VPN-kapcsolaton keresztül szeretné elérni az Azure-fájlmegosztást és más Azure-erőforrásokat, létre kell hoznia egy virtuális hálózatot vagy egy VNet. A P2S VPN-kapcsolat automatikusan létrejön a helyszíni Linux-gép és az Azure-beli virtuális hálózat között.
+### <a name="deploy-a-virtual-network"></a>Virtuális hálózat telepítése 
+Az Azure-fájlmegosztás és más Azure-erőforrások elérése a helyszíni egy point-to-site VPN, létre kell hoznia egy virtuális hálózat, vagy virtuális hálózat. A P2S VPN-kapcsolat automatikusan létrehoz egy hidat a helyszíni Linux-gép és az Azure virtuális hálózat között.
 
-A következő szkript létrehoz egy három alhálózattal rendelkező Azure-beli virtuális hálózatot: egyet a Storage-fiók szolgáltatási végpontja számára, egyet a Storage-fiókja privát végpontja számára, amely a helyi Storage-fiókhoz való hozzáféréshez szükséges az egyéni létrehozása nélkül. a megváltoztatható Storage-fiók nyilvános IP-címének útválasztása, valamint egy a VPN-szolgáltatást biztosító virtuális hálózati átjáró. 
+A következő parancsfájl három alhálózattal hoz létre egy Azure virtuális hálózatot: egyet a tárfiók szolgáltatásvégpontjához, egyet a tárfiók privát végpontjához, amely a helyszíni tárfiók eléréséhez szükséges egyéni a nyilvános IP-cím hez, amely változhat, és egyet a VPN-szolgáltatást nyújtó virtuális hálózati átjáróhoz. 
 
-Ne felejtse el lecserélni `<region>`, `<resource-group>`és `<desired-vnet-name>` értéket a környezete megfelelő értékeivel.
+Ne felejtse `<resource-group>`el `<desired-vnet-name>` kicserélni `<region>`a , és a környezetének megfelelő értékeket.
 
 ```bash
 region="<region>"
@@ -79,87 +81,8 @@ gatewaySubnet=$(az network vnet subnet create \
     --query "id" | tr -d '"')
 ```
 
-## <a name="restrict-the-storage-account-to-the-virtual-network"></a>A Storage-fiók korlátozása a virtuális hálózatra
-Alapértelmezés szerint a Storage-fiók létrehozásakor a világ bármely pontjáról elérheti azt, ha rendelkezik a kérés hitelesítéséhez szükséges eszközökkel (például a Active Directory identitásával vagy a Storage-fiók kulccsal). Ha korlátozni szeretné az ehhez a Storage-fiókhoz való hozzáférést az imént létrehozott virtuális hálózathoz, létre kell hoznia egy hálózati szabálykészlet, amely engedélyezi a hozzáférést a virtuális hálózaton belül, és megtagadja az összes többi hozzáférést.
-
-A Storage-fiók virtuális hálózatra való korlátozásához szolgáltatási végpontot kell használni. A szolgáltatási végpont olyan hálózati szerkezet, amellyel a nyilvános DNS/nyilvános IP-cím csak a virtuális hálózatból érhető el. Mivel a nyilvános IP-cím nem garantált, hogy változatlan maradjon, végül privát végpontot szeretnénk használni a Storage-fiókhoz tartozó szolgáltatási végpont helyett, azonban nem lehet korlátozni a Storage-fiókot, kivéve, ha egy szolgáltatási végpont is elérhető.
-
-Ne felejtse el lecserélni `<storage-account-name>` az elérni kívánt Storage-fiókkal.
-
-```bash
-storageAccountName="<storage-account-name>"
-
-az storage account network-rule add \
-    --resource-group $resourceGroupName \
-    --account-name $storageAccountName \
-    --subnet $serviceEndpointSubnet > /dev/null
-
-az storage account update \
-    --resource-group $resourceGroupName \
-    --name $storageAccountName \
-    --bypass "AzureServices" \
-    --default-action "Deny" > /dev/null
-```
-
-## <a name="create-a-private-endpoint-preview"></a>Privát végpont létrehozása (előzetes verzió)
-Ha létrehoz egy magánhálózati végpontot a Storage-fiókjához, a Storage-fiókja IP-címet ad a virtuális hálózat IP-címén belül. Ha az Azure-fájlmegosztást ezen magánhálózati IP-címmel csatlakoztatja a helyszíni környezetből, a VPN-telepítés által automatikusan definiált útválasztási szabályok a VPN-kapcsolaton keresztül irányítják a csatlakoztatási kérelmet a Storage-fiókhoz. 
-
-```bash
-zoneName="privatelink.file.core.windows.net"
-
-storageAccount=$(az storage account show \
-    --resource-group $resourceGroupName \
-    --name $storageAccountName \
-    --query "id" | tr -d '"')
-
-az resource update \
-    --ids $privateEndpointSubnet \
-    --set properties.privateEndpointNetworkPolicies=Disabled > /dev/null
-
-az network private-endpoint create \
-    --resource-group $resourceGroupName \
-    --name "$storageAccountName-PrivateEndpoint" \
-    --location $region \
-    --subnet $privateEndpointSubnet \
-    --private-connection-resource-id $storageAccount \
-    --group-ids "file" \
-    --connection-name "privateEndpointConnection" > /dev/null
-
-az network private-dns zone create \
-    --resource-group $resourceGroupName \
-    --name $zoneName > /dev/null
-
-az network private-dns link vnet create \
-    --resource-group $resourceGroupName \
-    --zone-name $zoneName \
-    --name "$virtualNetworkName-link" \
-    --virtual-network $virtualNetworkName \
-    --registration-enabled false > /dev/null
-
-networkInterfaceId=$(az network private-endpoint show \
-    --name "$storageAccountName-PrivateEndpoint" \
-    --resource-group $resourceGroupName \
-    --query 'networkInterfaces[0].id' | tr -d '"')
- 
-storageAccountPrivateIP=$(az resource show \
-    --ids $networkInterfaceId \
-    --api-version 2019-04-01 \
-    --query "properties.ipConfigurations[0].properties.privateIPAddress" | tr -d '"')
-
-fqdnQuery="properties.ipConfigurations[0].properties.privateLinkConnectionProperties.fqdns[0]"
-fqdn=$(az resource show \
-    --ids $networkInterfaceId \
-    --api-version 2019-04-01 \
-    --query $fqdnQuery | tr -d '"')
-
-az network private-dns record-set a create \
-    --name $storageAccountName \
-    --zone-name $zoneName \
-    --resource-group $resourceGroupName > /dev/null
-```
-
-## <a name="create-certificates-for-vpn-authentication"></a>Tanúsítványok létrehozása a VPN-hitelesítéshez
-Ahhoz, hogy a helyszíni linuxos gépek VPN-kapcsolatai hitelesítve legyenek a virtuális hálózathoz való hozzáféréshez, két tanúsítványt kell létrehoznia: egy főtanúsítványt, amelyet a rendszer a virtuálisgép-átjáró számára biztosít, valamint egy ügyféltanúsítványt, amely aláírva a főtanúsítvánnyal. A következő parancsfájl létrehozza a szükséges tanúsítványokat.
+## <a name="create-certificates-for-vpn-authentication"></a>Tanúsítványok létrehozása vpn-hitelesítéshez
+Ahhoz, hogy a helyszíni Linux-gépekVPN-kapcsolatait hitelesíteni lehessen a virtuális hálózat eléréséhez, két tanúsítványt kell létrehoznia: egy főtanúsítványt, amelyet a virtuális gép isztorának biztosítanak, és egy ügyféltanúsítványt, amely a főtanúsítvánnyal. A következő parancsfájl létrehozza a szükséges tanúsítványokat.
 
 ```bash
 rootCertName="P2SRootCert"
@@ -188,13 +111,13 @@ sudo ipsec pki --pub --in "clientKey.pem" | \
 openssl pkcs12 -in "clientCert.pem" -inkey "clientKey.pem" -certfile rootCert.pem -export -out "client.p12" -password "pass:$password"
 ```
 
-## <a name="deploy-virtual-network-gateway"></a>Virtuális hálózati átjáró üzembe helyezése
-Az Azure-beli virtuális hálózati átjáró az a szolgáltatás, amellyel a helyszíni linuxos gépek csatlakozni fognak. A szolgáltatás üzembe helyezéséhez két alapvető összetevő szükséges: egy nyilvános IP-cím, amely azonosítja az átjárót az ügyfelek számára, bárhol is legyenek a világon, és egy korábban létrehozott főtanúsítvány, amelyet az ügyfelek hitelesítéséhez fog használni.
+## <a name="deploy-virtual-network-gateway"></a>Virtuális hálózati átjáró telepítése
+Az Azure virtuális hálózati átjáró az a szolgáltatás, amelyhez a helyszíni Linux-gépek csatlakozni fog. A szolgáltatás üzembe helyezéséhez két alapvető összetevőre van szükség: egy nyilvános IP-cím, amely azonosítja az átjárót az ügyfelek számára, bárhol is legyenek a világon, és egy korábban létrehozott főtanúsítványt, amely et az ügyfelek hitelesítésére fog használni.
 
-Ne felejtse el lecserélni a `<desired-vpn-name-here>`t az erőforrások nevével.
+Ne felejtse el lecserélni `<desired-vpn-name-here>` az erőforrásokhoz kívánt nevet.
 
 > [!Note]  
-> Az Azure-beli virtuális hálózati átjáró üzembe helyezése akár 45 percet is igénybe vehet. Az erőforrás üzembe helyezése közben ez a bash parancsfájl-parancsfájl letiltja a központi telepítés befejeződését. Ez a várható eredmény.
+> Az Azure virtuális hálózati átjáró üzembe helyezése akár 45 percet is igénybe vehet. Az erőforrás telepítése közben ez a bash parancsfájl blokkolja a központi telepítés befejezéséhez. Ez a várható eredmény.
 
 ```bash
 vpnName="<desired-vpn-name-here>"
@@ -229,7 +152,7 @@ az network vnet-gateway root-cert create \
 ```
 
 ## <a name="configure-the-vpn-client"></a>A VPN-ügyfél konfigurálása
-Az Azure Virtual Network Gateway egy letölthető csomagot hoz létre a helyi linuxos gépen a VPN-kapcsolat inicializálásához szükséges konfigurációs fájlokkal. A következő parancsfájl elhelyezi a megfelelő helyen létrehozott tanúsítványokat, és konfigurálja a `ipsec.conf` fájlt a megfelelő értékekkel a letölthető csomagban található konfigurációs fájlból.
+Az Azure virtuális hálózati átjáró létrehoz egy letölthető csomagot konfigurációs fájlokat szükséges inicializálása a VPN-kapcsolat a helyszíni Linux-gép. A következő parancsfájl a megfelelő helyre helyezi a `ipsec.conf` létrehozott tanúsítványokat, és a fájlt a megfelelő értékekkel konfigurálja a letölthető csomagkonfigurációs fájlból.
 
 ```bash
 vpnClient=$(az network vnet-gateway vpn-client generate \
@@ -267,8 +190,8 @@ sudo ipsec restart
 sudo ipsec up $virtualNetworkName 
 ```
 
-## <a name="mount-azure-file-share"></a>Azure-fájlmegosztás csatlakoztatása
-Most, hogy beállította a pont – hely VPN-t, csatlakoztathatja az Azure-fájlmegosztást. A következő példa a megosztást nem állandóan csatlakoztatja. A folyamatos csatlakoztatáshoz tekintse meg az [Azure-fájlmegosztás használata Linux rendszeren](storage-how-to-use-files-linux.md)című témakört. 
+## <a name="mount-azure-file-share"></a>Az Azure fájlmegosztásának csatlakoztatása
+Most, hogy beállította a pont-hely VPN-t, csatlakoztathatja az Azure-fájlmegosztást. A következő példa nem tartósan csatlakoztatja a megosztást. Az állandó csatlakoztatáshoz [lásd: Azure-fájlmegosztás használata Linux mal.](storage-how-to-use-files-linux.md) 
 
 ```bash
 fileShareName="myshare"
@@ -285,7 +208,7 @@ smbPath="//$storageAccountPrivateIP/$fileShareName"
 sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
 ```
 
-## <a name="see-also"></a>Lásd még:
-- [Azure Files hálózatkezelés – áttekintés](storage-files-networking-overview.md)
-- [Pont – hely (P2S) VPN konfigurálása Windows rendszeren a Azure Files-mel való használatra](storage-files-configure-p2s-vpn-windows.md)
-- [Helyek közötti (S2S) VPN konfigurálása Azure Fileshoz való használatra](storage-files-configure-s2s-vpn.md)
+## <a name="see-also"></a>Lásd még
+- [Az Azure Files hálózati áttekintése](storage-files-networking-overview.md)
+- [Pont-hely (P2S) VPN konfigurálása Windows rendszeren az Azure Files használatával](storage-files-configure-p2s-vpn-windows.md)
+- [Helyek közötti (S2S) VPN konfigurálása az Azure Files használatához](storage-files-configure-s2s-vpn.md)

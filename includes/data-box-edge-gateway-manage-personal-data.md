@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: af4c3829c8b12bfcaae0602dde8f459de7e50f3a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179760"
 ---
-- **Rendelés részletei**. Egy rendelést hoznak létre, a szállítási cím, e-mail-címét és a felhasználó kapcsolattartási adatait tárolja az Azure Portalon. A mentett információk a következők:
+- **Rendelés részletei**. A rendelés létrehozásakor a felhasználó szállítási címe, e-mail-címe és kapcsolattartási adatai az Azure Portalon tárolódnak. A mentett információk a következők:
   - Kapcsolattartó neve
   - Telefonszám
   - E-mail-cím
   - Utca, házszám
   - Város
-  - ZIP-kód/irányítószám
+  - Irányítószám/irányítószám
   - Állapot
-  - Ország/megye/régió
+  - Ország/tartomány/régió
   - Szállítmány nyomkövetési száma
 
-    Titkosított és a szolgáltatásban tárolt a rendelés részleteit. A szolgáltatás mindaddig megőrzi az adatokat, amíg explicit módon törli az erőforrást vagy rendelés. Az erőforrás és a megfelelő rendelés törlésének le van tiltva, az az idő az eszköz tartalmazza a szükséges mindaddig, amíg az eszköz visszatér a Microsoftnak.
+    A rendelési adatok titkosítva vannak, és a szolgáltatásban tárolódnak. A szolgáltatás megőrzi az adatokat, amíg kifejezetten törli az erőforrást vagy a rendelést. Az erőforrás és a megfelelő rendelés törlése az eszköz kiszállításának időpontjától a Microsofthoz való visszatérésig le van tiltva.
 
-- **Szállítási cím**. Után egy megrendeléskor Data Box szolgáltatás a szállítási cím biztosítja a külső szállítók, például a UPS.
+- **Szállítási cím**. A megrendelést követően a Data Box szolgáltatás megadja a szállítási címet olyan külső fuvarozóknak, mint a UPS.
 
-- **Felhasználók megosztása**. Az eszközön a felhasználók is elérheti az adatokat a megosztásokon található. Felhasználók, akik férhetnek hozzá a megosztás adataihoz listáját is megtekinthetők. A megosztások esetén törli, ez a lista is törlődik.
+- **Felhasználók megosztása**. Az eszköz felhasználói is hozzáférhetnek a megosztásokon található adatokhoz. Megtekinthető azoknak a felhasználóknak a listája, akik hozzáférhetnek a megosztási adatokhoz. A megosztások törlésekor ez a lista is törlődik.
