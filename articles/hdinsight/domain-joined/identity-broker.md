@@ -1,6 +1,6 @@
 ---
-title: Az ID Broker (előzetes verzió) használata a hitelesítő adatok kezeléséhez – Azure HDInsight
-description: Tudnivalók a HDInsight-ügynökről a tartományhoz csatlakoztatott Apache Hadoop fürtök hitelesítésének egyszerűsítése érdekében.
+title: Az ID Broker használata (előzetes verzió) a hitelesítő adatok kezeléséhez – Azure HDInsight
+description: Ismerje meg a HDInsight ID Broker t a tartományhoz csatlakozó Apache Hadoop-fürtök hitelesítésének egyszerűsítése érdekében.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,56 +8,56 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: f14cbef2ab568962601b3a407fa979e8f982598d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75483010"
 ---
-# <a name="use-id-broker-preview-for-credential-management"></a>Az ID Broker (előzetes verzió) használata a hitelesítő adatok kezeléséhez
+# <a name="use-id-broker-preview-for-credential-management"></a>Azonosító-broker használata (előzetes verzió) a hitelesítő adatok kezeléséhez
 
-Ez a cikk bemutatja, hogyan állíthatja be és használhatja az ID Broker szolgáltatást az Azure HDInsight-ben. Ezzel a szolgáltatással bejelentkezhet az Apache Ambari az Azure Multi-Factor Authenticationon keresztül, és lekérheti a szükséges Kerberos-jegyeket anélkül, hogy Azure Active Directory Domain Services (Azure AD DS) jelszó-kivonatokat kellene használnia.
+Ez a cikk ismerteti, hogyan állíthatja be és használhatja az ID Broker funkciót az Azure HDInsightban. Ezzel a funkcióval bejelentkezhet az Apache Ambari-ba az Azure többtényezős hitelesítésén keresztül, és beszerezheti a szükséges Kerberos-jegyeket anélkül, hogy jelszókivonatokat kellene megadnia az Azure Active Directory tartományi szolgáltatásokban (Azure AD DS).
 
 ## <a name="overview"></a>Áttekintés
 
-Az ID Broker a következő esetekben egyszerűsíti az összetett hitelesítési beállításokat:
+Az ID Broker leegyszerűsíti az összetett hitelesítési beállításokat a következő esetekben:
 
-* A szervezet támaszkodik az összevonásra, hogy hitelesítse a felhasználókat a felhőalapú erőforrásokhoz való hozzáféréshez. Korábban a HDInsight Enterprise Security Package (ESP) fürtök használatához engedélyeznie kell a jelszó-kivonatok szinkronizálását a helyszíni környezetből a Azure Active Directoryához. Ez a követelmény bizonyos szervezeteknél nehéz vagy nemkívánatos lehet.
+* A szervezet az összevonási adatokra támaszkodik a felhasználók hitelesítéséhez a felhőbeli erőforrások eléréséhez. Korábban a HDInsight Enterprise Security Package (ESP) fürtök használatához engedélyeznie kellett a jelszókivonat-szinkronizálást a helyszíni környezetből az Azure Active Directoryba. Ez a követelmény egyes szervezetek számára nehéz vagy nemkívánatos lehet.
 
-* Olyan megoldásokat fejleszt, amelyek különböző hitelesítési mechanizmusokra támaszkodó technológiákat használnak. Például a Apache Hadoop és az Apache Ranger Kerberos-alapú, míg a Azure Data Lake Storage a OAuth-re támaszkodik.
+* Olyan megoldásokat épít, amelyek különböző hitelesítési mechanizmusokra támaszkodó technológiákat használnak. Például az Apache Hadoop és az Apache Ranger a Kerberos-ra támaszkodik, míg az Azure Data Lake Storage az OAuth-ra támaszkodik.
 
-Az ID Broker egységes hitelesítési infrastruktúrát biztosít, és eltávolítja a jelszó-kivonatok Azure-AD DSba való szinkronizálásának követelményét. Az ID Broker egy Windows Server rendszerű virtuális gépen (ID Broker-csomóponton) futó összetevőkből áll, valamint a fürt átjárójának csomópontjaival. 
+ID Broker egy egységes hitelesítési infrastruktúrát biztosít, és megszünteti a jelszókivonatok azure AD DS-be történő szinkronizálásának követelményét. Az ID Broker windows Server virtuális gépen (ID Broker-csomóponton) futó összetevőkből, valamint fürtátjáró-csomópontokból áll. 
 
-Az alábbi ábra az összes felhasználó hitelesítési folyamatát mutatja be, beleértve az összevont felhasználókat is, miután az azonosító-átvitelszervező engedélyezve lett:
+Az alábbi ábra az id broker engedélyezése után az összes felhasználó hitelesítési folyamatát mutatja, beleértve az összevont felhasználókat is:
 
-![Hitelesítési folyamat azonosítója-átvitelszervezővel](./media/identity-broker/identity-broker-architecture.png)
+![Hitelesítési folyamat az ID Brokerrel](./media/identity-broker/identity-broker-architecture.png)
 
-Az ID Broker lehetővé teszi, hogy Multi-Factor Authentication használatával bejelentkezzen az ESP-fürtökbe anélkül, hogy jelszót kellene biztosítania. Ha már bejelentkezett más Azure-szolgáltatásokba, például a Azure Portalba, bejelentkezhet az HDInsight-fürtbe egyszeri bejelentkezéses (SSO) felhasználói élményben.
+Id Broker lehetővé teszi, hogy jelentkezzen be ESP klaszterek segítségével többtényezős hitelesítés, anélkül, hogy bármilyen jelszót. Ha már bejelentkezett más Azure-szolgáltatásokba, például az Azure Portalra, egyetlen bejelentkezéssel (SSO) bejelentkezhet a HDInsight-fürtbe.
 
-## <a name="enable-hdinsight-id-broker"></a>HDInsight-azonosító-átvitelszervező engedélyezése
+## <a name="enable-hdinsight-id-broker"></a>HDInsight-azonosító-közvetítő engedélyezése
 
-A következő lépésekkel hozhat létre egy ESP-fürtöt, amelyen engedélyezve van az azonosító-átvitelszervező:
+Ha olyan ESP-fürtöt szeretne létrehozni, amelyen engedélyezve van az ID Broker, tegye a következő lépéseket:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. Az ESP-fürt alapvető létrehozási lépéseinek követése. További információ: HDInsight- [fürt létrehozása ESP-vel](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
-1. Válassza a **HDInsight-azonosító-átvitelszervező engedélyezése**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Kövesse az ESP-fürt alapvető létrehozási lépéseit. További információt a [HDInsight-fürt létrehozása ESP-vel](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)című témakörben talál.
+1. Válassza **a HDInsight ID Broker engedélyezése**lehetőséget.
 
-Az ID Broker szolgáltatás egy további virtuális gépet ad hozzá a fürthöz. Ez a virtuális gép az ID Broker csomópontja, és a hitelesítést támogató kiszolgálói összetevőket tartalmaz. Az ID Broker csomópont tartományhoz van csatlakoztatva az Azure AD DS tartományhoz.
+Az ID Broker szolgáltatás egy további virtuális gép hozzáadása a fürthöz. Ez a virtuális gép az ID Broker csomópont, és tartalmazza a hitelesítést támogató kiszolgáló-összetevőket. Az ID Broker-csomópont tartomány csatlakozott az Azure AD DS-tartományhoz.
 
-![Az ID Broker engedélyezésének lehetősége](./media/identity-broker/identity-broker-enable.png)
+![Az azonosító-bróker engedélyezésének lehetősége](./media/identity-broker/identity-broker-enable.png)
 
-## <a name="tool-integration"></a>Eszköz-integráció
+## <a name="tool-integration"></a>Eszközintegráció
 
-A HDInsight [IntelliJ beépülő modul](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) a OAuth támogatásához frissül. Ezt a beépülő modult használhatja a fürthöz való kapcsolódáshoz és a feladatok elküldéséhez.
+A HDInsight [IntelliJ beépülő modul](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) az OAuth támogatásával frissül. Ezzel a beépülő modulval csatlakozhat a fürthöz, és elküldheti a feladatokat.
 
-## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>SSH-hozzáférés jelszó-kivonat nélkül az Azure-ban AD DS
+## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>SSH-hozzáférés jelszókivonat nélkül az Azure AD DS-ben
 
-Az azonosító-átvitelszervező engedélyezése után az Azure AD DSban tárolt jelszó-kivonatot kell használnia a tartományi fiókokkal való SSH-forgatókönyvekhez. Ha az SSH-t egy tartományhoz csatlakoztatott virtuális gépre vagy a `kinit` parancs futtatására szeretné futtatni, meg kell adnia egy jelszót. 
+Az ID Broker engedélyezése után továbbra is szüksége lesz egy jelszókivonatra az Azure AD DS-ben a tartományi fiókkal rendelkező SSH-forgatókönyvekhez. Az SSH-hoz egy tartományhoz csatlakozó virtuális `kinit` géphez, vagy a parancs futtatásához meg kell adnia egy jelszót. 
 
-Az SSH-hitelesítéshez szükséges, hogy a kivonat elérhető legyen az Azure AD DSban. Ha csak rendszergazdai forgatókönyvekhez kíván SSH-t használni, létrehozhat egy csak felhőalapú fiókot, és az SSH-t a fürthöz is használhatja. Más felhasználók továbbra is használhatják az Ambari-vagy HDInsight-eszközöket (például a IntelliJ beépülő modult) anélkül, hogy az Azure AD DSban elérhetővé tennék a jelszó kivonatát.
+SSH-hitelesítés hez a kivonatnak elérhetőnek kell lennie az Azure AD DS-ben. Ha csak felügyeleti forgatókönyvekhez szeretné használni az SSH-t, létrehozhat egy csak felhőalapú fiókot, és használhatja azt az SSH-hoz a fürthöz. Más felhasználók továbbra is használhatják az Ambari vagy HDInsight eszközöket (például az IntelliJ beépülő modult) anélkül, hogy az Azure AD DS-ben elérhető jelszókivonat ot rendelkezne.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [HDInsight-fürt konfigurálása Enterprise Security Package használatával Azure Active Directory Domain Services](apache-domain-joined-configure-using-azure-adds.md)
-* [Azure Active Directory-felhasználók szinkronizálása HDInsight-fürttel](../hdinsight-sync-aad-users-to-cluster.md)
+* [HDInsight-fürt konfigurálása vállalati biztonsági csomaggal az Azure Active Directory tartományi szolgáltatások használatával](apache-domain-joined-configure-using-azure-adds.md)
+* [Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása](../hdinsight-sync-aad-users-to-cluster.md)
 * [Fürtteljesítmény monitorozása](../hdinsight-key-scenarios-to-monitor.md)

@@ -1,75 +1,75 @@
 ---
-title: Használja sys_schema-Azure Database for MySQL
-description: Megtudhatja, hogyan használhatja a sys_schema a teljesítménnyel kapcsolatos problémák megkeresésére és az adatbázis karbantartására Azure Database for MySQLokban.
+title: Használja sys_schema - Azure Database for MySQL
+description: Ismerje meg, hogyan használhatja sys_schema a teljesítménnyel kapcsolatos problémák megkeresésére és az adatbázisok karbantartására az Azure Database for MySQL-ben.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 50552b87fad9d8f58ff8c48dc03463d4c901bf99
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
-ms.translationtype: MT
+ms.date: 3/18/2020
+ms.openlocfilehash: a35a586a519ff78e8b32d986b92bd008b2c6b858
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775945"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067868"
 ---
-# <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>A sys_schema használata a teljesítmény finomhangolásához és az adatbázis-karbantartáshoz a Azure Database for MySQL
+# <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>A sys_schema használata teljesítményhangolásra és adatbázis-karbantartásra az Azure Database for MySQL-ben
 
-A MySQL-5,5-ben elsőként elérhető MySQL-performance_schema számos létfontosságú kiszolgálói erőforrást biztosít, mint például a memória kiosztása, a tárolt programok, a metaadatok zárolása stb. A performance_schema azonban több mint 80 táblát tartalmaz, és a szükséges információk beszerzéséhez gyakran szükség van a táblázatokon performance_schema belüli táblákhoz való csatlakozásra, valamint a information_schema tábláira. A performance_schema és information_schema egyaránt kiépíthető, hogy a sys_schema egy csak olvasható adatbázisban a [felhasználóbarát nézetek](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) hatékony gyűjteményét kínálja, és teljes mértékben engedélyezve van a Azure Database for MySQL 5,7-es verziójában.
+A MySQL performance_schema, először elérhető a MySQL 5.5, műszerek számos létfontosságú szerver erőforrások, mint például a memória foglalás, tárolt programok, metaadatok zárolása, stb A performance_schema azonban több mint 80 táblát tartalmaz, és a szükséges információk beszerzése gyakran megköveteli a táblák összekapcsolásához a performance_schema, valamint a information_schema táblákat. A performance_schema és information_schema építve a sys_schema [felhasználóbarát nézetek](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) hatékony gyűjteményét biztosítja egy csak olvasható adatbázisban, és teljes mértékben engedélyezve van az Azure Database for MySQL 5.7-es verziójában.
 
-![sys_schema nézetei](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
+![a sys_schema nézetei](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
 
-A sys_schemaban 52 nézet található, és mindegyik nézet a következő előtagok egyikével rendelkezik:
+A sys_schema 52 nézet található, és mindegyik nézet a következő előtagok egyikével rendelkezik:
 
-- Host_summary vagy IO: I/O kapcsolatos késések.
-- InnoDB: InnoDB-puffer állapota és zárolásai.
-- Memória: a gazdagép és a felhasználók által felhasznált memóriahasználat.
-- Séma: sémával kapcsolatos információk, például automatikus növekmény, indexek stb.
-- Utasítás: információk az SQL-utasításokról; olyan utasítás lehet, amely teljes táblázatos vizsgálatot vagy hosszú lekérdezési időt eredményezett.
-- Felhasználó: a felhasználók által felhasznált és csoportosított erőforrások. Ilyenek például a fájlok I/o-, a kapcsolatok és a memória.
-- Várakozás: Várjon, amíg az események gazdagép vagy felhasználó szerint vannak csoportosítva.
+- Host_summary vagy Io: I/O-val kapcsolatos késések.
+- InnoDB: InnoDB puffer állapota és zárolása.
+- Memória: A gazdagép és a felhasználók memóriahasználata.
+- Séma: Sémával kapcsolatos információk, például automatikus növekmény, indexek stb.
+- Utasítás: Információ az SQL utasításokról; ez lehet utasítás, amely teljes táblavizsgálat, vagy hosszú lekérdezési idő.
+- Felhasználó: A felhasználók által felhasznált és csoportosított erőforrások. Ilyenek például a fájl i/o-i, a kapcsolatok és a memória.
+- Várakozás: Várakozási események állomás vagy felhasználó szerint csoportosítva.
 
-Most nézzük meg a sys_schema gyakori használati mintáit. Első lépésként csoportosítjuk a használati mintákat két kategóriába: a **teljesítmény finomhangolását** és az **adatbázis-karbantartást**.
+Most nézzük meg néhány közös használati minták a sys_schema. Először is a használati mintákat két kategóriába soroljuk: **Teljesítményhangolás** és **Adatbázis-karbantartás.**
 
 ## <a name="performance-tuning"></a>Teljesítmény-finomhangolás
 
-### <a name="sysuser_summary_by_file_io"></a>*sys. user_summary_by_file_io*
+### <a name="sysuser_summary_by_file_io"></a>*sys.user_summary_by_file_io*
 
-Az IO a legdrágább művelet az adatbázisban. Az átlagos IO-késést a *sys. user_summary_by_file_io* nézet lekérdezésével találhatja meg. Az alapértelmezett 125 GB kiépített tárterület esetén az i/o-késés körülbelül 15 másodperc.
+Az IO az adatbázis legdrágább művelete. A *sys.user_summary_by_file_io* nézet lekérdezésével megtudjuk az átlagos I/O-késést. Az alapértelmezett 125 GB-os kiépített tároló, az I/O-késés körülbelül 15 másodperc.
 
-![IO-késés: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
+![io késleltetés: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
 
-Mivel Azure Database for MySQL az i/o-méretezést a tárterület tekintetében, miután a kiépített tárterületet 1 TB-ra növelte, az i/o-késés a 571 MS-ra csökken.
+Mivel az Azure Database for MySQL skálázódik az IO-t a tárolás tekintetében, miután a kiosztott tárolót 1 TB-ra növeli, az I/O-késésem 571 ms-ra csökken.
 
-![IO-késés: 1 TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
+![io késleltetés: 1 TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
 
-### <a name="sysschema_tables_with_full_table_scans"></a>*sys. schema_tables_with_full_table_scans*
+### <a name="sysschema_tables_with_full_table_scans"></a>*sys.schema_tables_with_full_table_scans*
 
-A gondos tervezés ellenére számos lekérdezés továbbra is teljes táblázatos vizsgálatokat eredményezhet. Az indexek típusaival és optimalizálásával kapcsolatos további információkért tekintse meg a következő cikket: a [lekérdezés teljesítményének megoldása](./howto-troubleshoot-query-performance.md). A teljes táblázatos vizsgálatok erőforrás-igényesek, és csökkentik az adatbázis teljesítményét. A teljes táblázatos vizsgálattal rendelkező táblák keresésének leggyorsabb módja a *sys. schema_tables_with_full_table_scans* nézet lekérdezése.
+A gondos tervezés ellenére sok lekérdezés továbbra is teljes táblavizsgálatokat eredményezhet. Az indexek típusáról és optimalizálásukról a következő cikkben olvashat: [Lekérdezési teljesítmény hibaelhárítása](./howto-troubleshoot-query-performance.md). A teljes táblavizsgálatok erőforrás-igényesek, és rontják az adatbázis teljesítményét. A teljes táblavizsgálattal rendelkező táblák keresésének leggyorsabb módja a *sys.schema_tables_with_full_table_scans nézet lekérdezése.*
 
-![teljes táblázatos vizsgálatok](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
+![teljes táblázat vizsgál](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
 
-### <a name="sysuser_summary_by_statement_type"></a>*sys. user_summary_by_statement_type*
+### <a name="sysuser_summary_by_statement_type"></a>*sys.user_summary_by_statement_type*
 
-Az adatbázis-teljesítménnyel kapcsolatos problémák elhárítása érdekében hasznos lehet az adatbázison belül zajló események azonosítása, valamint a *sys. user_summary_by_statement_type* nézet használata is csak a trükk.
+Az adatbázis teljesítményével kapcsolatos problémák elhárításához hasznos lehet azonosítani az adatbázison belül zajló eseményeket, és a *sys.user_summary_by_statement_type* nézet használata csak ezt a trükköt teheti meg.
 
-![Összefoglaló utasítás szerint](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
+![összefoglaló kivonatszerint](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
 
-Ebben a példában a 53 percet töltöttük a üt lekérdezési naplójának 44579-es időpontjának kiürítésével Azure Database for MySQL. Ez hosszú idő és sok IOs. Csökkentheti ezt a tevékenységet a lassú lekérdezési napló letiltásával vagy a lassú lekérdezés-bejelentkezési Azure Portal gyakoriságának csökkentésével.
+Ebben a példában az Azure Database for MySQL 53 percet töltött a slog lekérdezési napló kiürítésével 44579 alkalommal. Az hosszú idő, és sok ios. Csökkentheti ezt a tevékenységet a lassú lekérdezési napló letiltásával, vagy a lassú lekérdezési bejelentkezés gyakoriságának csökkentésével az Azure Portalon.
 
-## <a name="database-maintenance"></a>Adatbázis-karbantartás
+## <a name="database-maintenance"></a>Adatbázis karbantartása
 
-### <a name="sysinnodb_buffer_stats_by_table"></a>*sys. innodb_buffer_stats_by_table*
+### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
 
-A InnoDB-puffer a memóriában található, és az adatbázis-kezelő és a tároló fő gyorsítótárazási mechanizmusa. A InnoDB-puffer mérete a teljesítmény szintjéhez van kötve, és nem módosítható, kivéve, ha egy másik termék SKU van kiválasztva. Csakúgy, mint az operációs rendszer memóriája, a régi oldalakat felcseréli a rendszer, hogy helyet szabadítson fel a friss adatmennyiséghez. Annak megállapításához, hogy mely táblák használják fel a InnoDB-puffer teljes memóriáját, lekérdezheti a *sys. innodb_buffer_stats_by_table* nézetet.
+Az InnoDB pufferkészlet a memóriában található, és a dbms és a tároló közötti fő gyorsítótár-mechanizmus. Az InnoDB pufferkészlet mérete a teljesítményszinthez van kötve, és csak akkor módosítható, ha másik terméktermékváltozat van kiválasztva. Az operációs rendszer memóriájához is, a régi oldalakat is kicserélik, hogy helyet adjanak a frissebb adatoknak. Annak kiderítéséhez, hogy mely táblák használják fel az InnoDB pufferkészlet memóriájának nagy részét, lekérdezheti a *sys.innodb_buffer_stats_by_table* nézetet.
 
-![InnoDB-puffer állapota](./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png)
+![InnoDB puffer állapota](./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png)
 
-A fenti ábrán látható, hogy a rendszertáblák és a nézetek kivételével a mysqldatabase033-adatbázis minden olyan táblája, amely az egyik WordPress-webhelyét üzemelteti, 16 KB-os vagy 1 lapot foglal le a memóriában.
+A fenti ábrán nyilvánvaló, hogy a rendszertáblákon és nézeteken kívül a mysqldatabase033 adatbázis minden táblája, amely az egyik WordPress webhelyet üzemelteti, 16 KB vagy 1 oldalt foglal el a memóriában lévő adatokból.
 
-### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Sys. schema_unused_indexes* & *sys. schema_redundant_indexes*
+### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Sys.schema_unused_indexes* & *sys.schema_redundant_indexes*
 
-Az indexek nagyszerű eszközöket biztosítanak az olvasási teljesítmény javítására, de további költségekkel járnak a lapkák és a tárolók esetében. A *sys. schema_unused_indexes* és a *sys. schema_redundant_indexes* a nem használt vagy duplikált indexekről nyújt betekintést.
+Az indexek nagyszerű eszközök az olvasási teljesítmény javítására, de további költségekkel járnak a lapkák és a tárolás számára. *A Sys.schema_unused_indexes* és *a sys.schema_redundant_indexes* betekintést nyújt a fel nem használt vagy ismétlődő indexekbe.
 
 ![nem használt indexek](./media/howto-troubleshoot-sys-schema/unused-indexes.png)
 
@@ -77,7 +77,7 @@ Az indexek nagyszerű eszközöket biztosítanak az olvasási teljesítmény jav
 
 ## <a name="conclusion"></a>Összegzés
 
-Összefoglalva, a sys_schema kiváló eszköz a teljesítmény finomhangolásához és az adatbázis-karbantartáshoz. Győződjön meg arról, hogy kihasználja ezt a funkciót a Azure Database for MySQL. 
+Összefoglalva, a sys_schema egy nagyszerű eszköz mind a teljesítmény hangolása és adatbázis-karbantartás. Győződjön meg róla, hogy kihasználja ezt a funkciót az Azure Database for MySQL.Make sure to advantage of this feature in your Azure Database for MySQL. 
 
-## <a name="next-steps"></a>Következő lépések
-- Ha a leginkább érintett kérdésekre ad választ, vagy új kérdést/választ tesz közzé, látogasson el az [MSDN fórumára](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) vagy a [stack Overflowra](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+## <a name="next-steps"></a>További lépések
+- Ha szeretné megtalálni a társak válaszait a leginkább érintett kérdésekre, vagy tegye az új kérdés / válasz, látogasson el [MSDN fórum](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) vagy [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

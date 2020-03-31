@@ -1,7 +1,7 @@
 ---
-title: Predikátumok és PredicateValidations
+title: Predikátumok és predikátumokÉrvényesítések
 titleSuffix: Azure AD B2C
-description: A helytelenül formázott adatok nem adhatók hozzá a Azure AD B2C-bérlőhöz egyéni szabályzatok használatával Azure Active Directory B2Cban.
+description: Az Azure Active Directory B2C egyéni szabályzatai használatával megakadályozhatja, hogy az Azure AD B2C-bérlő bekerüljön a hibásan formázott adatok.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,62 +12,62 @@ ms.date: 02/24/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187236"
 ---
-# <a name="predicates-and-predicatevalidations"></a>Predikátumok és PredicateValidations
+# <a name="predicates-and-predicatevalidations"></a>Predikátumok és predikátumokÉrvényesítések
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A **predikátumok** és a **PredicateValidations** elemek lehetővé teszik egy ellenőrzési folyamat elvégzését annak érdekében, hogy csak a megfelelően formázott adatok legyenek beírva a Azure Active Directory B2C (Azure ad B2C) bérlőbe.
+A **predikátumok** és **predicatevalidations** elemek lehetővé teszik, hogy egy érvényesítési folyamat, annak biztosítása érdekében, hogy csak megfelelően formázott adatok at az Azure Active Directory B2C (Azure AD B2C) bérlő.
 
-Az alábbi ábrán az elemek közötti kapcsolat látható:
+Az alábbi ábra az elemek közötti kapcsolatot mutatja be:
 
-![Predikátumok és predikátumok érvényességi kapcsolatát bemutató ábra](./media/predicates/predicates.png)
+![Predikátumok és predikátum-érvényesítési viszonyt bemutató diagram](./media/predicates/predicates.png)
 
 ## <a name="predicates"></a>Predikátumok
 
-A **predikátum** elem egy alapszintű érvényesítést határoz meg a jogcím típusának ellenőrzéséhez, és `true` vagy `false`értéket ad vissza. Az érvényesítés egy megadott **metódus** elem és a metódushoz tartozó **Paraméterek** elemeinek használatával történik. Egy predikátum például megtekintheti, hogy a karakterlánc-jogcím értéke a megadott minimális és maximális paraméterek tartományán belül van-e, illetve hogy egy karakterlánc-jogcím értéke tartalmaz-e karakterkészletet. A **UserHelpText** elem hibaüzenetet jelenít meg a felhasználók számára, ha az ellenőrzés sikertelen. A **UserHelpText** elem értéke honosítható a [nyelvi Testreszabás](localization.md)használatával.
+A **Predikátum** elem alapvető érvényesítést határoz meg a `true` `false`jogcímtípus értékének ellenőrzésére, és a visszáru vagy a . Az ellenőrzés egy meghatározott **Metódus** elem és a metódushoz tartozó **paraméterelemek** készletének használatával történik. Egy predikátum például ellenőrizheti, hogy egy karakterlánc jogcímértékének hossza a megadott minimális és maximális paraméterek tartományán belül van-e, vagy hogy egy karakterlánc-jogcímérték tartalmaz-e karakterkészletet. A **UserHelpText** elem hibaüzenetet ad a felhasználóknak, ha az ellenőrzés sikertelen. A **UserHelpText** elem értéke honosítható a [nyelvi testreszabással.](localization.md)
 
-A **predikátumok** elemnek közvetlenül a [BuildingBlocks](buildingblocks.md) elem **ClaimsSchema** eleme után kell megjelennie.
+A **Predicates** elemnek közvetlenül a [BuildingBlocks](buildingblocks.md) elemBen lévő **ClaimsSchema** elemet követve kell megjelennie.
 
-A **predikátumok** elem a következő elemet tartalmazza:
+A **Predicates** elem a következő elemet tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Predikátum | 1: n | Predikátumok listája. |
+| Predikátum | 1:n | Egy lista a predikátumokról. |
 
-A **predikátum** elem a következő attribútumokat tartalmazza:
+A **predikátumelem** a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | A predikátumhoz használt azonosító. Más elemek is használhatják ezt az azonosítót a szabályzatban. |
-| Módszer | Igen | Az érvényesítéshez használandó metódus típusa Lehetséges értékek: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**vagy **IsDateRange**. A **IsLengthRange** érték ellenőrzi, hogy a karakterlánc-jogcím értéke a megadott minimális és maximális paraméterek tartományán belül van-e. A **MatchesRegex** érték ellenőrzi, hogy egy karakterlánc-jogcím értéke megfelel-e egy reguláris kifejezésnek. A **IncludesCharacters** érték ellenőrzi, hogy egy karakterlánc-jogcím értéke tartalmazza-e a karakterkészletet. A **IsDateRange** érték ellenőrzi, hogy a Date jogcím értéke a megadott minimális és maximális paraméterek közé esik-e. |
-| HelpText | Nem | Hibaüzenet a felhasználók számára, ha az ellenőrzés sikertelen. Ez a karakterlánc honosítható a [nyelvi Testreszabás](localization.md) használatával |
+| Azonosító | Igen | Az állítmányhoz használt azonosító. Más elemek is használhatják ezt az azonosítót a házirendben. |
+| Módszer | Igen | Az ellenőrzéshez használandó metódustípus. Lehetséges értékek: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**vagy **IsDateRange**. Az **IsLengthRange** érték azt ellenőrzi, hogy a karakterlánc-jogcímérték hossza a megadott minimális és maximális paraméterek tartományán belül van-e. A **MatchesRegex** érték azt ellenőrzi, hogy egy karakterlánc-jogcímértéke megegyezik-e egy reguláris kifejezéssel. A **IncludesCharacters** érték ellenőrzi, hogy a karakterlánc jogcímértéke tartalmaz-e karakterkészletet. Az **IsDateRange** érték ellenőrzi, hogy a dátumjogcímértéke a megadott minimális és maximális paramétertartomány között van-e. |
+| HelpText | Nem | Hibaüzenet a felhasználók számára, ha az ellenőrzés sikertelen. Ez a karakterlánc a [nyelvi testreszabással](localization.md) honosítható |
 
 A **predikátum** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| UserHelpText | 0:1 | Elavult Hibaüzenet a felhasználók számára, ha az ellenőrzés sikertelen. |
-| Paraméterek | 1:1 | A karakterlánc-érvényesítési metódus típusának paraméterei |
+| UserHelpText | 0:1 | (Elavult) Hibaüzenet a felhasználók számára, ha az ellenőrzés sikertelen. |
+| Paraméterek | 1:1 | A karakterlánc-érvényesítés metódustípusának paraméterei. |
 
-A **Parameters (paraméterek** ) elem a következő elemeket tartalmazza:
+A **Paraméterek** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Paraméter | 1: n | A karakterlánc-érvényesítési metódus típusának paraméterei |
+| Paraméter | 1:n | A karakterlánc-érvényesítés metódustípusának paraméterei. |
 
-A **paraméter** elem a következő attribútumokat tartalmazza:
+A **Paraméter** elem a következő attribútumokat tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Azonosító | 1:1 | A paraméter azonosítója. |
 
-Az alábbi példa egy `IsLengthRange` metódust mutat be a `Minimum` és `Maximum` paraméterekkel, amelyek meghatározzák a karakterlánc hosszának tartományát:
+A következő példa `IsLengthRange` egy olyan `Minimum` metódust mutat be, amely tartalmazza a paramétereket, és `Maximum` amely megadja a karakterlánc hossztartományát:
 
 ```XML
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -78,7 +78,7 @@ Az alábbi példa egy `IsLengthRange` metódust mutat be a `Minimum` és `Maximu
 </Predicate>
 ```
 
-Az alábbi példa egy `MatchesRegex` metódust mutat be a `RegularExpression` paraméterrel, amely a reguláris kifejezést adja meg:
+A következő példa `MatchesRegex` egy olyan `RegularExpression` metódust mutat be, amelynek paramétere reguláris kifejezést ad meg:
 
 ```XML
 <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
@@ -88,7 +88,7 @@ Az alábbi példa egy `MatchesRegex` metódust mutat be a `RegularExpression` pa
 </Predicate>
 ```
 
-Az alábbi példa egy `IncludesCharacters` metódust mutat be a `CharacterSet` paraméterrel, amely megadja a karakterek készletét:
+A következő példa `IncludesCharacters` egy olyan `CharacterSet` metódust mutat be, amely nek nincs meg a karakterkészlete:
 
 ```XML
 <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
@@ -98,7 +98,7 @@ Az alábbi példa egy `IncludesCharacters` metódust mutat be a `CharacterSet` p
 </Predicate>
 ```
 
-Az alábbi példa egy `IsDateRange` metódust mutat be a `Minimum` és a `Maximum` paraméterekkel, amelyek a dátumtartományt `yyyy-MM-dd` és `Today`formátumával határozzák meg.
+A következő példa `IsDateRange` egy paraméteres `Minimum` `Maximum` módszert mutat be, amely `yyyy-MM-dd` a `Today`dátumtartományt adja meg a és a formátumával.
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -109,11 +109,11 @@ Az alábbi példa egy `IsDateRange` metódust mutat be a `Minimum` és a `Maximu
 </Predicate>
 ```
 
-## <a name="predicatevalidations"></a>PredicateValidations
+## <a name="predicatevalidations"></a>Predikátumérvényesítések
 
-Míg a predikátumok határozzák meg a jogcím típusának ellenőrzéséhez szükséges érvényesítést, a **PredicateValidations** csoport olyan predikátumok halmazát adja meg, amelyek a jogcím típusára alkalmazható felhasználói bemeneti érvényesítést hoznak létre. Minden **PredicateValidation** elem olyan **PredicateGroup** -elemeket tartalmaz, amelyek egy **predikátumra**mutató **PredicateReference** elemek készletét tartalmazzák. Az ellenőrzés elvégzéséhez a jogcím értékének át kell haladnia a **PredicateGroup** összes olyan tesztjét, amely az összes **PredicateReference** -elemet tartalmazza.
+Míg a predikátumok határozzák meg az érvényesítést, hogy ellenőrizze egy jogcímtípussal szemben, a **PredicateValidations** egy sor predikátumcsoportot csoportosít, hogy felhasználói bevitel-érvényesítést hozzon létre, amely alkalmazható egy jogcímtípusra. Minden **predikátumérvényesítési** elem **predikátumcsoportelemeket** tartalmaz, amelyek **predikátumra** mutató predikátumra mutató predikátumra mutató predikátum-elemeket tartalmaznak. **Predicate** Az érvényesítéshez a jogcím értékének át kell mennie az összes **predikátumcsoport** összes állítmánytesztjén a **PredicateReference** elemek készletével.
 
-A **PredicateValidations** elemnek közvetlenül kell szerepelnie a **predikátumok** elemnél a [BuildingBlocks](buildingblocks.md) elemen belül.
+A **PredicateValidations** elemnek közvetlenül a [BuildingBlocks](buildingblocks.md) elem **Predicates** elemét követve kell megjelennie.
 
 ```XML
 <PredicateValidations>
@@ -137,70 +137,70 @@ A **PredicateValidations** elem a következő elemet tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| PredicateValidation | 1: n | A predikátum érvényesítésének listája. |
+| Predikátumérvényesítés | 1:n | Az alapigazolások listája. |
 
 A **PredicateValidation** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | A predikátum érvényesítéséhez használt azonosító. A **claimType** elem a szabályzatban használhatja ezt az azonosítót. |
+| Azonosító | Igen | Az alapadat-érvényesítéshez használt azonosító. A **ClaimType** elem használhatja ezt az azonosítót a házirendben. |
 
 A **PredicateValidation** elem a következő elemet tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| PredicateGroups | 1: n | Predikátum-csoportok listája. |
+| Predikátumcsoportok | 1:n | Predikátumcsoportok listája. |
 
 A **PredicateGroups** elem a következő elemet tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| PredicateGroup | 1: n | Predikátumok listája. |
+| Predikátumcsoport | 1:n | Egy lista a predikátumokról. |
 
 A **PredicateGroup** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | A predikátum-csoporthoz használt azonosító.  |
+| Azonosító | Igen | A predikátumcsoporthoz használt azonosító.  |
 
 A **PredicateGroup** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| UserHelpText | 0:1 |  A predikátum leírása, amely hasznos lehet a felhasználók számára, hogy tudják, milyen értékeket kell beírniuk. |
-| PredicateReferences | 1: n | A predikátumokra vonatkozó hivatkozások listája. |
+| UserHelpText | 0:1 |  A predikátum leírása, amely hasznos lehet a felhasználók számára, hogy tudják, milyen értéket kell beírniuk. |
+| Predikátumreferenciák | 1:n | Az alapreferenciák listája. |
 
 A **PredicateReferences** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| MatchAtLeast | Nem | Megadja, hogy az értéknek meg kell egyeznie legalább annyi predikátum-definícióval, amelyet a bemenet elfogad. Ha nincs megadva, az értéknek meg kell egyeznie az összes predikátum-definícióval. |
+| MatchatLeast között | Nem | Itt adható meg, hogy az értéknek legalább ennyi predikátumdefinícióval meg kell egyeznie a bemenet elfogadásához. Ha nincs megadva, az értéknek meg kell egyeznie az összes predikátumdefinícióval. |
 
 A **PredicateReferences** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| PredicateReference | 1: n | Egy predikátumra mutató hivatkozás. |
+| Predikátumhivatkozás | 1:n | Egy predikátumra való utalás. |
 
 A **PredicateReference** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | A predikátum érvényesítéséhez használt azonosító.  |
+| Azonosító | Igen | Az alapadat-érvényesítéshez használt azonosító.  |
 
 
-## <a name="configure-password-complexity"></a>Jelszó bonyolultságának konfigurálása
+## <a name="configure-password-complexity"></a>Jelszó összetettségének konfigurálása
 
-A **predikátumok** és a **PredicateValidationsInput** segítségével szabályozhatja a felhasználók által a fiók létrehozásakor biztosított jelszavak összetettségi követelményeit. Alapértelmezés szerint a Azure AD B2C erős jelszavakat használ. A Azure AD B2C az ügyfelek által használható jelszavak bonyolultságának szabályozásához is támogatja a konfigurációs beállításokat. A jelszó bonyolultságát a következő predikátum-elemek használatával határozhatja meg:
+A **Predicates** és **predicateValidationsInput** szabályozhatja a felhasználó által megadott jelszavak összetettségi követelményeit a fiók létrehozásakor. Alapértelmezés szerint az Azure AD B2C erős jelszavakat használ. Az Azure AD B2C is támogatja a konfigurációs beállításokat az ügyfelek által használható jelszavak összetettségének szabályozására. A jelszó összetettségét a következő predikátumelemek kelítheti:
 
-- A `IsLengthRange` metódust használó **IsLengthBetween8And64** ellenőrzi, hogy a jelszónak 8 és 64 karakter közöttinek kell lennie.
-- **Kisbetűs** a `IncludesCharacters` metódus használatával ellenőrzi, hogy a jelszó kisbetűs betűt tartalmaz-e.
-- A `IncludesCharacters` metódust használó **nagybetűkkel** ellenőrzi, hogy a jelszó nagybetűt tartalmaz-e.
-- A `IncludesCharacters` metódust használó **szám** azt ellenőrzi, hogy a jelszó tartalmaz-e számjegyet.
-- **Szimbólum** a `IncludesCharacters` metódus használatával ellenőrzi, hogy a jelszó tartalmaz-e több szimbólumot.
-- **PIN-kód** a `MatchesRegex` metódus használatával ellenőrzi, hogy a jelszó csak számokat tartalmaz-e.
-- A `MatchesRegex` metódust használó **AllowedAADCharacters** ellenőrzi, hogy a jelszó csak érvénytelen karaktert adott-e meg.
-- A `MatchesRegex` metódust használó **DisallowedWhitespace** ellenőrzi, hogy a jelszó nem kezdődhet vagy végződhet szóköz karakterrel.
+- **IsLengthBetween8And64** a `IsLengthRange` metódus használatával ellenőrzi, hogy a jelszó nak 8 és 64 karakter között kell lennie.
+- A `IncludesCharacters` **kisbetűs** módszerrel ellenőrzi, hogy a jelszó kisbetűt tartalmaz-e.
+- A `IncludesCharacters` **nagybetűs** módszerrel ellenőrzi, hogy a jelszó nagybetűt tartalmaz-e.
+- **Szám** a `IncludesCharacters` módszerrel, ellenőrzi, hogy a jelszó tartalmaz-e számjegyet.
+- **A** szimbólum `IncludesCharacters` a módszerrel ellenőrzi, hogy a jelszó tartalmazza-e a több szimbólumkarakter egyikét.
+- **PIN-kód** a `MatchesRegex` módszerrel, ellenőrzi, hogy a jelszó csak számokat tartalmaz-e.
+- **AllowedAADCharacter** a `MatchesRegex` metódust, ellenőrzi, hogy a jelszó csak érvénytelen karakter tadta meg.
+- **DisallowedWhitespace** a `MatchesRegex` metódus használatával, ellenőrzi, hogy a jelszó nem kezdődik, vagy végződik egy szóköz karaktert.
 
 ```XML
 <Predicates>
@@ -254,11 +254,11 @@ A **predikátumok** és a **PredicateValidationsInput** segítségével szabály
   </Predicate>
 ```
 
-Az alapszintű érvényesítések meghatározása után összekapcsolhatja őket, és létrehozhat egy olyan jelszóházirend-készletet, amelyet használhat a szabályzatban:
+Miután definiálta az alapvető érvényesítéseket, kombinálhatja őket, és létrehozhat egy jelszóházirend-készletet, amelyet a házirendben használhat:
 
-- A **SimplePassword** ellenőrzi a DisallowedWhitespace, a AllowedAADCharacters és a IsLengthBetween8And64
-- A **StrongPassword** érvényesíti a DisallowedWhitespace, a AllowedAADCharacters és a IsLengthBetween8And64. Az utolsó csoport `CharacterClasses` egy további predikátumot futtat, és a `MatchAtLeast` beállítás értéke 3. A felhasználói jelszónak 8 és 16 karakter közöttinek kell lennie, és a következő karakterek közül hármat kell megadnia: kisbetűs, nagybetűs, szám vagy szimbólum.
-- A **CustomPassword** csak a DisallowedWhitespace, a AllowedAADCharacters érvényesíti. Így a felhasználó bármilyen hosszúságú jelszót biztosíthat, feltéve, hogy a karakterek érvényesek.
+- **A SimplePassword** ellenőrzi a DisallowedWhitespace, Az AllowedAADCharacters és az IsLengthBetween8And64 karaktereket.
+- **A StrongPassword** ellenőrzi a DisallowedWhitespace, AllowedAADCharacters, IsLengthBetween8And64. Az utolsó `CharacterClasses` csoport egy további predikátumkészletet futtat 3-as beállítással. `MatchAtLeast` A felhasználói jelszónak 8 és 16 karakter között kell lennie, és három karakternek kell lennie: Kisbetű, Nagybetű, Szám vagy Szimbólum.
+- **CustomPassword** érvényesíti csak DisallowedWhitespace, AllowedAADCharacters. Tehát a felhasználó bármilyen jelszót megadhat bármilyen hosszúságú, amíg a karakterek érvényesek.
 
 ```XML
 <PredicateValidations>
@@ -328,7 +328,7 @@ Az alapszintű érvényesítések meghatározása után összekapcsolhatja őket
 </PredicateValidations>
 ```
 
-A jogcím típusa mezőben adja hozzá az **PredicateValidationReference** elemet, és adja meg az azonosítót az predikátumok egyikének (például SimplePassword, StrongPassword vagy CustomPassword).
+A jogcím típusában adja hozzá a **PredicateValidationReference** elemet, és adja meg az azonosítót az egyik predikátumérvényesítésként, például SimplePassword, StrongPassword vagy CustomPassword.
 
 ```XML
 <ClaimType Id="password">
@@ -341,13 +341,13 @@ A jogcím típusa mezőben adja hozzá az **PredicateValidationReference** eleme
 </ClaimType>
 ```
 
-Az alábbi ábrán látható, hogy az elemek hogyan vannak rendszerezve, amikor Azure AD B2C megjeleníti a hibaüzenetet:
+Az alábbiakban bemutatjuk, hogyan vannak rendszerezve az elemek, amikor az Azure AD B2C megjeleníti a hibaüzenetet:
 
-![A predikátum és a PredicateGroup-jelszó bonyolultsági példájának ábrája](./media/predicates/predicates-pass.png)
+![Példa predikátum és predikátumdiagramCsoport jelszó összetettségére](./media/predicates/predicates-pass.png)
 
 ## <a name="configure-a-date-range"></a>Dátumtartomány konfigurálása
 
-A **predikátumok** és a **PredicateValidations** elemek segítségével a **UserInputType** minimális és maximális értékeit a `DateTimeDropdown`használatával szabályozhatja. Ehhez hozzon létre egy **predikátumot** a `IsDateRange` metódussal, és adja meg a minimális és a maximális paramétereket.
+A **Predicates** és **predicateValidations** elemekkel a **UserInputType** minimális és maximális `DateTimeDropdown`dátumértékeit a használatával szabályozhatja. Ehhez hozzon létre egy **predikátuma** a `IsDateRange` módszerrel, és adja meg a minimális és maximális paramétereket.
 
 ```XML
 <Predicates>
@@ -360,7 +360,7 @@ A **predikátumok** és a **PredicateValidations** elemek segítségével a **Us
 </Predicates>
 ```
 
-Adjon hozzá egy **PredicateValidation** a `DateRange` predikátumra mutató hivatkozással.
+Adjon hozzá egy **predikátumérvényesítést** a `DateRange` predikátumra való hivatkozással.
 
 ```XML
 <PredicateValidations>
@@ -376,7 +376,7 @@ Adjon hozzá egy **PredicateValidation** a `DateRange` predikátumra mutató hiv
 </PredicateValidations>
 ```
 
-A jogcím típusa mezőben adja hozzá az **PredicateValidationReference** elemet, és adja meg az azonosítót `CustomDateRange`ként.
+A jogcím típusában adja hozzá a PredicateValidationReference elemet, és adja meg az azonosítót a ( **predateValidationReference)** elemként, és adja meg az azonosítót. `CustomDateRange`
 
 ```XML
 <ClaimType Id="dateOfBirth">

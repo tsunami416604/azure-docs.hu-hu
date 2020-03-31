@@ -15,6 +15,8 @@
       href: web-query-data.md
 - name: Oktatóanyagok
   items:
+    - name: Lekérdezések írása
+      href: write-queries.md
     - name: Végpontok közötti programozott blobbetöltés
       items:
         - name: 'C#'
@@ -32,14 +34,22 @@
         - name: Az adatbetöltés áttekintése
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+        - name: Adatbetöltési tulajdonságok
+          href: ingestion-properties.md
+        - name: Adatbetöltési formátumok
+          href: ingestion-supported-formats.md
     - name: Kusto Query Language
       items:
         - name: Gyorsútmutató
           href: kql-quick-reference.md
     - name: Az adatmegjelenítés áttekintése
       href: viz-overview.md
-    - name: Biztonsági áttekintés
-      href: security.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági áttekintés
+          href: security.md
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
 - name: Útmutatók
   items:
     - name: Fürt és adatbázis létrehozása
@@ -60,6 +70,8 @@
           href: ingest-data-one-click.md
         - name: Streamek feldolgozása
           href: ingest-data-streaming.md
+        - name: A LightIngest használata
+          href: lightingest.md
         - name: Eseményközpont
           items:
             - name: Azure Portal
@@ -106,8 +118,6 @@
           href: ingest-json-formats.md
     - name: Adatok lekérdezése
       items:
-        - name: Lekérdezések írása
-          href: write-queries.md
         - name: Adatok lekérdezése az Azure Data Lake-ben
           href: data-lake-query-data.md
         - name: Adatok lekérdezése az Azure Monitorban
@@ -158,12 +168,22 @@
           href: k2bridge.md
     - name: Biztonságos
       items:
+        - name: Hálózatelkülönítés (virtuális hálózat)
+          items:
+            - name: Fürt létrehozása a virtuális hálózaton – portál
+              href: vnet-create-cluster-portal.md
+            - name: Fürt üzembe helyezése virtuális hálózaton
+              href: vnet-deployment.md
+            - name: 'Virtuális hálózati fürtlétrehozás, -kapcsolatok és -üzemeltetés hibaelhárítása'
+              href: vnet-deploy-troubleshoot.md
         - name: Fürtbiztonság kezelése
           href: manage-cluster-security.md
         - name: Felügyelt identitások konfigurálása
           href: managed-identities.md
         - name: Ügyfél által felügyelt kulcsok konfigurálása
           items:
+            - name: Portál
+              href: customer-managed-keys-portal.md
             - name: 'C#'
               href: customer-managed-keys-csharp.md
             - name: Azure Resource Manager-sablon
@@ -214,10 +234,6 @@
               href: delete-data.md
             - name: A duplikált adatok kezelése
               href: dealing-with-duplicates.md
-    - name: Üzembe helyezés
-      items:
-        - name: Fürt üzembe helyezése virtuális hálózaton
-          href: vnet-deployment.md
     - name: Figyelés
       items:
         - name: Diagnosztikai naplók használata a betöltés monitorozásához
@@ -236,6 +252,12 @@
               href: data-factory-template.md
             - name: Vezérlési parancsok futtatása az Azure Data Factoryvel
               href: data-factory-command-activity.md
+        - name: Microsoft Flow-összekötő
+          items:
+            - name: Microsoft Flow-összekötő
+              href: flow.md
+            - name: Microsoft Flow-összekötő – használati példák
+              href: flow-usage.md
         - name: Apache Spark-összekötő
           href: spark-connector.md
         - name: Csatlakozás Databricksből Python használatával

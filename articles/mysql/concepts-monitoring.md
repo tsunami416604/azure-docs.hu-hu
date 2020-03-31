@@ -1,81 +1,81 @@
 ---
-title: Figyelés – Azure Database for MySQL
-description: Ez a cikk a Azure Database for MySQL figyelésére és riasztására vonatkozó mérőszámokat ismerteti, beleértve a CPU-t, a tárolást és a kapcsolatok statisztikáit.
+title: Figyelés - Azure-adatbázis a MySQL-hez
+description: Ez a cikk ismerteti a metrikák az Azure Database for MySQL, beleértve a CPU, a tárolás és a kapcsolat statisztikák metrikák.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: e9ae19e503b6b54e881af3c6477f77ffa1c930b0
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.date: 3/18/2020
+ms.openlocfilehash: 2de04bbb1523151ac566b78bf99eba34c437fccd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252614"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537091"
 ---
-# <a name="monitoring-in-azure-database-for-mysql"></a>Figyelés Azure Database for MySQL
-A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. A Azure Database for MySQL különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a kiszolgáló működésére.
+# <a name="monitoring-in-azure-database-for-mysql"></a>Figyelés a MySQL Azure-adatbázisában
+A kiszolgálók adatainak figyelése segít a számítási feladatok hibaelhárításával és optimalizálásával. Az Azure Database for MySQL különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a kiszolgáló viselkedésébe.
 
 ## <a name="metrics"></a>Mérőszámok
-Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30 napos előzményt biztosít. A mérőszámokra vonatkozó riasztásokat is beállíthat. Részletes útmutatást a [riasztások beállítása](howto-alert-on-metric.md)című témakörben talál. Az egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések végrehajtása és az archiválási előzmények. További információt az [Azure mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)című témakörben talál.
+Minden Azure-metrikák egy perces gyakorisággal rendelkezik, és minden metrika 30 nap az előzmények. Riasztások konfigurálhatók a metrikák. A részletes útmutatásról a [Riasztások beállítása témakörben talál.](howto-alert-on-metric.md) Egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések végrehajtása és az előzmények archiválása. További információt az [Azure Metrics áttekintése című témakörben talál.](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 
-### <a name="list-of-metrics"></a>Metrikák listája
-Ezek a metrikák a Azure Database for MySQL számára érhetők el:
+### <a name="list-of-metrics"></a>Mérőszámok listája
+Ezek a mérőszámok a MySQL-hez készült Azure Database számára érhetők el:
 
-|Metrika|Metrika megjelenített neve|Unit (Egység)|Leírás|
+|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Leírás|
 |---|---|---|---|
-|cpu_percent|CPU-százalék|Százalék|A használatban lévő CPU százalékos aránya.|
-|memory_percent|Memória százaléka|Százalék|A használatban lévő memória százalékos aránya.|
-|io_consumption_percent|IO-százalék|Százalék|A használatban lévő IO százalékos aránya.|
-|storage_percent|Tárolási százalék|Százalék|A kiszolgáló maximális száma által felhasznált tárterület százalékos aránya.|
-|storage_used|Felhasznált tárterület|Bájt|A használatban lévő tárterület mennyisége. A szolgáltatás által használt tárterület magában foglalhatja az adatbázisfájlok, a tranzakciós naplók és a kiszolgáló naplófájljait is.|
-|serverlog_storage_percent|Kiszolgáló naplójának tárolási százaléka|Százalék|A kiszolgáló naplófájl-tárolási helyének maximális tárterületének százalékos értéke.|
-|serverlog_storage_usage|Kiszolgáló naplójának tárolója|Bájt|A kiszolgáló által használt log-tároló mennyisége.|
-|serverlog_storage_limit|Kiszolgáló naplójának tárolási korlátja|Bájt|A kiszolgáló maximális kiszolgálói naplózási tárterülete.|
-|storage_limit|Tárolási korlát|Bájt|A kiszolgáló maximális tárterülete.|
+|cpu_percent|PROCESSZOR százalék|Százalék|A használt processzor százalékos aránya.|
+|memory_percent|Memória százaléka|Százalék|A használt memória százalékos aránya.|
+|io_consumption_percent|IO százalék|Százalék|A használatban lévő io százaléka.|
+|storage_percent|Tárolási százalék|Százalék|A kiszolgáló maximális tárhelyén kívüli tárhely százalékos aránya.|
+|storage_used|Használt tároló|Bájt|A használatban lévő tárhely mennyisége. A szolgáltatás által használt tároló tartalmazhat adatbázisfájlokat, tranzakciónaplókat és kiszolgálónaplókat.|
+|serverlog_storage_percent|Kiszolgálói napló tárolási százaléka|Százalék|A kiszolgáló naplótárolójának a kiszolgáló maximális tárolójából felhasznált százalékos aránya.|
+|serverlog_storage_usage|Használt kiszolgálónapló-tároló|Bájt|A használt kiszolgálói naplótároló mennyisége.|
+|serverlog_storage_limit|Kiszolgálónapló tárolási korlátja|Bájt|A kiszolgáló naplójának maximális tárolója.|
+|storage_limit|Tárolási korlát|Bájt|A kiszolgáló maximális tárhelye.|
 |active_connections|Aktív kapcsolatok|Darabszám|A kiszolgálóval létesített aktív kapcsolatok száma.|
-|connections_failed|Sikertelen kapcsolatok|Darabszám|A kiszolgálóhoz való sikertelen kapcsolódások száma.|
-|seconds_behind_master|Replikálás késése másodpercben|Darabszám|Azon másodpercek száma, ameddig a replika kiszolgáló lemarad a főkiszolgálón.|
-|network_bytes_egress|Kimenő hálózat|Bájt|A hálózat aktív kapcsolatokon keresztül.|
-|network_bytes_ingress|Bejövő hálózat|Bájt|A hálózat aktív kapcsolatokon keresztül.|
-|backup_storage_used|Felhasznált biztonsági mentési tár|Bájt|A felhasznált biztonsági mentési tár mennyisége.|
+|connections_failed|Sikertelen kapcsolatok|Darabszám|A kiszolgálóval létesített sikertelen kapcsolatok száma.|
+|seconds_behind_master|Replikációs késleltetés másodpercben|Darabszám|A replikakiszolgáló által a főkiszolgálóval szemben idorban elmaradt másodpercek száma.|
+|network_bytes_egress|Kimenő hálózat|Bájt|Hálózat kikapcsolása az aktív kapcsolatok között.|
+|network_bytes_ingress|Bejövő hálózat|Bájt|Hálózati kapcsolat az aktív kapcsolatok között.|
+|backup_storage_used|Használt biztonsági másolat tárolása|Bájt|A felhasznált biztonsági mentési tárterület mennyisége.|
 
 ## <a name="server-logs"></a>Kiszolgálói naplók
-Engedélyezheti a lassú lekérdezést és a naplózást a kiszolgálón. Ezek a naplók Azure Monitor naplók, Event Hubs és Storage-fiók Azure diagnosztikai naplóiban is elérhetők. Ha többet szeretne megtudni a naplózásról, látogasson el a [naplók](concepts-audit-logs.md) és a [lassú lekérdezések naplóinak](concepts-server-logs.md) cikkeibe.
+A kiszolgálón engedélyezheti a lassú lekérdezést és a naplózást. Ezek a naplók az Azure diagnosztikai naplók az Azure Monitor naplók, Event Hubs és a storage-fiók keresztül is elérhetők. Ha többet szeretne megtudni a naplózásról, látogasson el a [naplónaplókba](concepts-audit-logs.md) és a [lassú lekérdezési](concepts-server-logs.md) naplókcikkekbe.
 
 ## <a name="query-store"></a>Lekérdezéstár
-A [lekérdezési tároló](concepts-query-store.md) egy olyan szolgáltatás, amely nyomon követi a lekérdezési teljesítményt az idő múlásával, beleértve a lekérdezési futtatókörnyezet statisztikáit és a várakozási eseményeket. A szolgáltatás megtartja a lekérdezés futásidejű teljesítményére vonatkozó információkat a **MySQL** -sémában. Az adatgyűjtést és-tárolást különböző konfigurációs gombokon keresztül szabályozhatja.
+[A Query Store](concepts-query-store.md) olyan szolgáltatás, amely nyomon követi a lekérdezés teljesítményét az idő múlásával, beleértve a lekérdezésfutási statisztikákat és a várakozási eseményeket. A szolgáltatás megőrzi a lekérdezés futásidejű teljesítményadatait a **mysql** sémában. Az adatok gyűjtését és tárolását különböző konfigurációs gombokon keresztül szabályozhatja.
 
 ## <a name="query-performance-insight"></a>Lekérdezési terheléselemző
-A [lekérdezési terheléselemző](concepts-query-performance-insight.md) a lekérdezési tárolóval együtt a Azure Portal elérhető vizualizációk biztosítására is használható. Ezek a diagramok lehetővé teszik a teljesítményre gyakorolt legfontosabb lekérdezések azonosítását. A Lekérdezési terheléselemző a Azure Database for MySQL-kiszolgáló portál lapjának **intelligens teljesítmény** szakaszában érhető el.
+[A Query Performance Insight](concepts-query-performance-insight.md) a Query Store-ral együttműködve biztosítja az Azure Portalról elérhető vizualizációkat. Ezek a diagramok lehetővé teszik a teljesítményt befolyásoló kulcsfontosságú lekérdezések azonosítását. A Lekérdezési teljesítmény insight érhető el az Azure Database for MySQL-kiszolgáló portállapjának **Intelligens teljesítmény** szakaszában.
 
 ## <a name="performance-recommendations"></a>Teljesítménnyel kapcsolatos javaslatok
-A [teljesítményre vonatkozó javaslatok](concepts-performance-recommendations.md) funkció a munkaterhelés teljesítményének növelésére szolgáló lehetőségeket azonosítja. A teljesítménnyel kapcsolatos javaslatok olyan új indexek létrehozásához nyújtanak javaslatokat, amelyek képesek a számítási feladatok teljesítményének javítására. Az indexelési javaslatok előállításához a funkció figyelembe veszi a különböző adatbázis-jellemzőket, beleértve annak sémáját és a lekérdezési tároló által jelentett munkaterhelést. A teljesítményre vonatkozó javaslat bevezetését követően az ügyfeleknek tesztelni kell a teljesítményt a változások hatásának kiértékeléséhez.
+A [Teljesítményjavaslatok](concepts-performance-recommendations.md) funkció azonosítja a számítási feladatok teljesítményének javítására szolgáló lehetőségeket. A teljesítményjavaslatok javaslatokat tartalmaznak olyan új indexek létrehozására, amelyek javíthatják a számítási feladatok teljesítményét. Indexjavaslatok létrehozásához a szolgáltatás figyelembe veszi a különböző adatbázis-jellemzőket, beleértve a sémát és a Query Store által jelentett munkaterhelést. Bármely teljesítményajánlás végrehajtása után az ügyfeleknek tesztelniük kell a teljesítményt, hogy értékeljék a változások hatását.
 
 ## <a name="planned-maintenance-notification"></a>Tervezett karbantartási értesítés
 
-A **tervezett karbantartási értesítések** lehetővé teszik, hogy riasztásokat kapjon a Azure Database for MySQL közelgő tervezett karbantartásáról. Ezek az értesítések a [Service Health](../service-health/overview.md) tervezett karbantartásával vannak integrálva, és lehetővé teszik az előfizetések összes ütemezett karbantartásának megtekintését egy helyen. Emellett segít az értesítések méretezésében a megfelelő célközönségek számára a különböző erőforráscsoportok esetében, mivel előfordulhat, hogy a különböző kapcsolattartók különböző erőforrásokért felelősek. A közelgő karbantartási 72 órával az esemény előtt értesítést fog kapni.
+**A tervezett karbantartási értesítések** lehetővé teszik, hogy értesítéseket kapjon a közelgő tervezett karbantartásról az Azure Database for MySQL-ben. Ezek az értesítések integrálva vannak a Service Health tervezett [karbantartásával,](../service-health/overview.md) és lehetővé teszik, hogy az előfizetések összes ütemezett karbantartását egy helyen tekintse meg. Emellett segít a különböző erőforráscsoportok megfelelő közönségének értesítésének méretezése, mivel előfordulhat, hogy különböző kapcsolattartók felelősek a különböző erőforrásokért. Az esemény előtt 72 órával értesítést kap a közelgő karbantartásról.
 
 > [!Note]
-> Minden eseményről minden kísérletet megteszünk a **tervezett karbantartási értesítés** 72 óra megadására. A kritikus vagy biztonsági javítások esetében azonban előfordulhat, hogy az értesítések közelebb kerülnek az eseményhez, vagy kimaradnak.
+> Minden kísérletet megteszünk annak **érdekében,** hogy a tervezett karbantartási értesítést 72 órával előre értesítsük az összes eseményről. Kritikus vagy biztonsági javítások esetén azonban előfordulhat, hogy az értesítések közelebb kerülnek az eseményhez, vagy kimaradnak.
 
 ### <a name="to-receive-planned-maintenance-notification"></a>Tervezett karbantartási értesítés fogadása
 
-1. A [portálon](https://portal.azure.com)válassza a **Service Health**lehetőséget.
-2. A **riasztások** szakaszban válassza az **állapot riasztások**lehetőséget.
-3. Válassza a **+ szolgáltatás állapotára vonatkozó riasztás hozzáadása** lehetőséget, és töltse ki a mezőket.
-4. Töltse ki a kötelező mezőket. 
-5. Válassza ki az **esemény típusát**, válassza a **tervezett karbantartás** lehetőséget, vagy **válassza az összes lehetőséget** .
-6. A **műveleti csoportok** azt határozzák meg, hogyan szeretné fogadni a riasztást (e-mail küldése, logikai alkalmazás elindítása stb.)  
-7. Győződjön meg arról, hogy az engedélyezés szabály a létrehozáskor Igen értékre van állítva.
-8. Válassza a riasztási **szabály létrehozása** lehetőséget a riasztás befejezéséhez
+1. A [portálon](https://portal.azure.com)válassza a **Szolgáltatás állapota**lehetőséget.
+2. A **Riasztások csoportban** válassza az **Állapotriasztások lehetőséget.**
+3. Válassza a **+ Szolgáltatásállapot-riasztás hozzáadása** lehetőséget, és töltse ki a mezőket.
+4. Töltse ki a szükséges mezőket. 
+5. Válassza ki az **Esemény típust**, válassza a Tervezett karbantartás lehetőséget, vagy **válassza ki az összeset.** **Planned maintenance**
+6. A **műveletcsoportok** határozzák meg, hogyan szeretné megkapni a riasztást (kap egy e-mailt, kiváltó logikai alkalmazás, stb)  
+7. Győződjön meg arról, hogy a létrehozáskor a szabály engedélyezése beállítás Igen.
+8. A riasztás befejezéséhez válassza a **Figyelmeztetési szabály létrehozása** lehetőséget.
 
-A **szolgáltatás állapotára vonatkozó riasztások**létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications.md).
+A **szolgáltatásállapot-riasztások**létrehozásának részletes lépéseit a [Tevékenységnapló-értesítések létrehozása című](../service-health/alerts-activity-log-service-notifications.md)dokumentum ban tájékformált.
 
 > [!IMPORTANT]
-> A tervezett karbantartási értesítések jelenleg előzetes verzióban érhetők el
+> A tervezett karbantartási értesítések jelenleg előzetes verzióban vannak
 
-## <a name="next-steps"></a>Következő lépések
-- A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-on-metric.md) című témakörben tekintheti meg.
-- A metrikák Azure Portal, REST API vagy parancssori felülettel való eléréséről és exportálásáról további információt az [Azure mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)című témakörben talál.
-- A [kiszolgáló figyelésére vonatkozó ajánlott eljárásokért](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/)olvassa el a blogot.
+## <a name="next-steps"></a>További lépések
+- [Olvassa el a Riasztások beállítása](howto-alert-on-metric.md) útmutatást egy metrika riasztásának létrehozásához.
+- Az Azure Portal, a REST API vagy a CLI használatával a metrikák eléréséről és exportálásáról az [Azure Metrics overview című témakörben olvashat bővebben.](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- Olvassa el blogunkat a [kiszolgáló nyomon követésére vonatkozó bevált gyakorlatokról.](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/)

@@ -1,7 +1,7 @@
 ---
-title: Élő stream-elemzés Video Indexer használatával
+title: Élő közvetítés elemzése a Video Indexer használatával
 titleSuffix: Azure Media Services
-description: Ez a cikk bemutatja, hogyan végezhető élő stream-elemzés a Video Indexer használatával.
+description: Ez a cikk bemutatja, hogyan végezhet élő közvetítés elemzést a Video Indexer használatával.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,36 +11,36 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.openlocfilehash: 89d0254fc758834c437f347e6ecb7bcafc1fe467
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185997"
 ---
-# <a name="live-stream-analysis-with-video-indexer"></a>Élő stream-elemzés Video Indexer
+# <a name="live-stream-analysis-with-video-indexer"></a>Élő közvetítés elemzése a Video Indexerrel
 
-A Azure Media Services Video Indexer egy Azure-szolgáltatás, amely a videó-és hangfájlok kapcsolat nélküli kinyerésére szolgál. Ez egy korábban már létrehozott adott médiafájl elemzése. Bizonyos felhasználási esetekben azonban fontos, hogy az élő hírcsatornából származó adathordozó-megállapítások minél gyorsabbak legyenek az operatív és egyéb használati esetek időben történő megnyomásával. Az élő streamek ilyen gazdag metaadatait például a tartalmi gyártók használhatják a TV-termelés automatizálására.
+Az Azure Media Services videoindexelő egy Azure-szolgáltatás, amelynek célja, hogy kinyerje a mély betekintést a video- és hangfájlok offline. Ez egy adott médiafájl előzetesen létrehozott elemzése. Egyes használati esetekben azonban fontos, hogy a médiaelemzéseket a lehető leggyorsabban beszerezzék egy élő hírfolyamból, hogy időben feloldhassák a működési és egyéb használati eseteket. Az ilyen gazdag metaadatokat például egy élő közvetítésen a tartalomgyártók felhasználhatják a televíziós gyártás automatizálására.
 
-A cikkben ismertetett megoldás lehetővé teszi, hogy az ügyfelek az élő hírcsatornák közel valós idejű határozataiban Video Indexer használják. Az indexelés késése akár négy perc is lehet a megoldás használatával, az indexelt adattömböktől, a bemeneti felbontástól, a tartalom típusától és a folyamathoz használt számítási feladatoktól függően.
+A jelen cikkben ismertetett megoldás lehetővé teszi az ügyfelek számára, hogy a Video Indexer-t közel valós idejű felbontásban használják élő hírcsatornákon. Az indexelés késleltetése akár négy perc is lehet ezzel a megoldással, az indexelt adatok tömbjeitől, a bemeneti felbontástól, a tartalom típusától és a folyamathoz használt számítási alapú teljesítménytől függően.
 
-![Az élő stream Video Indexer metaadatai](./media/live-stream-analysis/live-stream-analysis01.png)
+![A Video Indexer metaadatai az élő közvetítésen](./media/live-stream-analysis/live-stream-analysis01.png)
 
-*1. ábra – a Video Indexer metaadatokat megjelenítő minta lejátszó az élő streamen*
+*1. ábra – Mintalejátszó, amely a Video Indexer metaadatait jeleníti meg az élő közvetítésen*
 
-A [stream Analysis Solution megoldás](https://aka.ms/livestreamanalysis) a Azure functions és két Logic Apps használatával dolgozza fel az élő programot egy élő csatornáról a video Indexer Azure Media Services, és megjeleníti az eredményt a közel valós idejű, eredményül kapott adatfolyamot ábrázoló Azure Media Player.
+Az [aktuális adatfolyam-elemzési megoldás](https://aka.ms/livestreamanalysis) az Azure Functions és két logikai alkalmazás segítségével dolgozza fel az Azure Media Services videoindexerrel élő csatornájából származó élő programot, és megjeleníti az eredményt az Azure Media Player segítségével, amely a közel valós idejű adatfolyamot mutatja.
 
-Magas szinten a két fő lépésből áll. Az első lépés 60 másodpercen belül fut, és az utolsó 60 másodpercből álló alklipet hoz létre, amely létrehoz egy objektumot, és indexeli azt Video Indexer használatával. Ezt követően a második lépést az indexelés befejezése után hívja meg a rendszer. A rendszer feldolgozza a rögzített észleléseket, elküldje Azure Cosmos DB, és az indexelt alklipet is törli.
+Magas szinten két fő lépésből áll. Az első lépés 60 másodpercenként fut, és az utolsó 60 másodperc alklipjét készíti el, létrehoz belőle egy eszközt, és indexeli azt a Video Indexer en keresztül. Ezután a második lépés neve, ha az indexelés befejeződött. A rögzített elemzéseket a rendszer feldolgozza, elküldi az Azure Cosmos DB-nek, és az indexelt részklip törlődik.
 
-A minta lejátszó az élő streamet játssza le, és beolvassa a Azure Cosmos DB, egy dedikált Azure-függvény használatával. Megjeleníti a metaadatokat és a miniatűröket az élő videóval szinkronizálva.
+A mintalejátszó lejátssza az élő közvetítést, és egy dedikált Azure-függvény használatával leveszi az azure Cosmos DB-ből származó elemzéseket. Megjeleníti a metaadatokat és a miniatűröket szinkronban az élő videóval.
 
-![Az élő streamet a felhőben percenként feldolgozó két logikai alkalmazás](./media/live-stream-analysis/live-stream-analysis02.png)
+![Az élő közvetítést percenként feldolgozó két logikai alkalmazás a felhőben](./media/live-stream-analysis/live-stream-analysis02.png)
 
-*2. ábra – a két logikai alkalmazás, amely az élő streamet dolgozza fel percenként a felhőben.*
+*2. ábra – A két logikai alkalmazás, amely az élő közvetítést dolgozza fel percenként a felhőben.*
 
-## <a name="step-by-step-guide"></a>Lépésenkénti útmutató 
+## <a name="step-by-step-guide"></a>Részletes útmutató 
 
-Az eredmények üzembe helyezéséhez szükséges teljes kód és lépésenkénti útmutató a [GitHub Project for Live Media Analytics](https://aka.ms/livestreamanalysis)szolgáltatásban video Indexer használatával érhető el. 
+A teljes kód és az eredmények üzembe helyezéséhez használható részletes útmutató megtalálható a [GitHub-projektben a Video Indexer élő médiaelemzéséhez.](https://aka.ms/livestreamanalysis) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A Video Indexer áttekintése](video-indexer-overview.md)

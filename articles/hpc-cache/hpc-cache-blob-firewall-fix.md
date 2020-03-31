@@ -1,34 +1,34 @@
 ---
-title: A tárolási tűzfal beállításainak használata
-description: A Storage-fiók hálózati tűzfalának beállítása hibát okozhat, ha Azure Blob Storage-tárolót hoz létre az Azure HPC cache szolgáltatásban. Ebben a cikkben megkerülő megoldással megkerülheti a korlátozást, amíg meg nem történik a szoftver javítása.
+title: A tárolási tűzfal beállításainak megkerülése
+description: A tárfiók hálózati tűzfal-beállítása hibát okozhat, amikor azure Blob storage-tárolót hoz létre az Azure HPC-gyorsítótárban. Ez a cikk aszoftveres javítás ig kerülő megoldást nyújt a korlátozásra.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.author: rohogue
 ms.openlocfilehash: 6643662d498db8cbcffcb120a9ceabc46cfc04cb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74174407"
 ---
-# <a name="work-around-blob-storage-account-firewall-settings"></a>A blob Storage-fiók tűzfala beállításainak használata
+# <a name="work-around-blob-storage-account-firewall-settings"></a>A Blob Storage-fiók tűzfalbeállításainak kikerülése
 
-A Storage-fiók tűzfalaban használt bizonyos beállítások miatt a blob Storage-cél létrehozása sikertelen lesz. Az Azure HPC cache csapata a probléma egy szoftveres javításán dolgozik, de a cikk utasításait követve megkerülheti.
+A tárfiók tűzfalaiban használt adott beállítás a Blob storage-tároló létrehozása sikertelenlehet. Az Azure HPC cache csapata dolgozik egy szoftver javítás a probléma, de megoldhatja azt a cikkben található utasításokat követve.
 
-A tűzfal azon beállítása, amely csak a "kiválasztott hálózatokból" engedélyezi a hozzáférést, megakadályozhatja, hogy a gyorsítótár létrehozza a blob Storage-tárolót. Ez a konfiguráció a Storage-fiók **tűzfalak és a virtuális hálózatok** beállítások lapján található.
+A tűzfalbeállítás, amely csak a "kiválasztott hálózatok" hozzáférését teszi lehetővé, megakadályozhatja, hogy a gyorsítótár blobtároló-tárolót hozzon létre. Ez a konfiguráció a tárfiók **tűzfalak és virtuális hálózatok** beállításai lapon található.
 
-A probléma az, hogy a gyorsítótár-szolgáltatás egy olyan rejtett szolgáltatás virtuális hálózatot használ, amely külön az ügyfél-környezettől. Nem lehet explicit módon engedélyezni ezt a hálózatot a Storage-fiók eléréséhez.
+A probléma az, hogy a gyorsítótárszolgáltatás az ügyfélkörnyezetektől különálló rejtett szolgáltatásvirtuális hálózatot használ. Nem lehet explicit módon engedélyezni a hálózatnak a tárfiók elérését.
 
-BLOB Storage-tároló létrehozásakor a gyorsítótár-szolgáltatás ezt a hálózatot használja annak ellenőrzése érdekében, hogy a tároló üres-e. Ha a tűzfal nem engedélyezi a hozzáférést a rejtett hálózatról, az ellenőrzés sikertelen lesz, és a tárolási cél létrehozása sikertelen lesz.
+Blob-tárolócél létrehozásakor a gyorsítótár-szolgáltatás ezt a hálózatot használja annak ellenőrzésére, hogy a tároló üres-e vagy sem. Ha a tűzfal nem engedélyezi a hozzáférést a rejtett hálózatról, az ellenőrzés sikertelen lesz, és a tárolócél létrehozása sikertelen lesz.
 
-A probléma megkerüléséhez átmenetileg módosítsa a tűzfal beállításait a tárolási cél létrehozásakor:
+A probléma kerülő megoldásaként ideiglenesen módosítsa a tűzfal beállításait a tárolócél létrehozása közben:
 
-1. Nyissa meg a Storage-fiók **tűzfalak és virtuális hálózatok** lapját, és módosítsa a "hozzáférés engedélyezése" beállítást **minden hálózatra**.
-1. Hozza létre a blob Storage-tárolót az Azure HPC-gyorsítótárban.
-1. A tárolási cél sikeres létrehozása után módosítsa a fiók tűzfalának beállításait a **kiválasztott hálózatokra**.
+1. Nyissa meg a **Tűzfalak és a virtuális hálózatok lapot,** és módosítsa a "Hozzáférés engedélyezése" beállítást a **Minden hálózatra.**
+1. Hozza létre a Blob storage-tárolót az Azure HPC-gyorsítótárban.
+1. A tárolási cél sikeres létrehozása után módosítsa a fiók tűzfal-beállítását **a Kijelölt hálózatokra.**
 
-Az Azure HPC-gyorsítótár nem használja a szolgáltatás virtuális hálózatát a befejezett tárolási cél eléréséhez.
+Az Azure HPC-gyorsítótár nem használja a szolgáltatás virtuális hálózatot a kész tárolási cél eléréséhez.
 
-A megkerülő megoldással kapcsolatos segítségért [forduljon a Microsoft szolgáltatáshoz és a támogatási](hpc-cache-support-ticket.md)szolgálathoz.
+A megoldással kapcsolatban a [Microsoft szervizelési és támogatási szolgálatától kell segítséget kérni.](hpc-cache-support-ticket.md)

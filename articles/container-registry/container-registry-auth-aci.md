@@ -1,34 +1,34 @@
 ---
-title: Hozzáférés Container Instances
-description: Megtudhatja, hogyan biztosíthat hozzáférést a saját tároló-beállításjegyzékben található lemezképekhez Azure Container Instances egy Azure Active Directory egyszerű szolgáltatásnév használatával.
+title: Hozzáférés tárolópéldányokból
+description: Megtudhatja, hogyan biztosíthat hozzáférést a rendszerképekhez a privát tároló beállításjegyzékében az Azure Container Instances egy Azure Active Directory egyszerű szolgáltatás használatával.
 ms.topic: article
 ms.date: 04/23/2018
 ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456519"
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Hitelesítés Azure Container Registry Azure Container Instances
+# <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Hitelesítés az Azure Container Registry használatával az Azure Container Instances-ből
 
-Az Azure Active Directory (Azure AD) egyszerű szolgáltatásnév használatával hozzáférést biztosíthat a privát tároló-beállításjegyzékhez Azure Container Registryban.
+Az Azure Active Directory (Azure AD) egyszerű szolgáltatás használatával hozzáférést biztosíthat a privát tároló-beállításjegyzékekhez az Azure Container Registry-ben.
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure AD-egyszerű szolgáltatást a beállításjegyzékhez a *lekéréses* engedélyekkel. Ezután indítson el egy Azure Container Instances (ACI) tárolót, amely a saját beállításjegyzékből kéri le a rendszerképet a hitelesítéshez az egyszerű szolgáltatásnév használatával.
+Ebben a cikkben megtudhatja, hogy hozzon létre és konfiguráljon egy Azure AD szolgáltatásnév *lekéréses* engedélyekkel a beállításjegyzékbe. Ezután elindítja a tárolót az Azure Container Instances (ACI), amely lekéri a lemezképet a privát beállításjegyzékből, a szolgáltatásnév a hitelesítéshez.
 
-## <a name="when-to-use-a-service-principal"></a>Mikor kell szolgáltatásnevet használni
+## <a name="when-to-use-a-service-principal"></a>Mikor kell egyszerű szolgáltatást használni?
 
-Az ACI-hoz való hitelesítéshez használjon egy egyszerű szolgáltatásnevet a **fej nélküli forgatókönyvekben**, például olyan alkalmazásokban vagy szolgáltatásokban, amelyek tároló-példányokat hoznak létre automatizált vagy más módon felügyelet nélkül.
+Az ACI egyszerű hitelesítéséhez használjon egyszerű szolgáltatást **fej nélküli forgatókönyvekben,** például olyan alkalmazásokban vagy szolgáltatásokban, amelyek automatikus vagy más módon felügyelet nélküli tárolópéldányokat hoznak létre.
 
-Ha például egy olyan automatizált szkripttel rendelkezik, amely éjjel fut, és egy [feladat-alapú tároló-példányt](../container-instances/container-instances-restart-policy.md) hoz létre egy adott adat feldolgozásához, akkor a csak lekéréses engedélyekkel rendelkező szolgáltatásnév használatával végezheti el a hitelesítést a beállításjegyzékben. Ezután elforgathatja a szolgáltatásnév hitelesítő adatait, vagy teljesen visszavonhatja a hozzáférését anélkül, hogy ez hatással lenne más szolgáltatásokra és alkalmazásokra.
+Ha például egy automatikus parancsfájlfut éjszakánként, és létrehoz egy [feladat-alapú tárolópéldányt](../container-instances/container-instances-restart-policy.md) bizonyos adatok feldolgozásához, akkor használhatja a szolgáltatás névjegyzék bekéréses engedélyekkel. Ezután forgassa el az egyszerű szolgáltatás hitelesítő adatait, vagy teljesen visszavonhatja a hozzáférést anélkül, hogy más szolgáltatásokat és alkalmazásokat érintene.
 
-Az egyszerű szolgáltatásokat akkor is használni kell, ha a beállításjegyzék [rendszergazdai felhasználója](container-registry-authentication.md#admin-account) le van tiltva.
+A szolgáltatásnévi tagokat akkor is használni kell, ha a [beállításjegyzék-rendszergazda felhasználója](container-registry-authentication.md#admin-account) le van tiltva.
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
-## <a name="authenticate-using-the-service-principal"></a>Hitelesítés az egyszerű szolgáltatásnév használatával
+## <a name="authenticate-using-the-service-principal"></a>Hitelesítés az egyszerű szolgáltatás használatával
 
-Ha a tárolót Azure Container Instances egy egyszerű szolgáltatásnév használatával szeretné elindítani, a `--registry-username`hoz tartozó azonosítót és a hozzá tartozó jelszót kell megadnia `--registry-password`hoz.
+Ha egy tárolót szeretne elindítani az Azure Container Instances szolgáltatásegyszerű használatával, adja meg a azonosítóját `--registry-username`és jelszavát. `--registry-password`
 
 ```azurecli-interactive
 az container create \
@@ -42,17 +42,17 @@ az container create \
 
 ## <a name="sample-scripts"></a>Mintaszkriptek
 
-Az előző minta parancsfájlokat az Azure CLI-hez a GitHubon, valamint a Azure PowerShell-verziókhoz is megtalálhatja:
+Az Azure CLI előző mintaparancsfájljait a GitHubon, valamint az Azure PowerShell verzióit is megtalálhatja:
 
 * [Azure CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>További lépések
 
-A következő cikkek további részleteket tartalmaznak az egyszerű szolgáltatások és az ACR használatáról:
+Az alábbi cikkek további részleteket tartalmaznak a szolgáltatástagok és az ACR-ekkel való együttműködésről:
 
 * [Azure Container Registry hitelesítés egyszerű szolgáltatásokkal](container-registry-auth-service-principal.md)
-* [Hitelesítés Azure Container Registry az Azure Kubernetes Service-ből (ak)](../aks/cluster-container-registry-integration.md)
+* [Hitelesítés az Azure Kubernetes-szolgáltatás (AKS) Azure Container Registry szolgáltatásával](../aks/cluster-container-registry-integration.md)
 
 <!-- IMAGES -->
 

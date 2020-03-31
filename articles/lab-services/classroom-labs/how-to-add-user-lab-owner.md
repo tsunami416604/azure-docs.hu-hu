@@ -1,6 +1,6 @@
 ---
-title: További tulajdonosok hozzáadása laborhoz Azure Lab Services
-description: Ebből a cikkből megtudhatja, hogyan adhat hozzá egy felhasználót tulajdonosként egy laborhoz Azure Lab Servicesban.
+title: További tulajdonosok hozzáadása egy laborhoz az Azure Lab Servicesben
+description: Ez a cikk bemutatja, hogyan adhat hozzá egy rendszergazda tulajdonosként egy felhasználót az Azure Lab Services egyik laborjához.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,44 +14,44 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: 9302cadf0b900c9faac382bad86b51cea7d828fb
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77443516"
 ---
-# <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>További tulajdonosok hozzáadása meglévő laborhoz Azure Lab Services
-Ez a cikk bemutatja, hogyan adhat hozzá további tulajdonosokat egy meglévő laborhoz a rendszergazdaként.
+# <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>További tulajdonosok hozzáadása egy meglévő laborhoz az Azure Lab Servicesben
+Ez a cikk bemutatja, hogyan, rendszergazdaként, további tulajdonosok at adhat hozzá egy meglévő tesztkörnyezethez.
 
-## <a name="add-user-to-the-reader-role-for-the-lab-account"></a>Felhasználó hozzáadása az olvasó szerepkörhöz a labor-fiókhoz
-Ha egy felhasználót további tulajdonosként szeretne hozzáadni egy meglévő laborhoz, először meg kell adnia a felhasználó **olvasási** engedélyeit a labor-fiókban.
+## <a name="add-user-to-the-reader-role-for-the-lab-account"></a>Felhasználó hozzáadása a tesztkörnyezet-fiók olvasói szerepköréhez
+Ha egy felhasználót további tulajdonosként szeretne hozzáadni egy meglévő tesztkörnyezethez, először **olvasási** engedélyeket kell adnia a tesztkörnyezet-fiókhoz.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben. Keresse meg a **labor Services**elemet, majd válassza ki.
-3. Válassza ki a **labor-fiókját** a listából. 
-2. A **labor-fiók lapon**válassza a bal oldali menüben a **Access Control (iam)** lehetőséget. 
-2. A **hozzáférés-vezérlés (iam)** lapon válassza a **Hozzáadás** lehetőséget az eszköztáron, majd a **szerepkör-hozzárendelés hozzáadása**elemet.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+2. Válassza a bal oldali menü **Minden szolgáltatás lehetőséget.** Keresse meg a **Lab Services**elemet, majd jelölje ki.
+3. Válassza ki a **laborfiókot** a listából. 
+2. A bal oldali menüben válassza a **Hozzáférés-vezérlés (IAM)** elemet a **Laborfiók lapon.** 
+2. A **Hozzáférés-vezérlés (IAM)** lapon válassza a **Hozzáadás** gombot az eszköztáron, majd a **Szerepkör-hozzárendelés hozzáadása**lehetőséget.
 
-    ![A labor-fiók szerepkör-hozzárendelése ](../media/how-to-add-user-lab-owner/lab-account-access-control-page.png)
-3. A **szerepkör-hozzárendelés hozzáadása** oldalon hajtsa végre a következő lépéseket: 
-    1. Válassza ki a **szerepkör** **olvasóját** . 
+    ![Szerepkör-hozzárendelés a laborfiókhoz ](../media/how-to-add-user-lab-owner/lab-account-access-control-page.png)
+3. A **Szerepkör-hozzárendelés hozzáadása** lapon tegye a következő lépéseket: 
+    1. Válassza az **Olvasó** lehetőséget a **szerepkörhöz.** 
     2. Válassza ki a felhasználót. 
     3. Kattintson a **Mentés** gombra. 
 
-        ![Felhasználó hozzáadása az olvasó szerepkörhöz a labor-fiókhoz ](../media/how-to-add-user-lab-owner/reader-lab-account.png)
+        ![Felhasználó hozzáadása a tesztkörnyezet-fiók olvasói szerepköréhez ](../media/how-to-add-user-lab-owner/reader-lab-account.png)
 
-## <a name="add-user-to-the-owner-role-for-the-lab"></a>Felhasználó hozzáadása a tulajdonos szerepkörhöz a laborban
+## <a name="add-user-to-the-owner-role-for-the-lab"></a>Felhasználó hozzáadása a tesztkörnyezet tulajdonosi szerepköréhez
 
-1. A labor- **fiók** lapon kattintson a bal oldali menüben a **minden labor** elemre.
-2. Válassza ki azt a **labort** , amelyhez hozzá szeretné adni a felhasználót tulajdonosként. 
+1. A **Lab-fiók** lapon válassza a bal oldali menü **Minden laborja** lehetőséget.
+2. Válassza ki azt a **tesztkörnyezetet,** amelyhez felhasználót szeretne tulajdonosként hozzáadni. 
     
     ![A tesztkörnyezet kiválasztása ](../media/how-to-add-user-lab-owner/select-lab.png)    
-3. A **labor** lapon a bal oldali menüben válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
-4. A **hozzáférés-vezérlés (iam)** lapon válassza a **Hozzáadás** lehetőséget az eszköztáron, majd a **szerepkör-hozzárendelés hozzáadása**elemet.
-5. A **szerepkör-hozzárendelés hozzáadása** oldalon hajtsa végre a következő lépéseket: 
-    1. Válassza ki a **szerepkör** **tulajdonosát** . 
+3. A **Labor** lapon válassza a bal oldali menü **Hozzáférés-vezérlés (IAM)** parancsát.
+4. A **Hozzáférés-vezérlés (IAM)** lapon válassza a **Hozzáadás** gombot az eszköztáron, majd a **Szerepkör-hozzárendelés hozzáadása**lehetőséget.
+5. A **Szerepkör-hozzárendelés hozzáadása** lapon tegye a következő lépéseket: 
+    1. Válassza a **tulajdonos** lehetőséget a **szerepkörhöz.** 
     2. Válassza ki a felhasználót. 
     3. Kattintson a **Mentés** gombra. 
 
-## <a name="next-steps"></a>Következő lépések
-Győződjön meg róla, hogy a felhasználó látja a labort a [labor Services portálra](https://labs.azure.com)való bejelentkezéskor.
+## <a name="next-steps"></a>További lépések
+Győződjön meg arról, hogy a felhasználó látja a labort, amikor bejelentkezik a [Lab Services portálra.](https://labs.azure.com)
