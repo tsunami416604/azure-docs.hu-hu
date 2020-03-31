@@ -95,6 +95,9 @@
     - name: A modell betanítása
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
+    - name: Elosztott betanítás
+      displayName: 'parallellization, deep learning, deep neural network, dnn'
+      href: concept-distributed-training.md
     - name: Modellkezelés (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
@@ -111,6 +114,9 @@
     - name: Automatizált gépi tanulás
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
+    - name: Az ML kezelésének buktatói
+      displayName: 'automl, auto ml, risks'
+      href: concept-manage-ml-pitfalls.md
     - name: Számítási példány
       displayName: 'resource, dsvm, Data Science Virtual Machine'
       href: concept-compute-instance.md
@@ -184,39 +190,47 @@
           href: concept-train-model-git-integration.md
     - name: Adatok használata
       items:
-        - name: Kapcsolódás Azure Storage-beli adatokhoz
-          displayName: 'blob, get, fileshare, access storage, mount, download'
-          href: how-to-access-data.md
-        - name: Adatok lekérése adattárból
-          displayName: 'data, data set, register, access data'
-          href: how-to-create-register-datasets.md
-        - name: Betanítás adathalmazok használatával
-          displayName: 'data, dataset, mount'
-          href: how-to-train-with-datasets.md
-        - name: Adatok importálása a tervezőbe
-          displayName: 'designer, data, import, dataset, datastore'
-          href: how-to-designer-import-data.md
-        - name: Eltérések észlelése az adathalmazokban
-          displayName: 'data, dataset'
-          href: how-to-monitor-datasets.md
-        - name: Verzió és adathalmazok nyomon követése
-          displayName: 'data, data set'
-          href: how-to-version-track-datasets.md
-        - name: Adatok címkézése
-          displayName: 'data, dataset, labeling'
-          href: how-to-create-labeling-projects.md
-        - name: Képek címkézése
-          displayName: 'data, dataset, labeling'
-          href: how-to-label-images.md
-        - name: Címkézett adathalmazok létrehozása
-          displayName: 'data, labels, torchvision'
-          href: how-to-use-labeled-dataset.md
-        - name: Adatbetöltés az Azure Data Factoryvel
-          displayName: 'data, ingestion, adf'
-          href: how-to-data-ingest-adf.md
-        - name: DevOps használata adatfeldolgozáshoz
-          displayName: 'data, ingestion, devops'
-          href: how-to-cicd-data-ingestion.md
+        - name: Adatcímkézés
+          items:
+            - name: Adatok címkézése
+              displayName: 'data, dataset, labeling'
+              href: how-to-create-labeling-projects.md
+            - name: Képek címkézése
+              displayName: 'data, dataset, labeling'
+              href: how-to-label-images.md
+            - name: Címkézett adathalmazok létrehozása
+              displayName: 'data, labels, torchvision'
+              href: how-to-use-labeled-dataset.md
+        - name: Adatok lekérése
+          items:
+            - name: Adatbetöltés az Azure Data Factoryvel
+              displayName: 'data, ingestion, adf'
+              href: how-to-data-ingest-adf.md
+            - name: DevOps használata adatfeldolgozáshoz
+              displayName: 'data, ingestion, devops'
+              href: how-to-cicd-data-ingestion.md
+            - name: Adatok importálása a tervezőbe
+              displayName: 'designer, data, import, dataset, datastore'
+              href: how-to-designer-import-data.md
+        - name: Adatok elérése
+          items:
+            - name: Csatlakozás az Azure Storage-hoz
+              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              href: how-to-access-data.md
+            - name: Adatok lekérése adattárból
+              displayName: 'data, data set, register, access data'
+              href: how-to-create-register-datasets.md
+        - name: Adatok kezelése és felhasználása
+          items:
+            - name: Betanítás adathalmazok használatával
+              displayName: 'data, dataset, mount'
+              href: how-to-train-with-datasets.md
+            - name: Eltérések észlelése az adathalmazokban
+              displayName: 'data, dataset'
+              href: how-to-monitor-datasets.md
+            - name: Verzió és adathalmazok nyomon követése
+              displayName: 'data, data set'
+              href: how-to-version-track-datasets.md
     - name: Modellek betanítása
       items:
         - name: Becslők használata gépi tanuláshoz
@@ -337,6 +351,7 @@
         - name: Folyamat aktiválása
           href: how-to-trigger-published-pipeline.md
         - name: Folyamatok hibakeresése és hibaelhárítása
+          displayName: designer
           href: how-to-debug-pipelines.md
         - name: Folyamatok hibakeresése az Application Insightsban
           displayname: 'pipelines, log, monitor'

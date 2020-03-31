@@ -265,6 +265,8 @@
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: Hibaelhárítás
       items:
+        - name: Időszakos kimenő kapcsolatok hibáinak elhárítása
+          href: troubleshoot-intermittent-outbound-connection-errors.md
         - name: Hibaelhárítás a Visual Studióval
           href: troubleshoot-dotnet-visual-studio.md
         - name: Node.js-alapú alkalmazások hibaelhárítása

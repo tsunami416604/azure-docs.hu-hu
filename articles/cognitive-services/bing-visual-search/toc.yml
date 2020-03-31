@@ -7,7 +7,7 @@
     - name: Bing Search API-k összehasonlítása
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: REST API
       expanded: true
@@ -35,12 +35,16 @@
           href: visual-search-sdk-python.md
         - name: A Java használata
           href: visual-search-sdk-java.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Kép feltöltése
       href: tutorial-visual-search-image-upload.md
     - name: Kép területének kivágása és keresése
       href: tutorial-visual-search-crop-area-results.md
+    - name: Hasonló képek keresése a korábbi keresésekben
+      href: tutorial-visual-search-insights-token.md
+    - name: Egyoldalas webalkalmazás létrehozása
+      href: tutorial-bing-visual-search-single-page-app.md
 - name: Példák
   items:
     - name: Kódminták
@@ -63,10 +67,6 @@
     - name: Miniatűrök átméretezése és körülvágása
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md
-    - name: Kép keresése a kép megállapítástokenjeinek használatával
-      href: tutorial-visual-search-insights-token.md
-    - name: Egyoldalas webalkalmazás létrehozása
-      href: tutorial-bing-visual-search-single-page-app.md
 - name: Referencia
   items:
     - name: REST API 7-es verzió

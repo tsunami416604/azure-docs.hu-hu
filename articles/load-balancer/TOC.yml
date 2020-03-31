@@ -16,7 +16,7 @@
       displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
   expanded: true
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Virtuális gépek internetes forgalmának terheléselosztása
       href: tutorial-load-balancer-standard-manage-portal.md
@@ -64,6 +64,14 @@
       href: load-balancer-security-controls.md
 - name: Útmutató
   items:
+    - name: Virtuálisgép-méretezési csoportok
+      items:
+        - name: Használat meglévő Azure Load Balancerrel – portál
+          href: configure-vm-scale-set-portal.md
+        - name: Használat meglévő Azure Load Balancerrel – PowerShell
+          href: configure-vm-scale-set-powershell.md
+        - name: Használat meglévő Azure Load Balancerrel – CLI
+          href: configure-vm-scale-set-cli.md
     - name: Egy alapszintű Load Balancer standard szintű Load Balancerre való frissítése
       items:
         - name: Alapszintű nyilvános Load Balancer frissítése

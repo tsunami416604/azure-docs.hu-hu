@@ -24,6 +24,8 @@
           href: cloud-governed-management-for-on-premises.md
         - name: Négy lépés az identitás erős alapjainak biztosításához
           href: four-steps.md
+        - name: Hibrid identitáshitelesítési módszer választása
+          href: choose-ad-authn.md
     - name: Azure AD Connect és Connect Health
       items:
         - name: Mi az Azure AD Connect és a Connect Health?
@@ -312,6 +314,8 @@
           href: tshoot-connect-attribute-not-syncing.md
         - name: Telepítéssel kapcsolatos problémák
           href: tshoot-connect-install-issues.md
+        - name: UPN-módosítások
+          href: howto-troubleshoot-upn-changes.md
 - name: Referencia
   items:
     - name: Hibrid identitás – szükséges portok és protokollok

@@ -3,7 +3,7 @@ documentType: LandingData
 title: Felügyelt SQL-példány
 metadata:
   title: A felügyelt példány dokumentációja – oktatóanyagok és API-referencia
-  meta.description: Learn how to use a managed instance in Azure SQL Database.
+  description: 'Rövid útmutatók, oktatóanyagok és példák az Azure SQL Database-ben futó felügyelt példányhoz, amely a felhőben futó, teljes körűen felügyelt SQL Server-adatbázismotor-példány.'
   services: sql-database
   author: jovanpop-msft
   ms.reviewer: carlrab

@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: 'Azure SQL Database: Önálló adatbázis'
+title: Azure SQL Database
 metadata:
-  title: Dokumentáció – önálló adatbázis
-  meta.description: Learn how to use Azure SQL databases.
+  title: 'Dokumentáció – önálló adatbázis, adatbázis-kiszolgáló, rugalmas készlet'
+  description: 'Rövid útmutatók, oktatóanyagok és példák az Azure SQL Database-ben futó önálló adatbázisokhoz, rugalmas készletekhez és adatbázis-kiszolgálókhoz.'
   services: sql-database
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.subservice: single-database
   ms.topic: overview
   author: jovanpop-msft
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
   ms.reviewer: carlrab
   manager: craigg
   ms.date: 04/26/2019

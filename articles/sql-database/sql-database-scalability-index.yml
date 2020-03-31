@@ -3,7 +3,7 @@ documentType: LandingData
 title: Méretezhetőség
 metadata:
   title: Azure SQL Database – Méretezhetőség
-  meta.description: Learn how to scale your Azure SQL Database.
+  description: 'Megtudhatja, hogy az Azure SQL Database miként teszi lehetővé az adatbázis egyszerű skálázását több számítási erőforrás hozzáadásával (vertikális felskálázás) vagy több adatbázisegység hozzáadásával (horizontális felskálázás).'
   services: sql-database
   ms.subservice: scale-out
   author: jovanpop-msft
@@ -14,7 +14,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 01/25/2019
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
 sections:
   - items:
       - type: paragraph
@@ -42,7 +42,7 @@ sections:
           - title: Adatbázisközi feladatok
             href: /azure/sql-database/elastic-jobs-overview
             html: <p>Fenntarthat egy adatbáziskészletet adatbázisokon átívelő rugalmas feladatok használatával.</p>
-  - title: További segédanyagok
+  - title: További erőforrások
     items:
       - type: paragraph
         text: 'Megismerheti azokat a további funkciókat, amelyek segítenek az adatok méretezésében.'

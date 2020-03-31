@@ -8,7 +8,7 @@
     - name: Bing Search API-k összehasonlítása
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: REST API – rövid útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: REST API
@@ -27,15 +27,9 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'A C# használata'
-          href: quickstarts/sdk-csharp-quickstart.md
-        - name: A Node.js használata
-          href: quickstarts/sdk-node-quickstart.md
-        - name: A Python használata
-          href: quickstarts/sdk-python-quickstart.md
-        - name: A Java használata
-          href: quickstarts/sdk-java-quickstart.md
-- name: oktatóanyagokat
+        - name: A Bing Video Search ügyfélkódtárai
+          href: ./quickstarts/client-libraries.md
+- name: Oktatóanyagok
   items:
     - name: Egyoldalas webalkalmazás készítése
       href: tutorial-bing-video-search-single-page-app.md

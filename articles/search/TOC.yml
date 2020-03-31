@@ -21,6 +21,8 @@
           href: cognitive-search-quickstart-blob.md
         - name: Tudástár létrehozása
           href: knowledge-store-create-portal.md
+        - name: Lekérdezés a keresési ablakban
+          href: search-explorer.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -231,10 +233,10 @@
           href: search-query-simple-examples.md
         - name: Teljes Lucene-szintaxis használata
           href: search-query-lucene-examples.md
-        - name: Keresési ablak (portál) használata
-          href: search-explorer.md
         - name: Különleges karakterek és részleges kifejezések
           href: search-query-partial-matching.md
+        - name: Lekérdezés a Power Appsből
+          href: search-howto-powerapps.md
         - name: Szintaxisreferencia
           items:
             - name: Egyszerű lekérdezési szintaxis

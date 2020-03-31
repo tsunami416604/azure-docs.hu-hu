@@ -11,14 +11,14 @@
     - name: Szabályzat hozzárendelése – Portál
       displayName: 'assign, compliance'
       href: assign-policy-portal.md
-    - name: Szabályzat hozzárendelése – PowerShell
+    - name: Szabályzat hozzárendelése – Azure PowerShell
       displayName: 'assign, compliance'
       href: assign-policy-powershell.md
     - name: Szabályzat hozzárendelése – Azure CLI
       displayName: 'assign, compliance'
       href: assign-policy-azurecli.md
-    - name: Szabályzat hozzárendelése – sablon
-      displayName: 'assign, compliance, resource manager, ARM'
+    - name: Szabályzat hozzárendelése – ARM-sablon
+      displayName: 'assign, compliance, resource manager'
       href: assign-policy-template.md
 - name: Oktatóanyagok
   items:
@@ -81,7 +81,7 @@
     - name: Azure Policy a Kuberneteshez
       items:
         - name: Szabályzat AKS-hez
-          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v2'
+          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
           href: ./concepts/rego-for-aks.md
         - name: Szabályzat AKS Engine-hez
           displayName: 'aks, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
@@ -100,9 +100,12 @@
     - name: Szabályzatok létrehozása tömbtulajdonságokhoz
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
-    - name: Vendégkonfigurációs szabályzat létrehozása
-      displayName: 'powershell, dsc, chef, linux, windows'
+    - name: Vendégkonfigurációs szabályzat létrehozása Windows rendszeren
+      displayName: 'powershell, dsc, chef, windows'
       href: ./how-to/guest-configuration-create.md
+    - name: Vendégkonfigurációs szabályzat létrehozása Linux rendszeren
+      displayName: 'powershell, dsc, chef, linux'
+      href: ./how-to/guest-configuration-create-linux.md
     - name: Megfelelőségi adatok lekérése
       displayName: 'evaluation, scan, summarize, query, events, log analytics'
       href: ./how-to/get-compliance-data.md
@@ -148,6 +151,12 @@
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: Szabályzatdefiníciók
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - name: Node-hoz készült Azure SDK
+      items:
+        - name: Szabályzat
+          href: /javascript/api/@azure/arm-policy
+        - name: Policy Insights
+          href: /javascript/api/@azure/arm-policyinsights
     - name: Azure SDK for Python
       items:
         - name: Szabályzat
@@ -186,6 +195,8 @@
   items:
     - name: GitHub – Azure Policy-minták
       href: 'https://github.com/Azure/azure-policy'
+    - name: GitHub – Közösségi szabályzatok adattára
+      href: 'https://github.com/Azure/Community-Policy'
     - name: Videó – Build 2018
       href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
     - name: A Governance YouTube-csatornája

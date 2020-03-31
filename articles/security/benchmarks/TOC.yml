@@ -32,11 +32,23 @@
   items:
     - name: Az Azure biztonsági alapkonfigurációinak áttekintése
       href: security-baselines-overview.md
+    - name: Az Azure Cache for Redis biztonsági alapkonfigurációja
+      href: ../../azure-cache-for-redis/security-baseline.md
     - name: A Batch biztonsági alapkonfigurációja
       href: ../../batch/security-baseline.md
-    - name: A Key Vault biztonsági alapkonfigurációja
-      href: ../../key-vault/security-baseline.md
+    - name: A Container Registry biztonsági alapkonfigurációja
+      href: ../../container-registry/security-baseline.md
+    - name: A Cosmos DB biztonsági alapkonfigurációja
+      href: ../../cosmos-db/security-baseline.md
     - name: A HDInsight biztonsági alapkonfigurációja
       href: ../../hdinsight/security-baseline.md
+    - name: A Key Vault biztonsági alapkonfigurációja
+      href: ../../key-vault/security-baseline.md
+    - name: A MariaDB biztonsági alapkonfigurációja
+      href: ../../mariadb/security-baseline.md
+    - name: A MySQL biztonsági alapkonfigurációja
+      href: ../../mysql/security-baseline.md
+    - name: A PostgreSQL biztonsági alapkonfigurációja
+      href: ../../postgresql/security-baseline.md
     - name: Az SQL Database biztonsági alapkonfigurációja
       href: ../../sql-database/security-baseline.md

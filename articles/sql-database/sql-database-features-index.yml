@@ -3,7 +3,7 @@ documentType: LandingData
 title: Szolgáltatások
 metadata:
   title: Az Azure SQL Database funkciói
-  meta.description: Learn about the features in Azure SQL Database.
+  description: 'Megismerheti az Azure SQL Database adatbázis-funkcióit, amelyekkel hatékonyabb műveleteket végezhet és speciális forgatókönyveket implementálhat.'
   services: sql-database
   author: jovanpop-msft
   manager: craigg
@@ -12,7 +12,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 02/06/2019
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
 sections:
   - items:
       - type: paragraph
@@ -40,7 +40,7 @@ sections:
           - title: Historikus táblák
             href: /azure/sql-database/sql-database-temporal-tables
             html: <p>Nyomon követheti és elemezheti az adatok változásának összes előzményét.</p>
-  - title: További segédanyagok
+  - title: További erőforrások
     items:
       - type: list
         style: ordered

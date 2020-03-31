@@ -10,6 +10,8 @@
           href: migrate-from-hub-spoke-topology.md
         - name: Globális átviteli hálózati architektúra
           href: virtual-wan-global-transit-network-architecture.md
+        - name: Kapcsolat Kínával
+          href: interconnect-china.md
 - name: Oktatóanyagok
   items:
     - name: Helyek közötti kapcsolat létrehozása
@@ -20,6 +22,8 @@
       href: virtual-wan-expressroute-portal.md
 - name: Alapelvek
   items:
+    - name: Távmunka
+      href: work-remotely-support.md
     - name: Helyek és partnerek
       items:
         - name: Központi helyek és partnerek
@@ -28,8 +32,6 @@
           href: virtual-wan-configure-automation-providers.md
     - name: IPsec-szabályzatok
       href: virtual-wan-ipsec.md
-    - name: Pont-hely típusú VPN – áttekintés
-      href: ../vpn-gateway/point-to-site-about.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
 - name: Útmutatók
   items:
     - name: Virtuális hálózati átjáró csatlakoztatása virtuális WAN-ra
@@ -52,25 +54,31 @@
           href: virtual-wan-site-to-site-portal.md
     - name: Felhasználói VPN-kapcsolatok (pont–hely)
       items:
-        - name: Felhasználói VPN-kapcsolatok (pont–hely) létrehozása
+        - name: Felhasználói VPN-kapcsolat létrehozása
           href: virtual-wan-point-to-site-portal.md
-        - name: Tanúsítványok konfigurálása felhasználói VPN-hez
+        - name: Tanúsítványok előállítása
           href: certificates-point-to-site.md
-        - name: Azure AD-bérlő konfigurálása felhasználói VPN-hez
+        - name: Azure AD-bérlő konfigurálása
           href: openvpn-azure-ad-tenant.md
-        - name: AlwaysOn VPN felhasználói alagút konfigurálása
-          href: ../vpn-gateway/vpn-gateway-howto-always-on-user-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
-        - name: AlwaysOn VPN-eszközalagút konfigurálása
-          href: ../vpn-gateway/vpn-gateway-howto-always-on-device-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
-        - name: Többtényezős hitelesítés (MFA) engedélyezése felhasználói VPN-hez
-          href: openvpn-azure-ad-mfa.md
-        - name: Azure AD-hitelesítés konfigurálása felhasználói VPN-hez
-          href: virtual-wan-point-to-site-azure-ad.md
-        - name: Több alkalmazásra kiterjedő Azure AD-hitelesítés konfigurálása felhasználói VPN-hez
-          href: openvpn-azure-ad-tenant-multi-app.md
-        - name: Globális és központalapú felhasználói VPN-profilok letöltése
+        - name: Ügyfélprofil
+          href: about-vpn-profile-download.md
+        - name: Globális és hubalapú profil
           href: global-hub-profile.md
-    - name: Útválasztás konfigurálása
+        - name: Az OpenVPN-ügyfelek konfigurálása
+          href: howto-openvpn-clients.md?
+        - name: AlwaysOn VPN felhasználói alagút konfigurálása
+          href: howto-always-on-user-tunnel.md
+        - name: AlwaysOn VPN-eszközalagút konfigurálása
+          href: howto-always-on-device-tunnel.md
+        - name: Többtényezős hitelesítés (MFA) engedélyezése
+          href: openvpn-azure-ad-mfa.md
+        - name: Azure AD-hitelesítés konfigurálása
+          href: virtual-wan-point-to-site-azure-ad.md
+        - name: "Az Azure VPN-ügyfél konfigurálása Windows\_10-hez"
+          href: openvpn-azure-ad-client.md
+        - name: Több alkalmazásra kiterjedő Azure AD-hitelesítés konfigurálása
+          href: openvpn-azure-ad-tenant-multi-app.md
+    - name: Útválasztás
       items:
         - name: Forgalom irányítása virtuális központról NVA-ra
           items:

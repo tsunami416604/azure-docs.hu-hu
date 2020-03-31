@@ -3,7 +3,8 @@ documentType: LandingData
 title: A Container Service dokumentációja
 metadata:
   title: Az Azure Container Service dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  meta.description: 'Azure Container Service allows you to deploy production ready Kubernetes, DC/OS, or Docker Swarm clusters. Learn how with quickstarts, tutorials, and samples.'
+  meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
+  description: 'Az Azure Container Service lehetővé teszi üzemkész Kubernetes-, DC/OS- vagy Docker Swarm-fürtök üzembe helyezését. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet ennek végrehajtásával.'
   services: container-service
   author: georgewallace
   manager: gwallace

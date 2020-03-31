@@ -14,6 +14,8 @@
       href: ./servers/onboard-service-principal.md
     - name: Gépek csatlakoztatása az Azure Archoz a PowerShell DSC használatával
       href: ./servers/onboard-dsc.md
+- name: Ügynök kezelése
+  href: ./servers/manage-agent.md
 - name: Referencia
   items:
     - name: Azure-beli csatlakoztatottgép-ügynök parancssori felülete

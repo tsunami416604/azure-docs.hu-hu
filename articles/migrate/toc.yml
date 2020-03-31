@@ -8,13 +8,13 @@
       href: whats-new.md
     - name: Gyakori kérdések
       items:
-        - name: Az Azure Migrate-tel kapcsolatos kérdések
+        - name: Általános kérdések
           href: resources-faq.md
-        - name: Az Azure Migrate-berendezéssel kapcsolatos kérdések
+        - name: Azure Migrate-berendezés
           href: common-questions-appliance.md
-        - name: 'Felderítéssel, felméréssel/függőségvizualizációval kapcsolatos kérdések'
+        - name: Server Assessment eszköz/függőségelemzés
           href: common-questions-discovery-assessment.md
-        - name: Kiszolgálómigrálással kapcsolatos kérdések
+        - name: Kiszolgálómigrálási eszköz
           href: common-questions-server-migration.md
 - name: Oktatóanyagok
   items:
@@ -74,34 +74,40 @@
           href: migrate-appliance.md
         - name: Replikációs berendezés követelményei
           href: migrate-replication-appliance.md
+    - name: Az Azure Migrate-berendezés architektúrája
+      href: migrate-appliance-architecture.md
     - name: A Hyper-V migrálási architektúrája
       href: hyper-v-migration-architecture.md
-    - name: Ügynökalapú migrálási architektúra
+    - name: VMware ügynökalapú migrálási architektúra
       href: agent-based-migration-architecture.md
-    - name: Ajánlott felmérési eljárások
-      href: best-practices-assessment.md
     - name: Felmérések áttekintése
       href: concepts-assessment-calculation.md
-    - name: Függőségek vizualizációja
+    - name: Ajánlott felmérési eljárások
+      href: best-practices-assessment.md
+    - name: Függőségelemzés áttekintése
       href: concepts-dependency-visualization.md
 - name: Útmutatók
   items:
-    - name: Az előző verzió használata
-      href: migrate-v1.md
     - name: Azure Migrate-projektek létrehozása és kezelése
       href: create-manage-projects.md
-    - name: VMware-berendezés üzembe helyezése
-      href: how-to-set-up-appliance-vmware.md
-    - name: Hyper-V-berendezés üzembe helyezése
-      href: how-to-set-up-appliance-hyper-v.md
-    - name: Fizikai kiszolgálóberendezés üzembe helyezése
-      href: how-to-set-up-appliance-physical.md
-    - name: Alkalmazások/szerepkörök/szolgáltatások felderítése
-      href: how-to-discover-applications.md
     - name: Eszköz hozzáadása első alkalommal
       href: how-to-add-tool-first-time.md
     - name: Felmérőeszközök hozzáadása
       href: how-to-assess.md
+    - name: Az Azure Migrate-berendezés üzembe helyezése
+      items:
+        - name: Berendezés üzembe helyezése VMware-hez (OVA)
+          href: how-to-set-up-appliance-vmware.md
+        - name: Berendezés üzembe helyezése Hyper-V-hez (VHD)
+          href: how-to-set-up-appliance-hyper-v.md
+        - name: Berendezés üzembe helyezése VMware-hez/Hyper-V-hez (szkript)
+          href: deploy-appliance-script.md
+        - name: Berendezés üzembe helyezése fizikai kiszolgálókhoz
+          href: how-to-set-up-appliance-physical.md
+    - name: A VMware rendszerű virtuális gépek felderítési hatókörének korlátozása
+      href: set-discovery-scope.md
+    - name: Alkalmazások/szerepkörök/szolgáltatások felderítése
+      href: how-to-discover-applications.md
     - name: Gépek csoportosítása felméréshez
       href: how-to-create-a-group.md
     - name: A gép függőségeinek elemzése (ügynökalapú)
@@ -122,6 +128,8 @@
       href: prepare-for-migration.md
     - name: Azure Migrate-projekt eltávolítása
       href: how-to-delete-project.md
+    - name: Az előző verzió használata
+      href: migrate-v1.md
     - name: Felmérés és migrálás skálázása
       items:
         - name: Hozzáférés nagy számú VMware virtuális géphez

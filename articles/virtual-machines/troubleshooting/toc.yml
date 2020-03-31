@@ -25,7 +25,7 @@
           href: redeploy-to-new-node-windows.md
     - name: Hálózati adapter alaphelyzetbe állítása
       href: reset-network-interface.md
-- name: Lefoglalási hibák elhárítása
+- name: Foglalási hibák elhárítása
   items:
     - name: Foglalási hibák
       href: allocation-failure.md
@@ -69,18 +69,24 @@
           href: boot-diagnostics.md
         - name: BitLocker-hibák
           href: troubleshoot-bitlocker-boot-error.md
-        - name: Fájlrendszer hibáinak keresése
-          href: troubleshoot-check-disk-boot-error.md
         - name: Kék képernyős hibák
           href: troubleshoot-common-blue-screen-error.md
-        - name: A virtuális gép indítása elakadt
-          href: troubleshoot-vm-boot-configure-update.md
+        - name: Fájlrendszer hibáinak keresése
+          href: troubleshoot-check-disk-boot-error.md
+        - name: Kritikus állapotú folyamat letiltva
+          href: troubleshoot-guide-critical-process-died.md
         - name: Egy kulcsfontosságú szolgáltatás meghiúsult
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: Nem rendszerindító lemez
+          href: troubleshoot-guide-not-bootable-disk.md
         - name: Újraindítási hurok
           href: troubleshoot-reboot-loop.md
         - name: Windows Update-problémák
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: A virtuális gép indítása elakadt
+          href: troubleshoot-vm-boot-configure-update.md
+        - name: A virtuális gép nem indítható el a Windows Rendszertöltés-vezérlő miatt
+          href: troubleshoot-guide-windows-boot-manager-menu.md
 - name: Nem tudok csatlakozni a virtuális gépemhez
   items:
     - name: RDP
