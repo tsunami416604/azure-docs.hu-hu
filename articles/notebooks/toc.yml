@@ -4,7 +4,7 @@
   items:
     - name: Mi az az Azure Notebooks?
       href: azure-notebooks-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Bejelentkezés és felhasználói azonosító beállítása
       href: quickstart-sign-in-azure-notebooks.md
@@ -16,7 +16,7 @@
       href: quickstart-migrate-local-jupyter-notebook.md
     - name: Egyéni környezet használata
       href: quickstart-create-jupyter-notebook-project-environment.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Notebook létrehozása és futtatása
       href: tutorial-create-run-jupyter-notebook.md
@@ -46,5 +46,3 @@
       href: access-data-resources-jupyter-notebooks.md
     - name: A Data Science Virtual Machine használata
       href: use-data-science-virtual-machine.md
-    - name: Az Azure Machine Learning használata
-      href: use-machine-learning-services-jupyter-notebooks.md

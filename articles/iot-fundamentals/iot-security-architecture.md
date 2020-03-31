@@ -1,6 +1,6 @@
 ---
 title: IoT biztonsági architektúra
-description: A biztonsági architektúra iránymutatásai és szempontjai az Azure IoT-megoldásokhoz
+description: Az Azure IoT-megoldások biztonsági architektúrára vonatkozó irányelvei és szempontjai
 author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
 ms.openlocfilehash: e4e6a60f893108f8fa58d84dabb50c88afcf774c
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73929607"
 ---
-# <a name="internet-of-things-iot-security-architecture"></a>Eszközök internetes hálózata (IoT) biztonsági architektúra
+# <a name="internet-of-things-iot-security-architecture"></a>Az iontárgyak internete (IoT) biztonsági architektúrája
 
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
 ## <a name="see-also"></a>Lásd még
-Ha többet szeretne megtudni a IoT-megoldási gyorssegéd által létrehozott megoldások védelméről, tekintse meg [a IoT-telepítés biztonságossá](iot-security-deployment.md)tételét ismertető témakört.
+Ha többet szeretne tudni az IoT-megoldásgyorsító által létrehozott megoldás biztonságáról, olvassa [el az IoT-telepítés biztonságossá tétele.](iot-security-deployment.md)
 
-A IoT Hub Fejlesztői útmutatóban [IoT hubhoz való hozzáférés szabályozásának](../iot-hub/iot-hub-devguide-security.md) IoT hub biztonságáról szóló témakörben talál további információt.
+Az IoT Hub biztonsága az [IoT Hubhoz való hozzáférés szabályozása](../iot-hub/iot-hub-devguide-security.md) című útmutatóban az IoT Hub fejlesztői útmutatójában olvashat.

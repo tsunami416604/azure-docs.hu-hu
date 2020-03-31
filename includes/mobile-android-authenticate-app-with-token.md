@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: deb94cab97bd9a402676cdc5c0239da8d07ed8b2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179807"
 ---
-Az előző példa bemutatta, szabványos bejelentkezési, ami megköveteli, hogy az ügyfél kapcsolatba az identitásszolgáltató és a háttér Azure-szolgáltatás, az alkalmazás minden indításakor. Ez a módszer nem hatékony, és a használattal kapcsolatos problémák is rendelkezik, ha sok ügyfél próbál indítsa el az alkalmazást egyszerre. Jobb módszer, hogy az engedélyezési jogkivonatra, az Azure-szolgáltatás által visszaadott gyorsítótárazza, és próbálja használni az első olyan szolgáltató alapú bejelentkezés használata előtt.
+Az előző példa egy szabványos bejelentkezést mutatott, amely megköveteli, hogy az ügyfél lépjen kapcsolatba az identitásszolgáltatóval és a háttérbeli Azure-szolgáltatással az alkalmazás minden indításakor. Ez a módszer nem hatékony, és a használattal kapcsolatos problémák at, ha sok ügyfél megpróbálja elindítani az alkalmazást egyszerre. Egy jobb megközelítés az, hogy gyorsítótárazza az Azure-szolgáltatás által visszaadott engedélyezési jogkivonatot, és próbálja meg használni ezt először, mielőtt egy szolgáltató-alapú bejelentkezést használna.
 
 > [!NOTE]
-> A háttéralkalmazás függetlenül attól, hogy a hitelesítési ügyfél által felügyelt vagy a szolgáltatás által kezelt Azure-szolgáltatás által kiállított biztonsági jogkivonat képes gyorsítótárazni. Ebben az oktatóanyagban a szolgáltatás által kezelt hitelesítést használ.
+> Gyorsítótárazhatja a háttérbeli Azure-szolgáltatás által kibocsátott jogkivonatot, függetlenül attól, hogy ügyfél által felügyelt vagy szolgáltatás által felügyelt hitelesítést használ.You can cache the token issued by the back-end Azure service regardless whether you are using client-managed or service-managed authentication. Ez az oktatóanyag szolgáltatás által felügyelt hitelesítést használ.
 >
 >
 
-1. Nyissa meg a ToDoActivity.java fájlban, és adja hozzá a következő importálási utasításokat:
+1. Nyissa meg a ToDoActivity.java fájlt, és adja hozzá a következő importálási kimutatásokat:
 
     ```java
     import android.content.Context;
@@ -26,7 +26,7 @@ Az előző példa bemutatta, szabványos bejelentkezési, ami megköveteli, hogy
     import android.content.SharedPreferences.Editor;
     ```
 
-2. A következő tagokat adjanak hozzá a `ToDoActivity` osztály.
+2. Add hozzá a `ToDoActivity` következő tagokat az osztályhoz.
 
     ```java
     public static final String SHAREDPREFFILE = "temp";
@@ -34,7 +34,7 @@ Az előző példa bemutatta, szabványos bejelentkezési, ami megköveteli, hogy
     public static final String TOKENPREF = "tkn";
     ```
 
-3. A ToDoActivity.java fájlban adja hozzá a következő definícióját a `cacheUserToken` metódust.
+3. A ToDoActivity.java fájlban adja hozzá `cacheUserToken` a metódus következő definícióját.
 
     ```java
     private void cacheUserToken(MobileServiceUser user)
@@ -47,14 +47,14 @@ Az előző példa bemutatta, szabványos bejelentkezési, ami megköveteli, hogy
     }
     ```
 
-    Ez a módszer a felhasználói Azonosítót és a jogkivonat titkos megjelölt szabályozó fájlban tárolja. Ez a gyorsítótárhoz való hozzáférést kell védelemmel, úgy, hogy más alkalmazások az eszközön nincs hozzáférése a token. A beállítás: az alkalmazás vendégünk. Azonban ha valaki hozzáfér az eszközhöz, akkor lehet, hogy a jogkivonatok gyorsítótárát más módon hozzáférést is kapnak.
+    Ez a módszer a felhasználói azonosítót és a jogkivonatot egy magánjellegűként megjelölt beállításfájlban tárolja. Ennek meg kell védenie a gyorsítótárhoz való hozzáférést, hogy az eszközön lévő többi alkalmazás ne férhessen hozzá a jogkivonathoz. A preferencia az alkalmazás hoz. Ha azonban valaki hozzáfér az eszközhöz, lehetséges, hogy más módon is hozzáférhet a jogkivonat-gyorsítótárhoz.
 
    > [!NOTE]
-   > Ha számít, hogy az adatokhoz való hozzáférés a jogkivonatokhoz szigorúan bizalmas, és valaki hozzáférést nyújthat az eszközt, további védelmet biztosíthat a titkosítás, a jogkivonat. Egy teljesen biztonságos megoldás az túlmutat a jelen oktatóanyag esetében azonban, és a biztonsági követelményeitől függ.
+   > A jogkivonatot titkosítással tovább védheti, ha az adatokhoz való jogkivonat-hozzáférés rendkívül bizalmasnak minősül, és valaki hozzáférhet az eszközhöz. A teljesen biztonságos megoldás azonban túlmutat az oktatóanyag hatókörén, és a biztonsági követelményektől függ.
    >
    >
 
-4. A ToDoActivity.java fájlban adja hozzá a következő definícióját a `loadUserTokenCache` metódust.
+4. A ToDoActivity.java fájlban adja hozzá `loadUserTokenCache` a metódus következő definícióját.
 
     ```java
     private boolean loadUserTokenCache(MobileServiceClient client)
@@ -75,7 +75,7 @@ Az előző példa bemutatta, szabványos bejelentkezési, ami megköveteli, hogy
     }
     ```
 
-5. Az a *ToDoActivity.java* fájlt, cserélje le a `authenticate` és `onActivityResult` módszereit, valamint a következő is, ami egy token gyorsítótárát használja. Ha használja a Google aktuálistól eltérő fiókkal szeretne a bejelentkezés-szolgáltató módosítása
+5. A *ToDoActivity.java* fájlban `authenticate` cserélje `onActivityResult` le a és a metódusokat a következőkre, amelyek token gyorsítótárat használnak. Módosítsa a bejelentkezési szolgáltatót, ha a Google-tól eltérő fiókot szeretne használni.
 
     ```java
     private void authenticate() {
@@ -114,4 +114,4 @@ Az előző példa bemutatta, szabványos bejelentkezési, ami megköveteli, hogy
     }
     ```
 
-6. Az alkalmazás és a teszt hitelesítési érvényes fiók használatával hozhat létre. Legalább kétszer futtatni. Az első futás közben jelentkezzen be, és a token gyorsítótár létrehozása felszólítást kapni. Ezt követően minden egyes futtatásához megkísérli betölteni a hitelesítési jogkivonat gyorsítótárba. Ön nem köteles jelentkezzen be a.
+6. Építse létre az alkalmazást, és tesztelje a hitelesítést egy érvényes fiókhasználatával. Legalább kétszer futtasd le. Az első futtatás során meg kell kapnia egy figyelmeztetést, hogy jelentkezzen be, és hozza létre a jogkivonat-gyorsítótár. Ezt követően minden futtatás megkísérli a tokengyorsítótár betöltését a hitelesítéshez. Nem kell bejelentkeznie.

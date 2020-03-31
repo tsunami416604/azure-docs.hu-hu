@@ -1,21 +1,21 @@
 ---
-title: SELECT záradék Azure Cosmos DB
-description: További információ az Azure Cosmos DB SQL SELECT záradékáról. Az SQL használata Azure Cosmos DB JSON-lekérdezési nyelvként.
+title: SELECT záradék az Azure Cosmos DB-ben
+description: Ismerje meg az Azure Cosmos DB SQL SELECT záradékát. Az SQL használata Azure Cosmos DB JSON lekérdezési nyelvként.
 author: ginarobinson
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
 ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77469935"
 ---
-# <a name="select-clause-in-azure-cosmos-db"></a>SELECT záradék Azure Cosmos DB
+# <a name="select-clause-in-azure-cosmos-db"></a>SELECT záradék az Azure Cosmos DB-ben
 
-Minden lekérdezés egy SELECT záradékból, valamint opcionális és [Where](sql-query-where.md) záradékokból áll, és az ANSI SQL-szabványok [alapján](sql-query-from.md) . A FROM záradékban lévő forrás jellemzően enumerálásra kerül, és a WHERE záradék egy szűrőt alkalmaz a forráson a JSON-elemek egy részhalmazának lekéréséhez. A SELECT záradék ezt követően a kért JSON-értékeket a kiválasztási listában adja meg.
+Minden lekérdezés egy SELECT záradékból és választható [FROM](sql-query-from.md) és [WHERE](sql-query-where.md) záradékból áll, ANSI SQL szabványok szerint. Általában a FORRÁS záradékban szereplő forrás van számbavételre, és a WHERE záradék szűrőt alkalmaz a forrásra a JSON-elemek egy részhalmazának beolvasásához. A SELECT záradék ezután kivetíti a kért JSON-értékeket a kijelölési listában.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -36,49 +36,49 @@ SELECT <select_specification>
   
 - `<select_specification>`  
 
-  Tulajdonságok vagy ki kell választania a az eredményhalmaz érték.  
+  Az eredményhalmazhoz kijelölendő tulajdonságok vagy értékek.  
   
 - `'*'`  
 
-  Itt adhatja meg, hogy az érték legyen beolvasva módosítása nélkül. Kifejezetten a feldolgozott értéke egy objektumot, ha a rendszer lekéri az összes tulajdonság.  
+  Itt adhatja meg, hogy az értéket módosítások nélkül kell beolvasni. Ha a feldolgozott érték objektum, akkor az összes tulajdonság lekérésre kerül.  
   
 - `<object_property_list>`  
   
-  Meghatározza a lekérdezni kívánt tulajdonságok listája. Minden egyes visszaküldött érték a megadott tulajdonságokkal rendelkező objektum lesz.  
+  Megadja a beolvasandó tulajdonságok listáját. Minden visszaadott érték egy megadott tulajdonságokkal rendelkező objektum lesz.  
   
 - `VALUE`  
 
-  Itt adhatja meg, hogy a JSON értéke legyen beolvasva a teljes JSON-objektum helyett. Ez a `<property_list>`tól eltérően nem takarja el a tervezett értéket egy objektumban.  
+  Itt adható meg, hogy a JSON-értéket a teljes JSON-objektum helyett be kell olvasni. Ez, `<property_list>` ellentétben nem tördeli a vetített értéket egy objektumban.  
  
 - `DISTINCT`
   
-  Megadja, hogy el kell távolítani a kijelzett tulajdonságok másodpéldányait.  
+  Itt adható meg, hogy a kivetített tulajdonságok ismétlődéseit el kell távolítani.  
 
 - `<scalar_expression>`  
 
-  A kifejezés a következő időpontban számítja értéket jelölő. Részletekért lásd a [skaláris kifejezések](sql-query-scalar-expressions.md) szakaszt.  
+  A kiszámítandó értéket jelölő kifejezés. A részleteket lásd a [Skaláris kifejezések](sql-query-scalar-expressions.md) című szakaszban.  
 
 ## <a name="remarks"></a>Megjegyzések
 
-Az `SELECT *` szintaxis csak akkor érvényes, ha a FROM záradékban pontosan egy alias van deklarálva. a `SELECT *` identitás-kivetítést biztosít, ami hasznos lehet, ha nincs szükség leképezésre. Válassza ki * csak akkor érvényes, ha a FROM záradék van megadva, és csak egyetlen bemeneti forrás bevezetni.  
+A `SELECT *` szintaxis csak akkor érvényes, ha a FROM záradék pontosan egy aliast deklarált. `SELECT *`identitás-kivetítést biztosít, amely akkor lehet hasznos, ha nincs szükség kivetítésre. A SELECT * csak akkor érvényes, ha a FROM záradék meg van adva, és csak egyetlen bemeneti forrást vezetett be.  
   
-Mind a `SELECT <select_list>`, mind a `SELECT *` "szintaktikai cukor", és az alábbiakban látható egyszerű SELECT utasításokkal is megadható.  
+Mindkettő `SELECT <select_list>` `SELECT *` "szintaktikai cukor", és lehet kifejezni egyszerű SELECT utasítások, mint az alábbiakban látható.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
-   a következő azonos:  
+   egyenértékű a következőkkal:  
   
    `SELECT from_alias FROM ... AS from_alias ...`  
   
 2. `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
   
-   a következő azonos:  
+   egyenértékű a következőkkal:  
   
    `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
 ## <a name="examples"></a>Példák
 
-A következő SELECT lekérdezési példa olyan `Families` `address` adja vissza, amelynek `id` `AndersenFamily`:
+A következő SELECT `address` lekérdezési példa akövetkező találatot adja vissza, amelynek `Families` `id` egyezései: `AndersenFamily`
 
 ```sql
     SELECT f.address
@@ -86,7 +86,7 @@ A következő SELECT lekérdezési példa olyan `Families` `address` adja vissza
     WHERE f.id = "AndersenFamily"
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [{
@@ -98,8 +98,8 @@ Az eredmények a következők:
     }]
 ```
 
-### <a name="quoted-property-accessor"></a>Idézett tulajdonság-hozzáférés
-A tulajdonságokat az idézett tulajdonság operátor [] használatával érheti el. A `SELECT c.grade` és a `SELECT c["grade"]` például egyenértékűek. Ez a szintaxis akkor hasznos, ha olyan tulajdonságot szeretne elmenekülni, amely szóközt, speciális karaktereket vagy egy SQL-kulcsszó vagy fenntartott szó nevét tartalmazza.
+### <a name="quoted-property-accessor"></a>Idézett tulajdonság-elérő
+A tulajdonságokat a idézett tulajdonságoperátorral [] érheti el. Például, `SELECT c.grade` `SELECT c["grade"]` és egyenértékűek. Ez a szintaxis akkor hasznos, ha olyan tulajdonságot szeretne kikerülni, amely szóközöket, speciális karaktereket tartalmaz, vagy ugyanaz a neve, mint egy SQL-kulcsszónak vagy egy fenntartott szónak.
 
 ```sql
     SELECT f["lastName"]
@@ -109,7 +109,7 @@ A tulajdonságokat az idézett tulajdonság operátor [] használatával érheti
 
 ### <a name="nested-properties"></a>Beágyazott tulajdonságok
 
-A következő példában két beágyazott tulajdonságot (`f.address.state` és `f.address.city`) tervezünk.
+A következő példa két egymásba ágyazott tulajdonságot vetít ki, `f.address.state` és `f.address.city`.
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -117,7 +117,7 @@ A következő példában két beágyazott tulajdonságot (`f.address.state` és 
     WHERE f.id = "AndersenFamily"
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [{
@@ -127,7 +127,7 @@ Az eredmények a következők:
 ```
 ### <a name="json-expressions"></a>JSON-kifejezések
 
-A vetítés a JSON-kifejezéseket is támogatja, ahogy az az alábbi példában is látható:
+A Vetítés támogatja a JSON-kifejezéseket is, amint az a következő példában látható:
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
@@ -135,7 +135,7 @@ A vetítés a JSON-kifejezéseket is támogatja, ahogy az az alábbi példában 
     WHERE f.id = "AndersenFamily"
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [{
@@ -147,7 +147,7 @@ Az eredmények a következők:
     }]
 ```
 
-Az előző példában a SELECT záradéknak létre kell hoznia egy JSON-objektumot, és mivel a minta nem tartalmaz kulcsot, a záradék az implicit argumentum változó nevét használja `$1`. A következő lekérdezés két implicit argumentum változót ad vissza: `$1` és `$2`.
+Az előző példában a SELECT záradéknak létre kell hoznia egy JSON-objektumot, és `$1`mivel a minta nem tartalmaz kulcsot, a záradék az implicit argumentumváltozó nevét használja. A következő lekérdezés két implicit `$1` argumentumváltozót ad vissza: és `$2`.
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -156,7 +156,7 @@ Az előző példában a SELECT záradéknak létre kell hoznia egy JSON-objektum
     WHERE f.id = "AndersenFamily"
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [{
@@ -171,9 +171,9 @@ Az eredmények a következők:
 ```
 ## <a name="reserved-keywords-and-special-characters"></a>Fenntartott kulcsszavak és speciális karakterek
 
-Ha az adatai olyan tulajdonságokat tartalmaznak, amelyek neve megegyezik a fenntartott kulcsszavakkal (például "Order" vagy "Group"), akkor a dokumentumok lekérdezése szintaktikai hibákat eredményez. A lekérdezés sikeres futtatásához explicit módon fel kell vennie a tulajdonságot `[]` karakterbe.
+Ha az adatok olyan tulajdonságokat tartalmaznak, amelyek neve megegyezik a fenntartott kulcsszavakkal , például a "sorrend" vagy a "Csoport" nevekkel, akkor a dokumentumokhoz tartozó lekérdezések szintaktikai hibákat eredményeznek. A lekérdezés sikeres futtatásához `[]` explicit módon fel kell tüntetni a tulajdonságot a karakterben.
 
-Például itt található egy `order` nevű és egy speciális karaktereket tartalmazó `price($)` tulajdonságot tartalmazó dokumentum:
+Az alábbiakban például egy elnevezett `order` tulajdonságot `price($)` tartalmazó dokumentum, a tulajdonság pedig speciális karaktereket tartalmaz:
 
 ```json
 {
@@ -190,7 +190,7 @@ Például itt található egy `order` nevű és egy speciális karaktereket tart
 }
 ```
 
-Ha olyan lekérdezéseket futtat, amelyek tartalmazzák a `order` tulajdonságot vagy `price($)` tulajdonságot, szintaktikai hibaüzenetet fog kapni.
+Ha olyan lekérdezéseket futtat, amelyek tartalmazzák a `order` tulajdonságot vagy `price($)` tulajdonságot, szintaktikai hiba lép fel.
 
 ```sql
 SELECT * FROM c where c.order.orderid = "12345"
@@ -198,13 +198,13 @@ SELECT * FROM c where c.order.orderid = "12345"
 ```sql
 SELECT * FROM c where c.order.price($) > 50
 ```
-Az eredmény a következőket eredményezi:
+Az eredmény:
 
 `
 Syntax error, incorrect syntax near 'order'
 `
 
-Az alábbihoz hasonló lekérdezéseket kell újraírnia:
+Ugyanazokat a lekérdezéseket kell átírnia, mint az alábbiakban:
 
 ```sql
 SELECT * FROM c WHERE c["order"].orderId = "12345"
@@ -214,8 +214,8 @@ SELECT * FROM c WHERE c["order"].orderId = "12345"
 SELECT * FROM c WHERE c["order"]["price($)"] > 50
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Első lépések](sql-query-getting-started.md)
-- [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Kezdetekhez](sql-query-getting-started.md)
+- [Az Azure Cosmos DB .NET-mintái](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [WHERE záradék](sql-query-where.md)

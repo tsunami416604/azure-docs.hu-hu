@@ -1,7 +1,7 @@
 ---
-title: 'Hivatkozás: CentOS Data Science Virtual Machine'
+title: 'Hivatkozás: CentOS adatelemzési virtuális gép'
 titleSuffix: Azure Data Science Virtual Machine
-description: A CentOS Data Science Virtual Machineban található eszközök részletei
+description: A CentOS adattudományi virtuális gépben található eszközök részletei
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,127 +9,127 @@ ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
 ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525838"
 ---
-# <a name="reference-centos-linux-data-science-virtual-machine"></a>Hivatkozás: CentOS (Linux) Data Science Virtual Machine
+# <a name="reference-centos-linux-data-science-virtual-machine"></a>Hivatkozás: CentOS (Linux) Adattudomány virtuális gép
 
-A Linux Data Science Virtual Machine (DSVM) egy CentOS-alapú Azure-beli virtuális gép. A Linux DSVM olyan előre telepített eszközöket tartalmaz, amelyeket az adatelemzéshez és a gépi tanuláshoz használhat. 
+A Linux Data Science virtuális gép (DSVM) egy CentOS-alapú Azure virtuális gép. A Linux DSVM előre telepített eszközök gyűjteményével érkezik, amelyeket adatelemzéshez és gépi tanuláshoz használhat. 
 
-A Linux-DSVM található legfontosabb szoftver-összetevők a következők:
+A Linux DSVM legfontosabb szoftverösszetevői a következők:
 
-* Linux CentOS Distribution operációs rendszer.
+* Linux CentOS disztribúciós operációs rendszer.
 * Microsoft Machine Learning Server.
-* Anaconda Python-disztribúció (3,5-es és 2,7-es verziók), beleértve a népszerű adatelemző kódtárakat.
-* JuliaPro, a Júlia nyelvének és a népszerű tudományos és adatelemzési könyvtáraknak a kurátori eloszlása.
-* Spark önálló példány és egy csomópontos Hadoop (HDFS, fonal).
-* JupyterHub, egy többfelhasználós Jupyter notebook-kiszolgáló, amely támogatja az R, Python, PySpark és Julia kerneleket.
-* Azure Storage Explorer.
+* Anaconda Python-disztribúció (3.5-ös és 2.7-es verzió), beleértve a népszerű adatelemzési kódtárakat.
+* JuliaPro, a Julia nyelv és a népszerű tudományos és adatelemzési könyvtárak kurátora.
+* Spark önálló példány és egycsomópontos Hadoop (HDFS, YARN).
+* JupyterHub, egy többfelhasználós Jupyter notebook-kiszolgáló, amely támogatja az R, Python, PySpark és Julia kernelek.
+* Az Azure Storage Explorer ben.
 * Az Azure CLI, az Azure parancssori felülete az Azure-erőforrások kezeléséhez.
-* PostgresSQL-adatbázis.
+* PostgresSQL adatbázis.
 * Gépi tanulási eszközök:
-  * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK) (CNTK), a Microsoft Research mély tanulási szoftveres eszközkészlete.
-  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit), egy gyors gépi tanulási rendszer, amely olyan technikákat támogat, mint például az online, a kivonatolás, a allreduce, a csökkenés, a learning2search, az aktív és az interaktív tanulás.
-  * A [XGBoost](https://xgboost.readthedocs.org/en/latest/)egy olyan eszköz, amely gyors és pontos, lendületes faszerkezetes megvalósítást biztosít.
-  * A [Rattle](https://togaware.com/rattle/)egy olyan eszköz, amely megkönnyíti az adatelemzést és a gépi tanulást az R Easy szolgáltatásban. A Rattle a grafikus felhasználói felületen alapuló adatelemzést és-modellezést is biztosít az R-kód automatikus generálásával.
-* Azure SDK a Java, a Python, a Node. js, a Ruby és a PHP használatával.
-* Az R-és Python-kódtárak Azure Machine Learning és más Azure-szolgáltatásokban való használatra.
-* Fejlesztői eszközök és szerkesztők (RStudio, Notebookshoz, IntelliJ, Emacs, gedit, VI).
+  * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK) (CNTK), a Microsoft Research deep learning szoftvereszköztára.
+  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit), egy gyors gépi tanulási rendszer, amely támogatja a technikákat, mint az online, hashing, allreduce, csökkentések, learning2search, aktív, és interaktív tanulás.
+  * [XGBoost](https://xgboost.readthedocs.org/en/latest/), egy eszköz, amely gyors és pontos lendületet fa végrehajtását.
+  * [A Rattle](https://togaware.com/rattle/)eszköz megkönnyíti az adatgyűjtés és a gépi tanulás első lépéseit az R-ben. Rattle kínál mind a GUI-alapú adatok feltárása és modellezése segítségével automatikus R-kód generálása.
+* Azure SDK Java, Python, Node.js, Ruby és PHP nyelven.
+* Az R és python-ban használható tárak az Azure Machine Learningben és más Azure-szolgáltatásokban.
+* Fejlesztési eszközök és szerkesztők (RStudio, PyCharm, IntelliJ, Emacs, gedit, vi).
 
-Az adatelemzés magában foglalja a feladatok egy sorozatát léptetés:
+Az adatelemzés magában foglalja a feladatok sorozatának iterálását:
 
-1. Megkeresheti, betöltheti és előre feldolgozhatja az adatfeldolgozást.
-1. Hozhat létre, és tesztelni tudtuk.
-1. A modellek intelligens alkalmazásokban felhasználásra üzembe helyezése.
+1. Adatok keresése, betöltése és feldolgozás előtti feldolgozása.
+1. Modellek et hozhat létre és tesztel.
+1. A modellek intelligens alkalmazásokban való felhasználáshoz való üzembe helyezése.
 
-Az adatszakértők a különböző eszközök segítségével ezeket a feladatokat. Időigényes lehet a szoftver megfelelő verzióinak megkeresése, majd a szoftver letöltése, fordítása és telepítése.
+Az adatszakértők különböző eszközöket használnak a feladatok elvégzéséhez. Ez lehet időigényes, hogy megtalálják a megfelelő verziót a szoftver, majd töltse le, fordítsa le, és telepítse a szoftvert.
 
-A Linux-DSVM jelentősen megkönnyíti ezt a terhet. A Linux DSVM használatával ugorjon az elemzési projektre. A Linux-DSVM különböző nyelveken, például az R, a Python, az SQL, a Java és C++a-ben végzett feladatok elvégzésében nyújt segítséget. Az Eclipse egy könnyen használható IDE-kódot biztosít a kód fejlesztéséhez és teszteléséhez. Az Azure SDK, amely a DSVM része, a Microsoft Cloud platformon különböző Linux-szolgáltatások használatával hozhat létre alkalmazásokat. Más nyelvek előre telepítve vannak, például a Ruby, a Perl, a PHP és a Node. js.
+A Linux DSVM jelentősen enyhítheti ezt a terhet. A Linux DSVM segítségével indítsa el az elemzési projektet. A Linux DSVM segít a különböző nyelveken végzett feladatokon, például az R, Python, SQL, Java és C++ nyelven. Az Eclipse egy könnyen használható IDE-t biztosít a kód fejlesztéséhez és teszteléséhez. Az Azure SDK, a DSVM tartalmazza, segít az alkalmazások létrehozásában a Különböző linuxos szolgáltatások a Microsoft felhőplatform. Más nyelvek előtelepítettek, beleértve a Ruby, Perl, PHP és Node.js.
 
-A DSVM-rendszerképhez nem tartoznak szoftveres díjak. A DSVM-lemezképpel kiépített virtuális gép méretétől függően csak az Azure-beli hardver használati díját kell megfizetnie. A számítási díjakkal kapcsolatos további információkért tekintse meg az Azure Marketplace-en [Data Science Virtual Machine for Linux (CentOS) listázását](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/) .
+A DSVM-rendszerkép használatát nem terhelik további szoftverdíjak. Csak az Azure hardverhasználati díjakat, amelyek értékelése alapján a virtuális gép kiépített a DSVM-lemezkép mérete alapján. A számítási díjakról további információt az Azure [Marketplace-en található Data Science Virtual Machine for Linux (CentOS) listázása](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/) című témakörben talál.
 
 
-## <a name="machine-learning-server"></a>Machine Learning Server
+## <a name="machine-learning-server"></a>Gépi tanulási kiszolgáló
 
-Az R a legnépszerűbb nyelvek adatok elemzési és gépi tanulás. Ha az R-t szeretné használni az elemzéshez, a DSVM Machine Learning Server a Microsoft R Open és a Math kernel Library használatával. A matematikai kernel könyvtára a gyakori matematikai műveleteket az analitikai algoritmusokban optimalizálja. Az r Open teljes mértékben kompatibilis a CRAN R-vel. A CRAN-ben közzétett R-kódtárak bármelyike telepíthető R Openre. 
+Az R az adatelemzés és a gépi tanulás egyik legnépszerűbb nyelve. Ha az R-t szeretné használni az elemzéshez, a DSVM Machine Learning Server és a Microsoft R Open és a Math Kernel Library rendelkezik. A Matematikai kernelkönyvtár optimalizálja az analitikus algoritmusok ban végzett gyakori matematikai műveleteket. Az R Open teljes mértékben kompatibilis a CRAN R-rel. A CRAN-ban közzétett R-könyvtárak bármelyike telepíthető az R Open-re. 
 
-Az R-modellek webszolgáltatásokban való méretezésére és működővé tenni használhatja a Machine Learning Server. A R-programokat egy, az az alapértelmezett szerkesztők, mint az RStudio, a vi vagy a Emacs szerkesztheti. Az Emacs szerkesztő előre telepítve van a DSVM. Az Emacs ESS (Emacs Speaks Statistics) csomag leegyszerűsíti az R-fájlok használatát az Emacs szerkesztőben.
+A Machine Learning Server segítségével az R-modelleket webszolgáltatásokká méretezheti és működőképessé teheti. Az R-programokat az egyik alapértelmezett szerkesztőben szerkesztheti, például az RStudio, vi vagy Emacs programban. Az Emacs szerkesztő elő van telepítve a DSVM-en. Az Emacs ESS (Emacs Speaks Statistics) csomag leegyszerűsíti az R fájlokkal való munkát az Emacs szerkesztőben.
 
-Az R-konzol megnyitásához a rendszerhéjban írja be az **r**értéket. Ez a parancs interaktív környezetbe kerül. Az R-program fejlesztéséhez általában egy olyan szerkesztőt használ, mint az Emacs vagy a VI, majd az R. RStudio futtatja a szkripteket az r. teljes grafikus IDE-t kínál az R-program fejlesztéséhez.
+Az R konzol kinyitásához írja be a héjat az **R**. Ez a parancs interaktív környezetbe vezet. Az R program fejlesztéséhez általában olyan szerkesztőt használ, mint az Emacs vagy a vi, majd futtatja a parancsfájlokat az R. RStudio-ban, amely teljes grafikus IDE-t kínál az R program fejlesztéséhez.
 
-Az [első 20 r csomag](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) telepítéséhez használható r-szkriptet a DSVM tartalmazza. Ezt a szkriptet akkor futtathatja, ha az R interaktív felületen dolgozik. Ahogy korábban említettük, az interfész megnyitásához a rendszerhéjban írja be az **R**értéket.  
+A DSVM tartalmazza az R-parancsfájlt, amely a [20 legnagyobb R-csomag](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) telepítéséhez használható. Ezt a parancsfájlt futtathatja, ha az R interaktív felületen van. Mint korábban említettük, hogy nyissa meg a felületet, a héj, **írja**R .  
 
 ## <a name="python"></a>Python
 
-A anaconda Python a Python 3,5-es és 2,7-as környezetekkel van telepítve. Az 2,7-es környezet neve _root_ , a 3,5-környezet neve _py35_. Ehhez a terjesztéshez körülbelül 300 a legnépszerűbb matematikai, a mérnöki csapathoz és az analitikai csomagok, valamint az alap Python tartalmazza.
+Az Anaconda Python telepítve van a Python 3.5 és 2.7 környezetekkel. A 2,7-es környezetet _gyökérnek,_ a 3,5-ös környezetet _pedig py35-nek_hívják. Ez a disztribúció tartalmazza az alap Python mellett mintegy 300 a legnépszerűbb matematikai, mérnöki és adatelemzési csomagok.
 
-A py35 környezetben az alapértelmezett érték. A root (2,7) környezet aktiválásához használja a következő parancsot:
+A py35 környezet az alapértelmezett. A gyökér (2.7) környezet aktiválásához használja ezt a parancsot:
 
 ```bash
 source activate root
 ```
 
-A py35-környezet ismételt aktiválásához használja a következő parancsot:
+A py35 környezet ismételt aktiválásához használja a következő parancsot:
 
 ```bash
 source activate py35
 ```
 
-Egy Python interaktív munkamenet meghívásához a rendszerhéjban írja be a **Python**értéket. 
+Python interaktív munkamenet meghívásához írja be a **python**. 
 
-További Python-kódtárak telepítése a Conda vagy a pip használatával. A pip esetében először aktiválja a megfelelő környezetet, ha nem szeretné, hogy az alapértelmezett:
+További Python-kódtárak telepítése conda vagy pip használatával. Pip esetén először aktiválja a megfelelő környezetet, ha nem szeretné az alapértelmezett értéket:
 
 ```bash
 source activate root
 pip install <package>
 ```
 
-Vagy adja meg a pip teljes elérési útja:
+Vagy adja meg a pip teljes elérési útját:
 
 ```bash
 /anaconda/bin/pip install <package>
 ```
 
-A Conda esetében mindig adja meg a környezet nevét (py35 vagy root):
+Conda esetén mindig adja meg a környezet nevét (py35 vagy gyökér):
 
 ```bash
 conda install <package> -n py35
 ```
 
-Ha grafikus felületen vagy X11-továbbítással rendelkezik, a **notebookshoz** megadásával nyithatja meg a NOTEBOOKSHOZ Python ide-t. Az alapértelmezett szövegszerkesztő is használhatja. Emellett a Spyder, a Python IDE-t is használhatja, amely az anaconda Python-disztribúciókkal együtt van csomagolva. Spyder kell egy grafikus asztali vagy X11-továbbítást. A grafikus asztali számítógép a Spyder-ra mutató parancsikont tartalmaz.
+Ha grafikus felületen vagy X11 továbbítási beállításokkal rendelkezik, a PyCharm Python IDE megnyitásához **pycharm-t** adhat meg. Használhatja az alapértelmezett szövegszerkesztőket. Ezenkívül használhatja a Spyder, egy Python IDE, amely az Anaconda Python disztribúciók csomagban. Spyder szüksége van egy grafikus asztali vagy X11 továbbítás. A grafikus asztal egy parancsikont Spyder.
 
 ## <a name="jupyter-notebook"></a>Jupyter notebook
 
-Az anaconda-disztribúció egy Jupyter Notebook és egy olyan környezetet is tartalmaz, amely megoszthatja a kódot és az elemzést. A Jupyter Notebook elérése a JupyterHub keresztül. A bejelentkezéshez a helyi Linux-felhasználónevet és-jelszót kell használnia.
+Az Anaconda disztribúció is jön-val egy Jupyter Notebook, egy környezetet megosztani kódot és elemzést. A Jupyter notebook elérése a JupyterHubon keresztül. A helyi Linux-felhasználónévvel és jelszóval jelentkezik be.
 
-A Jupyter Notebook-kiszolgáló előre konfigurálva van a Python 2, a Python 3 és az R kernel segítségével. A **Jupyter notebook** asztal ikon segítségével nyissa meg a böngészőt, és nyissa meg a Jupyter notebook-kiszolgálót. Ha a DSVM SSH-n vagy a X2Go-ügyfélen keresztül éri el, akkor a Jupyter Notebook-kiszolgálót https:\//localhost: 8000/.
-
-> [!NOTE]
-> Folytassa, ha bármely tanúsítvánnyal kapcsolatos figyelmeztetéseket kap.
-
-A Jupyter notebook server bármely állomásról is elérheti. Adja meg a **https:\//\<DSVM DNS-név vagy IP-cím\>: 8000/** .
+A Jupyter notebook-kiszolgáló előre konfigurálva van a Python 2, Python 3 és R kernelekkel. A **Jupyter Notebook** desktop ikonnal nyissa meg a böngészőt, és férjen hozzá a Jupyter Notebook kiszolgálóhoz. Ha a DSVM-et SSH-on vagy X2Go ügyfélen keresztül éri el,\/a Jupyter Notebook kiszolgálót is elérheti a https: /localhost:8000/ címen.
 
 > [!NOTE]
-> Az 8000-es port a tűzfalon alapértelmezés szerint meg van nyitva a DSVM kiépítve. 
+> Folytassa, ha tanúsítványra vonatkozó figyelmeztetést kap.
 
-A Microsoft csomagolt jegyzetfüzeteket tartalmaz, amelyek közül egy a Pythonban és egy az R-ben található. A Jupyter Notebook kezdőlapján található mintákra mutató hivatkozást a helyi Linux-felhasználónevet és-jelszót használva a Jupyter Notebook való hitelesítés után tekintheti meg. Új jegyzetfüzet létrehozásához válassza az **új**lehetőséget, majd válassza ki a használni kívánt nyelvi kernelt. Ha nem jelenik meg az **új** gomb, a bal felső sarokban található **Jupyter** ikonra kattintva lépjen a notebook-kiszolgáló kezdőlapjára.
+A Jupyter notebook-kiszolgáló bármely állomásról elérhető. Írja be **a\//\<https: DSVM DNS-nevét vagy IP-címét\>:8000/**.
 
-## <a name="spark-standalone"></a>Spark önálló 
+> [!NOTE]
+> A 8000-es port alapértelmezés szerint meg van nyitva a tűzfalban, amikor a DSVM ki van építve. 
 
-A Spark önálló üzemmód egy példánya előre telepítve van a Linux DSVM, így a nagy méretű fürtökön történő tesztelés és üzembe helyezésük előtt helyileg fejlesztheti a Spark-alkalmazásokat. 
+A Microsoft csomagolt minta notebookok, egy Python és egy R. A jupyteri jegyzetfüzet kezdőlapján láthatja a mintákra mutató hivatkozást, miután a helyi Linux-felhasználónév és jelszó használatával hitelesítette a Jupyter notebookot. Új jegyzetfüzet létrehozásához válassza az **Új**lehetőséget, majd jelölje ki a használni kívánt nyelvi rendszermagot. Ha nem látható az **Új** gomb, kattintson a bal felső sarokban lévő **Jupyter** ikonra a jegyzetfüzet-kiszolgáló kezdőlapjának megugrásához.
 
-A Jupyter kernel keresztül PySpark programok futtathatók. A Jupyter megnyitásakor válassza az **új** gombot, és az elérhető kernelek listáját kell megjelennie. A **Spark-Python** a PySpark kernel, amellyel Spark-alkalmazásokat hozhat létre a Python nyelv használatával. A Spark-programot a Python IDE, például a Notebookshoz vagy a Spyder használatával is létrehozhatja. 
+## <a name="spark-standalone"></a>Szikra önálló 
 
-Ebben az önálló példányban a Spark stack a hívó ügyfélprogramban fut. Ez a funkció gyorsabbá és egyszerűbbé teszi a Spark-fürtön való fejlesztéshez képest felmerülő problémák megoldását.
+A Spark standalone mód egy példánya elő van telepítve a Linux DSVM-en, hogy segítsen a Spark-alkalmazások helyi fejlesztésében, mielőtt tesztelene és üzembe helyezne őket nagy fürtökön. 
 
-A Jupyter egy minta PySpark notebookot biztosít. A SparkML könyvtárban található a Jupyter ($HOME/notebooks/SparkML/pySpark) könyvtárában. 
+PySpark-programok futtathatók a Jupyter kernelen keresztül. A Jupyter megnyitásakor jelölje ki az **Új** gombot, és meg kell jelennie az elérhető kernelek listájának. **Spark – A Python** a PySpark kernel, amely lehetővé teszi a Spark-alkalmazások python-nyelv használatával történő összeállítását. A Spark-program létrehozásához használhatja a Python IDE-t is, például a PyCharm-t vagy a Spydert. 
 
-Ha az R for Spark-t használja, használhatja a Machine Learning Server, a Sparker vagy a sparklyr. 
+Ebben az önálló példányban a Spark-verem a hívó ügyfélprogramban fut. Ez a funkció gyorsabbá és egyszerűbbé teszi a problémák elhárítását a Spark-fürtön való fejlesztéshez képest.
 
-Mielőtt a-t a Machine Learning Server Spark-környezetében futtatja, végre kell hajtania egy egyszeri telepítési lépést, amely lehetővé teszi a helyi egycsomópontos Hadoop-HDFS és a fonal-példányok engedélyezését. Alapértelmezés szerint Hadoop-szolgáltatásokhoz vannak telepítve, de a dsvm-hez a letiltva. A Hadoop-szolgáltatások engedélyezéséhez futtassa a következő parancsokat root-ként az első alkalommal:
+A Jupyter egy minta PySpark-jegyzetfüzetet biztosít. A SparkML-könyvtárban, a Jupyter ($HOME/notebook/SparkML/pySpark) kezdőkönyvtárában található. 
+
+Ha az R for Spark ban programoz, használhatja a Machine Learning Server, sparkr vagy sparklyr. 
+
+Mielőtt spark-környezetben futtatná a Machine Learning Serverben, egy egyszeri beállítási lépést kell tennie egy helyi egycsomópontos Hadoop HDFS- és YARN-példány engedélyezéséhez. Alapértelmezés szerint a Hadoop-szolgáltatások telepítve vannak, de le vannak tiltva a DSVM-en. A Hadoop-szolgáltatások engedélyezéséhez első alkalommal futtassa a következő parancsokat gyökérként:
 
 ```bash
 echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
@@ -141,129 +141,129 @@ chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
 systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 ```
 
-A Hadoop kapcsolódó szolgáltatásokat leállíthatja, ha nincs szüksége rájuk a `systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn`futtatásával.
+A Hadoopszolgáltatás leállításához, ha nincs rájuk szüksége, `systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn`a futtatásával leállíthatja.
 
-A/dsvm/samples/MRS könyvtár egy olyan mintát biztosít, amely bemutatja, hogyan fejleszthető és tesztelhető Machine Learning Server egy távoli Spark-környezetben (az önálló Spark-példány a DSVM).
+A /dsvm/samples/MRS könyvtár egy minta, amely bemutatja, hogyan fejleszti és teszteli a Machine Learning Server egy távoli Spark-környezetben (az önálló Spark-példány a DSVM).
 
-## <a name="ides-and-editors"></a>Ide-ket és a szerkesztőknek
+## <a name="ides-and-editors"></a>IDEs és szerkesztők
 
-Számos Kódszerkesztő közül választhat, például a VI/VIM, az Emacs, a gedit, a Notebookshoz, a RStudio, az Eclipse, a LaTeX és a IntelliJ. 
+Számos kódszerkesztő közül választhat, például a vi/VIM, az Emacs, a Gedit, a PyCharm, az RStudio, az Eclipse, a LaTeX és az IntelliJ. 
 
-* a gedit, az Eclipse, a IntelliJ, az R Studio és a Notebookshoz grafikus szerkesztők. A használatához be kell jelentkeznie egy grafikus asztalra. Az asztal és az alkalmazás menü parancsikonjainak használatával nyithatja meg őket.
+* Gedit, Eclipse, IntelliJ, R Studio, és PyCharm grafikus szerkesztők. A használatukhoz be kell jelentkeznie egy grafikus asztalra. Az asztal és az alkalmazás menüjének parancsikonjai segítségével nyithatja meg őket.
 
-* A Vim és az Emacs szöveg-alapú szerkesztők. Az EBS-ben az ESS-bővítmény csomag megkönnyíti az R használatát az Emacs szerkesztőben. További információkat az [ESS webhelyén](https://ess.r-project.org/)talál.
+* A Vim és az Emacs szövegalapú szerkesztők. Az Emacs-en az ESS kiegészítő csomag megkönnyíti az R-rel való munkát az Emacs szerkesztőben. További információt az [ESS honlapján](https://ess.r-project.org/)talál.
 
-* Az Eclipse egy nyílt forráskódú, bővíthető IDE, amely több nyelvet támogat. A Java-fejlesztőknek készült Eclipse IDE a DSVM telepített verzió. Több népszerű nyelvhez is telepíthet beépülő modulokat a környezet kiterjesztéséhez. 
+* Eclipse egy nyílt forráskódú, bővíthető IDE, amely támogatja a több nyelven. Eclipse IDE for Java Developers a DSVM-re telepített verzió. A környezet bővítéséhez több népszerű nyelvhez is telepíthet beépülő modulokat. 
 
-  A Azure Toolkit for Eclipse beépülő modul az Eclipse-sel van telepítve a DSVM. Az Azure-alkalmazások létrehozásához, fejlesztéséhez, teszteléséhez és üzembe helyezéséhez használhatja a Azure Toolkit for Eclipse alkalmazást, amely támogatja a Java-hoz hasonló nyelveket támogató Eclipse fejlesztői környezetet.
+  Az Azure Toolkit for Eclipse beépülő modul az Eclipse-rel van telepítve a DSVM-en. Az Azure Toolkit for Eclipse segítségével azure-alkalmazásokat hozhat létre, fejleszthet, tesztelhet és telepíthet az Eclipse fejlesztői környezetben, amely támogatja a Java nyelvet.
 
-  A Javához készült Azure SDK is telepítve van a DSVM Azure Toolkit for Eclipse. A Javához készült Azure SDK hozzáférést biztosít különböző Azure-szolgáltatásokhoz Java-környezeten belül. 
+  Az Azure SDK Java-hoz is telepítve van az Azure Toolkit for Eclipse a DSVM.The Azure SDK for Java is installed with the Azure Toolkit for Eclipse on the DSVM. Az Azure SDK Java-hoz hozzáférést biztosít a különböző Azure-szolgáltatások egy Java-környezetben. 
   
-  További információ: [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse).
+  További információkért lásd: [Az Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse).
 
-* A LaTeX a texlive-csomagon keresztül települ, valamint egy [AUCTeX](https://www.gnu.org/software/auctex/manual/auctex/auctex.html)nevű Emacs-bővítményi csomaggal. Ez a csomag egyszerűsíti a LaTeX-dokumentumok készítését az Emacs-ben. 
+* A LaTeX a texlive csomagon keresztül van telepítve, valamint egy Emacs kiegészítő csomag, az [AUCTeX](https://www.gnu.org/software/auctex/manual/auctex/auctex.html). Ez a csomag leegyszerűsíti a LaTeX dokumentumok emacs-i szerkesztését. 
 
 ## <a name="databases"></a>Adatbázisok
 
-A Linux DSVM számos adatbázishoz és parancssori eszközhöz biztosít hozzáférést.
+A Linux DSVM hozzáférést biztosít számos adatbázishoz és parancssori eszközhöz.
 
 ### <a name="postgressql"></a>PostgresSQL
 
-A nyílt forráskódú adatbázis PostgresSQL elérhető a DSVM, és a initdb-t futtató szolgáltatások befejeződtek. Adatbázisokat és felhasználókat kell létrehoznia. További információkért tekintse meg a [PostgresSQL dokumentációját](https://www.postgresql.org/docs/).  
+A PostgresSQL nyílt forráskódú adatbázis elérhető a DSVM-en, a szolgáltatások futnak és az initdb befejeződött. Létre kell hoznia adatbázisokat és felhasználókat. További információt a [PostgresSQL dokumentációjában](https://www.postgresql.org/docs/)talál.  
 
-### <a name="squirrel-sql"></a>Mókus SQL
+### <a name="squirrel-sql"></a>SQuirreL SQL
 
-A mókus SQL egy grafikus SQL-ügyfél, amely különböző adatbázisokhoz (többek között a SQL Server, a PostgresSQL és a MySQL-hez) és SQL-lekérdezések futtatásához is csatlakozhat. A mókus SQL-t futtathatja grafikus asztali munkamenetből (például a X2Go-ügyfélen keresztül) egy asztali ikon használatával. Vagy futtathatja az ügyfelet a következő parancs használatával a rendszerhéjban:
+A SQuirreL SQL egy grafikus SQL-ügyfél, amely különböző adatbázisokhoz tud csatlakozni (beleértve az SQL Servert, a PostgresSQL-t és a MySQL-t), és SQL-lekérdezéseket futtat. A SQuirreL SQL-t grafikus asztali munkamenetből futtathatja (például az X2Go ügyfélen keresztül) egy asztali ikon használatával. Vagy futtathatja az ügyfelet a következő paranccsal a rendszerhéjban:
 
 ```bash
 /usr/local/squirrel-sql-3.7/squirrel-sql.sh /usr/local/squirrel-sql-3.7/squirrel-sql.sh
 ```
 
-Az első használata előtt az illesztőprogramok és adatbázis-aliasok beállítása. A JDBC-illesztőprogramok a következő helyen találhatók:/usr/share/Java/jdbcdrivers.
+Az első használat előtt állítsa be az illesztőprogramokat és az adatbázis-aliasokat. A JDBC illesztőprogramok a /usr/share/java/jdbcdrivers helyen találhatók.
 
-További információ: [mókus SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots).
+További információ: [SQuirreL SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots).
 
-### <a name="command-line-tools-for-accessing-sql-server"></a>SQL Serverhoz való hozzáféréshez használható parancssori eszközök
+### <a name="command-line-tools-for-accessing-sql-server"></a>Parancssori eszközök az SQL Server eléréséhez
 
-Az ODBC illesztőprogram-csomagot az SQL Server is két parancssori eszközöket is tartalmaz:
+Az SQL Server ODBC illesztőprogram-csomagja két parancssori eszközt is tartalmaz:
 
-* **BCP**: a BCP-eszköz tömegesen másol egy SQL Server egy példánya és egy, a felhasználó által megadott formátumban tárolt adatfájl között. A BCP eszközzel nagy számú új sort importálhat SQL Server táblákba, vagy exportálhatja a táblákból az adatokból az adatfájlokat. Az adattáblázatba való importáláshoz az adott táblához létrehozott formátumú fájlt kell használnia. Vagy tisztában kell lennie a tábla struktúrájával és az oszlopokhoz érvényes adattípusokkal.
+* **bcp**: A bcp eszköz tömegesen másolja az adatokat az SQL Server egy példánya és egy, a felhasználó által megadott formátumban megadott adatfájl között. Az bcp eszközzel nagy számú új sort importálhat az SQL Server táblákba, vagy adatokat exportálhat táblákból adatfájlokba. Ha adatokat szeretne behozni egy táblába, a táblához létrehozott formátumfájlt kell használnia. Vagy meg kell értenie a tábla szerkezetét és az oszlopokra érvényes adattípusokat.
 
-  További információ: [kapcsolat a BCP-vel](https://msdn.microsoft.com/library/hh568446.aspx).
+  További információ: [Connect with bcp](https://msdn.microsoft.com/library/hh568446.aspx).
 
-* **Sqlcmd**: a Sqlcmd segédprogrammal megadhatja a Transact-SQL-utasításokat, a rendszerfolyamatokat és a parancsfájlokat a parancssorban. A Sqlcmd segédprogram ODBC-t használ a Transact-SQL-kötegek végrehajtásához.
+* **sqlcmd**: Az sqlcmd segédprogrammal transact-SQL utasításokat, rendszereljárásokat és parancsfájlokat adhat meg a parancssorba. Az sqlcmd segédprogram AZ ODBC segítségével hajtja végre a Transact-SQL kötegeket.
 
-  További információ: [a Sqlcmd való kapcsolat](https://msdn.microsoft.com/library/hh568447.aspx).
+  További információ: [Connect with sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx).
 
   > [!NOTE]
-  > Ez az eszköz a Linux és a Windows platform közötti különbségeket is tárgyalja. A részletek dokumentációjában talál.
+  > Van néhány különbség ebben az eszközben a Linux és a Windows platformok között. A részleteket lásd a dokumentációban.
 
-### <a name="database-access-libraries"></a>Adatbázis-hozzáférés kódtárak
+### <a name="database-access-libraries"></a>Adatbázis-hozzáférési tárak
 
-Az adatbázis-hozzáférés kódtárai az R és a Python alkalmazásban érhetők el:
+Az adatbázis-hozzáférés tárai r- és python-ban érhetők el:
 
-* Az R-ben a RODBC csomag vagy dplyr csomag használatával kérdezheti le és futtathatja az SQL-utasításokat az adatbázis-kiszolgálón.
-* A Pythonban a pyodbc függvénytár adatbázis-hozzáférést biztosít az ODBC-vel az alapul szolgáló rétegként.
+* Az R-ben az RODBC-csomag vagy a dplyr-csomag segítségével lekérdezheti vagy futtathatja az SQL-utasításokat az adatbázis-kiszolgálón.
+* A Pythonban a pyodbc könyvtár adatbázis-hozzáférést biztosít az ODBC-vel, mint az alapul szolgáló réteggel.
 
 ## <a name="azure-tools"></a>Azure-eszközök
 
-A következő Azure-eszközök vannak telepítve a DSVM:
+A következő Azure-eszközök vannak telepítve a DSVM-en:
 
-* **Azure CLI**: az Azure parancssori felületének használatával Azure-erőforrásokat hozhat létre és kezelhet a rendszerhéj-parancsokkal. Az Azure-eszközök megnyitásához adja meg az **Azure súgóját**. További információkért tekintse meg az [Azure CLI dokumentációs oldalát](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Azure Storage Explorer**: a Azure Storage Explorer egy grafikus eszköz, amellyel böngészhet az Azure Storage-fiókban tárolt objektumokon, valamint az Azure-blobokból és az onnan érkező adatok feltöltésével és letöltésével. Storage Explorer asztali parancsikonjára ikonra kattintva érheti el. A **StorageExplorer**megadásával is megnyithatja azt egy rendszerhéj-parancssorból. Be kell jelentkeznie egy X2Go-ügyfélről, vagy be kell állítania az X11-továbbítást.
-* **Azure-kódtárak**: a következő kódtárak vannak előtelepítve a DSVM:
+* **Azure CLI:** Az Azure parancssori felületén létrehozhat és kezelhet Azure-erőforrásokat shell parancsokon keresztül. Az Azure-eszközök megnyitásához írja be az **azure súgóját.** További információt az [Azure CLI dokumentációs oldalán talál.](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
+* **Azure Storage Explorer:** Az Azure Storage Explorer egy grafikus eszköz, amellyel az Azure storage-fiókjában tárolt objektumok között böngészhet, valamint adatokat tölthet fel és tölthet le az Azure-blobokba és onnan. A Storage Explorer az asztal parancsikonjának ikonjáról érhető el. Shell parancssorból is megnyithatja a StorageExplorer ( **StorageExplorer**) parancsba való belépésével. X2Go ügyfélről kell bejelentkeznie, vagy be kell állítania az X11 továbbítást.
+* **Azure-kódtárak:** A következő kódtárak elővannak telepítve a DSVM-en:
   
-  * **Python**: az Azure-hoz kapcsolódó kódtárak a Pythonban az *Azure*, a *azureml*, a *pydocumentdb*és a *pyodbc*. Az első három kódtárakat elérheti az Azure storage services, Azure Machine Learning és az Azure Cosmos DB (NoSQL-adatbázis az Azure-ban). A negyedik kódtára, pyodbc (valamint a Microsoft ODBC-illesztőprogram SQL Serverhez), lehetővé teszi a hozzáférést az SQL Server, az Azure SQL Database és az Azure SQL Data Warehouse a Python egy ODBC-felület használatával. Az összes felsorolt könyvtár megjelenítéséhez adja meg a **pip-listát** . Győződjön meg arról, a parancs futtatása a Python 2.7-es és 3.5-ös környezetben.
-  * **R**: az Azure-beli, r-hez kapcsolódó kódtárak a AzureML és a RODBC.
-  * **Java**: az Azure Java-kódtárak listája a dsvm címtár/dsvm/SDK/AzureSDKJava található. A kulcs függvénytárak is az Azure storage és a felügyeleti API-k, az Azure Cosmos DB és a JDBC illesztőprogramok az SQL Server.  
+  * **Python**: A Python Azure-ral kapcsolatos kódtárai *az azure,* *az azureml*, *pydocumentdb*és *pyodbc.* Az első három kódtárak, elérheti az Azure storage-szolgáltatások, az Azure Machine Learning és az Azure Cosmos DB (a NoSQL-adatbázis az Azure-ban). A negyedik könyvtár, a pyodbc (az SQL Server Microsoft ODBC illesztőprogramjával együtt) odBC-felülethasználatával engedélyezi az SQL Server, az Azure SQL Database és az Azure SQL Data Warehouse elérését a Pythonból. Írja be **a pip listát** az összes felsorolt tárak megtekintéséhez. Győződjön meg róla, hogy futtassa ezt a parancsot a Python 2.7 és 3.5 környezetben.
+  * **R**: Az Azure-ral kapcsolatos tárak R AzureML és RODBC.
+  * **Java**: Az Azure Java-kódtárak listája megtalálható a /dsvm/sdk/AzureSDKJava könyvtárban a DSVM-en. A legfontosabb kódtárak az Azure storage és felügyeleti API-k, az Azure Cosmos DB és az SQL Server JDBC-illesztőprogramjai.  
 
-A [Azure Portal](https://portal.azure.com) az előre telepített Firefox böngészőből érheti el. A Azure Portal az Azure-erőforrások létrehozását, kezelését és figyelését teszi elérhetővé.
+Az Azure [Portalaz](https://portal.azure.com) előre telepített Firefox böngészőből érhető el. Az Azure Portalon azure-erőforrásokat hozhat létre, kezelhet és figyelhet.
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-A Azure Machine Learning egy teljes körűen felügyelt felhőalapú szolgáltatás, amely prediktív elemzési megoldások készítésére, üzembe helyezésére és megosztására használható. A kísérleteket és modelleket a Azure Machine Learning Studio (klasszikus) hozza létre. Ha Azure Machine Learning webböngészőből szeretne hozzáférni a DSVM, nyissa meg a [Microsoft Azure Machine learning](https://studio.azureml.net).
+Az Azure Machine Learning egy teljes körűen felügyelt felhőszolgáltatás, amely segítségével prediktív elemzési megoldásokat hozhat létre, helyezhet üzembe és oszthat meg. A kísérleteket és a modelleket az Azure Machine Learning Studio (klasszikus) segítségével hozhatja létre. Az Azure Machine Learning dsvm-alapú webböngészőből való eléréséhez nyissa meg a [Microsoft Azure Machine Learning](https://studio.azureml.net)et.
 
-Miután bejelentkezett Azure Machine Learning Studioba (klasszikus), a kísérletezési vászon használatával létrehozhat egy logikai folyamatot a gépi tanulási algoritmusokhoz. Egy Azure Machine Learning-on üzemeltetett Jupyter Notebookhoz is hozzáférhet. A jegyzetfüzet zökkenőmentesen használható a Azure Machine Learning Studio (klasszikus) kísérletek során. 
+Miután bejelentkezik az Azure Machine Learning Studio (klasszikus), egy kísérletezési vászon segítségével logikai folyamatot hozhat létre a gépi tanulási algoritmusok. Az Azure Machine Learning üzemeltetett Jupyter-jegyzetfüzethez is hozzáférhet. A jegyzetfüzet zökkenőmentesen működhet az Azure Machine Learning Studio (klasszikus) kísérleteivel. 
 
-Működővé tenni azokat a gépi tanulási modelleket, amelyeket a webszolgáltatási felületen való becsomagolással épít ki. A végrehajtott Machine learning-modellek lehetővé teszik bármely nyelven írt ügyfelek számára az előrejelzések meghívását ezekből a modellből. További információ: [Machine learning dokumentáció](https://azure.microsoft.com/documentation/services/machine-learning/).
+Működőképessé a gépi tanulási modellek, amelyek et hoz létre a webszolgáltatás-felületen csomagolva őket. A gépi tanulási modellek üzembe írása lehetővé teszi, hogy a bármilyen nyelven írt ügyfelek meghívja az adott modellek től származó előrejelzéseket. További információt a [Machine Learning dokumentációjában](https://azure.microsoft.com/documentation/services/machine-learning/)talál.
 
-Az R-vagy Python-modelleket az DSVM is létrehozhatja, majd éles környezetben helyezheti üzembe azokat Azure Machine Learning. A Microsoft az R (**AzureML**) és a Python (**AzureML**) függvénytárait telepítette a funkció támogatásához.
+A modellek r vagy python a DSVM, majd üzembe helyezheti őket éles környezetben az Azure Machine Learning. A Microsoft telepített könyvtárak R (**AzureML**) és python (**azureml**) támogatja ezt a funkciót.
 
-További információ az R-és Python-modellek Azure Machine Learning való üzembe helyezéséről: [tíz dolog, amit elvégezhet a Data Science Virtual Machine](vm-do-ten-things.md).
+Az R és Python modellek Azure Machine Learningben való üzembe helyezéséről [a Tíz dolog, amit az adatelemzési virtuális gépen tehet.](vm-do-ten-things.md)
 
 > [!NOTE]
-> A DSVM Windows-verziójára vonatkozóan a Data Science Virtual Machineon elvégezhető [tíz dologra](vm-do-ten-things.md) vonatkozó utasításokat. A modellek Azure Machine Learning való üzembe helyezésére vonatkozó információk azonban a Linux-DSVM is érvényesek.
+> Az [adatelemzési virtuális gépen tíz dologban](vm-do-ten-things.md) található utasításokat a DSVM Windows-verziójához írták. Azonban a modellek üzembe helyezéséről szóló információk az Azure Machine Learning is vonatkozik a Linux DSVM.
 
-## <a name="machine-learning-tools"></a>Machine learning eszközök
+## <a name="machine-learning-tools"></a>Gépi tanulási eszközök
 
-A DSVM néhány gépi tanulási eszközt és algoritmust tartalmaz, amelyek előre le vannak fordítva, és helyileg vannak előtelepítve. Ezek a következők:
+A DSVM néhány gépi tanulási eszközt és algoritmust tartalmaz, amelyek előre levannak fordítva és helyileg előre telepítve vannak. Ezek a következők:
 
-* **Microsoft Cognitive Toolkit**: mélyreható tanulási eszközkészlet.
-* **Vowpal Wabbit**: gyors online tanulási algoritmus.
-* **XGBoost**: olyan eszköz, amely optimalizált, növelt fa algoritmusokat biztosít.
-* **Python**: a anaconda Python a gépi tanulási algoritmusokkal, például a Scikit-Learn csomaggal rendelkezik. A `pip install` parancs használatával más kódtárakat is telepíthet.
-* **R**: a gépi tanulási függvények széles tárháza érhető el az r-hez. az előre telepített kódtárak közé tartozik az LM, a GLM, a randomForest és a rpart. `install.packages(<lib name>)`futtatásával más kódtárakat is telepíthet.
+* **Microsoft Cognitive Toolkit**: Mélytanulási eszközkészlet.
+* **Vowpal Wabbit**: A gyors online tanulási algoritmus.
+* **XGBoost**: Olyan eszköz, amely optimalizált, kiemelt fa algoritmusok.
+* **Python:** Anaconda Python jön csomagban gépi tanulási algoritmusok könyvtárak, mint a Scikit-learn. A parancs segítségével más `pip install` könyvtárakat is telepíthet.
+* **R**: A gépi tanulási funkciók gazdag könyvtára érhető el az R. Előtelepített könyvtárak közé tartozik lm, glm, randomForest és rpart. Más könyvtárakat is `install.packages(<lib name>)`telepíthet a futtatásával.
 
-A következő szakaszokban részletesen ismertetjük a Microsoft Cognitive Toolkit, a Vowpal Wabbit és a XGBoost.
+A Microsoft Cognitive Toolkit, vowpal Wabbit és XGBoost részletesebben tárgyalja a következő szakaszokban.
 
 ### <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 
-A Microsoft Cognitive Toolkit egy nyílt forráskódú Deep learning-eszközkészlet. Ez egy parancssori eszköz (CNTK), amely már szerepel az elérési úton.
+A Microsoft Cognitive Toolkit egy nyílt forráskódú deep learning eszközkészlet. Ez egy parancssori eszköz (CNTK), és már a PATH.
 
-Alapszintű minta futtatásához futtassa a következő parancsokat a rendszerhéjban:
+Alapminta futtatásához futtassa a következő parancsokat a rendszerhéjban:
 
 ```bash
 cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
 cntk configFile=lr_bs.cntk makeMode=false command=Train
 ```
 
-További információ: [GITHUB CNTK adattár](https://github.com/Microsoft/CNTK) és a [CNTK wiki](https://github.com/Microsoft/CNTK/wiki).
+További információt a [GitHub CNTK tárházban](https://github.com/Microsoft/CNTK) és a [CNTK wikiben](https://github.com/Microsoft/CNTK/wiki)talál.
 
 ### <a name="vowpal-wabbit"></a>Vowpal Wabbit
 
-A Vowpal Wabbit olyan gépi tanulási rendszer, amely online, kivonatoló, allreduce, csökkentéseket, learning2search, aktív és interaktív tanulási módszereket használ.
+Vowpal Wabbit egy gépi tanulási rendszer, amely olyan technikákat használ, mint az online, hashing, allreduce, csökkentések, learning2search, aktív és interaktív tanulás.
 
-Az eszköz alapszintű példán való futtatásához futtassa a következő parancsokat:
+Ha az eszközt egy egyszerű példán szeretné futtatni, futtassa a következő parancsokat:
 
 ```bash
 cp -r /dsvm/tools/VowpalWabbit/demo vwdemo
@@ -271,17 +271,17 @@ cd vwdemo
 vw house_dataset
 ```
 
-A Vowpal Wabbit bemutató könyvtára más, nagyobb bemutatókat is tartalmaz. További információ a Vowpal Wabbit: [GitHub Vowpal Wabbit adattár](https://github.com/JohnLangford/vowpal_wabbit) és a [Vowpal Wabbit wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki).
+A Vowpal Wabbit demo könyvtár tartalmaz más, nagyobb demók. További információ a Vowpal Wabbit, lásd a [GitHub Vowpal Wabbit repository](https://github.com/JohnLangford/vowpal_wabbit) és a [Vowpal Wabbit wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki).
 
-### <a name="xgboost"></a>XGBoost
+### <a name="xgboost"></a>Xgboost
 
-A XGBoost-könyvtár kialakítva és optimalizálva lett a kifejleszthető (fa) algoritmusokhoz. A XGBoost-könyvtár célja, hogy leküldse a gépek számítási korlátait a nagy léptékű faszerkezetes növekedéshez, amely méretezhető, hordozható és pontos.
+Az XGBoost könyvtárat a kiemelt (fa) algoritmusokra tervezték és optimalizálták. Az XGBoost könyvtár célja, hogy a gépek számítási korlátait a méretezhető, hordozható és pontos nagyméretű fakiemelés biztosításához szükséges szélsőségekre tolja.
 
-A XGBoost parancssori és R-függvénytárként van megadva.
+Az XGBoost parancssorból és R könyvtárként érhető el.
 
-Ha az R-ben a XGBoost-könyvtárat szeretné használni, indítson el egy interaktív R-munkamenetet (a rendszerhéjban írja be az **r**-t), majd töltse be a könyvtárat.
+Az R XGBoost könyvtárának használatához indítson el egy interaktív R-munkamenetet (a rendszerhéjban írja be az **R**értéket), majd töltse be a könyvtárat.
 
-Az alábbi egyszerű példa az R parancssorban futtatható:
+Íme egy egyszerű példa, amelyet futtathat az R parancssorban:
 
 ```R
 library(xgboost)
@@ -295,7 +295,7 @@ bst <- xgboost(data = train$data, label = train$label, max.depth = 2,
 pred <- predict(bst, test$data)
 ```
 
-A XGBoost parancssor futtatásához futtassa a következő parancsokat a rendszerhéjban:
+Az XGBoost parancssor futtatásához futtassa a következő parancsokat a rendszerhéjban:
 
 ```bash
 cp -r /dsvm/tools/xgboost/demo/binary_classification/ xgboostdemo
@@ -303,46 +303,46 @@ cd xgboostdemo
 xgboost mushroom.conf
 ```
 
-A rendszer a megadott könyvtárba írja a. Model fájlt. További információ a GitHubon futó bemutatóról: [bináris besorolás](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification).
+A .model fájl a megadott könyvtárba íródik. Erről a bemutatópéldáról a GitHubon a [Bináris besorolás című](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification)témakörben talál további információt.
 
-A XGBoost kapcsolatos további információkért tekintse meg a [XGBoost dokumentációját](https://xgboost.readthedocs.org/en/latest/) és a [XGBoost GitHub-tárházat](https://github.com/dmlc/xgboost).
+Az XGBoost-ról további információt az [XGBoost dokumentációjában](https://xgboost.readthedocs.org/en/latest/) és az [XGBoost GitHub tárházban](https://github.com/dmlc/xgboost)talál.
 
 ### <a name="rattle"></a>Rattle
 
-A csörgő (*R* *A*analitikus *t*OOL *t*o *L*keres *E*asily) GUI-alapú adatelemzést és modellezést használ. Csörgő
-- Statisztikai és vizuális összefoglalókat jelenít meg.
-- A könnyen modellezhető adattípusokat alakítja át.
-- A nem felügyelt és felügyelt modelleket is létrehoz az adatokból.
+Rattle *(R* *A*nalytical *T*ool *T*o *L*keresni *E*könnyen) használ GUI-alapú adatok feltárása és modellezése. Csörgő:
+- Az adatok statisztikai és vizuális összegzését mutatja be.
+- Átalakítja a könnyen modellezhető adatokat.
+- Felügyelet nélküli és felügyelt modelleket is készít az adatokból.
 - Grafikusan mutatja be a modellek teljesítményét.
-- Az új adatkészletek pontszáma.
-- R-kód generálása.
-- Azokat a műveleteket replikálja a felhasználói felületen, amelyek közvetlenül az R-ben futtathatók, vagy további elemzés céljából használható kiindulási pontként.
+- Új adatkészletek felsorakezése.
+- R-kódot hoz létre.
+- Replikálja a felhasználói felületen futtatható műveleteket, amelyek közvetlenül az R-ben futtathatók, vagy további elemzés kiindulópontjaként használhatók.
 
-A csörgő futtatásához be kell jelentkeznie egy grafikus asztali munkamenetbe. A terminálban az **r** érték megadásával nyissa meg az r-környezetet. Az R a parancssorba írja be a következő parancsokat:
+A Rattle futtatásához be kell jelentkeznie egy grafikus asztali munkamenetbe. A terminálon adja meg az **R** értéket az R környezet megnyitásához. Az R parancssorba írja be a következő parancsokat:
 
 ```R
 library(rattle)
 rattle()
 ```
 
-Megnyílik egy grafikus felület, amely egy készlettel rendelkezik. A következő rövid útmutató lépéseit használhatja a Csörgőben egy minta időjárási adathalmaz használatához és egy modell létrehozásához. Néhány lépés során a rendszer felszólítja, hogy automatikusan telepítsen és töltsön be néhány szükséges R-csomagot, amely még nem szerepel a rendszeren.
+Megnyílik egy grafikus felület, amely lapkészlettel rendelkezik. A Rattle következő rövid útmutató lépései segítségével használjon egy időjárási adatkészletet, és hozzon létre egy modellt. Néhány lépésben a rendszer kéri, hogy automatikusan telepítsen és töltsön be néhány szükséges R-csomagot, amelyek még nem szerepelnek a rendszeren.
 
 > [!NOTE]
-> Ha nincs engedélye a csomag telepítésére a rendszerkönyvtárban (ez az alapértelmezett beállítás), az R-konzolon megjelenik egy üzenet, hogy csomagokat telepítsen a személyes tárba. Ha ezeket az utasításokat látja, írja be az **y**értéket.
+> Ha nincs engedélye a csomag nak a rendszerkönyvtárba való telepítéséhez (ez az alapértelmezett), az R konzol ablakában megjelenik egy üzenet a csomagok személyes könyvtárba való telepítésére. Ha megjelennek ezek a kérések, írja be **az y**.
 
 1. Válassza a **Végrehajtás** lehetőséget.
-1. Megjelenik egy párbeszédpanel, amely a példa időjárási adatkészletének betöltését kéri. A példa betöltéséhez válassza az **Igen** lehetőséget.
-1. Válassza a **modell** fület.
-1. Döntési fa létrehozásához válassza a **végrehajtás** elemet.
-1. Válassza a **Rajzolás** lehetőséget a döntési fa megjelenítéséhez.
-1. Válassza az **erdő** lehetőséget, majd válassza a **végrehajtás** lehetőséget egy véletlenszerű erdő kiépítéséhez.
-1. Válassza ki a **kiértékelés** lapot.
-1. Válassza ki a **kockázat** lehetőséget, majd válassza a **végrehajtás** elemet a két **kockázatos (halmozott)** teljesítménybeli ábrázolás megjelenítéséhez.
-1. Válassza a **napló** lapot, hogy megjelenjen az előző műveletekhez generált R-kód. (A csörgő jelenlegi kiadásának hibája miatt be kell szúrnia egy **#** karaktert a log szövegbe való **Exportálás** előtt.)
-1. A weather_script nevű R-parancsfájl mentéséhez kattintson az **Exportálás** gombra *. Az R* -t a kezdőmappa mappájába.
+1. Egy párbeszédpanel en a példa időjárási adatkészletének betöltése. A példa betöltéséhez válassza az **Igen** lehetőséget.
+1. Válassza a **Modell** lapot.
+1. Döntési fa létrehozásához válassza a **Végrehajtás** lehetőséget.
+1. A **döntési** fa megjelenítéséhez válassza a Rajz lehetőséget.
+1. Válassza az **Erdő** beállítást, majd a **Végrehajtás** lehetőséget véletlenszerű erdő létrehozásához.
+1. Válassza a **Kiértékelés** lapot.
+1. Válassza a **Kockázat** beállítást, majd a **Végrehajtás** lehetőséget két **kockázati (göngyölt)** teljesítményminta megjelenítéséhez.
+1. A **Napló** lapon megjelenik az előző műveletek létrehozott R-kódja. (A Rattle aktuális kiadásában található hiba miatt **#** be kell szúrnia egy karaktert a **napló exportálása** elé a napló szövegében.)
+1. Az **Exportálás** gombra kattintva mentse a weather_script nevű R *parancsfájlt. R* a saját mappába.
 
-Kiléphet a csörgő és az R lehetőségből. Most már módosíthatja a generált R-szkriptet. Használhatja a parancsfájlt is, és bármikor futtathatja, hogy megismételje a csörgő felhasználói felületen végzett összes műveletet. Különösen az R-ben kezdők számára, így gyorsan végezheti el az elemzést és a gépi tanulást egy egyszerű grafikus felületen, miközben az R-ben automatikusan generál kódot a módosításhoz vagy a tanuláshoz.
+Kiléphet a Rattle és R-ből. Most már módosíthatja a generált R parancsfájlt. Vagy használja a parancsfájlt, ahogy van, és futtassa bármikor, hogy ismételje meg mindent, ami történt a Rattle UI. Különösen a kezdők r, ez egy módja annak, hogy gyorsan nem elemzés és a gépi tanulás egy egyszerű grafikus felület, miközben automatikusan generál kódot R módosítani vagy a tanulás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További kérdései vannak? Hozzon létre egy [támogatási jegyet](https://azure.microsoft.com/support/create-ticket/).
+További kérdései vannak? Fontolja meg egy [támogatási jegy](https://azure.microsoft.com/support/create-ticket/)létrehozását.

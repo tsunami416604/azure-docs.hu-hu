@@ -1,101 +1,101 @@
 ---
-title: A konzul áttekintése
-description: A konzul áttekintésének beszerzése
+title: Konzul áttekintése
+description: A konzul áttekintése
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: c518985b360fa3264bd5ac1e3fe76d61b2810b9b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594209"
 ---
 # <a name="consul"></a>Konzul
 
 ## <a name="overview"></a>Áttekintés
 
-A [konzul][consul] egy több adatközpontot támogató Service hálózatkezelési megoldás, amely a szolgáltatásokhoz való kapcsolódást és biztonságos szolgáltatásokat biztosít a futásidejű platformokon. A [kapcsolat][consul-features] a Service Mesh képességeket biztosító összetevő.
+[A Consul][consul] egy több adatközpont-tudatos szolgáltatáshálózati megoldás a szolgáltatások futásidejű platformokon történő összekapcsolására és biztonságossá tétele érdekében. [A Csatlakozás][consul-features] az az összetevő, amely szolgáltatásháló-képességeket biztosít.
 
 ## <a name="architecture"></a>Architektúra
 
-A konzul olyan adatsíkokat biztosít, amely alapértelmezés szerint a [megbízott][envoy-proxy]-alapú [oldalkocsiból][consul-sidecar] áll. A konzul egy csatlakoztatható proxy architektúrával rendelkezik. Ezek az intelligens proxyk a hálózott alkalmazások és munkaterhelések összes hálózati forgalmát vezérlik.
+Consul biztosít egy adatsík, amely áll [követ][envoy-proxy]-alapú [oldalkocsik][consul-sidecar] alapértelmezés szerint. A konzul csatlakoztatható proxyarchitektúrával rendelkezik. Ezek az intelligens proxyk szabályozzák az összes hálózati forgalmat az egybeesített alkalmazásokban és számítási feladatokban.
 
-A vezérlő síkja a következő [összetevőkön][consul-architecture]keresztül kezeli a konfigurációt és a szabályzatot:
+A vezérlősík a következő összetevőkön keresztül kezeli a konfigurációt és a [házirendet:][consul-architecture]
 
-- **Kiszolgáló** – a konzuli fürt állapotát fenntartó kiszolgáló módban futó konzuli ügynök.
+- **Kiszolgáló** – A konzuli fürtállapotot fenntartó kiszolgálómódban futó konzuli ügynök.
 
-- **Client** – egy egyszerű ügyfél módban futó konzuli ügynök. Minden számítási csomópontnak rendelkeznie kell futtató ügynökkel. Ez az ügyfél a munkaterhelések és a konzuli konfiguráció közötti konfigurációt és házirendet közvetíti. 
+- **Ügyfél** – Könnyű ügyfélmódban futó konzuli ügynök. Minden számítási csomópontnak rendelkeznie kell egy futó ügyfélügynökkel. Ez az ügyfél brókerek konfiguráció és a szabályzat a számítási feladatok és a konzul konfigurációközött. 
 
-A következő architektúra-diagram azt mutatja be, hogy az adatsíkon és a vezérlési síkon lévő különböző összetevők hogyan hatnak egymásra.
+Az alábbi architektúradiagram bemutatja, hogy az adatsíkon és a vezérlősíkon belüli különböző összetevők hogyan hatnak egymásra.
 
-![A konzul összetevőinek és architektúrájának áttekintése.](media/servicemesh/consul/about-architecture.png)
+![A konzuli összetevők és az architektúra áttekintése.](media/servicemesh/consul/about-architecture.png)
 
 
-## <a name="selection-criteria"></a>Kiválasztási feltételek
+## <a name="selection-criteria"></a>Kiválasztási kritériumok
 
-Fontos megérteni és figyelembe venni a következő területeket a konzul kiértékelése során a számítási feladatokhoz:
+Fontos, hogy a számítási feladatok konzuljának értékelésekor megértse és figyelembe vegye a következő területeket:
 
-- [Konzuli alapelvek](#consul-principles)
-- [Képességek](#capabilities)
+- [Konzuli elvek](#consul-principles)
+- [Funkciók](#capabilities)
 - [Forgatókönyvek](#scenarios)
 
 
-### <a name="consul-principles"></a>Konzuli alapelvek
+### <a name="consul-principles"></a>Konzuli elvek
 
-A következő alapelvek a konzuli projektet [ismertetik][consul-principles] :
+A konzuli projektet a következő elvek [vezérelik:][consul-principles]
 
-- **API-vezérelt** – az összes konfiguráció és házirend kodifikálása.
+- **API-alapú** – Kodifikálja az összes konfigurációt és házirendet.
 
-- Bárhonnan csatlakoztatható munkaterhelések **futtatása és összekapcsolhatók** a futásidejű platformok (Kubernetes, virtuális gépek, kiszolgáló nélküli) között.
+- **Futtatás és csatlakoztatásbárhol** – Számítási feladatok összekapcsolása futásidejű platformokon (Kubernetes, virtuális gépek, kiszolgáló nélküli).
 
-- **Kiterjesztheti és integrálhatja a** biztonságos csatlakoztatási feladatokat az infrastruktúrán keresztül.
+- **Extend and Integrate** – A számítási feladatok biztonságos összekapcsolása az infrastruktúra között.
 
 
 ### <a name="capabilities"></a>Funkciók
 
-A konzul a következő funkciókat biztosítja:
+A konzul a következő képességeket biztosítja:
 
-- **Mesh** – átjáró (több adatközpont), virtuális gépek (fürtön kívüli csomópontok), szolgáltatás-szinkronizálás, beépített hibakeresési lehetőség
+- **Háló** – átjáró (több adatközpont), virtuális gépek (fürtcsomópontokon kívül), szolgáltatásszinkronizálás, beépített hibakeresési lehetőség
 
-- **Proxys** – megbízott, beépített proxy, csatlakoztatható, L4 proxy elérhető Windows-alapú számítási feladatokhoz
+- **Proxyk** – Követ, beépített proxy, dugaszolható, l4 proxy elérhető windowsos számítási feladatokhoz
 
-- **Traffic Management** – útválasztás, felosztás, feloldás
+- **Forgalomirányítás** – útválasztás, felosztás, felbontás
 
-- **Szabályzat** – szándékok, ACL-ek
+- **Politika** – szándékok, ACL-k
 
-- **Biztonság** – engedélyezés, hitelesítés, TITKOSÍTÁS, SPIFFE-alapú identitások, külső hitelesítésszolgáltató (tároló), tanúsítványkezelő és rotációs
+- **Biztonság** – engedélyezés, hitelesítés, titkosítás, SPIFFE-alapú identitások, külső hitelesítésszolgáltató (Vault), tanúsítványkezelés és rotáció
 
-- **Megfigyelhetőség** – mérőszámok, kezelőfelületi irányítópult, Prometheus, grafana
+- **Megfigyelhetőség** – metrikák, ui műszerfal, prometheus, grafana
 
 
 ### <a name="scenarios"></a>Forgatókönyvek
 
-A konzul kiválóan alkalmas a következő helyzetekben való használatra:
+Konzul kiválóan alkalmas, és javasolt a következő forgatókönyvek:
 
-- A meglévő konzuli csatlakoztatott munkaterhelések kiterjesztése
+- Meglévő konzulhoz csatlakoztatott munkaterhelések bővítése
 
-- Megfelelőségi követelmények a Tanúsítványkezelők között
+- Megfelelőségi követelmények a tanúsítványkezelés körül
 
-- Több fürtön keresztüli szolgáltatás hálója
+- Többfürtös szolgáltatásháló
 
-- A szolgáltatás hálójának részét képező virtuális gépeken alapuló számítási feladatok
+- Virtuálisgép-alapú számítási feladatok, amelyeket a szolgáltatáshálóba kell foglalni
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az alábbi dokumentáció ismerteti, hogyan telepítheti a konzult az Azure Kubernetes Service-ben (ak):
+A következő dokumentáció ismerteti, hogyan telepítheti a Consul alkalmazást az Azure Kubernetes szolgáltatásra (AKS):
 
 > [!div class="nextstepaction"]
-> [A konzul telepítése az Azure Kubernetes szolgáltatásban (ak)][consul-install]
+> [Konzul telepítése az Azure Kubernetes szolgáltatásban (AKS)][consul-install]
 
-A konzul funkcióit és architektúráját továbbra is megismerheti:
+A Konzul funkcióit és az építészetet is felfedezheti:
 
-- [Konzuli funkciók][consul-features]
-- [Konzuli architektúra][consul-architecture]
-- [Konzul – a kapcsolat működése][consul-how-connect-works]
+- [Konzul jellemzők][consul-features]
+- [Konzul építészet][consul-architecture]
+- [Consul - Hogyan működik a Connect][consul-how-connect-works]
 
 <!-- LINKS - external -->
 [consul]: https://www.consul.io/mesh.html

@@ -1,6 +1,6 @@
 ---
-title: Buborék réteg hozzáadása térképhez | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan adhat hozzá egy buborék réteget egy térképhez a Microsoft Azure Maps web SDK használatával.
+title: Buborékréteg hozzáadása térképhez | Microsoft Azure Maps
+description: Ebből a cikkből megtudhatja, hogyan adhat hozzá buborékréteget egy térképhez a Microsoft Azure Maps Web SDK használatával.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,22 +10,22 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 7ae11734eb804715f3eb1b5edcb02fc328dafec8
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77208556"
 ---
-# <a name="add-a-bubble-layer-to-a-map"></a>Buborék réteg hozzáadása térképhez
+# <a name="add-a-bubble-layer-to-a-map"></a>Buborékréteg hozzáadása térképhez
 
-Ez a cikk bemutatja, hogyan jelenítheti meg a pontok adatait egy adatforrásból egy Térkép buborék rétegében. A buborék rétegek egy rögzített képpont sugarú körként jelenítik meg a térképen lévő köröket. 
+Ez a cikk bemutatja, hogyan jelenítheti meg az adatforrásból származó pontadatokat buborékrétegként a térképen. A buborékrétegek a pontokat körökként renderelik a térképen, rögzített képpontsugarat tartalmazva. 
 
 > [!TIP]
-> A buborék rétegek alapértelmezés szerint az adatforrásban lévő összes geometriá koordinátáit fogják megjeleníteni. Ha úgy szeretné korlátozni a réteget, hogy az csak a pont geometriai funkcióit jeleníti meg, állítsa a réteg `filter` tulajdonságát `['==', ['geometry-type'], 'Point']` vagy `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`, ha a multipoint-szolgáltatásokat is fel szeretné venni.
+> A buborékrétegek alapértelmezés szerint az adatforrás összes geometriájának koordinátáit jelenítik meg. Ha úgy szeretné korlátozni a réteget, hogy `filter` az csak a `['==', ['geometry-type'], 'Point']` `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` pontgeometriai jellemzőket jelenítse meg, a réteg tulajdonságát a MultiPoint-szolgáltatásokra vagy -e a MultiPoint-szolgáltatásokra is be szeretné állítani.
 
 ## <a name="add-a-bubble-layer"></a>Buborékréteg hozzáadása
 
-A következő kód egy tömböt tölt be egy adatforrásba. Ezután összekapcsolja az adatpontokat egy [buborék rétegben](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). A buborék réteg az egyes buborékok sugarait öt képponttal és fehér kitöltési színnel jeleníti meg. Valamint a kék színű körvonal és a körvonal vastagsága hat képpont. 
+A következő kód pontok tömbjét tölti be egy adatforrásba. Ezután összeköti az adatpontokat egy [buborékréteggel.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) A buborékréteg minden buborék sugarát öt képponttal és fehér kitöltési színnel jeleníti meg. És egy kék körvonalszín, és egy hat képpont szélességű körvonalszélesség. 
 
 ```javascript
 //Add point locations.
@@ -53,51 +53,51 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 }));
 ```
 
-Alább látható a fenti funkciók teljes futási kódjának mintája.
+Az alábbiakban a fenti funkciók teljes futókód-mintája látható.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='BubbleLayer adatforrása' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer Adatforrását</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='BubbleLayer adatforrás' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer DataSource</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="show-labels-with-a-bubble-layer"></a>Címkék megjelenítése buborék réteggel
+## <a name="show-labels-with-a-bubble-layer"></a>Címkék megjelenítése buborékréteggel
 
-Ez a kód azt mutatja be, hogyan használható egy pont a térképen a buborék réteg használatával. És hogyan lehet egy címke megjelenítéséhez szimbólum-réteget használni. A szimbólum réteg ikonjának elrejtéséhez állítsa az ikon beállításainak `image` tulajdonságát `'none'`re.
+Ez a kód bemutatja, hogyan használhat buborékréteget egy pont renderelésére a térképen. És hogyan kell használni a szimbólum réteget, hogy egy címkét. A szimbólumréteg ikonjának elrejtéséhez állítsa `image` az `'none'`ikon beállításainak tulajdonságát a számára.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Többrétegű adatforrás' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>többrétegű adatforrást</a> a <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>).
+<iframe height='500' scrolling='no' title='Többrétegű adatforrás' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>MultiLayer DataSource</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="customize-a-bubble-layer"></a>Buborék-réteg testreszabása
+## <a name="customize-a-bubble-layer"></a>Buborékréteg testreszabása
 
-A buborék rétegnek csak néhány stílusa van. Itt látható egy eszköz, amellyel kipróbálhatja őket.
+A Buborék rétegnek csak néhány formázási lehetősége van. Itt van egy szerszám -hoz megpróbál őket ki.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Buborék réteg beállításai' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lásd a tollas <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>buborék réteg beállításait</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Buborékréteg beállításai' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>Tollbuborék réteg beállításait</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével a <a href='https://codepen.io'>CodePen-en.</a>
 </iframe>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)
+> [Buborékréteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
+> [BubbleLayerOptions (Buborékréteg opciók)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
 
-Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
+További kódmintákat a térképekhez további kódmintákért tekintse meg:
 
 > [!div class="nextstepaction"]
 > [Adatforrás létrehozása](create-data-source-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Szimbólum réteg hozzáadása](map-add-pin.md)
+> [Szimbólumréteg hozzáadása](map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Adatvezérelt stílusú kifejezések használata](data-driven-style-expressions-web-sdk.md)
+> [Adatvezérelt stíluskifejezések használata](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)

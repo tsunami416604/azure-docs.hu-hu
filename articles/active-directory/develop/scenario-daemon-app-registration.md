@@ -1,6 +1,6 @@
 ---
-title: Webes API-kat meghívó Daemon-alkalmazások regisztrálása – Microsoft Identity platform | Azure
-description: Ismerje meg, hogyan hozhat létre a webes API-kat meghívó Daemon-alkalmazást – alkalmazás-regisztráció
+title: Webes API-kat hívó démonalkalmazások regisztrálása – Microsoft identity platform | Azure
+description: Megtudhatja, hogyan hozhat létre webes API-kat meghívja a démonalkalmazásokat – alkalmazásregisztráció
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,43 +16,43 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 922a484d111746e5073c08a64d7c92e2b6b4a7c4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773398"
 ---
-# <a name="daemon-app-that-calls-web-apis---app-registration"></a>Webes API-kat meghívó Daemon-alkalmazás – alkalmazás regisztrálása
+# <a name="daemon-app-that-calls-web-apis---app-registration"></a>A webes API-kat meghívjad Daemon alkalmazás – alkalmazásregisztráció
 
-Egy Daemon-alkalmazáshoz az alábbi tudnivalókat kell tudnia az alkalmazás regisztrálásakor.
+Démonalkalmazás esetén az alábbiakat kell tudnia az alkalmazás regisztrálásakor.
 
 ## <a name="supported-account-types"></a>Támogatott fióktípusok
 
-A Daemon-alkalmazások csak az Azure AD-bérlők számára érthetők. Tehát az alkalmazás létrehozásakor az alábbi lehetőségek közül kell választania:
+A démonalkalmazásoknak csak az Azure AD-bérlőkben van értelme. Így amikor létrehozza az alkalmazást, ki kell választania az alábbi lehetőségek közül:
 
-- **Csak a szervezeti könyvtárban lévő fiókok**. Ez a leggyakoribb megoldás, mert a Daemon-alkalmazásokat általában üzletági (LOB) fejlesztők írták.
-- **Fiókok bármely szervezeti címtárban**. Ezt a lehetőséget akkor kell megtennie, ha Ön az ISV-t biztosító segédprogramot biztosít ügyfelei számára. A jóváhagyáshoz szüksége lesz az ügyfelek bérlői rendszergazdái számára.
+- **Csak ebben a szervezeti címtárban lévő fiókok**. Ez a választás a leggyakoribb, mert a démonalkalmazásokat általában üzletági (LOB) fejlesztők írják.
+- **Bármely szervezeti címtárban lévő fiókok**. Ezt a döntést akkor választhatja meg, ha független független vállalatnak ad segítséget ügyfeleinek. A jóváhagyáshoz az ügyfelek bérlői rendszergazdáinak kell lennie.
 
-## <a name="authentication---no-reply-uri-needed"></a>Hitelesítés – nincs szükség válasz URI-ra
+## <a name="authentication---no-reply-uri-needed"></a>Hitelesítés - nincs szükség válaszURI-ra
 
-Abban az esetben, ha a bizalmas ügyfélalkalmazás *csak* az ügyfél-hitelesítő adatok folyamatát használja, a válasz URI-ját nem kell regisztrálni. Az alkalmazás konfigurációja vagy az építés nem szükséges. Az ügyfél-hitelesítő adatok folyamata nem használja.
+Abban az esetben, ha a bizalmas ügyfélalkalmazás *csak* az ügyfél hitelesítő adatok áramlását használja, a válasz URI-t nem kell regisztrálni. Ez nem szükséges az alkalmazás konfigurációjához vagy felépítéséhez. Az ügyfél hitelesítő adatai nem használják.
 
-## <a name="api-permissions---app-permissions-and-admin-consent"></a>API-engedélyek – alkalmazás-engedélyek és rendszergazdai engedély
+## <a name="api-permissions---app-permissions-and-admin-consent"></a>API-engedélyek – alkalmazásengedélyek és rendszergazdai jóváhagyás
 
-Egy démon alkalmazás csak az API-kra (nem delegált engedélyekre) vonatkozó alkalmazás-engedélyeket igényelhet. Az alkalmazás regisztrálásához az **API-engedélyek** lapon az **engedély hozzáadása** és az API-család kiválasztása után válassza az **alkalmazás engedélyei**lehetőséget, majd válassza ki az engedélyeket.
+Egy démonalkalmazás csak alkalmazásengedélyeket kérhet az API-khoz (delegált engedélyekhez nem). Az **alkalmazásregisztráció API-engedélyei** lapján, miután kiválasztotta az **Engedély hozzáadása** és az API-család kiválasztását, válassza az **Alkalmazásengedélyek**lehetőséget, majd válassza ki az engedélyeket.
 
-![Alkalmazás-engedélyek és rendszergazdai engedély](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
+![Alkalmazásengedélyek és rendszergazdai jóváhagyás](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
-> A hívni kívánt webes API-nak meg kell határoznia az *alkalmazás engedélyeit (az alkalmazás szerepkörei)* , a nem delegált engedélyeket. Az ilyen API-k megjelenítésével kapcsolatos részletekért lásd [: védett webes API: alkalmazás regisztrálása – ha a webes API-t egy Daemon-alkalmazás hívja](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)meg.
+> A hívni kívánt webes API-nak *alkalmazásengedélyeket (alkalmazásszerepköröket)* kell definiálnia, nem pedig delegált engedélyeket. Az ilyen API-k felfedésével kapcsolatos részletekért olvassa el [a Védett webes API: Alkalmazásregisztráció című témakört, amikor a webes API-t egy démonalkalmazás nevezi meg.](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)
 
-A Daemon-alkalmazások megkövetelik, hogy a bérlői rendszergazda előadja a webes API-t hívó alkalmazásnak. A bérlői rendszergazdák megadják ezt a hozzájárulást ugyanarra az **API-jogosultsági** lapra, ha a **rendszergazda beleegyezését adják meg a *szervezetnek***
+A démonalkalmazások megkövetelik, hogy a bérlői rendszergazda előzetesen beleegyezését adja a webes API-t hívó alkalmazáshoz. A bérlői rendszergazdák ugyanezen az **API-engedélyoldalon** adják meg ezt a hozzájárulást a ** *Szervezetünknek* adott rendszergazdai hozzájárulás kiválasztásával.**
 
-Ha egy több-bérlős alkalmazást fejlesztő ISV-t használ, olvassa el a több- [bérlős Daemon-alkalmazások telepítésének](scenario-daemon-production.md#deployment---multitenant-daemon-apps)szakaszát.
+If you're an ISV building a multitenant application, you should read the section [Deployment - case of multitenant daemon apps](scenario-daemon-production.md#deployment---multitenant-daemon-apps).
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Daemon App – alkalmazás kódjának konfigurálása](./scenario-daemon-app-configuration.md)
+> [Démon alkalmazás – alkalmazáskód-konfiguráció](./scenario-daemon-app-configuration.md)
