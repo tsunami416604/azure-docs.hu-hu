@@ -5,8 +5,12 @@
   items:
     - name: Mi az az Azure Active Directory?
       href: active-directory-whatis.md
+    - name: Az Azure AD összehasonlítása az ADDS-sel
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Újdonságok az Azure Active Directoryban
       href: whats-new.md
+    - name: Újdonságok a Microsoft 365 Kormányzati verzióban
+      href: whats-new-microsoft-365-government.md
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -17,8 +21,6 @@
 - name: Alapelvek
   expanded: true
   items:
-    - name: Identitásbiztonság pontszám
-      href: identity-secure-score.md
     - name: Biztonság
       items:
         - name: MFA engedélyezése
@@ -27,24 +29,30 @@
           href: concept-fundamentals-security-defaults.md
         - name: Régi hitelesítési folyamat letiltása
           href: concept-fundamentals-block-legacy-authentication.md
-    - name: Csoport- és hozzáférés-kezelés
-      href: active-directory-manage-groups.md
-    - name: Csoportalapú licencelés
-      href: active-directory-licensing-whatis-azure-portal.md
-    - name: Azure AD-architektúra
-      href: active-directory-architecture.md
-    - name: Alapértelmezett felhasználói engedélyek
-      href: users-default-permissions.md
-    - name: 'Üzembe helyezés 30, 90 vagy hosszabb idő alatt'
+        - name: Identitásbiztonság pontszám
+          href: identity-secure-score.md
+    - name: Csoportok és felhasználók
+      items:
+        - name: Csoport- és hozzáférés-kezelés
+          href: active-directory-manage-groups.md
+        - name: Csoportalapú licencelés
+          href: active-directory-licensing-whatis-azure-portal.md
+        - name: Alapértelmezett felhasználói engedélyek
+          href: users-default-permissions.md
+    - name: Architektúra
+      items:
+        - name: Azure AD-architektúra
+          href: active-directory-architecture.md
+    - name: Üzembehelyezési útmutató
+      items:
+        - name: 'Üzembe helyezés 30, 90 vagy hosszabb idő alatt'
       href: active-directory-deployment-checklist-p2.md
-    - name: Az európai ügyfelek identitásadatainak tárolása
-      href: active-directory-data-storage-eu.md
-    - name: Az ausztrál és új-zélandi ügyfelek identitásadatainak tárolása
-      href: active-directory-data-storage-australia-newzealand.md
-    - name: Újdonságok a Microsoft 365 Kormányzati verzióban
-      href: whats-new-microsoft-365-government.md
-    - name: Az Azure AD összehasonlítása az ADDS-sel
-      href: active-directory-compare-azure-ad-to-ad.md
+    - name: Adattárolás
+      items:
+        - name: Az európai ügyfelek identitásadatainak tárolása
+          href: active-directory-data-storage-eu.md
+        - name: Az ausztrál és új-zélandi ügyfelek identitásadatainak tárolása
+          href: active-directory-data-storage-australia-newzealand.md
     - name: Azure AD-üzemeltetési referencia
       items:
         - name: Introduction (Bevezetés)

@@ -4,13 +4,13 @@
   items:
     - name: Mi az a feltételes hozzáférés?
       href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: A használati feltételek elfogadásának kötelezővé tétele
       href: require-tou.md
     - name: Hozzáférés letiltása munkameneti kockázat észlelésekor
       href: app-sign-in-risk.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Azure Multi-Factor Authentication szükséges
       href: ../authentication/tutorial-enable-azure-mfa.md?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json
@@ -58,22 +58,24 @@
       href: best-practices.md
     - name: Gyakori feltételes hozzáférési szabályzatok
       items:
+        - name: Régi hitelesítési folyamat letiltása
+          href: howto-conditional-access-policy-block-legacy.md
         - name: MFA megkövetelése a rendszergazdáktól
           href: howto-conditional-access-policy-admin-mfa.md
         - name: MFA megkövetelése az Azure-beli felügyelethez
           href: howto-conditional-access-policy-azure-management.md
         - name: MFA megkövetelése minden felhasználótól
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: Régi hitelesítési folyamat letiltása
-          href: howto-conditional-access-policy-block-legacy.md
         - name: Kockázatalapú feltételes hozzáférés
           href: howto-conditional-access-policy-risk.md
-        - name: Megbízható helyek megkövetelése az MFA-regisztrációhoz
+        - name: Biztonsági tudnivalók regisztrálásának védelme
           href: howto-conditional-access-policy-registration.md
         - name: Hozzáférés letiltása hely alapján
           href: howto-conditional-access-policy-location.md
         - name: Megfelelő eszközök megkövetelése
           href: howto-conditional-access-policy-compliant-device.md
+        - name: Hozzáférés letiltása
+          href: howto-conditional-access-policy-block-access.md
     - name: Régi hitelesítési folyamat letiltása
       href: block-legacy-authentication.md
     - name: Jóváhagyott ügyfélalkalmazások megkövetelése
@@ -92,8 +94,10 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Klasszikus szabályzatok migrálása
       href: policy-migration-mfa.md
-    - name: Hibakeresés
+    - name: Hibaelhárítás
       items:
+        - name: Bejelentkezési problémák elhárítása
+          href: troubleshoot-conditional-access.md
         - name: Hibaelhárítás a Lehetőségelemzési eszközzel
           href: troubleshoot-conditional-access-what-if.md
 - name: További források

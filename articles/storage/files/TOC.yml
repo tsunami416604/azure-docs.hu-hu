@@ -39,8 +39,11 @@
       href: storage-files-scale-targets.md
     - name: Identitásalapú hitelesítés és engedélyezés
       href: storage-files-active-directory-overview.md
-    - name: Inaktív adatok titkosítása
+    - name: Azure Storage-titkosítás inaktív állapotban
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      items:
+        - name: Felhasználó által kezelt kulcsok az Azure Key Vaulttal
+          href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Megfelelőségi ajánlatok
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Fejlesztés
@@ -93,6 +96,10 @@
           href: storage-how-to-use-files-mac.md
     - name: Network (Hálózat)
       items:
+        - name: Azure Files hálózati végpontok konfigurálása
+          href: storage-files-networking-endpoints.md
+        - name: DNS-továbbítás konfigurálása az Azure Fileshoz
+          href: storage-files-networking-dns.md
         - name: Helyek közötti VPN konfigurálása
           href: storage-files-configure-s2s-vpn.md
         - name: Pont–hely típusú VPN-átjáró konfigurálása Windowson
@@ -117,12 +124,22 @@
           href: storage-sync-files-monitoring.md
     - name: Migrate (Áttelepítés)
       items:
-        - name: Migrálás az Azure File Syncre
-          href: storage-sync-offline-data-transfer.md
-        - name: StorSimple 8100 és 8600 migrálási útmutató
-          href: storage-files-migration-storsimple-8000.md
-        - name: StorSimple 1200 migrálási útmutató
-          href: storage-files-migration-storsimple-1200.md
+        - name: Migrálás Azure-fájlmegosztásokba
+          href: storage-files-migration-overview.md
+        - name: Hibrid telepítés megcélzása
+          items:
+            - name: Tömeges adatmigrálás az Azure File Syncbe az Azure Data Boxszal
+              href: storage-sync-offline-data-transfer.md
+            - name: Migrálás Linuxról hibrid fájlkiszolgálóra az Azure File Sync használatával
+              href: storage-files-migration-linux-hybrid.md
+            - name: Migrálás helyszíni NAS-ról hibrid fájlkiszolgálóra az Azure File Sync használatával
+              href: storage-files-migration-nas-hybrid.md
+        - name: A StorSimple-ből
+          items:
+            - name: StorSimple 8100 és 8600 migrálási útmutató
+              href: storage-files-migration-storsimple-8000.md
+            - name: StorSimple 1200 migrálási útmutató
+              href: storage-files-migration-storsimple-1200.md
     - name: Fejlesztés
       items:
         - name: Kapcsolati sztringek konfigurálása

@@ -4,7 +4,7 @@
   items:
     - name: Tudnivalók az Azure-erőforrások felügyelt identitásairól
       href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Virtuális géphez tartozó felügyelt identitás használata az Azure Resource Manager eléréséhez
       items:
@@ -12,7 +12,7 @@
           href: tutorial-windows-vm-access-arm.md
         - name: Linux rendszerű virtuális gép
           href: tutorial-linux-vm-access-arm.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Windows VM/VMSS
       items:
@@ -51,7 +51,7 @@
     - name: Azure App Service és Functions
       href: /azure/app-service/overview-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure Event Hubs
-      href: /azure/event-hubs/authenticate-managed-identity.md?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
+      href: /azure/event-hubs/authenticate-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure Container Instances
       href: /azure/container-instances/container-instances-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
 - name: Útmutatók
@@ -86,7 +86,7 @@
       items:
         - name: Hozzáférési jogkivonat beszerzése
           href: how-to-use-vm-token.md
-        - name: Bejelentkezés a PowerShellbe és a parancssori felületre felügyelt identitással
+        - name: Bejelentkezés a PowerShellbe és a CLI-be felügyelt identitással
           href: how-to-use-vm-sign-in.md
         - name: Használat Azure SDK-kal
           href: how-to-use-vm-sdk.md

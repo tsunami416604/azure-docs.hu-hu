@@ -4,7 +4,7 @@
   items:
     - name: Mi az Azure Firewall?
       href: overview.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   expanded: true
   items:
     - name: Üzembe helyezés és konfigurálás
@@ -43,6 +43,8 @@
       href: compliance-certifications.md
     - name: Központi felügyelet
       href: central-management.md
+    - name: Távmunka támogatása
+      href: remote-work-support.md
 - name: Útmutatók
   items:
     - name: Üzembe helyezés az Azure PowerShell-lel
